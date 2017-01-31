@@ -1,65 +1,68 @@
 ---
 layout: tutorial
-title: Security Check Contract
-breadcrumb_title: security check contract
+title: セキュリティー検査コントラクト
+breadcrumb_title: セキュリティー検査コントラクト
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Every security check must implement the `com.ibm.mfp.server.security.external.SecurityCheck` interface (the security-check interface). This interface constitutes the basic contract between the security check and the {{ site.data.keys.product_adj }} security framework. The security-check implementation must fulfill the following requirements:
+すべてのセキュリティー検査で `com.ibm.mfp.server.security.external.SecurityCheck` インターフェース (セキュリティー検査インターフェース) を実装する必要があります。このインターフェースは、セキュリティー検査と {{site.data.keys.product_adj }} セキュリティー・フレームワーク間の基本コントラクトを構成します。セキュリティー検査の実装は、以下の要件を満たす必要があります。
 
-* **Functions**: the security check must provide the client-`authorization` and `introspection` functions.
-* **State management**: the security check must manage its state, including creation, disposal, and current-state management.
-* **Configuration**: the security check must create a security-check configuration object, which defines the supported security-check configuration properties, and validates the types and values of customizations of the basic configuration.
+* **機能**: セキュリティー検査では、クライアント `authorization` および `introspection` の機能を提供する必要があります。
+* **状態管理**: セキュリティー検査は、作成、破棄、現行状態の管理など、その状態を管理する必要があります。
+* **構成**: セキュリティー検査は、セキュリティー検査構成オブジェクトを作成する必要があります。このオブジェクトは、サポートされるセキュリティー検査構成プロパティーを定義し、基本構成のカスタマイズのタイプおよび値を検証します。
 
-For a complete reference of the security-check interface, [see `SecurityCheck` in the API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheck.html?view=kc).
+セキュリティー検査インターフェースの完全なリファレンスについては、[API リファレンスの `SecurityCheck`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheck.html?view=kc) を参照してください。
 
-## Security-check functions
+## セキュリティー検査機能
 {: #securityc-check-functions }
-A security check provides two main functions to the security framework:
+セキュリティー検査は、セキュリティー・フレームワークに以下の 2 つの主な機能を提供します。
 
 ### Authorization
 {: #authorization }
-The framework uses the `SecurityCheck.authorize` method to authorize client requests. When the client requests access to a specific OAuth scope, the framework maps the scope elements into security checks. For each security check in the scope, the framework calls the `authorize` method to request authorization for a scope that contains the scope elements that mapped to this security check. This scope is provided in the method's **scope** parameter. 
+フレームワークは `SecurityCheck.authorize` メソッドを使用してクライアント要求を許可します。クライアントが特定の OAuth スコープへのアクセスを要求すると、フレームワークはスコープ・エレメントをセキュリティー検査にマップします。スコープ内のセキュリティー検査ごとに、フレームワークは `authorize` メソッドを呼び出して、当該セキュリティー検査にマップされたスコープ・エレメントが含まれているスコープの許可を要求します。
+このスコープは、メソッドの **scope** パラメーターに指定します。 
 
-The security check adds its response to the [`AuthorizationResponse` object](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.html?view=kc) that is passed to it within the response parameter. The response contains the name of the security check and the response type, which can be success, failure, or a challenge ([see `AuthorizationResponse.ResponseType`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.ResponseType.html?view=kc)).
+セキュリティー検査は、response パラメーターに入れて渡された [`AuthorizationResponse` オブジェクト](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.html?view=kc)に応答を追加します。応答には、セキュリティー検査の名前および応答タイプ (成功、失敗、またはチャレンジのいずれか) が含まれます ([`AuthorizationResponse.ResponseType` を参照](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.ResponseType.html?view=kc))。
 
-When the response contains a challenge object or custom success or failure data, the framework passes the data to the client's security-check challenge handler within a JSON object. For success, the response also contains the scope for which the authorization was requested (as set in the **scope** parameter), and the expiration time for the granted authorization. To grant the client access to the requested scope, the `authorize` method of each of the scope's security checks must return success, and all expiration times must be later than the current time.
+応答にチャレンジ・オブジェクトまたはカスタム成功または失敗のデータが含まれている場合、フレームワークはそのデータを JSON オブジェクトに入れてクライアントのセキュリティー検査チャレンジ・ハンドラーに渡します。成功の場合、応答には、許可が要求されたスコープ (**scope** パラメーターで設定)、および付与された許可の有効期限時刻も含まれます。要求されたスコープへのアクセス権限をクライアントに付与するには、スコープのセキュリティー検査のそれぞれの `authorize` メソッドが成功を返す必要があり、またすべての有効期限時刻が現在時刻より後でなければなりません。
 
-### Introspection
+### イントロスペクション
 {: #introspection }
-The framework uses the `SecurityCheck.introspect` method to retrieve introspection data for a resource server. This method is called for each security check that is contained in the scope for which introspection was requested. As with the `authorize` method, the `introspect` method receives a **scope** parameter that contains the scope elements that mapped to this security check. Before returning the introspection data, the method verifies that the current state of the security check still supports the authorization that was previously granted for this scope. If the authorization is still valid, the `introspect` method adds its response to the [IntrospectionResponse object](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/IntrospectionResponse.html?view=kc) that is passed to it within the **response** parameter.
+フレームワークは `SecurityCheck.introspect` メソッドを使用して、リソース・サーバーのイントロスペクション・データを取得します。このメソッドは、イントロスペクションが要求されたスコープに含まれているセキュリティー検査ごとに呼び出されます。`authorize` メソッドと同様に、`introspect` メソッドは、当該セキュリティー検査にマップされたスコープ・エレメントが含まれている **scope** パラメーターを受け取ります。
+イントロスペクション・データを返す前に、このメソッドは、セキュリティー検査の現行状態がこのスコープに対して以前に付与された許可をまだサポートしているかを検査します。許可がまだ有効な場合、`introspect` メソッドは、**response** パラメーターに入れて渡された [IntrospectionResponse オブジェクト](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/IntrospectionResponse.html?view=kc)に応答を追加します。
 
-The response contains the name of the security check, the scope for which the authorization was requested (as set in the **scope** parameter), the expiration time for the granted authorization, and the requested custom introspection data. If authorization can no longer be granted (for example, if the expiration time for a previous successful state elapses), the method returns without adding a response.
+応答には、セキュリティー検査の名前、許可が要求されたスコープ (**scope** パラメーターで設定)、付与された許可の有効期限時刻、および要求されたカスタム・イントロスペクション・データが含まれます。許可を付与できなくなっている場合 (例えば、以前の成功状態の有効期限時刻が経過している場合)、このメソッドは、応答を追加することなく戻ります。
 
-**Note:**
+**注:
+**
 
-* The security framework collects the processing results from the security checks, and passes relevant data to the client. The framework processing is entirely ignorant of the states of the security checks.
-* Calls to the `authorize` or `introspect` methods can result in a change in the current state of the security check, even if the expiration time of the current state did not elapse. 
+* セキュリティー・フレームワークは、セキュリティー検査からの処理結果を収集し、関連データをクライアントに渡します。フレームワークの処理は、セキュリティー検査の状態を一切認識しません。
+* `authorize` メソッドまたは `introspect` メソッドを呼び出すと、現行状態の有効期限時刻が経過していなくても、セキュリティー検査の現行状態が変更される可能性があります。 
 
-> Learn more about the `authorize` and `introspect` methods [in the ExternalizableSecurityCheck](../../externalizable-security-check) tutorial.
+> `authorize` メソッドおよび `introspect` メソッドについて詳しくは、[ExternalizableSecurityCheck](../../externalizable-security-check) チュートリアルを参照してください。
 
-### Security-check state management
+### セキュリティー検査の状態管理
 {: #security-check-state-management }
-Security checks are stateful, meaning that the security check is responsible for tracking and retaining its interaction state. On each authorization or introspection request, the security framework retrieves the states of relevant security checks from external storage (usually, distributed cache). At the end of request processing, the framework stores the security-check states back in external storage.
+セキュリティー検査はステートフルです。つまり、セキュリティー検査がその対話状態を追跡および保持する責任を負います。それぞれの許可要求またはイントロスペクション要求で、セキュリティー・フレームワークは、外部ストレージ (通常、分散キャッシュ) から関連するセキュリティー検査の状態を取得します。要求処理の最後に、フレームワークは、セキュリティー検査の状態を外部ストレージに再び保管します。
 
-The security check contract requires that a security check:
+セキュリティー検査コントラクトにより、セキュリティー検査には以下が要求されます。
 
-* Implement the `java.io.Externalizable` interface. The security check uses this interface to manage the serialization and deserialization of its state.
-* Define an expiration time and an inactivity timeout for its current state. The state of the security check represents a stage in the authorization process, and cannot be indefinite. The specific periods for the state's validity and maximum inactivity time are set in the security-check implementation, according to the implemented logic. The security check informs the framework of its selected expiration time and inactivity timeout via the implementation of the `getExpiresAt` and `getInactivityTimeoutSec` methods of the SecurityCheck interface.
+* `java.io.Externalizable` インターフェースを実装します。セキュリティー検査はこのインターフェースを使用して、その状態のシリアライゼーションおよびデシリアライゼーションを管理します。
+* 有効期限時刻とその現在の状態の非アクティブ・タイムアウトを定義します。セキュリティー検査の状態は許可プロセスにおけるステージを表し、無期限にすることはできません。状態の有効期間と最大非アクティブ時間の具体的な期間は、実装ロジックに従って、セキュリティー検査実装で設定されます。セキュリティー検査は、SecurityCheck インターフェースの `getExpiresAt` メソッドおよび `getInactivityTimeoutSec` メソッドの実装を介して、選択した有効期限時刻および非アクティブ・タイムアウトをフレームワークに通知します。
 
-### Security-check configuration
+### セキュリティー検査構成
 {: #security-check-configuration }
-A security check can expose configuration properties, whose values can be customized both at the adapter and at the application level. The security-check definition of a specific class determines which of the supported configuration properties of this class to expose, and can customize the default values set in the class definition. The property values can be further customized, dynamically, both for the adapter that defines the security checks, and for each application that uses the check.
+セキュリティー検査は、構成プロパティーを公開できます。構成プロパティーの値は、アダプター・レベルとアプリケーション・レベルの両方でカスタマイズ可能です。特定のクラスのセキュリティー検査定義により、当該クラスのサポートされる構成プロパティーの中で公開するものが決まり、またクラス定義に設定されているデフォルト値をカスタマイズできます。セキュリティー検査を定義するアダプターと、検査を使用する各アプリケーションの両方に対して、さらにプロパティー値を動的にカスタマイズできます。
 
-A security-check class exposes its supported properties by implementing a `createConfiguration` method, which creates an instance of a security-check configuration class that implements the `com.ibm.mfp.server.security.external.SecurityCheckConfiguration` interface (the security-check configuration interface). This interface complements the `SecurityCheck` interface, and is also part of the security-check contract. The security check can create a configuration object that does not expose any properties, but the `createConfiguration` method must return a valid configuration object and cannot return null. For a complete reference of the security-check configuration interface, see [`SecurityCheckConfiguration`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheckConfiguration.html?view=kc). 
+セキュリティー検査クラスは、`createConfiguration` メソッドを実装することで、クラスでサポートされるプロパティーを公開します。このメソッドは、`com.ibm.mfp.server.security.external.SecurityCheckConfiguration` インターフェース (セキュリティー検査構成インターフェース) を実装するセキュリティー検査構成クラスのインスタンスを作成します。このインターフェースは、`SecurityCheck` インターフェースを補完し、またセキュリティー検査コントラクトの一部でもあります。セキュリティー検査は、プロパティーをいっさい公開しない構成オブジェクトを作成できますが、`createConfiguration` メソッドは有効な構成オブジェクトを返す必要があり、null を返すことはできません。セキュリティー検査構成インターフェースの完全なリファレンスについては、[`SecurityCheckConfiguration`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheckConfiguration.html?view=kc) を参照してください。 
 
-The security framework calls the security-check's `createConfiguration` method during deployment, which occurs for any adapter or application configuration change. The method's properties parameter contains the properties that are defined in the adapter's security-check definition, and their current customized values (or the default value if there was no customization). The implementation of the security-check configuration should validate the values of the received properties, and provide methods for returning the validation results.
+セキュリティー・フレームワークは、デプロイメント時にセキュリティー検査の `createConfiguration` メソッドを呼び出します。これは、アダプターまたはアプリケーションのすべての構成変更で発生します。メソッドの properties パラメーターには、アダプターのセキュリティー検査定義で定義されているプロパティー、およびそのカスタマイズされた現行値 (またはカスタマイズが行われていない場合はデフォルト値) が含まれます。セキュリティー検査構成の実装では、受け取ったプロパティーの値を検証し、また検証結果を返すメソッドを提供する必要があります。
 
-The security-check configuration must implement the `getErrors`, `getWarnings`, and `getInfo` methods. The abstract security-check configuration base class, [`SecurityCheckConfigurationBase`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/impl/SecurityCheckConfigurationBase.html?view=kc) also defines and implements custom `getStringProperty`, `getIntProperty`, and `addMessage` methods. See the code documentation of this class for details.
+セキュリティー検査構成では、`getErrors`、`getWarnings`、および `getInfo` の各メソッドを実装する必要があります。抽象セキュリティー検査構成の基底クラスである [`SecurityCheckConfigurationBase`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/impl/SecurityCheckConfigurationBase.html?view=kc) も、カスタムの `getStringProperty`、`getIntProperty`、および `addMessage` の各メソッドを定義および実装しています。詳しくは、当該クラスのコードの資料を参照してください。
 
-**Note:** The names and values of the configuration properties in the security-check definition and in any adapter or application customization, must match the supported properties and allowed values, as defined in the configuration class.
+**注:** セキュリティー検査定義内およびアダプターまたはアプリケーションのカスタマイズ内の構成プロパティーの名前と値は、構成クラスで定義されている、サポートされるプロパティーと許可される値に一致している必要があります。
 
-> Learn more about [creating custom properties](../#security-check-configuration) in Security Checks.
+> セキュリティー検査の[カスタム・プロパティーの作成](../#security-check-configuration)について詳細を参照してください。

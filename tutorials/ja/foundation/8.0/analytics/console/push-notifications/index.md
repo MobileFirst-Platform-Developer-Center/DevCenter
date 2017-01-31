@@ -1,30 +1,30 @@
 ---
 layout: tutorial
-title: Push Notifications
-breadcrumb_title: Push Notifications
+title: プッシュ通知
+breadcrumb_title: プッシュ通知
 relevantTo: [ios,android,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-Once {{ site.data.keys.mf_analytics }} support is set up for Push Notifications  (see [Setting Up Analytics Support](../../../notifications/analytics/)), you can create reports about Push usage.
+{{site.data.keys.mf_analytics }} サポートがプッシュ通知用にセットアップされると ([『Analytics サポートのセットアップ』](../../../notifications/analytics/)を参照)、プッシュの使用状況についてレポートを作成できます。
 
-## Push reports
+## プッシュ・レポート
 {: #push-reports }
 
-Push Notifications reports become available after {{ site.data.keys.mf_analytics_short }} support is configured, and Push events are sent to the {{ site.data.keys.mf_analytics_short }} service.
+プッシュ通知レポートは、{{site.data.keys.mf_analytics_short }} サポートの構成後に使用できるようになります。プッシュ・イベントは {{site.data.keys.mf_analytics_short }} サービスに送信されます。
 
-1. In the {{ site.data.keys.mf_analytics_console }}, choose the **Infrastructure** section from the navigation bar.
-2. Choose the **Push Notifications** tab.
+1. {{site.data.keys.mf_analytics_console }}で、ナビゲーション・バーから**「インフラストラクチャー」**セクションを選択します。
+2. **「プッシュ通知」**タブを選択します。
 
-Two reports types are displayed:
+以下の 2 つのレポート・タイプが表示されます。
 
-**Notification Requests**  
-The number of requests is displayed according to the requested period, applications, and versions, broken down by date.
+**通知要求**  
+要求された期間、アプリケーション、およびバージョンに応じて要求数が表示され、日付で分類されます。
 
-**Notification by Mediator**  
-The number of requests is broken down by app platform, for the requested period, applications, and versions.
+**メディエーターによる通知**  
+要求された期間、アプリケーション、およびバージョンの要求数が、アプリケーションのプラットフォーム別に分類されます。
 
-![Push Notification reports](pushNotifications.png)
+![プッシュ通知レポート](pushNotifications.png)

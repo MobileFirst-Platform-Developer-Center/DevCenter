@@ -1,35 +1,35 @@
 ---
 layout: tutorial
-title: Implementing the ExternalizableSecurityCheck
+title: ExternalizableSecurityCheck の実装
 breadcrumb_title: ExternalizableSecurityCheck
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The abstract `ExternalizableSecurityCheck` class implements the `SecurityCheck` interface and handles two important aspects of the security check functionality: externalization and state management.
+抽象 `ExternalizableSecurityCheck` クラスは、`SecurityCheck` インターフェースを実装し、セキュリティー検査機能の 2 つの重要な側面、すなわち外部化と状態管理を処理します。
 
-* Externalization - this class implements the `Externalizable` interface, so that the derived classes don't need to implement it themselves.
-* State management - this class predefines a `STATE_EXPIRED` state, which means that the security check is expired and its state is not preserved. The derived classes need to define other states supported by their security check.
+* 外部化 - このクラスは、`Externalizable` インターフェースを実装して、派生クラスがこのインターフェースを実装する必要がなくなるようにします。
+* 状態管理 - このクラスは、`STATE_EXPIRED` 状態を事前定義します。これは、セキュリティー検査を期限切れにし、その状態が保持されないようにすることを意味します。派生クラスは、それぞれのセキュリティー検査によってサポートされるその他の状態を定義する必要があります。
 
-Three methods are required to be implemented by the subclasses: `initStateDurations`, `authorize`, and `introspect`.
+サブクラスでは、3 つのメソッドを実装する必要があります。それらは、`initStateDurations`、`authorize`、および `introspect` です。
 
-This tutorial explains how to implement the class and demonstrates how to manage states.
+このチュートリアルでは、クラスを実装する方法について説明し、状態を管理する方法を例示します。
 
-**Prerequisites:** Make sure to read the [Authorization concepts](../) and [Creating a Security Check](../creating-a-security-check) tutorials.
+**前提条件:** [許可の概念](../)および[セキュリティー検査の作成](../creating-a-security-check)のチュートリアルをお読みください。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [The initStateDurations Method](#the-initstatedurations-method)
-* [The authorize Method](#the-authorize-method)
-* [The introspect Method](#the-introspect-method)
-* [The AuthorizationContext Object](#the-authorizationcontext-object)
-* [The RegistrationContext Object](#the-registrationcontext-object)
+* [initStateDurations メソッド](#the-initstatedurations-method)
+* [authorize メソッド](#the-authorize-method)
+* [introspect メソッド](#the-introspect-method)
+* [AuthorizationContext オブジェクト](#the-authorizationcontext-object)
+* [RegistrationContext オブジェクト](#the-registrationcontext-object)
 
-## The initStateDurations Method
+## initStateDurations メソッド
 {: #the-initstatedurations-method }
-The `ExternalizableSecurityCheck` defines an abstract method called `initStateDurations`. The subclasses must implement that method by providing the names and durations for all states supported by their security check. The duration values usually come from the security check configuration.
+`ExternalizableSecurityCheck` によって、`initStateDurations` という抽象メソッドが定義されます。サブクラスは、それぞれのセキュリティー検査でサポートされるすべての状態について、名前と期間を指定することで、このメソッドを実装する必要があります。期間の値は、通常、セキュリティー検査構成から取得されます。
 
 ```java
 private static final String SUCCESS_STATE = "success";
@@ -39,13 +39,13 @@ protected void initStateDurations(Map<String, Integer> durations) {
 }
 ```
 
-> For more information about security check configuration, see the [configuration class section](../credentials-validation/security-check/#configuration-class) in the Implementing the CredentialsValidationSecurityCheck tutorial.
+> セキュリティー検査構成について詳しくは、『CredentialsValidationSecurityCheck の実装』チュートリアルの[構成クラス](../credentials-validation/security-check/#configuration-class)のセクションを参照してください。
 
-## The authorize Method
+## authorize メソッド
 {: #the-authorize-method }
-The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, managing states and sending a response to the client (success, challenge, or failure).
+`SecurityCheck` インターフェースによって、`authorize` というメソッドが定義されます。このメソッドが、セキュリティー検査のメイン・ロジックの実装、状態の管理、およびクライアントへの応答の送信 (成功、チャレンジ、または失敗) の責任を負います。
 
-Use the following helper methods to manage states:
+状態の管理には、以下のヘルパー・メソッドを使用します。
 
 ```java
 protected void setState(String name)
@@ -53,7 +53,7 @@ protected void setState(String name)
 ```java
 public String getState()
 ```
-The following example simply checks whether the user is logged-in and returns success or failure accordingly:
+以下のサンプルは、ユーザーがログインしているかどうかを単純にチェックし、その結果に応じて成功または失敗を返します。
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -69,32 +69,32 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-The `AuthorizationResponse.addSuccess` method adds the success scope and its expiration to the response object. It requires:
+`AuthorizationResponse.addSuccess` メソッドは、成功のスコープとその有効期限を応答オブジェクトに追加します。これは以下を必要とします。
 
-* The scope granted by the security check.
-* The expiration of the granted scope.  
-The `getExpiresAt` helper method returns the time at which the current state expires, or 0 if the current state is null:
+* セキュリティー検査によって認可されたスコープ。
+* 認可されたスコープの有効期限。  
+`getExpiresAt` ヘルパー・メソッドは、現在の状態の有効期限が切れる時間か、現在の状態がヌルの場合には 0 を返します。
 
   ```java
   public long getExpiresAt()
   ```
    
-* The name of the security check.
+* セキュリティー検査の名前。
 
-The `AuthorizationResponse.addFailure` method adds a failure to the response object. It requires:
+`AuthorizationResponse.addFailure` メソッドは、失敗を応答オブジェクトに追加します。これは以下を必要とします。
 
-* The name of the security check.
-* A failure `Map` object.
+* セキュリティー検査の名前。
+* 失敗 `Map` オブジェクト。
 
-The `AuthorizationResponse.addChallenge` method adds a challenge to the response object. It requires:
+`AuthorizationResponse.addChallenge` メソッドは、チャレンジを応答オブジェクトに追加します。これは以下を必要とします。
 
-* The name of the security check.
-* A challenge `Map` object.
+* セキュリティー検査の名前。
+* チャレンジ `Map` オブジェクト。
 
-## The introspect Method
+## introspect メソッド
 {: #the-introspect-method }
-The `SecurityCheck` interface defines a method called `introspect`. This method must make sure that the security check is in the state that grants the requested scope. If the scope is granted, the security check must report the granted scope, its expiration, and a custom introspection data to the result parameter. If the scope is not granted, the security check does nothing.  
-This method might change the state of the security check and/or the client registration record.
+`SecurityCheck` インターフェースによって、`introspect` というメソッドが定義されます。このメソッドにより、セキュリティー検査の状態が、要求されたスコープを認可しているかどうかが検査されます。スコープが認可されている場合、セキュリティー検査は、認可されるスコープ、その有効期限、およびカスタムのイントロスペクション・データを結果のパラメーターに報告しなければなりません。スコープが認可されていない場合、セキュリティー検査は何も行いません。  
+このメソッドによって、セキュリティー検査の状態またはクライアント登録レコード、あるいはその両方が変更されることがあります。
 
 ```java
 public void introspect(Set<String> checkScope, IntrospectionResponse response) {
@@ -104,58 +104,58 @@ public void introspect(Set<String> checkScope, IntrospectionResponse response) {
 }
 ```
 
-## The AuthorizationContext Object
+## AuthorizationContext オブジェクト
 {: #the-authorizationcontext-object }
-The `ExternalizableSecurityCheck` class provides the `AuthorizationContext authorizationContext` object which is used for storing transient data associated with the current client for the security check.  
-Use the following methods to store and obtain data:
+`ExternalizableSecurityCheck` クラスは、`AuthorizationContext authorizationContext` オブジェクトを提供します。このオブジェクトは、セキュリティー検査の現行クライアントに関連した一時データを保管するために使用されます。  
+データの保管と取得には、以下のメソッドを使用します。
 
-* Get the authenticated user set by this security check for the current client:
+* 現行クライアントに関して、このセキュリティー検査によって設定された認証済みユーザーを取得します。
 
   ```java
   AuthenticatedUser getActiveUser();
   ```
   
-* Set the active user for the current client by this security check:
+* このセキュリティー検査で使用する現行クライアントのアクティブ・ユーザーを設定します。
 
   ```java
   void setActiveUser(AuthenticatedUser user);
   ```
 
-## The RegistrationContext Object
+## RegistrationContext オブジェクト
 {: #the-registrationcontext-object }
-The `ExternalizableSecurityCheck` class provides the `RegistrationContext registrationContext` object which is used for storing persistent/deployment data associated with the current client.  
-Use the following methods to store and obtain data:
+`ExternalizableSecurityCheck` クラスは、`RegistrationContext registrationContext` オブジェクトを提供します。このオブジェクトは、現行クライアントに関連した永続データ/デプロイメント・データを保管するために使用されます。  
+データの保管と取得には、以下のメソッドを使用します。
 
-* Get the user that is registered by this security check for the current client:
+* 現行クライアントに関して、このセキュリティー検査によって登録されたユーザーを取得します。
 
   ```java
   AuthenticatedUser getRegisteredUser();
   ```
   
-* Register the given user for the current client:
+* 現行クライアントを対象に、指定されたユーザーを登録します。
 
   ```java
   setRegisteredUser(AuthenticatedUser user);
   ```
   
-* Get the public persistent attributes of the current client:
+* 現行クライアントの公開されている永続属性を取得します。
 
   ```java
   PersistentAttributes getRegisteredPublicAttributes();
   ```
   
-* Get the protected persistent attributes of the current client:
+* 現行クライアントの保護されている永続属性を取得します。
 
   ```java
   PersistentAttributes getRegisteredProtectedAttributes();
   ```
   
-* Find the registration data of mobile clients by the given search criteria:
+* 指定された検索基準を使用して、モバイル・クライアントの登録データを検索します。
 
   ```java
   List<ClientData> findClientRegistrationData(ClientSearchCriteria criteria);
   ```
 
-## Sample Application
+## サンプル・アプリケーション
 {: #sample-application }
-For a sample that implements the `ExternalizableSecurityCheck`, see the [Enrollment](../enrollment) tutorial.
+`ExternalizableSecurityCheck` を実装するサンプルについては、[登録](../enrollment)チュートリアルを参照してください。

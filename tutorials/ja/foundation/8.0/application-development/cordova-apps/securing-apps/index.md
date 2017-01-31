@@ -1,22 +1,22 @@
 ---
 layout: tutorial
-title: Securing Cordova Applications
-breadcrumb_title: Securing applications
+title: Cordova アプリケーションの保護
+breadcrumb_title: アプリケーションの保護
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Encrypting the web resources of your Cordova packages
+### Cordova パッケージの Web リソースの暗号化
 {: #encrypting-the-web-resources-of-your-cordova-packages }
-To minimize the risk of someone viewing and modifying your web resources while it is in the .apk or .ipa package, you can use the {{ site.data.keys.mf_cli }} `mfpdev app webencrypt` command or the `mfpwebencrypt` flag to encrypt the information. This procedure does not provide encryption that is impossible to defeat, but it provides a basic level of obfuscation.
+.apk パッケージまたは .ipa パッケージに Web リソースが含まれている間に他のユーザーがその Web リソースを表示および変更するリスクを最小化するために、 {{site.data.keys.mf_cli }} `mfpdev app webencrypt` コマンドまたは `mfpwebencrypt` フラグを使用して、情報を暗号化できます。この手順は、破ることが不可能な暗号化を提供するわけではありませんが、基本レベルの難読化を提供します。
 
-**Prerequisites:**
+**前提条件:**
 
-* You must have the Cordova development tools installed. This example uses the Apache Cordova CLI. If you use other Cordova development tools, some of your steps will be different. Refer to your Cordova tool documentation for instructions.
-* You must have the {{ site.data.keys.mf_cli }} installed.
-* You must have the { site.data.keys.product_adj }} Cordova plug-in installed.
+* Cordova 開発ツールがインストールされている必要があります。この例では、Apache Cordova CLI を使用します。他の Cordova 開発ツールを使用する場合は、手順が一部異なります。手順については、ご使用の Cordova ツールの資料を参照してください。
+* {{site.data.keys.mf_cli }} がインストールされている必要があります。
+* { site.data.keys.product_adj }} Cordova プラグインがインストールされている必要があります。
 
-The best time to complete this procedure is after finishing your app development and are ready to deploy the app. If you run any of the following commands after you complete the web resources encryption procedure, the content that was encrypted becomes decrypted:
+この手順を実行する最適のタイミングは、アプリケーションの開発が終わってアプリケーションをデプロイする準備ができたときです。Web リソース暗号化手順を実行した後に以下のコマンドのいずれかを実行した場合、暗号化されたコンテンツが暗号化解除されます。
 
 * cordova prepare
 * cordova build
@@ -25,76 +25,79 @@ The best time to complete this procedure is after finishing your app development
 * mfpdev app webupdate
 * mfpdev app preview
 
-If you run one of the listed commands after you encrypt the web resources, you must complete this procedure again to encrypt the web resources.
+Web リソースを暗号化した後に上にリストされているコマンドのいずれかを実行した場合、以下の手順を再度実行して、Web リソースを暗号化する必要があります。
 
-1. Open a terminal window and navigate to the root directory of the Cordova app that you want to encrypt.
-2. Prepare the app by entering one of the following commands:
+1. ターミナル・ウィンドウを開き、暗号化する Cordova アプリケーションのルート・ディレクトリーにナビゲートします。
+2. 以下のいずれかのコマンドを入力して、アプリケーションを準備します。
     - cordova prepare
     - mfpdev app webupdate
-3. Complete one of the following procedures to encrypt the content:
-    - Enter the following command: `mfpdev app webencrypt`. **Tip:** You can view information about the `mfpdev app webencrypt` command by entering `mfpdev help app webencrypt`.
-    - You can also encrypt the web resources of your Cordova packages by adding the `mfpwebencrypt` flag to the `cordova compile` or to the `cordova build` command when you build your packages.
+3. 以下のいずれかの手順を実行して、コンテンツを暗号化します。
+    - 以下のコマンドを入力します。`mfpdev app webencrypt`。**ヒント:** `mfpdev help app webencrypt` と入力することで、`mfpdev app webencrypt` コマンドに関する情報を表示できます。
+    - Cordova パッケージのビルド時に `mfpwebencrypt` フラグを `cordova compile` コマンドまたは `cordova build` コマンドに追加することで、Cordova パッケージの Web リソースを暗号化することもできます。
+
         - `cordova compile -- --mfpwebencrypt` | `cordova build -- --mfpwebencrypt`
     <br/>
-    The operating system information in the **www** folder is replaced by a **resources.zip** file that contains the encrypted content.  
-    If your app is for the Android operating system and the **resources.zip** file is larger than 1 MB, the **resources.zip** file is divided into smaller 768 KB .zip files that are named **resources.zip.nnn**. The variable nnn is a number from 001 through 999.
-4. Test the application with the encrypted resources by using the emulator that is provided with the platform-specific tools. For example, you can use the emulator in Android Studio for Android, or Xcode for iOS.
+    **www** フォルダー内のオペレーティング・システム情報が、暗号化コンテンツを含んだ **resources.zip** ファイルに置き換えられます。  
+アプリケーションが Android オペレーティング・システム用であり、**resources.zip** ファイルが 1 MB より大きい場合、**resources.zip** ファイルは小さい 768 KB の .zip ファイルに分割され、各ファイルの名前は **resources.zip.nnn** になります。変数 nnn は、001 から 999 までの数字です。
+4. プラットフォーム固有のツールで提供されているエミュレーターによって、暗号化リソースを持つアプリケーションをテストします。例えば、Android の場合は Android Studio、iOS の場合は Xcode のエミュレーターを使用できます。
 
-**Note:** Do not use the following Cordova commands to test the application after you encrypt it:
+**注:** 暗号化後にアプリケーションをテストするために、以下の Cordova コマンドは使用しないでください。
 
 * `cordova run`
 * `cordova emulate`
 
-These commands refresh the content that was encrypted in the www folder, and saves it again as decrypted content. If you use these commands, remember to complete the procedure again to encrypt it before you publish the app.
+上記のコマンドを使用すると、www フォルダーで暗号化されたコンテンツが更新され、暗号化が解除されたコンテンツとして再度保存されてしまいます。上記コマンドを使用した場合には、アプリケーションを公開する前に、必ず、前述の手順を再度実行して暗号化してください。
 
-### Enabling the web resources checksum feature
+### Web リソース・チェックサム機能の有効化
 {: #enabling-the-web-resources-checksum-feature }
-When it is enabled, the web resources checksum feature compares the original web resources of an app when it is started to a stored baseline that was captured the first time that app was started. This is a good way of identifying any differences in the app that might indicate that the app was modified. This procedure is compatible with the Direct Update feature.
+Web リソース・チェックサム機能は、有効になっている場合、アプリケーションの開始時におけるその元の Web リソースを、そのアプリケーションが初めて開始されたときにキャプチャーされた保管済みベースラインに対して比較します。
+これは、アプリケーションが変更されたことを示す可能性がある、アプリケーションの差分を特定する優れた方法です。この手順は、ダ
+イレクト・アップデート機能と互換性があります。
 
-**Prerequisites:**
+**前提条件:**
 
-* You must have the Cordova development tools installed. This example uses the Apache Cordova CLI. If you use other Cordova development tools, some of your steps will be different. Refer to your Cordova tool documentation for instructions.
-* You must have the {{ site.data.keys.mf_cli }} installed. 
-* You must have the { site.data.keys.product_adj }} plug-in installed.
-* You must add the platform to your Cordova project before you can enable the web resources checksum feature for that operating system by entering the `cordova platform add [android|ios|windows|browser]` command.
+* Cordova 開発ツールがインストールされている必要があります。この例では、Apache Cordova CLI を使用します。他の Cordova 開発ツールを使用する場合は、手順が一部異なります。手順については、ご使用の Cordova ツールの資料を参照してください。
+* {{site.data.keys.mf_cli }} がインストールされている必要があります。 
+* { site.data.keys.product_adj }} プラグインがインストールされている必要があります。
+* 対象オペレーティング・システムの Web リソース・チェックサム機能を有効にするには、その前に、`cordova platform add [android|ios|windows|browser]` コマンドを入力して、当該プラットフォームを Cordova プロジェクトに追加しておく必要があります。
 
-To enable the web resources checksum feature for a Cordova app, complete the following steps:
+Cordova アプリケーションの Web リソース・チェックサム機能を有効にするには、以下のステップを実行します。
 
-1. In a terminal window, navigate to the root directory of your target app.
-2. Enter the following command to enable the web resources checksum feature for an operating system environment of your Cordova app:
+1. ターミナル・ウィンドウで、ターゲット・アプリケーションのルート・ディレクトリーにナビゲートします。
+2. 以下のコマンドを入力して、ご使用の Cordova アプリケーションのオペレーティング・システム環境の Web リソース・チェックサム機能を有効にします。
 
    ```bash
    mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_test_web_resources_checksum true
    ```
 
-   For example:  
+   例えば、次のとおりです。  
     
    ```bash
    mfpdev app config android_security_test_web_resources_checksum true
    ```
 
-   You can disable the feature by replacing **true** in the command with **false**.
+   コマンドで **true** を **false** に置き換えることで、この機能を無効にすることができます。
    
-   > **Tip:** You can view information about the `mfpdev app config` command by entering `mfpdev help app config`.
+   > **ヒント:** `mfpdev help app config` と入力することで、`mfpdev app config` コマンドに関する情報を表示できます。
     
-3. Enter the following command to identify the types of files that you want to ignore during the checksum test:
+3. 以下のコマンドを入力して、チェックサム・テスト時に無視するファイルのタイプを指定します。
 
    ```bash
    mfpdev app config [android|ios|windows10|windows8|windowsphone8]_security_ignore_file_extensions [ file_extension1,file_extension2 ]
    ```
     
-   Multiple extensions must be separated by a comma with no spaces between them. For example:
+   複数の拡張子は、間にスペースを入れず、コンマで区切る必要があります。例えば、次のとおりです。
     
    ```bash
    mfpdev app config android_security_ignore_file_extensions jpg,png,pdf
    ```
     
-**Important:** Running this command overwrites the values that are set.
+**重要:** このコマンドを実行すると、設定されている値が上書きされます。
 
-The more files that the web resources checksum scans for its test, the longer it takes for the app to open. You can specify the extension of a file type to skip, which might improve the speed of starting the app.
+Web リソース・チェックサムがテストのためにスキャンするファイルが増えるほど、アプリケーションを開くためにかかる時間が長くなります。スキップするファイル・タイプの拡張子を指定できます。これにより、アプリケーションの開始速度が改善される可能性があります。
 
-Your app has the web resources checksum feature enabled.
+アプリケーションで Web リソース・チェックサム機能が有効になりました。
 
-1. Run the following command to integrate the changes into your app: `cordova prepare`
-2. Build your app by entering the following command: `cordova build`
-3. Run your app by entering the following command: `cordova run`
+1. 次のコマンドを実行して、変更をアプリケーションに組み込みます。`cordova prepare`
+2. 次のコマンドを入力して、アプリケーションをビルドします。`cordova build`
+3. 次のコマンドを入力して、アプリケーションを実行します。`cordova run`

@@ -1,50 +1,51 @@
 ---
 layout: tutorial
-title: Debugging JavaScript (Cordova, Web) Applications
-breadcrumb_title: Debugging applications        
+title: JavaScript (Cordova、Web) アプリケーションのデバッグ
+breadcrumb_title: アプリケーションのデバッグ        
 relevantTo: [javascript]
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Debugging is a process that consists of finding the cause of defects in applicative code and application user interface.
+デバッグは、応用コードおよびアプリケーション・ユーザー・インターフェースにおける欠陥の原因究明からなるプロセスです。
 
-* JavaScript (Cordova, Web) applications consist of web-based resources such as HTML, JavaScript &amp; CSS. Cordova application may also contain optional native code (written in Java, Objective-C, Swift, C#, ...).
-* Native code can be debugged by using standard tools that are provided by the platform SDK, such as XCode, Android, or Microsoft Visual Studio.
+* JavaScript (Cordova、Web) アプリケーションは、HTML、JavaScript、および CSS などの Web ベースのリソースからなります。Cordova アプリケーションには、(Java、Objective-C、Swift、C# などで書かれた) オプションのネイティブ・コードを含めることもできます。
+* プラットフォーム SDK で提供される標準のツール (XCode、Android、Microsoft Visual Studio など) を使用して、ネイティブ・コードをデバッグすることができます。
 
-This tutorial explores various approaches to debugging a JavaScript-based application, whether running locally via an Emulator, Simulator, physica device or in a web browser.
+このチュートリアルでは、エミュレーター、シミュレーター、物理デバイス、または Web ブラウザーを介してローカルで実行されている JavaScript ベースのアプリケーションをデバッグするためのさまざまなアプローチを説明します。 
 
-> Learn more about Cordova debugging and testing in the Cordova website: [Debugging applications](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device).
+> Cordova のデバッグおよびテストについて詳しくは、Cordova Web サイト [アプリケーションのデバッグ](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)を参照してください。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
 
-* [Debugging with the {{ site.data.keys.mf_mbs }}](#debugging-with-the-mobile-browser-simulator)
-* [Debugging with Ripple](#debugging-with-ripple)
-* [Debugging with iOS Remote Web Inspector](#debugging-with-ios-remote-web-inspector)
-* [Debugging with Chrome Remote Web Inspector](#debugging-with-chrome-remote-web-inspector)
-* [Debugging with {{ site.data.keys.product_adj }} Logger](#debugging-with-mobilefirst-logger)
-* [Debugging with WireShark](#debugging-with-wireshark)
+* [{{site.data.keys.mf_mbs }} によるデバッグ](#debugging-with-the-mobile-browser-simulator)
+* [Ripple によるデバッグ](#debugging-with-ripple)
+* [iOS Remote Web Inspector によるデバッグ
+](#debugging-with-ios-remote-web-inspector)
+* [Chrome Remote Web Inspector によるデバッグ](#debugging-with-chrome-remote-web-inspector)
+* [{{site.data.keys.product_adj }} ロガーによるデバッグ](#debugging-with-mobilefirst-logger)
+* [WireShark によるデバッグ](#debugging-with-wireshark)
 
-## Debugging with the {{ site.data.keys.mf_mbs }}
+## {{site.data.keys.mf_mbs }} によるデバッグ
 {: #debugging-with-the-mobile-browser-simulator }
-You can use the {{ site.data.keys.product_full }} {{ site.data.keys.mf_mbs }} (MBS) to preview and debug {{ site.data.keys.product_adj }} applications.  
-To use the MBS, open a **Command-line** window and run the command:
+{{site.data.keys.product_full }} {{site.data.keys.mf_mbs }} (MBS) を使用して、{{site.data.keys.product_adj }} アプリケーションをプレビューし、デバッグできます。  
+MBS を使用するには、**コマンド・ライン**・ウィンドウを開き、次のコマンドを実行します。
 
 ```bash
-mfpdev app preview
-```
+    mfpdev app preview
+    ```
 
-If your application consists of more than one platform - specify the platform to preview:
+アプリケーションが複数のプラットフォームから成る場合は、以下のようにしてプレビューするプラットフォームを指定します。
 
 ```bash
 mfpdev app preview -p <platform>
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The preview feature has several known limitations. Your application may not behave as expected during preview. For example, it bypasses security features using a confidential client, so challenge handlers are not triggered. 
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** プレビュー・フィーチャーにはいくつかの既知の制限があります。アプリケーションは、プレビュー中は予想どおりに動作しない場合があります。例えば、機密クライアントを使用してセキュリティー・フィーチャーを迂回します。したがって、チャレンジ・ハンドラーはトリガーされません。
 
-### {{ site.data.keys.mf_mbs }}
+### {{site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator}
 
 ![MBS](mbs.png)
@@ -54,77 +55,77 @@ mfpdev app preview -p <platform>
 
 ![MBS](simple.png)
 
-> Learn more about the {{ site.data.keys.mf_cli }} in the [Using {{ site.data.keys.mf_cli }} to manage {{ site.data.keys.product_adj }} artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> {{site.data.keys.mf_cli }} については、[『{{site.data.keys.mf_cli }} を使用した{{site.data.keys.product_adj }} 成果物の管理』](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts)チュートリアルを参照してください。
 
-## Debugging with Ripple
+## Ripple によるデバッグ
 {: #debugging-with-ripple }
-Apache Ripple™ is a web based mobile environment simulator for debugging mobile web applications.  
-It lets you run a Cordova application in your browser and fake various Cordova features. For example, it can fake the camera API by letting you select a picture locally from your computer.  
+Apache Ripple™ は、モバイル Web アプリケーションをデバッグするための、Web ベースのモバイル環境シミュレーターです。  
+Ripple を使用すると、ご使用のブラウザーで Cordova アプリケーションを実行して、さまざまな Cordova フィーチャーをシュミレートできます。例えば、ご使用のコンピューターからローカルでピクチャーを選択できるようにすることで、カメラ  API をシュミレートできます。  
 
-### Installing Ripple
+### Ripple のインストール
 {: #installing-ripple }
 
-1. Download and install the latest version of [Node.js](https://nodejs.org/en/).
-You can verify Node.js installation by typing `npm -v` in terminal.
-2. Open terminal and type:
+1. [Node.js](https://nodejs.org/en/) の最新バージョンをダウンロードしてインストールします。Node.js インストール済み環境を検証するには、端末で `npm -v` と入力します。
+2. 端末を開き、以下を入力します。
 
    ```bash
    npm install -g ripple-emulator
    ```
 
-### Running application using Ripple
+### Ripple を使用したアプリケーションの実行
 {: #running-application-using-ripple }
-After Ripple is installed open terminal from your Cordova project location and type:
+Ripple をインストールした後に、Cordova プロジェクトの場所から端末を開き、以下を入力します。
 
 ```bash
 ripple emulate
 ```
 
-![Ripple emulator](Ripple2.png)
+![Ripple エミュレーター](Ripple2.png)
 
-> More information about Apache Ripple™ can be found on the [Apache Ripple page](http://ripple.incubator.apache.org/) or [npm ripple-emulator page](https://www.npmjs.com/package/ripple-emulator).
+> Apache Ripple™ の詳細情報は、[Apache Ripple ページ](http://ripple.incubator.apache.org/)または [npm ripple-emulator ページ](https://www.npmjs.com/package/ripple-emulator)にあります。
 
-## Debugging with iOS Remote Web Inspector
+## iOS Remote Web Inspector によるデバッグ
+
 {: #debugging-with-ios-remote-web-inspector }
-Starting iOS 6, Apple introduced a remote [Web Inspector](https://developer.apple.com/safari/tools/) for debugging web applications on iOS devices. To debug, make sure that the device (or iOS Simulator) has the **Private Browsing** option turned off.  
+iOS 6 以降、Apple は iOS デバイス上で Web アプリケーションをデバッグするためのリモート [Web インスペクター](https://developer.apple.com/safari/tools/)を導入しました。デバッグを行うためには、ご使用のデバイス (または iOS シミュレーター) で**「プライベートブラウズ」**オプションがオフになっていることを確認してください。  
 
-1. To enable Web Inspector on the device, Tap **Settings > Safari > Advanced > Web Inspector**.
-2. To start debugging, connect the iOS device to a Mac, or start the simulator.
-3. In Safari, go to **Preferences > Advanced**, and select the **Show Develop menu in menu bar** checkbox.
-4. In Safari, select **Develop > [your device ID] > [your application HTML file]**.
+1. デバイス上の Web インスペクターを有効にするには、**「設定」>「Safari」>「詳細」>「Web インスペクター」**をタップします。
+2. デバッグを開始するには、iOS デバイスを Mac に接続するか、シミュレーターを開始します。
+3. Safari で、**「環境設定」>「詳細」**に移動して、**「メニューバーに "開発" メニューを表示」**チェック・ボックスを選択します。
+4. Safari で、**「開発」> [ご使用のデバイス ID] > [ご使用のアプリケーション HTML ファイル]**を選択します。
 
-![Safari Debugging](safari-debugging.png)
+![Safari デバッグ](safari-debugging.png)
 
-## Debugging with Chrome Remote Web Inspector
+## Chrome Remote Web Inspector によるデバッグ
 {: #debugging-with-chrome-remote-web-inspector }
-Using Google Chrome it is possible to remotely inspect web applications on Android devices or the Android Emulator.  
-This action requires Android 4.4 or later, Chrome 32 or later. Additionally, in the `AndroidManifest.xml` file, `targetSdkVersion = 19` or above is required. In the `project.properties` file, `target = 19` or above is required.
+Google Chrome を使用すると、Android デバイスまたは Android エミュレーター上の Web アプリケーションをリモート側から検査することができます。  
+このアクションを実行するには、Android 4.4 以降、Chrome 32 以降が必要です。さらに、`AndroidManifest.xml` ファイルで、`targetSdkVersion = 19` 以上にする必要があります。また、`project.properties` ファイルで、`target = 19` 以上にする必要があります。
 
-1. Start the application in the Android Emulator or a connected device.
-2. In Chrome, enter the following URL in the address bar: `chrome://inspect`.
-3. Press **Inspect** for the relevant application.
+1. Android Emulator または接続されたデバイスで、アプリケーションを開始します。
+2. Chrome で、アドレス・バーに URL `chrome://inspect` を入力します。
+3. 関連アプリケーションに対して**「検査 (Inspect)」**を押します。
 
 ![Chrome Remote Web Inspector](Chrome-Remote-Web-Inspector.png)
 
-### Debugging with {{ site.data.keys.product_adj }} Logger
+### {{site.data.keys.product_adj }} ロガーによるデバッグ
 {: #debugging-with-mobilefirst-logger }
-{{ site.data.keys.product }} provides a `WL.Logger` object that can be used to print log messages.  
-`WL.Logger` contains several levels of logging: `WL.Logger.info`, `WL.Logger.debug`, `WL.Logger.error`.
+{{site.data.keys.product }} には、ログ・メッセージを出力するために使用できる、`WL.Logger` オブジェクトが用意されています。  
+`WL.Logger` には、複数のレベルのロギング (`WL.Logger.info`、`WL.Logger.debug`、`WL.Logger.error`) が含まれています。
 
-> For more information, see the documentation for `WL.Logger` in the API reference part of the user documentation.
+> 詳しくは、ユーザー文書の API リファレンスの部分にある `WL.Logger` についての記載を参照してください。
 
-**Inspecting the log:**
+**ログの検査:**
 
-* **Developer console** when previewing a platform using a Simulator or Emulator.
-* **LogCat** when it is running on Android device
-* **XCode Console** when it is running on an iOS device
-* **Visual Studio Output** when it is running on a Windows devices.
+* シミュレーターまたはエミュレーターを使用してプラットフォームをプレビューする場合は **開発者コンソール**
+* Android デバイス上で実行する場合は **LogCat**
+* iOS デバイス上で実行する場合は **XCode コンソール**
+* Windows デバイス上で実行する場合は **Visual Studio の出力**
 
-### Debugging with WireShark
+### WireShark によるデバッグ
 {: #debugging-with-wireshark }
-**Wireshark is a network protocol analyzer** that can be used to see what happens in the network.  
-You can use filters to follow only what is required.  
+Wireshark は、ネットワークで発生していることを確認するために使用できる**ネットワーク・プロトコル・アナライザー**です。  
+必要なものだけを追跡するようフィルターを掛けることができます。  
 
-> For more information, see the [WireShark](http://www.wireshark.org) website.
+> 詳しくは、[WireShark](http://www.wireshark.org) Web サイトを参照してください。
 
-![Wireshark](wireshark.png)
+![WireShark](wireshark.png)

@@ -1,74 +1,74 @@
 ---
 layout: tutorial
-title: Step Up Authentication
-breadcrumb_title: Step Up Authentication
+title: ステップアップ認証
+breadcrumb_title: ステップアップ認証
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 downloads:
-  - name: Download Cordova project
+  - name: Cordova プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80
-  - name: Download iOS Swift project
+  - name: iOS Swift プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80
-  - name: Download Android project
+  - name: Android プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80
-  - name: Download Win8 project
+  - name: Win8 プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80
-  - name: Download Win10 project
+  - name: Win10 プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80
-  - name: Download Web project
+  - name: Web プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: SecurityCheck Maven プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Resources can be protected by several security checks. In such a scenario, the {{ site.data.keys.mf_server }} sends all the relevant challenges simultaneously to the application.  
+リソースは、いくつかのセキュリティー検査によって保護されている場合があります。そのようなシナリオでは、{{site.data.keys.mf_server }} は必要なチャレンジをすべて同時にアプリケーションに送信します。  
 
-A security check can also be dependent on another security check. Therefore, it is important to be able to control when the challenges are sent.  
-For example, this tutorial describes an application that has two resources protected by a user name and password, where the second resource also requires an additional PIN code.
+あるセキュリティー検査が別のセキュリティー検査に依存している場合もあります。したがって、チャレンジが送信されるタイミングを制御できることが重要になります。  
+例えば、このチュートリアルで説明するアプリケーションは 2 つのリソースを使用します。リソースはいずれもユーザー名とパスワードによって保護されますが、2 番目のリソースは PIN コードも追加で必要とします。
 
-**Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) and [UserAuthenticationSecurityCheck](../user-authentication) tutorials before continuing.
+**前提条件:** 続ける前に、[CredentialsValidationSecurityCheck](../credentials-validation) および [UserAuthenticationSecurityCheck](../user-authentication) のチュートリアルをお読みください。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Referencing a Security Check](#referencing-a-security-check)
-* [State Machine](#state-machine)
-* [The Authorize Method](#the-authorize-method)
-* [Challenge Handlers](#challenge-handlers)
-* [Sample Applications](#sample-applications)
+* [セキュリティー検査の参照](#referencing-a-security-check)
+* [状態マシン](#state-machine)
+* [Authorize メソッド](#the-authorize-method)
+* [チャレンジ・ハンドラー](#challenge-handlers)
+* [サンプル・アプリケーション](#sample-applications)
 
-## Referencing a Security Check
+## セキュリティー検査の参照
 {: #referencing-a-security-check }
-Create two security checks: `StepUpPinCode` and `StepUpUserLogin`. Their initial implementation is the same as the implementation described in the [Credentials Validation](../credentials-validation/security-check/) and [User Authentication](../user-authentication/security-check/) tutorials.
+2 つのセキュリティー検査、`StepUpPinCode` と `StepUpUserLogin` を作成します。これらの初期の実装は、[資格情報の検証](../credentials-validation/security-check/)および[ユーザー認証](../user-authentication/security-check/)のチュートリアルで説明している実装と同じものです。
 
-In this example, `StepUpPinCode` **depends on** `StepUpUserLogin`. The user should be asked to enter a PIN code only after a successful login to `StepUpUserLogin`. For this purpose, `StepUpPinCode` must be able to **reference** the `StepUpUserLogin` class.  
+この例の場合、`StepUpPinCode` は、`StepUpUserLogin` に**依存**します。ユーザーは、`StepUpUserLogin` に正常ログインできた場合に限り、PIN コードの入力を求められます。このような目的のため、`StepUpPinCode` は、`StepUpUserLogin` クラスを**参照**できなければなりません。  
 
-The {{ site.data.keys.product_adj }} framework provides an annotation to inject a reference.  
-In your `StepUpPinCode` class, at the class level, add:
+{{site.data.keys.product_adj }} フレームワークは、参照を注入するためのアノテーションを提供しています。  
+`StepUpPinCode` クラス内に、クラス・レベルで以下を追加します。
 
 ```java
 @SecurityCheckReference
 private transient StepUpUserLogin userLogin;
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Both security check implementations need to be bundled inside the same adapter.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** 両方のセキュリティー検査の実装が、同じアダプター内にバンドルされている必要があります。
 
-To resolve this reference, the framework looks up for a security check with the appropriate class, and injects its reference into the dependent security check.  
-If there are more than one security check of the same class, the annotation has an optional `name` parameter, which you can use to specify the unique name of the referred check.
+この参照を解決するために、フレームワークは該当クラスのセキュリティー検査を検索し、その参照を従属セキュリティー検査に注入します。  
+同じクラスのセキュリティー検査が複数存在する場合、アノテーションにはオプションの `name` パラメーターが付きます。このパラメーターを使用して、参照する検査の固有の名前を指定できます。
 
-## State machine
+## 状態マシン
 {: #state-machine }
-All classes that extend `CredentialsValidationSecurityCheck` (which includes both `StepUpPinCode` and `StepUpUserLogin`) inherit a simple state machine. At any given moment, the security check can be in one of these states:
+`CredentialsValidationSecurityCheck` を継承するクラスはすべて (これには、`StepUpPinCode` と `StepUpUserLogin` の両方が含まれます)、シンプルな状態マシンを継承します。任意の一時点において、セキュリティー検査は以下のいずれかの状態になります。
 
-- `STATE_ATTEMPTING`: A challenge has been sent and the security check is waiting for the client response. The attempt count is maintained during this state.
-- `STATE_SUCCESS`: The credentials have been successfully validated.
-- `STATE_BLOCKED`: The maximum number of attempts has been reached and the check is in locked state.
+- `STATE_ATTEMPTING`: チャレンジが送信され、セキュリティー検査はクライアント応答を待っています。この状態の間は、試行カウントが維持されます。
+- `STATE_SUCCESS`: 資格情報が正常に検証されました。
+- `STATE_BLOCKED`: 最大試行回数に達したため、検査はロック状態です。
 
-The current state can be obtained using the inherited `getState()` method.
+現在の状態は、継承した `getState()` メソッドを使用して取得できます。
 
-In `StepUpUserLogin`, add a convenience method to check whether the user is currently logged-in.
-This method is used later in the tutorial.
+`StepUpUserLogin` 内に、ユーザーが現在ログイン状態であるかどうかをチェックする便利メソッドを追加します。
+このメソッドは、後からチュートリアル内で使用します。
 
 ```java
 public boolean isLoggedIn(){
@@ -76,12 +76,12 @@ public boolean isLoggedIn(){
 }
 ```
 
-## The Authorize Method
+## Authorize メソッド
 {: #the-authorize-method }
-The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, such as sending a challenge or validating the request.  
-The class `CredentialsValidationSecurityCheck`, which `StepUpPinCode` extends, already includes an implementation for this method. However, in this case, the goal is to check the state of `StepUpUserLogin` before starting the default behavior of the `authorize` method.
+`SecurityCheck` インターフェースによって、`authorize` というメソッドが定義されます。このメソッドが、チャレンジの送信や要求の検証など、セキュリティー検査のメイン・ロジックを実装する責任を負います。  
+`StepUpPinCode` が継承するクラス `CredentialsValidationSecurityCheck` には、このメソッドの実装が既に組み込まれています。しかし、このケースでは、`authorize` メソッドのデフォルトの振る舞いを開始する前に、`StepUpUserLogin` の状態をチェックするという目標があります。
 
-To do so, **override** the `authorize` method:
+そのために、`authorize` メソッドを以下のように**オーバーライド**します。
 
 ```java
 @Override
@@ -92,14 +92,14 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-This implementation checks the current state of the `StepUpUserLogin` reference:
+この実装は、`StepUpUserLogin` 参照の現在の状態をチェックします。
 
-* If the state is `STATE_SUCCESS` (the user is logged in), the normal flow of the security check continues.
-* If `StepUpUserLogin` is in any other state, nothing is done: no challenge is sent, neither success nor failure.
+* 状態が `STATE_SUCCESS` の場合は (ユーザーがログイン状態)、セキュリティー検査の通常フローが続きます。
+* `StepUpUserLogin` がそれ以外の状態の場合は、何も行われません。すなわち、チャレンジは送信されず、成功も失敗もありません。
 
-Assuming the resource is protected by **both** `StepUpPinCode` and `StepUpUserLogin`, this flow makes sure that the user is logged in before being prompted for the secondary credential (PIN code). The client never receives both challenges at the same time, even though both security checks are activated.
+リソースが `StepUpPinCode` と `StepUpUserLogin` の**両方**によって保護されているという前提で、このフローは、ユーザーに 2 番目の資格情報 (PIN コード) を求めるプロンプトを出す前に、ユーザーがログイン状態であることを確認します。両方のセキュリティー検査がアクティブになっても、クライアントが両方のチャレンジを同時に受け取ることはありません。
 
-Alternatively, if the resource is protected **only** by `StepUpPinCode` (the framework will activate only this security check), you can change the `authorize` implementation to trigger `StepUpUserLogin` manually:
+代わりに、リソースが `StepUpPinCode` **のみ**によって保護される (フレームワークがこのセキュリティー検査のみをアクティブにする) 場合には、`authorize` 実装を変更して、手動で `StepUpUserLogin` をトリガーできます。
 
 ```java
 @Override
@@ -114,11 +114,11 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-## Retrieve current user
+## 現行ユーザーの取得
 {: #retrieve-current-user }
-In the `StepUpPinCode` security check, you are interested in knowing the current user's ID so that you can look up this user's PIN code in some database.
+`StepUpPinCode` セキュリティー検査では、現行ユーザーの PIN コードを所定のデータベース内でルックアップできるように、現行ユーザーの ID を知る必要があります。
 
-In the `StepUpUserLogin` security check, add the following method to obtain the current user from the **authorization context**:
+`StepUpUserLogin` セキュリティー検査内に、以下のメソッドを追加して、**許可コンテキスト**から現行ユーザーを取得します。
 
 ```java
 public AuthenticatedUser getUser(){
@@ -126,7 +126,7 @@ public AuthenticatedUser getUser(){
 }
 ```
 
-In `StepUpPinCode`, you can then use the `userLogin.getUser()` method to get the current user from the `StepUpUserLogin` security check, and check the valid PIN code for this specific user:
+これで、`StepUpPinCode` 内で `userLogin.getUser()` メソッドを使用して、`StepUpUserLogin` セキュリティー検査から現行ユーザーを取得し、この特定のユーザーの有効な PIN コードをチェックできます。
 
 ```java
 @Override
@@ -149,29 +149,29 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Challenge Handlers
+## チャレンジ・ハンドラー
 {: #challenge-handlers }
-On the client side, there are no special APIs to handle multiple steps. Rather, each challenge handler handles its own challenge. In this example, you must register two separate challenge handlers: one to handle challenges from `StepUpUserLogin` and one to handle challenges from `StepUpPincode`.
+クライアント・サイドには、複数のステップを処理する特別な API はありません。代わりに、各チャレンジ・ハンドラーがそれぞれのチャレンジを処理します。この例の場合、2 つのチャレンジ・ハンドラーを個別に登録する必要があります。1 つは、`StepUpUserLogin` からのチャレンジを処理するもの、もう 1 つは、`StepUpPincode` からのチャレンジを処理するものです。
 
-<img alt="Step-up sample application" src="sample_application.png" style="float:right"/>
-## Sample Applications
+<img alt="ステップアップ・サンプル・アプリケーション" src="sample_application.png" style="float:right"/>
+## サンプル・アプリケーション
 {: #sample-applications }
-### Security check
+### セキュリティー検査
 {: #security-check }
-The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the SecurityChecks project under the StepUp Maven project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+`StepUpUserLogin` および `StepUpPinCode` セキュリティー検査は、StepUp Maven プロジェクトの下にある SecurityChecks プロジェクトで入手できます。
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) してセキュリティー検査 Maven プロジェクトをダウンロードします。
 
-### Applications
+### アプリケーション
 {: #applications }
-Sample applications are available for iOS (Swift), Android, Windows 8.1/10, Cordova, and Web.
+iOS (Swift)、Android、Windows 8.1/10、Cordova、および Web 用のサンプル・アプリケーションを使用できます。
 
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80) the Cordova project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80) the iOS Swift project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80) the Android project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80) the Windows 8.1 project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80) the Windows 10 project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80) the Web app project.
+* [ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80) して Cordova プロジェクトをダウンロードします。
+* [ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80) iOS Swift プロジェクトをダウンロードします。
+* [ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80) して Android プロジェクトをダウンロードします。
+* [ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80) して Windows 8.1 プロジェクトをダウンロードします。
+* [ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80) して Windows 10 プロジェクトをダウンロードします。
+* [ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80) して Web アプリケーション・プロジェクトをダウンロードします。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

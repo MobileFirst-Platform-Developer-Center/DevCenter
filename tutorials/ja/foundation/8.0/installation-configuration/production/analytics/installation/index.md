@@ -1,34 +1,39 @@
 ---
 layout: tutorial
-title: MobileFirst Analytics Server Installation Guide
-breadcrumb_title: Installation Guide
+title: MobileFirst Analytics Server インストール・ガイド
+breadcrumb_title: インストール・ガイド
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.mf_analytics_server }} is implemented and shipped as a set of two Java EE standard web application archive (WAR) files, or one enterprise application archive (EAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
+{{site.data.keys.mf_analytics_server }} は、2 つの Java EE 標準 Web アプリケーション・アーカイブ (WAR) ファイルとして、または 1 つのエンタープライズ・アプリケーション・アーカイブ (EAR) ファイルとして実装されて出荷されます。そのため、サポートされるアプリケーション・サーバーである WebSphere Application Server、WebSphere Application Server Liberty、または Apache Tomcat (WAR ファイルのみ) のいずれかにインストール可能です。
 
-{{ site.data.keys.mf_analytics_server }} uses an embedded Elasticsearch library for the data store and cluster management. Because it intends to be a highly performant in-memory search and query engine, requiring fast disk I/O, you must follow some production system requirements. In general, you are most likely to run out of memory and disk (or discover that disk I/O is your performance bottleneck) before CPU becomes a problem. In a clustered environment, you want a fast, reliable, co-located cluster of nodes.
+{{site.data.keys.mf_analytics_server }}
+では、データ・ストアとクラスター管理に組み込み Elasticsearch ライブラリーを使用します。
+これは、高速ディスク入出力を要求する高性能のメモリー内検索および照会エンジンを目指すため、
+いくつかの実動システム要件に従う必要があります。
+一般的に、CPU が問題となる前に、メモリーとディスクが不足する (または、ディスク入出力がパフォーマンス・ボトルネックであると分かる) 可能性が高くなります。
+クラスター環境では、高速で、信頼性が高く、同一場所に設置されたノード・クラスターが必要です。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [System requirements](#system-requirements)
-* [Capacity considerations](#capacity-considerations)
-* [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty](#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
-* [Installing {{ site.data.keys.mf_analytics }} on Tomcat](#installing-mobilefirst-analytics-on-tomcat)
-* [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server](#installing-mobilefirst-analytics-on-websphere-application-server)
-* [Installing {{ site.data.keys.mf_analytics }} with Ant tasks](#installing-mobilefirst-analytics-with-ant-tasks)
-* [Installing {{ site.data.keys.mf_analytics_server }} on servers running previous versions](#installing-mobilefirst-analytics-server-on-servers-running-previous-versions)
+* [システム要件](#system-requirements)
+* [容量に関する考慮事項](#capacity-considerations)
+* [{{site.data.keys.mf_analytics }} の WebSphere Application Server Liberty へのインストール](#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
+* [{{site.data.keys.mf_analytics }} の Tomcat へのインストール](#installing-mobilefirst-analytics-on-tomcat)
+* [{{site.data.keys.mf_analytics }} の WebSphere Application Server へのインストール](#installing-mobilefirst-analytics-on-websphere-application-server)
+* [Ant タスクを使用した {{site.data.keys.mf_analytics }} のインストール](#installing-mobilefirst-analytics-with-ant-tasks)
+* [以前のバージョンを実行しているサーバーへの {{site.data.keys.mf_analytics_server }} のインストール](#installing-mobilefirst-analytics-server-on-servers-running-previous-versions)
 
-## System requirements
+## システム要件
 {: #system-requirements }
 
-### Operating systems
+### オペレーティング・システム
 {: #operating-systems }
 * CentOS/RHEL 6.x/7.x
-* Oracle Enterprise Linux 6/7 with RHEL Kernel only
+* Oracle Enterprise Linux 6/7 (RHEL カーネルのみ)
 * Ubuntu 12.04/14.04
 * SLES 11/12
 * OpenSuSE 13.2
@@ -41,73 +46,105 @@ weight: 1
 * Oracle JVM 1.8u20+
 * IcedTea OpenJDK 1.7.0.55+
 
-### Hardware
+### ハードウェア
 {: #hardware }
-* RAM: More RAM is better, but no more than 64 GB per node. 32 GB and 16 GB are also acceptable. Less than 8 GB requires many small nodes in the cluster, and 64 GB is wasteful and problematic due to the way Java uses memory for pointers.
-* Disk: Use SSDs when possible, or fast spinning traditional disks in RAID 0 configuration if SSDs are not possible.
-* CPU: CPU tends not to be the performance bottleneck. Use systems with 2 to 8 cores.
-* Network: When you cross into the need to scale out horizontally, you need a fast, reliable, data center with 1 GbE to 10 GbE supported speeds.
+* RAM: RAM は大きいほうがよいですが、ノード当たり 64 GB 以下です。
+32 GB と 16 GB も許容されます。
+8 GB 未満では、クラスターに多くの小さなノードが必要です。64 GB は無駄で、Java がポインターにメモリーを使用するしくみの理由で問題があります。
+* ディスク: 可能な場合は SSD を使用します。あるいは、SSD が可能でなければ高速回転の従来型ディスクを RAID 0 構成で使用します。
+* CPU: CPU は、傾向としてパフォーマンス・ボトルネックになりません。2 コアから 8 コアのシステムを使用します。
+* ネットワーク: 水平方向のスケールアウトが必要になる場合は、1 GbE から 10 GbE の速度をサポートする、高速で、信頼性が高いデータ・センターが必要です。
 
-### Hardware configuration
+### ハードウェア構成
 {: #hardware-configuration }
-* Give your JVM half of the available RAM, but do not cross 32 GB
-    * Setting the **ES\_HEAP\_SIZE** environment variable to 32g.
-    * Setting the JVM flags by using -Xmx32g -Xms32g.
-* Turn off disk swap. Allowing the operating system to swap heap on and off disk significantly degrades performance.
-    * Temporarily: `sudo swapoff -a`
-    * Permanently: Edit **/etc/fstab** according to the operating system documentation.
-    * If neither option is possible, set the Elasticsearch option **bootstrap.mlockall: true** (this value is the default in the embedded Elasticsearch instance).
-* Increase the allowed open file descriptors.
-    * Linux typically limits a per-process number of open file descriptors to a small 1024.
-    * Consult your operating system documentation for how to permanently increase this value to something much larger, like 64,000.
-* Elasticsearch also uses a mix of NioFS and MMapFS for the various files. Increase the maximum map count so plenty of virtual memory is available for mmapped files.
-    * Temporarily: `sysctl -w vm.max_map_count=262144`
-    * Permanently: Modify the **vm.max\_map\_count** setting in your **/etc/sysctl.conf**.
-* If you use BSDs and Linux, ensure that your operating system I/O scheduler is set to **deadline** or **noop**, not **cfq**.
+* JVM には、使用可能な RAM の半分を設定します。ただし、32 GB を超えないでください。
+    * **ES\_HEAP\_SIZE** 環境変数を 32g に設定します。
+    * -Xmx32g -Xms32g を使用して JVM フラグを設定します。
+* ディスク・スワップをオフにします。
+オペレーティング・システムがヒープをディスクとの間でスワップできるようにすると、著しくパフォーマンスが低下します。
+    * 一時的な設定: `sudo swapoff -a`
+    * 永久的な設定: オペレーティング・システムの資料に従って、**/etc/fstab** を編集します。
+    * どちらの選択肢も可能でない場合、Elasticsearch オプションの **bootstrap.mlockall:
+true** を設定します (この値は、組み込み Elasticsearch インスタンスのデフォルトです)。
+* 許容されるオープン・ファイル記述子の数を増やします。
+    * Linux では通常、プロセス当たりのオープン・ファイル記述子の数を小さい 1024 に制限しています。
+    * この値を永久に大幅に増やす (64,000 など) 方法について、ご使用のオペレーティング・システムの資料を調べてください。
+* Elasticsearch では、さまざまなファイルに NioFS と MMapFS のミックスも使用します。
+mmap されたファイルに多くの仮想メモリーが使用可能になるように、最大マップ・カウントを増やします。
+    * 一時的な設定: `sysctl -w vm.max_map_count=262144`
+    * 永久的な設定: **/etc/sysctl.conf** で **vm.max\_map\_count** 設定を変更します。
+* BSD と Linux を使用する場合は、必ず、オペレーティング・システム入出力スケジューラーを **cfq** ではなく、**deadline** または **noop** に設定してください。
 
-## Capacity considerations
+## 容量に関する考慮事項
 {: #capacity-considerations }
-Capacity is the single-most common question. How much RAM do you need? How much disk space? How many nodes? The answer is always: it depends.
+容量は、最も共通する問題です。どれぐらいの RAM が必要か? ディスク・スペースはどれぐらいか?
+ノードの数は? その答えはいつも「状況による」です。
 
-IBM {{ site.data.keys.mf_analytics }} Analytics gives you the opportunity to collect many heterogeneous event types, including raw client SDK debug logs, server-reported network events, custom data, and much more. It is a big data system with big data system requirements.
+IBM {{site.data.keys.mf_analytics }} Analytics により、生のクライアント SDK デバッグ・ログ、サーバーが報告したネットワーク・イベント、カスタム・データ、その他を含む 多くの異種イベント・タイプの収集が可能になります。これは、ビッグデータ・システム要件を持つビッグデータ・システムです。
 
-The type and amount of data that you choose to collect, and how long you choose to keep it, has a dramatic impact on your storage requirements and overall performance. As an example, consider the following questions.
+収集するデータのタイプおよび量と、それを保持する期間は、ストレージ所要量と全体のパフォーマンスに大きく影響します。
+例として、以下の問いについて検討してください。
 
-* Are raw debug client logs useful after a month?
-* Are you using the **Alerts** feature in {{ site.data.keys.mf_analytics }}? If so, are you querying on events that occurred in the last few minutes or over a longer range?
-* Are you using custom charts? If so, are you creating these charts for built-in data or custom instrumented key/value pairs? How long do you keep the data?
 
-The built-in charts on the {{ site.data.keys.mf_analytics_console }} are rendered by querying data that the {{ site.data.keys.mf_analytics_server }} already summarized and optimized specifically for the fastest possible console user experience. Because it is pre-summarized and optimized for the built-in charts, it is not suitable for use in alerts or custom charts where the console user defines the queries.
+* 生のデバッグ・クライアント・ログは、1 カ月後に有用か?
+* {{site.data.keys.mf_analytics }} で**アラート**機能を使用しているか?
+使用している場合、照会しているイベントは直近の数分間で発生したものか、あるいは、もっと長い範囲で発生したものか? 
+* カスタム・グラフを使用しているか? 使用している場合、これらのグラフを作成している対象は、組み込みデータか、またはカスタム装備のキー/値ペアか?
+データを保持する期間はどれぐらいか?
 
-When you query raw documents, apply filters, perform aggregations, and ask the underlying query engine to calculate averages and percentages, the query performance necessarily suffers. It is this use case that requires careful capacity considerations. After your query performance suffers, it is time to decide whether you really must keep old data for real-time console visibility or purge it from the {{ site.data.keys.mf_analytics_server }}. Is real-time console visibility truly useful for data from four months ago?
+{{site.data.keys.mf_analytics_console }} の組み込みグラフは、
+{{site.data.keys.mf_analytics_server }}
+が最も高速の可能なコンソール・ユーザー・エクスペリエンス用に特に要約して最適化したデータを照会することで、レンダリングされます。
+組み込みグラフ用に事前に要約して最適化されているため、コンソール・ユーザーが照会を定義したアラートやカスタム・グラフでの使用には適しません。
 
-### Indicies, Shards, and Nodes
+ロー文書を照会したり、フィルターを適用したり、集約を実行したり、基盤の照会エンジンで平均やパーセントを計算したりする場合、
+照会のパフォーマンスは必然的に低下します。
+容量を注意深く検討しなければならないのは、こうしたユース・ケースです。
+照会パフォーマンスが低下したら、
+リアルタイムのコンソール表示用に古いデータを保持しておく必要が本当にあるか、
+あるいは、古いデータを {{site.data.keys.mf_analytics_server }} から消去するかを決断するときです。
+4 カ月前のデータで、リアルタイムのコンソール表示の利便性は本当にありますか?
+
+### 索引、シャード、およびノード
 {: #indicies-shards-and-nodes }
-The underlying data store is Elasticsearch. You must know a bit about indices, shards and nodes, and how the configuration affects performance. Roughly, you can think of an index as a logical unit of data. An index is mapped one-to-many to shards where the configuration key is shards. The {{ site.data.keys.mf_analytics_server }} creates a separate index per document type. If your configuration does not discard any document types, you have a number of indices that are created that is equivalent to the number of document types that are offered by the {{ site.data.keys.mf_analytics_server }}.
+基盤のデータ・ストアは Elasticsearch です。
+索引、シャード、ノード、および構成のパフォーマンスへの影響について少し知識が必要です。
+大まかに言うと、索引はデータの論理単位として考えることができます。
+索引は、シャード (構成キーが shards) に 1 対多で対応します。{{site.data.keys.mf_analytics_server }}
+は、文書タイプごとに別個の索引を作成します。
+構成で文書タイプを何も破棄していなければ、
+{{site.data.keys.mf_analytics_server }}
+で提供される文書タイプの数に相当する多くの索引が作成されます。
 
-If you configure the shards to 1, each index only ever has one primary shard to which data is written. If you set shards to 10, each index can balance to 10 shards. However, more shards have a performance cost when you have only one node. That one node is now balancing each index to 10 shards on the same physical disk. Only set shards to 10 if you plan to immediately (or nearly immediately) scale up to 10 physical nodes in the cluster.
+shards を 1 に構成すると、各索引は、1 つのプライマリー・シャードだけを持ち、そこにデータが書き込まれます。shards を 10 に設定すると、各索引は 10 個のシャードにバランシングできます。ただし、ノードが 1 つだけの場合、シャードが増えると、パフォーマンス・コストが発生します。
+その 1 つのノードが、同じ物理ディスク上で 10 個のシャードに各索引をバランシングしています。
+クラスター内で 10 個の物理ノードに即時に (または、ほぼ即時に) 拡大する予定の場合にのみ、shards を 10 に設定してください。
 
-The same principle applies to **replicas**. Only set **replicas** to something greater than 0 if you intend to immediately (or nearly immediately) scale up to the number of nodes to match the math.  
-For example, if you set **shards** to 4 and **replicas** to 2, you can scale to 8 nodes, which is 4 * 2.
+同じ原理が **replicas** にも適用されます。
+計算によるノード数に即時に (または、ほぼ即時に) 拡大する予定の場合にのみ、**replicas** を 0 より大きい値に設定してください。  
+例えば、**shards** を 4、**replicas** を 2 に設定した場合、
+4 * 2 で 8 個のノードにスケーリングできます。
 
-## Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty
+## {{site.data.keys.mf_analytics }} の WebSphere Application Server Liberty へのインストール
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear **file is found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install WebSphere Application Server Liberty, see the [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) article on IBM  developerWorks .
+{{site.data.keys.mf_analytics }} EAR
+ファイルがあることを確認します。
+インストール成果物について詳しくは、[アプリケーション・サーバーへの {{site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。**analytics.ear **ファイルは、**<mf_server_install_dir>\analytics** フォルダーにあります。WebSphere Application Server Liberty のダウンロードとインストールの方法について詳しくは、IBM developerWorks の「[About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/)」の記事を参照してください。
 
-1. Create a server by running the following command in your **./wlp/bin** folder.
+1. **./wlp/bin** フォルダーで次のコマンドを実行して、サーバーを作成します。
 
    ```bash
    ./server create <serverName>
    ```
 
-2. Install the following features by running the following command in your **./bin** folder.
+2. **./bin** フォルダーで次のコマンドを実行して、該当フィーチャーをインストールします。
 
    ```bash
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Add the **analytics.ear** file to the **./usr/servers/<serverName>/apps** folder of your Liberty Server.
-4. Replace the contents of the `<featureManager>` tag of the **./usr/servers/<serverName>/server.xml** file with the following content:
+3. Liberty サーバーの **./usr/servers/<serverName>/apps** フォルダーに **analytics.ear** ファイルを追加します。
+4. **./usr/servers/<serverName>/server.xml** ファイルの `<featureManager>` タグのコンテンツを以下に置き換えます。
 
    ```xml
    <featureManager>
@@ -118,7 +155,7 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For
    </featureManager>
    ```
 
-5. Configure **analytics.ear** as an application with role-based security in the **server.xml** file. The following example creates a basic hardcoded user registry, and assigns a user to each of the different analytics roles.
+5. **server.xml** ファイル内に、ロール・ベースのセキュリティーを使用するアプリケーションとして **analytics.ear** を構成します。以下の例では、ハードコーディングされた基本ユーザー・レジストリーを作成し、異なる各分析ロールにユーザーを割り当てます。
 
    ```xml
    <application location="analytics.ear" name="analytics-ear" type="ear">
@@ -140,8 +177,7 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For
             </security-role>
         </application-bnd>
    </application>
-
-   <basicRegistry id="worklight" realm="worklightRealm">
+<basicRegistry id="worklight" realm="worklightRealm">
         <user name="business" password="demo"/>
         <user name="developer" password="demo"/>
         <user name="support" password="demo"/>
@@ -150,34 +186,36 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For
    </basicRegistry>
    ```
 
-   > For more information about how to configure other user registry types, such as LDAP, see the [Configuring a user registry for Liberty](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) topic in the WebSphere Application Server product documentation.
+   > LDAP など、他のユーザー・レジストリー・タイプの構成方法について詳しくは、WebSphere Application Server 製品資料で [Liberty のユーザー・レジストリーの構成](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html)のトピックを参照してください。
 
-6. Start the Liberty Server by running the following command inside your **bin** folder
+6. **bin** フォルダー内で以下のコマンドを実行して Liberty サーバーを始動します。
 
    ```bash
    ./server start <serverName>
    ```
 
-7. Go to the {{ site.data.keys.mf_analytics_console }}.
+7. {{site.data.keys.mf_analytics_console }} に移動します。
 
    ```bash
    http://localhost:9080/analytics/console
    ```
 
-For more information about administering WebSphere Application Server Liberty, see the [Administering Liberty from the command line](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html) topic in the WebSphere Application Server product documentation.
+WebSphere Application Server Liberty の管理について詳しくは、WebSphere Application Server 製品資料で[コマンド行からの Liberty の管理](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html)のトピックを参照してください。
 
-## Installing {{ site.data.keys.mf_analytics }} on Tomcat
+## {{site.data.keys.mf_analytics }} の Tomcat へのインストール
 {: #installing-mobilefirst-analytics-on-tomcat }
-Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install Tomcat, see [Apache Tomcat](http://tomcat.apache.org/). Ensure that you download the version that supports Java 7 or higher. For more information about which version of Tomcat supports Java 7, see [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
+{{site.data.keys.mf_analytics }} WAR
+ファイルがあることを確認します。
+インストール成果物について詳しくは、[アプリケーション・サーバーへの {{site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。**analytics-ui.war** と **analytics-service.war** の各ファイルは、**<mf_server_install_dir>\analytics** フォルダーにあります。Tomcat のダウンロード方法とインストール方法について詳しくは、[Apache Tomcat](http://tomcat.apache.org/) を参照してください。Java 7 以上をサポートするバージョンをダウンロードするようにしてください。Tomcat のどのバージョンで Java 7 がサポートされているかについて詳しくは、[Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html) を参照してください。
 
-1. Add **analytics-service.war** and the **analytics-ui.war** files to the Tomcat **webapps** folder.
-2. Uncomment the following section in the **conf/server.xml** file, which is present, but commented out, in a freshly downloaded Tomcat archive.
+1. Tomcat の **webapps** フォルダーに **analytics-service.war** と **analytics-ui.war** のファイルを追加します。
+2. **conf/server.xml** ファイルで以下のセクションのコメントを外します。これは、新しくダウンロードした Tomcat アーカイブ内に存在しますが、コメント化されています。
 
    ```xml
    <Valve className ="org.apache.catalina.authenticator.SingleSignOn"/>
    ```
 
-3. Declare the two war files in the **conf/server.xml** file, and define a user registry.
+3. **conf/server.xml** ファイルに 2 つの WAR ファイルを宣言し、ユーザー・レジストリーを定義します。
 
    ```xml
    <Context docBase ="analytics-service" path ="/analytics-service"></Context>
@@ -185,10 +223,10 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. Fo
    <Realm className ="org.apache.catalina.realm.MemoryRealm"/>
    ```
 
-   The **MemoryRealm** recognizes the users that are defined in the **conf/tomcat-users.xml** file. For more information about other choices, see [Apache Tomcat Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
+   **MemoryRealm** は、**conf/tomcat-users.xml** ファイルに定義されているユーザーを認識します。その他の選択肢について詳しくは、[Apache Tomcat の「Realm Configuration HOW-TO」](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html)を参照してください。
 
-4. Add the following sections to the **conf/tomcat-users.xml** file to configure a **MemoryRealm**.
-    * Add the security roles.
+4. **conf/tomcat-users.xml** ファイルに以下のセクションを追加して、**MemoryRealm** を構成します。
+    * セキュリティー・ロールを追加します。
 
       ```xml
       <role rolename="analytics_administrator"/>
@@ -197,7 +235,7 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. Fo
       <role rolename="analytics_developer"/>
       <role rolename="analytics_business"/>
       ```
-    * Add a few users with the roles you want.
+    * 必要なロールのユーザーを数人追加します。
 
       ```xml
       <user name="admin" password="admin" roles="analytics_administrator"/>
@@ -206,98 +244,100 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. Fo
       <user name="developer" password="demo" roles="analytics_developer"/>
       <user name="infrastructure" password="demo" roles="analytics_infrastructure"/>
       ```    
-    * Start your Tomcat Server and go to the {{ site.data.keys.mf_analytics_console }}.
+    * Tomcat サーバーを始動し、{{site.data.keys.mf_analytics_console }}に移動します。
 
       ```xml
       http://localhost:8080/analytics/console
       ```
 
-    For more information about how to start the Tomcat Server, see the official Tomcat site. For example, [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html), for Tomcat 7.0.
+    Tomcat サーバーの始動方法について詳しくは、Tomcat の公式サイトを参照してください。例えば、Tomcat 7.0 の場合、[「Apache Tomcat 7」](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html)です。
 
-## Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server
+## {{site.data.keys.mf_analytics }} の WebSphere Application Server へのインストール
 {: #installing-mobilefirst-analytics-on-websphere-application-server }
-For more information on initial installation steps for acquiring the installation artificats (JAR and EAR files), see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear**, **analytics-ui.war**, and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder.
+インストール成果物 (JAR ファイルおよび EAR ファイル) を獲得するための最初のインストール・ステップについて詳しくは、[アプリケーション・サーバーへの {{site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。**analytics.ear**、**analytics-ui.war**、**analytics-service.war** の各ファイルは、**<mf_server_install_dir>\analytics** フォルダーにあります。
 
-The following steps describe how to install and run the Analytics EAR file on WebSphere Application Server. If you are installing the individual WAR files on WebSphere Application Server, follow only steps 2 - 7 on the **analytics-service** WAR file after you deploy both WAR files. The class loading order must not be altered on the analytics-ui WAR file.
+以下のステップでは、WebSphere Application Server に Analytics EAR ファイルをインストールし、実行する方法について説明します。WebSphere Application Server に個別の WAR ファイルをインストールする場合は、両方の WAR ファイルをデプロイした後に **analytics-service** WAR ファイルについてステップ 2 から 7 のみを実行してください。analytics-ui WAR ファイルでクラス・ロード順序を変更してはなりません。
 
-1. Deploy the EAR file to the application server, but do not start it. . For more information about how to install an EAR file on WebSphere Application Server, see the [Installing enterprise application files with the console](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) topic in the WebSphere Application Server product documentation.
+1. EAR ファイルをアプリケーション・サーバーにデプロイします。ただし、開始はしないでください。. WebSphere Application Server に EAR ファイルをインストールする方法について詳しくは、WebSphere Application Server 製品資料で[コンソールを使用したエンタープライズ・アプリケーション・ファイルのインストール](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html)のトピックを参照してください。
 
-2. Select the **MobileFirst Analytics** application from the **Enterprise Applications** list.
+2. **「エンタープライズ・アプリケーション」**リストから**「MobileFirst Analytics」**アプリケーションを選択します。
 
-    ![Install WebSphere Enterprise applications](install_webphere_ent_app.jpg)
+    ![WebSphere Enterprise アプリケーションをインストールします。](install_webphere_ent_app.jpg)
 
-3. Click **Class loading and update detection**.
+3. **「クラス・ロードおよび更新の検出」**をクリックします。
 
-    ![Class loading in WebSphere](install_websphere_class_load.jpg)
+    ![WebSphere でのクラス・ロード](install_websphere_class_load.jpg)
 
-4. Set the class loading order to **parent last**.
+4. クラス・ロード順序を**「親が最後」**に設定します。
 
-    ![Change the class loading order](install_websphere_app_class_load_order.jpg)
+    ![クラス・ロード順序の変更](install_websphere_app_class_load_order.jpg)
 
-5. Click **Security role to user/group mapping** to map the admin user.
+5. **「ユーザー/グループへのセキュリティー・ロールのマッピング」**をクリックして、管理ユーザーをマップします。
 
-    ![War class loading order](install_websphere_sec_role.jpg)
+    ![WAR クラス・ロード順序](install_websphere_sec_role.jpg)
 
-6. Click **Manage Modules**.
+6. **「モジュールの管理」**をクリックします。
 
-    ![Managing modules in WebSphere](install_websphere_manage_modules.jpg)
+    ![WebSphere でのモジュールの管理](install_websphere_manage_modules.jpg)
 
-7. Select the **analytics** module and change the class loader order to **parent last**.
+7. **「分析」**モジュールを選択し、クラス・ローダー順序を**「親が最後」**に変更します。
 
-    ![Analytics module in WebSphere](install_websphere_module_class_load_order.jpg)
+    ![WebSphere の分析モジュール](install_websphere_module_class_load_order.jpg)
 
-8. Enable **Administrative security** and **application security** in the WebSphere Application Server administration console:
-    * Log in to the WebSphere Application Server administration console.
-    * In the **Security > Global Security** menu, ensure that **Enable administrative security** and **Enable application security** are both selected. Note: Application security can be selected only after **Administrative security** is enabled.
-    * Click **OK** and save changes.
-9. Start the {{ site.data.keys.mf_analytics }} application and go to the link in the browser: `http://<hostname>:<port>/analytics/console`.
+8. 以下のようにして、WebSphere Application Server 管理コンソールで**管理セキュリティー**と**アプリケーション・セキュリティー**を使用可能にします。
+    * WebSphere Application Server 管理コンソールにログインします。
+    * **「セキュリティー」>「グローバル・セキュリティー」**メニューで、**「管理セキュリティーを使用可能にする」**と**「アプリケーション・セキュリティーを使用可能にする」**の両方を必ず選択します。注: アプリケーション・セキュリティーは、**管理セキュリティー**が使用可能にされた後にのみ、選択可能です。
+    * **「OK」**をクリックし、変更を保存します。
+9. {{site.data.keys.mf_analytics }} アプリケーションを開始し、次のブラウザー内のリンクに移動します。`http://<hostname>:<port>/analytics/console`
 
-## Installing {{ site.data.keys.mf_analytics }} with Ant tasks
+## Ant タスクを使用した {{site.data.keys.mf_analytics }} のインストール
 {: #installing-mobilefirst-analytics-with-ant-tasks }
-Ensure that you have the necessary WAR and configuration files: **analytics-ui.war** and **analytics-service.war**. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **MobileFirst_Platform_Server\analytics**.
+必要な WAR ファイルおよび構成ファイルの **analytics-ui.war** と **analytics-service.war** があることを確認します。インストール成果物について詳しくは、[アプリケーション・サーバーへの {{site.data.keys.mf_server }} のインストール](../../appserver)を参照してください。**analytics-ui.war** と **analytics-service.war** の各ファイルは、**MobileFirst_Platform_Server\analytics** にあります。
 
-You must run the Ant task on the computer where the application server is installed, or the Network Deployment Manager for WebSphere  Application Server Network Deployment. If you want to start the Ant task from a computer on which {{ site.data.keys.mf_server }} is not installed, you must copy the file **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** to that computer.
+アプリケーション・サーバー、または WebSphere Application Server Network Deployment 用の Network Deployment Manager がインストールされているコンピューターで Ant タスクを実行する必要があります。{{site.data.keys.mf_server }} がインストールされていないコンピューターから Ant タスクを開始したい場合は、ファイル **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** をそのコンピューターにコピーする必要があります。
 
-> Note: The **mf_server_install_dir** placeholder is the directory where you installed {{ site.data.keys.mf_server }}.
+> 注: **mf_server_install_dir** プレースホルダーは、{{site.data.keys.mf_server }} をインストールしたディレクトリーです。
 
-1. Edit the Ant script that you use later to deploy {{ site.data.keys.mf_analytics }} WAR files.
-    * Review the sample configuration files in [Sample configuration files for {{ site.data.keys.mf_analytics }}](../../installation-reference/#sample-configuration-files-for-mobilefirst-analytics).
-    * Replace the placeholder values with the properties at the beginning of the file.
+1. 後で {{site.data.keys.mf_analytics }} WAR ファイルをデプロイするために使用する Ant スクリプトを編集します。
+    * [{{site.data.keys.mf_analytics }} のサンプル構成ファイル](../../installation-reference/#sample-configuration-files-for-mobilefirst-analytics)のサンプル構成ファイルを検討します。
+    * ファイルの先頭でプレースホルダーの値をプロパティーに置き換えます。
 
-    > Note: The following special characters must be escaped when they are used in the values of the Ant XML scripts:
+    > 注: Ant XML スクリプトの値で以下の特殊文字が使用される場合は、エスケープする必要があります。
     >
-    > * The dollar sign ($) must be written as $$, unless you explicitly want to reference an Ant variable through the syntax ${variable}, as described in the  [Properties](http://ant.apache.org/manual/properties.html) section of the Apache Ant Manual.
-    > * The ampersand character (&) must be written as &amp;, unless you explicitly want to reference an XML entity.
-    > * Double quotation marks (") must be written as &quot;, except when it is inside a string that is enclosed in single quotation marks.
+    > * Apache Ant Manual の『[Properties](http://ant.apache.org/manual/properties.html)』セクションに説明されているように、ドル記号 ($) は、構文 ${variable} によって Ant 変数を明示的に参照する場合を除き、$$ と記述してください。
+    > * アンパーサンド文字 (&) は、XML エンティティーを明示的に参照する場合を除き、&amp; と記述してください。
+    > * 二重引用符 (") は、単一引用符で囲まれたストリング内にある場合を除き、&quot; と記述してください。
 
-2. If you install a cluster of nodes on several servers:
-    * You must uncomment the property **wl.analytics.masters.list**, and set its value to the list of host name and transport port of the master nodes. For example: `node1.mycompany.com:96000,node2.mycompany.com:96000`
-    * Add the attribute **mastersList** to the **elasticsearch** elements in the tasks **installanalytics**, **updateanalytics**, and **uninstallanalytics**.
+2. 複数のサーバーにクラスターのノードをインストールする場合は、以下のようにします。
+    * プロパティー **wl.analytics.masters.list** のコメントを外し、その値にマスター・ノードのホスト名と転送ポートのリストを設定します。以下に例を示します。`node1.mycompany.com:96000,node2.mycompany.com:96000`
+    * タスク **installanalytics**、**updateanalytics**、および **uninstallanalytics** の **elasticsearch** エレメントに属性 **mastersList** を追加します。
 
-    **Note:** If you install on a cluster on WebSphere Application Server Network Deployment, and you do not set the property, the Ant task computes the data end points for all the members of the cluster at the time of installation, and sets the **masternodes** JNDI property to that value.
+    **注:** WebSphere Application Server Network Deployment 上のクラスターにインストールする場合にこのプロパティーを設定しないと、 Ant タスクがインストール時にクラスターの全メンバーのデータ・エンドポイントを計算し、**masternodes** JNDI プロパティーにその値を設定します。 
 
-3. To deploy the WAR files, run the following command: `ant -f configure-appServer-analytics.xml install`
-    You can find the Ant command in **mf_server_install_dir/shortcuts**. This installs a node of {{ site.data.keys.mf_analytics }}, with the default type master and data, on the server, or on each member of a cluster if you install on WebSphere Application Server Network Deployment.
-4. Save the Ant file. You might need it later to apply a fix pack or perform an upgrade.
-    If you do not want to save the passwords, you can replace them by "************" (12 stars) for interactive prompting.
+3. WAR ファイルをデプロイするには、以下のコマンドを実行します。`ant -f configure-appServer-analytics.xml install` Ant コマンドは、**mf_server_install_dir/shortcuts** にあります。
+    これにより、{{site.data.keys.mf_analytics }} のノードが、デフォルト・タイプのマスターとデータを使用して、サーバー、またはクラスターの各メンバー (WebSphere Application Server Network Deployment にインストールする場合) にインストールされます。
+4. Ant ファイルを保存します。 後でフィックスパックの適用時やアップグレードの実行時に、これが必要になる可能性があります。
+    パスワードを保存したくない場合は、対話プロンプトのために「************」(12 個のアスタリスク) でそれを置き換えることができます。
 
-    **Note:** If you add a node to a cluster of {{ site.data.keys.mf_analytics }}, you must update the analytics/masternodes JNDI property, so that it contains the ports of all the master nodes of the cluster.
+    **注:** {{site.data.keys.mf_analytics }} のクラスターにノードを追加する場合は、 analytics/masternodes JNDI プロパティーを更新して、クラスターの全マスター・ノードのポートを含めてください。
 
-## Installing {{ site.data.keys.mf_analytics_server }} on servers running previous versions
+## 以前のバージョンを実行しているサーバーへの {{site.data.keys.mf_analytics_server }} のインストール 
 {: #installing-mobilefirst-analytics-server-on-servers-running-previous-versions }
-Although there is no option to upgrade previous versions of the {{ site.data.keys.mf_analytics_server }}, when you install {{ site.data.keys.mf_analytics_server }} V8.0.0 on a server that hosted a previous version, some properties and analytics data need to be migrated.
+以前のバージョンの {{site.data.keys.mf_analytics_server }} をアップグレードするオプションはありませんが、以前のバージョンをホストしていたサーバーに {{site.data.keys.mf_analytics_server }} V8.0.0 をインストールする場合には、いくつかのプロパティーおよび分析データをマイグレーションする必要があります。
 
-For servers previously running earlier of versions of {{ site.data.keys.mf_analytics_server }} update the analytics data and the JNDI properties.
+前のバージョンの {{site.data.keys.mf_analytics_server }} を以前に実行していたサーバーの場合は、
+分析データと JNDI プロパティーを更新してください。
 
-### Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}
+### 以前のバージョンの {{site.data.keys.mf_analytics_server }} で使用されたサーバー・プロパティーのマイグレーション
 {: #migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server }
-If you install {{ site.data.keys.mf_analytics_server }} V8.0.0 on a server that was previously running an earlier version of {{ site.data.keys.mf_analytics_server }}, you must update the values of the JNDI properties on the hosting server.
+前のバージョンの {{site.data.keys.mf_analytics_server }} を以前に実行していたサーバーに {{site.data.keys.mf_analytics_server }} V8.0.0 をインストールする場合は、ホスティング・サーバーで JNDI プロパティーの値を更新する必要があります。
 
-Some event types were changed between earlier versions of {{ site.data.keys.mf_analytics_server }} and V8.0.0. Because of this change, any JNDI properties that were previously configured in your server configuration file must be converted to the new event type.
+{{site.data.keys.mf_analytics_server }} の前のバージョンと V8.0.0 の間で、いくつかのイベント・タイプが変更されました。この変更のため、ご使用のサーバー構成ファイルで以前に構成されていた JNDI プロパティーは、新しいイベント・タイプに変換する必要があります。
 
-The following table shows the mapping between old event types and new event types. Some event types did not change.
+以下の表に、古いイベント・タイプと新しいイベント・タイプのマッピングを示します。
+変更されなかったイベント・タイプもいくつかあります。
 
-| Old event type            | New event type         |
+| 古いイベント・タイプ            | 新しいイベント・タイプ         |
 |---------------------------|------------------------|
 | AlertDefinition	        | AlertDefinition        |
 | AlertNotification	        | AlertNotification      |
@@ -318,28 +358,34 @@ The following table shows the mapping between old event types and new event type
 | mfpAppName	            | appName                |
 | mfpAppVersion	            | appVersion             |
 
-### Analytics data migration
+### Analytics データのマイグレーション
 {: #analytics-data-migration }
-The internals of the {{ site.data.keys.mf_analytics_console }} were improved, which required changing the format in which the data is stored. To continue to interact with the analytics data that was already collected, the data must be migrated into the new data format.
+{{site.data.keys.mf_analytics_console }} の内部が改善されました。これには、データの保管フォーマットの変更が必要でした。既に収集された分析データとの相互作用を継続するには、データを新規データ・フォーマットにマイグレーションする必要があります。
 
-When you first view the {{ site.data.keys.mf_analytics_console }} after you upgrade to V8.0.0, no statistics are rendered in the {{ site.data.keys.mf_analytics_console }}. Your data is not lost, but it must be migrated to the new data format.
+V8.0.0 へのアップグレード後初めて {{site.data.keys.mf_analytics_console }} を表示すると、{{site.data.keys.mf_analytics_console }} で統計がレンダリングされていません。データは消失したわけではなく、新規データ・フォーマットへのマイグレーションが必要になります。
 
-An alert is displayed on every page of the {{ site.data.keys.mf_analytics_console }} that reminds you that documents must be migrated. The alert text includes a link to the **Migration** page.
+文書のマイグレーションが必要であることを注意喚起するアラートが
+{{site.data.keys.mf_analytics_console }} のすべてのページに表示されます。
+このアラート・テキストには、**「マイグレーション」**ページへのリンクが含まれています。
 
-The following image shows a sample alert from the **Overview** page of the **Dashboard** section:
+以下の画像は、**「ダッシュボード」**セクションの**「概要」**ページのサンプル・アラートを示しています。
 
-![Migration alert in the console](migration_alert.jpg)
 
-### Migration page
+![コンソールのマイグレーション・アラート](migration_alert.jpg)
+
+### 「マイグレーション」ページ
 {: #migration-page }
-You can access the Migration page from the wrench icon in the {{ site.data.keys.mf_analytics_console }}. From the **Migration** page, you can see how many documents must be migrated, and which indices they are stored on. Only one action is available: **Perform Migration**.
+「マイグレーション」ページには、{{site.data.keys.mf_analytics_console }}のレンチ・アイコンからアクセスできます。**「マイグレーション」**ページから、マイグレーションが必要な文書の数、およびそれらの文書が保管されている索引を確認できます。
+可能なアクションは、**「マイグレーションの実行」** の 1 つだけです。
 
-The following image shows the **Migration** page when you have documents that must be migrated:
+以下の画像は、マイグレーションが必要な文書がある場合の**「マイグレーション」**ページを示しています。
 
-![Migration page in the console](migration_page.jpg)
 
-> **Note:** This process might take a long time, depending on the amount of data you have, and it cannot be stopped during migration.
+![コンソールの「マイグレーション」ページ](migration_page.jpg)
 
-The migration can take approximately 3 minutes to migrate 1 million documents on a single node with 32G of RAM, with 16G allocated to the JVM, with a 4-core processor. Documents that are not migrated are not queried, so they are not rendered in the {{ site.data.keys.mf_analytics_console }}.
+> **注:** ユーザーのデータの量に応じてこのプロセスには長い時間がかかる場合があります。マイグレーション中にプロセスを停止することはできません。
 
-If the migration fails while in progress, retry the migration. Retrying the migration does not remigrate documents that were already migrated, and your data integrity is maintained.
+このマイグレーションでは、単一ノード (RAM 32 GB、JVM への割り振り 16 GB、4 コア・プロセッサー) で 100 万個の文書をマイグレーションするのに約 3 分かかる可能性があります。
+マイグレーションされない文書は照会されないため、それらは {{site.data.keys.mf_analytics_console }} でレンダリングされません。
+
+進行中にマイグレーションが失敗した場合は、マイグレーションを再試行してください。マイグレーションを再試行しても、既にマイグレーションされた文書が再びマイグレーションされることはなく、データ保全性は維持されます。

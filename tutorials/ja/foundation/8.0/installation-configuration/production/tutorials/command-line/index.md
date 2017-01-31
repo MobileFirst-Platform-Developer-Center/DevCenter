@@ -1,159 +1,161 @@
 ---
 layout: tutorial
-title: Installing MobileFirst Server From Command Line tutorial
+title: コマンド・ラインからの MobileFirst Server のインストールに関するチュートリアル
 weight: 0
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Use the command line mode of IBM  Installation Manager and Ant tasks to install {{ site.data.keys.mf_server }}.
+IBM Installation Manager のコマンド・ライン・モードおよび Ant タスクを使用して、{{site.data.keys.mf_server }} をインストールします。
 
-#### Before you begin
+#### 始める前に
 {: #before-you-begin }
-* Make sure that one of the following databases and a supported Java version are installed. You also need the corresponding JDBC driver for the database to be available on your computer:
-    * Database Management System (DBMS) from the list of supported database:
+* 以下のいずれかのデータベースおよびサポート対象の Java バージョンがインストール済みであることを確認してください。また、そのデータベースに対応する JDBC ドライバーがご使用のコンピューターで使用可能である必要があります。
+    * サポート対象のデータベース・リストにあるデータベース管理システム (DBMS)
         * DB2 
-        * MySQL
-        * Oracle
+        * MySQL 
+        * Oracle 
 
-        > **Important:** You must have a database where you can create the tables that are needed by the product, and a database user who can create tables in that database.
+        > **重要:** 本製品で必要とされる表の作成場所となるデータベース、およびそのデータベースで表を作成できるデータベース・ユーザーが必要となります。
 
-        In the tutorial, the steps to create the tables are for DB2. You can find the DB2 installer as a package of {{ site.data.keys.product }} eAssembly on IBM Passport Advantage .
+        このチュートリアルにおける表の作成手順は DB2 を対象にしています。DB2 インストーラーは、IBM パスポート・アドバンテージで {{site.data.keys.product }} eAssembly のパッケージとして提供されています。
 
-* JDBC driver for your database.
-    * For DB2, use the DB2 JDBC driver type 4.
-    * For MySQL, use the Connector/J JDBC driver.
-    * For Oracle, use the Oracle thin JDBC driver.
-* Java 7 or later.
+* ご使用のデータベースの JDBC ドライバー
+    * DB2 の場合、DB2 JDBC ドライバー・タイプ 4 を使用します。
+    * MySQL の場合、Connector/J JDBC ドライバーを使用します。
+    * Oracle の場合、Oracle Thin JDBC ドライバーを使用します。
+* Java 7 以降。
 
-* Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-* You must also have the installation repository of the {{ site.data.keys.mf_server }} and the installer of WebSphere  Application Server Liberty Core V8.5.5.3 or later. Download these packages from the {{ site.data.keys.product }} eAssembly on Passport Advantage:
+* IBM Installation Manager V1.8.4 以降のインストーラーは、[Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142) からダウンロードします。
+* また、{{site.data.keys.mf_server }} のインストール・リポジトリーおよび WebSphere Application Server Liberty Core V8.5.5.3 以降のインストーラーも必要です。これらのパッケージを、パスポート・アドバンテージの {{site.data.keys.product }} eAssembly からダウンロードします。
 
-**{{ site.data.keys.mf_server }} installation repository**  
-{{ site.data.keys.product }} V8.0 .zip file of Installation Manager Repository for {{ site.data.keys.mf_server }}
+**{{site.data.keys.mf_server }} のインストール・リポジトリー**  
+{{site.data.keys.mf_server }} 用の Installation Manager リポジトリーの {{site.data.keys.product }} V8.0 .zip ファイル
 
-**WebSphere Application Server Liberty profile**  
-IBM WebSphere Application Server - Liberty Core V8.5.5.3 or later
+**WebSphere Application Server Liberty プロファイル**  
+IBM WebSphere Application Server - Liberty Core V8.5.5.3 以降
     
-#### Jumpt to
+#### ジャンプ先
 {: #jump-to }
-* [Installing IBM Installation Manager](#installing-ibm-installation-manager)
-* [Installing WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core)
-* [Installing {{ site.data.keys.mf_server }}](#installing-mobilefirst-server)
-* [Creating a database](#creating-a-database)
-* [Deploying {{ site.data.keys.mf_server }} to Liberty with Ant tasks](#deploying-mobilefirst-server-to-liberty-with-ant-tasks)
-* [Testing the installation](#testing-the-installation)
-* [Creating a farm of two Liberty servers that run {{ site.data.keys.mf_server }}](#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server)
-* [Testing the farm and see the changes in {{ site.data.keys.mf_console }}](#testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console)
+* [IBM Installation Manager のインストール](#installing-ibm-installation-manager)
+* [WebSphere Application Server Liberty Core のインストール](#installing-websphere-application-server-liberty-core)
+* [{{site.data.keys.mf_server }} のインストール](#installing-mobilefirst-server)
+* [データベースの作成](#creating-a-database)
+* [Ant タスクを使用した {{site.data.keys.mf_server }} の Liberty へのデプロイ](#deploying-mobilefirst-server-to-liberty-with-ant-tasks)
+* [インストール済み環境のテスト](#testing-the-installation)
+* [{{site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成](#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server)
+* [ファームのテストと {{site.data.keys.mf_console }} での変更内容の確認](#testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console)
 
-## Installing IBM Installation Manager
+## IBM Installation Manager のインストール
 {: #installing-ibm-installation-manager }
-You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product }} V8.0 because the postinstallation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
+Installation Manager V1.8.4 以降をインストールする必要があります。製品のポストインストール操作で Java 7 が必要なため、古いバージョンの Installation Manager は {{site.data.keys.product }} V8.0 をインストールできません。古いバージョンの Installation Manager には Java 6 が装備されています。
 
-1. Extract the IBM Installation Manager archive file that is downloaded. You can find the installer at [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-2. Review the license agreement for IBM Installation Manager that is in **unzip\_IM\_1.8.x/license** directory.
-3. If you accept the license agreement after the review, install Installation Manager.  
-    * Run **installc.exe** to install Installation Manager as administrator. Root is needed on Linux or UNIX. On Windows, the administrator privilege is needed. In this mode, the information about the installed packages is placed in a shared location on the disk and any user that is allowed to run Installation Manager can update the applications. The executable file name ends with "c" (**installc**) for a command line installation without a graphical user interface. To install Installation Manager, enter **installc.exe -acceptLicence**.
-    * Run **userinstc.exe** to install Installation Manager in user mode. No specific privilege is needed. However, in this mode, the information about the installed packages are placed in the user's home directory. Only that user can update the applications that are installed with Installation Manager. The executable ends with "c" (**userinstc**) for a command line installation without a graphical user interface. To install Installation Manager, enter **userinstc.exe -acceptLicence**.
+1. ダウンロードした IBM Installation Manager アーカイブ・ファイルを解凍します。インストーラーは [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142) にあります。
+2. **unzip\_IM\_1.8.x/license** ディレクトリー内にある IBM Installation Manager のご使用条件を確認します。
+3. 確認後、ご使用条件に同意したら、Installation Manager をインストールします。  
+    * **installc.exe** を実行して、管理者として Installation Manager をインストールします。Linux または UNIX では root が必要です。Windows では、管理者特権が必要です。このモードでは、インストール済みパッケージに関する情報はディスク上の共有ロケーションに置かれ、Installation Manager の実行を許可されたユーザーなら誰でも、アプリケーションを更新することができます。グラフィカル・ユーザー・インターフェースを使用しないコマンド・ラインでのインストール用として、実行可能ファイル名は、末尾が 「c」 (**installc**) となっています。Installation Manager をインストールするには、**installc.exe
+-acceptLicence** と入力します。
+    * ユーザー・モードで Installation Manager をインストールするには、**userinstc.exe** を実行します。特定の特権は必要ありません。ただし、このモードでは、インストール済みパッケージに関する情報は、ユーザーのホーム・ディレクトリーに置かれます。Installation Manager でインストールされるアプリケーションの更新を行えるのは、そのユーザーのみです。グラフィカル・ユーザー・インターフェースを使用しないコマンド・ラインでのインストール用として、実行可能ファイル名は、末尾が 「c」 (**userinstc**) となっています。Installation Manager をインストールするには、**userinstc.exe
+-acceptLicence** と入力します。
     
-## Installing WebSphere Application Server Liberty Core
+## WebSphere Application Server Liberty Core のインストール
 {: #installing-websphere-application-server-liberty-core }
-The installer for WebSphere Application Server Liberty Core is provided as part of the package for {{ site.data.keys.product }}. In this task, Liberty profile is installed and a server instance is created so that you can install {{ site.data.keys.mf_server }} on it.
+WebSphere Application Server Liberty Core のインストーラーは、{{site.data.keys.product }} のパッケージの一部として提供されています。このタスクでは、Liberty プロファイルがインストールされ、サーバー・インスタンスが作成されます。このサーバー・インスタンス上に {{site.data.keys.mf_server }} をインストールできます。
 
-1. Review the license agreement for WebSphere Application Server Liberty Core. The license files can be viewed when you download the installer from Passport Advantage.
-2. Extract the compressed file of WebSphere Application Server Liberty Core, that you downloaded, to a folder.
+1. WebSphere Application Server Liberty Core のご使用条件を確認します。ライセンス・ファイルは、パスポート・アドバンテージからインストーラーをダウンロードすると表示できます。
+2. ダウンロードした WebSphere Application Server Liberty Core の圧縮ファイルを、任意のフォルダーに解凍します。
 
-    In the steps that follow, the directory where you extract the installer is referred as **liberty\_repository\_dir**. It contains a **repository.config** file or a **diskTag.inf** file, among many other files.
+    以下のステップでは、インストーラーを解凍するディレクトリーは **liberty\_repository\_dir** という名前になっています。ここには、他の多くのファイルとともに、**repository.config** ファイルまたは **diskTag.inf** ファイルが含まれています。
 
-3. Decide a directory where Liberty profile is to be installed. It is referred as liberty_install_dir in the next steps.
-4. Start a command line and go to **installation\_manager\_install\_dir/tools/eclipse/**.
-5. If you accept the license agreement after the review, install Liberty.
+3. Liberty プロファイルをインストールするディレクトリーを決めます。以下のステップでは、このディレクトリーは liberty_install_dir という名前になっています。
+4. コマンド・ラインを開始し、**installation\_manager\_install\_dir/tools/eclipse/** に移動します。
+5. 確認後、ご使用条件に同意したら、Liberty をインストールします。
     
-    Enter the command: **imcl install com.ibm.websphere.liberty.v85 -repositories liberty\_repository\_dir -installationDirectory liberty\_install\_dir -acceptLicense**
+    次のコマンドを入力します。**imcl install com.ibm.websphere.liberty.v85 -repositories liberty\_repository\_dir -installationDirectory liberty\_install\_dir -acceptLicense**
 
-    This command installs Liberty in the **liberty\_install\_dir** directory. The **-acceptLicense** option means that you accept the license terms for the product.
+    このコマンドにより、**liberty\_install\_dir** ディレクトリーに Liberty がインストールされます。**-acceptLicense** オプションは、製品のライセンス条項に同意することを意味します。
 
-6. Move the directory that contains the servers in a location that does not need specific privileges.
+6. サーバーを含むディレクトリーを、特定の特権が必要とされないロケーションに移動します。
 
-    For the scope of this tutorial, if **liberty\_install\_dir** points to a location where non-administrator or non-root users cannot modify the files, move the directory that contains the servers to a location that does not need specific privileges. In this way, the installation operations can be done without specific privileges.
-    * Go to the installation directory of Liberty.
-    * Create a directory named etc. You need administrator or root privileges.
-    * In the **etc** directory, create a **server.env** file with the following content: `WLP_USER_DIR=<path to a directory where any user can write>`. For example, on Windows: `WLP_USER_DIR=C:\LibertyServers\usr`.
-7.  Create a Liberty server that will be used to install the first node of {{ site.data.keys.mf_server }} at the later part of the tutorial.
-    * Start a command line.
-    * Go to **liberty\_install\_dir/bin**, and enter **server create mfp1**.
+    このチュートリアルの目的で、**liberty\_install\_dir** が非管理者または非 root ユーザーがファイルを変更できないロケーションを指している場合、サーバーを含むそのディレクトリーを、特定の特権が必要とされないロケーションに移動してください。そうすることで、特定の特権がなくてもインストールの操作を行うことができます。
+    * Liberty のインストール・ディレクトリーに移動します。
+    * etc という名前のディレクトリーを作成します。管理者または root の特権が必要です。
+    * **etc** ディレクトリー内に、`WLP_USER_DIR=<どのユーザーでも書き込めるディレクトリーのパス>` というコンテンツを含む **server.env** ファイルを作成します。例えば、Windows の場合は、`WLP_USER_DIR=C:\LibertyServers\usr` です。
+7.  チュートリアルのこの後のパートで {{site.data.keys.mf_server }} の最初のノードのインストールに使用する Liberty サーバーを作成します。
+    * コマンド・ラインを開始します。
+    * **liberty\_install\_dir/bin** に移動し、**server create mfp1** と入力します。
     
-    This command creates a Liberty server instance named **mfp1**. You can see its definition at **liberty\_install\_dir/usr/servers/mfp1** or **WLP\_USER\_DIR/servers/mfp1** (if you modify the directory as described in step 6).
+    このコマンドにより、**mfp1** という名前の Liberty サーバー・インスタンスが作成されます。その定義は、**liberty\_install\_dir/usr/servers/mfp1** または **WLP\_USER\_DIR/servers/mfp1** (ステップ 6 の説明に従ってディレクトリーを変更した場合) にあります。
     
-After the server is created, you can start this server with `server start mfp1` from **liberty\_install\_dir/bin/**.  
-To stop the server, enter the command: `server stop mfp1` from **liberty\_install\_dir/bin/**.
+サーバーの作成後、このサーバーは **liberty\_install\_dir/bin/** から `server start mfp1` で始動することができます。  
+サーバーを停止するには、**liberty\_install\_dir/bin/** からコマンド `server stop mfp1` を入力します。
 
-The default home page can be viewed at [http://localhost:9080](http://localhost:9080).
+デフォルトのホーム・ページは [http://localhost:9080](http://localhost:9080) で表示できます。
 
-> **Note:** For production, you need to make sure that the Liberty server is started as a service when the host computer starts. Making the Liberty server start as a service is not part of this tutorial.
+> **注:** 実動用には、ホスト・コンピューターの始動時に Liberty サーバーがサービスとして始動するようにする必要があります。Liberty サーバーをサービスとして始動させる手順は、このチュートリアルには含まれていません。
 
-## Installing {{ site.data.keys.mf_server }}
+## {{site.data.keys.mf_server }} のインストール
 {: #installing-mobilefirst-server }
-Make sure that Installation Manager V1.8.4 or later is installed. The installation of {{ site.data.keys.mf_server }} might not succeed with an older version of Installation Manager because the postinstallation operations require Java 7. The older versions of Installation Manager come with Java 6.
+Installation Manager V1.8.4 以降がインストールされていることを確認してください。Installation Manager のバージョンがこれより古いと、{{site.data.keys.mf_server }} のインストールが正常に終了しない場合があります。これは、インストール後の操作に Java 7 が必要であり、古いバージョンの Installation Manager に付属するのは Java 6 であるためです。
 
-Run Installation Manager to install the binary files of {{ site.data.keys.mf_server }} on your disk before you create the databases and deploy {{ site.data.keys.mf_server }} to Liberty profile. During the installation of {{ site.data.keys.mf_server }} with Installation Manager, an option is proposed to you to install {{ site.data.keys.mf_app_center }}. Application Center is a different component of the product. For this tutorial, it is not required to be installed with {{ site.data.keys.mf_server }}.
+データベースを作成して {{site.data.keys.mf_server }} を Liberty プロファイルにデプロイする前に、Installation Manager を実行してご使用のディスクに {{site.data.keys.mf_server }} のバイナリー・ファイルをインストールします。Installation Manager を使用した {{site.data.keys.mf_server }} のインストール中に、{{site.data.keys.mf_app_center }} をインストールするオプションが提案されます。 Application Center は、本製品の別のコンポーネントです。このチュートリアルでは、これを {{site.data.keys.mf_server }} と共にインストールする必要はありません。
 
-You also need to specify one property to indicate whether to activate token licensing or not. In this tutorial, it is assumed that token licensing is not needed and the steps to configure {{ site.data.keys.mf_server }} for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you do not have a contract to use token licensing with the Rational  License Key Server, you do not need to activate token licensing. If you activate token licensing, you must configure {{ site.data.keys.mf_server }} for token licensing. 
+また、トークン・ライセンスをアクティブ化するかどうかを指示するプロパティーも 1 つ指定する必要があります。このチュートリアルでは、トークン・ライセンスが不要であることを前提としています。そのため、{{site.data.keys.mf_server }} をトークン・ライセンス用に構成する手順は含まれていません。ただし、実動インストールでは、トークン・ライセンスをアクティブ化する必要があるかどうかを判断する必要があります。Rational License Key Server でトークン・ライセンスを使用する契約がない場合は、トークン・ライセンスをアクティブ化する必要はありません。トークン・ライセンスをアクティブ化する場合は、{{site.data.keys.mf_server }} をトークン・ライセンス用に構成する必要があります。 
 
-In this tutorial, you specify the properties as the parameters through the **imcl** command line. This specification can also be done by using a response file.
+このチュートリアルでは、**imcl** コマンド・ラインを使用して、これらのプロパティーをパラメーターとして指定します。この指定は、応答ファイルを使用しても行うことができます。 
 
-1. Review the license agreement for {{ site.data.keys.mf_server }}. The license files can be viewed when you download the installation repository from Passport Advantage.
-2. Extract the compressed file of {{ site.data.keys.mf_server }} installer, that you downloaded, to a folder.
+1. {{site.data.keys.mf_server }} のご使用条件を確認します。ライセンス・ファイルは、パスポート・アドバンテージからインストール・リポジトリーをダウンロードすると表示できます。
+2. ダウンロードした {{site.data.keys.mf_server }} インストーラーの圧縮ファイルを、任意のフォルダーに解凍します。
 
-    In the steps that follow, the directory where you extract the installer is referred as **mfp\_repository\_dir**. It contains a **MobileFirst\_Platform\_Server/disk1** folder.
-3. Start a command line and go to **installation\_manager\_install\_dir/tools/eclipse/**.
-4. If you accept the license agreement after the review in step 1, install {{ site.data.keys.mf_server }}.
+    以下のステップでは、インストーラーを解凍するディレクトリーは **mfp\_repository\_dir** という名前になっています。この中には **MobileFirst\_Platform\_Server/disk1** フォルダーが含まれています。
+3. コマンド・ラインを開始し、**installation\_manager\_install\_dir/tools/eclipse/** に移動します。
+4. ステップ 1 で確認後ご使用条件に同意したら、{{site.data.keys.mf_server }} をインストールします。
 
-    Enter the command: `imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense`
+    次のコマンドを入力します。`imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense`
 
-    The following properties are defined to have an installation without Application Center:
+    Application Center なしでインストールを行うために、以下のプロパティーを定義しています。 
     * **user.appserver.selection2=none**
     * **user.database.selection2=none**
     * **user.database.preinstalled=false**
 
-    This property indicates that token licensing is not activated: **user.licensed.by.tokens=false**.  
-    Set the value of the **user.use.ios.edition** property to false to install {{ site.data.keys.product }}.
+    このプロパティーは、トークン・ライセンスがアクティブ化されないことを指示します。**user.licensed.by.tokens=false**  
+    {{site.data.keys.product }} をインストールするには、**user.use.ios.edition** プロパティーの値を false に設定します。
 
-An installation directory that contains the resources to install {{ site.data.keys.product_adj }} components is installed.  
-You can find the resources in the following folders:
+{{site.data.keys.product_adj }} コンポーネントをインストールするためのリソースを含むインストール・ディレクトリーがインストールされます。  
+リソースは以下のフォルダーに入っています。
 
-* **MobileFirstServer** folder for {{ site.data.keys.mf_server }}
-* **PushService** folder for {{ site.data.keys.mf_server }} push service
-* **ApplicationCenter** folder for Application Center
-* **Analytics** folder for {{ site.data.keys.mf_analytics }}
+* {{site.data.keys.mf_server }} 用の **MobileFirstServer** フォルダー
+*  {{site.data.keys.mf_server }} プッシュ・サービス用の **PushService** フォルダー
+* Application Center 用の **ApplicationCenter** フォルダー
+* {{site.data.keys.mf_analytics }} 用の **Analytics** フォルダー
 
-The goal of this tutorial is to install {{ site.data.keys.mf_server }} by using the resources in **MobileFirstServer** folder.  
-You can also find some shortcuts for the Server Configuration Tool, Ant, and **mfpadm** program in the **shortcuts** folder.
+このチュートリアルの目的は、**MobileFirstServer** フォルダー内のリソースを使用して {{site.data.keys.mf_server }} をインストールすることです。  
+また、**shortcuts** フォルダーには、サーバー構成ツール、Ant、および **mfpadm** プログラムのショートカットも用意されています。
 
-## Creating a database
+## データベースの作成
 {: #creating-a-database }
-This task is to ensure that a database exists in your DBMS, and that a user is allowed to use the database, create tables in it, and use the tables. You can skip this task if you plan to use Derby database.
+このタスクでは、ご使用の DBMS にデータベースが存在するようにし、ユーザーがそのデータベースの使用、データベース内での表の作成、およびその表の使用を許可されるようにします。Derby データベースを使用する予定である場合は、このタスクはスキップできます。
 
-The database is used to store the technical data that is used by the various {{ site.data.keys.product_adj }} components:
+このデータベースは、さまざまな {{site.data.keys.product_adj }} コンポーネントが使用するテクニカル・データを保管するのに使用します。
 
-* {{ site.data.keys.mf_server }} administration service
-* {{ site.data.keys.mf_server }} live update service
-* {{ site.data.keys.mf_server }} push service
-* {{ site.data.keys.product_adj }} runtime
+* {{site.data.keys.mf_server }} 管理サービス
+* {{site.data.keys.mf_server }} ライブ更新サービス
+* {{site.data.keys.mf_server }} プッシュ・サービス
+* {{site.data.keys.product_adj }}runtime
 
-In this tutorial, the tables for all the components are placed under the same schema.  
-**Note:** The steps in this task are for DB2. If you plan to use MySQL or Oracle, see [Database requirements](../../databases/#database-requirements).
+このチュートリアルでは、すべてのコンポーネント用の表が同じスキーマに置かれています。  
+**注:** このタスクの手順は、DB2 用です。MySQL または Oracle を使用する予定である場合は、[データベース要件](../../databases/#database-requirements)を参照してください。
 
-1. Log on to the computer that is running the DB2 server. It is assumed that a DB2 user, for example named as **mfpuser**, exists.
-2. Verify that this DB2 user has the access to a database with a page size 32768 or more, and is allowed to create implicit schemas and tables in that database.
+1. DB2 サーバーを実行しているコンピューターにログオンします。DB2 ユーザー (例えば **mfpuser** という名前のユーザー) が存在することを想定しています。
+2. この DB2 ユーザーが 32768 以上のページ・サイズのデータベースへのアクセス権限を付与されていること、またそのデータベース内に暗黙的なスキーマおよび表を作成できることを確認してください。
 
-    By default, this user is a user declared on the operating system of the computer that runs DB2. That is, a user with a login for that computer. If such user exists, the next action in step 3 is not needed.
-3. Create a database with the correct page size for this installation if you do not have one.
-    * Open a session with a user that has **SYSADM** or **SYSCTRL** permissions. For example, use the user **db2inst1** that is the default admin user that is created by the DB2 installer.
-    * Open a DB2 command line processor:
-        * On Windows systems, click **Start → IBM DB2 → Command Line Processor**.
-        * On Linux or UNIX systems, go to **~/sqllib/bin** (or **db2\_install\_dir/bin** if sqllib is not created in the administrator's home directory) and enter `./db2`.
-    * Enter the following SQL statements to create a database that is called **MFPDATA**:
+    デフォルトで、このユーザーは、DB2 を実行するコンピューターのオペレーティング・システムで宣言されたユーザーです。つまり、そのコンピューターへのログインができるユーザーです。そのようなユーザーが存在する場合、次のステップ 3 で説明するアクションは不要です。
+3. このインストール済み環境用の正しいページ・サイズのデータベースがなければ、作成してください。
+    * **SYSADM** 権限または **SYSCTRL** 権限を持つユーザーでセッションを開きます。例えば、DB2 インストーラーによって作成されたデフォルトの管理ユーザーであるユーザー **db2inst1** を使用します。
+    * 次のように、DB2 コマンド・ライン・プロセッサーを開きます。
+        * Windows システムでは、**「開始 (Start)」→「IBM DB2」→「コマンド・ライン・プロセッサー (Command Line Processor)」**とクリックします。
+        * Linux システムまたは UNIX システムでは、**~/sqllib/bin** (または、管理者のホーム・ディレクトリーに sqllib が作成されていなければ **db2\_install\_dir/bin**) に移動し、`./db2` と入力します。
+    * 以下の SQL ステートメントを入力して、**MFPDATA** という名前のデータベースを作成します。
     
         ```sql
         CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
@@ -165,73 +167,73 @@ In this tutorial, the tables for all the components are placed under the same sc
         QUIT
         ```
 
-    If you defined a different user name, replace **mfpuser** with your own user name.
+    別のユーザー名を定義した場合は、**mfpuser** を独自のユーザー名に置き換えます。
     
-    > **Note:** The statement does not remove the default privileges granted to PUBLIC in a default DB2 database. For production, you might need to reduce the privileges in that database to the minimum requirement for the product. For more information about DB2 security and an example of the security practices, see [DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
+    > **注:** このステートメントにより、デフォルトの DB2 データベースで PUBLIC に付与されたデフォルトの特権が削除されることはありません。実動では、そのデータベース内の特権を、本製品の最小要件まで減らすことが必要になる場合もあります。DB2 セキュリティーおよびセキュリティーの実施例について詳しくは、[DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/) を参照してください。
 
-## Deploying {{ site.data.keys.mf_server }} to Liberty with Ant tasks
+## Ant タスクを使用した {{site.data.keys.mf_server }} の Liberty へのデプロイ
 {: #deploying-mobilefirst-server-to-liberty-with-ant-tasks }
-You use the Ant tasks to run the following operations:
+Ant タスクを使用して、以下の操作を実行します。
 
-* Create the tables in the database that are needed by the {{ site.data.keys.product_adj }} applications
-* Deploy the web applications of {{ site.data.keys.mf_server }} (the runtime, administration service, live update service, push service components, and {{ site.data.keys.mf_console }}) to Liberty server.
+* データベース内に {{site.data.keys.product_adj }} アプリケーションで必要となる表を作成します。
+* {{site.data.keys.mf_server }} の Web アプリケーション (ランタイム、管理サービス、ライブ更新サービス、プッシュ・サービスのコンポーネント、および {{site.data.keys.mf_console }}) を Liberty サーバーにデプロイします。
 
-The following {{ site.data.keys.product_adj }} applications are not deployed by Ant tasks:
+以下の {{site.data.keys.product_adj }} アプリケーションは Ant タスクではデプロイされません。
 
-#### {{ site.data.keys.mf_analytics }}
+#### {{site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{ site.data.keys.mf_analytics }} is typically deployed on a different set of servers than {{ site.data.keys.mf_server }} because of its high memory requirements. {{ site.data.keys.mf_analytics }} can be installed manually or with Ant tasks. If it is already installed, you can enter its URL, the user name, and password to send data to it in the Server Configuration Tool. The Server Configuration Tool then configures the {{ site.data.keys.product_adj }} apps to send data to {{ site.data.keys.mf_analytics }}. 
+{{site.data.keys.mf_analytics }} はメモリー所要量が大きいため、通常 {{site.data.keys.mf_server }} とは別のサーバー・セットにデプロイされます。{{site.data.keys.mf_analytics }} は、手動で、もしくは Ant タスクを使用してインストールできます。既にインストール済みの場合は、サーバー構成ツールでその URL、ユーザー名、およびパスワードを入力し、それにデータを送信できるようにします。それにより、サーバー構成ツールが {{site.data.keys.mf_analytics }} にデータを送信するように {{site.data.keys.product_adj }} アプリを構成します。 
 
 #### Application Center
 {: #application-center }
-This application can be used to distribute mobile apps internally to the employees that use the apps, or for test purpose. It is independent of {{ site.data.keys.mf_server }} and is not necessary to install together with {{ site.data.keys.mf_server }}. 
+このアプリケーションは、社内でモバイル・アプリを使用する従業員に配布するのに使用したり、テスト目的に使用したりできます。これは {{site.data.keys.mf_server }} とは独立していて、{{site.data.keys.mf_server }} と一緒にインストールする必要はありません。 
 
-Pick the appropriate XML file that contains the Ant tasks and configure the properties.
+Ant タスクを含む適切な XML ファイルを選択し、プロパティーを構成します。
 
-* Make a copy of the **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-liberty-db2.xml** file to a working directory. This file contains the Ant tasks for installing {{ site.data.keys.mf_server }} on Liberty with DB2 as the database. Before you use it, define the properties to describe where the applications of {{ site.data.keys.mf_server }} are to be deployed.
-* Edit the copy of the XML file and set the values of the following properties:
-    * **mfp.admin.contextroot** to **/mfpadmin**
-    * **mfp.runtime.contextroot** to **/mfp**
-    * **database.db2.host** to the value to the host name of the computer that runs your DB2 database. If the database is on the same computer as Liberty, use **localhost**.
-    * **database.db2.port** to the port to which the DB2 instance is listening. By default, it is **50000**.
-    * **database.db2.driver.dir** to the directory that contains your DB2 driver: **db2jcc4.jar** and **db2jcc\_license\_cu.jar**. In a standard DB2 distribution, these files are found in **db2\_install\_dir/java**.
-    * **database.db2.mfp.dbname** to **MFPDATA** - the database name that you create in Creating a database.
-    * **database.db2.mfp.schema** to **MFPDATA** - the value of the schema where the tables for {{ site.data.keys.mf_server }} are to be created. If your DB user is not able to create a schema, set the value to an empty string. For example, **database.db2.mfp.schema=""**.
-    * **database.db2.mfp.username** to the DB2 user that creates the tables. This user also uses the tables at run time. For this tutorial, use **mfpuser**.
-    * **appserver.was.installdir** to the Liberty installation directory.
-    * **appserver.was85liberty.serverInstance** to **mfp1** - the value to the name of the Liberty server where {{ site.data.keys.mf_server }} is to be installed.
-    * **mfp.farm.configure** to **false** to install {{ site.data.keys.mf_server }} in stand-alone mode.
-    * **mfp.analytics.configure** to **false**. The connection to {{ site.data.keys.mf_analytics }} is not in the scope of this tutorial. You can ignore the other properties mfp.analytics.****.
-    * **mfp.admin.client.id** to **admin-client-id**.
-    * **mfp.admin.client.secret** to **adminSecret** (or choose another secret password).
-    * **mfp.push.client.id** to **push-client-id**.
-    * **mfp.push.client.secret** to **pushSecret** (or choose another secret password).
-    * **mfp.config.admin.user** to the user name of the {{ site.data.keys.mf_server }} live update service. In a server farm topology, the user name must be the same for all the members of the farm.
-    * **mfp.config.admin.password** to the password of the {{ site.data.keys.mf_server }} live update service. In a server farm topology, the password must be the same for all the members of the farm.
-* Keep the default values of the following properties as-is:
-    * **mfp.admin.console.install** to true
-    * **mfp.admin.default.user** to **admin** - the name of a default user that is created to log in to {{ site.data.keys.mf_console }}.
-    * **mfp.admin.default.user.initialpassword** to **admin** - the password of a default user that is created to log in to the admin console.
-    * **appserver.was.profile** to **Liberty**. If the value is different, the Ant task assumes that the installation is on a WebSphere Application Server server.
-* Save the file after the properties are defined.
-* Run `mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml` to show a list of possible targets for the Ant file.
-* Run `mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml databases` to create the database tables.
-* Run `mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml install` to install {{ site.data.keys.mf_server }}.
+* **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-liberty-db2.xml** ファイルのコピーを、作業ディレクトリーに作成します。このファイルには、{{site.data.keys.mf_server }} を、データベースとして DB2 が設定された Liberty にインストールするための Ant タスクが含まれています。これを使用する前に、{{site.data.keys.mf_server }} のアプリケーションをどこにデプロイするかを示すプロパティーを定義します。
+* XML ファイルのコピーを編集し、以下のプロパティーの値を設定してください。
+    * **mfp.admin.contextroot** を **/mfpadmin** に。
+    * **mfp.runtime.contextroot** を **/mfp** に。
+    * **database.db2.host** を DB2 データベースが稼働しているコンピューターのホスト名の値に。データベースが Liberty と同じコンピューター上にある場合は、 **localhost** を使用してください。
+    * **database.db2.port** を DB2 インスタンスが listen しているポートに。デフォルトでは、これは **50000** です。
+    * **database.db2.driver.dir** を、ご使用の DB2 ドライバー (**db2jcc4.jar** および **db2jcc\_license\_cu.jar**) が含まれるディレクトリーに。標準の DB2 ディストリビューションでは、これらのファイルは **db2\_install\_dir/java** 内にあります。
+    * **database.db2.mfp.dbname** を **MFPDATA** (『データベースの作成』で作成したデータベース名) に。
+    * **database.db2.mfp.schema** を **MFPDATA** ({{site.data.keys.mf_server }} の表の作成場所となるスキーマの値) に。DB ユーザーがスキーマを作成できない場合は、この値を空ストリングにしてください。例えば、**database.db2.mfp.schema=""** などにします。
+    * **database.db2.mfp.username** を、表を作成する DB2 ユーザーに。このユーザーは、実行時に表の使用も行います。このチュートリアル用には、**mfpuser** を使用します。
+    * **appserver.was.installdir** を Liberty インストール・ディレクトリーに。
+    * **appserver.was85liberty.serverInstance** を **mfp1** ({{site.data.keys.mf_server }} のインストール先の Liberty サーバーの名前の値) に。
+    * **mfp.farm.configure** を **false** に (スタンドアロン・モードで {{site.data.keys.mf_server }} をインストールするため)。
+    * **mfp.analytics.configure** を **false** に。{{site.data.keys.mf_analytics }} への接続は、このチュートリアルの対象範囲に含まれていません。その他のプロパティー mfp.analytics.**** は無視して構いません。
+    * **mfp.admin.client.id** を **admin-client-id** に。
+    * **mfp.admin.client.secret** を **adminSecret** に (または別の秘密パスワードを選択)。
+    * **mfp.push.client.id** を **push-client-id** に。
+    * **mfp.push.client.secret** を **pushSecret** に (または別の秘密パスワードを選択)。
+    * **mfp.config.admin.user** を {{site.data.keys.mf_server }} ライブ更新サービスのユーザー名に。サーバー・ファーム・トポロジーでは、ユーザー名はファームのすべてのメンバーで同じでなければなりません。
+    * **mfp.config.admin.password** を {{site.data.keys.mf_server }} ライブ更新サービスのパスワードに。サーバー・ファーム・トポロジーでは、パスワードはファームのすべてのメンバーで同じでなければなりません。
+* 以下のプロパティーのデフォルト値はそのまま保持します。
+    * **mfp.admin.console.install** を true に。
+    * **mfp.admin.default.user** を **admin** ({{site.data.keys.mf_console }} へのログイン用に作成したデフォルト・ユーザーの名前) に。
+    * **mfp.admin.default.user.initialpassword** を **admin** (管理コンソールへのログイン用に作成したデフォルト・ユーザーのパスワード) に。
+    * **appserver.was.profile** を **Liberty** に。この値が異なる場合、Ant タスクはインストール済み環境が WebSphere Application Server サーバー上にあると想定します。
+* プロパティーの定義が完了したら、ファイルを保存します。
+* `mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml` を実行すると、Ant ファイルの可能なターゲットのリストが表示されます。
+* 次のコマンドを実行してデータベース表を作成します。`mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml databases`
+* 次のコマンドを実行して {{site.data.keys.mf_server }} をインストールします。`mfp_server_install_dir/shortcuts/ant -f configure-liberty-db2.xml install`
 
-> **Note:** If you do not have DB2, and want to test the installation with an embedded Derby as a database, use the **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-liberty-derby.xml** file. However, you cannot do the last step of this tutorial (Creating a farm of two Liberty servers that run {{ site.data.keys.mf_server }}) because the Derby database cannot be accessed by multiple Liberty servers. You must set the properties except the DB2 related ones (**database.db2**, ...). For Derby, set the value of the property **database.derby.datadir** to the directory where Derby database can be created. Also, set the value of the property **database.derby.mfp.dbname** to **MFPDATA**.
+> **注:** DB2 が存在せず、組み込みの Derby をデータベースとして使用してインストール済み環境をテストしたい場合は、**mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-liberty-derby.xml** ファイルを使用してください。ただし、Derby データベースに複数の Liberty サーバーがアクセスすることはできないため、このチュートリアルの最後のステップ ({{site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成) は実行できません。DB2 関連のプロパティー (**database.db2**, ...) を除くプロパティーを設定する必要があります。Derby を使用する場合は、プロパティー **database.derby.datadir** の値を、Derby データベースを作成できるディレクトリーに設定してください。また、プロパティー **database.derby.mfp.dbname** の値を **MFPDATA** に設定します。
 
-The following operations are run by the Ant tasks:
+以下の操作が、Ant タスクにより実行されます。
 
-1. The tables for the following components are created in the database:
-    * The administration service and the live update service. Created by the `admdatabases` Ant target.
-    * The runtime component. Created by the `rtmdatabases` Ant target.
-    * The push service. Created by the `pushdatabases` Ant target.
-2. The WAR files of the various components are deployed to Liberty server. You can see the details of the operations in the log under `adminstall`, `rtminstall`, and `pushinstall` targets.
+1. 以下のコンポーネントの表が、データベース内に作成されます。
+    * 管理サービスおよびライブ更新サービス。`admdatabases` Ant ターゲットにより作成。
+    * ランタイム・コンポーネント。`rtmdatabases` Ant ターゲットにより作成。
+    * プッシュ・サービス。`pushdatabases` Ant ターゲットにより作成。
+2. さまざまなコンポーネントの WAR ファイルが、Liberty サーバーにデプロイされます。操作の詳細は、`adminstall`、`rtminstall`、および `pushinstall` ターゲットの下のログで確認できます。
 
-If you have access to the DB2 server, you can list the tables that are created by using these instructions:
+DB2 サーバーへのアクセス権限を持っている場合は、以下の命令を使用して、作成された表をリストできます。
 
-1. Open a DB2 command line processor with mfpuser as described in step 3 of Creating a database.
-2. Enter the SQL statements:
+1. 『データベースの作成』のステップ 3 の説明に従って、mfpuser で DB2 コマンド・ライン・プロセッサーを開きます。
+2. 以下の SQL ステートメントを入力します。
 
 ```sql
 CONNECT TO MFPDATA USER mfpuser USING mfpuser_password
@@ -240,145 +242,145 @@ DISCONNECT MFPDATA
 QUIT
 ```
 
-Take note of the following database factors:
+データベースの以下のファクターに注意してください。
 
-#### Database user consideration
+#### データベース・ユーザーに関する考慮事項
 {: #database-user-consideration }
-In the Server Configuration Tool, only one database user is needed. This user is used to create the tables, but is also used as the data source user in the application server at run time. In production environment, you might want to restrict the privileges of the user that is used at run time to the strict minimum (`SELECT / INSERT / DELETE / UPDATE)`, and thus provide a different user for deployment in the application server. The Ant files that are provided as examples also use the same users for both cases. However, in the case of DB2, you might want to create your own versions of files. As such, you can distinguish the user that is used to create the databases from the user that is used for the data source in the application server with the Ant tasks.
+サーバー構成ツールで必要とされるデータベース・ユーザーは、1 人のみです。このユーザーは、表の作成に使用されますが、実行時にアプリケーション・サーバーでデータ・ソース・ユーザーとしても使用されます。実稼働環境では、実行時に使用されるこのユーザーの特権を厳密に最小限 (`SELECT / INSERT / DELETE / UPDATE`) に制限し、アプリケーション・サーバーへのデプロイメント用には別のユーザーを指定することもできます。サンプルとして提供されている Ant ファイルも、同じユーザーを両方のケースに使用しています。ただし、DB2 の場合、独自のバージョンのファイルを作成することもできます。それにより、データベースの作成に使用されるユーザーと、Ant タスクでアプリケーション・サーバー内のデータ・ソースに使用されるユーザーとを識別することができます。
 
-#### Database tables creation
+#### データベース表の作成
 {: #database-tables-creation }
-For production, you might want to create the tables manually. For example, if your DBA wants to override some default settings or assign specific table spaces. The database scripts that are used to create the tables are available in **mfp\_server\_install\_dir/MobileFirstServer/databases** and **mfp\_server\_install\_dir/PushService/databases**. For more information, see [Creating the database tables manually](../../databases/#create-the-database-tables-manually).
+実動用には、手動で表を作成することもできます。例えば、DBA がデフォルトの設定値の一部をオーバーライドしたい場合や、特定の表スペースを割り当てたい場合などがそうです。表の作成に使用するデータベース・スクリプトは、**mfp\_server\_install\_dir/MobileFirstServer/databases** および **mfp\_server\_install\_dir/PushService/databases** にあります。詳しくは、[データベース表の手動作成](../../databases/#create-the-database-tables-manually)を参照してください。
 
-The **server.xml** file and some application server setting are modified during the installation. Before each modification, a copy of the **server.xml** file is made, such as **server.xml.bak**, **server.xml.bak1**, and **server.xml.bak2**. To see everything that was added, you can compare the **server.xml** file with the oldest backup (server.xml.bak). On Linux, you can use the command diff `--strip-trailing-cr server.xml server.xml.bak` to see the differences. On AIX , use the command `diff server.xml server.xml.bak` to find the differences.
+**server.xml** ファイルおよび何らかのアプリケーション・サーバーの設定が、インストール中に変更されます。それぞれの変更の前に、**server.xml** ファイルのコピー (**server.xml.bak**、**server.xml.bak1**、**server.xml.bak2** など) が作成されます。追加された内容をすべて確認するには、**server.xml** ファイルを最も古いバックアップ (server.xml.bak) と比較することができます。Linux では、コマンド `--strip-trailing-cr server.xml server.xml.bak` を使用してその差異を確認します。AIX では、コマンド `diff server.xml server.xml.bak` を使用してその差異を確認します。
 
-#### Modification of the application server settings (specific to Liberty):
+#### アプリケーション・サーバーの設定の変更 (Liberty に固有):
 {: #modification-of-the-application-server-settings-specific-to-liberty }
-1. The Liberty features are added.
+1. Liberty のフィーチャーが追加されます。
 
-    The features are added for each application and can be duplicated. For example, the JDBC feature is used for both the administration service and the runtime components. This duplication allows the removal of the features of an application when it is uninstalled without breaking the other applications. For example, if you decide at some point to uninstall the push service from a server and install it on another server. However, not all topologies are possible. The administration service, the live update service, and the runtime component must be on the same application server with Liberty profile. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime). The duplication of features does not create issue unless the features that added are conflicting. Adding the jdbc-40 and jdbc-41 features would cause a problem, but adding twice the same feature does not.
+    それらのフィーチャーは各アプリケーションに対して追加され、重複することがあります。例えば、JDBC フィーチャーは、管理サービスとランタイム・コンポーネントの両方に使用されます。この重複があることで、アプリケーションをアンインストールするとき、他のアプリケーションを中断せずにそのフィーチャーを削除することができます。例えば、ある時点でプッシュ・サービスをサーバーからアンインストールして別のサーバーにインストールすることにした場合などがそうです。ただし、すべてのトポロジーが可能というわけではありません。管理サービス、ライブ更新サービス、およびランタイム・コンポーネントは、Liberty プロファイルのある同じアプリケーション・サーバー上にある必要があります。詳しくは、[{{site.data.keys.mf_server }} 管理サービス、{{site.data.keys.mf_server }} ライブ更新サービス、および {{site.data.keys.product_adj }} ランタイムでの制約](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)を参照してください。フィーチャーが重複していても、追加されたフィーチャー同士が競合しなければ、問題は生じません。jdbc-40 および jdbc-41 のフィーチャーを追加すると問題が生じますが、同じフィーチャーを 2 回追加すると問題は生じません。
     
-2. `host='*'` is added in the `httpEndPoint` declaration.
+2. `host='*'` が `httpEndPoint` 宣言内で追加されます。
 
-    This setting is to allow the connection to the server from all network interfaces. In production, you might want to restrict the host value of the HTTP endpoint.
-3. The **tcpOptions** element (**tcpOptions soReuseAddr="true"**) is added in the server configuration to enable immediate rebind to a port with no active listener and improve the throughput of the server.
-4. A keystore with ID **defaultKeyStore** is created if it does not exist.
+    この設定は、すべてのネットワーク・インターフェースからサーバーへの接続を許可するものです。実動用には、HTTP エンドポイントのホスト値を制限することもできます。
+3. **tcpOptions** エレメント (**tcpOptions soReuseAddr="true"**) は、アクティブなリスナーのないポートへの即時再バインドを可能にし、サーバーのスループットを改善するために、サーバー構成に追加されます。
+4. ID **defaultKeyStore** の鍵ストアが存在しない場合は、作成されます。
 
-    he keystore is to enable the HTTPS port and more specifically, to enable the JMX communication between the administration service (mfp-admin-service.war) and the runtime component (mfp-server.war). The two applications communicate via JMX. In the case of Liberty profile, restConnector is used to communicate between the applications in a single server and also between the servers of a Liberty Farm. It requires the use of HTTPS. For the keystore that is created by default, Liberty profiles creates a certificate with a validity period of 365 days. This configuration is not intended for production use. For production, you need to reconsider to use your own certificate.    
+    この鍵ストアは、HTTPS ポートを使用可能にし、さらに具体的に言えば、管理サービス (mfp-admin-service.war) とランタイム・コンポーネント (mfp-server.war) の間の JMX 通信を使用可能にするためのものです。これらの 2 つのアプリケーションは、JMX を介して通信します。Liberty プロファイルの場合、単一サーバー内のアプリケーション間の通信および Liberty ファームのサーバー間の通信に、restConnector が使用されます。これには HTTPS の使用が必要です。デフォルトで作成される鍵ストア用に、Liberty プロファイルは 365 日の有効期間の証明書を作成します。この構成は、実稼働環境での使用を目的としたものではありません。 実動用には、独自の証明書の使用を再検討する必要があります。    
 
-    To enable JMX, a user with administrator role (named as MfpRESTUser) is created in the basic registry. Its name and password are provided as JNDI properties (mfp.admin.jmx.user and mfp.admin.jmx.pwd) and are used by the runtime component and the administration service to run JMX queries. In the global JMX properties, some properties are used to define the cluster mode (stand-alone server or working in a farm). The Server Configuration Tool sets the mfp.topology.clustermode property to Standalone in Liberty server. In the later part of this tutorial about the creation of a farm, the property is modified to Cluster.
-5. The creation of users (Also valid for Apache Tomcat and WebSphere Application Server)
-    * Optional Users: The Server Configuration Tool creates a test user (admin/admin) so that you can use this user to log to the console after the installation.
-    * Mandatory Users: The Server Configuration Tool also creates a user (named as configUser_mfpadmin with a randomly generated password) to be used by the administration service to contact the local live update service. For Liberty server, MfpRESTUser is created. If your application server is not configured to use a basic registry (for example, an LDAP registry), the Server Configuration Tool is unable to request the name of an existing user. In this case, you need to use Ant tasks.
-6. The **webContainer** element is modified.
+    JMX を使用可能にするために、基本レジストリーに管理者ロールを持つユーザーが (MfpRESTUser という名前で) 作成されます。このユーザーの名前とパスワードは JNDI プロパティー (mfp.admin.jmx.user および mfp.admin.jmx.pwd) として指定されており、JMX 照会を実行するために、ランタイム・コンポーネントおよび管理サービスによって使用されます。グローバル JMX プロパティーでは、一部のプロパティーはクラスター・モード (スタンドアロン・サーバーまたはファーム内で稼働) の定義に使用されます。サーバー構成ツールは Liberty サーバーで mfp.topology.clustermode プロパティーを Standalone に設定します。このチュートリアルの後半のファームの作成に関するパートで、このプロパティーは Cluster に変更されます。
+5. ユーザーが作成されます (Apache Tomcat および WebSphere Application Server にも有効)。
+    * オプション・ユーザー: サーバー構成ツールは、インストール後にコンソールへのログインに使用できるように、テスト・ユーザー (admin/admin) を作成します。
+    * 必須ユーザー: また、サーバー構成ツールは、ローカルライブ更新サービスに接続するために管理サービスが使用するユーザー (名前は configUser_mfpadmin、パスワードはランダムに生成) も作成します。Liberty サーバー用に、MfpRESTUser が作成されます。ご使用のアプリケーション・サーバーが基本レジストリー (例えば LDAP レジストリー) を使用するように構成されていなければ、サーバー構成ツールは既存ユーザーの名前を要求できません。この場合、Ant タスクを使用する必要があります。
+6. **webContainer** エレメントが変更されます。
 
-    The `deferServletLoad` web container custom property is set to false. Both the runtime component and the administration service must start when the server starts. These components can thus register the JMX beans and start the synchronization procedure that allows the runtime component to download all the applications and adapters that it needs to serve.
-7. The default executor is customized to set large values to `coreThreads` and `maxThreads` if you use Liberty V8.5.5.5 or earlier. The default executor is automatically tuned by Liberty as of V8.5.5.6.
+    `deferServletLoad` Web コンテナー・カスタム・プロパティーが false に設定されます。サーバーの始動時に、ランタイム・コンポーネントと管理サービスの両方が始動しなければなりません。そうすることで、これらのコンポーネントは JMX Bean を登録でき、ランタイム・コンポーネントが機能するために必要なアプリケーションおよびアダプターをすべてダウンロードできるようにするための同期プロシージャーを開始できます。
+7. Liberty V8.5.5.5 以前をご使用の場合、デフォルトの executor がカスタマイズされ、`coreThreads` および `maxThreads` に大きな値が設定されます。V8.5.5.6 以降、デフォルトの executor は Liberty により自動調整されます。
 
-    This setting avoids timeout issues that break the startup sequence of the runtime component and administration service on some Liberty versions. The absence of this statement can be the cause of these errors in the server log file:
+    この設定により、一部の Liberty バージョンでランタイム・コンポーネントおよび管理サービスの始動シーケンスを中断するタイムアウトの問題が回避されます。このステートメントがないと、サーバー・ログ・ファイルでこれらのエラーが発生する可能性があります。
     
-    > Failed to obtain JMX connection to access an MBean. There might be a JMX configuration error: Read timed out 
-FWLSE3000E: A server error was detected. 
-    > FWLSE3012E: JMX configuration error. Unable to obtain MBeans. Reason: "Read timed out".
+    > MBean にアクセスするための JMX 接続を取得することができませんでした。JMX 構成のエラーの可能性があります: 読み取りタイムアウト
+FWLSE3000E: サーバー・エラーが検出されました。
+    > FWLSE3012E: JMX 構成のエラー。MBean を取得できません。理由: "読み取りタイムアウト"。
 
-#### Declaration of applications
+#### アプリケーションの宣言
 {: #declaration-of-applications }
-The following applications are installed:
+以下のアプリケーションがインストールされています。
 
-* **mfpadmin**, the administration service
-* **mfpadminconfig**, the live update service
-* **mfpconsole**, {{ site.data.keys.mf_console }}
-* **mobilefirs**t, {{ site.data.keys.product_adj }} runtime component
-* **imfpush**, the push service
+* **mfpadmin**、管理サービス
+* **mfpadminconfig**、ライブ更新サービス
+* **mfpconsole**、{{site.data.keys.mf_console }}
+* **mobilefirs**t、{{site.data.keys.product_adj }} ランタイム・コンポーネント
+* **imfpush**、プッシュ・サービス
 
-The Server Configuration Tool installs all the applications on the same server. You can separate the applications in different application servers, but under certain constraints that are documented in [Topologies and network flows](../../topologies).  
-For an installation on different servers, you cannot use the Server Configuration Tool. Use Ant tasks or install the product manually.
+サーバー構成ツールはすべてのアプリケーションを同じサーバーにインストールします。アプリケーションを別のアプリケーション・サーバーに分離することもできますが、[トポロジーとネットワーク・フロー](../../topologies)に記載された特定の制約を受けることになります。  
+別々のサーバーにインストールする場合は、サーバー構成ツールを使用することはできません。Ant タスクを使用するか、手動で製品をインストールしてください。
 
-#### Administration service
+#### 管理サービス
 {: #administration-service }
-The administration service is the service for managing {{ site.data.keys.product_adj }} applications, adapters, and their configurations. It is secured by security roles. By default, the Server Configuration Tool adds a user (admin) with the administrator role, that you can use to log in to the console for testing. The configuration of the security role must be done after an installation with the Server Configuration Tool (or with Ant tasks). You might want to map the users or the groups that come from the basic registry or an LDAP registry that you configure in your application server to each security role.
+管理サービスは、{{site.data.keys.product_adj }} のアプリケーション、アダプター、およびその構成を管理するためのサービスです。このサービスはセキュリティー・ロールによって保護されます。デフォルトでは、サーバー構成ツールにより管理者ロールを持つユーザー (admin) が作成され、このユーザーを使用して、テストのためにコンソールにログインすることができます。セキュリティー・ロールの構成は、サーバー構成ツールで (または Ant タスクで) インストールを実行した後に行わなければなりません。アプリケーション・サーバーで構成する基本レジストリーまたは LDAP レジストリーからのユーザーまたはグループを、各セキュリティー・ロールにマップすることもできます。
 
-The class loader is set with delegation parent last for Liberty profile and WebSphere Application Server, and for all {{ site.data.keys.product_adj }} applications. This setting is to avoid conflicts between the classes packaged in the {{ site.data.keys.product_adj }} applications and the classes of the application server. Forgetting to set the class loader delegation to parent last is a frequent source of error in manual installation. For Apache Tomcat, this declaration is not needed.
+Liberty プロファイルおよび WebSphere Application Server、ならびにすべての {{site.data.keys.product_adj }} アプリケーションに対し、クラス・ローダー委任が「親が最後」に設定されます。この設定は、{{site.data.keys.product_adj }} アプリケーションにパッケージされたクラスとアプリケーション・サーバーのクラスの間で生じる競合を回避するためのものです。親が最後になるようクラス・ローダーの委任を設定するのを忘れると、手動インストールにおいて頻繁にエラーが発生する原因になります。Apache Tomcat の場合、この宣言は不要です。
 
-In Liberty profile, a common library is added to the application for decrypting passwords that are passed as JNDI properties. The Server Configuration Tool defines two mandatory JNDI properties for the administration service: **mfp.config.service.user** and **mfp.config.service.password**. They are used by the administration service to connect to the live update service with its REST API. More JNDI properties can be defined to tune the application or adapt it to your installation particularities. For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+Liberty プロファイル内では、JNDI プロパティーとして渡されたパスワードの暗号化解除のために、共通ライブラリーがアプリケーションに追加されます。サーバー構成ツールは、管理サービスの 2 つの必須 JNDI プロパティー (**mfp.config.service.user** および **mfp.config.service.password**) を定義します。これらは、管理サービスがその REST API でライブ更新サービスに接続する際に使用します。他にも JNDI プロパティーを定義して、アプリケーションを調整したり、ご使用のインストール済み環境の詳細にアプリケーションを適応させたりすることができます。詳しくは、[{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
 
-The Server Configuration Tool also defines the JNDI properties (the URL and the OAuth parameters to register the confidential clients) for the communication with the push service.  
-The data source to the database that contains the tables for the administration service is declared, as well as a library for its JDBC driver.
+また、サーバー構成ツールは、プッシュ・サービスとの通信のための JNDI プロパティー (機密クライアントを登録するための URL および OAuth パラメーター) も定義します。  
+管理サービス用の表を含むデータベースのデータ・ソース、およびその JDBC ドライバーのライブラリーが宣言されます。
 
-#### Live update service
+#### ライブ更新サービス
 {: #live-update-service }
-The live update service stores information about the runtime and application configurations. It is controlled by the administration service and must always run on the same server as the administration service. The context root is **context\_root\_of\_admin\_serverconfig**. As such, it is **mfpadminconfig**. The administration service assumes that this convention is respected to create the URL of its requests to the REST services of the live update service.
+ライブ更新サービスは、ランタイムおよびアプリケーションの構成に関する情報を保管します。このサービスは管理サービスによって制御されていて、常に管理サービスと同じサーバー上で実行されていなければなりません。コンテキスト・ルートは **context\_root\_of\_admin\_serverconfig** です。そのため、**mfpadminconfig** です。管理サービスはこの規則が順守されていることを想定して、ライブ更新サービスの REST サービスに対するその要求の URL を作成します。
 
-The class loader is set with delegation parent last as discussed in the administration service section.
+管理サービスのセクションで説明されたように、クラス・ローダー委任が「親が最後」に設定されます。
 
-The live update service has one security role, **admin_config**. A user must be mapped to that role. Its password and login must be provided to the administration service with the JNDI property: **mfp.config.service.user** and **mfp.config.service.password**. For information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.mf_server }} live update service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service).
+ライブ更新サービスには 1 つのセキュリティー・ロール **admin_config** があります。そのロールにユーザーをマップする必要があります。そのパスワードおよびログインを、JNDI プロパティー **mfp.config.service.user** および
+**mfp.config.service.password** で管理サービスに指定してください。JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)および[{{site.data.keys.mf_server }} ライブ更新サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service)を参照してください。
 
-It also needs a data source with JNDI name on Liberty profile. The convention is **context\_root\_of\_config\_server/jdbc/ConfigDS**. In this tutorial, it is defined as **mfpadminconfig/jdbc/ConfigDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the live update service are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
+Liberty プロファイル上に、JNDI 名を持つデータ・ソースも必要となります。規則は **context\_root\_of\_config\_server/jdbc/ConfigDS** です。このチュートリアルでは、**mfpadminconfig/jdbc/ConfigDS** として定義されています。サーバー構成ツールまたは Ant タスクを使用したインストールの場合、ライブ更新サービスの表は管理サービスの表と同じデータベースおよびスキーマ内にあります。これらの表にアクセスするユーザーも同じです。
 
-#### {{ site.data.keys.mf_console }}
+#### {{site.data.keys.mf_console }}
 {: #mobilefirst-operations-console }
-{{ site.data.keys.mf_console }} is declared with the same security roles as the administration service. The users that are mapped to the security roles of {{ site.data.keys.mf_console }} must also be mapped to the same security role of the administration service. Indeed, {{ site.data.keys.mf_console }} runs queries to the administration service on the behalf of the console user.
+{{site.data.keys.mf_console }} が、管理サービスと同じセキュリティー・ロールで宣言されます。{{site.data.keys.mf_console }} のセキュリティー・ロールにマップされたユーザーは、管理サービスの同じセキュリティー・ロールにもマップされなければなりません。実際に、{{site.data.keys.mf_console }} はコンソール・ユーザーの代わりに管理サービスに対する照会を実行します。
 
-The Server Configuration Tool positions one JNDI property, **mfp.admin.endpoint**, that indicates how the console connects to the administration service. The default value set by the Server Configuration Tool is `*://*:*/mfpadmin`. The setting means that it must use the same protocol, host name, and port as the incoming HTTP request to the console, and the context root of the administration service is /mfpadmin. If you want to force the request to go though a web proxy, change the default value. For more information about the possible values for this URL, or for information about other possible JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+サーバー構成ツールは 1 つの JNDI プロパティー **mfp.admin.endpoint** を配置します。これはコンソールが管理サービスに接続する方法を指示します。サーバー構成ツールによって設定されるデフォルト値は `*://*:*/mfpadmin` です。この設定は、コンソールへの着信 HTTP 要求と同じプロトコル、ホスト名、およびポートを使用する必要があること、そして管理サービスのコンテキスト・ルートが /mfpadmin であることを意味しています。要求が Web プロキシーを経由するよう強制したい場合は、デフォルト値を変更してください。この URL の可能な値についての詳細情報、およびその他の可能な JNDI プロパティーの情報については、[{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
 
-The class loader is set with delegation parent last as discussed in the administration service section.
+管理サービスのセクションで説明されたように、クラス・ローダー委任が「親が最後」に設定されます。
 
-#### {{ site.data.keys.product_adj }} runtime
-{: #mobilefirst-runtime }
-This application is not secured by a security role. It is not required to log in with a user known by the Liberty server, to access this application. The mobile devices requests are routed to the runtime. They are authenticated by other mechanisms specific to the product (such as OAuth) and the configuration of the {{ site.data.keys.product_adj }} applications.
+#### {{site.data.keys.product_adj }}runtime {: #mobilefirst-runtime }
+このアプリケーションはセキュリティー・ロールによって保護されていません。このアプリケーションにアクセスするために、Liberty サーバーが認識するユーザーでログインする必要はありません。モバイル・デバイス要求はランタイムに経路指定されます。それらの要求は、他の、製品固有のメカニズム (OAuth など) および {{site.data.keys.product_adj }} アプリケーションの構成固有のメカニズムにより認証されます。
 
-The class loader is set with delegation parent last as discussed in the administration service section.
+管理サービスのセクションで説明されたように、クラス・ローダー委任が「親が最後」に設定されます。
 
-It also needs a data source with JNDI name on Liberty profile. The convention is **context\_root\_of\_runtime/jdbc/mfpDS**. In this tutorial, it is defined as **mobilefirst/jdbc/mfpDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the runtime are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
+Liberty プロファイル上に、JNDI 名を持つデータ・ソースも必要となります。規則は **context\_root\_of\_runtime/jdbc/mfpDS** です。このチュートリアルでは、**mobilefirst/jdbc/mfpDS** として定義されています。サーバー構成ツールまたは Ant タスクを使用したインストールの場合、ランタイムの表は管理サービスの表と同じデータベースおよびスキーマ内にあります。これらの表にアクセスするユーザーも同じです。
 
-#### Push service
+#### プッシュ・サービス
 {: #push-service }
-This application is secured by OAuth. The valid OAuth tokens must be included in any HTTP request to the service.
+このアプリケーションは OAuth によって保護されています。サービスに対する HTTP 要求には必ず有効な OAuth トークンが含まれていなければなりません。
 
-The configuration of OAuth is made through the JNDI properties (such as the URL of the authorization server, the client ID, and the password of the push service). The JNDI properties also indicate the security plug-in (**mfp.push.services.ext.security**) and the fact that a relational database is used (**mfp.push.db.type**). The requests from the mobile devices to the push service are routed to this service. The context root of the push service must be /imfpush. The client SDK computes the URL of the push service based on the URL of the runtime with the context root (**/imfpush**). If you want to install the push service on a different server than the runtime, you need to have an HTTP router that can route the device requests to the relevant application server.
+OAuth の構成は JNDI プロパティー (許可サーバーの URL、クライアント ID、およびプッシュ・サービスのパスワードなど) を使用して作成されます。また、JNDI プロパティーは、セキュリティー・プラグイン (**mfp.push.services.ext.security**)、およびリレーショナル・データベースが使用されていること (**mfp.push.db.type**) も指示します。モバイル・デバイスからプッシュ・サービスへの要求は、このサービスに経路指定されます。プッシュ・サービスのコンテキスト・ルートは /imfpush でなければなりません。クライアント SDK は、コンテキスト・ルート (**/imfpush**) のランタイムの URL に基づいて、プッシュ・サービスの URL を計算します。プッシュ・サービスをランタイムとは別のサーバーにインストールする場合は、デバイスの要求を該当するアプリケーション・サーバーに経路指定することができる HTTP ルーターが必要です。
 
-The class loader is set with delegation parent last as discussed in the administration service section.
+管理サービスのセクションで説明されたように、クラス・ローダー委任が「親が最後」に設定されます。
 
-It also needs a data source with JNDI name on Liberty profile. The JNDI name is **imfpush/jdbc/imfPushDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the push service are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
+Liberty プロファイル上に、JNDI 名を持つデータ・ソースも必要となります。JNDI 名は **imfpush/jdbc/imfPushDS** です。サーバー構成ツールまたは Ant タスクを使用したインストールの場合、プッシュ・サービスの表は管理サービスの表と同じデータベースおよびスキーマ内にあります。これらの表にアクセスするユーザーも同じです。
 
-#### Other files modification
+#### 他のファイルの変更
 {: #other-files-modification }
-The Liberty profile **jvm.options** file is modified. A property (**com.ibm.ws.jmx.connector.client.rest.readTimeout**) is defined to avoid timeout issues with JMX when the runtime synchronizes with the administration service.
+Liberty プロファイル **jvm.options** ファイルが変更されます。ランタイムが管理サービスと同期する際の JMX でのタイムアウトの問題を回避するために、プロパティー (**com.ibm.ws.jmx.connector.client.rest.readTimeout**) が定義されます。
 
-### Testing the installation
+### インストール済み環境のテスト
 {: #testing-the-installation }
-After the installation is complete, you can use this procedure to test the components that are installed.
+インストールが完了した後、この手順を使用して、インストールされたコンポーネントをテストすることができます。
 
-1. Start the server by using the command **server start mfp1**. The binary file for the server is in **liberty\_install\_dir/bin**.
-2. Test {{ site.data.keys.mf_console }} with a web browser. Go to [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). By default, the server runs on port 9080. However, you can verify the port in the element `<httpEndpoint>` as defined in the **server.xml** file. A login screen is displayed.
+1. コマンド **server start mfp1** を使用してサーバーを始動します。サーバーのバイナリー・ファイルは **liberty\_install\_dir/bin** にあります。
+2. Web ブラウザーを使用して {{site.data.keys.mf_console }} をテストします。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) に移動します。デフォルトで、サーバーはポート 9080 で稼働します。ただし、**server.xml** ファイルで定義されているエレメント `<httpEndpoint>` でポートを確認できます。ログイン画面が表示されます。
 
-![The console's login screen](mfpconsole_signin.jpg)
+![コンソールのログイン画面](mfpconsole_signin.jpg)
 
-3. Log in with **admin/admin**. This user is created by default by the Server Configuration Tool.
+3. **admin/admin** でログインします。このユーザーは、デフォルトでサーバー構成ツールによって作成されます。
 
-    > **Note:** If you connect with HTTP, the login ID and password are sent in clear text in the network. For a secure login, use HTTPS to log to the server. You can see the HTTPS port of the Liberty server in the httpsPort attribute of the `<httpEndpoint>` element in the **server.xml** file. By default, the value is 9443.
+    > **注:** HTTP で接続する場合、ログイン ID とパスワードがネットワークで平文で送信されます。セキュアなログインのためには、HTTPS を使用してサーバーにログインしてください。Liberty サーバーの HTTPS ポートは、**server.xml** ファイル内の `<httpEndpoint>` エレメントの httpsPort 属性で確認できます。デフォルトで、この値は 9443 です。
 
-4. Log out of the console with **Hello Admin → Sign Out**.
-5. Enter the following URL: [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) in the web browser and accept the certificate. By default, the Liberty server generates a default certificate that is not known by your web browser, you need to accept the certificate. Mozilla Firefox presents this certification as a security exception.
-6. Log in again with **admin/admin**. The login and password are encrypted between your web browser and {{ site.data.keys.mf_server }}. In production, you might want to close the HTTP port.
+4. **「管理者トップ (Hello Admin)」→「サインアウト (Sign Out)」**で、コンソールをログアウトします。
+5. Web ブラウザーに次の URL を入力して、証明書を受け入れます。[https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole)デフォルトでは、Web ブラウザーに認識されないデフォルト証明書が Liberty サーバーにより生成されるため、証明書を受け入れる必要があります。Mozilla Firefox はこの認証をセキュリティー例外として提示します。
+6. **admin/admin** で再度ログインします。ご使用の Web ブラウザーと {{site.data.keys.mf_server }} の間では、ログインおよびパスワードが暗号化されます。実動では、HTTP ポートを閉じることもできます。
 
-## Creating a farm of two Liberty servers that run {{ site.data.keys.mf_server }}
+## {{site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成
 {: #creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server }
-In this task, you will create a second Liberty server that runs the same {{ site.data.keys.mf_server }} and connected to the same database. In production, you might use more than one server for performance reasons, to have enough servers to serve the number of transactions per second that is needed for your mobile applications at peak time. It is also for high availability reasons to avoid having a single point of failure.
+このタスクでは、同じ {{site.data.keys.mf_server }} を実行し、同じデータベースに接続する 2 番目の Liberty サーバーを作成します。実動では、モバイル・アプリケーションがピーク時に必要とする 1 秒 当たりのトランザクション数に対応するのに十分なサーバーを用意するため、パフォーマンス上の理由で複数のサーバーを使用する場合もあります。また、Single Point of Failure を避けるため、高可用性を実現するという理由もあります。
 
-When you have more than one server that runs {{ site.data.keys.mf_server }}, the servers must be configured as a farm. This configuration enables any administration service to contact all the runtimes of a farm. If the cluster is not configured as a farm, only the runtime that runs in the same application server as the management service that runs the management operation is notified. Others runtimes are not aware of the change. For example, you deploy a new version of an adapter in a cluster that is not configured as a farm, only one server would serve the new adapter. The other servers would continue to serve the old adapter. The only situation where you can have a cluster and do not need to configure a farm is when you install your servers on WebSphere Application Server Network Deployment. The administration service is able to find all the servers by querying the JMX beans with the deployment manager. The deployment manager must be running to allow management operations because it is used to provide the list of the {{ site.data.keys.product_adj }} JMX beans of the cell.
+{{site.data.keys.mf_server }} を実行するサーバーが複数ある場合、サーバーはファームとして構成する必要があります。この構成により、どの管理サービスもファームのすべてのランタイムに接続することが可能になります。クラスターがファームとして構成されていない場合、管理操作を実行する管理サービスと同じアプリケーション・サーバーで実行されるランタイムのみが通知を受けます。その他のランタイムは、変更を認識しません。例えば、ファームとして構成されていないクラスターに、新しいバージョンのアダプターをデプロイした場合、その新しいアダプターにサービスを提供するのは 1 つのサーバーのみです。その他のサーバーは、古いアダプターへのサービス提供を継続します。クラスターを持っていて、ファームを構成する必要がない唯一の状況は、サーバーを WebSphere Application Server Network Deployment にインストールする場合のみです。デプロイメント・マネージャーで JMX Bean を照会することで、管理サービスはすべてのサーバーを見つけることができます。管理操作を行えるようにするには、デプロイメント・マネージャーが実行中でなければなりません。これは、セルの {{site.data.keys.product_adj }} JMX Bean のリストを提供するのにデプロイメント・マネージャーが使用されるためです。
 
-When you create a farm, you also need to configure an HTTP server to send queries to all the members of the farm. The configuration of an HTTP server is not included in this tutorial. This tutorial is only about configuring the farm so that management operations are replicated to all the runtime components of the cluster.
+また、ファームを作成する際、そのファームのすべてのメンバーに対して照会を送信するよう、HTTP サーバーを構成することも必要です。HTTP サーバーの構成は、このチュートリアルには含まれていません。このチュートリアルで扱うのは、管理操作がクラスターのすべてのランタイム・コンポーネントに複製されるようにファームを構成することのみです。
 
-1. Create a second Liberty server on the same computer.
-    * Start a command line.
-    * Go to **liberty\_install\_dir/bin**, and enter server create **mfp2**.
+1. 同じコンピューター上に、2 番目の Liberty サーバーを作成します。
+    * コマンド・ラインを開始します。
+    * **liberty\_install\_dir/bin** に移動し、server create **mfp2** と入力します。
 
-2. Modify the HTTP and HTTPS ports of the server **mfp2** so that they do not conflict with the ports of server **mfp1**.
-    * Go to the second server directory.
+2. サーバー **mfp2** の HTTP ポートおよび HTTPS ポートを変更して、サーバー **mfp1** のポートと競合しないようにします。
+    * 2 番目のサーバーのディレクトリーに移動します。
 
-        The directory is **liberty\_install\_dir/usr/servers/mfp2** or **WLP\_USER\_DIR/servers/mfp2** (if you modify the directory as described in step 6 of Installing WebSphere Application Server Liberty Core).
-    * Edit the **server.xml** file. Replace
+        ディレクトリーは **liberty\_install\_dir/usr/servers/mfp2** または **WLP\_USER\_DIR/servers/mfp2** (『WebSphere Application Server Liberty Core のインストール』のステップ 6 に説明されたようにディレクトリーを変更した場合) です。
+    * **server.xml** ファイルを編集します。 置換は、
 
       ```xml
       <httpEndpoint id="defaultHttpEndpoint"
@@ -386,7 +388,7 @@ When you create a farm, you also need to configure an HTTP server to send querie
         httpsPort="9443" />
       ```
         
-      With:
+      これを以下のように置き換えます。
         
       ```xml
       <httpEndpoint id="defaultHttpEndpoint"
@@ -394,63 +396,63 @@ When you create a farm, you also need to configure an HTTP server to send querie
         httpsPort="9444" />
       ```
         
-      The HTTP and HTTPS ports of the server mfp2 do not conflict with the ports of the server mfp1 with this change. Make sure to modify the ports before you run the installation of {{ site.data.keys.mf_server }}. Otherwise, if you modify the port after the installation is made, you also need to reflect the change of the port in the JNDI property: **mfp.admin.jmx.port**.
+      この変更により、サーバー mfp2 の HTTP ポートおよび HTTPS ポートはサーバー mfp1 のポートと競合しなくなります。{{site.data.keys.mf_server }} のインストールを実行する前に必ずポートを変更するようにしてください。 そうでない場合、インストールが完了した後にポートを変更するのであれば、JNDI プロパティー **mfp.admin.jmx.port** にもポートの変更を反映させなければなりません。
 
-3. Copy the Ant file that you used in [Deploying {{ site.data.keys.mf_server }} to Liberty with Ant tasks](#deploying-mobilefirst-server-to-liberty-with-ant-tasks), and change the value of the property **appserver.was85liberty.serverInstance** to **mfp2**. The Ant tasks detect that the databases exist and do not create the tables (see the following log extract). Then, the applications are deployed to the server.
+3. [Ant タスクを使用した {{site.data.keys.mf_server }} の Liberty へのデプロイ](#deploying-mobilefirst-server-to-liberty-with-ant-tasks)で使用した Ant ファイルをコピーして、プロパティー **appserver.was85liberty.serverInstance** の値を **mfp2** に変更します。Ant タスクはデータベースが存在することを検出し、表を作成しません (以下のログ抽出を参照)。次に、アプリケーションがサーバーにデプロイされます。  
 
    ```bash
-   [configuredatabase] Checking connectivity to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser'...
-   [configuredatabase] Database MFPDATA exists.
-   [configuredatabase] Connection to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser' succeeded.
-   [configuredatabase] Getting the version of MobileFirstAdmin database MFPDATA...
-   [configuredatabase] Table MFPADMIN_VERSION exists, checking its value...
+   [configuredatabase] スキーマ 'MFPDATA' およびユーザー 'mfpuser' で MobileFirstAdmin データベース MFPDATA への接続をチェックしています...
+   [configuredatabase] データベース MFPDATA が存在します。
+   [configuredatabase] スキーマ 'MFPDATA' およびユーザー 'mfpuser' での MobileFirstAdmin データベース MFPDATA への接続が成功しました。
+   [configuredatabase] MobileFirstAdmin データベース MFPDATA のバージョンを取得しています...
+   [configuredatabase] 表 MFPADMIN_VERSION が存在し、その値をチェックしています...
    [configuredatabase] GetSQLQueryResult => MFPADMIN_VERSION = 8.0.0
-   [configuredatabase] Configuring MobileFirstAdmin database MFPDATA...
-   [configuredatabase] The database is in latest version (8.0.0), no upgrade required.
-   [configuredatabase] Configuration of MobileFirstAdmin database MFPDATA succeeded.
+   [configuredatabase] MobileFirstAdmin データベース MFPDATA を構成しています...
+   [configuredatabase] データベースは最新バージョン (8.0.0) です。アップグレードは必要ありません。
+   [configuredatabase] MobileFirstAdmin データベース MFPDATA の構成が正常終了しました。
    ```
 
-4. Test the two servers with HTTP connection.
-    * Open a web browser.
-    * Enter the following URL: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The console is served by server mfp1.
-    * Log in with **admin/admin**.
-    * Open a tab in the same web browser and enter the URL: [http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole). The console is served by server mfp2.
-    * Log in with admin/admin. If the installation is done correctly, you can see the same welcome page in both tabs after login.
-    * Return to first browser tab and click **Hello, admin → Download Audit Log**. You are logged out of the console and see the login screen again. This logout behavior is an issue. The problem happens because when you log on to server mfp2, a Lightweight Third Party Authentication (LTPA) token is created and stored in your browser as a cookie. However, this LTPA token is not recognized by server mfp1. Switching between servers is likely to happen in a production environment when you have an HTTP load balancer in front of the cluster. To resolve this issue, you must ensure that both servers (mfp1 and mfp2) generate the LTPA tokens with the same secret keys. Copy the LTPA keys from server mfp1 to server mfp2.
+4. HTTP 接続で 2 つのサーバーをテストします。
+    * Web ブラウザーを開きます。
+    * 次の URL を入力します。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)コンソールはサーバー mfp1 によってサービスを提供されます。
+    * **admin/admin** でログインします。
+    * 同じ Web ブラウザーでタブを開いて、次の URL を入力します。 [http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole)コンソールはサーバー mfp2 によってサービスを提供されます。
+    * admin/admin でログインします。インストールが正しく行われると、ログイン後、両方のタブで同じウェルカム・ページが表示されます。
+    * 最初のブラウザー・タブに戻り、**「管理者トップ (Hello, Admin)」→「監査ログのダウンロード (Download Audit Log)」**をクリックします。コンソールからログアウトし、ログイン画面が再度表示されます。 このログアウトの動作は、問題点です。この問題が発生するのは、サーバー mfp2 にログオンする際に Lightweight Third Party Authentication (LTPA) トークンが作成され、ご使用のブラウザーに Cookie として保管されるためです。しかし、この LTPA トークンはサーバー mfp1 からは認識されません。クラスターの前に HTTP ロード・バランサーがある場合、実稼働環境ではサーバーの切り替えが行われる可能性があります。この問題を解決するには、両方のサーバー (mfp1 および mfp2) が同じ秘密鍵を使用して LTPA トークンを生成するようにしなければなりません。LTPA 鍵をサーバー mfp1 からサーバー mfp2 にコピーしてください。
     
-        * Stop both servers with these commands:
+        * 以下のコマンドで両方のサーバーを停止します。
         
           ```bash
           server stop mfp1
           server stop mfp2
           ```
         
-        * Copy the LTPA keys of server mfp1 to server mfp2.
-            From **liberty\_install\_dir/usr/servers** or **WLP\_USER\_DIR/servers**, run the following command depending on your operating system. 
-            * On UNIX: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
-            * On Windows: `copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
-        * Restart the servers. Switch from one browser tab to another other does not require you to relogin. In a Liberty server farm, all servers must have the same LTPA keys.
+        * サーバー mfp1 の LTPA 鍵をサーバー mfp2 にコピーします。
+            **liberty\_install\_dir/usr/servers** または **WLP\_USER\_DIR/servers** から、オペレーティング・システムに応じて以下のコマンドを実行してください。 
+            * UNIX の場合: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
+            * Windows の場合: `copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
+        * サーバーを再始動します。1 つのブラウザー・タブから別のブラウザー・タブに切り替えても、再度ログインを要求されることはありません。Liberty サーバー・ファームでは、すべてのサーバーが同じ LTPA 鍵を持っている必要があります。
     
-5. Enable the JMX communication between the Liberty servers.
+5. Liberty サーバー間の JMX 通信を使用可能にします。
 
-    The JMX communication with Liberty, is done via the Liberty REST connector over the HTTPS protocol. To enable this communication, each server of the farm must be able to recognize the SSL certificate of the other members. You need to exchange the HTTPS certificates in their truststores. Use IBM utilities such as Keytool, which is part of the IBM JRE distribution in **java/bin** to configure the truststore. The locations of the keystore and truststore are defined in the **server.xml** file. By default, the keystore of Liberty profile is at **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**. The password of this default keystore, as can be seen in the **server.xml** file, is **mobilefirst**.
+    Liberty との JMX 通信は、Liberty REST コネクター経由で、HTTPS プロトコルを使用して行われます。この通信を使用可能にするには、ファームの各サーバーが他のメンバーの SSL 証明書を認識できなければなりません。トラストストア内の HTTPS 証明書を交換する必要があります。IBM ユーティリティー (**java/bin** 内の IBM JRE ディストリビューションの一部である Keytool など) を使用して、トラストストアを構成します。鍵ストアおよびトラストストアのロケーションは、**server.xml** ファイルに定義されています。デフォルトで、Liberty プロファイルの鍵ストアは **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks** にあります。**server.xml** ファイルで確認できるとおり、このデフォルトの鍵ストアのパスワードは **mobilefirst** です。
         
-    > **Tip:** You can change it with the Keytool utility, but you must also change the password in the server.xml file so that Liberty server can read that keystore. In this tutorial, use the default password.
+    > **ヒント:** このパスワードは Keytool ユーティリティーで変更できますが、Liberty サーバーがその鍵ストアを読み取れるように、server.xml ファイルでもパスワードの変更を行う必要があります。このチュートリアルでは、デフォルトのパスワードを使用します。
     
-    * In **WLP\_USER\_DIR/servers/mfp1/resources/security**, enter `keytool -list -keystore key.jks`. The command shows the certificates in the keystore. There is only one named **default**. You are prompted for the password of the keystore (mobilefirst) before you can see the keys. This is the case for all the next commands with Keytool utility.
-    * Export the default certificate of server mfp1 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
-    * In **WLP\_USER\_DIR/servers/mfp2/resources/security**, export the default certificate of server mfp2 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.
-    * In the same directory, import the certificate of server mfp1 with the command: `keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`. The certificate of server mfp1 is imported into the keystore of server mfp2 so that server mfp2 can trust the HTTPS connections to server mfp1. You are asked to confirm that you trust the certificate.
-    * In **WLP\_USER\_DIR/servers/mfp1/resources/security**, import the certificate of server mfp2 with the command: `keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`. After this step, the HTTPS connections between the two servers are possible.
+    * **WLP\_USER\_DIR/servers/mfp1/resources/security** で、`keytool -list -keystore key.jks` と入力します。このコマンドにより、鍵ストア内の証明書が表示されます。存在するのは **default** という名前の証明書 1 つのみです。鍵が表示される前に、鍵ストアのパスワード (mobilefirst) を要求されます。これは、Keytool ユーティリティーを使用する次のすべてのコマンドに当てはまります。
+    * 次のコマンドを使用して、サーバー mfp1 のデフォルト証明書をエクスポートします。`keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`
+    * **WLP\_USER\_DIR/servers/mfp2/resources/security** で、次のコマンドを使用してサーバー mfp2 のデフォルト証明書をエクスポートします。`keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`
+    * 同じディレクトリーで、次のコマンドを使用してサーバー mfp1 の証明書をインポートします。`keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`。サーバー mfp1 の証明書がサーバー mfp2 の鍵ストアにインポートされ、サーバー mfp2 がサーバー mfp1 への HTTPS 接続を信頼できるようになります。この証明書を信頼するかどうか確認を求められます。
+    * **WLP\_USER\_DIR/servers/mfp1/resources/security** で、次のコマンドを使用してサーバー mfp2 の証明書をインポートします。`keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`このステップの後、2 つのサーバー間の HTTPS 接続が可能になります。
 
-## Testing the farm and see the changes in {{ site.data.keys.mf_console }}
+## ファームのテストと {{site.data.keys.mf_console }} での変更内容の確認
 {: #testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console }
 
-1. Start the two servers:
+1. 以下の 2 つのサーバーを始動します。
 
    ```bash
-   server start mfp1
-   server start mfp2
-   ```
+    server start mfp1
+    server start mfp2
+    ```
         
-2. Access the console. For example, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole), or [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) in HTTPS. In the left sidebar, an extra menu that is labeled as **Server Farm Nodes** appears. If you click **Server Farm Nodes**, you can the status of each node. You might need to wait a bit for both nodes to be started.
+2. コンソールにアクセスします。例えば、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)、または HTTPS では [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) です。左側のサイドバーに、**「サーバー・ファームのノード」**という名前の追加メニューが表示されます。**「サーバー・ファームのノード」**をクリックすると、各ノードの状況を表示できます。両方のノードが始動するまで、しばらく待たなければならない場合があります。

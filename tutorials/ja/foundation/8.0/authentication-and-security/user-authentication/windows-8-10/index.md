@@ -1,33 +1,33 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications
+title: Windows 8.1 Universal および Windows 10 UWP アプリケーションでのチャレンジ・ハンドラーの実装
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: Download RememberMe Win8 project
+  - name: RememberMe Win8 プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80
-  - name: Download RememberMe Win10 project
+  - name: RememberMe Win10 プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80
-  - name: Download PreemptiveLogin Win8 project
+  - name: PreemptiveLogin Win8 プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80
-  - name: Download PreemptiveLogin Win10 project
+  - name: PreemptiveLogin Win10 プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: SecurityCheck Maven プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck** [challenge handler implementation](../../credentials-validation/windows-8-10) tutorial.
+**前提条件:** **CredentialsValidationSecurityCheck** [チャレンジ・ハンドラー実装](../../credentials-validation/windows-8-10)のチュートリアルをお読みください。
 
-The challenge handler tutorial demonstrate a few additional features (APIs) such as preemptive `Login`, `Logout`, and `ObtainAccessToken`.
+このチャレンジ・ハンドラーのチュートリアルでは、プリエンプティブ `Login`、`Logout`、および `ObtainAccessToken` など、いくつかの追加機能 (API) を例示します。
 
-## Login
+## ログイン
 {: #login }
-In this example, `UserLoginSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a Boolean `rememberMe` key, which tells the security check to remember this user for a longer period. In the sample application, this is collected by a Boolean value from a checkbox in the login form.
+この例では、`UserLoginSecurityCheck` は `username` と `password` という *key:value* を必要とします。オプションで、ブール型の `rememberMe` キーも受け入れます。これは、このユーザーを長期間記憶しておくようにセキュリティー検査に指示するためのものです。サンプル・アプリケーションの場合、この情報はログイン・フォームのチェック・ボックスからブール値を使用して収集されます。
 
-The `credentials` argument is a `JSONObject` containing `username`, `password`, and `rememberMe`:
+`credentials` 引数は、`username`、`password`、および `rememberMe` を含んでいる `JSONObject` です。
 
 ```csharp
 public override void SubmitChallengeAnswer(object answer)
@@ -36,19 +36,19 @@ public override void SubmitChallengeAnswer(object answer)
 }
 ```
 
-You may also want to log in a user without any challenge being received. For example, you can show a login screen as the first screen of the application, or show a login screen after a logout, or a login failure. Those scenarios are called **preemptive logins**.
+チャレンジを何も受け取っていない場合でもユーザーのログインを可能にする必要がある場合があります。例えば、アプリケーションの最初の画面としてログイン画面を表示したり、ログアウト後やログイン失敗後にログイン画面を表示したりできます。このようなシナリオを**プリエンプティブ・ログイン**と呼びます。
 
-You cannot call the `challengeAnswer` API if there is no challenge to answer. For those scenarios, the {{ site.data.keys.product }} SDK includes the `Login` API:
+応答すべきチャレンジが存在しない場合、`challengeAnswer` API を呼び出すことはできません。そのようなシナリオ用に、{{site.data.keys.product }} SDK には `Login` API が組み込まれています。
 
 ```csharp
 WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Login(String securityCheckName, JObject credentials);
 ```
 
-If the credentials are wrong, the security check sends back a **challenge**.
+資格情報に問題がある場合、セキュリティー検査は**チャレンジ**を返信します。
 
-It is the developer's responsibility to know when to use `Login`, as oppposed to `challengeAnswer`, based on the application's needs. One way to achieve this is to define a Boolean flag, for example `isChallenged`, and set it to `true` when `HandleChallenge` is reached, or set it to `false` in any other cases (failure, success, initialization, etc).
+アプリケーションのニーズに応じて、どのような場合に `challengeAnswer` でなく `Login` を使用するかを判断することは開発者の責任です。これを実現する方法の 1 つとして、ブール値のフラグ (例えば、`isChallenged`) を定義し、`HandleChallenge` に到達したときにフラグを `true` に設定し、それ以外のケース (失敗、成功、初期設定時など) では `false` に設定する方法があります。
 
-When the user clicks the **Login** button, you can dynamically choose which API to use:
+ユーザーが**「ログイン」**ボタンをクリックした時点で、使用すべき API が動的に選択されます。
 
 ```csharp
 public async void login(JSONObject credentials)
@@ -63,11 +63,11 @@ public async void login(JSONObject credentials)
     }
 }
 ```
-## Obtaining an access token
+## アクセス・トークンの取得
 {: #obtaining-an-access-token }
-Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in, when the application starts.
+このセキュリティー検査は **RememberMe** 機能 (`rememberMe` ブール・キー) をサポートしているため、アプリケーションの開始時に、クライアントがログインしているかどうかをチェックすると役立ちます。
 
-The {{ site.data.keys.product }} SDK provides the `ObtainAccessToken` API to ask the server for a valid token:
+{{site.data.keys.product }} SDK は、サーバーに有効なトークンを尋ねるための `ObtainAccessToken` API を提供しています。
 
 ```csharp
 WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken(String scope);
@@ -83,16 +83,16 @@ else
 
 ```
 
-If the client is already logged-in or is in the *remembered* state, the API triggers a success. If the client is not logged in, the security check sends back a challenge.
+クライアントが既にログインしているか、*記憶されている* 状態である場合、API は成功をトリガーします。クライアントがログインしていない場合、セキュリティー検査はチャレンジを返信します。
 
-The `ObtainAccessToken` API takes in a **scope**. The scope can be the name of your **security check**.
+`ObtainAccessToken` API は、**スコープ**を受け入れます。スコープは、**セキュリティー検査**の名前にできます。
 
-> Learn more about **scopes** in the [Authorization concepts](../../) tutorial.
+> **スコープ**について詳しくは、[許可の概念](../../)チュートリアルを参照してください。
 
-## Retrieving the authenticated user
+## 認証済みユーザーの取得
 {: #retrieving-the-authenticated-user }
-The challenge handler `HandleSuccess` method receives a `JObject identity` as a parameter.
-If the security check sets an `AuthenticatedUser`, this object contains the user's properties. You can use `HandleSuccess` to save the current user:
+チャレンジ・ハンドラー `HandleSuccess` メソッドは、`JObject identity` をパラメーターとして受け取ります。
+セキュリティー検査が `AuthenticatedUser` を設定した場合、このオブジェクトにはユーザーのプロパティーが含まれます。現行ユーザーを保存するには、`HandleSuccess` を使用できます。
 
 ```csharp
 public override void HandleSuccess(JObject identity)
@@ -105,12 +105,12 @@ public override void HandleSuccess(JObject identity)
         localSettings.Values["useridentity"] = identity.GetValue("user");
 
     } catch (Exception e) {
-        Debug.WriteLine(e.StackTrace);
+Debug.WriteLine(e.StackTrace);
     }
 }
 ```
 
-Here, `identity` has a key called `user` which itself contains a `JObject` representing the `AuthenticatedUser`:
+ここで、`identity` には `user` というキーがあり、これ自身も `AuthenticatedUser` を表す `JObject` を含んでいます。
 
 ```json
 {
@@ -123,32 +123,32 @@ Here, `identity` has a key called `user` which itself contains a `JObject` repre
 }
 ```
 
-## Logout
+## ログアウト
 {: #logout }
-The {{ site.data.keys.product }} SDK also provides a `Logout` API to logout from a specific security check:
+{{site.data.keys.product }} SDK は、特定のセキュリティー検査からログアウトするための `Logout` API も提供しています。
 
 ```csharp
 WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Logout(securityCheckName);
 ```
 
-## Sample applications
+## サンプル・アプリケーション
 {: #sample-applications }
-Two samples are associated with this tutorial:
+このチュートリアルには、以下の 2 つのサンプルが関連付けられています。
 
-- **PreemptiveLoginWin**: An application that always starts with a login screen, using the preemptive `Login` API.
-- **RememberMeWin**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
+- **PreemptiveLoginWin**: プリエンプティブ `Login` API を使用して、常にログイン画面から開始するアプリケーション。
+- **RememberMeWin**: *「ユーザーを記憶する (Remember Me)」*チェック・ボックスがあるアプリケーション。ユーザーは、次にアプリケーションを開くとき、ログイン画面をバイパスできます。
 
-Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapters** adapter Maven project.
+両方のサンプルが、**SecurityCheckAdapters** アダプター Maven プロジェクトに含まれる同じ `UserLoginSecurityCheck` を使用します。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80) the Remember Me Win8 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80) the Remember Me Win10 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80) the PreemptiveLogin Win8 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80) the PreemptiveLoginWin10 project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) して SecurityCheckAdapters Maven プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80) して Remember Me Win8 プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80) して Remember Me Win10 プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80) して PreemptiveLogin Win8 プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80) して PreemptiveLoginWin10 プロジェクトをダウンロードします。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
-The username/password for the app must match, i.e. "john"/"john".
+サンプルの README.md ファイルの指示に従ってください。
+アプリケーションのユーザー名/パスワードは一致しなければなりません (すなわち、"john"/"john")。
 
-![sample application](RememberMe.png)
+![サンプル・アプリケーション](RememberMe.png)

@@ -1,115 +1,125 @@
 ---
 layout: tutorial
-title: Using Direct Update in Cordova applications
-breadcrumb_title: Direct Update
+title: Cordova アプリケーションでのダイレクト・アップデートの使用
+breadcrumb_title: ダイレクト・アップデート
 relevantTo: [cordova]
 weight: 8
 downloads:
-  - name: Download Cordova project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
+  - name: Cordova プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-With Direct Update, Cordova applications can be updated "over-the-air" with refreshed web resources, such as changed, fixed or new applicative logic (JavaScript), HTML, CSS or images. Organizations are thus able to ensure that end-users always use the latest version of the application.
+ダイレクト・アップデートを使用すると、無線通信経由で、変更済み、修正済み、または新規の応用ロジック (JavaScript)、HTML、CSS、またはイメージなど、更新された Web リソースで Cordova アプリケーションを更新できます。これにより、組織は、常に最新バージョンのアプリケーションをエンド・ユーザーが使用できるようにできます。
 
-In order to update an application, the updated web resources of the application need to be packaged and uploaded to the {{ site.data.keys.mf_server }} using the {{ site.data.keys.mf_cli }} or by deploying a generated archive file. Direct Update is then activated automatically  Once activated, it will be enforced on every request to a protected resource.
+アプリケーションを更新するには、アプリケーションの更新された Web リソースをパッケージにし、{{site.data.keys.mf_cli }} を使用するか生成済みアーカイブ・ファイルをデプロイして、{{site.data.keys.mf_server }} にアップロードする必要があります。すると、ダイレクト・アップデートが自動的にアクティブ化されます。アクティブ化されると、保護リソースへの要求のたびにダイレクト・アップデートが施行されます。
 
-**Supported Cordova platforms**  
-Direct Update is supported in the Cordova iOS and Cordova Android platforms.
+**サポートされる Cordova プラットフォーム**  
+ダイレクト・アップデートは、Cordova iOS および Cordova Android のプラットフォームでサポートされます。
 
-**Direct Update in development, testing, and production**  
-For development and testing purposes, developers typically use Direct Update by simply uploading an archive to the development server. While this process is easy to implement, it is not very secure. For this phase, an internal RSA key pair that is extracted from an embedded {{ site.data.keys.product_adj }} self-signed certificate is used.
+**開発、テスト、実動でのダイレクト・アップデート**  
+開発とテストの目的で、開発者は通常、単にアーカイブを開発サーバーにアップロードすることにより、ダイレクト・アップデートを使用します。
+このプロセスは簡単に実装できる一方で、あまり安全ではありません。
+このフェーズでは、組み込み {{site.data.keys.product_adj }}
+自己署名証明書から抽出された内部 RSA 鍵ペアが使用されます。
 
-For the phases of live production or even pre-production testing, however, it is strongly recommended to implement secure Direct Update before you publish your application to the app store. Secure Direct Update requires an RSA key pair that is extracted from a real CA signed server certificate.
+ただし、実際の実動または実動前テストのフェーズの場合、アプリケーションをアプリケーション・ストアに公開する前に、セキュアなダイレクト・アップデートを実装することを強くお勧めします。セキュアなダイレクト・アップデートでは、実際の CA 署名サーバー証明書から抽出される RSA 鍵ペアが必要です。
 
-**Note:** Take care that you do not modify the keystore configuration after the application was published, updates that are downloaded can no longer be authenticated without reconfiguring the application with a new public key and republishing the application. Without performing these two steps, Direct Update fails on the client.
+**注:** アプリケーションがパブリッシュされた後に鍵ストア構成を変更しないように注意してください。
+ダウンロードされたアップデートは、アプリケーションを新規の公開鍵で再構成して再パブリッシュしない限り、認証されなくなります。これらの 2 つのステップを実行しない場合、ダイレクト・アップデートはクライアントで失敗します。
 
-> Learn more in [Secure Direct Update](#secure-direct-update).
+> 詳しくは、[セキュアなダイレクト・アップデート](#secure-direct-update)を参照してください。
 
-**Direct Update data transfer rates**  
-At optimal conditions, a single {{ site.data.keys.mf_server }} can push data to clients at the rate of 250 MB per second. If higher rates are required, consider a cluster or a CDN service.  
+**ダイレクト・アップデートのデータ転送速度**  
+最適な状態で、1 つの {{site.data.keys.mf_server }}
+は 1 秒あたり 250 MB の速度でデータをクライアントにプッシュできます。さらに高速なデータ・プッシュが必要な場合は、クラスターまたは CDN サービスを考慮してください。  
 
-> Learn more in [Serving Direct Update requests from a CDN](cdn-support)
+> 詳しくは、[CDN からのダイレクト・アップデート要求の処置](cdn-support)を参照してください。
 
-### Notes
+### 注
 {: #notes }
 
-* Direct Update updates only the application's web resources. To update native resources a new application version must be submitted to the respective app store.
-* When you use the Direct Update feature and the [web resources checksum](../cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature) feature is enabled, a new checksum base is established with each Direct Update.
-* If the {{ site.data.keys.mf_server }} was upgraded by using a fix pack, it continues to serve direct updates properly. However, if a recently built Direct Update archive (.zip file) is uploaded, it can halt updates to older clients. The reason is that the archive contains the version of the cordova-plugin-mfp plug-in. Before it serves that archive to a mobile client, the server compares the client version with the plug-in version. If both versions are close enough (meaning that the three most significant digits are identical), Direct Update occurs normally. Otherwise, {{ site.data.keys.mf_server }} silently skips the update. One solution for the version mismatch is to download the cordova-plugin-mfp with the same version as the one in your original Cordova project and regenerate the Direct Update archive.
+* ダイレクト・アップデートは、アプリケーションの Web リソースのみを更新します。ネイティブ・リソースを更新するには、新しいアプリケーション・バージョンを該当アプリケーション・ストアに送信する必要があります。
+* ダイレクト・アップデート機能を使用し、かつ [Web リソース・チェックサム](../cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature)機能が使用可能になっていると、新規のチェックサム・
+ベースが各ダイレクト・アップデートで確立されます。
+* {{site.data.keys.mf_server }}
+は、フィックスパックを使用してアップグレードされた場合、引き続きダイレクト・アップデートを適切に配布します。ただし、最近ビルドされたダイレクト・アップデート・アーカイブ (.zip ファイル) がアップロードされた場合、古いクライアントへのアップデートを一時停止することがあります。その理由は、アーカイブに cordova-plugin-mfp プラグインのバージョンが含まれるためです。このアーカイブをモバイル・クライアントに提供する前に、サーバーはクライアントのバージョンをプラグインのバージョンと比較します。
+2 つのバージョンが十分に近い (3 つの最上位桁が同じである) 場合、ダイレクト・アップデートは正常に行われます。
+それ以外の場合、{{site.data.keys.mf_server }} は何もメッセージを出さずに更新をスキップします。バージョンの不一致の 1 つの解決策は、元の Cordova プロジェクトにあるものと同じバージョンの cordova-plugin-mfp をダウンロードし、ダイレクト・アップデート・アーカイブを再生成することです。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to}
 
-- [How Direct Update works](#how-direct-update-works)
-- [Creating and deploying updated web resources](#creating-and-deploying-updated-web-resources)
-- [User experience](#user-experience)
-- [Customizing the Direct Update UI](#customizing-the-direct-update-ui)
-- [Delta and Full Direct Update](#delta-and-full-direct-update)
-- [Secure Direct Update](#secure-direct-update)
-- [Sample application](#sample-application)
+- [ダイレクト・アップデートの機能](#how-direct-update-works)
+- [更新された Web リソースの作成とデプロイ](#creating-and-deploying-updated-web-resources)
+- [ユーザー・エクスペリエンス
+](#user-experience)
+- [ダイレクト・アップデートの UI のカスタマイズ](#customizing-the-direct-update-ui)
+- [差分ダイレクト・アップデートおよび完全ダイレクト・アップデート](#delta-and-full-direct-update)
+- [セキュアなダイレクト・アップデート](#secure-direct-update)
+- [サンプル・アプリケーション](#sample-application)
 
-## How Direct Update works
+## ダイレクト・アップデートの機能
 {: #how-direct-update-works }
-The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates on every request to the {{ site.data.keys.mf_server }}.
+まずはオフラインで使用できるように、アプリケーションの Web リソースは、当初からアプリケーションと一緒にパッケージされています。その後は、アプリケーションが {{site.data.keys.mf_server }} への要求のたびに更新があるかどうかをチェックします。
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Note:** after a Direct Update was performed, it is checked for again after 60 minutes.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **注:** ダイレクト・アップデートが実行された後、更新があるか再度チェックされるのは 60 分後です。
 
-After a Direct Update, the application no longer uses the pre-packaged web resources. Instead, it will use the downloaded web resources from the application's sandbox. If the application's cache on the device will be cleared, the original packaged web resources will be used again.
+ダイレクト・アップデート後、アプリケーションは、事前にパッケージされた Web リソースを使用しなくなります。代わりに、アプリケーションのサンドボックスからダウンロードされた Web リソースを使用します。デバイス上のアプリケーションのキャッシュが消去されると、パッケージされた元の Web リソースが再度使用されます。
 
-![Diagram of how direct update works](internal_function.jpg)
+![ダイレクト・アップデートがどのように機能するかを示した図](internal_function.jpg)
 
-### Versioning
+### バージョン管理
 {: #versioning }
-A Direct Update applies only to a specific version. In other words, updates generated for an application versioned 2.0 cannot be applied to a different version of the same application.
+ダイレクト・アップデートは特定のバージョンのみに適用されます。言い換えると、アプリケーション・バージョン 2.0 用に生成された更新を、同じアプリケーションの別のバージョンに適用することはできません。
 
-## Creating and deploying updated web resources
+## 更新された Web リソースの作成とデプロイ
 {: #creating-and-deploying-updated-web-resources }
-Once work on new web resources, such as bug fixes or minor changes and the like, is done, the updated web resources need to be packaged and uploaded to the {{ site.data.keys.mf_server }}.
+バグ修正やマイナー・チェンジなど、新規 Web リソースへの作業が完了した後、更新された Web リソースをパッケージにし、{{site.data.keys.mf_server }} にアップロードする必要があります。
 
-1. Open a **Command-line** window and navigate to the root of the Cordova project.
-2. Run the command: `mfpdev app webupdate`.
+1. **コマンド・ライン**・ウィンドウを開き、Cordova プロジェクトのルートに移動します。
+2. 次のコマンドを実行します。`mfpdev app webupdate`。
 
-The `mfpdev app webupdate` command packages the updated web resources to a .zip file and uploads it to the default {{ site.data.keys.mf_server }} running in the developer workstation. The packaged web resources can be found at the  **[cordova-project-root-folder]/mobilefirst/** folder.
+`mfpdev app webupdate` コマンドにより、更新された Web リソースが .zip ファイルにパッケージされ、開発者ワークステーション上で稼働しているデフォルトの {{site.data.keys.mf_server }} にアップロードされます。パッケージ化された Web リソースは、**[cordova-project-root-folder]/mobilefirst/** フォルダー内にあります。
 
-Alternatives:
+代替方法:
 
-* Build the .zip file and upload it to a different {{ site.data.keys.mf_server }}: `mfpdev app webupdate [server-name] [runtime-name]`. For example: 
+* .zip ファイルを作成し、コマンド `mfpdev app webupdate [server-name][runtime-name]` を使用して別の {{site.data.keys.mf_server }} にアップロードします。例えば、次のとおりです。 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps
   ```
 
-* Upload a previously generated .zip file: `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`. For example: 
+* コマンド `mfpdev app webupdate [server-name][runtime-name] --file [path-to-packaged-web-resources]` を使用して、以前に生成した .zip ファイルをアップロードします。 例えば、次のとおりです。 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
   ```
 
-* Manually upload packaged web resources to the {{ site.data.keys.mf_server }}:
- 1. Build the .zip file without uploading it:
+* パッケージした Web リソースを {{site.data.keys.mf_server }} に手動でアップロードします。
+ 1. それをアップロードせずに .zip ファイルを作成します。
 
     ```bash
     mfpdev app webupdate --build
     ```
- 2. Load the {{ site.data.keys.mf_console }} and click on the application entry.
- 3. Click on **Upload Web Resources File** to upload the packaged web resources.
+ 2. {{site.data.keys.mf_console }} をロードし、そのアプリケーション項目をクリックします。
+ 3. **「Web リソース・ファイルのアップロード (Upload Web Resources File)」**をクリックして、パッケージした Webリソースをアップロードします。
 
-    ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
+    ![コンソールからのダイレクト・アップデート .zip ファイルのアップロード](upload-direct-update-package.png)
 
-> Run the command `mfpdev help app webupdate` to learn more.
+> さらに学習するには、コマンド`mfpdev help app webupdate` を実行してください。
 
-## User Experience
+## ユーザー・エクスペリエンス
 {: #user-experience }
-By default, after a Direct Update is received a dialog is displayed and the user is asked whether to begin the update process. After the user approves a progress bar dialog is displayed and the web resources are downloaded. The application is automatically reloaded after the update is complete.
+デフォルトでは、ダイレクト・アップデートを受信すると、ダイアログが表示され、ユーザーは、更新プロセスを開始するかどうかを尋ねられます。ユーザーが承認すると、進行状況表示バー・ダイアログが表示され、Web リソースがダウンロードされます。更新が完了すると、アプリケーションは自動的に再ロードされます。
 
-![Direct update example](direct-update-flow.png)
+![ダイレクト・アップデートの例](direct-update-flow.png)
 
-## Customizing the Direct Update UI
+## ダイレクト・アップデートの UI のカスタマイズ
 {: #customizing-the-direct-update-ui }
-The default Direct Update UI that is presented to the end-user can be customized.  
-Add the following inside the `wlCommonInit()` function in **index.js**:
+エンド・ユーザーに提示されるデフォルトのダイレクト・アップデート UI をカスタマイズできます。  
+**index.js** 内の `wlCommonInit()` 関数の中に以下を追加します。
 
 ```javascript
 wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
@@ -117,26 +127,31 @@ wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-- `directUpdateData` - A JSON object containing the `downloadSize` property that represents the file size (in bytes) of the update package to be downloaded from {{ site.data.keys.mf_server }}.
-- `directUpdateContext` - A JavaScript object exposing the `.start()` and `.stop()` functions, which start and stop the Direct Update flow.
+- `directUpdateData` - {{site.data.keys.mf_server }} からダウンロードする更新パッケージのファイル・サイズ (バイト単位) を表す `downloadSize` プロパティーが含まれている JSON オブジェクト。
+- `directUpdateContext` - ダイレクト・アップデート・フローを開始および停止する `.start()` 関数と `.stop()` 関数を公開する JavaScript オブジェクト。
 
-If the web resources are newer on the {{ site.data.keys.mf_server }} than in the application, Direct Update challenge data is added to the server response. Whenever the {{ site.data.keys.product_adj }} client-side framework detects this direct update challenge, it invokes the `wl_directUpdateChallengeHandler.handleDirectUpdate` function.
+アプリケーション内の Web リソースより {{site.data.keys.mf_server }} 上の Web リソースの方が新しい場合は、ダイレクト・アップデート・チャレンジ・データがサーバー応答に追加されます。
+{{site.data.keys.product_adj }}
+クライアント・サイド・フレームワークは、このダイレクト・アップデート・チャレンジを検出するたびに
+`wl_directUpdateChallengeHandler.handleDirectUpdate`
+関数を呼び出します。
 
-The function provides a default Direct Update design: a default message dialog that is displayed when a Direct Update is available and a default progress screen that is displayed when the direct update process is initiated. You can implement custom Direct Update user interface behavior or customize the Direct Update dialog box by overriding this function and implementing your own logic.
+この関数は、デフォルトのダイレクト・アップデート設計、つまり、利用可能なダイレクト・アップデートがあるときに表示されるデフォルトのメッセージ・ダイアログと、ダイレクト・アップデート・プロセスが開始されたときに表示されるデフォルトの進行状況画面を提供します。
+この関数をオーバーライドして独自のロジックを実装することにより、カスタム・ダイレクト・アップデート・ユーザー・インターフェース動作を実装したり、ダイレクト・アップデート・ダイアログ・ボックスをカスタマイズしたりすることができます。
 
-<img alt="Image of custom Direct Update dialog" src="custom-direct-update-dialog.jpg" style="float:right; margin-left: 10px"/>
-In the example code below, a `handleDirectUpdate` function implements a custom message in the Direct Update dialog. Add this code into the **www/js/index.js** file of the Cordova project.  
-Additional examples for a customized Direct Update UI:
+<img alt="カスタム「ダイレクト・アップデート」ダイアログのイメージ" src="custom-direct-update-dialog.jpg" style="float:right; margin-left: 10px"/>
+下記のサンプル・コードでは、`handleDirectUpdate` 関数により、「ダイレクト・アップデート」ダイアログでのカスタム・メッセージが実装されます。Cordova プロジェクトの  **www/js/index.js** ファイルにこのコードを追加します。  
+カスタマイズされたダイレクト・アップデート UI の追加の例:
 
-- A dialog that is created by using a third-party JavaScript framework (such as Dojo or jQuery Mobile, Ionic, ...)
-- Fully native UI by executing a Cordova plug-in
-- An alternate HTML that is presented to the user with options
-- And so on...
+- サード・パーティーの JavaScript フレームワーク (Dojo や jQuery Mobile、Ionic、... など) を使用して作成したダイアログ
+- Cordova プラグインを実行することによる完全にネイティブな UI
+- オプションとともにユーザーに表示される代替 HTML
+- その他...
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {        
     navigator.notification.confirm(  // Creates a dialog.
-        'Custom dialog body text',
+'Custom dialog body text',
         // Handle dialog buttons.
           directUpdateContext.start();
         },
@@ -146,46 +161,54 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-You can start the Direct Update process by running the `directUpdateContext.start()` method whenever the user clicks the dialog button. The default progress screen, which resembles the one in previous versions of {{ site.data.keys.mf_server }} is shown.
+ユーザーがダイアログ・ボタンをクリックするたびに `directUpdateContext.start()` メソッドを実行することによって、ダイレクト・アップデート・プロセスを開始することができます。デフォルトの進行状況画面 ({{site.data.keys.mf_server }}
+の以前のバージョンのものと同じ) が表示されます。
 
-This method supports the following types of invocation:
+このメソッドは、次のタイプの呼び出しをサポートします。
 
-* When no parameters are specified, the {{ site.data.keys.mf_server }} uses the default progress screen.
-* When a listener function such as `directUpdateContext.start(directUpdateCustomListener)` is supplied, the Direct Update process runs in the background while the process sends lifecycle events to the listener. The custom listener must implement the following methods:
+* パラメーターが指定されていないと、{{site.data.keys.mf_server }} はデフォルトの進行状況画面を使用します。
+* `directUpdateContext.start(directUpdateCustomListener)` などのリスナー関数が指定されると、ダイレクト・アップデート・プロセスは、リスナーへのライフサイクル・イベントの送信中にバックグラウンドで実行されます。カスタム・リスナーは以下のメソッドを実装する必要があります。
+
 
 ```javascript
-var  directUpdateCustomListener  = { 
+var  directUpdateCustomListener  = {
     onStart : function ( totalSize ){ }, 
     onProgress : function ( status , totalSize , completedSize ){ }, 
     onFinish : function ( status ){ } 
 };
 ```
 
-The listener methods are started during the direct update process according to following rules:
-* `onStart` is called with the `totalSize` parameter that holds the size of the update file.
-* `onProgress` is called multiple times with status `DOWNLOAD_IN_PROGRESS`, `totalSize`, and `completedSize` (the volume that is downloaded so far).
-* `onProgress` is called with status `UNZIP_IN_PROGRESS`.
-* `onFinish` is called with one of the following final status codes:
+リスナー・メソッドは、以下のルールに従って、ダイレクト・アップデート・プロセス時に開始されます。
 
-| Status code | Description |
+* `onStart` は、更新ファイルのサイズを保持する `totalSize` パラメーターで呼び出されます。
+
+* `onProgress` は、状況 `DOWNLOAD_IN_PROGRESS`、`totalSize`、および `completedSize` (これまでにダウンロードされたボリューム) で複数回呼び出されます。
+
+* `onProgress` は、状況 `UNZIP_IN_PROGRESS` で呼び出されます。
+* `onFinish` は、次のいずれかの最終状況コードで呼び出されます。
+
+
+| 状況コード | 説明 |
 |-------------|-------------|
-| `SUCCESS` | Direct update finished with no errors. |
-| `CANCELED` | Direct update was canceled (for example, because the `stop()` method was called). |
-| `FAILURE_NETWORK_PROBLEM` | There was a problem with a network connection during the update. |
-| `FAILURE_DOWNLOADING` | The file was not downloaded completely. |
-| `FAILURE_NOT_ENOUGH_SPACE` | There is not enough space on the device to download and unpack the update file. |
-| `FAILURE_UNZIPPING` | There was a problem unpacking the update file. |
-| `FAILURE_ALREADY_IN_PROGRESS` | The start method was called while direct update was already running. |
-| `FAILURE_INTEGRITY` | Authenticity of update file cannot be verified. |
-| `FAILURE_UNKNOWN` | Unexpected internal error. |
+| `SUCCESS` | ダイレクト・アップデートがエラーなしで終了しました。 |
+| `CANCELED` | ダイレクト・アップデートが取り消されました (例えば、`stop()` メソッドが呼び出されたため)。 |
+| `FAILURE_NETWORK_PROBLEM` | 更新時にネットワーク接続に関する問題がありました。 |
+| `FAILURE_DOWNLOADING` | ファイルが完全にダウンロードされませんでした。 |
+| `FAILURE_NOT_ENOUGH_SPACE` | 更新ファイルをダウンロードして解凍するだけの十分なスペースがデバイスにありません。 |
+| `FAILURE_UNZIPPING` | 更新ファイルの解凍中に問題がありました。 |
+| `FAILURE_ALREADY_IN_PROGRESS` | ダイレクト・アップデートが既に実行しているときに start メソッドが呼び出されました。 |
+| `FAILURE_INTEGRITY` | 更新ファイルの認証性を検証できません。 |
+| `FAILURE_UNKNOWN` | 予期しない内部エラー。 |
 
-If you implement a custom direct update listener, you must ensure that the app is reloaded when the direct update process is complete and the `onFinish()` method has been called. You must also call `wl_directUpdateChalengeHandler.submitFailure()` if the direct update process fails to complete successfully.
+カスタム・ダイレクト・アップデート・リスナーを実装する場合は、ダイレクト・アップデート・プロセスが完了して `onFinish()` メソッドが呼び出されたときにアプリケーションが再ロードされるようにする必要があります。
+また、ダイレクト・アップデート・プロセスが正常に完了できなかった場合には `wl_directUpdateChalengeHandler.submitFailure()` を呼び出す必要があります。
 
-The following example shows an implementation of a custom direct update listener:
+次の例は、カスタム・ダイレクト・アップデート・リスナーの実装を示しています。
+
 
 ```javascript
-var directUpdateCustomListener = {
-  onStart: function(totalSize){
+var  directUpdateCustomListener  = { 
+    onStart: function(totalSize){
     //show custom progress dialog
   },
   onProgress: function(status,totalSize,completedSize){
@@ -199,8 +222,7 @@ var directUpdateCustomListener = {
     }
     else {
       //show custom error message
-
-      //submitFailure must be called is case of error
+//submitFailure must be called is case of error
       wl_directUpdateChallengeHandler.submitFailure();
     }
   }
@@ -217,22 +239,28 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-### Scenario: Running UI-less direct updates
+### シナリオ: UI なしのダイレクト・アップデートの実行
 {: scenario-running-ui-less-direct-updates }
-{{ site.data.keys.product_full }} supports UI-less direct update when the application is in the foreground.
+{{site.data.keys.product_full }} は、アプリケーションがフォアグラウンドにあるとき、UI なしのダイレクト・アップデートをサポートします。
 
-To run UI-less direct updates, implement `directUpdateCustomListener`. Provide empty function implementations to the `onStart` and `onProgress` methods. Empty implementations cause the direct update process to run in the background.
+UI なしのダイレクト・アップデートを実行するには、`directUpdateCustomListener` を実装します。
+空の関数実装を `onStart` および `onProgress` メソッドに提供します。
+空の実装のためにダイレクト・アップデート・プロセスはバックグラウンドで実行されます。
 
-To complete the direct update process, the application must be reloaded. The following options are available:
-* The `onFinish` method can be empty as well. In this case, direct update will apply after the application has restarted.
-* You can implement a custom dialog that informs or requires the user to restart the application. (See the following example.)
-* The `onFinish` method can enforce a reload of the application by calling `WL.Client.reloadApp()`.
+ダイレクト・アップデート・プロセスを完了するためには、アプリケーションを再ロードする必要があります。
+使用可能なオプションは次のとおりです。
+* `onFinish` メソッドも空にすることができます。
+この場合は、アプリケーションの再始動後にダイレクト・アップデートが適用されます。
+* アプリケーションの再始動をユーザーに通知したり要求したりするカスタム・ダイアログを実装することができます。
+(以下の例を参照してください。) 
+* `onFinish` メソッドは、`WL.Client.reloadApp()` を呼び出すことによってアプリケーションの再ロードを強制することができます。
 
-Here is an example implementation of `directUpdateCustomListener`:
+`directUpdateCustomListener` の実装例を次に示します。
+
 
 ```javascript
-var directUpdateCustomListener = {
-  onStart: function(totalSize){
+var  directUpdateCustomListener  = { 
+    onStart: function(totalSize){
   },
   onProgress: function(status,totalSize,completeSize){
   },
@@ -245,33 +273,38 @@ var directUpdateCustomListener = {
 };
 ```
 
-Implement the `wl_directUpdateChallengeHandler.handleDirectUpdate` function. Pass the `directUpdateCustomListener` implementation that you have created as a parameter to the function. Make sure `directUpdateContext.start(directUpdateCustomListener`) is called. Here is an example `wl_directUpdateChallengeHandler.handleDirectUpdate` implementation:
+`wl_directUpdateChallengeHandler.handleDirectUpdate` 関数を実装します。
+パラメーターとして作成した `directUpdateCustomListener` 実装をこの関数に渡します。
+必ず `directUpdateContext.start(directUpdateCustomListener`) が呼び出されるようにします。`wl_directUpdateChallengeHandler.handleDirectUpdate` 実装の例を次に示します。
 
 ```javascript
-wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext){
-
-  directUpdateContext.start(directUpdateCustomListener);
+wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {        
+    directUpdateContext.start(directUpdateCustomListener);
 };
 ```
 
-**Note:** When the application is sent to the background, the direct-update process is suspended.
+**注:** アプリケーションがバックグラウンドに送られると、ダイレクト・アップデート・プロセスは中断します。
 
-### Scenario: Handling a direct update failure
+### シナリオ: ダイレクト・アップデート障害の処理
 {: #scenario-handling-a-direct-update-failure }
-This scenario shows how to handle a direct update failure that might be caused, for example, by loss of connectivity. In this scenario, the user is prevented from using the app even in offline mode. A dialog is displayed offering the user the option to try again.
+このシナリオは、接続の消失などによって起こり得るダイレクト・アップデート障害を処理する方法を示しています。
+このシナリオでは、ユーザーは、オフライン・モードでもアプリケーションを使用できなくなっています。
+ユーザーに再試行オプションを提供するダイアログが表示されます。
 
-Create a global variable to store the direct update context so that you can use it subsequently when the direct update process fails. For example:
+ダイレクト・アップデート・コンテキストを格納するグローバル変数を作成して、その後ダイレクト・アップデート・プロセスが失敗したときにそのダイレクト・アップデート・コンテキストを使用できるようにします。
+例えば、次のとおりです。
 
 ```javascript
 var savedDirectUpdateContext;
 ```
 
-Implement a direct update challenge handler. Save the direct update context here. For example:
+ダイレクト・アップデート・チャレンジ・ハンドラーを実装します。
+ダイレクト・アップデート・コンテキストをここに保存します。
+例えば、次のとおりです。
 
 ```javascript
-wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext){
-
-  savedDirectUpdateContext = directUpdateContext; // save direct update context
+wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {        
+    savedDirectUpdateContext = directUpdateContext; // save direct update context
 
   var downloadSizeInMB = (directUpdateData.downloadSize / 1048576).toFixed(1).replace(".", WL.App.getDecimalSeparator());
   var directUpdateMsg = WL.Utils.formatString(WL.ClientMessages.directUpdateNotificationMessage, downloadSizeInMB);
@@ -285,7 +318,8 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-Create a function that starts the direct update process by using the direct update context. For example:
+ダイレクト・アップデート・コンテキストを使用してダイレクト・アップデート・プロセスを開始する関数を作成します。
+例えば、次のとおりです。
 
 ```javascript
 restartDirectUpdate = function () {
@@ -293,11 +327,13 @@ restartDirectUpdate = function () {
 };
 ```
 
-Implement `directUpdateCustomListener`. Add status checking in the `onFinish` method. If the status starts with "FAILURE", open a modal only dialog with the option "Try Again". For example:
+`directUpdateCustomListener` を実装します。
+`onFinish` メソッドに状況検査を追加します。
+状況が「FAILURE」で始まる場合は、「Try Again」オプションを持つモーダル専用ダイアログを開きます。例えば、次のとおりです。
 
 ```javascript
-var directUpdateCustomListener = {
-  onStart: function(totalSize){
+var  directUpdateCustomListener  = { 
+    onStart: function(totalSize){
     alert('onStart: totalSize = ' + totalSize + 'Byte');
   },
   onProgress: function(status,totalSize,completeSize){
@@ -316,34 +352,34 @@ var directUpdateCustomListener = {
 };
 ```
 
-When the user clicks the **Try Again** button, the application restarts the direct update process.
+ユーザーが**「Try Again」**ボタンをクリックすると、アプリケーションはダイレクト・アップデート・プロセスを再始動します。
 
-## Delta and Full Direct Update
+## 差分ダイレクト・アップデートおよび完全ダイレクト・アップデート
 {: #delta-and-full-direct-update }
-Delta Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.
+差分ダイレクト・アップデートを使用して、アプリケーションは、その Web リソース全体ではなく、最後の更新以降に変更されたファイルのみをダウンロードできます。これは、ダウンロード時間の削減、帯域幅の節約、さらにユーザー・エクスペリエンス全体の向上につながります。
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** A **delta update** is possible only if the client application's web resources are one version behind the application that is currently deployed on the server. Client applications that are more than one version behind the currently deployed application (meaning the application was deployed to the server at least twice since the client application was updated), receive a **full update** (meaning that the entire web resources are downloaded and updated).
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** **差分更新**が可能なのは、クライアント・アプリケーションの Web リソースが、サーバーに現在デプロイされているアプリケーションの 1 つ前のバージョンである場合に限られます。現在デプロイされているアプリケーションより複数バージョン前のクライアント・アプリケーション (クライアント・アプリケーションが更新された後、最低 2 回はアプリケーションがサーバーにデプロイされていることを意味します) は、**フル・アップデート**を受け取ります (Web リソース全体がダウンロードされ、更新されることを意味します)。
 
-## Secure Direct Update
+## セキュアなダイレクト・アップデート
 {: secure-direct-update }
-Disabled by default, Secure Direct Update prevents a 3rd-party attacker from altering the web resources that are transmitted from the {{ site.data.keys.mf_server }} (or from a Content Delivery Network (CDN)) to the client application.
+セキュアなダイレクト・アップデートは、デフォルトでは無効になっていますが、{{site.data.keys.mf_server }}から (またはコンテンツ配信ネットワーク (CDN) から) クライアント・アプリケーションに送信される Web リソースが第三者のアタッカーによって変更されるのを防止します。
 
-**To enable Direct Update authenticity:**  
-Using a preferred tool, extract the public key from the {{ site.data.keys.mf_server }} keystore and convert it to base64.  
-The produced value should then be used as instructed below:
+**ダイレクト・アップデートの認証性を有効にするには、以下のようにします。**  
+お好きなツールを使用して、{{site.data.keys.mf_server }} 鍵ストアから公開鍵を取り出し、それを base64 に変換します。  
+その後、生成された値を以下に示すように使用してください。
 
-1. Open a **Command-line** window and navigate to the root of the Cordova project.
-2. Run the command: `mfpdev app config` and select the "Direct Update Authenticity public key" option.
-3. Provide the public key and confirm.
+1. **コマンド・ライン**・ウィンドウを開き、Cordova プロジェクトのルートに移動します。
+2. コマンド `mfpdev app config` を実行し、「ダイレクト・アップデート認証性公開鍵」を選択します。
+3. 公開鍵を指定し、確認します。
 
-Any future Direct Update deliveries to client applications will be protected by Direct Update authenticity.
+これ以降のクライアント・アプリケーションへのダイレクト・アップデートの配信は、ダイレクト・アップデート認証性によって保護されます。
 
-> To configure the application server with the updated keystore file, see [Implementing secure Direct Update](secure-direct-update)
+> 更新された鍵ストア・ファイルを使用してアプリケーション・サーバーを構成するには、[『セキュアなダイレクト・アップデートの実装』](secure-direct-update)を参照してください。
 
-## Sample application
+## サンプル・アプリケーション
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) the Cordova project.  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) して Cordova プロジェクトをダウンロードします。  
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

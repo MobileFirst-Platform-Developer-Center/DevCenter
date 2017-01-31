@@ -1,49 +1,50 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Cordova Applications
+title: Cordova アプリケーションへの MobileFirst Foundation SDK の追加
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} SDK to a new or existing Cordova application that has been created with Apache Cordova, Ionic, or another thirdy-party tool. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application, and to find information about the {{ site.data.keys.product_adj }} configuration files that are changed in the project.
+このチュートリアルでは、Apache Cordova、Ionic、またはその他のサード・パーティー・ツールを使用して作成された新規または既存の Cordova アプリケーションに {{site.data.keys.product_adj }} SDK を追加する方法について学習します。また、アプリケーションを認識するように {{site.data.keys.mf_server }} を構成する方法と、プロジェクト内で変更する {{site.data.keys.product_adj }} 構成ファイルに関する情報を見つける方法についても学習します。
 
-The {{ site.data.keys.product_adj }} Cordova SDK is provided as a set of Cordova plug-ins, [and is registered at NPM](https://www.npmjs.com/package/cordova-plugin-mfp).  
-Available plug-ins are:
+{{site.data.keys.product_adj }} Cordova SDK は、Cordova プラグインのセットとして提供されており、[NPM に登録されています](https://www.npmjs.com/package/cordova-plugin-mfp)。  
+入手可能なプラグインは次のとおりです。
 
-* **cordova-plugin-mfp** - The core SDK plug-in
-* **cordova-plugin-mfp-push** - Provides push notifications support
-* **cordova-plugin-mfp-jsonstore** - Provides JSONStore support
-* **cordova-plugin-mfp-fips** - *Android only*. Provides FIPS support
-* **cordova-plugin-mfp-encrypt-utils** - *iOS only*. Provides support for encryption and decryption
+* **cordova-plugin-mfp** - コアの SDKプラグイン
+* **cordova-plugin-mfp-push** - プッシュ通知サポートを提供します
+* **cordova-plugin-mfp-jsonstore** - JSONStore サポートを提供します
+* **cordova-plugin-mfp-fips** - *Android のみ*。FIPS サポートを提供します
+* **cordova-plugin-mfp-encrypt-utils** - *iOS のみ*。暗号化および暗号化解除がサポートされるようにします
 
-#### Support levels
+#### サポート・レベル
 {: #support-levels }
-The Cordova platform versions supported by the MobileFirst plug-ins, are:
+MobileFirst プラグインでサポートされる Cordova プラットフォームのバージョンは次のとおりです。
 
-* cordova-ios: **>= 4.1.1 and < 5.0**
-* cordova-android: **>= 5.1.1 and < 6.0**
-* cordova-windows: **>= 4.3.2 and < 5.0**
+* cordova-ios: **>= 4.1.1 と < 5.0**
+* cordova-android: **>= 5.1.1 と < 6.0**
+* cordova-windows: **>= 4.3.2 と < 5.0**
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-- [Cordova SDK components](#cordova-sdk-components)
-- [Adding the {{ site.data.keys.product_adj }} Cordova SDK](#adding-the-mobilefirst-cordova-sdk)
-- [Updating the {{ site.data.keys.product_adj }} Cordova SDK](#updating-the-mobilefirst-cordova-sdk)
-- [Generated {{ site.data.keys.product_adj }} Cordova SDK artifacts](#generated-mobilefirst-cordova-sdk-artifacts)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [Cordova SDK コンポーネント](#cordova-sdk-components)
+- [{{site.data.keys.product_adj }} Cordova SDK の追加](#adding-the-mobilefirst-cordova-sdk)
+- [{{site.data.keys.product_adj }} Cordova SDK の更新](#updating-the-mobilefirst-cordova-sdk)
+- [生成される {{site.data.keys.product_adj }} Cordova SDK 成果物](#generated-mobilefirst-cordova-sdk-artifacts)
+- [次に使用するチュートリアル](#tutorials-to-follow-next)
 
-> **Note:** The **Keychain Sharing** capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.
+> **注:** Xcode 8 を使用する場合、iOS シミュレーターでの iOS アプリケーションの実行中は、**キーチェーン共有**機能が必須です。Xcode プロジェクトをビルドする前に、この機能を手動で有効にする必要があります。
 
-## Cordova SDK components
+## Cordova SDK コンポーネント
 {: #cordova-sdk-components }
 #### cordova-plugin-mfp
-{: #cordova-plugin-mfp }
-The cordova-plugin-mfp plug-in is the core {{ site.data.keys.product_adj }} plug-in for Cordova, and is required. If you install any of the other {{ site.data.keys.product_adj }} plug-ins, the cordova-plugin-mfp plug-in is automatically installed, too, if not already installed.
 
-> The following Cordova plug-ins are installed as dependencies of cordova-plugin-mfp:
+{: #cordova-plugin-mfp }
+cordova-plugin-mfp プラグインは、Cordova 用のコア {{site.data.keys.product_adj }} プラグインであり、必須です。他の {{site.data.keys.product_adj }} プラグインのいずれかをインストールすると、cordova-plugin-mfp プラグインも自動的にインストールされます (まだインストールされていない場合)。
+
+> 次の Cordova プラグインは、cordova-plugin-mfp の依存関係としてインストールされます。
 >   
 >    - cordova-plugin-device
 >    - cordova-plugin-dialogs
@@ -52,81 +53,83 @@ The cordova-plugin-mfp plug-in is the core {{ site.data.keys.product_adj }} plug
 
 #### cordova-plugin-mfp-jsonstore
 {: #cordova-plugin-mfp-jsonstore }
-The cordova-plugin-mfp-jsonstore plug-in enables your app to use JSONstore. For more information about JSONstore, see the [JSONStore tutorial](../../jsonstore/cordova/).  
+cordova-plugin-mfp-jsonstore プラグインを使用すると、アプリケーションで JSONstore を使用できるようになります。JSONstore について詳しくは、[JSONStore に関するチュートリアル](../../jsonstore/cordova/)を参照してください。  
 
 #### cordova-plugin-mfp-push
 {: #cordova-plugin-mfp-push }
-The cordova-plugin-mfp-push plug-in provides permissions that are necessary to use push notification from the {{ site.data.keys.mf_server }} for Android applications. Additional setup for using push notification is required. For more information about push notification, see the [Push notifications tutorial](../../../notifications/).
+cordova-plugin-mfp-push プラグインは、
+Android アプリケーション用の {{site.data.keys.mf_server }}
+からプッシュ通知を使用するために必要な許可を提供します。
+プッシュ通知を使用するための追加セットアップが必要です。プッシュ通知について詳しくは、[プッシュ通知に関するチュートリアル](../../../notifications/)を参照してください。
 
 #### cordova-plugin-mfp-fips
 {: #cordova-plugin-mfp-fips }
-The cordova-plugin-mfp-fips plug-in provides FIPS 140-2 support for the Android platform. For more information, [see FIPS 140-2 support](../../../administering-apps/federal/#fips-140-2-support).
+cordova-plugin-mfp-fips  プラグインは、Android プラットフォームの FIPS 140-2 をサポートします。詳しくは、[FIPS 140-2 サポートを参照してください](../../../administering-apps/federal/#fips-140-2-support)。
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
-The cordova-plugin-mfp-encrypt-utils plug-in provides iOS OpenSSL frameworks for encryption for Cordova applications with the iOS platform. For more information, see [Enabling OpenSSL for Cordova iOS](additional-information).
+cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォームを使用する Cordova アプリケーションの暗号化のための iOS OpenSSL フレームワークを提供します。詳しくは、[Cordova iOS での OpenSSL の有効化](additional-information)を参照してください。
 
-**Prerequisites:**
+**前提条件:**
 
-- [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) and {{ site.data.keys.mf_cli }} installed on the developer workstation.
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Cordova development environment](../../../installation-configuration/development/cordova) tutorials.
+- [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) と {{site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
+- {{site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
+- [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/mobilefirst)、および [Cordova 開発環境のセットアップ](../../../installation-configuration/development/cordova)の両チュートリアルを読む。
 
-## Adding the {{ site.data.keys.product }} Cordova SDK
+## {{site.data.keys.product }} Cordova SDK の追加
 {: #adding-the-mobilefirst-cordova-sdk }
-Follow the instructions below to add the {{ site.data.keys.product }} Cordova SDK to a new or existing Cordova project, and register it in the {{ site.data.keys.mf_server }}.
+以下の手順に従って、新規または既存の Cordova プロジェクトに {{site.data.keys.product }} Cordova SDKを追加し、そのプロジェクトを {{site.data.keys.mf_server }} に登録します。
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
+開始する前に、{{site.data.keys.mf_server }} が稼働していることを確認します。  
+ローカルにインストールされているサーバーを使用する場合: **コマンド・ライン**・ウィンドウで、サーバーのフォルダーに移動し、コマンド `./run.sh` を実行します。
 
-> **Note:** If you are adding the SDK to an existing Cordova application, the plug-in overwrites the `MainActivity.java` file for Android and `Main.m` file for iOS.
+> **注:** SDK を既存の Cordova アプリケーションに追加すると、プラグインによって、Android 用の `MainActivity.java` ファイルと iOS 用の `Main.m` ファイルが上書きされます。
 
-### Adding the SDK
+### SDK の追加
 {: #adding-the-sdk }
-Consider creating the project by using the {{ site.data.keys.product_adj }} Cordova **application template**. The template adds the necessary {{ site.data.keys.product_adj }}-specific plug-in entries to the Cordova project's **config.xml** file, and provides a {{ site.data.keys.product_adj }}-specific, ready-to-use, **index.js** file that is adjusted for {{ site.data.keys.product_adj }} application development.
+{{site.data.keys.product_adj }} Cordova **アプリケーション・テンプレート**を使用することによってプロジェクトを作成することを検討します。テンプレートを使用すると、{{site.data.keys.product_adj }} 固有の必須プラグイン・エントリーが Cordova プロジェクトの **config.xml** ファイルに追加され、{{site.data.keys.product_adj }} 固有の、使用準備の整った **index.js** ファイル ({{site.data.keys.product_adj }} アプリケーション開発用に調整されている) が提供されます。
 
-#### New Application
+#### 新規アプリケーション
 {: #new-application }
-1. Create a Cordova project: `cordova create projectName applicationId --template cordova-template-mfp`.  
-   For example:
+1. 次のコマンドで Cordova プロジェクトを作成します。`cordova create projectName applicationId --template cordova-template-mfp`  
+例えば、次のとおりです。
 
    ```bash
    cordova create Hello com.example.helloworld HelloWorld --template cordova-template-mfp
    ```
-     - "Hello" is the folder name of the application.
-     - "com.example.helloworld" is the ID of the application.
-     - "HelloWorld" is the Name of the application.
-     - --template modifies the application with {{ site.data.keys.product_adj }}-specific additions.
+     - 「Hello」は、アプリケーションのフォルダー名です。
+     - 「com.example.helloworld」は、アプリケーションの ID です。
+     - 「HelloWorld」は、アプリケーションの名前です。
+     - --template を指定すると、{{site.data.keys.product_adj }} 固有の追加によってアプリケーションが変更されます。
 
-    > The templated **index.js** enables you to use additional {{ site.data.keys.product_adj }} features as such [Multilingual application  translation](../../translation) and initialization options (see the user documentation for more information).
+    > テンプレートとして用意された **index.js** を使用することで、[アプリケーションのマルチリンガル・トランスレーション](../../translation)や初期化オプションといった、{{site.data.keys.product_adj }} の追加機能を使用できます (詳しくはユーザー向け資料を参照してください。)
+2. `cd hello` コマンドで、ディレクトリーを Cordova プロジェクトのルートに変更します。
 
-2. Change directory to the root of the Cordova project: `cd hello`
-
-3. Add one or more supported platforms to the Cordova project by using the Cordova CLI command: `cordova platform add ios|android|windows`. For example:
+3. 次の Cordova CLI コマンドを使用して、サポートされているプラットフォームを 1 つ以上 Cordova プロジェクトに追加します。`cordova platform add ios|android|windows` 例えば、次のとおりです。
 
    ```bash
    cordova platform add ios
    ```
 
-   > **Note:** Because the application was configured using the {{ site.data.keys.product_adj }} template, the {{ site.data.keys.product_adj }} core Cordova plug-in is added automatically as the platform is added in step 3.
+   > **注:** このアプリケーションは {{site.data.keys.product_adj }} テンプレートを使用して構成されたため、ステップ 3 でプラットフォームが追加されたときに {{site.data.keys.product_adj }} のコア Cordova プラグインが自動的に追加されます。
 
-4. Prepare the application resources by running the `cordova prepare command`:
+4. 次のように `cordova prepare コマンド`を実行することで、アプリケーション・リソースを準備します。
 
    ```bash
    cordova prepare
    ```
 
-#### Existing Application
+#### アプリケーションの終了
 {: #existing-application }
-1. Navigate to the root of your existing Cordova project and add the {{ site.data.keys.product_adj }} core Cordova plug-in:
+1. 既存の Cordova プロジェクトのルートに移動し、次のように {{site.data.keys.product_adj }} コア Cordova プラグインを追加します。
 
    ```bash
    cordova plugin add cordova-plugin-mfp
    ```
 
-2. Navigate to the **www\js** folder and select the **index.js** file.
+2. **www\js** フォルダーに移動し、**index.js** ファイルを選択します。
 
-3. Add the following function:
+3. 次の関数を追加します。
 
    ```javascript
    function wlCommonInit() {
@@ -134,48 +137,48 @@ Consider creating the project by using the {{ site.data.keys.product_adj }} Cord
    }
    ```
 
-The {{ site.data.keys.product_adj }} API methods are available after the {{ site.data.keys.product_adj }} client SDK has been loaded. The `wlCommonInit` function is then called.  
-Use this function to call the various {{ site.data.keys.product_adj }} API methods.
+{{site.data.keys.product_adj }} API メソッドは、{{site.data.keys.product_adj }} クライアント SDK がロードされた後で使用可能になります。これで `wlCommonInit` 関数が呼び出されます。  
+この関数を使用して、各種 {{site.data.keys.product_adj }} API メソッドを呼び出します。
 
-### Registering the application
+### アプリケーションの登録
 {: #registering-the-application }
-1. Open a **Command-line** window and navigate to the root of the Cordova project.  
+1. **コマンド・ライン**・ウィンドウを開き、Cordova プロジェクトのルートに移動します。  
 
-2. Register the application to {{ site.data.keys.mf_server }}:
+2. 次のコマンドで、{{site.data.keys.mf_server }} にアプリケーションを登録します。
 
    ```bash
-   mfpdev app register
-   ```
-    - If a remote server is used, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    mfpdev app register
+    ```
+    - リモート・サーバーを使用する場合は、[`mfpdev server add` コマンドを使用](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)して、そのサーバーを追加します。
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then updates the **config.xml** file at the root of the Cordova project with metadata that identifies the {{ site.data.keys.mf_server }}.
+`mfpdev app register` CLI コマンドは、まず最初に {{site.data.keys.mf_server }} に接続してアプリケーションを登録した後、{{site.data.keys.mf_server }} を識別するメタデータを使用して、Cordova プロジェクトのルートにある **config.xml** ファイルを更新します。
 
-Each platform is registered as an application in {{ site.data.keys.mf_server }}.
+各プラットフォームはアプリケーションとして {{site.data.keys.mf_server }} に登録されます。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** 次のように、{{site.data.keys.mf_console }} からアプリケーションを登録することもできます。    
 >
-> 1. Load the {{ site.data.keys.mf_console }}.  
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
+> 1. {{site.data.keys.mf_console }} をロードします。  
+> 2. **「アプリケーション」**の横の**「新規」**ボタンをクリックして、新規アプリケーションを登録し、画面に表示される指示に従います。  
 
-### Using the SDK
+### SDK の使用
 {: #using-the-sdk }
-The {{ site.data.keys.product_adj }} API methods are available after the {{ site.data.keys.product_adj }} client SDK has been loaded. The `wlCommonInit` function is then called.  
-Use this function to call the various {{ site.data.keys.product_adj }} API methods.
+{{site.data.keys.product_adj }} API メソッドは、{{site.data.keys.product_adj }} クライアント SDK がロードされた後で使用可能になります。これで `wlCommonInit` 関数が呼び出されます。  
+この関数を使用して、各種 {{site.data.keys.product_adj }} API メソッドを呼び出します。
 
-## Updating the {{ site.data.keys.product_adj }} Cordova SDK
+## {{site.data.keys.product_adj }} Cordova SDK の更新
 {: updating-the-mobilefirst-cordova-sdk }
-To update the {{ site.data.keys.product_adj }} Cordova SDK with the latest release, remove the **cordova-plugin-mfp** plug-in: run the `cordova plugin remove cordova-plugin-mfp` command and then run the `cordova plugin add cordova-plugin-mfp` command to add it again.
+{{site.data.keys.product_adj }} Cordova SDK を最新リリースで更新するには、`cordova plugin remove cordova-plugin-mfp` コマンドを実行して **cordova-plugin-mfp** プラグインを削除した後、`cordova plugin add cordova-plugin-mfp` コマンドを実行してこのプラグインを再度追加します。
 
-SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/cordova-plugin-mfp).
+SDK のリリースは、SDK の [NPM リポジトリー](https://www.npmjs.com/package/cordova-plugin-mfp)で調べることができます。
 
-## Generated {{ site.data.keys.product_adj }} Cordova SDK artifacts
+## 生成される {{site.data.keys.product_adj }} Cordova SDK 成果物
 {: #generated-mobilefirst-cordova-sdk-artifacts }
 ### config.xml
 {: #configxml }
-The Cordova configuration file is a mandatory XML file that contains application metadata, and is stored in the root directory of the app.  
-After the {{ site.data.keys.product_adj }} Cordova SDK is added to the project, the Cordova-generated **config.xml** file receives a set of new elements that are identified with the namespace `mfp:`. The added elements contain information related to {{ site.data.keys.product_adj }} features and the {{ site.data.keys.mf_server }}.
+Cordova 構成ファイルは、アプリケーション・メタデータを含む必須の XML ファイルであり、アプリケーションのルート・ディレクトリーに保管されています。  
+{{site.data.keys.product_adj }} Cordova SDK がプロジェクトに追加されると、Cordova が生成した **config.xml** ファイルは、名前空間 `mfp:` で識別された新規エレメントのセットを受け取ります。追加されるエレメントには、{{site.data.keys.product_adj }} の各種フィーチャーおよび {{site.data.keys.mf_server }} に関連した情報が含まれています。
 
-### example of {{ site.data.keys.product_adj }} settings added to the **config.xml** file
+### **config.xml** ファイルに追加される {{site.data.keys.product_adj }} 設定の例
 {: #example-of-mobilefirst-settings-added-to-the-configxml-file}
 ```xml
 <?xml version='1.0'encoding='utf-8'?>
@@ -207,7 +210,7 @@ After the {{ site.data.keys.product_adj }} Cordova SDK is added to the project, 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="config-xml-properties">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>Click for full list of config.xml properties</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>クリックして config.xml プロパティーの完全なリストを表示</b></a>
             </h4>
         </div>
 
@@ -215,116 +218,116 @@ After the {{ site.data.keys.product_adj }} Cordova SDK is added to the project, 
             <div class="panel-body">
                 <table class="table table-striped">
                     <tr>
-                        <td><b>Element</b></td>
-                        <td><b>Description</b></td>
-                        <td><b>Configuration</b></td>
+                        <td><b>エレメント</b></td>
+                        <td><b>説明</b></td>
+                        <td><b>構成</b></td>
                     </tr>
                     <tr>
                         <td><b>widget</b></td>
-                        <td>Root element of the <a href="http://cordova.apache.org/docs/en/dev/config_ref/index.html">config.xml document</a>. The element contains two required attributes: <ul><li><b>id</b>: This is the application package name that was specified when the Cordova project was created. If this value is manually changed after the application was registered with the {{ site.data.keys.mf_server }}, then the application must be registered again.</li><li><b>xmlns:mfp</b>: The {{ site.data.keys.product_adj }} plug-in XML namespace.</li></ul></td>
+                        <td><a href="http://cordova.apache.org/docs/en/dev/config_ref/index.html">config.xml 文書のルート・エレメント</a>。 このエレメントには 2 つの必須属性が含まれています。<ul><li><b>id</b>: これは Cordova プロジェクト作成時に指定されたアプリケーション・パッケージ名です。アプリケーションが {{site.data.keys.mf_server }} に登録された後にこの値が手動で変更された場合、アプリケーションの再登録が必要です。</li><li><b>xmlns:mfp</b>: {{site.data.keys.product_adj }} プラグインの XML 名前空間。</li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:platformVersion</b></td>
-                        <td>Required. The product version on which the application was developed.</td>
-                        <td>Set by default. Must not be changed.</td>
+                        <td>必須。アプリケーションが開発された製品バージョン。</td>
+                        <td>デフォルトで設定されます。変更してはなりません。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:directUpdateAuthenticityPublicKey</b></td>
-                        <td>Optional. When you enable the Direct Update Authenticity feature, the direct update package is digitally signed during deployment. After the client downloaded the package, a security check is run to validate the package authenticity. This string value is the public key that will be used to authenticate the direct update .zip file.</td>
-                        <td>Set with the <code>mfpdev app config direct_update_authenticity_public_key key-value</code> command.</td>
+                        <td>オプション。ダイレクト・アップデート認証性機能を有効にした場合、デプロイメント時にダイレクト・アップデート・パッケージがデジタル署名されます。クライアントがパッケージをダウンロードした後、パッケージの認証性を検証するためにセキュリティー検査が実行されます。このストリング値は、ダイレクト・アップデート .zip ファイルの認証に使用される公開鍵です。</td>
+                        <td><code>mfpdev app config direct_update_authenticity_public_key key-value</code> コマンドで設定されます。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:languagePreferences</b></td>
-                        <td>Optional. Contains a comma-separated list of locales to display system messages.</td>
-                        <td>Set with the <code>mfpdev app config language_preferences key-value</code> command.</td>
+                        <td>オプション。システム・メッセージの表示に使用されるロケールのコンマ区切りリストを含みます。</td>
+                        <td><code>mfpdev app config language_preferences key-value</code> コマンドで設定されます。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:clientCustomInit</b></td>
-                        <td>Controls how the <code>WL.Client.init</code> method is called. By default, this value is set to false and the <code>WL.Client.init</code> method is automatically called after the {{ site.data.keys.product_adj }} plug-in is initialized. Set this value to <b>true</b> for the client code to explicitly control when <code>WL.Client.init</code> is called.</td>
-                        <td>Edited manually. You can set the <b>enabled</b> attribute value to either <b>true</b> or <b>false</b>.</td>
+                        <td><code>WL.Client.init</code> メソッドがどのように呼び出されるのかを制御します。デフォルトでは、この値は false に設定され、<code>WL.Client.init</code> メソッドは {{site.data.keys.product_adj }} プラグインが初期化された後に自動的に呼び出されます。<code>WL.Client.init</code> が呼び出されるタイミングをクライアント・コードで明示的に制御するには、この値を <b>true</b> に設定します。</td>
+                        <td>手動で編集されます。<b>enabled</b> 属性に設定できる値は <b>true</b> または <b>false</b> です。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:server</b></td>
-                        <td>Default remote server connection information, which the client application uses to communicate with the {{ site.data.keys.mf_server }}. <ul><li><b>url:</b> The url value specifies the {{ site.data.keys.mf_server }} protocol, host, and port values that the client will use to connect to the server by default.</li><li><b>runtime:</b> The runtime value specifies the {{ site.data.keys.mf_server }} runtime to which the application was registered. For more information about the {{ site.data.keys.product_adj }} runtime, see {{ site.data.keys.mf_server }} overview.</li></ul></td>
-                        <td><ul><li>The server url value is set with <code>the mfpdev app config server</code> command.</li><li>The server runtime value is set with the <code>mfpdev app config runtime</code> command.</li></ul></td>
+                        <td>クライアント・アプリケーションが {{site.data.keys.mf_server }} との通信に使用する、デフォルトのリモート・サーバー接続情報。<ul><li><b>url:</b> url 値は、クライアントがサーバーに接続するためにデフォルトで使用する、{{site.data.keys.mf_server }} プロトコル、ホスト、およびポートの値を指定します。</li><li><b>runtime:</b> runtime 値は、アプリケーションが登録された {{site.data.keys.mf_server }} ランタイムを指定します。{{site.data.keys.product_adj }} ランタイムについて詳しくは、{{site.data.keys.mf_server }} 概要を参照してください。</li></ul></td>
+                        <td><ul><li>サーバー url 値は <code>mfpdev app config server</code> コマンドで設定されます。</li><li>サーバー runtime 値は <code>mfpdev app config runtime</code> コマンドで設定されます。</li></ul></td>
                     </tr>
                     <tr>
                         <td><b>mfp:ios</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for the iOS platform.<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <td>このエレメントは、iOS プラットフォーム用のすべての {{site.data.keys.product_adj }} 関連のクライアント・アプリケーション構成を含みます。<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:android</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for the Android platform.<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <td>このエレメントは、Android プラットフォーム用のすべての {{site.data.keys.product_adj }} 関連のクライアント・アプリケーション構成を含みます。<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:windows</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for the Windows platform.<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:windowsphone8</b></li><li><b>mfp:windows8</b></li><li><b>mfp:windows10</b></li></ul></td>
+                        <td>このエレメントは、Windows プラットフォーム用のすべての {{site.data.keys.product_adj }} 関連のクライアント・アプリケーション構成を含みます。<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:windowsphone8</b></li><li><b>mfp:windows8</b></li><li><b>mfp:windows10</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:windows8</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for Windows 8.1 platforms.
+                        <td>このエレメントは、Windows 8.1 プラットフォーム用のすべての {{site.data.keys.product_adj }} 関連のクライアント・アプリケーション構成を含みます。
                         <ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:windows10</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for Windows 10 platforms.
+                        <td>このエレメントは、Windows 10 プラットフォーム用のすべての {{site.data.keys.product_adj }} 関連のクライアント・アプリケーション構成を含みます。
                         <ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:windowsphone8</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for Windows Phone 8.1 platforms.
+                        <td>このエレメントは、Windows Phone 8.1 プラットフォーム用のすべての {{site.data.keys.product_adj }} 関連のクライアント・アプリケーション構成を含みます。
                         <ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:appChecksum</b></td>
-                        <td>This value is the checksum of application web resources. It is calculated when <code>mfpdev app webupdate</code> is run.</td>
-                        <td>Not user-configurable. The checksum value is updated when the <code>mfpdev app webupdate</code> command is run. For more details about the <code>mfpdev app webupdate</code> command, type <code>mfpdev help app webupdate</code> in your command window.</td>
+                        <td>この値は、アプリケーション Web リソースのチェックサムです。<code>mfpdev app webupdate</code> が実行されるときに計算されます。</td>
+                        <td>ユーザーによる構成はできません。チェックサム値は <code>mfpdev app webupdate</code> コマンドが実行されると更新されます。<code>mfpdev app webupdate</code> コマンドについて詳しくは、コマンド・ウィンドウで <code>mfpdev help app webupdate</code> と入力してください。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:sdkChecksum</b></td>
-                        <td>This value is the {{ site.data.keys.mf_console }} SDK checksum that is used to identify unique {{ site.data.keys.product_adj }} SDK levels.</td>
-                        <td>Not user-configurable. This value is set by default.</td>
+                        <td>この値は、{{site.data.keys.mf_console }} SDK チェックサムであり、固有の {{site.data.keys.product_adj }} SDK レベルを識別するために使用されます。</td>
+                        <td>ユーザーによる構成はできません。この値はデフォルトで設定されます。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:security</b></td>
-                        <td>This element contains the client application's platform-specific configuration for {{ site.data.keys.product_adj }} security. Contains<ul><li><b>mfp:testWebResourcesChecksum</b></li></ul></td>
+                        <td>このエレメントには、{{site.data.keys.product_adj }} セキュリティーについての、クライアント・アプリケーションのプラットフォーム固有構成が含まれます。次を含む<ul><li><b>mfp:testWebResourcesChecksum</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:testWebResourcesChecksum</b></td>
-                        <td>Controls whether the application verifies the integrity of its web resources each time it starts running on the mobile device. Attributes: <ul><li><b>enabled:</b> Valid values are <b>true</b> and <b>false</b>. If this attribute is set to <b>true</b>, the application calculates the checksum of its web resources and compares this checksum with a value that was stored when the application was first run.</li><li><b>ignoreFileExtensions:</b> Checksum calculation can take a few seconds, depending on the size of the web resources. To make it faster, you can provide a list of file extensions to be ignored in this calculation. This value is ignored when the <b>enabled</b> attribute value is <b>false</b>.</li></ul></td>
-                        <td><ul><li>The <b>enabled</b> attribute is set with the <code>mfpdev app config android_security_test_web_resources_checksum key-value</code> command.</li><li>The <b>ignoreFileExtensions</b> attribute is set with the <code>mfpdev app config android_security_ignore_file_extensions value</code> command.</li></ul></td>
+                        <td>アプリケーションがモバイル・デバイス上で実行を開始するたびにその Web リソースの保全性を検証するかどうかを制御します。属性: <ul><li><b>enabled:</b> 有効な値は <b>true</b> および <b>false</b> です。この属性が <b>true</b> に設定されている場合、アプリケーションは Web リソースのチェックサムを計算し、アプリケーションが最初に実行されたときに保存しておいた値とこのチェックサムを比較します。</li><li><b>ignoreFileExtensions:</b> チェックサム計算には、Web リソースのサイズによって、数秒かかる場合があります。この時間を短縮するには、この計算において無視するファイル拡張子のリストを指定します。この値は、<b>enabled</b> 属性が <b>false</b> の場合は無視されます。</li></ul></td>
+                        <td><ul><li><b>enabled</b> enabled 属性は <code>mfpdev app config android_security_test_web_resources_checksum key-value</code> コマンドで設定されます。</li><li><b>ignoreFileExtensions</b> 属性は <code>mfpdev app config android_security_ignore_file_extensions value</code> コマンドで設定されます。</li></ul></td>
                     </tr>
                 </table>
 
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
 </div>
 
-### Editing {{ site.data.keys.product_adj }} settings in the config.xml file
+### config.xml ファイルの {{site.data.keys.product_adj }} 設定の編集
 {: #editing-mobilefirst-settings-in-the-configxml-file }
-You can use the {{ site.data.keys.mf_cli }} to edit the above settings by running the command:
+{{site.data.keys.mf_cli }} を使用して次のコマンドを実行することで、上記の設定を編集できます。
 
 ```bash
 mfpdev app config
 ```
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product_adj }} Cordova SDK now integrated, you can now:
+これで {{site.data.keys.product_adj }} Cordova SDK が組み込まれたので、以下の作業を行うことができます。
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- [{{site.data.keys.product }} SDK の使用に関するチュートリアル](../)を検討する
+- [アダプター開発に関するチュートリアル](../../../adapters/)を検討する
+- [認証とセキュリティーに関するチュートリアル](../../../authentication-and-security/)を検討する
+- [通知に関するチュートリアル](../../../notifications/)を検討する
+- [すべてのチュートリアル](../../../all-tutorials)を検討する

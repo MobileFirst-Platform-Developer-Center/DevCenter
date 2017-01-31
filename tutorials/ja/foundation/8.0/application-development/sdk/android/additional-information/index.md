@@ -1,23 +1,23 @@
 ---
 layout: tutorial
-title: Additional Information
-breadcrumb_title: Additional info
+title: 追加情報
+breadcrumb_title: 追加情報
 relevantTo: [android]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Registering Javadocs to an Android Studio Gradle project
+### Android Studio Gradle プロジェクトへの Javadocs の登録
 {: #registering-javadocs-to-an-android-studio-gradle-project }
-The {{ site.data.keys.product_adj }} Android Javadocs are included in the *.aar files imported by Gradle. However you need to link them to their relevant library in Android Studio.
+{{site.data.keys.product_adj }} Android Javadocs は、Gradle によってインポートされた *.aar ファイルに含まれています。ただし、Android Studio で関連するライブラリーにリンクする必要があります。
 
-1. In Android Studio make sure you are in the **Project** view.
-2. Find the library name under the **External Libraries** node (the Javadoc file appears below it).
-3. Right-click on the library name and select **Library Properties**.
-4. From the Library Properties dialog select the "+" button
-5. Navigate to the downloaded Javadoc JAR file (**ibmmobilefirstplatformfoundation-javadoc.jar**) under **..\app\build\intermediates\exploded-aar\ibmmobilefirstplatformfoundation\jars\assets** and select it.
-6. Click **OK**. The Javadocs will now be available within your project.
+1. Android Studio で、**「Project」**ビューで作業していることを確認します。
+2. **「External Libraries」**ノードの下にあるライブラリー名を見つけます (Javadoc ファイルはその下にあります)。
+3. ライブラリー名を右クリックして**「Library Properties」**を選択します。
+4. 「Library Properties」ダイアログで「+」ボタンを選択します。
+5. **..\app\build\intermediates\exploded-aar\ibmmobilefirstplatformfoundation\jars\assets** の下にある、ダウンロードした Javadoc JAR ファイル (**ibmmobilefirstplatformfoundation-javadoc.jar**) にナビゲートして、それを選択します。
+6. **「OK」**をクリックします。これで、Javadocs がプロジェクト内で使用可能になりました。
 
-### Notes
+### 注
 {: #notes }
 
-* The {{ site.data.keys.product_adj }} APIs cannot be activated from within an Android Service.
+* Android Service 内から {{site.data.keys.product_adj }} API をアクティブ化することはできません。

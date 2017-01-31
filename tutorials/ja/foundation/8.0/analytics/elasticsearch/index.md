@@ -6,70 +6,69 @@ relevantTo: [ios,android,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} uses  **Elasticsearch 1.5x** for storing data and running search queries.  
+{{site.data.keys.mf_analytics_full }}は、データの保管および検索照会の実行に **Elasticsearch 1.5x** を使用します。  
 
-Elasticsearch is a real-time distributed search and analytics engine that increases the speed and scale rates for data storage and exploration. Elasticsearch is used for full-text search, structured search.
+Elasticsearch は、リアルタイムの分散検索および分析エンジンで、データの保管および探索の速度と評価尺度が上がります。Elasticsearch は、全文検索の構造化検索で使用されます。
 
-Elasticsearch is used for storing all mobile and server data in JSON format in the Elasticsearch instances on the {{ site.data.keys.mf_analytics_server }}.
+Elasticsearch は、{{site.data.keys.mf_analytics_server }}上の Elasticsearch インスタンスでの JSON フォーマットのすべてのモバイル・データおよびサーバー・データの保管に使用されます。
 
-The Elasticsearch instances are queried in real-time to populate the {{ site.data.keys.mf_analytics_console_full }}.
+Elasticsearch インスタンスはリアルタイムで照会され、{{site.data.keys.mf_analytics_console_full }}にデータが取り込まれます。
 
-{{ site.data.keys.mf_analytics }} exposes all Elasticsearch functionality. The user is able to take full advantage of Elasticsearch queries, debugging, and optimization.
+{{site.data.keys.mf_analytics }} はすべての Elasticsearch 機能を公開しています。ユーザーは、Elasticsearch 照会、デバッグ、および最適化を最大限に利用できます。
 
-For more information about Elasticsearch functionality, beyond the functionality described here, see the  [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+ここに記載されている以外の Elasticsearch 機能について詳しくは、[Elasticsearch 資料](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)を参照してください。
 
-## Managing Elasticsearch on the {{ site.data.keys.mf_analytics_server }}
+## {{site.data.keys.mf_analytics_server }}での Elasticsearch の管理
 {: #managing-elasticsearch-on-the-mobilefirst-analytics-server }
 
-Elasticsearch is embedded in the {{ site.data.keys.mf_analytics_server }} and participates in the node and cluster behavior.
+Elasticsearch は、{{site.data.keys.mf_analytics_server }}に組み込まれており、ノードおよびクラスターの動作に参加します。
 
-> For more information on configuring Elasticsearch on the Analytics Server, see [Cluster management and Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch) in the [{{ site.data.keys.mf_analytics_server }} Configuration Guide](../../installation-configuration/production/analytics/configuration) topic.
-
-### Elasticsearch properties
+> Analytics サーバー上の Elasticsearch の構成について詳しくは、[{{site.data.keys.mf_analytics_server }}構成ガイド](../../installation-configuration/production/analytics/configuration)の[『クラスター管理および Elasticsearch』](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch)のトピックを参照してください。
+### Elasticsearch のプロパティー
 {: #elasticsearch properties }
 
-Elasticsearch properties are available through JNDI variables or environment entries.  
-One of the more useful JNDI properties to get started with viewing the Elasticsearch data is:
+Elasticsearch のプロパティーは、JNDI 変数または環境の項目を通じて使用できます。  
+Elasticsearch データの表示を開始するための、より便利な JNDI プロパティーの 1 つは、次のとおりです。
 
 ```xml
 <jndiEntry jndiName="analytics/http.enabled" value="true"/>
 ```
 
-This JNDI property allows you to view your {{ site.data.keys.mf_analytics_short }} raw data in JSON format and to access your Elasticsearch instance through the port that is defined by Elasticsearch. The default port is 9500.
+この JNDI プロパティーを使用すると、Elasticsearch によって定義されたポートを通じて JSON フォーマットの {{site.data.keys.mf_analytics_short }} 生データを表示でき、 Elasticsearch インスタンスにアクセスすることができます。デフォルト・ポートは 9500 です。
 
-> **Note**: This setting is not secure and should not be enabled on a production environment.
+> **注**: この設定は安全ではなく、実稼働環境では有効にしないでください。
 
 ## Elasticsearch REST API
 {: #elasticsearch-rest-api }
 
-Being able to access an Elasticsearch instance provides the ability to run custom queries, and view more detailed information about the Elasticsearch cluster.
+Elasticsearch インスタンスにアクセスできると、カスタム照会を実行できると共に、Elasticsearch クラスターについてより詳細な情報を表示できるようになります。
 
-**Search and view data**  
-You can view all your data by visiting the tenant's `_search` REST endpoint.  
+**データの検索および表示**  
+テナントの `_search` REST エンドポイントにアクセスすると、すべてのデータを表示できます。  
 
 ```
 http://localhost:9500/*/_search
 ```
 
-**View cluster health**  
+**クラスターの正常性の確認**  
 
 ```
 http://localhost:9500/_cluster/health
 ```
 
-**View information on current nodes**  
+**現行ノードについての情報の表示**  
 
 ```
 http://localhost:9500/_nodes
 ```
 
-**View the current mappings**  
+**現行マッピングの表示**  
 
 ```
 http://localhost:9500/*/_mapping
 ```
 
-> Elasticsearch exposes many more REST endpoints. To learn more, visit the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+> Elasticsearch は、さらに多くの REST エンドポイントを公開しています。詳細については、[Elasticsearch 資料](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html)を参照してください。

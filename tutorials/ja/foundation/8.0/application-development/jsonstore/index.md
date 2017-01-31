@@ -6,56 +6,60 @@ show_children: true
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The {{ site.data.keys.product_full }} **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
+{{site.data.keys.product_full }} **JSONStore** は、軽量なドキュメント指向のストレージ・システムを提供する、オプションのクライアント・サイド API です。JSONStore を使用すると、**JSON ドキュメント**を永続的に保管できます。JSONStore では、アプリケーションを実行しているデバイスがオフラインの時でも、アプリケーションのドキュメントを使用できます。この永続的に常時使用できるストレージにより、例えば、使用可能なネットワーク接続がデバイスにないときでも、ドキュメントにアクセスできるため便利です。
 
-![JSONStore feature workflow](jstore_workflow.jpg)
+![JSONStore フィーチャーのワークフロー](jstore_workflow.jpg)
 
-Because it is familiar to developers, relational database terminology is used in this documentation at times to help explain JSONStore. There are many differences between a relational database and JSONStore however. For example, the strict schema that is used to store data in relational databases is different from JSONStore's approach. With JSONStore, you can store any JSON content, and index the content that you need to search.
+リレーショナル・データベース用語は開発者にとって馴染み深いため、この資料では、JSONStore の説明においてリレーショナル・データベース用語を使用しています。ただし、リレーショナル・データベースと JSONStore との間には多くの違いがあります。例えば、リレーショナル・データベースでのデータの保管に使用される厳格なスキーマは、JSONStore のアプローチとは異なります。
+JSONStore では、どのような JSON コンテンツも保管可能で、検索の必要があるコンテンツは索引付けすることができます。
 
-#### Key features
+
+#### 主な機能
 {: #key-features }
-* Data indexing for efficient searching
-* Mechanism for tracking local-only changes to the stored data
-* Support for multiple users
-* AES 256 encryption of stored data provides security and confidentiality. You can segment protection by user with password-protection, in the case of more than one user on a single device.
+* 効率的な検索のためのデータ索引付け
+* 保管データに対するローカルのみの変更を追跡するためのメカニズム
+* 複数ユーザーのサポート
+* 保管データの AES 256 暗号化 により、セキュリティーと機密性が提供されます。1 つのデバイスに対して複数のユーザーが存在する場合、パスワード保護を使用して、ユーザー別に保護をセグメント化することが可能です。
 
-A single store can have many collections, and each collection can have many documents. It is also possible to have a {{ site.data.keys.product_adj }} application that contains multiple stores. For information, see JSONStore multiple user support.
+1 つのストアが多数のコレクションを含み、各コレクションが多数のドキュメントを含むことが可能です。また、1 つの {{site.data.keys.product_adj }} アプリケーションが複数のストアを持つこともできます。詳しくは、JSONStore の『複数ユーザー・サポート』を参照してください。
 
-#### Support level
+#### サポート・レベル
 {: #support-level }
-* JSONStore is supported in Native iOS and Android applications (no support for native Windows (Universal and UWP)).
-* JSONStore is supported in Cordova iOS, Android and Windows (Universal and UWP) applications.
+* JSONStore は、ネイティブ iOS アプリケーションおよび Android アプリケーションでサポートされています (ネイティブ Windows (Universal および UWP) ではサポートされていません)。
+* JSONStore は、Cordova iOS、Android、および Windows (Universal および UWP) アプリケーションでサポートされています。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [General JSONStore terminology](#general-jsonstore-terminology)
-* [Features table](#features-table)
-* [Multiple User Support](#multiple-user-support)
-* [Security](#security)
-* [Performance](#performance)
-* [Concurrency](#concurrency)
-* [Analytics](#analytics)
-* [Working with External Data](#working-with-external-data)
-* [Troubleshooting](#troubleshooting)
-* [API Usage](#api-usage)
+* [JSONStore の一般用語](#general-jsonstore-terminology)
+* [フィーチャー表](#features-table)
+* [複数ユーザー・サポート](#multiple-user-support)
+* [セキュリティー](#security)
+* [パフォーマンス](#performance)
+* [並行性](#concurrency)
+* [分析](#analytics)
+* [外部データの操作](#working-with-external-data)
+* [トラブルシューティング](#troubleshooting)
+* [API 使用法](#api-usage)
 
-## General JSONStore Terminology
+## JSONStore の一般用語
 {: #general-jsonstore-terminology }
-### Document
+### ドキュメント
 {: #document }
-A document is the basic building block of JSONStore.
+ドキュメントは、JSONStore の基本的なビルディング・ブロックです。
 
-A JSONStore document is a JSON object with an automatically generated identifier (`_id`) and JSON data. It is similar to a record or a row in database terminology. The value of `_id` is always a unique integer inside a specific collection. Some functions like `add`, `replace`, and `remove` in the `JSONStoreInstance` class take an Array of Documents/Objects. These methods are useful to perform operations on various Documents/Objects at a time.
+JSONStore ドキュメントは、自動的に生成される ID (`_id`) と JSON データを持つ JSON オブジェクトです。これは、データベース用語のレコードや行に似ています。
+`_id` の値は常に、特定のコレクション内の固有の整数です。
+`JSONStoreInstance` クラスの `add`、`replace`、`remove` などの一部の関数では、ドキュメント/オブジェクトの配列を取ります。これらのメソッドは、さまざまなドキュメント/オブジェクトに対して一度に操作を実行する際に役立ちます。
 
-**Single document**  
+**単一のドキュメント**  
 
 ```javascript
 var doc = { _id: 1, json: {name: 'carlos', age: 99} };
 ```
 
-**Array of documents**
+**ドキュメント配列**
 
 ```javascript
 var docs = [
@@ -64,10 +68,10 @@ var docs = [
 ]
 ```
 
-### Collection
+### コレクション
 {: #collection }
-A JSONStore collection is similar to a table, in database terminology.  
-The below code example is not the way that the documents are stored on disk, but it is a good way to visualize what a collection looks like at a high level.
+JSONStore コレクションは、データベース用語の表に似ています。  
+以下のコード・サンプルは、ドキュメントをディスクに保管する方法ではなく、コレクションの概要がどのようなものかを視覚化するのに適した方法です。
 
 ```javascript
 [
@@ -76,30 +80,35 @@ The below code example is not the way that the documents are stored on disk, but
 ]
 ```
 
-### Store
+### ストア
 {: #store }
-A store is the persistent JSONStore file that contains one or more collections.  
-A store is similar to a relational database, in database terminology. A store is also referred to as a JSONStore.
+ストアは、1 つ以上のコレクションを含む、JSONStore の永続ファイルです。  
+ストアは、データベース用語のリレーショナル・データベースに似ています。ストアは、JSONStore とも呼ばれます。
 
-### Search fields
+### 検索フィールド
 {: #search-fields }
-A search field is a key/value pair.  
-Search fields are keys that are indexed for fast lookup times, similar to column fields or attributes, in database terminology.
+検索フィールドは、キー/値のペアです。  
+検索フィールドは、検索時間を高速にするために索引付けされたキーであり、データベース用語の列フィールドまたは列属性と似ています。
 
-Extra search fields are keys that are indexed but that are not part of the JSON data that is stored. These fields define the key whose values (in the JSON collection) are indexed and can be used to search more quickly.
 
-Valid data types are: string, boolean, number, and integer. These types are only type hints, there is no type validation. Furthermore, these types determine how indexable fields are stored. For example, `{age: 'number'}` will index 1 as 1.0 and `{age: 'integer'}` will index 1 as 1.
+追加の検索フィールドは、索引付けされているが、保管された JSON データの一部ではないキーです。
+これらのフィールドは、(JSON コレクション内の) 値が索引付けされたキーを定義し、検索をより素早く行うために使用できます。
 
-**Search fields and extra search fields**
+
+有効なデータ型は、string、boolean、number、および integer です。これらは単に型のヒントであり、型の妥当性検査はありません。
+また、これらの型によって、索引付け可能なフィールドの保管方法が決定されます。
+例えば、`{age: 'number'}` は 1 を 1.0 として索引付けし、`{age: 'integer'}` は 1 を 1 として索引付けします。
+
+**検索フィールドおよび追加の検索フィールド**
 
 ```javascript
 var searchField = {name: 'string', age: 'integer'};
 var additionalSearchField = {key: 'string'};
 ```
 
-It is only possible to index keys inside an object, not the object itself. Arrays are handled in a pass-through fashion, meaning that you cannot index an array or a specific index of the array (arr[n]), but you can index objects inside an array.
+索引付けが可能なのはオブジェクト内のキーのみです。オブジェクトそのものではありません。配列はパススルー方式で処理されます。つまり、配列を索引付けすることも、配列 (arr[n]) の特定の索引を索引付けすることもできませんが、配列内のオブジェクトを索引付けすることができます。
 
-**Indexing values inside an array**
+**配列内の値の索引付け**
 
 ```javascript
 
@@ -108,7 +117,7 @@ var searchFields = {
     'people.age' : 'integer' // matches 99 and 100 on myObject
 };
 
-var myObject = { 
+var myObject = {
     people : [ 
         {name: 'carlos', age: 99}, 
         {name: 'tim', age: 100}
@@ -116,154 +125,190 @@ var myObject = {
 };
 ```
 
-### Queries
+### 照会
 {: #queries }
-Queries are objects that use search fields or extra search fields to look for documents.  
-These examples presumes that the name search field is of type string and the age search field is of type integer.
+照会は、検索フィールドまたは追加の検索フィールドを使用してドキュメントを検索するオブジェクトです。  
+これらの例では、name 検索フィールドは型 string であり、age 検索フィールドは型 integer であることを前提としています。
 
-**Find documents with `name` that matches `carlos`**
+**「carlos」と一致する「name」のドキュメントを検索**
 
 ```javascript
 var query1 = {name: 'carlos'};
 ```
 
-**Find documents with `name` that matches ``carlos`` and `age` matches `99`**
+**「carlos」と一致する「name」で、「99」と一致する「age」のドキュメントを検索**
 
 ```javascript
 var query2 = {name: 'carlos', age: 99};
 ```
 
-### Query parts
+### 照会部分
 {: #query-parts }
-Query parts are used to build more advanced searches. Some JSONStore operations, such as some versions of `find` or `count` take query parts. Everything within a query part is joined by `AND` statements, while query parts themselves are joined by `OR` statements. The search criteria returns a match only if everything within a query part is **true**. You can use more than one query part to search for matches that satisfy one or more of the query parts.
+照会部分は、より高度な検索をビルドするために使用されます。
+一部のバージョンの `find` や `count` など、一部の JSONStore 操作は照会部分を使用します。
+照会部分内のすべてのものは `AND` ステートメントで結合されますが、照会部分自体は `OR` ステートメントで結合されます。
+照会部分のすべてのものが **true** である場合にのみ、検索基準が一致を返します。
+複数の照会部分を使用して、1 つ以上の照会部分を満たす一致を検索することができます。
 
-Find with query parts operate only on top-level search fields. For example: `name`, and not `name.first`. Use multiple collections where all search fields are top-level to get around this. The query parts operations that work with non top-level search fields are: `equal`, `notEqual`, `like`, `notLike`, `rightLike`, `notRightLike`, `leftLike`, and `notLeftLike`. The behavior is undetermined if you use non-top-level search fields.
 
-## Features table
+照会部分による検索は、最上位検索フィールドにのみ機能します。
+例えば、`name.first` ではなく `name` を検索します。
+これを回避するには、すべての検索フィールドが最上位である複数のコレクションを使用します。
+最上位でない検索フィールドで機能する照会部分操作は `equal`、`notEqual`、`like`、`notLike`、`rightLike`、`notRightLike`、`leftLike`、および `notLeftLike` です。最上位でない検索フィールドを使用した場合、振る舞いは不確定になります。
+
+## フィーチャー表
 {: #features-table }
-Compare JSONStore features to those features of other data storage technologies and formats.
+JSONStore フィーチャーを、その他のデータ・ストレージのテクノロジーおよび形式のフィーチャーと比較します。
 
-JSONStore is a JavaScript API for storing data inside Cordova applications that use the {{ site.data.keys.product_adj }} plug-in, an Objective-C API for native iOS applications, and a Java API for native Android applications. For reference, here is a comparison of different JavaScript storage technologies to see how JSONStore compares to them.
 
-JSONStore is similar to technologies such as LocalStorage, Indexed DB, Cordova Storage API, and Cordova File API. The table shows how some features that are provided by JSONStore compare with other technologies. The JSONStore feature is only available on iOS and Android devices and simulators.
+JSONStore は、{{site.data.keys.product_adj }} プラグインを使用する Cordova アプリケーション内のデータを保管する JavaScript API、ネイティブ iOS アプリケーション対応の Objective-C API、および Android アプリケーション対応の Java API です。参考のために、さまざまな JavaScript ストレージ・テクノロジーの比較を次に示します。これにより、JSONStore がこれらのテクノロジーと比べてどのようなものであるかが分かります。
 
-| Feature                                            | JSONStore      | LocalStorage | IndexedDB | Cordova storage API | Cordova file API |
+JSONStore は、LocalStorage、Indexed DB、Cordova Storage API、Cordova File API などのテクノロジーと似ています。以下の表は、JSONStore によって提供されるいくつかのフィーチャーが他のテクノロジーと比べてどうであるかを示しています。JSONStore フィーチャーは、iOS および Android のデバイスおよびシミュレーターのみで使用可能です。
+
+| 機能                                            | JSONStore      | LocalStorage | IndexedDB | Cordova ストレージ API | Cordova ファイル API |
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
-| Android Support (Cordova &amp; Native Applications)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| iOS Support (Cordova & Native Applications)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| Windows 8.1 Universal anND Windows 10 UWP          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
-| Data encryption	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Maximum Storage	                                 |Available Space |    ~5MB     |   ~5MB 	 | Available Space	   | Available Space  |
-| Reliable Storage (See note)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
-| Keep Track of Local Changes	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Multi-user support                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Indexing	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
-| Type of Storage	                                 | JSON documents | Key/value pairs | JSON documents | Relational (SQL) | Strings     |
+| Android サポート (Cordova &amp; ネイティブ・アプリケーション)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| iOS サポート (Cordova & ネイティブ・アプリケーション)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| Windows 8.1 Universal および Windows 10 UWP          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
+| データ暗号化	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 最大ストレージ	                                 |使用可能なスペース |    最大 5MB     |   最大 5MB 	 | 使用可能なスペース	   | 使用可能なスペース  |
+| 信頼性の高いストレージ (注を参照)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
+| ローカルでの変更のトラッキング	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| マルチユーザーのサポート                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 索引付け	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
+| ストレージのタイプ	                                 | JSON ドキュメント | 鍵と値のペア | JSON ドキュメント | リレーショナル (SQL) | ストリング     |
 
-**Note:** Reliable Storage means that your data is not deleted unless one of the following events occurs:
+**注:** 信頼性の高いストレージ は、以下のイベントのいずれかが発生しない限り、データが削除されないことを意味します。
 
-* The application is removed from the device.
-* One of the methods that removes data is called.
+* アプリケーションがデバイスから除去された。
+* データを除去するメソッドのいずれかが呼び出された。
 
-## Multiple User Support	
+## 複数ユーザー・サポート	
 {: #multiple-user-support }
-With JSONStore, you can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application.
+JSONStore では、単一の {{site.data.keys.product_adj }} アプリケーションで異なるコレクションを含む複数のストアを作成できます。
 
-The init (JavaScript) or open (Native iOS and Native Android) API can take an options object with a user name. Different stores are separate files in the file system. The user name is used as the file name of the store. These separate stores can be encrypted with different passwords for security and privacy reasons. Calling the closeAll API removes access to all the collections. It is also possible to change the password of an encrypted store by calling the changePassword API.
+init (JavaScript) API または open (ネイティブ iOS および ネイティブ Android) API は、ユーザー名を持つ Options オブジェクトを使用することができます。異なるストアは、ファイル・システム内では別個のファイルです。ユーザー名がストアのファイル名として使用されます。セキュリティーおよびプライバシー上の理由により、これらの個別のストアを異なるパスワードで暗号化することも可能です。closeAll API を呼び出すと、すべてのコレクションに対するアクセス権が除去されます。また changePassword API を呼び出して、暗号化されたストアのパスワードを変更することもできます。
 
-An example use case would be various employees that share a physical device (for example an iPad or Android tablet) and {{ site.data.keys.product_adj }} application. In addition, if the employees work different shifts and handle private data from different customers while they use the {{ site.data.keys.product_adj }} application, multiple user support is useful.
+ユース・ケースの一例としては、さまざまな従業員が同じ物理デバイス (例えば iPad や Android タブレットなど) と {{site.data.keys.product_adj }} アプリケーションを共有しているケースが考えられます。さらに、従業員が異なるシフトで勤務しており、{{site.data.keys.product_adj }} アプリケーションを使用しながらさまざまな顧客のプライベート・データを扱う場合、複数ユーザーのサポートが役立ちます。
 
-## Security
+## セキュリティー
 {: #security }
-You can secure all of the collections in a store by encrypting them.
+ストア内のすべてのコレクションは、暗号化により保護することができます。
 
-To encrypt all of the collections in a store, pass a password to the `init` (JavaScript) or `open` (Native iOS and Native Android) API. If no password is passed, none of the documents in the store collections are encrypted.
+ストア内のすべてのコレクションを暗号化するには、パスワードを `init` (JavaScript) API または `open` (ネイティブ iOS および ネイティブ Android) API に渡します。パスワードを渡さないと、ストアのコレクション内にあるドキュメントはいずれも暗号化されません。
 
-Some security artifacts (for example salt) are stored in the keychain (iOS), shared preferences (Android) and the credential locker (Windows Universal 8.1 and Windows 10 UWP). The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2). You can choose to encrypt data collections for an application, but you cannot switch between encrypted and plain-text formats, or to mix formats within a store.
+一部のセキュリティー成果物 (ソルト など) は、キーチェーン (iOS)、共有設定 (Android) および資格情報保管ボックス (Windows Universal 8.1 および Windows 10 UWP) に保管されています。ストアは 256 ビットの Advanced Encryption Standard
+(AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation
+Function 2 (PBKDF2) により強化されています。アプリケーションのデータ・コレクションを暗号化するよう選択することはできますが、暗号化とプレーン・テキストの形式を切り替えたり、ストア内で複数の形式を混用したりすることはできません。
 
-The key that protects the data in the store is based on the user password that you provide. The key does not expire, but you can change it by calling the changePassword API.
+ストア内でデータを保護する鍵は、指定されるユーザー・パスワードに基づいています。その鍵が有効期限切れになることはありませんが、changePassword API を呼び出してその鍵を変更することができます。
 
-The data protection key (DPK) is the key that is used to decrypt the contents of the store. The DPK is kept in the iOS keychain even if the application is uninstalled. To remove both the key in the keychain and everything else that JSONStore puts in the application, use the destroy API. This process is not applicable to Android because the encrypted DPK is stored in shared preferences and wiped out when the application is uninstalled.
+データ保護鍵 (DPK) は、ストアの内容を暗号化解除するために使用される鍵です。DPK は、アプリケーションがアンインストールされた場合でも、iOS キーチェーン内に保持されています。キーチェーン内の鍵と JSONStore がアプリケーションに入れた他のすべてのものの両方を除去するには、destroy API を使用します。このプロセスは、暗号化された DPK が共有設定に保管され、アプリケーションのアンインストール時に完全にワイプされるため、Android には適用されません。
 
-The first time that JSONStore opens a collection with a password, which means that the developer wants to encrypt data inside the store, JSONStore needs a random token. That random token can be obtained from the client or from the server.
+JSONStore がパスワードを使用してコレクションを初めて開く場合 (つまり開発者がストア内でデータを暗号化したい場合)、JSONStore はランダム・トークンを必要とします。このランダム・トークンは、クライアントまたはサーバーから取得することができます。
 
-When the localKeyGen key is present in the JavaScript implementation of the JSONStore API, and it has a value of true, a cryptographically secure token is generated locally. Otherwise, the token is generated by contacting the server, thus requiring connectivity to the {{ site.data.keys.mf_server }}. This token is required only the first time that a store is opened with a password. The native implementations (Objective-C and Java) generate a cryptographically secure token locally by default, or you can pass one through the secureRandom option.
+localKeyGen 鍵が JSONStore API の JavaScript 実装環境にあり、true の値になっている場合、暗号的にセキュアなトークンがローカルに生成されます。それ以外の場合、トークンはサーバーにアクセスすることによって生成されます。したがって {{site.data.keys.mf_server }} との接続が必要になります。
+このトークンは、ストアが初回にパスワードを使用して開かれるときにのみ必要です。
+ネイティブ実装環境 (Objective-C および Java) では暗号論的に安全なトークンがデフォルトでローカルに生成されます。生成されない場合は、secureRandom オプションを使用してトークンを渡すことができます。
 
-The trade-off is between opening a store offline and trusting the client to generate that random token (less secure), or opening the store with access to the {{ site.data.keys.mf_server }} (requires connectivity) and trusting the server (more secure).
+ストアをオフラインで開くことと、クライアントを信頼してランダム・トークンを生成すること (セキュア・レベルは低下) または {{site.data.keys.mf_server }} にアクセスしてストアを開いて (接続が必要) サーバーを信頼すること (セキュア・レベルは上昇) との間には、トレードオフ関係があります。
 
-### Security Utilities
+### セキュリティー・ユーティリティー
 {: #security-utilities }
-The {{ site.data.keys.product_adj }} client-side API provides some security utilities to help protect your user's data. Features like JSONStore are great if you want to protect JSON objects. However, it is not recommended to store binary blobs in a JSONStore collection.
+{{site.data.keys.product_adj }} クライアント・サイド API は、ユーザーのデータを保護するのに役に立つセキュリティー・ユーティリティーをいくつか提供しています。JSONStore などのフィーチャーは、JSON オブジェクトを保護する場合に優れた能力を発揮します。
+ただし、JSONStore コレクションにバイナリー・ブロブを保管することはお勧めできません。
 
-Instead, store binary data on the file system, and store the file paths and other metadata inside a JSONStore collection. If you want to protect files like images, you can encode them as base64 strings, encrypt it, and write the output to disk. When it is time to decrypt the data, you can look up the metadata in a JSONStore collection, read the encrypted data from the disk, and decrypt it using the metadata that was stored. This metadata can include the key, salt, Initialization Vector (IV), type of file, path to the file, and others.
+代わりに、バイナリー・データをファイル・システムに保管して、ファイル・パスやその他のメタデータを JSONStore コレクション内に保管します。
+イメージなどのファイルを保護したい場合、それを base64 ストリングとしてエンコードし、暗号化して、ディスクに出力を書き込むことができます。
+データを暗号化解除するときになったら、JSONStore コレクション内のメタデータを検索して、暗号化されたデータをディスクから読み取り、保管されているメタデータを使用してそれを暗号化解除することができます。
+このメタデータには鍵、ソルト、初期設定ベクトル (IV)、ファイルのタイプ、ファイルへのパスなどを含めることができます。
 
-> Learn more about [JSONStore Security Utilities](security-utilities).
+> 詳しくは、[JSONStore セキュリティー・ユーティリティー](security-utilities)を参照してください。
 
-### Windows 8.1 Universal and Windows 10 UWP encryption
+### Windows 8.1 Universal および Windows 10 UWP の暗号化
 {: #windows-81-universal-and-windows-10-uwp-encryption }
-You can secure all of the collections in a store by encrypting them.
+ストア内のすべてのコレクションは、暗号化により保護することができます。
 
-JSONStore uses [SQLCipher](http://sqlcipher.net/) as its underlying database technology. SQLCipher is a build of SQLite that is produced by Zetetic, LLC adds a layer of encryption to the database.
+JSONStore は [SQLCipher](http://sqlcipher.net/) をその基本データベース・テクノロジーとして使用します。
+SQLCipher は、Zetetic LLC 製作の SQLite ビルドであり、暗号化のレイヤーをデータベースに追加します。
 
-JSONStore uses SQLCipher on all platforms. On Android and iOS a free, open source version of SQLCipher is available, known as the Community Edition and is incorporated into the versions of JSONStore that is included in {{ site.data.keys.product }}. The Windows versions of SQLCipher are only available under a commercial license and cannot be directly redistributed by {{ site.data.keys.product }}.
+JSONStore は、すべてのプラットフォームで SQLCipher を使用します。
+Android および iOS では、Community Edition とも呼ばれる SQLCipher の無料のオープン・ソースのバージョンが使用可能であり、{{site.data.keys.product }} に含まれている JSONStore のバージョンに組み込まれます。
+SQLCipher の Windows バージョンは、商用ライセンスの下でのみ入手可能であり、{{site.data.keys.product }} が直接再配布することはできません。
 
-Instead, JSONStore for Windows 8 Universal include SQLite as the underlying database. If you need to encrypt data for either of these platforms, you need to acquire your own version of SQLCipher and swap out the SQLite version that is included in {{ site.data.keys.product }}.
+代わりに、Windows 8 Universal 用の JSONStore に SQLite が基本データベースとして組み込まれています。これらのプラットフォームのいずれかでデータの暗号化が必要な場合、独自のバージョンの SQLCipher を獲得して、{{site.data.keys.product }} に組み込まれている SQLite バージョンをスワップアウトする必要があります。
 
-If you do not need encryption, the JSONStore is fully functional (minus encryption) by using the SQLite version in {{ site.data.keys.product }}.
 
-#### Replacing SQLite with SQLCipher for Windows Universal and Windows UWP
+暗号化が必要ない場合、{{site.data.keys.product }} 内の SQLite バージョンを使用しても (暗号化を差し引いた状態で) JSONStore が完全に機能します。
+
+#### Windows Universal および Windows UWP 用の SQLite から SQLCipher への置換
 {: #replacing-sqlite-with-sqlcipher-for-windows-universal-and-windows-uwp }
-1. Run the SQLCipher for Windows Runtime 8.1/10 extension that comes with the SQLCipher for Windows Runtime Commercial Edition.
-2. After the extension finishes installing, locate the SQLCipher version of the **sqlite3.dll** file that was just created. There is one for x86, one for x64, and one for ARM.
+1. SQLCipher for Windows Runtime Commercial Edition に同梱されている SQLCipher for Windows Runtime 8.1/10 拡張を実行します。
+2. 拡張のインストールが終了したら、作成されたばかりの **sqlite3.dll** ファイルの SQLCipher バージョンを見つけ出します。x86 用、x64 用、および ARM 用のファイルがそれぞれ 1 つずつ存在します。
 
    ```bash
    C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLCipher.WinRT81\3.0.1\Redist\Retail\<platform>
    ```
     
-3. Copy and replace this file to your {{ site.data.keys.product_adj }} application.
+3. このファイルをご使用の {{site.data.keys.product_adj }} アプリケーションにコピーして置換します。
 
    ```bash
    <Worklight project name>\apps\<application name>\windows8\native\buildtarget\<platform>
    ```
 
-## Performance
+## パフォーマンス
 {: #performance }
-The following are factors that can affect JSONStore performance.
+JSONStore のパフォーマンスに影響する可能性のある要因は、以下のとおりです。
 
-### Network
+### ネットワーク
 {: #network }
-* Check network connectivity before you perform operations, such as sending all dirty documents to an adapter.
-* The amount of data that is sent over the network to a client heavily affects performance. Send only the data that is required by the application, instead of copying everything inside your backend database.
-* If you are using an adapter, consider setting the compressResponse flag to true. That way, responses are compressed, which generally uses less bandwidth and has a faster transfer time than without compression.
+* すべてのダーティー・ドキュメントを  アダプターに送るなどの操作を実行する前に、ネットワーク接続をチェックしてください。
+* ネットワーク経由でクライアントへ送信されるデータ量は、パフォーマンスに大きく影響します。バックエンド・データベース内のすべてのものをコピーするのではなく、アプリケーションに必要なデータのみを送ってください。
+*  アダプターを使用している場合、compressResponse フラグを true に設定することを検討してください。このようにすると、応答が圧縮されます。これにより、一般的に圧縮がない場合に比べて、使用される処理能力が節約され、転送時間が短縮されます。
 
-### Memory
+### メモリー
 {: #memory }
-* When you use the JavaScript API, JSONStore documents are serialized and deserialized as Strings between the Native (Objective-C, Java, or C#) Layer and the JavaScript Layer. One way to mitigate possible memory issues is by using limit and offset when you use the find API. That way, you limit the amount of memory that is allocated for the results and can implement things like pagination (show X number of results per page).
-* Instead of using long key names that are eventually serialized and deserialized as Strings, consider mapping those long key names into smaller ones (for example: `myVeryVeryVerLongKeyName` to `k` or `key`). Ideally, you map them to short key names when you send them from the adapter to the client, and map them to the original long key names when you send data back to the backend.
-* Consider splitting the data inside a store into various collections. Have small documents over various collections instead of monolithic documents in a single collection. This consideration depends on how closely related the data is and the use cases for said data.
-* When you use the add API with an array of objects, it is possible to run into memory issues. To mitigate this issue, call these methods with fewer JSON objects at a time.
-* JavaScript and Java have garbage collectors, while Objective-C has Automatic Reference Counting. Allow it to work, but do not depend on it entirely. Try to null references that are no longer used and use profiling tools to check that memory usage is going down when you expect it to go down.
+* JavaScript API を使用すると、JSONStore ドキュメントは、ネイティブ (Objective-C、Java、または C#) レイヤーと JavaScript レイヤーの間で、ストリングとしてシリアライズされたりデシリアライズされたりします。発生し得るメモリーの問題を軽減する 1 つの方法は、find API の使用時に制限とオフセットを使用することです。このようにすると、結果に割り振られるメモリーの容量が制限されるので、ページ編集などを実装できます (X はページ当たりの結果数)。
+* 最終的にストリングとしてシリアライズおよびデシリアライズされる長い鍵名を使用する代わりに、それらの長い鍵名を短い名前にマップすること (例えば、` myVeryVeryVerLongKeyName` を `k` または `key` にマップするなど) を検討してください。
+長い鍵名をアダプターからクライアントへ送信するときにそれを短い鍵名にマップし、バックエンドにデータを送信して戻すときに元の長い鍵名にマップするのが理想的です。
+* ストア内のデータをさまざまなコレクションに分割することを検討してください。
+単一のコレクション内に一体構造のドキュメントを保持するのではなく、さまざまなコレクションで小さなドキュメントを保持します。こうした検討は、データ同士がどの程度密接に関連しているか、および当該データのユースケースに依存します。
+* オブジェクトの配列を使用して add API を使用する際には、メモリーの問題が発生する可能性があります。この問題を軽減するには、一度に指定する JSON オブジェクトを少なくしてこれらのメソッドを呼び出してください。
+* JavaScript および Java にはガーベッジ・コレクターが備わっていますが、Objective-C には Automatic Reference Counting が備わっています。これが機能できるようにしてください。ただし完全にこれに依存しないようにしてください。もう使用されていない参照をヌルに設定し、プロファイル・ツールを使用して、メモリー使用量が予想どおりに減少していることを確認してください。
 
 ### CPU
 {: #cpu }
-* The amount of search fields and extra search fields that are used affect performance when you call the add method, which does the indexing. Only index the values that are used in queries for the find method.
-* By default, JSONStore tracks local changes to its documents. This behavior can be disabled, thus saving a few cycles, by setting the `markDirty` flag to **false** when you use the add, remove, and replace APIs.
-* Enabling security adds some overhead to the `init` or `open` APIs and other operations that work with documents inside the collection. Consider whether security is genuinely required. For example, the open API is much slower with encryption because it must generate the encryption keys that are used for encryption and decryption.
-* The `replace` and `remove` APIs depend on the collection size as they must go through the whole collection to replace or remove all occurrences. Because it must go through each record, it must decrypt every one of them, which makes it much slower when encryption is used. This performance hit is more noticeable on large collections.
-* The `count` API is relatively expensive. However, you can keep a variable that keeps the count for that collection. Update it every time that you store or remove things from the collection.
-* The `find` APIs (`find`, `findAll`, and `findById`) are affected by encryption, since they must decrypt every document to see whether it is a match or not. For find by query, if a limit is passed, it is potentially faster as it stops when it reaches the limit of results. JSONStore does not need to decrypt the rest of the documents to figure out if any other search results remain.
+* 索引付けを行う add メソッドを呼び出す際、使用される検索フィールドと追加の検索フィールドの数量はパフォーマンスに影響します。find メソッドの照会に使用する値にのみ索引を付けてください。
+* デフォルトでは、JSONStore はそのドキュメントに対するローカルでの変更をトラッキングします。
+add、remove、および replace の各 API を使用する際に、`markDirty` フラグを **false** に設定すれば、この振る舞いを無効にすることができます。これによりいくつかのサイクルを省略できます。
+* セキュリティーを有効にすると、`init` API または `open` API や、コレクション内のドキュメントを処理する他の操作に、いくらかのオーバーヘッドが加わります。
+セキュリティーが本当に必要であるかどうかを検討してください。例えば、open API は、暗号化と暗号化解除に使用される暗号鍵を生成しなければならないため、暗号化によりかなり遅くなります。
+* `replace` API および `remove` API は、コレクション全体を調べてすべてのオカレンスの置き換えおよび除去を行う必要があるため、コレクション・サイズに依存します。
+各レコードを調べる必要があるため、暗号化の使用時にはそれらのレコードをすべて暗号化解除する必要があり、大幅に遅くなります。このパフォーマンス・ヒットは、大きいコレクションでは顕著です。
+* `count` API は、相対的に費用がかかります。
+ただし、そのコレクションのカウントを保持する変数を保持することができます。
+内容をコレクションに保管したり、コレクションから除去したりするたびに、この変数を更新してください。
 
-## Concurrency
+* `find` API (`find`、`findAll`、および `findById`) は、すべてのドキュメントを暗号化解除して一致があるかどうかを確認する必要があるため、暗号化によって影響を受けます。照会ごとの find について、制限が渡された場合は、その結果の制限に達したときに停止するため高速になる可能性があります。
+JSONStore は、残りのドキュメントを暗号化解除して他の検索結果が残っているかどうかを確認する必要はありません。
+
+
+## 並行性
 {: #concurrency }
 ### JavaScript
 {: #javascript }
-Most of the operations that can be performed on a collection, such as add and find, are asynchronous. These operations return a jQuery promise that is resolved when the operation completes successfully and rejected when a failure occurs. These promises are similar to success and failure callbacks.
+add や find など、コレクションに対して実行できる操作のほとんどは非同期です。これらの操作は、正常に完了した場合は解決され、障害が発生した場合は拒否される、jQuery promise を返します。
+これらの promise は、成功時と失敗時のコールバックと似ています。
 
-A jQuery Deferred is a promise that can be resolved or rejected. The following examples are not specific to JSONStore, but are intended to help you understand their usage in general.
 
-Instead of promises and callbacks, you can also listen to JSONStore `success` and `failure` events. Perform actions that are based on the arguments that are passed to the event listener.
+jQuery Deferred は、解決されるか拒否される promise です。
+以下の例は、JSONStore に固有なものではなく、それらの使用法全般を理解するのに役立つことを意図したものです。
 
-**Example promise definition**
+
+promise やコールバックの代わりに、JSONStore `success` イベントと `failure` イベントを listen することもできます。
+イベント・リスナーに渡された引数に基づくアクションを実行します。
+
+**promise の定義例**
 
 ```javascript
 var asyncOperation = function () {
@@ -278,7 +323,7 @@ var asyncOperation = function () {
 };
 ```
 
-**Example promise usage**
+**promise の使用例**
 
 ```javascript
 // The function that is passed to .then is executed after 1000 ms.
@@ -287,7 +332,7 @@ asyncOperation.then(function (response) {
 });
 ```
 
-**Example callback definition**
+**コールバックの定義例**
 
 ```javascript
 var asyncOperation = function (callback) {
@@ -297,7 +342,7 @@ var asyncOperation = function (callback) {
 };
 ```
 
-**Example callback usage**
+**コールバックの使用例**
 
 ```javascript
 // The function that is passed to asyncOperation is executed after 1000 ms.
@@ -306,7 +351,7 @@ asyncOperation(function (response) {
 });
 ```
 
-**Example events**
+**イベントの例**
 
 ```javascript
 $(document.body).on('WL/JSONSTORE/SUCCESS', function (evt, data, src, collectionName) {
@@ -320,25 +365,32 @@ $(document.body).on('WL/JSONSTORE/SUCCESS', function (evt, data, src, collection
 
 ### Objective-C
 {: #objective-c }
-When you use the Native iOS API for JSONStore, all operations are added to a synchronous dispatch queue. This behavior ensures that operations that touch the store are executed in order on a thread that is not the main thread. For more information, see the Apple documentation at [Grand Central Dispatch (GCD)](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html#//apple_ref/c/func/dispatch_sync        ).
+JSONStore 用のネイティブ iOS API を使用すると、すべての操作は同期ディスパッチ・キューに追加されます。
+この振る舞いにより、ストアに作用する操作はメイン・スレッドでないスレッドに対して順序正しく実行されるようになります。
+詳しくは、Apple 資料の [Grand Central Dispatch (GCD)](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html#//apple_ref/c/func/dispatch_sync        ) を参照してください。
 
 ### Java
 {: #java }
-When you use the Native Android API for JSONStore, all operations are executed on the main thread. You must create threads or use thread pools to have asynchronous behavior. All store operations are thread-safe.
+JSONStore 用のネイティブ Android API を使用すると、すべての操作がメイン・スレッドに対して実行されます。
+振る舞いを非同期にするには、スレッドを作成するか、スレッド・プールを使用する必要があります。
+すべてのストア操作はスレッド・セーフです。
 
-## Analytics 
+## 分析 
 {: #analytics }
-ou can collect key pieces of analytics information that are related to JSONStore 
+JSONStore に関する重要な分析情報を収集することができます。 
 
-### File information
+### ファイル情報
 {: #file-information }
-File information is collected once per application session if the JSONStore API is called with the analytics flag set to **true**. An application session is defined as loading the application into memory and removing it from memory. You can use this information to determine how much space is being used by JSONStore content in the application.
+分析フラグを **true** に設定して JSONStore API を呼び出した場合、ファイル情報はアプリケーション・セッションごとに 1 回収集されます。
+アプリケーション・セッションは、アプリケーションがメモリーにロードされたときに始まり、アプリケーションがメモリーから除去されたときに終わるものとして定義されます。
+この情報を使用して、アプリケーション内で JSONStore コンテンツが使用しているスペース量を知ることができます。
 
-### Performance metrics
+### パフォーマンス・メトリック
 {: #performance-metrics }
-Performance metrics are collected every time a JSONStore API is called with information about the start and end times of an operation. You can use this information to determine how much time various operations take in milliseconds.
+パフォーマンス・メトリックは、JSONStore API が操作の開始時刻と終了時刻に関する情報を使用して呼び出されるたびに収集されます。
+この情報を使用して、さまざまな操作の所要時間 (ミリ秒) を知ることができます。
 
-### Examples
+### 例
 {: #examples }
 #### iOS
 {: #ios-example}
@@ -368,35 +420,40 @@ var options = {
 WL.JSONStore.init(..., options);
 ```
 
-## Working With External Data
+## 外部データを使用した作業
 {: #working-with-external-data }
-You can work with external data in several different concepts: **Pull** and **Push**.
+**プル**と**プッシュ**という異なる概念で外部データを使用して作業できます。
 
-### Pull
+### プル
 {: #pull }
-Many systems use the term pull to refer to getting data from an external source.  
-There are three important pieces:
+多くのシステムでは、プル という用語を使って、外部ソースからデータを所得することを表します。  
+以下の 3 つの重要な要素があります。
 
-#### External Data Source
+#### 外部データ・ソース
 {: #external-data-source }
-This source can be a database, a REST or SOAP API, or many others. The only requirement is that it must be accessible from either the {{ site.data.keys.mf_server }} or directly from the client application. Ideally, you want this source to return data in JSON format.
+このソースとしては、データベースや REST API あるいは SOAP API などが考えられますが、他にも多くのものがあります。
+要件は、{{site.data.keys.mf_server }} からアクセス可能であるか、クライアント・アプリケーションから直接アクセス可能でなければならないということだけです。
+このソースではデータが JSON 形式で返されることが理想です。
 
-#### Transport Layer
+#### トランスポート層
 {: #transport-layer }
-This source is how you get data from the external source into your internal source, a JSONStore collection inside the store. One alternative is an adapter.
+このソースは、データが外部ソースから内部ソース (ストア内部の JSONStore コレクション) にどのように取得されるかを定義します。
+代替方法の 1 つがアダプターです。
 
-#### Internal Data Source API
+#### 内部データ・ソース API
 {: #internal-data-source-api }
-This source is the JSONStore APIs that you can use to add JSON data to a collection.
+このソースは、コレクションに JSON データを追加するために使用できる JSONStore API です。
 
-**Note:** You can populate the internal store with data that is read from a file, an input field, or hardcoded data in a variable. It does not have to come exclusively from an external source that requires network communication.
 
-All of the following code examples are written in pseudocode that looks similar to JavaScript.
+**注:** 内部ストアには、ファイル、入力フィールド、または変数内のハードコーディングされたデータから読み取られるデータを取り込むことができます。このデータのソースは、ネットワーク通信を必要とする外部ソースに限られる必要はありません。
 
-**Note:** Use  adapters for the Transport Layer. Some of the advantages of using adapters are XML to JSON, security, filtering, and decoupling of server-side code and client-side code.
 
-**External Data Source: Backend REST endpoint**  
-Imagine that you have a REST endpoint that read data from a database and returns it as an array of JSON objects.
+以下のコード例はすべて、JavaScript に類似した疑似コードで書かれています。
+
+**注:** トランスポート層の場合、アダプターを使用します。 アダプターを使用することの利点として、XML から JSONへの変換、セキュリティー、フィルタリング、サーバー・サイド・コードとクライアント・サイド・コードの分離などが挙げられます。
+
+**外部データ・ソース: バックエンド REST エンドポイント**  
+データベースからデータを読み取り、それを JSON オブジェクトの配列として返す REST エンドポイントがあると想定してください。
 
 ```javascript
 app.get('/people', function (req, res) {
@@ -407,7 +464,7 @@ app.get('/people', function (req, res) {
 });
 ```
 
-The data that is returned can look like the following example:
+返されるデータは、以下の例のようになります。
 
 ```xml
 [{id: 0, name: 'carlos', ssn: '111-22-3333'},
@@ -415,8 +472,9 @@ The data that is returned can look like the following example:
  {id: 2, name: 'dgonz' ssn: '111-55-3333')]
 ```
 
-**Transport Layer: adapter**  
-Imagine that you created an adapter that is called people and you defined a procedure that is called getPeople. The procedure calls the REST endpoint and returns the array of JSON objects to the client. You might want to do more work here, for example, return only a subset of the data to the client.
+**トランスポート層: アダプター**  
+people と呼ばれるアダプターを作成し、getPeople と呼ばれるプロシージャーを定義していると想定してください。このプロシージャーは、REST エンドポイントを呼び出し、JSON オブジェクトの配列をクライアントに返します。
+ここでさらに操作を行うことができます。例えば、データのサブセットのみをクライアントに返すことができます。
 
 ```javascript
 function getPeople () {
@@ -430,12 +488,12 @@ function getPeople () {
 }
 ```
 
-On the client, you can use the WLResourceRequest API to get the data. Additionally, you might want to pass some parameters from the client to the adapter. One example is a date with the last time that the client got new data from the external source through the adapter.
+クライアントでは、WLResourceRequest API を使用してデータを取得することができます。さらに、クライアントから  アダプターにパラメーターをいくつか渡すことができます。例えば、アダプターを通じてクライアントが外部ソースから新しいデータを取得した最終時刻を持つ日付を渡すことができます。
 
 ```javascript
 var adapter = 'people';
 var procedure = 'getPeople';
- 
+
 var resource = new WLResourceRequest('/adapters' + '/' + adapter + '/' + procedure, WLResourceRequest.GET);
 resource.send()
 .then(function (responseFromAdapter) {
@@ -443,8 +501,8 @@ resource.send()
 });
 ```
 
-**Note:** You might want to take advantage of the `compressResponse`, `timeout`, and other parameters that can be passed to the `WLResourceRequest` API.  
-Alternatively, you can skip the adapter and use something like jQuery.ajax to directly contact the REST endpoint with the data that you want to store.
+**注:** `WLResourceRequest` API に渡すことができる `compressResponse`、`timeout`、または他のパラメーターを活用することもできます。  
+あるいは、 アダプターをスキップし、jQuery.ajax などを使用して、保存したいデータを持つ REST エンドポイントに直接アクセスすることができます。
 
 ```javascript
 $.ajax({
@@ -456,52 +514,60 @@ $.ajax({
 });
 ```
 
-**Internal Data Source API: JSONStore**
-After you have the response from the backend, you can work with that data by using JSONStore.
-JSONStore provides a way to track local changes. It enables some APIs to mark documents as dirty. The API records the last operation that was performed on the document, and when the document was marked as dirty. You can then use this information to implement features like data synchronization.
+**内部データ・ソース API: JSONStore**
+バックエンドから応答があったら、JSONStore を使用してそのデータを処理することができます。
+JSONStore は、ローカルでの変更をトラッキングする手段を提供しています。
+これにより、一部の API でドキュメントをダーティーとしてマーク付けできるようになります。
+API は、ドキュメントに対して最後に実行された操作、およびドキュメントがダーティーとしてマーク付けされた時点を記録します。
+そうすると、この情報を使用して、データ同期などのフィーチャーを実装できます。
 
-The change API takes the data and some options:
+
+change API がデータといくつかのオプションを取ります。
 
 **replaceCriteria**  
-These search fields are part of the input data. They are used to locate documents that are already inside a collection. For example, if you select:
+これらの検索フィールドは、入力データの一部です。
+既にコレクション内部にあるドキュメントを見つけるのに使用されます。
+例えば、置き換え基準として以下を選択したとします。
 
 ```javascript
 ['id', 'ssn']
 ```
 
-as the replace criteria, pass the following array as the input data:
+この場合、以下の配列が入力データとして渡されます。
 
 ```javascript
 [{id: 1, ssn: '111-22-3333', name: 'Carlos'}]
 ```
 
-and the `people` collection already contains the following document:
+さらに `people` コレクションには既に以下のドキュメントが入っています。
 
 ```javascript
 {_id: 1,json: {id: 1, ssn: '111-22-3333', name: 'Carlitos'}}
 ```
 
-The `change` operation locates a document that matches exactly the following query:
+`change` 操作では、以下の照会と正確に一致するドキュメントが検索されます。
+
 
 ```javascript
 {id: 1, ssn: '111-22-3333'}
 ```
 
-Then the `change` operation performs a replacement with the input data and the collection contains:
+次に `change` 操作で入力データによる置き換えが実行され、コレクションに以下のものが含まれます。
 
 ```javascript
 {_id: 1, json: {id:1, ssn: '111-22-3333', name: 'Carlos'}}
 ```
 
-The name was changed from `Carlitos` to `Carlos`. If more than one document matches the replace criteria, then all documents that match are replaced with the respective input data.
+名前が `Carlitos` から `Carlos` に変更されました。
+複数のドキュメントが置き換え基準に一致した場合、一致するすべてのドキュメントが対応する入力データに置き換えられます。
 
 **addNew**  
-When no documents match the replace criteria, the change API looks at the value of this flag. If the flag is set to **true**, the change API creates a new document and adds it to the store. Otherwise, no further action is taken.
+置き換え基準に一致するドキュメントがない場合、change API は、このフラグの値を調べます。このフラグが **true** に設定されている場合、change API は新しいドキュメントを作成して、ストアに追加します。そうでなれば、さらなるアクションは実行されません。
 
 **markDirty**  
-Determines whether the change API marks documents that are replaced or added as dirty.
+change API が置き換えまたは追加されるドキュメントをダーティーとしてマーク付けするかどうかを決定します。
 
-An array of data is returned from the adapter:
+アダプターからデータの配列が返されます。
 
 ```javascript
 .then(function (responseFromAdapter) {
@@ -519,59 +585,70 @@ An array of data is returned from the adapter:
   return accessor.change(data, changeOptions);
 })
 
-.then(function() {
+.then(function () {
+
   // ...
 })
 ```
 
-You can use other APIs to track changes to the local documents that are stored. Always get an accessor to the collection that you perform operations on.
+他の API を使用して、保管されたローカル・ドキュメントに対する変更をトラッキングすることができます。
+操作が実行されるコレクションに対するアクセサーを常に取得します。
+
 
 ```javascript
 var accessor = WL.JSONStore.get('people')
 ```
 
-Then, you can add data (array of JSON objects) and decide whether you want it to be marked dirty or not. Typically, you want to set the markDirty flag to false when you get changes from the external source. Then, set the flag to true when you add data locally.
+そうすると、データ (JSON オブジェクトの配列) を追加し、そのデータにダーティーまたは非ダーティーのマークが付けられるようにしたいかどうかを決定することができます。
+一般的に、外部ソースから変更を取得する場合は、markDirty フラグを false に設定します。次に、データをローカルに追加する場合は、このフラグを true に設定します。
 
 ```javascript
 accessor.add(data, {markDirty: true})
 ```
 
-You can also replace a document, and opt to mark the document with the replacements as dirty or not.
+また、ドキュメントを置き換え、代替物のあるそのドキュメントをダーティーまたは非ダーティーとしてマーク付けすることを選択することができます。
+
 
 ```javascript
 accessor.replace(doc, {markDirty: true})
 ```
 
-Similarly, you can remove a document, and opt to mark the removal as dirty or not. Documents that are removed and marked dirty do not show up when you use the find API. However, they are still inside the collection until you use the `markClean` API, which physically removes the documents from the collection. If the document is not marked as dirty, it is physically removed from the collection.
+同様に、ドキュメントを除去し、その除去をダーティーまたは非ダーティーとしてマーク付けすることを選択することができます。
+除去されてダーティーのマークが付けられたドキュメントは、find API を使用したときに表示されません。ただし、コレクションからドキュメントを物理的に除去する `markClean` API を使用するまでは、これらのドキュメントはコレクション内部に残っています。
+ドキュメントがダーティーとしてマーク付けされていない場合、そのドキュメントはコレクションから物理的に除去されます。
+
 
 ```javascript
 accessor.remove(doc, {markDirty: true})
 ```
 
-### Push
+### プッシュ
 {: #push }
-Many systems use the term push to refer to sending data to an external source.
+多くのシステムでは、プッシュ という用語を使って、外部ソースにデータを送ることを表します。
 
-There are three important pieces:
+以下の 3 つの重要な要素があります。
 
-#### Internal Data Source API
+#### 内部データ・ソース API
 {: #internal-data-source-api-push }
-This source is the JSONStore API that returns documents with local-only changes (dirty).
+このソースは、ローカルのみの変更 (ダーティー) を持つドキュメントを返す JSONStore API です。
 
-#### Transport Layer
+#### トランスポート層
 {: #transport-layer-push }
-This source is how you want to contact the external data source to send the changes.
+このソースは、変更を送信するためにどのように外部データ・ソースにアクセスするかを定義します。
 
-#### External Data Source
+#### 外部データ・ソース
 {: #external-data-source-push }
-This source is typically a database, REST or SOAP endpoint, among others, that receives the updates that the client made to the data.
+通常、このソースは、データベースや REST または SOAP エンドポイントで (他にもありますが)、クライアントがデータに対して行った更新を受け取るものです。
 
-All of the following code examples are written in pseudocode that looks similar to JavaScript.
 
-**Note:** Use adapters for the Transport Layer. Some of the advantages of using adapters are XML to JSON, security, filtering, and decoupling of server-side code and client-side code.
+以下のコード例はすべて、JavaScript に類似した疑似コードで書かれています。
 
-**Internal Data Source API: JSONStore**  
-After you have an accessor to the collection, you can call the `getAllDirty` API to get all documents that are marked as dirty. These documents have local-only changes that you want to send to the external data source through a transport layer.
+**注:** トランスポート層の場合、アダプターを使用します。 アダプターを使用することの利点として、XML から JSONへの変換、セキュリティー、フィルタリング、サーバー・サイド・コードとクライアント・サイド・コードの分離などが挙げられます。
+
+**内部データ・ソース API: JSONStore**  
+コレクションに対するアクセサーを取得したら、`getAllDirty` API を呼び出して、ダーティーとしてマーク付けされたすべてのドキュメントを取得することができます。
+これらのドキュメントは、トランスポート層を通じて外部データ・ソースに送りたいローカルのみの変更を含むものです。
+
 
 ```javascript
 var accessor = WL.JSONStore.get('people');
@@ -583,7 +660,7 @@ accessor.getAllDirty()
 });
 ```
 
-The `dirtyDocs` argument looks like the following example:
+`dirtyDocs` 引数は、以下の例のようになります。
 
 ```javascript
 [{_id: 1,
@@ -592,14 +669,14 @@ The `dirtyDocs` argument looks like the following example:
   _dirty: '1395774961,12902'}]
 ```
 
-The fields are:
-* `_id`: Internal field that JSONStore uses. Every document is assigned a unique one.
-* `json`: The data that was stored.
-* `_operation`: The last operation that was performed on the document. Possible values are add, store, replace, and remove.
-* `_dirty`: A time stamp that is stored as a number to represent when the document was marked dirty.
+フィールドは以下のとおりです。
+* `_id`: JSONStore が使用する内部フィールド。どのドキュメントにも固有のものが 1 つ割り当てられています。
+* `json`: 保管されたデータ。
+* `_operation`: ドキュメントに対して最後に実行された操作。可能な値は add、store、replace、および remove です。
+* `_dirty`: ドキュメントがダーティーとしてマークされた時点を表す数値として保管されているタイム・スタンプ。
 
-**Transport Layer: MobileFirst adapter**  
-You can choose to send dirty documents to a adapter. Assume that you have a `people` adapter that is defined with an `updatePeople` procedure.
+**トランスポート層: MobileFirst アダプター**  
+ダーティー・ドキュメントを  アダプターに送ることを選択できます。`updatePeople` プロシージャーによって定義された `people` アダプターがあるものと想定してください。
 
 ```javascript
 .then(function (dirtyDocs) {
@@ -616,9 +693,10 @@ You can choose to send dirty documents to a adapter. Assume that you have a `peo
 })
 ```
 
-**Note:** You might want to take advantage of the `compressResponse`, `timeout`, and other parameters that can be passed to the `WLResourceRequest` API.
+**注:** `WLResourceRequest` API に渡すことができる `compressResponse`、`timeout`、または他のパラメーターを活用することもできます。
 
-On the {{ site.data.keys.mf_server }}, the adapter has the `updatePeople` procedure, which might look like the following example:
+
+{{site.data.keys.mf_server }} では、アダプターに以下の例のような `updatePeople` プロシージャーがあります。
 
 ```javascript
 function updatePeople (dirtyDocs) {
@@ -636,9 +714,13 @@ function updatePeople (dirtyDocs) {
 }
 ```
 
-Instead of relaying the output from the `getAllDirty` API on the client, you might have to update the payload to match a format that is expected by the backend. You might have to split the replacements, removals, and inclusions into separate backend API calls.
+クライアント上で `getAllDirty` API からの出力を中継するのではなく、バックエンドが要求する形式と一致するようにペイロードを更新しなければならないことがあります。
+置き換え、除去、および組み込みを別々のバックエンド API 呼び出しに分ける必要があるかもしれません。
 
-Alternatively, you can iterate over the `dirtyDocs` array and check the `_operation` field. Then, send replacements to one procedure, removals to another procedure, and inclusions to another procedure. The previous example sends all dirty documents in bulk to the adapter.
+
+あるいは、`dirtyDocs` 配列全体を繰り返し、`_operation` フィールドを確認することができます。
+次に、1 つのプロシージャーに置き換え、別のプロシージャーに除去、さらに別のプロシージャーに組み込みを送ることができます。
+上記の例は、すべてのダーティー・ドキュメントを一括して  アダプターに送るものです。
 
 ```javascript
 var len = dirtyDocs.length;
@@ -686,19 +768,20 @@ while (len--) {
  
 $.when.apply(this, arrayOfPromises)
 .then(function () {
+
   var len = arguments.length;
  
   while (len--) {
-    // Look at the responses in arguments[len]
+ 
+  // Look at the responses in arguments[len]
   }
 });
 ```
 
-Alternatively, you can skip the adapter and contact the REST endpoint directly.
+あるいは、 アダプターをスキップし、REST エンドポイントに直接アクセスすることができます。
 
 ```javascript
 .then(function (dirtyDocs) {
-
   return $.ajax({
     type: 'POST',
     url: 'http://example.org/updatePeople',
@@ -711,8 +794,9 @@ Alternatively, you can skip the adapter and contact the REST endpoint directly.
 });
 ```
 
-**External Data Source: Backend REST endpoint**  
-The backend accepts or rejects changes, and then relays a response back to the client. After the client looks at the response, it can pass documents that were updated to the markClean API.
+**外部データ・ソース: バックエンド REST エンドポイント**  
+バックエンドは、変更を受け入れるか、拒否して、応答を中継してクライアントに戻します。
+クライアントは、応答を調べてから、更新されたドキュメントを markClean API に渡すことができます。
 
 ```javascript
 .then(function (responseFromAdapter) {
@@ -723,16 +807,17 @@ The backend accepts or rejects changes, and then relays a response back to the c
 })
 
 .then(function () {
+
   // ...
 })
 ```
 
-After documents are marked as clean, they do not show up in the output from the `getAllDirty` API.
+クリーンとマークされたドキュメントは、`getAllDirty` API からの出力には表示されません。
 
-## Troubleshooting
+## トラブルシューティング
 {: #troubleshooting }
-For more information, see the [JSONStore troubleshooting](../../troubleshooting/jsonstore) section.
+詳しくは、[『JSONStore のトラブルシューティング』](../../troubleshooting/jsonstore)セクションを参照してください。
 
-## API Usage
+## API 使用法
 {: #api-usage }
-Select a platform: 
+プラットフォームを選択してください。 

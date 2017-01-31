@@ -1,34 +1,34 @@
 ---
 layout: tutorial
-title: Implementing the CredentialsValidationSecurityCheck class
-breadcrumb_title: Security Check
+title: CredentialsValidationSecurityCheck クラスの実装
+breadcrumb_title: セキュリティー検査
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Download Security Checks
+  - name: セキュリティー検査のダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are mandatory: `validateCredentials` and `createChallenge`.  
-The `CredentialsValidationSecurityCheck` class is meant for simple flows to validate arbitrary credentials in order to grant access to a resource. Also provided is a built-in capability to block access after a set number of attempts.
+この抽象クラスは、`ExternalizableSecurityCheck` を継承し、その大部分のメソッドを実装して、簡単に使用できるようにします。`validateCredentials` と `createChallenge` の 2 つのメソッドは必須です。  
+`CredentialsValidationSecurityCheck` クラスは、リソースへのアクセスを認可するために任意の資格情報を検証する単純なフロー向けです。設定されている試行回数に達した後にアクセスをブロックする組み込み機能も提供されます。
 
-This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client app instance is blocked for 60 seconds).
+このチュートリアルでは、ハードコーディングされた PIN コードでリソースを保護する例を使用します。また、ユーザーには 3 回まで試行が許されます (この回数を過ぎると、クライアント・アプリケーション・インスタンスは 60 秒間ブロックされます)。
 
-**Prerequisites:** Make sure to read the [Authorization concepts](../../) and [Creating a Security Check](../../creating-a-security-check) tutorials.
+**前提条件:** [許可の概念](../../)および[セキュリティー検査の作成](../../creating-a-security-check)のチュートリアルをお読みください。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Creating the Security Check](#creating-the-security-check)
-* [Creating the Challenge](#creating-the-challenge)
-* [Validating the user credentials](#validating-the-user-credentials)
-* [Configuring the security check](#configuring-the-security-check)
-* [Sample security check](#sample-security-check)
+* [セキュリティー検査の作成](#creating-the-security-check)
+* [チャレンジの作成](#creating-the-challenge)
+* [ユーザー資格情報の検証](#validating-the-user-credentials)
+* [セキュリティー検査の構成](#configuring-the-security-check)
+* [サンプルのセキュリティー検査](#sample-security-check)
 
-## Creating the Security Check
+## セキュリティー検査の作成
 {: #creating-the-security-check }
-[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
+[Java アダプターを作成](../../../adapters/creating-adapters)し、`CredentialsValidationSecurityCheck` を継承する `PinCodeAttempts` という名前の Java クラスを追加します。
 
 ```java
 public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
@@ -45,12 +45,12 @@ public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
 }
 ```
 
-## Creating the challenge
+## チャレンジの作成
 {: #creating-the-challenge }
-When the security check is triggered, it sends a challenge to the client. Returning `null` creates an empty challenge, which may be sufficient in some cases.  
-Optionally, you can return data with the challenge, such as an error message to display, or any other data that can be used by the client.
+セキュリティー検査がトリガーされると、セキュリティー検査はクライアントにチャレンジを送信します。`null` を返すと空のチャレンジが作成されます。場合によっては、それで十分なこともあります。  
+オプションで、チャレンジと一緒にデータを返すこともできます。例えば、表示するエラー・メッセージや、クライアントが使用できるその他のデータなどです。
 
-For example, `PinCodeAttempts` sends a predefined error message and the number of remaining attempts.
+例えば、`PinCodeAttempts` は、事前定義エラー・メッセージと残りの試行回数を送信します。
 
 ```java
 @Override
@@ -62,13 +62,13 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
-> The implementation of `errorMsg` is included in the sample application.
+> `errorMsg` の実装がサンプル・アプリケーションに組み込まれています。
 
-`getRemainingAttempts()` is inherited from `CredentialsValidationSecurityCheck`.
+`getRemainingAttempts()` は、`CredentialsValidationSecurityCheck` を継承しています。
 
-## Validating the user credentials
+## ユーザー資格情報の検証
 {: #validating-the-user-credentials }
-When the client sends the answer from the challenge, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
+クライアントがチャレンジの応答を送信すると、応答は `Map` として `validateCredentials` に渡されます。このメソッドに必要なロジックを実装し、資格情報が有効な場合には `true` を返す必要があります。
 
 ```java
 @Override
@@ -94,11 +94,11 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-### Configuration class
+### 構成クラス
 {: #configuration-class }
-You can also configure the valid PIN code by using the adapter.xml file and the {{ site.data.keys.mf_console }}.
+adapter.xml ファイルと {{site.data.keys.mf_console }} を使用して、有効な PIN コードを構成することもできます。
 
-Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent security check class, in order to inherit the default configuration.
+`CredentialsValidationSecurityCheckConfig` を継承する新規 Java クラスを作成します。デフォルト構成を継承するために、親のセキュリティー検査クラスに一致するクラスを継承する必要があります。
 
 ```java
 public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
@@ -113,9 +113,9 @@ public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
 }
 ```
 
-The only required method in this class is a constructor that can handle a `Properties` instance. Use the `get[Type]Property` method to retrieve a specific property from the adapter.xml file. If no value is found, the third parameter defines a default value (`1234`).
+このクラスの必須メソッドは、`Properties` インスタンスを処理できるコンストラクターのみです。adapter.xml ファイルから特定のプロパティーを取得するには、`get[Type]Property` メソッドを使用します。値が見つからない場合は、3 番目のパラメーターでデフォルト値 (`1234`) を定義します。
 
-You can also add error handling in this constructor by using the `addMessage` method:
+以下のように、`addMessage` メソッドを使用して、このコンストラクターにエラー処理を追加することもできます。
 
 ```java
 public PinCodeConfig(Properties properties) {
@@ -131,8 +131,8 @@ public PinCodeConfig(Properties properties) {
     }
 
     //Check that the PIN code is numeric. Triggers warning.
-    try {
-        int i = Integer.parseInt(pinCode);
+                try {
+int i = Integer.parseInt(pinCode);
     }
     catch(NumberFormatException nfe) {
         addMessage(warnings,"pinCode","PIN code contains non-numeric characters");
@@ -140,7 +140,7 @@ public PinCodeConfig(Properties properties) {
 }
 ```
 
-In your main class (`PinCodeAttempts`), add the following two methods to be able to load the configuration:
+メイン・クラス (`PinCodeAttempts`) 内に、以下の 2 つのメソッドを追加して、構成をロードできるようにします。
 
 ```java
 @Override
@@ -153,9 +153,9 @@ protected PinCodeConfig getConfiguration() {
 }
 ```
 
-You can now use the `getConfiguration().pinCode` method to retrieve the default PIN code.  
+これで、`getConfiguration().pinCode` メソッドを使用してデフォルトの PIN コードを取得できます。  
 
-You can modify the `validateCredentials` method to use the PIN code from the configuration instead of the hardcoded value.
+ハードコーディングされた値の代わりに構成から取得した PIN コードを使用するように、`validateCredentials` メソッドを変更できます。
 
 ```java
 @Override
@@ -181,9 +181,9 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Configuring the security check
+## セキュリティー検査の構成
 {: #configuring-the-security-check }
-In your adapter.xml, add a `<securityCheckDefinition>` element:
+adapter.xml 内に、`<securityCheckDefinition>` エレメントを追加します。
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">
@@ -194,11 +194,11 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 </securityCheckDefinition>
 ```
 
-The `name` attribute must the name of the security check. Set the `class` parameter to the class that you created previously.
+`name` 属性は、セキュリティー検査の名前にしてください。`class` パラメーターは、先に作成したクラスに設定します。
 
-A `securityCheckDefinition` can contain zero or more `property` elements. The `pinCode` property is the one defined in the `PinCodeConfig` configuration class. The other properties are inherited from the `CredentialsValidationSecurityCheckConfig` configuration class.
+`securityCheckDefinition` には、ゼロ個以上の `property` エレメントを含めることができます。`pinCode` プロパティーは、`PinCodeConfig` 構成クラスで定義したプロパティーです。その他のプロパティーは、`CredentialsValidationSecurityCheckConfig` 構成クラスから継承されたものです。
 
-By default, if you do not specify those properties in the adapter.xml file, you receive the default values that are set by `CredentialsValidationSecurityCheckConfig`:
+デフォルトでは、これらのプロパティーを adapter.xml ファイル内に指定しないと、`CredentialsValidationSecurityCheckConfig` によって設定されたデフォルト値を受け取ります。
 
 ```java
 public CredentialsValidationSecurityCheckConfig(Properties properties) {
@@ -209,18 +209,18 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
     blockedStateExpirationSec = getIntProperty("blockedStateExpirationSec", properties, 0);
 }
 ```
-The `CredentialsValidationSecurityCheckConfig` class defines the following properties:
+`CredentialsValidationSecurityCheckConfig` クラスにより、以下のプロパティーが定義されます。
 
-- `maxAttempts`: How many attempts are allowed before reaching a *failure*.
-- `attemptingStateExpirationSec`: Interval in seconds during which the client must provide valid credentials, and attempts are counted.
-- `successStateExpirationSec`: Interval in seconds during which the successful login holds.
-- `blockedStateExpirationSec`: Interval in seconds during which the client is blocked after reaching `maxAttempts`.
+- `maxAttempts`: *失敗* に至るまでに許可される試行回数。
+- `attemptingStateExpirationSec`: クライアントが有効な資格情報を提供しなければならない時間間隔 (秒数) であり、この時間内で試行がカウントされます。
+- `successStateExpirationSec`: ログイン成功が保持される期間 (秒数)。
+- `blockedStateExpirationSec`: `maxAttempts` に達した後でクライアントがブロックされる期間 (秒数)。
 
-Note that the default value for `blockedStateExpirationSec` is set to `0`: if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
+`blockedStateExpirationSec` のデフォルト値は `0` に設定される点に注意してください。すなわち、クライアントが無効な資格情報を送信した場合、「0 秒経過後」に再試行できます。これは、デフォルトでは「試行」機能が無効になることを意味します。
 
 
-## Sample Security Check
+## サンプルのセキュリティー検査
 {: #sample-security-check }
-[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+セキュリティー検査 Maven プロジェクトを[ダウンロード](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80)します。
 
-The Maven project contains an implementation of CredentialsValidationSecurityCheck.
+Maven プロジェクトには、CredentialsValidationSecurityCheck の実装が含まれます。

@@ -1,44 +1,44 @@
 ---
 layout: tutorial
-title: Using Analytics API in Client Applications
+title: クライアント・アプリケーションでの Analytics API の使用
 breadcrumb_title: Analytics API
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} provides client-side APIs to help a user get started with collecting Analytics data about the application. This tutorial provides information on how to set up analytics support on the client application, and lists available APIs.
+{{site.data.keys.mf_analytics_full }} は、アプリケーションについての Analytics データの収集を開始するのを支援するクライアント・サイド API を提供します。このチュートリアルでは、クライアント・アプリケーション上での Analytics サポートのセットアップ方法について説明し、使用可能な API をリストします。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Configuring Analytics on the Client Side](#configuring-analytics-on-the-client-side)
-* [Sending Analytics Data](#sending-analytics-data)
-* [Enabling/Disabling Client Events](#enablingdisabling-client-event-types)
-* [Custom Events](#custom-events)
-* [Tracking Users](#tracking-users)
+* [クライアント・サイドでの Analytics の構成](#configuring-analytics-on-the-client-side)
+* [Analytics データの送信](#sending-analytics-data)
+* [クライアント・イベントの有効化/無効化](#enablingdisabling-client-event-types)
+* [カスタム・イベント](#custom-events)
+* [ユーザーのトラッキング](#tracking-users)
 
-## Configuring analytics on the client side
+## クライアント・サイドでの Analytics の構成
 {: #configuring-analytics-on-the-client-side }
 
-Before you can start collecting the predefined data that {{ site.data.keys.mf_analytics }} provides, you must first import the corresponding libraries to initialize the analytics support.
+{{site.data.keys.mf_analytics }} が提供する事前定義データの収集を開始するには、事前に Analytics サポートを初期設定するために対応するライブラリーをインポートする必要があります。
 
 ### JavaScript (Cordova)
 {: #javascript-cordova }
 
-In Cordova applications, no setup is required and initialization is built-in.  
+Cordova アプリケーションではセットアップは必要なく、初期設定は組み込まれています。  
 
 ### JavaScript (Web)
 {: #javascript-web }
 
-In Web applications, the analytics JavaScript files must be referenced. Make sure you have first added the {{ site.data.keys.product_adj }} Web SDK. For more information, see [Adding the {{ site.data.keys.product_adj }} SDK to Web applications](../../application-development/sdk/web) tutorial.  
+Web アプリケーションでは、分析 JavaScript ファイルを参照する必要があります。最初に必ず {{site.data.keys.product_adj }} Web SDK を追加しておいてください。詳細については、[『Web アプリケーションへの {{site.data.keys.product_adj }} SDK の追加』](../../application-development/sdk/web) チュートリアルを参照してください。  
 
-Depending on how you've added the {{ site.data.keys.product_adj }} Web SDK, proceed in either of the following ways:
+{{site.data.keys.product_adj }} Web SDK を追加した方法に応じて、以下のいずれかの方法で進めます。
 
 
-Reference {{ site.data.keys.mf_analytics }} in the `HEAD` element:
+以下のように、`HEAD` エレメント内の {{site.data.keys.mf_analytics }} を参照します。
 
 ```html
 <head>
@@ -48,7 +48,7 @@ Reference {{ site.data.keys.mf_analytics }} in the `HEAD` element:
 </head>
 ```
 
-Or, if using RequireJS, write:
+または、RequireJS を使用している場合は、以下を作成します。
 
 ```javascript
 require.config({
@@ -63,19 +63,19 @@ require(['ibmmfpfanalytics','mfp'], function(ibmmfpfanalytics, WL) {
 });
 ```
 
-Note that you can select your own namespace to replace "ibmmfpfanalytics".
+ユーザー独自の名前空間を選択して、「ibmmfpfanalytics」と置き換えることができることに留意してください。
 
 
 ```javascript
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
- **Important**: Some JavaScript API differences exist between the Cordova and Web SDKs. Please refer to the [API Reference topic](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html) in the user documentation.
+ **重要**:  Cordova と Web SDK 間には JavaScript API においていくつかの相違点があります。ユーザー資料の[『API リファレンス』トピック](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html)を参照してください。
 
 ### iOS
 {: #ios }
 
-#### Import the WLAnalytics library
+#### WLAnalytics ライブラリーのインポート
 {: #importing-the-wlanalytics-library }
 
 **Objective-C**
@@ -90,98 +90,101 @@ import "WLAnalytics.h"
 import IBMMobileFirstPlatformFoundation
 ```
 
-#### Initialize Analytics
+#### Analytics の初期設定
 {: #initialize-analytics }
 
 **Objective-C**  
-No setup required. Pre-initialized by default.
+セットアップは不要です。デフォルトで事前に初期設定されています。
 
 **Swift**  
-Before calling other methods of the **WLAnalytics** class, call `WLAnalytics.sharedInstance()`.
+**WLAnalytics** クラスの他のメソッドを呼び出す前に、`WLAnalytics.sharedInstance()` を呼び出します。
 
 ### Android
 #{: #android }
 
-#### Import WLAnalytics
+#### WLAnalytics のインポート
 {: #import-wlanalytics }
 
 ```java
 import com.worklight.common.WLAnalytics;
 ```
 
-#### Initialize Analytics
+#### Analytics の初期設定
 {: #initialize-analytics }
 
-Inside the `onCreate` method of your main activity include:
+メイン・アクティビティーの `onCreate` メソッド内に以下を含めます。
 
 ```java
 WLAnalytics.init(this.getApplication());
 ```
 
 
-## Enabling/disabling client event types
+## クライアント・イベント・タイプの有効化/無効化
 {: #enablingdisabling-client-event-types }
 
-The Analytics API gives the developer the freedom to enable and disable collecting Analytics for the event they want to visualize on their {{ site.data.keys.mf_analytics_console }}.
+Analytics API では、開発者は {{site.data.keys.mf_analytics_console }} 上で視覚化したいイベントについての Analytics の収集を自由に有効または無効にすることができます。
 
-The {{ site.data.keys.mf_analytics }} API allows for the capturing of the following metrics.
+{{site.data.keys.mf_analytics }} API により、以下のメトリックのキャプチャーが可能になります。
 
-* **Lifecycle events**: app usage rates, usage duration, app crash rates
-* **Network usage**: breakdown of API call frequencies, network performance metrics
-* **Users**: users of the app that are identified by a supplied user ID
-* **Custom analytics**: custom key/value pairs that are defined by the app developer
+* **ライフサイクル・イベント**: アプリケーション使用比率、使用所要時間、アプリケーション異常終了比率
+* **ネットワーク使用**: API 呼び出し頻度の明細、ネットワーク・パフォーマンス・メトリック
+* **ユーザー**: 指定されたユーザー ID で識別されるアプリケーション・ユーザー
+* **カスタム分析**: アプリケーション開発者によって定義されるカスタム・キー/値ペア
 
-The initialization of the analytics API must be written in native code, even in Cordova apps.
+Analytics API の初期設定は、Cordova アプリケーションであっても、ネイティブ・コードで作成されなければなりません。
 
- * To capture app usage, you must register app lifecycle event listeners before the relevant event occurs and before sending the data to the server.
- * To use the file system or native language and device features, the API must be initialized. If the API is used in a way that requires native device features (like the file system), but was not initialized, the API call fails. This behavior is especially true on Android.
+ * アプリケーションの使用をキャプチャーするには、関連イベントが発生してそのデータがサーバーに送信される前に
+アプリケーション・ライフサイクル・イベント・リスナーを登録する必要があります。
+ * ファイル・システムまたはネイティブ言語およびデバイス機能を使用するには、API を初期設定する必要があります。
+ネイティブ・デバイス機能 (ファイル・システムなど) を必要とする方法で API が使用されるが、初期設定されていないと、API 呼び出しは失敗します。
+Android では特に、この動作になります。
 
-**Note**: To build Cordova applications, the JavaScript Analytics API does not have methods to enable or disable the collection of `LIFECYCLE` or `NETWORK` events. In other words, Cordova applications come with `LIFECYCLE` and `NETWORK` events pre-enabled by default. If you want to disable these events, see [Client Lifecycle Events](#client-lifecycle-events) and [Client Network Events](#client-lifecycle-events).
+**注**: Cordova アプリケーションを構築するにあたり、JavaScript Analytics API には `LIFECYCLE` イベントおよび `NETWORK` イベントの収集を有効にしたり無効にしたりするメソッドがありません。言い換えると、Cordova アプリケーションは、`LIFECYCLE` イベントおよび `NETWORK` イベントがデフォルトで事前に有効になった状態で出荷されます。これらのイベントを無効にしたい場合は、[『クライアント・ライフサイクル・イベント』](#client-lifecycle-events)および[『クライアント・ネットワーク・イベント』](#client-lifecycle-events)を参照してください。
 
-### Client lifecycle events
+### クライアント・ライフサイクル・イベント
 {: #client-lifecycle-events }
 
-After the Analytics SDK is configured, app sessions start to be recorded on the user's device. A session in {{ site.data.keys.mf_analytics }} is recorded when the app is moved from the foreground to the background, which creates a session on the {{ site.data.keys.mf_analytics_console_short }}.
+Analytics SDK が構成された後、ユーザーのデバイス上でアプリケーション・セッションの記録が開始します。{{site.data.keys.mf_analytics }} でのセッションは、アプリケーションがフォアグラウンドからバックグラウンドに移動され、これにより、{{site.data.keys.mf_analytics_console_short }} でセッションが作成されたときに記録されます。
 
-As soon as the device is set up to record sessions and you send your data, you can see the {{ site.data.keys.mf_analytics_console_short }} populated with data, as shown below.
+セッションを記録するようにデバイスがセットアップされ、ユーザーがデータを送信するとすぐに、以下に示すようにデータが {{site.data.keys.mf_analytics_console_short }} に設定されているのを確認できます。
 
-![sessions-chart](analytics-app-sessions.png)
+![セッション-グラフ](analytics-app-sessions.png)
 
-Enable or disable the collecting of app sessions using the {{ site.data.keys.mf_analytics_short }} API.
+{{site.data.keys.mf_analytics_short }} API を使用して、アプリケーション・セッションの収集を有効または無効にします。
 
 #### JavaScript
 {: #javascript }
 
 **Web**  
-To use client lifecycle events, initialize analytics:
+クライアント・ライフサイクル・イベントを使用するには、以下のようにして Analytics を初期設定します。
 
 ```javascript
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
 **Cordova**  
-To enable the capture of the lifecycle events, it must be initialized in the native platform of the Cordova app.
+ライフサイクル・イベントのキャプチャーを有効にするには、Cordova アプリケーションのネイティブ・プラットフォームで初期設定する必要があります。
 
-* For the iOS platform:
-	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the  **AppDelegate.m** (Objective-C) or **AppDelegate.swift** (Swift) file.
-	* Follow the iOS guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* iOS プラットフォームの場合:
+	* **「[Cordova application root folder]」→「platforms」→「ios」→「Classes」**フォルダーを開き、**AppDelegate.m** (Objective-C) ファイルまたは **AppDelegate.swift** (Swift) ファイルを見つけます。
+	* 下記の iOS ガイドに従って、`LIFECYCLE` アクティビティーを有効または無効にします。
+	* コマンド `cordova build` を実行して、Cordova プロジェクトを作成します。
 
-* For the Android platform:
-	* Open the  **[Cordova application root folder] → platforms → android → src → com → sample → [app-name] → MainActivity.java** file.
-	* Look for the `onCreate` method and follow the Android guide below to enable or disable `LIFECYCLE` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* Android プラットフォームの場合:
+	* **「[Cordova application root folder]」→「platforms」→「android」→「src」→「com」→「sample」→「[app-name]」→「MainActivity.java」**ファイルを開きます。
+	* `onCreate` メソッドを探し、下記の Android ガイドに従って、`LIFECYCLE` アクティビティーを有効または無効にします。
+	* コマンド `cordova build` を実行して、Cordova プロジェクトを作成します。
 
 #### Android
 {: #android }
 
-To enable client lifecycle event logging:
+クライアント・ライフサイクル・イベントのロギングを有効にするには、以下のようにします。
 
 ```java
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
-To disable client lifecycle event logging:
+クライアント・ライフサイクル・イベントのロギングを無効にするには、以下のようにします。
 
 ```java
 WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
@@ -190,7 +193,7 @@ WLAnalytics.removeDeviceEventListener(DeviceEvent.LIFECYCLE);
 #### iOS
 {: #ios }
 
-To enable client lifecycle event logging:
+クライアント・ライフサイクル・イベントのロギングを有効にするには、以下のようにします。
 
 **Objective-C:**
 
@@ -204,7 +207,7 @@ To enable client lifecycle event logging:
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
 ```
 
-To disable client lifecycle event logging:
+クライアント・ライフサイクル・イベントのロギングを無効にするには、以下のようにします。
 
 **Objective-C:**
 
@@ -218,44 +221,44 @@ To disable client lifecycle event logging:
 WLAnalytics.sharedInstance().removeDeviceEventListener(LIFECYCLE);
 ```
 
-### Client Network Activities
+### クライアント・ネットワーク・アクティビティー
 {: #client-network-activities }
 
-Collection on adapters and the network occur in two different locations: on the client and on the server:
+アダプターおよびネットワークについての収集は、クライアントとサーバーの 2 つの異なるロケーションで発生します。
 
-* The client collects information such as roundtrip time and payload size when you start collecting on the `NETWORK` device event.
+* ユーザーが `NETWORK` デバイス・イベントについて収集を開始すると、クライアントは往復時間およびペイロード・サイズなどの情報を収集します。
 
-* The server collects back-end information such as server processing time, adapter usage, used procedures.
+* サーバーは、サーバー処理時間、アダプターの使用状況、使用されたプロシージャーなどのバックエンド情報を収集します。
 
-Because the client and the server each collect their own information, charts do not display data until the client is configured to do so. To configure your client, you need to start collecting for the `NETWORK` device event and send it to the server.
+クライアントとサーバーはそれぞれ独自の情報を収集するため、クライアントが収集を行うように構成されるまでグラフにはデータが表示されません。クライアントを構成するには、`NETWORK` デバイス・イベントの収集を開始し、それをサーバーに送信する必要があります。
 
 #### JavaScript
 {: #javascript }
 
 **Web**  
-To use client network events, initialize analytics:
+クライアント・ネットワーク・イベントを使用するには、以下のようにして Analytics を初期設定します。
 
 ```javascript
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
 **Cordova**  
-To enable the capture of the network events, it must be initialized in the native platform of the Cordova app.
+ネットワーク・イベントのキャプチャーを有効にするには、Cordova アプリケーションのネイティブ・プラットフォームで初期設定する必要があります。
 
-* For the iOS platform:
-	* Open the **[Cordova application root folder] → platforms → ios → Classes** folder and find the **AppDelegate.m** (Objective-C) or **AppDelegate.swift** file.
-	* Follow the iOS guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* iOS プラットフォームの場合:
+	* **「[Cordova application root folder]」→「platforms」→「ios」→「Classes」**フォルダーを開き、**AppDelegate.m** (Objective-C) ファイルまたは **AppDelegate.swift** ファイルを見つけます。
+	* 下記の iOS ガイドに従って、`NETWORK` アクティビティーを有効または無効にします。
+	* コマンド `cordova build` を実行して、Cordova プロジェクトを作成します。
 
-* For the Android platform: navigate to the subactivity of the main activity to disable.
-	* Open the  **[Cordova application root folder] → platforms → ios → src → com → sample → [app-name] → MainActivity.java** file.
-	* Look for the `onCreate` method and follow the Android guide below to enable or disable `NETWORK` activities.
-	* Build the Cordova project by running the command: `cordova build`.
+* Android プラットフォームの場合: 無効にするメイン・アクティビティーのサブアクティビティーにナビゲートします。
+	* **「[Cordova application root folder]」→「platforms」→「ios」→「src」→「com」→「sample」→「[app-name]」→「MainActivity.java」**ファイルを開きます。
+	* `onCreate` メソッドを探し、下記の Android ガイドに従って、`NETWORK` アクティビティーを有効または無効にします。
+	* コマンド `cordova build` を実行して、Cordova プロジェクトを作成します。
 
 #### iOS
 {: #ios }
 
-To enable client network-event logging:
+クライアント・ネットワーク・イベントのロギングを有効にするには、以下のようにします。
 
 **Objective-C:**
 
@@ -269,7 +272,7 @@ To enable client network-event logging:
 WLAnalytics.sharedInstance().addDeviceEventListener(NETWORK);
 ```
 
-To disable client network-event logging:
+クライアント・ネットワーク・イベントのロギングを無効にするには、以下のようにします。
 
 **Objective-C:**
 
@@ -286,22 +289,22 @@ WLAnalytics.sharedInstance().removeDeviceEventListener(NETWORK);
 #### Android
 {: #android }
 
-To enable client network-event logging:
+クライアント・ネットワーク・イベントのロギングを有効にするには、以下のようにします。
 
 ```java
 WLAnalytics.addDeviceEventListener(DeviceEvent.NETWORK);
 ```
 
-To disable client network-event logging:
+クライアント・ネットワーク・イベントのロギングを無効にするには、以下のようにします。
 
 ```java
 WLAnalytics.removeDeviceEventListener(DeviceEvent.NETWORK);
 ```
 
-## Custom events
+## カスタム・イベント
 {: #custom-events }
 
-Use the following API methods to create custom events.
+カスタム・イベントを作成するには、以下の API メソッドを使用します。
 
 #### JavaScript (Cordova)
 {: #javascript-cordova }
@@ -313,7 +316,7 @@ WL.Analytics.log({"key" : 'value'});
 #### JavaScript (Web)
 {: #javascript-web }
 
-For the web API, custom data is sent with the `addEvent` method.
+Web API では、`addEvent` メソッドでカスタム・データが送信されます。
 
 ```javascript
 ibmmfpfanalytics.addEvent({'Purchases':'radio'});
@@ -323,7 +326,7 @@ ibmmfpfanalytics.addEvent({'src':'App landing page','target':'About page'});
 #### Android
 {: #android }
 
-After setting the first two configurations, you can start to log data as in this example:
+最初の 2 つの構成を設定した後、以下の例のようにしてデータをログに記録し始めることができます。
 
 ```java
 JSONObject json = new JSONObject();
@@ -340,7 +343,7 @@ WLAnalytics.log("Message", json);
 #### iOS
 {: #ios }
 
-After importing WLAnalytics, you can now use the API to collect custom data, as follows:
+WLAnalytics をインポートした後、以下のようにして API を使用してカスタム・データを収集できるようになります。
 
 **Objective-C:**
 
@@ -360,17 +363,17 @@ let metadata: [NSObject: AnyObject] = ["foo": "bar"];
 WLAnalytics.sharedInstance().log("hello", withMetadata: metadata);
 ```
 
-## Tracking users
+## ユーザーのトラッキング
 {: #tracking-users }
 
-To track individual users, use the `setUserContext` method:
+個々のユーザーをトラッキングするには、以下のように `setUserContext` メソッドを使用します。
 
 #### Cordova
 {: #cordova }
 
-Not supported.
+サポートされません。
 
-#### Web applications
+#### Web アプリケーション
 {: #web-applications }
 
 ```javascript
@@ -399,17 +402,17 @@ WLAnalytics.sharedInstance().setUserContext("John Doe")
 WLAnalytics.setUserContext("John Doe");
 ```
 
-To un-track individual users, use the `unsetUserContext` method:
+個々のユーザーのトラッキングを解除するには、以下のように `unsetUserContext` メソッドを使用します。
 
 #### Cordova
 {: #cordova }
 
-Not supported.
+サポートされません。
 
-#### Web applications
+#### Web アプリケーション
 {: #web-applications }
 
-There is no `unsetUserContext` in the {{ site.data.keys.product_adj }} Web SDK. The user session ends after 30 minutes of inactivity, unless another call is made to `ibmmfpfanalytics.setUserContext(user)`.
+{{site.data.keys.product_adj }} Web SDK に `unsetUserContext` はありません。ユーザー・セッションは、別のユーザー・セッションが `ibmmfpfanalytics.setUserContext(user)` に作成されない限り、30 分活動が無ければ終了します。
 
 #### iOS
 {: #ios }
@@ -433,17 +436,17 @@ WLAnalytics.sharedInstance().unsetUserContext
 WLAnalytics.unsetUserContext();
 ```
 
-## Sending Analytics data
+## Analytics データの送信
 {: #sending-analytics-data }
 
-Sending Analytics is a crucial step to see client-side analytics on the Analytics Server. When data for the configured event types is collected for Analytics, the analytics logs are stored in a log file on the client device. The data from the file is sent to the {{ site.data.keys.mf_analytics_server }} by using `send` method of the Analytics API.
+Analytics の送信は、Analytics サーバー上でクライアント・サイドの分析を表示するための重要なステップです。構成済みのイベント・タイプのデータが Analytics のために収集されると、分析ログはクライアント・デバイス上のログ・ファイルに保管されます。ファイルのデータは、Analytics API の  `send` メソッドを使用して {{site.data.keys.mf_analytics_server }} に送信されます。
 
-Consider sending the captured logs periodically to the server. Sending data at regular intervals ensures that you will see up-to-date analytic data in the {{ site.data.keys.mf_analytics_console }}.
+キャプチャーされたログを定期的にサーバーに送信することを検討してください。定期的にデータを送信することにより、{{site.data.keys.mf_analytics_console }} で常に最新の分析データを参照できるようになります。
 
 #### JavaScript (Cordova)
 {: #javascript-cordova }
 
-In a Cordova application, use the following JavaScript API method:
+Cordova アプリケーションで、以下の JavaScript API メソッドを使用します。
 
 ```javascript
 WL.Analytics.send();
@@ -452,7 +455,7 @@ WL.Analytics.send();
 #### JavaScript (Web)
 {: #javascript-web }
 
-In a Web application, use the following JavaScript API method (depending on the namespace you've selected):
+Web アプリケーションで、以下の JavaScript API メソッドを使用します  (内容は選択した名前空間に応じて異なります) 。
 
 ```javascript
 ibmmfpfanalytics.send();
@@ -476,7 +479,7 @@ WLAnalytics.sharedInstance().send();
 #### Android
 {: #android }
 
-In an Android application, use the following Java API method:
+Android アプリケーションで、以下の Java API メソッドを使用します。
 
 ```java
 WLAnalytics.send();

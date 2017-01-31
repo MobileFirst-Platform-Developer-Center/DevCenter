@@ -1,56 +1,56 @@
 ---
 layout: tutorial
-title: Handling SMS Notifications in Android
-breadcrumb_title: Handling SMS in Android
+title: Android での SMS 通知の処理
+breadcrumb_title: Android での SMS の処理
 relevantTo: [android]
 weight: 10
 downloads:
-  - name: Download Android project
+  - name: Android プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in Android](../../) tutorials.
+SMS 通知は、プッシュ通知のサブセットです。したがって、最初に、[Android でのプッシュ通知](../../)チュートリアルを必ずお読みください。
 
-**Prerequisites:**
+**前提条件**
 
-* Make sure you have read the following tutorials:
-  * [Notifications Overview](../../)
-  * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-  * [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* 必ず、以下のチュートリアルをお読みください。
+  * [通知の概要](../../)
+  * [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
+  * [iOS アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/ios)
+* ローカルで稼働している {{site.data.keys.mf_server }}、またはリモートで稼働している {{site.data.keys.mf_server }}
+* 開発者ワークステーションに {{site.data.keys.mf_cli }} がインストールされていること
 
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Notifications API](#notifications-api)   
-* [Using an SMS subscribe servlet](#using-an-sms-subscribe-servlet)     
-* [Sample Application](#sample-application)
+* [通知 API](#notifications-api)   
+* [SMS サブスクライブ・サーブレットの使用](#using-an-sms-subscribe-servlet)     
+* [サンプル・アプリケーション](#sample-application)
 
-## Notifications API
+## 通知 API
 {: #notifications-api }
-In SMS notifications, when registering the device, a phone number value is passed.
+SMS 通知では、デバイスを登録するときに電話番号値が渡されます。
 
-#### Challenge Handlers
+#### チャレンジ・ハンドラー
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+`push.mobileclient` スコープが**セキュリティー検査**にマップされる場合、プッシュ API を使用する前に、一致する**チャレンジ・ハンドラー**が存在し、登録済みであることを確認する必要があります。
 
-#### Initialization
+#### 初期化
 {: #initialization }
-Required for the client application to connect to MFPPush service with the right application context.
+クライアント・アプリケーションが、正しいアプリケーション・コンテキストの MFPPush サービスに接続するために必要です。
 
-* The API method should be called first before using any other MFPPush APIs.
-* Registers the callback function to handle received push notifications.
+* 最初に API メソッドを呼び出してから、その他の MFPPush API を使用する必要があります。
+* 受け取ったプッシュ通知を処理するコールバック関数を登録します。
 
 ```java
 MFPPush.getInstance().initialize(this);
 ```
 
-#### Register Device
+#### デバイスの登録
 {: #register-device }
-Register the device to the push notifications service.
+デバイスをプッシュ通知サービスに登録します。
 
 ```java
 MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
@@ -66,7 +66,8 @@ MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
 }, optionObject);
 ```
 
-* **optionObject**: an `JSONObject` containing the phone number to register the device with. For example:
+* **optionObject**: デバイスを登録するときに使用する電話番号を含んでいる `JSONObject` です。例えば、次のとおりです。
+
 
 ```java
 JSONObject optionObject = new JSONObject();
@@ -75,15 +76,14 @@ try {
     optionObject.put("phoneNumber", editPhoneText.getText().toString());
 }
 catch(Exception ex) {
-    ex.printStackTrace();
-}
+    ex.printStackTrace();        }
 ```
 
-> You can also register a device using the [Push Device Registration (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
+> [プッシュ・デバイス登録 (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html) を使用してデバイスを登録することもできます。
 
-#### Unregister Device
+#### デバイスの登録抹消
 {: #unregister-device }
-Unregister the device from push notification service instance.
+プッシュ通知サービス・インスタンスからデバイスを登録抹消します。
 
 ```java
 MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
@@ -100,28 +100,28 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 });
 ```
 
-## Using an SMS subscribe servlet
+## SMS サブスクライブ・サーブレットの使用
 {: #using-an-sms-subscribe-servlet }
-REST APIs are used to send notifications to the registered devices. All forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications
+登録済みデバイスに通知を送信するときは REST API が使用されます。すべての形式の通知 (タグ通知、ブロードキャスト通知、および認証済み通知) を送信できます。
 
-To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
-Example URL: 
+通知を送信するために、POST を使用して REST エンドポイントへの要求が行われます (`imfpush/v1/apps/<application-identifier>/messages`)。  
+URL の例を以下に示します。 
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
-> To review all Push Notifications REST APIs, see the <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API runtime services</a> topic in the user documentation.
+> すべてのプッシュ通知 REST API を確認するには、ユーザー資料の <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API ランタイム・サービス</a>のトピックを参照してください。
 
-To send a notification, see the [sending notifications](../../sending-notifications) tutorial.
+通知を送信するには、[通知の送信](../../sending-notifications)チュートリアルを参照してください。
 
-<img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
-## Sample application
+<img alt="サンプル・アプリケーションのイメージ" src="sample-app.png" style="float:right"/>
+## サンプル・アプリケーション
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80) the Android project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsAndroid/tree/release80) して Android プロジェクトをダウンロードします。
 
-**Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
+**注:** サンプルを実行するには、Android デバイス上に最新バージョンの Google Play Services がインストールされている必要があります。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

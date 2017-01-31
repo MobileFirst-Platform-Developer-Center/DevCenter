@@ -1,41 +1,42 @@
 ---
 layout: tutorial
-title: Licensing in MobileFirst Server
+title: MobileFirst Server のライセンス
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The IBM {{ site.data.keys.mf_server }} supports two different licensing methods based on what you have purchased.
+IBM {{site.data.keys.mf_server }} では、購入した対象に基づいて、2 つの異なるライセンス方式をサポートしています。
 
-If you have purchased Perpetual licenses, you can consume what you have purchased and verify your usage and compliance through the **License tracking page** in the {{ site.data.keys.mf_console }} and through [License Tracking report](../../administering-apps/license-tracking/#license-tracking-report). If you have purchased Token licenses, configure your {{ site.data.keys.mf_server }} to communicate with a remote token license server.
+永久ライセンス を購入した場合は、購入した対象を消費して、{{site.data.keys.mf_console }} の「**ライセンス・トラッキング・ページ (License tracking page)**」、および[ライセンス・トラッキング・レポート](../../administering-apps/license-tracking/#license-tracking-report)を通じて、使用量とコンプライアンスを検証することができます。トークン・ライセンスを購入した場合は、リモート・トークン・ライセンス・サーバーと通信するように {{site.data.keys.mf_server }} を構成します。
 
-### Application or Addressable Device licenses
+### アプリケーションまたはアドレス可能なデバイスのライセンス
 {: #application-or-addressable-device-licenses }
-If you have purchased Application or Addressable Device licenses, you can consume what you have purchased and verify your usage and compliance through the License tracking page in the {{ site.data.keys.mf_console }} and through License Tracking report.
+アプリケーションまたはアドレス可能なデバイスのライセンスを購入した場合は、購入した対象を消費して、{{site.data.keys.mf_console }} の「ライセンス・トラッキング」ページか、ライセンス・トラッキング・レポートを通じて、使用量とコンプライアンスを検証できます。
 
-### Processor value unit (PVU) licensing
+### プロセッサー・バリュー・ユニット (PVU) ライセンス交付
 {: #processor-value-unit-pvu-licensing }
-Processor value unit (PVU) licensing is available if you have purchased IBM {{ site.data.keys.product }} Extension (see [License Information documents](http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument)), but only after the purchase of IBM  WebSphere  Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise.
+プロセッサー・バリュー・ユニット (PVU) ライセンス交付は、IBM {{site.data.keys.product }} Extension ([ライセンス情報文書](http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument)を参照) を購入している場合に使用できます。ただし、IBM  WebSphere Application Server Network Deployment、IBM API Connect™ Professional、または IBM API Connect Enterprise の購入後に限ります。
 
-The PVU license pricing structure is responsive to both the type and number of processors that are available to installed products. Entitlements can be full capacity or subcapacity. Under the processor value unit licensing structure, you license software based on the number of value units assigned to each processor core.
+PVU ライセンスの価格設定体系は、インストールされている製品に使用可能なプロセッサーのタイプと数の両方に対応します。資格付与は、フル・キャパシティーまたはサブキャパシティーにすることができます。プロセッサー・バリュー・ユニット・ライセンス交付では、各プロセッサー・コアに割り当てられたバリュー・ユニット数に基づいてソフトウェアのライセンスを取得します。
 
-For example, processor type A is assigned 80 value units per core and processor type B is assigned 100 value units per core. If you license a product to run on two type A processors, you must acquire an entitlement for 160 value units per core. If the product is to run on two type B processors, the required entitlement is 200 value units per core.
+例えば、プロセッサー・タイプ A にはコアあたり 80 バリュー・ユニットが割り当てられ、プロセッサー・タイプ B にはコアあたり 100 バリュー・ユニットが割り当てられているとします。製品を 2 つのタイプ A プロセッサー上で実行するライセンスを取得する場合、コアあたり 160 バリュー・ユニットの資格付与が必要です。製品を 2 つのタイプ B プロセッサー上で実行する場合、必要な資格付与はコアあたり 200 バリュー・ユニットです。
 
-> [Read more information](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html) on PVU licensing.
+> PVU ライセンス交付について[続きを読みます](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html)。
 
-### Token Licensing
+### トークン・ライセンス
 {: #token-licensing }
-In a token environment, every product consumes a predefined token value per license, compared to a traditional floating environment where a predefined quantity per license is consumed. The license key has a pool of tokens from which the license server calculates the tokens that are checked in and checked out. Tokens are either consumed or released when a product checks in or checks out licenses from the license server.
+従来のフローティング環境では、ライセンスごとに事前定義された数量を消費しますが、トークン環境では、すべての製品が、ライセンスごとに事前定義されたトークン値を消費します。ライセンス・キーにはトークンのプールがあり、ライセンス・サーバーはそれを使用して、チェックインおよびチェックアウトされたトークンを計算します。製品がライセンス・サーバーに対してライセンスをチェックインまたはチェックアウトすると、トークンが消費または解放されます。
 
-Your licensing contract defines whether you might be able to use token licensing, the number of tokens available, and features that are validated by tokens. See Token license validation.
+ライセンスの契約で、トークン・ライセンスの使用の可否、使用可能なトークンの数、およびトークンによって検証されるフィーチャーが規定されます。『トークン・ライセンス検証』を参照してください。
 
-If you have purchased token-based licenses, install a version of the {{ site.data.keys.mf_server }} that supports token licenses and configure your application server so that your server can communicate with the remote token server. See Installing and configuring for token licensing.
+トークンに基づくライセンスを購入した場合は、トークン・ライセンス対応バージョンの {{site.data.keys.mf_server }} をインストールして、サーバーがリモート・トークン・サーバーと通信できるようにアプリケーション・サーバーを構成します。『トークン・ライセンスのためのインストールおよび構成』を参照してください。
 
-With token licensing, you can specify the license app type in the application descriptor of each one of your apps before deploying them. The license app type can be either APPLICATION or ADDITIONAL_BRAND_DEPLOYMENT. For testing, you can set the value of the license app type to NON_PRODUCTION. For more information, see Setting the application license information.
+トークン・ライセンスでは、アプリケーションをデプロイする前に、各アプリケーションのアプリケーション記述子にライセンス・アプリケーション・タイプを指定できます。ライセンス・アプリケーション・タイプとして、APPLICATION または ADDITIONAL_BRAND_DEPLOYMENT のいずれかを使用できます。テストを行う場合は、ライセンス・アプリケーション・タイプの値を NON_PRODUCTION に設定できます。詳しくは、『アプリケーション・ライセンス情報の設定』を参照してください。
 
-The Rational License Key Server Administration and Reporting tool that is released with Rational License Key Server 8.1.4.9 can administer and generate reports for the license consumed by {{ site.data.keys.product }}. You can identify the relevant parts of the report by the following display names: **MobileFirst Platform Foundation Application** or **MobileFirst Platform Additional Brand Deployment**. These names refer to the license app type for which the tokens are consumed. For more information, see [Rational License Key Server Administration](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/c_rlks_admin_tool_overview.html) and [Reporting Tool overview and Rational License Key Server Fix Pack 9 (8.1.4.9)](http://www.ibm.com/support/docview.wss?uid=swg24040300).
+Rational License Key Server 8.1.4.9 と共にリリースされた Rational License Key Server Administration and Reporting Tool により、{{site.data.keys.product }} で消費されるライセンスを管理し、そのレポートを生成することができます。レポートの関連部分は、**「MobileFirst Platform Foundation Application」**または**「MobileFirst Platform Additional Brand Deployment」**という表示名で識別可能です。これらの名前は、トークンが消費されたライセンス・アプリケーション・タイプを表します。詳しくは、『[Rational License Key Server Administration and Reporting Tool の概要](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/c_rlks_admin_tool_overview.html)』および『[Rational License Key Server フィックスパック 9 (8.1.4.9)](http://www.ibm.com/support/docview.wss?uid=swg24040300)』を参照してください。
 
-For information on planning to use token licensing with {{ site.data.keys.mf_server }}, see Planning for the use of token licensing.
+{{site.data.keys.mf_server }} でのトークン・ライセンスの使用の計画については、『トークン・ライセンスの使用計画』を参照してください。
 
-To obtain the license keys for {{ site.data.keys.product }}, you need to access IBM  Rational License Key Center. For more information about generating and managing your license keys, see [IBM Support - Licensing](http://www.ibm.com/software/rational/support/licensing/).
+{{site.data.keys.product }} のライセンス・キーを入手するには、IBM Rational License Key Center にアクセスする必要があります。ライセンス・キーの生成と管理について詳しくは、
+[IBM Support - Licensing](http://www.ibm.com/software/rational/support/licensing/) を参照してください。

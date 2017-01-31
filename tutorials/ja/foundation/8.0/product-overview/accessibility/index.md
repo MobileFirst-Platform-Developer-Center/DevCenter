@@ -1,71 +1,78 @@
 ---
 layout: tutorial
-title: Accessibility features for IBM MobileFirst Foundation
-breadcrumb_title: Accessibility features
+title: IBM MobileFirst Foundation のアクセシビリティー機能
+breadcrumb_title: アクセシビリティー機能
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Accessibility features assist users who have a disability, such as restricted mobility or limited vision, to use information technology content successfully.
+アクセシビリティー機能は、運動障がいや視覚障がいなどの障がいを持つユーザーが情報技術コンテンツを快適に使用できるように支援します。
 
-### Accessibility features
+### アクセシビリティー機能
 {: #accessibility-features }
-{{ site.data.keys.product_full }} includes the following major accessibility features:
+{{site.data.keys.product_full }} には、次の主要なアクセシビリティー機能が組み込まれています。
 
-* Keyboard-only operation
-* Operations that support the use of a screen reader
+* キーボードのみによる操作
+* スクリーンリーダーを使用する操作
 
-{{ site.data.keys.product }} uses the latest W3C Standard, [WAI-ARIA 1.0](http://www.w3.org/TR/wai-aria/) to ensure compliance to [US Section 508](http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards), and [Web Content Accessibility Guidelines (WCAG) 2.0](http://www.w3.org/TR/WCAG20/). To take advantage of accessibility features, use the latest release of your screen reader in combination with the latest web browser that is supported by this product.
+{{site.data.keys.product }} では、[US Section 508](http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards)、および [Web Content Accessibility Guidelines (WCAG) 2.0](http://www.w3.org/TR/WCAG20/) に準拠するために、最新の W3C 標準である [WAI-ARIA
+1.0](http://www.w3.org/TR/wai-aria/) が使用されています。アクセシビリティー機能を活用するには、最新リリースのスクリーン・リーダーを、この製品でサポートされる最新の Web ブラウザーと組み合わせて使用してください。
 
-### Keyboard navigation
+
+### キーボードによるナビゲーション
 {: #keyboard-navigation }
-This product uses standard navigation keys.
+この製品では、標準のナビゲーション・キーを使用します。
 
-### Interface information
+### インターフェースに関する情報
 {: #interface-informaton }
-The {{ site.data.keys.product }} user interfaces do not have content that flashes 2 - 55 times per second.
+{{site.data.keys.product }} のユーザー・インターフェースには、1 秒あたり 2 回から 55 回明滅するコンテンツは含まれていません。
 
-You can use a screen reader with a digital speech synthesizer to hear what is displayed on your screen. Consult the documentation with your assistive technology for details about how to use it with this product and its documentation.
+デジタル音声シンセサイザーを用いたスクリーン・リーダーを使用して、画面上の表示内容を聞き取ることができます。本製品およびその資料での支援技術の使用方法について詳しくは、ご使用の支援技術の資料を参照してください。
 
-### {{ site.data.keys.mf_cli }}
+### {{site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
-By default, status messages that are displayed by the {{ site.data.keys.mf_cli }} use various colors to indicate success, errors, and warnings. You can use the `--no-color` option on any {{ site.data.keys.mf_cli }} command to suppress the use of these colors for that command. When `--no-color` is specified, output is displayed in the text display colors that are set for your operating system console.
+デフォルトでは、{{site.data.keys.mf_cli }} で表示される状況メッセージには、正常終了、エラー、警告を表すため、さまざまな色が使用されます。
+どの {{site.data.keys.mf_cli }} コマンドでも、`--no-color` オプションを使用することで、そのコマンドでのそれらの色の使用を抑止できます。`--no-color` を指定すると、出力は、オペレーティング・システム・コンソールに設定されているテキスト表示色で表示されます。
 
-### Web interface 
+### Web インターフェース 
 {: #web-interface }
-The {{ site.data.keys.product }} web user interfaces rely on cascading style sheets to render content properly and to provide a usable experience. The application provides an equivalent way for low-vision users to use a users system display settings, including high-contrast mode. You can control font size by using the device or web browser settings.
+{{site.data.keys.product }} の Web ユーザー・インターフェースは、カスケーディング・スタイル・シートに依存することで、コンテンツを適切にレンダリングし、使いやすい操作画面を提供しています。このアプリケーションには、低視力のお客様がご使用のシステム表示設定（ハイコントラスト・モードなど）を使用できるように、同等の方法が用意されています。フォント・サイズの制御は、デバイスの設定または Web ブラウザーの設定を使用して行うことができます。
 
-You can navigate through the different {{ site.data.keys.product_adj }} environments and their documentation by using keyboard shortcuts. Eclipse provides accessibility features for its development environments. Internet browsers also provide accessibility features for web applications, such as the {{ site.data.keys.mf_console }}, the {{ site.data.keys.mf_analytics_console }}, the {{ site.data.keys.product }} Application Center console, and the {{ site.data.keys.product }} Application Center mobile client.
+キーボード・ショートカットを使用することで、各種 {{site.data.keys.product_adj }} 環境とそれぞれの資料をナビゲートできます。Eclipse には、その開発環境のためのアクセシビリティー機能が備わっています。 また、インターネット・ブラウザーにも、Web アプリケーション (例えば {{site.data.keys.mf_console }}、{{site.data.keys.mf_analytics_console }}、{{site.data.keys.product }} Application Center コンソール、{{site.data.keys.product }} Application Center モバイル・クライアントなど) のためのアクセシビリティー機能が備わっています。
 
-The {{ site.data.keys.product }} web user interface includes WAI-ARIA navigational landmarks that you can use to quickly navigate to functional areas in the application.
+{{site.data.keys.product }} Web ユーザー・インターフェースには WAI-ARIA ナビゲーション・ランドマークが含まれています。これを使用して、アプリケーションの機能領域に素早く移動できます。
 
-### Installation and configuration
+### インストールおよび構成
 {: #installation-and-configuration }
-There are two ways to install and configure {{ site.data.keys.product }}: by graphical user interface (GUI), or by command-line.
+{{site.data.keys.product }} をインストールして構成するには、グラフィカル・ユーザー・インターフェース (GUI) による方法と、コマンド・ラインによる方法の 2 つがあります。
 
-Although the graphical user interface (IBM Installation Manager in wizard mode or Server Configuration Tool) does not provide information about user interface objects, equivalent function is available with the command-line interface. All the functions in the GUI are supported through the command-line, and some particular installation and configuration features are only available with the command-line. You can read about the accessibility features of [IBM Installation Manager](http://www.ibm.com/support/knowledgecenter/SSDV2W/im_family_welcome.html?lang=en&view=kc) in the IBM Knowledge Center.
+グラフィカル・ユーザー・インターフェース (ウィザード・モードの IBM Installation Manager や、サーバー構成ツール
+) ではユーザー・インターフェース・オブジェクトに関する情報は提供されませんが、同等の機能を
+コマンド・ライン・インターフェースでは利用できます。
+GUI の機能はすべてコマンド・ラインでサポートされます。また、コマンド・ラインのみで使用できる特定のインストール機能や構成機能もいくつかあります。[IBM Installation Manager](http://www.ibm.com/support/knowledgecenter/SSDV2W/im_family_welcome.html?lang=en&view=kc) のアクセシビリティー機能については、IBM Knowledge Center を参照してください。
 
-The following topics provide you with the information on how the installation and configuration can be done without GUI:
+以下のトピックに、GUI を使用せずにインストールおよび構成を実行する方法についての情報があります。
 
-* Working with sample response files for IBM Installation Manager
-This method enables silent installation and configuration of {{ site.data.keys.mf_server }} and Application Center. You have the possibility to not install Application Center by using the response file named install-no-appcenter.xml. You can then use Ant task to install it at a later stage. See Installing the Application Center with Ant tasks. In this case, the installation and the upgrading of Application Center can be done independently.
-* Installing with Ant Tasks
-* Installing the Application Center with Ant tasks
+* IBM Installation Manager 用のサンプル応答ファイルの処理
+この方法を使用すると、{{site.data.keys.mf_server }} および Application Center のサイレント・インストールと構成を行うことができます。install-no-appcenter.xml という応答ファイルを使用することで、Application Center がインストールされないようにすることができます。その場合、Ant タスクを使用して、後の段階でそれをインストールできます。
+『Ant タスクを使用した Application Center のインストール』を参照してください。この場合、Application Center のインストールとアップグレードをそれぞれ単独で行うことができます。
+* Ant タスクを使用したインストール
+* Ant タスクを使用した Application Center のインストール
 
-### Vendor software
+### ベンダー・ソフトウェア
 {: #vendor-software }
-{{ site.data.keys.product }} includes certain vendor software that is not covered under the IBM license agreement. IBM makes no representation about the accessibility features of these products. Contact the vendor for the accessibility information about its products.
+{{site.data.keys.product }} には、IBM 使用許諾契約書の対象とはならない特定のベンダー・ソフトウェアが含まれています。これらの製品のアクセシビリティー機能について、IBM は一切の保証責任を負いません。ベンダー製品のアクセシビリティー情報については、そのベンダーにお問合せくだい。
 
-### Related accessibility information
+### アクセシビリティー関連情報
 {: #related-accessibility-information }
-In addition to standard IBM help desk and support websites, IBM has established a TTY telephone service for use by deaf or hard of hearing customers to access sales and support services:
+標準の IBM ヘルプ・デスクとサポート Web サイトに加え、IBM は、耳の不自由なお客様が営業やサポート・サービスにアクセスするために使用できる TTY 電話サービスを立ち上げました。
 
-TTY service  
+TTY サービス  
 800-IBM-3383 (800-426-3383)  
-(within North America)
+(北米内)
 
-### IBM and accessibility
+### IBM とアクセシビリティー
 {: #ibm-and-accessibility }
-For more information about the commitment that IBM has to accessibility, see [IBM Accessibility](http://www.ibm.com/able).
+IBM のアクセシビリティーへの取り組みについて詳しくは、[IBM Accessibility](http://www.ibm.com/able) を参照してください。
 
 

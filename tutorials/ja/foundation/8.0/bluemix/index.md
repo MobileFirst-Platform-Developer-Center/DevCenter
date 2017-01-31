@@ -1,46 +1,46 @@
 ---
 layout: tutorial
-breadcrumb_title: Foundation on Bluemix
+breadcrumb_title: Bluemix 上の Foundation
 title: IBM MobileFirst Foundation on Bluemix
 relevantTo: [ios,android,windows,javascript]
-weight: 10
+weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_full }} can be hosted on Bluemix. Following is some basic information about Bluemix.
+{{site.data.keys.product_full }} は Bluemix 上でホストできます。以下に、Bluemix に関する基本情報をいくつか示します。
 
-IBM Bluemix is an implementation of IBM's Open Cloud Architecture. It leverages Cloud Foundry to enable developers to rapidly build, deploy, and manage their cloud applications, while tapping a growing ecosystem of available services and runtime frameworks.
+IBM Bluemix は、IBM のオープン・クラウド・アーキテクチャーの実装環境です。Cloud Foundry ベースの IBM Bluemix により、開発者は、利用可能なサービスやランタイム・フレームワークから成る拡大するエコシステムを活用しながら、クラウド・アプリケーションを素早くビルドし、デプロイし、管理することができます。
 
-> Learn more about the Bluemix architecture and Bluemix concepts [on the Bluemix website](https://console.ng.bluemix.net/docs/overview/whatisbluemix.html#bluemixoverview).
+> Bluemix のアーキテクチャーおよび Bluemix の概念について詳しくは、[Bluemix の Web サイト](https://console.ng.bluemix.net/docs/overview/whatisbluemix.html#bluemixoverview)をご覧ください。
 
-### How does it work?
+### HTTP アダプターを使用するための準備
 {: #how-does-it-work }
-In a nutshell, there are two ways to run {{ site.data.keys.product }} on Bluemix, depending on the type of license entitlement.
+簡単に言うと、{{site.data.keys.product }} を Bluemix で実行する方法には、ライセンス資格の種類によって 2 とおりあります。
 
-* Bluemix subscription or PayGo license: {{ site.data.keys.mf_bm_full }} service
-* On Prem license: Use IBM provided scripts to set up an instance of {{ site.data.keys.product_full }} on IBM Containers or Liberty for Java runtime.
+* Bluemix サブスクリプションまたは PayGo ライセンス: {{site.data.keys.mf_bm_full }} サービス
+* オンプレミス・ライセンス: IBM 提供のスクリプトを使用して、IBM Containers または Liberty for Java ランタイム上に {{site.data.keys.product_full }} インスタンスをセットアップします。
 
-To run {{ site.data.keys.product }} on Bluemix IBM Containers, several components must interact with one another: the first component is an **image** that contains a **Linux distribution with a WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it. The image is then stored inside an **IBM Container**, and the IBM Container is managed by **Bluemix**.
+{{site.data.keys.product }} を Bluemix の IBM Containers 上で実行させるためには、複数のコンポーネントが相互に対話しなければなりません。まず最初のコンポーネントは、**イメージ **で、これには、**Linux ディストリビューションと WebSphere Liberty のインストール済み環境**が含まれ、**{{site.data.keys.mf_server }} インスタンス**がデプロイされています。イメージは **IBM コンテナー**内部に格納され、IBM コンテナーは **Bluemix** によって管理されます。
 
-To run {{ site.data.keys.product}} on a Bluemix Liberty for Java runtime, the following components are used: an **Cloudfoundry app** that contains a **WebSphere Liberty installation**, with a **{{ site.data.keys.mf_server }} instance** deployed to it.
+{{site.data.keys.product}} を Bluemix の Liberty for Java ランタイム上で実行させる場合に使用するコンポーネントは、**WebSphere Liberty のインストール済み環境** が含まれた **Cloudfoundry アプリケーション**で、これに **{{site.data.keys.mf_server }} インスタンス**をデプロイして使用します。
 
 ### IBM Containers
 {: #ibm-containers }
-IBM Containers are objects that are used to run images in a hosted cloud environment. IBM Containers hold everything that an app needs to run.
+IBM Containers は、ホストされているクラウド環境において、イメージの実行に使用されるオブジェクトです。IBM Containers には、アプリの実行に必要なものがすべて保持されます。
 
-IBM Container infrastructure includes a private registry for your images, so that you can upload, store, and retrieve them. You can make those images available for Bluemix to manage them. A command line interface is then used to manage your containers on Bluemix - More on this in the following tutorials.
+IBM コンテナーのインフラストラクチャーには、イメージをアップロード、保管、取得できるように、イメージ用の専用レジストリーが含まれています。Bluemix がこれらのイメージを管理できるように、イメージを準備します。その後、コマンド・ライン・インターフェースを使用して、Bluemix 上でコンテナーを管理します。詳しくは、次のチュートリアルをご覧ください。
 
-[Learn more about IBM Containers](https://www.ng.bluemix.net/docs/containers/container_index.html).
+[IBM Containers についての詳細を参照してください](https://www.ng.bluemix.net/docs/containers/container_index.html)。
 
-### Liberty for Java runtime
+### Liberty for Java ランタイム
 {: #liberty-for-java-runtime }
-The Liberty for Java runtime is powered by the liberty-for-java buildpack. The liberty-for-java buildpack provides a complete runtime environment for running applications on top of WebSphere Liberty profile. A command line interface is then used to manage your apps on Bluemix.
+Liberty for Java ランタイムには liberty-for-java ビルドパックの機能が採用されています。liberty-for-java ビルドパックにより、WebSphere Liberty プロファイルの上でアプリケーションを実行させるための完全なランタイム環境が提供されます。その後、コマンド・ライン・インターフェースを使用して、Bluemix 上でアプリケーションを管理します。
 
-[Learn more about Liberty for Java](https://new-console.ng.bluemix.net/docs/runtimes/liberty/index.html).
+[Liberty for Java についてもっとよく知る](https://new-console.ng.bluemix.net/docs/runtimes/liberty/index.html)。
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-* Create a {{ site.data.keys.mf_server }} instance [using the {{ site.data.keys.mf_bm }} service](using-mobile-foundation/).
-* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts/) using IBM Containers.
-* Create a {{ site.data.keys.mf_server }} instance on Bluemix [using IBM provided scripts](mobilefirst-server-using-scripts-lbp/) using Liberty Build Pack.
+* [{{site.data.keys.mf_bm }} サービス](using-mobile-foundation/)を使用して {{site.data.keys.mf_server }} インスタンスを作成します。
+* IBM コンテナーを使用し、 [IBM 提供のスクリプトを使用して](mobilefirst-server-using-scripts/)、{{site.data.keys.mf_server }} インスタンスを Bluemix 上に作成します。
+* Liberty  ビルド・パックを使用し、 [IBM 提供のスクリプトを使用して](mobilefirst-server-using-scripts-lbp/)、{{site.data.keys.mf_server }} インスタンスを Bluemix 上に作成します。

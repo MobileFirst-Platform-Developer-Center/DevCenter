@@ -1,185 +1,182 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation on Bluemix service
-breadcrumb_title: Mobile Foundation service
+title: Bluemix サービス上での Mobile Foundation の使用
+breadcrumb_title: Mobile Foundation サービス
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-This tutorial provides step-by-step instructions to set up a {{ site.data.keys.mf_server }} instance on Bluemix by using the {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) service.  
-{{ site.data.keys.mf_bm_short }} is a Bluemix service that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
+このチュートリアルでは、{{site.data.keys.mf_bm_full }} (**{{site.data.keys.mf_bm_short }}**) サービスを使用して Bluemix 上で {{site.data.keys.mf_server }} インスタンスをセットアップするための手順を段階的に説明します。  
+{{site.data.keys.mf_bm_short }} は、 **Liberty for Java ランタイム** 上で MobileFirst Foundation v8.0 のスケーラブルなデベロッパー環境または実稼働環境を素早く容易に稼働できるようにする、Bluemix サービスの 1 つです。
 
-The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
+{{site.data.keys.mf_bm_short }} サービスには、以下のプラン・オプションがあります。
 
-1. **Developer**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime. The plan does not support the use of external databases or define multiple nodes *and is restricted to development and testing only*. The server instance allows you to register any number of Mobile application for development and testing.
+1. **開発者**: このプランでは、{{site.data.keys.mf_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。このプランでは、外部データベースの使用はサポートされず、複数のノードも定義されません。このプランは*開発およびテストのみに制限されます*。サーバー・インスタンスを使用して、開発およびテスト用に任意の数のモバイル・アプリケーションを登録できます。
 
-    > **Note:** the Developer plan does not offer a persistent database, as such be sure to backup your configuration as explained [in the Troubleshooting section](#troubleshooting).
+    > **注:** 「開発者」プランでは、永続的なデータベースは提供されません。したがって、[トラブルシューティング・セクション](#troubleshooting)にある説明のとおりに、必ず構成をバックアップしてください。
 
-2. **Developer Pro**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a {{ site.data.keys.mf_analytics_server }}, deployed on IBM Containers. The Container charges are billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment.
+2. **開発者商用**: このプランでは {{site.data.keys.mf_server }} が Liberty for Java ランタイム上で Cloud Foundry アプリケーションとしてプロビジョンされます。ユーザーは、このプランを使用することで任意の数のモバイル・アプリケーションを開発およびテストできます。このプランでは、**dashDB OLTPサービス** の準備が整っている必要があります。dashDB サービスは別に作成され請求されます。オプションで、IBM Containers にデプロイされた {{site.data.keys.mf_analytics_server }} を追加できます。Container の料金は別に請求されます。このプランはサイズ制限があり、実動ではなく、チーム・ベースの開発アクティビティーとテスト・アクティビティーに使用することを目的としています。料金は、ご使用の環境の合計サイズによって異なります。
 
-3. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a {{ site.data.keys.mf_analytics_server }}, deployed on IBM Containers. The Container charges are billed separately. Charges depend on the total size of your environment.
+3. **容量ごとの商用:** このプランにより、ユーザーはモバイル・ユーザーやデバイスの数に関係なく、任意の数のモバイル・アプリケーションを実動で作成、テスト、および実行できます。大規模のデプロイメントと高可用性がサポートされます。このプランでは、**dashDB OLTPサービス** の準備が整っている必要があります。dashDB サービスは別に作成され請求されます。オプションで、IBM Containers にデプロイされた {{site.data.keys.mf_analytics_server }} を追加できます。Container の料金は別に請求されます。料金は、ご使用の環境の合計サイズによって異なります。
 
-4. **Professional 1 Application**: This plan provisions a {{ site.data.keys.mf_server }} in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
+4. **1 つの商用アプリケーション**: このプランでは、{{site.data.keys.mf_server }} が Liberty for Java ランタイム上のスケーラブルな Cloud Foundry アプリケーションにプロビジョンされます。また、このプランには、別に作成され請求される dashDB データベース・サービスも必要です。このプランでは、1 つのモバイル・アプリケーションの作成と管理を行うことができます。この 1 つのモバイル・アプリケーションは、iOS、Android、Windows、Mobile Web など、複数のフレーバーで構成できます。 
 
-> [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
-
-#### Jump to:
+> 選択可能なプランとそれぞれの請求について詳しくは、[Bluemix.net のサービス・ページを参照してください](https://console.ng.bluemix.net/catalog/services/mobile-foundation/)。
+#### ジャンプ先:
 {: #jump-to}
-* [Setting up the {{ site.data.keys.mf_bm_short }} service](#setting-up-the-mobile-foundation-service)
-* [Using the {{ site.data.keys.mf_bm_short }} service](#using-the-mobile-foundation-service)
-* [Server configuration](#server-configuration)
-* [Advanced server configuration](#advanced-server-configuration)
-* [Adding Analytics support](#adding-analytics-support)
-* [Applying {{ site.data.keys.mf_server }} fixes](#applying-mobilefirst-server-fixes)
-* [Accessing server logs](#accessing-server-logs)
-* [Troubleshooting](#troubleshooting)
-* [Further reading](#further-reading)
+* [{{site.data.keys.mf_bm_short }} サービスのセットアップ](#setting-up-the-mobile-foundation-service)
+* [{{site.data.keys.mf_bm_short }} サービスの使用](#using-the-mobile-foundation-service)
+* [サーバー構成](#server-configuration)
+* [拡張サーバー構成](#advanced-server-configuration)
+* [分析サポートの追加](#adding-analytics-support)
+* [{{site.data.keys.mf_server }} 修正の適用](#applying-mobilefirst-server-fixes)
+* [サーバー・ログへのアクセス](#accessing-server-logs)
+* [トラブルシューティング](#troubleshooting)
+* [発展的なチュートリアル](#further-reading)
 
-## Setting up the {{ site.data.keys.mf_bm_short }} service
+## {{site.data.keys.mf_bm_short }} サービスのセットアップ
 {: #setting-up-the-mobile-foundation-service }
-To set up the available plans, first follow these steps:
+使用可能なプランをセットアップするには、まず最初に以下のステップに従います。
 
-1. Load [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
-2. Search for **Mobile Foundation** and click on the resulting tile option.
-3. *Optional*. Enter a custom name for the service instance, or use the default provided name.
-4. Select the desired pricing plan, then click **Create**.
+1. [bluemix.net](http://bluemix.net) をロードし、ログインして、**「カタログ」**をクリックします。
+2. **「Mobile Foundation」**を検索し、表示されたタイル・オプションをクリックします。
+3. *オプション*。サービス・インスタンスに付けるカスタム名を入力するか、またはデフォルトで示された名前を使用します。
+4. 目的の価格設定プランを選択し、**「作成」**をクリックします。
 
-    <img class="gifplayer" alt="Creating a {{ site.data.keys.mf_bm_short }} service instance" src="service-creation.png"/>
+    <img class="gifplayer" alt="{{site.data.keys.mf_bm_short }} サービス・インスタンスの作成" src="service-creation.png"/>
 
-### Setting up the *developer* plan
+### *開発者* プランのセットアップ
 {: #setting-up-the-developer-plan }
-1. Start the {{ site.data.keys.mf_server }}.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
+1. {{site.data.keys.mf_server }} を始動します。
+    - サーバー構成については、基本レベルをそのまま保持して **「基本サーバーの始動」**をクリックするか、または
+    - [「設定」タブ](#advanced-server-configuration)でサーバー構成を更新して、**「拡張サーバーの始動」**をクリックします。
 
-    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+    このステップの間に、{{site.data.keys.mf_bm_short }} サービス用として Cloud Foundry アプリケーションが生成され、MobileFirst Foundation 環境が初期化されます。このステップは 5 分から 10 分かかることがあります。
 
-2. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
+2. インスタンスの準備ができれば、[サービスを使用](#using-the-mobile-foundation-service)できます。
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
+    ![{{site.data.keys.mf_bm_short }} のセットアップのイメージ](overview-page.png)
 
-### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
+### *開発者商用* プラン、*容量ごとの商用* プラン、および *1 つの商用アプリケーション* プランのセットアップ
 {: #setting-up-the-developer-pro-professional-percapacity-and-professional-1-application-plans }
-1. These plans require an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/).
+1. これらのプランには、外部[dashDB トランザクション・データベース・インスタンス](https://console.ng.bluemix.net/catalog/services/dashdb/)が必要です。
 
-    > Learn more about [setting up a dashDB database instance]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
+    > [dashDB データベース・インスタンスのセットアップ]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/)についてもっとよく知る
 
-    If you have an existing dashDB service instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select the **Use Existing Service** option, and provide your credentials:
+    既存の dashDB サービス・インスタンス (DashDB Enterprise Transactional 2.8.500 または Enterprise Transactional 12.128.1400) がある場合は、**「既存のサービスの使用」**オプションを選択して、次のように資格情報を入力します。
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-existing.png)
+    ![{{site.data.keys.mf_bm_short }} のセットアップのイメージ](create-dashdb-instance-existing.png)
 
-    1.b. If you do not currently have a dashDB service instance, select the **Create New Service** option and follow the on-screen instructions:
+    1.b. 現在まだ dashDB サービス・インスタンスがない場合は、次のように**「新規サービスの作成」**オプションを選択して、画面に表示される指示に従います。
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-new.png)
+    ![{{site.data.keys.mf_bm_short }} のセットアップのイメージ](create-dashdb-instance-new.png)
 
-2. Start the {{ site.data.keys.mf_server }}.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
+2. {{site.data.keys.mf_server }} を始動します。
+    - サーバー構成については、基本レベルをそのまま保持して **「基本サーバーの始動」**をクリックするか、または
+    - [「設定」タブ](#advanced-server-configuration)でサーバー構成を更新して、**「拡張サーバーの始動」**をクリックします。
 
-    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+    このステップの間に、{{site.data.keys.mf_bm_short }} サービス用として Cloud Foundry アプリケーションが生成され、MobileFirst Foundation 環境が初期化されます。このステップは 5 分から 10 分かかることがあります。
 
-3. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
+3. インスタンスの準備ができれば、[サービスを使用](#using-the-mobile-foundation-service)できます。
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
+    ![{{site.data.keys.mf_bm_short }} のセットアップのイメージ](overview-page.png)
 
-## Using the {{ site.data.keys.mf_bm_short }} service
+## {{site.data.keys.mf_bm_short }} サービスの使用
 {: #using-the-mobile-foundation-service }
-> **Note:** The analytics service is available only in the **Dallas** and **UK** regions at this time.
+> **注:** 分析サービスは、現時点では **Dallas** リージョンおよび **UK** リージョンのみで使用できます。今、{{site.data.keys.mf_server }} は実行中です。次のようなダッシュボードが示されます。
 
-With the {{ site.data.keys.mf_server }} now running, you are presented with the following Dashboard:
+![{{site.data.keys.mf_bm_short }} のセットアップのイメージ](service-dashboard.png)
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](service-dashboard.png)
+**「Analytics の追加」**をクリックして、サーバー・インスタンスに {{site.data.keys.mf_analytics }} サポートを追加します。
+『[分析サポートの追加](#adding-analytics-support)』セクションで詳しく学びます。
 
-Click on **Add Analytics** to add {{ site.data.keys.mf_analytics }} support to your server instance.
-Learn more in the [Adding Analytics support](#adding-analytics-support) section.
+**「コンソールの起動」**をクリックして {{site.data.keys.mf_console }} を開きます。デフォルトのユーザー名は「admin」で、「目」アイコンをクリックすることでパスワードを明らかにすることができます。
 
-Click on **Launch Console** to open the {{ site.data.keys.mf_console }}. The default user name is "admin" and the password can be revealed by clicking on the "eye" icon.
+![{{site.data.keys.mf_bm_short }} のセットアップのイメージ](dashboard.png)
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](dashboard.png)
-
-### Server configuration
+### サーバー構成
 {: #server-configuration }
-The basic server instance consists of:
+基本のサーバー・インスタンスは、次のもので構成されます。
 
-* A single node (server size: "small")
-* 1GB memory
-* 2GB storage capacity
+* 1 つのノード (サーバー・サイズ: 「小」)
+* 1GB のメモリー
+* 2GB のストレージ容量
 
-### Advanced server configuration
+### 拡張サーバー構成
 {: #advanced-server-configuration }
-Through the **Settings** tab, you can further customize the server instance with
+**「設定」**タブでは、次のような要素を使用して、さらにサーバー・インスタンスをカスタマイズできます。
 
-* Varying node, memory, and storage combinations
-* {{ site.data.keys.mf_console }} admin password
-* LTPA keys
-* JNDI configuration
-* User registry
-* TrustStore
-* {{ site.data.keys.mf_analytics }} configuration
-* DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400 database selection (available in the *Professional 1 Application* plan)
+* ノード、メモリー、ストレージのさまざまな組み合わせ
+* {{site.data.keys.mf_console }} admin のパスワード
+* LTPA 鍵
+* JNDI 構成
+* ユーザー・レジストリー
+* トラストストア
+* {{site.data.keys.mf_analytics }} の構成
+* DashDB データベースとして Enterprise Transactional 2.8.500 または Enterprise Transactional 12.128.1400 を選択 (*1 つの商用アプリケーション* プランで選択可能)
 * VPN
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](advanced-server-configuration.png)
+![{{site.data.keys.mf_bm_short }} のセットアップのイメージ](advanced-server-configuration.png)
 
-## Adding {{ site.data.keys.mf_analytics_short }} support
+## {{site.data.keys.mf_analytics_short }} サポートの追加
 {: #adding-analytics-support }
-You can add {{ site.data.keys.mf_analytics }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions an IBM Container with an instance of {{ site.data.keys.mf_analytics_server }}.
+サービスの「ダッシュボード」ページから**「Analytics の追加」**をクリックすることで、{{site.data.keys.mf_analytics }} サポートを {{site.data.keys.mf_bm_short }} サービス・インスタンスに追加できます。このアクションにより、{{site.data.keys.mf_analytics_server }} のインスタンスが含まれた IBM Container がプロビジョンされます。
 
-* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_short }} service instance to your {{ site.data.keys.mf_server }} instance.  
-* When using the **Developer Pro**, **Professional Per Capacity** or **Proffessional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
+* **開発者**プランを使用している場合は、このアクションにより {{site.data.keys.mf_analytics_short }} サービス・インスタンスも自動的に {{site.data.keys.mf_server }} インスタンスにフックされます。  
+* **開発者商用**、**容量ごとの商用**、**1 つの商用アプリケーション**のいずれかのプランを使用している場合は、このアクションにより、使用可能ノードの総量、使用可能メモリー、およびストレージ・ボリュームを選択するための追加入力が必要になります。
 
-Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_console_short }}.  
+操作が完了したら、ブラウザー上で {{site.data.keys.mf_console }} ページを再ロードして {{site.data.keys.mf_analytics_console_short }} にアクセスします。  
 
-> Learn more about {{ site.data.keys.mf_analytics }} in the [{{ site.data.keys.mf_analytics }} category](../../analytics).
+> [{{site.data.keys.mf_analytics }} カテゴリーの {{site.data.keys.mf_analytics }} についてもっとよく知る](../../analytics)。
 
-## Applying {{ site.data.keys.mf_server }} fixes
+## {{site.data.keys.mf_server }} 修正の適用
 {: #applying-mobilefirst-server-fixes }
-Updates to the {{ site.data.keys.mf_bm }} services are applied automatically without a need for human intervention, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
+{{site.data.keys.mf_bm }} サービスの更新は、人的介入を必要とせず自動的に適用されます。ただし、更新を実行するための同意だけはユーザーが行います。更新が使用可能になると、指示とアクション・ボタンが含まれたバナーが、サービスの「ダッシュボード」ページに表示されます。
 
-## Accessing server logs
+## サーバー・ログへのアクセス
 {: #accessing-server-logs }
-To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
+サーバー・ログにアクセスするには、サイドバー・ナビゲーションを開き、**「アプリケーション」→「Cloud Foundary アプリケーション」**をクリックします。サービスを選択し、**「ランタイム」**をクリックします。次に、**「ファイル」**タブをクリックします。
 
-You can find the **messages.log** and **trace.log** files in the **logs** folder.
+**logs** フォルダーに **messages.log** ファイルと **trace.log** ファイルがあります。
 
-#### Tracing
+#### トレース
 {: #tracing }
-To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
+トレースを有効にするには、DEBUG レベルのメッセージが **trace.log** ファイルに表示されるようにするため、次のようにします。
 
-1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
-2. Click the **Trace** action option.
-3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
+1. **「ランタイム」→「メモリーとインスタンス (Memory and Instances)」**で、サービス・インスタンス (**0** で始まるインスタンス ID) を選択します。
+2. **「トレース」**アクション・オプションをクリックします。
+3. トレース・ステートメントとして `com.worklight.*=debug=enabled` と入力し、 **「トレースを実行依頼 (Submit trace)」**をクリックします。
 
-The **trace.log** file is now available in the above specified location.
+これで、上記で指定した場所で **trace.log** ファイルを使用できるようになりました。
 
-<img class="gifplayer" alt="Server logs for the {{ site.data.keys.mf_bm_short }} service" src="server-logs.png"/>
+<img class="gifplayer" alt="{{site.data.keys.mf_bm_short }} サービスのサーバー・ログ" src="server-logs.png"/>
 
-## Troubleshooting
+## トラブルシューティング
 {: #troubleshooting }
-The Developer plan does not offer a persistent database, which could cause at times loss of data. To quickly onboard in such cases, be sure to follow these best practices:
+開発者プランでは永続的なデータベースが提供されず、これがデータ喪失につながる可能性があります。このような場合に素早く正常動作に戻せるように、以下のベスト・プラクティスに従ってください。
 
-* Every time you make any of the following server-side actions:
-    * Deploy an adapter or update any adapter configuration or property value
-    * Perform any security configuration such scope-mapping and alike
+* 次のようなサーバー・サイド・アクションを行うたび:
+    * アダプターのデプロイや、アダプターの何らかの構成またはプロパティー値の更新
+    * スコープ・マッピングのような、何らかのセキュリティー構成の実行
     
-    Run the following from the command-line to download your configuration to a .zip file:
+    コマンド・ラインから次のコマンドを実行して、構成を .zip ファイルとしてダウンロードします。
 
   ```bash
   $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
   ```
 
-* In case you recreate your server or lose your configuration, run the following from the command-line to import the configuration to the server:
+* サーバーを再作成した場合や、構成を失った場合は、コマンド・ラインから次のコマンドを実行して、構成をサーバーにインポートします。
 
   ```bash
   $curl -X POST -u admin:admin -F file=@./export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
   ```
 
-## Further reading
+## 発展的なチュートリアル
 {: #further-reading }
-Now that the {{ site.data.keys.mf_server }} instance is up and running,
+{{site.data.keys.mf_server }} インスタンスが稼働中になりました。
 
-* Familiarize yourself with the [{{ site.data.keys.mf_console }}](../../product-overview/components/console).
-* Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start).
-* Read through all [available tutorials](../../all-tutorials/).
+* [{{site.data.keys.mf_console }}](../../product-overview/components/console)について十分把握しておきます。
+* これらの[クイック・スタート・チュートリアル](../../quick-start)で MobileFirst Foundation を体験します。
+* [使用可能なチュートリアル](../../all-tutorials/)すべてに目をとおします。

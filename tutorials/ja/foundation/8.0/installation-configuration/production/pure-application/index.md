@@ -1,146 +1,147 @@
 ---
 layout: tutorial
-title: Deploying MobileFirst Server on IBM PureApplication System
-breadcrumb_title: Installing Pure Application System
+title: IBM PureApplication System への MobileFirst Server のデプロイ
+breadcrumb_title: Pure Application System のインストール
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_full }} provides the capability to deploy and manage {{ site.data.keys.mf_server }} and {{ site.data.keys.product_adj }} applications on IBM  PureApplication System and IBM PureApplication Service on SoftLayer .
+{{site.data.keys.product_full }} は、{{site.data.keys.mf_server }} および {{site.data.keys.product_adj }} のアプリケーションを IBM PureApplication System および IBM PureApplication Service on SoftLayer にデプロイして管理する機能を提供します。
 
-{{ site.data.keys.product }} in combination with IBM PureApplication System and IBM PureApplication Service on SoftLayer provides a simple and intuitive environment for developers and administrators, to develop mobile applications, test them, and deploy them to the cloud. This version of {{ site.data.keys.mf_system_pattern_full }} provides {{ site.data.keys.product }} runtime and artifacts support for the PureApplication Virtual System Pattern technologies that are included in the most recent versions of IBM PureApplication System and IBM PureApplication Service on SoftLayer. Classic Virtual System Pattern was supported in earlier versions of IBM PureApplication System.
+{{site.data.keys.product }} を IBM PureApplication System および IBM PureApplication Service on SoftLayer と組み合わせることにより、モバイル・アプリケーションの開発、テスト、およびクラウドへのデプロイを行うための、シンプルで直感的な環境を開発者および管理者に提供します。{{site.data.keys.mf_system_pattern_full }} のこのバージョンでは、IBM PureApplication System および IBM PureApplication Service on SoftLayer の最新バージョンに含まれている PureApplication 仮想システム・パターン・テクノロジーに対する {{site.data.keys.product }} ランタイムおよび成果物のサポートを提供しています。IBM PureApplication System の以前のバージョンでは、クラシック仮想システム・パターンがサポートされていました。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Installing {{ site.data.keys.mf_system_pattern }}](#installing-mobilefirst-system-pattern)
-* [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern)
-* [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-* [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
-* [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-* [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
-* [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
-* [Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile-server)
-* [Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile-server)
-* [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)
-* [Configuring an external database with a {{ site.data.keys.mf_system_pattern }}](#configuring-an-external-database-with-a-mobilefirst-system-pattern)
-* [Deploying and configuring {{ site.data.keys.mf_analytics }}](#deploying-and-configuring-mobilefirst-analytics)
-* [Predefined templates for {{ site.data.keys.mf_system_pattern }}](#predefined-templates-for-mobilefirst-system-pattern)
-* [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server)
-* [Upgrading {{ site.data.keys.mf_system_pattern }}](#upgrading-mobilefirst-system-pattern)
+* [{{site.data.keys.mf_system_pattern }} のインストール](#installing-mobilefirst-system-pattern)
+* [{{site.data.keys.mf_system_pattern }} のトークン・ライセンス要件](#token-licensing-requirements-for-mobilefirst-system-pattern)
+* [単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
+* [複数ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
+* [単一ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
+* [複数ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
+* [WebSphere Application Server Network Deployment サーバーのクラスターでの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
+* [単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_app_center }} のデプロイ](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile-server)
+* [単一ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_app_center }} のデプロイ](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile-server)
+* [外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)
+* [{{site.data.keys.mf_system_pattern }} を使用した外部データベースの構成](#configuring-an-external-database-with-a-mobilefirst-system-pattern)
+* [{{site.data.keys.mf_analytics }} のデプロイおよび構成](#deploying-and-configuring-mobilefirst-analytics)
+* [{{site.data.keys.mf_system_pattern }} の定義済みテンプレート](#predefined-templates-for-mobilefirst-system-pattern)
+* [{{site.data.keys.mf_server }} のスクリプト・パッケージ](#script-packages-for-mobilefirst-server)
+* [{{site.data.keys.mf_system_pattern }} のアップグレード](#upgrading-mobilefirst-system-pattern)
 
-### Key benefits
+### 主な利点
 {: #key-benefits }
-{{ site.data.keys.mf_system_pattern }} provides the following benefits:
+{{site.data.keys.mf_system_pattern }} には以下のような利点があります。
 
-* Predefined templates enable you to build patterns in a simple way for the most typical {{ site.data.keys.mf_server }} deployment topologies. Examples of the topologies are  
-    * IBM WebSphere  Application Server Liberty profile single node
-    * IBM WebSphere Application Server Liberty profile multiple nodes
-    * IBM WebSphere Application Server full profile single node
-    * IBM WebSphere Application Server full profile multiple nodes
-    * Clusters of WebSphere Application Server Network Deployment servers
-    * {{ site.data.keys.mf_app_center }} deployment topologies such as
-        * IBM WebSphere Application Server Liberty profile single node
-        * IBM WebSphere Application Server full profile single node
-* Script packages act as building blocks to compose extended deployment topologies such as automating the inclusion of an analytics server in a pattern and flexible DB VM deployment options. WebSphere Application Server and DB2 script packages are available through the inclusion of WebSphere Application Server and DB2 pattern types.
-* Optional JNDI properties in the runtime deployment script package allow fine-grained tuning for the deployment topology. In addition, deployment topologies that are built with IBM WebSphere Application Server full profile now support accessing the WebSphere Application Server Administration Console, which gives you full control over the configuration of the application server.
+* 定義済みテンプレートにより、ほとんどの標準的な {{site.data.keys.mf_server }} デプロイメント・トポロジーについて、シンプルな方法でパターンを作成することができます。トポロジーの例は、以下のとおりです。  
+    * IBM WebSphere Application Server Liberty プロファイルの単一ノード
+    * IBM WebSphere Application Server Liberty プロファイルの複数ノード
+    * IBM WebSphere Application Server フル・プロファイルの単一ノード
+    * IBM WebSphere Application Server フル・プロファイルの複数ノード
+    * WebSphere Application Server Network Deployment サーバーのクラスター
+    * 以下などの {{site.data.keys.mf_app_center }} デプロイメント・トポロジー
+        * IBM WebSphere Application Server Liberty プロファイルの単一ノード
+        * IBM WebSphere Application Server フル・プロファイルの単一ノード
+* スクリプト・パッケージは、パターンへの Analytics サーバーの組み込みの自動化、および柔軟な DB VM デプロイメント・オプションなどの拡張デプロイメント・トポロジーを構成するためのビルディング・ブロックとして機能します。
+WebSphere Application Server および DB2 のスクリプト・パッケージは、WebSphere Application Server および DB2 のパターン・タイプを組み込むことによってによって使用可能になります。
+* ランタイム・デプロイメント・スクリプト・パッケージ内の、オプションの JNDI プロパティーにより、デプロイメント・トポロジーの細かい調整が可能になります。それに加え、IBM WebSphere Application Server フル・プロファイルを使用してビルドされるデプロイメント・トポロジーが、WebSphere Application Server 管理コンソールへのアクセスをサポートするようになりました。これにより、アプリケーション・サーバーの構成をフルに制御できるようになりました。
 
-### Important restrictions
+### 重要な制限
 {: #important-restrictions }
-Depending on the pattern template you use, do not change some of the component attributes. If you change any of these component attributes, the deployment of patterns that are based on these templates fails.
+使用するパターン・テンプレートに応じて、一部のコンポーネント属性を変更しないでください。これらのコンポーネント属性のいずれかを変更すると、これらのテンプレートに基づいたパターンのデプロイメントは失敗します。
 
-#### {{ site.data.keys.product }} (Application Center Liberty single node)
+#### {{site.data.keys.product }} (Application Center Liberty single node)
 {: #mobilefirst-foundation-application-center-liberty-single-node }
-Do not change the values for the following attributes in the Liberty profile server:
+「Liberty profile server」で、以下の属性の値を変更しないでください。
 
-* WebSphere product Installation directory
-* Configuration data location
-* Liberty profile server name
-* Under Install an IBM Java SDK, select only Java SDK V7.0 or Java SDK V7.1
-* Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
+* WebSphere 製品のインストール・ディレクトリー
+* 構成データのロケーション
+* Liberty プロファイル・サーバー名
+* 「IBM Java SDK のインストール」の下で、「Java SDK V7.0」または「Java SDK V7.1」のみを選択します。
+* 「追加フィーチャーのインストール」を選択し、「IBM WebSphere eXtreme Scale」の選択をクリアします。
 
-#### {{ site.data.keys.product }} (Application Center WebSphere Application Server single node)
+#### {{site.data.keys.product }} (Application Center WebSphere Application Server single node)
 {: #mobilefirst-foundation-application-center-websphere-application-server-single-node }
-Do not change the values for the following attributes in the Liberty profile server:
+「Liberty profile server」で、以下の属性の値を変更しないでください。
 
-* WebSphere product Installation directory
-* Configuration data location
-* Cell name
-* Node name
-* Profile name
-* Under Install an IBM Java SDK, select only Java SDK V7.0 or Java SDK V7.1
-* Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
+* WebSphere 製品のインストール・ディレクトリー
+* 構成データのロケーション
+* セル名
+* ノード名
+* プロファイル名
+* 「IBM Java SDK のインストール」の下で、「Java SDK V7.0」または「Java SDK V7.1」のみを選択します。
+* 「追加フィーチャーのインストール」を選択し、「IBM WebSphere eXtreme Scale」の選択をクリアします。
 
-#### {{ site.data.keys.product }} (Liberty single node)
+#### {{site.data.keys.product }} (Liberty single node)
 {: #mobilefirst-foundation-liberty-single-node }
-Do not change the values for the following attributes in the Liberty profile server:
+「Liberty profile server」で、以下の属性の値を変更しないでください。
 
-* WebSphere product Installation directory
-* Configuration data location
-* Liberty profile server name
-* Under Install an IBM Java SDK, select only Java SDK V7.0 or Java SDK V7.1
-* Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
+* WebSphere 製品のインストール・ディレクトリー
+* 構成データのロケーション
+* Liberty プロファイル・サーバー名
+* 「IBM Java SDK のインストール」の下で、「Java SDK V7.0」または「Java SDK V7.1」のみを選択します。
+* 「追加フィーチャーのインストール」を選択し、「IBM WebSphere eXtreme Scale」の選択をクリアします。
 
-#### {{ site.data.keys.product }} (Liberty server farm)
+#### {{site.data.keys.product }} (Liberty server farm)
 {: #mobilefirst-foundation-liberty-server-farm }
-Do not change the values for the following attributes in the Liberty profile server:
+「Liberty profile server」で、以下の属性の値を変更しないでください。
 
-* WebSphere product Installation directory
-* Configuration data location
-* Liberty profile server name
-* Under Install an IBM Java SDK, select only Java SDK V7.0 or Java SDK V7.1
-* Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
+* WebSphere 製品のインストール・ディレクトリー
+* 構成データのロケーション
+* Liberty プロファイル・サーバー名
+* 「IBM Java SDK のインストール」の下で、「Java SDK V7.0」または「Java SDK V7.1」のみを選択します。
+* 「追加フィーチャーのインストール」を選択し、「IBM WebSphere eXtreme Scale」の選択をクリアします。
 
-#### {{ site.data.keys.product }} (WebSphere Application Server single node) template
+#### {{site.data.keys.product }} (WebSphere Application Server single node) テンプレート
 {: #mobilefirst-foundation-websphere-application-server-single-node-template }
-In the **Standalone server component** of the MobileFirst Platform Server node, do not unlock or change the values for any of the following attributes:
+「MobileFirst Platform Server」ノードの**「Standalone server」コンポーネント**で、以下のいずれの属性値もアンロックや変更はしないでください。
 
-* Cell name
-* Node name
-* Profile name
-* If you change any of these attributes, your pattern deployment fails.
+* セル名
+* ノード名
+* プロファイル名
+* これらの属性のいずれかを変更すると、パターン・デプロイメントは失敗します。
 
-#### {{ site.data.keys.product }} (WebSphere Application Server server farm) template
+#### {{site.data.keys.product }} (WebSphere Application Server server farm) テンプレート
 {: #mobilefirst-foundation-websphere-application-server-server-farm-template }
-In the **Standalone server component** of the MobileFirst Platform Server node, do not unlock or change the values for any of the following attributes:
+「MobileFirst Platform Server」ノードの**「Standalone server」コンポーネント**で、以下のいずれの属性値もアンロックや変更はしないでください。
 
-* Cell name
-* Node name
-* Profile name
-* If you change any of these attributes, your pattern deployment fails.
+* セル名
+* ノード名
+* プロファイル名
+* これらの属性のいずれかを変更すると、パターン・デプロイメントは失敗します。
 
-#### {{ site.data.keys.product }} (WebSphere Application Server Network Deployment) template
+#### {{site.data.keys.product }} (WebSphere Application Server Network Deployment) テンプレート
 {: #mobilefirst-foundation-websphere-application-server-network-deployment-template }
-In the **Deployment manager component** of the **DmgrNode node** or the **Custom nodes component** of the **CustomNode node**, do not unlock or change the values for any of the following attributes:
+**「DmgrNode」ノード**の**「Deployment manager」コンポーネント**または **「CustomNode」ノード**の**「Custom nodes」コンポーネント**で、以下のいずれの属性値もアンロックや変更はしないでください。
 
-* Cell name
-* Node name
-* Profile name
+* セル名
+* ノード名
+* プロファイル名
 
-If you change any of these attributes, your pattern deployment fails.
+これらの属性のいずれかを変更すると、パターン・デプロイメントは失敗します。
 
-### Limitations
+### 制限
 {: #limitations }
-The following limitations apply:
+以下のような制限があります。
 
-* Dynamic scaling for WebSphere Application Server Liberty profile server farms and WebSphere Application Server full profile server farms is not supported. The number of server farm nodes can be specified in the pattern by setting the scaling policy but cannot be changed during run time.
-* The {{ site.data.keys.v63_to_80prerebrand_product_full }} System Pattern Extension for {{ site.data.keys.mf_studio }} and Ant command-line interface that are supported in versions earlier than V7.0, are not available for the current version of {{ site.data.keys.mf_system_pattern }}.
-* {{ site.data.keys.mf_system_pattern }} depends on WebSphere Application Server Patterns, which has its own restrictions. For more information, see [Restrictions for WebSphere Application Server Patterns](http://ibm.biz/knowctr#SSAJ7T_1.0.0/com.ibm.websphere.waspatt20base.doc/ae/rins_patternsB_restrictions.html).
-* Due to restrictions in the uninstallation of Virtual System Patterns, you must delete the script packages manually after you delete the pattern type. In IBM PureApplication System, go to **Catalog → Script Packages** to delete the script packages that are listed in the **Components** section.
-* The MobileFirst (WebSphere Application Server Network Deployment) pattern template does not support token licensing. If you want to use this pattern, you must use perpetual licensing. All other patterns support token licensing.
+* WebSphere Application Server Liberty プロファイル・サーバー・ファームおよび WebSphere Application Server フル・プロファイル・サーバー・ファームの動的スケーリングはサポートされていません。サーバー・ファーム・ノードの数は、スケーリング・ポリシーを設定することによってパターンで指定できますが、ランタイム中は変更できません。
+* V7.0 より前のバージョンでサポートされている {{site.data.keys.v63_to_80prerebrand_product_full }} System Pattern Extension for {{site.data.keys.mf_studio }} および Ant コマンド・ライン・インターフェースは、{{site.data.keys.mf_system_pattern }} の現行バージョンでは使用できません。
+* {{site.data.keys.mf_system_pattern }} は、WebSphere Application Server パターンに依存しており、それには独自の制限があります。詳しくは、『[Restrictions for WebSphere Application Server Patterns](http://ibm.biz/knowctr#SSAJ7T_1.0.0/com.ibm.websphere.waspatt20base.doc/ae/rins_patternsB_restrictions.html)』を参照してください。
+* 仮想システム・パターンのアンインストールの制限により、スクリプト・パッケージは、パターン・タイプを削除した後、手動で削除する必要があります。IBM PureApplication System で、**「カタログ」→「スクリプト・パッケージ」**を選択して、**コンポーネント**・セクションにリストされているスクリプト・パッケージを削除します。
+* 「MobileFirst (WebSphere Application Server Network Deployment)」パターン・テンプレートは、トークン・ライセンスをサポートしません。このパターンを使用する場合は、永久ライセンスを使用する必要があります。その他パターンはすべて、トークン・ライセンスをサポートします。
 
-### Composition
+### 構成
 {: #composition }
-{{ site.data.keys.mf_system_pattern }} is composed of the following patterns:
+{{site.data.keys.mf_system_pattern }} は、以下のパターンで構成されます。
 
-* IBM WebSphere Application Server Network Deployment Patterns 2.2.0.0.
-* [PureApplication Service] WebSphere 8558 for Mobile IM repository to allow the WebSphere Application Server Network Deployment Patterns to work. Contact the administrator for IBM PureApplication System to confirm that the WebSphere 8558 IM repository is installed.
-* IBM DB2 with BLU Acceleration  Pattern 1.2.4.0.
-* {{ site.data.keys.mf_system_pattern }}.
+* IBM WebSphere Application Server Network Deployment Patterns 2.2.0.0。
+* [PureApplication Service] WebSphere Application Server Network Deployment Patterns が機能できるようにする WebSphere 8558 for Mobile IM リポジトリー。IBM PureApplication System の管理者に連絡して、WebSphere 8558 IM リポジトリーがインストールされていることを確認してください。
+* IBM DB2 with BLU Acceleration Pattern 1.2.4.0。
+* {{site.data.keys.mf_system_pattern }}.
 
-### Components
+### コンポーネント
 {: #components }
-In addition to all components provided by IBM WebSphere Application Server Pattern and IBM DB2 with BLU Acceleration Pattern, {{ site.data.keys.mf_system_pattern }} provides the following Script Packages:
+IBM WebSphere Application Server Pattern および IBM DB2 with BLU Acceleration Pattern で提供されるすべてのコンポーネントに加えて、{{site.data.keys.mf_system_pattern }} では、以下のスクリプト・パッケージを提供しています。
 
 * MFP Administration DB
 * MFP Runtime DB
@@ -154,1486 +155,1456 @@ In addition to all components provided by IBM WebSphere Application Server Patte
 * MFP WAS SDK Level
 * MFP Server Application Center
 
-### Compatibility between pattern types and artifacts created with different product versions
+### 異なる製品バージョンで作成されたパターン・タイプおよび成果物の間の互換性
 {: #compatibility-between-pattern-types-and-artifacts-created-with-different-product-versions }
-If you use MobileFirst Studio V6.3.0 or earlier to develop your applications, you can upload the associated runtime, application, and adapter artifacts into patterns associated with {{ site.data.keys.v63_to_80prerebrand_product_full }} V7.0.0 and later.
+MobileFirst Studio V6.3.0 以前を使用してアプリケーションを開発した場合、関連付けられているランタイム、アプリケーション、およびアダプターの成果物を、{{site.data.keys.v63_to_80prerebrand_product_full }} V7.0.0 以降に関連付けられているパターンにアップロードできます。
 
-Pattern types that are associated with {{ site.data.keys.v63_to_80prerebrand_product_full }} V6.3.0 or earlier are not compatible with runtime, application, and adapter artifacts created by using MobileFirst Studio V7.0.0 and later.
+{{site.data.keys.v63_to_80prerebrand_product_full }} V6.3.0 以前に関連付けられているパターン・タイプには、MobileFirst Studio V7.0.0 以降を使用して作成されたランタイム、アプリケーション、およびアダプターの成果物との互換性がありません。
 
-For versions V6.0.0 and earlier, only the same versions of server, **.war** file, application (**.wlapp** file), and adapters are compatible.
+バージョン V6.0.0 以前では、同じバージョンのサーバー、**.war** ファイル、アプリケーション (**.wlapp** ファイル)、およびアダプターのみに互換性があります。
 
-## Installing {{ site.data.keys.mf_system_pattern }}
+## {{site.data.keys.mf_system_pattern }} のインストール
 {: #installing-mobilefirst-system-pattern }
-You can find the **{{ site.data.keys.mf_system_pattern_file }}** file. Make sure you extract the file before you start this procedure.
+**{{site.data.keys.mf_system_pattern_file }}** ファイルがあります。この手順を開始する前にファイルを解凍しておいてください。
 
-1. Log in to IBM  PureApplication System with an account that has permission to create new pattern types.
-2. Go to **Catalog → Pattern Types**.
-3. Upload the {{ site.data.keys.mf_system_pattern }} **.tgz** file:
-    * On the toolbar, click **+**. The "Install a pattern type" window opens.
-    * In the Local tab, click **Browse**, select the {{ site.data.keys.mf_system_pattern }} **.tgz** file, and then wait for the upload process to complete. The pattern type is displayed in the list and is marked as not enabled.
-4. In the list of pattern types, click the uploaded pattern type. Details of the pattern type are displayed.
-5. In the License Agreement row, click **License**. The License window is displayed stating the terms of the license agreement.
-6. To accept the license, click **Accept**. Details of the pattern type now show that the license is accepted.
-7. In the Status row, click **Enable**. The pattern type is now listed as being enabled.
-8. Mandatory for PureApplication Service: After the pattern type is enabled successfully, go to **Catalog → Script** Packages and select script packages with names similar to "MFP \*\*\*". On the details page to the right, accept the license in the **License agreement** field. Repeat for all eleven script packages listed in the Components section.
+1. 新規パターン・タイプを作成するための権限を備えたアカウントを使用して、IBM PureApplication System にログインします。
+2. **「カタログ」→「パターン・タイプ」**にアクセスします。
+3. 以下のように、{{site.data.keys.mf_system_pattern }} **.tgz** ファイルをアップロードします。
+    * ツールバーで、**「+」**をクリックします。「パターン・タイプのインストール」ウィンドウが開きます。
+    * 「ローカル」タブで**「参照 (Browse)」**をクリックし、{{site.data.keys.mf_system_pattern }} の **.tgz** ファイルを選択し、アップロード・プロセスが完了するまで待ちます。当該パターン・タイプがリスト内に表示され、有効ではないとマークされます。
+4. パターン・タイプのリストで、アップロードしたパターン・タイプをクリックします。パターン・タイプの詳細が表示されます。
+5. 「ご使用条件」行の**「ライセンス (License)」**をクリックします。「ライセンス」ウィンドウが表示され、ご使用条件が示されます。
+6. ライセンスを受け入れる場合は、**「同意する (Accept)」**をクリックします。これで、パターン・タイプの詳細に、ライセンスが受け入れられていることが示されます。
+7. 「状況」行の**「有効にする (Enable)」**をクリックします。これで、パターン・タイプが有効であるものとしてリストされます。
+8. この手順は、PureApplication Service の場合必須です。パターン・タイプが正常に有効になったら、**「カタログ」→「スクリプト・パッケージ」**に移動し、「MFP \*\*\*」に似た名前を持つスクリプト・パッケージを選択します。右の詳細ページで、**「ご使用条件」**フィールド内のライセンスを受諾します。コンポーネント・セクションにリストされている、11 個のすべてのスクリプト・パッケージに対して、この操作を繰り返します。
 
-## Token licensing requirements for {{ site.data.keys.mf_system_pattern }}
+## {{site.data.keys.mf_system_pattern }} のトークン・ライセンス要件
 {: #token-licensing-requirements-for-mobilefirst-system-pattern }
-If you use token licensing to license {{ site.data.keys.product }}, you must install IBM  Rational  License Key Server and configure with your licenses before you deploy the {{ site.data.keys.mf_system_pattern_full }}.
+トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、{{site.data.keys.mf_system_pattern_full }} をデプロイする前に、IBM Rational License Key Server をインストールし、ライセンスを指定して構成する必要があります。
 
-> **Important:** The {{ site.data.keys.product }} (WAS ND) pattern template does not support token licensing. You must be using perpetual licensing when you deploy patterns based on the {{ site.data.keys.product }} (WAS ND) pattern template. All other pattern templates support token licensing.
+> **重要:** 「{{site.data.keys.product }} (WAS ND)」パターン・テンプレートは、トークン・ライセンスをサポートしません。「{{site.data.keys.product }} (WAS ND)」パターン・テンプレートに基づいてパターンをデプロイする場合は、永久ライセンスを使用する必要があります。その他のパターン・テンプレートはすべて、トークン・ライセンスをサポートします。IBM Rational License Key Server は、PureApplication System の外部になければなりません。{{site.data.keys.system_pattern }} は、IBM Rational License Key Server に対して PureApplication System 共有サービスをサポートしません。
 
-Your IBM Rational License Key Server must be external to your PureApplication  System. {{ site.data.keys.system_pattern }} does not support the PureApplication System shared service for IBM Rational License Key Server.
+さらに、パターン属性にライセンス・キー・サーバー情報を追加するために、Rational License Key Server に関する以下の情報を入手しておくことも必要です。
 
-In addition, you must know the following information about your Rational License Key Server to add the license key server information to your pattern attributes:
+* Rational License Key Server の完全修飾ホスト名または IP アドレス
+* ライセンス・マネージャー・デーモン (**lmgrd**) ポート
+* ベンダー・デーモン (**ibmratl**) ポート
 
-* Fully qualified host name or IP address of your Rational License Key Server
-* License manager daemon (**lmgrd**) port
-* Vendor daemon (**ibmratl**) port
+Rational License Key Server と PureApplication System の間にファイアウォールがある場合、両方のデーモンのポートがファイアウォール内で開いていることを確認してください。ライセンス・キー・サーバーに接続できなかったり、使用可能なライセンスのトークンが不十分な場合、{{site.data.keys.system_pattern }} のデプロイメントは失敗します。
 
-If you have a firewall between your Rational License Key Server and your PureApplication System, ensure that both daemon ports are open in your firewall.
-The deployment of {{ site.data.keys.system_pattern }} fails if the license key server cannot be contacted or if insufficient license tokens are available.
+Rational License Key Server のインストールおよび構成について詳しくは、[IBM Support - Rational ライセンス交付に関する開始ページ](http://www.ibm.com/software/rational/support/licensing/)を参照してください。
 
-For details about installing and configuring Rational License Key Server, see [IBM Support - Rational licensing start page](http://www.ibm.com/software/rational/support/licensing/).
-
-## Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server
+## 単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ
 {: #deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server }
-You use a predefined template to deploy {{ site.data.keys.mf_server }} on a single-node WebSphere  Application Server Liberty profile server.
+定義済みテンプレートを使用して、{{site.data.keys.mf_server }} を、単一ノードの WebSphere Application Server Liberty プロファイル・サーバーにデプロイします。
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+この手順では、特定の成果物 (必要なアプリケーションやアダプターなど) を IBM PureApplication System にアップロードします。開始する前に、成果物がアップロードに使用できる状態であることを確認してください。
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**トークン・ライセンス要件:** トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、手順を進める前に、[{{site.data.keys.mf_system_pattern }} のトークン・ライセンス要件](#token-licensing-requirements-for-mobilefirst-system-pattern)に概説されている要件を確認してください。ライセンス・キー・サーバーに接続できなかったり、使用可能なライセンスのトークンが不十分な場合、このパターンのデプロイメントは失敗します。
 
-Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+テンプレート内のスクリプト・パッケージの一部のパラメーターは、推奨値を使用して構成されており、このセクションには記載されていません。微調整を目的とする場合は、[{{site.data.keys.mf_server }} のスクリプト・パッケージ](#script-packages-for-mobilefirst-server)に記載されている、スクリプト・パッケージのすべてのパラメーターについての詳細情報を参照してください。
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.product }} (Liberty single node) template](#mobilefirst-foundation-liberty-single-node-template).
+この手順で使用されている定義済みテンプレートの構成と構成オプションについて詳しくは、[{{site.data.keys.product }} (Liberty single node) テンプレート](#mobilefirst-foundation-liberty-single-node-template)を参照してください。
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (Liberty single node)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure {{ site.data.keys.mf_server }} administration. You can skip this step if you want to specify the user credential with {{ site.data.keys.mf_server }} administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
+1. 以下の手順に従って、定義済みテンプレートからパターンを作成します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。「仮想システム・パターン」ページが開きます。
+    * **「仮想システム・パターン」**ページで**「新規作成」**をクリックし、ポップアップ・ウィンドウで、定義済みテンプレートのリストから**「MobileFirst Platform (Liberty single node)」**を選択します。名前が長いために、名前の一部のみが表示されている場合は、**「詳細情報」**タブで説明を表示することにより、正しいテンプレートが選択されていることを確認できます。
+    * **「名前」**フィールドに、パターンの名前を入力します。
+    * **「バージョン」**フィールドに、パターンのバージョン番号を指定します。
+    * **「ビルドの開始」**をクリックします。
+2. この手順は、AIX の場合必須です。Power 上で稼働している IBM PureApplication System で、MobileFirst Platform DB ノードは、以下の手順に従って、テンプレート内の「Default add disk」コンポーネントの代わりに AIX 固有のアドオン・コンポーネントである「Default AIX add disk」を使用して、jfs2 ファイル・システムをサポートする必要があります。
+    * パターン・ビルダーで、**「MobileFirst Platform DB」**ノードを選択します。
+    * **「コンポーネント・アドオンの追加」**ボタンをクリックします (このボタンは、**「MobileFirst Platform DB」**ノードの上にカーソルを移動した時にコンポーネント・ボックスの上に表示されます)。
+    * **「アドオンの追加」**リストから、**「Default AIX add disk」**を選択します。このコンポーネントが、MobileFirst Platform DB ノードの最下位コンポーネントとして追加されます。
+    * **「Default AIX add disk」**コンポーネントを選択し、以下の属性を指定します。
+        * **DISK_SIZE_GB:** DB サーバーに拡張されるストレージ・サイズ (GB 単位で測定)。サンプル値: **10**。
+        * **FILESYSTEM_TYPE:** AIX でサポートされるファイル・システム。デフォルト値: **jfs2**。
+        * **MOUNT_POINT:** MobileFirst Platform DB ノード内の Database Server コンポーネントの属性**「Mount point for instance owner」**に一致します。サンプル値: **/dbinst**。
+        * **VOLUME_GROUP:** サンプル値: **group1**。正しい値については、IBM PureApplication System 管理者に問い合わせてください。
+    * MobileFirst Platform DB ノードで、**「Default add disk」**コンポーネントを選択し、ビン・アイコンをクリックしてそれを削除します。
+    * パターンを保存します。
+3. オプション: {{site.data.keys.mf_server }} 管理を構成します。後のステップ 9 のパターン・デプロイメント構成フェーズ中に {{site.data.keys.mf_server }} 管理特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ここでユーザー資格情報を指定する場合は、以下のステップを実行してください。 
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    * MobileFirst Platform Server ノードで、**「MFP Server Administration」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
+    * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
+    * トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、以下のフィールドに入力します。トークン・ライセンスを使用しない場合は、これらのフィールドをブランクのままにします。
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    **ACTIVATE\_TOKEN\_LICENSE**: トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。  
+    **LMGRD\_PORT**: ライセンス・マネージャー・デーモン (**lmrgd**) が接続を listen するポート番号を入力します。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。  
+    **IBMRATL\_PORT**: ベンダー・デーモン (**ibmratl**) が接続を listen するポート番号を入力します。デフォルトのベンダー・デーモン・ポートは通常 27001 です。  
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    パターン・デプロイメント中に、{{site.data.keys.mf_server }} のデフォルト管理アカウントが作成されます。
 
-4. Optional: Configure {{ site.data.keys.mf_server }} runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 9. To specify the context root name now, complete these steps:
-    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
-    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
+4. オプション: {{site.data.keys.mf_server }} ランタイム・デプロイメントを構成します。後のステップ 9 のパターン・デプロイメント構成フェーズ中にランタイムのコンテキスト・ルート名を指定したい場合は、このステップをスキップすることができます。ここでコンテキスト・ルート名を指定する場合は、以下のステップを実行してください。
+    * MobileFirst Platform Server ノードで、**「MFP Server Runtime Deployment」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「runtime\_contextRoot」**フィールドの横の**「削除」**ボタンをクリックして、パターン・レベル・パラメーター設定をクリアします。
+    * **「runtime\_contextRoot」**フィールドに、ランタイム・コンテキスト・ルート名を指定します。コンテキスト・ルート名は、先頭がスラッシュ (/) でなければならない点に留意してください。例えば、`「/HelloWorld」`のようにします。
 
-5. Upload application and adapter artifacts:
+5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
-    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
-    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
-    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty {{ site.data.keys.mf_console }} deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it.
+    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。    * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
+    * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
+    * パターンにどのアプリケーションまたはアダプターもデプロイしない場合は、関連コンポーネント内の**「X」**ボタンをクリックしてそのコンポーネントを削除します。アプリケーションもアダプターもインストールされていない、空の {{site.data.keys.mf_console }} をデプロイするには、MFP Server Application Adapter Deployment コンポーネント内の「X」ボタンをクリックしてそのコンポーネントを削除します。
 
-6. Optional: Add more application or adapter artifacts for deployment:
-    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename it to **{{ site.data.keys.product_adj }} App\_X** or **{{ site.data.keys.product_adj }} Adatper\_X** (where **X** stands for a unique number for differentiation).
-    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
-    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
-    * Repeat step 7 to add more applications and adapters for deployment.
+6. オプション: デプロイメント対象のアプリケーション成果物またはアダプター成果物をさらに追加します。
+    * **「資産」**ツールバーから**「ソフトウェア・コンポーネント」**を展開し、**「追加ファイル」**コンポーネントを、キャンバス内の MobileFirst Platform Server ノードにドラッグ・アンド・ドロップします。それを **{{site.data.keys.product_adj }} App\_X** または **{{site.data.keys.product_adj }} Adatper\_X** に名前変更します (ここで、**X** は、差異化のための固有の数値を表します)。
+    * 新しく追加したアプリケーション・コンポーネントまたはアダプター・コンポーネントの上にカーソルを移動し、**「上に移動」**ボタンと**「下に移動」**ボタンをクリックして、ノード内での順序を調整します。そのコンポーネントは、MFP Runtime Deployment コンポーネントよりも後で、かつ MFP Server Application Adapter Deployment コンポーネントよりも前である位置に配置するようにしてください。
+    * 新しく追加したアプリケーション・コンポーネントまたはアダプター・コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。アプリケーションまたはアダプターの成果物をアップロードし、ステップ 6 内のステップを参照してそのターゲット・パスを指定します。
+    * ステップ 7 を繰り返して、デプロイメント対象のアプリケーションおよびアダプターをさらに追加します。
 
-7. Optional: Configure application and adapter deployment to {{ site.data.keys.mf_server }}. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 9. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
-    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
-    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+7. オプション: {{site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメントを構成します。後のステップ 9 のパターン・デプロイメント構成フェーズ中に、デプロイメント特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ステップ 3 でデフォルト管理ユーザー資格情報を指定した場合は、以下の手順に従って、ここでデプロイヤー・ユーザーを指定できます。これは管理ユーザー資格情報と一致している必要があります。
+    * MobileFirst Platform Server ノードで、**「MFP Server Application Adapter Deployment」**コンポーネントを選択します。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「deployer_user」**および**「deployer_password」**という名前のパラメーターを見つけその横の「削除」ボタンをクリックして、パターン・レベル・パラメーター設定をクリアします。
+    * **「deployer\_user」**フィールドと**「deployer\_password」**フィールドに、ユーザー名とパスワードを指定します。
 
-8. Configure and launch the pattern deployment:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
-    * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
+8. 以下の手順に従って、パターン・デプロイメントを構成し、起動します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。
+    * 「**仮想システム・パターン**」ページで**「検索」**フィールドを使用して、作成したパターンを見つけそのパターンを選択します。
+    * パターンの詳細情報を表示しているパネルの上のツールバーで、「デプロイ」ボタンをクリックします。
+    * 「パターンのデプロイ」ウィンドウの「構成」パネルで、**「環境プロファイル」**リストから正しい環境プロファイルを選択し、他の IBM PureApplication System 環境パラメーターを指定します。正しい情報を入手するには、IBM PureApplication System 管理者に問い合わせてください。
+    * 中央の列で**「パターン属性」**をクリックして、ユーザー名およびパスワードなどの属性を表示します。
 
-        Supply the following information in the fields provided:
+        示されたフィールドに以下の情報を指定します。
 
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
         
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+        ステップ 3 で構成された場合、表示されません。デフォルトの {{site.data.keys.mf_server }} 管理者アカウントを作成します。デフォルト値: demo。
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+        ステップ 3 で構成された場合、表示されません。デフォルト管理アカウントのパスワード。デフォルト値: demo。
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。永久ライセンスを使用する場合は、このフィールドをクリアしたままにします。
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+        ステップ 5 で構成された場合、表示されません。{{site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つアカウントのユーザー名。外部 LDAP サーバーが構成されていない場合は、管理サービス用のデフォルト管理ユーザーを作成する際に指定したのと同じ値を入力する必要があります。これは、この場合、アプリケーションおよびアダプターのデプロイメントで許可される唯一のユーザーがデフォルト管理ユーザーであるためです。
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つユーザーのユーザー・パスワード。
         
         **MFP Vms Password(root)**  
-        Root password for {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        {{site.data.keys.mf_server }} ノードおよび {{site.data.keys.product }} DB ノードのルート・パスワード。デフォルト値: passw0rd。
         
         **MFP DB Password(Instance owner)**  
-        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+MobileFirst Platform DB ノードのインスタンス所有者のパスワード。デフォルト値: **passw0rd**。    
+    * **「クイック・デプロイ」**をクリックして、パターン・デプロイメントを起動します。数秒後、パターンが起動を開始したことを示すメッセージが表示されます。メッセージに提供されている URL をクリックしてパターン・デプロイメントの状況を追跡したり、**「パターン」→「仮想システム・インスタンス」**に移動して「仮想システム・インスタンス」ページを開き、そこでパターンを検索したりすることができます。
 
-    If you use token licensing to license {{ site.data.keys.product }}, your pattern will fail to deploy if insufficient license tokens are available or if the license key server IP address and port were entered incorrectly.
+    トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、使用可能なライセンスのトークンが不十分であったり、ライセンス・キー・サーバーの IP アドレスとポートの入力が間違っていたりすると、パターンのデプロイに失敗します。
 
-9. Access the {{ site.data.keys.mf_console }}:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there. Make sure it is in Running state.
-    * Select the pattern name and expand the **Virtual machine perspective** option in the panel displaying details of the selected instance.
-    * Find the {{ site.data.keys.mf_server }} VM that has a name similar to **MobileFirst\_Platform\_Server.** and make a note of its Public IP address: you need this information in the following step.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+9. 以下の手順に従って、{{site.data.keys.mf_console }} にアクセスします。
+    * **「パターン」→「仮想システム・インスタンス」**をクリックして「仮想システム・インスタンス」ページを開き、そこでパターンを検索します。稼働中状態であることを確認してください。
+    * パターン名を選択し、選択したインスタンスの詳細を表示するパネルで、**「仮想マシン・パースペクティブ」**オプションを展開します。
+    * **MobileFirst\_Platform\_Server.** に似た名前を持つ {{site.data.keys.mf_server }} VM を見つけ、そのパブリック IP アドレスをメモします。この後のステップでこの情報が必要になります。
+    * ブラウザーで、次のいずれかのフォーマットを使用して URL を作成して {{site.data.keys.mf_console }} を開きます。
         * `http://{MFP Server VM Public IP}:9080/mfpconsole`
         * `https://{MFP Server VM Public IP}:9443/mfpconsole`
-    * Log in to the Console with admin user and password specified in step 3 or step 9.
+    * ステップ 3 またはステップ 9 で指定した管理ユーザーおよびパスワードを使用して、コンソールにログインします。
 
-## Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server
+## 複数ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ
 {: #deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server }
-You use a predefined template to deploy {{ site.data.keys.mf_server }} on a multiple-node WebSphere  Application Server Liberty profile server.
+定義済みテンプレートを使用して、{{site.data.keys.mf_server }} を、複数ノードの WebSphere Application Server Liberty プロファイル・サーバーにデプロイします。
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+この手順では、特定の成果物 (必要なアプリケーションやアダプターなど) を IBM PureApplication System にアップロードします。開始する前に、成果物がアップロードに使用できる状態であることを確認してください。
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**トークン・ライセンス要件:** トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、手順を進める前に、[{{site.data.keys.mf_system_pattern }} のトークン・ライセンス要件](#token-licensing-requirements-for-mobilefirst-system-pattern)に概説されている要件を確認してください。ライセンス・キー・サーバーに接続できなかったり、使用可能なライセンスのトークンが不十分な場合、このパターンのデプロイメントは失敗します。
 
-Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+テンプレート内のスクリプト・パッケージの一部のパラメーターは、推奨値を使用して構成されており、このセクションには記載されていません。微調整を目的とする場合は、[{{site.data.keys.mf_server }} のスクリプト・パッケージ](#script-packages-for-mobilefirst-server)に記載されている、スクリプト・パッケージのすべてのパラメーターについての詳細情報を参照してください。
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.product }} (Liberty server farm) template](#mobilefirst-foundation-liberty-server-farm-template).
+この手順で使用されている定義済みテンプレートの構成と構成オプションについて詳しくは、[{{site.data.keys.product }} (Liberty server farm) テンプレート](#mobilefirst-foundation-liberty-server-farm-template)を参照してください。
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (Liberty server farm)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the **jfs2** file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure {{ site.data.keys.mf_server }} administration. You can skip this step if you want to specify the user credential with {{ site.data.keys.mf_server }} administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
+1. 以下の手順に従って、定義済みテンプレートからパターンを作成します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。「**仮想システム・パターン**」ページが開きます。
+    * **「仮想システム・パターン」**ページで**「新規作成」**をクリックし、ポップアップ・ウィンドウで、定義済みテンプレートのリストから**「MobileFirst Platform (Liberty server farm)」**を選択します。名前が長いために、名前の一部のみが表示されている場合は、**「詳細情報」**タブで説明を表示することにより、正しいテンプレートが選択されていることを確認できます。
+    * **「名前」**フィールドに、パターンの名前を入力します。
+    * **「バージョン」**フィールドに、パターンのバージョン番号を指定します。
+    * **「ビルドの開始」**をクリックします。
+2. この手順は、AIX の場合必須です。Power 上で稼働している IBM PureApplication System で、MobileFirst Platform DB ノードは、以下の手順に従って、テンプレート内の「Default add disk」コンポーネントの代わりに AIX 固有のアドオン・コンポーネントである「Default AIX add disk」を使用して、**jfs2** ファイル・システムをサポートする必要があります。
+    * パターン・ビルダーで、**「MobileFirst Platform DB」**ノードを選択します。
+    * **「コンポーネント・アドオンの追加」**ボタンをクリックします (このボタンは、**「MobileFirst Platform DB」**ノードの上にカーソルを移動した時にコンポーネント・ボックスの上に表示されます)。
+    * **「アドオンの追加」**リストから、**「Default AIX add disk」**を選択します。このコンポーネントが、MobileFirst Platform DB ノードの最下位コンポーネントとして追加されます。
+    * **「Default AIX add disk」**コンポーネントを選択し、以下の属性を指定します。
+        * **DISK_SIZE_GB:** DB サーバーに拡張されるストレージ・サイズ (GB 単位で測定)。サンプル値: **10**。
+        * **FILESYSTEM_TYPE:** AIX でサポートされるファイル・システム。デフォルト値: **jfs2**。
+        * **MOUNT_POINT:** MobileFirst Platform DB ノード内の Database Server コンポーネントの属性**「Mount point for instance owner」**に一致します。サンプル値: **/dbinst**。
+        * **VOLUME_GROUP:** サンプル値: **group1**。正しい値については、IBM PureApplication System 管理者に問い合わせてください。
+    * MobileFirst Platform DB ノードで、**「Default add disk」**コンポーネントを選択し、ビン・アイコンをクリックしてそれを削除します。
+    * パターンを保存します。
+3. オプション: {{site.data.keys.mf_server }} 管理を構成します。後のステップ 9 のパターン・デプロイメント構成フェーズ中に {{site.data.keys.mf_server }} 管理特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ここでユーザー資格情報を指定する場合は、以下のステップを実行してください。 
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    * MobileFirst Platform Server ノードで、**「MFP Server Administration」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
+    * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
+    * トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、以下のフィールドに入力します。トークン・ライセンスを使用しない場合は、これらのフィールドをブランクのままにします。
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    **ACTIVATE\_TOKEN\_LICENSE**: トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。  
+    **LMGRD\_PORT**: ライセンス・マネージャー・デーモン (**lmrgd**) が接続を listen するポート番号を入力します。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。  
+    **IBMRATL\_PORT**: ベンダー・デーモン (**ibmratl**) が接続を listen するポート番号を入力します。デフォルトのベンダー・デーモン・ポートは通常 27001 です。  
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    パターン・デプロイメント中に、{{site.data.keys.mf_server }} のデフォルト管理アカウントが作成されます。
     
-4. Optional: Configure {{ site.data.keys.mf_server }} runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 10. To specify the context root name now, complete these steps:
-    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
-    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
+4. オプション: {{site.data.keys.mf_server }} ランタイム・デプロイメントを構成します。後のステップ 10 のパターン・デプロイメント構成フェーズ中にランタイムのコンテキスト・ルート名を指定したい場合は、このステップをスキップすることができます。ここでコンテキスト・ルート名を指定する場合は、以下のステップを実行してください。
+    * MobileFirst Platform Server ノードで、**「MFP Server Runtime Deployment」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「runtime\_contextRoot」**フィールドの横の**「削除」**ボタンをクリックして、パターン・レベル・パラメーター設定をクリアします。
+    * **「runtime\_contextRoot」**フィールドに、ランタイム・コンテキスト・ルート名を指定します。コンテキスト・ルート名は、先頭がスラッシュ (/) でなければならない点に留意してください。例えば、`「/HelloWorld」`のようにします。
 
-5. Upload application and adapter artifacts:
+5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
-    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
-    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
-    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty {{ site.data.keys.mf_console }} deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it. 
+    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。    * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
+    * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
+    * パターンにどのアプリケーションまたはアダプターもデプロイしない場合は、関連コンポーネント内の**「X」**ボタンをクリックしてそのコンポーネントを削除します。アプリケーションもアダプターもインストールされていない、空の {{site.data.keys.mf_console }} をデプロイするには、MFP Server Application Adapter Deployment コンポーネント内の「X」ボタンをクリックしてそのコンポーネントを削除します。 
 
-6. Optional: Add more application or adapter artifacts for deployment:
-    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename it **{{ site.data.keys.product_adj }} App\_X** or **{{ site.data.keys.product_adj }} Adatper\_X** (where **X** stands for a unique number for differentiation).
-    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
-    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
-    * Repeat step 7 to add more applications and adapters for deployment.
+6. オプション: デプロイメント対象のアプリケーション成果物またはアダプター成果物をさらに追加します。
+    * **「資産」**ツールバーから**「ソフトウェア・コンポーネント」**を展開し、**「追加ファイル」**コンポーネントを、キャンバス内の MobileFirst Platform Server ノードにドラッグ・アンド・ドロップします。それを **{{site.data.keys.product_adj }} App\_X** または **{{site.data.keys.product_adj }} Adatper\_X** に名前変更します (ここで、**X** は、差異化のための固有の数値を表します)。
+    * 新しく追加したアプリケーション・コンポーネントまたはアダプター・コンポーネントの上にカーソルを移動し、**「上に移動」**ボタンと**「下に移動」**ボタンをクリックして、ノード内での順序を調整します。そのコンポーネントは、MFP Runtime Deployment コンポーネントよりも後で、かつ MFP Server Application Adapter Deployment コンポーネントよりも前である位置に配置するようにしてください。
+    * 新しく追加したアプリケーション・コンポーネントまたはアダプター・コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。アプリケーションまたはアダプターの成果物をアップロードし、ステップ 6 内のステップを参照してそのターゲット・パスを指定します。
+    * ステップ 7 を繰り返して、デプロイメント対象のアプリケーションおよびアダプターをさらに追加します。
 
-7. Optional: Configure application and adapter deployment to {{ site.data.keys.mf_server }}. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 9. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
-    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
-    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+7. オプション: {{site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメントを構成します。後のステップ 9 のパターン・デプロイメント構成フェーズ中に、デプロイメント特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ステップ 3 でデフォルト管理ユーザー資格情報を指定した場合は、以下の手順に従って、ここでデプロイヤー・ユーザーを指定できます。これは管理ユーザー資格情報と一致している必要があります。
+    * MobileFirst Platform Server ノードで、**「MFP Server Application Adapter Deployment」**コンポーネントを選択します。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「deployer_user」**および**「deployer_password」**という名前のパラメーターを見つけその横の「削除」ボタンをクリックして、パターン・レベル・パラメーター設定をクリアします。
+    * **「deployer\_user」**フィールドと**「deployer\_password」**フィールドに、ユーザー名とパスワードを指定します。
 
-8. Configure base scaling policy:
-    * In the MobileFirst Platform Server node, select the **Base Scaling Policy** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Number of Instances** field, specify the number of server nodes to be instantiated during pattern deployment. The default value is 2 in the predefined template. Because dynamic scaling is not supported in this release, do not specify values in the remaining attribute fields.
+8. 以下の手順に従って、ベース・スケーリング・ポリシーを構成します。
+    * 「MobileFirst Platform Server」ノードで、**「Base Scaling Policy」**コンポーネントを選択します。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「インスタンス数」**フィールドに、パターン・デプロイメント中にインスタンス化されるサーバー・ノードの数を指定します。定義済みテンプレートでのデフォルト値は 2 です。このリリースでは動的スケーリングはサポートされていないため、残りの属性フィールドには値を指定しないでください。
 
-9. Configure and launch the pattern deployment:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
-    * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
+9. 以下の手順に従って、パターン・デプロイメントを構成し、起動します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。
+    * 「**仮想システム・パターン**」ページで**「検索」**フィールドを使用して、作成したパターンを見つけそのパターンを選択します。
+    * パターンの詳細情報を表示しているパネルの上のツールバーで、「デプロイ」ボタンをクリックします。
+    * 「パターンのデプロイ」ウィンドウの「構成」パネルで、**「環境プロファイル」**リストから正しい環境プロファイルを選択し、他の IBM PureApplication System 環境パラメーターを指定します。正しい情報を入手するには、IBM PureApplication System 管理者に問い合わせてください。
+    * 中央の列で**「パターン属性」**をクリックして、ユーザー名およびパスワードなどの属性を表示します。
 
-        Supply the following information in the fields provided:
+        示されたフィールドに以下の情報を指定します。
 
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-        
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。        
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルトの {{site.data.keys.mf_server }} 管理者アカウントを作成します。デフォルト値: demo。
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルト管理アカウントのパスワード。デフォルト値: demo。
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。永久ライセンスを使用する場合は、このフィールドをクリアしたままにします。
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+ステップ 5 で構成された場合、表示されません。{{site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つアカウントのユーザー名。外部 LDAP サーバーが構成されていない場合は、管理サービス用のデフォルト管理ユーザーを作成する際に指定したのと同じ値を入力する必要があります。これは、この場合、アプリケーションおよびアダプターのデプロイメントで許可される唯一のユーザーがデフォルト管理ユーザーであるためです。
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つユーザーのユーザー・パスワード。
         
         **MFP Vms Password(root)**  
-        Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        {{site.data.keys.mf_server }} ノードおよび {{site.data.keys.product }} DB ノードのルート・パスワード。デフォルト値: passw0rd。
         
         **MFP DB Password(Instance owner)**  
-        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+MobileFirst Platform DB ノードのインスタンス所有者のパスワード。デフォルト値: **passw0rd**。    
+    * **「クイック・デプロイ」**をクリックして、パターン・デプロイメントを起動します。数秒後、パターンが起動を開始したことを示すメッセージが表示されます。メッセージに提供されている URL をクリックしてパターン・デプロイメントの状況を追跡したり、**「パターン」→「仮想システム・インスタンス」**に移動して「仮想システム・インスタンス」ページを開き、そこでパターンを検索したりすることができます。
 
-    If you use token licensing to license {{ site.data.keys.product }}, your pattern will fail to deploy if insufficient license tokens are available or if the license key server IP address and port were entered incorrectly.
+    トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、使用可能なライセンスのトークンが不十分であったり、ライセンス・キー・サーバーの IP アドレスとポートの入力が間違っていたりすると、パターンのデプロイに失敗します。
     
-10. Access the {{ site.data.keys.mf_console }}:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there. Make sure it is in Running state.
-    * Select the pattern name and expand the **Virtual machine perspective** option in the panel displaying details of the selected instance.
-    * Find the IHS Server VM that has a name similar to **IHS\_Server.*** and make a note of its Public IP address: you need this information in the following step.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+10. 以下の手順に従って、{{site.data.keys.mf_console }} にアクセスします。
+    * **「パターン」→「仮想システム・インスタンス」**をクリックして「仮想システム・インスタンス」ページを開き、そこでパターンを検索します。稼働中状態であることを確認してください。
+    * パターン名を選択し、選択したインスタンスの詳細を表示するパネルで、**「仮想マシン・パースペクティブ」**オプションを展開します。
+    * **IHS\_Server.*** に似た名前を持つ IHS Server VM を見つけ、そのパブリック IP アドレスをメモします。この後のステップでこの情報が必要になります。
+    * ブラウザーで、次のいずれかのフォーマットを使用して URL を作成して {{site.data.keys.mf_console }} を開きます。
         * `http://{IHS Server VM Public IP}/mfpconsole`
         * `https://{IHS Server VM Public IP}/mfpconsole`
-    * Log in to the Console with the admin user ID and password specified in step 3 or step 10.
+    * ステップ 3 またはステップ 10 で指定した管理ユーザー ID およびパスワードを使用してコンソールにログインします。
 
-## Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server
+## 単一ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ
 {: #deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server }
-You use a predefined template to deploy a single-node {{ site.data.keys.mf_server }} to a WebSphere  Application Server full profile server.
+定義済みテンプレートを使用して、単一ノードの {{site.data.keys.mf_server }} を WebSphere Application Server フル・プロファイル・サーバーにデプロイします。
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+この手順では、特定の成果物 (必要なアプリケーションやアダプターなど) を IBM PureApplication System にアップロードします。開始する前に、成果物がアップロードに使用できる状態であることを確認してください。
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**トークン・ライセンス要件:** トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、手順を進める前に、[{{site.data.keys.mf_system_pattern }} のトークン・ライセンス要件](#token-licensing-requirements-for-mobilefirst-system-pattern)に概説されている要件を確認してください。ライセンス・キー・サーバーに接続できなかったり、使用可能なライセンスのトークンが不十分な場合、このパターンのデプロイメントは失敗します。
 
-Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+テンプレート内のスクリプト・パッケージの一部のパラメーターは、推奨値を使用して構成されており、このセクションには記載されていません。微調整を目的とする場合は、[{{site.data.keys.mf_server }} のスクリプト・パッケージ](#script-packages-for-mobilefirst-server)に記載されている、スクリプト・パッケージのすべてのパラメーターについての詳細情報を参照してください。
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.product }} (WAS single node) template](#mobilefirst-foundation-was-single-node-template).
+この手順で使用されている定義済みテンプレートの構成と構成オプションについて詳しくは、[{{site.data.keys.product }} (WAS single node) テンプレート](#mobilefirst-foundation-was-single-node-template)を参照してください。
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (WAS single node)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the **jfs2** file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure {{ site.data.keys.mf_server }} administration. You can skip this step if you want to specify the user credential with {{ site.data.keys.mf_server }} administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
+1. 以下の手順に従って、定義済みテンプレートからパターンを作成します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。「**仮想システム・パターン**」ページが開きます。
+    * **「仮想システム・パターン」**ページで**「新規作成」**をクリックし、ポップアップ・ウィンドウで、定義済みテンプレートのリストから**「MobileFirst Platform (WAS single node)」**を選択します。名前が長いために、名前の一部のみが表示されている場合は、**「詳細情報」**タブで説明を表示することにより、正しいテンプレートが選択されていることを確認できます。
+    * **「名前」**フィールドに、パターンの名前を入力します。
+    * **「バージョン」**フィールドに、パターンのバージョン番号を指定します。
+    * **「ビルドの開始」**をクリックします。
+2. この手順は、AIX の場合必須です。Power 上で稼働している IBM PureApplication System で、MobileFirst Platform DB ノードは、以下の手順に従って、テンプレート内の「Default add disk」コンポーネントの代わりに AIX 固有のアドオン・コンポーネントである「Default AIX add disk」を使用して、**jfs2** ファイル・システムをサポートする必要があります。
+    * パターン・ビルダーで、**「MobileFirst Platform DB」**ノードを選択します。
+    * **「コンポーネント・アドオンの追加」**ボタンをクリックします (このボタンは、**「MobileFirst Platform DB」**ノードの上にカーソルを移動した時にコンポーネント・ボックスの上に表示されます)。
+    * **「アドオンの追加」**リストから、**「Default AIX add disk」**を選択します。このコンポーネントが、MobileFirst Platform DB ノードの最下位コンポーネントとして追加されます。
+    * **「Default AIX add disk」**コンポーネントを選択し、以下の属性を指定します。
+        * **DISK_SIZE_GB:** DB サーバーに拡張されるストレージ・サイズ (GB 単位で測定)。サンプル値: **10**。
+        * **FILESYSTEM_TYPE:** AIX でサポートされるファイル・システム。デフォルト値: **jfs2**。
+        * **MOUNT_POINT:** MobileFirst Platform DB ノード内の Database Server コンポーネントの属性**「Mount point for instance owner」**に一致します。サンプル値: **/dbinst**。
+        * **VOLUME_GROUP:** サンプル値: **group1**。正しい値については、IBM PureApplication System 管理者に問い合わせてください。
+    * MobileFirst Platform DB ノードで、**「Default add disk」**コンポーネントを選択し、ビン・アイコンをクリックしてそれを削除します。
+    * パターンを保存します。
+3. オプション: {{site.data.keys.mf_server }} 管理を構成します。後のステップ 9 のパターン・デプロイメント構成フェーズ中に {{site.data.keys.mf_server }} 管理特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ここでユーザー資格情報を指定する場合は、以下のステップを実行してください。 
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    * MobileFirst Platform Server ノードで、**「MFP Server Administration」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
+    * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
+    * トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、以下のフィールドに入力します。トークン・ライセンスを使用しない場合は、これらのフィールドをブランクのままにします。
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    **ACTIVATE\_TOKEN\_LICENSE**: トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。  
+    **LMGRD\_PORT**: ライセンス・マネージャー・デーモン (**lmrgd**) が接続を listen するポート番号を入力します。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。  
+    **IBMRATL\_PORT**: ベンダー・デーモン (**ibmratl**) が接続を listen するポート番号を入力します。デフォルトのベンダー・デーモン・ポートは通常 27001 です。  
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    パターン・デプロイメント中に、{{site.data.keys.mf_server }} のデフォルト管理アカウントが作成されます。
 
-4. Optional: Configure {{ site.data.keys.mf_server }} runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 9. To specify the context root name now, complete these steps:
-    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
-    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
+4. オプション: {{site.data.keys.mf_server }} ランタイム・デプロイメントを構成します。後のステップ 9 のパターン・デプロイメント構成フェーズ中にランタイムのコンテキスト・ルート名を指定したい場合は、このステップをスキップすることができます。ここでコンテキスト・ルート名を指定する場合は、以下のステップを実行してください。
+    * MobileFirst Platform Server ノードで、**「MFP Server Runtime Deployment」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「runtime\_contextRoot」**フィールドの横の**「削除」**ボタンをクリックして、パターン・レベル・パラメーター設定をクリアします。
+    * **「runtime\_contextRoot」**フィールドに、ランタイム・コンテキスト・ルート名を指定します。コンテキスト・ルート名は、先頭がスラッシュ (/) でなければならない点に留意してください。例えば、`「/HelloWorld」`のようにします。
 
-5. Upload application and adapter artifacts:
+5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
-    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
-    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
-    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty {{ site.data.keys.mf_console }} deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it. 
+    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。    * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
+    * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
+    * パターンにどのアプリケーションまたはアダプターもデプロイしない場合は、関連コンポーネント内の**「X」**ボタンをクリックしてそのコンポーネントを削除します。アプリケーションもアダプターもインストールされていない、空の {{site.data.keys.mf_console }} をデプロイするには、MFP Server Application Adapter Deployment コンポーネント内の「X」ボタンをクリックしてそのコンポーネントを削除します。 
 
-6. Optional: Add more application or adapter artifacts for deployment:
-    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename it **{{ site.data.keys.product_adj }} App\_X** or **{{ site.data.keys.product_adj }} Adatper\_X** (where **X** stands for a unique number for differentiation).
-    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
-    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
-    * Repeat step 7 to add more applications and adapters for deployment.
+6. オプション: デプロイメント対象のアプリケーション成果物またはアダプター成果物をさらに追加します。
+    * **「資産」**ツールバーから**「ソフトウェア・コンポーネント」**を展開し、**「追加ファイル」**コンポーネントを、キャンバス内の MobileFirst Platform Server ノードにドラッグ・アンド・ドロップします。それを **{{site.data.keys.product_adj }} App\_X** または **{{site.data.keys.product_adj }} Adatper\_X** に名前変更します (ここで、**X** は、差異化のための固有の数値を表します)。
+    * 新しく追加したアプリケーション・コンポーネントまたはアダプター・コンポーネントの上にカーソルを移動し、**「上に移動」**ボタンと**「下に移動」**ボタンをクリックして、ノード内での順序を調整します。そのコンポーネントは、MFP Runtime Deployment コンポーネントよりも後で、かつ MFP Server Application Adapter Deployment コンポーネントよりも前である位置に配置するようにしてください。
+    * 新しく追加したアプリケーション・コンポーネントまたはアダプター・コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。アプリケーションまたはアダプターの成果物をアップロードし、ステップ 6 内のステップを参照してそのターゲット・パスを指定します。
+    * ステップ 7 を繰り返して、デプロイメント対象のアプリケーションおよびアダプターをさらに追加します。
 
-7. Optional: Configure application and adapter deployment to {{ site.data.keys.mf_server }}. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 9. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
-    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
-    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+7. オプション: {{site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメントを構成します。後のステップ 9 のパターン・デプロイメント構成フェーズ中に、デプロイメント特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ステップ 3 でデフォルト管理ユーザー資格情報を指定した場合は、以下の手順に従って、ここでデプロイヤー・ユーザーを指定できます。これは管理ユーザー資格情報と一致している必要があります。
+    * MobileFirst Platform Server ノードで、**「MFP Server Application Adapter Deployment」**コンポーネントを選択します。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「deployer_user」**および**「deployer_password」**という名前のパラメーターを見つけその横の「削除」ボタンをクリックして、パターン・レベル・パラメーター設定をクリアします。
+    * **「deployer\_user」**フィールドと**「deployer\_password」**フィールドに、ユーザー名とパスワードを指定します。
 
-8. Configure base scaling policy:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the Search field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the **Deploy** button.
-    * In the **Deploy Pattern** window, in the **Configure** panel, select the correct **Environment Profile** and other IBM PureApplication System environment parameters by consulting your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to set attributes such as user name and passwords.
+8. 以下の手順に従って、ベース・スケーリング・ポリシーを構成します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。
+    * **「仮想システム・パターン」**ページで「検索」フィールドを使用して、作成したパターンを見つけそのパターンを選択します。
+    * パターンの詳細情報を表示しているパネルの上のツールバーで、**「デプロイ」**ボタンをクリックします。
+    * IBM PureApplication System 管理者に問い合わせて、**「パターンのデプロイ」**ウィンドウの**「構成」**パネルで、正しい**環境プロファイル**およびその他の IBM PureApplication System の環境パラメーターを選択します。
+    * 中央の列で**「パターン属性」**をクリックして、ユーザー名およびパスワードなどの属性を設定します。
 
-        Supply the following information in the fields provided:
+        示されたフィールドに以下の情報を指定します。
         
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
 
-        **WebSphere administrative user name**  
-        Admin user ID for WebSphere administration console login. Default value: virtuser.
+        **WebSphere 管理ユーザー名**  
+WebSphere 管理コンソール・ログインの管理ユーザー ID。デフォルト値: virtuser。
 
-        **WebSphere administrative password**  
-        Admin user password for WebSphere administration console login. Default value: passw0rd.
+        **WebSphere 管理パスワード**  
+WebSphere 管理コンソール・ログインの管理ユーザー・パスワード。デフォルト値: passw0rd。
         
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルトの {{site.data.keys.mf_server }} 管理者アカウントを作成します。デフォルト値: demo。
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルト管理アカウントのパスワード。デフォルト値: demo。
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。永久ライセンスを使用する場合は、このフィールドをクリアしたままにします。
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+ステップ 5 で構成された場合、表示されません。{{site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つアカウントのユーザー名。外部 LDAP サーバーが構成されていない場合は、管理サービス用のデフォルト管理ユーザーを作成する際に指定したのと同じ値を入力する必要があります。これは、この場合、アプリケーションおよびアダプターのデプロイメントで許可される唯一のユーザーがデフォルト管理ユーザーであるためです。
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つユーザーのユーザー・パスワード。
         
         **MFP Vms Password(root)**  
-        Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        {{site.data.keys.mf_server }} ノードおよび {{site.data.keys.product }} DB ノードのルート・パスワード。デフォルト値: passw0rd。
         
         **MFP DB Password(Instance owner)**  
-        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.
+MobileFirst Platform DB ノードのインスタンス所有者のパスワード。デフォルト値: **passw0rd**。
 
-        **Important restriction:**  
-        When you set these attrbutes, do not change the following attributes in the {{ site.data.keys.mf_server }} section:
+        **重要な制限:**  
+        これらの属性を設定する場合、「{{site.data.keys.mf_server }}」セクションの以下の属性を変更しないでください。
         
-        * Cell name
-        * Node name
-        * Profile name
+        * セル名
+        * ノード名
+        * プロファイル名
 
-        If you change any of these attributes, your pattern deployment will fail.
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the **Virtual System Instances** page and search for your pattern there.
+        これらの属性のいずれかを変更すると、パターン・デプロイメントは失敗します。
+    * **「クイック・デプロイ」**をクリックして、パターン・デプロイメントを起動します。数秒後、パターンが起動を開始したことを示すメッセージが表示されます。メッセージに提供されている URL をクリックしてパターン・デプロイメントの状況を追跡したり、**「パターン」→「仮想システム・インスタンス」**に移動して**「仮想システム・インスタンス」**ページを開き、そこでパターンを検索したりすることができます。
 
-9. Access the {{ site.data.keys.mf_console }}:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there. Make sure it is in Running state.
-    * Select the pattern name and expand the **Virtual machine perspective** option in the panel displaying details of the selected instance.
-    * Find the {{ site.data.keys.mf_server }} VM that has a name similar to **MobileFirst\_Platform\_Server.** and make a note of its Public IP address: you need this information in the following step.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+9. 以下の手順に従って、{{site.data.keys.mf_console }} にアクセスします。
+    * **「パターン」→「仮想システム・インスタンス」**をクリックして「仮想システム・インスタンス」ページを開き、そこでパターンを検索します。稼働中状態であることを確認してください。
+    * パターン名を選択し、選択したインスタンスの詳細を表示するパネルで、**「仮想マシン・パースペクティブ」**オプションを展開します。
+    * **MobileFirst\_Platform\_Server.** に似た名前を持つ {{site.data.keys.mf_server }} VM を見つけ、そのパブリック IP アドレスをメモします。この後のステップでこの情報が必要になります。
+    * ブラウザーで、次のいずれかのフォーマットを使用して URL を作成して {{site.data.keys.mf_console }} を開きます。
         * `http://{MFP Server VM Public IP}:9080/mfpconsole`
         * `https://{MFP Server VM Public IP}:9443/mfpconsole`
-    * Log in to the Console with admin user and password specified in step 3 or step 9.
+    * ステップ 3 またはステップ 9 で指定した管理ユーザーおよびパスワードを使用して、コンソールにログインします。
 
-## Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server
+## 複数ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ
 {: #deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server }
-You use a predefined template to deploy {{ site.data.keys.mf_server }} on a multiple-node WebSphere  Application Server full profile server.
+定義済みテンプレートを使用して、{{site.data.keys.mf_server }} を複数ノードの WebSphere Application Server フル・プロファイル・サーバーにデプロイします。
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+この手順では、特定の成果物 (必要なアプリケーションやアダプターなど) を IBM PureApplication System にアップロードします。開始する前に、成果物がアップロードに使用できる状態であることを確認してください。
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**トークン・ライセンス要件:** トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、手順を進める前に、[{{site.data.keys.mf_system_pattern }} のトークン・ライセンス要件](#token-licensing-requirements-for-mobilefirst-system-pattern)に概説されている要件を確認してください。ライセンス・キー・サーバーに接続できなかったり、使用可能なライセンスのトークンが不十分な場合、このパターンのデプロイメントは失敗します。
 
-Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+テンプレート内のスクリプト・パッケージの一部のパラメーターは、推奨値を使用して構成されており、このセクションには記載されていません。微調整を目的とする場合は、[{{site.data.keys.mf_server }} のスクリプト・パッケージ](#script-packages-for-mobilefirst-server)に記載されている、スクリプト・パッケージのすべてのパラメーターについての詳細情報を参照してください。
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.product }} (WAS server farm) template](#mobilefirst-foundation-was-server-farm-template).
+この手順で使用されている定義済みテンプレートの構成と構成オプションについて詳しくは、[{{site.data.keys.product }} (WAS server farm) テンプレート](#mobilefirst-foundation-was-server-farm-template)を参照してください。
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (WAS server farm)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure {{ site.data.keys.mf_server }} administration. You can skip this step if you want to specify the user credential with {{ site.data.keys.mf_server }} administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
+1. 以下の手順に従って、定義済みテンプレートからパターンを作成します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。「仮想システム・パターン」ページが開きます。
+    * **「仮想システム・パターン」**ページで**「新規作成」**をクリックし、ポップアップ・ウィンドウで、定義済みテンプレートのリストから**「MobileFirst Platform (WAS server farm)」**を選択します。名前が長いために、名前の一部のみが表示されている場合は、**「詳細情報」**タブで説明を表示することにより、正しいテンプレートが選択されていることを確認できます。
+    * **「名前」**フィールドに、パターンの名前を入力します。
+    * **「バージョン」**フィールドに、パターンのバージョン番号を指定します。
+    * **「ビルドの開始」**をクリックします。
+2. この手順は、AIX の場合必須です。Power 上で稼働している IBM PureApplication System で、MobileFirst Platform DB ノードは、以下の手順に従って、テンプレート内の「Default add disk」コンポーネントの代わりに AIX 固有のアドオン・コンポーネントである「Default AIX add disk」を使用して、jfs2 ファイル・システムをサポートする必要があります。
+    * パターン・ビルダーで、**「MobileFirst Platform DB」**ノードを選択します。
+    * **「コンポーネント・アドオンの追加」**ボタンをクリックします (このボタンは、**「MobileFirst Platform DB」**ノードの上にカーソルを移動した時にコンポーネント・ボックスの上に表示されます)。
+    * **「アドオンの追加」**リストから、**「Default AIX add disk」**を選択します。このコンポーネントが、MobileFirst Platform DB ノードの最下位コンポーネントとして追加されます。
+    * **「Default AIX add disk」**コンポーネントを選択し、以下の属性を指定します。
+        * **DISK_SIZE_GB:** DB サーバーに拡張されるストレージ・サイズ (GB 単位で測定)。サンプル値: **10**。
+        * **FILESYSTEM_TYPE:** AIX でサポートされるファイル・システム。デフォルト値: **jfs2**。
+        * **MOUNT_POINT:** MobileFirst Platform DB ノード内の Database Server コンポーネントの属性**「Mount point for instance owner」**に一致します。サンプル値: **/dbinst**。
+        * **VOLUME_GROUP:** サンプル値: **group1**。正しい値については、IBM PureApplication System 管理者に問い合わせてください。
+    * MobileFirst Platform DB ノードで、**「Default add disk」**コンポーネントを選択し、ビン・アイコンをクリックしてそれを削除します。
+    * パターンを保存します。
+3. オプション: {{site.data.keys.mf_server }} 管理を構成します。後のステップ 9 のパターン・デプロイメント構成フェーズ中に {{site.data.keys.mf_server }} 管理特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ここでユーザー資格情報を指定する場合は、以下のステップを実行してください。 
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    * MobileFirst Platform Server ノードで、**「MFP Server Administration」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
+    * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
+    * トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、以下のフィールドに入力します。トークン・ライセンスを使用しない場合は、これらのフィールドをブランクのままにします。
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    **ACTIVATE\_TOKEN\_LICENSE**: トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。  
+    **LMGRD\_PORT**: ライセンス・マネージャー・デーモン (**lmrgd**) が接続を listen するポート番号を入力します。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。  
+    **IBMRATL\_PORT**: ベンダー・デーモン (**ibmratl**) が接続を listen するポート番号を入力します。デフォルトのベンダー・デーモン・ポートは通常 27001 です。  
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    パターン・デプロイメント中に、{{site.data.keys.mf_server }} のデフォルト管理アカウントが作成されます。
 
-4. Optional: Configure {{ site.data.keys.mf_server }} runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 10. To specify the context root name now, complete these steps:
-    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
-    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
+4. オプション: {{site.data.keys.mf_server }} ランタイム・デプロイメントを構成します。後のステップ 10 のパターン・デプロイメント構成フェーズ中にランタイムのコンテキスト・ルート名を指定したい場合は、このステップをスキップすることができます。ここでコンテキスト・ルート名を指定する場合は、以下のステップを実行してください。
+    * MobileFirst Platform Server ノードで、**「MFP Server Runtime Deployment」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「runtime\_contextRoot」**フィールドの横の**「削除」**ボタンをクリックして、パターン・レベル・パラメーター設定をクリアします。
+    * **「runtime\_contextRoot」**フィールドに、ランタイム・コンテキスト・ルート名を指定します。コンテキスト・ルート名は、先頭がスラッシュ (/) でなければならない点に留意してください。例えば、`「/HelloWorld」`のようにします。
 
-5. Upload application and adapter artifacts:
+5. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
-    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
-    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
-    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty {{ site.data.keys.mf_console }} deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it.
+    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。    * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
+    * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
+    * パターンにどのアプリケーションまたはアダプターもデプロイしない場合は、関連コンポーネント内の**「X」**ボタンをクリックしてそのコンポーネントを削除します。アプリケーションもアダプターもインストールされていない、空の {{site.data.keys.mf_console }} をデプロイするには、MFP Server Application Adapter Deployment コンポーネント内の「X」ボタンをクリックしてそのコンポーネントを削除します。
 
-6. Optional: Add more application or adapter artifacts for deployment:
-    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename it **{{ site.data.keys.product_adj }} App\_X** or **{{ site.data.keys.product_adj }} Adatper\_X** (where **X** stands for a unique number for differentiation).
-    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
-    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
-    * Repeat step 7 to add more applications and adapters for deployment.
+6. オプション: デプロイメント対象のアプリケーション成果物またはアダプター成果物をさらに追加します。
+    * **「資産」**ツールバーから**「ソフトウェア・コンポーネント」**を展開し、**「追加ファイル」**コンポーネントを、キャンバス内の MobileFirst Platform Server ノードにドラッグ・アンド・ドロップします。それを **{{site.data.keys.product_adj }} App\_X** または **{{site.data.keys.product_adj }} Adatper\_X** に名前変更します (ここで、**X** は、差異化のための固有の数値を表します)。
+    * 新しく追加したアプリケーション・コンポーネントまたはアダプター・コンポーネントの上にカーソルを移動し、**「上に移動」**ボタンと**「下に移動」**ボタンをクリックして、ノード内での順序を調整します。そのコンポーネントは、MFP Runtime Deployment コンポーネントよりも後で、かつ MFP Server Application Adapter Deployment コンポーネントよりも前である位置に配置するようにしてください。
+    * 新しく追加したアプリケーション・コンポーネントまたはアダプター・コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。アプリケーションまたはアダプターの成果物をアップロードし、ステップ 6 内のステップを参照してそのターゲット・パスを指定します。
+    * ステップ 7 を繰り返して、デプロイメント対象のアプリケーションおよびアダプターをさらに追加します。
 
-7. Optional: Configure application and adapter deployment to {{ site.data.keys.mf_server }}. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 10. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
-    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
-    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+7. オプション: {{site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメントを構成します。後のステップ 10 のパターン・デプロイメント構成フェーズ中にデプロイメント特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ステップ 3 でデフォルト管理ユーザー資格情報を指定した場合は、以下の手順に従って、ここでデプロイヤー・ユーザーを指定することができます。これは管理ユーザー資格情報に一致している必要があります。
+    * MobileFirst Platform Server ノードで、**「MFP Server Application Adapter Deployment」**コンポーネントを選択します。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「deployer_user」**および**「deployer_password」**という名前のパラメーターを見つけその横の「削除」ボタンをクリックして、パターン・レベル・パラメーター設定をクリアします。
+    * **「deployer\_user」**フィールドと**「deployer\_password」**フィールドに、ユーザー名とパスワードを指定します。
 
-8. Configure base scaling policy:
-    * In the **{{ site.data.keys.mf_server }}** node, select the **Base Scaling Policy** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Number of Instances** field, specify the number of server nodes to be instantiated during pattern deployment. The default value is 2 in the predefined template. Because dynamic scaling is not supported in this release, do not specify values in the remaining attribute fields.
+8. 以下の手順に従って、ベース・スケーリング・ポリシーを構成します。
+    * **「{{site.data.keys.mf_server }}」**ノードで、**「Base Scaling Policy」**コンポーネントを選択します。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「インスタンス数」**フィールドに、パターン・デプロイメント中にインスタンス化されるサーバー・ノードの数を指定します。定義済みテンプレートでのデフォルト値は 2 です。このリリースでは動的スケーリングはサポートされていないため、残りの属性フィールドには値を指定しないでください。
 
-9. Configure and launch the pattern deployment:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
-    * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
+9. 以下の手順に従って、パターン・デプロイメントを構成し、起動します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。
+    * 「**仮想システム・パターン**」ページで**「検索」**フィールドを使用して、作成したパターンを見つけそのパターンを選択します。
+    * パターンの詳細情報を表示しているパネルの上のツールバーで、「デプロイ」ボタンをクリックします。
+    * 「パターンのデプロイ」ウィンドウの「構成」パネルで、**「環境プロファイル」**リストから正しい環境プロファイルを選択し、他の IBM PureApplication System 環境パラメーターを指定します。正しい情報を入手するには、IBM PureApplication System 管理者に問い合わせてください。
+    * 中央の列で**「パターン属性」**をクリックして、ユーザー名およびパスワードなどの属性を表示します。
 
-        Supply the following information in the fields provided:
+        示されたフィールドに以下の情報を指定します。
 
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-        
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。        
         **runtime_contextRoot_list**  
-        Context root names of the {{ site.data.keys.mf_server }} runtimes in case multiple runtimes exist. Use a semicolon, ";" to separate each runtime context root; for example, **HelloMobileFirst;HelloWorld**.
+複数のランタイムが存在する場合の、{{site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。セミコロン「;」を使用して、各ランタイム・コンテキスト・ルートを区切ります。例えば、**HelloMobileFirst;HelloWorld** のようにします。
 
-        **Important:** **runtime_contextRoot_list** must align with the context root specified in the MFP Server Runtime Deployment node; otherwise, IHS will not be able to correctly route requests that contain the runtime context root.
+        **重要:** **runtime_contextRoot_list** は、MFP Server Runtime Deployment ノードに指定されたコンテキスト・ルートと一致している必要があります。そうでない場合、IHS は、ランタイム・コンテキスト・ルートを含む要求を正しくルーティングできません。
         
-        **WebSphere administrative user name**  
-        Admin user ID for WebSphere administration console login. Default value: virtuser.
+        **WebSphere 管理ユーザー名**  
+WebSphere 管理コンソール・ログインの管理ユーザー ID。デフォルト値: virtuser。
         
-        **WebSphere administrative password**  
-        Admin user password for WebSphere administration console login. Default value: passw0rd.
+        **WebSphere 管理パスワード**  
+WebSphere 管理コンソール・ログインの管理ユーザー・パスワード。デフォルト値: passw0rd。
 
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルトの {{site.data.keys.mf_server }} 管理者アカウントを作成します。デフォルト値: demo。
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルト管理アカウントのパスワード。デフォルト値: demo。
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。永久ライセンスを使用する場合は、このフィールドをクリアしたままにします。
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+ステップ 5 で構成された場合、表示されません。{{site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つアカウントのユーザー名。外部 LDAP サーバーが構成されていない場合は、管理サービス用のデフォルト管理ユーザーを作成する際に指定したのと同じ値を入力する必要があります。これは、この場合、アプリケーションおよびアダプターのデプロイメントで許可される唯一のユーザーがデフォルト管理ユーザーであるためです。
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つユーザーのユーザー・パスワード。
         
         **MFP Vms Password(root)**  
-        Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        {{site.data.keys.mf_server }} ノードおよび {{site.data.keys.product }} DB ノードのルート・パスワード。デフォルト値: passw0rd。
         
         **MFP DB Password(Instance owner)**  
-        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+MobileFirst Platform DB ノードのインスタンス所有者のパスワード。デフォルト値: **passw0rd**。    
+    * **「クイック・デプロイ」**をクリックして、パターン・デプロイメントを起動します。数秒後、パターンが起動を開始したことを示すメッセージが表示されます。メッセージに提供されている URL をクリックしてパターン・デプロイメントの状況を追跡したり、**「パターン」→「仮想システム・インスタンス」**に移動して「仮想システム・インスタンス」ページを開き、そこでパターンを検索したりすることができます。
 
-    If you use token licensing to license {{ site.data.keys.product }}, your pattern will fail to deploy if insufficient license tokens are available or if the license key server IP address and port were entered incorrectly.
+    トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、使用可能なライセンスのトークンが不十分であったり、ライセンス・キー・サーバーの IP アドレスとポートの入力が間違っていたりすると、パターンのデプロイに失敗します。
     
-10. Access the {{ site.data.keys.mf_console }}:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there. Make sure it is in Running state.
-    * Select the pattern name and expand the **Virtual machine perspective** option in the panel displaying details of the selected instance.
-    * Find the IHS Server VM that has a name similar to **IHS\_Server.*** and make a note of its Public IP address: you need this information in the following step.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+10. 以下の手順に従って、{{site.data.keys.mf_console }} にアクセスします。
+    * **「パターン」→「仮想システム・インスタンス」**をクリックして「仮想システム・インスタンス」ページを開き、そこでパターンを検索します。稼働中状態であることを確認してください。
+    * パターン名を選択し、選択したインスタンスの詳細を表示するパネルで、**「仮想マシン・パースペクティブ」**オプションを展開します。
+    * **IHS\_Server.*** に似た名前を持つ IHS Server VM を見つけ、そのパブリック IP アドレスをメモします。この後のステップでこの情報が必要になります。
+    * ブラウザーで、次のいずれかのフォーマットを使用して URL を作成して {{site.data.keys.mf_console }} を開きます。
         * `http://{IHS Server VM Public IP}/mfpconsole`
         * `https://{IHS Server VM Public IP}/mfpconsole`
-    * Log in to the Console with the admin user ID and password specified in step 3 or step 10.
+    * ステップ 3 またはステップ 10 で指定した管理ユーザー ID およびパスワードを使用してコンソールにログインします。
 
-## Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers
+## WebSphere Application Server Network Deployment サーバーのクラスターでの {{site.data.keys.mf_server }} のデプロイ
 {: #deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers }
-You can use a predefined template to deploy {{ site.data.keys.mf_server }} on clusters of WebSphere  Application Server Network Deployment servers. This {{ site.data.keys.mf_system_pattern_short }} template does not support token licensing.
+定義済みテンプレートを使用して、{{site.data.keys.mf_server }} を WebSphere Application Server Network Deployment サーバーのクラスターにデプロイできます。この {{site.data.keys.mf_system_pattern_short }} テンプレートはトークン・ライセンスをサポートしません。
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+この手順では、特定の成果物 (必要なアプリケーションやアダプターなど) を IBM PureApplication System にアップロードします。開始する前に、成果物がアップロードに使用できる状態であることを確認してください。
 
-If you are running the System Monitoring for WebSphere Application Server shared service, the {{ site.data.keys.product }} runtime environment might fail to start correctly when you deploy the pattern. If possible, stop the shared service before you continue with this procedure. If you cannot stop the shared service, you might need to restart the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console to fix the problem. For more information, see [{{ site.data.keys.product }} runtime synchronization limitation with WebSphere Application Server Network Deployment](#mobilefirst-foundation-runtime-synchronization-limitation-with-websphere-application-server-network-deployment). 
+System Monitoring for WebSphere Application Server 共有サービスを実行している場合、{{site.data.keys.product }} ランタイム環境は、パターンのデプロイ時に正しく開始できないことがあります。可能であれば、この手順を進める前に、共有サービスを停止してください。共有サービスを停止できない場合は、WebSphere Application Server 管理コンソールから {{site.data.keys.product }} ランタイムを再始動して、問題を修正する必要がある場合があります。詳しくは、[WebSphere Application Server Network Deployment での {{site.data.keys.product }} ランタイムの同期に関する制限](#mobilefirst-foundation-runtime-synchronization-limitation-with-websphere-application-server-network-deployment)を参照してください。 
 
-**Important token licensing restriction:** This pattern template does not support token licensing. You must be using perpetual licensing when you deploy patterns based on the {{ site.data.keys.product }} (WAS ND) pattern template.
+**トークン・ライセンスの重要な制約事項:** このパターン・テンプレートはトークン・ライセンスをサポートしません。「{{site.data.keys.product }} (WAS ND)」パターン・テンプレートに基づいてパターンをデプロイする場合は、永久ライセンスを使用する必要があります。
 
-Some parameters of script packages in the template are configured with recommended values and are not covered in this topic. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+テンプレート内のスクリプト・パッケージの一部のパラメーターは推奨値を使用して構成されており、このトピックで示されていません。微調整を目的とする場合は、[{{site.data.keys.mf_server }} のスクリプト・パッケージ](#script-packages-for-mobilefirst-server)に記載されている、スクリプト・パッケージのすべてのパラメーターについての詳細情報を参照してください。
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.product }} (WAS ND) template](#mobilefirst-foundation-was-nd-template).
+この手順で使用されている定義済みテンプレートの構成と構成オプションについて詳しくは、[{{site.data.keys.product }} (WAS ND) テンプレート](#mobilefirst-foundation-was-nd-template)を参照してください。
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (WAS ND)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure {{ site.data.keys.mf_server }} administration. You can skip this step if you want to specify the user credential with {{ site.data.keys.mf_server }} administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
+1. 以下の手順に従って、定義済みテンプレートからパターンを作成します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。「仮想システム・パターン」ページが開きます。
+    * **「仮想システム・パターン」**ページで**「新規作成」**をクリックし、ポップアップ・ウィンドウで、定義済みテンプレートのリストから**「MobileFirst Platform (WAS ND)」**を選択します。名前が長いために、名前の一部のみが表示されている場合は、**「詳細情報」**タブで説明を表示することにより、正しいテンプレートが選択されていることを確認できます。
+    * **「名前」**フィールドに、パターンの名前を入力します。
+    * **「バージョン」**フィールドに、パターンのバージョン番号を指定します。
+    * **「ビルドの開始」**をクリックします。
+2. この手順は、AIX の場合必須です。Power 上で稼働している IBM PureApplication System で、MobileFirst Platform DB ノードは、以下の手順に従って、テンプレート内の「Default add disk」コンポーネントの代わりに AIX 固有のアドオン・コンポーネントである「Default AIX add disk」を使用して、jfs2 ファイル・システムをサポートする必要があります。
+    * パターン・ビルダーで、**「MobileFirst Platform DB」**ノードを選択します。
+    * **「コンポーネント・アドオンの追加」**ボタンをクリックします (このボタンは、**「MobileFirst Platform DB」**ノードの上にカーソルを移動した時にコンポーネント・ボックスの上に表示されます)。
+    * **「アドオンの追加」**リストから、**「Default AIX add disk」**を選択します。このコンポーネントが、MobileFirst Platform DB ノードの最下位コンポーネントとして追加されます。
+    * **「Default AIX add disk」**コンポーネントを選択し、以下の属性を指定します。
+        * **DISK_SIZE_GB:** DB サーバーに拡張されるストレージ・サイズ (GB 単位で測定)。サンプル値: **10**。
+        * **FILESYSTEM_TYPE:** AIX でサポートされるファイル・システム。デフォルト値: **jfs2**。
+        * **MOUNT_POINT:** MobileFirst Platform DB ノード内の Database Server コンポーネントの属性**「Mount point for instance owner」**に一致します。サンプル値: **/dbinst**。
+        * **VOLUME_GROUP:** サンプル値: **group1**。正しい値については、IBM PureApplication System 管理者に問い合わせてください。
+    * MobileFirst Platform DB ノードで、**「Default add disk」**コンポーネントを選択し、ビン・アイコンをクリックしてそれを削除します。
+    * パターンを保存します。
+3. オプション: {{site.data.keys.mf_server }} 管理を構成します。後のステップ 9 のパターン・デプロイメント構成フェーズ中に {{site.data.keys.mf_server }} 管理特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ここでユーザー資格情報を指定する場合は、以下のステップを実行してください。 
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    * MobileFirst Platform Server ノードで、**「MFP Server Administration」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
+    * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
+    * トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、以下のフィールドに入力します。トークン・ライセンスを使用しない場合は、これらのフィールドをブランクのままにします。
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    **ACTIVATE\_TOKEN\_LICENSE**: トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。  
+    **LMGRD\_PORT**: ライセンス・マネージャー・デーモン (**lmrgd**) が接続を listen するポート番号を入力します。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。  
+    **IBMRATL\_PORT**: ベンダー・デーモン (**ibmratl**) が接続を listen するポート番号を入力します。デフォルトのベンダー・デーモン・ポートは通常 27001 です。  
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    パターン・デプロイメント中に、{{site.data.keys.mf_server }} のデフォルト管理アカウントが作成されます。
 
-4. Optional: Configure {{ site.data.keys.mf_server }} runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 10. To specify the context root name now, complete these steps:
-    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
-    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
+4. オプション: {{site.data.keys.mf_server }} ランタイム・デプロイメントを構成します。後のステップ 10 のパターン・デプロイメント構成フェーズ中にランタイムのコンテキスト・ルート名を指定したい場合は、このステップをスキップすることができます。ここでコンテキスト・ルート名を指定する場合は、以下のステップを実行してください。
+    * MobileFirst Platform Server ノードで、**「MFP Server Runtime Deployment」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「runtime\_contextRoot」**フィールドの横の**「削除」**ボタンをクリックして、パターン・レベル・パラメーター設定をクリアします。
+    * **「runtime\_contextRoot」**フィールドに、ランタイム・コンテキスト・ルート名を指定します。コンテキスト・ルート名は、先頭がスラッシュ (/) でなければならない点に留意してください。例えば、`「/HelloWorld」`のようにします。
 
-5. Optional: Adjust the number of application server nodes in your WebSphere Application Server Network Deployment clusters for the {{ site.data.keys.product_adj }} Administration component and the {{ site.data.keys.product }} runtime environment.
+5. オプション: {{site.data.keys.product_adj }} 管理コンポーネントおよび {{site.data.keys.product }} ランタイム環境の WebSphere Application Server Network Deployment クラスター内のアプリケーション・サーバー・ノードの数を調整します。
 
-    By default, the Administration component and runtime environment each have two application server nodes in their respective clusters.
-    * In the DmgrNode node, click the **MFP Server Administration** component. The properties of the component are displayed next to the canvas.
-    * In the **NUMBER\_OF\_CLUSTERMEMBERS** field, specify the number of application server nodes that you want in your WebSphere Application Server Network Deployment cluster for the {{ site.data.keys.product_adj }} Administration component.
-    * In the DmgrNode node, click the **MFP Server Runtime Deployment** component. The properties of the component are displayed next to the canvas.
-    * In the **NUMBER\_OF\_CLUSTERMEMBERS** field, specify the number of application server nodes that you want in your WebSphere Application Server Network Deployment cluster for the {{ site.data.keys.product }} runtime environment.
-    * In the CustomNode node, click the **Base Scaling Policy** component.
-    * Adjust the **Number of Instances** value to account for the total number of application server nodes that you entered in the **NUMBER\_OF\_CLUSTERMEMBERS** field for each component.
-    The minimum value for **Number of Instances** is the total number of server nodes for the {{ site.data.keys.product_adj }} Administration component and the {{ site.data.keys.product }} runtime environments.
+    デフォルトでは、管理コンポーネントとランタイム環境にはそれぞれ、各クラスター内に 2 つのアプリケーション・サーバー・ノードが含まれています。
+    * DmgrNode ノードで、**「MFP Server Administration」**コンポーネントをクリックします。キャンバスの横に、コンポーネントのプロパティーが表示されます。
+    * **NUMBER\_OF\_CLUSTERMEMBERS** フィールドに、{{site.data.keys.product_adj }} 管理コンポーネントの WebSphere Application Server Network Deployment クラスターで使用するアプリケーション・サーバー・ノードの数を指定します。
+    * DmgrNode ノードで、**「MFP Server Runtime Deployment」**コンポーネントをクリックします。キャンバスの横に、コンポーネントのプロパティーが表示されます。
+    * **NUMBER\_OF\_CLUSTERMEMBERS** フィールドに、{{site.data.keys.product }} ランタイム環境の WebSphere Application Server Network Deployment クラスターで使用するアプリケーション・サーバー・ノードの数を指定します。
+    * CustomNode ノードで、**「Base Scaling Policy」**コンポーネントをクリックします。
+    * 各コンポーネントについて **NUMBER\_OF\_CLUSTERMEMBERS** フィールドに入力したアプリケーション・サーバー・ノードの合計数に応じて、**「インスタンス数」 ** の値を調整します。**「インスタンス数」**の最小値は、{{site.data.keys.product_adj }} 管理コンポーネントと {{site.data.keys.product }} ランタイム環境のサーバー・ノードの合計数です。
 
-    For example, the default value for **Number of Instances** is 4 for the default topology with two nodes for the administration component and two nodes for the runtime environment. If you change **NUMBER\_OF\_CLUSTERMEMBERS** values for the administration component to 3 and for the runtime environment to 5, the minimum value for Number of Instances is 8.
+    例えば、管理コンポーネントに 2 つのノード、ランタイム環境に 2 つのノードがあるデフォルト・トポロジーの**「インスタンス数」**のデフォルト値は 4 です。管理コンポーネントの **NUMBER\_OF\_CLUSTERMEMBERS** の値を 3 に変更し、ランタイム環境の値を 5 に変更した場合、「インスタンス数」の最小値は 8 です。
 
-6. Upload application and adapter artifacts:
+6. 以下の手順に従って、アプリケーションとアダプターの成果物をアップロードします。
 
-    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
-    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
-    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty {{ site.data.keys.mf_console }} deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it.
+    > **重要:** アプリケーションおよびアダプターのターゲット・パスを指定する場合は、すべてのアプリケーションおよびアダプターを同じディレクトリーに入れるようにしてください。例えば、あるターゲット・パスが **/opt/tmp/deploy/HelloWorld-common.json** の場合、他のすべてのターゲット・パスは `/opt/tmp/deploy/*` とします。    * MobileFirst Platform Server ノードで、**「MFP Server Application」**コンポーネントまたは**「MFP Server Adapter」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
+    * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/deploy/HelloWorld-common.json** のように指定します。
+    * パターンにどのアプリケーションまたはアダプターもデプロイしない場合は、関連コンポーネント内の**「X」**ボタンをクリックしてそのコンポーネントを削除します。アプリケーションもアダプターもインストールされていない、空の {{site.data.keys.mf_console }} をデプロイするには、MFP Server Application Adapter Deployment コンポーネント内の「X」ボタンをクリックしてそのコンポーネントを削除します。
 
-7. Optional: Add more application or adapter artifacts for deployment:
-    * From the **Components** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename it **{{ site.data.keys.product_adj }} App\_X** or **{{ site.data.keys.product_adj }} Adatper\_X** (where **X** stands for a unique number for differentiation).
-    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
-    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact, including its file name. For example, **/opt/tmp/deploy/HelloWorld-common.wlapp**.
+7. オプション: デプロイメント対象のアプリケーション成果物またはアダプター成果物をさらに追加します。
+    * **「コンポーネント」**ツールバーから**「ソフトウェア・コンポーネント」**を展開し、**「追加ファイル」**コンポーネントを、キャンバス内の MobileFirst Platform Server ノードにドラッグ・アンド・ドロップします。それを **{{site.data.keys.product_adj }} App\_X** または **{{site.data.keys.product_adj }} Adatper\_X** に名前変更します (ここで、**X** は、差異化のための固有の数値を表します)。
+    * 新しく追加したアプリケーション・コンポーネントまたはアダプター・コンポーネントの上にカーソルを移動し、**「上に移動」**ボタンと**「下に移動」**ボタンをクリックして、ノード内での順序を調整します。そのコンポーネントは、MFP Runtime Deployment コンポーネントよりも後で、かつ MFP Server Application Adapter Deployment コンポーネントよりも前である位置に配置するようにしてください。
+    * 新しく追加したアプリケーション・コンポーネントまたはアダプター・コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。アプリケーションまたはアダプターの成果物をアップロードし、ステップ 6 内のステップを参照してそのターゲット・パスを指定します。
+    * **「追加ファイル」**フィールドで**「参照」**ボタンをクリックして、アプリケーション成果物またはアダプター成果物を見つけ、アップロードします。
+    * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例: **/opt/tmp/deploy/HelloWorld-common.wlapp**
 
-    Repeat this step if you want to add more applications and adapters for deployment.
+    デプロイメント対象のアプリケーションおよびアダプターをさらに追加する場合は、このステップを繰り返します。
 
-8. Optional: Configure application and adapter deployment to {{ site.data.keys.mf_server }}. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 10. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
-    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
-    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+8. オプション: {{site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメントを構成します。後のステップ 10 のパターン・デプロイメント構成フェーズ中にデプロイメント特権を持つユーザー資格情報を指定したい場合は、このステップをスキップすることができます。ステップ 3 でデフォルト管理ユーザー資格情報を指定した場合は、以下の手順に従って、ここでデプロイヤー・ユーザーを指定することができます。これは管理ユーザー資格情報に一致している必要があります。
+    * MobileFirst Platform Server ノードで、**「MFP Server Application Adapter Deployment」**コンポーネントを選択します。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「deployer_user」**および**「deployer_password」**という名前のパラメーターを見つけその横の「削除」ボタンをクリックして、パターン・レベル・パラメーター設定をクリアします。
+    * **「deployer\_user」**フィールドと**「deployer\_password」**フィールドに、ユーザー名とパスワードを指定します。
 
-9. Configure base scaling policy:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the Search field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the **Deploy** button.
-    * In the **Deploy Pattern** window, in the **Configure** panel, select the correct **Environment Profile** and other IBM PureApplication System environment parameters by consulting your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to set attributes such as user name and passwords.
+9. 以下の手順に従って、ベース・スケーリング・ポリシーを構成します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。
+    * **「仮想システム・パターン」**ページで「検索」フィールドを使用して、作成したパターンを見つけそのパターンを選択します。
+    * パターンの詳細情報を表示しているパネルの上のツールバーで、**「デプロイ」**ボタンをクリックします。
+    * IBM PureApplication System 管理者に問い合わせて、**「パターンのデプロイ」**ウィンドウの**「構成」**パネルで、正しい**環境プロファイル**およびその他の IBM PureApplication System の環境パラメーターを選択します。
+    * 中央の列で**「パターン属性」**をクリックして、ユーザー名およびパスワードなどの属性を設定します。
 
-        Supply the following information in the fields provided:
+        示されたフィールドに以下の情報を指定します。
         
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。        **WebSphere 管理ユーザー名**  
+WebSphere 管理コンソール・ログインの管理ユーザー ID。デフォルト値: virtuser。
 
-        **WebSphere administrative user name**  
-        Admin user ID for WebSphere administration console login. Default value: virtuser.
-
-        **WebSphere administrative password**  
-        Admin user password for WebSphere administration console login. Default value: passw0rd.
+        **WebSphere 管理パスワード**  
+WebSphere 管理コンソール・ログインの管理ユーザー・パスワード。デフォルト値: passw0rd。
         
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルトの {{site.data.keys.mf_server }} 管理者アカウントを作成します。デフォルト値: demo。
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルト管理アカウントのパスワード。デフォルト値: demo。
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。永久ライセンスを使用する場合は、このフィールドをクリアしたままにします。
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+ステップ 5 で構成された場合、表示されません。{{site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つアカウントのユーザー名。外部 LDAP サーバーが構成されていない場合は、管理サービス用のデフォルト管理ユーザーを作成する際に指定したのと同じ値を入力する必要があります。これは、この場合、アプリケーションおよびアダプターのデプロイメントで許可される唯一のユーザーがデフォルト管理ユーザーであるためです。
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つユーザーのユーザー・パスワード。
         
         **MFP Vms Password(root)**  
-        Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        {{site.data.keys.mf_server }} ノードおよび {{site.data.keys.product }} DB ノードのルート・パスワード。デフォルト値: passw0rd。
         
         **MFP VMs Password(virtuser)**  
-        Password for the virtuser user of the DmgrNode, CustomNode, IHSNode and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        DmgrNode、CustomNode、IHSNode、および {{site.data.keys.product }} DB のノードの virtuser ユーザーのパスワード。デフォルト値: passw0rd。
         
         **Open firewall ports for WAS**  
-        The WebSphere Application Server nodes that are deployed in the CustomNode VM nodes require open firewall ports to connect to the database server and the LDAP server (if configured for LDAP). If you need to specify multiple port numbers, separate the port numbers with a semicolon (;). For example, 50000;636The default value is 50000 (the default port for DB2  server).
+        CustomNode VM ノードにデプロイされた WebSphere Application Server ノードでは、データベース・サーバーおよびLDAP サーバー (LDAP 用に構成されている場合) に接続するために、開いているファイアウォール・ポートが必要です。複数のポート番号を指定する必要がある場合、ポート番号をセミコロン (;) で区切ります。例えば、50000;636 のようにします。デフォルト値は 50000 (DB2 サーバーのデフォルト・ポート) です。
 
-        **Important restriction:**  
-        When you set these attrbutes, do not change the following attributes in the {{ site.data.keys.mf_server }} section:
+        **重要な制限:**  
+        これらの属性を設定する場合、「{{site.data.keys.mf_server }}」セクションの以下の属性を変更しないでください。
         
-        * Cell name
-        * Node name
-        * Profile name
+        * セル名
+        * ノード名
+        * プロファイル名
 
-        If you change any of these attributes, your pattern deployment will fail.
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the **Virtual System Instances** page and search for your pattern there.
+        これらの属性のいずれかを変更すると、パターン・デプロイメントは失敗します。
+    * **「クイック・デプロイ」**をクリックして、パターン・デプロイメントを起動します。数秒後、パターンが起動を開始したことを示すメッセージが表示されます。メッセージに提供されている URL をクリックしてパターン・デプロイメントの状況を追跡したり、**「パターン」→「仮想システム・インスタンス」**に移動して**「仮想システム・インスタンス」**ページを開き、そこでパターンを検索したりすることができます。
 
-10. Access the {{ site.data.keys.mf_console }}:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there. Make sure it is in Running state.
-    * Select the pattern name and expand the **Virtual machine perspective** option in the panel displaying details of the selected instance.
-    * Find the {{ site.data.keys.mf_server }} VM that has a name similar to **MobileFirst\_Platform\_Server.** and make a note of its Public IP address: you need this information in the following step.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+10. 以下の手順に従って、{{site.data.keys.mf_console }} にアクセスします。
+    * **「パターン」→「仮想システム・インスタンス」**をクリックして「仮想システム・インスタンス」ページを開き、そこでパターンを検索します。稼働中状態であることを確認してください。
+    * パターン名を選択し、選択したインスタンスの詳細を表示するパネルで、**「仮想マシン・パースペクティブ」**オプションを展開します。
+    * **MobileFirst\_Platform\_Server.** に似た名前を持つ {{site.data.keys.mf_server }} VM を見つけ、そのパブリック IP アドレスをメモします。この後のステップでこの情報が必要になります。
+    * ブラウザーで、次のいずれかのフォーマットを使用して URL を作成して {{site.data.keys.mf_console }} を開きます。
         * `http://{MFP Server VM Public IP}:9080/mfpconsole`
         * `https://{MFP Server VM Public IP}:9443/mfpconsole`
-    * Log in to the Console with admin user and password specified in step 3 or step 9.
+    * ステップ 3 またはステップ 9 で指定した管理ユーザーおよびパスワードを使用して、コンソールにログインします。
 
-    If the console does not display the {{ site.data.keys.product }} runtimes, restart the {{ site.data.keys.product }} runtime node from the WebSphere Application Server administrative console. For instructions about restarting the runtime node from the administrative console, see [Restarting the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console](#restarting-the-mobilefirst-foundation-runtime-from-the-websphere-application-server-administrative-console).
+    コンソールで {{site.data.keys.product }} ランタイムが表示されない場合、WebSphere Application Server 管理コンソールから {{site.data.keys.product }} ランタイム・ノードを再始動します。管理コンソールからのランタイム・ノードの再始動に関する説明については、[WebSphere Application Server 管理コンソールからの {{site.data.keys.product }} ランタイムの再始動](#restarting-the-mobilefirst-foundation-runtime-from-the-websphere-application-server-administrative-console)を参照してください。
 
-### {{ site.data.keys.product }} runtime synchronization limitation with WebSphere Application Server Network Deployment
+### WebSphere Application Server Network Deployment での {{site.data.keys.product }} ランタイムの同期に関する制限
 {: #mobilefirst-foundation-runtime-synchronization-limitation-with-websphere-application-server-network-deployment }
-If you deploy a PureApplication  pattern based on the {{ site.data.keys.product }} (WAS ND) template and run the System Monitoring for WebSphere  Application Server shared service, the {{ site.data.keys.product }} runtime environment might fail to start correctly, when you deploy the pattern.
+PureApplication パターンを {{site.data.keys.product }} (WAS ND) テンプレートに基づいてデプロイし、System Monitoring for WebSphere Application Server 共有サービスを実行する場合、パターンのデプロイ時に {{site.data.keys.product }} ランタイム環境を正常に開始できないことがあります。
 
-A PureApplication virtual system pattern based on the {{ site.data.keys.product }} (WAS ND) template deploys the {{ site.data.keys.product_adj }} administration service and the {{ site.data.keys.product }} runtime into different WebSphere Application Server Network Deployment clusters. For the {{ site.data.keys.product }} runtime to work correctly, it must be started after the {{ site.data.keys.product_adj }} administration service. If the {{ site.data.keys.product }} runtime starts first, the runtime service fails to detect the {{ site.data.keys.product_adj }} administration service, which causes errors in the runtime service.
+{{site.data.keys.product }} (WAS ND) テンプレートに基づいた PureApplication 仮想システム・パターンは、{{site.data.keys.product_adj }} 管理サービスおよび {{site.data.keys.product }} ランタイムを異なる WebSphere Application Server Network Deployment クラスターにデプロイします。{{site.data.keys.product }} ランタイムは、正常に機能するには、{{site.data.keys.product_adj }} 管理サービスの後に開始する必要があります。{{site.data.keys.product }} ランタイムが最初に開始した場合、ランタイム・サービスは {{site.data.keys.product_adj }} 管理サービスを検出できないため、ランタイム・サービスでエラーが発生します。
 
-When the deployment of a PureApplication pattern is almost complete, the System Monitoring for WebSphere Application Server shared service restarts all of the WebSphere Application Server nodes that are deployed from the pattern. The nodes restart in a random order, so the nodes that contain the {{ site.data.keys.product }} runtime might be restarted before the nodes that contain the {{ site.data.keys.product_adj }} administration service.
+PureApplication パターンのデプロイメントがほぼ完了したときに、System Monitoring for WebSphere Application Server 共有サービスは、パターンからデプロイされた WebSphere Application Server ノードをすべて再始動します。ノードの再始動の順序はランダムであるため、{{site.data.keys.product }} ランタイムが含まれているノードが、{{site.data.keys.product_adj }} 管理サービスが含まれているノードよりも前に再始動されることがあります。
 
-You must stop the System Monitoring for WebSphere Application Server shared service before you deploy the pattern. If you cannot stop the shared service, you might need to restart the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console to fix the problem.
+パターンをデプロイする前に、System Monitoring for WebSphere Application Server 共有サービスを停止する必要があります。共有サービスを停止できない場合は、WebSphere Application Server 管理コンソールから {{site.data.keys.product }} ランタイムを再始動して、問題を修正する必要がある場合があります。
 
-### Restarting the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console
+### WebSphere Application Server 管理コンソールからの {{site.data.keys.product }} ランタイムの再始動
 {: #restarting-the-mobilefirst-foundation-runtime-from-the-websphere-application-server-administrative-console }
-If your {{ site.data.keys.mf_console }} is empty after you deploy a PureApplication  System pattern based on the {{ site.data.keys.product }} (WAS ND) template, you might need to restart the IBM {{ site.data.keys.product }} runtime from the WebSphere  Application Server administrative console.
+PureApplication System パターンを {{site.data.keys.product }} (WAS ND) テンプレートに基づいてデプロイした後に {{site.data.keys.mf_console }} が空の場合、IBM {{site.data.keys.product }} ランタイムを WebSphere Application Server 管理コンソールから再始動する必要が生じることがあります。
 
-This procedure applies only when you are deploying PureApplication virtual system patterns based on the {{ site.data.keys.product }} (WAS ND) template when you are running the System Monitoring for WebSphere Application Server shared service. If you do not use this shared service or are deploying a pattern based on a different template, this procedure does not apply to you.
+この手順が適用されるのは、System Monitoring for WebSphere Application Server 共有サービスを実行しているときに、PureApplication 仮想システム・パターンを {{site.data.keys.product }} (WAS ND) テンプレートに基づいてデプロイする場合のみです。この共有サービスを使用していないか、別のテンプレートに基づいてパターンをデプロイする場合、この手順はあてはまりません。
 
-You must deploy your pattern before you do this procedure.
+この手順を実行する前にパターンをデプロイする必要があります。
 
-To work correctly, the {{ site.data.keys.product_adj }} administration service nodes must be started before the {{ site.data.keys.product }} runtime nodes. If the System Monitoring for WebSphere Application Server shared service is running when you deploy a pattern, the shared service restarts all of the WebSphere Application Server nodes that are deployed from the pattern. The nodes restart in a random order, which means that the {{ site.data.keys.product }} runtime nodes might be started before the {{ site.data.keys.product_adj }} administration service nodes.
+正しく作業するために、{{site.data.keys.product_adj }} 管理サービス・ノードが、{{site.data.keys.product }} ランタイム・ノードの前に開始されている必要があります。パターンのデプロイ時に System Monitoring for WebSphere Application Server 共有サービスが実行されている場合、共有サービスは、パターンからデプロイされたすべての WebSphere Application Server ノードを再始動します。ノードの再始動の順序はランダムであるため、{{site.data.keys.product }} ランタイム・ノードが {{site.data.keys.product_adj }} 管理サービス・ノードの前に始動される可能性があります。
 
-1. Confirm that the System Monitoring for WebSphere Application Server shared service is deployed and running:
-    * In the PureApplication System dashboard, click Patterns and then under Pattern Instances, click Shared Services.
+1. 以下のように、System Monitoring for WebSphere Application Server 共有サービスがデプロイされていて、実行されていることを確認します。
+    * PureApplication System のダッシュボードで、「パターン」をクリックしてから、「パターン・インスタンス」の下で「共有サービス」をクリックします。
 
-        > **Important:** Shared Services appears twice in the **Patterns** menu, ensure that you click **Shared Services** under **Pattern Instances** and not under Patterns.
-    * On the **Shared Service Instances** page, look for a name that starts with **System Monitoring for WebSphere Application Server**. Click that name to expand its entry
+        > **重要:** 「共有サービス」は**「パターン」**メニュー内に 2 つあるため、「パターン」ではなく、**「パターン・インスタンス」**の下にある**「共有サービス」**を必ずクリックしてください。
+    * **「共有サービス・インスタンス」**ページで、**「System Monitoring for WebSphere Application Server」**で開始する名前を探します。その名前をクリックして、その項目を展開します。
     
-        If you do not see an entry for **System Monitoring for WebSphere Application Server**, the System Monitoring for WebSphere Application Server shared service is not deployed and you do not need to continue with this procedure.
-    * Check the **Status** column for the service.
+        **「System Monitoring for WebSphere Application Server」**の項目が表示されない場合は、System Monitoring for WebSphere Application Server 共有サービスがデプロイされていないため、この手順を進める必要はありません。
+    * サービスの**「状況」**列を確認します。
     
-        If **Status** says `Stopped`, the System Monitoring for WebSphere Application Server shared service is stopped and you do not need to continue with this procedure.  
-        If **Status** says `Started`, the System Monitoring for WebSphere Application Server shared service is running. Continue with the rest of this procedure.
+        **「状況」**が`「停止」`の場合、System Monitoring for WebSphere Application Server 共有サービスは停止しているため、この手順を進める必要はありません。  
+        **「状況」**が`「開始済み」`の場合、System Monitoring for WebSphere Application Server 共有サービスは実行中です。この手順の残りを続行します。 
 
-2. Confirm that your pattern is running, and access the {{ site.data.keys.mf_console }} from the PureApplication System dashboard.
+2. パターンが実行されていることを確認し、PureApplication System のダッシュボードから {{site.data.keys.mf_console }} にアクセスします。
 
-    For instructions about how access the {{ site.data.keys.mf_console }} from the PureApplication System dashboard, see step 10 in [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers).
+    PureApplication System のダッシュボードから {{site.data.keys.mf_console }} にアクセスする方法の説明については、[WebSphere Application Server Network Deployment サーバーのクラスターでの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)のステップ 10 を参照してください。
     
-3. If the console appears empty or is otherwise not displaying {{ site.data.keys.product }} runtimes, restart the {{ site.data.keys.product }} runtime node from the WebSphere Application Server administrative console:
-    * In the **PureApplication System** dashboard, click **Patterns → Virtual System Instances**.
-    * On the **Virtual System Instances** page, find your pattern instance and confirm that it is running. If it is not running, start the pattern instance.
-    * Click the name of your pattern instance and in the details panel, find the **Virtual machine perspective** section.
-    * In the **Virtual machine perspective** section, find the virtual machine whose name starts with **DmgrNode** and note its public IP address.
-    * Open the WebSphere Application Server administrative console at the following URL:
+3. コンソールが空か、{{site.data.keys.product }} ランタイムが表示されない場合、WebSphere Application Server 管理コンソールから {{site.data.keys.product }} ランタイム・ノードを再始動します。
+    * **PureApplication System** のダッシュボードで、**「パターン」→「仮想システム・インスタンス」**をクリックします。
+    * **「仮想システム・インスタンス」**ページで、ご使用のパターン・インスタンスを見つけ、それが実行されていることを確認します。実行されていない場合、パターン・インスタンスを始動します。
+    * パターン・インスタンスの名前をクリックし、詳細パネルで**「仮想マシン・パースペクティブ」**セクションを見つけます。
+    * **「仮想マシン・パースペクティブ」**セクションで、名前の先頭が **DmgrNode** の仮想マシンを見つけ、そのパブリック IP アドレスをメモします。
+    * 以下の URL で WebSphere Application Server 管理コンソールを開きます。
     
         ```bash
         https://{DmgrNode VM public IP address}:9043/ibm/console
         ```
     
-        Use the user ID and password that you specified for the WebSphere Application Server administrative console when you deployed the pattern.
-    * In the WebSphere Application Server administrative console, expand **Applications** and click **All applications**.
-    * Restart the {{ site.data.keys.product }} runtime:
-        * In the list of applications, select the application with name that begins with IBM\_Worklight\_project\_runtime\_MFP.
-        * In the **Action** column, select **Stop**.
-        * Click **Submit Action**.
-        * Wait until the application status in the **Status** column shows the stopped icon.
-        * In the **Action** column, select **Start**.
-        * Click S**ubmit Action**.
+        パターンのデプロイ時に WebSphere Application Server 管理コンソール用に指定したユーザー ID とパスワードを使用します。
+    * WebSphere Application Server 管理コンソールで**「アプリケーション」**を展開し、**「すべてのアプリケーション」**をクリックします。
+    * 以下のように、{{site.data.keys.product }} ランタイムを再始動します。
+        * アプリケーションのリストで、名前の先頭が IBM\_Worklight\_project\_runtime\_MFP のアプリケーションを選択します。
+        * **「アクション」**列の**「停止」**を選択します。
+        * **「アクションのサブミット」**をクリックします。
+        * **「状況」**列のアプリケーション状況に停止済みアイコンが表示されるまで待機します。
+        * **「アクション」**列の**「開始」**を選択します。
+        * **「アクションのサブミット」**をクリックします。
 
-        Repeat this step for each {{ site.data.keys.product }} runtime application in the list.
+        リスト内の {{site.data.keys.product }} ランタイム・アプリケーションごとにこのステップを繰り返します。
 
-4. Access the {{ site.data.keys.mf_console }} again and confirm that your {{ site.data.keys.product }} runtimes are now visible.
+4. {{site.data.keys.mf_console }} に再びアクセスし、{{site.data.keys.product }} ランタイムが表示されるようになっていることを確認します。
 
-## Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server Liberty profile server
+## 単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_app_center }} のデプロイ
 {: #deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile-server }
-You use a predefined template to deploy {{ site.data.keys.mf_app_center }} on a single-node WebSphere  Application Server Liberty profile server.
+定義済みテンプレートを使用して、{{site.data.keys.mf_app_center }} を、単一ノードの WebSphere Application Server Liberty プロファイル・サーバーにデプロイします。
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+この手順では、特定の成果物 (必要なアプリケーションやアダプターなど) を IBM PureApplication System にアップロードします。開始する前に、成果物がアップロードに使用できる状態であることを確認してください。
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements that are outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. If the license key server cannot be contacted or if insufficient license tokens are available then the deployment of this pattern fails.
+**トークン・ライセンス要件:** トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、手順を進める前に、[{{site.data.keys.mf_system_pattern }} のトークン・ライセンス要件](#token-licensing-requirements-for-mobilefirst-system-pattern)に概説されている要件を確認してください。ライセンス・キー・サーバーに接続できなかったり、使用可能なライセンスのトークンが不十分な場合、このパターンのデプロイメントは失敗します。
 
-Some parameters of script packages in the template is configured with the recommended values and are not mentioned here. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+テンプレート内のスクリプト・パッケージの一部のパラメーターは、推奨値を使用して構成されており、ここには記載されていません。微調整を目的とする場合は、[{{site.data.keys.mf_server }} のスクリプト・パッケージ](#script-packages-for-mobilefirst-server)に記載されている、スクリプト・パッケージのすべてのパラメーターについての詳細情報を参照してください。
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.mf_app_center }} (Liberty single node) template](#mobilefirst-application-center-liberty-single-node-template).
+この手順で使用されている定義済みテンプレートの構成と構成オプションについて詳しくは、[{{site.data.keys.mf_app_center }} (Liberty single node) テンプレート](#mobilefirst-application-center-liberty-single-node-template)を参照してください。
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (AppCenter Liberty single node)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power, the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MFP AppCenter DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure **MFP Server Application Center** in the **MFP AppCenter Server** node.
+1. 以下の手順に従って、定義済みテンプレートからパターンを作成します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。「仮想システム・パターン」ページが開きます。
+    * **「仮想システム・パターン」**ページで**「新規作成」**をクリックし、ポップアップ・ウィンドウで、定義済みテンプレートのリストから**「MobileFirst Platform (AppCenter Liberty single node)」**を選択します。名前が長いために、名前の一部のみが表示されている場合は、**「詳細情報」**タブで説明を表示することにより、正しいテンプレートが選択されていることを確認できます。
+    * **「名前」**フィールドに、パターンの名前を入力します。
+    * **「バージョン」**フィールドに、パターンのバージョン番号を指定します。
+    * **「ビルドの開始」**をクリックします。
+2. この手順は、AIX の場合必須です。Power 上で稼働している IBM PureApplication System で、MobileFirst Platform DB ノードは、以下の手順に従って、テンプレート内の「Default add disk」コンポーネントの代わりに AIX 固有のアドオン・コンポーネントである「Default AIX add disk」を使用して、jfs2 ファイル・システムをサポートする必要があります。
+    * パターン・ビルダーで、**「MobileFirst Platform DB」**ノードを選択します。
+    * **「コンポーネント・アドオンの追加」**ボタンをクリックします (このボタンは、**「MobileFirst Platform DB」**ノードの上にカーソルを移動した時にコンポーネント・ボックスの上に表示されます)。
+    * **「アドオンの追加」**リストから、**「Default AIX add disk」**を選択します。このコンポーネントが、MobileFirst Platform DB ノードの最下位コンポーネントとして追加されます。
+    * **「Default AIX add disk」**コンポーネントを選択し、以下の属性を指定します。
+        * **DISK_SIZE_GB:** DB サーバーに拡張されるストレージ・サイズ (GB 単位で測定)。サンプル値: **10**。
+        * **FILESYSTEM_TYPE:** AIX でサポートされるファイル・システム。デフォルト値: **jfs2**。
+        * **MOUNT_POINT:** MobileFirst Platform DB ノード内の Database Server コンポーネントの属性**「Mount point for instance owner」**に一致します。サンプル値: **/dbinst**。
+        * **VOLUME_GROUP:** サンプル値: **group1**。正しい値については、IBM PureApplication System 管理者に問い合わせてください。
+    * 「MFP AppCenter DB」ノードで、**「Default add disk」**コンポーネントを選択し、ビン・アイコンをクリックしてそれを削除します。
+    * パターンを保存します。
+3. オプション: **「MFP AppCenter Server」**ノードで **「MFP Server Application Center」**を構成します。
     
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply more LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the M**FP AppCenter Server** node, click the **MFP Server Application Center** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin_password** fields, specify the administration user name and password.
-    * Next to the **db_user** and **db_password** fields, click the **Delete** button to clear their pattern level parameter settings.
-    * In the **db_user** and **db_password** fields, specify the database user name and password.
-    * In the **db_name**, **db_instance**, **db_ip**, and **db_port** fields, specify the database user name, password, instance name, IP, and port number.
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    * **「MFP AppCenter Server」**ノードで、**「MFP Server Application Center」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
+    * **「admin_user」**フィールドと**「admin_password」**フィールドに、管理ユーザー名とパスワードを指定します。
+    * **「db_user」**フィールドと**「db_password」**フィールドの横で**「削除」**ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
+    * **「db_user」**フィールドと**「db_password」**フィールドに、データベース・ユーザー名とパスワードを指定します。
+    * **「db_name」**、**「db_instance」**、**「db_ip」**、および**「db_port」**の各フィールドに、データベース・ユーザー名、パスワード、インスタンス名、IP、およびポート番号を指定します。
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    パターン・デプロイメント中に、{{site.data.keys.mf_server }} のデフォルト管理アカウントが作成されます。
 
-4. Configure and launch the pattern deployment:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel that displays the detailed information about the pattern, click the **Deploy** button.
-    * In the **Deploy Pattern** window, in the **Configure** panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
-    * In the middle column, click Pattern attributes to display attributes such as user names and passwords.
+4. 以下の手順に従って、パターン・デプロイメントを構成し、起動します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。
+    * 「**仮想システム・パターン**」ページで**「検索」**フィールドを使用して、作成したパターンを見つけそのパターンを選択します。
+    * パターンの詳細情報を表示しているパネルの上のツールバーで、**「デプロイ」**ボタンをクリックします。
+    * **「パターンのデプロイ」**ウィンドウの**「構成」**パネルで、**「環境プロファイル」**リストから正しい環境プロファイルを選択し、他の IBM PureApplication System 環境パラメーターを指定します。正しい情報を入手するには、IBM PureApplication System 管理者に問い合わせてください。
+    * 中央の列で「パターン属性」をクリックして、ユーザー名およびパスワードなどの属性を表示します。
 
-    Supply the following information in the fields provided:
+    示されたフィールドに以下の情報を指定します。
 
-    > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    
+    > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。    
     **admin\_user**  
-    Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルトの {{site.data.keys.mf_server }} 管理者アカウントを作成します。デフォルト値: demo。
     
     **admin\_password**  
-    Not visible if configured in step 3. Default admin account password. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルト管理アカウントのパスワード。デフォルト値: demo。
     
     **ACTIVATE\_TOKEN\_LICENSE**  
-    Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。永久ライセンスを使用する場合は、このフィールドをクリアしたままにします。
     
     **LICENSE\_SERVER\_HOSTNAME**  
-    Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+    ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
     
     **LMGRD\_PORT**   
-    Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-    The default license manager daemon port is 27000.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
     **IBMRATL\_PORT**  
-    Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-    The default vendor daemon port is typically 27001.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
     **runtime\_contextRoot**  
-    Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+ステップ 5 で構成された場合、表示されません。{{site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
     
     **deployer\_user**  
-    Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つアカウントのユーザー名。外部 LDAP サーバーが構成されていない場合は、管理サービス用のデフォルト管理ユーザーを作成する際に指定したのと同じ値を入力する必要があります。これは、この場合、アプリケーションおよびアダプターのデプロイメントで許可される唯一のユーザーがデフォルト管理ユーザーであるためです。
     
     **deployer\_password**  
-    Not visible if configured in step 8. User password for the user with deployment privilege.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つユーザーのユーザー・パスワード。
     
     **MFP Vms Password(root)**  
-    Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        {{site.data.keys.mf_server }} ノードおよび {{site.data.keys.product }} DB ノードのルート・パスワード。デフォルト値: passw0rd。
     
     **MFP DB Password(Instance owner)**  
-    Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
-* Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+MobileFirst Platform DB ノードのインスタンス所有者のパスワード。デフォルト値: **passw0rd**。    
+* **「クイック・デプロイ」**をクリックして、パターン・デプロイメントを起動します。数秒後、パターンが起動を開始したことを示すメッセージが表示されます。メッセージに提供されている URL をクリックしてパターン・デプロイメントの状況を追跡したり、**「パターン」→「仮想システム・インスタンス」**に移動して「仮想システム・インスタンス」ページを開き、そこでパターンを検索したりすることができます。
 
-5. To access the {{ site.data.keys.mf_console }} perform the following steps:
-    * Click **Patterns → Virtual System Instances** to open the **Virtual System Instances** page and search for your pattern there.
-    * Select your pattern name and expand the Virtual machine perspective in the panel that displays the details of the selected instance.
-    * Find the {{ site.data.keys.mf_server }} VM that has a name similar to **MFP\_AppCenter\_Server.**, make a note of its public IP address.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+5. {{site.data.keys.mf_console }} にアクセスするには、以下の手順を実行します。
+    * **「パターン」→「仮想システム・インスタンス」**をクリックして**「仮想システム・インスタンス」**ページを開き、そこでパターンを検索します。
+    * パターン名を選択し、選択したインスタンスの詳細を表示しているパネルで、「仮想マシン・パースペクティブ」を展開します。
+    * **MFP\_AppCenter\_Server.** に似た名前を持つ {{site.data.keys.mf_server }} VM を見つけ、そのパブリック IP アドレスをメモします。
+    * ブラウザーで、次のいずれかのフォーマットを使用して URL を作成して {{site.data.keys.mf_console }} を開きます。
         * `http://{MFP Server VM Public IP}:9080/appcenterconsole`
         * `https://{MFP Server VM Public IP}:9443/appcenterconsole`
-    * Log in to the Console with admin user and password specified in step 3.
+    * ステップ 3 で指定した管理ユーザーおよびパスワードを使用してコンソールにログインします。
 
-## Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server full profile server
+## 単一ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_app_center }} のデプロイ
 {: #deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile-server }
-You use a predefined template to deploy a single-node {{ site.data.keys.mf_app_center }} to a WebSphere  Application Server full profile server.
+定義済みテンプレートを使用して、単一ノードの {{site.data.keys.mf_app_center }} を WebSphere Application Server フル・プロファイル・サーバーにデプロイします。
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+この手順では、特定の成果物 (必要なアプリケーションやアダプターなど) を IBM PureApplication System にアップロードします。開始する前に、成果物がアップロードに使用できる状態であることを確認してください。
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**トークン・ライセンス要件:** トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、手順を進める前に、[{{site.data.keys.mf_system_pattern }} のトークン・ライセンス要件](#token-licensing-requirements-for-mobilefirst-system-pattern)に概説されている要件を確認してください。ライセンス・キー・サーバーに接続できなかったり、使用可能なライセンスのトークンが不十分な場合、このパターンのデプロイメントは失敗します。
 
-Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+テンプレート内のスクリプト・パッケージの一部のパラメーターは、推奨値を使用して構成されており、このセクションには記載されていません。微調整を目的とする場合は、[{{site.data.keys.mf_server }} のスクリプト・パッケージ](#script-packages-for-mobilefirst-server)に記載されている、スクリプト・パッケージのすべてのパラメーターについての詳細情報を参照してください。
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.mf_app_center }} (WAS single node) template](#mobilefirst-application-center-was-single-node-template).
+この手順で使用されている定義済みテンプレートの構成と構成オプションについて詳しくは、[{{site.data.keys.mf_app_center }} (WAS single node) テンプレート](#mobilefirst-application-center-was-single-node-template)を参照してください。
 
-1. Create a pattern from the predefined template:
-    * In **the IBM PureApplication System** dashboard, click P**atterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (AppCenter Liberty single node)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the More information tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the **jfs2** file system:
-    * In the Pattern Builder, select the **MFP AppCenter DB** node.
-    * Click the **Add a Component** Add-on button (the button is visible above the component box when you hover the cursor over the **MFP AppCenter** DB node).
-    * From the Add Add-ons list, select **Default AIX** add disk. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX** add disk component and specify the following attributes:
+1. 以下の手順に従って、定義済みテンプレートからパターンを作成します。
+    * **「IBM PureApplication System」** のダッシュボードで、**「パターン」→「仮想システム・パターン」**をクリックします。「仮想システム・パターン」ページが開きます。
+    * **「仮想システム・パターン」**ページで**「新規作成」**をクリックし、ポップアップ・ウィンドウで、定義済みテンプレートのリストから**「MobileFirst Platform (AppCenter Liberty single node)」**を選択します。名前が長いために、名前の一部のみが表示されている場合は、「詳細情報」タブで説明を表示することにより、正しいテンプレートが選択されていることを確認できます。
+    * **「名前」**フィールドに、パターンの名前を入力します。
+    * **「バージョン」**フィールドに、パターンのバージョン番号を指定します。
+    * **「ビルドの開始」**をクリックします。
+2. この手順は、AIX の場合必須です。Power 上で稼働している IBM PureApplication System で、MobileFirst Platform DB ノードは、以下の手順に従って、テンプレート内の「Default add disk」コンポーネントの代わりに AIX 固有のアドオン・コンポーネントである「Default AIX add disk」を使用して、**jfs2** ファイル・システムをサポートする必要があります。
+    * パターン・ビルダーで、**「MFP AppCenter DB」**ノードを選択します。
+    * **「コンポーネント・アドオンの追加」**ボタンをクリックします (このボタンは、**「MFP AppCenter DB」**ノードの上にカーソルを移動した時にコンポーネント・ボックスの上に表示されます)。
+    * 「アドオンの追加」リストから、**「Default AIX add disk」**を選択します。このコンポーネントが、MobileFirst Platform DB ノードの最下位コンポーネントとして追加されます。
+    * **「Default AIX add disk」**コンポーネントを選択し、以下の属性を指定します。
         
         **DISK\_SIZE\_GB**  
-        Storage size (measured in GB) to be extended to the DB server. Following is the example value: 10.
+DB サーバーに拡張されるストレージ・サイズ (GB 単位で測定)。サンプル値: 10。
 
         **FILESYSTEM\_TYPE**  
-        Supported file system in AIX. Following is the default value: **jfs2**.
+        AIX でサポートされるファイル・システム。デフォルト値: **jfs2**。
 
         **MOUNT\_POINT**  
-        Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Following is the example value: /dbinst.
+MobileFirst Platform DB ノード内の Database Server コンポーネントの属性**「Mount point for instance owner」**に一致します。サンプル値: /dbinst。
 
         **VOLUME\_GROUP**  
-        Following is the example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the **MFP AppCenter DB** node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
+        サンプル値: **group1**。正しい値については、IBM PureApplication System 管理者に問い合わせてください。
+    * **「MFP AppCenter DB」**ノードで、**「Default add disk」**コンポーネントを選択し、ビン・アイコンをクリックしてそれを削除します。
+    * パターンを保存します。
 
-3. Optional: Configure **MFP Server Application Center** in the **MFP AppCenter Server** node.
+3. オプション: **「MFP AppCenter Server」**ノードで **「MFP Server Application Center」**を構成します。
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply more LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the **MFP AppCenter Server** node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
+    > **注:** LDAP サーバーを使用して管理セキュリティーを構成する場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。
+    * **「MFP AppCenter Server」**ノードで、**「MFP Server Administration」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「admin_user」**フィールドと**「admin_password」**フィールドの横で「削除」ボタンをクリックして、それらのパターン・レベル・パラメーター設定をクリアします。
+    * **「admin_user」**フィールドと**「admin\_password」**フィールドに、管理ユーザー名とパスワードを指定します。
+    * トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合、以下のフィールドに入力します。トークン・ライセンスを使用しない場合は、これらのフィールドをブランクのままにします。
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    **ACTIVATE\_TOKEN\_LICENSE**: トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。  
+    **LMGRD\_PORT**: ライセンス・マネージャー・デーモン (**lmrgd**) が接続を listen するポート番号を入力します。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。  
+    **IBMRATL\_PORT**: ベンダー・デーモン (**ibmratl**) が接続を listen するポート番号を入力します。デフォルトのベンダー・デーモン・ポートは通常 27001 です。  
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    パターン・デプロイメント中に、{{site.data.keys.mf_server }} のデフォルト管理アカウントが作成されます。
 
-4. Configure and launch the pattern deployment:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
-    * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
+4. 以下の手順に従って、パターン・デプロイメントを構成し、起動します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。
+    * 「**仮想システム・パターン**」ページで**「検索」**フィールドを使用して、作成したパターンを見つけそのパターンを選択します。
+    * パターンの詳細情報を表示しているパネルの上のツールバーで、「デプロイ」ボタンをクリックします。
+    * 「パターンのデプロイ」ウィンドウの「構成」パネルで、**「環境プロファイル」**リストから正しい環境プロファイルを選択し、他の IBM PureApplication System 環境パラメーターを指定します。正しい情報を入手するには、IBM PureApplication System 管理者に問い合わせてください。
+    * 中央の列で**「パターン属性」**をクリックして、ユーザー名およびパスワードなどの属性を表示します。
 
-        Supply the following information in the fields provided:
+        示されたフィールドに以下の情報を指定します。
 
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-        
+        > **注:** 外部 LDAP サーバーが構成されている場合でも、パターン・レベルのパラメーターのデフォルト値に適切な変更を実行します。LDAP サーバーを使用して管理セキュリティーを構成した場合は、追加の LDAP 情報を指定する必要があります。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)を参照してください。        
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルトの {{site.data.keys.mf_server }} 管理者アカウントを作成します。デフォルト値: demo。
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+ステップ 3 で構成された場合、表示されません。デフォルト管理アカウントのパスワード。デフォルト値: demo。
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用してパターンのライセンス処理を行う場合は、このフィールドを選択します。永久ライセンスを使用する場合は、このフィールドをクリアしたままにします。
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、Rational License Key Server の完全修飾ホスト名または IP アドレスを入力します。それ以外の場合は、このフィールドをブランクのままにします。
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ライセンス・マネージャー・デーモン (lmrgd) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのライセンス・マネージャー・デーモン・ポートは 27000 です。
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        ステップ 3 で構成された場合、表示されません。トークン・ライセンスを使用して {{site.data.keys.product }} のライセンス処理を行う場合は、ベンダー・デーモン (ibmratl) が接続を listen するポート番号を入力します。それ以外の場合は、このフィールドをブランクのままにします。デフォルトのベンダー・デーモン・ポートは通常 27001 です。
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+ステップ 5 で構成された場合、表示されません。{{site.data.keys.mf_server }} ランタイムのコンテキスト・ルート名。この名前は、先頭が「/」でなければなりません。
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つアカウントのユーザー名。外部 LDAP サーバーが構成されていない場合は、管理サービス用のデフォルト管理ユーザーを作成する際に指定したのと同じ値を入力する必要があります。これは、この場合、アプリケーションおよびアダプターのデプロイメントで許可される唯一のユーザーがデフォルト管理ユーザーであるためです。
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+ステップ 8 で構成された場合、表示されません。デプロイメント特権を持つユーザーのユーザー・パスワード。
         
         **MFP Vms Password(root)**  
-        Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        {{site.data.keys.mf_server }} ノードおよび {{site.data.keys.product }} DB ノードのルート・パスワード。デフォルト値: passw0rd。
         
         **MFP DB Password(Instance owner)**  
-        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+MobileFirst Platform DB ノードのインスタンス所有者のパスワード。デフォルト値: **passw0rd**。    
+    * **「クイック・デプロイ」**をクリックして、パターン・デプロイメントを起動します。数秒後、パターンが起動を開始したことを示すメッセージが表示されます。メッセージに提供されている URL をクリックしてパターン・デプロイメントの状況を追跡したり、**「パターン」→「仮想システム・インスタンス」**に移動して「仮想システム・インスタンス」ページを開き、そこでパターンを検索したりすることができます。
 
-5. To access the {{ site.data.keys.mf_console }} perform the following steps:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
-    * Select your pattern name and expand the Virtual machine perspective in the panel that displays the details of the selected instance.
-    * Find the {{ site.data.keys.mf_server }} VM that has a name similar to **MFP\_AppCenter\_Server.**, make a note of its public IP address.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+5. {{site.data.keys.mf_console }} にアクセスするには、以下の手順を実行します。
+    * **「パターン」→「仮想システム・インスタンス」**をクリックして「仮想システム・インスタンス」ページを開き、そこでパターンを検索します。
+    * パターン名を選択し、選択したインスタンスの詳細を表示しているパネルで、「仮想マシン・パースペクティブ」を展開します。
+    * **MFP\_AppCenter\_Server.** に似た名前を持つ {{site.data.keys.mf_server }} VM を見つけ、そのパブリック IP アドレスをメモします。
+    * ブラウザーで、次のいずれかのフォーマットを使用して URL を作成して {{site.data.keys.mf_console }} を開きます。
         * `http://{MFP Server VM Public IP}:9080/appcenterconsole`
         * `https://{MFP Server VM Public IP}:9443/appcenterconsole`
-    * Log in to the Console with admin user and password specified in step 3.
+    * ステップ 3 で指定した管理ユーザーおよびパスワードを使用してコンソールにログインします。
 
-## Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository
+## 外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成
 {: #configuring-mobilefirst-administration-security-with-an-external-ldap-repository }
-You can configure {{ site.data.keys.product_adj }} administration security to enable connecting out to an external LDAP repository. The configuration is common for both WebSphere  Application Server Liberty profile and full profile.
+{{site.data.keys.product_adj }} 管理セキュリティーを、外部 LDAP リポジトリーへの接続を使用可能にするように構成することができます。この構成は、WebSphere Application Server Liberty プロファイルとフル・プロファイルの両方に共通です。
 
-This procedure involves configuring the LDAP parameters for connecting to the external user registry server. Before you begin, ensure the LDAP server is working and consult your LDAP administrator to obtain the required configuration information.
+この手順では、外部ユーザー・レジストリー・サーバーに接続するための LDAP パラメーターの構成を行います。開始する前に、LDAP サーバーが機能していることを確認し、LDAP 管理者に問い合わせて必要な構成情報を入手してください。
 
-**Important:**  
-When the LDAP repository configuration is enabled, a default user for {{ site.data.keys.product_adj }} administration is not automatically created. Instead, you must specify the administration user name and password that are stored in the LDAP repository. This information is required by WebSphere Application Server Liberty profile and a server farm of WebSphere Application Server full profile.
+**重要:**  
+LDAP リポジトリー構成が使用可能である場合、{{site.data.keys.product_adj }} 管理のデフォルト・ユーザーは自動的には作成されません。代わりに、LDAP リポジトリーに格納されている管理ユーザー名とパスワードを指定する必要があります。この情報は、WebSphere Application Server Liberty プロファイルで必要であり、また、WebSphere Application Server フル・プロファイルのサーバー・ファームでも必要です。
 
-If the runtime to be deployed in the pattern is configured to use LDAP for application authentication, make sure that the LDAP server configured in the runtime is the same as the LDAP server that is configured for the {{ site.data.keys.product_adj }} Administration; different LDAP servers are not supported. Also, the protocol and port for LDAP connection must be identical. For example, if connections from the runtime to the LDAP server are configured to use the SSL protocol and port is 636, connections from the {{ site.data.keys.product_adj }} Administration to the LDAP server must use the SSL protocol and port 636 as well.
+パターンにデプロイされるランタイムが、アプリケーション認証に LDAP を使用するよう構成されている場合は、そのランタイムに構成されている LDAP サーバーが、{{site.data.keys.product_adj }} 管理用に構成されている LDAP サーバーと同じであることを確認してください。異なる LDAP サーバーはサポートされません。また、LDAP 接続のプロトコルとポートも一致している必要があります。例えば、ランタイムから LDAP サーバーへの接続が、SSL プロトコルを使用するよう構成されており、ポートが 636 の場合、{{site.data.keys.product_adj }} 管理から LDAP サーバーへの接続も、SSL プロトコルとポート 636 を使用する必要があります。
 
-1. Build a pattern with any topology you need. For more information, see the following topics:
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
-2. Mandatory for AIX : In IBM  PureApplication  System running on Power, the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
-    * In the **Pattern Builder**, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the Default AIX add disk component and specify the following attributes:
+1. 必要なトポロジーを使用してパターンをビルドします。詳しくは、以下のトピックを参照してください。
+    * [単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
+    * [複数ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
+    * [単一ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
+    * [複数ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
+    * [WebSphere Application Server Network Deployment サーバーのクラスターでの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
+2. この手順は、AIX の場合必須です。Power 上で稼働している IBM PureApplication System で、MobileFirst Platform DB ノードは、以下の手順に従って、テンプレート内の「Default add disk」コンポーネントの代わりに AIX 固有のアドオン・コンポーネントである「Default AIX add disk」を使用して、jfs2 ファイル・システムをサポートする必要があります。
+    * **パターン・ビルダー**で、**「MobileFirst Platform DB」**ノードを選択します。
+    * **「コンポーネント・アドオンの追加」**ボタンをクリックします (このボタンは、**「MobileFirst Platform DB」**ノードの上にカーソルを移動した時にコンポーネント・ボックスの上に表示されます)。
+    * **「アドオンの追加」**リストから、**「Default AIX add disk」**を選択します。このコンポーネントが、MobileFirst Platform DB ノードの最下位コンポーネントとして追加されます。
+    * 「Default AIX add disk」コンポーネントを選択し、以下の属性を指定します。
 
         **DISK\_SIZE\_GB**  
-        Storage size (measured in GB) to be extended to the DB server. Example value: 10.
+DB サーバーに拡張されるストレージ・サイズ (GB 単位で測定)。サンプル値: 10。
         
         **FILESYSTEM\_TYPE**  
-        Supported file system in AIX. Default value: jfs2.
+        AIX でサポートされるファイル・システム。　デフォルト値: jfs2。
         
         **MOUNT\_POINT**  
-        Align with the attribute **Mount point for instance owner** in the **Database Server component** in the **MobileFirst Platform DB** node. Example value: `/dbinst`.
+        **MobileFirst Platform DB** ノード内の **Database Server コンポーネント**の属性**「Mount point for instance owner」**に一致します。 サンプル値: `/dbinst`。
         
         **VOLUME\_GROUP**  
-        Example value: `group1`. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the Default add disk component, and then click the bin icon to delete it.
-    * Save the pattern.
+サンプル値: `group1`。正しい値については、IBM PureApplication System 管理者に問い合わせてください。
+    * MobileFirst Platform DB ノードで、「Default add disk」コンポーネントを選択し、ビン・アイコンをクリックしてそれを削除します。
+    * パターンを保存します。
 
-3. Configure {{ site.data.keys.mf_server }} administration:
-    * In IBM PureApplication System, in the dashboard, click P**atterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, use the **Search** field to find and select the pattern you created, and then click **Open** to open the **Pattern Builder** page.
-    * In the MobileFirst Platform Server node (or the DmgrNode node when using the {{ site.data.keys.product }} (WAS ND) template), select the MFP Server Administration component. The properties of the selected component are displayed next to the canvas.
-    * Supply the following LDAP information in the fields provided:
+3. 以下の手順に従って、{{site.data.keys.mf_server }} 管理を構成します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」**をクリックします。「仮想システム・パターン」ページが開きます。
+    * **「仮想システム・パターン」**ページで**「検索」**フィールドを使用して、作成したパターンを見つけて選択し、次に**「開く」**をクリックして**「パターン・ビルダー」**ページを開きます。
+    * MobileFirst Platform Server ノード (または {{site.data.keys.product }} (WAS ND) テンプレートを使用する場合は、DmgrNode ノード) で、「MFP Server Administration」コンポーネントを選択します。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * 示されたフィールドに以下の LDAP 情報を指定します。
 
     **admin_user**  
-    User ID of the account that has {{ site.data.keys.mf_server }} administration privilege. This value is stored in the LDAP repository. Not required if the {{ site.data.keys.mf_server }} is to be deployed on a single node of WebSphere Application Server full profile.
+{{site.data.keys.mf_server }} 管理特権を持つアカウントのユーザー ID。この値は、LDAP リポジトリーに格納されます。{{site.data.keys.mf_server }} を WebSphere Application Server フル・プロファイルの単一ノードにデプロイする場合は、必要ありません。
     
     **admin_password**  
-    Admin user password. This value is stored in the LDAP repository. Not required if the {{ site.data.keys.mf_server }} is to be deployed on a single node of WebSphere Application Server full profile.
+管理ユーザー・パスワード。この値は、LDAP リポジトリーに格納されます。{{site.data.keys.mf_server }} を WebSphere Application Server フル・プロファイルの単一ノードにデプロイする場合は、必要ありません。
     
     **LDAP_TYPE**  
-    LDAP server type of your user registry. One of the following values:  
+ユーザー・レジストリーの LDAP サーバー・タイプ。以下のいずれかの値になります。  
     --- **None**  
-    LDAP connection is disabled. When this is set, all the other LDAP parameters are treated as placeholders only.  
+LDAP 接続は使用不可です。これが設定されている場合、他のすべての LDAP パラメーターはプレースホルダーのみとして扱われます。  
     --- **TivoliDirectoryServer**  
-    Select this if the LDAP repository is an IBM Tivoli  Directory Server.  
+    LDAP リポジトリーが IBM Tivoli Directory Server の場合、これを選択します。  
     --- **ActiveDirectory**  
-    Select this if the LDAP repository is a Microsoft Active Directory.  
-    Default value: None.
+    LDAP リポジトリーが Microsoft Active Directory の場合、これを選択します。  
+    デフォルト値: None。
     
     **LDAP_IP**  
-    LDAP server IP address.
+LDAP サーバーの IP アドレス。
     
     **LDAP_SSL_PORT**  
-    LDAP port for secure connection.
+セキュア接続用の LDAP ポート。
     
     **LDAP_PORT**  
-    LDAP port for non-secure connection.
+非セキュア接続用の LDAP ポート。
     
     **BASE_DN**  
-    Base DN.
+ベース DN。
     
     **BIND_DN**  
-    Bind DN.
+バインド DN。
     
     **BIND_PASSWORD**  
-    Bind DN password.
+バインド DN のパスワード。
     
     **REQUIRE_SSL**  
-    Select true for secure connection to the LDAP server. Default value: false.
+    LDAP サーバーへのセキュア接続のためには、true を選択します。デフォルト値: false。
     
     **USER_FILTER**  
-    LDAP user filter that applies when searching the existing user registry for users.
+既存のユーザー・レジストリーでユーザーを検索する時に適用される LDAP ユーザー・フィルター。
     
     **GROUP_FILTER**  
-    LDAP group filter that applies when searching the existing user registry for groups.
+既存のユーザー・レジストリーでグループを検索する時に適用される LDAP グループ・フィルター。
     
     **LDAP\_REPOSITORY\_NAME**  
-    LDAP server name.
+LDAP サーバー名。
     
     **CERT\_FILE\_PATH**  
-    Target path of the uploaded LDAP server certification.
+アップロードされた LDAP サーバー証明のターゲット・パス。
     
     **mfpadmin**  
-    Admin role for {{ site.data.keys.mf_server }}. One of the following values:
+{{site.data.keys.mf_server }} の管理者役割。以下のいずれかの値になります。
     --- **None**  
-        No user.  
+ユーザーなし。  
     --- **AllAuthenticatedUsers**  
-        Authenticated users  
+認証済みユーザー  
     --- **Everyone**  
-        All users.  
+すべてのユーザー。  
         
-    Default value: None. For more information about security roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+        デフォルト値: None。セキュリティー役割について詳しくは、『[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)』を参照してください。
     
     **mfpdeployer**  
-    Deployer role for {{ site.data.keys.mf_server }}. One of the following values:
+{{site.data.keys.mf_server }} のデプロイヤー役割。以下のいずれかの値になります。
     --- **None**  
-        No user.  
+ユーザーなし。  
     --- **AllAuthenticatedUsers**  
-        Authenticated users  
+認証済みユーザー  
     --- **Everyone**  
-        All users.
+すべてのユーザー。
     
-    Default value: None. For more information about security roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+        デフォルト値: None。セキュリティー役割について詳しくは、『[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)』を参照してください。
     
     **mfpmonitor**  
-    Monitor role for {{ site.data.keys.mf_server }}. One of the following values:    
+{{site.data.keys.mf_server }} のモニター役割。以下のいずれかの値になります。    
     --- **None**  
-        No user.  
+ユーザーなし。  
     --- **AllAuthenticatedUsers**  
-        Authenticated users     
+認証済みユーザー     
     --- **Everyone**  
-        All users.
+すべてのユーザー。
     
-    Default value: None. For more information about security roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+        デフォルト値: None。セキュリティー役割について詳しくは、『[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)』を参照してください。
     
     **mfpoperator**  
-    Operator role for {{ site.data.keys.mf_server }}. One of the following values:
+{{site.data.keys.mf_server }} のオペレーター役割。以下のいずれかの値になります。
     --- **None**  
-        No user.  
+ユーザーなし。  
     --- **AllAuthenticatedUsers**  
-        Authenticated users  
+認証済みユーザー  
     --- **Everyone**  
-        All users.
+すべてのユーザー。
 
-    Default value: None. For more information about security roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+        デフォルト値: None。セキュリティー役割について詳しくは、『[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)』を参照してください。
 
-4. Optional: Configure the LDAP SSL connection. This step is required only if you set **REQUIRE_SSL** to true in the previous step to use secure connections to the LDAP server:
-    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename the component "MobileFirst LDAP Cert", for example.
-    * Hover the cursor over the newly added component, and then click the **Move up** and **Move down** buttons to adjust the position of the component in the node. Make sure that it is placed between the **MFP Server Prerequisite** component and the **MFP Server Administration** component.
-    * Click the **MobileFirst LDAP Cert** component. The properties of the selected component are displayed next to the canvas. Upload the LDAP certification artifact in the **Additional file** field by clicking the **Browse** button to locate it
-    * In the **Target** path field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/tdscert.der**.
-    * In the MobileFirst Platform Server node (or the DmgrNode node when using the {{ site.data.keys.product }} (WebSphere Application Server Network Deployment) template), select the MFP Server Administration component, and then click the **Add reference** button next to the **CERT\_FILE\_PATH** field. In the pop-up window, click the **component-level parameter** tab. From the Component list, select **MobileFirst LDAP Cert**. In the **Output** attribute list, select **target\_path**. Click the **Add** button to refresh the **Output value** field, and then click **OK**.
+4. オプション: LDAP SSL 接続を構成します。このステップは、LDAP サーバーへのセキュア接続を使用するために、前のステップで **REQUIRE_SSL** を true に設定した場合にのみ必要です。
+    * **「資産」**ツールバーから**「ソフトウェア・コンポーネント」**を展開し、**「追加ファイル」**コンポーネントを、キャンバス内の MobileFirst Platform Server ノードにドラッグ・アンド・ドロップします。例えば、コンポーネント「MobileFirst LDAP Cert」を名前変更します。
+    * 新しく追加したコンポーネントの上にカーソルを移動し、**「上へ移動」**ボタンと**「下へ移動」**ボタンをクリックして、ノード内でのコンポーネントの位置を調整します。必ず、**「MFP Server Prerequisite」**コンポーネントと**「MFP Server Administration」**コンポーネントの間に配置するようにしてください。
+    * **「MobileFirst LDAP Cert」**コンポーネントをクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。**「追加ファイル」**フィールド内で、**「参照」**ボタンをクリックして LDAP 証明成果物を見つけ、それをアップロードします。
+    * **「ターゲット・パス」**フィールドに、成果物を保管するための絶対パスを、ファイル名を含めて指定します。例えば、**/opt/tmp/tdscert.der** のようにします。
+    * MobileFirst Platform Server ノード (または {{site.data.keys.product }} (WebSphere Application Server Network Deployment) テンプレートを使用する場合は DmgrNode ノード) で、「MFP Server Administration」コンポーネントを選択します。次に、**CERT\_FILE\_PATH** フィールドの横の**「参照の追加」**ボタンをクリックします。ポップアップ・ウィンドウで、**「コンポーネント・レベル・パラメーター」**タブをクリックします。「コンポーネント」リストから、**「MobileFirst LDAP Cert」**を選択します。**「出力属性」**リストから、**「target\_path」**を選択します。**「追加」**ボタンをクリックして**「出力値」**フィールドを最新表示し、**「OK」**をクリックします。
 
-5. Configure and launch the pattern deployment. On the Deploy Pattern page, in the Nodes list, you can adjust your LDAP configurations by clicking **MobileFirst Server** (or **DmgrNode** when using the {{ site.data.keys.product }} (WAS ND) template) and then expanding **MFP Server Administration**. For more information about pattern deployment, see the "Configure and launch the pattern deployment" step in one of the following topics depending on the topology you selected when creating the pattern:
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 8.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 8.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 9 onwards.
+5. パターン・デプロイメントを構成し、起動します。「パターンのデプロイ」ページの「ノード」リストで、**「MobileFirst Server」**(または、{{site.data.keys.product }} (WAS ND) テンプレートを使用する場合は**「DmgrNode」**) をクリックし、**「MFP Server Administration」**を展開することにより、LDAP 構成を調整することができます。パターン・デプロイメントについて詳しくは、パターンを作成する時に選択したトポロジーに応じて、以下のいずれかのトピック内の『パターン・デプロイメントを構成し、起動します』のステップを参照してください。
+    * [単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)のステップ 8。
+    * [複数ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)のステップ 9。
+    * [単一ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)のステップ 8。
+    * [複数ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)のステップ 9。
+    * [WebSphere Application Server Network Deployment サーバーのクラスターでの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)のステップ 9 以降。
 
-6. Access the {{ site.data.keys.mf_console }}. Use the administrator user name and password to log in to the {{ site.data.keys.mf_console }} through your LDAP configuration. For more information, see the "Access the {{ site.data.keys.mf_console }}:" step in one of the following topics depending on the topology you selected when creating the pattern;
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 10.
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 10.
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.
+6. {{site.data.keys.mf_console }} にアクセスします。管理者ユーザー名とパスワードを使用して、LDAP 構成を介して {{site.data.keys.mf_console }} にログインします。詳しくは、パターンを作成する時に選択したトポロジーに応じて、以下のいずれかのトピック内の『以下の手順に従って、{{site.data.keys.mf_console }} にアクセスします』のステップを参照してください。
+    * [単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)のステップ 9。
+    * [複数ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)のステップ 10。
+    * [単一ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)のステップ 9。
+    * [複数ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)のステップ 10。
+    * [WebSphere Application Server Network Deployment サーバーのクラスターでの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)のステップ 10 以降。
 
-## Configuring an external database with a {{ site.data.keys.mf_system_pattern }}
+## {{site.data.keys.mf_system_pattern }} を使用した外部データベースの構成
 {: #configuring-an-external-database-with-a-mobilefirst-system-pattern }
-You can configure {{ site.data.keys.mf_system_pattern }} to enable connecting out to an external database. IBM DB2 is the only supported external database. The configuration is common for all the supported patterns.
+外部データベースへの接続を使用可能にするように、{{site.data.keys.mf_system_pattern }} を構成することができます。IBM DB2 が、サポートされる唯一の外部データベースです。この構成は、サポートされるすべてのパターンに共通です。
 
-**Before you begin**
-This procedure involves configuring the external database parameters for connecting to the external database. Before you begin, ensure the following:
+**始める前に**
+この手順には、外部データベースに接続するための外部データベース・パラメーターの構成が含まれます。始める前に、必ず以下のことを行ってください。
 
-* Configure the external database instance on your installed IBM DB2.
-* Make a note of the database instance name, database user name, database password, database host name or IP and database instance port.
+* インストール済みの IBM DB2 上で、外部データベース・インスタンスを構成する。
+* データベース・インスタンス名、データベース・ユーザー名、データベース・パスワード、データベース・ホスト名または IP アドレス、およびデータベース・インスタンス・ポートをメモする。
 
-1. Build a pattern with any topology you need. For more information, see the following topics:
-    [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
+1. 必要なトポロジーを使用してパターンをビルドします。詳しくは、以下のトピックを参照してください。
+    [単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
+    * [複数ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
+    * [単一ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
+    * [複数ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
+    * [WebSphere Application Server Network Deployment サーバーのクラスターでの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
 
-2. Select **MobileFirst Platform DB** and click **Remove component**.
-3. Configure {{ site.data.keys.mf_server }} administration:
-    * In IBM PureApplication  System, in the dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
-    * On the **Virtual System Patterns** page, use the **Search** field to find and select the pattern you created, and then click **Open** to open the **Pattern Builder** page.
-    * In the MobileFirst Platform Server node (or the DmgrNode node when using the {{ site.data.keys.product }} (WAS ND) template), select the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Check the option **USE\_EXTERNAL\_DATABASE** and configure the following parameters:
+2. **「MobileFirst Platform DB」**を選択して、**「コンポーネントの削除」**をクリックします。
+3. 以下の手順に従って、{{site.data.keys.mf_server }} 管理を構成します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」**をクリックします。「**仮想システム・パターン**」ページが開きます。
+    * **「仮想システム・パターン」**ページで**「検索」**フィールドを使用して、作成したパターンを見つけて選択し、次に**「開く」**をクリックして**「パターン・ビルダー」**ページを開きます。
+    * MobileFirst Platform Server ノード (または {{site.data.keys.product }} (WAS ND) テンプレートを使用する場合は、DmgrNode ノード) で、**「MFP Server Administration」**コンポーネントを選択します。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * オプション**「USE\_EXTERNAL\_DATABASE」**を確認して、以下のパラメーターを構成します。
 
         **db_instance**  
-        External database instance name.
+外部データベース・インスタンス名。
         
         **db_user**  
-        External database user name.
+外部データベース・ユーザー名。
         
         **db_name**  
-        External database name.
+外部データベース名。
         
         **db_password**  
-        External database password.
+外部データベース・パスワード。
         
         **db_ip**  
-        External database IP.
+外部データベース IP。
         
         **db_port**  
-        External database port number.
+外部データベース・ポート番号。
         
-        > **Note:** If you are using the {{ site.data.keys.product }} (WAS ND) pattern template, you will need to additionally configure the attribute **Open firewall ports for WAS** to the external database port number.
-    * In the MobileFirst Platform Server node (or the DmgrNode node when using the {{ site.data.keys.product }} (WAS ND) template), select the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Under the **USE\_EXTERNAL\_DATABASE** configure the following parameters:
+        > **注:** {{site.data.keys.product }} (WAS ND) パターン・テンプレートを使用している場合は、さらに、属性**「Open firewall ports for WAS」**を外部データベース・ポート番号に構成する必要があります。    * MobileFirst Platform Server ノード (または {{site.data.keys.product }} (WAS ND) テンプレートを使用する場合は、DmgrNode ノード) で、**「MFP Server Runtime Deployment」**コンポーネントを選択します。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。
+    * **「USE\_EXTERNAL\_DATABASE」**の下で、以下のパラメーターを構成します。
 
         **rtdb_instance**  
-        External database instance name.
+外部データベース・インスタンス名。
         
         **rtdb_user**  
-        External runtime database user name.
+外部ランタイム・データベース・ユーザー名。
         
         **rtdb_name**  
-        External runtime database name, which will be created.
+外部ランタイム・データベース名 (これは、作成されます)。
         
         **rtdb_password**
-        External runtime database password.
+        外部ランタイム・データベース・パスワード。
 
-## Deploying and configuring {{ site.data.keys.mf_analytics }}
+## {{site.data.keys.mf_analytics }} のデプロイおよび構成
 {: #deploying-and-configuring-mobilefirst-analytics }
-You can deploy and configure the {{ site.data.keys.mf_analytics }} on both WebSphere  Application Server Liberty profile and full profile to enable the Analytics features in the pattern.
+WebSphere Application Server Liberty プロファイルとフル・プロファイルの両方に {{site.data.keys.mf_analytics }} をデプロイおよび構成して、パターンの Analytics フィーチャーを使用可能にすることができます。
 
-Before you begin,  
-If you intend to use an LDAP repository to protect the Analytics Console, ensure that the LDAP server is working and consult your LDAP administrator to obtain the required configuration information.
+始める前に  
+LDAP リポジトリーを使用して Analytics コンソールを保護する予定の場合は、LDAP サーバーが機能していることを確認し、LDAP 管理者に問い合わせて必要な構成情報を入手してください。
 
-> **Important:** When the LDAP repository configuration is enabled in the Analytics component, a default administration user is not created for {{ site.data.keys.mf_analytics }}. Instead, you must specify the administration user name and password values that are stored in the LDAP repository. These values are required to protect the Analytics Console.
+> **重要:** Analytics コンポーネントで LDAP リポジトリー構成が使用可能になっている場合、{{site.data.keys.mf_analytics }} 用のデフォルト管理ユーザーは作成されません。代わりに、LDAP リポジトリーに格納されている管理ユーザー名とパスワードの値を指定する必要があります。これらの値は、Analytics コンソールを保護するために必要です。
 
-1. Build a pattern with the topology you need. For more information, see the following topics:
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
+1. 必要なトポロジーを使用してパターンをビルドします。詳しくは、以下のトピックを参照してください。
+    * [単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
+    * [複数ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
+    * [単一ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
+    * [複数ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
+    * [WebSphere Application Server Network Deployment サーバーのクラスターでの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
 
-2. Add and configure {{ site.data.keys.mf_analytics }}:
-    * In the IBM  PureApplication  System dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
-    * On the **Virtual System Patterns** page, use the **Search** field to find and select the pattern you created, and then click **Open** to open the **Pattern Builder** page.
-    * From the **Assets** list, expand **Software Components**, and then drag and drop one of the following components onto the canvas:
+2. 以下の手順に従って、{{site.data.keys.mf_analytics }} を追加し、構成します。
+    * IBM PureApplication System のダッシュボードで、**「パターン」→「仮想システム・パターン」** をクリックします。「**仮想システム・パターン**」ページが開きます。
+    * **「仮想システム・パターン」**ページで**「検索」**フィールドを使用して、作成したパターンを見つけて選択し、次に**「開く」**をクリックして**「パターン・ビルダー」**ページを開きます。
+    * **「資産」**リストから、**「ソフトウェア・コンポーネント」**を展開し、次のいずれかのコンポーネントをキャンバスにドラッグ・アンド・ドロップします。
 
-        **Liberty profile server**  
-        Select this component if you want to deploy {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty profile.
+        **Liberty profile server **  
+{{site.data.keys.mf_analytics }} を WebSphere Application Server Liberty プロファイルにデプロイする場合、このコンポーネントを選択します。
         
         **Standalone server**  
-        Select this component if you want to deploy {{ site.data.keys.mf_analytics }} on WebSphere Application Server full profile.
+{{site.data.keys.mf_analytics }} を WebSphere Application Server フル・プロファイルにデプロイする場合、このコンポーネントを選択します。
 
-        A new node is created with the name "OS Node". Rename it "{{ site.data.keys.mf_analytics }}".
-    * Make the following configuration changes depending on the type of application server you want to deploy Analytics to:
-        * If you are deploying {{ site.data.keys.mf_analytics }} to WebSphere Application Server Liberty profile, click **Liberty profile server** in the {{ site.data.keys.mf_analytics }} node. The properties of the selected component are displayed next to the canvas. In the **Configuration data location** field, enter the path **/opt/IBM/WebSphere/Liberty** and specify the administrative user name and password. Use the default values for the other parameters.
-        * If you are deploying {{ site.data.keys.mf_analytics }} to WebSphere Application Server full profile, click **Standalone server** in the {{ site.data.keys.mf_analytics }} node. The properties of the selected component are displayed next to the canvas. In the **Configuration data location** field, enter the path **/opt/IBM/WebSphere/AppServer/Profiles**, change Profile name to **AppSrv01**, and specify the administrative user name and password. Use the default values for the other parameters.
+        「OS ノード」という名前で新規ノードが作成されます。それを「{{site.data.keys.mf_analytics }}」に名前変更します。
+    * Analytics のデプロイ先とするアプリケーション・サーバーのタイプに応じて、以下の構成変更を行います。
+        * {{site.data.keys.mf_analytics }} を WebSphere Application Server Liberty プロファイルにデプロイする場合、{{site.data.keys.mf_analytics }} ノードで**「Liberty profile server」**をクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。**「構成データ・ロケーション」**フィールドに **/opt/IBM/WebSphere/Liberty** のパスを入力し、管理ユーザー名とパスワードを指定します。その他のパラメーターについてはデフォルト値を使用します。
+        * {{site.data.keys.mf_analytics }} を WebSphere Application Server フル・プロファイルにデプロイする場合、{{site.data.keys.mf_analytics }} ノードで**「Standalone server」**をクリックします。キャンバスの横に、選択したコンポーネントのプロパティーが表示されます。**「構成データ・ロケーション」**フィールドに **/opt/IBM/WebSphere/AppServer/Profiles** のパスを指定し、「プロファイル名」を**「AppSrv01」**に変更し、管理ユーザー名とパスワードを指定します。その他のパラメーターについてはデフォルト値を使用します。
     
-        > **Important:** The WebSphere Application Server administrative user will be created in the WebSphere Application Server user repository. If LDAP will be configured for the Analytics server, avoid user name conflicts with the WebSphere Application Server administrative user. For example, if "user1" will be introduced by the LDAP server through its configuration, do not set "user1" as the WebSphere Application Server administrative user name.
-    * From the Components list, expand **Scripts**, and then drag and drop an **MFP Server Prerequisite** component and a MFP WAS SDK Level component onto the {{ site.data.keys.mf_analytics }} node on the canvas.
-    * From the Components list, expand **Scripts**, and then drag and drop an **MFP Analytics** component onto the {{ site.data.keys.mf_analytics }} node on the canvas. Make sure the MFP Analytics component is positioned after the Liberty profile server component (or the Standalone server component).
-    * Supply the following {{ site.data.keys.mf_analytics }} information in the fields provided:
+        > **重要:** WebSphere Application Server 管理ユーザーが、WebSphere Application Server ユーザー・リポジトリーに作成されます。Analytics サーバー用に LDAP が構成される場合は、WebSphere Application Server 管理ユーザーと競合するユーザー名を使用しないようにしてください。例えば、LDAP サーバーの構成により「user1」が導入される場合は、「user1」を WebSphere Application Server 管理ユーザー名として設定しないでください。
+    * 「コンポーネント」リストから、**「スクリプト」**を展開し、キャンバス上の {{site.data.keys.mf_analytics }} ノードに**「MFP Server Prerequisite」**コンポーネントおよび「MFP WAS SDK Level」コンポーネントをドラッグ・アンド・ドロップします。
+    * 「コンポーネント」リストから**「スクリプト」**を展開し、キャンバス上の {{site.data.keys.mf_analytics }} ノードに**「MFP Analytics」**コンポーネントをドラッグ・アンド・ドロップします。MFP Analytics コンポーネントは、Liberty profile server コンポーネント (または Standalone server コンポーネント) の後に配置するようにしてください。
+    * 示されたフィールドに以下の {{site.data.keys.mf_analytics }} 情報を指定します。
         
-        The LDAP parameters are exactly the same as the MFP Server Administration parameters. For more information, see the "Configure MFP Server Administration" step in 3:
+        LDAP パラメーターは、MFP Server 管理のパラメーターとまったく同じです。詳しくは、3 の『以下の手順に従って、MobileFirst Server 管理を構成します』のステップを参照してください。
         
-        > **Important:** For LDAP SSL connection configuration in {{ site.data.keys.mf_analytics }}, make sure that in step 4b in [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository), the dragged-in {{ site.data.keys.product_adj }} LDAP Cert component in the {{ site.data.keys.mf_analytics }} node must be moved to between the Liberty profile server (or Stanalone server) and the MFP Analytics script package.
+        > **重要:** {{site.data.keys.mf_analytics }} での LDAP SSL 接続構成の場合、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)のステップ 4b で、{{site.data.keys.mf_analytics }} ノード内にドラッグした {{site.data.keys.product_adj }} LDAP Cert コンポーネントを、Liberty profile server (または Stanalone server) と MFP Analytics スクリプト・パッケージの間に移動する必要があります。
         
    #### WAS_ROOT
-    * If {{ site.data.keys.mf_analytics }} is being installed on WebSphere Application Server Liberty profile, specify the installation directory of the Liberty profile for Analytics:
-        * Click the **Add reference** button next to the **WAS_ROOT** field and in the pop-up window, click the **component-level parameter** tab.
-        * In the **Component** field, select **Liberty profile server** (it might be called **Liberty profile server\_1** if the {{ site.data.keys.mf_server }} is also deployed on WebSphere Application Server Liberty profile).
-        * In the **Output attribute** field, select **install_directory**. Click the **Add** button to refresh the Output value field, and then click **OK**.
-    * If {{ site.data.keys.mf_analytics }} is being installed on WebSphere Application Server full profile, specify the installation directory of the WebSphere Application Server full profile for Analytics:
-        * Click the **Add reference** button next to the WAS_ROOT field and in the pop-up window, click the **component-level parameter** tab.
-        * In the **Component** field, select **Standalone server** (it might be called **Standalone server\_1** if the {{ site.data.keys.mf_server }} is also deployed on WebSphere Application Server full profile)
-        * In the **Output attribute** field, select **install_directory**. Click the **Add** button to refresh the Output value field, and then click **OK**.
+    * {{site.data.keys.mf_analytics }} を WebSphere Application Server Liberty プロファイルにインストールする場合、以下の手順に従って Analytics 用の Liberty プロファイルのインストール・ディレクトリーを指定します。
+        * **「WAS_ROOT」**フィールドの横の**「参照の追加」**ボタンをクリックし、ポップアップ・ウィンドウで**「コンポーネント・レベル・パラメーター」**タブをクリックします。
+        * **「コンポーネント」**フィールドで**「Liberty profile server」** ({{site.data.keys.mf_server }} も WebSphere Application Server Liberty プロファイルにデプロイされている場合、**「Liberty profile server\_1」**と呼ばれる場合がある) を選択します。
+        * **「出力属性」**フィールドで、**「install_directory」**を選択します。**「追加」**ボタンをクリックして「出力値」フィールドを最新表示し、**「OK」**をクリックします。
+    * {{site.data.keys.mf_analytics }} を WebSphere Application Server フル・プロファイルにインストールする場合、以下の手順に従って Analytics 用の WebSphere Application Server フル・プロファイルのインストール・ディレクトリーを指定します。
+        * 「WAS_ROOT」フィールドの横の**「参照の追加」**ボタンをクリックし、ポップアップ・ウィンドウで**「コンポーネント・レベル・パラメーター」**タブをクリックします。
+        * **「コンポーネント」**フィールドで**「Standalone server」** ({{site.data.keys.mf_server }} も WebSphere Application Server フル・プロファイルにデプロイされている場合、**「Standalone server\_1」**と呼ばれる場合がある) を選択します。
+        * **「出力属性」**フィールドで、**「install_directory」**を選択します。**「追加」**ボタンをクリックして「出力値」フィールドを最新表示し、**「OK」**をクリックします。
         
    #### HEAP\_MIN\_SIZE
    
-    Applicable to WebSphere Application Server full profile only.
+    WebSphere Application Server フル・プロファイルにのみ適用。
 
-    The amount of Analytics data that is generated is directly proportional to the amount of memory required to handle it. Set this value to allow a larger minimum heap size for WebSphere Application Server full profile. Make sure that the **Memory size** value specified in the Core OS component of the {{ site.data.keys.mf_analytics }} node is larger than **HEAP\_MIN\_SIZE**. Consider setting a value equal to **HEAP\_MAX\_SIZE**.
+    生成される Analytics データの量は、その処理に必要なメモリー量に直接比例します。この値は、WebSphere Application Server フル・プロファイルの最小ヒープ・サイズを大きくすることができるようにするために設定します。{{site.data.keys.mf_analytics }} ノードの Core OS コンポーネントに指定される**「メモリー・サイズ」**値は、**HEAP\_MIN\_SIZE** より大きくなるようにしてください。**HEAP\_MAX\_SIZE** と等しい値を設定することを検討してください。
     
-    Default value: 4096 MB.
+    デフォルト値: 4096 MB。
 
    #### HEAP\_MAX\_SIZE
-    Applicable to WebSphere Application Server full profile only.
+    WebSphere Application Server フル・プロファイルにのみ適用。
 
-    The amount of Analytics data that is generated is directly proportional to the amount of memory required to handle it. Set this value to allow a larger maximum heap size for WebSphere Application Server full profile. Make sure that the **Memory size** value specified in the Core OS component of the {{ site.data.keys.mf_analytics }} node is larger than **HEAP\_MAX\_SIZE**. Consider setting a value equal to **HEAP\_MIN\_SIZE**.
+    生成される Analytics データの量は、その処理に必要なメモリー量に直接比例します。この値は、WebSphere Application Server フル・プロファイルの最大ヒープ・サイズを大きくすることができるようにするために設定します。{{site.data.keys.mf_analytics }} ノードの Core OS コンポーネントに指定される**「メモリー・サイズ」**値は、**HEAP\_MAX\_SIZE** より大きくなるようにしてください。**HEAP\_MIN\_SIZE** と等しい値を設定することを検討してください。
 
-    Default value: 4096 MB.
+    デフォルト値: 4096 MB。
     
    #### WAS\_admin\_user
-    * Applicable to WebSphere Application Server full profile only.  
-    WebSphere Application Server full profile admin user ID for the Analytics server.
-        * Click the **Add reference** button next to the **WAS\_admin\_user** field and in the pop-up window, click the **component-level** parameter tab.
-        * In the **Component** field, select **Standalone server** (it may be called **Standalone server_1** if the {{ site.data.keys.mf_server }} is also deployed on WebSphere Application Server full profile)
-        * In the **Output attribute** field, select **was\_admin**. Click the **Add** button to refresh the **Output** value field, and then click **OK**.
+    * WebSphere Application Server フル・プロファイルにのみ適用。  
+    Analytics サーバー用の WebSphere Application Server フル・プロファイルの管理ユーザー ID。
+        * **「WAS\_admin\_user」**フィールドの横の**「参照の追加」**ボタンをクリックし、ポップアップ・ウィンドウで**「コンポーネント・レベル・パラメーター」**タブをクリックします。
+        * **「コンポーネント」**フィールドで**「Standalone server」** ({{site.data.keys.mf_server }} も WebSphere Application Server フル・プロファイルにデプロイされている場合、**「Standalone server_1」**と呼ばれる場合がある) を選択します。
+        * **「出力属性」**フィールドで、**「was\_admin」**を選択します。**「追加」**ボタンをクリックして**「出力値」**フィールドを最新表示し、**「OK」**をクリックします。
     
-    For Liberty profile, the default value can be used.
+    Liberty プロファイルの場合、デフォルト値を使用できます。
     
    #### WAS\_admin\_password
-    Applicable to WebSphere Application Server full profile only.
+    WebSphere Application Server フル・プロファイルにのみ適用。
 
-    WebSphere Application Server full profile admin user ID for the Analytics server.
-    * Click the **Add reference** button next to the **WAS\_admin\_password** field and in the pop-up window, click the **component-level parameter** tab.
-    * In the **Component** field, select **Standalone server** (it may be called **Standalone server_1** if the {{ site.data.keys.mf_server }} is also deployed on WebSphere Application Server full profile)
-    * In the **Output** attribute field, select **was\_admin\_password**. Click the **Add** button to refresh the **Output** value field, and then click **OK**.
+        Analytics サーバー用の WebSphere Application Server フル・プロファイルの管理ユーザー ID。
+    * **「WAS\_admin\_password」**フィールドの横の**「参照の追加」**ボタンをクリックし、ポップアップ・ウィンドウで**「コンポーネント・レベル・パラメーター」**タブをクリックします。
+    * **「コンポーネント」**フィールドで**「Standalone server」** ({{site.data.keys.mf_server }} も WebSphere Application Server フル・プロファイルにデプロイされている場合、**「Standalone server_1」**と呼ばれる場合がある) を選択します。
+    * **「出力属性」**フィールドで、**「was\_admin\_password」**を選択します。**「追加」**ボタンをクリックして**「出力値」**フィールドを最新表示し、**「OK」**をクリックします。
     
-    For Liberty profile, the default value can be used.
+    Liberty プロファイルの場合、デフォルト値を使用できます。
 
    #### admin_user
-    * If an LDAP repository is not enabled, create a default administration user for {{ site.data.keys.mf_analytics_console }} protection.
-    * If an LDAP repository is enabled, specify the user name that has {{ site.data.keys.mf_analytics }} administration privilege. The value is stored in the LDAP repository.
+    * LDAP リポジトリーが使用可能になっていない場合は、{{site.data.keys.mf_analytics_console }} 保護に使用されるデフォルト管理ユーザーを作成します。
+    * LDAP リポジトリーが使用可能になっている場合は、{{site.data.keys.mf_analytics }} 管理特権を持っているユーザー名を指定します。この値は、LDAP リポジトリーに格納されます。
 
    #### admin_password
-    * If an LDAP repository is not enabled, specify the password for the default administration user for {{ site.data.keys.mf_analytics_console }} protection.
-    * If an LDAP repository is enabled, specify the administration user password. The value is stored in the LDAP repository.
+    * LDAP リポジトリーが使用可能になっていない場合は、{{site.data.keys.mf_analytics_console }}保護に使用されるデフォルト管理ユーザーのパスワードを指定します。
+    * LDAP リポジトリーが使用可能になっている場合は、管理ユーザー・パスワードを指定します。この値は、LDAP リポジトリーに格納されます。
     
-    Optional: Enable the LDAP repository for {{ site.data.keys.mf_analytics_console }} protection. The LDAP parameters in {{ site.data.keys.mf_analytics }} are exactly the same as those for {{ site.data.keys.mf_server }} Administration. For more information, see “Configure MFP Server Administration” (step 3) in [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    オプション: {{site.data.keys.mf_analytics_console }} 保護のために LDAP リポジトリーを使用可能にします。{{site.data.keys.mf_analytics }} の LDAP パラメーターは、{{site.data.keys.mf_server }} 管理用のパラメーターとまったく同じです。詳しくは、[外部 LDAP リポジトリーを使用した、{{site.data.keys.product_adj }} 管理セキュリティーの構成](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)の『MFP Server 管理を構成します』 (ステップ 3) を参照してください。
 
-3. Configure {{ site.data.keys.mf_server }} runtime deployment for {{ site.data.keys.mf_analytics }} connection:
-    * In the MobileFirst Platform Server node (or the DmgrNode node when using the {{ site.data.keys.product }} (WAS ND) template), select the **MFP Server Runtime Deployment** component.
-    * Drag a link from the MFP Server Runtime Deployment component to the Liberty profile server component or to the Standalone server component in the {{ site.data.keys.mf_analytics }} node, depending on the type of application server being used. The Configure Data Dependencies pop-up window opens.
-    * Configure the data dependencies:
-        * In the Configure Data Dependencies window, clear any existing recommended data dependency entries by clicking the **X** button next to each entry.
-        * Below **MFP Server Runtime Deployment** component, select **analytics_ip** and below **Liberty profile server** or **Standalone server**, select **IP**.
-        * Click the **Add** button to add the new data dependency.
-        * Click **OK** to save your changes.
+3. 以下の手順に従って、{{site.data.keys.mf_analytics }} の接続用に、{{site.data.keys.mf_server }} ランタイム・デプロイメントを構成します。
+    * MobileFirst Platform Server ノード (または {{site.data.keys.product }} (WAS ND) テンプレートを使用する場合は、DmgrNode ノード) で、**「MFP Server Runtime Deployment」**コンポーネントを選択します。
+    * 使用するアプリケーション・サーバーのタイプに応じて、MFP Server Runtime Deployment コンポーネントからのリンクを、{{site.data.keys.mf_analytics }} ノード内の Liberty profile server コンポーネントまたは Standalone server コンポーネントにドラッグします。「データ依存関係の構成」ポップアップ・ウィンドウが開きます。
+    * 以下の手順に従って、データ依存関係を構成します。
+        * 「データ依存関係の構成」ウィンドウで、各項目の横の**「X」**ボタンをクリックして、既存の推奨データ依存関係をすべてクリアします。
+        * **MFP Server Runtime Deployment** コンポーネントの下から**「analytics_ip」**を選択し、**Liberty profile server** または **Standalone server** の下から**「IP」**を選択します。
+        * **「追加」**ボタンをクリックして、新規データ依存関係を追加します。
+        * **「OK」**をクリックして変更を保存します。
 
-            ![Adding link from MFP Server Runtime component to the Liberty server](pureapp_analytics_link_1.jpg)
+            ![MFP Server Runtime コンポーネントから Liberty サーバーへのリンクの追加](pureapp_analytics_link_1.jpg)
             
-            The link from the MFP Server Runtime Deployment component to the Liberty profile server component (or the Standalone server component) is built.
-    * Drag another link from the MFP Server Runtime Deployment component to the MFP Analytics component in the {{ site.data.keys.mf_analytics }} node. The Configure Data Dependencies pop-up window opens.
-    * Configure the data dependencies:
-        * In the Configure Data Dependencies window, clear all the recommended data dependencies entries by clicking the **X** button next to each entry.
-        * Below **MFP Server Runtime Deployment** component, select **analytics\_admin\_user** and below **MFP Analytics**, select **admin_user**.
-        * Click the **Add** button to add the new data dependency.
-        * Repeat the process to configure a data dependency from **analytics\_admin\_password** to **admin_password**.
-        * Click **OK** to save your changes.
+            MFP Server Server Runtime Deployment コンポーネントから Liberty profile server コンポーネント (または Standalone server コンポーネント) へのリンクが作成されます。
+    * MFP Server Runtime Deployment コンポーネントから、{{site.data.keys.mf_analytics }} ノード内の MFP Analytics コンポーネントに、別のリンクをドラッグします。「データ依存関係の構成」ポップアップ・ウィンドウが開きます。
+    * 以下の手順に従って、データ依存関係を構成します。
+        * 「データ依存関係の構成」ウィンドウで、各項目の横の**「X」**ボタンをクリックして、すべての推奨データ依存関係の項目をクリアします。
+        * **MFP Server Runtime Deployment** コンポーネントの下から**「analytics\_admin\_user」**を選択し、**MFP Analytics** の下から**「admin_user」**を選択します。
+        * **「追加」**ボタンをクリックして、新規データ依存関係を追加します。
+        * **「analytics\_admin\_password」**から**「admin_password」**へのデータ依存関係を構成するプロセスを繰り返します。
+        * **「OK」**をクリックして変更を保存します。
             
-            ![Adding link from MFP Server Runtime Deployment component to the MFP Analytics component](pureapp_analytics_link_2.jpg)
+            ![MFP Server Runtime Deployment コンポーネントから MFP Analytics コンポーネントへのリンクの追加](pureapp_analytics_link_2.jpg)
             
-    The following figure shows an example of a {{ site.data.keys.mf_analytics }} node added to a {{ site.data.keys.product }} WAS ND pattern:
+    以下の図は、{{site.data.keys.mf_analytics }} WAS ND パターンに追加された {{site.data.keys.product }} ノードの例を示しています。
 
-    ![{{ site.data.keys.mf_analytics }} node added to a {{ site.data.keys.product }} WAS ND pattern](pureapp_analytics_node.jpg)
+    ![{{site.data.keys.mf_analytics }} WAS ND パターンに追加された {{site.data.keys.product }} ノード](pureapp_analytics_node.jpg)
 
-4. Configure and launch the pattern deployment.
+4. パターン・デプロイメントを構成し、起動します。
 
-    On the Deploy Pattern page, you can adjust your {{ site.data.keys.mf_analytics }} configuration settings by clicking the {{ site.data.keys.mf_analytics }} component under the Nodes list in the middle column and then expanding MFP Analytics.
+    「パターンのデプロイ」ページで、中央列の「ノード」リストの下の「{{site.data.keys.mf_analytics }}」コンポーネントをクリックし、「MFP Analytics」を展開することにより、{{site.data.keys.mf_analytics }} の構成設定を調整できます。
 
-    For more information about pattern deployment, see the "Configure and launch the pattern deployment" step in the following topics depending on the topology you selected when creating the pattern:
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 8.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 8.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 9 onwards.
+    パターン・デプロイメントについて詳しくは、パターンを作成する時に選択したトポロジーに応じて、以下のトピック内の『パターン・デプロイメントを構成し、起動します』のステップを参照してください。
+    * [単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)のステップ 8。
+    * [複数ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)のステップ 9。
+    * [単一ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)のステップ 8。
+    * [複数ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)のステップ 9。
+    * [WebSphere Application Server Network Deployment サーバーのクラスターでの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)のステップ 9 以降。
 
-5. Access {{ site.data.keys.mf_analytics }} through the {{ site.data.keys.mf_console }}.
+5. {{site.data.keys.mf_console }} を使用して {{site.data.keys.mf_analytics }} にアクセスします。
 
-    For more information, see the "Access the {{ site.data.keys.mf_console }}" step in one of the following topics depending on the topology you selected when creating the pattern:
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 10.
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 10.
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.    
+    詳しくは、パターンを作成する時に選択したトポロジーに応じて、以下のいずれかのトピック内の『以下の手順に従って、{{site.data.keys.mf_console }} にアクセスします』のステップを参照してください。
+    * [単一ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)のステップ 9。
+    * [複数ノードの WebSphere Application Server Liberty プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)のステップ 10。
+    * [単一ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)のステップ 9。
+    * [複数ノードの WebSphere Application Server フル・プロファイル・サーバーへの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)のステップ 10。
+    * [WebSphere Application Server Network Deployment サーバーのクラスターでの {{site.data.keys.mf_server }} のデプロイ](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)のステップ 10 以降。    
     
-## Predefined templates for {{ site.data.keys.mf_system_pattern }}
+## {{site.data.keys.mf_system_pattern }} の定義済みテンプレート
 {: #predefined-templates-for-mobilefirst-system-pattern }
-{{ site.data.keys.mf_system_pattern }} includes predefined templates that you can use to build patterns for the most typical deployment topologies.  
-The following templates are available:
+{{site.data.keys.mf_system_pattern }} には、最も標準的なデプロイメント・トポロジー用のパターンのビルドに使用できる、定義済みテンプレートが含まれています。  
+以下のテンプレートが使用可能です。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to-1 }
-* [{{ site.data.keys.product }} (Liberty single node) template](#mobilefirst-foundation-liberty-single-node-template)
-* [{{ site.data.keys.product }} (Liberty server farm) template](#mobilefirst-foundation-liberty-server-farm-template)
-* [{{ site.data.keys.product }} (WAS single node) template](#mobilefirst-foundation-was-single-node-template)
-* [{{ site.data.keys.product }} (WAS server farm) template](#mobilefirst-foundation-was-server-farm-template)
-* [{{ site.data.keys.product }} (WAS ND) template](#mobilefirst-foundation-was-nd-template)
-* [{{ site.data.keys.mf_app_center }} (Liberty single node) template](#mobilefirst-application-center-liberty-single-node-template)
-* [{{ site.data.keys.mf_app_center }} (WAS single node) template](#mobilefirst-application-center-was-single-node-template)
+* [{{site.data.keys.product }} (Liberty single node) テンプレート](#mobilefirst-foundation-liberty-single-node-template)
+* [{{site.data.keys.product }} (Liberty server farm) テンプレート](#mobilefirst-foundation-liberty-server-farm-template)
+* [{{site.data.keys.product }} (WAS single node) テンプレート](#mobilefirst-foundation-was-single-node-template)
+* [{{site.data.keys.product }} (WAS server farm) テンプレート](#mobilefirst-foundation-was-server-farm-template)
+* [{{site.data.keys.product }} (WAS ND) テンプレート](#mobilefirst-foundation-was-nd-template)
+* [{{site.data.keys.mf_app_center }} (Liberty single node) テンプレート](#mobilefirst-application-center-liberty-single-node-template)
+* [{{site.data.keys.mf_app_center }} (WAS single node) テンプレート](#mobilefirst-application-center-was-single-node-template)
 
-### {{ site.data.keys.product }} (Liberty single node) template
+### {{site.data.keys.product }} (Liberty single node) テンプレート
 {: #mobilefirst-foundation-liberty-single-node-template }
-The following diagram shows the composition of the "MobileFirst Platform (Liberty single node)" template.
+以下の図は、「MobileFirst Platform (Liberty single node)」テンプレートの構成を示しています。
 
-![{{ site.data.keys.product }} (Liberty single node) template](pureapp_templ_Lib_single_node.jpg)
+![{{site.data.keys.product }} (Liberty single node) テンプレート](pureapp_templ_Lib_single_node.jpg)
 
-The {{ site.data.keys.product }} (Liberty single node) template is composed of the following nodes and components:
+{{site.data.keys.product }} (Liberty single node) テンプレートは、以下のノードとコンポーネントで構成されています。
 
-| Node | Components | 
+| ノード | コンポーネント | 
 |------|------------|
-| MobileFirst Platform Server | **Liberty profile server**<br/>WebSphere  Application Server Liberty profile server installation.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration web application including {{ site.data.keys.mf_console }}.<br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MFP Server Application**<br/>{{ site.data.keys.product_adj }} application to be added to the deployment.<br/><br/>**MFP Server Adapter**<br/>. An adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to {{ site.data.keys.mf_server }}. | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2  database server installation.<br/><br/>**MFP Administration DB**<br/>MobileFirst administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+| MobileFirst Platform Server | **Liberty profile server**<br/>WebSphere  Application Server Liberty プロファイル・サーバーのインストール。<br/><br/>**MFP Server Prerequisite**<br/>{{site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Administration**<br/>{{site.data.keys.mf_server }} Administration Web アプリケーション。{{site.data.keys.mf_console }} など。<br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルートの構成。<br/><br/>**MFP Server Application**<br/>デプロイメントに追加される {{site.data.keys.product_adj }} アプリケーション。<br/><br/>**MFP Server Adapter**<br/>デプロイメントに追加されるアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。 | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**MFP Administration DB**<br/>MobileFirst 管理データベース・スキーマのインストール。<br/><br/>**MFP Runtime DB**<br/>{{site.data.keys.product }} ランタイム・データベース・スキーマのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
 
-### {{ site.data.keys.product }} (Liberty server farm) template
+### {{site.data.keys.product }} (Liberty server farm) テンプレート
 {: #mobilefirst-foundation-liberty-server-farm-template }
-The following diagram shows the composition of the "MobileFirst Platform (Liberty server farm)" template.
+以下の図は、「MobileFirst Platform (Liberty server farm)」テンプレートの構成を示しています。
 
-![{{ site.data.keys.product }} (Liberty server farm) template](pureapp_templ_Lib_server_farm.jpg)
+![{{site.data.keys.product }} (Liberty server farm) テンプレート](pureapp_templ_Lib_server_farm.jpg)
 
-The {{ site.data.keys.product }} (Liberty server farm) template is composed of the following nodes and components:
+{{site.data.keys.product }} (Liberty server farm) テンプレートは、以下のノードとコンポーネントで構成されています。
 
-| Node | Components | 
+| ノード | コンポーネント | 
 |------|------------|
-| IHS Server | **IBM  HTTP servers**<br/>IBM HTTP Server installation.<br/><br/>**MFP IHS Configuration**<br/>Automatic configuration of IBM HTTP Server. | 
-| MobileFirst Platform Server | **Liberty profile server**<br/>WebSphere Application Server Liberty profile server installation.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration web application including {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MFP Server Application**<br/>{{ site.data.keys.product_adj }} application to be added to the deployment.<br/><br/>**MFP Server Adapter**<br/>An adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to {{ site.data.keys.mf_server }}.<br/><br/>**Base Scaling Policy**<br/>VM scaling policy: number of VMs. | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+| IHS Server | **IBM  HTTP servers**<br/>IBM HTTP Server のインストール。<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server の自動構成。 | 
+| MobileFirst Platform Server | **Liberty profile server**<br/>WebSphere Application Server Liberty プロファイル・サーバーのインストール。<br/><br/>**MFP Server Prerequisite**<br/>{{site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Administration**<br/>{{site.data.keys.mf_server }} Administration Web アプリケーション。{{site.data.keys.mf_console }} など。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルートの構成。<br/><br/>**MFP Server Application**<br/>デプロイメントに追加する {{site.data.keys.product_adj }} アプリケーション。<br/><br/>**MFP Server Adapter**<br/>デプロイメントに追加するアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。<br/><br/>**Base Scaling Policy**<br/>VM スケーリング・ポリシー: VM の数。 | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**MFP Administration DB**<br/>{{site.data.keys.product_adj }} 管理データベース・スキーマのインストール。<br/><br/>**MFP Runtime DB**<br/>{{site.data.keys.product }} ランタイム・データベース・スキーマのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
 
-### {{ site.data.keys.product }} (WAS single node) template
+### {{site.data.keys.product }} (WAS single node) テンプレート
 {: #mobilefirst-foundation-was-single-node-template }
-The following diagram shows the composition of the "MobileFirst Platform (WAS single node)" template.
+以下の図は、「MobileFirst Platform (WAS single node)」テンプレートの構成を示しています。
 
-![{{ site.data.keys.product }} (WAS single node) template](pureapp_templ_WAS_single_node.jpg)
+![{{site.data.keys.product }} (WAS single node) テンプレート](pureapp_templ_WAS_single_node.jpg)
 
-The {{ site.data.keys.product }} (WAS single node) template is composed of the following nodes and components:
+{{site.data.keys.product }} (WAS single node) テンプレートは、以下のノードとコンポーネントで構成されています。
 
-| Node | Components | 
+| ノード | コンポーネント | 
 |------|------------|
-| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction:<br/>Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration web application including<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration. {{ site.data.keys.mf_console }}.<br/><br/>**{{ site.data.keys.product_adj }} App**<br/>{{ site.data.keys.product_adj }} application to be added to the deployment.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**<br/>{{ site.data.keys.product_adj }} adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to {{ site.data.keys.mf_server }}. | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server フル・プロファイル・サーバーのインストール。<br/><br/>制約事項:<br/>以下のコンポーネント属性の値は変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Server Prerequisite**<br/>{{site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Administration**<br/>{{site.data.keys.mf_server }} Administration Web アプリケーション。{{site.data.keys.mf_console }} など。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルートの構成。<br/><br/>**{{site.data.keys.product_adj }} App**<br/>デプロイメントに追加される {{site.data.keys.product_adj }} アプリケーション。<br/><br/>**{{site.data.keys.product_adj }} Adapter**<br/>デプロイメントに追加される {{site.data.keys.product_adj }} アダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。 | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**MFP Administration DB**<br/>{{site.data.keys.product_adj }} 管理データベース・スキーマのインストール。<br/><br/>**MFP Runtime DB**<br/>{{site.data.keys.product }} ランタイム・データベース・スキーマのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
 
-### {{ site.data.keys.product }} (WAS server farm) template
+### {{site.data.keys.product }} (WAS server farm) テンプレート
 {: #mobilefirst-foundation-was-server-farm-template }
-The following diagram shows the composition of the "MobileFirst Platform (WAS server farm)" template.
+以下の図は、「MobileFirst Platform (WAS server farm)」テンプレートの構成を示しています。
 
-![{{ site.data.keys.product }} (WAS server farm) template](pureapp_templ_WAS_server_farm.jpg)
+![{{site.data.keys.product }} (WAS server farm) テンプレート](pureapp_templ_WAS_server_farm.jpg)
 
-The {{ site.data.keys.product }} (WAS server farm) template is composed of the following nodes and components:
+{{site.data.keys.product }} (WAS server farm) テンプレートは、以下のノードとコンポーネントで構成されています。
 
-| Node | Components | 
+| ノード | コンポーネント | 
 |------|------------|
-| IHS Server | **IBM HTTP servers**<br/>IBM HTTP Server installation.<br/><br/>**MFP IHS Configuration**<br/>Automatic configuration of IBM HTTP Server. | 
-| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration web application including {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**{{ site.data.keys.product_adj }} App**<br/>{{ site.data.keys.product_adj }} application to be added to the deployment.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**An adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to {{ site.data.keys.mf_server }}.<br/><br/>**Base Scaling Policy**<br/>VM scaling policy: number of VMs. | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+| IHS Server | **IBM  HTTP servers**<br/>IBM HTTP Server のインストール。<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server の自動構成。 | 
+| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server フル・プロファイル・サーバーのインストール。<br/><br/>制約事項: 以下のコンポーネント属性の値は変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Server Prerequisite**<br/>{{site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Administration**<br/>{{site.data.keys.mf_server }} Administration Web アプリケーション。{{site.data.keys.mf_console }} など。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルートの構成。<br/><br/>**{{site.data.keys.product_adj }} App**<br/>デプロイメントに追加される {{site.data.keys.product_adj }} アプリケーション。<br/><br/>**{{site.data.keys.product_adj }} Adapter**デプロイメントに追加されるアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。<br/><br/>**Base Scaling Policy**<br/>VM スケーリング・ポリシー: VM の数。 | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**MFP Administration DB**<br/>{{site.data.keys.product_adj }} 管理データベース・スキーマのインストール。<br/><br/>**MFP Runtime DB**<br/>{{site.data.keys.product }} ランタイム・データベース・スキーマのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
 
-### {{ site.data.keys.product }} (WAS ND) template
+### {{site.data.keys.product }} (WAS ND) テンプレート
 {: #mobilefirst-foundation-was-nd-template }
-The following diagram shows the composition of the "MobileFirst Platform (WAS ND)" template.
+以下の図は、「MobileFirst Platform (WAS ND)」テンプレートの構成を示しています。
 
-![{{ site.data.keys.product }} (WAS ND) template](pureapp_templ_WAS_ND.jpg)
+![{{site.data.keys.product }} (WAS ND) テンプレート](pureapp_templ_WAS_ND.jpg)
 
-The {{ site.data.keys.product }} (WAS ND) template is composed of the following nodes and components:
+{{site.data.keys.product }} (WAS ND) テンプレートは、以下のノードとコンポーネントで構成されています。
 
-| Node | Components | 
+| ノード | コンポーネント | 
 |------|------------|
-| IHS Server | **IBM HTTP servers**<br/>IBM HTTP Server installation.<br/><br/>**MFP IHS Configuration**<br/>Automatic configuration of IBM HTTP Server. | 
-| DmgrNode | **Deployment manager**<br/>WebSphere Application Server deployment manager installation.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration web application including {{ site.data.keys.mf_console }}.<br/><br/>**MFP Runtime**<br/>Runtime WAR file.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MFP Application**<br/>{{ site.data.keys.product_adj }} application to be added to the deployment.<br/><br/>**MFP Adapter**<br/>An adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to {{ site.data.keys.mf_server }}. | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
-| CustomNode | **Custom nodes**<br/>Details of the cells and nodes in the clusters of WebSphere Application Server Network Deployment servers.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>Ports that must be open to enable connection to the database server and the LDAP server.<br/><br/>**Base scaling policy**<br/>Number of virtual machine instances required for the chosen topology. | 
+| IHS Server | **IBM  HTTP servers**<br/>IBM HTTP Server のインストール。<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server の自動構成。 | 
+| DmgrNode | **Deployment manager**<br/>WebSphere Application Server デプロイメント・マネージャーのインストール。<br/><br/>制約事項: 以下のコンポーネント属性の値は変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Server Prerequisite**<br/>{{site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Administration**<br/>{{site.data.keys.mf_server }} Administration Web アプリケーション。{{site.data.keys.mf_console }} など。<br/><br/>**MFP Runtime**<br/>ランタイム WAR ファイル。<br/><br/>**MFP Server Runtime Deployment**<br/>ランタイム・コンテキスト・ルートの構成。<br/><br/>**MFP Application**<br/>デプロイメントに追加される {{site.data.keys.product_adj }} アプリケーション。<br/><br/>**MFP Adapter**<br/>デプロイメントに追加されるアダプター。<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{site.data.keys.mf_server }} へのアプリケーションおよびアダプターのデプロイメント。 | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**MFP Administration DB**<br/>{{site.data.keys.product_adj }} 管理データベース・スキーマのインストール。<br/><br/>**MFP Runtime DB**<br/>{{site.data.keys.product }} ランタイム・データベース・スキーマのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
+| CustomNode | **Custom nodes**<br/>WebSphere Application Server Network Deployment サーバーのクラスター内のセルおよびノードの詳細。<br/><br/>制約事項: 以下のコンポーネント属性の値は変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP Open Firewall Ports for WAS**<br/>データベース・サーバーおよび LDAP サーバーへの接続を使用可能にするために開かれている必要があるポート。<br/><br/>**Base scaling policy**<br/>選択されたトポロジーに必要な仮想マシン・インスタンスの数。 | 
 
-### {{ site.data.keys.mf_app_center }} (Liberty single node) template
+### {{site.data.keys.mf_app_center }} (Liberty single node) テンプレート
 {: #mobilefirst-application-center-liberty-single-node-template }
-The following diagram shows the composition of the "MobileFirst Platform Application Center (Liberty single node)" template.
+以下の図は、「MobileFirst Platform Application Center (Liberty single node)」テンプレートの構成を示しています。
 
-![{{ site.data.keys.mf_app_center }} (Liberty single node) template](pureapp_templ_appC_Lib_single_node.jpg)
+![{{site.data.keys.mf_app_center }} (Liberty single node) テンプレート](pureapp_templ_appC_Lib_single_node.jpg)
 
-The {{ site.data.keys.mf_app_center }} (Liberty single node) template is composed of the following nodes and components:
+{{site.data.keys.mf_app_center }} (Liberty single node) テンプレートは、以下のノードとコンポーネントで構成されています。
 
-| Node | Components |
+| ノード | コンポーネント |
 |------|------------|
-| MFP AppCenter DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
-| MFP AppCenter Server | **Liberty profile server**<br/>WebSphere Application Server Liberty profile server installation.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Application Center**<br/>This script package sets up the {{ site.data.keys.mf_app_center }} server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. | 
+| MFP AppCenter DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
+| MFP AppCenter Server | **Liberty profile server**<br/>WebSphere Application Server Liberty プロファイル・サーバーのインストール。<br/><br/>**MFP Server Prerequisite**<br/>{{site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Application Center**<br/>このスクリプト・パッケージは、WebSphere Application Server フル・プロファイル・サーバーまたは WebSphere Application Server Liberty プロファイル・サーバーで {{site.data.keys.mf_app_center }} サーバーをセットアップします。 | 
 
-### {{ site.data.keys.mf_app_center }} (WAS single node) template
+### {{site.data.keys.mf_app_center }} (WAS single node) テンプレート
 {: #mobilefirst-application-center-was-single-node-template }
-The diagram shows the composition of the "MobileFirst Platform Application Center (WAS single node)" template.
+図は、「MobileFirst Platform Application Center (WAS single node)」テンプレートの構成を示しています。
 
-![{{ site.data.keys.mf_app_center }} (WAS single node) template](pureapp_templ_appC_WAS_single_node.jpg)
+![{{site.data.keys.mf_app_center }} (WAS single node) テンプレート](pureapp_templ_appC_WAS_single_node.jpg)
 
-The {{ site.data.keys.mf_app_center }} (WAS single node) template is composed of the following nodes and components:
+{{site.data.keys.mf_app_center }} (WAS single node) テンプレートは、以下のノードとコンポーネントで構成されています。
 
-| Node | Components | 
+| ノード | コンポーネント | 
 |------|------------|
-| MFP AppCenter DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
-| MFP AppCenter Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP WAS SDK Level**<br/>Purpose of this script is to set the required SDK level as the default SDK for the WAS Profile<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Application Center**<br/>This script package sets up the {{ site.data.keys.mf_app_center }} server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. | 
+| MFP AppCenter DB | **Database Server**<br/>DB2 データベース・サーバーのインストール。<br/><br/>**Default add disk**<br/>ディスク・サイズの構成。 | 
+| MFP AppCenter Server | **Standalone server**<br/>WebSphere Application Server フル・プロファイル・サーバーのインストール。<br/><br/>制約事項: 以下のコンポーネント属性の値は変更しないでください。{::nomarkdown}<ul><li>セル名</li><li>ノード名</li><li>プロファイル名</li></ul>{:/}これらの属性のいずれかを変更すると、このテンプレートに基づいたパターンのデプロイメントは失敗します。<br/><br/>**MFP WAS SDK Level**<br/>このスクリプトの目的は、必要な SDK レベルを WAS プロファイルのデフォルト SDK として設定することです。<br/><br/>**MFP Server Prerequisite**<br/>{{site.data.keys.mf_server }} インストールの前提条件。SSL や Ant など。<br/><br/>**MFP Server Application Center**<br/>このスクリプト・パッケージは、WebSphere Application Server フル・プロファイル・サーバーまたは WebSphere Application Server Liberty プロファイル・サーバーで {{site.data.keys.mf_app_center }} サーバーをセットアップします。 | 
 
 
-## Script packages for {{ site.data.keys.mf_server }}
+## {{site.data.keys.mf_server }} のスクリプト・パッケージ
 {: #script-packages-for-mobilefirst-server }
-{{ site.data.keys.mf_system_pattern }} provides script packages that are the building blocks to compose various pattern topologies.  
-The following sections list and describe the parameters for each script package.
+{{site.data.keys.mf_system_pattern }} では、さまざまなパターン・トポロジーを構成するためのビルディング・ブロックであるスクリプト・パッケージが提供されています。  
+以下のセクションでは、各スクリプト・パッケージのパラメーターをリストして説明します。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to-2 }
 * [MFP Administration DB](#mfp-administration-db)
 * [MFP Analytics](#mfp-analytics)
@@ -1649,221 +1620,221 @@ The following sections list and describe the parameters for each script package.
 
 ### MFP Administration DB
 {: #mfp-administration-db }
-This script package sets up the administration database schema in a DB2  database. It must be used with the Database Server (DB2) software component.
+このスクリプト・パッケージは、DB2 データベースで管理データベース・スキーマをセットアップします。これは、Database Server (DB2) ソフトウェア・コンポーネントとともに使用する必要があります。
 
-| Parameter | Description | 
+| パラメーター | 説明 | 
 |-----------|-------------|
-| db_user   | Mandatory. User name to create the Administration database. It can be mapped to the Instance name of the Database Server component. Default value: db2inst1. |
-| db_name	| Mandatory. Database name to create the Administration database. Default value: WLADM. |
-| db_password |	Mandatory. User password to create the Administration database. It can be mapped to the Instance owner password of the Database Server component. Default value: passw0rd (as pattern level parameter). |
-| other\_db\_args | Mandatory. Four parameters to create the Administration database:SQL type, Codeset,Territory and Collate. Default value: DB2 UTF-8 US SYSTEM. |
+| db_user   | 必須。管理データベースを作成するためのユーザー名。これは、Database Server コンポーネントのインスタンス名にマップできます。デフォルト値: db2inst1。 |
+| db_name	| 必須。管理データベースを作成するためのデータベース名。デフォルト値: WLADM。 |
+| db_password |	必須。管理データベースを作成するためのユーザー・パスワード。これは、Database Server コンポーネントのインスタンス所有者パスワードにマップできます。デフォルト値: passw0rd (パターン・レベル・パラメーターとして)。 |
+| other\_db\_args | 必須。管理データベースを作成するための 4 つのパラメーター: SQL type、Codeset、Territory、および Collate。デフォルト値: DB2 UTF-8 US SYSTEM。 |
 
 ### MFP Analytics
 {: #mfp-analytics }
-This script package sets up {{ site.data.keys.mf_analytics_server }} in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server, and sets up the connection and mapping of Analytics administration security roles to an external TDS or AD server. It must be used with the WebSphere Application Server Liberty profile server or WebSphere Application Server full profile (display name: Standalone server) software component . It must be installed after the Liberty profile or Standalone server software component.
+このスクリプト・パッケージは、WebSphere Application Server フル・プロファイル・サーバーまたは WebSphere Application Server Liberty プロファイル・サーバーで {{site.data.keys.mf_analytics_server }}をセットアップします。また、外部の TDS サーバーまたは AD サーバーへの接続およびそうしたサーバーへの Analytics 管理セキュリティー・ロールのマッピングをセットアップします。これは、WebSphere Application Server Liberty プロファイル・サーバーまたは WebSphere Application Server フル・プロファイル (表示名: Standalone server) ソフトウェア・コンポーネントとともに使用する必要があります。これは、Liberty profile または Standalone server ソフトウェア・コンポーネントの後にインストールする必要があります。
 
-| Parameter | Description | 
+| パラメーター | 説明 | 
 |-----------|-------------|
-| WAS_ROOT  | Mandatory.{::nomarkdown}<ul><li>If Analytics is installed on WebSphere Application Server Liberty profile, specify the installation directory of the WebSphere Application Server Liberty profile for Analytics.</li><li>If Analytics is installed on WebSphere Application Server full profile, specify the installation directory of the WebSphere Application Server full profile for Analytics.</li></ul>{:/} | 
-| HEAP\_MIN\_SIZE | WebSphere Application Server full profile only.<br/><br/>Depending on the amount of Analytics data that is generated, more memory is required for more data handling. Set this to allow larger minimum heap size for WebSphere Application Server full profile. Make sure the memory size specified in the Core OS component of {{ site.data.keys.mf_analytics }} is larger than this. It is recommended to set the same value as HEAP_MAX_SIZE.<br/><br/>Default value: 4096 (MB). | 
-| HEAP\_MAX\_SIZE	| WebSphere Application Server full profile only.<br/><br/>Depending on the amount of Analytics data that is generated, more memory is required for more data handling. Set this to allow larger maximum heap size for WebSphere Application Server full profile. Make sure the memory size specified in the Core OS component of {{ site.data.keys.mf_analytics }} is larger than this. It is recommended to set the same value asHEAP_MIN_SIZE.<br/><br/>Default value: 4096 (MB). | 
-| WAS\_admin\_user | WebSphere Application Server full profile only.<br/><br/>WebSphere Application Server full profile admin user for the Analytics server. For WebSphere Application Server Liberty profile, leave the default value unchanged. | 
-| WAS\_admin\_password | WebSphere Application Server full profile only.<br/><br/>WebSphere Application Server full profile admin user password for the Analytics server. For WebSphere Application Server Liberty profile, leave the default value unchanged. | 
-| admin_user | Mandatory.{::nomarkdown}<ul><li>If LDAP repository not enabled, create a default administration user for {{ site.data.keys.mf_analytics_console }} protection.</li><li>If LDAP repository is enabled, specify the user name that has {{ site.data.keys.mf_analytics }} administration privilege. The value is stored in the LDAP repository.</li></ul> |
-| admin_password | Mandatory.<ul><li>If an LDAP repository is not enabled, specify the password for the default administration user for {{ site.data.keys.mf_analytics_console }} protection.</li><li>If an LDAP repository is enabled, specify the admin user password. The value is stored in the LDAP repository.</li></ul>{:/} | 
-| LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry:<br/><br/>None<br/>LDAP connection is disabled. When this is set, all the other LDAP parameters are treated as placeholders only.<br/><br/>TivoliDirectoryServer<br/>Select this if the LDAP repository is an IBM  Tivoli  Directory Server.<br/><br/>ActiveDirectory<br/>Select this if the LDAP repository is a Microsoft Active Directory.<br/><br/>Default value: None. | 
-| LDAP_IP | (LDAP parameter). LDAP server IP address. | 
-| LDAP\_SSL\_PORT | (LDAP parameter) LDAP port for secure connection. | 
-| LDAP_PORT | (LDAP parameter) LDAP port for non-secure connection. | 
-| BASE_DN | (LDAP parameter) Base DN. | 
-| BIND_DN | (LDAP parameter) Bind DN. | 
-| BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
-| REQUIRE_SSL | (LDAP parameter) Set it to true for secure connection to LDAP server.{::nomarkdown}<ul><li>When it is true, LDAP_SSL_PORT is used and CERT_FILE_PATH is required to locate the certification file of the LDAP server.</li><li>When it is false, LDAP_PORT is used.</li></ul>{:/}Default value: false. | 
-| USER_FILTER | (LDAP parameter) LDAP user filter that searches the existing user registry for users. | 
-| GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
-| LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
-| CERT\_FILE\_PATH | (LDAP parameter) Target path of the uploaded LDAP server certification. It is mandatory when REQUIRE_SSL is set to true. | 
-| mfpadmin | (LDAP parameter) Admin role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpdeployer | (LDAP parameter) Deployer role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpmonitor | (LDAP parameter) Monitor role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpoperator | (LDAP parameter) Operator role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+| WAS_ROOT  | 必須。{::nomarkdown}<ul><li>Analytics が WebSphere Application Server Liberty プロファイルにインストールされている場合は、Analytics 用の WebSphere Application Server Liberty プロファイルのインストール・ディレクトリーを指定します。</li><li>Analytics が WebSphere Application Server フル・プロファイルにインストールされている場合は、Analytics 用の WebSphere Application Server フル・プロファイルのインストール・ディレクトリーを指定します。</li></ul>{:/} | 
+| HEAP\_MIN\_SIZE | WebSphere Application Server フル・プロファイルにのみ適用。<br/><br/>生成される Analytics データの量に応じて、データ処理の増加に対応するために、より多くのメモリーが必要になります。この値は、WebSphere Application Server フル・プロファイルの最小ヒープ・サイズを大きくすることができるようにするために設定します。{{site.data.keys.mf_analytics }} の Core OS コンポーネントに指定されているメモリー・サイズが、これより大きくなるようにしてください。HEAP_MAX_SIZE と同じ値を設定することが推奨されます。<br/><br/>デフォルト値: 4096 (MB)。 | 
+| HEAP\_MAX\_SIZE	| WebSphere Application Server フル・プロファイルにのみ適用。<br/><br/>生成される Analytics データの量に応じて、データ処理の増加に対応するために、より多くのメモリーが必要になります。この値は、WebSphere Application Server フル・プロファイルの最大ヒープ・サイズを大きくすることができるようにするために設定します。{{site.data.keys.mf_analytics }} の Core OS コンポーネントに指定されているメモリー・サイズが、これより大きくなるようにしてください。HEAP_MIN_SIZE と同じ値を設定することが推奨されます。<br/><br/>デフォルト値: 4096 (MB)。 | 
+| WAS\_admin\_user | WebSphere Application Server フル・プロファイルにのみ適用。<br/><br/>Analytics サーバー用の WebSphere Application Server フル・プロファイルの管理ユーザー。WebSphere Application Server Liberty プロファイルの場合、デフォルト値を未変更のままにします。 | 
+| WAS\_admin\_password | WebSphere Application Server フル・プロファイルにのみ適用。<br/><br/>Analytics サーバー用の WebSphere Application Server フル・プロファイルの管理ユーザー・パスワード。WebSphere Application Server Liberty プロファイルの場合、デフォルト値を未変更のままにします。 | 
+| admin_user | 必須。{::nomarkdown}<ul><li>LDAP リポジトリーが使用可能になっていない場合は、{{site.data.keys.mf_analytics_console }}保護のためのデフォルト管理ユーザーを作成します。</li><li>LDAP リポジトリーが使用可能になっている場合は、{{site.data.keys.mf_analytics }} 管理特権を持つユーザー名を指定します。この値は、LDAP リポジトリーに格納されます。</li></ul> |
+| admin_password | 必須。<ul><li>LDAP リポジトリーが使用可能になっていない場合は、{{site.data.keys.mf_analytics_console }}保護に使用されるデフォルト管理ユーザーのパスワードを指定します。</li><li>LDAP リポジトリーが使用可能になっている場合は、管理ユーザーのパスワードを指定します。この値は、LDAP リポジトリーに格納されます。</li></ul>{:/} | 
+| LDAP_TYPE | (LDAP パラメーター) 必須。ユーザー・レジストリーの LDAP サーバー・タイプ。<br/><br/>None<br/>LDAP  接続は使用不可です。これが設定されている場合、他のすべての LDAP パラメーターはプレースホルダーのみとして扱われます。<br/><br/>TivoliDirectoryServer<br/>LDAP リポジトリーが IBM Tivoli Directory Server の場合、これを選択します。<br/><br/>ActiveDirectory<br/>LDAP リポジトリーが Microsoft Active Directory の場合、これを選択します。 <br/><br/>デフォルト値: None。 | 
+| LDAP_IP | (LDAP パラメーター) LDAP サーバーの IP アドレス。 | 
+| LDAP\_SSL\_PORT | (LDAP パラメーター) セキュア接続のための LDAP ポート。 | 
+| LDAP_PORT | (LDAP パラメーター) 非セキュア接続のための LDAP ポート。 | 
+| BASE_DN | (LDAP パラメーター) ベース DN。 | 
+| BIND_DN | (LDAP パラメーター) バインド DN。 | 
+| BIND_PASSWORD | (LDAP パラメーター) バインド DN のパスワード。 | 
+| REQUIRE_SSL | (LDAP パラメーター) LDAP サーバーへのセキュア接続のためには、これを true に設定します。{::nomarkdown}<ul><li>true の場合、LDAP_SSL_PORT が使用され、LDAP サーバーの証明ファイルを見つけるために CERT_FILE_PATH が必要です。</li><li>false の場合、LDAP_PORT が使用されます。</li></ul>{:/}デフォルト値: false。 | 
+| USER_FILTER | (LDAP パラメーター) 既存のユーザー・レジストリーでユーザーを検索する LDAP ユーザー・フィルター。 | 
+| GROUP_FILTER | (LDAP パラメーター) 既存のユーザー・レジストリーでグループを検索する LDAP グループ・フィルター。 | 
+| LDAP\_REPOSITORY\_NAME | (LDAP パラメーター) LDAP サーバー名。 | 
+| CERT\_FILE\_PATH | (LDAP パラメーター) アップロードした LDAP サーバー証明のターゲット・パス。REQUIRE_SSL が true に設定されている場合は、必須です。 | 
+| mfpadmin | (LDAP パラメーター) {{site.data.keys.mf_server }} の管理者役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
+| mfpdeployer | (LDAP パラメーター) {{site.data.keys.mf_server }} のデプロイヤー役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
+| mfpmonitor | (LDAP パラメーター) {{site.data.keys.mf_server }} のモニター役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
+| mfpoperator | (LDAP パラメーター) {{site.data.keys.mf_server }} のオペレーター役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
 
 ### MFP IHS Configuration
 {: #mfp-ihs-configuration }
-This script package configures the IBM HTTP Server to work as a load balancer for multiple instances of {{ site.data.keys.mf_server }}. It must be used with the IBM HTTP servers software component . It must be installed after the IBM HTTP servers software component.
+このスクリプト・パッケージは、{{site.data.keys.mf_server }} の複数のインスタンスのロード・バランサーとして動作するように IBM HTTP Server を構成します。これは、IBM HTTP Server ソフトウェア・コンポーネントとともに使用する必要があります。これは、IBM HTTP Server ソフトウェア・コンポーネントの後にインストールする必要があります。
 
-| Parameter | Description | 
+| パラメーター | 説明 | 
 |-----------|-------------|
-| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node, or installation directory of Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attribute `install_directory` of Liberty profile server, Standalone server, or Deployment manager. | 
-| profile_name | Optional. The profile name that contains the files for the WebSphere Application Server runtime environment.<br/><br/>In the pattern templates, it is mapped to output attribute **dmgr\_profile\_name** of Deployment manager or sa_profile_name of Standalone server. | 
-| runtime\_contextRoot\_list | Mandatory. Runtime context root list that allows IHS to route requests that have matching context roots. Use semicolons (;) to separate the runtime context roots. For example, HelloMobileFirst;HelloWorld<br/><br/>Important: It must align with the context root specified in the MFP Server Runtime Deployment. Otherwise, IHS cannot correctly route requests that contain the Runtime context root. | 
-| http_port | Mandatory. Open the firewall port in the IHS Server node to allow the HTTP transport from IHS Server to {{ site.data.keys.mf_server }}. Must be 9080. | 
-| https_port | Mandatory. Open the firewall port in the IHS Server node to allow the HTTPS transport from IHS Server to {{ site.data.keys.mf_server }}. Must be 9443. | 
-| server_hostname | Mandatory. Host name of IBM HTTP servers. It is mapped to the host output attribute of IBM HTTP servers in the pattern template. | 
+| WAS_ROOT | 必須。MobileFirst Platform Server ノードの WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルのインストール・ディレクトリー、または DmgrNode ノードの Deployment Manager のインストール・ディレクトリー。パターン・テンプレートで、これは、Liberty profile server、Standalone server、または Deployment Manager の `install_directory` 出力属性にマップされます。 | 
+| profile_name | オプション。WebSphere Application Server ランタイム環境のファイルを含むプロファイル名。<br/><br/>パターン・テンプレートで、これは、Deployment Manager の出力属性 **dmgr\_profile\_name** または Standalone server の出力属性 sa_profile_name にマップされます。 | 
+| runtime\_contextRoot\_list | 必須。一致するコンテキスト・ルートを持つ要求を IHS がルーティングできるようにするランタイム・コンテキスト・ルート・リスト。セミコロン (;) を使用して、ランタイム・コンテキスト・ルートを区切ります。例えば、HelloMobileFirst;HelloWorld などです。<br/><br/>重要: これは、MFP Server ランタイム・デプロイメントに指定されたコンテキスト・ルートに一致している必要があります。そうでない場合、IHS は、ランタイム・コンテキスト・ルートを含む要求を正しくルーティングできません。 | 
+| http_port | 必須。IHS Server ノードのファイアウォール・ポートを開いて、IHS Server から {{site.data.keys.mf_server }} への HTTP トランスポートを可能にします。 9080 にする必要があります。 | 
+| https_port | 必須。IHS Server ノードのファイアウォール・ポートを開いて、IHS Server から {{site.data.keys.mf_server }} への HTTPS トランスポートを可能にします。 9443 にする必要があります。 | 
+| server_hostname | 必須。IBM HTTP Server のホスト名。これは、パターン・テンプレートで IBM HTTP Server の host 出力属性にマップされます。 | 
 
 ### MFP Open Firewall Ports for WAS
 {: #mfp-open-firewall-ports-for-was }
-This script package is only applicable for Custom nodes in the {{ site.data.keys.product_adj }} (WAS ND) pattern template (WebSphere Application Server Network Deployment). Its purpose is to open the necessary firewall ports of the Custom nodes that host the {{ site.data.keys.product_adj }} Administration Services and runtime. As well as defining some WebSphere Application Server predefined ports, you need to specify the other ports for connecting to the DB2 server and the LDAP server.
+このスクリプト・パッケージは、{{site.data.keys.product_adj }} (WAS ND) パターン・テンプレート (WebSphere Application Server Network Deployment) のカスタム・ノードに対してのみ適用できます。この目的は、{{site.data.keys.product_adj }} 管理サービスおよびランタイムをホストするカスタム・ノードの必要なファイアウォール・ポートを開くことです。一部の WebSphere Application Server の事前定義ポートを定義することに加え、DB2 サーバーおよび LDAP サーバーに接続するための他のポートを指定する必要があります。
 
-| Parameter | Description | 
+| パラメーター | 説明 | 
 |-----------|-------------|
-| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Network Deployment Custom nodes in the CustomNode node. In the pattern templates, it is mapped to output attribute install_directory of Custom nodes server. |
-| profile_name | Mandatory. The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute cn_profile_name of Custom nodes. | 
-| WAS\_admin\_user | Mandatory. It is mapped to the was_admin output attribute of Custom nodes in the pattern template. | 
-| Ports	| Mandatory. Other ports that need to be opened for connecting to DB2 server and LDAP server (optional). Port values can be separated by semicolons; for example, '50000;636'<br/><br/>Default value: 50000. | 
+| WAS_ROOT | 必須。CustomNode ノード内の WebSphere Application Server Network Deployment カスタム・ノードのインストール・ディレクトリー。パターン・テンプレートで、これは、Custom nodes server の install_directory 出力属性にマップされます。 |
+| profile_name | 必須。WebSphere Application Server ランタイム環境のファイルを含むプロファイル名。パターン・テンプレートで、これは、Custom nodes の cn_profile_name 出力属性にマップされます。 | 
+| WAS\_admin\_user | 必須。これは、パターン・テンプレートの Custom nodes の was_admin 出力属性にマップされます。 | 
+| Ports	| 必須。DB2 サーバーおよび LDAP サーバー ( オプション ) に接続するために開く必要があるその他のポート。ポート値はセミコロンで区切ることができます。例えば、「50000;636」<br/><br/>デフォルト値: 50000。 | 
 
 ### MFP WAS SDK Level
 {: #mfp-was-sdk-level }
-This script package is only applicable where ever the WAS Profiles are available in the pattern template (WebSphere Application Server Network Deployment).
+このスクリプト・パッケージは、パターン・テンプレート (WebSphere Application Server Network Deployment) で WAS プロファイルが使用可能な場合にのみ適用できます。
 
-| Parameter | Description | 
+| パラメーター | 説明 | 
 |-----------|-------------|
-| WAS_ROOT | Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node or the installation directory of the Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attribute **install_directory** of Liberty profile server, Standalone server, or Deployment manager. |
-| profile_name | The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute **dmgr\_profile\_name** of Deployment manager or **sa\_profile\_name** of Standalone server. | 
-| SDK_name | Name of the SDK that needs to be enabled for this WebSphere installation | 
+| WAS_ROOT | MobileFirst Platform Server ノードの WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルのインストール・ディレクトリー、または DmgrNode の Deployment Manager のインストール・ディレクトリー。パターン・テンプレートで、これは、Liberty profile server、Standalone server、または Deployment Manager の **install_directory** 出力属性にマップされます。 |
+| profile_name | WebSphere Application Server ランタイム環境のファイルを含むプロファイル名。パターン・テンプレートで、これは、Deployment Manager の出力属性 **dmgr\_profile\_name** または Standalone server の出力属性 **sa\_profile\_name** にマップされます。 | 
+| SDK_name | この WebSphere のインストールのために使用可能にする必要がある SDK の名前。 | 
 
 ### MFP Runtime DB
 {: #mfp-runtime-db }
-This script package sets up the runtime database schema in a DB2 database.
+このスクリプト・パッケージは、DB2 データベースでランタイム・データベース・スキーマをセットアップします。
 
-| Parameter | Description | 
+| パラメーター | 説明 | 
 |-----------|-------------|
-| db_user | Mandatory. User name to create the Runtime database. It can be mapped to the Instance name of the Database Server component. Default value: db2inst1. | 
-| db_name | Mandatory. Database name to create the Runtime database. Default value: WLRTIME. | 
-| db_password | Mandatory. User password to create the Runtime database. It can be mapped to the Instance owner password of the Database Server component. Default value: passw0rd (as pattern level parameter). | 
-| other\_db\_args |	Mandatory. Four parameters to create the Runtime database:SQL type, Codeset,Territory and Collate. Default value: DB2 UTF-8 US SYSTEM. | 
+| db_user | 必須。ランタイム・データベースを作成するためのユーザー名。これは、Database Server コンポーネントのインスタンス名にマップできます。デフォルト値: db2inst1。 | 
+| db_name | 必須。ランタイム・データベースを作成するためのデータベース名。デフォルト値: WLRTIME。 | 
+| db_password | 必須。ランタイム・データベースを作成するためのユーザー・パスワード。これは、Database Server コンポーネントのインスタンス所有者パスワードにマップできます。デフォルト値: passw0rd (パターン・レベル・パラメーターとして)。 | 
+| other\_db\_args |	必須。ランタイム・データベースを作成するための 4 つのパラメーター: SQL type、Codeset、Territory、および Collate。デフォルト値: DB2 UTF-8 US SYSTEM。 | 
 
 ### MFP Server Administration
 {: #mfp-server-administration }
-This script package sets up the {{ site.data.keys.product_adj }} Administration component (including the {{ site.data.keys.mf_console }}) in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server, and setting up the connection and mapping administration security roles to an external TDS or AD server.
+このスクリプト・パッケージは、WebSphere Application Server フル・プロファイル・サーバーまたは WebSphere Application Server Liberty プロファイル・サーバーで {{site.data.keys.product_adj }} 管理コンポーネント ({{site.data.keys.mf_console }} を含む) をセットアップします。また、外部の TDS サーバーまたは AD サーバーへの接続をセットアップし、管理セキュリティー・ロールを外部の TDS サーバーまたは AD サーバーにマッピングします。
 
-The script package must be used with the WebSphere Application Server Liberty profile server software component or the WebSphere Application Server full profile software component (display name: Standalone server), and must be installed after the MFP Server Prerequisite but prior to any other MFP * Script Packages in the {{ site.data.keys.mf_server }} VM node.
+このスクリプト・パッケージは、WebSphere Application Server Liberty プロファイル・サーバー・ソフトウェア・コンポーネントまたは WebSphere Application Server フル・プロファイル・ソフトウェア・コンポーネント (表示名: Standalone server) とともに使用する必要があり、また MFP Server Prerequisite の後、かつ {{site.data.keys.mf_server }} VM ノード内の他の MFP * スクリプト・パッケージの前にインストールする必要があります。
 
-| Parameter | Description |
+| パラメーター | 説明 |
 |-----------|-------------|
-| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node or the installation directory of the Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attribute `install_directory` of Liberty profile server, Standalone server, or Deployment manager. | 
-| profile_name | Optional. The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute dmgr_profile_name of Deployment manager or sa_profile_name of Standalone server. | 
-| NUMBER\_OF\_CLUSTERMEMBERS | Optional. Only applicable for the {{ site.data.keys.product }} (WAS ND) pattern template. It specifies the number of cluster members for the cluster to deploy the MFP administration service. Default value: 2. | 
-| db_user | Mandatory. User name that created the Administration database. It is mapped to the db_user output attribute of the MFP Administration DB script package in the pattern template. | 
-| db_name | Mandatory. Name of the Administration database. It is mapped to the `db_name` output attribute of the MFP Administration DB script package in the pattern template. | 
-| db_password |	Mandatory. Password for user who created the Administration database. It is mapped to the db_password output attribute of the MFP Administration DB script package in the pattern template.| 
-| db_ip | IP address of the DB server where the Administration database is installed. It is mapped to the IP output attribute of the Database Server software component in the pattern template. | 
-| db_port |  Port number of the DB server where the Administration database is installed. It is mapped to the instancePort output attribute of the Database Server software component in the pattern template. | 
-| admin_user | User name that has {{ site.data.keys.mf_server }} administration privilege.{::nomarkdown}<ul><li>When LDAP_TYPE is None, create the default admin user.</li><li>When LDAP_TYPE is set to TivoliDirectoryServer or ActiveDirectory and other LDAP parameters are specified according to your LDAP server configuration, the admin_user value should be taken from the configured LDAP user repository. Not required when the {{ site.data.keys.mf_server }} is to be deployed on a single node of WebSphere Application Server full profile.</li></ul> | 
-| admin_password | Password of the admin user.<ul><li>When LDAP_TYPE is None, create the default admin user password.</li><li>When an external LDAP server is configured, the user password is taken from the LDAP repository. Not required when the {{ site.data.keys.mf_server }} is to be deployed on a single node of WebSphere Application Server full profile.</li></ul> | 
-| install_console | Whether the {{ site.data.keys.mf_console }} is to be deployed in the MobileFirst Platform Server node. Default value: Selected. (Check box) |
-| WAS\_admin\_user | Optional. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to the was_adminoutput attribute of Standalone server in the pattern template. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin output attribute of Deployment manager in the pattern template. | 
-| WAS\_admin\_password | Optional. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to the was\_admin\_password output attribute of Standalone server in the pattern template. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server Network Deployment, it is mapped to the was\_admin\_password output attribute of Deployment manager in the pattern template. | 
-| server_hostname | Mandatory. Host name of the {{ site.data.keys.mf_server }} or Deployment manager. Mapped to the host output attribute of Liberty profile server, Standalone Server, or Deployment manager. | 
-| server\_farm\_mode | Mandatory. Whether the {{ site.data.keys.mf_server }} is to be deployed in server farm mode. Must be selected for a server farm topology and must be cleared for a standalone topology. Default value: set according to the topology defined in the pattern template. | 
-| webserver_ip | Optional. When IBM HTTP servers is deployed in the pattern template, this parameter is mapped to the IP output attribute of IBM HTTP servers. | 
-| LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry. One of the following values:<ul>None – LDAP connection is disabled. When this value is selected, all the other LDAP parameters are treated as placeholders only.</li><li>TivoliDirectoryServer: Select this value if the LDAP repository is IBM Tivoli Directory Server</li><li>ActiveDirectory: Select this value if the LDAP repository is Microsoft Active Directory</li></ul>{:/}Default value: None. | 
-| LDAP_IP | (LDAP parameter) LDAP server IP address. | 
-| LDAP_SSL_PORT | (LDAP parameter) LDAP port for secure connection. | 
-| LDAP_PORT | (LDAP parameter) LDAP port for non-secure connection. | 
-| BASE_DN | (LDAP parameter) Base DN. | 
-| BIND_DN | (LDAP parameter) Bind DN. | 
-| BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
-| REQUIRE_SSL | (LDAP parameter) Set to true for secure connection to LDAP server.{::nomarkdown}<ul><li>When true, the LDAP\_SSL\_PORT is used and CERT\_FILE\_PATH is required to locate the certification file of the LDAP server.</li><li>When false, LDAP_PORT is used.</li></ul>{:/}Default value: false. | 
-| USER_FILTER | (LDAP parameter) User filter that searches the existing user registry for users. | 
-| GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
-| LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
-| CERT\_FILE\_PATH | (LDAP parameter) Target path of the uploaded LDAP server certification. It is mandatory when REQUIRE_SSL is set to true. | 
-| mfpadmin | Admin role for {{ site.data.keys.mf_server }}. One of the following values:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpdeployer | (LDAP parameter) Deployer role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpmonitor | (LDAP parameter) Monitor role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpoperator | (LDAP parameter) Operator role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+| WAS_ROOT | 必須。MobileFirst Platform Server ノードの WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルのインストール・ディレクトリー、または DmgrNode の Deployment Manager のインストール・ディレクトリー。パターン・テンプレートで、これは、Liberty profile server、Standalone server、または Deployment Manager の `install_directory` 出力属性にマップされます。 | 
+| profile_name | オプション。WebSphere Application Server ランタイム環境のファイルを含むプロファイル名。パターン・テンプレートで、これは、Deployment Manager の出力属性 dmgr_profile_name または Standalone server の出力属性 sa_profile_name にマップされます。 | 
+| NUMBER\_OF\_CLUSTERMEMBERS | オプション。{{site.data.keys.product }} (WAS ND) パターン・テンプレートの場合にのみ適用されます。これは、MFP 管理サービスをデプロイするクラスターのクラスター・メンバーの数を指定します。 デフォルト値: 2。 | 
+| db_user | 必須。管理データベースを作成したユーザー名。これは、パターン・テンプレートで、MFP Administration DB スクリプト・パッケージの db_user 出力属性にマップされます。 | 
+| db_name | 必須。管理データベースの名前。これは、パターン・テンプレートで、MFP Administration DB スクリプト・パッケージの `db_name` 出力属性にマップされます。 | 
+| db_password |	必須。管理データベースを作成したユーザーのパスワード。これは、パターン・テンプレートで、MFP Administration DB スクリプト・パッケージの db_password 出力属性にマップされます。| 
+| db_ip | 管理データベースがインストールされている DB サーバーの IP アドレス。これは、パターン・テンプレートで、Database Server ソフトウェア・コンポーネントの IP 出力属性にマップされます。 | 
+| db_port |  管理データベースがインストールされている DB サーバーのポート番号。これは、パターン・テンプレートで、Database Server ソフトウェア・コンポーネントの instancePort 出力属性にマップされます。 | 
+| admin_user | {{site.data.keys.mf_server }} 管理特権を持つユーザー名。{::nomarkdown}<ul><li>LDAP_TYPE が None の場合、デフォルト管理ユーザーを作成します。</li><li>LDAP_TYPE が TivoliDirectoryServer または ActiveDirectory に設定されていて、他の LDAP パラメーターがご使用の LDAP サーバー構成に従って指定されている場合、admin_user の値は、構成されている LDAP ユーザー・リポジトリーから取得する必要があります。{{site.data.keys.mf_server }} を WebSphere Application Server フル・プロファイルの単一ノードにデプロイする場合には、必要ありません。</li></ul> | 
+| admin_password | 管理ユーザーのパスワード。<ul><li>LDAP_TYPE が None の場合、デフォルト管理ユーザー・パスワードを作成します。</li><li>外部 LDAP サーバーが構成されている場合、ユーザー・パスワードは、LDAP リポジトリーから取得されます。{{site.data.keys.mf_server }} を WebSphere Application Server フル・プロファイルの単一ノードにデプロイする場合には、必要ありません。</li></ul> | 
+| install_console | {{site.data.keys.mf_console }} を MobileFirst Platform Server ノードにデプロイするかどうか。デフォルト値: Selected。(チェック・ボックス) |
+| WAS\_admin\_user | オプション。{{site.data.keys.mf_server }} が WebSphere Application Server フル・プロファイルにデプロイされる場合、これは、パターン・テンプレートで、Standalone server の was_admin 出力属性にマップされます。{{site.data.keys.mf_server }} が WebSphere Application Server Network Deployment にデプロイされる場合、これは、パターン・テンプレートで Deployment Manager の was_admin 出力属性にマップされます。 | 
+| WAS\_admin\_password | オプション。{{site.data.keys.mf_server }} が WebSphere Application Server フル・プロファイルにデプロイされる場合、これは、パターン・テンプレートで、Standalone server の was\_admin\_password 出力属性にマップされます。{{site.data.keys.mf_server }} が WebSphere Application Server Network Deployment にデプロイされる場合、これは、パターン・テンプレートで Deployment Manager の was\_admin\_password 出力属性にマップされます。 | 
+| server_hostname | 必須。{{site.data.keys.mf_server }} または Deployment Manager のホスト名。Liberty profile server、Standalone Server、または Deployment Manager の host output 属性にマップされます。 | 
+| server\_farm\_mode | 必須。{{site.data.keys.mf_server }} をサーバー・ファーム・モードでデプロイするかどうか。サーバー・ファーム・トポロジーの場合は選択する必要があり、スタンドアロン・トポロジーの場合はクリアする必要があります。デフォルト値: パターン・テンプレートに定義されているトポロジーに従って設定する。 | 
+| webserver_ip | オプション。IBM HTTP Server がパターン・テンプレートでデプロイされた場合、このパラメーターは IBM HTTP Server の IP 出力属性にマップされます。 | 
+| LDAP_TYPE | (LDAP パラメーター) 必須。ユーザー・レジストリーの LDAP サーバー・タイプ。以下のいずれかの値になります。<ul>None – LDAP 接続は使用不可です。この値が選択されている場合、他のすべての LDAP パラメーターはプレースホルダーのみとして扱われます。</li><li>TivoliDirectoryServer: LDAP リポジトリーが IBM Tivoli Directory Server の場合、この値を選択します。</li><li>ActiveDirectory: LDAP リポジトリーが Microsoft Active Directory の場合、この値を選択します。</li></ul>{:/}    デフォルト値: None。 | 
+| LDAP_IP | (LDAP パラメーター) LDAP サーバーの IP アドレス。 | 
+| LDAP_SSL_PORT | (LDAP パラメーター) セキュア接続のための LDAP ポート。 | 
+| LDAP_PORT | (LDAP パラメーター) 非セキュア接続のための LDAP ポート。 | 
+| BASE_DN | (LDAP パラメーター) ベース DN。 | 
+| BIND_DN | (LDAP パラメーター) バインド DN。 | 
+| BIND_PASSWORD | (LDAP パラメーター) バインド DN のパスワード。 | 
+| REQUIRE_SSL | (LDAP パラメーター) LDAP サーバーへのセキュア接続のためには、true に設定します。{::nomarkdown}<ul><li>true の場合、LDAP\_SSL\_PORT が使用され、LDAP サーバーの証明ファイルを見つけるために CERT\_FILE\_PATH が必要です。</li><li>false の場合、LDAP_PORT が使用されます。</li></ul>{:/}デフォルト値: false。 | 
+| USER_FILTER | (LDAP パラメーター) 既存のユーザー・レジストリーでユーザーを検索するユーザー・フィルター。 | 
+| GROUP_FILTER | (LDAP パラメーター) 既存のユーザー・レジストリーでグループを検索する LDAP グループ・フィルター。 | 
+| LDAP\_REPOSITORY\_NAME | (LDAP パラメーター) LDAP サーバー名。 | 
+| CERT\_FILE\_PATH | (LDAP パラメーター) アップロードした LDAP サーバー証明のターゲット・パス。REQUIRE_SSL が true に設定されている場合は、必須です。 | 
+| mfpadmin | {{site.data.keys.mf_server }} の管理者役割。以下のいずれかの値になります。<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
+| mfpdeployer | (LDAP パラメーター) {{site.data.keys.mf_server }} のデプロイヤー役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
+| mfpmonitor | (LDAP パラメーター) {{site.data.keys.mf_server }} のモニター役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
+| mfpoperator | (LDAP パラメーター) {{site.data.keys.mf_server }} のオペレーター役割:<br/><br/>None<br/>ユーザーなし。<br/><br/>AllAuthenticatedUsers<br/>認証済みユーザー<br/><br/>Everyone<br/>すべてのユーザー。<br/><br/>デフォルト値: None。 | 
 
 ### MFP Server Application Adapter Deployment
 {: #mfp-server-application-adapter-deployment }
-This script package deploys applications and adapters to the {{ site.data.keys.mf_server }}. It must be installed after the corresponding MFP Server Runtime Deployment script package that installed the runtime where the application and adapter are to be deployed.
+このスクリプト・パッケージは、アプリケーションおよびアダプターを {{site.data.keys.mf_server }} にデプロイします。これは、アプリケーションおよびアダプターをデプロイするランタイムをインストールした、対応する MFP Server Runtime Deployment スクリプト・パッケージの後にインストールする必要があります。
 
-| Parameter | Description | 
+| パラメーター | 説明 | 
 |-----------|-------------|
-| artifact_dir | Mandatory. Installation path of application and adapter for deployment. It is mapped to the target_pathoutput attribute of the {{ site.data.keys.product_adj }} App component in the pattern template. | 
-| admin_context | Mandatory. Must be mfpadmin. | 
-| runtime_context | Mandatory. Align with the runtime context root specified in the MFP Server Runtime Deployment component. It is mapped to runtime_contextRoot output attribute of the MFP Server Runtime Deployment component. | 
-| deployer_user | Mandatory. User account with application and adapter deployment privilege. Set as pattern level parameter in the pattern template. | 
-| deployer_password | Mandatory. User password with application and adapter deployment privilege. Set as pattern level parameter in the pattern template. | 
-| webserver_ip | Optional. When IBM HTTP servers is deployed in the pattern template, it is mapped to the same output attribute of MFP Server Administration. | 
+| artifact_dir | 必須。デプロイメント対象のアプリケーションおよびアダプターのインストール・パス。これは、パターン・テンプレートで、{{site.data.keys.product_adj }} App コンポーネントの target_path 出力属性にマップされます。 | 
+| admin_context | 必須。mfpadmin でなければなりません。 | 
+| runtime_context | 必須。MFP Server Runtime Deployment コンポーネントに指定されたランタイム・コンテキスト・ルートに一致します。これは、MFP Server Runtime Deployment コンポーネントの runtime_contextRoot 出力属性にマップされます。 | 
+| deployer_user | 必須。アプリケーションおよびアダプターのデプロイメント特権を持つユーザー・アカウント。パターン・テンプレートで、パターン・レベル・パラメーターとして設定されます。 | 
+| deployer_password | 必須。アプリケーションおよびアダプターのデプロイメント特権を持つユーザー・パスワード。パターン・テンプレートで、パターン・レベル・パラメーターとして設定されます。 | 
+| webserver_ip | オプション。IBM HTTP Server がパターン・テンプレートでデプロイされている場合、MFP Server 管理の同じ出力属性にマップされます。 | 
 
 ### MFP Server Application Center
 {: #mfp-server-application-center }
-This script package sets up the {{ site.data.keys.mf_app_center }} server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. It must be used with the WebSphere Application Server Liberty profile server and MFP Server Prerequisite or WebSphere Application Server full profile (Standalone server), MFP WAS SDK Level and MFP Server Prerequisite. It must be installed after the Liberty profile or Standalone server software component.
+このスクリプト・パッケージは、WebSphere Application Server フル・プロファイル・サーバーまたは WebSphere Application Server Liberty プロファイル・サーバーで {{site.data.keys.mf_app_center }} サーバーをセットアップします。これは、WebSphere Application Server Liberty プロファイル・サーバーおよび MFP Server Prerequisite、または WebSphere Application Server フル・プロファイル (Standalone server)、MFP WAS SDK Level、および MFP Server Prerequisite とともに使用する必要があります。これは、Liberty profile または Standalone server ソフトウェア・コンポーネントの後にインストールする必要があります。
 
-| Parameter | Description | 
+| パラメーター | 説明 | 
 |-----------|-------------|
-| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node. In the pattern templates, it is mapped to output attribute `install_directory` of Liberty profile server or Standalone server. | 
-| profile_name | The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute sa_profile_name of Standalone server. | 
-| db_instance | Name of the database instance. It is mapped to the instancePort output attribute of the Database Server software component in the pattern template. | 
-| db_user | User name that created the Administration database. It is mapped to the db_user output attribute of the MFP Administration DB script package in the pattern template. | 
-| db_name | Name of the Administration database. It is mapped to the `db_name` output attribute of the MFP Administration DB script package in the pattern template. |
-| db_password | Password for user who created the Administration database. It is mapped to the db_password output attribute of the MFP Administration DB script package in the pattern template. | 
-| db_ip | IP address of the DB server where the Administration database is installed. It is mapped to the IP output attribute of the Database Server software component in the pattern template. | 
-| db_port | Port number of the DB server where the Administration database is installed. It is mapped to the instancePort output attribute of the Database Server software component in the pattern template.|
-| admin_user | User name that has {{ site.data.keys.mf_server }} administration privilege.<br/><br/>In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
-| admin_password | admin user password.<br/><br/>In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
-| WAS\_admin\_user | Mandatory for WebSphere Application Server. Optional for WebSphere Application Server Liberty. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to the was_adminoutput attribute of Standalone server in the pattern template.<br/><br/>When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin output attribute of Deployment manager in the pattern template. | 
-| WAS\_admin\_password | Mandatory for WebSphere Application Server. Optional for WebSphere Application Server Liberty. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to the was\_admin\_password output attribute of Standalone server in the pattern template. |
-| server_hostname | Host name of the {{ site.data.keys.mf_server }}. It is mapped to the host output attribute of Liberty profile server or Standalone Server. |
-| LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry:<br/><br/>None<br/>LDAP connection is disabled. When this is set, all the other LDAP parameters are treated as placeholders only.<br/><br/>TivoliDirectoryServer<br/>Select this if the LDAP repository is an IBM  Tivoli  Directory Server.<br/><br/>ActiveDirectory<br/>Select this if the LDAP repository is a Microsoft Active Directory.<br/><br/>Default value: None. | 
-| LDAP_IP | (LDAP parameter). LDAP server IP address. | 
-| LDAP\_SSL\_PORT | (LDAP parameter) LDAP port for secure connection. | 
-| LDAP_PORT | (LDAP parameter) LDAP port for non-secure connection. | 
-| BASE_DN | (LDAP parameter) Base DN. | 
-| BIND_DN | (LDAP parameter) Bind DN. | 
-| BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
-| REQUIRE_SSL | (LDAP parameter) Set it to true for secure connection to LDAP server.{::nomarkdown}<ul><li>When it is true, LDAP_SSL_PORT is used and CERT_FILE_PATH is required to locate the certification file of the LDAP server.</li><li>When it is false, LDAP_PORT is used.</li></ul>Default value: false. | 
-| USER_FILTER | (LDAP parameter) LDAP user filter that searches the existing user registry for users. | 
-| GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
-| LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
-| CERT\_FILE\_PATH | (LDAP parameter) Target path of the uploaded LDAP server certification. It is mandatory when REQUIRE_SSL is set to true. | 
-| appcenteradmin | Admin role for {{ site.data.keys.mf_app_center }}. Use one of the following values:<ul><li>None</li><li>No user</li><li>AllAuthenticatedUsers</li>Authenticated users</li><li>Everyone</li><li>All users</li></ul>{:/}Default value: None | 
+| WAS_ROOT | 必須。MobileFirst Platform Server ノード内の WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルのインストール・ディレクトリー。パターン・テンプレートで、これは、Liberty profile server または Standalone server の `install_directory` 出力属性にマップされます。 | 
+| profile_name | WebSphere Application Server ランタイム環境のファイルを含むプロファイル名。パターン・テンプレートで、Standalone server の出力属性 sa_profile_name にマップされます。 | 
+| db_instance | データベース・インスタンスの名前。これは、パターン・テンプレートで、Database Server ソフトウェア・コンポーネントの instancePort 出力属性にマップされます。 | 
+| db_user | 管理データベースを作成したユーザー名。これは、パターン・テンプレートで、MFP Administration DB スクリプト・パッケージの db_user 出力属性にマップされます。 | 
+| db_name | 管理データベースの名前。これは、パターン・テンプレートで、MFP Administration DB スクリプト・パッケージの `db_name` 出力属性にマップされます。 |
+| db_password | 管理データベースを作成したユーザーのパスワード。これは、パターン・テンプレートで、MFP Administration DB スクリプト・パッケージの db_password 出力属性にマップされます。 | 
+| db_ip | 管理データベースがインストールされている DB サーバーの IP アドレス。これは、パターン・テンプレートで、Database Server ソフトウェア・コンポーネントの IP 出力属性にマップされます。 | 
+| db_port | 管理データベースがインストールされている DB サーバーのポート番号。これは、パターン・テンプレートで、Database Server ソフトウェア・コンポーネントの instancePort 出力属性にマップされます。|
+| admin_user | {{site.data.keys.mf_server }} 管理特権を持つユーザー名。<br/><br/>これは、パターン・テンプレートで、MFP Server Administration スクリプト・パッケージ内の同じ名前のパラメーターにパターン・レベル・パラメーターとして関連付けられます。これにより、それらは確実に同じ値に設定されるようになります。 | 
+| admin_password | 管理ユーザー・パスワード。<br/><br/>これは、パターン・テンプレートで、MFP Server Administration スクリプト・パッケージ内の同じ名前のパラメーターにパターン・レベル・パラメーターとして関連付けられます。これにより、それらは確実に同じ値に設定されるようになります。 | 
+| WAS\_admin\_user | WebSphere Application Server の場合は必須。WebSphere Application Server Liberty の場合はオプション。{{site.data.keys.mf_server }} が WebSphere Application Server フル・プロファイルにデプロイされる場合、これは、パターン・テンプレートで Standalone server の was_admin 出力属性にマップされます。<br/><br/>{{site.data.keys.mf_server }} が WebSphere Application Server Network Deployment にデプロイされる場合、これは、パターン・テンプレートで Deployment manager の was_admin 出力属性にマップされます。 | 
+| WAS\_admin\_password | WebSphere Application Server の場合は必須。WebSphere Application Server Liberty の場合はオプション。{{site.data.keys.mf_server }} が WebSphere Application Server フル・プロファイルにデプロイされる場合、これは、パターン・テンプレートで、Standalone server の was\_admin\_password 出力属性にマップされます。 |
+| server_hostname | {{site.data.keys.mf_server }} のホスト名。 Liberty profile server または Standalone Server の host 出力属性にマップされます。 |
+| LDAP_TYPE | (LDAP パラメーター) 必須。ユーザー・レジストリーの LDAP サーバー・タイプ。<br/><br/>None<br/>LDAP  接続は使用不可です。これが設定されている場合、他のすべての LDAP パラメーターはプレースホルダーのみとして扱われます。<br/><br/>TivoliDirectoryServer<br/>LDAP リポジトリーが IBM Tivoli Directory Server の場合、これを選択します。<br/><br/>ActiveDirectory<br/>LDAP リポジトリーが Microsoft Active Directory の場合、これを選択します。 <br/><br/>デフォルト値: None。 | 
+| LDAP_IP | (LDAP パラメーター) LDAP サーバーの IP アドレス。 | 
+| LDAP\_SSL\_PORT | (LDAP パラメーター) セキュア接続のための LDAP ポート。 | 
+| LDAP_PORT | (LDAP パラメーター) 非セキュア接続のための LDAP ポート。 | 
+| BASE_DN | (LDAP パラメーター) ベース DN。 | 
+| BIND_DN | (LDAP パラメーター) バインド DN。 | 
+| BIND_PASSWORD | (LDAP パラメーター) バインド DN のパスワード。 | 
+| REQUIRE_SSL | (LDAP パラメーター) LDAP サーバーへのセキュア接続のためには、これを true に設定します。{::nomarkdown}<ul><li>true の場合、LDAP_SSL_PORT が使用され、LDAP サーバーの証明ファイルを見つけるために CERT_FILE_PATH が必要です。</li><li>false の場合、LDAP_PORT が使用されます。</li></ul>デフォルト値: false。 | 
+| USER_FILTER | (LDAP パラメーター) 既存のユーザー・レジストリーでユーザーを検索する LDAP ユーザー・フィルター。 | 
+| GROUP_FILTER | (LDAP パラメーター) 既存のユーザー・レジストリーでグループを検索する LDAP グループ・フィルター。 | 
+| LDAP\_REPOSITORY\_NAME | (LDAP パラメーター) LDAP サーバー名。 | 
+| CERT\_FILE\_PATH | (LDAP パラメーター) アップロードした LDAP サーバー証明のターゲット・パス。REQUIRE_SSL が true に設定されている場合は、必須です。 | 
+| appcenteradmin  | {{site.data.keys.mf_app_center }} の管理者役割。以下のいずれかの値を使用します。<ul><li>なし</li><li>ユーザーなし</li><li>AllAuthenticatedUsers</li>認証済みユーザー</li><li>Everyone</li><li>すべてのユーザー</li></ul>{:/}デフォルト値: None | 
 
 ### MFP Server Prerequisite
 {: #mfp-server-prerequisite }
-This script package includes all prerequisites that are required to install the {{ site.data.keys.mf_server }}, including the DB2 JDBC driver and Apache Ant. The script package must be used with the WebSphere Application Server Liberty profile server software component or the WebSphere Application Server full profile software component (display name: Standalone server), and must be installed after the server software component but prior to any other MFP* script packages in the MobileFirst Platform Server node.
+このスクリプト・パッケージには、DB2 JDBC ドライバーおよび Apache Ant など、{{site.data.keys.mf_server }} をインストールするために必要なすべての前提条件が含まれています。このスクリプト・パッケージは、WebSphere Application Server Liberty プロファイル・サーバー・ソフトウェア・コンポーネントまたは WebSphere Application Server フル・プロファイル・ソフトウェア・コンポーネント (表示名: Standalone server) とともに使用する必要があり、またサーバー・ソフトウェア・コンポーネントの後、かつ MobileFirst Platform Server ノード内の他の MFP* スクリプト・パッケージの前にインストールする必要があります。
 
-| Parameter | Description |
+| パラメーター | 説明 |
 |-----------|-------------|
-| None | No parameters for this script package. | 
+| なし | このスクリプト・パッケージのパラメーターはありません。 | 
 
 ### MFP Server Runtime Deployment
 {: #mfp-server-runtime-deployment }
-This script package installs the {{ site.data.keys.product }} runtime in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server with the {{ site.data.keys.mf_console }} installed. The script package also sets up the connection to the {{ site.data.keys.mf_analytics_server }}. It must be installed after the MFP Server Administration script package.
+このスクリプト・パッケージは、WebSphere Application Server フル・プロファイル・サーバーまたは WebSphere Application Server Liberty プロファイル・サーバー ({{site.data.keys.mf_console }} がインストール済み) に {{site.data.keys.product }} ランタイムをインストールします。また、このスクリプト・パッケージは、{{site.data.keys.mf_analytics_server }}への接続をセットアップします。MFP Server Administration スクリプト・パッケージの後にインストールする必要があります。
 
-| Parameter | Description |
+| パラメーター | 説明 |
 |-----------|-------------|
-| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node, or installation directory of Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attribute install_directory of Liberty profile server or Standalone server. | 
-| profile_name | Optional. The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute dmgr\_profile\_name of Deployment manager or sa\_profile\_name of Standalone server. |
-| NUMBER\_OF\_CLUSTERMEMBERS | Optional. Only applicable for the {{ site.data.keys.product }} (WAS ND) pattern template. It specifies the number of cluster members for the cluster to deploy MFP runtime. Default value: 2. | 
-| db_ip | IP address of the DB server where the Runtime (and optional Reports) database is installed. It is mapped to the IP output attribute of the Database Server software component in the pattern template. |
-| db_port | Port number of the DB server where the Runtime (and optional Reports) database is installed. It is mapped to theinstancePort output attribute of the Database Server software component in the pattern template. |
-| admin_user | Mandatory. User name that has {{ site.data.keys.mf_server }} administration privilege. In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
-| admin_password | Mandatory. admin user password. In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
-| runtime_path | Mandatory. Runtime WAR file installed path. For example: it can be mapped to the target_path output attribute of MFP Server Runtime in the pattern template. | 
-| runtime_contextRoot | Mandatory. Runtime context root. Must start with a forward slash, /; for example, "/HelloWorld". It is set as a pattern level parameter in the pattern template. | 
-| rtdb_name | Mandatory. Name of the Runtime database. It is mapped to the `db_name` output attribute of the MFP Runtime DB script package in the pattern template. | 
-| rtdb_user | Mandatory. User that created the Runtime database. It is mapped to the `db_user` output attribute of the MFP Runtime DB script package in the pattern template. |
-| rtdb_password | Mandatory. Password of the user that created the Runtime database. It is mapped to the `db_password` output attribute of the MFP Runtime DB script package in the pattern template. |
-| rptdb_name | Optional. Name of the Reports database. It is mapped to the `db_name` output attribute of the MFP Reports DB script package in the pattern template. Leave blank if you do not want to connect to a Reports database. |
-| rptdb_user | Optional. User that created the Reports database. It is mapped to the `db_user` output attribute of the MFP Reports DB script package in the pattern template. | 
-| rptdb_password | Optional. Password of the user that created the Reports database. It is mapped to the `db_password` output attribute of MFP Reports DB script package in the pattern template. \ 
-| was\_admin\_user	| Optional. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to the was_adminoutput attribute of Standalone server in the pattern template. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin output attribute of Deployment manager in the pattern template. |
-| was_admin_password | Optional. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to thewas_admin_password output attribute of Standalone server in the pattern template. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin_password output attribute of Deployment manager in the pattern template. | 
-| server_farm_mode | Mandatory. Map it to the same attribute of MFP Server Administration. | 
-| server_hostname | Mandatory. Host name of the {{ site.data.keys.mf_server }}. It is mapped to the host output attribute of Liberty profile server, Standalone Server, or Deployment manager. |
-| analytics_ip | Optional. {{ site.data.keys.mf_analytics }} Node IP address to enable the Analytics capability in the MFP Server Runtime. |
-| analytics_admin_user | Optional. Administrator name of the {{ site.data.keys.mf_analytics_server }}. | 
-| analytics_admin_password | Optional. Password of administrator of the {{ site.data.keys.mf_analytics_server }}. | 
+| WAS_ROOT | 必須。MobileFirst Platform Server ノードの WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルのインストール・ディレクトリー、または DmgrNode ノードの Deployment Manager のインストール・ディレクトリー。パターン・テンプレートで、これは、Liberty profile server または Standalone server の install_directory 出力属性にマップされます。 | 
+| profile_name | オプション。WebSphere Application Server ランタイム環境のファイルを含むプロファイル名。パターン・テンプレートで、これは、Deployment Manager の出力属性 dmgr\_profile\_name または Standalone server の出力属性 sa\_profile\_name にマップされます。 |
+| NUMBER\_OF\_CLUSTERMEMBERS | オプション。{{site.data.keys.product }} (WAS ND) パターン・テンプレートの場合にのみ適用されます。これは、MFP ランタイムをデプロイするクラスターのクラスター・メンバーの数を指定します。 デフォルト値: 2。 | 
+| db_ip | ランタイム・データベース (およびオプションでレポート・データベース) がインストールされている DB サーバーの IP アドレス。これは、パターン・テンプレートで、Database Server ソフトウェア・コンポーネントの IP 出力属性にマップされます。 |
+| db_port | ランタイム・データベース (およびオプションでレポート・データベース) がインストールされている DB サーバーのポート番号。これは、パターン・テンプレートで、Database Server ソフトウェア・コンポーネントの instancePort 出力属性にマップされます。 |
+| admin_user | 必須。{{site.data.keys.mf_server }} 管理特権を持つユーザー名。これは、パターン・テンプレートで、MFP Server Administration スクリプト・パッケージ内の同じ名前のパラメーターにパターン・レベル・パラメーターとして関連付けられます。これにより、それらは確実に同じ値に設定されるようになります。 | 
+| admin_password | 必須。管理ユーザー・パスワード。これは、パターン・テンプレートで、MFP Server Administration スクリプト・パッケージ内の同じ名前のパラメーターにパターン・レベル・パラメーターとして関連付けられます。これにより、それらは確実に同じ値に設定されるようになります。 | 
+| runtime_path | 必須。ランタイム WAR ファイルのインストール・パス。例えば、これは、パターン・テンプレートで MFP Server Runtime の target_path 出力属性にマップできます。 | 
+| runtime_contextRoot | 必須。ランタイム・コンテキスト・ルート。先頭がスラッシュ (/) でなければなりません。例えば、「/HelloWorld」のようにします。これは、パターン・テンプレートでパターン・レベル・パラメーターとして設定されます。 | 
+| rtdb_name | 必須。ランタイム・データベースの名前。これは、パターン・テンプレートで、MFP Runtime DB スクリプト・パッケージの `db_name` 出力属性にマップされます。 | 
+| rtdb_user | 必須。ランタイム・データベースを作成したユーザー。これは、パターン・テンプレートで、MFP Runtime DB スクリプト・パッケージの `db_user` 出力属性にマップされます。 |
+| rtdb_password | 必須。ランタイム・データベースを作成したユーザーのパスワード。これは、パターン・テンプレートで、MFP Runtime DB スクリプト・パッケージの `db_password` 出力属性にマップされます。 |
+| rptdb_name | オプション。レポート・データベースの名前。これは、パターン・テンプレートで、MFP Reports DB スクリプト・パッケージの `db_name` 出力属性にマップされます。レポート・データベースに接続しない場合は、ブランクのままにしておいてください。 |
+| rptdb_user | オプション。レポート・データベースを作成したユーザー。これは、パターン・テンプレートで、MFP Reports DB スクリプト・パッケージの `db_user` 出力属性にマップされます。 | 
+| rptdb_password | オプション。レポート・データベースを作成したユーザーのパスワード。これは、パターン・テンプレートで、MFP Reports DB スクリプト・パッケージの `db_password` 出力属性にマップされます。\ 
+| was\_admin\_user	| オプション。{{site.data.keys.mf_server }} が WebSphere Application Server フル・プロファイルにデプロイされる場合、これは、パターン・テンプレートで、Standalone server の was_admin 出力属性にマップされます。{{site.data.keys.mf_server }} が WebSphere Application Server Network Deployment にデプロイされる場合、これは、パターン・テンプレートで Deployment Manager の was_admin 出力属性にマップされます。 |
+| was_admin_password | オプション。{{site.data.keys.mf_server }} が WebSphere Application Server フル・プロファイルにデプロイされる場合、これは、パターン・テンプレートで、Standalone server の was_admin_password 出力属性にマップされます。{{site.data.keys.mf_server }} が WebSphere Application Server Network Deployment にデプロイされる場合、これは、パターン・テンプレートで Deployment Manager の was_admin_password 出力属性にマップされます。 | 
+| server_farm_mode | 必須。MFP Server 管理の同じ属性にマップします。 | 
+| server_hostname | 必須。{{site.data.keys.mf_server }} のホスト名。 これは、Liberty profile server、Standalone Server、または Deployment Manager の host 出力属性にマップされます。 |
+| analytics_ip | オプション。MFP Server ランタイムの Analytics 機能を使用可能にするための、{{site.data.keys.mf_analytics }} ノードの IP アドレス。 |
+| analytics_admin_user | オプション。{{site.data.keys.mf_analytics_server }} の管理者名。 | 
+| analytics_admin_password | オプション。{{site.data.keys.mf_analytics_server }} の管理者のパスワード。 | 
 
-## Upgrading {{ site.data.keys.mf_system_pattern }}
+## {{site.data.keys.mf_system_pattern }} のアップグレード
 {: #upgrading-mobilefirst-system-pattern }
-To upgrade {{ site.data.keys.mf_system_pattern }}, upload the **.tgz** file that contains the latest updates.
+{{site.data.keys.mf_system_pattern }} をアップグレードするには、最新の更新が含まれている **.tgz** ファイルをアップロードします。
 
-1. Log into IBM  PureApplication  System with an account that is allowed to upload new system plugins.
-2. From the IBM PureApplication System console, navigate to **Catalog → System Plug-ins**.
-3. Upload the {{ site.data.keys.mf_system_pattern }} **.tgz** file that contains the updates.
-4. Enable the plugins you have uploaded.
-5. Redeploy the pattern.
+1. 新規システム・プラグインのアップロードが許可されているアカウントを使用して、IBM PureApplication System にログインします。
+2. IBM PureApplication System コンソールから、**「カタログ」→「システム・プラグイン」**に移動します。
+3. 更新が含まれている {{site.data.keys.mf_system_pattern }} の **.tgz** ファイルをアップロードします。
+4. アップロードしたプラグインを有効にします。
+5. パターンを再デプロイします。
 

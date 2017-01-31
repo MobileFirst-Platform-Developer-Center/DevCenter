@@ -1,98 +1,97 @@
 ---
 layout: tutorial
-title: Setting Up MobileFirst Server on Bluemix using Scripts for Liberty for Java
+title: Liberty for Java 用のスクリプトを使用して Bluemix 上に MobileFirst Server をセットアップする
 breadcrumb_title: Liberty for Java
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance on a Liberty for Java runtime on Bluemix. ({{ site.data.keys.mf_analytics }} instances can be run on IBM containers only.) To achieve this you will go through the following steps: 
+下記の指示に従って、Liberty for Java ランタイム上の {{site.data.keys.mf_server }} インスタンスを Bluemix 上で構成します。({{site.data.keys.mf_analytics }} インスタンスは IBM Containers 上のみで実行できます。) これは、次のような手順で行います。 
 
-* Setup your host computer with the required tools (Cloud Foundry CLI)
-* Setup your Bluemix account
-* Build a {{ site.data.keys.mf_server }} and push it to the Bluemix as a Cloud Foundry application.
+* 必要なツール (Cloud Foundry CLI) を使用してホスト・コンピューターをセットアップする
+* Bluemix アカウントをセットアップする
+* {{site.data.keys.mf_server }} をビルドし、これを Cloud Foundry アプリケーションとして Bluemix にプッシュする
 
-Finally, you will register your mobile apps as well as deploy your adapters.
+最後に、モバイル・アプリケーションを登録し、アダプターをデプロイします。
 
-**Notes:**  
+**注:**  
 
-* Windows OS is currently not supported for running these scripts.  
-* The {{ site.data.keys.mf_server }} Configuration tools cannot be used for deployments to Bluemix.
+* Windows OS でのこれらのスクリプトの実行は現在サポートされていません。  
+* {{site.data.keys.mf_server }} 構成ツールは Bluemix へのデプロイメントには使用できません。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
 
-* [Register an account at Bluemix](#register-an-account-at-bluemix)
-* [Set up your host machine](#set-up-your-host-machine)
-* [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the-ibm-mfpf-container-8000-archive)
-* [Adding Analytics server information](#adding-analytics-server-configuration-to-mobilefirst-server)
-* [Applying {{ site.data.keys.mf_server }} Fixes](#applying-mobilefirst-server-fixes)
-* [Removing the database service configuration from Bluemix](#removing-the-database-service-configuration-from-bluemix)
+* [Bluemix でアカウントを登録する](#register-an-account-at-bluemix)
+* [ホスト・マシンをセットアップする](#set-up-your-host-machine)
+* [{{site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする](#download-the-ibm-mfpf-container-8000-archive)
+* [分析サーバー情報の追加](#adding-analytics-server-configuration-to-mobilefirst-server)
+* [{{site.data.keys.mf_server }} 修正の適用](#applying-mobilefirst-server-fixes)
+* [Bluemix からのデータベース・サービス構成の削除](#removing-the-database-service-configuration-from-bluemix)
 
-## Register an account at Bluemix
+## Bluemix でアカウントを登録する
 {: #register-an-account-at-bluemix }
-If you do not have an account yet, visit the [Bluemix website](https://bluemix.net) and click **Get Started Free** or **Sign Up**. You need to fill up a registration form before you can move on to the next step.
+まだアカウントをお持ちでない場合は、[Bluemix Web サイト](https://bluemix.net)にアクセスし、**「無料で開始」**、または**「登録」**をクリックします。次のステップに進むため、登録フォームに記入する必要があります。
 
-### The Bluemix Dashboard
+### Bluemix ダッシュボード
 {: #the-bluemix-dashboard }
-After signing in to Bluemix, you are presented with the Bluemix Dashboard, which provides an overview of the active Bluemix **space**. By default, this work area receives the name "dev". You can create multiple work areas/spaces if needed.
+Bluemix にサインインすると Bluemix ダッシュボードが表示され、アクティブな Bluemix **スペース**の概略が示されます。デフォルトでは、この作業領域の名前は「dev」です。必要に応じて、複数の作業領域/スペースを作成できます。
 
-## Set up your host machine
+## ホスト・マシンをセットアップする
 {: #set-up-your-host-machine }
-To manage the Bluemix Cloud Foundry app, you need to install the Cloud Foundry CLI.  
-You can run the scripts using the macOS Terminal.app or a Linux bash shell.
+Bluemix Cloud Foundry アプリケーションを管理するには、Cloud Foundry CLI をインストールする必要があります。  
+macOS の Terminal.app または Linux の Bash シェルを使用してスクリプトを実行できます。
 
-Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
+[Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195) をインストールします。
 
-## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
+## {{site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする
 {: #download-the-ibm-mfpf-container-8000-archive}
-To set up {{ site.data.keys.product }} on Liberty on Java, you must first create a file layout that will later be pushed to Bluemix.  
-<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download the {{ site.data.keys.mf_server }} 8.0 for IBM Containers archive (.zip file, search for: *CNBL0EN*).
+Liberty on Java 上で {{site.data.keys.product }} をセットアップするには、まず最初にファイル・レイアウトを作成する必要があります。このファイル・レイアウトは、のちほど Bluemix にプッシュします。  
+<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">このページの指示に従って</a>、{{site.data.keys.mf_server }} 8.0 の IBM Containers 用アーカイブ (.zip ファイル。*CNBL0EN* で検索) をダウンロードしてください。
 
-The archive file contains the files for building an file layout (**dependencies** and **mfpf-libs**), the files for building and deploying a {{ site.data.keys.mf_analytics }} Container (**mfpf-analytics**) and files for configuring a {{ site.data.keys.mf_server }} Cloud Foundry app (**mfpf-server-libertyapp**).
+このアーカイブ・ファイルには、ファイル・レイアウトをビルドするためのファイル (**dependencies** と **mfpf-libs**)、{{site.data.keys.mf_analytics }} コンテナーをビルドしてデプロイするためのファイル (**mfpf-analytics**)、および {{site.data.keys.mf_server }} Cloud Foundry アプリケーションを構成するためのファイル (**mfpf-server-libertyapp**) が含まれています。
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click to read more about the archive file contents</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>クリックすると、アーカイブ・ファイルの内容について、詳細情報が表示されます</b></a>
             </h4>
         </div>
 
         <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
             <div class="panel-body">
-                <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
-                <h4>dependencies folder</h4>
-                <p>Contains the {{ site.data.keys.product }} runtime and IBM Java JRE 8.</p>
+                <img src="zip.png" alt="アーカイブ・ファイルのファイル・システム構成を示すイメージ" style="float:right;width:570px"/>
+                <h4>dependencies フォルダー</h4>
+                <p>{{site.data.keys.product }} ランタイムおよび IBM Java JRE 8 が含まれています。</p>
                 
-                <h4>mfpf-libs folder</h4>
-                <p>Contains {{ site.data.keys.product_adj }} product component libraries and CLI.</p>
+                <h4>mfpf-libs フォルダー</h4>
+                <p>{{site.data.keys.product_adj }} 製品コンポーネント・ライブラリーおよび CLI が含まれています。</p>
                 
-                <h4>mfpf-server-libertyapp folder</h4>
+                <h4>mfpf-server-libertyapp フォルダー</h4>
                 
                 <ul>
                    
-                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a {{ site.data.keys.product }} app for pushing to BLuemix and running the server on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
-                    <li><b>usr</b> folder:
+                    <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。また、Bluemix へのログイン時や、BLuemix にプッシュするための {{site.data.keys.product }} アプリケーションのビルド時や、Bluemix 上でのサーバーの実行時に実行するスクリプトも含まれています。スクリプトは、対話式に実行することも、(後述のように) 構成ファイルを事前に設定することで実行することもできます。カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
+                    <li><b>usr</b> フォルダー:
                         <ul>
-                            <li><b>config</b> folder: Contains the server configuration fragments (keystore, server properties, user registry) used by {{ site.data.keys.mf_server }}.</li>
-                            <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
-                            <li><b>mfpfproperties.xml</b> - configuration properties for {{ site.data.keys.mf_server }}. See the supported properties listed in these documentation topics:
-                                <ul>
-                                <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a></li>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for the {{ site.data.keys.product_adj }} runtime</a></li>
+                            <li><b>config</b> フォルダー: {{site.data.keys.mf_server }} によって使用されるサーバー構成フラグメント (鍵ストア、サーバー・プロパティー、ユーザー・レジストリー) が含まれます。</li>
+                            <li><b>keystore.xml</b> - SSL 暗号化に使用されるセキュリティー証明書のリポジトリーの構成が含まれています。リストされたファイルは、./usr/security フォルダー内で参照される必要があります。</li>
+                            <li><b>mfpfproperties.xml</b> - {{site.data.keys.mf_server }}の構成プロパティー。以下の資料トピックにリストされた、サポートされるプロパティーを参照してください。<ul>
+                                <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a></li>
                                 </ul>
                             </li>
-                            <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
+                            <li><b>registry.xml</b> - ユーザー・レジストリー構成。basicRegistry (基本の XML ベースのユーザー・レジストリー構成がデフォルトとして提供されています。basicRegistry 用にユーザー名とパスワードを構成できます。または ldapRegistry を構成することができます。</li>
                         </ul>
                     </li>
-                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).
-                    <br/>
+                    <li><b>env</b> フォルダー: サーバーの初期化に使用される環境プロパティー (server.env) およびカスタム JVM オプション (jvm.options) が含まれています。
+                    <br />
                     </li>
 
-                    <li><b>security</b> folder: used to store the key store, trust store, and the LTPA keys files (ltpa.keys).</li>
+                    <li><b>security</b> フォルダー: 鍵ストア、トラストストア、および LTPA 鍵ファイル (ltpa.keys) の保管場所として使用します。</li>
                 
                 </ul>
 				<br/>
@@ -103,43 +102,43 @@ The archive file contains the files for building an file layout (**dependencies*
 </div>
 
 
-## Setting Up the {{ site.data.keys.mf_server }} 
+## {{site.data.keys.mf_server }} のセットアップ 
 {: #setting-up-the-mobilefirst-server }
-You can choose to run the scripts interactively or by using the configuration files:
-A good place to start is to run the scripts interactively once, which will also record the arguments (**recorded-args**). You can later use the args files to run the scripts in a non interactive mode.
+スクリプトは、対話式に実行することも、構成ファイルを使用して実行することもできます。
+推奨されるのは、開始時に一度スクリプトを対話式に実行することです。これによって引数 (**recorded-args**) も記録されます。その後、args ファイルを使用して非対話式でスクリプトを実行できます。
 
-> **Note:** Passwords are not recorded and you will have to manually add the passwords to the argument files.
+> **注:** パスワードは記録されません。パスワードは、引数ファイルに手動で追加する必要があります。
 
-* Using the configuration files - run the scripts and pass the respective configuration file as an argument.
-* Interactively - run the scripts without any arguments.
+* 構成ファイルを使用する場合: スクリプトを実行し、個々の構成ファイルを引数として渡します。
+* 対話式の場合: 引数を付けずにスクリプトを実行します。
 
-If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
+スクリプトを対話式に実行する場合は、この構成をスキップしてかまいませんが、少なくとも、指定することになる引数について一読し、理解しておくことを、強くお勧めします。
 
-### {{ site.data.keys.mf_server }}
+### {{site.data.keys.mf_server }}
 {: #mobilefirst-server }
 <div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">Using the configuration files</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">構成ファイルの使用</a>
             </h4>
         </div>
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. You can find the empty template files and the explanation of the arguments in the <b>args</b> folder, or post running the scripts interactively in the <b>recorded-args</b> folder. Following are the files:<br/>
+            <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。<b>args</b> フォルダーで空のテンプレート・ファイルや引数の説明を見つけたり、<b>recorded-args</b> フォルダーで対話式のスクリプト実行を記入したりできます。次のようなファイルがあります。<br/>
             
               <h4>initenv.properties</h4>
-              This file contains properties used to run the environment initialization.
+              このファイルには、環境の初期化を実行するときに使用するプロパティーが含まれています。
               <h4>prepareserverdbs.properties</h4>
-              The {{ site.data.keys.mf_bm_short }} service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional database</i> instance</a> (Any plan that is marked OLTP or Transactional).<br/>
-              <b>Note:</b> The deployment of the dashDB Enterprise Transactional plans is immediate for the plans marked "pay as you go". Make sure you pick one of the suitable plans like <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
-              After you have set up your dashDB instance, provide the required arguments.
+              {{site.data.keys.mf_bm_short }} サービスには、外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional データベース</i> ・インスタンス</a> (OLTP または Transactional のマークが付いていればどのプランでも可) が必要です。<br/>
+              <b>注:</b> dashDB Enterprise Transactional プランのデプロイメントは、「従量制課金」のマークが付いたプランに対しては即時に行われます。<i>Enterprise for Transactions High Availability 2.8.500 (従量課金)</i> のような、適したプランを選択するようにしてください。<br/><br/>
+              dashDB インスタンスのセットアップが完了したら、必要な引数を入力します。
               
               <h4>prepareserver.properties</h4>
-              This file is used for the prepareserver.sh script. This prepares the server file layout and pushes it to Bluemix as a Cloud Foundry app.
+              このファイルは prepareserver.sh スクリプトで使用します。このファイルは、サーバー・ファイル・レイアウトを準備し、これを Bluemix に Cloud Foundry アプリケーションとしてプッシュします。
               <h4>startserver.properties</h4>
-              This file configures tha runtime attributes of the server and starts is. It is strongly recomended that you use a minimum of 1024 MB (<b>SERVER_MEM=1024</b>) and 3 nodes for high availablilty (<b>INSTANCES=3</b>)
+              このファイルは、サーバーのランタイム属性を構成し、これを開始します。最小でも 1024 MB (<b>SERVER_MEM=1024</b>) と 3 つのノードを使用して高可用性を確保 (<b>INSTANCES=3</b>) することを強く推奨します。
               
             </div>
         </div>
@@ -148,91 +147,91 @@ If you choose to run the scripts interactively, you can skip the configuration b
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Running the scripts</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">スクリプトの実行</a>
             </h4>
         </div>
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-              <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
+              <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
               <ol>
-                  <li><b>initenv.sh – Logging in to Bluemix </b><br />
-                      Run the <b>initenv.sh</b> script to login to Bluemix. Run this for the Org and space where your dashDB service is bound:
+                  <li><b>initenv.sh – Bluemix へのログイン</b><br />
+                      <b>initenv.sh</b> スクリプトを実行して Bluemix にログインします。dashDB サービスがバインドされている組織およびスペースに対して、次のコマンドを実行します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
-                        You an also pass the parameters on the commandline
+                        コマンド・ラインでパラメーターを渡すこともできます。
                         
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
 
-                        To learn all the parameters supported and their documentation run the help option
+                        サポートされているすべてのパラメーターとその説明を見るには、help オプションを実行します。
                         
 {% highlight bash %}
 ./initenv.sh --help
 {% endhighlight %}
                   </li>
-                  <li><b>prepareserverdbs.sh - Prepare the {{ site.data.keys.mf_server }} database</b><br />
-                  The <b>prepareserverdbs.sh</b> script is used to configure your {{ site.data.keys.mf_server }} with the dashDB database service or a accessible DB2 database server. The DB2 option is usable particularly when you are running Bluemix local in the same datacentre where you have the DB2 server installed. If using the dashDB service, the service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
+                  <li><b>prepareserverdbs.sh - {{site.data.keys.mf_server }} データベースの準備</b><br />
+                    <b>prepareserverdbs.sh</b> スクリプトを使用して、dashDB データベース・サービスまたはアクセス可能な DB2 データベース・サーバーが含まれた {{site.data.keys.mf_server }} を構成します。DB2 オプションは、DB2 サーバーがインストールされているデータ・センターと同じデータ・センターで Bluemix をローカルに実行する場合に、特に有用です。dashDB サービスを使用する場合、手順 1 でログインした組織およびスペースにおいて、dashDB サービスのサービス・インスタンスが使用可能である必要があります。次のコマンドを実行します。
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
 
-                        You an also pass the parameters on the commandline
+                        コマンド・ラインでパラメーターを渡すこともできます。
 
 {% highlight bash %}
 prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
 
-                        To learn all the parameters supported and their documentation run the help option
+                        サポートされているすべてのパラメーターとその説明を見るには、help オプションを実行します。
 
 {% highlight bash %}
 ./prepareserverdbs.sh --help
 {% endhighlight %}
                     
                   </li>
-                  <li><b>initenv.sh(Optional) – Logging in to Bluemix</b><br />
-                      This step is required only if you need to create your server in a different Organization and Space than where the dashDB service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <b>initenv.sh</b> script:
+                  <li><b>initenv.sh(Optional) – Bluemix へのログイン</b><br />
+                      このステップは、dashDB サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにサーバーを作成する必要がある場合にのみ必須です。この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で initenv.properties を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
                   </li>
-                  <li><b>prepareserver.sh - Prepare a {{ site.data.keys.mf_server }}</b><br />
-                    Run the <b>prepareserver.sh</b> script in order to build a {{ site.data.keys.mf_server }} and push it to  Bluemix as a Cloud Foundry application. To view all the Cloud Foundry applications and theur URLs in the logged in Org and space, run: <code>cf apps</code><br/>
+                  <li><b>prepareserver.sh - {{site.data.keys.mf_server }} の準備</b><br />
+                    {{site.data.keys.mf_server }} をビルドし、これを Bluemix に Cloud Foundry アプリケーションとしてプッシュするため、<b>prepareserver.sh</b> スクリプトを実行します。ログインした組織およびスペース内にあるすべての Cloud Foundry アプリケーションとその URL を表示するには、<code>cf apps</code> を実行します。<br/>
                   
 
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
 
-                        You an also pass the parameters on the commandline
+                        コマンド・ラインでパラメーターを渡すこともできます。
 
 {% highlight bash %}
 prepareserver.sh --name APP_NAME
 {% endhighlight %}
 
-                        To learn all the parameters supported and their documentation run the help option
+                        サポートされているすべてのパラメーターとその説明を見るには、help オプションを実行します。
                         
 {% highlight bash %}
 ./prepareserver.sh --help
 {% endhighlight %}                  
                   
                   </li>
-                  <li><b>startserver.sh - Starting the server</b><br />
-                  The <b>startserver.sh</b> script is used to start the {{ site.data.keys.mf_server }} on Liberty for Java Cloud Foundry application. Run:</p> 
+                  <li><b>startserver.sh - サーバーの始動</b><br />
+                  <b>startserver.sh</b> スクリプトを使用して {{site.data.keys.mf_server }} を Liberty for Java の Cloud Foundry アプリケーション上で始動します。 次のコマンドを実行します。</p> 
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
 
-                        You an also pass the parameters on the commandline
+                        コマンド・ラインでパラメーターを渡すこともできます。
 
 {% highlight bash %}
-./startserver.sh --name APP_NAME 
+./startserver.sh --name APP_NAME
 {% endhighlight %}
 
-                        To learn all the parameters supported and their documentation run the help option
+                        サポートされているすべてのパラメーターとその説明を見るには、help オプションを実行します。
                         
 {% highlight bash %}
 ./startserver.sh --help
@@ -246,21 +245,21 @@ prepareserver.sh --name APP_NAME
 </div>
 
 
-Launch the {{ site.data.keys.mf_console }} by loading the following URL: `http://APP_HOST.mybluemix.net/mfpconsole` (it may take a few moments).  
-Add the remote server by following the instructions in the [Using {{ site.data.keys.mf_cli }} to Manage {{ site.data.keys.product_adj }} Artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
+次の URL をロードして {{site.data.keys.mf_console }} を起動します。`http://APP_HOST.mybluemix.net/mfpconsole` (しばらく時間がかかる場合があります)。  
+[{{site.data.keys.mf_cli }} を使用した {{site.data.keys.product_adj }} 成果物の管理](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)チュートリアルの指示に従って、リモート・サーバーを追加します。  
 
-With {{ site.data.keys.mf_server }} running on IBM Bluemix, you can now start your application development.
+これで、IBM Bluemix で実行中の {{site.data.keys.mf_server }} を使用して、アプリケーション開発を始めることができます。
 
-#### Applying changes
+#### 変更の適用
 {: #applying-changes }
-You may need to apply changes to the server layout after you have deployed the server once, e.g: you want to update the analytics URL in **/usr/config/mfpfproperties.xml**. Make the changes and then re-run the following scripts with the same set of arguments. 
+一度サーバーをデプロイした後で、サーバー・レイアウトに変更を適用する必要がある場合があります。例えば、**/usr/config/mfpfproperties.xml** 内の分析 URL を更新するような場合です。変更を行った後、同じ引数のセットを指定して、次のスクリプトを再実行します。 
 
 1. ./prepareserver.sh 
 2. ./startserver.sh 
 
-### Adding analytics server configuration to {{ site.data.keys.mf_server }}
+### {{site.data.keys.mf_server }} への分析サーバー構成の追加
 {: #adding-analytics-server-configuration-to-mobilefirst-server }
-If you have setup a Analytics server and want to connect it to this {{ site.data.keys.mf_server }} then edit the fie **mfpfproperties.xml** in the folder **package_root/mfpf-server-libertyapp/usr/config** as specified below. Replace the tokens marked with `<>` with correct values from yur deployment.
+分析サーバーをセットアップ済みで、それをこの {{site.data.keys.mf_server }} に接続する場合は、 **package_root/mfpf-server-libertyapp/usr/config** フォルダー内の **mfpfproperties.xml** ファイルを、以下に示すとおりに編集します。`<>` のマークがついたトークンを、デプロイメントからの正しい値で置き換えます。
 
 ```xml
 <jndiEntry jndiName="${env.MFPF_RUNTIME_ROOT}/mfp.analytics.url" value='"https://<AnalyticsContainerGroupRoute>:443/analytics-service/rest"'/>
@@ -275,24 +274,24 @@ If you have setup a Analytics server and want to connect it to this {{ site.data
 <jndiEntry jndiName="${env.MFPF_PUSH_ROOT}/mfp.push.analytics.password" value='"<AnalyticsPassword>"'/>
 ```
 
-## Applying {{ site.data.keys.mf_server }} Fixes
+## {{site.data.keys.mf_server }} 修正の適用
 {: #applying-mobilefirst-server-fixes }
-Interim fixes for the {{ site.data.keys.mf_server }} on Bluemix can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
-Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the 
-**package_root/mfpf-server-libertyapp/usr** folders.
+Bluemix 上の {{site.data.keys.mf_server }} 用の暫定修正を [IBM Fix Central](http://www.ibm.com/support/fixcentral) から取得できます。  
+暫定修正を適用する前に、既存の構成ファイルのバックアップを取ってください。構成ファイルは、
+**package_root/mfpf-server-libertyapp/usr** フォルダー内にあります。
 
-1. Download the interim fix archive and extract the contents to your existing installation folder, overwriting the existing files.
-2. Restore your backed-up configuration files into the  **/mfpf-server-libertyapp/usr** folders, overwriting the newly installed configuration files.
+1. 暫定修正アーカイブをダウンロードし、その内容を既存のインストール・フォルダーに解凍して、既存のファイルを上書きします。
+2. バックアップした構成ファイルを **/mfpf-server-libertyapp/usr** フォルダーにリストアし、新規にインストールされた構成ファイルを上書きします。
 
-You can now build and deploy the updatd server.
+これで、更新したサーバーをビルドおよびデプロイできるようになりました。
 
-## Removing the database service configuration from Bluemix	
+## Bluemix からのデータベース・サービス構成の削除	
 {: #removing-the-database-service-configuration-from-bluemix }
-If you ran the **prepareserverdbs.sh** script during the configuration of the {{ site.data.keys.mf_server }} image, the configurations and database tables required for {{ site.data.keys.mf_server }} are created. This script also creates the database schema for the {{ site.data.keys.mf_server }}.
+{{site.data.keys.mf_server }} イメージの構成時に **prepareserverdbs.sh** スクリプトを実行した場合、{{site.data.keys.mf_server }} に必要な構成およびデータベース・テーブルが作成されます。このスクリプトは、{{site.data.keys.mf_server }}用のデータベース・スキーマも作成します。
 
-To remove the database service configuration from Bluemix, perform the following procedure using Bluemix dashboard.
+Bluemix からデータベース・サービス構成を削除するには、Bluemix ダッシュボードを使用して、以下の手順を実行します。
 
-1. From the Bluemix dashboard, select the dashDB service you have used. Choose the dashDB service name that you had provided as parameter while running the **prepareserverdbs.sh** script.
-2. Launch the dashDB console to work with the schemas and database objects of the selected dashDB service instance.
-3. Select the schemas related to IBM {{ site.data.keys.mf_server }} configuration. The schema names are ones that you have provided as parameters while running the **prepareserverdbs.sh** script.
-4. Delete each of the schema after carefully inspecting the schema names and the objects under them. The database configurations are removed from Bluemix.
+1. Bluemix ダッシュボードから、使用した dashDB サービスを選択します。**prepareserverdbs.sh** スクリプトの実行時にパラメーターとして指定した dashDB サービス名を選択します。
+2. 選択した dashDB サービス・インスタンスのスキーマおよびデータベース・オブジェクトを対処するために、dashDB コンソールを「起動」します。
+3. IBM {{site.data.keys.mf_server }} 構成に関連したスキーマを選択します。スキーマ名は、**prepareserverdbs.sh** スクリプトの実行時にパラメーターとして指定したスキーマ名です。
+4. スキーマ名とその下のオブジェクトを慎重に調べた後で、それぞれのスキーマを削除します。Bluemix からデータベース構成が削除されます。

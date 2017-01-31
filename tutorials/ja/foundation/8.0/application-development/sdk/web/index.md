@@ -1,59 +1,67 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Web Applications
+title: Web アプリケーションへの MobileFirst Foundation SDK の追加
 breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-You can develop mobile or Desktop {{ site.data.keys.product_adj }} web applications by using your preferred development environment and tools.  
-In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} web SDK to your web applicaiton, as well as how to register the web application with the {{ site.data.keys.mf_server }}
+任意の開発環境およびツールを使用して、モバイルまたはデスクトップの
+{{site.data.keys.product_adj }}
+Web アプリケーションを開発することができます。  
+このチュートリアルでは、{{site.data.keys.product_adj }} Web SDK を Web アプリケーションに追加する方法と、その Web アプリケーションを {{site.data.keys.mf_server }} に登録する方法について学習します。
 
-The {{ site.data.keys.product_adj }} web SDK is provided as a set of JavaScript files, [and is available at NPM](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
-The SDK includes the following files:
+{{site.data.keys.product_adj }} Web SDK は、JavaScript ファイルのセットとして提供されており、[ NPM で入手できます](https://www.npmjs.com/package/ibm-mfp-web-sdk)。  
+この SDK には、次のファイルが含まれています。
 
-- **ibmmfpf.js** - The core of the SDK.
-- **ibmmfpfanalytics.js** - Provides support for {{ site.data.keys.mf_analytics }}.
+- **ibmmfpf.js**: SDK のコアです。
+- **ibmmfpfanalytics.js**: {{site.data.keys.mf_analytics }} がサポートされるようにします。
 
-#### Jump to
+**前提条件:**
+NPM コマンドを実行するには、[Node.js](https://nodejs.org) が必要です。
+
+#### SDK の制限事項
+{: #sdk-limitations }
+表に記載された番号は、そのブラウザーが最初に完全にサポートされたときのバージョンです。
+
+|      ブラウザー      | Chrome | Safari* | Internet Explorer | Firefox | Android ブラウザー |
+|:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
+| サポートされるバージョン |   43+  |    8+   |        10+        |   38+   |   Android 4.3+  |
+
+(*) プライベート・ブラウズ・モードは、シングル・ページ・アプリケーションのみで機能します。その他のアプリケーションでは、予期しない動作になることがあります。
+
+#### ジャンプ先:
 {: #jump-to }
-- [Prerequisites](#prerequisites)
-- [Adding the {{ site.data.keys.product_adj }} web SDK](#adding-the-mobilefirst-web-sdk)
-- [Initializing the {{ site.data.keys.product_adj }} web SDK](#initializing-the-mobilefirst-web-sdk)
-- [Registering the web application](#registering-the-web-application)
-- [Updating the {{ site.data.keys.product_adj }} web SDK](#updating-the-mobilefirst-web-sdk)
-- [Same Origin Policy](#same-origin-policy)
-- [Secure Origins Policy](#secure-origins-policy)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [{{site.data.keys.product_adj }} Web SDK の追加](#adding-the-mobilefirst-web-sdk)
+- [{{site.data.keys.product_adj }} Web SDK の初期化](#initializing-the-mobilefirst-web-sdk)
+- [Web アプリケーションの登録](#registering-the-web-application)
+- [{{site.data.keys.product_adj }}Web SDK の更新](#updating-the-mobilefirst-web-sdk)
+- [同一生成元ポリシー](#same-origin-policy)
+- [セキュア・オリジン・ポリシー ](#secure-origins-policy)
+- [次に使用するチュートリアル](#tutorials-to-follow-next)
 
-## Prerequisites
-{: #prerequisites }
--   See the [supported web browsers](../../../installation-configuration/development/web/#web-app-supported-browsers) prerequisite for setting up the web development environment.
-
--   To run NPM commands, you must install [Node.js](https://nodejs.org).
-
-## Adding the {{ site.data.keys.product_adj }} web SDK
+## {{site.data.keys.product_adj }} Web SDK の追加
 {: #adding-the-mobilefirst-web-sdk }
-To add the SDK to new or existing web applications, first download it to your workstation and then add it to your web application.
+SDK を新規または既存の Web アプリケーションに追加するには、まず最初に SDK をご使用のワークステーションにダウンロードした後、SDK を Web アプリケーションに追加します。
 
-### Downloading the SDK
+### SDK のダウンロード
 {: #downloading-the-sdk }
-1. From a **command-line** window, navigate to your web application's root folder.
-2. Run the command: `npm install ibm-mfp-web-sdk`.
+1. **コマンド・ライン**・ウィンドウで、Web アプリケーションのルート・フォルダーに移動します。
+2. 次のコマンドを実行します。`npm install ibm-mfp-web-sdk`。
 
-This command creates the following directory structure:
+このコマンドにより、次のようなディレクトリー構造が作成されます。
 
-![SDK folder contents](sdk-folder.png)
+![SDK フォルダーの内容](sdk-folder.png)
 
-### Adding the SDK
+### SDK の追加
 {: #adding-the-sdk }
-To add the {{ site.data.keys.product }} Web SDK, reference it in a standard fashion in the web application.  
-The SDK also [supports AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition), so that you can use Module Loaders such as [RequireJS](http://requirejs.org/) to load the SDK.
+{{site.data.keys.product }} Web SDK を追加するには、Web アプリケーション内で標準の方法で SDK を参照します。  
+また、この SDK は [AMD もサポート](https://en.wikipedia.org/wiki/Asynchronous_module_definition)しているので、[RequireJS](http://requirejs.org/) などのモジュール・ローダーを使用して SDK をロードすることができます。
 
-#### Standard
-Reference the **ibmmfpf.js** file in the `HEAD` element.  
+#### 標準
+`HEAD` エレメント内で **ibmmfpf.js** ファイルを参照します。  
 
 ```html
 <head>
@@ -63,7 +71,7 @@ Reference the **ibmmfpf.js** file in the `HEAD` element.
 </head>
 ```
 
-#### Using RequireJS
+#### RequireJS の使用
 
 **HTML**  
 
@@ -85,11 +93,11 @@ require(['mfp'], function(WL) {
 });
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** If adding Analytics support, place the **ibmmfpfanalytics.js** file reference **before** the **ibmmfpf.js** file reference.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** Analytics サポートを追加する場合は、**ibmmfpfanalytics.js** ファイル参照を、**ibmmfpf.js** ファイル参照の**前に**配置します。
 
-## Initializing the {{ site.data.keys.product_adj }} web SDK
+## {{site.data.keys.product_adj }} Web SDK の初期化
 {: #initializing-the-mobilefirst-web-sdk }
-Initialize the {{ site.data.keys.product }} web SDK by specifying the **context root** and **application ID** values in the main JavaScript file of your web application:
+**コンテキスト・ルート**と**アプリケーション ID** の値を、Web アプリケーションのメインの JavaScript ファイル内に指定することによって、{{site.data.keys.product }} Web SDK を初期化します。
 
 ```javascript
 var wlInitOptions = {
@@ -103,68 +111,72 @@ WL.Client.init(wlInitOptions).then (
 });
 ```
 
-- **mfpContextRoot:** The context root used by the {{ site.data.keys.mf_server }}.
-- **applicationId:** The application package name, as defined when you [register the application](#registering-the-web-application).
+- **mfpContextRoot:** {{site.data.keys.mf_server }} が使用するコンテキスト・ルート。
+- **applicationId:** [アプリケーションの登録](#registering-the-web-application)時に定義したアプリケーション・パッケージ名。
 
-### Registering the web application
+### Web アプリケーションの登録
 {: #registering-the-web-application }
-You can register applications either from the {{ site.data.keys.mf_console }} or from the {{ site.data.keys.mf_cli }}.
+アプリケーションの登録は、{{site.data.keys.mf_console }} から、または {{site.data.keys.mf_cli }} から行えます。
 
-#### From {{ site.data.keys.mf_console }}
+#### {{site.data.keys.mf_console }} から
 {: #from-mobilefirst-operations-console }
-1. Open your favorite browser and load the {{ site.data.keys.mf_console }} by entering the `http://localhost:9080/mfpconsole/` URL.
-2. Click the **New** button next to **Applications** to create a new application.
-3. Select **Web** as the platform, and provide a name and identifier.
-4. Click **Register application**.
+1. 好みのブラウザーを開き、`http://localhost:9080/mfpconsole/` という URL を入力することで {{site.data.keys.mf_console }} をロードします。
+2. **「アプリケーション」**の横の**「新規」**ボタンをクリックして、新規アプリケーションを作成します。
+3. プラットフォームとして**「Web」**を選択し、任意の名前と ID を指定します。
+4. **「アプリケーションの登録」**をクリックします。
 
-![Adding the Web platform](add-web-platform.png)
+![Web プラットフォームの追加](add-web-platform.png)
 
-#### From {{ site.data.keys.mf_cli }}
+#### {{site.data.keys.mf_cli }} から
 {: #from-mobilefirst-cli }
-From a **command-line** window, navigate to the root folder of the web application and run the command: `mfpdev app register`.
+**コマンド・ライン**・ウィンドウで、Web アプリケーションのルート・フォルダーに移動し、コマンド `mfpdev app register` を実行します。
 
-## Updating the {{ site.data.keys.product_adj }} web SDK
+## {{site.data.keys.product_adj }} Web SDK の更新
 {: #updating-the-mobilefirst-web-sdk }
-SDK releases can be found in the SDK [NPM repository](https://www.npmjs.com/package/ibm-mfp-web-sdk).  
-To update the {{ site.data.keys.product_adj }} web SDK with the latest release:
+SDK のリリースは、SDK の [NPM リポジトリー](https://www.npmjs.com/package/ibm-mfp-web-sdk)で調べることができます。  
+{{site.data.keys.product_adj }} Web SDK を最新リリースで更新するには、次のようにします。
 
-1. Navigate to the root folder of the web application.
-2. Run the command: `npm update ibm-mfp-web-sdk`.
+1. 当該 Web アプリケーションのルート・フォルダーに移動します。
+2. 次のコマンドを実行します。`npm update ibm-mfp-web-sdk`。
 
-## Same-origin policy
+## 同一生成元ポリシー
 {: #same-origin-policy }
-If web resources are hosted on a different server machine than the one that {{ site.data.keys.mf_server }} is installed on, a [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation is triggered. The same-origin-policy security model is designed to protect against potential security threats from unverified sources. According to this policy, a browser allows web resources (such as scripts) to interact only with resources that stem from the same origin (which is defined as a combination of URI scheme, host name, and port number). For more information about the same-origin policy, see The [Web Origin Concept](https://tools.ietf.org/html/rfc6454) specification, and specifically [3. Principles of the Same-Origin Policy](https://tools.ietf.org/html/rfc6454#section-3).
+{{site.data.keys.mf_server }} がインストールされているサーバー・マシンとは異なるサーバー・マシンで Web リソースがホストされていると、[同一生成元ポリシー](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)違反がトリガーされます。「同一生成元ポリシー」セキュリティー・モデルは、未検証のソースによる潜在的なセキュリティー脅威から保護することを目的としています。このポリシーに従って、ブラウザーは、Web リソース (スクリプトなど) が、同じ生成元 (URI スキーム、
+ホスト名、およびポート番号の組み合わせとして定義される) から生じているリソースのみと対話するようにします。
+同一生成元ポリシーについて詳しくは、[The Web Origin Concept](https://tools.ietf.org/html/rfc6454) の仕様、特に
+[3.
+Principles of the Same-Origin Policy](https://tools.ietf.org/html/rfc6454#section-3) を参照してください。
 
-Web apps that use the {{ site.data.keys.product_adj }} web SDK must be handled in a supporting topology. For example, use a reverse proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
+{{site.data.keys.product_adj }} Web SDK を使用した Web アプリケーションは、サポートするトポロジー内で処理される必要があります。例えば、同じ単一の生成元を維持しながら、要求を適切なサーバーに内部的にリダイレクトするには、リバース・プロキシーを使用します。
 
-### Alternatives
+### 代替方法
 {: #alternatives }
-You can meet the policy requirements by using either of the following methods:
+次のいずれかの方法を使用することで、ポリシー要件を満たせます。
 
-- Serving the web application resources, for example, from the same WebSphere Application Server Liberty profile application server that is used in the {{ site.data.keys.mf_dev_kit_full }}.
-- Using Node.js as a reverse proxy to redirect application requests to the {{ site.data.keys.mf_server }}.
+- 例えば、{{site.data.keys.mf_dev_kit_full }} で使用されているのと同じ WebSphere Application Server の Liberty プロファイル・アプリケーション・サーバーから、Web アプリケーション・リソースを提供する。
+- リバース・プロキシーとして Node.js を使用して、アプリケーション要求を {{site.data.keys.mf_server }} にリダイレクトする。
 
-> Learn more in [Setting up the Web development environmnt](../../../installation-configuration/development/web) tutorial
+> 詳しくは、[Web 開発環境のセットアップ](../../../installation-configuration/development/web)・チュートリアルを参照してください。
 
-## Secure-origins policy
+## セキュア・オリジン・ポリシー
 {: secure-origins-policy }
-When you use Chrome during development, the browser might not allow an application to load if it uses both HTTP and a host that **is not** `localhost`. The cause is the secure-origins policy that is implemented and used by default in this browser.
+開発中に Chrome を使用すると、`localhost` では**ない**ホストと HTTP の両方を使用するアプリケーションのロードを、この ブラウザーが許可しない場合があります。原因は、このブラウザーに実装され、デフォルトで使用される、セキュア・オリジン・ポリシーです。
 
-To overcome this, you can start the Chrome browser with the following flag:
+これに対処するため、次のフラグを付けて Chrome ブラウザーを開始することができます。
 
 ```bash
 --unsafely-treat-insecure-origin-as-secure="http://replace-with-ip-address-or-host:port-number" --user-data-dir=/test-to-new-user-profile/myprofile
 ```
 
-- Replace "test-to-new-user-profile/myprofile" with the location of a folder that will act as a new Chrome user profile for the flag to work.
+- 「test-to-new-user-profile/myprofile」は、フラグが機能するよう、新しい Chrome ユーザー・プロファイルとしての役目を果たすフォルダーの場所に置き換えます。
 
-Read more about Secure Origins [in this Chormium developer document](https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features).
+セキュア・オリジンについて詳しくは、[この Chormium 開発者向け資料](https://www.chromium.org/Home/chromium-security/prefer-secure-origins-for-powerful-new-features)をお読みください。
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product_adj }} web SDK now integrated, you can now:
+これで {{site.data.keys.product_adj }} Web SDK が組み込まれたので、以下の作業を行うことができます。
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review [All Tutorials](../../../all-tutorials)
+- [{{site.data.keys.product }} SDK の使用に関するチュートリアル](../)を検討する
+- [アダプター開発に関するチュートリアル](../../../adapters/)を検討する
+- [認証とセキュリティーに関するチュートリアル](../../../authentication-and-security/)を検討する
+- [すべてのチュートリアル](../../../all-tutorials)を検討する

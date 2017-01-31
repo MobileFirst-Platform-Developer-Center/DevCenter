@@ -1,49 +1,48 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in iOS
+title: iOS でのプッシュ通知の処理
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 5
 downloads:
-  - name: Download Xcode project
+  - name: Xcode プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in iOS applications using Swift.
+{{site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、Swift を使用して iOS アプリケーションでプッシュ通知を処理する方法について学習します。
 
-For information about Silent or Interactive notifications, see:
+サイレント通知または対話式通知については、以下を参照してください。
 
-* [Silent notifications](../silent)
-* [Interactive notifications](../interactive)
+* [サイレント通知](../silent)
+* [対話式通知](../interactive)
 
-**Prerequisites:**
+**前提条件**
 
-* Make sure you have read the following tutorials:
-	* [Push Notifications Overview](../../)
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* 必ず、以下のチュートリアルをお読みください。
+	* [プッシュ通知の概要](../../)
+    * [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
+    * [iOS アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/ios)
+* ローカルで稼働している {{site.data.keys.mf_server }}、またはリモートで稼働している {{site.data.keys.mf_server }}
+* 開発者ワークステーションに {{site.data.keys.mf_cli }} がインストールされていること
 
 
-### Jump to:
+### ジャンプ先:
 {: #jump-to }
-* [Notifications configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
+* [通知構成](#notifications-configuration)
+* [通知 API](#notifications-api)
+* [プッシュ通知の処理](#handling-a-push-notification)
 
 
-### Notifications Configuration
+### 通知構成
 {: #notifications-configuration }
-Create a new Xcode project or use and existing one.
-If the {{ site.data.keys.product_adj }} Native iOS SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios) tutorial.
+新しい Xcode プロジェクトを作成するか、または既存のプロジェクトを使用します。{{site.data.keys.product_adj }} Native iOS SDK がプロジェクトにまだ存在しない場合は、[iOS  アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/ios)チュートリアルの説明に従ってください。
 
 
-### Adding the Push SDK
+### プッシュ SDK の追加
 {: #adding-the-push-sdk }
-1. Open the project's existing **podfile** and add the following lines:
+1. プロジェクトの既存の **podfile** を開き、以下の行を追加します。
 
    ```xml
    use_frameworks!
@@ -70,55 +69,55 @@ If the {{ site.data.keys.product_adj }} Native iOS SDK is not already present in
         end
    end
    ```
-    - Replace **Xcode-project-target** with the name of your Xcode project's target.
+    - 使用する Xcode プロジェクトのターゲットの名前で **Xcode-project-target** を置き換えてください。
 
-2. Save and close the **podfile**.
-3. From a **Command-line** window, navigate into to the project's root folder.
-4. Run the command `pod install`
-5. Open project using the **.xcworkspace** file.
+2. **podfile** を保存して閉じます。
+3. **コマンド・ライン**・ウィンドウからプロジェクトのルート・フォルダーにナビゲートします。
+4. コマンド `pod install` を実行します。
+5. **.xcworkspace** ファイルを使用して、プロジェクトを開きます。
 
-## Notifications API
+## 通知 API
 {: #notifications-api }
-### MFPPush Instance
+### MFPPush インスタンス
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be done by using a `var` in a view controller such as `var push = MFPPush.sharedInstance();`, and then calling `push.methodName()` throughout the view controller.
+すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。これを行うには、View Controller 内で `var` を使用し (`var push = MFPPush.sharedInstance();` など)、その後、View Controller 内で一貫して `push.methodName()` を呼び出します。
 
-Alternatively you can call `MFPPush.sharedInstance().methodName()` for each instance in which you need to access the push API methods.
+代わりに、プッシュ API メソッドにアクセスする必要があるインスタンスごとに `MFPPush.sharedInstance().methodName()` を呼び出すこともできます。
 
-### Challenge Handlers
+### チャレンジ・ハンドラー
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+`push.mobileclient` スコープが**セキュリティー検査**にマップされる場合、プッシュ API を使用する前に、一致する**チャレンジ・ハンドラー**が存在し、登録済みであることを確認する必要があります。
 
-> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/ios) tutorial.
+> チャレンジ・ハンドラーについて詳しくは、[資格情報の検証](../../../authentication-and-security/credentials-validation/ios)チュートリアルを参照してください。
 
-### Client-side
+### クライアント・サイド
 {: #client-side }
-| Swift Methods                                                                                                | Description                                                             |
+| Swift メソッド                                                                                                | 説明                                                             |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
-| [`isPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
-| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token)                                                | Sends the device token to the server                                    |
-| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
-| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
-| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
-| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
-| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
+| [`initialize()`](#initialization)                                                                            | 提供されたコンテキストの MFPPush を初期化します。                               |
+| [`isPushSupported()`](#is-push-supported)                                                                    | デバイスがプッシュ通知をサポートするかどうか。                             |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token)                  | デバイスをプッシュ通知サービスに登録します。               |
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token)                                                | デバイス・トークンをサーバーに送信します。                                    |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | 指定されたタグにデバイスをサブスクライブします。                          |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | デバイスが現在サブスクライブしているタグをすべて取得します。               |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | 特定のタグからアンサブスクライブします。                                  |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | プッシュ通知サービスからデバイスを登録抹消します。              |
 
-#### Initialization
+#### 初期化
 {: #initialization }
-Initialization is required for the client application to connect to MFPPush service.
+初期化は、クライアント・アプリケーションが MFPPush サービスに接続するために必要です。
 
-* The `initialize` method should be called first before using any other MFPPush APIs.
-* It registers the callback function to handle received push notifications.
+* 最初に `initialize` メソッドを呼び出してから、その他の MFPPush API を使用する必要があります。
+* このメソッドは、受け取ったプッシュ通知を処理するコールバック関数を登録します。
 
 ```swift
 MFPPush.sharedInstance().initialize();
 ```
 
-#### Is push supported
+#### プッシュがサポートされるか
 {: #is-push-supported }
-Checks if the device supports push notifications.
+デバイスがプッシュ通知をサポートするかどうかをチェックします。
 
 ```swift
 let isPushSupported: Bool = MFPPush.sharedInstance().isPushSupported()
@@ -130,9 +129,9 @@ if isPushSupported {
 }
 ```
 
-#### Register device &amp; send device token
+#### デバイスの登録 &amp; デバイス・トークンの送信
 {: #register-device--send-device-token }
-Register the device to the push notifications service.
+デバイスをプッシュ通知サービスに登録します。
 
 ```swift
 MFPPush.sharedInstance().registerDevice({(options, response: WLResponse!, error: NSError!) -> Void in
@@ -144,17 +143,17 @@ MFPPush.sharedInstance().registerDevice({(options, response: WLResponse!, error:
 })
 ```
 
-`options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request, sends the device token to the server to register the device with its unique identifier.
+`options` = `[NSObject : AnyObject]` これはオプション・パラメーターであり、登録要求と一緒に渡すオプションのディクショナリーです。デバイスの固有 ID を使用してデバイスを登録するために、デバイス・トークンをサーバーに送信します。
 
 ```swift
 MFPPush.sharedInstance().sendDeviceToken(deviceToken)
 ```
 
-> **Note:** This is typically called in the **AppDelegate** in the `didRegisterForRemoteNotificationsWithDeviceToken` method.
+> **注:** これは一般的に `didRegisterForRemoteNotificationsWithDeviceToken` メソッドの **AppDelegate** 内で呼び出されます。
 
-#### Get tags
+#### タグの取得
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+プッシュ通知サービスからすべての使用可能なタグを取得します。
 
 ```swift
 MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Void in
@@ -173,9 +172,9 @@ MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Vo
 ```
 
 
-#### Subscribe
+#### サブスクライブ
 {: #subscribe }
-Subscribe to desired tags.
+目的のタグにサブスクライブします。
 
 ```swift
 var tagsArray: [AnyObject] = ["Tag 1" as AnyObject, "Tag 2" as AnyObject]
@@ -190,9 +189,9 @@ MFPPush.sharedInstance().subscribe(self.tagsArray, completionHandler: {(response
 ```
 
 
-#### Get subscriptions
+#### サブスクリプションの取得
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+デバイスが現在サブスクライブしているタグを取得します。
 
 ```swift
 MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSError!) -> Void in
@@ -205,9 +204,9 @@ MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSErro
 ```
 
 
-#### Unsubscribe
+#### アンサブスクライブ
 {: #unsubscribe }
-Unsubscribe from tags.
+タグからアンサブスクライブします。
 
 ```swift
 var tags: [String] = {"Tag 1", "Tag 2"};
@@ -222,9 +221,9 @@ MFPPush.sharedInstance().unsubscribe(tags, completionHandler: {(response: WLResp
 })
 ```
 
-#### Unregister
+#### 登録抹消
 {: #unregister }
-Unregister the device from push notification service instance.
+プッシュ通知サービス・インスタンスからデバイスを登録抹消します。
 
 ```swift
 MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
@@ -237,12 +236,12 @@ MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSErro
 })
 ```
 
-## Handling a push notification
+## プッシュ通知の処理
 {: #handling-a-push-notification }
 
-Push notifications are handled by the native iOS framework directly. Depending on your application lifecyle, different methods will be called by the iOS framework.
+プッシュ通知は、ネイティブ iOS フレームワークによって直接的に処理されます。アプリケーション・ライフサイクルに応じて、いろいろなメソッドが iOS フレームワークによって呼び出されます。
 
-For example if a simple notification is received while the application is running, **AppDelegate**'s `didReceiveRemoteNotification` will be triggered:
+例えば、アプリケーションの実行中に単純な通知を受け取った場合は、**AppDelegate** の `didReceiveRemoteNotification` がトリガーされます。
 
 ```swift
 func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
@@ -257,14 +256,14 @@ func application(application: UIApplication, didReceiveRemoteNotification userIn
 }
 ```
 
-> Learn more about handling notifications in iOS from the Apple documentation: http://bit.ly/1ESSGdQ
+> iOS での通知の処理について詳しくは、Apple の資料 (http://bit.ly/1ESSGdQ) を参照してください。
 
-<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
+<img alt="サンプル・アプリケーションのイメージ" src="notifications-app.png" style="float:right"/>
 
-## Sample application
+## サンプル・アプリケーション
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) the Xcode project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) して Xcode プロジェクトをダウンロードします。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

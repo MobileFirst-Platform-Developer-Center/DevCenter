@@ -1,47 +1,47 @@
 ---
 layout: tutorial
-title: Using MobileFirst Server to authenticate external resources
-breadcrumb_title: Protecting External Resources
+title: MobileFirst Server を使用した外部リソースの認証
+breadcrumb_title: 外部リソースの保護
 relevantTo: [android,ios,windows,javascript]
 weight: 12
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Protected resources can run on the {{ site.data.keys.mf_server }} (such as **Adapters**), or on **external servers**. You can protect resources on external servers by using the validation modules that are provided with {{ site.data.keys.product }}.
+保護リソースは、{{site.data.keys.mf_server }} 上で実行することも (例えば、**アダプターなど**)、**外部サーバー**上で実行することもできます。{{site.data.keys.product }} に付属の検証モジュールを使用して、外部サーバー上のリソースを保護できます。
 
-In this tutorial, you learn how to protect an external **resource server** by implementing a **filter** that validates a {{ site.data.keys.product_adj }} **access token**.  
-You can implement such protection either entirely with custom code, or by using one of the {{ site.data.keys.product }} helper libraries that encapsulate part of the flow.
+このチュートリアルでは、{{site.data.keys.product_adj }} **アクセス・トークン**を検証する**フィルター**を実装することにより、外部**リソース・サーバー**を保護する方法を学習します。  
+そのような保護を実装する際は、すべてをカスタム・コードにすることも、フローの一部をカプセル化した {{site.data.keys.product }} ヘルパー・ライブラリーのいずれかを使用することもできます。
 
-**Prerequesite:**  
+**前提条件:**  
 
-* Understanding of the [{{ site.data.keys.product_adj }} security framework](../).
+* [{{site.data.keys.product_adj }} セキュリティー・フレームワーク](../)の知識が必要です。
 
-## Flow
+## フロー
 {: #flow }
-![Protecting external resources diagram](external_resources_flow.jpg)
+![外部リソースの保護のダイアグラム](external_resources_flow.jpg)
 
-The {{ site.data.keys.mf_server }} has a component called the **introspection endpoint** which is capable of validating and extracting data from a {{ site.data.keys.product_adj }} **access token**. This introspection endpoint is available via a REST API.
+{{site.data.keys.mf_server }} には、**イントロスペクション・エンドポイント**というコンポーネントがあります。このコンポーネントで、{{site.data.keys.product_adj }} **アクセス・トークン**に含まれるデータを検証したり、それらのデータを抽出したりできます。このイントロスペクション・エンドポイントは REST API 経由で使用できます。
 
-1. An application with the {{ site.data.keys.product }} client SDK makes a resource request call (or any HTTP request) to a protected resource with or without the `Authorization` header (**client access token**).
-2. To communicate with the introspection endpoint, the **filter** on the resource server needs to obtain a separate token for itself (see the **confidential client** section).
-3. The **filter** on the resource server extracts the **client access token** from step 1, and sends it to the introspection endpoint for validation.
-4. If the {{ site.data.keys.product_adj }} Authorization Server determined that the token is invalid (or doesn't exist), the resource server redirects the client to obtain a new token for the required scope. This part happens internally when the {{ site.data.keys.product_adj }} lient SDK is used.
+1. アプリケーションが {{site.data.keys.product }} クライアント SDK を使用して、保護リソースに対するリソース要求呼び出し (または HTTP 要求) を行います。要求には、`Authorization` ヘッダー (**クライアント・アクセス・トークン**) が付いている場合もあれば、ない場合もあります。
+2. イントロスペクション・エンドポイントと通信するために、リソース・サーバー上の**フィルター**は、それ自身のために別のトークンを取得する必要があります (**機密クライアント**のセクションを参照してください)。
+3. リソース・サーバー上の**フィルター**は、ステップ 1 の**クライアント・アクセス・トークン**を抽出し、それを検証のためにイントロスペクション・エンドポイントに送信します。
+4. {{site.data.keys.product_adj }} 許可サーバーがトークンを無効 (またはトークンが存在しない) と判断した場合、クライアントは、必要なスコープ用の新しいトークンを取得するためにリソース・サーバーによってリダイレクトされます。{{site.data.keys.product_adj }} クライアント SDK が使用される場合、この部分は内部で行われます。
 
-## Confidential Client
+## 機密クライアント
 {: #confidential-client }
-Because the introspection endpoint is an internal resource protected by the scope `authorization.introspect`, the resource server needs to obtain a separate token in order to send any data to it. If you attempt to make a request to the introspection endpoint without an authorization header, a 401 response is returned.
+イントロスペクション・エンドポイントはスコープ `authorization.introspect` によって保護されている内部リソースであるため、リソース・サーバーは、そこにデータを送信するために別のトークンを取得する必要があります。許可ヘッダーを付けずにイントロスペクション・エンドポイントへの要求を試行すると、401 応答が返されます。
 
-For the external resource server to be able to request a token for the `authorization.introspect` scope, the server needs to be registered as a **confidential client** via the {{ site.data.keys.mf_console }}.  
+外部リソース・サーバーが `authorization.introspect` スコープ用のトークンを要求できるようにするには、{{site.data.keys.mf_console }} からそのサーバーを**機密クライアント**として登録する必要があります。  
 
-> Learn more in the [Confidential Clients](../confidential-clients/) tutorial.
+> [機密クライアント](../confidential-clients/)のチュートリアルで詳細を参照してください。
 
-In the {{ site.data.keys.mf_console }}, under **Settings → Confidential Clients**, add a new entry. Choose a **client ID** and **API secret** value. Make sure to set `authorization.introspect` as the **Allowed Scope**.
+{{site.data.keys.mf_console }} で、**「設定」→「機密クライアント」**の下に新規エントリーを追加します。**「クライアント ID」**と**「クライアント秘密鍵」**の値を選択します。**「許可されるスコープ」**に、必ず `authorization.introspect` を設定してください。
 
-<img class="gifplayer" alt="Configurting a confidential client" src="confidential-client.png"/>
+<img class="gifplayer" alt="機密クライアントの構成" src="confidential-client.png"/>
 
-## Implementations
+## 実装
 {: #implementations }
-This flow can be implemented manually by making HTTP requests directly to the various REST APIs (see documentation).  
-{{ site.data.keys.product }} also provides libraries to help you achieve this on **WebSphere** servers by using the provided **Trust Association Interceptor**, or any other Java-based filter using the provided **Java Token Validator**:
+このフローは、さまざまな REST API に直接 HTTP 要求を行うことにより、手動で実装できます (資料を参照してください)。  
+{{site.data.keys.product }} は、提供される**トラスト・アソシエーション・インターセプター**を使用するか、または提供される **Java トークン・バリデーター**を使用するその他の任意の Java ベース・フィルターを使用して、**WebSphere** サーバー上でこれを実現するのを支援するためのライブラリーも提供しています。

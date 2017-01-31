@@ -1,68 +1,67 @@
 ---
-layout: tutorial
-title: What's new
-weight: 1
+レイアウト: チュートリアル
+表題: 新機能
+ウェイト: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-{{ site.data.keys.product_full }} V8.0 brings significant changes that modernize your {{ site.data.keys.product_adj }} application development, deployment, and management experience.
+{{site.data.keys.product_full }} V8.0 では、{{site.data.keys.product_adj }} アプリケーションの開発、デプロイメント、および管理を最新の方法でできるようにする大幅な変更が加えられています。
 
 <div class="panel-group accordion" id="release-notes" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-building-apps" aria-expanded="true" aria-controls="collapse-building-apps">What's new in building apps</a>
-            </h4>
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-building-apps" aria-expanded="true" aria-controls="collapse-building-apps">アプリケーションのビルドの新機能</a></h4>
         </div>
 
         <div id="collapse-building-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="building-apps">
             <div class="panel-body">
-                <p>The {{ site.data.keys.product }} SDK and command-line interface have been redesigned to give you greater flexibility and efficiency when developing your apps. Also, you can now use any of your preferred Cordova tools when you develop cross-platform apps.</p>
+                <p>{{site.data.keys.product }} SDK およびコマンド・ライン・インターフェースは、アプリケーションの開発時の柔軟性と効率を高めるように再設計されました。また、クロスプラットフォーム・アプリケーションの開発時に、任意の Cordova ツールを使用できるようになりました。</p>
 
-                <p>Review the following sections to learn what is new for developing your apps.</p>
+                <p>以下のセクションで、アプリケーション開発のための新機能について確認してください。</p>
 
-                <h3>New development and deployment process</h3>
-                <p>You no longer create a project WAR file that needs to be installed in the application server. Instead, the {{ site.data.keys.mf_server }} is installed once, and you upload the server-side configuration of your apps, of the resource security or of the push service to the server. You can modify the configuration of your apps with the {{ site.data.keys.mf_console }}.</p>
+                <h3>新しい開発およびデプロイメントのプロセス</h3>
+                <p>アプリケーション・サーバーにインストールする必要のあるプロジェクト WAR ファイルを作成することはありません。代わりに、{{site.data.keys.mf_server }} が 1 度インストールされたら、アプリケーション、リソース・セキュリティー、またはプッシュ・サービスのサーバー・サイド構成をサーバーにアップロードしてください。{{site.data.keys.mf_console }} を使用してアプリケーションの構成を変更することができます。</p>
 
-                <p>{{ site.data.keys.product_adj }} projects no longer exist. Instead, you develop your mobile app with the development environment of your choice.<br/>
-                You can modify the server-side configuration of your apps and adapters without stopping the {{ site.data.keys.mf_server }}.</p>
+                <p>{{site.data.keys.product_adj }} プロジェクトは、存在しなくなりました。代わりに、任意の開発環境を使用してモバイル・アプリケーションを開発してください。<br/>
+                {{site.data.keys.mf_server }} を停止することなく、アプリケーションおよびアダプターのサーバー・サイド構成を変更することができます。</p>
 
                 <ul>
-                    <li>For more information about the new development process, see <a href="../../../application-development/">Development concepts and overview</a></li>
-                    <li>For more information about the migration of existing applications, see <a href="../../../upgrading/migration-cookbook">the Migrating Cookbook</a>.</li>
-                    <li>For more information about administering {{ site.data.keys.product_adj }} applications, see Administering {{ site.data.keys.product_adj }} applications.</li>
+                    <li>新しい開発プロセスについて詳しくは、『<a href="../../../application-development/">開発の概念および概要 (Development concepts and overview)</a>』を参照してください。</li>
+                    <li>既存のアプリケーションのマイグレーションについて詳しくは、<a href="../../../upgrading/migration-cookbook">マイグレーションの手引き</a>を参照してください。</li>
+                    <li>{{site.data.keys.product_adj }} アプリケーションの管理について詳しくは、『{{site.data.keys.product_adj }} アプリケーションの管理』を参照してください。</li>
                 </ul>
 
-                <h3>Web applications</h3>
-                <p>You can now use the {{ site.data.keys.product_adj }} client-side JavaScript API to develop web applications with your preferred tools and IDE. You can register your web application to {{ site.data.keys.mf_server }} to add security capabilities to the application.</p>
+                <h3>Web アプリケーション</h3>
+                <p>{{site.data.keys.product_adj }} クライアント・サイド JavaScript API を使用することで、任意のツールおよび IDE によって Web アプリケーションを開発できるようになりました。Web アプリケーションを {{site.data.keys.mf_server }} に登録して、セキュリティー機能をアプリケーションに追加することができます。</p>
 
-                <p>You can also use the new client-side JavaScript web analytics API, which is provided as part of the new web SDK, to add {{ site.data.keys.mf_analytics }} capabilities to your web application.</p>
+                <p>新規 Web SDK の一部として提供される新しいクライアント・サイド JavaScript Web 分析 API を使用して、{{site.data.keys.mf_analytics }} 機能を Web アプリケーションに追加することもできます。</p>
 
-                <h3>Develop cross-platform apps with your preferred Cordova tools</h3>
-                <p>You can now use your preferred Cordova tools (such as Apache Cordova CLI or Ionic Framework) to develop your cross-platform hybrid apps. You obtain these tools independently of {{ site.data.keys.product }}, and then add {{ site.data.keys.product_adj }} plug-ins to provide {{ site.data.keys.product_adj }} back-end capabilities.</p>
+                <h3>任意の Cordova ツールを使用したクロスプラットフォーム・アプリケーションの開発</h3>
+                <p>任意の Cordova ツール (Apache Cordova CLI または Ionic フレームワークなど) を使用して、クロスプラットフォーム・ハイブリッド・アプリケーションを開発できるようになりました。これらのツールを {{site.data.keys.product }} とは別個に入手し、{{site.data.keys.product_adj }} プラグインを追加して、{{site.data.keys.product_adj }} のバックエンドの機能を提供します。</p>
 
-                <p>You can install the {{ site.data.keys.product }} Studio Eclipse plug-in to manage your cross-platform Cordova apps that are enabled with {{ site.data.keys.product }} in the Eclipse development environment. The {{ site.data.keys.product }} Studio plug-in also provides additional {{ site.data.keys.mf_cli }} commands that you can run from within the Eclipse environment.</p>
+                <p>{{site.data.keys.product }} Studio Eclipse プラグインをインストールして、Eclipse 開発環境で {{site.data.keys.product }} に対応するクロスプラットフォーム Cordova アプリケーションを管理することができます。{{site.data.keys.product }} Studio プラグインは、Eclipse 環境内から実行できる追加的な {{site.data.keys.mf_cli }} コマンドも提供します。</p>
 
-                <h3>SDK componentization</h3>
-                <p>Previously {{ site.data.keys.product_adj }} client SDK was delivered as a single framework or JAR file. You can now choose to include or exclude specific functionalities. In addtion to the core SDK, each {{ site.data.keys.product_adj }} API has its own set of optional components.</p>
+                <h3>SDK のコンポーネント化</h3>
+                <p>以前は、{{site.data.keys.product_adj }} クライアント SDK は単一のフレームワークまたは JAR ファイルとして提供されていました。現在は、特定の機能を含めたり除外したりすることができるようになりました。各 {{site.data.keys.product_adj }} API には、コア SDK に加えて、独自のオプション・コンポーネントのセットがあります。</p>
 
-                <h3>New, improved development command-line interface (CLI)</h3>
-                <p>The {{ site.data.keys.mf_cli }} has been redesigned for greater development efficiency, including for use in automated scripts. Commands now start with the prefix mfpdev. The CLI is included in the {{ site.data.keys.mf_dev_kit_full }}, or you can quickly download the latest version of the CLI from npm.</p>
+                <h3>新規または改善された開発用コマンド・ライン・インターフェース (CLI)</h3>
+                <p>{{site.data.keys.mf_cli }} は、自動化されたスクリプトでの使用を含め、開発の効率を高めるように再設計されました。コマンドには mfpdev というプレフィックスが付けられるようになりました。CLI は {{site.data.keys.mf_dev_kit_full }} に組み込まれています。npm から CLI の最新バージョンを素早くダウンロードすることもできます。</p>
 
-                <h3>Migration assistance tool</h3>
-                <p>A migration assistance tool simplifies the procedure of migrating your existing apps to {{ site.data.keys.product }} version 8.0. The tool scans your existing {{ site.data.keys.product_adj }} apps and creates a list of the APIs that are used in the file that are either removed, deprecated, or replaced in version 8.0. When you run the migration assistance tool on Apache Cordova applications that were created with the {{ site.data.keys.product }}, it creates a new Cordova structure for the app that is compliant with version 8.0. For more information about the migration assistance tool.</p>
+                <h3>マイグレーション・アシスト・ツール</h3>
+                <p>マイグレーション・アシスト・ツールによって、既存のアプリケーションを {{site.data.keys.product }} バージョン 8.0 にマイグレーションする手順が簡素化されます。このツールは、既存の {{site.data.keys.product_adj }} アプリケーションをスキャンし、ファイル内で使用されている API のうちで、バージョン 8.0 で削除されたか、非推奨になったか、置き換えられた API のリストを作成します。{{site.data.keys.product }} で作成された Apache Cordova アプリケーションでマイグレーション・アシスト・ツールを実行すると、そのアプリケーション用に、バージョン 8.0 に準拠する新しい Cordova 構造が作成されます。マイグレーション・アシスト・ツールについては詳細情報があります。</p>
 
                 <h3>Cordova Crosswalk WebView</h3>
-                <p>Starting with Cordova 4.0 the pluggable WebView allows the default web runtime to be replaced. Crosswalk is now supported by Cordova applications with {{ site.data.keys.product }}. Using the Crosswalk WebView for Android allows high performance and consistent user experience across a wide range of mobile devices. To take advantage of the Crosswalk capabilities, apply the Cordova Crosswalk plug-in.</p>
+                <p>Cordova 4.0 以降、プラグ可能な WebView を、デフォルトの Web ランタイムの代わりに使用できるようになりました。Crosswalk は、{{site.data.keys.product }} を使用する Cordova アプリケーションでサポートされるようになりました。Android 用の Crosswalk WebView を使用すると、広範なモバイル・デバイスにわたって高いパフォーマンスと一貫した使用感を実現できます。Crosswalk 機能を利用するには、Cordova Crosswalk プラグインを適用します。</p>
 
-                <h3>Distributing {{ site.data.keys.product_adj }} SDK for Windows 8 and Windows 10 Universal apps with NuGet</h3>
-                <p>The {{ site.data.keys.product_adj }} SDK for Windows 8 and Windows 10 Universal apps is available from NuGet at <a href="https://www.nuget.org/packages">https://www.nuget.org/packages</a>. To get started.</p>
+                <h3>NuGet を使用した Windows 8 および Windows 10 ユニバーサル・アプリケーション用の {{site.data.keys.product_adj }} SDK の配布</h3>
+                <p>Windows 8 および Windows 10 ユニバーサル・アプリケーション用の {{site.data.keys.product_adj }} SDK は、NuGet (<a href="https://www.nuget.org/packages">https://www.nuget.org/packages</a>) から入手できます。開始します。</p>
 
-                <h3>org.apache.http replaced by okHttp</h3>
-                <p><code>org.apache.http</code> has been removed from the Android SDK. okHttp will be used as the http dependency.</p>
+                <h3>org.apache.http が okHttp に置き換えられる</h3>
+                <p><code>org.apache.http</code> は Android SDK から削除されました。okHttp が、http の依存関係として使用されます。</p>
 
-                <h3>WKWebView support for iOS hybrid Cordova apps</h3>
-                <p>You can now replace the default UIWebView in Cordova apps with WKWebView.</p>
+                <h3>iOS ハイブリッド Cordova アプリケーション用の WKWebView のサポート</h3>
+                <p>Cordova アプリケーション内のデフォルトの UIWebView を WKWebView に置き換えることができるようになりました。</p>
             </div>
         </div>
     </div>
@@ -70,70 +69,70 @@ weight: 1
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-apis">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-apis" aria-expanded="true" aria-controls="collapse-mobilefirst-apis">What's new in MobileFirst APIs</a>
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-apis" aria-expanded="true" aria-controls="collapse-mobilefirst-apis">MobileFirst	API の新機能</a>
             </h4>
         </div>
 
         <div id="collapse-mobilefirst-apis" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-apis">
             <div class="panel-body">
-                <p>New features improve and extend the APIs that you can use to develop mobile applications. Use the latest APIs to take advantage of new, improved, or changed functions in {{ site.data.keys.product }}.</p>
+                <p>新機能により、モバイル・アプリケーションの開発に使用できる API が改善および拡張されています。{{site.data.keys.product }} の新機能、改善された機能、または変更された機能を利用するには、最新の API を使用してください。</p>
                 
-                <h3>Updated JavaScript server-side API</h3>
-                <p>Back-end invocation functions are supported only for adapter types that are supported. Currently, only HTTP and SQL adapters are supported, so back-end invokers <code>WL.Server.invokeHttp</code> and <code>WL.Server.invokeSQL</code> are supported, too.</p>
+                <h3>JavaScript サーバー・サイド API の更新</h3>
+                <p>バックエンド呼び出し関数は、サポートされるアダプター・タイプのみでサポートされます。現在は、HTTP アダプターおよび SQL アダプターのみがサポートされているため、バックエンド呼び出し関数 <code>WL.Server.invokeHttp</code> および <code>WL.Server.invokeSQL</code> もサポートされています。</p>
 
-                <h3>New Java server-side API</h3>
-                <p>A new Java server-side API is provided, which you can use to extend {{ site.data.keys.mf_server }}.</p>
+                <h3>新規 Java サーバー・サイド API</h3>
+                <p>新しい Java サーバー・サイド API が提供され、これを使用して {{site.data.keys.mf_server }} を拡張できます。</p>
 
-                <h4>New Java server-side API for security</h4>
-                <p>The new security API package, <code>com.ibm.mfp.server.security.external</code>, and its contained packages, include the interfaces that are required for developing security checks and adapters that use the security-check context.</p>
+                <h4>セキュリティー用の新規 Java サーバー・サイド API</h4>
+                <p>新しいセキュリティー API パッケージ <code>com.ibm.mfp.server.security.external</code> と、それに格納されているパッケージには、セキュリティー検査およびセキュリティー検査コンテキストを使用するアダプターを開発するために必要なインターフェースが含まれています。</p>
                 
-                <h4>New Java server-side API for client registration data</h4>
-                <p>The new client registration-data API package, <code>com.ibm.mfp.server.registration.external</code>, and its contained packages, include an interface for providing access to persistent {{ site.data.keys.product_adj }} client registration data.</p>
+                <h4>クライアント登録データ用の新規 Java サーバー・サイド API</h4>
+                <p>新しいクライアント登録データ API パッケージ <code>com.ibm.mfp.server.registration.external</code> と、それに格納されているパッケージには、永続的な {{site.data.keys.product_adj }} クライアント登録データへのアクセスを提供するインターフェースが含まれています。</p>
                 
                 <h4>Application getJaxRsApplication()</h4>
-                <p>With this new API, you can return the JAX-RS application for the adapter.</p>
+                <p>この新しい API を使用して、アダプターの JAX-RS アプリケーションを返すことができます。</p>
 
                 <h4>String getPropertyValue (String propertyName)</h4>
-                <p>With this new API, you can get the value from the adapter configuration (or default value).</p>
+                <p>この新しい API を使用して、アダプター構成からの値 (またはデフォルト値) を取得することができます。</p>
 
-                <h3>Updated Java server-side API</h3>
-                <p>An updated Java server-side API is provided, which you can use to extend {{ site.data.keys.mf_server }}.</p>
+                <h3>Java サーバー・サイド API の更新</h3>
+                <p>更新された Java サーバー・サイド API が提供され、これを使用して {{site.data.keys.mf_server }} を拡張できます。</p>
 
                 <h4>getMFPConfigurationProperty(String name)</h4>
-                <p>The signature of this new API has not changed in this version. However, its behavior is now identical to that of <code>String getPropertyValue (String propertyName)</code>, which is described in New Java server-side API.</p>
+                <p>この新しい API のシグニチャーは、このバージョンでは変更されていません。ただし、その動作は、新しい Java サーバー・サイド API で説明されている <code>String getPropertyValue (String propertyName)</code> の動作と同一になりました。</p>
 
                 <h4>WLServerAPIProvider</h4>
-                <p>In V7.0.0 and V7.1.0, the Java API was accessible through the WLServerAPIProvider interface. For example: <code>WLServerAPIProvider.getWLServerAPI.getConfigurationAPI();</code> and <code>WLServerAPIProvider.getWLServerAPI.getSecurityAPI();</code></p>
+                <p>V7.0.0 および V7.1.0 では、Java API は WLServerAPIProvider インターフェースを通じてアクセス可能でした。例: <code>WLServerAPIProvider.getWLServerAPI.getConfigurationAPI();</code> および <code>WLServerAPIProvider.getWLServerAPI.getSecurityAPI();</code></p>
                 
-                <p>These static interfaces are still supported, to allow adapters that were developed in previous versions of the product to compile and deploy. Old adapters that do not use push notifications or the previous security API continue to work with the new version. Adapters that do use push notifications or the previous security API break.</p>
+                <p>これらの静的インターフェースはまだサポートされ、この製品の以前のバージョンで開発されたアダプターをコンパイルおよびデプロイできるようになっています。プッシュ通知も以前のセキュリティー API も使用しない古いアダプターは、新しいバージョンでも引き続き機能します。プッシュ通知または以前のセキュリティー API を使用するアダプターは機能しません。</p>
 
-                <h3>JavaScript client-side APIs for web applications</h3>
-                <p>The JavaScript client-side API that is used for development of cross-platform Cordova applications is now available also for development of web applications, with slight variations in the initialization method. Note that not all functions of the JavaScript API are applicable to web applications.</p>
+                <h3>Web アプリケーション用の JavaScript クライアント・サイド API</h3>
+                <p>クロスプラットフォーム Cordova アプリケーションの開発に使用される JavaScript クライアント・サイド API は、Web アプリケーションの開発にも使用できるようになりました。ただし初期化方法に多少の違いがあります。JavaScript API のすべての機能を Web アプリケーションに適用できるわけではないことに注意してください。</p>
 
-                <p>In addition, a new JavaScript client-side web analytics API is provided for adding {{ site.data.keys.mf_analytics }} capabilities to your web application.</p>
+                <p>さらに、{{site.data.keys.mf_analytics }} 機能を Web アプリケーションに追加するための新しい JavaScript クライアント・サイド Web 分析 API が提供されています。</p>
 
-                <h3>Updated C# client-side API for Windows 8 Universal and Windows Phone 8 Universal</h3>
-                <p>The C# client-side API for Windows 8 Universal and Windows Phone 8 Universal have changed.</p>
+                <h3>Windows 8 Universal および Windows Phone 8 Universal 用の C# クライアント・サイド API の更新</h3>
+                <p>Windows 8 Universal および Windows Phone 8 Universal 用の C# クライアント・サイド API が変更されました。</p>
 
-                <h3>New Java client-side APIs for Android</h3>
+                <h3>Android 向けの新規 Java クライアント・サイド API</h3>
                 <h4>public void getDeviceDisplayName(final DeviceDisplayNameListener listener);</h4>
-                <p>With this new method, you can get the display name of a device from the {{ site.data.keys.mf_server }} registration data.</p>
+                <p>この新しいメソッドを使用して、{{site.data.keys.mf_server }} 登録データからデバイスの表示名を取得できます。</p>
                 
                 <h4>public void setDeviceDisplayName(String deviceDisplayName,final WLRequestListener listener);</h4>
-                <p>With this new method, you can set the display name of a device in the {{ site.data.keys.mf_server }} registration data.</p>
+                <p>この新しいメソッドを使用して、{{site.data.keys.mf_server }} 登録データ内でデバイスの表示名を設定できます。</p>
 
-                <h3>New Objective-C client-side APIs for iOS</h3>
+                <h3>iOS 向けの新規 Objective-C クライアント・サイド API</h3>
                 <h4><code>(void) getDeviceDisplayNameWithCompletionHandler:(void(^)(NSString *deviceDisplayName , NSError *error))completionHandler;</code></h4>
-                <p>With this new method, you can get the display name of a device from the {{ site.data.keys.mf_server }} registration data.</p>
+                <p>この新しいメソッドを使用して、{{site.data.keys.mf_server }} 登録データからデバイスの表示名を取得できます。</p>
                 
                 <h4><code>(void) setDeviceDisplayName:(NSString*)deviceDisplayName WithCompletionHandler:(void(^)(NSError* error))completionHandler;</code></h4>
-                <p>With this new method, you can set the display name of a device in the {{ site.data.keys.mf_server }} registration data.</p>
+                <p>この新しいメソッドを使用して、{{site.data.keys.mf_server }} 登録データ内でデバイスの表示名を設定できます。</p>
 
-                <h3>Updated REST API for the administration service</h3>
-                <p>The REST API for the administration service is partly refactored. In particular, the API for beacons and mediators is removed and most REST services for push notification are now part of the REST API for the push service.</p>
+                <h3>管理サービス用の更新された REST API</h3>
+                <p>管理サービス用の REST API は、部分的にリファクタリングされました。特に、ビーコンおよびメディエーター用の API は削除され、プッシュ通知用のほとんどの REST サービスは、プッシュ・サービス用の REST API の一部になりました。</p>
 
-                <h3>Updated REST API for the runtime</h3>
-                <p>The REST API for the {{ site.data.keys.product_adj }} runtime now provides several services for mobile clients and confidential clients to call adapters, obtain access tokens, get Direct Update content, and more. Most of the REST API endpoints are protected by OAuth. On a development server, you can view the Swagger doc for the runtime API at:  <code>http(s)://server_ip:server_port/context_root/doc</code>.</p>
+                <h3>ランタイム用の REST API の更新</h3>
+                <p>{{site.data.keys.product_adj }} ランタイム用の REST API は、モバイル・クライアントおよび機密クライアント用に、アダプターの呼び出し、アクセス・トークンの取得、ダイレクト・アップデートのコンテンツの取得などを行うための、いくつかのサービスを提供するようになりました。REST API エンドポイントのほとんどは、OAuth によって保護されています。開発サーバーでは、次の場所で、ランタイム API 用の Swagger 文書を表示できます。<code>http(s)://server_ip:server_port/context_root/doc</code></p>
             </div>
         </div>
     </div>
@@ -141,75 +140,75 @@ weight: 1
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-security">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-security" aria-expanded="true" aria-controls="collapse-mobilefirst-security">What's new in MobileFirst security</a>
-            </h4>
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-security" aria-expanded="true" aria-controls="collapse-mobilefirst-security">MobileFirst セキュリティーの新機能</a>
+           </h4>
         </div>
 
         <div id="collapse-mobilefirst-security" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-security">
             <div class="panel-body">
-                <p>The security framework in {{ site.data.keys.product }} was entirely redesigned. New security features were introduced, and some modifications were made to existing features.</p>
+                <p>{{site.data.keys.product }} 内のセキュリティー・フレームワークは、完全に再設計されました。新しいセキュリティー機能が導入され、既存の機能に変更が加えられました。</p>
 
-                <h3>Security framework overhaul</h3>
-                <p>The {{ site.data.keys.product_adj }} security framework was redesigned and reimplemented to improve and simplify security development and administration tasks. The framework is now inherently based on the OAuth model, and the implementation is session-independent. See Overview of the {{ site.data.keys.product_adj }} security framework.</p>
+                <h3>セキュリティー・フレームワークの見直し</h3>
+                <p>{{site.data.keys.product_adj }} セキュリティー・フレームワークは、セキュリティー開発と管理タスクを改善および簡素化するために、再設計されて再実装されました。フレームワークは基本的に OAuth モデルをベースとするようになり、実装はセッションに依存しません。『{{site.data.keys.product_adj }} セキュリティー・フレームワークの概要』を参照してください。</p>
                 
-                <p>On the server side, the multiple building blocks of the framework were replaced with security checks (implemented in adapters), allowing for simplified development with new APIs. Sample implementations and predefined security checks are provided. See Security checks. Security checks can be configured in the adapter descriptor, and customized by making runtime adapter or application configuration changes, without redeploying the adapter or disrupting the flow. The configurations can be done from the redesigned {{ site.data.keys.mf_console }} security interfaces. You can also edit the configuration files manually, or use the {{ site.data.keys.mf_cli }} or mfpadm tools.</p>
+                <p>サーバー・サイドでは、フレームワークの複数のビルディング・ブロックが、セキュリティー検査 (アダプターで実装されている) に置き換えられ、新しい API を使用して容易に開発できるようになっています。実装のサンプルと、定義済みのセキュリティー検査が用意されています。『セキュリティー検査』を参照してください。アダプターを再デプロイしたりフローを中断したりしなくても、アダプター記述子内でセキュリティー検査を構成でき、ランタイム・アダプターまたはアプリケーション構成を変更してセキュリティー検査をカスタマイズすることができます。構成は、再設計された {{site.data.keys.mf_console }} セキュリティー・インターフェースから実行できます。構成ファイルを手動で編集したり、{{site.data.keys.mf_cli }} または mfpadm ツールを使用することもできます。</p>
                 
-                <h3>Application-authenticity security check</h3>
-                <p>{{ site.data.keys.product_adj }} application-authenticity validation is now implemented as a predefined security check that replaces the previous "extended application authenticity checking". You can dynamically enable, disable, and configure application-authenticity validation by using either {{ site.data.keys.mf_console }} or mfpadm. A stand-alone {{ site.data.keys.product_adj }} application-authenticity Java tool (mfp-app-authenticity-tool.jar) is provided for generating an application-authenticity file.</p>
+                <h3>アプリケーション認証性セキュリティー検査</h3>
+                <p>{{site.data.keys.product_adj }} のアプリケーション認証性の検証は、事前定義されたセキュリティー検査として実装されるようになりました。これが、以前の「拡張アプリケーション認証性チェック」に代わって使用されます。{{site.data.keys.mf_console }} または mfpadm のいずれかを使用して、アプリケーション認証性の検証を動的に使用可能または使用不可にしたり構成したりすることができます。スタンドアロンの {{site.data.keys.product_adj }} アプリケーション認証性 Java ツール (mfp-app-authenticity-tool.jar) が、アプリケーション認証性ファイルを生成するために提供されています。</p>
 
-                <h3>Confidential clients</h3>
-                <p>The support for confidential clients was redesigned and reimplemented using the new OAuth security framework.</p>
+                <h3>機密クライアント</h3>
+                <p>機密クライアントのサポートは、新しい OAuth セキュリティー・フレームワークを使用して、再設計されて再実装されました。</p>
 
-                <h3>Web-applications security</h3>
-                <p>The revised OAuth-based security framework supports web applications. You can now register web applications with {{ site.data.keys.mf_server }} to add security capabilities to your application and protect access to your web resources. For more information about developing {{ site.data.keys.product_adj }} web applications, see Developing web applications. The application-authenticity security check is not supported for web applications.</p>
+                <h3>Web アプリケーションのセキュリティー</h3>
+                <p>改訂後の OAuth ベースのセキュリティー・フレームワークは、Web アプリケーションをサポートします。Web アプリケーションを {{site.data.keys.mf_server }} に登録すると、セキュリティー機能をアプリケーションに追加し、Web リソースへのアクセスを保護することができます。{{site.data.keys.product_adj }} Web アプリケーションの開発について詳しくは、『Web アプリケーションの開発』を参照してください。Web アプリケーションでは、アプリケーション認証性セキュリティー検査はサポートされていません。</p>
 
-                <h3>Cross-platform applications (Cordova apps), new and changed security features</h3>
-                <p>Additional security features are available to help protect your Cordova app. These features include the following:</p>
-                
-                <ul>
-                    <li>Web resources encryption: Use this feature to encrypt the web resources in your Cordova package to help prevent someone from modifying the package.</li>
-                    <li>Web resources checksum: Use this feature to run a checksum test that compares the current statistics of the web resources of the app with the baseline statistics that were established when it was first opened. This check helps to prevent someone from modifying the app after it is installed and opened.</li>
-                    <li>Certificate pinning: Use this feature to associate the certificate of an app with a certificate on the host server. This feature helps to prevent information that is passed between the app and the server from being viewed or modified.</li>
-                    <li>Support for the Federal Information Processing Standard (FIPS) 140-2: Use this feature to ensure that data that is transferred is compliant with the FIPS 140-2 cryptography standard.</li>
-                    <li>OpenSSL: To use OpenSSL data encryption and decryption with your Cordova app for the iOS platform, you can use the cordova-plugin-mfp-encrypt-utils Cordova plug-in.</li>
-                </ul>
-                
-                <h3>Device Single Sign-On</h3>
-                <p>Device single sign-on (SSO) is now supported by way of the new predefined <code>enableSSO</code> security-check application-descriptor configuration property.</p>
-
-                <h3>Direct Update</h3>
-                <p>In contrast to earlier versions of {{ site.data.keys.product_adj }}, starting with V8.0</p>
-
-                <ul>
-                    <li>If a client application accesses an unprotected resource, the application does not receive updates, even if an update is available on {{ site.data.keys.mf_server }}.</li>
-                    <li>After it has been activated, Direct Update is enforced on every request for a protected resource.</li>
-                </ul>
-                
-                <h3>External-resources Protection</h3>
-                <p>The supported method and provided artifacts for protecting resources on external servers were modified:</p>
+                <h3>クロスプラットフォーム・アプリケーション (Cordova アプリケーション)、新規および変更されたセキュリティー機能</h3>
+                <p>Cordova アプリケーションの保護に役立つ追加的なセキュリティー機能が使用可能です。これらの機能には、以下のものが含まれます。</p>
                 
                 <ul>
-                    <li>A new, configurable {{ site.data.keys.product_adj }} Java Token Validator access-token validation module is provided for using the {{ site.data.keys.product_adj }} security framework to protect resources on any external Java server. The module is provided as a Java library (mfp-java-token-validator-8.0.0.jar), and replaces the use of the obsolete {{ site.data.keys.mf_server }} token-validation endpoint to create a custom Java validation module.</li>
-                    <li>The {{ site.data.keys.product_adj }} OAuth Trust Association Interceptor (TAI) filter, for protecting Java resources on an external WebSphere  Application Server or WebSphere Application Server Liberty server, is now provided as a Java library (com.ibm.imf.oauth.common_8.0.0.jar). The library uses the new Java Token Validator validation module, and the configuration of the provided TAI changed.</li>
-                    <li>The server-side {{ site.data.keys.product_adj }} OAuth TAI API is no longer required and was removed.</li>
-                    <li>The passport-mfp-token-validation {{ site.data.keys.product_adj }} Node.js framework, for protecting Java resources on an external Node.js server, was modified to support the new security framework.</li>
-                    <li>You can also write your own custom filter and validation module, for any type of resource server, which uses the new introspection endpoint of the authorization server.</li>
+                    <li>Web リソース暗号化: 誰かがパッケージを変更することのないように、この機能を使用して、Cordova パッケージ内の Web リソースを暗号化します。</li>
+                    <li>Web リソースのチェックサム: この機能を使用して、アプリケーションの Web リソースの現在の統計と、それが最初に開いたときに設定されたベースライン統計を比較する、チェックサム・テストを実行します。このチェックは、アプリケーションがインストールされて開かれた後に、誰かがアプリケーションを変更しないようにするために役立ちます。</li>
+                    <li>証明書のピン留め: この機能を使用して、アプリケーションの証明書をホスト・サーバー上の証明書に関連付けます。この機能は、アプリケーションとサーバーの間で渡される情報が表示されたり変更されたりしないようにするために役立ちます。</li>
+                    <li>連邦情報処理標準 (FIPS) 140-2 のサポート: この機能を使用して、転送されるデータが確実に FIPS 140-2 暗号化標準に準拠するようにします。</li>
+                    <li>OpenSSL: iOS プラットフォーム用の Cordova アプリケーションで OpenSSL データ暗号化および暗号化解除を使用するには、cordova-plugin-mfp-encrypt-utils Cordova プラグインを使用します。</li>
                 </ul>
                 
-                <h3>Integration with WebSphere DataPower as an authorization server</h3>
-                <p>You can now select to use WebSphere DataPower  as the OAuth authorization server, instead of the default {{ site.data.keys.mf_server }} authorization server. You can configure DataPower to integrate with the {{ site.data.keys.product_adj }} security framework.</p>
+                <h3>デバイスのシングル・サインオン</h3>
+                <p>新しい事前定義の <code>enableSSO</code> セキュリティー検査アプリケーション記述子構成プロパティーによってデバイス・シングル・サインオン (SSO) がサポートされるようになりました。</p>
 
-                <h3>LTPA-based single sign-on (SSO) security check</h3>
-                <p>Support for sharing user authentication among servers that use WebSphere light-weight third-party authentication (LTPA) is now provided by using the new predefined LTPA-based single sign-on (SSO) security check. This check replaces the obsolete {{ site.data.keys.product_adj }} LTPA realm, and eliminates the previous required configuration.</p>
+                <h3>ダイレクト・アップデート</h3>
+                <p>旧バージョンの {{site.data.keys.product_adj }} とは異なり、V8.0 以降は以下のようになっています。</p>
 
-                <h3>Mobile-application management with {{ site.data.keys.mf_console }}</h3>
-                <p>Some changes were made to the support for tracking and managing mobile applications, users, and devices from {{ site.data.keys.mf_console }}. Blocking device or application access is applicable only to attempts to access protected resources.</p>
+                <ul>
+                    <li>クライアント・アプリケーションが、保護されていないリソースにアクセスした場合、{{site.data.keys.mf_server }} に使用可能な更新があっても、アプリケーションは更新を受け取りません。</li>
+                    <li>アクティブ化された後は、保護リソースが要求されるたびに、ダイレクト・アップデートが適用されます。</li>
+                </ul>
                 
-                <h3>{{ site.data.keys.mf_server }} keystore</h3>
-                <p>A single {{ site.data.keys.mf_server }} keystore is used for signing OAuth tokens and Direct Update packages, and for mutual HTTPS (SSL) authentication. You can dynamically configure this keystore by using either {{ site.data.keys.mf_console }} or mfpadm.</p>
+                <h3>外部リソースの保護</h3>
+                <p>外部サーバーでリソースを保護するためにサポートされている方法および提供されている成果物が変更されました。</p>
+                
+                <ul>
+                    <li>{{site.data.keys.product_adj }} セキュリティー・フレームワークを使用して任意の外部 Java サーバー上のリソースを保護するために、構成可能な新しい {{site.data.keys.product_adj }} Java トークン・バリデーター・アクセス・トークン検証モジュールが提供されています。このモジュールは、Java ライブラリー (mfp-java-token-validator-8.0.0.jar) として提供され、カスタム Java 検証モジュールを作成する際に、廃止された {{site.data.keys.mf_server }} トークン検証エンドポイントの代わりに使用されます。</li>
+                    <li>外部 WebSphere Application Server または WebSphere Application Server Liberty サーバー上の Java リソースを保護するための {{site.data.keys.product_adj }} OAuth トラスト・アソシエーション・インターセプター (TAI) フィルターが、Java ライブラリー (com.ibm.imf.oauth.common_8.0.0.jar) として提供されるようになりました。このライブラリーでは、新しい Java トークン・バリデーター検証モジュールと、提供されている変更された TAI の構成を使用します。</li>
+                    <li>サーバー・サイドの {{site.data.keys.product_adj }} OAuth TAI API は不要になり、削除されました。</li>
+                    <li>外部 Node.js サーバーで Java リソースを保護するための passport-mfp-token-validation {{site.data.keys.product_adj }} Node.js フレームワークは、新しいセキュリティー・フレームワークをサポートするように変更されました。</li>
+                    <li>許可サーバーの新しいイントロスペクション・エンドポイントを使用する任意のタイプのリソース・サーバーに対して、独自のカスタム・フィルターおよび検証モジュールを作成することもできます。</li>
+                </ul>
+                
+                <h3>許可サーバーとしての WebSphere DataPower との統合</h3>
+                <p>デフォルトの {{site.data.keys.mf_server }} 許可サーバーの代わりに、WebSphere DataPower を OAuth 許可サーバーとして選択できるようになりました。{{site.data.keys.product_adj }} セキュリティー・フレームワークと統合するように DataPower を構成することができます。</p>
 
-                <h3>Native encryption and decryption for iOS</h3>
-                <p>OpenSSL has been removed from the main framework for iOS and replaced by a native encryption/decryption. OpenSSL can be added as a separate framework. See Enabling OpenSSL for iOS. For iOS Cordova JavaScript, OpenSSL is still embedded in the main framework. For both APIs both native and OpenSSL encryption is available.</p>
+                <h3>LTPA ベースのシングル・サインオン (SSO) セキュリティー検査</h3>
+                <p>WebSphere の Lightweight Third Party Authentication (LTPA) を使用するサーバー間のユーザー認証の共有のサポートが、新しい定義済みの LTPA ベースのシングル・サインオン (SSO) セキュリティー検査を使用して提供されるようになりました。この検査は、廃止された {{site.data.keys.product_adj }} LTPA レルムの代わりに使用され、以前に必要であった構成はなくなりました。</p>
+
+                <h3>{{site.data.keys.mf_console }} を使用したモバイル・アプリケーションの管理</h3>
+                <p>{{site.data.keys.mf_console }} からのモバイル・アプリケーション、ユーザー、およびデバイスの追跡と管理のサポートに対して、変更が加えられました。デバイスまたはアプリケーションへのアクセスのブロックは、保護リソースにアクセスしようとした場合のみ適用されます。</p>
+                
+                <h3>{{site.data.keys.mf_server }} 鍵ストア</h3>
+                <p>単一の {{site.data.keys.mf_server }} 鍵ストアは、OAuth トークンおよびダイレクト・アップデート・パッケージへの署名と、相互 HTTPS (SSL) 認証に使用されます。{{site.data.keys.mf_console }} または mfpadm のいずれかを使用して、この鍵ストアを動的に構成することができます。</p>
+
+                <h3>iOS 向けのネイティブ暗号化および暗号化解除</h3>
+                <p>OpenSSL は iOS のメイン・フレームワークから削除され、ネイティブ暗号化/暗号化解除が代わりに使用されるようになりました。OpenSSL は、別個のフレームワークとして追加できます。『iOS での OpenSSL の有効化』を参照してください。iOS Cordova	JavaScript の場合、OpenSSL は現在もメイン・フレームワークに組み込まれています。両方の API で、ネイティブ暗号化と	OpenSSL 暗号化の両方が使用可能です。</p>
             </div>
         </div>
     </div>
@@ -217,28 +216,28 @@ weight: 1
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="os-support">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-os-support" aria-expanded="true" aria-controls="collapse-os-support">What's new in Operating System Support</a>
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-os-support" aria-expanded="true" aria-controls="collapse-os-support">オペレーティング・システム・サポートの新機能</a>
             </h4>
         </div>
 
         <div id="collapse-os-support" class="panel-collapse collapse" role="tabpanel" aria-labelledby="os-support">
             <div class="panel-body">
-                <p>{{ site.data.keys.product }} now supports Windows 10 Universal apps, bitcode builds, and Apple watchOS 2.</p>
+                <p>{{site.data.keys.product }} は、Windows 10 Universal アプリケーション、ビットコード・ビルド、および Apple watchOS 2 をサポートするようになりました。</p>
 
-                <h3>Support for universal applications for Windows 10 Native</h3>
-                <p>With {{ site.data.keys.product }}, you can now write native C# Universal App Platform applications to use the {{ site.data.keys.product_adj }} SDK within your app.</p>
+                <h3>Windows 10 ネイティブのユニバーサル・アプリケーションのサポート</h3>
+                <p>{{site.data.keys.product }} を使用して、アプリケーション内で {{site.data.keys.product_adj }} SDK を使用するためのネイティブ C# Universal App Platform アプリケーションを作成できるようになりました。</p>
 
-                <h3>Support for Windows hybrid environments</h3>
-                <p>Windows 10 Universal Windows Platform (UWP) support for Windows hybrid environments. For more information on how to get started.</p>
+                <h3>Windows ハイブリッド環境のサポート</h3>
+                <p>Windows ハイブリッド環境向けの Windows 10 Universal Windows Platform (UWP) サポート。開始方法の詳細情報があります。</p>
 
-                <h3>BlackBerry end of support</h3>
-                <p>The BlackBerry environment is no longer supported in {{ site.data.keys.product }}.</p>
+                <h3>BlackBerry のサポート終了</h3>
+                <p>BlackBerry 環境は、{{site.data.keys.product }} でサポートされなくなりました。</p>
 
-                <h3>Bitcode</h3>
-                <p>Bitcode builds are now supported for iOS projects. However, the {{ site.data.keys.product_adj }} application-authenticity security check is not supported for apps built with bitcode.</p>
+                <h3>ビットコード</h3>
+                <p>ビットコードのビルドが、iOS プロジェクトでサポートされるようになりました。ただし、{{site.data.keys.product_adj }} のアプリケーション認証性セキュリティー検査は、ビットコードを使用してビルドされたアプリケーションではサポートされません。</p>
 
                 <h3>Apple watchOS 2</h3>
-                <p>Apple watchOS 2 is now supported and requires bitcode builds.</p>
+                <p>Apple watchOS 2 がサポートされるようになり、ビットコードのビルドを必要とします。</p>
             </div>
         </div>
     </div>
@@ -246,77 +245,77 @@ weight: 1
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="deploy-manage-apps">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-deploy-manage-apps" aria-expanded="true" aria-controls="collapse-deploy-manage-apps">What's new in deploying and managing apps</a>
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-deploy-manage-apps" aria-expanded="true" aria-controls="collapse-deploy-manage-apps">アプリケーションのデプロイおよび管理の新機能</a>
             </h4>
         </div>
 
         <div id="collapse-deploy-manage-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-deploy-manage-apps">
             <div class="panel-body">
-                <p>New {{ site.data.keys.product }} capabilities are introduced to help you deploy and manage your apps. You can now update your apps and adapters without restarting {{ site.data.keys.mf_server }}.</p>
+                <p>アプリケーションのデプロイおよび管理に役立つ新しい {{site.data.keys.product }} 機能が導入されています。{{site.data.keys.mf_server }} を再始動しなくても、アプリケーションおよびアダプターを更新できるようになりました。</p>
 
-                <h3>Improved DevOps support</h3>
-                <p>{{ site.data.keys.mf_server }} has been significantly redesigned to better support your DevOps environment. {{ site.data.keys.mf_server }} is installed once into your application server environment, and no changes to the application server configuration are required when you upload an application or change the {{ site.data.keys.mf_server }} configuration.</p>
+                <h3>DevOps サポートの改善</h3>
+                <p>{{site.data.keys.mf_server }} は、DevOps 環境のサポートを向上させるため、大幅に再設計されました。{{site.data.keys.mf_server }} が、アプリケーション・サーバー環境に 1 度インストールされると、ユーザーがアプリケーションをアップロードするとき、または {{site.data.keys.mf_server }} 構成を変更するときに、アプリケーション・サーバー構成への変更は必要ありません。</p>
                 
-                <p>You do not need to restart {{ site.data.keys.mf_server }} when you update your apps or any adapters that your apps depend on. You can perform configuration operations, or upload a new version of an adapter or register a new application while the server is still handling traffic.</p>
+                <p>アプリケーションまたはアプリケーションが依存するアダプターを更新したときに、{{site.data.keys.mf_server }} を再始動する必要はありません。サーバーがまだトラフィックを処理している間に、構成操作を実行したり、新規バージョンのアダプターのアップロードまたは新規アプリケーションの登録を実行したりすることができます。</p>
 
-                <p>Configuration changes and development operations are protected by security roles.</p>
+                <p>構成変更および開発操作は、セキュリティー・ロールによって保護されます。</p>
 
-                <p>You can upload development artifacts to the server in various ways to give you more operational flexibility:</p>
+                <p>さまざまな方法で開発成果物をサーバーにアップロードすることができ、操作の柔軟性が高まっています。</p>
                 
                 <ul>
-                    <li>{{ site.data.keys.mf_console }} is enhanced: In particular, you can now use it to register an application or a new version of an application, to manage app security parameters, and to deploy certificates, create push notification tags, and send push notifications. The console now also includes contextual help guides.</li>
-                    <li>Command-line tool</li>
+                    <li>{{site.data.keys.mf_console }} の機能拡張: 特に、これを使用してアプリケーションまたは新バージョンのアプリケーションを登録することで、アプリケーション・セキュリティー・パラメーターの管理、証明書のデプロイ、プッシュ通知タグの作成、およびプッシュ通知の送信を実行できます。コンソールには、コンテキスト・ヘルプ・ガイドも含まれるようになりました。</li>
+                    <li>コマンド・ライン・ツール</li>
                 </ul>
                 
-                <p>Development artifacts that you upload to the server include adapters and their configuration, security configurations for your apps, push notification certificates, and log filters.</p>
+                <p>サーバーにアップロードする開発成果物には、アダプター、アダプターの構成、アプリケーションのセキュリティー構成、プッシュ通知証明書、およびログ・フィルターが含まれます。</p>
 
-                <h3>Running applications that were created on IBM Bluemix on {{ site.data.keys.product }}</h3>
-                <p>Developers can migrate IBM Bluemix applications to run on {{ site.data.keys.product }}. Migration requires that you make configuration changes to your client application to match {{ site.data.keys.product }} APIs.</p>
+                <h3>IBM Bluemix で作成されたアプリケーションの {{site.data.keys.product }} での実行</h3>
+                <p>開発者は、IBM Bluemix アプリケーションを、{{site.data.keys.product }} で実行されるようにマイグレーションすることができます。マイグレーションするには、{{site.data.keys.product }} API に適合するようにクライアント・アプリケーションに対して構成変更を加える必要があります。</p>
 
-                <h3>{{ site.data.keys.product }} as a service on IBM Bluemix</h3>
-                <p>You can now use the {{ site.data.keys.mf_bm_full }}  service on IBM Bluemix to create and run your enterprise mobile apps.</p>
+                <h3>IBM Bluemix 上のサービスとしての {{site.data.keys.product }}</h3>
+                <p>IBM Bluemix 上の {{site.data.keys.mf_bm_full }} サービスを使用して、エンタープライズ・モバイル・アプリケーションを作成および実行できるようになりました。</p>
 
-                <h3>No .wlapp files</h3>
-                <p>In previous versions, applications were deployed to {{ site.data.keys.mf_server }} by uploading a <b>.wlapp</b> file. The file contained data that described the application and, in the case of hybrid applications, the required web resources also. In V8.0.0, instead of the <b>.wlapp</b> file:</p>
+                <h3>.wlapp ファイルがない</h3>
+                <p>旧バージョンでは、<b>.wlapp</b> ファイルをアップロードすることによって、アプリケーションが {{site.data.keys.mf_server }} にデプロイされました。そのファイルには、アプリケーションを記述し、ハイブリッド・アプリケーションの場合は Web リソースも記述したデータが含まれていました。V8.0.0 では、<b>.wlapp</b> ファイルを使用する代わりに、以下のようにします。</p>
 
                 <ul>
-                    <li>You register an app in {{ site.data.keys.mf_server }} by deploying an application descriptor JSON file.</li>
-                    <li>To update Cordova applications by using Direct Update, you upload an archive (.zip file) of the modified web resource to the server. The archive file no longer contains the web preview files or skins that were possible in previous versions of {{ site.data.keys.product }}. These have been discontinued. The archive contains only the web resources that are sent to the clients, as well as checksums for Direct Update validations.</li>
+                    <li>アプリケーション記述子 JSON ファイルをデプロイすることによって、アプリケーションを {{site.data.keys.mf_server }} に登録します。</li>
+                    <li>ダイレクト・アップデートを使用して Cordova アプリケーションを更新するには、修正された Web リソースのアーカイブ (.zip ファイル) をサーバーにアップロードします。アーカイブ・ファイルには、旧バージョンの {{site.data.keys.product }} では使用可能であった Web プレビュー・ファイルもスキンも含まれなくなりました。それらは廃止されました。アーカイブには、クライアントに送信された Web リソースと、ダイレクト・アップデートの検証用のチェックサムのみが含まれます。</li>
                 </ul>
                 
-                <p>To enable Direct Update of client Cordova apps that are installed on end-user devices, you must now deploy the modified web resources as an archive (.zip file) to the server. To enable secure Direct Update, a user-defined keystore file must be deployed in {{ site.data.keys.mf_server }} and a copy of the matching public key must be included in the deployed client application.</p>
+                <p>エンド・ユーザーのデバイスにインストールされているクライアント Cordova アプリケーションのダイレクト・アップデートを有効にするには、変更された Web リソースをアーカイブ (.zip ファイル) としてサーバーにデプロイすることが必要になりました。セキュアなダイレクト・アップデートを有効にするには、ユーザー定義の鍵ストア・ファイルを {{site.data.keys.mf_server }} にデプロイする必要があり、一致する公開鍵のコピーを、デプロイされたクライアント・アプリケーションに組み込む必要があります。</p>
 
-                <h3>Adapters</h3>
-                <h4>Adapters are Apache Maven projects.</h4>
-                <p>Adapters are now treated as Maven projects. You can create, build, and deploy adapters by using standard command-line Maven commands or using any IDE that supports Maven, such as Eclipse and IntelliJ.</p>
+                <h3>アダプター</h3>
+                <h4>アダプターは Apache Maven プロジェクトです。</h4>
+                <p>アダプターは Maven プロジェクトとして扱われるようになりました。標準のコマンド・ライン Maven コマンドを使用して、または Maven をサポートする任意の IDE (Eclipse や IntelliJ など) を使用して、アダプターを作成、ビルド、およびデプロイすることができます。</p>
     
-                <h4>Adapter configuration and deployment in DevOps environments</h4>
+                <h4>DevOps 環境でのアダプターの構成およびデプロイメント</h4>
                 <ul>
-                    <li>{{ site.data.keys.mf_server }} administrators can now use the {{ site.data.keys.mf_console }} to modify the behavior of an adapter that has been deployed. After reconfiguration, the changes take effect in the server immediately, without the need to redeploy the adapter, or restart the server.</li>
-                    <li>You can now "hot deploy" adapters, meaning deploy, undeploy, and redeploy them at run time, while {{ site.data.keys.mf_server }} is still serving traffic.</li>
+                    <li>{{site.data.keys.mf_server }} 管理者は、{{site.data.keys.mf_console }} を使用してデプロイ済みのアダプターの動作を変更できるようになりました。再構成の後、変更は即時にサーバーに反映されます。アダプターを再デプロイしたり、サーバーを再始動したりする必要はありません。</li>
+                    <li>アダプターを「ホット・デプロイ」できるようになりました。すなわち、{{site.data.keys.mf_server }} がまだトラフィックを処理していても、アダプターを、実行時にデプロイ、アンデプロイ、および再デプロイできます。</li>
                 </ul>
                 
-                <h4>Changes in the adapter descriptor file</h4>
-                <p>The <b>adapter.xml</b> descriptor file has changed slightly. For more information on the structure of the adapter descriptor file for adapters, see the <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">Adapters tutorials</a>.</p>
+                <h4>アダプター記述子ファイルの変更</h4>
+                <p><b>adapter.xml</b> 記述子ファイルは、若干変更されました。アダプターのアダプター記述子ファイルの構造について詳しくは、<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">アダプターのチュートリアル (Adapters tutorials)</a>を参照してください。</p>
 
-                <h4>Integration with Swagger UI</h4>
-                <p>{{ site.data.keys.mf_server }} now integrates with Swagger UI. For any adapter, you can view the associated API by clicking View Swagger Docs in the Resources tab in the {{ site.data.keys.mf_console }}. The feature is available in development environments only.</p>
+                <h4>Swagger UI との統合</h4>
+                <p>{{site.data.keys.mf_server }} は Swagger UI と統合するようになりました。どのアダプターでも、{{site.data.keys.mf_console }} 内の「リソース」タブで「Swagger 文書の表示」をクリックして、関連付けられた API を表示することができます。この機能は開発環境のみで使用可能です。</p>
 
-                <h4>Support for JavaScript adapters</h4>
-                <p>JavaScript adapters are supported with HTTP and SQL connectivity types, only.</p>
+                <h4>JavaScript アダプターのサポート</h4>
+                <p>JavaScript アダプターは、HTTP 接続タイプおよび SQL 接続タイプのみでサポートされます。</p>
                 
-                <h4>Support for JAX-RS 2.0</h4>
-                <p>JAX-RS 2.0 introduces new server-side functionality: server-side asynchronous HTTP, filters and interceptors.  Adapters can now exploit these new features.</p>
+                <h4>JAX-RS 2.0 のサポート</h4>
+                <p>JAX-RS 2.0 では、新しいサーバー・サイド機能を導入しています。サーバー・サイド非同期 HTTP、フィルター、およびインターセプターです。アダプターで、それらの新機能を利用できるようになりました。</p>
                 
-                <h3>{{ site.data.keys.product }} on IBM Containers</h3>
-                <p>{{ site.data.keys.product }} on IBM Containers released for V8.0.0 is available on the <a href="http://www-01.ibm.com/software/passportadvantage/">IBM Passport Advantage site</a>. This version of {{ site.data.keys.product }} on IBM Containers is production ready and supports enterprise dashDB™ transactional database on IBM Bluemix.</p>
+                <h3>{{site.data.keys.product }} on IBM Containers</h3>
+                <p>V8.0.0 用にリリースされた {{site.data.keys.product }} on IBM Containers は、<a href="http://www-01.ibm.com/software/passportadvantage/">IBM パスポート・アドバンテージのサイト</a>で入手可能です。このバージョンの {{site.data.keys.product }} on IBM Containers は、実稼働環境で使用でき、IBM Bluemix 上のエンタープライズ dashDB™ トランザクション・データベースをサポートします。</p>
 
-                <p><b>Note:</b> See the prerequisites for deploying {{ site.data.keys.product }} on IBM Containers.</p>
+                <p><b>注:</b> {{site.data.keys.product }} on IBM Containers のデプロイについては、前提条件を参照してください。</p>
 
-                <h3>Deploying {{ site.data.keys.mf_server }} on IBM PureApplication System</h3>
-                <p>You can now deploy and configure {{ site.data.keys.mf_server }} to the supported {{ site.data.keys.product }} System Pattern on IBM PureApplication  System.</p>
+                <h3>IBM PureApplication System への {{site.data.keys.mf_server }} のデプロイ</h3>
+                <p>IBM PureApplication System 上の、サポートされる {{site.data.keys.product }} System Pattern に、{{site.data.keys.mf_server }} をデプロイして構成することができるようになりました。</p>
 
-                <p>All supported {{ site.data.keys.product }} system patterns now include support for an existing IBM DB2  database. {{ site.data.keys.mf_app_center_full }} is now supported on a Virtual System Pattern.</p>
+                <p>サポートされるすべての {{site.data.keys.product }} システム・パターンには、既存の IBM DB2 データベースのサポートが含まれるようになりました。{{site.data.keys.mf_app_center_full }}が、仮想システム・パターンでサポートされるようになりました。</p>
             </div>
         </div>
     </div>
@@ -324,43 +323,43 @@ weight: 1
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-server">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-server" aria-expanded="true" aria-controls="collapse-mobilefirst-server">What's new in {{ site.data.keys.mf_server }}</a>
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-server" aria-expanded="true" aria-controls="collapse-mobilefirst-server">{{site.data.keys.mf_server }} の新機能</a>
             </h4>
         </div>
 
         <div id="collapse-mobilefirst-server" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-server">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_server }} has been redesigned to help reduce the time and cost of deploying and updating your apps. In addition to the redesign of the {{ site.data.keys.mf_server }}, {{ site.data.keys.product }} expands the number of installation methods available.</p>
+                <p>{{site.data.keys.mf_server }} は、アプリケーションのデプロイと更新にかかる時間とコストを削減できるように再設計されました。{{site.data.keys.mf_server }} の再設計に加えて、 {{site.data.keys.product }} では使用可能なインストール方法の数が増えています。</p>
 
-                <p>The new {{ site.data.keys.mf_server }} design introduces two new components, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.mf_server }} artifacts.</p>
+                <p>新しい {{site.data.keys.mf_server }} の設計では、2 つの新規コンポーネントを導入しています。{{site.data.keys.mf_server }} ライブ・アップデート・サービスおよび {{site.data.keys.mf_server }} 成果物です。</p>
 
-                <p>{{ site.data.keys.mf_server }} live update service is designed to help reduce the time and cost of incremental updates for your apps. It manages and stores the server-side configuration data of the apps and adapters. You can change or update various parts of your app with rebuilding or redeploying your app:</p>
+                <p>{{site.data.keys.mf_server }} ライブ・アップデート・サービスは、アプリケーションのインクリメンタル更新にかかる時間とコストを削減できるように設計されています。アプリケーションとアダプターのサーバー・サイド構成データを管理および保管します。アプリケーションを再ビルドまたは再デプロイしながら、以下のようにアプリケーションのさまざまな部分を変更または更新することができます。</p>
                 
                 <ul>
-                    <li>Dynamically change or update app behavior based on user segments that you define.</li>
-                    <li>Dynamically change or update server-side business logic.</li>
-                    <li>Dynamically change or update app security.</li>
-                    <li>Externalize and dynamically change app configuration.</li>
+                    <li>定義したユーザー・セグメントに基づいてアプリケーションの動作を動的に変更または更新する。</li>
+                    <li>サーバー・サイドのビジネス・ロジックを動的に変更または更新する。</li>
+                    <li>アプリケーションのセキュリティーを動的に変更または更新する。</li>
+                    <li>アプリケーション構成を外部化し、動的に変更する。</li>
                 </ul>
 
-                <p>{{ site.data.keys.mf_server }} artifacts provide resources for {{ site.data.keys.mf_console }}.</p>
+                <p>{{site.data.keys.mf_server }} 成果物は、{{site.data.keys.mf_console }} 用のリソースを提供します。</p>
 
-                <p>Along with the redesign of {{ site.data.keys.mf_server }}, more installation options are now provided. In addition to the manual installation, {{ site.data.keys.product }} gives you two options to install {{ site.data.keys.mf_server }} in a server farm. You can also install {{ site.data.keys.mf_server }} in Liberty collective.</p>
+                <p>{{site.data.keys.mf_server }} が再設計されただけでなく、提供されるインストール・オプションが増えました。{{site.data.keys.product }} では、手動インストールのほかに、サーバー・ファームで {{site.data.keys.mf_server }} をインストールするためのオプションが 2 つ用意されています。Liberty 集合に {{site.data.keys.mf_server }} をインストールすることもできます。</p>
 
-                <p>You can now install the {{ site.data.keys.mf_server }} components in a server farm by using Ant tasks, or with the Server Configuration Tool. For more information, see the following topics:</p>
+                <p>Ant タスクを使用して、またはサーバー構成ツールによって、サーバー・ファームに {{site.data.keys.mf_server }} コンポーネントをインストールできるようになりました。詳しくは、以下のトピックを参照してください。</p>
 
                 <ul>
-                    <li>Installing a server farm</li>
-                    <li>Tutorials about {{ site.data.keys.mf_server }} installation</li>
+                    <li>サーバー・ファームのインストール</li>
+                    <li>{{site.data.keys.mf_server }} のインストールについてのチュートリアル</li>
                 </ul>
                     
-                <p>{{ site.data.keys.mf_server }} also supports Liberty collective. For more information about the server topology and various installation methods, see the following topics:</p>
+                <p>{{site.data.keys.mf_server }} では、Liberty 集合もサポートします。サーバー・トポロジーおよび各種インストール方式について詳しくは、以下のトピックを参照してください。</p>
                 
                 <ul>
-                    <li>Liberty collective topology</li>
-                    <li>Running the Server Configuration Tool</li>
-                    <li>Installing with Ant Tasks</li>
-                    <li>Manual installation on WebSphere  Application Server Liberty collective</li>
+                    <li>Liberty 集合トポロジー</li>
+                    <li>サーバー構成ツールの実行</li>
+                    <li>Ant タスクを使用したインストール</li>
+                    <li>WebSphere Application Server Liberty 集合への手動インストール</li>
                 </ul>
             </div>
         </div>
@@ -369,40 +368,40 @@ weight: 1
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-analytics">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-analytics" aria-expanded="true" aria-controls="collapse-mobilefirst-analytics">What's new in {{ site.data.keys.mf_analytics }}</a>
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-analytics" aria-expanded="true" aria-controls="collapse-mobilefirst-analytics">{{site.data.keys.mf_analytics }} の新機能</a>
             </h4>
         </div>
 
         <div id="collapse-mobilefirst-analytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-analytics">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_analytics }} introduces a redesigned console with information presentation improvements and role-based access controls. The console is also now available in a number of different languages.</p>
+                <p>{{site.data.keys.mf_analytics }} では、情報の表示を改善し、役割ベースのアクセス制御を行うように再設計されたコンソールを導入しています。このコンソールは、いくつかの異なる言語で使用できるようになっています。</p>
 
-                <p>The {{ site.data.keys.mf_analytics_console }} was redesigned to present information in an intuitive and more meaningful fashion, and uses summarized data for some event types.</p>
+                <p>{{site.data.keys.mf_analytics_console }} は、直感的でより理解しやすい方法で情報を表示するように再設計され、一部のイベント・タイプには要約されたデータを使用します。</p>
 
-                <p>You can now sign out of the {{ site.data.keys.mf_analytics_console }} by clicking on the gear icon.</p>
+                <p>歯車アイコンをクリックして {{site.data.keys.mf_analytics_console }} からサインアウトできるようになりました。</p>
 
-                <p>The {{ site.data.keys.mf_analytics_console }} is now available in the following languages:</p>
+                <p>{{site.data.keys.mf_analytics_console }} は、以下の言語で使用可能になりました。</p>
                 <ul>
-                    <li>German</li>
-                    <li>Spanish</li>
-                    <li>French</li>
-                    <li>Italian</li>
-                    <li>Japanese</li>
-                    <li>Korean</li>
-                    <li>Portuguese (Brazilian)</li>
-                    <li>Russian</li>
-                    <li>Simplified Chinese</li>
-                    <li>Traditional Chinese</li>
+                    <li>ドイツ語</li>
+                    <li>スペイン語</li>
+                    <li>フランス語</li>
+                    <li>イタリア語</li>
+                    <li>日本語</li>
+                    <li>韓国語 </li>
+                    <li>ポルトガル語 (ブラジル語)</li>
+                    <li>ロシア語</li>
+                    <li>中国語 (簡体字)</li>
+                    <li>中国語 (繁体字)</li>
                 </ul>
 
-                <p>The {{ site.data.keys.mf_analytics_console }} now shows different content based on the security role of the logged-in user.<br/>
-                For more information, see <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">Role-based access control</a>.</p>
+                <p>{{site.data.keys.mf_analytics_console }} では、ログインしているユーザーのセキュリティー・ロールに基づいて異なるコンテンツを表示するようになりました。<br/>
+                詳しくは、<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">役割ベースのアクセス制御</a>を参照してください。</p>
 
-                <p>{{ site.data.keys.mf_analytics_server }} uses Elasticsearch V1.7.5.</p>
+                <p>{{site.data.keys.mf_analytics_server }} は Elasticsearch V1.7.5 を使用します。</p>
 
-                <p>{{ site.data.keys.mf_analytics_short }} support for web applications was added with the new web analytics client-side API.</p>
+                <p>Web アプリケーション用の {{site.data.keys.mf_analytics_short }} のサポートが、新しい Web 分析クライアント・サイド API と共に追加されました。</p>
 
-                <p>Some event types were changed between earlier versions of {{ site.data.keys.mf_analytics_server }} and V8.0. Because of this change, any JNDI properties that were previously configured in your server configuration file must be converted to the new event type.</p>
+                <p>旧バージョンの {{site.data.keys.mf_analytics_server }} と V8.0 の間で、一部のイベント・タイプが変更されました。この変更のため、ご使用のサーバー構成ファイルで以前に構成されていた JNDI プロパティーは、新しいイベント・タイプに変換する必要があります。</p>
             </div>
         </div>
     </div>
@@ -410,54 +409,54 @@ weight: 1
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="mobilefirst-push">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-push" aria-expanded="true" aria-controls="collapse-mobilefirst-push">What's new in {{ site.data.keys.product_adj }} Push Notifications</a>
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-mobilefirst-push" aria-expanded="true" aria-controls="collapse-mobilefirst-push">{{site.data.keys.product_adj }} プッシュ通知の新機能</a>
             </h4>
         </div>
 
         <div id="collapse-mobilefirst-push" class="panel-collapse collapse" role="tabpanel" aria-labelledby="mobilefirst-push">
             <div class="panel-body">
-                <p>The push notification service is now provided as a stand-alone service hosted on a separate web application.</p>
+                <p>プッシュ通知サービスは、別個の Web アプリケーションでホストされるスタンドアロン・サービスとして提供されるようになりました。</p>
 
-                <p>Earlier versions of {{ site.data.keys.product }} embedded the push notification service as part of the application runtime.</p>
+                <p>旧バージョンの {{site.data.keys.product }} では、プッシュ通知サービスをアプリケーション・ランタイムの一部として組み込んでいました。</p>
 
-                <h3>Programming model</h3>
-                <p>The programming model spans across the server to client, and you need to set up your application for push notification service to work on your client applications. Two types of clients would interact with push notification service:</p>
+                <h3>プログラミング・モデル</h3>
+                <p>プログラミング・モデルは、サーバーからクライアントまでにわたって使用されます。プッシュ通知サービスがクライアント・アプリケーションで機能するようにアプリケーションをセットアップする必要があります。以下の 2 種類のクライアントが、プッシュ通知サービスと相互作用します。</p>
 
                 <ul>
-                    <li>Mobile client applications</li>
-                    <li>Back-end server applications</li>
+                    <li>モバイル・クライアント・アプリケーション</li>
+                    <li>バックエンド・サーバー・アプリケーション</li>
                 </ul>
                 
-                <h3>Security for push notification service</h3>
-                <p>{{ site.data.keys.product }} authorization server enforces the OAuth protocol to secure push notification service.</p>
+                <h3>プッシュ通知サービスのセキュリティー</h3>
+                <p>{{site.data.keys.product }} 許可サーバーでは、OAuth プロトコルを適用して、プッシュ通知サービスを保護します。</p>
 
-                <h3>Push notification service model</h3>
-                <p>The event source-based model is not supported. The push notification capability is enabled on {{ site.data.keys.product }} by the push service model.</p>
+                <h3>プッシュ通知サービス・モデル</h3>
+                <p>イベント・ソース・ベースのモデルはサポートされません。プッシュ・サービス・モデルによって、プッシュ通知機能が {{site.data.keys.product }} で有効になっています。</p>
 
-                <h3>Push REST API</h3>
-                <p>You can enable back-end server applications that are deployed outside {{ site.data.keys.mf_server }} to access push notification functions by using REST API for push in the {{ site.data.keys.product }} runtime.</p>
+                <h3>プッシュ REST API</h3>
+                <p>{{site.data.keys.product }} ランタイムで REST API をプッシュに使用することによって、{{site.data.keys.mf_server }} の外部でデプロイされたバックエンド・サーバー・アプリケーションが、プッシュ通知機能にアクセスできるようにすることができます。</p>
 
-                <h3>Upgrading from existing event source-based notification model</h3>
-                <p>The event source-based model is not supported. The push notification capability is enabled entirely by the push service model. All existing event source-based applications need to be migrated to the new push service model.</p>
+                <h3>既存のイベント・ソース・ベースの通知モデルからのアップグレード</h3>
+                <p>イベント・ソース・ベースのモデルはサポートされません。プッシュ・サービス・モデルによって、プッシュ通知機能が完全に有効になります。既存のすべてのイベント・ソース・ベースのアプリケーションを、新しいプッシュ・サービス・モデルにマイグレーションする必要があります。</p>
 
-                <h3>Sending push notifications</h3>
-                <p>You can choose to send an event-source based, tag-based, or broadcast-enabled push notification from the server.</p>
+                <h3>プッシュ通知の送信</h3>
+                <p>イベント・ソース・ベース、タグ・ベース、およびブロードキャスト対応のプッシュ通知をサーバーから送信することができます。</p>
 
-                <p>Push notifications can be sent by using the following methods:</p>
+                <p>プッシュ通知は、以下の方法で送信できます。</p>
                 <ul>
-                    <li>Using {{ site.data.keys.mf_console }}, two types of notifications can be sent: tag and broadcast. See Sending push notification with the {{ site.data.keys.mf_console }}.</li>
-                    <li>Using Push Message (POST) REST API, all forms of notifications can be sent: tag, broadcast, and authenticated.</li>
-                    <li>Using REST API for the {{ site.data.keys.mf_server }} administration service, all forms of notifications can be sent: tag, broadcast, and authenticated.</li>
+                    <li>{{site.data.keys.mf_console }} を使用する。2 つのタイプ (タグおよびブロードキャスト) の通知を送信できます。『{{site.data.keys.mf_console }} を使用したプッシュ通知の送信』を参照してください。</li>
+                    <li>Push Message (POST) REST API を使用する。すべての形式 (タグ、ブロードキャスト、および認証済み) の通知を送信できます。</li>
+                    <li>{{site.data.keys.mf_server }} 管理サービス用の REST API を使用する。すべての形式 (タグ、ブロードキャスト、および認証済み) の通知を送信できます。</li>
                 </ul>
                 
-                <h3>Sending SMS notifications</h3>
-                <p>You can configure the push service to send a short message service (SMS) notification to user devices.</p>
+                <h3>SMS 通知の送信</h3>
+                <p>ユーザー・デバイスにショート・メッセージ・サービス (SMS) 通知を送信するようにプッシュ・サービスを構成することができます。</p>
 
-                <h3>Installation of the push notification service</h3>
-                <p>The push notification service is packaged as a {{ site.data.keys.mf_server }} component ({{ site.data.keys.mf_server }} push service).</p>
+                <h3>プッシュ通知サービスのインストール</h3>
+                <p>プッシュ通知サービスは、{{site.data.keys.mf_server }} コンポーネント ({{site.data.keys.mf_server }} プッシュ・サービス) としてパッケージされています。</p>
 
-                <h3>Push service model is supported on Windows Universal Platform apps</h3>
-                <p>You can now migrate native Windows Universal Platform (UWP) applications to use the push service model to send push notifications.</p>
+                <h3>プッシュ・サービス・モデルが Windows Universal Platform アプリケーションでサポートされる</h3>
+                <p>プッシュ・サービス・モデルを使用してプッシュ通知を送信するように、ネイティブ Windows Universal Platform (UWP) アプリケーションをマイグレーションすることができるようになりました。</p>
             </div>
         </div>
     </div>

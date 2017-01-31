@@ -1,32 +1,32 @@
 ---
 layout: tutorial
-title: Resource request from iOS applications
+title: iOS アプリケーションからのリソース要求
 breadcrumb_title: iOS
 relevantTo: [ios]
 downloads:
-  - name: Download Xcode project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
-  - name: Download Adapter Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+  - name: Xcode プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
+  - name: アダプター Maven プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_adj }} applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources.
+{{site.data.keys.product_adj }} アプリケーションは `WLResourceRequest` REST API を使用してリソースにアクセスできます。  
+REST API は、すべてのアダプターおよび外部リソースで機能します。
 
-**Prerequisites**:
+**前提条件**:
 
-- Ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/ios) to your Native iOS project.
-- Learn how to [create adapters](../../../adapters/creating-adapters/).
+- 必ずご使用のネイティブ iOS プロジェクトに [{{site.data.keys.product }} SDK を追加](../../../application-development/sdk/ios)しておいてください。
+- [アダプターの作成](../../../adapters/creating-adapters/)方法を参照してください。
 
 ## WLResourceRequest
 {: #wlresourcerequest }
-The `WLResourceRequest` class handles resource requests to adapters or external resources.
+`WLResourceRequest` クラスは、アダプターまたは外部リソースに対するリソース要求を処理します。
 
-Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
+ `WLResourceRequest` オブジェクトを作成し、リソースへのパスと HTTP メソッドを指定します。  
+使用可能なメソッドは、`WLHttpMethodGet`、`WLHttpMethodPost`、`WLHttpMethodPut`、および `WLHttpMethodDelete` です。
 
 Objective-C
 
@@ -42,15 +42,16 @@ let request = WLResourceRequest(
 )
 ```
 
-* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
-* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
-* To access resources outside of the project, use the full URL as per the requirements of the external server.
-* **timeout**: Optional, request timeout in milliseconds
+* **JavaScript アダプター** の場合は、`/adapters/{AdapterName}/{procedureName}` を使用します。
+* **Java アダプター**の場合は、`/adapters/{AdapterName}/{path}` を使用します。`path` は、Java コードで `@Path` アノテーションをどのように定義したかによって決まります。これには、使用した `@PathParam` も含まれます。
+* プロジェクトの外部にあるリソースにアクセスするには、外部サーバーの要件のとおりに完全な URL を使用してください。
+* **タイムアウト**: オプション。ミリ秒単位の要求タイムアウトです。
 
-## Sending the request
+## 要求の送信
 {: #sending-the-request }
-Request the resource by using the `sendWithCompletionHandler` method.  
-Supply a completion handler to handle the retrieved data:
+`sendWithCompletionHandler` メソッドを使用して、リソースを要求します。  
+取得したデータを処理するには、完了ハンドラーを指定します。
+
 
 Objective-C
 
@@ -76,19 +77,19 @@ request.sendWithCompletionHandler { (response, error) -> Void in
 }
 ```
 
-Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
+代替方法として、`sendWithDelegate` を使用して、`NSURLConnectionDataDelegate` と `NSURLConnectionDelegate` の両方のプロトコルに準拠するデリゲートを指定することができます。これにより、バイナリー応答の処理など、よりきめ細かに応答を処理できます。   
 
-## Parameters
+## パラメーター
 {: #parameters }
-Before sending your request, you may want to add parameters as needed.
+要求を送信する前に、必要に応じてパラメーターを追加したい場合があります。
 
-### Path parameters
+### パス・パラメーター
 {: #path-parameters }
-As explained above, **path** parameters (`/path/value1/value2`) are set during the creation of the `WLResourceRequest` object.
+上記の説明のとおり、**path** パラメーター (`/path/value1/value2`) は、`WLResourceRequest` オブジェクトの作成中に設定されます。
 
-### Query parameters
+### 照会パラメーター
 {: #query-parameters }
-To send **query** parameters (`/path?param1=value1...`) use the `setQueryParameter` method for each parameter:
+**query** パラメーター (`/path?param1=value1...`) を送信するには、パラメーターごとに `setQueryParameter` メソッドを使用します。
 
 Objective-C
 
@@ -103,9 +104,9 @@ request.setQueryParameterValue("value1", forName: "param1")
 request.setQueryParameterValue("value2", forName: "param2")
 ```
 
-#### JavaScript adapters
+#### JavaScript アダプター
 {: #javascript-adapters-query }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 Objective-C
 
@@ -119,11 +120,11 @@ Swift
 request.setQueryParameterValue("['value1', 'value2']", forName: "params")
 ```
 
-This should be used with `WLHttpMethodGet`.
+これは、`WLHttpMethodGet` と一緒に使用してください。
 
-### Form parameters
+### フォーム・パラメーター
 {: #form-parameters }
-To send **form** parameters in the body, use `sendWithFormParameters` instead of `sendWithCompletionHandler`:
+本体内の **form** パラメーターを送信するには、`sendWithCompletionHandler` ではなく、`sendWithFormParameters` を使用します。
 
 Objective-C
 
@@ -157,9 +158,9 @@ request.sendWithFormParameters(formParams) { (response, error) -> Void in
 }
 ```
 
-#### JavaScript adapters
+#### JavaScript アダプター
 {: #javascript-adapters-form }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 Objective-C
 
@@ -172,11 +173,11 @@ Swift
 let formParams = ["params":"['value1', 'value2']"]
 ```
 
-This should be used with `WLHttpMethodPost`.
+これは、`WLHttpMethodPost` と一緒に使用してください。
 
-### Header parameters
+### ヘッダー・パラメーター
 {: #header-parameters }
-To send a parameter as an HTTP header use the `setHeaderValue` API:
+HTTP ヘッダーとしてパラメーターを送信するには、`setHeaderValue` API を使用します。
 
 Objective-C
 
@@ -191,42 +192,42 @@ Swift
 request.setHeaderValue("2015-06-06", forName: "birthdate")
 ```
 
-### Other custom body parameters
+### その他のカスタム本体パラメーター
 {: #other-custom-body-parameters }
 
-- `sendWithBody` allows you to set an arbitrary String in the body.
-- `sendWithJSON` allows you to set an arbitrary dictionary in the body.
-- `sendWithData` allows you to set an arbitrary `NSData` in the body.
+- `sendWithBody` を使用して、本体に任意のストリングを設定できます。
+- `sendWithJSON` を使用して、本体に任意のディクショナリーを設定できます。
+- `sendWithData` を使用して、本体に任意の `NSData` を設定できます。
 
-## The response
+## 応答
 {: #the response }
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
+`response` オブジェクトには応答データが含まれており、そのメソッドとプロパティーを使用して必要な情報を取得することができます。よく使用されるプロパティーは、`responseText` (ストリング)、`responseJSON` (ディクショナリー) (応答が JSON の場合)、および `status` (整数) (応答の HTTP 状況) です。
 
-Use the `response` and `error` objects to get the data that is retrieved from the adapter.
+`response` オブジェクトおよび `error` オブジェクトを使用して、アダプターから取り出されたデータを取得します。
 
-## For more information
+## 詳細情報
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html).
+> WLResourceRequest について詳しくは、[API リファレンスを参照してください](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html)。
 
-<img alt="Image of the sample application" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
-## Sample application
+<img alt="サンプル・アプリケーションのイメージ" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
+## サンプル・アプリケーション
 {: #sample-application }
-The ResourceRequestSwift project contains an iOS application, implemented in Swift, that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter used during the resource request call.
+ResourceRequestSwift プロジェクトには、Swift で実装され、Java アダプターを使用してリソース要求を行う iOS アプリケーションが含まれています。  
+アダプター Maven プロジェクトには、リソース要求呼び出し中に使用される Java アダプターが含まれています。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the iOS project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) して iOS プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) してアダプター Maven プロジェクトをダウンロードします。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。
 
-#### Note about iOS 9:
+#### iOS 9 についての注意:
 {: #note-about-ios-9 }
 
-> Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
->   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
->   2. Paste the following:
+> Xcode 7 を使用すると、デフォルトで [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) が使用可能になります。チュートリアルを実行するには、ATS を使用不可にしてください ([続きを読む](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error))。
+>   1. Xcode で、右クリックにより**「[プロジェクト]/info.plist ファイル」→「指定して開く」→「ソース・コード」**を選択します。
+>   2. 以下を貼り付けます。
 >
 ```xml
 >      <key>NSAppTransportSecurity</key>

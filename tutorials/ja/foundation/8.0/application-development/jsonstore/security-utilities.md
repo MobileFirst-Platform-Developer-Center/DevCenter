@@ -1,31 +1,48 @@
 ---
 layout: tutorial
-title: JSONStore Security Utilities
-breadcrumb_title: Security utilities
+title: JSONStore セキュリティー・ユーティリティー
+breadcrumb_title: セキュリティー・ユーティリティー
 relevantTo: [ios,android,cordova]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
-The {{ site.data.keys.product_full }} client-side API provides some security utilities to help protect your user's data. Features like JSONStore are great if you want to protect JSON objects. However, it is not recommended to store binary blobs in a JSONStore collection.
+## 概説
+{{site.data.keys.product_full }} クライアント・サイド API は、ユーザーのデータを保護するのに役に立つセキュリティー・ユーティリティーをいくつか提供しています。JSONStore などのフィーチャーは、JSON オブジェクトを保護する場合に優れた能力を発揮します。
+ただし、JSONStore コレクションにバイナリー・ブロブを保管することはお勧めできません。
 
-Instead, store binary data on the file system, and store the file paths and other metadata inside a JSONStore collection. If you want to protect files like images, you can encode them as base64 strings, encrypt it, and write the output to disk. When it is time to decrypt the data, you can look up the metadata in a JSONStore collection, read the encrypted data from the disk, and decrypt it using the metadata that was stored. This metadata can include the key, salt, Initialization Vector (IV), type of file, path to the file, and others.
+代わりに、バイナリー・データをファイル・システムに保管して、ファイル・パスやその他のメタデータを JSONStore コレクション内に保管します。
+イメージなどのファイルを保護したい場合、それを base64 ストリングとしてエンコードし、暗号化して、ディスクに出力を書き込むことができます。
+データを暗号化解除するときになったら、JSONStore コレクション内のメタデータを検索して、暗号化されたデータをディスクから読み取り、保管されているメタデータを使用してそれを暗号化解除することができます。
+このメタデータには鍵、ソルト、初期設定ベクトル (IV)、ファイルのタイプ、ファイルへのパスなどを含めることができます。
 
-At a high level, the SecurityUtils API provides the following APIs:
+高レベルでは、SecurityUtils API は以下の API を提供します。
 
-* Key generation - Instead of passing a password directly to the encryption function, this key generation function uses Password Based Key Derivation Function v2 (PBKDF2) to generate a strong 256-bit key for the encryption API. It takes a parameter for the number of iterations. The higher the number, the more time it takes an attacker to brute force your key. Use a value of at least 10,000. The salt must be unique and it helps ensure that attackers have a harder time using existing hash information to attack your password. Use a length of 32 bytes.
-* Encryption - Input is encrypted by using the Advanced Encryption Standard (AES). The API takes a key that is generated with the key generation API. Internally, it generates a secure IV, which is used to add randomization to the first block cipher. Text is encrypted. If you want to encrypt an image or other binary format, turn your binary into base64 text by using these APIs. This encryption function returns an object with the following parts:
-    * ct (cipher text, which is also called the encrypted text)
+* 鍵生成 - パスワードを暗号化関数に直接渡す代わりに、この鍵生成機能では Password Based Key Derivation Function v2 (PBKDF2) を使用して暗号化 API 用に強固な 256 ビット鍵を生成します。
+これは、反復回数のパラメーターを使用します。
+この数値が大きくなれば、それだけアタッカーによる鍵を破るための総当たり攻撃に時間がかかることになります。
+少なくとも 10,000 の値を使用してください。ソルトは固有である必要があります。これにより、アタッカーが既存のハッシュ情報を使用してパスワードを攻撃することがますます困難になります。
+32 バイトの長さを使用してください。
+* 暗号化 - 入力は、Advanced Encryption Standard (AES) を使用して暗号化されます。
+API は、鍵生成 API によって生成された鍵を使用します。
+内部的にこの API は、最初のブロック暗号にランダム化を追加するために使用される Secure IV を生成します。
+テキストは暗号化されます。
+イメージまたはその他のバイナリー形式を暗号化したい場合、これらの API を使用してバイナリーを base64 テキストに変換します。
+この暗号化関数は、以下の部分を持つオブジェクトを返します。
+    * ct (暗号テキスト。暗号化テキストとも呼ばれます)
     * IV
-    * v (version, which allows the API to evolve while still being compatible with an earlier version)
-* Decryption - Takes the output from the encryption API as input, and decrypts the cipher or encrypted text into plain text.
-* Remote random string - Gets a random hex string by contacting a random generator on the {{ site.data.keys.mf_server }}. The default value is 20 bytes, but you can change the number up to 64 bytes.
-* Local random string - Gets a random hex string by generating one locally, unlike the remote random string API, which requires network access. The default value is 32 bytes and there is not a maximum value. The operation time is proportional to the number of bytes.
-* Encode base64 - Takes a string and applies base64 encoding. Incurring a base64 encoding by the nature of the algorithm means that the size of the data is increased by approximately 1.37 times the original size.
-* Decode base64 - Takes a base64 encoded string and applies base64 decoding.
+    * v (バージョン。前のバージョンとまだ互換性がある間に API の発展を可能にします)
+* 暗号化解除 - 暗号化 API からの出力を入力として使用し、暗号テキストまたは暗号化テキストを暗号化解除し、非暗号化テキストにします。
+* リモート・ランダム・ストリング - {{site.data.keys.mf_server }} 上のランダム生成プログラムにアクセスしてランダム 16 進ストリングを取得します。デフォルト値は 20 ですが、64 バイトまで変更できます。
+* ローカル・ランダム・ストリング - リモート・ランダム・ストリング API と異なりネットワーク・アクセスを必要とするものをローカルに生成して、ランダム 16 進ストリングを取得します。
+デフォルト値は 32 バイトで、最大値はありません。
+操作時間は、バイト数に比例しています。
+* base64 のエンコード - ストリングを使用して、Base64 エンコードを適用します。
+アルゴリズムの性質上 Base64 エンコードをどうしても使用しなければならない場合、データのサイズがオリジナルのサイズのほぼ 1.37 倍に増加することになります。
+* base64 のデコード - エンコードされた base64 ストリングを使用し、base64 デコードを適用します。
 
-## Setup
-Ensure that you import the following files to use the JSONStore security utilities APIs.
+## セットアップ
+
+以下のファイルをインポートし、JSONStore セキュリティー・ユーティリティーの API を使用できるようにします。
 
 ### iOS
 
@@ -40,11 +57,11 @@ import com.worklight.wlclient.api.SecurityUtils
 ```
 
 ### JavaScript
-No setup is required.
+セットアップは不要です。
 
-## Examples
+## 例
 ### iOS
-#### Encryption and decryption
+#### 暗号化と暗号化解除
 
 ```objc
 // User provided password, hardcoded only for simplicity.
@@ -77,7 +94,7 @@ NSString* decryptedString = [WLSecurityUtils decryptWithKey:key
                                              error:&error];
 ```
 
-#### Encode and decode base64
+#### base64 のエンコード/デコード
 
 ```objc
 // Input string.
@@ -91,7 +108,7 @@ NSString* encodedString = [WLSecurityUtils base64StringFromData:originalStringDa
 NSString* decodedString = [[NSString alloc] initWithData:[WLSecurityUtils base64DataFromString:encodedString] encoding:NSUTF8StringEncoding];
 ```
 
-#### Get remote random
+#### リモートでのランダム取得
 
 ```objc
 [WLSecurityUtils getRandomStringFromServerWithBytes:32 
@@ -106,7 +123,7 @@ NSString* decodedString = [[NSString alloc] initWithData:[WLSecurityUtils base64
 ```
 
 ### Android
-#### Encryption and decryption
+#### 暗号化と暗号化解除
 
 ```java
 String password = "HelloPassword";
@@ -123,7 +140,7 @@ JSONObject encryptedObject = SecurityUtils.encrypt(key, originalText);
 String decipheredText = SecurityUtils.decrypt(key, encryptedObject);
 ```
 
-#### Encode and decode base64
+#### base64 のエンコード/デコード
 
 ```java
 import android.util.Base64;
@@ -139,7 +156,7 @@ byte[] base64Decoded = Base64.decode(text.getBytes("UTF-8"), Base64.DEFAULT);
 String decodedText = new String(base64Decoded, "UTF-8");
 ```
 
-#### Get remote random
+#### リモートでのランダム取得
 
 ```java
 Context context; // This is the current Activity's context.
@@ -161,7 +178,7 @@ WLRequestListener listener = new WLRequestListener(){
 SecurityUtils.getRandomStringFromServer(byteLength, context, listener);
 ```
 
-#### Get local random
+#### ローカルでのランダム取得
 
 ```java
 int byteLength = 32;
@@ -169,7 +186,7 @@ String randomString = SecurityUtils.getRandomString(byteLength);
 ```
 
 ### JavaScript
-#### Encryption and decryption
+#### 暗号化と暗号化解除
 
 ```javascript
 // Keep the key in a variable so that it can be passed to the encrypt and decrypt API.
@@ -216,7 +233,7 @@ WL.SecurityUtils.keygen({
 });
 ```
 
-#### Encode and decode base64
+#### base64 のエンコード/デコード
 
 ```javascript
 WL.SecurityUtils.base64Encode('Hello World!')
@@ -231,7 +248,7 @@ WL.SecurityUtils.base64Encode('Hello World!')
 });
 ```
 
-#### Get remote random
+#### リモートでのランダム取得
 
 ```javascript
 WL.SecurityUtils.remoteRandomString(32)
@@ -243,7 +260,7 @@ WL.SecurityUtils.remoteRandomString(32)
 });
 ```
 
-#### Get local random
+#### ローカルでのランダム取得
 
 ```javascript
 WL.SecurityUtils.localRandomString(32)

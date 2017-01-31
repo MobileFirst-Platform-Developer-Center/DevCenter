@@ -1,47 +1,47 @@
 ---
 layout: tutorial
-title: Resource request from Android applications
+title: Android アプリケーションからのリソース要求
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: Download Android Studio project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
-  - name: Download Adapter Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+  - name: Android Studio プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80
+  - name: アダプター Maven プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_adj }} applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources.
+{{site.data.keys.product_adj }} アプリケーションは `WLResourceRequest` REST API を使用してリソースにアクセスできます。  
+REST API は、すべてのアダプターおよび外部リソースで機能します。
 
-**Prerequisites**:
+**前提条件**:
 
-- Ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/android) to your Native Android project.
-- Learn how to [create adapters](../../../adapters/creating-adapters).
+- 必ずご使用のネイティブ Android プロジェクトに [{{site.data.keys.product }} SDK を追加](../../../application-development/sdk/android)しておいてください。
+- [アダプターの作成](../../../adapters/creating-adapters)方法を参照してください。
 
 ## WLResourceRequest
 {: #wlresourcerequest }
-The `WLResourceRequest` class handles resource requests to adapters or external resources.
+`WLResourceRequest` クラスは、アダプターまたは外部リソースに対するリソース要求を処理します。
 
-Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT`, `WLResourceRequest.HEAD` and `WLResourceRequest.DELETE`.
+ `WLResourceRequest` オブジェクトを作成し、リソースへのパスと HTTP メソッドを指定します。  
+使用可能なメソッドは、`WLResourceRequest.GET`、`WLResourceRequest.POST`、`WLResourceRequest.PUT`、`WLResourceRequest.HEAD`、および `WLResourceRequest.DELETE` です。
 
 ```java
 URI adapterPath = URI.create("/adapters/JavaAdapter/users");
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
 ```
 
-* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
-* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
-* To access resources outside of the project, use the full URL as per the requirements of the external server.
-* **timeout**: Optional, request timeout in milliseconds
-* **scope**: Optional, if you know which scope is protecting the resource - specifying this scope could make the request more efficient.
+* **JavaScript アダプター** の場合は、`/adapters/{AdapterName}/{procedureName}` を使用します。
+* **Java アダプター**の場合は、`/adapters/{AdapterName}/{path}` を使用します。`path` は、Java コードで `@Path` アノテーションをどのように定義したかによって決まります。これには、使用した `@PathParam` も含まれます。
+* プロジェクトの外部にあるリソースにアクセスするには、外部サーバーの要件のとおりに完全な URL を使用してください。
+* **タイムアウト**: オプション。ミリ秒単位の要求タイムアウトです。
+* **スコープ**: オプションです。どのスコープがリソースを保護しているのか分かっている場合は、このスコープを指定することで要求をより効率的にすることができます。
 
-## Sending the request
+## 要求の送信
 {: #sending-the-request }
-Request the resource by using the `.send()` method. Specify a WLResponseListener class instance:
+`.send()` メソッドを使用してリソースを要求します。WLResponseListener クラス・インスタンスを指定します。
 
 ```java
 request.send(new WLResponseListener(){
@@ -54,41 +54,41 @@ request.send(new WLResponseListener(){
 });
 ```
 
-## Parameters
+## パラメーター
 {: #parameters }
-Before sending your request, you may want to add parameters as needed.
+要求を送信する前に、必要に応じてパラメーターを追加したい場合があります。
 
-### Path parameters
+### パス・パラメーター
 {: #path-parameters }
-As explained above, **path** parameters (`/path/value1/value2`) are set during the creation of the `WLResourceRequest` object:
+上記の説明のとおり、**path** パラメーター (`/path/value1/value2`) は、`WLResourceRequest` オブジェクトの作成中に設定されます。
 
 ```java
 URI adapterPath = new URI("/adapters/JavaAdapter/users/value1/value2");
 WLResourceRequest request = new WLResourceRequest(adapterPath,WLResourceRequest.GET);
 ```
 
-### Query parameters
+### 照会パラメーター
 {: #query-parameters }
-To send **query** parameters (`/path?param1=value1...`) use the `setQueryParameter` method for each parameter:
+**query** パラメーター (`/path?param1=value1...`) を送信するには、パラメーターごとに `setQueryParameter` メソッドを使用します。
 
 ```java
 request.setQueryParameter("param1","value1");
 request.setQueryParameter("param2","value2");
 ```
 
-#### JavaScript adapters
+#### JavaScript アダプター
 {: #javascript-adapters }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 ```java
 request.setQueryParameter("params","['value1', 'value2']");
 ```
 
-This should be used with `WLResourceRequest.GET`.
+これは、`WLResourceRequest.GET` と一緒に使用してください。
 
-### Form parameters
+### フォーム・パラメーター
 {: #form-parameters }
-To send form parameters in the body, use `.send(HashMap<String, String> formParameters, WLResponseListener)` instead of `.send(WLResponseListener)`:  
+本体内のフォーム・パラメーターを送信するには、`.send(WLResponseListener)` ではなく `.send(HashMap<String, String> formParameters, WLResponseListener)` を使用します。  
 
 ```java
 HashMap formParams = new HashMap();
@@ -96,48 +96,48 @@ formParams.put("height", height.getText().toString());
 request.send(formParams, new MyInvokeListener());
 ```    
 
-#### JavaScript adapters
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+#### JavaScript アダプター
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 ```java
 formParams.put("params", "['value1', 'value2']");
 ```
 
-This should be used with `WLResourceRequest.POST`.
+これは、`WLResourceRequest.POST` と一緒に使用してください。
 
-### Header parameters
+### ヘッダー・パラメーター
 {: #header-parameters }
-To send a parameter as an HTTP header use `.addHeader()` API:
+HTTP ヘッダーとしてパラメーターを送信するには、`.addHeader()` API を使用します。
 
 ```java
 request.addHeader("date", date.getText().toString());
 ```
 
-### Other custom body parameters
+### その他のカスタム本体パラメーター
 {: #other-custom-body-parameters }
-- `.send(requestBody, WLResponseListener listener)` allows you to set an arbitrary String in the body.
-- `.send(JSONStore json, WLResponseListener listener)` allows you to set an arbitrary dictionary in the body.
-- `.send(byte[] data, WLResponseListener listener)` allows you to set an arbitrary byte array in the body.
+- `.send(requestBody, WLResponseListener listener)` を使用して、本体に任意のストリングを設定できます。
+- `.send(JSONStore json, WLResponseListener listener)` を使用して、本体に任意のディクショナリーを設定できます。
+- `.send(byte[] data, WLResponseListener listener)` を使用して、本体に任意のバイト配列を設定できます。
 
-## The response
+## 応答
 {: #the-response }
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (JSON Object) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
+`response` オブジェクトには応答データが含まれており、そのメソッドとプロパティーを使用して必要な情報を取得することができます。よく使用されるプロパティーは、`responseText` (ストリング)、`responseJSON` (JSON オブジェクト) (応答が JSON の場合)、および `status` (整数) (応答の HTTP 状況) です。
 
-Use the `WLResponse response` and `WLFailResponse response` objects to get the data that is retrieved from the adapter.
+`WLResponse response` オブジェクトおよび `WLFailResponse response` オブジェクトを使用して、アダプターから取り出されたデータを取得します。
 
-## For more information
+## 詳細情報
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLResourceRequest.html).
+> WLResourceRequest について詳しくは、[API リファレンスを参照してください](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLResourceRequest.html)。
 
-<img alt="Image of the sample application" src="resource-request-success-android.png" style="float:right"/>
-## Sample application
+<img alt="サンプル・アプリケーションのイメージ" src="resource-request-success-android.png" style="float:right"/>
+## サンプル・アプリケーション
 {: #sample-application }
-The ResourceRequestAndroid project contains a native Android application that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter used during the resource request call.
+ResourceRequestAndroid プロジェクトには、Java アダプターを使用してリソース要求を行うネイティブ Android アプリケーションが含まれています。  
+アダプター Maven プロジェクトには、リソース要求呼び出し中に使用される Java アダプターが含まれています。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) the Android project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestAndroid/tree/release80) して Android プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) してアダプター Maven プロジェクトをダウンロードします。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

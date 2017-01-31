@@ -1,93 +1,93 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Windows 8.1 Universal and Windows 10 UWP
+title: Windows 8.1 Universal および Windows 10 UWP でのプッシュ通知の処理
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 7
 downloads:
-  - name: Download Windows 8.1 Universal Project
+  - name: Windows 8.1 Universal プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
-  - name: Download Windows 10 UWP Project
+  - name: Windows 10 UWP プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in native Windows 8.1 Universal and Windows 10 UWP applications using C#.
+{{site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、C# を使用して、ネイティブの Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションでプッシュ通知を処理する方法について学習します。
 
-**Prerequisites:**
+**前提条件**
 
-* Make sure you have read the following tutorials:
-	* [Push Notifications Overview](../../)
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product_adj }} SDK to windows applications](../../../application-development/sdk/windows-8-10)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* 必ず、以下のチュートリアルをお読みください。
+	* [プッシュ通知の概要](../../)
+    * [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
+    * [Windows アプリケーションへの {{site.data.keys.product_adj }} SDK の追加](../../../application-development/sdk/windows-8-10)
+* ローカルで稼働している {{site.data.keys.mf_server }}、またはリモートで稼働している {{site.data.keys.mf_server }}
+* 開発者ワークステーションに {{site.data.keys.mf_cli }} がインストールされていること
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Notifications configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
+* [通知構成](#notifications-configuration)
+* [通知 API](#notifications-api)
+* [プッシュ通知の処理](#handling-a-push-notification)
 
-## Notifications Configuration
+## 通知構成
 {: #notifications-configuration }
-Create a new Visual Studio project or use and existing one.  
-If the {{ site.data.keys.product_adj }} Native Windows SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product_adj }} SDK to Windows applications](../../../application-development/sdk/windows-8-10) tutorial.
+新しい Visual Studio プロジェクトを作成するか、または既存のプロジェクトを使用します。  
+{{site.data.keys.product_adj }} Native Windows SDK がプロジェクトにまだ存在しない場合は、[Windows アプリケーションへの {{site.data.keys.product_adj }} SDK の追加](../../../application-development/sdk/windows-8-10)チュートリアルの説明に従ってください。
 
-### Adding the Push SDK
+### プッシュ SDK の追加
 {: #adding-the-push-sdk }
-1. Select Tools → NuGet Package Manager → Package Manager Console.
-2. Choose the project where you want to install the {{ site.data.keys.product_adj }} Push component.
-3. Add the {{ site.data.keys.product_adj }} Push SDK by running the **Install-Package IBM.MobileFirstPlatformFoundationPush** command.
+1. 「ツール」→「NuGet パッケージ マネージャー」→「パッケージ マネージャー コンソール」を選択します。
+2. {{site.data.keys.product_adj }} プッシュ・コンポーネントをインストールするプロジェクトを選択します。
+3. **Install-Package IBM.MobileFirstPlatformFoundationPush** コマンドを実行して、{{site.data.keys.product_adj }} プッシュ SDK を追加します。
 
-## Pre-requisite WNS configuration
+## WNS 構成の前提条件
 {: pre-requisite-wns-configuration }
-1. Ensure the application is with Toast notification capability. This can be enabled in Package.appxmanifest.
-2. Ensure `Package Identity Name` and `Publisher` should be updated with the values registered with WNS.
-3. (Optional) Delete TemporaryKey.pfx file.
+1. アプリケーションにトースト通知機能が備わっていることを確認します。これは Package.appxmanifest 内で有効にできます。
+2. `Package Identity Name` と `Publisher` が、WNS に登録されている値で更新されている必要があります。
+3. (オプション) TemporaryKey.pfx ファイルを削除します。
 
-## Notifications API
+## 通知 API
 {: #notifications-api }
-### MFPPush Instance
+### MFPPush インスタンス
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be done by creating a variable such as `private MFPPush PushClient = MFPPush.GetInstance();`, and then calling `PushClient.methodName()` throughout the class.
+すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。これを行うには、変数 (`private MFPPush PushClient = MFPPush.GetInstance();` など) を作成し、その後、クラス内で一貫して `PushClient.methodName()` を呼び出します。
 
-Alternatively you can call `MFPPush.GetInstance().methodName()` for each instance in which you need to access the push API methods.
+代わりに、プッシュ API メソッドにアクセスする必要があるインスタンスごとに `MFPPush.GetInstance().methodName()` を呼び出すこともできます。
 
-### Challenge Handlers
+### チャレンジ・ハンドラー
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+`push.mobileclient` スコープが**セキュリティー検査**にマップされる場合、プッシュ API を使用する前に、一致する**チャレンジ・ハンドラー**が存在し、登録済みであることを確認する必要があります。
 
-> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/ios) tutorial.
+> チャレンジ・ハンドラーについて詳しくは、[資格情報の検証](../../../authentication-and-security/credentials-validation/ios)チュートリアルを参照してください。
 
-### Client-side
+### クライアント・サイド
 {: #client-side }
-| C Sharp Methods                                                                                                | Description                                                             |
+| C Sharp メソッド                                                                                                | 説明                                                             |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`Initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
-| [`IsPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
-| [`GetTags()`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
-| [`Subscribe(String[] Tags)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
-| [`GetSubscriptions()`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
-| [`Unsubscribe(String[] Tags)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
-| [`UnregisterDevice()`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
+| [`Initialize()`](#initialization)                                                                            | 提供されたコンテキストの MFPPush を初期化します。                               |
+| [`IsPushSupported()`](#is-push-supported)                                                                    | デバイスがプッシュ通知をサポートするかどうか。                             |
+| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | デバイスをプッシュ通知サービスに登録します。               |
+| [`GetTags()`](#get-tags)                                | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
+| [`Subscribe(String[] Tags)`](#subscribe)     | 指定されたタグにデバイスをサブスクライブします。                          |
+| [`GetSubscriptions()`](#get-subscriptions)              | デバイスが現在サブスクライブしているタグをすべて取得します。               |
+| [`Unsubscribe(String[] Tags)`](#unsubscribe) | 特定のタグからアンサブスクライブします。                                  |
+| [`UnregisterDevice()`](#unregister)                     | プッシュ通知サービスからデバイスを登録抹消します。              |
 
-#### Initialization
+#### 初期化
 {: #initialization }
-Initialization is required for the client application to connect to MFPPush service.
+初期化は、クライアント・アプリケーションが MFPPush サービスに接続するために必要です。
 
-* The `Initialize` method should be called first before using any other MFPPush APIs.
-* It registers the callback function to handle received push notifications.
+* 最初に `Initialize` メソッドを呼び出してから、その他の MFPPush API を使用する必要があります。
+* このメソッドは、受け取ったプッシュ通知を処理するコールバック関数を登録します。
 
 ```csharp
 MFPPush.GetInstance().Initialize();
 ```
 
-#### Is push supported
+#### プッシュがサポートされるか
 {: #is-push-supported }
-Checks if the device supports push notifications.
+デバイスがプッシュ通知をサポートするかどうかをチェックします。
 
 ```csharp
 Boolean isSupported = MFPPush.GetInstance().IsPushSupported();
@@ -99,9 +99,9 @@ if (isSupported ) {
 }
 ```
 
-#### Register device &amp; send device token
+#### デバイスの登録 &amp; デバイス・トークンの送信
 {: #register-device--send-device-token }
-Register the device to the push notifications service.
+デバイスをプッシュ通知サービスに登録します。
 
 ```csharp
 JObject Options = new JObject();
@@ -114,9 +114,9 @@ if (Response.Success == true)
 }
 ```
 
-#### Get tags
+#### タグの取得
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+プッシュ通知サービスからすべての使用可能なタグを取得します。
 
 ```csharp
 MFPPushMessageResponse Response = await MFPPush.GetInstance().GetTags();
@@ -128,9 +128,9 @@ if (Response.Success == true)
 }
 ```
 
-#### Subscribe
+#### サブスクライブ
 {: #subscribe }
-Subscribe to desired tags.
+目的のタグにサブスクライブします。
 
 ```csharp
 string[] Tags = ["Tag1" , "Tag2"];
@@ -147,9 +147,9 @@ else
 }
 ```
 
-#### Get subscriptions
+#### サブスクリプションの取得
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+デバイスが現在サブスクライブしているタグを取得します。
 
 ```csharp
 MFPPushMessageResponse Response = await MFPPush.GetInstance().GetSubscriptions();
@@ -163,9 +163,9 @@ else
 }
 ```
 
-#### Unsubscribe
+#### アンサブスクライブ
 {: #unsubscribe }
-Unsubscribe from tags.
+タグからアンサブスクライブします。
 
 ```csharp
 string[] Tags = ["Tag1" , "Tag2"];
@@ -182,9 +182,9 @@ else
 }
 ```
 
-#### Unregister
+#### 登録抹消
 {: #unregister }
-Unregister the device from push notification service instance.
+プッシュ通知サービス・インスタンスからデバイスを登録抹消します。
 
 ```csharp
 MFPPushMessageResponse Response = await MFPPush.GetInstance().UnregisterDevice();         
@@ -196,11 +196,11 @@ if (Response.Success == true)
 }
 ```
 
-## Handling a push notification
+## プッシュ通知の処理
 {: #handling-a-push-notification }
-In order to handle a push notification you will need to set up a `MFPPushNotificationListener`.  This can be achieved by implementing the following method.
+プッシュ通知を処理するためには、`MFPPushNotificationListener` をセットアップする必要があります。これは、以下のメソッドを実装することで実現できます。
 
-1. Create a class by using interface of type MFPPushNotificationListener
+1. MFPPushNotificationListener タイプのインターフェースを使用してクラスを作成します。
 
    ```csharp
    internal class NotificationListner : MFPPushNotificationListener
@@ -212,24 +212,24 @@ In order to handle a push notification you will need to set up a `MFPPushNotific
    }
    ```
 
-2. Set the class to be the listener by calling `MFPPush.GetInstance().listen(new NotificationListner())`
-3. In the onReceive method you will receive the push notification and can handle the notification for the desired behavior.
+2. `MFPPush.GetInstance().listen(new NotificationListner())` を呼び出すことで、このクラスがリスナーになるように設定します。
+3. onReceive メソッド内でプッシュ通知を受け取り、目的の動作にあわせて通知を処理できます。
 
 
-<img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
+<img alt="サンプル・アプリケーションのイメージ" src="sample-app.png" style="float:right"/>
 
 ## Windows Universal Push Notifications Service
 {: #windows-universal-push-notifications-service }
-No specific port needs to be open in your server configuration.
+サーバー構成内で特定のポートをオープンする必要はありません。
 
-WNS uses regular http or https requests.
+WNS では通常の http 要求または https 要求が使用されます。
 
 
-## Sample application
+## サンプル・アプリケーション
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) the Windows 8.1 Universal project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) Windows 10 UWP project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) して、Windows 8.1 Universal プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) して、Windows 10 UWP プロジェクトをダウンロードします。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

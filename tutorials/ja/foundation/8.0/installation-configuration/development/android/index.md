@@ -1,37 +1,37 @@
 ---
 layout: tutorial
-title: Setting up the Android development environment
+title: Android 開発環境のセットアップ
 breadcrumb_title: Android
 relevantTo: [android,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-This tutorial explains the steps a developer needs to follow in order to be able to develop and test Android applications. These steps include installing Android Studio and setting the Android SDK.
+このチュートリアルでは、Android アプリケーションを開発およびテストできるようにするために開発者が従う必要のあるステップを説明します。このステップには、Android Studio のインストールと、Android SDK の設定が含まれます。
 
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the {{ site.data.keys.product_adj }} development environment](../mobilefirst/) tutorial.
+**前提条件:** iOS 開発環境をセットアップする際には、[{{site.data.keys.product_adj }} 開発環境のセットアップ](../mobilefirst/)のチュートリアルも必ずお読みください。
 
-#### Support level
+#### サポート・レベル
 {: #support-level }
-{{ site.data.keys.product_adj }} SDK is compatible with Android version Ice Cream Sandwich (API level 14) and later.
+{{site.data.keys.product_adj }} SDK には、Android バージョン Ice Cream Sandwich (API レベル 14) 以降との互換性があります。
 
 ### Android Studio
-Follow the steps provided in the [Android Developers website](http://developer.android.com/develop/index.html) website to download and install Android Studio.
+Android Studio をダウンロードしてインストールするには、[Android Developers Web サイト](http://developer.android.com/develop/index.html)で示されたステップに従ってください。
 
-![Configure the Android SDK](android-studio.png)
+![Android SDK の構成](android-studio.png)
 
 ### Android SDK
-The Android SDK provides the tools and APIs required to develop applications on the Android platform, using the Java programming language.
+Android SDK は、Java プログラミング言語を使用して Android プラットフォームのアプリケーションを開発するために必要なツールおよび API を提供します。
 
-Once you open Android Studio for the time, you will be able to configure the Android SDK using the SDK Manager.
+Android Studio を開くと、SDK Manager を使用して Android SDK を構成できるようになります。
 
-In the SDK Manager you can install required packages. For more information, [visit the Android Developer website](http://developer.android.com/sdk/index.html).
+SDK Manager で、必要なパッケージをインストールできます。詳しくは、[Android Developer Web サイト](http://developer.android.com/sdk/index.html)を参照してください。
 
-#### Android Virtual Devices
+#### Android 仮想デバイス
 {: #android-virtual-devices }
-You can use an AVD to test your application. For a detailed explanation of all available options, see the [Managing Virtual Devices documentation topic](http://developer.android.com/tools/devices/index.html) in the Android Developers website.
+Android 仮想デバイス (AVD) を使用してアプリケーションをテストすることができます。すべての使用可能なオプションの詳細な説明については、Android Developers Web サイトの[『Managing Virtual Devices』の文書トピック](http://developer.android.com/tools/devices/index.html)を参照してください。
 
-## What's Next
+## 次のステップ
 {: #whats-next }
-Now that the {{ site.data.keys.product_adj }} and Android development environment are set up, continue to [Quick Start](../../../quick-start/android/) category to experience {{ site.data.keys.product_adj }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product_adj }} development.
+{{site.data.keys.product_adj }} および Android 開発環境がセットアップされたため、[クイック・スタート](../../../quick-start/android/)のカテゴリーで {{site.data.keys.product_adj }} を使用してみるか、[すべてのチュートリアル](../../../all-tutorials)で {{site.data.keys.product_adj }} 開発の個々の側面について理解を深めてください。

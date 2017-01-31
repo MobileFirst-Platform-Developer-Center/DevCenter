@@ -1,50 +1,50 @@
 ---
 layout: tutorial
-title: Xamarin end-to-end demonstration
+title: Xamarin のエンドツーエンドのデモンストレーション
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The purpose of this demonstration is to experience an end-to-end flow:
+このデモンストレーションの目的は、エンドツーエンドのフローを体験することです。
 
-1. A sample application that is bundled with the {{ site.data.keys.product_adj }} Xamarin client SDK is registered with the {{ site.data.keys.mf_console }}.
-2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
-3. The application logic is changed to make a resource request.
+1. {{site.data.keys.product_adj }} Xamarin クライアント SDK と事前にバンドルされているサンプル・アプリケーションは、{{site.data.keys.mf_console }} に登録済みです。
+2. 新規または提供済みのアダプターは {{site.data.keys.mf_console }} にデプロイされています。  
+3. アプリケーション・ロジックは、リソース要求を行うために変更されています。
 
-**End result**:
+**終了結果**:
 
-* Successfully pinging the {{ site.data.keys.mf_server }}.
+* {{site.data.keys.mf_server }} を正常に ping している。
 
-#### Prerequisites:
+#### 前提条件:
 {: #prerequisites }
 * Xamarin Studio
-* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* *オプション*。スタンドアロン {{site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
 
-### 1. Starting the {{ site.data.keys.mf_server }}
+### 1. {{site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+[Mobile Foundation インスタンスが作成済みである](../../bluemix/using-mobile-foundation)ことを確認してください。作成済みでない場合は、  
+[{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/)を使用しているときは、サーバーのフォルダーにナビゲートして、Mac および Linux では `./run.sh`、Windows では `run.cmd` のコマンドを実行してください。
 
-### 2. Creating an application
+### 2. アプリケーションの作成
 {: #2-creating-an-application }
-In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
 
-1. Click the **New** button next to **Applications**
-    * Select the **Android** platform
-    * Enter **com.ibm.mfpstarterxamarin** as the **application identifier** (depending on the application scaffold you will download in the next step)
-    * Enter **1.0** as the **version** value
-    * Click on **Register application**
+1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
+    * **Android** プラットフォームを選択します。
+    * (次のステップでダウンロードするアプリケーション・スキャフォールドに応じて) **com.ibm.mfpstarterxamarin** を **アプリケーション ID** として入力します。
+    * **1.0** を **version** の値として入力します。
+    * **「アプリケーションの登録」**をクリックします。
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-xamarin.gif"/>
+    <img class="gifplayer" alt="アプリケーションの登録" src="register-an-application-xamarin.gif"/>
 
-### 3. Editing application logic
+### 3. アプリケーション・ロジックの編集
 {: #3-editing-application-logic }
-* Create a Xamarin project.
-* Add the Xamarin SDK as mentioned in the [Adding the SDK](../../application-development/sdk/xamarin/) tutorial.
-* Add a property of type `IWorklightClient` in any class file as below.
+* Xamarin プロジェクトを作成します。
+* Xamarin SDK を [SDK の追加](../../application-development/sdk/xamarin/)チュートリアルで言及されているとおりに追加します。
+* 下記に示すように、`IWorklightClient` タイプのプロパティーを任意のクラス・ファイル内に追加します。
 
    ```csharp
    /// <summary>
@@ -53,17 +53,17 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
    /// <value>The worklight client.</value>
    public static IWorklightClient WorklightClient {get; set;}
    ```
-* If you're devleoping for iOS, paste the following code inside **FinishedLaunching** method of the **AppDelegate.cs** file:
+* iOS 向けに開発している場合は、**AppDelegate.cs** ファイルの **FinishedLaunching** メソッド内に以下のコードを貼り付けます。
 
   ```csharp
    {ClassName}.WorklightClient = WorklightClient.CreateInstance();
   ```
-* If you're devleoping for Android, include the following line of code inside **OnCreate** method of the **MainActivity.cs** file:
+* Android 向けに開発している場合は、**MainActivity.cs** ファイルの **OnCreate** メソッド内に以下のコード行を含めます。
 
   ```csharp
    {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
   ```
-* Define a method to obtain the access token and perform a resource request to the MFP Server as below.
+* 下記に示すように、アクセス・トークンを取得するようにメソッドを定義し、MFP サーバーへのリソース要求を実行します。
    
     ```csharp
     public async void ObtainToken()
@@ -95,51 +95,50 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
     }
    ```
   
-* Invoke **ObtainToken** method within a class constructor or on click of a button.
+* クラス・コンストラクター内またはボタンのクリックで **ObtainToken** メソッドを呼び出します。
 
-### 4. Deploy an adapter
+### 4. アダプターのデプロイ
 {: #4-deploy-an-adapter }
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
+[この作成済みの .adapter 成果物](../javaAdapter.adapter)をダウンロードし、{{site.data.keys.mf_console }} から**「アクション」→「アダプターのデプロイ」**アクションを使用して、この成果物をデプロイします。
 
-Alternatively, click the **New** button next to **Adapters**.  
+あるいは、**「アダプター」**の隣の**「新規」**ボタンをクリックします。  
 
-1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
+1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。「Hello World」**Java** アダプターのサンプルをダウンロードします。
 
-   > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
-
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+   > Maven および {{site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。
+2. **コマンド・ライン**・ウィンドウからアダプターの Maven プロジェクト・ルート・フォルダーにナビゲートし、以下のコマンドを実行します。
 
    ```bash
    mfpdev adapter build
    ```
 
-3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{site.data.keys.mf_console }} からアダプターをデプロイします。アダプターは、**[adapter]/target** フォルダー内にあります。
 
-   <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>
+   <img class="gifplayer" alt="アダプターのデプロイ" src="create-an-adapter.png"/>
 
 <!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
-### 5. Testing the application
+### 5. アプリケーションのテスト
 {: #5-testing-the-application }
-1. In Xamarin Studio, select the **mfpclient.plist** file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
-    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
+1. Xamarin Studio で、**mfpclient.plist** ファイルを選択し、**protocol**、**host**、**port** の各プロパティーをご使用の {{site.data.keys.mf_server }} の正しい値で編集します。
+    * ローカル {{site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
+    * リモート {{site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
 
-2. Press the **Play** button.
+2. **「再生」**ボタンを押します。
 
 <br clear="all"/>
-### Results
+### 結果
 {: #results }
-* Clicking the **Ping MobileFirst Server** button will display **Connected to MobileFirst Server**.
-* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
+* **「MobileFirst Server への ping (Ping MobileFirst Server)」**ボタンをクリックすると、**「MobileFirst Server に接続されています (Connected to MobileFirst Server)」**が表示されます。
+* アプリケーションが {{site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。
 
-The adapter response is then printed in the Xamarin Studio Console.
+その場合、アダプター応答が Xamarin Studio コンソールに出力されます。
 
-![Image of application that successfully called a resource from the {{ site.data.keys.mf_server }}](console-output.png)
+![{{site.data.keys.mf_server }} から正常にリソースを呼び出したアプリケーションの画像](console-output.png)
 
-## Next steps
+## 次の手順
 {: #next-steps }
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
+アプリケーションでのアダプターの使用、プッシュ通知などの追加のサービスを統合する方法、{{site.data.keys.product_adj }} セキュリティー・フレームワークの使用などについて学習します。
 
-- Review the [Adapters development](../../adapters/) tutorials
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review [All Tutorials](../../all-tutorials)
+- [アダプターの開発](../../adapters/)チュートリアルを検討する
+- [認証およびセキュリティー・チュートリアル](../../authentication-and-security/)を検討する
+- [すべてのチュートリアル](../../all-tutorials)を検討する

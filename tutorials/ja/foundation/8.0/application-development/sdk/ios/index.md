@@ -1,63 +1,63 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to iOS Applications
+title: iOS アプリケーションへの MobileFirst Foundation SDK の追加
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The MobileFirst Foundation SDK consists of a collection of pods that are available through [CocoaPods](http://guides.cocoapods.org) and which you can add to your Xcode project.  
-The pods correspond to core functions and other functions:
+MobileFirst Foundation SDK は、[CocoaPods](http://guides.cocoapods.org) を通じて入手可能な pod の集合で構成されます。この SDK は、Xcode プロジェクトに追加できます。  
+これらの pod は、次のようなコア機能およびその他の機能に対応しています。
 
-* **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../jsonstore/ios/).
-* **IBMMobileFirstPlatformFoundationPush** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
-* **IBMMobileFirstPlatformFoundationWatchOS** - Contains support for Apple WatchOS.
+* **IBMMobileFirstPlatformFoundation** - クライアントとサーバー間の接続を実装し、認証およびセキュリティーの各側面、リソース要求、およびその他の必要なコア機能を処理します。
+* **IBMMobileFirstPlatformFoundationJSONStore** - JSONStore のフレームワークを含んでいます。詳しくは、[iOS 用 JSONStore に関するチュートリアル](../../jsonstore/ios/)を参照してください。
+* **IBMMobileFirstPlatformFoundationPush** - プッシュ通知のフレームワークを含んでいます。詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
+* **IBMMobileFirstPlatformFoundationWatchOS** - Apple WatchOSのサポートを含んでいます。
 
-In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaPods to a new or existing iOS application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
+このチュートリアルでは、CocoaPods を使用して MobileFirst ネイティブ SDK を新規または既存の iOS アプリケーションに追加する方法について学習します。また、アプリケーションを認識するように {{site.data.keys.mf_server }} を構成する方法についても学習します。
 
-**Prerequisites:**
+**前提条件:**
 
-- Xcode and MobileFirst CLI installed on the developer workstation.  
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your iOS development environment](../../../installation-configuration/development/ios) tutorials.
+- Xcode と MobileFirst CLI が開発者のワークステーションにインストールされている。  
+- {{site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
+- [MobileFirst 開発環境のセットアップ](../../../installation-configuration/development/mobilefirst)、および [iOS 開発環境のセットアップ](../../../installation-configuration/development/ios)の両チュートリアルを読む。
 
-> **Note:** **Keychain Sharing** capability is mandatory while running iOS apps on simulators using XCode 8.
+> **注:** XCode 8 を使用してシミュレーターで iOS アプリケーションを実行している間は、**キーチェーン共有**機能が必須です。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-- [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
-- [Adding Support for Apple watchOS](#adding-support-for-apple-watchos)
-- [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Bitcode and TLS 1.2](#bitcode-and-tls-12)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [MobileFirst ネイティブ SDK の追加](#adding-the-mobilefirst-native-sdk)
+- [MobileFirst Native SDK の手動での追加](#manually-adding-the-mobilefirst-native-sdk)
+- [Apple watchOS のサポートの追加](#adding-support-for-apple-watchos)
+- [MobileFirst ネイティブ SDK の更新](#updating-the-mobilefirst-native-sdk)
+- [生成される MobileFirst Native SDK 成果物](#generated-mobilefirst-native-sdk-artifacts)
+- [ビットコードと TLS 1.2](#bitcode-and-tls-12)
+- [次に使用するチュートリアル](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## {{site.data.keys.product_adj }} ネイティブ SDK の追加
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product }} Native SDK to a new or existing Xcode project, and to register the application to the {{ site.data.keys.mf_server }}.
+以下の手順に従って、新規または既存の Xcode プロジェクトに {{site.data.keys.product }} ネイティブ SDK を追加し、アプリケーションを {{site.data.keys.mf_server }} に登録します。
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
+開始する前に、{{site.data.keys.mf_server }} が稼働していることを確認します。  
+ローカルにインストールされているサーバーを使用する場合: **コマンド・ライン**・ウィンドウで、サーバーのフォルダーに移動し、コマンド `./run.sh` を実行します。
 
-### Creating an application
+### アプリケーションの作成
 {: #creating-an-application }
-Create an Xcode project or use an existing one (Swift or Objective-C).  
+Xcode プロジェクトを作成するか、または既存のプロジェクト (Swift または Objective-C) を使用します。  
 
-### Adding the SDK
+### SDK の追加
 {: #adding-the-sdk }
-1. The {{ site.data.keys.product }} Native SDK is provided via CocoaPods.
-    - If [CocoaPods](http://guides.cocoapods.org) is already installed in your development environment, skip to step 2.
-    - If CocoaPods is not installed, install it as follows:  
-        - Open a **Command-line** window and navigate to the root of the Xcode project.
-        - Run the command: `sudo gem install cocoapods` followed by `pod setup`. **Note:** These commands might take several minutes to complete.
-2. Run the command: `pod init`. This creates a `Podfile`.
-3. Using your favorite code editor, open the `Podfile`.
-    - Comment out or delete the contents of the file.
-    - Add the following lines and save the changes:
+1. {{site.data.keys.product }} ネイティブ SDK は CocoaPods 経由で提供されます。
+    - [CocoaPods](http://guides.cocoapods.org) が既に開発環境にインストールされている場合は、ステップ 2 に進みます。
+    - CocoaPods がインストールされていない場合は、次のようにしてインストールしてください。  
+        - **コマンド・ライン**・ウィンドウを開き、Xcode プロジェクトのルートに移動します。
+        - `sudo gem install cocoapods` コマンドに続けて `pod setup` コマンドを実行します。**注:** これらのコマンドは、完了するのに数分かかることがあります。
+2. 次のコマンドを実行します。`pod init`。これは `Podfile` を作成します。
+3. 好みのコード・エディターを使用して、この `Podfile` を開きます。
+    - このファイルのコンテンツをコメントにして取り除くか、削除します。
+    - 以下の行を追加し、変更を保存します。
 
       ```xml
       use_frameworks!
@@ -67,111 +67,107 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
           pod 'IBMMobileFirstPlatformFoundation'
       end
       ```
-      - Replace **Xcode-project-target** with the name of your Xcode project's target.
+      - **Xcode-project-target** を、Xcode プロジェクトのターゲットの名前に置き換えます。
 
-4. Back in the command-line window, run the commands: `pod install`, followed by `pod update`. These command add the {{ site.data.keys.product }} Native SDK files, add the **mfpclient.plist** file, and generate a Pod project.  
-    **Note:** The commands might take several minutes to complete.
+4. コマンド・ライン・ウィンドウに戻り、`pod install` コマンドに続けて、`pod update` コマンドを実行します。これらのコマンドは、{{site.data.keys.product }} ネイティブ SDK ファイルの追加、**mfpclient.plist** ファイルの追加、および Pod プロジェクトの生成を行います。  
+    **注:** コマンドは、完了するのに数分かかることがあります。
 
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要**: これ以降、プロジェクトを Xcode で開くには、`[ProjectName].xcworkspace` ファイルを使用してください。`[ProjectName].xcodeproj` ファイルは使用**しないでください**。CocoaPods ベースのプロジェクトは、アプリケーション (実行可能ファイル) およびライブラリー (CocoaPods マネージャーがプルするすべてのプロジェクト依存関係) を含むワークスペースとして管理されます。
 
-### Manually adding the {{ site.data.keys.product_adj }} Native SDK
+### {{site.data.keys.product_adj }} ネイティブ SDK の手動での追加
 {: manually-adding-the-mobilefirst-native-sdk }
-You can also manually add the {{ site.data.keys.product }} SDK:
+次のように、{{site.data.keys.product }} SDK を手動で追加することもできます。
 
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Click for instructions</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>クリックして手順を表示</b></a>
             </h4>
         </div>
 
         <div id="collapse-ios-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk">
             <div class="panel-body">
-                <p>To manually add the {{ site.data.keys.product }} SDK, first download the SDK .zip file from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab.</p>
+                <p>{{site.data.keys.product }} SDK を手動で追加するには、まず最初に<b>「{{site.data.keys.mf_console }}」→「ダウンロード・センター」→「SDK」</b>タブで SDK の .zip ファイルをダウンロードします。</p>
 
                 <ul>
-                    <li>In your Xcode project, add the {{ site.data.keys.product }} framework files to your project.
-                        <ul>
-                            <li>Select the project root icon in the project explorer.</li>
-                            <li>Select <b>File → Add Files</b> and navigate to the folder that contains the framework files previously downloaded.</li>
-                            <li>Click the <b>Options</b> button.</li>
-                            <li>Select <b>Copy items if needed</b> and <b>Create groups for any added folders</b>.<br/>
-                            <b>Note:</b> If you do not select the <b>Copy items if needed</b> option, the framework files are not copied but are linked from their original location.</li>
-                            <li>Select the main project (first option) and select the app target.</li>
-                            <li>In the <b>General</b> tab, remove any frameworks that would get added automatically to <b>Linked Frameworks and Libraries</b>.</li>
-                            <li>Required: In <b>Embedded Binaries</b>, add the following frameworks:
+                    <li>Xcode プロジェクト内で、{{site.data.keys.product }} フレームワーク・ファイルをプロジェクトに追加します。<ul>
+                            <li>プロジェクト・エクスプローラーでプロジェクト・ルート・アイコンを選択します。</li>
+                            <li><b>「ファイル (File)」→「ファイルの追加 (Add Files)」</b>を選択し、前にダウンロードしたフレームワーク・ファイルが含まれているフォルダーに移動します。</li>
+                            <li><b>「オプション (Options)」</b>ボタンをクリックします。</li>
+                            <li><b>「必要な場合は項目をコピー (Copy items if needed)」</b>と、<b>「追加されたすべてのフォルダー用にグループを作成 (Create groups for any added folders)」</b>を選択します。<br/>
+                            <b>注:</b> <b>「必要な場合は項目をコピー (Copy items if needed)」</b>オプションが選択されていないと、フレームワーク・ファイルは、コピーされずに、元の場所からリンクされます。</li>
+                            <li>メイン・プロジェクト (最初のオプション) を選択し、アプリケーション・ターゲットを選択します。</li>
+                            <li><b>「一般 (General)」</b>タブで、<b>「リンクされたフレームワークおよびライブラリー (Linked Frameworks and Libraries)」</b>に自動的に追加されるフレームワークがあれば除去します。</li>
+                            <li>必須: <b>「組み込みバイナリー (Embedded Binaries)」</b>で、次のフレームワークを追加します。
                                 <ul>
                                     <li>IBMMobileFirstPlatformFoundation.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
                                     <li>Localizations.bundle</li>
                                 </ul>
-                                Performing this step will automatically add these frameworks to <b>Linked Frameworks and Libraries</b>.
+                                このステップを実行すると、これらのフレームワークが<b>「リンクされたフレームワークおよびライブラリー (Linked Frameworks and Libraries)」</b>に自動的に追加されます。
                             </li>
-                            <li>In <b>Linked Frameworks and Libraries</b>, add the following frameworks:
-                                <ul>
+                            <li><b>「リンクされたフレームワークおよびライブラリー (Linked Frameworks and Libraries)」</b>で、以下のフレームワークを追加します。<ul>
                                     <li>IBMMobileFirstPlatformFoundationJSONStore.framework</li>
                                     <li>sqlcipher.framework</li>
                                     <li>openssl.framework</li>
                                 </ul>
                             </li>
-                            <blockquote><b>Note:</b> These steps copy the relevant {{ site.data.keys.product }} frameworks to your project and link them within the Link Binary with Libraries list in the Build Phases tab. If you link the files to their original location (without choosing the Copy items if needed option as described previously), you need to set the Framework Search Paths as described below.</blockquote>
+                            <blockquote><b>注:</b> これらのステップでは、関連する {{site.data.keys.product }} フレームワークをプロジェクトにコピーし、「ビルド・フェーズ (Build Phases)」タブの「バイナリーをライブラリーとリンク (Link Binary with Libraries)」リスト内でこれらのファイルをリンクします。これらのファイルを元のロケーションにリンクする (前の説明のように「必要な場合は項目をコピー (Copy items if needed)」オプションを選択しない) には、以下に説明されているように「フレームワーク検索パス (Framework Search Paths)」を設定する必要があります。</blockquote>
                         </ul>
                     </li>
-                    <li>The frameworks added in Step 1, would be automatically added to the <b>Link Binary with Libraries</b> section, in the <b>Build Phases</b> tab.</li>
-                    <li><i>Optional:</i> If you did not copy the framework files into your project as described previously , perform the following steps by using the <b>Copy items if needed</b> option, in the <b>Build Phases</b> tab.
-                        <ul>
-                            <li>Open the <b>Build Settings</b> page.</li>
-                            <li>Find the <b>Search Paths</b> section.</li>
-                            <li>Add the path of the folder that contains the frameworks to the <b>Framework Search Paths</b> folder.</li>
+                    <li>ステップ 1 で追加されたフレームワークは、<b>「ビルド・フェーズ (Build Phases)」</b>タブの<b>「バイナリーをライブラリーとリンク (Link Binary with Libraries)」</b>セクションに自動的に追加されます。</li>
+                    <li><i>オプション:</i> 上に記述されているようにフレームワーク・ファイルをプロジェクトにコピーしなかった場合、<b>「ビルド・フェーズ (Build Phases)」</b>タブで、<b>「必要な場合は項目をコピー (Copy items if needed)」</b>オプションを使用して以下の手順を行います。<ul>
+                            <li><b>「ビルド設定 (Build Settings)」</b>ページを開きます。</li>
+                            <li><b>「検索パス (Search Paths)」</b>セクションを見つけます。</li>
+                            <li>フレームワークが含まれているフォルダーのパスを<b>「フレームワーク検索パス (Framework Search Paths)」</b>フォルダーに追加します。</li>
                         </ul>
                     </li>
-                    <li>In the <b>Deployment</b> section of the <b>Build Settings</b> tab, select a value for the <b>iOS Deployment Target</b> field that is greater than or equal to 8.0.</li>
-                    <li><i>Optional:</i> From Xcode 7, bitcode is set as the default. For limitations and requirements see <a href="additional-information/#working-with-bitcode-in-ios-apps">Working with bitcode in iOS apps</a>. To disable bitcode:
-                        <ul>
-                            <li>Open the <b>Build Options</b> section.</li>
-                            <li>Set <b>Enable Bitcode</b> to <b>No</b>.</li>
+                    <li><b>「ビルド設定 (Build Settings)」</b>タブの<b>「デプロイメント (Deployment)」</b>セクションで、<b>「iOS デプロイメント・ターゲット (iOS Deployment Target)」</b>フィールドに 8.0 以上の値を選択します。</li>
+                    <li><i>オプション:</i> Xcode 7 以降、デフォルトでビットコードが設定されるようになりました。制限事項および要件については、『<a href="additional-information/#working-with-bitcode-in-ios-apps">iOS アプリケーションでのビットコードの処理 (Working with bitcode in iOS apps)</a>』を参照してください。ビットコードを無効にするには、以下のようにします。<ul>
+                            <li><b>「ビルド・オプション (Build Options)」</b>セクションを開きます。</li>
+                            <li><b>「ビットコードを有効にする (Enable Bitcode)」</b>を 「<b>いいえ</b>」に設定します。</li>
                         </ul>
                     </li>
-                    <li>Beginning with Xcode 7, TLS must be enforced. See <a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">Enforcing TLS-secure connections in iOS apps</a>.</li>
+                    <li>Xcode 7 以降、TLS の適用が必須になりました。『<a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">iOS アプリケーションでの TLS セキュア接続の適用</a>』を参照してください。</li>
                 </ul>
 
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
 </div>
 
-### Registering the application
+### アプリケーションの登録
 {: #registering-the-application }
-1. Open a **Command-line** window and navigate to the root of the Xcode project.  
+1. **コマンド・ライン**・ウィンドウを開き、Xcode プロジェクトのルートに移動します。  
 
-2. Run the command:
+2. 次のコマンドを実行します:
 
     ```bash
     mfpdev app register
     ```
-    - If a remote server is used, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - リモート・サーバーを使用する場合は、[`mfpdev server add` コマンドを使用](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)して、そのサーバーを追加します。
 
-    You are asked to provide the application's BundleID. **Important**: The BundleID is **case sensitive**.  
+    アプリケーションのバンドル ID を指定するよう求められます。**重要**: バンドル ID **は大/小文字が区別**されます。  
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then generates the **mfpclient.plist** file at the root of the Xcode project, and adds to it the metadata that identifies the {{ site.data.keys.mf_server }}.  
+`mfpdev app register` CLI コマンドは、まず最初に {{site.data.keys.mf_server }} に接続してアプリケーションを登録した後、Xcode プロジェクトのルートに **mfpclient.plist** ファイルを生成し、これに {{site.data.keys.mf_server }} を識別するメタデータを追加します。  
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** 次のように、{{site.data.keys.mf_console }} からアプリケーションを登録することもできます。    
 >
-> 1. Load the {{ site.data.keys.mf_console }}.
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
-> 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.plist** file. Follow the onscreen instructions to add the file to your project.
+> 1. {{site.data.keys.mf_console }} をロードします。
+> 2. **「アプリケーション」**の横の**「新規」**ボタンをクリックして、新規アプリケーションを登録し、画面に表示される指示に従います。  
+> 3. アプリケーションが登録されたら、そのアプリケーションの**「構成ファイル」**タブに移動して、**mfpclient.plist** ファイルをコピーまたはダウンロードします。画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
 
-### Completing the setup process
+### セットアップ・プロセスの完了
 {: #completing-the-setup-process }
-In Xcode, right-click the project entry, click on **Add Files To [ProjectName]** and select the **mfpclient.plist** file, located at the root of the Xcode project.
+Xcode で、プロジェクト・エントリーを右クリックし、**「ファイルを [プロジェクト名] に追加 (Add Files To [ProjectName])」**をクリックし、Xcode プロジェクトのルートに配置されている **mfpclient.plist** ファイルを選択します。
 
-### Referencing the SDK
+### SDK の参照
 {: #referencing-the-sdk }
-Whenever you want to use the {{ site.data.keys.product }} Native SDK, make sure that you import the {{ site.data.keys.product }} framework:
+{{site.data.keys.product }} ネイティブ SDK を使用する場合はいつでも、必ず {{site.data.keys.product }} フレームワークをインポートするようにしてください。
 
 Objective-C:
 
@@ -186,11 +182,11 @@ import IBMMobileFirstPlatformFoundation
 ```
 
 <br>
-#### Note about iOS 9 and above:
+#### iOS 9 以上に関する注:
 {: #note-about-ios-9-and-above }
-> Starting Xcode 7, [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) is enabled by default. In order to run apps during development, you can disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
->   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
->   2. Paste the following:
+> Xcode 7 以降、[アプリケーション・トランスポート・セキュリティー (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) がデフォルトで有効になっています。開発中にアプリケーションを実行する場合、ATS ([詳しく読む](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)) を無効にすることができます。
+>   1. Xcode で、右クリックにより**「[プロジェクト]/info.plist ファイル」→「指定して開く」→「ソース・コード」**を選択します。
+>   2. 以下を貼り付けます。
 > 
 ```xml
 >      <key>NSAppTransportSecurity</key>
@@ -200,10 +196,10 @@ import IBMMobileFirstPlatformFoundation
 >      </dict>
 ```
 
-## Adding Support for Apple watchOS
+## Apple watchOS のサポートの追加
 {: #adding-support-for-apple-watchos}
-If you are developing for Apple watchOS 2 and later, the Podfile must contain sections corresponding to the main app and the watchOS extension. See below example for
-watchOS 2:
+Apple watchOS 2 以降用に開発している場合、Podfile には、メイン・アプリケーションおよび watchOS 拡張に対応したセクションが含まれている必要があります。
+watchOS 2 の場合の次の例を参照してください。
 
 ```xml
 # Replace with the name of your watchOS application
@@ -224,42 +220,42 @@ target :MyWatchApp WatchKit Extension do
 end
 ```
 
-Verify that the Xcode project is closed and run the `pod install` command.
+Xcode プロジェクトが閉じていることを確認して、`pod install` コマンドを実行します。
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## {{site.data.keys.product_adj }} ネイティブ SDK の更新
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product }} Native SDK with the latest release, run the following command from the root folder of the Xcode project in a **Command-line** window:
+{{site.data.keys.product }} ネイティブ SDK を最新リリースで更新するには、**コマンド・ライン**・ウィンドウで、Xcode プロジェクトのルート・フォルダーから次のコマンドを実行します。
 
 ```bash
 pod update
 ```
 
-SDK releases can be found in the SDK's [CocoaPods repository](https://cocoapods.org/?q=ibm%20mobilefirst).
+SDK のリリースは、SDK の [CocoaPods リポジトリー](https://cocoapods.org/?q=ibm%20mobilefirst)で調べることができます。
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
+## 生成される{{site.data.keys.product_adj }} ネイティブ SDK 成果物
 {: generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
-Located at the root of the project, this file defines the client-side properties used for registering your iOS app on the {{ site.data.keys.mf_server }}.
+プロジェクトのルートに配置されているこのファイルは、{{site.data.keys.mf_server }} に iOS アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。
 
-| Property            | Description                                                         | Example values |
+| プロパティー            | 説明                                                         | 値の例 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
-| wlServerHost        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| wlServerPort        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
-| wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
-| languagePreferences | Sets the default language for client sdk system messages.           | en             |
+| wlServerProtocol    | {{site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
+| wlServerHost        | {{site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
+| wlServerPort        | {{site.data.keys.mf_server }} のポート。                                 | 9080           |
+| wlServerContext     | {{site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
+| languagePreferences | クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
 
-## Bitcode and TLS 1.2
+## ビットコードと TLS 1.2
 {: #bitcode-and-tls-12 }
-For information about support for Bitcode and TLS 1.2 see the [Additional Information](additional-information) page.
+ビットコードおよび TLS 1.2 のサポートについては、[追加情報](additional-information)のページを参照してください。
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product }} Native SDK now integrated, you can now:
+これで {{site.data.keys.product }} ネイティブ SDK が組み込まれたので、以下の作業を行うことができます。
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- [{{site.data.keys.product }} SDK の使用に関するチュートリアル](../)を検討する
+- [アダプター開発に関するチュートリアル](../../../adapters/)を検討する
+- [認証とセキュリティーに関するチュートリアル](../../../authentication-and-security/)を検討する
+- [通知に関するチュートリアル](../../../notifications/)を検討する
+- [すべてのチュートリアル](../../../all-tutorials)を検討する

@@ -1,189 +1,191 @@
 ---
 layout: tutorial
-title: Using the MobileFirst Operations Console
+title: MobileFirst Operations Console の使用
 breadcrumb_title: MobileFirst Operations Console
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The {{ site.data.keys.mf_console_full }} is a web-based UI which enables simplified work flows for both the developer and the administrator to create, monitor, secure and administer applications &amp; adapters.
+{{site.data.keys.mf_console_full }} は、開発者と管理者のどちらにとっても、単純化されたワークフローでアプリケーションとアダプターの作成、モニター、保護、および管理を行える、Web ベースの UI です。
 
-#### As a developer
+#### 開発者として
 {: #as-a-developer }
-* Develop applications for any environment and register them to {{ site.data.keys.mf_server }}.
-* See all your deployed applications and adapters at a glance. See the Dashboard.
-* Manage and configure registered applications, including Direct Update, remote disablement, and security parameters for application authenticity and user authentication.
-* Set up push notification by deploying certificates, creating notification tags, and sending notification.
-* Create and deploy adapters.
-* Download samples.
+* 任意の環境用のアプリケーションを開発し、
+{{site.data.keys.mf_server }}
+に登録する。
+* デプロイ済みのすべてのアプリケーションとアダプターを一目で確認する。『ダッシュボード』を参照してください。
+* ダイレクト・アップデート、リモート無効化、アプリケーション認証性とユーザー認証のセキュリティー・パラメーターなど、登録済みアプリケーションを管理および構成する。
+* 証明書をデプロイし、通知タグを作成し、通知を送信することでプッシュ通知をセットアップする。
+* アダプターを作成してデプロイする。
+* サンプルをダウンロードする。
 
-#### As an IT administrator
+#### IT 管理者として
 {: #as-an-it-administrator }
-* Monitor various services.
-* Search for devices that access {{ site.data.keys.mf_server }} and manage their access rights.
-* Update adapter configurations dynamically.
-* Adjust client logger configurations through log profiles.
-* Track how product licenses are used.
+* 各種サービスをモニターする。
+* {{site.data.keys.mf_server }} にアクセスするデバイスを検索し、そのアクセス権限を管理する。
+* アダプター構成を動的に更新する。
+* ログ・プロファイルを使用してクライアント・ロガー構成を調整する。
+* 製品ライセンスがどのように使用されているのかを追跡する。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Accessing the console](#accessing-the-console)
-* [Navigating the console](#navigating-the-console)
+* [コンソールへのアクセス](#accessing-the-console)
+* [コンソールのナビゲート](#navigating-the-console)
 
-## Accessing the console
+## コンソールへのアクセス
 {: #accessing-the-console }
-The {{ site.data.keys.mf_console }} can be accessed in the following ways:
+{{site.data.keys.mf_console }} には、以下の方法でアクセスできます。 
 
-### From a locally installed {{ site.data.keys.mf_server }}
+### ローカル側にインストールされている {{site.data.keys.mf_server }} から
 {: #from-a-locally-installed-mobilefirst-server }
-#### Desktop Browser
+#### デスクトップ・ブラウザー
 {: #desktop-browser }
-From your browser of choice, load the URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+任意のブラウザーから、URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) をロードします。ユーザー名/パスワードは、*admin/admin* です。
 
-#### Command-line
+#### コマンド・ライン
 {: #command-line }
-From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed, run the command: `mfpdev server console`.
+「**コマンド・ライン**」ウィンドウで ({{site.data.keys.mf_cli }} がインストールされている)、コマンド `mfpdev server console` を実行します。
 
-### From a remotely installed {{ site.data.keys.mf_server }}
+### リモート側にインストールされている {{site.data.keys.mf_server }} から
 {: #from-a-remotely-installed-mobilefirst-server }
-#### Desktop Browser
+#### デスクトップ・ブラウザー
 {: #desktop-browser-remote }
-From your browser of choice, load the URL `http://the-server-host:server-port-number/mfpconsole`.  
-The host server can be either a customer-owned server, or the IBM Bluemix service, IBM [Mobile Foundation](../../../bluemix/).
+任意のブラウザーから、URL `http://the-server-host:server-port-number/mfpconsole` をロードします。  
+ホスト・サーバーは、お客様所有のサーバーでも、IBM Bluemix サービス (IBM [Mobile Foundation](../../../bluemix/)) でもかまいません。
 
-#### Command-line
+#### コマンド・ライン
 {: #command-line-remote }
-From a **Command-line** window, with the {{ site.data.keys.mf_cli }} installed, 
+「**コマンド・ライン**」ウィンドウで ({{site.data.keys.mf_cli }} がインストールされている)、以下の手順に従います。 
 
-1. Add a remote server definition:
+1. 以下の手順で、リモート・サーバー定義を追加します。
 
-    *Interactive Mode*  
-    Run the command: `mfpdev server add` and follow the on-screen instructions.
+    *対話モード*  
+    コマンド `mfpdev server add` を実行し、画面に表示される指示に従います。
 
-    *Direct Mode*  
-    Run the command with the following structure: `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]`. For example:
+    *ダイレクト・モード*  
+    `mfpdev server add [server-name] --URL [remote-server-URL] --login [admin-username] --password [admin-password] --contextroot [admin-service-name]` という構造でコマンドを実行します。例:
 
    ```bash
    mfpdev server add MyRemoteServer http://my-remote-host:9080/ --login TheAdmin --password ThePassword --contextroot mfpadmin
    ```
 
-2. Run the command: `mfpdev server console MyRemoteServer`.
+2. コマンド `mfpdev server console MyRemoteServer` を実行します。
 
-> Learn more about the various CLI commands in the [Using CLI to manage {{ site.data.keys.product_adj }} artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> 各種 CLI コマンドについては、 [CLI を使用した {{site.data.keys.product_adj }} 成果物の管理](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)チュートリアルで学習してください。
 
-## Navigating the console
+## コンソールのナビゲート
 {: #navigating-the-console }
-### Dashboard
+### ダッシュボード
 {: #dashboard }
-The Dashboard provides a glance view of the deployed projects.
+ダッシュボードには、デプロイされたプロジェクトの概要ビューが表示されます。
 
-![Image of the console dashboard](dashboard.png)
+![コンソール・ダッシュボードのイメージ](dashboard.png)
 
-#### Actions dropdown
+#### 「アクション」ドロップダウン
 {: #actions-dropdown }
-The dropdown provides quick access to various console actions.
+このドロップダウンを使用して、さまざまなコンソール・アクションに素早くアクセスできます。
 
-![Image of Actions dropdown](actions-dropdown.png)
+![「アクション」ドロップダウンのイメージ](actions-dropdown.png)
 
-### Runtime settings
+### ランタイム設定
 {: #runtime-settings }
-Edit runtime properties, global security variables, server keystore and confidential clients.
+ランタイム・プロパティー、グローバル・セキュリティー変数、サーバー鍵ストア、および機密クライアントを編集します。
 
-![Image of the Runtime Settings screen ](runtime-settings.png)
+![「ランタイム設定」画面のイメージ](runtime-settings.png)
 
-### Error log
+### エラー・ログ
 {: #error-log }
-The Error log shows a list of the failed management operations that were initiated from the {{ site.data.keys.mf_console }}, or from the command line, on the current runtime environment. Use the log to see the effect of the failure on the servers.
+エラー・ログには、現在のランタイム環境の {{site.data.keys.mf_console }} またはコマンド・ラインから開始された管理操作のうち、失敗した管理操作がリストされます。ログを使用して、サーバーの障害の影響を確認してください。
 
-> For more information, see the topic about error log of operations on runtime environments in the user documentation.
+> 詳しくは、ユーザー文書で、ランタイム環境での操作のエラー・ログに関するトピックを参照してください。
 
-![Image of error logs screen](error-log.png)
+![エラー・ログの画面のイメージ](error-log.png)
 
-### Devices
+### デバイス
 {: #devices }
-Administrators can search for devices that access the {{ site.data.keys.mf_server }} and can manage access rights.  
-Devices can be searched for using either user ID or using a friendly name. The user ID is the identifier that was used to log-in.  
-A friendly name is a name that is associated with the device to distinguish it from other devices that share the user ID. 
+管理者は、{{site.data.keys.mf_server }} にアクセスするデバイスを検索すること、およびアクセス権を管理することができます。  
+デバイスは、ユーザー ID や分かりやすい名前を使用して検索できます。ユーザー ID は、ログインに使用した ID です。  
+分かりやすい名前は、デバイスをユーザー ID を共有する他のデバイスと区別するための、そのデバイスに関連した名前です。 
 
-> For more information, see the topic about device access management in the user documentation.
+> 詳しくは、ユーザー文書で、デバイス・アクセス管理に関するトピックを参照してください。
 
-![Image of device management screen](devices.png)
+![デバイス管理画面のイメージ](devices.png)
 
-### Applications
+### アプリケーション
 {: #applications }
-#### Registering applications
+#### アプリケーションの登録
 {: #registering-applications }
-Provide basic application values and download Starter Code. 
+基本的なアプリケーションの値を指定し、スターター・コードをダウンロードします。 
 
-![Image of application registration screen](register-applications.png)
+![アプリケーション登録画面のイメージ](register-applications.png)
 
-#### Managing applications
+#### アプリケーションの管理
 {: #managing-applications }
-Manage and configure registered applications by use of [Direct Update](../../../application-development/direct-update/), Remote Disable, [Application Authenticity](../../../authentication-and-security/application-authenticity/), and [setting security parameters](../../../authentication-and-security/).
+[ダイレクト・アップデート](../../../application-development/direct-update/)、リモート無効化、[アプリケーション認証性](../../../authentication-and-security/application-authenticity/)、および[セキュリティー・パラメーターの設定](../../../authentication-and-security/)を使用して、登録されたアプリケーションの管理および構成を行います。
 
-![Image of application management screen](application-management.png)
+![アプリケーション管理画面のイメージ](application-management.png)
 
-#### Authentication and Security
+#### 認証とセキュリティー
 {: #authentication-and-security }
-Configure application security parameters, such as the default token expiration value, map scope elements to security checks, define mandatory application scopes and configure security check options.
+デフォルトのトークンの有効期限値などのアプリケーション・セキュリティー・パラメーターを構成し、スコープ・エレメントをセキュリティー検査にマップし、必須アプリケーション・スコープを定義し、セキュリティー検査のオプションを構成します。
 
-> [Learn more](../../../authentication-and-security/) about the {{ site.data.keys.product_adj }} security framework.
+> {{site.data.keys.product_adj }} セキュリティー・フレームワークについて[説明します](../../../authentication-and-security/)。
 
-![Image of application security configuration screen](authentication-and-security.png)
+![アプリケーション・セキュリティー構成画面のイメージ](authentication-and-security.png)
 
-#### Application Settings
+#### アプリケーション設定
 {: #application-settings }
-Configure the display name of the application in the console as well as the application type and licensing.
+コンソールでのアプリケーションの表示名、アプリケーション・タイプ、およびライセンスを構成します。
 
-![Image of application settings screen](application-settings.png)
+![アプリケーション設定画面のイメージ](application-settings.png)
 
-#### Notifications
+#### 通知
 {: #notifications }
-Set-up [push notifications](../../../notifications/) and related parameters, such as certificates and GCM details, define tags, as well as send notifications to devices.
+[プッシュ通知](../../../notifications/)および関連パラメーター (証明書と GCM の詳細など) をセットアップし、タグを定義し、デバイスに通知を送信します。
 
-![Image of push notifications setup scren](push-notifications.png)
+![プッシュ通知セットアップ画面のイメージ](push-notifications.png)
 
-### Adapters
+### アダプター
 {: #adapters }
-#### Creating adapters
+#### アダプターの作成
 {: #creating-adapters }
-[Register an adapter](../../../adapters/) and download Starter Code, as well as update an adapter on-the-fly by updating its properties without needing to re-build and re-deploy the adapter artifact.
+[アダプターを登録し](../../../adapters/)、スターター・コードをダウンロードします。また、処理中のアダプターを更新しますが、これはアダプターのプロパティーを更新することで行い、アダプター成果物の再ビルドと再デプロイを必要としません。
 
-![Image of adapter registration screen](create-adapter.png)
+![アダプター登録画面のイメージ](create-adapter.png)
 
-#### Adapter properties
+#### アダプター・プロパティー
 {: #adapter-properties }
-After an adapter is deployed, it can be configured in the console.
+アダプターがデプロイされると、アダプターをコンソールで構成できます。
 
-![Image of adapter configuration screen](adapter-configuration.png)
+![アダプター構成画面のイメージ](adapter-configuration.png)
 
-### Client logs
+### クライアント・ログ
 {: #client-logs }
-Administrators can use log profiles to adjust client logger configurations, such as log level and log package filters, for any combination of operating system, operating system version, application, application version, and device model.
+管理者は、ログ・プロファイルを使用して、クライアント・ロガー構成 (ログ・レベルや、オペレーティング・システム、オペレーティング・システム・バージョン、アプリケーション、アプリケーション・バージョン、およびデバイス・モデルの組み合わせについてのログ・パッケージ・フィルターなど) を調整できます。
 
-When an administrator creates a configuration profile, the log configuration is concatenated with responses API calls such as `WLResourceRequest`, and is applied automatically.
+管理者が構成プロファイルを作成すると、ログ構成は、`WLResourceRequest` などの API 呼び出しへの応答と連結され、自動的に適用されます。
 
-> For more information, see the topic about client-side log capture configuration in the user documentation.
+> 詳しくは、ユーザー文書で、クライアント・サイド・ログ・キャプチャーの構成に関するトピックを参照してください。
 
-![Image of client logs screen](client-logs.png)
+![クライアント・ログ画面のイメージ](client-logs.png)
 
-### License tracking
+### ライセンス・トラッキング
 {: #license-tracking }
-Accessible from the top Settings buttons.
+上部の「設定」ボタンからアクセスできます。
 
-License terms vary depending on which edition (Enterprise or Consumer) of {{ site.data.keys.product }} is being used.   License tracking is enabled by default and tracks metrics relevant to the licensing policy, such as active client devices and installed applications. This information helps determine whether the current usage of {{ site.data.keys.product }} is within the license entitlement levels and can prevent potential license violations.
+ライセンス条項は、{{site.data.keys.product }} のどのエディション (Enterprise または Consumer) を使用するかにより異なります。ライセンス追跡は、デフォルトでは有効になっており、アクティブ・クライアント・デバイス、インストールされているアプリケーションなど、ライセンス・ポリシーに関連するメトリックが追跡されます。この情報は、{{site.data.keys.product }} の現在の使用がライセンス資格レベル内に収まっているかどうかを判別するのに役立ち、ライセンス違反を防止できます。
 
-By tracking the usage of client devices and determining whether the devices are active, administrators can decommission devices that should no longer be accessing the service. This situation might arise if an employee has left the company, for example.
+管理者は、クライアント・デバイスの使用を追跡し、デバイスがアクティブかどうか判別することで、サービスに今後アクセスしないデバイスを廃棄できます。例えば、従業員が退社した場合にこの状態が発生することがあります。
 
-> For more information, see the topic about license tracking in the user documentation.
+> 詳しくは、ユーザー文書でライセンス追跡に関するトピックを参照してください。
 
-![Image of client logs screen](license-tracking.png)
+![クライアント・ログ画面のイメージ](license-tracking.png)
 
-### Downloads
+### ダウンロード
 {: #downloads }
-For situtations where Internet connectivity is not available, you can download a snapshot of the various development artifacts of {{ site.data.keys.product }} from the Download Center in the {{ site.data.keys.mf_console }}.
+インターネット接続を使用できない場合、{{site.data.keys.mf_console }} のダウンロード・センターから、{{site.data.keys.product }} のさまざまな開発作成物のスナップショットをダウンロードできます。
 
-![Image of available artifacts](downloads.png)
+![使用可能な作成物のイメージ](downloads.png)
 

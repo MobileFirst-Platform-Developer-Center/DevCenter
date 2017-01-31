@@ -1,27 +1,28 @@
 ---
 layout: tutorial
-title: Additional Information
-breadcrumb_title: additional information
+title: 追加情報
+breadcrumb_title: 追加情報
 relevantTo: [ios]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Working with bitcode in iOS apps
+### iOS アプリケーションにおけるビットコードでの作業
 {: #working-with-bitcode-in-ios-apps }
-* The application-authenticity security check is not supported with bitcode.
-* watchOS applications require bitcode enabled.
+* アプリケーション認証性セキュリティー検査は、ビットコードではサポートされません。
+* watchOS アプリケーションの場合は、ビットコードが有効になっている必要があります。
 
-To enable bitcode, in your Xcode project navigate to the **Build Settings** tab and set **Enable Bitcode** to **Yes**.
+ビットコードを有効にするには、Xcode プロジェクトで**「Build Settings」**タブに移動し、**「Enable Bitcode」**を**「Yes」**に設定します。
 
-### Enforcing TLS-secure connections in iOS apps
+### iOS アプリケーションでの TLS セキュア接続の適用
 {: #enforcing-tls-secure-connections-in-ios-apps }
-Starting from iOS 9, Transport Layer Security (TLS) protocol version 1.2 must be enforced in all apps. You can disable this protocol and bypass the iOS 9 requirement for development purposes.
+iOS 9 以降、すべてのアプリケーションでバージョン 1.2 の Transport Layer Security (TLS) プロトコルを適用する必要があります。開発目的のため、このプロトコルを無効にして iOS 9 の要件を回避することができます。
 
-Apple App Transport Security (ATS) is a new feature of iOS 9 that enforces best practices for connections between the app and the server. By default, this feature enforces some connection requirements that improve security. These include client-side HTTPS requests and server-side certificates and connection ciphers that conform to Transport Layer Security (TLS) version 1.2 using forward secrecy.
+Apple の App Transport Security (ATS) は、アプリケーションとサーバーの間の接続にベスト・プラクティスを適用する iOS 9 の新しいフィーチャーです。デフォルトでは、このフィーチャーはセキュリティーを向上させるいくつかの接続要件を適用します。これには、クライアント・サイドの HTTPS 要求とサーバー・サイド証明書、および前方秘匿性を使用して Transport Layer Security (TLS) バージョン 1.2 に準拠する接続暗号が含まれます。
 
-For **development purposes**, you can override the default behavior by specifying an exception in the info.plist file in your app, as described in App Transport Security Technote. However, in a **full production** environment, all iOS apps must enforce TLS-secure connections for them to work properly.
+**開発目的**のため、App Transport Security Technote で説明するように、アプリケーション内の info.plist ファイルで例外を指定することによって、デフォルトの動作をオーバーライドすることができます。ただし**完全な実稼働**環境では、すべての iOS アプリケーションで、正しく機能するために TLS セキュア接続を適用する必要があります。
 
-To enable non-TLS connections, the following exception must appear in the **project-name-info.plist** file in the **project-name\Resources** folder:
+非 TLS 接続を有効にするには、**project-name\Resources** フォルダーにある
+**project-name-info.plist** ファイル内に、以下の例外が記述されている必要があります。
 
 ```xml
 <key>NSExceptionDomains</key>
@@ -40,10 +41,10 @@ To enable non-TLS connections, the following exception must appear in the **proj
     </dict>
 ```
 
-To prepare for production
+実働の準備手順
 
-1. Remove, or comment out the code that appears earlier in this page.  
-2. Set up the client to send HTTPS requests by using the following entry to the dictionary:  
+1. このページの前述のコードを削除またはコメント化します。  
+2. 以下のエントリーを使用して HTTPS 要求をディクショナリーに送信するようにクライアントをセットアップします。  
 
    ```xml
    <key>protocol</key>
@@ -53,53 +54,53 @@ To prepare for production
    <string>10443</string>
    ```
    
-   The SSL port number is defined on the server in **server.xml** in the `httpEndpoint` definition.
+   SSL ポート番号は、サーバー上の **server.xml** 内の `httpEndpoint` 定義で定義されています。
     
-3. Configure a server that is enabled for the TLS 1.2 protocol. For more information, [see Configuring {{ site.data.keys.mf_server }} to enable TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)
-4. Make settings for ciphers and certificates, as they apply to your setup. For more information, see [App Transport Security Technote](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/), [Secure communications using Secure Sockets Layer (SSL) for WebSphere  Application Server Network Deployment](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en), and [Enabling SSL communication for the Liberty profile](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0).
+3. TLS 1.2 プロトコル用に有効になっているサーバーを構成します。詳しくは、[『Configuring {{site.data.keys.mf_server }} to enable TLS V1.2』を参照してください](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)。
+4. ご使用のセットアップに適用される暗号および証明書の設定を行います。詳しくは、「[App Transport Security Technote](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/)」、『[Secure communications using Secure Sockets Layer (SSL) for WebSphere Application Server Network Deployment](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en)』、および『[Liberty プロファイルの SSL 通信の使用可能化](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0)』を参照してください。
 
-### Enabling OpenSSL for iOS
+### iOS での OpenSSL の有効化
 {: #enabling-openssl-for-ios }
-The {{ site.data.keys.product_adj }} iOS SDK uses native iOS APIs for cryptography. You can configure {{ site.data.keys.product_full }} to use the OpenSSL cryptography library in iOS apps.
+{{site.data.keys.product_adj }} iOS SDK は、暗号化にネイティブ iOS API を使用しています。iOS アプリケーションで OpenSSL の暗号化ライブラリーを使用するように、{{site.data.keys.product_full }} を構成できます。
 
-Encryption/decryption is provided with the following APIs: `WLSecurityUtils.encryptText()` and `WLSecurityUtils.decryptWithKey()`.
+暗号化/暗号化解除は、`WLSecurityUtils.encryptText()` と `WLSecurityUtils.decryptWithKey()` の API で提供されます。
 
-#### Option 1: Native encryption and decryption
+#### オプション 1: ネイティブの暗号化および暗号化解除
 {: #option-1-native-encryption-and-decryption }
-Native encryption and decryption is provided by default, without using OpenSSL. This is equivalent to explicitly setting the encryption or decryption behavior as follows:
+ネイティブの暗号化および暗号化解除は、OpenSSL を使用せずにデフォルトで提供されます。これは、以下のように暗号化または暗号化解除の動作を明示的に設定することと同等です。
 
 ```xml
 WLSecurityUtils enableOSNativeEncryption:YES
 ```
 
-#### Option 2: Enabling OpenSSL
+#### オプション 2: OpenSSL の有効化
 {: #option-2-enabling-openssl }
-OpenSSL is disable by default. To enable it, proceed as follows:
+OpenSSL はデフォルトで無効になっています。有効にするには、以下を実行してください。
 
-1. Install the OpenSSL frameworks:
-    * With CocoaPods: Install the `IBMMobileFirstPlatformFoundationOpenSSLUtils` pod with CocoaPods.
-    * Manually in Xcode: Link the `IBMMobileFirstPlatformFoundationOpenSSLUtils` and openssl frameworks manually in the Link Binary With Libraries section of the Build Phases tab.
-2. The following code enables the OpenSSL option for the encryption/decryption:
+1. 以下のように OpenSSL フレームワークをインストールします。
+    * CocoaPods を使用する: CocoaPods を使用して `IBMMobileFirstPlatformFoundationOpenSSLUtils` pod をインストールします。
+    * Xcode で手動で行う: 「Build Phases」タブの「Link Binary With Libraries」セクションで `IBMMobileFirstPlatformFoundationOpenSSLUtils` および openssl フレームワークを手動でリンクします。
+2. 以下のコードは、暗号化/暗号化解除の OpenSSL オプションを有効にします。
 
    ```xml
    WLSecurityUtils enableOSNativeEncryption:NO
    ```
     
-   The code will now use the OpenSSL implementation if found and otherwise throw an error if the frameworks are not installed correctly.
+   これで、コードは、OpenSSL 実装が検出された場合はその実装を使用し、フレームワークが正しくインストールされていない場合は、エラーをスローします。
 
-With this setup, the encryption/decryption calls use OpenSSL as in previous versions of the product.
+このセットアップでは、暗号化/暗号化解除の呼び出しは、製品の以前のバージョンと同様に OpenSSL を使用します。
 
-### Migration options
+### マイグレーション・オプション
 {: #migration-options }
-If you have an {{ site.data.keys.product_adj }} project that was written in an earlier version, you might need to incorporate changes to continue using OpenSSL.
-    * If the application is not using encryption/decryption APIs and no encrypted data is cached on the device, no action is needed.
-    * If the application is using encryption/decryption APIs, you have the option of using these APIs with or without OpenSSL.
+以前のバージョンで作成された {{site.data.keys.product_adj }} プロジェクトがある場合は、OpenSSL の使用を継続するために変更を取り込む必要がある場合があります。
+    * アプリケーションが暗号化/暗号化解除 API を使用しておらず、デバイスでキャッシュに入れられた暗号化データがない場合、アクションは不要です。
+    * アプリケーションが暗号化/暗号化解除の API を使用している場合、これらの暗号化/暗号化解除の API を使用する際に、OpenSSL を使用するか使用しないかを選択することができます。
 
-#### Migrating to native encryption
+#### ネイティブ暗号化へのマイグレーション
 {: #migrating-to-native-encryption }
-1. Make sure the default native encryption/decryption option is chosen (see Option 1).
-2. Migrating cached data: If the previous installation of {{ site.data.keys.product_full }} saved encrypted data to the device using OpenSSL, OpenSSL frameworks must be installed as described in Option 2. The first time the application attempts to decrypt the data it will fall back to OpenSSL and then encrypt it using native encryption. If the OpenSSL framework is not installed an error is thrown. This way the data will be auto-migrated to native encryption allowing subsequent releases to work without the OpenSSL framework.
+1. デフォルトのネイティブの暗号化/暗号化解除オプションが選択されていることを確認します (『オプション 1』を参照)。
+2. キャッシュ・データのマイグレーション: {{site.data.keys.product_full }} の以前のインストール済み環境が OpenSSL を使用してデバイスに暗号化データを保存している場合、『オプション 2』の説明のように OpenSSL フレームワークがインストールされている必要があります。アプリケーションが初めてデータを暗号化解除しようとしたとき、OpenSSL にフォールバックし、ネイティブ暗号化を使用してデータが暗号化されます。OpenSSL フレームワークがインストールされていない場合、エラーがスローされます。このように、データはネイティブ暗号化に自動的にマイグレーションされ、後続のリリースで OpenSSL フレームワークなしで動作できるようになります。
 
-#### Continuing with OpenSSL
+#### OpenSSL の継続
 {: #continuing-with-openssl }
-If OpenSSL is required use the setup described in Option 2.
+OpenSSL が必要な場合は、オプション 2 で述べられているセットアップを使用してください。

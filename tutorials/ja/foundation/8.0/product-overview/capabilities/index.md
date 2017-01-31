@@ -1,64 +1,77 @@
 ---
 layout: tutorial
-title: Product Main Capabilities
+title: 製品の主な機能
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-With {{ site.data.keys.product_full }}, you can use capabilities such as development, testing, back-end connections, push notifications, offline mode, update, security, analytics, monitoring, and application publishing.
+{{site.data.keys.product_full }} では、開発、テスト、バックエンド接続、プッシュ通知、オフライン・モード、更新、セキュリティー、分析、モニター、およびアプリケーション公開などの機能を使用できます。
 
-### Development
+### 開発
 {: #deployment }
-{{ site.data.keys.product }} provides a framework that enables the development, optimization, integration, and management of secure mobile applications (apps). {{ site.data.keys.product }} does not introduce a proprietary programming language or model that users must learn.
+{{site.data.keys.product }} は、セキュア・モバイル・アプリケーションの開発、最適化、統合、および管理を可能にするフレームワークを提供します。{{site.data.keys.product }} には、ユーザーが習得しなければならない専用のプログラミング言語もプログラミング・モデルも導入されていません。
 
-You can develop apps by using HTML5, CSS3, and JavaScript. You can optionally write native code (Java or Objective-C). {{ site.data.keys.product }} provides an SDK that includes libraries that you can access from native code.
+HTML5、CSS3、および JavaScript を使用して、アプリケーションを開発できます。オプションで、ネイティブ・コード  (Java または Objective-C) を作成できます。{{site.data.keys.product }} には、
+ネイティブ・コードからアクセスできるライブラリーを含む SDK が用意されています。
 
-#### Supported platforms
+#### サポートされているプラットフォーム
 {: #supported-platforms }
-The {{ site.data.keys.product }} SDKs support the following platforms:
+{{site.data.keys.product }} の SDK は、次のプラットフォームをサポートしています。
 
 * iOS
 * Android
-* Windows Universal 8.1 and Windows 10 UWP
-* Web apps
+* Windows Universal 8.1 および Windows 10 UWP
+* Web アプリケーション
 
-### Back-end connections
+> **Web アプリケーション用にサポートされているブラウザー:**
+> 
+> |       ブラウザー       | Chrome | Safari* | Internet Explorer | Firefox | Android ブラウザー |
+> |:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
+> | サポート対象バージョン |   43+  |    8+   |        10+        |   38+   |    Android 4.3+    |
+
+* プライベート・ブラウジング・モードは、シングル・ページ・アプリケーションのみで機能します。その他のアプリケーションでは、予期せぬ動作となることがあります。
+
+### バックエンド接続
 {: #back-end-connections }
-Some mobile applications run strictly offline with no connection to a back-end system, but most mobile applications connect to existing enterprise services to provide the critical user-related functions. For example, customers can use a mobile application to shop anywhere, at any time, independent of the operating hours of the store. Their orders must still be processed by using the existing e-commerce platform of the store. To integrate a mobile application with enterprise services, you must use middleware such as a mobile gateway. {{ site.data.keys.product }} can act as this middleware solution and make communication with back-end services easier.
+一部のモバイル・アプリケーションは、バックエンド・システムへ接続することなく厳密にオフラインで実行されますが、ほとんどのモバイル・アプリケーションは、既存のエンタープライズ・サービスに接続して、重要なユーザー関連機能を提供します。例えば、顧客は、モバイル・アプリケーションを使用して、店舗の営業時間にかかわらずいつでもどこでも買い物をすることができます。顧客の注文は、やはり店舗の既存の e-コマース・プラットフォームを使用して処理する必要があります。モバイル・アプリケーションをエンタープライズ・サービスと統合するには、モバイル・ゲートウェイなどのミドルウェアを使用する必要があります。{{site.data.keys.product }} は、このミドルウェア・ソリューションとして機能し、バックエンド・サービスとの通信を容易にすることができます。
 
-### Push notifications
+### プッシュ通知
 {: #push-notifications }
-With push notifications, enterprise applications can send information to mobile devices, even when the application is not being used. {{ site.data.keys.product }} includes a unified notification framework which provides a consistent mechanism for such push notifications. With this unified notification framework, you can send push notifications without having to know the details of each targeted device or platform because each mobile platform has a different mechanism for push notification.
+プッシュ通知を使用すると、エンタープライズ・アプリケーションは、そのアプリケーションが使用されていないときでもモバイル・デバイスに情報を送信できます。{{site.data.keys.product }} には、このようなプッシュ通知用に一貫性のあるメカニズムを提供する、統一された通知フレームワークが組み込まれています。各モバイル・プラットフォームには、プッシュ通知用にそれぞれ異なるメカニズムがあります。そのため、この統一された通知フレームワークを使用することで、ターゲットとなる各デバイスまたはプラットフォームの詳細を知らなくてもプッシュ通知を送信できます。
 
-### Offline mode
+### オフライン・モード
 {: #offline-mode }
-In terms of connectivity, mobile applications can operate offline, online, or in a mixed mode. {{ site.data.keys.product }} uses a client/server architecture that can detect whether a device has network connectivity, and the quality of the connection. Acting as a client, mobile applications periodically attempt to connect to the server and to assess the strength of the connection. An offline-enabled mobile application can be used when a mobile device lacks connectivity but some functions can be limited. When you create an offline-enabled mobile application, it is useful to store information about the mobile device that can help preserve its functionality in offline mode. This information typically comes from a back-end system, and you must consider data synchronization with the back end as part of the application architecture. {{ site.data.keys.product }} includes a feature that is called JSONStore for data exchange and storage. With this feature, you can create, read, update, and delete data records from a data source. Each operation is queued when operating offline. When a connection is available, the operation is transferred to the server and each operation is then performed against the source data.
+接続の観点からは、モバイル・アプリケーションは、オフライン、オンライン、または混合モードで作動できます。{{site.data.keys.product }} は、デバイスがネットワークに接続しているかどうか、およびその接続の品質を検出できるクライアント/サーバー・アーキテクチャーを使用します。クライアントとして機能するモバイル・アプリケーションは、サーバーへの接続と、接続の強度の評価を定期的に試みます。モバイル・デバイスの接続は切れているが、一部の機能を制限できる場合、オフライン対応のモバイル・アプリケーションを使用できます。オフライン対応のモバイル・アプリケーションを作成する場合、オフライン・モードでモバイル・デバイスの機能性を維持するのに役立つ、モバイル・デバイスに関する情報を保管することが有用です。この情報は、通常、バックエンド・システムから得られるため、バックエンドとのデータの同期化を、アプリケーション・アーキテクチャーの一部と考える必要があります。{{site.data.keys.product }} には、データの交換と保管のための JSONStore というフィーチャーが組み込まれています。この機能を使用すると、データ・ソースを対象にデータ・レコードの作成、読み取り、更新、および削除を行うことができます。オフラインで作動している場合、各操作はキューに入れられます。接続が使用可能になると、操作はサーバーに転送され、各操作がソース・データに対して実行されます。
 
-### Update
+### 更新
 {: #update }
-{{ site.data.keys.product }} simplifies version management and mobile application compatibility. Whenever a user starts a mobile application, the application communicates with a server. By using this server, {{ site.data.keys.product }} can determine whether a newer version of the application is available, and if so, give information to the user about it, or push an application update to the device. The server can also force an upgrade to the latest version of an application to prevent continued use of an outdated version.
+{{site.data.keys.product }} は、バージョン管理と、モバイル・アプリケーションの互換性を単純化します。ユーザーがモバイル・アプリケーションを開始するたびに、アプリケーションはサーバーと通信します。このサーバーを使用することで、{{site.data.keys.product }} は、より新しいバージョンのアプリケーションが使用可能であるかどうかを判断し、使用可能な場合は、そのことについての情報をユーザーに提供したり、アプリケーション更新をデバイスにプッシュしたりすることができます。サーバーは、強制的にアプリケーションの最新バージョンへのアップグレードを行って、古いバージョンを使用し続けないようにすることもできます。
 
-### Security
+### セキュリティー
 {: #security }
-Protecting confidential and private information is critical for all applications within an enterprise, including mobile applications. Mobile security applies at various levels, such as mobile application, mobile application services, or back-end service. You must ensure customer privacy and protect confidential data from being accessed by unauthorized users. Dealing with privately owned mobile devices means giving up control on certain lower levels of security, such as the mobile operating system.
+機密情報およびプライベート情報の保護は、モバイル・アプリケーションを含め、企業内のすべてのアプリケーションにとって非常に重要です。モバイル・セキュリティーは、モバイル・アプリケーション、モバイル・アプリケーション・サービス、またはバックエンド・サービスなど、様々なレベルに適用されます。顧客のプライバシーを保証し、機密データが無許可ユーザーによってアクセスされないように保護する必要があります。個人所有のモバイル・デバイスを扱うことは、特定の下位レベルのセキュリティー (モバイル・オペレーティング・システムなど) に対する制御をあきらめることを意味します。
 
-{{ site.data.keys.product }} provides secure, end-to-end communication by positioning a server that oversees the flow of data between the mobile application and your back-end systems. With {{ site.data.keys.product }}, you can define custom security handlers for any access to this flow of data. Because any access to data of a mobile application has to go through this server instance, you can define different security handlers for mobile applications, web applications, and back-end access. With this kind of granular security, you can define separate levels of authentication for different functions of your mobile application. You can also prevent mobile applications from accessing sensitive information.
+{{site.data.keys.product }} は、モバイル・アプリケーションとバックエンド・システムの間のデータ・フローを監視するサーバーを配置することによって、セキュアなエンドツーエンドの通信を提供します。{{site.data.keys.product }} を使用すると、このデータ・フローへのいかなるアクセスに対しても、カスタム・セキュリティー・ハンドラーを定義できます。
+モバイル・アプリケーションのデータへのアクセスはすべて、このサーバー・インスタンスを通過する必要があるため、モバイル・アプリケーション、Web アプリケーション、およびバックエンド・アクセス用に異なるセキュリティー・ハンドラーを定義できます。このようなきめ細かいセキュリティーにより、モバイル・アプリケーションの各種機能に対して別々のレベルの認証を定義することができます。また、モバイル・アプリケーションが機密情報にアクセスしないようにすることもできます。
 
-### Analytics
+### 分析
 {: #analytics }
-The {{ site.data.keys.mf_analytics }} feature enables searching across apps, services, devices, and other sources to collect data about usage, or to detect problems.
+{{site.data.keys.mf_analytics }}フィーチャーにより、アプリケーション、サービス、デバイス、およびその他のソースにまたがる検索を行って、使用量に関するデータの収集や、問題の検出を行うことができます。
 
-In addition to reports that summarize app activity, {{ site.data.keys.product }} includes a scalable operational analytics platform accessible in the {{ site.data.keys.mf_console }}. The {{ site.data.keys.mf_analytics_short }} feature enables enterprises to search across logs and events that are collected from devices, apps, and servers for patterns, problems, and platform usage statistics. You can enable analytics, reports, or both, depending on your needs.
+アプリケーション・アクティビティーの要約を示すレポートに加えて、{{site.data.keys.product }} には、{{site.data.keys.mf_console }} 内でアクセスできるスケーラブルな運用分析プラットフォームが組み込まれています。企業はこの{{site.data.keys.mf_analytics_short }}フィーチャーを使用して、デバイス、アプリケーション、およびサーバーから収集された各種ログおよびイベント全体を検索することで、パターン、問題、およびプラットフォーム使用量統計を検討できます。必要に応じて、分析、レポート、またはその両方を使用可能にすることができます。
 
-### Monitoring
+### モニター
 {: #monitoring }
-{{ site.data.keys.product }} includes a range of operational analytics and reporting mechanisms for collecting, viewing, and analyzing data from your {{ site.data.keys.product }} applications and servers, and for monitoring server health.
+{{site.data.keys.product }} には、
+{{site.data.keys.product }}  のアプリケーションおよびサーバーからのデータを
+収集、表示、分析し、サーバーの正常性をモニターする、幅広い運用分析メカニズムとレポート作成メカニズムが組み込まれています。
 
-### Application publishing
+### アプリケーション公開
 {: #application-publishing }
-{{ site.data.keys.product }} Application Center is an enterprise application store. With the Application Center, you can install, configure, and administer a repository of mobile applications for use by individuals and groups across your enterprise. You can control who in your organization can access the Application Center and upload applications to the Application Center repository, and who can download and install these applications onto a mobile device. You can also use the Application Center to collect feedback from users and access information about devices on which applications are installed.
+{{site.data.keys.product }} Application Center は、エンタープライズ・アプリケーション・ストアです。Application Center を使用すると、全社にわたる個人およびグループが使用するモバイル・アプリケーション・リポジトリーをインストール、構成、および管理できます。
+組織内のどのユーザーが Application Center にアクセスして Application Center リポジトリーにアプリケーションをアップロードできるか、およびどのユーザーがこれらのアプリケーションをダウンロードしてモバイル・デバイスにインストールできるかを制御できます。また、Application Center を使用して、ユーザーからのフィードバックを収集したり、アプリケーションがインストールされているデバイスに関する情報にアクセスしたりすることもできます。
 
-The concept of the Application Center is similar to the concept of the Apple public App Store or the Google Play store, except that it targets the development process.
+Application Center の概念は、開発プロセスをターゲットとしている点を除き、Apple の公式 App Store や Google Play ストアの概念と類似しています。
 
-The Application Center provides a repository for storing the mobile application files and a web-based console for managing that repository. The Application Center also provides a mobile client application to allow users to browse the catalog of applications that are stored by the Application Center, install applications, leave feedback for the development team, and expose production applications to IBM  Endpoint Manager. Access to download and install applications from the Application Center is controlled by using access control lists (ACLs).
+Application Center には、モバイル・アプリケーション・ファイルを保管するためのリポジトリーと、そのリポジトリーを管理するための Web ベースのコンソールが用意されています。また、Application Center には、ユーザーが Application Center に保管されているアプリケーションのカタログを参照したり、アプリケーションをインストールしたり、開発チームへのフィードバックを残したり、実動用アプリケーションを IBM Endpoint Manager に公開したりするためのモバイル・クライアント・アプリケーションも用意されています。Application Center からアプリケーションをダウンロードしてインストールするためのアクセス権限は、アクセス・コントロール・リスト (ACL) を使用して制御されます。

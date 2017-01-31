@@ -1,79 +1,80 @@
 ---
 layout: tutorial
-title: Application Authenticity
+title: アプリケーション認証性
 relevantTo: [android,ios,windows,javascript]
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-By issuing an HTTP request, an application can access corporate HTTP services (APIs) that {{ site.data.keys.mf_server }} provides access to. The predefined application-authenticity [security check](../) ensures that an application that tries to connect to a {{ site.data.keys.mf_server }} instance is the authentic one.
+アプリケーションは、HTTP 要求を発行することで、{{site.data.keys.mf_server }} からアクセスできる企業の HTTP サービス (API) にアクセスできます。事前定義されているアプリケーション認証性[セキュリティー検査](../)によって、{{site.data.keys.mf_server }} インスタンスに接続しようとするアプリケーションが認証済みのアプリケーションであることが保証されます。
 
-To enable application authenticity, you can either follow the on-screen instructions in the **{{ site.data.keys.mf_console }}** → **[your-application]** → **Authenticity**, or review the information below.
+アプリケーション認証性を有効にするには、**{{site.data.keys.mf_console }}** →**「 [ご使用のアプリケーション] 」**→**「認証性」**の画面上の指示に従うか、下記の情報を参考にできます。
 
-#### Availability
+#### 可用性
 {: #availability }
-* Application authenticity is available in all supported platforms (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) in both Cordova and native applications.
+* アプリケーション認証性は、サポートされるすべてのプラットフォーム (iOS、Android、Windows 8.1 Universal、Windows 10 UWP) において Cordova アプリケーションとネイティブ・アプリケーションの両方で使用できます。
 
-#### Limitations
+#### 制限
 {: #limitations }
-* Application authenticity does not support **Bitcode** in iOS. Therefore, before using application authenticity, disable Bitcode in the Xcode project properties.
+* アプリケーション認証性は、iOS の **Bitcode** はサポートしません。したがって、アプリケーション認証性を使用する前に、Xcode プロジェクトのプロパティーで Bitcode を使用不可に設定してください。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-- [Application Authenticity flow](#application-authenticity-flow)
-- [Enabling Application Authenticity](#enabling-application-authenticity)
-- [Configuring Application Authenticity](#configuring-application-authenticity)
+- [アプリケーション認証性フロー](#application-authenticity-flow)
+- [アプリケーション認証性の有効化](#enabling-application-authenticity)
+- [アプリケーション認証性の構成](#configuring-application-authenticity)
 
-## Application Authenticity Flow
+## アプリケーション認証性フロー
 {: #application-authenticity-flow }
-By default, the application-authenticity security check is run during the application's runtime registration to {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. The authenticity challenge does not occur again.
+デフォルトで、アプリケーション認証性セキュリティー検査は、{{site.data.keys.mf_server }} へのアプリケーションのランタイム登録時に実行されます。これは、アプリケーションのインスタンスが初めてサーバーに接続しようとしたときに行われます。その後、認証性チャレンジが再度発生することはありません。
 
-See [Configuring application authenticity](#configuring-application-authenticity) to learn how to customize this behavior.
+この動作をカスタマイズする方法については、[アプリケーション認証性の構成](#configuring-application-authenticity)を参照してください。
 
-## Enabling Application Authenticity
+## アプリケーション認証性の有効化
 {: #enabling-application-authenticity }
-For application authenticity to be enabled in your Cordova or native application, the application binary file must be signed by using the mfp-app-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android, and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
+Cordova アプリケーションまたはネイティブ・アプリケーションのアプリケーション認証性を有効にするためには、mfp-app-authenticity ツールを使用してアプリケーション・バイナリー・ファイルに署名する必要があります。適格なバイナリー・ファイルは、iOS の場合は `ipa`、Android の場合は `apk`、および Windows 8.1 Universal と Windows 10 UWP の場合は `appx` です。
 
-1. Download the mfp-app-authenticity tool from the **{{ site.data.keys.mf_console }} → Download Center**.
-2. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
+1. **{{site.data.keys.mf_console }} →「ダウンロード・センター」**から mfp-app-authenticity ツールをダウンロードします。
+2. **コマンド・ライン**・ウィンドウを開き、コマンド `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file` を実行します。
 
-   For example:
+   例えば、次のとおりです。
+
 
    ```bash
    java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
    ```
 
-   This command generates an `.authenticity_data` file, called `MyBankApp.authenticity_data`, next to the `MyBankApp.ipa` file.
+   このコマンドは、`MyBankApp.ipa` ファイルの次に `MyBankApp.authenticity_data` という名前の `.authenticity_data` ファイルを生成します。
 
-3. Open the {{ site.data.keys.mf_console }} in your favorite browser.
-4. Select your application from the navigation sidebar and click on the **Authenticity** menu item.
-5. Click on **Upload Authenticity File** to upload the `.authenticity_data` file.
+3. 任意のブラウザーで {{site.data.keys.mf_console }} を開きます。
+4. ご使用のアプリケーションをナビゲーション・サイドバーから選択し、**「認証性」**メニュー項目をクリックします。
+5. **「認証性ファイルのアップロード」**をクリックして `.authenticity_data` ファイルをアップロードします。
 
-When the `.authenticity_data` file is uploaded, application authenticity is enabled.
+`.authenticity_data` ファイルがアップロードされると、アプリケーション認証性が有効になります。
 
-![Enable Application Authenticity](enable_application_authenticity.png)
+![アプリケーション認証性を有効にする](enable_application_authenticity.png)
 
-### Disabling Application Authenticity
+### アプリケーション認証性の無効化
 {: #disabling-application-authenticity }
-To disable application authenticity, click the **Delete Authenticity File** button.
+アプリケーション認証性を無効にするには、**「認証性ファイルの削除」**ボタンをクリックします。
 
-## Configuring Application Authenticity
+## アプリケーション認証性の構成
 {: #configuring-application-authenticity }
-By default, Application Authenticity is checked only during client registration. Just like any other security check, you can decide to protect your application or resources with the `appAuthenticity` security check from the console, following the instructions under [Protecting resources](../#protecting-resources).
+デフォルトで、アプリケーション認証性はクライアント登録時にのみチェックされます。その他のセキュリティー検査と同じように、[リソースの保護](../#protecting-resources)の説明にしたがって、コンソールから `appAuthenticity` セキュリティー検査を使用してアプリケーションまたはリソースを保護できます。
 
-You can configure the predefined application-authenticity security check with the following property:
+以下のプロパティーを使用して、事前定義されているアプリケーション認証性セキュリティー検査を構成できます。
 
-- `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the authenticity token expires.
+- `expirationSec`: デフォルトは、3600 秒 (1 時間) に設定されます。認証性トークンが期限切れになるまでの期間を定義します。
 
-After an authenticity check has completed, it does not occur again until the token has expired based on the set value.
+認証性チェックが完了した後は、設定されている値に基づいてトークンが期限切れになるまで、チェックが再度行われることはありません。
 
-#### To configure the `expirationSec` property:
+#### `expirationSec` プロパティーを構成するには、次のようにします。
 {: #to-configure-the-expirationsec property }
-1. Load the {{ site.data.keys.mf_console }}, navigate to **[your application]** → **Security** → **Security-Check Configurations**, and click on **New**.
+1. {{site.data.keys.mf_console }} をロードし、**「 [ご使用のアプリケーション] 」**→**「セキュリティー」**→**「セキュリティー検査の構成」**にナビゲートし、**「新規」**をクリックします。
 
-2. Search for the `appAuthenticity` scope element.
+2. `appAuthenticity` スコープ・エレメントを検索します。
 
-3. Set a new value in seconds.
+3. 新しい値を秒数で設定します。
 
-![Configuring the expirationSec property in the console](configuring_expirationSec.png)
+![コンソールでの expirationSec プロパティーの構成](configuring_expirationSec.png)

@@ -4,74 +4,82 @@ title: MobileFirst Analytics
 breadcrumb_title: Analytics
 show_children: true
 relevantTo: [ios,android,javascript]
-weight: 9
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} collects data from app-to-server activities, client logs, client crashes, and server-side logs from the {{ site.data.keys.mf_server }} and client devices. The collected data then provides a rich view into both the mobile landscape and server infrastructure. Included are: default reports of user retention, crash reports, device type and operating system breakdowns, custom data and custom charts, network usage, push notification results, in-app behavior, debug log collection, and more.
+{{site.data.keys.mf_analytics_full }} は、アプリケーションからサーバーへのアクティビティー、クライアント・ログ、クライアントの異常終了、および {{site.data.keys.mf_server }} からのサーバー・サイドのログ、およびクライアント・デバイスからのデータを収集します。その後、収集されたデータから、モバイルの状況およびサーバー・インフラストラクチャーを詳しく把握することができます。ユーザー保持のデフォルト・レポート、
+異常終了レポート、デバイス・タイプおよびオペレーティング・システムの明細、カスタム・データおよびカスタム・グラフ、
+ネットワークの使用状況、プッシュ通知の結果、アプリケーション内の動作、デバッグ・ログ収集、その他が含まれます。
 
-{{ site.data.keys.mf_server }} comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems. In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client-side and on the {{ site.data.keys.mf_analytics_server }}. You choose the verbosity and data retention policy of the reported events, set conditional alerts, build custom charts and engage with new data.
+{{site.data.keys.mf_server }} には、
+ネットワーク・インフラストラクチャー・レポート機能が事前装備されています。
+クライアントとサーバーの両方がネットワーク使用状況をレポートしている場合は、データを集約して、ローパフォーマンスの原因がネットワークにあるか、サーバーにあるか、またはバックエンド・システムにあるかを判断できます。さらに、クライアント・サイドと {{site.data.keys.mf_analytics_server }} の両方でフィルターを定義して、分析がどのロガー・データにアクセスして使用するかを制御できます。レポートされるイベントの詳細度とデータ保存ポリシーを選択し、条件付きアラートを設定し、カスタム・グラフを作成し、新規データに取り組みます。
 
-#### Platform support
+
+#### プラットフォームのサポート
 {: #platform-support }
 
-{{ site.data.keys.mf_analytics }} supports:
+{{site.data.keys.mf_analytics }} サポート:
 
-* Native iOS and Android clients
-* Cordova applications (iOS, Android)
-* Web applications
-* Support is **not available** for Windows 8.1 Universal or Windows 10 UWP
+* ネイティブ iOS クライアントおよび Android クライアント
+* Cordova アプリケーション (iOS、Android)
+* Web アプリケーション
+* サポートは、Windows 8.1 Universal および Windows 10 UWP では**使用できません**
 
-IBM {{ site.data.keys.mf_server }} comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting their network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems.
+IBM {{site.data.keys.mf_server }} には、ネットワーク・インフラストラクチャー・レポート機能が事前装備されています。クライアントとサーバーの両方がネットワーク使用状況をレポートしている場合は、データを集約して、ローパフォーマンスの原因がネットワークにあるか、サーバーにあるか、またはバックエンド・システムにあるかを判断できます。
 
-## Client development
+## クライアント開発
 {: #client-development }
 
-Two client classes work together to send raw data to the server: the Logger and Analytics classes.
+Logger クラスと Analytics クラスの 2 つのクライアント・クラスが、連携して生データをサーバーに送信します。
 
-### The Analytics API
+### Analytics API
 {: #the-analytics-api }
 
-The Analytics client API collects data on a wide range of events and sends them to the {{ site.data.keys.mf_analytics_server }}.
-> Learn more in the [Analytics Client Development](analytics-api) tutorial.
-
-### The Logger API
+Analytics クライアント API は、さまざまなイベントについてのデータを収集し、それらを {{site.data.keys.mf_analytics_server }}に送信します。
+> [『Analytics クライアント開発』](analytics-api)チュートリアルで詳細を参照してください。
+### Logger API
 {: #the-logger-api }
 
-The Logger functions as a standard logger. From the client you can also send logger data to the {{ site.data.keys.mf_analytics_server }} at any logging level. However, the server configuration controls what level of logging requests are allowed. Requests sent below this threshold are ignored.
+Logger は標準ロガーとして機能します。クライアントから、任意のロギング・レベルで {{site.data.keys.mf_analytics_server }}にロガー・データを送信することもできます。ただし、サーバー構成によって、許可されるロギング要求のレベルが制御されます。
+このしきい値より下の送信された要求は無視されます。
 
-Logging levels need to be controlled to balance two needs: the need to collect information and the need to limit the quantity of data to fit limited storage ability.
+情報を収集する必要性と、限られたストレージ能力に合わせてデータ量を制限する必要性の 2 つのバランスを取るようにロギング・レベルを制御しなければなりません。
 
-> Learn more in the [Client Logging](../application-development/client-side-log-collection/) tutorial.
+> [『クライアント・ロギング』](../application-development/client-side-log-collection/)チュートリアルで詳細を参照してください。
 
-In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client side and on the {{ site.data.keys.mf_analytics_server }}.
 
-## The Analytics and Operations Consoles
+さらに、クライアント・サイドと
+{{site.data.keys.mf_analytics_server }} の両方でフィルターを定義して、
+分析がどのロガー・データにアクセスして使用するかを制御できます。
+
+## Analytics コンソールおよび Operations Console
 {: #the-analytics-and-operations-consoles }
 
-{{ site.data.keys.product_full }} provides the Analytics and Operations consoles. The {{ site.data.keys.mf_console_full }} configures how the Analytics Server works with the client applications. The {{ site.data.keys.mf_analytics_console_full }} configures and displays the various Analytics reports.
+{{site.data.keys.product_full }} は、Analytics コンソールと Operations Console を提供します。{{site.data.keys.mf_console_full }} は、Analytics サーバーとクライアント・アプリケーションとの連携方法を構成します。{{site.data.keys.mf_analytics_console_full }}は、さまざまな Analytics レポートを構成および表示します。
 
-> Learn more in the [Operations Console](console) tutorial.
+> [『オペレーション・コンソール』](console)チュートリアルで詳細を参照してください。
 
-> Learn more about creating custom charts with the Analytics console in the [Custom Charts](console/custom-charts) tutorial.
+> Analytics コンソールでのカスタム・グラフの作成について詳しくは、 [『カスタム・グラフ』](console/custom-charts)チュートリアルを参照してください。
 
-## The Analytics Server
+## Analytics サーバー
 {: #the-analytics-server }
 
-The Analytics Server is available in both the development and production environments.
+Analytics サーバーは、開発環境と実稼働環境の両方で使用できます。
 
-For development, the Analytics Server is installed together with the {{ site.data.keys.mf_dev_kit }}.  For more information, see [Setting up the {{ site.data.keys.product_adj }} development environment](../installation-configuration/development/mobilefirst/). Once the kit is installed, the {{ site.data.keys.mf_analytics_console_short }} is available for your development needs.
+開発の場合、Analytics サーバーは {{site.data.keys.mf_dev_kit }}と一緒にインストールされます。詳しくは、[『{{site.data.keys.product_adj }} 開発環境のセットアップ』](../installation-configuration/development/mobilefirst/)を参照してください。キットがインストールされると、貴社の開発ニーズのために {{site.data.keys.mf_analytics_console_short }} が使用可能になります。
 
-For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the {{ site.data.keys.product_adj }} development environment](../installation-configuration/production/analytics/).
+実動の場合、使用可能なインフラストラクチャー、ビジネス・ニーズ、システム設計などに応じて、さまざまなインストールおよび構成のオプションが用意されています。詳細については、[『{{site.data.keys.product_adj }} 開発環境のセットアップ 』](../installation-configuration/production/analytics/)を参照してください。
 
-{{ site.data.keys.mf_analytics }} uses Elasticsearch. [Learn how to use Elasticsearch](elasticsearch) in {{ site.data.keys.product }}.
+{{site.data.keys.mf_analytics }} は Elasticsearch を使用します。{{site.data.keys.product }} で [Elasticsearch の使用方法を参照してください](elasticsearch)。
 
-## Troubleshooting
+## トラブルシューティング
 {: #troubleshotting }
 
-For information on troubleshooting {{ site.data.keys.mf_analytics }}, see [Analytics Troubleshooting](../troubleshooting/analytics/).
+{{site.data.keys.mf_analytics }} のトラブルシューティングについては、[『Analytics のトラブルシューティング』](../troubleshooting/analytics/)を参照してください。
 
-## What to read next
+## 推奨資料
 {: #what-to-read-next }

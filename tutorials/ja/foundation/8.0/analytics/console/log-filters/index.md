@@ -1,20 +1,20 @@
 ---
 layout: tutorial
-title: Configuring Log Filters
-breadcrumb_title: Log Filters
+title: ログ・フィルターの構成
+breadcrumb_title: ログ・フィルター
 relevantTo: [ios,android,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-Administrators can control the {{ site.data.keys.product_adj }} client SDK log capture and levels from the **{{ site.data.keys.mf_console }} → [your application] → [version] → Log Filters**.  
-Through `Log Filters` you can create a filter level that you can log at. The log level can be set globally (all logger instances) or for a specific package or packages.
+管理者は、**{{site.data.keys.mf_console }} →「 [ご使用のアプリケーション] 」→「 [バージョン] 」→「ログ・フィルター 」**から、{{site.data.keys.product_adj }} クライアント SDK ログのキャプチャーおよびレベルを制御できます。  
+`「ログ・フィルター」`を使用して、ログに記録できるフィルター・レベルを作成できます。ログ・レベルは、グローバル (すべてのロガー・インスタンス) に設定することも、特定のパッケージ (複数可) に設定することも可能です。
 
-<img class="gifplayer"  alt="Creating a log filter" src="add-log-filter.png"/>
+<img class="gifplayer"  alt="ログ・フィルターの作成" src="add-log-filter.png"/>
 
-For the application to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+サーバーで設定された構成オーバーライドをアプリケーションが取り出すには、アプリケーション・ライフサイクル・コールバック内など、定期的に実行されるコード内の場所から `updateConfigFromServer` メソッドを呼び出す必要があります。
 
 
 #### Android
@@ -45,12 +45,12 @@ WL.Logger.updateConfigFromServer();
 ibmmfpfanalytics.logger.updateConfigFromServer();
 ```
 
-The `Logger` configuration values that the server returns take precedence over any values that are set on the client side. When the Client Log Profile is removed and the client tries to retrieve the Client Log Profile, the client receives an empty payload. In this case, the `Logger` configuration defaults to what was originally configured on the client.
+サーバーが返す `Logger` 構成値は、クライアント・サイドに設定されているすべての値に優先します。クライアント・ログ・プロファイルが削除されている場合、クライアントは、クライアント・ログ・プロファイルの取得を試みても空のペイロードを受け取ります。この場合、`Logger` 構成は、デフォルトである、クライアントに元々構成されていたものになります。
 
-## Forwarding server logs
+## サーバー・ログの転送
 {: #forwarding-server-logs }
 
-The {{ site.data.keys.mf_console }} also gives the server administrator the ability to persist logs and send those logs to the {{ site.data.keys.mf_analytics_console }}.
+{{site.data.keys.mf_console }} を使用して、サーバー管理者はログを維持し、それらのログを {{site.data.keys.mf_analytics_console }}に送信することもできます。
 
-To forward server logs, navigate to the Runtime **Settings** screen and specify the logger package under **Additional Packages**.  
-The collected logs can then be viewed in the {{ site.data.keys.mf_analytics_console_short }}. This is useful for a user to take advantage of triaging adapter logs in the {{ site.data.keys.mf_analytics_console_short }} without having to collect all server logs.
+サーバー・ログを転送するには、**「ランタイム設定」**画面にナビゲートし、**「追加パッケージ」**の下のロガー・パッケージを指定します。  
+その後、収集されたログは {{site.data.keys.mf_analytics_console_short }}で表示できます。これは、すべてのサーバー・ログを収集することなく {{site.data.keys.mf_analytics_console_short }}でユーザーがアダプター・ログを選別する場合に便利です。

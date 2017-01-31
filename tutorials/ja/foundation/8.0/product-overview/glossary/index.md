@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Glossary
+title: 用語集
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -9,7 +9,7 @@ weight: 8
 {% comment %}
 Do note use keywords in the keyword terms, as this presents issues with the glossary sort tool. (You can use keywords in the definitions.)
 When the term should logically use a keyword, use the keyword text in the term, and add a no-translation comment.
-For example, instead of using "{{ site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
+For example, instead of using "{{site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
 <!-- START NON-TRANSLATABLE -->
@@ -19,339 +19,348 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 <!-- END NON-TRANSLATABLE -->
 
 <br/>
-This glossary provides terms and definitions for {{ site.data.keys.product }} software and products.
+この用語集では、{{site.data.keys.product }} のソフトウェアと製品の用語および定義を示します。
 
-The following cross-references are used in this glossary:
+この用語集では、以下の相互参照が使用されています。
 
-* **See** refers you from a nonpreferred term to the preferred term or from an abbreviation to the spelled-out form.
-* **See also** refers you to a related or contrasting term.
+* 「**参照してください**」は、非推奨の用語から推奨される用語に、または略語から正式名称に言及します。
+* 「**も参照。**」は、関連する用語または対比する用語を示します。
 
-For other terms and definitions, see the [IBM Terminology website](http://www.ibm.com/software/globalization/terminology/).
+その他の用語および定義については、[IBM Terminology Web サイト](http://www.ibm.com/software/globalization/terminology/)を参照してください。
 
-## A {
+## A
 {: #a }
-}
-### acquisition policy
+
+### 取得ポリシー (acquisition policy)
 {: #acquisition-policy }
-A policy that controls how data is collected from a sensor of a mobile device. The policy is defined by application code.
+モバイル・デバイスのセンサーからデータを収集する方法をコントロールするポリシー。ポリシーはアプリケーション・コードにより定義されます。
 
-### adapter
+### アダプター (adapter)
 {: #adapter }
-The server-side code of a {{ site.data.keys.product_adj }} application. Adapters connect to enterprise applications, deliver data to and from mobile applications, and perform any necessary server-side logic on sent data.
+{{site.data.keys.product_adj }} アプリケーションのサーバー・サイドのコード。アダプターはエンタープライズ・アプリケーションと接続し、モバイル・アプリケーションとのデータの送受信を行ったり、送信されたデータに必要なすべてのサーバー・サイド・ロジックを実行したりします。
 
-### administration database
+### 管理データベース (administration database)
 {: #administration-database }
-The database of the {{ site.data.keys.mf_console }} and of the Administration Services. The database tables define elements such as applications, adapters, projects with their descriptions and orders of magnitude.
+{{site.data.keys.mf_console }} および Administration Services のデータベース。データベース表に、アプリケーション、アダプター、プロジェクトなどの要素が、それぞれの説明とともに、規模順に明示されます。
 
 ### Administration Services
 {: #administration-services }
-An application that hosts the REST services and administration tasks. The Administration Services application is packaged in its own WAR file.
+REST サービスおよび管理タスクをホストするアプリケーション。Administration Services アプリケーションは、その独自の WAR ファイルにパッケージされています。
 
-### alias
+### 別名 (alias)
 {: #alias }
-An assumed or actual association between two data entities, or between a data entity and a pointer.
+2 つのデータ・エンティティーの間や、またはデータ・エンティティーとポインターとの間における、仮想と実体の関連付け。
 
 ### Android
 {: #android }
-A mobile operating system created by Google, most of which is released under the Apache 2.0 and GPLv2 open source licenses. See also mobile device.
+Google 社が作成したモバイル・オペレーティング・システム。大半は Apache 2.0 および GPLv2 オープン・ソースのライセンスを使用してリリースされています。「モバイル・デバイス (mobile device)」も参照。
 
-### API / Application Programming Interface (API)
+### API / アプリケーション・プログラミング・インターフェース (API) (Application Programming Interface (API)) 
 {: #api-application-programming-interfacae-api }
-An interface that allows an application program that is written in a high-level language to use specific data or functions of the operating system or another program.
+オペレーティング・システムまたは別のプログラムが持つ特定のデータや機能が、高水準言語で作成されたアプリケーション・プログラムで使用できるようになるインターフェースのこと。
 
 ### app
 {: #app }
-A web or mobile device application. See also web application.
+Web またはモバイル・デバイスのアプリケーション。「Web アプリケーション (web application)」も参照。
 
 ### Application Center
 {: #application-center }
-A {{ site.data.keys.product_adj }} component that can be used to share applications and facilitate collaboration between team members in a single repository of mobile applications.
+{{site.data.keys.product_adj }} のコンポーネントの 1 つ。これを使用すれば、チーム・メンバー同士が、モバイル・アプリケーションの単一リポジトリーでアプリケーションを共有したりコラボレーションを促進したりできます。
 
-### Application Center installer
+### Application Center インストーラー (Application Center installer)
 {: #application-center-installer }
-An application that lists the catalog of available applications in the Application Center. The Application Center Installer must be present on a device so that one can install applications from your private application repository.
+Application Center で入手可能なアプリケーションのカタログをリストするアプリケーション。専用アプリケーション・リポジトリーからアプリケーションをインストールするには、デバイス上に Application Center Installer が存在している必要があります。
 
-### application descriptor file
+
+### アプリケーション記述子ファイル (application descriptor file)
 {: #application-descriptor-file }
-A metadata file that defines various aspects of an application.
+アプリケーションの様々な面を定義するメタデータ・ファイル。
 
-### authentication
+### 認証 (authentication)
 {: #authentication }
-A security service that provides proof that a user of a computer system is genuinely who that person claims to be. Common mechanisms for implementing this service are passwords and digital signatures.
+コンピューター・システムのユーザーが真に本人であることを証明するセキュリティー・サービス。このサービスを実装するための一般的なメカニズムはパスワードとデジタル署名です。
 
 ## B
 {: #b }
 ### Base64
 {: #base64 }
-A plain-text format that is used to encode binary data. Base64 encoding is commonly used in User Certificate Authentication to encode X.509 certificates, X.509 CSRs, and X.509 CRLs. See also DER encoded, PEM encoded.
+バイナリー・データのエンコードに使用されるプレーン・テキスト・フォーマット。Base64 エンコードは、X.509 certificate、X.509 CSR、および X.509 CRL をエンコードするために User Certificate Authentication で標準的に使用されています。「DER エンコード化 (DER encoded)」、「PEM エンコード化 (PEM encoded)」も参照。
 
-### binary
+### バイナリー (binary)
 {: #binary }
-Pertaining to something that is compiled, or is executable.
+コンパイルされているもの、または実行可能なものに関連している。
 
-### block
+### ブロック (block)
 {: #block }
-A collection of several properties (such as adapter, procedure, or parameter).
+複数のプロパティーの集合体 (アダプター、プロシージャー、またはパラメーターなど)。
 
-### broadcast notification
+### ブロードキャスト通知 (broadcast notification)
 {: #broadcast-notification }
-A notification that is targeted to all of the users of a specific {{ site.data.keys.product_adj }} application. See also tag-based notification.
+特定の {{site.data.keys.product_adj }} アプリケーションのユーザー全員に宛てた通知。「タグ・ベースの通知 (tag-based notification)」も参照。
 
-### build definition
+### ビルド定義 (build definition)
 {: #build-definition }
-An object that defines a build, such as a weekly project-wide integration build.
+週 1 回のプロジェクト全体の統合ビルドなど、ビルドを定義するオブジェクト。
 
 ## C
 {: #c }
 
-### CA / Certificate Authority (CA)
+### CA / 認証局 (CA) (Certificate Authority (CA))
 {: #ca--certificate-authority-ca }
-A trusted third-party organization or company that issues the digital certificates. The certificate authority typically verifies the identity of the individuals who are granted the unique certificate. See also [certificate](#certificate).
+デジタル証明書を発行する、信頼できるサード・パーティー組織または企業。認証局は通常、固有の認証を認可された個人の ID を検証します。
+[証明書 (certificate)](#certificate) も参照。
 
-### callback function
+### コールバック機能 (callback function)
 {: #callback-function }
-Executable code that allows a lower-level software layer to call a function defined in a higher-level layer.
+下位ソフトウェア・レイヤーが上位レイヤーで定義された機能を呼び出せる、実行可能コード。
 
-### catalog
+### カタログ (catalog)
 {: #catalog }
-A collection of apps.
+アプリケーションの集合体
 
-### certificate
+### 証明書 (certificate)
 {: #certificate }
-In computer security, a digital document that binds a public key to the identity of the certificate owner, thereby enabling the certificate owner to be authenticated. A certificate is issued by a certificate authority and is digitally signed by that authority. See also [certificate authority](#ca--certificate-authority-ca).
+コンピューター・セキュリティーにおいては、公開鍵を証明書の所有者の ID にバインドする、デジタル文書。これにより、証明書の所有者が認証されます。証明書は、認証局が発行およびデジタル署名を行います。[認証局 (certificate authority)](#ca--certificate-authority-ca) も参照。
 
-### certificate authority enterprise application
+### 認証局エンタープライズ・アプリケーション (certificate authority enterprise application)
 {: #certificate-authority-enterprise-application }
-A company application that provides certificates and private keys for its client applications.
+クライアント・アプリケーションに証明書および秘密鍵を提供する企業アプリケーション。
 
-### challenge
+### チャレンジ (challenge)
 {: #challenge }
-A request for certain information to a system. The information, which is sent back to the server in response to this request, is necessary for client authentication.
+ある情報についての、システムへの要求。クライアント認証には、要求に応答してサーバーに返信されるこの情報が必要です。
 
-### challenge handler
+### チャレンジ・ハンドラー (challenge handler)
 {: #challenge-handler }
-A client-side component that issues a sequence of challenges on the server side and responds on the client side.
+サーバー・サイドに一連の課題を出してクライアント・サイドに応答する、クライアント・サイドのコンポーネント。
 
-### client
+### クライアント (client)
 {: #client }
-A software program or computer that requests services from a server.
+サーバーからのサービスを要求するソフトウェア・プログラムまたはコンピューター。
 
-### client-side authentication component
+### クライアント・サイド認証コンポーネント (client-side authentication component)
 {: #client-side-authentication-componnet }
-A component that collects client information, then uses login modules to verify this information.
+クライアント情報を収集して、その情報を検証するためにログイン・モジュールを使用するコンポーネント。
 
-### clone
+### クローン (clone)
 {: #clone }
-An identical copy of the latest approved version of a component, with a new unique component ID.
+コンポーネントの最後に承認されたバージョンと同一のコピー。このコピーには、独自のコンポーネント ID が新しく割り当てられます。
 
-### cluster
+### クラスター (cluster)
 {: #cluster }
-A collection of complete systems that work together to provide a single, unified computing capability.
+連携して単一の統合コンピューティング機能を提供する完全なシステムの集合。
 
-### company application
+### 企業アプリケーション (company application)
 {: #company-application }
-An application that is designed for internal use inside a company.
+企業の社内で使用するように設計されたアプリケーション。
 
-### Company Hub
+### 企業ハブ (Company Hub)
 {: #company-hub }
-An application that can distribute other specified applications to be installed on a mobile device. For example, Application Center is a Company Hub. See also [Application Center](#application-center).
+モバイル・デバイスにインストールされる、特定のアプリケーションを配布できるアプリケーション。例えば、Application Center は企業ハブです。[Application
+Center](#application-center) も参照。
 
-### component
+### コンポーネント (component)
 {: #component }
-A reusable object or program that performs a specific function and works with other components and applications.
+特定の機能を実行し、他のコンポーネントおよびアプリケーションと連携して動作する、再使用可能なオブジェクトまたはプログラム。
 
-### credential
+### 資格情報 (credential)
 {: #credential }
-A set of information that grants a user or process certain access rights.
+ユーザーを認可する、または特定のアクセス権限を処理する、情報のセット。
 
-### CRL / Certificate Revocation List (CRL)
+### CRL / 証明書取り消しリスト (CRL) (Certificate Revocation List (CRL))
 {: #crl-certificate-revocation-list-crl }
-A list of certificates that have been revoked before their scheduled expiration date. Certificate revocation lists are maintained by the certificate authority and used, during a Secure Sockets Layer (SSL) handshake to ensure that the certificates involved have not been revoked.
+スケジュールされた有効期限より前に取り消された証明書のリスト。証明書取り消しリストは認証局が保守します。関係する証明書が取り消されないよう Secure Sockets Layer (SSL) がハンドシェークしている間に、認証局が証明書取り消しリストを使用します。
 
 ## D
 {: #d }
 
-### data source
+### データ・ソース (data source)
 {: #data-source }
-The means by which an application accesses data from a database.
+アプリケーションがデータベースからデータにアクセスするための手段。
 
-### deployment
+### デプロイメント (deployment)
 {: #deployment }
-The process of installing and configuring a software application and all its components.
+ソフトウェア・アプリケーションおよびそのすべてのコンポーネントをインストールして構成する処理。
 
-### DER encoded
+### DER エンコード化 (DER encoded)
 {: #der-encoded }
-Pertaining to a binary form of an ASCII PEM formatted certificate. See also Base64, PEM encoded.
+ASCII PEM フォーマットの証明書の、バイナリー形式に関連すること。
+「Base64」、「PEM エンコード化 (PEM encoded)」も参照。
 
-### device
+### デバイス (device)
 {: #device }
-See [mobile device](#mobile-device)
+[モバイル・デバイス (mobile device)](#mobile-device) を参照してください。
 
-### device context
+### デバイス・コンテキスト (device context)
 {: #device-context }
-Data that is used to identify the location of a device. This data can include geographical coordinates, WiFi access points, and timestamp details. See also trigger.
+デバイスの位置を特定するために使用されるデータ。このデータには、地理的座標、WiFi アクセス・ポイント、およびタイム・スタンプの詳細が含まれる場合があります。「トリガー (trigger)」も参照。
 
-### device enrollment
+### デバイスの登録 (device enrollment)
 {: #device-enrollment }
-The process of a device owner registering their device as trusted.
+デバイス所有者が所有するデバイスを信頼できるものとして登録するプロセス。
 
 ### documentify
 {: #documentify }
-A JSONStore command used to create a document.
+文書の作成に使用される JSONStore コマンド。
 
 ## E
 {: #e }
 
-### emulator
+### エミュレーター (emulator)
 {: emulator }
-An application that can be used to run an application meant for a platform other than the current platform.
+現行プラットフォーム以外のプラットフォーム向けのアプリケーションを実行するのに使用されるアプリケーション。
 
-### encryption
+### 暗号化 (encryption)
 {: #encryption }
-In computer security, the process of transforming data into an unintelligible form in such a way that the original data either cannot be obtained or can be obtained only by using a decryption process.
+コンピューター・セキュリティーにおいて、元のデータを取得できないような方法、または暗号化解除プロセスによってのみ取得できるような方法で、データを解読不能な形式に変換するプロセス。
 
-### enterprise application
+### エンタープライズ・アプリケーション (enterprise application)
 {: #enterprise-application }
-See company application.
+「企業アプリケーション (company application)」を参照してください。
 
-### entity
+### エンティティー (entity)
 {: #entity }
-A user, group, or resource that is defined to a security service.
+セキュリティー・サービスに対して定義されているユーザー、グループ、またはリソース。
 
-### environment
+### 環境 (environment)
 {: #environment }
-A specific instance of a configuration of hardware and software.
+ハードウェアまたはソフトウェアの構成の特定のインスタンス。
 
-### event
+### イベント (event)
 {: #event }
-An occurrence of significance to a task or system. Events can include completion or failure of an operation, a user action, or the change in state of a process.
+タスクまたはシステムに重要な事柄が発生すること。イベントには、オペレーション、ユーザー処置、または処理状態の変更の完了または失敗が含まれる場合があります。
 
-### event source
+### イベント・ソース (event source)
 {: #event-source }
-An object that supports an asynchronous notification server within a single Java™ virtual machine. Using an event source, the event listener object can be registered and used to implement any interface.
+単一の Java™ 仮想マシン内の非同期通知サーバーをサポートするオブジェクト。イベント・ソースを使用して、任意のインターフェースを実装するためにイベント・リスナー・オブジェクトを登録および使用することができます。
 
 ## F
 {: #f }
 
-### facet
+### ファセット (facet)
 {: #facet }
-An XML entity that restricts XML data types.
+XML データ型を制限する XML エンティティー。
 
-### farm node
+### ファーム・ノード (farm node)
 {: #farm-node }
-A networked server that is housed in a server farm.
+サーバー・ファームに配置されるネットワーク・サーバー。
 
-### fire
+### 発生 (fire)
 {: #fire }
-In object-oriented programming, to cause a state transition.
+オブジェクト指向プログラミングにおいて、状態遷移を発生させること。
 
 ## G
 {: #g }
-### gateway
+### ゲートウェイ (gateway)
 {: #gateway }
-A device or program used to connect networks or systems with different network architectures.
+ネットワーク体系の異なるネットワークまたはシステムに接続するために使用される、デバイスまたはプログラム。
 
-### geocoding
+### ジオコーディング (geocoding)
 {: #geocoding }
-The process of identifying geocodes from more traditional geographic markers (addresses, postal codes, and so on). For example, a landmark can be located at the intersection of two streets, but the geocode of that landmark consists of a number sequence.
+従来の地理マーカー (住所、郵便番号など) からジオコードを特定するプロセス。
+例えば、ランドマークとなるビルなどがあるのは 2 本の通りが交差する地点ですが、
+そのランドマークのジオコードは数列で構成されています。
 
-### geolocation
+### 地理位置情報 (geolocation)
 {: #geolocation }
-The process of pinpointing a location based on the assessment of various types of signals. In mobile computing, often WLAN access points and cell towers are used to approximate a location. See also geocoding, location services.
+様々なタイプの信号のアセスメントに基づいて、位置を正確に示す処理。モバイル・コンピューティングにおいては、しばしば WLAN アクセス・ポイントおよび携帯電話の基地局が位置を概算するのに使用されます。「ジオコーディング (geocoding)」、「ロケーション・サービス (location services)」も参照。
 
 ## H
 {: #h }
 
-### homogeneous server farm
+### 同種サーバー・ファーム (homogeneous server farm)
 {: #homogeneous-server-farm }
-A server farm in which all application servers are of the same type, level, and version.
+すべてのアプリケーション・サーバーが同じタイプ、レベル、バージョンの
+サーバー・ファーム。
 
-### hybrid application
+### ハイブリッド・アプリケーション (hybrid application)
 {: #hybrid-application }
-An application that is primarily written in web-oriented languages (HTML5, CSS, and JS), but is wrapped in a native shell so that the app behaves like, and provides the user with all the capabilities of, a native app.
+主に Web 指向言語 (HTML5、CSS、および JS) で書かれているが、ネイティブ・シェルで包まれているアプリケーション。そのためそのアプリケーションはネイティブ・アプリケーションのように振る舞い、そのネイティブ・アプリケーションのすべての機能がユーザーに提供されます。
 
 ## I
 {: #i }
 
-### in-house application
+### 社内アプリケーション (in-house application)
 {: #in-house-application }
-See [company application](#company-application).
+[企業アプリケーション (company application)](#company-application) を参照してください。
 
 ## J
 {: #j }
 
 ### JMX / Java Management Extensions (JMX)
 {: #jmx--java-management-extensions-jmx }
-A means of doing management of and through Java technology. JMX is a universal, open extension of the Java programming language for management that can be deployed across all industries, wherever management is needed.
+Java テクノロジーの管理および Java テクノロジーによる管理を行う手段。JMX は管理用の Java プログラミング言語の公開された拡張版であり、管理が必要なすべての業界でデプロイすることができます。
 
 ## K
 {: #k }
 
-### key
+### 鍵 (key)
 {: #key }
-A cryptographic mathematical value that is used to digitally sign, verify, encrypt, or decrypt a message. See also private key, public key.
-One or more characters within an item of data that are used to uniquely identify a record and establish its order with respect to other records.
+メッセージに対しデジタル署名、検証、暗号化、または暗号化解除を行うために使用される、暗号化された数値。「秘密鍵 (private key)」、「公開鍵 (public key)」も参照。データ項目内の 1 つ以上の文字であり、一意的にレコードを特定し、その他のレコードに対しその順序を確立するために使用されます。
 
-### keychain
+### キーチェーン (keychain)
 {: #keychain }
-A password management system for Apple software. A keychain acts as a secure storage container for passwords that are used by multiple applications and services.
+Apple ソフトウェアのパスワード管理システム。キーチェーンは、複数のアプリケーションおよびサービスで使用されるパスワードのセキュア・ストレージ・コンテナーとして動作します。
 
-### key pair
+### 鍵ペア (key pair)
 {: #key-pair }
-In computer security, a public key and a private key. When the key pair is used for encryption, the sender uses the receiver's public key to encrypt the message, and the recipient uses their private key to decrypt the message. When the key pair is used for signing, the signer uses their private key to encrypt a representation of the message, and the recipient uses the sender's public key to decrypt the representation of the message for signature verification.
+コンピューター・セキュリティーにおいては公開鍵と秘密鍵のこと。
+暗号化に鍵ペアを使用する場合、送信側は受信側の公開鍵を使用してメッセージを暗号化し、
+受信側は秘密鍵を使用してそのメッセージの暗号化解除を行います。
+署名に鍵ペアを使用する場合、署名者は秘密鍵を使用してメッセージの表明を暗号化し、
+受信側は送信側の公開鍵を使用してそのメッセージの表明の暗号化解除を行い、署名を検証します。
 
 ## L
 {: #l }
 
-### library
+### ライブラリー (library)
 {: #library }
-A system object that serves as a directory to other objects. A library groups related objects, and allows users to find objects by name.
-A collection of model elements, including business items, processes, tasks, resources, and organizations.
+他のオブジェクトへのディレクトリーとして機能するシステム・オブジェクトです。ライブラリーは関連したオブジェクトをグループ化し、ユーザーは名前からオブジェクトを検索することができます。モデル・エレメントの集合。ビジネス・アイテム、プロセス、タスク、リソース、および組織を含みます。
 
-### load balancing
+### ロード・バランシング (load balancing)
 {: #load-balancing }
-A computer networking method for distributing workloads across multiple computers or a computer cluster, network links, central processing units, disk drives, or other resources. Successful load balancing optimizes resource use, maximizes throughput, minimizes response time, and avoids overload.
+複数のコンピューター、コンピューター・クラスター、ネットワーク・リンク、中央演算処理装置、ディスク・ドライブ、または他のリソースにワークロードを分散するための、コンピューター・ネットワーキング・メソッド。適切なロード・バランシングによりリソース使用の最適化、スループットの最大化、応答時間の最小化や、過負荷の回避が可能になります。
 
-### local store
+### ローカル・ストア (local store)
 {: #local-store }
-An area on a device where applications can locally store and retrieve data without the need for a network connection.
+アプリケーションがネットワーク接続する必要がなく、ローカルにデータを格納したり取得したりできる、デバイス上の領域。
 
 ## M
 {: #m }
 
 ### MBean / Managed Bean (MBean)
 {: #mbean--managed-bean-mbean}
-In the Java Management Extensions (JMX) specification, the Java objects that implement resources and their instrumentation.
+Java Management Extensions (JMX) 仕様において、リソースとそのインスツルメンテーションを実装する Java オブジェクト。
 
-### mobile
+### モバイル (mobile)
 {: #mobile }
-See [mobile device](#mobile-device).
+[モバイル・デバイス (mobile device)](#mobile-device) を参照してください。
 
-### mobile client
+### モバイル・クライアント (mobile client)
 {: #mobile-client }
-See [Application Center installer](#application-center-installer).
+[Application Center インストーラー (Application Center installer)](#application-center-installer) を参照してください。
 
-### mobile device
+### モバイル・デバイス (mobile device)
 {: #mobile-device }
-A telephone, tablet, or personal digital assistant that operates on a radio network. See also Android.
+無線ネットワーク上で作動する電話、タブレット、または携帯情報端末。「Android」も参照。
 
-### MobileFirst adapter
+### MobileFirst アダプター (MobileFirst adapter)
 {: #mobilfirst-adapter }
 <!-- START NON-TRANSLATABLE -->
 {% comment %}
 Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-See [adapter](#adapter)
+[アダプター (adapter)](#adapter) を参照。
 
-### MobileFirst Data Proxy
+### MobileFirst データ・プロキシー (MobileFirst Data Proxy)
 {: #mobilefirst-data-proxy }
 <!-- START NON-TRANSLATABLE -->
 {% comment %}
 Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-A server-side component to the IMFData SDK that can be used to secure mobile application calls to Cloudant  by using {{ site.data.keys.product }} OAuth security capabilities. The {{ site.data.keys.product_adj }} Data Proxy requires an authentication through the trust association interceptor.
+{{site.data.keys.product }} OAuth セキュリティー機能の使用により、Cloudant へのモバイル・アプリケーション呼び出しをセキュアに使用できる IMFData SDK に対するサーバー・サイド・コンポーネント。{{site.data.keys.product_adj }} データ・プロキシーにより、Trust Association Interceptor (TAI) を通じた認証を要求されます。
 
 ### MobileFirst Operations Console
 {: #mobilefirst-operations-console }
@@ -360,195 +369,201 @@ A server-side component to the IMFData SDK that can be used to secure mobile app
 Do not translate "MobileFirst Operations Console" in the term above (site.data.keys.mf_console keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-A web-based interface that is used to control and manage {{ site.data.keys.product_adj }} runtime environments that are deployed in {{ site.data.keys.mf_server }}, and to collect and analyze user statistics.
+{{site.data.keys.mf_server }} でデプロイされる {{site.data.keys.product_adj }} ランタイム環境を制御および管理し、ユーザー統計値を収集および分析するために使用される Web ベースのインターフェース。
 
-### MobileFirst runtime environment
+### MobileFirst ランタイム環境 (MobileFirst runtime environment)
 {: #mobilefirts-runtime-environment }
 <!-- START NON-TRANSLATABLE -->
 {% comment %}
 Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-A mobile-optimized server-side component that runs the server side of your mobile applications (back-end integration, version management, security, unified push notification). Each runtime environment is packaged as a web application (WAR file).
-
-### MobileFirst Server
+モバイル・アプリケーションのサーバー・サイドを実行する、モバイル用に最適化されたサーバー・サイドのコンポーネント (バックエンド統合、バージョン管理、セキュリティー、 統一プッシュ通知)。各ランタイム環境は、Web アプリケーション (WAR ファイル)としてパッケージされます。### MobileFirst Server
 {: #mobilefirst-server }
 <!-- START NON-TRANSLATABLE -->
 {% comment %}
 Do not translate "MobileFirst Server" in the term above (site.data.keys.mf_server keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-A {{ site.data.keys.product_adj }} component that handles security, back-end connections, push notifications, mobile application management, and analytics. The {{ site.data.keys.mf_server }} is a collection of apps that run on an application server and acts as a runtime container for {{ site.data.keys.product_adj }} runtime environments.
+{{site.data.keys.product_adj }} のコンポーネントの 1 つ。セキュリティー、バックエンド接続、プッシュ通知、モバイル・アプリケーション管理、および分析を処理します。{{site.data.keys.mf_server }} は、アプリケーション・サーバー上で稼動するアプリケーションの集合であり、{{site.data.keys.product_adj }} ランタイム環境用のランタイム・コンテナーとして動作します。
 
 ## N
 {: #n }
 
-### native app
+### ネイティブ app (native app)
 {: #native-app }
-An app that is compiled into binary code for use on the mobile operating system on the device.
+デバイス上のモバイル・オペレーティング・システムで使用するための、バイナリー・コードにコンパイルされた app。
 
-### node
+### ノード (node)
 {: #node }
-A logical group of managed servers.
+管理対象サーバーの論理グループ。
 
-### notification
+### 通知 (notification)
 {: #notification }
-An occurrence within a process that can trigger an action. Notifications can be used to model conditions of interest to be transmitted from a sender to a (typically unknown) set of interested parties (the receivers).
+アクションをトリガーできるプロセス内のオカレンス。通知は、送信側から、関心を示している (通常は不明の) 通話者のセット (受信側) に送信される、インタレスト条件のモデルを作成するために使用することができます。
 
 ## O
 {: #o }
 
 ### OAuth
 {: #oauth }
-An HTTP-based authorization protocol that gives applications scoped access to a protected resource on behalf of the resource owner, by creating an approval interaction between the resource owner, client, and resource server.
+リソース所有者、クライアント、およびリソース・サーバーの間で承認対話を作成することにより、アプリケーションに対しリソース所有者の代わりに保護リソースに限定的なアクセス権限を付与する HTTP ベースの許可プロトコル。
 
 ## P
 {: #p }
 
-### page navigation
+### ページ・ナビゲーション (page navigation)
 {: #page-navigation }
-A browser feature that enables users to navigate backwards and forwards in a browser.
+ユーザーがブラウザー内を行き来できるように指示するブラウザー機能。
 
-### PEM encoded
+### PEM エンコード化 (PEM encoded)
 {: #pem-encoded }
-Pertaining to a Base64 encoded certificate. See also Base64, DER encoded.
+Base64 エンコードされた証明書に関連すること。「Base64」、「DER エンコード化 (DER encoded)」も参照。
 
 ### PKI / Public Key Infrastructure (PKI)
 {: #pki--public-key-infrastructure-pki }
-A system of digital certificates, certification authorities, and other registration authorities that verify and authenticate the validity of each party involved in a network transaction.
+ネットワーク・トランザクションに関係している各通話者の妥当性を検証し認証する、デジタル証明書、認証局およびその他の登録局のシステム。
 
-### PKI bridge
+### PKI ブリッジ (PKI bridge)
 {: #pki-bridge }
-A {{ site.data.keys.mf_server }} concept that enables the User Certificate Authentication framework to communicate with a PKI.
+ユーザー証明書認証フレームワークを使用可能にして PKI による通信を行う、{{site.data.keys.mf_server }} の概念。
 
-### poll
+### ポール (poll)
 {: #poll }
-To repeatedly request data from a server.
+サーバーから繰り返しデータを要求すること。
 
-### private key
+### 秘密鍵 (private key)
 {: #private-key }
-In secure communication, an algorithmic pattern used to encrypt messages that only the corresponding public key can decrypt. The private key is also used to decrypt messages that were encrypted by the corresponding public key. The private key is kept on the user system and is protected by a password. See also key, public key.
+セキュア通信においては、メッセージの暗号化に使用されるアルゴリズム的パターン。暗号化されたメッセージは、対応する公開鍵のみが暗号化解除できる。秘密鍵はまた、対応する公開鍵が暗号化したメッセージの暗号化解除を行うためにも使用されます。秘密鍵はユーザーのシステム上で保持され、パスワードにより保護されます。「鍵 (key)」、「公開鍵 (public key)」も参照。
 
-### project
+### プロジェクト (project)
 {: #project }
-The development environment for various components, such as applications, adapters, configuration files, custom Java code, and libraries.
+アプリケーション、アダプター、構成ファイル、カスタム Java コード、およびライブラリーなどの様々なコンポーネントのための開発環境。
 
-### project WAR file
+### プロジェクト WAR ファイル (project WAR file)
 {: #project-war-file }
-A web archive (WAR) file that contains the configurations for the {{ site.data.keys.product_adj }} runtime environment and is deployed on an application server.
+{{site.data.keys.product_adj }} ランタイム環境の構成を含む Web アーカイブ (WAR) ファイル。アプリケーション・サーバーにデプロイされます。
 
-### provision
+### プロビジョン (provision)
 {: #provisin }
-To provide, deploy, and track a service, component, application, or resource.
+サービス、コンポーネント、アプリケーション、またはリソースを提供、デプロイ、および追跡すること。
 
-### proxy
+### プロキシー (proxy)
 {: #proxy }
-An application gateway from one network to another for a specific network application such as Telnet or FTP, for example, where a firewall proxy Telnet server performs authentication of the user and then lets the traffic flow through the proxy as if it were not there. Function is performed in the firewall and not in the client workstation, causing more load in the firewall.
+Telnet または FTP などの特定のネットワーク・アプリケーションのための、1 つのネットワークから別のネットワークへのアプリケーション・ゲートウェイ。例えば、ファイアウォール・プロキシー Telnet サーバーがユーザー認証を行い、そのプロキシーが存在しないかのようにプロキシーを介してトラフィック・フローを通します。関数はクライアント・ワークステーションではなくファイアウォール内で実行されるため、ファイアウォール内の負荷は高くなります。
 
-### public key
+### 公開鍵 (public key)
 {: #public-key }
-In secure communication, an algorithmic pattern used to decrypt messages that were encrypted by the corresponding private key. A public key is also used to encrypt messages that can be decrypted only by the corresponding private key. Users broadcast their public keys to everyone with whom they must exchange encrypted messages. See also key, private key.
+セキュア通信においては、対応する秘密鍵が暗号化したメッセージの暗号化解除に使用されるアルゴリズム的パターン。公開鍵はまた、対応する秘密鍵のみが暗号化解除できるメッセージを暗号化するためにも使用されます。ユーザーは、暗号化されたメッセージを交換する必要のあるすべての相手に公開鍵をブロードキャストします。「鍵 (key)」、「秘密鍵 (private key)」も参照。
 
-### push
+### プッシュ (push)
 {: #push }
-To send information from a server to a client. When a server pushes content, it is the server that initiates the transaction, not a request from the client.
+サーバーからクライアントに情報を送信すること。サーバーがコンテンツをプッシュする場合、トランザクションを開始するのはサーバーであり、クライアントからの要求によるものではありません。
 
-### push notification
+### プッシュ通知 (push notification)
 {: #push-notification }
-An alert indicating a change or update that appears on a mobile app icon.
+モバイル app アイコン上に表示される、変更または更新を示すアラート。
 
 ## R
 {: #r }
 
-### reverse proxy
+### リバース・プロキシー (reverse proxy)
 {: #reverse-proxy }
-An IP-forwarding topology where the proxy is on behalf of the back-end HTTP server. It is an application proxy for servers using HTTP.
+プロキシーがバックエンドの HTTP サーバーの代理をする、IP を送信するトポロジー。これは、HTTP を使用するサーバーのアプリケーション・プロキシーです。
 
-### root
+### ルート (root)
 {: #root }
-The directory that contains all other directories in a system.
+システム内の他のすべてのディレクトリーを含むディレクトリー。
 
 ## S
 {: #s}
 
-### salt
+### ソルト (salt)
 {: #salt }
-Randomly generated data that is inserted into a password or passphrase hash, making those passwords uncommon (and more difficult to hack).
+パスワードまたはパスフレーズ・ハッシュにランダムに挿入されるデータ。パスワードをわかりにくく、ハッキングできないようにします。
 
 ### SDK / Software Development Kit (SDK)
 {: #sdk--software-development-kit-sdk }
-A set of tools, APIs, and documentation to assist with the development of software in a specific computer language or for a particular operating environment.
+特定のコンピューター言語または特定のオペレーティング環境でのソフトウェアの開発を支援するツール、API、資料のセット。
 
-### security test
+
+### セキュリティー・テスト (security test)
 {: #security-test }
-An ordered set of authentication realms that is used to protect a resource such as an adapter procedure, an application, or a static URL.
+アダプター・プロシージャー、アプリケーション、または静的 URL などのリソースの保護に使用される認証レルムの順序付きセット。
 
-### server farm
+### サーバー・ファーム (server farm)
 {: #server-farm }
-A group of networked servers.
+ネットワーク・サーバーのグループ。
 
-### service
+### サービス (service)
 {: #service }
-A program that performs a primary function within a server or related software.
+サーバーまたは関連ソフトウェアの中で 1 次機能を実行するプログラム。
 
-### session
+### セッション (session)
 {: #sessions }
-A logical or virtual connection between two stations, software programs, or devices on a network that allows the two elements to communicate and exchange data for the duration of the session.
+ネットワーク上にある 2 つの端末、ソフトウェア・プログラム、またはデバイスがセッション中に通信してデータを交換できるようにする、これら 2 つのエレメント間の論理または仮想接続。
 
-### sign
+### 署名 (sign)
 {: #sign }
-To attach a unique electronic signature, derived from the sender's user ID, to a document or field when a document is mailed. Signing mail ensures that if an unauthorized user creates a new copy of a user's ID, the unauthorized user cannot forge signatures with it. In addition, the signature verifies that no one has tampered with the data while the message was in transit.
+文書をメールする際に、文書またはフィールドに送信側のユーザー ID から派生した固有の電子署名を添付すること。メールに署名すると、権限のないユーザーがユーザー ID のコピーを新規に作成しても、その不正ユーザーが署名を偽造することができなくなります。
+加えて、その署名により、メッセージの転送中にデータが改ざんされなかったことが証明されます。
 
-### simulator
+### シミュレーター (simulator)
 {: #simulator }
-An environment for staging code that is written for a different platform. Simulators are used to develop and test code in the same IDE, but then deploy that code to its specific platform. For example, one can develop code for an Android device on a computer, then test it using a simulator on that computer.
+異なるプラットフォーム用に書き込まれたステージング・コードの環境。シミュレーターは、同じ IDE 内でコードを開発およびテストするために使用されますが、そのコードは固有のプラットフォームにデプロイされます。例えば、コンピューター上で Android デバイス用のコードを開発し、
+その後、そのコードを当該コンピューター上でシミュレーターを使用してテストすることができます。
 
-### skin
+### スキン (skin)
 {: #skin }
-An element of a graphical user interface that can be changed to alter the appearance of the interface without affecting its functionality.
+インターフェースの外観を、その機能に影響を与えずに変更するための、
+変更可能なグラフィカル・ユーザー・インターフェースのエレメント。
 
-### slide
+### スライド (slide)
 {: #slide }
-To move a slider interface item horizontally on a touchscreen. Typically, apps use slide gestures to lock and unlock phones, or toggle options.
+タッチスクリーンでスライダー・インターフェース項目を水平に移動させること。
+通常、app ではスライド・ジェスチャーを使用して電話のロックおよびアンロック、またはオプションの切り替えを行います。
 
-### subelement
+### サブエレメント (subelement)
 {: #subelement }
-In UN/EDIFACT EDI standards, an EDI data element that is part of an EDI composite data element. For example, an EDI data element and its qualifier are subelements of an EDI composite data element.
+UN/EDIFACT EDI 標準においては、EDI 複合データ・エレメントの一部である EDI データ・エレメントのこと。例えば、EDI データ・エレメントとその修飾子は、EDI 複合データ・エレメントのサブエレメントです。
 
-### subscription
+### サブスクリプション (subscription)
 {: #subscription }
-A record that contains the information that a subscriber passes to a local broker or server to describe the publications that it wants to receive.
+サブスクライバーがローカルのブローカーまたはサーバーに渡す情報を格納するレコード。
+この情報には、サブスクライバーが受け取るべきパブリケーションが記述されます。
 
-### syntax
+### 構文 (syntax)
 {: #syntax }
-The rules for the construction of a command or statement.
+コマンドまたはステートメントを構成する際の規則。
 
-### system message
+### システム・メッセージ (system message)
 {: #system-message }
-An automated message on a mobile device that provides operational status or alerts, for example if connections are successful or not.
+モバイル・デバイス上の自動メッセージ。例えば、接続の成功または失敗など、操作状況またはアラートを送信します。
 
 ## T
 {: t}
 
-### tag-based notification
+### タグ・ベースの通知 (tag-based notification)
 {: #tag-based-notification }
-A notification that is targeted to devices that are subscribed for a specific tag. Tags are used to represent topics that are of interest to a user. See also broadcast notification.
+特定のタグにサブスクライブされたデバイスをターゲットとする通知。タグを使用してユーザーに役立つトピックを示します。「ブロードキャスト通知 (broadcast notification)」も参照。
 
 ### TAI / Trust Association Interceptor (TAI)
 {: #tai--trust-association-interceptor-tai }
-The mechanism by which trust is validated in the product environment for every request received by the proxy server. The method of validation is agreed upon by the proxy server and the interceptor.
+プロキシー・サーバーによって受け取られたすべての要求のプロダクト環境で、信頼が検証されるときのメカニズム。
+プロキシー・サーバーおよびインターセプターによって同意された妥当性検査のメソッド。
 
-### tap
+
+### タップ (tap)
 {: #tap }
-To briefly touch a touchscreen. Typically, apps use tap gestures to select items (similar to a left mouse button click).
+タッチスクリーンに軽く触れること。通常、app ではタップ・ジェスチャーを使用して項目を選択します (左マウス・ボタンのクリックと似ています)。
 
-### template
+### テンプレート (template)
 {: #template }
-A group of elements that share common properties. These properties can be defined only once, at the template level, and are inherited by all elements that use the template.
+共通のプロパティーを共有するエレメントのグループ。これらのプロパティーはテンプレート・レベルで 1 度だけ定義できます。そのテンプレートを使用するすべてのエレメントがそのプロパティーを継承します。
 
-### trigger
+### トリガー (trigger)
 {: #trigger }
-A mechanism that detects an occurrence, and can cause additional processing in response. Triggers can be activated when changes occur in the device context. See also device context.
+オカレンスを検出するメカニズム。応答として追加の処理を引き起こす場合があります。トリガーは、デバイス・コンテキストに変更が発生するとアクティブ化する場合があります。「デバイス・コンテキスト (device context)」も参照。
 
 ## U
 {: #u }
@@ -556,36 +571,38 @@ A mechanism that detects an occurrence, and can cause additional processing in r
 ## V
 {: #v }
 
-### view
+### ビュー (view)
 {: #view }
-A pane that is outside of the editor area that can be used to look at or work with the resources in the workbench.
+エディター領域の外部にあるペイン。ワークベンチのリソースを表示したり、処理したりするのに使用できます。
 
 ## W
 {: #w}
 
-### web app / application
+### Web アプリケーション (web app / application)
 {: #web-app--application }
-An application that is accessible by a web browser and that provides some function beyond static display of information, for instance by allowing the user to query a database. Common components of a web application include HTML pages, JSP pages, and servlets. See also [app](#A).
+Web ブラウザーによってアクセスが可能であり、情報の静的表示より高度な処理を要する機能 (ユーザーによるデータベース照会など) を提供するアプリケーション。一般的な Web アプリケーションのコンポーネントには、HTML ページ、JSP ページ、およびサーブレットがあります。[app](#A) も参照。
 
-### web application server
+### Web アプリケーション・サーバー (web application server)
 {: #web-application-server }
-The runtime environment for dynamic web applications. A Java EE web application server implements the services of the Java EE standard.
+動的な Web アプリケーションのためのランタイム環境。Java EE Web アプリケーション・サーバーは、Java EE 標準のサービスを実装しています。
 
-### web resource
+### Web リソース (web resource)
 {: #web-resource }
-Any one of the resources that are created during the development of a web application for example web projects, HTML pages, JavaServer Pages (JSP) files, servlets, custom tag libraries, and archive files.
+Web アプリケーションの開発中に作成されるリソースの任意の 1 つ。
+例えば、Web プロジェクト、HTML ページ、JavaServer Pages (JSP) ファイル、
+サーブレット、カスタム・タグ・ライブラリー、およびアーカイブ・ファイルがあります。
 
-### widget
+### ウィジェット (widget)
 {: #widget }
-A portable, reusable application or piece of dynamic content that can be placed into a web page, receive input, and communicate with an application or with another widget.
+移植可能かつ再使用可能なアプリケーションまたは動的コンテンツの 1 部。Web ページに配置し、入力を受け取り、アプリケーションや他のウィジェットと通信することができます。
 
-### wrapper
+### ラッパー (wrapper)
 {: #wrapper }
-A section of code that contains code that could otherwise not be interpreted by the compiler. The wrapper acts as an interface between the compiler and the wrapped code.
+コードのセクション。このセクションに実行可能なコードが含まれていないと、コンパイラーがインタープリットできません。ラッパーはコンパイラーとラップされたコードの間のインターフェースとして動作します。
 
 ## X
 {: #x }
 
 ### X.509 certificate
 {: #x509-certificate }
-A certificate that contains information that is defined by the X.509 standard.
+X.509 規格が定める情報が含まれた証明書。

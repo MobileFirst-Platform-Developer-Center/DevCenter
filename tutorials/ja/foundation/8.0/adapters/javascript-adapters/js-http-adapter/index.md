@@ -1,37 +1,37 @@
 ---
 layout: tutorial
-title: JavaScript HTTP Adapter
-breadcrumb_title: HTTP Adapter
+title: JavaScript HTTP アダプター
+breadcrumb_title: HTTP アダプター
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: アダプター Maven プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-By using HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
+HTTP アダプターを使用して、GET HTTP 要求または POST HTTP 要求を送信したり、応答ヘッダーおよび本文からデータを取得したりすることができます。HTTP アダプターは、RESTful および SOAP ベースのサービスで作動し、RSS フィードなどの構造化された HTTP ソースを読み取ることができます。
 
-You can easily customize HTTP adapters with simple server-side JavaScript code. For example, you could set up server-side filtering if necessary. The retrieved data can be in XML, HTML, JSON, or plain text format.
+簡潔なサーバー・サイド JavaScript コードを使用して、HTTP アダプターを簡単にカスタマイズできます。例えば、必要に応じて、サーバー・サイド・フィルタリングをセットアップできます。取得されるデータ形式は、XML、HTML、JSON、プレーン・テキストのいずれかです。
 
-The adapter is configured with XML to define the adapter properties and procedures.  
-Optionally, it is also possible to use XSL to filter received records and fields.
+アダプターは、アダプターのプロパティーとプロシージャーを定義するために XML で構成されます。   
+必要に応じて、受け取ったレコードとフィールドを XSL を使用してフィルタリングできます。
 
-**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
+**前提条件:** 最初に必ず、[JavaScript アダプター](../)チュートリアルをお読みください。
 
-## The XML File
+## XML ファイル
 {: #the-xml-file }
 
-The XML file contains settings and metadata.  
-To edit the adapter XML file, you must:
+XML ファイルには、設定およびメタデータが含まれています。  
+アダプター XML ファイルを編集するには、以下のようにしてください。 
 
-* Set the protocol to HTTP or HTTPS.  
-* Set the HTTP domain to the domain part of HTTP URL.  
-* Set the TCP Port.  
+* プロトコルを HTTP または HTTPS に設定します。   
+* HTTP ドメインを HTTP URL のドメイン部分に設定します。  
+* TCP ポートを設定します。  
 
-Declare the required procedures below the `connectivity` element:
+`connectivity` エレメントの下で必要なプロシージャーを宣言します。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -62,40 +62,40 @@ Declare the required procedures below the `connectivity` element:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for <code>connectionPolicy</code> attributes and subelements</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>ここをクリックして <code>connectionPolicy</code> 属性とサブエレメントを表示</b></a>
             </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>xsi:type</b>: <i>Mandatory.</i> The value of this attribute must be http:HTTPConnectionPolicyType.</li>
-                    <li><b>cookiePolicy</b>: <i>Optional.</i> This attribute sets how the HTTP adapter handles cookies that arrive from the back-end application. The following values are valid.
+                    <li><b>xsi:type</b>: <i>必須。</i> この属性の値は http:HTTPConnectionPolicyType でなければなりません。</li>
+                    <li><b>cookiePolicy</b>: <i>オプション。</i> この属性は、バックエンド・アプリケーションから到達した Cookie を HTTP アダプターが処理する方法を設定します。 以下の値が有効です。
                         <ul>
-                            <li>BEST_MATCH: default value</li>
+                            <li>BEST_MATCH: デフォルト値</li>
                             <li>BROWSER_COMPATIBILITY</li>
                             <li>RFC_2109</li>
                             <li>RFC_2965</li>
                             <li>NETSCAPE</li>
                             <li>IGNORE_COOKIES</li>
                         </ul>
-                        For more information about these values, see the Apache <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP components</a> page.
+                        これらの値について詳しくは、Apache の <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP components</a> ページを参照してください。
                     </li>
-                    <li><b>maxRedirects</b>: <i>Optional.</i> The maximum number of redirects that the HTTP adapter can follow. This attribute is useful when the back-end application sends circular redirects as a result of some error, such as authentication failures. If this attribute is set to 0, the adapter does not attempt to follow redirects at all, and the HTTP 302 response is returned to the user. The default value is 10.</li>
-                    <li><b>protocol</b>: <i>Optional.</i> The URL protocol to use. The following values are valid: <b>http</b> (default), <b>https</b>.</li>
-                    <li><b>domain</b>: <i>Mandatory.</i> The host address.</li>
-                    <li><b>port</b>: <i>Optional.</i> The port address. If no port is specified the default HTTP/S port is used (80/443)</li>
-                    <li><b>sslCertificateAlias</b>: Optional for regular HTTP authentication and simple SSL authentication. Mandatory for mutual SSL authentication. The alias of the adapter private SSL key, which is used by the HTTP adapter key manager to access the correct SSL certificate in the keystore. For more information about the keystore setup process, see <a href="using-ssl">Using SSL in HTTP adapters</a> tutorial.</li>
-                    <li><b>sslCertificatePassword</b>: Optional for regular HTTP authentication and simple SSL authentication. Mandatory for mutual SSL authentication. The password of the adapter private SSL key, which is used by the HTTP adapter key manager to access the correct SSL certificate in the keystore. For more information about the keystore setup process, see <a href="using-ssl">Using SSL in HTTP adapters</a> tutorial.</li>
-                    <li><b>authentication</b>: <i>Optional.</i> Authentication configuration of the HTTP adapter. The HTTP adapter can use one of two authentication protocols. Define the <b>authentication</b>< element, as follows:
+                    <li><b>maxRedirects</b>: <i>オプション。</i> HTTP アダプターが従うことのできるリダイレクトの最大数。 この属性は、バックエンド・アプリケーションが、認証障害などの何らかのエラーの結果として循環リダイレクトを送信する場合に役立ちます。 この属性を 0 に設定すると、アダプターはリダイレクトに全く従おうとせず、HTTP 302 応答がユーザーに返されます。デフォルト値は 10 です。</li>
+                    <li><b>protocol</b>: <i>オプション。</i> 使用する URL プロトコル。次の値が有効です。<b>http</b> (デフォルト)、<b>https</b>。</li>
+                    <li><b>domain</b>: <i>必須。</i> ホスト・アドレス。</li>
+                    <li><b>port</b>: <i>オプション。</i> ポート・アドレス。ポートを指定しない場合、デフォルトの HTTP/S ポートが使用されます (80/443)</li>
+                    <li><b>sslCertificateAlias</b>: 通常の HTTP 認証および SSL 単純認証の場合はオプションです。SSL 相互認証の場合は必須です。アダプターの SSL 秘密鍵の別名。鍵ストア内の正しい SSL 証明書にアクセスするために HTTP アダプター鍵マネージャーによって使用されます。 鍵ストアのセットアップ・プロセスについて詳しくは、<a href="using-ssl">HTTP アダプターでの SSL の使用</a>チュートリアルを参照してください。</li>
+                    <li><b>sslCertificatePassword</b>: 通常の HTTP 認証および SSL 単純認証の場合はオプションです。SSL 相互認証の場合は必須です。アダプターの SSL 秘密鍵のパスワード。鍵ストア内の正しい SSL 証明書にアクセスするために HTTP アダプター鍵マネージャーによって使用されます。 鍵ストアのセットアップ・プロセスについて詳しくは、<a href="using-ssl">HTTP アダプターでの SSL の使用</a>チュートリアルを参照してください。</li>
+                    <li><b>authentication</b>: <i>オプション。</i> HTTP アダプターの認証構成。HTTP アダプターは、2 つの認証プロトコルのいずれかを使用することができます。以下のように、<b>authentication</b>< エレメントを定義します。
                         <ul>
-                            <li>Basic authentication
+                            <li>基本認証
 {% highlight xml %}
 <authentication>
     <basic/>
 </authentication>
 {% endhighlight %}</li>
-                            <li>Digest authentication
+                            <li>ダイジェスト認証
 {% highlight xml %}
 <authentication>
     <digest/>
@@ -103,7 +103,7 @@ Declare the required procedures below the `connectivity` element:
 {% endhighlight %}</li>
 
 
-                            The connection policy can contain a <code>serverIdentity</code> element. This feature applies to all authentication schemes. For example:
+                            接続ポリシーには、<code>serverIdentity</code> エレメントを含めることができます。このフィーチャーはすべての認証スキームに適用されます。例:
 {% highlight xml %}
 <authentication>
     <basic/>
@@ -115,7 +115,7 @@ Declare the required procedures below the `connectivity` element:
 {% endhighlight %}
                         </ul>
                     </li>
-                    <li><b>proxy</b>: <i>Optional.</i> The proxy element specifies the details of the proxy server to use when accessing the back-end application. The proxy details must include the protocol domain and port. If the proxy requires authentication, add a nested <code>authentication</code> element inside <code>proxy</code>. This element has the same structure as the one used to describe the authentication protocol of the adapter. The following example shows a proxy that requires basic authentication and uses a server identity.
+                    <li><b>proxy</b>: <i>オプション。</i> proxy エレメントでは、バックエンド・アプリケーションへのアクセス時に使用するプロキシー・サーバーの詳細を指定します。プロキシー詳細には、プロトコルのドメインおよびポートが含まれている必要があります。プロキシーが認証を必要とする場合は、<code>proxy</code> 内に、ネストされた <code>authentication</code> エレメントを追加します。このエレメントの構造は、アダプターの認証プロトコルを記述するために使用されるものと同じです。以下の例は、基本認証を必要とし、サーバー ID を使用するプロキシーを示しています。
                     
 {% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
@@ -135,49 +135,49 @@ Declare the required procedures below the `connectivity` element:
   </proxy>
 </connectionPolicy>
 {% endhighlight %}</li>
-                    <li><b>maxConcurrentConnectionsPerNode</b>: <i>Optional.</i> Defines the maximum number of concurrent connections, which the {{ site.data.keys.mf_server }} can open to the back end. {{ site.data.keys.product }} does not limit the incoming service requests from applications. This limits only the number of concurrent HTTP connections to the back-end service.
+                    <li><b>maxConcurrentConnectionsPerNode</b>: <i>オプション。</i> {{site.data.keys.mf_server }} がバックエンドに対して開くことができる同時接続の最大数を定義します。 {{site.data.keys.product }} は、アプリケーションからの着信サービス要求を制限しません。これは、バックエンド・サービスへの同時 HTTP 接続の数のみを制限します。
                     <br/><br/>
-                    The default number of concurrent HTTP connections is 50. You can modify this number based on the expected concurrent requests to the adapter and the maximum requests allowed on the back-end service. You can also configure the back-end service to limit the number of concurrent incoming requests.
+                    同時 HTTP 接続のデフォルト数は 50 個です。この数は、予期されるアダプターへの同時要求数と、バックエンド・サービスで許可される最大要求数に基づいて変更できます。また、同時着信要求の数を制限するようにバックエンド・サービスを構成することもできます。
                     <br/><br/>
-                    Consider a two-node system, where the expected load on the system is 100 concurrent requests and the back-end service can support up to 80 concurrent requests. You can set maxConcurrentConnectionsPerNode to 40. This setting ensures that no more than 80 concurrent requests are made to the back-end service.
+                    システムで予期されている負荷が 100 個の同時要求で、バックエンド・サービスが最大 80 個の同時要求をサポートできる、2 ノード・システムについて検討します。maxConcurrentConnectionsPerNode を 40 に設定できます。この設定により、バックエンド・サービスに対して行われる同時要求は確実に 80 個以下になります。
                     <br/><br/>
-                    If you increase the value, the back-end application needs more memory. To avoid memory issues, do not to set this value too high. Instead, estimate the average and peak number of transactions per second, and evaluate their average duration. Then, calculate the number of required concurrent connections as indicated in this example, and add a 5-10% margin. Then, monitor your back end, and adjust this value as required, to ensure that your back-end application can process all incoming requests.
+                    値を増やした場合、バックエンド・アプリケーションでさらに多くのメモリーが必要となります。メモリーの問題を回避するために、この値は過度に高く設定しないでください。代わりに、1 秒当たりのトランザクションの平均数とピーク数を見積もって、トランザクションの平均所要時間を評価してください。次に、この例に示されるように必要な同時接続の数を計算し、5 から 10 % のマージンを加えます。次に、バックエンドをモニターし、必要に応じてこの値を調整して、バックエンド・アプリケーションがすべての着信要求を確実に処理できるようにします。
                     <br/><br/>
-                    When you deploy adapters to a cluster, set the value of this attribute to the maximum required load divided by the number of cluster members.
+                    アダプターをクラスターにデプロイする場合は、この属性の値を、必要な最大負荷をクラスター・メンバーの数で除算した値に設定します。
                     <br/><br/>
-                    For more information about how to size your back-end application, see the <a href="{{site.baseurl}}/learn-more">Scalability and Hardware Sizing document</a> and its accompanying hardware calculator spreadsheet</li>
-                    <li><b>connectionTimeoutInMilliseconds</b>: <i>Optional.</i> The timeout in milliseconds until a connection to the back-end can be established. Setting this timeout does not ensure that a timeout exception occurs after a specific time elapses after the invocation of the HTTP request. If you pass a different value for this parameter in the <code>invokeHTTP()</code> function, you can override the value that is defined here.</li>
-                    <li><b>socketTimeoutInMilliseconds</b>: <i>Optional.</i> The timeout in milliseconds between two consecutive packets, starting from the connection packet. Setting this timeout does not ensure that a timeout exception occurs after a specific time elapses after the invocation of the HTTP request. If you pass a different value for the <code>socketTimeoutInMilliseconds</code> parameter in the <code>invokeHttp()</code> function, you can override the value that is defined here.</li>
+                    バックエンド・アプリケーションのサイズ変更方法について詳しくは、<a href="{{site.baseurl}}/learn-more">「Scalability and Hardware Sizing」の文書</a>とそれに付随するハードウェア計算用スプレッドシートを参照してください。</li>
+                    <li><b>connectionTimeoutInMilliseconds</b>: <i>オプション。</i> バックエンドへの接続を確立できるまでのタイムアウト (ミリ秒)。このタイムアウトを設定しても、HTTP 要求を呼び出してから一定時間が経過した後にタイムアウト例外が発生することは保証されません。<code>invokeHTTP()</code> 関数でこのパラメーターに異なる値を渡した場合、ここで定義された値をオーバーライドできます。</li>
+                    <li><b>socketTimeoutInMilliseconds</b>: <i>オプション。</i> 接続パケットから開始して、連続する 2 つのパケット間のタイムアウト (ミリ秒)。このタイムアウトを設定しても、HTTP 要求を呼び出してから一定時間が経過した後にタイムアウト例外が発生することは保証されません。<code>invokeHttp()</code> 関数で <code>socketTimeoutInMilliseconds</code> パラメーターに異なる値を渡した場合、ここで定義された値をオーバーライドできます。</li>
                 </ul>
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
 </div>
 
 
-## JavaScript implementation
+## JavaScript 実装
 {: #javascript-implementation }
 
-A service URL is used for procedure invocations. Some parts of the URL are constant; for example, http://example.com/.  
-Other parts of the URL can be parameterized; that is, substituted at run time by parameter values that are provided to the procedure.
+プロシージャーの呼び出しには、サービス URL を使用します。URL の一部は、例えば http://example.com/ のように、固定のものになります。  
+URL の他の部分はパラメーター化できます。つまり、実行時に、 プロシージャーに提供されるパラメーター値に置換されます。
 
-The following URL parts can be parameterized.
+以下の URL 部分はパラメーター化が可能です。
 
-* Path elements
-* Query string parameters
-* Fragments
+* パス・エレメント
+* 照会ストリング・パラメーター
+* フラグメント
 
-To call an HTTP request, use the `MFP.Server.invokeHttp` method.  
-Provide an input parameter object, which must specify:
+HTTP 要求を呼び出すには、`MFP.Server.invokeHttp` メソッドを使用します。  
+入力パラメーター・オブジェクトを提供します。以下を指定する必要があります。
 
-* The HTTP method: `GET`,`POST`, `PUT`, `DELETE`
-* The returned content type: `XML`, `JSON`, `HTML`, or `plain`
-* The service `path`
-* The query parameters (optional)
-* The request body (optional)
-* The transformation type (optional)
+* HTTP メソッド: `GET`、`POST`、`PUT`、`DELETE`
+* 返されるコンテンツのタイプ: `XML`、`JSON`、`HTML`、または `plain`
+* サービス `path`
+* 照会パラメーター (オプション)
+* 要求本体 (オプション)
+* 変換タイプ (オプション)
 
 ```js
 function getFeed() {
@@ -192,15 +192,16 @@ function getFeed() {
 }
 ```
 
-> See the API Reference for "MFP.Server.invokeHttp" in the user documentation for a complete list of options.
+> オプションの完全なリストについては、ユーザー文書で「MFP.Server.invokeHttp」に関する API 解説書を参照してください。
 
-## XSL transformation filtering
+
+## XSL Transformation フィルター
 {: #xsl-transformation-filtering }
 
-You can also apply XSL transformation to the received data, for example to filter the data.  
-To apply XSL transformation, create a **filtered.xsl** file next to the JavaScript implementation file.
+受け取ったデータに XSL Transformation を適用して、例えば、データをフィルターに掛けることもできます。  
+XSL Transformation を適用するには、JavaScript 実装ファイルの次に **filtered.xsl** ファイルを作成します。
 
-You can then specify the transformation options in the input parameters of the procedure invocation. For example:
+その後、変換オプションをプロシージャー呼び出しの入力パラメーターで指定することができます。以下に例を示します。 
 
 ```js
 function getFeedFiltered() {
@@ -219,11 +220,11 @@ function getFeedFiltered() {
 }
 ```
 
-## Creating a SOAP-based service request
+## SOAP ベースのサービス要求の作成 
 {: #creating-a-soap-based-service-request }
 
-You can use the `MFP.Server.invokeHttp` API method to create a **SOAP** envelope.  
-Note: To call a SOAP-based service in a JavaScript HTTP adapter, you can encode the SOAP XML envelope within the request body using **E4X**.
+`MFP.Server.invokeHttp` API メソッドを使用して、**SOAP** エンベロープを作成できます。  
+注: JavaScript HTTP アダプターで SOAP ベースのサービスを呼び出す場合は、**E4X** を使用して、要求本体内に SOAP XML エンベロープをエンコードすることができます。
 
 ```js
 var request =
@@ -239,13 +240,13 @@ var request =
 		</soap:Envelope>;
 ```
 
-The `MFP.Server.invokeHttp(options)` method is then used to call a request for a SOAP service.  
-The Options object must include the following properties:
+次に、`MFP.Server.invokeHttp(options)` メソッドを使用して SOAP サービス要求を呼び出します。  
+options オブジェクトには以下のプロパティーを含める必要があります。 
 
-* A `method` property: usually `POST`
-* A `returnedContentType` property: usually `XML`
-* A `path` property: a service path
-* A `body` property: `content` (SOAP XML as a string) and `contentType`
+* `method` プロパティー: 通常は `POST`
+* `returnedContentType` プロパティー: 通常は `XML`
+* `path` プロパティー: サービス・パス
+* `body` プロパティー: `content` (ストリングとしての SOAP XML) および `contentType`
 
 ```js
 var input = {
@@ -258,13 +259,12 @@ var input = {
 	}
 };
 
-var result = MFP.Server.invokeHttp(input);
-```
+var result = MFP.Server.invokeHttp(input);```
 
-## Invoking results of SOAP-based service
+## SOAP ベースのサービスの結果の呼び出し
 {: #invoking-results-of-soap-based-service }
 
-The result is wrapped into a `JSON` object:
+結果は `JSON` オブジェクトにラップされます。
 
 ```json
 {
@@ -300,12 +300,12 @@ The result is wrapped into a `JSON` object:
 }
 ```
 
-Note the `Envelope` property, which is specific of SOAP-based requests.  
-The `Envelope` property contains the result content of the SOAP-based request.
+SOAP ベースの要求に固有の `Envelope` プロパティーに注意してください。  
+`Envelope` プロパティーには、SOAP ベースの要求の結果コンテンツが含まれています。
 
-To access the XML content:
+XML コンテンツにアクセスするには、次のようにします。
 
-* On client-side, jQuery can be used to wrap the result string, and follow the DOM nodes:
+* クライアント・サイドでは、jQuery を使用して結果ストリングをラップし、DOM ノードに従うことができます。
 
 ```javascript
 var resourceRequest = new WLResourceRequest(
@@ -330,7 +330,7 @@ resourceRequest.send().then(
     }
 )
 ```
-* On server-side, create an XML object with the result string. The nodes can then be accessed as properties:
+* サーバー・サイドでは、結果ストリングを持つ XML オブジェクトを作成します。その後、ノードにプロパティーとしてアクセスすることができます。
 
 ```javascript
 var xmlDoc = new XML(result.Envelope.Body.GetWeatherResponse.GetWeatherResult);
@@ -342,13 +342,13 @@ var weatherInfo = {
 };
 ```
 
-## Sample adapter
+## サンプル・アダプター
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80/) the Adapters Maven project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80/) してアダプター Maven プロジェクトをダウンロードします。
 
-### Sample usage
+### 使用例
 {: #sample-usage }
 
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* Maven、{{site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaScriptHTTP アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
+* アダプターをテストまたはデバッグするには、[アダプターのテストおよびデバッグ](../../testing-and-debugging-adapters)チュートリアルを参照してください。

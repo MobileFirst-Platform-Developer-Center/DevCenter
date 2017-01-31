@@ -1,24 +1,24 @@
 ---
 layout: tutorial
-title: Java HTTP Adapter
-breadcrumb_title: HTTP Adapter
+title: Java HTTP アダプター
+breadcrumb_title: HTTP アダプター
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: アダプター Maven プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-Java adapters provide free reign over connectivity to a backend system. It is therefore the developer's responsibility to ensure best practices regarding performance and other implementation details. This tutorial covers an example of a Java adapter that connects to an RSS feed by using a Java `HttpClient`.
+Java アダプターでは、バックエンド・システムへの接続を自由に制御できます。したがって、開発者の責任で、パフォーマンスおよびその他の実装の詳細についてのベスト・プラクティスを実現する必要があります。このチュートリアルでは、Java `HttpClient` を使用して RSS フィードに接続する Java アダプターの例を取り上げます。
 
-**Prerequisite:** Make sure to read the [Java Adapters](../) tutorial first.
+**前提条件:** 最初に必ず、[Java アダプター](../)チュートリアルをお読みください。
 
-## Initializing the adapter
+## アダプターの初期化
 {: #initializing-the-adapter }
 
-In the supplied sample adapter, the `JavaHTTPApplication` class is used to extend `MFPJAXRSApplication` and is a good place to trigger any initialization required by your application.
+提供されているサンプル・アダプターでは、`JavaHTTPApplication` クラスは `MFPJAXRSApplication` を拡張するために使用されていて、アプリケーションで必要な初期化をトリガーする場合に適しています。
 
 ```java
 @Override
@@ -28,11 +28,11 @@ protected void init() throws Exception {
 }
 ```
 
-## Implementing the adapter Resource class
+## アダプター・リソース・クラスの実装
 {: #implementing-the-adapter-resource-class }
 
-The adapter Resource class is where requests to the server are handled.  
-In the supplied sample adapter, the class name is `JavaHTTPResource`.
+アダプター・リソース・クラスは、サーバーに対する要求を処理する場所です。  
+提供されているサンプル・アダプターでは、クラス名は `JavaHTTPResource` です。
 
 ```java
 @Path("/")
@@ -41,9 +41,9 @@ public class JavaHTTPResource {
 }
 ```
 
-`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
+`@Path("/")` は、URL `http(s)://host:port/ProjectName/adapters/AdapterName/` でリソースが使用可能であることを意味します。
 
-### HTTP Client
+### HTTP クライアント
 {: #http-client }
 
 ```java
@@ -56,9 +56,9 @@ public static void init() {
 }
 ```
 
-Because every request to your resource will create a new instance of `JavaHTTPResource`, it is important to reuse objects that may impact performance. In this example we made the Http client a `static` object and initialized it in a static `init()` method, which gets called by the `init()` of `JavaHTTPApplication` as described above.
+リソースに対する要求を出すたびに `JavaHTTPResource` の新規インスタンスが作成されるため、パフォーマンスに影響する可能性があるオブジェクトを再利用することが重要です。この例では、HTTP クライアントを `static` オブジェクトにし、それを静的 `init()` メソッドで初期化します。このメソッドは、前述のように、`JavaHTTPApplication` の `init()` によって呼び出されます。
 
-### Procedure resource
+### プロシージャー・リソース
 {: #procedure-resource }
 
 ```java
@@ -76,16 +76,16 @@ public void get(@Context HttpServletResponse response, @QueryParam("tag") String
 }
 ```
 
-The sample adapter exposes just one resource URL which allows to retrieve the RSS feed from the backend service.
+このサンプル・アダプターは、バックエンド・サービスから RSS フィードを取得できるリソース URL を 1 つだけ公開します。
 
-* `@GET` means that this procedure only responds to `HTTP GET` requests.
-* `@Produces("application/json")` specifies the Content Type of the response to send back. We chose to send the response as a `JSON` object to make it easier on the client-side.
-* `@Context HttpServletResponse response` will be used to write to the response output stream. This enables us more granularity than returning a simple string.
-* `@QueryParam("tag")` String tag enables the procedure to receive a parameter. The choice of `QueryParam` means the parameter is to be passed in the query (`/JavaHTTP/?tag=MobileFirst_Platform`). Other options include `@PathParam`, `@HeaderParam`, `@CookieParam`, `@FormParam`, etc.
-* `throws IOException, ...` means we are forwarding any exception back to the client. The client code is responsible for handling potential exceptions which will be received as `HTTP 500` errors. Another solution (more likely in production code) is to handle exceptions in your server Java code and decide what to send to the client based on the exact error.
-* `execute(new HttpGet("/feed.xml"), response)`. The actual HTTP request to the backend service is handled by another method defined later.
+* `@GET` は、このプロシージャーが `HTTP GET` 要求のみに応答することを示します。
+* `@Produces("application/json")` は、送り返す応答のコンテンツ・タイプを指定します。クライアント・サイドで処理しやすいように、応答を `JSON` オブジェクトとして送信することにします。
+* `@Context HttpServletResponse response` を使用して、応答出力ストリームに書き込みます。これにより、単純なストリングを返す場合より細分性を高めることができます。
+* `@QueryParam("tag")` ストリング・タグにより、プロシージャーがパラメーターを受け取ることができます。`QueryParam` を選択することは、照会 (`/JavaHTTP/?tag=MobileFirst_Platform`) でパラメーターを渡すことを意味します。その他のオプションとしては、`@PathParam`、 `@HeaderParam`、`@CookieParam`、`@FormParam` などがあります。
+* `throws IOException, ...` は、例外をすべてクライアントに転送することを表します。`HTTP 500` エラーとして受信される潜在的な例外をクライアント・コードで処理する必要があります。別の解決策として (多くの場合は実動コードで使用されますが)、サーバーの Java コードで例外を処理し、クライアントに何を送信するかを具体的なエラーに基づいて決定するという方法があります。
+* `execute(new HttpGet("/feed.xml"), response)`。 バックエンド・サービスに対する実際の HTTP 要求は、後で定義される別のメソッドで処理されます。
 
-Depending if you pass a `tag` parameter, `execute` will retrieve a different build a different path and retrieve a different RSS file.
+`tag` パラメーターを渡すかどうかによって、`execute` がビルドするパス、および取得する RSS ファイルが異なります。
 
 ### execute()
 {: #execute }
@@ -111,25 +111,25 @@ public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
 }
 ```
 
-* `HttpResponse RSSResponse = client.execute(host, req)`. We use our static HTTP client to execute the HTTP request and store the response.
-* `ServletOutputStream os = resultResponse.getOutputStream()`. This is the output stream to write a response to the client.
-* `resultResponse.addHeader("Content-Type", "application/json")`. As mentioned before, we chose to send the response as JSON.
-* `String json = XML.toJson(RSSResponse.getEntity().getContent())`. We used `org.apache.wink.json4j.utils.XML` to convert the XML RSS to a JSON string.
-* `os.write(json.getBytes(Charset.forName("UTF-8")))` the resulting JSON string is written to the output stream.
+* `HttpResponse RSSResponse = client.execute(host, req)`。統計 HTTP クライアントを使用して HTTP 要求を実行し、応答を保管します。
+* `ServletOutputStream os = resultResponse.getOutputStream()`。応答をクライアントに書き込む出力ストリームです。
+* `resultResponse.addHeader("Content-Type", "application/json")`。前に述べたように、応答を JSON として送信することを選択します。
+* `String json = XML.toJson(RSSResponse.getEntity().getContent())`。`org.apache.wink.json4j.utils.XML` を使用して、XML RSS を JSON ストリングに変換します。
+* `os.write(json.getBytes(Charset.forName("UTF-8")))` で、結果の JSON ストリングを出力ストリームに書き込みます。
 
-The output stream is then `flush`ed and `close`d.
+その後、出力ストリームが`フラッシュ`されて`閉じられます`。
 
-If `RSSResponse` is not `200 OK`, we write the status code and reason in the response instead.
+`RSSResponse` が `200 OK` でない場合、代わりに状況コードと理由を応答に書き込みます。
 
-## Sample adapter
+## サンプル・アダプター
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) してアダプター Maven プロジェクトをダウンロードします。
 
-The Adapters Maven project includes the **JavaHTTP** adapter described above.
+アダプター Maven プロジェクトには、前に説明した **JavaHTTP** アダプターが含まれています。
 
-### Sample usage
+### 使用例
 {: #sample-usage }
 
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaHTTP adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* Maven、{{site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaHTTP アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
+* アダプターをテストまたはデバッグするには、[アダプターのテストおよびデバッグ](../../testing-and-debugging-adapters)チュートリアルを参照してください。

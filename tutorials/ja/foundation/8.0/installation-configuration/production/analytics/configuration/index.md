@@ -1,250 +1,312 @@
 ---
 layout: tutorial
-title: MobileFirst Analytics Server Configuration Guide
-breadcrumb_title: Configuration Guide
+title: MobileFirst Analytics Server 構成ガイド
+breadcrumb_title: 構成ガイド
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Some configuration for the {{ site.data.keys.mf_analytics_server }} is required. Some of the configuration parameters apply to a single node, and some apply to the whole cluster, as indicated.
+{{site.data.keys.mf_analytics_server }} 用のいくつかの構成が必要です。示されているように、単一のノードに適用される構成パラメーターもあれば、クラスター全体に適用される構成パラメーターもあります。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Configuration properties](#configuration-properties)
-* [Backing up Analytics data](#backing-up-analytics-data)
-* [Cluster management and Elasticsearch](#cluster-management-and-elasticsearch)
+* [構成プロパティー](#configuration-properties)
+* [Analytics データのバックアップ](#backing-up-analytics-data)
+* [クラスター管理と Elasticsearch](#cluster-management-and-elasticsearch)
 
-### Properties
+### プロパティー
 {: #properties }
-For a complete list of configuration properties and how to set them in your application server, see [Configuration properties](#configuration-properties).
+構成プロパティーの完全リスト、およびアプリケーション・サーバーでの設定方法については、[構成プロパティー](#configuration-properties)を参照してください。
 
-* The **discovery.zen.minimum\_master\_nodes** property must be set to **ceil((number of master-eligible nodes in the cluster / 2) + 1)** to avoid split-brain syndrome.
-    * Elasticsearch nodes in a cluster that are master-eligible must establish a quorum to decide which master-eligible node is the master.
-    * If you add a master eligible node to the cluster, the number of master-eligible nodes changes, and thus the setting must change. You must modify the setting if you introduce new master-eligible nodes to the cluster. For more information about how to manage your cluster, see [Cluster management and Elasticsearch](#cluster-management-and-elasticsearch).
-* Give your cluster a name by setting the **clustername** property in all of your nodes.
-    * Name the cluster to prevent a developer's instance of Elasticsearch from accidentally joining a cluster that is using a default name.
-* Give each node a name by setting the **nodename** property in each node.
-    * By default, Elasticsearch names each node after a random Marvel character, and the node name is different on every node restart.
-* Explicitly declare the file system path to the data directory by setting the **datapath** property in each node.
-* Explicitly declare the dedicated master nodes by setting the **masternodes** property in each node.
+* スプリット・ブレーン・シンドロームを回避するために、**discovery.zen.minimum\_master\_nodes** プロパティーは、**ceil((クラスター内のマスター適格ノードの数 / 2) + 1)** に設定する必要があります。
+    * master-eligible である、クラスター内の Elasticsearch ノードは、どの master-eligible ノードがマスターかを判別するためにクォーラムを確立する必要があります。
+    * master eligible ノードをクラスターに追加すると master-eligible ノード数が変わるため、設定も変更する必要があります。新しい master-eligible ノードをクラスターに導入する場合、設定を変更する必要があります。クラスターの管理方法について詳しくは、[クラスター管理と Elasticsearch](#cluster-management-and-elasticsearch) を参照してください。
+* すべてのノードで **clustername** プロパティーを設定して、クラスターに名前を付けます。
+    * Elasticsearch の開発者のインスタンスが、デフォルト名を使用しているクラスターに偶然加わってしまわないように、クラスターに名前を付けます。
+* 各ノードで **nodename** プロパティーを設定して、各ノードに名前を付けます。
+    * デフォルトで Elasticsearch は、ランダムな Marvel キャラクターの名前をとって各ノードを命名し、ノード再始動ごとにノード名が異なります。
+* 各ノードで **datapath** プロパティーを設定することにより、データ・ディレクトリーへのファイル・システム・パスを明示的に宣言します。
+* 各ノードで **masternodes** プロパティーを設定することにより、専用のマスター・ノードを明示的に宣言します。
 
-### Cluster Recovery Settings
+### クラスターのリカバリー設定
 {: #cluster-recovery-settings }
-After you scaled out to a multi-node cluster, you might find that an occasional full cluster restart is necessary. When a full cluster restart is required, you must consider the recovery settings. If the cluster has 10 nodes, and as the cluster is brought up, one node at a time, the master node assumes that it needs to start balancing data immediately upon the arrival of each node into the cluster. If the master is allowed to behave this way, much unnecessary rebalancing is required. You must configure the cluster settings to wait for a minimum number of nodes to join the cluster before the master is allowed to start instructing the nodes to rebalance. It can reduce cluster restarts from hours down to minutes.
+マルチノード・クラスターにスケールアウトした後、フル・クラスター再始動が時々必要になる場合があります。フル・クラスター再始動が必要な場合は、リカバリー設定を検討する必要があります。クラスターに 10 台のノードがあり、1 度に 1 ノードずつクラスターが起動されていくときに、マスター・ノードは、各ノードがクラスターに加わるとすぐに、データのバランシングを開始する必要があると見なします。マスターのこのような動作が許可されると、多くの不要なリバランシングが必要になります。最小数のノードがクラスターに加わるまで待機してから、マスターがノードへのリバランシング命令の開始を許可されるように、クラスター設定を構成する必要があります。それにより、クラスターの再始動を、数時間から数分へと削減することができます。
 
-* The **gateway.recover\_after\_nodes** property must be set to your preference to prevent Elasticsearch from starting a rebalance until the specified number of nodes in the cluster are up and joined. If your cluster has 10 nodes, a value of 8 for the **gateway.recover\_after\_nodes** property might be a reasonable setting.
-* The **gateway.expected\_nodes** property must be set to the number of nodes that you expect to be in the cluster. In this example, the value for the **gateway.expected_nodes** property is 10.
-* The **gateway.recover\_after\_time** property must be set to instruct the master to wait to send rebalanced instructions until after the set time elapsed from the start of the master node.
+* クラスターで指定数のノードが起動して加わるまで、Elasticsearch がリバランシングを開始しないようにするには、**gateway.recover\_after\_nodes** プロパティーを必要な値に設定してください。クラスターに 10 個のノードがあれば、**gateway.recover\_after\_nodes** プロパティー値を 8 に設定すると妥当であるかもしれません。
+* **gateway.expected\_nodes** プロパティーは、クラスター内に予期するノード数に設定する必要があります。この例で、
+**gateway.expected_nodes** プロパティーの値は 10 です。
+* マスター・ノードの始動から、設定した時間が経過するまで、リバランスした命令を送信するのを待つようにマスターに指示するために、**gateway.recover\_after\_time** プロパティーを設定する必要があります。
 
-The combination of the previous settings means that Elasticsearch waits for the value of **gateway.recover\_after\_nodes** nodes to be present. Then, it begins recovering after the value of **gateway.recover\_after\_time** minutes or after the value of **gateway.expected\_nodes** nodes joined the cluster, whichever comes first.
+前の設定の組み合わせは、Elasticsearch が、**gateway.recover\_after\_nodes** 値の数のノードが稼働するまで待つことを意味します。そして、**gateway.recover\_after\_time** 値の分数後、または **gateway.expected\_nodes** 値の数のノードがクラスターに加わった後 (いずれか早い方) に、リカバリーが開始されます。
 
-### What not to do
+### 留意事項
 {: #what-not-to-do }
-* Do not ignore your production cluster.
-    * Clusters need monitoring and nurturing. Many good Elasticsearch monitoring tools are available that are dedicated to the task.
-* Do not use network-attached storage (NAS) for your **datapath** setting. NAS introduces more latency, and a single point of failure. Always use the local hosts disks.
-* Avoid clusters that span data centers and definitely avoid clusters that span large geographic distances. The latency between nodes is a severe performance bottleneck.
-* Roll your own cluster configuration management solution. Many good configuration management solutions, such as Puppet, Chef, and Ansible, are available.
+* 実動クラスターは放置しないでください。
+    * クラスターには、モニターと保守が必要です。タスク専用の有効な Elasticsearch モニター・ツールが多く使用可能です。
+* **datapath** 設定に Network Attached Storage (NAS) を使用しないでください。
+NAS により、待ち時間が長くなり、Single Point of Failure となってしまいます。
+常にローカル・ホスト・ディスクを使用してください。
+* クラスターが複数のデータ・センターに及ばないようにしてください。
+また、クラスターが地理的に遠距離に渡ることは必ず避けてください。
+ノード間の待ち時間は、重大なパフォーマンス・ボトルネックとなります。
+* 独自のクラスター構成管理ソリューションを運用してください。Puppet、Chef、Ansible など、多くの有効な構成管理ソリューションが利用可能です。
 
-## Configuration properties
+## 構成プロパティー
 {: #configuration-properties }
-The {{ site.data.keys.mf_analytics_server }} can start successfully without any additional configuration.
+{{site.data.keys.mf_analytics_server }}
+は、追加の構成をしなくても正常に開始できます。
 
-Configuration is done through JNDI properties on both the {{ site.data.keys.mf_server }} and the {{ site.data.keys.mf_analytics_server }}. Additionally, the {{ site.data.keys.mf_analytics_server }} supports the use of environment variables to control configuration. Environment variables take precedence over JNDI properties.
+構成は、JNDI プロパティーを通じて {{site.data.keys.mf_server }} と
+{{site.data.keys.mf_analytics_server }} の両方で行われます。
+さらに、{{site.data.keys.mf_analytics_server }}
+では、構成を制御するための環境変数の使用をサポートします。
+環境変数は、JNDI プロパティーより優先されます。
 
-The Analytics runtime web application must be restarted for any changes in these properties to take effect. It is not necessary to restart the entire application server.
+これらのプロパティーの変更を有効にするには、分析ランタイム Web アプリケーションを再始動する必要があります。アプリケーション・サーバー全体を再始動する必要はありません。
 
-To set a JNDI property on WebSphere  Application Server Liberty, add a tag to the **server.xml** file as follows.
+
+WebSphere Application Server Liberty で JNDI プロパティーを設定するには、**server.xml** ファイルに以下のようにタグを追加します。
 
 ```xml
 <jndiEntry jndiName="{PROPERTY NAME}" value="{PROPERTY VALUE}}" />
 ```
 
-To set a JNDI property on Tomcat, add a tag to the context.xml file as follows.
+Tomcat で JNDI プロパティーを設定するには、context.xml ファイルに以下のようにタグを追加します。
 
 ```xml
 <Environment name="{PROPERTY NAME}" value="{PROPERTY VALUE}" type="java.lang.String" override="false" />
 ```
 
-The JNDI properties on WebSphere Application Server are available as environment variables.
+WebSphere Application Server の JNDI プロパティーは、環境変数として確認できます。
 
-* In the WebSphere Application Server console, select **Applications → Application Types → WebSphere Enterprise applications**.
-* Select the **{{ site.data.keys.product_adj }} Administration Service** application.
-* In **Web Module Properties**, click **Environment entries for Web Modules** to display the JNDI properties.
+* WebSphere Application Server コンソールで、**「アプリケーション」→「アプリケーション・タイプ」→「WebSphere エンタープライズ・アプリケーション」**を選択します。
+* **{{site.data.keys.product_adj }} 管理サービス**・アプリケーションを選択します。
+* **「Web モジュール・プロパティー」**で**「Web モジュールの環境項目」**をクリックして、JNDI プロパティーを表示します。
 
-#### {{ site.data.keys.mf_server }}
+#### {{site.data.keys.mf_server }}
 {: #mobilefirst-server }
-The following table shows the properties that can be set in the {{ site.data.keys.mf_server }}.
+以下の表は、{{site.data.keys.mf_server }} で設定可能なプロパティーを示しています。
 
-| Property                           | Description                                           | Default Value |
+| プロパティー                           | 説明                                           | デフォルト値 |
 |------------------------------------|-------------------------------------------------------|---------------|
-| mfp.analytics.console.url          | Set this property to the URL of your {{ site.data.keys.mf_analytics_console }}. For example, http://hostname:port/analytics/console. Setting this property enables the analytics icon on the {{ site.data.keys.mf_console }}. | None |
-| mfp.analytics.logs.forward         | If this property it set to true, server logs that are recorded on the {{ site.data.keys.mf_server }} are captured in {{ site.data.keys.mf_analytics }}. | true |
-| mfp.analytics.url                  |Required. The URL that is exposed by the {{ site.data.keys.mf_analytics_server }} that receives incoming analytics data. For example, http://hostname:port/analytics-service/rest/v2. | None |
-| analyticsconsole/mfp.analytics.url |	Optional. Full URI of the Analytics REST services. In a scenario with a firewall or a secured reverse proxy, this URI must be the external URI, not the internal URI inside the local LAN. This value can contain * in places of the URI protocol, host name, or port, to denote the corresponding part from the incoming URL.	*://*:*/analytics-service, with the protocol, host name, and port dynamically determined |
-| mfp.analytics.username             | The user name that is used if the data entry point is protected with basic authentication. | None |
-| mfp.analytics.password             | The password that is used if the data entry point is protected with basic authentication. | None |
+| mfp.analytics.console.url          | このプロパティーには、{{site.data.keys.mf_analytics_console }} の URL を設定します。 例えば、http://hostname:port/analytics/console などです。このプロパティーを設定すると、{{site.data.keys.mf_console }} で分析アイコンが有効になります。 | なし |
+| mfp.analytics.logs.forward         | このプロパティーが true に設定されると、{{site.data.keys.mf_server }} で記録されたサーバー・ログが {{site.data.keys.mf_analytics }} でキャプチャーされます。 | true |
+| mfp.analytics.url                  |必須。着信する分析データを受け取る、{{site.data.keys.mf_analytics_server }} により公開される URL。例えば、http://hostname:port/analytics-service/rest/v2 などです。 | なし |
+| analyticsconsole/mfp.analytics.url |	オプション。Analytics REST サービスの絶対 URI。ファイアウォールまたはセキュア・リバース・プロキシーが使用されるシナリオでは、この URI は、ローカル LAN の内側の内部 URI ではなく、外部 URI でなければなりません。 この値では、URI プロトコル、ホスト名、またはポートの場所に * を入れて、着信 URL の対応する部分を表すことができます。 *://*:*/analytics-service。プロトコル、ホスト名、およびポートは動的に決定されます。 |
+| mfp.analytics.username             | データのエントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名。 | なし |
+| mfp.analytics.password             | データのエントリー・ポイントが基本認証で保護されている場合に使用されるパスワード。 | なし |
 
-#### {{ site.data.keys.mf_analytics_server }}
+#### {{site.data.keys.mf_analytics_server }}
 {: #mobilefirst-analytics-server }
-The following table shows the properties that can be set in the {{ site.data.keys.mf_analytics_server }}.
+以下の表は、{{site.data.keys.mf_analytics_server }} で設定可能なプロパティーを示しています。
 
-| Property                           | Description                                           | Default Value |
+| プロパティー                           | 説明                                           | デフォルト値 |
 |------------------------------------|-------------------------------------------------------|---------------|
-| analytics/nodetype | Defines the Elasticsearch node type. Valid values are master and data. If this property is not set, then the node acts as both a master-eligible node and a data node. | 	None |
-| analytics/shards | The number of shards per index. This value can be set only by the first node that is started in the cluster and cannot be changed. | 1 |
-| analytics/replicas_per_shard | The number of replicas for each shard in the cluster. This value can be changed dynamically in a running cluster. | 0 |
-| analytics/masternodes | A comma-delimited string that contains the host name and ports of the master-eligible nodes. | None |
-| analytics/clustername | Name of the cluster. Set this value if you plan to have multiple clusters that operate in the same subset and need to uniquely identify them. | worklight |
-| analytics/nodename | Name of a node in the cluster. | A randomly generated string
-| analytics/datapath | The path that analytics data is saved to on the file system. | ./analyticsData |
-| analytics/settingspath | The path to an Elasticsearch settings file. For more information, see Elasticsearch. | None |
-| analytics/transportport | The port that is used for node-to-node communication. | 9600 |
-| analytics/httpport | The port that is used for HTTP communication to Elasticsearch. | 9500 |
-| analytics/http.enabled | Enables or disables HTTP communication to Elasticsearch. | false |
-| analytics/serviceProxyURL | The analytics UI WAR file and analytics service WAR file can be installed to separate application servers. If you choose to do so, you must understand that the JavaScript run time in the UI WAR file can be blocked by cross-site scripting prevention in the browser. To bypass this block, the UI WAR file includes Java proxy code so that the JavaScript run time retrieves REST API responses from the origin server. But the proxy is configured to forward REST API requests to the analytics service WAR file. Configure this property if you installed your WAR files to separate application servers. | None |
-| analytics/bootstrap.mlockall | This property prevents any Elasticsearch memory from being swapped to disk. | true |
-| analytics/multicast | Enables or disables multicast node discovery. | false |
-| analytics/warmupFrequencyInSeconds | The frequency at which warmup queries are run. Warmup queries run in the background to force query results into memory, which improves web console performance. Negative values disable the warmup queries. | 600 |
-| analytics/tenant | Name of the main Elasticsearch index.	worklight |
+| analytics/nodetype | Elasticsearch ノード・タイプを定義します。 有効値は master および data です。このプロパティーが設定されていない場合、ノードはマスター適格ノードとデータ・ノードとして動作します。 | 	なし |
+| analytics/shards | 索引当たりのシャードの数。この値は、クラスターで開始された最初のノードでしか設定できず、変更不可です。 | 1 |
+| analytics/replicas_per_shard | クラスターのシャードごとのレプリカの数。この値は、実行中のクラスターで動的に変更可能です。  | 0 |
+| analytics/masternodes | マスター適格ノードのホスト名とポートを含むコンマ区切りのストリング。 | なし |
+| analytics/clustername | クラスターの名前。同じサブセットで動作する複数のクラスターを設定する予定で、それらを一意的に識別する必要がある場合は、この値を設定します。 | worklight |
+| analytics/nodename | クラスター内のノードの名前。 | ランダムに生成したストリング
+| analytics/datapath | ファイル・システムで分析データが保存されるパス。 | ./analyticsData |
+| analytics/settingspath | Elasticsearch 設定ファイルのパス。詳しくは、Elasticsearch を参照してください。 | なし |
+| analytics/transportport | ノード間の通信に使用されるポート。 | 9600 |
+| analytics/httpport | Elasticsearch への HTTP 通信に使用されるポート。 | 9500 |
+| analytics/http.enabled | Elasticsearch への HTTP 通信を使用可能または使用不可にします。 | false |
+| analytics/serviceProxyURL | 分析 UI WAR ファイルと分析サービス WAR ファイルをインストールして、アプリケーション・サーバーを分けることができます。 これを行う場合は、UI WAR ファイルの JavaScript ランタイムが、ブラウザーのクロスサイト・スクリプティング防御によってブロックされる可能性があることを考慮する必要があります。このブロックを迂回するために、UI WAR ファイルには、JavaScript ランタイムがオリジン・サーバーから REST API 応答を取得するための Java プロキシー・コードが含まれます。しかし、プロキシーは、REST API 要求を分析サービス WAR ファイルに転送するように構成されています。 WAR ファイルをインストールしてアプリケーション・サーバーを分けた場合に、このプロパティーを構成してください。 | なし |
+| analytics/bootstrap.mlockall | このプロパティーは、Elasticsearch メモリーがディスクにスワップされるのを防ぎます。 | true |
+| analytics/multicast | マルチキャスト・ノード・ディスカバリーを使用可能または使用不可にします。 | false |
+| analytics/warmupFrequencyInSeconds | ウォームアップ照会が実行される頻度。 ウォームアップ照会はバックグラウンドで実行され、照会結果をメモリーに入れさせるため、Web コンソールのパフォーマンスが向上します。 負の値が指定された場合、ウォームアップ照会は使用不可になります。 | 600 |
+| analytics/tenant | 主要な Elasticsearch 索引の名前。worklight |
 
-In all cases where the key does not contain a period (like **httpport** but not **http.enabled**), the setting can be controlled by system environment variables where the variable name is prefixed with **ANALYTICS_**. When both the JNDI property and the system environment variable are set, the system environment variable takes precedence. For example, if you have both the **analytics/httpport** JNDI property and the **ANALTYICS_httpport** system environment variable set, the value for **ANALYTICS_httpport** is used.
+キーにピリオドが含まれない (例えば、**http.enabled** ではなく **httpport**) 場合はすべて、変数名に接頭部 **ANALYTICS_** が付いたシステム環境変数が設定を制御できます。 JNDI プロパティーとシステム環境変数の両方が設定されると、システム環境変数が優先されます。 例えば、JNDI プロパティー **analytics/httpport** とシステム環境変数 **ANALTYICS_httpport** の両方を設定した場合、 **ANALYTICS_httpport** の値が使用されます。
 
-#### Document Time to Live (TTL)
+#### ドキュメントの存続時間 (TTL)
 {: #document-time-to-live-ttl }
-TTL is effectively how you can establish and maintain a data retention policy. Your decisions have dramatic consequences on your system resource needs. The long you keep data, the more RAM, disk, and scaling is likely needed.
+TTL は実際上、データ保存ポリシーの設定および保守方法です。 この決定は、システム・リソースのニーズに劇的な影響をもたらします。 データを長く保持するほど、必要な RAM、ディスク、スケーリングは増える可能性があります。
 
-Each document type has its own TTL. Setting a document's TTL enables automatic deletion of the document after it is stored for the specified amount of time.
+各ドキュメント・タイプには、固有の TTL があります。 ドキュメントの TTL を設定すると、ドキュメントを一定期間保管した後、自動的に削除することができます。
 
-Each TTL JNDI property is named **analytics/TTL_[document-type]**. For example, the TTL setting for **NetworkTransaction** is named **analytics/TTL_NetworkTransaction**.
+各 TTL JNDI プロパティーの名前は、**analytics/TTL_[document-type]** です。例えば、**NetworkTransaction** の TTL 設定の名前は、**analytics/TTL_NetworkTransaction** になります。 
 
-These values can be set by using basic time units as follows.
+これらの値は、以下の基本時間単位を使用して設定可能です。
 
-* 1Y = 1 year
-* 1M = 1 month
-* 1w = 1 week
-* 1d = 1 day
-* 1h = 1 hour
-* 1m = 1 minute
-* 1s = 1 second
-* 1ms = 1 millisecond
+* 1Y = 1 年
+* 1M = 1 月
+* 1w = 1 週
+* 1d = 1 日
+* 1h = 1 時間
+* 1m = 1 分
+* 1s = 1 秒
+* 1ms = 1 ミリ秒
 
-> Note: If you are migrating from previous versions of {{ site.data.keys.mf_analytics_server }} and previously configured any TTL JNDI properties, see [Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
+> 注: 以前のバージョンの {{site.data.keys.mf_analytics_server }} からのマイグレーションを実行しており、以前に TTL JNDI プロパティーを構成したことがある場合は、[{{site.data.keys.mf_analytics_server }}で使用されたサーバー・プロパティーのマイグレーション](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server)を参照してください。
 
 #### Elasticsearch
 {: #elasticsearch }
-The underlying storage and clustering technology that serves the {{ site.data.keys.mf_analytics_console }} is Elasticsearch.  
-Elasticsearch provides many tunable properties, mostly for performance tuning. Many of the JNDI properties are abstractions of properties that are provided by Elasticsearch.
+{{site.data.keys.mf_analytics_console }}
+の処理を行うストレージおよびクラスタリングの基盤テクノロジーは Elasticsearch です。  
+Elasticsearch では、主にパフォーマンス・チューニング用に、チューナブル・プロパティーが多く用意されています。 JNDI プロパティーの多くは、Elasticsearch で提供されるプロパティーの抽象化です。
 
-All properties that are provided by Elasticsearch can also be set by using JNDI properties with **analytics/** prepended before the property name. For example, **threadpool.search.queue_size** is a property that is provided by Elasticsearch. It can be set with the following JNDI property.
+Elasticsearch により提供されるすべてのプロパティーは、プロパティー名の前に **analytics/** を付加した JNDI プロパティーを使用することでも設定できます。 例えば、**threadpool.search.queue_size** は、Elasticsearch が提供するプロパティーです。 これは、以下の JNDI プロパティーで設定できます。 
 
 ```xml
 <jndiEntry jndiName="analytics/threadpool.search.queue_size" value="100" />
 ```
 
-These properties are normally set in a custom settings file. If you are familiar with Elasticsearch and the format of its properties files, you can specify the path to the settings file by using the **settingspath** JNDI property, as follows.
+通常、これらのプロパティーは、カスタム設定ファイルで設定されます。 Elasticsearch とそのプロパティー・ファイルのフォーマットに関する十分な知識がある場合は、以下のように **settingspath** JNDI プロパティーを使用して、設定ファイルへのパスを指定できます。 
 
 ```xml
 <jndiEntry jndiName="analytics/settingspath" value="/home/system/elasticsearch.yml" />
 ```
 
-Unless you are an expert Elasticsearch IT manager, identified a specific need, or were instructed by your services or support team, do not be tempted to fiddle with these settings.
+熟練した Elasticsearch IT 管理者である、特定の必要性が確認されている、あるいは、サービスまたはサポート・チームで指示されている場合を除き、これらの設定の調整は検討しないでください。
 
-## Backing up Analytics data
+## Analytics データのバックアップ
 {: #backing-up-analytics-data }
-Learn about how to back up your {{ site.data.keys.mf_analytics }} data.
+{{site.data.keys.mf_analytics }} のバックアップ方法について説明します。
 
-The data for {{ site.data.keys.mf_analytics }} is stored as a set of files on the {{ site.data.keys.mf_analytics_server }} file system. The location of this folder is specified by the datapath JNDI property in the {{ site.data.keys.mf_analytics_server }} configuration. For more information about the JNDI properties, see [Configuration properties](#configuration-properties).
+{{site.data.keys.mf_analytics }}
+のデータは、{{site.data.keys.mf_analytics_server }}
+ファイル・システム上のファイル・セットとして保管されます。
+このフォルダーの場所は、{{site.data.keys.mf_analytics_server }} 構成で datapath JNDI プロパティーによって指定されます。JNDI プロパティーについて詳しくは、[構成プロパティー](#configuration-properties)を参照してください。
 
-The {{ site.data.keys.mf_analytics_server }} configuration is also stored on the file system, and is called server.xml.
+{{site.data.keys.mf_analytics_server }} 構成もファイル・システムに保管され、その名前は server.xml です。
 
-You can back up these files by using any existing server backup procedures that you might already have in place. No special procedure is required when you back up these files, other than ensuring that the {{ site.data.keys.mf_analytics_server }} is stopped. Otherwise, the data might change while the backup is occurring, and the data that is stored in memory might not yet be written to the file system. To avoid inconsistent data, stop the {{ site.data.keys.mf_analytics_server }} before you start your backup.
+これらのファイルは、既に機能している既存のサーバー・バックアップ手順があれば、それを使用してバックアップすることができます。
+これらのファイルをバックアップする際に特別な手順は不要ですが、
+{{site.data.keys.mf_analytics_server }} は必ず停止してください。
+そうでないと、データがバックアップの実行中に変更される可能性があり、メモリーに保管されたデータが、ファイル・システムに書き込まれない可能性があります。
+データの不整合が発生しないようにするために、バックアップの開始前に
+{{site.data.keys.mf_analytics_server }}
+を停止してください。
 
-## Cluster management and Elasticsearch
+## クラスター管理と Elasticsearch
 {: #cluster-management-and-elasticsearch }
-Manage clusters and add nodes to relieve memory and capacity strain.
+クラスターを管理し、ノードを追加してメモリーとキャパシティーの負担を緩和します。
 
-### Add a Node to the Cluster
+### クラスターへのノードの追加
 {: #add-a-node-to-the-cluster }
-You can add a new node to the cluster by installing the {{ site.data.keys.mf_analytics_server }} or by running a standalone Elasticsearch instance.
+クラスターに新しいノードを追加するには、{{site.data.keys.mf_analytics_server }}
+をインストールするか、またはスタンドアロン Elasticsearch インスタンスを実行します。
 
-If you choose the standalone Elasticsearch instance, you relieve some cluster strain for memory and capacity requirements, but you do not relieve data ingestion strain. Data reports must always go through the {{ site.data.keys.mf_analytics_server }} for preservation of data integrity and data optimization prior to going to persistent store.
+スタンドアロン Elasticsearch インスタンスを選んだ場合は、メモリーとキャパシティーの要件に関するクラスターの負担は一部緩和されますが、
+データ取り込みの負担は緩和されません。データ・レポートは、
+データの整合性維持と最適化のために、パーシスタント・ストアに行く前に
+{{site.data.keys.mf_analytics_server }} を常に通らなければなりません。
 
-You can mix and match.
+ミックス・アンド・マッチが可能です。
 
-The underlying Elasticsearch data store expects nodes to be homogenous, so do not mix a powerful 8-core 64 GB RAM rack system with a leftover surplus notebook in your cluster. Use similar hardware among the nodes.
+基盤の Elasticsearch データ・ストアは、ノードが同種であることを予期するため、クラスター内にパワフルな
+8 コア 64 GB RAM ラック・システムと、残り物の余ったノートブックを混在させないでください。
+ノード間で類似したハードウェアを使用してください。
 
-#### Adding a {{ site.data.keys.mf_analytics_server }} to the cluster
+#### クラスターへの {{site.data.keys.mf_analytics_server }}の追加
 {: #adding-a-mobilefirst-analytics-server-to-the-cluster }
-Learn how to add a {{ site.data.keys.mf_analytics_server }} to the cluster.
+{{site.data.keys.mf_analytics_server }}
+をクラスターに追加する方法を説明します。
 
-Because Elasticsearch is embedded in the {{ site.data.keys.mf_analytics_server }}, and it is responsible for participating in the cluster, do not use the application server's features to define cluster behavior. You do not want to create a WebSphere  Application Server Liberty farm, for example. Trust the underlying Elasticsearch run time to participate in the cluster. However, you must configure it properly.
+Elasticsearch は {{site.data.keys.mf_analytics_server }}
+に組み込まれていてクラスターに参加する責任があるため、
+アプリケーション・サーバーの機能でクラスターの動作を定義しないでください。
+例えば、WebSphere Application Server Liberty ファームは作成すべきではありません。クラスターへの参加は、基盤の Elasticsearch ランタイムに任せてください。
+ただし、それを適切に構成する必要があります。
 
-In the following sample instructions, do not configure the node to be a master node or a data node. Instead, configure the node as a "search load balancer" whose purpose is to be up temporarily so that the Elasticsearch REST API is exposed for monitoring and dynamic configuration.
+以下の手順例で、ノードをマスター・ノードにもデータ・ノードにも構成しないでください。
+代わりに、Elasticsearch REST API がモニターおよび動的構成のために公開されるように一時的に稼働する目的の「検索ロード・バランサー」としてノードを構成してください。
 
-**Notes:**
+**注:
+**
 
-* Remember to configure the hardware and operating system of this node according to the [System requirements](../installation/#system-requirements).
-* Port 9600 is the transport port that is used by Elasticsearch. Therefore, port 9600 must be open through any firewalls between cluster nodes.
+* 必ず、[システム要件](../installation/#system-requirements)に従って、このノードのハードウェアとオペレーティング・システムを構成してください。
+* ポート 9600 は、Elasticsearch が使用する転送ポートです。
+そのため、ポート 9600 は、クラスター・ノード間のどのファイアウォールも通すように開放されていなければなりません。
 
-1. Install the analytics service WAR file and the analytics UI WAR file (if you want the UI) to the application server on the newly allocated system. Install this instance of the {{ site.data.keys.mf_analytics_server }} to any of the supported app servers.
-    * [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
-    * [Installing {{ site.data.keys.mf_analytics }} on Tomcat](../installation/#installing-mobilefirst-analytics-on-tomcat)
-    * [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
+1. 新しく割り振られたシステム上のアプリケーション・サーバーに、分析サービス WAR ファイルと分析 UI WAR ファイル (UI が必要な場合) をインストールします。{{site.data.keys.mf_analytics_server }} のこのインスタンスを、
+サポートされる任意のアプリケーション・サーバーにインストールします。
 
-2. Edit the application server's configuration file for JNDI properties (or use system environment variables) to configure at least the following flags.
+    * [{{site.data.keys.mf_analytics }} の WebSphere Application Server Liberty へのインストール](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
+    * [{{site.data.keys.mf_analytics }} の Tomcat へのインストール](../installation/#installing-mobilefirst-analytics-on-tomcat)
+    * [{{site.data.keys.mf_analytics }} の WebSphere Application Server へのインストール](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
 
-    | Flag | Value (example) | Default | Note |
+2. JNDI プロパティーに関するアプリケーション・サーバーの構成ファイルを編集 (またはシステム環境変数を使用) して、
+少なくとも以下のフラグを構成します。
+
+    | フラグ | 値 (例) | デフォルト | 注記 |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	The cluster that you intend this node to join. |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Set to false to avoid accidental cluster join. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	List of master nodes in the existing cluster. Change the default port of 9600 if you specified a transport port setting on the master nodes. |
-    | node.master | 	false | 	true | 	Do not allow this node to be a master. |
-    | node.data|	false | 	true | 	Do not allow this node to store data. |
-    | http.enabled | 	true	 | true | 	Open unsecured HTTP port 9200 for Elasticsearch REST API. |
+    | cluster.name | 	worklight	 | worklight | 	このノードが参加するクラスター。 |
+    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	偶発的なクラスター参加を回避するには、false に設定します。 |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	なし | 	既存クラスター内のマスター・ノードのリスト。
+マスター・ノードで転送ポート設定を指定した場合は、デフォルト・ポート 9600 を変更してください。 |
+    | node.master | 	false | 	true | 	このノードがマスター・ノードになれないようにします。 |
+    | node.data|	false | 	true | 	このノードがデータを保管できないようにします。 |
+    | http.enabled | 	true	 | true | 	Elasticsearch REST API 用に非セキュアの HTTP ポート 9200 を開きます。 |
 
-3. Consider all configuration flags in production scenarios. You might want Elasticsearch to keep the plug-ins in a different file system directory than the data, so you must set the **path.plugins** flag.
-4. Run the application server and start the WAR applications if necessary.
-5. Confirm that this new node joined the cluster by watching the console output on this new node, or by observing the node count in the **Cluster and Node** section of the **Administration** page in {{ site.data.keys.mf_analytics_console }}.
+3. 実動シナリオでは、すべての構成フラグを検討してください。Elasticsearch が、データとは異なるファイル・システム・ディレクトリーにプラグインを保持するようにしたい場合があります。
+そのために、**path.plugins** フラグを設定する必要があります。
+4. 必要に応じ、アプリケーション・サーバーを実行して WAR アプリケーションを開始します。
+5. この新規ノードのコンソール出力を監視するか、
+{{site.data.keys.mf_analytics_console }}
+の**「管理」**ページで**「クラスターとノード」**セクションのノード・カウントを監視することで、
+この新規ノードがクラスターに参加したことを確認してください。
 
-#### Adding a stand-alone Elasticsearch node to the cluster
+#### クラスターへのスタンドアロン Elasticsearch ノードの追加
 {: #adding-a-stand-alone-elasticsearch-node-to-the-cluster }
-Learn how to add a stand-alone Elasticsearch node to the cluster.
+スタンドアロン Elasticsearch ノードをクラスターに追加する方法を説明します。
 
-You can add a stand-alone Elasticsearch node to your existing {{ site.data.keys.mf_analytics }} cluster in just a few simple steps. However, you must decide the role of this node. Is it going to be a master-eligible node? If so, remember to avoid the split-brain issue. Is it going to be a data node? Is it going to be a client-only node? Perhaps you want a client-only node so that you can start a node temporarily to expose Elasticsearch's REST API directly to affect dynamic configuration changes to your running cluster.
+簡単な数個のステップで、スタンドアロン Elasticsearch ノードを既存の
+{{site.data.keys.mf_analytics }}
+クラスターに追加することができます。
+ただし、このノードのロールを決定する必要があります。
+それは、マスター適格ノードになりますか?
+その場合には、必ずスプリット・ブレーンの問題が発生しないようにしてください。それは、データ・ノードになりますか?
+それは、クライアント専用ノードになりますか?
+ノードを一時的に開始して、Elasticsearch の REST API を直接公開して稼働中のクラスターに動的構成変更を作用させるために、おそらくクライアント専用ノードが必要になります。
 
-In the following sample instructions, do not configure the node to be a master node or a data node. Instead, configure the node as a "search load balancer" whose purpose is to be up temporarily so that the Elasticsearch REST API is exposed for monitoring and dynamic configuration.
+以下の手順例で、ノードをマスター・ノードにもデータ・ノードにも構成しないでください。
+代わりに、Elasticsearch REST API がモニターおよび動的構成のために公開されるように一時的に稼働する目的の「検索ロード・バランサー」としてノードを構成してください。
 
-**Notes:**
+**注:
+**
 
-* Remember to configure the hardware and operating system of this node according to the [System requirements](../installation/#system-requirements).
-* Port 9600 is the transport port that is used by Elasticsearch. Therefore, port 9600 must be open through any firewalls between cluster nodes.
+* 必ず、[システム要件](../installation/#system-requirements)に従って、このノードのハードウェアとオペレーティング・システムを構成してください。
+* ポート 9600 は、Elasticsearch が使用する転送ポートです。
+そのため、ポート 9600 は、クラスター・ノード間のどのファイアウォールも通すように開放されていなければなりません。
 
-1. Download Elasticsearch from [https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz](https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz).
-2. Decompress the file.
-3. Edit the **config/elasticsearch.yml** file and configure at least the following flags.
+1. Elasticsearch を [https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz](https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz) からダウンロードします。
+2. ファイルを解凍します。
+3. **config/elasticsearch.yml** ファイルを編集し、少なくとも以下のフラグを構成します。
 
-    | Flag | Value (example) | Default | Note |
+    | フラグ | 値 (例) | デフォルト | 注記 |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	The cluster that you intend this node to join. |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Set to false to avoid accidental cluster join. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	List of master nodes in the existing cluster. Change the default port of 9600 if you specified a transport port setting on the master nodes. |
-    | node.master | 	false | 	true | 	Do not allow this node to be a master. |
-    | node.data|	false | 	true | 	Do not allow this node to store data. |
-    | http.enabled | 	true	 | true | 	Open unsecured HTTP port 9200 for Elasticsearch REST API. |
+    | cluster.name | 	worklight	 | worklight | 	このノードが参加するクラスター。 |
+    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	偶発的なクラスター参加を回避するには、false に設定します。 |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	なし | 	既存クラスター内のマスター・ノードのリスト。
+マスター・ノードで転送ポート設定を指定した場合は、デフォルト・ポート 9600 を変更してください。 |
+    | node.master | 	false | 	true | 	このノードがマスター・ノードになれないようにします。 |
+    | node.data|	false | 	true | 	このノードがデータを保管できないようにします。 |
+    | http.enabled | 	true	 | true | 	Elasticsearch REST API 用に非セキュアの HTTP ポート 9200 を開きます。 |
 
 
-4. Consider all configuration flags in production scenarios. You might want Elasticsearch to keep the plug-ins in a different file system directory than the data, so you must set the path.plugins flag.
-5. Run `./bin/plugin -i elasticsearch/elasticsearch-analytics-icu/2.7.0` to install the ICU plug-in.
-6. Run `./bin/elasticsearch`.
-7. Confirm that this new node joined the cluster by watching the console output on this new node, or by observing the node count in the **Cluster and Node** section of the **Administration** page in {{ site.data.keys.mf_analytics_console }}.
+4. 実動シナリオでは、すべての構成フラグを検討してください。Elasticsearch が、データとは異なるファイル・システム・ディレクトリーにプラグインを保持するようにしたい場合があります。そのために、path.plugins フラグを設定する必要があります。
+5. `./bin/plugin -i elasticsearch/elasticsearch-analytics-icu/2.7.0` を実行して、ICU プラグインをインストールします。
+6. `./bin/elasticsearch` を実行します。
+7. この新規ノードのコンソール出力を監視するか、
+{{site.data.keys.mf_analytics_console }}
+の**「管理」**ページで**「クラスターとノード」**セクションのノード・カウントを監視することで、
+この新規ノードがクラスターに参加したことを確認してください。
 
-#### Circuit breakers
+#### 回路ブレーカー
 {: #circuit-breakers }
-Learn about Elasticsearch circuit breakers.
+Elasticsearch の回路ブレーカーについて説明します。
 
-Elasticsearch contains multiple circuit breakers that are used to prevent operations from causing an **OutOfMemoryError**. For example, if a query that serves data to the {{ site.data.keys.mf_console }} results in using 40% of the JVM heap, the circuit breaker triggers, an exception is raised, and the console receives empty data.
+Elasticsearch には、操作で **OutOfMemoryError** が発生しないようにするための回路ブレーカーが複数含まれています。
+例えば、{{site.data.keys.mf_console }}
+にデータを提供する照会で JVM ヒープの 40 % を使用することになった場合、回路ブレーカーが起動して例外が発生し、コンソールは空のデータを受け取ります。
 
-Elasticsearch also has protections for filling up the disk. If the disk on which the Elasticsearch data store is configured to write fills to 90% capacity, the Elasticsearch node informs the master node in the cluster. The master node then redirects new document-writes away from the nearly full node. If you have only one node in your cluster, no secondary node to which data can be written is available. Therefore, no data is written and is lost.
+Elasticsearch では、ディスク満杯の防御も行われます。
+Elasticsearch データ・ストアの書き込みに構成されているディスクが容量の 90 % に達すると、Elasticsearch ノードがクラスター内のマスター・ノードに通知します。それにより、マスター・ノードは、満杯になりそうなノードを避けて、新たな文書書き込みを宛先変更します。
+クラスター内にノードが 1 つしかない場合、データを書き込みできる 2 次ノードはありません。
+そのため、データは書き込まれず、失われます。

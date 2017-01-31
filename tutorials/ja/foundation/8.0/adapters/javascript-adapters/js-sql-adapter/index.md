@@ -1,36 +1,36 @@
 ---
 layout: tutorial
-title: JavaScript SQL Adapter
-breadcrumb_title: SQL Adapter
+title: JavaScript SQL アダプター
+breadcrumb_title: SQL アダプター
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: アダプター Maven プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-An SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.
+SQL アダプターは、任意の SQL データ・ソースと通信するように設計されています。プレーン SQL 照会またはストアード・プロシージャーを使用できます。
 
-To connect to a database, JavaScript code needs a JDBC connector driver for the specific database type. You must download the JDBC connector driver for the specific database type separately and add it as a dependency in your project. For more information on how to add a dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../creating-adapters/#dependencies) tutorial.
+データベースに接続するには、JavaScript コードで、特定のデータベース・タイプの JDBC コネクター・ドライバーが必要です。特定のデータベース・タイプに対応する JDBC コネクター・ドライバーを別個にダウンロードして、プロジェクトで依存関係としてそのドライバーを追加する必要があります。依存関係の追加方法について詳しくは、[Java アダプターおよび JavaScript アダプターの作成](../../creating-adapters/#dependencies)チュートリアルの『依存関係』セクションを参照してください。
 
-In this tutorial and in the accompanying sample, you learn how to use an adapter to connect to a MySQL database.
+このチュートリアルおよび付属のサンプルでは、アダプターを使用して MySQL データベースに接続する方法について学習します。
 
-**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
+**前提条件:** 最初に必ず、[JavaScript アダプター](../)チュートリアルをお読みください。
 
-## The XML File
+## XML ファイル
 {: #the-xml-file }
 
-The XML file contains settings and metadata.
+XML ファイルには、設定およびメタデータが含まれています。
 
-In the **adapter.xml** file, declare the following parameters:
+**adapter.xml** ファイルで、以下のパラメーターを宣言します。
 
- * JDBC Driver Class
- * Database URL
- * Username
- * Password<br/><br/>
+ * JDBC ドライバー・クラス
+ * データベース URL
+ * ユーザー名
+ * パスワード<br/><br/>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -58,15 +58,16 @@ In the **adapter.xml** file, declare the following parameters:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>ここをクリックして adapter.xml 属性とサブエレメントを表示</b></a>
             </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>xsi:type</b>: <i>Mandatory.</i> The value of this attribute must be set to sql:SQLConnectionPolicy.</li>
-                    <li><b>dataSourceDefinition</b>: <i>Optional.</i> Contains the parameters that are needed to connect to a data source. The adapter creates a connection for each request. For example:
+                    <li><b>xsi:type</b>: <i>必須。</i> この属性の値は sql:SQLConnectionPolicy に設定される必要があります。</li>
+                    <li><b>dataSourceDefinition</b>: <i>オプション。</i> データ・ソースへの接続に必要なパラメーターを含みます。アダプターは、各要求で接続を作成します。以下に例を示します。
+
 
 {% highlight xml %}
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -79,7 +80,7 @@ In the **adapter.xml** file, declare the following parameters:
 </connectionPolicy>
 {% endhighlight %}</li>
 
-                    <li><b>dataSourceJNDIName</b>: <i>Optional.</i> Connect to the data source by using the JNDI name of a data source that is provided by the application server. The adapter takes the connection from the server connection pool that is associated with the JNDI name. Application servers provide a way to configure data sources. For more information, see Installing {{ site.data.keys.mf_server }} to an application server. For example:
+                    <li><b>dataSourceJNDIName</b>: <i>オプション。</i> アプリケーション・サーバーで提供されているデータ・ソースの JNDI 名を使用して、データ・ソースに接続します。アダプターは、JNDI 名に関連付けられたサーバー接続プールから接続を受け取ります。アプリケーション・サーバーには、データ・ソースを構成する方法が用意されています。詳しくは、アプリケーション・サーバーへの {{site.data.keys.mf_server }} のインストールを参照してください。以下に例を示します。 
                     
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -93,58 +94,59 @@ In the **adapter.xml** file, declare the following parameters:
 </div>
 
 
-With the `connectionPolicy` configured, declare a procedure in the adapter XML file.
+`connectionPolicy` を構成して、アダプター XML ファイル内でプロシージャーを宣言します。
 
 ```js
 <procedure name="getAccountTransactions1"/>
 ```
 
-## JavaScript implementation
+## JavaScript 実装
+
 {: #javascript-implementation }
 
-The adapter JavaScript file is used to implement the procedure logic.  
-There are two ways of running SQL statements:
+アダプター JavaScript ファイルを使用してプロシージャー・ロジックを実装します。  
+SQL ステートメントを実行するには以下の 2 つの方法があります。
 
-* SQL statement query
-* SQL stored procedure
 
-### SQL statement query
+* SQL ステートメント照会
+* SQL ストアード・プロシージャー
+
+### SQL ステートメント照会
 {: #sql-statement-query }
 
-1. Assign your SQL query to a variable. This must always be done outside the function scope.
-2. Add parameters, if necessary.
-3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries.
-4. Return the result to the application or to another procedure.
+1. SQL 照会を変数に割り当てます。これは、常に関数のスコープの外部で行う必要があります。
+2. 必要に応じて、パラメーターを追加します。
+3. `MFP.Server.invokeSQLStatement` メソッドを使用して、作成した照会を呼び出します。
+4. 結果をアプリケーションまたは別のプロシージャーに返します。
 
    ```javascript
-   // 1. Assign your SQL query to a variable (outside the function scope)
-   // 2. Add parameters, if necessary
+   // 1. SQL 照会を変数に (関数のスコープの外部で）割り当てます。
+   // 2. 必要に応じてパラメーターを追加します。
    var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
     "FROM accounttransactions " +
     "WHERE accounttransactions.fromAccount = ? OR accounttransactions.toAccount = ? " +
     "ORDER BY transactionDate DESC " +
     "LIMIT 20;";
 
-    // Invoke prepared SQL query and return invocation result
+    // 準備した SQL 照会を呼び出し、呼び出し結果を返します。
    function getAccountTransactions1(accountId){
-   // 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries
-   // 4. Return the result to the application or to another procedure.
-        return MFP.Server.invokeSQLStatement({
+   // 3. 「MFP.Server.invokeSQLStatement」メソッドを使用して、作成した照会を呼び出します。
+   // 4. 結果をアプリケーションまたは別のプロシージャーに返します。return MFP.Server.invokeSQLStatement({
 	       preparedStatement : getAccountsTransactionsStatement,
 	       parameters : [accountId, accountId]
         });
    }
    ```       
 
-### SQL stored procedure
+### SQL ストアード・プロシージャー
 {: #sql-stored-procedure }
 
-To run a SQL stored procedure, use the `MFP.Server.invokeSQLStoredProcedure` method. Specify a SQL stored procedure name as an invocation parameter.
+SQL ストアード・プロシージャーを実行するには、`MFP.Server.invokeSQLStoredProcedure` メソッドを使用します。SQL ストアード・プロシージャーの名前を呼び出しパラメーターとして指定します。
 
 ```javascript
-// Invoke stored SQL procedure and return invocation result
+// ストアード SQL プロシージャーを呼び出し、呼び出し結果を返します。
 function getAccountTransactions2(accountId){
-  // To run a SQL stored procedure, use the `MFP.Server.invokeSQLStoredProcedure` method
+  // SQL ストアード・プロシージャーを実行するには、「MFP.Server.invokeSQLStoredProcedure」メソッドを使用します。
   return MFP.Server.invokeSQLStoredProcedure({
     procedure : "getAccountTransactions",
     parameters : [accountId]
@@ -152,10 +154,10 @@ function getAccountTransactions2(accountId){
 }
 ```  
 
-### Using multiple parameters
+### 複数のパラメーターの使用
 {: #using-multiple-parameters }
  
-When using either single or multiple parameters in an SQL query make sure to accept the variables in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters in an **array**.
+SQL 照会で単一または複数のパラメーターを使用する場合には、関数で変数を受け入れ、変数を `invokeSQLStatement` または `invokeSQLStoredProcedure` のパラメーターに**配列**で渡してください。
 
 ```javascript
 var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
@@ -164,7 +166,7 @@ var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAcc
 	"ORDER BY transactionDate DESC " +
 	"LIMIT 20;";
 
-//Invoke prepared SQL query and return invocation result
+//作成した SQL 照会を呼び出し、呼び出し結果を返します。
 function getAccountTransactions1(fromAccount, toAccount){
 	return MFP.Server.invokeSQLStatement({
 		preparedStatement : getAccountsTransactionsStatement,
@@ -173,10 +175,10 @@ function getAccountTransactions1(fromAccount, toAccount){
 }
 ```
 
-## Invocation Results
+## 呼び出し結果
 {: #invocation-results }
 
-The result is retrieved as a JSON object:
+結果は、JSON オブジェクトとして取得されます。
 
 ```json
 {
@@ -198,25 +200,25 @@ The result is retrieved as a JSON object:
   }]
 }
 ```
-* The `isSuccessful` property defines whether the invocation was successful.
-* The `resultSet` object is an array of returned records.
- * To access the `resultSet` object on the client-side: `result.invocationResult.resultSet`
- * To access the `resultSet` object on the server-side: `result.ResultSet`
+* ` isSuccessful` プロパティーは、呼び出しが正常に終了したかどうかを定義します。
+* `resultSet` は、返されたレコードの配列です。 
+ * クライアント・サイドの `resultSet` オブジェクトにアクセスする場合: `result.invocationResult.resultSet`
+ * サーバー・サイドの `resultSet` オブジェクトにアクセスする場合: `result.ResultSet`
 
-## Sample adapter
+## サンプル・アダプター
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the Adapters Maven project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) してアダプター Maven プロジェクトをダウンロードします。
 
-The Adapters Maven project includes the **JavaScriptSQL** adapter described above.  
-Also included is an SQL script in the **Utils** folder.
+アダプター Maven プロジェクトには、前に説明した **JavaScriptSQL** アダプターが含まれています。  
+また、**Utils** フォルダーに SQL スクリプトも含まれています。
 
-### Sample usage
+### 使用例
 {: #sample-usage }
 
-* Run the .sql script in your SQL database.
-* Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* SQL データベースで .sql スクリプトを実行します。
+* `mobilefirst@%` ユーザーが、すべてのアクセス権限を割り当てられていることを確認します。
+* Maven、{{site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaScriptSQL アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
+* アダプターをテストまたはデバッグするには、[アダプターのテストおよびデバッグ](../../testing-and-debugging-adapters)チュートリアルを参照してください。
 
-When testing, the account value should be passed in an array: `["12345"]`.
+テスト時には、アカウント値を配列 (`["12345"]`) で渡す必要があります。

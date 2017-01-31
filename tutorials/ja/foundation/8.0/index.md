@@ -10,20 +10,20 @@ show_breadcrumb: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-{{ site.data.keys.product_full }} radically simplifies building, managing, and updating your mobile application with a pre-integrated, comprehensive set of mobile application services.
+{{site.data.keys.product_full }} では、事前に統合されたモバイル・アプリケーション・サービスの包括的なセットを使用して、モバイル・アプリケーションのビルド、管理、および更新を大幅に合理化します。
 
-Developers can build their application using the front-end framework and tools of their choice, and easily add push, authentication, offline sync, and business logic to their apps with the {{ site.data.keys.product }} software development kit (SDK) available across a wide range of supported mobile platforms. {{ site.data.keys.product }} enables you to control your application from client to server, and thus allows you to capture business data at the point of interaction. {{ site.data.keys.product }} apps also enable you to employ a streamlined and repeatable process for incremental app updates and run your apps in flexible hybrid cloud patterns.
+開発者は、フロントエンド・フレームワークと好みのツールを使用してアプリケーションをビルドできます。また、サポートされるモバイル・プラットフォームで広い範囲にわたって使用可能な {{site.data.keys.product }} Software Development Kit (SDK) を使用して、アプリケーションにプッシュ、認証、オフライン同期、およびビジネス・ロジックを簡単に追加できます。{{site.data.keys.product }} によって、クライアントからサーバーにアプリケーションを制御できるようになり、それにより、ビジネス・データを相互作用の時点で収集できるようになります。また、{{site.data.keys.product }} アプリケーションによって、アプリケーションのインクリメンタル更新のための合理化された反復可能処理を採用することができ、アプリケーションを柔軟なハイブリッド・クラウド・パターンで実行できます。
 
-To review all categories and tutorials visit:
+すべてのカテゴリーとチュートリアルを確認するには、次にアクセスします。
 
-* [All Tutorials](all-tutorials/)
+* [すべてのチュートリアル](all-tutorials/)
 
-For curated content visit: 
+それぞれの内容については、以下にアクセスします。 
 
-* [Cordova development](cordova-tutorials/)
-* [iOS development](ios-tutorials/) 
-* [Android development](android-tutorials/) 
-* [Windows 8.1 Universal and Windows 10 UWP development](windows-8-10-tutorials/)
-* [Xamarin development](xamarin-tutorials/)
-* [Web application development](web-tutorials/)
-* [Server-side development](server-side-tutorials/)
+* [Cordova の開発](cordova-tutorials/)
+* [iOS の開発](ios-tutorials/) 
+* [Android の開発](android-tutorials/) 
+* [Windows 8.1 Universal および Windows 10 UWP の開発](windows-8-10-tutorials/)
+* [Xamarin の開発](xamarin-tutorials/)
+* [Web アプリケーションの開発](web-tutorials/)
+* [サーバー・サイドの開発](server-side-tutorials/)

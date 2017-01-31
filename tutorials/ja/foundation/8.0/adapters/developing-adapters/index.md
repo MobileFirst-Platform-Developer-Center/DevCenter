@@ -1,99 +1,99 @@
 ---
 layout: tutorial
-title: Developing Adapters in Eclipse
+title: Eclipse でのアダプターの開発
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-As taught in previous [Adapters tutorials](../), adapters are Maven projects that are created by using either Maven directly or via the {{ site.data.keys.mf_cli }}. The adapter code can then be edited in any IDE, and later built and deployed using either Maven or the {{ site.data.keys.mf_cli }}. A developer may also choose to create, develop, build and deploy all inside a supported IDEs, such as Eclipse or IntelliJ. In this tutorial an adapter is created and built from the Eclipse IDE.
+前の[アダプター・チュートリアル](../)で説明したように、アダプターは、Maven を直接使用するか、{{site.data.keys.mf_cli }} を使用して作成する Maven プロジェクトです。作成後、アダプター・コードを任意の IDE で編集でき、後で Maven または {{site.data.keys.mf_cli }} を使用してビルドおよびデプロイすることができます。開発者は、サポートされる IDE (Eclipse や IntelliJ など) の内部ですべてを作成、開発、ビルド、およびデプロイすることも選択できます。このチュートリアルでは、アダプターを Eclipse IDE から作成してビルドします。
 
-> For instructions how to use IntelliJ see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters) Blog Post.
+> IntelliJ の使用方法の説明については、ブログ投稿の [IntelliJ を使用した MobileFirst Java アダプターの開発]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters)を参照してください。
 
-**Prerequisite:**
+**前提条件:**
 
-* Get familiarized with adapters by reading the [Adapters tutorials](../) first.
-* Maven integration in Eclipse. Starting Eclipse Kepler (v4.3), Maven support is built-in in Eclipse. If your Eclipse instance does not support Maven, [follow the m2e instructions](http://www.eclipse.org/m2e/) to add Maven support.
+* 最初に[アダプター・チュートリアル](../)を読み、アダプターについての知識を得てください。
+* Eclipse への Maven の組み込み。Eclipse Kepler (v4.3) からは、Maven サポートが Eclipse に組み込まれています。ご使用の Eclipse インスタンスで Maven がサポートされていない場合は、[m2e の説明に従って](http://www.eclipse.org/m2e/) Maven サポートを追加してください。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Creating a new adapter Maven project](#creating-a-new-adapter-maven-project)
-* [Importing an existing adapter Maven project](#importing-an-existing-adapter-maven-project)
-* [Building and deploying an adapter Maven project](#building-and-deploying-an-adapter-maven-project)
-* [Further reading](#further-reading)
+* [新規のアダプター Maven プロジェクトの作成](#creating-a-new-adapter-maven-project)
+* [既存のアダプター Maven プロジェクトのインポート](#importing-an-existing-adapter-maven-project)
+* [アダプター Maven プロジェクトのビルドとデプロイ](#building-and-deploying-an-adapter-maven-project)
+* [発展的なチュートリアル](#further-reading)
 
-## Create or import an Adapter Maven project
+## アダプター Maven プロジェクトの作成またはインポート
 {: #create-or-import-an-adapter-maven-project }
 
-Follow the bellow instructions to either create a new adapter Maven project or import an existing one.
+以下の手順に従って、新規のアダプター Maven プロジェクトを作成するか、既存のアダプター Maven プロジェクトをインポートします。
 
-### Creating a new adapter Maven project
+### 新規のアダプター Maven プロジェクトの作成
 {: #creating-a-new-adapter-maven-project }
 
-1. To create a new adapter Maven project, select: **File → New → Other... → Maven → Maven Project** and click **Next**.
+1. 新規のアダプター Maven プロジェクトを作成するには、**「ファイル」 → 「新規」 → 「その他...」 → 「Maven」 → 「Maven プロジェクト」**を選択し、**「次へ」**をクリックします。
 
-    ![Image showing how to create an adapter Maven project in Eclipse](new-maven-project.png)
+    ![Eclipse でのアダプター Maven プロジェクトの作成方法を示すイメージ](new-maven-project.png)
 
-2. Provide project name and location.  
-    - Make sure the option to create a simple project is ticked **off** and click **Next**.
+2. プロジェクトの名前とその場所を指定します。  
+    - 単一プロジェクトを作成するオプションのチェック・マークが**オフ**になっていることを確認して、**「次へ」**をクリックします。
 
-    ![Image showing how to create an adapter Maven project in Eclipse](select-project-name-and-location.png)
+    ![Eclipse でのアダプター Maven プロジェクトの作成方法を示すイメージ](select-project-name-and-location.png)
 
-3. Select or add the adapter Archetype.
-    - If you [installed the archetypes locally](../creating-adapters/#install-maven) and they are not appearing in the list of archetypes, select **Configure → Add Local Catalog → Browse to the /.m2/repository/archetype-catalog.xml in the home directory**.
-    - Click on **Add Archetype** and provide the following details:
-        - **Archetype Group Id**: `com.ibm.mfp`
-        - **Archetype Artifact Id**: either `adapter-maven-archetype-java`, `adapter-maven-archetype-http` or `adapter-maven-archetype-sql`
-        - **Archetype Version**: `8.0.2016061011` (you can find the latest available version in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation))
+3. アダプターのアーキタイプを選択または追加します。
+    - [アーキタイプをローカルにインストールしてあり](../creating-adapters/#install-maven)、それらのアーキタイプがアーキタイプのリストに表示されていない場合は、**「構成」 → 「ローカル・カタログの追加」 → 「ホーム・ディレクトリーの  /.m2/repository/archetype-catalog.xml を参照」**を選択します。
+    - **「アーキタイプの追加」**をクリックし、以下の詳細を指定します。
+        - **アーキタイプ・グループ ID**: `com.ibm.mfp`
+        - **アーキタイプ成果物 ID**: `adapter-maven-archetype-java`、`adapter-maven-archetype-http`、または `adapter-maven-archetype-sql`
+        - **アーキタイプ・バージョン**: `8.0.2016061011` (使用可能な最新バージョンは [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) で検索できます)
 
-    ![Image showing how to create an adapter Maven project in Eclipse](create-an-archetype.png)
+    ![Eclipse でのアダプター Maven プロジェクトの作成方法を示すイメージ](create-an-archetype.png)
 
-4. Specify Maven project parameters.  
-    - Specify required **Group Id**, **Artifact Id**, **Version** and **package** parameters, and click **Finish**.
+4. Maven プロジェクト・パラメーターを指定します。  
+    - 必須の**「グループ ID」**、**「成果物 ID」**、 **「バージョン」**、および**「パッケージ」**の各パラメーターを指定して、**「終了」**をクリックします。
 
-    ![Image showing how to create an adapter Maven project in Eclipse](project-parameters.png)
+    ![Eclipse でのアダプター Maven プロジェクトの作成方法を示すイメージ](project-parameters.png)
 
-### Importing an existing adapter Maven project
+### 既存のアダプター Maven プロジェクトのインポート
 {: #importing-an-existing-adapter-maven-project }
 
-To import the adapter Maven project, select **File → Import... → Maven → Existing Maven Projects**.
+アダプター Maven プロジェクトをインポートするには、**「ファイル」 → 「インポート...」 → 「Maven」 → 「既存の Maven プロジェクト」**を選択します。
 
-![Image showing how to import an adapter Maven project to Eclipse](import-adapter-maven-project.png)
+![Eclipse へのアダプター Maven プロジェクトのインポート方法を示すイメージ](import-adapter-maven-project.png)
 
-## Building and deploying an adapter Maven project
+## アダプター Maven プロジェクトのビルドとデプロイ
 {: #building-and-deploying-an-adapter-maven-project }
 
-An adapter project can be built and deployed by using either Maven command-line commands, the {{ site.data.keys.mf_cli }} or from Eclipse.  
-[Learn how to build and deploy adapters](../creating-adapters/#build-and-deploy-adapters).
+アダプター・プロジェクトのビルドとデプロイは、Maven コマンド・ライン・コマンド、{{site.data.keys.mf_cli }}、または Eclipse を使用して行うことができます。  
+[アダプターのビルドとデプロイの方法について説明します。](../creating-adapters/#build-and-deploy-adapters).
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Eclipse can also be enhanced to ease the deployment step by integrating a **Command-line** window using a plug-in, creating a consistant development environment. From this window Maven or {{ site.data.keys.mf_cli }} commands can be run.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** Eclipse を拡張してデプロイメント・ステップを容易にすることもできます。それには、プラグインを使用して**コマンド・ライン**・ウィンドウを統合し、一貫性のある開発環境を作成します。このウィンドウから、Maven または {{site.data.keys.mf_cli }} コマンドを実行できます。
 
-### Building an adapter
+### アダプターのビルド
 {: #building-an-adapter }
 
-To build an adapter, right-click on the adapter folder and select **Run As → Maven install**.  
+アダプターをビルドするには、アダプター・フォルダーを右クリックし、**「次を実行」 → 「Maven のインストール」**を選択します。  
 
-### Deploying an adapter
+### アダプターのデプロイ
 {: #deploying-an-adapter }
 
-To deploy an adapter, first add the deploy Maven command:
+アダプターをデプロイするには、最初に deploy Maven コマンドを追加します。
 
-1. Select **Run → Run Configurations...**, right-click on **Maven Build** and select **New**.
-2. Provide a Name: "Maven deploy".
-2. Set as a Goal: "adapter:deploy".
-3. Click **Apply** followed by clicking on **Run** to have an initial deploy.
+1. **「実行」 → 「構成の実行...」**を選択し、**「Maven のビルド」**を右クリックして、**「新規」**を選択します。
+2. 「名前:」に「Maven deploy」を指定します。
+2. 「目標:」として「adapter:deploy」を設定します。
+3. **「適用」**をクリックし、続いて**「実行」**をクリックして、初期デプロイを実行します。
 
-You can now right-click on the adapter folder and select **Run As → Maven Deploy**
+ここで、アダプター・フォルダーを右クリックして、**「次を実行」 → 「Maven のデプロイ」**を選択します。
 
-### Building and deploying an adapter
+### アダプターのビルドとデプロイ
 {: #building-and-deploying-an-adapter }
 
-You can also combine the "build" and  "deploy" Maven Goals to a single "build and deploy" Goal: "clean install adapter:deploy".
+「build」と「deploy」の Maven 目標を組み合わせて、単一の「build and deploy」目標である「clean install adapter:deploy」にすることもできます。
 
-## Further reading
+## 発展的なチュートリアル
 {: #further-reading }
 
-Learn how to debug Java code in adapters in the [Testing and debugging adaters](../testing-and-debugging-adapters) tutorial.
+アダプターの Java コードのデバッグ方法については、[アダプターのテストおよびデバッグ](../testing-and-debugging-adapters)チュートリアルを参照してください。

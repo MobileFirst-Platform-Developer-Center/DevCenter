@@ -1,119 +1,118 @@
 ---
 layout: tutorial
-title: MobileFirst Foundation development in Cordova applications
-breadcrumb_title: Cordova application development
+title: Cordova アプリケーションでの MobileFirst Foundation の開発
+breadcrumb_title: Cordova アプリケーション開発
 relevantTo: [cordova]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-From [http://cordova.apache.org/](http://cordova.apache.org/):
+[http://cordova.apache.org/](http://cordova.apache.org/) から:
 
-> Apache Cordova is an open-source mobile development framework. It allows you to use standard web technologies such as HTML5, CSS3, and JavaScript for cross-platform development, avoiding each mobile platforms' native development language. Applications execute within wrappers targeted to each platform, and rely on standards-compliant API bindings to access each device's sensors, data, and network status.
+> Apache Cordova は、オープン・ソースのモバイル開発フレームワークです。HTML5、CSS3、および JavaScript など、クロスプラットフォーム開発用の標準 Web テクノロジーを使用することができ、個々のモバイル・プラットフォームのネイティブ開発言語を使用せずに済みます。アプリケーションは、個々のプラットフォームを対象としたラッパー内で実行され、標準に準拠した API バインディングに依存して、各デバイスのセンサー、データ、およびネットワーク状況にアクセスします。
 
-{{ site.data.keys.product_full }} provides an SDK in the form of several Cordova plug-ins. Learn how to [Add the {{ site.data.keys.product }} SDK to Cordova applications](../../application-development/sdk/cordova).
+{{site.data.keys.product_full }} は、複数の Cordova プラグインの形式で SDK を提供しています。[{{site.data.keys.product }} SDKをCordova アプリケーションに追加する](../../application-development/sdk/cordova)方法を説明します。
 
-> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in {{ site.data.keys.product_full }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
+> **注:** iOS アプリケーションのストアへの提出および検証のために Test Flight または iTunes Connect を使用して生成されたアーカイブ・ファイルおよび IPA ファイルにより、ランタイムの異常終了や失敗が発生する場合があります。詳細については、ブログ[『{{site.data.keys.product_full }} でのアプリ・ストアへの提出のための iOS アプリの準備』](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/)を参照してください。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
 
-* [Cordova application development](#cordova-application-development)
-* [{{ site.data.keys.product_adj }} APIs](#mobilefirst-apis)
-* [{{ site.data.keys.product_adj }} SDK Startup Flow](#mobilefirst-sdk-startup-flow)
-* [Cordova Application Security](#cordova-application-security)
-* [Cordova Application Resources](#cordova-application-resources)
-* [Previewing an application's web resources](#previewing-an-applications-web-resources)
-* [Implementing JavaScript Code](#implementing-javascript-code)
-* [CrossWalk support for Android](#crosswalk-support-for-android)
-* [WKWebView support for iOS](#wkwebview-support-for-ios)
-* [Further reading](#further-reading)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [Cordova アプリケーション開発](#cordova-application-development)
+* [{{site.data.keys.product_adj }} API](#mobilefirst-apis)
+* [{{site.data.keys.product_adj }} SDK 開始フロー](#mobilefirst-sdk-startup-flow)
+* [Cordova アプリケーション・セキュリティー](#cordova-application-security)
+* [Cordova アプリケーション・リソース](#cordova-application-resources)
+* [アプリケーションの Web リソースのプレビュー](#previewing-an-applications-web-resources)
+* [JavaScript コードの実装](#implementing-javascript-code)
+* [Android 用の CrossWalk サポート](#crosswalk-support-for-android)
+* [iOS 用の WKWebView のサポート](#wkwebview-support-for-ios)
+* [発展的なチュートリアル](#further-reading)
+* [次に使用するチュートリアル](#tutorials-to-follow-next)
 
-## Cordova application development
+## Cordova アプリケーション開発
 {: #cordova-application-development }
-Applications developed with Cordova can be further enhanced by using the following Cordova-provided development paths and features:
+Cordova を使用して開発されたアプリケーションは、以下の Cordova 提供の開発パスおよびフィーチャーを使用してさらに拡張できます。
 
-### Hooks
+### フック
 {: #hooks }
-Cordova Hooks are scripts that provide developers with the ability to customize Cordova commands, enabling to create for example custom build flows.  
-Read more about [Cordova Hooks](http://cordova.apache.org/docs/en/dev/guide/appdev/hooks/index.html#Hooks%20Guide).
+Cordova フックは、Cordova コマンドをカスタマイズする機能を開発者に提供するスクリプトで、例えば、カスタム・ビルド・フローの作成を可能にします。  
+詳しくは、[Cordova フック](http://cordova.apache.org/docs/en/dev/guide/appdev/hooks/index.html#Hooks%20Guide)に関する説明を参照してください。
 
-### Merges
+### マージ
 {: #merges }
-The Merges folder provides the ability to have platform-specific web resources (HTML, CSS and JavaScript files). These web resources are then deployed during the `cordova prepare` step to the appropriate native directory. Files placed under the **merges/** folder will override matching files in the **www/** folder of the relevant platform. Read more about [the Merges folder](https://github.com/apache/cordova-cli#merges).
+Merges フォルダーを使用すると、プラットフォーム固有の Web リソース (HTML、CSS、および JavaScript のファイル) を保持することができます。その後、これらの Web リソースは、`cordova prepare` ステップ中に適切なネイティブ・ディレクトリーにデプロイされます。**merges/** フォルダーの下に配置されたファイルは、関連プラットフォームの **www/** フォルダー内の一致するファイルをオーバーライドします。詳しくは、[Merges フォルダー](https://github.com/apache/cordova-cli#merges)に関する説明を参照してください。
 
-### Cordova plug-ins
+### Cordova プラグイン
 {: #cordova-plug-ins }
-Using Cordova plug-ins can provide enhancements such as adding native UI elements (dialogs, tabbars, spinners and the like), as well as more advanced functionalities such as Mapping and Geolocation, loading of external content, custom keyboards, Device integration (camera, contacts, sensors, and so on).
+Cordova プラグインは、ネイティブ UI エレメント (ダイアログ、タブ・バー、スピナーなど) の追加などの機能拡張に加え、マッピングおよび地理位置情報、外部コンテンツのロード、カスタム・キーボード、デバイス統合 (カメラ、コンタクト、センサー等) などのより高度な機能を提供できます。
 
-You can find Cordova plug-ins on [GitHub.com](https://github.com) and in popular Cordova plug-ins websites, such as [Plugreg](http://plugreg.com/) and [NPM](http://npmjs.org).
+Cordova プラグインは、[GitHub.com](https://github.com) 上、およびよく使用されている Cordova プラグインの Web サイト ([Plugreg](http://plugreg.com/) および [NPM](http://npmjs.org)) にあります。
 
-Example plug-ins:
+サンプル・プラグイン:
 
 - [cordova-plugin-dialogs](https://www.npmjs.com/package/cordova-plugin-dialogs)
 - [cordova-plug-inprogress-indicator](https://www.npmjs.com/package/cordova-plugin-progress-indicator)
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
 
-### 3rd-party frameworks
+### サード・パーティー製フレームワーク
 {: #3rd-party-frameworks }
-Cordova application development can be further enhanced by using frameworks such as [Ionic](http://ionicframework.com/), [AngularJS](https://angularjs.org/), [jQuery Mobile](http://jquerymobile.com/), [Backbone](http://backbonejs.org/) and many others.
+Cordova アプリケーション開発は、[Ionic](http://ionicframework.com/)、[AngularJS](https://angularjs.org/)、[jQuery Mobile](http://jquerymobile.com/)、[Backbone](http://backbonejs.org/) などのフレームワークを使用してさらに拡張できます。
 
-**Integration blog posts**
+**統合ブログ投稿**
 
-* [Best Practices for building AngularJS apps with MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/08/11/best-practices-for-building-angularjs-apps-with-mobilefirst-foundation-8.0/)
-* [Integrating {{ site.data.keys.product }} in Ionic-based apps]({{site.baseurl}}/blog/2016/07/19/integrating-mobilefirst-foundation-8-in-ionic-based-apps/)
-* [Integrating {{ site.data.keys.product }} in Ionic 2 based apps]({{site.baseurl}}/blog/2016/10/17/integrating-mobilefirst-foundation-8-in-ionic2-based-apps/)
+* [MobileFirst Foundation 8.0 を使用した AngularJS アプリケーションのビルドのベスト・プラクティス](https://mobilefirstplatform.ibmcloud.com/blog/2016/08/11/best-practices-for-building-angularjs-apps-with-mobilefirst-foundation-8.0/)
+* [Ionic ベースのアプリケーションでの {{site.data.keys.product }} の統合]({{site.baseurl}}/blog/2016/07/19/integrating-mobilefirst-foundation-8-in-ionic-based-apps/)
+* [Ionic 2 ベースのアプリケーションでの {{site.data.keys.product }} の統合]({{site.baseurl}}/blog/2016/10/17/integrating-mobilefirst-foundation-8-in-ionic2-based-apps/)
 
-### 3rd-party packages
+### サード・パーティー製パッケージ
 {: #3rd-party-packages }
-Applications can be modified using 3rd party packages to achieve requirements such as Minification &amp; Concatenation of the application's web resources and more. Popular packages to do so are:
+アプリケーションの Web リソース等のミニファイおよび連結などの要件を達成するために、サード・パーティー製パッケージを使用してアプリケーションを変更できます。この目的でよく使用されているパッケージは、以下のとおりです。
 
 - [uglify-js](https://www.npmjs.com/package/uglify-js)
 - [clean-css](https://www.npmjs.com/package/clean-css)
 
-## {{ site.data.keys.product_adj }} APIs
+## {{site.data.keys.product_adj }} API
 {: #mobilefirst-apis }
-After [adding the {{ site.data.keys.product_adj }} Cordova SDK](../../application-development/sdk/cordova) to a Cordova application, the {{ site.data.keys.product_adj }} set of API methods is now available for use.
+[{{site.data.keys.product_adj }} Cordova SDK を](../../application-development/sdk/cordova) Cordova アプリケーションに追加すると、API メソッドの {{site.data.keys.product_adj }} セットが使用できるようになります。
 
-> For a complete list of available API methods, refer to the "Client API changes in V8.0.0" topic in the user documentation.
+> 使用可能な API メソッドの完全なリストについては、ユーザー資料内のトピック『V8.0.0 でのクライアント API の変更』を参照してください。
 
-## {{ site.data.keys.product_adj }} SDK Startup Flow
+## {{site.data.keys.product_adj }} SDK 開始フロー
 {: #mobilefirst-sdk-startup-flow }
 <div class="panel-group accordion" id="startup-flows" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-flow">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Android startup flow</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Android 開始フロー</b></a>
             </h4>
         </div>
 
         <div id="collapse-android-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-flow">
             <div class="panel-body">
-                <p>In Android Studio, you can review the start-up process of the Cordova app for Android with {{ site.data.keys.product_adj }}. The {{ site.data.keys.product_adj }} Cordova plug-in, <b>cordova-plugin-mfp</b>, has native asynchronous bootstrap sequence. The bootstrap sequence must be completed before the Cordova application loads the application's main html file.</p>
+                <p>Android Studio で、{{site.data.keys.product_adj }} を使用する Android 用 Cordova アプリケーションの開始プロセスを検討できます。{{site.data.keys.product_adj }} Cordova プラグイン <b>cordova-plugin-mfp</b> には、ネイティブの非同期ブートストラップ・シーケンスがあります。ブートストラップ・シーケンスは、Cordova アプリケーションがアプリケーションのメイン html ファイルをロードする前に完了する必要があります。</p>
                 
-                <p>Adding the <b>cordova-plugin-mfp</b> plug-in to a Cordova application instruments the application's <b>AndroidManifest.xml</b> file and the <code>MainActivity</code> extending the <code>CordovaActivity</code> native code to perform the {{ site.data.keys.product_adj }} initialization.</p>
+                <p><b>cordova-plugin-mfp</b> プラグインを Cordova アプリケーションに追加すると、アプリケーションの <b>AndroidManifest.xml</b> ファイルが装備されます。また、{{site.data.keys.product_adj }} の初期化を実行するように <code>CordovaActivity</code> ネイティブ・コードを拡張する <code>MainActivity</code> ファイルも装備されます。</p>
                 
-                <p>The application native code instrumentation consists of:</p>
+                <p>アプリケーションのネイティブ・コードのインスツルメンテーションは以下で構成されます。</p>
                 <ul>
-                    <li>Adding <code>com.worklight.androidgap.api.WL</code> API calls to perform the {{ site.data.keys.product_adj }} initialization.</li>
-                    <li>In the <b>AndroidManifest.xml</b> file adding
-                        <ul>
-                            <li>An activity called <code>MFPLoadUrlActivity</code> to allow proper {{ site.data.keys.product_adj }} initialization in case the <b>cordova-plugin-crosswalk-webview</b> has been installed.</li>
-                            <li>A custom attribute <b>android:name="com.ibm.MFPApplication</b>" to the <code>application</code> element (see below).</li>
+                    <li>{{site.data.keys.product_adj }} の初期化を実行するための <code>com.worklight.androidgap.api.WL</code> API 呼び出しを追加します。</li>
+                    <li><b>AndroidManifest.xml</b> ファイルで以下を追加します。<ul>
+                            <li><code>MFPLoadUrlActivity</code> というアクティビティー。このアクティビティーにより、<b>cordova-plugin-crosswalk-webview</b>がインストールされていた場合に、{{site.data.keys.product_adj }} を適切に初期化することができます。</li>
+                            <li>カスタム属性 <b>android:name="com.ibm.MFPApplication"</b>。これを <code>application</code> エレメントに追加します (以下を参照)。</li>
                         </ul>
                     </li>
                 </ul>
                 
-                <h3>Implementing WLInitWebFrameworkListener and creating the WL object</h3>
-                <p>The <b>MainActivity.java</b> file creates the initial <code>MainActivity</code> class extending the <code>CordovaActivity</code> class. The <code>WLInitWebFrameworkListener</code> receives notification when the {{ site.data.keys.product_adj }} framework is initialized.</p>
+                <h3>WLInitWebFrameworkListener の実装と WL オブジェクトの作成</h3>
+                <p><b>MainActivity.java</b> ファイルは、<code>CordovaActivity</code> クラスを拡張する初期の <code>MainActivity</code> クラスを作成します。<code>WLInitWebFrameworkListener</code> は、{{site.data.keys.product_adj }} フレームワークが初期化される際に、通知を受信します。</p>
                 
 {% highlight java %}
 public class MainActivity extends CordovaActivity implements WLInitWebFrameworkListener {
 {% endhighlight %}
 
-                <p>The <code>MFPApplication</code> class is called from within <code>onCreate</code> and creates a {{ site.data.keys.product_adj }} client instance (<code>com.worklight.androidgap.api.WL</code>) that is used throughout the app. The <code>onCreate</code> method initializes the <b>WebView framework</b>.</p>
+                <p><code>MFPApplication</code> クラスは <code>onCreate</code> 内から呼び出され、アプリケーションを通して使用される {{site.data.keys.product_adj }} クライアント・インスタンス (<code>com.worklight.androidgap.api.WL</code>) を作成します。<code>onCreate</code> メソッドは <b>WebView フレームワーク</b>を初期化します。</p>
                 
 {% highlight java %}
 @Overridepublic void onCreate(Bundle savedInstanceState){
@@ -121,28 +120,28 @@ super.onCreate(savedInstanceState);
 
 if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
            WL.getInstance().showSplashScreen(this);
-       } 
+       }
    init();
    WL.getInstance().initializeWebFramework(getApplicationContext(), this);
 }
 {% endhighlight %}
 
-                <p>The <code>MFPApplication</code> class has two functions:</p>
+                <p><code>MFPApplication</code> クラスには、以下の 2 つの機能があります。</p>
                 <ul>
-                    <li>Defines the <code>showSplashScreen</code> method for loading a splash screen if one exists.</li>
-                    <li>Creates two listeners for enabling analytics. These listeners can be removed if not needed.</li>
+                    <li>スプラッシュ画面が存在する場合にロードするための <code>showSplashScreen</code> メソッドを定義します。</li>
+                    <li>分析を使用可能にする 2 つのリスナーを作成します。これらのリスナーは、不要な場合に削除することができます。</li>
                 </ul>
                 
-                <h3>Loading the WebView</h3>
-                <p>The <b>cordova-plugin-mfp</b> plug-in adds an activity to the <b>AndroidManifest.xml</b> file that is required for initializing the Crosswalks WebView:</p>
+                <h3>WebView のロード</h3>
+                <p><b>cordova-plugin-mfp</b> プラグインは、Crosswalks WebView を初期化するために必要な以下のアクティビティーを <b>AndroidManifest.xml</b> ファイルに追加します。</p>
 
 {% highlight xml %}
 <activity android:name="com.ibm.MFPLoadUrlActivity" />
 {% endhighlight %}
 
-                <p>This activity is used to ensure the asynchronous initialization of the Crosswalk WebView as follows:</p>
+                <p>このアクティビティーを使用して、以下のように Crosswalk WebView が非同期に初期化されるようにします。</p>
                 
-                <p>After the {{ site.data.keys.product_adj }} framework is initialized and ready to load in the WebView, the <code>onInitWebFrameworkComplete</code> connects to the URL if <code>WLInitWebFrameworkResult</code> succeeds.</p>
+                <p>{{site.data.keys.product_adj }} フレームワークが初期化されて WebView へのロード準備ができた後、<code>WLInitWebFrameworkResult</code> が成功すると、<code>onInitWebFrameworkComplete</code> は URL に接続します。</p>
                 
 {% highlight java %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
@@ -154,10 +153,9 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 }
 {% endhighlight %}
 
-
             
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
@@ -165,16 +163,16 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-flow">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>iOS startup flow</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>iOS 開始フロー</b></a>
             </h4>
         </div>
 
         <div id="collapse-ios-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-flow">
             <div class="panel-body">
-                <p>The {{ site.data.keys.product_adj }} framework is initialized in the iOS platform to display a WebView in the Cordova app with {{ site.data.keys.product_adj }}.</p>
+                <p>{{site.data.keys.product_adj }} フレームワークは iOS プラットフォームで初期化され、{{site.data.keys.product_adj }} を使用する Cordova アプリケーションで WebView を表示します。</p>
 
                 <b>main.m</b>
-                <p>In the <code>main.m</code> file the {{ site.data.keys.product_adj }} plug-in replaces the default main application <code>AppDelegate</code> with <code>MFPAppDelegate</code>.</p>
+                <p><code>main.m</code> ファイルで、{{site.data.keys.product_adj }} プラグインはデフォルトのメイン・アプリケーション <code>AppDelegate</code> を <code>MFPAppDelegate</code> に置き換えます。</p>
 
 {% highlight objc %}
 #import <UIKit/UIKit.h>
@@ -182,26 +180,26 @@ int main(int argc, char *argv[]) {
  @autoreleasepool
     {    
         int retVal = UIApplicationMain(argc, argv, nil, @"MFPAppDelegate");   
-        return retVal; 
+        return retVal;
     }
 }
 {% endhighlight %}
 
                 <b>MFPAppDelegate.m</b>
-                <p>The <code>MFPAppDelegate.m</code> file is found in the plugins folder. This replaces the default Cordova <code>AppDelegate.m</code> file and initializes the {{ site.data.keys.product_adj }} framework before the view controller loads the WebView.</p>
+                <p><code>MFPAppDelegate.m</code> ファイルは plugins フォルダーにあります。これは、デフォルトの Cordova <code>AppDelegate.m</code> ファイルを置き換えて、ビュー・コントローラーが WebView をロードする前に {{site.data.keys.product_adj }} フレームワークを初期化します。</p>
 
-                <p>The <code>didFinishLaunchingWithOptions</code> method initializes the framework:</p>
+                <p><code>didFinishLaunchingWithOptions</code> メソッドは、次のフレームワークを初期化します。</p>
 
 {% highlight objc %}
 [[WL sharedInstance] initializeWebFrameworkWithDelegate:self];
 {% endhighlight %}
 
-                <p>Once the initialization succeeds the <code>wlInitWebFrameworkDidCompleteWithResult</code> checks that the {{ site.data.keys.product_adj }} framework has been loaded, invokes <code>wlInitDidCompleteSuccessfully</code> and creates listeners for receiving data. <code>wlInitDidCompleteSuccessfully</code> creates a <code>cordovaViewController</code> that connects to the default <b>index.html</b> page.</p>
+                <p>初期化が成功すると、<code>wlInitWebFrameworkDidCompleteWithResult</code> は、{{site.data.keys.product_adj }} フレームワークがロードされ、<code>wlInitDidCompleteSuccessfully</code> を呼び出し、データを受信するためのリスナーを作成したかどうかを確認します。<code>wlInitDidCompleteSuccessfully</code> は、デフォルトの <b>index.html</b> ページに接続する <code>cordovaViewController</code> を作成します。</p>
 
-                <p>Once the iOS Cordova app is built in Xcode without errors, you can proceed to add features to the native platform and WebView.</p>
+                <p>iOS Cordova アプリケーションが Xcode でエラーなしでビルドされると、フィーチャーをネイティブ・プラットフォームと WebView に追加できるようになります。</p>
             
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
@@ -209,230 +207,244 @@ int main(int argc, char *argv[]) {
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="windows-flow">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>Windows startup flow</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>Windows 開始フロー</b></a>
             </h4>
         </div>
 
         <div id="collapse-windows-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="windows-flow">
             <div class="panel-body">
-                <p>The {{ site.data.keys.product_adj }} Cordova plug-in, <b>cordova-plugin-mfp</b> has native asynchronous bootstrap sequence. The bootstrap sequence must be completed before the Cordova application loads the application's main HTML file.</p>
+                <p>{{site.data.keys.product_adj }} Cordova プラグイン <b>cordova-plugin-mfp</b> には、ネイティブの非同期ブートストラップ・シーケンスがあります。ブートストラップ・シーケンスは、Cordova アプリケーションがアプリケーションのメイン HTML ファイルをロードする前に完了する必要があります。</p>
 
-                <p>Adding the <b>cordova-plugin-mfp</b> plug-in to a Cordova application adds the <b>index.html</b> file to the application's <b>appxmanifest</b> file. This extends the <code>CordovaActivity</code> native code to perform the {{ site.data.keys.product_adj }} initialization.</p>
+                <p>Cordova アプリケーションに <b>cordova-plugin-mfp</b> プラグインを追加すると、アプリケーションの  <b>appxmanifest</b> ファイルに  <b>index.html</b> ファイルが追加されます。これにより、{{site.data.keys.product_adj }} の初期化を実行するように <code>CordovaActivity</code> ネイティブ・コードが拡張されます。</p>
             
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
 </div>
 
-## Cordova Application Security
+## Cordova アプリケーション・セキュリティー
 {: #cordova-application-security }
-{{ site.data.keys.product_full }} provides security features that help you protect your Cordova apps.
+{{site.data.keys.product_full }}
+は、Cordova アプリケーションを保護する際に役立つセキュリティー・フィーチャーを提供します。
 
-Much of the content in a cross-platform app can be more easily modified by an unauthorized person than for a native app. Because much of the common content in a cross-platform app is in a readable format, IBM MobileFirst Foundation provides features that can provide a higher level of security for your cross-platform Cordova apps. 
+クロスプラットフォーム・アプリケーションのコンテンツの多くは、ネイティブ・アプリケーションよりもさらに容易に無許可な個人によって変更される可能性があります。クロスプラットフォーム・アプリケーションの一般的なコンテンツの多くは読み取り可能なフォーマットであるため、IBM MobileFirst Foundation では、ご使用のクロスプラットフォーム Cordova アプリケーションに高水準のセキュリティーを提供できるフィーチャーを用意しています。 
 
-> Learn more about the [{{ site.data.keys.product_adj }} security framework](../../authentication-and-security)
+> 詳しくは、[{{site.data.keys.product_adj }} セキュリティー・フレームワーク](../../authentication-and-security)に関する説明を参照してください。
 
-Use the following features to improve security on your Cordova apps:
+以下のフィーチャーを使用して、Cordova アプリケーションのセキュリティーを強化します。
 
-* [Encrypting the web resources of your Cordova packages](securing-apps/#encrypting-the-web-resources-of-your-cordova-packages)  
-    Encrypts the contents in the www folder of your Cordova app, and decrypts it when the app is installed and run for the first time. This encryption makes it more difficult for someone to view or modify the content in that folder while the app is packaged.
-* [Enabling the web resources checksum feature](securing-apps/#enabling-the-web-resources-checksum-feature)  
-    Ensures the integrity of the app when it starts by comparing the contents to the baseline checksum results that were gathered the first time the app was started. This test helps prevent the modification of an app that is already installed.
-* [Enabling FIPS 140-2](../../administering-apps/federal/#enabling-fips-140-2)  
-    Ensures that the encryption algorithms that are used to encrypt data at rest and data in motion are compliant with the Federal Information Processing Standards (FIPS) 140-2 standard.
-* [Certificate Pinning](../../authentication-and-security/certificate-pinning)  
-    Helps you prevent man-in-the-middle attacks by associating a host with its expected public key.
+* [Cordova パッケージの Web リソースの暗号化](securing-apps/#encrypting-the-web-resources-of-your-cordova-packages)  
+Cordova アプリケーションの www フォルダーにあるコンテンツを暗号化し、アプリケーションが最初にインストールされて実行されたときに暗号化を解除します。この暗号化により、アプリケーションがパッケージ化されている間、そのフォルダーにあるコンテンツを表示または変更することがより困難になります。
+* [Web リソース・チェックサム機能の有効化](securing-apps/#enabling-the-web-resources-checksum-feature)  
+アプリケーションの開始時に、そのコンテンツを、アプリケーションが初めて開始されたときに収集された基準値となるチェックサム結果と比較して、整合性を確認します。このテストは、インストール済みのアプリケーションの変更を防ぐのに役立ちます。
+* [FIPS 140-2 の有効化](../../administering-apps/federal/#enabling-fips-140-2)  
+休止中のデータと動作中のデータの暗号化に使用される暗号化アルゴリズムが、必ず連邦情報処理標準 (FIPS) 140-2 に準拠するようにします。
+* [証明書ピン留め](../../authentication-and-security/certificate-pinning)  
+予想される公開鍵にホストを関連付けることで、中間者 (man-in-the-middle) 攻撃を防ぎます。
 
-## Cordova Application Resources
+## Cordova アプリケーション・リソース
 {: #cordova-application-resources }
-Certain resources are needed as part of the Cordova application. In most cases, they are generated for you when you create your Cordova app with your preferred Cordova development tools. If you use the {{ site.data.keys.product }} template, then splash screens and icons are also provided.
+Cordova アプリケーションの一部として、特定のリソースが必要です。それらは、ほとんどの場合、
+任意の Cordova 開発ツールで Cordova アプリケーションを作成すると生成されます。{{site.data.keys.product }} テンプレートを使用した場合、スプラッシュ画面およびアイコンも提供されます。
 
-You can use a project template that is provided by IBM for use with Cordova projects that are enabled to use {{ site.data.keys.product_adj }} features. If you use this {{ site.data.keys.product_adj }} template, the following resources are made available to you as a starting point. If you do not use the {{ site.data.keys.product_adj }} template, all of the resources are provided except splash screens and icons. You add the template by specifying the `--template` option and the {{ site.data.keys.product_adj }} template when you initially create your Cordova project.
+{{site.data.keys.product_adj }} 機能の使用に対応した Cordova プロジェクトで使用するために、IBM 提供のプロジェクト・テンプレートを使用できます。この {{site.data.keys.product_adj }} テンプレートを使用する場合、開始点として以下のリソースが使用可能になります。この {{site.data.keys.product_adj }} テンプレートを使用しない場合、スプラッシュ画面とアイコンを除く、すべてのリソースが提供されます。このテンプレートを追加するには、Cordova プロジェクトの初期作成時に `--template` オプションおよび {{site.data.keys.product_adj }} テンプレートを指定します。
 
-If you change the default file names and paths of any resources, you must also specify such changes in the Cordova configuration file (config.xml). In addition, in some cases, you can change the default names and paths with the mfpdev app config command. If you can change names and paths with the mfpdev app config command, it is noted in the section about the specific resource.
+いずれかのリソースのデフォルトのファイル名とパスを変更する場合は、Cordova 構成ファイル (config.xml) 内でもその変更を指定する必要があります。また、場合によっては、デフォルトの名前およびパスを mfpdev app config コマンドで変更できます。mfpdev app config コマンドで名前およびパスを変更できる場合は、特定のリソースについてのセクションにその旨の注記があります。
 
-### Cordova configuration file (config.xml)
+### Cordova 構成ファイル (config.xml)
 {: #cordova-configuration-file-configxml }
-The Cordova configuration file is a required XML file that contains application metadata and is stored in the root directory of the app. The file is automatically generated when you create a Cordova application. You can modify it to add custom properties by using the mfpdev app config command. 
+Cordova 構成ファイルは、アプリケーション・メタデータを含む必須の XML ファイルであり、アプリケーションのルート・ディレクトリーに保管されます。このファイルは Cordova アプリケーションを作成すると自動的に生成されます。mfpdev app config コマンドを使用して、このファイルを変更してカスタム・プロパティーを追加できます。 
 
-### Main file (index.html)
+### メインファイル (index.html)
 {: #main-file-indexhtml}
-This main file is an HTML5 file that contains the application skeleton. This file loads all the web resources (scripts and stylesheets) that are necessary to define the general components of the application and to hook to required document events. You can find this file in the **your-project-name/www** directory. You can change the name of this file with the `mfpdev app config` command.
+このメインファイルは、アプリケーション・スケルトンを含む HTML5 ファイルです。このファイルは、アプリケーションの一般コンポーネントの定義および必要なドキュメント・イベントへの接続に必要なすべての Web リソース (スクリプトやスタイル・シートなど) をロードします。このファイルは、**your-project-name/www** ディレクトリーにあります。`mfpdev app config` コマンドを使用して、このファイルの名前を変更することができます。
 
-### Thumbnail image
+### サムネール・イメージ
 {: #thumbnail-image }
-The thumbnail image provides a graphical identification for the application on the {{ site.data.keys.mf_console }}. It must be a square image, preferably of size 90 by 90 pixels.  
-A default thumbnail image is provided when you use the template. You can override the default image by using the same file name with a replacement image. You can find thumbnail.png in the **your-project-name/www/img** folder. You can change the name or path of this file with the `mfpdev app config` command.
+サムネール・イメージでは、{{site.data.keys.mf_console }} でアプリケーションをグラフィカルに識別できます。
+これは、正方形イメージでなければならず、推奨されるサイズは 90 x 90 ピクセルです。  
+テンプレートを使用する場合、デフォルトのサムネール・イメージが提供されます。このデフォルト・イメージを、同じファイル名を使用して別のイメージでオーバーライドして置き換えることができます。thumbnail.png は、**your-project-name/www/img** フォルダーにあります。`mfpdev app config` コマンドを使用して、このファイルの名前またはパスを変更することができます。
 
-### Splash image
+### スプラッシュ・イメージ
 {: #splash-image }
-The splash image is displayed while the application is being initialized. If you use the {{ site.data.keys.product_adj }} default template, splash images are provided. These default images are stored in the following directories:
+スプラッシュ・イメージは、アプリケーションの初期化中に表示されます。{{site.data.keys.product_adj }} のデフォルト・テンプレートを使用する場合、スプラッシュ・イメージが提供されます。これらのデフォルトのイメージは、以下のディレクトリーに保管されています。
 
 * iOS: <your project name>/res/screen/ios/
 * Android: <your project name>/res/screen/android/
 * Windows: <your project name>/res/screen/windows/
 
-Various default splash images are included that are appropriate for different displays, and for iOS and Windows, different versions of the operating system. You can replace the default image that is provided by the template with your own splash image, or add an image if you did not use the template. When you use the {{ site.data.keys.product_adj }} template to build your app for the Android platform, the **cordova-plugin-splashscreen** plug-in is installed. When this plug-in is integrated, the splash images that Cordova uses are displayed instead of the images that are used by {{ site.data.keys.product }}. The images in the folder with the screen.png format are the Cordova standard splash images. You can specify which splash images display by changing the settings in the Cordova **config.xml** file.
+各種のディスプレイに適したもの、iOS および Windows 向けのもの、異なるバージョンのオペレーティング・システム向けのものなど、さまざまなデフォルト・スプラッシュ・イメージが含まれています。テンプレートで提供されているデフォルト・イメージを独自のスプラッシュ・イメージに置き換えることができます。また、テンプレートを使用していない場合は、イメージを追加できます。{{site.data.keys.product_adj }} テンプレートを使用して Android プラットフォーム用のアプリケーションをビルドした場合、**cordova-plugin-splashscreen** プラグインがインストールされます。このプラグインが統合されている場合、{{site.data.keys.product }} で使用されるイメージの代わりに、Cordova が使用するスプラッシュ・イメージが表示されます。
+フォルダーに含まれている screen.png フォーマットのイメージは、Cordova 標準スプラッシュ・イメージです。Cordova **config.xml** ファイルの設定を変更することで、表示するスプラッシュ・イメージを指定できます。
 
-If you do not use the {{ site.data.keys.product_adj }} template, the default splash images that are displayed are the images that are used by the {{ site.data.keys.product }} plug-in. The file names of the default {{ site.data.keys.product_adj }} source splash images are in the form **splash-string.9.png**.
+{{site.data.keys.product_adj }} テンプレートを使用していない場合に表示されるデフォルト・スプラッシュ・イメージは、{{site.data.keys.product }} プラグインで使用されるイメージです。
+デフォルト {{site.data.keys.product_adj }} ソース・スプラッシュ・イメージのファイル名の形式は、**splash-string.9.png** です。
 
-> For more information about using your own splash images, see [Adding custom splash screens and icons to Cordova apps](adding-images-and-icons).
+> ユーザー独自のスプラッシュ・イメージの使用について詳しくは、[『Cordova アプリケーションへのカスタム・スプラッシュ画面およびアイコンの追加』](adding-images-and-icons)を参照してください。
 
-### Application icons
+### アプリケーション・アイコン
 {: #application-icons }
-Default images for application icons are provided with the template. These default images are stored in the following directories:
+アプリケーション・アイコン用のデフォルト・イメージがテンプレートで提供されます。これらのデフォルトのイメージは、以下のディレクトリーに保管されています。
 
 * iOS: <your project name>/res/icon/ios/
 * Android: <your project name>/res/icon/android/
 * Windows: <your project name>/res/icon/windows/
 
-You can replace the default image with your own image. Your custom application image must match the size of the default application image that you are replacing, and must use the same file name. Various default images are provided, appropriate to different displays and operating system versions.
+デフォルト・イメージを独自のイメージに置き換えることができます。カスタム・アプリケーション・イメージは、置き換えようとしているデフォルトのアプリケーション・イメージのサイズと一致する必要があり、同じファイル名を使用する必要があります。さまざまなディスプレイおよびオペレーティング・システム・バージョンに適した各種デフォルト・イメージが用意されています。
 
-> For more information about using your own splash images, see [Adding custom splash screens and icons to Cordova apps](adding-images-and-icons).
+> ユーザー独自のスプラッシュ・イメージの使用について詳しくは、[『Cordova アプリケーションへのカスタム・スプラッシュ画面およびアイコンの追加』](adding-images-and-icons)を参照してください。
 
-### Stylesheets
+### スタイル・シート
 {: #stylesheets }
-The app code can include CSS files to define the application view.
+アプリケーション・ビューを定義する CSS ファイルをアプリケーション・コードに組み込むことができます。
 
-The stylesheet files are located in the <your project name>/www/css directory, and are copied to the following platform-specific folders:
+
+スタイルシート・ファイルは <your project name>/www/css ディレクトリーにあり、以下のプラットフォーム固有のフォルダーにコピーされます。
 
 * iOS: <your project name>/platforms/ios/www/css
 * Android: <your project name>/platforms/android/assets/www/css
 * Windows: <your project name>/platforms/windows/www/css
 
-### Scripts
+### スクリプト
 {: #scripts }
-Your app code can include JavaScript files that implement various functions of your app such as interactive user interface components, business logic, and back-end query integration.
+アプリケーションのさまざまな機能 (対話式ユーザー・インターフェース・コンポーネント、ビジネス・ロジック、バックエンド照会の統合など) を実装する JavaScript ファイルをアプリケーションに組み込むことができます。
 
-The JavaScript file index.js is provided by the template, and is located in the **your-project-name/www/js** folder. This file is copied to the following platform-specific folders:
+JavaScript ファイル index.js がテンプレートによって提供され、**your-project-name/www/js** フォルダーに置かれます。このファイルは、以下のプラットフォーム固有のフォルダーにコピーされます。
 
 * iOS: <your project name>/platforms/ios/www/js
 * Android: <your project name>/platforms/android/assets/www/js
 * Windows: <your project name>/platforms/windows/assets/www/js
 
-## Previewing an application's web resources
+## アプリケーションの Web リソースのプレビュー
 {: #previewing-an-applications-web-resources }
-A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator, or physical devices. In {{ site.data.keys.product }}, two additional live-preview options are available: {{ site.data.keys.mf_mbs_full }} and Simple Browser rendering.
+Cordova アプリケーションの Web リソースは、iOS シミュレーター、Android エミュレーター、Windows エミュレーター、または物理デバイスのいずれかでプレビューできます。{{site.data.keys.product }} では、{{site.data.keys.mf_mbs_full }} と Simple Browser レンダリングの 2 つの追加のライブ・プレビュー・オプションを使用できます。
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Security Restriction:** You can preview your web resources, however not all {{ site.data.keys.product_adj }} JavaScript APIs are supported by the simulator. In particular, the OAuth protocol is not fully supported. However, you can test calls to adapters with `WLResourceRequest`. In this case,
-> 
-> * Security checks are not run on the server-side and security challenges are not sent to the client that runs in the {{ site.data.keys.mf_mbs }}.
-> * If you do not use the {{ site.data.keys.mf_server }} in a development environment , register a confidential client that has the adapter's scope in its list of allowed scopes. You can define a confidential client with the {{ site.data.keys.mf_console }}, by using the Runtime/Settings menu. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
-> 
-> **Note:** The {{ site.data.keys.mf_server }} in a development environment includes a confidential client "test" that has an unlimited allowed scope ("*"). By default mfpdev app preview uses this confidential client.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **セキュリティー制限:** Web リソースはプレビュー可能ですが、そのシミュレーターですべての {{site.data.keys.product_adj }} JavaScript API がサポートされているわけではありません。特に、OAuth プロトコルは完全にはサポートされていません。ただし、`WLResourceRequest` を使用したアダプターの呼び出しをテストすることはできます。このケースでは、次のようになります。> 
+> * セキュリティー検査はサーバー・サイドでは実行されず、セキュリティー・チャレンジは {{site.data.keys.mf_mbs }} 内で実行されているクライアントに送信されません。
+> * 開発環境で {{site.data.keys.mf_server }} を使用しない場合、
+許可スコープのリスト中にアダプターのスコープが含まれている機密クライアントを登録してください。機密クライアントは {{site.data.keys.mf_console }} で「ランタイム/設定」メニューを使用して定義できます。機密クライアントについて詳しくは、
+[
+機密クライアント (Confidential
+clients)](../../authentication-and-security/confidential-clients) を参照してください。> 
+> **注:** 開発環境での {{site.data.keys.mf_server }} には、無制限の許可スコープ (「*」) を持つ機密クライアント「test」が含まれています。デフォルトで、mfpdev app preview はこの機密クライアントを使用します。
 
 #### Simple Browser
 {: #simple-browser }
-In Simple Browser previewing, the web resources of the application are being rendered in the desktop browser without being treated as an "app", allowing easy debugging of just the web resources.  
+Simple Browser プレビューでは、アプリケーションの Web リソースは、「アプリケーション」として扱われることなく、デスクトップ・ブラウザーでレンダリングされ、Web リソースのみの簡単なデバッグが可能です。  
 
-#### {{ site.data.keys.mf_mbs }}
+#### {{site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator }
-The {{ site.data.keys.mf_mbs }} is a web application that enables testing of the Cordova application by simulating device features without needing to install the app in an Emulator or physical device.
+{{site.data.keys.mf_mbs }} は、エミュレーターまたは物理デバイスにアプリケーションをインストールすることなく、デバイス・フィーチャーをシミュレートすることによって Cordova アプリケーションをテストできるようにする Web アプリケーションです。
 
-**Supported browsers:**
+**サポートされるブラウザー:**
 
-* Firefox version 38 and later
-* Chrome 49 and later
-* Safari 9 and later
+* Firefox バージョン 38 以降
+* Chrome 49 以降
+* Safari 9 以降
 
-### Previewing
+### プレビュー
 {: #previewing }
-1. From a **Command-line** window, run the command:
+1. **コマンド・ライン**・ウィンドウから、次のコマンドを実行します。
 
     ```bash
     mfpdev app preview
     ```
 
-2. Select a preview option:
+2. プレビュー・オプションを選択します。
 
     ```bash
     ? Select how to preview your app: (Use arrow keys)
     ❯ browser: Simple browser rendering
     mbs: Mobile Browser Simulator
     ```
-3. Select a platform to preview (only added platform will be displayed):
+3. プレビューするプラットフォームを選択します (追加されたプラットフォームのみが表示されます)。
 
     ```bash
     ❯◯ android
     ◯ ios
 	```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Learn more about the various CLI commands in the [Using CLI to manage {{ site.data.keys.product_adj }} artifacts](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** さまざまな CLI コマンドについて詳しくは、[『CLI を使用した {{site.data.keys.product_adj }} 成果物の管理』](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)チュートリアルを参照してください。
 
-### Live preview
+### ライブ・プレビュー
 {: #live-preview }
-Applicative code (HTML, CSS and JS) can now be edited in real-time with live-preview.   
-After making a change to a resource, save the change and it will be immediately reflected in the browser.
+ライブ・プレビューを使用して、応用コード (HTML、CSS、および JS) をリアルタイムで編集できるようになりました。   
+リソースに変更を加えた後、変更を保存すると、即時にブラウザーに変更が反映されます。
 
-### Live reload
+### ライブ再ロード
 {: #live-reload }
-To achieve a similar effect while previewing in physical devices or simulators/emulators, add the **cordova-plugin-livereload** plug-in. For usage instructions, [see the plug-ins GitHub page](https://github.com/omefire/cordova-plugin-livereload).
+物理デバイスまたはシミュレーター/エミュレーターでのプレビュー時に同様の効果を得るには、**cordova-plugin-livereload** プラグインを追加します。使用法については、[プラグイン GitHub のページを参照してください](https://github.com/omefire/cordova-plugin-livereload)。
 
-### Running the application on emulator or on a physical device
+### エミュレーターまたは物理デバイス上でのアプリケーションの実行
 {: #running-the-application-on-emulator-or-on-a-physical-device }
-To emulate the application execute the Cordova CLI command `cordova emulate ios|android|windows`. For example:
+アプリケーションをエミュレートするには、Cordova CLI コマンド `cordova emulate ios|android|windows` を実行します。例えば、次のとおりです。
+
 
 ```bash
 cordova emulate ios
 ```
 
-To run the application on a physical device, attached to the development workstation a run the Cordova CLI command `cordova run ios|android|windows`. For example:
+開発ワークステーションに接続されている物理デバイス上でアプリケーションを実行するには、Cordova CLI コマンド `cordova run ios|android|windows` を実行します。例えば、次のとおりです。
+
 
 ```bash
 cordova run ios
 ```
 
-## Implementing JavaScript Code
+## JavaScript コードの実装
 {: #implementing-javascript-code }
-Editing the WebView resources is more convenient using an IDE that provides autocompletion for JavaScript.
+WebView リソースの編集は、JavaScript のオートコンプリートを可能にする IDE を使用すると便利です。
 
-Xcode, Android Studio, and Visual Studio provide full editing capabilities for editing Objective C, Swift, C#, and Java, however they may be limited in how they assist the editing of JavaScript. To facilitate JavaScript editing, the {{ site.data.keys.product_adj }} Cordova project contains a defintion file for providing autocomplete for {{ site.data.keys.product_adj }} API elements.
+Xcode、Android Studio、および Visual Studio は、Objective C、Swift、C#、および Java を編集するための全編集機能を提供しますが、JavaScript の編集を支援する方法については制限される場合があります。JavaScript の編集を容易にするには、{{site.data.keys.product_adj }} Cordova プロジェクトに {{site.data.keys.product_adj }} API エレメントのオートコンプリートを可能にする定義ファイルを含めます。
 
-Each {{ site.data.keys.product_adj }} Cordova plug-in provides a `d.ts` configuration file for each {{ site.data.keys.product_adj }} JavaScript files. The `d.ts` file name matches the corresponding JavaScript file name and is located within the plug-in folder. For example for the main {{ site.data.keys.product_adj }} SDK the file is here: **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**.
+各 {{site.data.keys.product_adj }} Cordova プラグインは、{{site.data.keys.product_adj }} JavaScript ファイルごとに `d.ts` 構成ファイルを提供します。`d.ts` ファイル名は対応する JavaScript ファイル名と一致し、プラグイン・フォルダー内に配置されます。例えば、メインの
+{{site.data.keys.product_adj }}
+SDK の場合、ファイルは次の場所に配置されます。**[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**
 
-This definition provides autocomplete for all IDEs with TypeScript support: [TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript).
+この定義を使用すると、TypeScript をサポートしているすべての IDE ([TypeScript Playground](http://www.typescriptlang.org/Playground/)、[Visual Studio Code](http://www.microsoft.com/visualstudio/eng)、[WebStorm](http://www.jetbrains.com/webstorm/)、[WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f)、[Eclipse](https://github.com/palantir/eclipse-typescript) など) でオートコンプリートが使用できるようになります。
 
-The resources (HTML and JavaScript files) for the WebView are located in the **[myapp]\www** folder. When the project is built with the cordova build command, or the cordova prepare command is run, these resources are copied to the corresponding **www** folder in the **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www**, or **[myapp]\platforms\windows\www** folder.
+WebView のリソース (HTML ファイルおよび JavaScript ファイル) は、**[myapp]\www** フォルダーに配置されます。プロジェクトが cordova build コマンドでビルドされる場合、または cordova prepare コマンドが実行される場合、これらのリソースは、**[myapp]\platforms\ios\www** フォルダー、**[myapp]\platforms\android\assets\www** フォルダー、または **[myapp]\platforms\windows\www** フォルダー内の対応する **www** フォルダーにコピーされます。
 
-When you open the main app folder with one of the previous IDEs, the context is preserved. The IDE editor will now be linked to the relevant `d.ts` files and autocomplete the {{ site.data.keys.product_adj }} API elements as you type.
+前述の IDE の 1 つでメイン・アプリケーション・フォルダーを開くと、コンテキストが保持されます。IDE エディターは関連する `d.ts`
+ファイルにリンクされるようになり、入力したとおりに
+{{site.data.keys.product_adj }}
+API エレメントをオートコンプリートします。
 
-## CrossWalk support for Android
+## Android 用の CrossWalk サポート
 {: #crosswalk-support-for-android }
-Cordova applications for the Android platform can have their default WebView replaced with the [CrossWalk WebView](https://crosswalk-project.org/).  
-To add it:
+Android プラットフォーム用の Cordova アプリケーションでは、デフォルトの WebView を [CrossWalk WebView](https://crosswalk-project.org/) に置換できます。  
+これを追加するには、以下のようにします。
 
-1. From a **Command-line** line, run the command:
+1. **コマンド・ライン**・ウィンドウから、次のコマンドを実行します。
 
    ```bash
    cordova plugin add cordova-plugin-crosswalk-webview
    ```
 
-   This command will add the CrossWalk WebView to the application.  
-    Behind the scenes, the {{ site.data.keys.product_adj }} Cordova SDK will adjust the Android project activity for using it.
-
-2. Build the project by running the command:
+   このコマンドにより、アプリケーションに CrossWalk WebView が追加されます。  
+表に出ないところで、{{site.data.keys.product_adj }} Cordova SDK は、CrossWalk WebView を使用するように Android プロジェクト・アクティビティーを調整します。
+2. 次のコマンドを実行して、プロジェクトをビルドします。
 
    ```bash
    cordova build
    ```
 
-## WKWebView support for iOS
+## iOS 用の WKWebView のサポート
 {: #wkwebview-support-for-ios }
-The default UIWebView used in Cordova iOS applications can be replaced with [Apple's WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/).  
-To add, run the following command from a command-line window: `cordova plugin add cordova-plugin-wkwebview-engine`.
+Cordova iOS アプリケーションで使用されているデフォルトの UIWebView を、[Apple の WKWebView](https://developer.apple.com/library/ios/documentation/WebKit/Reference/WKWebView_Ref/) に置換できます。  
+追加するには、コマンド・ライン・ウィンドウからコマンド `cordova plugin add cordova-plugin-wkwebview-engine` を実行します。
 
-> Learn more about the [Cordova WKWebView plug-in](https://github.com/apache/cordova-plugin-wkwebview-engine).
+> 詳しくは、[Cordova WKWebView プラグイン](https://github.com/apache/cordova-plugin-wkwebview-engine)に関する説明を参照してください。
 
-## Further reading
+## 発展的なチュートリアル
 {: #further-reading }
-Learn more about Cordova:
+Cordova に関する詳細は以下を参照してください。
 
-- [Cordova Overview](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
-- [Cordova best practices, testing, debugging, cosiderations and keeping up](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
-- [Get started with Cordova applications development](https://cordova.apache.org/#getstarted)
+- [Cordova の概説](https://cordova.apache.org/docs/en/latest/guide/overview/index.html)
+- [Cordova のベスト・プラクティス、テスト、デバッグ、考慮事項、および保守](https://cordova.apache.org/docs/en/latest/guide/next/index.html#link-testing-on-a-simulator-vs-on-a-real-device)
+- [Cordova アプリケーション開発の概要](https://cordova.apache.org/#getstarted)
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-Get started by [adding the MobileFirst SDK to your Cordova application](../../application-development/sdk/cordova), and review {{ site.data.keys.product_adj }}-provided features in the [All Tutorials](../../all-tutorials/) section.
+始めに [Cordova アプリケーションに MobileFirst SDK を追加](../../application-development/sdk/cordova)し、[すべてのチュートリアル](../../all-tutorials/)セクションで {{site.data.keys.product_adj }} 提供のフィーチャーを検討します。

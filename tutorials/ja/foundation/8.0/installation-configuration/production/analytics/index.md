@@ -1,17 +1,18 @@
 ---
 layout: tutorial
-title: Installing and Configuring the MobileFirst Analytics Server	
-breadcrumb_title: Installing MobileFirst Analytics Server
+title: MobileFirst Analytics Server	のインストールおよび構成
+breadcrumb_title: MobileFirst Analytics Server のインストール
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The {{ site.data.keys.mf_analytics_server }} is delivered as two separate WAR files. For convenience in deploying on WebSphere  Application Server or WebSphere Application Server Liberty, {{ site.data.keys.mf_analytics_server }} is also delivered as an EAR file that contains the two WAR files.
+{{site.data.keys.mf_analytics_server }} は、2 つの異なる WAR ファイルとして提供されます。WebSphere Application Server または WebSphere Application Server Liberty 上でデプロイするための便宜上、{{site.data.keys.mf_analytics_server }} は、2 つの WAR ファイルを含む EAR ファイルとしても提供されます。
 
-> **Note:** Do not install more than one instance of {{ site.data.keys.mf_analytics_server }} on a single host machine. For more information about managing your cluster, see the Elasticsearch documentation.
+> **注:** 単一のホスト・マシンに {{site.data.keys.mf_analytics_server }} の複数のインスタンスをインストールしないでください。クラスターの管理について詳しくは、Elasticsearch の資料を参照してください。
 
-The analytics WAR and EAR files are included with the MobileFirst Server installation. For more information, see Distribution structure of MobileFirst Server. When you deploy the WAR file, the MobileFirst Analytics Console is available at: `http://<hostname>:<port>/analytics/console`, for example: `http://localhost:9080/analytics/console`.
+analytics WAR ファイルおよび EAR ファイルは、MobileFirst Server インストールと共に格納されます。詳しくは、MobileFirst Server の配布構造を参照してください。WAR ファイルをデプロイする場合、MobileFirst Analytics Console は次の場所で使用可能です。`http://<hostname>:<port>/analytics/console` 例: `http://localhost:9080/analytics/console`
 
-* For more information about how to install {{ site.data.keys.mf_analytics_server }}, see [{{ site.data.keys.mf_analytics_server }} installation guide](installation).
-* For more information about how to configure IBM MobileFirst Analytics, see [Configuration guide](configuration).
+* {{site.data.keys.mf_analytics_server }} のインストール方法について詳しくは、
+[{{site.data.keys.mf_analytics_server }} インストール・ガイド](installation)を参照してください。
+* IBM MobileFirst Analytics の構成方法について詳しくは、[構成ガイド](configuration)を参照してください。

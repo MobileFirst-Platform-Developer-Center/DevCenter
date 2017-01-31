@@ -1,50 +1,51 @@
 ---
 layout: tutorial
-title: Client-side Log Collection
-breadcrumb_title: Client-side log collection
+title: クライアント・サイドのログ収集
+breadcrumb_title: クライアント・サイドのログ収集
 relevantTo: [ios,android,javascript]
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging.
-{{ site.data.keys.product_full }} provides a set of logging API methods for this purpose.
+ロギングは、診断およびデバッグを容易にするために、API 呼び出しを使用してメッセージを記録するソース・コードの装備です。{{site.data.keys.product_full }} は、このための一連のロギング API メソッドを提供します。
 
-The {{ site.data.keys.product_adj }} `Logger` API is similar to commonly-used logger APIs, such as `console.log` (JavaScript), `java.util.logging` (Java) and `NSLog` (Objective-C), and provides the additional capability of persistently capturing logged data for sending to the {{ site.data.keys.mf_server }} to be used for analytics gathering and developer inspection. Use the `Logger` APIs to report log data at appropriate levels, so that developers who inspect logs can triage and fix problems without having to reproduce problems in their labs.
+{{site.data.keys.product_adj }} `Logger` API は、`console.log` (JavaScript)、`java.util.logging` (Java)、および `NSLog` (Objective-C) など、一般的に使用されるロガー API に似ており、追加の機能として、分析収集および開発者検査で使用するために、ログに記録されたデータを永続的にキャプチャーして {{site.data.keys.mf_server }} に送信する機能を持っています。`Logger` API を使用して、適切なレベルでログ・データをレポートします。これにより、ログを検査する開発者は、ラボで問題を再現することなく、問題の優先順位を決定し、修正できます。
 
-#### Availability
+#### 使用可能性
 {: #availability }
-The {{ site.data.keys.product_adj }}-provided `Logger` API methods can be used with iOS, Android, Web, and Cordova applications.
+{{site.data.keys.product_adj }} 提供の `Logger` API メソッドは、iOS、Android、Web、および Cordova のアプリケーションで使用できます。
 
-## Logging levels
+## ロギング・レベル
 {: #logging-levels }
-Logging libraries typically have verbosity controls that are frequently called **levels**.  
-The logging levels from the most verbose to the least are as follows:
+ロギング・ライブラリーには通常、詳細度制御 (多くの場合、**レベル**と呼ばれる) があります。  
+ロギング・レベルは、最も高い詳細度から低い詳細度に向かって順番に、以下のとおりです。
 
-* TRACE - used for method entry and exit points
-* DEBUG - used for method result output
-* LOG - used for class instantiation
-* INFO - used for reporting initialization
-* WARN - used to log deprecated usage warnings
-* ERROR - used for unexpected exceptions
-* FATAL - used for unrecoverable crashes or hangs
+* TRACE - メソッドの入り口点および出口点に使用
+* DEBUG - メソッドの結果の出力に使用
+* LOG - クラスのインスタンス化に使用
+* INFO - 初期設定のレポートに使用
+* WARN - 非推奨の使用の警告をログに記録するために使用
+* ERROR - 予期しない例外に使用
+* FATAL - リカバリー不能の異常終了またはハングに使用
 
-> **Note:** Using FATAL will result in collecting an app crash. To avoid skewing your app crash data we recommend not using this keyword.
+> **注:** FATAL を使用すると、アプリケーションの異常終了が収集されます。アプリケーションの異常終了データのスキューを回避するには、このキーワードを使用しないことをお勧めします。
 
-The client SDKs are configured at the FATAL verbosity by default, which means little or no raw debug logs are output or captured. You can adjust the verbosity programmatically, or adjust it, by setting a configuration profile on the {{ site.data.keys.mf_analytics_console }}, which must be retrieved explicitly by your app.
+クライアント SDK はデフォルトでは FATAL の詳細度で構成され、生のデバッグ・ログの出力およびキャプチャーはほとんど行われないか、まったく行われません。{{site.data.keys.mf_analytics_console }} で構成プロファイルを設定することで、プログラムでログ詳細度を調整することも、手動で調整することもできます。これは、アプリケーションで明示的に取得されなければなりません。
 
-### Logging from client applications:
+### クライアント・アプリケーションからのロギング
 {: #logging-from-client-applications }
-* [Logging in JavaScript (Cordova, Web) applications](javascript/)
-* [Logging in iOS applications](ios/)
-* [Logging in Android applications](android/)
+* [JavaScript (Cordova、Web) アプリケーションでのロギング](javascript/)
+* [iOS アプリケーションでのロギング](ios/)
+* [Android アプリケーションでのロギング](android/)
 
-### Adjusting log verbosity
+### ログ詳細度の調整
 {: #adjusting-log-verbosity }
-Once logging level is set, either by setting the client or retrieving the server profile, the client filters the logging messages it sends. If a message below the threshold is explicitly sent, the client ignores it.
+クライアントを設定するか、サーバー・プロファイルを取得することによって、ロギング・レベルが設定されると、クライアントは送信するロギング・メッセージをフィルタリングします。
+しきい値より下のメッセージが明示的に送信された場合、クライアントはそれを無視します。
 
-For example, to set the verbosity level to DEBUG:
+
+例えば、詳細度レベルを DEBUG に設定するには、以下のようにします。
 
 #### iOS
 {: #ios}
@@ -74,16 +75,16 @@ WL.Logger.config({ level: 'DEBUG' });
 
 #### JavaScript (Web)
 {: #javascript-web }
-For the web SDK the default trace level cannot be changed from the client.
+Web SDK では、クライアントからデフォルトの trace レベルを変更することはできません。
 
-## Crash capture
+## 異常終了キャプチャー
 {: #crash-capture }
-The {{ site.data.keys.product_adj }} client SDK, on Android and iOS applications, captures a stack trace upon application crash and logs it at FATAL level. This type of crash is a true crash where the UI disappears from the user's view. In Cordova applications, captures JavaScript global errors and if possible a JavaScript call stack, and logs it at FATAL level. This type of crash is not a crash event, and might or might not have any adverse consequences to the user experience at run time.
+Android および iOS アプリケーションでは、{{site.data.keys.product_adj }} クライアント SDK は、アプリケーションの異常終了時にスタック・トレースをキャプチャーし、FATAL レベルでログに記録します。このタイプの異常終了は、UI がユーザーに表示されなくなる真の異常終了です。Cordova アプリケーションでは、JavaScript グローバル・エラーと、可能な場合は JavaScript 呼び出しスタックをキャプチャーし、FATAL レベルでログに記録します。このタイプの異常終了は異常終了イベントではなく、実行時のユーザー・エクスペリエンスに悪影響が出ることも出ないこともあります。
 
-Crashes, uncaught exceptions, and global errors are caught and logged automatically once the app is running again.
+アプリケーションが再度実行されると、異常終了、キャッチされていない例外、およびグローバル・エラーが自動的にキャッチされてログに記録されます。
 
-## Viewing the logs
+## ログの表示
 {: #viewing-the-logs }
-After the logs are collected and sent to the server, view them in the {{ site.data.keys.mf_analytics_console }}. Choose the **Apps** panel from the navigation bar and click the **Client Log Search** tab.
+ログが収集されてサーバーに送信された後に、{{site.data.keys.mf_analytics_console }}でログを表示します。ナビゲーション・バーから**「アプリケーション」**パネルを選択し、**「クライアント・ログの検索」**タブをクリックします。
 
-![Search and view logs](consoleViewClientLogs.png)
+![ログの検索および表示](consoleViewClientLogs.png)

@@ -1,20 +1,20 @@
 ---
 layout: tutorial
-title: Setting Up Analytics Support for Push Notifications
-breadcrumb_title: Setting Up Analytics Support
+title: プッシュ通知に対する Analytics サポートのセットアップ
+breadcrumb_title: Analytics サポートのセットアップ
 relevantTo: [ios,android,windows,cordova]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-To set up Analytics support for Push Notification, the following JNDI properties must be set in order to initialize and configure the **Analytics plug-in**. The Analytics plug-in is provided by the Push Notifications service. If it is not set, the Push Notifications service will default to logging the events in the system logger.
+プッシュ通知に対する Analytics サポートをセットアップするには、以下の JNDI プロパティーを設定して、**Analytics プラグイン**を初期化および構成する必要があります。Analytics プラグインは、プッシュ通知サービスによって提供されます。これが設定されていない場合、プッシュ通知サービスは、システム・ロガーでイベントを記録するようにデフォルト設定されます。
 
 ```xml
 <jndiEntryjndiName = "imfpush/mfp.push.services.ext.analytics" value = "com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin"/>
 ```
 
-The following properties are required to configure and initialize the {{ site.data.keys.mf_analytics }} plug-in. The username and password will be used to authenticate with the Analytics service at the provided endpoint.
+{{site.data.keys.mf_analytics }} プラグインの構成と初期化のために、以下のプロパティーが必要です。ユーザー名とパスワードが、指定されたエンドポイントで分析サービスとの認証を行うために使用されます。
 
 ```xml
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.endpoint" value = "http://<mfpserver:port>/analytics-service/rest/data"/>
@@ -31,7 +31,7 @@ Push is meant to send two types of analytics events to the Analytics service. Th
 14/11/2016 only push notifications show up in reports, so we are removing any mention of the other events in the meantime, until there is a way to report on the other events.
 -->
 
-To track the notifications dispatched out of the Push Notifications service, ensure the following property is set to **true** (which is the default value):
+プッシュ通知サービスからディスパッチされた通知をトラッキングするには、以下のプロパティーを **true** (これがデフォルト値です) に設定してください。
 
 <!--
 <jndiEntryjndiName = "imfpush/mfp.push.analytics.events.tagSubscribe" value = "true"/>
@@ -42,9 +42,9 @@ To track the notifications dispatched out of the Push Notifications service, ens
 <jndiEntryjndiName = "mfp.push.analytics.events.notificationDispatch" value = "true"/>
 ```
 
-To disable the sending of this event, set the property to **false**.
+このイベントの送信を無効にするには、プロパティーを **false** に設定します。
 
-For information on viewing the Push Notification reports in the Analytics Console, see [Push Notification Reports](../../analytics/console/push-notifications/).
+Analytics コンソールでプッシュ通知レポートを表示する方法については、[プッシュ通知レポート](../../analytics/console/push-notifications/)を参照してください。
 
-> For more information on the JNDI properties for push service, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
-> **Note:** The {{ site.data.keys.product_full }} installer creates and sets up these properties to defaults.
+> プッシュ・サービスに関するこれらの JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
+> **注:** {{site.data.keys.product_full }} インストーラーは、これらのプロパティーを作成し、デフォルトにセットアップします。

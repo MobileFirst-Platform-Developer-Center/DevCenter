@@ -1,73 +1,83 @@
 ---
 layout: tutorial
-title: LTPA-based single sign-on (SSO) security check
-breadcrumb_title: LTPA Security Check
+title: LTPA ベースのシングル・サインオン (SSO) セキュリティー検査
+breadcrumb_title: LTPA セキュリティー検査
 relevantTo: [android,ios,windows,javascript]
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-A lightweight third-party authentication (LTPA) token is a type of security token that is used by IBM WebSphere Application Server and other IBM products. LTPA can be used to send the credentials of an authenticated user to back-end services. It can also be used as a single sign-on (SSO) token between the user and multiple servers.
+LTPA (Lightweight Third-Party Authentication) トークンは、IBM WebSphere Application Server およびその他の IBM 製品によって使用されるセキュリティー・トークンのタイプです。LTPA は、認証ユーザーの資格情報をバックエンド・サービスに送信するために使用することができます。また、ユーザーと複数のサーバー間でシングル・サインオン (SSO) トークン
+として使用することもできます。
 
-Simple client < - > server flow with LTPA:
 
-![Simple LTPA-based client <-> server flow](ltpa_simple_client_server.jpg)
+以下は、LTPA を使用するシンプルな「クライアント < - > サーバー」のフローを示します。
 
-After a user logs in to the server, the server generates an LTPA token, which is an encrypted hash that contains authenticated user information. The token is signed by a private key that is shared among all the servers that want to decode it. The token is usually in cookie form for HTTP services. By sending the token as a cookie, the need for subsequent user interaction is avoided.
+![シンプルな LTPA ベースのクライアント <-> サーバーのフロー](ltpa_simple_client_server.jpg)
 
-LTPA tokens have a configurable expiration time to reduce the possibility of session hijacking.
+ユーザーがサーバーにログインした後、サーバーは LTPA トークン (認証ユーザーの情報を含む暗号化されたハッシュ) を生成します。このトークンは、トークンをデコードするすべてのサーバー間で共用される
+秘密鍵によって署名されます。
+このトークンは通常、HTTP サービス の Cookie 形式です。
+トークンを Cookie として送信することにより、以降のユーザー対話が不要となります。
 
-## Reverse proxy with LTPA
+
+LTPA トークンには、セッション・ハイジャックの可能性を削減するため
+の構成可能な有効期限があります。
+
+## LTPA を使用したリバース・プロキシー
 {: #reverse-proxy-with-ltpa }
-Your infrastructure can also use the LTPA token to communicate with a back-end server that acts on behalf of the user. In a reverse-proxy topology, the user cannot directly access the back-end server. The reverse proxy can be used to authenticate a user's identity, and then send the LTPA token of the authenticated user to back-end servers. This configuration ensures that access to {{ site.data.keys.mf_server }} cannot be obtained until a user is authenticated. This is useful, for example, when you do not want to use {{ site.data.keys.product }} to handle vital user credentials, or when you want to use an existing authentication setup. Enterprise environments should use a reverse proxy, such as IBM WebSphere DataPower or IBM Security Access Manager, in the DMZ, and place the {{ site.data.keys.mf_server }} in the intranet.
+ご使用のインフラストラクチャーでは、LTPA トークンを使用して、ユーザーに代わって機能するバックエンド・サーバーと通信することもできます。リバース・プロキシー・トポロジーでは、ユーザーはバックエンド・サーバーに直接アクセスすることはできません。リバース・プロキシーを使用して、ユーザーの ID を認証してから、認証済みユーザーの LTPA トークンをバックエンド・サーバーに送信できます。この構成により、ユーザーが認証されるまで {{site.data.keys.mf_server }} へのアクセス権限が取得できなくなります。これは、例えば、重要なユーザー資格情報を処理するために {{site.data.keys.product }} を使用しない場合や、既存の認証セットアップを使用する場合に役立ちます。エンタープライズ環境では、IBM WebSphere DataPower や IBM Security Access Manager などのリバース・プロキシーを DMZ 内で使用し、{{site.data.keys.mf_server }} をイントラネット内に配置する必要があります。
 
-In a reverse-proxy implementation, {{ site.data.keys.mf_server }} must be configured for LTPA authentication to get the user identity.
+リバース・プロキシー実装では、{{site.data.keys.mf_server }} は、LTPA 認証でユーザー ID を取得するように構成する必要があります。
 
-LTPA flow between a client and a back-end server using a reverse proxy:
+以下は、リバース・プロキシーを使用する、クライアントとバックエンド・サーバーの間の LTPA フローを示します。
 
-![Reverse-proxy LTPA flow](ltpa_reverse_proxy.jpg)
+![リバース・プロキシー LTPA フロー](ltpa_reverse_proxy.jpg)
 
-## {{ site.data.keys.product_adj }} integration with a reverse proxy
+##  {{site.data.keys.product_adj }} とリバース・プロキシーの統合
 {: #mobilefirst-integration-with-a-reverse-proxy }
-You can use a reverse proxy to enable enterprise connectivity within a {{ site.data.keys.product_adj }} environment, and to provide authentication services to {{ site.data.keys.product }}.
+リバース・プロキシーを使用して、{{site.data.keys.product_adj }} 環境内での全社的な接続を可能にし、{{site.data.keys.product }} への認証サービスを提供します。
 
-### General architecture
+### アーキテクチャーの概要
 {: #general-architecture }
-Reverse proxies typically front {{ site.data.keys.mf_server }} instances as part of the deployment, as shown in the figure below, and follow the gateway pattern.
+リバース・プロキシーは通常、下記の図に示すように、デプロイメントの一部として {{site.data.keys.mf_server }} インスタンスの前に置かれ、ゲートウェイ・パターンに従います。
 
-![ Integration with reverse proxy](reverse_proxy_integ.jpg)
+![ リバース・プロキシーとの統合](reverse_proxy_integ.jpg)
 
-The **MFP** icon represents an instance of {{ site.data.keys.mf_server }}. The **GW** icon represents a reverse-proxy gateway, such as WebSphere DataPower. In addition to protecting {{ site.data.keys.product_adj }} resources from the Internet, the reverse proxy provides termination of HTTPS (SSL) connections and authentication. The reverse proxy can also act as a policy enforcement point (PEP).
+**MFP** アイコンは {{site.data.keys.mf_server }} のインスタンスを表します。**GW** アイコンは、WebSphere DataPower などのリバース・プロキシー・ゲートウェイを表します。インターネットからの {{site.data.keys.product_adj }} リソースの保護に加え、リバース・プロキシーは HTTPS (SSL) 接続の終了や認証を行います。リバース・プロキシーは、ポリシー・エンフォースメント・ポイント (PEP) としても機能できます。
 
-When a gateway is used, an application (**A**) on a device (**D**) uses the public URI that is advertised by the gateway instead of the internal {{ site.data.keys.mf_server }} URI. The public URI can be exposed as a setting within the application, or can be built in during promotion of the application to production, before the application is published to public or private application stores.
+ゲートウェイを使用すると、デバイス (**D**) 上のアプリケーション (**A**) は、内部の {{site.data.keys.mf_server }} URI ではなく、そのゲートウェイが通知するパブリック URI を使用します。
+パブリック URI はアプリケーション内の設定として公開できます。あるいは、アプリケーションをパブリックまたはプライベートのアプリケーション・ストアに公開する前に、アプリケーションを実動にプロモーションするときに組み込むこともできます。
 
-### Authentication at the gateway
+### ゲートウェイでの認証
 {: #authentication-at-the-gateway }
-If authentication ends at the gateway, {{ site.data.keys.product }} can be informed of the authenticated user by a shared context, such as a custom HTTP header or a cookie. By using the extensible authentication framework, you can configure {{ site.data.keys.product }} to use the user identity from one of these mechanisms, and establish a successful log in. The below figure shows a typical authentication flow for this gateway topology.
+ゲートウェイで認証が終了すれば、{{site.data.keys.product }} は、認証されたユーザーの通知を共有コンテキスト、例えばカスタム HTTP ヘッダーや Cookie で受けることができます。
+拡張可能な認証フレームワークを使用すれば、それらのメカニズムのいずれかから受け取るユーザー ID を使用して正常なログインを確立するよう、{{site.data.keys.product }} を構成することができます。
+以下の図に、このゲートウェイ・トポロジーの標準的な認証フローを示します。
 
-![Authentication flow](mf_reverse_proxy_integ_authentication_flow.jpg)
+![認証フロー](mf_reverse_proxy_integ_authentication_flow.jpg)
 
-This configuration was successfully tested with WebSphere DataPower for LTPA-based authentication. On successful authentication, the gateway forwards an LTPA token (in the form of an HTTP cookie) to WebSphere Application Server, which validates the LTPA token and creates a caller principal. {{ site.data.keys.product }} can use this caller principal, as needed.
+この構成は、LTPA ベースの認証に関して、WebSphere DataPower を使用して正常にテスト済みです。認証が成功すると、ゲートウェイは LTPA トークン (HTTP Cookie の形式で) を WebSphere Application Server に転送し、そこで LTPA トークンが検証され、呼び出し元プリンシパルが作成されます。{{site.data.keys.product }} は、必要に応じて、この呼び出し元プリンシパルを使用できます。
 
-## The {{ site.data.keys.product_adj }} LTPA-based SSO security check
+## {{site.data.keys.product_adj }} LTPA ベースの SSO セキュリティー検査
 {: #the-mobilefirst-ltpa-based-sso-security-check }
-The predefined {{ site.data.keys.product_adj }} LTPA-based single-sign on (SSO) security check (**LtpaBasedSSO**) enables integration of {{ site.data.keys.product }} with the WebSphere Application Server LTPA protocol. This security check allows you to integrate instances of {{ site.data.keys.mf_server }} within an LTPA-based gateway topology, as described in the previous sections, and use a back-end service to authenticate users by using an SSO LTPA token.
+事前定義の {{site.data.keys.product_adj }} LTPA ベースのシングル・サインオン (SSO) セキュリティー検査 (**LtpaBasedSSO**) を使用すると、{{site.data.keys.product }} を WebSphere Application Server LTPA プロトコルと統合できます。このセキュリティー検査により、前述のセクションで説明したように、LTPA ベースのゲートウェイ・トポロジー内の {{site.data.keys.mf_server }} のインスタンスを統合でき、またバックエンド・サービスを使用して SSO LTPA トークンによってユーザーを認証できます。
 
-This predefined security check can be used as any other security check in the {{ site.data.keys.product_adj }} security framework you can map a custom scope element to this check, and use the check (or a scope element that contains it) in a protecting resource scope or in a mandatory application scope.
+この事前定義のセキュリティー検査は、{{site.data.keys.product_adj }} セキュリティー・フレームワーク内のその他のセキュリティー検査と同じように使用できます。すなわち、カスタム・スコープ・エレメントをこの検査にマップし、保護リソース・スコープ内または必須アプリケーション・スコープ内でこの検査 (またはそれを含むスコープ・エレメント) を使用できます。
 
-You can also configure the behavior of this security check for your application.
+ご使用のアプリケーションに合わせて、このセキュリティー検査の動作を構成することもできます。
 
-## Configuring the LTPA-based SSO security check
+## LTPA ベースの SSO セキュリティー検査の構成
 {: #configuring-the-ltpa-based-sso-security-check }
-The predefined LTPA-based single sign-on (SSO) security check (**LtpaBasedSSO**) has a single configurable property: **expirationSec**. This property sets the expiration period for a successful security-check state. The expiration period determines the minimal interval for invoking the check again after a successful execution.
+事前定義の LTPA ベースのシングル・サインオン (SSO) セキュリティー検査 (**LtpaBasedSSO**) には、単一の構成可能プロパティー  **expirationSec** があります。このプロパティーは、セキュリティー検査成功状態の有効期間を設定します。有効期間は、実行の成功後に再び検査を呼び出すための最小間隔を決定します。
 
-> **Note:** The procedure explains how to use the {{ site.data.keys.mf_console }} to configure the property value. Alternatively, you can also set the property value directly in the **application-descriptor** file. For detailed information, see Configuring application security-check properties.
+> **注:** この手順では、{{site.data.keys.mf_console }} を使用してプロパティー値を構成する方法について説明します。代わりに、**application-descriptor** ファイル内にプロパティー値を直接設定することもできます。詳しくは、『アプリケーション・セキュリティー検査プロパティーの構成』を参照してください。
 
-1. Open a {{ site.data.keys.mf_console }} window. Select your application version from the **navigation sidebar**, and then select the  **Security** tab.
-2. In the **Security-Check Configurations** section, click on **New**.
-3. In the **Configure Security-Check Properties** window, configure the **LTPA-based SSO** security check:
-    * In the **Security Check** field, select **LtpaBasedSSO** from the list.
-    * In the **Expiration Period Successful State (seconds)** field, set your preferred expiration period for a successful state of the security check, in seconds.
+1. {{site.data.keys.mf_console }} ウィンドウを開きます。**ナビゲーション・サイドバー**からアプリケーション・バージョンを選択し、アプリケーションの**「セキュリティー」**タブを選択します。
+2. **「セキュリティー検査の構成」**セクションで、**「新規作成」**を選択します。
+3. **「セキュリティー検査プロパティーの構成」**ウィンドウで、**LTPA ベースの SSO** セキュリティー検査を構成します。
+    * **「セキュリティー検査」**フィールドで、リストから **LtpaBasedSSO** を選択します。
+    * **「成功状態有効期間 (秒) (Expiration Period Successful State (seconds))」**フィールドに、セキュリティー検査の成功状態の有効期間 (任意の秒数) を設定します。
 
-When the configuration is done, you can see and edit your LtpaBasedSSO security-check configuration in the Security-Check Configurations table of the application Security tab.
+構成が完了したら、アプリケーションの「セキュリティー」タブの「セキュリティー検査の構成」表で、LtpaBasedSSO セキュリティー検査構成を表示および編集できます。

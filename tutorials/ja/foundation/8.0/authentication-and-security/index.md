@@ -1,74 +1,81 @@
 ---
 layout: tutorial
-title: Authentication and Security
-weight: 7
+title: 認証およびセキュリティー
+weight: 6
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The {{ site.data.keys.product_adj }} security framework is based on the [OAuth 2.0](http://oauth.net/) protocol. According to this protocol, a resource can be protected by a **scope** that defines the required permissions for accessing the resource. To access a protected resource, the client must provide a matching **access token**, which encapsulates the scope of the authorization that is granted to the client.
+{{site.data.keys.product_adj }} セキュリティー・フレームワークは、[OAuth 2.0](http://oauth.net/) プロトコルに基づいています。このプロトコルに従って、リソースは、そのリソースにアクセスするために必要な許可を定義する**スコープ**によって保護されます。保護リソースにアクセスするために、クライアントは一致する**アクセス・トークン**を提供する必要があります。アクセス・トークンは、クライアントに付与される許可のスコープをカプセル化したものです。
 
-The OAuth protocol separates the roles of the authorization server and the resource server on which the resource is hosted.
+OAuth プロトコルは、許可サーバーのロールと、リソースがホストされているリソース・サーバーのロールを分離します。
 
-* The authorization server manages the client authorization and token generation.
-* The resource server uses the authorization server to validate the access token that is provided by the client, and ensure that it matches the protecting scope of the requested resource.
+* 許可サーバーは、クライアント許可およびトークン生成を管理します。
+* リソース・サーバーは、許可サーバーを使用して、クライアントから提供されたアクセス・トー
+クンを検証し、要求されたリソースの保護スコープに一致しているか確認します。
 
-The security framework is built around an authorization server that implements the OAuth protocol, and exposes the OAuth endpoints with which the client interacts to obtain access tokens. The security framework provides the building blocks for implementing a custom authorization logic on top of the authorization server and the underlying OAuth protocol.  
-By default, {{ site.data.keys.mf_server }} functions also as the **authorization server**. However, you can configure an IBM WebSphere DataPower appliance to act as the authorization server and interact with {{ site.data.keys.mf_server }}.
+セキュリティー・フレームワークは、OAuth プロトコルを実装する許可サーバーに基づいて構築され、クライアントがアクセス・トークンを取得するために対話する OAuth エンドポイントを公開します。セキュリティー・フレームワークは、許可サーバーと基礎となる OAuth プロトコルをベースとしたカスタム許可ロジックを実装するためのビルディング・ブロックを提供します。  
+デフォルトでは、{{site.data.keys.mf_server }} が**許可サーバー**としても機能します。しかし、IBM WebSphere DataPower アプライアンスを許可サーバーとして機能するように構成し、{{site.data.keys.mf_server }} と対話するように構成することもできます。
 
-The client application can then use these tokens to access resources on a **resource server**, which can be either the {{ site.data.keys.mf_server }} itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. The separation between resource server and authorization server allows you to enforce security on resources that are running outside {{ site.data.keys.mf_server }}.
+クライアント・アプリケーションは、その後、これらのトークンを使用して**リソース・サーバー**上のリソースにアクセスできます。リソース・サーバーには、{{site.data.keys.mf_server }} 自体または外部サーバーを使用できます。リソース・サーバーはトークンの妥当性をチェックし、要求されたリソースへのアクセスをクライアントに認可していいかを検査します。リソース・サーバーと許可サーバーを分離することで、{{site.data.keys.mf_server }} の外部で稼働するリソースに対してセキュリティーを適用することが可能になります。
 
-Application developers protect access to their resources by defining the required scope for each protected resource, and implementing **security checks** and **challenge handlers**. The server-side security framework and the client-side API handle the OAuth message exchange and the interaction with the authorization server transparently, allowing developers to focus only on the authorization logic.
+アプリケーション開発者は、各保護リソースに必要なスコープを定義し、**セキュリティー検査**および**チャレンジ・ハンドラー**を実装することで、リソースへのアクセスを保護します。サーバー・サイドのセキュリティー
+・フレームワークとクライアント・サイド API は、OAuth メッセージ交換と許可サーバーとの対話を透過的に処理し、開発者が許可ロジックにのみ焦点
+を当てることができるようにします。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Authorization entities](#authorization-entities)
-* [Protecting resources](#protecting-resources)
-* [Authorization flow](#authorization-flow)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [許可エンティティー](#authorization-entities)
+* [リソースの保護](#protecting-resources)
+* [許可フロー](#authorization-flow)
+* [次に使用するチュートリアル](#tutorials-to-follow-next)
 
-## Authorization entities
+## 許可エンティティー
 {: #authorization-entities }
-### Access Token
+### アクセス・トークン
 {: #access-token }
-A {{ site.data.keys.product_adj }} access token is a digitally signed entity that describes the authorization permissions of a client. After the client's authorization request for a specific scope is granted, and the client is authenticated, the authorization server's token endpoint sends the client an HTTP response that contains the requested access token.
+{{site.data.keys.product_adj }} アクセス・トークンは、クライアントの許可アクセス権を記述したデジタル署名済みエンティティーです。特定のスコープについてクライアントの認証要求が許可され、クライアントが認証されると、
+許可サーバーのトークン・エンドポイントは、要求されたアクセス・トークンを含む HTTP 応答をクライアントに送信します。
 
-#### Structure
+#### 構造
 {: #structure }
-The {{ site.data.keys.product_adj }} access token contains the following information:
+{{site.data.keys.product_adj }} アクセス・トークンには、以下の情報が含まれます。
 
-* **Client ID**: a unique identifier of the client.
-* **Scope**: the scope for which the token was granted (see OAuth scopes). This scope does not include the [mandatory application scope](#mandatory-application-scope).
-* **Token-expiration time**: the time at which the token becomes invalid (expires), in seconds.
+* **クライアント ID**: クライアントの固有 ID。
+* **スコープ**: トークンが適用される有効範囲 (OAuth スコープを参照)。このスコープには、[必須アプリケーション・スコープ](#mandatory-application-scope)は含まれません。
+* **トークンの有効期限**: トークンが無効 (期限切れ) になる時間 (秒数)。
 
-#### Token expiration
+#### トークンの有効期限
 {: #token-expiration }
-The granted access token remains valid until its expiration time elapses. The access token's expiration time is set to the shortest expiration time from among the expiration times of all the security checks in the scope. But if the period until the shortest expiration time is longer than the application's maximum token-expiration period, the token's expiration time is set to the current time plus the maximum expiration period. The default maximum token-expiration period (validity duration) is 3,600 seconds (1 hour), but it can be configured by setting the value of the `maxTokenExpiration` property. See Configuring the maximum access-token expiration period.
+付与されたアクセス・トークンは、有効期限時刻が経過するまで有効になります。アクセス・トークンの有効期限時刻は、スコープ内のすべてのセキュリティー検査の有効期限時刻の中で最短の有効期限時刻に設定されます。ただし、最短の有効期限時刻までの期間が、アプリケーションの最大トークン有効期限期間よりも長い場合、トークンの有効期限時刻は現在時刻に最大有効期限期間を加算したものに設定されます。デフォルトのトークンの最大有効期間は 3,600 秒 (1 時間) ですが、`maxTokenExpiration` プロパティーの値を設定することで、期間を構成できます。『アクセス・トークンの最大有効期間の構成』を参照してください。
 
 <div class="panel-group accordion" id="configuration-explanation" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="access-token-expiration">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>Configuring the maximum access-token expiration period</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>アクセス・トークンの最大有効期間の構成</b></a>
             </h4>
         </div>
 
         <div id="collapse-access-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="access-token-expiration">
             <div class="panel-body">
-            <p>Configure the application’s maximum access-token expiration period by using one of the following alternative methods:</p>
+            <p>以下のいずれかの選択肢の方法により、アプリケーションのアクセス・トークンの最大有効期間を構成します。
+</p>
             <ul>
-                <li>Using the {{ site.data.keys.mf_console }}
+                <li>{{site.data.keys.mf_console }} の使用
                     <ul>
-                        <li>Select <b>[your application] → Security</b> tab.</li>
-                        <li>In the <b>Token Configuration</b> section, set the value of the Maximum <b>Token-Expiration Period (seconds)</b> field to your preferred value, and click **Save**. You can repeat this procedure, at any time, to change the maximum token-expiration period, or select <b>Restore Default Values</b> to restore the default value.</li>
+                        <li><b>「 [ご使用のアプリケーション] 」→「セキュリティー」</b>タブを選択します。</li>
+                        <li><b>「トークン構成」</b>セクションで、<b>「トークンの最大有効期間 (秒)」</b>フィールドの値を希望の値に設定し、**「保存」**をクリックします。いつでもこの手順を繰り返してトークンの最大有効期間を変更することや、
+<b>「デフォルトに戻す」</b>を選択してデフォルト値に戻すことが可能です。
+</li>
                     </ul>
                 </li>
-                <li>Editing the application's configuration file
+                <li>アプリケーションの構成ファイルの編集
                     <ol>
-                        <li>From a <b>command-line window</b>, navigate to the project's root folder and run the <code>mfpdev app pull</code>.</li>
-                        <li>Open the configuration file, located in the <b>[project-folder\mobilefirst</b> folder.</li>
-                        <li>Edit the file by defining a <code>maxTokenExpiration</code> property, key and set its value to the maximum access-token expiration period, in seconds:
+                        <li><b>コマンド・ライン・ウィンドウ</b>で、プロジェクトのルート・フォルダーにナビゲートし、<code>mfpdev app pull</code> を実行します。</li>
+                        <li><b>[project-folder]\mobilefirst</b> フォルダーにある構成ファイルを開きます。</li>
+                        <li><code>maxTokenExpiration</code> プロパティーを定義し、その値をアクセス・トークンの最大有効期間 (秒数) に設定して、ファイルを編集します。
 
 {% highlight xml %}
 {
@@ -76,13 +83,13 @@ The granted access token remains valid until its expiration time elapses. The ac
     "maxTokenExpiration": 7200
 }
 {% endhighlight %}</li>
-                        <li>Deploy the updated configuration JSON file by running the command: <code>mfpdev app push</code>.</li>
+                        <li>コマンド <code>mfpdev app push</code> を実行することで、更新済み構成 JSON ファイルをデプロイします。</li>
                     </ol>
                 </li>
             </ul>
                 
             <br/>
-            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>Close section</b></a>
+            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
@@ -92,13 +99,13 @@ The granted access token remains valid until its expiration time elapses. The ac
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="response-structure">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>Access-token response structure</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>アクセス・トークン応答構造</b></a>
             </h4>
         </div>
 
         <div id="collapse-response-structure" class="panel-collapse collapse" role="tabpanel" aria-labelledby="response-structure">
             <div class="panel-body">
-                <p>A successful HTTP response to an access-token request contains a JSON object with the access token and additional data. Following is an example of a valid-token response from the authorization server:</p>
+                <p>アクセス・トークン要求に対する成功時の HTTP 応答には、アクセス・トークンおよび追加データが入っている JSON オブジェクトが含まれます。以下に、許可サーバーからの有効なトークンの応答の例を示します。</p>
 
 {% highlight json %}
 HTTP/1.1 200 OK
@@ -113,91 +120,98 @@ Pragma: no-cache
 }
 {% endhighlight %}
 
-<p>The token-response JSON object has these property objects:</p>
+<p>トークン応答 JSON オブジェクトには、以下のプロパティー・オブジェクトが含まれます。</p>
 <ul>
-    <li><b>token_type</b>: the token type is always <i>"Bearer"</i>, in accordance with the <a href="https://tools.ietf.org/html/rfc6750">OAuth 2.0 Bearer Token Usage specification</a>.</li>
-    <li><b>expires_in</b>: the expiration time of the access token, in seconds.</li>
-    <li><b>access_token</b>: the generated access token (actual access tokens are longer than shown in the example).</li>
-    <li><b>scope</b>: the requested scope.</li>
+    <li><b>token_type</b>: トークン・タイプは常に <i>"Bearer"</i> (<a href="https://tools.ietf.org/html/rfc6750">OAuth 2.0 Bearer Token Usage 仕様</a>に準拠)。</li>
+    <li><b>expires_in</b>: アクセス・トークンの有効期限を表す時間 (秒数)。</li>
+    <li><b>access_token</b>: 生成されたアクセス・トークン (実際のアクセス・トークンは、例で示されているものよりも長くなります)。</li>
+    <li><b>scope</b>: 要求されたスコープ。</li>
 </ul>
 
-<p>The <b>expires_in</b> and <b>scope</b> information is also contained within the token itself (<b>access_token</b>).</p>
+<p><b>expires_in</b> および <b>scope</b> の情報は、トークン自体 (<b>access_token</b>) にも含まれています。</p>
 
-<blockquote><b>Note:</b> The structure of a valid access-token response is relevant if you use the low-level <code>WLAuthorizationManager</code> class and manage the OAuth interaction between the client and the authorization and resource servers yourself, or if you use a confidential client. If you are using the high-level <code>WLResourceRequest</code> class, which encapsulates the OAuth flow for accessing protected resources, the security framework handles the processing of access-token responses for you. <a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_oauth_client_apis.html?view=kc#c_oauth_client_apis">See Client security APIs</a> and <a href="confidential-clients">Confidential clients</a>.</blockquote>
+<blockquote><b>注:</b> 有効なアクセス・トークン応答の構造を把握しておく必要があるのは、ユーザー自身が下位の <code>WLAuthorizationManager</code> クラスを使用してクライアントと許可サーバーおよびリソース・サーバーとの間の OAuth 対話を管理する場合、または機密クライアントを使用する場合です。保護リソースにアクセスするための OAuth フローをカプセル化する、上位 <code>WLResourceRequest</code> クラスを使用している場合は、
+セキュリティー・フレームワークが、ユーザーに代わって、アクセス・トークン応答の処理を行います。<a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_oauth_client_apis.html?view=kc#c_oauth_client_apis">クライアント・セキュリティー API</a> および<a href="confidential-clients">機密クライアント</a>を参照してください。</blockquote>
 
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
 </div>
 
-### Security Check
+### セキュリティー検査
 {: #security-check }
-A security check is a server-side entity that implements the security logic for protecting server-side application resources. A simple example of a security check is a user-login security check that receives the credentials of a user, and verifies the credentials against a user registry. Another example is the predefined {{ site.data.keys.product_adj }} application-authenticity security check, which validates the authenticity of the mobile application and thus protects against unlawful attempts to access the application's resources. The same security check can also be used to protect several resources.
+セキュリティー検査は、サーバー・サイドのアプリケーション・リソースを保護するためのセキュリティー・ロジックを実装するサーバー・サイド・エンティティーです。セキュリティー検査の簡単な例として、
+ユーザーの資格情報を受け取り、ユーザー・レジストリーに照らして資格情報を検査する、ユーザー・ログイン・セキュリティー検査があります。別の例として、事前定義されている {{site.data.keys.product_adj }}
+アプリケーション認証性セキュリティー検査があります。これは、モバイル・アプリケーションの認証性を検査することで、アプリケーションのリソースへの不正なアクセスから保護します。同じセキュリティー検査を使用して、複数のリソースを保護することもできます。
 
-A security check typically issues security challenges that require the client to respond in a specific way to pass the check. This handshake occurs as part of the OAuth access-token-acquisition flow. The client uses **challenge handlers** to handle challenges from security checks.
+セキュリティー検査は通常、
+クライアントが検査に合格するために特定の方法で応答する必要がある、セキュリティー・チャレンジを発行します。このハンドシェークは、OAuth アクセス・トークン獲得フローの一部として発生します。クライアントは**チャレンジ・ハンドラー**を使用して、セキュリティー検査のチャレンジを処理します。
 
-#### Built-in Security Checks
+#### 組み込みセキュリティー検査
 {: #built-in-security-checks }
-The following predefined security checks are available:
+以下の事前定義セキュリティー検査を使用できます。
 
-- [Application Authenticity](application-authenticity/)
-- [LTPA-based single sign-on (SSO)](ltpa-security-check/)
-- [Direct Update](../application-development/direct-update)
+- [アプリケーション認証性](application-authenticity/)
+- [LTPA ベースのシングル・サインオン (SSO)](ltpa-security-check/)
+- [ダイレクト・アップデート](../application-development/direct-update)
 
-### Challenge Handler
+### チャレンジ・ハンドラー
 {: #challenge-handler }
-When trying to access a protected resource, the client may be faced with a challenge. A challenge is a question, a security test, a prompt by the server to make sure that the client is allowed to access this resource. Most commonly, this challenge is a request for credentials, such as a user name and password.
+クライアントは、保護リソースにアクセスしようとするとき、チャレンジを提示されることがあります。チャレンジは、クライアントがそのリソースへのアクセスを許可されていることを検査するためにサーバーが出す質問、セキュリティー・テスト、またはプロンプトです。一般的に、このチャレンジは、ユーザー名とパスワードなどの資格情報を要求することです。
 
-A challenge handler is a client-side entity that implements the client-side security logic and the related user interaction.  
-**Important**: After a challenge is received, it cannot be ignored. You must answer or cancel it. Ignoring a challenge might lead to unexpected behavior.
+チャレンジ・ハンドラーは、クライアント・サイド・セキュリティー・ロジックおよびそれに関連したユーザーとの対話を実装する、
+クライアント・サイド・エンティティーです。  
+**重要**: チャレンジを受け取ると、それを無視することはできません。応答するか、あるいはキャンセルしなければなりません。チャレンジを無視すると、予期しない動作が発生するおそれがあります。
 
-> Learn more about security checks in the [Creating a Security Check](creating-a-security-check/) tutorial, and about challenge handlers in the [Credentials Validation](credentials-validation) tutorial.
+> セキュリティー検査について詳しくは、[セキュリティー検査の作成](creating-a-security-check/)チュートリアルを参照してください。また、チャレンジ・ハンドラーについては、[資格情報の検証](credentials-validation)チュートリアルを参照してください。
 
-### Scope
+### 有効範囲
 {: #scope }
-You can protect resources such as adapters from unauthorized access by specifying a **scope**.  
+**スコープ**を指定することにより、アダプターなどのリソースを無許可アクセスから保護できます。  
 
-A scope is a space-separated list of zero or more **scope elements**, for example `element1 element2 element3`.
-The {{ site.data.keys.product_adj }} security framework requires an access token for any adapter resource, even if the resource is not explicitly assigned a scope.
+スコープは、ゼロ個以上の**スコープ・エレメント**をスペースで区切ったリストです。例えば、`element1 element2 element3` です。
+{{site.data.keys.product_adj }} セキュリティー・フレームワークでは、リソースに明示的にスコープが割り当てられていない場合でも、あらゆるアダプター・リソースにアクセス・トークンが要求されます。
 
-#### Scope Element
+#### スコープ・エレメント
 {: #scope-element }
-A scope element can be one of the following:
+スコープ・エレメントには、以下のいずれかを指定できます。
 
-* The name of a security check.
-* An arbitrary keyword such as `access-restricted` or `deletePrivilege` which defines the level of security needed for this resource. This keyword is later mapped to a security check.
+* セキュリティー検査の名前。
+* そのリソースで必要とされるセキュリティーのレベルを定義した任意のキーワード (`access-restricted`、`deletePrivilege` など)。このキーワードが後でセキュリティー検査にマップされます。
 
-#### Scope Mapping
+#### スコープ・マッピング
 {: #scope-mapping }
-By default, the **scope elements** you write in your **scope** are mapped to a **security check with the same name**.  
-For example, if you write a security check called `PinCodeAttempts`, you can use a scope element with the same name within your scope.
+デフォルトで、**スコープ**内に記述する**スコープ・エレメント**は、**同じ名前を持つセキュリティー検査**にマップされます。  
+例えば、`PinCodeAttempts` というセキュリティー検査を作成した場合、同じ名前のスコープ・エレメントをスコープ内に使用できます。
 
-Scope Mapping allows to map scope elements to security checks. When the client asks for a scope element, this configuration defines which security checks should be applied.   For example, you can map the scope element `access-restricted` to your `PinCodeAttempts` security check.
+スコープ・マッピングは、スコープ・エレメントからセキュリティー検査へのマップを可能にします。クライアントがスコープ・エレメントを要求すると、この構成によって、適用されるセキュリティー検査が定義されます。例えば、スコープ・エレメント `access-restricted` を `PinCodeAttempts` セキュリティー検査にマップできます。
 
-Scope mapping is useful if you want to protect a resource differently depending on which application is trying to access it.  
-You can also map a scope to a list of zero or more security checks.
+どのアプリケーションがリソースにアクセスしようとしているかに応じてリソースを保護する方法を変える必要がある場合、スコープ・マッピングが便利です。  
+同じスコープをゼロ個以上のセキュリティー検査のリストにマップすることもできます。
 
-For example:  
+例えば、次のとおりです。
+  
 scope = `access-restricted deletePrivilege`
 
-* In app A
-  * `access-restricted` is mapped to `PinCodeAttempts`.
-  * `deletePrivilege` is mapped to an empty string.
-* In app B
-  * `access-restricted` is mapped to `PinCodeAttempts`.
-  * `deletePrivilege` is mapped to `UserLogin`.
+* アプリケーション A
+  * `access-restricted` は `PinCodeAttempts` にマップされます。
+  * `deletePrivilege` は空ストリングにマップされます。
+* アプリケーション B
+  * `access-restricted` は `PinCodeAttempts` にマップされます。
+  * `deletePrivilege` は `UserLogin` にマップされます。
 
-> To map your scope element to an empty string, do not select any security check in the **Add New Scope Element Mapping** pop-up menu.
+> スコープ・エレメントを空ストリングにマップするには、**「新しいスコープ・エレメント・マッピングの追加」**ポップアップ・メニューでセキュリティー検査を何も選択しないでください。
 
-<img class="gifplayer" alt="Scope mapping" src="scope_mapping.png"/>
+<img class="gifplayer" alt="スコープ・マッピング" src="scope_mapping.png"/>
 
-You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a {{ site.data.keys.mf_server }}.
+必要な構成を指定してアプリケーションの構成 JSON ファイルを手動で編集し、変更を {{site.data.keys.mf_server }} にプッシュして戻すこともできます。
 
-1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
-2. Open the configuration file, located in the **[project-folder\mobilefirst** folder.
-3. Edit the file by defining a `scopeElementMapping` property, in this property, define data pairs that are each composed of the name of your selected scope element, and a string of zero or more space-separated security checks to which the element maps. For example: 
+1. **コマンド・ライン・ウィンドウ**から、プロジェクトのルート・フォルダーにナビゲートし、`mfpdev app pull` を実行します。
+2. **[project-folder]\mobilefirst** フォルダーにある構成ファイルを開きます。
+3. ファイルを編集して、`scopeElementMapping` プロパティーを定義します。このプロパティーには、データ・ペアを定義します。各ペアは、選択したスコープ・エレメントの名前と、そのエレメントのマップ先となるゼロ個以上のセキュリティー検査をスペースで区切ったストリングとで構成されます。例えば、次のとおりです。
+ 
 
     ```xml
     "scopeElementMapping": {
@@ -205,49 +219,52 @@ You can also manually edit the application's configuration JSON file with the re
         "SSOUserValidation": "LtpaBasedSSO CredentialsValidation"
     }
     ```
-4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
+4. コマンド `mfpdev app push` を実行することで、更新済み構成 JSON ファイルをデプロイします。
 
-> You can also push updated configurations to remote servers. Review the [Using {{ site.data.keys.mf_cli }} to Manage {{ site.data.keys.product_adj }} artifacts](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> 更新済み構成をリモート・サーバーにプッシュすることもできます。[{{site.data.keys.mf_cli }} を使用した {{site.data.keys.product_adj }} 成果物の管理](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)チュートリアルを確認してください。
 
-## Protecting resources
+## リソースの保護
 {: #protecting-resources }
-In the OAuth model, a protected resource is a resource that requires an access token. You can use the {{ site.data.keys.product_adj }} security framework to protect both resources that are hosted on an instance of {{ site.data.keys.mf_server }}, and resources on an external server. You protect a resource by assigning it a scope that defines the required permissions for acquiring an access token for the resource. 
+OAuth モデルでは、保護リソースは、アクセス・トークンを必要とするリソースです。{{site.data.keys.product_adj }} セキュリティー・フレームワークを使用して、{{site.data.keys.mf_server }} のインスタンス上にホストされたリソースと外部サーバー上のリソースの両方を保護できます。リソースを保護するには、リソースのアクセス・トークンを取得するために必要な許可を定義するスコープをリソースに割り当てます。 
 
-You can protect your resources in various ways:
+リソースはいろいろな方法で保護できます。
 
-### Mandatory application scope
+### 必須アプリケーション・スコープ
 {: #mandatory-application-scope }
-At the application level, you can define a scope that will apply to all the resources used by the application. The security framework runs these checks (if exist) in addition to the security checks of the requested resource scope.
+アプリケーション・レベルでは、アプリケーションによって使用されるすべてのリソースに適用されるスコープを定義できます。セキュリティー・フレームワークは、要求されたリソース・スコープのセキュリティー検査に加えて、これらの検査 (存在する場合) を実行します。
 
-**Notes:**
+**注:
+**
 
-* The mandatory application scope is not applied when accessing [an unprotected resource](#unprotected-resources).
-* The access token that is granted for the resource scope does not contain the mandatory application scope.
+* 必須アプリケーション・スコープは、[無保護リソース](#unprotected-resources)にアクセスする場合は適用されません。
+* リソース・スコープに対して許可されたアクセス・トークンに、必須アプリケーション・スコープは含まれません。
+
 
 <br/>
-In the {{ site.data.keys.mf_console }}, select **[your application] → Security tab**. Under **Mandatory Application Scope**, click **Add to Scope**.
+{{site.data.keys.mf_console }} で、**「 [ご使用のアプリケーション] 」→「セキュリティー」タブ**を選択します。**「必須アプリケーション・スコープ」**の下で、**「スコープに追加」**をクリックします。
 
-<img class="gifplayer" alt="Mandatory application scope" src="mandatory-application-scope.png"/>
+<img class="gifplayer" alt="必須アプリケーション・スコープ" src="mandatory-application-scope.png"/>
 
-You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a {{ site.data.keys.mf_server }}.
+必要な構成を指定してアプリケーションの構成 JSON ファイルを手動で編集し、変更を {{site.data.keys.mf_server }} にプッシュして戻すこともできます。
 
-1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
-2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
-3. Edit the file by defining a `mandatoryScope` property, and setting the property value to a scope string that contains a space-separated list of your selected scope elements. For example: 
+1. **コマンド・ライン・ウィンドウ**から、プロジェクトのルート・フォルダーにナビゲートし、`mfpdev app pull` を実行します。
+2. **project-folder\mobilefirst** フォルダーにある構成ファイルを開きます。
+3. `mandatoryScope` プロパティーを定義し、選択したスコープ・エレメントのスペース区切りリストが入ったスコープ・ストリングをプロパティー値に設定することで、ファイルを編集します。例えば、次のとおりです。
+ 
 
    ```xml
    "mandatoryScope": "appAuthenticity PincodeValidation"
    ```
    
-4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
+4. コマンド `mfpdev app push` を実行することで、更新済み構成 JSON ファイルをデプロイします。
 
-> You can also push updated configurations to remote servers. Review the [Using {{ site.data.keys.mf_cli }} to Manage {{ site.data.keys.product_adj }} artifacts](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> 更新済み構成をリモート・サーバーにプッシュすることもできます。[{{site.data.keys.mf_cli }} を使用した {{site.data.keys.product_adj }} 成果物の管理](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)チュートリアルを確認してください。
 
-### Resource-level
+### リソース・レベル
 {: #resource-level }
-#### Java adapters
+#### Java アダプター
 {: #java-adapters }
-You can specify the scope of a resource method by using the `@OAuthSecurity` annotation.
+`@OAuthSecurity` アノテーションを使用してリソース・メソッドのスコープを指定できます。
 
 ```java
 @DELETE
@@ -259,91 +276,90 @@ public void deleteUser(@PathParam("userId") String userId){
 }
 ```
 
-In the example above, the `deleteUser` method uses the annotation `@OAuthSecurity(scope="deletePrivilege")`, which means that it is protected by a scope containing the scope element `deletePrivilege`.
+上記の例で、`deleteUser` メソッドはアノテーション `@OAuthSecurity(scope="deletePrivilege")` を使用しています。これは、このメソッドがスコープ・エレメント `deletePrivilege` を含んでいるスコープによって保護されていることを意味します。
 
-* A scope can be made of several scope elements, separated by spaces: `@OAuthSecurity(scope="element1 element2 element3")`.
-* If you do not specify the `@OAuthSecurity` annotation, or set the scope to an empty string, the {{ site.data.keys.product_adj }} security framework still requires an access token for any incoming request.
-* You can use the `@OAuthSecurity` annotation also at the resource class level, to define a scope for the entire Java class.
+* スコープは、スペースで区切られた複数のスコープ・エレメント (`@OAuthSecurity(scope="element1 element2 element3")`) で構成できます。
+* `@OAuthSecurity` アノテーションを指定しない場合、また、スコープを空ストリングに設定した場合でも、{{site.data.keys.product_adj }} セキュリティー・フレームワークは、あらゆる着信要求に対して引き続きアクセス・トークンを要求します。
+* リソースのクラス・レベルで `@OAuthSecurity` アノテーションを使用して、Java クラス全体のスコープを定義することもできます。
 
-#### JavaScript adapters
+#### JavaScript アダプター
 {: #javascript-adapters }
-You can protect a JavaScript adapter procedure by assigning a scope to the procedure definition in the adapter XML file:
+アダプター XML ファイル内でスコープをプロシージャー定義に割り当てることで、JavaScript アダプター・プロシージャーを保護できます。
 
 ```xml
 <procedure name="deleteUser" scope="deletePrivilege">
 ```
 
-* A scope can be made of several scope elements, separated by spaces: `scope="element1 element2 element3"`
-* If you do not specify any scope, or use an empty string, the {{ site.data.keys.product_adj }} security framework still requires an access token for any incoming request.
+* スコープは、スペースで区切られた複数のスコープ・エレメント (`scope="element1 element2 element3"`) で構成できます。
+* スコープをいっさい指定しない場合、または空ストリングを使用する場合でも、{{site.data.keys.product_adj }} セキュリティー・フレームワークは、あらゆる着信要求に対して引き続きアクセス・トークンを要求します。
 
-### Disabling protection
+### 保護の無効化
 {: #disabling-protection }
-The default value of the annotation’s `enabled` element is `true`. When the `enabled` element is set to `false`, the `scope` element is ignored, and the resource or resource class is not protected.  
-**Disabling protection** allows any client to access the resource: the {{ site.data.keys.product_adj }} security framework will **not** require an access token.
+アノテーションの `enabled` エレメントのデフォルト値は `true` です。`enabled` エレメントが `false` に設定されている場合、`scope` エレメントは無視され、リソースおよびリソース・クラスは保護されません。  
+**保護を無効化**すると、任意のクライアントがリソースにアクセスできます。すなわち、{{site.data.keys.product_adj }} セキュリティー・フレームワークは、アクセス・トークンを要求**しません**。
 
-**Note:** When you assign a scope to a resource method that is contained in an unprotected class, the method is protected despite the class annotation, provided you do not also set the enabled element to false in the resource annotation.
+**注:** 無保護クラスに含まれているリソース・メソッドにスコープを割り当てた場合、リソースのアノテーションでも enabled エレメントを false に設定していなければ、クラスのアノテーションに関係なく、そのメソッドは保護されます。
 
-#### Java adapters
+#### Java アダプター
 {: #java-adapters-protection }
-If you want to disable protection, you can use: `@OAuthSecurity(enabled=false)`.
+保護を無効にするには、`@OAuthSecurity(enabled=false)` を使用できます。
 
-#### JavaScript adapters
+#### JavaScript アダプター
 {: #javascript-adapters-protection }
-If you want to disable protection, you can use `secured="false"`.
+保護を無効にするには、`secured="false"` を使用できます。
 
 ```xml
 <procedure name="deleteUser" secured="false">
 ```
 
-### Unprotected resources
+### 無保護リソース
 {: #unprotected-resources }
-An unprotected resource is a resource that does not require an access token. The {{ site.data.keys.product_adj }} security framework does not manage access to unprotected resources, and does not validate or check the identity of clients that access these resources. Therefore, features such as Direct Update, blocking device access, or remotely disabling an application, are not supported for unprotected resources.
+無保護リソースは、アクセス・トークンを必要としないリソースです。
+{{site.data.keys.product_adj }} セキュリティー・フレームワークは、無保護リソースへのアクセスを管理せず、また該当するリソースにアクセスするクライアントの ID を検証および検査しません。そのため、無保護リソースでは、ダイレクト・アップデート、デバイス・アクセスのブロック、リモート側でのアプリケーションの無効化などの機能はサポートされません。
 
-### External resources
+### 外部リソース
 {: external-resources }
-To protect external resources, you add a resource filter with an access-token validation module to the external resource server. The token-validation module uses the introspection endpoint of the security framework's authorization server to validate {{ site.data.keys.product_adj }} access tokens before granting the OAuth client access to the resources. You can use the [{{ site.data.keys.product_adj }} REST API for the {{ site.data.keys.product_adj }} runtime](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api) to create your own access-token validation module for any external server. Alternatively, use one of the provided {{ site.data.keys.product_adj }} extensions for protecting external Java resources, as outlined in the [Protecting External Resources](protecting-external-resources) tutorial.
+外部リソースを保護するには、アクセス・トークン検証モジュールとともにリソース・フィルターを外部リソース・サーバーに追加します。
+トークン検証モジュールは、セキュリティー・フレームワークの許可サーバーのイントロスペクション・エンドポイントを使用して、リソースに対するアクセス権限を OAuth クライアントに付与する前に、{{site.data.keys.product_adj }} アクセス・トークンを検証します。[{{site.data.keys.product_adj }} ランタイム用の {{site.data.keys.product_adj }} REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api) を使用して、任意の外部サーバー用のアクセス・トークン検証モジュールを独自に作成できます。あるいは、[外部リソースの保護](protecting-external-resources)チュートリアルで概要を示しているように、外部 Java リソースを保護するために提供されているいずれかの {{site.data.keys.product_adj }} 拡張機能を使用します。
 
-## Authorization flow
+## 許可フロー
 {: #authorization-flow }
-The authorization flow has two phases:
+許可フローには、以下の 2 つのフェーズが含まれます。
 
-1. The client acquires an access token.
-2. The client uses the token to access a protected resource.
+1. クライアントがアクセス・トークンを取得する。
+2. クライアントがトークンを使用して、保護リソースにアクセスする。
 
-### Obtaining an access token
+### アクセス・トークンの取得
 {: #obtaining-an-access-token }
-In this phase, the client undergoes **security checks** in order to receive an access token.
+このフェーズで、クライアントはアクセス・トークンを受け取るために**セキュリティー検査**を受けます。
 
-Before the request for an access token the client registers itself with the {{ site.data.keys.mf_server }}. As part of the registration, the client provides a public key that will be used for authenticating its identity. This phase occurs once in the lifetime of a mobile application instance. If the application-authenticity security check is enabled the authenticity of the application is validated during its registration.
+アクセス・トークンを要求する前に、クライアントは、自身を {{site.data.keys.mf_server }} に登録します。登録の一部として、クライアントは、その ID 認証に使用される公開鍵を提供します。このフェーズは、モバイル・アプリケーション・インスタンスの存続期間で 1 回実行されます。
+アプリケーション認証性セキュリティー検査が有効である場合、アプリケーションの登録時にアプリケーションの認証性が検証されます。
 
-![Obtain Token](auth-flow-1.jpg)
+![トークンの取得](auth-flow-1.jpg)
 
-1. The client application sends a request to obtain an access token for a specified scope.
+1. クライアント・アプリケーションが、指定したスコープのアクセス・トークン取得要求を送信します。
 
-    > The client requests an access token with a certain scope. The requested scope should map to the same security check as the scope of the protected resource that the client wants to access, and can optionally also map to additional security checks. If the client does not have prior knowledge about the scope of the protected resource, it can first request an access token with an empty scope, and try to access the resource with the obtained token. The client will receive a response with a 403 (Forbidden) error and the required scope of the requested resource.
+    > クライアントは、特定のスコープを持つアクセス・トークンを要求します。要求するスコープは、クライアントがアクセスを希望する保護リソースのスコープと同じセキュリティー検査にマップされる必要があり、オプションで追加のセキュリティー検査にマップされる場合もあります。クライアントに保護リソースのスコープに関する予備知識がない場合、クライアントはまず空のスコープを持つアクセス・トークンを要求し、取得したトークンでリソースにアクセスすることができます。クライアントは、エラー 403 (禁止) の応答を受け取り、要求したリソースに必要なスコープを受け取ります。2. クライアント・アプリケーションが、要求したスコープに従ってセキュリティー検査を受けます。
 
-2. The client application undergoes security checks according to the requested scope.
+    > {{site.data.keys.mf_server }} は、クライアントの要求のスコープがマップされた先のセキュリティー検査を実行します。許可サーバーは、そのような検査の結果に基づいて、クライアントの要求を許可または拒否します。必須アプリケーション・スコープが定義されている場合、要求されているスコープの検査に加えて、そのスコープのセキュリティー検査が実行されます。3. チャレンジ・プロセスが正常に完了した後、クライアント・アプリケーションが、要求を許可サーバーに転送します。
 
-    > {{ site.data.keys.mf_server }} runs the security checks to which the scope of the client's request is mapped. The authorization server either grants or rejects the client's request based on the results of these checks. If a mandatory application scope is defined, the security checks of this scope are run in addition to the checks of the requested scope.
+    > 正常に許可された後、クライアントは、許可サーバーのトークン・エンドポイントにリダイレクトされ、クライアント登録の一部として提供された公開鍵を使用して認証されます。認証が成功すると、許可サーバーは、クライアントの ID、要求されたスコープ、およびトークンの有効期限時刻をカプセル化したデジタル署名済み
+アクセス・トークンをクライアントに発行します。4. クライアント・アプリケーションがアクセス・トークンを受け取ります。
 
-3. After a successful completion of the challenge process, the client application forwards the request to the authorization server.
-
-    > After successful authorization, the client is redirected to the authorization server's token endpoint, where it is authenticated by using the public key that was provided as part of the client's registration. Upon successful authentication, the authorization server issues the client a digitally signed access token that encapsulates the client's ID, the requested scope, and the token's expiration time.
-
-4. The client application receives the access token.
-
-### Using a token to access a protected resource
+### トークンを使用した保護リソースへのアクセス
 {: #using-a-token-to-access-a-protected-resource }
-It is possible to enforce security both on resources that run on {{ site.data.keys.mf_server }}, as shown in this diagram, and on resources that run on any external resource server, as explained in tutorial [Using {{ site.data.keys.mf_server }} to authenticate external resources](protecting-external-resources/).
+以下のダイアグラムに示すような、{{site.data.keys.mf_server }} 上で実行されるリソースと、[{{site.data.keys.mf_server }} を使用した外部リソースの認証](protecting-external-resources/)チュートリアルで説明しているような、外部リソース・サーバー上で実行されるリソースの両方にセキュリティーを適用できます。
 
-After obtaining an access token, the client attaches the obtained token to subsequent requests to access protected resources. The resource server uses the authorization server's introspection endpoint to validate the token. The validation includes using the token's digital signature to verify the client's identity, verifying that the scope matches the authorized requested scope, and ensuring that the token has not expired. When the token is validated, the client is granted access to the resource.
+クライアントは、アクセス・トークンを取得した後に、取得したトークンを後続の要求にアタッチして保護リソースにアクセスします。リソース・サーバーは許可サーバーのイントロスペクション・エンドポイントを試用して、トークンを検証します。
+この検証では、トークンのデジタル署名を使用したクライアントの ID の検査、スコープが許可されている要求スコープに一致していることの検査、およびトークンの有効期限が切れていないことの確認が行われます。トークンが検証されると、クライアントに対してリソースへのアクセスが許可されます。
 
-![Protect Resources](auth-flow-2.jpg)
+![リソースの保護](auth-flow-2.jpg)
 
-1. The client application sends a request with the received token.
-2. The validation module validates the token.
-3. {{ site.data.keys.mf_server }} proceeds to adapter invocation.
+1. クライアント・アプリケーションが、受け取ったトークンを付けて要求を送信します。
+2. 検証モジュールがトークンを検証します。
+3. {{site.data.keys.mf_server }} が、アダプター呼び出しに進みます。
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-Continue reading about authentication in {{ site.data.keys.product_adj }} Foundation by following the tutorials from the sidebar navigation.  
+サイドバー・ナビゲーションにあるチュートリアルを順に追いながら、{{site.data.keys.product_adj }} Foundation での認証について、引き続きお読みください。  

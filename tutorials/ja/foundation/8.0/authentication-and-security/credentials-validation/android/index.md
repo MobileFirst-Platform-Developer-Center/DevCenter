@@ -1,25 +1,25 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Android applications
+title: Android アプリケーションでのチャレンジ・ハンドラーの実装
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 4
 downloads:
-  - name: Download Android Studio project
+  - name: Android Studio プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: SecurityCheck Maven プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-When trying to access a protected resource, the server (the security check) sends back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a `JSON` object, listing the security check name with an optional `JSON` of additional data:
+保護リソースへのアクセスを試みると、クライアントにはサーバー (セキュリティー検査) から、クライアントが対処する必要がある 1 つ以上の**チャレンジ**を含んだリストが返信されます。  
+このリストは、`JSON` オブジェクトとして届けられ、セキュリティー検査名とともにオプションで追加データの `JSON` がリストされています。
 
 ```json
 {
   "challenges": {
-    "SomeSecurityCheck1":null,
+"SomeSecurityCheck1":null,
     "SomeSecurityCheck2":{
       "some property": "some value"
     }
@@ -27,16 +27,16 @@ This list is received as a `JSON` object, listing the security check name with a
 }
 ```
 
-The client must then register a **challenge handler** for each security check.  
-The challenge handler defines the client-side behavior that is specific to the security check.
+その後、クライアントは、セキュリティー検査ごとに**チャレンジ・ハンドラー**を登録しなければなりません。  
+チャレンジ・ハンドラーによって、そのセキュリティー検査特定のクライアント・サイドの動作が定義されます。
 
-## Creating the challenge handler
+## チャレンジ・ハンドラーの作成
 {: #creating-the-challenge-handler }
-A challenge handler is a class that handles challenges sent by the {{ site.data.keys.mf_server }}, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
+チャレンジ・ハンドラーは、{{site.data.keys.mf_server }} によって送信されるチャレンジを処理するクラスです。例えば、ログイン画面を表示したり、資格情報を収集したり、それらを元のセキュリティー検査に送信したりします。
 
-In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to login (`remainingAttempts`) and an optional `errorMsg`.
+この例の場合、セキュリティー検査は `PinCodeAttempts` であり、これは [CredentialsValidationSecurityCheck の実装](../security-check)で定義したものです。このセキュリティー検査によって送信されるチャレンジには、ログインを試行できる残りの回数 (`remainingAttempts`) と、オプションで `errorMsg` が含まれます。
 
-Create a Java class that extends `SecurityCheckChallengeHandler`:
+`SecurityCheckChallengeHandler` を継承する Java クラスを作成します。
 
 ```java
 public class PinCodeChallengeHandler extends SecurityCheckChallengeHandler {
@@ -44,11 +44,11 @@ public class PinCodeChallengeHandler extends SecurityCheckChallengeHandler {
 }
 ```
 
-## Handling the challenge
+## チャレンジの処理
 {: #handling-the-challenge }
-The minimum requirement from the `SecurityCheckChallengeHandler` protocol is to implement a constructor and a `handleChallenge` method, which prompts the user to provide the credentials. The `handleChallenge` method receives the challenge as a `JSONObject`.
+`SecurityCheckChallengeHandler` プロトコルが求める最小要件は、コンストラクターおよび `handleChallenge` メソッドを実装することです。このメソッドは、ユーザーに対して資格情報を求めるプロンプトを出します。`handleChallenge` メソッドは、`JSONObject` としてチャレンジを受け取ります。
 
-Add a constructor method:
+コンストラクター・メソッドを追加します。
 
 ```java
 public PinCodeChallengeHandler(String securityCheck) {
@@ -56,7 +56,7 @@ public PinCodeChallengeHandler(String securityCheck) {
 }
 ```
 
-In this `handleChallenge` example, an alert prompts the user to enter the PIN code:
+この `handleChallenge` の例では、PIN コードの入力をユーザーに要求するアラートが出されます。
 
 ```java
 @Override
@@ -73,35 +73,35 @@ public void handleChallenge(JSONObject jsonObject) {
             intent.putExtra("msg", jsonObject.getString("errorMsg") + "\nRemaining attempts: " + jsonObject.getString("remainingAttempts"));
             broadcastManager.sendBroadcast(intent);
         }
-    } catch (JSONException e) {
-        e.printStackTrace();
+    		} catch (JSONException e){
+e.printStackTrace();
     }
 }
 
 ```
 
-> The implementation of `alertMsg` is included in the sample application.
+> `alertMsg` の実装がサンプル・アプリケーションに組み込まれています。
 
-If the credentials are incorrect, you can expect the framework to call `handleChallenge` again.
+資格情報が正しくない場合、フレームワークによって再度 `handleChallenge` が呼び出されます。
 
-## Submitting the challenge's answer
+## チャレンジ応答の送信
 {: #submitting-the-challenges-answer }
-Once the credentials have been collected from the UI, use the `SecurityCheckChallengeHandler`'s `submitChallengeAnswer(JSONObject answer)` method to send an answer back to the security check. In this example, `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+UI から資格情報が収集されたら、`SecurityCheckChallengeHandler` の `submitChallengeAnswer(JSONObject answer)` メソッドを使用して、セキュリティー検査に応答を返信します。この例の場合、`PinCodeAttempts` は、提供された PIN コードを含んでいる `pin` というプロパティーを必要とします。
 
 ```java
 submitChallengeAnswer(new JSONObject().put("pin", pinCodeTxt.getText()));
 ```
 
-## Cancelling the challenge
+## チャレンジのキャンセル
 {: #cancelling-the-challenge }
-In some cases, such as clicking a **Cancel** button in the UI, you want to tell the framework to discard this challenge completely.
+UI で**「キャンセル」**ボタンがクリックされたときなど、フレームワークに対して、このチャレンジを完全に破棄するように指示する必要が生じる場合があります。
 
-To achieve this, use the `SecurityCheckChallengeHandler`'s `cancel()` method.
+これを実現するには、`SecurityCheckChallengeHandler` の `cancel()` メソッドを使用します。
 
-## Handling failures
+## 失敗の処理
 {: #handling-failures }
-Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement the `SecurityCheckChallengeHandler`'s `handleFailure` method.  
-The structure of the `JSONObject` passed as a parameter greatly depends on the nature of the failure.
+一部のシナリオでは、失敗がトリガーされる可能性があります (例えば、最大試行回数に達したときなど)。これらを処理するには、`SecurityCheckChallengeHandler` の `handleFailure` メソッドを実装します。  
+パラメーターとして渡される `JSONObject` の構造は、失敗の性質に大きく依存します。
 
 ```java
 @Override
@@ -117,51 +117,51 @@ public void handleFailure(JSONObject jsonObject) {
             intent.putExtra("errorMsg", "Unknown error");
             broadcastManager.sendBroadcast(intent);
         }
-    } catch (JSONException e) {
-        e.printStackTrace();
+    		} catch (JSONException e){
+e.printStackTrace();
     }
 }
 ```
 
-> The implementation of `alertError` is included in the sample application.
+> `alertError` の実装がサンプル・アプリケーションに組み込まれています。
 
-## Handling successes
+## 成功の処理
 {: #handling-successes }
-In general, successes are automatically processed by the framework to allow the rest of the application to continue.
+一般的に、成功の場合は、アプリケーションの残りの処理を続行できるように、フレームワークによって自動的に処理されます。
 
-Optionally, you can also choose to do something before the framework closes the challenge handler flow, by implementing the `SecurityCheckChallengeHandler`'s `handleSuccess` method. Here again, the content and structure of the `JSONObject` passed as a parameter depends on what the security check sends.
+オプションで、`SecurityCheckChallengeHandler` の `handleSuccess` メソッドを実装すると、フレームワークがチャレンジ・ハンドラー・フローを閉じる前に、何かの処理を行うようにできます。この場合も、パラメーターとして渡される `JSONObject` オブジェクトのコンテンツおよび構造は、セキュリティー検査が送信する内容に依存します。
 
-In the `PinCodeAttempts` sample application, the `JSONObject` does not contain any additional data and so `handleSuccess` is not implemented.
+`PinCodeAttempts` サンプル・アプリケーションの場合、`JSONObject` に追加のデータは含まれていないため、`handleSuccess` は実装されていません。
 
-## Registering the challenge handler
+## チャレンジ・ハンドラーの登録
 {: #registering-the-challenge-handler }
-For the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.
+チャレンジ・ハンドラーが正しいチャレンジを listen するためには、フレームワークに対して、チャレンジ・ハンドラーと特定のセキュリティー検査名を関連付けるように指示する必要があります。
 
-To do so, initialize the challenge handler with the security check as follows:
+そのためには、以下のようにセキュリティー検査を指定してチャレンジ・ハンドラーを初期設定します。
 
 ```java
 PinCodeChallengeHandler pinCodeChallengeHandler = new PinCodeChallengeHandler("PinCodeAttempts", this);
 ```
 
-You must then **register** the challenge handler instance:
+次に、チャレンジ・ハンドラー・インスタンスを**登録**する必要があります。
 
 ```java
 WLClient client = WLClient.createInstance(this);
 client.registerChallengeHandler(pinCodeChallengeHandler);
 ```
 
-**Note:** Creating a `WLClient` instance and registering the challenge handler should happen only once in the entire application lifecycle. It is recommended to use the Android Application class to do it.
+**注:** `WLClient` インスタンスの作成とチャレンジ・ハンドラーの登録は、アプリケーション・ライフサイクル全体の中で 1 回のみ実行します。Android Application クラスを使用してこれを行うことをお勧めします。
 
-## Sample application
+## サンプル・アプリケーション
 {: #sample-application }
-The sample **PinCodeAndroid** is an Android application that uses `WLResourceRequest` to get a bank balance.  
-The method is protected with a PIN code, with a maximum of 3 attempts.
+サンプルの **PinCodeAndroid** は、`WLResourceRequest` を使用して銀行の残高を照会する Android アプリケーションです。  
+このメソッドは、PIN コードと、最大 3 回までの試行によって保護されています。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80) the Android project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) して SecurityAdapters Maven プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80) して Android プロジェクトをダウンロードします。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。
 
-![Sample application](sample-application-android.png)
+![サンプル・アプリケーション](sample-application-android.png)

@@ -1,31 +1,31 @@
 ---
 layout: tutorial
-title: Java Token Validator
-breadcrumb_title: Java Token Validator
+title: Java トークン・バリデーター
+breadcrumb_title: Java トークン・バリデーター
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Download sample
+  - name: サンプルのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_full }} provides a Java library to enforce security capabilities on external resources.  
-The Java library is provided as a JAR file (**mfp-java-token-validator-8.0.0.jar**).
+{{site.data.keys.product_full }} は、外部リソースにセキュリティー機能を適用するための Java ライブラリーを提供しています。  
+Java ライブラリーは、JAR ファイル (**mfp-java-token-validator-8.0.0.jar**) として提供されます。
 
-This tutorial shows how to protect a simple Java Servlet, `GetBalance`, by using a scope (`accessRestricted`).
+このチュートリアルでは、スコープ (`accessRestricted`) を使用して、単純な Java サーブレット `GetBalance` を保護する方法を示します。
 
-**Prerequesites:**
+**前提条件:**
 
-* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product_adj }} Foundation security framework](../../).
+* [{{site.data.keys.mf_server }} を使用した外部リソースの認証](../)チュートリアルをお読みください。
+* [{{site.data.keys.product_adj }} Foundation セキュリティー・フレームワーク](../../)の知識が必要です。
 
-![Flow](JTV_flow.jpg)
+![フロー](JTV_flow.jpg)
 
-## Adding the .jar file dependency
+## .jar ファイル依存関係の追加
 {: #adding-the-jar-file-dependency }
-The **mfp-java-token-validator-8.0.0.jar** file is available as a **maven dependency**:
+**mfp-java-token-validator-8.0.0.jar** ファイルは、**maven dependency** として使用できます。
 
 ```xml
 <dependency>
@@ -35,32 +35,32 @@ The **mfp-java-token-validator-8.0.0.jar** file is available as a **maven depend
 </dependency>
 ```
 
-## Instantiating the TokenValidationManager
+## TokenValidationManager のインスタンス化
 {: #instantiating-the-tokenvalidationmanager }
-To be able to validate tokens, instantiate `TokenValidationManager`.
+トークンの検証を可能にするために、`TokenValidationManager` をインスタンス化します。
 
 ```java
 TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret);
 ```
 
-- `authorizationURI`: the URI of the Authorization server, usually the {{ site.data.keys.mf_server }}. For example **http://localhost:9080/mfp/api**.
-- `clientId`: The confidential client ID that you configured in the {{ site.data.keys.mf_console }}.
-- `clientSecret`: The confidential client secret that you configured in the {{ site.data.keys.mf_console }}.
+- `authorizationURI`: 許可サーバーの URI。通常は、{{site.data.keys.mf_server }} です。例えば、**http://localhost:9080/mfp/api** です。
+- `clientId`: {{site.data.keys.mf_console }} で構成した機密クライアント ID。
+- `clientSecret`: {{site.data.keys.mf_console }} で構成した機密クライアント秘密鍵。
 
-> The library exposes an API that encapsulates and simplifies the interaction with the authorization server's introspection endpoint. For a detailed API reference, [see the {{ site.data.keys.product_adj }} Java Token Validator API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
+> このライブラリーは、許可サーバーのイントロスペクション・エンドポイントとの対話をカプセル化および簡素化する API を公開します。詳細な API リファレンスについては、[{{site.data.keys.product_adj }} Java トークン・バリデーター API リファレンス](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)を参照してください。
 
-## Validating the credentials
+## 資格情報の検証
 {: #validating-the-credentials }
-The `validate` API method asks the authorization server to validate the authorization header:
+`validate` API メソッドは、許可ヘッダーの検証を許可サーバーに依頼します。
 
 ```java
 public TokenValidationResult validate(java.lang.String authorizationHeader, java.lang.String expectedScope);
 ```
 
-- `authorizationHeader`: The content of the `Authorization` HTTP header, which is the access token. For example, it could be obtained from an  `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`).
-- `expectedScope`: The scope to validate the token against, for example `accessRestricted`.
+- `authorizationHeader`: `Authorization` HTTP ヘッダーのコンテンツ、すなわち、アクセス・トークンです。例えば、`HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`) から取得されます。
+- `expectedScope`: トークンを検証するための基準となるスコープ。例えば、`accessRestricted` です。
 
-You can query the resulting `TokenValidationResult` object for an error or for valid introspection data:
+結果の `TokenValidationResult` オブジェクトを照会して、エラーまたは有効なイントロスペクション・データを確認できます。
 
 ```java
 TokenValidationResult tokenValidationRes = validator.validate(authCredentials, expectedScope);
@@ -74,9 +74,9 @@ if (tokenValidationRes.getAuthenticationError() != null) {
 }
 ```                    
 
-## Introspection data
+## イントロスペクション・データ
 {: #introspection-data }
-The `TokenIntrospectionData` object returned by `getIntrospectionData()` provides you with some information about the client, such as the user name of the currently active user:
+`getIntrospectionData()` によって返される `TokenIntrospectionData` オブジェクトは、現在のアクティブ・ユーザーのユーザー名など、クライアントに関する情報を提供します。
 
 ```java
 httpServletRequest.setAttribute("introspection-data", tokenValidationRes.getIntrospectionData());
@@ -87,21 +87,21 @@ TokenIntrospectionData introspectionData = (TokenIntrospectionData) request.getA
 String username = introspectionData.getUsername();
 ```
 
-## Cache
+## キャッシュ
 {: #cache }
-The `TokenValidationManager` class comes with an internal cache which caches tokens and introspection data. The purpose of the cache is to reduce the amount of token *introspections* done against the Authorization Server, if a request is made with the same header.
+`TokenValidationManager` クラスには、トークンおよびイントロスペクション・データをキャッシュに入れる内部キャッシュが付いてきます。キャッシュの目的は、同じヘッダーを使用して要求が発行された場合に、許可サーバーに対して行われるトークンの*イントロスペクション* の量を減らすことです。
 
-The default cache size is **50000 items**. After this capacity is reached, the oldest token is removed.  
+デフォルトのキャッシュ・サイズは **50000 項目**です。この容量に達すると、一番古いトークンから削除されます。  
 
-The constructor of `TokenValidationManager` can also accept a `cacheSize` (number of introspection data items) to store:
+`TokenValidationManager` のコンストラクターは、保管する `cacheSize` (イントロスペクション・データ項目の数) も受け入れます。
 
 ```java
 public TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret, long cacheSize);
 ```
 
-## Protecting a simple Java Servlet
+## 単純な Java サーブレットの保護
 {: #protecting-a-simple-java-servlet }
-1. Create a simple Java Servlet called `GetBalance`, which returns a hardcoded value:
+1. ハードコーディングされた値を返す、`GetBalance` という単純な Java サーブレットを作成します。
 
    ```java
    @WebServlet("/GetBalance")
@@ -116,7 +116,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    }
    ```
 
-2. Create a `javax.servlet.Filter` implementation, called `JTVFilter`, which will validate the authorization header for a given scope:
+2. `JTVFilter` という `javax.servlet.Filter` 実装を作成します。これは、指定されたスコープの許可ヘッダーを検証します。
 
    ```java
    public class JTVFilter implements Filter {
@@ -169,7 +169,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    }
    ```
 
-3. In the servlet's **web.xml** file, declare an instance of `JTVFilter` and pass the **scope** `accessRestricted` as a parameter:
+3. サーブレットの **web.xml** ファイル内に `JTVFilter` のインスタンスを宣言し、**scope** `accessRestricted` をパラメーターとして渡します。
 
    ```xml
    <filter>
@@ -182,7 +182,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    </filter>
    ```
 
-   Then protect your servlet with the filter:
+   サーブレットをこのフィルターで保護します。
 
    ```xml
    <filter-mapping>
@@ -191,16 +191,16 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    </filter-mapping>
    ```
 
-## Sample application
+## サンプル・アプリケーション
 {: #sample-application }
 
-You can deploy the project on the supported application servers (Tomcat, WebSphere Application Server full profile, and WebSphere Application Server Liberty profile).  
-[Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80).
+サポートされるアプリケーション・サーバー (Tomcat、WebSphere Application Server フル・プロファイル、および WebSphere Application Server Liberty プロファイル) にプロジェクトをデプロイできます。  
+[単純な Java サーブレットをダウンロード](https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80)します。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-1. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-3. Register the matching application.
-4. Map the `accessRestricted` scope to the security check.
-5. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. {{site.data.keys.mf_console }} で、必ず[機密クライアントと秘密鍵の値を更新](../#confidential-client)してください。
+2. **[UserLogin](../../user-authentication/security-check/)** または **[PinCodeAttempts](../../credentials-validation/security-check/)** のいずれかのセキュリティー検査をデプロイします。
+3. 一致するアプリケーションを登録します。
+4. `accessRestricted` スコープをセキュリティー検査にマップします。
+5. クライアント・アプリケーションを更新して、サーブレット URL に `WLResourceRequest` を発行します。

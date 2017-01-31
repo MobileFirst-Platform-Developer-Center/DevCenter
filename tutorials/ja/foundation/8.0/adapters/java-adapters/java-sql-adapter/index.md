@@ -1,38 +1,37 @@
 ---
 layout: tutorial
-title: Java SQL Adapter
-breadcrumb_title: SQL Adapter
+title: Java SQL アダプター
+breadcrumb_title: SQL アダプター
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: アダプター Maven プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-Java adapters give developers control over connectivity to a back end system. It is therefore the responsibility of the developer to ensure best practices regarding performance and other implementation details.
-This tutorial covers an example of a Java adapter that connects to a MySQL back end to make CRUD (Create, Read, Update, Delete) operations on a `users` table, using REST concepts.
+Java アダプターは、バックエンド・システムへの接続に対する制御権を開発者に与えます。したがって、開発者の責任で、パフォーマンスおよびその他の実装の詳細についてのベスト・プラクティスを実現する必要があります。このチュートリアルでは、MySQL バックエンドに接続し、REST 概念を使用して `users` テーブルに対する CRUD (作成、読み取り、更新、削除) 操作を行う Java アダプターの例を取り上げます。
 
-**Prerequisites:**
+**前提条件:**
 
-* Make sure to read the [Java Adapters](../) tutorial first.
-* This tutorial assumes knowledge of SQL.
+* 最初に必ず、 [Java アダプター](../)チュートリアルをお読みください。
+* このチュートリアルでは、SQL の知識があることを前提としています。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Setting up the data source](#setting-up-the-data-source)
-* [Implemeting SQL in the adapter Resource class](#implementing-sql-in-the-adapter-resource-class)
-* [Sample adapter](#sample-adapter)
+* [データ・ソースのセットアップ](#setting-up-the-data-source)
+* [アダプター・リソース・クラスへの SQL の実装](#implementing-sql-in-the-adapter-resource-class)
+* [サンプル・アダプター](#sample-adapter)
 
-## Setting up the data source
+## データ・ソースのセットアップ
 {: #setting-up-the-data-source }
 
-In order to configure the {{ site.data.keys.mf_server }} to be able to connect to the MySQL server, the adapter's XML file needs to be configured with **configuration properties**. These properties can later be edited through the {{ site.data.keys.mf_console }}.
+MySQL サーバーに接続できるように {{site.data.keys.mf_server }} を構成するには、**構成プロパティー**を使用してアダプターの XML ファイルを構成する必要があります。これらのプロパティーは、後で {{site.data.keys.mf_console }} で編集できます。
 
-Edit the adater.xml file and add the following properties:
+adater.xml ファイルを編集して、以下のプロパティーを追加します。
 
 ```xml
 <mfp:adapter name="JavaSQL"
@@ -51,15 +50,14 @@ Edit the adater.xml file and add the following properties:
 </mfp:adapter>
 ```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must always be located *below* the `JAXRSApplicationClass` element.  
-Here we define the connection settings and give them a default value, so they could be used later in the AdapterApplication class.
-
-## Implementing SQL in the adapter Resource class
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注:**  構成プロパティー・エレメントは、必ず `JAXRSApplicationClass` エレメントの*下に* 配置する必要があります。  
+ここでは、デフォルト値を指定して接続設定を定義し、これらの接続設定を後で AdapterApplication クラスで使用できるようにしてあります。
+## アダプター・リソース・クラスへの SQL の実装
 {: #implementing-sql-in-the-adapter-resource-class }
 
-The adapter Resource class is where requests to the server are handled.
+アダプター・リソース・クラスは、サーバーに対する要求を処理する場所です。
 
-In the supplied sample adapter, the class name is `JavaSQLResource`.
+提供されているサンプル・アダプターでは、クラス名は `JavaSQLResource` です。
 
 ```java
 @Path("/")
@@ -67,12 +65,12 @@ In the supplied sample adapter, the class name is `JavaSQLResource`.
 }
 ```
 
-`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
+`@Path("/")` は、URL `http(s)://host:port/ProjectName/adapters/AdapterName/` でリソースが使用可能であることを意味します。
 
-### Using DataSource
+### DataSource の使用
 {: #using-datasource }
 
-When the adapter is deployed, or whenever the configuration is changed from the {{ site.data.keys.mf_console }}, the adapter's `MFPJAXRSApplication`'s `init` method is called. This is a good place to [load the connection properties](../#configuration-api) and create a `DataSource`.
+アダプターをデプロイするとき、または {{site.data.keys.mf_console }}から構成を変更するたびに、アダプターの `MFPJAXRSApplication` の `init` メソッドが呼び出されます。これは、[接続プロパティーをロード](../#configuration-api)して `DataSource` を作成するのに適しています。
 
 ```java
 public class JavaSQLApplication extends MFPJAXRSApplication{
@@ -93,8 +91,8 @@ public class JavaSQLApplication extends MFPJAXRSApplication{
 }
 ```
 
-In the resource class, create a helper method to get an SQL connection.
-Use the `AdaptersAPI` to get the current `MFPJAXRSApplication` instance:
+リソース・クラスでは、ヘルパー・メソッドを作成して SQL 接続を取得します。
+`AdaptersAPI` を使用して、現行の `MFPJAXRSApplication` インスタンスを取得します。
 
 ```java
 @Context
@@ -108,10 +106,10 @@ public Connection getSQLConnection() throws SQLException{
 ```
 
 
-### Create User
+### ユーザーの作成
 {: #create-user }
 
-Used to create a new user record in the database.
+データベースに新規ユーザー・レコードを作成する場合に使用します。
 
 ```java
 @POST
@@ -141,27 +139,27 @@ public Response createUser(@FormParam("userId") String userId,
         //Close resources in all cases
         insertUser.close();
         con.close();
-    }  
+    }
 }
 ```
 
-Because this method does not have any `@Path`, it is accessible as the root URL of the resource. Because it uses `@POST`, it is accessible via `HTTP POST` only.  
-The method has a series of `@FormParam` arguments, which means that those can be sent in the HTTP body as `x-www-form-urlencoded` parameters.
+このメソッドでは `@Path` が指定されていないため、リソースのルート URL としてアクセスできます。これは、`@POST` を使用するため、`HTTP POST` 経由でのみアクセス可能になります。  
+このメソッドには一連の `@FormParam` 引数があります。これは、これらの引数を HTTP 本体で `x-www-form-urlencoded` パラメーターとして送信できることを意味します。
 
-It is also possible to pass the parameters in the HTTP body as JSON objects, by using `@Consumes(MediaType.APPLICATION_JSON)`, in which case the method needs a `JSONObject` argument, or a simple Java object with properties that match the JSON property names.
+また、`@Consumes(MediaType.APPLICATION_JSON)` を使用して、HTTP 本体でパラメーターを JSON オブジェクトとして渡すこともできます。この場合、メソッドには、`JSONObject` 引数か、JSON プロパティー名と一致するプロパティーが指定された単純 Java オブジェクトが必要です。
 
-The `Connection con = getSQLConnection();` method gets the connection from the data source that was defined earlier.
+`Connection con = getSQLConnection();` メソッドは、以前に定義されたデータ・ソースからの接続を取得します。
 
-The SQL queries are built by the `PreparedStatement` method.
+SQL 照会は `PreparedStatement` メソッドによってビルドされます。
 
-If the insertion was successful, the `return Response.ok().build()` method is used to send a `200 OK` back to the client. If there was an error, a different `Response` object can be built with a specific HTTP status code. In this example, a `409 Conflict` error code is sent. It is advised to also check whether all the parameters are sent (not shown here) or any other data validation.
+挿入が成功した場合は、`return Response.ok().build()` メソッドを使用して、クライアントに `200 OK` を返します。エラーが発生した場合は、特定の HTTP 状況コードを持つ別の `Response` オブジェクトをビルドすることができます。この例では、`409 Conflict` エラー・コードが送られます。すべてのパラメーターが送信されているかどうかや (ここでは示されていません)、その他のデータ検証についても確認することをお勧めします。
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Make sure to close resources, such as prepared statements and connections.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** リソース (作成されたステートメントや接続など) を必ず閉じてください。
 
-### Get User
+### ユーザーの取得
 {: #get-user }
 
-Retrieve a user from the database.
+データベースからユーザーを取得します。
 
 ```java
 @GET
@@ -198,17 +196,17 @@ public Response getUser(@PathParam("userId") String userId) throws SQLException{
 }
 ```
 
-This method uses `@GET` with a `@Path("/{userId}")`, which means that it is available via `HTTP GET /adapters/UserAdapter/{userId}`, and the `{userId}` is retrieved by the `@PathParam("userId")` argument of the method.
+このメソッドでは、`@Path("/{userId}")` を指定した `@GET` を使用します。つまり、`HTTP GET /adapters/UserAdapter/{userId}` 経由でメソッドが使用可能になります。また、`{userId}` は、メソッドの `@PathParam("userId")` 引数で取得されます。
 
-If the user is not found, the `404 NOT FOUND` error code is returned.  
-If the user is found, a response is built from the generated JSON object.
+ユーザーが検出されない場合は `404 NOT FOUND` エラー・コードが返されます。  
+ユーザーが検出されると、生成された JSON オブジェクトから応答がビルドされます。
 
-Prepending the method with `@Produces("application/json")` makes sure that the `Content-Type` of the output is correct.
+メソッドの前に `@Produces("application/json")` を指定することで、出力の `Content-Type` が正しいことを確認します。
 
-### Get all users
+### すべてのユーザーの取得
 {: #get-all-users }
 
-This method is similar to `getUser`, except for the loop over the `ResultSet`.
+このメソッドは、`ResultSet` をループする以外は、`getUser` と同じです。
 
 ```java
 @GET
@@ -236,10 +234,10 @@ public Response getAllUsers() throws SQLException{
 }
 ```
 
-### Update user
+### ユーザーの更新
 {: #update-user }
 
-Update a user record in the database.
+データベース内のユーザー・レコードを更新します。
 
 ```java
 @PUT
@@ -272,6 +270,7 @@ public Response updateUser(@PathParam("userId") String userId,
         } else{
             return Response.status(Status.NOT_FOUND).entity("User not found...").build();
         }
+
     }
     finally{
         //Close resources in all cases
@@ -282,12 +281,12 @@ public Response updateUser(@PathParam("userId") String userId,
 }
 ```
 
-When updating an existing resource, it is standard practice to use `@PUT` (for `HTTP PUT`) and to use the resource ID in the `@Path`.
+既存のリソースの更新時には `@PUT` (`HTTP PUT` の場合) を使用して、`@Path` でリソース ID を使用する手法が標準的です。
 
-### Delete user
+### ユーザーの削除
 {: #delete-user }
 
-Delete a user record from the database.
+データベースからユーザー・レコードを削除します。
 
 ```java
 @DELETE
@@ -310,6 +309,7 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
         } else{
             return Response.status(Status.NOT_FOUND).entity("User not found...").build();
         }
+
     }
     finally{
         //Close resources in all cases
@@ -320,20 +320,20 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 }
 ```
 
-`@DELETE` (for `HTTP DELETE`) is used together with the resource ID in the `@Path`, to delete a user.
+`@DELETE` (`HTTP DELETE` の場合) は、ユーザーを削除するために `@Path` でリソース ID と一緒に使用されます。
 
-## Sample adapter
+## サンプル・アダプター
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) してアダプター Maven プロジェクトをダウンロードします。
 
-The Adapters Maven project includes the **JavaSQL** adapter described above.  
-Also included is an SQL script in the **Utils** folder.
+アダプター Maven プロジェクトには、前に説明した **JavaSQL** アダプターが含まれています。  
+また、**Utils** フォルダーに SQL スクリプトも含まれています。
 
-### Sample usage
+### 使用例
 {: #sample-usage }
 
-* Run the .sql script in your SQL database.
-* Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaSQL adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* SQL データベースで .sql スクリプトを実行します。
+* `mobilefirst@%`  ユーザーが、すべてのアクセス権限を割り当てられていることを確認します。
+* Maven、{{site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaSQL アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
+* アダプターをテストまたはデバッグするには、[アダプターのテストおよびデバッグ](../../testing-and-debugging-adapters)チュートリアルを参照してください。

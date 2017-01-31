@@ -1,32 +1,32 @@
 ---
-title: Server-side log collection
-breadcrumb_title: Server-side log collection
+title: サーバー・サイドのログ収集
+breadcrumb_title: サーバー・サイドのログ収集
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging. The {{ site.data.keys.mf_server }} gives you the ability to control  which logs should be collected remotely. This gives the server administrator more fine tuned control over the server resources.
+ロギングは、診断およびデバッグを容易にするために、API 呼び出しを使用してメッセージを記録するソース・コードの装備です。{{site.data.keys.mf_server }} は、どのログをリモート側で収集するかを制御する機能を提供します。これにより、サーバー管理者はサーバー・リソースをさらにきめ細かく調整することができます。
 
-Logging libraries typically have verbosity controls that are frequently called **levels**. From least to most verbose: ERROR, WARN, INFO, and DEBUG. 
+ロギング・ライブラリーには通常、詳細度制御 (多くの場合、**レベル**と呼ばれる) があります。詳細度の低い方から順に、ERROR、WARN、INFO、DEBUG です。 
 
-## Log Collection in Adapters
+## アダプター内のログ収集
 {: #log-collection-in-adapters }
 
-Logs in adapters can be viewed in the underlying application server logging mechanism.  
-In WebSphere full profile and Liberty profile the **messages.log** and **trace.log** files are used, depending on the specified logging level. 
+基礎となるアプリケーション・サーバーのロギング・メカニズムで、アダプター内のログを表示できます。  
+WebSphere のフル・プロファイルおよび Liberty プロファイルでは、指定のロギング・レベルに応じて **messages.log** ファイルおよび **trace.log** ファイルが使用されます。 
 
-These logs can also be forwarded to the Analytics console as explained in the tutorials for [Java adapters](java-adapter) and [JavaScript adapters](javascript-adapter).
+[Java アダプター](java-adapter)および [JavaScript アダプター](javascript-adapter)のチュートリアルで説明しているとおり、これらのログを Analytics コンソールに転送することもできます。
 
-## Accessing the log files
+## ログ・ファイルへのアクセス
 {: #accessing-the-log-files }
 
-* In an on-prem installation of the {{ site.data.keys.mf_server }}, the file is available depending on the underlying application server. 
-    * [IBM WebSphere Application Server Full Profile](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html)
-    * [IBM WebSphere Application Server Liberty Profile](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
+* {{site.data.keys.mf_server }} のオンプレミス・インストールでは、このファイルは基礎となるアプリケーション・サーバーに応じて使用可能です。 
+    * [IBM WebSphere Application Server のフル・プロファイル](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html)
+    * [IBM WebSphere Application Server の Liberty プロファイル](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
-* To get to the logs in a cloud deployment in:
-    * IBM Containers or Liberty Build Pack, see the [IBM Containers log and trace collection](../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/) tutorial.
-    * Mobile Foundation Bluemix service, see [Accessing server logs](../../bluemix/using-mobile-foundation/#accessing-server-logs) section in the [Using Mobile Foundation](../../bluemix/using-mobile-foundation) tutorial.
+* クラウド・デプロイメントでログを取得するには、以下を使用します。
+    * IBM Containers または Liberty Build Pack。[IBM Containers ログおよびトレースの収集](../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/)チュートリアルを参照してください。
+    * Mobile Foundation Bluemix サービス。[Mobile Foundation の使用](../../bluemix/using-mobile-foundation)チュートリアルの[サーバー・ログへのアクセス](../../bluemix/using-mobile-foundation/#accessing-server-logs)セクションを参照してください。

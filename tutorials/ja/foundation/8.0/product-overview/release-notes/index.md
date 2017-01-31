@@ -1,36 +1,36 @@
 ---
 layout: tutorial
-title: Release Notes
+title: リリース・ノート
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Identify the latest information about this product release and all its fix packs.
+この製品リリースおよびその全フィックスパックについての最新情報を確認します。
 
-### What's new in v8.0
+### v8.0 の新機能
 {: #whats-new-in-v-80 }
-{{ site.data.keys.product_full }} v8.0 brings significant changes that modernize your {{ site.data.keys.product_adj }} application development, deployment, and management experience.  
-[Read what's new](whats-new/).
+{{site.data.keys.product_full }} v8.0 では、{{site.data.keys.product_adj }} アプリケーションの開発、デプロイメント、および管理を最新の方法でできるようにする大幅な変更が加えられています。  
+[新機能を確認します](whats-new/)。
 
-### What's new in v8.0 interim fixes
+### V8.0 暫定修正の新機能
 {: #whats-new-in-v-80-interim-fixes }
-Interim fixes provide patches and updates to correct problems and keep IBM MobileFirst Foundation current for new releases of mobile operating systems.  
-[Read what's new in interim fixes](interim-fixes).
+暫定修正では、問題を修正し、モバイル・オペレーティング・システムの新しいリリースに対して IBM MobileFirst Foundation を最新にしておくためのパッチおよび更新を提供します。  
+[暫定修正の新機能を確認します](interim-fixes)。
 
-### Deprecated features and API elements
-{: #deprecated-features-and-api-elements }
-New releases of {{ site.data.keys.product }} might introduce features or API elements that supersede features and API elements from past releases. Superseded features and API elements are deprecated and they might be removed in future releases.  
-[Read about deprecated features and API elements](deprecated-discontinued).
+### 非推奨となった機能および API エレメント
+{ #deprecated-features-and-api-elements }
+{{site.data.keys.product }} の新規リリースでは、過去のリリースの機能および API エレメントに置き換わる機能または API エレメントを導入しています。置き換えられた機能および API エレメントは非推奨となりました。今後のリリースで削除される可能性があります。  
+[非推奨となった機能および API エレメントを確認します](deprecated-discontinued)。
 
-### Discontinued features and API elements
+### 廃止された機能および API エレメント
 {: #discontinued-features-and-api-elements }
-Consider carefully how removed features and API elements affect your {{ site.data.keys.product_adj }} environment.  
-[Read about discontinued features and APIs](deprecated-discontinued).
+削除された機能および API エレメントが、ご使用の {{site.data.keys.product_adj }} 環境にどのように影響するかを慎重に検討してください。  
+[廃止された機能および API を確認します](deprecated-discontinued)。
 
-### Known issues and limitations
+### 既知の問題および制限
 {: #known-issues-and-limitations }
-You can identify the latest known issues and their resolutions, for this product release and all its fix packs, by browsing this dynamic list of documents.  
-General limitations apply to {{ site.data.keys.product_adj }} as detailed here. Limitations that apply to specific features are explained in the topics that describe these features.  
+以下の動的な資料リストを参照することによって、この製品リリースおよびその全フィックスパックに関して、最新の既知の問題とその解決策を見つけることができます。  
+以下に詳述するように、一般的な制限が、{{site.data.keys.product_adj }} に適用されます。特定の機能に適用される制限については、それらの機能が記述されているトピックで説明されています。  
 
-[Read about known issues and limitations](known-issues-limitations).
+[既知の問題および制限を確認します](known-issues-limitations)。
 

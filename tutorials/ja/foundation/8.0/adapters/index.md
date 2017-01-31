@@ -1,92 +1,99 @@
 ---
 layout: tutorial
-title: Developing Adapters
+title: アダプターの開発
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 6
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Adapters are Maven projects that contain server-side code implemented in either Java or JavaScript.  
-Adapters are used perform any necessary server-side logic, and to transfer and retrieve information from back-end systems to client applications and cloud services. 
+アダプターは、Java または JavaScript で実装されたサーバー・サイド・コードが含まれている Maven プロジェクトです。  
+アダプターを使用して、すべての必要なサーバー・サイド・ロジックを実行し、バックエンド・システムから情報を取り出し、クライアント・アプリケーションおよびクラウド・サービスに転送します。 
 
-Each adapter has its own isolated sandbox, which runs without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "[adapter mashup](advanced-adapter-usage-mashup)" possible.
+各アダプターには分離された専用のサンドボックスがあります。このサンドボックスは、他のアダプターのサンドボックスを認識することも、そこに割り込んだりすることもなく実行されます。ただし、アダプターは、「[アダプター・マッシュアップ](advanced-adapter-usage-mashup)」を可能にする API を呼び出すことによって、相互に通信することができます。
 
-It is possible to include third-party libraries that are required by the adapter code by defining them as Maven dependencies in the adapter's **pom.xml** file. For more information, see the [Dependencies](creating-adapters/#dependencies) section in the [Creating Java and JavaScript Adapters](creating-adapters) tutorial.
+アダプター・コードが必要とするサード・パーティー・ライブラリーを組み込むことも可能です。そうするには、対象のライブラリーを Maven 依存関係としてアダプターの **pom.xml** ファイル内で定義します。詳しくは、[Java アダプターおよび JavaScript アダプターの作成](creating-adapters)チュートリアルの[依存関係](creating-adapters/#dependencies)セクションを参照してください。
 
-Adapters also support DevOps needs:
+アダプターは、以下の DevOps ニーズもサポートします。
 
-* You can "hot deploy" adapters, meaning deploy, undeploy, and redeploy them at run time. This capability lends great flexibility to the server-side development process.
-* An adapter can have user-defined properties that can be configured by administration personnel, without redeploying the adapter. This feature lets you customize adapter behavior for different environments, for example development, testing, and production.
+* アダプターを「ホット・デプロイ」することができます。すなわち、アダプターを実行時にデプロイ、アンデプロイ、および再デプロイすることができます。この機能によって、サーバー・サイド開発プロセスの柔軟性が非常に高くなります。
+* アダプターには、管理担当者がアダプターを再デプロイせずに構成できるユーザー定義プロパティーを設定できます。
+この機能により、開発、テスト、実稼働などのさまざまな環境に応じてアダプター動作をカスタマイズできます。
 
-Continue reading for an overview of Java and JavaScript adapters. Then follow the tutorials in the sidebar navigation to learn how to: create, build, update, develop, test and deploy Java and JavaScript adapters, learn how to use IDEs for adapters development, collect server-side logs, as well as more advanced topics such as adapters mashup and Cloudant integration.
+Java アダプターおよび JavaScript アダプターの概説を続けてお読みください。その後、サイドバー・ナビゲーションのチュートリアルに従って、Java アダプターおよび JavaScript アダプターの作成、ビルド、更新、開発、テスト、およびデプロイの方法や、アダプター開発のための IDE の使用方法、サーバー・サイド・ログの収集方法を学習し、さらに、アダプターのマッシュアップや Cloudant の統合などの上級者向けトピックへと進みます。
 
 ![adapter_overview](adapter_overview_top.jpg)
 
-### Benefits of using adapters
+### アダプター使用の利点
 {: #benefits-of-using-adapters }
 
-#### Universality
+#### 汎用性
+
 {: #universality }
 
-* Adapters support multiple integration technologies and back-end information systems.
+* アダプターは、複数の統合テクノロジーおよびバックエンド情報システムをサポートしています。
 
-#### Read-only and transactional capabilities
+#### 読み取り専用機能およびトランザクション機能
+
 {: #read-only-and-transactional-capabilities }
 
-* Adapters support read-only and transactional access modes to back-end systems.
+* アダプターは、バックエンド・システムに対する読み取り専用アクセス・モードとトランザクション・アクセス・モードをサポートしています。
 
-#### Fast development
+#### 開発の迅速化
+
 {: #fast-development }
 
-* Adapters use simple XML syntax and are easily configured with JavaScript API or Java API.
+* アダプターは、単純な XML 構文を使用し、JavaScript API または Java API で簡単に構成できます。
 
-#### Security
+#### セキュリティー
 {: #security }
 
-* Adapters use flexible authentication facilities to create connections with back-end systems.
-* Adapters offer control over the identity of the connected user.
+* アダプターは、柔軟性の高い認証機能を使用してバックエンド・システムとの接続を確立します。
+* アダプターは、接続ユーザーの ID に対する制御を提供します。
 
-#### Transparency
+
+#### 透過性
+
 {: #transparency }
 
-* Data that is retrieved from back-end applications is exposed in a uniform manner, regardless of the adapter type.  
+* バックエンド・アプリケーションから取得したデータは、アダプターのタイプに関係なく、統一された方法で公開されます。  
 
-### Benefits specific to Java adapters
+### Java アダプター固有の利点
 {: #benefits-specific-to-java-adapters }
 
-* Ability to fully control the URL structure, the content types, the request and response headers, content and encoding
-* Ability to test the adapter by using a 3rd-party tool such as Postman
-* Easy and fast deployment to a running {{ site.data.keys.mf_server }} instance with no compromise on performance and no downtime
-* Security integration with the {{ site.data.keys.product }} security model with no additional customization, by using simple annotations in the source code
+* URL 構造、コンテンツ・タイプ、要求ヘッダー、応答ヘッダー、コンテンツ、およびエンコードを完全に制御できます。
+* Postman などのサード・パーティー・ツールを使用してアダプターをテストできます。
+* 実行中の {{site.data.keys.mf_server }} インスタンスへのデプロイメントが迅速かつ容易で、パフォーマンスへの影響もダウン時間も生じません。
+* ソース・コード内の簡潔なアノテーションを使用して、追加のカスタマイズを必要とせずに {{site.data.keys.product }} セキュリティー・モデルとのセキュリティー統合が可能です。
 
-## JavaScript adapters
+## JavaScript アダプター
 {: #javascript-adapters }
 
-JavaScript adapters provide templates for communicating with HTTP and SQL back-ends. These templates contain a set of services called procedures. Mobile apps can call these procedures by issuing AJAX requests. The procedure retrieves information from the back-end application and return data to the application. Using a REST interface, you can benefit from the [OAuth 2.0-based security framework](../authentication-and-security) provided by {{ site.data.keys.product }}.
+JavaScript アダプターは、HTTP および SQL のバックエンドと通信するためのテンプレートを提供します。これらのテンプレートには、プロシージャーと呼ばれるサービスのセットが含まれています。モバイル・アプリケーションは、AJAX 要求を発行することでこれらのプロシージャーを呼び出すことができます。プロシージャーはバックエンド・アプリケーションから情報を取得し、そのアプリケーションにデータを返します。REST インターフェースを使用すると、{{site.data.keys.product }} で提供される [OAuth 2.0 ベースのセキュリティー・フレームワーク](../authentication-and-security)を利用することができます。
 
-* If the format of the data is JSON then the {{ site.data.keys.mf_server }} keeps the data intact. Otherwise the {{ site.data.keys.mf_server }} automatically converts it to JSON.  
-* Alternatively you can provide XSL transformation to convert the data to JSON. In this case, the returned content type from the back-end must be XML. Then, you can use an XSLT to filter the data based on requirements.
-* With an HTTP adapter, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
-* With an SQL adapter, you can communicate with any SQL data source. You can use plain SQL queries or stored procedures.
+* データのフォーマットが JSON の場合、{{site.data.keys.mf_server }} はデータを元の状態のままで保持します。それ以外のフォーマットの場合は、{{site.data.keys.mf_server }} は自動的にデータを JSON に変換します。  
+* あるいは、データを JSON に変換するための XSL Transformation を提供することもできます。この場合、バックエンドから返されるコンテンツ・タイプは XML でなければなりません。その場合、XSLT を使用して、要求に基づいてデータをフィルターに掛けることができます。
+* HTTP アダプターを使用して、GET または POST HTTP 要求を送信したり、応答ヘッダーおよび本体からデータを取得したりすることができます。HTTP アダプターは、RESTful および SOAP ベースのサービスで作動し、RSS フィードなどの構造化された HTTP ソースを読み取ることができます。
+* SQL アダプターでは、任意の SQL データ・ソースと通信できます。
+プレーン SQL 照会またはストアード・プロシージャーを使用できます。
 
-> * Learn how to create adapters in the [Creating Adapters](creating-adapters) tutorial.
-> * Learn more about [JavaScript adapters](javascript-adapters)
+> * [アダプターの作成](creating-adapters)チュートリアルでアダプターの作成方法について学習する
+> * [JavaScript アダプター](javascript-adapters)についてもっとよく知る
 
 ![javascript_adapters](javascript_adapters.png)
 
-## Java adapters
+## Java アダプター
 {: #java-adapters }
 
-Java adapters are based on the [JAX-RS 2.0 specification](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html) and are thus written in Java, and expose a full REST API to the client. In Java adapters, it is up to the developer to define the returned content and its format, as well as the URL structure of each resource. The only exception is if the client sending the request supports GZip, then the returned content encoding of the Java adapter is compressed by GZip. All operations on the returned content are done and owned by the developer.
+Java アダプターは [JAX-RS 2.0 仕様](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html)に基づいています。したがって、Java で書かれ、完全な REST API をクライアントに公開します。Java アダプターでは、返されるコンテンツとその形式、および各リソースの URL 構造を定義するのは開発者の責任です。唯一の例外は、要求を送信するクライアントが GZip をサポートしている場合です。この場合、Java アダプターの返されるコンテンツのエンコードは GZip で圧縮されます。返されるコンテンツに対するすべての操作は、開発者が実行し、所有します。
 
-The diagram below depicts how a mobile device can access any Java adapter from its REST endpoint. The REST interface is protected by the {{ site.data.keys.product }} OAuth security filter, meaning that the client needs to obtain an access token to access the adapter resources. Each of the resources of the adapter has its own URL, so it is possible to protect {{ site.data.keys.product }} endpoints using any firewall. The REST interface invokes the Java code (JAX-RS service) to handle incoming requests. The Java code can perform operations on the server by using the Java {{ site.data.keys.mf_server }} API. In addition, the Java code can connect to the enterprise system to fetch data, update data, or perform any other operation that the enterprise system exposes.
+下の図は、モバイル・デバイスが、REST エンドポイントからどのように任意の Java アダプターにアクセスできるかを示しています。REST インターフェースは、{{site.data.keys.product }} OAuth セキュリティー・フィルターによって保護されています。すなわち、クライアントは、アダプター・リソースにアクセスするためにアクセス・トークンを取得する必要があります。アダプターの各リソースには独自の URL があるため、任意のファイアウォールを使用して {{site.data.keys.product }} エンドポイントを保護することが可能です。REST インターフェースは、Java コード (JAX-RS サービス) を呼び出して、着信要求を処理します。Java コードは、Java {{site.data.keys.mf_server }} APIを使用して、サーバーで操作を実行できます。さらに、Java コードは、エンタープライズ・システムに接続して、データのフェッチ、データの更新、およびエンタープライズ・システムが公開するその他の任意の操作を実行することができます。
 
-> * Learn how to create adapters in the [Creating Adapters](creating-adapters) tutorial.
-> * Learn more about [Java adapters](java-adapters)
+> * [アダプターの作成](creating-adapters)チュートリアルでアダプターの作成方法について学習する
+> * [Java アダプター](java-adapters)についてもっとよく知る
 
 ![java-adapter](java_adapter.jpg)
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }

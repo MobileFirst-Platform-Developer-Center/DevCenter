@@ -1,58 +1,58 @@
 ---
 layout: tutorial
-title: Android end-to-end demonstration
+title: Android のエンドツーエンドのデモンストレーション
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The purpose of this demonstration is to experience an end-to-end flow:
+このデモンストレーションの目的は、エンドツーエンドのフローを体験することです。
 
-1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
-2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
-3. The application logic is changed to make a resource request.
+1. {{site.data.keys.product_adj }} クライアント SDK と事前にバンドルされているサンプル・アプリケーションは登録済みで、{{site.data.keys.mf_console }} からダウンロードされています。
+2. 新規または提供済みのアダプターは {{site.data.keys.mf_console }} にデプロイされています。  
+3. アプリケーション・ロジックは、リソース要求を行うために変更されています。
 
-**End result**:
+**終了結果**:
 
-* Successfully pinging the {{ site.data.keys.mf_server }}.
-* Successfully retrieving data using an adapter.
+* {{site.data.keys.mf_server }} を正常に ping している。
+* アダプターを使用してデータを正常に取得している。
 
-#### Prerequisites:
+#### 前提条件:
 {: #prerequisites }
 * Android Studio
-* *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
-* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* *オプション*。{{site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。スタンドアロン {{site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
 
-### 1. Starting the {{ site.data.keys.mf_server }}
+### 1. {{site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+[Mobile Foundation インスタンスが作成済みである](../../bluemix/using-mobile-foundation)ことを確認してください。作成済みでない場合は、  
+[{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)を使用しているときは、サーバーのフォルダーにナビゲートして、Mac および Linux では `./run.sh`、Windows では `run.cmd` のコマンドを実行してください。
 
-### 2. Creating an application
+### 2. アプリケーションの作成
 {: #2-creating-an-application }
-In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
  
-1. Click the **New** button next to **Applications**
-    * Select the **Android** platform
-    * Enter **com.ibm.mfpstarterandroid** as the **application identifier**
-    * Enter **1.0** as the **version** value
-    * Click on **Register application**
+1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
+    * **Android** プラットフォームを選択します。
+    * **com.ibm.mfpstarterandroid** を**アプリケーション ID** として入力します。
+    * **1.0** を **version** の値として入力します。
+    * **「アプリケーションの登録」**をクリックします。
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-android.png"/>
+    <img class="gifplayer" alt="アプリケーションの登録" src="register-an-application-android.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the Android sample application.
+2. **「スターター・コードの取得」**タイルをクリックして、Android サンプル・アプリケーションをダウンロードすることを選択します。
 
-    <img class="gifplayer" alt="Download sample application" src="download-starter-code-android.png"/>
+    <img class="gifplayer" alt="サンプル・アプリケーションのダウンロード" src="download-starter-code-android.png"/>
 
-### 3. Editing application logic
+### 3. アプリケーション・ロジックの編集
 {: #3-editing-application-logic }
-1. Open the Android Studio project and import the project.
+1. Android Studio プロジェクトを開いて、プロジェクトをインポートします。
 
-2. From the **Project** sidebar menu, select the **app → java → com.ibm.mfpstarterandroid → ServerConnectActivity.java** file and:
+2. **「プロジェクト (Project)」**サイドバー・メニューから、**「app」→「Java」→「com.ibm.mfpstarterandroid」→「ServerConnectActivity.java」**ファイルを選択します。
 
-* Add the following imports:
+* 以下のインポートを追加します。
 
   ```java
   import java.net.URI;
@@ -60,7 +60,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
   import android.util.Log;
   ```
     
-* Paste the following code snippet, replacing the call to `WLAuthorizationManager.getInstance().obtainAccessToken`:
+* 以下のコード・スニペットを貼り付けて、`WLAuthorizationManager.getInstance().obtainAccessToken` への呼び出しを置換します。
 
   ```java
   WLAuthorizationManager.getInstance().obtainAccessToken("", new WLAccessTokenListener() {
@@ -113,54 +113,53 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
             });
   ```
 
-### 4. Deploy an adapter
+### 4. アダプターのデプロイ
 {: #4-deploy-an-adapter }
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
+[この作成済みの .adapter 成果物](../javaAdapter.adapter)をダウンロードし、{{site.data.keys.mf_console }} から**「アクション」→「アダプターのデプロイ」**アクションを使用して、この成果物をデプロイします。
 
-Alternatively, click the **New** button next to **Adapters**.  
+あるいは、**「アダプター」**の隣の**「新規」**ボタンをクリックします。  
         
-1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
+1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。「Hello World」**Java** アダプターのサンプルをダウンロードします。
 
-   > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
-
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+   > Maven および {{site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。
+2. **コマンド・ライン**・ウィンドウからアダプターの Maven プロジェクト・ルート・フォルダーにナビゲートし、以下のコマンドを実行します。
 
    ```bash
    mfpdev adapter build
    ```
 
-3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{site.data.keys.mf_console }} からアダプターをデプロイします。アダプターは、**[adapter]/target** フォルダー内にあります。
     
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
+    <img class="gifplayer" alt="アダプターのデプロイ" src="create-an-adapter.png"/>   
 
-<img src="androidQuickStart.png" alt="sample app" style="float:right"/>
-### 5. Testing the application
+<img src="androidQuickStart.png" alt="サンプル・アプリケーション" style="float:right"/>
+### 5. アプリケーションのテスト
 {: #5-testing-the-application }
 
-1. In Android Studio, from the **Project** sidebar menu, select the **app → src → main →assets → mfpclient.properties** file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
-    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
+1. Android Studio で、**「プロジェクト (Project)」**サイドバー・メニューで、**「app」→「src」→「main」→「assets」→「mfpclient.properties」**ファイルを選択し、ご使用の {{site.data.keys.mf_server }} の正しい値で **protocol**、**host**、および **port** の各プロパティーを編集します。
+    * ローカル {{site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
+    * リモート {{site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
 
-    Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command `mfpdev app register`. If a remote {{ site.data.keys.mf_server }} is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
+    あるいは、{{site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。リモート {{site.data.keys.mf_server }} が使用されている場合は、 [コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myBluemixServer` を実行します。
 
-2. Click on the **Run App** button.  
+2. **「アプリケーションの実行 (Run App)」**ボタンをクリックします。  
 
 <br clear="all"/>
-### Results
+### 結果
 {: #results }
-* Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
-* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
+* **「{{site.data.keys.mf_server }} への ping (Ping MobileFirst Server)」**ボタンをクリックすると、**「{{site.data.keys.mf_server }} に接続されています (Connected to MobileFirst Server)」**が表示されます。
+* アプリケーションが {{site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。
 
-The adapter response is then printed in Android Studio's LogCat view.
+その場合、アダプター応答が Android Studio の LogCat ビューに出力されます。
 
-![Image of application that successfully called a resource from the {{ site.data.keys.mf_server }}](success_response.png)
+![{{site.data.keys.mf_server }} から正常にリソースを呼び出したアプリケーションの画像](success_response.png)
 
-## Next steps
+## 次の手順
 {: #next-steps }
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
+アプリケーションでのアダプターの使用、プッシュ通知などの追加のサービスを統合する方法、{{site.data.keys.product_adj }} セキュリティー・フレームワークの使用などについて学習します。 
 
-- Review the [Developing Applications](../../application-development/) tutorials
-- Review the [Adapters development](../../adapters/) tutorials
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
-- Review [All Tutorials](../../all-tutorials)
+- [アプリケーションの開発](../../application-development/)チュートリアルを検討する
+- [アダプターの開発](../../adapters/)チュートリアルを検討する
+- [認証およびセキュリティー・チュートリアル](../../authentication-and-security/)を検討する
+- [通知チュートリアル](../../notifications/)を検討する
+- [すべてのチュートリアル](../../all-tutorials)を検討する

@@ -1,49 +1,49 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Android
+title: Android でのプッシュ通知の処理
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: Download Android Studio project
+  - name: Android Studio プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, {{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
+受け取ったプッシュ通知を Android アプリケーションが処理できるようにするためには、Google Play Services のサポートを構成する必要があります。アプリケーションが構成されると、{{site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、Android アプリケーションでプッシュ通知を処理する方法について学習します。
 
-**Prerequisites:**
+**前提条件**
 
-* Make sure you have read the following tutorials:
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android)
-    * [Push Notifications Overview](../../)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* 必ず、以下のチュートリアルをお読みください。
+    * [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
+    * [Android アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/android)
+    * [プッシュ通知の概要](../../)
+* ローカルで稼働している {{site.data.keys.mf_server }}、またはリモートで稼働している {{site.data.keys.mf_server }}
+* 開発者ワークステーションに {{site.data.keys.mf_cli }} がインストールされていること
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Notifications configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
-* [Sample application](#sample-application)
+* [通知構成](#notifications-configuration)
+* [通知 API](#notifications-api)
+* [プッシュ通知の処理](#handling-a-push-notification)
+* [サンプル・アプリケーション](#sample-application)
 
-## Notifications Configuration
+## 通知構成
 {: #notifications-configuration }
-Create a new Android Studio project or use an existing one.  
-If the {{ site.data.keys.product_adj }} Native Android SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android) tutorial.
+新しい Android Studio プロジェクトを作成するか、または既存のプロジェクトを使用します。  
+{{site.data.keys.product_adj }} Native Android SDK がプロジェクトにまだ存在しない場合は、[Android アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/android)チュートリアルの説明に従ってください。
 
-### Project setup
+### プロジェクトのセットアップ
 {: #project-setup }
-1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following lines to `dependencies`:
+1. **Android →「Gradle Scripts」**で、**build.gradle (Module: app)** ファイルを選択し、以下の行を `dependencies` に追加します。
 
    ```bash
    com.google.android.gms:play-services-gcm:9.0.2
    ```
-   - **Note:** there is a [known Google defect](https://code.google.com/p/android/issues/detail?id=212879) preventing use of the latest Play Services version (currently at 9.2.0). Use a lower version.
+   - **注:** [Google の既知の問題](https://code.google.com/p/android/issues/detail?id=212879)のために、Play Services の最新バージョン (現行は 9.2.0) は使用できません。下位バージョンを使用してください。
 
-   And:
+   以下も追加します。
 
    ```xml
    compile group: 'com.ibm.mobile.foundation',
@@ -53,14 +53,14 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
             transitive: true
    ```
     
-   Or in a single line:
+   または、以下のように 1 行にします。
 
    ```xml
    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
 
-2. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
-	* Add the following permissions to the top the `manifest` tag:
+2. **Android →「app」→「manifests」**で、`AndroidManifest.xml` ファイルを開きます。
+	* 以下の許可を `manifest` タグの上部に追加します。
 
 	  ```xml
 	  <!-- Permissions -->
@@ -73,10 +73,10 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
     	    android:protectionLevel="signature" />
       ```
       
-	* Add the following (`MFPPush Intent Service`, `MFPPush Instance ID Listener Service`) to the `application` tag:
+	* 以下 (`MFPPush Intent Service`、`MFPPush Instance ID Listener Service`) を `application` タグに追加します。
 
 	  ```xml
-      <!-- GCM Receiver -->
+	  <!-- GCM Receiver -->
       <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
@@ -106,9 +106,9 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
       </service>
 	  ```
 
-	  > **Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
+	  > **注:** 必ず、ご使用のアプリケーションの実際のパッケージ名で `your.application.package.name` を置き換えてください。
 
-    * Add the following `intent-filter` to the application's activity.
+    * 以下の `intent-filter` をアプリケーションのアクティビティーに追加します。
       
       ```xml
       <intent-filter>
@@ -117,47 +117,47 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
       </intent-filter>
       ```
       
-## Notifications API
+## 通知 API
 {: #notifications-api }
-### MFPPush Instance
+### MFPPush インスタンス
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be done by creating a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.
+すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。これを行うには、クラス・レベルのフィールド (`private MFPPush push = MFPPush.getInstance();` など) を作成し、その後、クラス内で一貫して `push.<api-call>` を呼び出します。
 
-Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance in which you need to access the push API methods.
+代わりに、プッシュ API メソッドにアクセスする必要があるインスタンスごとに `MFPPush.getInstance().<api_call>` を呼び出すこともできます。
 
-### Challenge Handlers
+### チャレンジ・ハンドラー
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+`push.mobileclient` スコープが**セキュリティー検査**にマップされる場合、プッシュ API を使用する前に、一致する**チャレンジ・ハンドラー**が存在し、登録済みであることを確認する必要があります。
 
-> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/android) tutorial.
+> チャレンジ・ハンドラーについて詳しくは、[資格情報の検証](../../../authentication-and-security/credentials-validation/android)チュートリアルを参照してください。
 
-### Client-side
+### クライアント・サイド
 {: #client-side }
-| Java Methods | Description |
+| Java メソッド | 説明 |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
-| [`isPushSupported();`](#is-push-supported) | Does the device support push notifications. |
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
-| [`getTags(MFPPushResponseListener)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Subscribes the device to the specified tag(s). |
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Unregisters the device from the Push Notifications Service |
+| [`initialize(Context context);`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。 |
+| [`isPushSupported();`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。 |
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | デバイスをプッシュ通知サービスに登録します。 |
+| [`getTags(MFPPushResponseListener)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。 |
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグをすべて取得します。 |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | 特定のタグからアンサブスクライブします。 |
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。 |
 
-#### Initialization
+#### 初期化
 {: #initialization }
-Required for the client application to connect to MFPPush service with the right application context.
+クライアント・アプリケーションが、正しいアプリケーション・コンテキストの MFPPush サービスに接続するために必要です。
 
-* The API method should be called first before using any other MFPPush APIs.
-* Registers the callback function to handle received push notifications.
+* 最初に API メソッドを呼び出してから、その他の MFPPush API を使用する必要があります。
+* 受け取ったプッシュ通知を処理するコールバック関数を登録します。
 
 ```java
 MFPPush.getInstance().initialize(this);
 ```
 
-#### Is push supported
+#### プッシュがサポートされるか
 {: #is-push-supported }
-Checks if the device supports push notifications.
+デバイスがプッシュ通知をサポートするかどうかをチェックします。
 
 ```java
 Boolean isSupported = MFPPush.getInstance().isPushSupported();
@@ -169,9 +169,9 @@ if (isSupported ) {
 }
 ```
 
-#### Register device
+#### デバイスの登録
 {: #register-device }
-Register the device to the push notifications service.
+デバイスをプッシュ通知サービスに登録します。
 
 ```java
 MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>() {
@@ -187,9 +187,9 @@ MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>()
 });
 ```
 
-#### Get tags
+#### タグの取得
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+プッシュ通知サービスからすべての使用可能なタグを取得します。
 
 ```java
 MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
@@ -205,9 +205,9 @@ MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
 });
 ```
 
-#### Subscribe
+#### サブスクライブ
 {: #subscribe }
-Subscribe to desired tags.
+目的のタグにサブスクライブします。
 
 ```java
 String[] tags = {"Tag 1", "Tag 2"};
@@ -225,9 +225,9 @@ MFPPush.getInstance().subscribe(tags, new MFPPushResponseListener<String[]>() {
 });
 ```
 
-#### Get subscriptions
+#### サブスクリプションの取得
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+デバイスが現在サブスクライブしているタグを取得します。
 
 ```java
 MFPPush.getInstance().getSubscriptions(new MFPPushResponseListener<List<String>>() {
@@ -243,9 +243,9 @@ MFPPush.getInstance().getSubscriptions(new MFPPushResponseListener<List<String>>
 });
 ```
 
-#### Unsubscribe
+#### アンサブスクライブ
 {: #unsubscribe }
-Unsubscribe from tags.
+タグからアンサブスクライブします。
 
 ```java
 String[] tags = {"Tag 1", "Tag 2"};
@@ -263,9 +263,9 @@ MFPPush.getInstance().unsubscribe(tags, new MFPPushResponseListener<String[]>() 
 });
 ```
 
-#### Unregister
+#### 登録抹消
 {: #unregister }
-Unregister the device from push notification service instance.
+プッシュ通知サービス・インスタンスからデバイスを登録抹消します。
 
 ```java
 MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
@@ -282,17 +282,17 @@ MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
 });
 ```
 
-## Handling a push notification
+## プッシュ通知の処理
 {: #handling-a-push-notification }
-In order to handle a push notification you will need to set up a `MFPPushNotificationListener`.  This can be achieved by implementing one of the following methods.
+プッシュ通知を処理するためには、`MFPPushNotificationListener` をセットアップする必要があります。これは、以下のいずれかのメソッドを実装することで実現できます。
 
-### Option One
+### オプション 1
 {: #option-one }
-In the activity in which you wish the handle push notifications.
+プッシュ通知を処理する必要があるアクティビティー内で、以下のようにします。
 
-1. Add `implements MFPPushNofiticationListener` to the class declaration.
-2. Set the class to be the listener by calling `MFPPush.getInstance().listen(this)` in the `onCreate` method.
-2. Then you will need to add the following *required* method:
+1. `implements MFPPushNofiticationListener` をクラス宣言に追加します。
+2. `onCreate` メソッド内で `MFPPush.getInstance().listen(this)` を呼び出すことで、このクラスがリスナーになるように設定します。
+2. 次に、以下の*必須* メソッドを追加する必要があります。
 
    ```java
    @Override
@@ -301,11 +301,11 @@ In the activity in which you wish the handle push notifications.
    }
    ```
 
-3. In this method you will receive the `MFPSimplePushNotification` and can handle the notification for the desired behavior.
+3. このメソッド内で `MFPSimplePushNotification` を受け取り、目的の動作にあわせて通知を処理できます。
 
-### Option Two
+### オプション 2
 {: #option-two }
-Create a listener by calling `listen(new MFPPushNofiticationListener())` on an instance of `MFPPush` as outlined below:
+下記の概略のように、`MFPPush` のインスタンスで `listen(new MFPPushNofiticationListener())` を呼び出すことで、リスナーを作成します。
 
 ```java
 MFPPush.getInstance().listen(new MFPPushNotificationListener() {
@@ -316,12 +316,12 @@ MFPPush.getInstance().listen(new MFPPushNotificationListener() {
 });
 ```
 
-<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
-## Sample application
+<img alt="サンプル・アプリケーションのイメージ" src="notifications-app.png" style="float:right"/>
+## サンプル・アプリケーション
 {: #sample-application }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80) the Android Studio project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80) して Android Studio プロジェクトをダウンロードします。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

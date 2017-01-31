@@ -1,27 +1,27 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in JavaScript (Cordova, Web) applications
+title: JavaScript (Cordova、Web) アプリケーションでのチャレンジ・ハンドラーの実装
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 weight: 2
 downloads:
-  - name: Download Web project
+  - name: Web プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80
-  - name: Download Cordova project
+  - name: Cordova プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: SecurityCheck Maven プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-When trying to access a protected resource, the server (the security check) will send back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a `JSON object`, listing the security check name with an optional `JSON` of additional data:
+保護リソースへのアクセスを試みると、クライアントにはサーバー (セキュリティー検査) から、クライアントが対処する必要がある 1 つ以上の**チャレンジ**を含んだリストが返信されます。  
+このリストは、`JSON object` として届けられ、セキュリティー検査名とともにオプションで追加データの `JSON` がリストされています。
 
 ```json
 {
   "challenges": {
-    "SomeSecurityCheck1":null,
+"SomeSecurityCheck1":null,
     "SomeSecurityCheck2":{
       "some property": "some value"
     }
@@ -29,27 +29,27 @@ This list is received as a `JSON object`, listing the security check name with a
 }
 ```
 
-The client should then register a **challenge handler** for each security check.  
-The challenge handler defines the client-side behavior that is specific to the security check.
+その後、クライアントは、セキュリティー検査ごとに**チャレンジ・ハンドラー**を登録する必要があります。  
+チャレンジ・ハンドラーによって、そのセキュリティー検査特定のクライアント・サイドの動作が定義されます。
 
-## Creating the challenge handler
+## チャレンジ・ハンドラーの作成
 {: creating-the-challenge-handler }
-A challenge handler handles challenges sent by the {{ site.data.keys.mf_server }}, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
+チャレンジ・ハンドラーは、{{site.data.keys.mf_server }} によって送信されるチャレンジを処理します。例えば、ログイン画面を表示したり、資格情報を収集したり、それらを元のセキュリティー検査に送信したりします。
 
-In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to log in (`remainingAttempts`), and an optional `errorMsg`.
+この例の場合、セキュリティー検査は `PinCodeAttempts` であり、これは [CredentialsValidationSecurityCheck の実装](../security-check)で定義したものです。このセキュリティー検査によって送信されるチャレンジには、ログインを試行できる残りの回数 (`remainingAttempts`) と、オプションで `errorMsg` が含まれます。
 
 
-Use the `WL.Client.createSecurityCheckChallengeHandler()` API method to create and register a challenge Handler:
+`WL.Client.createSecurityCheckChallengeHandler()` API メソッドを使用して、チャレンジ・ハンドラーを作成し、登録します。
 
 ```javascript
 PinCodeChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("PinCodeAttempts");
 ```
 
-## Handling the challenge
+## チャレンジの処理
 {: #handling-the-challenge }
-The minimum requirement from the `createSecurityCheckChallengeHandler` protocol is to implement the `handleChallenge()` method, which is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge as a `JSON` Object.
+`createSecurityCheckChallengeHandler` プロトコルが求める最小要件は、`handleChallenge()` メソッドを実装することです。このメソッドは、ユーザーに資格情報の提示を求める責任があります。`handleChallenge` メソッドは、`JSON` オブジェクトとしてチャレンジを受け取ります。
 
-In this example, an alert prompts the user to enter the PIN code:
+この例では、PIN コードの入力をユーザーに要求するアラートが出されます。
 
 ```javascript
 PinCodeChallengeHandler.handleChallenge = function(challenge) {
@@ -75,29 +75,29 @@ PinCodeChallengeHandler.handleChallenge = function(challenge) {
 };
 ```
 
-If the credentials are incorrect, you can expect the framework to call `handleChallenge` again.
+資格情報が正しくない場合、フレームワークによって再度 `handleChallenge` が呼び出されます。
 
-## Submitting the challenge's answer
+## チャレンジ応答の送信
 {: #submitting-the-challenges-answer }
-After the credentials have been collected from the UI, use `createSecurityCheckChallengeHandler`'s `submitChallengeAnswer()` to send an answer back to the security check. In this example, `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+UI から資格情報が収集された後は、`createSecurityCheckChallengeHandler` の `submitChallengeAnswer()` を使用して、セキュリティー検査に応答を返信します。この例の場合、`PinCodeAttempts` は、提供された PIN コードを含んでいる `pin` というプロパティーを必要とします。
 
 ```javascript
 PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
 ```
 
-## Cancelling the challenge
+## チャレンジのキャンセル
 {: #cancelling-the-challenge }
-In some cases, such as clicking a **Cancel** button in the UI, you want to tell the framework to discard this challenge completely.  
-To achieve this, call:
+UI で**「キャンセル」**ボタンがクリックされたときなど、フレームワークに対して、このチャレンジを完全に破棄するように指示する必要が生じる場合があります。  
+これを実現するには、以下を呼び出します。
 
 ```javascript
 PinCodeChallengeHandler.cancel();
 ```
 
-## Handling failures
+## 失敗の処理
 {: #handling-failures }
-Some scenarios might trigger a failure (such as maximum attempts reached). To handle these, implement `createSecurityCheckChallengeHandler`'s `handleFailure()`.  
-The structure of the JSON object passed as a parameter greatly depends on the nature of the failure.
+一部のシナリオでは、失敗がトリガーされる可能性があります (例えば、最大試行回数に達したときなど)。これらを処理するには、`createSecurityCheckChallengeHandler` の `handleFailure()` を実装します。  
+パラメーターとして渡される JSON オブジェクトの構造は、失敗の性質に大きく依存します。
 
 ```javascript
 PinCodeChallengeHandler.handleFailure = function(error) {
@@ -106,39 +106,39 @@ PinCodeChallengeHandler.handleFailure = function(error) {
     if(error.failure && error.failure == "account blocked") {
         alert("No Remaining Attempts!");  
     } else {
-        alert("Error! " + JSON.stringify(error));
+alert("Error! " + JSON.stringify(error));
     }
 };
 ```
 
-## Handling successes
+## 成功の処理
 {: #handling-successes }
-In general, successes are automatically processed by the framework to allow the rest of the application to continue.
+一般的に、成功の場合は、アプリケーションの残りの処理を続行できるように、フレームワークによって自動的に処理されます。
 
-Optionally, you can also choose to do something before the framework closes the challenge handler flow, by implementing `createSecurityCheckChallengeHandler`'s `handleSuccess()`. Here again, the content and structure of the `success` JSON object depends on what the security check sends.
+オプションで、`createSecurityCheckChallengeHandler` の `handleSuccess()` を実装すると、フレームワークがチャレンジ・ハンドラー・フローを閉じる前に、何かの処理を行うようにできます。この場合も、`success` JSON オブジェクトのコンテンツおよび構造は、セキュリティー検査が送信する内容に依存します。
 
-In the `PinCodeAttemptsCordova` sample application, the success does not contain any additional data.
+`PinCodeAttemptsCordova` サンプル・アプリケーションの場合、success には追加のデータは含まれていません。
 
-## Registering the challenge handler
+## チャレンジ・ハンドラーの登録
 {: #registering-the-challenge-handler }
-For the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.  
-To do so, create the challenge handler with the security check as follows:
+チャレンジ・ハンドラーが正しいチャレンジを listen するためには、フレームワークに対して、チャレンジ・ハンドラーと特定のセキュリティー検査名を関連付けるように指示する必要があります。  
+そのためには、以下のようにセキュリティー検査を指定したチャレンジ・ハンドラーを作成します。
 
 ```javascript
 someChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("the-securityCheck-name");
 ```
 
-## Sample applications
+## サンプル・アプリケーション
 {: #sample-applications }
-The **PinCodeWeb** and **PinCodeCordova**  projects use `WLResourceRequest` to get a bank balance.  
-The method is protected with a PIN code, with a maximum of 3 attempts.
+**PinCodeWeb** プロジェクトと **PinCodeCordova** プロジェクトは、`WLResourceRequest` を使用して銀行の残高を照会します。  
+このメソッドは、PIN コードと、最大 3 回までの試行によって保護されています。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80) the Web project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80) the Cordova project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80) して Web プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80) して Cordova プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) して SecurityAdapters Maven プロジェクトをダウンロードします。  
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。
 
-![Sample application](pincode-attempts-cordova.png)
+![サンプル・アプリケーション](pincode-attempts-cordova.png)

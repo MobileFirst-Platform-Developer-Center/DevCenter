@@ -1,86 +1,92 @@
 ---
 layout: tutorial
-title: Notifications
+title: 通知
 show_children: true
 relevantTo: [ios,android,windows,cordova]
-weight: 8
+weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Notifications is the ability of a mobile device to receive messages that are "pushed" from a server.  
-Notifications are received regardless of whether the application is currently running in the foreground or background.  
+通知は、サーバーから「プッシュ」されるメッセージを受信する、モバイル・デバイスの機能です。  
+通知は、アプリケーションがフォアグラウンドまたはバックグラウンドで現在実行中であるかどうかにかかわらず受信されます。  
 
-{{ site.data.keys.product_full }} provides a unified set of API methods to send either push or SMS notifications to iOS, Android, Windows 8.1 Universal, Windows 10 UWP and Cordova (iOS, Android) applications. The notifications are sent from the {{ site.data.keys.mf_server }} to the vendor (Apple, Google, Microsoft, SMS Gateways) infrastructure, and from there to the relevant devices. The unified notification mechanism makes the entire process of communicating with the users and devices completely transparent to the developer.
+{{site.data.keys.product_full }} は、プッシュ通知または SMS 通知を iOS、Android、Windows 8.1 Universal、Windows 10 UWP、および Cordova (iOS、Android) アプリケーションに送信するための API メソッドの統合セットを提供します。通知は、{{site.data.keys.mf_server }} からベンダー (Apple、Google、Microsoft、SMS Gateways) インフラストラクチャーに送信され、そこから関連デバイスへと送信されます。統一通知メカニズムにより、ユーザーおよびデバイスとの通信プロセス全体が、開発者から完全に透過的になります。
 
-#### Device support
+#### デバイス・サポート
+
 {: #device-support }
-Push and SMS notifications are supported for the following platforms in {{ site.data.keys.product }}:
+{{site.data.keys.product }} では、プッシュ通知と SMS 通知が以下のプラットフォームに対してサポートされます。
 
-* iOS 8.x and above
-* Android 4.x and above
-* Windows 8.1, Windows 10
+* iOS 8.x 以降
+* Android 4.x 以降
+* Windows 8.1、Windows 10
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Push notifications](#push-notifications)
-* [SMS notifications](#sms-notifications)
-* [Proxy settings](#proxy-settings)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [プッシュ通知](#push-notifications)
+* [SMS 通知](#sms-notifications)
+* [プロキシー設定](#proxy-settings)
+* [次に使用するチュートリアル](#tutorials-to-follow-next)
 
-## Push notifications
+## プッシュ通知
 {: #push-notifications }
-Notifications can take several forms:
+通知には複数の形式を使用できます。
 
-* **Alert (iOS, Android, Windows)** -  a pop-up text message
-* **Sound (iOS, Android, Windows)** - a sound file playing when a notification is received
-* **Badge (iOS), Tile (Windows)** - a graphical representation that allows a short text or image
-* **Banner (iOS), Toast (Windows)** - a disappearing pop-up text message at the top of the device display
-* **Interactive (iOS 8 and above)** - action buttons inside the banner of a received notification
-* **Silent (iOS 8 and above)** - sending notifications without distrubing the user
 
-### Push notification types 
+* **アラート (iOS、Android、Windows)** - ポップアップ・テキスト・メッセージ
+* **サウンド (iOS、Android、Windows)** - 通知を受け取ったときに再生されるサウンド・ファイル
+* **バッジ (iOS)、タイル (Windows)** - ショート・テキストまたはイメージを使用可能なグラフィカル表現
+* **バナー (iOS)、トースト (Windows)** - デバイス・ディスプレイの上部にある、消えるポップアップ・テキスト・メッセージ
+* **対話式 (iOS 8 以降)** - 受け取った通知のバナー内のアクション・ボタン
+* **サイレント (iOS 8 以降)** - ユーザーの邪魔にならない通知送信
+
+### プッシュ通知のタイプ 
 {: #push-notification-types }
-#### Tag notifications
+#### タグ通知
 {: #tag-notifications }
-Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.  
+タグ通知は、特定のタグにサブスクライブしているすべてのデバイスを宛先とした通知メッセージです。  
 
-Tags-based notifications allow segmentation of notifications based on subject areas or topics. Notification recipients can choose to receive notifications only if it is about a subject or topic that is of interest. Therefore, tags-based notification provides a means to segment recipients. This feature enables you to define tags and send or receive messages by tags. A message is targeted to only the devices that are subscribed to a tag.
+タグ・ベース通知は、サブジェクト・エリアまたはトピックに基づいて通知を区分けすることを可能にします。
+通知の受信者は、関心のあるサブジェクトまたはトピックに関するものである場合のみ通知を受け取ることを選択できます。
+したがって、タグ・ベース通知は受信者を区分けする手段を提供します。
+この機能により、タグを定義し、タグ別にメッセージを送受信できます。メッセージは、タグにサブスクライブされたデバイスのみを宛先とします。
 
-#### Broadcast notifications
+#### ブロードキャスト通知
 {: #broadcast-notifications }
-Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices, and are enabled by default for any push-enabled {{ site.data.keys.product_adj }} application by a subscription to a reserved `Push.all` tag (auto-created for every device). Broadcast notifications can be disabled by unsubscribing from the reserved `Push.all` tag.
+ブロードキャスト通知は、サブスクライブしているすべてのデバイスをターゲットとするタグ・プッシュ通知の一形式であり、予約済みの `Push.all` タグ (あらゆるデバイス用に自動作成される) へのサブスクリプションによって、プッシュ対応のすべての {{site.data.keys.product_adj }} アプリケーションに対してデフォルトで使用可能になります。ブロードキャスト通知を使用不可にするには、予約済みの `Push.all` タグからアンサブスクライブします。
 
-#### Unicast notifications
+#### ユニキャスト通知
 {:# unicast-notifications }
-Unicast notifications, or User Authenticated Notifications that are secured with OAuth. These are notification messages target a particular device or a userID(s). The userID in the user subscription can come from the underlying security context.
+ユニキャスト通知 (ユーザー認証済み通知) は、OAuth によって保護されます。これらは特定のデバイスまたはユーザー ID をターゲットとする通知メッセージです。ユーザー・サブスクリプション内のユーザー ID は、基礎となるセキュリティー・コンテキストに由来するものです。
 
-#### Interactive notifications
+#### 対話式通知
 {: #interactive-notifications }
-With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message. Currently, interactive notifications are supported on devices with iOS version 8 onwards. If an interactive notification is sent to an iOS device with version earlier than 8, the notification actions are not displayed.
+対話式通知を使用すると、ユーザーは、通知が到着したときに、アプリケーションを開かなくてもアクションを実行できます。対話式通知を受信すると、デバイスは通知メッセージとともにアクション・ボタンを表示します。
+現在、対話式通知は、iOS バージョン 8 以降のデバイスでサポートされています。バージョン 8 より前の iOS デバイスに対話式通知が送信された場合、通知アクションは表示されません。
 
-> Learn how to handle [interactive notifications](handling-push-notifications/interactive).
+> [対話式通知](handling-push-notifications/interactive)を処理する方法に関する説明。
 
-#### Silent notifications
+#### サイレント通知
 {: #silent-notifications }
-Silent notifications are notifications that do not display alerts or otherwise disturb the user. When a silent notification arrives, the application handing code runs in background without bringing the application to foreground. Currently, the silent notifications are supported on iOS devices with version 7 onwards. If the silent notification is sent to iOS devices with version lesser than 7, the notification is ignored if the application is running in background. If the application is running in the foreground, then the notification callback method is invoked.
+サイレント通知は、アラートを表示しない、あるいはユーザーを妨げない通知です。サイレント通知が到着すると、アプリケーションをフォアグラウンドに移行せずに、アプリケーションの処理コードがバックグラウンドで実行されます。現在、サイレント通知は、バージョン 7 以降の iOS デバイスでサポートされています。バージョン 7 より低いバージョンの iOS デバイスにサイレント通知が送信された場合、アプリケーションがバックグラウンドで実行されていると、通知は無視されます。アプリケーションがフォアグラウンドで実行されていると、通知のコールバック・メソッドが呼び出されます。
 
-> Learn how to handle [silent notifications](handling-push-notifications/silent).
+> [サイレント通知](handling-push-notifications/silent)を処理する方法に関する説明。
 
-**Note:** Unicast notifications do not contain any tag in the payload. The notification message can target multiple devices or users by specifying multiple deviceIDs or userIDs respectively, in the target block of the POST message API.
+**注:** ユニキャスト通知では、ペイロードにタグがいっさい含まれません。POST メッセージ API のターゲット・ブロックで複数の deviceID または userID をそれぞれ指定することによって、通知メッセージのターゲットを複数のデバイスまたはユーザーにすることができます。
 
-## SMS Notifications
+## SMS 通知
 {: #sms-notifications }
-To start receiving SMS notifications, an application must first register to an SMS notification subscription. To subscribe to SMS notifications, the user supplies a mobile phone number and approves the notification subscription. A subscription request is sent to the {{ site.data.keys.mf_server }} upon receipt of the user approval. When a notification is retrieved from the {{ site.data.keys.mf_console }}, it is processed and sent through a preconfigured SMS gateway.
+SMS 通知の受信を開始するには、アプリケーションがまず SMS 通知サブスクリプションに登録する必要があります。SMS 通知にサブスクライブするために、ユーザーは携帯電話番号を提供し、通知サブスクリプションを承認します。ユーザー承認を受け取ると、サブスクリプション要求が {{site.data.keys.mf_server }} に送信されます。通知は、{{site.data.keys.mf_console }} から取得されるときに処理され、事前構成された SMS ゲートウェイを通じて送信されます。
 
-To configure a gateway, see the [Sending Notifications](sending-notifications) tutorial.
+ゲートウェイを構成するには、[通知の送信](sending-notifications)チュートリアルを参照してください。
 
-## Proxy settings
+## プロキシー設定
 {: #proxy-settings }
-Use the proxy settings to set the optional proxy through which notifications are sent to APNS and GCM. You can set the proxy by using the **push.apns.proxy.*** and **push.gcm.proxy.*** configuration properties. For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+プロキシー設定を使用して、通知が APNS および GCM に送信される際に経由するオプションのプロキシーを設定します。プロキシーの設定には、**push.apns.proxy.*** および **push.gcm.proxy.*** の構成プロパティーを使用できます。詳しくは、[{{site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
 
-> **Note:** WNS does not have proxy support.
+> **注:** WNS には、プロキシー・サポートはありません。
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-Follow through the below required setup of the server-side and client-side in order to be able to send and receive push notifications:
+プッシュ通知の送信および受信を可能にするためには、サーバー・サイドとクライアント・サイドで必要な以下のセットアップを最初から最後まで行ってください。

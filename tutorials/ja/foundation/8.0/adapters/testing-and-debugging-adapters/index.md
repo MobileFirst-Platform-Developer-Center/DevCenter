@@ -1,94 +1,92 @@
 ---
 layout: tutorial
-title: Testing and Debugging Adapters
+title: アダプターのテストおよびデバッグ
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-You can use IDEs, such as Eclipse, IntelliJ, or similar ones, to test Java and JavaScript adapters, and debug Java code  that is implemented for use in Java or JavaScript adapters.  
+IDE (Eclipse、IntelliJ、またはそれに相当するもの) を使用して、Java アダプターおよび JavaScript アダプターのテストや、Java アダプターまたは JavaScript アダプターで使用するために実装された Java コードのデバッグを行うことができます。  
 
-This tutorial demonstrates how to test adapters by using the {{ site.data.keys.mf_cli }} and by using Postman, and also how to debug a Java adapter by using the Eclipse IDE.
+このチュートリアルでは、{{site.data.keys.mf_cli }} または Postman を使用してアダプターをテストする方法、および Eclipse IDE を使用して Java アダプターをデバッグする方法について説明します。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Testing Adapters](#testing-adapters)
- * [Using Postman](#using-postman)
- * [Using Swagger](#using-swagger)
-* [Debugging Adapters](#debugging-adapters)
- * [JavaScript adapters](#debugging-javascript-adapters)
- * [Java adapters](#debugging-java-adapters)
+* [アダプターのテスト](#testing-adapters)
+ * [Postman の使用](#using-postman)
+ * [Swagger の使用](#using-swagger)
+* [アダプターのデバッグ](#debugging-adapters)
+ * [JavaScript アダプター](#debugging-javascript-adapters)
+ * [Java アダプター](#debugging-java-adapters)
 
-## Testing Adapters
+## アダプターのテスト
 {: #testing-adapters }
 
-Adapters are available via a REST interface. This means that if you know the URL of a resource, you can use HTTP tools such as Postman to test requests and pass `URL` parameters, `path` parameters, `body` parameters or `headers` as you see fit.
+アダプターは REST インターフェースを介して使用可能です。つまり、リソースの URL が分かっていれば、Postman などの HTTP ツールを使用して要求をテストし、適宜 `URL` パラメーター、`path` パラメーター、`body` パラメーター、または `headers` を渡すことができるということです。
 
-The structure of the URL used to access the adapter resource is:
+アダプター・リソースへのアクセスに使用する URL の構造は次のとおりです。
 
-* In JavaScript adapters - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{procedure-name}`
-* In Java adapters - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{path}`
+* JavaScript アダプターの場合 - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{procedure-name}`
+* Java アダプターの場合 - `http://hostname-or-ip-address:port-number/mfp/api/adapters/{adapter-name}/{path}`
 
-### Passing parameters
+### パラメーターの受け渡し
 {: #passing-parameters }
 
-* When using Java adapters, you can pass parameters in the URL, body, form, etc, depending on how you configured your adapter.
-* When using JavaScript adapters, you pass parameters as `params=["param1", "param2"]`. In other words, a JavaScript procedure receives only one parameter called `params` which needs to be **an array of ordered, unnamed values**. This parameter can either be in the URL (`GET`) or in the body (`POST`) using `Content-Type: application/x-www-form-urlencoded`.
+* Java アダプターを使用しているときは、アダプターをどのように構成したかに応じて、パラメーターを URL、本文、フォームなどで渡すことができます。
+* JavaScript アダプターを使用しているときは、パラメーターは `params=["param1", "param2"]` として渡されます。つまり、JavaScript プロシージャーは、**順に並べられた、名前のない値の配列**でなければならない `params` というただ 1 つのパラメーターしか受け取りません。このパラメーターは、`Content-Type: application/x-www-form-urlencoded` を使用して、URL (`GET`) または body (`POST`) のいずれかに置くことができます。
 
-### Handling security
+### セキュリティーの取り扱い
 {: #handling-security }
 
-The {{ site.data.keys.product }} security framework requires an access token for any adapter resource even if the resource is not explicitly assigned a scope. So unless you specifically disabled security, the endpoint is always protected.
+{{site.data.keys.product }} のセキュリティー・フレームワークでは、リソースに明示的にスコープが割り当てられていない場合でも、アダプター・リソース用のアクセス・トークンが必要です。そのため、セキュリティーを明示的に使用不可にした場合を除き、エンドポイントは常に保護されます。
 
-To disable security in Java adapters, attach the `OAuthSecurity` annotation to the method/class:
+Java アダプターでセキュリティーを使用不可にするには、`OAuthSecurity` アノテーションをメソッド/クラスに付加します。
 
 ```java
 @OAuthSecurity(enabled=false)
 ```
 
-To disable security in JavaScript adapters, add the `secured` attribute to the procedure:
+JavaScript アダプターでセキュリティーを使用不可にするには、プロシージャーに `secured` 属性を追加します。
 
 ```js
 <procedure name="adapter-procedure-name" secured="false"/>
 ```
 
-Alternatively, the development version of the {{ site.data.keys.mf_server }} includes a test token endpoint to bypass the security challenges.
+別の方法として、{{site.data.keys.mf_server }} の開発バージョンには、セキュリティー・チャレンジをバイパスするためのテスト・トークン・エンドポイントが組み込まれています。
 
-### Using Postman
+### Postman の使用
 {: #using-postman }
 
-#### Test Token
+#### テスト・トークン
 {: #test-token }
 
-To receive a Test Token, either click the "Run in Postman" button below to import a Collection to your Postman app that contains a ready request, or follow the next steps to create the request yourself.
+テスト・トークンを受け取るには、下部にある「Postman で実行 (Run in Postman)」ボタンをクリックして、準備完了要求が含まれた Postman アプリケーションにコレクションをインポートするか、次のステップに従って、ご自身で要求を作成してください。
 
-<a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="Run in Postman" style="margin: 0"></a>
+<a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="Postmanで実行" style="margin: 0"></a>
 
 {% comment %}
-1. In the {{ site.data.keys.mf_console }} → **Settings** → **Confidential Clients** tab, create a confidential client or use the default one:  
-For testing purposes, set **Allowed Scopes** as `**`.
+1. 「{{site.data.keys.mf_console }}」→**「設定」**→**「機密クライアント」**タブで、機密クライアントを作成するか、デフォルトの機密クライアントを使用します。  
+テスト目的の場合は、**「許可されるスコープ」**を `**` に設定します。
 
-  ![Image of setting a confidential client](confidential_client.png)
-{% endcomment %}
+  ![機密クライアントの設定のイメージ](confidential_client.png) {% endcomment %}
 
-1. Use your HTTP client (Postman) to make an HTTP `POST` request to `http://<IP>:<PORT>/mfp/api/az/v1/token` with the following parameters using `Content-Type: application/x-www-form-urlencoded`:
+1. `Content-Type: application/x-www-form-urlencoded` を使用して以下のパラメーターを持つ `http://<IP>:<PORT>/mfp/api/az/v1/token` への HTTP `POST` 要求を作成するには、HTTP クライアント (Postman) を使用します。
 
 * `grant_type` : `client_credentials`
-* `scope` : Use the scope protecting the resource.  
-If you don't use a scope to protect your resource, use an empty string.
+* `scope` : リソースを保護するスコープを使用してください。  
+リソースを保護するためにスコープを使用しない場合は、空ストリングを使用してください。
 
 
-  ![Image of Postman Body configuration](Body_configuration.png)
-2. Add an `authorization header` using `Basic authentication` with Confidential Client ID ("test") and Secret ("test").
-> Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
+  ![Postman の本文構成のイメージ](Body_configuration.png)
+2. `Basic authentication` を使用し、機密クライアント ID ("test") と秘密鍵 ("test") を指定して、`authorization header` を追加します。
+> 機密クライアントの詳細については、[機密クライアント](../../authentication-and-security/confidential-clients)チュートリアルを参照してください。
+  ![Postman の許可構成のイメージ](Authorization_configuration.png)
 
-  ![Image of Postman Authorization configuration](Authorization_configuration.png)
 
-
-The result is a JSON object with a temporary valid access token:
+結果は、一時的に有効なアクセス・トークンを持つ JSON オブジェクトになります。
 
 ```json
 {
@@ -99,54 +97,53 @@ The result is a JSON object with a temporary valid access token:
 }
 ```
 <br/><br/>
-#### Sending request
+#### 要求の送信
 {: #sending-request }
 
-Now with any future request to adapter endpoints, add an HTTP header with the name `Authorization` and the value you received previously (starting with Bearer). The security framework will skip any security challenges protecting your resource.
+アダプター・エンドポイントに対する以後の要求では、`Authorization` という名前の HTTP ヘッダーと、前に受け取った値 (Bearer で始まる) を追加します。セキュリティー・フレームワークは、リソースを保護しているセキュリティー・チャレンジをスキップします。
 
-  ![Adapter request using Postman with the test token](Adapter-response.png)
+  ![テスト・トークンを持つ Postman を使用したアダプター要求](Adapter-response.png)
 
-### Using Swagger
+### Swagger の使用
 {: #using-swagger }
 
-The Swagger docs UI is a visual representation of an adapter's REST endpoints.  
-Using Swagger, a developer can test the adapter endpoints before they are consumed by a client application.
+Swagger 文書の UI は、アダプターの REST エンドポイントのビジュアル表示です。  
+Swagger を使用すると、開発者は、アダプター・エンドポイントがクライアント・アプリケーションに取り込まれる前に、アダプター・エンドポイントをテストすることができます。
 
-To access Swagger:
+Swagger にアクセスするには、次のようにします。
 
-1. Open the {{ site.data.keys.mf_console }} and select an adapter from the adapters list.
-2. Click on the **Resources** tab.
-3. Click on the **View swagger Docs** button.  
-4. Click on the **Show/Hide** button.
+1. {{site.data.keys.mf_console }} を開いて、アダプター・リストからアダプターを選択します。
+2. **「リソース」**タブをクリックします。
+3. **「Swagger 文書の表示」**ボタンをクリックします。  
+4. **「表示/非表示」**ボタンをクリックします。
 
-  ![Image of the Swagger UI](SwaggerUI.png)
+  ![Swagger UI のイメージ](SwaggerUI.png)
 
-<img alt="Image of the on-off switch in the Swagger UI" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
+<img alt="Swagger UI のオン/オフ・スイッチのイメージ" src="on-off-switch.png" style="float:right;margin:27px -10px 0 0"/>
 
-#### Test Token
+#### テスト・トークン
 {: #test-token }
 
-To add a Test Token to the request, so that the security framework skips any security challenges protecting your resource, click the **on/off switch** button on the right corner of an endpoint's operation.
+要求にテスト・トークンを追加して、リソースを保護しているセキュリティー・チャレンジをセキュリティー・フレームワークがスキップできるようにするには、エンドポイントの操作部の右隅にある**「オン/オフ・スイッチ」**ボタンをクリックします。
 
-You will be asked to select which scopes you want to grant to the Swagger UI (for testing purposes, you can select all). If you are using the Swagger UI for the first time, you might be required to log in with a Confidential Client ID and Secret. For this, you will need to create a new confidential client with `*` as its **Allowed Scope**.
+Swagger UI に対して認可するスコープを選択するように求められます (テスト目的の場合、すべて選択することができます)。初めて Swagger UI を使用する場合は、機密クライアント ID と秘密鍵を指定してログインするように要求されることがあります。その場合は、**「許可されるスコープ」**に `*` を指定した新規機密クライアントを作成する必要があります。
 
-> Learn more about Confidential Client in the [Confidential Client](../../authentication-and-security/confidential-clients) tutorial.
-
+> 機密クライアントの詳細については、[機密クライアント](../../authentication-and-security/confidential-clients)チュートリアルを参照してください。
 <br/><br/>
 
-#### Sending Request
+#### 要求の送信
 {: #sending-request-swagger }
 
-Expand the endpoint's operation, enter the required parameters (if needed) and click on the **Try it out!** button.
+エンドポイントの操作を展開し、必須パラメーター (必要な場合) を入力して**「試用」**ボタンをクリックします。
 
-  ![Adapter request using Swagger with the test token](SwaggerReq.png)
+  ![テスト・トークンを持つ Swagger を使用したアダプター要求](SwaggerReq.png)
 
-#### Swagger Annotations
+#### Swagger アノテーション
 {: #swagger-annotations }
-Available only in Java adapters.
+Java アダプターでのみ使用可能です。
 
-To generate Swagger documentation for Java adapters, use Swagger-supplied annotations in your Java implementation.
-> To learn more about Swagger Annotations, see the [Swagger documentation](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X).
+Java アダプター用の Swagger 文書を生成するには、Java 実装環境で Swagger 提供のアノテーションを使用します。
+> Swagger アノテーションについて詳しくは、[Swagger の資料](https://github.com/swagger-api/swagger-core/wiki/Annotations-1.5.X)を参照してください。
 
 ```java
 @ApiOperation(value = "Multiple Parameter Types Example", notes = "Example of passing parameters by using 3 different methods: path parameters, headers, and form parameters. A JSON object containing all the received parameters is returned.")
@@ -168,26 +165,25 @@ public Map<String, String> enterInfo(
 }
 ```
 
-![Multiple parameter endpoint in the swagger UI](Multiple_Parameter.png)
+![Swagger UI の複数パラメーターのエンドポイント](Multiple_Parameter.png)
 
 
 {% comment %}
-### Using {{ site.data.keys.mf_cli }}
+### {{site.data.keys.mf_cli }} の使用
 {: #using-mobilefirst-cli }
 
-In order to test the adapter functionality, use the `mfpdev adapter call` command to call Java or JavaScript adapters from the command line.
-You can choose to run the command interactively or directly. The following is an example of using the direct mode:
+アダプターの機能をテストするために、`mfpdev adapter call` コマンドを使用して、コマンド・ラインから Java アダプターまたは JavaScript アダプターを呼び出します。
+コマンドを対話式で実行するか直接実行するかを選択することができます。以下は、直接モードを使用した例です。
 
-#### Java adapters
+#### Java アダプター
 {: #java-adapters-adapters-cli }
 
-Open a **Command-line** window and run:
+**コマンド・ライン**・ウィンドウを開いて、以下のコマンドを実行します。
 
 ```bash
 mfpdev adapter call adapterName/path
 ```
-For example:
-
+例えば、以下のようにします。
 ```bash
 mfpdev adapter call SampleAdapter/users/World
 
@@ -196,16 +192,15 @@ Response:
 Hello World
 ```
 
-#### JavaScript adapters
+#### JavaScript アダプター
 {: #javascript-adapters-cli }
 
-Open a **Command-line** window and run:
+**コマンド・ライン**・ウィンドウを開いて、以下のコマンドを実行します。
 
 ```bash
 mfpdev adapter call adapterName/procedureName
 ```
-For example:
-
+例えば、以下のようにします。
 ```bash
 mfpdev adapter call SampleAdapter/getFeed
 
@@ -216,42 +211,42 @@ Hello World
 
 {% endcomment %}
 
-## Debugging Adapters
+## アダプターのデバッグ
 {: #debugging-adapters }
 
-### JavaScript adapters
+### JavaScript アダプター
 {: #debugging-javascript-adapters }
-You can debug JavaScript code in JavaScrit adapters by using the `MFP.Logger` API.  
-Available logging levels, from least to most verbose, are: `MFP.Logger.error`, `MFP.Logger.warn`, `MFP.Logger.info` and `MFP.Logger.debug`.
+`MFP.Logger` API を使用して、JavaScript アダプターの JavaScript コードをデバッグすることができます。  
+使用可能なロギング・レベルは、詳細度の低い方から順に、`MFP.Logger.error`、`MFP.Logger.warn`、`MFP.Logger.info`、`MFP.Logger.debug` です。
 
-The logs are then printed to the log file of the application server.  
-Be sure to set the server verbosity level accordingly, otherwise you will not see the logging in the log file.
+その後、ログがアプリケーション・サーバーのログ・ファイルに出力されます。  
+必ず、サーバー詳細度レベルを適切に設定してください。そうしないと、ログ・ファイル内のログが表示されません。
 
-### Java adapters
+### Java アダプター
 {: #debugging-java-adapters }
 
-Before an adapter's Java code can be debugged, Eclipse needs to be configured as follows:
+アダプターの Java コードをデバッグするには、その前に、Eclipse を以下のように構成する必要があります。
 
-1. **Maven integration** - Starting Eclipse Kepler (v4.3), Maven support is built-in in Eclipse.  
-If your Eclipse instance does not support Maven, [follow the m2e instructions](http://www.eclipse.org/m2e/) to add Maven support.
+1. **Maven の組み込み** - Eclipse Kepler (v4.3) からは、Maven サポートが Eclipse に組み込まれています。  
+ご使用の Eclipse インスタンスで Maven がサポートされていない場合は、[m2e の説明に従って](http://www.eclipse.org/m2e/) Maven サポートを追加してください。
 
-2. Once Maven is available in Eclipse, import the adapter Maven project:
+2. Maven が Eclipse で使用可能になったら、次のようにしてアダプター Maven プロジェクトをインポートします。
 
-    ![Image showing how to import an adapter Maven project to Eclipse](import-adapter-maven-project.png)
+    ![Eclipse へのアダプター Maven プロジェクトのインポート方法を示すイメージ](import-adapter-maven-project.png)
 
-3. Provide debugging parameters:
-    - Click **Run** → **Debug Configurations**.
-    - Double-click on **Remote Java application**.
-    - Provide a **Name** for this configuration.
-    - Set the **Host** value: use "localhost" if running a local server, or provide your remote server host name.
-    - Set the **Port** value to "10777".
-    - Click **Browse** and select the Maven project.
-    - Click **Debug**.
+3. 次のようにして、デバッグ・パラメーターを指定します。
+    - **「実行」**→**「デバッグ構成」**をクリックします。
+    - **「リモート Java アプリケーション」**をダブルクリックします。
+    - この構成の**名前**を入力します。
+    - **ホスト**の値を設定します。ローカル・サーバーを実行している場合は「localhost」を使用します。そうでない場合は、リモート・サーバー・ホスト名を入力します。
+    - **ポート**の値を「10777」に設定します。
+    - **「参照」**をクリックして、Maven プロジェクトを選択します。
+    - **「デバッグ」**をクリックします。
 
-    ![Image showing how to set {{ site.data.keys.mf_server }} debug parameters](setting-debug-parameters.png)
+    ![{{site.data.keys.mf_server }} のデバッグ・パラメーターの設定方法を示すイメージ](setting-debug-parameters.png)
 
-4. Click on **Window → Show View → Debug** to enter *debug mode*. You can now debug the Java code normally as you would do in a standard Java application. You need to issue a request to the adapter to make the code run and hit any set breakpoints. This can be accomplished by following the instructions on how to call an adapter resource in the [Testing adapters section](#testing-adapters).
+4. **「ウィンドウ」→「ビューの表示」→「デバッグ」**をクリックして、*デバッグ・モード* を入力します。これで、標準 Java アプリケーションの場合と同様に、Java コードを正常にデバッグすることができます。アダプターのコードを実行して設定されたブレークポイントがヒットするようにするには、アダプターに対して要求を発行する必要があります。[アダプターのテスト・セクション](#testing-adapters)に記載されたアダプター・リソースの呼び出し方法の説明に従うことで、これを実行できます。
 
-    ![Image showing a being-debugged adapter](debugging.png)
+    ![デバッグ中のアダプターを示すイメージ](debugging.png)
 
-> For instructions how to use IntelliJ to debug Java adapters see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters) Blog Post.
+> IntelliJ を使用した Java アダプターのデバッグ方法の手順については、ブログ投稿の [IntelliJ を使用した MobileFirst Java アダプターの開発]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters)を参照してください。

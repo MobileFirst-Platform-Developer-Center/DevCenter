@@ -1,78 +1,80 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Xamarin Applications
+title: Xamarin アプリケーションへの MobileFirst Foundation SDK の追加
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are available through [Xamarin Component store](https://components.xamarin.com/) and which you can add to your Xamarin project.  
-The pods correspond to core functions and other functions:
+{{site.data.keys.product }} SDK は、[Xamarin Component ストア](https://components.xamarin.com/)を通じて入手可能な依存関係の集合で構成されます。この SDK は、Xamarin プロジェクトに追加できます。  
+これらの pod は、次のようなコア機能およびその他の機能に対応しています。
 
-* **MobileFirst.Xamarin** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **MobileFirst.JSONStore** - Contains the JSONStore framework.  
-* **MobileFirst.Push** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
+* **MobileFirst.Xamarin** - クライアントとサーバー間の接続を実装し、認証およびセキュリティーの各側面、リソース要求、およびその他の必要なコア機能を処理します。
+* **MobileFirst.JSONStore** - JSONStore のフレームワークを含んでいます。  
+* **MobileFirst.Push** - プッシュ通知のフレームワークを含んでいます。詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
 
-In this tutorial you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using Xamarin Component Store to a new or existing Xamarin Android or iOS application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
+このチュートリアルでは、Xamarin Component ストアを使用して {{site.data.keys.product_adj }} ネイティブ SDK を新規または既存の Xamarin Android アプリケーションまたは Xamarin iOS アプリケーションに追加する方法について学習します。また、アプリケーションを認識するように {{site.data.keys.mf_server }} を構成する方法についても学習します。
 
-**Prerequisites:**
+**前提条件:**
 
-- Xamarin Studio installed on the developer workstation.  
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/) and [Setting up your Xamarin development environment](../../../installation-configuration/development/xamarin/) tutorials.
+- Xamarin Studio が開発者のワークステーションにインストールされている。  
+- {{site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
+- [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/)、および [Xamarin 開発環境のセットアップ](../../../installation-configuration/development/xamarin/)の両チュートリアルを読む。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-- [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [{{site.data.keys.product_adj }} ネイティブ SDK の追加](#adding-the-mobilefirst-native-sdk)
+- [{{site.data.keys.product_adj }} ネイティブ SDK の更新](#updating-the-mobilefirst-native-sdk)
+- [次に使用するチュートリアル](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## {{site.data.keys.product_adj }} ネイティブ SDK の追加
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product_adj }} Native SDK to a new or existing Xcode project, and to register the application to the {{ site.data.keys.mf_server }}.
+以下の手順に従って、新規または既存の Xcode プロジェクトに {{site.data.keys.product_adj }} ネイティブ SDK を追加し、アプリケーションを {{site.data.keys.mf_server }} に登録します。
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
+開始する前に、{{site.data.keys.mf_server }} が稼働していることを確認します。  
+ローカルにインストールされているサーバーを使用する場合: **コマンド・ライン**・ウィンドウで、サーバーのフォルダーに移動し、コマンド `./run.sh` を実行します。
 
-### Creating an application
+### アプリケーションの作成
 {: #creating-an-application }
-Create a Xamarin solution using Xamarin Studio or Visual Studio or use an existing one.
+Xamarin Studio または Visual Studio を使用して Xamarin ソリューションを作成するか、または既存の Xamarin ソリューションを使用します。
 
-### Adding the SDK
+### SDK の追加
 {: #adding-the-sdk }
-1. The {{ site.data.keys.product_adj }} Native SDK is provided via Xamarin Components Store.
-2. Expand the Android or iOS project.
-3. In the Android or iOS project, right-click **Components**.
-4. Select **Get More Components**. ![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
-5. Search for **IBM MobileFirst SDK**. Choose and do **Add to App**.
+1. {{site.data.keys.product_adj }} ネイティブ SDK は、Xamarin Components ストア経由で提供されます。
+2. Android プロジェクトまたは iOS プロジェクトを展開します。
+3. Android プロジェクトまたは iOS プロジェクトで、**「コンポーネント (Components)」**を右クリックします。
+4. **「さらにコンポーネントを取得 (Get More Components)」**を選択します。![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
+5. **「IBM MobileFirst SDK」**を検索します。**「アプリケーションに追加 (Add to App)」**を選択して実行します。
 ![Add-XamarinSDK-tosolution](Add-XamarinSDK-toApp.png)
-6. Right-click **Packages** and select **Add packages** .Search for and add **Json.NET**. This pulls in the Newtonsoft dependency from Nuget. This needs to be done separately for both Android and iOS projects.
-7. Right-click **References** and select **Edit References**. Go to **.Net Assembly** tab and click 'Browse'. From the project folder's root go to `Components -> ibm-worklight-8.0.0.1 -> lib -> pcl`. Select **Worklight.Core.dll**.
+6. **「パッケージ (Packages)」**を右クリックして、**「パッケージの追加 (Add packages)」**を選択します。**「Json.NET」**を検索して追加します。これで Nuget から Newtonsoft 依存関係が取り込まれます。これは、Android プロジェクトと iOS プロジェクトの両方について別々に実行する必要があります。
+7. **「参照 (References)」**を右クリックして、**「参照を編集 (Edit References)」**を選択します。**「.Net アセンブリー (.Net Assembly)」**タブに移動して、「参照 (Browse)」をクリックします。プロジェクト・フォルダーのルートから、`「コンポーネント (Components)」->「ibm-worklight-8.0.0.1」->「lib」->「pcl」`に移動します。**Worklight.Core.dll** を選択します。
 
-### Registering the application
+### アプリケーションの登録
 {: #registering-the-application }
-1. Load the {{ site.data.keys.mf_console }}.
-2. Click the New button next to Applications to register a new application and follow the on-screen instructions.
-3. Android and iOS applications have to be registered separately. This ensures both the Android application and iOS application can connect successfully to the server. The registration details for Android and iOS applications can be found in the `AndroidManifest.xml` and `Info.plist` respectively.
-3. After the application is registered, navigate to the application's Configuration Files tab and copy or download the mfpclient.plist and mfpclient.properties file. Follow the onscreen instructions to add the file to your project.
+1. {{site.data.keys.mf_console }} をロードします。
+2. 「アプリケーション」の横の「新規」ボタンをクリックして、新規アプリケーションを登録し、画面に表示される指示に従います。
+3. Android アプリケーションと iOS アプリケーションは別々に登録する必要があります。そうすることで、Android アプリケーションと iOS アプリケーションの両方が正常にサーバーに接続できるようになります。Android アプリケーションと iOS アプリケーションの登録の詳細は、それぞれ `AndroidManifest.xml` と `Info.plist` に記載されています。
+3. アプリケーションが登録されたら、そのアプリケーションの「構成ファイル」タブに移動して、mfpclient.plist ファイルと mfpclient.properties ファイルをコピーまたはダウンロードします。画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
 
-### Completing the setup process
+
+
+### セットアップ・プロセスの完了
 {: #completing-the-setup-process }
 #### mfpclient.plist
 {: #mfpclientplist }
-1. Right-click the Xamarin iOS project and select **Add files..**. Browse and find the `mfpclient.plist` to the root of the project. Choose **Copy file to project** if prompted.
-2. Right-click the `mfpclient.plist` file and select **Build action**.Choose **Content**.
+1. Xamarin iOS プロジェクトを右クリックして**「ファイルの追加.. (Add files..)」**を選択します。プロジェクトのルートに配置されている `mfpclient.plist` を参照で検索します。**「ファイルをプロジェクトにコピー (Copy file to project)」**を選択するようにプロンプトが出されたら、選択します。
+2. `mfpclient.plist` ファイルを右クリックし、**「ビルド・アクション (Build action)」**を選択します。**「コンテンツ (Content)」**を選択します。
 
 #### mfpclient.properties
 {: #mfpclientproperties }
-1. Right-click the *Assets* folder of Xamarin Android project and select **Add files..**. Browse and find the `mfpclient.properties` to the folder. Choose **Copy file to project** if prompted.
-2. Right-click the `mfpclient.properties` file and select **Build action**.Choose **Android asset**.
+1. Xamarin Android プロジェクトの*「アセット (Assets)」*フォルダーを右クリックし、**「ファイルの追加.. (Add files..)」**を選択します。フォルダーの参照で `mfpclient.properties` を検索します。**「ファイルをプロジェクトにコピー (Copy file to project)」**を選択するようにプロンプトが出されたら、選択します。
+2. `mfpclient.properties` ファイルを右クリックし、**「ビルド・アクション (Build action)」**を選択します。**「Android アセット (Android asset)」**を選択します。
 
-### Referencing the SDK
+### SDK の参照
 {: #referencing-the-sdk }
-Whenever you want to use the {{ site.data.keys.product_adj }} Native SDK, make sure that you import the {{ site.data.keys.product }} framework:
+{{site.data.keys.product_adj }} ネイティブ SDK を使用する場合はいつでも、必ず {{site.data.keys.product }} フレームワークをインポートするようにしてください。
 
 CommonProject:
 
@@ -82,39 +84,40 @@ using Worklight;
 
 iOS:
 
+
 ```csharp
 using MobileFirst.Xamarin.iOS;
 ```
 
-Android:
+Android: 
 
 ```csharp
 using Worklight.Xamarin.Android;
 ```
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## {{site.data.keys.product_adj }} ネイティブ SDK の更新
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, update the version of the SDK via the Xamarin Components store.
+{{site.data.keys.product_adj }} ネイティブ SDK を最新リリースで更新するには、Xamarin Components ストア経由で SDK のバージョンを更新します。
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
+## 生成される{{site.data.keys.product_adj }} ネイティブ SDK 成果物
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
-This file defines the client-side properties used for registering your iOS app on the {{ site.data.keys.mf_server }}.
+このファイルは、{{site.data.keys.mf_server }} に iOS アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。
 
-| Property            | Description                                                         | Example values |
+| プロパティー            | 説明                                                         | 値の例 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
-| wlServerHost        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| wlServerPort        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
-| wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
-| languagePreferences | Sets the default language for client sdk system messages.           | en             |
+| wlServerProtocol    | {{site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
+| wlServerHost        | {{site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
+| wlServerPort        | {{site.data.keys.mf_server }} のポート。                                 | 9080           |
+| wlServerContext     | {{site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
+| languagePreferences | クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product_adj }} Native SDK now integrated, you can now:
+これで {{site.data.keys.product_adj }} ネイティブ SDK が組み込まれたので、以下の作業を行うことができます。
 
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- [アダプター開発に関するチュートリアル](../../../adapters/)を検討する
+- [認証とセキュリティーに関するチュートリアル](../../../authentication-and-security/)を検討する
+- [通知に関するチュートリアル](../../../notifications/)を検討する
+- [すべてのチュートリアル](../../../all-tutorials)を検討する

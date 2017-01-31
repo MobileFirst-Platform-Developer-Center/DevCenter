@@ -1,184 +1,202 @@
 ---
 layout: tutorial
-title: Creating Custom Charts
-breadcrumb_title: Custom Charts
+title: カスタム・グラフの作成
+breadcrumb_title: カスタム・グラフ
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console }}. This visualization feature is a powerful way to analyze business-critical data.
+カスタム・グラフを使用すると、分析データ・ストア内の収集した分析データを、{{site.data.keys.mf_analytics_console }}でデフォルトでは使用できないグラフで視覚化できます。この視覚化フィーチャーは、ビジネスに不可欠なデータを分析するためのパワフルな手段です。
 
-Available custom chart types: **App Session**, **Network Transactions**, **Push Notifications**, **Client Logs**, **Server Logs**, **Custom Data**.
+使用可能なカスタム・グラフ・タイプ: **「アプリケーション・セッション」**、**「ネットワーク・トランザクション」**、**「プッシュ通知」**、**「クライアント・ログ」**、**「サーバー・ログ」**、**「カスタム・データ」**。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Creating a custom chart](#creating-a-custom-chart)
-* [Chart types](#chart-types)
-* [Creating custom charts for client logs](#creating-custom-charts-for-client-logs)
-* [Exporting custom chart data](#exporting-custom-chart-data)
-* [Exporting and importing custom chart definitions](#exporting-and-importing-custom-chart-definitions)
+* [カスタム・グラフの作成](#creating-a-custom-chart)
+* [グラフ・タイプ](#chart-types)
+* [クライアント・ログのカスタム・グラフの作成](#creating-custom-charts-for-client-logs)
+* [カスタム・グラフ・データのエクスポート](#exporting-custom-chart-data)
+* [カスタム・グラフ定義のエクスポートおよびインポート](#exporting-and-importing-custom-chart-definitions)
 
-## Creating a custom chart
+## カスタム・グラフの作成
 {: #creating-a-custom-chart }
 
-In the {{ site.data.keys.mf_analytics_console }}, from the **Dashboard** panel, the custom charts creation builder takes you through four main stages:
+{{site.data.keys.mf_analytics_console }}の**「ダッシュボード」**パネルから、カスタム・グラフ作成ビルダーで以下の 4 つの主な段階で設定を行っていきます。
 
-### 1. General settings
+### 1. 「一般設定」
 {: #1-general-settings }
 
-Click the **Create Chart** button in the **Custom Charts** tab.  
+**「カスタム・グラフ」**タブで**「グラフの作成」**ボタンをクリックします。  
 
-In the **General Settings** tab, select Chart Title, Event Type and the Chart Type.  
-After selecting the Event Type and Chart Type, the **Chart Definition** tab appears.
+**「一般設定」**タブで、「グラフ・タイトル」、「イベント・タイプ」、および「グラフ・タイプ」を選択します。  
+「イベント・タイプ」と「グラフ・タイプ」を選択すると、**「グラフの定義」**タブが表示されます。
 
-### 2. The Chart Definition tab
+### 2. 「グラフの定義」タブ
 {: #2-the-chart-definition-tab }
 
-Use the **Chart Definition** tab to define the chart for the specified chart type that you previously selected. After you define the chart, you can set the chart filters and chart properties.
+**「グラフの定義」**タブを使用して、以前に選択したグラフ・タイプのグラフを定義します。グラフを定義したら、グラフのフィルターとグラフのプロパティーを設定できます。
 
-### 3. The Chart Filters tab
+### 3. 「グラフのフィルター」タブ
 {: #3-the-chart-filters-tab }
 
-**Chart Filters** are used to fine-tune the custom chart. Multiple filters can be defined for any chart.  
-For example, if you are interested in seeing the average app session duration for a particular app, you can specify the following options:
+**「グラフのフィルター」**は、カスタム・グラフを細かく調整するために使用します。グラフには、複数のフィルターを定義できます。  
+例えば、特定アプリケーションの平均アプリケーション・セッション所要時間を表示したい場合は、以下のオプションを指定できます。
 
-1. Select **Application Name** for **Property**.
-2. Select **Equals** for **Operator**.
-3. Select the name of your app for **Value**.
-4. Click **Add Filter**.
+1. **「プロパティー」**に**「アプリケーション名」**を選択します。
+2. **「演算子」**には**「等しい」**を選択します。
+3. **「値」**にアプリケーションの名前を選択します。
+4. **「フィルターの追加」**をクリックします。
 
-The app name filter is added to the table of filters for your chart.
+グラフのフィルターの表にアプリケーション名のフィルターが追加されます。
 
-### 4. Chart properties
+
+### 4. 「グラフのプロパティー」
 {: #4-chart-properties }
 
-Chart properties are available for the **Table**, **Bar Graph**, and **Line Graph** chart types. The goal of chart properties is to enhance how the data is presented so that the visualization is more effective.
+**「表」**、**「棒グラフ」**、および**「折れ線グラフ」**のグラフ・タイプについて、グラフのプロパティーがあります。
+グラフのプロパティーは、データの表示方法を向上させて効果的に視覚化することが目的です。
 
-If you created a **Table chart**, the chart properties can be set to define the table page size, the field on which to sort, and the sort order of the field.
+**「表」グラフ**を作成した場合は、グラフのプロパティーを設定して、表ページ・サイズ、ソート基準フィールド、フィールドのソート順序を定義できます。
 
-If you created a **Bar Graph** or **Line Graph** chart, the chart properties can be set to label threshold lines to add a frame of reference for anyone who is monitoring the chart.
+**「棒グラフ」**または**「折れ線グラフ」** のグラフを作成した場合は、
+グラフのプロパティーを設定して、しきい値の線にラベル付けし、グラフをモニターする際の参照フレームを追加することができます。
 
-<img class="gifplayer"  alt="Creating a custom chart" src="creating-custom-charts.png"/>
+<img class="gifplayer"  alt="カスタム・グラフの作成" src="creating-custom-charts.png"/>
 
-## Chart types
+## グラフ・タイプ
 {: #chart-types }
 
-### Bar graph
+### 棒グラフ
 {: #bar-graph }
 
-The bar graph allows for visualization of numeric data over an X-axis. When you define a bar graph, you must choose the value for X-Axis first. You can choose from the following possible values.
+棒グラフは、X 軸上で数値データを視覚化できます。棒グラフを定義する場合、まず、「X 軸」の値を選択してください。次の可能な値から選択できます。
 
-* **Timeline** - choose Timeline for X-Axis if you want to see your data as a trend (for example, average app session duration over time).
-* **Property** - choose Property if you want to see a count breakdown for the specific property. If you choose Property for X-Axis, then Total is implicitly chosen for Y-Axis. For example, choose Property for X-Axis and Application Name for Property to see a count for a specified event type, which is broken down by app name.
+* **タイムライン (Timeline)** - データをトレンドで表示する場合 (例えば、経時的な平均アプリケーション・セッション所要時間など)、「X 軸」に「タイムライン (Timeline)」を選択します。
+* **プロパティー** - 特定プロパティーのカウント明細を表示したい場合は、「プロパティー」を選択します。「X 軸」に「プロパティー」を選択すると、「Y 軸」に「合計」が暗黙的に選択されます。
+例えば、「X 軸」に「プロパティー」を選択し、「プロパティー」に「アプリケーション名」を選択すると、指定したイベント・タイプのカウントが、アプリケーション名ごとの内訳で示されます。
 
-After you define a value for X-Axis, you can define a value for Y-Axis. If you choose Timeline for X-Axis, you can choose the following possible values for Y-Axis.
+「X 軸」の値を定義したら、「Y 軸」の値を定義できます。「X 軸」に「タイムライン (Timeline)」を選択した場合、「Y 軸」に以下の可能な値を選択できます。
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
+* **平均** - 指定されたイベント・タイプでの数値プロパティーの平均。
+* **合計** - 指定されたイベント・タイプでのプロパティーの合計カウント。
+* **固有** - 指定されたイベント・タイプでのプロパティーの固有カウント。
 
-After you define the chart axes, you must choose a value for Property.
+グラフの軸を定義したら、「プロパティー」の値を選択してください。
 
-### Line graph
+### 折れ線グラフ
 {: #line-graph }
 
-The line graph allows for the visualization of some metric over time. This type of chart is valuable when you want to visualize data in terms of a trend over time. The first value to define when you create a line graph is Measure, which has the following possible values.
+折れ線グラフにより、経時的に特定のメトリックを視覚化できます。
+このグラフ・タイプは、経時的なトレンドに関してデータを視覚化する場合に役立ちます。
+折れ線グラフの作成時にまず定義する値は「測定 (Measure)」で、これには以下の値が可能です。
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
+* **平均** - 指定されたイベント・タイプでの数値プロパティーの平均。
+* **合計** - 指定されたイベント・タイプでのプロパティーの合計カウント。
+* **固有** - 指定されたイベント・タイプでのプロパティーの固有カウント。
 
-After you define the measurement, you must choose a value for Property.
+測定を定義したら、「プロパティー」の値を選択してください。
 
-### Flow chart
+### フローチャート
 {: #flow-chart }
 
-The flow chart allows for the visualization of flow breakdown of one property to another. For a flow chart, the following properties must be set.
+フローチャートにより、プロパティー間のフローの明細を視覚化できます。
+フローチャートには、以下のプロパティーを設定する必要があります。
 
-* **Source** - the value of a source node in the diagram.
-* **Destination** - the value of the destination node in the diagram.
-* **Property** - a property value from either the source node or the destination node.
 
-With the flow chart, you can see the density breakdown of various sources that flow to a destination, or vice versa. For example, if you want to see the breakdown of log severities for an app, you can define the following values.
+* **ソース** - ダイアグラム内のソース・ノードの値。
+* **宛先** - ダイアグラム内の宛先ノードの値。
+* **プロパティー** - ソース・ノードまたは宛先ノードのプロパティー値。 
 
-* Select Application Name for Source.
-* Select Log Level for Destination.
-* Select the name of your app for Property.
+フローチャートでは、さまざまなソースから宛先へのフロー (その逆も同様) の密度明細を表示できます。
+例えば、あるアプリケーションに関するログ重大度の明細を表示する場合は、以下の値を定義できます。
 
-### Metric group
+* 「ソース」に「アプリケーション名」を選択します。
+* 「宛先」に「ログ・レベル」を選択します。
+* 「プロパティー」にアプリケーションの名前を選択します。
+
+### メトリック・グループ
 {: #metric-group }
 
-The metric group can be used to visualize a single metric that is measured as either an average value, a total count, or a unique count. To define a metric group, you must define one of the following possible values for Measure.
+メトリック・グループでは、平均値、合計カウント、または固有カウントとして測定された 1 つのメトリックを視覚化できます。
+メトリック・グループを定義するには、「測定 (Measure)」に可能な値の 1 つを定義する必要があります。
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
+* **平均** - 指定されたイベント・タイプでの数値プロパティーの平均。
+* **合計** - 指定されたイベント・タイプでのプロパティーの合計カウント。
+* **固有** - 指定されたイベント・タイプでのプロパティーの固有カウント。
 
-After you define the measurement, you must choose a value for Property. This metric is displayed in the metric group.
+測定を定義したら、「プロパティー」の値を選択してください。このメトリックが、メトリック・グループに表示されます。
 
-### Pie chart
+### 円グラフ
 {: #pie-chart }
 
-The pie chart can be used to visualize the count breakdown of values for a particular property. For example, if you want to see a crash breakdown, define the following values.
+円グラフでは、特定プロパティーの値のカウント明細を視覚化できます。
+例えば、異常終了の明細を表示するには、以下の値を定義します。
 
-* Select App Session for Event Type.
-* Select Pie Chart for Chart Type.
-* Select Closed By for Property.
+* 「イベント・タイプ」に「アプリケーション・セッション (App Session)」を選択します。
+* 「グラフ・タイプ」に「円グラフ」を選択します。
+* 「プロパティー」に「終了者 (Closed By)」を選択します。
 
-The resulting pie chart shows the breakdown of app sessions that were closed by the user as opposed to app sessions that were closed by a crash.
+生成される円グラフには、異常終了したアプリケーション・セッションと対照して、ユーザーが終了したアプリケーション・セッションの明細が表示されます。
 
-### Table
+### 表
 {: #table }
 
-The table is useful when you want to see the raw data. Building a table is as simple as adding columns for the raw data that you want to see.  
-Because not all properties are required for specific event types, null values can appear in your table. If you want to prevent these rows from appearing in your table, add an Exists filter for a specific property in the Chart Filters tab.
+生データを表示する場合には、表が便利です。
+表を構築するには、表示する生データの列を追加するだけです。  
+特定のイベント・タイプにすべてのプロパティーが必要とは限らないため、表には NULL 値が出現する可能性があります。
+これらの行が表に出現しないようにするには、「グラフのフィルター」タブで特定プロパティーに「存在する」のフィルターを追加します。
 
-## Creating custom charts for client logs
+## クライアント・ログのカスタム・グラフの作成
 {: #creating-custom-charts-for-client-logs }
 
-You can create a custom chart for client logs that contain log information that is sent with the platform's Logger API.  
-The log information also includes contextual information about the device, including environment, app name, and app version.
+プラットフォームの Logger API で送信されたログ情報が入ったクライアント・ログのカスタム・グラフを作成できます。  
+ログ情報には、デバイスに関するコンテキスト情報 (環境、アプリケーション名、アプリケーション・バージョンなど) も含まれます。
 
-> **Note:** You must log custom events to populate custom charts. For information on sending custom events from the client app, see [Capturing custom data](../../analytics-api/#custom-events).
+> **注:** カスタム・グラフのデータを設定するには、カスタム・イベントをログに記録する必要があります。クライアント・アプリケーションからのカスタム・イベントの送信については、[『カスタム・データのキャプチャー』](../../analytics-api/#custom-events)を参照してください。
+1. クライアント・アプリケーションから、キャプチャーしたログをサーバーに送信することで、データを設定します。[『キャプチャーされたログの送信』](../../analytics-api/#sending-analytics-data)を参照してください。
+2. {{site.data.keys.mf_analytics_console }}で、**「カスタム・グラフ」**タブをクリックし、以下でグラフの作成を続行します。
+    * **グラフのタイトル**: アプリケーションおよびログ・レベル
+    * **イベント・タイプ**: クライアント・ログ
+    * **グラフ・タイプ**: フローチャート
 
-1. From the client app, populate the data by sending captured logs to the server. See [Sending captured logs](../../analytics-api/#sending-analytics-data).
-2. In the {{ site.data.keys.mf_analytics_console }}, click the **Custom Charts** tab and continue to a create a chart:
-    * **Chart Title**: Application and Log Levels
-    * **Event Type**: Client Logs
-    * **Chart Type**: Flow Chart
+3. **「グラフの定義」**タブをクリックし、以下の値を入力します。
+    * **ソース**: アプリケーション名
+    * **宛先**: ログ・レベル
+    * **プロパティー**: 対象のアプリケーション名
 
-3. Click the **Chart Definition** tab and provide the following values:
-    * **Source**: Application Name
-    * **Destination**: Log Level
-    * **Property**: your app name
+4. **「保存」**ボタンをクリックします。
 
-4. Click the **Save** button.
-
-## Exporting custom chart data
+## カスタム・グラフ・データのエクスポート
 {: #exporting-custom-chart-data }
 
-You can download the data that is shown for any custom chart.  
+カスタム・グラフに表示されたデータをダウンロードできます。  
 
-![Export custom chart data using these icons](export-data.png)
+![これらのアイコンを使用したカスタム・グラフ・データのエクスポート](export-data.png)
 
-* **Export with URL** - looks like a chain link
-* **Download Chart** - looks like a down arrow
-* **Edit Chart** - looks like a pencil
-* **Delete Chart** - looks like a trash can
+* **URL によるエクスポート (Export with URL)** - チェーン・リンクの形のアイコン
+* **グラフのダウンロード (Download Chart)** - 下矢印の形のアイコン
+* **グラフの編集 (Edit Chart)** - 鉛筆の形のアイコン
+* **グラフの削除 (Delete Chart)** - ごみ箱の形のアイコン
 
-Click the **Download Chart** icon to download a file in JSON format from the {{ site.data.keys.mf_analytics_console_short }}.  
-Click the **Export with URL** icon to generate an export link from the {{ site.data.keys.mf_analytics_console_short }} to call from an HTTP client. This option is useful if you want to write a script to automate the export processes on a specified time interval.
+**「グラフのダウンロード (Download Chart)」**アイコンをクリックして、{{site.data.keys.mf_analytics_console_short }}
+から JSON フォーマットのファイルをダウンロードします。  
+**「URL によるエクスポート (Export with URL)」**アイコンをクリックして、HTTP クライアントから呼び出すための {{site.data.keys.mf_analytics_console_short }}
+からのエクスポート・リンクを生成します。指定された時間間隔でエクスポート・プロセスを自動化するスクリプトを作成する場合に、このオプションが便利です。
 
-## Exporting and importing custom chart definitions
+## カスタム・グラフ定義のエクスポートおよびインポート
 {: #exporting-and-importing-custom-chart-definitions }
 
-You can export and import custom chart definitions in the {{ site.data.keys.mf_analytics_console_short }}. If you are moving from a test environment to a production deployment, you can save time by exporting your custom chart definitions instead of re-creating your custom charts for your new cluster.
+{{site.data.keys.mf_analytics_console_short }}
+内のカスタム・グラフ定義は、エクスポートおよびインポートが可能です。
+テスト環境から実動デプロイメントに移行する場合に、新しいクラスター用のカスタム・グラフを再作成するのではなく、
+カスタム・グラフ定義をエクスポートすることで、時間を節約できます。
 
-1. Click the **Custom Charts** tab in the {{ site.data.keys.mf_analytics_console_short }} dashboard.
-2. Click **Export Charts** to download a JSON file with your chart definition.
-3. Choose a location to save the JSON file.
-4. Click **Import Charts** to import your JSON file. If you import a custom chart definition that already exists, you create duplicate definitions, which also means that the {{ site.data.keys.mf_analytics_console_short }} shows duplicate custom charts.
+1. {{site.data.keys.mf_analytics_console_short }}のダッシュボードで**「カスタム・グラフ」**タブをクリックします。
+2. **「グラフのエクスポート (Export Charts)」**をクリックして、グラフ定義が入った JSON ファイルをダウンロードします。
+3. 場所を選択して JSON ファイルを保存します。
+4. **「グラフのインポート (Import Charts)」**をクリックして JSON ファイルをインポートします。既に存在するカスタム・グラフ定義をインポートすると、重複した定義が生成されます。
+これにより、{{site.data.keys.mf_analytics_console_short }} に、重複したカスタム・グラフが表示されることになります。

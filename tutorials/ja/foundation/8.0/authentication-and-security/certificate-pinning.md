@@ -1,47 +1,48 @@
 ---
 layout: tutorial
-title: Certificate Pinning
+title: 証明書ピン留め
 relevantTo: [ios,android,cordova]
 weight: 13
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-When communicating over public networks it is essential to send and receive information securely. The protocol widely used to secure these communications is SSL/TLS. (SSL/TLS refers to Secure Sockets Layer or to its successor, TLS, or Transport Layer Security). SSL/TLS uses digital certificates to provide authentication and encryption. To trust that a certificate is genuine and valid, it is digitally signed by a root certificate belonging to a trusted certificate authority (CA). Operating systems and browsers maintain lists of trusted CA root certificates so that they can easily verify certificates that the CAs have issued and signed.
+公衆網を使用して通信している場合、情報を安全に送受信することが重要です。こうした通信を保護するために広く使用されているプロトコルが SSL/TLS です。(SSL/TLS は、Secure Sockets Layer またはその後継である TLS (Transport Layer Security) を指します。) SSL/TLS は、デジタル証明書を使用して認証と暗号化を提供します。証明書は、本物であり有効であると信頼するために、トラステッド認証局 (CA) に属しているルート証明書によってデジタル署名されます。オペレーティング・システムとブラウザーは、トラステッド CA ルート証明書のリストを保守して、CA が発行し署名した証明書を容易に検証できるようにします。
 
-Protocols that rely on certificate chain verification, such as SSL/TLS, are vulnerable to a number of dangerous attacks, including man-in-the-middle attacks, which occur when an unauthorized party is able to view and modify all traffic passing between the mobile device and the backend systems.
+証明書チェーンの検証に依存する SSL/TLS などのプロトコルは、中間者攻撃 (不正な人物がモバイル・デバイスとバックエンド・システムの間を行き来するすべてのトラフィックを表示および変更できる場合に発生する) などの多くの危険な攻撃に対して脆弱です。
 
-{{ site.data.keys.product_full }} provides an API to enable **certificate pinning**. It is supported in native iOS, native Android, and cross-platform Cordova {{ site.data.keys.product_adj }} applications.
+{{site.data.keys.product_full }} では、**証明書ピン留め**を可能にする API が提供されています。この API は、ネイティブ iOS、ネイティブ Android、
+およびクロスプラットフォーム Cordova の {{site.data.keys.product_adj }} アプリケーションでサポートされます。
 
-## Certificate pinning process
+## 証明書ピン留めプロセス
 {: #certificate-pinning-process }
-Certificate pinning is the process of associating a host with its expected public key. Because you own both the server-side code and the client-side code, you can configure your client code to accept only a specific certificate for your domain name, instead of any certificate that corresponds to a trusted CA root certificate recognized by the operating system or browser.
+証明書ピン留めとは、ホストと予期される公開鍵とを関連付けるプロセスです。ユーザーはサーバー・サイド・コードとクライアント・サイド・コードの両方を所有しているため、オペレーティング・システムまたはブラウザーによって認識されるトラステッド CA ルート証明書に対応する証明書の代わりに、ユーザーのドメイン・ネーム用の特定の証明書のみを受け入れるように、クライアント・コードを構成することができます。
 
-A copy of the certificate is placed in the application and is used during the SSL handshake (the first request to the server). The {{ site.data.keys.product_adj }} client SDK verifies that the public key of the server certificate matches the public key of the certificate that is stored in the app.
+証明書のコピーがアプリケーション内に置かれ、SSL ハンドシェーク時に (サーバーに対する初めての要求で) 使用されます。{{site.data.keys.product_adj }} クライアント SDK は、サーバー証明書の公開鍵が、アプリケーションに保管されている証明書の公開鍵と一致するかを検証します。
 
-#### Important
+#### 重要
 {: #important }
-* Some mobile operating systems might cache the certificate validation check result. Therefore, your code should call the certificate pinning API method **before** making a secured request. Otherwise, any subsequent request might skip the certificate validation and pinning check.
-* Make sure to use only {{ site.data.keys.product }} APIs for all communications with the related host, even after the certificate pinning. Using third-party APIs to interact with the same host might lead to unexpected behavior, such as caching of a non-verified certificate by the mobile operating system.
-* Calling the certificate pinning API method a second time overrides the previous pinning operation.
+* 一部のモバイル・オペレーティング・システムは、証明書の検証チェック結果をキャッシュすることがあります。したがって、使用するコードは、保護された要求を行う**前**に、証明書ピン留め API を呼び出す必要があります。そうしないと、以降の要求で証明書の検証とピン留め検査がスキップされる可能性があります。
+* 証明書ピン留めが行われた後も、関連ホストとの通信にはすべて {{site.data.keys.product }} API のみを使用してください。同じホストとの対話にサード・パーティーの API を使用すると、検証されていない証明書がモバイル・オペレーティング・システムによってキャッシュに入れられるなど、予期しない動作につながるおそれがあります。
+* 証明書ピン留め API メソッドを 2 回目に呼び出すと、前のピン留め操作はオーバーライドされます。
 
-If the pinning process is successful, the public key inside the provided certificate is used to verify the integrity of the {{ site.data.keys.mf_server }} certificate during the secured request SSL/TLS handshake. If the pinning process fails, all SSL/TLS requests to the server are rejected by the client application.
+ピン留めプロセスが正常に行われると、保護された要求 SSL/TLS ハンドシェーク時、提供された証明書内の公開鍵を使用して、{{site.data.keys.mf_server }} 証明書の保全性が検証されます。ピン留めプロセスが失敗すると、サーバーへのすべての SSL/TLS 要求はクライアント・アプリケーションによって拒否されます。
 
-## Certificate setup
+## 証明書のセットアップ
 {: #certificate-setup }
-You must use a certificate purchased from a certificate authority. Self-signed certificates are **not supported**. For compatibility with the supported environments, make sure to use a certificate that is encoded in **DER** (Distinguished Encoding Rules, as defined in the International Telecommunications Union X.690 standard) format.
+認証局から購入した証明書を使用する必要があります。自己署名証明書は**サポートされません**。サポートされる環境との互換性のために、**DER** (国際電気通信連合 X.690 規格に定義されている Distinguished Encoding Rules) フォーマットでエンコードされた証明書を使用するようにしてください。
 
-The certificate must be placed in both the {{ site.data.keys.mf_server }} and in your application. Place the certificate as follows:
+証明書は、{{site.data.keys.mf_server }} 内とアプリケーション内の両方に配置する必要があります。証明書は次のように配置してください。
 
-* In the {{ site.data.keys.mf_server }} (WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat): Consult the documentation for your specific application server for information about how to configure SSL/TLS and certificates.
-* In your application:
-    - Native iOS: add the certificate to the application **bundle**
-    - Native Android: place the certificate in the **assets** folder
-    - Cordova: place the certificate in the **app-name\www\certificates** folder (if the folder is not already there, create it)
+* {{site.data.keys.mf_server }} (WebSphere Application Server、WebSphere Application Server Liberty、または Apache Tomcat) 内: SSL/TLS および証明書の構成方法については、使用している特定のアプリケーション・サーバーの資料を参照してください。
+* アプリケーション内:
+    - ネイティブ iOS: 証明書をアプリケーション・**バンドル**に追加します。
+    - ネイティブ Android: 証明書を **assets** フォルダーに入れます
+    - Cordova: 証明書を **app-name\www\certificates** フォルダー内に配置します (フォルダーが存在しない場合は、作成してください)。
 
-## Certificate pinning API
+## 証明書ピン留め API
 {: #certificate-pinning-api }
-Certificate pinning consists of a single API method, that has a parameter `certificateFilename`, where `certificateFilename` is the name of the certificate file.
+証明書ピン留めは単一の API メソッドからなり、このメソッドにはパラメーター `certificateFilename` があります (`certificateFilename` は証明書ファイルの名前です)。
 
 ### Android
 {: #android }
@@ -49,30 +50,30 @@ Certificate pinning consists of a single API method, that has a parameter `certi
 WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");
 ```
 
-The certificate pinning method will throw an exception in two cases:
+証明書ピン留めメソッドは、次の 2 つの場合に例外をスローします。
 
-* The file does not exist
-* The file is in the wrong format
+* ファイルが存在しない
+* ファイルのフォーマットが正しくない
 
 ### iOS
 {: #ios }
-**In Objective-C:**
+**Objective-C の場合:**
 
 ```objc
 [[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFile:@"myCertificate.cer"];
 
 ```
 
-**In Swift:**
+**Swift の場合:**
 
 ```swift
 WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
 ```
 
-The certificate pinning method will raise an exception in two cases:
+証明書ピン留めメソッドでは、次の 2 つの場合に例外が発生します。
 
-* The file does not exist
-* The file is in the wrong format
+* ファイルが存在しない
+* ファイルのフォーマットが正しくない
 
 ### Cordova
 {: #cordova }
@@ -81,13 +82,13 @@ WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onF
 
 ```
 
-The certificate pinning method returns a promise:
+証明書ピン留めメソッドは、次のように確約を返します。
 
-* The certificate pinning method will call the onSuccess method in case of successful pinning.
-* The certificate pinning method will trigger the onFailure callback in two cases:
-* The file does not exist
-* The file is in the wrong format
+* 証明書ピン留めメソッドは、ピン留めが成功した場合は onSuccess メソッドを呼び出します。
+* 証明書ピン留めメソッドは、次の 2 つのケースでは onFailure コールバックをトリガーします。
+* ファイルが存在しない
+* ファイルのフォーマットが正しくない
 
-Later, if a secured request is made to a server whose certificate is not pinned, the `onFailure` callback of the specific request (for example, `obtainAccessToken` or `WLResourceRequest`) is called.
+その後、証明書がピン留めされていないサーバーに対して、保護された要求が行われると、その特定の要求 (例えば、`obtainAccessToken` または `WLResourceRequest`) の `onFailure` コールバックが呼び出されます。
 
-> Learn more about the certificate pinning API method in the [API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_client_api.html)
+> 証明書ピン留め API メソッドについて詳しくは、[API リファレンス](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_client_api.html)を参照してください。

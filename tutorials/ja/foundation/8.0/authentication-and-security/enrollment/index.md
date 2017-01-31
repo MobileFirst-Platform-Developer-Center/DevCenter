@@ -1,51 +1,51 @@
 ---
 layout: tutorial
-title: Enrollment
-breadcrumb_title: Enrollment
+title: 登録
+breadcrumb_title: 登録
 relevantTo: [android,ios,windows,javascript]
 weight: 7
 downloads:
-  - name: Download Cordova project
+  - name: Cordova プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80
-  - name: Download iOS Swift project
+  - name: iOS プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80
-  - name: Download Android project
+  - name: Android プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80
-  - name: Download Web project
+  - name: Web プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: SecurityCheck Maven プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-This sample demonstrates a custom enrollment process and step-up authorization. During this one-time enrollment process, the user is required to enter his user name and password, and to define a PIN code.  
+このサンプルは、カスタムの登録プロセスとステップアップ許可を例示します。この一回限りの登録プロセスの間に、ユーザーはユーザー名とパスワードを入力し、PIN コードを定義する必要があります。  
 
-**Prerequisites:** Make sure to read the [ExternalizableSecurityCheck](../externalizable-security-check/) and [Step-up](../step-up/) tutorials.
+**前提条件:** [ExternalizableSecurityCheck](../externalizable-security-check/) および[ステップアップ](../step-up/)のチュートリアルをお読みください。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Application Flow](#application-flow)
-* [Storing Data in Persistent Attributes](#storing-data-in-persistent-attributes)
-* [Security Checks](#security-checks)
-* [Sample Applications](#sample-applications)
+* [アプリケーション・フロー](#application-flow)
+* [永続属性へのデータの保管](#storing-data-in-persistent-attributes)
+* [セキュリティー検査](#security-checks)
+* [サンプル・アプリケーション](#sample-applications)
 
-## Application Flow
+## アプリケーション・フロー
 {: #application-flow }
-* When the application starts for the first time (before enrollment), it shows the UI with two buttons: **Get public data** and **Enroll**.
-* When the user taps on the **Enroll** button to start enrollment, he is prompted with a log-in form and is then requested to set a PIN code.
-* After the user has enrolled successfully, the UI includes four buttons: **Get public data**, **Get balance**, **Get transactions**, and **Logout**. The user can access all four buttons without entering the PIN code.
-* When the application is launched for a second time (after enrollment), the UI still includes all four buttons. However, when the user clicks the **Get transactions*** button, he is required to enter the PIN code.
+* アプリケーションが初めて開始されると (登録の前)、アプリケーションは、**「公開データの照会 (Get public data)」**と**「登録 (Enroll)」**の 2 つのボタンがある UI を表示します。
+* ユーザーが**「登録 (Enroll)」**ボタンをタップして登録を開始すると、ログイン・フォームのプロンプトが出され、その後、PIN コードを設定するように要求されます。
+* ユーザーが正常に登録されると、UI には、**「公開データの照会 (Get public data)」**、**「残高照会 (Get balance)」**、**「取引照会 (Get transactions)」**、および**「ログアウト」**の 4 つのボタンが表示されます。ユーザーは、PIN コードを入力しなくとも 4 つすべてのボタンを利用できます。
+* アプリケーションが 2 回目に起動されたとき (登録の後)、UI には引き続き 4 つすべてのボタンが含まれています。ただし、ユーザーが**「取引照会 (Get transactions)」**ボタンをクリックすると、ユーザーは PIN コードの入力を要求されます。
 
-After three failing attempts at entering the PIN code, the user is prompted to authenticate again with a user name and password, and to reset a PIN code.
+PIN コードの入力に 3 回失敗すると、ユーザーは再度、ユーザー名とパスワードを使用して認証を受け、PIN コードを再設定するように要求されます。
 
-## Storing Data in Persistent Attributes
+## 永続属性へのデータの保管
 {: #storing-data-in-persistent-attributes }
-You can choose to save protected data in the `PersistentAttributes` object which is a container for custom attributes of a registered client. The object can be accessed either from a security check class or from an adapter resource class.
+保護データを `PersistentAttributes` オブジェクトに保存するように選択できます。このオブジェクトは、登録済みクライアントのカスタム属性用のコンテナーです。オブジェクトにはセキュリティー検査クラスまたはアダプター・リソース・クラスのいずれかからアクセスできます。
 
-In the provided sample application the `PersistentAttributes` object is used in the adapter resource class to store the PIN code:
+提供されるサンプル・アプリケーションでは、`PersistentAttributes` オブジェクトをアダプター・リソース・クラスで使用して、PIN コードを保管しています。
 
-* The **setPinCode** resource adds the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
+* **setPinCode** リソースは、**pinCode** 属性を追加し、`AdapterSecurityContext.storeClientRegistrationData()` メソッドを呼び出して変更を保管します。
 
   ```java
   @POST
@@ -60,9 +60,9 @@ In the provided sample application the `PersistentAttributes` object is used in 
   }
   ```
   
-  Here, `users` has a key called `EnrollmentUserLogin` which itself contains the `AuthenticatedUser` object.
+  ここで、`users` には `EnrollmentUserLogin` というキーが存在し、このキー自体に `AuthenticatedUser` オブジェクトが含まれています。
 
-* The **unenroll** resource deletes the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
+* **unenroll** リソースは、**pinCode** 属性を削除し、`AdapterSecurityContext.storeClientRegistrationData()` メソッドを呼び出して変更を保管します。
 
   ```java
   @DELETE
@@ -79,15 +79,15 @@ In the provided sample application the `PersistentAttributes` object is used in 
   }
   ```
 
-## Security Checks
+## セキュリティー検査
 {: #security-checks }
-The Enrollment sample contains three security checks:
+登録のサンプルには 3 つのセキュリティー検査が含まれています。
 
 ### EnrollmentUserLogin
 {: #enrollmentuserlogin }
-The `EnrollmentUserLogin` security check protects the **setPinCode** resource so that only authenticated users can set a PIN code. This security check is meant to expire quickly and to hold only for the duration of the "first time experience". It is identical to the `UserLogin` security check explained in the [Implementing the UserAuthenticationSecurityCheck](../user-authentication/security-check) tutorial? except for the extra `isLoggedIn` and `getRegisteredUser` methods.  
-The `isLoggedIn` method returns `true` if the security check state equals SUCCESS and `false` otherwise.  
-The `getRegisteredUser` method returns the authenticated user.
+`EnrollmentUserLogin` セキュリティー検査は、**setPinCode** リソースを保護して、認証済みユーザーのみが PIN コードを設定できるようにします。このセキュリティー検査は、すぐに期限切れになるように作られており、「初回に起動」された期間中のみ有効であるように意図されています。このセキュリティー検査は、追加の `isLoggedIn` メソッドと `getRegisteredUser` メソッドがある点を除けば、[UserAuthenticationSecurityCheck の実装](../user-authentication/security-check)のチュートリアルで説明している `UserLogin` セキュリティー検査と同じものです。  
+`isLoggedIn` メソッドは、セキュリティー検査の状態が SUCCESS と等しい場合には `true` を返し、それ以外の場合には `false` を返します。  
+`getRegisteredUser` メソッドは、認証済みユーザーを返します。
 
 ```java
 public boolean isLoggedIn(){
@@ -102,16 +102,16 @@ public AuthenticatedUser getRegisteredUser() {
 
 ### EnrollmentPinCode
 {: #enrollmentpincode }
-The `EnrollmentPinCode` security check protects the **Get transactions** resource and is similar to the `PinCodeAttempts` security check explained in the [Implementing the CredentialsValidationSecurityCheck](../credentials-validation/security-check) tutorial, except for a few changes.
+`EnrollmentPinCode` セキュリティー検査は、**「取引照会 (Get transactions)」**リソースを保護します。いくつかの違いを除いて、[CredentialsValidationSecurityCheck の実装](../credentials-validation/security-check)のチュートリアルで説明している `PinCodeAttempts` セキュリティー検査に似ています。
 
-In this tutorial's example, `EnrollmentPinCode` **depends on** `EnrollmentUserLogin`. After a successfully login to `EnrollmentUserLogin`, the user is only asked to enter a PIN code.
+このチュートリアルの例の場合、`EnrollmentPinCode` は、`EnrollmentUserLogin` に**依存**しています。`EnrollmentUserLogin` へのログインが成功した後でのみ、ユーザーは PIN コードの入力を求められます。
 
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
 
-When the application starts **for the first time** and the user is successfully enrolled, the user must able to access the **Get transactions** resource without having to enter the PIN code that he just set. For this purpose, the `authorize` method uses the `EnrollmentUserLogin.isLoggedIn` method to check whether the user is logged in. This means that as long as `EnrollmentUserLogin` is not expired, the user can access **Get transactions**.
+アプリケーションが**始めて**開始され、ユーザーが正常に登録されると、ユーザーは、設定した PIN コードを入力しなくとも**「取引照会 (Get transactions)」**リソースにアクセスできなければなりません。その目的のために、`authorize` メソッドは `EnrollmentUserLogin.isLoggedIn` メソッドを使用して、ユーザーがログイン状態であるかどうかをチェックします。これは、`EnrollmentUserLogin` の有効期限が切れていない限り、ユーザーは**「取引照会 (Get transactions)」**にアクセスできることを意味します。
 
 ```java
 @Override
@@ -124,7 +124,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-When the user fails to enter the PIN code after three attempts, the tutorial is designed so that the **pinCode** attribute is deleted before the user is prompted to authenticate by using the user name and password and resetting a PIN code.
+ユーザーが 3 回試行しても PIN コードの入力に失敗すると、チュートリアルの設計では、ユーザー名とパスワードで認証を受け、PIN コードを再設定するようにユーザーにプロンプトが出される前に **pinCode** 属性が削除されます。
 
 ```java
 @Override
@@ -143,7 +143,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-The `validateCredentials` method is the same as in the `PinCodeAttempts` security check, except that here the credentials are compared to the stored **pinCode** attribute.
+`validateCredentials` メソッドは、`PinCodeAttempts` セキュリティー検査内のものと同様ですが、ここでは、保管されている **pinCode** 属性に対して資格情報が比較される点が異なります。
 
 ```java
 @Override
@@ -171,15 +171,15 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ### IsEnrolled
 {: #isenrolled }
-The `IsEnrolled` security check protects:
+`IsEnrolled` セキュリティー検査は以下を保護します。
 
-* The **getBalance** resource so that only enrolled users can see the balance.
-* The **transactions** resource so that only enrolled users can get the transactions.
-* The **unenroll** resource so that deleting the **pinCode** is possible only if it has been set before.
+* **getBalance** リソース。登録済みユーザーのみが残高を確認できるようにします。
+* **transactions** リソース。登録済みユーザーのみが取り引きを照会できるようにします。
+* **unenroll** リソース。**pinCode** があらかじめ設定されている場合にのみ、これを削除できるようにします。
 
-#### Creating the Security Check
+#### セキュリティー検査の作成
 {: #creating-the-security-check }
-[Create a Java adapter](../../adapters/creating-adapters/) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
+[Java アダプターを作成](../../adapters/creating-adapters/)し、`ExternalizableSecurityCheck` を継承する `IsEnrolled` という名前の Java クラスを追加します。
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
@@ -191,9 +191,9 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
 }
 ```
 
-#### The IsEnrolledConfig Configuration Class
+#### IsEnrolledConfig 構成クラス
 {: #the-isenrolledconfig-configuration-class }
-Create an `IsEnrolledConfig` configuration class that extends `ExternalizableSecurityCheckConfig`:
+`ExternalizableSecurityCheckConfig` を継承する `IsEnrolledConfig` 構成クラスを作成します。
 
 ```java
 public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
@@ -207,7 +207,7 @@ public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
 }
 ```
 
-Add the `createConfiguration` method to the `IsEnrolled` class:
+`createConfiguration` メソッドを `IsEnrolled` クラスに追加します。
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
@@ -217,9 +217,9 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
     }
 }
 ```
-#### The initStateDurations Method
+#### initStateDurations メソッド
 {: #the-initstatedurations-method }
-Set the duration for the SUCCESS state to `successStateExpirationSec`:
+SUCCESS 状態を維持する期間を `successStateExpirationSec` に設定します。
 
 ```java
 @Override
@@ -228,9 +228,9 @@ protected void initStateDurations(Map<String, Integer> durations) {
 }
 ```
 
-#### The authorize Method
+#### authorize メソッド
 {: #the-authorize-method }
-The code sample simply checks whether the user is enrolled and returns success or failure accordingly:
+コード・サンプルは、ユーザーが登録されているかどうかを単純にチェックし、その結果に応じて成功または失敗を返します。
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -247,25 +247,25 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-* In case the `pinCode` attribute exists:
+* `pinCode` 属性が存在する場合は、以下が実行されます。
 
- * Set the state to SUCCESS by using the `setState` method.
- * Add success to the response object by using the `addSuccess` method.
+ * `setState` メソッドを使用して状態を SUCCESS に設定します。
+ * `addSuccess` メソッドを使用して応答オブジェクトに成功を追加します。
 
-* In case the `pinCode` attribute doesn't exist:
+* `pinCode` 属性が存在しない場合は、以下が実行されます。
 
- * Set the state to EXPIRED by using the `setState` method.
- * Add failure to the response object by using the `addFailure` method.
+ * `setState` メソッドを使用して状態を EXPIRED に設定します。
+ * `addFailure` メソッドを使用して応答オブジェクトに失敗を追加します。
 
 <br/>
-The `IsEnrolled` security check **depends on** `EnrollmentUserLogin`:
+`IsEnrolled` セキュリティー検査は、`EnrollmentUserLogin` に**依存**しています。
 
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
 
-Set the active user by adding the following code:
+以下のコードを追加することで、アクティブ・ユーザーを設定します。
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -287,7 +287,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
    
-Then, the `transactions` resource gets the current `AuthenticatedUser` object to present the display name:
+その後、`transactions` リソースによって、表示名を提供するために現在の `AuthenticatedUser` オブジェクトが取得されます。
 
 ```java
 @GET
@@ -301,9 +301,9 @@ public String getTransactions(){
 }
 ```
     
-> For more information about the `securityContext`, see the [Security API](../../adapters/java-adapters/#security-api) section in the Java adapter tutorial.
+> `securityContext` について詳しくは、Java アダプターのチュートリアルにある[セキュリティー API](../../adapters/java-adapters/#security-api) セクションを参照してください。
 
-Add the registered user to the response object by adding the following:
+以下を追加することで、登録済みユーザーを応答オブジェクトに追加します。
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -325,26 +325,26 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
     
-In our sample code, the `IsEnrolled` challenge handler's `handleSuccess` method use the user object to present the display name.
+サンプル・コードの場合、`IsEnrolled` チャレンジ・ハンドラーの `handleSuccess` メソッドは、表示名を提供するために user オブジェクトを使用します。
 
-<img alt="Enrollment sample application" src="sample_application.png" style="float:right"/>
-## Sample Applications
+<img alt="登録サンプル・アプリケーション" src="sample_application.png" style="float:right"/>
+## サンプル・アプリケーション
 {: #sample-applications }
 
-### Security check
+### セキュリティー検査
 {: #security-check }
-The `EnrollmentUserLogin`, `EnrollmentPinCode`, and `IsEnrolled` security checks are available in the SecurityChecks project under the Enrollment Maven project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+`EnrollmentUserLogin`、`EnrollmentPinCode`、および `IsEnrolled` の各セキュリティー検査は、Enrollment Maven プロジェクトの下にある SecurityChecks プロジェクトで入手できます。
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) してセキュリティー検査 Maven プロジェクトをダウンロードします。
 
-### Applications
+### アプリケーション
 {: #applications }
-Sample applications are available for iOS (Swift), Android, Cordova, and Web.
+iOS (Swift)、Android、Cordova、および Web 用のサンプル・アプリケーションを使用できます。
 
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80) the Cordova project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80) the iOS Swift project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80) the Android project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) the Web app project.
+* [ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80) して Cordova プロジェクトをダウンロードします。
+* [ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80) して iOS Swift プロジェクトをダウンロードします。
+* [ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80) して Android プロジェクトをダウンロードします。
+* [ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) して Web アプリケーション・プロジェクトをダウンロードします。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

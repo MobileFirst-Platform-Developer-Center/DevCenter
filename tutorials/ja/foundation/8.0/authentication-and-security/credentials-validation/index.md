@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: CredentialsValidationSecurityCheck
-breadcrumb_title: Credentials Validation
+breadcrumb_title: 資格情報の検証
 relevantTo: [android,ios,windows,javascript]
 show_children: true
 show_disqus: false
@@ -9,8 +9,8 @@ print_pdf: false
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The **CredentialsValidationsSecurityCheck** is meant for simple flows to validate arbitrary credentials in order to grant access to a resource. A built-in capability to block access after a set number of attempts is also provided.
+**CredentialsValidationsSecurityCheck** は、リソースへのアクセスを認可するために任意の資格情報を検証する単純なフロー向けです。設定されている試行回数に達した後にアクセスをブロックする組み込み機能も提供されます。
 
-Select a tutorial:
+チュートリアルを選択してください。

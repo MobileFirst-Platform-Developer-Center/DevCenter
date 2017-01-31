@@ -1,55 +1,55 @@
 ---
 layout: tutorial
-title: Web app end-to-end demonstration
+title: Web アプリケーションのエンドツーエンドのデモンストレーション
 breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The purpose of this demonstration is to experience an end-to-end flow:
+このデモンストレーションの目的は、エンドツーエンドのフローを体験することです。
 
-1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
-2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
-3. The application logic is changed to make a resource request.
+1. {{site.data.keys.product_adj }} クライアント SDK と事前にバンドルされているサンプル・アプリケーションは登録済みで、{{site.data.keys.mf_console }} からダウンロードされています。
+2. 新規または提供済みのアダプターは {{site.data.keys.mf_console }} にデプロイされています。  
+3. アプリケーション・ロジックは、リソース要求を行うために変更されています。
 
-**End result**:
+**終了結果**:
 
-* Successfully pinging the {{ site.data.keys.mf_server }}.
-* Successfully retrieving data using an adapter.
+* {{site.data.keys.mf_server }} を正常に ping している。
+* アダプターを使用してデータを正常に取得している。
 
-#### Prerequisites:
+#### 前提条件:
 {: #prerequisites }
-* A modern web browser
-* *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
-* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* 最新 Web ブラウザー
+* *オプション*。{{site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。スタンドアロン {{site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
 
-### 1. Starting the {{ site.data.keys.mf_server }}
+### 1. {{site.data.keys.mf_server }} の開始
 {: #starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+[Mobile Foundation インスタンスが作成済みである](../../bluemix/using-mobile-foundation)ことを確認してください。作成済みでない場合は、  
+[{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)を使用しているときは、サーバーのフォルダーにナビゲートして、Mac および Linux では `./run.sh`、Windows では `run.cmd` のコマンドを実行してください。
 
-### 2. Creating and registering an application
+### 2. アプリケーションの作成および登録
 {: #creating-and-registering-an-application }
-In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
  
-1. Click the **New** button next to **Applications**
-    * Select the **Web** platform
-    * Enter **com.ibm.mfpstarterweb** as the **application identifier**
-    * Click on **Register application**
+1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
+    * **Web** プラットフォームを選択します。
+    * **com.ibm.mfpstarterweb** を**アプリケーション ID** として入力します。
+    * **「アプリケーションの登録」**をクリックします。
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-web.png"/>
+    <img class="gifplayer" alt="アプリケーションの登録" src="register-an-application-web.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the Web sample application.
+2. **「スターター・コードの取得」**タイルをクリックして、Web サンプル・アプリケーションをダウンロードすることを選択します。
 
-    <img class="gifplayer" alt="Download sample application" src="download-starter-code-web.png"/>
+    <img class="gifplayer" alt="サンプル・アプリケーションのダウンロード" src="download-starter-code-web.png"/>
  
-### 3. Editing application logic
+### 3. アプリケーション・ロジックの編集
 {: #editing-application-logic }
-1. Open the project in your code editor of choice.
+1. お好きなコード・エディターでプロジェクトを開きます。
 
-2. Select the **client/js/index.js** file and paste the following code snippet, replacing the existing `WLAuthorizationManager.obtainAccessToken()` function:
+2. **client/js/index.js** ファイルを選択し、以下のコード・スニペットを貼り付けて、既存の `WLAuthorizationManager.obtainAccessToken()` 関数を置換します。
 
    ```javascript
    WLAuthorizationManager.obtainAccessToken()
@@ -82,37 +82,36 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
         );
    ```
     
-### 4. Deploy an adapter
+### 4. アダプターのデプロイ
 {: #deploy-an-adapter }
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
+[この作成済みの .adapter 成果物](../javaAdapter.adapter)をダウンロードし、{{site.data.keys.mf_console }} から**「アクション」→「アダプターのデプロイ」**アクションを使用して、この成果物をデプロイします。
 
-Alternatively, click the **New** button next to **Adapters**.  
+あるいは、**「アダプター」**の隣の**「新規」**ボタンをクリックします。  
         
-1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
+1. **「アクション」→「サンプルのダウンロード」**オプションを選択します。「Hello World」**Java** アダプターのサンプルをダウンロードします。
 
-   > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
-
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+   > Maven および {{site.data.keys.mf_cli }} がインストールされていない場合は、スクリーン内の**「開発環境をセットアップします」**の説明に従います。
+2. **コマンド・ライン**・ウィンドウからアダプターの Maven プロジェクト・ルート・フォルダーにナビゲートし、以下のコマンドを実行します。
 
    ```bash
    mfpdev adapter build
    ```
 
-3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+3. ビルドが終了したら、**「アクション」→「アダプターのデプロイ」**アクションを使用して {{site.data.keys.mf_console }} からアダプターをデプロイします。アダプターは、**[adapter]/target** フォルダー内にあります。
     
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
+    <img class="gifplayer" alt="アダプターのデプロイ" src="create-an-adapter.png"/>   
 
 
-<img src="web-success.png" alt="sample application" style="float:right"/>
-### 5. Testing the application
+<img src="web-success.png" alt="サンプル・アプリケーション" style="float:right"/>
+### 5. アプリケーションのテスト
 {: #testing-the-application }
-1. From a **Command-line** window, navigate to the **[project root] → node-server** folder.
-2. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
-3. Open the **[project root] → node-server → server.js** file and edit the **host** and **port** variables with the correct values for your {{ site.data.keys.mf_server }}.
-    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**. 
+1. **コマンド・ライン**・ウィンドウから **[project root] → node-server** フォルダーにナビゲートします。
+2. コマンド `npm start` を実行して、必要な Node.js 構成をインストールして Node.js サーバーを始動します。
+3. **[project root] → node-server → server.js** ファイルを開き、**host** 変数および **port** 変数をご使用の {{site.data.keys.mf_server }} の正しい値で編集します。
+    * ローカル {{site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
+    * リモート {{site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。 
 
-   For example:  
+   以下に例を示します。  
     
    ```javascript
    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // The Mobile Foundation server address
@@ -120,34 +119,34 @@ Alternatively, click the **New** button next to **Adapters**.
    var mfpURL = host + ':443'; // The Mobile Foundation server port number
    ```
    
-4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
+4. ブラウザーで次の URL にアクセスします。 [http://localhost:9081/home](http://localhost:9081/home)
 
 <br>
-#### Secure Origins Policy
+#### Secure Origins ポリシー
 {: #secure-origins-policy }
-When using Chrome during development, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
+開発時に Chrome を使用している場合、このブラウザーでは、HTTP と「localhost」**ではない**ホストの両方を使用しているときにアプリケーションをロードすることができません。これは、このブラウザーでデフォルトで実装および使用されている Secure Origins ポリシーのためです。
 
-To overcome this, you can start the Chrome browser with the following flag:
+これを打開するために、Chrome ブラウザーを以下のフラグを付けて開始できます。
 
 ```bash
 --unsafely-treat-insecure-origin-as-secure="http://replace-with-ip-address-or-host:port-number" --user-data-dir=/test-to-new-user-profile/myprofile
 ```
 
-- Replace "test-to-new-user-profile/myprofile" with the location of a folder that will act as a new Chrome user profile for the flag to work.
+- フラグが機能するように、「test-to-new-user-profile/myprofile」を新規 Chrome ユーザー・プロファイルとして機能するフォルダーのロケーションに置換します。
 
 <br clear="all"/>
-### Results
+### 結果
 {: #results }
-* Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
-* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
+* **「{{site.data.keys.mf_server }} への ping (Ping MobileFirst Server)」**ボタンをクリックすると、**「{{site.data.keys.mf_server }} に接続されています (Connected to MobileFirst Server)」**が表示されます。
+* アプリケーションが {{site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。
 
-The adapter response is then displayed in an alert.
+その場合、アダプター応答がアラートに表示されます。
 
-## Next steps
+## 次の手順
 {: #next-steps }
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
+アプリケーションでのアダプターの使用、プッシュ通知などの追加のサービスを統合する方法、{{site.data.keys.product_adj }} セキュリティー・フレームワークの使用などについて学習します。
 
-- Review the [Application development](../../application-development/) tutorials
-- Review the [Adapters development](../../adapters/) tutorials
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review [All Tutorials](../../all-tutorials)
+- [アプリケーションの開発](../../application-development/)チュートリアルを検討する
+- [アダプターの開発](../../adapters/)チュートリアルを検討する
+- [認証およびセキュリティー・チュートリアル](../../authentication-and-security/)を検討する
+- [すべてのチュートリアル](../../all-tutorials)を検討する

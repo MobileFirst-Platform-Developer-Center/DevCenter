@@ -1,28 +1,39 @@
 ---
 layout: tutorial
-title: Adding custom splash screens and icons to Cordova apps
-breadcrumb_title: Adding images and icons
+title: Cordova アプリケーションへのカスタム・スプラッシュ画面およびアイコンの追加
+breadcrumb_title: イメージおよびアイコンの追加
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-If you used the **cordova-plugin-mfp** plug-in, and you did not use the {{ site.data.keys.product_adj }} template or add the Cordova **cordova-plugin-splashscreen** plug-in to your app, you can replace the images for icons and splash screens that are provided by {{ site.data.keys.product_full }} with your own images. If you used the template, then you can replace the splash images that the Cordova app uses, as they are the files that are displayed.
+**cordova-plugin-mfp** プラグインを使用していた場合で、
+{{site.data.keys.product_adj }}
+テンプレートを使用したり、アプリケーションに Cordova **cordova-plugin-splashscreen** プラグインを追加したりしていなかった場合、{{site.data.keys.product_full }}
+によって提供されるアイコンおよびスプラッシュ画面のイメージを独自のイメージに置き換えることができます。テンプレートを使用した場合は、Cordova アプリケーションで使用されるスプラッシュ・イメージが表示されるファイルであるため、それらのスプラッシュ・イメージを置換することができます。
 
-You must create a new folder to hold the splash images and icons, and modify the **config.xml** configuration file to point to them.
 
-1. Create a folder inside the root directory of your Cordova project. The folder can be in any level of nested subfolder when the parent folder is under the Cordova project root.
-2. Place your source splash image and icon images in this folder.
-3. Update the **config.xml** configuration file to point to your custom files.
+新規フォルダーを作成してスプラッシュ・イメージおよびアイコンを入れ、それらを指すように **config.xml** 構成ファイルを変更してください。
+
+1. Cordova プロジェクトのルート・ディレクトリー内にフォルダーを作成します。フォルダーは、親フォルダーが Cordova プロジェクトのルートの下にある場合、ネストされたサブフォルダーの任意のレベルに配置可能です。
+2. このフォルダーにソースのスプラッシュ・イメージおよびアイコン・イメージを配置します。
+3. カスタム・ファイルを指すように **config.xml** 構成ファイルを更新します。
 
 ### Android
 {: #android }
-If you have an Android app, the requirements to for identifying the splash images depends on whether you created the app with or without the {{ site.data.keys.product_adj }} template.
+Android アプリケーションがある場合、スプラッシュ・イメージを識別するための要件は、
+アプリケーションの作成に
+{{site.data.keys.product_adj }} テンプレートを使用したかどうかによって異なります。
 
-#### Splash screens
+#### スプラッシュ画面
 {: #splash-screens }
-If you did *not* use the {{ site.data.keys.product_adj }} template when you created your app, the splash images that are displayed are those that are retrieved from the {{ site.data.keys.product_adj }} images location. The target file paths and file names must remain exactly as in the example when you do not use the template. Change the source paths and file names (`src`) to the path of the files that you want to display. Add lines similar to the following example between the `<platform name="android">` and `</platform>` tags in the **config.xml** file: 
+アプリケーションの作成時に {{site.data.keys.product_adj }}
+テンプレートを*使用しなかった* 場合、表示されるスプラッシュ・イメージは、
+{{site.data.keys.product_adj }} のイメージ・ロケーションから取得されたものです。
+テンプレートを使用しない場合、ターゲット・ファイルのパスとファイル名は、例とまったく同じにする必要があります。
+ソースのパスとファイル名 (`src`) は、表示するファイルのパスに変更します。
+**config.xml** ファイルで、`<platform name="android">` タグと `</platform>` タグの間に以下の例のような行を追加します。 
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -32,7 +43,10 @@ If you did *not* use the {{ site.data.keys.product_adj }} template when you crea
 <update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" /> 
 ```
 
-If you used the {{ site.data.keys.product_adj }} template when you created your app, you must update the splash images that Cordova uses. Change the source paths and file names (src) to the path of the files that you want to display. Add lines similar to the following example between the <platform name="android"> and </platform> tags in the config.xml file:
+アプリケーションの作成時に
+{{site.data.keys.product_adj }} テンプレートを使用した場合は、
+Cordova が使用するスプラッシュ・イメージを更新する必要があります。
+ソースのパスとファイル名 (src) は、表示するファイルのパスに変更します。config.xml ファイルで、<platform name="android"> タグと </platform> タグの間に以下の例のような行を追加します。
 
 ```xml
 <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -45,9 +59,10 @@ If you used the {{ site.data.keys.product_adj }} template when you created your 
 <splash density="xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
 ```
 
-#### Icons
+#### アイコン
 {: #icons }
-The file names of the icon files must be the same as the entries in the following example. The paths can be any path. The name of each image corresponds to its size.
+アイコン・ファイルのファイル名は、以下の例のエントリーと同じでなければなりません。
+パスは任意のパスにすることができます。各イメージの名前は、そのサイズに対応しています。
 
 ```xml
 <icon src="res/icon/android/icon-96-xhdpi.png" />
@@ -60,11 +75,11 @@ The file names of the icon files must be the same as the entries in the followin
 
 ### iOS
 {: #ios }
-If you have an iOS app, add lines similar to the following example between the `<platform name="ios">` and `</platform>` tags:
+iOS アプリケーションがある場合、`<platform name="ios">` タグと `</platform>` タグの間に以下の例のような行を追加します。
     
-#### Splash screens
+#### スプラッシュ画面
 {: #splash-screens-ios }
-The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
+スプラッシュ画面ファイルのパスとファイル名は、以下の例の名前と同じでなければなりません。各イメージの名前は、そのサイズに対応しています。
 
 ```xml
 <splash height="480" src="res/screen/ios/Default˜iphone.png" width="320" />
@@ -78,9 +93,10 @@ The paths and file names of the splash screen files must be the same as the name
 <splash height="1242" src="res/screen/ios/Default-736h-Landscape˜iphone.png" width="2208" />
 ```
 
-#### Icons
+#### アイコン
 {: #icons-ios}
-The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
+アイコン・ファイルのファイル名は、以下の例の名前と同じでなければなりません。
+パスは任意のパスにすることができます。各イメージの名前は、そのサイズに対応しています。
 
 ```xml
 <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
@@ -104,11 +120,11 @@ The file names of the icon files must be the same as the names in the following 
 
 ### Windows
 {: #windows }
-If you have a Windows app, add lines similar to the lines in the following example between the `<platform name="windows">` and `</platform>` tags:
+Windows アプリケーションがある場合、`<platform name="windows">` タグと `</platform>` タグの間に以下の例のような行を追加します。
 
-#### Splash screens
+#### スプラッシュ画面
 {: #splash-screens-windows }
-The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
+スプラッシュ画面ファイルのパスとファイル名は、以下の例の名前と同じでなければなりません。各イメージの名前は、そのサイズに対応しています。
 
 ```xml
 <splash src="res/screen/windows/SplashScreen.scale-100.png" width="620" height="300"/>
@@ -117,9 +133,10 @@ The paths and file names of the splash screen files must be the same as the name
 <splash src="res/screen/windows/Wide310x150Logo.scale-240.png" width="744" height="360"/>
 ```
 
-#### Icons
+#### アイコン
 {: #icons-windows }
-The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
+アイコン・ファイルのファイル名は、以下の例の名前と同じでなければなりません。
+パスは任意のパスにすることができます。各イメージの名前は、そのサイズに対応しています。
 
 ```xml
 <icon src="res/icon/windows/Square30x30Logo.scale-100.png" width="30" height="30" />

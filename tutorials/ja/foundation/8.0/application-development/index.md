@@ -1,171 +1,186 @@
 ---
 layout: tutorial
-title: Developing Applications
+title: アプリケーションの開発
 show_children: true
-weight: 5
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Development Concepts and Overview
+## 開発の概念および概要
 {: #development-concepts-and-overview }
-When you develop your app with the {{ site.data.keys.product_full }} set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly.
+{{site.data.keys.product_full }} ツール・セットを使用してアプリケーションを開発する際、さまざまなコンポーネントおよびエレメントを開発したり構成したりする必要があります。アプリケーションの開発時に必要になるコンポーネントおよびエレメントについて理解すると、開発を円滑に進める上で役立ちます。
 
-In addition to getting familiar with these concepts, you will also learn about {{ site.data.keys.product_adj }}-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceReuest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the {{ site.data.keys.mf_cli }}.
+これらの概念に精通することに加え、JSONStore および WLResourceReuest など、ネイティブ、Cordova、および Web のアプリケーション用の {{site.data.keys.product_adj }} 提供の API についても学習します。また、アプリケーションのデバッグ、ダイレクト・アップデートを使用した Web リソースの更新、ライブ・アップデートを使用した userbase のセグメント化の方法を学習し、{{site.data.keys.mf_cli }} を使用したアプリケーション、アダプター、およびその他の成果物の処理方法も学習します。
 
-You can either navigate to the relevant topic from the sidebar navigation, or continue reading to learn more about the various {{ site.data.keys.product_adj }} components.
+これらのさまざまな {{site.data.keys.product_adj }} コンポーネントについて詳細を学習するには、サイドバー・ナビゲーションから関連トピックにナビゲートすることも、このまま読み続けることもできます。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Applications](#applications)
-* [{{ site.data.keys.mf_server }}](#mobilefirst-server)
-* [Adapters](#adapters)
-* [Client-side tutorials to follow](#client-side-tutorials-to-follow)
+* [アプリケーション](#applications)
+* [{{site.data.keys.mf_server }}](#mobilefirst-server)
+* [アダプター](#adapters)
+* [次に使用するクライアント・サイドのチュートリアル](#client-side-tutorials-to-follow)
 
-### Applications
+### アプリケーション
 {: #applications }
-Applications are built for a target {{ site.data.keys.mf_server }} and have a server-side configuration on the target server. You must register your applications on the {{ site.data.keys.mf_server }} before you can configure them.
+アプリケーションは、ターゲット {{site.data.keys.mf_server }}
+用にビルドされ、ターゲット・サーバー上にサーバー・サイドの構成があります。アプリケーションは、
+構成する前に
+{{site.data.keys.mf_server }}
+に登録する必要があります。
 
-Applications are identified by the following elements:
+アプリケーションは次のエレメントで識別されます。
 
-* An app ID
-* A version number
-* A target deployment platform
+* アプリケーション ID
+* バージョン番号
+* ターゲット・デプロイメント・プラットフォーム
 
-> **Note:** The version number is not applicable to web applications. You cannot have multiple versions of the same web application.
+> **注:** バージョン番号は、Web アプリケーションには適用されません。同じ Web アプリケーションについて複数のバージョンを持つことはできません。
 
-These identifiers are used on both the client-side and the server-side to ensure that apps are deployed correctly and use only resources that are assigned to them. Different parts of {{ site.data.keys.product }} use various combinations of these identifiers in different ways.
+これらの ID は、アプリケーションが正しくデプロイされ、アプリケーションに割り当てられたリソースのみを使用することを確実にするために、クライアント・サイドとサーバー・サイドの両方で使用されます。{{site.data.keys.product }} のさまざまな部分が、これらの ID のいろいろな組み合わせを異なる方法で使用します。
 
-The app ID depends on the target deployment platform:
+アプリケーション ID はターゲット・デプロイメント・プラットフォームにより異なります。
 
 **Android**  
-The identifier is the application package name.
+ID はアプリケーション・パッケージ名です。
 
 **iOS**  
-The identifier is the application bundle ID.
+ID はアプリケーション・バンドル ID です。
 
 **Windows**  
-The identifier is the application assembly name.
+ID はアプリケーション・アセンブリー名です。
 
 **Web**  
-The identifier is a unique ID that is assigned by the developer.
+ID は開発者によって割り当てられる固有の ID です。
 
-If apps for different target platforms all have the same app ID, then the {{ site.data.keys.mf_server }} considers all of these apps to be the same app with different platform instances. For example, the following apps are considered to be different platform instances of *the same app*:
+異なるターゲット・プラットフォームのアプリケーションがすべて同じアプリケーション ID を持つ場合、{{site.data.keys.mf_server }} は、これらのすべてのアプリケーションを、異なるプラットフォーム・インスタンスを持つ同じアプリケーションであるとみなします。例えば、次のアプリケーションは、*同じアプリケーション* の異なるプラットフォーム・インスタンスであるとみなされます。
 
-* An iOS app with a bundle ID of `com.mydomain.mfp`.
-* An Android app with a package name of `com.mydomain.mfp`.
-* A Windows 10 Universal Windows Platform app with an assembly name of `com.mydomain.mfp`.
-* A web app with an assigned ID of `com.mydomain.mfp`.
+* `com.mydomain.mfp` というバンドル ID を持つ iOS アプリケーション。
+* `com.mydomain.mfp` というパッケージ名を持つ Android アプリケーション。
+* `com.mydomain.mfp` というアセンブリー名を持つ Windows 10 Universal Windows Platform アプリケーション。
+* `com.mydomain.mfp` という割り当てられた ID を持つ Web アプリケーション。
 
-The target deployment platform for the app is independent of whether the app was developed as a native app or as a Cordova app. For example, the following apps are both considered to be iOS apps in {{ site.data.keys.product }}:
+アプリケーションのターゲット・デプロイメント・プラットフォームは、アプリケーションがネイティブ・アプリケーションとして開発されたか Cordova アプリケーションとして開発されたかに依存しません。
+例えば、次のアプリケーションは両方とも
+{{site.data.keys.product }}
+の iOS アプリケーションとみなされます。
 
-* An iOS app that you develop with Xcode and native code
-* An iOS app that you develop with Cordova cross-platform development technologies
+* Xcode およびネイティブ・コードを使用して開発する iOS アプリケーション
+* Cordova クロスプラットフォーム開発テクノロジーを使用して開発する iOS アプリケーション
 
-> **Note:** The **Keychain Sharing** capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.
+> **注:** Xcode 8 を使用する場合、iOS シミュレーターでの iOS アプリケーションの実行中は、**キーチェーン共有**機能が必須です。Xcode プロジェクトをビルドする前に、この機能を手動で有効にする必要があります。
 
-### Application configuration
+### アプリケーション構成
 {: #application-configuration }
-As mentioned, an application is configured on both the client-side and the server-side.  
+上述のように、アプリケーションはクライアント・サイドとサーバー・サイドの両方で構成されます。  
 
-For native and Cordova iOS, Android, and Windows applications, the client configuration is stored in a client properties file (**mfpclient.plist** for iOS, **mfpclient.properties** for Android, or **mfpclient.resw** for Windows). For web applications, the configuration properties are passed as parameters to the SDK [initialization method](../application-development/sdk/web).
+ネイティブおよび Cordova iOS、Android、および Windows のアプリケーションの場合、クライアント構成はクライアント・プロパティー・ファイル (iOS の場合は **mfpclient.plist**、Android の場合は **mfpclient.properties**、Windows の場合は **mfpclient.resw**) に保管されます。Web アプリケーションの場合、構成プロパティーは SDK [初期化メソッド ](../application-development/sdk/web)にパラメーターとして渡されます。
 
-The client configuration properties include the application ID and information such as the URL of the {{ site.data.keys.mf_server }} runtime and security keys that are required to access to the server.  
-The server configuration for the app includes information like app management status, web resources for Direct Update, configured security scopes, and log configuration.
+クライアント構成プロパティーには、アプリケーション ID、およびサーバーにアクセスするために必要な
+ {{site.data.keys.mf_server }} ランタイムの URL やセキュリティー・キーなどの情報が含まれます。  
+アプリケーションのサーバー構成には、アプリケーション管理ステータス、ダイレクト・アップデート用の Web リソース、構成されたセキュリティー・スコープ、ログ構成などの情報が含まれます。
 
-> Learn how to add the {{ site.data.keys.product_adj }} vlient SDKs in the [Adding the {{ site.data.keys.product }} SDK tutorials](sdk).
+> {{site.data.keys.product_adj }} クライアント SDK の追加方法は、[『{{site.data.keys.product }} SDK の追加』チュートリアル](sdk)を参照してください。
 
-The client configuration must be defined before you build the application. The client-app configuration properties must match the properties that are defined for this app in the {{ site.data.keys.mf_server }} runtime. For example, security keys in the client configuration must match the keys on the server. For non-web apps, you can change the client configuration with the {{ site.data.keys.mf_cli }}.
+クライアント構成は、アプリケーションをビルドする前に定義する必要があります。クライアント・アプリケーションの構成プロパティーは、{{site.data.keys.mf_server }} ランタイムでこのアプリケーションに対して定義されているプロパティーと一致している必要があります。
+例えば、クライアント構成内のセキュリティー・キーは、サーバー上のキーと一致している必要があります。Web 以外のアプリケーションの場合は、クライアント構成を {{site.data.keys.mf_cli }} で変更することができます。
 
-The server configuration for an app is tied to the combination of app ID, version number, and target platform. You must register your app to a {{ site.data.keys.mf_server }} runtime before you can add server-side configurations for the app. Configuring the server side of an app is typically done with the {{ site.data.keys.mf_console }}. You can also configure the server side of an app with the following methods:
+アプリケーションのサーバー構成は、アプリケーション ID、バージョン番号、ターゲット・プラットフォームの組み合わせに関係しています。アプリケーションのサーバー・サイド構成を追加するには、事前にアプリケーションを {{site.data.keys.mf_server }} ランタイムに登録する必要があります。アプリケーションのサーバー・サイドは、通常は
+{{site.data.keys.mf_console }}
+を使用して構成されます。アプリケーションのサーバー・サイドは、以下の方法でも構成することができます。
 
-* Grab existing JSON configuration files from the server with the `mfpdev app pull` command, update the file, and upload the changed configuration with the `mfpdev app push` command.
-* Use the **mfpadm** program or Ant task. For information about using mfpadm, see [Administering {{ site.data.keys.product_adj }} applications through the command line](../administering-apps/using-cli) and [Administering {{ site.data.keys.product_adj }} applications through Ant](../administering-apps/using-ant).
-* Use the REST API of the {{ site.data.keys.product_adj }} administration service. For information about the REST API, see [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi).
+* `mfpdev app pull` コマンドを使用して既存の JSON 構成ファイルをサーバーから取得して、ファイルを更新し、変更された構成を `mfpdev app push` コマンドを使用してアップロードします。
+* **mfpadm** プログラムまたは Ant タスクを使用します。mfpadm の使用については、『[コマンド・ラインを通じた {{site.data.keys.product_adj }} アプリケーションの管理](../administering-apps/using-cli)』および『[Ant を通じた {{site.data.keys.product_adj }} アプリケーションの管理](../administering-apps/using-ant)』を参照してください。
+* {{site.data.keys.product_adj }}
+管理サービスの REST API を使用します。REST API については、[『{{site.data.keys.mf_server }} 管理サービス用の REST API』](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi)を参照してください。
 
-You can also use these methods to automate configuration of the {{ site.data.keys.mf_server }}.
+また、これらの方式を使用して {{site.data.keys.mf_server }} の構成を自動化することもできます。
 
-> **Remember:** You can modify the server configuration even while a {{ site.data.keys.mf_server }} is running and receiving traffic from apps. You do not need to stop the server to change the server configuration for an app.
+> **留意点:** {{site.data.keys.mf_server }} が稼働中でアプリケーションからトラフィックを受信中であっても、サーバー構成を変更することができます。アプリケーションのサーバー構成を変更するためにサーバーを停止する必要はありません。
 
-On a production server, the app version typically corresponds to the version of the application published to an app store. Some server configuration elements like the configuration for app authenticity, are unique to the app published to the store.
+実動サーバーでは、アプリケーションのバージョンは通常、アプリケーション・ストアにパブリッシュされたアプリケーションのバージョンに相当します。
+アプリケーションの認証性のための構成など、一部のサーバー構成エレメントは、ストアにパブリッシュされたアプリケーションに固有です。
 
-## {{ site.data.keys.mf_server }}
+## {{site.data.keys.mf_server }}
 {: #mobilefirst-server }
-The server-side of your mobile app is {{ site.data.keys.mf_server }}. {{ site.data.keys.mf_server }} gives you access to features like application management and application security, as well giving your mobile app secure access to your other backend systems through adapters.
+モバイル・アプリケーションのサーバー・サイドは、{{site.data.keys.mf_server }} です。{{site.data.keys.mf_server }} により、ユーザーはアプリケーション管理やアプリケーション・セキュリティーなどの機能にアクセスでき、またモバイル・アプリケーションはアダプターを介して他のバックエンド・システムにセキュアにアクセスできます。
 
-{{ site.data.keys.mf_server }} is the core component that delivers many {{ site.data.keys.product }} features, including the following features:
+{{site.data.keys.mf_server }} は、多くの {{site.data.keys.product }} 機能を提供するコア・コンポーネントです。機能の例を以下に示します。
 
-* Application management
-* Application security, including authenticating devices and users and verifying application authenticity
-* Secure access to backend services through adapters
-* Updating Cordova app Web resources with Direct Update
-* Push notifications and push subscriptions
-* App analytics
+* アプリケーション管理
+* デバイスおよびユーザーの認証やアプリケーション認証性の検査などのアプリケーション・セキュリティー
+* アダプターを介したバックエンド・サービスへのセキュア・アクセス
+* ダイレクト・アップデートを使用した Cordova アプリケーションの Web リソースの更新
+* プッシュ通知およびプッシュ・サブスクリプション
+* アプリケーション分析
 
-You need to use {{ site.data.keys.mf_server }} throughout your app's lifecycle from development and test through to production deployment and maintenance.  
+開発から、テスト、実動デプロイメント、保守に至るまでのアプリケーションのライフサイクル全体で、{{site.data.keys.mf_server }} を使用する必要があります。  
 
-> A preconfigured server is available for you to use when you develop your app. For information about the {{ site.data.keys.mf_server }} to use when you develop your app, see [Setting up the {{ site.data.keys.product_adj }} Development Environment](../installation-configuration/development).
+> アプリケーションを開発する際に使用可能な事前構成済みのサーバーが用意されています。アプリケーションの開発時に使用する {{site.data.keys.mf_server }} については、[『{{site.data.keys.product_adj }} 開発環境のセットアップ』](../installation-configuration/development)を参照してください。
 
-{{ site.data.keys.mf_server }} consists of the following components. All of these components are also included in the {{ site.data.keys.mf_server }}. In simple cases, they are all running on the same application server, but in a production or test environment, the components can be run on different application servers. For information about possible topologies for these {{ site.data.keys.mf_server }} components, see [Topologies and network flows](../installation-configuration/production/topologies).
+{{site.data.keys.mf_server }} は、以下のコンポーネントで構成されます。これらのすべてのコンポーネントは、{{site.data.keys.mf_server }}にも含まれています。単純なケースでは、すべて同じアプリケーション・サーバー上で実行されますが、実動環境またはテスト環境では、コンポーネントは異なるアプリケーション・サーバーで実行される可能性があります。これらの {{site.data.keys.mf_server }} コンポーネントの可能なトポロジーについては、『[トポロジーおよびネットワーク・フロー (Topologies and network flows)](../installation-configuration/production/topologies)』を参照してください。
 
-### {{ site.data.keys.product_adj }} and the {{ site.data.keys.mf_server }} administration service
+### {{site.data.keys.product_adj }} および {{site.data.keys.mf_server }} 管理サービス
 {: #mobilefirst-and-the-mobilefirst-server-administration-service }
-The operations console is a web interface that you can use to view and edit the {{ site.data.keys.mf_server }} configurations. You can also access the {{ site.data.keys.mf_analytics_console }} from here. The context root for the operations console in the development server is **/mfpconsole**.
+Operations Console は、{{site.data.keys.mf_server }} 構成を表示および編集するために使用できる Web インターフェースです。ここから {{site.data.keys.mf_analytics_console }} にアクセスすることもできます。開発サーバーにおける Operations Console のコンテキスト・ルートは、**/mfpconsole** です。
 
-The administration service is the main entry point for managing your apps. You can access the administration service through a web-based interface with the {{ site.data.keys.mf_console }}. You can also access the administration service with the **mfpadm** command-line tool or the administration service REST API.
+管理サービスは、アプリケーションを管理するためのメインエントリー・ポイントです。{{site.data.keys.mf_console }} を使用して Web ベースのインターフェースから管理サービスにアクセスできます。また、**mfpadm** コマンド・ライン・ツールまたは管理サービス REST API を使用して管理サービスにアクセスすることもできます。
 
-> Learn more about the [{{ site.data.keys.mf_console }} features](../product-overview/components/console).
+> 詳しくは、[{{site.data.keys.mf_console }} フィーチャー](../product-overview/components/console)に関する説明を参照してください。
 
-### {{ site.data.keys.product_adj }} runtime
+### {{site.data.keys.product_adj }} runtime
 {: #mobilefirst-runtime }
-The runtime is the main entry point for a {{ site.data.keys.product_adj }} client app. The runtime is also the default authorization server for the {{ site.data.keys.product }} OAuth implementation.
+ランタイムは、{{site.data.keys.product_adj }} クライアント・アプリケーションのメインエントリー・ポイントです。ランタイムは、{{site.data.keys.product }} OAuth 実装のデフォルトの許可サーバーでもあります。
 
-In advanced and rare cases, you can have multiple instances of a device runtime in a single {{ site.data.keys.mf_server }}. Each instance has its own context root. The context root is used to display the name of a runtime in the operations console. Use multiple instances in cases where you require different server-level configuration such as secret keys for keystore.
+高度でまれなケースですが、単一の {{site.data.keys.mf_server }} でデバイス・ランタイムの複数のインスタンスを使用できます。各インスタンスには、独自のコンテキスト・ルートがあります。コンテキスト・ルートは、Operations Console でランタイムの名前を表示するために使用されます。異なるサーバー・レベルの構成 (鍵ストアの秘密鍵など) が必要な場合、複数のインスタンスを使用します。
 
-If you have only one instance of a device runtime in {{ site.data.keys.mf_server }}, you do not typically need to know the runtime context root. For example, when you register an application to a runtime with the `mfpdev app register` command when the {{ site.data.keys.mf_server }} has only one runtime, the application is registered automatically to that runtime.
+{{site.data.keys.mf_server }} に含まれているデバイス・ランタイムのインスタンスが 1 つだけの場合、通常、ランタイムのコンテキスト・ルートを知る必要はありません。例えば、{{site.data.keys.mf_server }} にランタイムが 1 つだけ含まれている場合に `mfpdev app register` コマンドを使用してランタイムにアプリケーションを登録すると、そのアプリケーションはそのランタイムに自動的に登録されます。
 
-### {{ site.data.keys.mf_server }} push service
+### {{site.data.keys.mf_server }} プッシュ・サービス
 {: #mobilefirst-server-push-service }
-The push service is your main access point for push-related operations like push notifications and push subscriptions. To contact the push services, client apps use the URL of the runtime but replace the context root with /mfppush. You can configure and manage the push service with the {{ site.data.keys.mf_console }} or the push service REST API.
+プッシュ・サービスは、プッシュ通知やプッシュ・サブスクリプションなどのプッシュ関連操作のメインアクセス・ポイントです。プッシュ・サービスに接続するために、クライアント・アプリケーションはランタイムの URL を使用しますが、コンテキスト・ルートを /mfppush に置き換えます。{{site.data.keys.mf_console }} またはプッシュ・サービス REST API を使用してプッシュ・サービスを構成および管理できます。
 
-If you run the push services in a separate application server from the {{ site.data.keys.product_adj }} runtime, you must route the push service traffic to the correct application server with your HTTP server.
+{{site.data.keys.product_adj }} ランタイムとは異なるアプリケーション・サーバーでプッシュ・サービスを実行する場合、HTTP サーバーでプッシュ・サービス・トラフィックを正しいアプリケーション・サーバーに経路指定する必要があります。
 
-### {{ site.data.keys.mf_analytics }} and the {{ site.data.keys.mf_analytics_console }}
+### {{site.data.keys.mf_analytics }} および {{site.data.keys.mf_analytics_console }}
 {: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
-{{ site.data.keys.mf_analytics_full }} is an optional component that provides a scalable analytics feature that you can access from the {{ site.data.keys.mf_console }}. This analytics feature lets you search for patterns, problems and platform usage statistics across logs and events that are collected from devices, apps, and servers.
+{{site.data.keys.mf_analytics_full }} は、{{site.data.keys.mf_console }} からアクセスできる拡張が容易な分析機能を提供するオプションのコンポーネントです。この分析機能により、デバイス、アプリケーション、およびサーバーから収集されたログおよびイベント全体でパターン、問題、およびプラットフォーム使用統計を検索できます。
 
-From the {{ site.data.keys.mf_console }}, you can define filters to enable or disable data forwarding to the analytics service. You can also filter the type of information that is sent. On the client side, you can use the client-side log capture API to send events and data to the analytics server.
+{{site.data.keys.mf_console }} で、分析サービスへのデータの転送を有効または無効にするフィルターを定義できます。また、送信される情報のタイプをフィルターに掛けることもできます。クライアント・サイドでは、クライアント・サイド・ログ・キャプチャー API を使用して、イベントおよびデータを分析サーバーに送信できます。
 
-After you install and configure {{ site.data.keys.mf_server }} into the topology that you want, any further configuration of {{ site.data.keys.mf_server }} and its applications can be done entirely through any of the following methods:
+目的のトポロジーに {{site.data.keys.mf_server }} をインストールして構成した後には、以下の方法のいずれかを使用して、{{site.data.keys.mf_server }} およびそのアプリケーションの追加構成をすべて行えます。
 
-* The {{ site.data.keys.mf_console }}
-* The {{ site.data.keys.mf_server }} administration service REST API
-* The **mfpadm** command-line tool
+* {{site.data.keys.mf_console }}
+* {{site.data.keys.mf_server }} 管理サービス REST API
+* **mfpadm** コマンド・ライン・ツール
 
-After the initial installation and configuration, you do not need to access any application server console or interface to configure {{ site.data.keys.product }}.  
-When you deploy your app to production, you can deploy your app to the following {{ site.data.keys.mf_server }} production environments:
+初期インストールおよび構成が終わると、{{site.data.keys.product }} を構成する場合に、アプリケーション・サーバー・コンソールやインターフェースにアクセスする必要はありません。  
+アプリケーションを実動にデプロイする場合、アプリケーションを以下の {{site.data.keys.mf_server }} 実稼働環境にデプロイできます。
 
-#### On-premises
+#### オンプレミス
 {: #on-premises }
-> For information about installing and configuring {{ site.data.keys.mf_server }} for your on-premises environment, see [Installing IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/appserver).
+> オンプレミス環境での {{site.data.keys.mf_server }} のインストールおよび構成については、[IBM {{site.data.keys.mf_server }} のインストール](../installation-configuration/production/appserver)を参照してください。
 
-#### On the cloud
+#### クラウド
 {: #on-the-cloud }
-* [Using {{ site.data.keys.mf_server }} on IBM Bluemix](../bluemix).
-* [Using {{ site.data.keys.mf_server }} on IBM PureApplication](../installation-configuration/production/pure-application).
+* [IBM Bluemix 上での {{site.data.keys.mf_server }} の使用](../bluemix)。
+* [IBM PureApplication 上での {{site.data.keys.mf_server }} の使用](../installation-configuration/production/pure-application)。
 
-## Adapters
+## アダプター
 {: #adapters }
-Adapters in {{ site.data.keys.product }} securely connect your back-end systems to client applications and cloud services.  
+{{site.data.keys.product }}
+のアダプターは、クライアント・アプリケーションとクラウド・サービスにバックエンド・システムをセキュアに接続します。  
 
-You can write adapters in either JavaScript or Java, and you can build and deploy adapters as Maven projects.  
-Adapters are deployed to a {{ site.data.keys.product_adj }} runtime in {{ site.data.keys.mf_server }}.
+アダプターは、JavaScript または Java で作成することができ、Maven プロジェクトとしてビルドおよびデプロイすることができます。  
+アダプターは、{{site.data.keys.mf_server }} の {{site.data.keys.product_adj }} ランタイムにデプロイされます。
 
-In a production system, adapters typically run in a cluster of application servers. Implement your adapters as REST services with no session information and stored locally on the server to ensure that your adapter works well in a clustered environment.
+実動システムでは、アダプターは通常、アプリケーション・サーバーのクラスターで実行されます。サーバーでセッション情報をローカルに保管せずに、アダプターを REST サービスとして実装し、アダプターがクラスター環境で正常に機能するようにします。
 
-An adapter can have user-defined properties. These properties can be configured on the server side without redeploying the adapter. For example, you can change the URL that your adapter uses to access resources when you move from test to production.
+アダプターには、ユーザー定義のプロパティーを指定することができます。
+これらのプロパティーは、アダプターを再デプロイせずにサーバー・サイドで構成することができます。例えば、テストから実動に移行する際に、アダプターがリソースにアクセスするために使用する URL を変更できます。
 
-You can deploy an adapter to a {{ site.data.keys.product_adj }} runtime from the {{ site.data.keys.mf_console }}, by using the mfpdev adapter deploy command, or directly from Maven.
+アダプターを {{site.data.keys.product_adj }} ランタイムにデプロイするには、mfpdev adapter deploy コマンドを使用して {{site.data.keys.mf_console }} からデプロイするか、または Maven から直接デプロイすることができます。
 
-> Learn more about adapters and how to develop JavaScript and Java adapters in the [Adapters category](../adapters).
+> アダプターについて、および JavaScript アダプターおよび Java アダプターの開発方法についての詳細は、[アダプターのカテゴリー](../adapters)を参照してください。
 
-## Client-side tutorials to follow
+## 次に使用するクライアント・サイドのチュートリアル
 {: #client-side-tutorials-to-follow }

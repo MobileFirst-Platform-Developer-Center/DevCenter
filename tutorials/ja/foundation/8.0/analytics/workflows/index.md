@@ -1,36 +1,42 @@
 ---
 layout: tutorial
-title: Analytics Workflows
-breadcrumb_title: Workflows
+title: Analytics ワークフロー
+breadcrumb_title: ワークフロー
 relevantTo: [ios,android,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-Leverage {{ site.data.keys.mf_analytics_full }} to best serve your business needs. Once your goals are identified collect the appropriate data using the {{ site.data.keys.mf_analytics_short }} client SDK and build reports using the {{ site.data.keys.mf_analytics_console }}. The following typical scenarios demonstrate methods of collecting and reporting analytics data.
+{{site.data.keys.mf_analytics_full }}
+を活用して、ビジネス・ニーズに最適に対応することができます。目標が特定されたら、{{site.data.keys.mf_analytics_short }}クライアント SDK を使用して該当データを収集し、
+{{site.data.keys.mf_analytics_console }} を使用してレポートを作成します。以下の一般的なシナリオで、分析データの収集およびレポート作成の方法の例を示します。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [App Usage Analytics](#app-usage-analytics)
-* [Crash Capture](#crash-capture)
+* [アプリケーションの使用の分析](#app-usage-analytics)
+* [異常終了キャプチャー](#crash-capture)
 
-## App usage analytics
+## アプリケーションの使用の分析
 {: #app-usage-analytics }
 
-### Initializing your client app to capture app usage
+### アプリケーション使用をキャプチャーするためのクライアント・アプリケーションの初期化
 {: #initializing-your-client-app-to-capture-app-usage }
 
-App usage measures the number of times a specific app is brought to the foreground, and then sent to the background. To capture app usage in your mobile app, the {{ site.data.keys.mf_analytics }} client SDK must be configured to listen for the app lifecycle events.
+アプリケーションの使用では、特定のアプリケーションがフォアグラウンドに移動された後、バックグラウンドに送られた回数を測定します。
+モバイル・アプリケーションでアプリケーション使用をキャプチャーするには、
+{{site.data.keys.mf_analytics }} クライアント
+SDK が、アプリケーション・ライフサイクル・イベントを聴取するように構成されている必要があります。
 
-You can use the {{ site.data.keys.mf_analytics }} API to capture app usage. Make sure you have first created a relevant device listener. Then send the data to the server.
+{{site.data.keys.mf_analytics }}
+API を使用して、アプリケーションの使用状況をキャプチャーできます。関連するデバイス・リスナーがまず作成済みであることを確認してください。その後、データをサーバーに送信します。
 
 #### iOS
 {: #ios }
 
-Add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method in the **AppDelegate.m/AppDeligate.swift** file.
+**AppDelegate.m/AppDeligate.swift** ファイル内の Application Delegate の `application:didFinishLaunchingWithOptions` メソッドに次のコードを追加します。
 
 **Objective-C**
 
@@ -39,7 +45,7 @@ WLAnalytics *analytics = [WLAnalytics sharedInstance];
 [analytics addDeviceEventListener:LIFECYCLE];
 ```
 
- To send the analytics data:
+ 分析データを送信するには、以下のようにします。
 
 ```objc
 [[WLAnalytics sharedInstance] send];
@@ -51,7 +57,7 @@ WLAnalytics *analytics = [WLAnalytics sharedInstance];
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
 ```
 
-To send the analytics data:
+分析データを送信するには、以下のようにします。
 
 ```Swift
 WLAnalytics.sharedInstance().send;
@@ -60,14 +66,14 @@ WLAnalytics.sharedInstance().send;
 #### Android
 {: #android }
 
-Add the following code in your Application subclass `onCreate` method.
+Application サブクラスの `onCreate` メソッドに次のコードを追加します。
 
 ```Java
 WLAnalytics.init(this);
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
-To send the analytics data:
+分析データを送信するには、以下のようにします。
 
 ```Java
 WLAnalytics.send();
@@ -76,102 +82,119 @@ WLAnalytics.send();
 #### Cordova
 {: #cordova }
 
-For Cordova apps, the listener must be created in the native platform code, similar to the iOS and Android apps. Send the data to the server:
+iOS および Android アプリケーションと同様に、Cordova アプリケーションの場合も、ネイティブ・プラットフォーム・コードにリスナーを作成する必要があります。
+以下のようにしてデータをサーバーに送信します。
 
 ```javascript
 WL.Analytics.send();
 ```
 
-#### Web apps
+#### Web アプリケーション
 {: #web-apps }
 
-For Web apps, no listeners are required. Analytics can be enabled and disabled through the  `WLlogger` class.
+Web アプリケーションの場合、リスナーは不要です。
+`WLlogger` クラスを通じて分析を有効化および無効化することができます。
+
 
 ```javascript                                    
 ibmmfpfanalytics.logger.config({analyticsCapture: true});                
 ibmmfpfanalytics.send();
 ```
 
-### Default Usage and Devices chart
+### 使用状況とデバイスのデフォルト・グラフ
 {: #default-usage-and-devices-charts }
 
-In the **Usage and Devices** page of the Apps section in the {{ site.data.keys.mf_analytics_console }}, a number of default charts are provided to help you manage your app usage.
+{{site.data.keys.mf_analytics_console }} の「アプリケーション」セクションの**「使用状況とデバイス (Usage and Devices)」**ページには、
+アプリケーションの使用状況の管理に役立ついくつかのデフォルト・グラフが用意されています。
 
-#### Total Devices
+#### 合計デバイス数
 {: #total-devices }
 
-The **Total Devices** chart shows the number of total devices.
+**「合計デバイス数」**グラフは、合計デバイスの数を示します。
 
-#### Total App Sessions
+#### 合計アプリケーション・セッション数
 {: #total-app-sessions }
 
-The **Total App Sessions** chart shows the number of total app sessions. An app session is recorded when an app is brought to the foreground of a device.
+**「合計アプリケーション・セッション数 (Total App Sessions)」**グラフは、合計アプリケーション・セッションの数を示します。
+アプリケーションをデバイスのフォアグラウンドに移動すると、アプリケーション・セッションが記録されます。
 
-#### Active Users
+#### アクティブ・ユーザー
 {: #active-users }
 
-The **Active Users** chart shows an interactive multi-line graph of the following data:
+**「アクティブ・ユーザー」**グラフでは、以下のデータについて複数の線からなる対話式折れ線グラフを表示します。
 
-* Active Users - unique users for the displayed time frame.
-* New Users - new users for the displayed time frame.
 
-The default displayed time frame is one day with a data point for each hour. If you change the displayed time frame to greater than one day, the data points reflect each day. You can click the corresponding key in the legend to toggle whether to display the line. By default, all keys are displayed, and you cannot toggle all keys to not display any lines.
+* アクティブ・ユーザー - 表示時間フレームの固有のユーザー。
+* 新規ユーザー - 表示時間フレームの新規のユーザー。
 
-To see the most accurate data in the line graph, you must instrument your app code to provide the `userID` by calling the `setUserContext` API. If you want to provide anonymity for the `userID` values, you must hash the value first. If the `userID` is not provided, the ID of the device is used by default. If one device is used by multiple users and the `userID` is not provided, the line graph does not reflect accurate data because the ID of the device counts as one user.
+デフォルトの表示時間フレームは 1 日であり、1 時間ごとに 1 つのデータ・ポイントがあります。
+表示時間フレームを変更して 1 日より大きくすると、データ・ポイントは 1 日ごとになります。
+凡例の中で対応するキーをクリックして、その線を表示するかどうかを切り替えられます。
+デフォルトではすべてのキーが表示されます。すべてのキーを切り替えてどの線も表示されないようにすることはできません。
 
-#### App Sessions
+折れ線グラフに最も正確なデータを表示するには、アプリケーション・コードで `setUserContext` API を呼び出して `userID` を指定する必要があります。`userID` 値に匿名性を持たせる場合は、最初にその値をハッシュしなければなりません。
+`userID` が指定されない場合、デバイスの ID がデフォルトで使用されます。
+1 つのデバイスが複数のユーザーによって使用され、`userID` が指定されない場合、
+デバイスの ID が 1 人のユーザーとしてカウントされるため、正確なデータが折れ線グラフに反映されません。
+
+#### アプリケーション・セッション数
 {: #app-sessions }
-The **App Sessions** chart shows a bar graph of app sessions over time.
+**「アプリケーション・セッション数」**グラフは、アプリケーション・セッション数の経時的な棒グラフを表示します。
 
-#### App Usage
+#### アプリケーションの使用
 {: #app-usage }
 
-The **App Usage** chart shows a pie chart of the percentage of app sessions for each app.
+**「アプリケーションの使用」**グラフは、
+各アプリケーションのアプリケーション・セッション数のパーセンテージを円グラフで示します。
 
-#### New Devices
+#### 新規デバイス
 {: #new-devices }
 
-The **New Devices** chart shows a bar graph of new devices over time.
+**「新規デバイス」**グラフは、新規デバイス数の経時的な棒グラフを示します。
 
-#### Model Usage
+#### モデルの使用
 {: #model-usage }
 
-The **Model Usage** chart shows a pie chart of the percentage of app sessions for each device model.
+**「モデルの使用」**グラフは、
+各デバイス・モデルのアプリケーション・セッション数のパーセンテージを円グラフで示します。
 
-#### Operating System Usage
+#### オペレーティング・システムの使用
 {: #operating-system-usage }
-The **Operating System Usage** chart shows a pie chart of the percentage of app sessions for each device operating system.
+**「オペレーティング・システムの使用」**グラフは、
+各デバイス・オペレーティング・システムのアプリケーション・セッション数のパーセンテージを円グラフで示します。
 
-### Creating a custom chart for average session duration
+### 平均セッション所要時間に関するカスタム・グラフの作成
 {: #creating-acustom-chart-for-average-session-duration }
 
-The duration of an app session is a valuable metric to visualize. With any app, you want to know the amount of time that users are spending on a particular session.
+アプリケーション・セッションの所要時間は、視覚化すべき有効なメトリックです。どんなアプリケーションでも、
+ユーザーが特定のセッションで費やした時間に関する情報は必要になります。
 
-1. In the {{ site.data.keys.mf_analytics_console }}, click **Create Chart** in the **Custom Charts** page of the Dashboard section.
-2. Give your chart a title.
-3. Select **App Session** for **Event Type**.
-4. Select **Bar Graph** for **Chart Type**.
-5. Click **Next**.
-6. Select **Timeline** for **X-Axis**.
-7. Select **Average** for **Y-Axis**.
-8. Select **Duration** for **Property**.
-9. Click **Save**.
+1. {{site.data.keys.mf_analytics_console }} で、「ダッシュボード」セクションの**「カスタム・グラフ (Custom Charts)」**ページで**「グラフの作成」**をクリックします。
+2. グラフにタイトルを付けます。
+3. **「イベント・タイプ」**に**「アプリケーション・セッション (App Session)」**を選択します。
+4. **「グラフ・タイプ」**に**「棒グラフ」**を選択します。
+5. **「次へ」**をクリックします。
+6. **「X 軸」**に**「タイムライン (Timeline)」**を選択します。
+7. **「Y 軸」**に**「平均」**を選択します。
+8. **「プロパティー」**に**「所要時間 (Duration)」**を選択します。
+9. **「保存 (Save)」**をクリックします。
 
-## Crash capture
+## 異常終了キャプチャー
 {: #crash-capture }
 
-{{ site.data.keys.mf_analytics }} includes data and reports about application crashes. This data is collected automatically along with other lifecycle event data. The crash data is collected by the client and is sent to the server once the application is again up and running.
+{{site.data.keys.mf_analytics }} には、アプリケーションの異常終了についてのデータとレポートが含まれます。このデータは、他のライフサイクル・イベント・データと共に自動的に収集されます。異常終了データはクライアントによって収集され、アプリケーションが再度実行されると、サーバーに送信されます。
 
-An app crash is recorded when an unhandled exception occurs and causes the program to be in an unrecoverable state. Before the app closes, the {{ site.data.keys.mf_analytics }} SDK logs a crash event. This data is sent to the server with the next logger send call.
+処理されない例外が発生し、プログラムがリカバリー不能な状態になると、アプリケーション異常終了が記録されます。アプリケーションがクローズする前に、{{site.data.keys.mf_analytics }}
+SDK は異常終了イベントをログに記録します。このデータは、次回のロガー送信呼び出しを使用してサーバーに送信されます。
 
-### Initializing your app to capture crash data
+### 異常終了データをキャプチャーするためのアプリケーションの初期化
 {: #initializing-your-app-to-capture-crash-data }
 
-To ensure that crash data is collected and included in the {{ site.data.keys.mf_analytics_console }} reports, make sure the crash data is sent to the server.
+異常終了データが収集され、{{site.data.keys.mf_analytics_console }}・レポートに含まれるようにするには、 異常終了データがサーバーに送信されていることを確認してください。
 
-Ensure that you are collecting app lifecycle events as described in [Initializing your client app to capture app usage](#initializing-your-client-app-to-capture-app-usage).
+[『アプリケーション使用をキャプチャーするためのクライアント・アプリケーションの初期化』](#initializing-your-client-app-to-capture-app-usage)に説明されているように、アプリケーション・ライフサイクル・イベントを収集していることを確認してください。
 
-The client logs must be sent once the app is running again, in order to get the stacktrace that is associated with the crash. Using a timer ensures that the logs are sent periodically.
+異常終了に関連付けられたスタック・トレースを取得するには、アプリケーションが再度実行された後にクライアント・ログを送信する必要があります。タイマーを使用すると、確実にログが定期的に送信されます。
 
 #### iOS
 {: #ios-crash-data }
@@ -243,68 +266,82 @@ setInterval(function() {
 }, 60000);
 ```
 
-### App crash monitoring
+### アプリケーション異常終了のモニター
 {: #app-crash-monitoring }
 
-After a crash, when the app is restarted, the crash logs are sent to the {{ site.data.keys.mf_analytics_server }}. You can quickly see information about your app crashes in the **Dashboard** section of the {{ site.data.keys.mf_analytics_console }}.  
-In the **Overview** page of the **Dashboard** section, the **Crashes** bar graph shows a histogram of crashes over time.
+異常終了の後に、アプリケーションが再始動したときに、異常終了ログが {{site.data.keys.mf_analytics_server }}に送信されます。{{site.data.keys.mf_analytics_console }} の**「ダッシュボード」**セクションでアプリケーション異常終了に関する情報を迅速に表示できます。  
+**「ダッシュボード」**セクションの**「概要」**ページで、
+**「異常終了 (Crashes)」**の棒グラフに、異常終了数の経時的なヒストグラムが示されます。
 
-The data can be shown in two ways:
+以下の 2 つの方法でデータを表示できます。
 
-* **Display crash rate**: crash rate over time
-* **Display total crashes**: total crashes over time
+* **異常終了率の表示 (Display crash rate)**: 経時的な異常終了率
+* **合計異常終了数の表示 (Display total crashes)**: 経時的な合計異常終了数
 
-> **Note:** The Crashes chart queries against the `MfpAppSession` documents. You must instrument your app to collect app uses and crashes for data to appear in the charts. If `MfpAppSession` data is not collected, then `MfpAppLog` documents are queried. In this case, the chart can count the number of crashes, but cannot compute a crash rate because the number of app uses is unknown, which results in the following limitation:
+> **注:** 「異常終了 (Crashes)」グラフは、`MfpAppSession` 文書に対して照会を実行します。グラフにデータが表示されるようにするには、アプリケーションの使用数と異常終了数を収集するようにアプリケーションを調整する必要があります。
+`MfpAppSession` データが収集されない場合、`MfpAppLog` 文書に対して照会が実行されます。
+この場合、グラフでは異常終了の数をカウントできますが、アプリケーション使用数が不明であるため、異常終了率は計算できません。そのため、以下の制限が生じます。
 >
-> * The **Crashes** bar graph displays no data when **Display Crash Rate** is selected.
+> * **「異常終了率の表示 (Display Crash Rate)」** が選択されている場合でも、*「異常終了 (Crashes)」**棒グラフにデータは表示されません*。
 
-### Default charts for crashes
+### 異常終了のデフォルト・グラフ
 {: #default-charts-for-crashes }
 
-In the **Crashes** page of the **Apps** section in the {{ site.data.keys.mf_analytics_console }}, a number of default charts are provided to help you manage your app crashes.
+{{site.data.keys.mf_analytics_console }}
+の**「アプリケーション」**セクションの**「異常終了 (Crashes)」**ページには、
+アプリケーション異常終了の管理に役立ついくつかのデフォルト・グラフが用意されています。
 
-The **Crash Overview** chart shows a table of an overview of crashes.  
-The **Crashes** bar graph shows a histogram of crashes over time. You can display the data by crash rate or total crashes. The Crashes bar graph is also in the Crashes page of the Applications section.
+**「異常終了の概要 (Crash Overview)」**グラフは、異常終了の概要の表を表示します。  
+**「異常終了 (Crashes)」**棒グラフは、異常終了の経時的なヒストグラムを表示します。異常終了率または合計異常終了数でデータを表示できます。
+「異常終了 (Crashes)」棒グラフは、「アプリケーション」セクションの「異常終了 (Crashes)」ページ内にもあります。
 
-The **Crash Summary** chart shows a sortable table of a summary of crashes. You can expand the individual crashes by clicking the + icon to view a **Crash Details** table that includes more details about the crashes. In the Crash Details table, you can click the **>** icon to view more details about the specific crash instance.
+**「異常終了サマリー (Crash Summary)」**グラフは、異常終了のサマリーのソート可能な表を表示します。
+「+」アイコンをクリックすることで個々の異常終了を展開し、異常終了の詳細を含む**「異常終了の詳細 (Crash Details)」**表を表示することができます。「異常終了の詳細 (Crash Details)」表で、「**>**」 アイコンをクリックして、
+個々の異常終了インスタンスに関する詳細を表示できます。
 
-### App crash troubleshooting
+### アプリケーション異常終了のトラブルシューティング
 {: #app-crash-troubleshooting }
 
-You can view the **Crashes** page in the **Applications** section of the {{ site.data.keys.mf_analytics_console }} to better administer your apps.
+{{site.data.keys.mf_analytics_console }}
+の**「アプリケーション」**セクションで**「異常終了 (Crashes)」**ページを表示して、
+アプリケーションの管理を向上させることができます。
 
-The **Crash Overview** table shows the following data columns:
 
-* **App:** app name
-* **Crashes:** total number of crashes for that app
-* **Total Uses:** total number of times a user opens and closes that app
-* **Crash Rate:** percentage of crashes per use
+**異常終了の概要 (Crash Overview)** 表には、以下のデータ列が表示されます。
 
-The **Crashes** bar graph is the same chart that is displayed in the **Overview** page of the **Dashboard** section.
+* **アプリケーション:** アプリケーション名
+* **異常終了 (Crashes):** 当該アプリケーションの異常終了の総数
+* **合計使用回数 (Total Uses):** ユーザーが当該アプリケーションを開いて閉じた合計回数
+* **異常終了率 (Crash Rate):** 1 回の使用当たりの異常終了のパーセンテージ
 
-> **Note:** Both charts query against the `MfpAppSession` documents. You must instrument your app to collect app uses and crashes for data to appear in the charts. If `MfpAppSession` data is not collected, then `MfpAppLog` documents are queried. In this case, the charts can count the number of crashes, but cannot compute a crash rate because the number of app uses is unknown, which results in the following limitations:
+**「異常終了 (Crashes)」**の棒グラフは、
+**「ダッシュボード」**セクションの**「概要」**ページに表示されるグラフと同じです。
+
+> **注:**両方のグラフともに、`MfpAppSession` 文書に対して照会を実行します。グラフにデータが表示されるようにするには、アプリケーションの使用数と異常終了数を収集するようにアプリケーションを調整する必要があります。
+`MfpAppSession` データが収集されない場合、`MfpAppLog` 文書に対して照会が実行されます。
+この場合、グラフでは異常終了の数をカウントできますが、アプリケーション使用数が不明であるため、異常終了率は計算できません。そのため、以下の制限が生じます。
 >
-> * The Crash Overview table has empty columns for Total Uses and Crash Rate.
-> * The Crashes bar graph displays no data when Display Crash Rate is selected.
+> * 「異常終了の概要 (Crash Overview)」表の「合計使用回数 (Total Uses)」および「異常終了率 (Crash Rate)」の列が空になります。
+> * 「異常終了率の表示 (Display Crash Rate)」が選択されている場合でも、「異常終了 (Crashes)」棒グラフにデータは表示されません。
 
-The **Crash Summary** table is sortable and includes the following data columns:
+**「異常終了サマリー (Crash Summary)」**表はソート可能です。この表には、以下のデータ列が含まれます。
 
-* Crashes
-* Devices
-* Last Crash
-* App
+* 異常終了
+* デバイス
+* 最後の異常終了
+* アプリケーション
 * OS
-* Message
+* メッセージ
 
-You can click on the **+** icon next to any entry to display the **Crash Details** table, which includes the following columns:
+任意の項目の横にある**「+」**アイコンをクリックして、**「異常終了の詳細 (Crash Details)」**表を表示できます。この表には、以下の列が含まれています。
 
-* Time Crashed
-* App Version
-* OS Version
-* Device Model
-* Device ID
-* Download: link to download the logs that led up to the crash
+* 異常終了した時刻
+* アプリケーション・バージョン
+* OS バージョン
+* デバイス・モデル
+* デバイス ID
+* ダウンロード: 異常終了につながったログをダウンロードするためのリンク
 
-You can expand any entry in the **Crash Details** table to get more details, including a stacktrace.
+**「異常終了の詳細 (Crash Details)」**表内の任意の項目を展開して、スタック・トレースなどの詳細を表示できます。
 
-> **Note:** The data for the **Crash Summary** table is populated by querying the fatal level client logs. If your app does not collect fatal client logs, no data is available.
+> **注:** **「異常終了サマリー (Crash Summary)」**表のデータは、 FATAL レベルのクライアント・ログに照会することで取り込まれます。アプリケーションで FATAL クライアント・ログを収集していない場合は、使用可能なデータはありません。

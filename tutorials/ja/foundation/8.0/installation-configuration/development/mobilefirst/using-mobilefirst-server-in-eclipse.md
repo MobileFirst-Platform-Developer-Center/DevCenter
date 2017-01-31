@@ -1,25 +1,25 @@
 ---
 layout: tutorial
-title: Using MobileFirst Server to Eclipse
+title: MobileFirst Server の Eclipse への使用
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The {{ site.data.keys.mf_server }} can be integrated into the Eclipse IDE. This can help in creating a unified development experience.
+{{site.data.keys.mf_server }} は、Eclipse IDE に統合することができます。これにより、開発エクスペリエンスを一元化することができます。
 
-* You can also expose CLI functionality in Eclipse, see the [Using the {{ site.data.keys.mf_server }} in Eclipse](../../../../application-development/using-mobilefirst-cli-in-eclipse) tutorial.
-* Additionally, you can develop adapters in Eclipse, see the [Developing Adapters in Eclipse](../../../../adapters/developing-adapters) tutorial.
+* また、Eclipse で CLI 機能を使用できるようにすることも可能です。[Eclipse での {{site.data.keys.mf_server }} の使用](../../../../application-development/using-mobilefirst-cli-in-eclipse)のチュートリアルを参照してください。
+* さらに、Eclipse でアダプターを開発できます。[Eclipse でのアダプターの開発](../../../../adapters/developing-adapters)のチュートリアルを参照してください。
 
-### Adding the server to Eclipse
+### Eclipse へのサーバーの追加
 {: #adding-the-server-to-eclipse }
-1. From the **Servers** view in Eclipse, select **New → Server**.
-2. If an IBM folder option does not exist, click on "Download additional server adapters".
-3. Select **WebSphere Application Server Liberty Tools** and follow the on-screen instructions.
-4. From the **Servers** view in Eclipse, select **New → Server**.
-5. Select **IBM → WebSphere Application Server Liberty**.
-6. Provide a server **name** and **hostname** and click **Next**.
-7. Provide the path to the server's root directory, and select a JRE version to use. When using the {{ site.data.keys.mf_dev_kit }}, the root directory is **[installation directory]/mfp-server** folder.
-8. Click **Next** followed by clicking **Finish**.
+1. Eclipse の**「サーバー」**ビューから、**「新規」→「サーバー」**を選択します。
+2. IBM フォルダー・オプションが存在しない場合は、「追加サーバー・アダプターをダウンロード」をクリックします。
+3. **「WebSphere Application Server Liberty Tools」**を選択して画面の指示に従います。
+4. Eclipse の**「サーバー」**ビューから、**「新規」→「サーバー」**を選択します。
+5. **「IBM」→「WebSphere Application Server Liberty」**を選択します。
+6. サーバーの**「名前」**と**「ホスト名」**を指定し、**「次へ」**をクリックします。
+7. サーバーのルート・ディレクトリーへのパスを指定し、使用する JRE バージョンを選択します。{{site.data.keys.mf_dev_kit }} を使用した場合、ルート・ディレクトリーは **[インストール・ディレクトリー]/mfp-server** フォルダーです。
+8. **「次へ」**をクリックして、**「終了」**をクリックします。
 
-You can now start and stop the {{ site.data.keys.mf_server }} from the Eclipse IDE "servers" view.
+これで、Eclipse IDE の「サーバー」ビューから {{site.data.keys.mf_server }} の始動および停止を行えます。

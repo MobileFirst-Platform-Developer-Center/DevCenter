@@ -1,52 +1,52 @@
 ---
 layout: tutorial
-title: Setting Up the Development Environment
-breadcrumb_title: Development Environment
+title: 開発環境のセットアップ
+breadcrumb_title: 開発環境
 show_children: true
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Before starting to develop client and server code using {{ site.data.keys.product_full }}, the development environment needs to be set-up first. This includes installing various required software and tools. The following is a list of software you may need to install on your developer workstation, depending on your needs.
+{{site.data.keys.product_full }} を使用してクライアントおよびサーバーのコード開発を始める前に、まず、開発環境をセットアップする必要があります。これには、必要な各種ソフトウェアおよびツールのインストールが含まれます。以下に、ニーズに応じて開発者のワークステーションにインストールする必要があるソフトウェアをリストします。
 
-You can also find detailed step-by-step instructions [in this workstation installation guide](mobilefirst/installation-guide/).
+また、[ワークステーション・インストール・ガイド](mobilefirst/installation-guide/)にもステップバイステップの詳細な手順が示されています。
 
-#### Jump to:
+#### ジャンプ先:
 
-* [Server](#server)
-* [Application development](#application-development)
-* [Adapter development](#adapter-development)
-* [Platform-specific instructions](#platform-specific-instructions)
+* [サーバー](#server)
+* [アプリケーション開発](#application-development)
+* [アダプター開発](#adapter-development)
+* [プラットフォーム固有の説明](#platform-specific-instructions)
 
-### Server
+### サーバー
 {: #server }
-You can use the {{ site.data.keys.mf_server }} either via the [Mobile Foundation Bluemix service](../../bluemix/using-mobile-foundation), or locally using the {{ site.data.keys.mf_dev_kit_full }} (used for local development purposes). The {{ site.data.keys.mf_server }} requires Java 7 or 8 to run.
+{{site.data.keys.mf_server }} は、[Mobile Foundation Bluemix サービス](../../bluemix/using-mobile-foundation)経由で、または {{site.data.keys.mf_dev_kit_full }} を使用してローカルで (ローカルの開発目的用) 使用することができます。{{site.data.keys.mf_server }} を実行するには、Java 7 または 8 が必要です。
 
-If you intend on using the Mobile Foundation Bluemix service, an account on Bluemix.net is required.
+Mobile Foundation Bluemix サービスを使用する予定の場合は、Bluemix.net のアカウントが必要です。
 
-### Application development
+### アプリケーション開発
 {: #application-development }
-At the very minimum, the following software is needed:
+最低限、以下のソフトウェアが必要です。
 
-* NodeJS (requirement for {{ site.data.keys.mf_cli }})
-* {{ site.data.keys.mf_cli }}
+* NodeJS ({{site.data.keys.mf_cli }} の要件)
+* {{site.data.keys.mf_cli }}
 * Cordova CLI
-* IDEs:
+* IDE:
     - Xcode
     - Android Studio
     - Visual Studio
-    - Atom.io / Visual Studio Code / WebStorm / IntelliJ / Eclipse / other IDEs
+    - Atom.io / Visual Studio Code / WebStorm / IntelliJ / Eclipse / その他の IDE
 
-### Adapter development
+### アダプター開発
 {: #adapter-development }
-At the very minimum, the following software is needed:
+最低限、以下のソフトウェアが必要です。
 
-* NodeJS (requirement for {{ site.data.keys.mf_cli }})
-* *optional* {{ site.data.keys.mf_cli }}
-* Maven (requires Java)
-* IDEs:
-    - IntelliJ / Eclipse / other IDEs
+* NodeJS ({{site.data.keys.mf_cli }} の要件)
+* *オプションの* {{site.data.keys.mf_cli }}
+* Maven (Java が必要)
+* IDE:
+    - IntelliJ / Eclipse / その他の IDE
 
-### Platform-specific instructions
+### プラットフォーム固有の説明
 {: #platform-specific-instructions }

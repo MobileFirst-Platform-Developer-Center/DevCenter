@@ -1,61 +1,68 @@
 ---
 layout: tutorial
-title: Managing Alerts
-breadcrumb_title: Alerts
+title: アラートの管理
+breadcrumb_title: アラート
 relevantTo: [ios,android,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-Alerts provide a proactive means to monitor the health of your mobile apps without having to check the {{ site.data.keys.mf_analytics_console_full }} regularly.  
-You can set reactive thresholds in the {{ site.data.keys.mf_analytics_console }} to trigger alerts when a specific criteria is met.
+アラートにより、
+{{site.data.keys.mf_analytics_console_full }}
+を定期的にチェックせずに、モバイル・アプリケーションの正常性をモニターするための事前対応手段が提供されます。  
+特定の条件が満たされたときにアラートを起動するための反応しきい値を
+{{site.data.keys.mf_analytics_console }} で設定できます。
 
-You can set thresholds at a broad level (a specific app) or at a granular level (a specific app instance or device). Alert notifications can be configured to display in the {{ site.data.keys.mf_analytics_console_short }}, and also be sent to a pre-configured REST endpoint or custom webhook.
 
-Once alerts are triggered, the **Alert** icon (in the title bar of the {{ site.data.keys.mf_analytics_console_short }}) displays the alert count in red (<img  alt="alert icon" style="margin:0;display:inline" src="alertIcon.png"/>). Click the **Alert** icon to view the alerts.
+しきい値は、幅広いレベル (特定アプリケーション) または細かいレベル (特定アプリケーション・インスタンスまたはデバイス) で設定できます。
+アラート通知は、{{site.data.keys.mf_analytics_console_short }} に表示するように構成でき、事前構成された REST エンドポイントまたはカスタム Web フックに送信することも可能です。
 
-Alternate methods are available for distributing the alerts.
+アラートが起動されると、({{site.data.keys.mf_analytics_console_short }} のタイトル・バー内の) **「アラート」**アイコンにアラート数が赤で表示されます (<img  alt="アラート・アイコン" style="margin:0;display:inline" src="alertIcon.png"/>)。**「アラート」**アイコンをクリックすると、アラートが表示されます。
 
-**Prerequisite:** Ensure that the {{ site.data.keys.mf_analytics_server }} is started and ready to receive client logs.
+アラートを配布する代替方法があります。
 
-## Alert management
+**前提条件:** {{site.data.keys.mf_analytics_server }}が始動されていて、クライアント・ログを受信する準備ができていることを確認します。
+
+## アラートの管理
 {: #alert-management }
 
-### Creating an alert
+### アラートの作成
 {: #creating-an-alert }
 
-In the {{ site.data.keys.mf_analytics_console }}:
+{{site.data.keys.mf_analytics_console }} で、次のようにします。
 
-1. Select the **Dashboard→Alert Management** tab. Click the **Create Alert** button.
+1. **「ダッシュボード」→「アラートの管理」**タブを選択します。**「アラートの作成 (Create Alert)」** ボタンをクリックします。
 
-   ![Alert Management Tab](alert_management_tab.png)
 
-2. Provide the following values: Alert Name, Message, Query Frequency, and Event Type. Depending on the Event Type, populate the additional text boxes that appear with the appropriate values.
-3. Once all values are entered, click **Next**. The **Distribution Method** tab appears.
+   ![「アラートの管理」タブ](alert_management_tab.png)
 
-### Distribution Method tab
+2. 「アラート名」、「メッセージ」、「照会頻度」、および「イベント・タイプ」の値を指定します。「イベント・タイプ」に応じて、表示される追加のテキスト・ボックスに適切な値が設定されます。
+3. すべての値が入力されたら、**「次へ」**をクリックします。**「配布方式」** タブが表示されます。
+
+### 「配布方式」タブ
 {: #distribution-method-tab }
 
-By default, the alert is displayed in the {{ site.data.keys.mf_analytics_console_short }}.
+デフォルトでは、アラートは {{site.data.keys.mf_analytics_console_short }}に表示されます。
 
-You can also send a POST message with a JSON payload to both the {{ site.data.keys.mf_analytics_console_short }} and to a customized URL by selecting the **Analytics Console and Network Post** option.
+**「Analytics コンソールおよびネットワーク・ポスト」**オプションを選択することによって、JSON ペイロードを含む POSTメッセージを、{{site.data.keys.mf_analytics_console_short }}とカスタマイズされた URL の両方に送信することもできます。
 
-The following fields are available if you choose this option:
+このオプションを選択すると、以下のフィールドが使用可能になります。
 
-* Network POST URL (*required*)
-* Headers (*optional*)
-* Authentication Type (*required*)
+* ネットワーク POST URL (Network POST URL) (*必須*)
+* ヘッダー (Headers) (*オプション*)
+* 認証タイプ (Authentication Type) (*必須*)
 
-<img class="gifplayer"  alt="Creating an alert" src="creating-an-alert.png"/>
+<img class="gifplayer"  alt="アラートの作成" src="creating-an-alert.png"/>
 
-## Custom web hook
+## カスタム Web フック
 {: #custom-web-hook }
 
-You can set up a custom distribution method for an alert. For example: define a web hook to which a payload is sent to when an alert threshold is triggered.
+アラートのカスタム配布方式をセットアップすることができます。例えば、アラートしきい値が起動されたときに、ペイロードが送信される先の Web フックを定義します。
 
-Example payload:
+
+ペイロードの例:
 
 ```json
 {
@@ -76,24 +83,24 @@ Example payload:
 }
 ```
 
-The POST request includes the following attributes:
+POST 要求には、以下の属性が含まれます。
 
-* **timestamp** - the time at which the alert notification was created.
-* **condition** - the threshold that was set by the user (for example, greater than or equals 5).
-* **eventType** - the eventType that was queried.
-* **property** - the property of the eventType that was queried.
-* **value** - the value of the property that was queried.
-* **offenders** - a list of apps or devices that triggered the alert.
-* **title** - the user-defined title.
-* **message** - the user-defined message.
+* **timestamp** - アラート通知が作成された時刻。
+* **condition** - ユーザーが設定したしきい値 (例えば、 5 以上など)。
+* **eventType** - 照会された eventType。
+* **property** - 照会された eventType のプロパティー。
+* **value** - 照会されたプロパティーの値。
+* **offenders** - アラートを起動したアプリケーションまたはデバイスのリスト。
+* **title** - ユーザー定義のタイトル。
+* **message** - ユーザー定義のメッセージ。
 
-## Viewing alert details
+## アラート詳細の表示
 {: #viewing-alert-details }
 
-Alert details can be viewed from the **Dashboard→Alert Log** tab in the {{ site.data.keys.mf_analytics_console }}.
+アラート詳細は、{{site.data.keys.mf_analytics_console }}で**「ダッシュボード」→「アラート・ログ」**タブから表示できます。
 
-![A new alert log](alert-log.png)
+![新規アラート・ログ](alert-log.png)
 
-Click the **+** icon for any of the available incoming alerts. This action displays the **Alert Definition** and **Alert Instances** sections. The following image shows the Alert Definition and Alert Instances sections:
+使用可能な任意の着信アラートの**「+」**アイコンをクリックします。このアクションにより、**「アラート定義」**と**「アラート・インスタンス (Alert Instances)」**のセクションが表示されます。以下の画像は、「アラート定義」と「アラート・インスタンス (Alert Instances)」のセクションを示しています。
 
-![Alert definitiosns and instances](alert-definitions-and-instances.png)
+![アラート定義およびインスタンス](alert-definitions-and-instances.png)

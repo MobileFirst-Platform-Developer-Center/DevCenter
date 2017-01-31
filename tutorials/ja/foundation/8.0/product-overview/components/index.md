@@ -1,94 +1,95 @@
 ---
 layout: tutorial
-title: Product Components
+title: 製品のコンポーネント
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_full }} consists of the following components: {{ site.data.keys.mf_cli }}, {{ site.data.keys.mf_server }}, client-side runtime components, {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_app_center }}, and the {{ site.data.keys.mf_system_pattern }}.
+{{site.data.keys.product_full }} は、{{site.data.keys.mf_cli }}、{{site.data.keys.mf_server }}、クライアント・サイドのランタイム・コンポーネント、{{site.data.keys.mf_console }}、{{site.data.keys.mf_app_center }}、および {{site.data.keys.mf_system_pattern }} のコンポーネントで構成されています。
 
-The following figure shows the components of {{ site.data.keys.product }}:
+次の図は、{{site.data.keys.product }} のコンポーネントを示しています。
 
-![Architecture of the {{ site.data.keys.product }} solution](architecture.jpg)
+![{{site.data.keys.product }} ソリューションのアーキテクチャー](architecture.jpg)
 
-### {{ site.data.keys.mf_cli }}
+### {{site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
-You can use the {{ site.data.keys.mf_cli_full }} to develop and manage applications, in addition to using the IBM {{ site.data.keys.mf_console }}. Some aspects of the {{ site.data.keys.product_adj }} development process must be done with the CLI.
+アプリケーションを開発および管理するために、{{site.data.keys.mf_console }} に加えて {{site.data.keys.mf_cli_full }} を使用できます。{{site.data.keys.product_adj }} 開発プロセスのいくつかの側面は、CLI を使用して実行する必要があります。
 
-The commands, all prefaced with **mfpdev**, support the following types of tasks:
+接頭部が **mfpdev** のすべてのコマンドでは、以下のタイプのタスクがサポートされます。
 
-* Registering apps with the {{ site.data.keys.mf_server }}
-* Configuring your app
-* Creating, building, and deploying adapters
-* Previewing and updating Cordova apps
-* For more information, see the [Using CLI to manage {{ site.data.keys.product_adj }} artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+* {{site.data.keys.mf_server }} へのアプリケーションの登録
+* アプリケーションの構成
+* アダプターの作成、ビルド、およびデプロイ
+* Cordova アプリケーションのプレビューおよび更新
+* 詳しくは、[CLI を使用した {{site.data.keys.product_adj }} 成果物の管理](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/)チュートリアルを参照してください。
 
-### {{ site.data.keys.mf_server }}
+### {{site.data.keys.mf_server }}
 {: #mobilefirst-server }
-The {{ site.data.keys.mf_server }} provides secured backend connectivity, application management, push notification support and analytics capabilities and monitoring to {{ site.data.keys.product_adj }} applications. It is not an application server in the Java Platform, Enterprise Edition (Java EE) sense. It acts as a container for {{ site.data.keys.product }} application packages, and is in fact a collection of web applications, optionally packaged as an EAR (enterprise archive) file that run on top of traditional application servers.
+{{site.data.keys.mf_server }} は、保護されたバックエンド接続、アプリケーション管理、プッシュ通知サポート、および分析機能とモニター機能を、{{site.data.keys.product_adj }}
+アプリケーションに提供します。Java Platform, Enterprise Edition (Java EE) の意味でのアプリケーション・サーバーではありません。{{site.data.keys.product }} アプリケーション・パッケージのコンテナーとして機能し、実際には、従来のアプリケーション・サーバーの上で実行され、オプションで EAR (エンタープライズ・アーカイブ) ファイルとしてパッケージされる Web アプリケーションの集合です。
 
-{{ site.data.keys.mf_server }} integrates into your enterprise environment and uses existing resources and infrastructure. This integration is based on adapters that are server-side software components responsible for channeling back-end enterprise systems and cloud-based services to the user device. You can use adapters to retrieve and update data from information sources, and to allow users to perform transactions and start other services and applications.
+{{site.data.keys.mf_server }} は、エンタープライズ環境に統合され、既存のリソースとインフラストラクチャーを使用します。この統合は、バックエンド・エンタープライズ・システムとクラウド・ベースのサービスを、ユーザー・デバイスに向けた通信路に送る、サーバー・サイドのソフトウェア・コンポーネントであるアダプターをベースとしています。アダプターを使用して、情報源からデータを取得および更新したり、トランザクションの実行と他のサービスおよびアプリケーションの開始をユーザーに許可したりすることができます。
 
-[Learn more about the {{ site.data.keys.mf_server }}](server).
+[{{site.data.keys.mf_server }} について説明します](server)。
 
-### Client-side runtime components
+### クライアント・サイドのランタイム・コンポーネント
 {: #client-side-runtime-components }
-{{ site.data.keys.product }} provides client-side runtime code that embeds server functionality within the target environment of deployed apps. These runtime client APIs are libraries that are integrated into the locally stored app code. You use them to add {{ site.data.keys.product_adj }} features to your client apps. The APIs and libraries can be installed with the {{ site.data.keys.mf_dev_kit_full }} or you can download them from repositories for your development platform.
+{{site.data.keys.product }} では、デプロイされたアプリケーションのターゲット環境内でサーバー機能を組み込むクライアント・サイド・ランタイム・コードが用意されています。これらのランタイム・クライアント API は、ローカルに保管されているアプリケーション・コードに統合されているライブラリーです。それらを使用して、{{site.data.keys.product_adj }} 機能をクライアント・アプリケーションに追加します。API およびライブラリーは、{{site.data.keys.mf_dev_kit_full }} を使用してインストールするか、ご使用の開発プラットフォーム用のリポジトリーからダウンロードすることができます。
 
-### {{ site.data.keys.mf_console }}
+### {{site.data.keys.mf_console }}
 {: #mobilefirst-operations-console }
-The {{ site.data.keys.mf_console }} is used for the control and management of the mobile applications. The {{ site.data.keys.mf_console }} is also an entry point to learn about {{ site.data.keys.product }} development. From the console, you can download code examples, tools, and SDKs.
+{{site.data.keys.mf_console }} は、モバイル・アプリケーションの制御と管理に使用されます。{{site.data.keys.mf_console }} は、{{site.data.keys.product }} 開発について学習するためのエントリー・ポイントでもあります。コンソールから、コード例、ツール、および SDK をダウンロードできます。
 
-You can use the {{ site.data.keys.mf_console }} for the following tasks:
+以下のタスクには、{{site.data.keys.mf_console }} を使用できます。
 
-* Monitor and configure all deployed applications, adapters, and push notification rules from a centralized, web-based console.
-* Remotely disable the ability to connect to {{ site.data.keys.mf_server }} by using preconfigured rules of app version and device type.
-* Customize messages that are sent to users on application launch.
-* Collect user statistics from all running applications.
-* Generate built-in, pre-configured reports about user adoption and usage (number and frequency of users that are engaging with the server through the applications).
-* Configure data collection rules for application-specific events.
-* [Learn more about the {{ site.data.keys.mf_console }}](console).
+* デプロイされたアプリケーション、アダプター、およびプッシュ通知規則のすべてを、一元的な Web ベースのコンソールからモニターおよび構成する。
+* アプリケーション・バージョンおよびデバイス・タイプの事前構成された規則を使用して、{{site.data.keys.mf_server }} への接続機能をリモート側から無効にする。
+* アプリケーション起動時にユーザーに送信されるメッセージをカスタマイズする。
+* すべての実行中のアプリケーションからユーザー統計を収集する。
+* ユーザー関与および使用量 (アプリケーションを通じてサーバーに関わるユーザーの数および頻度) について、組み込みの事前構成されたレポートを生成する。
+* アプリケーション固有のイベントのデータ収集規則を構成する。
+* [{{site.data.keys.mf_console }} について説明する](console)。
 
-### {{ site.data.keys.mf_analytics }}
+### {{site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{ site.data.keys.product }} includes a scalable operational {{ site.data.keys.mf_analytics_short }} feature that is accessible from the {{ site.data.keys.mf_console }}. The {{ site.data.keys.mf_analytics_short }} feature enables enterprises to search across logs and events that are collected from devices, apps, and servers for patterns, problems, and platform usage statistics.
+{{site.data.keys.product }} には、{{site.data.keys.mf_console }} からアクセスできるスケーラブルな操作{{site.data.keys.mf_analytics_short }}機能が含まれます。企業はこの{{site.data.keys.mf_analytics_short }}フィーチャーを使用して、デバイス、アプリケーション、およびサーバーから収集された各種ログおよびイベント全体を検索することで、パターン、問題、およびプラットフォーム使用量統計を検討できます。
 
-The data for {{ site.data.keys.mf_analytics }} includes the following sources:
+{{site.data.keys.mf_analytics }}のデータには、以下のソースが含まれます。
 
-* Crash events of an application on iOS and Android devices (crash events for native code and JavaScript errors).
-* Interactions of any application-to-server activity (anything that is supported by the {{ site.data.keys.mf_cli }}ent/server protocol, including push notification).
-* Server-side logs that are captured in traditional {{ site.data.keys.product_adj }} log files.
+* iOS デバイスと Android デバイスのアプリケーションの破損イベント (ネイティブ・コード・エラーおよび JavaScript エラーの破損イベント)。
+* アプリケーションとサーバー間のアクティビティーの対話 (プッシュ通知を含む、{{site.data.keys.mf_cli }} クライアント/サーバー・プロトコルでサポートされるものすべて)。
+* 従来の {{site.data.keys.product_adj }} ログ・ファイルに取り込まれたサーバー・サイド・ログ。
 
-[Learn more about {{ site.data.keys.mf_analytics }}](../../analytics).
+[{{site.data.keys.mf_analytics }} について説明します](../../analytics)。
 
 ### Application Center
 {: #application-center }
-With the Application Center, you can share mobile applications that are under development within your organization in a single repository of mobile applications. Development team members can use the Application Center to share applications with members of the team. This process facilitates collaboration between all the people who are involved in the development of an application.
+Application Center を使用すると、組織内で開発中のモバイル・アプリケーションを、モバイル・アプリケーションの単一リポジトリーで共有できます。開発チーム・メンバーは、Application Center を使用して、チームのメンバーとアプリケーションを共有できます。このプロセスは、アプリケーションの開発に関わるすべての担当者間のコラボレーションを容易にします。
 
-Your company can typically use the Application Center as follows:
+企業では、一般に、以下のように Application Center を使用できます。
 
-1. The development team creates a version of an application.
-2. The development team uploads the application to the Application Center, enters its description, and asks the extended team to review and test it.
-3. When the new version of the application is available, a tester runs the Application Center installer application, which is the mobile client. Then, the tester locates this new version of the application, installs it on their mobile device, and tests it.
-4. After the tests, the tester rates the application and submits feedback, which is visible to the developer from the Application Center console.
+1. 開発チームは、アプリケーションの 1 つのバージョンを作成します。
+2. 開発チームは、アプリケーションを Application Center にアップロードし、その説明を入力し、拡張チームに対して、それをレビューしてテストするように依頼します。
+3. アプリケーションの新バージョンが使用可能になると、テスト担当者は、モバイル・クライアントである Application Center インストーラー・アプリケーションを実行します。次に、テスト担当者は、この新バージョンのアプリケーションを見つけ、自分のモバイル・デバイスにインストールし、テストします。
+4. テスト後に、テスト担当者はアプリケーションを評価し、フィードバックを送信します。開発者は Application Center コンソールからそのフィードバックを見ることができます。
 
-The Application Center is aimed for private use within a company, and you can target some mobile applications to specific groups of users. You can use the Application Center as an enterprise application store.
+Application Center は、企業内部のみでの使用を目的としたもので、一部のモバイル・アプリケーションのターゲットを特定のユーザー・グループにすることができます。Application Center はエンタープライズ・アプリケーション・ストアとして使用できます。
 
-### {{ site.data.keys.mf_system_pattern }}
+### {{site.data.keys.mf_system_pattern }}
 {: #mobilefirst-system-pattern }
-With the {{ site.data.keys.mf_system_pattern_full }}, you can deploy {{ site.data.keys.mf_server }} on IBM PureApplication System or IBM PureApplication Service on SoftLayer. With these patterns, administrators and corporations can respond quickly to changes in the business environment by taking advantage of on-premises Cloud technologies. This approach simplifies the deployment process, and improves the operational efficiency to cope with increased mobile demand. The demand accelerates iteration of solutions that exceed traditional demand cycles. Using {{ site.data.keys.mf_server }} Pattern also gives access to best practices and built-in expertise, such as built-in scaling policies.
+{{site.data.keys.mf_system_pattern_full }} により、{{site.data.keys.mf_server }} を IBM PureApplication System または IBM PureApplication Service on SoftLayer にデプロイできます。これらのパターンにより、管理者および企業は、オンプレミス・クラウド・テクノロジーを活用して、ビジネス環境の変化に素早く対応することができます。このアプローチにより、デプロイメント・プロセスが簡素化され、増大するモバイルの需要に対処する業務効率が向上します。その需要により、従来の需要サイクルを超えてソリューションの反復が加速されます。{{site.data.keys.mf_server }} Pattern を使用すると、組み込みスケーリング・ポリシーなどの組み込みのノウハウやベスト・プラクティスも利用できるようになります。
 
 #### PureApplication System
 {: #pureapplication-system }
-IBM PureApplication System is an integrated, highly scalable system that is based on IBM X-Architecture, providing an application-centric computing model in a cloud environment.
+IBM PureApplication System は、IBM X- アーキテクチャーを基盤とした極めてスケーラブルな統合システムで、クラウド環境においてアプリケーション中心のコンピューティング・モデルを実現します。
 
-An application-centric system is an efficient way to manage complex applications and the tasks and processes that are invoked by the application. The entire system implements a diverse virtual computing environment, in which different resource configurations are automatically tailored to different application workloads. The application management capabilities of the IBM PureApplication System platform make deployment of middleware and other application components quick, easy, and repeatable.
+アプリケーション中心システムは、複雑なアプリケーションの管理、およびアプリケーションによって呼び出されるタスクおよびプロセスの管理に効果的な方法です。このシステム全体は、さまざまなリソース構成がさまざまなアプリケーション・ワークロードに合わせて自動的に調整される、多様な仮想コンピューティング環境を実装します。IBM PureApplication System プラットフォームのアプリケーション管理機能により、ミドルウェアおよびその他のアプリケーション・コンポーネントのデプロイメントが素早く、容易に、反復可能になります。
 
-IBM PureApplication System provides virtualized workloads and a scalable infrastructure that is delivered in one integrated system.
+IBM PureApplication System は、仮想化ワークロードおよびスケーラブル・インフラストラクチャーを、1 つの統合システム内に収容して提供します。
 
-#### Virtual System Patterns
+#### 仮想システム・パターン
 {: #virtual-system-patterns }
-Virtual system patterns are a logical representation of a recurring topology for a set of deployment requirements.
+仮想システム・パターンは、デプロイメント要件のセットに対応した、繰り返し使用されるトポロジーの論理表現です。
 
-Virtual system patterns enable efficient and repeatable deployments of systems that include one or more virtual machine instances, and the applications that run on them. You can completely automate the deployment and eliminate the need to perform multiple time-consuming manual tasks. Such a deployment eliminates problems that are introduced by error-prone, manual configuration processes, especially in complex production topologies such as server farms, and accelerates solution deployment.
+仮想システム・パターンは、1 つ以上の仮想マシン・インスタンスおよびそれらの仮想マシン・インスタンスで実行されるアプリケーションを含むシステムの効率的で反復可能なデプロイメントを可能にします。デプロイメントを完全に自動化し、時間のかかる手動タスクを何度も実行する必要性を排除できます。そのようなデプロイメントにより、特にサーバー・ファームなどの複雑な実動トポロジーでの、エラーを起こしやすい、手動の構成プロセスによって引き起こされる問題が排除され、ソリューション・デプロイメントが加速されます。

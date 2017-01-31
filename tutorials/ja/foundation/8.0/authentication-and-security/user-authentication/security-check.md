@@ -1,35 +1,35 @@
 ---
 layout: tutorial
-title: Implementing the UserAuthenticationSecurityCheck Class
-breadcrumb_title: Security Check
+title: UserAuthenticationSecurityCheck クラスの実装
+breadcrumb_title: セキュリティー検査
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Download Security Checks
+  - name: セキュリティー検査のダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-This abstract class extends `CredentialsValidationSecurityCheck` and builds upon it to fit the most common use-cases of simple user authentication. In addition to validating the credentials, it creates a **user identity** that is accessible from various parts of the framework, allowing you to identify the current user. Optionally, `UserAuthenticationSecurityCheck` also provides **Remember Me** capabilities.
+この抽象クラスは、`CredentialsValidationSecurityCheck` を継承し、それを元にして、単純なユーザー認証の一般的なユース・ケースに適合するように構成されます。資格情報を検証することに加えて、フレームワークのさまざまな部分からアクセス可能な**ユーザー ID** の作成も行います。それによって、現行ユーザーの識別が可能になります。オプションで、`UserAuthenticationSecurityCheck` は**ユーザー記憶 (Remember Me)** 機能も提供します。
 
-This tutorial uses the example of a security check that asks for a user name and password, and uses the user name to represent an authenticated user.
+このチュートリアルでは、ユーザー名とパスワードを要求し、そのユーザー名を使用して認証済みユーザーを表すセキュリティー検査の例を使用します。
 
-**Prerequisites:** Make sure to read the [CredentialsValidationSecurityCheck](../../credentials-validation/) tutorial.
+**前提条件:** [CredentialsValidationSecurityCheck](../../credentials-validation/) のチュートリアルをお読みください。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Creating the Security Check](#creating-the-security-check)
-* [Creating the Challenge](#creating-the-challenge)
-* [Validating the user credentials](#validating-the-user-credentials)
-* [Creating the AuthenticatedUser object](#creating-the-authenticateduser-object)
-* [Adding RememberMe functionality](#adding-rememberme-functionality)
-* [Configuring the security check](#configuring-the-security-check)
-* [Sample security check](#sample-security-check)
+* [セキュリティー検査の作成](#creating-the-security-check)
+* [チャレンジの作成](#creating-the-challenge)
+* [ユーザー資格情報の検証](#validating-the-user-credentials)
+* [AuthenticatedUser オブジェクトの作成](#creating-the-authenticateduser-object)
+* [RememberMe 機能の追加](#adding-rememberme-functionality)
+* [セキュリティー検査の構成](#configuring-the-security-check)
+* [サンプルのセキュリティー検査](#sample-security-check)
 
-## Creating the Security Check
+## セキュリティー検査の作成
 {: #creating-the-security-check }
-[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.
+[Java アダプターを作成](../../../adapters/creating-adapters)し、`UserAuthenticationSecurityCheck` を継承する `UserLogin` という名前の Java クラスを追加します。
 
 ```java
 public class UserLogin extends UserAuthenticationSecurityCheck {
@@ -51,9 +51,9 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 }
 ```
 
-## Creating the challenge
+## チャレンジの作成
 {: #creating-the-challenge }
-The challenge is exactly the same as the one described in [Implementing the CredentialsValidationSecurityCheck](../../credentials-validation/security-check/).
+チャレンジは、[CredentialsValidationSecurityCheck の実装](../../credentials-validation/security-check/)で説明しているのとまったく同じものです。
 
 ```java
 @Override
@@ -65,11 +65,11 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
-## Validating the user credentials
+## ユーザー資格情報の検証
 {: #validating-the-user-credentials }
-When the client sends the challenge answer, the answer is passed to `validateCredentials` as a `Map`. Use this method to implement your logic. The method returns `true` if the credentials are valid.
+クライアントがチャレンジ応答を送信すると、応答は `Map` として `validateCredentials` に渡されます。このメソッドを使用して、ロジックを実装してください。このメソッドは、資格情報が有効な場合に `true` を返します。
 
-In this example, credentials are considered "valid" when`username` and `password` are the same:
+この例では、`username` と `password` が同じ場合、資格情報を「有効」と見なします。
 
 ```java
 @Override
@@ -91,14 +91,14 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Creating the AuthenticatedUser object
+## AuthenticatedUser オブジェクトの作成
 {: #creating-the-authenticateduser-object }
-The `UserAuthenticationSecurityCheck` class stores a representation of the current client (user, device, application) in persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters.
-Users are represented by an instance of the class `AuthenticatedUser`. Its constructor takes the `id`, `displayName`, and `securityCheckName` parameters.
+`UserAuthenticationSecurityCheck` クラスは、現行クライアント (ユーザー、デバイス、アプリケーション) を表現するものを永続データに保管し、コードのさまざまな部分 (チャレンジ・ハンドラー、アダプターなど) で現行ユーザーを取得できるようにします。
+ユーザーは、クラス `AuthenticatedUser` のインスタンスとして表現されます。そのコンストラクターは、`id`、`displayName`、および `securityCheckName` の各パラメーターを受け入れます。
 
-This example uses `username` for both the `id` and `displayName` parameters.
+この例では、`id` パラメーターと `displayName` パラメーターの両方に `username` を使用します。
 
-1. First, modify the `validateCredentials` method to save the `username` argument:
+1. まず、`validateCredentials` メソッドを変更して、`username` 引数を保存します。
 
    ```java
    private String userId, displayName;
@@ -124,7 +124,7 @@ This example uses `username` for both the `id` and `displayName` parameters.
    }
    ```
 
-2. Then, override the `createUser` method to return a new instance of `AuthenticatedUser`:
+2. 次に、`createUser` メソッドをオーバーライドして、`AuthenticatedUser` の新規インスタンスを返すようにします。
 
    ```java
    @Override
@@ -133,36 +133,36 @@ This example uses `username` for both the `id` and `displayName` parameters.
    }
    ```
 
-You can use `this.getName()` to get the current security check name.
+`this.getName()` を使用して、現在のセキュリティー検査名を取得できます。
 
-`UserAuthenticationSecurityCheck` calls your `createUser()` implementation after a successful `validateCredentials`.
+`UserAuthenticationSecurityCheck` は、`validateCredentials` が成功した後、`createUser()` 実装を呼び出します。
 
-### Storing attributes in the AuthenticatedUser
+### AuthenticatedUser への属性の保管
 {: #storing-attributes-in-the-authenticateduser }
-`AuthenticatedUser` has an alternate constructor:
+`AuthenticatedUser` には代替のコンストラクターがあります。
 
 ```java
 AuthenticatedUser(String id, String displayName, String securityCheckName, Map<String, Object> attributes);
 ```
 
-This constructor adds a `Map` of custom attributes to be stored with the user representation. The map can be used to store additional information such as a profile picture, a website, etc. This information is accessible to the client side (challenge handler) and the resource (using introspection data).
+このコンストラクターは、ユーザー表現と一緒に保管されるカスタム属性の `Map` を追加します。Map を使用して、プロファイル・ピクチャー、Web サイトなどの追加情報を保管できます。この情報は、クライアント・サイド (チャレンジ・ハンドラー) からも、リソースからも (イントロスペクション・データを使用して) アクセス可能です。
 
-> **Note:**
-> The attributes `Map` must contain only objects of types/classes bundled in the Java library (such as `String`, `int`, `Map`, etc), and **not** custom classes.
+> **注:**
+> 属性 `Map` に含めることができるのは、Java ライブラリーにバンドルされている型/クラスのオブジェクト (例えば、`String`、`int`、`Map` など) に限定され、カスタム・クラスを含めることは**できません**。
 
-## Adding RememberMe functionality
+## RememberMe 機能の追加
 {: #adding-rememberme-functionality }
-By default, `UserAuthenticationSecurityCheck` uses the `successStateExpirationSec` property to determine how long the success state lasts. This property is inherited from `CredentialsValidationSecurityCheck`.
+デフォルトで、`UserAuthenticationSecurityCheck` は `successStateExpirationSec` プロパティーを使用して、成功状態が持続する期間を判定します。このプロパティーは、`CredentialsValidationSecurityCheck` から継承されます。
 
-If you want to allow users to stay logged-in past the `successStateExpirationSec` value, `UserAuthenticationSecurityCheck` adds this capability.
+`successStateExpirationSec` の値を過ぎた後もユーザーのログイン状態を許可する必要がある場合、`UserAuthenticationSecurityCheck` でこの機能を追加します。
 
-`UserAuthenticationSecurityCheck` adds a property called `rememberMeDurationSec` whose default value is `0`: by default, users are remembered for **0 seconds**, which means that by default, the feature is disabled. Change this value to a number that makes sense for your application (a day, a week, a month...).
+`UserAuthenticationSecurityCheck` は、`rememberMeDurationSec` というプロパティーを追加します。このデフォルト値は `0` です。すなわち、ユーザーが記憶される期間は **0 秒**であり、デフォルトでは、この機能は無効であることを意味します。この値をアプリケーションにとって妥当な数値 (1 日、1 週間、1 カ月など) に変更してください。
 
-You can also manage the feature by overriding the `rememberCreatedUser()` method, which returns `true` by default, meaning that the feature is active by default (provided that you changed the duration property).
+また、`rememberCreatedUser()` メソッドをオーバーライドすることでこの機能を管理することもできます。このメソッドは、(期間プロパティーが変更されている場合) 機能がアクティブであることを意味する `true` をデフォルトで返します。
 
-In this example, the client decides to enable/disable the **RememberMe** feature by sending a `boolean` value as part of the submitted credentials.
+この例の場合、クライアントは、送信する資格情報の一部として `boolean` 値を送信することで **RememberMe** 機能を有効/無効にします。
 
-1. First, modify the `validateCredentials` method to save the `rememberMe` choice:
+1. まず、`validateCredentials` メソッドを変更して、`rememberMe` の選択を保存します。
 
    ```java
    private String userId, displayName;
@@ -195,7 +195,7 @@ In this example, the client decides to enable/disable the **RememberMe** feature
    }
    ```
 
-2. Then, override the `rememberCreatedUser()` method:
+2. 次に、`rememberCreatedUser()` メソッドをオーバーライドします。
 
    ```java
    @Override
@@ -204,9 +204,9 @@ In this example, the client decides to enable/disable the **RememberMe** feature
    }
    ```
 
-## Configuring the security check
+## セキュリティー検査の構成
 {: #configuring-the-security-check }
-In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
+**adapter.xml** ファイル内に、`<securityCheckDefinition>` エレメントを追加します。
 
 ```xml
 <securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">
@@ -216,12 +216,12 @@ In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
   <property name="rememberMeDurationSec" defaultValue="120" description="How long is the user remembered by the RememberMe feature (seconds)."/>
 </securityCheckDefinition>
 ```
-As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `CredentialsValidationSecurityCheck` properties, such as `blockedStateExpirationSec`, `successStateExpirationSec`, etc.
+前述したとおり、`UserAuthenticationSecurityCheck` は、`blockedStateExpirationSec`、`successStateExpirationSec` など、`CredentialsValidationSecurityCheck` のすべてのプロパティーを継承します。
 
-In addition, you can also configure a `rememberMeDurationSec` property.
+それらに加えて、`rememberMeDurationSec` プロパティーを構成することもできます。
 
-## Sample Security Check
+## サンプルのセキュリティー検査
 {: #sample-security-check }
-[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+セキュリティー検査 Maven プロジェクトを[ダウンロード](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80)します。
 
-The Maven project contains an implementation of `UserAuthenticationSecurityCheck`.
+Maven プロジェクトには、`UserAuthenticationSecurityCheck` の実装が含まれます。

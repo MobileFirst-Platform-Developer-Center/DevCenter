@@ -1,94 +1,77 @@
 ---
 layout: tutorial
-title: Setting up the web development environment
+title: Web 開発環境のセットアップ
 breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Developing and testing web applications is as easy as previewing a local HTML file in your web browser of choice.  
-Developers can use their IDE of choice, and any framework(s) that suits their needs.
+Web アプリケーションの開発およびテストは、任意の Web ブラウザーでローカル HTML ファイルをプレビューするのと同じくらいに簡単です。  
+開発者は、任意の IDE、およびニーズに合ったフレームワークを使用できます。
 
-However one thing may stand in the way of developing web applications. Web applications might encounter errors due to [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation. Same-origin policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the {{ site.data.keys.mf_server }}.
+ただし、Web アプリケーションの開発で壁となる可能性があることが 1 つあります。Web アプリケーションで、[同一オリジン・ポリシー](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)違反によるエラーが発生することがあります。同一オリジン・ポリシーは、Web ブラウザーに課された制限です。例えば、アプリケーションがドメイン **example.com** でホストされる場合、同じアプリケーションが、別のサーバー、つまり {{site.data.keys.mf_server }} からのコンテンツにもアクセスすることは許されません。
 
-[Web apps that are to use the {{ site.data.keys.product }} web SDK](../../../application-development/sdk/web) should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
+[{{site.data.keys.product }} Web SDK を使用する Web アプリケーション](../../../application-development/sdk/web)は、サポートされるトポロジーで処理される必要があります。例えば、リバース・プロキシーを使用して、同じ単一オリジンを維持しながら適切なサーバーに要求を内部的にリダイレクトして行います。
 
-The policy requirements can be satisfied by using either of the following methods:
+ポリシーの要件は、以下のいずれかの方法で満たすことができます。
 
-- Serving the web application resources' from the same WebSphere Full/Liberty profile application server that also hosts the {{ site.data.keys.mf_server }}.
-- Using Node.js as a proxy to redirect application requests to the {{ site.data.keys.mf_server }}.
+- {{site.data.keys.mf_server }} もホストする同一 WebSphere フル/Liberty プロファイル・アプリケーション・サーバーから Web アプリケーション・リソースを処理します。
+- Node.js をプロキシーとして使用し、アプリケーション要求を {{site.data.keys.mf_server }} にリダイレクトします。
 
-#### Jump to
-{: #jump-to }
-- [Prerequisites](#prerequisites)
-- [Using WebSphere Liberty profile to serve the web application resources](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
-- [Using Node.js](#using-nodejs)
-- [Next Steps](#next-steps)
+<br/>
+**前提条件:**  
+以下には、Apache Maven または Node.js が開発者のワークステーションにインストールされていることが必要です。  
+手順については、[インストール・ガイド](../mobilefirst/installation-guide/)を参照してください。
 
-## Prerequisites
-{: #prerequisites }
--   {: #web-app-supported-browsers }
-    Web applications are supported for the following browser versions. The version numbers indicate the earliest fully supported version of the respective browser.
-
-    | Browser               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android Browser   |
-    |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
-    | **Supported Version** |  {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
-
-    <sup>*</sup> In Safari, private browsing mode is supported only for single-page applications (SPAs). Other applications might exhibit unexpected behavior.
-
-    {% comment %} [sharonl] [c-web-browsers-ms-edge] See information regarding Microsoft Edge support in Task 111165. {% endcomment %}
-
--   The following setup instructions require either Apache Maven or Node.js installed on the developer's workstation. For further instructions, see the [installation guide](../mobilefirst/installation-guide/).
-
-## Using WebSphere Liberty profile to serve the web application resources
+## WebSphere Liberty プロファイルを使用した Web アプリケーション・リソースの処理
 {: #using-websphere-liberty-profile-to-serve-the-web-application-resources }
-In order to serve the web application's resources, these need to be stored in a Maven webapp (a **.war** file).
+Web アプリケーションのリソースを処理するには、これらが Maven webapp (**.war** ファイル) に保管されている必要があります。
 
-### Creating a Maven webapp archetype
+### Maven webapp アーキタイプの作成
 {: #creating-a-maven-webapp-archetype }
-1. From a **command-line** window, navigate to a location of your choosing.
-2. Run the command:
+1. **コマンド・ライン**・ウィンドウから、自分で選択した場所にナビゲートします。
+2. 次のコマンドを実行します:
 
    ```bash
    mvn archetype:generate -DgroupId=MyCompany -DartifactId=MyWebApp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
    ```
-    - Replace **MyCompany** and **MyWebApp** with your own values.
-    - To enter the values one-by-one, remove the `-DinteractiveMode=false` flag.
+    - **MyCompany** と **MyWebApp** を独自の値に置き換えます。
+    - 値を 1 つずつ入力する場合は、`-DinteractiveMode=false` フラグを削除します。
 
-### Building the Maven webapp with the web application's resources 
+### Web アプリケーションのリソースでの Maven webapp のビルド 
 {: #building-the-maven-webapp-with-the-web-applications-resources }
-1. Place the web application's resources (such as the HTML, CSS, JavaScript and image files) inside the generated **[MyWebApp] → src → Main → webapp** folder.
+1. 生成された **[MyWebApp] →「src」→「Main」→「webapp」**フォルダーに Web アプリケーションのリソース (HTML、CSS、JavaScript、イメージ・ファイルなど) を入れます。
 
-    > From here on, consider the **webapp** folder as the development location for the web application.
+    > これ以降、**webapp** フォルダーを Web アプリケーションの開発場所とします。
 
-2. Run the command: `mvn clean install` to generate a .war file containing the application's web resources.  
-   The generated .war file is available in the **[MyWebApp] → target** folder.
+2. コマンド `mvn clean install` を実行し、アプリケーションの Web リソースが入った .war ファイルを生成します。  
+   生成された .war ファイルは、**[MyWebApp] →「target」**フォルダーで入手できます。
    
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** `mvn clean install` must be run each time you update a web resource.
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** Web リソースを更新するたびに `mvn clean install` を実行する必要があります。
 
-### Adding the Maven webapp to the application server
+### アプリケーション・サーバーへの Maven webapp の追加
 {: #adding-the-maven-webapp-to-the-application-server }
-1. Edit the **server.xml file** of your WebSphere application server.  
-    If using the {{ site.data.keys.mf_dev_kit }}, the file is located in: [**{{ site.data.keys.mf_dev_kit }}] → mfp-server → user → servers → mfp** folder. Add the following entry:
+1. WebSphere Application Server の **server.xml ファイル**を編集します。  
+    {{site.data.keys.mf_dev_kit }} を使用している場合、ファイルは [**{{site.data.keys.mf_dev_kit }}] →「mfp-server」→「user」→「servers」→「mfp」**フォルダーにあります。以下の項目を追加します。
 
    ```xml
    <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>
    ```
-    - Replace **name** and **path-to/MyWebApp.war** with your own values.
-    - The application server is automatically restarted after saving the changes to the **server.xml** file.  
+    - **name** と **path-to/MyWebApp.war** を独自の値に置き換えます。
+    - アプリケーション・サーバーは、**server.xml** ファイルへの変更を保存後、自動的に再始動されます。  
 
-### Testing the web application
+### Web アプリケーションのテスト
 {: #testing-the-web-application }
-Once you are ready to test your web application, visit the URL: **localhost:9080/MyWebApp**.
-    - Replace **MyWebApp** with your own value.
+Web アプリケーションをテストする準備ができたら、次の URL にアクセスします。**localhost:9080/MyWebApp**
+    - **MyWebApp** を独自の値に置き換えます。
 
-## Using Node.js
+## Node.js の使用
 {: #using-nodejs }
-Node.js can be used as a reverse proxy to tunnel requests from the web application to the {{ site.data.keys.mf_server }}.
+Node.js をリバース・プロキシーとして使用して、Web アプリケーションから {{site.data.keys.mf_server }} に要求をトンネリングできます。
 
-1. From a **command-line** window, navigate to your web application's folder and run the following set of commands: 
+1. **コマンド・ライン**・ウィンドウから、Web アプリケーションのフォルダーにナビゲートし、以下の一連のコマンドを実行します。 
 
    ```bash
    npm init
@@ -96,8 +79,8 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
    npm install --save request
    ```
 
-2. Create a new file next to the **node_modules** folder, for example **proxy.js**.
-3. Add the following code to the file:
+2. **node_modules** フォルダーに新規ファイル (例えば、**proxy.js** など) を作成します。
+3. 以下のコードをファイルに追加します。
 
    ```javascript
    var express = require('express');
@@ -126,21 +109,21 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
         req.pipe(request[req.method.toLowerCase()](url)).pipe(res);
    });
    ```
-    - replace the **port** value with your preferred one.
-    - replace `/myapp` with your preferred path name for your web application.
-    - replace `/index.html` with the name of your main HTML file.
-    - if needed, update `/mfp/*` with the context root of your {{ site.data.keys.product }} runtime.
+    - **port** 値を希望する値に置き換えます。
+    - `/myapp` を Web アプリケーションの希望するパス名に置き換えます。
+    - `/index.html` をメイン HTML ファイルの名前に置き換えます。
+    - 必要な場合、`/mfp/*` を {{site.data.keys.product }} ランタイムのコンテキスト・ルートで更新します。
 
-4. To start the proxy, run the command: `node proxy.js`.
-5. Once you are ready to test your web application, visit the URL: **server-hostname:port/app-name**, for example: **http://localhost:9081/myapp**
-    - Replace **server-hostname** with your own value.
-    - Replace **port** with your own value.
-    - Replace **app-name** with your own value.
+4. プロキシーを開始するには、コマンド `node proxy.js` を実行します。
+5. Web アプリケーションをテストする準備ができたら、**server-hostname:port/app-name** の URL にアクセスします。例えば、**http://localhost:9081/myapp** などです。
+    - **server-hostname** を独自の値に置き換えます。
+    - **port** を独自の値に置き換えます。
+    - **app-name** を独自の値に置き換えます。
 
-## Next steps
+## 次のステップ
 {: #next-steps }
-To continue with {{ site.data.keys.product }} development in Web applications, the {{ site.data.keys.product }} web SDK need to be added to the Web application.
+Web アプリケーションで {{site.data.keys.product }} 開発を続けるには、{{site.data.keys.product }} Web SDK が Web アプリケーションに追加されなければなりません。
 
-* Learn how to add the [{{ site.data.keys.product }} SDK to web applications](../../../application-development/sdk/web/).
-* For applications development, refer to the [Using the {{ site.data.keys.product }} SDK](../../../application-development/) tutorials.
-* For adapters develpment, refer to the [Adapters](../../../adapters/) category.
+* [{{site.data.keys.product }} SDK を Web アプリケーションに](../../../application-development/sdk/web/)追加する方法を確認します。
+* アプリケーション開発については、[{{site.data.keys.product }} SDK の使用](../../../application-development/)のチュートリアルを参照してください。
+* アダプター開発については、[アダプター](../../../adapters/)のカテゴリーを参照してください。

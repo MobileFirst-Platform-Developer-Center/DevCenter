@@ -1,25 +1,25 @@
 ---
 layout: tutorial
-title: Setting up the Xamarin development environment
+title: Xamarin 開発環境のセットアップ
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-This tutorial explains the steps a developer needs to follow to be able to develop and test native C# Xamarin applications for Android or iOS devices. These steps include installing Xamarin Studio.
+このチュートリアルでは、Android デバイスまたは iOS デバイス用のネイティブ C# Xamarin アプリケーションを開発およびテストできるようにするために開発者が従う必要のあるステップを説明します。このステップには、Xamarin Studio のインストールが含まれます。
 
-**Prerequisite:** As you setup your Xamarin development environment, make sure to also read the [Setting up the MobileFirst development environment](../../development/) tutorial.
+**前提条件:** Xamarin 開発環境をセットアップする際には、[MobileFirst 開発環境のセットアップ](../../development/)のチュートリアルも必ずお読みください。
 
-### Development
+### 開発
 {: #development }
-Xamarin applications are developed using [Xamarin Studio](https://www.xamarin.com/studio) or [Microsoft Visual Studio](https://www.visualstudio.com/). Xamarin studio can be installed on Mac OS or Windows.  Alternatively, on Windows 8.1 or 10 desktops, Xamarin can be added as a plugin to Microsoft Visual Studio.   
+Xamarin アプリケーションは、[Xamarin Studio](https://www.xamarin.com/studio) または [Microsoft Visual Studio](https://www.visualstudio.com/) を使用して開発されます。Xamarin Studio は、Mac OS または Windows にインストールできます。あるいは、Windows 8.1 または 10 のデスクトップに、Microsoft Visual Studio のプラグインとして Xamarin を追加することも可能です。   
 
-Xamarin Studio can be downloaded at [Xamarin Studio Downloads](https://www.xamarin.com/download)
+Xamarin Studio は、[Xamarin Studio のダウンロード](https://www.xamarin.com/download)でダウンロード可能です。
 
 ![Xamarin Studio](xamarin-studio.png)
 
-## What's Next
+## 次のステップ
 {: #whats-next }
-Now that the {{ site.data.keys.product_full }} and Xamarin development environments are set up, continue to the [Quick Start](../../../quick-start/xamarin/) category to experience {{ site.data.keys.product }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product }} development.
+{{site.data.keys.product_full }} および Xamarin 開発環境がセットアップされたため、[クイック・スタート](../../../quick-start/xamarin/)のカテゴリーで {{site.data.keys.product }} を使用してみるか、[すべてのチュートリアル](../../../all-tutorials)で {{site.data.keys.product }} 開発の個々の側面について理解を深めてください。

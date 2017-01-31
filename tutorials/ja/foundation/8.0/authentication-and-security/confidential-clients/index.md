@@ -1,91 +1,90 @@
 ---
 layout: tutorial
-title: Confidential Clients
+title: 機密クライアント
 relevantTo: [android,ios,windows,javascript]
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Mobile applications can utilize the {{ site.data.keys.product_adj }} client SDKs to request access to protected resources.  
-Other entities which are not mobile applications can do so as well. Such entities are considered as **Confidential Clients**.
+モバイル・アプリケーションは、{{site.data.keys.product_adj }} クライアント SDK を使用して、保護リソースへのアクセスを要求できます。  
+モバイル・アプリケーション以外のその他のエンティティーも同様の要求を実行できます。そのようなエンティティーは、**機密クライアント**と見なされます。
 
-Confidential clients are clients that are capable of maintaining the confidentiality of their authentication credentials. You can use the {{ site.data.keys.product_adj }} authorization server to grant confidential clients access to protected resources, in accordance with the OAuth specification. This feature allows you to grant access to your resources to non-mobile clients, such as performance-testing applications, and any other kind of back-end that might need to request a protected resource, or use one of the {{ site.data.keys.product }} **REST APIs**, such as the REST API for **push notifications**.
+機密クライアントとは、認証資格情報の機密性を維持できるクライアントです。{{site.data.keys.product_adj }} 許可サーバーを使用して、OAuth 仕様に従って、保護リソースへのアクセス権限を機密クライアントに付与できます。この機能によって、保護リソースを要求したり、いずれかの {{site.data.keys.product }} **REST API** (**プッシュ通知** 用の REST API など) を使用したりする必要が生じる可能性のある、モバイルでないクライアント (パフォーマンス・テスト・アプリケーションなど) やそれ以外の種類のバックエンドに対して、リソースへのアクセスを認可できるようになります。
 
-You begin by registering a confidential client with {{ site.data.keys.mf_server }}. As part of the registration, you provide the credentials of the confidential client, which consist of an ID and a secret. In addition, you set the client's allowed scope, which determines the scopes that can be granted to this client. When a registered confidential client requests an access token from the authorization server, the server authenticates the client by using the registered credentials, and verifies that the requested scope matches the client’s allowed scope.
+まず、{{site.data.keys.mf_server }} で機密クライアントを登録することから開始します。登録の一環として、ID と秘密で構成される、機密クライアントの資格情報を提供します。また、クライアントの許可されるスコープを設定します。これにより、当該クライアントに許可できるスコープが決まります。
+登録済み機密クライアントが許可サーバーに対してアクセス・トークンを要求すると、サーバーは、登録済み資格情報を使用してクライアントを認証し、要求されたスコープがクライアントの許可されるスコープに一致しているかを検査します。
 
-Registered confidential clients can obtain a token to be used in all requests to the {{ site.data.keys.mf_server }}. This flow is based on the [client credentials flow](https://tools.ietf.org/html/rfc6749#section-1.3.4) of the OAuth specification. Note that an access token for a confidential client is valid for one hour. If you're using a confidential client for a task that lasts more than an hour, renew the token every hour by sending a new token request.
+登録済み機密クライアントは、{{site.data.keys.mf_server }} へのすべての要求で使用できるトークンを獲得できます。このフローは、OAuth 仕様の[クライアント資格情報フロー](https://tools.ietf.org/html/rfc6749#section-1.3.4)に基づいています。機密クライアントのアクセス・トークンの有効期間は 1 時間である点に注意してください。1 時間を超えるタスクに機密クライアントを使用する場合、新しいトークン要求を送信して 1 時間ごとにトークンを更新してください。
 
-## Registering the confidential client
+## 機密クライアントの登録
 {: #registering-the-confidential-client }
-In the navigation sidebar of the {{ site.data.keys.mf_console }}, click **Runtime Settings** → **Confidential Clients**. Click **New** to add a new entry.  
-You must provide the following information:
+{{site.data.keys.mf_console }} のナビゲーション・サイドバーで、**「ランタイム設定」**→**「機密クライアント」**をクリックします。**「新規」**をクリックして、新規エントリーを追加します。  
+以下の情報を指定する必要があります。
 
-- **Display Name**: an optional display name that is used to refer to the confidential client. The default display name is the value of the ID parameter. For example: **Back-end Node server**.
-- **ID**: A unique identifier for the confidential client (can be considered as a "user name").
-  The ID can contain only ASCII characters.
-- **Secret**: A private passphrase to authorize access from the confidential client (can be considered as an API key).
-  The secret can contain only ASCII characters.
-- **Allowed Scope**: A confidential client that uses such ID and Secret combination is automatically granted the scope that is defined here. Learn more about **Scopes** in the [Authorization Concepts](../#scope) tutorial.
-    - An element of an allowed scope can also include the special asterisk wildcard character (`*`), which signifies any sequence of zero or more characters. For example, if the scope element is `send*`, the confidential client can be granted access to scopes that contain any scope element that starts with "send", such as "sendMessage". The asterisk wildcard can be placed at any position within the scope element, and can also appear more than once. 
-    - An allowed-scope parameter that consists of a single asterisk character (*) indicates that the confidential client can be granted a token for any scope.
+- **表示名**: 機密クライアントを指すために使用するオプションの表示名。デフォルトの表示名は、ID パラメーターの値です。例えば、**Back-end Node server** です。
+- **ID**: 機密クライアントの固有 ID (「ユーザー名」に相当します)。ID には ASCII 文字のみを使用できます。
+- **秘密鍵**: 機密クライアントからのアクセスを許可するための秘密のパスフレーズ (API キーに相当します)。秘密鍵には ASCII 文字のみを使用できます。
+- **許可されるスコープ**: 上記の ID と秘密鍵の組み合わせを使用する機密クライアントは、ここで定義されるスコープが自動的に認可されます。**スコープ**について詳しくは、[許可の概念](../#scope)チュートリアルを参照してください。
+    - 許可されるスコープのエレメントには、特殊なアスタリスク・ワイルドカード文字 (`*`) を含めることもできます。これは、ゼロ文字以上の文字列を示します。例えば、スコープ・エレメントが `send*` の場合、「sendMessage」など、「send」で始まる任意のスコープ・エレメントが含まれているスコープへのアクセス権限を機密クライアントに付与できます。アスタリスク・ワイルドカードは、スコープ・エレメントの任意の位置に配置でき、また複数回使用できます。 
+    - 単一のアスタリスク文字 (*) で構成される「許可されるスコープ」パラメーターは、任意のスコープのトークンを機密クライアントに付与できることを示します。
 
-**Examples of scopes:**
+**スコープの例:**
 
-- [Protecting external resources](../protecting-external-resources) uses the scope `authorization.introspect`.
-- [Sending a Push Notification](../../notifications/sending-notifications) via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>`.
-- Adapters can be protected by a custom scope element, such as `accessRestricted`.
-- The scope `*` is a catch-all scope, granting access to any requested scope.
+- [外部リソースの保護](../protecting-external-resources)には、スコープ `authorization.introspect` を使用します。
+- REST API 経由での[プッシュ通知の送信](../../notifications/sending-notifications)には、スペースで区切った `messages.write` スコープ・エレメントと `push.application.<applicationId>` スコープ・エレメントを使用します。
+- アダプターは、カスタム・スコープ・エレメント (`accessRestricted` など) で保護できます。
+- スコープ `*` は、包括的なスコープであり、要求されたあらゆるスコープのアクセスを認可します。
 
-<img class="gifplayer" alt="Configurting a confidential client" src="push-confidential-client.png"/>
+<img class="gifplayer" alt="機密クライアントの構成" src="push-confidential-client.png"/>
 
-## Predefined confidential clients
+## 事前定義機密クライアント
 {: #predefined-confidential-clients }
-The {{ site.data.keys.mf_server }} comes with some predefined confidential clients:
+{{site.data.keys.mf_server }} には、付属の機密クライアントがいくつかあります。
 
-### test
+### テスト
 {: #test }
-The `test` client is available only in development mode. It allows you to test your resources easily.
+`test` クライアントは、開発モードでのみ使用可能です。これを使用すると、リソースを簡単にテストできます。
 
 - **ID**: `test`
-- **Secret**: `test`
-- **Allowed Scope**: `*` (any scope)
+- **秘密鍵**: `test`
+- **許可されるスコープ**: `*` (任意のスコープ)
 
 ### admin
 {: #admin }
-The `admin` client is used internally by the {{ site.data.keys.product }} administration service.
+`admin` クライアントは、{{site.data.keys.product }} 管理サービスによって内部で使用されます。
 
 ### push
 {: #push }
-The `push` client is used internally by the {{ site.data.keys.product }} push service.
+`push` クライアントは、{{site.data.keys.product }} プッシュ・サービスによって内部で使用されます。
 
-## Obtaining an access token
+## アクセス・トークンの取得
 {: #obtaining-an-access-token }
-A token can be obtained from the {{ site.data.keys.mf_server }} **token endpoint**.  
+トークンは、{{site.data.keys.mf_server }} **トークン・エンドポイント**から取得できます。  
 
-For **testing purposes**, you can use Postman as described below.  
-In a real situation, implement Postman in your back-end logic, with the technology of your choice.
+**テスト目的**の場合、下記の説明のとおり Postman を使用できます。  
+現実の状況では、任意のテクノロジーを使用して、バックエンド・ロジックに Postman を実装します。
 
-1. Make a **POST** request to **http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token**.  
-    For example: `http://localhost:9080/mfp/api/az/v1/token`
-    - In a development environment, the {{ site.data.keys.mf_server }} uses a pre-existing `mfp` runtime.  
-    - In a production environment, replace the runtime value with your runtime name.
+1. **http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token** への **POST** 要求を行います。  
+    例: `http://localhost:9080/mfp/api/az/v1/token`
+    - 開発環境では、{{site.data.keys.mf_server }} は既存の `mfp` ランタイムを使用します。  
+    - 実稼働環境では、ランタイム値をご使用のランタイム名で置き換えてください。
 
-2. Set the request with a content-type of `application/x-www-form-urlencoded`.  
-3. Set the following two form parameters:
+2. コンテンツ・タイプに `application/x-www-form-urlencoded` を指定した要求を設定します。  
+3. 以下の 2 つのフォーム・パラメーターを設定します。
   - `grant_type`: `client_credentials`
-  - `scope`: Use the scope protecting the resource.  
-  If you don't use a scope to protect your resource, use an empty string.
+  - `scope`: リソースを保護するスコープを使用します。  
+  リソースの保護にスコープを使用しない場合は、空ストリングを使用してください。
 
-    ![Image of postman configuration](confidential-client-steps-1-3.png)
+    ![postman 構成のイメージ](confidential-client-steps-1-3.png)
 
-4. To authenticate the request, use [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side). Use your confidential client's **ID** and **Secret**.
+4. 要求を認証するには、[基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side)を使用します。機密クライアントの **ID** と**秘密鍵**を使用します。
 
-    ![Image of postman configuration](confidential-client-step-4.png)
+    ![postman 構成のイメージ](confidential-client-step-4.png)
 
-    Outside of Postman, if you use the **test** confidential client, set the **HTTP header** to `Authorization: Basic dGVzdDp0ZXN0` (`test:test` encoded using **base64**).
+    Postman の外部で **test** 機密クライアントを使用する場合は、**HTTP ヘッダー**を `Authorization: Basic dGVzdDp0ZXN0` (**base64** を使用して `test:test` をエンコード) に設定します。
 
-The response for this request will contain a `JSON` object, including the **access token** and its expiration time (1 hour).
+この要求の応答には `JSON` オブジェクトが含まれ、そこに**アクセス・トークン**とトークンの有効期限 (1 時間) が組み込まれています。
 
 ```json
 {
@@ -96,27 +95,27 @@ The response for this request will contain a `JSON` object, including the **acce
 }
 ```
 
-![Creating a confidential client](confidential-client-access-token.png)
+![機密クライアントの作成](confidential-client-access-token.png)
 
-## Using the access token
+## アクセス・トークンの使用
 {: #using-the-access-token }
-From here on, you can make requests to the desired resources by adding the **HTTP header**: `Authorization: Bearer eyJhbGciOiJSUzI1NiIsImp ...`, replacing the access token by the one you extracted from the previous JSON object.
+これ以降、**HTTP ヘッダー** `Authorization: Bearer eyJhbGciOiJSUzI1NiIsImp ...` を追加し、アクセス・トークンを前述した JSON オブジェクトから抽出したトークンに置き換えることで、目的のリソースに対する要求を行うことができます。
 
-## Possible responses
+## 可能性のある応答
 {: #possible-responses }
-In addition to the normal responses that your resource may generate, look out for a few responses that are generated by {{ site.data.keys.mf_server }}.
+リソースによって生成される通常応答に加えて、{{site.data.keys.mf_server }} によって生成されるいくつかの応答にも注意してください。
 
 ### Bearer
 {: #bearer }
-An HTTP **401** response status with the HTTP header `WWW-Authenticate : Bearer` means that no token was found on the `Authorization` header of the original request.
+HTTP **401** 応答状況と HTTP ヘッダー `WWW-Authenticate : Bearer` は、元の要求の `Authorization` ヘッダーでトークンが見つからなかったことを意味します。
 
 ### invalid_token
 {: #invalid-token }
-An HTTP **401** response status with the HTTP header `WWW-Authenticate: Bearer error="invalid_token"` means that the token that was sent is **invalid** or **expired**.
+HTTP **401** 応答状況と HTTP ヘッダー `WWW-Authenticate: Bearer error="invalid_token"` は、送信されたトークンが**無効**または**有効期限切れ**であったことを意味します。
 
 ### insufficient_scope
 {: #insufficient-scope }
-An HTTP **403** response status with the HTTP header `WWW-Authenticate : Bearer error="insufficient_scope", scope="scopeA scopeB"` means that the token found in the original request did not match the **scope required by this resource**. The header also includes the scope it expected.
+HTTP **403** 応答状況と HTTP ヘッダー `WWW-Authenticate : Bearer error="insufficient_scope", scope="scopeA scopeB"` は、元の要求内で見つかったトークンが**このリソースで要求されるスコープ**と一致しなかったことを意味します。ヘッダーには、予期していたスコープも含まれています。
 
-When making a request, if you do not know which scope is required by the resource, `insufficient_scope` is the way to determine the answer.  
-For example, request a token with an empty string (`""`) as the scope value and make a request to the resource. Then, you can extract the required scope from the 403 response and request a new token for this scope.
+要求を行う際に、リソースによって必要とされるスコープが不明の場合、`insufficient_scope` から答えを見つける方法があります。  
+例えば、スコープ値として空ストリング (`""`) を指定したトークンを要求し、リソースに対する要求を行います。その後、403 応答から必要なスコープを抽出し、このスコープの新しいトークンを要求できます。

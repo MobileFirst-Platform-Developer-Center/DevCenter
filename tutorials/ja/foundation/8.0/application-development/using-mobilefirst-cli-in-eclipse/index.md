@@ -1,169 +1,170 @@
 ---
 layout: tutorial
-title: Using the MobileFirst CLI in Eclipse
+title: Eclipse での MobileFirst CLI の使用
 relevantTo: [ios,android,windows,cordova]
-breadcrumb_title: MobileFirst Eclipse plug-in
+breadcrumb_title: MobileFirst Eclipse プラグイン
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Using the Cordova CLI you can create and manage your Cordova applications. You can also achieve the same in the Eclipse IDE by using the [THyM](https://www.eclipse.org/thym/) plug-in.
+Cordova CLI を使用することで Cordova アプリケーションを作成および管理できます。[THyM](https://www.eclipse.org/thym/) プラグインをすると、Eclipse IDE でも同じことが行えます。
 
-THyM provides support for importing and managing Cordova projects in Eclipse. You can create new Cordova projects, as well as import existing Cordova projects. You can also install Cordova plug-ins into your project through this plug-in.
+THyM は、Eclipse 内での Cordova プロジェクトのインポートおよび管理のサポートを提供します。新規 Cordova プロジェクトを作成できるほか、既存の Cordova プロジェクトをインポートできます。また、このプラグインを通じて、プロジェクトに Cordova プラグインをインストールすることもできます。
 
-Learn more about THyM in its [official website](https://www.eclipse.org/thym/).
+THyM について詳しくは、[公式 Web サイト](https://www.eclipse.org/thym/)を参照してください。
 
-The {{ site.data.keys.mf_studio }} plug-in for Eclipse exposes the various {{ site.data.keys.product_adj }} commands in the Eclipse IDE.
-Specifically, it provides the following commands: Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App.
+Eclipse 向け {{site.data.keys.mf_studio }} プラグインは、Eclipse IDE にさまざまな {{site.data.keys.product_adj }} コマンドを公開します。
+具体的には、Open Server Console、Preview App、Register App、Encrypt App、Pull App、Push App、Update App といったコマンドが提供されます。
 
-This tutorial walks you through installing the THyM and MobileFirst Eclipse plug-ins.
+このチュートリアルでは、THyM プラグインおよび MobileFirst Eclipse プラグインのインストールについて、順を追って説明します。
 
-**Prerequisites:**
+**前提条件:**
 
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* {{site.data.keys.mf_server }} をローカルで稼働させるか、またはリモートで稼働する {{site.data.keys.mf_server }} がある。
+* {{site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Installing the {{ site.data.keys.mf_studio }} plug-in](#installing-the-mobilefirst-studio-plug-in)
-* [Installing the THyM plug-in](#installing-the-thym-plug-in)
-* [Creating a Cordova project](#creating-a-cordova-project)
-* [Importing an existing Cordova project](#importing-an-existing-cordova-project)
-* [Adding the {{ site.data.keys.product_adj }} SDK to Cordova project](#adding-the-mobilefirst-sdk-to-cordova-project)
-* [{{ site.data.keys.product_adj }} Commands](#mobilefirst-commands)
-* [Tips and Tricks](#tips-and-tricks)
+* [{{site.data.keys.mf_studio }} プラグインのインストール](#installing-the-mobilefirst-studio-plug-in)
+* [THyM プラグインのインストール](#installing-the-thym-plug-in)
+* [Cordova プロジェクトの作成](#creating-a-cordova-project)
+* [既存の Cordova プロジェクトのインポート](#importing-an-existing-cordova-project)
+* [Cordova プロジェクトへの {{site.data.keys.product_adj }} SDK の追加](#adding-the-mobilefirst-sdk-to-cordova-project)
+* [{{site.data.keys.product_adj }} コマンド](#mobilefirst-commands)
+* [ヒント](#tips-and-tricks)
 
 
-## Installing the {{ site.data.keys.mf_studio }} plug-in
+## {{site.data.keys.mf_studio }} プラグインのインストール
 {: #installing-the-mobilefirst-studio-plug-in}
-1. While in Eclipse click **Help → Eclipse Marketplace...**
-2. In the find field search "{{ site.data.keys.product_adj }}" then click "Go"
-3. Click "Install"
+1. Eclipse 内で、**「ヘルプ」→「Eclipse マーケットプレイス...」**をクリックします。
+2. 「検索」フィールドで「{{site.data.keys.product_adj }}」を検索して、「実行」をクリックします。
+3. 「インストール」をクリックします。
 
-	![Image of {{ site.data.keys.mf_studio }} installation](mff_install.png)
+	![{{site.data.keys.mf_studio }} インストール時のイメージ](mff_install.png)
 
-4. Complete the installation process
-5. Restart Eclipse for the installation to take affect.
+4. インストール・プロセスを完了します。
+5. Eclipse を再始動してインストールを有効にします。
 
 
-## Installing the THyM plug-in
+## THyM プラグインのインストール
 {: #installing-the-thym-plug-in }
-**Note:** To run THyM you must be running Eclipse Mars or later
+**注:** THyM を実行するには、Eclipse Mars 以降を稼働させる必要があります。
 
-1. While in Eclipse click **Help → Eclipse Marketplace...**
-2. In the find field search "thym" then click "Go"
-3. Click "Install" for Eclipse Thym
+1. Eclipse 内で、**「ヘルプ」→「Eclipse マーケットプレイス...」**をクリックします。
+2. 「検索」フィールドで「thym」を検索して、「実行」をクリックします。
+3. Eclipse Thym に対応する「インストール」をクリックします。
 
-	![Image of THyM installation](Thym_install.png)
+	![THyM インストール時のイメージ](Thym_install.png)
 
-4. Complete the installation process
-5. Restart Eclipse for the installation to take affect.
+4. インストール・プロセスを完了します。
+5. Eclipse を再始動してインストールを有効にします。
 
-## Creating a Cordova project
+## Cordova プロジェクトの作成
 {: #creating-a-cordova-project }
-In this section we will discuss how to create a new Cordova project using THyM.
+このセクションでは、THyM を使用して新規 Cordova プロジェクトを作成する方法を説明します。
 
-1. While in Eclipse click **File → New → Other...**
-2. Narrow options by searching for "Cordova" and select **Hybrid Mobile (Cordova) Application Project** in the **Mobile** directory and click **Next**
+1. Eclipse 内で、**「ファイル」→「新規」→「その他...」**をクリックします。
+2. 「Cordova」を検索してオプションを絞り込み、**「Mobile」**ディレクトリー内の**「Hybrid Mobile (Cordova) Application Project」**を選択して、**「次へ」**をクリックします。
 
-	![Image of new Cordova wizard](New_cordova_wizard.png)
+	![新規 Cordova ウィザードのイメージ](New_cordova_wizard.png)
 
-3. Name the project, and click **Next**
+3. プロジェクトに名前を付け、**「次へ (Next)」**をクリックします。
 
-	![Image of new Cordova naming](New_cordova_naming.png)
+	![新規 Cordova 命名のイメージ](New_cordova_naming.png)
 
-4. Add the desired platform for your project and click **Finish**
+4. プロジェクト用に必要なプラットフォームを追加し、**「完了」**をクリックします。
 
-**Note**: If you need additional platforms after creation see [Adding platforms](#adding-platforms)
+**注**: 作成後に追加のプラットフォームが必要になった場合は、[プラットフォームの追加](#adding-platforms)を参照してください。
 
-## Importing an existing Cordova project
+## 既存の Cordova プロジェクトのインポート
 {: #importing-an-existing-cordova-project }
-In this section we will discuss how to import an existing Cordova project that has already been created using the Cordova CLI.
+このセクションでは、既に Cordova CLI を使用して作成済みの既存の Cordova プロジェクトをインポートする方法を説明します。
 
-1. While in Eclipse click **File → Import...**
-2. Select **Import Cordova Project** in the **Mobile** directory and click **Next >**
-3. Click **Browse...** and select the root directory of the existing Cordova project.
-4. Ensure the project is checked in the "Projects:" sections and click **Finish**
-	![Image of importing Cordova project](Import_cordova.png)
+1. Eclipse 内で、**「ファイル」→「インポート...」**をクリックします。
+2. **Mobile** ディレクトリー内の**「Import Cordova Project」**を選択して、**「次へ」>**をクリックします。
+3. **「参照...」**をクリックし、既存の Cordova プロジェクトのルート・ディレクトリーを選択します。
+4. 「プロジェクト」セクションでプロジェクトにチェックが付いていることを確認し、**「完了」**をクリックします。
+	![Cordova プロジェクトをインポートしているイメージ](Import_cordova.png)
 
-If you import a project without any platforms you will see the following error, please see the [adding platforms](#adding-platforms) section on how to resolve this error.
-![No platforms error image](no-platforms-error.png)
+いかなるプラットフォームも持たないプロジェクトをインポートすると、次のエラーが表示されます。このエラーの解決方法については、[プラットフォームの追加](#adding-platforms)セクションを参照してください。
+![プラットフォームがないというエラーのイメージ](no-platforms-error.png)
 
-**Note**: If you need to additional platforms after an import see [adding platforms](#adding-platforms)
+**注**: インポート後に追加のプラットフォームが必要になった場合は、[プラットフォームの追加](#adding-platforms)を参照してください。
 
-## Adding the {{ site.data.keys.product_adj }} SDK to Cordova project
+## Cordova プロジェクトへの {{site.data.keys.product_adj }} SDK の追加
 {: #adding-the-mobilefirst-sdk-to-cordova-project }
-Once you have [installed THyM](#installing-the-thym-plug-in) and the [{{ site.data.keys.mf_cli }} plugin](#installing-the-mobilefirst-studio-plug-in) into Eclipse and have either [created a Cordova project](#creating-a-cordova-project) or [imported a Cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the {{ site.data.keys.product_adj }} SDK via Cordova plugin.
+Eclipse に [THyM をインストール](#installing-the-thym-plug-in)し [{{site.data.keys.mf_cli }} プラグイン](#installing-the-mobilefirst-studio-plug-in)をインストールした後、[Cordova プロジェクトを作成](#creating-a-cordova-project)、または [Cordova プロジェクトをインポート](#importing-an-existing-cordova-project)したら、以下の手順に従って Cordova プラグイン経由で {{site.data.keys.product_adj }} SDK をインストールできます。
 
-1. In the Project Explorer right click the **plugins** directory and select **Install Cordova Plug-in**
-2. In the Registry tab of the presented dialog box search **mfp** and select **cordova-plugin-mfp** and click **Finish**
+1. プロジェクト・エクスプローラーで、**plugins** ディレクトリーを右クリックし、**「Install Cordova Plug-in」**を選択します。
+2. 表示されたダイアログ・ボックスの「Registry」タブで**「mfp」**を検索し、**「cordova-plugin-mfp」**を選択して、**「完了」**をクリックします。
 
-	![Image of new Cordova plugin install](New_installing_cordova_plugin.png)
+	![新規 Cordova プラグインのインストール時のイメージ](New_installing_cordova_plugin.png)
 
-## {{ site.data.keys.product_adj }} Commands
+## {{site.data.keys.product_adj }} コマンド
 {: #mobilefirst-commands }
-To access {{ site.data.keys.product }} shortcuts, right-click the root project directory and navigate to **IBM MobileFirst Foundation**.
+{{site.data.keys.product }} ショートカットにアクセスするには、プロジェクトのルート・ディレクトリーを右クリックして**「IBM MobileFirst Foundation」**に移動します。
 
-Here you will be able to select from the following commands:
+ここでは、以下のコマンドから選択できます。
 
-| Menu option         | Action                                                                                                                                       | MobileFirst command-line interface equivalent |
+| メニュー・オプション         | アクション                                                                                                                                       | MobileFirst コマンド・ライン・インターフェースでの等価コマンド |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| Open Server Console | When the server definition exists, opens the console so you can view the actions of the specified server.                                    | mfpdev server console                         |
-| Preview App         | Opens the app in the browser preview mode.                                                                                                   | Opens the app in the browser preview mode.    |
-| Register App        | Registers the app with the server that is specified in your server definitions.                                                              | mfpdev app register                           |
-| Encrypt App         | Runs the web resource encryption tool on your app.                                                                                           | mfpdev app webencrypt                         |
-| Pull App            | Retrieves the existing app configuration from the server that is specified in the server definition.                                         | mfpdev app pull                               |
-| Push App            | Sends the app configuration of your current app to the server that is specified in the build definition so you can reuse it for another app. | mfpdev app push                               |
-| Updated App         | Packages the contents of the www folder in a .zip file, and replaces the version on the server with the package.                             | mfpdev app webupdate                          |
+| サーバー・コンソールを開く | サーバー定義が存在する場合は、コンソールを開くと、指定したサーバーのアクションを表示できます。                                    | mfpdev server console                         |
+| アプリケーションのプレビュー         | ブラウザーのプレビュー・モードでアプリケーションを開きます。                                                                                                   | ブラウザーのプレビュー・モードでアプリケーションを開きます。    |
+| アプリケーションの登録        | サーバー定義で指定されているサーバーにアプリケーションを登録します。                                                              | mfpdev app register                           |
+| アプリケーションの暗号化         | アプリケーションに Web リソース暗号化ツールを実行します。                                                                                           | mfpdev app webencrypt                         |
+| アプリケーションのプル            | サーバー定義で指定されているサーバーから既存のアプリケーション構成を取得します。                                         | mfpdev app pull                               |
+| アプリケーションのプッシュ            | 別のアプリケーションで再使用できるように、ビルド定義に指定されているサーバーに、現在のアプリケーションのアプリケーション構成を送信します。 | mfpdev app push                               |
+| 更新されたアプリケーション         | .zip ファイル内の www フォルダーの内容をパッケージし、サーバー上のバージョンをこのパッケージで置き換えます。                             | mfpdev app webupdate                          |
 
 
-## Tips and Tricks
+## ヒント
 {: #tips-and-tricks }
-<img src="runAsContextMenu.png" alt="context-menu in Eclipse to open in External IDEs" style="float:right;width:35%;margin-left: 10px"/>
-### External IDE's
+<img src="runAsContextMenu.png" alt="Eclipse 内の、外部 IDE を開くためのコンテキスト・メニュー" style="float:right;width:35%;margin-left: 10px"/>
+### 外部 IDE 関連
 {: #external-ides }
-If you would like to test or deploy to a device via an External IDE (Android Studio or Xcode) this can be accomplished via the the context menu.
+外部 IDE (Android Studio や Xcode) を使用してデバイスのテストやデバイスへのデプロイを行う必要がある場合、これらをコンテキスト・メニューを使用して行うことができます。
 
-**Note**:  Please be sure to manually import your project into Android Studio to set up the gradle configuration before launching from Eclipse.  Otherwise you might run into unnecessary steps or errors.  From Android Studio select import **Import project (Eclipse ADT Gradle, etc.)** and navigate to your project and select the **android** directory within the **platforms** directory.
+**注**: プロジェクトを手動で Android Studio にインポートして Gradle 構成をセットアップしてから、Eclipse から起動してください。そうしないと、不要な手順やエラーが発生する可能性があります。Android Studio のインポートで、**「Import project (Eclipse, ADT, Gradle, etc.)」**を選択し、プロジェクトに移動して、**platforms** ディレクトリー内にある **android** ディレクトリーを選択します。
 
-In the Eclipse project explorer right click the desired platform (i.e. **android** or **ios** in the **platforms** directory) → hover over **Run As** in the context menu → select the appropriate external IDE.
+Eclipse のプロジェクト・エクスプローラーで目的のプラットフォームを右クリックし (つまり **platforms** ディレクトリーの **android** または **ios**)、コンテキスト・メニューの**「実行」**にカーソルを置き、適切な外部 IDE を選択します。
 
-### Adding platforms
+### プラットフォームの追加
 {: #adding-platforms }
 
-Adding additional platforms is a simple process that the THyM plugin does not make intuitive.  You have two options to accomplish the same task, and they are as follows.
+THyM プラグインを使用したプラットフォームの追加は、シンプルなプロセスではなく、直感的ではありません。この同じタスクを実行するには、次の 2 とおりの方法があります。
 
-1. Via Properties
-	1. Right click your project and select **properties** from the context menu.
-	1. In the presented dialog select **Hybrid Mobile Engin** from the left hand menu.
-	1. In this pane you will be able to select or download the desired platforms.
+1. プロパティーを使用する方法
+	1. プロジェクトを右クリックして、コンテキスト・メニューから**「プロパティー」**を選択します。
+	1. 表示されたダイアログで、左側のメニューから**「Hybrid Mobile Engine」**を選択します。
+	1. このペインで、目的のプラットフォームを選択またはダウンロードできます。
 
-1. Via Terminal
-	1. Right click your project and hover over **Show In** and select **Terminal** from the context menu.
-	1. This should add a tab to next to the console in Eclipse
-	1. Here you will be able to manually add platforms using the Cordova CLI commands
-		*  `cordova platform ls` will list the installed and available platforms
-		*  `cordova platform add <platform>`  where *<platform>* equals your desired platform, will add the specified platform to the project.
-		*  For more information on Cordova platform specific commands see <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova platform command documentation</a>.
+1. ターミナルを使用する方法
+	1. プロジェクトを右クリックして**「表示」**にカーソルを置き、コンテキスト・メニューから**「ターミナル」**を選択します。
+	1. これで Eclipse の「コンソール」の横にタブが追加されるはずです。
+	1. ここで、Cordova CLI コマンドを使用してプラットフォームを手動で追加できるようになります。
+		*  `cordova platform ls` を実行すると、インストールされて使用可能になっているプラットフォームがリストされます。
+		*  `cordova platform add <platform>` (ここで、*<platform>* は目的のプラットフォーム) を実行すると、指定したプラットフォームがプロジェクトに追加されます。
+		*  Cordova プラットフォーム固有のコマンドについて詳しくは、<a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova プラットフォーム・コマンド資料</a>を参照してください。
 
-### Debug mode
+### デバッグ・モード
 {: #debug-mode }
-Enabling debug mode will show debug level logs in the Eclipse console, while previewing the application in a browser.  To enable debug mode do the following:
+デバッグ・モードを使用可能にすると、アプリケーションをブラウザーでプレビューしながら、デバッグ・レベルのログを Eclipse コンソールで確認できます。デバッグ・モードを使用可能にするには、次のようにします。
 
-1. Open Eclipse's Preferences.
-2. Select **MobileFirst Studio Plugins** to show the plug-ins preferences page.
-3. Ensure the **Enable debug mode** check bocks is selected, then click **Apply → OK**
 
-### Live update
+1. Eclipse の「設定」を開きます。
+2. **「MobileFirst Studio Plugins」**を選択して、このプラグインの設定ページを表示します。
+3. **「デバッグ・モードを使用可能にする」**チェック・ボックスが選択されていることを確認した後、**「適用」→「OK」**をクリックします。
+
+### ライブ・アップデート
 {: #live-update }
-While previewing an application live update is available. You can make updates and save you changes and watch them auto refresh in the preview.
+アプリケーションをプレビューしながら、ライブ・アップデートを使用できます。アップデートを実行して変更を保存すると、プレビューで変更の内容が自動リフレッシュされることを確認できます。
 
-### Integrating {{ site.data.keys.mf_server }} into Eclipse
+### {{site.data.keys.mf_server }} の Eclipse への統合
 {: #integrating-mobilefirst-server-into-eclipse }
-Using the {{ site.data.keys.mf_dev_kit }}, You can couple together the above with [running the {{ site.data.keys.mf_server }} in Eclipse](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse) to create a more integrated development environment.
+{{site.data.keys.mf_dev_kit }} を使用すると、[{{site.data.keys.mf_server }} を Eclipse](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse) で実行し、上記機能を結合することで、より統合された開発環境を形成することができます。
 
-### Demo Video
+### デモ・ビデオ
 {: #demo-video }
 <div class="sizer">
 	<div class="embed-responsive embed-responsive-16by9">

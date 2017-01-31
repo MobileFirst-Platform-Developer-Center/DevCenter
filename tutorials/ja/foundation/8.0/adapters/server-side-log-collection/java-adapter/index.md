@@ -1,55 +1,55 @@
 ---
 layout: tutorial
-title: Logging in Java Adapters
+title: Java アダプターでのロギング
 relevantTo: [ios,android,windows,javascript]
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-This tutorial provides the required code snippets in order to add logging capabilities in a Java adapter.
+このチュートリアルでは、Java アダプターにロギング機能を追加するために必要なコード・スニペットを提供します。
 
-## Logging example
+## ロギング例
 {: #logging-example }
 
-Import the java logging package:
+java ロギング・パッケージをインポートします。
 
 ```java
 import java.util.logging.Logger;
 ```
 
-Define a logger:
+ロガーを定義します。
 
 ```java
 static Logger logger = Logger.getLogger(JavaLoggerTestResource.class.getName());
 ```
 
-Now inside a method include logging:
+ここで、メソッド内にロギングを組み込みます。
 
 ```java
 logger.warning("Logging warning message...");
 ```
 
-This message outputs to the `trace.log` file of the application server. If the server administrator is forwarding logs from the {{ site.data.keys.mf_server }} to the {{ site.data.keys.mf_analytics_server }} the `logger` message will also appear in the **Infrastructure → Server Log Search** view in the {{ site.data.keys.mf_analytics_console }}.
+このメッセージは、アプリケーション・サーバーの `trace.log` ファイルに出力されます。サーバー管理者が {{site.data.keys.mf_server }} から {{site.data.keys.mf_analytics_server }} にログを転送している場合は、`logger` メッセージは {{site.data.keys.mf_analytics_console }} の**「インフラストラクチャー」→「サーバー・ログの検索」**ビューにも表示されます。
 
-## Accessing the log files
+## ログ・ファイルへのアクセス
 {: #accessing-the-log-files }
 
-* In an on-prem installation of the {{ site.data.keys.mf_server }}, the file is available depending on the underlying application server. 
-    * [IBM WebSphere Application Server Full Profile](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html)
-    * [IBM WebSphere Application Server Liberty Profile](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
+* {{site.data.keys.mf_server }} のオンプレミス・インストールでは、このファイルは基礎となるアプリケーション・サーバーに応じて使用可能です。 
+    * [IBM WebSphere Application Server のフル・プロファイル](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html)
+    * [IBM WebSphere Application Server の Liberty プロファイル](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
-* To get to the logs in a cloud deployment in:
-    * IBM Containers or Liberty Build Pack, see the [IBM Containers log and trace collection](../../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/) tutorial.
-    * Mobile Foundation Bluemix service, see [Accessing server logs](../../../bluemix/using-mobile-foundation/#accessing-server-logs) section in the [Using Mobile Foundation](../../../bluemix/using-mobile-foundation) tutorial.
+* クラウド・デプロイメントでログを取得するには、以下を使用します。
+    * IBM Containers または Liberty Build Pack。[IBM Containers ログおよびトレースの収集](../../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/)チュートリアルを参照してください。
+    * Mobile Foundation Bluemix サービス。[Mobile Foundation の使用](../../../bluemix/using-mobile-foundation)チュートリアルの[サーバー・ログへのアクセス](../../../bluemix/using-mobile-foundation/#accessing-server-logs)セクションを参照してください。
 
-## Forwarding Logs to the Analytics server
+## Analytics サーバーへのログの転送
 {: #forwarding-logs-to-the-analytics-server }
 
-Logs can also be forwarded to the Analytics console.
+ログを Analytics コンソールに転送することもできます。
 
-1. In {{ site.data.keys.mf_console }} select the **Settings** option from the sidebar navigation.
-2. Click the **Edit** button in the **Runtime Properties tab**.
-3. In the **Analytics → Additional packages** section, specify the class name of the Java adapter, for example `com.sample.JavaLoggerTestResource`, to forward logs to the {{ site.data.keys.mf_server }}.
+1. {{site.data.keys.mf_console }} のサイドバー・ナビゲーションから、**「設定」**オプションを選択します。
+2. **「ランタイム・プロパティー」**タブの**「編集」**ボタンをクリックします。
+3. **「Analytics」 → 「追加パッケージ」**セクションで、Java アダプターのクラス名 (`com.sample.JavaLoggerTestResource` など) を指定して、ログを {{site.data.keys.mf_server }} に転送します。
 
-![Log filtering from the console](java-filter.png)
+![コンソールからのログ・フィルタリング](java-filter.png)

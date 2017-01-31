@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-title: JSONStore Code Examples
-breadcrumb_title: Code examples
+title: JSONStore コード・サンプル
+breadcrumb_title: コード・サンプル
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Cordova
 {: #cordova }
-#### Initialize and open connections, get an Accessor, and add data
+#### 接続の初期化とオープン、アクセサーの取得、およびデータの追加
 {: #initialize-and-open-connections-get-an-accessor-and-add-data }
 ```javascript
 var collectionName = 'people';
@@ -49,7 +49,7 @@ WL.JSONStore.init(collections, options)
   var addOptions = {
 
     // Mark data as dirty (true = yes, false = no), default true.
-    markDirty: true
+  markDirty: true
   };
 
   // Get an accessor to the people collection and add data.
@@ -65,7 +65,7 @@ WL.JSONStore.init(collections, options)
 });
 ```
 
-#### Find - locate documents inside the Store
+#### Find - ストア内部でのドキュメントの検出
 {: #find-locate-documents-inside-the-store }
 ```javascript
 var collectionName = 'people';
@@ -76,6 +76,7 @@ var queryPart1 = WL.JSONStore.QueryPart()
                    .lessOrEqualThan('age', 10)
 
 var options = {
+
   // Returns a maximum of 10 documents, default no limit.
   limit: 10,
 
@@ -103,13 +104,13 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+   // Handle failure.
 });
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### Replace - 既にコレクション内に保管されているドキュメントの変更
 
-```javascript 
+```javascript
 var collectionName = 'people';
 
 // Documents will be located with their '_id' field 
@@ -120,9 +121,9 @@ var options = {
 
   // Mark data as dirty (true = yes, false = no), default true.
   markDirty: true
-};
+  };
 
-WL.JSONStore.get(collectionName)
+  WL.JSONStore.get(collectionName)
 
 .replace(docs, options)
 
@@ -131,11 +132,11 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+   // Handle failure.
 });
 ```
 
-#### Remove - delete all documents that match the query
+#### Remove - 照会と一致するすべてのドキュメントの削除
 {: #remove-delete-all-documents-that-match-the-query }
 ```javascript
 var collectionName = 'people';
@@ -150,9 +151,9 @@ var options = {
 
   // Mark data as dirty (true = yes, false = no), default true.
   markDirty: true
-};
+  };
 
-WL.JSONStore.get(collectionName)
+  WL.JSONStore.get(collectionName)
 
 .remove(queries, options)
 
@@ -161,11 +162,11 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+   // Handle failure.
 });
 ```
 
-#### Count - gets the total number of documents that match a query
+#### Count - 照会と一致するドキュメントの合計数の取得
 {: #count-gets-the-total-number-of-documents-that-match-a-query }
 ```javascript
 var collectionName = 'people';
@@ -189,39 +190,41 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+   // Handle failure.
 });
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### Destroy - すべてのユーザーのデータのワイプ、内部ストレージの廃棄、およびセキュリティー成果物のクリア
 {: #destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```javascript
 WL.JSONStore.destroy()
 
 .then(function () {
+
   // Handle success.
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+   // Handle failure.
 });
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### Security - 現行ユーザーに開かれているすべてのコレクションへのアクセスの終了
 {: #security-close-access-to-all-opened-collections-for-the-current-user }
 ```javascript
 WL.JSONStore.closeAll()
 
 .then(function () {
+
   // Handle success.
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+   // Handle failure.
 });
 ```
 
-#### Security - change the password that is used to access a Store
+#### Security - ストアへのアクセスに使用されるパスワードの変更
 {: #security-change-the-password-that-is-used-to-access-a-store }
 ```javascript
 // The password should be user input. 
@@ -248,22 +251,21 @@ WL.JSONStore.changePassword(oldPassword, newPassword, username)
 })
 
 .fail(function (errorObject) {
-
-  // Make sure you do not leave the password(s) in memory.
+   // Make sure you do not leave the password(s) in memory.
   clearPasswords();
 
   // Handle failure.
 });
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### Push - ダーティーとしてマークされているすべてのドキュメントの取得、アダプターへのその送信、およびその消去
 {: #push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```javascript
 var collectionName = 'people';
 var dirtyDocs;
  
 WL.JSONStore.get(collectionName)
- 
+
 .getAllDirty()
  
 .then(function (arrayOfDirtyDocuments) {
@@ -288,11 +290,12 @@ WL.JSONStore.get(collectionName)
 })
  
 .then(function () {
+
   // Handle markClean success.
 })
  
 .fail(function (errorObject) {
-  // Handle failure.
+   // Handle failure.
 });
 ```
 
@@ -300,43 +303,43 @@ WL.JSONStore.get(collectionName)
 {: #pull-get-new-data-from-an-adapter }
 ```javascript
 var collectionName = 'people';
- 
+
 var adapter = 'adapter-name';
 var procedure = 'procedure-name-2';
- 
+
 var resource = new WLResourceRequest("adapters/" + adapter + "/" + procedure, WLResourceRequest.GET);
- 
+
 resource.send()
- 
+
 .then(function (responseFromAdapter) {
   // Handle invokeProcedure success.
- 
+
   // The following example assumes that the adapter returns an arrayOfData,
   // (which is not returned by default),
   // as part of the invocationResult object,
   // with the data that you want to add to the collection.
   var data = responseFromAdapter.responseJSON
- 
+
   // Example:
   // data = [{id: 1, ssn: '111-22-3333', name: 'carlos'}];
- 
+
   var changeOptions = {
- 
+
     // The following example assumes that 'id' and 'ssn' are search fields,
     // default will use all search fields
     // and are part of the data that is received.
     replaceCriteria : ['id', 'ssn'],
- 
+
     // Data that does not exist in the Collection will be added, default false.
     addNew : true,
- 
+
     // Mark data as dirty (true = yes, false = no), default false.
     markDirty : false
   };
- 
+
   return WL.JSONStore.get(collectionName).change(data, changeOptions);
 })
- 
+
 .then(function () {
   // Handle change success.
 })
@@ -346,7 +349,7 @@ resource.send()
 });
 ```
 
-#### Check whether a document is dirty
+#### ドキュメントがダーティーであるかどうかの確認
 {: #check-whether-a-document-is-dirty }
 ```javascript
 var collectionName = 'people';
@@ -357,17 +360,16 @@ WL.JSONStore.get(collectionName)
 .isDirty(doc)
 
 .then(function (isDocumentDirty) {
-  // Handle success.
-
-  // isDocumentDirty - true if dirty, false otherwise.
+// Handle success.
+// isDocumentDirty - true if dirty, false otherwise.
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+   // Handle failure.
 });
 ```
 
-#### Check the number of dirty documents
+#### ダーティー・ドキュメントの数の確認
 {: #check-the-number-of-dirty-documents }
 ```javascript
 var collectionName = 'people';
@@ -381,11 +383,11 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+   // Handle failure.
 });
 ```
 
-#### Remove a Collection
+#### コレクションの除去
 {: #remove-a-collection }
 ```javascript
 var collectionName = 'people';
@@ -395,18 +397,18 @@ WL.JSONStore.get(collectionName)
 .removeCollection()
 
 .then(function () {
-  // Handle success.
 
-  // Note: You must call the 'init' API to re-use the empty collection.
+  // Handle success.
+// Note: You must call the 'init' API to re-use the empty collection.
   // See the 'clear' API if you just want to remove all data that is inside.
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+   // Handle failure.
 });
 ```
 
-#### Clear all data that is inside a Collection
+#### コレクション内のすべてのデータのクリア
 {: #clear-all-data-that-is-inside-a-collection }
 ```javascript
 var collectionName = 'people';
@@ -416,23 +418,24 @@ WL.JSONStore.get(collectionName)
 .clear()
 
 .then(function () {
-  // Handle success.
 
-  // Note: You might want to use the 'removeCollection' API
+  // Handle success.
+// Note: You might want to use the 'removeCollection' API
   // instead if you want to change the search fields.
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+   // Handle failure.
 });
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### トランザクションの開始、一部のデータの追加、ドキュメントの除去、障害があった場合のトランザクションのコミットおよびロールバック
 {: transaction }
 ```javascript
 WL.JSONStore.startTransaction()
 
 .then(function () {
+
   // Handle startTransaction success.
   // You can call every JSONStore API method except:
   // init, destroy, removeCollection, and closeAll.
@@ -455,13 +458,14 @@ WL.JSONStore.startTransaction()
 })
 
 .fail(function (errorObject) {
-  // Handle failure for any of the previous JSONStore operation.
+   // Handle failure for any of the previous JSONStore operation.
   //(startTransaction, add, remove).
 
   WL.JSONStore.rollbackTransaction()
 
   .then(function () {
-    // Handle rollback success.
+
+  // Handle rollback success.
   })
 
   .fail(function () {
@@ -471,7 +475,7 @@ WL.JSONStore.startTransaction()
 });
 ```
 
-#### Get file information
+#### ファイル情報の取得
 {: #get-file-information }
 ```javascript
 WL.JSONStore.fileInfo()
@@ -480,11 +484,11 @@ WL.JSONStore.fileInfo()
 })
 
   .fail(function () {
-  // Handle failure.
+    // Handle failure.
 });
 ```
 
-#### Search with like, rightLike, and leftLike
+#### like、rightLike、および leftLike を使用した検索
 {: #search-with-like-rightlike-and-leftlike }
 ```javascript
 // Match all records that contain the search string on both sides.
@@ -505,7 +509,7 @@ var arr2 = WL.JSONStore.QueryPart().leftLike('name', 'los');  // returns {name: 
 
 ## iOS
 {: #ios }
-#### Initialize and open connections, get an Accessor, and add data
+#### 接続の初期化とオープン、アクセサーの取得、およびデータの追加
 {: #ios-initialize-and-open-connections-get-an-accessor-and-add-data }
 ```objc
 // Create the collections object that will be initialized.
@@ -560,7 +564,7 @@ Initialize with a secure random token from the server
 }];
 ```
 
-#### Find - locate documents inside the Store
+#### Find - ストア内部でのドキュメントの検出
 {: #ios-find-locate-documents-inside-the-store }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -575,11 +579,11 @@ JSONStoreQueryOptions* options = [JSONStoreQueryOptions new];
 [options setOffset:@0]; // Skip 0 documents, default no offset.
 
 // Search fields to return, default: ['_id', 'json'].
-[options filterSearchField:@"_id"];
+  [options filterSearchField:@"_id"];
 [options filterSearchField:@"json"];
 
-// How to sort the returned values , default no sort.
-[options sortBySearchFieldAscending:@"name"];
+// How to sort the returned values, default no sort.
+  [options sortBySearchFieldAscending:@"name"];
 [options sortBySearchFieldDescending:@"age"];
 
 // Find all documents that match the query part.
@@ -599,7 +603,7 @@ for (NSDictionary* result in results) {
 }
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### Replace - 既にコレクション内に保管されているドキュメントの変更
 {: #ios-replace-change-the-documents-that-are-already-stored-inside-a-collection }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -616,7 +620,7 @@ NSError* error = nil;
 int docsReplaced = [[people replaceDocuments:docs andMarkDirty:NO error:&error] intValue];
 ```
 
-#### Remove - delete all documents that match the query
+#### Remove - 照会と一致するすべてのドキュメントの削除
 {: #ios-remove-delete-all-documents-that-match-the-query }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -629,7 +633,7 @@ NSError* error = nil;
 int docsRemoved = [[people removeWithIds:@[@1] andMarkDirty:NO error:&error] intValue];
 ```
 
-#### Count - gets the total number of documents that match a query
+#### Count - 照会と一致するドキュメントの合計数の取得
 {: #ios-count-gets-the-total-number-of-documents-that-match-a-query }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -648,7 +652,7 @@ NSError* error = nil;
 int countResult = [[people countWithQueryParts:@[queryPart] error:&error] intValue];
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### Destroy - すべてのユーザーのデータのワイプ、内部ストレージの廃棄、およびセキュリティー成果物のクリア
 {: #ios-destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```objc
 // This object will point to an error if one occurs.
@@ -658,7 +662,7 @@ NSError* error = nil;
 [[JSONStore sharedInstance] destroyDataAndReturnError:&error];
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### Security - 現行ユーザーに開かれているすべてのコレクションへのアクセスの終了
 {: #ios-security-close-access-to-all-opened-collections-for-the-current-user }
 ```objc
 // This object will point to an error if one occurs.
@@ -668,7 +672,7 @@ NSError* error = nil;
 [[JSONStore sharedInstance] closeAllCollectionsAndReturnError:&error];
 ```
 
-#### Security - change the password that is used to access a Store
+#### Security - ストアへのアクセスに使用されるパスワードの変更
 {: #ios-security-change-the-password-that-is-used-to-access-a-store }
 ```objc
 // The password should be user input.
@@ -688,7 +692,7 @@ oldPassword = nil;
 newPassword = nil;
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### Push - ダーティーとしてマークされているすべてのドキュメントの取得、アダプターへのその送信、およびその消去
 {: #ios-push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -725,7 +729,7 @@ NSArray* data = @[ @{@"id" : @1, @"ssn": @"111-22-3333", @"name": @"carlos"} ];
 int numChanged = [[people changeData:data withReplaceCriteria:@[@"id", @"ssn"] addNew:YES markDirty:NO error:&error] intValue];
 ```
 
-#### Check whether a document is dirty
+#### ドキュメントがダーティーであるかどうかの確認
 {: #ios-check-whether-a-document-is-dirty }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -738,7 +742,7 @@ NSError* error = nil;
 BOOL isDirtyResult = [people isDirtyWithDocumentId:1 error:&error];
 ```
 
-#### Check the number of dirty documents
+#### ダーティー・ドキュメントの数の確認
 {: #ios-check-the-number-of-dirty-documents }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -751,7 +755,7 @@ NSError* error = nil;
 int dirtyDocsCount = [[people countAllDirtyDocumentsWithError:&error] intValue];
 ```
 
-#### Remove a Collection
+#### コレクションの除去
 {: #ios-remove-a-collection }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -764,7 +768,7 @@ NSError* error = nil;
 [people removeCollectionWithError:&error];
 ```
 
-#### Clear all data that is inside a Collection
+#### コレクション内のすべてのデータのクリア
 {: #ios-clear-all-data-that-is-inside-a-collection }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -777,7 +781,7 @@ NSError* error = nil;
 [people clearCollectionWithError:&error];
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### トランザクションの開始、一部のデータの追加、ドキュメントの除去、障害があった場合のトランザクションのコミットおよびロールバック
 {: #ios-transaction }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -801,12 +805,12 @@ if (addError != nil || removeError != nil) {
   // Return the store to the state before start transaction was called.
   [[JSONStore sharedInstance] rollbackTransactionAndReturnError:&error];
 } else {
-  // Commit the transaction thus ensuring atomicity.
+// Commit the transaction thus ensuring atomicity.
   [[JSONStore sharedInstance] commitTransactionAndReturnError:&error];
 }
 ```
 
-#### Get file information
+#### ファイル情報の取得
 {: #ios-get-file-information }
 ```objc
 // This object will point to an error if one occurs
@@ -819,7 +823,7 @@ NSArray* results = [[JSONStore sharedInstance] fileInfoAndReturnError:&error];
 
 ## Android
 {: #android }
-#### Initialize and open connections, get an Accessor, and add data
+#### 接続の初期化とオープン、アクセサーの取得、およびデータの追加
 {: #android-initialize-and-open-connections-get-an-accessor-and-add-data }
 ```java
 // Fill in the blank to get the Android application context.
@@ -859,7 +863,7 @@ throw ex;
 }
 ```
 
-#### Initialize with a secure random token from the server
+#### サーバーからのセキュア・ランダム・トークンを使用した初期化
 {: #android-initialize-with-a-secure-random-token-from-the-server }
 ```java
 // Fill in the blank to get the Android application context.
@@ -920,7 +924,7 @@ AsyncTask<Context, Void, Void> aTask = new AsyncTask<Context, Void, Void>() {
 aTask.execute(ctx);
 ```
 
-#### Find - locate documents inside the Store
+#### Find - ストア内部でのドキュメントの検出
 {: #android-find-locate-documents-inside-the-store }
 ```java
 // Fill in the blank to get the Android application context.
@@ -961,7 +965,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### Replace - 既にコレクション内に保管されているドキュメントの変更
 {: #android-replace-change-the-documents-that-are-already-stored-inside-a-collection }
 ```java
 // Fill in the blank to get the Android application context.
@@ -971,7 +975,7 @@ try {
   // Get the already initialized collection.
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
-  // Documents will be located with their '_id' field 
+  // Documents will be located with their '_id' field
   //and replaced with the data in the 'json' field.
   JSONObject replaceDoc = new JSONObject("{_id: 1, json: {name: 'carlitos', age: 99}}");
 
@@ -981,14 +985,14 @@ try {
 
   // Replace the document.
   peopleCollection.replaceDocument(replaceDoc, replaceOptions);
-} 
+}
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
   throw ex;
 }
 ```
 
-#### Remove - delete all documents that match the query
+#### Remove - 照会と一致するすべてのドキュメントの削除
 {: #android-remove-delete-all-documents-that-match-the-query }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1019,7 +1023,7 @@ catch (JSONException ex) {
 }
 ```
 
-#### Count - gets the total number of documents that match a query
+#### Count - 照会と一致するドキュメントの合計数の取得
 {: android-count-gets-the-total-number-of-documents-that-match-a-query }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1047,7 +1051,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### Destroy - すべてのユーザーのデータのワイプ、内部ストレージの廃棄、およびセキュリティー成果物のクリア
 {: #android-destory-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1063,7 +1067,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### Security - 現行ユーザーに開かれているすべてのコレクションへのアクセスの終了
 {: #android-security-close-access-to-all-opened-collections-for-the-current-user }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1072,14 +1076,14 @@ Context ctx = getContext();
 try {
   // Close access to all collections.
   WLJSONStore.getInstance(ctx).closeAll();
-} 
+}
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
   throw ex;
 }
 ```
 
-#### Security - change the password that is used to access a Store
+#### Security - ストアへのアクセスに使用されるパスワードの変更
 {: #android-security-change-the-password-that-is-used-to-access-a-store }
 ```java 
 // The password should be user input. 
@@ -1105,7 +1109,7 @@ finally {
 }
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### Push - ダーティーとしてマークされているすべてのドキュメントの取得、アダプターへのその送信、およびその消去
 {: #android-push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1122,7 +1126,7 @@ try {
 
   peopleCollection.markDocumentsClean(allDirtyDocuments);
 }  catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations
+          // Handle failure for any of the previous JSONStore operations
   throw ex;
 }
 ```
@@ -1150,14 +1154,14 @@ try {
   // Mark data as dirty (true = yes, false = no), default false.
   changeOptions.setMarkDirty(true);
 
-  // The following example assumes that 'id' and 'ssn' are search fields, 
+  // The following example assumes that 'id' and 'ssn' are search fields,
   // default will use all search fields
   // and are part of the data that is received.
   changeOptions.addSearchFieldToCriteria("id");
   changeOptions.addSearchFieldToCriteria("ssn");
 
   int changed = peopleCollection.changeData(newDocs, changeOptions);
-} 
+}
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
   throw ex;
@@ -1168,7 +1172,7 @@ catch (JSONException ex) {
 }
 ```
 
-#### Check whether a document is dirty
+#### ドキュメントがダーティーであるかどうかの確認
 {: #android-check-whetther-a-document-is-dirty }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1179,15 +1183,15 @@ try {
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Check if document with id '3' is dirty.
-  boolean isDirty = peopleCollection.isDocumentDirty(3); 
-} 
+  boolean isDirty = peopleCollection.isDocumentDirty(3);
+}
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
   throw ex;
 }
 ```
 
-#### Check the number of dirty documents
+#### ダーティー・ドキュメントの数の確認
 {: #android-check-the-number-of-dirty-documents }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1199,14 +1203,14 @@ try {
 
   // Get the count of all dirty documents in the people collection.
   int totalDirty = peopleCollection.countAllDirtyDocuments();
-} 
+}
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
   throw ex;
 }
 ```
 
-#### Remove a Collection
+#### コレクションの除去
 {: #android-remove-a-collection }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1219,14 +1223,14 @@ try {
   // Remove the collection. The collection object is
   // no longer usable.
   peopleCollection.removeCollection();
-} 
+}
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
   throw ex;
 }
 ```
 
-#### Clear all data that is inside a Collection
+#### コレクション内のすべてのデータのクリア
 {: #android-clear-all-data-that-is-inside-a-collection }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1245,7 +1249,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### トランザクションの開始、一部のデータの追加、ドキュメントの除去、障害があった場合のトランザクションのコミットおよびロールバック
 {: #android-transaction }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1267,10 +1271,9 @@ try {
   peopleCollection.removeDocumentById(id);
 
   WLJSONStore.getInstance(ctx).commitTransaction();
-} 
+}
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-
   // An exception occured. Take care of it to prevent further damage.
   WLJSONStore.getInstance(ctx).rollbackTransaction();
 
@@ -1286,7 +1289,7 @@ catch (JSONException ex) {
 }
 ```
 
-#### Get file information
+#### ファイル情報の取得
 {: #android-get-file-information }
 ```java
 Context ctx = getContext();

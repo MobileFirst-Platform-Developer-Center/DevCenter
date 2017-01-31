@@ -1,69 +1,72 @@
 ---
 layout: tutorial
-title: Installing MobileFirst Server for a Production Environment
-breadcrumb_title: Production Environment
+title: 実稼働環境用の MobileFirst Server のインストール
+breadcrumb_title: 実稼働環境
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-This section provides details to assist you in planning and preparing an installation for your specific environment.  
-For more information about the configuration of the {{ site.data.keys.mf_server }}, see [Configuring {{ site.data.keys.mf_server }}](server-configuration).
+このセクションでは、特定の環境に合わせたインストールの計画および準備に役立つ詳細情報を提供します。  
+{{site.data.keys.mf_server }} の構成の構成について詳しくは、[{{site.data.keys.mf_server }} の構成](server-configuration)を参照してください。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Prerequisites](#prerequisites)
-* [What's Next](#whats-next)
+* [前提条件
+](#prerequisites)
+* [次のステップ](#whats-next)
 
-## Prerequisites
+## 前提条件
+
 {: #prerequisites }
-For smooth installation of {{ site.data.keys.mf_server }}, ensure that you fulfill all the software prerequisites.
+{{site.data.keys.mf_server }} のインストールを円滑に進めるために、すべてのソフトウェア前提条件が満たされていることを確認してください。
 
-**Database Management System (DBMS)**  
-A DBMS is needed to store the technical data of {{ site.data.keys.mf_server }} components. You must use one of the supported DBMS:
+**データベース管理システム (DBMS)**  
+DBMS は、{{site.data.keys.mf_server }} コンポーネントの技術データを保管するために必要です。サポートされている、次の DBMS のいずれかを使用する必要があります。
 
-* IBM  DB2 
-* MySQL
-* Oracle
+* IBM DB2 
+* MySQL 
+* Oracle 
 
-For more information about the versions of DBMS that are supported by the product, see [System requirements](../../product-overview/requirements). If you use a relational DBMS (IBM DB2, Oracle, or MySQL), you need the JDBC driver for that database during the installation process. The JDBC drivers are not provided by {{ site.data.keys.mf_server }} installer. Make sure that you have the JDBC driver.
+製品でサポートされている DBMS のバージョンについて詳しくは、[システム要件](../../product-overview/requirements)を参照してください。リレーショナル DBMS (IBM DB2、Oracle、または MySQL) を使用している場合は、インストール・プロセス中にそのデータベース用の JDBC ドライバーが必要になります。JDBC ドライバーは、{{site.data.keys.mf_server }} インストーラーによって提供されません。JDBC ドライバーを用意しておいてください。
 
-* For DB2, use the DB2 JDBC driver V4.0 (db2jcc4.jar).
-* For MySQL, use the Connector/J JDBC driver.
-* For Oracle, use the Oracle thin JDBC driver.
+* DB2 の場合、DB2 JDBC ドライバー V4.0 (db2jcc4.jar) を使用します。
+* MySQL の場合、Connector/J JDBC ドライバーを使用します。
+* Oracle の場合、Oracle Thin JDBC ドライバーを使用します。
 
-**Java application server**  
-A Java application server is needed to run the {{ site.data.keys.mf_server }} applications. You can use any of the following application servers:
+**Java アプリケーション・サーバー**  
+{{site.data.keys.mf_server }} アプリケーションを実行するには Java アプリケーション・サーバーが必要です。以下のアプリケーション・サーバーのうち任意のものを使用できます。
 
-* WebSphere  Application Server Liberty Core
+* WebSphere Application Server Liberty Core
 * WebSphere Application Server Liberty Network Deployment
-* WebSphere Application Server
+* WebSphere
+Application Server
 * Apache Tomcat
 
-For more information about the versions of application servers that are supported by the product, see [System requirements](../../product-overview/requirements). The application server must run with Java 7 or later. By default, some versions of WebSphere Application Server run with Java 6. With this default, they cannot run {{ site.data.keys.mf_server }}
+製品でサポートされているアプリケーション・サーバーのバージョンについて詳しくは、[システム要件](../../product-overview/requirements)を参照してください。アプリケーション・サーバーは Java 7 以降で稼働する必要があります。デフォルトで、WebSphere Application Server の一部のバージョンは Java 6 を使用して稼働します。このデフォルトを使用すると、それらのバージョンでは {{site.data.keys.mf_server }} を実行できません。
 
-**IBM Installation Manager V1.8.4 or later**  
-Installation Manager is used to run the installer of {{ site.data.keys.mf_server }}. You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product_full }} {{ site.data.keys.product_version }} because the post-installation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
+**IBM Installation Manager V1.8.4 以降**  
+Installation Manager は、{{site.data.keys.mf_server }} のインストーラーを稼働するために使用されます。Installation Manager V1.8.4 以降をインストールする必要があります。製品のポストインストール操作に Java 7 が必要なため、古いバージョンの Installation Manager は {{site.data.keys.product_full }} {{site.data.keys.product_version }} をインストールできません。古いバージョンの Installation Manager には Java 6 が装備されています。
 
-Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
+IBM Installation Manager V1.8.4 以降のインストーラーは、[Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142) からダウンロードします。
 
-**Installation Manager repository for {{ site.data.keys.mf_server }}**  
-You can download the repository from the {{ site.data.keys.product }} eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
+**{{site.data.keys.mf_server }} の Installation Manager リポジトリー**  
+このリポジトリーは、[IBM パスポート・アドバンテージ](http://www.ibm.com/software/passportadvantage/pao_customers.htm)の {{site.data.keys.product }} eAssembly からダウンロードできます。このパックの名前は、**IBM MobileFirst Foundation V{{site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server** です。
 
-You might also want to apply the latest fix pack that can be downloaded from [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). The fix pack cannot be installed without the repository of the base version in the repositories of Installation Manager.
+[IBM サポート・ポータル](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)からダウンロード可能な最新のフィックスパックを適用することもできます。このフィックスパックは、Installation Manager のリポジトリー内に基本バージョンのリポジトリーがないとインストールできません。
 
-The {{ site.data.keys.product }} eAssembly includes the following installers:
+{{site.data.keys.product }} eAssembly には、以下のインストーラーが含まれています。
 
 * IBM DB2 Workgroup Server Edition
 * IBM WebSphere Application Server Liberty Core
 
-For Liberty, you can also use IBM WebSphere SDK Java Technology edition with IBM WebSphere Application Server Liberty Core supplement.
+Liberty の場合、IBM WebSphere Application Server Liberty Core が補足された IBM WebSphere SDK Java Technology Edition も使用できます。
 
-## What's Next
+## 次のステップ
 {: #whats-next }
 
-* [Running IBM Installation Manager](installation-manager)
-* [Setting up databases](databases)
-* [Topologies and network flows](topologies)
-* [Installing {{ site.data.keys.mf_server }} to an application server](appserver)
+* [IBM Installation Manager の実行](installation-manager)
+* [データベースのセットアップ](databases)
+* [トポロジーとネットワーク・フロー](topologies)
+* [アプリケーション・サーバーへの {{site.data.keys.mf_server }} のインストール](appserver)

@@ -1,47 +1,47 @@
 ---
 layout: tutorial
-title: Integrating with Cloudant
+title: Cloudant との統合
 relevantTo: [javascript]
 downloads:
-  - name: Download Cordova project
+  - name: Cordova プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Cloudant is a NoSQL Database based on CouchDB, which is available as a stand-alone product as well as a Database-as-a-Service (DBaaS) on IBM Bluemix and `cloudant.com`.
+Cloudant は、CouchDB をベースとした NoSQL データベースであり、IBM Bluemix および `cloudant.com` で、スタンドアロン製品としても Database-as-a-Service (DBaaS) としても入手できます。
 
-As described in the Cloudant documentation:
-> Documents are JSON objects. Documents are containers for your data, and are the basis of the Cloudant database.  
-All documents must have two fields: a unique `_id` field, and a `_rev` field. The `_id` field is either created by you, or generated automatically as a UUID by Cloudant. The `_rev` field is a revision number, and is essential to the Cloudant replication protocol. In addition to these two mandatory fields, documents can contain any other content expressed as JSON.
+Cloudant 資料で説明されているように:
+> ドキュメントは JSON オブジェクトです。ドキュメントはお客様のデータの入れ物であり、Cloudant データベースの基礎となるものです。  
+すべてのドキュメントには 2 つのフィールド (固有の `_id` フィールドと `_rev` フィールド) が含まれていなければなりません。`_id` フィールドは、お客様によって作成されるか、または Cloudant によって UUID として自動的に生成されます。`_rev` フィールドは改訂番号であり、Cloudant レプリケーション・プロトコルに必須のフィールドです。この 2 つの必須フィールドのほかに、ドキュメントは JSON で表されるその他の任意のコンテンツを含むことができます。
 
-The Cloudant API is documented on the [IBM Cloudant Documentation](https://docs.cloudant.com/index.html) site.
+Cloudant API の資料は [IBM Cloudant Documentation](https://docs.cloudant.com/index.html) サイトに掲載されています。
 
-You can use adapters to communicate with a remote Cloudant database. This tutorial shows you some examples.
+アダプターを使用すれば、リモート Cloudant データベースと通信できます。このチュートリアルでいくつかの例を示します。
 
-This tutorial assumes that you are comfortable with adapters. See [JavaScript HTTP Adapter](../javascript-adapters/js-http-adapter) or [Java Adapters](../java-adapters).
+このチュートリアルは、お客様がアダプターに精通していることを前提としています。[JavaScript HTTP アダプター](../javascript-adapters/js-http-adapter)または [Java アダプター](../java-adapters)を参照してください。
 
-### Jump to
+### ジャンプ先
 {: #jump-to}
-* [JavaScript HTTP adapter](#javascript-http-adapter)
-* [Java adapters](#java-adapters)
-* [Sample application](#sample-application)
+* [JavaScript HTTP アダプター](#javascript-http-adapter)
+* [Java アダプター](#java-adapters)
+* [サンプル・アプリケーション](#sample-application)
 
 
-## JavaScript HTTP adapter
+## JavaScript HTTP アダプター
 {: #javascript-http-adapter }
-The Cloudant API can be accessed as a simple HTTP web service.
+Cloudant API へのアクセスは単純な HTTP Web サービスとして行えます。
 
-Using an HTTP adapter, you can connect to the Cloudant HTTP service with the `invokeHttp` method.
+HTTP アダプターを使用すれば、`invokeHttp` メソッドによって Cloudant HTTP サービスに接続できます。
 
-### Authentication
+### 認証
 {: #authentication }
-Cloudant supports several forms of authentication. See the Cloudant documentation about authentication at [https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html). With a JavaScript HTTP adapter, you can use **Basic Authentication**.
+Cloudant は複数の認証形態をサポートします。認証に関する Cloudant 資料を参照してください ([https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html))。JavaScript HTTP アダプターでは、**Basic Authentication** を使用できます。
 
-In your adapter XML file, specify the `domain` for your Cloudant instance, the `port` and add an `authentication` element of type `basic`. The framework will use those credentials to generate an `Authorization: Basic` HTTP header.
+アダプター XML ファイルで、Cloudant インスタンスの `domain`、`port` を指定し、タイプ `basic` の `authentication` エレメントを追加してください。フレームワークはそれらの資格情報を使用して `Authorization: Basic` HTTP ヘッダーを生成します。
 
-**Note:** With Cloudant, you can generate unique API keys to use instead of your real username and password.
+**注:** Cloudant では、実際のユーザー名とパスワードの代わりに使用する固有の API キーを生成できます。
 
 ```xml
 <connectivity>
@@ -67,16 +67,16 @@ In your adapter XML file, specify the `domain` for your Cloudant instance, the `
 </connectivity>
 ```
 
-### Procedures
+### プロシージャー
 {: #procedures }
-Your adapter procedures use the `invokeHttp` method to send an HTTP request to one of the URLs that are defined by Cloudant.  
-For example, you can create a new document by sending a `POST` request to `/{*your-database*}/` with the body being a JSON representation of the document that you wish to store.
+アダプター・プロシージャーは、`invokeHttp` メソッドを使用して、Cloudant によって定義される URL の 1 つに HTTP 要求を送信します。  
+例えば、その本体が保管するドキュメントの JSON 表現である `/{*your-database*}/` に、`POST` 要求を送ることによって新規ドキュメントを作成することができます。
 
 ```js
 function addEntry(entry){
 
     var input = {
-            method : 'post',
+method : 'post',
             returnedContentType : 'json',
             path : DATABASE_NAME + '/',
             body: {
@@ -94,21 +94,21 @@ function addEntry(entry){
 }
 ```
 
-The same idea can be applied to all Cloudant functions. See the Cloudant documentation about documents at [https://docs.cloudant.com/document.html](https://docs.cloudant.com/document.html)
+同じ考え方をすべての Cloudant 関数に応用できます。ドキュメントに関する Cloudant 資料を参照してください ([https://docs.cloudant.com/document.html](https://docs.cloudant.com/document.html))。
 
-## Java adapters
+## Java アダプター
 {: #java-adapters }
-Cloudant provides a [Java client library](https://github.com/cloudant/java-cloudant) for you to easily use all the features of Cloudant.
+Cloudant のすべてのフィーチャーを簡単に使用できるように、Cloudant は [Java クライアント・ライブラリー](https://github.com/cloudant/java-cloudant)を提供します。
 
-During the initialization of your Java adapter, set up a `CloudantClient` instance to work with.  
-**Note:** With Cloudant, you can generate unique API keys to use instead of your real username and password.
+Java アダプターの初期化時に、使用する `CloudantClient` インスタンスをセットアップしてください。  
+**注:** Cloudant では、実際のユーザー名とパスワードの代わりに使用する固有の API キーを生成できます。
 
 ```java
 CloudantClient cloudantClient = new CloudantClient(cloudantAccount,cloudantKey,cloudantPassword);
 db = cloudantClient.database(cloudantDBName, false);
 ```
 <br/>
-Using [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) and standard Java API for RESTful Web Services (JAX-RS 2.0), you can create a new document on Cloudant by sending a JSON representation of the document in the HTTP request.
+[Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) および標準 Java API for RESTful Web Services (JAX-RS 2.0) を使用すれば、HTTP 要求でドキュメントの JSON 表現を送ることにより、Cloudant に新規ドキュメントを作成できます。
 
 ```java
 @POST
@@ -124,16 +124,16 @@ public Response addEntry(User user){
 }
 ```
 
-<img alt="Image of the sample application" src="cloudant-app.png" style="float:right"/>
-## Sample application
+<img alt="サンプル・アプリケーションのイメージ" src="cloudant-app.png" style="float:right"/>
+## サンプル・アプリケーション
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80) the Cordova project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80) して Cordova プロジェクトをダウンロードします。
 
-The sample contains two adapters, one in JavaScript and one in Java.  
-It also contains a Cordova application that works with both the Java and JavaScript adapters.
+サンプルには 2 つのアダプター (JavaScript に 1 つと Java に 1 つ) が含まれています。  
+サンプルにはまた、Java アダプターと JavaScript アダプターの両方と連動する Cordova アプリケーションが含まれています。
 
-> **Note:** The sample uses Cloudant Java Client v1.2.3 due to known limitation.
+> **注:** サンプルでは、Cloudant Java Client v1.2.3 を既知の制限に従って使用しています。
 
-### Sample usage
+### 使用例
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+手順については、サンプルの README.md ファイルに従ってください。

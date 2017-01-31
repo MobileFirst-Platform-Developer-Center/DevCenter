@@ -1,35 +1,35 @@
 ---
 layout: tutorial
-title: Multilingual translation of JavaScript (Cordova, Web) applications
-breadcrumb_title: Multilingual translation
+title: JavaScript (Cordova、Web) アプリケーションのマルチリンガル・トランスレーション
+breadcrumb_title: マルチリンガル・トランスレーション
 relevantTo: [javascript]
 weight: 9
 downloads:
-  - name: Download Cordova project
+  - name: Cordova プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-You can use the {{ site.data.keys.product_full }} framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
-Items that can be translated are application strings and system messages. 
+{{site.data.keys.product_full }} フレームワークを使用すると、JavaScript (Cordova、Web) アプリケーションに他言語へのマルチリンガル・トランスレーションを追加できます。  
+翻訳可能な項目は、アプリケーション・ストリングとシステム・メッセージです。 
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Translating application strings](#translating-application-strings)
-* [Translating system messages](#translating-system-messages)
-* [Multilanguage translation](#multilanguage-translation)
-* [Detecting the device locale and language](#detecting-the-device-locale-and-language)
-* [Sample application](#sample-application)
+* [アプリケーション・ストリングの翻訳](#translating-application-strings)
+* [システム・メッセージの翻訳](#translating-system-messages)
+* [複数言語翻訳](#multilanguage-translation)
+* [デバイスのロケールおよび言語の検出](#detecting-the-device-locale-and-language)
+* [サンプル・アプリケーション](#sample-application)
 
-## Translating application strings
+## アプリケーション・ストリングの翻訳
 {: #translating-application-strings }
-Strings that are destined to be translated are stored in a `JSON` object called "Messages". 
+翻訳することが予定されたストリングは、「Messages」と呼ばれる`JSON` オブジェクトに保存されます。 
 
-- In Cordova applications that use the {{ site.data.keys.product_adj }} SDK, you can find it in the **index.js** file of the Cordova application: **[cordova-project-root-directory]/www/js/index.js**.
-- In Web applications, you need to add it.
+- {{site.data.keys.product_adj }} SDK を使用した Cordova アプリケーションでは、このオブジェクトは、次のような Cordova アプリケーションの **index.js** ファイル内にあります。**[cordova-project-root-directory]/www/js/index.js**
+- Web アプリケーションでは、このオブジェクトを追加する必要があります。
 
-### JSON object structure example
+### JSON オブジェクト構造の例
 {: #json-object-structure-example }
 
 ```javascript
@@ -40,49 +40,49 @@ var Messages = {
 };
 ```
 
-Strings stored in the Messages `JSON` object can be referenced in two ways in the application logic:
+Messages `JSON` オブジェクトに保存されたストリングは、アプリケーションのロジックにおいて次の 2 つの方法で参照することができます。
 
-**As a JavaScript object property:**
+**JavaScript オブジェクト・プロパティーとして参照する場合:**
 
 ```javascript
 Messages.headerText
 ```
 
-**As an ID of an HTML element with `class="translate"`:**
+**「class="translate"」を持つ HTML エレメントの ID として参照する場合:**
 
 ```html
 <h1 id="headerText" class="translate"></h1>
 ```
 
-## Translating system messages
+## システム・メッセージの翻訳
 {: #translating-system-messages }
-It is also possible to translate the system messages that the application displays, for example "Internet connection is not available" or "Invalid username or password". System messages are stored in the `WL.ClientMessages` object.
+「インターネット接続が使用できません」や「ユーザー名またはパスワードが無効です」など、アプリケーションが表示するシステム・メッセージも翻訳することができます。システム・メッセージは `WL.ClientMessages` オブジェクト内に保管されます。
 
-**Note:** Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.
+**注:** 一部のコードはアプリケーションの初期化が正常に完了して初めて実行されるため、システム・メッセージはグローバル JavaScript レベルでオーバーライドしてください。
 
-### Web applications
+### Web アプリケーション
 {: #web-applications }
-You can find a full list of system messages in the `messages.json` file, located in the **[project root folder]\node_modules\ibm-mfp-web-sdk\lib\messages\ folder**.
+システム・メッセージの完全なリストは、**[project root folder]\node_modules\ibm-mfp-web-sdk\lib\messages\ フォルダーに配置されている `messages.json` ファイル内にあります**。
 
-### Cordova applications
+### Cordova アプリケーション
 {: #cordova-applications }
-You can find a full list of system messages in the `messages.json` file, located inside the generated project.
+システム・メッセージの完全なリストは、生成されたプロジェクト内に配置されている `messages.json` ファイル内にあります。
 
 - Android: `[Cordova-project]\platforms\android\assets\www\plugins\cordova-plugin-mfp\worklight\messages`
-- iOS, Windows: `[Cordova-project]\platforms\[ios or windows]\www\plugins\cordova-plugin-mfp\worklight\messages`
+- iOS、Windows: `[Cordova-project]\platforms\[ios or windows]\www\plugins\cordova-plugin-mfp\worklight\messages`
 
-To translate a system message, override it in the application code.
+システム・メッセージを翻訳するには、アプリケーション・コード内でそのシステム・メッセージをオーバーライドします。
 
 ```javascript
 WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
 ```
 
-## Multilanguage translation
+## 複数言語翻訳
 {: #multilanguage-translation }
-Using JavaScript, you can implement multilanguage translation for your application.  
-The below steps explain the implementation of this tutorial's sample application.
+JavaScript を使用して、アプリケーションの複数言語の翻訳を実装できます。  
+以下に、このチュートリアルのサンプル・アプリケーションの実装手順を示します。
 
-1. Set up the default application strings in the `index.js` file.
+1. デフォルトのアプリケーション・ストリングを `index.js` ファイルにセットアップします。
 
    ```javascript
    var Messages = {
@@ -96,7 +96,7 @@ The below steps explain the implementation of this tutorial's sample application
    };
    ```
 
-2. Override specific strings when required.
+2. 必要に応じて特定のストリングをオーバーライドします。
 
    ```javascript
    function setFrench(){
@@ -106,7 +106,7 @@ The below steps explain the implementation of this tutorial's sample application
    }
    ```
 
-3. Update the GUI components with the new strings. You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic. Each time that an element is updated, it is updated with different strings according to the active language.
+3. GUI コンポーネントを新しいストリングで更新します。右から左に読む言語 (ヘブライ語やアラビア語など) 用にテキスト方向を設定するなど、追加のタスクを実行できます。エレメントは、更新されるたびに、アクティブな言語に従って異なるストリングで更新されます。
 
    ```javascript
    function languageChanged(lang) {
@@ -139,20 +139,20 @@ The below steps explain the implementation of this tutorial's sample application
    }
    ```
 
-## Detecting the device locale and language
+## デバイスのロケールおよび言語の検出
 {: #detecting-the-device-locale-and-language }
-To detect the language used by the device or browser:
+デバイスまたはブラウザーで使用されている言語を検出するには、以下のようにします。
 
-### Web applications
+### Web アプリケーション
 {: #web-applications-locale}
-Detect the browser language using `navigator.language` or any number of available frameworks and solutins.
+`navigator.language` または任意の数の使用可能なフレームワークおよびソリューションを使用して、ブラウザーの言語を検出します。
 
-### Cordova applications
+### Cordova アプリケーション
 {: #cordova-applications-locale }
-Detect the locale and the language of the device using the Cordova's globalization plug-in: `cordova-plugin-globalization`.  
-The globalization plug-in is auto-installed when adding a platform to the Cordova application.
+Cordova のグローバリゼーション・プラグインである `cordova-plugin-globalization` を使用して、デバイスのロケールおよび言語を検出します。  
+このグローバリゼーション・プラグインは、任意のプラットフォームを Cordova アプリケーションに追加したときに自動的にインストールされます。
 
-Use the `navigator.globalization.getLocaleName` and `navigator.globalization.getPreferredLanguage` functions to detect the locale and language respectively.
+ロケールを検出するには `navigator.globalization.getLocaleName` 関数、言語を検出するには `navigator.globalization.getPreferredLanguage` 関数を使用します。
 
 ```javascript
 navigator.globalization.getLocaleName(
@@ -179,15 +179,15 @@ navigator.globalization.getPreferredLanguage(
 );
 ```
 
-The result can then be seen in the device log, for example from Android Studio's LogCat:  
-![Get device localle and language](DeviceLocaleLangugae.png)
+結果は、デバイスのログ、例えば Android Studio の LogCat などで、次のように確認できます。  
+![デバイスのロケールと言語の取得](DeviceLocaleLangugae.png)
 
-## Sample application
+## サンプル・アプリケーション
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation) the Cordova project.  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/Translation) して Cordova プロジェクトをダウンロードします。  
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can inspect Android's LogCat from Android Studio's LogCat console while the application is running.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** Android の LogCat は、アプリケーションの実行中に Android Studio の LogCat コンソールで調べることができます。

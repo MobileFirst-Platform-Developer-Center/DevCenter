@@ -1,50 +1,88 @@
 ---
 layout: tutorial
-title: Configuring the MobileFirst Server Keystore
-breadcrumb_title: Configuring the Server Keystore
+title: MobileFirst Server 鍵ストアの構成
+breadcrumb_title: サーバー鍵ストアの構成
 weight: 14
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-A keystore is a repository of security keys and certificates that is used to verify and authenticate the validity of parties involved in a network transaction. The {{ site.data.keys.mf_server }} keystore defines the identity of {{ site.data.keys.mf_server }} instances, and is used to digitally sign OAuth tokens and Direct Update packages. In addition, when an adapter communicates with a back-end server using mutual HTTPS (SSL) authentication, the keystore is used to validate the SSL-client identity of the {{ site.data.keys.mf_server }} instance.
+鍵ストアは、ネットワーク・トランザクションの関与者の妥当性を検証および認証するための、セキュリティー鍵および証明書のリポジトリーです。
+{{site.data.keys.mf_server }}
+鍵ストアは、
+{{site.data.keys.mf_server }}
+インスタンスの ID を定義し、OAuth トークンおよびダイレク
+ト・アップデート・パッケージにデジタル署名するために使用します。さらに、アダプターが相互 HTTPS (SSL) 認証を使用してバックエンド・サーバーと通信する際も、鍵ストアを使用して {{site.data.keys.mf_server }} インスタンスの SSL クライアント ID を検証します。
 
-For production-level security, during the move from development to production the administrator must configure {{ site.data.keys.mf_server }} to use a user-defined keystore. The default {{ site.data.keys.mf_server }} keystore is intended to be used only during development.
+実動レベルのセキュリティーのために、開発から実動への移行時に、
+管理者は、ユーザー定義の鍵ストアを使用するように
+{{site.data.keys.mf_server }} を構成する必要があります。
+デフォルトの {{site.data.keys.mf_server }}
+鍵ストアは、開発中にのみ使用するためのものです。
 
-### Notes
+### 注
 {: #notes }
-* To use the keystore to verify the authenticity of a Direct Update package, statically bind the application with the public key of the {{ site.data.keys.mf_server }} identity that is defined in the keystore. See [Implementing secure Direct Update on the client side](../../application-development/direct-update).
-* Reconfiguring the {{ site.data.keys.mf_server }} keystore after production should be considered carefully. Changing the configuration has the following potential effects:
-    * The client might need to acquire a new OAuth token in place of a token signed with the previous keystore. In most cases, this process is transparent to the application.
-    * If the client application is bound to a public key that does not match the {{ site.data.keys.mf_server }} identity in the new keystore configuration, Direct Update fails. To continue getting updates, bind the application with the new public key, and republish the application. Alternatively, change the keystore configuration again to match the public key to which the application is bound. See [Implementing secure Direct Update on the client side](../../application-development/direct-update).
-    *  For mutual SSL authentication, if the SSL-client identity alias and password that are configured in the adapter are not found in the new keystore, or do not match the SSL certifications, SSL authentication fails. See the adapter configuration information in Step 2 of the following procedure.
+* 鍵ストアを使用してダイレクト・アップデート・パッケージの認証性を検証するには、
+鍵ストアで定義された
+{{site.data.keys.mf_server }} ID の公開鍵にアプリケーションを静的にバインドします。
+[クライアント・サイドでのセキュア・ダイレクト・アップデートの実装](../../application-development/direct-update)を参照してください。
+* 実動後の {{site.data.keys.mf_server }}
+鍵ストアの再構成については、慎重な検討が必要です。
+構成の変更により、以下の影響が考えられます。
 
-## Setup
+    * クライアントが、以前の鍵ストアで署名されたトークンの代わりに、新しい OAuth トークンを取得することが必要になる場合があります。
+ほとんどの場合、このプロセスはアプリケーションでは認識されません。
+    * クライアント・アプリケーションが、新しい鍵ストア構成の
+{{site.data.keys.mf_server }}
+ID に一致しない公開鍵にバインドされている場合、ダイレクト・アップデートは失敗します。
+更新を引き続き取得するには、アプリケーションをその新しい公開鍵にバインドし、アプリケーションをリパブリッシュする必要があります。
+あるいは、アプリケーションがバインドされている公開鍵に一致するように、鍵ストア構成を再度変更します。
+[クライアント・サイドでのセキュア・ダイレクト・アップデートの実装](../../application-development/direct-update)を参照してください。
+    *  相互 SSL 認証について、アダプターで構成されている SSL クライアント ID の別名とパスワードが新しい鍵ストアにない場合、
+またはそれらが SSL 証明書に一致しない場合、SSL 認証は失敗します。
+以下の手順のステップ 2 でアダプター構成情報を参照してください。
+
+## セットアップ
+
 {: #setup }
-1. Create a Java keystore (JKS) or PKCS 12 keystore file with an alias that contains a key pair that defines the identity of your {{ site.data.keys.mf_server }}. If you already have an appropriate keystore file, skip to the next step.
+1. {{site.data.keys.mf_server }} の ID を定義した鍵ペアを含む Java 鍵ストア (JKS) ファイルまたは PKCS 12 鍵ストア・ファイルを別名で作成します。該当の鍵ストア・ファイルが既にある場合は、次のステップにスキップします。
 
-   > **Note:** The type of the alias key-pair algorithm must be RSA. The following instructions explain how to set the algorithm type to RSA when using the **keytool** utility.
+   > **注:** この別名による鍵ペアのアルゴリズムのタイプは、RSA でなければなりません。以下の説明は、**keytool** ユーティリティーを使用する場合に、アルゴリズムのタイプを RSA に設定する方法を示しています。
 
-   You can use a third-party tool to create the keystore file. For example, you can generate a JKS keystore file by running the Java **keytool** utility with the following command (where `<keystore name>` is the name of your keystore and `<alias name>` is your selected alias):
+   鍵ストア・ファイルの作成には、サード・パーティー・ツールを使用できます。例えば、Java **keytool** ユーティリティーの次のコマンドを実行することで、JKS 鍵ストア・ファイルを生成できます (ここで、`<keystore name>` は鍵ストアの名前、`<alias name>` は選択した別名です)。
     
    ```bash
    keytool -keystore <keystore name> -genkey -alias <alias name> -keylag RSA
    ```
     
-   The following sample command generates a **my_company.keystore** JKS file with a `my_alias` alias:
+   以下のサンプル・コマンドでは、`my_alias` という別名で
+JKS ファイル **my_company.keystore** を生成します。
+
     
    ```bash
    keytool -keystore my_company.keystore -genkey -alias my_alias -keyalg RSA
    ```
     
-   The utility prompts you to provide different input parameters, including the passwords for your keystore file and alias.
+   
+ユーティリティーによって、鍵ストア・ファイルと別名のパスワードなど、さまざまな入力パラメーターの指定が求められます。
 
-   > **Note:** You must set the `-keyalg RSA` option to set the type of the generated key algorithm to RSA instead of the default DSA.
 
-   To use the keystore for mutual SSL authentication between an adapter and a back-end server, also add a {{ site.data.keys.product }} SSL-client identity alias to the keystore. You can do this by using the same method that you used to create the keystore file with the {{ site.data.keys.mf_server }} identity alias, but provide instead the alias and password for the SSL-client identity.
+   > **注:** 必ず `-keyalg RSA` オプションを設定して、生成後の鍵アルゴリズムのタイプを、デフォルトの DSA ではなく RSA に設定してください。
 
-2. Configure {{ site.data.keys.mf_server }} to use your keystore: in the {{ site.data.keys.mf_console }} navigation sidebar, select **Runtime Settings**, and then select the **Keystore** tab. Follow the instructions on this tab to configure your user-defined {{ site.data.keys.mf_server }} keystore. The steps include uploading your keystore file, indicating its type, and providing your keystore password, the name of your {{ site.data.keys.mf_server }} identity alias, and the alias password. 
+   アダプターとバックエンド・サーバーの間の相互 SSL 認証に鍵ストアを使用するには、{{site.data.keys.product }} SSL クライアント ID の別名も鍵ストアに追加します。これを行うは、{{site.data.keys.mf_server }}
+ID の別名で鍵ストア・ファイルを作成する場合と同じ方法を使用できますが、
+代わりに、SSL クライアント ID の別名とパスワードを指定します。
 
-When configured successfully, the Status changes to "User Defined". Otherwise, an error is displayed and the status remains "Default".
+2. 以下のようにして、鍵ストアを使用するように {{site.data.keys.mf_server }} を構成します。{{site.data.keys.mf_console }} ナビゲーション・サイドバーで、**「ランタイム設定」**を選択して**「鍵ストア」**タブを選択します。このタブの手順に従って、ユーザー定義の
+{{site.data.keys.mf_server }} 鍵ストアを構成します。
+このステップでは、鍵ストア・ファイルをアップロードし、そのタイプを指示して、 鍵ストア・パスワード、
+{{site.data.keys.mf_server }}
+ID 別名の名前、および別名パスワードを指定します。 
 
-The SSL-client identity alias (if used) and its password are configured in the descriptor file of the relevant adapter, within the `<sslCertificateAlias>` and `<sslCertificatePassword>` subelements of the `<connectionPolicy>` element. See [HTTP adapter connectionPolicy element](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file).
+正常に構成されると、
+状況が「ユーザー定義」に変わります。
+それ以外の場合、エラーが表示され、状況は「デフォルト」のままになります。
+
+SSL クライアント ID 別名 (使用された場合) とそのパスワードは、関連アダプター・ディスクリプター・ファイルで、
+`<connectionPolicy>` エレメントの `<sslCertificateAlias>` サブエレメントおよび `<sslCertificatePassword>` サブエレメントで構成されます。
+[HTTP アダプター connectionPolicy エレメント](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)を参照してください。

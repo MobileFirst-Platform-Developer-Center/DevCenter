@@ -1,56 +1,56 @@
 ---
 layout: tutorial
-title: Windows 8.1 Universal and Windows 10 UWP end-to-end demonstration
+title: Windows 8.1 Universal および Windows 10 UWP のエンドツーエンドのデモンストレーション
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The purpose of this demonstration is to experience an end-to-end flow:
+このデモンストレーションの目的は、エンドツーエンドのフローを体験することです。
 
-1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
-2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
-3. The application logic is changed to make a resource request.
+1. {{site.data.keys.product_adj }} クライアント SDK と事前にバンドルされているサンプル・アプリケーションは登録済みで、{{site.data.keys.mf_console }} からダウンロードされています。
+2. 新規または提供済みのアダプターは {{site.data.keys.mf_console }} にデプロイされています。  
+3. アプリケーション・ロジックは、リソース要求を行うために変更されています。
 
-**End result**:
+**終了結果**:
 
-* Successfully pinging the {{ site.data.keys.mf_server }}.
-* Successfully retrieving data using an adapter.
+* {{site.data.keys.mf_server }} を正常に ping している。
+* アダプターを使用してデータを正常に取得している。
 
-#### Prerequisites:
+#### 前提条件:
 {: #prerequisites }
-* Configured Visual Studio 2013/5
-* *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
-* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* 構成済み Visual Studio 2013/5
+* *オプション*。{{site.data.keys.mf_cli }} ([ダウンロード]({{site.baseurl}}/downloads))
+* *オプション*。スタンドアロン {{site.data.keys.mf_server }} ([ダウンロード]({{site.baseurl}}/downloads))
 
-### 1. Starting the {{ site.data.keys.mf_server }}
+### 1. {{site.data.keys.mf_server }} の開始
 {: #1-starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.cmd`.
+[Mobile Foundation インスタンスが作成済みである](../../bluemix/using-mobile-foundation)ことを確認してください。作成済みでない場合は、  
+[{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)を使用しているときは、サーバーのフォルダーにナビゲートして、コマンド `./run.cmd` を実行します。
 
-### 2. Creating an application
+### 2. アプリケーションの作成
 {: #2-creating-an-application }
-In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+ブラウザー・ウィンドウで、URL `http://your-server-host:server-port/mfpconsole` をロードして {{site.data.keys.mf_console }} を開きます。ローカルで実行している場合は、[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) を使用します。ユーザー名/パスワードは *admin/admin* です。
 
-1. Click the **New** button next to **Applications**
-    * Select a **Windows** platform
-    * Enter **MFPStarterCSharp.Windows** as the **application identifier** for Windows, or **MFPStarterCSharp.WindowsPhone** for Windows Phone
-    * Enter **1.0.0** as the **version** value
-    * Click on **Register application**
+1. **アプリケーション**の隣の**「新規」**ボタンをクリックします。
+    * **Windows** プラットフォームを選択します。
+    * **アプリケーション ID** として、Windows の場合は **MFPStarterCSharp.Windows** を、Windows Phone の場合は **MFPStarterCSharp.WindowsPhone** を入力します。
+    * **1.0.0** を **version** の値として入力します。
+    * **「アプリケーションの登録」**をクリックします。
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-windows.png"/>
+    <img class="gifplayer" alt="アプリケーションの登録" src="register-an-application-windows.png"/>
 
-2. Click on the **Get Starter Code** tile and select to download the Windows 8.1 or Windows 10 sample application.
+2. **「スターター・コードの取得」**タイルをクリックして、Windows 8.1 または Windows 10 サンプル・アプリケーションをダウンロードすることを選択します。
 
-    <img class="gifplayer" alt="Download sample application" src="download-starter-code-windows.png"/>
+    <img class="gifplayer" alt="サンプル・アプリケーションのダウンロード" src="download-starter-code-windows.png"/>
 
-### 3. Editing application logic
+### 3. アプリケーション・ロジックの編集
 {: #3-editing-application-logic }
-1. Open the Visual Studio project.
+1. Visual Studio プロジェクトを開きます。
 
-2. Select the solution's **MainPage.xaml.cs** file and paste the following code snippet into the GetAccessToken() method:
+2. ソリューションの **MainPage.xaml.cs** ファイルを選択し、以下のコード・スニペットを GetAccessToken() メソッドに貼り付けます。
 
    ```csharp
    try
@@ -81,9 +81,9 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
    ```
 
 
-### 4. Deploy an adapter
+### 4. アダプターのデプロイ
 {: 4-deploy-an-adapter }
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
+[この作成済みの .adapter 成果物](../javaAdapter.adapter)をダウンロードし、{{site.data.keys.mf_console }} から**「アクション」→「アダプターのデプロイ」**アクションを使用して、この成果物をデプロイします。
 
 <!-- Alternatively, click the **New** button next to **Adapters**.  
 
@@ -101,32 +101,32 @@ Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it
 
     <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>    -->
 
-<img src="windowsQuickStart.png" alt="sample app" style="float:right"/>
-### 5. Testing the application
+<img src="windowsQuickStart.png" alt="サンプル・アプリケーション" style="float:right"/>
+### 5. アプリケーションのテスト
 {: 5-testing-the-application }
-1. In Visual Studio, select the **mfpclient.resw** file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
-    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
+1. Visual Studio で、**mfpclient.resw** ファイルを選択し、**protocol**、**host**、**port** の各プロパティーをご使用の {{site.data.keys.mf_server }} の正しい値で編集します。
+    * ローカル {{site.data.keys.mf_server }} を使用している場合、通常、値は **http**、**localhost**、および **9080** です。
+    * リモート {{site.data.keys.mf_server }} (Bluemix 上) を使用している場合、通常、値は **https**、**your-server-address**、および **443** です。
 
-    Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command `mfpdev app register`. If a remote {{ site.data.keys.mf_server }} is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
+    あるいは、{{site.data.keys.mf_cli }} がインストール済みの場合は、プロジェクト・ルート・フォルダーにナビゲートし、コマンド `mfpdev app register` を実行します。リモート {{site.data.keys.mf_server }} が使用されている場合は、 [コマンド `mfpdev server add` を実行して](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)サーバーを追加し、続いて、例えば、`mfpdev app register myBluemixServer` を実行します。
 
-2. Press the **Run App** button.
+2. **「アプリケーションの実行 (Run App)」**ボタンを押します。
 
-### Results
+### 結果
 {: #results }
-* Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
-* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
+* **「{{site.data.keys.mf_server }} への ping (Ping MobileFirst Server)」**ボタンをクリックすると、**「{{site.data.keys.mf_server }} に接続されています (Connected to MobileFirst Server)」**が表示されます。
+* アプリケーションが {{site.data.keys.mf_server }} に接続できた場合は、デプロイした Java アダプターを使用してリソース要求呼び出しが行われます。
 
-The adapter response is then printed in Visual Studio's Outpout console.
+その場合、アダプター応答が Visual Studio の出力コンソールに出力されます。
 
-![Image of application that successfully called a resource from the {{ site.data.keys.mf_server }}](success_response.png)
+![{{site.data.keys.mf_server }} から正常にリソースを呼び出したアプリケーションの画像](success_response.png)
 
-## Next steps
+## 次の手順
 {: #next-steps }
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
+アプリケーションでのアダプターの使用、プッシュ通知などの追加のサービスを統合する方法、{{site.data.keys.product_adj }} セキュリティー・フレームワークの使用などについて学習します。
 
-- Review the [Application development](../../application-development/) tutorials
-- Review the [Adapters development](../../adapters/) tutorials
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
-- Review [All Tutorials](../../all-tutorials)
+- [アプリケーションの開発](../../application-development/)チュートリアルを検討する
+- [アダプターの開発](../../adapters/)チュートリアルを検討する
+- [認証およびセキュリティー・チュートリアル](../../authentication-and-security/)を検討する
+- [通知チュートリアル](../../notifications/)を検討する
+- [すべてのチュートリアル](../../all-tutorials)を検討する

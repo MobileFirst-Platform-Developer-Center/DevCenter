@@ -1,50 +1,56 @@
 ---
 layout: tutorial
-title: JSONStore in Cordova applications
+title: Cordova アプリケーションでの JSONStore
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 downloads:
-  - name: Download Cordova project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
-  - name: Download Adapter Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+  - name: Cordova プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80
+  - name: アダプター Maven プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Prerequisites
+## 前提条件
+
 {: #prerequisites }
-* Read the [JSONStore parent tutorial](../)
-* Make sure the {{ site.data.keys.product_adj }} Cordova SDK was added to the project. Follow the [Adding the {{ site.data.keys.product }} SDK to Cordova applications](../../../application-development/sdk/cordova/) tutorial. 
+* [JSONStore 親チュートリアル](../)を読む。
+* {{site.data.keys.product_adj }} Cordova SDK が プロジェクトに追加されていることを確認する。[『Cordova アプリケーションへの {{site.data.keys.product }} SDK の追加』](../../../application-development/sdk/cordova/)チュートリアルに従ってください。 
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to}
-* [Adding JSONStore](#adding-jsonstore)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-* [Sample application](#sample-application)
+* [JSONStore の追加](#adding-jsonstore)
+* [基本的な使用法
+](#basic-usage)
+* [高度な使用法
+](#advanced-usage)
+* [サンプル・アプリケーション](#sample-application)
 
-## Adding JSONStore
+## JSONStore の追加
 {: #adding-jsonstore }
-To add JSONStore plug-in to your Cordova application:
+Cordova アプリケーションに JSONStore プラグインを追加するには、以下のようにします。
 
-1. Open a **Command-line** window and navigate to your Cordova project folder.
-2. Run the command: `cordova plugin add cordova-plugin-mfp-jsonstore`.
+1. **コマンド・ライン**・ウィンドウを開き、Cordova プロジェクト・フォルダーにナビゲートします。
+2. 次のコマンドを実行します。`cordova plugin add cordova-plugin-mfp-jsonstore`。
 
-![Add JSONStore feature](jsonstore-add-plugin.png)
+![JSONStore フィーチャーの追加](jsonstore-add-plugin.png)
 
-## Basic Usage
+## 基本的な使用法
+
 {: #basic-usage }
-### Initialize
+### 初期化
 {: #initialize }
-Use `init` to start one or more JSONStore collections.  
+1 つ以上の JSONStore コレクションを開始するには `init` を使用します。  
 
-Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists. If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
+コレクションの開始またはプロビジョニングは、コレクションとドキュメントが含まれる永続ストレージを作成することを意味します (永続ストレージが存在しない場合)。永続ストレージが暗号化され、正しいパスワードが渡されると、そのデータにアクセスできるようにするための、セキュリティー上必要な手順が実行されます。
+
 
 ```javascript
 var collections = {
     people : {
-        searchFields: {name: 'string', age: 'integer'}
-    }
+
+    searchFields : {name: 'string', age: 'integer'}
+  }
 };
 
 WL.JSONStore.init(collections).then(function (collections) {
@@ -54,22 +60,23 @@ WL.JSONStore.init(collections).then(function (collections) {
 });
 ```
 
-> For optional features that you can enable at initialization time, see **Security**, **Multiple User Support**, and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
+> 初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』**、**『複数ユーザー・サポート』**、および**『{{site.data.keys.product_adj }} アダプターの統合』**を参照してください。
 
-### Get
+### 取得
+
 {: #get }
-Use `get` to create an accessor to the collection. You must call `init` before you call get otherwise the result of `get` will be undefined.
+コレクションへのアクセス機能を作成するには、`get` を使用します。get を呼び出す前に `init` を呼び出す必要があります。このようにしないと、`get` の結果は不明確なものになります。
 
 ```javascript
 var collectionName = 'people';
 var people = WL.JSONStore.get(collectionName);
 ```
 
-The variable `people` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`.
+これで、変数 `people` を使用して、`people` コレクションに対して `add`、`find`、`replace` などの操作を実行できます。
 
-### Add
+### 追加
 {: #add }
-Use `add` to store data as documents inside a collection
+コレクション内にデータをドキュメントとして保管するには、`add` を使用します。
 
 ```javascript
 var collectionName = 'people';
@@ -83,13 +90,14 @@ WL.JSONStore.get(collectionName).add(data, options).then(function () {
 });
 ```
 
-### Find
-{: #find }
-* Use `find` to locate a document inside a collection by using a query.  
-* Use `findAll` to retrieve all the documents inside a collection.  
-* Use `findById` to search by the document unique identifier.  
+### 検索
 
-The default behavior for find is to do a "fuzzy" search.
+{: #find }
+* 照会を使用してコレクション内のドキュメントを見つけるには、`find` を使用します。   
+* コレクション内のすべてのドキュメントを取り出すには、`findAll` を使用します。  
+* ドキュメントの固有 ID で検索するには、`findById` を使用します。  
+
+find のデフォルトの動作では、「ファジー」検索を実行します。
 
 ```javascript
 var query = {name: 'yoel'};
@@ -120,15 +128,16 @@ else {
   };
   WL.JSONStore.get(collectionName).find(query, options).then(function (res) {
     // handle success - results (array of documents found)
-  }).fail(function (errorObject) {
+}).fail(function (errorObject) {
     // handle failure
   });
 }
 ```
 
-### Replace
+### 置換
+
 {: #replace }
-Use `replace` to modify documents inside a collection. The field that you use to perform the replacement is `_id`, the document unique identifier.
+コレクション内のドキュメントを変更するには、`replace` を使用します。置換の実行に使用するフィールドは `_id` で、これはドキュメントの固有 ID です。
 
 ```javascript
 var document = {
@@ -144,14 +153,15 @@ WL.JSONStore.get(collectionName).replace(document, options).then(function (numbe
 });
 ```
 
-This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
+この例では、ドキュメント `{_id: 1, json: {name: 'yoel', age: 23} }` がコレクションにあることを前提としています。
 
-### Remove
+### 削除
+
 {: #remove }
-Use `remove` to delete a document from a collection.  
-Documents are not erased from the collection until you call push.  
+ドキュメントをコレクションから削除するには、`remove` を使用します。  
+push が呼び出されるまで、ドキュメントはコレクションから消去 されません。  
 
-> For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial
+> 詳しくは、このチュートリアルの後半にある**{{site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
 
 ```javascript
 var query = {_id: 1};
@@ -164,9 +174,9 @@ WL.JSONStore.get(collectionName).remove(query, options).then(function (numberOfD
 });
 ```
 
-### Remove Collection
+### コレクションの削除
 {: #remove-collection }
-Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+コレクション内に保管されているすべてのドキュメントを削除するには、 `removeCollection` を使用します。 この操作は、データベース用語における、表のドロップと似ています。
 
 ```javascript
 var collectionName = 'people';
@@ -177,16 +187,18 @@ WL.JSONStore.get(collectionName).removeCollection().then(function (removeCollect
 });
 ```
 
-## Advanced Usage
+## 高度な使用法
 {: #advanced-usage }
-### Destroy
+### 破棄
 {: #destory }
-Use `destroy` to remove the following data:
+以下のデータを削除するには、`destroy` を使用します。
 
-* All documents
-* All collections
-* All Stores (see "**Multiple User Support**" later in this tutorial)
-* All JSONStore metadata and security artifacts (see "**Security**" later in this tutorial)
+* すべてのドキュメント
+
+* すべてのコレクション
+
+* すべてのストア (このチュートリアル後半の**『複数ユーザー・サポート』**を参照)
+* すべての JSONStore メタデータおよびセキュリティー成果物 (このチュートリアル後半の**『セキュリティー』**を参照)
 
 ```javascript
 var collectionName = 'people';
@@ -197,19 +209,23 @@ WL.JSONStore.destroy().then(function () {
 });
 ```
 
-### Security
+### セキュリティー
 {: #security }
-You can secure all the collections in a store by passing a password to the `init` function. If no password is passed, the documents of all the collections in the store are not encrypted.
+パスワードを `init` 関数に渡すことにより、ストア内のすべてのコレクションを保護することができます。
+パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
 
-Data encryption is only available on Android, iOS, Windows 8.1 Universal and Windows 10 UWP environments.  
-Some security metadata is stored in the *keychain* (iOS), *shared preferences* (Android) or the *credential locker* (Windows 8.1).  
-The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
+データ暗号化は、Android、iOS、Windows 8.1 Universal および Windows 10 UWP の各環境でのみ使用可能です。  
+一部のセキュリティー・メタデータは、*キーチェーン* (iOS)、*共有設定* (Android) または*資格情報保管ボックス* (Windows 8.1) に保管されます。  
+ストアは 256 ビットの Advanced Encryption Standard
+(AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation
+Function 2 (PBKDF2) により強化されています。
 
-Use `closeAll` to lock access to all the collections until you call `init` again. If you think of `init` as a login function you can think of `closeAll` as the corresponding logout function. Use `changePassword` to change the password.
+`closeAll` を使用して、`init` を再度呼び出すまですべてのコレクションへのアクセスをロックします。`init` をログイン関数と考えると、`closeAll` はそれに対応するログアウト関数と考えることができます。`changePassword` を使用して、パスワードを変更します。
 
 ```javascript
 var collections = {
-  people: {
+    people : {
+
     searchFields: {name: 'string'}
   }
 };
@@ -221,20 +237,21 @@ WL.JSONStore.init(collections, options).then(function () {
 });
 ```
 
-#### Encryption
+#### 暗号化
 {: #encryption }
-*iOS only*. By default, the {{ site.data.keys.product_adj }} Cordova SDK for iOS relies on iOS-provided APIs for encryption. If you prefer to replace this with OpenSSL:
+*iOS のみ*。デフォルトでは、{{site.data.keys.product_adj }} Cordova SDK for iOS は、iOS 提供の API に暗号化を依存しています。これを OpenSSL に置換したい場合は、以下のようにします。
 
-1. Add the cordova-plugin-mfp-encrypt-utils plug-in: `cordova plugin add cordova-plugin-mfp-encrypt-utils`.
-2. In the applicative logic, use: `WL.SecurityUtils.enableNativeEncryption(false)` to enable the OpenSSL option.
+1. cordova-plugin-mfp-encrypt-utils プラグイン `cordova plugin add cordova-plugin-mfp-encrypt-utils` を追加します。
+2. アプリケーション・ロジックで、`WL.SecurityUtils.enableNativeEncryption(false)` を使用して OpenSSL オプションを有効にします。
 
-### Multiple User Support
+### 複数ユーザー・サポート
 {: #multiple-user-support }
-You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `init` function can take an options object with a username. If no username is given, the default username is **jsonstore**.
+単一の {{site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`init` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名 **jsonstore** が使用されます。
 
 ```javascript
 var collections = {
-  people: {
+    people : {
+
     searchFields: {name: 'string'}
   }
 };
@@ -246,17 +263,17 @@ WL.JSONStore.init(collections, options).then(function () {
 });
 ```
 
-### {{ site.data.keys.product_adj }} Adapter Integration
+### {{site.data.keys.product_adj }} アダプターの統合
 {: #mobilefirst-adapter-integration }
-This section assumes that you are familiar with Adapters.  
+このセクションは、ユーザーがアダプターについて理解していることを前提とします。  
 
-Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.  
-You can achieve these goals by using`WLResourceRequest` or `jQuery.ajax` if you need more flexibility.
+アダプターの統合はオプションであり、コレクションからアダプターにデータを送信する方法、およびアダプターからコレクションにデータを取得する方法を提供します。  
+これらの目的を実現するために、`WLResourceRequest` や、より高い柔軟性が必要な場合は `jQuery.ajax` を使用することができます。
 
-### Adapter Implementation
+### アダプターの実装
 {: #adapter-implementation }
-Create an adapter and name it "**People**".  
-Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+アダプターを作成し、"**People**" という名前を付けます。  
+このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
 
 ```javascript
 function getPeople() {
@@ -287,11 +304,12 @@ function replacePerson(data) {
 }
 ```
 
-#### Initialize a collection linked to a {{ site.data.keys.product_adj }} adapter
+#### {{site.data.keys.product_adj }} アダプターにリンクされているコレクションの初期化
 {: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
 ```javascript
 var collections = {
-  people : {
+    people : {
+
     searchFields : {name: 'string', age: 'integer'},
     adapter : {
       name: 'People',
@@ -315,9 +333,9 @@ WL.JSONStore.init(collections, options).then(function () {
 });
 ```
 
-#### Load data from an Adapter
+#### データをアダプターからロード
 {: #load-data-from-an-adapter }
-When `load` is called, JSONStore uses some metadata about the adapter (**name** and **procedure**), which you previously passed to `init`, to determine what data to get from the adapter and eventually store it.
+`load` が呼び出されると、JSONStore では、前に `init` に渡したアダプターに関するメタデータ (**name** および **procedure**) を使用して、アダプターから取得するデータが決定され、最終的にそのデータが保管されます。
 
 ```javascript
 var collectionName = 'people';
@@ -328,9 +346,9 @@ WL.JSONStore.get(collectionName).load().then(function (loadedDocuments) {
 });
 ```
 
-#### Get Push Required (Dirty Documents)
+#### プッシュが必要な対象 (ダーティーなドキュメント) の取得
 {: #get-push-required-dirty-documents }
-Calling `getPushRequired` returns an array of so called *"dirty documents"*, which are documents that have local modifications that do not exist on the back-end system. These documents are sent to the adapter when `push` is called.
+`getPushRequired` を呼び出すと、*「ダーティーなドキュメント」*と呼ばれる配列が返されます。これは、バックエンド・システムには存在しないローカル変更が含まれるドキュメントです。これらのドキュメントは、`push` が呼び出されたときに、アダプターに送信されます。
 
 ```javascript
 var collectionName = 'people';
@@ -341,9 +359,9 @@ WL.JSONStore.get(collectionName).getPushRequired().then(function (dirtyDocuments
 });
 ```
 
-To prevent JSONStore from marking the documents as "dirty", pass the option `{markDirty:false}` to `add`, `replace`, and `remove`
+JSONStore でドキュメントが「ダーティー」とマーキングされないようにするには、オプション `{markDirty:false}` を `add`、`replace`、および`remove` に渡します。
 
-You can also use the `getAllDirty` API to retrieve the dirty documents:
+以下のようにして、`getAllDirty` API を使用してダーティー・ドキュメントを取得することもできます。
 
 ```javascript
 WL.JSONStore.get(collectionName).getAllDirty()
@@ -354,9 +372,9 @@ WL.JSONStore.get(collectionName).getAllDirty()
 });
 ```
 
-#### Push
+#### プッシュ
 {: #push }
-`push` sends the documents that changed to the correct adapter procedure (i.e., `addPerson` is called with a document that was added locally). This mechanism is based on the last operation that is associated with the document that changed and the adapter metadata that is passed to `init`.
+`push` は、変更されたドキュメントを正しいアダプター・プロシージャーに送信します (例えば、ローカルで追加されたドキュメントの場合は `addPerson` が呼び出されます)。このメカニズムは、変更されたドキュメント、および `init` に渡されるアダプター・メタデータに関連する、最後のオペレーションに基づきます。
 
 ```javascript
 var collectionName = 'people';
@@ -369,10 +387,10 @@ WL.JSONStore.get(collectionName).push().then(function (response) {
 });
 ```
 
-### Enhance
+### 拡張
+
 {: #enhance }
-Use `enhance` to extend the core API to fit your needs, by adding functions to a collection prototype.
-This example (the code snippet below) shows how to use `enhance` to add the function `getValue` that works on the `keyvalue` collection. It takes a `key` (string) as it's only parameter and returns a single result.
+コア API をニーズに合うように拡張するには、`enhance` を使用します。それには、関数をコレクションのプロトタイプに追加します。この例 (下記のコード・スニペット) は、`enhance` を使用して、`keyvalue` コレクションで動作する関数 `getValue` を追加する方法を示しています。この関数は、唯一のパラメーターとして `key` (ストリング) を受け取り、単一の結果を返します。
 
 ```javascript
 var collectionName = 'keyvalue';
@@ -394,17 +412,17 @@ WL.JSONStore.get(collectionName).getValue(key).then(function (result) {
 });
 ```
 
-> For more information about JSONStore, see the user documentation.
+> JSONStore について詳しくは、ユーザー文書を参照してください。
 
-<img alt="JSONStore sample app" src="jsonstore-cordova.png" style="float:right"/>
-## Sample application
+<img alt="JSONStore サンプル・アプリケーション" src="jsonstore-cordova.png" style="float:right"/>
+## サンプル・アプリケーション
 {: #sample-application }
-The JSONStoreSwift project contains a Cordova application that utilizes the JSONStore API set.  
-Included is a JavaScript adapter Maven project.
+JSONStoreSwift プロジェクトには、JSONStore API セットを使用する Cordova アプリケーションが含まれています。  
+JavaScript アダプター Maven プロジェクトも使用可能です。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80) the Cordova project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreCordova/tree/release80) して Cordova プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) してアダプター Maven プロジェクトをダウンロードします。  
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

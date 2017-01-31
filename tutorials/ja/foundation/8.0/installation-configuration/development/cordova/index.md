@@ -1,30 +1,30 @@
 ---
 layout: tutorial
-title: Setting up the Cordova development environment
+title: Cordova 開発環境のセットアップ
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-To get started with [Cordova (PhoneGap) development](https://cordova.apache.org/) the very basic required step is to install the Cordova CLI. The Cordova CLI is the tool enabling you to create Cordova applications. These applications can be further enhanced by using various 3rd party frameworks and tools such as Ionic, AngularJS, jQuery Mobile and many more. 
-With Cordova applications you can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others for implementing your applications and adapters.
+[Cordova (PhoneGap) 開発](https://cordova.apache.org/)を始めるために、ごく基本的で必要なステップとして、Cordova CLI をインストールします。Cordova CLI は、Cordova アプリケーションの作成を可能にするツールです。これらのアプリケーションは、サード・パーティーの各種フレームワークおよびツール (Ionic、AngularJS、jQuery Mobile、その他多数) を使用してさらに拡張することができます。
+Cordova アプリケーションでは、アプリケーションおよびアダプターの実装には、任意のコード・エディター (Atom.io、Visual Studio Code、Eclipse、IntelliJ、その他) を使用できます。
 
-**Prerequisite:** As you setup your Cordova development environment, make sure to also read the [Setting up the {{ site.data.keys.product_adj }} development environment](../mobilefirst/) tutorial.
+**前提条件:** Cordova 開発環境をセットアップする際には、[{{site.data.keys.product_adj }} 開発環境のセットアップ](../mobilefirst/)のチュートリアルも必ずお読みください。
 
-## Installing the Cordova CLI
+## Cordova CLI のインストール
 {: #installing-the-cordova-cli }
-{{ site.data.keys.product }} supports Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova).  
-To install:
+{{site.data.keys.product }} は、Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova) をサポートします。  
+インストールするには、以下のようにします。
 
-1. Download and install [NodeJS](https://nodejs.org/en/).
-2. From a **Command-line** window, run the command: `npm install -g cordova`.
+1. [NodeJS](https://nodejs.org/en/) をダウンロードしてインストールします。
+2. **コマンド・ライン**・ウィンドウから、次のコマンドを実行します。`npm install -g cordova`
 
-## Next steps
+## 次のステップ
 {: #next-steps }
-To continue with {{ site.data.keys.product_adj }} development in Cordova applications, the {{ site.data.keys.product_adj }} Cordova SDK/plug-ins need to be added to the Cordova application.
+Cordova アプリケーションで {{site.data.keys.product_adj }} 開発を続けるには、{{site.data.keys.product_adj }} Cordova SDK/プラグインが Cordova アプリケーションに追加されなければなりません。
 
-* Learn how to add the [{{ site.data.keys.product_adj }} SDK to Cordova applications](../../../application-development/sdk/cordova/).
-* For applications development, refer to the [Using the {{ site.data.keys.product }} SDK](../../../application-development/) tutorials.
-* For adapters develpment, refer to the [Adapters](../../../adapters/) category.
+* [{{site.data.keys.product_adj }} SDK を Cordova アプリケーションに](../../../application-development/sdk/cordova/)追加する方法を確認します。
+* アプリケーション開発については、[{{site.data.keys.product }} SDK の使用](../../../application-development/)のチュートリアルを参照してください。
+* アダプター開発については、[アダプター](../../../adapters/)のカテゴリーを参照してください。

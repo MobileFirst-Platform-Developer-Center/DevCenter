@@ -1,155 +1,110 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Windows 8.1 Universal or Windows 10 UWP Applications
+title: Windows 8.1 Universal アプリケーションまたは Windows 10 UWP アプリケーションへの MobileFirst Foundation SDK の追加
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are available through [Nuget](https://www.nuget.org/), and which you can add to your Visual Studio project. The dependencies correspond to core functions and other functions:
+{{site.data.keys.product }} SDK は、[NuGet](https://www.nuget.org/) を通じて入手可能な依存関係の集合で構成されます。この SDK は、Visual Studio プロジェクトに追加できます。これらの依存関係は、次のようなコア機能およびその他の機能に対応しています。
 
-* **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
+* **IBMMobileFirstPlatformFoundation** - クライアントとサーバー間の接続を実装し、認証およびセキュリティーの各側面、リソース要求、およびその他の必要なコア機能を処理します。
 
-In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using Nuget to a new or existing Windows 8.1 Universal application or to a Windows 10 UWP (Universal Windows Platform) application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application, and to find information about the {{ site.data.keys.product_adj }} configuration files that are added to the project.
+このチュートリアルでは、Nuget を使用して {{site.data.keys.product_adj }} ネイティブ SDK を新規または既存の Windows 8.1 Universal アプリケーションまたは Windows 10 UWP (Universal Windows Platform) アプリケーションに追加する方法について学習します。また、アプリケーションを認識するように {{site.data.keys.mf_server }} を構成する方法と、プロジェクトに追加する {{site.data.keys.product_adj }} 構成ファイルに関する情報を見つける方法についても学習します。
 
-**Prerequisites:**
+**前提条件:**
 
-- Microsoft Visual Studio 2013 or 2015 and {{ site.data.keys.mf_cli }} installed on the developer workstation. Developing Windows 10 UWP solution requires at least Visual Studio 2015.
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Windows 8 Universal and Windows 10 UWP development environment](../../../installation-configuration/development/windows) tutorials.
+- Microsoft Visual Studio 2013 または 同 2015 と {{site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。Windows 10 UWP ソリューションの開発には、最低でも Visual Studio 2015 が必要です。
+- {{site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
+- [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/mobilefirst)、および [Windows 8 Universal 開発環境と Windows 10 UWP 開発環境のセットアップ](../../../installation-configuration/development/windows)の両チュートリアルを読む。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-- [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Manually Adding the {{ site.data.keys.product_adj }} Native SDK](#manually-adding-the-mobilefirst-win-native-sdk) 
-- [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Generated {{ site.data.keys.product_adj }} Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [{{site.data.keys.product_adj }} ネイティブ SDK の追加](#adding-the-mobilefirst-native-sdk)
+- [{{site.data.keys.product_adj }} ネイティブ SDK の更新](#updating-the-mobilefirst-native-sdk)
+- [生成される {{site.data.keys.product_adj }} ネイティブ SDK 成果物](#generated-mobilefirst-native-sdk-artifacts)
+- [次に使用するチュートリアル](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## {{site.data.keys.product_adj }} ネイティブ SDK の追加
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product_adj }} Native SDK to a new or existing Visual Studio project, and to register the application to the {{ site.data.keys.mf_server }}.
+以下の手順に従って、新規または既存の Visual Studio プロジェクトに {{site.data.keys.product_adj }} ネイティブ SDK を追加し、アプリケーションを {{site.data.keys.mf_server }} に登録します。
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} instance is running.  
-If you use a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.cmd`.
+開始する前に、{{site.data.keys.mf_server }} インスタンスが稼働していることを確認します。  
+ローカルにインストールされているサーバーを使用する場合: **コマンド・ライン**・ウィンドウで、サーバーのフォルダーに移動し、コマンド `./run.cmd` を実行します。
 
-### Creating an application
+### アプリケーションの作成
 {: #creating-an-application }
-Create a Windows 8.1 Universal or Windows 10 UWP project by using Visual Studio 2013/2015 or use an existing project.  
+Visual Studio 2013/2015 を使用して Windows 8.1 Universal プロジェクトまたは Windows 10 UWP プロジェクトを作成するか、または既存のプロジェクトを使用します。  
 
-### Adding the SDK
+### SDK の追加
 {: #adding-the-sdk }
-1. To import {{ site.data.keys.product_adj }} packages, use the NuGet package manager.
-NuGet is the package manager for the Microsoft development platform, including .NET. The NuGet client tools provide the ability to produce and use packages. The NuGet Gallery is the central package repository used by all package authors and users.
+1. {{site.data.keys.product_adj }} パッケージをインポートするには、NuGet パッケージ・マネージャーを使用します。
+NuGet は、.NET などの Microsoft 開発プラットフォーム用のパッケージ・マネージャーです。NuGet クライアント・ツールは、パッケージを作成および使用するための機能を提供します。NuGet Gallery は、パッケージの作成者およびユーザー全員が使用する、中央のパッケージ・リポジトリーです。
 
-2. Open the Windows 8.1 Universal or Windows 10 UWP project in Visual studio 2013/2015. Right-click the project solution and select  **Manage Nuget packages**.
+2. Visual studio 2013/2015 で Windows 8.1 Universal プロジェクトまたは Windows 10 UWP プロジェクトを開きます。プロジェクト・ソリューションを右クリックし、**「NuGet パッケージの管理」**を選択します。
 
     ![Add-Nuget-tosolution-VS-settings](Add-Nuget-tosolution0.png)
 
-3. In the search option, search for "IBM MobileFirst Platform". Choose **IBM.MobileFirstPlatform.{{ site.data.keys.product_V_R_M_I }}**.
+3. 検索オプションで、「IBM MobileFirst Platform」を検索します。**IBM.MobileFirstPlatform.{{site.data.keys.product_V_R_M_I }}** を選択します。
 
     ![Add-Nuget-tosolution-search](Add-Nuget-tosolution1.png)
 
     ![Add-Nuget-tosolution-choose](Add-Nuget-tosolution2.png)
 
-4. Click **Install**. This action installs the {{ site.data.keys.product }} Native SDK and its dependencies. This step also generates an empty `mfpclient.resw` file in the `strings` folder of the Visual Studio project.
+4. **「インストール」**をクリックします。このアクションにより、{{site.data.keys.product }} ネイティブ SDK とその依存関係がインストールされます。また、このステップにより、Visual Studio プロジェクトの `strings` フォルダーに空の `mfpclient.resw` ファイルが生成されます。
 
-5. Ensure that, at a minimum, the following capabilities are enabled in `Package.appxmanifest`:
+5. `Package.appxmanifest` 内で、少なくとも次の機能が有効になっているようにします。
 
-    - Internet (Client)
+    - インターネット (クライアント)
 
-### Manually adding the {{ site.data.keys.product_adj }} Native SDK
-{: #manually-adding-the-mobilefirst-win-native-sdk }
-
-You can also manually add the {{ site.data.keys.product }} SDK:
-
-<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist" aria-multiselectable="false">
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="win-sdk">
-            <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Click for instructions</b></a>
-            </h4>
-        </div>
-
-        <div id="collapse-win-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk">
-            <div class="panel-body">
-                <p>You can prepare your environment for developing MobileFirst applications by getting the framework and library files manually. The {{ site.data.keys.product }} SDK for Windows 8 and Windows 10 Universal Windows Platform (UWP) is also available from NuGet.</p>
-
-                <ol>
-                    <li>Get the {{ site.data.keys.product }} SDK from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab.
-                    </li>
-                    <li>Extract the contents of the downloaded SDK obtained in step 1.</li>
-                    <li>Open the Windows Universal native project in Visual Studio. Perform the following steps.
-                        <ol>
-                            <li>Select <b>Tools → NuGet Package Manager → Package Manager Settings</b>.</li>
-                            <li>Select <b>Package Sources</b> option. Click <b>+</b> icon to add new package source.</li>
-                            <li>Provide a name for the package source (for example: <em>windows8nuget</em>)</li>
-                            <li>Navigate to the MobileFirst SDK folder that was downloaded and extracted. Click <b>OK</b>.</li>
-                            <li>Click <b>Update</b> and then click <b>OK</b>.</li>
-                            <li>Right-click the <b>Solution project-name</b> in <b>Solution explorer</b> tab, which is to the right corner of the screen.</li>
-                            <li>Select <b>Manage NuGet Packages for Solutions → Online → windows8nuget</b>.</li>
-                            <li>Click <b>Install</b> option. You get the option to <b>Select Projects</b>.</li>
-                            <li>Ensure that all the check boxes are checked. Click <b>OK</b>.</li>
-                        </ol>
-
-                    </li>
-                </ol>
-
-                <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Close section</b></a>
-            </div>
-        </div>
-    </div>
-</div>
-
-### Registering the application
+### アプリケーションの登録
 {: #reigstering-the-application }
-1. Open the **Command-line** and navigate to the root of the Visual Studio project.  
+1. **コマンド・ライン**を開き、Visual Studio プロジェクトのルートに移動します。  
 
-2. Run the command:
+2. 次のコマンドを実行します:
 
    ```bash
-   mfpdev app register
-   ```
-    - If you use a remote server, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    mfpdev app register
+    ```
+    - リモート・サーバーを使用する場合は、[`mfpdev server add` コマンドを使用](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)して、そのサーバーを追加します。
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then updates the **mfpclient.resw** file in the **strings** folder in the Visual Studio project, and adds to it the metadata that identifies the {{ site.data.keys.mf_server }}.
+`mfpdev app register` CLI コマンドは、まず最初に {{site.data.keys.mf_server }} に接続してアプリケーションを登録した後、Visual Studio プロジェクトの **strings** フォルダー内にある **mfpclient.resw** ファイルを更新し、これに {{site.data.keys.mf_server }} を識別するメタデータを追加します。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** 次のように、{{site.data.keys.mf_console }} からアプリケーションを登録することもできます。    
 >
-> 1. Load the {{ site.data.keys.mf_console }}.  
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
-> 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.resw** file. Follow the onscreen instructions to add the file to your project.
+> 1. {{site.data.keys.mf_console }} をロードします。  
+> 2. **「アプリケーション」**の横の**「新規」**ボタンをクリックして、新規アプリケーションを登録し、画面に表示される指示に従います。  
+> 3. アプリケーションが登録されたら、そのアプリケーションの**「構成ファイル」**タブに移動して、**mfpclient.resw** ファイルをコピーまたはダウンロードします。画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## {{site.data.keys.product_adj }} ネイティブ SDK の更新
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, run the following command from the root folder of the Visual Studio project in a **Command-line** window:
+{{site.data.keys.product_adj }} ネイティブ SDK を最新リリースで更新するには、**コマンド・ライン**・ウィンドウで、Visual Studio プロジェクトのルート・フォルダーから次のコマンドを実行します。
 
 ```bash
 Nuget update
 ```
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
+## 生成される{{site.data.keys.product_adj }} ネイティブ SDK 成果物
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.resw
 {: #mfpclientresw }
-Located in the `strings` folder of the project, this file contains server connectivity properties and is user-editable:
+プロジェクトの `strings` フォルダー内にあるこのファイルは、ユーザーによる編集が可能で、次のサーバー接続プロパティーを含んでいます。
 
-- `protocol` – The communication protocol to {{ site.data.keys.mf_server }}. Either `HTTP` or `HTTPS`.
-- `WlAppId` - The identifier of the application. This should be same as the application identifier in the server.
-- `host` – The host name of the {{ site.data.keys.mf_server }} instance.
-- `port` – The port of the {{ site.data.keys.mf_server }} instance.
-- `wlServerContext` – The context root path of the application on the {{ site.data.keys.mf_server }} instance.
-- `languagePreference` - Sets the default language for client sdk system messages.
+- `protocol` – {{site.data.keys.mf_server }} に対する通信プロトコル。`HTTP` または `HTTPS` のいずれかです。
+- `WlAppId` - アプリケーションの ID。これは、サーバー内のアプリケーション ID と同じである必要があります。
+- `host` – {{site.data.keys.mf_server }} インスタンスのホスト名。
+- `port` – {{site.data.keys.mf_server }} インスタンスのポート。
+- `wlServerContext` – {{site.data.keys.mf_server }} インスタンス上のアプリケーションのコンテキスト・ルート・パス。
+- `languagePreference` - クライアントの SDK システム・メッセージのデフォルト言語を設定します。
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-With the MobileFirst Native SDK now integrated, you can now:
+これで MobileFirst ネイティブ SDK が組み込まれたので、以下の作業を行うことができます。
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- [{{site.data.keys.product }} SDK の使用に関するチュートリアル](../)を検討する
+- [アダプター開発に関するチュートリアル](../../../adapters/)を検討する
+- [認証とセキュリティーに関するチュートリアル](../../../authentication-and-security/)を検討する
+- [通知に関するチュートリアル](../../../notifications/)を検討する
+- [すべてのチュートリアル](../../../all-tutorials)を検討する

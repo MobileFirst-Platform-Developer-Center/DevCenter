@@ -1,52 +1,52 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Android Applications
+title: Android アプリケーションへの MobileFirst Foundation SDK の追加
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The {{ site.data.keys.product_full }} SDK consists of a collection of dependencies that are available through [Maven Central](http://search.maven.org/), and which you can add to your Android Studio project. The dependencies correspond to core functions and other functions:
+{{site.data.keys.product_full }} SDK は、[Maven Central](http://search.maven.org/) を通じて入手可能な依存関係の集合で構成されます。この SDK は、Android Studio プロジェクトに追加できます。これらの依存関係は、次のようなコア機能およびその他の機能に対応しています。
 
-* **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for Andoid tutorial](../../jsonstore/android/).
-* **IBMMobileFirstPlatformFoundationPush** - Contains the Push Notifications framework. For more information, review the [Notifications tutorials](../../../notifications/).
+* **IBMMobileFirstPlatformFoundation** - クライアントとサーバー間の接続を実装し、認証およびセキュリティーの各側面、リソース要求、およびその他の必要なコア機能を処理します。
+* **IBMMobileFirstPlatformFoundationJSONStore** - JSONStore のフレームワークを含んでいます。詳しくは、[Android 用 JSONStore に関するチュートリアル](../../jsonstore/android/)を参照してください。
+* **IBMMobileFirstPlatformFoundationPush** - プッシュ通知のフレームワークを含んでいます。詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
 
-In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using Gradle to a new or existing Android application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application, and to find information about the {{ site.data.keys.product_adj }} configuration files that are added to the project.
+このチュートリアルでは、Gradle を使用して {{site.data.keys.product_adj }} ネイティブ SDK を新規または既存の Android アプリケーションに追加する方法について学習します。また、アプリケーションを認識するように {{site.data.keys.mf_server }} を構成する方法と、プロジェクトに追加する {{site.data.keys.product_adj }} 構成ファイルに関する情報を見つける方法についても学習します。
 
-**Prerequisites:**
+**前提条件:**
 
-- Android Studio and {{ site.data.keys.mf_cli }} installed on the developer workstation.  
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Android development environment](../../../installation-configuration/development/android) tutorials.
+- Android Studio と {{site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。  
+- {{site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
+- [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/mobilefirst)、および [Android 開発環境のセットアップ](../../../installation-configuration/development/android) の両チュートリアルを読む。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-- [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Manually Adding the {{ site.data.keys.product_adj }} Native SDK](#manually-adding-the-mobilefirst-native-sdk)
-- [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Generated {{ site.data.keys.product_adj }} Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Support for Javadoc and Android Service](#support-for-javadoc-and-android-service)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [{{site.data.keys.product_adj }} ネイティブ SDK の追加](#adding-the-mobilefirst-native-sdk)
+- [{{site.data.keys.product_adj }} ネイティブ SDK の手動での追加](#manually-adding-the-mobilefirst-native-sdk)
+- [{{site.data.keys.product_adj }} ネイティブ SDK の更新](#updating-the-mobilefirst-native-sdk)
+- [生成される {{site.data.keys.product_adj }} ネイティブ SDK 成果物](#generated-mobilefirst-native-sdk-artifacts)
+- [Javadoc および Android Service のサポート](#support-for-javadoc-and-android-service)
+- [次に使用するチュートリアル](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## {{site.data.keys.product_adj }} ネイティブ SDK の追加
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product_adj }} Native SDK to a new or existing Android Studio project, and to register the application to the {{ site.data.keys.mf_server }} instance.
+以下の手順に従って、新規または既存の Android Studio プロジェクトに {{site.data.keys.product_adj }} ネイティブ SDK を追加し、アプリケーションを {{site.data.keys.mf_server }} インスタンスに登録します。
 
-Before you start, make sure that {{ site.data.keys.mf_server }} is running.  
-If you use a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command `./run.sh` on a Mac or Linux OS, or `run.cmd` on Windows.
+開始する前に、{{site.data.keys.mf_server }} が稼働していることを確認します。  
+ローカルにインストールされているサーバーを使用する場合: **コマンド・ライン**・ウィンドウで、サーバーのフォルダーに移動し、次のコマンドを実行します。`./run.sh` (Mac または Linux OS の場合) または `run.cmd` (Windows の場合)
 
-### Creating an Android application
+### Android アプリケーションの作成
 {: #creating-an-android-application }
-Create an Android Studio project or use an existing one.  
+Android Studio プロジェクトを作成するか、または既存のプロジェクトを使用します。  
 
-### Adding the SDK
+### SDK の追加
 {: #adding-the-sdk }
-1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
+1. **「Android」→「Gradle Scripts」**で、**build.gradle (Module: app)** ファイルを選択します。
 
-2. Add the following lines after `apply plugin: 'com.android.application'`:
+2. 次の行を、`apply plugin: 'com.android.application'` の後に追加します。
 
    ```xml
    repositories{
@@ -54,7 +54,7 @@ Create an Android Studio project or use an existing one.
    }
    ```
 
-3. Add the following line inside the `android` section:
+3. 次の行を、`android` セクション内に追加します。
 
    ```xml
    packagingOptions {
@@ -64,7 +64,7 @@ Create an Android Studio project or use an existing one.
    }
    ```
 
-4. Add the following lines inside the `dependencies` section:
+4. 次の行を、`dependencies` セクション内に追加します。
 
    ```xml
    compile group: 'com.ibm.mobile.foundation',
@@ -74,63 +74,64 @@ Create an Android Studio project or use an existing one.
    transitive: true
    ```
 
-   Or on a single line:
+   または、次のように 1 行で追加します。
 
    ```xml
    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundation:8.0.+'
    ```
 
-5. In **Android → app → manifests**, open the `AndroidManifest.xml` file. Add the following permissions above the **application** element:
+5. **「Android」→「app」→「manifests」**で、`AndroidManifest.xml` ファイルを開きます。次のアクセス権を、**application** エレメントの上に追加します。
 
    ```xml
    <uses-permission android:name="android.permission.INTERNET"/>
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
    ```
    
-6. Add the {{ site.data.keys.product_adj }} UI activity next to the existing **activity** element:
+6. 既存の **activity** エレメントの後に、次の {{site.data.keys.product_adj }} UI アクティビティーを追加します。
 
    ```xml
    <activity android:name="com.worklight.wlclient.ui.UIActivity" />
    ```
 
-> If a Gradle Sync request appears, accept it.
+> Gradle Sync 要求が表示された場合は、同意します。
 
-### Manually adding the {{ site.data.keys.product_adj }} Native SDK
+### {{site.data.keys.product_adj }} ネイティブ SDK の手動での追加
 {: #manually-adding-the-mobilefirst-native-sdk }
-You can also manually add the {{ site.data.keys.product_adj }} SDK:
+次のように、{{site.data.keys.product_adj }} SDK を手動で追加することもできます。
   
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="android-sdk">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>Click for instructions</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>クリックして手順を表示</b></a>
             </h4>
         </div>
 
         <div id="collapse-android-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-sdk">
             <div class="panel-body">
-                <p>To manually add the {{ site.data.keys.product_adj }} SDK, first download the SDK .zip file from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab. After completing the above steps, follow the below as well.</p>
+                <p>{{site.data.keys.product_adj }} SDK を手動で追加するには、まず最初に<b>「{{site.data.keys.mf_console }}」→「ダウンロード・センター」→「SDK」</b>タブで SDK の .zip ファイルをダウンロードします。上記の手順を完了した後、以下の手順にも従います。</p>
             
                 <ul>
-                    <li>Extract the downloaded .zip file and place the relevant aar files to the <b>app\libs</b> folder.</li>
-                    <li>Add the following to the <b>dependencies</b> closure:
+                    <li>ダウンロードした .zip ファイルを解凍し、関連する aar ファイルを <b>app\libs</b> フォルダーに入れます。</li>
+                    <li>次の行を <b>dependencies</b> クロージャーに追加します。
 {% highlight xml %}
 compile(name:'ibmmobilefirstplatformfoundation', ext:'aar')
 {% endhighlight %}
                     </li>
-                    <li>Add the following to the <b>repositories</b> closure:
+                    <li>次の行を <b>repositories</b> クロージャーに追加します。
 {% highlight xml %}
 repositories {
     flatDir {
-        dirs 'libs'
-    }
+dirs 'libs'
+}
 }
 {% endhighlight %}
-                    </li>
+
+</li>
                 </ul> 
             
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-sdk" data-target="#collapse-android-sdk" aria-expanded="false" aria-controls="collapse-android-sdk"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>
@@ -138,66 +139,66 @@ repositories {
 
 
 
-### Registering the application
+### アプリケーションの登録
 {: #registering-the-application }
-1. Open a **Command-line** window and navigate to the root of the Android Studio project.  
+1. **コマンド・ライン**・ウィンドウを開き、Android Studio プロジェクトのルートに移動します。  
 
-2. Run the command:
+2. 次のコマンドを実行します:
 
     ```bash
     mfpdev app register
     ```
-    - If a remote server is used, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - リモート・サーバーを使用する場合は、[`mfpdev server add` コマンドを使用](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)して、そのサーバーを追加します。
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, followed by generating the **mfpclient.properties** file in the **[project root]/app/src/main/assets/** folder of the Android Studio project, and to add to it the metadata that identifies the {{ site.data.keys.mf_server }}.
+`mfpdev app register` CLI コマンドは、まず最初に {{site.data.keys.mf_server }} に接続してアプリケーションを登録し、続けて **mfpclient.properties** ファイルを Android Studio プロジェクトの **[project root]/app/src/main/assets/** フォルダーに作成し、これに、{{site.data.keys.mf_server }} を識別するメタデータを追加します。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** 次のように、{{site.data.keys.mf_console }} からアプリケーションを登録することもできます。    
 >
-> 1. Load the {{ site.data.keys.mf_console }}.  
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
-> 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.properties** file. Follow the onscreen instructions to add the file to your project.
+> 1. {{site.data.keys.mf_console }} をロードします。  
+> 2. **「アプリケーション」**の横の**「新規」**ボタンをクリックして、新規アプリケーションを登録し、画面に表示される指示に従います。  
+> 3. アプリケーションが登録されたら、そのアプリケーションの**「構成ファイル」**タブに移動して、**mfpclient.properties** ファイルをコピーまたはダウンロードします。画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
 
-### Creating a WLClient instance
+### WLClient インスタンスの作成
 {: #creating-a-wlclient-instance }
-Before using any {{ site.data.keys.product_adj }} APIs, create a `WLClient` instance:
+{{site.data.keys.product_adj }} API を使用する前に、次のように `WLClient` インスタンスを作成します。
 
 ```java
 WLClient.createInstance(this);
 ```
 
-**Note:** Creating a `WLClient` instance should happen only once in the entire application lifecycle. It is recommended to use the Android Application class to do it.
+**注:** `WLClient` インスタンスの作成は、アプリケーションのライフサイクル全体で一度だけ行います。このインスタンスの作成には、Android の Application クラスを使用することを推奨します。
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## {{site.data.keys.product_adj }} ネイティブ SDK の更新
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, find the release version number and update the `version` property accordingly in the **build.gradle** file.  
-See step 4 above.
+{{site.data.keys.product_adj }} ネイティブ SDK を最新リリースで更新するには、リリースのバージョン番号を調べ、**build.gradle** ファイル内の `version` プロパティーを適宜更新します。  
+上記のステップ 4 を参照してください。
 
-SDK releases can be found in the SDK's [JCenter repository](https://bintray.com/bintray/jcenter/com.ibm.mobile.foundation%3Aibmmobilefirstplatformfoundation/view#).
+SDK のリリースは、SDK の [JCenter リポジトリー](https://bintray.com/bintray/jcenter/com.ibm.mobile.foundation%3Aibmmobilefirstplatformfoundation/view#)で調べることができます。
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
+## 生成される{{site.data.keys.product_adj }} ネイティブ SDK 成果物
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.properties
 {: #mfpclient.properties }
-Located in the **./app/src/main/assets/** folder of the Android Studio project, this file defines the client-side properties used for registering your Android app on the {{ site.data.keys.mf_server }}.
+Android Studio プロジェクトの **./app/src/main/assets/** フォルダー内に配置されているこのファイルは、{{site.data.keys.mf_server }} に Android アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。
 
-| Property            | Description                                                         | Example values |
+| プロパティー            | 説明                                                         | 値の例 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
-| wlServerHost        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| wlServerPort        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
-| wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
-| languagePreferences | Sets the default language for client sdk system messages.           | en             |
+| wlServerProtocol    | {{site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
+| wlServerHost        | {{site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
+| wlServerPort        | {{site.data.keys.mf_server }} のポート。                                 | 9080           |
+| wlServerContext     | {{site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
+| languagePreferences | クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
 
-## Support for Javadoc and Android Service
+## Javadoc および Android Service のサポート
 {: #support-for-javadoc-and-android-service }
-For information about support for Javadoc and Android Service see the [Additional Information](additional-information) page.
+Javadoc および Android Service のサポートについては、[追加情報](additional-information)のページを参照してください。
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product_adj }} Native SDK now integrated, you can now:
+これで {{site.data.keys.product_adj }} ネイティブ SDK が組み込まれたので、以下の作業を行うことができます。
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- [{{site.data.keys.product }} SDK の使用に関するチュートリアル](../)を検討する
+- [アダプター開発に関するチュートリアル](../../../adapters/)を検討する
+- [認証とセキュリティーに関するチュートリアル](../../../authentication-and-security/)を検討する
+- [通知に関するチュートリアル](../../../notifications/)を検討する
+- [すべてのチュートリアル](../../../all-tutorials)を検討する

@@ -5,58 +5,60 @@ relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.mf_server }} consists of several components. An overview of {{ site.data.keys.mf_server }} architecture is provided for you to understand the functions of each component.
+{{site.data.keys.mf_server }} は複数のコンポーネントで構成されています。 各コンポーネントの機能を理解するために、{{site.data.keys.mf_server }} アーキテクチャーの概要が提供されています。
 
-Unlike {{ site.data.keys.mf_server }} V7.1 or earlier, the installation process for V8.0.0 is separated from the development and deployment of mobile app operations. In V8.0.0, after the server components and the database are installed and configured, {{ site.data.keys.mf_server }} can be operated for most operations without the need to access the application server or database configuration.
+{{site.data.keys.mf_server }} V7.1 以前と異なり、V8.0.0 のインストール・プロセスは、モバイル・アプリ操作の開発およびデプロイメントとは切り離されています。V8.0.0 では、サーバー・コンポーネントとデータベースをインストールして構成した後、ほとんどの操作で、アプリケーション・サーバーまたはデータベース構成にアクセスせずに、{{site.data.keys.mf_server }} を操作することができます。
 
-The administration and deployment operations of the {{ site.data.keys.product_adj }} artifacts are done through {{ site.data.keys.mf_console }}, or the REST API of the {{ site.data.keys.mf_server }} administration service. The operations can also be done by using some command line tools that wrap this API, such as mfpdev or mfpadm. The authorized users of {{ site.data.keys.mf_server }} can modify the server-side configuration of mobile applications, upload, or configure server-side code (the adapters), upload new web resources for Cordova mobile apps, run application management operations and more.
+{{site.data.keys.product_adj }} 成果物の管理操作およびデプロイメント操作は、{{site.data.keys.mf_console }}、または {{site.data.keys.mf_server }} 管理サービスの REST API を使用して実行されます。また、これらの操作は、mfpdev または mfpadm など、この API をラップするコマンド・ライン・ツールを使用しても実行できます。{{site.data.keys.mf_server }} の許可ユーザーは、モバイル・アプリケーションのサーバー・サイド構成を変更したり、サーバー・サイド・コード (アダプター) をアップロードまたは構成したり、Cordova モバイル・アプリの新規 Web リソースをアップロードしたり、アプリケーション管理操作を実行したりすることができます。
 
-{{ site.data.keys.mf_server }} offers extra layers of security, in addition to the security layers of the network infrastructure or the application server. The security features include the control of application authenticity and the access control to the server-side resources and the adapters. These security configurations can also be done by the authorized users of {{ site.data.keys.mf_console }} and the administration service. You determine the authorization of the {{ site.data.keys.product_adj }} administrators by mapping them to security roles as described in [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../../installation-configuration/production/server-configuration).
+{{site.data.keys.mf_server }} は、ネットワーク・インフラストラクチャーまたはアプリケーション・サーバーのセキュリティー層に加え、追加のセキュリティー層を提供しています。セキュリティー・フィーチャーには、アプリケーションの認証性の制御、およびサーバー・サイド・リソースとアダプターへのアクセス制御が含まれます。これらのセキュリティー構成は、{{site.data.keys.mf_console }} および管理サービスの許可ユーザーも実行できます。{{site.data.keys.product_adj }} 管理者の許可を決定するには、『[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../../installation-configuration/production/server-configuration)』の説明に従ってそれらの管理者をセキュリティー・ロールにマップします。
 
-A simplified version of {{ site.data.keys.mf_server }} that is preconfigured and does not need software prerequisite such as database or an application server is available for developers. See [Setting up the {{ site.data.keys.product_adj }} Development Server](../../../installation-configuration/development).
+事前構成済みで、データベースやアプリケーション・サーバーなどのソフトウェア前提条件が必要ない、{{site.data.keys.mf_server }} の簡素化バージョンが開発者用に使用可能です。[{{site.data.keys.product_adj }} 開発サーバーのセットアップ](../../../installation-configuration/development)を参照してください。
 
-## {{ site.data.keys.mf_server }} Components
-{: # mobilefirst-server-components }
-The architecture of the {{ site.data.keys.mf_server }} components is illustrated as follows:
+## {{site.data.keys.mf_server }} コンポーネント
+{ #mobilefirst-server-components }
+{{site.data.keys.mf_server }} コンポーネントのアーキテクチャーを以下に示します。
 
-![Components that make up the {{ site.data.keys.mf_server }}](server_components.jpg)
+![{{site.data.keys.mf_server }} を構成するコンポーネント](server_components.jpg)
 
-### Core components of {{ site.data.keys.mf_server }}
+### {{site.data.keys.mf_server }} のコア・コンポーネント
 {: #core-components-of-mobilefirst-server }
-{{ site.data.keys.mf_console }}, the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, the {{ site.data.keys.mf_server }} artifacts, and the {{ site.data.keys.product_adj }} runtime are the minimum set of the components to install. 
+{{site.data.keys.mf_console }}、
+{{site.data.keys.mf_server }} 管理サービス、{{site.data.keys.mf_server }} ライブ更新サービス、
+{{site.data.keys.mf_server }} 成果物、および {{site.data.keys.product_adj }} ランタイムは、インストールする最小コンポーネント・セットです。 
 
-* The runtime provides the {{ site.data.keys.product_adj }} services to the mobile apps that run on the mobile devices.
-* The administration service provides the configuration and administration capabilities. You use the administration service via {{ site.data.keys.mf_console }}, the live update service REST API, or command line tools such as mfpadm or mfpdev. 
-* The live update service manages configuration data and is used by the administration service.
+* ランタイムは、モバイル・デバイスで稼働するモバイル・アプリに {{site.data.keys.product_adj }} サービスを提供します。
+* 管理サービスは、構成機能と管理機能を提供します。この管理サービスは、{{site.data.keys.mf_console }}、ライブ更新サービスの REST API、または mfpadm や mfpdev などのコマンド・ライン・ツールを介して使用します。 
+* ライブ更新サービスは構成データを管理し、管理サービスによって使用されます。
 
-These components require a database. The database table name for each component does not have any intersection. As such, you can use the same database or even the same schema to store all the tables of these components. For more information, see [Setting up databases](../../../installation-configuration/production/server-configuration).
+これらのコンポーネントにはデータベースが必要です。各コンポーネントのデータベース表名には交点はありません。そのため、これらのコンポーネントのすべての表を保管するために、同じデータベース、または同じスキーマさえも使用することができます。詳しくは、[データベースのセットアップ](../../../installation-configuration/production/server-configuration)を参照してください。
 
-It is possible to install more than one instance of the runtime. In this case, each instance needs its own database. The artifacts component provides resources for {{ site.data.keys.mf_console }}. It does not requires a database.
+ランタイムの複数のインスタンスをインストールできます。この場合、各インスタンスはそれぞれ独自のデータベースを持っている必要があります。成果物コンポーネントは、{{site.data.keys.mf_console }} 用のリソースを提供します。データベースは不要です。
 
-### Optional components of {{ site.data.keys.mf_server }}
+### {{site.data.keys.mf_server }} のオプション・コンポーネント
 {: #optional-components-of-mobliefirst-server }
-The {{ site.data.keys.mf_server }} push service provides push notification capabilities. It must be installed to provide these capabilities of the mobile apps use the {{ site.data.keys.product_adj }} Push features. From the perspective of mobile apps, the URL of the push service is the same as the URL as the runtime, except that its context root is `/imfpush`.
+{{site.data.keys.mf_server }} プッシュ・サービスは、プッシュ通知機能を提供します。モバイル・アプリケーションのこれらの機能が {{site.data.keys.product_adj }} プッシュ機能を使用するには、このサービスがインストールされている必要があります。モバイル・アプリの側からすると、プッシュ・サービスの URL は、コンテキスト・ルートが `/imfpush` である点を除き、ランタイムの URL と同じです。
 
-If you plan to install the push service on a different server or cluster than the runtime, you need to configure the routing rules of your HTTP server. The configuration is to ensure that the requests to the push service and the runtime are properly routed. 
+プッシュ・サービスを、ランタイムと異なるサーバーまたはクラスターにインストールすることを計画している場合は、HTTP サーバーの経路指定ルールを構成する必要があります。この構成により、プッシュ・サービスおよびランタイムへの要求が正しく経路指定されるようになります。 
 
-The push service requires a database. The tables of the push service have no intersection with the tables of the runtime, the administration service, and the live update service. Thus, it can also be installed in the same database or schema.
+プッシュ・サービスにはデータベースが必要です。プッシュ・サービスの表には、ランタイム、管理サービス、およびライブ更新サービスの表との交点はありません。したがって、同じデータベースまたはスキーマにインストールすることもできます。
 
-The {{ site.data.keys.mf_analytics }} service and {{ site.data.keys.mf_analytics_console }} provide monitoring and analytics information about the mobile apps usage. Mobile apps can provide more insight by using the Logger SDK. The {{ site.data.keys.mf_analytics }} service does not need a database. It stores its data locally on disk by using Elasticsearch. The data is structured in shards that can be replicated between the members of a cluster of the Analytics service.
+{{site.data.keys.mf_analytics }} サービスおよび {{site.data.keys.mf_analytics_console }} は、モバイル・アプリの使用に関するモニターおよび分析の情報を提供します。モバイル・アプリは、Logger SDK を使用することにより、より多くの洞察を提供することができます。{{site.data.keys.mf_analytics }} サービスにはデータベースは必要ありません。データは、Elasticsearch を使用してディスク上にローカルに保管されます。データは、Analytics サービスのクラスターのメンバー間で複製できるシャードで構造化されます。
 
-For more information about the network flows and the topology constraints for these components, see [Topologies and network flows](../../../installation-configuration/production/server-configuration).
+ネットワーク・フローおよびこれらのコンポーネントのトポロジー制約について詳しくは、『[トポロジーとネットワーク・フロー](../../../installation-configuration/production/server-configuration)』を参照してください。
 
-### Installation process
+### インストール・プロセス
 {: #installation-process }
-The installation of {{ site.data.keys.mf_server }} on-premises can be done by using the following ways:
+オンプレミスでの {{site.data.keys.mf_server }} のインストールは、以下の方法を使用して実行できます。
 
-* The Server Configuration Tool - a graphical wizard
-* Ant tasks through the command line tools
-* Manual installation
+* サーバー構成ツール - グラフィカル・ウィザード
+* コマンド・ライン・ツールを介した Ant タスク
+* 手動インストール
 
-For more information about the installation of {{ site.data.keys.mf_server }} on-premises is provided, see:
+オンプレミスでの {{site.data.keys.mf_server }} のインストールについて、以下に詳しい情報が提供されています。
 
-* A [guide through a complete installation](../../../installation-configuration/production/) of {{ site.data.keys.mf_server }} farm on WebSphere  Application Server Liberty profile. The guide is based on a simple scenario for you to try out the installation either in graphical mode or in command line mode.
-* A [detailed section](../../../installation-configuration/production/) that contains details about the installation prerequisites, database setup, server topologies, deployment of the components to the application server, and server configuration.
+* WebSphere Application Server Liberty プロファイルへの {{site.data.keys.mf_server }} ファームの[完全インストールのガイド](../../../installation-configuration/production/)。このガイドは、グラフィカル・モードまたはコマンド・ライン・モードのいずれかでインストールを試すためのシンプルなシナリオに基づいています。
+* インストールの前提条件、データベースのセットアップ、サーバー・トポロジー、アプリケーション・サーバーへのコンポーネントのデプロイメント、およびサーバー構成に関する詳細が含まれた[詳細セクション](../../../installation-configuration/production/)。
 

@@ -1,65 +1,62 @@
 ---
 layout: tutorial
-title: Setting Up Databases
+title: データベースのセットアップ
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-The following {{ site.data.keys.mf_server_full }} components need to store technical data into a database:
+以下の {{site.data.keys.mf_server_full }} コンポーネントは、テクニカル・データをデータベースに保管する必要があります。
 
-* {{ site.data.keys.mf_server }} administration service
-* {{ site.data.keys.mf_server }} live update service
-* {{ site.data.keys.mf_server }} push service
-* {{ site.data.keys.product }} runtime
+* {{site.data.keys.mf_server }} 管理サービス
+* {{site.data.keys.mf_server }} ライブ更新サービス
+* {{site.data.keys.mf_server }} プッシュ・サービス
+* {{site.data.keys.product }}runtime > **注:** 複数のランタイム・インスタンスが異なるコンテキスト・ルートでインストールされる場合、各インスタンスに独自の表のセットが必要です。
+> データベースは、IBM DB2、Oracle、または MySQL などのリレーショナル・データベースにできます。
 
-> **Note:** If multiple runtime instances are installed with different context root, each instance needs its own set of tables.
-> The database can be a relational database such as IBM  DB2 , Oracle, or MySQL.
-
-#### Relational databases (DB2, Oracle, or MySQL)
+#### リレーショナル・データベース (DB2、Oracle、または MySQL)
 {: #relational-databases-db2-oracle-or-mysql }
-Each component needs a set of tables. The tables can be created manually by running the SQL scripts specific to each component (see [Create the database tables manually](#create-the-database-tables-manually)), by using Ant Tasks, or the Server Configuration Tool. The table names of each component do not overlap. Thus, it is possible to put all the tables of these components under a single schema.
+各コンポーネントに 1 つの表セットが必要です。各コンポーネントに固有の SQL スクリプトを実行するか ([手動でのデータベース表の作成](#create-the-database-tables-manually)を参照)、Ant タスクを使用するか、サーバー構成ツールを使用することで、表を手動で作成することができます。各コンポーネントの表名はオーバーラップしません。このため、これらのコンポーネントの表をすべて単一のスキーマに置くことができます。
 
-However, if you decide to install multiple instances of {{ site.data.keys.product }} runtime, each with its own context root in the application server, every instance needs its own set of tables. In this case, they need to be in different schemas.
+ただし、{{site.data.keys.product }} ランタイムの複数インスタンスを、インスタンスごとに独自のコンテキスト・ルートを指定してアプリケーション・サーバー内にインストールすることにした場合、各インスタンスに独自の表セットが必要となります。この場合、各インスタンスを異なるスキーマに置く必要があります。
 
-> **Note about DB2:** {{ site.data.keys.product_adj }} licensees are entitled to use DB2 as a supporting system for Foundation. To benefit from this you must, after installing the DB2 software:
+> **DB2 に関する注:** {{site.data.keys.product_adj }} のライセンス所有者は、Foundation のサポート・システムとして DB2 を使用する資格があります。これを利用するには、DB2 ソフトウェアのインストール後に以下を行う必要があります。
 > 
-> * Download the restricted use activation image directly from the [IBM Passport Advantage (PPA) website](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
-> * Apply the restricted use activation license file **db2xxxx.lic** using the **db2licm** command
+> * [IBM パスポート・アドバンテージ (PPA) Web サイト](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)から制限付き使用のアクティベーション・イメージを直接ダウンロードします。
+> * **db2licm** コマンドを使用して、制限付き使用のアクティベーション・ライセンス・ファイル **db2xxxx.lic** を適用します。
 >
-> Learn more in the [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html)
+> [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html) に詳細の説明があります。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Database users and privileges](#database-users-and-privileges)
-* [Database requirements](#database-requirements)
-* [Create the database tables manually](#create-the-database-tables-manually)
-* [Create the database tables with the Server Configuration Tool](#create-the-database-tables-with-the-server-configuration-tool)
-* [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks)
+* [データベースのユーザーおよび特権](#database-users-and-privileges)
+* [データベース要件](#database-requirements)
+* [手動でのデータベース表の作成](#create-the-database-tables-manually)
+* [サーバー構成ツールを使用したデータベース表の作成](#create-the-database-tables-with-the-server-configuration-tool)
+* [Ant タスクを使用したデータベース表の作成](#create-the-database-tables-with-ant-tasks)
 
-## Database users and privileges
+## データベースのユーザーおよび特権
 {: #database-users-and-privileges }
-At run time, the {{ site.data.keys.mf_server }} applications in the application server use data sources as resources to obtain connection to relational databases. The data source needs a user with certain privileges to access the database.
+実行時、アプリケーション・サーバー内の {{site.data.keys.mf_server }} アプリケーションは、リレーショナル・データベースへの接続を獲得するためのリソースとしてデータ・ソースを使用します。データ・ソースには、データベースにアクセスするための特定の特権を持つユーザーが必要です。
 
-You need to configure a data source for each {{ site.data.keys.mf_server }} application that is deployed to the application server to have the access to the relational database. The data source requires a user with specific privileges to access the database. The number of users that you need to create depends on the installation procedure that is used to deploy {{ site.data.keys.mf_server }} applications to the application server.
+アプリケーション・サーバーにデプロイされる各 {{site.data.keys.mf_server }} アプリケーションのデータ・ソースを、リレーショナル・データベースにアクセスできるように構成する必要があります。データ・ソースには、データベースにアクセスするための特定の特権を持つユーザーが必要です。作成する必要があるユーザーの数は、{{site.data.keys.mf_server }} アプリケーションをアプリケーション・サーバーにデプロイするために使用されるインストール手順によって決まります。
 
-### Installation with the Server Configuration Tool
+### サーバー構成ツールを使用したインストール
 {: #installation-with-the-server-configuration-tool }
-The same user is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} configuration service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
+同じユーザーがすべてのコンポーネント ({{site.data.keys.mf_server }} 管理サービス、{{site.data.keys.mf_server }} 構成サービス、{{site.data.keys.mf_server }} プッシュ・サービス、および {{site.data.keys.product }} ランタイム) に使用されます。
 
-### Installation with Ant tasks
+### Ant タスクを使用したインストール
 {: #installation-with-ant-tasks }
-The sample Ant files that are provided in the product distribution use the same user for all components. However, it is possible to modify the Ant files to have different users:
+製品のディストリビューションで提供されているサンプル Ant ファイルは、すべてのコンポーネントに同じユーザーを使用します。ただし、以下のように、異なるユーザーを使用するように Ant ファイルを変更することも可能です。
 
-* The same user for the administration service and the configuration service as they cannot be installed separately with Ant tasks.
-* A different user for the runtime
-* A different user for the push service.
+* 管理サービスと構成サービスは Ant タスクを使用して別々にインストールできないので、これらには同じユーザーを使用する。
+* ランタイムには異なるユーザーを使用する。
+* プッシュ・サービスには異なるユーザーを使用する。
 
-### Manual installation
+### 手動インストール
 {: #manual-installation }
-It is possible to assign a different data source, and thus a different user, to each of the {{ site.data.keys.mf_server }} components.
-At run time, the users must have the following privileges on the tables and sequences of their data:
+{{site.data.keys.mf_server }} の各コンポーネントに、異なるデータ・ソース (したがって、異なるユーザー) を割り当てることが可能です。実行時、ユーザーは、データの表およびシーケンスに対して以下の特権を持っている必要があります。
 
 * SELECT TABLE
 * INSERT TABLE
@@ -67,13 +64,13 @@ At run time, the users must have the following privileges on the tables and sequ
 * DELETE TABLE
 * SELECT SEQUENCE
 
-If the tables are not created manually before you run the installation with Ant Tasks or the Server Configuration Tool, ensure that you have a user that is able to create the tables. It also needs the following privileges:
+Ant タスクまたはサーバー構成ツールを使用してインストールを実行する前に表が手動で作成されていない場合は、表を作成できるユーザーを割り当てるようにしてください。ユーザーには以下の特権も必要になります。
 
 * CREATE INDEX
 * CREATE SEQUENCE
 * CREATE TABLE
 
-For an upgrade of the product, it needs these additional privileges:
+製品のアップグレードについては、以下の追加特権が必要になります。
 
 * ALTER TABLE
 * CREATE VIEW
@@ -82,31 +79,31 @@ For an upgrade of the product, it needs these additional privileges:
 * DROP TABLE
 * DROP VIEW
 
-## Database requirements
+## データベース要件
 {: #database-requirements }
-The database stores all the data of the {{ site.data.keys.mf_server }} applications. Before you install the {{ site.data.keys.mf_server }} components, ensure that the database requirements are met.
+データベースは、{{site.data.keys.mf_server }} アプリケーションのすべてのデータを保管します。{{site.data.keys.mf_server }} コンポーネントをインストールする前に、データベース要件が満たされていることを確認してください。
 
-* [DB2 database and user requirements](#db2-database-and-user-requirements)
-* [Oracle database and user requirements](#oracle-database-and-user-requirements)
-* [MySQL database and user requirements](#mysql-database-and-user-requirements)
+* [DB2 データベースおよびユーザーの要件](#db2-database-and-user-requirements)
+* [Oracle データベースおよびユーザーの要件](#oracle-database-and-user-requirements)
+* [MySQL データベースおよびユーザーの要件](#mysql-database-and-user-requirements)
 
-> For an up-to-date list of supported database software versions, refer to the [System Requirements](../../../product-overview/requirements/) page.
+> サポートされるデータベース・ソフトウェア・バージョンの最新リストについては、[システム要件](../../../product-overview/requirements/)ページを参照してください。
 
-### DB2 database and user requirements
+### DB2 データベースおよびユーザーの要件
 {: #db2-database-and-user-requirements }
-Review the database requirement for DB2. Follow the steps to create user, database, and setup your database to meet the specific requirement.
+DB2 のデータベースの要件を確認してください。以下のステップに従って、ユーザーおよびデータベースを作成し、特定の要件を満たすようにデータベースをセットアップします。
 
-Ensure that you set the database character set as UTF-8.
+データベース文字セットは「UTF-8」に設定するようにしてください。
 
-The page size of the database must be at least 32768. The following procedure creates a database with a page size 32768. It also creates a user (**mfpuser**) and then grants the database access to this user. This user can then be used by the Server Configuration Tool or the Ant tasks to create the tables.
+データベースのページ・サイズは 32768 以上でなければなりません。以下の手順では、ページ・サイズが 32768 のデータベースを作成します。また、この手順では、ユーザー (**mfpuser**) を作成し、そのユーザーにデータベース・アクセス権限を付与します。その後、サーバー構成ツールまたは Ant タスクでこのユーザーを使用して、テーブルを作成できます。
 
-1. Create a system user named, for example, **mfpuser** in a DB2 admin group such as **DB2USERS**, by using the appropriate commands for your operating system. Give it a password, for example, **mfpuser**.
-2. Open a DB2 command line processor, with a user that has **SYSADM** or **SYSCTRL** permissions.
-    * On Windows systems, click **Start → IBM DB2 → Command Line Processor**.
-    * On Linux or UNIX systems, go to **~/sqllib/bin** and enter `./db2`.
-3. To create the {{ site.data.keys.mf_server }} database, enter the SQL statements similar to the following example.
+1. ご使用のオペレーティング・システムの該当するコマンドを使用して、DB2 管理グループ (**DB2USERS** など) に、例えば **mfpuser** などの名前のシステム・ユーザーを作成します。それにパスワード (例えば **mfpuser**) を付与します。
+2. **SYSADM** または **SYSCTRL** 権限を持つユーザーで DB2 コマンド・ライン・プロセッサーを開きます。
+    * Windows システムでは、**「開始 (Start)」→「IBM DB2」→「コマンド・ライン・プロセッサー (Command Line Processor)」**とクリックします。
+    * Linux システムまたは UNIX システムでは、**~/sqllib/bin** に移動し、`./db2` と入力します。
+3. {{site.data.keys.mf_server }} データベースを作成するには、以下の例のような SQL ステートメントを入力します。
 
-Replace the user name **mfpuser** with your own.
+ユーザー名 **mfpuser** は実際の名前で置き換えてください。
 
 ```sql
 CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
@@ -116,29 +113,31 @@ DISCONNECT MFPDATA
 QUIT
 ```
 
-### Oracle database and user requirements
+### Oracle データベースおよびユーザーの要件
 {: #oracle-database-and-user-requirements }
-Review the database requirement for Oracle. Follow the steps to create user, database, and setup your database to meet the specific requirement.
+Oracle のデータベースの要件を確認してください。以下のステップに従って、ユーザーおよびデータベースを作成し、特定の要件を満たすようにデータベースをセットアップします。
 
-Ensure that you set the database character set as Unicode character set (AL32UTF8) and the national character set as UTF8 - Unicode 3.0 UTF-8.  
+データベース文字セットは「Unicode 文字セット (AL32UTF8)」に、国別文字セットは 「UTF8 - Unicode 3.0 UTF-8」に設定するようにしてください。  
 
-The runtime user (as discussed is [Database users and privileges](#database-users-and-privileges)) must have an associated table space and enough quota to write the technical data required by the {{ site.data.keys.product }} services. For more information about the tables that are used by the product, see [Internal runtime databases](../installation-reference/#internal-runtime-databases).
+ランタイム・ユーザー (説明は [データベースのユーザーおよび特権](#database-users-and-privileges)を参照) には、関連付けられた表スペースと、{{site.data.keys.product }} サービスが必要とするテクニカル・データを書き込むために十分な割り当て量を持つ必要があります。本製品で使用する表について詳しくは、[内部ランタイム・データベース](../installation-reference/#internal-runtime-databases)を参照してください。
 
-The tables are expected to be created in the default schema of the runtime user. The Ant tasks and the Server Configuration Tool create the tables in the default schema of the user passed as argument. For more information about the creation of tables, see [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually).
+表は、ランタイム・ユーザーのデフォルト・スキーマ内に作成する必要があります。Ant タスクおよびサーバー構成ツールは、引数として渡されたユーザーのデフォルト・スキーマ内に表を作成します。表の作成について詳しくは、[Oracle データベース表の手動作成](#creating-the-oracle-database-tables-manually)を参照してください。
 
-The procedure creates a database if needed. A user that can create tables and index in this database is added and used as a runtime user.
+この手順により、必要に応じてデータベースが作成されます。このデータベースで表および索引を作成できるユーザーが追加され、ランタイム・ユーザーとして使用されます。
 
-1. If you do not already have a database, use the Oracle Database Configuration Assistant (DBCA) and follow the steps in the wizard to create a new general-purpose database, named ORCL in this example:
-    * Use global database name **ORCL\_your\_domain**, and system identifier (SID) **ORCL**.
-    * On the **Custom Scripts** tab of the step **Database Content**, do not run the SQL scripts because you must first create a user account.
-    * On the **Character Sets** tab of the step **Initialization Parameters**, select **Use Unicode (AL32UTF8) character set and UTF8 - Unicode 3.0 UTF-8 national character set**.
-    * Complete the procedure, accepting the default values.
-2. Create a database user by using either Oracle Database Control or the Oracle SQLPlus command line interpreter.
-3. Using Oracle Database Control:
-    * Connect as **SYSDBA**.
-    * Go to the **Users** page and click **Server**, then **Users** in the **Security** section.
-    * Create a user, for example **MFPUSER**.
-    * Assign the following attributes:
+1. データベースがまだない場合、Oracle Database Configuration Assistant (DBCA) を使用し、ウィザードのステップに従って、(この例では ORCL という名前の) 新しい汎用データベースを作成します。
+    * グローバル・データベース名 **ORCL\_your\_domain**、およびシステム ID (SID) **ORCL** を使用します。
+    * ステップ**「データベース・コンテント (Database Content)」**の**「カスタム・スクリプト (Custom Scripts)」**タブで、SQL スクリプトを実行しないでください。これは、まずユーザー・アカウントを作成する必要があるためです。
+    * **「初期化パラメーター (Initialization Parameters)」**ステップの
+**「キャラクタ・セット (Character Sets)」**タブで、**「Unicode (AL32UTF8) 文字セットおよび UTF8 - Unicode 3.0 UTF-8 国別文字セットを
+使用」**を選択します。
+    * デフォルト値を受け入れてプロシージャーを完了します。
+2. Oracle Database Control を使用するか、または Oracle SQLPlus コマンド・ライン・インタープリターを使用して、データベース・ユーザーを作成します。
+3. Oracle Database Control を使用する場合:
+    * **SYSDBA** として接続します。
+    * **「ユーザー (Users)」**ページに進み、**「サーバー (Server)」**をクリックし、**「セキュリティー (Security)」**セクションの**「ユーザー (Users)」**をクリックします。
+    * 例えば **MFPUSER** という名前のユーザーを作成します。
+    * 以下の属性を割り当てます。
         * **Profile**: DEFAULT
         * **Authentication**: password
         * **Default tablespace**: USERS
@@ -148,9 +147,10 @@ The procedure creates a database if needed. A user that can create tables and in
         * Add system privilege: CREATE SEQUENCE
         * Add system privilege: CREATE TABLE
         * Add quota: Unlimited for tablespace USERS
-    * Using the Oracle SQLPlus command line interpreter:
+    * Oracle SQLPlus コマンド・ライン・インタープリターを使用する場合:
 
-The commands in the following example create a user named **MFPUSER** for the database:
+以下の例に示されたコマンドは、
+データベース用の **MFPUSER** という名前のユーザーを作成します。
 
 ```sql
 CONNECT SYSTEM/<SYSTEM_password>@ORCL
@@ -159,22 +159,22 @@ GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO MFPUSER;
 DISCONNECT;
 ```
 
-### MySQL database and user requirements
+### MySQL データベースおよびユーザーの要件
 {: #mysql-database-and-user-requirements }
-Review the database requirement for MySQL. Follow the steps to create user, database, and configure your database to meet the specific requirement.
+MySQL のデータベースの要件を確認してください。以下のステップに従って、ユーザーおよびデータベースを作成し、特定の要件を満たすようにデータベースを構成します。
 
-Make sure that you set the character set to UTF8.
+文字セットは UTF8 に設定するようにしてください。
 
-The following properties must be assigned with appropriate values:
+以下のプロパティーに適切な値を割り当てる必要があります。
 
-* max_allowed_packet with 256 M or more
-* innodb_log_file_size with 250 M or more
+* max_allowed_packet には、256 M 以上
+* innodb_log_file_size には 250 M 以上
 
-For more information about how to set the properties, see the [MySQL documentation](http://dev.mysql.com/doc/).  
-The procedure creates a database (MFPDATA) and a user (mfpuser) that can connect to the database with all privileges from a host (mfp-host).
+プロパティーの設定方法について詳しくは、[MySQL の資料](http://dev.mysql.com/doc/)を参照してください。  
+この手順により、データベース (MFPDATA) およびユーザー (mfpuser) が作成されます。このユーザーは、ホスト (mfp-host) からすべての特権を持ってデータベースに接続することができます。
 
-1. Run a MySQL command line client with the option `-u root`.
-2. Enter the following commands:
+1. オプション `-u root` を指定して MySQL コマンド・ライン・クライアントを実行します。
+2. 以下のコマンドを入力します。
 
    ```sql
    CREATE DATABASE MFPDATA CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -183,49 +183,49 @@ The procedure creates a database (MFPDATA) and a user (mfpuser) that can connect
    FLUSH PRIVILEGES;
    ```
 
-    Where mfpuser before the "at" sign (@) is the user name, **mfpuser-password** after **IDENTIFIED BY** is its password, and **mfp-host** is the name of the host on which {{ site.data.keys.product_adj }} runs.
+    ここで、「at」記号 (@) の前の mfpuser はユーザー名で、**IDENTIFIED BY** の後の **mfpuser-password** はそのパスワード、そして **mfp-host** は、{{site.data.keys.product_adj }} が稼働しているホストの名前です。
     
-    The user must be able to connect to the MySQL server from the hosts that run the Java application server with the {{ site.data.keys.mf_server }} applications installed.
+    このユーザーは、{{site.data.keys.mf_server }} アプリケーションがインストールされた Java アプリケーション・サーバーを実行するホストから、MySQL サーバーに接続できなければなりません。
     
-## Create the database tables manually
+## 手動でのデータベース表の作成
 {: #create-the-database-tables-manually }
-The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details on how to create them manually.
+{{site.data.keys.mf_server }} アプリケーションのデータベース表は、Ant タスクを使用するか、サーバー構成ツールを使用して手動で作成することができます。以下のトピックでは、それらを手動で作成する方法についての説明および詳細情報を提供しています。
 
-* [Creating the DB2 database tables manually](#creating-the-db2-database-tables-manually)
-* [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually)
-* [Creating the MySQL database tables manually](#creating-the-mysql-database-tables-manually)
+* [DB2 データベース表の手動作成](#creating-the-db2-database-tables-manually)
+* [Oracle データベース表の手動作成](#creating-the-oracle-database-tables-manually)
+* [MySQL データベース表の手動作成](#creating-the-mysql-database-tables-manually)
 
-### Creating the DB2 database tables manually
+### DB2 データベース表の手動作成
 {: #creating-the-db2-database-tables-manually }
-Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the DB2  database tables.
+{{site.data.keys.mf_server }} のインストールで提供される SQL スクリプトを使用して、DB2 データベース表を作成します。
 
-As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. They are the similar to the topic about the possible users for DB2 as described in [Database users and privileges](#database-users-and-privileges).
+「概説」セクションで説明されているとおり、4 つの {{site.data.keys.mf_server }} コンポーネントすべてに表が必要です。表の作成には、同じスキーマを使用しても、異なるスキーマを使用しても構いません。ただし、{{site.data.keys.mf_server }} アプリケーションの Java アプリケーション・サーバーへのデプロイ方法によって、いくつかの制約が適用されます。それらの制約は、[データベースのユーザーおよび特権](#database-users-and-privileges)で説明された、DB2 の可能なユーザーについてのトピックに類似しています。
 
-#### Installation with the Server Configuration Tool
+#### サーバー構成ツールを使用したインストール
 {: #installation-with-the-server-configuration-tool-1 }
-The same schema is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
+すべてのコンポーネント ({{site.data.keys.mf_server }} 管理サービス、{{site.data.keys.mf_server }} ライブ更新サービス、{{site.data.keys.mf_server }} プッシュ・サービス、および {{site.data.keys.product }} ランタイム) に対して同じスキーマが使用されます。
 
-#### Installation with Ant tasks
+#### Ant タスクを使用したインストール
 {: #installation-with-ant-tasks-1 }
-The sample Ant files that are provided in the product distribution use the same schema for all components. However, it is possible to modify the Ant files to have different schemas:
+製品のディストリビューションで提供されるサンプル Ant ファイルは、すべてのコンポーネントに対して同じスキーマを使用します。ただし、以下のように、異なるスキーマを使用するよう Ant ファイルを変更することは可能です。
 
-* The same schema for the administration service and the live update service as they cannot be installed separately with Ant tasks.
-* A different schema for the runtime
-* A different schema for the push service.
+* 管理サービスとライブ更新サービスには同じスキーマ (これらは Ant タスクで別々にインストールできないため)。
+* ランタイム用には異なるスキーマ。
+* プッシュ・サービス用には異なるスキーマ。
 
-#### Manual installation
+#### 手動インストール
 {: #manual-installation-1 }
-It is possible to assign a different data source, and thus a different schema, to each of the {{ site.data.keys.mf_server }} components.  
-The scripts to create the tables are as follows:
+{{site.data.keys.mf_server }} コンポーネントのそれぞれに異なるデータ・ソースを (またそれにより異なるスキーマを) 割り当てることができます。  
+表の作成に使用するスクリプトは以下のとおりです。
 
-* For the administration service, in **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql**.
-* For the live update service, in **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-db2.sql**.
-* For the runtime component, in **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-db2.sql**.
-* For the push service, in **mfp\_install\_dir/PushService/databases/create-push-db2.sql**.
+* 管理サービスの場合: **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql**
+* ライブ更新サービスの場合: **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-db2.sql**
+* ランタイム・コンポーネントの場合: **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-db2.sql**
+* プッシュ・サービスの場合: **mfp\_install\_dir/PushService/databases/create-push-db2.sql**
 
-The following procedure creates the tables for all the applications in the same schema (MFPSCM). It assumes that a database and a user are already created. For more information, see [DB2 database and user requirements](#db2-database-and-user-requirements).
+以下の手順により、すべてのアプリケーション用の表が、同じスキーマ (MFPSCM) で作成されます。ここでは、データベースおよびユーザーが作成済みであることを前提としています。詳しくは、[DB2 データベースおよびユーザーの要件](#db2-database-and-user-requirements)を参照してください。
 
-Run DB2 with the following commands with the user (mfpuser):
+ユーザー (mfpuser) を使用して、以下のコマンドで  DB2 を実行します。
 
 ```sql
 db2 CONNECT TO MFPDATA
@@ -236,24 +236,24 @@ db2 -vf mfp_install_dir/MobileFirstServer/databases/create-runtime-db2.sql -t
 db2 -vf mfp_install_dir/PushService/databases/create-push-db2.sql -t
 ```
 
-If the tables are created by mfpuser, this user has the privileges on the tables automatically and can use them at run time. If you want to restrict the privileges of the runtime user as described in [Database users and privileges](#database-users-and-privileges) or a finer control of privileges, refer to the DB2 documentation.
+mfpuser によって表が作成された場合、このユーザーはそれらの表に対する特権を自動的に付与され、ランタイムでそれらを使用できます。[データベースのユーザーおよび特権](#database-users-and-privileges)の説明のようにランタイム・ユーザーの特権を制限したい場合、もしくは特権の内容をより詳細に制御したい場合は、DB2 の資料を参照してください。
 
-### Creating the Oracle database tables manually
+### Oracle データベース表の手動作成
 {: #creating-the-oracle-database-tables-manually }
-Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
+{{site.data.keys.mf_server }} のインストールで提供される SQL スクリプトを使用して、Oracle データベース表を作成します。
 
-As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. The details are described in [Database users and privileges](#database-users-and-privileges).
+「概説」セクションで説明されているとおり、4 つの {{site.data.keys.mf_server }} コンポーネントすべてに表が必要です。表の作成には、同じスキーマを使用しても、異なるスキーマを使用しても構いません。ただし、{{site.data.keys.mf_server }} アプリケーションの Java アプリケーション・サーバーへのデプロイ方法によって、いくつかの制約が適用されます。詳しくは、[データベースのユーザーおよび特権](#database-users-and-privileges)で説明しています。
 
-The tables must be created in the default schema of the runtime user. The scripts to create the tables are as follows:
+表は、ランタイム・ユーザーのデフォルト・スキーマ内に作成する必要があります。表の作成に使用するスクリプトは以下のとおりです。
 
-* For the administration service, in **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-oracle.sql**.
-* For the live update service, in **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-oracle.sql**.
-* For the runtime component, in **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-oracle.sql**.
-* For the push service, in **mfp\_install\_dir/PushService/databases/create-push-oracle.sql**.
+* 管理サービスの場合: **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-oracle.sql**
+* ライブ更新サービスの場合: **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-oracle.sql**
+* ランタイム・コンポーネントの場合: **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-oracle.sql**
+* プッシュ・サービスの場合: **mfp\_install\_dir/PushService/databases/create-push-oracle.sql**
 
-The following procedure creates the tables for all the applications for the same user (**MFPUSER**). It assumes that a database and a user are already created. For more information, see [Oracle database and user requirements](#oracle-database-and-user-requirements).
+以下の手順により、すべてのアプリケーション用の、同じユーザー (**MFPUSER**) を対象にした表が作成されます。ここでは、データベースおよびユーザーが作成済みであることを前提としています。詳しくは、[Oracle データベースおよびユーザーの要件](#oracle-database-and-user-requirements)を参照してください。
 
-Run the following commands in Oracle SQLPlus:
+Oracle SQLPlus で以下のコマンドを実行します。
 
 ```sql
 CONNECT MFPUSER/MFPUSER_password@ORCL
@@ -264,42 +264,43 @@ CONNECT MFPUSER/MFPUSER_password@ORCL
 DISCONNECT;
 ```
 
-If the tables are created by MFPUSER, this user has the privileges on the tables automatically and can use them at run time. The tables are created in the user's default schema. If you want to restrict the privileges of the runtime user as described in [Database users and privileges](#database-users-and-privileges) or have a finer control of privileges, refer to the Oracle documentation.
+MFPUSER によって表が作成された場合、このユーザーはそれらの表に対する特権を自動的に付与され、ランタイムでそれらを使用できます。表は、このユーザーのデフォルト・スキーマ内に作成されます。[データベースのユーザーおよび特権](#database-users-and-privileges)の説明のようにランタイム・ユーザーの特権を制限したい場合、もしくは特権の内容をより詳細に制御したい場合は、Oracle の資料を参照してください。
 
-### Creating the MySQL database tables manually
+### MySQL データベース表の手動作成
 {: #creating-the-mysql-database-tables-manually }
-Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
+{{site.data.keys.mf_server }} のインストールで提供される SQL スクリプトを使用して、MySQL データベース表を作成します。
 
-As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. They are the similar to the topic about the possible users for MySQL as described in [Database users and privileges](#database-users-and-privileges).
+「概説」セクションで説明されているとおり、4 つの {{site.data.keys.mf_server }} コンポーネントすべてに表が必要です。表の作成には、同じスキーマを使用しても、異なるスキーマを使用しても構いません。ただし、{{site.data.keys.mf_server }} アプリケーションの Java アプリケーション・サーバーへのデプロイ方法によって、いくつかの制約が適用されます。それらの制約は、[データベースのユーザーおよび特権](#database-users-and-privileges)で説明された、 MySQL の可能なユーザーについてのトピックに類似しています。
 
-#### Installation with the Server Configuration Tool
+#### サーバー構成ツールを使用したインストール
 {: #installation-with-the-server-configuration-tool-2 }
-The same database is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
+すべてのコンポーネント ({{site.data.keys.mf_server }} 管理サービス、{{site.data.keys.mf_server }} ライブ更新サービス、{{site.data.keys.mf_server }} プッシュ・サービス、および {{site.data.keys.product }} ランタイム) に対して同じデータベースが使用されます。
 
-#### Installation with Ant tasks
+#### Ant タスクを使用したインストール
 {: #installation-with-ant-tasks-2 }
-The sample Ant files that are provided in the product distribution use the same database for all components. However, it is possible to modify the Ant files to have different database:
+製品のディストリビューションで提供されるサンプル Ant ファイルは、すべてのコンポーネントに対して同じデータベースを使用します。ただし、以下のように、異なるデータベースを使用するよう Ant ファイルを変更することは可能です。
 
-* The same database for the administration service and the live update service as they cannot be installed separately with Ant tasks.
-* A different database for the runtime
-* A different database for the push service.
+* 管理サービスとライブ更新サービスには同じデータベース (これらは Ant タスクで別々にインストールできないため)。
+* ランタイム用には異なるデータベース。
+* プッシュ・サービス用には異なるデータベース。
 
-#### Manual installation
+#### 手動インストール
 {: #manual-installation-2 }
-It is possible to assign a different data source, and thus a different database, to each of the {{ site.data.keys.mf_server }} components.  
-The scripts to create the tables are as follows:
+{{site.data.keys.mf_server }} コンポーネントのそれぞれに異なるデータ・ソースを (またそれにより異なるデータベースを) 割り当てることができます。  
+表の作成に使用するスクリプトは以下のとおりです。
 
-* For the administration service, in **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-mysql.sql**.
-* For the live update service, in **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-mysql.sql**.
-* For the runtime component, in **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-mysql.sql**.
-* For the push service, in **mfp\_install\_dir/PushService/databases/create-push-mysql.sql**.
+* 管理サービスの場合: **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-mysql.sql**
+* ライブ更新サービスの場合: **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-mysql.sql**
+* ランタイム・コンポーネントの場合: **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-mysql.sql**
+* プッシュ・サービスの場合: **mfp\_install\_dir/PushService/databases/create-push-mysql.sql**
 
-The following example creates the tables for all the applications for the same user and database. It assumes that a database and a user has been created as in [Requirements for the databases for MySQL](#database-requirements).
+以下のサンプルでは、すべてのアプリケーション用の表が、同じユーザーおよびデータベースを対象として作成されます。
+ここでは、データベースおよびユーザーが[MySQL のデータベース要件](#database-requirements)に従って作成済みであることを前提としています。
 
-The following procedure creates the tables for all the applications for the same user (mfpuser) and database (MFPDATA). It assumes that a database and a user are already created.
+以下の手順により、すべてのアプリケーション用の表が、同じユーザー (mfpuser) およびデータベース (MFPDATA) を対象として作成されます。ここでは、データベースおよびユーザーが作成済みであることを前提としています。
 
-1. Run a MySQL command line client with the option: `-u mfpuser`.
-2. Enter the following commands:
+1. オプション `-u mfpuser` を指定して MySQL コマンド・ライン・クライアントを実行します。
+2. 以下のコマンドを入力します。
 
 ```sql
 USE MFPDATA;
@@ -309,228 +310,240 @@ SOURCE mfp_install_dir/MobileFirstServer/databases/create-runtime-mysql.sql;
 SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 ```
 
-## Create the database tables with the Server Configuration Tool
+## サーバー構成ツールを使用したデータベース表の作成
 {: #create-the-database-tables-with-the-server-configuration-tool }
-The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details about database setup when you install {{ site.data.keys.mf_server }} with the Server Configuration Tool.
+{{site.data.keys.mf_server }} アプリケーションのデータベース表は、Ant タスクを使用するか、サーバー構成ツールを使用して手動で作成することができます。以下のトピックでは、サーバー構成ツールを使用して {{site.data.keys.mf_server }} をインストールする際のデータベースのセットアップに関する説明および詳細情報を提供しています。
 
-The Server Configuration Tool can create the database tables as part of the installation process. In some cases, it can even create a database and a user for the {{ site.data.keys.mf_server }} components. For an overview of the installation process with the Server Configuration Tool, see [Installing {{ site.data.keys.mf_server }} in graphical mode](../tutorials/graphical-mode).
+サーバー構成ツールは、インストール・プロセスの一部としてデータベース表を作成することができます。場合によっては、{{site.data.keys.mf_server }} コンポーネントのユーザーおよびデータベースも作成できます。サーバー構成ツールを使用したインストール・プロセスの概要については、[グラフィカル・モードでの {{site.data.keys.mf_server }} のインストール](../tutorials/graphical-mode)を参照してください。
 
-After you complete the configuration credentials and click **Deploy** in the Server Configuration Tool pane, the following operations are run:
+構成資格情報を完了し、サーバー構成ツールペインで**「デプロイ」**をクリックすると、以下の操作が実行されます。
 
-* Create the database and user if needed.
-* Verify whether the {{ site.data.keys.mf_server }} tables exist in the database. If they do not exist, create the tables.
-* Deploys the {{ site.data.keys.mf_server }} applications to the application server.
+* 必要に応じてデータベースおよびユーザーを作成する。
+* {{site.data.keys.mf_server }} 表がデータベース内に存在するかどうかを確認する。存在しない場合は、それらの表を作成します。
+* {{site.data.keys.mf_server }} アプリケーションをアプリケーション・サーバーにデプロイする。
 
-If the database tables are created manually before you run the Server Configuration Tool, the tool can detect them and skip the phase of setting up the tables.
+サーバー構成ツールを実行する前にデータベース表が手動で作成されていると、ツールはそれらを検出し、表のセットアップ・フェーズをスキップできます。
 
-Depending on your choice of the supported database management system (DBMS), select one of the following topics for more details on how the tool creates the database tables.
+サポートされるデータベース管理システム (DBMS) の選択に応じて以下のいずれかのトピックを選択し、ツールがどのようにデータベース表を作成するかについての詳細を確認してください。
 
-* [Creating the DB2 database tables with the Server Configuration Tool](#creating-the-db2-database-tables-with-the-server-configuration-tool)
-* [Creating the Oracle database tables with the Server Configuration Tool](#creating-the-oracle-database-tables-with-the-server-configuration-tool)
-* [Creating the MySQL database tables with the Server Configuration Tool](#creating-the-mysql-database-tables-with-the-server-configuration-tool)
+* [サーバー構成ツールによる DB2 データベース表の作成](#creating-the-db2-database-tables-with-the-server-configuration-tool)
+* [サーバー構成ツールによる Oracle データベース表の作成](#creating-the-oracle-database-tables-with-the-server-configuration-tool)
+* [サーバー構成ツールによる MySQL データベース表の作成](#creating-the-mysql-database-tables-with-the-server-configuration-tool)
 
-### Creating the DB2 database tables with the Server Configuration Tool
+### サーバー構成ツールによる DB2 データベース表の作成
 {: #creating-the-db2-database-tables-with-the-server-configuration-tool }
-Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the DB2  database tables.
+{{site.data.keys.mf_server }} のインストールで提供されるサーバー構成ツールを使用して、DB2 データベース表を作成します。
 
-The Server Configuration Tool can create a database in the default DB2 instance. In **Database Selection** panel of the Server Configuration Tool, select the IBM DB2 option. In the next three panes, enter the database credentials. If the database name that is entered in the **Database Additional Settings** panel does not exist in the DB2 instance, you can enter additional information to enable the tool to create a database for you.
+サーバー構成ツールは、デフォルトの DB2 インスタンスにデータベースを作成できます。サーバー構成ツールの**「データベース選択 (Database Selection)」**パネルで、IBM DB2 オプションを選択します。次の 3 つのペインで、データベースの資格情報を入力します。**「データベースの追加設定」**パネルで入力されたデータベース名が DB2 インスタンス内に存在しない場合、追加情報を入力して、ツールがデータベースを作成できるようにします。
 
-The Server Configuration Tool creates the database tables with default settings with the following SQL statement:
+サーバー構成ツールは、以下の SQL ステートメントを使用して、デフォルト設定でデータベース表を作成します。
 ```sql
 CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 ```
 
-It is not meant to be used for production as in a default DB2 installation, many privileges are granted to PUBLIC.
+これは、デフォルトの DB2 インストール済み環境のように実動での使用を意図したものではありません。多くの特権が PUBLIC に付与されています。
 
-### Creating the Oracle database tables with the Server Configuration Tool
+### サーバー構成ツールによる Oracle データベース表の作成
 {: #creating-the-oracle-database-tables-with-the-server-configuration-tool }
-Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
+{{site.data.keys.mf_server }} のインストールで提供されるサーバー構成ツールを使用して、Oracle データベース表を作成します。
 
-In Database Selection panel of the Server Configuration Tool, select the **Oracle Standard or Enterprise Editions, 11g or 12c** option. In the next three panes, enter the database credentials.
+サーバー構成ツールの「データベース選択 (Database Selection)」パネルで、**「Oracle Standard または Enterprise Editions、11g または 12c (Oracle Standard or Enterprise Editions, 11g or 12c)」**オプションを選択します。次の 3 つのペインで、データベースの資格情報を入力します。
 
-When you enter the Oracle user name in **Database Additional Settings** panel, it must be in uppercase. If you have an Oracle database user (FOO), but you enter a user name with lowercase (foo), the Server Configuration Tool considers it as another user. Unlike other tools for Oracle database, the Server Configuration Tool protects the user name against automatic conversion to uppercase.
+**「データベースの追加設定」** パネルに Oracle ユーザー名を入力する際は、大文字を使用してください。Oracle データベースのユーザー (FOO) がいるのに、ユーザー名を小文字 (foo) で入力すると、サーバー構成ツールはそれを別のユーザーと認識します。Oracle データベース用の他のツールとは異なり、サーバー構成ツールは大文字への自動変換からユーザー名を保護します。
 
-The Server Configuration Tool uses a service name or Oracle System Identifier (SID) to identify a database. However, if you want to make the connection to Oracle RAC, you need to enter a complex JDBC URL. In this case, in the **Database Settings** panel, select the **Connect using generic Oracle JDBC URLs** option and enter a URL for the Oracle thin driver.
+サーバー構成ツールは、サービス名または Oracle システム ID (SID) を使用してデータベースを識別します。ただし、Oracle RAC への接続を行う場合は、複雑な JDBC URL を入力する必要があります。この場合、**「データベース設定 (Database Settings)」**パネルで**「汎用 Oracle JDBC URL を使用して接続 (Connect using generic
+Oracle JDBC URLs)」**オプションを選択し、Oracle シン・ドライバーの URL を入力します。
 
-If you need to create database and user for Oracle, use the Oracle Database Creation Assistant (DBCA) tool. For more information, see [Oracle database and user requirements](#oracle-database-and-user-requirements).
+Oracle のデータベースおよびユーザーを作成する必要がある場合、Oracle Database Creation Assistant (DBCA) ツールを使用します。詳しくは、[Oracle データベースおよびユーザーの要件](#oracle-database-and-user-requirements)を参照してください。
 
-The Server Configuration Tool can do the same but with a limitation. The tool can create a user for Oracle 11g or Oracle 12g. However, it can create a database only for Oracle 11g, and not for Oracle 12c.
+サーバー構成ツールでも同じことができますが、1 つ制限があります。このツールでは、Oracle 11g または Oracle 12g のユーザーを作成できます。しかし、データベースの作成は Oracle 11g に対してのみ可能で、Oracle 12c には対応していません。
 
-If the database name or user name that is entered in the **Database Additional Settings** panel does not exist, refer to the following two sections for the extra steps to create the database or the user.
+**「データベースの追加設定」**パネルで入力されたデータベース名またはユーザー名が存在しない場合、データベースまたはユーザーの作成のための追加ステップを説明した以下の 2つのセクションを参照してください。
 
-#### Creating the database
+#### データベースの作成
 {: #creating-the-database }
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. Oracle データベースを実行するコンピューター上で SSH サーバーを実行します。
 
-    The Server Configuration Tool opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer as the Server Configuration Tool.
+    サーバー構成ツールは、Oracle ホストへの SSH セッションを開き、データベースを作成します。Linux システムおよび一部のバージョンの UNIX システムを除き、Oracle データベースがサーバー構成ツールと同じコンピューター上で実行されている場合でも、SSH サーバーは必要です。
 
-2. In **Database creation request** panel, enter the login ID and password of an Oracle database user that has the privileges to create a database.
-3. In the same panel, also enter the password for the **SYS** user and the **SYSTEM** user for the database that is to be created.
+2. **「データベース作成要求」**パネルで、データベース作成の特権を持つ Oracle データベース・ユーザーのログイン ID とパスワードを入力します。
+3. 同じパネルで、作成するデータベースの **SYS** ユーザーおよび **SYSTEM** ユーザーのパスワードも入力します。
 
-A database is created with the SID name that is entered in the **Database Additional Settings** panel. It is not meant to be used for production.
+**「データベースの追加設定」**パネルで入力された SID 名を使用して、データベースが作成されます。これは、実動用に使用するものではありません。
 
-#### Creating the user
+#### ユーザーの作成
 {: #creating-the-user }
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. Oracle データベースを実行するコンピューター上で SSH サーバーを実行します。
 
-    The Server Configuration Tool opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer as the Server Configuration Tool.
+    サーバー構成ツールは、Oracle ホストへの SSH セッションを開き、データベースを作成します。Linux システムおよび一部のバージョンの UNIX システムを除き、Oracle データベースがサーバー構成ツールと同じコンピューター上で実行されている場合でも、SSH サーバーは必要です。
 
-2. In the **Database Additional Settings** panel, enter the login ID and password of the database user that is to be created.
-3. In **Database creation request** panel, enter the login ID and password of an Oracle database user that has the privileges to create a database user.
-4. In same panel, also enter the password for the **SYSTEM** user of the database.
+2. **「データベースの追加設定」**パネルで、作成するデータベース・ユーザーのログイン ID とパスワードを入力します。
+3. **「データベース作成要求」**パネルで、データベース・ユーザー作成の特権を持つ Oracle データベース・ユーザーのログイン ID とパスワードを入力します。
+4. 同じパネルで、データベースの **SYSTEM** ユーザーのパスワードも入力します。
 
-### Creating the MySQL database tables with the Server Configuration Tool
+### サーバー構成ツールによる MySQL データベース表の作成
 {: #creating-the-mysql-database-tables-with-the-server-configuration-tool }
-Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
+{{site.data.keys.mf_server }} のインストールで提供されるサーバー構成ツールを使用して、MySQL データベース表を作成します。
 
-The Server Configuration Tool can create a MySQL database for you. In **Database Selection** panel of the Server Configuration Tool, select the **MySQL 5.5.x, 5.6.x or 5.7.x** option. In the next three panes, enter the database credentials. If the database or the user that you enter in the Database Additional Settings panel does not exist, the tool can create it.
+サーバー構成ツールは、MySQL データベースを作成できます。サーバー構成ツールの**「データベース選択 (Database Selection)」**パネルで、**「MySQL 5.5.x、5.6.x、または 5.7.x (MySQL 5.5.x, 5.6.x or 5.7.x)」**オプションを選択します。次の 3 つのペインで、データベースの資格情報を入力します。「データベースの追加設定」パネルで入力したデータベースまたはユーザーが存在しない場合、このツールがそれを作成できます。
 
-If MySQL server does not have the settings that are recommended in [MySQL database and user requirements](#mysql-database-and-user-requirements), the Server Configuration Tool displays a warning. Make sure to fulfill the requirements before you run the Server Configuration Tool.
+[MySQL データベースおよびユーザーの要件](#mysql-database-and-user-requirements)で推奨された設定が MySQL サーバーにない場合、サーバー構成ツールが警告を表示します。サーバー構成ツールを実行する前に、必ず要件を満たすようにしてください。
 
-The following procedure provides some extra steps that you need to do when you create the database tables with the tool.
+以下の手順では、このツールでデータベース表を作成する際に実行する必要のあるいくつかの追加のステップを説明しています。
 
-1. In the **Database Additional Settings** panel, besides the connection settings, you must enter all the hosts from which the user is allowed to connect to the database. That is, all the hosts where {{ site.data.keys.mf_server }} runs.
-2. In the **Database creation request** panel, enter the login ID and the password of a MySQL administrator. By default, the administrator is root.
+1. **「データベースの追加設定」**パネルで、接続設定に加え、ユーザーがデータベースに接続する許可を得るすべてのホストを入力する必要があります。
+これはすなわち、{{site.data.keys.mf_server }} が実行されるすべてのホストです。
+2. **「データベース作成要求」**パネルで、MySQL 管理者のログイン ID とパスワードを入力します。デフォルトでは、管理者は root です。
 
-## Create the database tables with Ant tasks
+## Ant タスクを使用したデータベース表の作成
 {: #create-the-database-tables-with-ant-tasks }
-The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details on how to create them with Ant tasks.
+{{site.data.keys.mf_server }} アプリケーションのデータベース表は、Ant タスクを使用するか、サーバー構成ツールを使用して手動で作成することができます。トピックでは、Ant タスクを使用したデータベース表の作成方法の説明および詳細情報を提供します。
 
-You can find relevant information in this section about the setting up of the database if {{ site.data.keys.mf_server }} is installed with Ant Tasks.
+{{site.data.keys.mf_server }} が Ant タスクを使用してインストールされている場合は、このセクションにデータベースのセットアップに関する関連情報があります。
 
-You can use Ant Tasks to set up the {{ site.data.keys.mf_server }} database tables. In some cases, you can also create a database and a user with these tasks. For an overview of the installation process with Ant Tasks, see [Installing {{ site.data.keys.mf_server }} in command line mode](../tutorials/command-line).
+Ant タスクを使用して、{{site.data.keys.mf_server }} データベース表をセットアップすることができます。場合によっては、これらのタスクを使用してデータベースおよびユーザーも作成できます。Ant タスクを使用したインストール・プロセスの概要については、[コマンド・ライン・モードでの {{site.data.keys.mf_server }} のインストール](../tutorials/command-line)を参照してください。
 
-A set of sample Ant files is provided with the installation to help you get started with the Ant tasks. You can find the files in **mfp\_install\_dir/MobileFirstServer/configurations-samples**. The files are named after the following patterns:
+Ant タスクの使用を開始するのに役立つように、インストール済み環境にサンプル Ant ファイルのセットが用意されています。ファイルは **mfp\_install\_dir/MobileFirstServer/configurations-samples** にあります。これらのファイルは、以下のパターンに従って命名されています。
 
 #### configure-appserver-dbms.xml
 {: #configure-appserver-dbmsxml }
-The Ant files can do these tasks:
+Ant ファイルは以下のタスクを実行できます。
 
-* Create the tables in a database if the database and database user exist. The requirements for the database are listed in [Database requirements](#database-requirements).
-* Deploy the WAR files of the {{ site.data.keys.mf_server }} components to the application server. These Ant files use the same database user to create the tables, and to install the run time database user for the applications at run time. The files also use the same database user for all the {{ site.data.keys.mf_server }} applications.
+* データベースおよびデータベース・ユーザーが存在する場合、データベース内に表を作成する。データベースの要件は、[データベース要件](#database-requirements)にリストされています。
+* {{site.data.keys.mf_server }} コンポーネントの WAR ファイルをアプリケーション・サーバーにデプロイする。これらの Ant ファイルは、同じデータベース・ユーザーを使用して表を作成し、実行時にアプリケーションのランタイム・データベース・ユーザーをインストールします。またこれらのファイルは、すべての {{site.data.keys.mf_server }} アプリケーションに同じデータベース・ユーザーを使用します。
 
 #### create-database-dbms.xml
 {: #create-database-dbmsxml }
-The Ant files can create a database if needed on the supported database management system (DBMS), and then create the tables in the database. However, as the database is created with default settings, it is not meant to be used for production.
+これらの Ant ファイルは、サポートされるデータベース管理システム (DBMS) で必要な場合、データベースを作成し、次にそのデータベース内に表を作成できます。ただし、データベースはデフォルト設定で作成されるため、実動での使用を意図したものではありません。
 
-In the Ant files, you can find the predefined targets that use the **configureDatabase** Ant task to set up the database. For more information, see [Ant configuredatabase](../installation-reference/#ant-configuredatabase-task-reference) task reference.
+Ant ファイル内に、**configureDatabase** Ant タスクを使用してデータベースをセットアップする、事前定義ターゲットがあります。詳しくは、[Ant configuredatabase](../installation-reference/#ant-configuredatabase-task-reference) タスクの参照情報を参照してください。
 
-### Using the sample Ant files
+### サンプル Ant ファイルの使用
 {: #using-the-sample-ant-files }
-The sample Ant files have predefined targets. Follow this procedure to use the files.
+サンプル Ant ファイルには事前定義ターゲットがあります。これらのファイルを使用するには、以下の手順に従ってください。
 
-1. Copy the Ant file according to your application server and database configuration in a working directory.
-2. Edit the file and enter the values for your configuration in the `<! -- Start of Property Parameters -->` section for the Ant file.
-3. Run the Ant file with the databases target: `mfp_install_dir/shortcuts/ant -f your_ant_file databases`.
+1. アプリケーション・サーバーおよびデータベースの構成に従って作業ディレクトリーに Ant ファイルをコピーします。
+2. ファイルを編集し、Ant ファイルの `<! -- Start of Property Parameters -->` セクションに構成の値を入力します。
+3. 次のように、databases ターゲットを使用して Ant ファイルを実行します。 `mfp_install_dir/shortcuts/ant -f your_ant_file databases`
 
-This command creates the tables in the specified database and schema for all {{ site.data.keys.mf_server }} applications ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.mf_server }} runtime). A log for the operations is produced and stored in your disk.
+このコマンドは、すべての {{site.data.keys.mf_server }} アプリケーション ({{site.data.keys.mf_server }} 管理サービス、{{site.data.keys.mf_server }} ライブ更新サービス、{{site.data.keys.mf_server }} プッシュ・サービス、および {{site.data.keys.mf_server }} ランタイム) の表を、指定されたデータベースおよびスキーマに作成します。これらの操作のログが作成され、ディスク内に保管されます。
 
-* On Windows, it is in the **{{ site.data.keys.prod_server_data_dir_win }}\\Configuration Logs\\** directory.
-* On UNIX, it is in the **{{ site.data.keys.prod_server_data_dir_unix }}/configuration-logs/** directory.
+* Windows では、**{{site.data.keys.prod_server_data_dir_win }}\\Configuration Logs\\** ディレクトリー内。
+* UNIX では、**{{site.data.keys.prod_server_data_dir_unix }}/configuration-logs/** ディレクトリー内。
 
-### Different users for the database tables creation and for run time
+### データベース表の作成用とランタイム用で異なるユーザー
 {: #different-users-for-the-database-tables-creation-and-for-run-time }
-The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-samples** use the same database user for:
+**mfp\_install\_dir/MobileFirstServer/configurations-samples** 内のサンプル Ant ファイルは、以下に対して同じデータベース・ユーザーを使用します。
 
-* All the {{ site.data.keys.mf_server }} applications (the administration service, the live update service, the push service, and the runtime)
-* The user that is used to create the database and the user at run time for the data source in the application server.
+* すべての {{site.data.keys.mf_server }} アプリケーション (管理サービス、ライブ更新サービス、プッシュ・サービス、およびランタイム)
+* データベースの作成に使用されるユーザーと、アプリケーション・サーバー内のデータ・ソースのための、実行時のユーザー。
 
-If you want to separate the users as described in [Database users and privileges](#database-users-and-privileges), you need to create your own Ant file, or modify the sample Ant files so that each database target has a different user. For more information, see the [Installation reference](../installation-reference).
+[データベースのユーザーおよび特権](#database-users-and-privileges)の説明にあるように、これらのユーザーを分離したい場合は、独自の Ant ファイルを作成するか、各データベース・ターゲットのユーザーが異なるようにサンプル Ant ファイルを変更する必要があります。詳しくは、[インストールに関する参照情報](../installation-reference)を参照してください。
 
-For DB2  and MySQL, it is possible to have different users for the database creation and for the run time. The privileges for each type of the users are listed in [Database users and privileges](#database-users-and-privileges). For Oracle, you cannot have a different user for database creation and for the run time. The Ant tasks consider that the tables are in the default schema of a user. If you want to reduce privileges for the runtime user, you must create the tables manually in the default schema of the user that will be used at run time. For more information, see [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually).
+DB2 および MySQL の場合、データベース作成用とランタイム用で異なるユーザーにすることが可能です。各タイプのユーザーの特権は、[データベースのユーザーおよび特権](#database-users-and-privileges)にリストされています。Oracle の場合は、データベースの作成用とランタイム用で異なるユーザーにすることはできません。Ant タスクは、表がユーザーのデフォルト・スキーマ内にあると見なします。ランタイム・ユーザーの特権を減らしたい場合は、実行時に使用されるユーザーのデフォルト・スキーマ内に表を手動で作成する必要があります。詳しくは、[Oracle データベース表の手動作成](#creating-the-oracle-database-tables-manually)を参照してください。
 
-Depending on your choice of the supported database management system (DBMS), select one of the following topics to create the database with Ant tasks.
+サポートされているデータベース管理システム (DBMS) の選択に応じて、以下のいずれかのトピックを選択し、Ant タスクを使用してデータベースを作成してください。
 
-### Creating the DB2 database tables with Ant tasks
+### Ant タスクを使用した DB2 データベース表の作成
 {: #creating-the-db2-database-tables-with-ant-tasks }
-Use Ant tasks that are provided with {{ site.data.keys.mf_server }} installation to create the DB2  database.
+{{site.data.keys.mf_server }} インストール済み環境で提供されている Ant タスクを使用して DB2 データベースを作成します。
 
-To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
+既に存在するデータベース内にデータベース表を作成するには、[Ant タスクを使用したデータベース表の作成](#create-the-database-tables-with-ant-tasks)を参照してください。
 
-To create a database and the database tables, you can do so by Ant tasks. The Ant tasks create a database in the default instance of DB2 if you use an Ant file that contains the **dba** element. This element can be found in the sample Ant files named as **create-database-<dbms>.xml**.
+データベースとデータベース表を作成するには、Ant タスクを使用できます。**dba** エレメントを含む Ant ファイルを使用した場合、Ant タスクは、DB2 のデフォルト・インスタンスにデータベースを作成します。このエレメントは、**create-database-<dbms>.xml** という名前のサンプル Ant ファイル内にあります。
 
-Before you run the Ant tasks, make sure that you have an SSH server on the computer that runs the DB2 database. The **configureDatabase** Ant task opens an SSH session to the DB2 host to create the database. The SSH server is needed even if the DB2 database runs on the same computer where you run the Ant tasks (except on Linux and some versions of UNIX systems).
+Ant タスクを実行する前に、DB2 データベースを実行するコンピューター上に SSH サーバーがインストールされていることを確認してください。**configureDatabase** Ant タスクは、DB2 ホストへの SSH セッションを開いてデータベースを作成します。SSH サーバーは、Ant タスクを実行するコンピューターと同じコンピューター上で DB2 データベースが実行されている場合でも必要です (Linux システムおよび一部のバージョンの UNIX システムを除く)。
 
-Follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-db2.xml** file.
+[Ant タスクを使用したデータベース表の作成](#create-the-database-tables-with-ant-tasks)で説明された一般ガイドラインに従って、**create-database-db2.xml** ファイルのコピーを編集してください。
 
-You must also provide the login ID and password of a DB2 user with administration privileges (**SYSADM** or **SYSCTRL** permissions) in the **dba** element. In the sample Ant file for DB2 (**create-database-db2.xml**), the properties to set are: **database.db2.admin.username** and **database.db2.admin.password**.
+さらに、管理特権 (**SYSADM** 権限または **SYSCTRL** 権限) を持つ DB2 ユーザーのログイン ID とパスワードを **dba** エレメントに指定する必要もあります。DB2 用のサンプル Ant ファイル (**create-database-db2.xml**) で設定するプロパティーは **database.db2.admin.username** および **database.db2.admin.password** です。
 
-When the **databases** Ant target is called, the **configureDatabase** Ant task creates a database with default settings with the following SQL statement:
+**databases** Ant ターゲットが呼び出されると、**configureDatabase** Ant タスクは、以下の SQL ステートメントを使用してデフォルト設定でデータベースを作成します。
+
 
 ```sql
 CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 ```
 
-It is not meant to be used for production as in a default DB2 installation, many privileges are granted to PUBLIC.
+これは、デフォルトの DB2 インストール済み環境のように実動での使用を意図したものではありません。多くの特権が PUBLIC に付与されています。
 
-### Creating the Oracle database tables with Ant tasks
+### Ant タスクによる Oracle データベース表の作成
 {: #creating-the-oracle-database-tables-with-ant-tasks }
-Use Ant tasks that are provided with {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
+{{site.data.keys.mf_server }} のインストールで提供される Ant タスクを使用して、Oracle データベース表を作成します。
 
-When you enter the Oracle user name in Ant file, it must be in uppercase. If you have an Oracle database user (FOO), but you enter a user name with lowercase (foo), the **configureDatabase** Ant task considers it as another user. Unlike other tools for Oracle database, the **configureDatabase** Ant task protects the user name against automatic conversion to uppercase.
+Ant ファイル内に Oracle ユーザー名を入力する際は、大文字を使用してください。Oracle データベースのユーザー (FOO) がいるのに、ユーザー名を小文字 (foo) で入力すると、**configureDatabase** Ant タスクはそれを別のユーザーと認識します。Oracle データベース用の他のツールとは異なり、**configureDatabase** Ant タスクは大文字への自動変換からユーザー名を保護します。
 
-The **configureDatabase** Ant task uses a service name or Oracle System Identifier (SID) to identify a database. However, if you want to make the connection to Oracle RAC, you need to enter a complex JDBC URL. In this case, the **oracle** element that is within the **configureDatabase** Ant task must use the attributes (**url**, **user**, and **password**) instead of these attributes (**database**, **server**, **port**, **user**, and **password**). For more information, see the table in [Ant **configuredatabase** task reference](../installation-reference/#ant-configuredatabase-task-reference). The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-samples** use the **database**, **server**, **port**, **user**, and **password** attributes in the **oracle** element. They must be modified if you need to connect to Oracle with a JDBC URL.
+**configureDatabase** Ant タスクは、サービス名または Oracle システム ID (SID) を使用してデータベースを識別します。ただし、Oracle RAC への接続を行う場合は、複雑な JDBC URL を入力する必要があります。この場合、**configureDatabase** Ant タスク内にある **oracle** エレメントは、これらの属性 (**database**、**server**、**port**、
+**user**、および **password**) の代わりに属性 (**url**、
+**user**、および **password**) を使用する必要があります。詳しくは、[Ant **configuredatabase** タスクの参照情報](../installation-reference/#ant-configuredatabase-task-reference)の表を参照してください。**mfp\_install\_dir/MobileFirstServer/configurations-samples** 内のサンプル Ant ファイルは、**database**、**server**、**port**、**user**、および **password** 属性を **oracle** エレメントで使用します。JDBC URL で Oracle に接続する必要がある場合は、これらを変更する必要があります。
 
-To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
+既に存在するデータベース内にデータベース表を作成するには、[Ant タスクを使用したデータベース表の作成](#create-the-database-tables-with-ant-tasks)を参照してください。
 
-To create a database, user, or the database tables, use the Oracle Database Creation Assistant (DBCA) tool. For more information, see [Oracle database and user requirements](#oracle-database-and-user-requirements).
+データベース、ユーザー、またはデータベース表を作成するには、Oracle Database Creation Assistant
+(DBCA) ツールを使用します。詳しくは、[Oracle データベースおよびユーザーの要件](#oracle-database-and-user-requirements)を参照してください。
 
-The **configureDatabase** Ant task can do the same but with a limitation. The task can create a database user for Oracle 11g or Oracle 12g. However, it can create a database only for Oracle 11g, and not for Oracle 12c. Refer to the following two sections for the extra steps that you need to create the database or the user.
+**configureDatabase** Ant タスクでも同じことができますが、1 つ制限があります。このタスクでは、Oracle 11g または Oracle 12g のデータベース・ユーザーを作成できます。しかし、データベースの作成は Oracle 11g に対してのみ可能で、Oracle 12c には対応していません。データベースまたはユーザーの作成に必要な追加のステップについては、以下の 2 つのセクションを参照してください。
 
-#### Creating the database
+#### データベースの作成
 {: #creating-the-database-1 }
-Follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-oracle.xml** file.
+[Ant タスクを使用したデータベース表の作成](#create-the-database-tables-with-ant-tasks)で説明された一般ガイドラインに従って、**create-database-oracle.xml** ファイルのコピーを編集してください。
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. Oracle データベースを実行するコンピューター上で SSH サーバーを実行します。
 
-    The **configureDatabase** Ant task opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer where you run the Ant tasks.
+    **configureDatabase** Ant タスクは、Oracle ホストへの SSH セッションを開き、データベースを作成します。Linux システムおよび一部のバージョンの UNIX システムを除き、Ant タスクが実行されているのと同じコンピューター上で Oracle データベースが実行されている場合でも、SSH サーバーは必要です。
 
-2. In **dba** element that is defined in the **create-database-oracle.xml** file, enter the login ID and password of an Oracle database user that can connect to the Oracle Server via SSH and has the privileges to create a database. You can assign the values in the following properties:
+2. **create-database-oracle.xml** ファイルで定義された **dba** エレメントに、SSH 経由で Oracle サーバーに接続できて、データベース作成の特権を持っている Oracle データベース・ユーザーのログイン ID とパスワードを入力します。以下のプロパティーに値を割り当てることができます。
+
     * **database.oracle.admin.username**
     * **database.oracle.admin.password**
-3. In **oracle** element, enter the database name that you want to create. The attribute is **database**. You can assign the value in the **database.oracle.mfp.dbname** property.
-4. In the same **oracle** element, also enter the password for the **SYS** user and the **SYSTEM** user for the database that is to be created. The attributes are **sysPassword** and **systemPassword**. You can assign the values in the corresponding properties:
+3. **oracle** エレメントに、作成するデータベースの名前を入力します。属性は **database** です。**database.oracle.mfp.dbname** プロパティーに値を割り当てることができます。
+4. 同じ **oracle** エレメントに、作成するデータベースの **SYS** ユーザーおよび **SYSTEM** ユーザーのパスワードも入力します。属性は、**sysPassword** および **systemPassword** です。
+次の対応するプロパティーに値を割り当てることができます。
+
     * **database.oracle.sysPassword**
     * **database.oracle.systemPassword**
-5. After all the database credentials are entered in the Ant file, save it and run the **databases** Ant target.
+5. Ant ファイルにすべてのデータベース資格情報が入力されたら、それを保存し、**databases** Ant ターゲットを実行します。
 
-A database is created with the SID name that is entered in the database of the **oracle** element. It is not meant to be used for production.
+**oracle** エレメントの database に入力された SID 名を使用して、データベースが作成されます。これは、実動用に使用するものではありません。
 
-#### Creating the user
+#### ユーザーの作成
 {: #creating-the-user-1 }
-Follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-oracle.xml** file.
+[Ant タスクを使用したデータベース表の作成](#create-the-database-tables-with-ant-tasks)で説明された一般ガイドラインに従って、**create-database-oracle.xml** ファイルのコピーを編集してください。
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. Oracle データベースを実行するコンピューター上で SSH サーバーを実行します。
 
-    The **configureDatabase** Ant task opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer where you run the Ant tasks.
+    **configureDatabase** Ant タスクは、Oracle ホストへの SSH セッションを開き、データベースを作成します。Linux システムおよび一部のバージョンの UNIX システムを除き、Ant タスクが実行されているのと同じコンピューター上で Oracle データベースが実行されている場合でも、SSH サーバーは必要です。
 
-2. In oracle element that is defined in the **create-database-oracle.xml** file, enter the login ID and password of an Oracle database user that you want to create. The attributes are **user** and **password**. You can assign the values in the corresponding properties:
+2. **create-database-oracle.xml** ファイルで定義された oracle エレメントに、作成する Oracle データベース・ユーザーのログイン ID とパスワードを入力します。属性は、**user** および **password** です。
+次の対応するプロパティーに値を割り当てることができます。
+
     * database.oracle.mfp.username
     * database.oracle.mfp.password
-3. In the same **oracle** element, also enter the password for the **SYSTEM** user for the database. The attribute is **systemPassword**. You can assign the value in the **database.oracle.systemPassword property**.
-4. In the **dba** element, enter the login ID and password of an Oracle database user that has the privileges to create a user. You can assign the values in the following properties:
+3. 同じ **oracle** エレメントに、データベースの **SYSTEM** ユーザーのパスワードも入力します。属性は **systemPassword** です。**database.oracle.systemPassword** プロパティーに値を割り当てることができます。
+4. **dba** エレメントに、ユーザー作成の特権を持つ Oracle データベース・ユーザーのログイン ID とパスワードを入力します。以下のプロパティーに値を割り当てることができます。
+
     * **database.oracle.admin.username**
     * **database.oracle.admin.password**
-5. After all the database credentials are entered in the Ant file, save it and run the **databases** Ant target.
+5. Ant ファイルにすべてのデータベース資格情報が入力されたら、それを保存し、**databases** Ant ターゲットを実行します。
 
-A database user is created with the name and password that are entered in the **oracle** element. This user has the privileges to create the {{ site.data.keys.mf_server }} tables, upgrade them and use them at run time.
+**oracle** エレメントに入力された名前とパスワードを使用して、データベース・ユーザーが作成されます。このユーザーは、{{site.data.keys.mf_server }} の表を作成し、それをアップグレードしてランタイムで使用できる特権を持ちます。
 
-### Creating the MySQL database tables with Ant tasks
+### Ant タスクによる MySQL データベース表の作成
 {: #creating-the-mysql-database-tables-with-ant-tasks }
-Use Ant Tasks that are provided with {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
+{{site.data.keys.mf_server }} のインストールで提供される Ant タスクを使用して、MySQL データベース表を作成します。
 
-To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
+既に存在するデータベース内にデータベース表を作成するには、[Ant タスクを使用したデータベース表の作成](#create-the-database-tables-with-ant-tasks)を参照してください。
 
-If MySQL server does not have the settings that are recommended in [MySQL database and user requirements](#mysql-database-and-user-requirements), the **configureDatabase** Ant task displays a warning. Make sure to fulfill the requirements before you run the Ant task.
+[MySQL データベースおよびユーザーの要件](#mysql-database-and-user-requirements)で推奨された設定が MySQL サーバーにない場合、**configureDatabase** Ant タスクが警告を表示します。Ant タスクを実行する前に、必ず要件を満たすようにしてください。
 
-To create a database and the database tables, follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-mysql.xml** file.
+データベースおよびデータベース表を作成するには、[Ant タスクを使用したデータベース表の作成](#create-the-database-tables-with-ant-tasks)で説明された一般ガイドラインに従って、**create-database-mysql.xml** ファイルのコピーを編集してください。
 
-The following procedure provides some extra steps that you need to do when you create the database tables with the **configureDatabase** Ant task.
+以下の手順では、**configureDatabase** Ant タスクでデータベース表を作成する際に実行する必要のあるいくつかの追加のステップを説明しています。
 
-1. In the **dba** element that is defined in the **create-database-mysql.xml** file, enter the login ID and password of a MySQL administrator. By default, the administrator is **root**. You can assign the values in the following properties:
+1. **create-database-mysql.xml** ファイルで定義された **dba** エレメントに、MySQL 管理者のログイン ID とパスワードを入力します。デフォルトでは、管理者は **root** です。以下のプロパティーに値を割り当てることができます。
+
     * **database.mysql.admin.username**
     * **database.mysql.admin.password**
-2. In the **mysql** element, add a **client** element for each host from which the user is allowed to connect to the database. That is, all the hosts where {{ site.data.keys.mf_server }} runs.
-After all the database credentials are entered in the Ant file, save it and run the **databases** Ant target.
+2. **mysql** エレメントで、ユーザーがデータベースに接続する許可を得る各ホストに対し、**client** エレメントを追加します。これはすなわち、{{site.data.keys.mf_server }} が実行されるすべてのホストです。Ant ファイルにすべてのデータベース資格情報が入力されたら、それを保存し、**databases** Ant ターゲットを実行します。

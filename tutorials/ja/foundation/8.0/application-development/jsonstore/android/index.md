@@ -1,48 +1,53 @@
 ---
 layout: tutorial
-title: JSONStore in Android applications
+title: Android アプリケーションでの JSONStore
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 downloads:
-  - name: Download Android Studio project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
-  - name: Download Adapter Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+  - name: Android Studio プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
+  - name: アダプター Maven プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Prerequisites
+## 前提条件
+
 {: #prerequisites }
 
-* Read the [JSONStore parent tutorial](../)
-* Make sure the {{ site.data.keys.product_adj }} Native SDK was added to the Android Studio project. Follow the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android/) tutorial.
+* [JSONStore 親チュートリアル](../)を読む。
+* {{site.data.keys.product_adj }} ネイティブ SDK が Android Studio プロジェクトに追加されていることを確認する。[『Android アプリケーションへの {{site.data.keys.product }} SDK の追加』](../../../application-development/sdk/android/)チュートリアルに従ってください。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Adding JSONStore](#adding-jsonstore)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-* [Sample application](#sample-application)
+* [JSONStore の追加](#adding-jsonstore)
+* [基本的な使用法
+](#basic-usage)
+* [高度な使用法
+](#advanced-usage)
+* [サンプル・アプリケーション](#sample-application)
 
-## Adding JSONStore
+## JSONStore の追加
 {: #adding-jsonstore }
-1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
+1. **「Android」→「Gradle Scripts」**で、**build.gradle (Module: app)** ファイルを選択します。
 
-2. Add the following to the existing `dependencies` section:
+2. 既存の `dependencies` セクションに以下を追加します。
 
 ```
 compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
 ```
 
-## Basic Usage
+## 基本的な使用法
+
 {: #basic-usage }
-### Open
+### 開く
 {: #open }
-Use `openCollections` to open one or more JSONStore collections.
+1 つ以上の JSONStore コレクションを開くには、`openCollections` を使用します。
 
-Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists. If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
+コレクションの開始またはプロビジョニングは、コレクションとドキュメントが含まれる永続ストレージを作成することを意味します (永続ストレージが存在しない場合)。永続ストレージが暗号化され、正しいパスワードが渡されると、そのデータにアクセスできるようにするための、セキュリティー上必要な手順が実行されます。
 
-For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
+
+初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』、『複数ユーザー・サポート』**、および**『{{site.data.keys.product_adj }} アダプターの統合』**を参照してください。
 
 ```java
 Context context = getContext();
@@ -59,9 +64,10 @@ try {
 }
 ```
 
-### Get
+### 取得
+
 {: #get }
-Use `getCollectionByName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionByName`.
+コレクションへのアクセス機能を作成するには、`getCollectionByName` を使用します。`getCollectionByName` を呼び出す前に `openCollections` を呼び出す必要があります。
 
 ```java
 Context context = getContext();
@@ -74,11 +80,11 @@ try {
 }
 ```
 
-The variable `collection` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`
+これで、変数 `collection` を使用して、`people` コレクションに対して `add`、`find`、`replace` などの操作を実行できます。
 
-### Add
+### 追加
 {: #add }
-Use `addData` to store data as documents inside a collection
+コレクション内にデータをドキュメントとして保管するには、`addData` を使用します。
 
 ```java
 Context context = getContext();
@@ -96,9 +102,10 @@ try {
 }
 ```
 
-### Find
+### 検索
+
 {: #find }
-Use `findDocuments` to locate a document inside a collection by using a query. Use `findAllDocuments` to retrieve all the documents inside a collection. Use `findDocumentById` to search by the document unique identifier.
+照会を使用してコレクション内のドキュメントを見つけるには、`findDocuments` を使用します。 コレクション内のすべてのドキュメントを取り出すには、`findAllDocuments` を使用します。ドキュメントの固有 ID で検索するには、`findDocumentById` を使用します。
 
 ```java
 Context context = getContext();
@@ -120,9 +127,10 @@ try {
 }
 ```
 
-### Replace
+### 置換
+
 {: #replace }
-Use `replaceDocument` to modify documents inside a collection. The field that you use to perform the replacement is `_id,` the document unique identifier.
+コレクション内のドキュメントを変更するには、`replaceDocument` を使用します。置換の実行に使用するフィールドは `_id,` で、これはドキュメントの固有 ID です。
 
 ```java
 Context context = getContext();
@@ -140,12 +148,12 @@ try {
 }
 ```
 
-This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
+この例では、ドキュメント `{_id: 1, json: {name: 'yoel', age: 23} }` がコレクションにあることを前提としています。
 
-### Remove
+### 削除
+
 {: #remove }
-Use `removeDocumentById` to delete a document from a collection.
-Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial.
+ドキュメントをコレクションから削除するには、`removeDocumentById` を使用します。`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。詳しくは、このチュートリアルの後半にある**{{site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
 
 ```java
 Context context = getContext();
@@ -162,9 +170,10 @@ try {
 }
 ```
 
-### Remove Collection
+### コレクションの削除
+
 {: #remove-collection }
-Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+コレクション内に保管されているすべてのドキュメントを削除するには、 `removeCollection` を使用します。 この操作は、データベース用語における、表のドロップと似ています。
 
 ```java
 Context context = getContext();
@@ -178,14 +187,16 @@ try {
 }
 ```
 
-### Destroy
+### 破棄
 {: #destroy }
-Use `destroy` to remove the following data:
+以下のデータを削除するには、`destroy` を使用します。
 
-* All documents
-* All collections
-* All Stores - See **Multiple User Support** later in this tutorial
-* All JSONStore metadata and security artifacts - See **Security** later in this tutorial
+* すべてのドキュメント
+
+* すべてのコレクション
+
+* すべてのストア - このチュートリアル後半の**『複数ユーザー・サポート』**を参照してください。
+* すべての JSONStore メタデータおよびセキュリティー成果物 - このチュートリアル後半の**『セキュリティー』**を参照してください。
 
 ```java
 Context context = getContext();
@@ -197,18 +208,22 @@ try {
 }
 ```
 
-## Advanced Usage
+## 高度な使用法
+
 {: #advanced-usage }
-### Security
+### セキュリティー
 {: #security }
-You can secure all the collections in a store by passing a `JSONStoreInitOptions` object with a password to the `openCollections` function. If no password is passed, the documents of all the collections in the store are not encrypted.
+`JSONStoreInitOptions` オブジェクトとパスワードを `openCollections` 関数に渡すことにより、ストア内のすべてのコレクションを保護できます。パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
 
-Some security metadata is stored in the shared preferences (Android).  
-The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
 
-Use `closeAll` to lock access to all the collections until you call `openCollections` again. If you think of `openCollections` as a login function you can think of `closeAll` as the corresponding logout function.
+一部のセキュリティー・メタデータは共有設定で保管されます (Android)。  
+ストアは 256 ビットの Advanced Encryption Standard
+(AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation
+Function 2 (PBKDF2) により強化されています。
 
-Use `changePassword` to change the password.
+`closeAll` を使用して、`closeAll` を再度呼び出すまですべてのコレクションへのアクセスをロックします。`openCollections` をログイン関数と考えると、`closeAll` はそれに対応するログアウト関数と考えることができます。
+
+`changePassword` を使用して、パスワードを変更します。
 
 ```java
 Context context = getContext();
@@ -227,9 +242,9 @@ try {
 }
 ```
 
-#### Multiple User Support
+#### 複数ユーザー・サポート
 {: #multiple-user-support }
-You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `openCollections` function can take an options object with a username. If no username is given, the default username is ""**jsonstore**"".
+単一の {{site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`openCollections` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名 ""**jsonstore**"" が使用されます。
 
 ```java
 Context context = getContext();
@@ -248,14 +263,13 @@ try {
 }
 ```
 
-#### {{ site.data.keys.product_adj }} Adapter Integration
+#### {{site.data.keys.product_adj }} アダプターの統合
 {: #mobilefirst-adapter-integration }
-This section assumes that you are familiar with adapters. Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
-You can achieve these goals by using functions such as `WLResourceRequest` or your own instance of an `HttpClient` if you need more flexibility.
+このセクションは、ユーザーがアダプターについて理解していることを前提とします。アダプターの統合はオプションであり、コレクションからアダプターにデータを送信する方法、およびアダプターからコレクションにデータを取得する方法を提供します。`WLResourceRequest` などの関数を使用することで、またはより柔軟性が必要な場合は `HttpClient` の独自インスタンスを使用することで、これらの目標を達成できます。
 
-#### Adapter Implementation
+#### アダプターの実装
 {: #adapter-implementation }
-Create an adapter and name it "**JSONStoreAdapter**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+アダプターを作成し、"**JSONStoreAdapter**" という名前を付けます。このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
 
 ```javascript
 function getPeople() {
@@ -286,20 +300,20 @@ function replacePerson(data) {
 }
 ```
 
-#### Load data from {{ site.data.keys.product_adj }} Adapter
+#### データを {{site.data.keys.product_adj }} アダプターからロード
 {: #load-data-from-mobilefirst-adapter }
-To load data from an adapter use `WLResourceRequest`.
+データをアダプターからロードするには、`WLResourceRequest` を使用します。
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
   @Override
   public void onFailure(final WLFailResponse response) {
     // handle failure
-  }
-  @Override
+}
+@Override
   public void onSuccess(WLResponse response) {
     try {
-      JSONArray loadedDocuments = response.getResponseJSON().getJSONArray("peopleList");
+  JSONArray loadedDocuments = response.getResponseJSON().getJSONArray("peopleList");
     } catch(Exception e) {
       // error decoding JSON data
     }
@@ -314,12 +328,12 @@ try {
 }
 ```
 
-#### Get Push Required (Dirty Documents)
+#### プッシュが必要な対象 (ダーティーなドキュメント) の取得
 {: #get-push-required-dirty-documents }
-Calling `findAllDirtyDocuments` returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
+`findAllDirtyDocuments` を呼び出すと、「ダーティーなドキュメント」と呼ばれるドキュメントの配列が返されます。これは、バックエンド・システムには存在しないローカル変更が含まれるドキュメントです。
 
 ```java
-Context  context = getContext();
+Context context = getContext();
 try {
   String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
@@ -330,19 +344,19 @@ try {
 }
 ```
 
-To prevent JSONStore from marking the documents as "dirty", pass the option `options.setMarkDirty(false)` to `add`, `replace`, and `remove`.
+JSONStore でドキュメントが「ダーティー」とマーキングされないようにするには、オプション `options.setMarkDirty(false)` を `add`、`replace`、および`remove` に渡します。
 
-#### Push changes
+#### 変更のプッシュ
 {: #push-changes }
-To push changes to an adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
+変更をアダプターにプッシュするには、`findAllDirtyDocuments` を呼び出して変更が含まれるドキュメントのリストを取得し、その後 `WLResourceRequest` を使用します。データが送信され、成功応答を受信した後、`markDocumentsClean` を呼び出す必要があります。
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
   @Override
   public void onFailure(final WLFailResponse response) {
     // handle failure
-  }
-  @Override
+}
+@Override
   public void onSuccess(WLResponse response) {
     // handle success
   }
@@ -366,15 +380,15 @@ try {
 }
 ```
 
-<img alt="Image of the sample application" src="android-native-screen.jpg" style="float:right; width:240px;"/>
-## Sample application
+<img alt="サンプル・アプリケーションのイメージ" src="android-native-screen.jpg" style="float:right; width:240px;"/>
+## サンプル・アプリケーション
 {: #sample-application }
-The JSONStoreAndroid project contains a native Android application that utilizes the JSONStore API set.  
-Included is a JavaScript adapter Maven project.
+JSONStoreAndroid プロジェクトには、JSONStore API セットを使用するネイティブ Android アプリケーションが含まれています。  
+JavaScript アダプター Maven プロジェクトも使用可能です。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) the Native Android project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) してネイティブ Android プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) してアダプター Maven プロジェクトをダウンロードします。  
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

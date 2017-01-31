@@ -1,18 +1,18 @@
 ---
 layout: tutorial
-title: Logging in iOS Applications
-breadcrumb_title: Logging in iOS
+title: iOS アプリケーションでのロギング
+breadcrumb_title: iOS でのロギング
 relevantTo: [ios]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-This tutorial provides the required code snippets in order to add logging capabilities in iOS applications.
+このチュートリアルでは、iOS アプリケーションでロギング機能を追加するために必要なコード・スニペットを示します。
 
-**Prerequisite:** Make sure to read the [overview of client-side log collection](../).
+**前提条件:** 必ず[クライアント・サイドのログ収集の概説](../)をお読みください。
 
-> **Note:** Using `OCLogger` in Swift requires creating an `OCLogger` extension class (this class can be a separate Swift file, or an extension to your current Swift file):
+> **注:** Swift で `OCLogger` を使用するには、`OCLogger` 拡張クラスを作成する必要があります (このクラスは別個の Swift ファイルであるか、現行 Swift ファイルの拡張にします)。
 
 ```swift
 extension OCLogger {
@@ -78,15 +78,16 @@ extension OCLogger {
 }
 ```
 
-After including the extension class you may now use `OCLogger` in Swift.
+拡張クラスを含めると、Swift で `OCLogger` を使用できるようになります。
 
-## Enabling log capture
+## ログ・キャプチャーの有効化
 {: #enabling-log-capture }
-By default, log capture is enabled. Log capture saves logs to the client, and can be enabled or disabled programmatically. Logs are sent to the server with an explicit send call, or with auto log.
+デフォルトでは、ログ・キャプチャーは有効になっています。
+ログ・キャプチャーは、クライアントにログを保存し、プログラムで有効または無効にすることができます。ログは、明示的な送信呼び出しまたは自動ログによってサーバーに送信されます。
 
-> **Note:** Enabling log capture at verbose levels can impact the consumption of the device CPU, file system space, and the size of the payload when the client sends logs over the network.
+> **注:** 詳細度を指定してログ・キャプチャーを有効にすることで、デバイス CPU やファイル・システム・スペースの消費、クライアントがネットワークでログを送信するときのペイロードのサイズに影響する可能性があります。
 
-To disable log capturing:
+ログ・キャプチャーを無効にするには、以下のようにします。
 
 **Objective-C**
 
@@ -100,11 +101,12 @@ To disable log capturing:
 OCLogger.setCapture(false);
 ```
 
-## Sending captured logs
+## キャプチャーしたログの送信
 {: #sending-captured-logs }
-Send logs to the {{ site.data.keys.product_adj }} according to your application's logic. Auto log send can also be enabled to automatically send logs. If logs are not sent before the maximum size is reached, the log file is then purged in favor of newer logs.
+アプリケーションのロジックに基づいて、ログを {{site.data.keys.product_adj }} に送信します。自動ログ送信を有効にして、自動的にログを送信することもできます。ログの最大サイズに達する前にログが送信されないと、ログ・ファイルがより新しいログで消去されます。
 
-> **Note:** Adopt the following pattern when you collect log data. Sending data periodically ensures that you are seeing your log data in near real-time in the {{ site.data.keys.mf_analytics_console }}.
+> **注:** ログ・データを収集する場合は、以下のパターンを採用してください。データを定期的に送信すると、
+{{site.data.keys.mf_analytics_console }}でログ・データをほぼリアルタイムで見られるようにすることができます。
 
 **Objective-C**
 
@@ -126,11 +128,11 @@ var timer = NSTimer.scheduledTimerWithTimeInterval(60,
   repeats: true)
 ```
 
-To ensure that all captured logs are sent, consider one of the following strategies:
+キャプチャーしたすべてのログが確実に送信されるようにするために、以下のいずれかの方法を検討してください。
 
-* Call the `send` method at a time interval.
-* Call the `send` method from within the app lifecycle event callbacks.
-* Increase the max file size of the persistent log buffer (in bytes):
+* 一定の時間インターバルで `send` メソッドを呼び出す。
+* アプリケーション・ライフサイクル・イベント・コールバック内から `send` メソッドを呼び出す。
+* 以下のようにして、永続ログ・バッファーの最大ファイル・サイズを増やす (バイト単位)。
 
 **Objective-C**
 
@@ -145,19 +147,19 @@ To ensure that all captured logs are sent, consider one of the following strateg
 OCLogger.setMaxFileSize(150000);
 ```
 
-## Auto log sending
+## 自動ログ送信
 {: #auto-log-sending }
-By default, auto log send is enabled. Each time a successful resource request is sent to the server, the captured logs are also sent, with a 60-second minimum interval between sends. Auto log send can be enabled or disabled from the client. By default auto log send is enabled.
+デフォルトでは、自動ログ送信が有効になっています。正常なリソース要求がサーバーに送信されるたびに、キャプチャーされたログも最小で 60 秒の送信間隔で送信されます。自動ログ送信は、クライアントから有効または無効にすることができます。 
 
 **Objective-C**
 
-To enable:
+有効にするには、以下のようにします。
 
 ```objc
 [OCLogger setAutoSendLogs:YES];
 ```
 
-To disable:
+無効にするには、以下のようにします。
 
 ```objc
 [OCLogger setAutoSendLogs:NO];
@@ -165,59 +167,63 @@ To disable:
 
 **Swift**
 
-To enable:
+有効にするには、以下のようにします。
 
 ```swift
 OCLogger.setAutoSendLogs(true);
 ```
 
-To disable:
+無効にするには、以下のようにします。
 
 ```swift
 OCLogger.setAutoSendLogs(false);
 ```
 
-## Fine-tuning with the Logger API
+## Logger API による細かい調整
 {: #fine-tuning-with-the-logger-api }
-The {{ site.data.keys.product_adj }} client SDK makes internal use of the Logger API. By default, you are capturing log entries made by the SDK. To fine-tune log collection, use logger instances with package names. You can also control which logging level is captured by the analytics using server-side filters.
+{{site.data.keys.product_adj }} クライアント SDK は、Logger API を内部で利用します。デフォルトでは、SDK によって作成されたログ・エントリーをキャプチャーしています。
+ログ収集を細かく調整するには、パッケージ名を指定してロガー・インスタンスを使用します。
+サーバー・サイドのフィルターを使用して、分析でどのロギング・レベルをキャプチャーするかを制御することもできます。
 
 ### Objective-C
 {: #objective-c}
-As an example of capturing logs only where the level is `ERROR` for the `myApp` package name, follow these steps.
+パッケージ名が `myApp` で、レベルが `ERROR` のログのみをキャプチャーする例のステップを以下に示します。
 
-1. Use a `logger` instance with the `myApp` package name.
+1. パッケージ名 `myApp` を指定して、`logger` インスタンスを使用します。
 
    ```objc
    OCLogger *logger = [OCLogger getInstanceWithPackage:@"MyApp"];
    ```
 
-2. **Optional:** Specify a filter to restrict log capture and log output to only the specified level and package programmatically.
+2. **オプション: **指定されたレベルとパッケージのみにログ・キャプチャーとログ出力をプログラムで制限するフィルターを指定します。
 
    ```objc
    [OCLogger setFilters:@{@"MyApp": @(OCLogger_ERROR)}];
    ```
 
-3. **Optional:** Control the filters remotely by fetching a server configuration profile.
+3. **オプション:** サーバー構成プロファイルを取り出して、リモートでフィルターを制御します。
 
 ### Swift
 {: #swift }
-1. Using the extension as explained in the Overview, create a logger instance for  your package.
+1. 『概説』で説明されているとおりに拡張を使用して、パッケージのロガー・インスタンスを作成します。
 
    ```swift
    let logger : OCLogger = OCLogger.getInstanceWithPackage("MyTestLoggerPackage");
    ```
 
-2. **Optional:** Specify a logging level.
+2. **オプション:** ロギング・レベルを指定します。
 
    ```swift
    OCLogger.setLevel(OCLogger_DEBUG);
    ```
 
-3. **Optional:** Control the filters remotely by fetching a server configuration profile.
+3. **オプション:** サーバー構成プロファイルを取り出して、リモートでフィルターを制御します。
 
-## Fetching server configuration profiles
+## サーバー構成プロファイルの取り出し
 {: #fetching-server-configuration-profiles }
-Logging levels can be set by the client, or by retrieving configuration profiles from the server. From the {{ site.data.keys.mf_analytics_console }}, a log level can be set globally (all logger instances) or for a specific package or packages. For information on configuring the filter from the {{ site.data.keys.mf_analytics_console }}, see [Configuring log filters](../../../analytics/console/log-filters/). For the client to fetch the configuration from the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+ロギング・レベルは、クライアントが設定することも、サーバーから構成プロファイルを取得することによって設定することもできます。{{site.data.keys.mf_analytics_console }} から、ログ・レベルは、グローバル (すべてのロガー・インスタンス) に設定することも、特定のパッケージ (複数可) に設定することも可能です。
+{{site.data.keys.mf_analytics_console }}からのフィルターの構成については、[『ログ・フィルターの構成』](../../../analytics/console/log-filters/)を参照してください。
+クライアントがサーバーから構成を取り出すには、アプリケーション・ライフサイクル・コールバック内など、定期的に実行されるコード内の場所から `updateConfigFromServer` メソッドを呼び出す必要があります。
 
 **Objective-C**
 
@@ -231,9 +237,9 @@ Logging levels can be set by the client, or by retrieving configuration profiles
  OCLogger.updateConfigFromServer();
  ```
 
-## Logging example
+## ロギングの例
 {: #logging-example }
-Outputs to a browser JavaScript console, LogCat, or Xcode console.
+ブラウザーの JavaScript コンソール、LogCat、または Xcode コンソールに出力します。
 
 #### Objective-C
 {: #objective-c-example }

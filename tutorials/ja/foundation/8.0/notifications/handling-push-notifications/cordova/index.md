@@ -1,98 +1,98 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Cordova
+title: Cordova でのプッシュ通知の処理
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 downloads:
-  - name: Download Cordova project
+  - name: Cordova プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Before iOS, Android and Windows Cordova applications are able to receive and display push notifications, the **cordova-plugin-mfp-push** Cordova plug-in needs to be added to the Cordova project. Once an application has been configured, {{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, subscribe &amp; unsubscribe tags and handle notifications. In this tutorial, you will learn how to handle push notification in Cordova applications.
+iOS、Android、および Windows の Cordova アプリケーションでプッシュ通知を受け取り、プッシュ通知を表示できるようにするには、**cordova-plugin-mfp-push** Cordova プラグインを Cordova プロジェクトに追加する必要があります。アプリケーションが構成されると、{{site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブ、および通知の処理を実行できます。このチュートリアルでは、Cordova アプリケーションでプッシュ通知を処理する方法について学習します。
 
-> **Note:** Authenticated notifications are currently **not supported** in Cordova applications due to a defect. However a workaround is provided: each `MFPPush` API call can be wrapped by `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );`. The provided sample application uses this workround.
+> **注:** ある問題のために、認証済み通知は、現在 Cordova アプリケーションでは**サポートされていません**。しかし、予備手段が用意されており、各 `MFPPush` API 呼び出しを `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );` でラップできます。提供されるサンプル・アプリケーションはこの予備手段を使用しています。
 
-For information about Silent or Interactive notifications in iOS, see:
+iOS でのサイレント通知または対話式通知については、以下を参照してください。
 
-* [Silent notifications](../silent)
-* [Interactive notifications](../interactive)
+* [サイレント通知](../silent)
+* [対話式通知](../interactive)
 
-**Prequisites:**
+**前提条件:**
 
-* Make sure you have read the following tutorials:
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product }} SDK to Cordova applications](../../../application-development/sdk/cordova)
-    * [Push Notifications Overview](../../)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
-* Cordova CLI installed on the developer workstation
+* 必ず、以下のチュートリアルをお読みください。
+    * [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
+    * [Cordova アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/cordova)
+    * [プッシュ通知の概要](../../)
+* ローカルで稼働している {{site.data.keys.mf_server }}、またはリモートで稼働している {{site.data.keys.mf_server }}
+* 開発者ワークステーションに {{site.data.keys.mf_cli }} がインストールされていること
+* 開発者ワークステーションに Cordova CLI がインストールされていること
 
-#### Jump to
+#### ジャンプ先:
 {: #jump-to }
-* [Notifications Configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
-* [Sample application](#sample-application)
+* [通知構成](#notifications-configuration)
+* [通知 API](#notifications-api)
+* [プッシュ通知の処理](#handling-a-push-notification)
+* [サンプル・アプリケーション](#sample-application)
 
-## Notifications Configuration
+## 通知構成
 {: #notifications-configuration }
-Create a new Cordova project or use an existing one, and add one or more of the supported platforms: iOS, Android, Windows.
+新しい Cordova プロジェクトを作成するか既存のプロジェクトを使用し、サポートされるプラットフォーム (iOS、Android、Windows) を 1 つ以上追加します。
 
-> If the {{ site.data.keys.product_adj }} Cordova SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to Cordova applications](../../../application-development/sdk/cordova) tutorial.
+> {{site.data.keys.product_adj }} Cordova SDK がプロジェクトにまだ存在しない場合は、[Cordova アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/cordova)チュートリアルの説明に従ってください。
 
-### Adding the Push plug-in
+### プッシュ・プラグインの追加
 {: #adding-the-push-plug-in }
-1. From a **command-line** window, navigate to the root of the Cordova project.  
+1. **コマンド・ライン**・ウィンドウから Cordova プロジェクトのルートにナビゲートします。  
 
-2. Add the push plug-in to by running the command:
+2. 以下のコマンドを実行して、プッシュ・プラグインを追加します。
 
    ```bash
    cordova plugin add cordova-plugin-mfp-push
    ```
 
-3. Build the Cordova project by running the command:
+3. 以下のコマンドを実行して、Cordova プロジェクトをビルドします。
 
    ```bash
    cordova build
    ```
 
-### iOS platform
-{: # ios-platform }
-The iOS platform requires an additional step.  
-In Xcode, enable push notifications for your application in the **Capabilities** screen.
+### iOS プラットフォーム
+{ #ios-platform }
+iOS プラットフォームでは追加のステップが必要です。  
+Xcode で、**「Capabilities」**画面を使用してアプリケーションのプッシュ通知を有効にします。
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** the bundleId selected for the application must match the AppId that you have previously created in the Apple Developer site. See the [Push Notifications Overview] tutorial.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** アプリケーションに対して選択する bundleId は、先に Apple Developer サイトで作成した AppId に一致しなければなりません。[プッシュ通知の概要] チュートリアルを参照してください。
 
-![image of where is the capability in Xcode](push-capability.png)
+![Xcode 内の「Capabilities」の場所を示すイメージ](push-capability.png)
 
-## Notifications API
+## 通知 API
 {: #notifications-api }
-### Client-side
+### クライアント・サイド
 {: #client-side }
 
-| Javascript Function | Description |
+| Javascript 関数 | 説明 |
 | --- | --- |
-| [`MFPPush.initialize(success, failure)`](#initialization) | Initialize the MFPPush instance. | 
-| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | Does the device support push notifications. | 
-| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | Registers the device with the Push Notifications Service. | 
-| [`MFPPush.getTags(success, failure)`](#get-tags) | Retrieves all the tags available in a push notification service instance. | 
-| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | Subscribes to a particular tag. | 
-| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | Retrieves the tags device is currently subscribed to | 
-| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | Unsubscribes from a particular tag. | 
-| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | Unregisters the device from the Push Notifications Service | 
+| [`MFPPush.initialize(success, failure)`](#initialization) | MFPPush インスタンスを初期化します。 | 
+| [`MFPPush.isPushSupported(success, failure)`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。 | 
+| [`MFPPush.registerDevice(options, success, failure)`](#register-device) | デバイスをプッシュ通知サービスに登録します。 | 
+| [`MFPPush.getTags(success, failure)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なすべてのタグを取得します。 | 
+| [`MFPPush.subscribe(tag, success, failure)`](#subscribe) | 特定のタグにサブスクライブします。 | 
+| [`MFPPush.getSubsciptions(success, failure)`](#get-subscriptions) | デバイスが現在サブスクライブしているタグを取得します。 | 
+| [`MFPPush.unsubscribe(tag, success, failure)`](#unsubscribe) | 特定のタグからアンサブスクライブします。 | 
+| [`MFPPush.unregisterDevice(success, failure)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。 | 
 
-### API implementation
+### API 実装
 {: #api-implementation }
-#### Initialization
+#### 初期化
 {: #initialization }
-Initialize the **MFPPush** instance.
+**MFPPush** インスタンスを初期化します。
 
-- Required for the client application to connect to MFPPush service with the right application context.  
-- The API method should be called first before using any other MFPPush APIs.
-- Registers the callback function to handle received push notifications.
+- クライアント・アプリケーションが、正しいアプリケーション・コンテキストの MFPPush サービスに接続するために必要です。  
+- 最初に API メソッドを呼び出してから、その他の MFPPush API を使用する必要があります。
+- 受け取ったプッシュ通知を処理するコールバック関数を登録します。
 
 ```javascript
 MFPPush.initialize (
@@ -106,9 +106,9 @@ MFPPush.initialize (
 );
 ```
 
-#### Is push supported
+#### プッシュがサポートされるか
 {: #is-push-supported }
-Check if the device supports push notifications.
+デバイスがプッシュ通知をサポートするかどうかをチェックします。
 
 ```javascript
 MFPPush.isPushSupported (
@@ -121,9 +121,9 @@ MFPPush.isPushSupported (
 );
 ```
 
-#### Register device
+#### デバイスの登録
 {: #register-device }
-Register the device to the push notifications service. If no options are required, options can be set to `null`.
+デバイスをプッシュ通知サービスに登録します。必要なオプションがない場合、オプションは `null` に設定できます。
 
 
 ```javascript
@@ -139,9 +139,9 @@ MFPPush.registerDevice(
 );
 ```
 
-#### Get tags
+#### タグの取得
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+プッシュ通知サービスからすべての使用可能なタグを取得します。
 
 ```javascript
 MFPPush.getTags (
@@ -154,9 +154,9 @@ MFPPush.getTags (
 );
 ```
 
-#### Subscribe
+#### サブスクライブ
 {: #subscribe }
-Subscribe to desired tags.
+目的のタグにサブスクライブします。
 
 ```javascript
 var tags = ['sample-tag1','sample-tag2'];
@@ -172,9 +172,9 @@ MFPPush.subscribe(
 );
 ```
 
-#### Get subscriptions
+#### サブスクリプションの取得
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+デバイスが現在サブスクライブしているタグを取得します。
 
 ```javascript
 MFPPush.getSubscriptions (
@@ -187,9 +187,9 @@ MFPPush.getSubscriptions (
 );
 ```
 
-#### Unsubscribe
+#### アンサブスクライブ
 {: #unsubscribe }
-Unsubscribe from tags.
+タグからアンサブスクライブします。
 
 ```javascript
 var tags = ['sample-tag1','sample-tag2'];
@@ -205,9 +205,9 @@ MFPPush.unsubscribe(
 );
 ```
 
-#### Unregister
+#### 登録抹消
 {: #unregister }
-Unregister the device from push notification service instance.
+プッシュ通知サービス・インスタンスからデバイスを登録抹消します。
 
 ```javascript
 MFPPush.unregisterDevice(
@@ -220,9 +220,9 @@ MFPPush.unregisterDevice(
 );
 ```
 
-## Handling a push notification
+## プッシュ通知の処理
 {: #handling-a-push-notification }
-You can handle a received push notification by operating on its response object in the registered callback function.
+登録済みのコールバック関数内で応答オブジェクトを操作することで、受け取ったプッシュ通知を処理できます。
 
 ```javascript
 var notificationReceived = function(message) {
@@ -230,13 +230,13 @@ var notificationReceived = function(message) {
 };
 ```
 
-<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
-## Sample application
+<img alt="サンプル・アプリケーションのイメージ" src="notifications-app.png" style="float:right"/>
+## サンプル・アプリケーション
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80) the Cordova project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsCordova/tree/release80) して Cordova プロジェクトをダウンロードします。
 
-**Note:** The latest version of Google Play Services is required to be installed on any Android device for the sample to run.
+**注:** サンプルを実行するには、Android デバイス上に最新バージョンの Google Play Services がインストールされている必要があります。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

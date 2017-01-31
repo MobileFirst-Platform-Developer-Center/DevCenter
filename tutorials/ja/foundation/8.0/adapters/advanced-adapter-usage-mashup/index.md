@@ -1,62 +1,62 @@
 ---
 layout: tutorial
-title: Advanced Adapter Usage and Mashup
-breadcrumb_title: Adapter Mashup
+title: 拡張アダプターの使用法とマッシュアップ
+breadcrumb_title: アダプターのマッシュアップ
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Cordova project
+  - name: Cordova プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Now that basic usage of different types of adapters has been covered, it is important to remember that adapters can be combined to make a procedure that uses different adapters to generate one processed result. You can combine several sources (different HTTP servers, SQL, etc).
+さまざまなタイプのアダプターの基本的な使用法について説明してきましたが、これらのアダプターを組み合わせると、異なるアダプターを使用して 1 つの処理結果を生成するプロシージャーを作成できることを覚えておくことは重要です。複数のソース (異なる HTTP サーバー、SQL など) を組み合わせることができます。
 
-In theory, from the client side, you could make several requests successively, one depending on the other.
-However, writing this logic on the server side could be faster and cleaner.
+理論上は、クライアント・サイドから複数の要求を連続的に行うことができ、一方が他方に依存した状態になります。ただし、サーバー・サイドにこのロジックを作成することで、速度が向上し、よりクリーンになる可能性があります。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to}
-* [JavaScript adapter API](#javascript-adapter-api)
-* [Java adapter API](#java-adapter-api)
-* [Data mashup example](#data-mashup-example)
-* [Sample application](#sample-application)
+* [JavaScript アダプター API](#javascript-adapter-api)
+* [Java アダプター API](#java-adapter-api)
+* [データ・マッシュアップの例
+](#data-mashup-example)
+* [サンプル・アプリケーション](#sample-application)
 
-## JavaScript adapter API
+## JavaScript アダプター API
 {: #javascript-adapter-api }
 
-### Calling a JavaScript adapter procedure from a JavaScript adapter
+### JavaScript アダプターからの JavaScript アダプター・プロシージャーの呼び出し
 {: #calling-a-javascript-adapter-procedure-from-a-javascript-adapter }
 
-When calling a JavaScript adapter procedure from another JavaScript adapter use the `MFP.Server.invokeProcedure(invocationData)` API. This API enables to invoke a procedure on any of your JavaScript adapters. `MFP.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
+JavaScript アダプター・プロシージャーを別の JavaScript アダプターから呼び出す場合、`MFP.Server.invokeProcedure(invocationData)` API を使用します。この API を使用することにより、どの JavaScript アダプター上のプロシージャーも呼び出すことができます。`MFP.Server.invokeProcedure(invocationData)` は、呼び出されたプロシージャーから取得した結果オブジェクトを返します。
 
-The `invocationData` function signature is:  
-`MFP.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
+`invocationData` 関数シグニチャーは次のとおりです。  
+`MFP.Server.invokeProcedure({adapter: [アダプター名], procedure: [プロシージャー名], parameters: [コンマ区切りのパラメーター]})`
 
-For example:
+以下に例を示します。
 
 ```javascript
 MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate]});
 ```
 
-> Calling a Java adapter from a JavaScript adapter is not supported
+> JavaScript アダプターからの Java アダプターの呼び出しはサポートされていません。
 
-## Java adapter API
+## Java アダプター API
 {: #java-adapter-api }
 
-Before you can call another adapter - the AdaptersAPI must be assigned to a variable:
+別のアダプターを呼び出す前に - AdaptersAPI を変数に割り当てる必要があります。
 
 ```java
 @Context
 AdaptersAPI adaptersAPI;
 ```
 
-### Calling a Java adapter from a Java adapter
+### Java アダプターからの Java アダプターの呼び出し
 {: #calling-a-java-adapter-from-a-java-adapter }
 
-When calling an adapter procedure from a Java adapter use the `executeAdapterRequest` API.
-This call returns an `HttpResponse` object.
+Java アダプターからアダプター・プロシージャーを呼び出す場合、`executeAdapterRequest` API を使用します。
+この呼び出しは `HttpResponse` オブジェクトを返します。
 
 ```java
 HttpUriRequest req = new HttpGet(JavaAdapterProcedureURL);
@@ -64,10 +64,10 @@ HttpResponse response = adaptersAPI.executeAdapterRequest(req);
 JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 ```
 
-### Calling a JavaScript adapter procedure from a Java adapter
+### Java アダプターからの JavaScript アダプター・プロシージャーの呼び出し
 {: calling-a-javascript-adapter-procedure-from-a-java-adapter }
  
-When calling a JavaScript adapter procedure from a Java adapter use both the `executeAdapterRequest` API and the `createJavascriptAdapterRequest` API that creates an `HttpUriRequest` to pass as a parameter to the `executeAdapterRequest` call.
+Java アダプターから JavaScript アダプター・プロシージャーを呼び出す場合、`executeAdapterRequest` API と `createJavascriptAdapterRequest` API の両方を使用します。後者の API では、`HttpUriRequest` を作成し、これをパラメーターとして `executeAdapterRequest` 呼び出しに渡します。
 
 ```java
 HttpUriRequest req = adaptersAPI.createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
@@ -75,42 +75,44 @@ org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
 JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 ```
 
-## Data mashup example
+## データ・マッシュアップの例
+
 {: #data-mashup-example }
 
-The following example shows how to mash up data from 2 data sources, a *database table* and *Fixer.io (exchange rate and currency conversion service)*, And to return the data stream to the application as a single object.
+次の例では、2 つのデータ・ソース、1 つの*データベース表*、および *Fixer.io (為替レートおよび通貨の変換サービス)* をマッシュアップする方法、およびデータ・ストリームを単一のオブジェクトとしてアプリケーションに返す方法を示します。
 
-In this example we will use 2 adapters:
+この例では、2 つのアダプターを使用します。
 
-* SQL Adapter:
-  * Extract a list of currencies from a currencies database table.
-  * The result contains the list of currencies. Each currency will have an id, symbol and name. For example: {3, EUR, Euro}
-  * This adapter will also have a procedure that calls the HTTP adapter passing 2 parameters - a base currency and a target currency to retrieve the updated exchange-rate.
-* HTTP Adapter:
-  * Connect to the Fixer.io service.
-  * Extract an updated exchange-rate for the requested currencies that are retrieved as parameters via the SQL adapter.
+* SQL アダプター:
+  * 通貨のリストを通貨データベース表から取り出します。
+  * 結果には通貨のリストが含まれています。各通貨には、ID、シンボル、および名前があります。例: {3, EUR, Euro}
+  * このアダプターには、2 つのパラメーター (更新済みの為替レートを取得するための基本通貨とターゲット通貨) を渡す HTTP アダプターを呼び出すプロシージャーも含まれています。
+* HTTP アダプター:
+  * Fixer.io サービスに接続します。
+  * SQL アダプターを介してパラメーターとして取得される要求通貨の、更新済みの為替レートを取り出します。
 
-Afterward, the mashed-up data is returned to the application for display.
+その後、マッシュアップされたデータがアプリケーションに返されて表示されます。
 
-![Adapter Mashup Diagram](AdaptersMashupDiagram.jpg)
 
-The provided sample in this tutorial demonstrates the implementation of this scenario using 3 different mashup types.  
-In each one of them the names of the adapters are slightly different.  
-Here is a list of the mashup types and the corresponding adapter names:
+![アダプターのマッシュアップ・ダイアグラム](AdaptersMashupDiagram.jpg)
 
-| Scenario                                         |      SQL Adapter name        |  HTTP Adapter name    |  
+このチュートリアルで提供されるサンプルでは、3 つの異なるマッシュアップ・タイプを使用する以下のシナリオの実装を示します。  
+それぞれのタイプで、アダプターの名前がやや異なります。  
+マッシュアップ・タイプとそれに該当するアダプター名のリストは次のとおりです。
+
+| シナリオ                                         |      SQL アダプター名        |  HTTP アダプター名    |  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** adapter → **JavaScript** adapter  | SQLAdapterJS                 | HTTPAdapterJS         |  
-| **Java** adapter → **JavaScript** adapter        | SQLAdapterJava               | HTTPAdapterJS         |  
-| **Java** adapter → **Java** adapter              | SQLAdapterJava               | HTTPAdapterJava       |
+| **JavaScript** アダプター → **JavaScript** アダプター  | SQLAdapterJS                 | HTTPAdapterJS         |  
+| **Java** アダプター → **JavaScript** アダプター        | SQLAdapterJava               | HTTPAdapterJS         |  
+| **Java** アダプター → **Java** アダプター              | SQLAdapterJava               | HTTPAdapterJava       |
 
 
-### Mashup Sample Flow
+### マッシュアップのサンプル・フロー
 {: #mashup sample flow }
 
-**1. Create a procedure / adapter call that create a request to a back-end endpoint for the requested currencies and retrieves the corresponding data:**  
+**1. 要求された通貨についてバックエンドのエンドポイントへの要求を作成し、該当するデータを取得するプロシージャー/アダプター呼び出しを作成します。**  
 
-(HTTPAdapterJS adapter) XML:
+(HTTPAdapterJS アダプター) XML:
 
 ```xml
 <connectivity>
@@ -123,7 +125,7 @@ Here is a list of the mashup types and the corresponding adapter names:
 </connectivity>
 ```
 
-(HTTPAdapterJS adapter) JavaScript:
+(HTTPAdapterJS アダプター) JavaScript:
 
 ```javascript
 function getExchangeRate(fromCurrencySymbol, toCurrencySymbol) {
@@ -141,7 +143,7 @@ function getPath(from, to) {
 }
 ```
 
-(HTTPAdapterJava adapter)
+(HTTPAdapterJava アダプター)
 
 ```java
 @GET
@@ -166,9 +168,9 @@ private Response execute(HttpUriRequest req) throws IOException, IllegalStateExc
 }
 ```
 
-**2. Create a procedure that fetches the currencies records from the database and returns a resultSet / JSONArray to the application:**
+**2. データベースから通貨レポートをフェッチし、resultSet/JSONArray をアプリケーションに返すプロシージャーを作成します。**
 
-(SQLAdapterJS adapter)
+(SQLAdapterJS アダプター)
 
 ```javascript
 var getCurrenciesListStatement = "SELECT id, symbol, name FROM currencies;";
@@ -182,7 +184,7 @@ function getCurrenciesList() {
 }
 ```
 
-(SQLAdapterJava adapter)
+(SQLAdapterJava アダプター)
 
 ```java
 @GET
@@ -208,9 +210,9 @@ public JSONArray getCurrenciesList() throws SQLException, IOException {
 }
 ```
 
-**3. Create a procedure that calls the HTTPAdapter procedure (which we created in step 1) with the base-currency and the target-currency:**
+**3. 基本通貨とターゲット通貨を指定して HTTPAdapter プロシージャー (ステップ 1 で作成) を呼び出すプロシージャーを作成します。**
 
-(SQLAdapterJS adapter)
+(SQLAdapterJS アダプター)
 
 ```javascript
 function getExchangeRate(fromId, toId) {
@@ -237,7 +239,7 @@ function getExchangeRate(fromId, toId) {
 }
 ```
 
-(SQLAdapterJava adapter - mashup with another Java adapter)
+(SQLAdapterJava アダプター - 別の Java アダプターとのマッシュアップ)
 
 ```java
 @GET
@@ -269,7 +271,7 @@ public JSONObject getExchangeRate_JavaToJava(@QueryParam("fromCurrencyId") Integ
 }
 ```
 
-(SQLAdapterJava adapter - mashup with a JavaScript adapter)
+(SQLAdapterJava アダプター - JavaScript アダプターとのマッシュアップ)
 
 ```java
 @GET
@@ -300,32 +302,32 @@ public JSONObject getExchangeRate_JavaToJS(@QueryParam("fromCurrencyId") Integer
 }
 ```
 
-<img alt="sample application" src="AdaptersMashupSample.png" style="float:right"/>
+<img alt="サンプル・アプリケーション" src="AdaptersMashupSample.png" style="float:right"/>
 
-## Sample application
+## サンプル・アプリケーション
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) the Cordova project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) して Cordova プロジェクトをダウンロードします。
 
-**Note:** the sample application's client-side is for Cordova applications, however the server-side code in the adapters applies to all platforms.
+**注:** サンプル・アプリケーションのクライアント・サイドは Cordova アプリケーション用ですが、アダプターのサーバー・サイド・コードはすべてのプラットフォームに適用されます。
 
-### Sample usage
+### 使用例
 {: #sample-usage }
 
-#### Adapter setup
+#### アダプターのセットアップ
 {: #adapter-setup }
 
-An example of currencies list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`.
+SQL の通貨リストの例は、`Utils/mobilefirstTraining.sql` の提供されているアダプター Maven プロジェクト (Cordova プロジェクトの中にあります) で使用できます。
 
-1. Run the .sql script in your SQL database.
-2. Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the adapters](../../adapters/creating-adapters/).
-3. Open the {{ site.data.keys.mf_console }}
-    - Click on the **SQLAdapterJS** adapter and update the database connectivity properties.
-    - Click on the **SQLAdapterJava** adapter and update the database connectivity properties.
+1. SQL データベースで .sql スクリプトを実行します。
+2. Maven、{{site.data.keys.mf_cli }}、または任意の IDE を使用して、[アダプターのビルドとデプロイ](../../adapters/creating-adapters/)を行います。
+3. {{site.data.keys.mf_console }}を開きます。
+    - **SQLAdapterJS** アダプターをクリックし、データベース接続プロパティーを更新します。
+    - **SQLAdapterJava** アダプターをクリックし、データベース接続プロパティーを更新します。
 
-#### Application setup
+#### アプリケーションのセットアップ
 {: #application-setup }
 
-1. From the command line, navigate to the **CordovaApp** project's root folder.
-2. Add a platform by running the `cordova platform add` command.
-3. Register the application by running the command: `mfpdev app register`.
-4. Run the Cordova application by running the `cordova run` command.
+1. コマンド・ラインから、**CordovaApp** プロジェクトのルート・フォルダーにナビゲートします。
+2. `cordova platform add` コマンドを実行して、プラットフォームを追加します。
+3. `mfpdev app register` コマンドを実行して、アプリケーションを登録します。
+4. `cordova run` コマンドを実行して、Cordova アプリケーションを実行します。

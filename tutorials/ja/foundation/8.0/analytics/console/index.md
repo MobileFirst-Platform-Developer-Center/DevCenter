@@ -1,126 +1,135 @@
 ---
 layout: tutorial
-title: Operations and Analytics Consoles
-breadcrumb_title: Analytics Console
+title: Operations Console および Analytics コンソール
+breadcrumb_title: Analytics コンソール
 relevantTo: [ios,android,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 
-## Overview
-Configure the way the client works with the {{ site.data.keys.mf_analytics_server }}, configure and view a wide range of reports using the Operations and Analytics Consoles.
+## 概説
+クライアントが {{site.data.keys.mf_analytics_server }}と連携する方法を構成し、Operations Console および Analytics コンソールを使用してさまざまなレポートを構成して表示します。
 
-## {{ site.data.keys.mf_analytics_console_full }}
-From the {{ site.data.keys.mf_analytics_console }}, view and configure the Analytics reports. Manage alerts and view client logs.
+## {{site.data.keys.mf_analytics_console_full }}
+{{site.data.keys.mf_analytics_console }}で、Analytics レポートを表示および構成します。アラートを管理し、クライアント・ログを表示します。
 
-You can open the {{ site.data.keys.mf_analytics_console_short }} from the {{ site.data.keys.mf_console }} by clicking the  **Analytics Console**  link in the top-right navigation bar.
+{{site.data.keys.mf_console }} から {{site.data.keys.mf_analytics_console_short }}を開くには、右上のナビゲーション・バーで**「Analytics コンソール」**リンクをクリックします。
 
-![Analytics console button](analytics-console-button.png)
+![「Analytics コンソール」ボタン](analytics-console-button.png)
 
-After navigating to the {{ site.data.keys.mf_analytics_console_short }}, the default **Dashboard** panel appears. If a client application has already sent logs and analytics data to the server, the relevant reports are populated. The **Apps** and **Infrastructure** can be chosen from the navigation bar.
+{{site.data.keys.mf_analytics_console_short }}にナビゲートすると、デフォルトの**「ダッシュボード」**パネルが表示されます。クライアント・アプリケーションが既にログおよび分析データをサーバーに送信している場合は、関連レポートにデータが取り込まれます。**「アプリケーション」**および**「インフラストラクチャー」**はナビゲーション・バーから選択できます。
 
-![Analytics console](analytics-console.png)
+![Analytics コンソール](analytics-console.png)
 
-### Dashboard
-In the **Dashboard** panel, you can review collected analytics data related to application crashes, application sessions, and server processing time. Additionally you can create custom charts as well as manage alerts.
+### ダッシュボード
+**「ダッシュボード」**パネルでは、アプリケーションの異常終了、アプリケーション・セッション、およびサーバー処理時間に関連した、収集された分析データを検討することができます。また、カスタム・グラフの作成やアラートの管理も行うことができます。
 
-### Apps
-In the **Apps** panel, you can review in-depth analytics data related to usage and devices (such as total device and app sessions, active users, app usage, new devices, model usage and operating system), as well as crash-related data. Search through client logs for specific apps and devices (**Apps → Client Log Search**).
-
-
-### Infrastructure
-In the **Infrastructure** panel you can review analytics data related to: session processing time, average request size, server requests, network requests, adapters response time, procedure response time, and size and adapters usage, as well as push notifications data such as notification requests and per mediator. You can also search through server logs.
-
-> Learn more in the [Analytics Workflows](../workflows/) tutorial.
-
-## Analytics features
-
-### App Analytics
-From the **Apps → Usage and Devices** tab, you can view App Session charts and App Usage charts to find out which app is being used most frequently by your users.
-
-### Built-in Analytics
-When you use the {{ site.data.keys.product_adj }} client SDK together with the {{ site.data.keys.mf_server }}, analytics data automatically gets collected for any request that your app makes to the {{ site.data.keys.mf_server }}. From **Dashboard → Overview** view basic device metadata that gets collected and reported to the {{ site.data.keys.mf_analytics_server }}.
-
-### Custom Analytics
-You can have your app send custom data and create custom charts for your custom data.
-
-> Learn how to send custom analytics in the [Analytics API](../analytics-api/) tutorial.
-
-### Custom charts
-Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console_short }} (**Dashboard → Custom Charts**). This visualization feature is a powerful way to analyze business-critical data.
-
-> Learn how to create custom charts in the [Creating Custom Charts](custom-charts/) tutorial.
-
-### Manage alerts
-Alerts provide a proactive means to monitor the health of your mobile apps without having to check the {{ site.data.keys.mf_analytics_console }} regularly.
-
-From the **Dashboard → Alert Management** tab, you can configure thresholds which, if exceeded, trigger alerts to notify administrators. You can visualize the triggered alerts on the console or handle them by using a custom web hook. A custom web hook allows you to control who is notified when an alert is triggered, and how.
-
-> Learn how to manage alerts in the [Manage Alerts](alerts/) tutorial.
-
-### Monitor app crashes
-App crashes are visualized on the {{ site.data.keys.mf_analytics_console_short }} (**Apps → Crashes**), where you can quickly view crashes and act on them accordingly. Crash logs are collected on the device by default and sent to the server *once the application is running again*. When crash logs are sent to the analytics server, they automatically populate the crash charts.
-
-### Monitor server and network data
-The {{ site.data.keys.mf_analytics_console_short }} monitors network data when it is sent to the Analytics Server, and allows the user to query this information in different ways (**Infrastructure → Servers and Networks**).
+### アプリケーション
+**「アプリケーション」**パネルでは、使用状況およびデバイスに関連した詳細な分析データ (合計デバイス数およびアプリケーション・セッション、アクティブ・ユーザー、アプリケーションの使用状況、新規デバイス、モデルの使用状況、およびオペレーティング・システムなど) に加え、異常終了に関連したデータも検討できます。特定のアプリケーションおよびデバイスのクライアント・ログを検索します (**「アプリケーション」→「クライアント・ログの検索」**)。
 
 
-### Collect, search, and report on client logs
-Client logs can be sent to the server and included in analytics reports.
+### インフラストラクチャー
+**「インフラストラクチャー」**パネルでは、セッション処理時間、平均要求サイズ、サーバー要求、ネットワーク要求、アダプター応答時間、プロシージャー応答時間、およびサイズおよびアダプターの使用状況に関連した分析データに加え、通知要求およびメディエーターごとの通知などのプッシュ通知データも検討できます。サーバー・ログを検索することもできます。
 
-To include logging information in a report:
+> [『Analytics ワークフロー』](../workflows/)チュートリアルで詳細を参照してください。
 
-1. From the {{ site.data.keys.mf_analytics_console_short }}, choose the **Dashboard → Custom Charts** tab.
+## 分析フィーチャー
 
-2. Choose **Client Logs** from the **Event Type** pull-down menu.
+### アプリケーション分析
+**「アプリケーション」→「使用状況とデバイス」**タブから「アプリケーション・セッション」グラフと「アプリケーションの使用」グラフを表示すると、ユーザーによってどのアプリケーションが最も使用されているかが分かります。
 
-For more information on **Custom Charts**, see [Creating Custom Charts](custom-charts/).
+### 組み込み分析
+{{site.data.keys.product_adj }} クライアント
+SDK を {{site.data.keys.mf_server }} と一緒に使用すると、
+アプリケーションで {{site.data.keys.mf_server }}
+に行う要求について分析データが自動的に収集されます。
+**「ダッシュボード」→「概要」**で、収集されて {{site.data.keys.mf_analytics_server }} にレポートされる基本のデバイス・メタデータを表示します。
 
-Logging data can be filtered. Log filters can be configured and saved on the Analytics Server, and then retrieved by client applications.
+### カスタム分析
+アプリケーションにカスタム・データを送信させて、カスタム・データのカスタム・グラフを作成することができます。
 
-For information on configuring log filters, see [Client log searches](log-filters/) tutorial.
+> [『Analytics API』](../analytics-api/)チュートリアルでカスタム分析の送信方法を参照してください。
 
-For more information on sending logs from the client, see [Client log collection](../../application-development/client-side-log-collection/).
+### カスタム・グラフ
+カスタム・グラフを使用すると、分析データ・ストア内の収集した分析データを、{{site.data.keys.mf_analytics_console_short }}でデフォルトでは使用できないグラフで視覚化できます (**「ダッシュボード」→「カスタム・グラフ」**)。この視覚化フィーチャーは、ビジネスに不可欠なデータを分析するためのパワフルな手段です。
 
+> [『カスタム・グラフの作成』](custom-charts/)チュートリアルでカスタム・グラフの作成方法を参照してください。
 
+### アラートの管理
+アラートにより、
+{{site.data.keys.mf_analytics_console }}
+を定期的にチェックせずに、モバイル・アプリケーションの正常性をモニターするための事前対応手段が提供されます。
 
-## {{ site.data.keys.mf_console_full }}
-Configure and administer the Analytics Server with the {{ site.data.keys.mf_console }}.
+**「ダッシュボード」→「アラートの管理」**タブで、しきい値を構成できます。この値を超えると、アラートが起動されて管理者に通知されます。起動されたアラートをコンソール上で視覚化することも、カスタム Web フックを使用してそれらを処理することもできます。カスタム Web フックを使用すると、アラートが起動されたときに誰がどのように通知を受けるかを制御できます。
 
-If you are in the {{ site.data.keys.mf_analytics_console_short }}, access the {{ site.data.keys.mf_console }} by clicking the **Operations Console** button in the top navigation bar.
+> [『アラートの管理』](alerts/)チュートリアルでアラートの管理方法を参照してください。
 
-### Collect analytics data from additional logger packages
-By default, only logging from the package `com.worklight` is sent to analytics. In order to add logging from additional packages see [Forwarding logs to the Analytics Server](../../adapters/server-side-log-collection/java-adapter/#forwarding-logs-to-the-analytics-server).
+### アプリケーション異常終了のモニター
+アプリケーション異常終了は、{{site.data.keys.mf_analytics_console_short }}上 (**「アプリケーション」→「異常終了」**) で視覚化されます。したがって、コンソールで、素早く異常終了を確認し、状況に応じて措置を取ることができます。異常終了ログは、デフォルトではデバイス上に収集され、*再度アプリケーションが実行されると*、サーバーに送信されます。異常終了ログは、Analytics サーバーに送信されると、自動的に異常終了グラフにデータが取り込まれます。
 
-
-### Enable/disable Analytics support
-The collection of data for analysis by the Analytics server is enabled by default. You can disable it, for example to save processing time.
-
-1. In the navigation sidebar, click on **Runtime settings**. To avoid inadvertent changes, runtime properties are displayed in read-only mode.
-2. To make the settings editable, click the **Edit** button. If you logged in with a role other than *administrator* or *deployer*, the **Edit** button is not visible because you are not allowed to modify runtime properties.
-3. From the **Data collection enabled** drop-down menu, select **false** to disable data collection.
-4. Click **Save**.
-5. Click the **Read Only** button to lock the properties again.
-
-
-![Enable or disable analytics support in the console](enable-disable-analytics.png)
+### サーバー・データおよびネットワーク・データのモニター
+{{site.data.keys.mf_analytics_console_short }} は、ネットワーク・データが Analytics サーバーに送信されるときにデータをモニターします。コンソールを使用して、この情報をさまざまな方法で照会できます (**「インフラストラクチャー」→「サーバーおよびネットワーク」**)。
 
 
-### Role-based access control
-Content in the {{ site.data.keys.mf_analytics_console_short }} is restricted by predefined security roles.  
-The {{ site.data.keys.mf_analytics_console_short }} displays different content based on the security role of the logged-in user. The following table shows the security roles and their access to the {{ site.data.keys.mf_analytics_console_short }}.
+### クライアント・ログの収集、検索、およびレポート作成
+クライアント・ログをサーバーに送信して、分析レポートに含めることができます。
 
-| Role           | Role name                | Viewing Access                                                     | Editing Access  |
+ロギング情報をレポートに含めるには、以下のようにします。
+
+1. {{site.data.keys.mf_analytics_console_short }}で、**「ダッシュボード」→「カスタム・グラフ」**タブを選択します。
+
+2. **「イベント・タイプ」**プルダウン・メニューから**「クライアント・ログ」**を選択します。
+
+**カスタム・グラフ**について詳しくは、[『カスタム・グラフの作成』](custom-charts/)を参照してください。
+
+ロギング・データはフィルタリングできます。ログ・フィルターを構成して Analytics サーバーに保存できます。すると、クライアント・アプリケーションがそれを取得できるようになります。
+
+ログ・フィルターの構成については、[『クライアント・ログの検索』](log-filters/)チュートリアルを参照してください。
+
+クライアントからのログの送信について詳しくは、[『クライアント・ログの収集』](../../application-development/client-side-log-collection/)を参照してください。
+
+
+
+## {{site.data.keys.mf_console_full }}
+{{site.data.keys.mf_console }}で、Analytics サーバーを構成し管理します。
+
+{{site.data.keys.mf_analytics_console_short }}を使用している場合は、上部ナビゲーション・バーで**「オペレーション・コンソール」**ボタンをクリックして {{site.data.keys.mf_console }} にアクセスします。
+
+### 追加のロガー・パッケージからの分析データの収集
+デフォルトでは、パッケージ `com.worklight` からのロギングのみが Analytics に送信されます。追加パッケージからロギングを追加するには、[『Analytics サーバーへのログの転送』](../../adapters/server-side-log-collection/java-adapter/#forwarding-logs-to-the-analytics-server)を参照してください。
+
+
+### Analytics サポートの有効化/無効化
+デフォルトでは、Analytics サーバーによる分析用のデータの収集が有効になっています。これは、処理時間の節約などのために無効にすることができます。
+
+
+1. ナビゲーション・サイドバーで**「ランタイム設定」**をクリックします。意図しない変更を防ぐために、ランタイム・プロパティーは読み取り専用モードで表示されます。
+2. 設定を編集可能にするには、**「編集」**ボタンをクリックします。*管理者* および*デプロイヤー* 以外のロールでログインすると、ランタイム・プロパティーの変更が許可されないため、
+**「編集」**ボタンは表示されません。
+3. **「データ収集の有効化」**のドロップダウン・メニューから**「いいえ (false)」**を選択してデータ収集を無効にします。
+4. **「保存 (Save)」**をクリックします。
+5. **「読み取り専用」**ボタンをクリックして、プロパティーを再度ロックします。
+
+
+![コンソールでの Analytics サポートの有効化/無効化](enable-disable-analytics.png)
+
+
+### ロール・ベースのアクセス制御
+{{site.data.keys.mf_analytics_console_short }}
+のコンテンツは、事前定義のセキュリティー・ロールによって制限されます。  
+{{site.data.keys.mf_analytics_console_short }} は、ログイン・ユーザーのセキュリティー・ロールに基づいて異なるコンテンツを表示します。以下の表では、 {{site.data.keys.mf_analytics_console_short }}でのセキュリティー・ロールおよびアクセス権限について示します。
+
+| ロール           | ロール名                | 表示アクセス権限                                                     | 編集アクセス権限  |
 |----------------|--------------------------|--------------------------------------------------------------------|-----------------|
-| Administrator  | analytics_administrator  | Everything.	                                                     | Everything.     |
-| Infrastructure | analytics_infrastructure	| Everything.	                                                     | Everything.     |
-| Developer      | analytics_developer	    | Everything except for the Administration pages.		             | Everything.     |
-| Support        | analytics_support        | Everything except for the Administration pages.		             | Everything.     |
-| Business       | analytics_business       | Everything except for the Administration and Infrastructure pages. | Everything.     |
+| 管理者  | analytics_administrator  | すべて	                                                     | すべて     |
+| インフラストラクチャー | analytics_infrastructure	| すべて	                                                     | すべて     |
+| デベロッパー      | analytics_developer	    | 「管理」ページ以外のすべて		             | すべて     |
+| サポート        | analytics_support        | 「管理」ページ以外のすべて		             | すべて     |
+| ビジネス       | analytics_business       | 「管理」ページおよび「インフラストラクチャー」ページ以外のすべて | すべて     |
 
-> For information on setting up roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration).
+> ロールのセットアップについては、[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../installation-configuration/production/server-configuration#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
 
 
-## Related blog posts
-* [More on Instrumenting Custom Analytics]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
-* [More on Instrumenting Webhooks]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)
+## 関連のブログの投稿
+* [カスタム分析の計測についての追加情報]({{site.baseurl}}/blog/2016/01/22/howto-custom-in-app-behavior-analytics/)
+* [Web フックの計測についての追加情報]({{site.baseurl}}/blog/2015/10/19/using-mfp-adapters-endpoint-analytics-alerts-webhooks/)

@@ -1,43 +1,42 @@
 ---
 layout: tutorial
-title: Windows .NET Message Inspector
-breadcrumb_title: Windows .NET Message Inspector
+title: Windows .NET メッセージ・インスペクター
+breadcrumb_title: Windows .NET メッセージ・インスペクター
 relevantTo: [android,ios,windows,javascript]
 weight: 4
 downloads:
-  - name: Download sample
+  - name: サンプルのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-This tutorial will show how to protect a simple Windows .NET resource, `GetBalanceService`, using a scope (`accessRestricted`).
-In the sample we will protect a service which is self-hosted by a console application called DotNetTokenValidator.
+このチュートリアルでは、スコープ (`accessRestricted`) を使用して、単純な Windows .NET リソース `GetBalanceService` を保護する方法を示します。このサンプルでは、DotNetTokenValidator というコンソール・アプリケーションによってセルフホストされるサービスを保護します。
 
-First we will define a **Message Inspector** that will help us controlling the incoming request to the `GetBalanceService` resource.
-Using this Message Inspector we will examine the incoming request and validate that it provides all the necessary headers required by **{{ site.data.keys.product_adj }} Authorization Server**.
+まず、`GetBalanceService` リソースへの着信要求を制御するために使用する**メッセージ・インスペクター**を定義します。
+このメッセージ・インスペクターを使用して着信要求を検査し、着信要求が **{{site.data.keys.product_adj }} 許可サーバー**によって必要とされるすべての必要なヘッダーを提供しているか検証します。
 
-**Prerequesites:**
+**前提条件:**
 
-* Make sure to read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product_adj }}security framework](../../).
+* 必ず、[{{site.data.keys.mf_server }} を使用した外部リソースの認証](../)チュートリアルをお読みください。
+* [{{site.data.keys.product_adj }} セキュリティー・フレームワーク](../../)の知識が必要です。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Create and configure WCF Web HTTP Service](#create-and-configure-wcf-web-http-service)
-* [Define a Message Inspector](#define-a-message-inspector)
-* [Message Inspector Implementation](#message-inspector-implementation)
-    * [Pre-process Validation](#pre-process-validation)
-    * [Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server](#obtain-access-token-from-mobilefirst-authorization-server)
-    * [Send request to Introspection Endpoint with client token](#send-request-to-introspection-endpoint-with-client-token)
-    * [Post-process Validation](#post-process-validation)
+* [WCF Web HTTP サービスの作成と構成](#create-and-configure-wcf-web-http-service)
+* [メッセージ・インスペクターの定義](#define-a-message-inspector)
+* [メッセージ・インスペクターの実装](#message-inspector-implementation)
+    * [プリプロセス検証](#pre-process-validation)
+    * [{{site.data.keys.product_adj }} 許可サーバーからのアクセス・トークンの取得](#obtain-access-token-from-mobilefirst-authorization-server)
+    * [クライアント・トークンが付いた要求のイントロスペクション・エンドポイントへの送信](#send-request-to-introspection-endpoint-with-client-token)
+    * [ポストプロセス検証](#post-process-validation)
 
-## Create and configure WCF Web HTTP Service
+## WCF Web HTTP サービスの作成と構成
 {: #create-and-configure-wcf-web-http-service }
-First we will create a **WCF service** and call it `GetBalanceService` which we will protect later by a **message inspector**.
-In our example we are using a console application as a hosting program for the service.
+最初に、**WCF サービス**を作成し、`GetBalanceService` と名前を付けます。このサービスを後から**メッセージ・インスペクター**を使用して保護します。
+このサンプルでは、サービスのホスティング・プログラムとしてコンソール・アプリケーションを使用します。
 
-Here is the code of `getBalance` (the protected resource):
+`getBalance` (保護リソース) のコードは以下のとおりです。
 
 ```csharp
 public class GetBalanceService : IGetBalanceService {
@@ -49,7 +48,7 @@ public class GetBalanceService : IGetBalanceService {
 }
 ```
 
-We should also define a `ServiceContract`:
+`ServiceContract` も定義する必要があります。
 
 ```csharp
 [ServiceContract]
@@ -64,7 +63,7 @@ public interface IGetBalanceService
 }
 ```
 
-Now that we have our service ready we can configure how it will be used by the host application. This is done in the App.config file as follows:
+これでサービスの準備ができたので、ホスト・アプリケーションによってこのサービスが使用される方法を構成できます。これは、App.config ファイル内で以下のように行います。
 
 ```xml
 <service behaviorConfiguration="Default" name="DotNetTokenValidator.GetBalanceService">
@@ -76,7 +75,7 @@ Now that we have our service ready we can configure how it will be used by the h
   </host>
 </service>
 ```
-Lastly we should run it from the hosting program `Main` method:
+最後に、これをホスティング・プログラム `Main` メソッドから実行する必要があります。
 
 ```csharp
 static void Main(string[] args) {
@@ -99,18 +98,18 @@ static void Main(string[] args) {
 }
 ```
 
-> For More information about WCF REST services refer to [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
+> WCF REST サービスについて詳しくは、[方法 : 基本的な WCF Web HTTP サービスを作成する](https://msdn.microsoft.com/ja-jp/library/bb412178(v=vs.100).aspx を参照してください。
 
-## Define a Message Inspector
+## メッセージ・インスペクターの定義
 {: #define-a-message-inspector }
-Before we dive into the validation process we must create and define a **message inspector** which we will use to protect the resource (the service endpoint).
-A message inspector is an extensibility object that can be used in the service to inspect and alter messages after they are received or before they are sent. Service message inspectors should implement the `IDispatchMessageInspector` interface:
+検証プロセスの詳細に進む前に、リソース (サービス・エンドポイント) を保護するために使用する**メッセージ・インスペクター**を作成し、定義する必要があります。
+メッセージ・インスペクターは、メッセージの受信後または送信前にメッセージを検査および変更するために、サービス内で使用できる拡張性オブジェクトです。サービス・メッセージ・インスペクターは、`IDispatchMessageInspector` インターフェースを実装する必要があります。
 
 ```csharp
 public class MyInspector : IDispatchMessageInspector
 ```
 
-Any service message inspector must implement the two `IDispatchMessageInspector` methods `AfterReceiveRequest` and `BeforeSendReply`:
+サービス・メッセージ・インスペクターはすべて、`IDispatchMessageInspector` の 2 つのメソッド、`AfterReceiveRequest` と `BeforeSendReply` を実装する必要があります。
 
 ```csharp
 public class MyInspector : IDispatchMessageInspector {
@@ -125,8 +124,8 @@ public class MyInspector : IDispatchMessageInspector {
 }
 ```
 
-After creating the message inspector it should be defined to protect a certain endpoint. This is done by using behaviors. A **behavior** is a class that changes the behavior of the service model runtime by changing the default configuration or adding extensions (such as message inspectors) to it.
-This is done using 2 classes: one that configures the message inspector to protect the application endpoint,  and the other to return this behavior class instance and type.
+メッセージ・インスペクターを作成したら、特定のエンドポイントを保護するようにそれを定義する必要があります。これは、behavior を使用して行います。**behavior** は、デフォルト構成を変更するか、拡張 (メッセージ・インスペクターなど) を追加することで、サービス・モデル・ランタイムの振る舞いを変更するクラスです。
+これは、2 つのクラスを使用して行います。1 つは、アプリケーション・エンドポイントを保護するメッセージ・インスペクターを構成するクラスで、もう 1 つは、この behavior クラス・インスタンスと型を返すクラスです。
 
 ```csharp
 public class MyCustomBehavior : IEndpointBehavior
@@ -153,7 +152,7 @@ public class MyCustomBehaviorExtension : BehaviorExtensionElement
 }
 ```
 
-In the `App.config` file we define a `behaviorExtension` and attach it to the behavior class we just created:
+`App.config` ファイル内で、`behaviorExtension` を定義し、これを今作成した behavior クラスに付加します。
 
 ```xml
 <extensions>
@@ -163,7 +162,7 @@ In the `App.config` file we define a `behaviorExtension` and attach it to the be
 </extensions>
 ```
 
-Then we add this behaviorExtension to the webBehavior element that is configured in our service as endpoint behavior:
+次に、この behaviorExtension を webBehavior エレメントに追加します。このエレメントは、サービス内でエンドポイント behavior として構成されています。
 
 ```xml
 <behavior name="webBehavior">
@@ -172,8 +171,8 @@ Then we add this behaviorExtension to the webBehavior element that is configured
 </behavior>
 ```
 
-## Message Inspector Implementation
-First let's define some constants as class members in our message inspector: {{ site.data.keys.mf_server }} URL, our confidential client credentials and the `scope` that we will use to protect our service with. We can also define a static variable to keep the token received from {{ site.data.keys.product_adj }} Authorization server, so it will be available to all users:
+## メッセージ・インスペクターの実装
+まず、メッセージ・インスペクター内にクラス・メンバーとしていくつかの定数を定義します。それらは、{{site.data.keys.mf_server }} URL、機密クライアントの資格情報、およびサービスを保護するために使用する `scope` です。また、{{site.data.keys.product_adj }} 許可サーバーから受け取ったトークンを保持するための静的変数を定義することもできます。そうすることで、すべてのユーザーがそれを使用できます。
 
 ```csharp
 private const string azServerBaseURL = "http://YOUR-SERVER-URL:9080/mfp/api/az/v1/";
@@ -183,7 +182,7 @@ private const string filterUserName = "USERNAME"; // Confidential Client Usernam
 private const string filterPassword = "PASSWORD";  // Confidential Client Secret
 ```
 
-Next we will create our `validateRequest` method which is the starting-point of the validation process that we will implement in our message inspector. Then we will add a call to this method inside the `AfterReceiveRequest` method we mentioned before:
+次に、`validateRequest` メソッドを作成します。これが、メッセージ・インスペクター内に実装する検証プロセスの開始ポイントとなります。その後、このメソッドへの呼び出しを、前述した `AfterReceiveRequest` メソッド内に追加します。
 
 ```csharp
 public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext) {
@@ -192,11 +191,11 @@ public object AfterReceiveRequest(ref Message request, IClientChannel channel, I
 }
 ```
 
-Inside `validateRequest` there are 3 main steps that we will implement:
+`validateRequest` 内には、3 つのメイン・ステップを実装します。
 
-1. **Pre-process validation** - check if the request has an **authorization header**, and if there is - is it starting with the **"Bearer"** prefix.
-2. **Get token** from {{ site.data.keys.product_adj }} Authorization Server - This token will be used to authenticate the client's token against {{ site.data.keys.product_adj }} Authorization Server.
-3. **Post-process validation** - check for **conflicts**, validate that the request sent the right **scope**, and check that the request is **active**.
+1. **プリプロセス検証** - 要求に**許可ヘッダー**が含まれているかどうかをチェックし、含まれている場合は、ヘッダーが **"Bearer"** プレフィックスで始まっているかどうかをチェックします。
+2. **トークンの取得** ({{site.data.keys.product_adj }} 許可サーバーから) - このトークンを使用して、{{site.data.keys.product_adj }} 許可サーバーに対するクライアントのトークンの認証が行われます。
+3. **ポストプロセス検証** - **競合**がないかどうかをチェックし、要求が正しい**スコープ**を送信したことを検証し、要求が**アクティブ**であるかチェックします。
 
 ```csharp
 private void validateRequest(Message request)
@@ -226,16 +225,16 @@ private void validateRequest(Message request)
 }
 ```
 
-## Pre-process Validation
+## プリプロセス検証
 {: #pre-process-validation }
-The pre-process validation is done as part of the getClientTokenFromHeader() method.
-This process is based upon 2 checks:
+プリプロセス検証は、getClientTokenFromHeader() メソッドの一部として実行されます。
+このプロセスのベースは 2 つのチェックになります。
 
-1. Check that the authorization header of the request is not empty.
-2. If it is not empty - check that the authorization header starts with the "Bearer " prefix.
+1. 要求の許可ヘッダーが空でないことをチェックします。
+2. 空でない場合に、許可ヘッダーが "Bearer" プレフィックスで始まることをチェックします。
 
-In both cases we should respond with an **Unauthorized response status** (401) and add the **WWW-Authenticate:Bearer** header.  
-After validating the authorization header this method returns the token received from the client application.
+いずれのケースも、**Unauthorized 応答ステータス** (401) で応答し、**WWW-Authenticate:Bearer** ヘッダーを追加する必要があります。  
+許可ヘッダーの検証が終わると、このメソッドは、クライアント・アプリケーションから受け取ったトークンを返します。
 
 ```csharp
 private string getClientTokenFromHeader(Message request)
@@ -267,7 +266,7 @@ private string getClientTokenFromHeader(Message request)
 }
 ```
 
-`returnErrorResponse` is a helper method that receives an httpStatusCode and a WebHeaderCollection, prepares the response and sends it back to the client application. After sending the response to the client application it completes the request.
+`returnErrorResponse` は、httpStatusCode と WebHeaderCollection を受け取り、応答を作成してから、それをクライアント・アプリケーションに返信するヘルパー・メソッドです。応答をクライアント・アプリケーションに送信すると、要求は完了します。
 
 ```csharp
 private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollection headers)
@@ -281,9 +280,9 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 }
 ```
 
-## Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server
-In order to authenticate the client token we should **obtain an access token as the message inspector** by making a request to the **token endpoint**.
-Later we will use this received token to pass the client token for introspection.
+## {{site.data.keys.product_adj }} 許可サーバーからのアクセス・トークンの取得
+クライアント・トークンを認証するためには、**トークン・エンドポイント**への要求を発行することで、**メッセージ・インスペクターとしてアクセス・トークンを取得**する必要があります。
+後で、この受け取ったトークンを使用して、クライアント・トークンをイントロスペクションのために渡します。
 
 ```csharp
 private string getIntrospectionToken()
@@ -302,8 +301,8 @@ private string getIntrospectionToken()
   postParameters.Add("grant_type", "client_credentials");
   postParameters.Add("scope", "authorization.introspect");
 
-  try {
-    HttpWebResponse resp = sendRequest(postParameters, "token", "Basic " + Base64Credentials);
+              try {
+HttpWebResponse resp = sendRequest(postParameters, "token", "Basic " + Base64Credentials);
     Stream dataStream = resp.GetResponseStream();
     StreamReader reader = new StreamReader(dataStream);
     strResponse = reader.ReadToEnd();
@@ -319,8 +318,8 @@ private string getIntrospectionToken()
 }
 ```
 
-The `sendRequest` method is a helper method that is responsible for sending requests to {{ site.data.keys.product_adj }} Authorization server.  
-It is being used by `getIntrospectionToken` to send a request to the token endpoint, and by `introspectClientRequest` method to send a request to the introspection endpoint. This method returns an `HttpWebResponse` which we use in `getIntrospectionToken` method to extract the access_token from and store it as the message inspector token. In `introspectClientRequest` method it is used just to return the MFP authorization server response.
+`sendRequest` メソッドは、{{site.data.keys.product_adj }} 許可サーバーへの要求の送信を担当するヘルパー・メソッドです。  
+`getIntrospectionToken` は要求をトークン・エンドポイントに送信するためにこれを使用し、`introspectClientRequest` メソッドはイントロスペクション・エンドポイントに要求を送信するためにこれを使用します。このメソッドが返す `HttpWebResponse` を `getIntrospectionToken` メソッド内で使用して、そこから access_token を抽出したり、抽出したそのトークンをメッセージ・インスペクター・トークンとして保管したりします。`introspectClientRequest` メソッド内では、単純に MFP 許可サーバー応答を返すために使用されます。
 
 ```csharp
 private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, string endPoint, string authHeader) {
@@ -346,10 +345,10 @@ private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, s
 }
 ```
 
-## Send request to Introspection Endpoint with client token
+## クライアント・トークンが付いた要求のイントロスペクション・エンドポイントへの送信
 {: #send-request-to-introspection-endpoint-with-client-token }
-Now that we are authorized by {{ site.data.keys.product_adj }} Authorization Server we can **validate the client token** content. We send a request to the **Introspection endpoint**, adding the token we received in the previous step (`filterIntrospectionToken`) to the request header and the client token in the post data of the request.  
-Next we will examine the response from {{ site.data.keys.product_adj }} Authorization Server in `postProcess` method.
+これで、{{site.data.keys.product_adj }} 許可サーバーによって認証されたので、**クライアント・トークンのコンテンツを有効にする**ことができます。そこで、要求を**イントロスペクション・エンドポイント**に送信します。その際、前のステップ (`filterIntrospectionToken`) で受け取ったトークンを要求ヘッダーに追加するとともに、クライアント・トークンを要求のポスト・データに追加します。  
+次に、{{site.data.keys.product_adj }} 許可サーバーからの応答を `postProcess` メソッド内で検査します。
 
 ```csharp
 private HttpWebResponse introspectClientRequest(string clientToken) {
@@ -362,10 +361,10 @@ private HttpWebResponse introspectClientRequest(string clientToken) {
 }
 ```
 
-## Post-process Validation
+## ポストプロセス検証
 {: #post-process-validation }
-Before proceeding to the `postProcess` method we want to make sure that the response status is not **401 (Unauthorized)**.  
-401 (Unauthorized) response status at this point indicates that the message inspector token (`filterIntrospectionToken`) has expired. If the response status is 401 (Unauthorized) then we call `getIntrospectionToken` to get a new token for the message inspector and call `introspectClientRequest` again with the new token.
+`postProcess` メソッドに進む前に、応答ステータスが **401 (Unauthorized)** でないことを確認する必要があります。  
+この時点での 401 (Unauthorized) 応答ステータスは、メッセージ・インスペクター・トークン (`filterIntrospectionToken`) の有効期限が切れたことを示しています。応答ステータスが 401 (Unauthorized) である場合、`getIntrospectionToken` を呼び出してメッセージ・インスペクター用の新しいトークンを取得し、新しいトークンを使用して再度 `introspectClientRequest` を呼び出します。
 
 ```csharp
 if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -375,8 +374,8 @@ if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
 }
 ```
 
-The main purpose of the postProcess method is to examine the response we received from {{ site.data.keys.product_adj }}  Authorization Server, but before extracting and checking the response, we must **make sure that the response status is 200 (OK)**. If the response status is **409 (Conflict)** we should forward this response to the client application, otherwise we should throw an exception.  
-If the response status is 200 (OK) then we initialize the `AzResponse` class, which is a class defined to reprisent the {{ site.data.keys.product_adj }} Authorization Server response, with the current response. Then we check that the **response is active** and that it includes the right **scope**:
+postProcess メソッドの主な目的は、{{site.data.keys.product_adj }} 許可サーバーから受け取った応答を調べることですが、応答を抽出してチェックする前に、**応答ステータスが 200 (OK) であることを確認**しなければなりません。応答ステータスが **409 (Conflict)** の場合は、この応答をクライアント・アプリケーションに転送する必要があり、それ以外の場合には例外をスローする必要があります。  
+応答ステータスが 200 (OK) であれば、現在の応答で `AzResponse` クラス ({{site.data.keys.product_adj }} 許可サーバーの応答を表すために定義されるクラス) を初期設定します。その後、**応答がアクティブ**であること、さらに、応答に正しい**スコープ**が組み込まれていることを確認します。
 
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)
@@ -395,10 +394,8 @@ private void postProcess(HttpWebResponse introspectionResponse)
     {
       throw new WebFaultException<string>("Authentication did not succeed, Please try again...", HttpStatusCode.BadRequest);
     }
-  }
-  else
-  {                
-    AzResponse azResp = new AzResponse(introspectionResponse); // Casting the response to an object
+  } else {             
+AzResponse azResp = new AzResponse(introspectionResponse); // Casting the response to an object
     WebHeaderCollection webHeaderCollection = new WebHeaderCollection();
 
     if (!azResp.isActive)
@@ -415,15 +412,15 @@ private void postProcess(HttpWebResponse introspectionResponse)
 }
 ```
 
-## Sample application
+## サンプル・アプリケーション
 {: #sample-application }
-[Download the .NET message inspector sample](https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80).
+[.NET メッセージ・インスペクター・サンプルをダウンロード](https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80)します。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-1. Use Visual Studio to open, build and run the sample as a service (run Visual Studio as an administrator).
-2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-4. Register the matching application.
-5. Map the `accessRestricted` scope to the security check.
-6. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. Visual Studio を使用して、サンプルを開き、サービスとしてビルドし、実行します (Visual Studio は管理者として実行してください)。
+2. {{site.data.keys.mf_console }} で、必ず[機密クライアントと秘密鍵の値を更新](../#confidential-client)してください。
+3. **[UserLogin](../../user-authentication/security-check/)** または **[PinCodeAttempts](../../credentials-validation/security-check/)** のいずれかのセキュリティー検査をデプロイします。
+4. 一致するアプリケーションを登録します。
+5. `accessRestricted` スコープをセキュリティー検査にマップします。
+6. クライアント・アプリケーションを更新して、サーブレット URL に `WLResourceRequest` を発行します。

@@ -1,256 +1,263 @@
 ---
 layout: tutorial
-title: Installation Reference
+title: インストールに関する参照情報
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Reference information about Ant tasks and configuration sample files for the installation of {{ site.data.keys.mf_server_full }}, {{ site.data.keys.mf_app_center_full }}, and {{ site.data.keys.mf_analytics_full }}.
+{{site.data.keys.mf_server_full }}、
+{{site.data.keys.mf_app_center_full }}、および {{site.data.keys.mf_analytics_full }} のインストールのための Ant タスクおよび構成のサンプル・ファイルに関する参照情報。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
-* [Ant configuredatabase task reference](#ant-configuredatabase-task-reference)
-* [Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [Ant tasks for installation of {{ site.data.keys.mf_server }} push service](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
-* [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
-* [Ant tasks for installation of Application Center](#ant-tasks-for-installation-of-application-center)
-* [Ant tasks for installation of {{ site.data.keys.mf_analytics }}](#ant-tasks-for-installation-of-mobilefirst-analytics)
-* [Internal runtime databases](#internal-runtime-databases)
-* [Sample configuration files](#sample-configuration-files)
-* [Sample configuration files for {{ site.data.keys.mf_analytics }}](#sample-configuration-files-for-mobilefirst-analytics)
+* [Ant configuredatabase タスクの参照情報](#ant-configuredatabase-task-reference)
+* [{{site.data.keys.mf_console }}、{{site.data.keys.mf_server }} 成果物、{{site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
+* [{{site.data.keys.mf_server }} プッシュ・サービスのインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+* [Application Center のインストール用の Ant タスク](#ant-tasks-for-installation-of-application-center)
+* [{{site.data.keys.mf_analytics }} のインストール用の Ant タスク](#ant-tasks-for-installation-of-mobilefirst-analytics)
+* [内部ランタイム・データベース](#internal-runtime-databases)
+* [サンプル構成ファイル](#sample-configuration-files)
+* [{{site.data.keys.mf_analytics }} のサンプル構成ファイル](#sample-configuration-files-for-mobilefirst-analytics)
 
-## Ant configuredatabase task reference
+## Ant configuredatabase タスクの参照情報
 {: #ant-configuredatabase-task-reference }
-Reference information for the configuredatabase Ant task. This reference information is for relational databases only. It does not apply to Cloudant .
+configuredatabase Ant タスクの参照情報。この参照情報は、リレーショナル・データベース専用です。Cloudant には適用されません。
 
-The **configuredatabase** Ant task creates the relational databases that are used by {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, {{ site.data.keys.product_adj }} runtime, and the Application Center services. This Ant task configures a relational database through the following actions:
+**configuredatabase** Ant タスクは、{{site.data.keys.mf_server }} 管理サービス、{{site.data.keys.mf_server }} ライブ更新サービス、{{site.data.keys.mf_server }} プッシュ・サービス、{{site.data.keys.product_adj }} ランタイム、および Application Center のサービスによって使用されるリレーショナル・データベースを作成します。この Ant タスクは、以下のアクションによってリレーショナル・データベースを構成します。
 
-* Checks whether the {{ site.data.keys.product_adj }} tables exist and creates them if necessary.
-* If the tables exist for an older version of {{ site.data.keys.product }}, migrates them to the current version.
-* If the tables exist for the current version of {{ site.data.keys.product }}, does nothing.
+* {{site.data.keys.product_adj }} 表があるかどうかを確認して、必要であれば作成します。
+* 旧バージョンの {{site.data.keys.product }} の表がある場合、それらの表を現行バージョンにマイグレーションします。
+* 現行バージョンの {{site.data.keys.product }} の表がある場合は、何もしません。
 
-In addition, if one of the following conditions is met:
+また、以下のいずれかの条件が満たされている場合を考えます。
 
-* The DBMS type is Derby.
-* An inner element `<dba>` is present.
-* The DBMS type is DB2 , and the specified user has the permissions to create databases.
+* DBMS タイプが Derby である。
+* 内部エレメント `<dba>` が存在する。
+* DBMS タイプが DB2 で、指定ユーザーがデータベース作成許可を備えている。
 
-Then, the task can have the following effects:
+この場合、タスクでは、以下の結果が得られる可能性があります。
 
-* Create the database if necessary (except for Oracle 12c, and Cloudant).
-* Create a user, if necessary, and grants that user access rights to the database.
+* 必要に応じて、データベースを作成する (Oracle 12c および Cloudant を除く)。
+* 必要な場合にユーザーを作成し、そのユーザーにデータベースへのアクセス権限を付与する。
 
-> **Note:** The configuredatabase Ant task has not effect if you use it with Cloudant.
+> **注:** configuredatabase Ant タスクは、Cloudant で使用した場合、無効です。
 
-### Attributes and elements for configuredatabase task
+### configuredatabase タスクの属性とエレメント
 {: #attributes-and-elements-for-configuredatabase-task }
 
-The **configuredatabase** task has the following attributes:
+**configuredatabase** タスクには以下の属性があります。
 
-| Attribute | Description | Required | Default | 
+| 属性 | 説明 | 必要 | デフォルト | 
 |-----------|-------------|----------|---------|
-| kind      | The type of database: In {{ site.data.keys.mf_server }}: MobileFirstRuntime, MobileFirstConfig, MobileFirstAdmin, or push. In Application Center: ApplicationCenter. | Yes | None |
-| includeConfigurationTables | To specify whether to perform database operations on both the live update service and the administration service or on the administration service only. The value is either true or false. |  No | true |
-| execute | To specify whether to execute the configuredatabase Ant task. The value is either true or false. | No | true | 
+| kind      | データベースのタイプ: {{site.data.keys.mf_server }}: MobileFirstRuntime、MobileFirstConfig、MobileFirstAdmin、または push。Application Center: ApplicationCenter。 | はい | なし |
+| includeConfigurationTables | データベース操作をライブ更新サービスと管理サービスの両方で実行するか、または管理サービスのみで実行するかを指定します。値は true または false のいずれかになります。 |  いいえ | true |
+| execute | configuredatabase Ant タスクを実行するかどうかを指定します。値は true または false のいずれかになります。 | いいえ | true | 
 
 #### kind
 {: #kind }
-{{ site.data.keys.product }} supports four kinds of database: {{ site.data.keys.product_adj }} runtime uses **MobileFirstRuntime** database. {{ site.data.keys.mf_server }} administration service uses the **MobileFirstAdmin** database. {{ site.data.keys.mf_server }} Live Update service uses the **MobileFirstConfig** database. By default, it is created with **MobileFirstAdmin** kind. {{ site.data.keys.mf_server }} push service uses the **push** database. Application Center uses the **ApplicationCenter** database.
+{{site.data.keys.product }} は、4 種類のデータベースをサポートしています。{{site.data.keys.product_adj }} ランタイムは、**MobileFirstRuntime** データベースを使用します。{{site.data.keys.mf_server }} 管理サービスは **MobileFirstAdmin** データベースを使用します。{{site.data.keys.mf_server }} ライブ更新サービスは **MobileFirstConfig** データベースを使用します。デフォルトでは、**MobileFirstAdmin** の kind で作成されます。{{site.data.keys.mf_server }} プッシュ・サービスは **push** データベースを使用します。Application Center は **ApplicationCenter** データベースを使用します。
 
 #### includeConfigurationTables
 {: #includeconfigurationtables }
-The **includeConfigurationTables** attribute can be used only when the **kind** attribute is **MobileFirstAdmin**. The valid value can be true or false. When this attribute is set to true, the **configuredatabase** task performs database operations on both the administration service database and the Live Update service database in a single run. When this attribute is set to false, the **configuredatabase** task performs database operations only on the administration service database.
+**includeConfigurationTables** 属性は、**kind** 属性が **MobileFirstAdmin** の場合にのみ使用できます。有効値は、true または false になります。この属性が true に設定されている場合、**configuredatabase** タスクは、1 回の実行で管理サービス・データベースとライブ更新サービス・データベースの両方でデータベース操作を実行します。この属性が false に設定されている場合、**configuredatabase** タスクは、管理サービス・データベースのみでデータベース操作を実行します。
 
 #### execute
 {: #execute }
-The **execute** attribute enables or disables the execution of the **configuredatabase** Ant task. The valid value can be true or false. When this attribute is set to false, the **configuredatabase** task performs no configuration or database operations.
+**execute** 属性は、**configuredatabase** Ant タスクの実行を使用可能または使用不可にします。有効値は、true または false になります。この属性が false に設定されている場合、**configuredatabase** タスクは構成操作もデータベース操作も実行しません。
 
-The **configuredatabase** task supports the following elements:
+**configuredatabase** タスクは、以下のエレメントをサポートします。
 
-| Element             | Description	                | Count | 
+| エレメント             | 説明	                | カウント | 
 |---------------------|-----------------------------|-------|
-| `<derby>`           | The parameters for Derby.   | 0..1  | 
-| `<db2>`             |	The parameters for DB2.     | 0..1  | 
-| `<mysql>`           |	The parameters for MySQL.   | 0..1  | 
-| `<oracle>`          |	The parameters for Oracle.  | 0..1  | 
-| `<driverclasspath>` | The JDBC driver class path. | 0..1  | 
+| `<derby>`           | Derby のパラメーター。   | 0..1  | 
+| `<db2>`             |	DB2 のパラメーター。     | 0..1  | 
+| `<mysql>`           |	MySQL のパラメーター。   | 0..1  | 
+| `<oracle>`          |	Oracle のパラメーター。  | 0..1  | 
+| `<driverclasspath>` | JDBC ドライバーのクラスパス。 | 0..1  | 
 
-For each database type, you can use a `<property>` element to specify a JDBC connection property for access to the database. The `<property>` element has the following attributes:
+各データベース・タイプに対し、`<property>` エレメントを使用してデータベースにアクセスするための JDBC 接続プロパティーを指定することができます。
+`<property>` エレメントには以下の属性があります。
 
-| Attribute | Description                | Required | Default | 
+| 属性 | 説明                | 必要 | デフォルト | 
 |-----------|----------------------------|----------|---------|
-| name      | The name of the property.	 | Yes      | None    |
-| value	    | The value for the property.| Yes	    | None    |   
+| 名前      | プロパティーの名前。	 | はい      | なし    |
+| value	    | プロパティーの値。| はい	    | なし    |   
 
 #### Apache Derby
 {: #apache-derby }
-The `<derby>` element has the following attributes:
+`<derby>` エレメントには以下の属性があります。
 
-| Attribute | Description                                | Required | Default                                                                      | 
+| 属性 | 説明                                | 必要 | デフォルト                                                                      | 
 |-----------|--------------------------------------------|----------|------------------------------------------------------------------------------|
-| database  | The database name.                         | No	    | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind.             |
-| datadir   | The directory that contains the databases. | Yes      | None                                                                         | 
-| schema	| The schema name.                           | No       | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH, or APPCENTER, depending on kind. |
+| データベース  | データベース名。                         | いいえ	    | 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。             |
+| datadir   | データベースを含むディレクトリー。 | はい      | なし                                                                         | 
+| schema	| スキーマ名。                           | いいえ       | 種類に応じて、MFPDATA、MFPCFG、MFPADMINISTRATOR、MFPPUSH、または APPCENTER。 |
 
-The `<derby>` element supports the following element:
+`<derby>` エレメントは以下のエレメントをサポートします。
 
-| Element      | Description                     | Count   |
+| エレメント      | 説明                     | カウント   |
 |--------------|---------------------------------|---------|
-| `<property>` | The JDBC connection property.   | 0..∞    |
+| `<property>` | JDBC 接続プロパティー。   | 0..∞    |
 
-For the available properties, see [Setting attributes for the database connection URL](http://db.apache.org/derby/docs/10.11/ref/rrefattrib24612.html).
+使用可能なプロパティーについては、[Setting attributes for the database connection URL](http://db.apache.org/derby/docs/10.11/ref/rrefattrib24612.html) を参照してください。
 
 #### DB2
 {: #db2 }
-The `<db2>` element has the following attributes:
+`<db2>` エレメントには以下の属性があります。
 
-| Attribute | Description                            | Required | Default | 
+| 属性 | 説明                            | 必要 | デフォルト | 
 |-----------|----------------------------------------|----------|---------|
-| database  | The database name.                     | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
-| server    | The host name of the database server.	 | Yes      | None  |
-| port      | The port on the database server.       | No	    | 50000 |
-| user      | The user name for accessing databases. | Yes	    | None  |
-| password  | The password for accessing databases.	 | No	    | Queried interactively |
-| instance  | The name of the DB2 instance.          | No	    | Depends on the server |
-| schema    | The schema name.                       | No	    | Depends on the user   |
+| データベース  | データベース名。                     | いいえ       | 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。 |
+| サーバー    | データベース・サーバーのホスト名。	 | はい      | なし  |
+| port      | データベース・サーバーのポート。       | いいえ	    | 50000 |
+| user      | データベースにアクセスするユーザー名。 | はい	    | なし  |
+| password  | データベースにアクセスするパスワード。	 | いいえ	    | 対話式に照会 |
+| instance  | DB2 インスタンスの名前。          | いいえ	    | サーバーに応じて異なる |
+| schema    | スキーマ名。                       | いいえ	    | ユーザーに応じて異なる   |
 
-For more information about DB2 user accounts, see [DB2 security model overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).  
-The `<db2>` element supports the following elements:
+DB2 ユーザー・アカウントについて詳しくは、[DB2 のセキュリティー・モデルの概要](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html)を参照してください。  
+`<db2>` エレメントは以下のエレメントをサポートします。
 
-| Element      | Description                             | Count   |
+| エレメント      | 説明                             | カウント   |
 |--------------|-----------------------------------------|---------|
-| `<property>` | The JDBC connection property.           | 0..∞    |
-| `<dba>`      | The database administrator credentials. | 0..1    |
+| `<property>` | JDBC 接続プロパティー。           | 0..∞    |
+| `<dba>`      | データベース管理者の資格情報。 | 0..1    |
 
-For the available properties, see [Properties for the IBM  Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).  
-The inner element `<dba>` specifies the credentials for the database administrators. This element has the following attributes:
+使用可能なプロパティーについては、[IBM Data Server Driver for JDBC and SQLJ のプロパティー](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html)を参照してください。  
+内部エレメント `<dba>` は、データベース管理者の資格情報を指定します。このエレメントには以下の属性があります。
 
-| Attribute | Description                            | Required | Default | 
+| 属性 | 説明                            | 必要 | デフォルト | 
 |-----------|----------------------------------------|----------|---------|
-| user      | The user name for accessing database.  | Yes      | None    |
-| password  | The password or accessing database.    | No	    | Queried interactively |
+| user      | データベースにアクセスするユーザー名。  | はい      | なし    |
+| password  | データベースにアクセスするパスワード。    | いいえ	    | 対話式に照会 |
 
-The user that is specified in a `<dba>` element must have the SYSADM or SYSCTRL DB2 privilege. For more information, see [Authorities overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html).
+`<dba>` エレメントに指定するユーザーは、DB2 特権の SYSADM または SYSCTRL を持っている必要があります。詳しくは、[権限の概要](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html)を参照してください。
 
-The `<driverclasspath>` element must contain the JAR files for the DB2 JDBC driver and for the associated license. You can retrieve those files in one of the following ways:
+`<driverclasspath>` エレメントは、DB2 JDBC ドライバー用および関連するライセンス用の JAR ファイルを含んでいる必要があります。これらのファイルは、以下のいずれかの方法で取得できます。
 
-* Download DB2 JDBC drivers from the [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866) page
-* Or fetch the **db2jcc4.jar** file and its associated **db2jcc_license_*.jar** files from the **DB2_INSTALL_DIR/java** directory on the DB2 server.
+* [DB2 JDBC Driver Versions and Downloads](http://www.ibm.com/support/docview.wss?uid=swg21363866) ページから、DB2 JDBC ドライバーをダウンロードする。
+* あるいは、DB2 サーバー上の **DB2_INSTALL_DIR/java** ディレクトリーから、**db2jcc4.jar** ファイルおよびそれに関連のある **db2jcc_license_*.jar** ファイルを取り出す。
 
-You cannot specify details of table allocations, such as the table space, by using the Ant task. To control the table space, you must use the manual instructions in section [DB2 database and user requirements](../databases/#db2-database-and-user-requirements).
+Ant タスクを使用して表スペースなどの表割り振りの詳細を指定することはできません。表スペースを制御する場合は、[DB2 データベースおよびユーザーの要件](../databases/#db2-database-and-user-requirements)のセクションにある手動での指示を使用する必要があります。
 
-#### MySQL
+#### MySQL 
 {: #mysql }
-The element `<mysql>` has the following attributes:
+エレメント `<mysql>` には以下の属性があります。
 
-| Attribute | Description                            | Required | Default | 
+| 属性 | 説明                            | 必要 | デフォルト | 
 |-----------|----------------------------------------|----------|---------|
-| database	| The database name.	                 | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
-| server	| The host name of the database server.	 | Yes	    | None |
-| port	    | The port on the database server.	     | No	    | 3306 |
-| user	    | The user name for accessing databases. | Yes	    | None |
-| password	| The password for accessing databases.	 | No	    | Queried interactively |
+| データベース	| データベース名。	                 | いいえ       | 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。 |
+| サーバー	| データベース・サーバーのホスト名。	 | はい	    | なし |
+| port	    | データベース・サーバーのポート。	     | いいえ	    | 3306 |
+| user	    | データベースにアクセスするユーザー名。 | はい	    | なし |
+| password	| データベースにアクセスするパスワード。	 | いいえ	    | 対話式に照会 |
 
-For more information about MySQL user accounts, see [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).  
-The `<mysql>` element supports the following elements:
+MySQL ユーザー・アカウントについて詳しくは、[MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html) を参照してください。  
+`<mysql>` エレメントは以下のエレメントをサポートします。
 
-| Element      | Description                                      | Count |
+| エレメント      | 説明                                      | カウント |
 |--------------|--------------------------------------------------|-------|
-| `<property>` | The JDBC connection property.                    | 0..∞  |
-| `<dba>`      | The database administrator credentials.          | 0..1  |
-| `<client>`   | The host that is allowed to access the database. | 0..∞  | 
+| `<property>` | JDBC 接続プロパティー。                    | 0..∞  |
+| `<dba>`      | データベース管理者の資格情報。          | 0..1  |
+| `<client>`   | データベースへのアクセスを許可されたホスト。 | 0..∞  | 
 
-For the available properties, see [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).  
-The inner element `<dba>` specifies the database administrator credentials. This element has the following attributes:
+使用可能なプロパティーについては、[Driver/Datasource Class Names, URL Syntax and Configuration
+Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html) を参照してください。
+内部エレメント `<dba>` は、データベース管理者資格情報を指定します。このエレメントには以下の属性があります。
 
-| Attribute | Description                            | Required | Default | 
+| 属性 | 説明                            | 必要 | デフォルト | 
 |-----------|----------------------------------------|----------|---------|
-| user	    | The user name for accessing databases. | Yes	    | None |
-| password	| The password for accessing databases.	 | No	    | Queried interactively |
+| user	    | データベースにアクセスするユーザー名。 | はい	    | なし |
+| password	| データベースにアクセスするパスワード。	 | いいえ	    | 対話式に照会 |
 
-The user that is specified in a `<dba>` element must be a MySQL superuser account. For more information, see [Securing the Initial MySQL Accounts](http://dev.mysql.com/doc/refman/5.5/en/default-privileges.html).
+`<dba>` エレメントに指定するユーザーは、MySQL スーパーユーザー・アカウントでなければなりません。詳しくは、[Securing the Initial MySQL Accounts](http://dev.mysql.com/doc/refman/5.5/en/default-privileges.html) を参照してください。
 
-Each `<client>` inner element specifies a client computer or a wildcard for client computers. These computers are allowed to connect to the database. This element has the following attributes:
+各 `<client>` 内部エレメントがクライアント・コンピューターまたはクライアント・コンピューターのワイルドカードを指定します。
+これらのコンピューターは、データベースへの接続が許可されます。このエレメントには以下の属性があります。
 
-| Attribute | Description                                                              | Required | Default | 
+| 属性 | 説明                                                              | 必要 | デフォルト | 
 |-----------|--------------------------------------------------------------------------|----------|---------|
-| hostname	| The symbolic host name, IP address, or template with % as a placeholder. | Yes	  | None    |
+| hostname	| シンボリック・ホスト名、IP アドレス、またはテンプレート (プレースホルダーとして % を使用) | はい	  | なし    |
 
-For more information about the hostname syntax, see [Specifying Account Names](http://dev.mysql.com/doc/refman/5.5/en/account-names.html).
+hostname の構文について詳しくは、[Specifying Account Names](http://dev.mysql.com/doc/refman/5.5/en/account-names.html) を参照してください。
 
-The `<driverclasspath>` element must contain a MySQL Connector/J JAR file. You can download that file from the [Download Connector/J](http://www.mysql.com/downloads/connector/j/) page.
+`<driverclasspath>` エレメントには、MySQL Connector/J JAR ファイルが含まれている必要があります。このファイルは [Download Connector/J](http://www.mysql.com/downloads/connector/j/) ページからダウンロードできます。
 
-Alternatively, you can use the `<mysql>` element with the following attributes:
+または、以下の属性を持つ
+`<mysql>` エレメントを使用することもできます。
 
-| Attribute | Description                            | Required | Default               | 
+
+| 属性 | 説明                            | 必要 | デフォルト               | 
 |-----------|----------------------------------------|----------|-----------------------|
-| url       | The database connection URL.	         | Yes      | None                  |
-| user	    | The user name for accessing databases. | Yes      | None                  |
-| password	| The password for accessing databases.	 | No       | Queried interactively |
+| url       | データベース接続 URL。	         | はい      | なし                  |
+| user	    | データベースにアクセスするユーザー名。 | はい      | なし                  |
+| password	| データベースにアクセスするパスワード。	 | いいえ       | 対話式に照会 |
 
-> `Note:` If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the **configuredatabase** task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current {{ site.data.keys.mf_server }} version. You do not have to specify the inner elements `<dba>` or `<client>`.
-
-#### Oracle
+> `注:` 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。この場合、**configuredatabase** タスクはデータベースおよびユーザーの作成を試行せず、
+ユーザーのアクセス権限の付与も試行しません。
+**configuredatabase** タスクにより確実となるのは、現行バージョンの {{site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント `<dba>` と `<client>` を指定する必要はありません。#### Oracle 
 {: #oracle }
-The element `<oracle>` has the following attributes:
+エレメント `<oracle>` には以下の属性があります。
 
-| Attribute      | Description                                                              | Required | Default | 
+| 属性      | 説明                                                              | 必要 | デフォルト | 
 |----------------|--------------------------------------------------------------------------|----------|---------|
-| database       | The database name, or Oracle service name. **Note:** You must always use a service name to connect to a PDB database. | No | ORCL |
-| server	     | The host name of the database server.                                    | Yes      | None | 
-| port	         | The port on the database server.                                         | No       | 1521 | 
-| user	         | The user name for accessing databases. See the note under this table.	| Yes      | None | 
-| password	     | The password for accessing databases.                                    | No       | Queried interactively | 
-| sysPassword	 | The password for the user SYS.                                           | No       | Queried interactively if the database does not yet exist | 
-| systemPassword | The password for the user SYSTEM.                                        | No       | Queried interactively if the database or the user does not exist yet | 
+| データベース       | データベース名、または Oracle サービス名。**注:** PDB データベースに接続するには、常にサービス名を使う必要があります。 | いいえ | ORCL |
+| サーバー	     | データベース・サーバーのホスト名。                                    | はい      | なし | 
+| port	         | データベース・サーバーのポート。                                         | いいえ       | 1521 | 
+| user	         | データベースにアクセスするユーザー名。この表の下の注を参照してください。	| はい      | なし | 
+| password	     | データベースにアクセスするパスワード。                                    | いいえ       | 対話式に照会 | 
+| sysPassword	 | ユーザー SYS のパスワード。                                           | いいえ       | 対話式に照会 (データベースがまだ存在しない場合) | 
+| systemPassword | ユーザー SYSTEM のパスワード。                                        | いいえ       | 対話式に照会 (データベースまたはユーザーがまだ存在していない場合) | 
 
-> `Note:` For the user attribute, use preferably a user name in uppercase letters. Oracle user names are generally in uppercase letters. Unlike other database tools, the **configuredatabase** Ant task does not convert lowercase letters to uppercase letters in the user name. If the **configuredatabase** Ant task fails to connect to your database, try to enter the value for the **user** attribute in uppercase letters.
+> `注:` user 属性については、大文字のユーザー名を使用することをお勧めします。Oracle のユーザー名は、一般的に大文字で表されます。他のデータベース・ツールとは異なり、**configuredatabase** Ant タスクは、ユーザー名に含まれる小文字を大文字に変換しません。**configuredatabase** Ant タスクがデータベースへの接続に失敗した場合には、**user** 属性の値を大文字で入力してみてください。
 
-For more information about Oracle user accounts, see [Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374).  
-The `<oracle>` element supports the following elements:
+Oracle ユーザー・アカウントについて詳しくは、[Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374) を参照してください。  
+`<oracle>` エレメントは以下のエレメントをサポートします。
 
-| Element      | Description                                      | Count |
+| エレメント      | 説明                                      | カウント |
 |--------------|--------------------------------------------------|-------|
-| `<property>` | The JDBC connection property.                    | 0..∞  |
-| `<dba>`      | The database administrator credentials.          | 0..1  |
+| `<property>` | JDBC 接続プロパティー。                    | 0..∞  |
+| `<dba>`      | データベース管理者の資格情報。          | 0..1  |
 
-For information about the available connection properties, see [Class OracleDriver](http://docs.oracle.com/cd/E11882_01/appdev.112/e13995/oracle/jdbc/OracleDriver.html).  
-The inner element `<dba>` specifies the database administrator credentials. This element has the following attributes:
+使用可能な接続プロパティーについては、[Class OracleDriver](http://docs.oracle.com/cd/E11882_01/appdev.112/e13995/oracle/jdbc/OracleDriver.html) を参照してください。  
+内部エレメント `<dba>` は、データベース管理者資格情報を指定します。このエレメントには以下の属性があります。
 
-| Attribute      | Description                                                              | Required | Default | 
+| 属性      | 説明                                                              | 必要 | デフォルト | 
 |----------------|--------------------------------------------------------------------------|----------|---------|
-| user	         | The user name for accessing databases. See the note under this table.	| Yes      | None    | 
-| password	     | The password for accessing databases.                                    | No       | Queried interactively | 
+| user	         | データベースにアクセスするユーザー名。この表の下の注を参照してください。	| はい      | なし    | 
+| password	     | データベースにアクセスするパスワード。                                    | いいえ       | 対話式に照会 | 
 
-The `<driverclasspath>` element must contain an Oracle JDBC driver JAR file. You can download Oracle JDBC drivers from [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
+`<driverclasspath>` エレメントには、Oracle JDBC ドライバーの JAR ファイルが含まれている必要があります。Oracle
+JDBC ドライバーは、[JDBC and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) からダウンロードできます。
 
-You cannot specify details of table allocation, such as the table space, by using the Ant task. To control the table space, you can create the user account manually and assign it a default table space before you run the Ant task. To control other details, you must use the manual instructions in section [Oracle database and user requirements](../databases/#oracle-database-and-user-requirements).
+表スペースなどの表割り振りの詳細を、Ant タスクで指定することはできません。表スペースを制御する場合は、ユーザー・アカウントを手動で作成し、そのアカウントにデフォルト表スペースを割り当ててから、Ant タスクを実行することができます。他の詳細を制御する場合は、[Oracle データベースおよびユーザーの要件](../databases/#oracle-database-and-user-requirements)のセクションにある手動での指示を使用する必要があります。
 
-| Attribute | Description                            | Required | Default               | 
+| 属性 | 説明                            | 必要 | デフォルト               | 
 |-----------|----------------------------------------|----------|-----------------------|
-| url       | The database connection URL.	         | Yes      | None                  |
-| user	    | The user name for accessing databases. | Yes      | None                  |
-| password	| The password for accessing databases.	 | No       | Queried interactively |
+| url       | データベース接続 URL。	         | はい      | なし                  |
+| user	    | データベースにアクセスするユーザー名。 | はい      | なし                  |
+| password	| データベースにアクセスするパスワード。	 | いいえ       | 対話式に照会 |
 
-> **Note:** If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current {{ site.data.keys.mf_server }} version. You do not have to specify the inner element `<dba>`.
+> **注:** 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。この場合、タスクはデータベースおよびユーザーの作成を試行せず、ユーザーのアクセス権限の付与も試行しません。**configuredatabase** タスクにより確実となるのは、現行バージョンの {{site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント`<dba>` を指定する必要はありません。
 
-## Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services
+## {{site.data.keys.mf_console }}、{{site.data.keys.mf_server }} 成果物、{{site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services }
-The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks are provided for the installation of {{ site.data.keys.mf_console }}, the artifacts component, the administration service, and the live update service.
+**installmobilefirstadmin**、**updatemobilefirstadmin**、および **uninstallmobilefirstadmin** の各 Ant タスクが、{{site.data.keys.mf_console }}、成果物コンポーネント、管理サービス、およびライブ更新サービスのインストールのために提供されています。
 
-### Task effects
+### タスクの結果
 {: #task-effects }
 
 #### installmobilefirstadmin
 {: #installmobilefirstadmin }
-The **installmobilefirstadmin** Ant task configures an application server to run the WAR files of the administration and live update services as web applications, and optionally, to install the {{ site.data.keys.mf_console }}. This task has the following effects:
+**installmobilefirstadmin** Ant タスクは、管理サービスおよびライブ更新サービスの WAR ファイルを Web アプリケーションとして実行するように、また、オプションで {{site.data.keys.mf_console }} をインストールするように、アプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。
 
-* It declares the administration service web application in the specified context root, by default /mfpadmin.
-* It declares the live update service web application in a context root derived from the specified context root of the administration service. By default, /mfpadminconfig.
-* For the relational databases, it declares data sources and on WebSphere  Application Server full profile, JDBC providers for the administration services.
-* It deploys the administration service and the live update service on the application server.
-* Optionally, it declares{{ site.data.keys.mf_console }} as a web application in the specified context root, by default /mfpconsole. If the {{ site.data.keys.mf_console }} instance is specified, the Ant task declares the appropriate JNDI environment entry to communicate with the corresponding management service. For example,
+* 指定されたコンテキスト・ルート (デフォルトで /mfpadmin) で管理サービス Web アプリケーションを宣言します。
+* 管理サービスの、指定されたコンテキスト・ルートから派生したコンテキスト・ルートでライブ更新サービス Web アプリケーションを宣言します。デフォルトで、/mfpadminconfig です。
+* リレーショナル・データベースの場合、データ・ソースを宣言し、WebSphere Application Server フル・プロファイルでは管理サービスの JDBC プロバイダーを宣言します。
+* 管理サービスとライブ更新サービスをアプリケーション・サーバーにデプロイします。
+* オプションで、指定されたコンテキスト・ルート (デフォルトでは /mfpconsole) で、{{site.data.keys.mf_console }} を Web アプリケーションとして宣言します。{{site.data.keys.mf_console }} インスタンスが指定されている場合、Ant タスクは、対応する管理サービスと通信するために適切な JNDI 環境項目を宣言します。以下に例を示します。
 
 ```xml
 <target name="adminstall">
@@ -258,1310 +265,1314 @@ The **installmobilefirstadmin** Ant task configures an application server to run
     <console install="${mfp.admin.console.install}" warFile="${mfp.console.war.file}"/>
 ```
 
-* Optionally, it declares the {{ site.data.keys.mf_server }} artifacts web application in the specified context root /mfp-dev-artifacts when {{ site.data.keys.mf_console }} is installed.
-* It configures the configuration properties for the administration service by using JNDI environment entries. These JNDI environment entries also give some additional information about the application server topology, for example whether the topology is a stand-alone configuration, a cluster, or a server farm.
-* Optionally, it configures users that it maps to roles used by {{ site.data.keys.mf_console }}, and the administration and live update services web applications.
-* It configures the application server for use of JMX.
-* Optionally, it configures the communication with the {{ site.data.keys.mf_server }} push service.
-* Optionally, it sets the MobileFirst JNDI environment entries to configure the application server as a server farm member for the {{ site.data.keys.mf_server }} administration part.
+* オプションで、{{site.data.keys.mf_console }} のインストール時に、指定されたコンテキスト・ルート /mfp-dev-artifacts で {{site.data.keys.mf_server }} 成果物 Web アプリケーションを宣言します。
+* JNDI 環境項目を使用して管理サービスの構成プロパティーが構成されます。これらの JNDI 環境項目は、アプリケーション・サーバー・トポロジーに関するいくつかの追加情報も提供します。例えば、トポロジーがスタンドアロン構成か、クラスターか、またはサーバー・ファームかなどです。
+* オプションで、{{site.data.keys.mf_console }} と、管理サービスおよびライブ更新サービスの Web アプリケーションで使用されるロールにマップするユーザーを構成します。
+* JMX の使用のためにアプリケーション・サーバーが構成されます。
+* オプションで、{{site.data.keys.mf_server }} プッシュ・サービスとの通信を構成します。
+* オプションで、MobileFirst JNDI 環境項目を設定して、{{site.data.keys.mf_server }} 管理パート用にアプリケーション・サーバーをサーバー・ファーム・メンバーとして構成します。
 
 #### updatemobilefirstadmin
 {: #updatemobilefirstadmin }
-The **updatemobilefirstadmin** Ant task updates an already-configured {{ site.data.keys.mf_server }} web application on an application server. This task has the following effects:
+**updatemobilefirstadmin** Ant タスクは、アプリケーション・サーバー上の構成済み {{site.data.keys.mf_server }} Web アプリケーションを更新します。このタスクは以下のような結果をもたらします。
 
-* It updates the administration service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-* It updates the live update service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-* It updates the {{ site.data.keys.mf_console }} WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-The task does not change the application server configuration, that is, the web application configuration, data sources, JNDI environment entries, user-to-role mappings, and JMX configuration.
+* 管理サービス WAR ファイルを更新します。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。
+* ライブ更新サービス WAR ファイルを更新します。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。
+* {{site.data.keys.mf_console }} の WAR ファイルを更新します。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。このタスクは、アプリケーション・サーバー構成、すなわち Web アプリケーション構成、データ・ソース、JNDI 環境項目、ユーザーとロールのマッピング、および JMX 構成を変更しません。
 
 #### uninstallmobilefirstadmin
 {: #uninstallmobilefirstadmin }
-The **uninstallmobilefirstadmin** Ant task undoes the effects of an earlier run of installmobilefirstadmin. This task has the following effects:
+**uninstallmobilefirstadmin** Ant タスクは、installmobilefirstadmin の以前の実行の結果を元に戻します。このタスクは以下のような結果をもたらします。
 
-* It removes the configuration of the administration service web application with the specified context root. As a consequence, the task also removes the settings that were added manually to that application.
-* It removes the WAR files of the administration and live update services, and {{ site.data.keys.mf_console }} from the application server as an option.
-* For the relational DBMS, it removes the data sources and on WebSphere Application Server Full Profile the JDBC providers for the administration and live update services.
-* For the relational DBMS, it removes the database drivers that were used by the administration and live update services from the application server.
-* It removes the associated JNDI environment entries.
-* On WebSphere Application Server Liberty and Apache Tomcat, it removes the users configured by the installmobilefirstadmin invocation.
-* It removes the JMX configuration.
+* 指定されたコンテキスト・ルートを持つ管理サービス Web アプリケーションの構成が削除されます。その結果、このタスクは、そのアプリケーションに手動で追加された設定も削除します。
+* オプションで、管理サービスおよびライブ更新サービスの WAR ファイル、および {{site.data.keys.mf_console }} をアプリケーション・サーバーから削除します。
+* リレーショナル DBMS の場合、データ・ソースを削除し、WebSphere Application Serverフル・プロファイルでは管理サービスおよびライブ更新サービスの JDBC プロバイダーを削除します。
+* リレーショナル DBMS の場合、管理サービスおよびライブ更新サービスによって使用されたデータベース・ドライバーをアプリケーション・サーバーから削除します。
+* 関連する JNDI 環境項目が削除されます。
+* WebSphere Application Server Liberty および Apache Tomcat 上で、installmobilefirstadmin 呼び出しによって構成されたユーザーを削除します。
+* JMX 構成が削除されます。
 
-### Attributes and elements
+### 属性およびエレメント
 {: #attributes-and-elements }
-The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks have the following attributes:
+**installmobilefirstadmin**、**updatemobilefirstadmin**、および **uninstallmobilefirstadmin** の各 Ant タスクは以下の属性を持っています。
 
-| Attribute         | Description                                                              | Required | Default | 
+| 属性         | 説明                                                              | 必要 | デフォルト | 
 |-------------------|--------------------------------------------------------------------------|----------|---------|
-| contextroot       | The common prefix for URLs to the administration service to get information about {{ site.data.keys.product_adj }} runtime environments, applications, and adapters. | No | /mfpadmin | 
-| id                | To distinguish different deployments.              | No | Empty | 
-| environmentId     | To distinguish different {{ site.data.keys.product_adj }} environments. | No | Empty | 
-| servicewar        | The WAR file for the administration service.       | No | The mfp-admin-service.war file is in the same directory as the mfp-ant-deployer.jar file. | 
-| shortcutsDir      | The directory where to place shortcuts.            | No | None | 
-| wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 1 | 
+| contextroot       | {{site.data.keys.product_adj }} ランタイム環境、アプリケーション、およびアダプターに関する情報を取得するための、管理サービスの URL の共通接頭部 | いいえ | /mfpadmin | 
+| id                | さまざまなデプロイメントを区別する。              | いいえ | 空 | 
+| environmentId     | さまざまな {{site.data.keys.product_adj }} 環境を区別する。 | いいえ | 空 | 
+| servicewar        | 管理サービスの WAR ファイル       | いいえ | mfp-admin-service.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。 | 
+| shortcutsDir      | ショートカットを配置するディレクトリー。            | いいえ | なし | 
+| wasStartingWeight | WebSphere Application Server の開始順序。低い値から先に開始されます。 | いいえ | 1 | 
 
-#### contextroot and id
+#### contextroot および id
 {: #contextroot-and-id }
-The **contextroot** and **id** attributes distinguish different deployments of {{ site.data.keys.mf_console }} and the administration service.
+**contextroot** 属性と **id** 属性は、{{site.data.keys.mf_console }} および管理サービスの異なるデプロイメントを識別します。
 
-In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server Full profile environments, the id attribute is used instead. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+WebSphere Application Server Liberty プロファイルおよび Tomcat の環境では、この目的には contextroot パラメーターで十分です。WebSphere Application Server フル・プロファイル環境では、id 属性が代わりに使用されます。この id 属性がないと、同じコンテキスト・ルートを持つ 2 つの WAR ファイルが競合し、これらのファイルがデプロイされない可能性があります。
 
 #### environmentId
 {: #environmentid }
-Use the **environmentId** attribute to distinguish several environments, consisting each of {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime web applications, that must operate independently. For example, with this option you can host a test environment, a pre-production environment, and a production environment on the same server or in the same WebSphere Application Server Network Deployment cell. This environmentId attribute creates a suffix that is added to MBean names that the administration service and the {{ site.data.keys.product_adj }} runtime projects use when they communicate through Java Management Extensions (JMX).
+**environmentId** 属性を使用して、独立して作動しなければならない、{{site.data.keys.mf_server }} 管理サービスおよび {{site.data.keys.product_adj }} ランタイム Web アプリケーションのそれぞれから構成される、複数の環境を区別します。例えば、このオプションを使用して、同じサーバー上、または同じ WebSphere Application Server Network Deployment セル内のテスト環境、実動前環境、および実稼働環境をホストすることができます。この environmentId 属性は、管理サービスと {{site.data.keys.product_adj }} ランタイムのプロジェクトが Java Management Extensions (JMX) を介して通信するときに使用する MBean 名に追加される接尾部を作成します。
 
 #### servicewar
 {: #servicewar }
-Use the **servicewar** attribute to specify a different directory for the administration service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+**servicewar** 属性を使用して、管理サービス WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
 
 #### shortcutsDir
 {: #shortcutsdir }
-The **shortcutsDir** attribute specifies where to place shortcuts to the {{ site.data.keys.mf_console }}. If you set this attribute, you can add the following files to that directory:
+**shortcutsDir** 属性は、{{site.data.keys.mf_console }} のショートカットを配置する場所を指定します。この属性を設定した場合、そのディレクトリーに以下のファイルを追加できます。
 
-* **mobilefirst-console.url** - this file is a Windows shortcut. It opens the {{ site.data.keys.mf_console }} in a browser.
-* **mobilefirst-console.sh**- this file is a UNIX shell script and opens the {{ site.data.keys.mf_console }} in a browser.
-* **mobilefirst-admin-service.url** - this file is a Windows shortcut. It opens in a browser and calls a REST service that returns a list of the {{ site.data.keys.product_adj }} projects that can be managed in JSON format. For each listed {{ site.data.keys.product_adj }} project, some details are also available about their artifacts, such as the number of applications, the number of adapters, the number of active devices, the number of decommissioned devices. The list also indicates whether the {{ site.data.keys.product_adj }} project runtime is running or idle.
-* **mobilefirst-admin-service.sh** - this file is a UNIX shell script that provides the same output as the **mobilefirst-admin-service.url** file.
+* **mobilefirst-console.url** - このファイルは、Windows のショートカットです。これは、{{site.data.keys.mf_console }} をブラウザーで開きます。
+* **mobilefirst-console.sh** - このファイルは、UNIX のシェル・スクリプトであり、{{site.data.keys.mf_console }} をブラウザーで開きます。
+* **mobilefirst-admin-service.url** - このファイルは、Windows のショートカットです。これはブラウザーで開き、JSON 形式で管理できる {{site.data.keys.product_adj }} プロジェクトのリストを返す REST サービスを呼び出します。リストされている {{site.data.keys.product_adj }} の各プロジェクトについて、それらの成果物に関する詳細情報 (アプリケーションの数、アダプターの数、アクティブ・デバイスの数、廃止されたデバイスの数など) も表示されます。このリストには、{{site.data.keys.product_adj }} プロジェクト・ランタイムが実行中であるかアイドル状態であるかも示されます。
+* **mobilefirst-admin-service.sh** - このファイルは、**mobilefirst-admin-service.url** ファイルと同じ出力を行う UNIX のシェル・スクリプトです。
 
 #### wasStartingWeight
 {: #wasstartingweight }
-Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the administration service web application is deployed and started before any other {{ site.data.keys.product_adj }} runtime projects. If {{ site.data.keys.product_adj }} projects are deployed or started before the web application, the JMX communication is not established and the runtime cannot synchronize with the administration service database and cannot handle server requests.
+**wasStartingWeight** 属性を使用して、開始順序が順守されることを確実にするためのウェイトとして WebSphere Application Server で使用される値を指定します。この開始順序の値の結果、管理サービス Web アプリケーションは、他のどの {{site.data.keys.product_adj }} ランタイム・プロジェクトよりも前にデプロイされて開始されます。{{site.data.keys.product_adj }} プロジェクトが Web アプリケーションより前にデプロイまたは開始されると、JMX 通信は確立されず、ランタイムは管理サービス・データベースと同期化することも、サーバー要求を処理することもできません。
 
-The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks support the following elements:
+**installmobilefirstadmin**、**updatemobilefirstadmin**、および
+**uninstallmobilefirstadmin** の各 Ant タスクでは、以下のエレメントがサポートされます。
 
-| Element               | Description                                      | Count |
+| エレメント               | 説明                                      | カウント |
 |-----------------------|--------------------------------------------------|-------|
-| `<applicationserver>` | The application server.                          | 1     |
-| `<configuration>`     | The live update service.	                       | 1     |
-| `<console>`           | The administration console.                      | 0..1  |
-| `<database>`          | The databases.                                   | 1     |
-| `<jmx>`               | To enable Java Management Extensions.	           | 1     |
-| `<property>`          | The properties.	                               | 0..   |
-| `<push>`              | The push service.	                               | 0..1  |
-| `<user>`              | The user to be mapped to a security role.	       | 0..   |
+| `<applicationserver>` | アプリケーション・サーバー。                          | 1     |
+| `<configuration>`     | ライブ更新サービス。	                       | 1     |
+| `<console>`           | 管理コンソール。                      | 0..1  |
+| `<database>`          | データベース。                                   | 1     |
+| `<jmx>`               | Java Management Extensions を使用可能にする。	           | 1     |
+| `<property>`          | プロパティー。	                               | 0..   |
+| `<push>`              | プッシュ・サービス。	                               | 0..1  |
+| `<user>`              | セキュリティー・ロールにマップされるユーザー。	       | 0..   |
 
-### To specify a {{ site.data.keys.mf_console }}
+### {{site.data.keys.mf_console }} を指定するには
 {: #to-specify-a-mobilefirst-operations-console }
-The `<console>` element collects information to customize the installation of the {{ site.data.keys.mf_console }}. This element has the following attributes:
+`<console>` エレメントは、{{site.data.keys.mf_console }} のインストールをカスタマイズするための情報を収集します。このエレメントには以下の属性があります。
 
-| Attribute         | Description                                                               | Required | Default     | 
+| 属性         | 説明                                                               | 必要 | デフォルト     | 
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
-| contextroot       | The URI of the {{ site.data.keys.mf_console }}.                            | No       | /mfpconsole |
-| install           | To indicate whether the {{ site.data.keys.mf_console }} must be installed. | No       | Yes         |
-| warfile           | The console WAR file.	                                                    |No        | The mfp-admin-ui.war file is in the same directory as  themfp-ant-deployer.jar file. |
+| contextroot       | {{site.data.keys.mf_console }} の URI。                            | いいえ       | /mfpconsole |
+| install           | {{site.data.keys.mf_console }} をインストールする必要があるかどうかを示す。 | いいえ       | はい         |
+| warfile           | コンソール WAR ファイル。	                                                    |いいえ        | mfp-admin-ui.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。 |
 
-The `<console>` element supports the following element:
+`<console>` エレメントでは、以下のエレメントがサポートされます。
 
-| Element               | Description                                      | Count |
+| エレメント               | 説明                                      | カウント |
 |-----------------------|--------------------------------------------------|-------|
-| `<artifacts>`         | The {{ site.data.keys.mf_server }} artifacts.                | 0..1  |
-| `<property>`	        | The properties.	                               | 0..   |
+| `<artifacts>`         | {{site.data.keys.mf_server }} 成果物。                | 0..1  |
+| `<property>`	        | プロパティー。	                               | 0..   |
 
-The `<artifacts>` element has the following attributes:
+`<artifacts>` エレメントには以下の属性があります。
 
-| Attribute         | Description                                                               | Required | Default     | 
+| 属性         | 説明                                                               | 必要 | デフォルト     | 
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
-| install           | To indicate whether the artifacts component must be installed.            | No       | true        |
-| warFile           | The artifacts WAR file.                                                   | No       | The mfp-dev-artifacts.war file is in the same directory as the mfp-ant-deployer.jar file |
+| install           | 成果物コンポーネントをインストールする必要があるかどうかを示す。            | いいえ       | true        |
+| warFile           | 成果物 WAR ファイル。                                                   | いいえ       | mfp-dev-artifacts.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。 |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files.
+このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。
+これには、以下の属性があります。
 
-| Attribute  | Description                | Required | Default | 
+| 属性  | 説明                | 必要 | デフォルト | 
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    | 
-| value	     | The value of the property. |	Yes      | None    |
+| 名前       | プロパティーの名前。  | はい      | なし    | 
+| value	     | プロパティーの値。 |	はい      | なし    |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files.
+このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。
 
-For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
 
-### To specify an application server
+### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートしています。
 
-| Element                                   | Description                                      | Count |
+| エレメント                                   | 説明                                      | カウント |
 |-------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` or `<was>` | The parameters for WebSphere Application Server. <br/><br/>The `<websphereapplicationserver>` element (or `was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment.               | 0..1  |
-| `<tomcat>`                                | The parameters for Apache Tomcat.	               | 0..1  |
+| `<websphereapplicationserver>` または `<was>` | WebSphere Application Server のパラメーター。<br/><br/> `<websphereapplicationserver>` エレメント (短縮形では `was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。               | 0..1  |
+| `<tomcat>`                                | Apache Tomcat のパラメーター。	               | 0..1  |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
-However, for the inner element of the `<was>` element for Liberty collective, see the following table:
+これらのエレメントの属性および内部エレメントについては、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。  
+ただし、Liberty 集合の `<was>` エレメントの内部エレメントについては、以下の表を参照してください。
 
-| Element                  | Description                      | Count |
+| エレメント                  | 説明                      | カウント |
 |--------------------------|----------------------------------|-------|
-| `<collectiveController>` | A Liberty collective controller. |	0..1  |
+| `<collectiveController>` | Liberty 集合コントローラー。 |	0..1  |
 
-The `<collectiveController>` element has the following attributes:
+`<collectiveController>` エレメントには以下の属性があります。
 
-| Attribute                | Description                            | Required | Default | 
+| 属性                | 説明                            | 必要 | デフォルト | 
 |--------------------------|----------------------------------------|----------|---------|
-| serverName               | The name of the collective controller.	| Yes      | None    |
-| controllerAdminName      | The administrative user name that is defined in the collective controller. This is the same user that is used to join new members to the   collective.                                                         | Yes      | None    |
-| controllerAdminPassword  | The administrative user password.	    | Yes      | None    |
-| createControllerAdmin    | To indicate whether the administrative user must be created in the basic registry of the collective controller. Possible values are true or false.                                                              | No	   | true    |
+| serverName               | 集合コントローラーの名前。	| はい      | なし    |
+| controllerAdminName      | 集合コントローラーに定義された管理ユーザー名。 これは、新規メンバーを集合に参加させるために使用されるのと同じユーザーです。                                                         | はい      | なし    |
+| controllerAdminPassword  | 管理ユーザー・パスワード。	    | はい      | なし    |
+| createControllerAdmin    | 集合コントローラーの基本レジストリー内に管理ユーザーが作成される必要があるかどうかを示す。指定可能な値は true または false です。                                                              | いいえ	   | true    |
 
-### To specify the live update service configuration
+### ライブ更新サービスの構成を指定するには
 {: #to-specify-the-live-update-service-configuration }
-Use the `<configuration>` element to define the parameters that depend on the live update service. The `<configuration>` element has the following attributes.
+`<configuration>` エレメントを使用して、ライブ更新サービスに依存するパラメーターを定義します。`<configuration>` エレメントには以下の属性があります。
 
-| Attribute                | Description                                                    | Required | Default | 
+| 属性                | 説明                                                    | 必要 | デフォルト | 
 |--------------------------|----------------------------------------------------------------|----------|---------|
-| install                  | To indicate whether the live update service must be installed.	| Yes | true |
-| configAdminUser	       | The administrator for the live update service.	                | No. However, it is required for a server farm topology. |If not defined, a user is generated. In a server farm topology, the user name must be the same for all the members of the farm. |
-| configAdminPassword      | The administrator password for live update service user.       | If a user is specified for **configAdminUser**. | None. In a server farm topology, the password must be the same for all the members of the farm. |
-| createConfigAdminUser	   | To indicate whether to create an admin user in the basic registry of the application server, if it is missing. | No | true |
-| warFile                  | The live update service WAR file.	                            | No         | The mfp-live-update.war file is in the same directory as the mfp-ant-deployer.jar file. |
+| install                  | ライブ更新サービスをインストールする必要があるかどうかを示す。	| はい | true |
+| configAdminUser	       | ライブ更新サービスの管理者。	                | いいえ。ただし、サーバー・ファーム・トポロジーの場合は必須。 |定義されていない場合、ユーザーが生成されます。サーバー・ファーム・トポロジーでは、ユーザー名はファームのすべてのメンバーで同じでなければなりません。 |
+| configAdminPassword      | ライブ更新サービス・ユーザーの管理者パスワード。       | ユーザーが **configAdminUser** に指定されている場合。 | なし。サーバー・ファーム・トポロジーでは、パスワードはファームのすべてのメンバーで同じでなければなりません。 |
+| createConfigAdminUser	   | アプリケーション・サーバーの基本レジストリー内に管理ユーザーがない場合に作成するかどうかを示す。 | いいえ | true |
+| warFile                  | ライブ更新サービス WAR ファイル。	                            | いいえ         | mfp-live-update.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。 |
 
-The `<configuration>` element supports the following elements:
+`<configuration>` エレメントは以下のエレメントをサポートします。
 
-| Element      | Description                           | Count |
+| エレメント      | 説明                           | カウント |
 |--------------|---------------------------------------|-------|
-| `<user>`     | The user for the live update service. | 0..1  |
-| `<property>` | The properties.	                   | 0..   |
+| `<user>`     | ライブ更新サービスのユーザー。 | 0..1  |
+| `<property>` | プロパティー。	                   | 0..   |
 
-The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+`<user>` エレメントは、アプリケーションの特定のセキュリティー・ロールに含める、ユーザーに関するパラメーターを収集します。
 
-| Attribute   | Description                                                             | Required | Default | 
+| 属性   | 説明                                                             | 必要 | デフォルト | 
 |-------------|-------------------------------------------------------------------------|----------|---------|
-| role	      | A valid security role for the application. Possible value: configadmin.	| Yes      | None    |
-| name	      | The user name.	                                                        | Yes      | None    |
-| password	  | The password if the user needs to be created.	                        | No       | None    |
+| role	      | アプリケーションの有効なセキュリティー・ロール。可能な値: configadmin。	| はい      | なし    |
+| 名前	      | ユーザー名。	                                                        | はい      | なし    |
+| password	  | ユーザーを作成する必要がある場合のパスワード。	                        | いいえ       | なし    |
 
-After you defined the users by using the `<user>` element, you can map them to any of the following roles for authentication in {{ site.data.keys.mf_console }}: `configadmin`.
+`<user>` エレメントを使用してユーザーを定義した後、それらのユーザーを、{{site.data.keys.mf_console }} 内の以下の認証用のロールにマップすることができます。`configadmin`
 
-For more information about which authorizations are implied by the specific roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+特定のロールによってどの許可が暗黙指定されているかについて詳しくは、[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
 
-> **Tip:** If the users exist in an external LDAP directory, set only the **role** and **name** attributes but do not define any passwords.
+> **ヒント:** ユーザーが外部 LDAP ディレクトリーに存在する場合は、**role** 属性と **name** 属性のみを設定し、パスワードは定義しないでください。`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。
+これには、以下の属性があります。
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
-
-| Attribute  | Description                | Required | Default | 
+| 属性  | 説明                | 必要 | デフォルト | 
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    | 
-| value	     | The value of the property. |	Yes      | None    |
+| 名前       | プロパティーの名前。  | はい      | なし    | 
+| value	     | プロパティーの値。 |	はい      | なし    |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files. For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
 
-### To specify an application server
+### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server-1 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
+`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートしています。
 
-| Element      | Description                                              | Count |
+| エレメント      | 説明                                              | カウント |
 |--------------|--------------------------------------------------------- |-------|
-| `<websphereapplicationserver>` or `<was>`	| The parameters for WebSphere Application Server.<br/><br/>The <websphereapplicationserver> element (or <was> in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. | 0..1  | 
-| `<tomcat>`   | The parameters for Apache Tomcat.                        | 0..1  |
+| `<websphereapplicationserver>` または `<was>`	| WebSphere Application Server のパラメーター。<br/><br/><websphereapplicationserver> エレメント (短縮形では <was>) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。 | 0..1  | 
+| `<tomcat>`   | Apache Tomcat のパラメーター。                        | 0..1  |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
-However, for the inner element of the <was> element for Liberty collective, see the following table:
+これらのエレメントの属性および内部エレメントについては、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。  
+ただし、Liberty 集合の <was> エレメントの内部エレメントについては、以下の表を参照してください。
 
-| Element               | Description                  | Count |
+| エレメント               | 説明                  | カウント |
 |-----------------------|----------------------------- |-------|
-| `<collectiveMember>`	| A Liberty collective member. | 0..1  |
+| `<collectiveMember>`	| Liberty 集合メンバー。 | 0..1  |
 
-The `<collectiveMember>` element has the following attributes:
+`<collectiveMember>` エレメントには以下の属性があります。
 
-| Attribute   | Description                                             | Required | Default | 
+| 属性   | 説明                                             | 必要 | デフォルト | 
 |-------------|---------------------------------------------------------|----------|---------|
-| serverName  |	The name of the collective member.                      | Yes      | None    |
-| clusterName |	The cluster name that the collective member belongs to. | Yes	   | None    |
+| serverName  |	集合メンバーの名前。                      | はい      | なし    |
+| clusterName |	集合メンバーが所属しているクラスター名。 | はい	   | なし    |
 
-> **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
+> **注:** プッシュ・サービスとランタイム・コンポーネントが同じ集合メンバーにインストールされている場合、それらのクラスター名は同じでなければなりません。これらのコンポーネントが、同じ集合の別々のメンバーにインストールされている場合、クラスター名は異なっていてもかまいません。
 
-### To specify Analytics
+### Analytics の指定
 {: #to-specify-analytics }
-The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} push service to an already installed {{ site.data.keys.mf_analytics }} service. It has the following attributes:
+`<analytics>` エレメントは、既にインストールされている {{site.data.keys.mf_analytics }} サービスに {{site.data.keys.product_adj }} プッシュ・サービスを接続することを指示します。これには、以下の属性があります。
 
-| Attribute     | Description                                                               | Required | Default | 
+| 属性     | 説明                                                               | 必要 | デフォルト | 
 |---------------|---------------------------------------------------------------------------|----------|---------|
-| install	    | To indicate whether to connect the push service to {{ site.data.keys.mf_analytics }}. | No       | false   |
-| analyticsURL 	| The URL of {{ site.data.keys.mf_analytics }} services.	                            | Yes	   | None    |
-| username	    | The user name.	                                                        | Yes	   | None    |
-| password	    | The password.	                                                            | Yes	   | None    |
-| validate	    | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not.	| No	   | true    |
+| install	    | プッシュ・サービスを {{site.data.keys.mf_analytics }} に接続するかどうかを示します。 | いいえ       | false   |
+| analyticsURL 	| {{site.data.keys.mf_analytics }} サービスの URL。	                            | はい	   | なし    |
+| username	    | ユーザー名。	                                                        | はい	   | なし    |
+| password	    | パスワード。	                                                            | はい	   | なし    |
+| validate	    | {{site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。	| いいえ	   | true    |
 
 **install**  
-Use the install attribute to indicate that this push service must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are true or false.
+install 属性は、このプッシュ・サービスが接続され、イベントを {{site.data.keys.mf_analytics }} に送信する必要があることを指示するために使用します。有効な値は true または false です。
 
 **analyticsURL**  
-Use the analyticsURL attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.
+analyticsURL 属性は、着信分析データを受信する {{site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。
 
-For example: `http://<hostname>:<port>/analytics-service/rest`
+例えば、`http://<hostname>:<port>/analytics-service/rest` などです。
 
 **username**  
-Use the username attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+username 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名を指定するために使用します。
 
 **password**  
-Use the password attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+password 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるパスワードを指定するために使用します。
 
 **validate**  
-Use the validate attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
+validate 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可能かどうかを検証するため、およびパスワードでのユーザー名認証を検査するために使用します。指定可能な値は true または false です。
 
-### To specify a connection to the push service database
+### プッシュ・サービス・データベースへの接続の指定
 {: #to-specify-a-connection-to-the-push-service-database }
 
-The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
+`<database>` エレメントは、プッシュ・サービス・データベースにアクセスするためのアプリケーション・サーバー内のデータ・ソース宣言を指定するパラメーターを収集します。
 
-You must declare a single database: `<database kind="Push">`. You specify the `<database>` element similarly to the configuredatabase Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+次のように単一のデータベースを宣言する必要があります。`<database kind="Push">`。`<database>` エレメントは、configuredatabase Ant タスクと同様に指定します。ただし、`<database>` エレメントには `<dba>` エレメントと `<client>` エレメントはありません。`<property>` エレメントは含まれる場合があります。
 
-The `<database>` element has the following attributes:
+`<database>` エレメントには以下の属性があります。
 
-| Attribute     | Description                                     | Required | Default | 
+| 属性     | 説明                                     | 必要 | デフォルト | 
 |---------------|-------------------------------------------------|----------|---------|
-| kind          | The kind of database (Push).	                  | Yes	     | None    |
-| validate	    | To validate whether the database is accessible. | No       | true    |
+| kind          | データベースの種類 (Push)。	                  | はい	     | なし    |
+| validate	    | データベースがアクセス可能かどうかを検証します。 | いいえ       | true    |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+`<database>` エレメントは以下のエレメントをサポートしています。リレーショナル DBMS の場合のこれらのデータベース・エレメントの構成について詳しくは、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
 
-| Element            | Description                                                      | Count |
+| エレメント            | 説明                                                      | カウント |
 |--------------------|----------------------------------------------------------------- |-------|
-| <db2>	             | The parameter for DB2  databases.	                            | 0..1  |
-| <derby>	         | The parameter for Apache Derby databases.	                    | 0..1  | 
-| <mysql>	         | The parameter for MySQL databases.                               | 0..1  |
-| <oracle>	         | The parameter for Oracle databases.	                            | 0..1  |
-| <cloudant>	     | The parameter for Cloudant databases.	                        | 0..1  |
-| <driverclasspath>	 | The parameter for JDBC driver class path (relational DBMS only). | 0..1  |
+| <db2>	             | DB2 データベースのパラメーター。	                            | 0..1  |
+| <derby>	         | Apache Derby データベースのパラメーター。	                    | 0..1  | 
+| <mysql>	         | MySQL データベースのパラメーター。                               | 0..1  |
+| <oracle>	         | Oracle データベースのパラメーター。	                            | 0..1  |
+| <cloudant>	     | Cloudant データベースのパラメーター。	                        | 0..1  |
+| <driverclasspath>	 | JDBC ドライバー・クラスパスのパラメーター (リレーショナル DBMS のみ)。 | 0..1  |
 
-> **Note:** The attributes of the `<cloudant>` element are slightly different from the runtime. For more information, see the following table:
+> **注:** `<cloudant>` エレメントの属性は、ランタイムとは若干異なります。詳しくは、以下の表を参照してください。
 
-| Attribute     | Description                                     | Required | Default                   | 
+| 属性     | 説明                                     | 必要 | デフォルト                   | 
 |---------------|-------------------------------------------------|----------|---------------------------|
-| url           | The URL of the Cloudant account.                | No       | https://user.cloudant.com |
-| user          | The user name of the Cloudant account.	      | Yes	     | None                      |
-| password      | The password of the Cloudant account.	          | No	     | Queried interactively     |
-| dbName        | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -.                                | No       | mfp_push_db               |
+| url           | Cloudant アカウントの URL。                | いいえ       | https://user.cloudant.com |
+| user          | Cloudant アカウントのユーザー名。	      | はい	     | なし                      |
+| password      | Cloudant アカウントのパスワード。	          | いいえ	     | 対話式に照会     |
+| dbName        | Cloudant データベースの名前。**重要:** このデータベース名は小文字で開始し、小文字 (a から z)、数字 (0 から 9)、文字 _、$、および - のみを含んでいる必要があります。                                | いいえ       | mfp_push_db               |
 
-## Ant tasks for installation of {{ site.data.keys.mf_server }} push service
+## {{site.data.keys.mf_server }} プッシュ・サービスのインストールに関する Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-server-push-service }
-The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks are provided for the installation of the push service.
+**installmobilefirstpush**、**updatemobilefirstpush**、および **uninstallmobilefirstpush** の各 Ant タスクが、プッシュ・サービスのインストール用に用意されています。
 
-### Task effects
+### タスクの結果
 {: #task-effects-1 }
 #### installmobilefirstpush
 {: #installmobilefirstpush }
-The **installmobilefirstpush** Ant task configures an application server to run the push service WAR file as web application. This task has the following effects:
-It declares the push service web application in the **/imfpush** context root. The context root cannot be changed.
-For the relational databases, it declares data sources and, on WebSphere  Application Server Full Profile, JDBC providers for push service.
-It configures the configuration properties for the push service by using JNDI environment entries. These JNDI environment entries configure the OAuth communication with the {{ site.data.keys.product_adj }} authorization server, {{ site.data.keys.mf_analytics }}, and with Cloudant  in case Cloudant is used.
+**installmobilefirstpush** Ant タスクは、プッシュ・サービス WAR ファイルを Web アプリケーションとして実行するようにアプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。**/imfpush** コンテキスト・ルートで、プッシュ・サービス Web アプリケーションを宣言します。コンテキスト・ルートは変更できません。リレーショナル・データベースの場合、データ・ソースを宣言し、WebSphere Application Server フル・プロファイルではプッシュ・サービスの JDBC プロバイダーを宣言します。JNDI 環境項目を使用してプッシュ・サービスの構成プロパティーが構成されます。これらの JNDI 環境項目は、{{site.data.keys.product_adj }} 許可サーバーおよび {{site.data.keys.mf_analytics }} との、また Cloudant の使用時には Cloudant との OAuth 通信を構成します。
 
 #### updatemobilefirstpush
 {: #updatemobilefirstpush }
-The **updatemobilefirstpush** Ant task updates an already-configured {{ site.data.keys.mf_server }} web application on an application server. This task updates the push service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
+**updatemobilefirstpush** Ant タスクは、アプリケーション・サーバー上の構成済み {{site.data.keys.mf_server }} Web アプリケーションを更新します。このタスクにより、プッシュ・サービスの WAR ファイルが更新されます。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。
 
 #### uninstallmobilefirstpush
 {: #uninstallmobilefirstpush }
-The **uninstallmobilefirstpush** Ant task undoes the effects of an earlier run of **installmobilefirstpush**. This task has the following effects:
-It removes the configuration of the push service web application with the specified context root. As a consequence, the task also removes the settings that were added manually to that application.
-It removes the push service WAR file from the application server as an option.
-For the relational DBMS, it removes the data sources and on WebSphere Application Server Full Profile – the JDBC providers for the push service.
-It removes the associated JNDI environment entries.
+**uninstallmobilefirstpush** Ant タスクは、**installmobilefirstpush** の以前の実行の結果を元に戻します。このタスクは以下のような結果をもたらします。指定されたコンテキスト・ルートを持つプッシュ・サービス Web アプリケーションの構成が削除されます。その結果、このタスクは、そのアプリケーションに手動で追加された設定も削除します。アプリケーション・サーバーからプッシュ・サービスの WAR ファイルを削除します (オプション)。リレーショナル DBMS の場合、データ・ソースを削除し、WebSphere Application Server フル・プロファイルではプッシュ・サービスの JDBC プロバイダーを削除します。関連する JNDI 環境項目が削除されます。
 
-### Attributes and elements
+### 属性およびエレメント
 {: #attributes-and-elements-1 }
-The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks have the following attributes:
+**installmobilefirstpush**、**updatemobilefirstpush**、および **uninstallmobilefirstpush** の各 Ant タスクには、以下の属性があります。
 
-| Attribute | Description                           | Required | Default     | 
+| 属性 | 説明                           | 必要 | デフォルト     | 
 |-----------|---------------------------------------|----------|-------------|
-| id        | To distinguish different deployments.	| No	   | Empty
-| warFile	| The WAR file for the push service.	| No	   | The ../PushService/mfp-push-service.war file is relative to the MobileFirstServer directory that contains the  mfp-ant-deployer.jar file. |
+| id        | さまざまなデプロイメントを区別する。	| いいえ	   | 空| warFile	| プッシュ・サービスの WAR ファイル	| いいえ	   | ../PushService/mfp-push-service.war ファイルは、mfp-ant-deployer.jar ファイルを含む MobileFirstServer ディレクトリーに対して相対です。 |
 
-### Id
+### id
 {: #id }
-The **id** attribute distinguishes different deployments of the push service in the same WebSphere Application Server cell. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+**id** 属性は、同じ WebSphere Application Server セル内にあるプッシュ・サービスの異なるデプロイメントを識別します。この id 属性がないと、同じコンテキスト・ルートを持つ 2 つの WAR ファイルが競合し、これらのファイルがデプロイされない可能性があります。
 
 ### warFile
 {: #warfile }
-Use the **warFile** attribute to specify a different directory for the push service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+**warFile** 属性を使用して、プッシュ・サービス WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
 
-The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks support the following elements:
+**installmobilefirstpush**、**updatemobilefirstpush**、および
+**uninstallmobilefirstpush** の各 Ant タスクでは、以下のエレメントがサポートされます。
 
-| Element               | Description             | Count |
+| エレメント               | 説明             | カウント |
 |-----------------------|-------------------------|-------|
-| `<applicationserver>` | The application server. | 1     |
-| `<analytics>`	        | The Analytics.	      | 0..1  | 
-| `<authorization>`	    | The authorization server for authenticating the communication with other {{ site.data.keys.mf_server }} components. | 1 |
-| `<database>`	        | The databases.	      | 1     |
-| `<property>`	        | The properties.	      | 0..∞  | 
+| `<applicationserver>` | アプリケーション・サーバー。 | 1     |
+| `<analytics>`	        | 分析。	      | 0..1  | 
+| `<authorization>`	    | 他の {{site.data.keys.mf_server }} コンポーネントとの通信を認証するための許可サーバー。 | 1 |
+| `<database>`	        | データベース。	      | 1     |
+| `<property>`	        | プロパティー。	      | 0..∞  | 
 
-### To specify the authorization server
+### 許可サーバーを指定するには
 {: #to-specify-the-authorization-server }
-The `<authorization>` element collects information to configure the authorization server for the authentication communication with other {{ site.data.keys.mf_server }} components. This element has the following attributes:
+`<authorization>` エレメントは、他の {{site.data.keys.mf_server }} コンポーネントとの認証通信用の許可サーバーを構成するための情報を収集します。このエレメントには以下の属性があります。
 
-| Attribute          | Description                           | Required | Default     | 
+| 属性          | 説明                           | 必要 | デフォルト     | 
 |--------------------|---------------------------------------|----------|-------------|
-| auto               | To indicate whether the authorization server URL is computed. The possible values are true or false.	| Required on a WebSphere Application Server Network Deployment cluster or node.   	 | true | 
-| authorizationURL   | The URL of the authorization server.	 | If mode is not auto. | The context root of the runtime on the local server. |
-| runtimeContextRoot | The context root of the runtime.	     | No	     | /mfp       | 
-| pushClientID	     | The push service confidential ID in the authorization server.  | Yes | None |
-| pushClientSecret	 | The push service confidential client password in the authorization server. | Yes | None |
+| auto               | 許可サーバーの URL が計算されるかどうかを示します。指定可能な値は true または false です。	| WebSphere Application Server Network Deployment クラスターまたはノード上では必要。   	 | true | 
+| authorizationURL   | 許可サーバーの URL。	 | モードが auto でない場合。 | ローカル・サーバー上のランタイムのコンテキスト・ルート。 |
+| runtimeContextRoot | ランタイムのコンテキスト・ルート。	     | いいえ	     | /mfp       | 
+| pushClientID	     | 許可サーバーでのプッシュ・サービスの機密 ID。  | はい | なし |
+| pushClientSecret	 | 許可サーバーでのプッシュ・サービスの機密クライアントのパスワード。 | はい | なし |
 
 #### auto
 {: #auto }
-If the value is set to true, the URL of the authorization server is computed automatically by using the context root of the runtime on the local application server. The auto mode is not supported if you deploy on WebSphere Application Server Network Deployment on a cluster.
+値が true に設定されると、ローカル・アプリケーション・サーバーのランタイムのコンテキスト・ルートを使用して、許可サーバーの URL が自動的に計算されます。auto モードは、クラスター上の WebSphere Application Server Network Deployment にデプロイする場合、サポートされません。
 
 #### authorizationURL
 {: #authorizationurl }
-The URL of the authorization server. If the authorization server is the {{ site.data.keys.product_adj }} runtime, the URL is the URL of the runtime. For example: `http://myHost:9080/mfp`.
+許可サーバーの URL。許可サーバーが {{site.data.keys.product_adj }} ランタイムの場合、この URL はランタイムの URL です。例えば、`http://myHost:9080/mfp` などです。
 
 #### runtimeContextRoot
 {: #runtimecontextroot }
-The context root of the runtime that is used to compute the URL of the authorization server in the automatic mode.
+自動モードで許可サーバーの URL を計算するために使用されるランタイムのコンテキスト・ルート。
 #### pushClientID
 {: #pushclientid }
-The ID of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from {{ site.data.keys.mf_console }}.
+許可サーバーの機密クライアントとしての、このプッシュ・サービス・インスタンスの ID。この ID と秘密鍵は、許可サーバー用に登録されている必要があります。登録は、
+**installmobilefirstadmin** Ant タスクによって、もしくは {{site.data.keys.mf_console }} から行えます。
 
 #### pushClientSecret
 {: #pushclientsecret }
-The secret key of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from {{ site.data.keys.mf_console }}.
+許可サーバーの機密クライアントとしての、このプッシュ・サービス・インスタンスの秘密鍵。この ID と秘密鍵は、許可サーバー用に登録されている必要があります。登録は、
+**installmobilefirstadmin** Ant タスクによって、もしくは {{site.data.keys.mf_console }} から行えます。
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。
+これには、以下の属性があります。
 
-| Attribute  | Description                | Required | Default | 
+| 属性  | 説明                | 必要 | デフォルト | 
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  |	Yes	     | None    |
-| value	     | The value of the property. |	Yes	     | None    |
+| 名前       | プロパティーの名前。  |	はい	     | なし    |
+| value	     | プロパティーの値。 |	はい	     | なし    |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the push service WAR file.
+このエレメントを使用して、独自の JNDI プロパティーを定義したり、プッシュ・サービス WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。
 
-For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
 
-### To specify an application server
+### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server-2 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
+`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートしています。
 
-| Element                               | Description                                      | Count |
+| エレメント                               | 説明                                      | カウント |
 |---------------------------------------|--------------------------------------------------|-------|
-| <websphereapplicationserver> or <was>	| The parameters for WebSphere Application Server. | The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. | 0..1 |
-| `<tomcat>` | The parameters for Apache Tomcat. | 0..1 |
+| <websphereapplicationserver> または <was>	| WebSphere Application Server のパラメーター。 | `<websphereapplicationserver>` エレメント (短縮形では `<was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。 | 0..1 |
+| `<tomcat>` | Apache Tomcat のパラメーター。 | 0..1 |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+これらのエレメントの属性および内部エレメントについては、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。
 
-However, for the inner element of the `<was>` element for Liberty collective, see the following table:
+ただし、Liberty 集合の `<was>` エレメントの内部エレメントについては、以下の表を参照してください。
 
-| Element              | Description                  | Count |
+| エレメント              | 説明                  | カウント |
 |----------------------|------------------------------|-------|
-| `<collectiveMember>` | A Liberty collective member. |	0..1  |
+| `<collectiveMember>` | Liberty 集合メンバー。 |	0..1  |
 
-The `<collectiveMember>` element has the following attributes:
+`<collectiveMember>` エレメントには以下の属性があります。
 
-| Attribute   | Description                        | Required | Default | 
+| 属性   | 説明                        | 必要 | デフォルト | 
 |-------------|------------------------------------|----------|---------|
-| serverName  | The name of the collective member. | Yes      | None    |
-| clusterName |	The cluster name that the collective member belongs to. | Yes | None |
+| serverName  | 集合メンバーの名前。 | はい      | なし    |
+| clusterName |	集合メンバーが所属しているクラスター名。 | はい | なし |
 
-> **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
-
-### To specify Analytics
+> **注:** プッシュ・サービスとランタイム・コンポーネントが同じ集合メンバーにインストールされている場合、それらのクラスター名は同じでなければなりません。これらのコンポーネントが、同じ集合の別々のメンバーにインストールされている場合、
+クラスター名は異なっていてもかまいません。### Analytics の指定
 {: #to-specify-analytics-1 }
-The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} push service to an already installed {{ site.data.keys.mf_analytics }} service. It has the following attributes:
+`<analytics>` エレメントは、既にインストールされている {{site.data.keys.mf_analytics }} サービスに {{site.data.keys.product_adj }} プッシュ・サービスを接続することを指示します。これには、以下の属性があります。
 
-| Attribute    | Description                        | Required | Default | 
+| 属性    | 説明                        | 必要 | デフォルト | 
 |--------------|------------------------------------|----------|---------|
-| install	   | To indicate whether to connect the push service to {{ site.data.keys.mf_analytics }}. | No | false | 
-| analyticsURL | The URL of {{ site.data.keys.mf_analytics }} services. | Yes | None | 
-| username	   | The user name. | Yes | None | 
-| password	   | The password. | Yes | None | 
-| validate	   | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not. | No | true | 
+| install	   | プッシュ・サービスを {{site.data.keys.mf_analytics }} に接続するかどうかを示します。 | いいえ | false | 
+| analyticsURL | {{site.data.keys.mf_analytics }} サービスの URL。 | はい | なし | 
+| username	   | ユーザー名。 | はい | なし | 
+| password	   | パスワード。 | はい | なし | 
+| validate	   | {{site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。 | いいえ | true | 
 
 #### install
 {: #install }
-Use the **install** attribute to indicate that this push service must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are true or false.
+**install** 属性は、このプッシュ・サービスが接続され、イベントを {{site.data.keys.mf_analytics }} に送信する必要があることを指示するために使用します。有効な値は true または false です。
 
 #### analyticsURL
 {: #analyticsurl }
-Use the **analyticsURL** attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.  
-For example: `http://<hostname>:<port>/analytics-service/rest`
+**analyticsURL** 属性は、着信分析データを受信する {{site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
+例えば、`http://<hostname>:<port>/analytics-service/rest` などです。
 
 #### username
 {: #username }
-Use the **username** attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+**username** 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名を指定するために使用します。
 
 #### password
 {: #password }
-Use the **password** attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+**password** 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるパスワードを指定するために使用します。
 
 #### validate
 {: #validate }
-Use the **validate** attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
+**validate** 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可能かどうかを検証するため、およびパスワードでのユーザー名認証を検査するために使用します。指定可能な値は true または false です。
 
-### To specify a connection to the push service database
+### プッシュ・サービス・データベースへの接続の指定
 {: #to-specify-a-connection-to-the-push-service-database-1 }
-The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
+`<database>` エレメントは、プッシュ・サービス・データベースにアクセスするためのアプリケーション・サーバー内のデータ・ソース宣言を指定するパラメーターを収集します。
 
-You must declare a single database: `<database kind="Push">`. You specify the `<database>` element similarly to the configuredatabase Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+次のように単一のデータベースを宣言する必要があります。`<database kind="Push">`。`<database>` エレメントは、configuredatabase Ant タスクと同様に指定します。ただし、`<database>` エレメントには `<dba>` エレメントと `<client>` エレメントはありません。`<property>` エレメントは含まれる場合があります。
 
-The `<database>` element has the following attributes:
+`<database>` エレメントには以下の属性があります。
 
-| Attribute    | Description                  | Required | Default | 
+| 属性    | 説明                  | 必要 | デフォルト | 
 |--------------|------------------------------|----------|---------|
-| kind         | The kind of database (Push). | Yes      | None    |
-| validate	   | To validate whether the database is accessible. | No | true |
+| kind         | データベースの種類 (Push)。 | はい      | なし    |
+| validate	   | データベースがアクセス可能かどうかを検証します。 | いいえ | true |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables in [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+`<database>` エレメントは以下のエレメントをサポートしています。リレーショナル DBMS の場合のこれらのデータベース・エレメントの構成について詳しくは、[{{site.data.keys.product_adj }} ランタイム環境のインストール用の Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
 
-| Element              | Description                               | Count |
+| エレメント              | 説明                               | カウント |
 |----------------------|-------------------------------------------|-------|
-| `<db2>`	           | The parameter for DB2  databases.         | 0..1  | 
-| `<derby>`	           | The parameter for Apache Derby databases. | 0..1  | 
-| `<mysql>`	           | The parameter for MySQL databases.        | 0..1  | 
-| `<oracle>`           | The parameter for Oracle databases.       | 0..1  |
-| `<cloudant>`	       | The parameter for Cloudant databases.     | 0..1  | 
-| `<driverclasspath>`  | The parameter for JDBC driver class path (relational DBMS only). | 0..1 |
+| `<db2>`	           | DB2 データベースのパラメーター。         | 0..1  | 
+| `<derby>`	           | Apache Derby データベースのパラメーター。 | 0..1  | 
+| `<mysql>`	           | MySQL データベースのパラメーター。        | 0..1  | 
+| `<oracle>`           | Oracle データベースのパラメーター。       | 0..1  |
+| `<cloudant>`	       | Cloudant データベースのパラメーター。     | 0..1  | 
+| `<driverclasspath>`  | JDBC ドライバー・クラスパスのパラメーター (リレーショナル DBMS のみ)。 | 0..1 |
 
-> **Note:** The attributes of the `<cloudant>` element are slightly different from the runtime. For more information, see the following table:
+> **注:** `<cloudant>` エレメントの属性は、ランタイムとは若干異なります。詳しくは、以下の表を参照してください。
 
-| Attribute    | Description                            | Required   | Default | 
+| 属性    | 説明                            | 必要   | デフォルト | 
 |--------------|----------------------------------------|------------|---------|
-| url	       | The URL of the Cloudant account.       | No         | https://user.cloudant.com | 
-| user	       | The user name of the Cloudant account. | Yes | None |
-| password	   | The password of the Cloudant account.	| No  | Queried interactively |
-| dbName	   | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -. |No	| mfp_push_db |
+| url	       | Cloudant アカウントの URL。       | いいえ         | https://user.cloudant.com | 
+| user	       | Cloudant アカウントのユーザー名。 | はい | なし |
+| password	   | Cloudant アカウントのパスワード。	| いいえ  | 対話式に照会 |
+| dbName	   | Cloudant データベースの名前。**重要:** このデータベース名は小文字で開始し、小文字 (a から z)、数字 (0 から 9)、文字 _、$、および - のみを含んでいる必要があります。 |いいえ	| mfp_push_db |
 
-## Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments
+## {{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-runtime-environments }
-Reference information for the **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks.
+**installmobilefirstruntime**、**updatemobilefirstruntime**、および **uninstallmobilefirstruntime** の各 Ant タスクに関する参照情報を示します。
 
-### Task effects
+### タスクの結果
 {: #task-effects-2 }
 
 #### installmobilefirstruntime
 {: #installmobilefirstruntime }
-The **installmobilefirstruntime** Ant task configures an application server to run a {{ site.data.keys.product_adj }} runtime WAR file as a web application. This task has the following effects.
+**installmobilefirstruntime** Ant タスクは、{{site.data.keys.product_adj }} ランタイム WAR ファイルを Web アプリケーションとして実行するようにアプリケーション・サーバーを構成します。このタスクの結果は以下のとおりです。
 
-* It declares the {{ site.data.keys.product_adj }} web application in the specified context root, by default /mfp.
-* It deploys the runtime WAR file on the application server.
-* It declares data sources and on WebSphere  Application Server full profile JDBC providers for the runtime.
-* It deploys the database drivers in the application server.
-* It sets {{ site.data.keys.product_adj }} configuration properties through JNDI environment entries.
-* Optionally, it sets the {{ site.data.keys.product_adj }} JNDI environment entries to configure the application server as a server farm member for the runtime.
+* {{site.data.keys.product_adj }} Web アプリケーションを、指定されたコンテキスト・ルート (デフォルトでは /mfp) の中で宣言します。
+* ランタイム WAR ファイルをアプリケーション・サーバーにデプロイします。
+* データ・ソースおよび (WebSphere Application Server フル・プロファイルにおける) ランタイム用の JDBC プロバイダーを宣言します。
+* アプリケーション・サーバーにデータベース・ドライバーがデプロイされます。
+* JNDI 環境項目を使用して、{{site.data.keys.product_adj }} 構成プロパティーを設定します。
+* オプションで、{{site.data.keys.product_adj }} JNDI 環境項目を設定して、ランタイム用にアプリケーション・サーバーをサーバー・ファーム・メンバーとして構成します。
 
 #### updatemobilefirstruntime
 {: #updatemobilefirstruntime }
-The **updatemobilefirstruntime** Ant task updates a {{ site.data.keys.product_adj }} runtime that is already configured on an application server. This task updates the runtime WAR file. The file must have the same base name as the runtime WAR file that was previously deployed. Other than that, the task does not change the application server configuration, that is, the web application configuration, data sources, and JNDI environment entries.
+**updatemobilefirstruntime** Ant タスクは、既にアプリケーション・サーバー上に構成されている {{site.data.keys.product_adj }} ランタイムを更新します。このタスクは、ランタイム WAR ファイルを更新します。このファイルは、以前にデプロイされたランタイム WAR ファイルと同じベース名を持つ必要があります。これを除き、このタスクはアプリケーション・サーバー構成 (Web アプリケーション構成、データ・ソース、および JNDI 環境項目) を変更しません。
 
 #### uninstallmobilefirstruntime
 {: #uninstallmobilefirstruntime }
-The **uninstallmobilefirstruntime** Ant task undoes the effects of an earlier **installmobilefirstruntime** run. This task has the following effects.
+**uninstallmobilefirstruntime** Ant タスクは、以前の **installmobilefirstruntime** 実行の結果を元に戻します。
+このタスクの結果は以下のとおりです。
 
-* It removes the configuration of the {{ site.data.keys.product_adj }} web application with the specified context root. The task also removes the settings that are added manually to that application.
-* It removes the runtime WAR file from the application server.
-* It removes the data sources and on WebSphere Application Server full profile the JDBC providers for the runtime.
-* It removes the associated JNDI environment entries.
+* 指定されたコンテキスト・ルートを持つ {{site.data.keys.product_adj }} Web アプリケーションの構成が削除されます。このタスクは、そのアプリケーションに手動で追加された設定も削除します。
+* アプリケーション・サーバーからランタイム WAR ファイルを削除します。
+* データ・ソースおよび (WebSphere Application Server フル・プロファイルにおける) ランタイム用の JDBC プロバイダーを削除します。
+* 関連する JNDI 環境項目が削除されます。
 
-### Attributes and elements
+### 属性およびエレメント
 {: #attributes-and-elements-2 }
-The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks have the following attributes:
+**installmobilefirstruntime**、**updatemobilefirstruntime**、および **uninstallmobilefirstruntime** の各 Ant タスクは以下の属性を持っています。
 
-| Attribute         | Description                                                                 | Required   | Default                   | 
+| 属性         | 説明                                                                 | 必要   | デフォルト                   | 
 |-------------------|-----------------------------------------------------------------------------|------------|---------------------------|
-| contextroot       | The common prefix in URLs to the application (context root).                | No | /mfp  |
-| id	            | To distinguish different deployments.                                       | No | Empty |
-| environmentId	    | To distinguish different {{ site.data.keys.product_adj }} environments.                          | No | Empty |
-| warFile	        | The WAR file for {{ site.data.keys.product_adj }} runtime.                                       | No | The mfp-server.war file is in the same directory as the mfp-ant-deployer.jar file. |
-| wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 2     |                           | 
+| contextroot       | アプリケーションの URL の共通接頭部 (コンテキスト・ルート)                | いいえ | /mfp  |
+| id	            | さまざまなデプロイメントを区別する。                                       | いいえ | 空 |
+| environmentId	    | さまざまな {{site.data.keys.product_adj }} 環境を区別する。                          | いいえ | 空 |
+| warFile	        | {{site.data.keys.product_adj }} ランタイムの WAR ファイル。                                       | いいえ | mfp-server.war ファイルは、mfp-ant-deployer.jar file と同じディレクトリー内にあります。 |
+| wasStartingWeight | WebSphere Application Server の開始順序。低い値から先に開始されます。 | いいえ | 2     |                           | 
 
-#### contextroot and id
+#### contextroot および id
 {: #contextroot-and-id-1 }
-The **contextroot** and **id** attributes distinguish different {{ site.data.keys.product_adj }} projects.
+**contextroot** および **id** 属性は、さまざまな {{site.data.keys.product_adj }} プロジェクトを区別します。
 
-In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server full profile environments, the id attribute is used instead.
+WebSphere Application Server Liberty プロファイルおよび Tomcat の環境では、この目的には contextroot パラメーターで十分です。WebSphere Application Server フル・プロファイル環境では、id 属性が代わりに使用されます。
 
 #### environmentId
 {: #environmentid-1 }
-Use the **environmentId** attribute to distinguish several environments, consisting each of {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime web applications, that must operate independently. You must set this attribute to the same value for the runtime application as the one that was set in the <installmobilefirstadmin> invocation, for the administration service application.
+**environmentId** 属性を使用して、独立して作動しなければならない、{{site.data.keys.mf_server }} 管理サービスおよび {{site.data.keys.product_adj }} ランタイム Web アプリケーションのそれぞれから構成される、複数の環境を区別します。管理サービス・アプリケーションの場合、
+この属性には、<installmobilefirstadmin> 呼び出しで設定されたものと同じランタイム・アプリケーションの値を設定する必要があります。
 
 #### warFile
 {: #warfile-1 }
-Use the **warFile** attribute to specify a different directory for the {{ site.data.keys.product_adj }} runtime WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+**warFile** 属性を使用して、{{site.data.keys.product_adj }} ランタイム WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
 
 #### wasStartingWeight
 {: #wasstartingweight-1 }
-Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the {{ site.data.keys.mf_server }} administration service web application is deployed and started before any other {{ site.data.keys.product_adj }} runtime projects. If {{ site.data.keys.product_adj }} projects are deployed or started before the web application, the JMX communication is not established and you cannot manage your {{ site.data.keys.product_adj }} projects.
+**wasStartingWeight** 属性を使用して、開始順序が順守されることを確実にするためのウェイトとして WebSphere Application Server で使用される値を指定します。この開始順序の値の結果、{{site.data.keys.mf_server }} 管理サービス Web アプリケーションは、他のどの {{site.data.keys.product_adj }} ランタイム・プロジェクトよりも前にデプロイされて開始されます。{{site.data.keys.product_adj }} プロジェクトが Web アプリケーションよりも前にデプロイまたは開始されると、JMX 通信は確立されず、{{site.data.keys.product_adj }} プロジェクトは管理できません。
 
-The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** tasks support the following elements:
+**installmobilefirstruntime**、**updatemobilefirstruntime**、および **uninstallmobilefirstruntime** の各タスクでは、以下のエレメントがサポートされます。
 
-| Element               | Description                                      | Count |
+| エレメント               | 説明                                      | カウント |
 |-----------------------|--------------------------------------------------|-------|
-| `<property>`          | The properties.	                               | 0..   |
-| `<applicationserver>` | The application server.                          | 1     |
-| `<database>`          | The databases.                                   | 1     |
-| `<analytics>`         | The analytics.                                   | 0..1  |
+| `<property>`          | プロパティー。	                               | 0..   |
+| `<applicationserver>` | アプリケーション・サーバー。                          | 1     |
+| `<database>`          | データベース。                                   | 1     |
+| `<analytics>`         | 分析。                                   | 0..1  |
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。
+これには、以下の属性があります。
 
-| Attribute | Description                | Required | Default | 
+| 属性 | 説明                | 必要 | デフォルト | 
 |-----------|----------------------------|----------|---------|
-| name      | The name of the property.	 | Yes      | None    |
-| value	    | The value for the property.| Yes	    | None    |  
+| 名前      | プロパティーの名前。	 | はい      | なし    |
+| value	    | プロパティーの値。| はい	    | なし    |  
 
-The `<applicationserver>` element describes the application server to which the {{ site.data.keys.product_adj }} application is deployed. It is a container for one of the following elements:
+`<applicationserver>` エレメントは、{{site.data.keys.product_adj }} アプリケーションのデプロイ先のアプリケーション・サーバーを記述します。これは、以下のエレメントの 1 つに対するコンテナーです。
 
-| Element                                    | Description                                      | Count |
+| エレメント                                    | 説明                                      | カウント |
 |--------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` or `<was>`  | The parameters for WebSphere Application Server.	| 0..1  |
-| `<tomcat>`                                 | The parameters for Apache Tomcat.                | 0..1  |
+| `<websphereapplicationserver>` または `<was>`  | WebSphere Application Server のパラメーター。	| 0..1  |
+| `<tomcat>`                                 | Apache Tomcat のパラメーター。                | 0..1  |
 
-The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. The `<websphereapplicationserver>` element has the following attributes:
+`<websphereapplicationserver>` エレメント (短縮形では `<was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。`<websphereapplicationserver>` エレメントには以下の属性があります。
 
-| Attribute       | Description                                            | Required                 | Default | 
+| 属性       | 説明                                            | 必要                 | デフォルト | 
 |-----------------|--------------------------------------------------------|--------------------------|---------|
-| installdir      |	WebSphere Application Server installation directory.   | Yes                      | None    |
-| profile         |	WebSphere Application Server profile, or Liberty.      | Yes	                  | None    |
-| user	WebSphere Application Server administrator name.	               | Yes, except for Liberty  | None    |
-| password        | WebSphere Application Server administrator password.   | No	Queried interactively |         | 
-| libertyEncoding |	The algorithm to encode data source passwords for WebSphere Application Server Liberty. The possible values are none, xor, and aes. Whether the xor or aes encoding is used, the clear password is passed as argument to the securityUtility program, which is called through an external process. You can see the password with a ps command, or in the /proc file system on UNIX operating systems.                                                         | No                       |	xor     |
-| jeeVersion      |	For Liberty profile. To specify whether to install the features of the JEE6 web profile or the JEE7 web profile. Possible values are 6, 7, or auto.| No | auto |
-| configureFarm   |	For WebSphere Application Server Liberty, and WebSphere Application Server full profile (not for WebSphere Application Server Network Deployment edition and Liberty collective). To specify whether the server is a server farm member. Possible values are true or false. | No	      | false   |
-| farmServerId    |	A string that uniquely identify a server in a server farm. The {{ site.data.keys.mf_server }} administration services and all the {{ site.data.keys.product_adj }} runtimes that communicate with it must share the same value.                                                                | Yes                      |	None    |
+| installdir      |	WebSphere Application Server インストール・ディレクトリー。   | はい                      | なし    |
+| profile         |	WebSphere Application Server プロファイルまたは Liberty。      | はい	                  | なし    |
+| user	WebSphere Application Server 管理者名。	               | はい (Liberty の場合を除く)  | なし    |
+| password        | WebSphere Application Server 管理者パスワード。   | いいえ 対話式に照会 |         | 
+| libertyEncoding |	WebSphere Application Server Liberty のデータ・ソース・パスワードをエンコードするアルゴリズム。指定可能な値は none、xor、および aes です。xor エンコードが使用されているか aes エンコードが使用されているかに関係なく、外部プロセスによって呼び出される securityUtility プログラムにクリア・パスワードが引数として渡されます。このパスワードは ps コマンドにより確認できます。また、UNIX オペレーティング・システム上では /proc ファイル・システム内で確認できます。                                                         | いいえ                       |	xor     |
+| jeeVersion      |	Liberty プロファイル用。JEE6 Web プロファイルまたは JEE7 Web プロファイルのフィーチャーをインストールするかどうかを指定する。指定可能な値は、6、7、または auto。| いいえ | auto |
+| configureFarm   |	WebSphere Application Server Liberty および WebSphere Application Server フル・プロファイル用 (WebSphere Application Server Network Deployment エディションおよび Liberty 集合用ではない)。サーバーがサーバー・ファーム・メンバーかどうかを指定します。指定可能な値は true または false です。 | いいえ	      | false   |
+| farmServerId    |	サーバー・ファーム内でサーバーを一意的に識別するストリング。そのサーバーと通信する {{site.data.keys.mf_server }} 管理サービスおよびすべての {{site.data.keys.product_adj }} ランタイムは、同じ値を共有する必要があります。                                                                | はい                      |	なし    |
 
-It supports the following element for single-server deployment:
+シングル・サーバー・デプロイメントの場合、以下のエレメントがサポートされます。
 
-| Element     | Description      | Count |
+| エレメント     | 説明      | カウント |
 |-------------|------------------|-------|
-| `<server>`  | A single server. | 0..1  |
+| `<server>`  | シングル・サーバー。 | 0..1  |
 
-The <server> element, which is used in this context, has the following attribute:
+このコンテキストで使用される <server> エレメントには以下の属性があります。
 
-| Attribute | Description      | Required | Default | 
+| 属性 | 説明      | 必要 | デフォルト | 
 |-----------|------------------|----------|---------|
-| name	    | The server name. | Yes      | None    |
+| 名前	    | サーバー名。 | はい      | なし    |
 
-It supports the following elements for Liberty collective:
+Liberty 集合の場合、以下のエレメントがサポートされます。
 
-| Element               | Description                  | Count |
+| エレメント               | 説明                  | カウント |
 |-----------------------|------------------------------|-------|
-| `<collectiveMember>`  | A Liberty collective member. | 0..1  |
+| `<collectiveMember>`  | Liberty 集合メンバー。 | 0..1  |
 
-The `<collectiveMember>` element has the following attributes:
+`<collectiveMember>` エレメントには以下の属性があります。
 
-| Attribute               | Description      | Required | Default | 
+| 属性               | 説明      | 必要 | デフォルト | 
 |-------------------------|------------------|----------|---------|
-| serverName              |	The name of the collective member.                       | Yes | None | 
-| clusterName             |	The cluster name that the collective member belongs to.  | Yes | None | 
-| serverId                |	A string that uniquely identifies the collective member. | Yes | None | 
-| controllerHost          |	The name of the collective controller.                   | Yes | None | 
-| controllerHttpsPort     |	The HTTPS port of the collective controller.             | Yes | None | 
-| controllerAdminName     |	The administrative user name that is defined in the collective controller. This is the same user that is used to join new members to the collective. | Yes | None | 
-| controllerAdminPassword |	The administrative user password.	                     | Yes | None | 
-| createControllerAdmin   |	To indicate whether the administrative user must be created in the basic registry of the collective member. Possible values are true or false. | No | true |
+| serverName              |	集合メンバーの名前。                       | はい | なし | 
+| clusterName             |	集合メンバーが所属しているクラスター名。  | はい | なし | 
+| serverId                |	集合メンバーを一意的に識別するストリング。 | はい | なし | 
+| controllerHost          |	集合コントローラーの名前。                   | はい | なし | 
+| controllerHttpsPort     |	集合コントローラーの HTTPS ポート。             | はい | なし | 
+| controllerAdminName     |	集合コントローラーに定義された管理ユーザー名。 これは、新規メンバーを集合に参加させるために使用されるのと同じユーザーです。 | はい | なし | 
+| controllerAdminPassword |	管理ユーザー・パスワード。	                     | はい | なし | 
+| createControllerAdmin   |	集合メンバーの基本レジストリー内に管理ユーザーが作成される必要があるかどうかを示す。指定可能な値は true または false です。 | いいえ | true |
 
-It supports the following elements for Network Deployment:
+Network Deployment の場合、以下のエレメントがサポートされます。
 
-| Element     | Description                                   | Count |
+| エレメント     | 説明                                   | カウント |
 |-------------|-----------------------------------------------|-------|
-| `<cell>`    |	The entire cell.	                          | 0..1  |
-| `<cluster>` |	All the servers of a cluster.                 |	0..1  |
-| `<node>`    |	All the servers in a node, clusters excluded. | 0..1  |
-| `<server>`  |	A single server.	                          | 0..1  |
+| `<cell>`    |	セル全体。	                          | 0..1  |
+| `<cluster>` |	クラスターのすべてのサーバー。                 |	0..1  |
+| `<node>`    |	ノード内のすべてのサーバー (クラスターを除く)。 | 0..1  |
+| `<server>`  |	シングル・サーバー。	                          | 0..1  |
 
-The `<cell>` element has no attributes.
+`<cell>` エレメントには属性はありません。
 
-The `<cluster>` element has the following attribute:
+`<cluster>` エレメントには以下の属性があります。
 
-| Attribute | Description       | Required | Default | 
+| 属性 | 説明       | 必要 | デフォルト | 
 |-----------|-------------------|----------|---------|
-| name      | The cluster name. | Yes	   | None    |
+| 名前      | クラスター名。 | はい	   | なし    |
 
-The `<node>` element has the following attribute:
+`<node>` エレメントには以下の属性があります。
 
-| Attribute | Description    | Required | Default | 
+| 属性 | 説明    | 必要 | デフォルト | 
 |-----------|----------------|----------|---------|
-| name      | The node name. | Yes	    | None    |
+| 名前      | ノード名。 | はい	    | なし    |
 
-The `<server>` element, which is used in a Network Deployment context, has the following attributes:
+Network Deployment コンテキストで使用される `<server>` エレメントには以下の属性があります。
 
-| Attribute  | Description      | Required | Default | 
+| 属性  | 説明      | 必要 | デフォルト | 
 |------------|------------------|----------|---------|
-| nodeName   | The node name.   | Yes	   | None    |
-| serverName | The server name. | Yes      | None    |
+| nodeName   | ノード名。   | はい	   | なし    |
+| serverName | サーバー名。 | はい      | なし    |
 
-The `<tomcat>` element denotes an Apache Tomcat server. It has the following attribute:
+`<tomcat>` エレメントは Apache
+Tomcat サーバーを示します。これには、以下の属性があります。
 
-| Attribute     | Description      | Required | Default | 
+| 属性     | 説明      | 必要 | デフォルト | 
 |---------------|------------------|----------|---------|
-| installdir    | The installation directory of Apache Tomcat. For a Tomcat installation that is split between a CATALINA_HOME directory and a CATALINA_BASE directory, specify the value of the CATALINA_BASE environment variable.     | Yes | None    | 
-| configureFarm | To specify whether the server is a server farm member. Possible values are true or false.	| No | false |
-| farmServerId	| A string that uniquely identify a server in a server farm. The {{ site.data.keys.mf_server }} administration services and all the {{ site.data.keys.product_adj }} runtimes that communicate with it must share the same value. | Yes | None |
+| installdir    | Apache Tomcat のインストール・ディレクトリー。CATALINA_HOME ディレクトリーと CATALINA_BASE ディレクトリーに分割されている Tomcat のインストール済み環境の場合、CATALINA_BASE 環境変数の値を指定します。     | はい | なし    | 
+| configureFarm | サーバーがサーバー・ファーム・メンバーかどうかを指定します。指定可能な値は true または false です。	| いいえ | false |
+| farmServerId	| サーバー・ファーム内でサーバーを一意的に識別するストリング。そのサーバーと通信する {{site.data.keys.mf_server }} 管理サービスおよびすべての {{site.data.keys.product_adj }} ランタイムは、同じ値を共有する必要があります。 | はい | なし |
 
-The `<database>` element specifies what information is necessary to access a particular database. The `<database>` element is specified like the configuredatabase Ant task, except that it does not have the `<dba>` and `<client>` elements. However, it might have `<property>` elements. The `<database>` element has the following attributes:
+`<database>` エレメントは、特定のデータベースにアクセスするために必要な情報を指定します。`<database>` エレメントは、configuredatabase Ant タスクと同じように指定されますが、`<dba>` エレメントと `<client>` エレメントがない点は異なります。ただし、`<property>` エレメントを含めることはできます。`<database>` エレメントには以下の属性があります。
 
-| Attribute | Description                                | Required | Default | 
+| 属性 | 説明                                | 必要 | デフォルト | 
 |-----------|--------------------------------------------|----------|---------|
-| kind      | The kind of database ({{ site.data.keys.product_adj }} Runtime). | Yes | None |
-| validate  | To validate whether the database is accessible or not. The possible values are true or false. | No | true |
+| kind      | データベースの種類 ({{site.data.keys.product_adj }} ランタイム)。 | はい | なし |
+| validate  | データベースがアクセス可能かどうかを検証します。指定可能な値は true または false です。 | いいえ | true |
 
-The `<database>` element supports the following elements:
+`<database>` エレメントは以下のエレメントをサポートします。
 
-| Element             | Description	                | Count | 
+| エレメント             | 説明	                | カウント | 
 |---------------------|-----------------------------|-------|
-| `<derby>`           | The parameters for Derby.   | 0..1  | 
-| `<db2>`             |	The parameters for DB2.     | 0..1  | 
-| `<mysql>`           |	The parameters for MySQL.   | 0..1  | 
-| `<oracle>`          |	The parameters for Oracle.  | 0..1  | 
-| `<driverclasspath>` | The JDBC driver class path. | 0..1  | 
+| `<derby>`           | Derby のパラメーター。   | 0..1  | 
+| `<db2>`             |	DB2 のパラメーター。     | 0..1  | 
+| `<mysql>`           |	MySQL のパラメーター。   | 0..1  | 
+| `<oracle>`          |	Oracle のパラメーター。  | 0..1  | 
+| `<driverclasspath>` | JDBC ドライバーのクラスパス。 | 0..1  | 
 
-The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} runtime to an already installed {{ site.data.keys.mf_analytics_console }} and services. It has the following attributes:
+`<analytics>` エレメントは、既にインストールされている {{site.data.keys.mf_analytics_console }} およびサービスに {{site.data.keys.product_adj }} ランタイムを接続することを指示します。これには、以下の属性があります。
 
-| Attribute    | Description                                                                      | Required | Default | 
+| 属性    | 説明                                                                      | 必要 | デフォルト | 
 |--------------|----------------------------------------------------------------------------------|----------|---------|
-| install      | To indicate whether to connect the {{ site.data.keys.product_adj }} runtime to {{ site.data.keys.mf_analytics }}. | No       | false   |
-| analyticsURL | The URL of {{ site.data.keys.mf_analytics }} services.	                                      | Yes      | None    |
-| consoleURL   | The URL of{{ site.data.keys.mf_analytics_console }}.	                                      | Yes      | None    |
-| username     | The user name.	                                                                  | Yes      | None    |
-| password     | The password.	                                                                  | Yes      | None    |
-| validate     | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not.	      | No	     | true    |
-| tenant       | The tenant for indexing data that is collected from a {{ site.data.keys.product_adj }} runtime.	      | No       | Internal identifier |
+| install      | {{site.data.keys.product_adj }} ランタイムを {{site.data.keys.mf_analytics }} に接続するかどうかを示す。 | いいえ       | false   |
+| analyticsURL | {{site.data.keys.mf_analytics }} サービスの URL。	                                      | はい      | なし    |
+| consoleURL   | {{site.data.keys.mf_analytics_console }} の URL。	                                      | はい      | なし    |
+| username     | ユーザー名。	                                                                  | はい      | なし    |
+| password     | パスワード。	                                                                  | はい      | なし    |
+| validate     | {{site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。	      | いいえ	     | true    |
+| tenant       | {{site.data.keys.product_adj }} ランタイムから収集されたデータを索引付けするためのテナント。	      | いいえ       | 内部 ID |
 
 #### install
 {: #install-1 }
-Use the **install** attribute to indicate that this {{ site.data.keys.product_adj }} runtime must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are **true** or **false**.
+**install** 属性は、この {{site.data.keys.product_adj }} ランタイムが接続され、イベントを {{site.data.keys.mf_analytics }} に送信する必要があることを指示するために使用します。
+有効な値は **true** または **false** です。
 
 #### analyticsURL
 {: #analyticsurl-1 }
-Use the **analyticsURL** attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.  
-For example: `http://<hostname>:<port>/analytics-service/rest`
+**analyticsURL** 属性は、着信分析データを受信する {{site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
+例えば、`http://<hostname>:<port>/analytics-service/rest` などです。
 
 #### consoleURL
 {: #consoleurl }
-Use the **consoleURL** attribute to the URL that is exposed by {{ site.data.keys.mf_analytics }}, which links to the {{ site.data.keys.mf_analytics_console }}.  
-For example: `http://<hostname>:<port>/analytics/console`
+**consoleURL** 属性は、{{site.data.keys.mf_analytics_console }}にリンクされる {{site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
+例えば、`http://<hostname>:<port>/analytics/console` などです。
 
 #### username
 {: #username-1 }
-Use the **username** attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+**username** 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名を指定するために使用します。
 
 #### password
 {: #password-1 }
-Use the **password** attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+**password** 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるパスワードを指定するために使用します。
 
 #### validate
 {: #validate-1 }
-Use the **validate** attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are **true**, or **false**.
+**validate** 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可能かどうかを検証するため、およびパスワードでのユーザー名認証を検査するために使用します。指定可能な値は **true** または **false** です。
 
 #### tenant
 {: #tenant }
-For more information about this attribute, see [Configuration properties](../analytics/configuration/#configuration-properties).
+この属性について詳しくは、[構成プロパティー](../analytics/configuration/#configuration-properties)を参照してください。
 
-### To specify an Apache Derby database
+### Apache Derby データベースを指定するには
 {: #to-specify-an-apache-derby-database }
-The `<derby>` element has the following attributes: 
+`<derby>` エレメントには以下の属性があります。 
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 説明                                | 必要 | デフォルト | 
 |------------|--------------------------------------------|----------|---------|
-| database	 | The database name.	                      | No       |	MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
-| datadir	 | The directory that contains the databases. |	Yes	     | None    |
-| schema     |	The schema name.                          |	No	     | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH, or APPCENTER, depending on kind. |
+| データベース	 | データベース名。	                      | いいえ       |	種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。 |
+| datadir	 | データベースを含むディレクトリー。 |	はい	     | なし    |
+| schema     |	スキーマ名。                          |	いいえ	     | 種類に応じて、MFPDATA、MFPCFG、MFPADMINISTRATOR、MFPPUSH、または APPCENTER。 |
 
-The `<derby>` element supports the following element:
+`<derby>` エレメントは以下のエレメントをサポートします。
 
-| Element       | Description	                | Count | 
+| エレメント       | 説明	                | カウント | 
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。	| 0.. |
 
-For more information about the available properties, see the documentation for Class [EmbeddedDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedDataSource40.html). See also the documentation for [Class EmbeddedConnectionPoolDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedConnectionPoolDataSource40.html).
+使用可能なプロパティーについて詳しくは、Class [EmbeddedDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedDataSource40.html) の資料を参照してください。また、[Class EmbeddedConnectionPoolDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedConnectionPoolDataSource40.html) の資料も参照してください。
 
-For more information about the available properties for a Liberty server, see the documentation for `properties.derby.embedded` at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+Liberty サーバーで使用可能なプロパティーについて詳しくは、`properties.derby.embedded` の資料 ([Liberty プロファイル: server.xml ファイルの構成エレメント](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html)) を参照してください。
 
-When the **mfp-ant-deployer.jar** file is used within the installation directory of {{ site.data.keys.product }}, a `<driverclasspath>` element is not necessary.
+**mfp-ant-deployer.jar** ファイルが {{site.data.keys.product }} のインストール・ディレクトリー内で使用されている場合には、`<driverclasspath>` エレメントは不要です。
 
-### To specify a DB2 database
+### DB2 データベースを指定するには
 {: #to-specify-a-db2-database }
-The `<db2>` element has the following attributes:
+`<db2>` エレメントには以下の属性があります。
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 説明                                | 必要 | デフォルト | 
 |------------|--------------------------------------------|----------|---------|
-| database   | The database name. | No	MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. | 
-| server     | The host name of the database server.      | Yes	     | None    | 
-| port       | The port on the database server.           | No	     | 50000   | 
-| user       | The user name for accessing databases.     | This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges                                 | that are listed in Database users and privileges. | Yes	None | 
-| password   | The password for accessing databases.      | No       | Queried interactively | 
-| schema     | The schema name.                           | No       | Depends on the user | 
+| データベース   | データベース名。 | いいえ	種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。 | 
+| サーバー     | データベース・サーバーのホスト名。      | はい	     | なし    | 
+| port       | データベース・サーバーのポート。           | いいえ	     | 50000   | 
+| user       | データベースにアクセスするユーザー名。     | このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、『データベースのユーザーおよび特権』にリストされている、制限された特権を持つユーザーを設定できます。                                 | はい | なし | 
+| password   | データベースにアクセスするパスワード。      | いいえ       | 対話式に照会 | 
+| schema     | スキーマ名。                           | いいえ       | ユーザーに応じて異なる | 
 
-For more information about DB2 user accounts, see [DB2 security model overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).  
-The `<db2>` element supports the following element:
+DB2 ユーザー・アカウントについて詳しくは、[DB2 のセキュリティー・モデルの概要](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html)を参照してください。  
+`<db2>` エレメントは以下のエレメントをサポートします。
 
-| Element       | Description	                | Count | 
+| エレメント       | 説明	                | カウント | 
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。	| 0.. |
 
-For more information about the available properties, see [Properties for the IBM  Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).
+使用可能なプロパティーについて詳しくは、[IBM Data Server Driver for JDBC and SQLJ のプロパティー](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html)を参照してください。
 
-For more information about the available properties for a Liberty server, see the **properties.db2.jcc** section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+Liberty サーバーで使用可能なプロパティーについて詳しくは、[Liberty プロファイル: server.xml ファイルの構成エレメント](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html)の『**properties.db2.jcc**』セクションを参照してください。
 
-The `<driverclasspath>` element must contain JAR files for the DB2 JDBC driver and the associated license. You can download DB2 JDBC drivers from [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866).
+`<driverclasspath>` エレメントは、DB2 JDBC ドライバーおよび関連するライセンス用の JAR ファイルを含んでいる必要があります。DB2 JDBC ドライバーは、[DB2 JDBC Driver Versions and Downloads](http://www.ibm.com/support/docview.wss?uid=swg21363866) からダウンロードできます。
 
-### To specify a MySQL database
+### MySQL データベースを指定するには
 {: #to-specify-a-mysql-database }
-The `<mysql>` element has the following attributes:
+`<mysql>` エレメントには以下の属性があります。
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 説明                                | 必要 | デフォルト | 
 |------------|--------------------------------------------|----------|---------|
-| database	 | The database name.	                      | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. | 
-| server	 | The host name of the database server.	  | Yes      | None    |
-| port	     | The port on the database server.           | No	     | 3306    |
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges | that are listed in Database users and privileges. | Yes | None |
-| password	 | The password for accessing databases.	  | No	     | Queried interactively |
+| データベース	 | データベース名。	                      | いいえ       | 種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。 | 
+| サーバー	 | データベース・サーバーのホスト名。	  | はい      | なし    |
+| port	     | データベース・サーバーのポート。           | いいえ	     | 3306    |
+| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、『データベースのユーザーおよび特権』にリストされている、制限された特権を持つユーザーを設定できます。 | はい | なし |
+| password	 | データベースにアクセスするパスワード。	  | いいえ	     | 対話式に照会 |
 
-Instead of **database**, **server**, and **port**, you can also specify a URL. In this case, use the following attributes:
+**database**、**server**、および **port** の代わりに、URL を指定することもできます。この場合、以下の属性を使用します。 
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 説明                                | 必要 | デフォルト | 
 |------------|--------------------------------------------|----------|---------|
-| url	     | The URL for connection to the database.	  | Yes	     | None    |
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. | Yes  | None |
-| password	 | The password for accessing databases.	  | No       | Queried interactively |
+| url	     | データベースへの接続の URL。	  | はい	     | なし    |
+| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、データベースのユーザーおよび特権にリストされている、制限された特権を持つユーザーを設定できます。 | はい  | なし |
+| password	 | データベースにアクセスするパスワード。	  | いいえ       | 対話式に照会 |
 
-For more information about MySQL user accounts, see [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).
+MySQL ユーザー・アカウントについて詳しくは、[MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html) を参照してください。
 
-The `<mysql>` element supports the following element:
+`<mysql>` エレメントは以下のエレメントをサポートします。
 
-| Element       | Description	                | Count | 
+| エレメント       | 説明	                | カウント | 
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。	| 0.. |
 
-For more information about the available properties, see the documentation at [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).
+使用可能なプロパティーについて詳しくは、[Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html) の資料を参照してください。
 
-For more information about the available properties for a Liberty server, see the properties section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+Liberty サーバーで使用可能なプロパティーについて詳しくは、[Liberty プロファイル: server.xml ファイル](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html)の構成エレメントの『properties』セクションを参照してください。
 
-The `<driverclasspath>` element must contain a MySQL Connector/J JAR file. You can download it from [Download Connector/J](http://www.mysql.com/downloads/connector/j/).
+`<driverclasspath>` エレメントには、MySQL Connector/J JAR ファイルが含まれている必要があります。これは、[Download Connector/J](http://www.mysql.com/downloads/connector/j/) からダウンロードできます。
 
-### To specify an Oracle database
+### Oracle データベースを指定するには
 {: #to-specify-an-oracle-database }
-The `<oracle>` element has the following attributes:
+`<oracle>` エレメントには以下の属性があります。
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 説明                                | 必要 | デフォルト | 
 |------------|--------------------------------------------|----------|---------|
-| database   | The database name, or Oracle service name. Note: You must always use a service name to connect to a PDB database. | No | ORCL |
-| server	 | The host name of the database server.	Yes	None
-| port	     | The port on the database server.	No	1521
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. See the note under this table. | Yes | None |
-| password	 | The password for accessing databases.	  | No       | Queried interactively |
+| データベース   | データベース名、または Oracle サービス名。注: PDB データベースに接続するには、常にサービス名を使う必要があります。 | いいえ | ORCL |
+| サーバー	 | データベース・サーバーのホスト名。はい	なし
+| port	     | データベース・サーバーのポート。いいえ	1521
+| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、データベースのユーザーおよび特権にリストされている、制限された特権を持つユーザーを設定できます。この表の下の注を参照してください。 | はい | なし |
+| password	 | データベースにアクセスするパスワード。	  | いいえ       | 対話式に照会 |
 
-> **Note:** For the **user** attribute, use preferably a user name in uppercase letters. Oracle user names are generally in uppercase letters. Unlike other database tools, the **installmobilefirstruntime** Ant task does not convert lowercase letters to uppercase letters in the user name. If the **installmobilefirstruntime** Ant task fails to connect to your database, try to enter the value for the **user** attribute in uppercase letters.
+> **注:** **user** 属性については、大文字のユーザー名を使用することをお勧めします。Oracle のユーザー名は、一般的に大文字で表されます。他のデータベース・ツールとは異なり、**installmobilefirstruntime** Ant タスクは、ユーザー名に含まれる小文字を大文字に変換しません。**installmobilefirstruntime** Ant タスクがデータベースへの接続に失敗した場合には、**user** 属性の値を大文字で入力してみてください。
 
-Instead of **database**, **server**, and **port**, you can also specify a URL. In this case, use the following attributes:
+**database**、**server**、および **port** の代わりに、URL を指定することもできます。この場合、以下の属性を使用します。
 
-| Attribute  | Description                                | Required | Default | 
+
+| 属性  | 説明                                | 必要 | デフォルト | 
 |------------|--------------------------------------------|----------|---------|
-| url	     | The URL for connection to the database.	  | Yes      | None    |
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. See the note under this table. | Yes | None |
-| password	 | The password for accessing databases.	  | No	     | Queried interactively |
+| url	     | データベースへの接続の URL。	  | はい      | なし    |
+| user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、データベースのユーザーおよび特権にリストされている、制限された特権を持つユーザーを設定できます。この表の下の注を参照してください。 | はい | なし |
+| password	 | データベースにアクセスするパスワード。	  | いいえ	     | 対話式に照会 |
 
-> **Note:** For the **user** attribute, use preferably a user name in uppercase letters. Oracle user names are generally in uppercase letters. Unlike other database tools, the **installmobilefirstruntime** Ant task does not convert lowercase letters to uppercase letters in the user name. If the **installmobilefirstruntime** Ant task fails to connect to your database, try to enter the value for the **user** attribute in uppercase letters.
+> **注:** **user** 属性については、大文字のユーザー名を使用することをお勧めします。Oracle のユーザー名は、一般的に大文字で表されます。他のデータベース・ツールとは異なり、**installmobilefirstruntime** Ant タスクは、ユーザー名に含まれる小文字を大文字に変換しません。**installmobilefirstruntime** Ant タスクがデータベースへの接続に失敗した場合には、**user** 属性の値を大文字で入力してみてください。Oracle ユーザー・アカウントについて詳しくは、[Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374) を参照してください。
 
-For more information about Oracle user accounts, see [Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374).
+Oracle データベースの接続 URL について詳しくは、[Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm) の『**Database
+URLs and Database Specifiers**』セクションを参照してください。
 
-For more information about Oracle database connection URLs, see the **Database URLs and Database Specifiers** section at [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm).
+以下のエレメントがサポートされます。
 
-It supports the following element:
-
-| Element       | Description	                | Count | 
+| エレメント       | 説明	                | カウント | 
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | データ・ソース・プロパティーまたは JDBC 接続プロパティー。	| 0.. |
 
-For more information about the available properties, see the **Data Sources and URLs** section at [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm).
+使用可能なプロパティーについて詳しくは、[Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm) の『**Data Sources and URLs**』セクションを参照してください。
 
-For more information about the available properties for a Liberty server, see the **properties.oracle** section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+Liberty サーバーで使用可能なプロパティーについて詳しくは、[Liberty プロファイル: server.xml ファイルの構成エレメント](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html)の『**properties.oracle**』セクションを参照してください。
 
-The `<driverclasspath>` element must contain an Oracle JDBC driver JAR file. You can download Oracle JDBC drivers from [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
+`<driverclasspath>` エレメントには、Oracle JDBC ドライバーの JAR ファイルが含まれている必要があります。Oracle JDBC ドライバーは、[JDBC and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) からダウンロードできます。
 
-The `<property>` element, which can be used inside `<derby>`, `<db2>`,` <mysql>`, or `<oracle>` elements, has the following attributes:
+`<property>` エレメント (`<derby>`、`<db2>`、` <mysql>`、および `<oracle>` の各エレメントの内部で使用可能) には、以下の属性があります。
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 説明                                | 必要 | デフォルト | 
 |------------|--------------------------------------------|----------|---------|
-| name       | The name of the property.	              | Yes      | None    |
-| type	     | Java type of the property values, usually java.lang.String/Integer/Boolean. | No | java.lang.String |
-| value	     | The value for the property.	              | Yes      |  None   |
+| 名前       | プロパティーの名前。	              | はい      | なし    |
+| type	     | プロパティーの値の Java タイプ (通常は java.lang.String/Integer/Boolean)。 | いいえ | java.lang.String |
+| value	     | プロパティーの値。	              | はい      |  なし   |
 
-## Ant tasks for installation of Application Center
+## Application Center のインストール用の Ant タスク
 {: #ant-tasks-for-installation-of-application-center }
-The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` Ant tasks are provided for the installation of the Application Center Console and Services.
+Application Center Console および Services のインストールに関して、`<installApplicationCenter>`、`<updateApplicationCenter>`、および `<uninstallApplicationCenter>` の各 Ant タスクが用意されています。
 
-### Task effects
+### タスクの結果
 {: #task-effects-3 }
 ### <installApplicationCenter>
 {: #installapplicationcenter }
-The `<installApplicationCenter>` task configures an application server to run the Application Center Services WAR file as a web application, and to install the Application Center Console. This task has the following effects:
+`<installApplicationCenter>` タスクは、Application Center Services の WAR ファイルを Web アプリケーションとして実行し、Application Center コンソールをインストールするようにアプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。
 
-* It declares the Application Center Services web application in the /applicationcenter context root.
-* It declares data sources, and on WebSphere  Application Server full profile, it declares also JDBC providers for Application Center Services.
-* It deploys the Application Center Services web application on the application server.
-* It declares the Application Center Console as a web application in the /appcenterconsole context root.
-* It deploys the Application Center Console WAR file on the application server.
-* It configures configuration properties for Application Center Services by using JNDI environment entries. The JNDI environment entries that are related to the endpoint and proxies are commented. You must uncomment them in some cases.
-* It configures users that it maps to roles used by the Application Center Console and Services web applications.
-* On WebSphere Application Server, it configures the necessary custom property for the web container.
+* /applicationcenter コンテキスト・ルートで Application Center  Services の Web アプリケーションを宣言します。
+* データ・ソースを宣言します。また、WebSphere Application Server フル・プロファイルでは、Application Center Services の JDBC プロバイダーも宣言します。
+* アプリケーション・サーバーで Application Center Services の Web アプリケーションをデプロイします。
+* /appcenterconsole コンテキスト・ルートで Web アプリケーションとして Application Center コンソールを宣言します。
+* Application Center Console WAR ファイルをアプリケーション・サーバーにデプロイします。
+* JNDI 環境項目を使用して Application Center Services の構成プロパティーを構成します。エンドポイントおよびプロキシーに関連した JNDI 環境項目はコメント化されます。場合によっては、ユーザーがコメントを外す必要があります。
+* Application Center コンソールおよびサービス Web アプリケーションによって使用されるロールにマップするユーザーを構成します。
+* WebSphere Application Server 上に、Web コンテナー用の必要なカスタム・プロパティーを構成します。
 
 #### <updateApplicationCenter>
 {: #updateApplicationCenter }
-The `<updateApplicationCenter>` task updates an already configured Application Center application on an application server. This task has the following effects:
+`<updateApplicationCenter>` タスクは、アプリケーション・サーバー上の構成済み Application Center アプリケーションを更新します。このタスクは以下のような結果をもたらします。
 
-* It updates the Application Center Services WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-* It updates the Application Center Console WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed. 
+* Application Center Services の WAR ファイルを更新します。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。
+* Application Center コンソールの WAR ファイルを更新します。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。 
 
-The task does not change the application server configuration, that is, the web application configuration, data sources, JNDI environment entries, and user-to-role mappings. This task applies only to an installation that is performed by using the <installApplicationCenter> task that is described in this topic.
+このタスクは、アプリケーション・サーバー構成を変更しません。つまり、Web アプリケーション構成、データ・ソース、JNDI 環境項目、およびユーザーとロールのマッピングは変更されません。このタスクは、このトピックで説明している <installApplicationCenter> タスクを使用して実行されるインストールにのみ適用されます。
 
-> **Note:** On WebSphere Application Server Liberty profile, the task does not change the features, which leaves a potential non-minimal list of features in the server.xml file for the installed application.
+> **注:** WebSphere Application Server Liberty プロファイルでは、このタスクはフィーチャーを変更しません。そのため、インストール済みアプリケーションの server.xml ファイルに含まれるフィーチャーのリストは最小限のものではない可能性がありますが、このタスクの実行後も、そのリストがそのまま残ります。
 
 #### <uninstallApplicationCenter>
 {: #uninstallApplicationCenter }
-The `<uninstallApplicationCenter>` Ant task undoes the effects of an earlier run of `<installApplicationCenter>`. This task has the following effects:
+`<uninstallApplicationCenter>` Ant タスクは、`<installApplicationCenter>` の以前の実行の結果を元に戻します。このタスクは以下のような結果をもたらします。
 
-* It removes the configuration of the Application Center Services web application with the **/applicationcenter** context root. As a consequence, the task also removes the settings that were added manually to that application.
-* It removes both the Application Center Services and Console WAR files from the application server.
-* It removes the data sources and, on WebSphere Application Server full profile, it also removes the JDBC providers for the Application Center Services.
-* It removes the database drivers that were used by Application Center Services from the application server.
-* It removes the associated JNDI environment entries.
-* It removes the users who are configured by the `<installApplicationCenter>` invocation.
+* **/applicationcenter** コンテキスト・ルートを持つ Application Center サービス Web アプリケーションの構成を削除します。その結果、このタスクは、そのアプリケーションに手動で追加された設定も削除します。
+* Application Center サービスとコンソールの両方の WAR ファイルをアプリケーション・サーバーから削除します。
+* データ・ソースを削除します。WebSphere Application Server フル・プロファイルでは、Application Center サービスの JDBC プロバイダーも削除します。
+* Application Center Services によって使用されたデータベース・ドライバーをアプリケーション・サーバーから削除します。
+* 関連する JNDI 環境項目が削除されます。
+* `<installApplicationCenter>` 呼び出しで構成されたユーザーを削除します。
 
-### Attributes and elements
+### 属性およびエレメント
 {: #attributes-and-elements-3 }
-The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` tasks have the following attributes:
+`<installApplicationCenter>`、`<updateApplicationCenter>`、および `<uninstallApplicationCenter>` の各タスクには、以下の属性があります。
 
-| Attribute    | Description                                | Required | Default | 
+| 属性    | 説明                                | 必要 | デフォルト | 
 |--------------|--------------------------------------------|----------|---------|
-| id	       | It distinguishes different deployments in WebSphere Application Server full profile.	| No | Empty |
-| servicewar   | The WAR file for the Application Center Services. | No | The applicationcenter.war file is in the application Center console directory: **product_install_dir/ApplicationCenter/console.** |
-| shortcutsDir | The directory where you place the shortcuts. | No | None |
-| aaptDir | The directory that contains the aapt program, from the Android SDK platform-tools package. | No | None |
+| id	       | WebSphere Application Server フル・プロファイルの異なるデプロイメントを識別します。	| いいえ | 空 |
+| servicewar   | Application Center Services の WAR ファイル。 | いいえ | applicationcenter.war ファイルは、アプリケーション・センター・コンソール・ディレクトリー (**product_install_dir/ApplicationCenter/console**) 内にあります。 |
+| shortcutsDir | ショートカットを配置するディレクトリー。 | いいえ | なし |
+| aaptDir | Android SDK platform-tools パッケージの aapt プログラムが含まれているディレクトリー。 | いいえ | なし |
 
 #### id
 {: #id-1 }
-In WebSphere Application Server full profile environments, the **id** attribute is used to distinguish different deployments of Application Center Console and Services. Without this **id** attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+WebSphere Application Server フル・プロファイル環境では、**id** 属性は、Application Center コンソールおよびサービスの異なるデプロイメントを識別するために使用されます。この **id** 属性がないと、同じコンテキスト・ルートを持つ 2 つの WAR ファイルが競合し、これらのファイルがデプロイされない可能性があります。
 
 #### servicewar
 {: #servicewar-1 }
-Use the **servicewar** attribute to specify a different directory for the Application Center Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+**servicewar** 属性を使用して、Application Center Services の WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
 
 #### shortcutsDir
 {: #shortcutsdir-1 }
-The **shortcutsDir** attribute specifies where to place shortcuts to the Application Center Console. If you set this attribute, the following files are added to this directory:
+**shortcutsDir** 属性は、Application Center コンソールのショートカットを配置する場所を指定します。この属性を設定した場合、以下のファイルがこのディレクトリーに追加されます。
 
-* **appcenter-console.url**: This file is a Windows shortcut. It opens the Application Center Console in a browser.
-* **appcenter-console.sh**: This file is a UNIX shell script. It opens the Application Center Console in a browser.
+* **appcenter-console.url**: このファイルは、Windows のショートカットです。これは、Application Center コンソールをブラウザーで開きます。
+* **appcenter-console.sh**: このファイルは UNIX シェル・スクリプトです。これは、Application Center コンソールをブラウザーで開きます。
 
 #### aaptDir
 {: #aaptdir }
-The **aapt** program is part of the {{ site.data.keys.product }} distribution: **product_install_dir/ApplicationCenter/tools/android-sdk**.  
-If this attribute is not set, during the upload of an apk application, Application Center parses it by using its own code, which might have limitations.
+**aapt** プログラムは、{{site.data.keys.product }} ディストリビューション (**product_install_dir/ApplicationCenter/tools/android-sdk**) の一部です。  
+この属性が設定されていない場合、apk アプリケーションのアップロード時に、Application Center は独自のコードを使用してこれを解析しますが、限界がある場合があります。
 
-The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` tasks support the following elements:
+`<installApplicationCenter>`、`<updateApplicationCenter>`、および `<uninstallApplicationCenter>` の各タスクは、以下のエレメントをサポートします。
 
-| Element           | Description	                            | Count | 
+| エレメント           | 説明	                            | カウント | 
 |-------------------|-------------------------------------------|-------|
-| applicationserver	| The application server.                   | 1     |
-| console           | The Application Center console.	        | 1     |
-| database          | The databases.	                        | 1     | 
-| user	            | The user to be mapped to a security role. | 0..∞  |
+| applicationserver	| アプリケーション・サーバー。                   | 1     |
+| コンソール           | Application Center コンソール。	        | 1     |
+| データベース          | データベース。	                        | 1     | 
+| user	            | セキュリティー・ロールにマップされるユーザー。 | 0..∞  |
 
-### To specify an Application Center console
+### Application Center コンソールを指定するには
 {: #to-specify-an-application-center-console }
-The `<console>` element collects information to customize the installation of the Application Center Console. This element has the following attributes:
+`<console>` エレメントは、Application Center コンソールのインストールをカスタマイズするための情報を収集します。このエレメントには以下の属性があります。
 
-| Attribute    | Description                                      | Required | Default | 
+| 属性    | 説明                                      | 必要 | デフォルト | 
 |--------------|--------------------------------------------------|----------|---------|
-| warfile      | The WAR file for the Application Center Console. |	No       | The appcenterconsole.war file is in the Application Center console directory:  **product_install_dir/ApplicationCenter/console**. |
+| warfile      | Application Center コンソールの WAR ファイル。 |	いいえ       | appcenterconsole.war ファイルは、Application Center コンソール・ディレクトリー (**product_install_dir/ApplicationCenter/console**) 内にあります。 |
 
-### To specify an application server
+### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server-3 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートしています。
 
-| Element           | Description	                            | Count | 
+| エレメント           | 説明	                            | カウント | 
 |-------------------|-------------------------------------------|-------|
-| **websphereapplicationserver** or **was**	| The parameters for WebSphere Application Server. The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core. Liberty collective is not supported for Application Center. | 0..1 | 
-| tomcat            | The parameters for Apache Tomcat. | 0..1 |
+| **websphereapplicationserver** または **was**	| WebSphere Application Server のパラメーター。`<websphereapplicationserver>` エレメント (短縮形では `<was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core もサポートされます。Application Center には Liberty 集合はサポートされません。 | 0..1 | 
+| tomcat            | Apache Tomcat のパラメーター。 | 0..1 |
 
-The attributes and inner elements of these elements are described in the tables of the page [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+これらのエレメントの属性および内部エレメントについては、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) ページの表に説明があります。
 
-### To specify a connection to the services database
+### サービス・データベースへの接続を指定するには
 {: #to-specify-a-connection-to-the-services-database }
-The `<database>` element collects the parameters that specify a data source declaration in an application server to access the services database.
+`<database>` エレメントは、サービス・データベースにアクセスするためのアプリケーション・サーバー内のデータ・ソース宣言を指定するパラメーターを収集します。
 
-You must declare a single database: `<database kind="ApplicationCenter">`. You specify the `<database>` element similarly to the `<configuredatabase>` Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+次のように単一のデータベースを宣言する必要があります。`<database kind="ApplicationCenter">`. `<database>` エレメントは、`<configuredatabase>` Ant タスクと同様に指定します。ただし、`<database>` エレメントには `<dba>` エレメントと`<client>` エレメントはありません。`<property>` エレメントは含まれる場合があります。
 
-The `<database>` element has the following attributes:
+`<database>` エレメントには以下の属性があります。
 
-| Attribute    | Description                                            | Required | Default | 
+| 属性    | 説明                                            | 必要 | デフォルト | 
 |--------------|--------------------------------------------------------|----------|---------|
-| kind         | The kind of database (ApplicationCenter).              | Yes      | None    |
-| validate	   | To validate whether the database is accessible or not. | No       | True    |
+| kind         | データベースの種類 (ApplicationCenter)。              | はい      | なし    |
+| validate	   | データベースがアクセス可能かどうかを検証します。 | いいえ       | True    |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements, see the tables in [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+`<database>` エレメントは以下のエレメントをサポートしています。これらのデータベース・エレメントの構成について詳しくは、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
 
-| Element           | Description	                            | Count | 
+| エレメント           | 説明	                            | カウント | 
 |-------------------|-------------------------------------------|-------|
-| db2	            | The parameter for DB2  databases.	        | 0..1  |
-| derby             | The parameter for Apache Derby databases.	| 0..1  |
-| mysql             | The parameter for MySQL databases.	    | 0..1  |
-| oracle	        | The parameter for Oracle databases.	    | 0..1  |
-| driverclasspath   | The parameter for JDBC driver class path.	| 0..1  |
+| db2	            | DB2 データベースのパラメーター。	        | 0..1  |
+| derby             | Apache Derby データベースのパラメーター。	| 0..1  |
+| mysql             | MySQL データベースのパラメーター。	    | 0..1  |
+| oracle	        | Oracle データベースのパラメーター。	    | 0..1  |
+| driverclasspath   | JDBC ドライバー・クラスパスのパラメーター。	| 0..1  |
 
-### To specify a user and a security role
+### ユーザーおよびセキュリティー・ロールを指定するには
 {: #to-specify-a-user-and-a-security-role }
-The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+`<user>` エレメントは、アプリケーションの特定のセキュリティー・ロールに含める、ユーザーに関するパラメーターを収集します。
 
-| Attribute    | Description                                            | Required | Default | 
+| 属性    | 説明                                            | 必要 | デフォルト | 
 |--------------|--------------------------------------------------------|----------|---------|
-| role         | The user role appcenteradmin. | Yes | None |
-| name	       | The user name. | Yes | None |
-| password	   | The password, if you must create the user.	| No | None |
+| role         | ユーザー・ロール appcenteradmin。 | はい | なし |
+| 名前	       | ユーザー名。 | はい | なし |
+| password	   | パスワード (ユーザーを作成する必要がある場合)。	| いいえ | なし |
 
-## Ant tasks for installation of {{ site.data.keys.mf_analytics }}
+## {{site.data.keys.mf_analytics }} のインストール用の Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-analytics }
-The **installanalytics**, **updateanalytics**, and **uninstallanalytics** Ant tasks are provided for the installation of {{ site.data.keys.mf_analytics }}.
+**installanalytics**、**updateanalytics**、および **uninstallanalytics** の各 Ant タスクが、{{site.data.keys.mf_analytics }} のインストール用に用意されています。
 
-The purpose of these Ant Tasks is to configure the {{ site.data.keys.mf_analytics_console }} and the {{ site.data.keys.mf_analytics }} service with the appropriate storage for the data on an application server.
-The task installs {{ site.data.keys.mf_analytics }} nodes that act as a master and data. For more information, see [Cluster management and Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch).
+これらの Ant タスクの目的は、アプリケーション・サーバーでのデータの適切なストレージを使用して、{{site.data.keys.mf_analytics_console }}および {{site.data.keys.mf_analytics }} サービスを構成することです。タスクは、マスターおよびデータとして機能する {{site.data.keys.mf_analytics }} ノードをインストールします。詳しくは、[クラスター管理および Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch) を参照してください。
 
-### Task effects
+### タスクの結果
 {: #task-effects-4 }
 #### installanalytics
 {: #installanalytics }
-The **installanalytics** Ant task configures an application server to run IBM {{ site.data.keys.mf_analytics }}. This task has the following effects:
+**installanalytics** Ant タスクは、IBM {{site.data.keys.mf_analytics }} を実行するようアプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。
 
-* It deploys the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} WAR files on the application server.
-* It declares the {{ site.data.keys.mf_analytics }} Service web application in the specified context root /analytics-service.
-* It declares the {{ site.data.keys.mf_analytics_console }} web application in the specified context root /analytics.
-* It sets {{ site.data.keys.mf_analytics_console }} and {{ site.data.keys.mf_analytics }} Services configuration properties through JNDI environment entries.
-* On WebSphere  Application Server Liberty profile, it configures the web container.
-* Optionally, it creates users to use the {{ site.data.keys.mf_analytics_console }}.
+* アプリケーション・サーバーで {{site.data.keys.mf_analytics }} サービスおよび {{site.data.keys.mf_analytics_console }}の WAR ファイルをデプロイします。
+* 指定コンテキスト・ルート /analytics-service で {{site.data.keys.mf_analytics }} サービスの Web アプリケーションを宣言します。
+* 指定コンテキスト・ルート /analytics で {{site.data.keys.mf_analytics_console }}の Web アプリケーションを宣言します。
+* JNDI 環境項目を使用して {{site.data.keys.mf_analytics_console }}および {{site.data.keys.mf_analytics }} サービスの構成プロパティーを設定します。
+* WebSphere Application Server Liberty プロファイルでは、Web コンテナーを構成します。
+* オプションとして、{{site.data.keys.mf_analytics_console }}を使用するユーザーを作成します。
 
 #### updateanalytics
 {: #updateanalytics }
-The **updateanalytics** Ant task updates the already configured {{ site.data.keys.mf_analytics }} Service and {{ site.data.keys.mf_analytics_console }} web applications WAR files on an application server. These files must have the same base names as the project WAR files that were previously deployed.
+**updateanalytics** Ant タスクは、アプリケーション・サーバーで既に構成されている {{site.data.keys.mf_analytics }} サービスおよび {{site.data.keys.mf_analytics_console }}の Web アプリケーションの WAR ファイルを更新します。これらのファイルのベース名は、以前にデプロイされたプロジェクト WAR ファイルと同じでなければなりません。
 
-The task does not change the application server configuration, that is, the web application configuration and JNDI environment entries.
+このタスクは、アプリケーション・サーバー構成、すなわち Web アプリケーション構成および JNDI 環境項目を変更しません。
 
 #### uninstallanalytics
 {: #uninstallanalytics }
-The **uninstallanalytics** Ant task undoes the effects of an earlier **installanalytics** run. This task has the following effects:
+**uninstallanalytics** Ant タスクは、以前の **installanalytics** 実行の結果を元に戻します。
+このタスクは以下のような結果をもたらします。
 
-* It removes the configuration of both the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} web applications with their respective context roots.
-* It removes the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} WAR files from the application server.
-* It removes the associated JNDI environment entries.
+* {{site.data.keys.mf_analytics }} サービスと {{site.data.keys.mf_analytics_console }}の両 Web アプリケーションを、それぞれのコンテキスト・ルートと共に削除します。
+* アプリケーション・サーバーから {{site.data.keys.mf_analytics }} サービスおよび {{site.data.keys.mf_analytics_console }}の WAR ファイルを削除します。
+* 関連する JNDI 環境項目が削除されます。
 
-### Attributes and elements
+### 属性およびエレメント
 {: #attributes-and-elements-4 }
-The **installanalytics**, **updateanalytics**, and **uninstallanalytics** tasks have the following attributes:
+**installanalytics**、**updateanalytics**、および **uninstallanalytics** の各タスクには、以下の属性があります。
 
-| Attribute    | Description                                            | Required | Default | 
+| 属性    | 説明                                            | 必要 | デフォルト | 
 |--------------|--------------------------------------------------------|----------|---------|
-| serviceWar   | The WAR file for the {{ site.data.keys.mf_analytics }} Service     | No       | The analytics-service.war file is in the directory Analytics. |
+| serviceWar   | {{site.data.keys.mf_analytics }} サービスの WAR ファイル     | いいえ       | analytics-service.war ファイルはディレクトリー Analytics 内にあります。 |
 
 #### serviceWar
 {: #servicewar-2 }
-Use the **serviceWar** attribute to specify a different directory for the {{ site.data.keys.mf_analytics }} Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+**serviceWar** 属性を使用して、{{site.data.keys.mf_analytics }} サービスの WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
 
-The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` tasks support the following elements:
+`<installanalytics>`、`<updateanalytics>`、および `<uninstallanalytics>` の各タスクでは、以下のエレメントがサポートされます。
 
-| Attribute         | Description                               | Required | Default | 
+| 属性         | 説明                               | 必要 | デフォルト | 
 |-------------------|-------------------------------------------|----------|---------|
-| console	        | {{ site.data.keys.mf_analytics }}   	                | Yes	   | 1       |
-| user	            | The user to be mapped to a security role.	| No	   | 0..     |
-| storage	        | The type of storage.	                    | Yes 	   | 1       |
-| applicationserver	| The application server.	                | Yes	   | 1       |
-| property          | Properties.	                            | No 	   | 0..     |
+| コンソール	        | {{site.data.keys.mf_analytics }}   	                | はい	   | 1       |
+| user	            | セキュリティー・ロールにマップされるユーザー。	| いいえ	   | 0..     |
+| storage	        | ストレージのタイプ。	                    | はい 	   | 1       |
+| applicationserver	| アプリケーション・サーバー。	                | はい	   | 1       |
+| property          | プロパティー。	                            | いいえ 	   | 0..     |
 
-### To specify a {{ site.data.keys.mf_analytics_console }}
+### {{site.data.keys.mf_analytics_console }} を指定するには
 {: #to-specify-a-mobilefirst-analytics-console }
-The `<console>` element collects information to customize the installation of the {{ site.data.keys.mf_analytics_console }}. This element has the following attributes:
+`<console>` エレメントは、{{site.data.keys.mf_analytics_console }} のインストールをカスタマイズするための情報を収集します。このエレメントには以下の属性があります。
 
-| Attribute    | Description                                  | Required | Default | 
+| 属性    | 説明                                  | 必要 | デフォルト | 
 |--------------|----------------------------------------------|----------|---------|
-| warfile	   | The console WAR file	                      | No	     | The analytics-ui.war file is in the Analytics directory. |
-| shortcutsdir | The directory where you place the shortcuts. | No	     | None    |
+| warfile	   | コンソール WAR ファイル	                      | いいえ	     | analytics-ui.war ファイルは、Analytics ディレクトリー内にあります。 |
+| shortcutsdir | ショートカットを配置するディレクトリー。 | いいえ	     | なし    |
 
 #### warFile
 {: #warfile-2 }
-Use the **warFile** attribute to specify a different directory for the {{ site.data.keys.mf_analytics_console }} WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+**warFile** 属性を使用して、{{site.data.keys.mf_analytics_console }}の WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
 
 #### shortcutsDir
 {: #shortcutsdir-2 }
-The **shortcutsDir** attribute specifies where to place shortcuts to the {{ site.data.keys.mf_analytics_console }}. If you set this attribute, you can add the following files to that directory:
+**shortcutsDir** 属性は、{{site.data.keys.mf_analytics_console }} のショートカットを配置する場所を指定します。この属性を設定した場合、そのディレクトリーに以下のファイルを追加できます。
 
-* **analytics-console.url**: This file is a Windows shortcut. It opens the {{ site.data.keys.mf_analytics_console }} in a browser.
-* **analytics-console.sh**: This file is a UNIX shell script. It opens the {{ site.data.keys.mf_analytics_console }} in a browser.
+* **analytics-console.url**: このファイルは、Windows のショートカットです。これは、{{site.data.keys.mf_analytics_console }} をブラウザーで開きます。
+* **analytics-console.sh**: このファイルは UNIX シェル・スクリプトです。これは、{{site.data.keys.mf_analytics_console }} をブラウザーで開きます。
 
-> Note: These shortcuts do not include the ElasticSearch tenant parameter.
+> 注: これらのショートカットには、ElasticSearch テナント・パラメーターは含まれません。
 
-The `<console>` element supports the following nested element:
+`<console>` エレメントでは、以下のネスト・エレメントがサポートされます。
 
-| Element  | Description	| Count | 
+| エレメント  | 説明	| カウント | 
 |----------|----------------|-------|
-| property | Properties	    | 0..   |
+| property | プロパティー	    | 0..   |
 
-With this element, you can define your own JNDI properties.
+このエレメントでは、独自の JNDI プロパティーを定義できます。
 
-The `<property>` element has the following attributes:
+`<property>` エレメントには以下の属性があります。
 
-| Attribute  | Description                | Required | Default | 
+| 属性  | 説明                | 必要 | デフォルト | 
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    | 
-| value	     | The value of the property. |	Yes      | None    |
+| 名前       | プロパティーの名前。  | はい      | なし    | 
+| value	     | プロパティーの値。 |	はい      | なし    |
 
-### To specify a user and a security role
+### ユーザーおよびセキュリティー・ロールを指定するには
 {: #to-specify-a-user-and-a-security-role-1 }
-The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+`<user>` エレメントは、アプリケーションの特定のセキュリティー・ロールに含める、ユーザーに関するパラメーターを収集します。
 
-| Attribute   | Description                                   | Required | Default | 
+| 属性   | 説明                                   | 必要 | デフォルト | 
 |-------------|-----------------------------------------------|----------|---------|
-| role	      | A valid security role for the application.    | Yes      | None    |
-| name	      | The user name.	                              | Yes      | None    |
-| password	  | The password if the user needs to be created. | No       | None    |
+| role	      | アプリケーションの有効なセキュリティー・ロール。    | はい      | なし    |
+| 名前	      | ユーザー名。	                              | はい      | なし    |
+| password	  | ユーザーを作成する必要がある場合のパスワード。 | いいえ       | なし    |
 
-After you defined users by using the` <user>` element, you can map them to any of the following roles for authentication in the {{ site.data.keys.mf_console }}:
+` <user>` エレメントを使用してユーザーを定義した後、それらのユーザーを、{{site.data.keys.mf_console }} 内の以下の認証用のロールにマップすることができます。
 
 * **mfpmonitor**
 * **mfpoperator**
 * **mfpdeployer**
 * **mfpadmin**
 
-### To specify a type of storage for {{ site.data.keys.mf_analytics }}
+### {{site.data.keys.mf_analytics }} のストレージのタイプを指定するには
 {: #to-specify-a-type-of-storage-for-mobilefirst-analytics }
-The `<storage>` element indicates which underlying type of storage {{ site.data.keys.mf_analytics }} uses to store the information and data it collects.
+`<storage>` エレメントは、{{site.data.keys.mf_analytics }} が収集した情報およびデータを保管するために使用する基盤ストレージ・タイプを指定します。
 
-It supports the following element:
+以下のエレメントがサポートされます。
 
-| Element       | Description	| Count   | 
+| エレメント       | 説明	| カウント   | 
 |---------------|---------------|---------|
-| elasticsearch	| ElasticSearch | cluster |
+| Elasticsearch	| ElasticSearch | クラスター (cluster) |
 
-The `<elasticsearch>` element collects the parameters about an ElasticSearch cluster.
+`<elasticsearch>` エレメントは、ElasticSearch クラスターに関するパラメーターを収集します。
 
-| Attribute        | Description                                   | Required | Default   | 
+| 属性        | 説明                                   | 必要 | デフォルト   | 
 |------------------|-----------------------------------------------|----------|-----------|
-| clusterName	   | The ElasticSearch cluster name.	           | No       | worklight | 
-| nodeName	       | The ElasticSearch node name. This name must be unique in an ElasticSearch cluster.	| No | `worklightNode_<random number>` |
-| mastersList	   | A comma-delimited string that contains the host name and ports of the ElasticSearch master nodes in the ElasticSearch cluster (For example: hostname1:transport-port1,hostname2:transport-port2)	           | No       |	Depends on the topology |
-| dataPath	       | The ElasticSearch cluster location.	       | No	      | Depends on the application server |
-| shards	       | The number of shards that the ElasticSearch cluster creates. This value can be set only by the master nodes that are created in the ElasticSearch cluster.	| No | 5 |
-| replicasPerShard | The number of replicas for each shard in the ElasticSearch cluster. This value can be set only by the master nodes that are created in the ElasticSearch cluster. | No | 1 |
-| transportPort	   | The port used for node-to-node communication in the ElasticSearch cluster.	| No | 9600 | 
+| clusterName	   | ElasticSearch クラスター名。	           | いいえ       | worklight | 
+| nodeName	       | ElasticSearch ノード名。この名前は、ElasticSearch クラスター内で固有でなければなりません。	| いいえ | `worklightNode_<random number>` |
+| mastersList	   | ElasticSearch クラスター内の ElasticSearch マスター・ノードのホスト名とポートが含まれたコンマ区切りのストリング (例: hostname1:transport-port1,hostname2:transport-port2) 	           | いいえ       |	トポロジーに応じて異なる |
+| dataPath	       | ElasticSearch クラスターの場所。	       | いいえ	      | アプリケーション・サーバーに応じて異なる |
+| shards	       | ElasticSearch クラスターで作成されるシャードの数。この値は、ElasticSearch クラスターで作成されたマスター・ノードによってのみ設定できます。	| いいえ | 5 |
+| replicasPerShard | ElasticSearch クラスターのシャードごとのレプリカの数。この値は、ElasticSearch クラスターで作成されたマスター・ノードによってのみ設定できます。 | いいえ | 1 |
+| transportPort	   | ElasticSearch クラスターでのノード間通信に使用するポート。	| いいえ | 9600 | 
 
 #### clusterName
 {: #clustername }
-Use the **clusterName** attribute to specify a name of your choice for the ElasticSearch cluster.
+**clusterName** 属性は、ElasticSearch クラスターの任意の名前を指定するために使用します。
 
-An ElasticSearch cluster consists of one or more nodes that share the same cluster name so you might specify the same value for the **clusterName** attribute if you configure several nodes.
+ElasticSearch クラスターは、同じクラスター名を共有する 1 つ以上のノードで構成されるため、複数のノードを構成する場合は **clusterName** 属性に同じ値を指定することができます。
 
 #### nodeName
 {: #nodename }
-Use the **nodeName** attribute to specify a name of your choice for the node to configure in the ElasticSearch cluster. Each node name must be unique in the ElasticSearch cluster even if nodes span on several machines.
+**nodeName** 属性は、ElasticSearch クラスターで構成するノードの任意の名前を指定するために使用します。各ノード名は、ノードが複数のマシンにまたがっている場合でも、ElasticSearch クラスター内で固有でなければなりません。
 
 #### mastersList
 {: #masterslist }
-Use the **mastersList** attribute to provide a comma-separated list of the master nodes in your ElasticSearch cluster. Each master node in this list must be identified by its host name, and the ElasticSearch node-to-node communication port. This port is 9600 by default, or it is the port number that you specified with the attribute **transportPort** when you configured that master node.
+**mastersList** 属性は、ElasticSearch クラスター内のマスター・ノードのコンマ区切りリストを指定するために使用します。このリスト内の各マスター・ノードは、そのホスト名と ElasticSearch ノード間通信ポートで識別する必要があります。このポートは、9600 (デフォルト)、または当該マスター・ノードの構成時に属性 **transportPort** で指定したポート番号です。
 
-For example: `hostname1:transport-port1, hostname2:transport-port2`.
+例: `hostname1:transport-port1、hostname2:transport-port2`
 
-**Note:**
+**注:
+**
 
-* If you specify a **transportPort** that is different than the default value 9600, you must also set this value with the attribute **transportPort**. By default, when the attribute **mastersList** is omitted, an attempt is made to detect the host name and the ElasticSearch transport port on all supported application servers.
-* If the target application server is WebSphere Application Server Network Deployment cluster, and if you add or remove a server from this cluster at a later point in time, you must edit this list manually to keep in sync with the ElasticSearch cluster.
+* デフォルト値の 9600 以外の **transportPort** を指定した場合、属性 **transportPort** にもその値を設定する必要があります。デフォルトでは、属性 **mastersList** を省略した場合、サポートされるすべてのアプリケーション・サーバーでホスト名と ElasticSearch トランスポート・ポートを検出する試行が行われます。
+* ターゲット・アプリケーション・サーバーが WebSphere Application Server Network Deployment クラスターであり、かつ後からそのクラスターでサーバーを追加または削除した場合、このリストを手動で編集して ElasticSearch クラスターと同期された状態にする必要があります。
 
 #### dataPath
 {: #datapath }
-Use the **dataPath** attribute to specify a different directory to store ElasticsSearch data. You can specify an absolute path or a relative path.
+**dataPath** 属性は、ElasticsSearch データを保管するために異なるディレクトリーを指定する場合に使用します。絶対パスまたは相対パスを指定できます。
 
-If the attribute **dataPath** is not specified, then ElasticSearch cluster data is stored in a default directory that is called **analyticsData**, whose location depends on the application server:
+属性 **dataPath** を指定しなかった場合、ElasticSearch クラスター・データは、**analyticsData** というデフォルト・ディレクトリーに保管されます。この場所は、以下のように、アプリケーション・サーバーによって異なります。
 
-* For WebSphere Application Server Liberty profile, the location is `${wlp.user.dir}/servers/serverName/analyticsData`.
-* For Apache Tomcat, the location is `${CATALINA_HOME}/bin/analyticsData`.
-* For WebSphere Application Server and WebSphere Application Server Network Deployment, the location is `${was.install.root}/profiles/<profileName>/analyticsData`.
+* WebSphere Application Server Liberty プロファイルの場合、この場所は `${wlp.user.dir}/servers/serverName/analyticsData` です。
+* Apache Tomcat の場合、この場所は `${CATALINA_HOME}/bin/analyticsData` です。
+* WebSphere Application Server および WebSphere Application Server Network Deployment の場合、この場所は `${was.install.root}/profiles/<profileName>/analyticsData` です。
 
-The directory **analyticsData** and the hierarchy of sub-directories and files that it contains are automatically created at run time, if they do not already exist when the {{ site.data.keys.mf_analytics }} Service component receives events.
+ディレクトリー **analyticsData** およびそれに含まれるサブディレクトリーとファイルの階層は、{{site.data.keys.mf_analytics }} サービス・コンポーネントがイベントを受信したときにまだ存在しない場合、実行時に自動的に作成されます。
 
 #### shards
 {: #shards }
-Use the **shards** attribute to specify the number of shards to create in the ElasticSearch cluster.
+**shards** 属性は、ElasticSearch クラスターで作成するシャードの数を指定するために使用します。
 
 #### replicasPerShard
 {: #replicaspershard }
-Use the **replicasPerShard** attribute to specify the number of replicas to create for each shard in the ElasticSearch cluster.
+**replicasPerShard** 属性は、ElasticSearch クラスターでシャードごとに作成するレプリカの数を指定するために使用します。
 
-Each shard can have zero or more replicas. By default, each shard has one replica, but the number of replicas can be changed dynamically on an existing index in the {{ site.data.keys.mf_analytics }}. A replica shard can never be started on the same node as its shard.
+各シャードには、ゼロ個以上のレプリカを含めることができます。デフォルトでは、各シャードに 1 つのレプリカが含まれますが、レプリカの数は、{{site.data.keys.mf_analytics }} の既存の索引で動的に変更されることがあります。
+レプリカ・シャードは、当該シャードと同じノードで開始できません。
 
 #### transportPort
 {: #transportport }
-Use the **transportPort** attribute to specify a port that other nodes in the ElasticSearch cluster must use when communicating with this node. You must ensure that this port is available and accessible if this node is behind a proxy or firewall.
+**transportPort** 属性は、ElasticSearch クラスター内の他のノードがこのノードとの通信時に使用する必要があるポートを指定するために使用します。このノードがプロキシーまたはファイアウォールの背後にある場合、このポートが使用可能でアクセス可能であることを確認する必要があります。
 
-### To specify an application server
+### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server-4 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+`<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートしています。
 
-**Note:** The attributes and inner elements of this element are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+**注:** このエレメントの属性および内部エレメントについては、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。
 
-| Element                                   | Description	| Count   | 
+| エレメント                                   | 説明	| カウント   | 
 |-------------------------------------------|---------------|---------|
-| **websphereapplicationserver** or **was** | The parameters for WebSphere Application Server.	| 0..1 |
-| tomcat	                                | The parameters for Apache Tomcat.	| 0..1 |
+| **websphereapplicationserver** または **was** | WebSphere Application Server のパラメーター。	| 0..1 |
+| tomcat	                                | Apache Tomcat のパラメーター。	| 0..1 |
 
-### To specify custom JNDI properties
+### カスタム JNDI プロパティーを指定するには
 {: #to-specify-custom-jndi-properties }
-The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` elements support the following element:
+`<installanalytics>`、`<updateanalytics>`、および `<uninstallanalytics>` の各エレメントでは、以下のエレメントがサポートされます。
 
-| Element  | Description | Count | 
+| エレメント  | 説明 | カウント | 
 |----------|-------------|-------|
-| property | Properties	 | 0..   |
+| property | プロパティー	 | 0..   |
 
-By using this element, you can define your own JNDI properties.
+このエレメントを使用して、独自の JNDI プロパティーを定義できます。
 
-This element has the following attributes:
+このエレメントには以下の属性があります。
 
-| Attribute  | Description                | Required | Default | 
+| 属性  | 説明                | 必要 | デフォルト | 
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    | 
-| value	     | The value of the property. |	Yes      | None    |
+| 名前       | プロパティーの名前。  | はい      | なし    | 
+| value	     | プロパティーの値。 |	はい      | なし    |
 
-## Internal runtime databases
+## 内部ランタイム・データベース
 {: #internal-runtime-databases }
-Learn about runtime database tables, their purpose, and order of magnitude of data stored in each table. In relational databases, the entities are organized in database tables.
+ランタイム・データベース表、その目的、および各表に保管されるデータの概算規模について説明します。リレーショナル・データベースでは、エンティティーはデータベース表で編成されます。
 
-### Database used by {{ site.data.keys.mf_server }} runtime
+### {{site.data.keys.mf_server }} ランタイムによって使用されるデータベース
 {: #database-used-by-mobilefirst-server-runtime }
-The following table provides a list of runtime database tables, their descriptions, and how they are used in relational databases.
+以下の表に、ランタイム・データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
-| Relational database table name | Description | Order of magnitude |
+| リレーショナル・データベースの表名 | 説明 | 概算規模 |
 |--------------------------------|-------------|--------------------|
-| LICENSE_TERMS	                 | Stores the various license metrics captured every time the device decommissioning task is run. | Tens of rows. This value does not exceed the value set by the JNDI property mfp.device.decommission.when property. For more information about JNDI properties, see [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime) | 
-| ADDRESSABLE_DEVICE	         | Stores the addressable device metrics daily. An entry is also added each time that a cluster is started.	| About 400 rows. Entries older than 13 months are deleted daily. |
-| MFP_PERSISTENT_DATA	         | Stores instances of client applications that have registered with the OAuth server, including information about the device, the application, users associated with the client and the device status. | One row per device and application pair. |
-| MFP_PERSISTENT_CUSTOM_ATTR	 | Custom attributes that are associated with instances of client applications. Custom attributes are application-specific attributes that were registered by the application per each client instance. | Zero or more rows per device and application pair |
-| MFP_TRANSIENT_DATA	         | Authentication context of clients and devices | Two rows per device and application pair; if using device single sign-on an extra two rows per device. For more information about SSO, see [Configuring device single sign-on (SSO)](../../../authentication-and-security/device-sso). |
-| SERVER_VERSION	             | The product version.	| One row |
+| LICENSE_TERMS	                 | デバイス廃棄タスクが実行されるごとにキャプチャーされる各種ライセンス・メトリックを保管します。 | 数十行。この値は、JNDI プロパティー mfp.device.decommission.when で設定された値を超えることはありません。JNDI プロパティーについて詳しくは、[{{site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)を参照してください。 | 
+| ADDRESSABLE_DEVICE	         | アドレス可能デバイス・メトリック (日次) を保管します。また、クラスターが開始されるたびに、1 つの項目が追加されます。	| 約 400 行。毎日、13 カ月より古い項目が削除されます。 |
+| MFP_PERSISTENT_DATA	         | デバイスに関する情報、アプリケーション、クライアントに関連付けられたユーザー、およびデバイスの状況など、OAuth サーバーに登録したクライアント・アプリケーションのインスタンスを保管します。 | デバイスおよびアプリケーションのペアごとに 1 行。 |
+| MFP_PERSISTENT_CUSTOM_ATTR	 | クライアント・アプリケーションのインスタンスに関連付けられたカスタム属性。カスタム属性は、クライアント・インスタンスごとにアプリケーションによって登録されたアプリケーション固有属性です。 | デバイスまたはアプリケーションのペアごとにゼロ行以上。 |
+| MFP_TRANSIENT_DATA	         | クライアントおよびデバイスの認証コンテキスト | デバイスとアプリケーションのペアごとに 2 行。
+デバイス・シングル・サインオンを使用している場合はデバイスごとにさらに 2 行。SSO について詳しくは、[デバイス・シングル・サインオン (SSO) の構成](../../../authentication-and-security/device-sso)を参照してください。 |
+| SERVER_VERSION	             | 製品バージョン。	| 1 行 |
 
-### Database used by {{ site.data.keys.mf_server }} administration service
+### {{site.data.keys.mf_server }} 管理サービスによって使用されるデータベース
 {: #database-used-by-mobilefirst-server-administration-service }
-The following table provides a list of administration database tables, their descriptions, and how they are used in relational databases.
+以下の表に、管理データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
-| Relational database table name | Description | Order of magnitude |
+| リレーショナル・データベースの表名 | 説明 | 概算規模 |
 |--------------------------------|-------------|--------------------|
-| ADMIN_NODE	                 | Stores information about the servers that run the administration service. In a stand-alone topology with only one server, this entity is not used. | One row per server; empty if a stand-alone server is used. |
-| AUDIT_TRAIL	                 | Stores an audit trail of all administrative actions performed with the administration service. | Thousands of rows. | 
-| CONFIG_LINKS	                 | Stores the links to the live update service. Adapters and applications might have configurations that are stored in the live update service, and the links are used to find those configurations.	| Hundreds of rows. Per adapter, 2-3 rows are used. Per application, 4-6 rows are used. |
-| FARM_CONFIG	                 | Stores the configuration of farm nodes when a server farm is used. | Tens of rows; empty if no server farm is used. |
-| GLOBAL_CONFIG	                 | Stores some global configuration data. | 1 row. |
-| PROJECT	                     | Stores the names of the deployed projects. | Tens of rows. |
-| PROJECT_LOCK	                 | Internal cluster synchronization tasks. | Tens of rows. | 
-| TRANSACTIONS	                 | Internal cluster synchronization table; stores the state of all current administrative actions. | Tens of rows. |
-| MFPADMIN_VERSION	             | The product version.	| One row. |
+| ADMIN_NODE	                 | 管理サービスを実行するサーバーに関する情報を保管します。サーバーが 1 つのみのスタンドアロン・トポロジーでは、このエンティティーは使用されません。 | サーバーごとに 1 行。スタンドアロン・サーバーが使用されている場合、空。 |
+| AUDIT_TRAIL	                 | 管理サービスで実行されたすべての管理アクションの監査証跡を保管します。 | 数千行。 | 
+| CONFIG_LINKS	                 | ライブ更新サービスへのリンクを保管します。アダプターやアプリケーションが使用する構成がライブ更新サービスに保管されている場合があり、リンクはそれらの構成を検出するために使用されます。	| 数百行。アダプターごとに、2 から 3 行が使用されます。アプリケーションごとに、4 から 6 行が使用されます。 |
+| FARM_CONFIG	                 | サーバー・ファームが使用されている場合のファーム・ノードの構成を保管します。 | 数十行。サーバー・ファームが使用されていない場合は空。 |
+| GLOBAL_CONFIG	                 | 一部のグローバル構成データを保管します。 | 1 行。 |
+| PROJECT	                     | デプロイされたプロジェクトの名前を保管します。 | 数十行。 |
+| PROJECT_LOCK	                 | 内部クラスター同期タスク。 | 数十行。 | 
+| TRANSACTIONS	                 | 内部クラスター同期表。現行のすべての管理アクションの状態を保管します。 | 数十行。 |
+| MFPADMIN_VERSION	             | 製品バージョン。	| 1 行。 |
 
-### Database used by {{ site.data.keys.mf_server }} live update service
+### {{site.data.keys.mf_server }} ライブ更新サービスによって使用されるデータベース
 {: #database-used-by-mobilefirst-server-live-update-service }
-The following table provides a list of live update service database tables, their descriptions, and how they are used in relational databases.
+以下の表に、ライブ更新サービス・データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
-| Relational database table name | Description | Order of magnitude |
+| リレーショナル・データベースの表名 | 説明 | 概算規模 |
 |--------------------------------|-------------|--------------------|
-| CS_SCHEMAS	                 | Stores the versioned schemas that exist in the platform.	| One row per schema. |
-| CS_CONFIGURATIONS	             | Stores instances of configurations for each versioned schema. | One row per configuration | 
-| CS_TAGS	                     | Stores the searchable fields and values for each configuration instance.	| Row for each field name and value for each searchable field in configuration. |
-| CS_ATTACHMENTS	             | Stores the attachments for each configuration instance. | One row per attachment. |
-| CS_VERSION	                 | Stores the version of the MFP that created the tables or instances. | Single row in the table with the version of MFP. | 
+| CS_SCHEMAS	                 | プラットフォームに存在する、バージョン管理されたスキーマを保管します。	| スキーマごとに 1 行。 |
+| CS_CONFIGURATIONS	             | バージョン管理された各スキーマの構成のインスタンスを保管します。 | 構成ごとに 1 行。 | 
+| CS_TAGS	                     | 各構成インスタンスの検索可能なフィールドと値を保管します。	| 構成内の検索可能な各フィールドの、各フィールド名と値の行。 |
+| CS_ATTACHMENTS	             | 各構成インスタンスの添付を保管します。 | 添付ごとに 1 行。 |
+| CS_VERSION	                 | 表またはインスタンスを作成した MFP のバージョンを保管します。 | MFP のバージョンが含まれた表内の単一行。 | 
 
-### Database used by {{ site.data.keys.mf_server }} push service
+### {{site.data.keys.mf_server }} プッシュ・サービスによって使用されるデータベース
 {: #database-used-by-mobilefirst-server-push-service }
-The following table provides a list of push service database tables, their descriptions, and how they are used in relational databases.
+以下の表に、プッシュ・サービス・データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
-| Relational database table name | Description | Order of magnitude |
+| リレーショナル・データベースの表名 | 説明 | 概算規模 |
 |--------------------------------|-------------|--------------------|
-| PUSH_APPS	                     | Push notification table; stores details of push applications. | One row per application. |
-| PUSH_ENV	                     | Push notification table; stores details of push environments. | Tens of rows. |
-| PUSH_TAGS	                     | Push notification table; stores details of defined tags.	     | Tens of rows. | 
-| PUSH_DEVICES	                 | Push notification table. Stores a record per device.	         | One row per device. | 
-| PUSH_SUBSCRIPTIONS	         | Push notification table. Stores a record per tag subscription. | One row per device subscription. |
-| PUSH_MESSAGES	                 | Push notification table; stores details of push messages.	 | Tens of rows. | 
-| PUSH_MESSAGE_SEQUENCE_TABLE	 | Push notification table; stores the generated sequence ID.	 | One row. |
-| PUSH_VERSION	                 | The product version.	                                         | One row. |
+| PUSH_APPS	                     | プッシュ通知表。プッシュ・アプリケーションの詳細を保管します。 | アプリケーションごとに 1 行。 |
+| PUSH_ENV	                     | プッシュ通知表。プッシュ環境の詳細を保管します。 | 数十行。 |
+| PUSH_TAGS	                     | プッシュ通知表。定義されているタグの詳細を保管します。	     | 数十行。 | 
+| PUSH_DEVICES	                 | プッシュ通知表。デバイスごとに 1 つのレコードを保管します。	         | デバイスごとに 1 行。 | 
+| PUSH_SUBSCRIPTIONS	         | プッシュ通知表。タグ・サブスクリプションごとに 1 つのレコードを保管します。 | デバイス・サブスクリプションごとに 1 行。 |
+| PUSH_MESSAGES	                 | プッシュ通知表。プッシュ・メッセージの詳細を保管します。	 | 数十行。 | 
+| PUSH_MESSAGE_SEQUENCE_TABLE	 | プッシュ通知表。生成されたシーケンス ID を保管します。	 | 1 行。 |
+| PUSH_VERSION	                 | 製品バージョン。	                                         | 1 行。 |
 
-For more information about setting up the databases, see [Setting up databases](../databases).
+データベースについて詳しくは、[データベースのセットアップ](../databases)を参照してください。
 
-## Sample configuration files
-{{ site.data.keys.product }} includes a number of sample configuration files to help you get started with the Ant tasks to install the {{ site.data.keys.mf_server }}.
+## サンプル構成ファイル
+{{site.data.keys.product }} には、{{site.data.keys.mf_server }} をインストールするための Ant タスクの使用を開始する上で役立つ、多数のサンプル構成ファイルが用意されています。
 
-The easiest way to get started with these Ant tasks is by working with the sample configuration files provided in the **MobileFirstServer/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution. For more information about installing {{ site.data.keys.mf_server }} with Ant tasks, see [Installing with Ant Tasks](../appserver/#installing-with-ant-tasks).
+これらの Ant タスクの使用を開始するには、{{site.data.keys.mf_server }} ディストリビューションの **MobileFirstServer/configuration-samples/** ディレクトリー内に用意されているサンプル構成ファイルを使用して作業を行うのが最も簡単な方法です。Ant タスクを使用した {{site.data.keys.mf_server }} のインストールについて詳しくは、[Ant タスクを使用したインストール](../appserver/#installing-with-ant-tasks)を参照してください。
 
-### List of sample configuration files
+### サンプル構成ファイルのリスト
 {: #list-of-sample-configuration-files }
-Pick the appropriate sample configuration file. The following files are provided.
+適切なサンプル構成ファイルを選択します。以下のファイルが用意されています。
 
-| Task                                                     | Derby                     | DB2                     | MySQL                     | Oracle                      | 
+| タスク                                                     | Derby                     | DB2                     | MySQL                      | Oracle                       | 
 |----------------------------------------------------------|---------------------------|-------------------------|---------------------------|-----------------------------|
-| Create databases with database administrator credentials | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
-| Install {{ site.data.keys.mf_server }} on Liberty	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (See Note on MySQL) | configure-liberty-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on WebSphere  Application Server full profile, single server |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (See Note on MySQL) | configure-was-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on WebSphere Application Server Network Deployment (See Note on configuration files) | configure-wasnd-cluster-derby.xml, configure-wasnd-server-derby.xml, configure-wasnd-node-derby.xml. configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml, configure-wasnd-server-db2.xml, configure-wasnd-node-db2.xml, configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (See Note on MySQL),  configure-wasnd-server-mysql.xml (See Note on MySQL), configure-wasnd-node-mysql.xml (See Note on MySQL), configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml, configure-wasnd-server-oracle.xml, configure-wasnd-node-oracle.xml, configure-wasnd-cell-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on Apache Tomcat	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on Liberty collective	       | Not relevant              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
+| データベース管理者資格情報を指定したデータベースの作成 | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
+| {{site.data.keys.mf_server }} を Liberty にインストールします。	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (MySQL に関する注を参照) | configure-liberty-oracle.xml |
+| シングル・サーバーの WebSphere Application Server フル・プロファイル上への {{site.data.keys.mf_server }} のインストール |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (MySQL に関する注を参照) | configure-was-oracle.xml |
+| {{site.data.keys.mf_server }} を WebSphere Application Server Network Deployment にインストールします。(構成ファイルに関する注を参照) | configure-wasnd-cluster-derby.xml、configure-wasnd-server-derby.xml、configure-wasnd-node-derby.xml、configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml、configure-wasnd-server-db2.xml、configure-wasnd-node-db2.xml、configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (MySQL に関する注を参照)、configure-wasnd-server-mysql.xml (MySQL に関する注を参照)、configure-wasnd-node-mysql.xml (MySQL に関する注を参照)、configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml、configure-wasnd-server-oracle.xml、configure-wasnd-node-oracle.xml、configure-wasnd-cell-oracle.xml |
+| {{site.data.keys.mf_server }} を Apache Tomcat にインストールします。	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
+| {{site.data.keys.mf_server }} を Liberty 集合にインストールします。	       | 関連なし              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
 
-**Note on MySQL:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see WebSphere Application Server Support Statement. Consider using IBM  DB2 or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
+**MySQL に関する注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。詳しくは、WebSphere Application Server Support Statement を参照してください。IBM サポートによるフルサポートの対象となる構成の利点を活用するために、WebSphere Application Server でサポートされる IBM DB2 などのデータベースの使用を検討してください。
 
-**Note on configuration files for WebSphere Application Server Network Deployment:** The configuration files for **wasnd** contain a scope that can be set to **cluster**, **node**, **server**, or **cell**. For example, for **configure-wasnd-cluster-derby.xml**, the scope is **cluster**. These scope types define the deployment target as follows:
+**WebSphere Application Server Network Deployment の構成ファイルに関する注:** **wasnd** の構成ファイルには、**cluster**、**node**、**server**、または **cell** に設定できる有効範囲が含まれます。例えば、**configure-wasnd-cluster-derby.xml** の場合、有効範囲は **cluster** です。これらの有効範囲タイプは、以下のようにデプロイメント・ターゲットを定義します。
 
-* **cluster**: To deploy to a cluster.
-* **server**: To deploy to a single server that is managed by the deployment manager.
-* **node**: To deploy to all the servers that are running on a node, but that do not belong to a cluster.
-* **cell**: To deploy to all the servers on a cell.
+* **cluster**: クラスターにデプロイします。
+* **server**: デプロイメント・ マネージャーに管理されるシングル・サーバーにデプロイします。
+* **node**: ノード上で稼動していてもクラスターに属していないすべてのサーバーにデプロイします。
+* **cell**: セル上のすべてのサーバーにデプロイします。
 
-## Sample configuration files for {{ site.data.keys.mf_analytics }}
+## {{site.data.keys.mf_analytics }} のサンプル構成ファイル
 {: #sample-configuration-files-for-mobilefirst-analytics }
-{{ site.data.keys.product }} includes a number of sample configuration files to help you get started with the Ant tasks to install the {{ site.data.keys.mf_analytics }} Services, and the {{ site.data.keys.mf_analytics_console }}.
+{{site.data.keys.product }} には、{{site.data.keys.mf_analytics }} サービスおよび {{site.data.keys.mf_analytics_console }}をインストールするための Ant タスクの使用を開始する上で役立つ、多数のサンプル構成ファイルが用意されています。
 
-The easiest way to get started with the `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` Ant tasks is by working with the sample configuration files provided in the **Analytics/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution.
+`<installanalytics>`、`<updateanalytics>`、および `<uninstallanalytics>` の各 Ant タスクの使用を開始するには、{{site.data.keys.mf_server }} ディストリビューションの **Analytics/configuration-samples/** ディレクトリー内に用意されている、サンプル構成ファイルを使用して作業を行うのが最も簡単な方法です。
 
-### Step 1
+### ステップ 1
 {: #step-1 }
-Pick the appropriate sample configuration file. The following XML files are provided. They are referred to as **configure-file.xml** in the next steps.
+適切なサンプル構成ファイルを選択します。以下の XML ファイルが用意されています。後続のステップでは、**configure-file.xml** と記載しています。
 
-| Task | Application server |
+| タスク | アプリケーション・サーバー |
 |------|--------------------|
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere  Application Server Liberty profile | configure-liberty-analytics.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on Apache Tomcat | configure-tomcat-analytics.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server full profile | configure-was-analytics.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, single server | configure-wasnd-server-analytics.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, cell | configure-wasnd-cell-analytics.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, node | configure-wasnd-node.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, cluster | configure-wasnd-cluster-analytics.xml | 
+| WebSphere Application Server Liberty プロファイルで {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-liberty-analytics.xml | 
+| Apache Tomcat で {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-tomcat-analytics.xml | 
+| WebSphere Application Server フル・プロファイルで {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-was-analytics.xml | 
+| WebSphere Application Server Network Deployment (シングル・サーバー) で {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-server-analytics.xml | 
+| WebSphere Application Server Network Deployment (セル) で {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-cell-analytics.xml | 
+| WebSphere Application Server Network Deployment (ノード) で {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-node.xml | 
+| WebSphere Application Server Network Deployment (クラスター) で {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-cluster-analytics.xml | 
 
-**Note on configuration files for WebSphere Application Server Network Deployment:**  
-The configuration files for wasnd contain a scope that can be set to **cluster**, **node**, **server**, or **cell**. For example, for **configure-wasnd-cluster-analytics.xml**, the scope is **cluster**. These scope types define the deployment target as follows:
+**WebSphere Application Server Network Deployment の構成ファイルに関する注:**  
+wasnd の構成ファイルには、**cluster**、**node**、**server**、または **cell** に設定できる有効範囲が含まれます。例えば、**configure-wasnd-cluster-analytics.xml** の場合、有効範囲は **cluster** です。これらの有効範囲タイプは、以下のようにデプロイメント・ターゲットを定義します。
 
-* **cluster**: To deploy to a cluster.
-* **server**: To deploy to a single server that is managed by the deployment manager.
-* **node**: To deploy to all the servers that are running on a node, but that do not belong to a cluster.
-* **cell**: To deploy to all the servers on a cell.
+* **cluster**: クラスターにデプロイします。
+* **server**: デプロイメント・ マネージャーに管理されるシングル・サーバーにデプロイします。
+* **node**: ノード上で稼動していてもクラスターに属していないすべてのサーバーにデプロイします。
+* **cell**: セル上のすべてのサーバーにデプロイします。
 
-### Step 2
+### ステップ 2
 {: #step-2 }
-Change the file access rights of the sample file to be as restrictive as possible. Step 3 requires that you supply some passwords. If you must prevent other users on the same computer from learning these passwords, you must remove the read permissions of the file for users other than yourself. You can use a command, such as the following examples:
+サンプル・ファイルのファイル・アクセス権限を、できる限り制限されたものに変更します。ステップ 3 では、いくつかのパスワードを指定する必要があります。同じコンピューター上の他のユーザーがこれらのパスワードを知ることができないようにする必要がある場合は、自分以外のユーザーに対して、ファイルの read 権限を削除する必要があります。以下の例のようなコマンドを使用できます。
 
-On UNIX: `chmod 600 configure-file.xml`
-On Windows: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+UNIX の場合: `chmod 600 configure-file.xml`
+Windows の場合: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
-### Step 3
+### ステップ 3
 {: #step-3 }
-Similarly, if your application server is WebSphere Application Server Liberty profile, or Apache Tomcat, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following files:
+同様に、アプリケーション・サーバーが WebSphere Application Server Liberty プロファイルまたは Apache Tomcat サーバーであり、そのサーバーが自分のアカウントからのみ始動するようにする場合は、次のファイルから自分以外のユーザーの read 権限を削除する必要もあります。
 
-* For WebSphere Application Server Liberty profile: **wlp/usr/servers/<server>/server.xml**
-* For Apache Tomcat: **conf/server.xml**
+* WebSphere Application Server Liberty プロファイルの場合: **wlp/usr/servers/<server>/server.xml**
+* Apache Tomcat の場合: **conf/server.xml**
 
-### Step 4
+### ステップ 4
 {: #step-4 }
-Replace the placeholder values for the properties at the beginning of the file.
+ファイルの先頭にあるプロパティーのプレースホルダー値を置き換えます。
 
-**Note:**  
-The following special characters must be escaped when they are used in the values of the Ant XML scripts:
+**注:
+**  
+Ant XML スクリプトの値で以下の特殊文字が使用される場合は、エスケープする必要があります。
 
-* The dollar sign (`$`) must be written as $$, unless you explicitly want to reference an Ant variable through the syntax `${variable}`, as described in Properties section of the Apache Ant Manual.
-* The ampersand character (`&`) must be written as `&amp;`, unless you explicitly want to reference an XML entity.
-* Double quotation marks (`"`) must be written as `&quot;`, except when it is inside a string that is enclosed in single quotation marks.
 
-### Step 5
+* Apache Ant Manual の『Properties』セクションに説明されているように、ドル記号 (`$`) は、構文 `${variable}` によって Ant 変数を明示的に参照する場合を除き、$$ と記述してください。
+* アンパーサンド文字 (`&`) は、XML エンティティーを明示的に参照する場合を除き、`&amp;` と記述してください。
+* 二重引用符 (`"`) は、単一引用符で囲まれたストリング内にある場合を除き、`&quot;` と記述してください。
+
+### ステップ 5
 {: #step-5 }
-Run the command: `ant -f configure-file.xml install`
+次のコマンドを実行します。`ant -f configure-file.xml install`
 
-This command installs your {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components in the application server.
-To install updated {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components, for example if you apply a {{ site.data.keys.mf_server }} fix pack, run the following command: `ant -f configure-file.xml minimal-update`.
+このコマンドは、アプリケーション・サーバーで {{site.data.keys.mf_analytics }} サービス・コンポーネントおよび {{site.data.keys.mf_analytics_console }}・コンポーネントをインストールします。{{site.data.keys.mf_analytics }} サービス・コンポーネントおよび {{site.data.keys.mf_analytics_console }}・コンポーネントをインストールするには (例えば、{{site.data.keys.mf_server }} フィックスパックを適用する場合は)、以下のコマンドを実行します。`ant -f configure-file.xml minimal-update`
 
-To reverse the installation step, run the command: `ant -f configure-file.xml uninstall`
+インストール手順をリバースするには、次のコマンドを実行します。`ant -f configure-file.xml uninstall`
 
-This command uninstalls the {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components.
+このコマンドは、{{site.data.keys.mf_analytics }} サービス・コンポーネントおよび {{site.data.keys.mf_analytics_console }}・コンポーネントをアンインストールします。
 

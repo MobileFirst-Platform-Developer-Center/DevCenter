@@ -1,51 +1,53 @@
 ---
 layout: tutorial
-title: Interactive notifications
+title: 対話式通知
 relevantTo: [ios, cordova]
 show_in_nav: false
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message.
+対話式通知を使用すると、ユーザーは、通知が到着したときに、アプリケーションを開かなくてもアクションを実行できます。対話式通知を受信すると、デバイスは通知メッセージとともにアクション・ボタンを表示します。
 
-Interactive notifications are supported on devices with iOS version 8 and above. If an interactive notification is sent to an iOS device with version earlier than 8, the notification actions are not displayed.
 
-## Sending interactive push notification
+対話式通知は、iOS バージョン 8 以降のデバイスでサポートされています。バージョン 8 より前の iOS デバイスに対話式通知が送信された場合、通知アクションは表示されません。
+
+## 対話式プッシュ通知の送信
 {: #sending-interactive-push-notification }
-Prepare the notification and send notification. For more information, see [Sending push notifications](../../sending-notifications).
+通知を準備して送信します。詳しくは、[プッシュ通知の送信](../../sending-notifications)を参照してください。
 
-You can set a string to indicate the category of the notification with the notification object, under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**. Based on the category value, the notification action buttons are displayed. For example:
+通知のカテゴリーを示すストリングを通知オブジェクトに設定できます。この設定は、**{{site.data.keys.mf_console }} →「 [ご使用のアプリケーション] 」→「プッシュ」→「通知の送信」→「iOS カスタム設定」**で行います。カテゴリー値に基づいて、通知アクション・ボタンが表示されます。例えば、次のとおりです。
 
-![Setting categories for iOS interactive notifications in the {{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
 
-## Handling interactive push notifications in Cordova applications
+![{{site.data.keys.mf_console }} での iOS 対話式通知のカテゴリーの設定](categories-for-interactive-notifications.png)
+
+## Cordova アプリケーションでの対話式プッシュ通知の処理
 {: #handling-interactive-push-notifications-in-cordova-applications }
-To receive interactive notifications, follow these steps:
+対話式通知を受信するには、以下の手順を実行します。
 
-1. In the main JavaScript, define the registered categories for interactive notification and pass it to device register call `MFPPush.registerDevice`.
+1. メインの JavaScript 内で、対話式通知用に登録済みのカテゴリーを定義し、それをデバイス登録呼び出し `MFPPush.registerDevice` に渡します。
 
    ```javascript
    var options = {
         ios: {
             alert: true,
             badge: true,
-            sound: true,     
+            sound: true,
             categories: [{
                 //Category identifier, this is used while sending the notification.
-                id : "poll", 
+                id : "poll",
 
-                //Optional array of actions to show the action buttons along with the message.    
+                //Optional array of actions to show the action buttons along with the message.
                 actions: [{
                     //Action identifier
-                    id: "poll_ok", 
+                    id: "poll_ok",
 
                     //Action title to be displayed as part of the notification button.
-                    title: "OK", 
+                    title: "OK",
 
                     //Optional mode to run the action in foreground or background. 1-foreground. 0-background. Default is foreground.
-                    mode: 1,  
+                    mode: 1,
 
                     //Optional property to mark the action button in red color. Default is false.
                     destructive: false,
@@ -61,20 +63,20 @@ To receive interactive notifications, follow these steps:
                     destructive: false,
                     authenticationRequired: true
                 }],
-                    
-                //Optional list of actions that is needed to show in the case alert. 
+
+                //Optional list of actions that is needed to show in the case alert.
                 //If it is not specified, then the first four actions will be shown.
                 defaultContextActions: ['poll_ok','poll_nok'],
 
-                //Optional list of actions that is needed to show in the notification center, lock screen. 
+                //Optional list of actions that is needed to show in the notification center, lock screen.
                 //If it is not specified, then the first two actions will be shown.
-                minimalContextActions: ['poll_ok','poll_nok'] 
+                minimalContextActions: ['poll_ok','poll_nok']
             }]     
         }
    }
    ```
 
-2. Pass the `options` object while registering device for push notifications.
+2. プッシュ通知のデバイスを登録する際に、`options` オブジェクトを渡します。
 
    ```javascript
    MFPPush.registerDevice(options, function(successResponse) {
@@ -83,12 +85,13 @@ To receive interactive notifications, follow these steps:
    });  
    ```
 
-## Handling interactive push notifications in native iOS applications
+## ネイティブ iOS アプリケーションでの対話式プッシュ通知の処理
 {: #handling-interactive-push-notifications-in-native-ios-applications }
-Follow these steps to receive interactive notifications:
+以下のステップに従って、対話式通知を受け取ります。
 
-1. Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.
-2. Define registered categories for interactive notifications and pass them as options to `MFPPush.registerDevice`.
+1. リモート通知の受信時にバックグラウンド・タスクを実行するアプリケーション機能を使用可能にします。このステップは、アクションの一部がバックグラウンド対応の場合に必要です。
+
+2. 対話式通知用に登録済みのカテゴリーを定義し、それをオプションとして `MFPPush.registerDevice` に渡します。
 
    ```swift
    //define categories for Interactive Push
@@ -112,4 +115,4 @@ Follow these steps to receive interactive notifications:
 
    // Register device
     MFPPush.sharedInstance().registerDevice(options as [NSObject : AnyObject], completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
-   ```
+```

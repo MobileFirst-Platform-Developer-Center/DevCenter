@@ -1,79 +1,78 @@
 ---
 layout: tutorial
-title: Scenario Loader
-breadcrumb_title: Scenario Loader
+title: シナリオ・ローダー
+breadcrumb_title: シナリオ・ローダー
 relevantTo: [ios,android,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
 
-> **Note:** The Scenario Loader is *experimental* in nature, and is therefore not fully supported. Use accordingly.
+> **注:** シナリオ・ローダーは、その性質上、*試験的* であるため、完全にはサポートされていません。状況に応じて使用してください。
 >
-> * Some charts do not get populated.
+> * 一部のグラフには、データは取り込まれません。
 
-The Scenario Loader populates various {{ site.data.keys.mf_analytics_console_full }} charts and reports with dummy data. The data is stored in the Elasticsearch data store, safely segregated from your existing test or production data.
+シナリオ・ローダーは、{{site.data.keys.mf_analytics_console_full }}のさまざまなグラフおよびレポートにダミー・データを取り込みます。そのデータは、Elasticsearch データ・ストアに保管されており、既存のテスト・データまたは実働データから安全に分離されています。
 
-The loaded data is synthetic in nature, injected directly into the data store. It is not the result of any actual analytics data created by the client or server. The purpose of the data is to enable the user to better view the nature of various reports and charts as displayed in the UI. Therefore the data should **not** be used for testing purposes.
+ロードされるデータは、実際には合成されたものであり、データ・ストアに直接注入されます。クライアントやサーバーによって作成された実際の分析データの結果ではありません。このデータの目的は、UI に表示されるさまざまなレポートおよびグラフの性質をユーザーによく見てもらうことです。したがって、データをテストの目的で使用**しない**でください。
 
-#### Jump to
+#### ジャンプ先
 {: #jump-to }
 
-* [Before you start](#before-you-start)
-* [Connecting to the Scenario Loader](#connecting-to-the-scenario-loader)
-* [Configuring the data loading](#configuring-the-data-loading)
-* [Loading and deleting the data](#loading-and-deleting-the-data)
-* [Viewing the populated charts and tables](#viewing-the-populated-charts-and-tables)
-* [Disabling the debug mode](#disabling-the-debug-mode)
+* [始める前に](#before-you-start)
+* [シナリオ・ローダーへの接続](#connecting-to-the-scenario-loader)
+* [データ・ロードの構成](#configuring-the-data-loading)
+* [データのロードおよび削除](#loading-and-deleting-the-data)
+* [データが取り込まれたグラフおよび表の表示](#viewing-the-populated-charts-and-tables)
+* [デバッグ・モードの無効化](#disabling-the-debug-mode)
 
-## Before you start
+## 始める前に
 {: #before-you-start }
 
-The Scenario Loader is packaged together with the {{ site.data.keys.mf_analytics_console }}. Make sure your {{ site.data.keys.mf_analytics_console_short }} is running and accessible before connecting to the Scenario Loader.
+シナリオ・ローダーは、{{site.data.keys.mf_analytics_console }}と一緒にパッケージされています。シナリオ・ローダーに接続する前に、{{site.data.keys.mf_analytics_console_short }}が実行されており、アクセス可能であることを確認してください。
 
-## Connecting to the Scenario Loader
+## シナリオ・ローダーへの接続
 {: #connecting-to-the-scenario-loader }
 
-1. To enable the Scenario Loader, set either the JVM argument `-DwlDevEnv=true`, or the environment variable `ANALYTICS_DEBUG=true`.
+1. シナリオ・ローダーを有効にするには、JVM 引数 `-DwlDevEnv=true` または環境変数 `ANALYTICS_DEBUG=true` のいずれかを設定します。
 
-2. Access the Scenario Loader in  your browser using the console URL: `http://<console-path>/scenarioLoader` where `<console-path>` is the JNDI property value defined in the `mfp-server/usr/servers/mfp/server.xml` file, for example:
+2. ブラウザーでコンソール URL `http://<console-path>/scenarioLoader` を使用してシナリオ・ローダーにアクセスします。ここで、`<console-path>` は、`mfp-server/usr/servers/mfp/server.xml` ファイルで定義されている JNDI プロパティー値です。例:
 
     `<jndiEntry jndiName="mfp/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>`
 
-3. The Scenario Loader page, along with the {{ site.data.keys.mf_analytics_console_short }} navigation bar, are displayed. The Scenario Loader remains inaccessible from the navigation bar.
+3. 「シナリオ・ローダー (Scenario Loader)」ページが、{{site.data.keys.mf_analytics_console_short }}のナビゲーション・バーと一緒に表示されます。シナリオ・ローダーはナビゲーション・バーからはアクセス不能なままです。
 
-## Configuring the data loading
+## データ・ロードの構成
 
-1. In the **Testing Configuration** section various settings are available to control the nature (**Basic** tab) and volume (**Capacity Planning** tab) of the generated data.
-    Make sure the **Days of history** setting is set to at least 30 days, in order to load sufficient data.
+1. **「テスト構成 (Testing Configuration)」**セクションには、生成されたデータの性質 (**「基本」**タブ) およびボリューム (**「キャパシティー・プランニング」**タブ) を制御するためのさまざまな設定が用意されています。十分なデータをロードするために、少なくとも 30 日間の**「履歴日数 (Days of history)」**を設定するようにしてください。
 
-    All available information about these settings is provided in the  **Testing Configuration** section.
+    これらの設定に関する情報はすべて、**「テスト構成 (Testing Configuration)」**セクションにあります。
 
-2. Click on the **Administration** icon <img  alt="wrench icon" style="margin:0;display:inline" src="wrench.png"/> and select the **Settings** tab. In the **Advanced** section make sure that the **Default tenant** value is set to `dummy_data_for_demo_purposes_only`.
+2. **「管理」**アイコン <img  alt="レンチのアイコン" style="margin:0;display:inline" src="wrench.png"/> をクリックし、**「設定」**タブを選択します。**「詳細設定」**セクションで、**「デフォルト・テナント」**の値が `dummy_data_for_demo_purposes_only` に設定されていることを確認してください。
 
-## Loading and deleting the data
+## データのロードおよび削除
 {: #loading-and-deleting-the-data }
 
-To load the data, click the **Start Scenario Loading** button in the **Scenario Operations** section.
+データをロードするには、**「シナリオ・オペレーション (Scenario Operations)」**セクションで**「シナリオのロードを開始 (Start Scenario Loading)」**ボタンをクリックします。
 
-To delete the data, click the **Delete Now** button in the **Testing Configuration** section.
+データを削除するには、**「テスト構成 (Testing Configuration)」**セクションで**「今すぐ削除 (Delete Now)」**ボタンをクリックします。
 
-**NB:** Read the disclaimer about data creation and deletion in the **Scenario Operations** section.
+**注:** **「シナリオ・オペレーション (Scenario Operations)」**セクションで、データ作成および削除についての免責事項をお読みください。
 
-## Viewing the populated charts and tables
+## データが取り込まれたグラフおよび表の表示
 {: #viewing-the-populated-charts-and-tables }
 
-Once the data is loaded, many, but not all, of the charts and tables available in the Analytics Console are populated.
+データがロードされると、Analytics コンソールで使用できる多くの (しかし、すべてではない) グラフおよび表にデータが取り込まれます。
 
-From the {{ site.data.keys.mf_analytics_console_short }} navigation bar, check the various pages and tabs to view the populated charts and tables.
+{{site.data.keys.mf_analytics_console_short }}のナビゲーション・バーから、さまざまなページおよびタブを確認してデータが取り込まれたグラフおよび表を閲覧します。
 
-## Disabling the debug mode
+## デバッグ・モードの無効化
 {: #disabling-the-debug-mode }
 
-In order to work with real data after working in debug mode and synthetic data:
+デバッグ・モードで合成データで作業した後に実データで作業するには、以下のようにします。
 
-1. Delete the  data by clicking the **Delete Now** button in the **Testing Configuration** section.
-2. In **Settings** → **Advanced** section make sure that the **Default tenant** value is set to `worklight`.
-3. For the variable that was set to true, set to false (the JVM argument `-DwlDevEnv=false`, or  the environment variable `ANALYTICS_DEBUG=false`).
-4. Restart the {{ site.data.keys.mf_analytics_server }}.
+1. **「テスト構成 (Testing Configuration)」**セクションで**「今すぐ削除 (Delete Now)」**ボタンをクリックして、データを削除します。
+2. **「設定」**→**「詳細設定」**セクションで、必ず **「デフォルト・テナント」**の値を `worklight` に設定します。
+3. true に設定された変数については、false に設定します (JVM 引数 `-DwlDevEnv=false`、または環境変数 `ANALYTICS_DEBUG=false`)。
+4. {{site.data.keys.mf_analytics_server }}を再始動します。

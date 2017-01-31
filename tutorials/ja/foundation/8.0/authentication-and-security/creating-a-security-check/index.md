@@ -1,51 +1,55 @@
 ---
 layout: tutorial
-title: Creating a Security Check
-breadcrumb_title: Creating a security check
+title: セキュリティー検査の作成
+breadcrumb_title: セキュリティー検査の作成
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Security checks constitute the basic server-side building block of the {{ site.data.keys.product_adj }} security framework. A security check is a server-side entity that implements a specific authorization logic, such as obtaining and validating client credentials. You protect a resource by assigning it a scope that maps to zero or more security checks. The security framework ensures that only a client that passes all of the security checks of the protecting scope is granted access to the resource. You can use security checks to authorize access both to resources that are hosted on {{ site.data.keys.mf_server }} and to resources on an external resource server.
+セキュリティー検査は、{{site.data.keys.product_adj }} セキュリティー・フレームワークの基本的なサーバー・サイド・ビルディング・ブロックから構成されます。セキュリティー検査は、クライアント資格情報を取得して検証するなど、特定の許可ロジックを実装するサーバー・サイド・エンティティーです。ゼロ個以上のセキュリティー検査にマップされるスコープをリソースに割り当てることで、リソースを保護します。セキュリティー・フレームワークにより、保護スコープのすべてのセキュリティー検査に合格したクライアントのみにリソースに対するアクセス権限が付与されるようになります。
+セキュリティー検査を使用して、{{site.data.keys.mf_server }} 上にホストされているリソースと外部リソース・サーバー上のリソースの両方に対するアクセスを許可できます。
 
-Both Java and JavaScript adapters can theoretically define a security check in their respective definition files, however note that the security checks are implemented in Java code only.  
-An adapter can either be a *resource* adapter (meaning it serves resources and content to send to the client), a *SecurityCheck* adapter, or **both**.
+理論上は Java アダプターと JavaScript アダプターの両方が、それぞれの定義ファイルにセキュリティー検査を定義できます。ただし、セキュリティー検査の実装は Java コードに限定される点に注意してください。  
+アダプターは、*リソース*・アダプター (クライアントに送信するリソースおよびコンテンツを提供するアダプター)、*SecurityCheck* アダプター、または**その両方**にすることができます。
 
-> <b>Note:</b> While security checks are implemented within adapters, the {{ site.data.keys.product_adj }} security-framework and adapter APIs are separate and cannot be mixed. Therefore, you cannot use an adapter API, such as the `AdpatersAPI` interface, in your security-check code, and you cannot use security-check APIs in adapter resource code.
+> <b>注:</b> セキュリティー検査はアダプター内に実装されますが、{{site.data.keys.product_adj }} セキュリティー・フレームワークとアダプター API はそれぞれ独立しており、混在することはできません。したがって、アダプター API (`AdpatersAPI` インターフェースなど) をセキュリティー検査コード内で使用したり、セキュリティー検査 API をアダプター・リソース・コード内で使用したりすることはできません。
 
-The architecture of the security framework is modular and flexible and so the implementation of the security check is not inherently dependent of any specific resource or application. You can reuse the same security check to protect different resources, and use different security-check combinations for various authorization flows. For enhanced flexibility, a security-check class exposes configuration properties that can be customized at the adapter level both in the security-check definition and during run time from the {{ site.data.keys.mf_console }}.
+セキュリティー・フレームワークのアーキテクチャーは、モジュラー型の柔軟なアーキテクチャーです。したがって、セキュリティー検査の実装は、本質的に、特定のリソースやアプリケーションに依存しません。同じセキュリティー検査を再使用してさまざまなリソースを保護したり、各種許可フローでさまざまなセキュリティー検査の組み合わせを使用したりすることができます。柔軟性を高めるために、セキュリティー検査クラスは、{{site.data.keys.mf_console }} からセキュリティー検査定義とランタイムのどちらでもアダプター・レベルでカスタマイズ可能な構成プロパティーを公開します。
 
-To facilitate and accelerate your development process, {{ site.data.keys.product }} provides base abstract implementations of the `SecurityCheck` interface. In addition, a base abstract implementation of the `SecurityCheckConfiguration` interface is provided (`SecurityCheckConfigurationBase`), as well as complementary sample security-check configuration classes for each of the provided base security-check classes. Start out with the base security-check implementation (and related sample configuration) that best fits your development needs, and extend and modify the implementation as needed.
+開発プロセスを促進および加速するために、{{site.data.keys.product }} には、`SecurityCheck` インターフェースの基底抽象実装が用意されています。さらに、`SecurityCheckConfiguration` インターフェースの基底抽象実装が提供されるほか (`SecurityCheckConfigurationBase`)、提供される各基底セキュリティー検査クラスの補足的なサンプルのセキュリティー検査構成クラスも提供されます。開発ニーズに最も適合した基底セキュリティー検査実装 (および関連のサンプル構成) で始めて、
+必要に応じて実装を拡張および変更してください。
 
-> Learn more about the [security check contract](contract).
 
-**Prerequisites:**
+> [セキュリティー検査コントラクト](contract)について詳細を参照してください。
 
-* Read the [Authorization concepts](../) tutorial.
-* Learn how to [create adapters](../../adapters/creating-adapters).
+**前提条件:**
 
-**Usage:**  
-The security check base classes that are described below are available are part of the {{ site.data.keys.product_adj }} `com.ibm.mfp.security.checks.base` Java Maven library, which are downloaded while building the adapter from from the [Maven Central repository](http://search.maven.org/#search|ga|1|a%3A%22mfp-security-checks-base%22). If you are developing offline, you can download these from the **{{ site.data.keys.mf_console }} → Download Center → Tools tab → Security Checks**.
+* [許可の概念](../)チュートリアルをお読みください。
+* [アダプターの作成](../../adapters/creating-adapters)方法について理解している必要があります。
 
-#### Jump to:
+**使用法:**  
+下記で説明しているセキュリティー検査の基底クラスは、{{site.data.keys.product_adj }} `com.ibm.mfp.security.checks.base` Java Maven ライブラリーの一部として入手できます。これらのクラスは [Maven 中央リポジトリー](http://search.maven.org/#search|ga|1|a%3A%22mfp-security-checks-base%22)からアダプターを作成するときにダウンロードされます。オフラインで開発を行っている場合は、**{{site.data.keys.mf_console }} →「ダウンロード・センター」→「ツール」タブ→「セキュリティー検査」**からダウンロードできます。
+
+#### ジャンプ先:
 {: #jump-to }
-* [Defining a security Check](#defining-a-security-check)
-* [Security Check Implementation](#security-check-implementation)
-* [Security Check Configuration](#security-check-configuration)
-* [Predefined Security Checks](#predefined-security-checks)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [セキュリティー検査の定義](#defining-a-security-check)
+* [セキュリティー検査の実装](#security-check-implementation)
+* [セキュリティー検査の構成](#security-check-configuration)
+* [事前定義セキュリティー検査](#predefined-security-checks)
+* [次に使用するチュートリアル](#tutorials-to-follow-next)
 
-## Defining a Security Check
+## セキュリティー検査の定義
 {: #defining-a-security-check }
-[Create a Java or JavaScript adapter](../../adapters/creating-adapters/) or use an exiting one.
+[Java アダプターまたは JavaScript アダプターを作成](../../adapters/creating-adapters/)するか、既存のアダプターを使用します。
 
-> When creating a Java adapter, the default template assumes that the adapter will serve **resources**. It is the developer's choice to bundle security checks and resources in the same adapter, or to separate them into distinct adapters.
+> Java アダプターを作成する場合、デフォルトのテンプレートはアダプターが**リソース**を提供するものと想定します。セキュリティー検査とリソースを同じアダプター内にバンドルするか、別々のアダプターに分けるかは、開発者が選択できます。
 
-To remove the default **resource** implementation, delete the files **[AdapterName]Application.java** and **[AdapterName]Resource.java**. Remove the `<JAXRSApplicationClass>` element from **adapter.xml**, too.
+デフォルトの**リソース**実装を削除するには、**[AdapterName]Application.java** ファイルと **[AdapterName]Resource.java** ファイルを削除します。**adapter.xml** から `<JAXRSApplicationClass>` エレメントも削除してください。
 
-In the Java adapter's **adapter.xml** file, add an XML element called `securityCheckDefinition`. For example:
+Java アダプターの **adapter.xml** ファイル内に、`securityCheckDefinition` という XML エレメントを追加します。例えば、次のとおりです。
+
 
 ```xml
 <securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
@@ -55,55 +59,61 @@ In the Java adapter's **adapter.xml** file, add an XML element called `securityC
 </securityCheckDefinition>
 ```
 
-* The `name` attribute is the name of your security check.
-* The `class` attribute specifies the implementation Java class of the security check. You need to create this class.
-* Security checks can be [further configured](#security-check-configuration) with a list of `property` elements.
-* For defining custom properties, see [Security Check Configuration](#security-check-configuration).
+* `name` 属性は、セキュリティー検査の名前です。
+* `class` 属性は、セキュリティー検査の実装 Java クラスを指定します。このクラスを作成する必要があります。
+* セキュリティー検査は、`property` エレメントのリストを使用して[さらに詳細に構成](#security-check-configuration)できます。
+* カスタム・プロパティーの定義方法については、[セキュリティー検査の構成](#security-check-configuration)を参照してください。
 
-After you successfully deploy an adapter with a security-check definition to the {{ site.data.keys.mf_server }}, you can also see your security check and its configuration information, and make runtime configuration changes, from **{{ site.data.keys.mf_console }} → Adapters → [your adapter]**:
+アダプターとセキュリティー検査定義を {{site.data.keys.mf_server }} に正常にデプロイした後は、**{{site.data.keys.mf_console }} →「アダプター」→「 [ご使用のアダプター] 」** から、セキュリティー検査とその構成情報を確認したり、ランタイム構成を変更したりすることもできます。
 
-* In the **Configuration Files** tab you can see the server copy of your adapter descriptor, including the `<securityCheckDefinition>` element that defines your custom security check and its configurable properties. You can also [pull the adapter configuration](../../adapters/java-adapters/#custom-properties) and push it to different servers.
-* In the **Security Checks** tab you can see a list of all the configuration properties that you exposed in the security-check definition. The properties are referenced by the value of their configured `displayName` attribute, or by the value of the name attribute when no display name is configured. If you set the property's description attribute in the definition, this description is also displayed. 
-For each property, the value that is configured in the `defaultValue` attribute is shown as the current value. You can change the value to override the default value from your security-check definition. You can also restore, at any time, the original default values from your security-check definition. 
-* You can also select an application version from the **Applications** section of the {{ site.data.keys.mf_console }}.
+* **「構成ファイル」**タブには、アダプター・ディスクリプターのサーバー・コピーが表示されます。これにはカスタム・セキュリティー検査とその構成可能プロパティーを定義する `<securityCheckDefinition>` エレメントも含まれます。また、[アダプター構成をプル](../../adapters/java-adapters/#custom-properties)して、それを他のサーバーにプッシュすることもできます。
+* **「セキュリティー検査」**タブには、セキュリティー検査定義で公開したすべての構成プロパティーのリストが表示されます。プロパティーは、構成されている `displayName` 属性の値で参照されます。表示名が構成されていない場合は、name 属性の値で参照されます。定義でプロパティーの description 属性を設定した場合は、この説明も表示されます。各プロパティーで、`defaultValue` 属性に構成された値が、現行値として表示されます。
+この値を変更して、セキュリティー検査定義のデフォルト値をオーバーライドできます。
+また、セキュリティー検査定義の最初のデフォルト値をいつでも復元できます。
+ 
+* {{site.data.keys.mf_console }} の**「アプリケーション」**セクションからアプリケーション・バージョンを選択することもできます。
 
-## Security Check Implementation
+## セキュリティー検査の実装
 {: #security-check-implementation }
-Create the **Java class** for the security check. The implementation should extend one of the provided base classes, as shown below. The parent class you choose determines the balance between customization and simplicity.
+セキュリティー検査の **Java クラス**を作成します。実装では、以下に示す、提供される基底クラスのいずれかを継承する必要があります。選択する親クラスによって、カスタマイズと単純さの間のバランスが決まります。
 
-### Security Check
+### セキュリティー検査
 {: #security-check }
-`SecurityCheck` is a Java **interface**, which defines the minimum required methods to represent the security check.  
-It is the sole responsibility of the developer who implements the security check to handle each scenario.
+`SecurityCheck` は、セキュリティー検査を表すために最低限必要なメソッドを定義する Java **インターフェース**です。  
+各シナリオへの対処は、もっぱら、セキュリティー検査を実装する開発者の責任になります。
 
 ### ExternalizableSecurityCheck
 {: #externalizablesecuritycheck }
-This abstract class implements a basic version of the security-check interface.  
-It provides, among other options: externalization as JSON, inactivity timeout, expiration countdown, and more.
+この抽象クラスは、セキュリティー検査インターフェースの基本バージョンを実装します。  
+JSON としての外部化、非アクティブ・タイムアウト、有効期限のカウントダウンなどのオプションを提供しますが、その他のオプションもいろいろ提供します。
 
-Subclassing this class leaves a lot of flexibility in your security check implementation.
+このクラスをサブクラス化することで、セキュリティー検査実装に大きな柔軟性が生まれます。
 
-> Learn more in the [ExternalizableSecurityCheck](../externalizable-security-check) tutorial.
+> [ExternalizableSecurityCheck](../externalizable-security-check) チュートリアルで詳細を参照してください。
 
 ### CredentialsValidationSecurityCheck
 {: #credentialsvalidationsecurityCheck }
-This class extends the `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods must be implemented: `validateCredentials` and `createChallenge`. The implementation allows a limited number of login attempts during a certain interval, after which the security check is blocked for a configured period. In the case of a successful login, the state of the security check remains successful for a configured period, during which the user can access the requested resource.
+このクラスは、`ExternalizableSecurityCheck` を継承し、その大部分のメソッドを実装して、簡単に使用できるようにします。`validateCredentials` と `createChallenge` の 2 つのメソッドを実装する必要があります。この実装では、特定間隔の間に限られた数のログイン試行が許可されます。
+その後、構成された期間、セキュリティー検査がブロックされます。
+ログインが成功した場合、セキュリティー検査の状態は、構成された期間、成功のままになり、
+その間、ユーザーは要求されたリソースにアクセスすることができます。
 
-The `CredentialsValidationSecurityCheck` class is meant for simple flows to validate arbitrary credentials, to grant access to a resource. A built-in capability to block access after a set number of attempts is also provided.
 
-> Learn more in the [CredentialsValidationSecurityCheck](../credentials-validation/) tutorials.
+`CredentialsValidationSecurityCheck` クラスは、リソースへのアクセスを認可するために任意の資格情報を検証する単純なフロー向けです。設定されている試行回数に達した後にアクセスをブロックする組み込み機能も提供されます。
+
+> [CredentialsValidationSecurityCheck](../credentials-validation/) チュートリアルで詳細を参照してください。
 
 ### UserAuthenticationSecurityCheck
 {: #userauthenticationsecuritycheck}
-This class extends the `CredentialsValidationSecurityCheck` and therefore inherits all of its features. The class adds to it an implementation that creates an `AuthenticatedUser` user identity object  that can be used to identify the current logged-in user. A built-in capability to optionally enable a "Remember Me" login behavior is also provided. Three methods must be implemented: `createUser`, `validateCredentials`, and `createChallenge`.
+このクラスは、`CredentialsValidationSecurityCheck` を継承し、したがってそのすべての機能を継承します。このクラスはそこに、現行ログイン・ユーザーを識別するのに使用できる `AuthenticatedUser` ユーザー ID オブジェクトを作成する実装を追加します。「ユーザーを記憶する (Remember Me)」ログイン動作をオプションで有効にする組み込み機能も提供されます。`createUser`、`validateCredentials`、および `createChallenge` の 3 つのメソッドを実装する必要があります。
 
-> Learn more in the [UserAuthentication security check](../user-authentication/) tutorials.
+> [UserAuthentication セキュリティー検査](../user-authentication/)チュートリアルで詳細を参照してください。
 
-## Security Check Configuration
+## セキュリティー検査の構成
 {: #security-check-configuration }
-Each security-check implementation class can use a `SecurityCheckConfiguration` class that defines properties available for that security check. Each base `SecurityCheck` class comes with a matching `SecurityCheckConfiguration` class. You can create your own implementation that extends one of the base `SecurityCheckConfiguration` classes and use it for your custom security check.
+各セキュリティー検査実装クラスは、そのセキュリティー検査で使用可能なプロパティーを定義する `SecurityCheckConfiguration` クラスを使用できます。各基本 `SecurityCheck` クラスには、対応する `SecurityCheckConfiguration` クラスが付属しています。基本 `SecurityCheckConfiguration` クラスのいずれかを継承する実装を独自に作成し、それをカスタム・セキュリティー検査に使用できます。
 
-For example, the `createConfiguration` method of `UserAuthenticationSecurityCheck` returns an instance of `UserAuthenticationSecurityCheckConfig`.
+例えば、`UserAuthenticationSecurityCheck` の `createConfiguration` メソッドは、`UserAuthenticationSecurityCheckConfig` のインスタンスを返します。
 
 ```java
 public abstract class UserAuthenticationSecurityCheck extends CredentialsValidationSecurityCheck {
@@ -114,7 +124,7 @@ public abstract class UserAuthenticationSecurityCheck extends CredentialsValidat
 }
 ```
 
-`UserAuthenticationSecurityCheckConfig` enables a property called `rememberMeDurationSec` with a default of `0`.
+`UserAuthenticationSecurityCheckConfig` は、デフォルトの `0` を設定して `rememberMeDurationSec` というプロパティーを使用可能にします。
 
 ```java
 public class UserAuthenticationSecurityCheckConfig extends CredentialsValidationSecurityCheckConfig {
@@ -130,93 +140,95 @@ public class UserAuthenticationSecurityCheckConfig extends CredentialsValidation
 ```
 
 <br/>
-These properties can be configured at several levels:
+これらのプロパティーは、以下のいくつかのレベルで構成できます。
 
 ### adapter.xml
 {: #adapterxml }
-In the Java adapter's **adapter.xml** file, inside `<securityCheckDefinition>`, you can add one or more `<property>` elements.  
-The `<property>` element takes the following attributes:
+Java アダプターの **adapter.xml** ファイル内で、`<securityCheckDefinition>` 内に 1 つ以上の `<property>` エレメントを追加できます。  
+`<property>` エレメントには、以下の属性を設定できます。
 
-- **name**: The name of the property, as defined in the configuration class.
-- **defaultValue**: Overrides the default value defined in the configuration class.
-- **displayName**: *optional*, a user-friendly name to be displayed in the console.
-- **description**: *optional*, a description to be displayed in the console.
-- **type**: *optional*, ensures that the property is of a specific type such as `integer`, `string`, `boolean`, or a list of valid values (for example `type="['1','2','3']"`).
+- **name**: 構成クラスで定義されるプロパティーの名前。
+- **defaultValue**: 構成クラスに定義されているデフォルト値をオーバーライドします。
+- **displayName**: *オプション*。コンソールに表示する分かりやすい名前。
+- **description**: *オプション*。コンソールに表示する説明。
+- **type**: *オプション*。プロパティーが特定の型 (`integer`、`string`、`boolean`)、または有効な値のリスト (例えば、`type="['1','2','3']"`) になるようにします。
 
-Example:
+例:
 
 ```xml
 <property name="maxAttempts" defaultValue="3" displayName="How many attempts are allowed?" type="integer"/>
 ```
 
-> For a real-world example, see the [Configuring the Security Check section](../credentials-validation/security-check/#configuring-the-security-check) of the CredentialsValidation security check tutorial.
+> 実際の例については、CredentialsValidation セキュリティー検査チュートリアルの[セキュリティー検査の構成](../credentials-validation/security-check/#configuring-the-security-check)セクションを参照してください。
 
-### {{ site.data.keys.mf_console }} - Adapter
+### {{site.data.keys.mf_console }} - アダプター
 {: #mobilefirst-operations-console-adapter }
-In the {{ site.data.keys.mf_console }} → **[your adapter] → Security Check tab**, you can change the value of any property defined in the **adapter.xml** file.  
-Note that **only** the properties defined in the **adapter.xml** file appear on this screen; properties defined in the configuration class won't appear here automatically.
+{{site.data.keys.mf_console }} →**「 [ご使用のアダプター] 」→「セキュリティー検査」タブ**で、**adapter.xml** ファイル内に定義されている任意のプロパティーの値を変更できます。  
+この画面に表示されるのは、**adapter.xml** ファイルに定義されているプロパティー**のみ**です。構成クラスに定義されているプロパティーは、自動的にはここに表示されません。
 
-![Adapter in console](console-adapter-security.png)
+![コンソールに表示されるアダプター](console-adapter-security.png)
 
-You can also manually edit the adapter's configuration JSON file with the required configuration and push the changes back to a {{ site.data.keys.mf_server }}.
+必要な構成を指定してアダプターの構成 JSON ファイルを手動で編集し、変更を {{site.data.keys.mf_server }} にプッシュして戻すこともできます。
 
-1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev adapter pull`.
-2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
-3. Edit the file and look for the `securityCheckDefinitions` object. In this object, find or create an object that is named as your selected security check. Within the security-checks object, find or add a properties object. For each available configuration property that you want to configure, add within the properties object a pair of configuration-property name and value. For example: 
+1. **コマンド・ライン・ウィンドウ**から、プロジェクトのルート・フォルダーにナビゲートし、`mfpdev adapter pull` を実行します。
+2. **project-folder\mobilefirst** フォルダーにある構成ファイルを開きます。
+3. ファイルを編集します。`securityCheckDefinitions` オブジェクトを見つけてください。このオブジェクト内で、選択したセキュリティー検査の名前を持つオブジェクトを見つけるか、作成します。セキュリティー検査オブジェクト内で、properties オブジェクトを見つけるか、追加します。構成する必要がある使用可能な各構成プロパティーについて、properties オブジェクト内に構成プロパティー名と値のペアを追加します。例えば、次のとおりです。
+ 
 
    ```xml
    "securityCheckDefinitions": {
         "UserAuthentication": {
             "properties": {
-                "maxAttempts": "4",
+"maxAttempts": "4",
                 "failureExpirationSec: "90"
             }
         }
    }
    ```
    
-4. Deploy the updated configuration JSON file by running the command: `mfpdev adapter push`.
+4. コマンド `mfpdev adapter push` を実行することで、更新済み構成 JSON ファイルをデプロイします。
 
-### {{ site.data.keys.mf_console }} - Application
+### {{site.data.keys.mf_console }} - アプリケーション
 {: #mobilefirst-operations-console-application }
-Property values can also be overridden at the application level.
+プロパティー値はアプリケーション・レベルでもオーバーライドできます。
 
-In the {{ site.data.keys.mf_console }} → **[your application] → Security tab**, under the **Security Check Configurations** section, you can modify the values defined in each security check available.
+{{site.data.keys.mf_console }} →**「 [ご使用のアプリケーション] 」→「セキュリティー」タブ**の**「セキュリティー検査構成」**セクションの下で、使用可能な各セキュリティー検査に定義されている値を変更できます。
 
-<img class="gifplayer" alt="Configuring security check properties" src="console-application-security.png"/>
+<img class="gifplayer" alt="セキュリティー検査プロパティーの構成" src="console-application-security.png"/>
 
-You can also manually edit the adapter's configuration JSON file with the required configuration and push the changes back to a {{ site.data.keys.mf_server }}.
+必要な構成を指定してアダプターの構成 JSON ファイルを手動で編集し、変更を {{site.data.keys.mf_server }} にプッシュして戻すこともできます。
 
-1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
-2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
-3. Edit the file and look for the `securityCheckConfigurations` object. In this object, find or create an object that is named as your selected security check. Within the security-checks object, add a pair of configuration-property name and value for each available configuration property that you want to configure. For example:
+1. **コマンド・ライン・ウィンドウ**から、プロジェクトのルート・フォルダーにナビゲートし、`mfpdev app pull` を実行します。
+2. **project-folder\mobilefirst** フォルダーにある構成ファイルを開きます。
+3. ファイルを編集します。`securityCheckConfigurations` オブジェクトを見つけてください。このオブジェクト内で、選択したセキュリティー検査の名前を持つオブジェクトを見つけるか、作成します。セキュリティー検査オブジェクト内に、構成する必要がある使用可能な各構成プロパティーについて、構成プロパティーの名前と値のペアを追加します。例えば、次のとおりです。
+
 
    ```xml
    "SecurityCheckConfigurations": {
         "UserAuthentication": {
             "properties": {
-                "maxAttempts": "2",
+"maxAttempts": "2",
                 "failureExpirationSec: "60"
             }
         }
    }
    ```
    
-4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
+4. コマンド `mfpdev app push` を実行することで、更新済み構成 JSON ファイルをデプロイします。
 
-## Predefined Security Checks
+## 事前定義セキュリティー検査
 {: #predefined-security-checks }
-These predefined security checks are also available:
+以下の事前定義セキュリティー検査も使用可能です。
 
-- [Application Authenticity](../application-authenticity/)
-- [Direct Update](../../application-development/direct-update)
+- [アプリケーション認証性](../application-authenticity/)
+- [ダイレクト・アップデート](../../application-development/direct-update)
 - LTPA
 
-## Tutorials to follow next
+## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-Continue reading about security checks in the following tutorials.  
-Remember to deploy your adapter when you're done developing or making changes.
+セキュリティー検査に関する以下のチュートリアルを続けてお読みください。  
+開発が完了したとき、または変更が完了したときは、必ずアダプターをデプロイしてください。
 
-* [Implementing the CredentialsValidationSecurityCheck](../credentials-validation/).
-* [Implementing the UserAuthenticationSecurityCheck](../user-authentication/).
-* Learn about additional {{ site.data.keys.product }} [authentication and security features](../).
+* [CredentialsValidationSecurityCheck の実装](../credentials-validation/)。
+* [UserAuthenticationSecurityCheck の実装](../user-authentication/)。
+* {{site.data.keys.product }} の追加の[認証およびセキュリティーの機能](../)について学習してください。

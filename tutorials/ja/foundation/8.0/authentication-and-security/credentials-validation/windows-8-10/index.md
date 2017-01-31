@@ -1,27 +1,27 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications
+title: Windows 8.1 Universal および Windows 10 UWP アプリケーションでのチャレンジ・ハンドラーの実装
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: Download Win8 project
+  - name: Win8 プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80
-  - name: Download Win10 project
+  - name: Win10 プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: SecurityCheck Maven プロジェクトのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-When trying to access a protected resource, the server (the security check) sends back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a `JSON` object, listing the security check name with an optional `JSON` of additional data:
+保護リソースへのアクセスを試みると、クライアントにはサーバー (セキュリティー検査) から、クライアントが対処する必要がある 1 つ以上の**チャレンジ**を含んだリストが返信されます。  
+このリストは、`JSON` オブジェクトとして届けられ、セキュリティー検査名とともにオプションで追加データの `JSON` がリストされています。
 
 ```json
 {
   "challenges": {
-    "SomeSecurityCheck1":null,
+"SomeSecurityCheck1":null,
     "SomeSecurityCheck2":{
       "some property": "some value"
     }
@@ -29,16 +29,16 @@ This list is received as a `JSON` object, listing the security check name with a
 }
 ```
 
-The client should then register a **challenge handler** for each security check.  
-The challenge handler defines the client-side behavior that is specific to the security check.
+その後、クライアントは、セキュリティー検査ごとに**チャレンジ・ハンドラー**を登録する必要があります。  
+チャレンジ・ハンドラーによって、そのセキュリティー検査特定のクライアント・サイドの動作が定義されます。
 
-## Creating the challenge handler
+## チャレンジ・ハンドラーの作成
 {: #creating-the-challenge-handler }
-A challenge handler is a class that handles the challenges sent by the {{ site.data.keys.mf_server }}, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
+チャレンジ・ハンドラーは、{{site.data.keys.mf_server }} によって送信されるチャレンジを処理するクラスです。例えば、ログイン画面を表示したり、資格情報を収集したり、それらを元のセキュリティー検査に送信したりします。
 
-In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to log in (`remainingAttempts`), and an optional `errorMsg`.
+この例の場合、セキュリティー検査は `PinCodeAttempts` であり、これは [CredentialsValidationSecurityCheck の実装](../security-check)で定義したものです。このセキュリティー検査によって送信されるチャレンジには、ログインを試行できる残りの回数 (`remainingAttempts`) と、オプションで `errorMsg` が含まれます。
 
-Create a C# class that extends `Worklight.SecurityCheckChallengeHandler`:
+`Worklight.SecurityCheckChallengeHandler` を継承する C# クラスを作成します。
 
 ```csharp
 public class PinCodeChallengeHandler : Worklight.SecurityCheckChallengeHandler
@@ -46,11 +46,11 @@ public class PinCodeChallengeHandler : Worklight.SecurityCheckChallengeHandler
 }
 ```
 
-## Handling the challenge
+## チャレンジの処理
 {: #handling-the-challenge }
-The minimum requirement from the `SecurityCheckChallengeHandler` class is to implement a constructor and a `HandleChallenge` method, that is responsible for asking the user to provide the credentials. The `HandleChallenge` method receives the challenge as an `Object`.
+`SecurityCheckChallengeHandler` クラスが求める最小要件は、コンストラクターおよび `HandleChallenge` メソッドを実装することです。このメソッドは、ユーザーに資格情報の提出を求める責任があります。`HandleChallenge` メソッドは、`Object` としてチャレンジを受け取ります。
 
-Add a constructor method:
+コンストラクター・メソッドを追加します。
 
 ```csharp
 public PinCodeChallengeHandler(String securityCheck) {
@@ -58,14 +58,13 @@ public PinCodeChallengeHandler(String securityCheck) {
 }
 ```
 
-In this `HandleChallenge` example, an alert prompts the user to enter the PIN code:
+この `HandleChallenge` の例では、PIN コードの入力をユーザーに要求するアラートが出されます。
 
 ```csharp
 public override void HandleChallenge(Object challenge)
 {
-    try
-    {
-      JObject challengeJSON = (JObject)challenge;
+                try {
+JObject challengeJSON = (JObject)challenge;
 
       if (challengeJSON.GetValue("errorMsg") != null)
       {
@@ -96,13 +95,13 @@ public override void HandleChallenge(Object challenge)
 }
 ```
 
-> The implementation of `showChallenge` is included in the sample application.
+> `showChallenge` の実装がサンプル・アプリケーションに組み込まれています。
 
-If the credentials are incorrect, you can expect the framework to call `HandleChallenge` again.
+資格情報が正しくない場合、フレームワークによって再度 `HandleChallenge` が呼び出されます。
 
-## Submitting the challenge's answer
+## チャレンジ応答の送信
 {: #submitting-the-challenges-answer }
-After the credentials have been collected from the UI, use the `SecurityCheckChallengeHandler`'s `ShouldSubmitChallengeAnswer()` and `GetChallengeAnswer()` methods to send an answer back to the security check. `ShouldSubmitChallengeAnswer()` returns a Boolean value that indicates whether the challenge response should be sent back to the security check. In this example, `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+UI から資格情報が収集された後は、`SecurityCheckChallengeHandler` の `ShouldSubmitChallengeAnswer()` メソッドと `GetChallengeAnswer()` メソッドを使用して、セキュリティー検査に応答を返信します。`ShouldSubmitChallengeAnswer()` は、セキュリティー検査にチャレンジ応答を返信する必要があるかどうかを示すブール値を返します。この例の場合、`PinCodeAttempts` は、提供された PIN コードを含んでいる `pin` というプロパティーを必要とします。
 
 ```csharp
 public override bool ShouldSubmitChallengeAnswer()
@@ -120,11 +119,11 @@ public override JObject GetChallengeAnswer()
 
 ```
 
-## Cancelling the challenge
+## チャレンジのキャンセル
 {: #cancelling-the-challenge }
-In some cases, such as clicking a **Cancel** button in the UI, you want to tell the framework to discard this challenge completely.
+UI で**「キャンセル」**ボタンがクリックされたときなど、フレームワークに対して、このチャレンジを完全に破棄するように指示する必要が生じる場合があります。
 
-To achieve this, override the `ShouldCancel` method.
+これを実現するには、`ShouldCancel` メソッドをオーバーライドします。
 
 
 ```csharp
@@ -134,34 +133,34 @@ public override bool ShouldCancel()
 }
 ```
 
-## Registering the challenge handler
+## チャレンジ・ハンドラーの登録
 {: #registering-the-challenge-handler }
-For the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.
+チャレンジ・ハンドラーが正しいチャレンジを listen するためには、フレームワークに対して、チャレンジ・ハンドラーと特定のセキュリティー検査名を関連付けるように指示する必要があります。
 
-To do so, initialize the challenge handler with the security check as follows:
+そのためには、以下のようにセキュリティー検査を指定してチャレンジ・ハンドラーを初期設定します。
 
 ```csharp
 PinCodeChallengeHandler pinCodeChallengeHandler = new PinCodeChallengeHandler("PinCodeAttempts");
 ```
 
-You must then **register** the challenge handler instance:
+次に、チャレンジ・ハンドラー・インスタンスを**登録**する必要があります。
 
 ```csharp
 IWorklightClient client = WorklightClient.createInstance();
 client.RegisterChallengeHandler(pinCodeChallengeHandler);
 ```
 
-## Sample application
+## サンプル・アプリケーション
 {: #sample-application }
-The **PinCodeWin8** and **PinCodeWin10** samples are C# applications that use `ResourceRequest` to get a bank balance.  
-The method is protected with a PIN code, with a maximum of 3 attempts.
+**PinCodeWin8** および **PinCodeWin10** のサンプルは、`ResourceRequest` を使用して銀行の残高を照会する C# アプリケーションです。  
+このメソッドは、PIN コードと、最大 3 回までの試行によって保護されています。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80) the Windows 8 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80) the Windows 10 UWP project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) して SecurityCheckAdapters Maven プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80) して Windows 8 プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80) して Windows 10 UWP プロジェクトをダウンロードします。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。
 
-![Sample application](sample-application.png)   
+![サンプル・アプリケーション](sample-application.png)   

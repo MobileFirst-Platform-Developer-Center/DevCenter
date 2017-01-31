@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Matrix of features & platforms
+title: 機能とプラットフォームのマトリックス
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-{{ site.data.keys.product_full }} provides many features and supports many platforms.
+{{site.data.keys.product_full }} は多数の機能を提供し、多数のプラットフォームをサポートします。
 
-The [Mobile OS feature mapping for {{ site.data.keys.product }} technote](http://www.ibm.com/support/docview.wss?uid=swg27039422) on the IBM Support Portal lists the features that are available on each of the platforms that {{ site.data.keys.product }} supports.
+IBM Support Portal にある [{{site.data.keys.product }} 用の Mobile OS フィーチャーのマッピング技術情報](http://www.ibm.com/support/docview.wss?uid=swg27039422)では、{{site.data.keys.product }} がサポートするプラットフォームのそれぞれで使用可能なフィーチャーのリストが示されています。

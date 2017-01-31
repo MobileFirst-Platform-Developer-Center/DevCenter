@@ -1,103 +1,105 @@
 ---
 layout: tutorial
-title: Log and trace collection
+title: ログとトレースの収集
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview 
+## 概説 
 {: #overview }
-IBM Containers for Bluemix provides some built-in logging and monitoring capabilites around container CPU, memory, and networking. You can optionally change the log levels for your {{ site.data.keys.product_adj }} containers.
+IBM Containers for Bluemix では、コンテナーの CPU、メモリー、およびネットワーキングに関連したロギングおよびモニター用の組み込み機能がいくつか提供されています。 オプションで、{{site.data.keys.product_adj }} コンテナーのログ・レベルを変更できます。
 
-The option to create log files for the {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} containers is enabled by default (using level `*=info`). You can change the log levels by either adding a code override manually or by injecting code using a given script file. Both container logs and server or runtime logs can be viewed from a Bluemix logmet console by means of the Kibana visualization tool. Monitoring can be done from a Bluemix logmet console by means of Grafana, an open source metrics dashboard and graph editor.
+{{site.data.keys.mf_server }} コンテナーおよび {{site.data.keys.mf_analytics }} コンテナーのログ・ファイルを作成するオプションは、(レベル `*=info` を使用して) デフォルトで有効になっています。ログ・レベルは、手動でコード・オーバーライドを追加するか、特定のスクリプト・ファイルを使用してコードを注入することにより変更できます。コンテナーのログとサーバーまたはランタイムのログはどちらも、Kibana 可視化ツールを使用して Bluemix logmet コンソールから表示できます。モニターは、オープン・ソースのメトリック・ダッシュボードおよびグラフ・エディターである Grafana を使用して、Bluemix logmet コンソールから実行できます。
 
-When your {{ site.data.keys.product_adj }} container is created with a Secure Shell (SSH) key and bound to a public IP address, a suitable private key can be used to securely view the logs for the container instance.
+{{site.data.keys.product_adj }} コンテナーがセキュア・シェル (SSH) 鍵を有効にして作成され、パブリック IP アドレスにバインドされている場合は、適切な秘密鍵を使用して、コンテナー・インスタンスのログを安全に表示できます。
 
-### Logging overrides
+### ロギングのオーバーライド
 {: #logging-overrides }
-You can change the log levels by either adding a code override manually or by injecting code using a given script file. Adding a code override manually to change the log level must be done when you are first preparing the image. You must add the new logging configuration to the **package\_root/mfpf-[analytics|server]/usr/config** folder as a separate configuration snippet, which gets copied to the configDropins/overrides folder on the Liberty server.
+ログ・レベルは、手動でコード・オーバーライドを追加するか、特定のスクリプト・ファイルを使用してコードを注入することにより変更できます。ログ・レベルを変更するための、手動でのコード・オーバーライドの追加は、最初にイメージを準備しているときに行う必要があります。新しいロギング構成を、別個の構成スニペットとして **package\_root/mfpf-[analytics|server]/usr/config** フォルダーに追加する必要があります。それが、Liberty サーバー上の configDropins/overrides フォルダーにコピーされます。
 
-Injecting code using a given script file to change the log level can be accomplished by using certain command-line arguments when running any of the start\*.sh script files provided in the V8.0.0 package (**startserver.sh**, **startanalytics.sh**, **startservergroup.sh**, **startanalyticsgroup.sh**). The following optional command-line arguments are applicable:
+ログ・レベルを変更するための、特定のスクリプト・ファイルを使用したコードの注入は、V8.0.0 パッケージで提供されている start\*.sh スクリプト・ファイル (**startserver.sh**、 **startanalytics.sh**、**startservergroup.sh**、**startanalyticsgroup.sh**) のいずれかの実行時に、特定のコマンド・ライン引数を使用することにより達成できます。以下に示す、オプションのコマンド・ライン引数を適用できます。
 
 * `[-tr|--trace]` trace_specification
 * `[-ml|--maxlog]` maximum\_number\_of\_log\_files
 * `[-ms|--maxlogsize]` maximum\_size\_of\_log\_files
 
-## Container log files
+## コンテナー・ログ・ファイル
 {: #container-log-files }
-Log files are generated for {{ site.data.keys.mf_server }} and Liberty Profile runtime activities for each container instance and can be found in the following locations:
+ログ・ファイルは、各コンテナー・インスタンスの {{site.data.keys.mf_server }} および Liberty Profile のランタイム・アクティビティーに関して生成され、以下の場所にあります。
 
 * /opt/ibm/wlp/usr/servers/mfp/logs/messages.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/console.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/trace.log
 * /opt/ibm/wlp/usr/servers/mfp/logs/ffdc/*
 
-You can log in to the container by following the steps in Accessing log files and access the log files.
+ログ・ファイルへのアクセスに示された手順に従ってコンテナーにログインし、ログ・ファイルにアクセスすることができます。
 
-To persist log files, even after a container no longer exists, enable a volume. (Volume is not enabled by default.) Having volume enabled can also allow you to view the logs from Bluemix using the logmet interface (such as https://logmet.ng.bluemix.net/kibana).
+コンテナーが存在しなくなった後もログ・ファイルを永続させるには、ボリュームを有効にします。(デフォルトでは、ボリュームは有効になりません。)
+ボリュームを有効にすると、logmet インターフェース (https://logmet.ng.bluemix.net/kibana など) を使用して、Bluemix からログを表示することもできます。
 
-**Enabling volume**
-Volume allows for containers to persist log files. The volume for {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analyics }} container logs is not enabled by default.
+**ボリュームの有効化**
+ボリュームを使用すると、コンテナーはログ・ファイルを永続化できるようになります。{{site.data.keys.mf_server }} コンテナーおよび {{site.data.keys.mf_analyics }} コンテナーのログ用のボリュームは、デフォルトでは有効になりません。
 
-You can enable volume when running the **start*.sh** scripts by setting `ENABLE_VOLUME [-v | --volume]` to `Y`. This is also configurable in the **args/startserver.properties** and **args/startanalytics.properties** files for interactive execution of the scripts.
+**start*.sh** スクリプトの実行時に、
+`ENABLE_VOLUME [-v | --volume]` を `Y` に設定することにより、ボリュームを有効に設定できます。また、スクリプトの対話式実行の場合、これは **args/startserver.properties** ファイルおよび **args/startanalytics.properties** ファイルでも構成可能です。
 
-The persisted log files are saved in the **/var/log/rsyslog** and **/opt/ibm/wlp/usr/servers/mfp/logs** folders in the container.  
-The logs can be accessed by issuing an SSH request to the container.
+永続化されたログ・ファイルは、コンテナーの **/var/log/rsyslog** フォルダーと **/opt/ibm/wlp/usr/servers/mfp/logs** フォルダーに保存されます。  
+コンテナーに対して SSH 要求を出すことによって、ログにアクセスできます。
 
-## Accessing log files
+## ログ・ファイルへのアクセス
 {: #accessing-log-files }
-Logs are created for each container instance. You can access log files using the IBM Container Cloud Service REST API, by using `cf ic` commands, or by using the Bluemix logmet console.
+コンテナー・インスタンスごとに、ログが作成されます。ログ・ファイルにアクセスするには、IBM Container Cloud Service REST API を使用するか、`cf ic` コマンドを使用するか、または Bluemix logmet コンソールを使用します。
 
 ### IBM Container Cloud Service REST API
 {: #ibm-container-cloud-service-rest-api }
-For any container instance, the **docker.log** and **/var/log/rsyslog/syslog** can be viewed using the [Bluemix logmet service](https://logmet.ng.bluemix.net/kibana/). The log activities can be seen using the Kibana dashboard of the same.
+すべてのコンテナー・インスタンスについて、 [Bluemix logmet サービス](https://logmet.ng.bluemix.net/kibana/) (https://logmet.ng.bluemix.net/kibana/) を使用して、**docker.log** および**/var/log/rsyslog/syslog** を表示できます。ログ・アクティビティーは、同じ Kibana ダッシュボードを使用して確認できます。
 
-IBM Containers CLI commands (`cf ic exec`) can be used to gain access to running container instances. Alternatively, you can obtain container log files through Secure Shell (SSH).
+実行中のコンテナー・インスタンスにアクセスするには、IBM Containers CLI コマンド (`cf ic exec`) を使用します。あるいは、セキュア・シェル (SSH) を介して、コンテナーのログ・ファイルを取得することもできます。
 
-### Enabling SSH
+### SSH の有効化
 {: #enabling-ssh}
-To enable SSH, copy the SSH public key to the **package_root/[mfpf-server or mfpf-analytics]/usr/ssh** folder before you run the **prepareserver.sh** or the **prepareanalytics.sh** scripts. This builds the image with SSH enabled. Any container created from that particular image will have the SSH enabled.
+SSH を有効にするには、**prepareserver.sh** スクリプトまたは **prepareanalytics.sh** スクリプトを実行する前に、SSH 公開鍵を **package_root/[mfpf-server または mfpf-analytics]/usr/ssh** フォルダーにコピーします。これにより、SSH が有効にされたイメージがビルドされます。その特定のイメージから作成されたコンテナーはすべて、SSH が有効になっています。
 
-If SSH is not enabled as part of the image customization, you can enable it for the container using the SSH\_ENABLE and SSH\_KEY arguments when executing the **startserver.sh** or **startanalytics.sh** scripts. You can optionally customize the related script .properties files to include the key content.
+イメージのカスタマイズの一環として SSH が有効にされない場合は、**startserver.sh** スクリプトまたは **startanalytics.sh** スクリプトの実行時に SSH\_ENABLE 引数と SSH\_KEY 引数を使用して、コンテナーに対して SSH を有効にすることができます。オプションとして、関連のスクリプト .properties ファイルをカスタマイズして、鍵の内容を組み込むことができます。
 
-The container logs endpoint gets stdout logs with the given ID of the container instance.
+コンテナー・ログのエンドポイントは、コンテナー・インスタンスの指定の ID を使用して、stdout ログを取得します。
 
-Example: `GET /containers/{container_id}/logs`
+例: `GET /containers/{container_id}/logs`
 
-#### Accessing containers from the command line
+#### コマンド・ラインからのコンテナーへのアクセス
 {: #accessing-containers-from-the-command-line }
-You can access running {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} container instances from the command line to obtain logs and traces.
+コマンド・ラインから、実行中の {{site.data.keys.mf_server }} および {{site.data.keys.mf_analytics }} のコンテナー・インスタンスにアクセスし、ログやトレースを取得できます。
 
-1. Create an interactive terminal within the container instance by running the following command: `cf ic exec -it container_instance_id "bash"`.
-2. To locate the log files or traces, use the following command example:
+1. コマンド `cf ic exec -it container_instance_id "bash"` を実行して、コンテナー・インスタンス内に対話式ターミナルを作成します。
+2. ログ・ファイルまたはトレースを見つけるために、以下のコマンド例を使用します。
 
    ```bash
    container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp 
    container_instance@root# vi messages.log
    ```
 
-3. To copy the logs to your local workstation, use the following command example:
+3. ログをローカル・ワークステーションにコピーするために、以下のコマンド例を使用します。
 
    ```bash
    my_local_workstation# cf ic exec -it container_instance_id
    "cat" " /opt/ibm/wlp/usr/servers/mfp/messages.log" > /tmp/local_messages.log
    ```
 
-#### Accessing containers using SSH
+#### SSH を使用したコンテナーへのアクセス
 {: #accessing-containers-using-ssh }
-You can get the syslogs and Liberty logs by using Secure Shell (SSH) to access your {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }} containers.
+セキュア・シェル (SSH) を使用して {{site.data.keys.mf_server }} および {{site.data.keys.mf_analytics }} のコンテナーにアクセスすることにより、syslog および Liberty ログを取得できます。
 
-If you are running a container group, you can bind a public IP address to each instance and view the logs securely using SSH. To enable SSH, make sure to copy the SSH public key to the **mfp-server\server\ssh** folder before you run the **startservergroup.sh** script.
+コンテナー・グループを実行している場合は、パブリック IP アドレスを各インスタンスにバインドし、SSH を使用してログを安全に表示できます。SSH を有効にするために、**startservergroup.sh** スクリプトを実行する前に、必ず SSH 公開鍵を **mfp-server\server\ssh** フォルダーにコピーしてください。
 
-1. Make an SSH request to the container. Example: `mylocal-workstation# ssh -i ~/ssh_key_directory/id_rsa root@public_ip`
-2. Archive the log file location. Example:
+1. コンテナーに対して SSH 要求を行います。例: `mylocal-workstation# ssh -i ~/ssh_key_directory/id_rsa root@public_ip`
+2. ログ・ファイル・ロケーションをアーカイブします。例:
 
 ```bash
 container_instance@root# cd /opt/ibm/wlp/usr/servers/mfp
 container_instance@root# tar czf logs_archived.tar.gz logs/
 ```
 
-Download the log archive to your local workstation. Example: 
+ログ・アーカイブをローカル・ワークステーションにダウンロードします。例: 
 
 ```bash
 mylocal-workstation# scp -i ~/ssh_key_directory/id_rsa root@public_ip:/opt/ibm/wlp/usr/servers/mfp/logs_archived.tar.gz /local_workstation_dir/target_location/

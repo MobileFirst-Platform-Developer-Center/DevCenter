@@ -1,26 +1,26 @@
 ---
 layout: tutorial
-title: Workstation Installation Guide
-breadcrumb_title: Installation guide
+title: ワークステーション・インストール・ガイド
+breadcrumb_title: インストール・ガイド
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-Follow this installation guide in order to setup your workstation for development using {{ site.data.keys.product }}.
+{{site.data.keys.product }} を使用した開発のためにワークステーションをセットアップするには、以下のインストール・ガイドに従ってください。
 
-## DevKit Installer
+## DevKit インストーラー
 {: #devkit-installer }
-The [{{ site.data.keys.mf_dev_kit }} Installer]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst) will install a ready-to-use {{ site.data.keys.mf_server }}, database and runtime on your developer machine.  
+[{{site.data.keys.mf_dev_kit }} インストーラー]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst)は、すぐに使用できる {{site.data.keys.mf_server }}、データベース、およびランタイムを開発者マシンにインストールします。  
 
-**Prerequisite:**  
-The installer requires Java installed.
+**前提条件:**  
+このインストーラーでは、Java がインストールされていることが必要です。
 
-1. [Install Oracle's JRE](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html).
+1. [Oracle の JRE をインストールします](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html)。
     
-2. Add a `JAVA_HOME` variable, pointing to the JRE
+2. JRE を指す `JAVA_HOME` 変数を追加します。
 
-    *Mac and Linux:* Edit your **~/.bash_profile**:
+    *Mac および Linux:* **~/.bash_profile** を次のように編集します。
     
     ```bash
     #### ORACLE JAVA
@@ -28,71 +28,71 @@ The installer requires Java installed.
     ```
     
     *Windows:*  
-    [Follow this guide](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html).
+    [このガイドに従ってください](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html)。
 
-### Installation
+### インストール
 {: #installation }
-Get the DevKit Installer from the [Downloads page]({{site.baseurl}}/downloads/), and follow the on-screen instructions.
+DevKit インストーラーを[ダウンロード・ページ]({{site.baseurl}}/downloads/)から入手し、画面の指示に従います。
 
-![devkit installer](devkit-installer.png)
+![devkit インストーラー](devkit-installer.png)
 
-### Starting and stopping the server
+### サーバーの始動および停止
 {: #starting-and-stopping-the-server }
-Open a command-line window and navigate to the extracted folder location.
+コマンド・ライン・ウィンドウを開き、解凍したフォルダーの場所にナビゲートします。
 
-*Mac and Linux:*  
+*Mac および Linux:*  
 
-* To start the server: `./run.sh -bg`
-* To stop the server: `./stop.sh`
+* サーバーを始動するには、以下のようにします。`./run.sh -bg`
+* サーバーを停止するには、以下のようにします。`./stop.sh`
 
 *Windows:*  
 
-* To start the server: `./run.cmd -bg`
-* To stop the server: `./stop.cmd`
+* サーバーを始動するには、以下のようにします。`./run.cmd -bg`
+* サーバーを停止するには、以下のようにします。`./stop.cmd`
 
-### Accessing the {{ site.data.keys.mf_console }}
+### {{site.data.keys.mf_console }} へのアクセス
 {: #accessing-the-mobilefirst-operations-console }
-You can access the [{{ site.data.keys.mf_console }}]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/) in the following ways:
+[{{site.data.keys.mf_console }}]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/) には、以下の方法でアクセスできます。
 
-* From command-line, execute: `mfpdev server console`
-* From a browser, visit: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)
+* コマンド・ラインから、以下を実行します。`mfpdev server console`
+* ブラウザーから、以下にアクセスします。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)
 
-![console]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/dashboard.png)
+![コンソール]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/dashboard.png)
 
-## {{ site.data.keys.mf_cli }}
+## {{site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
-The [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) is a command-line interface enabling you to register applications in the {{ site.data.keys.mf_server }}, pull/push application from/to the {{ site.data.keys.mf_server }}, create Java and JavaScript adapters, manage multiple local and remote servers, update live applications using Direct Update and so on.
+[{{site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) は、{{site.data.keys.mf_server }} でのアプリケーションの登録、{{site.data.keys.mf_server }} に対するアプリケーションのプル/プッシュ、Java アダプターおよび JavaScript アダプターの作成、複数のローカル・サーバーおよびリモート・サーバーの管理、ダイレクト・アップデートを使用したライブ・アプリケーションの更新などを可能にするコマンド・ライン・インターフェースです。
 
-**Prerequisite:**  
-1. NodeJS is a requirement before you can install the {{ site.data.keys.mf_cli }}.  
- Download and install [NodeJS v4.4.3 LTS](https://nodejs.org/en/).
+**前提条件:**  
+1. NodeJS は、{{site.data.keys.mf_cli }} をインストールするための要件です。  
+ [NodeJS v4.4.3 LTS](https://nodejs.org/en/) をダウンロードしてインストールします。
 
- To Verify the installation, open a command-line window and execute: `node -v`.
+ インストールを検証するには、コマンド・ライン・ウィンドウを開いて以下を実行します。`node -v`
 
-2. Some CLI commands, such as creating, building and deploying adapters require Maven. See the next section for installation instructions.
+2. アダプターの作成、ビルド、デプロイなど、一部の CLI コマンドには Maven が必要です。インストール手順については、次のセクションを参照してください。
 
-### Installation
+### インストール
 {: #installation }
-Open Terminal and execute: `npm install -g mfpdev-cli`.  
+ターミナルを開き、以下を実行します。`npm install -g mfpdev-cli`  
 
-*Mac and Linux:* Note that you may need to run the command using `sudo`.  
-Read more about [fixing NPM permissions](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
+*Mac および Linux:* `sudo` を使用してコマンドを実行する必要がある場合があります。  
+[NPM アクセス権の修正](https://docs.npmjs.com/getting-started/fixing-npm-permissions)に関する詳細をお読みください。
     
-To Verify the installation, open a command-line window and execute: `mfpdev -v` or `mfpdev help`.
+インストールを検証するには、コマンド・ライン・ウィンドウを開いて以下を実行します。`mfpdev -v` または `mfpdev help`
 
-![console](mfpdev-cli.png)
+![コンソール](mfpdev-cli.png)
 
-## Adapters and Security Checks
+## アダプターおよびセキュリティー検査
 {: #adapters-and-security-checks }
-[Adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters) and [Security Checks]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security) are your door-way to introduce authentication and other security layers to your application.
+[アダプター]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)および[セキュリティー検査]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security)は、認証やその他のセキュリティー層をアプリケーションに導入するための入り口となります。
 
-**Prerequisite:**  
-Apache Maven is a required to set-up before you can create adapters and security checks.  
+**前提条件:**  
+アダプターおよびセキュリティー検査を作成するには、その前に Apache Maven をセットアップする必要があります。  
     
-1. [Download the Apache Maven .zip](https://maven.apache.org/download.cgi)
-2. Add a `MVN_PATH` variable, pointing to the Maven folder
+1. [Apache Maven .zip をダウンロードします](https://maven.apache.org/download.cgi)。
+2. Maven フォルダーを指す `MVN_PATH` 変数を追加します。
     
-    *Mac and Linux:* Edit your **~/.bash_profile**:
+    *Mac および Linux:* **~/.bash_profile** を次のように編集します。
     
     ```bash
     #### Apache Maven
@@ -100,11 +100,11 @@ Apache Maven is a required to set-up before you can create adapters and security
     ```
 
     *Windows:*  
-    [Follow this guide](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/).
-Verify the installation by executing: `mvn -v`.
+    [このガイドに従ってください](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/)。
+以下を実行してインストールを検証します。`mvn -v`
 
-### Usage
+### 使用法
 {: #usage }
-With Apache Maven installed, you can now create adapters either via Maven command-line commands, or by using the {{ site.data.keys.mf_cli }}.  
-For more information, review the [Adapters tutorials]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters).
+Apache Maven がインストールされたら、Maven コマンド・ライン・コマンド経由で、または {{site.data.keys.mf_cli }} を使用して、アダプターを作成できます。  
+詳しくは、[アダプターのチュートリアル]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)を参照してください。
 

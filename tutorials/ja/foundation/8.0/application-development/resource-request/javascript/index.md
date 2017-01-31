@@ -1,35 +1,35 @@
 ---
 layout: tutorial
-title: Resource request from JavaScript (Cordova, Web) applications
+title: JavaScript (Cordova、Web) アプリケーションからのリソース要求
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 downloads:
-  - name: Download Web project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80
-  - name: Download Cordova project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
-  - name: Download Adapter Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+  - name: Web プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80
+  - name: Cordova プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80
+  - name: アダプター Maven プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_adj }} applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources.
+{{site.data.keys.product_adj }} アプリケーションは `WLResourceRequest` REST API を使用してリソースにアクセスできます。  
+REST API は、すべてのアダプターおよび外部リソースで機能します。
 
-**Prerequisites**:
+**前提条件**:
 
-- If you are implementing a Cordova application, ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/cordova) to your Cordova application.
-- If you are implementing a Web application, ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/web) to your Web application.
-- Learn how to [create adapters](../../../adapters/creating-adapters/).
+- Cordova アプリケーションを実装する場合は、必ずご使用の Cordova アプリケーションに [{{site.data.keys.product }} SDK](../../../application-development/sdk/cordova) を追加しておいてください。
+- Web アプリケーションを実装する場合は、必ずご使用の Web アプリケーションに [{{site.data.keys.product }} SDK](../../../application-development/sdk/web) を追加しておいてください。
+- [アダプターの作成](../../../adapters/creating-adapters/)方法を参照してください。
 
 ## WLResourceRequest
 {: #wlresourcerequest }
-The `WLResourceRequest` class handles resource requests to adapters or external resources.
+`WLResourceRequest` クラスは、アダプターまたは外部リソースに対するリソース要求を処理します。
 
-Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `WLResourceRequest.GET`, `WLResourceRequest.POST`, `WLResourceRequest.PUT` and `WLResourceRequest.DELETE`.
+ `WLResourceRequest` オブジェクトを作成し、リソースへのパスと HTTP メソッドを指定します。  
+使用可能なメソッドは、`WLResourceRequest.GET`、`WLResourceRequest.POST`、`WLResourceRequest.PUT`、および `WLResourceRequest.DELETE` です。
 
 ```javascript
 var resourceRequest = new WLResourceRequest(
@@ -38,17 +38,17 @@ var resourceRequest = new WLResourceRequest(
 );
 ```
 
-* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
-* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
-* To access resources outside of the project, use the full URL as per the requirements of the external server.
-* **timeout**: Optional, request timeout in milliseconds
+* **JavaScript アダプター** の場合は、`/adapters/{AdapterName}/{procedureName}` を使用します。
+* **Java アダプター**の場合は、`/adapters/{AdapterName}/{path}` を使用します。`path` は、Java コードで `@Path` アノテーションをどのように定義したかによって決まります。これには、使用した `@PathParam` も含まれます。
+* プロジェクトの外部にあるリソースにアクセスするには、外部サーバーの要件のとおりに完全な URL を使用してください。
+* **タイムアウト**: オプション。ミリ秒単位の要求タイムアウトです。
 
-## Sending the request
+## 要求の送信
 {: #sending-the-request }
-Request the resource by using the `send()` method.  
-The `send()` method takes an optional parameter to set a body to the HTTP request, which could be a JSON object or a simple string.
+`send()` メソッドを使用してリソースを要求します。  
+`send()` メソッドは、HTTP 要求に本体を設定するためのオプション・パラメーターを使用します。この本体は、JSON オブジェクトまたは単純なストリングの場合があります。
 
-Using JavaScript **promises**, you can define `onSuccess` and `onFailure` callback functions.
+JavaScript の **promises** を使用して、`onSuccess` および `onFailure` のコールバック関数を定義できます。
 
 ```js
 resourceRequest.send().then(
@@ -59,28 +59,28 @@ resourceRequest.send().then(
 
 ### setQueryParameter
 {: #setqueryparameter }
-By using the `setQueryParameter` method, you can include query (URL) parameters in the REST request.
+`setQueryParameter` メソッドを使用すると、照会 (URL) パラメーターを REST 要求に含めることができます。
 
 ```js
 resourceRequest.setQueryParameter("param1", "value1");
 resourceRequest.setQueryParameter("param2", "value2");
 ```
 
-#### JavaScript adapters
+#### JavaScript アダプター
 {: #javascript-adapters-setquery}
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
-> **Note:** The `params` value should be a *string representation* of an array.
+> **注:** `params` 値は、配列の*ストリング表現*でなければなりません。
 
 ```js
 resourceRequest.setQueryParameter("params", "['value1', 'value2']");
 ```
 
-This should be used with `WLResourceRequest.GET`.
+これは、`WLResourceRequest.GET` と一緒に使用してください。
 
 ### setHeader
 {: #setheader }
-By using the `setHeader` method, you can set a new HTTP header or replace an existing header with the same name in the REST request.
+`setHeader` メソッドを使用して、REST 要求で新規 HTTP ヘッダーを設定したり、既存のヘッダーを同じ名前で置換したりすることができます。
 
 ```js
 resourceRequest.setHeader("Header-Name","value");
@@ -88,32 +88,32 @@ resourceRequest.setHeader("Header-Name","value");
 
 ### sendFormParameters(json)
 {: #sendformparamtersjson }
-To send URL-encoded form parameters, use the `sendFormParameters(json)` method instead. This method converts the JSON to a URL encoded string, sets the `content-type` to `application/x-www-form-urlencoded`, and sets it as the HTTP body:
+URL エンコード形式のパラメーターを送信するには、代わりに `sendFormParameters(json)`メソッドを使用します。このメソッドは、JSON を URL エンコードのストリングに変換し、`content-type` を `application/x-www-form-urlencoded` に設定して、それを HTTP 本体として設定します。
 
 ```js
 var formParams = {"param1": "value1", "param2": "value2"};
 resourceRequest.sendFormParameters(formParams);
 ```
 
-#### JavaScript adapters
+#### JavaScript アダプター
 {: #javascript-adapters-sendform }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript アダプターは、名前のない順序付きのパラメーターを使用します。パラメーターを JavaScript アダプターに渡すには、以下のように名前 `params` を使用してパラメーターの配列を設定します。
 
 ```js
 var formParams = {"params":"['value1', 'value2']"};
 ```
 
-This should be used with `WLResourceRequest.POST`.
+これは、`WLResourceRequest.POST` と一緒に使用してください。
 
 
-> For more information about `WLResourceRequest`, see the API reference in the user documentation.
+> `WLResourceRequest` について詳しくは、ユーザー文書の API リファレンスを参照してください。
 
-## The response
+## 応答
 {: #the-response }
-Both the `onSuccess` and `onFailure` callbacks receive a `response` object. The `response` object contains the response data and you can use its properties to retrieve the required information. Commonly used properties are `responseText`, `responseJSON` (JSON object, if the response is in JSON) and `status` (the HTTP status of the response).
+`onSuccess` と `onFailure` の両方のコールバックは、`response` オブジェクトを受け取ります。`response` オブジェクトには応答データが含まれており、そのプロパティーを使用して必要な情報を取得することができます。よく使用されるプロパティーは、`responseText`、`responseJSON`(応答が JSON の場合は JSON オブジェクト)、および `status` (応答の HTTP 状況) です。
 
-In case of request failure, the `response` object also cotains a `errorMsg` property.  
-Depending if using a Java or JavaScript adapter, the response may contain other properties such as `responseHeaders`, `responseTime`, `statusCode`, `statusReason`, and `totalTime`.
+要求が失敗した場合、`response` オブジェクトには `errorMsg` プロパティーも含まれます。  
+Java アダプターを使用しているか、JavaScript アダプターを使用しているかに応じて、応答には、`responseHeaders`、`responseTime`、`statusCode`、`statusReason`、`totalTime` などの他のプロパティーが含まれる場合があります。
 
 ```json
 {
@@ -137,10 +137,11 @@ Depending if using a Java or JavaScript adapter, the response may contain other 
 }
 ```
 
-### Handling the response
+### 応答の処理
 {: #handling-the-response }
-The response object is received by the `onSuccess` and `onFailure` callback functions.  
-For example:
+応答オブジェクトは、`onSuccess` および `onFailure` のコールバック関数によって受信されます。  
+例えば、次のとおりです。
+
 
 ```js
 onSuccess: function(response) {
@@ -152,20 +153,20 @@ onFailure: function(response) {
 }
 ```
 
-## For more information
+## 詳細情報
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html).
+> WLResourceRequest について詳しくは、[API リファレンスを参照してください](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html)。
 
-<img alt="Image of the sample application" src="resource-request-success-cordova.png" style="float:right"/>
-## Sample applications
+<img alt="サンプル・アプリケーションのイメージ" src="resource-request-success-cordova.png" style="float:right"/>
+## サンプル・アプリケーション
 {: #sample-applications }
-The **ResourceRequestWeb** and **ResourceRequestCordova** projects demonstrate a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter used during the resource request call.
+**ResourceRequestWeb** プロジェクトおよび **ResourceRequestCordova** プロジェクトは、Java アダプターを使用したリソース要求を例示します。  
+アダプター Maven プロジェクトには、リソース要求呼び出し中に使用される Java アダプターが含まれています。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) the Cordova project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80) the Web project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestCordova/tree/release80) して Cordova プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestWeb/tree/release80) して Web プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) してアダプター Maven プロジェクトをダウンロードします。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

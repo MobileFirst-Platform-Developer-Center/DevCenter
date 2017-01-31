@@ -1,39 +1,39 @@
 ---
 layout: tutorial
-title: Node.js Validator
-breadcrumb_title: Node.js validator
+title: Node.js バリデーター
+breadcrumb_title: Node.js バリデーター
 relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:
-  - name: Download sample
+  - name: サンプルのダウンロード
     url: https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.product_full }} provides a Node.js framework to enforce security capabilities on external resources.  
-The Node.js framework is provided as an npm module (**passport-mfp-token-validation**).
+{{site.data.keys.product_full }} は、外部リソースにセキュリティー機能を適用するための Node.js フレームワークを提供しています。  
+Node.js フレームワークは、npm モジュール (**passport-mfp-token-validation**) として提供されます。
 
-This tutorial shows how to protect a simple Node.js resource, `GetBalance`, by using a scope (`accessRestricted`).
+このチュートリアルでは、スコープ (`accessRestricted`) を使用して、単純な Node.js リソース `GetBalance` を保護する方法を示します。
 
-**Prerequsites:**  
+**前提条件:**  
 
-* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product }} security framework](../../).
+* [{{site.data.keys.mf_server }} を使用した外部リソースの認証](../)チュートリアルをお読みください。
+* [{{site.data.keys.product }} セキュリティー・フレームワーク](../../)の知識が必要です。
 
-## The passport-mfp-token-validation module
+## passport-mfp-token-validation モジュール
 {: #the-passport-mfp-token-validation-module }
-The passport-mfp-token-validation module provides an authentication mechanism to verify access tokens that are issued by the {{ site.data.keys.mf_server }}.
+passport-mfp-token-validation モジュールは、{{site.data.keys.mf_server }} によって発行されるアクセス・トークンを検証するための認証メカニズムを提供します。
 
-To install the module, run:
+モジュールをインストールするには、以下を実行します。
 
 ```bash
 npm install passport-mfp-token-validation@8.0.X
 ```
 
-## Usage
+## 使用法
 {: #usage }
-* The sample uses the `express` and `passport-mfp-token-validation` modules:
+* サンプルでは、`express` モジュールと `passport-mfp-token-validation` モジュールが使用されます。
 
   ```javascript
   var express = require('express');
@@ -41,7 +41,7 @@ npm install passport-mfp-token-validation@8.0.X
   var mfpStrategy = require('passport-mfp-token-validation').Strategy;
   ```
 
-* Set up the `Strategy` as follows:
+* `Strategy` を以下のようにセットアップします。
 
   ```javascript
   passport.use(new mfpStrategy({
@@ -58,12 +58,12 @@ npm install passport-mfp-token-validation@8.0.X
   }));
   ```
   
- * `authServerUrl`: Replace `localhost:9080` with your {{ site.data.keys.mf_server }} IP address and port number.
- * `confClientID`, `confClientPass`: Replace the confidential client ID and password with the ones that you defined in the {{ site.data.keys.mf_console }}.
- * `analytics`: The analytics item is optional, and required only if you wish to log analytics events to {{ site.data.keys.product }}.  
- Replace `localhost:9080`, `username`, and `password` with your Analytics Server IP address, port number, user name, and password.
+ * `authServerUrl`: `localhost:9080` を実際の {{site.data.keys.mf_server }} IP アドレスとポート番号に置き換えてください。
+ * `confClientID`、`confClientPass`: 機密クライアント ID とパスワードを {{site.data.keys.mf_console }} で定義したものに置き換えてください。
+ * `analytics`: Analytics 項目はオプションです。Analytics のイベントを {{site.data.keys.product }} のログに記録する場合にのみ必要です。  
+`localhost:9080`、`username`、および `password` を Analytics Server の IP アドレス、ポート番号、ユーザー名、およびパスワードに置き換えてください。
 
-* Authenticate requests by calling `passport.authenticate`:
+* `passport.authenticate` を呼び出して、要求を認証します。
 
   ```javascript
   var app = express();
@@ -83,19 +83,19 @@ npm install passport-mfp-token-validation@8.0.X
   });
   ```
 
- * The `Strategy` to employ should be `mobilefirst-strategy`.
- * Set `session` to `false`.
- * Specify the `scope` name.
+ * 採用する `Strategy` は、`mobilefirst-strategy` にする必要があります。
+ * `session` を `false` に設定します。
+ * `scope` 名を指定します。
 
-## Sample application 
+## サンプル・アプリケーション 
 {: #sample-application }
-[Download the Node.js sample](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80).
+[Node.js サンプルをダウンロード](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80)します。
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-1. Navigate to the sample's root folder and run the command: `npm install` followed by: `npm start`.
-2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-4. Register the matching application.
-5. Map the `accessRestricted` scope to the security check.
-6. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. サンプルのルート・フォルダーにナビゲートし、コマンド `npm install` を実行し、続けて、`npm start` も実行します。
+2. {{site.data.keys.mf_console }} で、必ず[機密クライアントと秘密鍵の値を更新](../#confidential-client)してください。
+3. **[UserLogin](../../user-authentication/security-check/)** または **[PinCodeAttempts](../../credentials-validation/security-check/)** のいずれかのセキュリティー検査をデプロイします。
+4. 一致するアプリケーションを登録します。
+5. `accessRestricted` スコープをセキュリティー検査にマップします。
+6. クライアント・アプリケーションを更新して、サーブレット URL に `WLResourceRequest` を発行します。

@@ -1,39 +1,42 @@
 ---
 layout: tutorial
-title: JSONStore in iOS applications
+title: iOS アプリケーション内の JSONStore
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 downloads:
-  - name: Download Xcode project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
-  - name: Download Adapter Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+  - name: Xcode プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
+  - name: アダプター Maven プロジェクトのダウンロード
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Prerequisites
+## 前提条件
+
 {: #prerequisites }
-* Read the [JSONStore parent tutorial](../)
-* Make sure the {{ site.data.keys.product_adj }} Native SDK was added to the Xcode project. Follow the [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios/) tutorial.
+* [JSONStore 親チュートリアル](../)を読む。
+* {{site.data.keys.product_adj }} ネイティブ SDK が Xcode プロジェクトに追加されていることを確認する。[『iOS アプリケーションへの {{site.data.keys.product }} SDK の追加』](../../../application-development/sdk/ios/)チュートリアルに従ってください。
 
-#### Jump to:
+#### ジャンプ先:
 {: #jump-to }
-* [Adding JSONStore](#adding-jsonstore)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-* [Sample application](#sample-application)
+* [JSONStore の追加](#adding-jsonstore)
+* [基本的な使用法
+](#basic-usage)
+* [高度な使用法
+](#advanced-usage)
+* [サンプル・アプリケーション](#sample-application)
 
-## Adding JSONStore
+## JSONStore の追加
 {: #adding-jsonstore }
-1. Add the following to the existing `podfile`, located at the root of the Xcode project:
+1. Xcode プロジェクトのルートにある既存の `podfile` に以下を追加します。
 
    ```xml
    pod 'IBMMobileFirstPlatformFoundationJSONStore'
    ```
 
-2. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install` - note that this action may take a while.
+2. **コマンド・ライン**・ウィンドウで、Xcode プロジェクトのルートにナビゲートし、コマンド `pod install` を実行します。このアクションにはしばらく時間がかかる場合があることに注意してください。
 
-Whenever you want to use JSONStore, make sure that you import the JSONStore header:  
+JSONStore を使用する場合はいつでも、必ず JSONStore ヘッダーをインポートするようにしてください。  
 Objective-C:
 
 ```objc
@@ -46,16 +49,18 @@ Swift:
 import IBMMobileFirstPlatformFoundationJSONStore    
 ```
 
-## Basic Usage
+## 基本的な使用法
+
 {: #basic-usage }
-### Open
+### 開く
 {: #open }
-Use `openCollections` to open one or more JSONStore collections.
+1 つ以上の JSONStore コレクションを開くには、`openCollections` を使用します。
 
-Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists.  
-If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
+コレクションの開始またはプロビジョニングは、コレクションとドキュメントが含まれる永続ストレージを作成することを意味します (永続ストレージが存在しない場合)。  
+永続ストレージが暗号化され、正しいパスワードが渡されると、そのデータにアクセスできるようにするための、セキュリティー上必要な手順が実行されます。
 
-For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
+
+初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』、『複数ユーザー・サポート』**、および**『{{site.data.keys.product_adj }} アダプターの統合』**を参照してください。
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -63,27 +68,28 @@ let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
 collection.setSearchField("name", withType: JSONStore_String)
 collection.setSearchField("age", withType: JSONStore_Integer)
 
-do {
+do  {
   try JSONStore.sharedInstance().openCollections([collection], withOptions: nil)
 } catch let error as NSError {
   // handle error
 }
 ```
 
-### Get
+### 取得
+
 {: #get }
-Use `getCollectionWithName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionWithName`.
+コレクションへのアクセス機能を作成するには、`getCollectionWithName` を使用します。`getCollectionWithName` を呼び出す前に `openCollections` を呼び出す必要があります。
 
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 ```
 
-The variable `collection` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`.
+これで、変数 `collection` を使用して、`people` コレクションに対して `add`、`find`、`replace` などの操作を実行できます。
 
-### Add
+### 追加
 {: #add }
-Use `addData` to store data as documents inside a collection.
+コレクション内にデータをドキュメントとして保管するには、`addData` を使用します。
 
 ```swift
 let collectionName:String = "people"
@@ -98,9 +104,10 @@ do  {
 }
 ```
 
-### Find
+### 検索
+
 {: #find }
-Use `findWithQueryParts` to locate a document inside a collection by using a query. Use `findAllWithOptions` to retrieve all the documents inside a collection. Use `findWithIds` to search by the document unique identifier.
+照会を使用してコレクション内のドキュメントを見つけるには、`findWithQueryParts` を使用します。 コレクション内のすべてのドキュメントを取り出すには、`findAllWithOptions` を使用します。ドキュメントの固有 ID で検索するには、`findWithIds` を使用します。
 
 ```swift
 let collectionName:String = "people"
@@ -120,9 +127,9 @@ do  {
 }
 ```
 
-### Replace
+### 置換
 {: #replace }
-Use `replaceDocuments` to modify documents inside a collection. The field that you use to perform the replacement is `_id,` the document unique identifier.
+コレクション内のドキュメントを変更するには、`replaceDocuments` を使用します。置換の実行に使用するフィールドは `_id,` で、これはドキュメントの固有 ID です。
 
 ```swift
 let collectionName:String = "people"
@@ -143,47 +150,48 @@ do {
 }
 ```
 
-This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
+この例では、ドキュメント `{_id: 1, json: {name: 'yoel', age: 23} }` がコレクションにあることを前提としています。
 
-### Remove
+### 削除
 {: #remove }
-Use `removeWithIds` to delete a document from a collection.
-Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial.
+ドキュメントをコレクションから削除するには、`removeWithIds` を使用します。`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。詳しくは、このチュートリアルの後半にある**{{site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
 
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
-do {
+do  {
   try collection.removeWithIds([1], andMarkDirty: true)
 } catch let error as NSError {
   // handle error
 }
 ```
 
-### Remove Collection
+### コレクションの削除
 {: #remove-collection }
-Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+コレクション内に保管されているすべてのドキュメントを削除するには、 `removeCollection` を使用します。 この操作は、データベース用語における、表のドロップと似ています。
 
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
-do {
+do  {
   try collection.removeCollection()
 } catch let error as NSError {
   // handle error
 }
 ```
 
-### Destroy
+### 破棄
 {: #destroy }
-Use `destroyData` to remove the following data:
+以下のデータを削除するには、`destroyData` を使用します。
 
-* All documents
-* All collections
-* All Stores - See **Multiple User Support** later in this tutorial
-* All JSONStore metadata and security artifacts - See **Security** later in this tutorial
+* すべてのドキュメント
+
+* すべてのコレクション
+
+* すべてのストア - このチュートリアル後半の**『複数ユーザー・サポート』**を参照してください。
+* すべての JSONStore メタデータおよびセキュリティー成果物 - このチュートリアル後半の**『セキュリティー』**を参照してください。
 
 ```swift
 do {
@@ -193,18 +201,20 @@ do {
 }
 ```
 
-## Advanced Usage
+## 高度な使用法
 {: #advanced-usage }
-### Security
+### セキュリティー
 {: #security }
-You can secure all the collections in a store by passing a `JSONStoreOpenOptions` object with a password to the `openCollections` function. If no password is passed, the documents of all the collections in the store are not encrypted.
+`JSONStoreOpenOptions` オブジェクトとパスワードを `openCollections` 関数に渡すことにより、ストア内のすべてのコレクションを保護できます。パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
 
-Some security metadata is stored in the keychain (iOS).  
-The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
+一部のセキュリティー・メタデータはキーチェーンに保管されます (iOS)。  
+ストアは 256 ビットの Advanced Encryption Standard
+(AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation
+Function 2 (PBKDF2) により強化されています。
 
-Use `closeAllCollections` to lock access to all the collections until you call `openCollections` again. If you think of `openCollections` as a login function you can think of `closeAllCollections` as the corresponding logout function.
+`closeAllCollections` を使用して、`openCollections` を再度呼び出すまですべてのコレクションへのアクセスをロックします。`openCollections` をログイン関数と考えると、`closeAllCollections` はそれに対応するログアウト関数と考えることができます。
 
-Use `changeCurrentPassword` to change the password.
+`changeCurrentPassword` を使用して、パスワードを変更します。
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -221,9 +231,9 @@ do {
 }
 ```
 
-### Multiple User Support
+### 複数ユーザー・サポート
 {: #multiple-user-support }
-You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `openCollections` function can take an options object with a username. If no username is given, the default username is "jsonstore".
+単一の {{site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`openCollections` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名は「jsonstore」です。
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -240,15 +250,15 @@ do {
 }
 ```
 
-### {{ site.data.keys.product_adj }} Adapter Integration
+### {{site.data.keys.product_adj }} アダプターの統合
 {: #mobilefirst-adapter-integration }
-This section assumes that you are familiar with adapters. Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
+このセクションは、ユーザーがアダプターについて理解していることを前提とします。アダプターの統合はオプションであり、コレクションからアダプターにデータを送信する方法、およびアダプターからコレクションにデータを取得する方法を提供します。
 
-You can achieve these goals by using functions such as `WLResourceRequest`.
+`WLResourceRequest` などの関数を使用することで、これらの目標を達成できます。
 
-#### Adapter Implementation
+#### アダプターの実装
 {: #adapter-implementation }
-Create an adapter and name it "**People**". Define it's procedures `addPerson`,  `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+アダプターを作成し、"**People**" という名前を付けます。このアダプターのプロシージャー `addPerson`、`getPeople`、`pushPeople`、 `removePerson`、および `replacePerson` を定義します。
 
 ```javascript
 function getPeople() {
@@ -279,9 +289,9 @@ function replacePerson(data) {
 }
 ```
 
-#### Load data from {{ site.data.keys.product_adj }} Adapter
+#### データを {{site.data.keys.product_adj }} アダプターからロード
 {: #load-data-from-mobilefirst-adapter }
-To load data from a MobileFirst Adapter use `WLResourceRequest`.
+データを MobileFirst アダプターからロードするには、`WLResourceRequest` を使用します。
 
 ```swift
 // Start - LoadFromAdapter
@@ -294,7 +304,7 @@ class LoadFromAdapter: NSObject, WLDelegate {
 
   func onFailure(response: WLFailResponse!) {
     // handle failure
-  }
+}
 }
 // End - LoadFromAdapter
 
@@ -304,26 +314,26 @@ let loadDelegate:LoadFromAdapter = LoadFromAdapter()
 pull.sendWithDelegate(loadDelegate)
 ```
 
-#### Get Push Required (Dirty Documents)
+#### プッシュが必要な対象 (ダーティーなドキュメント) の取得
 {: #get-push-required-dirty-documents }
-Calling `allDirty` returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
+`allDirty` を呼び出すと、「ダーティーなドキュメント」と呼ばれるドキュメントの配列が返されます。これは、バックエンド・システムには存在しないローカル変更が含まれるドキュメントです。
 
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
-do {
+do  {
   let dirtyDocs:NSArray = try collection.allDirty()
 } catch let error as NSError {
   // handle error
 }
 ```
 
-To prevent JSONStore from marking the documents as "dirty", pass the option `andMarkDirty:false` to `add`, `replace`, and `remove`.
+JSONStore でドキュメントが「ダーティー」とマーキングされないようにするには、オプション `andMarkDirty:false` を `add`、`replace`、および`remove` に渡します。
 
-#### Push changes
+#### 変更のプッシュ
 {: #push-changes }
-To push changes to an adapter, call the `allDirty` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
+変更をアダプターにプッシュするには、`allDirty` を呼び出して変更が含まれるドキュメントのリストを取得し、その後 `WLResourceRequest` を使用します。データが送信され、成功応答を受信した後、`markDocumentsClean` を呼び出す必要があります。
 
 ```swift
 // Start - PushToAdapter
@@ -334,14 +344,14 @@ class PushToAdapter: NSObject, WLDelegate {
 
   func onFailure(response: WLFailResponse!) {
     // handle failure
-  }
+}
 }
 // End - PushToAdapter
 
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
-do {
+do  {
   let dirtyDocs:NSArray = try collection.allDirty()
   let pushData:NSData = NSKeyedArchiver.archivedDataWithRootObject(dirtyDocs)
 
@@ -355,15 +365,15 @@ do {
 }
 ```
 
-<img alt="Image of the sample application" src="jsonstore-ios-screen.png" style="float:right; width:240px;"/>
-## Sample application
+<img alt="サンプル・アプリケーションのイメージ" src="jsonstore-ios-screen.png" style="float:right; width:240px;"/>
+## サンプル・アプリケーション
 {: #sample-application }
-The JSONStoreSwift project contains a native iOS Swift application that utilizes the JSONStore API set.  
-Included is a JavaScript adapter Maven project.
+JSONStoreSwift プロジェクトには、JSONStore API セットを使用するネイティブ iOS Swift アプリケーションが含まれています。  
+JavaScript アダプター Maven プロジェクトも使用可能です。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80) the Native iOS project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80) してネイティブ iOS プロジェクトをダウンロードします。  
+[ここをクリック](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) してアダプター Maven プロジェクトをダウンロードします。  
 
-### Sample usage
+### サンプルの使用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+サンプルの README.md ファイルの指示に従ってください。

@@ -1,125 +1,125 @@
 ---
 layout: tutorial
-title: Troubleshooting
+title: トラブルシューティング
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Resolving problems with {{ site.data.keys.product_full }} on IBM Containers	
+### IBM Containers 上の {{site.data.keys.product_full }} に関する問題の解決	
 {: #resolving-problems-with-ibm-mobilefirst-foundation-on-ibm-containers }
-When you are unable to resolve a problem encountered while working with {{ site.data.keys.product_full }} on IBM Containers, be sure to gather this key information before contacting IBM Support.
+IBM Containers 上の {{site.data.keys.product_full }} で作業中に検出された問題を解決できない場合、IBM サポートに連絡する前に、必ず以下の主要な情報を収集してください。
 
-To help expedite the troubleshooting process, gather the following information:
+トラブルシューティングの処理を迅速に進めるために、以下の情報を収集してください。
 
-* The version of {{ site.data.keys.product }} that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
-* The container size selected. For example, Medium 2GB.
-* The Bluemix  dashDB database plan type. For example, EnterpriseTransactional 2.8.50.
-* The container ID
-* The public IP address (if assigned)
-* Versions of docker and cloud foundry: `cf -v` and `docker version`
-* The information returned from running the following Cloud Foundry CLI plug-in for IBM Containers (cf ic) commands from the organization and space where your {{ site.data.keys.product }} container is deployed:
+* 使用している {{site.data.keys.product }} のバージョン (V8.0.0 以降が必要) および適用された暫定修正。
+* 選択されたコンテナー・サイズ。例えば、Medium 2GB。
+* Bluemix dashDB データベース・プランのタイプ。例えば、EnterpriseTransactional 2.8.50 です。
+* コンテナー ID
+* パブリック IP アドレス (割り当てられている場合)
+* Docker と Cloud Foundry のバージョン: `cf -v` and `docker version`
+* 以下の IBM Containers 用 Cloud Foundry CLI プラグイン (cf ic) コマンドの実行時に、{{site.data.keys.product }} コンテナーがデプロイされている組織およびスペースから返された情報。
  - `cf ic info`
- - `cf ic ps -a` (If more than one container instance is listed, make sure to indicate the one with the problem.)
-* If Secure Shell (SSH) and volumes were enabled during container creation (while running the **startserver.sh** script), collect all files in the following folders: /opt/ibm/wlp/usr/servers/mfp/logs and /var/log/rsyslog/syslog
-* If only volume was enabled and SSH was not, collect the available log information using the Bluemix dashboard. After you click on the container instance in the Bluemix dashboard, click the Monitoring and Logs link in the sidebar. Go to the Logging tab and then click ADVANCED VIEW. The Kibana dashboard opens separately. Using the search toolbar, search for the exception stack trace and then collect the complete details of the exception, @time-stamp, _id.
+ - `cf ic ps -a` (複数のコンテナー・インスタンスがリストされている場合は、必ず問題のあるコンテナー・インスタンスを示してください。)
+* コンテナーの作成時 (**startserver.sh** スクリプトの実行中) にセキュア・シェル (SSH) およびボリュームが有効にされた場合、以下のフォルダー内のすべてのファイルを収集します。 /opt/ibm/wlp/usr/servers/mfp/logs and /var/log/rsyslog/syslog
+* ボリュームのみが有効にされ、SSH は有効にされなかった場合は、Bluemix ダッシュボードを使用して、入手できるログ情報を収集します。Bluemix ダッシュボードでコンテナー・インスタンスをクリックした後、サイドバーにある「モニタリングおよびログ」リンクをクリックします。「ロギング」タブに移動して、「詳細ビュー」をクリックします。Kibana ダッシュボードが別個に開きます。検索ツールバーを使用して、例外スタック・トレースを検索し、例外の詳細 @time-stamp, _id を収集します。
 
-### Docker-related error while running script	
+### スクリプトの実行中の Docker 関連エラー	
 {: #docker-related-error-while-running-script }
-If you encounter Docker-related errors after executing the initenv.sh or prepareserver.sh scripts, try restarting the Docker service.
+initenv.sh スクリプトまたは  prepareserver.sh スクリプトの実行後に Docker 関連のエラーを検出した場合、Docker サービスを再始動してみてください。
 
-**Example message** 
+**メッセージの例** 
 
 > Pulling repository docker.io/library/ubuntu  
 > Error while pulling image: Get https://index.docker.io/v1/repositories/library/ubuntu/images: dial tcp: lookup index.docker.io on 192.168.0.0:00: DNS message ID mismatch
 
-**Explanation**  
-The error could occur when the internet connection has changed (such as connecting to or disconnecting from a VPN or network configuration changes) and the Docker runtime environment has not yet restarted. In this scenario, errors would occur when any Docker command is issued.
+**説明**  
+このエラーは、インターネット接続が変更されていて (VPN への接続、または VPN からの切断、あるいはネットワーク構成の変更など)、Docker ランタイム環境がまだ再始動されていない場合に発生する可能性があります。このシナリオでは、いずれかの Docker コマンドが発行されると、エラーが発生します。
 
-**How to resolve**  
-Restart the Docker service. If the error persists, reboot the computer and then restart the Docker service.
+**解決方法**  
+Docker サービスを再始動します。エラーが続く場合は、コンピューターをリブートしてから、Docker サービスを再始動してください。
 
-### Bluemix registry error	
+### Bluemix レジストリー・エラー	
 {: #bluemix-registry-error }
-If you encounter a registry-related error after executing the prepareserver.sh or prepareanalytics.sh scripts, try running the initenv.sh script first.
+prepareserver.sh スクリプトまたは  prepareanalytics.sh スクリプトの実行後にレジストリー関連のエラーが検出された場合は、最初に initenv.sh スクリプトを実行してみてください。
 
-**Explanation**  
-In general, any network problems that occur while the prepareserver.sh or prepareanalytics.sh scripts are running could cause processing to hang and then fail.
+**説明**  
+一般に、prepareserver.sh スクリプトまたは  prepareanalytics.sh スクリプトの実行中に何らかのネットワーク問題が発生すると、処理が停止して、失敗する可能性があります。
 
-**How to resolve**  
-First, run the initenv.sh script again to log in to the container registry on Bluemix . Then, rerun the script that previously failed.
+**解決方法**  
+最初に、initenv.sh スクリプトを実行し直して Bluemix 上のコンテナー・レジストリーにログインします。次に、前に失敗したスクリプトを再実行します。
 
-### Unable to create the mfpfsqldb.xml file
+### mfpfsqldb.xml ファイルを作成できない
 {: #unable-to-create-the-mfpfsqldbxml-file }
-An error occurs at the end of running the **prepareserverdbs.sh** script:
+**prepareserverdbs.sh** スクリプトの実行の終わりに、次のエラーが発生します。
 
 > Error : unable to create mfpfsqldb.xml
 
-**How to resolve**  
-The problem might be an intermittent database connectivity issue. Try to run the script again.
+**解決方法**  
+この問題は、偶発的なデータベース接続問題である可能性があります。スクリプトをもう一度実行してみてください。
 
-### Taking a long time to push image	
+### イメージをプッシュするのに長い時間がかかる	
 {: #taking-a-long-time-to-push-image }
-When running the prepareserver.sh script, it takes more than 20 minutes to push an image to the IBM Containers registry.
+prepareserver.sh スクリプトを実行しているとき、イメージを IBM Containers レジストリーにプッシュするのに 20 分より長い時間がかかります。
 
-**Explanation**  
-The **prepareserver.sh** script pushes the entire {{ site.data.keys.product }} stack, which can take from 20 to 60 minutes.
+**説明**  
+**prepareserver.sh** スクリプトは {{site.data.keys.product }} スタック全体をプッシュするため、20 分から 60 分かかる可能性があります。
 
-**How to resolve**  
-If the script has not completed after a 60-minute time period has elapsed, the process might be hung because of a connectivity issue. After a stable connection is reestablished, restart the script.
+**解決方法**  
+60 分の時間枠が経過してもスクリプトが完了していない場合は、接続問題が原因でプロセスが停止している可能性があります。安定した接続が再確立されたら、スクリプトを再始動してください。
 
-### Binding is incomplete error	
+### バインディングが未完了エラー	
 {: #binding-is-incomplete-error }
-When running a script to start a container (such as **startserver.sh** or **startanalytics.sh**) you are prompted to manually bind an IP address because of an error that the binding is incomplete.
+コンテナーを開始するためのスクリプト (**startserver.sh** または **startanalytics.sh** など) の実行時に、バインディングが未完了であるというエラーにより、手動で IP アドレスをバインドするよう求めるプロンプトが出されます。
 
-**Explanation**  
-The script is designed to exit after a certain time duration has passed.
+**説明**  
+このスクリプトは、特定の時間間隔が経過した後に終了するように設計されています。
 
-**How to resolve**  
-Manually bind the IP address by running the related cf ic command. For example, cf ic ip bind.
+**解決方法**  
+関連の cf ic コマンドを実行して、手動で IP アドレスをバインドします。例: cf ic ip bind。
 
-If binding the IP address manually is not successful, ensure that the status of the container is running and then try binding again.  
-**Note:** Containers must be in a running state to be bound successfully.
+手動での IP アドレスのバインドが正常に行われない場合は、コンテナーの状況が「実行中」であることを確認して、バインディングを再試行してください。  
+**注:** バインドを正常に行うためには、コンテナーが実行中状態でなければなりません。
 
-### Script fails and returns message about tokens	
+### スクリプトが失敗し、トークンに関するメッセージを返す	
 {: #script-fails-and-returns-message-about-tokens }
-Running a script is not successful and returns a message similar to Refreshing cf tokens or Failed to refresh token.
+スクリプトの実行が成功せず、Refreshing cf tokens または Failed to refresh token に類似したメッセージを返します。
 
-**Explanation**  
-The Bluemix session might have timed-out. The user must be logged in to Bluemix before running the container scripts.
+**説明**  
+Bluemix セッションがタイムアウトになった可能性があります。ユーザーは、コンテナー・スクリプトを実行する前に、Bluemix にログインする必要があります。
 
-**How to resolve**
-Run the initenv.sh script again to log in to Bluemix and then run the failed script again.
+**解決方法**
+initenv.sh スクリプトを再実行して Bluemix にログインし、失敗したスクリプトを再実行してください。
 
-### Administration DB, Live Update and Push Service show up as inactive	
+### 管理 DB、ライブ・アップデート、およびプッシュ・サービスが非アクティブとして表示される	
 {: #administration-db-live-update-and-push-service-show-up-as-inactive }
-Administration DB, Live Update and Push Service show up as inactive or no runtimes are listed in the {{ site.data.keys.mf_console }} even though the **prepareserver.sh** script completed successfully.
+**prepareserver.sh** スクリプトが正常に完了しても、「管理 DB」、「ライブ・アップデート」、および「プッシュ・サービス」が非アクティブとして表示されるか、{{site.data.keys.mf_console }} にランタイムがリストされません。
 
-**Explanation**  
-It is possible that a either a connection to the database service did not get established or that a formatting problem occurred in the server.env file when additional values were appended during deployment.
+**説明**  
+データベース・サービスへの接続が確立されなかったか、デプロイメント中に値が追加されたときに、server.env ファイルでフォーマット設定の問題が発生した可能性があります。
 
-If additional values were added to the server.env file without new line characters, the properties would not resolve. You can validate this potential problem by checking the log files for errors caused by unresolved properties that look similar to this error:
+追加の値が、改行文字なしで server.env ファイルに追加された場合、プロパティーは解決されません。この問題の可能性については、未解決のプロパティーが原因で発生したエラーがないかログ・ファイルをチェックすることによって確認できます。エラーは、次のようなものです。
 
 > FWLSE0320E: Failed to check whether the admin services are ready. Caused by: [project Sample] java.net.MalformedURLException: Bad host: "${env.IP_ADDRESS}"
 
-**How to resolve**  
-Manually restart the containers. If the problem still exists, check to see if the number of connections to the database service exceeds the number of connections provisioned by your database plan. If so, make any needed adjustments before proceeding.
+**解決方法**  
+手動でコンテナーを再始動します。それでも問題が解決されない場合は、データベース・サービスへの接続数が、データベース計画によってプロビジョンされた接続数を超えていないかどうか確認してください。超えている場合は、続行する前に、必要な調整を実行してください。
 
-If the problem was caused by unresolved properties, ensure that your editor adds the linefeed (LF) character to demarcate the end of a line when editing any of the provided files. For example, the TextEdit app on macOS might use the CR character to mark the end of line instead of LF, which would cause the issue.
+問題の原因が未解決のプロパティーだった場合は、提供されたファイルを編集しているときに、行の終わりを区別するために、エディターが確実に改行 (LF) 文字を追加するようにしてください。例えば、macOS の TextEdit アプリは、行の終わりのマークを付けるために、LF 文字の代わりに CR 文字を使用する場合があり、それによりこの問題が発生することになります。
 
-### prepareserver.sh script fails	
+### prepareserver.sh スクリプトが失敗する	
 {: #prepareserversh-script-fails }
-The **prepareserver.sh** script fails and returns the error 405 Method Not Allowed.
+**prepareserver.sh** スクリプトが失敗し、エラー 405 Method Not Allowed が返されます。
 
-**Explanation**  
-The following error occurs when running the **prepareserver.sh** script to push the image to the IBM Containers registry.
+**説明**  
+イメージを IBM Containers レジストリーにプッシュするために **prepareserver.sh** スクリプトを実行しているときに、以下のエラーが発生します。
 
-> Pushing the {{ site.data.keys.mf_server }} image to the IBM Containers registry..  
+> Pushing the {{site.data.keys.mf_server }} image to the IBM Containers registry..  
 > Error response from daemon:  
 > 405 Method Not Allowed  
 > Method Not Allowed  
 > The method is not allowed for the requested URL.
 
-This error typically occurs if the Docker variables have been modified on the host environment. After executing the initenv.sh script, the tooling provides an option to override the local docker environment to connect to IBM Containers using native docker commands.
+このエラーは通常、ホスト環境で Docker 変数が変更された場合に発生します。initenv.sh スクリプトの実行後に、ツールにより、ネイティブ Docker コマンドを使用して IBM Containers に接続するローカル Docker 環境をオーバーライドするためのオプションが提供されます。
 
-**How to resolve**  
-Do not modify the Docker variables (such as DOCKER\_HOST and DOCKER\_CERT\_PATH) to point to the IBM Containers registry environment. For the **prepareserver.sh** script to work correctly, the Docker variables must point to the local Docker environment.
+**解決方法**  
+Docker 変数 (DOCKER\_HOST や DOCKER\_CERT\_PATH など) を、IBM Containers レジストリー環境を指すように変更することはしないでください。**prepareserver.sh** スクリプトが正常に機能するためには、Docker 変数がローカル Docker 環境を指している必要があります。
