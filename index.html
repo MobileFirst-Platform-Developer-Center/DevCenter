@@ -92,7 +92,7 @@ indexed: false
 <!-- Latest blog post -->
 <div id="blogPosts">
    <div class="container" role="section">
-      <span class="latestPost">Latest in the blog: </span>{% for post in site.posts limit:1 %}<span class="latestPostTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></span>{% endfor %}<span class="more-posts"><a href="{{ site.baseurl}}/blog">All blog posts</a> | <a href="{{ site.baseurl}}/blog/tag/Announcement">Product announcements</a></span>
+      <span class="latestPost">Latest in the blog: </span>{% for post in site.posts limit:1 %}<span class="latestPostTitle"><a href="{{site.baseurl}}{{post.url}}">{{post.title}}</a></span>{% endfor %}<span class="more-posts hidden-xs hidden-sm"><a href="{{ site.baseurl}}/blog">All blog posts</a> | <a href="{{ site.baseurl}}/blog/tag/Announcement">Product announcements</a></span>
    </div>
 </div> 
 
@@ -135,18 +135,36 @@ indexed: false
    
    <!-- Benefits -->
    <div id="index_benefits" class="container" role="section">
-      <img class="foundation_diamond hidden-sm hidden-xs" src="../assets/foundation.svg" alt="Foundation diamond icon"/>
+      <div class="row hidden-xs hidden-sm hidden-md">
+         <div class="col-md-6">
+            <img class="foundation_diamond" src="../assets/foundation.svg" alt="Foundation diamond icon"/>
+         </div>
+         
+         <div class="col-md-6" style="float:right">
+            <h1 class="no-anchor">Benefits</h1>
+            <div class="benefits">
+               <p>Start small and <span class="highlight_text">develop in the cloud</span>, then move and scale<br/>production workloads on premises or in a dedicated cloud<br/> environment.</p>
+               
+               <p><span class="highlight_text">Leverage Bluemix services</span> such as App Conten Manager,<br/> IoT Platform, Weather Data, as well as a varity of Cognitive<br/> capabilities using IBM Watson and others.</p>
+               
+               <p>Build an <span class="highlight_text">automated DevOps pipeline</span> to speed up deployments<br/> &amp; updates to applications.</p>
+               
+               <p>Work seamlessly with <span class="highlight_text">IBM API Connect and DataPower Gateway</span><br/> to add API creation &amp; management capabilities, and to<br/> enforce API &amp; mobile security at the edge of the network.</p>
+            </div>
+         </div>
+      </div>
       
-      <div style="float:right">
-         <h1 class="no-anchor">Benefits</h1>
-         <div class="benefits">
-            <p>Start small and <span class="highlight_text">develop in the cloud</span>, then move and scale<br/>production workloads on premises or in a dedicated cloud<br/> environment.</p>
+      <!-- Benefits in smaller screens -->
+      <div class="visible-xs visible-sm visible-md" role="section">
+         <div class="benefits-small-screens">
+            <h1 class="no-anchor">Benefits</h1>
+            <p>Start small and <span class="highlight_text">develop in the cloud</span>, then move and scale production workloads on premises or in a dedicated cloud environment.</p>
             
-            <p><span class="highlight_text">Leverage Bluemix services</span> such as App Conten Manager,<br/> IoT Platform, Weather Data, as well as a varity of Cognitive<br/> capabilities using IBM Watson and others.</p>
+            <p><span class="highlight_text">Leverage Bluemix services</span> such as App Conten Manager, IoT Platform, Weather Data, as well as a varity of Cognitive capabilities using IBM Watson and others.</p>
             
-            <p>Build an <span class="highlight_text">automated DevOps pipeline</span> to speed up deployments<br/> &amp; updates to applications.</p>
+            <p>Build an <span class="highlight_text">automated DevOps pipeline</span> to speed up deployments &amp; updates to applications.</p>
             
-            <p>Work seamlessly with <span class="highlight_text">IBM API Connect and DataPower Gateway</span><br/> to add API creation &amp; management capabilities, and to<br/> enforce API &amp; mobile security at the edge of the network.</p>
+            <p>Work seamlessly with <span class="highlight_text">IBM API Connect and DataPower Gateway</span>  to add API creation &amp; management capabilities, and to enforce API &amp; mobile security at the edge of the network.</p>
          </div>
       </div>
    </div>
@@ -185,7 +203,7 @@ indexed: false
          </div>
          
          <!-- Get Started in smaller screens -->
-         <div class="visible-xs visible-sm">
+         <div class="visible-xs visible-sm" role="section">
             <p><a href="{{ site.baseurl }}/downloads">Download our Developer Kit</a> for a local installation,<br/> or <a href="{{ site.baseurl }}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/">head over to Bluemix</a> to setup a<br/> Mobile Foundation server in the cloud.</p>
             
             <p>Once you have a server running, <a href="{{ site.baseurl }}/tutorials/en/foundation/8.0/all-tutorials/">follow our tutorials</a>,<br/> and you'll be up and running in no time.</p>

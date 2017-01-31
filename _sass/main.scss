@@ -1,16 +1,3 @@
-//colors
-$black:  black;
-$color_rhino_approx: #264a60;
-$white: white;
-$color_chambray_approx: #325c80;
-$color_nile_blue_approx: #1d3649;
-$color_woodsmoke_approx: #111111;
-$color_shark_approx: #242528;
-$color_mine_shaft_approx: #313236;
-$color_mountain_mist_approx: #999;
-$color_alto_approx: #dddddd;
-$color_quill_gray_approx: #d6d5d5;
-
 //fonts
 $font_0: Helvetica;
 $font_1: Arial;
@@ -31,7 +18,7 @@ html {
 body {
 	height: 100%;
 	padding-top: 0;
-	font-family: $font_0, $font_1, $font_2;
+	font-family: Helvetica, Arial, sans-serif;
 	-webkit-print-color-adjust:exact;
 }
 
@@ -175,6 +162,10 @@ body {
 		.benefits {
 			padding-right: 80px;
 		}
+		
+		.benefits-small-screens {
+			text-align: center;
+		}
 	}
 	
 	#index_getstarted {
@@ -317,21 +308,21 @@ blockquote {
 	.btn-group {
 		float:right;
 		&.open>.btn-default.dropdown-toggle {
-			color: $white;
-			background-color: $color_nile_blue_approx;
+			color: white;
+			background-color: #1d3649;
 		}
 	}
 	.download-button {
 		border-radius: 5px;
-		font-family: $font_1;
-		color: $white;
+		font-family: Arial;
+		color: white;
 		font-size: 13px;
-		background-color: $color_rhino_approx;
+		background-color: #264a60;
 		padding: 5px 10px;
 		margin: 21px 0 5px 5px;
 		float: right;
-		border: 1px solid $color_chambray_approx;
-		box-shadow: 0 2px $color_quill_gray_approx;
+		border: 1px solid #325c80;
+		box-shadow: 0 2px #d6d5d5;
 		text-decoration: none;
 
 		.glyphicon-download-alt:before {
@@ -339,8 +330,8 @@ blockquote {
 		}
 
 		&:hover {
-			color: $white;
-			background-color: $color_nile_blue_approx;
+			color: white;
+			background-color: #1d3649;
 			text-decoration: none;
 		}
 		&:active {
@@ -354,9 +345,9 @@ blockquote {
 	color: white;
 }
 .container .btn {
-	background-color: $color_rhino_approx;
+	background-color: #264a60;
 	&:hover {
-		background-color: $color_nile_blue_approx;
+		background-color: #1d3649;
 		color: white;
 	}
 }
