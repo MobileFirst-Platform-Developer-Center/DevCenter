@@ -135,13 +135,16 @@ body {
 				width: 20%;
 				padding: 20px;
 				font-weight: 300;
-				margin-bottom: 35px;
-				
+								
 				img {
 					height: 105px;
 				}
 			}
 		}
+      
+      .feature-indicators {
+         margin-bottom: 35px;
+      }
 		
 		a.read-more {
 			width: 300px;
