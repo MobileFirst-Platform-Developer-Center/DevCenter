@@ -44,9 +44,14 @@
       .postTitle {
          margin-bottom: 0;
          font-size: 120%;
+         
          a {
             color: #337ab7;
             text-decoration: none;
+            
+            &:hover {
+               text-decoration: underline;
+            }
          }
       }
       
