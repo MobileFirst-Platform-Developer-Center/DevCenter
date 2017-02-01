@@ -230,15 +230,22 @@ body {
 			}
 		}
 		
-		.number {
+		.number1,.number2 {
 			border-radius: 50%;
-    		padding: 7px 10px 3px 10px;
 		   border: 1px solid #649fe2;
 		   color: #649fe2;
 			font-size: 120%;
     		font-weight: bold;
 			position: initial;
 		}
+      
+      .number1 {
+         padding: 7px 10px 3px 10px;
+      }
+      
+      .number2 {
+         padding: 7px 9px 3px 9px;
+      }
 		
 		#index_getstarted_icons {
 			margin-left: 100px;
