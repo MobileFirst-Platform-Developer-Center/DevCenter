@@ -12,7 +12,7 @@ author:
   name: SRIKANTH K MURALI 
 ---
 
-> **Note:** This blog post refers to connecting a on-prem database as the admin and run time DB for the MobileFirst server running on IBM Containers. For instructions on connecting to on-prem backends from your adapters for MobileFirst server running on Liberty buildpacks and Mobile Foundation Bluemix service (which also runs on Liberty buildpack), pl refer to this [blog post](https://mobilefirstplatform.ibmcloud.com/blog/2016/04/12/mobile-foundation-bluemix-configuration-with-onprem-analytics-server/)
+> **Note:** This blog post refers to connecting a on-prem database as the admin and run time DB for the MobileFirst server running on IBM Containers. For instructions on connecting to on-prem backends from your adapters for MobileFirst server running on Liberty buildpacks and Mobile Foundation Bluemix service (which also runs on Liberty buildpack), pl refer to this [blog post](https://mobilefirstplatform.ibmcloud.com/blog/2016/08/22/connecting-to-on-premise-backends-with-bluemix-secure-gateway-service/)
 
 You are already aware of the [IBM MobileFirst Platform Foundation (MFPF)](https://developer.ibm.com/mobilefirstplatform/documentation/getting-started-7-1/bluemix/run-foundation-on-bluemix) on IBM Containers offering that allows you to take a locally developed IBM MobileFirst project and run it on IBM Bluemix. This article demonstrates on how to securely connect from the IBM MobileFirst Platform Foundation on IBM Containers to a on-premise computer / data-center using the newly launched [Virtual Private Network (VPN)](https://www.ng.bluemix.net/docs/services/vpn/index.html) Service on IBM Bluemix.
 
