@@ -1,314 +1,314 @@
 ---
 layout: tutorial
-title: Distributing mobile applications with IBM Application Center
+title: IBM Application Center を使用したモバイル・アプリケーションの配布
 relevantTo: [ios,android,windows8,cordova]
 show_in_nav: false
 weight: 7
 ---
-## Overview
+## 概説
 {: #overview }
-{{ site.data.keys.mf_app_center_full }} is a **repository of mobile applications** similar to public app stores but focused on the needs of an organization or a team. It is a private app store.
+{{site.data.keys.mf_app_center_full }} は、公開アプリケーション・ストアに似た**モバイル・アプリケーションのリポジトリー **ですが、組織やチームのニーズに焦点を置いています。これは専用アプリ・ストアです。
 
-Application Center facilitates sharing mobile applications:
+Application Center を使用すると、簡単にモバイル・アプリケーションを共有できます。
 
-* You can **share feedback and rating** information.  
-* You can use access control lists to limit who can install applications.
+* **フィードバックおよび評価情報の共有**を行うことができます。  
+* アプリケーションをインストールできるユーザーを制限するためにアクセス制御リストを使用できます。
 
-Application Center works with {{ site.data.keys.product_adj }} apps and non-{{ site.data.keys.product_adj }} apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
+Application Center は、{{site.data.keys.product_adj }} アプリケーションおよび非 {{site.data.keys.product_adj }} アプリケーションと連携し、**iOS、Android**、**BlackBerry 6/7**、および **Windows/Phone 8.x** の各種アプリケーションをすべてサポートします。
 
-> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
+> **注:** iOS アプリケーションのストアへの提出および検証のために Test Flight または iTunes Connect を使用して生成されたアーカイブ・ファイルおよび IPA ファイルにより、ランタイムの異常終了や失敗が発生する場合があります。詳細については、ブログ[『Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0』](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/)をご覧ください。
 
-You can use Application Center in different contexts. For example:
+Application Center はさまざまな状況で使用できます。例えば、以下があります。 
 
-* As an enterprise app store across an organization.
-* During development to distribute applications within a team.
+* 組織全体の企業アプリ・ストアとして。
+* 開発中、チーム内にアプリケーションを配布するため。
 
-> **Note:** to build the iOS AppCenter Installer application, MobileFirst 7.1 is required.
+> **注:** iOS AppCenter Installer アプリケーションのビルドには、MobileFirst 7.1 が必要です。
 
-#### Jump to:
+#### ジャンプ先
 {: #jump-to}
-* [Installing and configuring](#installing-and-configuring)
-* [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client)
-* [Preparing mobile clients](#preparing-mobile-clients)
-* [Managing applications in the Application Center console](#managing-applications-in-the-application-center-console)
-* [The Application Center mobile client](#the-application-center-mobile-client)
-* [Application Center command-line tools](#application-center-command-line-tools)
+* [インストールおよび構成](#installing-and-configuring)
+* [Cordova ベースの IBM AppCenter クライアント](#cordova-based-ibm-appcenter-client)
+* [モバイル・クライアントの準備](#preparing-mobile-clients)
+* [Application Center コンソールでのアプリケーションの管理](#managing-applications-in-the-application-center-console)
+* [Application Center モバイル・クライアント](#the-application-center-mobile-client)
+* [Application Center コマンド・ライン・ツール](#application-center-command-line-tools)
 
-## Installing and configuring
+## インストールおよび構成
 {: #installing-and-configuring }
-Application Center is installed as part of the installation of {{ site.data.keys.mf_server }} with IBM Installation Manager.
+Application Center は、IBM Installation Manager によって {{site.data.keys.mf_server }} のインストールの一部としてインストールされます。
 
-**Prerequisite:** Before you install Application Center, you must have installed an application server and a database:
+**前提条件:** Application Center をインストールする前に、アプリケーション・サーバーおよびデータベースをインストールしておく必要があります。
 
-* Application server: Tomcat or WebSphere  Application Server full profile or Liberty profile
-* Database: DB2 , Oracle, or MySQL
+* アプリケーション・サーバー: Tomcat、または WebSphere Application Server フル・プロファイルまたは Liberty プロファイル
+* データベース: DB2、Oracle、または MySQL
 
-If you do not have a database installed, the installation process can also install an Apache Derby database. However, using the Derby database is not recommended for production scenarios.
+データベースをインストールしていない場合は、インストール・プロセスで Apache Derby データベースをインストールすることもできます。ただし、Derby データベースの使用は実動シナリオでは推奨されません。
 
-1. IBM Installation Manager guides you through the installation of Application Center with choices of database and application server.
+1. IBM Installation Manager に従って、データベースおよびアプリケーション・サーバーを選択して Application Center をインストールします。
 
-    > For more information, see the topic about [installing {{ site.data.keys.mf_server }}](../../installation-configuration).
+    > 詳しくは、トピック[『{{site.data.keys.mf_server }} のインストール』](../../installation-configuration)を参照してください。
 
-    Because iOS 7.1 supports only the https protocol, the Application Center server must be secured with SSL (at least with TLS v.1) if you plan to distribute apps for devices that run iOS 7.1 or later. Self-signed certificates are not recommended, but can be used for testing purposes, provided that self-signed CA certificates are distributed to devices.
+    iOS 7.1 は https プロトコルのみをサポートしているため、iOS 7.1 以降を実行するデバイス用のアプリケーションを配布することを計画している場合は、Application Center サーバーを SSL (少なくとも TLS v.1) で保護する必要があります。自己署名証明書は推奨されませんが、自己署名 CA 証明書がデバイスに配布される場合は、テストの目的では使用できます。
 
-2. After Application Center is installed with IBM Installation Manager, open the console: `http://localhost:9080/appcenterconsole`
+2. Application Center が IBM Installation Manager を使用してインストールされた後に、コンソール `http://localhost:9080/appcenterconsole` を開きます。
 
-3. Log in with this user/password combination: demo/demo
+3. ユーザー/パスワードの組み合わせ demo/demo を使用してログインします。
 
-4. At this point, you can configure user authentication. For example, you can connect to an LDAP repository.
+4. この時点で、ユーザー認証を構成できます。例えば、LDAP リポジトリーに接続できます。
 
-    > For more information, see the topic about [configuring the Application Center after installation](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
+    > 詳しくは、トピック[『インストール後の Application Center の構成』](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation)を参照してください。
+5. Android、iOS、BlackBerry 6/7、および Windows Phone 8 用にモバイル・クライアントを準備します。
 
-5. Prepare the mobile client for Android, iOS, BlackBerry 6/7, and Windows Phone 8
+モバイル・クライアントは、カタログの参照およびアプリケーションのインストールに使用するモバイル・アプリケーションです。
 
-The mobile client is the mobile application that you use to browse the catalog and install the application.
+> **注:** 実動インストールの場合は、提供されている Ant タスクを実行して Application Center をインストールすることを検討してください。これにより、サーバーへの更新を Application Center への更新から分離できるようになります。
 
-> **Note:** For a production installation, consider to install the Application Center by running the provided Ant tasks: it enables you to decouple updates to the server from updates to the Application Center.
-
-## Cordova based IBM AppCenter client
+## Cordova ベースの IBM AppCenter クライアント
 {: #cordova-based-ibm-appcenter-client }
-The Cordova based AppCenter client project is located in the `install` directory at: **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**.
+Cordova ベースの AppCenter クライアント・プロジェクトは、**install_dir/ApplicationCenter/installer/CordovaAppCenterClient** の `install` ディレクトリーにあります。
 
-This project is based solely on the Cordova framework and thus has no dependency on the {{ site.data.keys.product }} client/server APIs.  
-Since this a standard Cordova app, there is also no dependency on {{ site.data.keys.mf_studio }}. This app uses Dojo for the UI.
+このプロジェクトは、Cordova フレームワークのみに基づいており、{{site.data.keys.product }} クライアント/サーバー API にまったく依存していません。  
+これは標準 Cordova アプリケーションであるため、{{site.data.keys.mf_studio }} にも依存していません。このアプリケーションは、UI には Dojo を使用します。
 
-Follow the steps below to get started:
+以下の手順に従って開始してください。
 
-1. Install Cordova.
+1. Cordova をインストールします。
 
 ```bash
 npm install -g cordova@latest
 ```
 
-2. Install Android SDK and set the `ANDROID_HOME`.  
-3. Build and run this project.
+2. Android SDK をインストールし、`ANDROID_HOME` を設定します。  
+3. このプロジェクトをビルドし、実行します。
 
-Build all platforms:
+すべてのプラットフォームのビルド:
 
 ```bash
 cordova build
 ```
 
-Build only Android:
+Android のみのビルド:
 
 ```bash
 cordova build android
 ```
 
-Build only iOS:
+iOS のみのビルド:
 
 ```bash
 cordova build ios
 ```
 
-### Customizing AppCenter Installer application
+### AppCenter Installer アプリケーションのカスタマイズ
 {: #customizing-appcenter-installer-application }
-You can further customize the application, such as updating its user interface for your specific company or needs.
+特定の企業またはニーズに合わせてユーザー・インターフェースを更新するなど、さらにアプリケーションをカスタマイズできます。
 
-> **Note:** While you can freely customize the application UI and behavior, such changes are not under the support agreement by IBM.
+> **注:** アプリケーションの UI および動作を自由にカスタマイズできる一方、このような変更は IBM によるサポート契約の対象外です。
 
 #### Android
 {: #android }
-* Open the Android Studio.
-* Select **Import project (Eclipse ADT, Gradle, etc.)**
-* Select the android folder from **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android**.
+* Android Studio を開きます。
+* **「Import project (Eclipse ADT, Gradle, etc.)」**を選択します。
+* **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android** から android フォルダーを選択します。
 
-This might take some time. Once this is done you are ready to customize.
+これには時間がかかる場合があります。これが行われた後、カスタマイズする準備が整います。
 
-> **Note:** Select to skip the update option on the popup window, for upgrading the gradle version. Refer to `grade-wrapper.properties` for the version.
+> **注:** ポップアップ・ウィンドウに表示される Gradle バージョンのアップグレードのための更新オプションはスキップすることを選択してください。このバージョンについては、`grade-wrapper.properties` を参照してください。
 
 #### iOS
 {: #ios }
-* Go to **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
-* Click to open the **IBMAppCenterClient.xcodeproj** file, the project is opened in Xcode and you are ready to customize.
+* **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms** に進みます。
+* **IBMAppCenterClient.xcodeproj** ファイルをクリックして開くと、プロジェクトが Xcode で開かれ、カスタマイズする準備が整います。
 
-## Preparing mobile clients
+## モバイル・クライアントの準備
 {: #preparing-mobile-clients }
-### For Android phones and tablets
+### Android 電話およびタブレットの場合
 {: #for-android-phones-and-tablets }
-The mobile client is delivered as a compiled application (APK) and is located at **install_dir/ApplicationCenter/installer/IBMApplicationCenter.apk**
+モバイル・クライアントは、コンパイル済みアプリケーション (APK) として配布され、**install_dir/ApplicationCenter/installer/IBMApplicationCenter.apk** にあります。
 
-> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
+> **注:** Android および iOS の AppCenter クライアントのビルドに Cordova フレームワークを使用する場合は、[『Cordova ベースの IBM AppCenter クライアント』](#cordova-based-ibm-appcenter-client)を参照してください。
 
-### For iPad and iPhone
+### iPad および iPhone の場合
 {: #for-ipad-and-iphone }
-1. Compile and sign the client application provided in source code. This is mandatory.
+1. ソース・コードで提供されているクライアント・アプリケーションをコンパイルし、それに署名します。これは必須です。
 
-2. In MobileFirst Studio, open the IBMAppCenter Project at: **install\_dir/ApplicationCenter/installer**
+2. MobileFirst Studio で、**install\_dir/ApplicationCenter/installer** にある IBMAppCenter プロジェクトを開きます。
 
-3. Use **Run As → Run on MobileFirst Development Server** to build the project.
+3. **「実行 (Run As)」→「MobileFirst Development Server 上で実行 (Run on MobileFirst Development Server)」**を使用して、プロジェクトをビルドします。
 
-4. Use Xcode to build and sign the application with your Apple iOS Enterprise profile.  
-You can either open the resulting native project (in **iphone\native**) manually in Xcode, or right-click the iPhone folder and select **Run As → Xcode project**. This action generats the project and opens it in Xcode.
+4. Xcode を使用して、Apple iOS 企業プロファイルを使用してアプリケーションをビルドし、それに署名します。  
+結果のネイティブ・プロジェクト (**iphone\native** 内にあります) を Xcode で手動で開くか、iPhone フォルダーを右クリックして**「実行 (Run As)」→「Xcode プロジェクト (Xcode project)」**を選択します。このアクションにより、プロジェクトが生成され、Xcode で開きます。
 
-> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
+> **注:** Android および iOS の AppCenter クライアントのビルドに Cordova フレームワークを使用する場合は、[『Cordova ベースの IBM AppCenter クライアント』](#cordova-based-ibm-appcenter-client)を参照してください。
 
-### For Blackberry
+### Blackberry の場合
 {: #for-blackberry }
-* To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
+* BlackBerry バージョンをビルドするには、BlackBerry Eclipse IDE (または BlackBerry Java プラグインがインストールされた Eclipse) と BlackBerry SDK 6.0 が必要です。BlackBerry SDK 6.0 でコンパイルすると、アプリケーションの実行も BlackBerry OS 7 上で行われます。
 
-A BlackBerry project is provided in: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+BlackBerry プロジェクトは、**install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6** 内にあります。
 
-### For Windows Phone 8
+### Windows Phone 8 の場合
 {: #for-windows-phone-8}
-1.  Register a company account with Microsoft.  
-Application Center manages only company applications that are signed with the company certificate that comes with your company account.
+1.  Microsoft に企業アカウントを登録します。  
+Application Center は、企業アカウントに付随する企業証明書を使用して署名された企業アプリケーションのみを管理します。
 
-2. The Windows Phone version of the mobile client is included at: **install\_dir/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap**
+2. モバイル・クライアントの Windows Phone バージョンは、**install\_dir/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap** に含まれています。
 
-* Make sure that also the Application Center mobile client is signed with this company certificate.
+* Application Center モバイル・クライアントもこの企業証明書を使用して署名されていることを確認してください。
 
-* To install company applications on a device, first enroll the device with the company by installing a company enrollment token.
+* デバイスに企業アプリケーションをインストールするには、まず企業登録トークンをインストールして、デバイスをその企業で登録します。
 
-> For more information about company accounts and enrollment tokens, see the [Microsoft Developer website → Company app distribution for Windows Phone](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) page.
+> 企業アカウントおよび登録トークンについて詳しくは、[Microsoft Developer Web サイト→「Windows Phone 用の自社アプリの配布」](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) ページを参照してください。
 
-> For more information about how to sign Windows Phone mobile client applications, see the [Microsoft Developer website](http://dev.windows.com/en-us/develop).
+> Windows Phone モバイル・クライアント・アプリケーションの署名方法について詳しくは、[Microsoft Developer Web サイト](http://dev.windows.com/en-us/develop)を参照してください。
 
 <br/>
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:**  You **cannot** use the unsigned `.xap` file directly. Before you can install it on a device, you must first sign it with your company certificate, which you obtained from Symantec or Microsoft.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:**  未署名の `.xap` ファイルを直接使用することは**できません**。デバイスにこのファイルをインストールする前に、事前に、Symantec または Microsoft から取得した企業証明書を使用してファイルに署名する必要があります。
 
-### For Windows Store Apps for Windows 8.1 Pro
+### Windows Store Apps for Windows 8.1 Pro の場合
 {: #for-windows-store-apps-for-windows-81-pro }
-* The **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file contains the executable of the Application Center client. Distribute this file to the client computer and unzip it. It contains the executable program.
+* **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** ファイルには、Application Center クライアントの実行可能ファイルが含まれています。このファイルをクライアント・コンピューターに配布し、unzip します。これには、実行可能プログラムが含まれています。
 
-* Installing a Windows Store app (a file of type `appx`) without using Microsoft Windows Store is called <em>sideloading</em> an app. To sideload an app, you must comply with the prerequisites in [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
+* Microsoft Windows Store を使用せずに、Windows Store アプリ (タイプ `appx` のファイル) をインストールすることは、アプリケーションの<em>サイドローディング</em> と呼ばれます。アプリケーションをサイドローディングするには、[アプリケーションのサイドローディングの準備 (Prepare to Sideload Apps)](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx) の前提条件に従う必要があります。
 
-## Managing applications in the Application Center console
+## Application Center コンソールでのアプリケーションの管理
 {: #managing-applications-in-the-application-center-console }
-![Image of application management in app center]({{ site.baseurl }}/assets/backup/overview1.png)
+![Application Center でのアプリケーション管理のイメージ]({{ site.baseurl }}/assets/backup/overview1.png)
 
-Use the Application Center console to manage applications in the catalog in the following ways:
+Application Center コンソールを使用して、以下の方法でカタログ内でアプリケーションを管理します。
 
-* Add and remove applications
-* Manage versions of applications    
-* Look at the details of an application
-* Restrict the access of an application to specific users or groups of users
-* Read the reviews for each application
-* Review registered users and devices
+* アプリケーションの追加および削除
+* アプリケーションのバージョン管理    
+* アプリケーションの詳細の閲覧
+* 特定のユーザーまたはユーザーのグループへのアプリケーションのアクセス権限の制限
+* 各アプリケーションのレビューを読む
+* 登録ユーザーおよびデバイスの確認
 
-### Adding new applications to the store
+### ストアへの新規アプリケーションの追加
 {: #adding-new-applications-to-the-store }
-![Image of adding apps to the app center]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
+![App Center にアプリケーションを追加するイメージ]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
 
-To add new applications to the Store:
+ストアに新規アプリケーションを追加するには、以下のようにします。
 
-1. Open the Application Center console.
-2. Click **Add application**.
-3. Select an application file:
+1. Application Center コンソールを開きます。
+2. **「アプリケーションの追加 (Add Application)」**をクリックします。
+3. アプリケーション・ファイルを選択します。
     * `.ipa`: iOS
     * `.apk`: Android
     * `.zip`: BlackBerry 6/7
     * `.xap`: Windows Phone 8.x
     * `.appx`: Windows Store 8.x
 
-* Click **Next**.
+* **「次へ」**をクリックします。
 
-    In the Application Details views, you can review the information about the new application and enter further information such as the description. You can return to this view later for all applications in the catalog.
+    「アプリケーション詳細」ビューで、新規アプリケーションについての情報を確認し、説明などの情報をさらに入力できます。カタログ内のすべてのアプリケーションについて、後でこのビューに戻ることができます。
 
-    ![Image of application details screen]({{ site.baseurl }}/assets/backup/appDetails1.png)
+    ![「アプリケーション詳細」画面のイメージ]({{ site.baseurl }}/assets/backup/appDetails1.png)
 
-* Click **Done** to finish the task.
+* **「終了」**をクリックしてタスクを終了します。
 
-The new application is added to the store.
+新規アプリケーションがストアに追加されます。
 
-![Image of access control in app center]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
+![App Center でのアクセス制御のイメージ]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
 
-By default, an application can be installed by any authorized user of the store.
+デフォルトでは、アプリケーションをインストールできるのはストアの許可ユーザーです。
 
-### Restricting access to a group of users
+### ユーザーのグループにアクセス権限を制限
 {: #restricting-access-to-a-group-of-users }
-To restrict access to a group of users:
+ユーザーのグループにアクセス権限を制限するには、以下のようにします。
 
-1. In the catalog view, click the **unrestricted link** that is next to the application name. The Installation Access Control page opens.
-2. Select **Access control enabled**. You can now enter the list of users or groups that are authorized to install the application.
-3. If you have configured LDAP, add users and groups that are defined in the LDAP repository.
+1. カタログ・ビューで、アプリケーション名の隣の**無制限リンク**をクリックします。「アクセス制御のインストール (Installation Access Control)」ページが開きます。
+2. **「アクセス制御使用可能 (Access control enabled)」**を選択します。これで、アプリケーションをインストールすることが許可されているユーザーまたはグループのリストを入力できます。
+3. LDAP を構成済みの場合は、LDAP リポジトリーに定義されているユーザーおよびグループを追加します。
 
-You can also add applications from public app stores such as Google Play or Apple App Store by entering their URLs.
+Google Play や Apple App Store などの公開アプリケーション・ストアのアプリケーションの URL を入力して、それらを追加することもきます。
 
-## The Application Center mobile client
+## Application Center モバイル・クライアント
 {: #the-application-center-mobile-client }
-The App Center mobile client is a mobile application to manage the applications on the device. With the mobile client, you can:
+Application Center モバイル・クライアントは、デバイス上のアプリケーションを管理するためのモバイル・アプリケーションです。このモバイル・クライアントを使用して、以下を行うことができます。
 
-* List all applications from the catalog (for which you have access rights).
-* List the favorite applications.
-* Install an application or upgrade to a new version.
-* Provide feedback and five-star rating for an application.
+* カタログ内のすべてのアプリケーション (アクセス権限を持っているもの) のリスト作成。
+* お気に入りのアプリケーションのリスト作成。
+* アプリケーションのインストールや新規バージョンへのアップグレード。
+* アプリケーションに関するフィードバックおよび 5 つ星の評価を提供。
 
-### Adding mobile client applications to the catalog
+
+### カタログへのモバイル・クライアント・アプリケーションの追加
 {: #adding-mobile-client-applications-to-the-catalog }
-You must add Application Center mobile client applications to the catalog.
+Application Center モバイル・クライアント・アプリケーションをカタログに追加する必要があります。
 
-1. Open the Application Center console.
-2. Click the **Add Application** button to add the mobile client `.apk`, `.ipa`, `.zip`, or `.xap` file.
-3. Click **Next** to open the Application Details page.
-4. In the Application Details page, select **Installer** to indicate that this application is a mobile client.
-5. Click **Done** to add the Application Center app to the catalog.
+1. Application Center コンソールを開きます。
+2. **「アプリケーションの追加 (Add Application)」**ボタンをクリックして、モバイル・クライアント`.apk`、`.ipa`、`.zip`、または `.xap`のファイルを追加します。
+3. **「次へ」**をクリックすると、「アプリケーション詳細」ページが開きます。
+4. 「アプリケーション詳細」ページで、**「インストーラー」**を選択して、このアプリケーションがモバイル・クライアントであることを指定します。
+5. **「終了」**をクリックして、Application Center アプリケーションをカタログに追加します。
 
-The Application Center client for Windows 8.1 Pro does not need to be added to the catalog. This client is a regular Windows `.exe` program contained in the **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file. You can simply copy it to the client computer.
+Windows 8.1 Pro 向けの Application Center クライアントは、カタログに追加する必要がありません。このクライアントは、**install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** ファイル内に含まれている正規の Windows `.exe` プログラムです。クライアント・コンピューターにコピーするだけで済みます。
 
 ### Windows Phone 8
 {: #windows-phone-8 }
-On Windows Phone 8, you must also install the enrollment token that you received with your company account to the Application Center console, so that users can enroll their devices. You use the Application Center Settings page, which you can open through the gear icon.
+Windows Phone 8 の場合、Application Center コンソールで、企業アカウントを使用して受け取った登録トークンもインストールする必要があります。 この結果、ユーザーがデバイスを登録できるようになります。Application Center の「設定」ページを使用します。このページは、歯車のアイコンを使用して開くことができます。
 
-![Image of Windows Phone 8 app enrollment]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
+![Windows Phone 8 アプリケーション登録のイメージ]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
 
-Before you can install the mobile client, you must enroll the device with the company by installing the enrollment token:
+モバイル・クライアントをインストールするには、事前に登録トークンをインストールしてデバイスを企業に登録する必要があります。
 
-1. Open the web browser on the device.
-2. Enter the URL: `http://hostname:9080/appcenterconsole/installers.html`
-3. Enter the user name and password.
-4. Click **Tokens** to open the list of enrollment tokens.
-5. Select the company in the list. The details of the company account are displayed.
-6. Click **Add Company Account**. Your device is enrolled.
+1. デバイス上で Web ブラウザーを開きます。
+2. 次の URL を入力します。`http://hostname:9080/appcenterconsole/installers.html`
+3. ユーザー名とパスワードを入力します。
+4. **「トークン」**をクリックすると、登録トークンのリストが開きます。
+5. リスト内でその企業を選択します。企業アカウントの詳細が表示されます。
+6. **「企業アカウントの追加 (Add Company Account)」**をクリックします。デバイスが登録されます。
 
-### Installing the mobile client on the mobile device
+### モバイル・デバイスへのモバイル・クライアントのインストール
 {: #installing-the-mobile-client-on-the-mobile-device }
-To install the mobile client on the mobile device:
-![Image of application installer app]({{ site.baseurl }}/assets/backup/installers_smaller.png)
+モバイル・デバイスにモバイル・クライアントをインストールするには、以下のようにします。![アプリケーション・インストーラー・アプリケーションのイメージ]({{ site.baseurl }}/assets/backup/installers_smaller.png)
 
-1. Open the web browser on the device.
-2. Enter the URL: `http://hostname:9080/appcenterconsole/installers.html`
-3. Enter the user name and password.
-4. Select the Application Center application to start the installation.
+1. デバイス上で Web ブラウザーを開きます。
+2. 次の URL を入力します。`http://hostname:9080/appcenterconsole/installers.html`
+3. ユーザー名とパスワードを入力します。
+4. Application Center アプリケーションを選択してインストールを開始します。
 
-On **Android** devices, you must open the Android Download application and select **IBM App Center** for installation.
+**Android** デバイスの場合、Android Download アプリケーションを開き、インストールの対象として**「IBM App Center」**を選択します。
 
-### Logging in to the mobile client
+### モバイル・クライアントへのログイン
 {: #logging-in-to-the-mobile-client }
-To log in to the mobile client:
+モバイル・クライアントにログインするには、以下のようにします。
 
-1. Enter your credentials for access to the server.
-2. Enter the host name or IP address of the server.
-3. In the **Server port** field, enter the port number if it is not the default one (`9080`).
-4. In the **Application context** field, enter the context: `applicationcenter`.
+1. サーバーにアクセスするための資格情報を入力してください。
 
-![Login screen]({{ site.baseurl }}/assets/backup/login.png)
+2. サーバーのホスト名または IP アドレスを入力します。
+3. ポート番号がデフォルトのもの (`9080`) でない場合は、**「サーバー・ポート」**フィールドに、ポート番号を入力します。
+4. **「アプリケーション・コンテキスト」**フィールドにコンテキスト `applicationcenter` を入力します。
 
-### Application Center mobile client views
+![「ログイン」画面]({{ site.baseurl }}/assets/backup/login.png)
+
+### Application Center モバイル・クライアント・ビュー
 {: #application-center-mobile-client-views }
-* The **Catalog** view displays the list of available applications.
-* Selecting an application opens the **Details** view on the application. You can install applications from the Details view. You can also mark applications as favorites by using the star icon in the Details View.
+* **「カタログ」**ビューには、使用可能なアプリケーションのリストが表示されます。
+* アプリケーションを選択すると、アプリケーション上で**「詳細」**ビューが開きます。「詳細」ビューからはアプリケーションをインストールできます。「詳細」ビューで星形のアイコンを使用して、アプリケーションにお気に入りのマークを付けることもできます。
 
-    ![Catalog details]({{ site.baseurl }}/assets/backup/catalog_details.001.jpg)
+    ![カタログ詳細]({{ site.baseurl }}/assets/backup/catalog_details.001.jpg)
 
-* The **Favorites** view lists the favorite applications. This list is available on all the devices of a particular user.
-* The **Updates** view lists all available updates. In the Updates view, you can navigate to the Details view. You can select a newer version of the application or take the latest available version. If Application Center is configured to send push notifications, you might be notified of updates by push notification messages.
+* **「お気に入り」**ビューには、お気に入りのアプリケーションがリストされます。このリストは、特定のユーザーのすべてのデバイス上で使用できます。
+* **「更新」**ビューには、使用可能なすべての更新がリストされます。「更新」ビューで、「詳細」ビューにナビゲートできます。より新しいアプリケーション・バージョンを選択することも、使用可能な最新のバージョンを取得することも可能です。Application Center がプッシュ通知を送信するように構成されている場合は、プッシュ通知メッセージによって更新についての通知を受け取る場合があります。
 
-From the mobile client, you can rate the application and send a review. Reviews can be viewed on the console or on the mobile device.
+モバイル・クライアントからこのアプリケーションを評価し、レビューを送信できます。レビューは、コンソール上でもモバイル・デバイス上でも閲覧できます。
 
-![Reviews]({{ site.baseurl }}/assets/backup/reviewss.png)
+![レビュー]({{ site.baseurl }}/assets/backup/reviewss.png)
 
-## Application Center command-line tools
+## Application Center コマンド・ライン・ツール
 {: #application-center-command-line-tools }
-The **install_dir/ApplicationCenter/tools** directory contains all the files that are required to use the command-line tool or Ant tasks to manage the applications in the store:
+**install_dir/ApplicationCenter/tools** ディレクトリーには、ストア内のアプリケーションを管理するためのコマンド・ライン・ツールまたは Ant タスクを使用するのに必要なすべてのファイルが含まれています。
 
-* `applicationcenterdeploytool.jar`: the upload command-line tool.
-* `json4jar`: the library for the JSON format that is required by the upload tool.
-* `build.xml`: a sample Ant script that you can use to upload a single file or a sequence of files to Application Center.
-* `acdeploytool.sh` and `acdeploytool.bat`: Simple scripts to call Java with the `applicationcenterdeploytool.jar` file.
+* `applicationcenterdeploytool.jar`: アップロード・コマンド・ライン・ツール。
+* `json4jar`: アップロード・ツールで必要な JSON フォーマットのライブラリー。
+* `build.xml`: 1 つのファイルまたは一連のファイルを Application Center にアップロードする際に使用できるサンプル Ant スクリプト。
+* `acdeploytool.sh` および `acdeploytool.bat`: `applicationcenterdeploytool.jar` ファイルで Java を呼び出すための簡単なスクリプト。
 
-For example, to deploy an application `app.apk` file to the store in `localhost:9080/applicationcenter` with user ID `demo` and password `demo`, write:
+例えば、アプリケーション `app.apk` ファイルを `localhost:9080/applicationcenter` 内のストアにユーザー ID `demo` およびパスワード  `demo` を使用してデプロイするには、以下を書き込みます。
 
 ```bash
 Java com.ibm.appcenter.Upload -s http://localhost:9080 -c applicationcenter -u demo -p demo app.apk
