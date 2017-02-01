@@ -1,3 +1,5 @@
+---
+---
 "use strict";
 
 $(function() {
@@ -52,42 +54,42 @@ $(function() {
     
    // Update features indicator image on hover
    $("#comprehensive_security").on("mouseover", function() {
-      $("#feature-indicator").attr("src","../assets/front-page/Line_1_Selected.svg");
+      $("#feature-indicator").attr("src","{{site.baseurl}}/assets/front-page/Line_1_Selected.svg");
       
       $("#comprehensive_security").on("mouseout", function() {
-         $("#feature-indicator").attr("src","../assets/front-page/Line_None_Selected.svg");
+         $("#feature-indicator").attr("src","{{site.baseurl}}/assets/front-page/Line_None_Selected.svg");
       });
    });
    
    $("#mobile_analytics").on("mouseover", function() {
-      $("#feature-indicator").attr("src","../assets/front-page/Line_2_Selected.svg");
+      $("#feature-indicator").attr("src","{{site.baseurl}}/assets/front-page/Line_2_Selected.svg");
       
       $("#mobile_analytics").on("mouseout", function() {
-         $("#feature-indicator").attr("src","../assets/front-page/Line_None_Selected.svg");
+         $("#feature-indicator").attr("src","{{site.baseurl}}/assets/front-page/Line_None_Selected.svg");
       });
    });
    
    $("#app_lifecycle").on("mouseover", function() {
-      $("#feature-indicator").attr("src","../assets/front-page/Line_3_Selected.svg");
+      $("#feature-indicator").attr("src","{{site.baseurl}}/assets/front-page/Line_3_Selected.svg");
       
       $("#app_lifecycle").on("mouseout", function() {
-         $("#feature-indicator").attr("src","../assets/front-page/Line_None_Selected.svg");
+         $("#feature-indicator").attr("src","{{site.baseurl}}/assets/front-page/Line_None_Selected.svg");
       });
    });
    
    $("#backend").on("mouseover", function() {
-      $("#feature-indicator").attr("src","../assets/front-page/Line_4_Selected.svg");
+      $("#feature-indicator").attr("src","{{site.baseurl}}/assets/front-page/Line_4_Selected.svg");
       
       $("#backend").on("mouseout", function() {
-         $("#feature-indicator").attr("src","../assets/front-page/Line_None_Selected.svg");
+         $("#feature-indicator").attr("src","{{site.baseurl}}/assets/front-page/Line_None_Selected.svg");
       });
    });
    
    $("#push_sync").on("mouseover", function() {
-      $("#feature-indicator").attr("src","../assets/front-page/Line_5_Selected.svg");
+      $("#feature-indicator").attr("src","{{site.baseurl}}/assets/front-page/Line_5_Selected.svg");
       
       $("#push_sync").on("mouseout", function() {
-         $("#feature-indicator").attr("src","../assets/front-page/Line_None_Selected.svg");
+         $("#feature-indicator").attr("src","{{site.baseurl}}/assets/front-page/Line_None_Selected.svg");
       });
    });
 });
