@@ -15,4 +15,4 @@ This package includes classes for using the introspection endpoint of the securi
 
 ## API Reference
 {: #api-reference }
-<iframe width="100%" height="1000px" frameBorder="0" src="../api-ref/mfp-java-token-validator-java-apidoc/html/refjava-mfp-java-token-validator/html/index.html"></iframe>
+<iframe width="100%" height="1000px" frameBorder="0" src="../../../../../../../../api-ref/mfp-java-token-validator-java-apidoc/html/refjava-mfp-java-token-validator/html/index.html"></iframe>
