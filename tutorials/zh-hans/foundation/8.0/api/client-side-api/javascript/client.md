@@ -61,8 +61,8 @@ WL.ClientMessages.invalidUsernamePassword="The custom user name and password are
 
 ## JavaScript API Reference
 {: #javascript-api-reference }
-<iframe width="100%" height="1000px" frameBorder="0" src="../../../api-ref/wl-client-js-apidoc/html/refjavascript-client/html/index.html"></iframe>
+<iframe width="100%" height="1000px" frameBorder="0" src="../../../../../../../../../api-ref/wl-client-js-apidoc/html/refjavascript-client/html/index.html"></iframe>
 
 ## Objective-C API reference (for Cordova)
 {: #objective-c-api-reference-for-cordova }
-<iframe width="100%" height="1000px" frameBorder="0" src="../../../api-ref/wl-ios-h-objc-apidoc/html/refobjc-worklight-ios-hybrid/html/index.html"></iframe>
+<iframe width="100%" height="1000px" frameBorder="0" src="../../../../../../../../../api-ref/wl-ios-h-objc-apidoc/html/refobjc-worklight-ios-hybrid/html/index.html"></iframe>
