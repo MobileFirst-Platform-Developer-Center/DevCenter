@@ -10,20 +10,20 @@ show_breadcrumb: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-{{ site.data.keys.product_full }} radically simplifies building, managing, and updating your mobile application with a pre-integrated, comprehensive set of mobile application services.
+{{site.data.keys.product_full }} simplifie de manière radicale la création, la gestion et la mise à jour des applications mobiles grâce à un ensemble pré-intégré complet de services qui leur sont destinés.
 
-Developers can build their application using the front-end framework and tools of their choice, and easily add push, authentication, offline sync, and business logic to their apps with the {{ site.data.keys.product }} software development kit (SDK) available across a wide range of supported mobile platforms. {{ site.data.keys.product }} enables you to control your application from client to server, and thus allows you to capture business data at the point of interaction. {{ site.data.keys.product }} apps also enable you to employ a streamlined and repeatable process for incremental app updates and run your apps in flexible hybrid cloud patterns.
+Les développeurs peuvent créer des applications à l'aide de l'infrastructure frontale et des outils de le choix, et y ajouter en toute simplicité les fonctions push, d'authentification et de synchronisation et la logique métier grâce au logiciel SDK de {{site.data.keys.product }} disponible pour un large éventail de plateformes mobiles. {{site.data.keys.product }} vous permet de contrôler vos applications du client jusqu'au serveur, et de capturer ainsi les données métier au point d'interaction. {{site.data.keys.product }} vous permet également de mettre en oeuvre un processus rationalisé répétable pour la mise à jour incrémentielle des applications et d'exécuter celles-ci souplement dans un canevas cloud hybride.
 
-To review all categories and tutorials visit:
+Pour accéder à l'ensemble des catégories et des tutoriels, consultez :
 
 * [All Tutorials](all-tutorials/)
 
-For curated content visit: 
+Pour cibler le contenu consulté : 
 
-* [Cordova development](cordova-tutorials/)
-* [iOS development](ios-tutorials/) 
-* [Android development](android-tutorials/) 
-* [Windows 8.1 Universal and Windows 10 UWP development](windows-8-10-tutorials/)
-* [Xamarin development](xamarin-tutorials/)
-* [Web application development](web-tutorials/)
-* [Server-side development](server-side-tutorials/)
+* [Développement Cordova](cordova-tutorials/)
+* [Développement iOS](ios-tutorials/) 
+* [Développement Android](android-tutorials/) 
+* [Développement Windows 8.1 Universal et Windows 10 UWP](windows-8-10-tutorials/)
+* [Développement Xamarin](xamarin-tutorials/)
+* [Développement d'applications Web](web-tutorials/)
+* [Développement côté serveur](server-side-tutorials/)
