@@ -13,8 +13,8 @@ author:
 A new iFix has been released for MobileFirst Foundation 8.0, dated **January 25th, 2017**.
 
 > **Update, February 2nd:** newer Native iOS SDK and Cordova plug-ins were released to CocoaPods and npm.
-> * iOS SDK: support was added for Swift 3.0 and the ability to make adapter calls in the background.
-> * Cordova SDK: fix server version compatibility.
+> * iOS SDK: Includes Swift 3.0 compatibility fixes and the ability to [make resource request calls in the background]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/resource-request/ios/#callback-queue-for-completionhandler-and-delegate).
+> * Cordova SDK: Fix client-server version compatibility.
 
 ## Known issues
 * ~~If using the updated **cordova-plugin-mfp** plug-in with an older MobileFirst Server build, you may not be able to connect to the server. This will be fixed in an updated plug-in in the coming days.~~ This issue is fixed with the updated cordova-plugin-mfp@8.0.2017013103. Install it by removing and re-adding the plug-in.
