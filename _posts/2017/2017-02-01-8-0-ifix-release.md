@@ -94,7 +94,7 @@ IBM.MobileFirstPlatformFoundationPush 8.0.2017012419
 IBM.MobileFirstPlatformFoundation 8.0.2017012514
 
 **Xamarin SDK**  
-ibm-worklight-8.0.2017013105 - *Coming soon*
+ibm-worklight-8.0.2017013105
 
 **Cordova plug-ins**  
 cordova-plugin-mfp 8.0.2017012210  
@@ -104,7 +104,7 @@ cordova-plugin-mfp 8.0.2017012210
  +cordova-plugin-mfp-encrypt-utils 8.0.2017012210  
  +cordova-template-mfp 8.0.2017012210 
  
-*Update - available on npm*
+*Update - available on npm*  
 cordova-plugin-mfp 8.0.2017013103    
 cordova-plugin-mfp-push 8.0.2017012410  
 cordova-plugin-mfp-jsonstore 8.0.2017013103  
