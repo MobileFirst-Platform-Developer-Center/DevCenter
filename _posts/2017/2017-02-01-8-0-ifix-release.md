@@ -19,6 +19,7 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **January 25t
 ## Known issues
 * ~~If using the updated **cordova-plugin-mfp** plug-in with an older MobileFirst Server build, you may not be able to connect to the server. This will be fixed in an updated plug-in in the coming days.~~ This issue is fixed with the updated cordova-plugin-mfp@8.0.2017013103. Install it by removing and re-adding the plug-in.
 * The **test** confidential client is missing. It can be manually added via **MobileFirst Operations Console → Runtime Settings → Confidential Clients** with the scope set to "*".
+* Starter apps available from the Download Center in the MobileFirst Operations Console may contain outdated SDK builds. To workaround, update the SDK according to the [specific platform instructions]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/).
 
 ## Changes in this iFix
 *For a cumulative list of all previous fixes, see the [iFix download page on IBM Fix Central](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc).*
