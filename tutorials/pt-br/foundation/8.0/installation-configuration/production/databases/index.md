@@ -1,65 +1,69 @@
 ---
 layout: tutorial
-title: Setting Up Databases
+title: Configurando bancos de dados
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #overview }
-The following {{ site.data.keys.mf_server_full }} components need to store technical data into a database:
+Os componentes do {{site.data.keys.mf_server_full }} a seguir precisam armazenar dados técnicos em um banco de dados:
 
-* {{ site.data.keys.mf_server }} administration service
-* {{ site.data.keys.mf_server }} live update service
-* {{ site.data.keys.mf_server }} push service
-* {{ site.data.keys.product }} runtime
+* Serviço de Administração do {{site.data.keys.mf_server }}
+* Serviço de atualização em tempo real do {{site.data.keys.mf_server }}
+* serviço de push do {{site.data.keys.mf_server }}
+* Tempo de execução
+{{site.data.keys.product }}
 
-> **Note:** If multiple runtime instances are installed with different context root, each instance needs its own set of tables.
-> The database can be a relational database such as IBM  DB2 , Oracle, or MySQL.
+> **Nota:** Se várias instâncias de tempo de execução estiverem instaladas com uma raiz de contexto diferente,
+cada instância precisará de seu próprio conjunto de tabelas.  >O banco de dados pode ser um banco de dados relacional, como IBM DB2, Oracle ou MySQL. 
 
-#### Relational databases (DB2, Oracle, or MySQL)
+#### Bancos de dados relacionais (DB2, Oracle ou MySQL)
 {: #relational-databases-db2-oracle-or-mysql }
-Each component needs a set of tables. The tables can be created manually by running the SQL scripts specific to each component (see [Create the database tables manually](#create-the-database-tables-manually)), by using Ant Tasks, or the Server Configuration Tool. The table names of each component do not overlap. Thus, it is possible to put all the tables of these components under a single schema.
+Cada componente precisa de um conjunto de tabelas. As tabelas podem ser criadas manualmente executando os scripts SQL específicos para cada componente (consulte [Criar as tabelas de banco de dados manualmente](#create-the-database-tables-manually)), usando Tarefas Ant ou o Server Configuration Tool. Os nomes da tabela de cada componente não se sobrepõem. Assim, é possível colocar todas as tabelas desses componentes sob um único esquema.
 
-However, if you decide to install multiple instances of {{ site.data.keys.product }} runtime, each with its own context root in the application server, every instance needs its own set of tables. In this case, they need to be in different schemas.
+Entretanto, se você decidir instalar várias instâncias do tempo de execução do {{site.data.keys.product }}, cada uma com sua raiz de contexto no servidor de aplicativos, cada instância precisará ter seu próprio conjunto de tabelas. Nesse caso, elas precisam estar em esquemas diferentes.
 
-> **Note about DB2:** {{ site.data.keys.product_adj }} licensees are entitled to use DB2 as a supporting system for Foundation. To benefit from this you must, after installing the DB2 software:
+> **Nota sobre o DB2:** Os licenciados do {{site.data.keys.product_adj }} estão autorizados a usar o DB2 como um sistema de suporte para o Foundation. Para beneficiar-se disso você deve, depois de instalar o software DB2:
 > 
-> * Download the restricted use activation image directly from the [IBM Passport Advantage (PPA) website](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
-> * Apply the restricted use activation license file **db2xxxx.lic** using the **db2licm** command
+> * Fazer download da imagem de ativação de uso restrito diretamente do [website do IBM Passport Advantage (PPA)](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
+> * Aplicar o arquivo de licença de ativação de uso restrito **db2xxxx.lic** usando o comando **db2licm** 
 >
-> Learn more in the [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html)
+> Saiba mais no [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html)
 
-#### Jump to
+#### Ir para
 {: #jump-to }
 
-* [Database users and privileges](#database-users-and-privileges)
-* [Database requirements](#database-requirements)
-* [Create the database tables manually](#create-the-database-tables-manually)
-* [Create the database tables with the Server Configuration Tool](#create-the-database-tables-with-the-server-configuration-tool)
-* [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks)
+* [Usuários do banco de dados e privilégios](#database-users-and-privileges)
+* [Requisitos do banco de dados](#database-requirements)
+* [Crie as tabelas de banco de dados manualmente](#create-the-database-tables-manually)
+* [Criar as tabelas de banco de dados com o Server Configuration Tool](#create-the-database-tables-with-the-server-configuration-tool)
+* [Crie tabelas de banco de dados com tarefas Ant](#create-the-database-tables-with-ant-tasks)
 
-## Database users and privileges
+## Usuários do banco de dados e privilégios
 {: #database-users-and-privileges }
-At run time, the {{ site.data.keys.mf_server }} applications in the application server use data sources as resources to obtain connection to relational databases. The data source needs a user with certain privileges to access the database.
+No tempo de execução, os aplicativos {{site.data.keys.mf_server }} no servidor de aplicativos usam origens de dados como recursos para obter uma conexão com bancos de dados relacionais. A origem de dados precisa de um usuário com certos privilégios para acessar o banco de dados.
 
-You need to configure a data source for each {{ site.data.keys.mf_server }} application that is deployed to the application server to have the access to the relational database. The data source requires a user with specific privileges to access the database. The number of users that you need to create depends on the installation procedure that is used to deploy {{ site.data.keys.mf_server }} applications to the application server.
+É necessário configurar uma origem de dados para cada aplicativo {{site.data.keys.mf_server }} implementado para o servidor de aplicativos ter acesso ao banco de dados relacional. A origem de dados requer um usuário com privilégios específicos para acessar o banco de dados. O número de usuários que você precisa criar depende do procedimento de instalação usado para implementar aplicativos
+{{site.data.keys.mf_server }} no servidor de aplicativos.
 
-### Installation with the Server Configuration Tool
+### Instalação com o Server Configuration Tool
 {: #installation-with-the-server-configuration-tool }
-The same user is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} configuration service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
+O mesmo usuário é usado para todos os componentes (serviço de administração do {{site.data.keys.mf_server }}, serviço de configuração do {{site.data.keys.mf_server }},
+serviço de push do {{site.data.keys.mf_server }} e tempo de execução do {{site.data.keys.product }})
 
-### Installation with Ant tasks
+### Instalação com tarefas Ant
 {: #installation-with-ant-tasks }
-The sample Ant files that are provided in the product distribution use the same user for all components. However, it is possible to modify the Ant files to have different users:
+Os arquivos Ant de amostra que são fornecidos na distribuição do produto usam o mesmo usuário para todos os componentes. Entretanto, é possível modificar os arquivos Ant para se ter diferentes usuários:
 
-* The same user for the administration service and the configuration service as they cannot be installed separately with Ant tasks.
-* A different user for the runtime
-* A different user for the push service.
+* O mesmo usuário para o serviço de administração e o serviço de configuração, já que eles não podem ser instalados separadamente com tarefas Ant.
+* Um usuário diferente para o tempo de execução
+* Um usuário diferente para o serviço de push.
 
-### Manual installation
+### Manual de Instalação
 {: #manual-installation }
-It is possible to assign a different data source, and thus a different user, to each of the {{ site.data.keys.mf_server }} components.
-At run time, the users must have the following privileges on the tables and sequences of their data:
+É possível designar uma origem de dados diferente e, assim, um usuário diferente, a cada um dos componentes do
+{{site.data.keys.mf_server }}.
+No tempo de execução, os usuários devem ter os seguintes privilégios nas tabelas e sequências de seus dados:
 
 * SELECT TABLE
 * INSERT TABLE
@@ -67,46 +71,47 @@ At run time, the users must have the following privileges on the tables and sequ
 * DELETE TABLE
 * SELECT SEQUENCE
 
-If the tables are not created manually before you run the installation with Ant Tasks or the Server Configuration Tool, ensure that you have a user that is able to create the tables. It also needs the following privileges:
+Se as tabelas não forem criadas manualmente antes de você executar a instalação com Tarefas Ant ou o Server Configuration Tool, certifique-se de que tenha um usuário capaz de criar as tabelas. Ele também precisa dos seguintes privilégios:
 
 * CREATE INDEX
 * CREATE SEQUENCE
-* CREATE TABLE
+* CREATE
+TABLE
 
-For an upgrade of the product, it needs these additional privileges:
+Para um upgrade do produto, ele precisa destes privilégios adicionais:
 
 * ALTER TABLE
 * CREATE VIEW
 * DROP INDEX
 * DROP SEQUENCE
-* DROP TABLE
+* DROP
+TABLE
 * DROP VIEW
 
-## Database requirements
+## Requisitos de Banco de Dados
 {: #database-requirements }
-The database stores all the data of the {{ site.data.keys.mf_server }} applications. Before you install the {{ site.data.keys.mf_server }} components, ensure that the database requirements are met.
+O banco de dados armazena todos os dados dos aplicativos {{site.data.keys.mf_server }}. Antes da instalação dos componentes do {{site.data.keys.mf_server }}, assegure-se de que os requisitos do banco de dados sejam atendidos.
 
-* [DB2 database and user requirements](#db2-database-and-user-requirements)
-* [Oracle database and user requirements](#oracle-database-and-user-requirements)
-* [MySQL database and user requirements](#mysql-database-and-user-requirements)
+* [Requisitos de usuário e banco de dados do DB2](#db2-database-and-user-requirements)
+* [Requisitos de usuário e banco de dados Oracle](#oracle-database-and-user-requirements)
+* [Requisitos de usuário e banco de dados do MySQL](#mysql-database-and-user-requirements)
 
-> For an up-to-date list of supported database software versions, refer to the [System Requirements](../../../product-overview/requirements/) page.
-
-### DB2 database and user requirements
+> Para obter uma lista atualizada de versões de software de banco de dados suportadas, consulte a página [Requisitos do sistema](../../../product-overview/requirements/). ### Requisitos de usuário e banco de dados do DB2
 {: #db2-database-and-user-requirements }
-Review the database requirement for DB2. Follow the steps to create user, database, and setup your database to meet the specific requirement.
+Revise o requisito do banco de dados para o DB2. Siga as etapas para criar usuário e banco de dados e configure seu banco de dados para atender ao requisito específico.
 
-Ensure that you set the database character set as UTF-8.
+Certifique-se de configurar o conjunto de caracteres do banco de dados como UTF-8.
 
-The page size of the database must be at least 32768. The following procedure creates a database with a page size 32768. It also creates a user (**mfpuser**) and then grants the database access to this user. This user can then be used by the Server Configuration Tool or the Ant tasks to create the tables.
+O tamanho da página do banco de dados deve ser menor que 32768. O procedimento a seguir cria um banco de dados com um tamanho de página de 32768. Ele também cria um usuário (**mfpuser**) e, em seguida, concede a ele acesso ao banco de dados. Esse
+usuário pode então ser usado pelo Server Configuration Tool ou pelas tarefas Ant para criar as tabelas. 
 
-1. Create a system user named, for example, **mfpuser** in a DB2 admin group such as **DB2USERS**, by using the appropriate commands for your operating system. Give it a password, for example, **mfpuser**.
-2. Open a DB2 command line processor, with a user that has **SYSADM** or **SYSCTRL** permissions.
-    * On Windows systems, click **Start → IBM DB2 → Command Line Processor**.
-    * On Linux or UNIX systems, go to **~/sqllib/bin** and enter `./db2`.
-3. To create the {{ site.data.keys.mf_server }} database, enter the SQL statements similar to the following example.
+1. Crie um usuário do sistema chamado, por exemplo, **mfpuser**, em um grupo de administradores do DB2, como **DB2USERS**, usando os comandos apropriados para seu sistema operacional. Forneça uma senha, por exemplo, **mfpuser**.
+2. Abra um processador de linha de comandos do DB2, com um usuário que tenha permissões **SYSADM** ou **SYSCTRL**. 
+    * Em sistemas Windows, clique em **Iniciar → IBM DB2 → Processador de Linha de Comandos**.
+    * Em sistemas Linux ou UNIX, acesse **~/sqllib/bin** e insira `./db2`.
+3. Para criar o banco de dados do {{site.data.keys.mf_server }}, insira as instruções SQL semelhantes ao exemplo a seguir.
 
-Replace the user name **mfpuser** with your own.
+Substitua o nome **mfpuser** pelo seu.
 
 ```sql
 CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
@@ -116,41 +121,47 @@ DISCONNECT MFPDATA
 QUIT
 ```
 
-### Oracle database and user requirements
+### Requisitos de usuário e banco de dados Oracle
 {: #oracle-database-and-user-requirements }
-Review the database requirement for Oracle. Follow the steps to create user, database, and setup your database to meet the specific requirement.
+Revise o requisito do banco de dados para o Oracle. Siga as etapas para criar usuário e banco de dados e configure seu banco de dados para atender ao requisito específico.
 
-Ensure that you set the database character set as Unicode character set (AL32UTF8) and the national character set as UTF8 - Unicode 3.0 UTF-8.  
+Certifique-se de configurar o conjunto de caracteres do banco de dados como um conjunto de caracteres Unicode (AL32UTF8) e o conjunto de caracteres nacionais como UTF8 - Unicode 3.0 UTF-8.  
 
-The runtime user (as discussed is [Database users and privileges](#database-users-and-privileges)) must have an associated table space and enough quota to write the technical data required by the {{ site.data.keys.product }} services. For more information about the tables that are used by the product, see [Internal runtime databases](../installation-reference/#internal-runtime-databases).
+O usuário de tempo de execução (conforme discutido em [Usuários e privilégios do banco de dados](#database-users-and-privileges)) deve ter um espaço de tabela associado e uma cota suficiente para gravar dados técnicos requeridos pelos serviços do {{site.data.keys.product }}. Para obter informações adicionais sobre as tabelas que são usadas pelo produto, consulte [Bancos de dados de tempo de execução internos](../installation-reference/#internal-runtime-databases).
 
-The tables are expected to be created in the default schema of the runtime user. The Ant tasks and the Server Configuration Tool create the tables in the default schema of the user passed as argument. For more information about the creation of tables, see [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually).
+As tabelas devem ser criadas no esquema padrão para o usuário do tempo de execução. As tarefas Ant e o Server Configuration Tool criam as tabelas no esquema padrão do usuário transmitido como argumento. Para obter informações adicionais sobre a criação de tabelas, consulte [Criando as tabelas de banco de dados Oracle manualmente](#creating-the-oracle-database-tables-manually). 
 
-The procedure creates a database if needed. A user that can create tables and index in this database is added and used as a runtime user.
+O procedimento cria um banco de dados, caso haja necessidade. Um usuário que pode criar tabelas e índices nesse banco de dados é incluído e usado como usuário do tempo de execução.
 
-1. If you do not already have a database, use the Oracle Database Configuration Assistant (DBCA) and follow the steps in the wizard to create a new general-purpose database, named ORCL in this example:
-    * Use global database name **ORCL\_your\_domain**, and system identifier (SID) **ORCL**.
-    * On the **Custom Scripts** tab of the step **Database Content**, do not run the SQL scripts because you must first create a user account.
-    * On the **Character Sets** tab of the step **Initialization Parameters**, select **Use Unicode (AL32UTF8) character set and UTF8 - Unicode 3.0 UTF-8 national character set**.
-    * Complete the procedure, accepting the default values.
-2. Create a database user by using either Oracle Database Control or the Oracle SQLPlus command line interpreter.
-3. Using Oracle Database Control:
-    * Connect as **SYSDBA**.
-    * Go to the **Users** page and click **Server**, then **Users** in the **Security** section.
-    * Create a user, for example **MFPUSER**.
-    * Assign the following attributes:
-        * **Profile**: DEFAULT
-        * **Authentication**: password
-        * **Default tablespace**: USERS
-        * **Temporary tablespace**: TEMP
-        * **Status**: Unlocked
-        * Add system privilege: CREATE SESSION
-        * Add system privilege: CREATE SEQUENCE
+1. Se você ainda não tiver um banco de dados, use o Oracle Database Configuration Assistant (DBCA) e siga as etapas no assistente para criar um novo banco de dados de propósito geral chamado ORCL neste exemplo:
+    * Use o nome do banco de dados global **ORCL\_your\_domain**, e o identificador do sistema (SID) **ORCL**.
+    * Na guia **Scripts customizados** da etapa **Conteúdo do banco de dados**,
+não execute os scripts SQL porque você deve criar primeiro uma conta do usuário.
+    * Na guia **Conjuntos de Caracteres**
+da etapa **Parâmetros de Inicialização**, selecione **Usar o
+conjunto de caracteres Unicode (AL32UTF8) e o conjunto de caracteres nacional
+UTF8 – Unicode 3.0 UTF-8**.
+    * Conclua o procedimento, aceitando os valores padrão.
+2. Crie um usuário do banco de dados usando Oracle Database Control ou o interpretador de linha de comandos do Oracle, SQLPlus.
+3. Usando Oracle Database Control:
+    * Conecte-se como **SYSDBA**.
+    * Acesse a página **Usuários** e clique em **Servidor**,
+em seguida, **Usuários** na seção **Segurança**.
+    * Crie um usuário, por exemplo, **MFPUSER**.
+    * Designe os seguintes atributos:
+        * **Perfil**: DEFAULT
+        * **Autenticação**: password
+        * **Espaço de tabela padrão**: USERS
+        * **Espaço de tabela temporário**: TEMP
+        * **Status**: desbloqueado
+        * Incluir privilégio no sistema : CREATE SESSION
+        * Incluir privilégio no sistema : CREATE SEQUENCE
         * Add system privilege: CREATE TABLE
-        * Add quota: Unlimited for tablespace USERS
-    * Using the Oracle SQLPlus command line interpreter:
+        * Incluir cota: ilimitado para espaço de tabela USERS
+    * Usando o interpretador de linha de comandos do Oracle, SQLPlus:
 
-The commands in the following example create a user named **MFPUSER** for the database:
+Os comandos no exemplo a seguir criam um usuário denominado
+**MFPUSER** para o banco de dados:
 
 ```sql
 CONNECT SYSTEM/<SYSTEM_password>@ORCL
@@ -159,22 +170,22 @@ GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO MFPUSER;
 DISCONNECT;
 ```
 
-### MySQL database and user requirements
+### Requisitos de usuário e banco de dados do MySQL
 {: #mysql-database-and-user-requirements }
-Review the database requirement for MySQL. Follow the steps to create user, database, and configure your database to meet the specific requirement.
+Revise o requisito do banco de dados para o MySQL. Siga as etapas para criar usuário e banco de dados e configure seu banco de dados para atender ao requisito específico.
 
-Make sure that you set the character set to UTF8.
+Certifique-se de configurar o conjunto de caracteres para UTF8.
 
-The following properties must be assigned with appropriate values:
+As propriedades a seguir devem ser designadas com valores apropriados:
 
-* max_allowed_packet with 256 M or more
-* innodb_log_file_size with 250 M or more
+* max_allowed_packet com 256 M ou mais 
+* innodb_log_file_size com 250 M ou mais 
 
-For more information about how to set the properties, see the [MySQL documentation](http://dev.mysql.com/doc/).  
-The procedure creates a database (MFPDATA) and a user (mfpuser) that can connect to the database with all privileges from a host (mfp-host).
+Para obter informações adicionais sobre como configurar as propriedades, consulte a [documentação do MySQL](http://dev.mysql.com/doc/).  
+O procedimento cria um banco de dados (MFPDATA) e um usuário (mfpuser) que podem se conectar ao banco de dados com todos os privilégios de um host (mfp-host).
 
-1. Run a MySQL command line client with the option `-u root`.
-2. Enter the following commands:
+1. Execute um cliente da linha de comando MySQL com a opção `-u root`.
+2. Insira os comandos a seguir:
 
    ```sql
    CREATE DATABASE MFPDATA CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -183,49 +194,52 @@ The procedure creates a database (MFPDATA) and a user (mfpuser) that can connect
    FLUSH PRIVILEGES;
    ```
 
-    Where mfpuser before the "at" sign (@) is the user name, **mfpuser-password** after **IDENTIFIED BY** is its password, and **mfp-host** is the name of the host on which {{ site.data.keys.product_adj }} runs.
+    Em que mfpuser antes do sinal de "arroba" (@) é o nome do usuário, **mfpuser-password** após **IDENTIFIED BY** é sua senha e **mfp-host** é o nome do host no qual o {{site.data.keys.product_adj }} é executado. 
     
-    The user must be able to connect to the MySQL server from the hosts that run the Java application server with the {{ site.data.keys.mf_server }} applications installed.
+    O usuário deve estar apto para conectar-se ao servidor MySQL a partir dos hosts que executam o servidor de aplicativos Java com os aplicativos {{site.data.keys.mf_server }} instalados.
     
-## Create the database tables manually
+## Crie as tabelas de banco de dados manualmente
 {: #create-the-database-tables-manually }
-The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details on how to create them manually.
+As tabelas de banco de dados para os aplicativos do {{site.data.keys.mf_server }} podem ser criadas manualmente, com Tarefas Ant ou com o Server Configuration Tool. Os tópicos fornecem a explicação e os detalhes sobre como criá-las manualmente.
 
-* [Creating the DB2 database tables manually](#creating-the-db2-database-tables-manually)
-* [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually)
-* [Creating the MySQL database tables manually](#creating-the-mysql-database-tables-manually)
+* [Criando tabelas de banco de dados DB2 manualmente](#creating-the-db2-database-tables-manually)
+* [Criando tabelas de banco de dados Oracle manualmente](#creating-the-oracle-database-tables-manually)
+* [Criando as tabelas de banco de dados MySQL manualmente](#creating-the-mysql-database-tables-manually)
 
-### Creating the DB2 database tables manually
+### Criando tabelas de banco de dados DB2 manualmente
 {: #creating-the-db2-database-tables-manually }
-Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the DB2  database tables.
+Use os scripts SQL que são fornecidos na instalação do {{site.data.keys.mf_server }} para criar as tabelas de banco de dados DB2. 
 
-As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. They are the similar to the topic about the possible users for DB2 as described in [Database users and privileges](#database-users-and-privileges).
+Conforme descrito na seção Visão Geral, todos os quatro componentes do {{site.data.keys.mf_server }} precisam de tabelas. Eles podem
+ser criados no mesmo esquema ou em esquemas diferentes. No entanto, algumas restrições se aplicam dependendo de como aplicativos {{site.data.keys.mf_server }} são implementados no servidor de aplicativos Java. Eles são semelhantes ao tópico sobre os possíveis usuários para DB2, conforme descrito em [Usuários e privilégios do banco de dados](#database-users-and-privileges). 
 
-#### Installation with the Server Configuration Tool
+#### Instalação com o Server Configuration Tool
 {: #installation-with-the-server-configuration-tool-1 }
-The same schema is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
+O mesmo esquema é usado para todos os componentes (serviço de administração do {{site.data.keys.mf_server }}, serviço de atualização em tempo real do {{site.data.keys.mf_server }}, serviço de push do
+{{site.data.keys.mf_server }} e tempo de execução do {{site.data.keys.product }})
 
-#### Installation with Ant tasks
+#### Instalação com tarefas Ant
 {: #installation-with-ant-tasks-1 }
-The sample Ant files that are provided in the product distribution use the same schema for all components. However, it is possible to modify the Ant files to have different schemas:
+Os arquivos Ant de amostra que são fornecidos na distribuição do produto usam o mesmo esquema para todos os componentes. Entretanto, é possível modificar os arquivos Ant para se ter diferentes esquemas:
 
-* The same schema for the administration service and the live update service as they cannot be installed separately with Ant tasks.
-* A different schema for the runtime
-* A different schema for the push service.
+* O mesmo esquema aplica-se ao serviço de administração e serviço de atualização em tempo real, já que eles não podem ser instalados separadamente com tarefas Ant.
+* Um esquema diferente para o tempo de execução
+* Um esquema diferente para o serviço de push.
 
-#### Manual installation
+#### Manual de Instalação
 {: #manual-installation-1 }
-It is possible to assign a different data source, and thus a different schema, to each of the {{ site.data.keys.mf_server }} components.  
-The scripts to create the tables are as follows:
+É possível designar uma origem de dados diferente e, assim, um esquema diferente, a cada um dos componentes do
+{{site.data.keys.mf_server }}.  
+Os scripts para criar as tabelas são os seguintes:
 
-* For the administration service, in **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql**.
-* For the live update service, in **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-db2.sql**.
-* For the runtime component, in **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-db2.sql**.
-* For the push service, in **mfp\_install\_dir/PushService/databases/create-push-db2.sql**.
+* Para o serviço de administração, em **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql**.
+* Para o serviço de atualização em tempo real, em **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-db2.sql**.
+* Para o componente de tempo de execução, em **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-db2.sql**.
+* Para o serviço de push, em **mfp\_install\_dir/PushService/databases/create-push-db2.sql**.
 
-The following procedure creates the tables for all the applications in the same schema (MFPSCM). It assumes that a database and a user are already created. For more information, see [DB2 database and user requirements](#db2-database-and-user-requirements).
+O procedimento a seguir cria as tabelas para todos os aplicativos no mesmo esquema (MFPSCM). Ele supõe que um banco de dados e um usuário já tenham sido criados. Para obter informações adicionais, consulte [Requisitos do banco de dados DB2 e do usuário](#db2-database-and-user-requirements).
 
-Run DB2 with the following commands with the user (mfpuser):
+Execute o DB2 com os seguintes comandos com o usuário (mfpuser):
 
 ```sql
 db2 CONNECT TO MFPDATA
@@ -236,24 +250,26 @@ db2 -vf mfp_install_dir/MobileFirstServer/databases/create-runtime-db2.sql -t
 db2 -vf mfp_install_dir/PushService/databases/create-push-db2.sql -t
 ```
 
-If the tables are created by mfpuser, this user has the privileges on the tables automatically and can use them at run time. If you want to restrict the privileges of the runtime user as described in [Database users and privileges](#database-users-and-privileges) or a finer control of privileges, refer to the DB2 documentation.
+Se as tabelas forem criadas por mfpuser, esse usuário terá privilégios nas tabelas automaticamente e poderá usá-las no tempo de execução. Se desejar restringir os privilégios do usuário de tempo de execução conforme descrito em [Usuários e privilégios do banco de dados](#database-users-and-privileges) ou um controle mais preciso de privilégios, consulte a documentação do DB2. 
 
-### Creating the Oracle database tables manually
+### Criando tabelas de banco de dados Oracle manualmente
 {: #creating-the-oracle-database-tables-manually }
-Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
+Use os scripts SQL fornecidos na instalação do {{site.data.keys.mf_server }} para criar tabelas de banco de dados Oracle.
 
-As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. The details are described in [Database users and privileges](#database-users-and-privileges).
+Conforme descrito na seção Visão Geral, todos os quatro componentes do {{site.data.keys.mf_server }} precisam de tabelas. Eles podem
+ser criados no mesmo esquema ou em esquemas diferentes. No entanto, algumas restrições se aplicam dependendo de como aplicativos {{site.data.keys.mf_server }} são implementados no servidor de aplicativos Java. Os detalhes são descritos em [Usuários e privilégios do banco de dados](#database-users-and-privileges).
 
-The tables must be created in the default schema of the runtime user. The scripts to create the tables are as follows:
+As tabelas devem ser criadas no esquema padrão do usuário do tempo de execução. Os scripts para criar as tabelas são os seguintes:
 
-* For the administration service, in **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-oracle.sql**.
-* For the live update service, in **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-oracle.sql**.
-* For the runtime component, in **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-oracle.sql**.
-* For the push service, in **mfp\_install\_dir/PushService/databases/create-push-oracle.sql**.
+* Para o serviço de administração, em **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-oracle.sql**.
+* Para o serviço de atualização em tempo real, em **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-oracle.sql**.
+* Para o componente de tempo de execução, em **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-oracle.sql**.
+* Para o serviço de push, em **mfp\_install\_dir/PushService/databases/create-push-oracle.sql**.
 
-The following procedure creates the tables for all the applications for the same user (**MFPUSER**). It assumes that a database and a user are already created. For more information, see [Oracle database and user requirements](#oracle-database-and-user-requirements).
+O procedimento a seguir cria as tabelas para todos os aplicativos para o mesmo usuário
+(**MFPUSER**). Ele supõe que um banco de dados e um usuário já tenham sido criados. Para obter informações adicionais, consulte [Requisitos do banco de dados Oracle e do usuário](#oracle-database-and-user-requirements).
 
-Run the following commands in Oracle SQLPlus:
+Execute os comandos a seguir no Oracle SQLPlus:
 
 ```sql
 CONNECT MFPUSER/MFPUSER_password@ORCL
@@ -264,42 +280,44 @@ CONNECT MFPUSER/MFPUSER_password@ORCL
 DISCONNECT;
 ```
 
-If the tables are created by MFPUSER, this user has the privileges on the tables automatically and can use them at run time. The tables are created in the user's default schema. If you want to restrict the privileges of the runtime user as described in [Database users and privileges](#database-users-and-privileges) or have a finer control of privileges, refer to the Oracle documentation.
+Se as tabelas forem criadas por MFPUSER, esse usuário terá os privilégios nas tabelas automaticamente e poderá usá-las no tempo de execução. As tabelas são criadas no esquema padrão do usuário. Se desejar restringir os privilégios do usuário de tempo de execução conforme descrito em [Usuários e privilégios do banco de dados](#database-users-and-privileges) ou ter um controle mais preciso de privilégios, consulte a documentação do Oracle. 
 
-### Creating the MySQL database tables manually
+### Criando as tabelas de banco de dados MySQL manualmente
 {: #creating-the-mysql-database-tables-manually }
-Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
+Use os scripts SQL que são fornecidos na instalação do {{site.data.keys.mf_server }} para criar as tabelas de banco de dados MySQL.
 
-As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. They are the similar to the topic about the possible users for MySQL as described in [Database users and privileges](#database-users-and-privileges).
+Conforme descrito na seção Visão Geral, todos os quatro componentes do {{site.data.keys.mf_server }} precisam de tabelas. Eles podem
+ser criados no mesmo esquema ou em esquemas diferentes. No entanto, algumas restrições se aplicam dependendo de como aplicativos {{site.data.keys.mf_server }} são implementados no servidor de aplicativos Java. Eles são semelhantes ao tópico sobre os possíveis usuários para MySQL, conforme descrito em [Usuários e privilégios do banco de dados](#database-users-and-privileges). 
 
-#### Installation with the Server Configuration Tool
+#### Instalação com o Server Configuration Tool
 {: #installation-with-the-server-configuration-tool-2 }
-The same database is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
+O mesmo banco de dados é usado para todos os componentes (serviço de administração do {{site.data.keys.mf_server }}, serviço de atualização em tempo real do {{site.data.keys.mf_server }}, serviço de push do {{site.data.keys.mf_server }} e tempo de execução do {{site.data.keys.product }})
 
-#### Installation with Ant tasks
+#### Instalação com tarefas Ant
 {: #installation-with-ant-tasks-2 }
-The sample Ant files that are provided in the product distribution use the same database for all components. However, it is possible to modify the Ant files to have different database:
+Os arquivos Ant de amostra que são fornecidos na distribuição do produto usam o mesmo banco de dados para todos os componentes. Entretanto, é possível modificar os arquivos Ant para terem um banco de dados diferente:
 
-* The same database for the administration service and the live update service as they cannot be installed separately with Ant tasks.
-* A different database for the runtime
-* A different database for the push service.
+* O mesmo banco de dados para o serviço de administração e serviço de atualização em tempo real, já que eles não podem ser instalados separadamente com tarefas Ant.
+* Um banco de dados diferente para o tempo de execução
+* Um banco de dados diferente para o serviço de push.
 
-#### Manual installation
+#### Manual de Instalação
 {: #manual-installation-2 }
-It is possible to assign a different data source, and thus a different database, to each of the {{ site.data.keys.mf_server }} components.  
-The scripts to create the tables are as follows:
+É possível designar uma origem de dados diferente e, assim, um banco de dados diferente, a cada um dos componentes do
+{{site.data.keys.mf_server }}.  
+Os scripts para criar as tabelas são os seguintes:
 
-* For the administration service, in **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-mysql.sql**.
-* For the live update service, in **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-mysql.sql**.
-* For the runtime component, in **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-mysql.sql**.
-* For the push service, in **mfp\_install\_dir/PushService/databases/create-push-mysql.sql**.
+* Para o serviço de administração, em **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-mysql.sql**.
+* Para o serviço de atualização em tempo real, em **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-mysql.sql**.
+* Para o componente de tempo de execução, em **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-mysql.sql**.
+* Para o serviço de push, em **mfp\_install\_dir/PushService/databases/create-push-mysql.sql**.
 
-The following example creates the tables for all the applications for the same user and database. It assumes that a database and a user has been created as in [Requirements for the databases for MySQL](#database-requirements).
+O exemplo a seguir cria as tabelas para todos os aplicativos para o mesmo usuário e banco de dados. Ele supõe que um banco de dados e um usuário foram criados como em [Requisitos para os bancos de dados para MySQL](#database-requirements). 
 
-The following procedure creates the tables for all the applications for the same user (mfpuser) and database (MFPDATA). It assumes that a database and a user are already created.
+O procedimento a seguir cria as tabelas para todos os aplicativos para o mesmo usuário (mfpuser) e banco de dados (MFPDATA). Ele supõe que um banco de dados e um usuário já tenham sido criados.
 
-1. Run a MySQL command line client with the option: `-u mfpuser`.
-2. Enter the following commands:
+1. Execute um cliente da linha de comando MySQL com a opção: `-u mfpuser`.
+2. Insira os comandos a seguir:
 
 ```sql
 USE MFPDATA;
@@ -309,228 +327,232 @@ SOURCE mfp_install_dir/MobileFirstServer/databases/create-runtime-mysql.sql;
 SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 ```
 
-## Create the database tables with the Server Configuration Tool
+## Criar as tabelas de banco de dados com o Server Configuration Tool
 {: #create-the-database-tables-with-the-server-configuration-tool }
-The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details about database setup when you install {{ site.data.keys.mf_server }} with the Server Configuration Tool.
+As tabelas de banco de dados para os aplicativos do {{site.data.keys.mf_server }} podem ser criadas manualmente, com Tarefas Ant ou com o Server Configuration Tool. Os tópicos fornecem explicação e detalhes sobre a configuração do banco de dados quando você instala o {{site.data.keys.mf_server }} com o Server Configuration Tool. 
 
-The Server Configuration Tool can create the database tables as part of the installation process. In some cases, it can even create a database and a user for the {{ site.data.keys.mf_server }} components. For an overview of the installation process with the Server Configuration Tool, see [Installing {{ site.data.keys.mf_server }} in graphical mode](../tutorials/graphical-mode).
+O Server Configuration Tool pode criar as tabelas de banco de dados como parte do processo de instalação. Em alguns casos, ele pode até criar um banco de dados e um usuário para os componentes do {{site.data.keys.mf_server }}. Para obter uma visão geral do processo de instalação com o Server Configuration Tool, consulte [Instalando o {{site.data.keys.mf_server }} no modo gráfico](../tutorials/graphical-mode). 
 
-After you complete the configuration credentials and click **Deploy** in the Server Configuration Tool pane, the following operations are run:
+Depois de concluir as credenciais de configuração e clicar em **Implementar** na área de janela Server Configuration Tool, as seguintes operações são executadas: 
 
-* Create the database and user if needed.
-* Verify whether the {{ site.data.keys.mf_server }} tables exist in the database. If they do not exist, create the tables.
-* Deploys the {{ site.data.keys.mf_server }} applications to the application server.
+* Crie o banco de dados e o usuário, se necessário.
+* Verifique se existem tabelas do {{site.data.keys.mf_server }} no banco de dados. Se elas não existirem, crie-as.
+* Implemente aplicativos {{site.data.keys.mf_server }} no servidor de aplicativos.
 
-If the database tables are created manually before you run the Server Configuration Tool, the tool can detect them and skip the phase of setting up the tables.
+Se as tabelas de banco de dados forem criadas manualmente antes de você executar o Server Configuration Tool, a ferramenta poderá detectá-las e ignorar a fase de configuração das tabelas. 
 
-Depending on your choice of the supported database management system (DBMS), select one of the following topics for more details on how the tool creates the database tables.
+Dependendo de sua escolha de sistema de gerenciamento de banco de dados (DBMS) suportado, selecione um dos tópicos a seguir para obter mais detalhes sobre como a ferramenta cria as tabelas de banco de dados.
 
-* [Creating the DB2 database tables with the Server Configuration Tool](#creating-the-db2-database-tables-with-the-server-configuration-tool)
-* [Creating the Oracle database tables with the Server Configuration Tool](#creating-the-oracle-database-tables-with-the-server-configuration-tool)
-* [Creating the MySQL database tables with the Server Configuration Tool](#creating-the-mysql-database-tables-with-the-server-configuration-tool)
+* [Criando as tabelas de banco de dados DB2 com o Server Configuration Tool](#creating-the-db2-database-tables-with-the-server-configuration-tool)
+* [Criando as tabelas de banco de dados Oracle com o Server Configuration Tool](#creating-the-oracle-database-tables-with-the-server-configuration-tool)
+* [Criando as tabelas de banco de dados MySQL com o Server Configuration Tool](#creating-the-mysql-database-tables-with-the-server-configuration-tool)
 
-### Creating the DB2 database tables with the Server Configuration Tool
+### Criando as tabelas de banco de dados DB2 com o Server Configuration Tool
 {: #creating-the-db2-database-tables-with-the-server-configuration-tool }
-Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the DB2  database tables.
+Use o Server Configuration Tool fornecido com a instalação do {{site.data.keys.mf_server }} para criar as tabelas de banco de dados DB2. 
 
-The Server Configuration Tool can create a database in the default DB2 instance. In **Database Selection** panel of the Server Configuration Tool, select the IBM DB2 option. In the next three panes, enter the database credentials. If the database name that is entered in the **Database Additional Settings** panel does not exist in the DB2 instance, you can enter additional information to enable the tool to create a database for you.
+O Server Configuration Tool pode criar um banco de dados na instância padrão do DB2. No painel **Seleção de banco de dados** do Server Configuration Tool, selecione a opção IBM DB2. Nas próximas três áreas de janela, insira as credenciais de banco de dados. Se o nome do banco de dados inserido no painel **Configurações Adicionais do Banco de Dados** não existir na instância do DB2, é possível inserir informações adicionais para ativar a ferramenta para criar um banco de dados para você.
 
-The Server Configuration Tool creates the database tables with default settings with the following SQL statement:
+O Server Configuration Tool cria as tabelas de banco de dados com configurações padrão com a seguinte instrução SQL: 
 ```sql
 CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 ```
 
-It is not meant to be used for production as in a default DB2 installation, many privileges are granted to PUBLIC.
+Ela não deve ser usada para produção, já que em uma instalação DB2 padrão, muitos privilégios são concedidos a PUBLIC.
 
-### Creating the Oracle database tables with the Server Configuration Tool
+### Criando as tabelas de banco de dados Oracle com o Server Configuration Tool
 {: #creating-the-oracle-database-tables-with-the-server-configuration-tool }
-Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
+Use o Server Configuration Tool fornecido com a instalação do {{site.data.keys.mf_server }} para criar as tabelas de banco de dados Oracle. 
 
-In Database Selection panel of the Server Configuration Tool, select the **Oracle Standard or Enterprise Editions, 11g or 12c** option. In the next three panes, enter the database credentials.
+No painel Seleção de banco de dados do Server Configuration Tool, selecione a opção **Oracle Standard ou Enterprise Editions, 11g ou 12c**. Nas próximas três áreas de janela, insira as credenciais de banco de dados.
 
-When you enter the Oracle user name in **Database Additional Settings** panel, it must be in uppercase. If you have an Oracle database user (FOO), but you enter a user name with lowercase (foo), the Server Configuration Tool considers it as another user. Unlike other tools for Oracle database, the Server Configuration Tool protects the user name against automatic conversion to uppercase.
+Quando você inserir o nome do usuário do Oracle no painel **Configurações Adicionais do Banco de Dados**, ele deverá estar em letra maiúscula. Se você tiver um usuário do banco de dados Oracle (FOO), mas inserir um nome do usuário com letras minúsculas (foo), o Server Configuration Tool o considerará como outro usuário. Ao contrário de outras ferramentas para o banco de dados Oracle, o Server Configuration Tool protege o nome do usuário contra conversão automática em letras maiúsculas.
 
-The Server Configuration Tool uses a service name or Oracle System Identifier (SID) to identify a database. However, if you want to make the connection to Oracle RAC, you need to enter a complex JDBC URL. In this case, in the **Database Settings** panel, select the **Connect using generic Oracle JDBC URLs** option and enter a URL for the Oracle thin driver.
+O Server Configuration Tool usa um nome de serviço ou um Identificador do Sistema Oracle (SID) para identificar um banco de dados. No entanto, se desejar estabelecer a conexão com o Oracle RAC, você precisará inserir uma URL JDBC complexa. Nesse caso, no painel **Configurações do Banco de Dados**, selecione **Conectar Usando URLs JDBC do Oracle Genéricas** e insira uma URL para o thin driver Oracle.
 
-If you need to create database and user for Oracle, use the Oracle Database Creation Assistant (DBCA) tool. For more information, see [Oracle database and user requirements](#oracle-database-and-user-requirements).
+Se for necessário criar um banco de dados e um usuário para o Oracle, use a ferramenta Oracle Database Creation Assistant (DBCA). Para obter informações adicionais, consulte [Requisitos do banco de dados Oracle e do usuário](#oracle-database-and-user-requirements).
 
-The Server Configuration Tool can do the same but with a limitation. The tool can create a user for Oracle 11g or Oracle 12g. However, it can create a database only for Oracle 11g, and not for Oracle 12c.
+O Server Configuration Tool pode fazer o mesmo, mas com uma limitação. A ferramenta pode criar um usuário para o Oracle 11 g ou Oracle 12 g. Entretanto, é possível criar um banco de dados somente para Oracle 11g, e não para Oracle 12c.
 
-If the database name or user name that is entered in the **Database Additional Settings** panel does not exist, refer to the following two sections for the extra steps to create the database or the user.
+Se o nome do banco de dados ou nome do usuário inserido no painel **Configurações Adicionais do Banco de Dados** não existir, consulte as duas seções a seguir para conhecer as etapas extra para criar o banco de dados ou usuário.
 
-#### Creating the database
+#### Criando o banco de dados
 {: #creating-the-database }
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. Execute um servidor SSH no computador que execute o banco de dados Oracle.
 
-    The Server Configuration Tool opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer as the Server Configuration Tool.
+    O Server Configuration Tool abre uma sessão SSH para o host Oracle para criar o banco de dados. Exceto no Linux e em algumas versões de sistemas UNIX, o servidor SSH é necessário, mesmo que o banco de dados Oracle seja executado no mesmo computador que o Server Configuration Tool. 
 
-2. In **Database creation request** panel, enter the login ID and password of an Oracle database user that has the privileges to create a database.
-3. In the same panel, also enter the password for the **SYS** user and the **SYSTEM** user for the database that is to be created.
+2. No painel **Solicitação de Criação de Banco de Dados**, insira o ID e a senha de login de um usuário do banco de dados Oracle que tenha privilégios para criar um banco de dados.
+3. No mesmo painel, insira também a senha para o usuário **SYS** e o usuário **SYSTEM** para o banco de dados que deve ser criado.
 
-A database is created with the SID name that is entered in the **Database Additional Settings** panel. It is not meant to be used for production.
+Um banco de dados é criado com o nome do SID que é inserido no painel **Configurações Adicionais do Banco de Dados**. Ele não deve ser usado para produção.
 
-#### Creating the user
+#### Criando o usuário
 {: #creating-the-user }
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. Execute um servidor SSH no computador que execute o banco de dados Oracle.
 
-    The Server Configuration Tool opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer as the Server Configuration Tool.
+    O Server Configuration Tool abre uma sessão SSH para o host Oracle para criar o banco de dados. Exceto no Linux e em algumas versões de sistemas UNIX, o servidor SSH é necessário, mesmo que o banco de dados Oracle seja executado no mesmo computador que o Server Configuration Tool. 
 
-2. In the **Database Additional Settings** panel, enter the login ID and password of the database user that is to be created.
-3. In **Database creation request** panel, enter the login ID and password of an Oracle database user that has the privileges to create a database user.
-4. In same panel, also enter the password for the **SYSTEM** user of the database.
+2. No painel **Configurações Adicionais do Banco de Dados**, insira o ID e a senha de login do usuário do banco de dados que deve ser criado.
+3. No painel **Solicitação de Criação de Banco de Dados**, insira o ID e a senha de login de um usuário do banco de dados Oracle que tenha privilégios para criar um usuário do banco de dados.
+4. No mesmo painel, insira também a senha para o usuário **SYSTEM** do banco de dados.
 
-### Creating the MySQL database tables with the Server Configuration Tool
+### Criando as tabelas de banco de dados MySQL com o Server Configuration Tool
 {: #creating-the-mysql-database-tables-with-the-server-configuration-tool }
-Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
+Use o Server Configuration Tool fornecido com a instalação do {{site.data.keys.mf_server }} para criar as tabelas de banco de dados MySQL. 
 
-The Server Configuration Tool can create a MySQL database for you. In **Database Selection** panel of the Server Configuration Tool, select the **MySQL 5.5.x, 5.6.x or 5.7.x** option. In the next three panes, enter the database credentials. If the database or the user that you enter in the Database Additional Settings panel does not exist, the tool can create it.
+O Server Configuration Tool pode criar um banco de dados MySQL para você. No painel **Seleção de banco de dados** do Server Configuration Tool, selecione a opção **MySQL 5.5.x, 5.6.x ou 5.7.x**. Nas próximas três áreas de janela, insira as credenciais de banco de dados. Se o banco de dados ou o usuário inserido no painel Configurações adicionais do banco de dados não existir, a ferramenta poderá criá-lo. 
 
-If MySQL server does not have the settings that are recommended in [MySQL database and user requirements](#mysql-database-and-user-requirements), the Server Configuration Tool displays a warning. Make sure to fulfill the requirements before you run the Server Configuration Tool.
+Se o servidor MySQL não tiver as configurações recomendadas em [Requisitos do banco de dados MySQL e do usuário](#mysql-database-and-user-requirements), o Server Configuration Tool exibirá um aviso. Certifique-se de preencher os requisitos antes de executar o Server Configuration Tool. 
 
-The following procedure provides some extra steps that you need to do when you create the database tables with the tool.
+O procedimento a seguir fornece algumas etapas extra que devem ser executadas quando você criar as tabelas de banco de dados com a ferramenta.
 
-1. In the **Database Additional Settings** panel, besides the connection settings, you must enter all the hosts from which the user is allowed to connect to the database. That is, all the hosts where {{ site.data.keys.mf_server }} runs.
-2. In the **Database creation request** panel, enter the login ID and the password of a MySQL administrator. By default, the administrator is root.
+1. No painel **Configurações Adicionais do Banco de Dados**, além das configurações de conexão, deve-se inserir todos os hosts a partir dos quais o usuário tem permissão para se conectar ao banco de dados. Ou seja, todos os hosts nos quais o {{site.data.keys.mf_server }} é executado.
+2. No painel **Solicitação de Criação de Banco de Dados**, insira o ID e a senha de login de um administrador do MySQL. Por padrão, o administrador é raiz.
 
-## Create the database tables with Ant tasks
+## Crie tabelas de banco de dados com tarefas Ant
 {: #create-the-database-tables-with-ant-tasks }
-The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details on how to create them with Ant tasks.
+As tabelas de banco de dados para os aplicativos do {{site.data.keys.mf_server }} podem ser criadas manualmente, com Tarefas Ant ou com o Server Configuration Tool. Os tópicos fornecem explicação e detalhes sobre como criá-las com tarefas Ant.
 
-You can find relevant information in this section about the setting up of the database if {{ site.data.keys.mf_server }} is installed with Ant Tasks.
+É possível localizar informações relevantes nesta seção sobre a configuração do banco de dados, caso o
+{{site.data.keys.mf_server }} seja instalado com tarefas Ant.
 
-You can use Ant Tasks to set up the {{ site.data.keys.mf_server }} database tables. In some cases, you can also create a database and a user with these tasks. For an overview of the installation process with Ant Tasks, see [Installing {{ site.data.keys.mf_server }} in command line mode](../tutorials/command-line).
+É possível usar tarefas Ant para configurar as tabelas de banco de dados do {{site.data.keys.mf_server }}. Em alguns casos, também é possível criar um banco de dados e um usuário com essas tarefas. Para obter uma visão geral do processo de instalação com tarefas Ant, consulte [Instalando o {{site.data.keys.mf_server }} no modo de linha de comando](../tutorials/command-line). 
 
-A set of sample Ant files is provided with the installation to help you get started with the Ant tasks. You can find the files in **mfp\_install\_dir/MobileFirstServer/configurations-samples**. The files are named after the following patterns:
+Um conjunto de arquivos Ante de amostra é fornecido com a instalação para ajudá-lo a começar a usar tarefas Ant. É possível localizar os arquivos em **mfp\_install\_dir/MobileFirstServer/configurations-samples**. Os arquivos são nomeados de acordo com os seguintes padrões:
 
 #### configure-appserver-dbms.xml
 {: #configure-appserver-dbmsxml }
-The Ant files can do these tasks:
+Os arquivos Ant podem executar estas tarefas:
 
-* Create the tables in a database if the database and database user exist. The requirements for the database are listed in [Database requirements](#database-requirements).
-* Deploy the WAR files of the {{ site.data.keys.mf_server }} components to the application server. These Ant files use the same database user to create the tables, and to install the run time database user for the applications at run time. The files also use the same database user for all the {{ site.data.keys.mf_server }} applications.
+* Criar as tabelas em um banco de dados, caso o banco de dados e o usuário do banco de dados existam. Os requisitos para o banco de dados estão listados em [Requisitos do banco de dados](#database-requirements). 
+* Implementar os arquivos WAR dos componentes do {{site.data.keys.mf_server }} no servidor de aplicativos. Esses arquivos Ant usam o mesmo usuário do banco de dados para criar as tabelas e para instalar o usuário do banco de dados de tempo de execução para os aplicativos no tempo de execução. Os arquivos também usam o mesmo usuário do banco de dados para todos os aplicativos do {{site.data.keys.mf_server }}. 
 
 #### create-database-dbms.xml
 {: #create-database-dbmsxml }
-The Ant files can create a database if needed on the supported database management system (DBMS), and then create the tables in the database. However, as the database is created with default settings, it is not meant to be used for production.
+Os arquivos Ant podem criar um banco de dados se for necessário no sistema de gerenciamento de banco de dados (DBMS) e depois criar as tabelas no banco de dados. No entanto, como o banco de dados é criado com configurações padrão, ele não deve ser usado para produção.
 
-In the Ant files, you can find the predefined targets that use the **configureDatabase** Ant task to set up the database. For more information, see [Ant configuredatabase](../installation-reference/#ant-configuredatabase-task-reference) task reference.
+Nos arquivos Ant, é possível localizar os destinos predefinidos que usam a tarefa Ant **configureDatabase** para configurar o banco de dados. Para obter informações adicionais, consulte a referência de tarefa [Ant configuredatabase](../installation-reference/#ant-configuredatabase-task-reference). 
 
-### Using the sample Ant files
+### Usando os arquivos Ant de amostra
 {: #using-the-sample-ant-files }
-The sample Ant files have predefined targets. Follow this procedure to use the files.
+Os arquivos Ant de amostra têm destinos predefinidos. Siga este procedimento para usar os arquivos.
 
-1. Copy the Ant file according to your application server and database configuration in a working directory.
-2. Edit the file and enter the values for your configuration in the `<! -- Start of Property Parameters -->` section for the Ant file.
-3. Run the Ant file with the databases target: `mfp_install_dir/shortcuts/ant -f your_ant_file databases`.
+1. Copie o arquivo Ant de acordo com seu servidor de aplicativos e configuração do banco de dados em um diretório ativo.
+2. Edite o arquivo e insira os valores para sua configuração na seção `<! -- Start of Property Parameters -->` para o arquivo Ant. 
+3. Execute o arquivo Ant com o destino do banco de dados: `mfp_install_dir/shortcuts/ant -f your_ant_file databases`.
 
-This command creates the tables in the specified database and schema for all {{ site.data.keys.mf_server }} applications ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.mf_server }} runtime). A log for the operations is produced and stored in your disk.
+Esse comando cria as tabelas no banco de dados e no esquema especificados para todos os aplicativos
+{{site.data.keys.mf_server }}
+(serviço de administração do {{site.data.keys.mf_server }}, serviço de atualização em tempo real do {{site.data.keys.mf_server }}, serviço de push do  {{site.data.keys.mf_server }} e tempo de execução do {{site.data.keys.mf_server }}). Um log para as operações é produzido e armazenado em seu disco.
 
-* On Windows, it is in the **{{ site.data.keys.prod_server_data_dir_win }}\\Configuration Logs\\** directory.
-* On UNIX, it is in the **{{ site.data.keys.prod_server_data_dir_unix }}/configuration-logs/** directory.
+* No Windows, ele está no diretório **{{site.data.keys.prod_server_data_dir_win }}\\Configuration Logs\\**. 
+* No UNIX, ele está no diretório **{{site.data.keys.prod_server_data_dir_unix }}/configuration-logs/**. 
 
-### Different users for the database tables creation and for run time
+### Diferentes usuários para a criação de tabelas de banco de dados e para tempo de execução
 {: #different-users-for-the-database-tables-creation-and-for-run-time }
-The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-samples** use the same database user for:
+Os arquivos Ant de amostra em **mfp\_install\_dir/MobileFirstServer/configurations-samples** usam o mesmo usuário do banco de dados para:
 
-* All the {{ site.data.keys.mf_server }} applications (the administration service, the live update service, the push service, and the runtime)
-* The user that is used to create the database and the user at run time for the data source in the application server.
+* Todos os aplicativos {{site.data.keys.mf_server }} (serviço de administração, serviço de atualização em tempo real, serviço de push e tempo de execução)
+* O usuário usado para criar o banco de dados e o usuário no tempo de execução para a origem de dados no servidor de aplicativos.
 
-If you want to separate the users as described in [Database users and privileges](#database-users-and-privileges), you need to create your own Ant file, or modify the sample Ant files so that each database target has a different user. For more information, see the [Installation reference](../installation-reference).
+Se desejar separar os usuários conforme descrito em [Usuários e privilégios do banco de dados](#database-users-and-privileges), é necessário criar seu próprio arquivo Ant, ou modificar os arquivos Ant de amostra para que cada destino de banco de dados tenha um usuário diferente. Para obter informações adicionais, consulte a [Referência de instalação](../installation-reference).
 
-For DB2  and MySQL, it is possible to have different users for the database creation and for the run time. The privileges for each type of the users are listed in [Database users and privileges](#database-users-and-privileges). For Oracle, you cannot have a different user for database creation and for the run time. The Ant tasks consider that the tables are in the default schema of a user. If you want to reduce privileges for the runtime user, you must create the tables manually in the default schema of the user that will be used at run time. For more information, see [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually).
+Para DB2 e MySQL, é possível ter diferentes usuários para a criação de banco de dados e para o tempo de execução. Os privilégios para cada tipo de usuário são listados em [Usuários e privilégios do banco de dados](#database-users-and-privileges). Para Oracle, não é possível ter um usuário diferente para a criação de banco de dados e para o tempo de execução. As tarefas Ant consideram que as tabelas estão no esquema padrão de um usuário. Se desejar reduzir privilégios para o usuário do tempo de execução, deve-se criar as tabelas manualmente no esquema padrão do usuário que será usado no tempo de execução. Para obter informações adicionais, consulte [Criando as tabelas de banco de dados Oracle manualmente](#creating-the-oracle-database-tables-manually).
 
-Depending on your choice of the supported database management system (DBMS), select one of the following topics to create the database with Ant tasks.
+Dependendo de sua escolha de sistema de gerenciamento de banco de dados (DBMS) suportado, selecione um dos tópicos a seguir para criar o banco de dados com tarefas Ant.
 
-### Creating the DB2 database tables with Ant tasks
+### Criando as tabelas de banco de dados DB2 com tarefas Ant
 {: #creating-the-db2-database-tables-with-ant-tasks }
-Use Ant tasks that are provided with {{ site.data.keys.mf_server }} installation to create the DB2  database.
+Use as tarefas Ant fornecidas com a instalação do {{site.data.keys.mf_server }} para criar o banco de dados DB2. 
 
-To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
+Para criar as tabelas de banco de dados em um banco de dados que já existe, consulte [Criar as tabelas de banco de dados com tarefas Ant](#create-the-database-tables-with-ant-tasks). 
 
-To create a database and the database tables, you can do so by Ant tasks. The Ant tasks create a database in the default instance of DB2 if you use an Ant file that contains the **dba** element. This element can be found in the sample Ant files named as **create-database-<dbms>.xml**.
+Para criar um banco de dados e tabelas de banco de dados, use tarefas Ant. As tarefas Ant criam um banco de dados na instância padrão do DB2 se você usar um arquivo Ant que contenha o elemento **dba**. Esse elemento pode ser localizado nos arquivos Ant de amostra chamados **create-database-<dbms>.xml**.
 
-Before you run the Ant tasks, make sure that you have an SSH server on the computer that runs the DB2 database. The **configureDatabase** Ant task opens an SSH session to the DB2 host to create the database. The SSH server is needed even if the DB2 database runs on the same computer where you run the Ant tasks (except on Linux and some versions of UNIX systems).
+Antes de executar as tarefas Ant, certifique-se de ter um servidor SSH no computador que executa o banco de dados DB2. A tarefa Ant **configureDatabase** abre uma sessão do SSH para o host do DB2 para criar o banco de dados. O servidor SSH é necessário, mesmo se o banco de dados DB2 for executado no mesmo computador no qual você executa as tarefas Ant (exceto no Linux e em algumas versões de sistemas UNIX).
 
-Follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-db2.xml** file.
+Siga as diretrizes gerais conforme descrito em [Criar as tabelas de banco de dados com tarefas Ant](#create-the-database-tables-with-ant-tasks) para editar a cópia do arquivo **create-database-db2.xml**. 
 
-You must also provide the login ID and password of a DB2 user with administration privileges (**SYSADM** or **SYSCTRL** permissions) in the **dba** element. In the sample Ant file for DB2 (**create-database-db2.xml**), the properties to set are: **database.db2.admin.username** and **database.db2.admin.password**.
+Também deve-se fornecer o ID e a senha de login de um usuário do DB2 com privilégios administrativos (permissões **SYSADM** ou **SYSCTRL**) no elemento **dba**. No arquivo Ant de amostra para DB2 (**create-database-db2.xml**), as propriedades para configurar são: **database.db2.admin.username** e **database.db2.admin.password**.
 
-When the **databases** Ant target is called, the **configureDatabase** Ant task creates a database with default settings with the following SQL statement:
+Quando o destino Ant **databases** é chamado, a tarefa Ant **configureDatabase** cria um banco de dados com configurações padrão com a seguinte instrução SQL:
 
 ```sql
 CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 ```
 
-It is not meant to be used for production as in a default DB2 installation, many privileges are granted to PUBLIC.
+Ela não deve ser usada para produção, já que em uma instalação DB2 padrão, muitos privilégios são concedidos a PUBLIC.
 
-### Creating the Oracle database tables with Ant tasks
+### Criando as tabelas de banco de dados Oracle com tarefas Ant
 {: #creating-the-oracle-database-tables-with-ant-tasks }
-Use Ant tasks that are provided with {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
+Use tarefas Ant que são fornecidas com a instalação do {{site.data.keys.mf_server }} para criar tabelas de banco de dados Oracle.
 
-When you enter the Oracle user name in Ant file, it must be in uppercase. If you have an Oracle database user (FOO), but you enter a user name with lowercase (foo), the **configureDatabase** Ant task considers it as another user. Unlike other tools for Oracle database, the **configureDatabase** Ant task protects the user name against automatic conversion to uppercase.
+Quando você inserir o nome do usuário do Oracle no arquivo Ant, ele deverá estar em letras maiúsculas. Se você tiver um usuário do banco de dados Oracle (FOO), mas inserir um nome do usuário com letras minúsculas (foo), a tarefa Ant **configureDatabase** o considerará como outro usuário. Ao contrário de outras ferramentas para banco de dados Oracle, a tarefa Ant **configureDatabase** protege o nome do usuário contra a conversão automática em letras maiúsculas.
 
-The **configureDatabase** Ant task uses a service name or Oracle System Identifier (SID) to identify a database. However, if you want to make the connection to Oracle RAC, you need to enter a complex JDBC URL. In this case, the **oracle** element that is within the **configureDatabase** Ant task must use the attributes (**url**, **user**, and **password**) instead of these attributes (**database**, **server**, **port**, **user**, and **password**). For more information, see the table in [Ant **configuredatabase** task reference](../installation-reference/#ant-configuredatabase-task-reference). The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-samples** use the **database**, **server**, **port**, **user**, and **password** attributes in the **oracle** element. They must be modified if you need to connect to Oracle with a JDBC URL.
+A tarefa Ant **configureDatabase** usa um nome de serviço ou Identificador do Sistema (SID) do Oracle para identificar um banco de dados. No entanto, se desejar estabelecer a conexão com o Oracle RAC, você precisará inserir uma URL JDBC complexa. Nesse caso, o elemento **oracle** que está na tarefa Ant **configureDatabase** deve usar os atributos (**url**, **user** e **password**) em vez desses atributos (**database**, **server**, **port**, **user** e **password**). Para obter informações adicionais, consulte a tabela em [Referência de tarefa Ant **configuredatabase**](../installation-reference/#ant-configuredatabase-task-reference). Os arquivos Ant de amostra em **mfp\_install\_dir/MobileFirstServer/configurations-samples** usam os atributos **database**, **server**, **port**, **user** e **password** no elemento **oracle**. Eles devem ser modificados se você precisar se conectar ao Oracle com uma URL JDBC.
 
-To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
+Para criar as tabelas de banco de dados em um banco de dados que já existe, consulte [Criar as tabelas de banco de dados com tarefas Ant](#create-the-database-tables-with-ant-tasks). 
 
-To create a database, user, or the database tables, use the Oracle Database Creation Assistant (DBCA) tool. For more information, see [Oracle database and user requirements](#oracle-database-and-user-requirements).
+Para criar um banco de dados, um usuário ou tabelas de banco de dados, use a ferramenta Oracle Database Creation Assistant (DBCA). Para obter informações adicionais, consulte [Requisitos do banco de dados Oracle e do usuário](#oracle-database-and-user-requirements).
 
-The **configureDatabase** Ant task can do the same but with a limitation. The task can create a database user for Oracle 11g or Oracle 12g. However, it can create a database only for Oracle 11g, and not for Oracle 12c. Refer to the following two sections for the extra steps that you need to create the database or the user.
+A tarefa Ant **configureDatabase** pode fazer o mesmo, mas com uma limitação. A tarefa pode criar um usuário do banco de dados para Oracle 11 g ou Oracle 12 g. Entretanto, é possível criar um banco de dados somente para Oracle 11g, e não para Oracle 12c. Consulte as duas seções a seguir para conhecer as etapas extra necessárias para criar o banco de dados ou o usuário.
 
-#### Creating the database
+#### Criando o banco de dados
 {: #creating-the-database-1 }
-Follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-oracle.xml** file.
+Siga as diretrizes gerais conforme descrito em [Criar as tabelas de banco de dados com tarefas Ant](#create-the-database-tables-with-ant-tasks) para editar a cópia do arquivo **create-database-oracle.xml**. 
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. Execute um servidor SSH no computador que execute o banco de dados Oracle.
 
-    The **configureDatabase** Ant task opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer where you run the Ant tasks.
+    A tarefa Ant **configureDatabase** abre uma sessão do SSH para o host do Oracle para criar o banco de dados. Exceto no Linux e em algumas versões de sistemas UNIX, o servidor SSH é necessário, mesmo que o banco de dados Oracle seja executado no mesmo computador no qual as tarefas Ant são executadas.
 
-2. In **dba** element that is defined in the **create-database-oracle.xml** file, enter the login ID and password of an Oracle database user that can connect to the Oracle Server via SSH and has the privileges to create a database. You can assign the values in the following properties:
+2. No elemento **dba** definido no arquivo **create-database-oracle.xml**, insira o ID e a senha de login de um usuário do banco de dados Oracle que possa se conectar ao Oracle Server via SSH e que tenha privilégios para criar um banco de dados. É possível atribuir valores nas propriedades a seguir:
     * **database.oracle.admin.username**
     * **database.oracle.admin.password**
-3. In **oracle** element, enter the database name that you want to create. The attribute is **database**. You can assign the value in the **database.oracle.mfp.dbname** property.
-4. In the same **oracle** element, also enter the password for the **SYS** user and the **SYSTEM** user for the database that is to be created. The attributes are **sysPassword** and **systemPassword**. You can assign the values in the corresponding properties:
+3. No elemento **oracle**, insira o nome do banco de dados que deseja criar. O atributo é **database**. É possível designar o valor na propriedade **database.oracle.mfp.dbname**.
+4. No mesmo elemento **oracle**, insira também a senha para o usuário **SYS** e o usuário **SYSTEM** para o banco de dados que deve ser criado. Os atributos são **sysPassword** e **systemPassword**. É possível atribuir valores nas propriedades correspondentes.
     * **database.oracle.sysPassword**
     * **database.oracle.systemPassword**
-5. After all the database credentials are entered in the Ant file, save it and run the **databases** Ant target.
+5. Após todas as credenciais de banco de dados serem inseridas no arquivo Ant, salve-as e execute o destino Ant **databases**.
 
-A database is created with the SID name that is entered in the database of the **oracle** element. It is not meant to be used for production.
+Um banco de dados é criado com o nome do SID inserido no banco de dados do elemento **oracle**. Ele não deve ser usado para produção.
 
-#### Creating the user
+#### Criando o usuário
 {: #creating-the-user-1 }
-Follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-oracle.xml** file.
+Siga as diretrizes gerais conforme descrito em [Criar as tabelas de banco de dados com tarefas Ant](#create-the-database-tables-with-ant-tasks) para editar a cópia do arquivo **create-database-oracle.xml**. 
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. Execute um servidor SSH no computador que execute o banco de dados Oracle.
 
-    The **configureDatabase** Ant task opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer where you run the Ant tasks.
+    A tarefa Ant **configureDatabase** abre uma sessão do SSH para o host do Oracle para criar o banco de dados. Exceto no Linux e em algumas versões de sistemas UNIX, o servidor SSH é necessário, mesmo que o banco de dados Oracle seja executado no mesmo computador no qual as tarefas Ant são executadas.
 
-2. In oracle element that is defined in the **create-database-oracle.xml** file, enter the login ID and password of an Oracle database user that you want to create. The attributes are **user** and **password**. You can assign the values in the corresponding properties:
+2. No elemento oracle definido no arquivo **create-database-oracle.xml**, insira o ID e a senha de login de um usuário do banco de dados Oracle que você deseja criar. Os atributos são **user** e **password**. É possível atribuir valores nas propriedades correspondentes.
     * database.oracle.mfp.username
     * database.oracle.mfp.password
-3. In the same **oracle** element, also enter the password for the **SYSTEM** user for the database. The attribute is **systemPassword**. You can assign the value in the **database.oracle.systemPassword property**.
-4. In the **dba** element, enter the login ID and password of an Oracle database user that has the privileges to create a user. You can assign the values in the following properties:
+3. No mesmo elemento **oracle**, insira também a senha para o usuário **SYSTEM** do banco de dados. O atributo é **systemPassword**. É possível designar o valor na **propriedade database.oracle.systemPassword**.
+4. No elemento **dba**, insira o ID e a senha de login para um usuário do banco de dados Oracle que tenha os privilégios para criar um usuário. É possível atribuir valores nas propriedades a seguir:
     * **database.oracle.admin.username**
     * **database.oracle.admin.password**
-5. After all the database credentials are entered in the Ant file, save it and run the **databases** Ant target.
+5. Após todas as credenciais de banco de dados serem inseridas no arquivo Ant, salve-as e execute o destino Ant **databases**.
 
-A database user is created with the name and password that are entered in the **oracle** element. This user has the privileges to create the {{ site.data.keys.mf_server }} tables, upgrade them and use them at run time.
+Um usuário do banco de dados é criado com o nome e a senha inseridos no elemento **oracle**. Esse usuário tem privilégios para criar as tabelas {{site.data.keys.mf_server }}, fazer seu
+upgrade e usá-las no tempo de execução.
 
-### Creating the MySQL database tables with Ant tasks
+### Criando as tabelas de banco de dados MySQL com tarefas Ant
 {: #creating-the-mysql-database-tables-with-ant-tasks }
-Use Ant Tasks that are provided with {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
+Use as tarefas Ant fornecidas com a instalação do {{site.data.keys.mf_server }} para criar as tabelas de banco de dados MySQL.
 
-To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
+Para criar as tabelas de banco de dados em um banco de dados que já existe, consulte [Criar as tabelas de banco de dados com tarefas Ant](#create-the-database-tables-with-ant-tasks). 
 
-If MySQL server does not have the settings that are recommended in [MySQL database and user requirements](#mysql-database-and-user-requirements), the **configureDatabase** Ant task displays a warning. Make sure to fulfill the requirements before you run the Ant task.
+Se o servidor MySQL não tiver as configurações recomendadas em [Requisitos do banco de dados MySQL e do usuário](#mysql-database-and-user-requirements), a tarefa Ant **configureDatabase** exibirá um aviso. Certifique-se de preencher os requisitos antes de executar a tarefa Ant.
 
-To create a database and the database tables, follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-mysql.xml** file.
+Para criar um banco de dados e as tabelas de banco de dados, siga as diretrizes gerais conforme descrito em [Criar as tabelas de banco de dados com tarefas Ant](#create-the-database-tables-with-ant-tasks) para editar a cópia do arquivo **create-database-mysql.xml**. 
 
-The following procedure provides some extra steps that you need to do when you create the database tables with the **configureDatabase** Ant task.
+O procedimento a seguir fornece algumas etapas extras que precisam ser executadas quando você cria as tabelas de banco de dados com a tarefa Ant **configureDatabase**.
 
-1. In the **dba** element that is defined in the **create-database-mysql.xml** file, enter the login ID and password of a MySQL administrator. By default, the administrator is **root**. You can assign the values in the following properties:
+1. No elemento **dba** definido no arquivo **create-database-mysql.xml**, insira o ID e a senha de login de um administrador do MySQL. Por padrão, o administrador é **root**. É possível atribuir valores nas propriedades a seguir:
     * **database.mysql.admin.username**
     * **database.mysql.admin.password**
-2. In the **mysql** element, add a **client** element for each host from which the user is allowed to connect to the database. That is, all the hosts where {{ site.data.keys.mf_server }} runs.
-After all the database credentials are entered in the Ant file, save it and run the **databases** Ant target.
+2. No elemento **mysql**, inclua um elemento **client** para cada host a partir dos quais o usuário tem permissão para se conectar ao banco de dados. Ou seja, todos os hosts nos quais o {{site.data.keys.mf_server }} é executado.
+Após todas as credenciais de banco de dados serem inseridas no arquivo Ant, salve-as e execute o destino Ant **databases**.

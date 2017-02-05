@@ -1,55 +1,55 @@
 ---
 layout: tutorial
-title: Setting up the Windows 8.1 and Windows 10 development environment
+title: Configurando o ambiente de desenvolvimento do Windows 8.1 e do Windows 10
 breadcrumb_title: Windows
 relevantTo: [windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #overview }
-This tutorial explains the steps a developer needs to follow in order to be able to develop and test Windows 8.1 Universal and Windows 10 UWP applications.
+Esse tutorial explica as etapas que um desenvolvedor precisa seguir para poder desenvolver e testar aplicativos do Windows 8.1 Universal e do Windows 10 UWP.
 
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the {{ site.data.keys.product }} development environment](../mobilefirst/) tutorial.
+**Pré-requisito:** Conforme você configura o ambiente de desenvolvimento do iOS, certifique-se também de ler o tutorial [Configurando o ambiente de desenvolvimento do {{site.data.keys.product }}](../mobilefirst/). 
 
-### Registration
+### Registro
 {: #registration }
-1. Register as a Windows developer
+1. Registre-se como um desenvolvedor do Windows 
 
-- [Create an Microsoft account](https://signup.live.com/) to be used by your organization/team admin.
-- Using the Microsoft ID, sign-in to the [Windows Dev Center](https://dev.windows.com/en-us/programs/join).
+- [Crie uma conta da Microsoft](https://signup.live.com/) para ser usada pelo administrador de sua organização/equipe.
+- Usando o ID da Microsoft, conecte-se ao [Windows Dev Center](https://dev.windows.com/en-us/programs/join).
 
-> Learn more in the [Windows developer support](https://dev.windows.com/en-us/support) website
+> Saiba mais no website de [Suporte ao desenvolvedor Windows](https://dev.windows.com/en-us/support) 
 
-### Development
+### Desenvolvimento
 {: #development }
-Application development for either Windows 8.1 Universal or Windows 10 UWP requires a PC workstation running either the Windows 8.1 or Windows 10 operating system, with Microsoft  Visual Studio 2013 or 2015.
+O desenvolvimento de aplicativo para Windows 8.1 Universal ou Windows 10 UWP requer uma estação de trabalho PC executando o sistema operacional Windows 8.1 ou Windows 10, com o Microsoft Visual Studio 2013 ou 2015.
 
 #### Windows 8.1 Universal
 {: #windows-81-universal }
-A Windows 8.1 Universal application Solution is made up from three projects:
+Uma Solução de aplicativo do Windows 8.1 Universal é composta de três projetos:
 
-- Shared code for business logic
-- A project for Windows Desktop/tablet applications
-- A project for Windows Phone applications
+- Código compartilhado para a lógica de negócios
+- Um projeto para aplicativos de Windows Desktop/tablet 
+- Um projeto para aplicativos do Windows Phone 
 
-Windows 8.1 Universal requires:
+O Windows 8.1 Universal requer: 
 
-- Windows OS 8.1 or higher
-- Visual Studio 2013 or 2015
+- Windows OS 8.1 ou superior 
+- Visual Studio 2013 ou 2015
 
 #### Windows 10 UWP
 {: #windows-10-uwp }
-A Windows 10 UWP (Universal Windows Platform) application Solution is made up from a single project containing:
+Uma Solução de aplicativo do Windows 10 UWP (Universal Windows Platform) é composta de um único projeto que contém:
 
-- Shared code for business logic
-- Adaptive UI (for both Desktop/tablet and Phone) 
+- Código compartilhado para a lógica de negócios
+- UI adaptável (para Desktop/tablet e Phone) 
 
-Windows 10 UWP requires:
+O Windows 10 UWP requer: 
 
-- Windows OS 8.1 or higher
+- Windows OS 8.1 ou superior 
 - Visual Studio 2015
 
-## What's Next
+## O que Vem a Seguir
 {: #whats-next }
-Now that the {{ site.data.keys.product }} and Windows development environment are set up, continue to [Quick Start](../../../quick-start/windows-8-10/) category to experience {{ site.data.keys.product }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product }} development.
+Agora que os ambientes de desenvolvimento do {{site.data.keys.product }} e do Windows estão configurados, continue com a categoria [Iniciação Rápida](../../../quick-start/windows-8-10/) para uma experiência com o {{site.data.keys.product }}, ou com [Todos os tutoriais](../../../all-tutorials) para saber aspectos específicos de desenvolvimento do {{site.data.keys.product }}.

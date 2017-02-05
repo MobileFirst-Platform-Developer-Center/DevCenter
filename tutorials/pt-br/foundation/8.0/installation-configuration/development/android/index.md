@@ -1,37 +1,37 @@
 ---
 layout: tutorial
-title: Setting up the Android development environment
-breadcrumb_title: Android
+title: Configurando o ambiente de desenvolvimento do Android
+breadcrumb_title: android
 relevantTo: [android,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #overview }
-This tutorial explains the steps a developer needs to follow in order to be able to develop and test Android applications. These steps include installing Android Studio and setting the Android SDK.
+Esse tutorial explica as etapas que um desenvolvedor precisa seguir para poder desenvolver e testar aplicativos Android. Essas etapas incluem a instalação do Android Studio e a configuração do Android SDK.
 
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the {{ site.data.keys.product_adj }} development environment](../mobilefirst/) tutorial.
+**Pré-requisito:** Conforme você configura o ambiente de desenvolvimento do iOS, certifique-se também de ler o tutorial [Configurando o ambiente de desenvolvimento do {{site.data.keys.product_adj }}](../mobilefirst/). 
 
-#### Support level
+#### Nível de suporte
 {: #support-level }
-{{ site.data.keys.product_adj }} SDK is compatible with Android version Ice Cream Sandwich (API level 14) and later.
+O {{site.data.keys.product_adj }} SDK é compatível com o Android versão Ice Cream Sandwich (API nível 14) e mais recente.
 
 ### Android Studio
-Follow the steps provided in the [Android Developers website](http://developer.android.com/develop/index.html) website to download and install Android Studio.
+Siga as etapas fornecidas no [website Android Developers](http://developer.android.com/develop/index.html) para fazer download e instalar o Android Studio.
 
-![Configure the Android SDK](android-studio.png)
+![Configurar o Android SDK](android-studio.png)
 
-### Android SDK
-The Android SDK provides the tools and APIs required to develop applications on the Android platform, using the Java programming language.
+### SDK do Android
+O Android SDK fornece as ferramentas e APIs necessárias para desenvolver aplicativos na plataforma Android, usando a linguagem de programação Java.
 
-Once you open Android Studio for the time, you will be able to configure the Android SDK using the SDK Manager.
+Depois de abrir o Android Studio pela primeira vez, você poderá configurar o Android SDK usando o SDK Manager.
 
-In the SDK Manager you can install required packages. For more information, [visit the Android Developer website](http://developer.android.com/sdk/index.html).
+No SDK Manager, é possível instalar os pacotes necessários. Para obter informações adicionais, [visite o website Android Developer](http://developer.android.com/sdk/index.html).
 
-#### Android Virtual Devices
+#### Dispositivos Virtuais Android 
 {: #android-virtual-devices }
-You can use an AVD to test your application. For a detailed explanation of all available options, see the [Managing Virtual Devices documentation topic](http://developer.android.com/tools/devices/index.html) in the Android Developers website.
+É possível usar um AVD para testar seu aplicativo. Para obter uma explicação detalhada de todas as opções disponíveis, consulte o [tópico da documentação Gerenciando dispositivos virtuais](http://developer.android.com/tools/devices/index.html) no website Android Developers. 
 
-## What's Next
+## O que Vem a Seguir
 {: #whats-next }
-Now that the {{ site.data.keys.product_adj }} and Android development environment are set up, continue to [Quick Start](../../../quick-start/android/) category to experience {{ site.data.keys.product_adj }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product_adj }} development.
+Agira que os ambientes de desenvolvimento do {{site.data.keys.product_adj }} e do Android estão configurados, continue com a categoria [Iniciação Rápida](../../../quick-start/android/) para uma experiência com o {{site.data.keys.product_adj }}, ou com [Todos os tutoriais](../../../all-tutorials) para saber aspectos específicos de desenvolvimento do {{site.data.keys.product_adj }}. 

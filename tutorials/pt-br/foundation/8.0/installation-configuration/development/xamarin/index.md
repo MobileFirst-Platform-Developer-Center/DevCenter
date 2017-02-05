@@ -1,25 +1,26 @@
 ---
 layout: tutorial
-title: Setting up the Xamarin development environment
+title: Configurando o ambiente de desenvolvimento do Xamarin
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Visão Geral
 {: #overview }
-This tutorial explains the steps a developer needs to follow to be able to develop and test native C# Xamarin applications for Android or iOS devices. These steps include installing Xamarin Studio.
+Esse tutorial explica as etapas que um desenvolvedor precisa seguir para poder desenvolver e testar aplicativos Xamarin C# nativos para dispositivos Android ou iOS. Essas etapas incluem a instalação do Xamarin Studio.
 
-**Prerequisite:** As you setup your Xamarin development environment, make sure to also read the [Setting up the MobileFirst development environment](../../development/) tutorial.
+**Pré-requisito:** Conforme você configura o ambiente de desenvolvimento do Xamarin, certifique-se também de ler o tutorial [Configurando o ambiente de desenvolvimento do MobileFirst](../../development/). 
 
-### Development
+### Desenvolvimento
 {: #development }
-Xamarin applications are developed using [Xamarin Studio](https://www.xamarin.com/studio) or [Microsoft Visual Studio](https://www.visualstudio.com/). Xamarin studio can be installed on Mac OS or Windows.  Alternatively, on Windows 8.1 or 10 desktops, Xamarin can be added as a plugin to Microsoft Visual Studio.   
+Os aplicativos do Xamarin são desenvolvidos usando o [Xamarin Studio](https://www.xamarin.com/studio) ou o [Microsoft Visual Studio](https://www.visualstudio.com/). O Xamarin studio pode ser instalado no Mac OS ou no Windows.  Como
+alternativa, em áreas de trabalho Windows 8.1 ou 10, o Xamarin pode ser incluído como um plug-in para o Microsoft Visual Studio.   
 
-Xamarin Studio can be downloaded at [Xamarin Studio Downloads](https://www.xamarin.com/download)
+O Xamarin Studio pode ser transferido por download em [Xamarin Studio Downloads](https://www.xamarin.com/download)
 
 ![Xamarin Studio](xamarin-studio.png)
 
-## What's Next
+## O que Vem a Seguir
 {: #whats-next }
-Now that the {{ site.data.keys.product_full }} and Xamarin development environments are set up, continue to the [Quick Start](../../../quick-start/xamarin/) category to experience {{ site.data.keys.product }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product }} development.
+Agora que os ambientes de desenvolvimento do {{site.data.keys.product_full }} e do Xamarin estão configurados, continue com a categoria [Iniciação Rápida](../../../quick-start/xamarin/) para uma experiência com o {{site.data.keys.product }} ou com [Todos os tutoriais](../../../all-tutorials) para saber aspectos específicos de desenvolvimento do {{site.data.keys.product }}. 
