@@ -1,30 +1,49 @@
 ---
 layout: tutorial
-title: Setting up the Cordova development environment
+title: Configuration de l'environnement de développement Cordova
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-To get started with [Cordova (PhoneGap) development](https://cordova.apache.org/) the very basic required step is to install the Cordova CLI. The Cordova CLI is the tool enabling you to create Cordova applications. These applications can be further enhanced by using various 3rd party frameworks and tools such as Ionic, AngularJS, jQuery Mobile and many more. 
-With Cordova applications you can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others for implementing your applications and adapters.
+Pour commencer le [développement Cordova
+(PhoneGap)](https://cordova.apache.org/), vous devez tout d'abord installer l'interface de ligne de commande
+Cordova.
+Il s'agit de l'outil permettant de créer des applications Cordova. Celles-ci
+peuvent être améliorées à l'aide de divers outils et infrastructures tiers tels
+qu'Ionic, AngularJS, jQuery Mobile, etc. Avec des applications Cordova, vous pouvez
+utiliser l'éditeur de code de votre choix, par exemple Atom.io, Visual Studio Code,
+Eclipse, IntelliJ ou d'autres, afin d'implémenter vos applications et vos adaptateurs. 
 
-**Prerequisite:** As you setup your Cordova development environment, make sure to also read the [Setting up the {{ site.data.keys.product_adj }} development environment](../mobilefirst/) tutorial.
+**Prérequis :** lorsque vous configurez votre environnement de
+développement Cordova, lisez également le tutoriel
+[Configuration de l'environnement de développement
+{{site.data.keys.product_adj }}](../mobilefirst/). 
 
-## Installing the Cordova CLI
+## Installation de l'interface de ligne de commande Cordova 
 {: #installing-the-cordova-cli }
-{{ site.data.keys.product }} supports Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova).  
-To install:
+{{site.data.keys.product }} prend en charge
+l'[interface de ligne de commande
+Cordova 6.x](https://www.npmjs.com/package/cordova) d'Apache.
+Pour procéder à l'installation :
 
-1. Download and install [NodeJS](https://nodejs.org/en/).
-2. From a **Command-line** window, run the command: `npm install -g cordova`.
+1. Téléchargez et installez [NodeJS](https://nodejs.org/en/).
+2. Depuis une fenêtre de **ligne de commande**, exécutez la
+commande `npm install -g cordova`.
 
-## Next steps
+## Etapes suivantes 
 {: #next-steps }
-To continue with {{ site.data.keys.product_adj }} development in Cordova applications, the {{ site.data.keys.product_adj }} Cordova SDK/plug-ins need to be added to the Cordova application.
+Pour continuer le développement {{site.data.keys.product_adj }} dans
+des applications Cordova, vous devez ajouter le logiciel SDK Cordova/des plug-in
+{{site.data.keys.product_adj }} à l'application Cordova. 
 
-* Learn how to add the [{{ site.data.keys.product_adj }} SDK to Cordova applications](../../../application-development/sdk/cordova/).
-* For applications development, refer to the [Using the {{ site.data.keys.product }} SDK](../../../application-development/) tutorials.
-* For adapters develpment, refer to the [Adapters](../../../adapters/) category.
+* Apprenez à ajouter le logiciel SDK
+[{{site.data.keys.product_adj }}
+à des applications Cordova](../../../application-development/sdk/cordova/).
+* Pour le développement d'applications, reportez-vous aux tutoriels
+relatifs à l'[utilisation du logiciel
+SDK de {{site.data.keys.product }}](../../../application-development/). 
+* Pour le développement d'adaptateurs, reportez-vous à la catégorie relative aux
+[adaptateurs](../../../adapters/). 

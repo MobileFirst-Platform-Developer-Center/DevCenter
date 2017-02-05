@@ -1,309 +1,309 @@
 ---
 layout: tutorial
-title: Topologies and Network flows
+title: Topologies et flots réseau
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-The information presented here details possible server topologies for {{ site.data.keys.mf_server }} components, as well as available network flows.  
-The components are deployed according to the server topology that you use. The network flows explain to you how the components communicate with one another and with the end-user devices.
+Les informations présentées ci-après décrivent les topologies de serveur possibles pour les composants {{site.data.keys.mf_server }}, ainsi que les flots réseau disponibles.   
+Les composants sont déployés en fonction de la topologie de serveur que vous utilisez. Les flots réseau vous expliquent comment les composants communiquent entre eux et avec les terminaux des utilisateurs finaux. 
 
-#### Jump to
+#### Accéder à
 {: #jump-to }
 
-* [Network flows between the {{ site.data.keys.mf_server }} components](#network-flows-between-the-mobilefirst-server-components)
-* [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics)
-* [Multiple {{ site.data.keys.product }} runtimes](#multiple-mobilefirst-foundation-runtimes)
-* [Multiple instances of {{ site.data.keys.mf_server }} on the same server or WebSphere Application Server cell](#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell)
+* [Flots réseau entre les composants {{site.data.keys.mf_server }}](#network-flows-between-the-mobilefirst-server-components)
+* [Contraintes sur les composants {{site.data.keys.mf_server }} et {{site.data.keys.mf_analytics }}](#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics)
+* [Plusieurs environnements d'exécution de {{site.data.keys.product }}](#multiple-mobilefirst-foundation-runtimes)
+* [Plusieurs instances de {{site.data.keys.mf_server }} sur le même serveur ou la même cellule WebSphere Application Server](#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell)
 
-## Network flows between the {{ site.data.keys.mf_server }} components
+## Flots réseau entre les composants {{site.data.keys.mf_server }}
 {: #network-flows-between-the-mobilefirst-server-components }
-The {{ site.data.keys.mf_server }} components can communicate with each other over JMX or HTTP. You need to configure certain JNDI properties to enable the communications.  
-The network flows between the components and the device can be illustrated by the following image:
+Les composants {{site.data.keys.mf_server }} peuvent communiquer entre eux via JMX ou HTTP. Vous devez configurer certaines propriétés JNDI pour activer les communications.  
+L'image suivante représente les flots réseau entre les composants et le terminal :
 
-![Diagram of the {{ site.data.keys.product }} components network flows](mfp_components_network_flows.jpg)
+![Diagramme des flots réseau des composants {{site.data.keys.product }}](mfp_components_network_flows.jpg)
 
-The flows between the various {{ site.data.keys.mf_server }} components, {{ site.data.keys.mf_analytics }}, the mobile devices, and the application server are explained in the following sections:
+Les flots entre les différents composants {{site.data.keys.mf_server }}, {{site.data.keys.mf_analytics }}, les terminaux mobiles et le serveur d'applications sont décrits dans les sections suivantes :
 
-1. [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)
-2. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)
-3. [{{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime to the deployment manager on WebSphere Application Server Network Deployment](#mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
-4. [{{ site.data.keys.mf_server }} push service and {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_analytics }}](#mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics)
-5. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} live update service](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)
-6. [{{ site.data.keys.mf_console }} to {{ site.data.keys.mf_server }} administration service](#mobilefirst-operations-console-to-mobilefirst-server-administration-service)
-7. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)
-8. [{{ site.data.keys.mf_server }} push service to an external push notification service (outbound)](#mobilefirst-server-push-service-to-an-external-push-notification-service-outbound)
-9. [Mobile devices to {{ site.data.keys.product }} runtime](#mobile-devices-to-mobilefirst-foundation-runtime)
+1. [Communication entre l'environnement d'exécution de {{site.data.keys.product }} et le service d'administration de {{site.data.keys.mf_server }}](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)
+2. [Communication entre le service d'administration de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product }} dans d'autres serveurs](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)
+3. [Communication entre le service d'administration de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product_adj }} et le gestionnaire de déploiement sur WebSphere Application Server Network Deployment](#mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
+4. [Communication entre le service push de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product }} et {{site.data.keys.mf_analytics }}](#mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics)
+5. [Communication entre le service d'administration de {{site.data.keys.mf_server }} et le service Live Update de {{site.data.keys.mf_server }}](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)
+6. [Communication entre {{site.data.keys.mf_console }} et le service d'administration de {{site.data.keys.mf_server }}](#mobilefirst-operations-console-to-mobilefirst-server-administration-service)
+7. [Communication entre le service d'administration de {{site.data.keys.mf_server }} et le service push de {{site.data.keys.mf_server }} et le serveur d'autorisations](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)
+8. [Communication entre le service push de {{site.data.keys.mf_server }} et un service de notification push externe (sortant)](#mobilefirst-server-push-service-to-an-external-push-notification-service-outbound)
+9. [Communication entre les terminaux mobiles et l'environnement d'exécution de {{site.data.keys.product }}](#mobile-devices-to-mobilefirst-foundation-runtime)
 
-### {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service
+### Communication entre l'environnement d'exécution de {{site.data.keys.product }} et le service d'administration de {{site.data.keys.mf_server }}
 {: #mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service }
-The runtime and the administration service can communicate with each other through JMX and HTTP. This communication occurs during the initialization phase of the runtime. The runtime contacts the administration service local to its application server to get the list of the adapters and applications that it needs to serve. The communication also happens when some administration operations are run from {{ site.data.keys.mf_console }} or the administration service. On WebSphere  Application Server Network Deployment, the runtime can contact an administration service that is installed on another server of the cell. This enables the non-symmetric deployment (see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)). However, on all other application servers (Apache Tomcat, WebSphere Application Server Liberty, or stand-alone WebSphere Application Server), the administration service must be running on the same server as the runtime.
+L'environnement d'exécution et le service d'administration peuvent communiquer entre eux via JMX et HTTP. Cette communication est établie lors de la phase d'initialisation de l'environnement d'exécution. L'environnement d'exécution contacte le service d'administration installé en local sur son serveur d'applications pour obtenir la liste des adaptateurs et des applications qu'il doit prendre en charge. La communication est également établie lorsque certaines opérations d'administration sont exécutées à partir de {{site.data.keys.mf_console }} ou du service d'administration. Sur WebSphere Application Server Network Deployment, l'environnement d'exécution peut contacter un service d'administration qui est installé sur un autre serveur de la cellule. Cela permet le déploiement non symétrique (voir [Contraintes sur le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product }}](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)). Toutefois, sur tous les autres serveurs d'applications (Apache Tomcat, WebSphere Application Server Liberty ou WebSphere Application Server autonome), le service d'administration doit être en cours d'exécution sur le même serveur que l'environnement d'exécution. 
 
-The protocols for JMX depend on the application server:
+Les protocoles pour JMX dépendent du serveur d'applications :
 
 * Apache Tomcat - RMI
-* WebSphere Application Server Liberty - HTTPS (with the REST connector)
-* WebSphere Application Server - SOAP or RMI
+* WebSphere Application Server Liberty - HTTPS (avec le connecteur REST)
+* WebSphere Application Server - SOAP ou RMI
 
-For the communication via JMX, it is required that these protocols are available on the application server. For more information about the requirements, see [Application server prerequisites](../appserver/#application-server-prerequisites).
+Pour la communication via JMX, ces protocoles doivent être disponibles sur le serveur d'applications. Pour plus d'informations sur les exigences, voir [Exigences en matière de serveur d'applications](../appserver/#application-server-prerequisites).
 
-The JMX beans of the runtime and the administration service are obtained from the application server. However, in the case of WebSphere Application Server Network Deployment, the JMX beans are obtained from the deployment manager. The deployment manager has the view of all the beans of a cell on WebSphere Application Server Network Deployment. As such, some configurations are not needed on WebSphere Application Server Network Deployment (such as the farm configuration), and non-symmetric deployment is possible on WebSphere Application Server Network Deployment. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
+Les beans JMX de l'environnement d'exécution et du service d'administration sont obtenus auprès du serveur d'applications. Toutefois, avec WebSphere Application Server Network Deployment, les beans JMX sont obtenus auprès du gestionnaire de déploiement. Le gestionnaire de déploiement possède la vue de tous les beans d'une cellule sur WebSphere Application Server Network Deployment. Par conséquent, certaines configurations ne sont pas requises sur WebSphere Application Server Network Deployment (par exemple, la configuration en parc de serveurs) et un déploiement non symétrique est possible sur WebSphere Application Server Network Deployment. Pour plus d'informations, voir [Contraintes sur le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product }}](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
 
-To distinguish different installation of {{ site.data.keys.mf_server }} on the same application server or on the same WebSphere Application Server cell, you can use an environment ID, which is a JNDI variable. By default, this variable has an empty value. A runtime with a given environment ID communicates only with an administration service that has the same environment ID. For example, the administration service has an environment ID set to X, and the runtime has a different environment ID (for example, Y), then the two components do not see each other. The {{ site.data.keys.mf_console }} shows no runtime available.
+Pour distinguer une autre installation de {{site.data.keys.mf_server }} sur le même serveur d'applications ou sur la même cellule WebSphere Application Server, vous pouvez utiliser un ID d'environnement, qui est une variable JNDI. Par défaut, cette variable comporte une valeur vide. Un environnement d'exécution portant un ID d'environnement donné communique uniquement avec un service d'administration doté du même ID d'environnement. Par exemple, si le service d'administration possède un ID d'environnement X et l'environnement d'exécution possède un ID d'environnement différent (par exemple, Y), les deux composants ne se voient pas. Aucun environnement d'exécution disponible n'apparaît dans {{site.data.keys.mf_console }}. 
 
-An administration service must be able to communicate with all the {{ site.data.keys.product }} runtime components of a cluster. When an administration operation is run, such as uploading a new version of an adapter, or changing the active status of an application, all runtime components of the cluster must be notified about the change. If the application server is not WebSphere Application Server Network Deployment, this communication can happen only if a farm is configured. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
+Un service d'administration doit pouvoir communiquer avec tous les composants d'environnement d'exécution de {{site.data.keys.product }} d'un cluster. Lorsqu'une opération d'administration est exécutée, comme le téléchargement d'une nouvelle version d'un adaptateur ou le changement du statut actif d'une application, tous les composants d'environnement d'exécution du cluster doivent être prévenus de la modification. Si le serveur d'applications n'est pas WebSphere Application Server Network Deployment, cette communication ne peut être établie que si un parc de serveurs est configuré. Pour plus d'informations, voir [Contraintes sur le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product }}](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
 
-The runtime also communicates with the administration service through HTTP or HTTPS to download large artifacts such as the adapters. A URL is generated by the administration service and the runtime opens and outbound HTTP or HTTPS connection to request an artifact from this URL. It is possible to override the default URL generation by defining the JNDI properties (mfp.admin.proxy.port, mfp.admin.proxy.protocol, and mfp.admin.proxy.host) in the administration service. The administration service might also need to communicate with the runtime through HTTP or HTTPS to get the OAuth tokens that are used to run the push operations. For more information, see [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server).
+L'environnement d'exécution communique également avec le service d'administration via HTTP ou HTTPS pour télécharger des artefacts volumineux, tels que des adaptateurs. Une URL est générée par le service d'administration et l'environnement d'exécution ouvre une connexion HTTP ou HTTPS sortante pour demander un artefact à partir de cette URL. Il est possible de remplacer la génération d'URL par défaut en définissant les propriétés JNDI (mfp.admin.proxy.port, mfp.admin.proxy.protocol et mfp.admin.proxy.host) dans le service d'administration. Le service d'administration aura peut-être également besoin de communiquer avec l'environnement d'exécution via HTTP ou HTTPS pour obtenir les jetons OAuth utilisés pour exécuter les opérations push. Pour plus d'informations, voir [Communication entre le service d'administration de {{site.data.keys.mf_server }} et le service push de {{site.data.keys.mf_server }} et le serveur d'autorisations](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server).
 
-The JNDI properties that are used for the communication between the runtime and the administration service are as follows:
+Les propriétés JNDI utilisées pour la communication entre l'environnement d'exécution et le service d'administration sont les suivantes :
 
-#### {{ site.data.keys.mf_server }} administration service
+#### Service d'administration de {{site.data.keys.mf_server }}
 {: #mobilefirst-server-administration-service }
 
-* [JNDI properties for administration services: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)
-* [JNDI properties for administration services: proxies](../server-configuration/#jndi-properties-for-administration-service-proxies)
-* [JNDI properties for administration services: topologies](../server-configuration/#jndi-properties-for-administration-service-topologies)
+* [Propriétés JNDI pour les services d'administration : JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)
+* [Propriétés JNDI pour les services d'administration : proxies](../server-configuration/#jndi-properties-for-administration-service-proxies)
+* [Propriétés JNDI pour les services d'administration : topologies](../server-configuration/#jndi-properties-for-administration-service-topologies)
 
-#### {{ site.data.keys.product }} runtime
+#### Environnement d'exécution de {{site.data.keys.product }}
 {: #mobilefirst-foundation-runtime }
 
-* [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [Liste des propriétés JNDI pour l'environnement d'exécution de {{site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
-### {{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers
+### Communication entre le service d'administration de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product }} dans d'autres serveurs
 {: #mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers }
-As described in [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service), it is required to have the communication between an administration service and all the runtime components of a cluster. When an administration operation is run, all the runtime components of a cluster can then be notified about this modification. The communication is through JMX.
+Comme indiqué dans la rubrique intitulée [Communication entre l'environnement d'exécution de {{site.data.keys.product }} et le service d'administration de {{site.data.keys.mf_server }} ](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service), une communication est requise entre un service d'administration et tous les composants d'environnement d'exécution d'un cluster. Lorsqu'une opération d'administration est exécutée, tous les composants d'environnement d'exécution d'un cluster peuvent alors être avertis de cette modification. La communication est établie via JMX.
 
-On WebSphere Application Server Network Deployment, this communication can occur without any specific configuration. All the JMX MBeans that correspond to the same environment ID are obtained from the deployment manager.
+Sur WebSphere Application Server Network Deployment, cette communication peut être établie sans aucune configuration spécifique. Tous les beans gérés JMX correspondant au même ID d'environnement sont obtenus auprès du gestionnaire de déploiement. 
 
-For a cluster of stand-alone WebSphere Application Server, WebSphere Application Server Liberty profile, or Apache Tomcat, the communication can happen only if a farm is configured. For more information, see [Installing a server farm](../appserver/#installing-a-server-farm).
+Pour un cluster de WebSphere Application Server autonome, de profil Liberty de WebSphere Application Server ou d'Apache Tomcat, la communication ne peut être établie que si un parc de serveurs est configuré. Pour plus d'informations, voir [Installation d'un parc de serveurs](../appserver/#installing-a-server-farm). 
 
-### {{ site.data.keys.mf_server }} administration service and MobileFirst runtime to the deployment manager on WebSphere Application Server Network Deployment
+### Communication entre le service d'administration de {{site.data.keys.mf_server }} et l'environnement d'exécution de MobileFirst et le gestionnaire de déploiement sur WebSphere Application Server Network Deployment
 {: #mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment }
-On WebSphere Application Server Network Deployment, the runtime and the administration service obtain the JMX MBeans that are used in [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) and [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers) by communicating with the deployment manager. The corresponding JNDI properties are **mfp.admin.jmx.dmgr.*** in [JNDI properties for administration services: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx).
+Sur WebSphere Application Server Network Deployment, l'environnement d'exécution et le service d'administration obtiennent les beans gérés JMX qui sont utilisés pour la [communication entre l'environnement d'exécution de {{site.data.keys.product }} et le service d'administration de {{site.data.keys.mf_server }}](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) et pour la [communication entre le service d'administration de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product }} dans d'autres serveurs](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers) avec le gestionnaire de déploiement. Les propriétés JNDI correspondantes sont **mfp.admin.jmx.dmgr.*** décrites dans [Propriétés JNDI pour les services d'administration : JMX](../server-configuration/#jndi-properties-for-administration-service-jmx).
 
-The deployment manager must be running to allow the operations that require JMX communication between the runtime and the administration service. Such operations can be a runtime initialization, or the notification of a modification performed through the administration service.
+Le gestionnaire de déploiement doit être actif pour que les opérations nécessitant une communication JMX entre l'environnement d'exécution et le service d'administration puissent être exécutées. Ces opérations peuvent être l'initialisation de l'environnement d'exécution ou la notification d'une modification effectuée via le service d'administration. 
 
-### {{ site.data.keys.mf_server }} push service and {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_analytics }}
+### Communication entre le service push de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product }} et {{site.data.keys.mf_analytics }}
 {: #mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics }
-The runtime sends data to {{ site.data.keys.mf_analytics }} through HTTP or HTTPS. The JNDI properties of the runtime that are used to define this communication are:
+L'environnement d'exécution envoie des données à {{site.data.keys.mf_analytics }} via HTTP ou HTTPS. Les propriétés JNDI de l'environnement d'exécution utilisées pour définir cette communication sont les suivantes : 
 
-* **mfp.analytics.url** - the URL that is exposed by {{ site.data.keys.mf_analytics }} service to receive incoming analytics data from the runtime. Example: `http://<hostname>:<port>/analytics-service/rest`
+* **mfp.analytics.url** - URL qui est exposée par le service {{site.data.keys.mf_analytics }} pour recevoir les données d'analyse entrantes de l'environnement d'exécution. Exemple : `http://<hostname>:<port>/analytics-service/rest`
 
-    When {{ site.data.keys.mf_analytics }} is installed as a cluster, the data can be sent to any member of the cluster.
+    Lorsque le service {{site.data.keys.mf_analytics }} est installé en tant que cluster, les données peuvent être envoyées à n'importe quel membre du cluster.
 
-* **mfp.analytics.username** - the user name that is used to access {{ site.data.keys.mf_analytics }} service. The analytics service is protected by a security role.
-* **mfp.analytics.password** - the password to access the analytics service.
-* **mfp.analytics.console.url** - the URL that is passed to {{ site.data.keys.mf_console }} to display a link to {{ site.data.keys.mf_analytics_console }}. Example: `http://<hostname>:<port>/analytics/console`
+* **mfp.analytics.username** - Nom d'utilisateur permettant d'accéder au service {{site.data.keys.mf_analytics }}. Le service Analytics est protégé au moyen d'un rôle de sécurité. 
+* **mfp.analytics.password** - Mot de passe permettant d'accéder au service Analytics. 
+* **mfp.analytics.console.url** - URL transmise à {{site.data.keys.mf_console }} pour afficher un lien vers {{site.data.keys.mf_analytics_console }}. Exemple : `http://<hostname>:<port>/analytics/console`
 
-    The JNDI properties of the push service that are used to define this communication are:
-* **mfp.push.analytics.endpoint** - the URL that is exposed by {{ site.data.keys.mf_analytics }} service to receive incoming analytics data from the push service. Example: `http://<hostname>:<port>/analytics-service/rest`
+    Les propriétés JNDI du service push utilisées pour définir cette communication sont les suivantes :
+* **mfp.push.analytics.endpoint** - URL qui est exposée par le service {{site.data.keys.mf_analytics }} pour recevoir les données d'analyse entrantes du service push. Exemple : `http://<hostname>:<port>/analytics-service/rest`
 
-    When {{ site.data.keys.mf_analytics }} is installed as a cluster, the data can be sent to any member of the cluster.    
-* **mfp.push.analytics.username** - the user name that is used to access {{ site.data.keys.mf_analytics }} service. The analytics service is protected a security role.
-* **mfp.push.analytics.password** - the password to access the analytics service.
+Lorsque le service {{site.data.keys.mf_analytics }} est installé en tant que cluster, les données peuvent être envoyées à n'importe quel membre du cluster.    
+* **mfp.push.analytics.username** - Nom d'utilisateur permettant d'accéder au service {{site.data.keys.mf_analytics }}. Le service Analytics est protégé au moyen d'un rôle de sécurité. 
+* **mfp.push.analytics.password** - Mot de passe permettant d'accéder au service Analytics. 
 
-### {{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} live update service
+### Communication entre le service d'administration de {{site.data.keys.mf_server }} et le service Live Update de {{site.data.keys.mf_server }}
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service }
-The administration service communicates with the live update service to store and retrieve configuration information about the {{ site.data.keys.product }} artifacts. The communication is performed through HTTP or HTTPS.
+Le service d'administration communique avec le service Live Update pour stocker et extraire des informations de configuration relatives aux artefacts de {{site.data.keys.product }}. La communication est établie via HTTP ou HTTPS.
 
-The URL to contact the live update service is automatically generated by the administration service. Both services must be on the same application server. The context root of the live update service must define in this way: `<adminContextRoot>config`. For example, if the context root of the administration service is **mfpadmin**, then the context root of the live update service must be **mfpadminconfig**. It is possible to override the default URL generation by defining the JNDI properties (**mfp.admin.proxy.port**, **mfp.admin.proxy.protocol**, and **mfp.admin.proxy.host**) in the administration service.
+L'URL permettant de contacter le service Live Update est générée automatiquement par le service d'administration. Les deux services doivent figurer sur le même serveur d'applications. La racine de contexte du service Live Update doit être définie comme suit : `<adminContextRoot>config`. Par exemple, si la racine de contexte du service d'administration est **mfpadmin**, la racine de contexte du service Live Update doit être **mfpadminconfig**. Il est possible de remplacer la génération d'URL par défaut en définissant les propriétés JNDI (**mfp.admin.proxy.port**, **mfp.admin.proxy.protocol** et **mfp.admin.proxy.host**) dans le service d'administration. 
 
-The JNDI properties to configure this communication between the two services are:
+Les propriétés JNDI permettant de configurer cette communication entre les deux services sont les suivantes :
 
 * **mfp.config.service.user**
 * **mfp.config.service.password**
-* And those properties in [JNDI properties for administration services: proxies](../server-configuration/#jndi-properties-for-administration-service-proxies).
+* Propriétés décrites dans [Propriétés JNDI pour les services d'administration : proxies](../server-configuration/#jndi-properties-for-administration-service-proxies).
 
-### {{ site.data.keys.mf_console }} to {{ site.data.keys.mf_server }} administration service
+### Communication entre {{site.data.keys.mf_console }} et le service d'administration de {{site.data.keys.mf_server }}
 {: #mobilefirst-operations-console-to-mobilefirst-server-administration-service }
-{{ site.data.keys.mf_console }} is a web user interface and acts as the front end to the administration service. It communicates with the REST services of the administration service through HTTP or HTTPS. The users who are allowed to use the console, must also be allowed to use the administration service. Each user that is mapped to a certain security role of the console must also be mapped to the same security role of the service. With this setup, the requests from the console can thus be accepted by the service.
+{{site.data.keys.mf_console }} est une interface utilisateur Web qui agit en tant que serveur frontal avec le service d'administration. Cette console communique avec les services REST du service d'administration via HTTP ou HTTPS. Les utilisateurs autorisés à utiliser la console doivent également être autorisés à utiliser le service d'administration. Chaque utilisateur mappé à un rôle de sécurité spécifique de la console doit également être mappé au même rôle de sécurité du service d'administration. Avec cette configuration, les demandes provenant de la console peuvent alors être acceptées par le service. 
 
-The JNDI properties to configure this communication are in [JNDI properties for the {{ site.data.keys.mf_console }}](../server-configuration/#jndi-properties-for-mobilefirst-operations-console).
+Les propriétés JNDI permettant de configurer cette communication entre les deux services sont décrites dans [Propriétés JNDI pour {{site.data.keys.mf_console }}](../server-configuration/#jndi-properties-for-mobilefirst-operations-console).
 
-> Note: The **mfp.admin.endpoint** property enables the console to locate the administration service. You can use the asterisk character "\*" as wildcard for specifying that the URL, generated by the console to contact the administration services, use the same value as the incoming HTTP request to the console. For example: `*://*:*/mfpadmin` means use the same protocol, host, and port as the console, but use **mfpadmin** as context root. This property is specified for the console application.
+> Remarque : La propriété **mfp.admin.endpoint** permet à la console de localiser le service d'administration. Vous pouvez utiliser l'astérisque "\*" comme caractère générique pour indiquer que l'URL, générée par la console pour contacter les services d'administration, utilise la même valeur que la demande HTTP entrante sur la console. Par exemple, `*://*:*/mfpadmin` indique que le protocole, l'hôte et le port de la console doivent être utilisés, mais que **mfpadmin** doit être utilisé comme racine de contexte. Cette propriété est spécifiée pour l'application de console.
 
-### {{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server
+### Communication entre le service d'administration de {{site.data.keys.mf_server }} et le service push de {{site.data.keys.mf_server }} et le serveur d'autorisations
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server }
-The administration service communicates with the push service to request various push operations. This communication is secured through the OAuth protocol. Both services need to be registered as confidential clients. An initial registration can be performed at installation time. In this process, both services need to contact an authorization server. This authorization server can be {{ site.data.keys.product }} runtime.
+Le service d'administration communique avec le service push pour demander diverses opérations push. Cette communication est sécurisée via le protocole OAuth. Les deux services doivent être enregistrés en tant que clients confidentiels. Un enregistrement initial peut être effectué lors de l'installation. Au cours de ce processus, les deux services doivent contacter un serveur d'autorisations. Ce serveur d'autorisations peut être l'environnement d'exécution de {{site.data.keys.product }}. 
 
-The JNDI properties of the administration service to configure this communication are:
+Les propriétés JNDI du service administration utilisées pour définir cette communication sont les suivantes : 
 
-* **mfp.admin.push.url** - the URL of the push service.
-* **mfp.admin.authorization.server.url** - the URL of the {{ site.data.keys.product }} authorization server.
-* **mfp.admin.authorization.client.id** - the client ID of the administration service, as an OAuth confidential client.
-* **mfp.admin.authorization.client.secret** - the secret code that is used to get the OAuth-based tokens.
+* **mfp.admin.push.url** - URL du service push. 
+* **mfp.admin.authorization.server.url** - URL du serveur d'autorisations de {{site.data.keys.product }}.
+* **mfp.admin.authorization.client.id** - ID de client du service d'administration, par exemple, un client confidentiel OAuth.
+* **mfp.admin.authorization.client.secret** - Code secret utilisé pour obtenir les jetons basés sur OAuth. 
 
-> Note: The **mfp.push.authorization.client.id** and **mfp.push.authorization.client.secret** properties of the administration service can be used to register the push service automatically as a confidential client when the administration service starts. The push service must be configured with the same values.
+> Remarque : Les propriétés **mfp.push.authorization.client.id** et **mfp.push.authorization.client.secret** du service d'administration peuvent être utilisées pour enregistrer le service push automatiquement en tant que client confidentiel lorsque le service d'administration démarre. Le service push doit être configuré avec les mêmes valeurs.
+Les propriétés JNDI du service push utilisées pour configurer cette communication sont les suivantes : 
 
-The JNDI properties of the push service to configure this communication are:
+* **mfp.push.authorization.server.url** - URL du serveur d'autorisations de {{site.data.keys.product }}. Identique à la propriété **mfp.admin.authorization.server.url**.
+* **mfp.push.authorization.client.id** - ID de client du service push utilisé pour contacter le serveur d'autorisations. 
+* **mfp.push.authorization.client.secret** - Code secret utilisé pour contacter le serveur d'autorisations. 
 
-* **mfp.push.authorization.server.url** - the URL of the {{ site.data.keys.product }} authorization server. Same as the property **mfp.admin.authorization.server.url**.
-* **mfp.push.authorization.client.id** - the client ID of the push service to contact the authorization server.
-* **mfp.push.authorization.client.secret** - the secret code that is used to contact the authorization server.
-
-### {{ site.data.keys.mf_server }} push service to an external push notification service (outbound)
+### Communication entre le service push de {{site.data.keys.mf_server }} et un service de notification push externe (sortant)
 {: #mobilefirst-server-push-service-to-an-external-push-notification-service-outbound }
-The push service generates outbound traffic to the external notification service such as Apple Push Notification Service (APNS) or Google Cloud Messaging (GCM). This communication can also be done through a proxy. Depending on the notification service, the following JNDI properties must be set:
+Le service push génère un trafic sortant avec le service de notification externe, tel que APNS (Apple Push Notification Service) ou GCM (Google Cloud Messaging). Cette communication peut également être établie via un proxy. Selon le service de notification, les propriétés JNDI suivantes doivent être définies :
 
 * **push.apns.proxy**
 * **push.gcm.proxy**
 
-For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+Pour plus d'informations, voir [Liste des propriétés JNDI pour le service push de {{site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
-### Mobile devices to {{ site.data.keys.product }} runtime
+### Communication entre les terminaux mobiles et l'environnement d'exécution de {{site.data.keys.product }} 
 {: #mobile-devices-to-mobilefirst-foundation-runtime }
-The mobile devices contact the runtime. The security of this communication is determined by the configuration of the application and the adapters that are requested. For more information, see [{{ site.data.keys.product_adj }} security framework](../../../authentication-and-security).
+Les terminaux mobiles contactent l'environnement d'exécution. La sécurité de cette communication est déterminée par la configuration de l'application et des adaptateurs qui sont demandés. Pour plus d'informations, voir [Infrastructure de sécurité de {{site.data.keys.product_adj }}](../../../authentication-and-security).
 
-## Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}
+## Contraintes sur les composants {{site.data.keys.mf_server }} et {{site.data.keys.mf_analytics }}
 {: #constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics }
-Understand the constraints on the various {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }} before you decide your server topology.
+Vous devez comprendre les contraintes sur les divers composants {{site.data.keys.mf_server }} et sur {{site.data.keys.mf_analytics }} avant de choisir votre topologie de serveur. 
 
-* [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)
-* [Constraints on {{ site.data.keys.mf_server }} push service](#constraints-on-mobilefirst-server-push-service)
+* [Contraintes sur le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product }} ](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)
+* [Contraintes sur le service push de {{site.data.keys.mf_server }}](#constraints-on-mobilefirst-server-push-service)
 
-### Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime
+### Contraintes sur le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product }} 
 {: #constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime }
-Find out the constraints and the deployment mode of the administration service, live update service, and the runtime per server topology.
+Découvrez les contraintes et le mode de déploiement du service d'administration, du service Live Update et de l'environnement d'exécution par topologie de serveur. 
 
-The live update service must be always installed with the administration service on the same application server as explained in [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} live update service](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service). The context root of the live update service must define in this way: `/<adminContextRoot>config`. For example, if the context root of the administration service is **/mfpadmin**, then the context root of the live update service must be **/mfpadminconfig**.
+Le service Live Update doit toujours être installé avec le service d'administration sur le même serveur d'applications, comme indiqué dans[Communication entre le service d'administration de {{site.data.keys.mf_server }} et le service Live Update de {{site.data.keys.mf_server }}](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service). La racine de contexte du service Live Update doit être définie comme suit : `/<adminContextRoot>config`. Par exemple, si la racine de contexte du service d'administration est **/mfpadmin**, la racine de contexte du service Live Update doit être **/mfpadminconfig**.
 
-You can use the following topologies of application servers:
+Vous pouvez utiliser les topologies de serveurs d'applications suivantes :
 
-* Stand-alone server: WebSphere  Application Server Liberty profile, Apache Tomcat, or WebSphere Application Server full profile
-* Server farm: WebSphere Application Server Liberty profile, Apache Tomcat, or WebSphere Application Server full profile
-* WebSphere Application Server Network Deployment cell
-* Liberty collective
+* Serveur autonome : profil de WebSphere Application Server Liberty, Apache Tomcat ou profil complet de WebSphere Application Server
+* Parc de serveurs : profil Liberty de WebSphere Application Server Liberty, Apache Tomcat ou profil complet de WebSphere Application Server
+* Cellule WebSphere Application Server Network Deployment
+* Collectivité Liberty
 
-#### Modes of deployment
+#### Modes de déploiement
 {: #modes-of-deployment }
-Depending on the application server topology that you use, you have two modes of deployment choice for deploying the administration service, the live update service and the runtime in the application server infrastructure. In asymmetric deployment, you can install the runtimes on different application servers from the administration and the live update services.
+Selon la topologie de serveur d'applications que vous utilisez, vous avez le choix entre deux modes de déploiement pour déployer le service d'administration, le service Live Update et l'environnement d'exécution dans l'infrastructure de serveur d'applications. Dans le cadre d'un déploiement asymétrique, vous pouvez installer les environnements d'exécution sur différents serveurs d'applications à partir des services d'administration et Live Update. 
 
-**Symmetric deployment**  
-In symmetrical deployment, you must install the {{ site.data.keys.product }} administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service applications) and the runtime on the same application server.
+**Déploiement symétrique**  
+Dans le cadre d'un déploiement symétrique, vous devez installer les composants d'administration de {{site.data.keys.product }} ({{site.data.keys.mf_console }}, le service d'administration et le service Live Update), ainsi que l'environnement d'exécution sur le même serveur d'applications. 
 
-**Asymmetric deployment**  
-In asymmetric deployment, you can install the runtimes on different application servers from the {{ site.data.keys.product }} administration components.  
-Asymmetric deployment is only supported for WebSphere Application Server Network Deployment cell topology and for Liberty collective topology.
+**Déploiement asymétrique**  
+Dans le cadre d'un déploiement asymétrique, vous pouvez installer les environnements d'exécution sur différents serveurs d'applications à partir des composants d'administration de {{site.data.keys.product }}.   
+Le déploiement asymétrique est pris en charge uniquement pour la topologie de cellule WebSphere Application Server Network Deployment et la topologie de collectivité Liberty. 
 
-#### Select a topology
+#### Sélection d'une topologie
 {: #select-a-topology }
 
-* [Stand-alone server topology](#stand-alone-server-topology)
-* [Server farm topology](#server-farm-topology)
-* [Liberty collective topology](#liberty-collective-topology)
-* [WebSphere Application Server Network Deployment topologies](#websphere-application-server-network-deployment-topologies)
-* [Using a reverse proxy with server farm and WebSphere Application Server Network Deployment topologies](#using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies)
+* [Topologie de serveur autonome](#stand-alone-server-topology)
+* [Topologie de parc de serveurs](#server-farm-topology)
+* [Topologie de collectivité Liberty](#liberty-collective-topology)
+* [Topologies WebSphere Application Server Network Deployment](#websphere-application-server-network-deployment-topologies)
+* [Utilisation d'un proxy inverse avec des topologies de parc de serveurs et WebSphere Application Server Network Deployment](#using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies)
 
-### Stand-alone server topology
+### Topologie de serveur autonome
 {: #stand-alone-server-topology }
-You can configure a stand-alone topology for WebSphere  Application Server full profile, WebSphere Application Server Liberty profile, and Apache Tomcat.
-In this topology, all the administration components and the runtimes are deployed in a single Java Virtual Machine (JVM).
+Vous pouvez configurer une topologie autonome pour le profil complet de WebSphere Application Server, le profil Liberty de WebSphere Application Server et Apache Tomcat.
+Dans cette topologie, tous les composants d'administration et environnements d'exécution sont déployés dans une seule machine virtuelle Java. 
 
-![Stand-alone topology](standalone_topology.jpg)
+![Topologie autonome](standalone_topology.jpg)
 
-With one JVM, only symmetric deployment is possible with the following characteristics:
+Avec une machine virtuelle Java, seul le déploiement symétrique est possible, avec les caractéristiques suivantes :
 
-* One or several administration components can be deployed. Each {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed.
-* One {{ site.data.keys.mf_console }} can manage several runtimes.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* Un ou plusieurs composants d'administration peuvent être déployés. Chaque application {{site.data.keys.mf_console }} communique avec un service d'administration et un service Live Update. 
+* Un ou plusieurs environnements d'exécution peuvent être déployés. 
+* Une application {{site.data.keys.mf_console }} peut gérer plusieurs environnements d'exécution.
+* Un environnement d'exécution est géré par une seule application {{site.data.keys.mf_console }}.
+* Chaque service d'administration utilise son propre schéma de base de données d'administration.
+* Chaque service Live Update utilise son propre schéma de base de données Live Update. 
+* Chaque environnement d'exécution utilise son propre schéma de base de données d'environnement d'exécution. 
 
-#### Configuration of JNDI properties
+#### Configuration des propriétés JNDI
 {: #configuration-of-jndi-properties }
-Some JNDI properties are required to enable Java Management Extensions (JMX) communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Certaines propriétés JNDI sont requises pour activer la communication JMX (Java Management Extensions) entre le service d'administration et l'environnement d'exécution et pour définir le service d'administration qui gère un environnement d'exécution. Pour plus d'informations sur ces propriétés, voir[Liste des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
-**Stand-alone WebSphere Application Server Liberty profile server**  
-The following global JNDI properties are required for the administration services and the runtimes.
+**Serveur de profil Liberty de WebSphere Application Server autonome**  
+Les propriétés JNDI globales suivantes sont requises pour les services d'administration et les environnements d'exécution :
 
-| JNDI properties          | Values |
+| Propriétés JNDI          | Valeurs |
 |--------------------------|--------|
 | mfp.topology.platform	   | Liberty |
-| mfp.topology.clustermode | Standalone |
-| mfp.admin.jmx.host       | The host name of the WebSphere Application Server Liberty profile server. |
-| mfp.admin.jmx.port       | The port of the REST connector that is the port of the httpsPort attribute declared in the `<httpEndpoint>` element of the server.xml file of WebSphere Application Server Liberty profile server. This property has no default value. |
-| mfp.admin.jmx.user       | The user name of the WebSphere Application Server Liberty administrator, which must be identical to the name defined in the `<administrator-role>` element of the server.xml file of the WebSphere Application Server Liberty profile server. |
-| mfp.admin.jmx.pwd        | The password of the WebSphere Application Server Liberty administrator user. |
+| mfp.topology.clustermode | Autonome |
+| mfp.admin.jmx.host       | Nom d'hôte du serveur de profil Liberty de WebSphere Application Server. |
+| mfp.admin.jmx.port       | Port du connecteur REST, identique au port de l'attribut httpsPort déclaré dans l'élément `<httpEndpoint>` du fichier server.xml du serveur de profil Liberty de WebSphere Application Server. Aucune valeur par défaut n'est définie pour cette propriété.  |
+| mfp.admin.jmx.user       | Nom d'utilisateur de l'administrateur Liberty de WebSphere Application Server, qui doit être identique au nom défini dans l'élément `<administrator-role>` du fichier server.xml du serveur de profil Liberty de WebSphere Application Server.  |
+| mfp.admin.jmx.pwd        | Mot de passe de l'utilisateur administrateur Liberty de WebSphere Application Server. |
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+Plusieurs composants d'administration peuvent être déployés pour permettre à la même machine virtuelle Java de s'exécuter sur des composants d'administration distincts qui gèrent différents environnements d'exécution. 
 
-When you deploy several administration components, you must specify:
+Lorsque vous déployez plusieurs composants d'administration, vous devez spécifier :
 
-* On each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* Sur chaque service d'administration, une valeur unique pour la propriété JNDI **mfp.admin.environmentid** locale. 
+* Sur chaque environnement d'exécution, la même valeur pour la propriété JNDI **mfp.admin.environmentid** locale que celle définie pour le service d'administration qui gère l'environnement d'exécution. 
 
-**Stand-alone Apache Tomcat server**
-The following local JNDI properties are required for the administration services and the runtimes.
+**Serveur Apache Tomcat autonome**
+Les propriétés JNDI locales suivantes sont requises pour les services d'administration et les environnements d'exécution :
 
-| JNDI properties        |	Values    |
+| Propriétés JNDI        |	Valeurs    |
 |------------------------|------------|
 | mfp.topology.platform   | Tomcat     |
-| mfp.topology.clustermode | Standalone |
+| mfp.topology.clustermode | Autonome |
 
-JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
+Les propriétés JVM sont également requises pour définir l'invocation RMI JMX (Java Management Extensions). Pour plus d'informations, voir [Configuration de la connexion JMX pour Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
 
-If the Apache Tomcat server is running behind a firewall, the **mfp.admin.rmi.registryPort** and **mfp.admin.rmi.serverPort** JNDI properties are required for the administration service. See [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
+Si le serveur Apache Tomcat s'exécute derrière un pare-feu, les propriétés JNDI **mfp.admin.rmi.registryPort** et **mfp.admin.rmi.serverPort** sont requises pour le service d'administration. Voir [Configuration de la connexion JMX pour Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.  
-When you deploy several administration components, you must specify:
+Plusieurs composants d'administration peuvent être déployés pour permettre à la même machine virtuelle Java de s'exécuter sur des composants d'administration distincts qui gèrent différents environnements d'exécution.   
+Lorsque vous déployez plusieurs composants d'administration, vous devez spécifier :
 
-* On each administration service, a unique value for the local mfp.admin.environmentid JNDI property.
-* On each runtime, the same value for the local mfp.admin.environmentid JNDI property as the value defined for the administration service that manages the runtime.
+* Sur chaque service d'administration, une valeur unique pour la propriété JNDI mfp.admin.environmentid locale. 
+* Sur chaque environnement d'exécution, la même valeur pour la propriété JNDI mfp.admin.environmentid locale que celle définie pour le service d'administration qui gère l'environnement d'exécution. 
 
-**Stand-alone WebSphere Application Server**  
-The following local JNDI properties are required for the administration services and the runtimes.
+**WebSphere Application Server autonome**  
+Les propriétés JNDI locales suivantes sont requises pour les services d'administration et les environnements d'exécution :
 
-| JNDI properties          | Values                 |
+| Propriétés JNDI          | Valeurs                 |
 |--------------------------| -----------------------|
 | mfp.topology.platform    | WAS                    |
-| mfp.topology.clustermode | Standalone             |
-| mfp.admin.jmx.connector  | The JMX connector type; the value can be SOAP or RMI. |
+| mfp.topology.clustermode | Autonome             |
+| mfp.admin.jmx.connector  | Type de connecteur JMX ; la valeur peut être SOAP ou RMI. |
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.  
-When you deploy several administration components, you must specify:
+Plusieurs composants d'administration peuvent être déployés pour permettre à la même machine virtuelle Java de s'exécuter sur des composants d'administration distincts qui gèrent différents environnements d'exécution.   
+Lorsque vous déployez plusieurs composants d'administration, vous devez spécifier :
 
-* On each administration service, a unique value for the **local mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* Sur chaque service d'administration, une valeur unique pour la propriété JNDI **mfp.admin.environmentid** locale. 
+* Sur chaque environnement d'exécution, la même valeur pour la propriété JNDI **mfp.admin.environmentid** locale que celle définie pour le service d'administration qui gère l'environnement d'exécution. 
 
-### Server farm topology
+### Topologie de parc de serveurs
 {: #server-farm-topology }
-You can configure a farm of WebSphere  Application Server full profile, WebSphere Application Server Liberty profile, or Apache Tomcat application servers.
+Vous pouvez configurer un parc de serveurs d'applications pour le profil complet de WebSphere Application Server, le profil Liberty de WebSphere Application Server et Apache Tomcat.
 
-A farm is a set of individual servers where the same components are deployed and where the same administration service database and runtime database are shared between the servers. The farm topology enables the load of {{ site.data.keys.product }} applications to be distributed across several servers. Each server in the farm must be a Java virtual machine (JVM) of the same type of application server; that is, a homogeneous server farm. For example, a set of several Liberty servers can be configured as a server farm. Conversely, a mix of Liberty server, Tomcat server, or stand-alone WebSphere Application Server cannot be configured as a server farm.
 
-In this topology, all the administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service) and the runtimes are deployed on every server in the farm.
+Un parc de serveurs est un ensemble de serveurs individuels sur lesquels les mêmes composants sont déployés et les mêmes bases de données de service d'administration et d'environnement d'exécution sont partagées entre les serveurs. La topologie de parc de serveurs permet la répartition de la charge des applications {{site.data.keys.product }} sur plusieurs serveurs. Chaque serveur du parc doit être une machine virtuelle Java du même type de serveur d'applications, autrement dit, il doit s'agir d'un parc de serveurs homogène. Par exemple, un ensemble de serveurs Liberty peut être configuré en tant que parc de serveurs. En revanche, un ensemble mixte constitué d'un serveur Liberty, d'un serveur Tomcat ou d'un serveur WebSphere Application Server autonome ne peut pas être configuré en tant que parc de serveurs. 
 
-![Topology for a server farm](server_farm_topology.jpg)
+Dans cette topologie, tous les composants d'administration ({{site.data.keys.mf_console }}, le service d'administration et le service Live Update), ainsi que les environnements d'exécution sont déployés sur chaque serveur du parc. 
 
-This topology supports only symmetric deployment. The runtimes and the administration components must be deployed on every server in the farm. The deployment of this topology has the following characteristics:
+![Topologie pour un parc de serveurs](server_farm_topology.jpg)
 
-* One or several administration components can be deployed. Each instance of {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* The administration components must be deployed on all servers in the farm.
-* One or several runtimes can be deployed.
-* The runtimes must be deployed on all servers in the farm.
-* One {{ site.data.keys.mf_console }} can manage several runtimes.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema. All deployed instances of the same administration service share the same administration database schema.
-* Each live update service uses its own live update database schema. All deployed instances of the same live update service share the same live update database schema.
-* Each runtime uses its own runtime database schema. All deployed instances of the same runtime share the same runtime database schema.
+Cette topologie ne prend en charge que le déploiement symétrique. Les environnements d'exécution et les composants d'administration doivent être déployés sur chaque serveur du parc de serveurs. Le déploiement de cette topologie possède les caractéristiques suivantes :
 
-#### Configuration of JNDI properties
+* Un ou plusieurs composants d'administration peuvent être déployés. Chaque instance de {{site.data.keys.mf_console }} communique avec un service d'administration et un service Live Update. 
+* Les composants d'administration doivent être déployés sur tous les serveurs du parc de serveurs. 
+* Un ou plusieurs environnements d'exécution peuvent être déployés. 
+* Les environnements d'exécution doivent être déployés sur tous les serveurs du parc de serveurs. 
+* Une application {{site.data.keys.mf_console }} peut gérer plusieurs environnements d'exécution. 
+* Un environnement d'exécution est géré par une seule application {{site.data.keys.mf_console }}.
+* Chaque service d'administration utilise son propre schéma de base de données d'administration. Toutes les instances déployées du même service d'administration partagent le même schéma de base de données d'administration. 
+* Chaque service Live Update utilise son propre schéma de base de données Live Update. Toutes les instances déployées du même service Live Update partagent le même schéma de base de données Live Update. 
+* Chaque environnement d'exécution utilise son propre schéma de base de données d'environnement d'exécution. Toutes les instances déployées du même environnement d'exécution partagent le même schéma de base de données d'environnement d'exécution. 
+
+#### Configuration des propriétés JNDI
 {: #configuration-of-jndi-properties-1 }
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime of the same server, and to define the administration service that manages a runtime. For convenience, the following tables list these properties. For instructions about how to install a server farm, see [Installing a server farm](../appserver/#installing-a-server-farm). For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Certaines propriétés JNDI sont requises pour activer la communication JMX entre le service d'administration et l'environnement d'exécution du même serveur et pour définir le service d'administration qui gère un environnement d'exécution. Ces propriétés sont répertoriées dans les tableaux présentés ci-après. Pour savoir comment installer un parc de serveurs, voir [Installation d'un parc de serveurs](../appserver/#installing-a-server-farm). Pour plus d'informations sur les propriétés JNDI, voir [Liste des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
-**WebSphere Application Server Liberty profile server farm**  
-The following global JNDI properties are required in each server of the farm for the administration services and the runtimes.
+**Parc de serveurs de profil Liberty de WebSphere Application Server**  
+Les propriétés JNDI globales suivantes sont requises dans chaque serveur du parc de serveurs pour les services d'administration et les environnements d'exécution :
 
 <table>
     <tr>
         <th>
-            JNDI properties
+            Propriétés JNDI
         </th>
         <th>
-            Values
+            Valeurs
         </th>
     </tr>
     <tr>
@@ -319,15 +319,15 @@ The following global JNDI properties are required in each server of the farm for
             mfp.topology.clustermode
         </td>
         <td>
-            Farm
-        </td>
+            Parc de serveurs
+</td>
     </tr>
     <tr>
         <td>
             mfp.admin.jmx.host
         </td>
         <td>
-            The host name of the WebSphere Application Server Liberty profile server
+            Nom d'hôte du serveur de profil Liberty de WebSphere Application Server
         </td>
     </tr>
     <tr>
@@ -335,7 +335,7 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.port
         </td>
         <td>
-            The port of the REST connector that must be identical to the value of the httpsPort attribute declared in the <code>httpEndpoint</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server. 
+            Port du connecteur REST, qui doit être identique à la valeur de l'attribut httpsPort déclaré dans l'élément <code>httpEndpoint</code> du fichier <b>server.xml</b> du serveur de profil Liberty de WebSphere Application Server.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
@@ -347,7 +347,7 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.user
         </td>
         <td>
-            The user name of the WebSphere Application Server Liberty administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server.
+            Nom d'utilisateur de l'administrateur Liberty de WebSphere Application Server qui est défini dans l'élément <code>administrator-role</code> du fichier <b>server.xml</b> du serveur de profil Liberty de WebSphere Application Server.
             
 {% highlight xml %}
 <administrator-role>
@@ -361,94 +361,93 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.pwd
         </td>
         <td>
-            The password of the WebSphere Application Server Liberty administrator user.
-        </td>
+Mot de passe de l'utilisateur administrateur Liberty de WebSphere Application Server.</td>
     </tr>
 </table>
 
-The **mfp.admin.serverid** JNDI property is required for the administration service to manage the server farm configuration. Its value is the server identifier, which must be different for each server in the farm.
+La propriété JNDI **mfp.admin.serverid** est requise pour permettre au service d'administration de gérer la configuration du parc de serveurs. Sa valeur correspond à l'identificateur de serveur, lequel doit être différent pour chaque serveur du parc de serveurs. 
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+Plusieurs composants d'administration peuvent être déployés pour permettre à la même machine virtuelle Java de s'exécuter sur des composants d'administration distincts qui gèrent différents environnements d'exécution. 
 
-When you deploy several administration components, you must specify:
+Lorsque vous déployez plusieurs composants d'administration, vous devez spécifier :
 
-* On each administration service, a unique value for the local mfp.admin.environmentid JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* Sur chaque service d'administration, une valeur unique pour la propriété JNDI mfp.admin.environmentid locale. 
+* Sur chaque environnement d'exécution, la même valeur pour la propriété JNDI **mfp.admin.environmentid** locale que celle définie pour le service d'administration qui gère l'environnement d'exécution. 
 
-**Apache Tomcat server farm**  
-The following global JNDI properties are required in each server of the farm for the administration services and the runtimes.
+**Parc de serveurs Apache Tomcat**  
+Les propriétés JNDI globales suivantes sont requises dans chaque serveur du parc de serveurs pour les services d'administration et les environnements d'exécution :
 
-| JNDI properties          |	Values |
+| Propriétés JNDI          |	Valeurs |
 |--------------------------|-----------|
 | mfp.topology.platform	   | Tomcat    |
-| mfp.topology.clustermode | Farm      |
+| mfp.topology.clustermode | Parc de serveurs      |
 
-JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
+Les propriétés JVM sont également requises pour définir l'invocation RMI JMX (Java Management Extensions). Pour plus d'informations, voir [Configuration de la connexion JMX pour Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
 
-The **mfp.admin.serverid** JNDI property is required for the administration service to manage the server farm configuration. Its value is the server identifier, which must be different for each server in the farm.
+La propriété JNDI **mfp.admin.serverid** est requise pour permettre au service d'administration de gérer la configuration du parc de serveurs. Sa valeur correspond à l'identificateur de serveur et doit être différente pour chaque serveur du parc de serveurs. 
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+Plusieurs composants d'administration peuvent être déployés pour permettre à la même machine virtuelle Java de s'exécuter sur des composants d'administration distincts qui gèrent différents environnements d'exécution. 
 
-When you deploy several administration components, you must specify:
+Lorsque vous déployez plusieurs composants d'administration, vous devez spécifier :
 
-* On each administration service, a unique value for the local mfp.admin.environmentid JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* Sur chaque service d'administration, une valeur unique pour la propriété JNDI mfp.admin.environmentid locale. 
+* Sur chaque environnement d'exécution, la même valeur pour la propriété JNDI **mfp.admin.environmentid** locale que celle définie pour le service d'administration qui gère l'environnement d'exécution. 
 
-**WebSphere Application Server full profile server farm**  
-The following global JNDI properties are required on each server in the farm for the administration services and the runtimes.
+**Parc de serveurs de profil complet de WebSphere Application Server**  
+Les propriétés JNDI globales suivantes sont requises sur chaque serveur du parc de serveurs pour les services d'administration et les environnements d'exécution :
 
-| JNDI properties            | Values |
+| Propriétés JNDI            | Valeurs |
 |----------------------------|--------|
 | mfp.topology.platform	WAS  | WAS    |
-| mfp.topology.clustermode   | Farm   |
+| mfp.topology.clustermode   | Parc de serveurs   |
 | mfp.admin.jmx.connector    | SOAP   |
 
-The following JNDI properties are required for the administration service to manage the server farm configuration.
+Les propriétés JNDI suivantes sont requises pour permettre au service d'administration de gérer la configuration du parc de serveurs. 
 
-| JNDI properties    | Values |
+| Propriétés JNDI    | Valeurs |
 |--------------------|--------|
-| mfp.admin.jmx.user | The user name of WebSphere Application Server. This user must be defined in the WebSphere Application Server user registry. |
-| mfp.admin.jmx.pwd	 | The password of the WebSphere Application Server user. |
-| mfp.admin.serverid | The server identifier, which must be different for each server in the farm and identical to the value of this property used for this server in the server farm configuration file. |
+| mfp.admin.jmx.user | Nom d'utilisateur de WebSphere Application Server. Cet utilisateur doit être défini dans le registre d'utilisateurs de WebSphere Application Server.  |
+| mfp.admin.jmx.pwd	 | Mot de passe de l'utilisateur de WebSphere Application Server. |
+| mfp.admin.serverid | Identificateur de serveur, qui doit être différent pour chaque serveur du parc de serveurs et identique à la valeur de cette propriété utilisée pour ce serveur dans le fichier de configuration du parc de serveurs.  |
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+Plusieurs composants d'administration peuvent être déployés pour permettre à la même machine virtuelle Java de s'exécuter sur des composants d'administration distincts qui gèrent différents environnements d'exécution. 
 
-When you deploy several administration components, you must specify the following values:
+Lorsque vous déployez plusieurs composants d'administration, vous devez spécifier les valeurs suivantes :
 
-* On each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* Sur chaque service d'administration, une valeur unique pour la propriété JNDI **mfp.admin.environmentid** locale. 
+* Sur chaque environnement d'exécution, la même valeur pour la propriété JNDI **mfp.admin.environmentid** locale que celle définie pour le service d'administration qui gère l'environnement d'exécution. 
 
-### Liberty collective topology
+### Topologie de collectivité Liberty
 {: #liberty-collective-topology }
-You can deploy the {{ site.data.keys.mf_server }} components in a Liberty collective topology.
+Vous pouvez déployer les composants {{site.data.keys.mf_server }} dans une topologie de collectivité Liberty. 
 
-In the Liberty collective topology, the {{ site.data.keys.mf_server }} administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service) are deployed in a collective controller and the {{ site.data.keys.product }} runtimes in collective member. This topology supports only asymmetric deployment, the runtimes cannot be deployed in a collective controller.
+Dans la topologie de collectivité Liberty, les composants d'administration de {{site.data.keys.mf_server }} ({{site.data.keys.mf_console }}, le service d'administration et le service Live Update) sont déployés dans un contrôleur de collectivité et les environnements d'exécution de {{site.data.keys.product }} dans un membre de collectivité. Cette topologie prend en charge uniquement le déploiement asymétrique, les environnements d'exécution ne peuvent pas être déployés dans un contrôleur de collectivité. 
 
-![Topology for Liberty Collective](liberty_collective_topology.jpg)
+![Topology pour une collectivité Liberty](liberty_collective_topology.jpg)
 
-The deployment of this topology has the following characteristics:
+Le déploiement de cette topologie possède les caractéristiques suivantes :
 
-* One or several administration components can be deployed in one or several controllers of the collective. Each instance of * * {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in the cluster members of the collective.
-* One {{ site.data.keys.mf_console }} manages several runtimes that are deployed in the cluster members of the collective.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* Un ou plusieurs composants d'administration peuvent être déployés dans un ou plusieurs contrôleurs de la collectivité. Chaque instance de * * {{site.data.keys.mf_console }} communique avec un service d'administration et un service Live Update. 
+* Un ou plusieurs environnements d'exécution peuvent être déployés dans les membres de cluster de la collectivité. 
+* Une application {{site.data.keys.mf_console }} gère plusieurs environnements d'exécution qui sont déployés dans les membres de cluster de la collectivité.  
+* Un environnement d'exécution est géré par une seule application {{site.data.keys.mf_console }}.
+* Chaque service d'administration utilise son propre schéma de base de données d'administration.
+* Chaque service Live Update utilise son propre schéma de base de données Live Update. 
+* Chaque environnement d'exécution utilise son propre schéma de base de données d'environnement d'exécution. 
 
-#### Configuration of JNDI properties
+#### Configuration des propriétés JNDI
 {: #configuration-of-jndi-properties-2 }
-The following tables list the JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For more information about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). For instructions about how to install a Liberty collective manually, see [Manual installation on WebSphere Application Server Liberty collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
+Les tableaux ci-après répertorient les propriétés JNDI requises pour activer la communication JMX entre le service d'administration et l'environnement d'exécution et pour définir le service d'administration qui gère un environnement d'exécution. Pour plus d'informations sur ces propriétés, voir[Liste des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). Pour savoir comment installer manuellement une collectivité Liberty, voir [Installation manuelle sur une collectivité Liberty de WebSphere Application Server](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
 
-The following global JNDI properties are required for the administration services:
+Les propriétés JNDI globales suivantes sont requises pour les services d'administration :
 
 <table>
     <tr>
         <th>
-            JNDI properties
+            Propriétés JNDI
         </th>
         <th>
-            Values
+            Valeurs
         </th>
     </tr>
     <tr>
@@ -461,16 +460,15 @@ The following global JNDI properties are required for the administration service
     </tr>
     <tr>
         <td>mfp.admin.serverid</td>
-        <td>controller</td>
+        <td>Contrôleur</td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.host</td>
-        <td>The host name of the Liberty controller.</td>
+        <td>Nom d'hôte du contrôleur Liberty. </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.port</td>
-        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code>httpEndpoint</code> element of the server.xml file of the Liberty controller.
-
+        <td>Port du connecteur REST, qui doit être identique à la valeur de l'attribut <b>httpsPort</b> déclaré dans l'élément <code>httpEndpoint</code> du fichier server.xml du contrôleur Liberty.
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
 {% endhighlight %}
@@ -478,8 +476,7 @@ The following global JNDI properties are required for the administration service
     </tr>
     <tr>
         <td>mfp.admin.jmx.user</td>
-        <td>The user name of the controller administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the Liberty controller.
-
+        <td>Nom d'utilisateur de l'administrateur de contrôleur qui est défini dans l'élément <code>administrator-role</code> du fichier <b>server.xml</b> du contrôleur Liberty.
 {% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
 {% endhighlight %}
@@ -487,23 +484,23 @@ The following global JNDI properties are required for the administration service
     </tr>
     <tr>
         <td>mfp.admin.jmx.pwd</td>
-        <td>The password of the Liberty controller administrator user.</td>
+        <td>Mot de passe de l'utilisateur administrateur du contrôleur Liberty.</td>
     </tr>
 </table>
 
-Several administration components can be deployed to enable the controller to run separate administration components that manage different runtimes.
+Plusieurs composants d'administration peuvent être déployés pour permettre au contrôleur d'exécuter des composants d'administration distincts qui gèrent différents environnements d'exécution. 
 
-When you deploy several administration components, you must specify on each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
+Lorsque vous déployez plusieurs composants d'administration, vous devez spécifier sur chaque service d'administration une valeur unique pour la propriété JNDI **mfp.admin.environmentid** locale. 
 
-The following global JNDI properties are required for the runtimes:
+Les propriétés JNDI globales suivantes sont requises pour les environnements d'exécution :
 
 <table>
     <tr>
         <th>
-            JNDI properties
+            Propriétés JNDI
         </th>
         <th>
-            Values
+            Valeurs
         </th>
     </tr>
     <tr>
@@ -516,16 +513,15 @@ The following global JNDI properties are required for the runtimes:
     </tr>
     <tr>
         <td>mfp.admin.serverid</td>
-        <td>A value that identifies uniquely the collective member. It must be different for each member in the collective. The value <code>controller</code> cannot be used as it is reserved for the collective controller.</td>
+        <td>Valeur qui identifie de manière unique le membre de collectivité. Elle doit être différente pour chaque membre de la collectivité. La valeur <code>Contrôleur</code> ne peut pas être utilisée car elle est réservée pour le contrôleur de collectivité. </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.host</td>
-        <td>The host name of the Liberty controller.</td>
+        <td>Nom d'hôte du contrôleur Liberty. </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.port</td>
-        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code>httpEndpoint</code> element of the server.xml file of the Liberty controller.
-
+        <td>Port du connecteur REST, qui doit être identique à la valeur de l'attribut <b>httpsPort</b> déclaré dans l'élément <code>httpEndpoint</code> du fichier server.xml du contrôleur Liberty.
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
 {% endhighlight %}
@@ -533,8 +529,7 @@ The following global JNDI properties are required for the runtimes:
     </tr>
     <tr>
         <td>mfp.admin.jmx.user</td>
-        <td>The user name of the controller administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the Liberty controller.
-
+        <td>Nom d'utilisateur de l'administrateur de contrôleur qui est défini dans l'élément <code>administrator-role</code> du fichier <b>server.xml</b> du contrôleur Liberty.
 {% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
 {% endhighlight %}
@@ -542,139 +537,139 @@ The following global JNDI properties are required for the runtimes:
     </tr>
     <tr>
         <td>mfp.admin.jmx.pwd</td>
-        <td>The password of the Liberty controller administrator user.</td>
+        <td>Mot de passe de l'utilisateur administrateur du contrôleur Liberty.</td>
     </tr>
 </table>
 
-The following JNDI property is required for the runtime when several controllers (replicas) using the same administration components are used:
+La propriété JNDI suivante est requise pour l'environnement d'exécution lorsque plusieurs contrôleurs (répliques) utilisant les mêmes composants d'administration sont utilisés : 
 
-| JNDI properties | Values | 
+| Propriétés JNDI | Valeurs | 
 |-----------------|--------|
-| mfp.admin.jmx.replica | Endpoint list of the different controller replicas with the following syntax: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
+| mfp.admin.jmx.replica | Liste des noeuds finaux des différentes répliques de contrôleur avec la syntaxe suivante : `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
 
-When several administration components are deployed in the controller, each runtime must have the same value for the local **mfp.admin.environmentid** JNDI property as the value that is defined for the administration service that manages the runtime.
+Lorsque plusieurs composants d'administration sont déployés dans le contrôleur, la valeur de la propriété JNDI **mfp.admin.environmentid** locale de chaque environnement d'exécution doit être identique à celle définie pour le service d'administration qui gère l'environnement d'exécution. 
 
-### WebSphere Application Server Network Deployment topologies
+### Topologies WebSphere Application Server Network Deployment
 {: #websphere-application-server-network-deployment-topologies }
-The administration components and the runtimes are deployed in servers or clusters of the WebSphere  Application Server Network Deployment cell.
+Les composants d'administration et les environnements d'exécution sont déployés dans des serveurs ou des clusters de la cellule WebSphere Application Server Network Deployment. 
 
-Examples of these topologies support either asymmetric or symmetric deployment, or both. You can, for example, deploy the administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service) in one cluster and the runtimes managed by these components in another cluster.
+Les exemples de ces topologies prennent en charge le déploiement symétrique et/ou le déploiement asymétrique. Vous pouvez, par exemple, déployer les composants d'administration ({{site.data.keys.mf_console }}, le service d'administration et le service Live Update) dans un cluster et les environnements d'exécution gérés par ces composants dans un autre cluster. 
 
-#### Symmetric deployment in the same server or cluster
+#### Déploiement symétrique dans le même serveur ou cluster
 {: #symmetric-deployment-in-the-same-server-or-cluster }
-The diagram below shows symmetric deployment where the runtimes and the administration components are deployed in the same server or cluster.
+Le diagramme ci-après illustre un déploiement symétrique dans lequel les environnements d'exécution et les composants d'administration sont déployés dans le même serveur ou cluster. 
 
-![A topology of WAS ND](was_nd_topology_1.jpg)
+![Topologie de WebSphere Application Server Network Deployment](was_nd_topology_1.jpg)
 
-The deployment of this topology has the following characteristics:
+Le déploiement de cette topologie possède les caractéristiques suivantes :
 
-* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of * {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in the same server or cluster as the administration components that manage them.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* Un ou plusieurs composants d'administration peuvent être déployés dans un ou plusieurs serveurs ou clusters de la cellule. Chaque instance de * {{site.data.keys.mf_console }} communique avec un service d'administration et un service Live Update. 
+* Un ou plusieurs environnements d'exécution peuvent être déployés dans le même serveur ou cluster que les composants d'administration qui les gèrent. 
+* Un environnement d'exécution est géré par une seule application {{site.data.keys.mf_console }}.
+* Chaque service d'administration utilise son propre schéma de base de données d'administration.
+* Chaque service Live Update utilise son propre schéma de base de données Live Update. 
+* Chaque environnement d'exécution utilise son propre schéma de base de données d'environnement d'exécution. 
 
-#### Asymmetric deployment with runtimes and administration services in different server or cluster
+#### Déploiement asymétrique avec des environnements d'exécution et des services d'administration dans un serveur ou un cluster différent
 {: #asymmetric-deployment-with-runtimes-and-administration-services-in-different-server-or-cluster }
-The diagram below shows a topology where the runtimes are deployed in a different server or cluster from the administration services.
+Le diagramme ci-après illustre une topologie dans laquelle les environnements d'exécution sont déployés dans un serveur ou un cluster différent de celui des services d'administration. 
 
-![Topology for WAS ND](was_nd_topology_2.jpg)
+![Topologie de WebSphere Application Server Network Deployment](was_nd_topology_2.jpg)
 
-The deployment of this topology has the following characteristics:
+Le déploiement de cette topologie possède les caractéristiques suivantes :
 
-* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of * {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in other servers or clusters of the cell.
-* One {{ site.data.keys.mf_console }} manages several runtimes deployed in the other servers or clusters of the cell.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* Un ou plusieurs composants d'administration peuvent être déployés dans un ou plusieurs serveurs ou clusters de la cellule. Chaque instance de * {{site.data.keys.mf_console }} communique avec un service d'administration et un service Live Update. 
+* Un ou plusieurs environnements d'exécution peuvent être déployés dans d'autres serveurs ou clusters de la cellule. 
+* Une application {{site.data.keys.mf_console }} gère plusieurs environnements d'exécution déployés dans les autres serveurs ou clusters de la cellule. 
+* Un environnement d'exécution est géré par une seule application {{site.data.keys.mf_console }}.
+* Chaque service d'administration utilise son propre schéma de base de données d'administration.
+* Chaque service Live Update utilise son propre schéma de base de données Live Update. 
+* Chaque environnement d'exécution utilise son propre schéma de base de données d'environnement d'exécution. 
 
-This topology is advantageous, because it enables the runtimes to be isolated from the administration components and from other runtimes. It can be used to provide performance isolation, to isolate critical applications, and to enforce Service Level Agreement (SLA).
+Cette topologie présente des avantages, car elle permet d'isoler les environnements d'exécution des composants d'administration et des autres environnements d'exécution. Elle peut être utilisée pour fournir un isolement des performances, isoler les applications vitales et appliquer un accord sur les niveaux de licence. 
 
-#### Symmetric and asymmetric deployment
+#### Déploiement symétrique et asymétrique
 {: #symmetric-and-asymmetric-deployment }
-The diagram below shows an example of symmetric deployment in Cluster1 and of asymmetric deployment in Cluster2, where Runtime2 and Runtime3 are deployed in a different cluster from the administration components. {{ site.data.keys.mf_console }} manages the runtimes deployed in Cluster1 and Cluster2.
+Le diagramme ci-après illustre un exemple de déploiement symétrique dans Cluster1 et un exemple de déploiement asymétrique dans Cluster2, où Runtime2 et Runtime3 sont déployés dans un cluster différent de celui des composants d'administration. {{site.data.keys.mf_console }} gère les environnements d'exécution déployés dans Cluster1 et Cluster2.
 
-![Topology for WAS ND](was_nd_topology_3.jpg)
+![Topologie de WebSphere Application Server Network Deployment](was_nd_topology_3.jpg)
 
-The deployment of this topology has the following characteristics:
+Le déploiement de cette topologie possède les caractéristiques suivantes :
 
-* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in one or several servers or clusters of the cell.
-* One {{ site.data.keys.mf_console }} can manage several runtimes deployed in the same or other servers or clusters of the cell.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* Un ou plusieurs composants d'administration peuvent être déployés dans un ou plusieurs serveurs ou clusters de la cellule. Chaque instance de {{site.data.keys.mf_console }} communique avec un service d'administration et un service Live Update. 
+* Un ou plusieurs environnements d'exécution peuvent être déployés dans un ou plusieurs serveurs ou clusters de la cellule. 
+* Une application {{site.data.keys.mf_console }} peut gérer plusieurs environnements d'exécution déployés dans les mêmes ou dans d'autres serveurs ou clusters de la cellule. 
+* Un environnement d'exécution est géré par une seule application {{site.data.keys.mf_console }}.
+* Chaque service d'administration utilise son propre schéma de base de données d'administration.
+* Chaque service Live Update utilise son propre schéma de base de données Live Update. 
+* Chaque environnement d'exécution utilise son propre schéma de base de données d'environnement d'exécution. 
 
-#### Configuration of JNDI properties
+#### Configuration des propriétés JNDI
 {: #configuration-of-jndi-properties-3 }
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+Certaines propriétés JNDI sont requises pour activer la communication JMX entre le service d'administration et l'environnement d'exécution et pour définir le service d'administration qui gère un environnement d'exécution. Pour plus d'informations sur ces propriétés, voir[Liste des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) et [Liste des propriétés JNDI pour l'environnement d'exécution de {{site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
-The following local JNDI properties are required for the administration services and for the runtimes:
+Les propriétés JNDI locales suivantes sont requises pour les services d'administration et les environnements d'exécution :
 
-| JNDI properties |	Values |
+| Propriétés JNDI |	Valeurs |
 |-----------------|--------|
 | mfp.topology.platform	| WAS |
 | mfp.topology.clustermode | Cluster |
-| mfp.admin.jmx.connector |	The JMX connector type to connect with the deployment manager. The value can be SOAP or RMI. SOAP is the default and preferred value. You must use RMI if the SOAP port is disabled. |
-| mfp.admin.jmx.dmgr.host |	The host name of the deployment manager. |
-| mfp.admin.jmx.dmgr.port |	The RMI or the SOAP port used by the deployment manager, depending on the value of mfp.admin.jmx.connector. |
+| mfp.admin.jmx.connector |	Type de connecteur JMX permettant d'établir une connexion avec le gestionnaire de déploiement La valeur peut être SOAP ou RMI. Valeur par défaut, SOAP est également la valeur préférée. Vous devez spécifier RMI si le port SOAP est désactivé.  |
+| mfp.admin.jmx.dmgr.host |	Nom d'hôte du gestionnaire de déploiement.  |
+| mfp.admin.jmx.dmgr.port |	Port RMI ou SOAP utilisé par le gestionnaire de déploiement, en fonction de la valeur de mfp.admin.jmx.connector. |
 
-Several administration components can be deployed to enable you to run the same server or cluster with separate administration components managing each of the different runtimes.
+Plusieurs composants d'administration peuvent être déployés pour vous permettre d'exécuter le même serveur ou cluster avec des composants d'administration distincts qui gèrent chacun des environnements d'exécution. 
 
-When several administration components are deployed, you must specify:
+Lorsque vous déployez plusieurs composants d'administration, vous devez spécifier :
 
-* On each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** as the value defined for the administration service that manages that runtime.
+* Sur chaque service d'administration, une valeur unique pour la propriété JNDI **mfp.admin.environmentid** locale. 
+* Sur chaque environnement d'exécution, la même valeur pour la propriété **mfp.admin.environmentid** locale que celle définie pour le service d'administration qui gère cet environnement d'exécution. 
 
-If the virtual host that is mapped to an administration service application is not the default host, you must set the following properties on the administration service application:
+Si l'hôte virtuel qui est mappé à une application de service d'administration ne correspond pas à l'hôte par défaut, vous devez définir les propriétés suivantes sur l'application de service d'administration : 
 
-* **mfp.admin.jmx.user**: the user name of the WebSphere Application Server administrator
-* **mfp.admin.jmx.pwd**: the password of the WebSphere Application Server administrator
+* **mfp.admin.jmx.user** : Nom d'utilisateur de l'administrateur de WebSphere Application Server
+* **mfp.admin.jmx.pwd** : Mot de passe de l'administrateur de WebSphere Application Server
 
-### Using a reverse proxy with server farm and WebSphere Application Server Network Deployment topologies
+### Utilisation d'un proxy inverse avec des topologies de parc de serveurs et WebSphere Application Server Network Deployment
 {: #using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies }
-You can use a reverse proxy with distributed topologies. If your topology uses a reverse proxy, configure the required JNDI properties for the administration service.
+Vous pouvez utiliser un proxy inverse avec des topologies réparties. Si votre topologie utilise un proxy inverse, configurez les propriétés JNDI requises pour le service d'administration. 
 
-You can use a reverse proxy, such as IBM  HTTP Server, to front server farm or WebSphere  Application Server Network Deployment topologies. In this case, you must configure the administration components appropriately.
+Vous pouvez utiliser un proxy inverse, par exemple, IBM HTTP Server, avec des topologies de parc de serveurs frontaux ou WebSphere Application Server Network Deployment. Dans ce cas, vous devez configurer les composants d'administration de manière appropriée.
 
-You can call the reverse proxy from:
+Vous pouvez appeler le proxy inverse à partir :
 
-* The browser when you access {{ site.data.keys.mf_console }}.
-* The runtime when it calls the administration service.
-* The {{ site.data.keys.mf_console }} component when it calls the administration service.
+* du navigateur lorsque vous accédez à {{site.data.keys.mf_console }} ;
+* de l'environnement d'exécution lorsqu'il appelle le service d'administration ;
+* du composant {{site.data.keys.mf_console }} lorsqu'il appelle le service d'administration. 
 
-If the reverse proxy is in a DMZ (a firewall configuration for securing local area networks) and a firewall is used between the DMZ and the internal network, this firewall must authorize all incoming requests from the application servers.
+Si le proxy inverse est dans une zone démilitarisée (configuration de pare-feu permettant de sécuriser les réseaux locaux) et un pare-feu est utilisé entre la zone démilitarisée et le réseau interne, ce pare-feu doit autoriser toutes les demandes entrantes issues des serveurs d'applications. 
 
-When a reverse proxy is used in front of the application server infrastructure, the following JNDI properties must be defined for the administration service.
+Lorsqu'un proxy inverse est utilisé devant l'infrastructure de serveur d'applications, les propriétés JNDI suivantes doivent être définies pour le service d'administration :
 
-| JNDI properties |	Values |
+| Propriétés JNDI |	Valeurs |
 |-----------------|--------|
-| mfp.admin.proxy.protocol | The protocol that is used to communicate with the reverse proxy. It can be HTTP or HTTPS. |
-| mfp.admin.proxy.host | The host name of the reverse proxy. |
-| mfp.admin.proxy.port | The port number of the reverse proxy. |
+| mfp.admin.proxy.protocol | Protocole qui est utilisé pour communiquer avec le proxy inverse. Il peut s'agir de HTTP ou HTTPS. |
+| mfp.admin.proxy.host | Nom d'hôte du proxy inverse.  |
+| mfp.admin.proxy.port | Numéro de port du proxy inverse.  |
 
-The **mfp.admin.endpoint** property that references the URL of the reverse proxy is also required for {{ site.data.keys.mf_console }}.
+La propriété **mfp.admin.endpoint** qui fait référence à l'URL du proxy inverse est également requise pour {{site.data.keys.mf_console }}.
 
-### Constraints on {{ site.data.keys.mf_server }} push service
+### Contraintes sur le service push de {{site.data.keys.mf_server }}
 {: #constraints-on-mobilefirst-server-push-service }
-The push service can be on the same application server as the administration service or the runtime, or can be on a different application server. The URL used by the client apps to contact the push service is the same as the URL used by the client apps to contact the runtime, excepted that the context root of the runtime is replaced by imfpush. If you install the push service on a different server than the runtime, your HTTP server must direct the traffic to the /imfpush context root to a server where the push service runs.
+Le service push peut figurer sur le même serveur d'applications que le service d'administration ou l'environnement d'exécution, ou sur un autre serveur d'applications. L'URL utilisée par les applications client pour contacter le service push est identique à celle utilisée par les applications client pour contacter l'environnement d'exécution, à ceci près que la racine de contexte de l'environnement d'exécution est remplacée par imfpush. Si vous souhaitez installer le service push sur un autre serveur que celui de l'environnement d'exécution, votre serveur HTTP doit acheminer le trafic vers la racine de contexte /imfpush sur un serveur où le service push s'exécute. 
 
-For more information about the JNDI properties that are needed to adapt the installation to a topology, see [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server). The push service must be installed with the context root **/imfpush**.
+Pour plus d'informations sur les propriétés JNDI requises pour adapter l'installation à une topologie, voir [Communication entre le service d'administration de {{site.data.keys.mf_server }} et le service push de {{site.data.keys.mf_server }} et le serveur d'autorisations.](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)Le service push doit être installé avec la racine de contexte **/imfpush**.
 
-## Multiple {{ site.data.keys.product }} runtimes
+## Plusieurs environnements d'exécution de {{site.data.keys.product }}
 {: #multiple-mobilefirst-foundation-runtimes }
-You can install multiple runtimes. Each runtime must have its own context root, and all of these runtimes are managed by the same {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.mf_console }}.
+Vous pouvez installer plusieurs environnements d'exécution. Chaque environnement d'exécution doit avoir sa propre racine de contexte et tous ces environnements d'exécution sont gérés par le même service d'administration de {{site.data.keys.mf_server }} et la même application {{site.data.keys.mf_console }}.
 
-The constraints as described in [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime) applies. Each runtime (with its context root) must have its own database tables.
+Les contraintes décrites dans [Contraintes sur le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product }}](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime) s'appliquent. Chaque environnement d'exécution (avec sa racine de contexte) doit avoir ses propres tables de base de données. 
 
-> For instructions, see [Configuring multiple runtimes](../server-configuration/#configuring-multiple-runtimes).
+> Pour obtenir des instructions, voir [Configuration de plusieurs environnements d'exécution](../server-configuration/#configuring-multiple-runtimes).
 
-## Multiple instances of {{ site.data.keys.mf_server }} on the same server or WebSphere Application Server cell
+## Plusieurs instances de {{site.data.keys.mf_server }} sur le même serveur ou la même cellule WebSphere Application Server
 {: #multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell }
-By defining a common environment ID, multiple instances of {{ site.data.keys.mf_server }} are possible to be installed on the same server.
+La définition d'un ID d'environnement commun permet d'installer plusieurs instances de {{site.data.keys.mf_server }} sur le même serveur. 
 
-You can install multiple instances of {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, and {{ site.data.keys.product }} runtime on the same application server or WebSphere  Application Server cell. However, you must distinguish their installations with the JNDI variable: **mfp.admin.environmentid**, which is a variable of the administration service and of the runtime. The administration service manages only the runtimes that have the same environment identifier. As such, only the runtime components and the administration service that have the same value for **mfp.admin.environmentid** are considered as part of the same installation.
+Vous pouvez installer plusieurs instances de service d'administration de {{site.data.keys.mf_server }}, de service Live Update de{{site.data.keys.mf_server }} et d'environnement d'exécution de {{site.data.keys.product }} sur le même serveur d'applications ou la même cellule WebSphere Application Server. Toutefois, vous devez distinguer leurs installations à l'aide de la variable JNDI **mfp.admin.environmentid**, qui est une variable du service d'administration et de l'environnement d'exécution. Le service d'administration ne gère que les environnements d'exécution possédant le même identificateur d'environnement. Par conséquent, seuls les composants d'environnement d'exécution et le service d'administration ayant la même valeur pour la propriété **mfp.admin.environmentid** sont considérés comme faisant partie de la même installation. 

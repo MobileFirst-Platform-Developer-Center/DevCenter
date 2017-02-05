@@ -1,52 +1,65 @@
 ---
 layout: tutorial
-title: Setting Up the Development Environment
-breadcrumb_title: Development Environment
+title: Configuration de l'environnement de développement
+breadcrumb_title: Environnement de développement
 show_children: true
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-Before starting to develop client and server code using {{ site.data.keys.product_full }}, the development environment needs to be set-up first. This includes installing various required software and tools. The following is a list of software you may need to install on your developer workstation, depending on your needs.
+Avant de commencer à développer le code de client et de serveur avec
+{{site.data.keys.product_full }}, vous devez configurer l'environnement de
+développement. Vous devez notamment installer divers logiciels et outils requis. Vous
+trouverez ci-après la liste des logiciels qu'il peut être nécessaire d'installer sur le
+poste de travail du développeur, selon les besoins. 
 
-You can also find detailed step-by-step instructions [in this workstation installation guide](mobilefirst/installation-guide/).
+Vous trouverez également des instructions détaillées
+[dans ce guide d'installation pour le poste de
+travail](mobilefirst/installation-guide/).
 
-#### Jump to:
+#### Accéder à :
 
-* [Server](#server)
-* [Application development](#application-development)
-* [Adapter development](#adapter-development)
-* [Platform-specific instructions](#platform-specific-instructions)
+* [Serveur](#server)
+* [Développement d'applications](#application-development)
+* [Développement d'adaptateurs](#adapter-development)
+* [Instructions propres à
+la plateforme](#platform-specific-instructions)
 
-### Server
+### Serveur
 {: #server }
-You can use the {{ site.data.keys.mf_server }} either via the [Mobile Foundation Bluemix service](../../bluemix/using-mobile-foundation), or locally using the {{ site.data.keys.mf_dev_kit_full }} (used for local development purposes). The {{ site.data.keys.mf_server }} requires Java 7 or 8 to run.
+Vous pouvez utiliser {{site.data.keys.mf_server }} via le
+[service Mobile Foundation
+Bluemix](../../bluemix/using-mobile-foundation) ou localement avec {{site.data.keys.mf_dev_kit_full }} (pour un
+développement local seulement). {{site.data.keys.mf_server }} requiert
+l'exécution de Java 7 ou 8. 
 
-If you intend on using the Mobile Foundation Bluemix service, an account on Bluemix.net is required.
+Si vous prévoyez d'utiliser le service Mobile Foundation
+Bluemix, un compte Bluemix.net est requis. 
 
-### Application development
+### Développement d'applications
 {: #application-development }
-At the very minimum, the following software is needed:
+Les logiciels suivants au moins sont requis : 
 
-* NodeJS (requirement for {{ site.data.keys.mf_cli }})
-* {{ site.data.keys.mf_cli }}
-* Cordova CLI
-* IDEs:
+* NodeJS (requis pour {{site.data.keys.mf_cli }})
+* {{site.data.keys.mf_cli }}
+* L'interface de ligne de commande Cordova 
+* Des environnements de développement intégrés : 
     - Xcode
     - Android Studio
     - Visual Studio
-    - Atom.io / Visual Studio Code / WebStorm / IntelliJ / Eclipse / other IDEs
+    - Atom.io/Visual Studio Code/WebStorm/IntelliJ/Eclipse/d'autres
 
-### Adapter development
+
+### Développement d'adaptateurs 
 {: #adapter-development }
-At the very minimum, the following software is needed:
+Les logiciels suivants au moins sont requis : 
 
-* NodeJS (requirement for {{ site.data.keys.mf_cli }})
-* *optional* {{ site.data.keys.mf_cli }}
-* Maven (requires Java)
-* IDEs:
-    - IntelliJ / Eclipse / other IDEs
+* NodeJS (requis pour {{site.data.keys.mf_cli }})
+* *Facultatif* : {{site.data.keys.mf_cli }}
+* Maven (requiert Java)
+* Des environnements de développement intégrés : 
+    - IntelliJ/Eclipse/d'autres 
 
-### Platform-specific instructions
+### Instructions propres à la plateforme 
 {: #platform-specific-instructions }

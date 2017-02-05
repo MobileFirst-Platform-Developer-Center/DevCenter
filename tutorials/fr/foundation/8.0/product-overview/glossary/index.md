@@ -28,9 +28,9 @@ Les références croisées suivantes sont utilisées dans ce glossaire :
 
 Pour d'autres termes et définitions, voir le [site Web IBM Terminology](http://www.ibm.com/software/globalization/terminology/).
 
-## A
+## A {
 {: #a }
-
+}
 ### Règle d'acquisition
 {: #acquisition-policy }
 Règle qui contrôle comment les données sont collectées à partir du détecteur d'un terminal mobile. La règle est définie par code d'application.

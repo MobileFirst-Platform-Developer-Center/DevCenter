@@ -1,25 +1,34 @@
 ---
 layout: tutorial
-title: Using MobileFirst Server to Eclipse
+title: Utilisation de MobileFirst Server dans Eclipse
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-The {{ site.data.keys.mf_server }} can be integrated into the Eclipse IDE. This can help in creating a unified development experience.
+Vous pouvez intégrer {{site.data.keys.mf_server }} à l'environnement de
+développement intégré Eclipse, afin de proposer une expérience de développement unifiée.
 
-* You can also expose CLI functionality in Eclipse, see the [Using the {{ site.data.keys.mf_server }} in Eclipse](../../../../application-development/using-mobilefirst-cli-in-eclipse) tutorial.
-* Additionally, you can develop adapters in Eclipse, see the [Developing Adapters in Eclipse](../../../../adapters/developing-adapters) tutorial.
 
-### Adding the server to Eclipse
+* Vous pouvez également exposer la fonctionnalité d'interface de ligne de
+commande dans Eclipse ; voir le
+tutoriel
+[Using
+the {{site.data.keys.mf_server }} CLI in Eclipse](../../../../application-development/using-mobilefirst-cli-in-eclipse). 
+* De plus, vous pouvez développer des adaptateurs dans Eclipse ; voir
+le tutoriel [Developing Adapters in Eclipse](../../../../adapters/developing-adapters). 
+
+### Ajout du serveur à Eclipse 
 {: #adding-the-server-to-eclipse }
-1. From the **Servers** view in Eclipse, select **New → Server**.
-2. If an IBM folder option does not exist, click on "Download additional server adapters".
-3. Select **WebSphere Application Server Liberty Tools** and follow the on-screen instructions.
-4. From the **Servers** view in Eclipse, select **New → Server**.
-5. Select **IBM → WebSphere Application Server Liberty**.
-6. Provide a server **name** and **hostname** and click **Next**.
-7. Provide the path to the server's root directory, and select a JRE version to use. When using the {{ site.data.keys.mf_dev_kit }}, the root directory is **[installation directory]/mfp-server** folder.
-8. Click **Next** followed by clicking **Finish**.
+1. Depuis la vue **Serveurs** dans Eclipse, sélectionnez **Nouveau → Serveur**.
+2. S'il n'existe pas d'option de dossier IBM, cliquez sur "Télécharger des adaptateurs de serveur supplémentaires". 
+3. Sélectionnez **Outils WebSphere Application Server Liberty** et suivez les instructions affichées à l'écran. 
+4. Depuis la vue **Serveurs** dans Eclipse, sélectionnez **Nouveau → Serveur**.
+5. Sélectionnez **IBM → WebSphere Application Server Liberty**.
+6. Indiquez un **nom** de serveur et un **nom d'hôte**, puis cliquez sur **Suivant**.
+7. Indiquez le chemin d'accès au répertoire de base du serveur et sélectionnez la version de l'environnement d'exécution Java (JRE) à utiliser. Lorsque vous utilisez {{site.data.keys.mf_dev_kit }}, le répertoire de base est le dossier **[répertoire_installation]/mfp-server**. 
+8. Cliquez sur **Suivant**, puis sur **Terminer**.
 
-You can now start and stop the {{ site.data.keys.mf_server }} from the Eclipse IDE "servers" view.
+A présent, vous pouvez démarrer et arrêter {{site.data.keys.mf_server }}
+depuis la vue "Serveurs" de l'environnement d'exécution intégré Eclipse.
+

@@ -1,195 +1,195 @@
 ---
 layout: tutorial
-title: Administrating applications through Terminal
-breadcrumb_title: Administrating using terminal
+title: Administration d'applications via un terminal
+breadcrumb_title: Administration à l'aide d'un terminal
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-You can administer {{ site.data.keys.product_adj }} applications through the **mfpadm** program.
+Vous pouvez administrer des applications {{site.data.keys.product_adj }} via le programme **mfpadm**.
 
-#### Jump to
+#### Accéder à
 {: #jump-to }
 
-* [Comparison with other facilities](#comparison-with-other-facilities)
-* [Prerequisites](#prerequisites)
+* [Comparaison avec d'autres fonctions](#comparison-with-other-facilities)
+* [Prérequis](#prerequisites)
 
-## Comparison with other facilities
+## Comparaison avec d'autres fonctions
 {: #comparison-with-other-facilities }
-You can run administration operations with {{ site.data.keys.product_full }} in the following ways:
+Vous pouvez exécuter des opérations d'administration à l'aide d'{{site.data.keys.product_full }} en utilisant les composants suivants :
 
-* The {{ site.data.keys.mf_console }}, which is interactive.
-* The mfpadm Ant task.
-* The **mfpadm** program.
-* The {{ site.data.keys.product_adj }} administration REST services.
+* La console {{site.data.keys.mf_console }}, qui est interactive.
+* La tâche Ant mfpadm.
+* Le programme **mfpadm**.
+* Les services REST d'administration de {{site.data.keys.product_adj }}.
 
-The **mfpadm** Ant task, mfpadm program, and REST services are useful for automated or unattended execution of operations, such as the following use cases:
+La tâche Ant **mfpadm**, le programme mfpadm et les services REST sont utiles pour l'exécution automatisée ou sans assistance d'opérations, telles que celles présentées dans les cas d'utilisation suivants :
 
-* Eliminating operator errors in repetitive operations, or
-* Operating outside the operator's normal working hours, or
-* Configuring a production server with the same settings as a test or preproduction server.
+* Elimination d'erreurs d'opérateur dans des opérations répétitives, ou
+* exploitation en dehors des heures de travail normales de l'opérateur, ou
+* configuration d'un serveur de production avec les mêmes paramètres qu'un serveur de test ou de préproduction.
 
-The **mfpadm** program and the mfpadm Ant task are simpler to use and have better error reporting than the REST services. The advantage of the mfpadm program over the mfpadm Ant task is that it is easier to integrate when integration with operating system commands is already available. Moreover, it is more suitable to interactive use.
+Le programme **mfpadm** et la tâche Ant mfpadm sont plus faciles à utiliser et fournissent une meilleure génération de rapports d'erreurs que les services REST. Comparé à la tâche Ant mfpadm, le programme mfpadm présente l'avantage d'être plus facile à intégrer lorsque l'intégration à des commandes de système d'exploitation est déjà disponible. De plus, il convient davantage pour une utilisation interactive.
 
-## Prerequisites
+## Prérequis
 {: #prerequisites }
-The **mfpadm** tool is installed with the {{ site.data.keys.mf_server }} installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the {{ site.data.keys.mf_server }} installer.
+L'outil **mfpadm** est installé à l'aide du programme d'installation de {{site.data.keys.mf_server }}. Sur cette page,  **product\_install\_dir** indique le répertoire d'installation du programme d'installation de {{site.data.keys.mf_server }}.
 
-The **mfpadm** command is provided in the **product\_install\_dir/shortcuts/** directory as a set of scripts:
+La commande **mfpadm** est fournie dans le répertoire **product\_install\_dir/shortcuts/** sous la forme d'un ensemble de scripts :
 
-* mfpadm for UNIX / Linux
-* mfpadm.bat for Windows
+* mfpadm pour UNIX / Linux
+* mfpadm.bat pour Windows
 
-These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable **JAVA_HOME** is set, the scripts accept it.  
-To use the **mfpadm** program, either put the **product\_install\_dir/shortcuts/** directory into your PATH environment variable, or reference its absolute file name in each call.
+Ces scripts sont prêts à être exécutés, ce qui signifie qu'ils ne nécessitent pas de variables d'environnement spécifiques. Si la variable d'environnement**JAVA_HOME** est définie, les scripts l'acceptent.  
+Pour utiliser le programme **mfpadm**, placez le répertoire **product\_install\_dir/shortcuts/** dans votre variable d'environnement PATH ou faites référence à son nom de fichier absolu dans chaque appel.
 
-For more information about running the {{ site.data.keys.mf_server }} installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
+Pour plus d'informations sur l'exécution du programme d'installation de {{site.data.keys.mf_server }}, voir[Exécution d'IBM Installation Manager](../../installation-configuration/production/installation-manager/).
 
-#### Jump to
+#### Accéder à
 {: #jump-to-1 }
 
-* [Calling the **mfpadm** program](#calling-the-mfpadm-program)
-* [Commands for general configuration](#commands-for-general-configuration)
-* [Commands for adapters](#commands-for-adapters)
-* [Commands for apps](#commands-for-apps)
-* [Commands for devices](#commands-for-devices)
-* [Commands for troubleshooting](#commands-for-troubleshooting)
+* [Appel du programme **mfpadm**](#calling-the-mfpadm-program)
+* [Commandes de configuration générale](#commands-for-general-configuration)
+* [Commandes pour adaptateurs](#commands-for-adapters)
+* [Commandes pour applications](#commands-for-apps)
+* [Commandes pour terminaux](#commands-for-devices)
+* [Commandes de traitement des incidents](#commands-for-troubleshooting)
 
 
-### Calling the **mfpadm** program
+### Appel du programme **mfpadm**
 {: #calling-the-mfpadm-program }
-You can use the **mfpadm** program to administer {{ site.data.keys.product_adj }} applications.
+Vous pouvez utiliser le programme **mfpadm** pour administrer des applications {{site.data.keys.product_adj }}.
 
-#### Syntax
+#### Syntaxe
 {: #syntax }
-Call the mfpadm program as follows:
+Appelez le programme mfpadm comme suit :
 
 ```bash
 mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 ```
 
-The **mfpadm** program has the following options:
+Le programme **mfpadm** comporte les options suivantes :
 
-| Option	| Type | Description | Required | Default | 
+| Option	| Type | Description | Obligatoire | Par défaut | 
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | Base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes | | 
-| --secure	 | Boolean | Whether to avoid operations with security risks | No | true | 
-| --user	 | name | User name for accessing the {{ site.data.keys.product_adj }} admin services | Yes |  | 	 
-| --passwordfile | file | File containing the password for the user | No | 
-| --timeout	     | Number  | Timeout for the entire REST service access, in seconds | No | 	 
-| --connect-timeout | Number | Timeout for establishing a network connection, in seconds | No |
-| --socket-timeout  | Number | Timeout for detecting the loss of a network connection, in seconds | No | 
-| --connection-request-timeout | Number	Timeout for obtaining an entry from a connection request pool, in seconds | No |
-| --lock-timeout | Number | Timeout for acquiring a lock, in seconds | No | 2 | 
-| --verbose	     | Detailed output | No	| |  
+| --url | 	 | URL | URL de base de l'application Web {{site.data.keys.product_adj }} pour les services d'administration | Oui | | 
+| --secure	 | Booléen | Indique si les opérations présentant des risques de sécurité doivent être évitées | Non | true | 
+| --user	 | name | Nom d'utilisateur permettant d'accéder aux services d'administration de {{site.data.keys.product_adj }} | Oui |  | 	 
+| --passwordfile | file | Fichier contenant le mot de passe de l'utilisateur | Non | 
+| --timeout	     | Nombre  | Délai d'attente relatif à l'accès à l'ensemble du service REST, exprimé en secondes | Non | 	 
+| --connect-timeout | Nombre | Délai d'attente relatif à l'établissement d'une connexion réseau, exprimé en secondes | Non |
+| --socket-timeout  | Nombre | Délai d'attente relatif à la détection de la perte d'une connexion réseau, exprimé en secondes | Non | 
+| --connection-request-timeout | Nombre Délai d'attente relatif à l'obtention d'une entrée à partir d'un pool de demande de connexion, exprimé en secondes | Non |
+| --lock-timeout | Nombre | Délai d'attente relatif à l'acquisition d'un verrou, exprimé en secondes | Non | 2 | 
+| --verbose	     | Sortie détaillée | Non	| |  
 
 **url**  
-The URL preferably uses the HTTPS protocol. For example, if you use default ports and context roots, use this URL:
+L'URL utilise de préférence le protocole HTTPS. Par exemple, si vous utilisez des ports et des racines de contexte par défaut, utilisez l'URL suivante :
 
-* For WebSphere  Application Server: https://server:9443/mfpadmin
-* For Tomcat: https://server:8443/mfpadmin
+* Pour WebSphere Application Server : https://server:9443/mfpadmin
+* Pour Tomcat : https://server:8443/mfpadmin
 
 **secure**  
-The `--secure` option is set to true by default. Setting it to `--secure=false` might have the following effects:
+Par défaut, l'option `--secure` a pour valeur true. Si vous définissez la valeur `--secure=false`, les effets possibles sont les suivants :
 
-* The user and password might be transmitted in an unsecured way (possibly even through unencrypted HTTP).
-* The server's SSL certificates are accepted even if self-signed or if they were created for a different host name from the server's host name.
+* L'utilisateur et le mot de passe peuvent être transmis de façon non sécurisée (peut-être même via un protocole HTTP non chiffré).
+* Les certificats SSL du serveur sont acceptés même s'ils sont auto-signés ou s'ils ont été créés pour un nom d'hôte différent du nom d'hôte du serveur.
 
 **password**  
-Specify the password in a separate file that you pass in the `--passwordfile` option. In interactive mode (see Interactive mode), you can alternatively specify the password interactively. The password is sensitive information and therefore needs to be protected. You must prevent other users on the same computer from knowing these passwords. To secure the password, before you enter the password into a file, you must remove the read permissions of the file for users other than yourself. For example, you can use one of the following commands:
+Indiquez le mot de passe dans un fichier distinct que vous transmettez via l'option `--passwordfile`. En mode interactif (voir la section Mode interactif), vous pouvez aussi spécifier le mot de passe de manière interactive. Le mot de passe constitue des informations sensibles qui doivent par conséquent être protégées. Vous devez empêcher les autres utilisateurs de l'ordinateur de connaître ce mot de passe. Pour sécuriser un mot de passe, avant de saisir ce dernier dans un fichier, retirez les droits d'accès en lecture à ce fichier pour les autres utilisateurs. Par exemple, utilisez l'une des commandes suivantes :
 
-* On UNIX: `chmod 600 adminpassword.txt`
-* On Windows: `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+* Sous UNIX : `chmod 600 adminpassword.txt`
+* Sous Windows : `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
-For this reason, do not pass the password to a process through a command-line argument. On many operating systems, other users can inspect the command-line arguments of your processes.
+Pour cette raison, ne transmettez pas le mot de passe à un processus via un argument de ligne de commande. Sur un grand nombre de systèmes d'exploitation, d'autres utilisateurs peuvent inspecter les arguments de ligne de commande de vos processus.
 
-The mfpadm calls contains a command. The following commands are supported.
+Les appels du programme mfpadm contiennent une commande. Les commandes suivantes sont prises en charge :
 
-| Command                           | Description | 
+| Commande                           | Description | 
 |-----------------------------------|-------------|
-| show info	| Shows user and configuration information. | 
-| show global-config | Shows global configuration information. | 
-| show diagnostics | Shows diagnostics information. | 
-| show versions	| Shows version information. | 
-| unlock | Releases the general-purpose lock. | 
-| list runtimes [--in-database] | Lists the runtimes. | 
-| show runtime [runtime-name] | Shows information about a runtime. | 
-| delete runtime [runtime-name] condition | Deletes a runtime. | 
-| show user-config [runtime-name] | Shows the user configuration of a runtime. | 
-| set user-config [runtime-name] file | Specifies the user configuration of a runtime. | 
-| set user-config [runtime-name] property = value | Specifies a property in the user configuration of a runtime. | 
-| show confidential-clients [runtime-name] | Shows the configuration of the confidential clients of a runtime. | 
-| set confidential-clients [runtime-name] file | Specifies the configuration of the confidential clients of a runtime. | 
-| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | Specifies a rule for the configuration of the confidential clients of a runtime. | 
-| list adapters [runtime-name] | Lists the adapters. | 
-| deploy adapter [runtime-name] property = value | Deploys an adapter.| 
-| show adapter [runtime-name] adapter-name | Shows information about an adapter.| 
-| delete adapter [runtime-name] adapter-name | Deletes an adapter.| 
-| adapter [runtime-name] adapter-name get binary [> tofile]	| Get the binary data of an adapter.| 
-| list apps [runtime-name] | Lists the apps.| 
-| deploy app [runtime-name] file | Deploys an app.| 
-| show app [runtime-name] app-name | Shows information about an app.| 
-| delete app [runtime-name] app-name | Deletes an app. | 
-| show app version [runtime-name] app-name environment version | Shows information about an app version. |
-| delete app version [runtime-name] app-name environment version | Deletes a version of an app. |
-| app [runtime-name] app-name show license-config | Shows the token license configuration of an app. |
-| app [runtime-name] app-name set license-config app-type license-type | Specifies the token license configuration for an app. |
-| app [runtime-name] app-name delete license-config | Removes the token license configuration for an app. | 
-| app version [runtime-name] app-name environment version get descriptor [> tofile]	| Gets the descriptor of an app version. | 
-| app version [runtime-name] app-name environment version get web-resources [> tofile] | Gets the web resources of an app version. | 
-| app version [runtime-name] app-name environment version set web-resources file | Specifies the web resources of an app version. | 
-| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | Gets the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version set authenticity-data [file] | Specifies the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version delete authenticity-data | Deletes the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version show user-config | Shows the user configuration of an app version. | 
-| app version [runtime-name] app-name environment version set user-config file | Specifies the user configuration of an app version. | 
-| app version [runtime-name] app-name environment version set user-config property = value | Specifies a property in the user configuration of an app version. |
-| list devices [runtime-name] [--query query] | Lists the devices. |
-| remove device [runtime-name] id | Removes a device. |
-| device [runtime-name] id set status new-status | Changes the status of a device. |
-| device [runtime-name] id set appstatus app-name new-status | Changes the status of a device for an app. |
-| list farm-members [runtime-name] | Lists the servers that are members of the server farm. |
-| remove farm-member [runtime-name] server-id | Removes a server from the list of farm members. |
+| show info	| Affiche des informations de configuration et d'utilisateur. | 
+| show global-config | Affiche des informations de configuration globale. | 
+| show diagnostics | Affiche des informations de diagnostic. | 
+| show versions	| Affiche des informations de version. | 
+| unlock | Libère le verrou général. | 
+| list runtimes [--in-database] | Répertorie les environnements d'exécution. | 
+| show runtime [runtime-name] | Affiche des informations sur un environnement d'exécution. | 
+| delete runtime [runtime-name] condition | Supprime un environnement d'exécution. | 
+| show user-config [runtime-name] | Affiche la configuration utilisateur d'un environnement d'exécution. | 
+| set user-config [runtime-name] file | Spécifie la configuration utilisateur d'un environnement d'exécution. | 
+| set user-config [runtime-name] property = value | Spécifie une propriété dans la configuration utilisateur d'un environnement d'exécution. | 
+| show confidential-clients [runtime-name] | Affiche la configuration des clients confidentiels d'un environnement d'exécution. | 
+| set confidential-clients [runtime-name] file | Spécifie la configuration des clients confidentiels d'un environnement d'exécution. | 
+| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | Spécifie une règle pour la configuration des clients confidentiels d'un environnement d'exécution. | 
+| list adapters [runtime-name] | Répertorie les adaptateurs. | 
+| deploy adapter [runtime-name] property = value | Déploie un adaptateur.| 
+| show adapter [runtime-name] adapter-name | Affiche des informations sur un adaptateur.| 
+| delete adapter [runtime-name] adapter-name | Supprime un adaptateur.| 
+| adapter [runtime-name] adapter-name get binary [> tofile]	| Obtient les données binaires d'un adaptateur.| 
+| list apps [runtime-name] | Répertorie les applications.| 
+| deploy app [runtime-name] file | Déploie une application.| 
+| show app [runtime-name] app-name | Affiche des informations sur une application.| 
+| delete app [runtime-name] app-name | Supprime une application. | 
+| show app version [runtime-name] app-name environment version | Affiche des informations sur une version d'application. |
+| delete app version [runtime-name] app-name environment version | Supprime une version d'une application. |
+| app [runtime-name] app-name show license-config | Affiche la configuration de licence de jeton d'une application. |
+| app [runtime-name] app-name set license-config app-type license-type | Spécifie la configuration de licence de jeton pour une application. |
+| app [runtime-name] app-name delete license-config | Retire la configuration de licence de jeton pour une application. | 
+| app version [runtime-name] app-name environment version get descriptor [> tofile]	| Obtient le descripteur d'une version d'application. | 
+| app version [runtime-name] app-name environment version get web-resources [> tofile] | Obtient les ressources Web d'une version d'application. | 
+| app version [runtime-name] app-name environment version set web-resources file | Spécifie les ressources Web d'une version d'application. | 
+| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | Obtient les données d'authenticité d'une version d'application. | 
+| app version [runtime-name] app-name environment version set authenticity-data [file] | Spécifie les données d'authenticité d'une version d'application. | 
+| app version [runtime-name] app-name environment version delete authenticity-data | Supprime les données d'authenticité d'une version d'application. | 
+| app version [runtime-name] app-name environment version show user-config | Affiche la configuration utilisateur d'une version d'application. | 
+| app version [runtime-name] app-name environment version set user-config file | Spécifie la configuration utilisateur d'une version d'application. | 
+| app version [runtime-name] app-name environment version set user-config property = value | Spécifie une propriété dans la configuration utilisateur d'une version d'application. |
+| list devices [runtime-name][--query query] | Répertorie les terminaux. |
+| remove device [runtime-name] id | Retire un terminal. |
+| device [runtime-name] id set status new-status | Modifie le statut d'un terminal. |
+| device [runtime-name] id set appstatus app-name new-status | Modifie le statu d'un terminal pour une application. |
+| list farm-members [runtime-name] | Répertorie les serveurs membres du parc de serveurs. |
+| remove farm-member [runtime-name] server-id | Retire un serveur de la liste des membres du parc de serveurs. |
 
-#### Interactive mode
+#### Mode interactif
 {: #interactive-mode }
-Alternatively, you can also call **mfpadm** without any command in the command line. You can then enter commands interactively, one per line.
-The `exit` command, or end-of-file on standard input (**Ctrl-D** on UNIX terminals) terminates mfpadm.
+Vous pouvez aussi appeler le programme **mfpadm** sans aucune commande en ligne de commande. Vous pouvez ensuite entrer des commandes de manière interactive, à raison d'une par ligne.
+La commande `exit`, ou une marque de fin de fichier dans une entrée standard (**Ctrl-D** sur les terminaux UNIX), permet de terminer le programme mfpadm.
 
-`Help` commands are also available in this mode. For example:
+Des commandes `Help` sont également disponibles dans ce mode. Exemple :
 
 * help
 * help show versions
 * help device
 * help device set status
 
-#### Command history in interactive mode
+#### Historique des commandes en mode interactif
 {: #command-history-in-interactive-mode }
-On some operating systems, the interactive mfpadm command remembers the command history. With the command history, you can select a previous command, using the arrow-up and arrow-down keys, edit it, and execute it.
+Sur certains systèmes d'exploitation, la commande mfpadm interactive mémorise l'historique des commandes. Dans l'historique des commandes, vous pouvez sélectionner une commande précédente à l'aide des touches de déplacement vers le haut et vers le bas, puis l'éditer et l'exécuter.
 
-**On Linux**  
-The command history is enabled in terminal emulator windows if the rlwrap package is installed and found in PATH. To install the rlwrap package:
+**Sous Linux**  
+L'historique des commandes est activé dans des fenêtres d'émulation de terminal si le module rlwrap est installé et figure dans PATH. Pour installer le module rlwrap :
 
-* On Red Hat Linux: `sudo yum install rlwrap`
-* On SUSE Linux: `sudo zypper install rlwrap`
-* On Ubuntu: `sudo apt-get install rlwrap`
+* Sous Red Hat Linux : `sudo yum install rlwrap`
+* Sous SUSE Linux : `sudo zypper install rlwrap`
+* Sous Ubuntu : `sudo apt-get install rlwrap`
 
-**On OS X**  
-The command history is enabled in the Terminal program if the rlwrap package is installed and found in PATH. To install the rlwrap package:
+**Sous OS X**  
+L'historique des commandes est activé dans le programme terminal si le module rlwrap est installé et figure dans PATH. Pour installer le module rlwrap :
 
-1. Install MacPorts by using the installer from [www.macports.org](http://www.macports.org).
-2. Run the command: `sudo /opt/local/bin/port install rlwrap`
-3. Then, to make the rlwrap program available in PATH, use this command in a Bourne-compatible shell: `PATH=/opt/local/bin:$PATH`
+1. Installez MacPorts à l'aide du programme d'installation disponible sur [www.macports.org](http://www.macports.org).
+2. Exécutez la commande `sudo /opt/local/bin/port install rlwrap`
+3. Pour rendre le programme rlwrap disponible dans PATH, utilisez la commande suivante dans un shell compatible Bourne : `PATH=/opt/local/bin:$PATH`
 
-**On Windows**  
-The command history is enabled in cmd.exe console windows.
+**Sous Windows**  
+L'historique des commandes est activé dans des fenêtres console cmd.exe.
 
-In environments where rlwrap does not work or is not required, you can disable its use through the option `--no-readline`.
+Dans les environnements où le programme rlwrap ne fonctionne pas ou n'est pas requis, vous pouvez désactiver son utilisation via l'option `--no-readline`.
 
-#### The configuration file
+#### Fichier de configuration
 {: #the-configuration-file }
-You can also store the options in a configuration file, instead of passing them on the command line at every call. When a configuration file is present and the option –configfile=file is specified, you can omit the following options:
+Vous pouvez également stocker les options dans un fichier de configuration au lieu de les transmettre sur la ligne de commande à chaque appel. Lorsqu'un fichier de configuration est présent et que l'option –configfile=file est spécifiée, vous pouvez omettre les options suivantes :
 
 * --url=URL
 * --secure=boolean
@@ -202,14 +202,14 @@ You can also store the options in a configuration file, instead of passing them 
 * --lock-timeout=seconds
 * runtime-name
 
-Use these commands to store these values in the configuration file.
+Utilisez les commandes suivantes pour stocker ces valeurs dans le fichier de configuration :
 
-| Command | Comment |
+| Commande | Commentaire |
 |---------|---------| 
 | mfpadm [--configfile=file] config url URL | | 
 | mfpadm [--configfile=file] config secure boolean | | 
 | mfpadm [--configfile=file] config user name | | 
-| mfpadm [--configfile=file] config password | Prompts for the password. | 
+| mfpadm [--configfile=file] config password | Vous invite à entrer le mot de passe. | 
 | mfpadm [--configfile=file] config timeout seconds | | 
 | mfpadm [--configfile=file] config connect-timeout seconds | | 
 | mfpadm [--configfile=file] config socket-timeout seconds | | 
@@ -217,118 +217,118 @@ Use these commands to store these values in the configuration file.
 | mfpadm [--configfile=file] config lock-timeout seconds | | 
 | mfpadm [--configfile=file] config runtime runtime-name | | 
 
-Use this command to list the values that are stored in the configuration file: `mfpadm [--configfile=file] config`
+Utilisez la commande suivante pour répertorier les valeurs stockées dans le fichier de configuration : `mfpadm [--configfile=file] config`
 
-The configuration file is a text file, in the encoding of the current locale, in Java **.properties** syntax. These are the default configuration files:
+Le fichier de configuration est un fichier texte, dans le codage de l'environnement local en cours et dans la syntaxe Java **.properties**. Les fichiers de configuration par défaut sont les suivants :
 
-* UNIX: **${HOME}/.mfpadm.config**
-* Windows: **{{ site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
+* UNIX : **${HOME}/.mfpadm.config**
+* Windows : **{{site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
 
-**Note:** When you do not specify a `--configfile` option, the default configuration file is used only in interactive mode and in config commands. For noninteractive use of the other commands, you must explicitly designate the configuration file if you want to use one.
+**Remarque :** Lorsque vous ne spécifiez pas une option `--configfile`, le fichier de configuration par défaut est utilisé uniquement en mode interactif et dans des commandes config. Pour une utilisation non interactive des autres commandes, vous devez spécifier explicitement le fichier de configuration si vous souhaitez en utiliser un.
 
-> **Important:** The password is stored in an obfuscated format that hides the password from an occasional glimpse. However, this obfuscation provides no security.
+> **Important :** Le mot de passe est stocké dans un format brouillé afin qu'il ne puisse pas être entrevu. Toutefois, ce brouillage ne procure aucune sécurité.
 
-#### Generic options
+#### Options génériques
 {: #generic-options }
-There are also the usual generic options:
+Les options génériques habituelles sont les suivantes :
 
 | Option	| Description | 
 |-----------|-------------|
-| --help	| Shows some usage help | 
-| --version	| Shows the version | 
+| --help	| Affiche de l'aide sur la syntaxe | 
+| --version	| Affiche la version | 
 
-#### XML format
+#### Format XML
 {: #xml-format }
-The commands that receive an XML response from the server verify that this response complies with the specific schema. You can disable this check by specifying `--xmlvalidation=none`.
+Les commandes qui reçoivent une réponse XML du serveur vérifient que cette réponse est conforme au schéma donné. Vous pouvez désactiver cette vérification en spécifiant `--xmlvalidation=none`.
 
-#### Output character set
+#### Jeu de caractères de sortie
 {: #output-character-set }
-Normal output that is produced by the mfpadm program is encoded in the encoding format of the current locale. On Windows, this encoding format is "ANSI code page". The effects are as follows:
+Le résultat normal généré par le programme mfpadm est codé à l'aide du format de codage de l'environnement local en cours. Sous Windows, ce format de codage est appelé "page de codes ANSI". Les effets sont les suivants :
 
-* Characters outside of this character set are converted to question marks when they are output.
-* When the output goes to a Windows command prompt window (cmd.exe), non-ASCII characters are incorrectly displayed because such windows assume characters to be encoded in "OEM code page".
+* Les caractères non compris dans ce jeu de caractères sont convertis en points d'interrogation lorsqu'ils sont affichés.
+* Lorsque le résultat est dirigé vers une fenêtre d'invite de commande Windows (cmd.exe), les caractères non ASCII ne s'affichent pas correctement car ce type de fenêtre considère que les caractères sont codés dans la "page de codes OEM".
 
-To work around this limitation:
+Pour contourner cette limitation :
 
-* On operating systems other than Windows, use a locale whose encoding is UTF-8. This format is the default locale on Red Hat Linux and OS X. Many other operating systems have a `en_US.UTF-8` locale.
-* Or use the mfpadm Ant task, with attribute `output="some file name"` to redirect the output of a command to a file.
+* Sur les systèmes d'exploitation autres que Windows, utilisez un environnement local dont le codage est UTF-8. Ce format est l'environnement local par défaut sous Red Hat Linux et OS X. De nombreux autres systèmes d'exploitation ont un environnement local `en_US.UTF-8`.
+* Ou utilisez la tâche Ant mfpadm avec l'attribut `output="some file name"` pour rediriger le résultat d'une commande vers un fichier.
 
-### Commands for general configuration
+### Commandes de configuration générale
 {: #commands-for-general-configuration }
-When you call the **mfpadm** program, you can include various commands that access the global configuration of the IBM {{ site.data.keys.mf_server }} or of a runtime.
+Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes commandes qui accèdent à la configuration globale du serveur IBM {{site.data.keys.mf_server }} ou d'un module d'exécution.
 
-#### The `show global-config` command
+#### Commande `show global-config`
 {: #the-show-global-config-command }
-The `show global-config` command shows the global configuration.
+La commande `show global-config` affiche la configuration globale.
 
-Syntax: `show global-config`
+Syntaxe : `show global-config`
 
-It takes the following options:
+Elle accepte les options suivantes :
 
 | Argument | Description |
 |----------|-------------|
-| --xml    | Produces XML output instead of tabular output. | 
+| --xml    | Génère une sortie XML à la place d'une sortie tabulaire. | 
 
-**Example**  
+**Exemple**  
 
 ```bash
 show global-config
 ```
 
-This command is based on the [Global Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST service.
+Cette commande est basée sur le service REST [Global Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-).
 
 <br/>
-#### The `show user-config` command
+#### Commande `show user-config`
 {: #the-show-user-config-command }
-The `show user-config` command shows the user configuration of a runtime.
+La commande `show user-config` affiche la configuration utilisateur d'un module d'exécution.
 
-Syntax: `show user-config [--xml] [runtime-name]`
+Syntaxe : `show user-config [--xml][runtime-name]`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | Nom de l'environnement d'exécution. |
 
-The `show user-config` command takes the following options after the verb.
+La commande `show user-config` accepte les options suivantes après le verbe.
 
-| Argument | Description | Required | Default | 
+| Argument | Description | Obligatoire | Par défaut | 
 |----------|-------------|----------|---------|
-| --xml | Produces output in XML format instead of JSON format. | No | Standard output | 
+| --xml | Génère une sortie au format XML à la place du format JSON. | Non | Sortie standard | 
 
-**Example**  
+**Exemple**  
 
 ```bash
 show user-config mfp
 ```
 
-This command is based on the [Runtime Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST service.
+Cette commande est basée sur le service REST [Runtime Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-).
 
 <br/>
-#### The `set user-config` command
+#### Commande `set user-config`
 {: #the-set-user-config-command }
-The `set user-config` command specifies the user configuration of a runtime or a single property among this configuration.
+La commande `set user-config` spécifie la configuration utilisateur d'un environnement d'exécution ou une propriété de cette configuration.
 
-Syntax for the entire configuration: `set user-config [runtime-name] file`
+Syntaxe pour l'ensemble de la configuration : `set user-config [runtime-name] file`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
-| Attribute | Description | 
+| Attribut | Description | 
 |-----------|-------------|
-| runtime-name | Name of the runtime. | 
-| file | Name of the JSON or XML file that contains the new configuration. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| file | Nom du fichier JSON ou XML contenant la nouvelle configuration. | 
 
-Syntax for a single property: `set user-config [runtime-name] property = value`
+Syntaxe pour une propriété : `set user-config [runtime-name] property = value`
 
-The `set user-config` command takes the following arguments:
+La commande `set user-config` accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. |
-| value | The value of the property. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| property | Nom de la propriété JSON. Pour une propriété imbriquée, utilisez la syntaxe prop1.prop2.....propN. Pour un élément de tableau JSON, utilisez l'index à la place d'un nom de propriété. |
+| value | Valeur de la propriété. | 
 
-**Examples**  
+**Exemples**  
 
 ```bash
 set user-config mfp myconfig.json
@@ -338,259 +338,259 @@ set user-config mfp myconfig.json
 set user-config mfp timeout = 240
 ```
 
-This command is based on the [Runtime configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST service.
+Cette commande est basée sur le service REST [Runtime configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-).
 
 <br/>
-#### The `show confidential-clients` command
+#### Commande `show confidential-clients`
 {: #the-show-confidential-clients-command }
-The `show confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
+La commande `show confidential-clients` affiche la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients).
 
-Syntax: `show confidential-clients [--xml] [runtime-name]`
+Syntaxe : `show confidential-clients [--xml][runtime-name]`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
-| Attribute | Description |
+| Attribut | Description |
 |-----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | Nom de l'environnement d'exécution. |
 
-The `show confidential-clients` command takes the following options after the verb.
+La commande `show confidential-clients` accepte les options suivantes après le verbe.
 
-| Argument | Description | Required | Default |
+| Argument | Description | Obligatoire | Par défaut |
 |----------|-------------|----------|---------|
-| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
+| --xml | Génère une sortie au format XML à la place du format JSON. | Non | Sortie standard |
 
-**Example**
+**Exemple**
 
 ```bash
 show confidential-clients --xml mfp
 ```
 
-This command is based on the [Confidential Clients (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc#Confidential-Clients--GET-) REST service.
+Cette commande est basée sur le service REST [Confidential Clients (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc#Confidential-Clients--GET-).
 
 <br/>
-#### The `set confidential-clients` command
+#### Commande `set confidential-clients`
 {: #the-set-confidential-clients-command }
-The `set confidential-clients` command specifies the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
+La commande `set confidential-clients` spécifie la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients).
 
-Syntax: `set confidential-clients [runtime-name] file`
+Syntaxe : `set confidential-clients [runtime-name] file`
 
-Its takes the following arguments:
+Elle accepte les arguments suivants :
 
-| Attribute | Description | 
+| Attribut | Description | 
 |-----------|-------------|
-| runtime-name | Name of the runtime. | 
-| file	Name of the JSON or XML file that contains the new configuration. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| file Nom du fichier JSON ou XML contenant la nouvelle configuration. | 
 
-**Example**
+**Exemple**
 
 ```bash
 set confidential-clients mfp clients.xml
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+Cette commande est basée sur le service REST [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-).
 
 <br/>
-#### The `set confidential-clients-rule` command
+#### Commande `set confidential-clients-rule`
 {: #the-set-confidential-clients-rule-command }
-The `set confidential-clients-rule` command specifies a rule in the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
+La commande `set confidential-clients-rule` spécifie une règle dans la configuration des clients confidentielles pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients).
 
-Syntax: `set confidential-clients-rule [runtime-name] id displayName secret allowedScope`
+Syntaxe : `set confidential-clients-rule [runtime-name] id displayName secret allowedScope`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
-| Attribute	| Description |
+| Attribut	| Description |
 |-----------|-------------|
-| runtime | Name of the runtime. | 
-| id | The identifier of the rule. | 
-| displayName | The display name of the rule. | 
-| secret | The secret of the rule. | 
-| allowedScope | The scope of the rule. A space-separated list of tokens. Use double-quotes to pass a list of two or more tokens. | 
+| runtime | Nom de l'environnement d'exécution. | 
+| id | Identificateur de la règle. | 
+| displayName | Nom d'affichage de la règle. | 
+| secret | Secret de la règle. | 
+| allowedScope | Portée de la règle. Liste de jetons séparés par des espaces. Utilisez des guillemets pour transmettre une liste composée d'au moins deux jetons. | 
 
-**Example**
+**Exemple**
 
 ```bash
 set confidential-clients-rule mfp push Push lOa74Wxs "**"
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+Cette commande est basée sur le service REST [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-).
 
-### Commands for adapters
+### Commandes pour adaptateurs
 {: #commands-for-adapters }
-When you invoke the **mfpadm** program, you can include various commands for adapters.
+Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes commandes pour adaptateurs.
 
-### The `list adapters` command
+### Commande `list adapters`
 {: #the-list-adapters-command }
-The `list adapters` command returns a list of the adapters that are deployed for a runtime.
+La commande `list adapters` renvoie la liste des adaptateurs déployés pour un environnement d'exécution.
 
-Syntax: `list adapters [runtime-name]`
+Syntaxe : `list adapters [runtime-name]`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | Nom de l'environnement d'exécution. |
 
-The `list adapters` command takes the following options after the object.
+La commande `list adapters` accepte les options suivantes après l'objet.
 
 | Option | Description | 
 |--------|-------------|
-| --xml | Produce XML output instead of tabular output. | 
+| --xml | Génère une sortie XML à la place d'une sortie tabulaire. | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 list adapters mfp
 ```
 
-This command is based on the [Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST service.
+Cette commande est basée sur le service REST [Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-).
 
 <br/>
-#### The `deploy adapter` command
+#### Commande `deploy adapter`
 {: #the-deploy-adapter-command }
-The `deploy adapter` command deploys an adapter in a runtime.
+La commande `deploy adapter` déploie un adaptateur dans un environnement d'exécution.
 
-Syntax: `deploy adapter [runtime-name] file`
+Syntaxe : `deploy adapter [runtime-name] file`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
-| file | Binary adapter file (.adapter) |
+| runtime-name | Nom de l'environnement d'exécution. |
+| file | Fichier d'adaptateur binaire (.adapter). |
 
-**Example**
+**Exemple**
 
 ```bash
 deploy adapter mfp MyAdapter.adapter
 ```
 
-This command is based on the [Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST service.
+Cette commande est basée sur le service REST [Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-).
 
 <br/>
-#### The `show adapter` command
+#### Commande `show adapter`
 {: #the-show-adapter-command }
-The `show adapter` command shows details about an adapter.
+La commande `show adapter` affiche les détails relatifs à un adaptateur.
 
-Syntax: `show adapter [runtime-name] adapter-name`
+Syntaxe : `show adapter [runtime-name] adapter-name`
 
-It takes the following arguments.
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
-| adapter-name | Name of an adapter |
+| runtime-name | Nom de l'environnement d'exécution. |
+| adapter-name | Nom d'un adaptateur |
 
-The `show adapter` command takes the following options after the object.
+La commande `show adapter` accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Produce XML output instead of tabular output. |
+| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
 
-**Example**
+**Exemple**
 
 ```bash
 show adapter mfp MyAdapter
 ```
 
-This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+Cette commande est basée sur le service REST [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-).
 
 <br/>
-#### The `delete adapter` command
+#### Commande `delete adapter`
 {: #the-delete-adapter-command }
-The `delete adapter` command removes (undeploys) an adapter from a runtime.
+La commande `delete adapter` retire (annule le déploiement d') un adaptateur d'un environnement d'exécution.
 
-Syntax: `delete adapter [runtime-name] adapter-name`
+Syntaxe : `delete adapter [runtime-name] adapter-name`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| adapter-name | Name of an adapter. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| adapter-name | Nom d'un adaptateur. | 
 
-**Example**
+**Exemple**
 
 ```bash
 delete adapter mfp MyAdapter
 ```
 
-This command is based on the [Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_delete.html?view=kc#Adapter--DELETE-) REST service.
+Cette commande est basée sur le service REST [Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_delete.html?view=kc#Adapter--DELETE-).
 
 <br/>
-#### The `adapter` command prefix
+#### Préfixe de la commande `adapter`
 {: #the-adapter-command-prefix }
-The `adapter` command prefix takes the following arguments before the verb.
+Le préfixe de la commande `adapter` accepte les arguments suivants avant le verbe.
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| adapter-name | Name of an adapter. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| adapter-name | Nom d'un adaptateur. | 
 
 <br/>
-#### The `adapter get binary` command
+#### Commande `adapter get binary`
 {: #the-adapter-get-binary-command }
-The `adapter get binary` command returns the binary adapter file.
+La commande `adapter get binary` renvoie le fichier d'adaptateur binaire.
 
-Syntax: `adapter [runtime-name] adapter-name get binary [> tofile]`
+Syntaxe : `adapter [runtime-name] adapter-name get binary [> tofile]`
 
-It takes the following options after the verb.
+Elle accepte les options suivantes après le verbe.
 
-| Option | Description | Required | Default | 
+| Option | Description | Obligatoire | Par défaut | 
 |--------|-------------|----------|---------|
-| > tofile | Name of the output file. | No | Standard output |
+| > tofile | Nom du fichier de sortie. | Non | Sortie standard |
 
-**Example**
+**Exemple**
 
 ```bash
 adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 ```
 
-This command is based on the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc).
 
 <br/>
-#### The `adapter show user-config` command
+#### Commande `adapter show user-config`
 {: #the-adapter-show-user-config-command }
-The `adapter show user-config` command shows the user configuration of the adapter.
+La commande `adapter show user-config` affiche la configuration utilisateur de l'adaptateur.
 
-Syntax: `adapter [runtime-name] adapter-name show user-config [--xml]`
+Syntaxe : `adapter [runtime-name] adapter-name show user-config [--xml]`
 
-It takes the following options after the verb.
+Elle accepte les options suivantes après le verbe.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Produces output in XML format instead of JSON format. | 
+| --xml | Génère une sortie au format XML à la place du format JSON. | 
 
-**Example**
+**Exemple**
 
 ```bash
 adapter mfp MyAdapter show user-config
 ```
 
-This command is based on the [Adapter Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST service.
+Cette commande est basée sur le service REST [Adapter Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-).
 
 <br/>
-#### The `adapter set user-config` command
+#### Commande `adapter set user-config`
 {: #the-adapter-set-user-config-command }
-The `adapter set user-config` command specifies the user configuration of the adapter or a single property within this configuration.
+La commande `adapter set user-config` spécifie la configuration utilisateur de l'adaptateur ou une propriété de cette configuration.
 
-Syntax for the entire configuration: `adapter [runtime-name] adapter-name set user-config file`
+Syntaxe pour l'ensemble de la configuration : `adapter [runtime-name] adapter-name set user-config file`
 
-It takes the following arguments after the verb.
+Elle accepte les arguments suivants après le verbe.
 
 | Option | Description | 
 |--------|-------------|
-| file | Name of the JSON or XML file that contains the new configuration. |
+| file | Nom du fichier JSON ou XML contenant la nouvelle configuration. |
 
-Syntax for a single property: `adapter [runtime-name] adapter-name set user-config property = value`
+Syntaxe pour une propriété : `adapter [runtime-name] adapter-name set user-config property = value`
 
-It takes the following arguments after the verb.
+Elle accepte les arguments suivants après le verbe.
 
 | Option | Description |
 |--------|-------------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | 
-| value | The value of the property. | 
+| property | Nom de la propriété JSON. Pour une propriété imbriquée, utilisez la syntaxe prop1.prop2.....propN. Pour un élément de tableau JSON, utilisez l'index à la place d'un nom de propriété. | 
+| value | Valeur de la propriété. | 
 
-**Examples**
+**Exemples**
 
 ```bash
 adapter mfp MyAdapter set user-config myconfig.json
@@ -600,325 +600,325 @@ adapter mfp MyAdapter set user-config myconfig.json
 adapter mfp MyAdapter set user-config timeout = 240
 ```
 
-This command is based on the [Adapter configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_put.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Adapter configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_put.html?view=kc).
 
-### Commands for apps
+### Commandes pour applications
 {: #commands-for-apps }
-When you invoke the **mfpadm** program, you can include various commands for apps.
+Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes commandes pour applications.
 
-#### The `list apps` command
+#### Commande `list apps`
 {: #the-list-apps-command }
-The `list apps` command returns a list of the apps that are deployed in a runtime.
+La commande `list apps` renvoie la liste des applications déployées dans un environnement d'exécution.
 
-Syntax: `list apps [runtime-name]`
+Syntaxe : `list apps [runtime-name]`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | Nom de l'environnement d'exécution. |
 
-The `list apps` command takes the following options after the object.
+La commande `list apps` accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml | Produce XML output instead of tabular output. |
+| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
 
-**Example**
+**Exemple**
 
 ```bash
 list apps mfp
 ```
 
-This command is based on the [Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST service.
+Cette commande est basée sur le service REST [Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-).
 
-#### The `deploy app` command
+#### Commande `deploy app`
 {: #the-deploy-app-command }
-The `deploy app` command deploys an app version in a runtime.
+La commande `deploy app` déploie une version d'application dans un environnement d'exécution.
 
-Syntax: `deploy app [runtime-name] file`
+Syntaxe : `deploy app [runtime-name] file`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
-| file | The application descriptor, a JSON file. |
+| runtime-name | Nom de l'environnement d'exécution. |
+| file | Descripteur d'application, fichier JSON. |
 
-**Example**
+**Exemple**
 
 ```bash
 deploy app mfp MyApp/application-descriptor.json
 ```
 
-This command is based on the [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST service.
+Cette commande est basée sur le service REST [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-).
 
-#### The `show app` command
+#### Commande `show app`
 {: #the-show-app-command }
-The `show app` command shows details about an app in a runtime, in particular its environments and versions.
+La commande `show app` affiche les détails relatifs à une application dans un environnement d'exécution, notamment ses environnements et ses versions.
 
-Syntax: `show app [runtime-name] app-name`
+Syntaxe : `show app [runtime-name] app-name`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| app-name | Nom d'une application. | 
 
-The `show app` command takes the following options after the object.
+La commande `show app` accepte les options suivantes après l'objet.
 
 | Option | Description |
 |--------|-------------|
-| --xml	 | Produce XML output instead of tabular output. |
+| --xml	 | Génère une sortie XML à la place d'une sortie tabulaire. |
 
-**Example**
+**Exemple**
 
 ```bash
 show app mfp MyApp
 ```
 
-This command is based on the [Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST service.
+Cette commande est basée sur le service REST [Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-).
 
-#### The `delete app` command
+#### Commande `delete app`
 {: #the-delete-app-command }
-The `delete app` command removes (undeploys) an app, from all environments and all versions, from a runtime.
+La commande `delete app` retire (annule le déploiement d') une application, de tous les environnements et de toutes les versions, d'un environnement d'exécution.
 
-Syntax: `delete app [runtime-name] app-name`
+Syntaxe : `delete app [runtime-name] app-name`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| app-name | Nom d'une application. | 
 
-**Example**
+**Exemple**
 
 ```bash
 delete app mfp MyApp
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+Cette commande est basée sur le service REST [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-).
 
-#### The `show app version` command
+#### Commande `show app version`
 {: #the-show-app-version-command }
-The `show app version` command show details about an app version in a runtime.
+La commande `show app version` affiche les détails relatifs à une version d'application dans un environnement d'exécution.
 
-Syntax: `show app version [runtime-name] app-name environment version`
+Syntaxe : `show app version [runtime-name] app-name environment version`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform. | 
-| version | Version of the app. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| app-name | Nom d'une application. | 
+| environment | Plateforme mobile. | 
+| version | Version de l'application. | 
 
-The `show app version` command takes the following options after the object.
+La commande `show app version` accepte les options suivantes après l'objet.
 
 | Argument | Description | 
 | ---------|-------------|
-| -- xml | Produces XML output instead of tabular output. | 
+| -- xml | Génère une sortie XML à la place d'une sortie tabulaire. | 
 
-**Example**
+**Exemple**
 
 ```bash
 show app version mfp MyApp iPhone 1.1
 ```
 
-This command is based on the [Application Version (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST service.
+Cette commande est basée sur le service REST [Application Version (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-).
 
-#### The `delete app version` command
+#### Commande `delete app version`
 {: #the-delete-app-version-command }
-The `delete app version` command removes (undeploys) an app version from a runtime.
+La commande `delete app version` retire (annule le déploiement d') une version d'application d'un environnement d'exécution.
 
-Syntax: `delete app version [runtime-name] app-name environment version`
+Syntaxe : `delete app version [runtime-name] app-name environment version`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform. | 
-| version | Version of the app. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| app-name | Nom d'une application. | 
+| environment | Plateforme mobile. | 
+| version | Version de l'application. | 
 
-**Example**
+**Exemple**
 
 ```bash
 delete app version mfp MyApp iPhone 1.1
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+Cette commande est basée sur le service REST [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-).
 
-#### The `app` command prefix
+#### Préfixe de la commande `app`
 {: #the-app-command-prefix }
-The `app` command prefix takes the following arguments before the verb.
+Le préfixe de la commande `app` accepte les arguments suivants avant le verbe.
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| app-name | Nom d'une application. | 
 
-#### The `app show license-config` command
+#### Commande `app show license-config`
 {: #the-app-show-license-config-command }
-The `app show license-config` command shows the token license configuration of an app.
+La commande `app show license-config` affiche la configuration de licence de jeton d'une application.
 
-Syntax: `app [runtime-name] app-name show license-config`
+Syntaxe : `app [runtime-name] app-name show license-config`
 
-It takes the following options after the object:
+Elle accepte les options suivantes après l'objet :
 
 | Argument | Description | 
 |----------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Génère une sortie XML à la place d'une sortie tabulaire. | 
 
-**Example**
+**Exemple**
 
 ```bash
 app mfp MyApp show license-config
 ```
 
-This command is based on the [Application license configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Application license configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc).
 
-#### The `app set license-config` command
+#### Commande `app set license-config`
 {: #the-app-set-license-config-command }
-The `app set license-config` command specifies the token license configuration of an app.
+La commande `app set license-config` spécifie la configuration de licence de jeton d'une application.
 
-Syntax: `app [runtime-name] app-name set license-config app-type license-type`
+Syntaxe : `app [runtime-name] app-name set license-config app-type license-type`
 
-It takes the following arguments after the verb.
+Elle accepte les arguments suivants après le verbe.
 
 | Argument | Description | 
 |----------|-------------|
-| appType | Type of app: B2C or B2E. | 
-| licenseType | Type of application: APPLICATION or ADDITIONAL_BRAND_DEPLOYMENT or NON_PRODUCTION. | 
+| appType | Type d'application : B2C ou B2E. | 
+| licenseType | Type d'application : APPLICATION ou ADDITIONAL_BRAND_DEPLOYMENT ou NON_PRODUCTION. | 
 
-**Example**
+**Exemple**
 
 ```bash
 app mfp MyApp iPhone 1.1 set license-config B2E APPLICATION
 ```
 
-This command is based on the [Application License Configuration (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Application License Configuration (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc).
 
-#### The `app delete license-config` command
+#### Commande `app delete license-config`
 {: #the-app-delete-license-config-command }
-The `app delete license-config` command resets the token license configuration of an app, that is, reverts it to the initial state.
+La commande `app delete license-config` réinitialise la configuration de licence de jeton d'une application, autrement dit, elle rétablit son état initial.
 
-Syntax: `app [runtime-name] app-name delete license-config`
+Syntaxe : `app [runtime-name] app-name delete license-config`
 
-**Example**
+**Exemple**
 
 ```bash
 app mfp MyApp iPhone 1.1 delete license-config
 ```
 
-This command is based on the [License configuration (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST service.
+Cette commande est basée sur le service REST [License configuration (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-).
 
-#### The `app version` command prefix
+#### Préfixe de la commande `app version`
 {: #the-app-version-command-prefix }
-The `app version` command prefix takes the following arguments before the verb.
+Le préfixe de la commande `app version` accepte les arguments suivants avant le verbe.
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform | 
-| version | Version of the app | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| app-name | Nom d'une application. | 
+| environment | Plateforme mobile | 
+| version | Version de l'application | 
 
-#### The `app version get descriptor` command
+#### Commande `app version get descriptor`
 {: #the-app-version-get-descriptor-command }
-The `app version get descriptor` command returns the application descriptor of a version of an app.
+La commande `app version get descriptor` renvoie le descripteur d'application d'une version d'une application.
 
-Syntax: `app version [runtime-name] app-name environment version get descriptor [> tofile]`
+Syntaxe : `app version [runtime-name] app-name environment version get descriptor [> tofile]`
 
-It takes the following arguments after the verb.
+Elle accepte les arguments suivants après le verbe.
 
-| Argument | Description | Required | Default | 
+| Argument | Description | Obligatoire | Par défaut | 
 |----------|-------------|----------|---------|
-| > tofile | Name of the output file. | No | Standard output | 
+| > tofile | Nom du fichier de sortie. | Non | Sortie standard | 
 
-**Example**
+**Exemple**
 
 ```bash
 app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descriptor.json
 ```
 
-This command is based on the [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST service.
+Cette commande est basée sur le service REST [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-).
 
-#### The `app version get web-resources` command
+#### Commande `app version get web-resources`
 {: #the-app-version-get-web-resources-command }
-The `app version get web-resources` command returns the web resources of a version of an app, as a .zip file.
+La commande `app version get web-resources` renvoie les ressources Web d'une version d'une application sous la forme d'un fichier .zip.
 
-Syntax: `app version [runtime-name] app-name environment version get web-resources [> tofile]`
+Syntaxe : `app version [runtime-name] app-name environment version get web-resources [> tofile]`
 
-It takes the following arguments after the verb.
+Elle accepte les arguments suivants après le verbe.
 
-| Argument | Description | Required | Default | 
+| Argument | Description | Obligatoire | Par défaut | 
 |----------|-------------|----------|---------|
-| > tofile | Name of the output file. | No | Standard output | 
+| > tofile | Nom du fichier de sortie. | Non | Sortie standard | 
 
-**Example**
+**Exemple**
 
 ```bash
 app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 ```
 
-This command is based on the [Retrieve Web Resource (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST service.
+Cette commande est basée sur le service REST [Retrieve Web Resource (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-).
 
-#### The `app version set web-resources` command
+#### Commande `app version set web-resources`
 {: #the-app-version-set-web-resources-command }
-The `app version set web-resources` command specifies the web resources for a version of an app.
+La commande `app version set web-resources` spécifie les ressources Web d'une version d'une application.
 
-Syntax: `app version [runtime-name] app-name environment version set web-resources file`
+Syntaxe : `app version [runtime-name] app-name environment version set web-resources file`
 
-It takes the following arguments after the verb.
+Elle accepte les arguments suivants après le verbe.
 
-| Argument | Description | 
-| file | Name of the input file (must be a .zip file). | 
+| Argument | Description |
+| file | Nom du fichier d'entrée (il doit s'agit d'un fichier .zip). | 
 
-**Example**
+**Exemple**
 
 ```bash
 app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 ```
 
-This command is based on the [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST service.
+Cette commande est basée sur le service REST [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-).
 
-#### The `app version get authenticity-data` command
+#### Commande `app version get authenticity-data`
 {: #the-app-version-get-authenticity-data-command }
-The `app version get authenticity-data` command returns the authenticity data of a version of an app.
+La commande `app version get authenticity-data` renvoie les données d'authenticité d'une version d'une application.
 
-Syntax: `app version [runtime-name] app-name environment version get authenticity-data [> tofile]`
+Syntaxe : `app version [runtime-name] app-name environment version get authenticity-data [> tofile]`
 
-It takes the following arguments after the verb.
+Elle accepte les arguments suivants après le verbe.
 
-| Argument | Description | Required | Default | 
-| > tofile | Name of the output file. | No | Standard output | 
+| Argument | Description | Obligatoire | Par défaut |
+| > tofile | Nom du fichier de sortie. | Non | Sortie standard | 
 
-**Example**
+**Exemple**
 
 ```bash
 app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity_data
 ```
 
-This command is based on the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc).
 
-#### The `app version set authenticity-data` command
+#### Commande `app version set authenticity-data`
 {: #the-app-version-set-authenticity-data-command }
-The `app version set authenticity-data` command specifies the authenticity data for a version of an app.
+La commande `app version set authenticity-data` spécifie les données d'authenticité d'une version d'une application.
 
-Syntax: `app version [runtime-name] app-name environment version set authenticity-data file`
+Syntaxe : `app version [runtime-name] app-name environment version set authenticity-data file`
 
-It takes the following arguments after the verb.
+Elle accepte les arguments suivants après le verbe.
 
 | Argument | Description | 
 |----------|-------------|
-| file | Name of the input file:<ul><li>Either a .authenticity_data file,</li><li>Or a device file (.ipa or .apk or .appx), from which the authenticity data is extracted.</li></ul>| 
+| file | Nom du fichier d'entrée :<ul><li>Fichier .authenticity_data</li><li>ou fichier de terminal (.ipa, .apk ou .appx) à partir duquel les données d'authenticité sont extraites.</li></ul>| 
 
-**Examples**
+**Exemples**
 
 ```bash
 app version mfp MyApp iPhone 1.1 set authenticity-data /tmp/MyApp.authenticity_data
@@ -932,64 +932,64 @@ app version mfp MyApp iPhone 1.1 set authenticity-data MyApp.ipa
 app version mfp MyApp android 1.1 set authenticity-data MyApp.apk
 ```
 
-This command is based on the [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc).
 
-#### The `app version delete authenticity-data` command
+#### Commande `app version delete authenticity-data`
 {: #the-app-version-delete-authenticity-data-command }
-The `app version delete authenticity-data` command deletes the authenticity data for a version of an app.
+La commande `app version delete authenticity-data` supprime les données d'authenticité d'une version d'une application.
 
-Syntax: `app version [runtime-name] app-name environment version delete authenticity-data`
+Syntaxe : `app version [runtime-name] app-name environment version delete authenticity-data`
 
-**Example**
+**Exemple**
 
 ```bash
 app version mfp MyApp iPhone 1.1 delete authenticity-data
 ```
 
-This command is based on the [Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc).
 
-#### The `app version show user-config` command
+#### Commande `app version show user-config`
 {: #the-app-version-show-user-config-command }
-The `app version show user-config` command shows the user configuration of a version of an app.
+La commande `app version show user-config` affiche la configuration utilisateur d'une version d'une application.
 
-Syntax: `app version [runtime-name] app-name environment version show user-config [--xml]`
+Syntaxe : `app version [runtime-name] app-name environment version show user-config [--xml]`
 
-It takes the following options after the verb.
+Elle accepte les options suivantes après le verbe.
 
-| Argument | Description | Required | Default | 
+| Argument | Description | Obligatoire | Par défaut | 
 |----------|-------------|----------|---------|
-| [--xml] | Produce output in XML format instead of JSON format. | No | Standard output | 
+| [--xml] | Génère une sortie au format XML à la place du format JSON. | Non | Sortie standard | 
 
-**Example**
+**Exemple**
 
 ```bash
 app version mfp MyApp iPhone 1.1 show user-config
 ```
 
-This command is based on the [Application Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST service.
+Cette commande est basée sur le service REST [Application Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-).
 
-### The `app version set user-config` command
+### Commande `app version set user-config`
 {: #the-app-version-set-user-config-command }
-The `app version set user-config` command specifies the user configuration for a version of an app or a single property among this configuration.
+La commande `app version set user-config` spécifie la configuration utilisateur d'une version d'une application ou une propriété de cette configuration.
 
-Syntax for the entire configuration: `app version [runtime-name] app-name environment version set user-config file`
+Syntaxe pour l'ensemble de la configuration : `app version [runtime-name] app-name environment version set user-config file`
 
-It takes the following arguments after the verb.
-
-| Argument | Description | 
-|----------|-------------|
-| file | Name of the JSON or XML file that contains the new configuration. | 
-
-Syntax for a single property: `app version [runtime-name] app-name environment version set user-config property = value`
-
-The `app version set user-config` command takes the following arguments after the verb.
+Elle accepte les arguments suivants après le verbe.
 
 | Argument | Description | 
 |----------|-------------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | 
-| value | The value of the property. | 
+| file | Nom du fichier JSON ou XML contenant la nouvelle configuration. | 
 
-**Examples**
+Syntaxe pour une propriété : `app version [runtime-name] app-name environment version set user-config property = value`
+
+La commande `app version set user-config` accepte les arguments suivants après le verbe.
+
+| Argument | Description | 
+|----------|-------------|
+| property | Nom de la propriété JSON. Pour une propriété imbriquée, utilisez la syntaxe prop1.prop2.....propN. Pour un élément de tableau JSON, utilisez l'index à la place d'un nom de propriété. | 
+| value | Valeur de la propriété. | 
+
+**Exemples**
 
 ```bash
 app version mfp MyApp iPhone 1.1 set user-config /tmp/MyApp-config.json
@@ -999,32 +999,32 @@ app version mfp MyApp iPhone 1.1 set user-config /tmp/MyApp-config.json
 app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 ```
 
-This command is based on the [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc).
 
-### Commands for devices
+### Commandes pour terminaux
 {: #commands-for-devices }
-When you invoke the **mfpadm** program, you can include various commands for devices.
+Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes commandes pour terminaux.
 
-#### The `list devices` command
+#### Commande `list devices`
 {: #the-list-devices-command }
-The `list devices` command returns the list of devices that have contacted the apps of a runtime.
+La commande `list devices` renvoie la liste des terminaux ayant contacté les applications d'un environnement d'exécution.
 
-Syntax: `list devices [runtime-name] [--query query]`
+Syntaxe : `list devices [runtime-name][--query query]`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| query | A friendly name or user identifier, to search for. This parameter specifies a string to search for. All devices that have a friendly name or user identifier that contains this string (with case-insensitive matching) are returned. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| query | Nom usuel ou identificateur utilisateur à rechercher. Ce paramètre spécifie une chaîne à rechercher. Tous les terminaux possédant un nom usuel ou un identificateur utilisateur contenant cette chaîne (avec une correspondance insensible à la casse) sont renvoyés. | 
 
-The `list devices` command takes the following options after the object.
+La commande `list devices` accepte les options suivantes après l'objet.
 
 | Option | Description | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Génère une sortie XML à la place d'une sortie tabulaire. | 
 
-**Examples**
+**Exemples**
 
 ```bash
 list-devices mfp
@@ -1034,179 +1034,179 @@ list-devices mfp
 list-devices mfp --query=john
 ```
 
-This command is based on the [Devices (GET) REST](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) service.
+Cette commande est basée sur le service [Devices (GET) REST](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-).
 
-#### The `remove device` command
+#### Commande `remove device`
 {: #the-remove-device-command }
-The `remove device` command clears the record about a device that has contacted the apps of a runtime.
+La commande `remove device` efface l'enregistrement relatif à un terminal ayant contacté les applications d'un environnement d'exécution.
 
-Syntax: `remove device [runtime-name] id`
+Syntaxe : `remove device [runtime-name] id`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| id | Unique device identifier. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| id | Identificateur unique de terminal. | 
 
-**Example**
+**Exemple**
 
 ```bash
 remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 ```
 
-This command is based on the [Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST service.
+Cette commande est basée sur le service REST [Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-).
 
-#### The `device` command prefix
+#### Préfixe de la commande `device`
 {: #the-device-command-prefix }
-The `device` command prefix takes the following arguments before the verb.
+Le préfixe de la commande `device` accepte les arguments suivants avant le verbe.
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| id | Unique device identifier. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| id | Identificateur unique de terminal. | 
 
-#### The `device set status` command
+#### Commande `device set status`
 {: #the-device-set-status-command }
-The `device set status` command changes the status of a device, in the scope of a runtime.
+La commande `device set status` modifie le statut d'un terminal, dans la limite de la portée d'un environnement d'exécution.
 
-Syntax: `device [runtime-name] id set status new-status`
+Syntaxe : `device [runtime-name] id set status new-status`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| new-status | New status. | 
+| new-status | Nouveau statut. | 
 
-The status can have one of the following values:
+Les valeurs de statut possibles sont les suivantes :
 
-* ACTIVE
-* LOST
-* STOLEN
-* EXPIRED
-* DISABLED
+* ACTIF
+* PERDU
+* VOLE
+* ARRIVE A EXPIRATION
+* DESACTIVE
 
-**Example**
+**Exemple**
 
 ```bash
 device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED
 ```
 
-This command is based on the [Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST service.
+Cette commande est basée sur le service REST [Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-).
 
-#### The `device set appstatus` command
+#### Commande `device set appstatus`
 {: #the-device-set-appstatus-command }
-The `device set appstatus` command changes the status of a device, regarding an app in a runtime.
+La commande `device set appstatus` modifie le statut d'un terminal concernant une application d'un environnement d'exécution.
 
-Syntax: `device [runtime-name] id set appstatus app-name new-status`
+Syntaxe : `device [runtime-name] id set appstatus app-name new-status`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| app-name | Name of an app. | 
-| new-status | New status. | 
+| app-name | Nom d'une application. | 
+| new-status | Nouveau statut. | 
 
-The status can have one of the following values:
+Les valeurs de statut possibles sont les suivantes :
 
-* ENABLED
-* DISABLED
+* ACTIVE
+* DESACTIVE
 
 
-**Example**
+**Exemple**
 
 ```xml
 device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 ```
 
-This command is based on the [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST service.
+Cette commande est basée sur le service REST [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-).
 
-### Commands for troubleshooting
+### Commandes de traitement des incidents
 {: #commands-for-troubleshooting }
-When you invoke the **mfpadm** program, you can include various commands for troubleshooting.
+Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes commandes de traitement des incidents.
 
-#### The `show info` command
+#### Commande `show info`
 {: #the-show-info-command }
-The `show info` command shows basic information about the {{ site.data.keys.product_adj }} administration services that can be returned without accessing any runtime nor database. This command can be used to test whether the {{ site.data.keys.product_adj }} administration services are running at all.
+La commande `show info` affiche des informations de base sur les services d'administration de {{site.data.keys.product_adj }} pouvant être renvoyées sans accéder à aucun environnement d'exécution ni à aucune base de données. Cette commande permet de vérifier si les services d'administration de {{site.data.keys.product_adj }} sont en cours d'exécution.
 
-Syntax: `show info`
+Syntaxe : `show info`
 
-It takes the following options after the object.
+Elle accepte les options suivantes après l'objet.
 
 | Option | Description | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. |
+| --xml | Génère une sortie XML à la place d'une sortie tabulaire. |
 
-**Example**
+**Exemple**
 
 ```bash
 show info
 ```
 
-#### The `show versions` command
+#### Commande `show versions`
 {: #the-show-versions-command }
-The `show versions` command displays the {{ site.data.keys.product_adj }} versions of various components:
+La commande `show versions` affiche les versions {{site.data.keys.product_adj }} de différents composants :
 
-* **mfpadmVersion**: the exact {{ site.data.keys.mf_server }} version number from **which mfp-ant-deployer.jar** is taken.
-* **productVersion**: the exact {{ site.data.keys.mf_server }} version number from which **mfp-admin-service.war** is taken
-* **mfpAdminVersion**: the exact build version number of **mfp-admin-service.war** alone.
+* **mfpadmVersion** : numéro de version {{site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-ant-deployer.jar**.
+* **productVersion** : numéro de version {{site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-admin-service.war**.
+* **mfpAdminVersion** : numéro de version de génération exact du fichier **mfp-admin-service.war**.
 
-Syntax: `show versions`
+Syntaxe : `show versions`
 
-It takes the following options after the object.
+Elle accepte les options suivantes après l'objet.
 
 | Option | Description | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Génère une sortie XML à la place d'une sortie tabulaire. | 
 
-**Example**
+**Exemple**
 
 ```bash
 show versions
 ```
 
-#### The `show diagnostics` command
+#### Commande `show diagnostics`
 {: #the-show-diagnostics-command }
-The `show diagnostics` command shows the status of various components that are necessary for the correct operation of the {{ site.data.keys.product_adj }} administration service, such as the availability of the database and of auxiliary services.
+La commande `show diagnostics` affiche le statut des différents composants nécessaires pour assurer le fonctionnement correct du service d'administration de {{site.data.keys.product_adj }}, par exemple, la disponibilité de la base de données et des services secondaires.
 
-Syntax: `show diagnostics`
+Syntaxe : `show diagnostics`
 
-It takes the following options after the object.
+Elle accepte les options suivantes après l'objet.
 
 | Option | Description | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Génère une sortie XML à la place d'une sortie tabulaire. | 
 
-**Example**
+**Exemple**
 
 ```bash
 show diagnostics
 ```
 
-#### The `unlock` command
+#### Commande `unlock`
 {: #the-unlock-command }
-The `unlock` command releases the general-purpose lock. Some destructive operations take this lock in order to prevent concurrent modification of the same configuration data. In rare cases, if such an operation is interrupted, the lock might remain in locked state, making further destructive operations impossible. Use the unlock command to release the lock in such situations.
+La commande `unlock` libère le verrou général. Certaines opérations de destruction utilisent ce verrou afin d'empêcher la modification simultanée des mêmes données de configuration. Dans de rares cas, si une opération de ce type est interrompue, le verrou peut rester à l'état verrouillé, rendant toute autre opération de suppression impossible. Utilisez la commande unlock pour libérer le verrou dans ces cas-là.
 
-**Example**
+**Exemple**
 
 ```bash
 unlock
 ```
 
-#### The `list runtimes` command
+#### Commande `list runtimes`
 {: #the-list-runtimes-command }
-The `list runtimes` command returns a list of the deployed runtimes.
+La commande `list runtimes` renvoie la liste des environnements d'exécution déployés.
 
-Syntax: `list runtimes [--in-database]`
+Syntaxe : `list runtimes [--in-database]`
 
-It takes the following options:
+Elle accepte les options suivantes :
 
 | Option | Description | 
 |--------|-------------|
-| --in-database	| Whether to look in the database instead of via MBeans | 
-| --xml | Produces XML output instead of tabular output. | 
+| --in-database	| Indique si la recherche doit porter sur la base de données et non sur les beans gérés. | 
+| --xml | Génère une sortie XML à la place d'une sortie tabulaire. | 
 
-**Examples**
+**Exemples**
 
 ```bash
 list runtimes
@@ -1216,104 +1216,104 @@ list runtimes
 list runtimes --in-database
 ```
 
-This command is based on the [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST service.
+Cette commande est basée sur le service REST [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-).
 
-#### The `show runtime` command
+#### Commande `show runtime`
 {: #the-show-runtime-command }
-The `show runtime` command shows information about a given deployed runtime.
+La commande `show runtime` affiche des informations sur un environnement d'exécution déployé spécifique.
 
-Syntax: `show runtime [runtime-name]`
+Syntaxe : `show runtime [runtime-name]`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
 
-The `show runtime` command takes the following options after the object.
+La commande `show runtime` accepte les options suivantes après l'objet.
 
 | Option | Description | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Génère une sortie XML à la place d'une sortie tabulaire. | 
 
-This command is based on the [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST service.
+Cette commande est basée sur le service REST [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-).
 
-**Example**
+**Exemple**
 
 ```bash
 show runtime mfp
 ```
 
-#### The `delete runtime` command
+#### Commande `delete runtime`
 {: #the-delete-runtime-command }
-The `delete runtime` command deletes a runtime, including its apps and adapters, from the database. You can delete a runtime only when its web application is stopped.
+La commande `delete runtime` supprime un environnement d'exécution, y compris ses applications et adaptateurs, de la base de données. Vous ne pouvez supprimer un environnement d'exécution que lorsque son application Web est arrêtée.
 
-Syntax: `delete runtime [runtime-name] condition`
+Syntaxe : `delete runtime [runtime-name] condition`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| condition | Condition when to delete it: empty or always. **Attention:** The always option is dangerous. |
+| runtime-name | Nom de l'environnement d'exécution. | 
+| condition | Condition dans laquelle supprimer l'environnement d'exécution : empty ou always. **Attention :** L'utilisation de l'option always est dangereuse. |
 
-**Example**
+**Exemple**
 
 ```bash
 delete runtime mfp empty
 ```
 
-This command is based on the [Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST service.
+Cette commande est basée sur le service REST [Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-).
 
-#### The `list farm-members` command
+#### Commande `list farm-members`
 {: #the-list-farm-members-command }
-The `list farm-members` command returns a list of the farm member servers on which a given runtime is deployed.
+La commande `list farm-members` renvoie une liste de serveurs membres d'un parc de serveurs sur lesquels un environnement d'exécution donné est déployé.
 
-Syntax: `list farm-members [runtime-name]`
+Syntaxe : `list farm-members [runtime-name]`
 
-It takes the following arguments:
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
 
-The `list farm-members` command takes the following options after the object.
+La commande `list farm-members` accepte les options suivantes après l'objet.
 
 | Option | Description | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | Génère une sortie XML à la place d'une sortie tabulaire. | 
 
-**Example**
+**Exemple**
 
 ```bash
 list farm-members mfp
 ```
 
-This command is based on the [Farm topology members (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST service.
+Cette commande est basée sur le service REST [Farm topology members (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-).
 
-#### The `remove farm-member` command
+#### Commande `remove farm-member`
 {: #the-remove-farm-member-command }
-The `remove farm-member` command removes a server from the list of farm members on which the specified runtime is deployed. Use this command when the server has become unavailable or disconnected.
+La commande `remove farm-member` retire un serveur de la liste de membres d'un parc de serveurs sur lesquels l'environnement d'exécution spécifié est déployé. Utilisez cette commande si le serveur est devenu non disponible ou a été déconnecté.
 
-Syntax: `remove farm-member [runtime-name] server-id`
+Syntaxe : `remove farm-member [runtime-name] server-id`
 
-It takes the following arguments.
+Elle accepte les arguments suivants :
 
 | Argument | Description | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| server-id | Identifier of the server. | 
+| runtime-name | Nom de l'environnement d'exécution. | 
+| server-id | Identificateur du serveur. | 
 
-The `remove farm-member` command takes the following options after the object.
+La commande `remove farm-member` accepte les options suivantes après l'objet.
 
 | Option | Description | 
 |--------|-------------|
-| --force | Force removal of a farm member, even if it is available and connected. | 
+| --force | Forcer le retrait d'un membre d'un parc de serveurs même s'il est disponible et connecté. | 
 
-**Example**
+**Exemple**
 
 ```bash
 remove farm-member mfp srvlx15
 ```
 
-This command is based on the [Farm topology members (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Farm topology members (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc).

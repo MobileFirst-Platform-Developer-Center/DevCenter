@@ -7,7 +7,7 @@ weight: 3
 <br/>
 Examinez attentivement la façon dont les éléments des fonctions et des API supprimées affectent votre environnement {{site.data.keys.product_full }}.
 
-#### Aller à
+#### Accéder à
 {: #jump-to }
 * [Fonctions abandonnées et fonctions qui ne font pas partie de la version 8.0](#dicontinued-features-and-features-that-are-not-included-in-v-80)
 * [Modifications des API côté serveur](#server-side-api-changes)
@@ -285,7 +285,7 @@ Cet ensemble d'API n'est plus pris en charge en v8.0.
 | `WL.Client.setUserPref(key,value, options)`, `WL.Client.setUserPrefs(userPrefsHash, options)`, `WL.Client.deleteUserPrefs(key, options)` | Pas de remplacement. Vous pouvez utiliser un adaptateur et l'API `MFP.Server.getAuthenticatedUser` pour gérer des préférences d'utilisateur. | 
 | `WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` | Pas de remplacement. |
 | `WL.Client.logActivity(activityType)` | Utilisez `WL.Logger`. | 
-| `WL.Client.login(realm, options)` | Utilisez `WLAuthorizationManager.login`. Pour vous initier à l'authentification et à la sécurité, voir la rubrique Tutoriels d'authentification et de sécurité. |
+| `WL.Client.login(realm, options)` | Utilisez `WLAuthorizationManager.login`. Pour vous initier à l'authentification et à la sécurité, voir les tutoriels de la rubrique Authentication and Security. |
 | `WL.Client.logout(realm, options)` | Utilisez `WLAuthorizationManager.logout`. | 
 | `WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` | Utilisez `WLAuthorizationManager.obtainAccessToken`. |
 | `WL.Client.transmitEvent(event, immediate)`, `WL.Client.purgeEventTransmissionBuffer()`, `WL.Client.setEventTransmissionPolicy(policy)` | Créez un adaptateur personnalisé pour recevoir des notifications de ces événements. |

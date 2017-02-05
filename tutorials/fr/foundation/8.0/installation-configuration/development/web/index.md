@@ -1,94 +1,116 @@
 ---
 layout: tutorial
-title: Setting up the web development environment
+title: Configuration de l'environnement de développement Web
 breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-Developing and testing web applications is as easy as previewing a local HTML file in your web browser of choice.  
-Developers can use their IDE of choice, and any framework(s) that suits their needs.
+Il est aussi facile de développer et de tester des applications Web que de
+prévisualiser un fichier HTML local dans le navigateur Web de votre choix.   
+Les développeurs peuvent utiliser l'environnement de développement intégré de leur
+choix et toute infrastructure adaptée à leurs besoins. 
 
-However one thing may stand in the way of developing web applications. Web applications might encounter errors due to [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation. Same-origin policy is a restriction imposed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access content that is available on another server, or for that matter, from the {{ site.data.keys.mf_server }}.
+Toutefois, un problème peut survenir lors du développement d'applications Web. Les
+applications Web peuvent rencontrer des erreurs en raison de la violation de la
+[règle
+same-origin](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy). Il s'agit d'une restriction imposée aux navigateurs Web.
+Par exemple, si une application est hébergée dans le domaine
+**example.com**, elle ne peut pas accéder à un contenu disponible
+sur un autre serveur ou sur {{site.data.keys.mf_server }}.
 
-[Web apps that are to use the {{ site.data.keys.product }} web SDK](../../../application-development/sdk/web) should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
+[Les applications Web devant
+utiliser le logiciel SDK Web de {{site.data.keys.product }}](../../../application-development/sdk/web) doivent être
+gérées dans une topologie de support, par exemple à l'aide d'un proxy inverse
+afin de rediriger les demandes en interne vers le serveur approprié tout en conservant la
+même origine unique. 
 
-The policy requirements can be satisfied by using either of the following methods:
+Vous pouvez satisfaire les exigences dictées par la règle en appliquant l'une
+des
+méthodes suivantes : 
 
-- Serving the web application resources' from the same WebSphere Full/Liberty profile application server that also hosts the {{ site.data.keys.mf_server }}.
-- Using Node.js as a proxy to redirect application requests to the {{ site.data.keys.mf_server }}.
+- En traitant les ressources d'application Web depuis le serveur
+d'applications WebSphere de profil complet ou Liberty qui héberge {{site.data.keys.mf_server }}.
+- En utilisant Node.js comme proxy pour rediriger les demandes d'application vers {{site.data.keys.mf_server }}.
 
-#### Jump to
-{: #jump-to }
-- [Prerequisites](#prerequisites)
-- [Using WebSphere Liberty profile to serve the web application resources](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
-- [Using Node.js](#using-nodejs)
-- [Next Steps](#next-steps)
+<br/>
+**Prérequis :**  
+Apache Maven ou Node.js doit être installé sur le poste de travail du
+développeur.   
+Pour des instructions, voir le
+[guide d'installation](../mobilefirst/installation-guide/).
 
-## Prerequisites
-{: #prerequisites }
--   {: #web-app-supported-browsers }
-    Web applications are supported for the following browser versions. The version numbers indicate the earliest fully supported version of the respective browser.
-
-    | Browser               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android Browser   |
-    |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
-    | **Supported Version** |  {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
-
-    <sup>*</sup> In Safari, private browsing mode is supported only for single-page applications (SPAs). Other applications might exhibit unexpected behavior.
-
-    {% comment %} [sharonl] [c-web-browsers-ms-edge] See information regarding Microsoft Edge support in Task 111165. {% endcomment %}
-
--   The following setup instructions require either Apache Maven or Node.js installed on the developer's workstation. For further instructions, see the [installation guide](../mobilefirst/installation-guide/).
-
-## Using WebSphere Liberty profile to serve the web application resources
+## Utilisation du profil Liberty de WebSphere pour traiter les ressources
+d'application Web 
 {: #using-websphere-liberty-profile-to-serve-the-web-application-resources }
-In order to serve the web application's resources, these need to be stored in a Maven webapp (a **.war** file).
+Pour que vous puissiez traiter les ressources de l'application Web, celles-ci doivent
+être stockées dans une application Web Maven (un fichier **.war**). 
 
-### Creating a Maven webapp archetype
+### Création d'un archétype d'application Web Maven 
 {: #creating-a-maven-webapp-archetype }
-1. From a **command-line** window, navigate to a location of your choosing.
-2. Run the command:
+1. Depuis une fenêtre de **ligne de commande**, accédez à
+l'emplacement de votre choix. 
+2. Exécutez la commande suivante :
 
    ```bash
-   mvn archetype:generate -DgroupId=MyCompany -DartifactId=MyWebApp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+   mvn archetype:generate -DgroupId=MaSociété -DartifactId=MonAppWeb
+-DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
    ```
-    - Replace **MyCompany** and **MyWebApp** with your own values.
-    - To enter the values one-by-one, remove the `-DinteractiveMode=false` flag.
+    - Remplacez **MaSociété** et
+**MonAppWeb** par vos propres valeurs. 
+    - Pour entrer les valeurs une par une, supprimez l'indicateur
+`-DinteractiveMode=false`. 
 
-### Building the Maven webapp with the web application's resources 
+### Génération de l'application Web Maven avec les ressources de
+l'application Web  
 {: #building-the-maven-webapp-with-the-web-applications-resources }
-1. Place the web application's resources (such as the HTML, CSS, JavaScript and image files) inside the generated **[MyWebApp] → src → Main → webapp** folder.
+1. Placez les ressources de l'application Web (comme les fichiers HTML, CSS,
+JavaScript et image) dans le dossier **[MonAppWeb] → src → Main →
+webapp**. 
 
-    > From here on, consider the **webapp** folder as the development location for the web application.
+    > A partir de maintenant, le dossier
+**webapp** sera considéré comme l'emplacement de développement de l'application web. 
 
-2. Run the command: `mvn clean install` to generate a .war file containing the application's web resources.  
-   The generated .war file is available in the **[MyWebApp] → target** folder.
+2. Exécutez la commande `mvn clean install` pour générer un
+fichier .war contenant les ressources Web de l'application.   
+Le fichier .war généré est disponible dans le dossier **[MonAppWeb]
+target**. 
    
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** `mvn clean install` must be run each time you update a web resource.
-
-### Adding the Maven webapp to the application server
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+**Important :** vous devez exécuter la commande `mvn clean
+install` à chaque fois que vous mettez à jour une ressource Web.
+### Ajout de l'application Web Maven sur le serveur d'applications 
 {: #adding-the-maven-webapp-to-the-application-server }
-1. Edit the **server.xml file** of your WebSphere application server.  
-    If using the {{ site.data.keys.mf_dev_kit }}, the file is located in: [**{{ site.data.keys.mf_dev_kit }}] → mfp-server → user → servers → mfp** folder. Add the following entry:
+1. Editez le fichier **server.xml** de votre serveur
+d'applications WebSphere.   
+Si vous utilisez {{site.data.keys.mf_dev_kit }}, le fichier se trouve dans le
+dossier [**{{site.data.keys.mf_dev_kit }}] → mfp-server → user →
+servers → mfp**. Ajoutez l'entrée suivante :
 
    ```xml
-   <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>
+   <application name="MonAppWeb" location="chemin/MonAppWeb.war"
+type="war"></application>
    ```
-    - Replace **name** and **path-to/MyWebApp.war** with your own values.
-    - The application server is automatically restarted after saving the changes to the **server.xml** file.  
+    - Remplacez **MonAppWeb** et
+**chemin/MonAppWeb.war** par vos propres valeurs. 
+    - Le serveur d'applications redémarre automatiquement après la sauvegarde des
+modifications apportées au fichier **server.xml**.   
 
-### Testing the web application
+### Test de l'application Web 
 {: #testing-the-web-application }
-Once you are ready to test your web application, visit the URL: **localhost:9080/MyWebApp**.
-    - Replace **MyWebApp** with your own value.
+Lorsque vous êtes prêt à tester votre application Web, accédez à l'adresse URL
+**localhost:9080/MonAppWeb**.
+    - Remplacez **MonAppWeb** par votre propre valeur. 
 
-## Using Node.js
+## Utilisation de Node.js
 {: #using-nodejs }
-Node.js can be used as a reverse proxy to tunnel requests from the web application to the {{ site.data.keys.mf_server }}.
+Vous pouvez utiliser Node.js comme proxy inverse pour acheminer les demandes depuis
+l'application Web vers {{site.data.keys.mf_server }}.
 
-1. From a **command-line** window, navigate to your web application's folder and run the following set of commands: 
+1. Depuis une fenêtre de **ligne de commande**, accédez au
+dossier de votre application Web et exécutez l'ensemble de commandes suivant :  
 
    ```bash
    npm init
@@ -96,8 +118,9 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
    npm install --save request
    ```
 
-2. Create a new file in the **node_modules** folder, for example **proxy.js**.
-3. Add the following code to the file:
+2. Créez un fichier dans le dossier **node_modules**, par
+exemple **proxy.js**.
+3. Ajoutez le code suivant au fichier : 
 
    ```javascript
    var express = require('express');
@@ -110,37 +133,50 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
    var port = 9081;
 
    server.listen(port);
-   app.use('/myapp', express.static(__dirname + '/'));
+   app.use('/monapp', express.static(__dirname + '/'));
    console.log('::: server.js ::: Listening on port ' + port);
 
-   // Web server - serves the web application
+   // Serveur Web - traite l'application Web
    app.get('/home', function(req, res) {
-        // Website you wish to allow to connect
+        // Site Web dont vous voulez autoriser la connexion
         res.sendFile(__dirname + '/index.html');
    });
 
-   // Reverse proxy, pipes the requests to/from {{ site.data.keys.mf_server }}
+   // Proxy inverse, achemine les demandes vers/de {{ site.data.keys.mf_server }}
    app.use('/mfp/*', function(req, res) {
         var url = mfpServer + req.originalUrl;
         console.log('::: server.js ::: Passing request to URL: ' + url);
         req.pipe(request[req.method.toLowerCase()](url)).pipe(res);
    });
    ```
-    - replace the **port** value with your preferred one.
-    - replace `/myapp` with your preferred path name for your web application.
-    - replace `/index.html` with the name of your main HTML file.
-    - if needed, update `/mfp/*` with the context root of your {{ site.data.keys.product }} runtime.
+    - Remplacez la valeur **port** par la valeur de votre choix. 
+    - Remplacez `/monapp` par le nom de chemin de votre choix
+pour votre application Web. 
+    - Remplacez `/index.html` par le nom de votre fichier HTML
+principal. 
+    - Si nécessaire, mettez à jour `/mfp/*` avec la racine de
+contexte de votre environnement d'exécution de {{site.data.keys.product }}. 
 
-4. To start the proxy, run the command: `node proxy.js`.
-5. Once you are ready to test your web application, visit the URL: **server-hostname:port/app-name**, for example: **http://localhost:9081/myapp**
-    - Replace **server-hostname** with your own value.
-    - Replace **port** with your own value.
-    - Replace **app-name** with your own value.
+4. Pour démarrer le proxy, exécutez la commande `node
+proxy.js`.
+5. Lorsque vous êtes prêt à tester votre application Web, accédez à l'adresse URL
+**nomhôte-serveur:port/nom-app**, par exemple
+**http://localhost:9081/monapp**. 
+    - Remplacez **nomhôte-serveur** par votre propre valeur. 
+    - Remplacez **port** par votre propre valeur. 
+    - Remplacez **nom-app** par votre propre valeur. 
 
-## Next steps
+## Etapes suivantes 
 {: #next-steps }
-To continue with {{ site.data.keys.product }} development in Web applications, the {{ site.data.keys.product }} web SDK need to be added to the Web application.
+Pour continuer le développement de {{site.data.keys.product }} dans des
+applications Web, vous devez ajouter le logiciel SDK Web de
+{{site.data.keys.product }} dans l'application Web. 
 
-* Learn how to add the [{{ site.data.keys.product }} SDK to web applications](../../../application-development/sdk/web/).
-* For applications development, refer to the [Using the {{ site.data.keys.product }} SDK](../../../application-development/) tutorials.
-* For adapters develpment, refer to the [Adapters](../../../adapters/) category.
+* Apprenez à ajouter le logiciel SDK de
+[{{site.data.keys.product }}
+dans les applications Web](../../../application-development/sdk/web/).
+* Pour le développement d'applications, reportez-vous aux tutoriels relatifs à
+l'[utilisation du logiciel SDK
+de {{site.data.keys.product }}](../../../application-development/). 
+* Pour le développement d'adaptateurs, reportez-vous à la catégorie relative aux
+[adaptateurs](../../../adapters/). 

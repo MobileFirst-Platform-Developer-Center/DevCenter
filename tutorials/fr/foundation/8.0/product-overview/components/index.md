@@ -24,7 +24,7 @@ Les commandes, qui commencent toutes par **mfpdev**, prennent en charge les type
 * Configuration de votre application
 * Création, génération et déploiement des adaptateurs
 * Aperçu et mise à jour des applications Cordova
-* Pour plus d'informations, voir le tutoriel [Utilisation de l'interface de ligne de commande pour gérer des artefacts {{site.data.keys.product_adj }}](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
+* Pour plus d'informations, voir le tutoriel [Using CLI to manage {{site.data.keys.product_adj }}](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
 
 ### {{site.data.keys.mf_server }}
 {: #mobilefirst-server }

@@ -1,59 +1,59 @@
 ---
 layout: tutorial
-title: Push notifications of application updates
-breadcrumb_title: Push notifications
+title: Notifications push des mises à jour de l'application
+breadcrumb_title: Notifications push
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-You can configure the Application Center client so that push notifications are sent to users when an update is available for an application in the store.
+Vous pouvez configurer le client Application Center de sorte que les notifications push soient envoyées aux utilisateurs lorsqu'une mise à jour est disponible pour une application dans le magasin.
 
-The Application Center administrator uses push notifications to send notification automatically, to any iOS or Android device. Notifications are sent for updates to favorite applications and of new applications that are deployed on the Application Center server and that are marked as recommended.
+L'administrateur Application Center utilise des notifications push pour envoyer la notification automatiquement à n'importe quel terminal iOS ou Android. Des notifications sont envoyées pour les mises à jour des applications favorites et des nouvelles applications qui sont déployées sur le serveur Application Center et sont marquées comme recommandées.
 
-### Push notification process
+### Processus de notification push
 {: #push-notification-process }
-Push notifications are sent to a device if the following conditions are met:
+Les notifications push sont envoyées à un terminal si les conditions suivantes sont remplies :
 
-* The device has Application Center installed and started it at least one time.
-* The user has not disabled push notification for this device for the Application Center in the **Settings → Notifications** interface.
-* The user is allowed to install the application. Such permissions are controlled through the Application Center access rights.
-* The application is marked as recommended, or is marked as preferred for the user who is using Application Center on this device. Those flags are set automatically when the user installs an application through Application Center. You can see which applications are marked as preferred by looking at the Application Center **Favorites** tab on the device.
-* The application is not installed on the device or a more recent version is available than the version that is installed on the device.
+* Application Center est installé sur le terminal et a été démarré au moins une fois.
+* L'utilisateur n'a pas désactivé la notification push pour ce terminal pour Application Center dans l'interface **Settings → Notifications**.
+* L'utilisateur est autorisé à installer l'application. Ces droits sont contrôlés par les droits d'accès Application Center.
+* L'application est marquée comme recommandée ou comme préférée pour l'utilisateur qui utilise Application Center sur ce terminal. Ces indicateurs sont définis automatiquement lorsque l'utilisateur installe une application via Application Center. Vous pouvez savoir quelles applications sont marquées comme préférées en observant l'onglet **Favorites** d'Application Center sur le terminal.
+* L'application n'est pas installée sur le terminal ou une version plus récente que celle installée sur le périphérique est disponible.
 
-The first time that the Application Center client starts on a device, the user might be asked whether to accept incoming push notifications. This is the case for iOS mobile devices. The push notification feature does not work when the service is disabled on the mobile device.
+La première fois que le client Application Center démarre sur un terminal, l'utilisateur peut être invité à accepter les notifications push entrantes. C'est le cas des terminaux mobiles iOS. La fonction de notification push ne fonctionne pas lorsque le service est désactivé sur le terminal mobile.
 
-iOS and modern Android operating system versions offer a way to switch this service on or off on a per application basis.
+IOS et les versions actuelles du système d'exploitation Android offrent un moyen d'activer ou de désactiver ce service pour chaque application.
 
-Refer to your device vendor to learn how to configure your mobile device for push notifications.
+Consultez le fournisseur de votre terminal pour savoir comment configurer votre terminal mobile pour les notifications push.
 
-#### Jump to
+#### Accéder à
 {: #jump-to }
-* [Configuring push notifications for application updates](#configuring-push-notifications)
-* [Configuring the Application Center server for connection to Google Cloud Messaging](#gcm)
-* [Configuring the Application Center server for connection to Apple Push Notification Services](#apns)
-* [Building a version of the mobile client that does not depend on the GCM API](#no-gcm)
+* [Configuration des notifications push pour les mises à jour d'application](#configuring-push-notifications)
+* [Configuration du serveur Application Center pour la connexion à Google Cloud Messaging](#gcm)
+* [Configuration du serveur Application Center pour la connexion à Apple Push Notification Services](#apns)
+* [Génération d'une version du client mobile indépendante de l'API GCM](#no-gcm)
 
-## Configuring push notifications for application updates
+## Configuration des notifications push pour les mises à jour d'application
 {: #configuring-push-notifications }
-You must configure the credentials or certificates of Application Center services to be able to communicate with third-party push notification servers.
+Vous devez configurer les données d'identification ou les certificats des services Application Center afin de pouvoir communiquer avec des serveurs de notification push tiers.
 
-### Configuring the server scheduler of the Application Center
+### Configuration du planificateur du serveur Application Center
 {: #configuring-the-server-scheduler }
-The server scheduler is a background service that automatically starts and stops with the server. This scheduler is used to empty at regular intervals a stack that is automatically filled by administrator actions with push update messages to be sent. The default interval between sending two batches of push update messages is twelve hours. If this default value does not suit you, you can modify it by using the **ibm.appcenter.push.schedule.period.amount** and **ibm.appcenter.push.schedule.period.unit** server environment variables.
+Le planificateur de serveur est un service en arrière-plan qui démarre et s'arrête automatiquement avec le serveur. Ce planificateur est utilisé pour vider à intervalles réguliers une pile qui est automatiquement remplie par des actions d'administrateur avec des messages de mise à jour push à envoyer. L'intervalle par défaut entre l'envoi de deux lots de messages de mise à jour push est de douze heures. Si cette valeur par défaut ne vous convient pas, vous pouvez la modifier à l'aide des variables d'environnement du serveur **ibm.appcenter.push.schedule.period.amount** et **ibm.appcenter.push.schedule.period.unit**.
 
-The value of **ibm.appcenter.push.schedule.period.amount** is an integer. The value of **ibm.appcenter.push.schedule.period.unit** can be seconds, minutes, or hours. If the unit is not specified, the amount is an interval that is expressed in hours. These variables are used to define the elapsed time between two batches of push messages.
+La valeur de **ibm.appcenter.push.schedule.period.amount** est un nombre entier. La valeur **ibm.appcenter.push.schedule.period.unit** peut être exprimée en secondes, minutes ou heures. Si l'unité n'est pas spécifiée, la quantité est un intervalle exprimé en heures. Ces variables servent à définir le temps écoulé entre deux lots de messages push.
 
-Use JNDI properties to define these variables.
+Utilisez les propriétés JNDI pour définir ces variables.
 
-> **Important:** In production, avoid setting the unit to seconds. The shorter the elapsed time, the higher the load on the server. The unit expressed in seconds is implemented only for testing and evaluation purposes. For example, when the elapsed time is set to 10 seconds, push messages are sent almost immediately.
+> **Important :** dans un environnement de production, évitez de définir le paramètre en secondes. Plus le temps écoulé est court, plus la charge sur le serveur est élevée. L'unité exprimée en secondes n'est mise en œuvre qu'à des fins de test et d'évaluation. Par exemple, lorsque le temps écoulé est réglé sur 10 secondes, les messages push sont envoyés presque immédiatement.
 
-See [JNDI properties for Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of properties that you can set.
+Voir [Propriétés JNDI pour Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) pour obtenir une liste complète des propriétés que vous pouvez définir.
 
-### Example for Apache Tomcat server
+### Exemple pour le serveur Apache Tomcat
 {: tomcat }
-Define these variables with JNDI properties in the server.xml file:
+Définissez ces variables avec les propriétés JNDI dans le fichier server.xml :
 
 ```xml
 <Environment name="ibm.appcenter.push.schedule.period.unit" override="false" type="java.lang.String" value="hours"/>
@@ -62,40 +62,40 @@ Define these variables with JNDI properties in the server.xml file:
 
 #### WebSphere Application Server v8.5
 {: #websphere }
-To configure JNDI variables for WebSphere Application Server v8.5, proceed as follows:
+Pour configurer les variables JNDI pour WebSphere Application Server v8.5, procédez comme suit :
 
-1. Click **Applications → Application Types → Websphere enterprise applications**.
-2. Select the Application Center Services application.
-3. Click **Web Module Properties → Environment entries for Web modules**.
-4. Edit the string in the **Value** column.
+1. Cliquez sur **Applications → Application Types → Websphere enterprise applications**.
+2. Sélectionnez l'application Application Center Services.
+3. Cliquez sur **Web Module Properties → Environment entries for Web modules**.
+4. Éditez la chaîne dans la colonne **Value**.
 
-#### WebSphere Application Server Liberty profile
+#### Profil Liberty de WebSphere Application Server
 {: #liberty }
-For information about how to configure JNDI variables for WebSphere Application Server Liberty profile, see [Using JNDI binding for constants from the server configuration files](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_dep_jndi.html).
+Pour plus d'informations sur la configuration des variables JNDI pour le profil Liberty de WebSphere Application Server, voir [Utilisation de la liaison JNDI pour les constantes à partir des fichiers de configuration du serveur](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_dep_jndi.html).
 
-The remaining actions for setting up the push notification service depend on the vendor of the device where the target application is installed.
+Les actions restantes pour configurer le service de notification push dépendent du fournisseur du terminal sur lequel l'application cible est installée.
 
-## Configuring the Application Center server for connection to Google Cloud Messaging
+## Configuration du serveur Application Center pour la connexion à Google Cloud Messaging
 {: #gcm }
-To enable Google Cloud Messaging (GCM) for an application, you must attach the GCM services to a developer Google account with the Google API enabled. See [Getting Started with GCM](http://developer.android.com/google/gcm/gs.html) for details.
+Pour activer Google Cloud Messaging (GCM) pour une application, vous devez associer les services GCM à un compte Google développeur avec l'API Google activée. Voir [Getting Started with GCM](http://developer.android.com/google/gcm/gs.html) pour plus de détails.
 
-> Important: The Application Center client without Google Cloud Messaging: The Application Center relies on the availability of the Google Cloud Messaging (GCM) API. This API might not be available on devices in some territories such as China. To support those territories, you can build a version of the Application Center client that does not depend on the GCM API. The push notification feature does not work on that version of the Application Center client. See [Building a version of the mobile client that does not depend on the GCM API](#no-gcm) for details.
+> Important : client Application Center sans Google Cloud Messaging : Application Center dépend de la disponibilité de l'API de Google Cloud Messaging (GCM). Cette API peut ne pas être disponible sur les terminaux de certains territoires tels que la Chine. Pour prendre en charge ces territoires, vous pouvez créer une version du client Application Center qui ne dépend pas de l'API de GCM. La fonctionnalité de notification push ne fonctionne pas sur cette version du client Application Center. Voir [Génération d'une version du client mobile indépendante de l'API de CM](#no-gcm) pour plus de détails.
 
-1. If you do not have the appropriate Google account, go to [Create a Google account](https://mail.google.com/mail/signup) and create one for the Application Center client.
-2. Register this account by using the Google API in the [Google API console](https://code.google.com/apis/console/). Registration creates a new default project that you can rename. The name you give to this GCM project is not related to your Android application package name. When the project is created, a GCM project ID is appended to the end of the project URL. You should record this trailing number as your project ID for future reference.
-3. Enable the GCM service for your project; in the Google API console, click the **Services** tab on the left and enable the "Google Cloud Messaging for Android" service in the list of services.
-4. Make sure that a Simple API Access Server key is available for your application communications.
-    * Click the **API Access** vertical tab on the left of the console.
-    * Create a Simple API Access Server key or, if a default key is already created, note the details of the default key. Two other kinds of key exist that are not of interest at this time.
-    * Save the Simple API Access Server key for future use in your application communications through GCM. The key is about 40 characters long and is referred to as the Google API key that you will need later on the server side.
-5. Enter the GCM project ID as a string resource property in the JavaScript project of the Application Center Android client; in the **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** template file, modify this line with your own value:
+1. Si vous ne disposez pas du compte Google approprié, accédez à [Créer un compte Google](https://mail.google.com/mail/signup) et créez-en un pour le client Application Center.
+2. Enregistrez ce compte en utilisant l'API Google dans la [console de l'API Google](https://code.google.com/apis/console/). La procédure d'enregistrement crée un projet par défaut que vous pouvez renommer. Le nom que vous donnez à ce projet GCM n'est pas lié au nom du moduled'application Android. Lorsque le projet est créé, un ID de projet GCM est ajouté à la fin de l'URL du projet. Vous devez enregistrer ce numéro de fin en tant qu'ID de projet pour référence future.
+3. Activez le service GCM pour votre projet ; dans la console d'API Google, cliquez sur l'onglet **Services** à gauche et activez le service "Google Cloud Messaging for Android" dans la liste des services.
+4. Assurez-vous qu'une clé de serveur d'accès d'API simple est disponible pour les communications de votre application.
+    * Cliquez sur l'onglet vertical **API Access** à gauche de la console.
+    * Créez une clé de serveur d'accès d'API simple ou, si une clé par défaut est déjà créée, notez les détails de la clé par défaut. Deux autres types de clé existent mais ils ne nous intéressent pas pour le moment.
+    * Enregistrez la clé du serveur d'accès d'API simple pour une utilisation ultérieure dans vos communications d'application via GCM. La longueur de la clé est d'environ 40 caractères et cette clé est appelée clé de l'API Google dont vous aurez besoin ultérieurement du côté serveur.
+5. Entrez l'ID de projet GCM en tant que propriété de ressource de chaîne dans le projet JavaScript du client Android d'Application Center ; dans le fichier modèle **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**, remplacez cette ligne par votre propre valeur :
 
    ```xml
    gcmProjectId:""// Google API project (project name = com.ibm.appcenter) ID needed for Android push.
    // example : 123456789012
    ```
 
-6. Register the Google API key as a JNDI property for the Application Center server. The key name is : **ibm.appcenter.gcm.signature.googleapikey**. For example, you can configure this key for an Apache Tomcat server as a JNDI property in the **server.xml** file:
+6. Enregistrez la clé de l'API Google en tant que propriété JNDI pour le serveur Application Center. Le nom de la clé est : **ibm.appcenter.gcm.signature.googleapikey**. Par exemple, vous pouvez configurer cette clé pour un serveur Apache Tomcat en tant que propriété JNDI dans le fichier **server.xml** :
 
    ```xml
    <Context docBase="AppCenterServices" path="/applicationcenter" reloadable="true" source="org.eclipse.jst.jee.server:AppCenterServices">
@@ -104,67 +104,67 @@ To enable Google Cloud Messaging (GCM) for an application, you must attach the G
    </Context>
    ```
 
-   The JNDI property must be defined in accordance with your application server requirements.  
-   See [JNDI properties for Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of properties that you can set.
+   La propriété JNDI doit être définie en fonction des exigences de votre serveur d'applications.  
+   Voir [Propriétés JNDI pour Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) pour obtenir une liste complète des propriétés que vous pouvez définir.
     
-**Important:**
+**Important :**
 
-* If you use GCM with earlier versions of Android, you might need to pair your device with an existing Google account for GCM to work effectively. See [GCM service](http://developer.android.com/google/gcm/gcm.html): "It uses an existing connection for Google services. For pre-3.0 devices, this requires users to set up their Google account on their mobile devices. A Google account is not a requirement on devices running Android 4.0.4 or higher."
-* You must also ensure that your firewall accepts outgoing connections to android.googleapis.com on port 443 for push notifications to work.
+* Si vous utilisez GCM avec des versions antérieures d'Android, vous devrez peut-être appairer votre terminal avec un compte Google existant pour que GCM fonctionne efficacement. Voir [GCM service](http://developer.android.com/google/gcm/gcm.html) : "Il utilise une connexion existante pour les services Google. Pour les terminaux antérieurs à la version 3.0, les utilisateurs doivent configurer leur compte Google sur leurs terminaux mobiles. Un compte Google n'est pas obligatoire pour les terminaux fonctionnant sous Android 4.0.4 ou version ultérieure."
+* Vous devez également vous assurer que votre pare-feu accepte les connexions sortantes vers android.googleapis.com sur le port 443 pour que les notifications push fonctionnent.
 
-## Configuring the Application Center server for connection to Apple Push Notification Services
+## Configuration du serveur Application Center pour la connexion à Apple Push Notification Services
 {: #apns }
-Configure your iOS project for Apple Push Notification Services (APNs). Ensure that the following servers are accessible from Application Center server.
+Configurez votre projet iOS pour Apple Notification Services (APN). Assurez-vous que les serveurs suivants sont accessibles depuis le serveur Application Center.
 
-**Sandbox servers**  
+**Serveurs de bac à sable**  
 gateway.sandbox.push.apple.com:2195
 feedback.sandbox.push.apple.com:2196
 
-**Production servers**  
+**Serveurs de production**  
 gateway.push.apple.com:2195
 feedback.push.apple.com:2196
 
-You must be a registered Apple developer to successfully configure your iOS project with Apple Push Notification Services (APNs). In the company, the administrative role responsible for Apple development requests APNs enablement. The response to this request should provide you with an APNs-enabled provisioning profile for your iOS application bundle; that is, a string value that is defined in the configuration page of your Xcode project. This provisioning profile is used to generate a signature certificate file.
-Two kinds of provisioning profile exist: development and production profiles, which address development and production environments respectively. Development profiles address Apple development APNs servers exclusively. Production profiles address Apple production APNs servers exclusively. These kinds of servers do not offer the same quality of service.
+Vous devez être un développeur Apple enregistré pour configurer votre projet iOS auprès d'Apple Push Notification Services (APN). Dans la société, le rôle administratif responsable du développement d'Apple demande l'activation d'APN. La réponse à cette demande devrait vous fournir un profil de mise à disposition compatible APN pour votre bundle d'applications iOS ; c'est-à-dire une valeur de chaîne qui est définie dans la page de configuration de votre projet Xcode. Ce profil de mise à disposition est utilisé pour générer un fichier de certificat de signature.
+Il existe deux types de profils de mise à disposition : les profils de développement et les profils de production, qui concernent respectivement les environnements de développement et de production. Les profils de développement concernent exclusivement les serveurs APN de développement Apple. Les profils de production s'adressent exclusivement aux serveurs APN de production Apple. Ces types de serveurs n'offrent pas la même qualité de service.
 
-Note: Devices that are connected to a company wifi behind a firewall are only able to receive push notifications if connection to the following type of address is not blocked by the firewall.
+Remarque : les terminaux connectés à un wifi d'entreprise derrière un pare-feu ne peuvent recevoir de notifications push que si la connexion au type d'adresse suivant n'est pas bloquée par le pare-feu.
 
 `x-courier.sandbox.push.apple.com:5223`  
-Where x is an integer.
+Où x est un nombre entier.
 
-1. Obtain the APNs-enabled provisioning profile for the Application Center Xcode project. The result of your administrator's APNs enablement request is shown as a list accessible from [https://developer.apple.com/ios/my/bundles/index.action](https://developer.apple.com/ios/my/bundles/index.action). Each item in the list shows whether or not the profile has APNs capabilities. When you have the profile, you can download and install it in the Application Center client Xcode project directory by double-clicking the profile. The profile is then automatically installed in your keystore and Xcode project.
+1. Procurez-vous le profil de mise à disposition activé par APN pour le projet Xcode d'Application Center. Le résultat de la demande d'activation des APN effectuée par votre administrateur s'affiche sous la forme d'une liste accessible à partir de [https://developer.apple.com/ios/my/bundles/index.action](https://developer.apple.com/ios/my/bundles/index.action). Chaque élément de la liste indique si le profil possède ou non des capacités APN. Lorsque vous possédez le profil, vous pouvez le télécharger et l'installer dans le répertoire du projet Xcode du client Application Center en cliquant deux fois sur le profil. Le profil est alors automatiquement installé dans votre magasin de clés et votre projet Xcode.
 
-2. If you want to test or debug the Application Center on a device by launching it directly from XCode, in the "Xcode Organizer" window, go to the "Provisioning Profiles" section and install the profile on your mobile device.
+2. Si vous souhaitez tester ou déboguer Application Center sur un terminal en le lançant directement depuis XCode, dans la fenêtre "Xcode Organizer", accédez à la section "Provisioning Profiles" et installez le profil sur votre terminal mobile.
 
-3. Create a signature certificate used by the Application Center services to secure communication with the APNs server. This server will use the certificate for purposes of signing each and every push request to the APNs server. This signature certificate is produced from your provisioning profile.
+3. Créez un certificat de signature utilisé par les services Application Center pour sécuriser la communication avec le serveur APN. Ce serveur utilise le certificat à des fins de signature de chaque demande push vers le serveur APN. Ce certificat de signature est produit à partir de votre profil de mise à disposition.
     
-* Open the "Keychain Access" utility and click the **My Certificates** category in the left pane.
-* Find the certificate you want to install and disclose its contents. You see both a certificate and a private key; for the Application Center, the certificate line contains the Application Center application bundle **com.ibm.imf.AppCenter**.
-* Select **File → Export Items** to select both the certificate and the key and export them as a Personal Information Exchange (.p12) file. This .p12 file contains the private key required when the secure handshaking protocol is involved to communicate with the APNs server.
-* Copy the .p12 certificate to the computer responsible for running the Application Center services and install it in the appropriate place. Both the certificate file and its password are needed to create the secure tunneling with the APNs server. You also require some information that indicates whether a development certificate or a production certificate is in play. A development provisioning profile produces a development certificate and a production profile gives a production certificate. The Application Center services web application uses JNDI properties to reference this secure data
+* Ouvrez l'utilitaire "Keychain Access" et cliquez sur la catégorie **My Certificates** dans le volet gauche.
+* Recherchez le certificat que vous souhaitez installer et divulguez son contenu. Vous voyez à la fois un certificat et une clé privée ; pour Application Center, la ligne de certificat contient le bundle d'applications d'Application Center **com.ibm.imf.AppCenter**.
+* Sélectionnez **File → Export Items** pour sélectionner à la fois le certificat et la clé et exportez-les en tant que fichier d'échange d'informations personnelles (.p12). Ce fichier .p12 contient la clé privée requise lorsque le protocole d'établissement de liaison sécurisé est impliqué pour communiquer avec le serveur APN.
+* Copiez le certificat .p12 sur l'ordinateur responsable de l'exécution des services Application Center et installez-le à l'endroit approprié. Le fichier de certificat et son mot de passe sont nécessaires pour créer la tunnellisation sécurisés avec le serveur APN. Vous avez également besoin de certaines informations indiquant si un certificat de développement ou un certificat de production est en jeu. Un profil de mise à disposition de développement produit un certificat de développement et un profil de production génère un certificat de production. L'application Web des services Application Center utilise les propriétés JNDI pour faire référence à ces données sécurisées
 
-The examples in the table show how the JNDI properties are defined in the server.xml file of the Apache Tomcat server.
+Les exemples du tableau montrent comment les propriétés JNDI sont définies dans le fichier server.xml du serveur Apache Tomcat.
 
-| JNDI Property	| Type and description | Example for Apache Tomcat server | 
+| Propriété JNDI	| Type et description | Exemple pour le serveur Apache Tomcat | 
 |---------------|----------------------|----------------------------------|
-| ibm.appcenter.apns.p12.certificate.location | A string value that defines the full path to the .p12 certificate. | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
-| ibm.appcenter.apns.p12.certificate.password | A string value that defines the password needed to access the certificate. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
-| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	A boolean value (identified as true or false) that defines whether or not the provisioning profile used to generate the authentication certificate was a development certificate. | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
+| ibm.appcenter.apns.p12.certificate.location | Valeur de chaîne qui définit le chemin d'accès complet au certificat .p12. | `<Environment name="ibm.appcenter.apns.p12.certificate.location" override="false" type="java.lang.String" value="/Users/someUser/someDirectory/apache-tomcat/conf/AppCenter_apns_dev_cert.p12"/>` |
+| ibm.appcenter.apns.p12.certificate.password | Valeur de chaîne définissant le mot de passe nécessaire pour accéder au certificat. | `<Environment name="ibm.appcenter.apns.p12.certificate.password" override="false" type="java.lang.String" value="this_is_a_secure_password"/>` | 
+| ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate |	Valeur booléenne (identifiée comme true ou false) qui définit si le profil de mise à disposition utilisé pour générer le certificat d'authentification était ou non un certificat de développement. | `<Environment name="ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate" override="false" type="java.lang.String" value="true"/>` | 
 
-See [JNDI properties for Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) for a complete list of JNDI properties that you can set.
+Consultez [Propriétés JNDI pour Application Center](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center) pour obtenir une liste complète des propriétés JNDI que vous pouvez définir.
 
-## Building a version of the mobile client that does not depend on the GCM API
+## Génération d'une version du client mobile indépendante de l'API GCM
 {: #no-gcm }
-You can remove the dependency on Google Cloud Messaging (GCM) API from the Android version of the client to comply with constraints in some territories. Push notifications do not work on this version of the client.
+Vous pouvez supprimer la dépendance de l'API Google Cloud Messaging (GCM) de la version Android du client pour respecter les contraintes dans certains territoires. Les notifications Push ne fonctionnent pas sur cette version du client.
 
-The Application Center relies on the availability of the Google Cloud Messaging (GCM) API. This API might not be available on devices in some territories such as China. To support those territories, you can build a version of the Application Center client that does not depend on the GCM API. The push notification feature does not work on that version of the Application Center client.
+Application Center dépend de la disponibilité de l'API Google Cloud Messaging (GCM). Cette API peut ne pas être disponible sur les terminaux de certains territoires tels que la Chine. Pour prendre en charge ces territoires, vous pouvez créer une version du client Application Center qui ne dépend pas de l'API de GCM. La fonctionnalité de notification push ne fonctionne pas sur cette version du client Application Center.
 
-1. Check that push notifications are disabled by checking that the **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** file contains this line: `"gcmProjectId": "" ,`.
-2. Remove from two places in the **IBMAppCenter/apps/AppCenter/android/native/AndroidManifest.xml** file all the lines that are located between these comments: `<!-- AppCenter Push configuration -->` and `<!-- end of AppCenter Push configuration -->`.
-3. Delete the **IBMAppCenter/apps/AppCenter/android/native/src/com/ibm/appcenter/GCMIntenteService.java** class.
-4. In Eclipse, run "Build Android Environment" in the IBMAppCenter/apps/AppCenter/android folder.
-5. Delete the **IBMAppCenter/apps/AppCenter/android/native/libs/gcm.jar** file that was created by the MobileFirst plug-in when you ran the previous "Build Android Environment" command.
-6. Refresh the newly created IBMAppCenterAppCenterAndroid project, so that the removal of the GCM library is taken into account.
-7. Build the .apk file of the Application Center.
+1. Vérifiez que les notifications push sont désactivées en vérifiant que le fichier **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** contient cette ligne : `"gcmProjectId": "" ,`.
+2. Supprimez de deux endroits dans le fichier **IBMAppCenter/apps/AppCenter/android/native/AndroidManifest.xml** toutes les lignes qui se trouvent entre ces commentaires : `<!-- AppCenter Push configuration -->` et `<!-- end of AppCenter Push configuration -->`.
+3. Supprimez la classe **IBMAppCenter/apps/AppCenter/android/native/src/com/ibm/appcenter/GCMIntenteService.java**.
+4. Dans Eclipse, exécutez "Build Android Environment" dans le dossier IBMAppCenter/apps/AppCenter/android folder.
+5. Supprimez le fichier **IBMAppCenter/apps/AppCenter/android/native/libs/gcm.jar** qui a été créé par le plug-in MobileFirst lorsque vous avez exécuté la commande précédente "Build Android Environment".
+6. Actualisez le nouveau projet IBMAppCenterAppCenterAndroid, afin que la suppression de la bibliothèque GCM soit prise en compte.
+7. Créez le fichier .apk d'Application Center.
 
-The **gcm.jar** library is automatically added by the MobileFirst Eclipse plug-in each time that the Android environment is built. Therefore, this java archive file must be deleted from the **IBMAppCenter/apps/AppCenter/android/native/libs/** directory each time that the MobileFirst Android build process is run. Otherwise, the **gcm.jar** library is present in the resulting **appcenter.apk** file.
+La bibliothèque **gcm.jar** est automatiquement ajoutée par le plug-in MobileFirst Eclipse chaque fois que l'environnement Android est généré. Par conséquent, ce fichier d'archive java doit être supprimé du répertoire **IBMAppCenter/apps/AppCenter/android/native/libs/** à chaque exécution du processus de génération Android de MobileFirst. Faute de quoi, la bibliothèque **gcm.jar** est présente dans le fichier **appcenter.apk** obtenu.

@@ -1,69 +1,69 @@
 ---
 layout: tutorial
-title: Installing MobileFirst Server for a Production Environment
-breadcrumb_title: Production Environment
+title: Installation de MobileFirst Server pour un environnement de production
+breadcrumb_title: Environnement de production
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-This section provides details to assist you in planning and preparing an installation for your specific environment.  
-For more information about the configuration of the {{ site.data.keys.mf_server }}, see [Configuring {{ site.data.keys.mf_server }}](server-configuration).
+Cette section contient des informations détaillées destinées à vous aider à planifier et préparer une installation pour votre propre environnement.   
+Pour plus d'informations sur la configuration de {{site.data.keys.mf_server }}, voir [Configuration de {{site.data.keys.mf_server }}](server-configuration).
 
-#### Jump to
+#### Accéder à
 {: #jump-to }
 
-* [Prerequisites](#prerequisites)
-* [What's Next](#whats-next)
+* [Prérequis](#prerequisites)
+* [Que faire ensuite ?](#whats-next)
 
-## Prerequisites
+## Prérequis
 {: #prerequisites }
-For smooth installation of {{ site.data.keys.mf_server }}, ensure that you fulfill all the software prerequisites.
+Pour une installation sans problèmes de {{site.data.keys.mf_server }}, prenez soin de disposer de tous les logiciels prérequis suivants : 
 
-**Database Management System (DBMS)**  
-A DBMS is needed to store the technical data of {{ site.data.keys.mf_server }} components. You must use one of the supported DBMS:
+**Système de gestion de base de données**  
+Un système de gestion de base de données est nécessaire pour stocker les données techniques des composants {{site.data.keys.mf_server }}. Vous devez utiliser l'un des systèmes de gestion de base de données pris en charge : 
 
-* IBM  DB2 
+* IBM DB2 
 * MySQL
 * Oracle
 
-For more information about the versions of DBMS that are supported by the product, see [System requirements](../../product-overview/requirements). If you use a relational DBMS (IBM DB2, Oracle, or MySQL), you need the JDBC driver for that database during the installation process. The JDBC drivers are not provided by {{ site.data.keys.mf_server }} installer. Make sure that you have the JDBC driver.
+Pour plus d'informations sur les versions de système de gestion de base de données prises en charge par le produit, voir [Configuration requise](../../product-overview/requirements). Si vous utilisez un système de gestion de base de données relationnelle (IBM DB2, Oracle, or MySQL), vous avez besoin du pilote JDBC correspondant à cette base de données lors du processus d'installation. Les pilotes JDBC ne sont pas fournis par le programme d'installation de {{site.data.keys.mf_server }}. Vérifiez que vous disposez du pilote JDBC approprié. 
 
-* For DB2, use the DB2 JDBC driver V4.0 (db2jcc4.jar).
-* For MySQL, use the Connector/J JDBC driver.
-* For Oracle, use the Oracle thin JDBC driver.
+* Pour DB2, utilisez le pilote JDBC DB2 V4.0 (db2jcc4.jar).
+* Pour MySQL, utilisez le pilote JDBC Connector/J. 
+* Pour Oracle, utilisez le pilote JDBC fin d'Oracle. 
 
-**Java application server**  
-A Java application server is needed to run the {{ site.data.keys.mf_server }} applications. You can use any of the following application servers:
+**Serveur d'applications Java**  
+Un serveur d'applications Java est nécessaire pour exécuter les applications {{site.data.keys.mf_server }}. Vous pouvez utiliser n'importe lequel des serveurs d'applications suivants :
 
 * WebSphere  Application Server Liberty Core
 * WebSphere Application Server Liberty Network Deployment
 * WebSphere Application Server
 * Apache Tomcat
 
-For more information about the versions of application servers that are supported by the product, see [System requirements](../../product-overview/requirements). The application server must run with Java 7 or later. By default, some versions of WebSphere Application Server run with Java 6. With this default, they cannot run {{ site.data.keys.mf_server }}
+Pour plus d'informations sur les versions de serveurs d'applications prises en charge par le produit, voir [Configuration requise](../../product-overview/requirements). Le serveur d'applications doit exécuter Java version 7 ou ultérieure. Par défaut, certaines versions de WebSphere Application Server s'exécutent avec Java 6. Avec cette version par défaut, ils ne peuvent pas exécuter {{site.data.keys.mf_server }}
 
-**IBM Installation Manager V1.8.4 or later**  
-Installation Manager is used to run the installer of {{ site.data.keys.mf_server }}. You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product_full }} {{ site.data.keys.product_version }} because the post-installation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
+**IBM Installation Manager version 1.8.4 ou ultérieure**  
+Installation Manager est utilisé pour exécuter le programme d'installation de {{site.data.keys.mf_server }}. Vous devez installer Installation Manager version 1.8.4 ou ultérieure. Les anciennes versions d'Installation Manager ne peuvent pas installer {{site.data.keys.product_full }} {{site.data.keys.product_version }} car les opérations de post-installation du produit nécessitent Java 7. Les anciennes version d'Installation Manager sont livrées avec Java 6.
 
-Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
+Téléchargez le programme d'installation d'IBM Installation Manager version 1.8.4 ou ultérieure à partir du site [Installation Manager and Packaging Utility download documents](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 
-**Installation Manager repository for {{ site.data.keys.mf_server }}**  
-You can download the repository from the {{ site.data.keys.product }} eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
+**Référentiel d'Installation Manager pour {{site.data.keys.mf_server }}**  
+Vous pouvez télécharger le référentiel à partir de {{site.data.keys.product }} eAssembly sur le site [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). Le nom du package est **IBM MobileFirst Foundation V{{site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
 
-You might also want to apply the latest fix pack that can be downloaded from [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). The fix pack cannot be installed without the repository of the base version in the repositories of Installation Manager.
+Vous souhaiterez peut-être appliquer le dernier groupe de correctifs que vous pouvez télécharger à partir du [portail de support IBM](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Ce groupe de correctifs ne peut pas être installé sans le référentiel de la version de base dans les référentiels d'Installation Manager.
 
-The {{ site.data.keys.product }} eAssembly includes the following installers:
+{{site.data.keys.product }} eAssembly comprend les programmes d'installation suivants :
 
 * IBM DB2 Workgroup Server Edition
 * IBM WebSphere Application Server Liberty Core
 
-For Liberty, you can also use IBM WebSphere SDK Java Technology edition with IBM WebSphere Application Server Liberty Core supplement.
+Pour Liberty, vous pouvez également utiliser l'édition IBM WebSphere SDK Java Technology avec le supplément IBM WebSphere Application Server Liberty Core. 
 
-## What's Next
+## Que faire ensuite ?
 {: #whats-next }
 
-* [Running IBM Installation Manager](installation-manager)
-* [Setting up databases](databases)
-* [Topologies and network flows](topologies)
-* [Installing {{ site.data.keys.mf_server }} to an application server](appserver)
+* [Exécution d'IBM Installation Manager](installation-manager)
+* [Configuration de bases de données](databases)
+* [Topologies et flots réseau](topologies)
+* [Installation de {{site.data.keys.mf_server }} sur un serveur d'applications](appserver)

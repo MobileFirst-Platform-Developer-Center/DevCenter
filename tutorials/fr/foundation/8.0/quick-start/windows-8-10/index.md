@@ -1,56 +1,56 @@
 ---
 layout: tutorial
-title: Windows 8.1 Universal and Windows 10 UWP end-to-end demonstration
+title: Windows 8.1 Universal et Windows 10 UWP - Démonstration de bout en bout
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-The purpose of this demonstration is to experience an end-to-end flow:
+Cette démonstration présente un processus complet :
 
-1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
-2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
-3. The application logic is changed to make a resource request.
+1. Une application exemple fournie avec le kit SDK client {{site.data.keys.product_adj }} est enregistrée et téléchargée à partir de la console {{site.data.keys.mf_console }}.
+2. Un nouvel adaptateur ou un adaptateur fourni est déployé sur la console {{site.data.keys.mf_console }}.  
+3. La logique d'application est changée afin d'effectuer une demande de ressource.
 
-**End result**:
+**Résultat final** :
 
-* Successfully pinging the {{ site.data.keys.mf_server }}.
-* Successfully retrieving data using an adapter.
+* Interrogation par commande ping du serveur {{site.data.keys.mf_server }} réussie.
+* Extraction réussie des données à l'aide d'un adaptateur.
 
-#### Prerequisites:
+#### Prérequis :
 {: #prerequisites }
-* Configured Visual Studio 2013/5
-* *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
-* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* Visual Studio 2013/5 configuré
+* *Facultatif* - {{site.data.keys.mf_cli }} ([téléchargement]({{site.baseurl}}/downloads))
+* *Facultatif* - Serveur {{site.data.keys.mf_server }} autonome ([téléchargement]({{site.baseurl}}/downloads))
 
-### 1. Starting the {{ site.data.keys.mf_server }}
+### 1. Démarrage du serveur {{site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.cmd`.
+Assurez-vous d'avoir [créé une instance Mobile Foundation](../../bluemix/using-mobile-foundation) ou  
+Si vous utilisez le kit [{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), accédez au dossier du serveur et exécutez la commande `./run.cmd`.
 
-### 2. Creating an application
+### 2. Création d'une application
 {: #2-creating-an-application }
-In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+Dans une fenêtre de navigateur, ouvrez la console {{site.data.keys.mf_console }} en entrant l'URL `http://your-server-host:server-port/mfpconsole`. Dans le cas d'une exécution locale, entrez l'URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Le nom d'utilisateur et le mot de passe sont *admin/admin*.
 
-1. Click the **New** button next to **Applications**
-    * Select a **Windows** platform
-    * Enter **MFPStarterCSharp.Windows** as the **application identifier** for Windows, or **MFPStarterCSharp.WindowsPhone** for Windows Phone
-    * Enter **1.0.0** as the **version** value
-    * Click on **Register application**
+1. Cliquez sur le bouton **Nouveau** en regard de l'option **Applications**
+    * Sélectionnez une plateforme **Windows**
+    * Entrez **MFPStarterCSharp.Windows** en tant qu'**identificateur d'application** pour Windows ou **MFPStarterCSharp.WindowsPhone** pour Windows Phone
+    * Entrez **1.0.0** dans la zone **Version**
+    * Cliquez sur **Enregistrer l'application**
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-windows.png"/>
+    <img class="gifplayer" alt="Enregistrement d'une application" src="register-an-application-windows.png"/>
 
-2. Click on the **Get Starter Code** tile and select to download the Windows 8.1 or Windows 10 sample application.
+2. Cliquez sur le titre **Obtenir le code de démarrage** puis indiquez que vous souhaitez télécharger l'application exemple Windows 8.1 ou Windows 10.
 
-    <img class="gifplayer" alt="Download sample application" src="download-starter-code-windows.png"/>
+    <img class="gifplayer" alt="Téléchargement d'une application exemple" src="download-starter-code-windows.png"/>
 
-### 3. Editing application logic
+### 3. Edition d'une logique d'application
 {: #3-editing-application-logic }
-1. Open the Visual Studio project.
+1. Ouvrez le projet Visual Studio.
 
-2. Select the solution's **MainPage.xaml.cs** file and paste the following code snippet into the GetAccessToken() method:
+2. Sélectionnez le fichier **MainPage.xaml.cs** de la solution et collez le fragment de code suivant dans la méthode GetAccessToken() :
 
    ```csharp
    try
@@ -81,9 +81,9 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
    ```
 
 
-### 4. Deploy an adapter
+### 4. Déploiement d'un adaptateur
 {: 4-deploy-an-adapter }
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
+Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et déployez-le à partir de la console {{site.data.keys.mf_console }} en sélectionnant **Actions → Déployer un adaptateur**.
 
 <!-- Alternatively, click the **New** button next to **Adapters**.  
 
@@ -101,32 +101,32 @@ Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it
 
     <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>    -->
 
-<img src="windowsQuickStart.png" alt="sample app" style="float:right"/>
-### 5. Testing the application
+<img src="windowsQuickStart.png" alt="application exemple" style="float:right"/>
+### 5. Test de l'application
 {: 5-testing-the-application }
-1. In Visual Studio, select the **mfpclient.resw** file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
-    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
+1. Dans Visual Studio, sélectionnez le fichier **mfpclient.resw** puis modifiez les propriétés **protocol**, **host** et **port** en indiquant les valeurs correctes de votre serveur {{site.data.keys.mf_server }}.
+    * Si vous utilisez un serveur {{site.data.keys.mf_server }} local, les valeurs sont généralement **http**, **localhost** et **9080**.
+    * Si vous utilisez un serveur {{site.data.keys.mf_server }} distant (sur Bluemix), les valeurs sont généralement **https**, **your-server-address** et **443**.
 
-    Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command `mfpdev app register`. If a remote {{ site.data.keys.mf_server }} is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
+    Par ailleurs, si vous avez installé l'interface {{site.data.keys.mf_cli }}, accédez au dossier racine du projet puis exécutez la commande `mfpdev app register`. Si un serveur {{site.data.keys.mf_server }} distant est utilisé, [exécutez la commande `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) pour ajouter le serveur, suivi par exemple de la commande `mfpdev app register myBluemixServer`.
 
-2. Press the **Run App** button.
+2. Cliquez sur le bouton **Run App**.
 
-### Results
+### Résultats
 {: #results }
-* Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
-* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
+* Si vous cliquez sur **Ping {{site.data.keys.mf_server }}**, la mention **Connected to {{site.data.keys.mf_server }}** s'affiche.
+* Si l'application a pu se connecter au serveur {{site.data.keys.mf_server }}, un appel de demande de ressource utilisant l'adaptateur Java déployé aura lieu.
 
-The adapter response is then printed in Visual Studio's Outpout console.
+La réponse de l'adaptateur est ensuite envoyée dans la console de sortie de Visual Studio.
 
-![Image of application that successfully called a resource from the {{ site.data.keys.mf_server }}](success_response.png)
+![Image de l'application ayant appelé une ressource à partir du serveur {{site.data.keys.mf_server }}](success_response.png)
 
-## Next steps
+## Etapes suivantes
 {: #next-steps }
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
+Pour en savoir plus notamment sur l'utilisation d'adaptateurs dans des applications et sur le mode d'intégration de services supplémentaires (notifications Push, par exemple) à l'aide de l'infrastructure de sécurité {{site.data.keys.product_adj }} :
 
-- Review the [Application development](../../application-development/) tutorials
-- Review the [Adapters development](../../adapters/) tutorials
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
-- Review [All Tutorials](../../all-tutorials)
+- Consultez les tutoriels [Developing Applications](../../application-development/) 
+- Consultez les tutoriels [Adapters development](../../adapters/) 
+- Consultez les tutoriels [Authentication and security](../../authentication-and-security/)
+- Consultez les tutoriels [Notifications](../../notifications/)
+- Consultez [tous les tutoriels](../../all-tutorials)

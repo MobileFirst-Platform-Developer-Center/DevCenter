@@ -1,141 +1,141 @@
 ---
 layout: tutorial
-title: Administrating applications through the MobileFirst Operations Console
-breadcrumb_title: Administrating using the console
+title: Administration d'applications via la console MobileFirst Operations Console
+breadcrumb_title: Administration à l'aide de la console
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-You can administer {{ site.data.keys.product_adj }} applications through the {{ site.data.keys.mf_console }} by locking apps or denying access, or by displaying notification messages.
+Vous pouvez administrer des applications {{site.data.keys.product_adj }} via la console {{site.data.keys.mf_console }} en verrouillant des applications ou en refusant des accès ou en affichant des messages de notification.
 
-You can start the console by entering one of the following URLs:
+Vous pouvez démarrer la console en entrant l'une des URL suivantes :
 
-* Secure mode for production or test: `https://hostname:secure_port/mfpconsole`
-* Development: `http://server_name:port/mfpconsole`
+* Mode sécurisé pour un environnement de production ou de test : `https://hostname:secure_port/mfpconsole`
+* Développement : `http://server_name:port/mfpconsole`
 
-You must have a login and password that grant you authorization to access the {{ site.data.keys.mf_console }}. For more information, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+Vous devez disposer un ID de connexion et d'un mot de passe vous permettant d'accéder à la console {{site.data.keys.mf_console }}. Pour plus d'informations, voir [Configuration de l'authentification d'utilisateur pour l'administration de {{site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
-You can use the {{ site.data.keys.mf_console }} to manage your applications.
+Vous pouvez utiliser la console {{site.data.keys.mf_console }} pour gérer vos applications.
 
-From the {{ site.data.keys.mf_console }}, you can also access the Analytics console and control the collection of mobile data for analysis by the Analytics server. For more information, see [Enabling or disabling data collection from the {{ site.data.keys.mf_console }}](../../analytics/console/#enabledisable-analytics-support).
+A partir de la console {{site.data.keys.mf_console }}, vous pouvez également accéder à la console d'analyse et contrôler la collecte de données mobiles destinées à être analysées par le serveur d'analyse. Pour plus d'informations, voir [Activation ou désactivation de la collecte de données à partir de la console {{site.data.keys.mf_console }}](../../analytics/console/#enabledisable-analytics-support).
 
-#### Jump to
+#### Accéder à
 {: #jump-to }
 
-* [Mobile-application management](#mobile-application-management)
-* [Application status and token licensing](#application-status-and-token-licensing)
-* [Error log of operations on runtime environments](#error-log-of-operations-on-runtime-environments)
-* [Audit log of administration operations](#audit-log-of-administration-operations)
+* [Gestion des applications mobiles](#mobile-application-management)
+* [Statut d'application et octroi de licence de jeton](#application-status-and-token-licensing)
+* [Journal des erreurs liées aux opérations sur des environnements d'exécution](#error-log-of-operations-on-runtime-environments)
+* [Journal d'audit des opérations d'administration](#audit-log-of-administration-operations)
 
-## Mobile-application management
+## Gestion des applications mobiles
 {: #mobile-application-management }
-The {{ site.data.keys.product_adj }} mobile-application-management capabilities provide {{ site.data.keys.mf_server }} operators and administrators with granular control over user and device access to their applications.
+Les fonctions de gestion des applications mobiles de {{site.data.keys.product_adj }} fournissent aux opérateurs et aux administrateurs de {{site.data.keys.mf_server }} un contrôle granulaire comparé à l'accès des utilisateurs et des terminaux à leurs applications.
 
-{{ site.data.keys.mf_server }} tracks all attempts to access your mobile infrastructure, and stores information about the application, the user, and the device on which the application is installed. The mapping between the application, the user, and the device, forms the basis for the server's mobile-application management capabilities.
+{{site.data.keys.mf_server }} assure le suivi de toutes les tentatives d'accès à votre infrastructure mobile et stocke des informations sur l'application, l'utilisateur et le terminal sur lequel l'application est installée. Le mappage entre l'application, l'utilisateur et le terminal constitue la base des fonctions de gestion des applications mobiles du serveur.
 
-Use IBM {{ site.data.keys.mf_console }} to monitor and manage access to your resources:
+Utilisez IBM {{site.data.keys.mf_console }} pour surveiller et gérer les accès à vos ressources :
 
-* Search for a user by name, and view information about the devices and applications that they are using to access your resources.
-* Search for a device by its display name, and view the users that are associated with the device, and the registered {{ site.data.keys.product_adj }} applications that are used on this device.
-* Block access to your resources from all instances of your applications on a specific device. This is useful when a device is lost or stolen.
-* Block access to your resources only for a specific application on a specific device. For example, if an employee changes departments, you can block the employee's access for an application of the previous department, but allow the employee access from other applications on the same device.
-* Unregister a device, and delete all the registration and monitoring data that was gathered for the device.
+* Recherchez un utilisateur par nom et affichez des informations sur les terminaux et les applications qu'il utilise pour accéder à vos ressources.
+* Recherchez un terminal par nom d'affichage et affichez les utilisateurs qui sont associés à ce terminal, ainsi que les applications {{site.data.keys.product_adj }} enregistrées utilisées sur ce terminal.
+* Bloquez l'accès à vos ressources à partir de toutes les instances de vos applications sur un terminal donné. Cette opération est utile lorsqu'un terminal est perdu ou volé.
+* Bloquez l'accès à vos ressources uniquement pour une application ou un terminal spécifiques. Par exemple, si un employé change de service, vous pouvez bloquer l'accès de cet employé à une application du service précédent, mais autoriser cet employé à accéder au même terminal à partir d'autres applications.
+* Annulez l'enregistrement d'un terminal et supprimez toutes les données d'enregistrement et de surveillance collectées pour le terminal.
 
-Access-blocking has the following characteristics:
+Le blocage des accès possède les caractéristiques suivantes :
 
-* The blocking operation is reversible. You can remove the block by changing the device or application status in {{ site.data.keys.mf_console }}.
-* The block applies only to protected resources. A blocked client can still use the application to access an unprotected resource. See Unprotected resources.
-* Access to adapter resources on {{ site.data.keys.mf_server }} is blocked immediately when you select this operation. However, this might not be the case for resources on an external server because the application might still have a valid access token that has not expired.
+* L'opération de blocage est réversible. Vous pouvez retirer le blocage en modifiant le statut de terminal ou d'application dans la console {{site.data.keys.mf_console }}.
+* Le blocage s'applique uniquement à des ressources protégées. Un client bloqué peut tout de même utiliser l'application pour accéder à une ressource non protégée. Voir la rubrique Ressources non protégées.
+* L'accès à des ressources d'adaptateur sur {{site.data.keys.mf_server }} est immédiatement bloqué lorsque vous sélectionnez cette opération. En revanche, cela n'est pas toujours le cas pour les ressources d'un serveur externe car l'application peut comporter un jeton d'accès valide qui n'a pas encore expiré.
 
-### Device status
+### Statut du terminal
 {: #device-status }
-{{ site.data.keys.mf_server }} maintains status information for every device that accesses the server. The possible status values are **Active**, **Lost**, **Stolen**, **Expired**, and **Disabled**. 
+{{site.data.keys.mf_server }} gère les informations de statut pour chaque terminal qui accède au serveur. Les valeurs de statut possibles sont **Actif**, **Perdu**, **Volé**, **Arrivé à expiration** et **Désactivé**. 
 
-The default device status is **Active**, which indicates that access from this device is not blocked. You can change the status to **Lost**, **Stolen**, or **Disabled** to block access to your application resources from the device. You can always restore the **Active** status to allow access again. See [Managing device access in {{ site.data.keys.mf_console }}](#managing-device-access-in-mobilefirst-operations-console).
+Le statut de terminal par défaut est **Actif**, indiquant que l'accès à partir de ce terminal n'est pas bloqué. Vous pouvez remplacer le statut par **Perdu**, **Volé** ou **Désactivé** pour bloquer l'accès à vos ressources d'application à partir du terminal. Vous pouvez toujours restaurer le statut **Actif** pour autoriser de nouveau l'accès. Voir [Gestion des accès des terminaux dans la console {{site.data.keys.mf_console }}](#managing-device-access-in-mobilefirst-operations-console).
 
-The **Expired** status is a special status that is set by {{ site.data.keys.mf_server }} after a preconfigured inactivity duration elapses since the last time that the device connected to this server instance. This status is used for license tracking, and it does not affect the access rights of the device. When a device with an **Expired** status reconnects to the server, its status is restored to **Active**, and the device is granted access the server.
+Le statut **Arrivé à expiration** est un statut spécial défini par le serveur {{site.data.keys.mf_server }} qui se déclenche au terme d'une durée d'inactivité préconfigurée depuis la dernière connexion du terminal à cette instance de serveur. Ce statut est utilisé pour le suivi des licences et n'affecte par les droits d'accès d'un terminal. Lorsqu'un terminal ayant le statut **Arrivé à expiration** se reconnecte au serveur, il repasse au statut **Actif** et il est autorisé à accéder au serveur.
 
-### Device display name
+### Nom d'affichage de terminal
 {: #device-display-name }
-{{ site.data.keys.mf_server }} identifies devices by a unique device ID, which is assigned by the {{ site.data.keys.product_adj }} client SDK. Setting a display name for a device allows you to search for the device by its display name. Application developers can use the `setDeviceDisplayName` method of the `WLClient` class to set the device display name. See the `WLClient` documentation in [{{ site.data.keys.product_adj }} client-side API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html). (The JavaScript class is `WL.Client`.) Java adapter developers (including security-check developers) can also set the device display name by using the `setDeviceDisplayName` method of the com.ibm.mfp.server.registration.external.model `MobileDeviceData` class. See [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc).
+{{site.data.keys.mf_server }} identifie les terminaux au moyen d'un ID de terminal unique, affecté par le kit de développement de logiciels du client {{site.data.keys.product_adj }}. Définir un nom d'affichage pour un terminal vous permet de rechercher ce dernier à partir de son nom d'affichage. Les développeurs d'applications peuvent utiliser la méthode `setDeviceDisplayName` de la classe `WLClient` pour définir le nom d'affichage de terminal. Voir la documentation `WLClient` dans [{{site.data.keys.product_adj }} client-side API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html). (La classe JavaScript est `WL.Client`.) Les développeurs d'adaptateurs Java (y compris les développeurs de contrôle de sécurité) peuvent également définir le nom d'affichage de terminal en utilisant la méthode `setDeviceDisplayName` de la classe com.ibm.mfp.server.registration.external.model `MobileDeviceData`. Voir [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc).
 
-### Managing device access in {{ site.data.keys.mf_console }}
+### Gestion des accès des terminaux dans la console {{site.data.keys.mf_console }}
 {: #managing-device-access-in-mobilefirst-operations-console }
-To monitor and manage device access to your resources, select the Devices tab in the {{ site.data.keys.mf_console }} dashboard.
+Pour surveiller et gérer les accès des terminaux à vos ressources, sélectionnez l'onglet Terminaux dans le tableau de bord de {{site.data.keys.mf_console }}.
 
-Use the search field to search for a device by the user ID that is associated with the device, or by the display name of the device (if set). See [Device display name](#device-display-name). You can also search for part of the user ID or the device display name (at least three characters).
+Utilisez la zone de recherche pour rechercher un terminal à l'aide de l'ID utilisateur associé à ce terminal ou du nom d'affichage du terminal (s'il est défini). Voir [Nom d'affichage de terminal](#device-display-name). Vous pouvez également rechercher une partie de l'ID utilisateur ou du nom d'affichage de terminal (au moins trois caractères).
 
-The search results display all the devices that match the specified user ID or device display name. For each device, you can see the device ID and display name, the device model, the operating system, and the list of users IDs that are associated with the device.
+Les résultats de la recherche affichent tous les terminaux qui correspondent à l'ID utilisateur ou au nom d'affichage de terminal spécifié. Pour chaque terminal, vous pouvez afficher l'ID et le nom d'affichage de terminal, le modèle de terminal, le système d'exploitation et la liste des ID utilisateur associés au terminal.
 
-The Device Status column shows the status of the device. You can change the status of the device to **Lost**, **Stolen**, or **Disabled**, to block access from the device to protected resources. Changing the status back to **Active** restores the original access rights.
+La colonne Statut du terminal affiche le statut du terminal. Vous pouvez remplacer le statut du terminal par **Perdu**, **Volé** ou **Désactivé** pour bloquer l'accès à vos ressources protégées à partir du terminal. Le fait de rétablir le statut **Actif** restaure les droits d'accès d'origine.
 
-You can unregister a device by selecting **Unregister** in the **Actions** column. Unregistering a device deletes the registration data of all the {{ site.data.keys.product_adj }} applications that are installed on the device. In addition, the device display name, the lists of users that are associated with the device, and the public attributes that the application registered for this device are deleted.
+Vous pouvez annuler l'enregistrement d'un terminal en sélectionnant **Annuler l'enregistrement** dans la colonne **Actions**. Le fait d'annuler l'enregistrement d'un terminal supprime les données d'enregistrement de toutes les applications {{site.data.keys.product_adj }} installées sur le terminal. En outre, le nom d'affichage de terminal, les listes d'utilisateurs associés au terminal et les attributs publics enregistrés par l'application pour ce terminal sont supprimés.
 
-**Note:** The **Unregister** action is not reversible. The next time that one of the {{ site.data.keys.product_adj }} applications on the device attempts to access the server, it will be registered again with a new device ID. When you select to register the device again, the device status is set to **Active**, and the device has access to protected resources, regardless of any previous blocks. Therefore, if you want to block a device, do not unregister it. Instead, change the device status to **Lost**, **Stolen**, or **Disabled**.
+**Remarque :** L'action **Annuler l'enregistrement** est irréversible. La prochaine fois que l'une des applications{{site.data.keys.product_adj }} du terminal tentera d'accéder au serveur, elle sera de nouveau enregistrée avec le nouvel ID de terminal. Lorsque vous choisissez de réenregistrer le terminal, celui-ci passe au statut **Actif** et il peut accéder aux ressources protégées, même s'il existe des blocages précédents. Par conséquent, si vous souhaitez bloquer un terminal, n'annulez pas son enregistrement. A la place, remplacez son statut par **Perdu**, **Volé** ou **Désactivé**.
 
-To view of all the applications that were accessed on a specific device, select the expand arrow icon next to the device ID in the devices table. Each row in the displayed applications table contains the name of the application, and the application's access status (whether access to protected resources is enabled for this application on this device). You can change the application's status to **Disabled** to block access from the application specifically on this device.
+Pour afficher toutes les applications qui ont fait l'objet d'un accès sur un terminal spécifique, sélectionnez la flèche de développement en regard de l'ID de terminal dans le tableau répertoriant les terminaux. Chaque ligne du tableau répertoriant les applications affichées contient le nom de l'application, ainsi que le statut d'accès de l'application (indiquant si l'accès aux ressources protégées est activé pour cette application sur ce terminal). Vous pouvez remplacer le statut de l'application par **Désactivé** pour bloquer l'accès à partir de l'application sur ce terminal en particulier.
 
-#### Jump to
+#### Accéder à
 {: #jump-to-1 }
 
-* [Remotely disabling application access to protected resources](#remotely-disabling-application-access-to-protected-resources)
-* [Displaying an administrator message](#displaying-an-administrator-message)
-* [Defining administrator messages in multiple languages](#defining-administrator-messages-in-multiple-languages)
+* [Désactivation à distance de l'accès d'une application à des ressources protégées](#remotely-disabling-application-access-to-protected-resources)
+* [Affichage d'un message d'administrateur](#displaying-an-administrator-message)
+* [Définition de messages d'administrateur dans plusieurs langues](#defining-administrator-messages-in-multiple-languages)
 
-### Remotely disabling application access to protected resources
+### Désactivation à distance de l'accès d'une application à des ressources protégées
 {: #remotely-disabling-application-access-to-protected-resources }
-Use {{ site.data.keys.mf_console }} (the console) to disable user access to a specific version of an application on a specific mobile operating system, and provide a custom message to the user.
+Utilisez {{site.data.keys.mf_console }} (la console) pour désactiver l'accès utilisateur à une version spécifique d'une application sur un système d'exploitation mobile spécifique et fournir un message personnalisé à l'utilisateur.
 
-1. Select your application version from the **Applications** section of the console's navigation sidebar, and then select the application **Management** tab.
-2. Change the status to **Access Disabled**.
-3. In the **URL of latest version** field, optionally provide a URL for a newer version of the application (usually in the appropriate public or private app store). For some environments, the Application Center provides a URL to access the Details view of an application version directly. See [Application properties](../../appcenter/appcenter-console/#application-properties).
-4. In the **Default notification message** field, add the custom notification message to display when the user attempts to access the application. The following sample message directs users to upgrade to the latest version:
+1. Sélectionnez votre version d'application dans la section **Applications** de la barre d'options latérale de la console, puis sélectionnez l'onglet **Gestion**.
+2. Remplacez le statut par **Accès désactivé**.
+3. Vous avez la possibilité d'indiquer dans la zone **Adresse URL de la dernière version** l'URL d'une version plus récente de l'application (généralement dans le magasin d'applications public ou privé approprié). Pour certains environnements, Application Center fournit une URL permettant d'accéder directement à la vue Détails d'une version d'application. Voir [Propriétés d'application](../../appcenter/appcenter-console/#application-properties).
+4. Ajoutez dans la zone **Message de notification par défaut** le message de notification personnalisé à afficher lorsque l'utilisateur tente d'accéder à l'application. L'exemple de message suivant indique aux utilisateurs qu'ils doivent effectuer une mise à niveau vers la version la plus récente :
 
    ```bash
    This version is no longer supported. Please upgrade to the latest version.
    ```
 
-5. In the **Supported locales** section, you can optionally provide the notification message in other languages.
-6. Select **Save** to apply your changes.
+5. Vous pouvez éventuellement indiquer le message de notification dans d'autres langues dans la section **Environnements locaux pris en charge**.
+6. Sélectionnez **Sauvegarder** pour appliquer vos modifications.
 
-When a user runs an application that was remotely disabled, a dialog window with your custom message is displayed. The message is displayed on any application interaction that requires access to a protected resource, or when the application tries to obtain an access token. If you provided a version-upgrade URL, the dialog has a **Get new version** button for upgrading to a newer version, in addition to the default **Close** button. If the user closes the dialog window without upgrading the version, they can continue to work with the parts of the application that do not require access to protected resources. However, any application interaction that requires access to a protected resource causes the dialog window to be displayed again, and the application is not granted access to the resource.
+Lorsqu'un utilisateur exécute une application qui a été désactivée à distance, une fenêtre de dialogue contenant votre message personnalisé s'affiche. Le message apparaît pour toute interaction d'application nécessitant d'accéder à une ressource protégée ou lorsque l'application tente d'obtenir un jeton d'accès. Si vous avez indiqué une URL de mise à niveau de version, la boîte de dialogue comporte un bouton **Obtenir la nouvelle version** permettant d'effectuer une mise à niveau vers une version plus récente, en plus du bouton **Fermer** affiché par défaut. Si l'utilisateur ferme la fenêtre de boîte de dialogue sans mettre à niveau la version, il peut continuer de gérer les parties de l'application pour lesquelles l'accès à des ressources protégées n'est pas requis. Toutefois, une interaction d'application pour laquelle l'accès à une ressource protégée est requis provoque une nouvelle apparition de la fenêtre de dialogue et l'application n'est pas autorisée à accéder à la ressource.
 
 <!-- **Note:** For cross-platform applications, you can customize the default remote-disable behavior: provide an upgrade URL for your application, as outlined in Step 3, and set the **showCloseOnRemoteDisableDenial** attribute in your application's initOptions.js file to false. If the attribute is not defined, define it. When an application-upgrade URL is provided and the value of **showCloseOnRemoteDisableDenial** is false, the **Close** button is omitted from the remote-disable dialog window, leaving only the Get new version button. This forces the user to upgrade the application. When no upgrade URL is provided, the **showCloseOnRemoteDisableDenial** configuration has no effect, and a single **Close** button is displayed. -->
 
-### Displaying an administrator message
+### Affichage d'un message d'administrateur
 {: #displaying-an-administrator-message }
-Follow the outlined procedure to configure the notification message. You can use this message to notify application users of temporary situations, such as a planned service downtime.
+Suivez la procédure décrite pour configurer le message de notification. Vous pouvez utiliser ce message pour signaler des situations temporaires aux utilisateurs de l'application, telles qu'une durée d'immobilisation prévue pour cause de maintenance.
 
-1. Select your application version from the **Applications** section of the {{ site.data.keys.mf_console }} navigation sidebar, and then select the application Management tab.
-2. Change the status to **Active and Notifying**.
-3. Add a custom startup message. The following sample message informs the user of planned maintenance work for the application:
+1. Sélectionnez votre version d'application dans la section **Applications** de la barre d'options latérale de la console {{site.data.keys.mf_console }}, puis sélectionnez l'onglet de gestion des applications.
+2. Remplacez le statut par **Actif et notification**.
+3. Ajoutez un message de démarrage personnalisé. L'exemple de message suivant signale à l'utilisateur une activité de maintenance planifiée pour l'application :
 
    ```bash
    The server will be unavailable on Saturday between 4 AM to 6 PM due to planned maintenance.
    ```
 
-4. In the Supported locales section, you can optionally provide the notification message in other languages.
+4. Vous pouvez éventuellement indiquer le message de notification dans d'autres langues dans la section Environnements locaux pris en charge.
 
-5. Select **Save** to apply your changes.
+5. Sélectionnez **Sauvegarder** pour appliquer vos modifications.
 
-The message is displayed when the application first uses {{ site.data.keys.mf_server }} to access a protected resource, or obtain an access token. If the application acquires an access token when it starts, the message is displayed at this stage. Otherwise, the message is displayed on the first request from the application to access a protected resource or obtain an access token. The message is displayed only once, for the first interaction.
+Le message apparaît la première fois que l'application utilise {{site.data.keys.mf_server }} pour accéder à une ressource protégée ou pour obtenir un jeton d'accès. Si l'application acquiert un jeton d'accès lorsqu'elle démarre, le message s'affiche à ce moment-là. Sinon, le message apparaît lors de la première demande de l'application pour accéder à une ressource protégée ou obtenir un jeton d'accès. Le message ne s'affiche qu'une seule fois, pour la première interaction.
 
-### Defining administrator messages in multiple languages
+### Définition de messages d'administrateur dans plusieurs langues
 {: #defining-administrator-messages-in-multiple-languages }
-<b>Note:</b> In Microsoft Internet Explorer (IE) and Microsoft Edge, administrative messages are displayed according to the operating system's region-format preference, and not according to the configured browser or operating-system display-language preferences. See the [IE and Edge web-application limitations](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
+<b>Remarque :</b> Dans Microsoft Internet Explorer (IE) et Microsoft Edge, des messages d'administration s'affichent en fonction de la définition des paramètres de région d'un système d'exploitation et non en fonction des préférences de langue configurées pour le navigateur ou le système d'exploitation. Voir[Limitations des applications Web IE et Edge](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
 
-Follow the outlined procedure to configure multiple languages for displaying the application administration messages that you defined through the console. The messages are sent based on the locale of the device, and must comply with the standards that the mobile operating system uses to specify locales.
+Suivez la procédure décrite pour configurer plusieurs langues dans lesquelles afficher les messages d'administration d'application que vous avez définis via la console. Les messages sont envoyés en fonction de l'environnement local du terminal et doivent être conformes aux normes utilisées par le système d'exploitation mobile pour spécifier les environnements locaux.
 
-1. Select your application version from the **Applications** section of the {{ site.data.keys.mf_console }} navigation sidebar, and then select the application **Management** tab.
-2. Select the status **Active and Notifying** or **Access Disabled**.
-3. Select **Update Locales**. In the **Upload File** section of the displayed dialog window, select **Upload**, and browse to the location of a CSV file that defines the locales.
+1. Sélectionnez votre version d'application dans la section **Applications** de la barre d'options latérale de la console {{site.data.keys.mf_console }}, puis sélectionnez l'onglet **Gestion** de l'application.
+2. Sélectionnez le statut **Actif et notification** ou **Accès désactivé**.
+3. Sélectionnez **Mettre à jour les environnements locaux**. Dans la section **Télécharger le fichier** de la fenêtre de dialogue affichée, sélectionnez **Télécharger** et accédez à l'emplacement d'un fichier CSV qui définit les environnements locaux.
 
-   Each line in the CSV file contains a pair of comma-separated strings. The first string is the locale code (such as fr-FR for French (France) or en for English), and the second string is the message text in the corresponding language. The specified locale codes must comply with the standards that the mobile operating system uses to specify locales, such as ISO 639-1, ISO 3166-2, and ISO 15924.
+   Chaque ligne du fichier CSV contient une paire de chaînes séparées par des virgules. La première chaîne est le code d'environnement local (par exemple, fr-FR pour Français (France) ou en pour Anglais), et la seconde chaîne est le texte de message dans la langue correspondante. Les codes d'environnement local spécifiés doivent être conformes aux normes utilisées par le système d'exploitation mobile pour indiquer les environnements locaux, par exemple, ISO 639-1, ISO 3166-2 et ISO 15924.
     
-   > **Note:** To create the CSV file, you must use an editor that supports UTF-8 encoding, such as Notepad.
+   > **Remarque :** Pour créer le fichier CSV, vous devez utiliser un éditeur prenant en charge le codage UTF-8, tel que Notepad.
 
-   Following is a sample CSV file that defines the same message for multiple locales:
+   Voici un exemple de fichier CSV qui définit le même message pour plusieurs environnements locaux :
 
    ```xml
    en,Your application is disabled
@@ -145,60 +145,61 @@ Follow the outlined procedure to configure multiple languages for displaying the
    he,האפליקציה חסמומה
    ```
 
-4. In the **Verify notification message** section, you can see a table of the locale codes and messages from your CSV file. Verify the messages, and select **OK**. 
-You can select Edit, at any time, to replace the locales CSV file. You can also use this option to upload an empty CSV file to remove all locales.
-5. Select **Save** to apply your changes.
+4. Un tableau répertoriant les codes d'environnement local et les messages de votre fichier CSV est visible dans la section **Vérification des messages de notification
+**. Vérifiez les messages, puis sélectionnez **OK**. 
+Vous pouvez sélectionner l'option Editer à tout moment afin de remplacer le fichier CSV d'environnements locaux. Vous pouvez également utiliser cette option pour envoyer par téléchargement un fichier CSV vide et retirer tous les environnements locaux.
+5. Sélectionnez **Sauvegarder** pour appliquer vos modifications.
 
-The localized notification message is displayed on the user's mobile device, according to the locale of the device. If no message was configured for the device locale, the default message that you provided is displayed.
+Le message de notification localisé s'affiche sur le terminal mobile de l'utilisateur, en fonction de l'environnement local du terminal. Si aucun message n'a été configuré pour l'environnement local de terminal, le message par défaut que vous avez indiqué s'affiche.
 
-## Application status and token licensing
+## Statut d'application et octroi de licence de jeton
 {: #application-status-and-token-licensing }
-You must manually restore the correct application status in {{ site.data.keys.mf_console }} after Blocked status because of insufficient tokens.
+Vous devez restaurer manuellement le statut d'application approprié dans la console {{site.data.keys.mf_console }} après le statut Bloqué en raison d'un nombre de jetons insuffisant.
 
-If you use token licensing and you no longer have enough license tokens for an application, the application status of all versions of the application changes to **Blocked**. You are no longer able to change the status of any version of the application. The following message is displayed in {{ site.data.keys.mf_console }}:
-
-```bash
-The application got blocked because its license expired
-```
-
-If later enough tokens to run the application become free or your organization purchases more tokens, the following message is displayed in {{ site.data.keys.mf_console }}:
+Si vous utilisez l'octroi de licence de jeton et que vous ne disposez plus de suffisamment de jetons de licence pour une application, le statut d'application de toutes les versions de l'application devient **Bloqué**. Vous ne pouvez plus modifier le statut de n'importe quelle version de l'application. Le message suivant s'affiche dans la console{{site.data.keys.mf_console }} :
 
 ```bash
-The application got blocked because its license expired but a license is available now
+L'application a été bloquée car sa licence a expiré
 ```
 
-The display status is still **Blocked**. You must restore the correct current status manually from memory or your own records by editing the Status field. {{ site.data.keys.product }} does not manage the display of **Blocked** status in {{ site.data.keys.mf_console }} of an application that was blocked because of insufficient license tokens. You are responsible for restoring such a blocked application to a real status that can be displayed through {{ site.data.keys.mf_console }}.
+Si un nombre suffisant de jetons pour exécuter l'application se libère ultérieurement ou si votre organisation acquiert d'autres jetons, le message suivant s'affiche dans la console {{site.data.keys.mf_console }} :
 
-## Error log of operations on runtime environments
+```bash
+L'application a été bloquée car sa licence a expiré. Une nouvelle licence est désormais disponible.
+```
+
+Le statut d'affichage est toujours **Bloqué**. Vous devez restaurer manuellement le statut actuel correct de la mémoire ou de vos propres enregistrements en éditant la zone Statut. {{site.data.keys.product }} ne gère pas l'affichage du statut **Bloqué** dans la console {{site.data.keys.mf_console }} d'une application qui a été bloquée en raison d'un nombre de jetons de licence insuffisant. Il vous incombe de restaurer un statut réel pour une application ainsi bloquée pouvant être affiché via la console {{site.data.keys.mf_console }}.
+
+## Journal des erreurs liées aux opérations sur des environnements d'exécution
 {: #error-log-of-operations-on-runtime-environments }
-Use the error log to access failed management operations initiated from {{ site.data.keys.mf_console }} or the command line on the selected runtime environment, and to see the effect of the failure on the servers.
+Utilisez le journal des erreurs pour accéder aux opérations de gestion ayant échoué initiées à partir de la console {{site.data.keys.mf_console }} ou de la ligne de commande sur l'environnement d'exécution sélectionné et pour voir l'effet de cet échec sur les serveurs.
 
-When a transaction fails, the status bar displays a notification of the error and shows a link to the error log. Use the error log to have more detail about the error, for example, the status of each server with a specific error message, or to have a history of errors. The error log shows the most recent operation first.
+Lorsqu'une transaction échoue, la barre de statut affiche une notification de l'erreur et affiche un lien vers le journal des erreurs. Utilisez le journal des erreurs pour obtenir davantage de détails sur l'erreur, par exemple, le statut de chaque serveur avec un message d'erreur spécifique, ou pour obtenir l'historique des erreurs. Le journal des erreurs affiche l'opération la plus récente en premier.
 
-You access the error log by clicking **Error log** of a runtime environment in {{ site.data.keys.mf_console }}.
+Vous accédez au journal des erreurs en cliquant sur **Journal des erreurs** pour un environnement d'exécution dans la console {{site.data.keys.mf_console }}.
 
-Expand the row that refers to the failed operation to access more information about the current state of each server. To access the complete log, download the log by clicking **Download log**.
+Développez la ligne qui fait référence à l'opération ayant échoué afin d'accéder à d'autres informations sur l'état en cours de chaque serveur. Pour accéder au journal complet, téléchargez- celui-ci en cliquant sur **Télécharger le journal**.
 
-![error log in the console](error-log.png)
+![Journal des erreurs dans la console](error-log.png)
 
-## Audit log of administration operations
+## Journal d'audit des opérations d'administration
 {: #audit-log-of-administration-operations }
-In the {{ site.data.keys.mf_console }}, you can refer to an audit log of administration operations.
+Dans la console {{site.data.keys.mf_console }}, vous pouvez faire référence à un journal d'audit des opérations d'administration.
 
-{{ site.data.keys.mf_console }} provides access to an audit log for login, logout, and all administration operations, such as deploying apps or adapters or locking apps. The audit log can be disabled by setting the **mfp.admin.audit** Java Naming and Directory Interface (JNDI) property on the web application of the {{ site.data.keys.product_adj }} administration service to **false**.
+{{site.data.keys.mf_console }} fournit un accès à un journal d'audit pour la connexion, la déconnexion et toutes les opérations d'administration, telles que le déploiement d'applications ou d'adaptateurs ou le verrouillage d'applications. Le journal d'audit peut être désactivé en affectant la valeur **false** à la propriété JNDI (Java Naming and Directory Interface) **mfp.admin.audit** sur l'application Web du service d'administration de {{site.data.keys.product_adj }}.
 
-To access the audit log, click the user name in the header bar and select **About**, click **Additional support information**, and then **Download audit log**.
+Pour accéder au journal d'audit, cliquez sur le nom d'utilisateur dans la barre d'en-tête et sélectionnez **A propos**, cliquez sur **Informations de support supplémentaires**, puis sur **Télécharger le journal d'audit**.
 
-| Field name | Description | 
+| Nom de zone | Description | 
 |------------|-------------|
-| Timestamp	 | Date and time when the record was created. |
-| Type	     | The type of operation. See list of operation types below for the possible values. |
-| User	     | The **username** of the user who is signed in. |
-| Outcome	 | The outcome of the operation; possible values are SUCCESS, ERROR, PENDING. |
-| ErrorCode	 | If the outcome is ERROR, ErrorCode indicates what the error is. |
-| Runtime	 | Name of the {{ site.data.keys.product_adj }} project that is associated with the operation. |
+| Timestamp	 | Date et heure auxquelles l'enregistrement a été créé. |
+| Type	     | Type d'opération. Pour connaître les valeurs possibles, voir la liste des types d'opération. |
+| User	     | **Nom** de l'utilisateur qui est connecté. |
+| Outcome	 | Résultat de l'opération : les valeurs possibles sont SUCCESS, ERROR, PENDING. |
+| ErrorCode	 | Si le résultat est ERROR, ErrorCode indique de quelle erreur s'il s'agit. |
+| Runtime	 | Nom du projet {{site.data.keys.product_adj }} qui est associé à l'opération. |
 
-The following list shows the possible values of Type of operation.
+La liste suivante répertorie les valeurs de type d'opération possibles :
 
 * Login
 * Logout

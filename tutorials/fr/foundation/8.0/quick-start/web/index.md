@@ -1,55 +1,55 @@
 ---
 layout: tutorial
-title: Web app end-to-end demonstration
+title: Application Web - Démonstration de bout en bout
 breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-The purpose of this demonstration is to experience an end-to-end flow:
+Cette démonstration présente un processus complet :
 
-1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
-2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
-3. The application logic is changed to make a resource request.
+1. Une application exemple fournie avec le kit SDK client {{site.data.keys.product_adj }} est enregistrée et téléchargée à partir de la console {{site.data.keys.mf_console }}.
+2. Un nouvel adaptateur ou un adaptateur fourni est déployé sur la console {{site.data.keys.mf_console }}.  
+3. La logique d'application est changée afin d'effectuer une demande de ressource.
 
-**End result**:
+**Résultat final** :
 
-* Successfully pinging the {{ site.data.keys.mf_server }}.
-* Successfully retrieving data using an adapter.
+* Interrogation par commande ping du serveur {{site.data.keys.mf_server }} réussie.
+* Extraction réussie des données à l'aide d'un adaptateur.
 
-#### Prerequisites:
+#### Prérequis :
 {: #prerequisites }
-* A modern web browser
-* *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
-* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* Un navigateur Web récent
+* *Facultatif* - {{site.data.keys.mf_cli }} ([téléchargement]({{site.baseurl}}/downloads))
+* *Facultatif* - Serveur {{site.data.keys.mf_server }} autonome ([téléchargement]({{site.baseurl}}/downloads))
 
-### 1. Starting the {{ site.data.keys.mf_server }}
+### 1. Démarrage du serveur {{site.data.keys.mf_server }}
 {: #starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+Assurez-vous d'avoir [créé une instance Mobile Foundation](../../bluemix/using-mobile-foundation) ou  
+Si vous utilisez le kit [{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), accédez au dossier du serveur puis exécutez la commande `./run.sh` sous Mac et Linux ou `run.cmd` sous Windows.
 
-### 2. Creating and registering an application
+### 2. Création et enregistrement d'une application
 {: #creating-and-registering-an-application }
-In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+Dans une fenêtre de navigateur, ouvrez la console {{site.data.keys.mf_console }} en entrant l'URL `http://your-server-host:server-port/mfpconsole`. Dans le cas d'une exécution locale, entrez l'URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Le nom d'utilisateur et le mot de passe sont *admin/admin*.
  
-1. Click the **New** button next to **Applications**
-    * Select the **Web** platform
-    * Enter **com.ibm.mfpstarterweb** as the **application identifier**
-    * Click on **Register application**
+1. Cliquez sur le bouton **Nouveau** en regard de l'option **Applications**
+    * Sélectionnez la plateforme **Web**
+    * Entrez **com.ibm.mfpstarterweb** en tant qu'**identificateur d'application**
+    * Cliquez sur **Enregistrer l'application**
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-web.png"/>
+    <img class="gifplayer" alt="Enregistrement d'une application" src="register-an-application-web.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the Web sample application.
+2. Cliquez sur le titre **Obtenir le code de démarrage** puis indiquez que vous souhaitez télécharger l'application exemple Web.
 
-    <img class="gifplayer" alt="Download sample application" src="download-starter-code-web.png"/>
+    <img class="gifplayer" alt="Téléchargement de l'application exemple" src="download-starter-code-web.png"/>
  
-### 3. Editing application logic
+### 3. Edition d'une logique d'application
 {: #editing-application-logic }
-1. Open the project in your code editor of choice.
+1. Ouvrez le projet dans l'éditeur de code de votre choix.
 
-2. Select the **client/js/index.js** file and paste the following code snippet, replacing the existing `WLAuthorizationManager.obtainAccessToken()` function:
+2. Sélectionnez le fichier **client/js/index.js** et collez le fragment de code suivant en remplaçant la fonction `WLAuthorizationManager.obtainAccessToken()` existante :
 
    ```javascript
    WLAuthorizationManager.obtainAccessToken()
@@ -82,37 +82,36 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
         );
    ```
     
-### 4. Deploy an adapter
+### 4. Déploiement d'un adaptateur
 {: #deploy-an-adapter }
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
+Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et déployez-le à partir de la console {{site.data.keys.mf_console }} en sélectionnant **Actions → Déployer un adaptateur**.
 
-Alternatively, click the **New** button next to **Adapters**.  
+Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **Adaptateurs**.  
         
-1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
+1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'adaptateur **Java** exemple "Hello World".
 
-   > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
-
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+   > Si Maven et {{site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
+2. A partir d'une fenêtre de ligne de commande****, accédez au dossier racine du projet Maven de l'adaptateur et exécutez la commande :
 
    ```bash
    mfpdev adapter build
    ```
 
-3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+3. Une fois la génération terminée, déployez-la à partir de la console {{site.data.keys.mf_console }} en utilisant l'option **Actions → Déployer un adaptateur**. L'adaptateur est disponible dans le dossier **[adaptateur]/target**.
     
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
+    <img class="gifplayer" alt="Déploiement d'un adaptateur" src="create-an-adapter.png"/>   
 
 
-<img src="web-success.png" alt="sample application" style="float:right"/>
-### 5. Testing the application
+<img src="web-success.png" alt="application exemple" style="float:right"/>
+### 5. Test de l'application
 {: #testing-the-application }
-1. From a **Command-line** window, navigate to the **[project root] → node-server** folder.
-2. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
-3. Open the **[project root] → node-server → server.js** file and edit the **host** and **port** variables with the correct values for your {{ site.data.keys.mf_server }}.
-    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**. 
+1. A partir d'une fenêtre de ligne de commande****, accédez au dossier **[racine projet] → node-server**.
+2. Exécutez la commande `npm start` pour installer la configuration Node.js requise et démarrer le serveur Node.js.
+3. Ouvrez le fichier **[racine projet] → node-server → server.js** puis modifiez les variables **host** et **port** en les remplaçant par les valeurs correctes de votre serveur {{site.data.keys.mf_server }}.
+    * Si vous utilisez un serveur {{site.data.keys.mf_server }} local, les valeurs sont généralement **http**, **localhost** et **9080**.
+    * Si vous utilisez un serveur {{site.data.keys.mf_server }} distant (sur Bluemix), les valeurs sont généralement **https**, **your-server-address** et **443**. 
 
-   For example:  
+   Exemple :  
     
    ```javascript
    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // The Mobile Foundation server address
@@ -120,34 +119,34 @@ Alternatively, click the **New** button next to **Adapters**.
    var mfpURL = host + ':443'; // The Mobile Foundation server port number
    ```
    
-4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
+4. A partir de votre navigateur, accédez à l'URL [http://localhost:9081/home](http://localhost:9081/home).
 
 <br>
-#### Secure Origins Policy
+#### Règle concernant les origines sécurisées
 {: #secure-origins-policy }
-When using Chrome during development, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
+Lors de l'utilisation de Chrome pendant le développement, le navigateur peut ne pas autoriser le chargement d'une application utilisant à la fois le protocole HTTP et un hôte qui n'est **pas** "localhost". Cette restriction est due à la règle des origines sécurisées implémentée et utilisée par défaut dans ce navigateur.
 
-To overcome this, you can start the Chrome browser with the following flag:
+Pour contourner ce problème, il suffit de démarrer le navigateur Chrome en indiquant :
 
 ```bash
 --unsafely-treat-insecure-origin-as-secure="http://replace-with-ip-address-or-host:port-number" --user-data-dir=/test-to-new-user-profile/myprofile
 ```
 
-- Replace "test-to-new-user-profile/myprofile" with the location of a folder that will act as a new Chrome user profile for the flag to work.
+- Remplacez "test-to-new-user-profile/myprofile" par l'emplacement d'un dossier qui se comportera comme un nouveau profil utilisateur Chrome afin que la commande aboutisse.
 
 <br clear="all"/>
-### Results
+### Résultats
 {: #results }
-* Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
-* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
+* Si vous cliquez sur **Ping {{site.data.keys.mf_server }}**, la mention **Connected to {{site.data.keys.mf_server }}** s'affiche.
+* Si l'application a pu se connecter au serveur {{site.data.keys.mf_server }}, un appel de demande de ressource utilisant l'adaptateur Java déployé aura lieu.
 
-The adapter response is then displayed in an alert.
+La réponse de l'adaptateur est ensuite affichée dans une alerte.
 
-## Next steps
+## Etapes suivantes
 {: #next-steps }
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
+Pour en savoir plus notamment sur l'utilisation d'adaptateurs dans des applications et sur le mode d'intégration de services supplémentaires (notifications Push, par exemple) à l'aide de l'infrastructure de sécurité {{site.data.keys.product_adj }} :
 
-- Review the [Application development](../../application-development/) tutorials
-- Review the [Adapters development](../../adapters/) tutorials
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review [All Tutorials](../../all-tutorials)
+- Consultez les tutoriels [Developing Applications](../../application-development/) 
+- Consultez les tutoriels [Adapters development](../../adapters/) 
+- Consultez les tutoriels [Authentication and security](../../authentication-and-security/)
+- Consultez [tous les tutoriels](../../all-tutorials)

@@ -1,497 +1,497 @@
 ---
 layout: tutorial
-title: The Application Center console
+title: Console Application Center
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-With the Application Center console, you can manage the repository of the Application Center and your applications.
+La console Application Center vous permet de gérer le référentiel Application Center et vos applications.
 
-The Application Center console is a web application to manage the repository of the Application Center. The Application Center repository is the central location where you store the mobile applications that can be installed on mobile devices.
+La console Application Center est une application Web permettant de gérer le référentiel Application Center. Le référentiel Application Center est l'emplacement où vous centralisez les applications mobiles qui peuvent être installées sur des terminaux mobiles.
 
-Use the Application Center console to:
+Utilisez la console Application Center pour les opérations suivantes :
 
-* Upload applications that are written for these operating systems: Android, iOS, Windows 8 (Windows Store packages only), or Windows Phone 8.
-* Manage several different versions of mobile applications.
-* Review the feedback of testers of mobile applications.
-* Define the users who have the rights to list and install an application on the mobile devices.
-* Track which applications are installed on which devices.
+* Télécharger des applications écrites pour les systèmes d'exploitation suivants : Android, iOS, Windows 8 (modules Windows Store uniquement) ou Windows Phone 8.
+* Gérer plusieurs versions différentes d'applications mobiles.
+* Examiner les commentaires des testeurs d'applications mobiles.
+* Définir les utilisateurs qui ont le droit de répertorier et d'installer une application sur les terminaux mobiles.
+* Suivre quelles applications sont installées sur quels terminaux.
 
-> **Notes:**
+> **Remarques :**
 >
-> * Only users with the administrator role can log in to the Application Center console.
-> * Multicultural support: the user interface of the Application Center console has not been translated.
+> * Seuls les utilisateurs disposant du rôle d'administrateur peuvent se connecter à la console Application Center.
+> * Support multiculturel : l'interface utilisateur de la console Application Center n'a pas été traduite.
 
-#### Jump to
+#### Accéder à
 {: #jump-to }
-* [Starting the Application Center console](#starting-the-application-center-console)
-* [Troubleshooting a corrupted login page (Apache Tomcat)](#troubleshooting-a-corrupted-login-page-apache-tomcat)
-* [Troubleshooting a corrupted login page in Safari browsers](#troubleshooting-a-corrupted-login-page-in-safari-browsers)
-* [Application Management](#application-management)
-* [Adding a mobile application](#adding-a-mobile-application)
-* [Adding an application from a public app store](#adding-an-application-from-a-public-app-store)
-* [Application properties](#application-properties)
-* [Editing application properties](#editing-application-properties)
-* [Upgrading a mobile application in {{ site.data.keys.mf_server }} and the Application Center](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
-* [Downloading an application file](#downloading-an-application-file)
+* [Démarrage de la console Application Center](#starting-the-application-center-console)
+* [Traitement des incidents liés à une page de connexion endommagée (Apache Tomcat)](#troubleshooting-a-corrupted-login-page-apache-tomcat)
+* [Traitement des incidents liés à une page de connexion endommagée (navigateurs Safari)](#troubleshooting-a-corrupted-login-page-in-safari-browsers)
+* [Gestion des applications](#application-management)
+* [Ajout d'une application mobile](#adding-a-mobile-application)
+* [Ajout d'une application à partir d'un magasin d'applications public](#adding-an-application-from-a-public-app-store)
+* [Propriétés d'application](#application-properties)
+* [Edition des propriétés de l'application](#editing-application-properties)
+* [Mise à niveau d'une application mobile dans {{site.data.keys.mf_server }} et Application Center](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
+* [Téléchargement d'un fichier d'application](#downloading-an-application-file)
 
-In the Application Center console, you can see reviews about mobile application versions sent by users.
+Dans la console Application Center, vous pouvez voir des commentaires envoyés par les utilisateurs sur les versions d'applications mobiles.
 
-* [User and group management](#user-and-group-management)
-* [Access control](#access-control)
-* [Managing access control](#managing-access-control)
-* [Device Management](#device-management)
-* [Application enrollment tokens in Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal)
-* [Signing out of the Application Center console](#signing-out-of-the-application-center-console)
+* [Gestion des utilisateurs et des groupes](#user-and-group-management)
+* [Contrôle d'accès](#access-control)
+* [Gestion du contrôle d'accès](#managing-access-control)
+* [Gestion des terminaux](#device-management)
+* [Jetons d'inscription d'application dans Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal)
+* [Déconnexion de la console Application Center](#signing-out-of-the-application-center-console)
 
-## Starting the Application Center console
+## Démarrage de la console Application Center
 {: #starting-the-application-center-console }
-You can start the Application Center with your web browser and log in if you have the administrator role.
+Vous pouvez démarrer Application Center dans votre navigateur Web et vous connecter si vous disposez du rôle d'administrateur.
 
-1. Start a web browser session on your desktop.
-2. Contact your system administrator to obtain the address and port of the server where the Application Center is installed.
-3. Enter the following URL: `http://server/appcenterconsole`
-4. Where **server** is the address and port of the server where the Application Center is installed: `http://localhost:9080/appcenterconsole`
+1. Démarrez une session de navigateur Web sur votre bureau.
+2. Contactez votre administrateur système pour obtenir l'adresse et le port du serveur sur lequel Application Center est installé.
+3. Entrez l'URL suivante : `http://server/appcenterconsole`
+4. Où **server** est l'adresse et le port du serveur sur lequel Application Center est installé : `http://localhost:9080/appcenterconsole`
 
-Log in to the Application Center console. Contact your system administrator to get your credentials so that you can log in to the Application Center console.
+Connectez-vous à la console Application Center. Contactez votre administrateur système pour obtenir vos données d'identification afin que vous puissiez vous connecter à la console Application Center.
 
-![Login of the Application Center console](ac_startconsole.jpg)
+![Connexion à la console Application Center](ac_startconsole.jpg)
 
-> **Note:** Only users with the administrator role can log in to the Application Center console.
+> **Remarque :** seuls les utilisateurs disposant du rôle d'administrateur peuvent se connecter à la console Application Center.
 
-## Troubleshooting a corrupted login page (Apache Tomcat)
+## Traitement des incidents liés à une page de connexion endommagée (Apache Tomcat)
 {: #troubleshooting-a-corrupted-login-page-apache-tomcat }
-You can recover from a corrupted login page of the Application Center console when the Application Center is running in Apache Tomcat.
+Vous pouvez récupérer d'une page de connexion endommagée de la console Application Center lorsqu'Application Center s'exécute dans Apache Tomcat.
 
-When the Application Center is running in Apache Tomcat, the use of a wrong user name or password might corrupt the login page of the Application Center console.
+Lorsqu'Application Center s'exécute dans Apache Tomcat, l'utilisation d'un nom d'utilisateur ou d'un mot de passe incorrect peut endommager la page de connexion de la console Application Center.
 
-When you try to log in to the console with an incorrect user name or an incorrect password, you receive an error message. When you correct the user name or password, instead of a successful login, you have one of the following errors; the message depends on your web browser.
+Lorsque vous tentez de vous connecter à la console avec un nom d'utilisateur incorrect ou un mot de passe incorrect, un message d'erreur s'affiche. Lorsque vous corrigez le nom d'utilisateur ou le mot de passe, au lieu d'une connexion réussie, vous recevez l'un des deux messages d'erreur suivants, en fonction de votre navigateur Web.
 
-* The same error message as before
-* The message **The connection was reset**
-* The message **The time allowed for login exceeded**
+* Le même message d'erreur que précédemment
+* Le message **La connexion a été réinitialisée**
+* Le message **Délai de connexion dépassé**
 
-The behavior is linked to the management by Apache Tomcat of the j_security_check servlet. This behavior is specific to Apache Tomcat and does not occur in any of the WebSphere  Application Server profiles.
+Ce comportement est lié à la gestion par Apache Tomcat du servlet j_security_check. Ce comportement est spécifique d'Apache Tomcat et ne se produit dans aucun des profils de WebSphere Application Server.
 
-The workaround is to click the refresh button of the browser to refresh the web page after a login failure. Then, enter the correct credentials.
+La solution de contournement consiste à cliquer sur le bouton d'actualisation du navigateur pour actualiser la page Web après un échec de connexion. Ensuite, entrez les données d'identification correctes.
 
-## Troubleshooting a corrupted login page in Safari browsers
+## Traitement des incidents liés à une page de connexion endommagée dans les navigateurs Safari
 {: #troubleshooting-a-corrupted-login-page-in-safari-browsers }
-You can recover from a corrupted login page of the Application Center console when you use the Safari browser.
+Vous pouvez récupérer d'une page de connexion endommagée de la console Application Center lorsque vous utilisez le navigateur Safari.
 
-When the Application Center console is open in a Safari browser, you might navigate away from the console. When you come back to the console, you might see the login page. Even though you enter the correct login details, you see the following message instead of a successful login: **HTTP Status 404 - appcenterconsole/j_security_check.**
+Lorsque la console Application Center est ouverte dans un navigateur Safari, vous devrez peut-être ouvrir un autre écran. Lorsque vous revenez à la console, vous pouvez voir la page de connexion. Même si vous entrez les détails de connexion corrects, le message suivant qui apparaît n'indique pas une connexion réussie : **HTTP Status 404 - appcenterconsole/j_security_check.**
 
-The behavior is linked to a caching problem in the Safari browser.
+Ce comportement est lié à un problème de mise en cache dans le navigateur Safari.
 
-The workaround is to trigger a forced reload when you see the login page without entered or autocompleted credentials. Here is how to trigger a forced reload:
+La solution de contournement consiste à déclencher un rechargement forcé lorsque vous voyez la page de connexion sans données d'identification entrées ou auto-complétées. Voici comment déclencher un rechargement forcé :
 
-* On a Mac computer, press Shift + the **Refresh** button.
-* On an iPad or iPhone device: Double-click the refresh button or clean the cache by closing Safari: you double-click the home button and then swipe Safari away.
+* Sur un ordinateur Mac, appuyez sur Maj + le bouton **Actualiser**.
+* Sur un terminal iPad ou iPhone : cliquez deux fois sur le bouton d'actualisation ou nettoyez le cache en fermant Safari. Pour cela, cliquez deux fois sur le bouton principal, puis effectuez un balayage vers le haut de la fenêtre Safari.
 
-## Application Management
+## Gestion des applications
 {: #application-management }
-You can use Application Management to add new applications and versions and to manage those applications.  
-The Application Center enables you to add new applications and versions and to manage those applications.
+Vous pouvez utiliser Application Management (gestion des applications) pour ajouter de nouvelles applications et versions et pour gérer ces applications.  
+Application Center vous permet d'ajouter de nouvelles applications et de nouvelles versions et de gérer ces applications.
 
-Click **Applications** to access Application Management.
+Cliquez sur **Applications** pour accéder à Application Management.
 
-### Application Center installed on WebSphere Application Server Liberty profile or on Apache Tomcat
+### Application Center installé sur le profil Liberty de WebSphere Application Server ou sur Apache Tomcat
 {: #application-center-installed-on-websphere-application-server-liberty-profile-or-on-apache-tomcat }
-Installations of the Application Center on these application servers, during installation of {{ site.data.keys.product_full }} with the IBM  Installation Manager package, have two different users defined that you can use to get started.
+Les installations d'Application Center sur ces serveurs d'applications, lors de l'installation d'{{site.data.keys.product_full }} avec le module IBM Installation Manager, comportent deux utilisateurs définis que vous pouvez utiliser pour commencer.
 
-* User with login **demo** and password **demo**
-* User with login **appcenteradmin** and password **admin**
+* Utilisateur avec l'ID de connexion **demo** et le mot de passe **demo**
+* Utilisateur avec l'ID de connexion **appcenteradmin** et le mot de passe **admin**
 
-### WebSphere Application Server full profile
+### Profil complet de WebSphere Application Server
 {: #websphere-application-server-full-profile }
-If you installed the Application Center on WebSphere  Application Server full profile, one user named appcenteradmin is created by default with the password indicated by the installer.
+Si vous avez installé le profil complet Application Center sur WebSphere Application Server, un utilisateur nommé appcenteradmin est créé par défaut avec le mot de passe indiqué par le programme d'installation.
 
-![Available applications](ac_app_mgt.jpg)
+![Applications disponibles](ac_app_mgt.jpg)
 
-## Adding a mobile application
+## Ajout d'une application mobile
 {: #adding-a-mobile-application }
-You can add applications to the repository on the server by using the Application Center console. These applications can then be installed on mobile devices by using the mobile client.
+Vous pouvez ajouter des applications au référentiel sur le serveur à l'aide de la console Application Center. Ces applications peuvent ensuite être installées sur des terminaux mobiles à l'aide du client mobile.
 
-In the Applications view, you can add applications to Application Center. Initially the list of applications is empty and you must upload an application file. Application files are described in this procedure.
+Dans la vue Applications, vous pouvez ajouter des applications à Application Center. Initialement, la liste des applications est vide et vous devez télécharger un fichier d'application. Les fichiers d'application sont décrits dans cette procédure.
 
-To add an application to make it available for installation on mobile devices:
+Pour ajouter une application afin de la rendre disponible pour l'installation sur des terminaux mobiles, procédez comme suit :
 
-1. Click **Add Application**.
-2. Click **Upload**.
-3. Select the application file to upload to the Application Center repository.
+1. Cliquez sur **Add Application**.
+2. Cliquez sur **Upload**.
+3. Sélectionnez le fichier d'application à télécharger dans le référentiel Application Center.
 
    ### Android
    {: #android }
-   The application file name extension is .apk.
+   L'extension du nom du fichier d'application est .apk.
 
    ### iOS
    {: #ios }
-   The application file name extension is .ipa for normal iOS applications.
+   L'extension de nom de fichier d'application est .ipa pour les applications iOS normales.
 
    ### Windows Phone 8
    {: #windows-phone-8 }
-   The application file name extension is .xap. The application must be signed with a company account. The application enrollment token for this company account must be made available to Windows Phone 8 devices before the application can be installed on the devices. See [Application enrollment tokens in Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal) for details.
+   L'extension du nom du fichier d'application est .xap. L'application doit être signée avec un compte de société. Le jeton d'inscription de l'application pour ce compte de société doit être mis à la disposition des terminaux Windows Phone 8 pour que l'application puisse être installée sur les terminaux. Voir [Jetons d'inscription d'application dans Windows 8 Universal](#application-enrollment-tokens-in-windows-8-universal) pour plus de détails.
 
    ### Windows 8
    {: #windows-8 }
-   The application is provided as a Windows Store package; the file extension is .appx.
+   L'application est fournie sous la forme d'un module Windows Store ; l'extension du fichier est .appx.
 
-   Windows Store .appx packages can depend on one or more Windows component library app packages, also known as "framework" packages. MobileFirst hybrid applications for Windows 8 depend on the Microsoft.WinJS framework package. When you use Microsoft Visual Studio to generate the application package, the dependencies packages are also generated and packaged as separate .appx files. To successfully install such applications by using the mobile client, you must upload the application .appx package and any other dependency package onto the Application Center server. When you upload a dependency package, it appears as inactive in the Application Center console. This behavior is expected, so that the framework package does not appear as an installable application in the client. Later, when a user installs an application, the mobile client checks whether the dependency is already installed on the device. If the dependency package is not installed, the client automatically retrieves the dependency package from the Application Center server and installs it on the device. For more information about dependencies, see [Dependencies](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies) in the Windows developer documentation about packages and deployment of applications.
+   Les modules .appx de Windows Store peuvent dépendre d'un ou plusieurs modules d'applications de bibliothèque de composants Windows, également appelés modules d'"infrastructure". Les applications hybrides MobileFirst pour Windows 8 dépendent du module d'infrastructure Microsoft.WinJS. Lorsque vous utilisez Microsoft Visual Studio pour générer le module d'application, les modules de dépendances sont également générés et préparés en tant que fichiers .appx distincts. Pour installer correctement ces applications à l'aide du client mobile, vous devez télécharger le module d'application .appx et tout autre module de dépendance sur le serveur Application Center. Lorsque vous téléchargez un module de dépendance, il apparaît comme inactif dans la console Application Center. Ce comportement est attendu, de sorte que le module d'infrastructure ne s'affiche pas comme une application installable dans le client. Plus tard, lorsqu'un utilisateur installe une application, le client mobile vérifie si la dépendance est déjà installée sur le terminal. Si le module de dépendance n'est pas installé, le client extrait automatiquement le module de dépendance du serveur Application Center et l'installe sur le terminal. Pour plus d'informations sur les dépendances, consultez [Dependencies](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies) dans la documentation du développeur Windows sur les modules et le déploiement des applications.
 
-4. Click **Next** to access the properties to complete the definition of the application.
-5. Complete the properties to define the application. See [Application properties](#application-properties) for information about how to complete property values.
-6. Click **Finish**.
+4. Cliquez sur **Next** pour accéder aux propriétés afin de configurer la définition de l'application.
+5. Configurez les propriétés pour définir l'application. Voir [Propriétés d'application](#application-properties) pour plus d'informations sur la définition des valeurs de propriété.
+6. Cliquez sur **Finish**.
 
-![Application properties, adding an application](ac_add_app_props.jpg)
+![Propriétés d'application, ajout d'une application](ac_add_app_props.jpg)
 
-## Adding an application from a public app store
+## Ajout d'une application à partir d'un magasin d'applications public
 {: #adding-an-application-from-a-public-app-store }
-Application Center supports adding to the catalog applications that are stored in third-party application stores, such as Google play or Apple iTunes.
+Application Center prend en charge l'ajout au catalogue d'applications disponibles dans des magasins d'applications tiers, tels que Google Play ou Apple iTunes.
 
-Applications from third-party app stores appear in the Application Center catalog like any other application, but users are directed to the corresponding public app store to install the application. You add an application from a public app store in the console, in the same place where you add an application that was created within your own enterprise. See [Adding a mobile application](#adding-a-mobile-application).
+Les applications provenant de magasins d'applications tiers apparaissent dans le catalogue Application Center comme n'importe quelle autre application, mais les utilisateurs sont dirigés vers le magasin d'applications public correspondant pour installer l'application. Vous ajoutez une application à partir d'un magasin d'applications public dans la console au même endroit où vous ajoutez une application qui a été créée dans votre propre entreprise. Voir [Ajout d'une application mobile](#adding-a-mobile-application).
 
-> **Note:** Currently, the Application Center supports only Google Play and Apple iTunes. Windows Phone Store and Windows Store are not yet supported.
+> **Remarque :** actuellement, Application Center ne prend en charge que Google Play et Apple iTunes. Windows Phone Store et Windows Store ne sont pas encore pris en charge.
 
-Instead of the application executable file, you must provide a URL to the third-party application store where the application is stored. To find the correct application link more easily, the console provides direct links in the **Add an application** page to the supported third-party application store websites.
+Au lieu du fichier exécutable d'application, vous devez fournir une URL vers le magasin d'applications tiers où l'application est stockée. Pour trouver le lien d'application correct plus facilement, la console fournit des liens directs dans la page **Add an application** vers les sites de magasins d'applications tiers pris en charge.
 
-The Google play store address is [https://play.google.com/store/apps](https://play.google.com/store/apps).
+L'adresse de Google Play Store est [https://play.google.com/store/apps](https://play.google.com/store/apps).
 
-The Apple iTunes store address is [https://linkmaker.itunes.apple.com/](https://linkmaker.itunes.apple.com/); use the linkmaker site rather than the iTunes site, because you can search this site for all kinds of iTunes items, including songs, podcasts, and other items that are supported by Apple. Only selecting iOS applications provides you with compatible links to create application links.
+L'adresse d'Apple iTunes Store est [https://linkmaker.itunes.apple.com/](https://linkmaker.itunes.apple.com/). Utilisez le site linkmaker plutôt que le site iTunes, car vous pouvez rechercher sur ce site toutes sortes d'éléments iTunes, y compris des chansons, des podcasts et d'autres éléments pris en charge par Apple. Seule la sélection d'applications iOS vous fournit des liens compatibles pour créer des liens d'application.
 
-1. Click the URL of the public app store that you want to browse.
-2. Copy the URL of the application in the third-party app store to the **Application URL** text field in the **Add an application** page of the Application Center console.
-    * **Google Play:**
-        * Select an application in the store.
-        * Click the detail page of the application.
-        * Copy the address bar URL.
-    * **Apple iTunes:**
-        * When the list of items is returned in the search result, select the item that you want.
+1. Cliquez sur l'URL du magasin d'applications public que vous souhaitez consulter.
+2. Copiez l'URL de l'application du magasin d'applications tiers dans la zone de texte **Application URL** de la page **Add an application** de la console Application Center.
+    * **Google Play :**
+        * Sélectionnez une application dans le magasin.
+        * Cliquez sur la page de détails de l'application.
+        * Copiez l'adresse URL de la barre d'adresse.
+    * **Apple iTunes :**
+        * Lorsque la liste d'éléments est renvoyée dans le résultat de la recherche, sélectionnez l'élément souhaité.
 
-        * At the bottom of the selected application, click **Direct Link** to open the application details page.
+        * En bas de l'application sélectionnée, cliquez sur **Direct Link** pour ouvrir la page des détails de l'application.
 
-        * Copy the address bar URL.
+        * Copiez l'adresse URL de la barre d'adresse.
 
-          **Note:** Do not copy the **Direct Link** to the Application Center. **Direct Link** is a URL with redirection, you will need to get the URL it redirects to.
+          **Remarque :** ne copiez pas le **Lien direct** dans Application Center. Ce **Lien direct** est une URL avec redirection, vous en aurez besoin pour obtenir l'URL cible de redirection.
 
-3. When the application link is in the **Application URL** text field of the console, click **Next** to validate the creation of the application link.
-    * If the validation is unsuccessful, an error message is displayed in the **Add an application** page. You can either try another link or cancel the attempt to create the current link.
-    * If the validation is successful, this action displays the application properties. You can then modify the application description in the application properties before you move to the next step.
+3. Lorsque le lien d'application se trouve dans la zone **Application URL** de la console, cliquez sur **Next** pour valider la création du lien d'application.
+    * Si la validation échoue, un message d'erreur s'affiche dans la page **Add an application**. Vous pouvez essayer un autre lien ou annuler la tentative de création du lien en cours.
+    * Si la validation est réussie, cette action permet d'afficher les propriétés de l'application. Vous pouvez ensuite modifier la description d'application dans les propriétés d'application avant de passer à l'étape suivante.
 
-    ![Modified application description in application properties](ac_add_public_app_details.jpg)
+    ![Description d'application modifiée dans les propriétés de l'application](ac_add_public_app_details.jpg)
 
-4. Click **Done** to create the application link.
+4. Cliquez sur **Done** pour créer le lien de l'application.
 
-    This action makes the application available to the corresponding version of the Application Center mobile client. A small link icon appears on the application icon to show that this application is stored in a public app store and is different from a binary app.
+    Cette action met l'application à la disposition de la version correspondante du client mobile Application Center. Une petite icône de lien apparaît sur l'icône de l'application pour indiquer que cette application est stockée dans un magasin public d'applications et diffère d'une application binaire.
 
-    ![Link to an application stored in Google play](ac_public_app_available.jpg)
+    ![Lien vers une application stockée dans Google Play](ac_public_app_available.jpg)
 
-## Application properties
+## Propriétés d'application
 {: #application-properties }
-Applications have their own sets of properties, which depend on the operating system on the mobile device and cannot be edited. Applications also have a common property and editable properties.
+Les applications disposent de leurs propres ensembles de propriétés, qui dépendent du système d'exploitation du terminal mobile et ne peuvent pas être modifiés. Les applications ont également une propriété commune et des propriétés modifiables.
 
-The values of the following fields are taken from the application and you cannot edit them.
+Les valeurs des zones suivantes sont extraites de l'application et vous ne pouvez pas les modifier.
 
 * **Package**.
 * **Internal Version**.
 * **Commercial Version**.
 * **Label**.
-* **External URL**; this property is supported for applications that run on Android, iOS, and Windows Phone 8.
+* **External URL**. Cette propriété est prise en charge pour les applications exécutées sur Android, iOS et Windows Phone 8.
 
-### Properties of Android applications
+### Propriétés des applications Android
 {: #properties-of-android-applications }
-For more information about the following properties, see the Android SDK documentation.
+Pour plus d'informations sur les propriétés suivantes, consultez la documentation du SDK Android.
 
-* **Package** is the package name of the application; **package** attribute of the manifest element in the manifest file of the application.
-* **Internal Version** is the internal version identification of the application; **android:versionCode** attribute of the **manifest** element in the manifest file of the application.
-* **Commercial Version** is the published version of the application.
-* **Label** is the label of the application; **android:label attribute** of the application element in the **manifest** file of the application.
-* **External URL** is a URL that you can use to have the mobile client of the Application Center started automatically in the Details view of the latest version of the current application.
+* **Package** est le nom du module de l'application ; attribut **package** de l'élément manifest dans le fichier manifeste de l'application.
+* **Internal Version** est l'identification de la version interne de l'application ; attribut **android:versionCode** de l'élément **manifest** dans le fichier manifeste de l'application.
+* **Commercial Version** est la version publiée de l'application.
+* **Label** est le libellé de l'application ; **android:label attribute** de l'élément application dans le fichier **manifest** de l'application.
+* **External URL** est une URL que vous pouvez utiliser pour que le client mobile Application Center démarre automatiquement dans la vue Details de la dernière version de l'application en cours.
 
-### Properties of iOS applications
+### Propriétés des applications iOS
 {: #properties-of-ios-applications }
-For more information about the following properties, see the iOS SDK documentation.
+Pour plus d'informations sur les propriétés suivantes, consultez la documentation du SDK iOS.
 
-* **Package** is the company identifier and the product name; **CFBundleIdentifier** key.
-* **Internal Version** is the build number of the application; **CFBundleVersion** key of the application.
-* **Commercial Version** is the published version of the application.
-* **Label** is the label of the application; **CFBundleDisplayName** key of the application.
-* **External URL** is a URL that you can use to have the mobile client of the Application Center started automatically in the Details view of the latest version of the current application.
+* **Package** est l'identifiant de la société et le nom du produit ; clé **CFBundleIdentifier**.
+* **Internal Version** est le numéro de génération de l'application ; clé **CFBundleVersion** de l'application.
+* **Commercial Version** est la version publiée de l'application.
+* **Label** est le libellé de l'application ; clé **CFBundleDisplayName** de l'application.
+* **External URL** est une URL que vous pouvez utiliser pour que le client mobile Application Center démarre automatiquement dans la vue Details de la dernière version de l'application en cours.
 
-### Properties of Windows Phone 8 applications
+### Propriétés des applications Windows Phone 8
 {: #properties-of-windows-phone-8-applications }
-For more information about the following properties, see the Windows Phone documentation.
+Pour plus d'informations sur les propriétés suivantes, consultez la documentation Windows Phone.
 
-* **Package** is the product identifier of the application; **ProductID** attribute of the App element in the manifest file of the application.
-* **Internal Version** is the version identification of the application; **Version** attribute of the App element in the manifest file of the application.
-* **Commercial Version**, like Internal Version, is the version of the application.
-* **Label**() is the title of the application; **Title** attribute of the **App** element in the manifest file of the application.
-* **Vendor** is the vendor who created the application; **Publisher** attribute of the **App** element in the manifest file of the application.
-* **External URL** is a URL that you can use to have the mobile client of the Application Center started automatically in the Details view of the latest version of the current application.
-* **Commercial Version**, like **Internal Version**, is the version of the application.
+* **Package** est l'identificateur de produit de l'application ; attribut **ProductID** de l'élément App dans le fichier manifeste de l'application.
+* **Internal Version** est l'identification de la version de l'application ; attribut **Version** de l'élément App dans le fichier manifeste de l'application.
+* **Commercial Version**, comme la version interne, est la version de l'application.
+* **Label**() est le titre de l'application ; attribut **Title** de l'élément **App** dans le fichier manifeste de l'application.
+* **Vendor** est le fournisseur qui a créé l'application ; attribut **Publisher** de l'élément **App** dans le fichier manifeste de l'application.
+* **External URL** est une URL que vous pouvez utiliser pour que le client mobile Application Center démarre automatiquement dans la vue Details de la dernière version de l'application en cours.
+* **Commercial Version**, comme **Internal Version**, est la version de l'application.
 
-### Properties of Windows Store applications
+### Propriétés des applications Windows Store
 {: #properties-of-windows-store-applications }
-For more information about the following properties, see the Windows Store documentation about application development.
+Pour plus d'informations sur les propriétés suivantes, consultez la documentation Windows Store sur le développement d'applications.
 
-* **Package** is the product identifier of the application; **Package** name attribute in the manifest file of the application.
-* **Internal Version** is the version identification of the application; **Version** attribute in the manifest file of the application.
-* **Commercial Version**, like **Internal Version**, is the version of the application.
-* **Label** is the title of the application; **Package** display name attribute in the manifest file of the application.
-* **Vendor** is the vendor who created the application; **Publisher** attribute in the manifest file of the application.
+* **Package** est l'identificateur de produit de l'application ; attribut de nom **Package** dans le fichier manifeste de l'application.
+* **Internal Version** est l'identification de la version de l'application ; attribut **Version** dans le fichier manifeste de l'application.
+* **Commercial Version**, comme **Internal Version**, est la version de l'application.
+* **Label** est le titre de l'application ; attribut de nom d'affichage **Package** dans le fichier manifeste de l'application.
+* **Vendor** est le fournisseur qui a créé l'application ; attribut **Publisher** dans le fichier manifeste de l'application.
 
-### Common property: Author
+### Propriété commune : Author
 {: #common-property-author }
-The **Author** field is read-only. It displays the **username** attribute of the user who uploads the application.
+La zone **Author** est en lecture seule. Elle affiche l'attribut **username** de l'utilisateur qui télécharge l'application.
 
-### Editable properties
+### Propriétés modifiables
 {: #editable-properties }
-You can edit the following fields:
+Vous pouvez modifier les zones suivantes :
 
 **Description**  
-Use this field to describe the application to the mobile user.
+Cette zone permet de décrire l'application pour l'utilisateur mobile.
 
 **Recommended**  
-Select **Recommended** to indicate that you encourage users to install this application. Recommended applications appear as a special list in the mobile client.
+Sélectionnez **Recommended** pour indiquer que vous encourager les utilisateurs à installer cette application. Les applications recommandées apparaissent comme une liste spéciale dans le client mobile.
 
 **Installer**  
-For the Administrator only: This property indicates that the application is used to install other applications on the mobile device and send feedback on an application from the mobile device to the Application Center. Usually only one application is qualified as **Installer** and is called the mobile client. This application is documented in [The mobile client](../mobile-client).
+Pour l'administrateur uniquement : cette propriété indique que l'application est utilisée pour installer d'autres applications sur le terminal mobile et envoyer des commentaires sur une application à partir du terminal mobile vers Application Center. Habituellement, une seule application est qualifiée d'**Installer** et est appelée client mobile. Cette application est documentée dans [The mobile client](../mobile-client).
 
 **Active**  
-Select Active to indicate that an application can be installed on a mobile device.
+Sélectionnez Active pour indiquer qu'une application peut être installée sur un terminal mobile.
 
-* If you do not select **Active**, the mobile user does not see the application in the list of available applications that is displayed on the device and the application is inactive.
-* In the list of available applications in Application Management, if **Show inactive** is selected, the application is disabled. If **Show inactive** is not selected, the application does not appear in the list of available applications.
+* Si vous ne sélectionnez pas **Active**, l'utilisateur mobile ne voit pas l'application dans la liste des applications disponibles qui est affichée sur le terminal et l'application est inactive.
+* Dans la liste des applications disponibles dans la Gestion des applications, si **Show inactive** est sélectionné, l'application est désactivée. Si **Show inactive** n'est pas sélectionné, l'application n'apparaît pas dans la liste des applications disponibles.
 
 **Ready for production**  
-Select **Ready for production** to indicate that an application is ready to be deployed in a production environment and is therefore suitable to be managed by Tivoli  Endpoint Manager through its application store. Applications for which this property is selected are the only ones that are flagged to Tivoli Endpoint Manager.
+Sélectionnez **Ready for production** pour indiquer qu'une application est prête à être déployée dans un environnement de production et qu'elle doit donc être gérée par Tivoli Endpoint Manager via son magasin d'applications. Les applications pour lesquelles cette propriété est sélectionnée sont les seules qui sont signalées dans Tivoli Endpoint Manager.
 
-## Editing application properties
+## Edition des propriétés d'une application
 {: #editing-application-properties }
-You can edit the properties of an application in the list of uploaded applications.  
-To edit the properties of an uploaded application:
+Vous pouvez modifier les propriétés d'une application dans la liste des applications téléchargées.  
+Pour modifier les propriétés d'une application téléchargée :
 
-1. Select **Applications** to see the list of uploaded applications: Available Applications.
-2. Click the version of the application to edit the properties: Application Details.
-3. Edit any of the editable properties that you want. See [Application properties](#application-properties) for details about these properties. The name of the current application file is shown after the properties.
+1. Sélectionnez **Applications** pour afficher la liste des applications téléchargées : Available Applications.
+2. Cliquez sur la version de l'application pour modifier les propriétés : Application Details.
+3. Modifiez les propriétés modifiables souhaitées. Voir [Application properties](#application-properties) pour plus de détails sur ces propriétés. Le nom du fichier d'application en cours est affiché après les propriétés.
 
-    > **Important:** If you want to update the file, it must belong to the same package and be the same version number. If either of these properties is not the same you must go back to the application list and add the new version first.
+    > **Important :** Si vous souhaitez mettre à jour le fichier, il doit appartenir au même module et avoir le même numéro de version. Si l'une de ces propriétés n'est pas identique, vous devez revenir à la liste des applications et ajouter la nouvelle version en premier.
 
-4. Click **OK** to save your changes and return to Available Applications or **Apply** to save and keep Application Details open.
+4. Cliquez sur **OK** pour enregistrer vos modifications et revenir aux applications disponibles ou sur **Apply** pour enregistrer et conserver les détails d'application ouverts.
 
-![Application properties for editing](ac_edit_app_props.jpg)
+![Propriétés de l'application pour l'édition](ac_edit_app_props.jpg)
 
-## Upgrading a mobile application in {{ site.data.keys.mf_server }} and the Application Center
+## Mise à niveau d'une application mobile dans {{site.data.keys.mf_server }} et Application Center
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
-You can easily upgrade deployed mobile applications by using a combination of {{ site.data.keys.mf_console }} and the Application Center.
+Vous pouvez facilement mettre à niveau les applications mobiles déployées à l'aide d'une combinaison de {{site.data.keys.mf_console }} et Application Center.
 
-The mobile client of the Application Center must be installed on the mobile device. The HelloWorld application must be installed on the mobile device and must connect to {{ site.data.keys.mf_server }} when the application is running.
+Le client mobile Application Center doit être installé sur le terminal mobile. L'application HelloWorld doit être installée sur le terminal mobile et doit se connecter à {{site.data.keys.mf_server }} lorsque l'application est en cours d'exécution.
 
-You can use this procedure to update Android, iOS, and Windows Phone applications that have been deployed on {{ site.data.keys.mf_server }} and also in the Application Center. In this task, the application HelloWorld version 1.0 is already deployed on {{ site.data.keys.mf_server }} and in the Application Center.
+Vous pouvez utiliser cette procédure pour mettre à jour les applications Android, iOS et Windows Phone qui ont été déployées sur {{site.data.keys.mf_server }} et également dans Application Center. Dans cette tâche, l'application HelloWorld version 1.0 est déjà déployée sur {{site.data.keys.mf_server }} et dans Application Center.
 
-HelloWorld version 2.0 is released and you would like users of version 1.0 to upgrade to the later version. To deploy the new version of the application:
+La version 2.0 de HelloWorld est disponible et vous souhaitez que les utilisateurs de la version 1.0 passent à la version ultérieure. Pour déployer la nouvelle version de l'application :
 
-1. Deploy HelloWorld 2.0 in the Application Center. See [Adding a mobile application](#adding-a-mobile-application).
-2. From the Application Details page, copy the setting of the external URL.
+1. Déployez HelloWorld 2.0 dans Application Center. Voir [Ajout d'une application mobile](#adding-a-mobile-application).
+2. Dans la page Application Details, copiez le paramètre de l'URL externe.
 
-    ![Copying the external URL from Application Details](ac_copy_ext_url.jpg)
+    ![Copie de l'URL externe dans la page Application Details](ac_copy_ext_url.jpg)
 
-3. When the external URL is copied to the clipboard, open the {{ site.data.keys.mf_console }}.
-4. Change the access rule of HelloWorld version 1.0 to "Access Disabled".
-5. Paste the external URL into the URL field.
+3. Lorsque l'URL externe est copiée dans le presse-papiers, ouvrez {{site.data.keys.mf_console }}.
+4. Remplacez la règle d'accès de Hello World version 1.0 par "Access Disabled".
+5. Collez l'URL externe dans la zone d'URL.
 
-    Running the client: When a mobile device connects to {{ site.data.keys.mf_server }} to try to run HelloWorld version 1.0, the device user is requested to upgrade the version of the application.
+    Exécution du client : lorsqu'un terminal mobile se connecte à {{site.data.keys.mf_server }} pour tenter de lancer HelloWorld version 1.0, l'utilisateur du terminal est invité à mettre à niveau la version de l'application.
 
-    ![Remotely disabling an old version of an application](ac_remote_disable_app_cli.jpg)
+    ![Désactivation à distance d'une ancienne version d'une application](ac_remote_disable_app_cli.jpg)
 
-6. Click **Upgrade** to open the Application Center client. When the login details are correctly completed, you access the Details page of HelloWorld version 2.0 directly.
+6. Cliquez sur **Upgrade** pour ouvrir le client Application Center. Lorsque les détails de connexion sont correctement remplis, vous accédez directement à la page Details de HelloWorld version 2.0.
 
-    ![Details of HelloWorld 2.0 in the Application Center client](ac_cli_app_details_upgrade.jpg)
+    ![Détails de HelloWorld 2.0 dans le client Application Center](ac_cli_app_details_upgrade.jpg)
 
-## Downloading an application file
+## Téléchargement d'un fichier d'application
 {: #downloading-an-application-file }
-You can download the file of an application registered in the Application Center.
+Vous pouvez télécharger le fichier d'une application enregistrée dans Application Center.
 
-1. Select **Applications** to see the list of uploaded applications: **Available Applications**.
-2. Tap the version of the application under **Application Details**.
-3. Tap the file name in the "Application File" section.
+1. Sélectionnez **Applications** pour afficher la liste des applications téléchargées : **Available Applications**.
+2. Appuyez sur la version de l'application sous **Application Details**.
+3. Appuyez sur le nom du fichier dans la section "Application File".
 
-## Viewing application reviews
+## Affichage des révisions d'une application
 {: #viewing-application-reviews }
-In the Application Center console, you can see reviews about mobile application versions sent by users.
+Dans la console Application Center, vous pouvez voir des commentaires envoyés par les utilisateurs sur les versions d'applications mobiles.
 
-Users of mobile applications can write a review, which includes a rating and a comment, and submit the review through the Application Center client. Reviews are available in the Application Center console and the client. Individual reviews are always associated with a particular version of an application.
+Les utilisateurs d'applications mobiles peuvent rédiger une revue comprenant une note et un commentaire, et soumettre la revue via le client Application Center. Les revues sont disponibles dans la console et le client Application Center. Les revues individuelles sont toujours associées à une version particulière d'une application.
 
-To view reviews from mobile users or testers about an application version:
+Pour visualiser des revues d'utilisateurs mobiles ou de testeurs au sujet d'une version d'application :
 
-1. Select **Applications** to see the list of uploaded applications: **Available Applications**.
-2. Select the version of the application.
-3. In the menu, select **Reviews**.
+1. Sélectionnez **Applications** pour afficher la liste des applications téléchargées : **Available Applications**.
+2. Sélectionnez la version de l'application.
+3. Dans le menu, sélectionnez **Reviews**.
 
-    ![Reviews of application versions](ac_appfeedbk.jpg)
+    ![Revues de versions d'application](ac_appfeedbk.jpg)
 
-    The rating is an average of the ratings in all recorded reviews. It consists of one to five stars, where one star represents the lowest level of appreciation and five stars represent the highest level of appreciation. The client cannot send a zero star rating.
+    L'évaluation est la moyenne des évaluations de toutes les revues enregistrées. Elle se compose d'une à cinq étoiles, où une étoile représente le plus faible niveau d'appréciation et cinq étoiles représentent le plus haut niveau d'appréciation. Le client ne peut pas envoyer une évaluation équivalente à zéro étoile.
 
-    The average rating gives an indication of how the application satisfies the intended use of the application.
+    L'évaluation moyenne donne une indication de la façon dont l'application répond à son utilisation prévue.
 
-4. Click the two arrow heads <img src="down-arrow.jpg" style="margin:0;display:inline" alt="Double arrow-head button"/> to expand the comment that is part of the review and to view the details of the mobile device where the review is generated.
+4. Cliquez sur les deux têtes de flèche <img src="down-arrow.jpg" style="margin:0;display:inline" alt="Bouton à double flèche"/> pour développer le commentaire qui fait partie de la revue et pour afficher les détails du terminal mobile où la revue est générée.
 
-    For example, the comment can give the reason for submitting the review, such as failure to install.
-    If you want to delete the review, click the trash can icon to the right of the review that you want to delete.
+    Par exemple, le commentaire peut donner la raison de la soumission de la revue, comme un échec d'installation.
+    Pour supprimer la revue, cliquez sur l'icône corbeille à droite de la revue que vous souhaitez supprimer.
 
-## User and group management
+## Gestion des utilisateurs et des groupes
 {: #user-and-group-management }
-You can use users and groups to define who has access to some features of the Application Center, such as installing applications on mobile devices.  
-Use users and groups in the definition of access control lists (ACL).
+Vous pouvez utiliser des utilisateurs et des groupes pour définir qui a accès à certaines fonctionnalités Application Center, telles que l'installation d'applications sur des terminaux mobiles.  
+Utilisez des utilisateurs et des groupes pour la définition des listes de contrôle d'accès (ACL).
 
-### Managing registered users
+### Gestion des utilisateurs enregistrés
 {: #managing-registered-users }
-To manage registered users, click the **Users/Groups** tab and select **Registered users**. You obtain a list of registered users of the Application Center that includes:
+Pour gérer les utilisateurs enregistrés, cliquez sur l'onglet **Users/Groups** et sélectionnez **Registered users**. Vous obtenez une liste des utilisateurs enregistrés Application Center qui comprend :
 
-* Mobile client users
-* Console users
-* Local group members
-* Members of an access control list
+* Les utilisateurs de client mobile
+* Les utilisateurs de la console
+* Les membres de groupe local
+* Les membres d'une liste de contrôle d'accès
 
-![List of registered users of the Application Center](ac_reg_users.jpg)
+![Liste des utilisateurs enregistrés Application Center](ac_reg_users.jpg)
 
-If the Application Center is connected to an LDAP repository, you cannot edit the user display names. If the repository is not LDAP, you can change a user display name by selecting it and editing it.
+Si Application Center est connecté à un référentiel LDAP, vous ne pouvez pas modifier les noms d'affichage des utilisateurs. Si le référentiel n'est pas LDAP, vous pouvez modifier un nom d'affichage d'utilisateur en le sélectionnant et en le modifiant.
 
-To register new users, click **Register User**, enter the login name and the display name, and click **OK**.  
-To unregister a user, click the trash icon next to the user name.
+Pour enregistrer de nouveaux utilisateurs, cliquez sur **Register User**, entrez le nom de connexion et le nom d'affichage, et cliquez sur **OK**.  
+Pour désenregistrer un utilisateur, cliquez sur l'icône de corbeille en regard du nom d'utilisateur.
 
-* Removing feedback given by the user
-* Removing the user from the access control lists
-* Removing the user from local groups
+* Suppression de commentaires donnés par l'utilisateur
+* Suppression de l'utilisateur des listes de contrôle d'accès
+* Suppression de l'utilisateur des groupes locaux
 
-> **Note:** When you unregister a user, the user is not removed from the application server or the LDAP repository.
+> **Remarque :** lorsque vous annulez l'enregistrement d'un utilisateur, ce dernier n'est pas supprimé du serveur d'applications ni du référentiel LDAP.
 
-### Managing local groups
+### Gestion des groupes locaux
 {: #managing-local-groups }
-To manage local groups, click the **Users/Groups** tab and select **User group**.  
-To create a local group, click **Create group**. Enter the name of the new group and click **OK**.
+Pour gérer les groupes locaux, cliquez sur l'onglet **Users/Groups** et sélectionnez **User group**.  
+Pour créer un groupe local, cliquez sur **Create group**. Entrez le nom du nouveau groupe, puis cliquez sur **OK**.
 
-If the Application Center is connected to an LDAP repository, the search includes local groups as well as the groups defined in the LDAP repository. If the repository is not LDAP, only local groups are available to the search.
+Si Application Center est connecté à un référentiel LDAP, la recherche inclut les groupes locaux ainsi que les groupes définis dans le référentiel LDAP. Si le référentiel n'est pas LDAP, seuls les groupes locaux sont disponibles pour la recherche.
 
-![Local user groups](ac_loc_group.jpg)
+![Groupes d'utilisateurs locaux](ac_loc_group.jpg)
 
-To delete a group, click the trash icon next to the group name. The group is also removed from the access control lists.  
-To add or remove members of a group, click the **Edit members** link of the group.
+Pour supprimer un groupe, cliquez sur l'icône de corbeille en regard du nom du groupe. Le groupe est également supprimé des listes de contrôle d'accès.  
+Pour ajouter ou supprimer des membres d'un groupe, cliquez sur le lien **Edit members** du groupe.
 
-![Managing group membership](ac_grp_members.jpg)
+![Gestion de l'appartenance au groupe](ac_grp_members.jpg)
 
-To add a new member, search for the user by entering the user display name, select the user, and click **Add**.
+Pour ajouter un nouveau membre, recherchez l'utilisateur en entrant le nom d'affichage de l'utilisateur, sélectionnez l'utilisateur, puis cliquez sur **Add**.
 
-If the Application Center is connected to an LDAP repository, the search for the user is performed in the LDAP repository. If the repository is not LDAP, the search is performed in the list of registered users.
+Si Application Center est connecté à un référentiel LDAP, la recherche de l'utilisateur est effectuée dans le référentiel LDAP. Si le référentiel n'est pas LDAP, la recherche est effectuée dans la liste des utilisateurs enregistrés.
 
-To remove a member from a group, click the cross icon to the right of the user name.
+Pour supprimer un membre d'un groupe, cliquez sur l'icône de croix à droite du nom d'utilisateur.
 
-## Access control
+## Contrôle des accès
 {: #access-control }
-You can decide whether installation of an application on mobile devices is open to any users or whether you want to restrict the ability to install an application.
+Vous pouvez décider si l'installation d'une application sur des terminaux mobiles est ouverte à tous les utilisateurs ou si vous souhaitez limiter la possibilité d'installer une application.
 
-Installation of applications on a mobile device can be limited to specific users or available to any users.
+L'installation d'applications sur un terminal mobile peut être limitée à des utilisateurs spécifiques ou disponible à tous les utilisateurs.
 
-Access control is defined at the application level and not at the version level.
+Le contrôle d'accès est défini au niveau de l'application et non pas au niveau de la version.
 
-By default, after an application is uploaded, any user has the right to install the application on a mobile device.
+Par défaut, une fois l'application téléchargée, un utilisateur a le droit d'installer l'application sur un terminal mobile.
 
-The current access control for an application is displayed in Available Applications for each application. The unrestricted or restricted access status for installation is shown as a link to the page for editing access control.
+Le contrôle d'accès en cours pour une application est affiché dans Available Applications pour chaque application. Le statut accès non restreint ou restreint pour l'installation est présenté sous la forme d'un lien vers la page de modification du contrôle d'accès.
 
-Installation rights are only about the installation of the application on the mobile device. If access control is not enabled, everybody has access to the application.
+Les droits d'installation portent uniquement sur l'installation de l'application sur le terminal mobile. Si le contrôle d'accès n'est pas activé, tous les utilisateurs ont accès à l'application.
 
-## Managing access control
+## Gestion du contrôle d'accès
 {: #managing-access-control }
-You can add or remove access for users or groups to install an application on mobile devices.  
-You can edit access control:
+Vous pouvez ajouter ou supprimer des utilisateurs ou des groupes pour installer une application sur des terminaux mobiles.  
+Vous pouvez modifier le contrôle d'accès :
 
-1. In Application Management under Available Applications, click the unrestricted or restricted state of Installation of an application.
+1. Dans Application Management sous Available Applications, cliquez sur l'état non restreint ou restreint de l'installation d'une application.
 
-    ![Where to click on unrestricted or restricted mode](ac_app_access_state.jpg)
+    ![Où cliquer sur le mode non restreint ou restreint](ac_app_access_state.jpg)
 
-2. Select **Access control enabled** to enable access control.
-3. Add users or groups to the access list.
+2. Sélectionnez **Access control enabled** pour activer le contrôle d'accès.
+3. Ajoutez des utilisateurs ou des groupes à la liste d'accès.
 
-To add a single user or group, enter a name, select the entry in the matching entries found, and click **Add**.
+Pour ajouter un utilisateur ou un groupe, entrez un nom, sélectionnez l'entrée dans les entrées correspondantes trouvées et cliquez sur **Add**.
 
-If the Application Center is connected to an LDAP repository, you can search for users and groups in the repository as well as locally defined groups. If the repository is not LDAP, you can search only local groups and registered users. Local groups are exclusively defined in the **Users/Groups** tab. When you use the Liberty profile federated registry, you can only search for users by using the login name; the result is limited to a maximum of 15 users and 15 groups (instead of 50 users and 50 groups).
+Si Application Center est connecté à un référentiel LDAP, vous pouvez rechercher des utilisateurs et des groupes dans le référentiel ainsi que des groupes définis localement. Si le référentiel n'est pas LDAP, vous pouvez rechercher uniquement les groupes locaux et les utilisateurs enregistrés. Les groupes locaux sont exclusivement définis dans l'onglet **Users/Groups**. Lorsque vous utilisez le registre fédéré de profil Liberty, vous ne pouvez rechercher que les utilisateurs en utilisant le nom de connexion ; le résultat est limité à un maximum de 15 utilisateurs et 15 groupes (au lieu de 50 utilisateurs et 50 groupes).
 
-To register a user at the same time as you add the user to the access list, enter the name and click **Add**. Then you must specify the login name and the display name of the user.
+Pour enregistrer un utilisateur tout en l'ajoutant à la liste d'accès, entrez son nom et cliquez sur **Add**. Vous devez spécifier le nom de connexion et le nom d'affichage de l'utilisateur.
 
-To add all the users of an application, click **Add users from application** and select the appropriate application.  
-To remove access from a user or group, click the cross icon on the right of the name.
+Pour ajouter tous les utilisateurs d'une application, cliquez sur **Add users from application** et sélectionnez l'application appropriée.  
+Pour supprimer l'accès d'un utilisateur ou d'un groupe, cliquez sur l'icône de croix à droite du nom.
 
-![Adding or removing users to the access list](ac_instal_access.jpg)
+![Ajout ou suppression d'utilisateurs dans la liste d'accès](ac_instal_access.jpg)
 
-## Device Management
+## Gestion des terminaux
 {: #device-management }
-You can see the devices that connected to the Application Center from the Application Center mobile client and their properties.
+Vous pouvez visualiser les terminaux connectés à Application Center  et leurs propriétés à partir du client mobile Application Center.
 
-**Device Management** shows under the **Registered Devices** the list of devices that have connected to the Application Center at least once from the Application Center mobile client.
+**Device Management** affiche sous **Registered Devices** la liste des terminaux connectés à Application Center au moins une fois à partir du client mobile Application Center.
 
-![The device list](ac_reg_devices.jpg)
+![Liste des terminaux](ac_reg_devices.jpg)
 
-### Device properties
+### Propriétés d'un terminal
 {: #device-properties }
-Click a device in the list of devices to view the properties of the device or the applications installed on that device.
+Cliquez sur un terminal dans la liste des terminaux pour afficher les propriétés du terminal ou les applications installées sur ce terminal.
 
-![Device properties](ac_edit_deviceprops.jpg)
+![Propriétés d'un terminal](ac_edit_deviceprops.jpg)
 
-Select **Properties** to view the device properties.
+Sélectionnez **Properties** pour afficher les propriétés d'un terminal.
 
 **Name**  
-The name of the device. You can edit this property.
+Nom du terminal. Vous pouvez modifier cette propriété.
 
-> **Note:** on iOS, the user can define this name in the settings of the device in Settings > General > Information > Name. The same name is displayed on iTunes.
+> **Remarque :** sous iOS, l'utilisateur peut définir ce nom dans les paramètres du terminal dans Settings > General > Information > Name. Le même nom apparaît dans iTunes.
 
 **User Name**  
-The name of the first user who logged into the device.
+Nom du premier utilisateur connecté au terminal.
 
 **Manufacturer**  
-The manufacturer of the device.
+Fabricant du terminal.
 
 **Model**  
-The model identifier.
+Identificateur du modèle.
 
 **Operating System**  
-The operating system of the mobile device.
+Système d'exploitation du terminal mobile.
 
 **Unique identifier**  
-The unique identifier of the mobile device.
+Identificateur unique du terminal mobile.
 
-If you edit the device name, click **OK** to save the name and return to Registered Devices or **Apply** to save and keep Edit Device Properties open.
+Si vous modifiez le nom du terminal, cliquez sur **OK** pour sauvegarder le nom et revenir à Registered Devices ou sur **Apply** pour sauvegarder et conserver la fenêtre Edit Device Properties ouverte.
 
-### Applications installed on device
+### Applications installées sur un terminal
 {: #applications-installed-on-device }
-Select **Applications installed on device** to list all the applications installed on the device.
+Sélectionnez **Applications installed on device** pour dresser la liste de toutes les applications installées sur le terminal.
 
-![Applications installed on a device](ac_apps_on_device.jpg)
+![Applications installées sur un terminal](ac_apps_on_device.jpg)
 
-## Application enrollment tokens in Windows 8 Universal
+## Jetons d'inscription d'application dans Windows 8 Universal
 {: #application-enrollment-tokens-in-windows-8-universal }
-The Windows 8 Universal operating system requires users to enroll each device with the company before users can install company applications on their devices. One way to enroll devices is by using an application enrollment token.
+Le système d'exploitation Windows 8 Universal exige que les utilisateurs inscrivent chaque terminal auprès de la société pour qu'ils puissent installer les applications de la société sur leurs terminaux. Une façon d'enregistrer les terminaux consiste à utiliser un jeton d'inscription d'application.
 
-Application enrollment tokens enable you to install company applications on a Windows 8 Universal device. You must first install the enrollment token for a specified company on the device to enroll the device with the company. Then, you can install applications that are created and signed by the corresponding company.
-The Application Center simplifies the delivery of the enrollment token. In your role of administrator of the Application Center catalog, you can manage the enrollment tokens from the Application Center console. Once the enrollment tokens are declared in the Application Center console, they are available for Application Center users to enroll their devices.
+Les jetons d'inscription d'application vous permettent d'installer des applications de société sur un terminal Windows 8 Universal. Vous devez d'abord installer le jeton d'inscription pour une société spécifiée sur le terminal pour inscrire le terminal auprès de la société. Ensuite, vous pouvez installer des applications créées et signées par la société correspondante.
+Application Center simplifie la livraison du jeton d'inscription. En tant qu'administrateur du catalogue Application Center, vous pouvez gérer les jetons d'inscription à partir de la console Application Center. Une fois que les jetons d'inscription sont déclarés dans la console Application Center, ils sont disponibles pour permettre aux utilisateurs Application Center pour inscrire leurs terminaux.
 
-The enrollment tokens interface available from the Application Center console in the Settings view enables you to manage application enrollment tokens for Windows 8 Universal by registering, updating, or deleting them.
+L'interface des jetons d'inscription disponible à partir de la console Application Center dans la vue Settings vous permet de gérer les jetons d'inscription d'application pour Windows 8 Universal en les enregistrant, en les actualisant ou en les supprimant.
 
-### Managing application enrollment tokens
+### Gestion des jetons d'inscription d'application
 {: #managing-application-enrollment-tokens }
-In your role of administrator of the Application Center, you can access the list of registered tokens by clicking the gear icon in the screen header to display Application Center Settings. Then, select **Enrollment Tokens** to display the list of registered tokens.
+En tant qu'administrateur Application Center, vous pouvez accéder à la liste des jetons enregistrés en cliquant sur l'icône représentant une roue dentée dans l'en-tête de l'écran pour afficher les paramètres Application Center. Sélectionnez ensuite **Enrollment Tokens** pour afficher la liste des jetons enregistré.
 
-To enroll a device, the device user must upload and install the token file before installing the Application Center mobile client. The mobile client is also a company application. Therefore, the device must be enrolled before the mobile client can be installed.
+Pour inscrire un terminal, l'utilisateur du terminal doit télécharger et installer le fichier jeton avant d'installer le client mobile Application Center. Le client mobile est aussi une application de la société. Par conséquent, le terminal doit être inscrit pour que le client mobile puisse être installé.
 
-The registered tokens are available through the bootstrap page at `http://hostname:portnumber/applicationcenter/installers.html`, where **hostname** is the host name of the server hosting the Application Center and **portnumber** is the corresponding port number.
+Les jetons enregistrés sont disponibles sur la page d'amorçage à l'adresse `http://hostname:portnumber/applicationcenter/installers.html`, où **hostname** est le nom d'hôte du serveur hébergeant Application Center et **portnumber** est le numéro de port correspondant.
 
-To register a token in the Application Center console, click **Upload Token** and select a token file. The token file extension is aetx.  
-To update the certificate subject of a token, select the token name in the list, change the value, and click OK.  
-To delete a token, click the trash can icon on the right side of the token in the list.
+Pour enregistrer un jeton dans la console Application Center, cliquez sur **Upload Token** et sélectionnez un fichier jeton. . L'extension du fichier jeton est aetx.  
+Pour mettre à jour l'objet de certificat d'un jeton, sélectionnez le nom du jeton dans la liste, modifiez la valeur et cliquez sur OK.  
+Pour supprimer un jeton, cliquez sur l'icône de corbeille à droite du jeton dans la liste.
 
-## Signing out of the Application Center console
+## Déconnexion de la console Application Center
 {: #signing-out-of-the-application-center-console }
-For security purposes, you must sign out of the console when you have finished your administrative tasks.
+Pour des raisons de sécurité, vous devez vous déconnecter de la console quand vous avez terminé vos tâches d'administration.
 
-To log out of the secure sign-on to the Application Center console.  
-To sign out of the Application Center console, click **Sign out** next to the Welcome message that is displayed in the banner of every page.
+Pour vous déconnecter de la connexion sécurisée à la console Application Center.  
+Pour vous déconnecter de la console Application Center, cliquez sur **Sign out** en regard du message de bienvenue affiché dans la bannière de chaque page.

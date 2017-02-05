@@ -1,56 +1,56 @@
 ---
 layout: tutorial
-title: Administrating applications through Ant
-breadcrumb_title: Administrating using Ant
+title: Administration d'applications via Ant
+breadcrumb_title: Administration à l'aide de Ant
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-You can administer {{ site.data.keys.product_adj }} applications through the **mfpadm** Ant task.
+Vous pouvez administrer des applications {{site.data.keys.product_adj }} via la tâche Ant **mfpadm**.
 
-#### Jump to
+#### Accéder à
 {: #jump-to }
 
-* [Comparison with other facilities](#comparison-with-other-facilities)
-* [Prerequisites](#prerequisites)
+* [Comparaison avec d'autres fonctions](#comparison-with-other-facilities)
+* [Prérequis](#prerequisites)
 
-## Comparison with other facilities
+## Comparaison avec d'autres fonctions
 {: #comparison-with-other-facilities }
-You can execute administration operations with {{ site.data.keys.product_full }} in the following ways:
+Vous pouvez exécuter des opérations d'administration à l'aide d'{{site.data.keys.product_full }} en utilisant les composants suivants :
 
-* The {{ site.data.keys.mf_console }}, which is interactive.
-* The **mfpadm** Ant task.
-* The **mfpadm** program.
-* The {{ site.data.keys.product_adj }} administration REST services.
+* La console {{site.data.keys.mf_console }}, qui est interactive.
+* La tâche Ant **mfpadm**.
+* Le programme **mfpadm**.
+* Les services REST d'administration de {{site.data.keys.product_adj }}.
 
-The **mfpadm** Ant task, **mfpadm** program, and REST services are useful for automated or unattended execution of operations, such as:
+La tâche Ant **mfpadm**, le programme **mfpadm** et les services REST sont utiles pour l'exécution automatisée ou sans assistance d'opérations, telles que les suivantes :
 
-* Eliminating operator errors in repetitive operations, or
-* Operating outside the operator's normal working hours, or
-* Configuring a production server with the same settings as a test or preproduction server.
+* Elimination d'erreurs d'opérateur dans des opérations répétitives, ou
+* exploitation en dehors des heures de travail normales de l'opérateur, ou
+* configuration d'un serveur de production avec les mêmes paramètres qu'un serveur de test ou de préproduction.
 
-The **mfpadm** Ant task and the **mfpadm** program are simpler to use and have better error reporting than the REST services. The advantage of the **mfpadm** Ant task over the mfpadm program is that it is platform independent and easier to integrate when integration with Ant is already available.
+La tâche Ant **mfpadm** et le programme **mfpadm** sont plus simples à utiliser et fournissent une meilleure génération de rapports d'erreurs que les services REST. Comparée au programme mfpadm, la tâche Ant **mfpadm** présente l'avantage d'être non tributaire de la plateforme et plus facile à intégrer lorsque l'intégration à Ant est déjà disponible.
 
-## Prerequisites
+## Prérequis
 {: #prerequisites }
-The **mfpadm** tool is installed with the {{ site.data.keys.mf_server }} installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the {{ site.data.keys.mf_server }} installer.
+L'outil **mfpadm** est installé à l'aide du programme d'installation de {{site.data.keys.mf_server }}. Sur cette page,  **product\_install\_dir** indique le répertoire d'installation du programme d'installation de {{site.data.keys.mf_server }}.
 
-Apache Ant is required to run the **mfpadm** task. For information about the minimum supported version of Ant, see System requirements.
+Apache Ant est requis pour l'exécution de la tâche **mfpadm**. Pour toute information sur la version Ant minimale prise en charge, voir la section Configuration requise.
 
-For convenience, Apache Ant 1.9.4 is included in {{ site.data.keys.mf_server }}. In the **product\_install\_dir/shortcuts/** directory, the following scripts are provided.
+Pour plus de commodité, Apache Ant 1.9.4 est inclus dans {{site.data.keys.mf_server }}. Dans le répertoire **product\_install\_dir/shortcuts/**, les scripts suivants sont fournis.
 
-* ant for UNIX / Linux
-* ant.bat for Windows
+* ant pour UNIX/Linux
+* ant.bat pour Windows
 
-These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable JAVA_HOME is set, the scripts accept it.
+Ces scripts sont prêts à être exécutés, ce qui signifie qu'ils ne nécessitent pas de variables d'environnement spécifiques. Si la variable d'environnement JAVA_HOME est définie, les scripts l'acceptent.
 
-You can use the **mfpadm** Ant task on a different computer than the one on which you installed {{ site.data.keys.mf_server }}.
+Vous pouvez utiliser la tâche Ant **mfpadm** sur un autre ordinateur que celui sur lequel vous avez installé {{site.data.keys.mf_server }}.
 
-* Copy the file **product\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar** to the computer.
-* Make sure that a supported version of Apache Ant and a Java runtime environment are installed on the computer.
+* Copiez le fichier **product\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar** sur l'ordinateur.
+* Assurez-vous qu'une version prise en charge d'Apache Ant et un environnement d'exécution Java sont installés sur l'ordinateur.
 
-To use the **mfpadm** Ant task, add this initialization command to the Ant script:
+Pour utiliser la tâche Ant **mfpadm**, ajoutez cette commande d'initialisation au script Ant :
 
 ```xml
 <taskdef resource="com/ibm/mfp/ant/deployers/antlib.xml">
@@ -60,7 +60,7 @@ To use the **mfpadm** Ant task, add this initialization command to the Ant scrip
 </taskdef>
 ```
 
-Other initialization commands that refer to the same **mfp-ant-deployer.jar** file are redundant because the initialization by **defaults.properties** is also implicitly done by antlib.xml. Here is one example of a redundant initialization command:
+Les autres commandes d'initialisation qui font référence au même fichier **mfp-ant-deployer.jar** sont redondantes car l'initialisation par **defaults.properties** est également effectuée implicitement par antlib.xml. Voici un exemple de commande d'initialisation redondante :
 
 ```xml
 <taskdef resource="com/ibm/mfp/ant/defaults.properties">
@@ -70,22 +70,22 @@ Other initialization commands that refer to the same **mfp-ant-deployer.jar** fi
 </taskdef>
 ```
 
-For more information about running the {{ site.data.keys.mf_server }} installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
+Pour plus d'informations sur l'exécution du programme d'installation de {{site.data.keys.mf_server }}, voir[Exécution d'IBM Installation Manager](../../installation-configuration/production/installation-manager/).
 
-#### Jump to
+#### Accéder à
 {: #jump-to-1 }
 
-* [Calling the **mfpadm** Ant task](#calling-the-mfpadm-ant-task)
-* [Commands for general configuration](#commands-for-general-configuration)
-* [Commands for adapters](#commands-for-adapters)
-* [Commands for apps](#commands-for-apps)
-* [Commands for devices](#commands-for-devices)
-* [Commands for troubleshooting](#commands-for-troubleshooting)
+* [Appel de la tâche Ant **mfpadm**](#calling-the-mfpadm-ant-task)
+* [Commandes de configuration générale](#commands-for-general-configuration)
+* [Commandes pour adaptateurs](#commands-for-adapters)
+* [Commandes pour applications](#commands-for-apps)
+* [Commandes pour terminaux](#commands-for-devices)
+* [Commandes de traitement des incidents](#commands-for-troubleshooting)
 
-### Calling the mfpadm Ant task
+### Appel de la tâche Ant mfpadm
 {: #calling-the-mfpadm-ant-task }
-You can use the **mfpadm** Ant task and its associated commands to administer {{ site.data.keys.product_adj }} applications.
-Call the **mfpadm** Ant task as follows:
+Vous pouvez utiliser la tâche Ant **mfpadm** et les commandes qui lui sont associées pour administrer des applications {{site.data.keys.product_adj }}.
+Appelez la tâche Ant **mfpadm** comme suit :
 
 ```xml
 <mfpadm url=... user=... password=...|passwordfile=... [secure=...]>
@@ -93,159 +93,159 @@ Call the **mfpadm** Ant task as follows:
 </mfpadm>
 ```
 
-#### Attributes
+#### Attributs
 {: #attributes }
-The **mfpadm** Ant task has the following attributes:
+La tâche Ant **mfpadm** possède les attributs suivants :
 
-| Attribute      | Description | Required | Default | 
+| Attribut      | Description | Obligatoire | Par défaut | 
 |----------------|-------------|----------|---------|
-| url	         | The base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes	 | |
-| secure	     | Whether to avoid operations with security risks | No | true |
-| user	         | The user name for accessing the {{ site.data.keys.product_adj }} administration services | Yes | |
-| password	     | The password for the user | Either one is required | |
-| passwordfile   |	The file that contains the password for the user | Either one is required | |	 
-| timeout	     | Timeout for the entire REST service access, in seconds | No | |
-| connectTimeout |	Timeout for establishing a network connection, in seconds | No | |	 
-| socketTimeout  |	Timeout for detecting the loss of a network connection, in seconds | No | |
-| connectionRequestTimeout |	Timeout for obtaining an entry from a connection request pool, in seconds | No | |
-| lockTimeout    |	Timeout for acquiring a lock | No | |
+| url	         | URL de base de l'application Web {{site.data.keys.product_adj }} pour les services d'administration | Oui	 | |
+| secure	     | Indique si les opérations présentant des risques de sécurité doivent être évitées | Non | true |
+| user	         | Nom d'utilisateur permettant d'accéder aux services d'administration de {{site.data.keys.product_adj }} | Oui | |
+| password	     | Mot de passe de l'utilisateur | L'un des deux est obligatoire | |
+| passwordfile   |	Fichier contenant le mot de passe de l'utilisateur | L'un des deux est obligatoire | |	 
+| timeout	     | Délai d'attente relatif à l'accès à l'ensemble du service REST, exprimé en secondes | Non | |
+| connectTimeout |	Délai d'attente relatif à l'établissement d'une connexion réseau, exprimé en secondes | Non | |	 
+| socketTimeout  |	Délai d'attente relatif à la détection de la perte d'une connexion réseau, exprimé en secondes | Non | |
+| connectionRequestTimeout |	Délai d'attente relatif à l'obtention d'une entrée à partir d'un pool de demande de connexion, exprimé en secondes | Non | |
+| lockTimeout    |	Délai d'attente relatif à l'acquisition d'un verrou | Non | |
 
 **url**<br/>
-The base URL preferably uses the HTTPS protocol. For example, if you use default ports and context roots, use the following URL.
+L'URL de base utilise de préférence le protocole HTTPS. Par exemple, si vous utilisez des ports et des racines de contexte par défaut, utilisez l'URL suivante.
 
-* For WebSphere  Application Server: [https://server:9443/worklightadmin](https://server:9443/worklightadmin)
-* For Tomcat: [https://server:8443/worklightadmin](https://server:8443/worklightadmin)
+* Pour WebSphere Application Server : [https://server:9443/worklightadmin](https://server:9443/worklightadmin)
+* Pour Tomcat : [https://server:8443/worklightadmin](https://server:8443/worklightadmin)
 
 **secure**<br/>
-The default value is **true**. Setting **secure="false"** might have the following effects:
+La valeur par défaut est **true**. Définir **secure="false"** peut avoir les effets suivants :
 
-* The user and password might be transmitted in an unsecured way, possibly even through unencrypted HTTP.
-* The server's SSL certificates are accepted even if self-signed or if they were created for a different host name than the specified server's host name.
+* L'utilisateur et le mot de passe peuvent être transmis de façon non sécurisée, peut-être même via un protocole HTTP non chiffré.
+* Les certificats SSL du serveur sont acceptés même s'ils sont auto-signés ou s'ils ont été créés pour un nom d'hôte différent du nom d'hôte du serveur spécifié.
 
 **password**<br/>
-Specify the password either in the Ant script, through the **password** attribute, or in a separate file that you pass through the **passwordfile** attribute. The password is sensitive information and therefore needs to be protected. You must prevent other users on the same computer from knowing this password. To secure the password, before you enter the password into a file, remove the read permissions of the file for users other than yourself. For example, you can use one of the following commands:
+Spécifiez le mot de passe dans le script Ant, via l'attribut **password**, ou dans un fichier distinct que vous transmettez via l'attribut **passwordfile**. Le mot de passe constitue des informations sensibles qui doivent par conséquent être protégées. Vous devez empêcher les autres utilisateurs de l'ordinateur de connaître ce mot de passe. Pour sécuriser un mot de passe, avant de saisir ce dernier dans un fichier, retirez les droits d'accès en lecture à ce fichier pour les autres utilisateurs. Par exemple, utilisez l'une des commandes suivantes :
 
-* On UNIX: `chmod 600 adminpassword.txt`
-* On Windows: `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+* Sous UNIX : `chmod 600 adminpassword.txt`
+* Sous Windows : `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
-Additionally, you might want to obfuscate the password to hide it from an occasional glimpse. To do so, use the **mfpadm** config password command to store the obfuscated password in a configuration file. Then, you can copy and paste the obfuscated password to the Ant script or to the password file.
+En outre, vous souhaiterez peut-être brouiller le mot de passe afin qu'il ne puisse pas être entrevu. Pour cela, utilisez la commande **mfpadm** config password afin de stocker le mot de passe brouillé dans un fichier de configuration. Vous pouvez ensuite copier et coller le mot de passe brouillé dans le script Ant ou dans le fichier de mot de passe.
 
-The **mfpadm** call contains commands that are encoded in inner elements. These commands are executed in the order in which they are listed. If one of the commands fails, the remaining commands are not executed, and the **mfpadm** call fails.
+L'appel **mfpadm** contient des commandes codées dans des éléments internes. Ces commandes sont exécutées dans l'ordre où elles sont répertoriées. Si l'une des commandes échoue, les autres commandes ne sont pas exécutées et l'appel **mfpadm** échoue.
 
-#### Elements
+#### Eléments
 {: #elements }
-You can use the following elements in **mfpadm** calls:
+Vous pouvez utiliser les éléments suivants dans des appels **mfpadm** :
 
-| Element                       | Description | Count |
+| Elément                       | Description | Nombre |
 |-------------------------------|-------------|-------|
-| show-info	                    | Shows user and configuration information | 0..∞ | 
-| show-global-config	        | Shows global configuration information | 0..∞ | 
-| show-diagnostics              | Shows diagnostics information | 0..∞ | 
-| show-versions	                | Shows versions information | 0..∞ | 
-| unlock	                    | Releases the general-purpose lock | 0..∞ | 
-| list-runtimes	                | Lists the runtimes | 0..∞ | 
-| show-runtime      	        | Shows information about a runtime | 0..∞ | 
-| delete-runtime	            | Deletes a runtime | 0..∞ | 
-| show-user-config	            | Shows the user configuration of a runtime | 0..∞ | 
-| set-user-config	            | Specifies the user configuration of a runtime | 0..∞ | 
-| show-confidential-clients	    | Shows the configurations of confidential clients of a runtime | 0..∞ | 
-| set-confidential-clients	    | Specifies the configurations of confidential clients of a runtime | 0..∞ | 
-| set-confidential-clients-rule	| Specifies a rule for the confidential clients configuration of a runtime | 0..∞ | 
-| list-adapters	                | Lists the adapters | 0..∞ | 
-| deploy-adapter	            | Deploys an adapter | 0..∞ | 
-| show-adapter	                | Shows information about an adapter | 0..∞ | 
-| delete-adapter	            | Deletes an adapter | 0..∞ | 
-| adapter	                    | Other operations on an adapter | 0..∞ | 
-| list-apps	                    | Lists the apps | 0..∞ | 
-| deploy-app	                | Deploys an app | 0..∞ | 
-| show-app	                    | Shows information about an app | 0..∞ | 
-| delete-app	                | Deletes an app | 0..∞ | 
-| show-app-version              | Shows information about an app version | 0..∞ | 
-| delete-app-version            | Delete a version of an app | 0..∞ | 
-| app	                        | Other operations on an app | 0..∞ | 
-| app-version	                | Other operations on an app version | 0..∞ | 
-| list-devices	                | Lists the devices | 0..∞ | 
-| remove-device	                | Removes a device | 0..∞ | 
-| device	                    | Other operations for a device | 0..∞ | 
-| list-farm-members	            | Lists the members of the server farm | 0..∞ | 
-| remove-farm-member	        | Removes a server farm member | 0..∞ | 
+| show-info	                    | Affiche des informations de configuration et d'utilisateur | 0..∞ | 
+| show-global-config	        | Affiche des informations de configuration globale | 0..∞ | 
+| show-diagnostics              | Affiche des informations de diagnostic | 0..∞ | 
+| show-versions	                | Affiche des informations de version | 0..∞ | 
+| unlock	                    | Libère le verrou général | 0..∞ | 
+| list-runtimes	                | Répertorie les environnements d'exécution | 0..∞ | 
+| show-runtime      	        | Affiche des informations sur un environnement d'exécution | 0..∞ | 
+| delete-runtime	            | Supprime un environnement d'exécution | 0..∞ | 
+| show-user-config	            | Affiche la configuration utilisateur d'un environnement d'exécution | 0..∞ | 
+| set-user-config	            | Spécifie la configuration utilisateur d'un environnement d'exécution | 0..∞ | 
+| show-confidential-clients	    | Affiche les configurations des clients confidentiels d'un environnement d'exécution | 0..∞ | 
+| set-confidential-clients	    | Spécifie les configurations des clients confidentiels d'un environnement d'exécution | 0..∞ | 
+| set-confidential-clients-rule	| Spécifie une règle pour la configuration de clients confidentiels d'un environnement d'exécution | 0..∞ | 
+| list-adapters	                | Répertorie les adaptateurs | 0..∞ | 
+| deploy-adapter	            | Déploie un adaptateur | 0..∞ | 
+| show-adapter	                | Affiche des informations sur un adaptateur | 0..∞ | 
+| delete-adapter	            | Supprime un adaptateur | 0..∞ | 
+| adapter	                    | Autres opérations sur un adaptateur | 0..∞ | 
+| list-apps	                    | Répertorie les applications | 0..∞ | 
+| deploy-app	                | Déploie une application | 0..∞ | 
+| show-app	                    | Affiche des informations sur une application | 0..∞ | 
+| delete-app	                | Supprime une application | 0..∞ | 
+| show-app-version              | Affiche des informations sur une version d'application | 0..∞ | 
+| delete-app-version            | Supprime une version d'une application | 0..∞ | 
+| Application	                        | Autres opérations sur une application | 0..∞ | 
+| app-version	                | Autres opérations sur une version d'application | 0..∞ | 
+| list-devices	                | Répertorie les terminaux | 0..∞ | 
+| remove-device	                | Retire un terminal | 0..∞ | 
+| device	                    | Autres opérations pour un terminal | 0..∞ | 
+| list-farm-members	            | Répertorie les membres du parc de serveurs | 0..∞ | 
+| remove-farm-member	        | Retire un membre de parc de serveurs | 0..∞ | 
 
-#### XML Format
+#### Format XML
 {: #xml-format }
-The output of most commands is in XML, and the input to specific commands, such as `<set-accessrule>`, is in XML too. You can find the XML schemas of these XML formats in the **product\_install\_dir/MobileFirstServer/mfpadm-schemas/** directory. The commands that receive an XML response from the server verify that this response conforms to the specific schema. You can disable this check by specifying the attribute **xmlvalidation="none"**. 
+Le résultat de la plupart des commandes s'affiche au format XML, et les données d'entrée dans des commandes spécifiques, telles que `<set-accessrule>`, s'affichent également au format XML. Les schémas XML de ces formats XML figurent dans le répertoire **product\_install\_dir/MobileFirstServer/mfpadm-schemas/**. Les commandes qui reçoivent une réponse XML du serveur vérifient que cette réponse est conforme au schéma donné. Vous pouvez désactiver cette option en spécifiant l'attribut **xmlvalidation="none"**. 
 
-#### Output character set
+#### Jeu de caractères de sortie
 {: #output-character-set }
-Normal output from the mfpadm Ant task is encoded in the encoding format of the current locale. On Windows, this encoding format is the so-called "ANSI code page". The effects are as follows:
+Le résultat normal de la tâche Ant mfpadm est codé à l'aide du format de codage de l'environnement local en cours. Sous Windows, ce format de codage est appelé "page de codes ANSI". Les effets sont les suivants :
 
-* Characters outside of this character set are converted to question marks when they are output.
-* When the output goes to a Windows command prompt window (cmd.exe), non-ASCII characters are incorrectly displayed because such windows assume characters to be encoded in the so-called "OEM code page".
+* Les caractères non compris dans ce jeu de caractères sont convertis en points d'interrogation lorsqu'ils sont affichés.
+* Lorsque le résultat est dirigé vers une fenêtre d'invite de commande Windows (cmd.exe), les caractères non ASCII ne s'affichent pas correctement car ce type de fenêtre considère que les caractères sont codés dans la "page de codes OEM".
 
-To work around this limitation:
+Pour contourner cette limitation :
 
-* On operating systems other than Windows, use a locale whose encoding is UTF-8. This locale is the default locale on Red Hat Linux and macOS. Many other operating systems have the en_US.UTF-8 locale.
-* Or use the attribute **output="some file name"** to redirect the output of a mfpadm command to a file.
+* Sur les systèmes d'exploitation autres que Windows, utilisez un environnement local dont le codage est UTF-8. Cet environnement local est l'environnement local par défaut sur Red Hat Linux et  macOS. De nombreux autres systèmes d'exploitation possèdent l'environnement local en_US.UTF-8.
+* Vous pouvez aussi utiliser l'attribut **output="some file name"** pour rediriger le résultat d'une commande mfpadm vers un fichier.
 
-### Commands for general configuration
+### Commandes de configuration générale
 {: #commands-for-general-configuration }
-When you call the **mfpadm** Ant task, you can include various commands that access the global configuration of the IBM {{ site.data.keys.mf_server }} or of a runtime.
+Lorsque vous appelez la tâche Ant **mfpadm**, vous pouvez inclure différentes commandes permettant d'accéder à la configuration globale d'un serveur IBM {{site.data.keys.mf_server }} ou d'un environnement d'exécution.
 
-#### The `show-global-config` command
+#### Commande `show-global-config`
 {: #the-show-global-config-command }
-The `show-global-config` command shows the global configuration. It has the following attributes:
+La commande `show-global-config` affiche la configuration globale. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| output	     | Name of the output file.  |	No	   | Not applicable |
-| outputproperty | Name of the Ant property for the output. | No | Not applicable |
+| output	     | Nom du fichier de sortie.  |	Non	   | Non applicable |
+| outputproperty | Nom de la propriété Ant du résultat. | Non | Non applicable |
 
-**Example**  
+**Exemple**  
 
 ```xml
 <show-global-config/>
 ```
 
-This command is based on the [Global Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST service.
+Cette commande est basée sur le service REST [Global Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-).
 
 <br/>
-#### The `show-user-config` command
+#### Commande `show-user-config`
 {: #the-show-user-config-command }
-The `show-user-config` command, outside of `<adapter>` and `<app-version>` elements, shows the user configuration of a runtime. It has the following attributes:
+La commande `show-user-config`, spécifiée en dehors des éléments `<adapter>` et `<app-version>`, affiche la configuration utilisateur d'un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name of the runtime.      | Yes     |	Not available |
-| format	     | Specifies the output format. Either json or xml. | Yes | Not available       | 
-| output	     | Name of the file in which to store the output.   | No  | Not applicable      | 
-| outputproperty | Name of an Ant property in which to store the output.  | No | Not applicable |
+| runtime	     | Nom de l'environnement d'exécution.      | Oui     |	Non disponible |
+| format	     | Indique le format de sortie. JSON ou XML. | Oui | Non disponible       | 
+| output	     | Nom du fichier dans lequel stocker le résultat.   | Non  | Non applicable      | 
+| outputproperty | Nom d'une propriété Ant dans laquelle stocker le résultat.  | Non | Non applicable |
 
-**Example**  
+**Exemple**  
 
 ```xml
 <show-user-config runtime="mfp" format="xml"/>
 ```
 
-This command is based on the [Runtime Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST service.
+Cette commande est basée sur le service REST [Runtime Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-).
 
 <br/>
-#### The `set-user-config` command
+#### Commande `set-user-config`
 {: #the-set-user-config-command }
-The `set-user-config` command, outside of `<adapter>` and `<app-version>` elements, specifies the user configuration of a runtime. It has the following attributes for setting the entire configuration.
+La commande `set-user-config`, spécifiée en dehors des éléments `<adapter>` et `<app-version>`, spécifie la configuration utilisateur d'un environnement d'exécution. Elle possède les attributs suivants permettant de définir l'ensemble de la configuration :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| file	         | Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| runtime        | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| file	         | Nom du fichier JSON ou XML contenant la nouvelle configuration. | Oui | Non disponible | 
 
-The `set-user-config` command has the following attributes for setting a single property in the configuration.
+La commande `set-user-config` possède les attributs suivants permettant de définir une propriété unique dans la configuration.
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name of the runtime. | Yes | Not available | 
-| property	     | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | Yes | Not available | 
-| value	         | The value of the property. | Yes | Not available |
+| runtime	     | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| property	     | Nom de la propriété JSON. Pour une propriété imbriquée, utilisez la syntaxe prop1.prop2.....propN. Pour un élément de tableau JSON, utilisez l'index à la place d'un nom de propriété. | Oui | Non disponible | 
+| value	         | Valeur de la propriété. | Oui | Non disponible |
 
-**Example**  
+**Exemple**  
 
 ```xml
 <set-user-config runtime="mfp" file="myconfig.json"/>
@@ -255,173 +255,173 @@ The `set-user-config` command has the following attributes for setting a single 
 <set-user-config runtime="mfp" property="timeout" value="240"/>
 ```
 
-This command is based on the [Runtime configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST service.
+Cette commande est basée sur le service REST [Runtime configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-).
 
 <br/>
-#### The `show-confidential-clients` command
+#### Commande `show-confidential-clients`
 {: #the-show-confidential-clients-command }
-The `show-confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
+La commande `show-confidential-clients` affiche la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients). Cette commande possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| format         | Specifies the output format. Either json or xml. | Yes | Not available | 
-| output         | Name of the file in which to store the output. | No | Not applicable | 
-| outputproperty | Name of an Ant property in which to store the output. | No | Not applicable | 
+| runtime        | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| format         | Indique le format de sortie. JSON ou XML. | Oui | Non disponible | 
+| output         | Nom du fichier dans lequel stocker le résultat. | Non | Non applicable | 
+| outputproperty | Nom d'une propriété Ant dans laquelle stocker le résultat. | Non | Non applicable | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <show-confidential-clients runtime="mfp" format="xml" output="clients.xml"/>
 ```
 
-This command is based on the [Confidential Clients (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Confidential Clients (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc).
 
 <br/>
-#### The `set-confidential-clients` command
+#### Commande `set-confidential-clients`
 {: #the-set-confidential-clients-command }
-The `set-confidential-clients` command specifies the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
+La commande `set-confidential-clients` spécifie la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients). Cette commande possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| file	         | Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| runtime        | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| file	         | Nom du fichier JSON ou XML contenant la nouvelle configuration. | Oui | Non disponible | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <set-confidential-clients runtime="mfp" file="clients.xml"/>
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+Cette commande est basée sur le service REST [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-).
 
 <br/>
-#### The `set-confidential-clients-rule` command
+#### Commande `set-confidential-clients-rule`
 {: #the-set-confidential-clients-rule-command }
-The `set-confidential-clients-rule` command specifies a rule in the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients). This command has the following attributes:
+La commande `set-confidential-clients-rule` spécifie une règle dans la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients). Cette commande possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | Yes | Not available | 
-| id             | The identifier of the rule. | Yes | Not available | 
-| displayName    | The display name of the rule. | Yes | Not available | 
-| secret         | The secret of the rule. | Yes | Not available | 
-| allowedScope   | The scope of the rule. A space-separated list of tokens. | Yes | Not available | 
+| runtime        | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| id             | Identificateur de la règle. | Oui | Non disponible | 
+| displayName    | Nom d'affichage de la règle. | Oui | Non disponible | 
+| secret         | Secret de la règle. | Oui | Non disponible | 
+| allowedScope   | Portée de la règle. Liste de jetons séparés par des espaces. | Oui | Non disponible | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <set-confidential-clients-rule runtime="mfp" id="push" displayName="Push" secret="lOa74Wxs" allowedScope="**"/>
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+Cette commande est basée sur le service REST [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-).
 
-### Commands for adapters
+### Commandes pour adaptateurs
 {: #commands-for-adapters }
-When you call the **mfpadm** Ant task, you can include various commands for adapters.
+Lorsque vous appelez la tâche Ant **mfpadm**, vous pouvez inclure différentes commandes pour adaptateurs.
 
-#### The `list-adapters` command
+#### Commande `list-adapters`
 {: #the-list-adapters-command }
-The `list-adapters` command returns a list of the adapters deployed for a given runtime. It has the following attributes.
+La commande `list-adapters` renvoie la liste des adaptateurs déployés pour un environnement d'exécution donné. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime        | Name of the runtime. | 	Yes | Not available | 
-| output	     | Name of output file. | 	No  | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime        | Nom de l'environnement d'exécution. | 	Oui | Non disponible | 
+| output	     | Nom du fichier de sortie. | 	Non  | Non applicable | 
+| outputproperty | Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <list-adapters runtime="mfp"/>
 ```
 
-This command is based on the [Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST service.
+Cette commande est basée sur le service REST [Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-).
 
 <br/>
-#### The `deploy-adapter` command
+#### Commande `deploy-adapter`
 {: #the-deploy-adapter-command }
-The `deploy-adapter` command deploys an adapter in a runtime. It has the following attributes.
+La commande `deploy-adapter` déploie un adaptateur dans un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime	     | Name of the runtime. | Yes | Not available | 
-| file           | Binary adapter file (.adapter). | Yes | Not available |
+| runtime	     | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| file           | Fichier d'adaptateur binaire (.adapter). | Oui | Non disponible |
 
-**Example**  
+**Exemple**  
 
 ```xml
 <deploy-adapter runtime="mfp" file="MyAdapter.adapter"/>
 ```
 
-This command is based on the [Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST service.
+Cette commande est basée sur le service REST [Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-).
 
 <br/>
-#### The `show-adapter` command
+#### Commande `show-adapter`
 {: #the-show-adapter-command }
-The `show-adapter` command shows details about an adapter. It has the following attributes.
+La commande `show-adapter` affiche les détails relatifs à un adaptateur. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an adapter. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| name | Nom d'un adaptateur. | Oui | Non disponible | 
+| output | Nom du fichier de sortie. | Non | Non applicable | 
+| outputproperty | Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <show-adapter runtime="mfp" name="MyAdapter"/>
 ```
 
-This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+Cette commande est basée sur le service REST [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-).
 
 <br/>
-#### The `delete-adapter` command
+#### Commande `delete-adapter`
 {: #the-delete-adapter-command }
-The `delete-adapter` command removes (undeploys) an adapter from a runtime. It has the following attributes.
+La commande `delete-adapter` retire (annule le déploiement d') un adaptateur d'un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name    | Name of an adapter. | Yes | Not available | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| name    | Nom d'un adaptateur. | Oui | Non disponible | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <delete-adapter runtime="mfp" name="MyAdapter"/>
 ```
 
-This command is based on the [Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+Cette commande est basée sur le service REST [Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-).
 
 <br/>
-#### The `adapter` command group
+#### Groupe de commandes `adapter`
 {: #the-adapter-command-group }
-The `adapter` command group has the following attributes.
+Le groupe de commandes `adapter` possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an adapter. | Yes | Not available | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| name | Nom d'un adaptateur. | Oui | Non disponible | 
 
-The `adapter` command supports the following elements.
+La commande `adapter` prend en charge les éléments suivants :
 
-| Element          | Description |	Count    | 
+| Elément          | Description |	Nombre    | 
 |------------------|-------------|-------------|
-| get-binary	   | Gets the binary data. | 0..∞ | 
-| show-user-config | Shows the user configuration. | 0..∞ | 
-| set-user-config  | Specifies the user configuration. | 0..∞ | 
+| get-binary	   | Obtient les données binaires. | 0..∞ | 
+| show-user-config | Affiche la configuration utilisateur. | 0..∞ | 
+| set-user-config  | Spécifie la configuration utilisateur. | 0..∞ | 
 
 <br/>
-#### The `get-binary` command
+#### Commande `get-binary`
 {: #the-get-binary-command }
-The `get-binary` command inside an `<adapter>` element returns the binary adapter file. It has the following attributes.
+La commande `get-binary` au sein d'un élément `<adapter>` renvoie le fichier d'adaptateur binaire. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| tofile	     | Name of the output file. | Yes | Not available | 
+| tofile	     | Nom du fichier de sortie. | Oui | Non disponible | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <adapter runtime="mfp" name="MyAdapter">
@@ -429,20 +429,20 @@ The `get-binary` command inside an `<adapter>` element returns the binary adapte
 </adapter>
 ```
 
-This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+Cette commande est basée sur le service REST [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-).
 
 <br/>
-#### The `show-user-config` command
+#### Commande `show-user-config`
 {: #the-show-user-config-command-1 }
-The `show-user-config` command, inside an `<adapter>` element, shows the user configuration of the adapter. It has the following attributes.
+La commande `show-user-config`, spécifiée au sein d'un élément `<adapter>`, affiche la configuration utilisateur de l'adaptateur. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| format	     | Specifies the output format. Either json or xml. | Yes | Not available       | 
-| output	     | Name of the file in which to store the output.   | No  | Not applicable      | 
-| outputproperty | Name of an Ant property in which to store the output.  | No | Not applicable |
+| format	     | Indique le format de sortie. JSON ou XML. | Oui | Non disponible       | 
+| output	     | Nom du fichier dans lequel stocker le résultat.   | Non  | Non applicable      | 
+| outputproperty | Nom d'une propriété Ant dans laquelle stocker le résultat.  | Non | Non applicable |
 
-**Example**  
+**Exemple**  
 
 ```xml
 <adapter runtime="mfp" name="MyAdapter">
@@ -450,25 +450,25 @@ The `show-user-config` command, inside an `<adapter>` element, shows the user co
 </adapter>
 ```
 
-This command is based on the [Adapter Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST service.
+Cette commande est basée sur le service REST [Adapter Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-).
 
 <br/>
-#### The `set-user-config` command
+#### Commande `set-user-config`
 {: #the-set-user-config-command-1 }
-The `set-user-config` command, inside an `<adapter>` element, specifies the user configuration of the adapter. It has the following attributes for setting the entire configuration.
+La commande `set-user-config`, spécifiée au sein d'un élément `<adapter>`, spécifie la configuration utilisateur de l'adaptateur. Elle possède les attributs suivants permettant de définir l'ensemble de la configuration :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| file	Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| file Nom du fichier JSON ou XML contenant la nouvelle configuration. | Oui | Non disponible | 
 
-The command has the following attributes for setting a single property in the configuration.
+La commande possède les attributs suivants permettant de définir une propriété dans la configuration.
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | Yes | Not available | 
-| value | The value of the property. | Yes | Not available | 
+| property | Nom de la propriété JSON. Pour une propriété imbriquée, utilisez la syntaxe prop1.prop2.....propN. Pour un élément de tableau JSON, utilisez l'index à la place d'un nom de propriété. | Oui | Non disponible | 
+| value | Valeur de la propriété. | Oui | Non disponible | 
 
-**Examples**  
+**Exemples**  
 
 ```xml
 <adapter runtime="mfp" name="MyAdapter">
@@ -482,155 +482,155 @@ The command has the following attributes for setting a single property in the co
 </adapter>
 ```
 
-This command is based on the [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc).
 
-### Commands for apps
+### Commandes pour applications
 {: #commands-for-apps }
-When you call the **mfpadm** Ant task, you can include various commands for apps.
+Lorsque vous appelez la tâche Ant **mfpadm**, vous pouvez inclure différentes commandes pour applications.
 
-#### The `list-apps` command
+#### Commande `list-apps`
 {: #the-list-apps-command }
-The `list-apps` command returns a list of the apps that are deployed in a runtime. It has the following attributes.
+La commande `list-apps` renvoie la liste des applications déployées dans un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes	Not available | 
-| output | Name of the output file. | No	Not applicable | 
-| outputproperty | Name of the Ant property for the output. | No | Not applicable | 
+| runtime | Nom de l'environnement d'exécution. | Oui Non disponible | 
+| output | Nom du fichier de sortie. | Non	Non applicable | 
+| outputproperty | Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <list-apps runtime="mfp"/>
 ```
 
-This command is based on the [Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST service.
+Cette commande est basée sur le service REST [Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-).
 
 <br/>
-#### The `deploy-app` command
+#### Commande `deploy-app`
 {: #the-deploy-app-command }
-The `deploy-app` command deploys an app version in a runtime. It has the following attributes.
+La commande `deploy-app` déploie une version d'application dans un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| file | The application descriptor, a JSON file. | Yes | Not available | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| file | Descripteur d'application, fichier JSON. | Oui | Non disponible | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <deploy-app runtime="mfp" file="MyApp/application-descriptor.json"/>
 ```
 
-This command is based on the [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST service.
+Cette commande est basée sur le service REST [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-).
 
 <br/>
-#### The `show-app` command
+#### Commande `show-app`
 {: #the-show-app-command }
-The `show-app` command returns a list of the app versions that are deployed in a runtime. It has the following attributes.
+La commande `show-app` renvoie la liste des versions d'application déployées dans un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an app. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| name | Nom d'une application. | Oui | Non disponible | 
+| output | Nom du fichier de sortie. | Non | Non applicable | 
+| outputproperty | Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <show-app runtime="mfp" name="MyApp"/>
 ```
 
-This command is based on the [Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST service.
+Cette commande est basée sur le service REST [Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-).
 
 <br/>
-#### The `delete-app` command
+#### Commande `delete-app`
 {: #the-delete-app-command }
-The `delete-app` command removes (undeploys) an app, with all its app versions, for all environments for which it was deployed, from a runtime. It has the following attributes.
+La commande `delete-app` retire (annule le déploiement d') une application, avec toutes ses versions d'application, pour tous les environnements pour lesquels elle a été déployée, à partir d'un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an app. | Yes | Not available | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| name | Nom d'une application. | Oui | Non disponible | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <delete-app runtime="mfp" name="MyApp"/>
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+Cette commande est basée sur le service REST [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-).
 
 <br/>
-#### The `show-app-version` command
+#### Commande `show-app-version`
 {: #the-show-app-version-command }
-The `show-app-version` command shows details about an app version in a runtime. It has the following attributes.
+La commande `show-app-version` affiche les détails relatifs à une version d'application dans un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime	Name of the runtime. | Yes | Not available | 
-| name	Name of the app. | Yes | Not available | 
-| environment	Mobile platform. | Yes | Not available | 
-| version	Version number of the app. | Yes | Not available | 
+| runtime	Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| name	Nom de l'application. | Oui | Non disponible | 
+| environment	Plateforme mobile. | Oui | Non disponible | 
+| version	Numéro de version de l'application. | Oui | Non disponible | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <show-app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1"/>
 ```
 
-This command is based on the [Application Version (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST service.
+Cette commande est basée sur le service REST [Application Version (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-).
 
 <br/>
-#### The `delete-app-version` command
+#### Commande `delete-app-version`
 {: #the-delete-app-version-command }
-The `delete-app-version` command removes (undeploys) an app version from a runtime. It has the following attributes.
+La commande `delete-app-version` retire (annule le déploiement d') une version d'application d'un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime	Name of the runtime. | Yes | Not available | 
-| name	Name of the app. | Yes | Not available | 
-| environment	Mobile platform. | Yes | Not available | 
-| version	Version number of the app. | Yes | Not available | 
+| runtime	Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| name	Nom de l'application. | Oui | Non disponible | 
+| environment	Plateforme mobile. | Oui | Non disponible | 
+| version	Numéro de version de l'application. | Oui | Non disponible | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <delete-app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1"/>
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+Cette commande est basée sur le service REST [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-).
 
 <br/>
-#### The `app` command group
+#### Groupe de commandes `app`
 {: #the-app-command-group }
-The `app` command group has the following attributes.
+Le groupe de commandes `app` possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime	Name of the runtime. | Yes | Not available | 
-| name	Name of the app. | Yes | Not available | 
+| runtime	Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| name	Nom de l'application. | Oui | Non disponible | 
 
-The app command group supports the following elements.
+Le groupe de commandes app prend en charge les éléments suivants :
 
-| Element | Description | Count | 
+| Elément | Description | Nombre | 
 |---------|-------------|-------|
-| show-license-config | Shows the token license configuration. | 0.. | 
-| set-license-config | Specifies the token license configuration. | 0.. | 
-| delete-license-config | Removes the token license configuration. | 0.. | 
+| show-license-config | Affiche la configuration de licence de jeton. | 0.. | 
+| set-license-config | Spécifie la configuration de licence de jeton. | 0.. | 
+| delete-license-config | Retire la configuration de licence de jeton. | 0.. | 
 
 <br/>
-#### The `show-license-config` command
+#### Commande `show-license-config`
 {: #the-show-license-config-command }
-The `show-license-config` command shows the token license configuration of an app. It has the following attributes.
+La commande `show-license-config` affiche la configuration de licence de jeton d'une application. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| output         |	Name of a file in which to store the output. | Yes | Not available |
-| outputproperty | 	Name of an Ant property in which to store the output. | Yes	| Not available |
+| output         |	Nom d'un fichier dans lequel stocker le résultat. | Oui | Non disponible |
+| outputproperty | 	Nom d'une propriété Ant dans laquelle stocker le résultat. | Oui	| Non disponible |
 
-**Example**  
+**Exemple**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -638,19 +638,19 @@ The `show-license-config` command shows the token license configuration of an ap
 </app-version>
 ```
 
-This command is based on the [Application license configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Application license configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc).
 
 <br/>
-#### The `set-license-config` command
+#### Commande `set-license-config`
 {: #the-set-license-config-command }
-The `set-license-config` command specifies the token license configuration of an app. It has the following attributes.
+La commande `set-license-config` spécifie la configuration de licence de jeton d'une application. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| appType | Type of app: B2C or B2E | Yes | Not available | 
-| licenseType | Type of application: APPLICATION or ADDITIONAL_BRAND_DEPLOYMENT or NON_PRODUCTION. | Yes | Not available | 
+| appType | Type d'application : B2C ou B2E | Oui | Non disponible | 
+| licenseType | Type d'application : APPLICATION ou ADDITIONAL_BRAND_DEPLOYMENT ou NON_PRODUCTION. | Oui | Non disponible | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -658,14 +658,14 @@ The `set-license-config` command specifies the token license configuration of an
 </app-version>
 ```
 
-This command is based on the [Application License Configuration (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Application License Configuration (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc).
 
 <br/>
-#### The `delete-license-config` command
+#### Commande `delete-license-config`
 {: #the-delete-license-config-command }
-The `delete-license-config` command resets the token license configuration of an app, that is, reverts it to the initial state.
+La commande `delete-license-config` réinitialise la configuration de licence de jeton d'une application, autrement dit, elle rétablit son état initial.
 
-**Example**  
+**Exemple**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -673,44 +673,44 @@ The `delete-license-config` command resets the token license configuration of an
 </app-version>
 ```
 
-This command is based on the [License configuration (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST service.
+Cette commande est basée sur le service REST [License configuration (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-).
 
 <br/>
-#### The `app-version` command group
+#### Groupe de commandes `app-version`
 {: #the-app-version-command-group }
-The `app-version` command group has the following attributes.
+Le groupe de commandes `app-version` possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| name | Name of an app. | Yes | Not available | 
-| environment | Mobile platform. | Yes | Not available | 
-| version | Version of the app. | Yes | Not available | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| name | Nom d'une application. | Oui | Non disponible | 
+| environment | Plateforme mobile. | Oui | Non disponible | 
+| version | Version de l'application. | Oui | Non disponible | 
 
-The `app-version` command group supports the following elements:
+Le groupe de commandes `app-version` prend en charge les éléments suivants :
 
-| Element | Description | Count | 
+| Elément | Description | Nombre | 
 |---------|-------------|-------|
-| get-descriptor | Gets the descriptor. | 0.. | 
-| get-web-resources | Gets the web resources. | 0.. | 
-| set-web-resources | Specifies the web resources. | 0.. | 
-| get-authenticity-data | Gets the authenticity data. | 0.. | 
-| set-authenticity-data | Specifies the authenticity data. | 0.. | 
-| delete-authenticity-data | Deletes the authenticity data. | 0.. | 
-| show-user-config | Shows the user configuration. | 0.. | 
-| set-user-config | Specifies the user configuration. | 0.. | 
+| get-descriptor | Obtient le descripteur. | 0.. | 
+| get-web-resources | Obtient les ressources Web. | 0.. | 
+| set-web-resources | Spécifie les ressources Web. | 0.. | 
+| get-authenticity-data | Obtient les données d'authenticité. | 0.. | 
+| set-authenticity-data | Spécifie les données d'authenticité. | 0.. | 
+| delete-authenticity-data | Supprime les données d'authenticité. | 0.. | 
+| show-user-config | Affiche la configuration utilisateur. | 0.. | 
+| set-user-config | Spécifie la configuration utilisateur. | 0.. | 
 
 <br/>
-#### The `get-descriptor` command
+#### Commande `get-descriptor`
 {: #the-get-descriptor-command }
-The `get-descriptor` command, inside an `<app-version>` element, returns the application descriptor of a version of an app. It has the following attributes.
+La commande `get-descriptor`, spécifiée au sein d'un élément `<app-version>`, renvoie le descripteur d'application d'une version d'une application. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| output | Name of a file in which to store the output. | No | Not applicable | 
-| outputproperty | Name of an Ant property in which to store the output. | No | Not applicable | 
+| output | Nom d'un fichier dans lequel stocker le résultat. | Non | Non applicable | 
+| outputproperty | Nom d'une propriété Ant dans laquelle stocker le résultat. | Non | Non applicable | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -718,18 +718,18 @@ The `get-descriptor` command, inside an `<app-version>` element, returns the app
 </app-version>
 ```
 
-This command is based on the [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) service.
+Cette commande est basée sur le service [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-).
 
 <br/>
-#### The `get-web-resources` command
+#### Commande `get-web-resources`
 {: #the-get-web-resources-command }
-The `get-web-resources` command, inside an `<app-version>` element, returns the web resources of a version of an app, as a .zip file. It has the following attributes.
+La commande `get-web-resources`, spécifiée au sein d'un élément `<app-version>`, renvoie les ressources Web d'une version d'une application sous la forme d'un fichier .zip. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| tofile | 	Name of the output file. | Yes |Not available | 
+| tofile | 	Nom du fichier de sortie. | Oui |Non disponible | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -737,18 +737,18 @@ The `get-web-resources` command, inside an `<app-version>` element, returns the 
 </app-version>
 ```
 
-This command is based on the [Retrieve Web Resource (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST service.
+Cette commande est basée sur le service REST [Retrieve Web Resource (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-).
 
 <br/>
-#### The `set-web-resources` command
+#### Commande `set-web-resources`
 {: #the-set-web-resources-command }
-The `set-web-resources` command, inside an `<app-version>` element, specifies the web resources for a version of an app. It has the following attributes.
+La commande `set-web-resources`, spécifiée au sein d'un élément `<app-version>`, indique les ressources Web d'une version d'une application. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| file | Name of the input file (must be a .zip file). | Yes |Not available |
+| file | Nom du fichier d'entrée (il doit s'agir d'un fichier .zip). | Oui |Non disponible |
 
-**Example**  
+**Exemple**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -756,19 +756,19 @@ The `set-web-resources` command, inside an `<app-version>` element, specifies th
 </app-version>
 ```
 
-This command is based on the [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST service.
+Cette commande est basée sur le service REST [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-).
 
 <br/>
-#### The `get-authenticity-data` command
+#### Commande `get-authenticity-data`
 {: #the-get-authenticity-data-command }
-The `get-authenticity-data` command, inside an `<app-version>` element, returns the authenticity data of a version of an app. It has the following attributes.
+La commande `get-authenticity-data`, spécifiée au sein d'un élément `<app-version>`, renvoie les données d'authenticité d'une version d'une application. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| output | 	Name of a file in which to store the output. | No | Not applicable | 
-| outputproperty | Name of an Ant property in which to store the output. | No | Not applicable | 
+| output | 	Nom d'un fichier dans lequel stocker le résultat. | Non | Non applicable | 
+| outputproperty | Nom d'une propriété Ant dans laquelle stocker le résultat. | Non | Non applicable | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -776,18 +776,18 @@ The `get-authenticity-data` command, inside an `<app-version>` element, returns 
 </app-version>
 ```
 
-This command is based on the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc).
 
 <br/>
-#### The `set-authenticity-data` command
+#### Commande `set-authenticity-data`
 {: #the-set-authenticity-data-command }
-The `set-authenticity-data` command, inside an `<app-version>` element, specifies the authenticity data for a version of an app. It has the following attributes.
+La commande `set-authenticity-data`, spécifiée au sein d'un élément `<app-version>`, spécifie les données d'authenticité d'une version d'une application. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| file | Name of the input file:<ul><li>Either a authenticity_data file,</li><li>or a device file (.ipa, .apk, or .appx file), from which the authenticity data is extracted.</li></ul> |  Yes | Not available | 
+| file | Nom du fichier d'entrée :<ul><li>Fichier de données d'authenticité</li><li>ou fichier de terminal (fichier .ipa, .apk ou .appx) à partir duquel les données d'authenticité sont extraites.</li></ul> |  Oui | Non disponible | 
 
-**Examples**  
+**Exemples**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -807,14 +807,14 @@ The `set-authenticity-data` command, inside an `<app-version>` element, specifie
 </app-version>
 ```
 
-This command is based on the [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc).
 
 <br/>
-#### The `delete-authenticity-data` command
+#### Commande `delete-authenticity-data`
 {: #the-delete-authenticity-data-command }
-The `delete-authenticity-data` command, inside an `<app-version>` element, deletes the authenticity data of a version of an app. It has no attributes.
+La commande `delete-authenticity-data`, spécifiée au sein d'un élément `<app-version>`, supprime les données d'authenticité d'une version d'une application. Elle ne possède aucun attribut.
 
-**Example**  
+**Exemple**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -822,20 +822,20 @@ The `delete-authenticity-data` command, inside an `<app-version>` element, delet
 </app-version>
 ```
 
-This command is based on the [Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc).
 
 <br/>
-#### The `show-user-config` command
+#### Commande `show-user-config`
 {: #the-show-user-config-command-2 }
-The `show-user-config` command, inside an `<app-version>` element, shows the user configuration of a version of an app. It has the following attributes.
+La commande `show-user-config`, spécifiée au sein d'un élément `<app-version>`, affiche la configuration utilisateur d'une version d'une application. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| format | Specifies the output format. Either json or xml. | Yes | Not available | 
-| output | Name of the output file.	No	Not applicable | 
-| outputproperty | Name of the Ant property for the output. | No | Not applicable | 
+| format | Indique le format de sortie. JSON ou XML. | Oui | Non disponible | 
+| output | Nom du fichier de sortie.	Non	Non applicable | 
+| outputproperty | Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Examples**  
+**Exemples**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -849,25 +849,25 @@ The `show-user-config` command, inside an `<app-version>` element, shows the use
 </app-version>
 ```
 
-This command is based on the [Application Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST service.
+Cette commande est basée sur le service REST [Application Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-).
 
 <br/>
-#### The `set-user-config` command
+#### Commande `set-user-config`
 {: #the-set-user-config-command-2 }
-The `set-user-config` command, inside an `<app-version>` element, specifies the user configuration for a version of an app. It has the following attributes for setting the entire configuration.
+La commande `set-user-config`, spécifiée au sein d'un élément `<app-version>`, indique la configuration utilisateur d'une version d'une application. Elle possède les attributs suivants permettant de définir l'ensemble de la configuration :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| file | Name of the JSON or XML file that contains the new configuration. | Yes | Not available | 
+| file | Nom du fichier JSON ou XML contenant la nouvelle configuration. | Oui | Non disponible | 
 
-The `set-user-config` command has the following attributes for setting a single property in the configuration.
+La commande `set-user-config` possède les attributs suivants permettant de définir une propriété unique dans la configuration.
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | Yes | Not available | 
-| value	| The value of the property. | Yes | Not available | 
+| property | Nom de la propriété JSON. Pour une propriété imbriquée, utilisez la syntaxe prop1.prop2.....propN. Pour un élément de tableau JSON, utilisez l'index à la place d'un nom de propriété. | Oui | Non disponible | 
+| value	| Valeur de la propriété. | Oui | Non disponible | 
 
-**Examples**  
+**Exemples**  
 
 ```xml
 <app-version runtime="mfp" name="MyApp" environment="iphone" version="1.1">
@@ -881,22 +881,22 @@ The `set-user-config` command has the following attributes for setting a single 
 </app-version>
 ```
 
-### Commands for devices
+### Commandes pour terminaux
 {: #commands-for-devices }
-When you call the **mfpadm** Ant task, you can include various commands for devices.
+Lorsque vous appelez la tâche Ant **mfpadm**, vous pouvez inclure différentes commandes pour terminaux.
 
-#### The `list-devices` command
+#### Commande `list-devices`
 {: #the-list-devices-command }
-The `list-devices` command returns the list of devices that have contacted the apps of a runtime. It has the following attributes:
+La commande `list-devices` renvoie la liste des terminaux ayant contacté les applications d'un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| query	 | A friendly name or user identifier to search for. This parameter specifies a string to search for. All devices that have a friendly name or user identifier that contains this | string (with case-insensitive matching) are returned. | No | Not applicable | 
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| query	 | Nom usuel ou identificateur utilisateur à rechercher. Ce paramètre spécifie une chaîne à rechercher. Tous les terminaux possédant un nom usuel ou un identificateur utilisateur contenant cette | chaîne (avec une correspondance insensible à la casse) sont renvoyés. | Non | Non applicable | 
+| output | 	Nom du fichier de sortie. | Non | Non applicable | 
+| outputproperty | 	Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Examples**  
+**Exemples**  
 
 ```xml
 <list-devices runtime="mfp"/>
@@ -906,61 +906,61 @@ The `list-devices` command returns the list of devices that have contacted the a
 <list-devices runtime="mfp" query="john"/>
 ```
 
-This command is based on the [Devices (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) REST service.
+Cette commande est basée sur le service REST [Devices (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-).
 
 <br/>
-#### The `remove-device` command
+#### Commande `remove-device`
 {: #the-remove-device-command }
-The `remove-device` command clears the record about a device that has contacted the apps of a runtime. It has the following attributes:
+La commande `remove-device` efface l'enregistrement relatif à un terminal ayant contacté les applications d'un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| id | Unique device identifier. | Yes | Not available | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| id | Identificateur unique de terminal. | Oui | Non disponible | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <remove-device runtime="mfp" id="496E974CCEDE86791CF9A8EF2E5145B6"/>
 ```
 
-This command is based on the [Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST service.
+Cette commande est basée sur le service REST [Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-).
 
 <br/>
-#### The `device` command group
+#### Groupe de commandes `device`
 {: #the-device-command-group }
-The `device` command group has the following attributes.
+Le groupe de commandes `device` possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| id | Unique device identifier. | Yes | Not available | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| id | Identificateur unique de terminal. | Oui | Non disponible | 
 
-The `device` command supports the following elements.
+La commande `device` prend en charge les éléments suivants :
 
-| Element        | Description |       Count |
+| Elément        | Description |       Nombre |
 |----------------|-------------|-------------|
-| set-status | Changes the status. | 0..∞ | 
-| set-appstatus | Changes the status for an app. | 0..∞ | 
+| set-status | Modifie le statut. | 0..∞ | 
+| set-appstatus | Modifie le statut d'une application. | 0..∞ | 
 
 <br/>
-#### The `set-status` command
+#### Commande `set-status`
 {: #the-set-status-command }
-The `set-status` command changes the status of a device, in the scope of a runtime. It has the following attributes:
+La commande `set-status` modifie le statut d'un terminal, dans la limite de la portée d'un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| status | New status. | Yes | Not available | 
+| status | Nouveau statut. | Oui | Non disponible | 
 
-The status can have one of the following values:
+Les valeurs de statut possibles sont les suivantes :
 
-* ACTIVE
-* LOST
-* STOLEN
-* EXPIRED
-* DISABLED
+* ACTIF
+* PERDU
+* VOLE
+* ARRIVE A EXPIRATION
+* DESACTIVE
 
-**Example**  
+**Exemple**  
 
 ```xml
 <device runtime="mfp" id="496E974CCEDE86791CF9A8EF2E5145B6">
@@ -968,24 +968,24 @@ The status can have one of the following values:
 </device>
 ```
 
-This command is based on the [Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST service.
+Cette commande est basée sur le service REST [Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-).
 
 <br/>
-#### The `set-appstatus` command
+#### Commande `set-appstatus`
 {: #the-set-appstatus-command }
-The `set-appstatus` command changes the status of a device, regarding an app in a runtime. It has the following attributes:
+La commande `set-appstatus` modifie le statut d'un terminal concernant une application d'un environnement d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| app	| Name of an app. | Yes | Not available | 
-| status | 	New status. | Yes | Not available | 
+| Application	| Nom d'une application. | Oui | Non disponible | 
+| status | 	Nouveau statut. | Oui | Non disponible | 
 
-The status can have one of the following values:
+Les valeurs de statut possibles sont les suivantes :
 
-* ENABLED
-* DISABLED
+* ACTIVE
+* DESACTIVE
 
-**Example**  
+**Exemple**  
 
 ```xml
 <device runtime="mfp" id="496E974CCEDE86791CF9A8EF2E5145B6">
@@ -993,88 +993,88 @@ The status can have one of the following values:
 </device>
 ```
 
-This command is based on the [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST service.
+Cette commande est basée sur le service REST [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-).
 
-### Commands for troubleshooting
+### Commandes de traitement des incidents
 {: #commands-for-troubleshooting }
-You can use Ant task commands to investigate problems with {{ site.data.keys.mf_server }} web applications.
+Vous pouvez utiliser les commandes de tâche Ant pour analyser les incidents liés à des applications Web {{site.data.keys.mf_server }}.
 
-#### The `show-info` command
+#### Commande `show-info`
 {: #the-show-info-command }
-The `show-info` command shows basic information about the {{ site.data.keys.product_adj }} administration services that can be returned without accessing any runtime nor database. Use this command to test whether the {{ site.data.keys.product_adj }} administration services are running at all. It has the following attributes:
+La commande `show-info` affiche des informations de base sur les services d'administration de {{site.data.keys.product_adj }} pouvant être renvoyées sans accéder à aucun environnement d'exécution ni à aucune base de données. Cette commande permet de vérifier si les services d'administration de {{site.data.keys.product_adj }} sont en cours d'exécution. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| output | 	Nom du fichier de sortie. | Non | Non applicable | 
+| outputproperty | 	Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <show-info/>
 ```
 
 <br/>
-#### The `show-versions` command
+#### Commande `show-versions`
 {: #the-show-versions-command }
-The `show-versions` command displays the {{ site.data.keys.product_adj }} versions of various components:
+La commande `show-versions` affiche les versions {{site.data.keys.product_adj }} des différents composants :
 
-* **mfpadmVersion**: the exact {{ site.data.keys.mf_server }} version number from which the **mfp-ant-deployer.jar **file is taken.
-* **productVersion**: the exact {{ site.data.keys.mf_server }} version number from which the **mfp-admin-service.war** file is taken.
-* **mfpAdminVersion**: the exact build version number of **mfp-admin-service.war** alone.
+* **mfpadmVersion** : numéro de version {{site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-ant-deployer.jar**.
+* **productVersion** : numéro de version {{site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-admin-service.war**.
+* **mfpAdminVersion** : numéro de version de génération exact du fichier **mfp-admin-service.war**.
 
-The command has the following attributes:
+La commande possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| output | 	Nom du fichier de sortie. | Non | Non applicable | 
+| outputproperty | 	Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <show-versions/>
 ```
 
 <br/>
-#### The `show-diagnostics` command
+#### Commande `show-diagnostics`
 {: #the-show-diagnostics-command }
-The `show-diagnostics` command shows the status of various components that are necessary for the correct operation of the {{ site.data.keys.product_adj }} administration service, such as the availability of the database and of auxiliary services. This command has the following attributes.
+La commande `show-diagnostics` affiche le statut des différents composants nécessaires pour assurer le fonctionnement correct du service d'administration de {{site.data.keys.product_adj }}, par exemple, la disponibilité de la base de données et des services secondaires. Cette commande possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| output | 	Name of output file. | No | Not applicable | 
-| outputproperty | 	Name of Ant property for the output. | No | Not applicable | 
+| output | 	Nom du fichier de sortie. | Non | Non applicable | 
+| outputproperty | 	Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Example**  
+**Exemple**  
 
 ```xml
 <show-diagnostics/>
 ```
 
 <br/>
-#### The `unlock` command
+#### Commande `unlock`
 {: #the-unlock-command }
-The `unlock` command releases the general-purpose lock. Some destructive operations take this lock in order to prevent concurrent modification of the same configuration data. In rare cases, if such an operation is interrupted, the lock might remain in locked state, making further destructive operations impossible. Use the unlock command to release the lock in such situations. The command has no attributes.
+La commande `unlock` libère le verrou général. Certaines opérations de destruction utilisent ce verrou afin d'empêcher la modification simultanée des mêmes données de configuration. Dans de rares cas, si une opération de ce type est interrompue, le verrou peut rester à l'état verrouillé, rendant toute autre opération de suppression impossible. Utilisez la commande unlock pour libérer le verrou dans ces cas-là. La commande ne possède aucun attribut.
 
-**Example**  
+**Exemple**  
 
 ```xml
 <unlock/>
 ```
 
 <br/>
-#### The `list-runtimes` command
+#### Commande `list-runtimes`
 {: #the-list-runtimes-command }
-The `list-runtimes` command returns a list of the deployed runtimes. It has the following attributes:
+La commande `list-runtimes` renvoie la liste des environnements d'exécution déployés. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| output | Nom du fichier de sortie. | Non | Non applicable | 
+| outputproperty | Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Examples**  
+**Exemples**  
 
 ```xml
 <list-runtimes/>
@@ -1084,79 +1084,79 @@ The `list-runtimes` command returns a list of the deployed runtimes. It has the 
 <list-runtimes inDatabase="true"/>
 ```
 
-This command is based on the [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST service.
+Cette commande est basée sur le service REST [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-).
 
 <br/>
-#### The `show-runtime` command
+#### Commande `show-runtime`
 {: #the-show-runtime-command }
-The `show-runtime` command shows information about a given deployed runtime. It has the following attributes:
+La commande `show-runtime` affiche des informations sur un environnement d'exécution déployé. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| output | Nom du fichier de sortie. | Non | Non applicable | 
+| outputproperty | Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Example**
+**Exemple**
 
 ```xml
 <show-runtime runtime="mfp"/>
 ```
 
-This command is based on the [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST service.
+Cette commande est basée sur le service REST [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-).
 
 <br/>
-#### The `delete-runtime` command
+#### Commande `delete-runtime`
 {: #the-delete-runtime-command }
-The `delete-runtime` command deletes the runtime, including its apps and adapters, from the database. You can delete a runtime only when its web application is stopped. The command has the following attributes.
+La commande `delete-runtime` supprime l'environnement d'exécution, y compris ses applications et adaptateurs, de la base de données. Vous ne pouvez supprimer un environnement d'exécution que lorsque son application Web est arrêtée. La commande possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime |  Name of the runtime. | Yes | Not available |
-| condition | Condition when to delete it: empty or always. **Attention:** The always option is dangerous. | No | Not applicable |
+| runtime |  Nom de l'environnement d'exécution. | Oui | Non disponible |
+| condition | Condition dans laquelle supprimer l'environnement d'exécution : empty ou always. **Attention :** L'utilisation de l'option always est dangereuse. | Non | Non applicable |
 
-**Example**
+**Exemple**
 
 ```xml
 <delete-runtime runtime="mfp" condition="empty"/>
 ```
 
-This command is based on the [Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST service.
+Cette commande est basée sur le service REST [Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-).
 
 <br/>
-#### The `list-farm-members` command
+#### Commande `list-farm-members`
 {: #the-list-farm-members-command }
-The `list-farm-members` command returns a list of the farm member servers on which a given runtime is deployed. It has the following attributes:
+La commande `list-farm-members` renvoie une liste de serveurs membres d'un parc de serveurs sur lesquels un environnement d'exécution donné est déployé. Elle possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| output | Name of output file. | No | Not applicable | 
-| outputproperty | Name of Ant property for the output. | No | Not applicable | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| output | Nom du fichier de sortie. | Non | Non applicable | 
+| outputproperty | Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
-**Example**
+**Exemple**
 
 ```xml
 <list-farm-members runtime="mfp"/>
 ```
 
-This command is based on the [Farm topology members (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST service.
+Cette commande est basée sur le service REST [Farm topology members (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-).
 
 <br/>
-#### The `remove-farm-member` command
+#### Commande `remove-farm-member`
 {: #the-remove-farm-member-command }
-The `remove-farm-member` command removes a server from the list of farm members on which a given runtime is deployed. Use this command when the server has become unavailable or disconnected. The command has the following attributes.
+La commande `remove-farm-member` retire un serveur de la liste de membres d'un parc de serveurs sur lesquels un environnement d'exécution est déployé. Utilisez cette commande si le serveur est devenu non disponible ou a été déconnecté. La commande possède les attributs suivants :
 
-| Attribute      | Description |	Required | Default |
+| Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| runtime | Name of the runtime. | Yes | Not available | 
-| serverId | Identifier of the server.	 | Yes | Not applicable | 
-| force | Force removal of a farm member, even if it is available and connected. | No | false | 
+| runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
+| serverId | Identificateur du serveur.	 | Oui | Non applicable | 
+| force | Forcer le retrait d'un membre d'un parc de serveurs même s'il est disponible et connecté. | Non | false | 
 
-**Example**
+**Exemple**
 
 ```xml
 <remove-farm-member runtime="mfp" serverId="srvlx15"/>
 ```
 
-This command is based on the [Farm topology members (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST service.
+Cette commande est basée sur le service REST [Farm topology members (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc).

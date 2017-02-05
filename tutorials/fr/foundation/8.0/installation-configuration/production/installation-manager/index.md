@@ -1,208 +1,209 @@
 ---
 layout: tutorial
-title: Running the IBM Installation Manager
+title: Exécution d'IBM Installation Manager
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-IBM  Installation Manager installs the {{ site.data.keys.mf_server_full }} files and tools on your computer.
+IBM Installation Manager installe les fichiers et les outils de {{site.data.keys.mf_server_full }} sur votre ordinateur. 
 
-You run Installation Manager to install the binary files of {{ site.data.keys.mf_server }} and the tools to deploy the {{ site.data.keys.mf_server }} applications to an application server on your computer. The files and tools that are installed by the installer are described in [Distribution structure of {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server).
+Vous exécutez Installation Manager pour installer les fichiers binaires de {{site.data.keys.mf_server }} et les outils pour déployer les applications {{site.data.keys.mf_server }} sur un serveur d'applications sur votre ordinateur. Les fichiers et les outils installés par le programme d'installation sont décrits dans la rubrique [Structure de distribution de {{site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server).
 
-You need IBM Installation Manager V1.8.4 or later to run the {{ site.data.keys.mf_server }} installer. You can run it either in graphical mode or in command line mode.  
-Two main options are proposed during the installation process:
+IBM Installation Manager version 1.8.4 ou ultérieure est requis pour exécuter le programme d'installation de {{site.data.keys.mf_server }}. Vous pouvez l'exécuter en mode graphique ou en mode de ligne de commande.   
+Deux options principales sont proposées lors du processus d'installation :
 
-* Activation of token licensing
-* Installation and deployment of {{ site.data.keys.mf_app_center }}
+* Activation de l'octroi de licence de jeton
+* Installation et déploiement d'{{site.data.keys.mf_app_center }}
 
-### Token licensing
+### Octroi de licence de jeton
 {: #token-licensing }
-Token licensing is one of the two licensing methods supported by {{ site.data.keys.mf_server }}. You must determine whether you need to activate token licensing or not. If you do not have a contract that defines the use of token licensing with the Rational  License Key Server, do not activate token licensing. If you activate token licensing, you must configure {{ site.data.keys.mf_server }} for token licensing. For more information, see [Installing and configuring for token licensing](../token-licensing).
+L'octroi de licence de jeton est l'une des méthodes d'octroi de licence prises en charge par {{site.data.keys.mf_server }}. Vous devez déterminer si vous avez besoin d'activer ou non l'octroi de licence de jeton. Si vous ne disposez pas d'un contrat définissant l'utilisation de l'octroi de licence de jeton avec Rational License Key Server, vous n'avez pas besoin d'activer l'octroi de licence de jeton. Si vous activez cette option, vous devez configurer {{site.data.keys.mf_server }} pour l'octroi de licence de jeton. Pour plus d'informations, voir[Installation et configuration pour l'octroi de licence de jeton](../token-licensing).
 
-### {{ site.data.keys.mf_app_center_full }}
+### {{site.data.keys.mf_app_center_full }}
 {: #ibm-mobilefirst-foundation-application-center }
-Application Center is a component of {{ site.data.keys.product }}. With Application Center, you can share mobile applications that are under development within your organization in a single repository of mobile applications.
+Application Center est un composant de {{site.data.keys.product }}. Avec Application Center, vous pouvez partager des applications mobiles en cours de développement au sein de votre organisation dans un unique référentiel d'applications mobiles.
 
-If you choose to install Application Center with Installation Manager, you must provide the database and the application server parameters so that Installation Manager configures the databases and deploys Application Center to the application server. If you choose not to install Application Center with Installation Manager, Installation Manager saves the WAR file and the resources of Application Center to your disk. It does not set up the databases nor deploys Application Center WAR file to your application server. You can do this later by using Ant tasks or manually. This option to install Application Center is a convenient way to discover Application Center because you are guided during the installation process by the graphical Install wizard.
 
-However, for production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to {{ site.data.keys.mf_server }} from the updates to Application Center.
+Si vous choisissez d'installer Application Center à l'aide d'Installation Manager, vous devez définir les paramètres de base de données et de serveur d'applications de sorte qu'Installation Manager puisse configurer les bases de données et déployer Application Center sur le serveur d'applications. Si vous choisissez de ne pas installer Application Center à l'aide d'Installation Manager, ce dernier sauvegarde le fichier WAR et les ressources d'Application Center sur votre disque. Il ne configure pas les bases de données et ne déploie pas le fichier WAR d'Application Center sur votre serveur d'applications. Vous pourrez effectuer ce opérations ultérieurement à l'aide de tâches Ant ou manuellement. L'option d'installation d'Application Center est un excellent moyen de découvrir ce composant car vous êtes assisté par un assistant graphique lors du processus d'installation. 
 
-* Advantage of installing Application Center with Installation Manager.
-    * A guided graphical wizard assists you through the installation and deployment process.
-* Disadvantages of installing Application Center with Installation Manager.
-    * If Installation Manager is run with the root user on UNIX or Linux, it might create files that are owned by root in the directory of the application server where Application Center is deployed. As a result, you must run the application server as root.
-    * You have no access to the database scripts and cannot provide them to your database administrator to create the tables before you run the installation procedure. Installation Manager creates the database tables for you with default settings.
-    * Each time when you upgrade the product, for example to install an interim fix, Application Center is upgraded first. The upgrade of Application Center includes operations on the database and the application server. If the upgrade of Application Center fails, it prevents Installation Manager from completing the upgrade, and prevents you from upgrading other {{ site.data.keys.mf_server }} components. For production installation, do not deploy Application Center with Installation Manager. Install Application Center separately with Ant tasks after Installation Manager installs{{ site.data.keys.mf_server }}. For more information about Application Center, see [Installing and configuring the Application Center](../../../appcenter).
+Toutefois, dans le cadre d'une installation pour un environnement de production, utilisez des tâches Ant pour installer Application Center. L'installation à l'aide de tâches Ant vous permet de découpler les mises à jour sur {{site.data.keys.mf_server }} à partir des mises à jour apportées à Application Center.
 
-> **Important:** The {{ site.data.keys.mf_server }} installer installs only the {{ site.data.keys.mf_server }} binary files and tools on your disk. It does not deploy the {{ site.data.keys.mf_server }} applications to your application server. After you run the installation with Installation Manager, you must set up the databases and deploy the {{ site.data.keys.mf_server }} applications to your application server.  
-> Similarly, when you run Installation Manager to update an existing installation, it updates only the files on your disk. You need to perform more actions to update the applications that are deployed to your application servers.
+* Avantage lié à l'installation d'Application Center à l'aide d'Installation Manager.
+    * Un assistant graphique vous guide lors du processus d'installation et de déploiement. 
+* Inconvénients liés à l'installation d'Application Center à l'aide d'Installation Manager.
+    * Si Installation Manager est exécuté à l'aide du superutilisateur sous UNIX ou Linux, il peut créer des fichiers appartenant au superutilisateur dans le répertoire du serveur d'applications sur lequel Application Center est déployé. Par conséquent, vous devez exécuter le serveur d'applications en tant que superutilisateur. 
+    * Vous n'avez pas accès aux scripts de base de données et vous ne pouvez les fournir à votre administrateur de base de données pour créer les tables avant d'exécuter la procédure d'installation. Installation Manager crée les tables de base de données pour vous avec des paramètres par défaut. 
+    * Chaque fois que vous effectuez une mise à niveau du produit, par exemple, pour installer un correctif temporaire, Application Center est mis à niveau en premier. La mise à niveau d'Application Center comprend des opérations sur la base de données et le serveur d'applications. Si la mise à niveau d'Application Center échoue, Installation Manager ne peut pas terminer la mise à niveau, et cela vous empêche d'effectuer la mise à niveau d'autres composants {{site.data.keys.mf_server }}. Pour une installation dans un environnement de production, vous ne devez pas déployer Application Center à l'aide d'Installation Manager. Installez Application Center séparément à l'aide de tâches Ant après qu'Installation Manager a installé {{site.data.keys.mf_server }}. Pour plus d'informations sur Application Center, voir [Installation et configuration d'Application Center](../../../appcenter).
 
-#### Jump to
+> **Important : **Le programme d'installation de {{site.data.keys.mf_server }} installe uniquement les fichiers binaires et les outils de {{site.data.keys.mf_server }} sur votre disque. Il ne déploie pas les applications {{site.data.keys.mf_server }} sur votre serveur d'applications. Après avoir exécuté l'installation à l'aide d'Installation Manager, vous devez configurer les bases de données et déployer les applications {{site.data.keys.mf_server }} sur votre serveur d'applications.   
+> De même, lorsque vous exécutez Installation Manager pour mettre à jour une installation existante, seuls les fichiers présents sur votre disque sont mis à jour. Vous devez effectuer d'autres actions pour mettre à jour les applications qui sont déployées sur vos serveurs d'applications.
+
+#### Accéder à
 {: #jump-to }
-* [Administrator versus user mode](#administrator-versus-user-mode)
-* [Installing by using IBM Installation Manager Install wizard](#installing-by-using-ibm-installation-manager-install-wizard)
-* [Installing by running IBM Installation Manager in command line](#installing-by-running-ibm-installation-manager-in-command-line)
-* [Installing by using XML response files - silent installation](#installing-by-using-xml-response-files---silent-installation)
-* [Distribution structure of {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server)
+* [Mode administrateur et mode utilisateur](#administrator-versus-user-mode)
+* [Installation à l'aide de l'assistant d'installation d'IBM Installation Manager](#installing-by-using-ibm-installation-manager-install-wizard)
+* [Installation en exécutant IBM Installation Manager en ligne de commande](#installing-by-running-ibm-installation-manager-in-command-line)
+* [Installation à l'aide de fichiers de réponses XML (installation en mode silencieux)](#installing-by-using-xml-response-files---silent-installation)
+* [Structure de distribution de {{site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server)
 
-## Administrator versus user mode
+## Mode administrateur et mode utilisateur
 {: #administrator-versus-user-mode }
-You can install {{ site.data.keys.mf_server }} in two different IBM  Installation Manager modes. The mode depends on how IBM Installation Manager itself is installed. The mode determines the directories and commands that you use for both Installation Manager and packages.
+Vous pouvez installer {{site.data.keys.mf_server }} dans deux modes IBM Installation Manager distincts. Ce mode varie en fonction de la façon dont IBM Installation Manager est lui-même installé. Le mode détermine les répertoires et les commandes que vous utilisez pour Installation Manager et pour les packages.
 
-{{ site.data.keys.product }} supports the following two Installation Manager modes:
+{{site.data.keys.product }} prend en charge les deux modes Installation Manager suivants : 
 
-* Administrator mode
-* User (nonadministrator) mode
+* Mode administrateur
+* Mode utilisateur (non administrateur)
 
-Group mode that is available on Linux or UNIX is not supported by the product.
+Le mode groupe disponible sur Linux ou UNIX n'est pas pris en charge par le produit. 
 
-### Administrator mode
+### Mode administrateur
 {: #administrator-mode }
-In administrator mode, Installation Manager must be run as root under Linux or UNIX, and with administrator privileges under Windows. The repository files of Installation Manager (that is the list of installed software and its version) are installed in a system directory. /var/ibm on Linux or UNIX, or ProgramData on Windows. Do not deploy Application Center with Installation Manager if you run Installation Manager in administrator mode.
+En mode administrateur, Installation Manager doit être exécuté en tant que superutilisateur sous Linux ou UNIX, et avec des privilèges d'administrateur sous Windows. Les fichiers référentiel d'Installation Manager (liste des logiciels installés accompagnés de leur version) sont installés dans un répertoire système. /var/ibm sous Linux ou UNIX, ou ProgramData sous Windows. Ne déployez pas Application Center à l'aide d'Installation Manager si vous exécutez ce dernier en mode administrateur. 
 
-### User (nonadministrator) mode
+### Mode utilisateur (non administrateur)
 {: #user-nonadministrator-mode }
-In user mode, Installation Manager can be run by any user without specific privileges. However, the repository files of Installation manager are stored in the user's home directory. Only that user is able to upgrade an installation of the product.
-If you do not run Installation Manager as root, make sure that you have a user account that is available later when you upgrade the product installation or apply an interim fix.
+En mode utilisateur, Installation Manager peut être exécuté par n'importe quel utilisateur sans aucun privilège spécifique. Toutefois, les fichiers référentiel d'Installation Manager sont stockés dans le répertoire de base de l'utilisateur. Seul cet utilisateur peut effectuer la mise à niveau d'une installation du produit.
+Si vous n'exécutez pas Installation Manager en tant que superutilisateur, vous devez disposer d'un compte utilisateur que vous utiliserez ultérieurement pour effectuer la mise à niveau de l'installation du produit ou appliquer un correctif temporaire. 
 
-For more information about the Installation Manager modes, see [Installing as an administrator, nonadministrator, or group](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc) in the IBM Installation Manager documentation.
+Pour plus d'informations sur les modes Installation Manager, voir [Installation en tant qu'administrateur, non-administrateur ou groupe](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc) dans la documentation d'IBM Installation Manager. 
 
-## Installing by using IBM Installation Manager Install wizard
+## Installation à l'aide de l'assistant d'installation d'IBM Installation Manager
 {: #installing-by-using-ibm-installation-manager-install-wizard }
-Follow the steps in the procedure to install the resources of {{ site.data.keys.mf_server }}, and the tools (such as the Server Configuration Tool, Ant, and mfpadm program).  
-The decisions in the following two panes in the installation wizard are mandatory:
+Suivez la procédure décrite ci-après pour installer les ressources de {{site.data.keys.mf_server }} et les outils (par exemple, l'outil de configuration de serveur, les tâches Ant et le programme mfpadm).   
+Les décisions dans les deux panneaux suivants de l'assistant d'installation sont obligatoires :
 
-* The **General settings** panel.
-* The **Choose configuration** panel to install Application Center.
+* Panneau **Paramètres généraux**.
+* Panneau **Choisir la configuration** pour installer Application Center
 
-1. Launch Installation Manager.
-2. Add the repository of {{ site.data.keys.mf_server }} in Installation Manager.
-    * Go to **File → Preferences** and click **Add Repositories...**.
-    * Browse for the repository file in the directory where the installer is extracted.
+1. Lancez Installation Manager.
+2. Ajoutez le référentiel de {{site.data.keys.mf_server }} dans Installation Manager.
+    * Accédez à **Fichier → Préférences** et cliquez sur **Ajouter des référentiels...**.
+    * Recherchez le fichier référentiel dans le répertoire où le programme d'installation a été extrait. 
 
-        If you decompress the {{ site.data.keys.product }} V8.0 .zip file for {{ site.data.keys.mf_server }} in **mfp\_installer\_directory** folder, the repository file can be found at **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
+        Si vous décompressez le fichier {{site.data.keys.product }} V8.0 .zip pour {{site.data.keys.mf_server }} dans le dossier **mfp\_installer\_directory**, le fichier référentiel se trouve dans **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
 
-        You might also want to apply the latest fix pack that can be downloaded from the [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Make sure to enter the repository for the fix pack. If you decompress the fix pack in **fixpack_directory** folder, the repository file is found in **fixpack\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
+        Vous souhaiterez peut-être appliquer le dernier groupe de correctifs que vous pouvez télécharger à partir du [portail de support IBM](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Prenez soin d'entrer le référentiel pour le groupe de correctifs. Si vous décompressez le groupe de correctifs dans le dossier **fixpack_directory**, le fichier référentiel se trouve dans **fixpack\_directory/MobileFirst\_Platform\_Server/d le /diskTag.inf**.
 
-        **Note:** You cannot install the fix pack without the repository of the base version in the repositories of Installation Manager. The fix packs are incremental installers and need the repository of the base version to be installed.
-    * Select the file and click **OK**.
-    * Click **OK** to close the **Preferences** panel.
-3. After you accept the license terms of the product, click **Next**.
-4. Choose the package group to install the product.
+        **Remarque :** Vous ne pouvez pas installer le groupe de correctifs sans le référentiel de la version de base dans les référentiels d'Installation Manager. Les groupes de correctifs sont des programmes d'installation incrémentiels et nécessitent que le référentiel de la version de base soit installé.
+    * Sélectionnez le fichier, puis cliquez sur **OK**. 
+    * Cliquez sur **OK** pour fermer le panneau **Préférences**. 
+3. Après avoir accepté les dispositions du contrat de licence du produit, cliquez sur **Suivant**.
+4. Choisissez le groupe de packages pour installer le produit. 
 
-    {{ site.data.keys.product }} V8.0 is a replacement for the previous releases that have a different installation name:
+    {{site.data.keys.product }} V8.0 remplace les éditions précédentes dont le nom d'installation est différent :
     * Worklight for V5.0.6
-    * IBM Worklight for V6.0 to V6.3
+    * IBM Worklight for V6.0 vers V6.3
     
-    If one of these older versions of the product is installed on your computer, Installation Manager offers you an option Use an Existing Package Group at the start of the installation process. This option uninstalls your older version of the product, and reuse your older installation options to upgrade {{ site.data.keys.mf_app_center_full }} if it was installed.
+    Si l'une de ces anciennes versions du produit est installée sur votre ordinateur, Installation Manager vous offre une option vous permettant d'utiliser un groupe de packages existant au début du processus d'installation. Cette option désinstalle votre ancienne version du produit et réutilise vos options d'installation précédentes pour mettre à niveau {{site.data.keys.mf_app_center_full }} si ce composant a été installé. 
     
-    For a separate installation, select the Create a New Package group option so that you can install the new version alongside with the older one.  
-    If no other version of the product is installed on your computer, choose the Create a new package group option to install the product in a new package group.
+    Pour une installation distincte, sélectionnez l'option permettant de créer un nouveau groupe de packages afin de pouvoir installer la nouvelle version et l'ancienne version côte à côte.   
+    Si aucune autre version du produit n'est installée sur votre ordinateur, choisissez l'option permettant de créer un nouveau groupe de packages afin de pouvoir installer le produit dans un nouveau groupe de packages. 
     
-5. Click **Next**.
-6. Decide whether to activate token licensing in the **Activate token licensing** section of the **General settings** panel.
+5. Cliquez sur **Suivant**. 
+6. Décidez si l'octroi de licence de jeton doit être ou non activé dans la section **Activer l'octroi de licence de jeton** du panneau **Paramètres généraux**. 
 
-    If you have a contract to use token licensing with Rational  License Key Server, select the **Activate token licensing with the Rational License Key Server** option. After you activate token licensing, you must do extra steps to configure {{ site.data.keys.mf_server }}. Otherwise, select the **Do not activate token licensing with the Rational License Key Server** option to proceed.
-7. Keep the default option (No) as-is in the **Install {{ site.data.keys.product }} for iOS** section of the **General settings** panel.
-8. Decide whether to install Application Center in **Choose configuration** panel.
+Si vous disposez d'un contrat d'utilisation de l'octroi de licence de jeton avec Rational License Key Server, sélectionnez l'option **Activer l'octroi de licence de jeton avec Rational License Key Server**. Après avoir activé l'octroi de licence de jeton, vous devez exécuter des étapes supplémentaires pour configurer {{site.data.keys.mf_server }}. Sinon, sélectionnez l'option **Ne pas activer l'octroi de licence de jeton avec Rational License Key Server** pour continuer.
+7. Conservez l'option par défaut (Non) dans la section **Installer {{site.data.keys.product }} for iOS** du panneau **Paramètres généraux**. 
+8. Indiquez dans le panneau **Choisir la configuration** si Application Center doit être installé. 
 
-    For production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to {{ site.data.keys.mf_server }} from the updates to Application Center. In this case, select No option in the Choose configuration panel so that Application Center is not installed.
+    Dans le cadre d'une installation pour un environnement de production, utilisez des tâches Ant pour installer Application Center. L'installation à l'aide de tâches Ant vous permet de découpler les mises à jour sur {{site.data.keys.mf_server }} à partir des mises à jour apportées à Application Center. Dans ce cas, sélectionnez l'option Non dans le panneau Choisir la configuration de sorte qu'Application Center ne soit pas installé. 
 
-    If you select Yes, you need to go through the next panes to enter the details about the database you plan to use and the application server where you plan to deploy Application Center. You also need to have the JDBC driver of your database available.
-9. Click **Next** until you reach the **Thank You** panel. Then, proceed with the installation.
+    Si vous sélectionnez Oui, vous devez, à l'aide des panneaux suivants, entrer les détails relatifs à la base de données que vous prévoyez d'utiliser et au serveur d'applications sur lequel vous prévoyez de déployer Application Center. Vous devez également disposer du pilote JDBC correspondant à votre base de données.
+9. Cliquez sur **Suivant** jusqu'à ce que vous ayez atteint le panneau **Merci**. Ensuite, poursuivez l'installation. 
 
-An installation directory that contains the resources to install {{ site.data.keys.product_adj }} components is installed.
+Un répertoire d'installation contenant les ressources nécessaires pour installer les composants {{site.data.keys.product_adj }} est installé. 
 
-You can find the resources in the following folders:
+Ces ressources figurent dans les dossiers suivants :
 
-* **MobileFirstServer** folder for {{ site.data.keys.mf_server }}
-* **PushService** folder for {{ site.data.keys.mf_server }} push service
-* **ApplicationCenter** folder for Application Center
-* **Analytics** folder for {{ site.data.keys.mf_analytics }}
+* Dossier **MobileFirstServer** pour {{site.data.keys.mf_server }}
+* Dossier **PushService** pour le service push de {{site.data.keys.mf_server }}
+* Dossier **ApplicationCenter** pour Application Center
+* Dossier **Analytics** pour {{site.data.keys.mf_analytics }}
 
-You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
+En outre, le dossier **shortcuts** contient des raccourcis pour l'outil de configuration de serveur, les tâches Ant et le programme mfpadm. 
 
-## Installing by running IBM Installation Manager in command line
+## Installation en exécutant IBM Installation Manager en ligne de commande
 {: #installing-by-running-ibm-installation-manager-in-command-line }
 
-1. Review the license agreement for {{ site.data.keys.mf_server }}. The license files can be viewed when you download the installation repository from Passport Advantage .
-2. Extract the compressed file of {{ site.data.keys.mf_server }} repository, that you downloaded, to a folder.
+1. Passez en revue le contrat de licence de {{site.data.keys.mf_server }}. Vous pouvez visualiser les fichiers de licence lorsque vous téléchargez le référentiel d'installation à partir de Passport Advantage. 
+2. Décompressez dans un dossier le fichier compressé du référentiel de {{site.data.keys.mf_server }} que vous avez téléchargé. 
 
-    You can download the repository from the {{ site.data.keys.product }} eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
+    Vous pouvez télécharger le référentiel à partir de {{site.data.keys.product }} eAssembly sur le site [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). Le nom du package est **IBM MobileFirst Foundation V{{site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
 
-    In the steps that follow, the directory where you extract the installer is referred as **mfp\_repository\_dir**. It contains a **MobileFirst\_Platform\_Server/disk1** folder.
-3. Start a command line and go to **installation\_manager\_install\_dir/tools/eclipse/**.
+    Dans les étapes décrites ci-après, le répertoire dans lequel vous décompressez le programme d'installation s'appelle **mfp\_repository\_dir**. Il contient un dossier **MobileFirst\_Platform\_Server/disk1**.
+3. Démarrez une session de ligne de commande et accédez à **installation\_manager\_install\_dir/tools/eclipse/**.
 
-    If you accept the license agreement after the review in step 1, install {{ site.data.keys.mf_server }}.
-    * For an installation without token licensing enforcement (if you do not have a contract that defines the use of token licensing), enter the command:
+    Si vous acceptez les dispositions du contrat de licence que vous avez passé en revue à l'étape 1, vous pouvez installer {{site.data.keys.mf_server }}.
+    * Pour une installation sans application de l'octroi de licence de jeton (si vous ne disposez pas d'un contrat définissant l'utilisation de l'octroi de licence de jeton), entrez la commande suivante : 
 
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
       ```
-    * For an installation with token licensing enforcement, enter the command:
+    * Pour une installation avec application de l'octroi de licence de jeton, entrez la commande suivante :
     
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
       ```
     
-        The value of **user.licensed.by.tokens** property is set to **true**. You must configure {{ site.data.keys.mf_server }} for [token licensing](../token-licensing).
+        La valeur de la propriété **user.licensed.by.tokens** est **true**. Vous devez configurer {{site.data.keys.mf_server }} pour l'[octroi de licence de jeton](../token-licensing).
         
-        The following properties are set to install {{ site.data.keys.mf_server }} without Application Center:
+        Les propriétés suivantes permettent d'installer {{site.data.keys.mf_server }} sans Application Center :
         * **user.appserver.selection2**=none
         * **user.database.selection2**=none
         * **user.database.preinstalled**=false
         
-        This property indicates whether token licensing is activated or not: **user.licensed.by.tokens=true/false**.
+        Cette propriété indique si l'octroi de licence de jeton est activé ou non : **user.licensed.by.tokens=true/false**.
         
-        Set the value of the user.use.ios.edition property to false to install {{ site.data.keys.product }}.
+        Affectez la valeur false à la propriété user.use.ios.edition pour installer {{site.data.keys.product }}.
         
-5. If you want to install with the latest interim fix, add the interim fix repository in the **-repositories** parameter. The **-repositories** parameter takes a comma-separated list of repositories.
+5. Si vous souhaitez effectuer une installation avec le dernier correctif temporaire, ajoutez le référentiel de correctif temporaire au paramètre **-repositories**. Le paramètre **-repositories** accepte une liste de référentiels séparés par des virgules. 
 
-    Add the version of the interim fix by replacing **com.ibm.mobilefirst.foundation.server** with **com.ibm.mobilefirst.foundation.server_version**. **version** has the form **8.0.0.0-buildNumber**. For example, if you install the interim fix **8.0.0.0-IF20160103101**5, enter the command: `imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`.
+    Ajoutez la version du correctif temporaire en remplaçant **com.ibm.mobilefirst.foundation.server** par **com.ibm.mobilefirst.foundation.server_version**. Le format de **version** est **8.0.0.0-buildNumber**. Par exemple, si vous installez le correctif temporaire **8.0.0.0-IF20160103101**5, entrez la commande suivante : `imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`.
     
-    For more information about the imcl command, see [Installation Manager: Installing packages by using `imcl` commands](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en).
+    Pour plus d'informations sur la commande imcl, voir [Installation Manager : Installation de packages via les commandes `imcl`](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en).
     
-An installation directory that contains the resources to install {{ site.data.keys.product_adj }} components is installed.
+Un répertoire d'installation contenant les ressources nécessaires pour installer les composants {{site.data.keys.product_adj }} est installé. 
 
-You can find the resources in the following folders:
+Ces ressources figurent dans les dossiers suivants :
 
-* **MobileFirstServer** folder for {{ site.data.keys.mf_server }}
-* **PushService** folder for {{ site.data.keys.mf_server }} push service
-* **ApplicationCenter** folder for Application Center
-* **Analytics** folder for {{ site.data.keys.mf_analytics }}    
+* Dossier **MobileFirstServer** pour {{site.data.keys.mf_server }}
+* Dossier **PushService** pour le service push de {{site.data.keys.mf_server }}
+* Dossier **ApplicationCenter** pour Application Center
+* Dossier **Analytics** pour {{site.data.keys.mf_analytics }}    
 
-You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
+En outre, le dossier **shortcuts** contient des raccourcis pour l'outil de configuration de serveur, les tâches Ant et le programme mfpadm. 
 
-## Installing by using XML response files - silent installation
+## Installation à l'aide de fichiers de réponses XML (installation en mode silencieux)
 {: #installing-by-using-xml-response-files---silent-installation }
-If you want to install {{ site.data.keys.mf_app_center_full }} with IBM Installation Manager in command line, you need to provide a large list of arguments. In this case, use the XML response files to provide these arguments.
+Si vous souhaitez installer {{site.data.keys.mf_app_center_full }} à l'aide d'IBM Installation Manager en ligne de commande, vous devez fournir une grande liste d'arguments. Dans ce cas, utilisez les fichiers de réponses XML pour fournir ces arguments. 
 
-Silent installations are defined by an XML file that is called a response file. This file contains the necessary data to complete installation operations silently. Silent installations are started from the command line or a batch file.
+Les installations en mode silencieux sont définies par un fichier XML appelé fichier de réponses. Ce fichier contient les données nécessaires pour exécuter les opérations d'installation en mode silencieux. Les installations en mode silencieux sont lancées à partir de la ligne de commande ou d'un fichier de commandes. 
 
-You can use Installation Manager to record preferences and installation actions for your response file in user interface mode. Alternatively, you can create a response file manually by using the documented list of response file commands and preferences.
+Vous pouvez utiliser Installation Manager pour enregistrer des préférences et des actions d'installation pour votre fichier de réponses en mode interface utilisateur. Sinon, vous pouvez créer manuellement un fichier de réponses
+à l'aide de la liste répertoriant les commandes et les préférences du fichier de réponses.  
 
-Silent installation is described in the Installation Manager user documentation, see [Working in silent mode](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silentinstall_overview.html).
+L'installation en mode silencieux est décrite dans la documentation utilisation d'Installation Manager. Voir[Travail en mode silencieux](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silentinstall_overview.html).
 
-There are two ways to create a suitable response file:
+Deux méthodes permettent de créer un fichier de réponses adapté :
 
-* Working with sample response files provided in the {{ site.data.keys.product_adj }} user documentation.
-* Working with a response file recorded on a different computer.
+* Utilisation d'exemples de fichier de réponses fournis dans la documentation utilisateur de {{site.data.keys.product_adj }}. 
+* Utilisation d'un fichier de réponses enregistré sur un autre ordinateur.
 
-Both of these methods are documented in the following sections.
+Ces deux méthodes sont documentées dans les sections suivantes :
 
-### Working with sample response files for IBM Installation Manager
+### Utilisation d'exemples de fichier de réponses pour IBM Installation Manager
 {: #working-with-sample-response-files-for-ibm-installation-manager }
-Sample response files for IBM Installation Manager are provided in the **Silent\_Install\_Sample_Files.zip** compressed file. The following procedures describe how to use them.
+Des exemples de fichier de réponses pour IBM Installation Manager sont fournis dans le fichier compressé **Silent\_Install\_Sample_Files.zip**. Les procédures décrites ci-après expliquent comment les utiliser. 
 
-1. Pick the appropriate sample response file from the compressed file. The Silent_Install_Sample_Files.zip file contains one subdirectory per release.
+1. Choisissez l'exemple de fichier de réponses approprié dans le fichier compressé. Le fichier Silent_Install_Sample_Files.zip contient un sous-répertoire par édition. 
 
-    > **Important:**  
+    > **Important :**  
     > 
-    > * For an installation that does not install Application Center on an application server, use the file named **install-no-appcenter.xml**.
-    > * For an installation that installs Application Center, pick the sample response file from the following table, depending on your application server and database.
-
-   #### Sample installation response files in the **Silent\_Install\_Sample_Files.zip** file to install the Application Center
+    > * Pour une installation qui n'installe pas Application Center sur un serveur d'applications, utilisez le fichier nommé **install-no-appcenter.xml**.
+    > * Pour une installation qui installe Application Center, choisissez l'exemple de fichier de réponses dans le tableau suivant, en fonction de votre serveur d'applications et de votre base de données.
+   #### Exemples de fichier de réponses d'installation contenus dans le fichier **Silent\_Install\_Sample_Files.zip** permettant d'installer Application Center
     
     <table>
         <tr>
@@ -210,9 +211,9 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <th>Application server where you install the Application Center</th>
+            <th>Serveur d'applications où vous installez Application Center</th>
             <th>Derby</th>
-            <th>IBM DB2 </th>
+            <th>IBM DB2</th>
             <th>MySQL</th>
             <th>Oracle</th>
         </tr>
@@ -221,7 +222,7 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <td>WebSphere  Application Server Liberty profile</td>
+            <td>Profil Liberty de WebSphere Application Server</td>
             <td>install-liberty-derby.xml</td>
             <td>install-liberty-db2.xml</td>
             <td>install-liberty-mysql.xml (See Note)</td>
@@ -232,10 +233,10 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <td>WebSphere Application Server full profile, stand-alone server</td>
+            <td>Profil complet de WebSphere Application Server, serveur autonome</td>
             <td>install-was-derby.xml</td>
             <td>install-was-db2.xml</td>
-            <td>install-was-mysql.xml (See Note)</td>
+            <td>install-was-mysql.xml (voir Remarque)</td>
             <td>install-was-oracle.xml</td>
         </tr>
         <tr>
@@ -244,9 +245,9 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
             <td>WebSphere Application Server Network Deployment</td>
-            <td>n/a</td>
+            <td>Non applicable</td>
             <td>install-wasnd-cluster-db2.xml, install-wasnd-server-db2.xml, install-wasnd-node-db2.xml, install-wasnd-cell-db2.xml</td>
-            <td>install-wasnd-cluster-mysql.xml (See Note), install-wasnd-server-mysql.xml (See Note), install-wasnd-node-mysql.xml, install-wasnd-cell-mysql.xml (See Note)</td>
+            <td>install-wasnd-cluster-mysql.xml (voir Remarque), install-wasnd-server-mysql.xml (voir Remarque), install-wasnd-node-mysql.xml, install-wasnd-cell-mysql.xml (voir Remarque)</td>
             <td>install-wasnd-cluster-oracle.xml, install-wasnd-server-oracle.xml, install-wasnd-node-oracle.xml, install-wasnd-cell-oracle.xml</td>
         </tr>
         <tr>
@@ -262,13 +263,12 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
         </tr>
     </table>
     
-    > **Note:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). You can use IBM DB2 or another DBMS that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
-
-    For uninstallation, use a sample file that depends on the version of {{ site.data.keys.mf_server }} or Worklight Server that you initially installed in the particular package group:
+    > **Remarque :** L'utilisation de MySQL conjointement avec le profil Liberty de WebSphere Application Server ou le profil complet de WebSphere Application Server n'est pas considérée comme une configuration prise en charge. Pour plus d'informations, voir [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Vous pouvez utiliser IBM DB2 ou un autre système de gestion de base de données qui est pris en charge par WebSphere Application Server afin de bénéficier d'une configuration entièrement prise en charge par le support IBM.
+    Pour la désinstallation, utilisez un exemple de fichier qui dépend de la version de {{site.data.keys.mf_server }} ou de Worklight Server que vous avez initialement installé dans le groupe de packages spécifique : 
     
-    * {{ site.data.keys.mf_server }} uses the package group {{ site.data.keys.mf_server }}.
-    * Worklight Server V6.x, or later, uses the package group IBM Worklight.
-    * Worklight Server V5.x uses the package group Worklight.
+    * {{site.data.keys.mf_server }} utilise le groupe de packages {{site.data.keys.mf_server }}.
+    * Worklight Server V6.x, ou version ultérieure, utilise le groupe de packages IBM Worklight.
+    * Worklight Server V5.x utilise le groupe de packages Worklight.
 
     <table>
         <tr>
@@ -276,8 +276,8 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <th>Initial version of {{ site.data.keys.mf_server }}</th>
-            <th>Sample file</th>
+            <th>Version initiale de {{site.data.keys.mf_server }}</th>
+            <th>Exemple de fichier</th>
         </tr>
         <tr>
       <td></td>
@@ -300,391 +300,396 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <td>IBM MobileFirst Server V6.x or later</td>
+            <td>IBM MobileFirst Server V6.x ou version ultérieure</td>
             <td>uninstall-initially-mfpserver.xml</td>
         </tr>
     </table>
 
-2. Change the file access rights of the sample file to be as restrictive as possible. Step 4 requires that you supply some passwords. If you must prevent other users on the same computer from learning these passwords, you must remove the read permissions of the file for users other than yourself. You can use a command, such as the following examples:
-    * On UNIX: `chmod 600 <target-file.xml>`
-    * On Windows: `cacls <target-file.xml> /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
-3. Similarly, if the server is a WebSphere Application Server Liberty profile or Apache Tomcat server, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following file:
-    * For WebSphere Application Server Liberty profile: `wlp/usr/servers/<server>/server.xml`
-    * For Apache Tomcat: `conf/server.xml`
-4. Adjust the list of repositories, in the <server> element. For more information about this step, see IBM Installation Manager documentation at [Repositories](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html).
+2. Changez les droits d'accès à l'exemple de fichier pour qu'ils soient aussi restrictifs que possible. L'étape 4 requiert l'indication de mots de passe. Si vous devez empêcher d'autres utilisateurs sur le même ordinateur de prendre connaissance de ces mots de passe,
+vous devez retirer les droits d'accès en lecture au fichier pour ces autres utilisateurs. Vous pouvez utiliser une commande, comme
+dans les exemples suivants :
+    * Sous UNIX : `chmod 600 <target-file.xml>`
+    * Sous Windows: `cacls <target-file.xml> /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+3. De même, si le serveur est un profil Liberty de WebSphere Application Server ou un serveur Apache Tomcat destiné à être démarré uniquement depuis votre compte utilisateur, vous devez également retirer les droits d'accès en lecture pour les autres utilisateurs dans le fichier suivant :
+    * Pour le profil Liberty de WebSphere Application Server : `wlp/usr/servers/<server>/server.xml`
+    * Pour Apache Tomcat : `conf/server.xml`
+4. Ajustez la liste de référentiels dans l'élément <server>. Pour plus d'informations sur cette étape, voir la documentation d'IBM Installation Manager dans [Référentiels](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html).
 
-    In the `<profile>` element, adjust the values of each key/value pair.  
-    In the `<offering>` element in the `<install>` element, set the version attribute to match the release you want to install, or remove the version attribute if you want to install the newest version available in the repositories.
-5. Type the following command: `<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
+    Dans l'élément `<profile>`, ajustez les valeurs de chaque paire clé-valeur.   
+    Dans l'élément `<offering>` de l'élément `<install>`, définissez l'attribut de version de sorte qu'il corresponde à l'édition que vous souhaitez installer ou retirez l'attribut de version si vous souhaitez installer la dernière version disponible dans les référentiels.
+5. Tapez la commande suivante : `<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
 
-    Where:
-    * `<InstallationManagerPath>` is the installation directory of IBM Installation Manager.
-    * `<responseFile>` is the name of the file that is selected and updated in step 1.
+    Où : 
+    * `<InstallationManagerPath>` est le répertoire d'installation d'IBM Installation Manager.
+    * `<responseFile>` est le nom du fichier que vous avez sélectionné et mis à jour à l'étape 1. 
 
-> For more information, see the IBM Installation Manager documentation at [Installing a package silently by using a response file](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
+> Pour plus d'informations, voir la documentation d'IBM Installation Manager dans [Installation d'un package en mode silencieux avec un fichier de réponses](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
     
 
-### Working with a response file recorded on a different machine
+### Utilisation d'un fichier de réponses enregistré sur un autre ordinateur
 {: #working-with-a-response-file-recorded-on-a-different-machine }
 
-1. Record a response file, by running IBM Installation Manager in wizard mode and with option `-record responseFile` on a machine where a GUI is available. For more details, see [Record a response file with Installation Manager](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_create_response_files_IM.html).
-2. Change the file access rights of the response file to be as restrictive as possible. Step 4 requires that you supply some passwords. If you must prevent other users on the same computer from learning these passwords, you must remove the **read** permissions of the file for users other than yourself. You can use a command, such as the following examples:
-    * On UNIX: `chmod 600 response-file.xml`
-    * On Windows: `cacls response-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
-3. Similarly, if the server is a WebSphere  Application Server Liberty or Apache Tomcat server, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following file:
-    * For WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml`
-    * For Apache Tomcat: `conf/server.xml`
-4. Modify the response file to take into account differences between the machine on which the response file was created and the target machine.
-5. Install {{ site.data.keys.mf_server }} by using the response file on the target machine, as described in [Install a package silently by using a response file](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
+1. Enregistrez un fichier de réponses en exécutant IBM Installation Manager en mode assistant et avec l'option `-record responseFile` sur une machine sur laquelle une interface graphique est disponible. Pour obtenir des détails, reportez-vous à
+[Enregistrement d'un fichier de réponses avec Installation Manager](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_create_response_files_IM.html).
+ 
+2. Changez les droits d'accès à l'exemple de fichier de réponses pour qu'ils soient aussi restrictifs que possible. L'étape 4 requiert l'indication de mots de passe. Si vous devez empêcher d'autres utilisateurs sur le même ordinateur de prendre connaissance de ces mots de passe,
+vous devez retirer les droits d'accès en lecture (**read**) au fichier pour ces autres utilisateurs. Vous pouvez utiliser une commande, comme
+dans les exemples suivants :
+    * Sous UNIX : `chmod 600 response-file.xml`
+    * Sous Windows : `cacls response-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+3. De même, si le serveur est un profil Liberty de WebSphere Application Server ou un serveur Apache Tomcat destiné à être démarré uniquement depuis votre compte utilisateur, vous devez également retirer les droits d'accès en lecture pour les autres utilisateurs dans le fichier suivant :
+    * Pour WebSphere Application Server Liberty : `wlp/usr/servers/<server>/server.xml`
+    * Pour Apache Tomcat : `conf/server.xml`
+4. Modifiez le fichier de réponses de manière à tenir compte des différences entre la machine sur laquelle le fichier de réponses a été créé et la machine cible. 
+5. Installez {{site.data.keys.mf_server }} en utilisant le fichier de réponses de la machine cible, comme indiqué dans [Installation d'un package en mode silencieux avec un fichier de réponses](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
 
-### Command-line (silent installation) parameters
+### Paramètres de ligne de commande (installation en mode silencieux)
 {: #command-line-silent-installation-parameters }
 <table style="word-break:break-all">
     <tr>
-        <th>Key</th>
-        <th>When necessary</th>
+        <th>Libellé</th>
+        <th>Nécessaire ?</th>
         <th>Description</th>
-        <th>Allowed values</th>
+        <th>Valeurs autorisées</th>
     </tr>
     <tr>
         <td>user.use.ios.edition</td>
-        <td>Always</td>
-        <td>Set the value to <code>false</code> if you plan to install {{ site.data.keys.product }}. If you plan to install the product for iOS edition, you must set the value to <code>true</code>.</td>
-        <td><code>true</code> or <code>false</code></td>
+        <td>Toujours</td>
+        <td>Indiquez la valeur <code>false</code> si vous prévoyez d'installer {{site.data.keys.product }}. Si vous prévoyez d'installer le produit pour l'édition iOS, vous devez indiquer la valeur <code>true</code>.</td>
+        <td><code>true</code> ou <code>false</code></td>
     </tr>
     <tr>
         <td>user.licensed.by.tokens</td>
-        <td>Always</td>
-        <td>Activation of token licensing. If you plan to use the product with the Rational  License Key Server, you must activate token licensing.<br/><br/>In this case, set the value to <code>true</code>. If you do not plan to use the product with Rational License Key Server, set the value to <code>false</code>.<br/><br/>If you activate license tokens, specific configuration steps are required after you deploy the product to an application server. </td>
-        <td><code>true</code> or <code>false</code></td>    
+        <td>Toujours</td>
+        <td>Activation de l'octroi de licence de jeton. Si vous prévoyez d'utiliser le produit avec Rational License Key Server, vous devez activer l'octroi de licence de jeton.<br/><br/>Dans ce cas, indiquez la valeur <code>true</code>. Si vous ne prévoyez pas d'utiliser le produit avec Rational License Key Server, indiquez la valeur <code>false</code>.<br/><br/>Si vous activez des jetons de licence, des étapes de configuration spécifiques sont requises après le déploiement du produit sur un serveur d'applications. </td>
+        <td><code>true</code> ou <code>false</code></td>    
     </tr>
     <tr>
         <td>user.appserver.selection2</td>
-        <td>Always</td>
-        <td>Type of application server. was means preinstalled WebSphere  Application Server 8.5.5. tomcat means Tomcat 7.0.</td>
+        <td>Toujours</td>
+        <td>Type de serveur d'applications. was désigne le produit WebSphere Application Server 8.5.5 préinstallé. tomcat désigne Tomcat 7.0.</td>
         <td></td>
     </tr>
     <tr>
         <td>user.appserver.was.installdir</td>
         <td>${user.appserver.selection2} == was</td>
-        <td>WebSphere Application Server installation directory.</td>
-        <td>An absolute directory name.</td>
+        <td>Répertoire d'installation de WebSphere Application Server.</td>
+        <td>Nom de répertoire absolu. </td>
     </tr>
     <tr>
         <td>user.appserver.was.profile</td>
         <td>${user.appserver.selection2} == was</td>
-        <td>Profile into which to install the applications. For WebSphere Application Server Network Deployment, specify the Deployment Manager profile. Liberty means the Liberty profile (subdirectory wlp).</td>
-        <td>The name of one of the WebSphere Application Server profiles.</td>
+        <td>Profil dans lequel installer les applications. Pour WebSphere Application Server Network Deployment, spécifiez le profil Deployment Manager. Liberty désigne le profil Liberty (sous-répertoire wlp).</td>
+        <td>Nom des profils WebSphere Application Server. </td>
     </tr>
     <tr>
         <td>user.appserver.was.cell</td>
         <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>WebSphere Application Server cell into which to install the applications.</td>
-        <td>The name of the WebSphere Application Server cell.</td>
+        <td>Cellule WebSphere Application Server dans laquelle installer les applications.</td>
+        <td>Nom de la cellule WebSphere Application Server. </td>
     </tr>
     <tr>
         <td>user.appserver.was.node</td>
         <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>WebSphere Application Server node into which to install the applications. This corresponds to the current machine.</td>
-        <td>The name of the WebSphere Application Server node of the current machine.</td>
+        <td>Noeud WebSphere Application Server dans lequel installer les applications. Cela correspond à la machine en cours. </td>
+        <td>Nom du noeud WebSphere Application Server de la machine en cours. </td>
     </tr>
     <tr>
         <td>user.appserver.was.scope</td>
         <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>Type of set of servers into which to install the applications.<br/><br/><code>server</code> means a standalone server.<br/><br/><code>nd-cell</code> means a WebSphere Application Server Network Deployment cell. <code>nd-cluster</code> means a WebSphere Application Server Network Deployment cluster.<br/><br/><code>nd-node</code> means a WebSphere Application Server Network Deployment node (excluding clusters).<br/><br/><code>nd-server</code> means a managed WebSphere Application Server Network Deployment server.</td>
+        <td>Type d'ensemble de serveurs dans lequel installer les applications.<br/><br/><code>server</code> désigne un serveur autonome.<br/><br/><code>nd-cell</code> désigne une cellule WebSphere Application Server Network Deployment. <code>nd-cluster</code> désigne un cluster WebSphere Application Server Network Deployment.<br/><br/><code>nd-node</code> désigne un noeud WebSphere Application Server Network Deployment (clusters existants).<br/><br/><code>nd-server</code> désigne un serveur WebSphere Application Server Network Deployment géré. </td>
         <td><code>server</code>, <code>nd-cell</code>, <code>nd-cluster</code>, <code>nd-node</code>, <code>nd-server</code></td>
     </tr>
     <tr>
       <td>user.appserver.was.serverInstance</td>
       <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope} == server</td>
-      <td>Name of WebSphere Application Server server into which to install the applications.</td>
-      <td>The name of a WebSphere Application Server server on the current machine.</td>
+      <td>Nom d'un serveur WebSphere Application Server dans lequel installer les applications.</td>
+      <td>Nom d'un serveur WebSphere Application Server sur la machine en cours. </td>
     </tr>
     <tr>
       <td>user.appserver.was.nd.cluster</td>
       <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope} == nd-cluster</td>
-      <td>Name of WebSphere Application Server Network Deployment cluster into which to install the applications.</td>
-      <td>The name of a WebSphere Application Server Network Deployment cluster in the WebSphere Application Server cell.</td>
+      <td>Nom du cluster WebSphere Application Server Network Deployment dans lequel installer les applications.</td>
+      <td>Nom d'un cluster WebSphere Application Server Network Deployment dans la cellule WebSphere Application Server. </td>
     </tr>
     <tr>
       <td>user.appserver.was.nd.node</td>
       <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && (${user.appserver.was.scope} == nd-node || ${user.appserver.was.scope} == nd-server)</td>
-      <td>Name of WebSphere Application Server Network Deployment node into which to install the applications.</td>
-      <td>The name of a WebSphere Application Server Network Deployment node in the WebSphere Application Server cell.</td>
+      <td>Nom du noeud WebSphere Application Server Network Deployment dans lequel installer les applications.</td>
+      <td>Nom d'un noeud WebSphere Application Server Network Deployment dans la cellule WebSphere Application Server. </td>
     </tr>
     <tr>
       <td>user.appserver.was.nd.server</td>
       <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope} == nd-server</td>
-      <td>Name of WebSphere Application Server Network Deployment server into which to install the applications.</td>
-      <td>The name of a WebSphere Application Server Network Deployment server in the given WebSphere Application Server Network Deployment node.</td>
+      <td>Nom d'un serveur WebSphere Application Server Network Deployment dans lequel installer les applications.</td>
+      <td>Nom d'un serveur WebSphere Application Server Network Deployment dans le noeud WebSphere Application Server Network Deployment donné. </td>
     </tr>
     <tr>
       <td>user.appserver.was.admin.name</td>
       <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-      <td>Name of WebSphere Application Server administrator.</td>
+      <td>Nom de l'administrateur WebSphere Application Server. </td>
       <td></td>
     </tr>
     <tr>
       <td>user.appserver.was.admin.password2</td>
       <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-      <td>Password of WebSphere Application Server administrator, optionally encrypted in a specific way.</td>
+      <td>Mot de passe de l'administrateur WebSphere Application Server, éventuellement chiffré d'une manière spécifique. </td>
       <td></td>
     </tr>
     <tr>
       <td>user.appserver.was.appcenteradmin.password</td>
       <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-      <td>Password of <code>appcenteradmin</code> user to add to the WebSphere Application Server users list, optionally encrypted in a specific way.</td>
+      <td>Mot de passe de l'utilisateur <code>appcenteradmin</code> à ajouter à la liste d'utilisateurs WebSphere Application Server, éventuellement chiffré d'une manière spécifique. </td>
       <td></td>
     </tr>
     <tr>
       <td>user.appserver.was.serial</td>
       <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-      <td>Suffix that distinguishes the applications to be installed from other installations of {{ site.data.keys.mf_server }}.</td>
-      <td>String of 10 decimal digits.</td>
+      <td>Suffixe qui distingue les applications à installer des autres installations de {{site.data.keys.mf_server }}.</td>
+      <td>Chaîne de 10 décimaux. </td>
     </tr>
     <tr>
       <td>user.appserver.was85liberty.serverInstance_</td>
       <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} == Liberty</td>
-      <td>Name of WebSphere Application Server Liberty server into which to install the applications.</td>
+      <td>Nom du serveur WebSphere Application Server Liberty dans lequel installer les applications.</td>
       <td></td>
     </tr>
     <tr>
       <td>user.appserver.tomcat.installdir</td>
       <td>${user.appserver.selection2} == tomcat</td>
-      <td>Apache Tomcat installation directory. For a Tomcat installation that is split between a <b>CATALINA_HOME</b> directory and a <b>CATALINA_BASE</b> directory, here you need to specify the value of the <b>CATALINA_BASE</b> environment variable.</td>
-      <td>An absolute directory name.</td>
+      <td>Répertoire d'installation d'Apache Tomcat. Pour une installation Tomcat répartie dans un répertoire <b>CATALINA_HOME</b> et un répertoire <b>CATALINA_BASE</b>, vous devez spécifier la valeur de la variable d'environnement <b>CATALINA_BASE</b>. </td>
+      <td>Nom de répertoire absolu. </td>
     </tr>
     <tr>
       <td>user.database.selection2</td>
-      <td>Always</td>
-      <td>Type of database management system used to store the databases.</td>
-      <td><code>derby</code>, <code>db2</code>, <code>mysql</code>, <code>oracle</code>, <code>none</code>. The value none means that the installer will not install the Application Center. If this value is used, both <b>user.appserver.selection2</b> and <b>user.database.selection2</b> must take the value none.</td>
+      <td>Toujours</td>
+      <td>Type de système de gestion de base de données utilisé pour stocker les bases de données. </td>
+      <td><code>derby</code>, <code>db2</code>, <code>mysql</code>, <code>oracle</code>, <code>none</code>. La valeur none signifie que le programme d'installation n'installera pas Application Center. Si cette valeur est utilisée, <b>user.appserver.selection2</b> et <b>user.database.selection2</b> doivent prendre la valeur none.</td>
     </tr>
     <tr>
       <td>user.database.preinstalled</td>
-      <td>Always</td>
-      <td><code>true</code> means a preinstalled database management system, <code>false</code> means Apache Derby to install.</td>
+      <td>Toujours</td>
+      <td><code>true</code> désigne un système de gestion de base de données préinstallé, <code>false</code> désigne la base de données Apache Derby à installer. </td>
       <td><code>true</code>, <code>false</code></td>
     </tr>
     <tr>
       <td>user.database.derby.datadir</td>
       <td>${user.database.selection2} == derby</td>
-      <td>The directory in which to create or assume the Derby databases.</td>
-      <td>An absolute directory name.</td>
+      <td>Répertoire dans lequel créer ou considérer que se trouvent les bases de données Derby. </td>
+      <td>Nom de répertoire absolu. </td>
     </tr>
     <tr>
       <td>user.database.db2.host</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The host name or IP address of the DB2  database server.</td>
+      <td>Nom d'hôte ou adresse IP du serveur de base de données DB2. </td>
       <td></td>
     </tr>
     <tr>
       <td>user.database.db2.port</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The port where the DB2 database server listens for JDBC connections. Usually 50000.</td>
-      <td>A number between 1 and 65535.</td>
+      <td>Port sur lequel le serveur de base de données DB2 écoute les connexions JDBC. Généralement, 50000.</td>
+      <td>Nombre compris entre 1 et 65535.</td>
     </tr>
     <tr>
       <td>user.database.db2.driver</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The absolute file name of db2jcc4.jar.</td>
-      <td>An absolute file name.</td>
+      <td>Nom de fichier absolu de db2jcc4.jar.</td>
+      <td>Nom de fichier absolu. </td>
     </tr>
     <tr>
       <td>user.database.db2.appcenter.username</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The user name used to access the DB2 database for Application Center.</td>
-      <td>Non-empty.</td>
+      <td>Nom d'utilisateur permettant d'accéder à la base de données DB2 pour Application Center.</td>
+      <td>Non vide.</td>
     </tr>
     <tr>
       <td>user.database.db2.appcenter.password</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The password used to access the DB2 database for Application Center, optionally encrypted in a specific way.</td>
-      <td>Non-empty password.</td>
+      <td>Mot de passe permettant d'accéder à la base de données DB2 pour Application Center, éventuellement chiffré d'une manière spécifique.</td>
+      <td>Mot de passe non vide.</td>
     </tr>
     <tr>
       <td>user.database.db2.appcenter.dbname</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The name of the DB2 database for Application Center.</td>
-      <td>Non-empty; a valid DB2 database name.</td>
+      <td>Nom de la base de données DB2 pour Application Center.</td>
+      <td>Non vide ; nom de base de données DB2 valide. </td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.isservicename.jdbc.url</td>
-      <td>Optional</td>
-      <td>Indicates if <b>user.database.mysql.appcenter.dbname</b> is a Service name or a SID name. If the parameter is absent then <b>user.database.mysql.appcenter.dbname</b> is considered to be a SID name.</td>
-      <td><code>true</code> (indicates a Service name) or <code>false</code> (indicates a SID name)</td>
+      <td>Facultatif</td>
+      <td>Indique si <b>user.database.mysql.appcenter.dbname</b> est un nom de service ou un nom SID. Si le paramètre est absent, <b>user.database.mysql.appcenter.dbname</b> est considéré comme un nom SID. </td>
+      <td><code>true</code> (indique un nom de service) ou <code>false</code> (indique un nom SID)</td>
     </tr>
     <tr>
       <td>user.database.db2.appcenter.schema</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The name of the schema for Application Center in the DB2 database.</td>
+      <td>Nom du schéma d'Application Center dans la base de données DB2. </td>
       <td></td>
     </tr>
     <tr>
       <td>user.database.mysql.host</td>
       <td>${user.database.selection2} == mysql</td>
-      <td>The host name or IP address of the MySQL database server.</td>
+      <td>Nom d'hôte ou adresse IP du serveur de base de données MySQL. </td>
       <td></td>
     </tr>
     <tr>
       <td>user.database.mysql.port</td>
       <td>${user.database.selection2} == mysql</td>
-      <td>The port where the MySQL database server listens for JDBC connections. Usually 3306.</td>
-      <td>A number between 1 and 65535.</td>
+      <td>Port sur lequel le serveur de base de données MySQL écoute les connexions JDBC. Généralement, 3306.</td>
+      <td>Nombre compris entre 1 et 65535.</td>
     </tr>
     <tr>
       <td>user.database.mysql.driver</td>
       <td>${user.database.selection2} == mysql</td>
-      <td>The absolute file name of <b>mysql-connector-java-5.*-bin.jar</b>.</td>
-      <td>An absolute file name.</td>
+      <td>Nom de fichier absolu de <b>mysql-connector-java-5.*-bin.jar</b>.</td>
+      <td>Nom de fichier absolu. </td>
     </tr>
     <tr>
       <td>user.database.mysql.appcenter.username</td>
       <td>${user.database.selection2} == oracle</td>
-      <td>The user name used to access the Oracle database for Application Center.</td>
-      <td>A string consisting of 1 to 30 characters: ASCII digits, ASCII uppercase and lowercase letters, '_', '#', '$' are allowed.</td>
+      <td>Nom d'utilisateur permettant d'accéder à la base de données Oracle pour Application Center.</td>
+      <td>Chaîne composée de 1 à 30 caractères : les chiffres ASCII, les lettres ASCII en majuscules et en minuscules et les caractères '_', '#', '$' sont admis. </td>
     </tr>
     <tr>
       <td>user.database.mysql.appcenter.password</td>
       <td>${user.database.selection2} == oracle</td>
-      <td>The password used to access the Oracle database for Application Center, optionally encrypted in a specific way.</td>
-      <td>The password must be a string consisting of 1 to 30 characters: ASCII digits, ASCII uppercase and lowercase letters, '_', '#', '$' are allowed.</td>
+      <td>Mot de passe permettant d'accéder à la base de données Oracle pour Application Center, éventuellement chiffré d'une manière spécifique.</td>
+      <td>Le mot de passe doit être une chaîne composée de 1 à 30 caractères : les chiffres ASCII, les lettres ASCII en majuscules et en minuscules et les caractères '_', '#', '$' sont admis. </td>
     </tr>
     <tr>
       <td>user.database.mysql.appcenter.dbname</td>
-      <td>${user.database.selection2} == oracle, unless ${user.database.oracle.appcenter.jdbc.url} is specified</td>
-      <td>The name of the Oracle database for Application Center.</td>
-      <td>Non-empty, a valid Oracle database name.</td>
+      <td>${user.database.selection2} == oracle, sauf si ${user.database.oracle.appcenter.jdbc.url} est spécifié</td>
+      <td>Nom de la base de données Oracle pour Application Center.</td>
+      <td>Non vide ; nom de base de données Oracle valide. </td>
     </tr>
     <tr>
       <td>user.database.oracle.host</td>
-      <td>${user.database.selection2} == oracle, unless ${user.database.oracle.appcenter.jdbc.url} is specified</td>
-      <td>The host name or IP address of the Oracle database server.</td>
+      <td>${user.database.selection2} == oracle, sauf si ${user.database.oracle.appcenter.jdbc.url} est spécifié</td>
+      <td>Nom d'hôte ou adresse IP du serveur de base de données Oracle. </td>
       <td></td>
     </tr>
     <tr>
       <td>user.database.oracle.port</td>
-      <td>${user.database.selection2} == oracle, unless ${user.database.oracle.appcenter.jdbc.url} is specified</td>
-      <td>The port where the Oracle database server listens for JDBC connections. Usually 1521.</td>
-      <td>A number between 1 and 65535.</td>
+      <td>${user.database.selection2} == oracle, sauf si ${user.database.oracle.appcenter.jdbc.url} est spécifié</td>
+      <td>Port sur lequel le serveur de base de données Oracle écoute les connexions JDBC. Généralement, 1521.</td>
+      <td>Nombre compris entre 1 et 65535.</td>
     </tr>
     <tr>
       <td>user.database.oracle.driver</td>
       <td>${user.database.selection2} == oracle</td>
-      <td>The absolute file name of the Oracle thin driver jar file. (<b>ojdbc6.jar or ojdbc7.jar</b>)</td>
-      <td>An absolute file name.</td>
+      <td>Nom de fichier absolu du fichier JAR du pilote JDBC fin d'Oracle. (<b>ojdbc6.jar ou ojdbc7.jar</b>)</td>
+      <td>Nom de fichier absolu. </td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.username</td>
       <td>${user.database.selection2} == oracle</td>
-      <td>The user name used to access the Oracle database for Application Center.</td>
-      <td>A string consisting of 1 to 30 characters: ASCII digits, ASCII uppercase and lowercase letters, '_', '#', '$' are allowed.</td>
+      <td>Nom d'utilisateur permettant d'accéder à la base de données Oracle pour Application Center.</td>
+      <td>Chaîne composée de 1 à 30 caractères : les chiffres ASCII, les lettres ASCII en majuscules et en minuscules et les caractères '_', '#', '$' sont admis. </td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.username.jdbc</td>
       <td>	${user.database.selection2} == oracle</td>
-      <td>The user name used to access the Oracle database for Application Center, in a syntax suitable for JDBC.</td>
-      <td>Same as ${user.database.oracle.appcenter.username} if it starts with an alphabetic character and does not contain lowercase characters, otherwise it must be ${user.database.oracle.appcenter.username} surrounded by double quotes.</td>
+      <td>Nom d'utilisateur permettant d'accéder à la base de données Oracle pour Application Center, spécifié dans une syntaxe appropriée pour JDBC.</td>
+      <td>Identique à ${user.database.oracle.appcenter.username} s'il commence par un caractère alphabétique et ne contient pas de caractères en minuscules, sinon, il doit s'agir de ${user.database.oracle.appcenter.username} placé entre guillemets. </td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.password</td>
       <td>${user.database.selection2} == oracle</td>
-      <td>The password used to access the Oracle database for Application Center, optionally encrypted in a specific way.</td>
-      <td>The password must be a string consisting of 1 to 30 characters: ASCII digits, ASCII uppercase and lowercase letters, '_', '#', '$' are allowed.</td>
+      <td>Mot de passe permettant d'accéder à la base de données Oracle pour Application Center, éventuellement chiffré d'une manière spécifique.</td>
+      <td>Le mot de passe doit être une chaîne composée de 1 à 30 caractères : les chiffres ASCII, les lettres ASCII en majuscules et en minuscules et les caractères '_', '#', '$' sont admis. </td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.dbname</td>
-      <td>${user.database.selection2} == oracle, unless ${user.database.oracle.appcenter.jdbc.url} is specified</td>
-      <td>The name of the Oracle database for Application Center.</td>
-      <td>Non-empty, a valid Oracle database name.
-</td>
+      <td>${user.database.selection2} == oracle, sauf si ${user.database.oracle.appcenter.jdbc.url} est spécifié</td>
+      <td>Nom de la base de données Oracle pour Application Center.</td>
+      <td>Non vide ; nom de base de données Oracle valide. </td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.isservicename.jdbc.url</td>
-      <td>Optional</td>
-      <td>Indicates if <code>user.database.oracle.appcenter.dbname</code> is a Service name or a SID name. If the parameter is absent then <code>user.database.oracle.appcenter.dbname</code> is considered to be a SID name.</td>
-      <td><code>true</code> (indicates a Service name) or <code>false</code> (indicates a SID name)</td>
+      <td>Facultatif</td>
+      <td>Indique si <code>user.database.oracle.appcenter.dbname</code> est un nom de service ou un nom SID. Si le paramètre est absent, <code>user.database.oracle.appcenter.dbname</code> est considéré comme un nom SID. </td>
+      <td><code>true</code> (indique un nom de service) ou <code>false</code> (indique un nom SID)</td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.jdbc.url</td>
-      <td>${user.database.selection2} == oracle, unless ${user.database.oracle.host}, ${user.database.oracle.port}, ${user.database.oracle.appcenter.dbname} are all specified</td>
-      <td>The JDBC URL of the Oracle database for Application Center.</td>
-      <td>A valid Oracle JDBC URL. Starts with "jdbc:oracle:".</td>
+      <td>${user.database.selection2} == oracle, sauf si ${user.database.oracle.host}, ${user.database.oracle.port}, ${user.database.oracle.appcenter.dbname} sont tous spécifiés.</td>
+      <td>URL JDBC de la base de données Oracle pour Application Center.</td>
+      <td>URL JDBC Oracle valide. Commence par "jdbc:oracle:".</td>
     </tr>
     <tr>
       <td>user.writable.data.user</td>
-      <td>Always</td>
-      <td>The operating system user that is allowed to run the installed server.</td>
-      <td>An operating system user name, or empty.</td>
+      <td>Toujours</td>
+      <td>Utilisateur du système d'exploitation autorisé à exécuter le serveur installé. </td>
+      <td>Nom d'utilisateur du système d'exploitation, ou vide.</td>
     </tr>
     <tr>
       <td>user.writable.data.group2</td>
-      <td>Always</td>
-      <td>The operating system users group that is allowed to run the installed server.</td>
-      <td>An operating system users group name, or empty.</td>
+      <td>Toujours</td>
+      <td>Groupe d'utilisateurs du système d'exploitation autorisé à exécuter le serveur installé. </td>
+      <td>Nom du groupe d'utilisateurs du système d'exploitation, ou vide.</td>
     </tr>
 </table>
 
-## Distribution structure of {{ site.data.keys.mf_server }}
+## Structure de distribution de {{site.data.keys.mf_server }}
 {: #distribution-structure-of-mobilefirst-server }
-The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.data.keys.mf_server }} installation directory.
+Les fichiers et les outils de {{site.data.keys.mf_server }} sont installés dans le répertoire d'installation de {{site.data.keys.mf_server }}. 
 
-#### Files and subdirectories in the Analytics subdirectory
+#### Fichiers et sous-répertoires du sous-répertoire d'Analytics
 {: #files-and-subdirectories-in-the-analytics-subdirectory }
 
-| Item | Description |
+| Elément | Description |
 |------|-------------|
-| **analytics.ear** and **analytics-*.war** | The EAR and WAR files to install {{ site.data.keys.mf_analytics }}. |
-| **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_analytics }} with Ant tasks. |
+| **analytics.ear** et **analytics-*.war** | Fichiers EAR et WAR permettant d'installer {{site.data.keys.mf_analytics }}. |
+| **configuration-samples** | Contient les exemples de fichier Ant permettant d'installer {{site.data.keys.mf_analytics }} à l'aide de tâches Ant. |
 
-#### Files and subdirectories in the ApplicationCenter subdirectory
+#### Fichiers et sous-répertoires du sous-répertoire d'Application Center
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
 
-| Item | Description |
+| Elément | Description |
 |------|-------------|
-| **configuration-samples** | Contains the sample Ant files to install Application Center. The Ant tasks create the database table and deploy WAR files to an application server. | 
-| **console** | Contains the EAR and WAR files to install Application Center. The EAR file is uniquely for IBM  PureApplication  System. | 
-| **databases** | Contains the SQL scripts to be used for the manual creation of tables for Application Center. |
-| **installer** | Contains the resources to create the Application Center client. | 
-| **tools** | The tools of Application Center. | 
+| **configuration-samples** | Contient les exemples de fichier Ant permettant d'installer Application Center. Les tâches Ant créent la table de base de données et déploient les fichiers WAR sur un serveur d'applications.  | 
+| **console** | Contient les fichiers EAR et WAR permettant d'installer Application Center. Le fichier EAR concerne uniquement IBM PureApplication System. | 
+| **databases** | Contient les scripts SQL à utiliser pour créer manuellement les tables destinées à Application Center. |
+| **installer** | Contient les ressources permettant de créer le client Application Center.  | 
+| **tools** | Outils d'Application Center. | 
 
-#### Files and subdirectories in the {{ site.data.keys.mf_server }} subdirectory
+#### Fichiers et sous-répertoires du sous-répertoire de {{site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
-| Item | Description |
+| Elément | Description |
 |------|-------------|
-| **mfp-ant-deployer.jar** | A set of {{ site.data.keys.mf_server }} Ant tasks. |
-| **mfp-*.war** | The WAR files of the {{ site.data.keys.mf_server }} components. |
-| **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_server }} components with Ant tasks. | 
-| **ConfigurationTool** | Contains the binary files of the Server Configuration Tool. The tool is launched from **mfp_server_install_dir/shortcuts**. |
-| **databases** | Contains the SQL scripts to be used for the manual creation of tables for {{ site.data.keys.mf_server }} components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} configuration service, and {{ site.data.keys.product_adj }} runtime). | 
-| **external-server-libraries** |  Contains the JAR files that are used by different tools (such as the authenticity tool and the OAuth security tool). |
+| **mfp-ant-deployer.jar** | Ensemble de tâches Ant pour {{site.data.keys.mf_server }}.  |
+| **mfp-*.war** | Fichiers WAR des composants {{site.data.keys.mf_server }}. |
+| **configuration-samples** | Contient les exemples de fichier Ant permettant d'installer les composants {{site.data.keys.mf_server }} à l'aide de tâches Ant. | 
+| **ConfigurationTool** | Contient les fichiers binaires de l'outil de configuration de serveur. L'outil est lancé à partir de **rép_install_serbeur_mfp/shortcuts**. |
+| **databases** | Contient les scripts SQL à utiliser pour créer manuellement les tables destinées aux composants {{site.data.keys.mf_server }} (service d'administration de {{site.data.keys.mf_server }}, service de configuration de {{site.data.keys.mf_server }} et environnement d'exécution de {{site.data.keys.product_adj }}).  | 
+| **external-server-libraries** |  Contient les fichiers JAR utilisés par différents outils (par exemple, l'outil d'authenticité et l'outil de sécurité OAuth).  |
 
-#### Files and subdirectories in the PushService subdirectory
+#### Fichiers et sous-répertoires du sous-répertoire du service push
 {: #files-and-subdirectories-in-the-pushservice-subdirectory }
 
-| Item | Description |
+| Elément | Description |
 |------|-------------|
-| **mfp-push-service.war** | The WAR file to install {{ site.data.keys.mf_server }} push service. |
-| **databases** | Contains the SQL scripts to be used for the manual creation of tables for {{ site.data.keys.mf_server }} push service. | 
+| **mfp-push-service.war** | Fichier WAR permettant d'installer le service push de {{site.data.keys.mf_server }}.  |
+| **databases** | Contient les scripts SQL à utiliser pour créer manuellement les tables destinées au service push de {{site.data.keys.mf_server }}.  | 
 
-#### Files and subdirectories in the License subdirectory
+#### Fichiers et sous-répertoires du sous-répertoire de licences
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
-| Item | Description |
+| Elément | Description |
 |------|-------------|
-| **Text** | Contains the license for {{ site.data.keys.product }}. | 
+| **Text** | Contient la licence de {{site.data.keys.product }}. | 
 
-#### Files and subdirectories in the {{ site.data.keys.mf_server }} installation directory
+#### Fichiers et sous-répertoire du répertoire d'installation de {{site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
-| Item | Description |
+| Elément | Description |
 |------|-------------|
-| **shortcuts** | Launcher scripts for Apache Ant, the Server Configuration Tool, and the mfpadmin command, which are supplied with {{ site.data.keys.mf_server }}. | 
+| **shortcuts** | Scripts de programme de lancement pour Apache Ant, l'outil de configuration de serveur et la commande mfpadmin, fournis avec {{site.data.keys.mf_server }}. | 
 
-#### Files and subdirectories in the tools subdirectory
+#### Fichiers et sous-répertoire du sous-répertoire d'outils
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
-| Item | Description |
+| Elément | Description |
 |------|-------------|
-| **tools/apache-ant-version-number** | A binary installation of Apache Ant that is used by the Server Configuration Tool. It can also be used to run the Ant tasks. | 
+| **tools/apache-ant-version-number** | Installation binaire d'Apache Ant utilisée par l'outil de configuration de serveur. Peut également être utilisée pour exécuter les tâches Ant.  | 

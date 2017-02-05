@@ -1,56 +1,57 @@
 ---
 layout: tutorial
-title: Installing MobileFirst Server to an application server
-breadcrumb_title: Installing MobileFirst Server
+title: Installation de MobileFirst Server sur un serveur d'applications
+breadcrumb_title: Installation de MobileFirst Server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-The installation of the components can be done by using Ant Tasks, the Server Configuration Tool, or manually. Find out the prerequisite and the details about the installation process so that you can install the components on the application server successfully.
+Vous pouvez installer les composants à l'aide de tâches Ant, avec l'outil de configuration de serveur ou manuellement. Prenez connaissance des éléments prérequis et des détails relatifs au processus d'installation avant d'installer les composants sur le serveur d'applications.
 
-Before you proceed with installing the components to the application server, ensure that the databases and the tables for the components are prepared and ready to use. For more information, see [Setting up databases](../databases).
 
-The server topology to install the components must also be defined. See [Topologies and network flows](../topologies).
+Avant d'installer les composants sur le serveur d'applications, vérifiez que les bases de données et les tables pour les composants sont préparées et prêtes à l'emploi. Pour plus d'informations, voir [Configuration des bases de données](../databases).
 
-#### Jump to
+La topologie de serveur dans laquelle installer les composants doit également être définie. Voir [Topologies et flots réseau](../topologies).
+
+#### Aller à 
 {: #jump-to }
 
-* [Application server prerequisites](#application-server-prerequisites)
-* [Installing with the Server Configuration Tool](#installing-with-the-server-configuration-tool) 
-* [Installing with Ant tasks](#installing-with-ant-tasks)
-* [Installing the {{ site.data.keys.mf_server }} components manually](#installing-the-mobilefirst-server-components-manually)
-* [Installing a server farm](#installing-a-server-farm)
+* [Prérequis pour le serveur d'applications](#application-server-prerequisites)
+* [Installation avec l'outil de configuration de serveur](#installing-with-the-server-configuration-tool) 
+* [Installation à l'aide de tâches Ant](#installing-with-ant-tasks)
+* [Installation manuelle des composants {{site.data.keys.mf_server }}](#installing-the-mobilefirst-server-components-manually)
+* [Installation d'un parc de serveurs](#installing-a-server-farm)
 
-## Application server prerequisites
+## Prérequis pour le serveur d'applications 
 {: #application-server-prerequisites }
-Depending on your choice of the application server, select one of the following topics to find out the prerequisites that you must fulfill before you install the {{ site.data.keys.mf_server }} components.
+Selon le serveur d'applications que vous avez choisi, reportez-vous à l'une des rubriques suivantes pour prendre connaissance des prérequis que vous devez remplir avant d'installer les composants {{site.data.keys.mf_server }} : 
 
-* [Apache Tomcat prerequisites](#apache-tomcat-prerequisites)
-* [WebSphere Application Server Liberty prerequisites](#websphere-application-server-liberty-prerequisites)
-* [WebSphere Application Server and WebSphere Application Server Network Deployment prerequisites](#websphere-application-server-and-websphere-application-server-network-deployment-prerequisites)
+* [Prérequis pour Apache Tomcat](#apache-tomcat-prerequisites)
+* [Prérequis pour WebSphere Application Server Liberty](#websphere-application-server-liberty-prerequisites)
+* [Prérequis pour WebSphere Application Server et WebSphere Application Server Network Deployment](#websphere-application-server-and-websphere-application-server-network-deployment-prerequisites)
 
-### Apache Tomcat prerequisites
+### Prérequis pour Apache Tomcat 
 {: #apache-tomcat-prerequisites }
-{{ site.data.keys.mf_server }} has some requirements for the configuration of Apache Tomcat that are detailed in the following topics.  
-Ensure that you fulfill the following criteria:
+Les exigences de {{site.data.keys.mf_server }} relatives à la configuration d'Apache Tomcat sont détaillées dans les rubriques ci-dessous.   
+Assurez-vous de remplir les critères suivants : 
 
-* Use a supported version of Apache Tomcat. See [System requirements](../../../product-overview/requirements).
-* Apache Tomcat must be run with JRE 7.0 or later.
-* The JMX configuration must be enabled to allow the communication between the administration service and the runtime component. The communication uses RMI as described in **Configuring JMX connection for Apache Tomcat** below.
+* Utilisez une version prise en charge d'Apache Tomcat. Voir [Configuration système requise](../../../product-overview/requirements).
+* Apache Tomcat doit être exécuté avec JRE 7.0 ou version ultérieure. 
+* La configuration de JMX doit être activée pour permettre la communication entre le service d'administration et le composant d'exécution. La communication utilise RMI comme décrit dans **Configuration de la connexion JMX pour Apache Tomcat** ci-après. 
 
 <div class="panel-group accordion" id="tomcat-prereq" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="jmx-connection">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#tomcat-prereq" href="#collapse-jmx-connection" aria-expanded="true" aria-controls="collapse-jmx-connection"><b>Click for instructions on configuring JMX connection for Apache Tomcat</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#tomcat-prereq" href="#collapse-jmx-connection" aria-expanded="true" aria-controls="collapse-jmx-connection"><b>Cliquez ici pour afficher des instructions de configuration de la connexion JMX pour Apache Tomcat</b></a>
             </h4>
         </div>
 
         <div id="collapse-jmx-connection" class="panel-collapse collapse" role="tabpanel" aria-labelledby="jmx-connection">
             <div class="panel-body">
-                <p>You must configure a secure JMX connection for Apache Tomcat application server.</p>
-                <p>The Server Configuration Tool and the Ant tasks can configure a default secure JMX connection, which includes the definition of a JMX remote port, and the definition of authentication properties. They modify <b>tomcat_install_dir/bin/setenv.bat</b> and <b>tomcat_install_dir/bin/setenv.sh</b> to add these options to <b>CATALINA_OPTS</b>:</p>
+                <p>Vous devez configurer une connexion JMX sécurisée pour le serveur d'applications Apache Tomcat. </p>
+                <p>L'outil de configuration de serveur et les tâches Ant peuvent configurer une connexion JMX sécurisée par défaut qui inclut la définition d'un port distant JMX et de propriétés d'authentification. Ils modifient <b>rép_install_tomcat/bin/setenv.bat</b> et <b>rép_install_tomcat/bin/setenv.sh</b> pour ajouter les options suivantes dans <b>CATALINA_OPTS</b> :</p>
 {% highlight xml %}
 -Djava.rmi.server.hostname=localhost
 -Dcom.sun.management.jmxremote.port=8686
@@ -58,21 +59,21 @@ Ensure that you fulfill the following criteria:
 -Dcom.sun.management.jmxremote.ssl=false
 {% endhighlight %}
 
-                <p><b>Note:</b> 8686 is a default value. The value for this port can be changed if the port is not available on the computer.</p>
+                <p><b>Remarque :</b> 8686 est la valeur de port par défaut. Elle peut être changée si le port n'est pas disponible sur l'ordinateur. </p>
                 
                 <ul>
-                    <li>The <b>setenv.bat</b> file is used if you start Apache Tomcat with <b>tomcat_install_dir/bin/startup.bat</b>, or <b>tomcat_install_dir/bin/catalina.bat.</b></li>
-                    <li>The <b>setenv.sh</b> file is used if you start Apache Tomcat with <b>tomcatInstallDir/bin/startup.sh</b>, or <b>tomcat_install_dir/bin/catalina.sh.</b></li>
+                    <li>Le fichier <b>setenv.bat</b> est utilisé si vous démarrez Apache Tomcat avec <b>rép_install_tomcat/bin/startup.bat</b> ou <b>rép_install_tomcat/bin/catalina.bat.</b></li>
+                    <li>Le fichier <b>setenv.sh</b> est utilisé si vous démarrez Apache Tomcat avec <b>rép_install_tomcat/bin/startup.sh</b> ou <b>rép_install_tomcat/bin/catalina.sh.</b></li>
                 </ul>
                 
-                <p>This file might not be used if you start Apache Tomcat with another command. If you installed the Apache Tomcat Windows Service Installer, the service launcher does not use <b>setenv.bat</b>.</p>
+                <p>Il se peut que ce fichier ne soit pas utilisé si vous démarrez Apache Tomcat avec une autre commande. Si vous avez installé le programme d'installation du service Windows Apache Tomcat, le programme de lancement des services n'utilise pas <b>setenv.bat</b>.</p>
                 
-                <blockquote><b>Important:</b> This configuration is not secure by default. To secure the configuration, you must manually complete steps 2 and 3 of the following procedure.</blockquote>
+                <blockquote><b>Important :</b> cette configuration n'est pas sécurisée par défaut. Pour la sécuriser, vous devez effectuer manuellement les étapes 2 et 3 de la procédure ci-dessous. </blockquote>
                 
-                <p>Manually configuring Apache Tomcat:</p>
+                <p>Configuration manuelle d'Apache Tomcat :</p>
                 
                 <ol>
-                    <li>For a simple configuration, add the following options to <b>CATALINA_OPTS</b>:
+                    <li>Pour une configuration simple, ajoutez les options suivantes dans <b>CATALINA_OPTS</b> :
                     
 {% highlight xml %}
 -Djava.rmi.server.hostname=localhost
@@ -81,395 +82,397 @@ Ensure that you fulfill the following criteria:
 -Dcom.sun.management.jmxremote.ssl=false
 {% endhighlight %}
                     </li>
-                    <li>To activate authentication, see the Apache Tomcat user documentation <a href="https://tomcat.apache.org/tomcat-7.0-doc/config/http.html#SSL_Support">SSL Support - BIO and NIO</a> and <a href="http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html">SSL Configuration HOW-TO</a>.</li>
-                    <li>For a JMX configuration with SSL enabled, add the following options:
+                    <li>Pour savoir comment activer l'authentification, voir la documentation utilisateur d'Apache Tomcat <a href="https://tomcat.apache.org/tomcat-7.0-doc/config/http.html#SSL_Support">SSL Support - BIO and NIO</a> et <a href="http://tomcat.apache.org/tomcat-7.0-doc/ssl-howto.html">SSL Configuration HOW-TO</a>.</li>
+                    <li>Pour une configuration JMX avec SSL activé, ajoutez les options suivantes :
 {% highlight xml %}
 -Dcom.sun.management.jmxremote=true
 -Dcom.sun.management.jmxremote.port=8686
--Dcom.sun.management.jmxremote.ssl=true 
--Dcom.sun.management.jmxremote.authenticate=false 
+-Dcom.sun.management.jmxremote.ssl=true
+-Dcom.sun.management.jmxremote.authenticate=false
 -Djava.rmi.server.hostname=localhost  
--Djavax.net.ssl.trustStore=<key store location>
--Djavax.net.ssl.trustStorePassword=<key store password>
--Djavax.net.ssl.trustStoreType=<key store type>
--Djavax.net.ssl.keyStore=<key store location>
--Djavax.net.ssl.keyStorePassword=<key store password>
--Djavax.net.ssl.keyStoreType=<key store type>
+-Djavax.net.ssl.trustStore=<emplacement_magasin_clés_confiance>
+-Djavax.net.ssl.trustStorePassword=<mot_de_passe_magasin_clés_confiance>
+-Djavax.net.ssl.trustStoreType=<type_magasin_clés_confiance>
+-Djavax.net.ssl.keyStore=<emplacement_magasin_clés>
+-Djavax.net.ssl.keyStorePassword=<mot_de_passe_magasin_clés>
+-Djavax.net.ssl.keyStoreType=<type_magasin_clés>
 {% endhighlight %}
 
-                    <b>Note:</b> The port 8686 can be changed.</li>
+                    <b>Remarque :</b> le port 8686 peut être changé. </li>
                     <li>
-                        <p>If the Tomcat instance is running behind a firewall, the JMX Remote Lifecycle Listener must be configured. See the Apache Tomcat documentation for <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/listeners.html#JMX_Remote_Lifecycle_Listener_-_org.apache.catalina.mbeans.JmxRemoteLifecycleListener">JMX Remote Lifecycle Listener</a>.</p><p>The following environment properties must also be added to the Context section of the administration service application in the <b>server.xml</b> file, such as in the following example:</p>
+                        <p>Si l'instance Tomcat s'exécute derrière un pare-feu, le programme d'écoute de cycle de vie distant JMX doit être configuré. Voir la documentation d'Apache Tomcat <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/listeners.html#JMX_Remote_Lifecycle_Listener_-_org.apache.catalina.mbeans.JmxRemoteLifecycleListener">JMX Remote Lifecycle Listener</a>.</p><p>Vous devez également ajouter les propriétés d'environnement suivantes dans la section Context de l'application de service d'administration dans le fichier <b>server.xml</b>, conformément à l'exemple suivant : </p>
                     
 {% highlight xml %}
 <Context docBase="mfpadmin" path="/mfpadmin ">
-    <Environment name="mfp.admin.rmi.registryPort" value="registryPort" type="java.lang.String" override="false"/>
-    <Environment name="mfp.admin.rmi.serverPort" value="serverPort" type="java.lang.String" override="false"/>
+    <Environment name="mfp.admin.rmi.registryPort" value="portRegistre" type="java.lang.String" override="false"/>
+    <Environment name="mfp.admin.rmi.serverPort" value="portServeur" type="java.lang.String" override="false"/>
 </Context>
 {% endhighlight %}
 
-                        In the previous example:
+                        Dans l'exemple précédent :
                         <ul>
-                            <li>registryPort must have the same value as the <b>rmiRegistryPortPlatform</b> attribute of the JMX Remote Lifecycle Listener.</li>
-                            <li>serverPort must have the same value as the <b>rmiServerPortPlatform</b> attribute of the JMX Remote Lifecycle Listener.</li>
+                            <li>portRegistre doit avoir la même valeur que l'attribut <b>rmiRegistryPortPlatform</b> du programme d'écoute de cycle de vie distant JMX. </li>
+                            <li>portServeur doit avoir la même valeur que l'attribut <b>rmiServerPortPlatform</b> du programme d'écoute de cycle de vie distant JMX. </li>
                         </ul>
                     </li>
-                    <li>If you installed Apache Tomcat with the Apache Tomcat Windows Service Installer instead of adding the options to <b>CATALINA_OPTS</b>, run <b>tomcat_install_dir/bin/Tomcat7w.exe</b>, and add the options in the <b>Java</b> tab of the Properties window.
+                    <li>Si vous avez installé Apache Tomcat avec le programme d'installation des services Windows Apache Tomcat au lieu d'ajouter les options dans <b>CATALINA_OPTS</b>, exécutez <b>rép_install_tomcat/bin/Tomcat7w.exe</b> et ajoutez les options dans l'onglet <b>Java</b> de la fenêtre des propriétés. 
                     
-                    <img alt="Apache Tomcat 7 properties" src="Tomcat_Win_Service_Installer_properties.jpg"/></li>
+                    <img alt="Propriétés Apache Tomcat 7" src="Tomcat_Win_Service_Installer_properties.jpg"/></li>
                 </ol>
             </div>
         </div>
     </div>
 </div>
 
-### WebSphere Application Server Liberty prerequisites
+### Prérequis pour WebSphere Application Server Liberty 
 {: #websphere-application-server-liberty-prerequisites }
-{{ site.data.keys.product_full }}has some requirements for the configuration of the Liberty server that are detailed in the following topics.  
+Les exigences d'{{site.data.keys.product_full }} relatives à la configuration du serveur Liberty sont détaillées dans les rubriques ci-dessous.   
 
-Ensure that you fulfill the following criteria:
+Assurez-vous de remplir les critères suivants : 
 
-* Use a supported version of Liberty. See [System requirements](../../../product-overview/requirements).
-* Liberty must be run with JRE 7.0 or later. JRE 6.0 is not supported.
-* Some versions of Liberty support both the features of Java EE 6 and Java EE 7. For example, jdbc-4.0 Liberty feature is part of Java EE 6, whereas jdbc-4.1 Liberty feature is part of Java EE 7. {{ site.data.keys.mf_server }} V8.0.0 can be installed with Java EE 6 or Java EE 7 features. However, if you want to run an older version of {{ site.data.keys.mf_server }} on the same Liberty server, you must use the Java EE 6 features. {{ site.data.keys.mf_server }} V7.1.0 and earlier, does not support the Java EE 7 features.
-* JMX must be configured as documented in **Configuring JMX connection for WebSphere Application Server Liberty profile** below.
-* For an installation in a production environment, you might want to start the Liberty server as a service on Windows, Linux, or UNIX systems so that:
-The {{ site.data.keys.mf_server }} components are started automatically when the computer starts.
-The process that runs Liberty server is not stopped when the user, who started the process, logs out.
-* {{ site.data.keys.mf_server }} V8.0.0 cannot be deployed in a Liberty server that contains the deployed {{ site.data.keys.mf_server }} components from the previous versions.
-* For an installation in a Liberty collective environment, the Liberty collective controller and the Liberty collective cluster members must be configured as documented in [Configuring a Liberty collective](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/tagt_wlp_configure_collective.html?view=kc).
+* Utilisez une version prise en charge de Liberty. Voir [Configuration système requise](../../../product-overview/requirements).
+* Liberty doit être exécuté avec JRE 7.0 ou version ultérieure. JRE 6.0 n'est pas pris en charge. 
+* Certaines versions de Liberty prennent en charge les fonctions de Java EE 6 et les fonctions de Java EE 7. Par exemple, la fonction Liberty jdbc-4.0 provient de Java EE 6, alors que la fonction Liberty jdbc-4.1 provient de Java EE 7. {{site.data.keys.mf_server }} version 8.0.0 peut être installé avec des fonctions Java EE 6 ou Java EE 7. Toutefois, si vous voulez exécuter une version plus ancienne de {{site.data.keys.mf_server }} sur le même serveur Liberty, vous devez utiliser les fonctions Java EE 6. La version 7.1.0 et les versions précédentes de {{site.data.keys.mf_server }} ne prennent pas en charge les fonctions Java EE 7. 
+* JMX doit être configuré comme décrit dans **Configuration de la connexion JMX pour le profil Liberty de WebSphere Application Server** ci-après. 
+* Pour une installation dans un environnement de production, il est recommandé de démarrer le serveur Liberty en tant que service sur les systèmes Windows, Linux ou UNIX pour que les composants {{site.data.keys.mf_server }} soient démarrés automatiquement lorsque l'ordinateur démarre et le processus qui exécute le serveur Liberty ne s'arrête pas lorsque l'utilisateur qui a démarré le processus se déconnecte. 
+* {{site.data.keys.mf_server }} version 8.0.0 ne peut pas être déployé sur un serveur Liberty contenant les composants {{site.data.keys.mf_server }} déployés pour des versions précédentes. 
+* Pour l'installation dans un environnement de collectivité Liberty, le contrôleur de collectivité Liberty et les membres de cluster de collectivité Liberty doivent être configurés comme décrit dans [Configuration d'une collectivité Liberty](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/tagt_wlp_configure_collective.html?view=kc).
 
 <div class="panel-group accordion" id="websphere-prereq" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="websphere-jmx-connection">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#websphere-prereq" href="#collapse-websphere-jmx-connection" aria-expanded="true" aria-controls="collapse-websphere-jmx-connection"><b>Click for instructions on configuring JMX connection for WebSphere Application Server Liberty profile</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#websphere-prereq" href="#collapse-websphere-jmx-connection" aria-expanded="true" aria-controls="collapse-websphere-jmx-connection"><b>Cliquez ici pour afficher des instructions de configuration de la connexion JMX pour le profil Liberty de WebSphere Application Server</b></a>
             </h4>
         </div>
 
         <div id="collapse-websphere-jmx-connection" class="panel-collapse collapse" role="tabpanel" aria-labelledby="websphere-jmx-connection">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_server }} requires the secure JMX connection to be configured.</p>
+                <p>{{site.data.keys.mf_server }} requiert la configuration de la connexion JMX sécurisée. </p>
                 
                 <ul>
-                    <li>The Server Configuration Tool and the Ant tasks can configure a default secure JMX connection, which includes the generation of a self-signed SSL certificate with a validity period of 365 days. This configuration is not intended for production use.</li>
-                    <li>To configure the secure JMX connection for production use, follow the instructions as described in <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_restconnector.html?cp=SSD28V_8.5.5&view=embed">Configuring secure JMX connection to the Liberty profile</a>.</li>
-                    <li>The rest-connector is available for WebSphere  Application Server, Liberty Core, and other editions of Liberty, but it is possible to package a Liberty server with a subset of the available features. To verify that the rest-connector feature is available in your installation of Liberty, enter the following command:
-{% highlight bash %}                    
-liberty_install_dir/bin/productInfo featureInfo
+                    <li>L'outil de configuration de serveur et les tâches Ant peuvent configurer une connexion JMX sécurisée par défaut qui inclut la génération d'un certificat SSL autosigné dont la période de validité est de 365 jours. Cette configuration ne peut pas être utilisée en production. </li>
+                    <li>Afin de configurer la connexion JMX sécurisée pour un usage en production, suivez les instructions décrites dans <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_restconnector.html?cp=SSD28V_8.5.5&view=embed">Configuration d'une connexion JMX sécurisée dans le profil Liberty</a>.</li>
+                    <li>La fonction rest-connector est disponible pour WebSphere Application Server, Liberty Core et d'autres éditions de Liberty ; toutefois, il est possible de conditionner un serveur Liberty avec un sous-ensemble seulement des fonctions disponibles. Pour vérifier que la fonction rest-connector est disponible dans votre installation de Liberty, entrez la commande suivante : {% highlight bash %}                    
+rép_install_liberty/bin/productInfo featureInfo
 {% endhighlight %}
-                    <b>Note:</b> Verify that the output of this command contains restConnector-1.0.</li>
+                    <b>Remarque :</b> vérifiez que la sortie de cette commande
+répertorie restConnector-1.0.</li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-### WebSphere Application Server and WebSphere Application Server Network Deployment prerequisites
+### Prérequis pour WebSphere Application Server et WebSphere Application Server Network Deployment 
 {: #websphere-application-server-and-websphere-application-server-network-deployment-prerequisites }
-{{ site.data.keys.mf_server }} has some requirements for the configuration of WebSphere  Application Server and WebSphere Application Server Network Deployment that are detailed in the following topics.  
-Ensure that you fulfill the following criteria:
+Les exigences de {{site.data.keys.mf_server }} relatives à la configuration de WebSphere Application Server et WebSphere Application Server Network Deployment sont détaillées dans les rubriques ci-dessous.   
+Assurez-vous de remplir les critères suivants : 
 
-* Use a supported version of WebSphere Application Server. See [System requirements](../../../product-overview/requirements).
-* The application server must be run with JRE 7.0. By default, WebSphere Application Server uses Java 6.0 SDK. To switch to Java 7.0 SDK, see [Switching to Java 7.0 SDK in WebSphere Application Server](https://www.ibm.com/support/knowledgecenter/SSWLGF_8.5.5/com.ibm.sr.doc/twsr_java17.html).
-* The administrative security must be turned on. {{ site.data.keys.mf_console }}, the {{ site.data.keys.mf_server }} administration service, and the {{ site.data.keys.mf_server }} configuration service are protected by security roles. For more information, see [Enabling security](https://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tsec_csec2.html?cp=SSEQTP_8.5.5%2F1-8-2-31-0-2&lang=en).
-* The JMX configuration must be enabled to allow the communication between the administration service and the runtime component. The communication uses SOAP. For WebSphere Application Server Network Deployment, RMI can be used. For more information, see **Configuring JMX connection for WebSphere Application Server and WebSphere Application Server Network Deployment** below.
+* Utilisez une version prise en charge de WebSphere Application Server. Voir [Configuration système requise](../../../product-overview/requirements).
+* Le serveur d'applications doit être exécuté avec JRE 7.0. Par défaut, WebSphere Application Server utilise le logiciel SDK Java 6.0. Pour utiliser le logiciel SDK Java 7.0, voir [Basculement vers le SDK Java 7.0 dans WebSphere Application Server](https://www.ibm.com/support/knowledgecenter/SSWLGF_8.5.5/com.ibm.sr.doc/twsr_java17.html).
+* La sécurité administrative doit être activée. {{site.data.keys.mf_console }}, le service d'administration de {{site.data.keys.mf_server }} et le service de configuration de {{site.data.keys.mf_server }} sont protégés par des rôles de sécurité. Pour plus d'informations, voir [Activation de la sécurité](https://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/tsec_csec2.html?cp=SSEQTP_8.5.5%2F1-8-2-31-0-2&lang=en).
+* La configuration de JMX doit être activée pour permettre la communication entre le service d'administration et le composant d'exécution. La communication utilise SOAP. RMI peut être utilisé pour WebSphere Application Server Network Deployment. Pour plus d'informations, voir **Configuration de la connexion JMX pour WebSphere Application Server et WebSphere Application Server Network Deployment** ci-après. 
 
 <div class="panel-group accordion" id="websphere-nd-prereq" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="websphere-nd-jmx-connection">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#websphere-nd-prereq" href="#collapse-websphere-nd-jmx-connection" aria-expanded="true" aria-controls="collapse-websphere-nd-jmx-connection"><b>Click for instructions on configuring JMX connection for WebSphere Application Server and WebSphere Application Server Network Deployment</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#websphere-nd-prereq" href="#collapse-websphere-nd-jmx-connection" aria-expanded="true" aria-controls="collapse-websphere-nd-jmx-connection"><b>Cliquez ici pour afficher des instructions de configuration de la connexion JMX pour WebSphere Application Server et WebSphere Application Server Network Deployment</b></a>
             </h4>
         </div>
 
         <div id="collapse-websphere-nd-jmx-connection" class="panel-collapse collapse" role="tabpanel" aria-labelledby="websphere-nd-jmx-connection">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_server }} requires the secure JMX connection to be configured.</p>
+                <p>{{site.data.keys.mf_server }} requiert la configuration de la connexion JMX sécurisée. </p>
                 
                 <ul>
-                    <li>{{ site.data.keys.mf_server }} requires access to the SOAP port, or the RMI port to perform JMX operations. By default, the SOAP port is active on a WebSphere Application Server. {{ site.data.keys.mf_server }} uses the SOAP port by default. If both the SOAP and RMI ports are deactivated, {{ site.data.keys.mf_server }} does not run.</li>
-                    <li>RMI is only supported by WebSphere Application Server Network Deployment. RMI is not supported by a stand-alone profile, or a WebSphere Application Server server farm.</li>
-                    <li>You must activate Administrative and Application Security.</li>
+                    <li>{{site.data.keys.mf_server }} requiert l'accès au port SOAP ou au port RMI pour effectuer des opérations JMX. Par défaut, le port SOAP est actif sur un serveur WebSphere Application Server. {{site.data.keys.mf_server }} utilise le port SOAP par défaut. Si le port SOAP et le port RMI sont désactivés, {{site.data.keys.mf_server }} ne s'exécute pas. </li>
+                    <li>RMI n'est pris en charge que par WebSphere Application Server Network Deployment. Il n'est pas pris en charge par les profils autonomes ni par les parcs de serveurs WebSphere Application Server. </li>
+                    <li>Vous devez activer la sécurité administrative et la sécurité des applications. </li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-### File system prerequisites
+### Prérequis pour le système de fichiers 
 {: #file-system-prerequisites }
-To install {{ site.data.keys.mf_server }} to an application server, the {{ site.data.keys.product_adj }} installation tools must be run by a user that has specific file system privileges.  
-The installation tools include:
+Pour installer {{site.data.keys.mf_server }} sur un serveur d'applications, les outils d'installation de {{site.data.keys.product_adj }} doivent être exécutés par un utilisateur disposant de droits spécifiques dans le système de fichiers.
+  
+Les outils d'installation sont : 
 
-* IBM  Installation Manager
-* The Server Configuration Tool
-* The Ant tasks to deploy {{ site.data.keys.mf_server }}
+* IBM Installation Manager
+* L'outil de configuration de serveur
+* Les tâches Ant permettant de déployer {{site.data.keys.mf_server }}
 
-For WebSphere  Application Server Liberty profile, you must have the required permission to perform the following actions:
+Pour le profil Liberty de WebSphere Application Server, vous devez disposer des droits permettant d'effectuer les actions suivantes : 
 
-* Read the files in the Liberty installation directory.
-* Create files in the configuration directory of the Liberty server, which is typically usr/servers/server-name, to create backup copies and modify server.xml and jvm.options.
-* Create files and directories in the Liberty shared resource directory, which is typically usr/shared.
-* Create files in the Liberty server apps directory, which is typically usr/servers/server-name/apps.
+* Lire les fichiers dans le répertoire d'installation de Liberty. 
+* Créer des fichiers dans le répertoire de configuration du serveur Liberty, en général usr/servers/nom-serveur, pour créer des copies de sauvegarde et modifier server.xml et jvm.options.
+* Créer des fichiers et des répertoires dans le répertoire de ressources partagées, en général usr/shared.
+* Créer des fichiers dans le répertoire des applications du serveur Liberty, en général usr/servers/nom-serveur/apps.
 
-For WebSphere Application Server full profile and WebSphere Application Server Network Deployment, you must have the required permission to perform the following actions:
+Pour le profil complet de WebSphere Application Server et WebSphere Application Server Network Deployment, vous devez disposer des droits permettant d'effectuer les actions suivantes : 
 
-* Read the files in the WebSphere Application Server installation directory.
-* Read the configuration file of the selected WebSphere Application Server full profile or of the Deployment Manager profile.
-* Run the wsadmin command.
-* Create files in the profiles configuration directory. The installation tools put resources such as shared libraries or JDBC drivers in that directory.
+* Lire les fichiers dans le répertoire d'installation de WebSphere Application Server. 
+* Lire le fichier de configuration du profil complet de WebSphere Application Server ou du profil Deployment Manager sélectionné. 
+* Exécuter la commande wsadmin. 
+* Créer des fichiers dans le répertoire de configuration des profils. Les outils d'installation placent les ressources telles que les bibliothèques partagées ou les pilotes JDBC dans ce répertoire. 
 
-For Apache Tomcat, you must have the required permission to perform the following actions:
+Pour Apache Tomcat, vous devez disposer des droits permettant d'effectuer les actions suivantes : 
 
-* Read the configuration directory.
-* Create backup files and modify files in the configuration directory, such as server.xml, and tomcat-users.xml.
-* Create backup files and modify files in the bin directory, such as setenv.bat.
-* Create files in the lib directory.
-* Create files in the webapps directory.
+* Lire le répertoire de configuration. 
+* Créer des fichiers de sauvegarde et modifier les fichiers dans le répertoire de configuration, comme server.xml et tomcat-users.xml.
+* Créer des fichiers de sauvegarde et modifier les fichiers dans le répertoire bin, comme setenv.bat. 
+* Créer des fichiers dans le répertoire lib. 
+* Créer des fichiers dans le répertoire webapps. 
 
-For all these application servers, the user who runs the application server must be able to read the files that were created by the user who ran the {{ site.data.keys.product_adj }} installation tools.
+Pour tous ces serveurs d'applications, l'utilisateur qui exécute le serveur d'applications doit pouvoir lire les fichiers qui ont été créés par l'utilisateur qui a exécuté les outils d'installation de {{site.data.keys.product_adj }}. 
 
-## Installing with the Server Configuration Tool
+## Installation avec l'outil de configuration de serveur 
 {: #installing-with-the-server-configuration-tool }
-Use the Server Configuration Tool to install the {{ site.data.keys.mf_server }} components to your application server.
+Utilisez l'outil de configuration de serveur pour installer les composants {{site.data.keys.mf_server }} sur votre serveur d'applications. 
 
-The Server Configuration Tool can set up the database and install the components to an application server. This tool is meant for a single user. The configuration files are store on the disk. The directory where they are stored can be modified with menu **File → Preferences**. The files must be used only by one instance of the Server Configuration Tool at the time. The tool does not manage concurrent access to the same file. If you have multiple instances of the tool accessing the same file, the data might be lost. For more information about how the tool creates and setup the databases, see [Create the database tables with the Server Configuration Tool](../databases/#create-the-database-tables-with-the-server-configuration-tool). If the databases exist, the tool can detect them by testing the presence and the content of some test tables and does not modify these database tables.
+L'outil de configuration de serveur peut configurer la base de données et installer les composants sur un serveur d'applications. Il a été conçu pour un seul utilisateur. Les fichiers de configuration sont stockés sur le disque. Vous pouvez changer le répertoire dans lequel ils sont stockés avec le menu **File   Preferences**. Les fichiers ne doivent être utilisés que par une instance de l'outil de configuration de serveur à la fois. L'outil ne gère pas l'accès simultané à un même fichier. Si plusieurs instances de l'outil accèdent à un même fichier, vous risquez de perdre les données. Pour plus d'informations sur la façon dont l'outil crée et configure les bases de données, voir [Création des tables de base de données avec l'outil de configuration de serveur](../databases/#create-the-database-tables-with-the-server-configuration-tool). Si les bases de données existent, l'outil peut les détecter en testant leur présence ainsi que le contenu de certaines tables de test, mais ne les modifie pas. 
 
-* [Supported operating systems](#supported-operating-systems)
-* [Supported topologies](#supported-topologies)
-* [Running the Server Configuration Tool](#running-the-server-configuration-tool)
-* [Applying a fix pack by using the Server Configuration Tool](#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [Systèmes d'exploitation pris en charge](#supported-operating-systems)
+* [Topologies prises en charge](#supported-topologies)
+* [Exécution de l'outil de configuration de serveur](#running-the-server-configuration-tool)
+* [Application d'un groupe de correctifs avec l'outil de configuration de serveur](#applying-a-fix-pack-by-using-the-server-configuration-tool)
 
-### Supported operating systems
+### Systèmes d'exploitation pris en charge 
 {: #supported-operating-systems }
-You can use the Server Configuration Tool if you are on the following operating systems:
+Vous pouvez utiliser l'outil de configuration de serveur si vous utilisez les systèmes d'exploitation suivants : 
 
-* Windows x86 or x86-64
+* Windows x86 ou x86-64
 * macOS x86-64
-* Linux x86 or Linux x86-64
+* Linux x86 ou Linux x86-64
 
-The tool is not available on other operating systems. You need to use Ant tasks to install the {{ site.data.keys.mf_server }} components as described in [Installing with Ant Tasks](#installing-with-ant-tasks).
+L'outil n'est pas disponible sur les autres systèmes d'exploitation. Vous devez utiliser des tâches Ant pour installer les composants {{site.data.keys.mf_server }} comme décrit dans [Installation à l'aide de tâches Ant](#installing-with-ant-tasks).
 
-### Supported topologies
+### Topologies prises en charge
 {: #supported-topologies }
-The Server Configuration Tool installs the {{ site.data.keys.mf_server }} components with the following topologies:
+L'outil de configuration de serveur installe les composants {{site.data.keys.mf_server }} avec les topologies suivantes : 
 
-* All components ({{ site.data.keys.mf_console }}, the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the {{ site.data.keys.product_adj }} runtime) are in the same application server. However, on WebSphere  Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the administration and live update services, and for the runtime. On Liberty collective, {{ site.data.keys.mf_console }}, the administration service, and the live update service are installed in a collective controller and the runtime in a collective member.
-* If the {{ site.data.keys.mf_server }} push service is installed, it is also installed on the same server. However, on WebSphere Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the push service. On Liberty collective, the push service is installed in a Liberty member that can be the same as the one where the runtime is installed.
-* All the components use the same database system and the user. For DB2 , all the components also use the same schema.
-* The Server Configuration Tool installs the components for a single server except for Liberty collective and WebSphere Application Server Network Deployment for asymmetric deployment. For an installation on multiple servers, a farm must be configured after the tool is run. The server farm configuration is not required on WebSphere Application Server Network Deployment.
+* Tous les composants ({{site.data.keys.mf_console }}, le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product_adj }}) se trouvent sur le même serveur d'applications.
+Toutefois, sur WebSphere Application Server Network Deployment, lorsque vous procédez à l'installation dans un cluster, vous pouvez spécifier un cluster différent pour les services d'administration et Live Update et pour l'environnement d'exécution. Dans la collectivité Liberty, {{site.data.keys.mf_console }}, le service d'administration et le service Live Update sont installés sur un contrôleur de collectivité, et l'environnement d'exécution sur un membre de collectivité. 
+* Si le service push de {{site.data.keys.mf_server }} est installé, il l'est sur le même serveur. Toutefois, sur WebSphere Application Server Network Deployment, lorsque vous procédez à l'installation dans un cluster, vous pouvez spécifier un cluster différent pour le service push. Dans la collectivité Liberty, le service push est installé sur un membre Liberty qui peut être celui sur lequel est installé l'environnement d'exécution. 
+* Tous les composants utilisent le même système de base de données et le même utilisateur. Pour DB2, tous les composants utilisent également le même schéma. 
+* L'outil de configuration de serveur installe les composants pour un serveur unique, sauf pour la collectivité Liberty et WebSphere Application Server Network Deployment dans le cas d'un déploiement asymétrique. Pour une installation sur plusieurs serveurs, vous devez configurer un parc de serveurs après l'exécution de l'outil. La configuration du parc de serveurs n'est pas requise sur WebSphere Application Server Network Deployment.
 
-For other topologies or other database settings, you can install the components with Ant Tasks or manually instead.
+Pour les autres topologies ou les autres paramètres de base de données, vous pouvez installer les composants à l'aide de tâches Ant ou manuellement. 
 
-### Running the Server Configuration Tool
+### Exécution de l'outil de configuration de serveur
 {: #running-the-server-configuration-tool }
-Before you run the Server Configuration Tool, make sure that the following requirements are fulfilled:
+Avant d'exécuter l'outil de configuration de serveur, vérifiez que les exigences suivantes sont satisfaites : 
 
-* The databases and the tables for the components are prepared and ready to use. See [Setting up databases](../databases).
-* The server topology to install the components is decided. See [Topologies and network flows](../topologies).
-* The application server is configured. See [Application server prerequisites](#application-server-prerequisites).
-* The user that runs the tool has the specific file system privileges. See [File system prerequisites](#file-system-prerequisites).
+* Les bases de données et les tables pour les composants sont préparées et prêtes à l'emploi. Voir [Configuration des bases de données](../databases).
+* La topologie de serveur dans laquelle installer les composants a été choisie. Voir [Topologies et flots réseau](../topologies).
+* Le serveur d'applications est configuré. Voir [Prérequis pour le serveur d'applications](#application-server-prerequisites).
+* L'utilisateur qui exécute l'outil dispose des droits spécifiques dans le système de fichiers. Voir [Prérequis pour le système de fichiers](#file-system-prerequisites).
 
 <div class="panel-group accordion" id="running-the-configuration-tool" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="configuration-tool">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#running-the-configuration-tool" href="#collapse-configuration-tool" aria-expanded="true" aria-controls="collapse-configuration-tool"><b>Click for instructions on running the Configuration Tool</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#running-the-configuration-tool" href="#collapse-configuration-tool" aria-expanded="true" aria-controls="collapse-configuration-tool"><b>Cliquez ici pour afficher des instructions d'exécution de l'outil de configuration</b></a>
             </h4>
         </div>
 
         <div id="collapse-configuration-tool" class="panel-collapse collapse" role="tabpanel" aria-labelledby="configuration-tool">
             <div class="panel-body">
                 <ol>
-                    <li>Start the Server Configuration Tool.
+                    <li>Démarrez l'outil de configuration de serveur.
                         <ul>
-                            <li>On Linux, from application shortcuts <b>Applications → IBM MobileFirst Platform Server → Server Configuration Tool</b>.</li>
-                            <li>On Windows, click <b>Start → Programs → IBM MobileFirst Platform Server → Server Configuration Tool</b>.</li>
-                            <li>On macOS, open a shell console. Go to <b>mfp_server_install_dir/shortcuts</b> and type <b>./configuration-tool.sh</b>.</li>
-                            <li>The <b>mfp_server_install_dir</b> directory is where you installed {{ site.data.keys.mf_server }}.</li>
+                            <li>Sous Linux, cliquez sur les raccourcis d'application <b>Applications → IBM MobileFirst Platform Server → Server Configuration Tool</b>.</li>
+                            <li>Sous Windows, cliquez sur <b>Démarrer → Programmes → IBM MobileFirst Platform Server → Server Configuration Tool</b>.</li>
+                            <li>Sous macOS, ouvrez une console d'interpréteur de commandes. Accédez à <b>rép_install_serveur_mfp/shortcuts</b> et entrez <b>./configuration-tool.sh</b>.</li>
+                            <li>Le répertoire <b>rép_install_serveur_mfp</b> est l'emplacement auquel vous avez installé {{site.data.keys.mf_server }}.</li>
                         </ul>
                     </li>
-                    <li>Select <b>File → New Configuration</b> to create a {{ site.data.keys.mf_server }} Configuration.
+                    <li>Sélectionnez <b>File → New Configuration</b> pour créer une configuration {{site.data.keys.mf_server }}.
                         <ul>
-                            <li>In the <b>Configuration Details</b> panel, enter the context root of the administration service and the runtime component. You might want to enter an environment ID. An environment ID is used in advanced use cases, for example when <a href="../topologies/#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell">multiple installations of {{ site.data.keys.mf_server }} are made on the same application server or same WebSphere  Application Server cell</a>.</li>
-                            <li>In the <b>Console Settings</b> panel, select whether to install {{ site.data.keys.mf_console }} or not. If the console is not installed, you need to use command line tools (<b>mfpdev</b> or <b>mfpadm</b>) or the REST API to interact with the {{ site.data.keys.mf_server }} administration service.</li>
-                            <li>In the <b>Database Selection</b> panel, select the database management system that you plan to use. All the components use the same database type and the same database instance. For more information about the database panes, see <a href="../databases/#create-the-database-tables-with-the-server-configuration-tool">Create the database tables with the Server Configuration Tool</a>.</li>
-                            <li>In the <b>Application Server Selection</b> panel, select the type of application server where you want to deploy {{ site.data.keys.mf_server }}.</li>
+                            <li>Dans le panneau <b>Configuration Details</b>, entrez la racine de contexte du service d'administration et du composant d'exécution. Il est recommandé d'entrer un ID d'environnement. Ce dernier est utilisé dans les cas d'utilisation avancés, par exemple lorsque <a href="../topologies/#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell">plusieurs installations de {{site.data.keys.mf_server }} sont effectuées sur un même serveur d'applications ou dans une même cellule WebSphere Application Server</a>.</li>
+                            <li>Dans le panneau <b>Console Settings</b>, indiquez si {{site.data.keys.mf_console }} doit être installé ou non. Si la console n'est pas installée, vous devez utiliser des outils de ligne de commande (<b>mfpdev</b> ou <b>mfpadm</b>) ou l'API REST pour interagir avec le service d'administration de {{site.data.keys.mf_server }}. </li>
+                            <li>Dans le panneau <b>Database Selection</b>, sélectionnez le système de gestion de base de données que vous prévoyez d'utiliser. Tous les composants utilisent le même type de base de données et la même instance de base de données. Pour plus d'informations sur les sous-fenêtres de base de données, voir <a href="../databases/#create-the-database-tables-with-the-server-configuration-tool">Création des tables de base de données avec l'outil de configuration de serveur</a>.</li>
+                            <li>Dans le panneau <b>Application Server Selection</b>, sélectionnez le type de serveur d'applications sur lequel déployer {{site.data.keys.mf_server }}.</li>
                         </ul>
                     </li>
-                    <li>In the <b>Application Server Settings</b> panel, choose the application server and do the following steps:
-                        <ul>
-                            <li>For an installation on WebSphere Application Server Liberty:
+                    <li>Dans le panneau <b>Application Server Settings</b>, choisissez le serveur d'applications et effectuez les opérations suivantes : <ul>
+                            <li>Pour une installation sur un serveur WebSphere Application Server Liberty :
                                 <ul>
-                                    <li>Enter the installation directory of Liberty and the name of the server where you want to install {{ site.data.keys.mf_server }}.</li>
-                                    <li>You can create a default user to log in the console. This user is created in the Liberty Basic registry. For a production installation, you might want to clear the <b>Create a default user</b> option and to configure the user access after the installation. For more information, see <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for {{ site.data.keys.mf_server }} administration</a>.</li>
-                                    <li>Select the deployment type: <b>Standalone deployment</b> (default), <b>Server farm deployment</b>, or <b>Liberty collective deployment</b>.</li>
+                                    <li>Entrez le répertoire d'installation de Liberty et le nom du serveur sur lequel installer {{site.data.keys.mf_server }}.</li>
+                                    <li>Vous pouvez créer un utilisateur par défaut pour la connexion à la console. Cet utilisateur est créé dans le registre de base Liberty. Pour une installation de production, il est recommandé de désélectionner l'option <b>Create a default user</b> et de configurer l'accès utilisateur après l'installation. Pour plus d'informations, voir <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuration de l'authentification d'utilisateur pour l'administration de {{site.data.keys.mf_server }}</a>.</li>
+                                    <li>Sélectionnez le type de déploiement : <b>Standalone deployment</b> (par défaut), <b>Server farm deployment</b> ou <b>Liberty collective deployment</b>.</li>
                                 </ul>
                                 
-                                If the Liberty collective deployment option is selected, do the following steps:
-                                <ul>
-                                    <li>Specify the Liberty collective server:
+                                Si l'option Liberty collective deployment est sélectionnée, procédez comme suit :
+<ul>
+                                    <li>Spécifiez le serveur de collectivité Liberty :
                                         <ul>
-                                            <li>Where the administration service, {{ site.data.keys.mf_console }} and the live update service are installed. The server must be a Liberty collective controller.</li>
-                                            <li>Where the runtime is installed. The server must be a Liberty collective member.</li>
-                                            <li>Where the push service is installed. The server must be a Liberty collective member.</li>
+                                            <li>Sur lequel le service d'administration, {{site.data.keys.mf_console }} et le service Live Update sont installés. Le serveur doit être un contrôleur de collectivité Liberty. </li>
+                                            <li>Sur lequel l'environnement d'exécution est installé. Le serveur doit être un membre de collectivité Liberty. </li>
+                                            <li>Sur lequel le service push est installé. Le serveur doit être un membre de collectivité Liberty. </li>
                                         </ul>
                                     </li>
-                                    <li>Enter the server ID of the member. This identifier must be different for each member in the collective.</li>
-                                    <li>Enter the cluster name of the collective members.</li>
-                                    <li>Enter the controller host name and HTTPS port number. The values must be the same as the one that is defined in the <code>variable</code> element inside the <b>server.xml</b> file of the Liberty collective controller.</li>
-                                    <li>Enter the controller administrator user name and password.</li>
+                                    <li>Entrez l'ID de serveur du membre. Cet identificateur doit être différent pour chaque membre dans la collectivité. </li>
+                                    <li>Entrez le nom de cluster des membres de collectivité. </li>
+                                    <li>Entrez le nom d'hôte du contrôleur et le numéro de port HTTPS. Les valeurs doivent être identiques à celles qui sont définies dans l'élément <code>variable</code> du fichier <b>server.xml</b> du contrôleur de collectivité Liberty. </li>
+                                    <li>Entrez le nom d'utilisateur et le mot de passe de l'administrateur du contrôleur. </li>
                                 </ul>
                             </li>
-                            <li>For an installation on WebSphere Application Server or WebSphere Application Server Network Deployment:
+                            <li>Pour une installation sur un serveur WebSphere Application Server ou WebSphere Application Server Network Deployment :
                                 <ul>
-                                    <li>Enter the installation directory of WebSphere Application Server.</li>
-                                    <li>Select the WebSphere Application Server profile where you want to install {{ site.data.keys.mf_server }}. If you install on WebSphere Application Server Network Deployment, select the profile of the deployment manager. On the deployment manager profile, you can select a scope (<b>Server</b> or <b>Cluster</b>). If you select <b>Cluster</b>, you must specify the cluster:
+                                    <li>Entrez le répertoire d'installation de WebSphere Application Server.</li>
+                                    <li>Sélectionnez le profil WebSphere Application Server dans lequel installer {{site.data.keys.mf_server }}. Si vous procédez à l'installation sur un serveur WebSphere Application Server Network Deployment, sélectionnez le profil du gestionnaire de déploiement. Dans le profil du gestionnaire de déploiement, vous pouvez sélectionner une portée (<b>Server</b> ou <b>Cluster</b>). Si vous sélectionnez <b>Cluster</b>, vous devez spécifier le cluster :
                                         <ul>
-                                            <li>Where the runtime is installed.</li>
-                                            <li>Where the administration service, {{ site.data.keys.mf_console }} and the live update service are installed.</li>
-                                            <li>Where the push service is installed.</li>
+                                            <li>Dans lequel l'environnement d'exécution est installé. </li>
+                                            <li>Dans lequel le service d'administration, {{site.data.keys.mf_console }} et le service Live Update sont installés. </li>
+                                            <li>Dans lequel le service push est installé. </li>
                                         </ul>
                                     </li>
-                                    <li>Enter an administrator login ID and password. The administrator user must have an administrator role.</li>
-                                    <li>If you select the <b>Declare the WebSphere Administrator as an administrator user in {{ site.data.keys.mf_console }}</b> option, then the user that is used to install {{ site.data.keys.mf_server }} is mapped to the administration security role of the console and can log in to the console with administrator privileges. This user is also mapped to the security role of the live update service. The user name and password are set as JNDI properties (<b>mfp.config.service.user</b> and <b>mfp.config.service.password</b>) of the administration service.</li>
-                                    <li>If you do not select the <b>Declare the WebSphere Administrator as an administrator user in {{ site.data.keys.mf_console }}</b> option, then before you can use {{ site.data.keys.mf_server }}, you must do the following tasks:
-                                        <ul>
-                                            <li>Enable the communication between the administration service and the live update service by:
-                                                <ul>
-                                                    <li>Mapping a user to the security role <b>configadmin</b> of the live update service.</li>
-                                                    <li>Adding the login ID and password of this user in the JNDI properties (<b>mfp.config.service.user</b> and <b>mfp.config.service.password</b>) of the administration service.</li>
-                                                    <li>Map one or more users to the security roles of the administration service and {{ site.data.keys.mf_console }}. See <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for {{ site.data.keys.mf_server }} administration</a>.</li>
+                                    <li>Entrez l'ID de connexion et le mot de passe d'un administrateur. Cet utilisateur doit posséder un rôle d'administrateur. </li>
+                                    <li>Si vous sélectionnez l'option <b>Declare the WebSphere Administrator as an administrator user in {{site.data.keys.mf_console }}</b>, l'utilisateur qui installe {{site.data.keys.mf_server }} est mappé au rôle de sécurité d'administration de la console et peut se connecter à la console avec des privilèges d'administrateur. Il est également mappé au rôle de sécurité du service Live Update. Le nom d'utilisateur et le mot de passe sont définis sous forme de propriétés JNDI (<b>mfp.config.service.user</b> et <b>mfp.config.service.password</b>) du service d'administration.
+</li>
+                                    <li>Si vous ne sélectionnez pas l'option <b>Declare the WebSphere Administrator as an administrator user in {{site.data.keys.mf_console }}</b>, vous devez effectuer les tâches suivantes avant d'utiliser {{site.data.keys.mf_server }} :
+<ul>
+                                            <li>Activez la communication entre le service d'administration et le service Live Update en : <ul>
+                                                    <li>Mappant un utilisateur au rôle de sécurité <b>configadmin</b> du service Live Update. </li>
+                                                    <li>Ajoutant l'ID de connexion et le mot de passe de cet utilisateur dans les propriétés JNDI (<b>mfp.config.service.user</b> et <b>mfp.config.service.password</b>) du service d'administration. </li>
+                                                    <li>Mappant un ou plusieurs utilisateurs aux rôles de sécurité du service d'administration et de {{site.data.keys.mf_console }}. Voir <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuration de l'authentification d'utilisateur pour l'administration de {{site.data.keys.mf_server }}</a>.</li>
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>
                                 </ul>
                             </li>
-                            <li>For an installation on Apache Tomcat:
+                            <li>Pour une installation sur Apache Tomcat :
                                 <ul>
-                                    <li>Enter the installation directory of Apache Tomcat.</li>
-                                    <li>Enter the port that is used for the JMX communication with RMI. By default, the value is 8686. The Server Configuration Tool modifies the <b>tomcat_install_dir/bin/setenv.bat</b> or <b>tomcat_install_dir/bin/setenv.sh</b> file to open this port. If you want to open the port manually, or have already some code that opens the port in <b>setenv.bat</b> or <b>setenv.sh</b>, do not use the tool. Install with Ant tasks instead. An option to open the RMI port manually is provided for an installation with Ant tasks.</li>
-                                    <li>Create a default user to log in the console. This user is also created in the <b>tomcat-users.xml</b> configuration file. For a production installation, you might want to clear the Create a default user option and to configure the user access after the installation. For more information, see <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuring user authentication for {{ site.data.keys.mf_server }} administration</a>.</li>
+                                    <li>Entrez le répertoire d'installation d'Apache Tomcat. </li>
+                                    <li>Entrez le port utilisé pour la communication JMX avec RMI. Par défaut, la valeur est 8686. L'outil de configuration de serveur modifie le fichier <b>rép_install_tomcat/bin/setenv.bat</b> ou <b>rép_install_tomcat/bin/setenv.sh</b> pour ouvrir ce port. Si vous voulez ouvrir le port manuellement ou si <b>setenv.bat</b> ou <b>setenv.sh</b> comporte déjà un code qui ouvre le port, n'utilisez pas l'outil. A la place, procédez à l'installation à l'aide de tâches Ant. Une option permettant d'ouvrir le port RMI manuellement est proposée dans le cadre d'une installation à l'aide de tâches Ant. </li>
+                                    <li>Créez un utilisateur par défaut pour la connexion à la console. Cet utilisateur est également créé dans le fichier de configuration <b>tomcat-users.xml</b>. Pour une installation de production, il est recommandé de désélectionner l'option Create a default user et de configurer l'accès utilisateur après l'installation. Pour plus d'informations, voir <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">Configuration de l'authentification d'utilisateur pour l'administration de {{site.data.keys.mf_server }}</a>.</li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li>In the <b>Push Service Settings</b> panel, select the <b>Install the Push service</b> option if you want the push service to be installed in the application server. The context root is <b>imfpush</b>. To enable the communication between the push service and the administration service, you need to define the following parameters:
-                        <ul>
-                            <li>Enter the URL of the push service and the URL of the runtime. This URL can be computed automatically if you install on Liberty, Apache Tomcat, or stand-alone WebSphere Application Server. It uses the URL of the component (the runtime or the push service) on the local server. If you install on WebSphere Application Server Network Deployment or the communications go through a web proxy or load balancer, you must enter the URL manually.</li>
-                            <li>Enter the confidential client IDs and secret for the OAuth communication between the services. Otherwise, the tool generates default values and random passwords.</li>
+                    <li>Dans le panneau <b>Push Service Settings</b>, sélectionnez l'option <b>Install the Push service</b> si vous voulez que le service push soit installé sur le serveur d'applications. La racine de contexte est <b>imfpush</b>. Pour activer la communication entre le service push et le service d'administration, vous devez définir les paramètres suivants : <ul>
+                            <li>Entrez l'adresse URL du service push et l'adresse URL de l'environnement d'exécution. L'adresse URL peut être calculée automatiquement si vous procédez à l'installation sur un serveur Liberty, Apache Tomcat ou WebSphere Application Server autonome. Elle utilise l'adresse URL du composant (l'environnement d'exécution ou le service push) sur le serveur local. Si vous procédez à l'installation sur un serveur WebSphere Application Server Network Deployment ou si les communications passent par un proxy Web ou un
+équilibreur de charge, vous devez la saisir manuellement. </li>
+                            <li>Entrez les ID des clients confidentiels et les valeurs confidentielles correspondantes pour la communication OAuth entre les services. Si vous n'indiquez pas ces données, l'outil génère des valeurs par défaut et des mots de passe aléatoires. </li>
                         </ul>
                     </li>
-                    <li>In the <b>Analytics Settings</b> panel, select the <b>Enable the connection to the Analytics server</b> if {{ site.data.keys.mf_analytics }} is installed. Enter the following connection settings:
-                        <ul>
-                            <li>The URL of the Analytics console.</li>
-                            <li>The URL of the Analytics server (the Analytics data service).</li>
-                            <li>The user login ID and password that is allowed to publish data to the Analytics server.</li>
+                    <li>Dans le panneau <b>Analytics Settings</b>, sélectionnez l'option <b>Enable the connection to the Analytics server</b> si {{site.data.keys.mf_analytics }} est installé. Entrez les paramètres de connexion suivants :<ul>
+                            <li>L'adresse URL de la console Analytics. </li>
+                            <li>L'adresse URL du serveur Analytics (le service de données Analytics). </li>
+                            <li>L'ID de connexion et le mot de passe de l'utilisateur autorisé à publier des données sur le serveur Analytics. </li>
                         </ul>
                         
-                        The tool configures the runtime and the push service to send data to the Analytics server.
+                        L'outil configure l'environnement d'exécution et le service push pour l'envoi de données au serveur Analytics.
                     </li>
-                    <li>Click <b>Deploy</b> to proceed with the installation.</li>
+                    <li>Cliquez sur <b>Deploy</b> pour effectuer l'installation. </li>
                 </ol>
             </div>
         </div>
     </div>
 </div>
 
-After the installation is completed successfully, restart the application server in the case of Apache Tomcat or Liberty profile.
+Une fois l'installation terminée, redémarrez le serveur d'applications dans le cas d'Apache Tomcat ou du profil Liberty. 
 
-If Apache Tomcat is launched as a service, the setenv.bat or setenv.sh file that contains the statement to open the RMI might not be read. As a result, {{ site.data.keys.mf_server }} might not be able to work correctly. To set the required variables, see [Configuring JMX connection for Apache Tomcat](#apache-tomcat-prerequisites).
+Si Apache Tomcat est démarré en tant que service, il se peut que le fichier setenv.bat ou setenv.sh contenant l'instruction d'ouverture de RMI ne soit pas lu. En conséquence, il se peut que {{site.data.keys.mf_server }} ne fonctionne pas correctement. Pour définir les variables requises, voir [Configuration de la connexion JMX pour Apache Tomcat](#apache-tomcat-prerequisites).
 
-On WebSphere Application Server Network Deployment, the applications are installed but not started. You need to start them manually. You can do that from the WebSphere Application Server administration console.
+Sur un serveur WebSphere Application Server Network Deployment, les applications sont installées mais ne sont pas démarrées. Vous devez les démarrer manuellement. Vous pouvez effectuer cette opération depuis la console d'administration WebSphere Application Server. 
 
-Keep the configuration file in the Server Configuration Tool. You might reuse it to install the interim fixes. The menu to apply an interim fix is **Configurations > Replace the deployed WAR files**.
+Conservez le fichier de configuration dans l'outil de configuration de serveur. Vous pourrez être amené à le réutiliser afin d'installer les correctifs temporaires. Pour appliquer un correctif temporaire, sélectionnez **Configurations > Replace the deployed WAR
+files**.
 
-### Applying a fix pack by using the Server Configuration Tool
+### Application d'un groupe de correctifs avec l'outil de configuration de serveur 
 {: #applying-a-fix-pack-by-using-the-server-configuration-tool }
-If {{ site.data.keys.mf_server }} is installed with the configuration tool and the configuration file is kept, you can apply a fix pack or an interim fix by reusing the configuration file.
+Si {{site.data.keys.mf_server }} a été installé avec l'outil de configuration et que le fichier de configuration a été conservé, vous pouvez appliquer un groupe de correctifs ou un correctif temporaire en réutilisant le fichier de configuration. 
 
-1. Start the Server Configuration Tool.
-    * On Linux, from application shortcuts **Applications → IBM MobileFirst Platform Server → Server Configuration Tool**.
-    * On Windows, click **Start → Programs → IBM MobileFirst Platform Server → Server Configuration Tool**.
-    * On macOS, open a shell console. Go to **mfp\_server\_install_dir/shortcuts** and type **./configuration-tool.sh**.
-    * The **mfp\_server\_install\_dir** directory is where you installed {{ site.data.keys.mf_server }}.
+1. Démarrez l'outil de configuration de serveur. 
+    * Sous Linux, cliquez sur les raccourcis d'application **Applications → IBM MobileFirst Platform Server → Server Configuration Tool**.
+    * Sous Windows, cliquez sur **Démarrer → Programmes → IBM MobileFirst Platform Server → Server Configuration Tool**.
+    * Sous macOS, ouvrez une console d'interpréteur de commandes. Accédez à **rép\_install\_mfp\_serveur/shortcuts** et entrez **./configuration-tool.sh**.
+    * Le répertoire <b>rép\_install\_serveur\_mfp</b> est l'emplacement auquel vous avez installé {{site.data.keys.mf_server }}.
 
-2. Click **Configurations → Replace the deployed WAR files** and select an existing configuration to apply the fix pack or an interim fix.
+2. Cliquez sur **Configurations → Replace the deployed WAR files** et sélectionnez une configuration existante pour appliquer le groupe de correctifs ou un correctif temporaire. 
 
-## Installing with Ant tasks
+## Installation à l'aide de tâches Ant 
 {: #installing-with-ant-tasks }
-Use Ant tasks to install the {{ site.data.keys.mf_server }} components to your application server.
+Utilisez des tâches Ant pour installer les composants {{site.data.keys.mf_server }} sur votre serveur d'applications. 
 
-You can find the sample configuration files for installing {{ site.data.keys.mf_server }} in the **mfp\_install\_dir/MobileFirstServer/configuration-samples directory**.
+Les exemples de fichier de configuration pour l'installation de {{site.data.keys.mf_server }} se trouvent dans le répertoire **rép\_install\_mfp/MobileFirstServer/configuration-samples**.
 
-You can also create a configuration with the Server Configuration Tool and export the Ant files by using **File → Export Configuration as Ant Files...**. The sample Ant files have the same limitations as the Server Configuration Tool:
+Vous pouvez aussi créer une configuration avec l'outil de configuration de serveur et exporter les fichiers Ant en sélectionnant **File → Export Configuration as Ant Files...**. Les exemples de fichier Ant présentent les mêmes limitations que l'outil de configuration de serveur : 
 
-* All components ({{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, the {{ site.data.keys.mf_server }} artifacts, and {{ site.data.keys.product_adj }} runtime) are in the same application server. However, on WebSphere  Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the administration and live update services, and for the runtime.
-* If the {{ site.data.keys.mf_server }} push service is installed, it is also installed on the same server. However, on WebSphere Application Server Network Deployment when you install on a cluster, you can specify a different cluster for the push service.
-* All the components use the same database system and the user. For DB2 , all the components also use the same schema.
-* The Server Configuration Tool installs the components for a single server. For an installation on multiple servers, a farm must be configured after the tool is run. The server farm configuration is not supported on WebSphere Application Server Network Deployment.
+* Tous les composants ({{site.data.keys.mf_console }}, service d'administration de {{site.data.keys.mf_server }}, service Live Update de {{site.data.keys.mf_server }}, artefacts de {{site.data.keys.mf_server }} et environnement d'exécution de {{site.data.keys.product_adj }}) se trouvent sur le même serveur d'applications. Toutefois, sur WebSphere Application Server Network Deployment, lorsque vous procédez à l'installation dans un cluster, vous pouvez spécifier un cluster différent pour les services d'administration et Live Update et pour l'environnement d'exécution. 
+* Si le service push de {{site.data.keys.mf_server }} est installé, il l'est sur le même serveur. Toutefois, sur WebSphere Application Server Network Deployment, lorsque vous procédez à l'installation dans un cluster, vous pouvez spécifier un cluster différent pour le service push. 
+* Tous les composants utilisent le même système de base de données et le même utilisateur. Pour DB2, tous les composants utilisent également le même schéma. 
+* L'outil de configuration de serveur installe les composants sur un seul serveur. Pour une installation sur plusieurs serveurs, vous devez configurer un parc de serveurs après l'exécution de l'outil. La configuration d'un parc de serveurs n'est pas prise en charge sur WebSphere Application Server Network Deployment.
 
-You can configure the {{ site.data.keys.mf_server }} services to run in server farm with Ant tasks. To include your server in a farm, you need to specify some specific attributes that configure your application server accordingly. For more information about configuring a server farm with Ant tasks, see [Installing a server farm with Ant tasks](#installing-a-server-farm-with-ant-tasks).
+Vous pouvez configurer les services de {{site.data.keys.mf_server }} pour qu'ils s'exécutent dans un parc de serveurs à l'aide de tâches Ant. Pour inclure votre serveur dans un parc de serveurs, vous devez spécifier des attributs spécifiques qui configurent votre serveur d'applications en conséquence. Pour plus d'informations sur la configuration d'un parc de serveurs à l'aide de tâches Ant, voir [Installation d'un parc de serveurs à l'aide de tâches Ant](#installing-a-server-farm-with-ant-tasks).
 
-For other topologies that are supported in [Topologies and network flows](../topologies), you can modify the sample Ant files.
+Pour les autres topologies présentées dans [Topologies et flots réseau](../topologies), vous pouvez modifier les exemples de fichier Ant. 
 
-The references to the Ant tasks are as follows:
+Les références aux tâches Ant sont les suivantes : 
 
-* [Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [Ant tasks for installation of {{ site.data.keys.mf_server }} push service](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
-* [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+* [Tâches Ant pour l'installation de {{site.data.keys.mf_console }}, des artefacts de {{site.data.keys.mf_server }}, et des services d'administration et Live Update de {{site.data.keys.mf_server }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
+* [Tâches Ant pour l'installation du service push de {{site.data.keys.mf_server }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [Tâches Ant pour l'installation des environnements d'exécution de {{site.data.keys.product_adj }}](../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 
-For an overview of installing with the sample configuration file and tasks, see [Installing {{ site.data.keys.mf_server }} in command line mode](../tutorials/command-line).
+Pour une présentation de l'installation à l'aide de l'exemple de fichier de configuration et de tâches, voir [Installation de {{site.data.keys.mf_server }} en mode de ligne de commande](../tutorials/command-line).
 
-You can run an Ant file with the Ant distribution that is part of the product installation. For example, if you have WebSphere Application Server Network Deployment cluster and your database is IBM DB2, you can use the **mfp\_install\_dir/MobileFirstServer/configuration-samples/configure-wasnd-cluster-db2.xml** Ant file. After you edit the file and enter all the required properties, you can run the following commands from **mfp\_install\_dir/MobileFirstServer/configuration-samples** directory:
+Vous pouvez exécuter un fichier Ant avec la distribution Ant proposée avec l'installation du produit. Par exemple, si vous disposez d'un cluster WebSphere Application Server Network Deployment et que votre base de données est IBM DB2, vous pouvez utiliser le fichier Ant **rép\_install\_mfp/MobileFirstServer/configuration-samples/configure-wasnd-cluster-db2.xml**. Après avoir édité le fichier et entré toutes les propriétés requises, vous pouvez exécuter les commandes suivantes depuis le répertoire **rép\_install\_mfp/MobileFirstServer/configuration-samples** : 
 
-* **mfp\_install\_dir/shortcuts/ant -f configure-wasnd-cluster-db2.xml help** - This command displays the list of all the possible targets of the Ant file, to install, uninstall, or update some components.
-* **mfp\_install\_dir/shortcuts/ant -f configure-wasnd-cluster-db2.xml install**  - This command installs {{ site.data.keys.mf_server }} on the WebSphere Application Server Network Deployment cluster, with DB2 as a data source by using the parameters that you entered in the properties of the Ant file.
+* **rép\_install\_mfp/shortcuts/ant -f configure-wasnd-cluster-db2.xml help** - Cette commande affiche la liste de toutes les cibles possibles du fichier Ant pour installer, désinstaller ou mettre à jour des composants. 
+* **rép\_install\_mfp/shortcuts/ant -f configure-wasnd-cluster-db2.xml install** - Cette commande installe {{site.data.keys.mf_server }} dans le cluster WebSphere Application Server Network Deployment avec DB2 comme source de données en utilisant les paramètres que vous avez entrés dans les propriétés du fichier Ant. 
 
 <br/>
-After the installation, make a copy of the Ant file so that you can reuse it to apply a fix pack.
+Après l'installation, effectuez une copie du fichier Ant pour pouvoir le réutiliser afin d'appliquer un groupe de correctifs.
 
-### Applying a fix pack by using the Ant files
+### Application d'un groupe de correctifs à l'aide des fichiers Ant 
 {: #applying-a-fix-pack-by-using-the-ant-files }
 
-#### Updating with the sample Ant file
+#### Mise à jour à l'aide de l'exemple de fichier Ant 
 {: #updating-with-the-sample-ant-file }
-If you use the sample Ant files that are provided in the **mfp\_install\_dir/MobileFirstServer/configuration-samples** directory to install {{ site.data.keys.mf_server }}, you can reuse a copy of this Ant file to apply a fix pack. For password values, you can enter 12 stars (\*) instead of the actual value, to be prompted interactively when the Ant file is run.
+Si vous utilisez l'un des exemples de fichier Ant fournis dans le répertoire **rép\_install\_mfp/MobileFirstServer/configuration-samples** pour installer {{site.data.keys.mf_server }}, vous pouvez réutiliser une copie de ce fichier Ant afin d'appliquer un groupe de correctifs. Pour les valeurs de mot de passe, vous pouvez entrer 12 astérisques (\*) à la place de la valeur réelle pour être invité à la saisir de manière interactive lorsque le fichier Ant est exécuté.
 
-1. Verify the value of the **mfp.server.install.dir** property in the Ant file. It must point to the directory that contains the product with the fix pack applied. This value is used to take the updated {{ site.data.keys.mf_server }} WAR files.
-2. Run the command: `mfp_install_dir/shortcuts/ant -f your_ant_file update`
 
-#### Updating with own Ant file
+1. Vérifiez la valeur de la propriété **mfp.server.install.dir** dans le fichier Ant. Elle doit désigner le répertoire contenant le produit auquel est appliqué le groupe de correctifs. Cette valeur permet d'extraire les fichiers WAR {{site.data.keys.mf_server }} mis à jour. 
+2. Exécutez la commande suivante : `rép_install_mfp/shortcuts/ant -f votre_fichier_ant update`
+
+#### Mise à jour à l'aide de votre propre fichier Ant 
 {: #updating-with-own-ant-file }
-If you use your own Ant file, make sure that for each installation task (**installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush**), you have a corresponding update task in your Ant file with the same parameters. The corresponding update tasks are **updatemobilefirstadmin**, **updatemobilefirstruntime**, and **updatemobilefirstpush**.
+Si vous utilisez votre propre fichier Ant, assurez-vous que pour chaque tâche d'installation (**installmobilefirstadmin**, **installmobilefirstruntime** et **installmobilefirstpush**), votre fichier Ant comporte une tâche de mise à jour correspondante avec les mêmes paramètres. Les tâches de mise à jour correspondantes sont **updatemobilefirstadmin**, **updatemobilefirstruntime** et **updatemobilefirstpush**.
 
-1. Verify the class path of the **taskdef** element for the **mfp-ant-deployer.jar** file. It must point to the **mfp-ant-deployer.jar** file in an {{ site.data.keys.mf_server }} installation that the fix pack is applied. By default, the updated {{ site.data.keys.mf_server }} WAR files are taken from the location of **mfp-ant-deployer.jar**.
-2. Run the update tasks (**updatemobilefirstadmin**, **updatemobilefirstruntime**, and **updatemobilefirstpush**) of your Ant file.
+1. Vérifiez le chemin d'accès aux classes de l'élément **taskdef** pour le fichier **mfp-ant-deployer.jar**. Il doit désigner le fichier **mfp-ant-deployer.jar** dans une installation de {{site.data.keys.mf_server }} à laquelle le groupe de correctifs est appliqué. Par défaut, les fichiers WAR mis à jour de {{site.data.keys.mf_server }} sont extraits de l'emplacement dans lequel se trouve **mfp-ant-deployer.jar**.
+2. Exécutez les tâches de mise à jour (**updatemobilefirstadmin**, **updatemobilefirstruntime** et **updatemobilefirstpush**) de votre fichier Ant. 
 
-### Sample Ant files modifications
+### Modification des exemples de fichier Ant 
 {: #sample-ant-files-modifications }
-You can modify the sample Ant files that are provided in the **mfp\_install\_dir/MobileFirstServer/configuration-samples** directory to adapt to your installation requirements.  
-The following sections provide the details on how you can modify the sample Ant files to adapt the installation to your needs:
+Vous pouvez modifier les exemples de fichier Ant fournis dans le répertoire **rép\_install\_mfp/MobileFirstServer/configuration-samples** afin de les adapter à la configuration requise pour votre installation.
+  
+Les sections suivantes expliquent en détail comment modifier les exemples de fichier Ant afin d'adapter l'installation à vos besoins : 
 
-1. [Specify extra JNDI properties](#specify-extra-jndi-properties)
-2. [Specify existing users](#specify-existing-users)
-3. [Specify Liberty Java EE level](#specify-liberty-java-ee-level)
-4. [Specify data source JDBC properties](#specify-data-source-jdbc-properties)
-5. [Run the Ant files on a computer where {{ site.data.keys.mf_server }} is not installed](#run-the-ant-files-on-a-computer-where-mobilefirst-server-is-not-installed)
-6. [Specify WebSphere Application Server Network Deployment targets](#specify-websphere-application-server-network-deployment-targets)
-7. [Manual configuration of the RMI port on Apache Tomcat](#manual-configuration-of-the-rmi-port-on-apache-tomcat)
+1. [Spécification de propriétés JNDI supplémentaires](#specify-extra-jndi-properties)
+2. [Spécification d'utilisateurs existants](#specify-existing-users)
+3. [Spécification du niveau Java EE de Liberty](#specify-liberty-java-ee-level)
+4. [Spécification des propriétés JDBC de source de données](#specify-data-source-jdbc-properties)
+5. [Exécution des fichiers Ant sur un ordinateur sur lequel {{site.data.keys.mf_server }} n'est pas installé](#run-the-ant-files-on-a-computer-where-mobilefirst-server-is-not-installed)
+6. [Spécification des cibles WebSphere Application Server Network Deployment](#specify-websphere-application-server-network-deployment-targets)
+7. [Configuration manuelle du port RMI sur Apache Tomcat](#manual-configuration-of-the-rmi-port-on-apache-tomcat)
 
-#### Specify extra JNDI properties
+#### Spécification de propriétés JNDI supplémentaires 
 {: #specify-extra-jndi-properties }
-The **installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush** Ant tasks declare the values for the JNDI properties that are required for the components to function. These JNDI properties are used to define the JMX communication, and also the links to other components (such the live update service, the push service, the analytics service, or the authorization server). However, you can also define values for other JNDI properties. Use the `<property>` element that exists for these three tasks. For a list of JNDI properties, see:
+Les tâches Ant **installmobilefirstadmin**, **installmobilefirstruntime** et
+**installmobilefirstpush** déclarent les valeurs pour les propriétés JNDI qui sont requises pour que les composants fonctionnent. Ces propriétés JNDI sont utilisées pour définir la communication JMX ainsi que les liens vers d'autres composants (comme le service Live Update, le service push, le service d'analyse ou le serveur d'autorisation). Toutefois, vous pouvez aussi définir des valeurs pour d'autres propriétés JNDI. Utilisez l'élément `<property>` qui existe pour ces trois tâches. Pour la liste des propriétés JNDI, voir : 
 
-* [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
-* [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
-* [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [Liste des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
+* [Liste des propriétés JNDI pour le service push de {{site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
+* [Liste des propriétés JNDI pour l'environnement d'exécution de {{site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
-For example:
+Exemple :
 
 ```xml
 <installmobilefirstadmin ..>
@@ -477,38 +480,39 @@ For example:
 </installmobilefirstadmin> 
 ```
 
-#### Specify existing users
+#### Spécification d'utilisateurs existants 
 {: #specify-existing-users }
-By default, the **installmobilefirstadmin** Ant task creates users:
+Par défaut, la tâche Ant **installmobilefirstadmin** crée des utilisateurs : 
 
-* On WebSphere  Application Server Liberty to define a Liberty administrator for the JMX communication.
-* On any application server, to define a user that is used for the communication with the live update service.
+* Dans WebSphere Application Server Liberty afin de définir un administrateur Liberty pour la communication JMX. 
+* Sur tout serveur d'applications afin de définir un utilisateur servant pour la communication avec le service Live Update. 
 
-To use an existing user instead of creating new user, you can do the following operations:
+Pour vous servir d'un utilisateur existant au lieu de créer un utilisateur, vous pouvez effectuer les deux opérations suivantes : 
 
-1. In the `<jmx>` element, specify a user and password, and set the value of the **createLibertyAdmin** attribute to false. For example:
+1. Dans l'élément `<jmx>`, spécifiez un utilisateur et un mot de passe et associez l'attribut **createLibertyAdmin** à la valeur false. Exemple :
 
    ```xml
    <installmobilefirstadmin ...>
-       <jmx libertyAdminUser="myUser" libertyAdminPassword="password" createLibertyAdmin="false" />
+       <jmx libertyAdminUser="monUtilisateur" libertyAdminPassword="motdepasse" createLibertyAdmin="false" />
        ...
    ```
 
-2. In the `<configuration>` element, specify a user and password and set the value of the **createConfigAdminUser** attribute to false. For example:
+2. Dans l'élément `<configuration>`, spécifiez un utilisateur et un mot de passe et associez l'attribut
+**createConfigAdminUser** à la valeur false. Exemple :
 
    ```xml
     <installmobilefirstadmin ...>
-        <configuration configAdminUser="myUser" configAdminPassword="password" createConfigAdminUser="false" />
+        <configuration configAdminUser="monUtilisateur" configAdminPassword="motdepasse" createConfigAdminUser="false" />
         ...
    ```
     
-Also, the user that is created by the sample Ant files is mapped to the security roles of the administration service and the console. With this setting, you can use this user to log on to {{ site.data.keys.mf_server }} after the installation. To change that behavior, remove the `<user>` element from the sample Ant files. Alternatively, you can remove the **password** attribute from the `<user>` element, and the user is not created in the local registry of the application server.
+De plus, l'utilisateur qui est créé par les exemples de fichier Ant est mappé aux rôles de sécurité du service d'administration et de la console. Avec ce paramètre, vous pouvez utiliser cet utilisateur pour vous connecter à {{site.data.keys.mf_server }} après l'installation. Pour changer ce comportement, supprimez l'élément `<user>` des exemples de fichier Ant. Vous pouvez aussi supprimer l'attribut **password** de l'élément `<user>` pour ne pas créer l'utilisateur dans le registre local du serveur d'applications. 
 
-#### Specify Liberty Java EE level
+#### Spécification du niveau Java EE de Liberty 
 {: #specify-liberty-java-ee-level }
-Some distributions of WebSphere Application Server Liberty support features from Java EE 6 or from Java EE 7. By default, the Ant tasks automatically detect the features to install. For example, **jdbc-4.0** Liberty feature is installed for Java EE 6 and **jdbc-4.1** feature is installed in case of Java EE 7. If the Liberty installation supports both features from Java EE 6 and Java EE 7, you might want to force a certain level of features. An example might be that you plan to run both {{ site.data.keys.mf_server }} V8.0.0 and V7.1.0 on the same Liberty server. {{ site.data.keys.mf_server }} V7.1.0 or earlier supports only Java EE 6 features.
+Certaines distributions de WebSphere Application Server Liberty prennent en charge des fonctions de Java EE 6 ou de Java EE 7. Par défaut, les tâches Ant détectent automatiquement les fonctions à installer. Par exemple, la fonction Liberty **jdbc-4.0** est installée pour Java EE 6 et la fonction **jdbc-4.1** est installée pour Java EE 7. Si l'installation Liberty prend en charge les deux fonctions (Java EE 6 et Java EE 7), vous pouvez imposer un certain niveau de fonctions. Imaginez par exemple que vous prévoyez d'exécuter la version 8.0.0 et la version 7.1.0 de {{site.data.keys.mf_server }} sur le même serveur Liberty. {{site.data.keys.mf_server }} version 7.1.0 ou antérieure ne prend en charge que les fonctions Java EE 6. 
 
-To force a certain level of Java EE 6 features, use the jeeversion attribute of the `<websphereapplicationserver>` element. For example:
+Pour imposer un certain niveau de fonctions Java EE 6, utilisez l'attribut jeeversion de l'élément `<websphereapplicationserver>`. Exemple :
 
 ```xml
 <installmobilefirstadmin execute="${mfp.process.admin}" contextroot="${mfp.admin.contextroot}">
@@ -518,9 +522,9 @@ To force a certain level of Java EE 6 features, use the jeeversion attribute of 
         profile="Liberty" jeeversion="6">
 ```
 
-#### Specify data source JDBC properties
+#### Spécification des propriétés JDBC de source de données 
 {: #specify-data-source-jdbc-properties }
-You can specify the properties for the JDBC connection. Use the `<property>` element of a `<database>` element. The element is available in **configureDatabase**, **installmobilefirstadmin**, **installmobilefirstruntime**, and **installmobilefirstpush** Ant tasks. For example:
+Vous pouvez spécifier les propriétés pour la connexion JDBC. Utilisez l'élément `<property>` d'un élément `<database>`. L'élément est disponible dans les tâches Ant **configureDatabase**, **installmobilefirstadmin**, **installmobilefirstruntime** et **installmobilefirstpush**. Exemple :
 
 ```xml
 <configuredatabase kind="MobileFirstAdmin">
@@ -536,70 +540,73 @@ You can specify the properties for the JDBC connection. Use the `<property>` ele
     </db2>
 ```
 
-#### Run the Ant files on a computer where {{ site.data.keys.mf_server }} is not installed
+#### Exécution des fichiers Ant sur un ordinateur sur lequel {{site.data.keys.mf_server }} n'est pas installé 
 {: #run-the-ant-files-on-a-computer-where-mobilefirst-server-is-not-installed }
-To run the Ant tasks on a computer where {{ site.data.keys.mf_server }} is not installed, you need the following items:
+Pour exécuter les tâches Ant sur un ordinateur sur lequel {{site.data.keys.mf_server }} n'est pas installé, vous avez besoin :
 
-* An Ant installation
-* A copy of the **mfp-ant-deployer.jar** file to the remote computer. This library contains the definition of the Ant tasks.
-* To specify the resources to be installed. By default, the WAR files are taken near the **mfp-ant-deployer.jar**, but you can specify the location of these WAR files. For example:
+
+* D'une installation Ant 
+* D'une copie du fichier **mfp-ant-deployer.jar** sur l'ordinateur distant. Cette bibliothèque contient la définition des tâches Ant. 
+* De spécifier les ressources à installer. Par défaut, les fichiers WAR sont extraits depuis un emplacement proche de **mfp-ant-deployer.jar**, mais vous pouvez spécifier cet emplacement. Exemple :
 
 ```xml
 <installmobilefirstadmin execute="true" contextroot="/mfpadmin" serviceWAR="/usr/mfp/mfp-admin-service.war">
   <console install="true" warFile="/usr/mfp/mfp-admin-ui.war"/>
 ```
 
-For more information, see the Ant tasks to install each {{ site.data.keys.mf_server }} component at [Installation reference](../installation-reference).
+Pour plus d'informations, voir les tâches Ant permettant d'installer chaque composant {{site.data.keys.mf_server }} dans [Référence d'installation](../installation-reference).
 
-#### Specify WebSphere Application Server Network Deployment targets
+#### Spécification des cibles WebSphere Application Server Network Deployment 
 {: #specify-websphere-application-server-network-deployment-targets }
-To install on WebSphere Application Server Network Deployment, the specified WebSphere Application Server profile must be the deployment manager. You can deploy on the following configurations:
+Pour procéder à l'installation sur WebSphere Application Server Network Deployment, le profil WebSphere Application Server spécifié doit être le gestionnaire de déploiement. Vous pouvez effectuer le déploiement dans les configurations suivantes : 
 
-* A cluster
-* A single server
-* A cell (all the servers of a cell)
-* A node (all the servers of a node)
+* Un cluster
+* Un serveur unique
+* Une cellule (tous les serveurs d'une cellule) 
+* Un noeud (tous les serveurs d'un noeud) 
 
-The sample files such as **configure-wasnd-cluster-dbms-name.xml**, **configure-wasnd-server-dbms-name.xml**, and **configure-wasnd-node-dbms-name.xml** contain the declaration to deploy on each type of target. For more information, see the Ant tasks to install each {{ site.data.keys.mf_server }} component in the [Installation reference](../installation-reference).
+Les exemples de fichier tels que **configure-wasnd-cluster-dbms-name.xml**, **configure-wasnd-server-dbms-name.xml** et **configure-wasnd-node-dbms-name.xml** contiennent une déclaration pour le déploiement de chaque type de cible. Pour plus d'informations, voir les tâches Ant permettant d'installer chaque composant {{site.data.keys.mf_server }} dans [Référence d'installation](../installation-reference).
 
-> Note: As of V8.0.0, the sample configuration file for the WebSphere Application Server Network Deployment cell is not provided.
+> Remarque : depuis la version 8.0.0, l'exemple de fichier de configuration pour la cellule WebSphere Application Server Network Deployment n'est plus fourni. 
 
 
-#### Manual configuration of the RMI port on Apache Tomcat
+#### Configuration manuelle du port RMI sur Apache Tomcat 
 {: #manual-configuration-of-the-rmi-port-on-apache-tomcat }
-By default, the Ant tasks modify the **setenv.bat** file or the **setenv.sh** file to open the RMI port. If you prefer to open the RMI port manually, add the **tomcatSetEnvConfig** attribute with the value as false to the `<jmx>` element of the **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** tasks.
+Par défaut, les tâches Ant modifient le fichier **setenv.bat** ou **setenv.sh** en vue de l'ouverture du port RMI. Si vous préférez ouvrir le port RMI manuellement, ajoutez l'attribut **tomcatSetEnvConfig** avec la valeur false dans l'élément `<jmx>` des tâches **installmobilefirstadmin**,
+**updatemobilefirstadmin** et **uninstallmobilefirstadmin**. 
 
-## Installing the {{ site.data.keys.mf_server }} components manually
+## Installation manuelle des composants {{site.data.keys.mf_server }} 
 {: #installing-the-mobilefirst-server-components-manually }
-You can also install the {{ site.data.keys.mf_server }} components to your application server manually.  
-The following topics provide you the complete information to guide you through the installing process of the components on the supported applications in production.
+Vous pouvez également installer les composants {{site.data.keys.mf_server }} sur votre serveur d'applications manuellement.   
+Les rubriques suivantes vous guideront tout au long du processus d'installation des composants sur les applications prises en charge en production : 
 
-* [Manual installation on WebSphere Application Server Liberty](#manual-installation-on-websphere-application-server-liberty)
-* [Manual installation on WebSphere Application Server Liberty collective](#manual-installation-on-websphere-application-server-liberty-collective)
-* [Manual installation on Apache Tomcat](#manual-installation-on-apache-tomcat)
-* [Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment](#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment)
+* [Installation manuelle sur WebSphere Application Server Liberty](#manual-installation-on-websphere-application-server-liberty)
+* [Installation manuelle dans la collectivité WebSphere Application Server Liberty](#manual-installation-on-websphere-application-server-liberty-collective)
+* [Installation manuelle sur Apache Tomcat](#manual-installation-on-apache-tomcat)
+* [Installation manuelle sur WebSphere Application Server et WebSphere Application Server Network Deployment](#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment)
 
-### Manual installation on WebSphere Application Server Liberty
+### Installation manuelle sur WebSphere Application Server Liberty
 {: #manual-installation-on-websphere-application-server-liberty }
-Make sure that you have also fulfilled the requirements as documented in [WebSphere Application Server Liberty prerequisites](#websphere-application-server-liberty-prerequisites).
+Assurez-vous d'avoir également satisfait les exigences décrites dans [Prérequis pour WebSphere Application Server Liberty](#websphere-application-server-liberty-prerequisites).
 
-* [Topology constraints](#topology-constraints)
-* [Application server settings](#application-server-settings)
-* [Liberty features required by the {{ site.data.keys.mf_server }} applications](#liberty-features-required-by-the-mobilefirst-server-applications)
-* [Global JNDI entries](#global-jndi-entries)
-* [Class loader](#class-loader)
-* [Password decoder user feature](#password-decoder-user-feature)
-* [Configuration details](#configuration-details)
+* [Contraintes liées à la topologie](#topology-constraints)
+* [Paramètres de serveur d'applications](#application-server-settings)
+* [Fonctions Liberty requises par les applications {{site.data.keys.mf_server }}](#liberty-features-required-by-the-mobilefirst-server-applications)
+* [Entrées JNDI globales](#global-jndi-entries)
+* [Chargeur de classe](#class-loader)
+* [Fonction utilisateur de décodage de mot de passe](#password-decoder-user-feature)
+* [Détails de configuration](#configuration-details)
 
-#### Topology constraints
+#### Contraintes liées à la topologie 
 {: #topology-constraints }
-The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the MobileFirst runtime must be installed on the same application server. The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
+Le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de MobileFirst doivent être installés sur un même serveur d'applications. La racine de contexte du service Live Update doit être **racine-contexteadminconfig**. La racine de contexte du service push doit être **imfpush**. Pour plus d'informations sur les contraintes, voir [Contraintes
+sur les composants {{site.data.keys.mf_server }} et {{site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
-#### Application server settings
+#### Paramètres de serveur d'applications
 {: #application-server-settings }
-You must configure the **webContainer** element to load the servlets immediately. This setting is required for the initialization through JMX. For example: `<webContainer deferServletLoad="false"/>`.
+Vous devez configurer l'élément **webContainer** pour le chargement immédiat des servlets. Ce paramètre est requis pour l'initialisation via JMX. Exemple : `<webContainer deferServletLoad="false"/>`.
 
-Optionally, to avoid timeout issues that break the startup sequence of the runtime and the administration service on some Liberty versions, change the default **executor** element. Set large values to the **coreThreads** and **maxThreads** attributes. For example:
+Si vous le souhaitez, pour éviter tout problème de dépassement de délai d'attente interrompant la séquence de démarrage de l'environnement d'exécution et du service d'administration dans certaines versions de Liberty, changez l'élément **executor** par défaut. Définissez des valeurs élevées pour les attributs **coreThreads** et **maxThreads**. Exemple :
 
 ```xml
 <executor id="default" name="LargeThreadPool"
@@ -607,36 +614,36 @@ Optionally, to avoid timeout issues that break the startup sequence of the runti
   stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS"/>
 ```
 
-You might also configure the **tcpOptions** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
+Vous pouvez aussi configurer l'élément **tcpOptions** et associer l'attribut **soReuseAddr** à la valeur `true` : `<tcpOptions soReuseAddr="true"/>`.
 
-#### Liberty features required by the {{ site.data.keys.mf_server }} applications
+#### Fonctions Liberty requises par les applications {{site.data.keys.mf_server }} 
 {: #liberty-features-required-by-the-mobilefirst-server-applications }
-You can use the following features for Java EE 6 or Java EE 7.
+Vous pouvez utiliser les fonctions ci-dessous pour Java EE 6 ou Java EE 7.
 
-**{{ site.data.keys.mf_server }} administration service** 
+**Service d'administration de {{site.data.keys.mf_server }}** 
 
-* **jdbc-4.0** (jdbc-4.1 for Java EE 7)
+* **jdbc-4.0** (jdbc-4.1 pour Java EE 7)
 * **appSecurity-2.0**
 * **restConnector-1.0**
 * **usr:MFPDecoderFeature-1.0**
 
-**{{ site.data.keys.mf_server }} push service**  
+**Service push de {{site.data.keys.mf_server }}**  
 
-* **jdbc-4.0** (jdbc-4.1 for Java EE 7)
-* **servlet-3.0** (servlet-3.1 for Java EE 7)
+* **jdbc-4.0** (jdbc-4.1 pour Java EE 7)
+* **servlet-3.0** (servlet-3.1 pour Java EE 7)
 * **ssl-1.0**
 * **usr:MFPDecoderFeature-1.0**
 
-**{{ site.data.keys.product_adj }} runtime**  
+**Environnement d'exécution de {{site.data.keys.product_adj }}**  
 
-* **jdbc-4.0** (jdbc-4.1 for Java EE 7)
-* **servlet-3.0** (servlet-3.1 for Java EE 7)
+* **jdbc-4.0** (jdbc-4.1 pour Java EE 7)
+* **servlet-3.0** (servlet-3.1 pour Java EE 7)
 * **ssl-1.0**
 * **usr:MFPDecoderFeature-1.0**
 
-#### Global JNDI entries
+#### Entrées JNDI globales 
 {: #global-jndi-entries }
-The following global JNDI entries are required to configure the JMX communication between the runtime and the administration service:
+Les entrées JNDI globales suivantes sont requises pour configurer la communication JMX entre l'environnement d'exécution et le service d'administration : 
 
 * **mfp.admin.jmx.host**
 * **mfp.admin.jmx.port**
@@ -645,21 +652,21 @@ The following global JNDI entries are required to configure the JMX communicatio
 * **mfp.topology.platform**
 * **mfp.topology.clustermode**
 
-These global JNDI entries are set with this syntax and are not prefixed by a context root. For example: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
+Ces entrées JNDI globales sont définies avec la syntaxe ci-après et ne sont pas préfixées avec une racine de contexte. Exemple : `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
 
-> **Note:** To protect against an automatic conversion of the JNDI values, so that 075 is not converted to 61 or 31.500 is not converted to 31.5, use this syntax '"075"' when you define the value.
+> **Remarque :** pour empêcher toute conversion automatique des valeurs JNDI, de sorte que 075 ne soit pas converti en 61 ou 31.500 en 31.5, utilisez la syntaxe '"075"' lorsque vous définissez la valeur. Pour plus d'informations sur les propriétés JNDI pour le service d'administration, voir
+[Liste
+des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
 
-For more information about the JNDI properties for the administration service, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
+Pour une configuration de parc de serveurs, voir aussi les rubriques suivantes : 
 
-For a farm configuration, see also the following topics:
+* [Topologie de parc de serveurs](../topologies/#server-farm-topology)
+* [Topologies et flots réseau](../topologies)
+* [Installation d'un parc de serveurs ](#installing-a-server-farm)
 
-* [Server farm topology](../topologies/#server-farm-topology)
-* [Topologies and network flows](../topologies)
-* [Installing a server farm](#installing-a-server-farm)
-
-#### Class loader
+#### Chargeur de classe
 {: #class-loader }
-For all applications, the class loader must have the parent last delegation. For example:
+Pour toutes les applications, l'attribut delegation du chargeur de classe doit avoir la valeur parentLast (parent en dernier). Exemple :
 
 ```xml
 <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
@@ -669,50 +676,50 @@ For all applications, the class loader must have the parent last delegation. For
 </application>
 ```
 
-#### Password decoder user feature
+#### Fonction utilisateur de décodage de mot de passe 
 {: #password-decoder-user-feature }
-Copy the password decoder user feature to your Liberty profile. For example:
+Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Liberty. Exemple :
 
-* On UNIX and Linux systems:
+* Sur les systèmes UNIX et Linux :
 
   ```bash
   mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  cp rép_install_produit/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+  cp rép_install_produit/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
   ```
 
-* On Windows systems:
+* Sur les systèmes Windows : 
 
   ```bash
   mkdir LIBERTY_HOME\wlp\usr\extension\lib
-  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
+  copy /B rép_install_produit\features\com.ibm.websphere.crypto_1.0.0.jar
   LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
   mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
+  copy /B rép_install_produit\features\MFPDecoderFeature-1.0.mf
   LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
   ```
     
-#### Configuration details
+#### Détails de configuration
 {: #configuration-details }
 <div class="panel-group accordion" id="manual-installation-liberty" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-admin-service" aria-expanded="true" aria-controls="collapse-admin-service"><b>{{ site.data.keys.mf_server }} administration service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-admin-service" aria-expanded="true" aria-controls="collapse-admin-service"><b>Détails de configuration du service d'administration de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-admin-service" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service">
             <div class="panel-body">
-                <p>The administration service is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file. The administration service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b>. You can define the context root as you want. However, usually it is <b>/mfpadmin</b>.</p>
+                <p>Le service d'administration est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b>. Le fichier WAR du service d'administration est <b>rép_install_mfp/MobileFirstServer/mfp-admin-service.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit généralement de <b>/mfpadmin</b>.</p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the administration service. The following example illustrates the case to declare <b>mfp.admin.push.url</b> whereby the administration service is installed with <b>/mfpadmin</b> as the context root:</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte du service d'administration. L'exemple suivant est une déclaration de <b>mfp.admin.push.url</b> selon laquelle le service d'administration est installé avec la racine de contexte <b>/mfpadmin</b> : </p>
 {% highlight xml %}
 <jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value="http://localhost:9080/imfpush"/>
 {% endhighlight %}
 
-                <p>If the push service is installed, you must configure the following JNDI properties:</p>
+                <p>Si le service push est installé, vous devez configurer les propriétés JNDI suivantes : </p>
                 <ul>
                     <li><b>mfp.admin.push.url</b></li>
                     <li><b>mfp.admin.authorization.server.url</b></li>
@@ -721,15 +728,16 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.admin.authorization.client.id</b></li>
                     <li><b>mfp.admin.authorization.client.secret</b></li>
                 </ul>
-                <p>The JNDI properties for the communication with the configuration service are as follows:</p>
+                <p>Les propriétés JNDI pour la communication avec le service de configuration sont les suivantes : </p>
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a>.</p>
+                <p>Pour plus d'informations sur les propriétés JNDI, voir <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}</a>.</p>
                 
-                <h3>Data source</h3>
-                <p>The JNDI name of the data source for the administration service must be defined as <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>. The following example illustrates the case whereby the administration service is installed with the context root <b>/mfpadmin</b>, and that the service is using a relational database:</p>
+                <h3>Source de données </h3>
+                <p>Le nom JNDI de la source de données pour le service d'administration doit être <b>jndiName=racine-contexte/jdbc/mfpAdminDS</b>. L'exemple suivant illustre le cas où le service d'administration est installé avec la racine de contexte <b>/mfpadmin</b> et utilise une base de données relationnelle :
+</p>
                 
 {% highlight xml %}
 <dataSource jndiName="mfpadmin/jdbc/mfpAdminDS" transactional="false">
@@ -738,7 +746,7 @@ Copy the password decoder user feature to your Liberty profile. For example:
 {% endhighlight %}
                 
                 <h3></h3>
-                <p>Declare the following roles in the <b>application-bnd</b> element of the application:</p>
+                <p>Déclarez les rôles suivants dans l'élément <b>application-bnd</b> de l'application : </p>
                 <ul>
                     <li>mfpadmin</li>
                     <li>mfpdeployer</li>
@@ -751,18 +759,18 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="live-update-service">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-live-update-service" aria-expanded="true" aria-controls="collapse-liberty-admin-service"><b>{{ site.data.keys.mf_server }} live update service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-live-update-service" aria-expanded="true" aria-controls="collapse-liberty-admin-service"><b>Détails de configuration du service Live Update de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-live-update-service" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service">
             <div class="panel-body">
-                <p>The live update service is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty">Manual installation on WebSphere Application Server Liberty</a> for the configuration details that are common to all services.</p>
+                <p>Le service Live Update est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b>. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty">Installation manuelle sur WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services. </p>
                 
-                <p>The live update service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>. The context root of the live update service must define in this way: <b>/the-adminContextRootconfig</b>. For example, if the context root of the administration service is <b>/mfpadmin</b>, then the context root of the live update service must be <b>/mfpadminconfig</b>.</p>
+                <p>Le fichier WAR du service Live Update est <b>rép_install_mfp/MobileFirstServer/mfp-live-update.war</b>. La racine de contexte du service Live Update doit être définie comme suit : <b>/racine-contexteadminconfig</b>. Par exemple, si la racine de contexte du service d'administration est <b>/mfpadmin</b>, la racine de contexte du service Live Update doit être <b>/mfpadminconfig</b>.</p>
                 
-                <h3>Data source</h3>
-                <p>The JNDI name of the data source for the live update service must be defined as the-contextRoot/jdbc/ConfigDS. The following example illustrates the case whereby the live update service is installed with the context root /mfpadminconfig, and that the service is using a relational database:</p>
+                <h3>Source de données </h3>
+                <p>Le nom JNDI de la source de données pour le service Live update doit être racine-contexte/jdbc/ConfigDS. L'exemple suivant illustre le cas où le service Live Update est installé avec la racine de contexte /mfpadminconfig et utilise une base de données relationnelle : </p>
                 
 {% highlight xml %}
 <dataSource jndiName="mfpadminconfig/jdbc/ConfigDS" transactional="false">
@@ -771,7 +779,8 @@ Copy the password decoder user feature to your Liberty profile. For example:
 {% endhighlight %}
 
                 <h3></h3>
-                <p>Declare the configadmin role in the <b>application-bnd</b> element of the application. At least one user must be mapped to this role. The user and its password must be provided to the following JNDI properties of the administration service:</p>
+                <p>Déclarez le rôle configadmin dans l'élément <b>application-bnd</b> de l'application. Un utilisateur au moins doit être mappé à ce rôle. L'utilisateur et son mot de passe doivent être fournis dans les propriétés JNDI suivantes du service d'administration :
+</p>
                 
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
@@ -783,64 +792,66 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="console-configuration">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-console-configuration" aria-expanded="true" aria-controls="collapse-console-configuration"><b>{{ site.data.keys.mf_console }} configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-console-configuration" aria-expanded="true" aria-controls="collapse-console-configuration"><b>Détails de configuration de {{site.data.keys.mf_console }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-console-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration">
             <div class="panel-body">
-                <p>The console is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty">Manual installation on WebSphere Application Server Liberty</a> for the configuration details that are common to all services.</p>
+                <p>La console est conditionnée sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b>. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty">Installation manuelle sur WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services. </p>
                 
-                <p>The console WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>. You can define the context root as you want. However, usually it is <b>/mfpconsole</b>.</p>
+                <p>Le fichier WAR de la console est <b>rép_install_mfp/MobileFirstServer/mfp-admin-ui.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit généralement de <b>/mfpconsole</b>.</p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the console. The following example illustrates the case to declare <b>mfp.admin.endpoint</b> whereby the console is installed with <b>/mfpconsole</b> as the context root:</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte de la console. L'exemple suivant est une déclaration de <b>mfp.admin.endpoint</b> selon laquelle la console est installée avec la racine de contexte <b>/mfpconsole</b> :
+</p>
                 
 {% highlight xml %}
 <jndiEntry jndiName="mfpconsole/mfp.admin.endpoint" value="*://*:*/mfpadmin"/>
 {% endhighlight %}
 
-                <p>The typical value for the mfp.admin.endpoint property is <b>*://*:*/the-adminContextRoot</b>.<br/>
-                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for {{ site.data.keys.mf_console }}</a>.</p>
+                <p>En général, la valeur de la propriété mfp.admin.endpoint est <b>*://*:*/racine-contexteadmin</b>.<br/>
+                Pour plus d'informations sur les propriétés JNDI, voir <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propriétés JNDI pour {{site.data.keys.mf_console }}</a>.</p>
                 
-                <h3>Security roles</h3>
-                <p>Declare the following roles in the <b>application-bnd</b> element of the application:</p>
+                <h3>Rôles de sécurité</h3>
+                <p>Déclarez les rôles suivants dans l'élément <b>application-bnd</b> de l'application : </p>
                 <ul>
                     <li><b>mfpadmin</b></li>
                     <li><b>mfpdeployer</b></li>
                     <li><b>mfpmonitor</b></li>
                     <li><b>mfpoperator</b></li>
                 </ul>
-                Any user that is mapped to a security role of the console must also be mapped to the same security role of the administration service.
-            </div>
+                Tout utilisateur mappé à un rôle de sécurité de la console doit également être mappé au même rôle de sécurité du service d'administration.
+</div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="runtime-configuration">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-runtime-configuration" aria-expanded="true" aria-controls="collapse-runtime-configuration"><b>MobileFirst runtime configuration details</b></a>
-            </h4>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-runtime-configuration" aria-expanded="true" aria-controls="collapse-runtime-configuration"><b>Détails de configuration de l'environnement d'exécution MobileFirst</b></a> </h4>
         </div>
 
         <div id="collapse-runtime-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration">
             <div class="panel-body">
-                <p>The runtime is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty">Manual installation on WebSphere Application Server Liberty</a> for the configuration details that are common to all services.</p>
+                <p>L'environnement d'exécution est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b>. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty">Installation manuelle sur WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services. </p>
                 
-                <p>The runtime WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>. You can define the context root as you want. However, it is <b>/mfp</b> by default.</p>
+                <p>Le fichier WAR de l'environnement d'exécution est <b>rép_install_mfp/MobileFirstServer/mfp-server.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit par défaut de <b>/mfp</b>. </p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the runtime. The following example illustrates the case to declare <b>mfp.analytics.url</b> whereby the runtime is installed with <b>/mobilefirst</b> as the context root:</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte de l'environnement d'exécution. 
+L'exemple suivant est une déclaration de <b>mfp.analytics.url</b> selon laquelle l'environnement d'exécution est installé avec la racine de contexte <b>/mobilefirst</b> :
+</p>
                 
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
 
-                <p>You must define the <b>mobilefirst/mfp.authorization.server</b> property. For example:</p>
+                <p>Vous devez définir la propriété <b>mobilefirst/mfp.authorization.server</b>. Exemple :</p>
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
 {% endhighlight %}
 
-                <p>If {{ site.data.keys.mf_analytics }} is installed, you need to define the following JNDI properties:</p>
+                <p>Si {{site.data.keys.mf_analytics }} est installé, vous devez définir les propriétés JNDI suivantes : </p>
                 <ul>   
                     <li><b>mfp.analytics.url</b></li>
                     <li><b>mfp.analytics.console.url</b></li>
@@ -848,10 +859,11 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for {{ site.data.keys.product_adj }} runtime</a>.</p>
+                <p>Pour plus d'informations sur les propriétés JNDI, voir <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste des propriétés JNDI pour l'environnement d'exécution de {{site.data.keys.product_adj }}</a>.</p>
                 
-                <h3>Data source</h3>
-                <p>The JNDI name of the data source for the runtime must be defined as <b>jndiName=the-contextRoot/jdbc/mfpDS</b>. The following example illustrates the case whereby the runtime is installed with the context root <b>/mobilefirst</b>, and that the runtime is using a relational database:</p>
+                <h3>Source de données </h3>
+                <p>Le nom JNDI de la source de données pour l'environnement d'exécution doit être <b>jndiName=racine-contexte/jdbc/mfpDS</b>. L'exemple suivant illustre le cas où l'environnement d'exécution est installé avec la racine de contexte <b>/mobilefirst</b> et utilise une base de données relationnelle :
+</p>
 
 {% highlight xml %}
 <dataSource jndiName="mobilefirst/jdbc/mfpDS" transactional="false">
@@ -864,121 +876,121 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="push-configuration">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-push-configuration" aria-expanded="true" aria-controls="collapse-push-configuration"><b>{{ site.data.keys.mf_server }} push service configuration details</b></a>
-            </h4>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-push-configuration" aria-expanded="true" aria-controls="collapse-push-configuration"><b>Détails de configuration du service push de {{site.data.keys.mf_server }}</b></a> </h4>
         </div>
 
         <div id="collapse-push-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="push-configuration">
             <div class="panel-body">
-                <p>The push service is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty">Manual installation on WebSphere Application Server Liberty</a> for the configuration details that are common to all services.</p>
+                <p>Le service push est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b>. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty">Installation manuelle sur WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services. </p>
                 
-                <p>The push service WAR file is in <b>mfp_install_dir/PushService/mfp-push-service.war</b>. You must define the context root as <b>/imfpush</b>. Otherwise, the client devices cannot connect to it as the context root is hardcoded in the SDK.</p>
+                <p>Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les terminaux client ne pourront pas se connecter au service car la racine de contexte est codée en dur dans le logiciel SDK. </p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the push service. The following example illustrates the case to declare <b>mfp.push.analytics.user</b> whereby the push service is installed with <b>/imfpush</b> as the context root:</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte du service push. L'exemple suivant est une déclaration de <b>mfp.push.analytics.user</b> selon laquelle le service push est installé avec la racine de contexte <b>/imfpush</b> : </p>
                 
 {% highlight xml %}
 <jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
 {% endhighlight %}
                 
-                You need to define the following properties:
+                Vous devez définir les propriétés suivantes :
                 <ul>
                     <li><b>mfp.push.authorization.server.url</b></li>
                     <li><b>mfp.push.authorization.client.id</b></li>
                     <li><b>mfp.push.authorization.client.secret</b></li>
-                    <li><b>mfp.push.services.ext.security</b> - the value must be <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>.</li>
-                    <li><b>mfp.push.db.type</b> - for a relational database, the value must be DB.</li>
+                    <li><b>mfp.push.services.ext.security</b> - La valeur doit être <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>.</li>
+                    <li><b>mfp.push.db.type</b> - Pour une base de données relationnelle, la valeur doit être DB. </li>
                 </ul>
                 
-                If {{ site.data.keys.mf_analytics }} is configured, define the following JNDI properties:
+                Si {{site.data.keys.mf_analytics }} est configuré, définissez les propriétés JNDI suivantes :
                 <ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
-                    <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
+                    <li><b>mfp.push.services.ext.analytics</b> - La valeur doit être <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for {{ site.data.keys.mf_server }} push service</a>.
+                Pour plus d'informations sur les propriétés JNDI, voir <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste des propriétés JNDI pour le service push de {{site.data.keys.mf_server }}</a>.
             </div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="artifacts-configuration">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-artifacts-configuration" aria-expanded="true" aria-controls="collapse-artifacts-configuration"><b>{{ site.data.keys.mf_server }} artifacts configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty" href="#collapse-artifacts-configuration" aria-expanded="true" aria-controls="collapse-artifacts-configuration"><b>Détails
+de configuration des artefacts de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-artifacts-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts-configuration">
             <div class="panel-body">
-                <p>The artifacts component is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty">Manual installation on WebSphere Application Server Liberty</a> for the configuration details that are common to all services.</p>
+                <p>Le composant des artefacts est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b>. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty">Installation manuelle sur WebSphere Application Server Liberty</a> pour prendre
+connaissance des détails de configuration communs à tous les services. </p>
                 
-                <p>The WAR file for this component is in <b>mfp_install_dir/MobileFirstServer/mfp-dev-artifacts.war</b>. You must define the context root as <b>/mfp-dev-artifacts</b>.</p>
+                <p>Le fichier WAR pour ce composant est <b>rép_install_mfp/MobileFirstServer/mfp-dev-artifacts.war</b>. Vous devez définir la racine de contexte <b>/mfp-dev-artifacts</b>. </p>
             </div>
         </div>
     </div>
 </div>
 
-### Manual installation on WebSphere Application Server Liberty collective
+### Installation manuelle dans la collectivité Liberty WebSphere Application Server Liberty
 {: #manual-installation-on-websphere-application-server-liberty-collective }
-Make sure that you have also fulfilled the requirements as documented in [WebSphere Application Server Liberty prerequisites](#websphere-application-server-liberty-prerequisites).
+Assurez-vous d'avoir également satisfait les exigences décrites dans [Prérequis pour WebSphere Application Server Liberty](#websphere-application-server-liberty-prerequisites).
 
-* [Topology constraints](#topology-constraints-collective)
-* [Application server settings](#application-server-settings-collective)
-* [Liberty features required by the {{ site.data.keys.mf_server }} applications](#liberty-features-required-by-the-mobilefirst-server-applications-collective)
-* [Global JNDI entries](#global-jndi-entries-collective)
-* [Class loader](#class-loader-collective)
-* [Password decoder user feature](#password-decoder-user-feature-collective)
-* [Configuration details](#configuration-details-collective)
+* [Contraintes liées à la topologie](#topology-constraints-collective)
+* [Paramètres de serveur d'applications](#application-server-settings-collective)
+* [Fonctions Liberty requises par les applications {{site.data.keys.mf_server }}](#liberty-features-required-by-the-mobilefirst-server-applications-collective)
+* [Entrées JNDI globales](#global-jndi-entries-collective)
+* [Chargeur de classe](#class-loader-collective)
+* [Fonction utilisateur de décodage de mot de passe](#password-decoder-user-feature-collective)
+* [Détails de configuration](#configuration-details-collective)
 
-#### Topology constraints
+#### Contraintes liées à la topologie 
 {: #topology-constraints-collective }
-The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and {{ site.data.keys.mf_console }} must be installed in a Liberty collective controller. The {{ site.data.keys.product_adj }} runtime and the {{ site.data.keys.mf_server }} push service must be installed in every member of the Liberty collective cluster.
+Le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et {{site.data.keys.mf_console }} doivent être installés sur un contrôleur de collectivité Liberty. L'environnement d'exécution {{site.data.keys.product_adj }} et le service push de {{site.data.keys.mf_server }} doivent être installés sur chaque membre de cluster de collectivité Liberty. 
 
-The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
+La racine de contexte du service Live Update doit être **racine-contexteadminconfig**. La racine de contexte du service push doit être **imfpush**. Pour plus d'informations sur les contraintes, voir [Contraintes sur les composants {{site.data.keys.mf_server }} et {{site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
-#### Application server settings
+#### Paramètres de serveur d'applications
 {: #application-server-settings-collective }
-You must configure the **webContainer** element to load the servlets immediately. This setting is required for the initialization through JMX. For example: `<webContainer deferServletLoad="false"/>`.
+Vous devez configurer l'élément **webContainer** pour le chargement immédiat des servlets. Ce paramètre est requis pour l'initialisation via JMX. Exemple : `<webContainer deferServletLoad="false"/>`.
 
-Optionally, to avoid timeout issues that break the startup sequence of the runtime and the administration service on some Liberty versions, change the default **executor** element. Set large values to the **coreThreads** and **maxThreads** attributes. For example:
+Si vous le souhaitez, pour éviter tout problème de dépassement de délai d'attente interrompant la séquence de démarrage de l'environnement d'exécution et du service d'administration dans certaines versions de Liberty, changez l'élément **executor** par défaut. Définissez des valeurs élevées pour les attributs **coreThreads** et **maxThreads**. Exemple :
 
-```xml
-<executor id="default" name="LargeThreadPool"
+```xml <executor id="default" name="LargeThreadPool"
   coreThreads="200" maxThreads="400" keepAlive="60s"
   stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS"/>
 ```
 
-You might also configure the **tcpOptions** element and set the **soReuseAddr** attribute to `true`: `<tcpOptions soReuseAddr="true"/>`.
+Vous pouvez aussi configurer l'élément **tcpOptions** et associer l'attribut **soReuseAddr** à la valeur `true` : `<tcpOptions soReuseAddr="true"/>`.
 
-#### Liberty features required by the {{ site.data.keys.mf_server }} applications
+#### Fonctions Liberty requises par les applications {{site.data.keys.mf_server }} 
 {: #liberty-features-required-by-the-mobilefirst-server-applications-collective }
 
-You need to add the following features for Java EE 6 or Java EE 7.
+Vous devez ajouter les fonctions ci-dessous pour Java EE 6 ou Java EE 7.
 
-**{{ site.data.keys.mf_server }} administration service** 
+**Service d'administration de {{site.data.keys.mf_server }}** 
 
-* **jdbc-4.0** (jdbc-4.1 for Java EE 7)
+* **jdbc-4.0** (jdbc-4.1 pour Java EE 7)
 * **appSecurity-2.0**
 * **restConnector-1.0**
 * **usr:MFPDecoderFeature-1.0**
 
-**{{ site.data.keys.mf_server }} push service**  
+**Service push de {{site.data.keys.mf_server }}**  
 
-* **jdbc-4.0** (jdbc-4.1 for Java EE 7)
-* **servlet-3.0** (servlet-3.1 for Java EE 7)
+* **jdbc-4.0** (jdbc-4.1 pour Java EE 7)
+* **servlet-3.0** (servlet-3.1 pour Java EE 7)
 * **ssl-1.0**
 * **usr:MFPDecoderFeature-1.0**
 
-**{{ site.data.keys.product_adj }} runtime**  
+**Environnement d'exécution de {{site.data.keys.product_adj }}**  
 
-* **jdbc-4.0** (jdbc-4.1 for Java EE 7)
-* **servlet-3.0** (servlet-3.1 for Java EE 7)
+* **jdbc-4.0** (jdbc-4.1 pour Java EE 7)
+* **servlet-3.0** (servlet-3.1 pour Java EE 7)
 * **ssl-1.0**
 * **usr:MFPDecoderFeature-1.0**
 
-#### Global JNDI entries
+#### Entrées JNDI globales 
 {: #global-jndi-entries-collective }
-The following global JNDI entries are required to configure the JMX communication between the runtime and the administration service:
+Les entrées JNDI globales suivantes sont requises pour configurer la communication JMX entre l'environnement d'exécution et le service d'administration : 
 
 * **mfp.admin.jmx.host**
 * **mfp.admin.jmx.port**
@@ -988,72 +1000,66 @@ The following global JNDI entries are required to configure the JMX communicatio
 * **mfp.topology.clustermode**
 * **mfp.admin.serverid**
 
-These global JNDI entries are set with this syntax and are not prefixed by a context root. For example: `<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
+Ces entrées JNDI globales sont définies avec la syntaxe ci-après et ne sont pas préfixées avec une racine de contexte. Exemple :
+`<jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>`.
 
-> **Note:** To protect against an automatic conversion of the JNDI values, so that 075 is not converted to 61 or 31.500 is not converted to 31.5, use this syntax '"075"' when you define the value.
+> **Remarque :** pour empêcher toute conversion automatique des valeurs JNDI, de sorte que 075 ne soit pas converti en 61 ou 31.500 en 31.5, utilisez la syntaxe '"075"' lorsque vous définissez la valeur. * Pour plus d'informations sur les propriétés JNDI pour le service d'administration, voir [Liste des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
+* Pour plus d'informations sur les propriétés JNDI pour l'environnement d'exécution, voir [Liste des propriétés JNDI pour l'environnement d'exécution de {{site.data.keys.product_adj }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
 
-* For more information about the JNDI properties for the administration service, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).  
-* For more information about the JNDI properties for the runtime, see [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
-
-#### Class loader
+#### Chargeur de classe
 {: #class-loader-collective }
-For all applications, the class loader must have the parent last delegation. For example:
+Pour toutes les applications, l'attribut delegation du chargeur de classe doit avoir la valeur parentLast (parent en dernier). Exemple :
 
-```xml
-<application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
+```xml <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
   [...]
   <classloader delegation="parentLast">
-  </classloader>
-</application>
+  </classloader> </application>
 ```
 
-#### Password decoder user feature
+#### Fonction utilisateur de décodage de mot de passe 
 {: #password-decoder-user-feature-collective }
-Copy the password decoder user feature to your Liberty profile. For example:
+Copiez la fonction utilisateur de décodage de mot de passe dans votre profil Liberty. Exemple :
 
-* On UNIX and Linux systems:
+* Sur les systèmes UNIX et Linux :
 
   ```bash
   mkdir -p LIBERTY_HOME/wlp/usr/extension/lib/features
-  cp product_install_dir/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
-  cp product_install_dir/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
+  cp rép_install_produit/features/com.ibm.websphere.crypto_1.0.0.jar LIBERTY_HOME/wlp/usr/extension/lib/
+  cp rép_install_produit/features/MFPDecoderFeature-1.0.mf LIBERTY_HOME/wlp/usr/extension/lib/features/
   ```
 
-* On Windows systems:
+* Sur les systèmes Windows : 
 
   ```bash
   mkdir LIBERTY_HOME\wlp\usr\extension\lib
-  copy /B product_install_dir\features\com.ibm.websphere.crypto_1.0.0.jar
+  copy /B rép_install_produit\features\com.ibm.websphere.crypto_1.0.0.jar
   LIBERTY_HOME\wlp\usr\extension\lib\com.ibm.websphere.crypto_1.0.0.jar
   mkdir LIBERTY_HOME\wlp\usr\extension\lib\features
-  copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
+  copy /B rép_install_produit\features\MFPDecoderFeature-1.0.mf
   LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
   ```
-#### Configuration details
+#### Détails de configuration
 {: #configuration-details-collective }
 <div class="panel-group accordion" id="manual-installation-liberty-collective" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-collective">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-admin-service-collective" aria-expanded="true" aria-controls="collapse-admin-service-collective"><b>{{ site.data.keys.mf_server }} administration service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-admin-service-collective" aria-expanded="true" aria-controls="collapse-admin-service-collective"><b>Détails de configuration du service d'administration de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-admin-service-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-collective">
             <div class="panel-body">
-                <p>The administration service is packaged as a WAR application for you to deploy to the Liberty collective controller. You need to make some specific configurations for this application in the <b>server.xml</b> file of the Liberty collective controller. 
-                <br/><br/>
-                Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty-collective">Manual installation on WebSphere Application Server Liberty collective</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The administration service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-admin-service-collective.war</b>. You can define the context root as you want. However, usually it is <b>/mfpadmin</b>.</p>
+                <p>Le service d'administration est conditionné sous forme d'application WAR en vue de son déploiement sur le contrôleur de collectivité Liberty. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> du contrôleur de collectivité Liberty. <br/><br/>
+Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty-collective">Installation manuelle dans la collectivité WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR du service d'administration est <b>rép_install_mfp/MobileFirstServer/mfp-admin-service-collective.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit généralement de <b>/mfpadmin</b>.</p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the administration service. The following example illustrates the case to declare <b>mfp.admin.push.url</b> whereby the administration service is installed with <b>/mfpadmin</b> as the context root:</p>
-{% highlight xml %}
-<jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value="http://localhost:9080/imfpush"/>
-{% endhighlight %}
-
-                <p>If the push service is installed, you must configure the following JNDI properties:</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte du service d'administration. 
+L'exemple suivant est une déclaration de <b>mfp.admin.push.url</b> selon laquelle le service d'administration est installé avec la racine de contexte <b>/mfpadmin</b> : </p>
+{% highlight xml %} <jndiEntry jndiName="mfpadmin/mfp.admin.push.url" value="http://localhost:9080/imfpush"/>
+{% endhighlight %} 
+                <p>Si le service push est installé, vous devez configurer les propriétés JNDI suivantes : </p>
                 <ul>
                     <li><b>mfp.admin.push.url</b></li>
                     <li><b>mfp.admin.authorization.server.url</b></li>
@@ -1062,24 +1068,23 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.admin.authorization.client.id</b></li>
                     <li><b>mfp.admin.authorization.client.secret</b></li>
                 </ul>
-                <p>The JNDI properties for the communication with the configuration service are as follows:</p>
+                <p>Les propriétés JNDI pour la communication avec le service de configuration sont les suivantes : </p>
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a>.</p>
+                <p>Pour plus d'informations sur les propriétés JNDI, voir <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}</a>.</p>
                 
-                <h3>Data source</h3>
-                <p>The JNDI name of the data source for the administration service must be defined as <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>. The following example illustrates the case whereby the administration service is installed with the context root <b>/mfpadmin</b>, and that the service is using a relational database:</p>
+                <h3>Source de données </h3>
+                <p>Le nom JNDI de la source de données pour le service d'administration doit être <b>jndiName=racine-contexte/jdbc/mfpAdminDS</b>. L'exemple suivant illustre le cas où le service d'administration est installé avec la racine de contexte <b>/mfpadmin</b> et utilise une base de données relationnelle :
+</p>
                 
-{% highlight xml %}
-<dataSource jndiName="mfpadmin/jdbc/mfpAdminDS" transactional="false">
+{% highlight xml %} <dataSource jndiName="mfpadmin/jdbc/mfpAdminDS" transactional="false">
   [...] 
-</dataSource>
-{% endhighlight %}
+</dataSource> {% endhighlight %}
                 
-                <h3>Security roles</h3>
-                <p>Declare the following roles in the <b>application-bnd</b> element of the application:</p>
+                <h3>Rôles de sécurité</h3>
+                <p>Déclarez les rôles suivants dans l'élément <b>application-bnd</b> de l'application : </p>
                 <ul>
                     <li>mfpadmin</li>
                     <li>mfpdeployer</li>
@@ -1092,20 +1097,19 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="live-update-service-collective">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-live-update-service-collective" aria-expanded="true" aria-controls="collapse-live-update-service-collective"><b>{{ site.data.keys.mf_server }} live update service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-live-update-service-collective" aria-expanded="true" aria-controls="collapse-live-update-service-collective"><b>Détails
+de configuration du service Live Update de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-live-update-service-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-collective">
             <div class="panel-body">
-                <p>The live update service is packaged as a WAR application for you to deploy to the liberty collective controller. You need to make some specific configurations for this application in the <b>server.xml</b> file of the Liberety collective controller.
-                <br/><br/>
-                Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty-collective">Manual installation on WebSphere Application Server Liberty collective</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The live update service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>. The context root of the live update service must define in this way: <b>/the-adminContextRootconfig</b>. For example, if the context root of the administration service is <b>/mfpadmin</b>, then the context root of the live update service must be <b>/mfpadminconfig</b>.</p>
+                <p>Le service Live Update est conditionné sous forme d'application WAR en vue de son déploiement sur le contrôleur de collectivité Liberty. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> du contrôleur de collectivité Liberty. <br/><br/> Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty-collective">Installation manuelle dans la collectivité WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR du service Live Update est <b>rép_install_mfp/MobileFirstServer/mfp-live-update.war</b>. La racine de contexte du service Live Update doit être définie comme suit : <b>/racine-contexteadminconfig</b>. Par exemple, si la racine de contexte du service d'administration est <b>/mfpadmin</b>, la racine de contexte du service Live Update doit être <b>/mfpadminconfig</b>.</p>
                 
-                <h3>Data source</h3>
-                <p>The JNDI name of the data source for the live update service must be defined as <b>the-contextRoot/jdbc/ConfigDS</b>. The following example illustrates the case whereby the live update service is installed with the context root <b>/mfpadminconfig</b>, and that the service is using a relational database:</p>
+                <h3>Source de données </h3>
+                <p>Le nom JNDI de la source de données pour le service Live Update doit être <b>racine-contexte/jdbc/ConfigDS</b>. L'exemple suivant illustre le cas où le service Live Update est installé avec la racine de contexte <b>/mfpadminconfig</b> et utilise une base de données relationnelle :
+</p>
                 
 {% highlight xml %}
 <dataSource jndiName="mfpadminconfig/jdbc/ConfigDS" transactional="false">
@@ -1113,8 +1117,10 @@ Copy the password decoder user feature to your Liberty profile. For example:
 </dataSource>
 {% endhighlight %}
 
-                <h3>Security roles</h3>
-                <p>Declare the configadmin role in the <b>application-bnd</b> element of the application. At least one user must be mapped to this role. The user and its password must be provided to the following JNDI properties of the administration service:</p>
+                <h3>Rôles de sécurité</h3>
+                <p>Déclarez le rôle configadmin dans l'élément <b>application-bnd</b> de l'application. Un utilisateur au moins doit être mappé à ce rôle. 
+L'utilisateur et son mot de passe doivent être fournis dans les propriétés JNDI suivantes du service d'administration :
+</p>
                 
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
@@ -1126,67 +1132,60 @@ Copy the password decoder user feature to your Liberty profile. For example:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="console-configuration-collective">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-console-configuration-collective" aria-expanded="true" aria-controls="collapse-console-configuration-collective"><b>{{ site.data.keys.mf_console }} configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-console-configuration-collective" aria-expanded="true" aria-controls="collapse-console-configuration-collective"><b>Détails de configuration de {{site.data.keys.mf_console }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-console-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-collective">
             <div class="panel-body">
-                <p>The console is packaged as a WAR application for you to deploy to the Liberty collective controller. You need to make some specific configurations for this application in the <b>server.xml</b> file of the Liberty collective controller.
-                <br/><br/>Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty-collective">Manual installation on WebSphere Application Server Liberty</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The console WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>. You can define the context root as you want. However, usually it is <b>/mfpconsole</b>.</p>
+                <p>La console est conditionnée sous forme d'application WAR en vue de son déploiement sur le contrôleur de collectivité Liberty. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> du contrôleur de collectivité Liberty. <br/><br/> Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty-collective">Installation manuelle sur WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR de la console est <b>rép_install_mfp/MobileFirstServer/mfp-admin-ui.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit généralement de <b>/mfpconsole</b>.</p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the console. The following example illustrates the case to declare <b>mfp.admin.endpoint</b> whereby the console is installed with <b>/mfpconsole</b> as the context root:</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte de la console. L'exemple suivant est une déclaration de <b>mfp.admin.endpoint</b> selon laquelle la console est installée avec la racine de contexte <b>/mfpconsole</b> :
+</p>
                 
-{% highlight xml %}
-<jndiEntry jndiName="mfpconsole/mfp.admin.endpoint" value="*://*:*/mfpadmin"/>
-{% endhighlight %}
-
-                <p>The typical value for the mfp.admin.endpoint property is <b>*://*:*/the-adminContextRoot</b>.<br/>
-                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for {{ site.data.keys.mf_console }}</a>.</p>
+{% highlight xml %} <jndiEntry jndiName="mfpconsole/mfp.admin.endpoint" value="*://*:*/mfpadmin"/>
+{% endhighlight %} 
+                <p>En général, la valeur de la propriété mfp.admin.endpoint est <b>*://*:*/racine-contexteadmin</b>.<br/>
+                Pour plus d'informations sur les propriétés JNDI, voir
+<a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propriétés JNDI pour {{site.data.keys.mf_console }}</a>.</p>
                 
-                <h3>Security roles</h3>
-                <p>Declare the following roles in the <b>application-bnd</b> element of the application:</p>
+                <h3>Rôles de sécurité</h3>
+                <p>Déclarez les rôles suivants dans l'élément <b>application-bnd</b> de l'application : </p>
                 <ul>
                     <li><b>mfpadmin</b></li>
                     <li><b>mfpdeployer</b></li>
                     <li><b>mfpmonitor</b></li>
                     <li><b>mfpoperator</b></li>
                 </ul>
-                Any user that is mapped to a security role of the console must also be mapped to the same security role of the administration service.
-            </div>
+                Tout utilisateur mappé à un rôle de sécurité de la console doit également être mappé au même rôle de sécurité du service d'administration.
+</div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="runtime-configuration-collective">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-runtime-configuration-collective" aria-expanded="true" aria-controls="collapse-runtime-configuration-collective"><b>{{ site.data.keys.product_adj }} runtime configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-runtime-configuration-collective" aria-expanded="true" aria-controls="collapse-runtime-configuration-collective"><b>Détails de configuration de l'environnement d'exécution de {{site.data.keys.product_adj }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-runtime-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-collective">
             <div class="panel-body">
-                <p>The runtime is packaged as a WAR application for you to deploy to the Liberty collective cluster members. You need to make some specific configurations for this application in the <b>server.xml</b> file of every Liberty collective cluster member.
-                <br/><br/>
-                Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty-collective">Manual installation on WebSphere Application Server Liberty collective</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The runtime WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>. You can define the context root as you want. However, it is <b>/mfp</b> by default.</p>
+                <p>L'environnement d'exécution est conditionné sous forme d'application WAR en vue de son déploiement sur les membres de cluster de collectivité Liberty. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> de chaque membre de cluster de collectivité Liberty. <br/><br/> Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty-collective">Installation manuelle dans la collectivité WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR de l'environnement d'exécution est <b>rép_install_mfp/MobileFirstServer/mfp-server.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit par défaut de <b>/mfp</b>. </p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the runtime. The following example illustrates the case to declare <b>mfp.analytics.url</b> whereby the runtime is installed with <b>/mobilefirst</b> as the context root:</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte de l'environnement d'exécution. 
+L'exemple suivant est une déclaration de <b>mfp.analytics.url</b> selon laquelle l'environnement d'exécution est installé avec la racine de contexte <b>/mobilefirst</b> :
+</p>
                 
-{% highlight xml %}
-<jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
-{% endhighlight %}
-
-                <p>You must define the <b>mobilefirst/mfp.authorization.server</b> property. For example:</p>
-{% highlight xml %}
-<jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
-{% endhighlight %}
-
-                <p>If {{ site.data.keys.mf_analytics }} is installed, you need to define the following JNDI properties:</p>
+{% highlight xml %} <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
+{% endhighlight %} 
+                <p>Vous devez définir la propriété <b>mobilefirst/mfp.authorization.server</b>. Exemple :</p>
+{% highlight xml %} <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
+{% endhighlight %} 
+                                <p>Si {{site.data.keys.mf_analytics }} est installé, vous devez définir les propriétés JNDI suivantes : </p>
                 <ul>   
                     <li><b>mfp.analytics.url</b></li>
                     <li><b>mfp.analytics.console.url</b></li>
@@ -1194,136 +1193,134 @@ Copy the password decoder user feature to your Liberty profile. For example:
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for {{ site.data.keys.product_adj }} runtime</a>.</p>
+                <p>Pour plus d'informations sur les propriétés JNDI, voir
+<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste
+des propriétés JNDI pour l'environnement d'exécution de {{site.data.keys.product_adj }}</a>.</p>
                 
-                <h3>Data source</h3>
-                <p>The JNDI name of the data source for the runtime must be defined as <b>jndiName=the-contextRoot/jdbc/mfpDS</b>. The following example illustrates the case whereby the runtime is installed with the context root <b>/mobilefirst</b>, and that the runtime is using a relational database:</p>
+                <h3>Source de données </h3>
+                <p>Le nom JNDI de la source de données pour l'environnement d'exécution doit être <b>jndiName=racine-contexte/jdbc/mfpDS</b>. L'exemple suivant illustre le cas où l'environnement d'exécution est installé avec la racine de contexte <b>/mobilefirst</b> et utilise une base de données relationnelle :
+</p>
 
-{% highlight xml %}
-<dataSource jndiName="mobilefirst/jdbc/mfpDS" transactional="false">
+{% highlight xml %} <dataSource jndiName="mobilefirst/jdbc/mfpDS" transactional="false">
   [...] 
-</dataSource>
-{% endhighlight %}
+</dataSource> {% endhighlight %}
             </div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="push-configuration">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-push-configuration" aria-expanded="true" aria-controls="collapse-push-configuration"><b>{{ site.data.keys.mf_server }} push service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-push-configuration" aria-expanded="true" aria-controls="collapse-push-configuration"><b>Détails de configuration du service push de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-push-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="push-configuration">
             <div class="panel-body">
-                <p>The push service is packaged as a WAR application for you to deploy to a Liberty collective cluster member or to a Liberty server. If you install the push service in a Liberty server, see <a href="#configuration-details">{{ site.data.keys.mf_server }} push service configuration details</a> under <a href="#manual-installation-on-websphere-application-server-liberty">Manual installation on WebSphere Application Server Liberty</a>.
+                <p>Le service push est conditionné sous forme d'application WAR en vue de son déploiement sur un membre de cluster de collectivité Liberty ou un serveur Liberty. Si vous installez le service push sur un serveur Liberty, reportez-vous à <a href="#configuration-details">Détails de configuration du service push de {{site.data.keys.mf_server }}</a> sous <a href="#manual-installation-on-websphere-application-server-liberty">Installation manuelle sur WebSphere Application Server Liberty</a>.
                 <br/><br/>
-                When the {{ site.data.keys.mf_server }} push service is installed in a Liberty collective, it can be installed in the same cluster than the runtime or in another cluster.
+                Lorsque le service push de {{site.data.keys.mf_server }} est installé dans une collectivité Liberty, il peut être installé dans le même cluster que l'environnement d'exécution ou dans un autre cluster.
                 <br/><br/>
-                You need to make some specific configurations for this application in the <b>server.xml</b> file of every Liberty collective cluster member. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty-collective">Manual installation on WebSphere Application Server Liberty collective </a> for the configuration details that are common to all services.    
+Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> de chaque membre de cluster de collectivité Liberty. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty-collective">Installation manuelle dans la collectivité WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services.     
                 <br/><br/>
-                The push service WAR file is in <b>mfp_install_dir/PushService/mfp-push-service.war</b>. You must define the context root as <b>/imfpush</b>. Otherwise, the client devices cannot connect to it as the context root is hardcoded in the SDK.</p>
+                Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les terminaux client ne pourront pas se connecter au service car la racine de contexte est codée en dur dans le logiciel SDK. </p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>When you define the JNDI properties, the JNDI names must be prefixed with the context root of the push service. The following example illustrates the case to declare <b>mfp.push.analytics.user</b> whereby the push service is installed with <b>/imfpush</b> as the context root:</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Lorsque vous définissez les propriétés JNDI, les noms JNDI doivent être préfixés avec la racine de contexte du service push. L'exemple suivant est une déclaration de <b>mfp.push.analytics.user</b> selon laquelle le service push est installé avec la racine de contexte <b>/imfpush</b> : </p>
                 
-{% highlight xml %}
-<jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
+{% highlight xml %} <jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
 {% endhighlight %}
                 
-                You need to define the following properties:
+                Vous devez définir les propriétés suivantes :
                 <ul>
                     <li><b>mfp.push.authorization.server.url</b></li>
                     <li><b>mfp.push.authorization.client.id</b></li>
                     <li><b>mfp.push.authorization.client.secret</b></li>
-                    <li><b>mfp.push.services.ext.security</b> - the value must be <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>.</li>
-                    <li><b>mfp.push.db.type</b> - for a relational database, the value must be DB.</li>
+                    <li><b>mfp.push.services.ext.security</b> - La valeur doit être <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>.</li>
+                    <li><b>mfp.push.db.type</b> - Pour une base de données relationnelle, la valeur doit être DB. </li>
                 </ul>
                 
-                If {{ site.data.keys.mf_analytics }} is configured, define the following JNDI properties:
+                Si {{site.data.keys.mf_analytics }} est configuré, définissez les propriétés JNDI suivantes :
                 <ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
-                    <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
+                    <li><b>mfp.push.services.ext.analytics</b> - La valeur doit être <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for {{ site.data.keys.mf_server }} push service</a>.
+                Pour plus d'informations sur les propriétés JNDI, voir <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste des propriétés JNDI pour le service push de {{site.data.keys.mf_server }}</a>.
             </div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="artifacts-configuration-collective">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-artifacts-configuration-collective" aria-expanded="true" aria-controls="collapse-artifacts-configuration-collective"><b>{{ site.data.keys.mf_server }} artifacts configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-liberty-collective" href="#collapse-artifacts-configuration-collective" aria-expanded="true" aria-controls="collapse-artifacts-configuration-collective"><b>Détails de configuration des artefacts de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-artifacts-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts-configuration-collective">
             <div class="panel-body">
-                <p>The artifacts component is packaged as a WAR application for you to deploy to the Liberty collective controller. You need to make some specific configurations for this application in the <b>server.xml</b> file of the Liberty collective controller. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-liberty">Manual installation on WebSphere Application Server Liberty</a> for the configuration details that are common to all services.</p>
+                <p>Le composant des artefacts est conditionné sous forme d'application WAR en vue de son déploiement sur le contrôleur de collectivité Liberty. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> du contrôleur de collectivité Liberty. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-liberty">Installation manuelle sur WebSphere Application Server Liberty</a> pour prendre connaissance des détails de configuration communs à tous les services. </p>
                 
-                <p>The WAR file for this component is in <b>mfp_install_dir/MobileFirstServer/mfp-dev-artifacts.war</b>. You must define the context root as <b>/mfp-dev-artifacts</b>.</p>
+                <p>Le fichier WAR pour ce composant est <b>rép_install_mfp/MobileFirstServer/mfp-dev-artifacts.war</b>. Vous devez définir la racine de contexte <b>/mfp-dev-artifacts</b>. </p>
             </div>
         </div>
     </div>
 </div>
 
-### Manual installation on Apache Tomcat
+### Installation manuelle sur Apache Tomcat
 {: #manual-installation-on-apache-tomcat }
-Make sure that you have fulfilled the requirements as documented in [Apache Tomcat prerequisites](#apache-tomcat-prerequisites).
+Assurez-vous d'avoir satisfait les exigences décrites dans [Prérequis pour Apache Tomcat](#apache-tomcat-prerequisites).
 
-* [Topology constraints](#topology-constraints-tomcat)
-* [Application server settings](#application-server-settings-tomcat)
-* [Configuration details](#configuration-details-tomcat)
+* [Contraintes liées à la topologie](#topology-constraints-tomcat)
+* [Paramètres de serveur d'applications](#application-server-settings-tomcat)
+* [Détails de configuration](#configuration-details-tomcat)
 
-#### Topology constraints
+#### Contraintes liées à la topologie 
 {: #topology-constraints-tomcat }
-The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the {{ site.data.keys.product_adj }} runtime must be installed on the same application server. The context root of the live update service must be defined as **the-adminContextRootconfig**. The context root of the push service must be **imfpush**. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
+Le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product_adj }} doivent être installés sur un même serveur d'applications. La racine de contexte du service Live Update doit être **racine-contexteadminconfig**. La racine de contexte du service push doit être **imfpush**. Pour plus d'informations sur les contraintes, voir [Contraintes sur les composants {{site.data.keys.mf_server }} et {{site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
 
-#### Application server settings
+#### Paramètres de serveur d'applications
 {: #application-server-settings-tomcat }
-ou must activate the **Single Sign On Valve**. For example:
+Vous devez activer la **valve de connexion unique**. Exemple :
 
 ```xml
 <Valve className="org.apache.catalina.authenticator.SingleSignOn"/>
 ```
 
-Optionally, you might want to activate the memory realm if the users are defined in **tomcat-users.xml**. For example:
+Si vous le souhaitez, vous pouvez activer le domaine de mémoire (MemoryRealm) si les utilisateurs sont définis dans **tomcat-users.xml**. Exemple :
 
 ```xml
 <Realm className="org.apache.catalina.realm.MemoryRealm"/>
 ```
-#### Configuration details
+#### Détails de configuration
 {: #configuration-details-tomcat }
 <div class="panel-group accordion" id="manual-installation-apache-tomcat" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-admin-service-tomcat" aria-expanded="true" aria-controls="collapse-admin-service-tomcat"><b>{{ site.data.keys.mf_server }} administration service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-admin-service-tomcat" aria-expanded="true" aria-controls="collapse-admin-service-tomcat"><b>Détails de configuration du service d'administration de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-admin-service-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-tomcat">
             <div class="panel-body">
-                <p>The administration service is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file of the application server. 
-                <br/><br/>
-                Before you proceed, review <a href="#manual-installation-on-apache-tomcat">Manual installation on Apache Tomcat</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The administration service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b>. You can define the context root as you want. However, usually it is <b>/mfpadmin</b>.</p>
+                <p>Le service d'administration est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> du serveur d'applications. 
+<br/><br/> Avant de continuer, consultez la section <a href="#manual-installation-on-apache-tomcat">Installation manuelle sur Apache Tomcat</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR du service d'administration est <b>rép_install_mfp/MobileFirstServer/mfp-admin-service.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit généralement de <b>/mfpadmin</b>.</p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>The JNDI properties are defined within the <code>Environment</code> element in the application context. For example:</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Les propriétés JNDI sont définies dans l'élément <code>Environment</code> dans le contexte d'application. Exemple :</p>
 
 {% highlight xml %}
 <Environment name="mfp.admin.push.url" value="http://localhost:8080/imfpush" type="java.lang.String" override="false"/>
 {% endhighlight %}
-                <p>To enable the JMX communication with the runtime, define the following JNDI properties:</p>
+                <p>Pour activer la communication JMX avec l'environnement d'exécution, définissez les propriétés JNDI suivantes : </p>
                 <ul>
                     <li><b>mfp.topology.platform</b></li>
                     <li><b>mfp.topology.clustermode</b></li>
                 </ul>
 
-                <p>If the push service is installed, you must configure the following JNDI properties:</p>
+                <p>Si le service push est installé, vous devez configurer les propriétés JNDI suivantes : </p>
                 <ul>
                     <li><b>mfp.admin.push.url</b></li>
                     <li><b>mfp.admin.authorization.server.url</b></li>
@@ -1332,22 +1329,24 @@ Optionally, you might want to activate the memory realm if the users are defined
                     <li><b>mfp.admin.authorization.client.id</b></li>
                     <li><b>mfp.admin.authorization.client.secret</b></li>
                 </ul>
-                <p>The JNDI properties for the communication with the configuration service are as follows:</p>
+                <p>Les propriétés JNDI pour la communication avec le service de configuration sont les suivantes : </p>
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a>.</p>
+                <p>Pour plus d'informations sur les propriétés JNDI, voir
+<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste
+des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}</a>.</p>
                 
-                <h3>Data source</h3>
-                <p>The data source (jdbc/mfpAdminDS) is declared as a resource in the **Context** element. For example:</p>
+                <h3>Source de données </h3>
+                <p>La source de données (jdbc/mfpAdminDS) est déclarée comme ressource dans l'élément **Context**. Exemple :</p>
                                     
 {% highlight xml %}
 <Resource name="jdbc/mfpAdminDS" type="javax.sql.DataSource" .../>
 {% endhighlight %}
                 
-                <h3>Security roles</h3>
-                <p>The security roles available for the administration service application are:</p>
+                <h3>Rôles de sécurité</h3>
+                <p>Les rôles de sécurité disponibles pour l'application de service d'administration sont : </p>
                 <ul>
                     <li>mfpadmin</li>
                     <li>mfpdeployer</li>
@@ -1360,25 +1359,24 @@ Optionally, you might want to activate the memory realm if the users are defined
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="live-update-service-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-live-update-service-tomcat" aria-expanded="true" aria-controls="collapse-live-update-service-tomcat"><b>{{ site.data.keys.mf_server }} live update service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-live-update-service-tomcat" aria-expanded="true" aria-controls="collapse-live-update-service-tomcat"><b>Détails de configuration du service Live Update de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-live-update-service-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-tomcat">
             <div class="panel-body">
-                <p>The live update service is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file.
-                <br/><br/>
-                Before you proceed, review <a href="#manual-installation-on-apache-tomcat">Manual installation on Apache Tomcat</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The live update service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>. The context root of the live update service must define in this way: <b>/the-adminContextRoot/config</b>. For example, if the context root of the administration service is <b>/mfpadmin</b>, then the context root of the live update service must be <b>/mfpadminconfig</b>.</p>
+                <p>Le service Live Update est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b>. <br/><br/> Avant de continuer, consultez la section <a href="#manual-installation-on-apache-tomcat">Installation manuelle sur Apache Tomcat</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR du service Live Update est <b>rép_install_mfp/MobileFirstServer/mfp-live-update.war</b>. La racine de contexte du service Live Update doit être définie comme suit : <b>/racine-contexteadmin/config</b>. Par exemple, si la racine de contexte du service d'administration est
+<b>/mfpadmin</b>, la racine de contexte du service Live Update doit être <b>/mfpadminconfig</b>.</p>
                 
-                <h3>Data source</h3>
-                <p>The JNDI name of the data source for the live update service must be defined as <code>jdbc/ConfigDS</code>. Declare it as a resource in the <code>Context</code> element.</p>
+                <h3>Source de données </h3>
+                <p>Le nom JNDI de la source de données pour le service Live Update doit être <code>jdbc/ConfigDS</code>. Déclarez-le comme ressource dans l'élément <code>Context</code>. </p>
 
-                <h3>Security roles</h3>
-                <p>The security role available for the live update service application is <b>configadmin</b>.
+                <h3>Rôles de sécurité</h3>
+                <p>Le rôle de sécurité disponible pour l'application de service Live Update est <b>configadmin</b>.
                 <br/><br/>
-                At least one user must be mapped to this role. The user and its password must be provided to the following JNDI properties of the administration service:</p>
+                Un utilisateur au moins doit être mappé à ce rôle. L'utilisateur et son mot de passe doivent être fournis dans les propriétés JNDI suivantes du service d'administration :
+</p>
                 
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
@@ -1390,24 +1388,22 @@ Optionally, you might want to activate the memory realm if the users are defined
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="console-configuration-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-console-configuration-tomcat" aria-expanded="true" aria-controls="collapse-console-configuration-tomcat"><b>{{ site.data.keys.mf_console }} configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-console-configuration-tomcat" aria-expanded="true" aria-controls="collapse-console-configuration-tomcat"><b>Détails de configuration de {{site.data.keys.mf_console }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-console-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-tomcat">
             <div class="panel-body">
-                <p>The console is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file of the application server.
-                <br/><br/>Before you proceed, review <a href="#manual-installation-on-apache-tomcat">Manual installation on Apache Tomcat</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The console WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>. You can define the context root as you want. However, usually it is <b>/mfpconsole</b>.</p>
+                <p>La console est conditionnée sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> du serveur d'applications. <br/><br/> Avant de continuer, consultez la section <a href="#manual-installation-on-apache-tomcat">Installation manuelle sur Apache Tomcat</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR de la console est <b>rép_install_mfp/MobileFirstServer/mfp-admin-ui.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit généralement de <b>/mfpconsole</b>.</p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>You need to define the <b>mfp.admin.endpoint</b> property. The typical value for this property is <b>*://*:*/the-adminContextRoot</b>.
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Vous devez définir la propriété <b>mfp.admin.endpoint</b>. En général, la valeur de cette propriété est <b>*://*:*/racine-contexteadmin</b>.
                 <br/><br/>
-                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for {{ site.data.keys.mf_console }}</a>.</p>
+                Pour plus d'informations sur les propriétés JNDI, voir <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propriétés JNDI pour {{site.data.keys.mf_console }}</a>.</p>
                 
-                <h3>Security roles</h3>
-                <p>The security roles available for the application are:</p>
+                <h3>Rôles de sécurité</h3>
+                <p>Les rôles de sécurité disponibles pour l'application sont : </p>
                 <ul>
                     <li><b>mfpadmin</b></li>
                     <li><b>mfpdeployer</b></li>
@@ -1420,32 +1416,29 @@ Optionally, you might want to activate the memory realm if the users are defined
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="runtime-configuration-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-runtime-configuration-tomcat" aria-expanded="true" aria-controls="collapse-runtime-configuration-tomcat"><b>{{ site.data.keys.product_adj }} runtime configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-runtime-configuration-tomcat" aria-expanded="true" aria-controls="collapse-runtime-configuration-tomcat"><b>Détails de configuration de l'environnement d'exécution de {{site.data.keys.product_adj }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-runtime-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-tomcat">
             <div class="panel-body">
-                <p>The runtime is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file.
-                <br/><br/>
-                Before you proceed, review <a href="#manual-installation-on-apache-tomcat">Manual installation on Apache Tomcat</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The runtime WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>. You can define the context root as you want. However, it is <b>/mfp</b> by default.</p>
+                <p>L'environnement d'exécution est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b>. <br/><br/> Avant de continuer, consultez la section <a href="#manual-installation-on-apache-tomcat">Installation manuelle sur Apache Tomcat</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR de l'environnement d'exécution est <b>rép_install_mfp/MobileFirstServer/mfp-server.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit par défaut de <b>/mfp</b>. </p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>You must define the <b>mfp.authorization.server</b> property. For example:</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Vous devez définir la propriété <b>mfp.authorization.server</b>. Exemple :</p>
                 
 {% highlight xml %}
 <Environment name="mfp.authorization.server" value="embedded" type="java.lang.String" override="false"/>
 {% endhighlight %}
 
-                <p>To enable the JMX communication with the administration service, define the following JNDI properties:</p>
+                <p>Pour activer la communication JMX avec le service d'administration, définissez les propriétés JNDI suivantes : </p>
                 <ul>
                     <li><b>mfp.topology.platform</b></li>
                     <li><b>mfp.topology.clustermode</b></li>
                 </ul>
                 
-                <p>If {{ site.data.keys.mf_analytics }} is installed, you need to define the following JNDI properties:</p>
+                <p>Si {{site.data.keys.mf_analytics }} est installé, vous devez définir les propriétés JNDI suivantes : </p>
                 <ul>   
                     <li><b>mfp.analytics.url</b></li>
                     <li><b>mfp.analytics.console.url</b></li>
@@ -1453,158 +1446,160 @@ Optionally, you might want to activate the memory realm if the users are defined
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for {{ site.data.keys.product_adj }} runtime</a>.</p>
+                <p>Pour plus d'informations sur les propriétés JNDI, voir
+<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste des propriétés JNDI pour l'environnement d'exécution de {{site.data.keys.product_adj }}</a>.</p>
                 
-                <h3>Data source</h3>
-                <p>The JNDI name of the data source for the runtime must be defined as <b>jdbc/mfpDS</b>. Declare it as a resource in the <b>Context</b> element.</p>
+                <h3>Source de données </h3>
+                <p>Le nom JNDI de la source de données pour l'environnement d'exécution doit être <b>jdbc/mfpDS</b>. Déclarez-le comme ressource dans l'élément <b>Context</b>. </p>
             </div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="push-configuration-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-push-configuration-tomcat" aria-expanded="true" aria-controls="collapse-push-configuration-tomcat"><b>{{ site.data.keys.mf_server }} push service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-apache-tomcat" href="#collapse-push-configuration-tomcat" aria-expanded="true" aria-controls="collapse-push-configuration-tomcat"><b>Détails de configuration du service push de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-push-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="push-configuration-tomcat">
             <div class="panel-body">
-                <p>The push service is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application. Before you proceed, review <a href="#manual-installation-on-apache-tomcat">Manual installation on Apache Tomcat </a> for the configuration details that are common to all services.    
+                <p>Le service push est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application. Avant de continuer, consultez la section <a href="#manual-installation-on-apache-tomcat">Installation manuelle sur Apache Tomcat</a> pour prendre connaissance des détails de configuration communs à tous les services.     
                 <br/><br/>
-                The push service WAR file is in <b>mfp_install_dir/PushService/mfp-push-service.war</b>. You must define the context root as <b>/imfpush</b>. Otherwise, the client devices cannot connect to it as the context root is hardcoded in the SDK.</p>
+                Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les terminaux client ne pourront pas se connecter au service car la racine de contexte est codée en dur dans le logiciel SDK. </p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>You need to define the following properties:</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Vous devez définir les propriétés suivantes :
+                </p>
                 <ul>
                     <li><b>mfp.push.authorization.server.url</b></li>
                     <li><b>mfp.push.authorization.client.id</b></li>
                     <li><b>mfp.push.authorization.client.secret</b></li>
-                    <li><b>mfp.push.services.ext.security</b> - the value must be <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>.</li>
-                    <li><b>mfp.push.db.type</b> - for a relational database, the value must be DB.</li>
+                    <li><b>mfp.push.services.ext.security</b> - La valeur doit être <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>.</li>
+                    <li><b>mfp.push.db.type</b> - Pour une base de données relationnelle, la valeur doit être DB. </li>
                 </ul>
                 
-                <p>If {{ site.data.keys.mf_analytics }} is configured, define the following JNDI properties:</p>
+                <p>Si {{site.data.keys.mf_analytics }} est configuré, définissez les propriétés JNDI suivantes :
+                </p>
                 <ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
-                    <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
+                    <li><b>mfp.push.services.ext.analytics</b> - La valeur doit être <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for {{ site.data.keys.mf_server }} push service</a>.
+                Pour plus d'informations sur les propriétés JNDI, voir <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste des propriétés JNDI pour le service push de {{site.data.keys.mf_server }}</a>.
             </div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="artifacts-configuration-tomcat">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-on-apache-tomcat" href="#collapse-artifacts-configuration-tomcat" aria-expanded="true" aria-controls="collapse-artifacts-configuration-tomcat"><b>{{ site.data.keys.mf_server }} artifacts configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-on-apache-tomcat" href="#collapse-artifacts-configuration-tomcat" aria-expanded="true" aria-controls="collapse-artifacts-configuration-tomcat"><b>Détails de configuration des artefacts de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-artifacts-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts-configuration-tomcat">
             <div class="panel-body">
-                <p>The artifacts component is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file of the application server. Before you proceed, review <a href="#manual-installation-on-apache-tomcat">Manual installation on Apache Tomcat</a> for the configuration details that are common to all services.</p>
+                <p>Le composant des artefacts est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> du serveur d'applications. Avant de continuer, consultez la section <a href="#manual-installation-on-apache-tomcat">Installation manuelle sur Apache Tomcat</a> pour prendre connaissance des détails de configuration communs à tous les services. </p>
                 
-                <p>The WAR file for this component is in <b>mfp_install_dir/MobileFirstServer/mfp-dev-artifacts.war</b>. You must define the context root as <b>/mfp-dev-artifacts</b>.</p>
+                <p>Le fichier WAR pour ce composant est <b>rép_install_mfp/MobileFirstServer/mfp-dev-artifacts.war</b>. Vous devez définir la racine de contexte <b>/mfp-dev-artifacts</b>. </p>
             </div>
         </div>
     </div>
 </div>
 
-### Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment
+### Installation manuelle sur WebSphere Application Server et WebSphere Application Server Network Deployment
 {: #manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment }
-Make sure that you have fulfilled the requirements as documented in <a href="#websphere-application-server-and-websphere-application-server-network-deployment-prerequisites">WebSphere Application Server and WebSphere Application Server Network Deployment prerequisites</a>.
+Assurez-vous d'avoir satisfait les exigences décrites dans <a href="#websphere-application-server-and-websphere-application-server-network-deployment-prerequisites">Prérequis pour WebSphere Application Server et WebSphere Application Server Network Deployment</a>.
 
-* [Topology constraints](#topology-constraints-nd)
-* [Application server settings](#application-server-settings-nd)
-* [Class loader](#class-loader-nd)
-* [Configuration details](#configuration-details-nd)
+* [Contraintes liées à la topologie](#topology-constraints-nd)
+* [Paramètres de serveur d'applications](#application-server-settings-nd)
+* [Chargeur de classe](#class-loader-nd)
+* [Détails de configuration](#configuration-details-nd)
 
-#### Topology constraints
+#### Contraintes liées à la topologie 
 {: #topology-constraints-nd }
-<b>On a stand-alone WebSphere Application Server</b>  
-The {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and the {{ site.data.keys.product_adj }} runtime must be installed on the same application server. The context root of the live update service must be defined as <b>the-adminContextRootConfig</b>. The context root of the push service must be <b>imfpush</b>. For more information about the constraints, see [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).
+<b>Sur un serveur WebSphere Application Server autonome</b>  
+Le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product_adj }} doivent être installés sur un même serveur d'applications. La racine de contexte du service Live Update doit être <b>racine-contexteadminConfig</b>. La racine de contexte du service push doit être <b>imfpush</b>. Pour plus d'informations sur les contraintes, voir [Contraintes
+sur les composants {{site.data.keys.mf_server }} et {{site.data.keys.mf_analytics }}](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics).<b>Sur WebSphere Application Server Network Deployment</b>
+Le gestionnaire de déploiement doit s'exécuter lorsque {{site.data.keys.mf_server }} s'exécute. Il est utilisé pour la communication JMX entre l'environnement d'exécution et le service d'administration. Le service d'administration et le service Live Update doivent être installés sur le même serveur d'applications. L'environnement d'exécution peut être installé sur un serveur différent de celui du service d'administration, mais doit se trouver dans la même cellule. 
 
-<b>On WebSphere Application Server Network Deployment</b>  
-The deployment manager must be running while {{ site.data.keys.mf_server }} is running. The deployment manager is used for the JMX communication between the runtime and the administration service. The administration service and the live update service must be installed on the same application server. The runtime can be installed on different servers than the administration service, but it must be on the same cell.
-
-#### Application server settings
+#### Paramètres de serveur d'applications
 {: #application-server-settings-nd }
-The administrative security and the application security must be enabled. You can enable the application security in the WebSphere Application Server administration console:
+La sécurité administrative et la sécurité des applications doivent être activées. Vous pouvez activer la sécurité des applications dans la console d'administration WebSphere Application Server : 
 
-1. Log in to the WebSphere Application Server administration console.
-2. Click **Security → Global Security**. Ensure that Enable administrative security is selected.
-3. Also, ensure that **Enable application security** is selected. The application security can be enabled only if administrative security is enabled.
-4. Click **OK**.
-5. Save the changes.
+1. Connectez-vous à la console d'administration WebSphere Application Server.
+2. Sélectionnez **Sécurité → Sécurité globale**. Assurez-vous que l'option Activer la sécurité administrative est sélectionnée. 
+3. Ensuite, assurez-vous que l'option **Activer la sécurité des applications** est sélectionnée. La sécurité des applications ne peut être activée que si la sécurité administrative est activée. 
+4. Cliquez sur **OK**. 
+5. Sauvegardez les modifications.
 
-For more information, see [Enabling security](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/tsec_csec2.html?view=kc) in WebSphere Application Server documentation.
+Pour plus d'informations, voir [Activation de la sécurité](http://www.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/tsec_csec2.html?view=kc) dans la documentation de WebSphere Application Server.
 
-The server class loader policy must support parent last delegation. The {{ site.data.keys.mf_server }} WAR files must be installed with parent last class loader mode. Review the class-loader policy:
+Les règles de chargeur de classe du serveur doivent prendre en charge la valeur d'attribut delegation parentLast (parent en dernier).
+Les fichiers WAR de {{site.data.keys.mf_server }} doivent être installés en mode de chargeur de classe "parent en dernier". Prenez connaissance de la règle de chargeur de classe du serveur : 
 
-1. Log in to the WebSphere Application Server administration console.
-2. Click S**ervers → Server Types → WebSphere application servers**, and click on the server that is used for {{ site.data.keys.product }}.
-3. If the class-loader policy is set to **Multiple**, do nothing.
-4. If the class-loader policy is set to **Single** and the class loading mode is set to **Classes loaded with local class loader first (parent last)**, do nothing.
-5. If the class-loader policy is set to **Single** and the class loading mode is set to **Classes loaded with parent class loader first (parent first)**, change the class-loader policy to **Multiple**. Also, set the class loader order of all applications other than {{ site.data.keys.mf_server }} applications to **Classes loaded with parent class loader first (parent first)**.
+1. Connectez-vous à la console d'administration WebSphere Application Server.
+2. Sélectionnez **Serveurs → Types de serveurs → Serveurs d'applications WebSphere** et cliquez sur le serveur qui est utilisé pour {{site.data.keys.product }}.
+3. Si la règle de chargeur de classe est **Plusieurs**, ne faites rien. 
+4. Si la règle de chargeur de classe est **Un seul** et si le mode de chargement des classes a pour valeur **Classes chargées en premier avec un chargeur de classe local (dernier parent)**, ne faites rien. 
+5. Si la règle de chargeur de classe est **Un seul** et si le mode de chargement des classes a pour valeur **Classes chargées en premier avec un chargeur de classes parent (parent en premier)**, remplacez la règle de chargeur de classe par **Plusieurs**. De plus, associez l'ordre de chargeur de classe de toutes les applications autres que les applications {{site.data.keys.mf_server }} à **Classes chargées en premier avec un chargeur de classes parent (parent en premier)**.
 
-#### Class loader
+#### Chargeur de classe
 {: #class-loader-nd }
-For all {{ site.data.keys.mf_server }} applications, the class loader must have the parent last delegation.
+Pour toutes les applications {{site.data.keys.mf_server }}, l'attribut delegation du chargeur de classe doit avoir la valeur parentLast (parent en dernier). 
 
-To set the class loader delegation to parent last after an application is installed, follow these steps:
+Pour définir la valeur de l'attribut delegation parentLast (parent en dernier) après l'installation d'une application, procédez comme suit : 
 
-1. Click the **Manage Applications** link, or click **Applications → Application Types → WebSphere entreprise applications**.
-2. Click the **{{ site.data.keys.mf_server }}** application. By default the name of the application is the name of the WAR file.
-3. In the **Detail Properties** section, click the **Class loading and update detection** link.
-4. In the **Class loader order** pane, select the **Classes loaded with local class loader first (parent last)** option.
-5. Click **OK**.
-6. In the **Modules** section, click the **Manage Modules** link.
-7. Click the module.
-8. For the **Class loader order** field, select the **Classes loaded with local class loader first (parent last)** option.
-9. Click **OK** twice to confirm the selection and back to the **Configuration** panel of the application.
-10. Click **Save** to persist the changes.
+1. Sélectionnez **Applications → Types d'application → Applications d'entreprise WebSphere**.
+2. Cliquez sur l'application **{{site.data.keys.mf_server }}**. Par défaut, le nom de l'application est le nom du fichier WAR. 
+3. Dans la section **Propriétés du détail**, cliquez sur le lien **Chargement de classes et détection de mise à jour**. 
+4. Dans la sous-fenêtre **Ordre du chargeur de classes**, sélectionnez l'option **Classes chargées en premier avec un chargeur de classe local (dernier parent)**.
+5. Cliquez sur **OK**. 
+6. Dans la section **Modules**, cliquez sur le lien **Gestion des modules**. 
+7. Cliquez sur le module. 
+8. Dans la zone **Ordre du chargeur de classes**, sélectionnez l'option **Classes chargées en premier avec un chargeur de classe local (dernier parent)**.
+9. Cliquez sur **OK** deux fois pour confirmer la sélection et revenir au panneau **Configuration** de l'application. 
+10. Cliquez sur **Sauvegarder** pour sauvegarder les modifications.
 
-#### Configuration details
+#### Détails de configuration
 {: #configuration-details-nd }
 <div class="panel-group accordion" id="manual-installation-nd" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="admin-service-nd">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-admin-service-nd" aria-expanded="true" aria-controls="collapse-admin-service-nd"><b>{{ site.data.keys.mf_server }} administration service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-admin-service-nd" aria-expanded="true" aria-controls="collapse-admin-service-nd"><b>Détails de configuration du service d'administration de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-admin-service-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-nd">
             <div class="panel-body">
-                <p>The administration service is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file of the application server. 
-                <br/><br/>
-                Before you proceed, review <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The administration service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b>. You can define the context root as you want. However, usually it is <b>/mfpadmin</b>.</p>
+                <p>Le service d'administration est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des étapes de configuration spécifiques pour cette application dans le fichier <b>server.xml</b> du serveur d'applications. 
+<br/><br/> Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Installation manuelle sur WebSphere Application Server et WebSphere Application Server Network Deployment</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR du service d'administration est <b>rép_install_mfp/MobileFirstServer/mfp-admin-service.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit généralement de <b>/mfpadmin</b>.</p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>You can set JNDI properties with the WebSphere Application Server administration console. Go to <b>Applications → Application Types → WebSphere enterprise applications → application_name → Environment entries for Web modules</b> and set the entries.</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Vous pouvez définir des propriétés JNDI depuis la console d'administration WebSphere Application Server. 
+Sélectionnez <b>Applications → Types d'application → Applications d'entreprise WebSphere → nom_application → Entrées d'environnement pour les modules Web</b> et définissez les entrées. </p>
 
-                <p>To enable the JMX communication with the runtime, define the following JNDI properties:</p>
+                <p>Pour activer la communication JMX avec l'environnement d'exécution, définissez les propriétés JNDI suivantes : </p>
                 
-                <b>On WebSphere Application Server Network Deployment</b>
+                <b>Sur WebSphere Application Server Network Deployment</b>
                 <ul>
                     <li><b>mfp.admin.jmx.dmgr.host</b></li>
-                    <li><b>mfp.admin.jmx.dmgr.port</b> - the SOAP port on the deployment manager.</li>
-                    <li><b>mfp.topology.platform</b> - set the value as <b>WAS</b>.</li>
-                    <li><b>mfp.topology.clustermode</b> - set the value as <b>Cluster</b>.</li>
-                    <li><b>mfp.admin.jmx.connector</b> - set the value as <b>SOAP</b>.</li>
+                    <li><b>mfp.admin.jmx.dmgr.port</b> - Port SOAP sur le gestionnaire de déploiement. </li>
+                    <li><b>mfp.topology.platform</b> - Définissez la valeur <b>WAS</b>.</li>
+                    <li><b>mfp.topology.clustermode</b> - Définissez la valeur <b>Cluster</b>.</li>
+                    <li><b>mfp.admin.jmx.connector</b> - Définissez la valeur <b>SOAP</b>.</li>
                 </ul>
                 
-                <b>On a stand-alone WebSphere Application Server</b>
+                <b>Sur un serveur WebSphere Application Server autonome</b>
                 <ul>
-                    <li><b>mfp.topology.platform</b> - set the value as <b>WAS</b>.</li>
-                    <li><b>mfp.topology.clustermode</b> - set the value as <b>Standalone</b>.</li>
-                    <li><b>mfp.admin.jmx.connector</b> - set the value as <b>SOAP</b>.</li>
+                    <li><b>mfp.topology.platform</b> - Définissez la valeur <b>WAS</b>.</li>
+                    <li><b>mfp.topology.clustermode</b> - Définissez la valeur <b>Standalone</b>.</li>
+                    <li><b>mfp.admin.jmx.connector</b> - Définissez la valeur <b>SOAP</b>.</li>
                 </ul>
 
-                <p>If the push service is installed, you must configure the following JNDI properties:</p>
+                <p>Si le service push est installé, vous devez configurer les propriétés JNDI suivantes : </p>
                 <ul>
                     <li><b>mfp.admin.push.url</b></li>
                     <li><b>mfp.admin.authorization.server.url</b></li>
@@ -1613,21 +1608,21 @@ To set the class loader delegation to parent last after an application is instal
                     <li><b>mfp.admin.authorization.client.id</b></li>
                     <li><b>mfp.admin.authorization.client.secret</b></li>
                 </ul>
-                <p>The JNDI properties for the communication with the configuration service are as follows:</p>
+                <p>Les propriétés JNDI pour la communication avec le service de configuration sont les suivantes : </p>
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a>.</p>
+                <p>Pour plus d'informations sur les propriétés JNDI, voir <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}</a>.</p>
                 
-                <h3>Data source</h3>
-                <p>Create a data source for the administration service and map it to <b>jdbc/mfpAdminDS</b>.</p>
+                <h3>Source de données </h3>
+                <p>Créez une source de données pour le service d'administration et mappez-la à <b>jdbc/mfpAdminDS</b>.</p>
                 
-                <h3>Start order</h3>
-                <p>The administration service application must start before the runtime application. You can set the order at <b>Startup behavior</b> section. For example, set the Startup Order to <b>1</b> for the administration service and <b>2</b> to the runtime.</p>
+                <h3>Ordre de lancement </h3>
+                <p>L'application de service d'administration doit démarrer avant l'application d'environnement d'exécution. Vous pouvez définir l'ordre dans la section <b>Comportement de lancement</b>. Par exemple, définissez l'ordre de lancement <b>1</b> pour le service d'administration et <b>2</b> pour l'environnement d'exécution. </p>
                 
-                <h3>Security roles</h3>
-                <p>The security roles available for the administration service application are:</p>
+                <h3>Rôles de sécurité</h3>
+                <p>Les rôles de sécurité disponibles pour l'application de service d'administration sont : </p>
                 <ul>
                     <li>mfpadmin</li>
                     <li>mfpdeployer</li>
@@ -1640,25 +1635,25 @@ To set the class loader delegation to parent last after an application is instal
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="live-update-service-nd">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-live-update-service-nd" aria-expanded="true" aria-controls="collapse-live-update-service-nd"><b>{{ site.data.keys.mf_server }} live update service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-live-update-service-nd" aria-expanded="true" aria-controls="collapse-live-update-service-nd"><b>Détails de configuration du service Live Update de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-live-update-service-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-nd">
             <div class="panel-body">
-                <p>The live update service is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file.
-                <br/><br/>
-                Before you proceed, review <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The live update service WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b>. The context root of the live update service must define in this way: <b>/the-adminContextRoot/config</b>. For example, if the context root of the administration service is <b>/mfpadmin</b>, then the context root of the live update service must be <b>/mfpadminconfig</b>.</p>
+                <p>Le service Live Update est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b>. <br/><br/> Avant de continuer,
+consultez la section <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Installation manuelle sur WebSphere Application Server et WebSphere Application Server Network Deployment</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR du service Live Update est <b>rép_install_mfp/MobileFirstServer/mfp-live-update.war</b>. La racine de contexte du service
+Live Update doit être définie comme suit : <b>/racine-contexteadmin/config</b>. Par exemple, si la racine de contexte du service d'administration est <b>/mfpadmin</b>, la racine de contexte du service Live Update doit être <b>/mfpadminconfig</b>.</p>
                 
-                <h3>Data source</h3>
-                <p>Create a data source for the live update service and map it to <b>jdbc/ConfigDS</b>.</p>
+                <h3>Source de données </h3>
+                <p>Créez une source de données pour le service Live Update et mappez-la à <b>jdbc/ConfigDS</b>.</p>
 
-                <h3>Security roles</h3>
-                <p>The <b>configadmin</b> role is defined for this application.
+                <h3>Rôles de sécurité</h3>
+                <p>Le rôle <b>configadmin</b> est défini pour cette application.
                 <br/><br/>
-                At least one user must be mapped to this role. The user and its password must be provided to the following JNDI properties of the administration service:</p>
+                Un utilisateur au moins doit être mappé à ce rôle. L'utilisateur et son mot de passe doivent être fournis dans les propriétés JNDI suivantes du service d'administration :
+</p>
                 
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
@@ -1670,74 +1665,73 @@ To set the class loader delegation to parent last after an application is instal
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="console-configuration-nd">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-console-configuration-nd" aria-expanded="true" aria-controls="collapse-console-configuration-nd"><b>{{ site.data.keys.mf_console }} configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-console-configuration-nd" aria-expanded="true" aria-controls="collapse-console-configuration-nd"><b>Détails de configuration de {{site.data.keys.mf_console }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-console-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-nd">
             <div class="panel-body">
-                <p>The console is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file of the application server.
-                <br/><br/>Before you proceed, review <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The console WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>. You can define the context root as you want. However, usually it is <b>/mfpconsole</b>.</p>
+                <p>La console est conditionnée sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> du serveur d'applications. <br/><br/> Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Installation manuelle sur WebSphere Application Server et WebSphere Application Server Network Deployment</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR de la console est <b>rép_install_mfp/MobileFirstServer/mfp-admin-ui.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit généralement de <b>/mfpconsole</b>.</p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>You can set JNDI properties with the WebSphere Application Server administration console. Go to <b>Applications → Application Types → WebSphere enterprise applications → application_name → Environment</b> entries for Web modules and set the entries.
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Vous pouvez définir des propriétés JNDI depuis la console d'administration WebSphere Application Server. Sélectionnez <b>Applications → Types d'application → Applications d'entreprise WebSphere → nom_application → Entrées d'environnement pour les modules Web</b> et définissez les entrées.
+<br/><br/>
+                Vous devez définir la propriété <b>mfp.admin.endpoint</b>. En général, la valeur de cette propriété est <b>*://*:*/racine-contexteadmin</b>.
                 <br/><br/>
-                You need to define the <b>mfp.admin.endpoint</b> property. The typical value for this property is <b>*://*:*/the-adminContextRoot</b>.
-                <br/><br/>
-                For more information about the JNDI properties, see <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">JNDI properties for {{ site.data.keys.mf_console }}</a>.</p>
+                Pour plus d'informations sur les propriétés JNDI, voir <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">Propriétés JNDI pour {{site.data.keys.mf_console }}</a>.</p>
                 
-                <h3>Security roles</h3>
-                <p>The security roles available for the application are:</p>
+                <h3>Rôles de sécurité</h3>
+                <p>Les rôles de sécurité disponibles pour l'application sont : </p>
                 <ul>
                     <li><b>mfpadmin</b></li>
                     <li><b>mfpdeployer</b></li>
                     <li><b>mfpmonitor</b></li>
                     <li><b>mfpoperator</b></li>
                 </ul>
-                Any user that is mapped to a security role of the console must also be mapped to the same security role of the administration service.
-            </div>
+                Tout utilisateur mappé à un rôle de sécurité de la console doit également être mappé au même rôle de sécurité du service d'administration.
+</div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="runtime-configuration-nd">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-runtime-configuration-nd" aria-expanded="true" aria-controls="collapse-runtime-configuration-nd"><b>MobileFirst runtime configuration details</b></a>
+                
+<a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-runtime-configuration-nd" aria-expanded="true" aria-controls="collapse-runtime-configuration-nd"><b>Détails de configuration de l'environnement d'exécution de MobileFirst</b></a>
             </h4>
         </div>
 
         <div id="collapse-runtime-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-nd">
             <div class="panel-body">
-                <p>The runtime is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file.
-                <br/><br/>
-                Before you proceed, review <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment</a> for the configuration details that are common to all services.
-                <br/><br/>
-                The runtime WAR file is in <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b>. You can define the context root as you want. However, it is <b>/mfp</b> by default.</p>
+                <p>L'environnement d'exécution est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b>. <br/><br/> Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Installation manuelle sur WebSphere Application Server et WebSphere Application Server Network Deployment</a> pour prendre connaissance des détails de configuration communs à tous les services. <br/><br/>
+                Le fichier WAR de l'environnement d'exécution est <b>rép_install_mfp/MobileFirstServer/mfp-server.war</b>. Vous pouvez définir la racine de contexte de votre choix. Toutefois, il s'agit par défaut de <b>/mfp</b>. </p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>You can set JNDI properties with the WebSphere Application Server administration console. Go to <b>Applications → Application Types → WebSphere enterprise applications → application_name → Environment</b> entries for Web modules and set the entries.</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Vous pouvez définir des propriétés JNDI depuis la console d'administration WebSphere Application Server. 
+Sélectionnez <b>Applications → Types d'application → Applications d'entreprise WebSphere → nom_application → Entrées d'environnement pour les modules Web</b> et définissez les entrées.
+</p>
                 
-                <p>You must define the <b>mfp.authorization.server</b> property with the value as embedded.<br/>
-                Also, define the following JNDI properties to enable the JMX communication with the administration service:</p>
+                <p>Vous devez associer la propriété <b>mfp.authorization.server</b> à la valeur embedded.<br/>
+                De plus, définissez les propriétés JNDI suivantes pour activer la communication JMX avec le service d'administration :
+</p>
                 
-                <b>On WebSphere Application Server Network Deployment</b>
+                <b>Sur WebSphere Application Server Network Deployment</b>
                 <ul>
-                    <li><b>mfp.admin.jmx.dmgr.host</b> - the host name of the deployment manager.</li>
-                    <li><b>mfp.admin.jmx.dmgr.port</b> - the SOAP port of the deployment manager.</li>
-                    <li><b>mfp.topology.platform</b> - set the value as <b>WAS</b>.</li>
-                    <li><b>mfp.topology.clustermode</b> - set the value as <b>Cluster</b>.</li>
-                    <li><b>mfp.admin.jmx.connector</b> - set the value as <b>SOAP</b>.</li>
+                    <li><b>mfp.admin.jmx.dmgr.host</b> - Nom d'hôte du gestionnaire de déploiement. </li>
+                    <li><b>mfp.admin.jmx.dmgr.port</b> - Port SOAP du gestionnaire de déploiement. </li>
+                    <li><b>mfp.topology.platform</b> - Définissez la valeur <b>WAS</b>.</li>
+                    <li><b>mfp.topology.clustermode</b> - Définissez la valeur <b>Cluster</b>.</li>
+                    <li><b>mfp.admin.jmx.connector</b> - Définissez la valeur <b>SOAP</b>.</li>
                 </ul>
                 
-                <b>On a stand-alone WebSphere Application Server</b>
+                <b>Sur un serveur WebSphere Application Server autonome</b>
                 <ul>
-                    <li><b>mfp.topology.platform</b> - set the value as <b>WAS</b>.</li>
-                    <li><b>mfp.topology.clustermode</b> - set the value as <b>Standalone</b>.</li>
-                    <li><b>mfp.admin.jmx.connector</b> - set the value as <b>SOAP</b>.</li>
+                    <li><b>mfp.topology.platform</b> - Définissez la valeur <b>WAS</b>.</li>
+                    <li><b>mfp.topology.clustermode</b> - Définissez la valeur <b>Standalone</b>.</li>
+                    <li><b>mfp.admin.jmx.connector</b> - Définissez la valeur <b>SOAP</b>.</li>
                 </ul>
                                 
-                <p>If {{ site.data.keys.mf_analytics }} is installed, you need to define the following JNDI properties:</p>
+                <p>Si {{site.data.keys.mf_analytics }} est installé, vous devez définir les propriétés JNDI suivantes : </p>
                 <ul>   
                     <li><b>mfp.analytics.url</b></li>
                     <li><b>mfp.analytics.console.url</b></li>
@@ -1745,158 +1739,169 @@ To set the class loader delegation to parent last after an application is instal
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
                 
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for {{ site.data.keys.product_adj }} runtime</a>.</p>
+                <p>Pour plus d'informations sur les propriétés JNDI, voir
+<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste
+des propriétés JNDI pour l'environnement d'exécution de {{site.data.keys.product_adj }}</a>.</p>
                 
-                <h3>Start order</h3>
-                <p>The runtime application must start after the administration service application. You can set the order at <b>Startup behavior</b> section. For example, set the Startup Order to <b>1</b> for the administration service and <b>2</b> to the runtime.</p>
+                <h3>Ordre de lancement </h3>
+                <p>L'application d'environnement d'exécution doit démarrer après l'application de service d'administration. Vous pouvez définir l'ordre dans la section <b>Comportement de lancement</b>. Par exemple, définissez l'ordre de lancement <b>1</b> pour le service d'administration et <b>2</b> pour l'environnement d'exécution. </p>
                 
-                <h3>Data source</h3>
-                <p>Create a data source for the runtime and map it to <b>jdbc/mfpDS</b>.</p>
+                <h3>Source de données </h3>
+                <p>Créez une source de données pour l'environnement d'exécution et mappez-la à <b>jdbc/mfpDS</b>.</p>
             </div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="push-configuration-nd">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-push-configuration-nd" aria-expanded="true" aria-controls="collapse-push-configuration-nd"><b>{{ site.data.keys.mf_server }} push service configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-push-configuration-nd" aria-expanded="true" aria-controls="collapse-push-configuration-nd"><b>Détails de configuration du service push de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-push-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="push-configuration-nd">
             <div class="panel-body">
-                <p>The push service is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment </a> for the configuration details that are common to all services.    
+                <p>Le service push est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Installation manuelle sur WebSphere Application Server et WebSphere Application Server Network Deployment</a> pour prendre connaissance des détails de configuration communs à tous les services.     
                 <br/><br/>
-                The push service WAR file is in <b>mfp_install_dir/PushService/mfp-push-service.war</b>. You must define the context root as <b>/imfpush</b>. Otherwise, the client devices cannot connect to it as the context root is hardcoded in the SDK.</p>
+                Le fichier WAR du service push est <b>rép_install_mfp/PushService/mfp-push-service.war</b>. Vous devez définir la racine de contexte <b>/imfpush</b>. Sinon, les terminaux client ne pourront pas se connecter au service car la racine de contexte est codée en dur dans le logiciel SDK. </p>
                 
-                <h3>Mandatory JNDI properties</h3>
-                <p>You can set JNDI properties with the WebSphere Application Server administration console. Go to <b>Applications > Application Types → WebSphere enterprise applications → application_name → Environment entries for Web modules</b> and set the entries.</p>
+                <h3>Propriétés JNDI obligatoires </h3>
+                <p>Vous pouvez définir des propriétés JNDI depuis la console d'administration WebSphere Application Server. 
+Sélectionnez <b>Applications → Types d'application → Applications d'entreprise WebSphere → nom_application → Entrées d'environnement pour les modules Web</b> et définissez les entrées. </p>
                 
-                <p>You need to define the following properties:</p>
+                <p>Vous devez définir les propriétés suivantes :
+                </p>
                 <ul>
                     <li><b>mfp.push.authorization.server.url</b></li>
                     <li><b>mfp.push.authorization.client.id</b></li>
                     <li><b>mfp.push.authorization.client.secret</b></li>
-                    <li><b>mfp.push.services.ext.security</b> - the value must be <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>.</li>
-                    <li><b>mfp.push.db.type</b> - for a relational database, the value must be DB.</li>
+                    <li><b>mfp.push.services.ext.security</b> - La valeur doit être <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>.</li>
+                    <li><b>mfp.push.db.type</b> - Pour une base de données relationnelle, la valeur doit être DB. </li>
                 </ul>
                 
-                <p>If {{ site.data.keys.mf_analytics }} is configured, define the following JNDI properties:</p>
+                <p>Si {{site.data.keys.mf_analytics }} est configuré, définissez les propriétés JNDI suivantes :
+                </p>
                 <ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
-                    <li><b>mfp.push.services.ext.analytics</b> - the value must be <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
+                    <li><b>mfp.push.services.ext.analytics</b> - La valeur doit être <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>.</li>
                 </ul>
-                <p>For more information about the JNDI properties, see <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">List of JNDI properties for {{ site.data.keys.mf_server }} push service</a>.</p>
+                <p>                Pour plus d'informations sur les propriétés JNDI, voir <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">Liste des propriétés JNDI pour le service push de {{site.data.keys.mf_server }}</a>. </p>
 
-                <h3>Data source</h3>
-                <p>Create the data source for the push service and map it to <b>jdbc/imfPushDS</b>.</p>
+                <h3>Source de données </h3>
+                <p>Créez la source de données pour le service push et mappez-la à <b>jdbc/imfPushDS</b>.</p>
             </div>
         </div>
     </div>
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="artifacts-configuration-nd">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-artifacts-configuration-nd" aria-expanded="true" aria-controls="collapse-artifacts-configuration-nd"><b>{{ site.data.keys.mf_server }} artifacts configuration details</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#manual-installation-nd" href="#collapse-artifacts-configuration-nd" aria-expanded="true" aria-controls="collapse-artifacts-configuration-nd"><b>Détails de configuration des artefacts de {{site.data.keys.mf_server }}</b></a>
             </h4>
         </div>
 
         <div id="collapse-artifacts-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts-configuration-nd">
             <div class="panel-body">
-                <p>The artifacts component is packaged as a WAR application for you to deploy to the application server. You need to make some specific configurations for this application in the <b>server.xml</b> file of the application server. Before you proceed, review <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Manual installation on WebSphere Application Server and WebSphere Application Server Network Deployment</a> for the configuration details that are common to all services.</p>
+                <p>Le composant des artefacts est conditionné sous forme d'application WAR en vue de son déploiement sur le serveur d'applications. Vous devez effectuer des configurations spécifiques pour cette application dans le fichier <b>server.xml</b> du serveur d'applications. Avant de continuer, consultez la section <a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">Installation manuelle sur WebSphere Application Server et WebSphere Application Server Network Deployment</a> pour prendre connaissance des détails de configuration communs à tous les
+services. </p>
                 
-                <p>The WAR file for this component is in <b>mfp_install_dir/MobileFirstServer/mfp-dev-artifacts.war</b>. You must define the context root as <b>/mfp-dev-artifacts</b>.</p>
+                <p>Le fichier WAR pour ce composant est <b>rép_install_mfp/MobileFirstServer/mfp-dev-artifacts.war</b>. Vous devez définir la racine de contexte <b>/mfp-dev-artifacts</b>. </p>
             </div>
         </div>
     </div>
 </div>
 
-## Installing a server farm
+## Installation d'un parc de serveurs
 {: #installing-a-server-farm }
-You can install your server farm by running Ant tasks, with the Server Configuration Tool, or manually.
+Vous pouvez installer votre parc de serveurs en exécutant des tâches Ant, avec l'outil de configuration de serveur ou manuellement. 
 
-* [Planning the configuration of a server farm](#planning-the-configuration-of-a-server-farm)
-* [Installing a server farm with the Server Configuration Tool](#installing-a-server-farm-with-the-server-configuration-tool)
-* [Installing a server farm with Ant tasks](#installing-a-server-farm-with-ant-tasks)
-* [Configuring a server farm manually](#configuring-a-server-farm-manually)
-* [Verifying a farm configuration](#verifying-a-farm-configuration)
-* [Lifecycle of a server farm node](#lifecycle-of-a-server-farm-node)
+* [Planification de la configuration d'un parc de serveurs](#planning-the-configuration-of-a-server-farm)
+* [Installation d'un parc de serveurs avec l'outil de configuration de serveur](#installing-a-server-farm-with-the-server-configuration-tool)
+* [Installation d'un parc de serveurs à l'aide de tâches Ant](#installing-a-server-farm-with-ant-tasks)
+* [Configuration manuelle d'un parc de serveurs](#configuring-a-server-farm-manually)
+* [Vérification de la configuration du parc de serveurs](#verifying-a-farm-configuration)
+* [Cycle de vie d'un noeud de parc de serveurs](#lifecycle-of-a-server-farm-node)
 
-### Planning the configuration of a server farm
+### Planification de la configuration d'un parc de serveurs 
 {: #planning-the-configuration-of-a-server-farm }
-To plan the configuration of a server farm, choose the application server, configure the {{ site.data.keys.product_adj }} databases, and deploy the WAR files of the {{ site.data.keys.mf_server }} components on each server of the farm. You have the options to use the Server Configuration Tool, Ant tasks, or manual operations to configure a server farm.
+Pour planifier la configuration d'un parc de serveurs, choisissez le serveur d'applications, configurez les bases de données {{site.data.keys.product_adj }}, et déployez les fichiers WAR des composants {{site.data.keys.mf_server }} sur chaque serveur du parc de serveurs. Vous pouvez utiliser l'outil de configuration de serveur, des tâches Ant ou des opérations manuelles afin de configurer un parc de serveurs. 
 
-When you intend to plan a server farm installation, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and MobileFirst runtime](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime) first, and in particular see [Server farm topology](../topologies/#server-farm-topology).
+Si vous prévoyez d'installer un parc de serveurs, reportez-vous d'abord à [Contraintes sur le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de MobileFirst](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime), et en particulier à [Topologie de parc de serveurs](../topologies/#server-farm-topology).
 
-In {{ site.data.keys.product }}, a server farm is composed of multiple stand-alone application servers that are not federated or administered by a managing component of an application server. {{ site.data.keys.mf_server }} internally provides a farm plug-in as the means to enhance an application server so that it can be part of a server farm.
+Dans {{site.data.keys.product }}, un parc de serveurs se compose de plusieurs serveurs d'applications autonomes qui ne sont pas fédérés ni administrés par le composant de gestion d'un serveur d'applications. {{site.data.keys.mf_server }}
+fournit en interne un plug-in de parc de serveurs afin d'améliorer le serveur d'applications de sorte qu'il puisse faire partie d'un parc de serveurs.
 
-#### When to declare a server farm
+
+#### Quand déclarer un parc de serveurs ? 
 {: #when-to-declare-a-server-farm }
-**Declare a server farm in the following cases:**
+**Déclarez un parc de serveurs dans les cas suivants :**
 
-* {{ site.data.keys.mf_server }} is installed on multiple Tomcat application servers.
-* {{ site.data.keys.mf_server }} is installed on multiple WebSphere Application Server servers but not on WebSphere Application Server Network Deployment.
-* {{ site.data.keys.mf_server }} is installed on multiple WebSphere Application Server Liberty servers.
+* {{site.data.keys.mf_server }} est installé sur plusieurs serveurs d'applications Tomcat.
+* {{site.data.keys.mf_server }} est installé sur plusieurs serveurs WebSphere Application Server, mais pas sur WebSphere Application Server Network Deployment.
+* {{site.data.keys.mf_server }} est installé sur plusieurs serveurs WebSphere Application Server Liberty. 
 
-**Do not declare a server farm in the following cases:**
+**Ne déclarez pas de parc de serveurs dans les cas suivants :**
 
-* Your application server is stand-alone.
-* Multiple application servers are federated by WebSphere Application Server Network Deployment.
+* Votre serveur d'applications est autonome.
+* Plusieurs serveurs d'applications sont fédérés par WebSphere Application Server Network Deployment.
 
-#### Why it is mandatory to declare a farm
+#### Eléments obligatoires pour déclarer un parc de serveurs 
 {: #why-it-is-mandatory-to-declare-a-farm }
-Each time a management operation is performed through {{ site.data.keys.mf_console }} or through the {{ site.data.keys.mf_server }} administration service application, the operation needs to be replicated to all instances of a runtime environment. Examples of such management operations are the uploading of a new version of an app or of an adapter. The replication is done via JMX calls performed by the administration service application instance that handles the operation. The administration service needs to contact all runtime instances in the cluster. In environments listed under **When to declare a server farm** above, the runtime can be contacted through JMX only if a farm is configured. If a server is added to a cluster without proper configuration of the farm, the runtime in that server will be in an inconsistent state after each management operation, and until it is restarted again.
+A chaque fois qu'une opération de gestion est effectuée par le biais de {{site.data.keys.mf_console }} ou de l'application de service d'administration de {{site.data.keys.mf_server }}, elle doit être répliquée sur toutes les instances d'un environnement d'exécution. Par exemple, il peut s'agir d'une opération de gestion telle que le téléchargement d'une nouvelle version d'une application ou d'un adaptateur. La réplication est assurée via des appels JMX effectués par l'instance d'application de service d'administration qui gère l'opération.
+Le service d'administration doit contacter toutes les instances d'exécution dans le cluster. Dans les environnements répertoriés sous **Quand déclarer un parc de serveurs ?** ci-dessus, l'environnement d'exécution peut être contacté via JMX seulement si un parc de serveurs est configuré. Si un serveur est ajouté à un cluster alors qu'un parc de serveurs n'est pas configuré correctement, l'état de l'environnement d'exécution sur ce serveur sera incohérent après chaque opération de gestion et jusqu'à ce que l'environnement d'exécution soit redémarré. 
 
-### Installing a server farm with the Server Configuration Tool
+### Installation d'un parc de serveurs avec l'outil de configuration de serveur
+
 {: #installing-a-server-farm-with-the-server-configuration-tool }
-Use the Server Configuration Tool to configure each server in the farm according to the requirements of the single type of application server that is used for each member of the server farm.
+Utilisez l'outil de configuration de serveur pour configurer chaque serveur du parc de serveurs conformément aux exigences du type unique de serveur d'applications qui est utilisé pour chaque membre du parc de serveurs. 
 
-When you plan a server farm with the Server Configuration Tool, first create the stand-alone servers and configure their respective truststores so that they can communicate with one another in a secure way. Then, run the tool that does the following operations:
+Lorsque vous planifiez un parc de serveurs avec l'outil de configuration de serveur, créez d'abord des serveurs autonomes et configurez leurs magasins de clés de confiance respectifs de sorte qu'ils puissent communiquer les uns avec les autres de façon sécurisée. Ensuite, exécutez l'outil qui effectue les opérations suivantes : 
 
-* Configure the database instance that is shared by the {{ site.data.keys.mf_server }} components.
-* Deploy the {{ site.data.keys.mf_server }} components to each server
-* Modify its configuration to make it a member of a server farm
+* Configuration de l'instance de base de données qui est partagée par les composants {{site.data.keys.mf_server }} 
+* Déploiement des composants {{site.data.keys.mf_server }} sur chaque serveur 
+* Modification de la configuration du serveur pour qu'il devienne membre d'un parc de serveurs 
 
 <div class="panel-group accordion" id="installing-mobilefirst-server-ct" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="server-farm-ct">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#server-farm-ct" href="#collapse-server-farm-ct" aria-expanded="true" aria-controls="collapse-server-farm-ct"><b>Click for instructions on installing a server farm with the Server Configuration Tool</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#server-farm-ct" href="#collapse-server-farm-ct" aria-expanded="true" aria-controls="collapse-server-farm-ct"><b>Cliquez ici pour afficher des instructions d'installation d'un parc de serveurs avec l'outil de configuration de serveur</b></a>
             </h4>
         </div>
 
         <div id="collapse-server-farm-ct" class="panel-collapse collapse" role="tabpanel" aria-labelledby="server-farm-ct">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_server }} requires the secure JMX connection to be configured.</p>
+                <p>{{site.data.keys.mf_server }} requiert la configuration de la connexion JMX sécurisée. </p>
                 
                 <ol>
-                    <li>Prepare the application servers that must be configured as the server farm members.
-                        <ul>
-                            <li>Choose the type of application server to use to configure the members of the server farm. {{ site.data.keys.product }} supports the following application servers in server farms:
-                                <ul>
-                                    <li>WebSphere  Application Server full profile<br/>
-                                    <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by {{ site.data.keys.product }}.</li>
-                                    <li>WebSphere Application Server Liberty profile</li>
+                    <li>Préparez les serveurs d'applications qui doivent être configurés en tant que membres du parc de serveurs.
+<ul>
+                            <li>Choisissez le type de serveur d'applications à utiliser pour configurer les membres du parc de serveurs. {{site.data.keys.product }} prend en charge les serveurs d'applications suivants dans les parcs de serveurs :
+<ul>
+                                    <li>Profil complet de WebSphere Application Server<br/>
+                                    <b>Remarque :</b> dans une topologie de parc de serveurs, vous ne pouvez pas utiliser le connecteur JMX RMI. Dans ce type de topologie, le connecteur SOAP seulement est pris en charge par {{site.data.keys.product }}.</li>
+                                    <li>Profil Liberty de WebSphere Application Server </li>
                                     <li>Apache Tomcat</li>
                                 </ul>
-                                To know which versions of the application servers are supported, see <a href="../../../product-overview/requirements">System requirements</a>.
+                                Pour prendre connaissance des versions des serveurs d'applications prises en charge, voir <a href="../../../product-overview/requirements">Configuration système requise</a>.
                                 
-                                <blockquote><b>Important:</b> {{ site.data.keys.product }} supports only homogeneous server farms. A server farm is homogeneous when it connects same type of application servers. Attempting to associate different types of application servers might lead to unpredictable behavior at run time. For example, a farm with a mix of Apache Tomcat servers and WebSphere Application Server full profile servers is an invalid configuration.</blockquote>
+                                <blockquote><b>Important :</b> {{site.data.keys.product }} ne prend en charge que des parcs de serveurs homogènes. Un parc de serveurs est homogène lorsqu'il connecte le même type de serveur d'applications. Si vous tentez d'associer des types différents de serveur d'applications, le comportement à l'exécution risque d'être imprévisible. Par exemple, un parc de serveurs comportant un mélange de serveurs Apache Tomcat et de serveurs WebSphere Application Server (profil complet) constitue une configuration non valide.
+</blockquote>
                             </li>
-                            <li>Set up as many stand-alone servers as the number of members that you want in the farm.
+                            <li>Configurez autant de serveurs autonomes que vous voulez de membres dans le parc de serveurs.
                                 <ul>
-                                    <li>Each of these stand-alone servers must communicate with the same database. You must make sure that any port used by any of these servers is not also used by another server that is configured on the same host. This constraint applies to the ports used by HTTP, HTTPS, REST, SOAP, and RMI protocols.</li>
-                                    <li>Each of these servers must have the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and one or more {{ site.data.keys.product_adj }} runtimes deployed on it.</li>
-                                    <li>For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime</a>.</li>
+                                    <li>Chacun de ces serveurs autonomes doit communiquer avec la même base de données. Vous devez vous assurer qu'aucun port utilisé par l'un de ces serveurs n'est utilisé par ailleurs par un autre serveur configuré sur le même hôte.
+Cette contrainte concerne les ports utilisés par les protocoles HTTP, HTTPS, REST, SOAP et RMI. </li>
+                                    <li>Le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et un ou plusieurs environnements d'exécution de {{site.data.keys.product_adj }} doivent être déployés sur chacun de ces serveurs. </li>
+                                    <li>Pour plus d'informations sur la configuration d'un serveur, voir <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Contraintes sur le service d'administration de {{site.data.keys.mf_server }}, le service Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product_adj }}</a>.</li>
                                 </ul>
                             </li>
-                            <li>Exchange the signer certificates between all the servers in their respective truststores.
-                            <br/><br/>
-                            This step is mandatory for the farms that use WebSphere Application Server full profile or Liberty as security must be enabled. In addition, for Liberty farms, the same LTPA configuration must be replicated on each server to ensure single-sign on capability. To do this configuration, follow the guidelines in step 6 of <a href="#configuring-a-server-farm-manually">Configuring a server farm manually</a>.
+                            <li>Echangez les certificats de signataire entre tous les serveurs dans leurs magasins de clés de confiance respectifs. <br/><br/>
+                            Cette étape est obligatoire pour les parcs de serveurs qui utilisent le profil complet ou le profil Liberty de WebSphere Application Server car la sécurité doit être activée. De plus, pour les parcs de serveurs Liberty, la même configuration LTPA doit être répliquée sur chaque serveur afin d'activer la fonction de connexion unique. Pour effectuer cette configuration, suivez les instructions présentées à l'étape 6 de la section <a href="#configuring-a-server-farm-manually">Configuration manuelle d'un parc de serveurs</a>.
                             </li>
                         </ul>
                     </li>
-                    <li>Run the Server Configuration Tool for each server of the farm. All servers must share the same databases. Make sure to select the deployment type: <b>Server farm deployment</b> in the <b>Application Server Settings</b> panel. For more information about the tool, see <a href="#running-the-server-configuration-tool">Running the Server Configuration Tool</a>.
+                    <li>Exécutez l'outil de configuration de serveur pour chaque serveur du parc de serveurs. Tous les serveurs doivent partager les mêmes bases de données. Assurez-vous de sélectionner le type de déploiement <b>Server farm deployment</b> dans le panneau <b>Application Server Settings</b>. Pour plus d'informations sur l'outil, voir <a href="#running-the-server-configuration-tool">Exécution de l'outil de configuration de serveur</a>.
                     </li>
                 </ol>
             </div>
@@ -1904,279 +1909,491 @@ When you plan a server farm with the Server Configuration Tool, first create the
     </div>
 </div>
 
-### Installing a server farm with Ant tasks
+### Installation d'un parc de serveurs à l'aide de tâches Ant 
 {: #installing-a-server-farm-with-ant-tasks }
-Use Ant tasks to configure each server in the farm according to the requirements of the single type of application server that is used for each member of the server farm.
+Utilisez des tâches Ant pour configurer chaque serveur du parc de serveurs conformément aux exigences du type unique de serveur d'applications qui est utilisé pour chaque membre du parc de serveurs. 
 
-When you plan a server farm with Ant tasks, first create the stand-alone servers and configure their respective truststores so that they can communicate with one another in a secure way. Then, run Ant tasks to configure the database instance that is shared by the {{ site.data.keys.mf_server }} components. Finally, run Ant tasks to deploy the {{ site.data.keys.mf_server }} components to each server and modify its configuration to make it a member of a server farm.
+Lorsque vous planifiez un parc de serveurs à l'aide de tâches Ant, créez d'abord des serveurs autonomes et configurez leurs magasins de clés de confiance respectifs de sorte qu'ils puissent communiquer les uns avec les autres de façon sécurisée. Ensuite, exécutez des tâches Ant pour configurer l'instance de base de données qui est partagée par les composants {{site.data.keys.mf_server }}. Enfin, exécutez des tâches Ant pour déployer les composants {{site.data.keys.mf_server }} sur chaque serveur et modifier la configuration des serveurs pour qu'ils deviennent membres d'un parc de serveurs.
+
 
 <div class="panel-group accordion" id="installing-mobilefirst-server-ant" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="server-farm-ant">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#server-farm-ct" href="#collapse-server-farm-ant" aria-expanded="true" aria-controls="collapse-server-farm-ant"><b>Click for instructions on installing a server farm with Ant tasks</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#server-farm-ct" href="#collapse-server-farm-ant" aria-expanded="true" aria-controls="collapse-server-farm-ant"><b>Cliquez
+ici pour afficher des instructions d'installation d'un parc de serveurs à l'aide de tâches
+Ant</b></a>
             </h4>
         </div>
 
         <div id="collapse-server-farm-ant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="server-farm-ant">
             <div class="panel-body">
-                <p>{{ site.data.keys.mf_server }} requires the secure JMX connection to be configured.</p>
+                <p>{{site.data.keys.mf_server }} requiert la configuration de la connexion JMX sécurisée. </p>
                 
                 <ol>
-                    <li>Prepare the application servers that must be configured as the server farm members.
-                        <ul>
-                            <li>Choose the type of application server to use to configure the members of the server farm. {{ site.data.keys.product }} supports the following application servers in server farms:
-                                <ul>
-                                    <li>WebSphere  Application Server full profile. <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by {{ site.data.keys.product }}.</li>
-                                    <li>WebSphere Application Server Liberty profile</li>
+                    <li>Préparez les serveurs d'applications qui doivent être configurés en tant que membres du parc de serveurs.
+<ul>
+                            <li>Choisissez le type de serveur d'applications à utiliser pour configurer les membres du parc de serveurs. {{site.data.keys.product }} prend en charge les serveurs d'applications suivants dans les parcs de serveurs :
+<ul>
+                                    <li>Profil complet de WebSphere Application Server. 
+<b>Remarque :</b> dans une topologie de parc de serveurs, vous ne pouvez pas utiliser le connecteur JMX RMI. Dans ce type de topologie, le connecteur SOAP seulement est pris en charge par {{site.data.keys.product }}.</li>
+                                    <li>Profil Liberty de WebSphere Application Server </li>
                                     <li>Apache Tomcat</li>
                                 </ul>
-                                To know which versions of the application servers are supported, see <a href="../../../product-overview/requirements">System requirements</a>.
+                                Pour prendre connaissance des versions des serveurs d'applications prises en charge, voir <a href="../../../product-overview/requirements">Configuration système requise</a>.
                                 
-                                <blockquote><b>Important:</b> {{ site.data.keys.product }} supports only homogeneous server farms. A server farm is homogeneous when it connects same type of application servers. Attempting to associate different types of application servers might lead to unpredictable behavior at run time. For example, a farm with a mix of Apache Tomcat servers and WebSphere Application Server full profile servers is an invalid configuration.</blockquote>
+                                <blockquote><b>Important :</b> {{site.data.keys.product }} ne prend en charge que des parcs de serveurs homogènes. Un parc de serveurs est homogène lorsqu'il connecte le même type de serveur d'applications. Si vous tentez d'associer des types différents de serveurs d'applications, le comportement à l'exécution risque d'être imprévisible. Par exemple, un parc de serveurs comportant un mélange de serveurs Apache Tomcat et de serveurs WebSphere Application Server (profil complet) constitue une configuration non valide.
+</blockquote>
                             </li>
-                            <li>Set up as many stand-alone servers as the number of members that you want in the farm.
-                            <br/><br/>
-                            Each of these stand-alone servers must communicate with the same database. You must make sure that any port used by any of these servers is not also used by another server that is configured on the same host. This constraint applies to the ports used by HTTP, HTTPS, REST, SOAP, and RMI protocols.
-                            <br/><br/>
-                            Each of these servers must have the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and one or more {{ site.data.keys.product_adj }} runtimes deployed on it.
-                            <br/><br/>
-                            For more information about setting up a server, see <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime</a>.</li>
-                            <li>Exchange the signer certificates between all the servers in their respective truststores.
-                            <br/><br/>
-                            This step is mandatory for the farms that use WebSphere Application Server full profile or Liberty as security must be enabled. In addition, for Liberty farms, the same LTPA configuration must be replicated on each server to ensure single-sign on capability. To do this configuration, follow the guidelines in step 6 of <a href="#configuring-a-server-farm-manually">Configuring a server farm manually</a>.
+                            <li>Configurez autant de serveurs autonomes que vous voulez de membres dans le parc de serveurs.
+                                <br/><br/>
+                            Chacun de ces serveurs autonomes doit communiquer
+avec la même base de données. Vous devez vous assurer qu'aucun port utilisé par l'un de
+ces serveurs n'est utilisé par ailleurs par un autre serveur configuré sur le même hôte.
+Cette contrainte concerne les ports utilisés par les protocoles HTTP, HTTPS, REST, SOAP
+et RMI. <br/><br/>
+Le service d'administration de {{site.data.keys.mf_server }}, le service
+Live Update de {{site.data.keys.mf_server }} et un ou plusieurs environnements d'exécution de {{site.data.keys.product_adj }} doivent être déployés sur chacun
+de ces serveurs. <br/><br/>
+Pour plus d'informations sur la configuration d'un serveur, voir
+<a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">Contraintes
+sur le service d'administration de {{site.data.keys.mf_server }}, le service
+Live Update de {{site.data.keys.mf_server }} et l'environnement d'exécution de {{site.data.keys.product_adj }}</a>.</li>
+                            <li>Echangez les certificats de signataire entre tous les
+serveurs dans leurs magasins de clés de confiance respectifs. <br/><br/>
+                            Cette étape est obligatoire pour les parcs de serveurs qui
+utilisent le profil complet ou le profil Liberty de WebSphere Application Server car la
+sécurité doit être activée. De plus, pour les parcs de serveurs Liberty, la même
+configuration LTPA doit être répliquée sur chaque serveur afin d'activer la fonction de
+connexion unique. Pour effectuer cette configuration, suivez les instructions présentées
+à l'étape
+6 de la section <a href="#configuring-a-server-farm-manually">Configuration manuelle d'un
+parc de serveurs</a>.
                             </li>
                         </ul>
                     </li>
-                    <li>Configure the database for the administration service, the live update service, and the runtime.
+                    <li>Configurez la base de données pour le service d'administration,
+le service Live Update et l'environnement d'exécution.
                         <ul>
-                            <li>Decide which database that you want to use and choose the Ant file to create and configure the database in the <b>mfp_install_dir/MobileFirstServer/configuration-samples</b> directory:
-                                <ul>
-                                    <li>For DB2 , use <b>create-database-db2.xml</b>.</li>
-                                    <li>For MySQL, use <b>create-database-mysql.xml</b>.</li>
-                                    <li>For Oracle, use <b>create-database-oracle.xml</b>.</li>
+                            <li>Choisissez la base de données à utiliser ainsi que le
+fichier Ant permettant de créer et de configurer la base de données dans le
+répertoire <b>rép_install_mfp/MobileFirstServer/configuration-samples</b> :
+<ul>
+                                    <li>Pour DB2 , utilisez <b>create-database-db2.xml</b>.</li>
+                                    <li>Pour MySQL, utilisez <b>create-database-mysql.xml</b>.</li>
+                                    <li>Pour Oracle, utilisez <b>create-database-oracle.xml</b>.</li>
                                 </ul>
-                                <blockquote>Note: Do not use the Derby database in a farm topology because the Derby database allows only a single connection at a time.</blockquote>
+                                <blockquote>Remarque : n'utilisez pas la base de
+données Derby dans une topologie de parc de serveurs car elle n'autorise qu'une seule
+connexion à la fois. </blockquote>
 
                             </li>
-                            <li>Edit the Ant file and enter all the required properties for the database.
-                            <br/><br/>
-                            To enable the configuration of the database that is used by the {{ site.data.keys.mf_server }} components, set the values of the following properties:
+                            <li>Editez le fichier Ant et entrez toutes les propriétés
+requises pour la base de données.
+<br/><br/>
+                            Pour activer la configuration de la base de données qui est
+utilisée par les composants {{site.data.keys.mf_server }}, définissez les
+valeurs des propriétés suivantes :
                                 <ul>
-                                    <li>Set <b>mfp.process.admin</b> to <b>true</b>. To configure the database for the administration service and the live update service.</li>
-                                    <li>Set <b>mfp.process.runtime</b> to <b>true</b>. To configure the database for the runtime.</li>
+                                    <li>Associez <b>mfp.process.admin</b> à la valeur <b>true</b> afin
+de configurer la base de données pour le service d'administration et le service Live
+Update. </li>
+                                    <li>Associez <b>mfp.process.runtime</b> à la valeur <b>true</b> afin
+de configurer la base de données pour l'environnement d'exécution. </li>
                                 </ul>
                             </li>
-                            <li>Run the following commands from the <b>mfp_install_dir/MobileFirstServer/configuration-samples</b> directory where <b>create-database-ant-file.xml</b> must be replaced with the actual Ant file name that you chose: <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml admdatabases</code> and <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>.
+                            <li>Exécutez les commandes ci-dessous depuis le répertoire
+<b>rép_install_mfp/MobileFirstServer/configuration-samples</b> où
+<b>fichier-ant-création-base-données.xml</b> doit être remplacé par le nom de fichier
+Ant réel
+de votre choix : <code>rép_install_mfp/shortcuts/ant -f fichier-ant-création-base-données.xml
+admdatabases</code> et <code>rép_install_mfp/shortcuts/ant -f
+fichier-ant-création-base-données.xml rtmdatabases</code>.
                             <br/><br/>
-                            As the {{ site.data.keys.mf_server }} databases are shared between the application servers in a farm, these two commands must be run only once, whatever the number of servers in the farm.
-                            </li>
-                            <li>Optionally, if you want to install another runtime, you must configure another database with another database name or schema. To do so, edit the Ant file, modify the properties, and run the following command once, whatever the number of servers in the farm: <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>.</li>
+                            Etant donné que les bases de données
+{{site.data.keys.mf_server }} sont partagées entre les serveurs
+d'applications d'un parc de serveurs, il suffit d'exécuter ces deux commandes une
+seule fois, quel que soit le nombre de serveurs dans le parc de serveurs.
+</li>
+                            <li>Si vous voulez installer un
+autre environnement d'exécution, vous devez configurer une autre base de données avec un
+autre nom ou un autre schéma de base de données.
+Pour ce faire, éditez le fichier Ant, modifiez les propriétés et exécutez la commande
+suivante une seule fois, quel que soit le nombre de serveurs dans le parc de serveurs :
+<code>rép_install_mfp/shortcuts/ant -f fichier-ant-création-base-données.xml rtmdatabases</code>.</li>
                         </ul>
                     </li>
-                    <li>Deploy the administration service, the live update service, and the runtime on the servers and configure these servers as the members of a server farm.
-                        <ul>
-                            <li>Choose the Ant file that corresponds to your application server and your database in the <b>mfp\_install\_dir/MobileFirstServer/configuration-samples</b> directory to deploy the administration service, the live update service, and the runtime on the servers.
-                            <br/><br/>
-                            For example, choose the <b>configure-liberty-db2.xml</b> file for a deployment on Liberty server with the DB2 database. Make as many copies of this file as the number of members that you want in the farm. 
-                            <br/><br/>
-                            <b>Note:</b> Keep these files after the configuration as they can be reused for upgrading the {{ site.data.keys.mf_server }} components that are already deployed, or for uninstalling them from each member of the farm.</li>
-                            <li>Edit each copy of the Ant file, enter the same properties for the database that are used at step 2, and also enter the other required properties for the application server.
-                            <br/><br/>
-                            To configure the server as a server farm member, set the values of the following properties:
+                    <li>Déployez le service d'administration, le service Live Update
+et l'environnement d'exécution sur les serveurs et configurez ces serveurs comme membres
+d'un parc de serveurs.
+<ul>
+                            <li>Choisissez le fichier Ant qui correspond à votre
+serveur d'applications et à votre base de données dans le répertoire
+<b>rép\_install\_mfp/MobileFirstServer/configuration-samples</b> afin de déployer le
+service d'administration, le service Live Update et l'environnement d'exécution sur les
+serveurs. <br/><br/>
+                            Par exemple, choisissez le fichier
+<b>configure-liberty-db2.xml</b> pour un déploiement sur le serveur Liberty avec la base
+de données DB2. Effectuez autant de copies de ce fichier que vous voulez de membres
+dans le parc de serveurs.
+<br/><br/>
+                            <b>Remarque :</b> conservez ces fichiers une fois la
+configuration terminée car vous pourrez les réutiliser pour la mise à niveau des
+composants {{site.data.keys.mf_server }} déjà déployés, ou pour désinstaller les
+composants de chaque membre du parc de serveurs. </li>
+                            <li>Editez chaque copie du fichier Ant, entrez les propriétés
+de base de données indiquées à l'étape 2, et entrez également
+les autres propriétés requises pour le serveur d'applications.
+<br/><br/>
+                            Pour configurer le serveur comme membre du parc de serveurs,
+définissez les valeurs des propriétés suivantes :
                                 <ul>
-                                    <li>Set <b>mfp.farm.configure</b> to true.</li>
-                                    <li><b>mfp.farm.server.id</b>: An identifier that you define for this farm member. Make sure that each server in the farm has its own unique identifier. If two servers in the farm have the same identifier, the farm might behave in an unpredictable way.</li>
-                                    <li><b>mfp.config.service.user</b>: The user name that is used to access the live update service. The user name must be the same for all the members of the farm.</li>
-                                    <li><b>mfp.config.service.password</b>: The password that is used to access the live update service. The password must be the same for all the members of the farm.</li>
+                                    <li>Associez <b>mfp.farm.configure</b> à la valeur true. </li>
+                                    <li><b>mfp.farm.server.id</b> : identificateur que
+vous définissez pour ce membre de parc de serveurs. Veillez à ce que chaque serveur dans
+le parc de serveurs possède un identificateur unique. Si deux serveurs dans le parc de
+serveurs possèdent le même identificateur, le comportement du parc de serveurs risque
+d'être imprévisible. </li>
+                                    <li><b>mfp.config.service.user</b> : nom
+d'utilisateur indiqué pour accéder au service Live Update. Il doit être identique pour
+tous les membres du parc de serveurs.
+</li>
+                                    <li><b>mfp.config.service.password</b> : mot de passe indiqué pour accéder au service Live Update. 
+Il doit être identique pour tous les membres du parc de serveurs.
+</li>
                                 </ul>
-                                To enable the deployment of the WAR files of the {{ site.data.keys.mf_server }} components on the server, set the values of the following properties:
+                                Pour permettre le déploiement des fichiers WAR des
+composants {{site.data.keys.mf_server }} sur le serveur, définissez les valeurs
+des propriétés suivantes :
                                     <ul>
-                                        <li>Set <b>mfp.process.admin</b> to <b>true</b>. To deploy the WAR files of the administration service and the live update service.</li>
-                                        <li>Set <b>mfp.process.runtime</b> to <b>true</b>. To deploy the WAR file of the runtime.</li>
+                                        <li>Associez <b>mfp.process.admin</b> à la valeur
+<b>true</b> pour déployer les fichiers WAR du service d'administration et du service Live
+Update. </li>
+                                        <li>Associez <b>mfp.process.runtime</b> à la
+valeur <b>true</b> pour déployer le fichier WAR de l'environnement d'exécution. </li>
                                     </ul>
                                 <br/>
-                                <b>Note:</b> If you plan to install more than one runtime on the servers of the farm, specify the attribute id and set a value that must be unique for each runtime on the <b>installmobilefirstruntime</b>, <b>updatemobilefirstruntime</b>, and <b>uninstallmobilefirstruntime</b> Ant tasks.
+                                <b>Remarque :</b> si vous prévoyez d'installer
+plusieurs environnements d'exécution sur les serveurs du parc de serveurs, spécifiez
+l'attribut id et définissez une valeur unique pour chaque environnement d'exécution dans les
+tâches Ant <b>installmobilefirstruntime</b>, <b>updatemobilefirstruntime</b> et
+<b>uninstallmobilefirstruntime</b>.
                                 <br/>
-                                For example,
+                                Exemple :
 {% highlight xml %}
 <target name="rtminstall">
     <installmobilefirstruntime execute="true" contextroot="/runtime1" id="rtm1">
 {% endhighlight %}
                             </li>
-                            <li>For each server, run the following commands where <b>configure-appserver-database-ant-file.xml</b> must be replaced with the actual Ant file name that you chose: <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> and <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>.
+                            <li>Pour chaque serveur, exécutez les commandes ci-dessous,
+où
+<b>fichier-ant-configuration-base-données-serveur-app.xml</b> doit être remplacé par le
+nom de fichier Ant réel de votre choix : <code>rép_install_mfp/shortcuts/ant -f
+fichier-ant-configuration-base-données-serveur-app.xml adminstall</code> et
+<code>rép_install_mfp/shortcuts/ant -f fichier-ant-configuration-base-données-serveur-app.xml rtminstall</code>.
                             <br/><br/>
-                            These commands run the <b>installmobilefirstadmin</b> and <b>installmobilefirstruntime</b> Ant tasks. For more information about these tasks, see <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services</a> and <a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments</a>.
+                            Ces commandes exécutent les tâches Ant
+<b>installmobilefirstadmin</b> et <b>installmobilefirstruntime</b>. Pour plus
+d'informations sur ces tâches, voir
+<a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">Tâches
+Ant pour l'installation de {{site.data.keys.mf_console }}, des artefacts de
+{{site.data.keys.mf_server }}, et des services d'administration et Live Update
+de {{site.data.keys.mf_server }}</a> et
+<a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">Tâches
+Ant pour l'installation des environnements d'exécution de {{site.data.keys.product_adj }}</a>.
                             </li>
-                            <li>Optionally, if you want to install another runtime, do the following steps:
-                                <ul>
-                                    <li>Make a copy of the Ant file that you configured at step 3.b.</li>
-                                    <li>Edit the copy, set a distinct context root, and a value for the attribute <b>id</b> of <b>installmobilefirstruntime</b>, <b>updatemobilefirstruntime</b>, and <b>uninstallmobilefirstruntime</b> that is different from the other runtime configuration.</li>
-                                    <li>Run the following command on each server on the farm where <b>configure-appserver-database-ant-file2.xml</b> must be replaced with the actual name of the Ant file that is edited: <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file2.xml rtminstall</code>.</li>
-                                    <li>Repeat this step for each server of the farm.</li>
+                            <li>Si vous voulez installer un autre environnement d'exécution, procédez comme suit :
+<ul>
+                                    <li>Effectuez une copie du fichier Ant que vous avez
+configuré à l'étape 3.b.</li>
+                                    <li>Editez la copie, définissez une racine de
+contexte distincte et définissez une valeur pour l'attribut <b>id</b> de
+<b>installmobilefirstruntime</b>, <b>updatemobilefirstruntime</b> et
+<b>uninstallmobilefirstruntime</b> qui est différente de celle définie dans l'autre
+configuration d'environnement d'exécution. </li>
+                                    <li>Exécutez la commande suivante sur chaque serveur
+du parc de serveurs où <b>fichier_ant_configuration_base_données_serveur_app2.xml</b>
+doit être remplacé par le nom réel du fichier Ant qui est édité :
+<code>rép_install_mfp/shortcuts/ant -f >fichier_ant_configuration_base_données_serveur_app2.xml rtminstall</code>.</li>
+                                    <li>Répétez cette étape pour chaque serveur du
+parc de serveurs. </li>
                                 </ul>
                             </li>                            
                         </ul>
                     </li>
-                    <li>Restart all the servers.</li>
+                    <li>Redémarrez tous les serveurs.</li>
                 </ol>
             </div>
         </div>
     </div>
 </div>
 
-### Configuring a server farm manually
+### Configuration manuelle d'un parc de serveurs 
 {: #configuring-a-server-farm-manually }
-You must configure each server in the farm according to the requirements of the single type of application server that is used for each member of the server farm.
+Vous devez configurer chaque serveur du parc de serveurs conformément aux exigences du
+type unique de serveur d'applications qui est utilisé pour chaque membre du parc de
+serveurs. 
 
-When you plan a server farm, first create stand-alone servers that communicate with the same database instance. Then, modify the configuration of these servers to make them members of a server farm.
+Lorsque vous planifiez un parc de serveurs, créez d'abord des serveurs autonomes
+qui communiquent avec la même instance de base de données. Ensuite, modifiez la
+configuration de ces serveurs pour qu'ils deviennent membres d'un parc de serveurs. 
 
 <div class="panel-group accordion" id="configuring-manually" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="manual">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#websphere-prereq" href="#collapse-manual" aria-expanded="true" aria-controls="collapse-manual"><b>Click for instructions on configuring a server farm manually</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#websphere-prereq" href="#collapse-manual" aria-expanded="true" aria-controls="collapse-manual"><b>Cliquez
+ici pour afficher des instructions de configuration manuelle d'un parc de serveurs</b></a>
             </h4>
         </div>
 
         <div id="collapse-manual" class="panel-collapse collapse" role="tabpanel" aria-labelledby="manual">
             <div class="panel-body">
                 <ol>
-                    <li>Choose the type of application server to use to configure the members of the server farm. {{ site.data.keys.product }} supports the following application servers in server farms:
-                        <ul>
-                            <li>WebSphere  Application Server full profile<br/>
-                            <b>Note:</b> In a farm topology, you cannot use the RMI JMX connector. In this topology, only the SOAP connector is supported by {{ site.data.keys.product }}.</li>
-                            <li>WebSphere Application Server Liberty profile</li>
+                    <li>Choisissez le type de serveur d'applications à utiliser pour
+configurer les membres du parc de serveurs. {{site.data.keys.product }} prend en
+charge les serveurs d'applications suivants dans les parcs de serveurs :
+<ul>
+                            <li>Profil complet de WebSphere Application Server<br/>
+                                    <b>Remarque :</b> dans une topologie de parc de
+serveurs, vous ne pouvez pas utiliser le connecteur JMX RMI. Dans ce type de topologie,
+le
+connecteur SOAP seulement est pris en charge par {{site.data.keys.product }}.</li>
+                            <li>Profil Liberty de WebSphere Application Server </li>
                             <li>Apache Tomcat</li>
                         </ul>
-                        To know which versions of the application servers are supported, see <a href="../../../product-overview/requirements">System requirements</a>.
+                                Pour prendre connaissance des versions des serveurs
+d'applications prises en charge, voir
+<a href="../../../product-overview/requirements">Configuration système requise</a>.
                         
-                        <blockquote><b>Important:</b> {{ site.data.keys.product }} supports only homogeneous server farms. A server farm is homogeneous when it connects same type of application servers. Attempting to associate different types of application servers might lead to unpredictable behavior at run time. For example, a farm with a mix of Apache Tomcat servers and WebSphere Application Server full profile servers is an invalid configuration.</blockquote>
+                        <blockquote><b>Important :</b>
+{{site.data.keys.product }} ne prend en charge que des parcs de serveurs
+homogènes. Un parc de serveurs est homogène lorsqu'il connecte le même type de serveur
+d'applications. Si vous tentez d'associer des types différents de serveurs
+d'applications, le comportement à l'exécution risque d'être imprévisible. Par exemple, un
+parc de serveurs comportant un mélange de serveurs Apache Tomcat et de serveurs WebSphere
+Application Server (profil complet) constitue une configuration non valide.
+</blockquote>
                     </li>
-                    <li>Decide which database that you want to use. You can choose from:
-                        <ul>
+                    <li>Choisissez la base de données à utiliser. Vous pouvez choisir :
+<ul>
                             <li>DB2 </li>
                             <li>MySQL</li>
                             <li>Oracle</li>
                         </ul>
-                        {{ site.data.keys.mf_server }} databases are shared between the application servers in a farm, which means:
-                        <ul>
-                            <li>You create the database only once, whatever the number of servers in the farm.</li>
-                            <li>You cannot use the Derby database in a farm topology because the Derby database allows only a single connection at a time.</li>
+                        Les bases de données {{site.data.keys.mf_server }} sont
+partagées entre les serveurs d'applications d'un parc de serveurs, ce qui signifie que :
+<ul>
+                            <li>Vous ne créez la base de données qu'une fois, quel que
+soit le nombre de serveurs dans le parc de serveurs. </li>
+                            <li>Vous ne pouvez pas utiliser la base de données Derby dans
+une topologie de parc de serveurs car elle n'autorise qu'une seule connexion à la fois. </li>
                         </ul>
-                        For more information about databases, see <a href="../databases">Setting up databases</a>.
+                        Pour plus d'informations sur les bases de données, voir
+<a href="../databases">Configuration des bases de données</a>.
                     </li>
-                    <li>Set up as many stand-alone servers as the number of members that you want in the farm.
-                        <ul>
-                            <li>Each of these stand-alone servers must communicate with the same database. You must make sure that any port used by any of these servers is not also used by another server that is configured on the same host. This constraint applies to the ports used by HTTP, HTTPS, REST, SOAP, and RMI protocols.</li>
-                            <li>Each of these servers must have the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, and one or more {{ site.data.keys.product_adj }} runtimes deployed on it.</li>
-                            <li>When each of these servers is working properly in a stand-alone topology, you can transform them into members of a server farm.</li>
+                    <li>Configurez autant de serveurs autonomes que vous voulez de
+membres dans le parc de serveurs.
+                                <ul>
+                            <li>Chacun de ces serveurs autonomes doit communiquer avec la
+même base de données. Vous devez vous assurer qu'aucun port utilisé par l'un de ces
+serveurs n'est utilisé par ailleurs par un autre serveur configuré sur le même hôte.
+Cette contrainte concerne les ports utilisés par les protocoles HTTP, HTTPS, REST, SOAP
+et RMI. </li>
+                            <li>Le service d'administration de
+{{site.data.keys.mf_server }}, le service Live Update de
+{{site.data.keys.mf_server }} et un ou plusieurs environnements d'exécution de
+{{site.data.keys.product_adj }} doivent être déployés sur chacun de ces
+serveurs. </li>
+                            <li>Lorsque chacun de ces serveurs fonctionne correctement
+dans une topologie autonome, vous pouvez les transformer en membres d'un parc de
+serveurs. </li>
                         </ul>
                     </li>
-                    <li>Stop all the servers that are intended to become members of the farm.</li>
-                    <li>Configure each server appropriately for the type of application server.<br/>You must set some JNDI properties correctly. In a server farm topology, the mfp.config.service.user and mfp.config.service.password JNDI properties must have the same value for all the members of the farm. For Apache Tomcat, you must also check that the JVM arguments are properly defined.
-                        <ul>
-                            <li><b>WebSphere Application Server Liberty profile</b>
-                                <br/>
-                                In the server.xml file, set the JNDI properties shown in the following sample code.
+                    <li>Arrêtez tous les serveurs devant devenir membres du parc de
+serveurs.
+</li>
+                    <li>Configurez chaque serveur de façon appropriée pour le
+type de
+serveur d'applications.<br/>Vous devez définir certaines propriétés JNDI
+correctement. Dans une topologie de parc de serveurs, les valeurs des propriétés JNDI
+mfp.config.service.user et
+mfp.config.service.password doivent être identiques pour tous les membres du parc de
+serveurs. Pour Apache Tomcat, vous devez aussi vérifier que les arguments JVM sont
+définis correctement. <ul>
+                            <li><b>Profil Liberty de WebSphere Application Server</b> <br/>
+                                Dans le fichier server.xml, définissez les propriétés
+JNDI apparaissant dans l'exemple de code suivant :
 {% highlight xml %}
 <jndiEntry jndiName="mfp.topology.clustermode" value="Farm"/>
-<jndiEntry jndiName="mfp.admin.serverid" value="farm_member_1"/>
-<jndiEntry jndiName="mfp.admin.jmx.user" value="myRESTConnectorUser"/>
-<jndiEntry jndiName="mfp.admin.jmx.pwd" value="password-of-rest-connector-user"/>
+<jndiEntry jndiName="mfp.admin.serverid" value="membre_parc_1"/>
+<jndiEntry jndiName="mfp.admin.jmx.user" value="monUtilisateurConnecteurREST"/>
+<jndiEntry jndiName="mfp.admin.jmx.pwd" value="motdepasse-utilisateur-connecteur-rest"/>
 <jndiEntry jndiName="mfp.admin.jmx.host" value="93.12.0.12"/>
 <jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>
 {% endhighlight %}
-                                These properties must be set with appropriate values:
+                                Ces propriétés doivent être associées à des valeurs
+appropriées :
                                 <ul>
-                                    <li><b>mfp.admin.serverid</b>: The identifier that you defined for this farm member. This identifier must be unique across all farm members.</li>
-                                    <li><b>mfp.admin.jmx.user</b> and <b>mfp.admin.jmx.pwd</b>: These values must match the credentials of a user as declared in the <code>administrator-role</code> element.</li>
-                                    <li><b>mfp.admin.jmx.host</b>: Set this parameter to the IP or the host name that is used by remote members to access this server. Therefore, do not set it to <b>localhost</b>. This host name is used by the other members of the farm and must be accessible to all farm members.</li>
-                                    <li><b>mfp.admin.jmx.port</b>: Set this parameter to the server HTTPS port that is used for the JMX REST connection. You can find the value in the <code>httpEndpoint</code> element of the <b>server.xml</b> file.</li>
+                                    <li><b>mfp.admin.serverid</b> : identificateur que vous avez défini pour ce membre de parc de serveurs. Il doit être unique parmi tous les membres du parc de serveurs. </li>
+                                    <li><b>mfp.admin.jmx.user</b> et <b>mfp.admin.jmx.pwd</b> : ces valeurs doivent correspondre aux données d'identification d'un utilisateur telles que déclarées dans l'élément <code>administrator-role</code>. </li>
+                                    <li><b>mfp.admin.jmx.host</b> : pour ce paramètre,
+définissez l'adresse IP ou le nom d'hôte qui est utilisé par les membres distants pour
+accéder à
+ce serveur. Vous ne pouvez donc pas indiquer <b>localhost</b>. Ce nom d'hôte est
+utilisé par les autres membres du parc de serveurs et doit être accessible pour tous les
+membres du parc de serveurs. </li>
+                                    <li><b>mfp.admin.jmx.port</b> : pour ce paramètre,
+définissez le port HTTPS du serveur qui est utilisé pour la connexion REST JMX. La valeur
+se trouve dans l'élément <code>httpEndpoint</code> du fichier <b>server.xml</b>. </li>
                                 </ul>
                             </li>
                             <li><b>Apache Tomcat</b>
                                 <br/>
-                                Modify the <b>conf/server.xml</b> file to set the following JNDI properties in the administration service context and in every runtime context.
+                                Modifiez le fichier <b>conf/server.xml</b> afin de
+définir les propriétés JNDI suivantes dans le contexte du service d'administration et
+dans le contexte de chaque environnement d'exécution :
 {% highlight xml %}
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
-<Environment name="mfp.admin.serverid" value="farm_member_1" type="java.lang.String" override="false"/>
+<Environment name="mfp.admin.serverid" value="membre_parc_1" type="java.lang.String" override="false"/>
 {% endhighlight %}
-                                The <b>mfp.admin.serverid</b> property must be set to the identifier that you defined for this farm member. This identifier must be unique across all farm members.
-                                <br/>
-                                You must make sure that the <code>-Djava.rmi.server.hostname</code> JVM argument is set to the IP or the host name that is used by remote members to access this server. Therefore, do not set it to <b>localhost</b>. In addition, you must make sure that the <code>-Dcom.sun.management.jmxremote.port</code> JVM argument is set with a port that is not already in use to enable JMX RMI connections. Both arguments are set in the <b>CATALINA_OPTS</b> environment variable.
+                                La propriété <b>mfp.admin.serverid</b> doit avoir pour
+valeur l'identificateur que vous avez défini pour ce membre de parc de serveurs.
+Cet identificateur doit être unique parmi tous les membres du parc de serveurs. <br/>
+                                Veillez à ce que l'argument JVM
+<code>-Djava.rmi.server.hostname</code> ait pour valeur l'adresse IP ou le nom d'hôte
+qui est utilisé par les membres distants pour accéder à ce serveur. Vous ne pouvez donc
+pas indiquer <b>localhost</b>. De plus, assurez-vous que l'argument JVM
+<code>-Dcom.sun.management.jmxremote.port</code> ait pour valeur un port qui n'est pas
+déjà utilisé pour activer les connexions JMX RMI. Les deux arguments sont définis dans
+la variable d'environnement <b>CATALINA_OPTS</b>.
                             </li>
-                            <li><b>WebSphere Application Server full profile</b>
-                                <br/>
-                                You must declare the following JNDI properties in the administration service and in every runtime application deployed on the server.
-                                <ul>
+                            <li><b>Profil complet de WebSphere Application Server</b> <br/>
+                                Vous devez déclarer les propriétés JNDI suivantes dans le
+service d'administration et dans chaque application d'environnement d'exécution déployée sur
+le serveur :
+<ul>
                                     <li><b>mfp.topology.clustermode</b></li>
                                     <li><b>mfp.admin.serverid</b></li>
                                 </ul>
-                                In the WebSphere Application Server console,
+                                Dans la console WebSphere Application Server :
                                 <ul>
-                                    <li>select <b>Applications → Application Types → WebSphere Enterprise applications</b>.</li>
-                                    <li>Select the administration service application.</li>
-                                    <li>In <b>Web Module Properties</b>, click <b>Environment entries for Web Modules</b> to display the JNDI properties.</li>
-                                    <li>Set the values of the following properties.
-                                        <ul>
-                                            <li>Set <b>mfp.topology.clustermode</b> to <b>Farm</b>.</li>
-                                            <li>Set <b>mfp.admin.serverid</b> to the identifier that you chose for this farm member. This identifier must be unique across all farm members.</li>
-                                            <li>Set <b>mfp.admin.jmx.user</b> to a user name that has access to the SOAP connector.</li>
-                                            <li>Set <b>mfp.admin.jmx.pwd</b> to the password of the user as declared in <b>mfp.admin.jmx.user</b>.</li>
-                                            <li>Set <b>mfp.admin.jmx.port</b> to the value of the SOAP port.</li>
+                                    <li>Sélectionnez <b>Applications → Types
+d'application → Applications d'entreprise WebSphere</b>.</li>
+                                    <li>Sélectionnez l'application de service
+d'administration. </li>
+                                    <li>Dans <b>Propriétés du module Web</b>, cliquez sur
+<b>Entrées d'environnement pour les modules Web</b> pour afficher les propriétés JNDI. </li>
+                                    <li>Définissez les valeurs des propriétés ci-dessous. <ul>
+                                            <li>Associez <b>mfp.topology.clustermode</b>
+à la valeur <b>Farm</b>.</li>
+                                            <li>Associez <b>mfp.admin.serverid</b> à
+l'identificateur que vous avez choisi pour ce membre de parc de serveurs. Cet
+identificateur doit être
+unique parmi tous les membres du parc de serveurs. </li>
+                                            <li>Associez <b>mfp.admin.jmx.user</b> à un nom d'utilisateur ayant accès au connecteur SOAP. </li>
+                                            <li>Associez <b>mfp.admin.jmx.pwd</b> au mot
+de passe de l'utilisateur déclaré dans <b>mfp.admin.jmx.user</b>.</li>
+                                            <li>Associez <b>mfp.admin.jmx.port</b> à la
+valeur du port SOAP. </li>
                                         </ul>
                                     </li>
-                                    <li>Verify that <b>mfp.admin.jmx.connector</b> is set to <b>SOAP</b>.</li>
-                                    <li>Click <b>OK</b> and save the configuration.</li>
-                                    <li>Make similar changes for every {{ site.data.keys.product_adj }} runtime application deployed on the server.</li>
+                                    <li>Vérifiez que <b>mfp.admin.jmx.connector</b> a
+pour valeur <b>SOAP</b>.</li>
+                                    <li>Cliquez sur <b>OK</b> et sauvegardez la
+configuration.</li>
+                                    <li>Apportez les mêmes modifications pour chaque
+application d'environnement d'exécution {{site.data.keys.product_adj }}
+déployée sur le serveur. </li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li>Exchange the server certificates in their truststores between all members of the farm. Exchanging the server certificates in their truststores is mandatory for farms that use WebSphere Application Server full profile and WebSphere Application Server Liberty profile because in these farms, communications between the servers is secured by SSL.
-                        <ul>
-                            <li><b>WebSphere Application Server Liberty profile</b>
-                                <br/>
-                                You can configure the truststore by using IBM  utilities such as Keytool or iKeyman.
+                    <li>Echangez les certificats serveur entre les membres du parc de
+serveurs dans leurs magasins de
+clés de confiance respectifs. L'échange des certificats serveur dans les magasins
+de clés de confiance est obligatoire pour les parcs de serveurs qui utilisent le profil
+complet et le profil Liberty de WebSphere Application Server car dans ces parcs de
+serveurs, la communication entre les serveurs est sécurisée par SSL.
+<ul>
+                            <li><b>Profil Liberty de WebSphere Application Server</b> <br/>
+                                Vous pouvez configurer le magasin de clés de confiance
+à l'aide d'utilitaires IBM tels que Keytool ou iKeyman.
                                 <ul>
-                                    <li>For more information about Keytool, see <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a> in the IBM SDK, Java Technology Edition.</li>
-                                    <li>For more information about iKeyman, see <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a> in the IBM SDK, Java Technology Edition.</li>
+                                    <li>Pour plus d'informations sur Keytool, voir
+<a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a>
+dans IBM SDK, Java Technology Edition.</li>
+                                    <li>Pour plus d'informations sur iKeyman, voir
+<a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a>
+dans IBM SDK, Java Technology Edition.</li>
                                 </ul>
-                                The locations of keystore and truststore are defined in the <b>server.xml</b> file. See the <b>keyStoreRef</b> and <b>trustStoreRef</b> attributes in <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL configuration attributes</a>. By default, the keystore of Liberty profile is at <b>${server.config.dir}/resources/security/key.jks</b>. If the truststore reference is missing or not defined in the <b>server.xml</b> file, the keystore that is specified by <b>keyStoreRef</b> is used. The server uses the default keystore and the file is created the first time that the server runs. In that case, a default certificate is created with a validity period of 365 days. For production, you might consider using your own certificate (including the intermediate ones, if needed) or changing the expiration date of the generated certificate.
-                                
-                                <blockquote>Note: If you want to confirm the location of the truststore, you can do so by adding the following declaration to the server.xml file:
+                                Les emplacements du magasin de clés et du magasin de
+clés de confiance sont définis dans le fichier <b>server.xml</b>. Voir les attributs
+<b>keyStoreRef</b> et <b>trustStoreRef</b> dans
+<a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">Attributs
+de configuration SSL</a>. Par défaut, le magasin de clés du profil Liberty est <b>${server.config.dir}/resources/security/key.jks</b>. Si
+la référence du magasin de clés de confiance manque ou n'est pas définie dans le fichier
+<b>server.xml</b>, le magasin de clés qui est spécifié par <b>keyStoreRef</b> est
+utilisé. Le
+serveur utilise le magasin de clés par défaut et le fichier est créé à la première
+exécution du serveur. Dans ce cas, un certificat par défaut est créé avec une période de
+validité de 365 jours. En production, vous pouvez envisager d'utiliser votre propre
+certificat (y compris les certificats intermédiaires si nécessaire) ou de changer la date
+d'expiration du certificat généré.                                 
+                                <blockquote>Remarque : pour confirmer l'emplacement
+du magasin de clés de confiance, ajoutez la déclaration suivante dans le fichier
+server.xml :
 {% highlight xml %}
 <logging traceSpecification="SSL=all:SSLChannel=all"/>
 {% endhighlight %}
                                 </blockquote>
-                                Lastly, start the server and look for lines that contain com.ibm.ssl.trustStore in the <b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b> file.
+                                Enfin, démarrez le serveur et recherchez les lignes
+contenant com.ibm.ssl.trustStore dans le fichier
+<b>${wlp.install.dir}/usr/servers/nom_serveur/logs/trace.log</b>.
                                 <ul>
-                                    <li>Import the public certificates of the other servers in the farm into the truststore that is referenced by the <b>server.xml</b> configuration file of the server. The tutorial <a href="../tutorials/graphical-mode">Installing {{ site.data.keys.mf_server }} in graphical mode</a> provides you the instructions to exchange the certificates between two Liberty servers in a farm. For more information, see step 5 of <a href="../tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Creating a farm of two Liberty servers that run {{ site.data.keys.mf_server }}</a> section.</li>
-                                    <li>Restart each instance of WebSphere Application Server Liberty profile to make the security configuration take effect. The following steps are needed for single sign-on (SSO) to work.</li>
-                                    <li>Start one member of the farm. In the default LTPA configuration, after the Liberty server starts successfully, it generates an LTPA keystore as <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys.</b></li>
-                                    <li>Copy the <b>ltpa.keys</b> file to the <b>${wlp.user.dir}/servers/server_name/resources/security</b> directory of each farm member to replicate the LTPA keystores across the farm members. For more information about LTPA configuration, see <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Configuring LTPA on the Liberty profile</a>.</li>
+                                    <li>Importez les certificats publics des autres
+serveurs du parc de serveurs dans le magasin de clés de confiance qui est référencé par
+le fichier de configuration <b>server.xml</b> du serveur. Le tutoriel
+<a href="../tutorials/graphical-mode">Installation de
+{{site.data.keys.mf_server }} en mode graphique</a> explique comment échanger
+les certificats entre deux serveurs Liberty dans un parc de serveurs. Pour plus
+d'informations, voir l'étape 5 de la section
+<a href="../tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">Création
+d'un parc de deux serveurs Liberty exécutant {{site.data.keys.mf_server }}</a>. </li>
+                                    <li>Redémarrez chaque instance du profil
+Liberty de WebSphere
+Application Server pour appliquer la configuration des paramètres de sécurité. Les
+étapes ci-après sont requises pour que la connexion unique fonctionne. </li>
+                                    <li>Démarrez un membre du parc de serveurs. Dans la
+configuration LTPA par défaut, une fois que le serveur Liberty a démarré, un magasin de
+clés LTPA
+<b>${wlp.user.dir}/servers/nom_serveur/resources/security/ltpa.keys</b> est généré. </li>
+                                    <li>Copiez le fichier <b>ltpa.keys</b> dans le
+répertoire <b>${wlp.user.dir}/servers/nom_serveur/resources/security</b>
+de chaque membre du parc de serveurs afin de répliquer les magasins de clés LTPA
+sur les membres du parc de serveurs. Pour plus d'informations sur la configuration LTPA,
+voir <a href="http://www.ibm.com/support/knowledgecenter/?view=kc#!/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ltpa.html">Configuration de l'authentification LTPA dans le profil Liberty</a>.</li>
                                 </ul>
                             </li>
-                            <li><b>WebSphere Application Server full profile</b>
-                                <br/>
-                                Configure the truststore in the WebSphere Application Server administration console.
+                            <li><b>Profil complet de WebSphere Application Server</b> <br/>
+                                Configurez le magasin de clés de confiance dans la
+console d'administration WebSphere Application Server.
                                 <ul>
-                                    <li>Log in to WebSphere Application Server administration console.</li>
-                                    <li>Select <b>Security → SSL certificate and key management</b>.</li>
-                                    <li>In <b>Related Items</b>, select <b>Keystores and certificates</b>.</li>
-                                    <li>In the <b>Keystore usages</b> field, make sure that <b>SSL keystores</b> is selected. You can now import the certificates from all the other servers in the farm.</li>
-                                    <li>Click <b>NodeDefaultTrustStore</b>.</li>
-                                    <li>In <b>Additional Properties</b>, select <b>Signer certificates</b>.</li>
-                                    <li>Click <b>Retrieve from port</b>. You can now enter communication and security details of each of the other servers in the farm. Follow the next steps for each of the other farm members.</li>
-                                    <li>In the <b>Host</b> field, enter the server host name or IP address.</li>
-                                    <li>In the <b>Port</b> field, enter the HTTPS transport (SSL) port.</li>
-                                    <li>In <b>SSL configuration for outbound connection</b>, select <b>NodeDefaultSSLSettings</b>.</li>
-                                    <li>In the <b>Alias</b> field, enter an alias for this signer certificate.</li>
-                                    <li>Click <b>Retrieve signer information</b>.</li>
-                                    <li>Review the information that is retrieved from the remote server and then click <b>OK</b>.</li>
-                                    <li>Click <b>Save</b>.</li>
-                                    <li>Restart the server.</li>
+                                    <li>Connectez-vous à la console d'administration WebSphere Application Server.</li>
+                                    <li>Sélectionnez <b>Sécurité → Certificat SSL et gestion des clés</b>.</li>
+                                    <li>Dans <b>Articles liés</b>, sélectionnez <b>Magasins de clés et certificats</b>.</li>
+                                    <li>Dans la zone <b>Utilisations des magasins de clés</b>, assurez-vous que l'option <b>Fichiers de clés SSL</b> est sélectionnée. A présent, vous pouvez importer les certificats de tous les autres serveurs dans le parc de serveurs. </li>
+                                    <li>Cliquez sur <b>NodeDefaultTrustStore</b>.</li>
+                                    <li>Dans <b>Propriétés supplémentaires</b>, sélectionnez <b>Certificats de signataire</b>.</li>
+                                    <li>Cliquez sur <b>Extraire d'un port</b>. A présent, vous pouvez entrer les détails de communication et de sécurité des autres serveurs dans le parc de serveurs. Suivez les étapes ci-dessous pour chaque autre membre du parc de serveurs. </li>
+                                    <li>Dans la zone <b>Hôte</b>, entrez le nom d'hôte ou l'adresse IP du serveur. </li>
+                                    <li>Dans la zone <b>Port</b>, entrez le port de transport HTTPS (SSL). </li>
+                                    <li>Dans <b>Configuration SSL pour une connexion de communication sortante</b>, sélectionnez <b>NodeDefaultSSLSettings</b>.</li>
+                                    <li>Dans la zone <b>Alias</b>, entrez un alias pour ce certificat de signataire. </li>
+                                    <li>Cliquez sur <b>Récupérer les informations du signataire</b>.</li>
+                                    <li>Vérifiez les informations qui sont extraites depuis le serveur distant, puis cliquez sur <b>OK</b>.</li>
+                                    <li>Cliquez sur <b>Sauvegarder</b>.</li>
+                                    <li>Redémarrez le serveur. </li>
                                 </ul>    
                             </li>
                         </ul>
@@ -2187,38 +2404,64 @@ When you plan a server farm, first create stand-alone servers that communicate w
     </div>
 </div>
 
-### Verifying a farm configuration
+### Vérification de la configuration du parc de serveurs 
 {: #verifying-a-farm-configuration }
-The purpose of this task is to check the status of the farm members and verify whether a farm is configured properly.
+Le but de cette tâche consiste à vérifier le statut des membres du parc de serveurs et
+à déterminer si le parc de serveurs est configuré correctement.
 
-1. Start all the servers of the farm.
-2. Access {{ site.data.keys.mf_console }}. For example, **http://server_name:port/mfpconsole**, or **https://hostname:secure_port/mfpconsole** in HTTPS.
-    In the console sidebar, an extra menu that is labeled as Server Farm Nodes appears.
-3. Click **Server Farm Nodes** to access the list of registered farm members and their status. In the following example, the node that is identified as **FarmMember2** is considered to be down, which indicates that this server has probably failed and requires some maintenance.
 
-![Status of Farm nodes in the {{ site.data.keys.mf_console }}](farm_nodes_status_list.jpg)
+1. Démarrez tous les serveurs du parc de serveurs. 
+2. Accédez à {{site.data.keys.mf_console }}, par exemple en entrant **http://nom_serveur:port/mfpconsole** ou **https://nom_hôte:port_sécurisé/mfpconsole** pour HTTPS. La barre de navigation de la console contient un menu supplémentaire intitulé Noeuds de parc de serveurs. 
+3. Cliquez sur **Noeuds de parc de serveurs** pour accéder à la liste des membres de parc de serveurs enregistrés et à leur statut. Dans l'exemple ci-dessous, le noeud **MembreParc2** est considéré comme arrêté, ce qui indique que ce serveur est probablement défaillant et qu'il requiert une maintenance. 
 
-### Lifecycle of a server farm node
+![Statut des noeuds de parc de serveurs
+dans {{site.data.keys.mf_console }}](farm_nodes_status_list.jpg)
+
+### Cycle de vie d'un noeud de parc de serveurs 
 {: #lifecycle-of-a-server-farm-node }
-You can configure heartbeat rate and timeout values to indicate possible server problems among farm members by triggering a change in status of an affected node.
+Vous pouvez configurer la fréquence des signaux de présence et la valeur de délai
+permettant de détecter les problèmes de serveur possibles pour les
+membres du parc de serveurs en
+déclenchant la modification du statut d'un noeud affecté. 
 
-#### Registration and monitoring servers as farm nodes
+#### Enregistrement et surveillance des serveurs en tant que noeuds de
+parc de serveurs 
 {: #registration-and-monitoring-servers-as-farm-nodes }
-When a server configured as a farm node is started, the administration service on that server automatically registers it as a new farm member.
-When a farm member is shut down, it automatically unregisters from the farm.
+Lorsqu'un serveur configuré en tant que noeud de parc de serveurs est démarré, son
+service
+d'administration l'enregistre automatiquement comme nouveau membre du parc
+de serveurs. Lorsqu'un membre de parc de serveurs est arrêté, son enregistrement dans le
+parc de serveurs est annulé automatiquement. 
 
-A heartbeat mechanism exists to keep track of farm members that might become unresponsive, for example, because of a power outage or a server failure. In this heartbeat mechanism, {{ site.data.keys.product_adj }} runtimes periodically send a heartbeat to {{ site.data.keys.product_adj }} administration services at a specified rate. If the {{ site.data.keys.product_adj }} administration service registers that too long a time has elapsed since a farm member sent a heartbeat, the farm member is considered to be down.
+Un mécanisme de signaux de présence existe pour assurer le suivi des membres de parc
+de serveurs qui ne répondent plus, en raison d'une panne de
+courant ou d'une
+défaillance du serveur par exemple. Dans ce mécanisme de signaux de présence, les
+environnements d'exécution de {{site.data.keys.product_adj }} envoient régulièrement
+un signal de présence aux services d'administration de
+{{site.data.keys.product_adj }} à une fréquence spécifiée. Si le service
+d'administration de {{site.data.keys.product_adj }} détermine que le
+temps écoulé depuis le dernier signal de présence envoyé par un membre du
+parc de serveurs est trop long, il considère que le membre du parc de serveurs
+est arrêté. 
 
-Farm members that are considered to be down do not serve any more requests to mobile applications.
+Les membres du parc de serveurs qui sont considérés comme arrêtés n'envoient plus
+de demandes aux applications mobiles. 
 
-Having one or more nodes down does not prevent the other farm members from correctly serving requests to mobile applications nor from accepting new management operations that are triggered through the {{ site.data.keys.mf_console }}.
+Le fait qu'un ou plusieurs noeuds soient arrêtés n'empêche par les autres
+membres du parc de serveurs d'envoyer correctement des demandes aux applications
+mobiles ni d'accepter de nouvelles opérations de gestion qui sont déclenchées via {{site.data.keys.mf_console }}.
 
-#### Configuring the heartbeat rate and timeout values
+#### Configuration de la fréquence des signaux de présence et de la
+valeur de délai 
 {: #configuring-the-heartbeat-rate-and-timeout-values }
-You can configure the heartbeat rate and timeout values by defining the following JNDI properties:
+Vous pouvez configurer la fréquence des signaux de présence et la valeur de délai en
+définissant les propriétés JNDI suivantes : 
 
 * **mfp.admin.farm.heartbeat**
 * **mfp.admin.farm.missed.heartbeats.timeout**
 
 <br/>
-For more information about JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+Pour plus d'informations sur les propriétés JNDI, voir
+[Liste
+des propriétés JNDI pour le service d'administration de {{site.data.keys.mf_server }}](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).

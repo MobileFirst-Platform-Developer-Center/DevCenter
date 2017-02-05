@@ -1,110 +1,152 @@
 ---
 layout: tutorial
-title: Workstation Installation Guide
-breadcrumb_title: Installation guide
+title: Guide d'installation du poste de travail
+breadcrumb_title: Guide d'installation
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-Follow this installation guide in order to setup your workstation for development using {{ site.data.keys.product }}.
+Suivez ce guide d'installation afin de configurer votre poste de travail pour le
+développement avec {{site.data.keys.product }}.
 
-## DevKit Installer
+## Programme d'installation de DevKit 
 {: #devkit-installer }
-The [{{ site.data.keys.mf_dev_kit }} Installer]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst) will install a ready-to-use {{ site.data.keys.mf_server }}, database and runtime on your developer machine.  
+Le
+[programme
+d'installation de {{site.data.keys.mf_dev_kit }}]({{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst) installe une base de
+données et un environnement d'exécution {{site.data.keys.mf_server }} prêts à
+l'emploi sur la machine du développeur.
+  
 
-**Prerequisite:**  
-The installer requires Java installed.
+**Prérequis :**  
+Le programme d'installation requiert l'installation de Java. 
 
-1. [Install Oracle's JRE](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html).
+1. [Installez
+l'environnement d'exécution Java (JRE) d'Oracle](http://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html).
     
-2. Add a `JAVA_HOME` variable, pointing to the JRE
+2. Ajoutez une variable `JAVA_HOME` qui désigne
+l'environnement d'exécution Java (JRE). 
 
-    *Mac and Linux:* Edit your **~/.bash_profile**:
+    *Mac et Linux :* éditez votre fichier
+**~/.bash_profile** :
     
     ```bash
     #### ORACLE JAVA
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_73.jdk/Contents/Home"
     ```
     
-    *Windows:*  
-    [Follow this guide](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html).
+    *Windows :*  
+    [Suivez
+ce guide](https://confluence.atlassian.com/doc/setting-the-java_home-variable-in-windows-8895.html).
 
 ### Installation
 {: #installation }
-Get the DevKit Installer from the [Downloads page]({{site.baseurl}}/downloads/), and follow the on-screen instructions.
+Procurez-vous le programme d'installation de DevKit depuis la
+[page Downloads]({{site.baseurl}}/downloads/) et suivez les
+instructions affichées à l'écran. 
 
-![devkit installer](devkit-installer.png)
+![Programme d'installation de devkit](devkit-installer.png)
 
-### Starting and stopping the server
+### Démarrage et arrêt du serveur 
 {: #starting-and-stopping-the-server }
-Open a command-line window and navigate to the extracted folder location.
+Ouvrez une fenêtre de ligne de commande et accédez à l'emplacement auquel le dossier
+a été extrait.
 
-*Mac and Linux:*  
 
-* To start the server: `./run.sh -bg`
-* To stop the server: `./stop.sh`
+*Mac et Linux :*  
 
-*Windows:*  
+* Pour démarrer le serveur : `./run.sh -bg`
+* Pour arrêter le serveur : `./stop.sh`
 
-* To start the server: `./run.cmd -bg`
-* To stop the server: `./stop.cmd`
+*Windows :*  
 
-### Accessing the {{ site.data.keys.mf_console }}
+* Pour démarrer le serveur : `./run.cmd -bg`
+* Pour arrêter le serveur : `./stop.cmd`
+
+### Accès à {{site.data.keys.mf_console }}
 {: #accessing-the-mobilefirst-operations-console }
-You can access the [{{ site.data.keys.mf_console }}]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/) in the following ways:
+Vous pouvez accéder à
+[{{site.data.keys.mf_console }}]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/)
+comme suit : 
 
-* From command-line, execute: `mfpdev server console`
-* From a browser, visit: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)
+* Depuis la ligne de commande, exécutez : `mfpdev server
+console`
+* Depuis un navigateur, accédez à l'adresse
+[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). 
 
 ![console]({{site.baseurl}}/tutorials/en/foundation/8.0/product-overview/components/console/dashboard.png)
 
-## {{ site.data.keys.mf_cli }}
+## {{site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
-The [{{ site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) is a command-line interface enabling you to register applications in the {{ site.data.keys.mf_server }}, pull/push application from/to the {{ site.data.keys.mf_server }}, create Java and JavaScript adapters, manage multiple local and remote servers, update live applications using Direct Update and so on.
+[{{site.data.keys.mf_cli }}]({{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)
+est une interface de ligne de commande qui vous permet d'enregistrer des applications sur
+{{site.data.keys.mf_server }}, d'extraire et d'envoyer des applications
+depuis/vers {{site.data.keys.mf_server }}, de créer des adaptateurs Java et
+JavaScript, de gérer plusieurs serveurs locaux et distants, de mettre à jour des
+applications opérationnelles à l'aide de Direct Update, etc. 
 
-**Prerequisite:**  
-1. NodeJS is a requirement before you can install the {{ site.data.keys.mf_cli }}.  
- Download and install [NodeJS v4.4.3 LTS](https://nodejs.org/en/).
+**Prérequis :**  
+1. NodeJS doit être installé avant {{site.data.keys.mf_cli }}.  
+Téléchargez et installez [NodeJS
+v4.4.3
+LTS](https://nodejs.org/en/).
 
- To Verify the installation, open a command-line window and execute: `node -v`.
+ Pour vérifier l'installation, ouvrez une fenêtre de ligne de commande et exécutez `node -v`.
 
-2. Some CLI commands, such as creating, building and deploying adapters require Maven. See the next section for installation instructions.
+2. Certaines commandes d'interface de ligne de commande, comme la création, la
+génération et le déploiement d'adaptateurs requièrent Maven. Voir la section ci-après
+pour des instructions d'installation. 
 
 ### Installation
 {: #installation }
-Open Terminal and execute: `npm install -g mfpdev-cli`.  
+Ouvrez un terminal et exécutez `npm install -g
+mfpdev-cli`.  
 
-*Mac and Linux:* Note that you may need to run the command using `sudo`.  
-Read more about [fixing NPM permissions](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
+*Mac et Linux :* il peut être nécessaire d'exécuter la commande avec `sudo`.  
+Pour en savoir plus, voir
+[Fixing NPM permissions](https://docs.npmjs.com/getting-started/fixing-npm-permissions).
     
-To Verify the installation, open a command-line window and execute: `mfpdev -v` or `mfpdev help`.
+Pour vérifier l'installation, ouvrez une fenêtre de ligne de commande et exécutez
+`mfpdev -v` ou `mfpdev help`.
 
 ![console](mfpdev-cli.png)
 
-## Adapters and Security Checks
+## Adaptateurs et contrôles de sécurité 
 {: #adapters-and-security-checks }
-[Adapters]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters) and [Security Checks]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security) are your door-way to introduce authentication and other security layers to your application.
+Les [adaptateurs]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters)
+et les
+[contrôles
+de sécurité]({{site.baseurl}}/tutorials/en/foundation/8.0/authentication-and-security) permettent d'introduire l'authentification et d'autres couches de
+sécurité pour votre application. 
 
-**Prerequisite:**  
-Apache Maven is a required to set-up before you can create adapters and security checks.  
+**Prérequis :**  
+Apache Maven doit être configuré pour que vous puissiez créer des adaptateurs et des
+contrôles de sécurité.   
     
-1. [Download the Apache Maven .zip](https://maven.apache.org/download.cgi)
-2. Add a `MVN_PATH` variable, pointing to the Maven folder
+1. [Téléchargez Apache Maven
+.zip](https://maven.apache.org/download.cgi). 
+2. Ajoutez une variable `MVN_PATH` qui désigne le dossier
+Maven.
+
     
-    *Mac and Linux:* Edit your **~/.bash_profile**:
+    *Mac et Linux :* éditez votre fichier
+**~/.bash_profile** :
     
     ```bash
     #### Apache Maven
     export MVN_PATH="/usr/local/bin"
     ```
 
-    *Windows:*  
-    [Follow this guide](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/).
-Verify the installation by executing: `mvn -v`.
-
-### Usage
+    *Windows :*  
+    
+[Suivez
+ce guide](http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/). Vérifiez l'installation en exécutant mvn -v.
+### Utilisation 
 {: #usage }
-With Apache Maven installed, you can now create adapters either via Maven command-line commands, or by using the {{ site.data.keys.mf_cli }}.  
-For more information, review the [Adapters tutorials]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters).
+Une fois Apache Maven installé, vous pouvez créer des adaptateurs avec des commandes de
+la ligne de commande Maven ou dans {{site.data.keys.mf_cli }}.  
+Pour plus d'informations, reportez-vous aux
+[tutoriels
+sur les adaptateurs]({{site.baseurl}}/tutorials/en/foundation/8.0/adapters).
 

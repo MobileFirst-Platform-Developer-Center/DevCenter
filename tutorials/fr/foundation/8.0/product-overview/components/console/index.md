@@ -28,7 +28,7 @@ l'authenticité de l'application et l'authentification d'utilisateur.
 * Ajuster les configurations de consignateur client via des profils de journal.
 * Effectuer le suivi de l'usage des licences d'utilisation du produit.
 
-#### Accéder à :
+#### Accéder à
 {: #jump-to }
 * [Accès à la console](#accessing-the-console)
 * [Navigation dans la console](#navigating-the-console)
@@ -72,7 +72,7 @@ A partir d'une fenêtre de **ligne de commande**, avec l'{{site.data.keys.mf_cli
 
 2. Exécutez la commande `mfpdev server console MyRemoteServer`.
 
-> Pour plus d'informations sur les différentes commandes d'interface de ligne de commande, voir le tutoriel [Utilisation de l'interface de ligne de commande pour gérer des artefacts {{site.data.keys.product_adj }} artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
+> Pour plus d'informations sur les différentes commandes d'interface de ligne de commande, voir le tutoriel [Using CLI to manage {{site.data.keys.product_adj }} artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
 
 ## Navigation dans la console
 {: #navigating-the-console }

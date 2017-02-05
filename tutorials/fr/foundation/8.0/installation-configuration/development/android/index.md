@@ -1,37 +1,37 @@
 ---
 layout: tutorial
-title: Setting up the Android development environment
-breadcrumb_title: Android
+title: Configuration de l'environnement de développement Android
+environment breadcrumb_title: Android
 relevantTo: [android,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-This tutorial explains the steps a developer needs to follow in order to be able to develop and test Android applications. These steps include installing Android Studio and setting the Android SDK.
+Ce tutoriel présente les étapes que doit suivre un développeur pour développer et tester des applications Android. Elles consistent à installer Android Studio et à définir le logiciel SDK Android. 
 
-**Prerequisite:** As you setup your Android development environment, make sure to also read the [Setting up the {{ site.data.keys.product_adj }} development environment](../mobilefirst/) tutorial.
+**Prérequis :** lorsque vous configurez votre environnement de développement Android, lisez également le tutoriel [Configuration de l'environnement de développement {{site.data.keys.product_adj }}](../mobilefirst/). 
 
-#### Support level
+#### Niveau de prise en charge
 {: #support-level }
-{{ site.data.keys.product_adj }} SDK is compatible with Android version Ice Cream Sandwich (API level 14) and later.
+Le logiciel SDK de {{site.data.keys.product_adj }} est compatible avec Android version Ice Cream Sandwich (API niveau 14) et les versions ultérieures.
 
 ### Android Studio
-Follow the steps provided in the [Android Developers website](http://developer.android.com/develop/index.html) website to download and install Android Studio.
+Suivez les étapes présentées sur le [site Web des développeurs Android](http://developer.android.com/develop/index.html) pour télécharger et installer Android Studio.
 
-![Configure the Android SDK](android-studio.png)
+![Configuration du logiciel SDK Android](android-studio.png)
 
-### Android SDK
-The Android SDK provides the tools and APIs required to develop applications on the Android platform, using the Java programming language.
+### Logiciel SDK Android
+Le logiciel SDK Android fournit les outils et les API qui sont requis pour développer des applications sur la plateforme Android avec le langage de programmation Java. 
 
-Once you open Android Studio for the first time, you will be able to configure the Android SDK using the SDK Manager.
+Après avoir ouvert Android Studio pour la première fois, vous pouvez configurer le logiciel SDK Android à l'aide du gestionnaire de logiciels SDK. 
 
-In the SDK Manager you can install required packages. For more information, [visit the Android Developer website](http://developer.android.com/sdk/index.html).
+Dans le gestionnaire des logiciels SDK, vous pouvez installer les packages requis. Pour plus d'informations, [visitez le site Web des développeurs Android](http://developer.android.com/sdk/index.html).
 
-#### Android Virtual Devices
+#### Terminaux virtuels Android 
 {: #android-virtual-devices }
-You can use an AVD to test your application. For a detailed explanation of all available options, see the [Managing Virtual Devices documentation topic](http://developer.android.com/tools/devices/index.html) in the Android Developers website.
+Vous pouvez utiliser un périphérique virtuel Android pour tester votre application. Pour une explication détaillée de toutes les options disponibles, voir la [rubrique de la documentation relative à la gestion des terminaux virtuels](http://developer.android.com/tools/devices/index.html) sur le site Web des développeurs Android. 
 
-## What's Next
+## Etapes suivantes 
 {: #whats-next }
-Now that the {{ site.data.keys.product_adj }} and Android development environment are set up, continue to [Quick Start](../../../quick-start/android/) category to experience {{ site.data.keys.product_adj }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product_adj }} development.
+Maintenant que les environnements de développement {{site.data.keys.product_adj }} et Android sont configurés, vous pouvez passer à la catégorie [Quick Start](../../../quick-start/android/) pour commencer à vous servir de {{site.data.keys.product_adj }} ou [All Tutorials](../../../all-tutorials) pour en savoir plus sur certains aspects du développement {{site.data.keys.product_adj }}. 

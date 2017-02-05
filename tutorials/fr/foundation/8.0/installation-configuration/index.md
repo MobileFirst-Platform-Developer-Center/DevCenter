@@ -1,57 +1,58 @@
 ---
 layout: tutorial
-title: Installation and Configuration
-weight: 3
+title: Installation et configuration
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-{{ site.data.keys.product_full }} provides development tools and server-side components that you can install on-premises or deploy to the cloud for test or production use. Review the installation topics appropriate for your installation scenario.
+{{site.data.keys.product_full }} fournit des outils de développement et des composants côté serveur que vous pouvez installer sur site ou déployer dans le cloud pour le test ou la production. Reportez-vous aux rubriques d'installation appropriées à votre scénario d'installation. 
 
-### Installing a development environment
+### Installation d'un environnement de développement 
 {: #installing-a-development-environment }
-If you develop the client-side or the server-side of mobile apps, use either the [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) or the [{{ site.data.keys.mf_bm }} service](../bluemix/using-mobile-foundation) to get started.
+Si vous développez le côté client ou le côté serveur d'applications mobiles, utilisez [{{site.data.keys.mf_dev_kit }}](development/mobilefirst/) ou le [service {{site.data.keys.mf_bm }}](../bluemix/using-mobile-foundation) pour commencer. 
 
-* [Set-up the MobileFirst development environment](development/mobilefirst/)
-* [Set-up the Cordova development environment](development/cordova)
-* [Set-up the iOS development environment](development/ios)
-* [Set-up the Android development environment](development/android)
-* [Set-up the Windows development environment](development/windows)
-* [Set-up the Xamarin development environment](development/xamarin)
-* [Set-up the Web development environment](development/web)
+* [Configuration de l'environnement de développement MobileFirst](development/mobilefirst/)
+* [Configuration de l'environnement de développement Cordova](development/cordova)
+* [Configuration de l'environnement de développement iOS](development/ios)
+* [Configuration de l'environnement de développement Android](development/android)
+* [Configuration de l'environnement de développement Windows](development/windows)
+* [Configuration de l'environnement de développement Xamarin](development/xamarin)
+* [Configuration de l'environnement de développement Web](development/web)
 
-### Installing a test or production server on-premises
+### Installation d'un serveur de test ou de production sur site 
 {: #installing-a-test-or-production-server-on-premises }
-IBM installations are based on an IBM product called IBM Installation Manager. Install IBM Installation Manager V1.8.4 or later separately before you install {{ site.data.keys.product }}.
+Les installations IBM reposent sur un produit IBM qui s'appelle IBM Installation Manager. Installez IBM Installation Manager version 1.8.4 ou ultérieure séparément avant d'installer {{site.data.keys.product }}.
 
-> **Important:** Ensure that you use IBM Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product }} {{ site.data.keys.product_version }} because the post-installation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
+> **Important :** assurez-vous d'utiliser IBM Installation Manager version 1.8.4 ou ultérieure. Les versions plus anciennes d'Installation Manager ne peuvent pas installer {{site.data.keys.product }} {{site.data.keys.product_version }} car elles sont fournies avec Java 6 et les opérations de post-installation du produit requièrent Java 7.
 
-The {{ site.data.keys.mf_server }} installer copies onto your computer all the tools and libraries that are required for deploying {{ site.data.keys.mf_server }} components and optionally the {{ site.data.keys.mf_app_center_full }} to your application server.
+Le programme d'installation de {{site.data.keys.mf_server }} copie sur votre ordinateur tous les outils et toutes les bibliothèques qui sont requis pour le déploiement des composants {{site.data.keys.mf_server }} et en option, d'{{site.data.keys.mf_app_center_full }} sur votre serveur d'applications. 
 
-If you install a test or production server, start with **Tutorials about {{ site.data.keys.mf_server }} installation** below for a simple installation and to learn about the installation of {{ site.data.keys.mf_server }}. For more information about preparing an installation for your specific environment, see [Installing {{ site.data.keys.mf_server }} for a production environment](production).
+Si vous installez un serveur de test ou de production, reportez-vous à la section **Tutoriels sur l'installation de {{site.data.keys.mf_server }}** ci-dessous pour effectuer une installation simple et en savoir plus sur l'installation de {{site.data.keys.mf_server }}. Pour plus d'informations sur la préparation d'une installation pour votre environnement spécifique, voir [Installation de {{site.data.keys.mf_server }} pour un environnement de production](production).
 
-**Tutorials about {{ site.data.keys.mf_server }} installation**  
-Learn about the {{ site.data.keys.mf_server }} installation process by walking through the instructions to create a functional {{ site.data.keys.mf_server }}, cluster with two nodes on WebSphere  Application Server Liberty profile. The installation can be done in two ways:
+**Tutoriels sur l'installation de {{site.data.keys.mf_server }}**  
+Pour plus d'informations sur le processus d'installation de {{site.data.keys.mf_server }}, parcourez les instructions permettant de créer un serveur {{site.data.keys.mf_server }} fonctionnel, un cluster avec deux noeuds dans le profil Liberty de WebSphere Application Server. Vous pouvez procéder à l'installation de deux façons : 
 
-* [By using the graphical mode of IBM  Installation Manager](production/tutorials/graphical-mode) and the Server Configuration Tool.
-* [By using the command line tool](production/tutorials/command-line).
+* [Via le mode graphique d'IBM Installation Manager](production/tutorials/graphical-mode) et l'outil de configuration de serveur. 
+* [Via l'outil de ligne de commande](production/tutorials/command-line).
 
-Afterwards you'll have a working {{ site.data.keys.mf_server }}. However, you need to configure it, in particular for security, before you use the server. For more information, see [Configuring {{ site.data.keys.mf_server }}](production/server-configuration).
+Vous obtenez ainsi un serveur {{site.data.keys.mf_server }} opérationnel. Toutefois, vous devrez le configurer, notamment pour la sécurité, avant de l'utiliser. Pour plus d'informations, voir [Configuration de {{site.data.keys.mf_server }}](production/server-configuration).
 
-**Additions**  
+**Ajouts**  
 
-* To add {{ site.data.keys.mf_analytics_server }} to your installation, see the [{{ site.data.keys.mf_analytics_server }} installation guide](production/analytics/installation/).  
-* To install {{ site.data.keys.mf_app_center }}, see [Installing and configuring the Application Center](production/appcenter).
+* Pour ajouter {{site.data.keys.mf_analytics_server }} à votre installation, voir [Guide d'installation de {{site.data.keys.mf_analytics_server }}](production/analytics/installation/).  
+* Pour installer {{site.data.keys.mf_app_center }}, voir [Installation et configuration d'Application Center](production/appcenter).
 
-### Deploying {{ site.data.keys.mf_server }} to the cloud
+### Déploiement de {{site.data.keys.mf_server }} dans le cloud
+
 {: #deploying-mobilefirst-server-to-the-cloud }
-If you plan to deploy {{ site.data.keys.mf_server }} to the cloud, see the following options:
+Si vous prévoyez de déployer {{site.data.keys.mf_server }} dans le cloud, reportez-vous aux options suivantes :  
 
-* [Using {{ site.data.keys.mf_server }} on IBM Bluemix](../bluemix).
-* [Using {{ site.data.keys.mf_server }} on IBM PureApplication](production/pure-application).
+* [Utilisation de {{site.data.keys.mf_server }} dans IBM Bluemix](../bluemix).
+* [Utilisation de {{site.data.keys.mf_server }} dans IBM PureApplication](production/pure-application).
 
-### Upgrading from earlier versions
+### Mise à niveau depuis des versions antérieures
 {: #upgrading-from-earlier-versions }
-For information about upgrading existing installations and applications to a newer version, see [Upgrading to {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}](../all-tutorials/#upgrading_to_current_version).
+Pour des informations sur la mise à niveau d'installations et d'applications existantes vers une version plus récente, voir [Mise à niveau vers {{site.data.keys.product_full }} {{site.data.keys.product_version }}](../all-tutorials/#upgrading_to_current_version).
 
 

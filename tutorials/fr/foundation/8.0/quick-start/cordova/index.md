@@ -1,57 +1,57 @@
 ---
 layout: tutorial
-title: Cordova end-to-end demonstration
+title: Cordova - Démonstration de bout en bout
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-The purpose of this demonstration is to experience an end-to-end flow:
+Cette démonstration présente un processus complet :
 
-1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
-2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
-3. The application logic is changed to make a resource request.
+1. Une application exemple fournie avec le kit SDK client {{site.data.keys.product_adj }} est enregistrée et téléchargée à partir de la console {{site.data.keys.mf_console }}.
+2. Un nouvel adaptateur ou un adaptateur fourni est déployé sur la console {{site.data.keys.mf_console }}.  
+3. La logique d'application est changée afin d'effectuer une demande de ressource.
 
-**End result**:
+**Résultat final** :
 
-* Successfully pinging the {{ site.data.keys.mf_server }}.
-* Successfully retrieving data using an adapter.
+* Interrogation par commande ping du serveur {{site.data.keys.mf_server }} réussie.
+* Extraction réussie des données à l'aide d'un adaptateur.
 
-#### Prerequisites:
+#### Prérequis :
 {: #prerequisites }
-* Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
+* Xcode for iOS, Android Studio for Android ou Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
 * Cordova CLI 6.x.
-* *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
-* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* *Facultatif* - {{site.data.keys.mf_cli }}  ([téléchargement]({{site.baseurl}}/downloads))
+* *Facultatif* - Serveur {{site.data.keys.mf_server }} autonome ([téléchargement]({{site.baseurl}}/downloads))
 
-### 1. Starting the {{ site.data.keys.mf_server }}
+### 1. Démarrage du serveur {{site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+Assurez-vous d'avoir [créé une instance Mobile Foundation](../../bluemix/using-mobile-foundation) ou  
+Si vous utilisez le kit [{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), accédez au dossier du serveur puis exécutez la commande `./run.sh` sous Mac et Linux ou `run.cmd` sous Windows.
 
-### 2. Creating and registering an application
+### 2. Création et enregistrement d'une application
 {: #2-creating-and-registering-an-application }
-In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+Dans une fenêtre de navigateur, ouvrez la console {{site.data.keys.mf_console }} en entrant l'URL `http://your-server-host:server-port/mfpconsole`. Dans le cas d'une exécution locale, entrez l'URL [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Le nom d'utilisateur et le mot de passe sont *admin/admin*.
  
-1. Click the **New** button next to **Applications**
-    * Select a platform: **Android, iOS, Windows**
-    * Enter **com.ibm.mfpstartercordova** as the **application identifier**
-    * Enter **1.0.0** as the **version**
-    * Click on **Register application**
+1. Cliquez sur le bouton **Nouveau** en regard de l'option **Applications**
+    * Sélectionnez une plateforme : **Android, iOS, Windows**
+    * Entrez **com.ibm.mfpstartercordova** en tant qu'**identificateur d'application**
+    * Entrez **1.0.0** dans la zone **Version**
+    * Cliquez sur **Enregistrer l'application**
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-cordova.png"/>
+    <img class="gifplayer" alt="Enregistrement d'une application" src="register-an-application-cordova.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the Cordova sample application.
+2. Cliquez sur le titre **Obtenir le code de démarrage** puis indiquez que vous souhaitez télécharger l'application exemple Cordova.
 
-    <img class="gifplayer" alt="Download sample application" src="download-starter-code-cordova.png"/>
+    <img class="gifplayer" alt="Téléchargement d'une application exemple" src="download-starter-code-cordova.png"/>
  
-### 3. Editing application logic
+### 3. Edition d'une logique d'application
 {: #3-editing-application-logic }
-1. Open the Cordova project in your code editor of choice.
+1. Ouvrez le projet Cordova dans l'éditeur de code de votre choix.
 
-2. Select the **www/js/index.js** file and paste the following code snippet, replacing the existing `WLAuthorizationManager.obtainAccessToken()` function:
+2. Sélectionnez le fichier **www/js/index.js** et collez le fragment de code suivant en remplaçant la fonction `WLAuthorizationManager.obtainAccessToken()` existante :
 
 ```javascript
 WLAuthorizationManager.obtainAccessToken()
@@ -84,55 +84,54 @@ WLAuthorizationManager.obtainAccessToken()
     );
 ```
     
-### 4. Deploy an adapter
+### 4. Déploiement d'un adaptateur
 {: #4-deploy-an-adapter }
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
+Téléchargez [cet artefact .adapter préparé](../javaAdapter.adapter) et déployez-le à partir de la console {{site.data.keys.mf_console }} en sélectionnant **Actions → Déployer un adaptateur**.
 
-Alternatively, click the **New** button next to **Adapters**.  
+Vous pouvez également cliquer sur le bouton **Nouveau** en regard de la zone **Adaptateurs**.  
         
-1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
+1. Sélectionnez l'option **Actions → Télécharger des exemples**. Téléchargez l'adaptateur **Java** exemple "Hello World".
 
-    > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
-
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+    > Si Maven et {{site.data.keys.mf_cli }} ne sont pas installés, suivez les instructions de **configuration de votre environnement de développement** s'affichant à l'écran.
+2. A partir d'une fenêtre de ligne de commande****, accédez au dossier racine du projet Maven de l'adaptateur et exécutez la commande :
 
     ```bash
     mfpdev adapter build
     ```
 
-3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+3. Une fois la génération terminée, déployez-la à partir de la console {{site.data.keys.mf_console }} en utilisant l'option **Actions → Déployer un adaptateur**. L'adaptateur est disponible dans le dossier **[adaptateur]/target**.
     
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
+    <img class="gifplayer" alt="Déploiement d'un adaptateur" src="create-an-adapter.png"/>   
 
 
-<img src="cordovaQuickStart.png" alt="sample application" style="float:right"/>
-### 5. Testing the application
+<img src="cordovaQuickStart.png" alt="application exemple" style="float:right"/>
+### 5. Test de l'application
 {: #5-testing-the-application }
-1. From a **Command-line** window, navigate to the Cordova project's root folder.
-2. Run the command: `cordova platform add ios|android|windows` to add a platform.
-3. In the Cordova project, select the **config.xml** file and edit the  `<mfp:server ... url=" "/>` value with the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
-    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
+1. A partir d'une fenêtre de ligne de commande****, accédez au dossier racine du projet Cordova.
+2. Exécutez la commande `cordova platform add ios|android|windows` pour ajouter une plateforme.
+3. Dans le projet Cordova, sélectionnez le fichier **config.xml** et éditez la valeur `<mfp:server ... url=" "/>` en remplaçant les propriétés **protocol**, **host** et **port** par les valeurs correctes de votre serveur {{site.data.keys.mf_server }}.
+    * Si vous utilisez un serveur {{site.data.keys.mf_server }} local, les valeurs sont généralement **http**, **localhost** et **9080**.
+    * Si vous utilisez un serveur {{site.data.keys.mf_server }} distant (sur Bluemix), les valeurs sont généralement **https**, **your-server-address** et **443**.
 
-    Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command `mfpdev app register`. If a remote {{ site.data.keys.mf_server }} is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
+    Par ailleurs, si vous avez installé l'interface {{site.data.keys.mf_cli }}, accédez au dossier racine du projet puis exécutez la commande `mfpdev app register`. Si un serveur {{site.data.keys.mf_server }} distant est utilisé, [exécutez la commande `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) pour ajouter le serveur, suivi par exemple de la commande `mfpdev app register myBluemixServer`.
 	
-If a device is connected, the application will be installed and launched in the device,  
-Otherwise the Simulator or Emulator will be used.
+Si un terminal est connecté, l'application est installée et exécutée sur ce dernier.   
+Dans le cas contraire, le simulateur ou l'émulateur est utilisé.
 
 <br clear="all"/>
-### Results
+### Résultats
 {: #results }
-* Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
-* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
+* Si vous cliquez sur **Ping {{site.data.keys.mf_server }}**, la mention **Connected to {{site.data.keys.mf_server }}** s'affiche.
+* Si l'application a pu se connecter au serveur {{site.data.keys.mf_server }}, un appel de demande de ressource utilisant l'adaptateur Java déployé aura lieu.
 
-The adapter response is then displayed in an alert.
+La réponse de l'adaptateur est ensuite affichée dans une alerte.
 
-## Next steps
+## Etapes suivantes
 {: #next-steps }
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
+Pour en savoir plus notamment sur l'utilisation d'adaptateurs dans des applications et sur le mode d'intégration de services supplémentaires (notifications Push, par exemple) à l'aide de l'infrastructure de sécurité {{site.data.keys.product_adj }} :
 
-- Review the [Application development](../../application-development/) tutorials
-- Review the [Adapters development](../../adapters/) tutorials
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
-- Review [All Tutorials](../../all-tutorials)
+- Consultez les tutoriels [Developing Applications](../../application-development/) 
+- Consultez les tutoriels [Adapters development](../../adapters/) 
+- Consultez les tutoriels [Authentication and security](../../authentication-and-security/)
+- Consultez les tutoriels [Notifications](../../notifications/)
+- Consultez [tous les tutoriels](../../all-tutorials)

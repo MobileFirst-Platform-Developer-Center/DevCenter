@@ -1,115 +1,184 @@
 ---
 layout: tutorial
-title: Setting up the MobileFirst development environment
+title: Configuration de l'environnement de développement MobileFirst
 breadcrumb_title: MobileFirst
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Présentation
 {: #overview }
-{{ site.data.keys.product_full }} is made up of several components: the client SDKs, adapter archetypes, security checks, and authentication tools.
+{{site.data.keys.product_full }} est constitué de plusieurs composants : les logiciels SDK de client, les archétypes d'adaptateur, les contrôles de sécurité et les outils d'authentification. 
 
-These components are available from online repositories and can be installed using package managers. These online repositories provide the latest release of each component. The same component is also available to download from the {{ site.data.keys.mf_dev_kit }} for local use. Note that the version that is available from the {{ site.data.keys.mf_dev_kit_short }} represents the version that was available at the time the specific {{ site.data.keys.mf_dev_kit_short }} build was released, and that downloading a new {{ site.data.keys.mf_dev_kit_short }} build will be required in order to use the latest. 
+Ces composants sont disponibles depuis des référentiels en ligne et peuvent être
+installés à l'aide de gestionnaires de package. Ces référentiels en ligne fournissent
+l'édition la plus récente de chaque composant. Un même composant peut également être
+téléchargé depuis {{site.data.keys.mf_dev_kit }} pour une utilisation locale. Notez
+que la version disponible depuis {{site.data.keys.mf_dev_kit_short }} est
+la version qui était disponible au moment de la publication de la génération de
+{{site.data.keys.mf_dev_kit_short }}, et que vous devrez télécharger une
+nouvelle génération de {{site.data.keys.mf_dev_kit_short }} pour pouvoir
+utiliser la version la plus récente.  
 
-Continue reading to learn more about the components of {{ site.data.keys.product }}.
+Lisez cette rubrique pour en savoir plus sur les composants de {{site.data.keys.product }}.
 
-> To evalute {{ site.data.keys.product }} all that is needed is to spin an instance of {{ site.data.keys.mf_server }} on Bluemix using the Mobile Foundation Bluemix service. See the [Using Mobile Foundation](../../../bluemix/using-mobile-foundation/) tutorial for instructions. You may also choose to install the {{ site.data.keys.mf_dev_kit_short }} for a local installation.
-
-#### Jump to:
+> Pour évaluer {{site.data.keys.product }}, il suffit de démarrer une
+instance
+de {{site.data.keys.mf_server }} dans Bluemix à l'aide du service Mobile
+Foundation Bluemix. Voir le tutoriel
+[Using Mobile
+Foundation](../../../bluemix/using-mobile-foundation/) pour des instructions. Vous pouvez aussi choisir d'installer
+{{site.data.keys.mf_dev_kit_short }} pour une installation locale.
+#### Aller à : 
 {: #jump-to }
 
-* [Installation guide](#installation-guide)
-* [{{ site.data.keys.mf_dev_kit }}](#mobilefirst-developer-kit)
-* [{{ site.data.keys.product }} components](#mobilefirst-foundation-components)
-* [Applications and Adapters development](#applications-and-adapters-development)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [Guide d'installation](#installation-guide)
+* [{{site.data.keys.mf_dev_kit }}](#mobilefirst-developer-kit)
+* [Composants
+de {{site.data.keys.product }}](#mobilefirst-foundation-components)
+* [Développement d'applications
+et d'adaptateurs](#applications-and-adapters-development)
+* [Tutoriels à suivre ensuite](#tutorials-to-follow-next)
 
-## Installation guide
+## Guide d'installation
 {: #installation-guide }
-[Read the installation guide](installation-guide) to quickly setup MobileFirst Foundation in your workstation.
+[Lisez le guide d'installation](installation-guide) pour configurer
+rapidement MobileFirst Foundation sur votre poste de travail. 
 
-## {{ site.data.keys.mf_dev_kit }}
+## {{site.data.keys.mf_dev_kit }}
 {: #mobilefirst-developer-kit }
-The {{ site.data.keys.mf_dev_kit_short }} provides a ready-for-development environment with minimal configuration needed. The kit consists of the following components: {{ site.data.keys.mf_server }} &amp; {{ site.data.keys.mf_console }}, MobileFirst Developer Command-line Interface (CLI), as well as optionally provides client SDKs and adapter tooling for download.
+{{site.data.keys.mf_dev_kit_short }} fournit un environnement prêt pour le
+développement avec la configuration minimale requise. Le kit est constitué des
+composants suivants : {{site.data.keys.mf_server }},
+{{site.data.keys.mf_console }} et MobileFirst Developer Commande-line
+interface (CLI). Il permet également de télécharger en option des logiciels SDK de client
+ainsi que des outils d'adaptateur.
 
-> **Note:** If you need to set up your development environment on a computer that has no internet access, you can install components offline. See [How to set up an offline IBM MobileFirst development environment]({{site.baseurl}}/blog/2016/03/31/howto-set-up-an-offline-ibm-mobilefirst-8-0-development-environment).
 
-### {{ site.data.keys.mf_dev_kit_short }} Installer
+> **Remarque :** si vous devez configurer votre environnement de
+développement sur un ordinateur sans accès Internet, vous pouvez installer les composants
+hors ligne. Voir [How to set up an offline IBM MobileFirst development environment]({{site.baseurl}}/blog/2016/03/31/howto-set-up-an-offline-ibm-mobilefirst-8-0-development-environment).
+
+### Programme d'installation de {{site.data.keys.mf_dev_kit_short }} 
 {: #developer-kit-installer }
-The Installer packages the components for local installation where Internet connectivity is not available.  
-The components are available through the Download Center of the {{ site.data.keys.mf_console }}.
+Le programme d'installation conditionne les composants pour une installation locale pour
+laquelle la connectivité Internet n'est pas disponible.   
+Les composants sont disponibles via le centre de téléchargement de {{site.data.keys.mf_console }}.
 
-> To download the installer, visit the [downloads]({{site.baseurl}}/downloads/) page.
+> Pour télécharger le programme d'installation, visitez la page des
+[téléchargements]({{site.baseurl}}/downloads/). 
 
-## {{ site.data.keys.product }} components
+## Composants de {{site.data.keys.product }} 
 {: #mobilefirst-foundation-components }
 
-### {{ site.data.keys.mf_server }}
+### {{site.data.keys.mf_server }}
 {: #mobilefirst-server }
-As part of the {{ site.data.keys.mf_dev_kit_short }}, the {{ site.data.keys.mf_server }} is provided pre-deployed on a WebSphere Liberty profile application server. The server is pre-configured with an "mfp" runtime and uses a filesystem-based Apache Derby database.
+Dans le cadre de {{site.data.keys.mf_dev_kit_short }},
+{{site.data.keys.mf_server }} est prédéployé sur un serveur d'applications
+WebSphere de profil Liberty.
+Le serveur est préconfiguré avec un environnement d'exécution "mfp" et utilise une base de
+données Apache Derby reposant sur un système de fichiers. 
 
-In the {{ site.data.keys.mf_dev_kit_short }} root directory, the following scripts are available to run from a command-line:
+Les scripts suivants, que vous pouvez exécuter depuis une ligne de commande, sont
+disponibles dans le répertoire de base de {{site.data.keys.mf_dev_kit_short }} : 
 
-* `run.[sh|cmd]`: Run the {{ site.data.keys.mf_server }} with trailing Liberty Server messages
-    * Add the `-bg` flag to run the process in the background
-* `stop.[sh|cmd]`: Stop the current {{ site.data.keys.mf_server }} instance
-* `console.[sh|cmd]`: Open the {{ site.data.keys.mf_console }}
+* `run.[sh|cmd]` : exécutez
+{{site.data.keys.mf_server }} et affichez le journal serveur dans la
+fenêtre de ligne de commande pour le serveur Liberty 
+    * Ajoutez l'indicateur `-bg` afin d'exécuter le processus en
+arrière-plan 
+* `stop.[sh|cmd]` : arrêtez l'instance
+{{site.data.keys.mf_server }} en cours 
+* `console.[sh|cmd]` : ouvrez {{site.data.keys.mf_console }}
 
-`.sh` file extensions are for Mac and Linux, and `.cmd` file extensions are for Windows.
+L'extension de fichier `.sh` est valable pour Mac et Linux et
+l'extension de fichier `.cmd` pour Windows. 
 
-### {{ site.data.keys.mf_console }}
+### {{site.data.keys.mf_console }}
 {: #mobilefirst-operations-console }
-The {{ site.data.keys.mf_console }} exposes the following functionalities.  
-A developer can:
+{{site.data.keys.mf_console }} expose les fonctionnalités ci-dessous.   
+Un développeur peut : 
 
-- Register and deploy applications and adapters
-- Optionally download native/Cordova application and adapter starter code templates 
-- Configure an application's authentication and security properties
-- Manage applications:
-    - Application Authenticity
-    - Direct Update
-    - Remote Disable/Notify
-- Send Push Notifications to iOS and Android devices
-- Generate DevOps scripts for continuous integration workflows and faster development cycles
+- Enregistrer et déployer des applications et des adaptateurs 
+- Télécharger des modèles de code de démarrage d'adaptateur et
+d'application native/Cordova, s'il le souhaite  
+- Configurer les propriétés de sécurité et d'authentification d'une
+application 
+- Gérer les applications : 
+    - Authenticité de l'application 
+    - Mise à jour directe
+    - Désactivation/Notification à distance 
+- Envoyer des notifications push à des terminaux iOS et Android 
+- Générer des scripts DevOps pour des flux de travaux d'intégration continue
+et des cycles de développement plus rapides 
 
-> Learn more about the {{ site.data.keys.mf_console }} in the [Using the MobilFirst Operations Console](../../../product-overview/components/console/) tutorial.
-
-### {{ site.data.keys.product }} Command-line Interface
+> Pour en savoir plus sur {{site.data.keys.mf_console }}, voir le tutoriel
+[Utilisation de MobileFirst
+Operations Console](../../../product-overview/components/console/).
+### {{site.data.keys.product }} Command-line Interface
 {: #mobilefirst-foundation-command-line-interface }
-You can use the {{ site.data.keys.mf_cli }} to develop and manage applications, in addition to using the {{ site.data.keys.mf_console }}. The CLI command are prefixed with `mfpdev` and support the following types of tasks:
+Vous pouvez utiliser {{site.data.keys.mf_cli }} en plus de
+{{site.data.keys.mf_console }} pour développer et
+gérer des applications. Les commandes de l'interface de ligne de commande sont
+préfixées avec `mfpdev` et prennent en charge les types de tâche
+suivants : 
 
-* Registering apps with the {{ site.data.keys.mf_server }}
-* Configuring your app
-* Creating, building, and deploying adapters
-* Previewing and updating Cordova apps
+* Enregistrement des applications sur {{site.data.keys.mf_server }}
+* Configuration de votre application
+* Création, génération et déploiement d'adaptateurs
+* Aperçu et mise à jour des applications Cordova
 
-> To download and install the {{ site.data.keys.mf_cli }}, visit the [downloads]({{site.baseurl}}/downloads/) page.  
-> Learn more about the various CLI commands in the [Using CLI to manage MobileFirst artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) tutorial.
+> Pour télécharger et installer {{site.data.keys.mf_cli }}, visitez la
+page des [téléchargements]({{site.baseurl}}/downloads/).   
+> Pour plus d'informations sur les différentes commandes d'interface de ligne de commande,
+voir le tutoriel
+[Utilisation
+de l'interface de ligne de commande pour gérer des artefacts MobileFirst](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
 
-### {{ site.data.keys.product }} client SDKs and adapter tooling
+
+### Logiciels SDK de client et outils
+d'adaptateur de {{site.data.keys.product }}
+
 {: #mobilefirst-foundation-client-sdks-and-adapter-tooling }
-{{ site.data.keys.product }} provides client SDKs for Cordova applications as well as for Native platforms (iOS, Android and Windows 8.1 Universal &amp; Windows 10 UWP). Adapter tooling for adapters and security checks development is available as well.
+{{site.data.keys.product }} fournit des logiciels SDK de client pour les
+applications Cordova ainsi que pour les plateformes natives (iOS, Android, Windows 8.1
+Universal et Windows 10 UWP). Des outils d'adaptateur pour le développement
+d'adaptateurs et de contrôles de sécurité sont également disponibles.
 
-* To use the {{ site.data.keys.product_adj }} client SDKs, visit the [Adding the {{ site.data.keys.product }}SDK](../../../application-development/sdk/) tutorials category.  
-* To develop adapters, visit the [Adapters](../../../adapters/) tutorials category.  
-* To develop security checks, visit the [Authentication and security](../../../authentication-and-security/) tutorials category.  
 
-## Applications and adapters development
+* Pour utiliser les logiciels SDK de client de
+{{site.data.keys.product_adj }}, visitez la catégorie de tutoriels
+[Adding the
+{{site.data.keys.product }} SDK](../../../application-development/sdk/). 
+* Pour développer des adaptateurs, visitez la catégorie de tutoriels
+[Adaptateurs](../../../adapters/).   
+* Pour développer des contrôles de sécurité, visitez la catégorie de tutoriels
+[Authentification et sécurité](../../../authentication-and-security/).   
+
+## Développement d'applications et d'adaptateurs 
 {: #applications-and-adapters-development }
 
 ### Applications
 {: #applications }
-* Cordova applications require NodeJS and the Cordova CLI. Read more about [setting up the Cordova development environment](../cordova).
+* Les applications Cordova requièrent NodeJS et l'interface de ligne de commande
+Cordova. Pour en savoir plus, voir [Configuration de
+l'environnement de développement Cordova](../cordova).
 
-    You can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others, to implement applications and adapters.  
+    Vous pouvez utiliser l'éditeur de code de
+votre choix, par exemple Atom.io, Visual Studio Code, Eclipse, IntelliJ ou d'autres, afin
+d'implémenter des applications et des adaptateurs.   
     
-* Native applications require either Xcode, Android Studio or Visual Studio. Read more about [setting up the iOS/Android/Windows development environment](../).
+* Les applications natives requièrent Xcode, Android Studio ou Visual
+Studio. Pour en savoir plus, voir [Configuration de
+l'environnement de développement (iOS/Android/Windows)](../).
 
-### Adapters
+### Adaptateurs
 {: #adapters }
-Adapters require Apache Maven to be installed. Refer to the [Adapters](../../../adapters/) category to learn more about adapters and how to create, develop and deploy.
+Les adaptateurs requièrent l'installation d'Apache Maven. Voir la catégorie
+[Adaptateurs](../../../adapters/) pour en savoir plus sur les
+adaptateurs, leur création, leur développement et leur déploiement. 
 
-## Tutorials to follow next
+## Tutoriels à suivre ensuite 
 {: #tutorials-to-follow-next }
-Visit the [All Tutorials](../../../all-tutorials/) page and select a tutorials category to follow next.
+Visitez la page [All Tutorials](../../../all-tutorials/) et sélectionnez
+une catégorie de tutoriels à suivre ensuite. 
 
