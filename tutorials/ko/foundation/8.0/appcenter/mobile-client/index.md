@@ -1,638 +1,639 @@
 ---
 layout: tutorial
-title: The mobile client
+title: 모바일 클라이언트
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-You can install applications on your mobile device with the Application Center mobile client.
+Application Center 모바일 클라이언트를 사용하여 모바일 디바이스에 애플리케이션을 설치할 수 있습니다. 
 
-The Application Center mobile client is the application that runs on your Android, iOS, Windows Phone, or Windows device. Only Windows Phone 8 is supported by the current version of the Application Center. You use the mobile client to list the catalog of available applications in the Application Center. You can install these applications on your device. The mobile client is sometimes referred to as the Application Center installer. This application must be present on your device if you want to install on your device applications from your private application repository.
+Application Center 모바일 클라이언트는 Android, iOS, Windows Phone 또는 Windows 디바이스에서 실행되는 애플리케이션입니다. Windows Phone 8만 Application Center의 최신 버전에서 지원됩니다. 모바일 클라이언트를 사용하여 Application Center에서 사용 가능한 애플리케이션의 카탈로그를 나열합니다. 디바이스에 이러한 애플리케이션을 설치할 수 있습니다. 모바일 클라이언트는 Application Center 설치 프로그램이라고도 합니다. 개인 애플리케이션 저장소로부터 디바이스 애플리케이션에 설치하려는 경우 이 애플리케이션이 디바이스에 있어야 합니다. 
 
-### Prerequisites
+### 전제조건
 {: #prerequisites }
-Your system administrator must give you a user name and password before you can download and install the mobile client. The user name and password are required whenever you start the mobile client on your device. For Windows Store applications, the user name and password are required for the mobile client only at run time. For security reasons, do not disseminate these credentials. These credentials are the same credentials used to log in to the Application Center console.
+모바일 클라이언트를 다운로드하고 설치할 수 있으려면 시스템 관리자가 사용자 이름과 비밀번호를 제공해야 합니다. 디바이스에서 모바일 클라이언트를 시작할 때마다 사용자 이름 및 비밀번호가 필요합니다. Windows 스토어 애플리케이션의 경우 런타임 시에만 모바일 클라이언트에 대해 사용자 이름 및 비밀번호가 필요합니다. 보안 상의 이유로 이러한 신임 정보가 유포되지 않도록 주의하십시오. 이러한 신임 정보는 Application Center 콘솔에 로그인하는 데 사용되는 동일한 신임 정보입니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
-* [Installing the client on an Android mobile device](#installing-the-client-on-an-android-mobile-device)
-* [Installing the client on an iOS mobile device](#installing-the-client-on-an-ios-mobile-device)
-* [Installing the client on a Windows Phone 8 Universal mobile device](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
-* [The Login view](#the-login-view)
-* [Views in the Application Center client](#views-in-the-application-center-client)
-* [Installing an application on an Android device](#installing-an-application-on-an-android-device)
-* [Installing an application on an iOS device](#installing-an-application-on-an-ios-device)
-* [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device)
-* [Installing a Windows Store application on a Windows device](#installing-a-windows-store-application-on-a-windows-device)
-* [Installing applications through public app stores](#installing-applications-through-public-app-stores)
-* [Removing an installed application](#removing-an-installed-application)
-* [Showing details of a specific application version](#showing-details-of-a-specific-application-version)
-* [Updating an application](#updating-an-application)
-* [Upgrading the Application Center client automatically](#upgrading-the-application-center-client-automatically)
-* [Reverting an installed application](#reverting-an-installed-application)
-* [Marking or unmarking a favorite app](#marking-or-unmarking-a-favorite-app)
-* [Submitting a review for an installed application](#submitting-a-review-for-an-installed-application)
-* [Viewing reviews](#viewing-reviews)
+* [Android 모바일 디바이스에 클라이언트 설치](#installing-the-client-on-an-android-mobile-device)
+* [iOS 모바일 디바이스에 클라이언트 설치](#installing-the-client-on-an-ios-mobile-device)
+* [Windows Phone 8 Universal 모바일 디바이스에 클라이언트 설치](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
+* [로그인 보기](#the-login-view)
+* [Application Center 클라이언트의 보기](#views-in-the-application-center-client)
+* [Android 디바이스에 애플리케이션 설치](#installing-an-application-on-an-android-device)
+* [iOS 디바이스에 애플리케이션 설치](#installing-an-application-on-an-ios-device)
+* [Windows Phone 디바이스에 애플리케이션 설치](#installing-an-application-on-a-windows-phone-device)
+* [Windows 디바이스에 Windows 스토어 애플리케이션 설치](#installing-a-windows-store-application-on-a-windows-device)
+* [공용 앱 스토어를 통한 애플리케이션 설치](#installing-applications-through-public-app-stores)
+* [설치된 애플리케이션 제거](#removing-an-installed-application)
+* [특정 애플리케이션 버전의 세부사항 표시](#showing-details-of-a-specific-application-version)
+* [애플리케이션 업데이트](#updating-an-application)
+* [Application Center 클라이언트 자동 업그레이드](#upgrading-the-application-center-client-automatically)
+* [설치된 애플리케이션 되돌리기](#reverting-an-installed-application)
+* [즐겨찾기 앱 표시 또는 표시 해제](#marking-or-unmarking-a-favorite-app)
+* [설치된 애플리케이션에 대한 검토 제출](#submitting-a-review-for-an-installed-application)
+* [검토 보기](#viewing-reviews)
 
-## Installing the client on an Android mobile device
+## Android 모바일 디바이스에 클라이언트 설치
 {: #installing-the-client-on-an-android-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on your Android mobile device by entering the access URL in your browser, entering your credentials, and completing the required steps.
+브라우저에 액세스 URL을 입력하고, 신임 정보를 입력하고, 필요한 단계를 완료하여, 설치 프로그램 플래그로 표시되어 있는 서명된 애플리케이션 또는 모바일 클라이언트를 Android 모바일 디바이스에 설치할 수 있습니다. 
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`
+1. 모바일 디바이스에서 브라우저를 시작하십시오. 
+2. 주소 텍스트 필드에 다음 액세스 URL을 입력하십시오. `http://hostname:portnumber/applicationcenter/installers. html`
 
-    Where hostname is the address of the server and portnumber is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+    여기서 hostname은 서버의 주소이며 portnumber는 Application Center가 설치된 포트 번호입니다. 시스템 관리자가 이 정보를 제공할 수 있습니다. 
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page installers.html does not work on your mobile device, you can use inst.html. This page is provided in English only and is not translated into other languages.
+    또한 Application Center는 모바일 디바이스에 클라이언트 설치를 위한 대체 URL을 제공합니다. `http://hostname:portnumber/applicationcenter/inst.html`. 이 URL의 페이지는 일부 이전 또는 비표준 모바일 웹 브라우저에서 더 잘 작동합니다. 모바일 디바이스에서 페이지 installers.html이 작동하지 않는 경우 inst.html을 사용할 수 있습니다. 이 페이지는 영어로만 제공되며 다른 언어로는 번역되지 않습니다. 
 
-    If you try to open the page with HTTPS and use self-signed certificates, older Android browsers cannot open the page. In this case, you must use a non self-signed certificate or use another browser on the Android device, such as Firefox, Chrome, or Opera. In Android 4 and later, the Android browser displays a security warning about the SSL certificate, but lets you proceed to the website after confirmation that you consent to an unsafe connection.
+    HTTPS를 사용하여 페이지를 열고 자체 서명된 인증서를 사용하려고 시도하는 경우, 이전 Android 브라우저는 페이지를 열 수 없습니다. 이 경우 자체 서명되지 않은 인증서를 사용하거나 Android 디바이스에서 Firefox, Chrome 또는 Opera와 같은 다른 브라우저를 사용해야 합니다. Android 4 이상의 경우, Android 브라우저에 SSL 인증서에 대한 보안 경고가 표시되지만 안전하지 않은 연결에 동의함을 확인한 후 웹 사이트로 이동할 수 있습니다. 
 
-3. Enter your user name and password. When your user name and password are validated, the list of compatible installer applications for your device is displayed in the browser. Normally, only one application, the mobile client, appears in this list.
+3. 사용자 이름 및 비밀번호를 입력하십시오. 사용자 이름 및 비밀번호의 유효성이 검증되면 디바이스에 대한 호환 가능한 설치 프로그램 애플리케이션 목록이 브라우저에 표시됩니다. 일반적으로 모바일 클라이언트, 하나의 애플리케이션만 이 목록에 표시됩니다. 
 
-4. If the web server uses a self-signed CA certificate, install the certificate at least once on the device. The Application Center administrator should provide the certificate; see [Managing and installing self-signed CA certificates in an Application Center test environment](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment) for details.
-    * Tap the **SSL-Certificate** tab and select the certificate.
-    * Tap **Install**. You must only perform this action once for the device. You can verify whether the certificate is installed by looking in **Settings → Security → Trusted Credentials → User on the device**. This view shows the SSL certificates that the user has installed on the device. If the self-signed CA certificate is not installed on the device, the Android operating system prevents you from downloading the mobile client in the following steps.
+4. 웹 서버가 자체 서명된 CA 인증서를 사용하는 경우 디바이스에 하나 이상의 인증서를 설치하십시오. Application Center 관리자는 인증서를 제공해야 합니다. 세부사항은 [Application Center 테스트 환경에서 자체 서명된 CA 인증서 관리 및 설치](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment)를 참조하십시오. 
+    * **SSL 인증서** 탭을 누르고 인증서를 선택하십시오. 
+    * **설치**를 누르십시오. 디바이스에 대해 이 조치를 한 번만 수행해야 합니다. **설정 → 보안 → 신뢰할 수 있는 신임 정보 → 디바이스의 사용자**를 확인하여 인증서가 설치되어 있는지 확인할 수 있습니다. 이 보기는 사용자가 디바이스에 설치한 SSL 인증서를 표시합니다. 자체 서명된 CA 인증서가 디바이스에 설치되어 있지 않으면 Android 운영 체제가 다음 단계에서 모바일 클라이언트를 다운로드하는 것을 방지합니다.
 
-    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the **Installer** property to **true**. See [Application properties](../appcenter-console/#application-properties).
+    Application Center 관리자가 모바일 클라이언트 애플리케이션을 설치해야 사용 가능한 애플리케이션 목록에서 모바일 클라이언트를 확인할 수 있습니다. 관리자는 모바일 클라이언트를 Application Center에 업로드하고 **설치 프로그램** 특성을 **true**로 설정합니다. [애플리케이션 특성](../appcenter-console/#application-properties)을 참조하십시오. 
 
-    ![List of available mobile client applications to install](ac_instal_client_and1.jpg)
+    ![설치할 수 있는 모바일 클라이언트 애플리케이션 목록](ac_instal_client_and1.jpg)
     
-5. Select an item in the list to display the application details. Typically, these details include the application name and its version number.
+5. 애플리케이션 세부사항을 표시하려면 목록에서 항목을 선택하십시오. 일반적으로 이러한 세부사항에는 애플리케이션 이름과 해당 버전 번호가 포함됩니다. 
 
-    ![Application details](ac_app_details.jpg)
+    ![애플리케이션 세부사항](ac_app_details.jpg)
 
-6. Tap **Install Now** to download the mobile client. On newer Android devices, a question might request permission for Chrome to access media files on the device. Select YES. A warning about potential harmful files might be displayed. Select the option to keep the APK file anyway.
+6. **지금 설치**를 눌러 모바일 클라이언트를 다운로드하십시오. 최신 Android 디바이스에서는 디바이스의 미디어 파일에 액세스하기 위해 Chrome에 대한 권한을 요청하는 질문이 표시될 수 있습니다. 예를 선택하십시오. 잠재적 유해 파일에 대한 경고가 표시될 수 있습니다. APK 파일을 보존하는 옵션을 선택하십시오.
 
-7. Launch the **Android Download** applications. Select the Application Center client installer.
-8. Select the Application Center client installer. You can see the access granted to the application when you choose to install it.
+7. **Android 다운로드** 애플리케이션을 실행하십시오. Application Center 클라이언트 설치 프로그램을 선택하십시오. 
+8. Application Center 클라이언트 설치 프로그램을 선택하십시오. 애플리케이션을 설치하도록 선택하면 애플리케이션에 부여된 액세스 권한을 확인할 수 있습니다. 
 
-    ![Installation of the mobile client in Android](ac_instal_client_and_rights.jpg)
+    ![Android에 모바일 클라이언트 설치](ac_instal_client_and_rights.jpg)
     
-9. Select **Install** to install the mobile client.
-10. When the application is installed, select **Open** to open the mobile client or **Done** to close the Downloads application.
+9. 모바일 클라이언트를 설치하려면 **설치**를 선택하십시오. 
+10. 애플리케이션이 설치되어 있는 경우 **열기**를 선택하여 모바일 클라이언트를 열거나 **완료**를 선택하여 다운로드 애플리케이션을 닫으십시오. 
 
-The APK file might fail for one of the following reasons:
+다음 중 한 가지 이유로 APK 파일이 실패할 수 있습니다.
 
-* The device does not have enough free memory.
-* The SSL certificate of the server is not known to the device.
+* 디바이스에 사용 가능한 메모리가 충분하지 않습니다. 
+* 서버의 SSL 인증서가 디바이스에 알려져 있지 않습니다. 
 
-The first time that you install an app through the Downloads application, you might receive a request to confirm whether Google should regularly check the device activity for security problems. You can accept or decline according to your preference. The Application Center client is unaffected by your choice.
+다운로드 애플리케이션을 통해 앱을 처음 설치하는 경우 보안 문제 해결을 위해 Google에서 디바이스 활동을 정기적으로 점검하는지 확인하는 요청을 수신할 수 있습니다. 원하는 대로 허용하거나 거부할 수 있습니다. Application Center 클라이언트는 이 선택에 영향을 받지 않습니다. 
 
-The installation might be blocked for one of the following reasons:
+다음 중 한 가지 이유로 설치가 차단될 수 있습니다. 
 
-* The device does not permit installation from unknown sources. Go to **Settings → Security** on the device and enable **Unknown sources (Allow installation from unknown sources)**.
-* The device has the same app already installed, but it was signed by a different certificate. In this case, you must remove the app before you install it on the device with another signed certificate.
+* 디바이스가 알 수 없는 소스로부터의 설치를 허용하지 않습니다. 디바이스에서 **설정 → 보안**으로 이동하여 **알 수 없는 소스(알 수 없는 소스로부터의 설치 허용)**을 사용으로 설정하십시오. 
+* 디바이스에 이미 동일한 앱이 설치되어 있는데 다른 인증서로 서명되었습니다. 이 경우, 서명된 다른 인증서로 디바이스에 앱을 설치하기 전에 해당 앱을 제거해야 합니다. 
 
-## Installing the client on an iOS mobile device
+## iOS 모바일 디바이스에 클라이언트 설치
 {: #installing-the-client-on-an-ios-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on your iOS mobile device by entering the access URL in your browser, entering your credentials, and completing the required steps.
+브라우저에 액세스 URL을 입력하고, 신임 정보를 입력하고, 필요한 단계를 완료하여, 설치 프로그램 플래그로 표시되어 있는 서명된 애플리케이션 또는 모바일 클라이언트를 iOS 모바일 디바이스에 설치할 수 있습니다. 
 
-> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
+> **중요:** iOS 디바이스에 애플리케이션을 설치하려면, 먼저 SSL을 사용하여 Application Center 서버를 구성해야 합니다. [SSL(Secure Sockets Layer) 구성](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)을 참조하십시오.
 
-The **ibm.appcenter.ios.plist.onetimeurl** JNDI property of the IBM  Application Center Services controls whether One-Time URLs are used when the mobile client is installed on an iOS mobile device. Set this property to false for maximal security. When you set this property to false, users must enter their credentials several times when they install the mobile client: once when they select the client and once when they install the client.
+IBM Application Center 서비스의 **ibm.appcenter.ios.plist.onetimeurl** JNDI 특성은 모바일 클라이언트가 iOS 모바일 디바이스에 설치되는 경우 일회성 URL이 사용되는지를 제어합니다. 보안을 강화하기 위해 이 특성을 false로 설정하십시오. 이 특성을 false로 설정하는 경우 모바일 클라이언트를 설치할 때 사용자는 클라이언트를 선택할 때 한 번, 클라이언트를 설치할 때 한 번과 같이 여러 번 신임 정보를 입력해야 합니다. 
 
-When you set the property to true, users enter their credentials only once. A temporary download URL with a cryptographic hash is generated when the user enters the credentials. This temporary download URL is valid for 1 hour and does not require further authentication. This solution is a compromise between security and ergonomy.
+특성을 true로 설정하는 경우 사용자는 신임 정보를 한 번만 입력합니다. 사용자가 신임 정보를 입력할 때 암호 해시를 사용하는 임시 다운로드 URL이 생성됩니다. 이 임시 다운로드 URL은 1시간 동안 유효하며 추가 인증이 필요하지 않습니다. 이 해결 방법은 보안과 인간공학 사이의 타협점입니다. 
 
-The steps to specify the **ibm.appcenter.ios.plist.onetimeurl** JNDI property are similar to the steps for the **ibm.appcenter.proxy.host property**. See [Defining the endpoint of the application resources](../../installation-configuration/production/appcenter/#defining-the-endpoint-of-the-application-resources).
+**ibm.appcenter.ios.plist.onetimeurl** JNDI 특성을 지정하는 단계는 **ibm.appcenter.proxy.host 특성**에 대한 단계와 유사합니다. [애플리케이션 자원의 엔드포인트 정의](../../installation-configuration/production/appcenter/#defining-the-endpoint-of-the-application-resources)를 참조하십시오. 
 
-Installing the mobile client on an iOS device is similar to installing it on Android, but with some differences. The installer is automatically started directly after download. Your user name and password credentials are requested for almost all the installation steps.
+iOS 디바이스에 모바일 클라이언트 설치는 Android에 설치하는 경우와 비슷하지만 약간의 차이가 있습니다. 설치 프로그램은 다운로드 직후에 자동으로 시작됩니다. 거의 모든 설치 단계에서 사용자의 사용자 이름과 비밀번호 신임 정보가 요청됩니다. 
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address field: `http://hostname:portnumber/applicationcenter/installers.html`
+1. 모바일 디바이스에서 브라우저를 시작하십시오. 
+2. 주소 필드에 다음 액세스 URL을 입력하십시오. `http://hostname:portnumber/applicationcenter/installers. html`
 
-    Where hostname is the address of the server and portnumber is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+    여기서 hostname은 서버의 주소이며 portnumber는 Application Center가 설치된 포트 번호입니다. 시스템 관리자가 이 정보를 제공할 수 있습니다. 
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page **installers.html** does not work on your mobile device, you can use **inst.html**. The page is provided in English only and is not translated into other languages.
+    또한 Application Center는 모바일 디바이스에 클라이언트 설치를 위한 대체 URL을 제공합니다. `http://hostname:portnumber/applicationcenter/inst.html`. 이 URL의 페이지는 일부 이전 또는 비표준 모바일 웹 브라우저에서 더 잘 작동합니다. 모바일 디바이스에서 페이지 **installers.html**이 작동하지 않는 경우 **inst.html**을 사용할 수 있습니다. 이 페이지는 영어로만 제공되며 다른 언어로는 번역되지 않습니다. 
 
-    If you open the page with HTTPS and use self-signed certificates, the browser displays a security warning about the SSL certificate, but you can proceed to the website after confirmation that you consent to an unsafe connection.
+    HTTPS를 사용하여 페이지를 열고 자체 서명된 인증서를 사용하는 경우, 브라우저에 SSL 인증서에 대한 보안 경고가 표시되지만 안전하지 않은 연결에 동의함을 확인한 후 웹 사이트로 이동할 수 있습니다. 
 
-3. Enter your user name and password. See the [prerequisites in The mobile client](../preparations).
+3. 사용자 이름 및 비밀번호를 입력하십시오. [모바일 클라이언트의 전제조건](../preparations)을 참조하십시오. 
 
-    When your user name and password are validated, the list of compatible installer applications for your device is displayed in the browser. Normally, only one application, the mobile client, appears in this list.
+    사용자 이름 및 비밀번호의 유효성이 검증되면 디바이스에 대한 호환 가능한 설치 프로그램 애플리케이션 목록이 브라우저에 표시됩니다. 일반적으로 모바일 클라이언트, 하나의 애플리케이션만 이 목록에 표시됩니다. 
 
-    If you open the page with https:
-    * If the web server uses a real SSL certificate that is provided by a trusted certificate authority, proceed to step 5.
-    * If the web server uses a self-signed CA certificate, proceed to step 4.
+    https를 사용하여 페이지를 여는 경우
+    * 웹 서버가 신뢰할 수 있는 인증 기관에서 제공하는 실제 SSL 인증서를 사용하는 경우 5단계로 진행하십시오. 
+    * 웹 서버가 자체 서명된 CA 인증을 사용하는 경우 4단계로 진행하십시오. 
 
-4. If the web server uses a self-signed CA certificate, install the certificate at least once on the device.
+4. 웹 서버가 자체 서명된 CA 인증서를 사용하는 경우 디바이스에 하나 이상의 인증서를 설치하십시오. 
 
-    The Application Center administrator provides the certificate. See [Managing and installing self-signed CA certificates in an Application Center test environment](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment) for details.
+    Application Center 관리자가 인증서를 제공합니다. 세부사항은 [Application Center 테스트 환경에서 자체 서명된 CA 인증서 관리 및 설치](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment)를 참조하십시오. 
 
-    * Tap the SSL-Certificate tab and select the certificate.
-    * Tap Install. You do this only once for the device. You can verify whether the certificate is installed by looking in **Settings → General → Profiles on the device**. This view shows the SSL certificates that the user installed on the device. If the self-signed CA certificate is not installed on the device, the iOS operating system prevents you from downloading the mobile client in the following steps.
+    * SSL 인증서 탭을 누르고 인증서를 선택하십시오. 
+    * 설치를 누르십시오. 디바이스에 대해 한 번만 수행합니다. **설정 → 일반 → 디바이스의 프로파일**를 확인하여 인증서가 설치되어 있는지 확인할 수 있습니다. 이 보기는 사용자가 디바이스에 설치한 SSL 인증서를 표시합니다. 자체 서명된 CA 인증서가 디바이스에 설치되어 있지 않으면 iOS 운영 체제가 다음 단계에서 모바일 클라이언트를 다운로드하는 것을 방지합니다. 
     
-    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the Installer property to true. See [Application properties](../appcenter-console/#application-properties).
+    Application Center 관리자가 모바일 클라이언트 애플리케이션을 설치해야 사용 가능한 애플리케이션 목록에서 모바일 클라이언트를 확인할 수 있습니다. 관리자가 모바일 클라이언트를 Application Center에 업로드하고 설치 프로그램 특성을 true로 설정합니다. [애플리케이션 특성](../appcenter-console/#application-properties)을 참조하십시오. 
     
-5. Tap the **Installers** tab and select an item in the list to display the application details.
-6. Tap **Install** to download the mobile client.
-7. Enter your credentials to authorize the downloader transaction.
-8. To authorize the download, tap **Install**.
+5. **설치 프로그램** 탭을 누르고 목록에서 항목을 선택하여 애플리케이션 세부사항을 표시하십시오. 
+6. **설치**를 눌러 모바일 클라이언트를 다운로드하십시오. 
+7. 다운로더 트랜잭션에 권한을 부여하려면 신임 정보를 입력하십시오. 
+8. 다운로드를 승인하려면 **설치**를 누르십시오. 
 
-    ![Confirm app to be installed](ac_instal_client_ios_conf.jpg)
+    ![설치할 앱 확인](ac_instal_client_ios_conf.jpg)
     
-9. Enter your credentials to authorize the installation.
-10. Close the browser.
+9. 설치를 승인하려면 신임 정보를 입력하십시오. 
+10. 브라우저를 닫으십시오. 
 
-    The app icon appears on the home screen and you can watch the download progress on the home screen.
+    앱 아이콘이 홈 화면에 표시되고 홈 화면에서 다운로드 진행상태를 감시할 수 있습니다. 
 
-> **Note:** Installing an application on a device requires a provisioning profile that enables the application to be installed on the selected device. If you accidentally try to install an application that is not valid for your device, some versions of iOS might try to install the application in an endless loop without ever succeeding or indicating any error. The application icon that shows the progress of the installation appears on the home screen, but, because of the endless loop, it is difficult to delete this application icon to stop the endless loop. A workaround is to put the device into Airplane mode. In this mode, the endless loop is stopped and you can delete the application icon by following the normal steps to delete apps on iOS devices.
+> **참고:** 디바이스에 애플리케이션을 설치하려면 선택한 디바이스에 애플리케이션이 설치되도록 설정하는 프로비저닝 프로파일이 필요합니다. 실수로 디바이스에 유효하지 않은 애플리케이션을 설치하려고 시도하는 경우, 일부 iOS 버전은 완료되거나 오류 표시 없이 무한 루프로 애플리케이션 설치를 시도할 수 있습니다. 설치의 진행상태를 표시하는 애플리케이션 아이콘이 홈 화면에 표시되지만, 무한 루프로 인해서 무한 루프를 중지하기 위해 이 애플리케이션 아이콘을 삭제하기 어렵습니다. 임시 해결책은 디바이스를 통신제한 모드로 변경하는 것입니다. 이 모드에서 무한 루프가 중지되고, iOS 디바이스에서 앱을 삭제하기 위한 일반적인 단계를 수행하여 애플리케이션 아이콘을 삭제할 수 있습니다.
 
-The installation might be blocked for one of the following reasons:
+다음 중 한 가지 이유로 설치가 차단될 수 있습니다. 
 
-* The provisioning profile of the application is not valid for the device. The application must be signed with a different provisioning profile.
-* The device has no access to Apple servers to confirm the validity of the provisioning profile.
-* The SSL certificate of the server is not known to the device.
+* 애플리케이션의 프로비저닝 프로파일이 디바이스에 유효하지 않습니다. 다른 프로비저닝 프로파일을 사용하여 애플리케이션에 서명해야 합니다. 
+* 디바이스가 프로비저닝 프로파일의 유효성을 확인하기 위해 Apple 서버에 액세스할 수 없습니다. 
+* 서버의 SSL 인증서가 디바이스에 알려져 있지 않습니다. 
 
-In general, iOS applications can be installed on the device only if they are signed with a provisioning profile. See [Importing and building the project (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone).
+일반적으로 iOS 애플리케이션은 프로비저닝 프로파일로 서명된 경우에만 디바이스에 설치할 수 있습니다. [프로젝트 가져오기 및 빌드(Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone)를 참조하십시오. 
 
-Since iOS 9, when a company application is opened, depending on the type of the provisioning profile, an Untrusted Enterprise Developer message might display. This message explains that the provisioning profile is not yet trusted on this device. In this case, the application does not open, unless trust is established for this provisioning profile. Establishing trust must be done only once per provisioning profile.
+iOS 9부터 회사 애플리케이션이 열려 있는 경우, 프로비저닝 프로파일의 유형에 따라 신뢰할 수 없는 엔터프라이즈 개발자 메시지가 표시될 수 있습니다. 이 메시지는 프로비저닝 프로파일을 이 디바이스에서 아직 신뢰할 수 없음을 설명합니다. 이 경우, 이 프로비저닝 프로파일에 대해 신뢰가 설정되지 않으면 애플리케이션이 열리지 않습니다. 신뢰 설정은 프로비저닝 프로파일당 한 번만 수행해야 합니다. 
 
-To establish trust for a provisioning profile after the application is installed:
+애플리케이션이 설치된 후 프로비저닝 프로파일에 대한 신뢰를 설정하려면 다음을 수행하십시오. 
 
-#### Until iOS 9.1
+#### iOS 9.1 이하의 경우
 {: #until-ios-91 }
-1. Go to **Settings → General → Profiles**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. **설정 → 일반 → 프로파일**로 이동하십시오. **엔터프라이즈 앱** 표제 아래, 앱의 프로비저닝 프로파일이 표시됩니다. 
+2. 프로파일을 누르고 신뢰를 확인하십시오. 
 
-#### Since iOS 9.2
+#### iOS 9.2 이상의 경우
 {: #since-ios-92 }
-1. Go to **Settings → General → Profiles → Device Management or Profiles &amp; Device Management**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. **설정 → 일반 → 프로파일 → 디바이스 관리 또는 프로파일 및 디바이스 관리**로 이동하십시오. **엔터프라이즈 앱** 표제 아래, 앱의 프로비저닝 프로파일이 표시됩니다. 
+2. 프로파일을 누르고 신뢰를 확인하십시오. 
 
-After the trust is confirmed, no application that uses that provisioning profile shows the Untrusted Enterprise Developer message. For more information, see the Apple web site at [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
+신뢰가 확인되고 나면 해당 프로비저닝 프로파일을 사용하는 애플리케이션은 신뢰할 수 없는 엔터프라이즈 개발자 메시지를 표시하지 않습니다. 자세한 정보는 Apple 웹 사이트([https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460))를 참조하십시오. 
 
-## Installing the client on a Windows Phone 8 Universal mobile device
+## Windows Phone 8 Universal 모바일 디바이스에 클라이언트 설치
 {: #installing-the-client-on-a-windows-phone-8-universal-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on Windows 8 Universal by entering the access URL in your browser, entering your credentials, and completing the required steps. The company account must be preinstalled on your mobile device.
+브라우저에 액세스 URL을 입력하고, 신임 정보를 입력한 후 필수 단계를 완료하여, 설치 프로그램 플래그로 표시되어 있는 서명된 애플리케이션 또는 모바일 클라이언트를 설치할 수 있습니다. 회사 계정이 모바일 디바이스에 사전 설치되어 있어야 합니다. 
 
-Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the {{ site.data.keys.mf_server }}. It is uploaded to the {{ site.data.keys.mf_server }} by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) for details.
+회사에서 공개한 앱을 설치하려면 모바일 디바이스에 회사 계정을 추가해야 합니다. 애플리케이션 등록 토큰(AET)을 Windows Phone 디바이스에 다운로드해야 합니다. 이 AET는 {{site.data.keys.mf_server }}에 이미 있어야 합니다. Application Center 콘솔을 사용하여 {{site.data.keys.mf_server }}에 업로드됩니다. 자세한 내용은 [Windows 8 Universal의 애플리케이션 등록 토큰](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal)을 참조하십시오. 
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`.
+1. 모바일 디바이스에서 브라우저를 시작하십시오. 
+2. 주소 텍스트 필드에 다음 액세스 URL을 입력하십시오. `http://hostname:portnumber/applicationcenter/installers. html`. 
 
-    Where **hostname** is the address of the server and **portnumber** is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+    여기서 **hostname**은 서버의 주소이고 **portnumber**는 Application Center가 설치된 포트의 번호입니다. 시스템 관리자가 이 정보를 제공할 수 있습니다. 
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page **installers.html** does not work on your mobile device, you can use **inst.html**. This page is provided in English only and is not translated into other languages.
+    또한 Application Center는 모바일 디바이스에 클라이언트 설치를 위한 대체 URL을 제공합니다. `http://hostname:portnumber/applicationcenter/inst.html`. 이 URL의 페이지는 일부 이전 또는 비표준 모바일 웹 브라우저에서 더 잘 작동합니다. 모바일 디바이스에서 페이지 **installers.html**이 작동하지 않는 경우 **inst.html**을 사용할 수 있습니다. 이 페이지는 영어로만 제공되며 다른 언어로는 번역되지 않습니다. 
 
-3. Enter your credentials to authorize access to the server. On the lower part of the screen, a toolbar contains an **Installers** tab and a **Tokens** tab.
+3. 서버에 대한 액세스를 승인하려면 신임 정보를 입력하십시오. 화면의 하단에 있는 도구 모음에는 **설치 프로그램** 탭 및 **토큰** 탭이 있습니다. 
 
-    ![Preparing to install tokens and applications on a Windows Phone device](ac_wp8_toolbar_inst_app.jpg)
+    ![Windows Phone 디바이스에서 토큰 및 애플리케이션 설치 준비](ac_wp8_toolbar_inst_app.jpg)
     
-4. Tap **Tokens** and select an application enrollment token in the list of available tokens to display the token details.
+4. **토큰**을 누르고 사용 가능한 토큰 목록에서 애플리케이션 등록 토큰을 선택하여 토큰 세부사항을 표시하십시오. 
 
-    ![Application Enrollment Token details on a Windows Phone device](ac_wp8_aet_details.jpg)
+    ![Windows Phone 디바이스의 애플리케이션 등록 토큰 세부사항](ac_wp8_aet_details.jpg)
     
-5. Tap **Add** to download the application enrollment token.
-6. Tap **Add** to add the company account.
+5. **추가**를 눌러 애플리케이션 등록 토큰을 다운로드하십시오. 
+6. **추가**를 눌러 회사 계정을 추가하십시오. 
 
-    ![Adding a company account in Windows 8 Universal device](ac_wp8_add_co_account.jpg)
+    ![Windows 8 Universal 디바이스에 회사 계정 추가](ac_wp8_add_co_account.jpg)
     
-    Windows Phone 8 does not provide any feedback about adding the company account.
+    Windows Phone 8은 회사 계정 추가에 대한 피드백을 제공하지 않습니다. 
 
-7. Tap the Back icon to return to the details of application enrollment tokens.
-8. Tap **Installers** and select the mobile client application in the list of available applications. The application details are displayed.
-9. Tap **Install** to download the selected application.
+7. 이전 아이콘을 눌러 애플리케이션 등록 토큰의 세부사항으로 돌아가십시오. 
+8. **설치 프로그램**을 누르고 사용 가능한 애플리케이션 목록에서 모바일 클라이언트 애플리케이션을 선택하십시오. 애플리케이션 세부사항이 표시됩니다. 
+9. **설치**를 눌러 선택된 애플리케이션을 다운로드하십시오. 
 
-    ![The application selected to download on a Windows Phone device](ac_wp8_app_details.jpg)
+    ![Windows Phone 디바이스에 다운로드하도록 선택된 애플리케이션](ac_wp8_app_details.jpg)
     
-10. Tap **Install** to install the application.
+10. **설치**를 눌러 애플리케이션을 설치하십시오. 
 
-    ![Installing the downloaded application on a Windows Phone device](ac_wp8_app_install.jpg)
+    ![Windows Phone 디바이스에 다운로드한 애플리케이션 설치](ac_wp8_app_install.jpg)
     
-    Windows 8 Universal does not provide any feedback about installing the application.
+    Windows 8 Universal은 애플리케이션 설치에 대한 피드백을 제공하지 않습니다. 
 
-> **Tip:** When you install a company application on a device, the device must connect to the Microsoft server to verify the application signature. Sometimes, the Microsoft server does not respond. In this case, you can try the installation again a few minutes later. See Installing an application on a Windows Phone device for the possible error messages.
+> **팁:** 회사 애플리케이션을 디바이스에 설치하는 경우 애플리케이션 서명을 확인하려면 디바이스를 Microsoft 서버에 연결해야 합니다. Microsoft 서버가 응답하지 않는 경우가 있습니다. 이 경우 몇 분 후에 설치를 다시 시도할 수 있습니다. 가능한 오류 메시지에 대해서는 Windows Phone 디바이스에 애플리케이션 설치를 참조하십시오.
 
-When the installation is finished, the mobile client application should be available in your applications list in Windows Phone.
+설치가 완료되면 모바일 클라이언트 애플리케이션이 Windows Phone의 애플리케이션 목록에서 사용 가능해야 합니다. 
 
-## The Login view
+## 로그인 보기 
 {: #the-login-view }
-In the Login view, you can access the fields that are required to connect to the server to view the list of applications available for your device.  
-Use the Login view to enter your credentials to connect to the Application Center server to view the list of applications that are available for your device.
+로그인 보기에서 사용자의 디바이스에 사용 가능한 애플리케이션의 목록을 보기 위해 서버에 연결하는 데 필요한 필드에 액세스할 수 있습니다.   
+디바이스에 사용할 수 있는 애플리케이션의 목록을 보려면 로그인 보기를 사용하여 Application Center 서버에 연결하기 위한 신임 정보를 입력하십시오. 
 
-The Login view presents all the mandatory fields for the information that is required to connect to the server.  
-When the application is started, the Login page is displayed. The login credentials are required to connect to the server.
+로그인 보기는 서버에 연결하는 데 필요한 정보를 위한 모든 필수 필드를 제공합니다.   
+애플리케이션이 시작되면 로그인 페이지가 표시됩니다. 서버에 연결하려면 로그인 신임 정보가 필요합니다. 
 
-On iOS devices, the credentials are saved in the keychain. After you successfully log in to the Application Center server, when you later start the application, the login page is not displayed and the previous credentials are used. If login fails, the login view is displayed.
+iOS 디바이스에서 신임 정보가 키체인에 저장됩니다. Application Center 서버에 로그인하고 나면 나중에 애플리케이션을 시작할 때 로그인 페이지가 표시되지 않으며 이전 신임 정보가 사용됩니다. 로그인에 실패하면 로그인 보기가 표시됩니다. 
 
-#### User name and password
+#### 사용자 이름 및 비밀번호
 {: #user-name-and-password }
-Enter your credentials for access to the server. They are the same user name and password as the ones that were granted by your system administrator for downloading and installing the mobile client.
+서버에 액세스하기 위한 신임 정보를 입력하십시오. 이는 모바일 클라이언트를 다운로드하여 설치할 수 있도록 시스템 관리자가 부여한 사용자 이름 및 비밀번호와 동일합니다.
 
-#### Application Center server address
+#### Application Center 서버 주소
 {: #application-center-server-address }
-The Application Center server address is composed of the following elements:
+Application Center 서버 주소는 다음 요소로 구성됩니다. 
 
-* Host name or IP address.
-* Port, which is optional if the default port is used.
-* Context, which is optional if the Application Center is installed at the root of the server.
+* 호스트 이름 또는 IP 주소.
+* 포트(기본 포트가 사용되는 경우 선택사항임)
+* 컨텍스트(Application Center가 서버의 루트에 설치되어 있는 경우 선택사항임)
 
-On a phone, a field is available for each part of the address.
+전화기에서 주소의 각 부분에 대한 필드가 사용 가능합니다. 
 
-On a tablet, a single field that contains a preformatted example address is displayed. Use it as a model for entering the correct server address to avoid formatting errors. See [Preparations for using the mobile client](../preparations) for information on filling parts of the address in advance, or hardcode the address and hide the associated fields.
+태블릿에서는 사전에 형식화된 예제 주소가 포함된 단일 필드가 표시됩니다. 형식화 오류를 방지하기 위해 올바른 서버 주소를 입력하기 위한 모델로 사용하십시오. 주소 부분 미리 채우기에 대한 정보 또는 주소 하드코딩 및 연관된 필드 숨기기에 대해서는 [모바일 클라이언트 사용 준비](../preparations)를 참조하십시오. 
 
-#### Secure Socket Layer (SSL)
+#### SSL(Secure Sockets Layer)
 {: #secure-socket-layer-ssl }
-SSL is mandatory on iOS devices. Therefore, this option is not displayed in the login view.
-On the other supported operating systems, select SSL to turn on the SSL protocol for communications over the network. If you tap this field again when SSL is selected, SSL switches off.
+SSL은 iOS 디바이스에 필수입니다. 그러므로 이 옵션은 로그인 보기에 표시되지 않습니다. 지원된 운영 체제에서 네트워크를 통한 통신을 위해 SSL 프로토콜을 작동하려면 SSL을 선택하십시오. SSL이 선택된 경우 이 필드를 다시 누르면 SSL이 선택 해제됩니다.
 
-SSL selection is available for cases where the Application Center server is configured to run over an SSL connection. Selecting SSL when the server is not configured to handle an SSL layer prevents you from connecting to the server. Your system administrator can inform you whether the Application Center runs over an SSL connection.
+SSL 선택은 Application Center 서버가 SSL 연결을 통해 실행하도록 구성되는 경우에 사용 가능합니다. 서버가 SSL 계층을 처리하도록 구성되지 않은 경우 SSL을 선택하면 사용자가 서버에 연결할 수 없습니다. 시스템 관리자가 SSL 연결을 통해 Application Center가 실행되는지 여부를 사용자에게 알릴 수 있습니다. 
 
-### Connecting to the server
+### 서버에 연결
 {: #connecting-to-the-server }
-To connect to the server:
+서버에 연결하려면 다음을 수행하십시오. 
 
-1.Enter your user name and password.
-2. Enter your Application Center server address.
-3. If your configuration of the Application Center runs over the SSL protocol, select **SSL**.
-4. Tap **Log in** to connect to the server.
+1. 사용자 이름 및 비밀번호를 입력하십시오. 
+2. Application Center 서버 주소를 입력하십시오. 
+3. Application Center의 구성이 SSL 프로토콜을 통해 실행되는 경우 **SSL**을 선택하십시오. 
+4. **로그인**을 눌러 서버에 연결하십시오. 
 
-If this login is successful, the user name and server address are saved to fill the fields when you start the client afterwards.
+이 로그인에 성공하면 나중에 클라이언트를 시작할 때 필드가 채워지도록 사용자 이름 및 서버 주소가 저장됩니다. 
 
-## Views in the Application Center client
+## Application Center 클라이언트의 보기 
 {: #views-in-the-application-center-client }
-The client provides views that are adapted to the various tasks that you want to perform.  
-After a successful login, you can choose among these views.
+클라이언트는 수행할 다양한 태스크에 맞게 조정되는 보기를 제공합니다.   
+로그인이 완료되고 나면 이러한 보기 중에서 선택할 수 있습니다. 
 
-![Views in the client application](ac_android_ios_views.jpg)
+![클라이언트 애플리케이션의 보기](ac_android_ios_views.jpg)
 
-Use these views to communicate with a server to send or retrieve information about applications or to manage the applications that are located on your device.
+이러한 보기를 통해 서버와 통신하여 애플리케이션에 대한 정보를 보내거나 검색하고 사용자의 디바이스에 있는 애플리케이션을 관리할 수 있습니다.
 
-The Windows 8 client home screen displays up to six applications in each category. On the Windows 8 client, if you want the full list of applications in a category, click the title of the category.
+Windows 8 클라이언트 홈 화면은 각 카테고리에서 최대 6개의 애플리케이션을 표시합니다. Windows 8 클라이언트에서 카테고리의 전체 애플리케이션 목록을 원하는 경우 카테고리의 제목을 클릭하십시오. 
 
-![Client homescreen on Windows 8](ac_homeCatalog_w8.JPG)
+![Windows 8의 클라이언트 홈 화면](ac_homeCatalog_w8.JPG)
 
-Here are descriptions of the different views:
+다음은 다른 보기에 대한 설명입니다. 
 
-* **Catalog**. This view shows the applications that can be installed on a device.
-* **Favorites**. This view shows the list of applications that you marked as favorites.
-* **Updates**. This view shows all applications that you marked as favorite apps and that have a later version available in Application Center than the version, if any, installed on the device.
+* **카탈로그**. 이 보기는 디바이스에 설치할 수 있는 애플리케이션을 표시합니다. 
+* **즐겨찾기**. 이 보기는 즐겨찾기로 표시한 애플리케이션의 목록을 표시합니다. 
+* **업데이트**. 이 보기는 즐겨찾기 앱으로 표시되었으며 디바이스에 설치된 버전보다 최신 버전이 Application Center에서 사용 가능한 모든 애플리케이션을 표시합니다. 
 
-When you first start the mobile client, it opens the Login view for you to enter your user name, password, and the address of the Application Center server. This information is mandatory.
+모바일 클라이언트를 처음 시작하는 경우 사용자 이름, 비밀번호 및 Application Center 서버의 주소를 입력하도록 사용자에게 로그인 보기가 표시됩니다. 이 정보는 필수입니다. 
 
-### Displays on different device types
+### 다른 디바이스 유형에 표시
 {: #displays-on-different-device-types }
-The layout of the views is specific to the Android, iOS, Windows Phone, or Windows 8 environment, even though the common functions that you can perform in the views are the same for all operating systems. Different device types might have different page displays. On the phone, a list is displayed. On a tablet, a grid of applications is used.
+보기에서 수행할 수 있는 공통 기능이 모든 운영 체제에 대해 동일한 경우에도 보기의 레이아웃은 Android, iOS, Windows Phone 또는 Windows 8 환경에 특정합니다. 다른 디바이스 유형은 다른 페이지 디스플레이를 포함할 수 있습니다. 전화기에서는 목록이 표시됩니다. 태블릿에서는 애플리케이션 눈금이 사용됩니다. 
 
-![Catalog view on a phone](ac_phone_catalog.jpg)
+![전화기의 카탈로그 보기](ac_phone_catalog.jpg)
 
-![Catalog view on a tablet](ac_tablet_catalog.jpg)
+![태블릿의 카탈로그 보기](ac_tablet_catalog.jpg)
 
-### Features of the views
+### 보기의 기능
 {: #features-of-the-views }
-On an Android or iOS tablet, you can sort the lists by tapping one of the sort criteria.  
-On a Windows Phone, Android, or iOS phone, sort criteria are available through the sort button.  
-On the Windows 8 client, you can sort the list of applications within a category. To sort the applications, select from the list of sort criteria in the **Sort By** field.
+Android 또는 iOS 태블릿에서, 정렬 기준 중 하나를 눌러 목록을 정렬할 수 있습니다.   
+Windows Phone, Android 또는 iOS 전환기에서 정렬 기준은 정렬 단추를 통해 사용 가능합니다.   
+Windows 8 클라이언트의 경우 카테고리 내의 애플리케이션 목록을 정렬할 수 있습니다. 애플리케이션을 정렬하려면, **정렬 기준** 필드에 있는 정렬 기준 목록에서 선택하십시오. 
 
-Applications that are marked as favorites are indicated by a star that is superposed on the application icon.
+즐겨찾기로 표시되는 애플리케이션은 애플리케이션 아이콘 위에 놓여지는 별 모양으로 표시됩니다. 
 
-The average rating of the latest version of an application is shown by using a number of stars and the number of ratings received. [See Preparations for using the mobile client](../preparations) for how to show the rating of all versions of the application instead of the latest version only.
+최신 버전의 애플리케이션에 대한 평균 등급은 여러 개의 별과 받은 등급 수를 사용하여 표시됩니다. 최신 버전만 표시하는 대신 애플리케이션의 모든 버전에 대한 등급을 표시하는 방법은 [모바일 클라이언트 사용 준비](../preparations)를 참조하십시오. 
 
-Tapping an application in the list opens the Details view of the latest installed version of this application.
+목록에서 애플리케이션을 누르면 해당 애플리케이션의 설치된 최신 버전에 대한 세부사항 보기가 열립니다. 
 
-To refresh the view, tap the refresh button: <img src="ac_refresh_icon.jpg" style="margin:0;display:inline"  alt="Button to refresh the view"/>. or, on Windows 8, <img src="ac_w8_refresh.jpg" style="margin:0;display:inline"  alt="Button to refresh the view on Windows 8 client"/>.
+보기를 새로 고치려면, 새로 고치기 단추 <img src="ac_refresh_icon.jpg" style="margin:0;display:inline"  alt="보기 새로 고치기 단추"/>를 누르거나, Windows 8의 경우, <img src="ac_w8_refresh.jpg" style="margin:0;display:inline"  alt="Windows 8 클라이언트의 보기 새로 고치기 단추"/>를 누르십시오. 
 
-To return to the login page:
+로그인 페이지로 돌아가려면 다음을 수행하십시오. 
 
-* In Android, iOS, and Windows Phone applications, tap the logout button: <img src="ac_logout_icon.jpg" style="margin:0;display:inline" alt="Button to return to the login page and to log out on Android and iOS devices"/>
-* In the Windows 8 version of the client, tap the logout button: <img src="ac_w8_logoutbtn.jpg" style="margin:0;display:inline" alt="Button to return to the login page and to log out on Windows 8 client"/>
+* Android, iOS 및 Windows Phone 애플리케이션에서 로그아웃 단추를 누르십시오. <img src="ac_logout_icon.jpg" style="margin:0;display:inline" alt="로그인 페이지로 돌아가서 Android 및 iOS 디바이스에서 로그아웃하기 위한 단추"/>
+* 클라이언트의 Windows 8 버전에서 로그아웃 단추를 누르십시오. <img src="ac_w8_logoutbtn.jpg" style="margin:0;display:inline" alt="로그인 페이지로 돌아가서 Windows 8 클라이언트에서 로그아웃하기 위한 단추"/>
 
-### The Details view
+### 세부사항 보기
 {: #the-details-view }
-Tapping an application in the Catalog, Favorites, or Updates view opens the Details view where you can see details of the application properties. Details of the application version are displayed in this view.
+카탈로그, 즐겨찾기 또는 업데이트 보기에서 애플리케이션을 누르면 애플리케이션 특성의 세부사항을 볼 수 있는 세부사항 보기가 열립니다. 이 보기에 애플리케이션 버전의 세부사항이 표시됩니다. 
 
-On Android, iOS, and Windows Phone clients, the following details of the application version are displayed:
+Android, iOS 및 Windows Phone 클라이언트에서 애플리케이션 버전에 대한 다음 세부사항이 표시됩니다. 
 
-* The name of the application.
-* Commercial version: the published version of the application.
-* Internal version: on Android, the internal version identification of the application; on iOS, the build number of the application. See [Application properties](../appcenter-console/#application-properties) for technical details about this property on all operating systems.
-* Update date.
-* Approximate size of the application file.
-* Rating of the version and number of ratings received.
-* Description of the application.
+* 애플리케이션의 이름
+* 상업용 버전: 애플리케이션의 공개 버전
+* 내부 버전: Android의 경우 애플리케이션의 내부 버전 ID이며 iOS의 경우 애플리케이션의 빌드 번호입니다. 모든 운영 체제의 이 특성에 대한 기술적 세부사항은 [애플리케이션 특성](../appcenter-console/#application-properties)을 참조하십시오. 
+* 업데이트 날짜
+* 애플리케이션 파일의 대략적인 크기
+* 버전의 등급 및 받은 등급 수
+* 애플리케이션에 대한 설명
 
-On Windows 8 client the following details of the application version are displayed:
+Windows 8 클라이언트에서 애플리케이션 버전에 대한 다음 세부사항이 표시됩니다. 
 
-* Application name.
-* Version.
-* Vendor name.
-* Update date.
-* Rating of the version and the number of ratings received.
-* Existing reviews of either the current version or of all the versions of the current application.
+* 애플리케이션 이름
+* 버전
+* 벤더 이름
+* 업데이트 날짜
+* 버전의 등급 및 받은 등급 수
+* 현재 버전의 기존 검토 또는 현재 애플리케이션의 모든 버전에 대한 기존 검토
 
-You can take the following actions in this view.
+이 보기에서 다음 조치를 수행할 수 있습니다. 
 
-* Install, upgrade, downgrade, or uninstall an application version.
-* Cancel the current operation in progress (if available).
-* Rate the application version if it is installed on the device.
-* List the reviews of this version or of all versions of the application.
-* Show details of a previous version.
-* Mark or unmark the application as a favorite app.
-* Refresh the view with the latest changes from the Application Center server.
+* 애플리케이션 버전 설치, 업그레이드, 다운그레이드 또는 설치 제거
+* 진행 중인 현재 작업 취소(사용 가능한 경우)
+* 디바이스에 설치된 애플리케이션 버전에 등급 지정
+* 애플리케이션의 모든 버전 또는 이 버전에 대한 검토 나열
+* 이전 버전의 세부사항 표시
+* 애플리케이션을 즐겨찾기 애플리케이션으로 표시 또는 표시 해제
+* Application Center 서버의 최신 변경사항으로 보기 새로 고치기
 
-## Installing an application on an Android device
+## Android 디바이스에 애플리케이션 설치
 {: #installing-an-application-on-an-android-device }
-From the **Details** view, you can install an application on your Android device.  
-In the Details view, if a previous version of the application is not installed, you can install this application version on your Android device.
+**세부사항** 보기에서 Android 디바이스에 애플리케이션을 설치할 수 있습니다.   
+세부사항 보기에서 애플리케이션의 이전 버전이 설치되어 있지 않은 경우 이 애플리케이션 버전을 Android 디바이스에 설치할 수 있습니다. 
 
-![Details view of an app version shown on your Android device](ac_phone_app_details.jpg)
+![Android 디바이스에 표시된 애플리케이션 버전의 세부사항 보기](ac_phone_app_details.jpg)
 
-1. In the **Details** view, tap **Install**.
+1. **세부사항** 보기에서 **설치**를 누르십시오. 
 
-    The application is downloaded. You can tap **Cancel** in the **Details** view at any time during the download to cancel the download. (The **Cancel** button appears only during the installation steps.) If you let the download complete, you will see the rights that are granted to the application.
+    애플리케이션이 다운로드됩니다. 다운로드를 취소하기 위해 다운로드 중에 언제든지 **세부사항** 보기에서 **취소**를 누를 수 있습니다. (**취소** 단추는 설치 단계 중에만 표시됩니다.) 다운로드를 완료하도록 허용하는 경우 애플리케이션에 부여되는 권한을 확인할 수 있습니다. 
 
-    ![Application rights on your Android device](ac_app_rights_and.jpg)
+    ![Android 디바이스의 애플리케이션 권한](ac_app_rights_and.jpg)
 
-2. Tap **Install** to confirm installation of the application or **Cancel** to cancel installation.
+2. **설치**를 눌러 애플리케이션의 설치를 확인하거나 설치를 취소하려면 **취소**를 누르십시오. 
 
-    Depending on the action taken, the application is installed or not. When the application is successfully installed, it is also marked as a favorite app.
+    수행한 조치에 따라 애플리케이션이 설치되거나 설치되지 않습니다. 애플리케이션이 정상적으로 설치되는 경우 즐겨찾기 애플리케이션으로도 표시됩니다. 
 
-    If you selected **Cancel**, in the application rights confirmation panel, you can tap **Cancel** in the **Details** view at any time to notify the application that the installation has been canceled. The **Cancel** button appears in the Details view only during the installation steps.
+    애플리케이션 권한 확인 패널에서 **취소**를 선택한 경우 언제든지 **세부사항** 보기에서 **취소**를 눌러 설치가 취소되었음을 애플리케이션에 알릴 수 있습니다. **취소** 단추는 설치 단계 중에만 세부사항 보기에 표시됩니다. 
 
-## Installing an application on an iOS device
+## iOS 디바이스에 애플리케이션 설치
 {: #installing-an-application-on-an-ios-device }
-From the **Details** view, you can install an application version on your iOS mobile device.
+**세부사항** 보기에서 iOS 디바이스에 애플리케이션 버전을 설치할 수 있습니다. 
 
-![Details view of an app version on your iOS mobile device](ac_phone_app_details_ios.jpg)
+![iOS 모바일 디바이스의 앱 버전에 대한 세부사항 보기](ac_phone_app_details_ios.jpg)
 
-> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
+> **중요:** iOS 디바이스에 애플리케이션을 설치하려면, 먼저 SSL을 사용하여 Application Center 서버를 구성해야 합니다. [SSL(Secure Sockets Layer) 구성](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)을 참조하십시오.
 
-1. In the **Details** view, tap **Install**. You are requested to confirm the download and installation of the application version.
-2. Tap **Install** to confirm download and installation of the application version or **Cancel** to cancel the installation.
+1. **세부사항** 보기에서 **설치**를 누르십시오. 애플리케이션 버전의 다운로드 및 설치를 확인하도록 요청됩니다. 
+2. 애플리케이션 버전의 다운로드 및 설치를 확인하려면 **설치**를 누르고 설치를 취소하려면 **취소**를 누르십시오. 
 
-    ![Canceling application installation on your iOS device](ac_app_inst_cancel_ios.jpg)
+    ![iOS 디바이스에서 애플리케이션 설치 취소](ac_app_inst_cancel_ios.jpg)
     
-    Depending on the action that is taken, the application is installed or not. When the application is successfully installed, it is also marked as a favorite app.
+    수행되는 조치에 따라 애플리케이션이 설치되거나 설치되지 않습니다. 애플리케이션이 정상적으로 설치되는 경우 즐겨찾기 애플리케이션으로도 표시됩니다. 
 
-    Installing an application on a device requires a provisioning profile that enables the application to be installed on the selected device. If you accidentally try to install an application that is not valid for your device, iOS 6 (deprecated) or earlier gives an error message.
+    디바이스에 애플리케이션을 설치하려면 선택된 디바이스에 애플리케이션을 설치할 수 있도록 지원하는 프로비저닝 프로파일이 필요합니다. 실수로 사용자의 디바이스에 유효하지 않은 애플리케이션을 설치하려고 시도하는 경우 iOS 6(더 이상 사용되지 않음) 이하는 오류 메시지가 발생합니다. 
     
-Unlike the Android client, after the installation is finished, the **Install** button in the **Details** view does not change its label to **Uninstall**. In iOS, no **Uninstall** button is available. It is only possible to uninstall applications through the home screen.
+Android 클라이언트와 달리 설치를 완료하고 나면 **세부사항** 보기의 **설치** 단추가 단추 레이블을 **설치 제거**로 변경하지 않습니다. iOS에서는 **설치 제거** 단추를 사용할 수 없습니다. 홈 화면을 통해 애플리케이션을 설치 제거만 할 수 있습니다.
 
-Some versions of iOS 7 might try to install the application in an endless loop without ever succeeding or indicating any error. The application icon that shows the progress of the installation appears on the home screen, but, because of the endless loop, it is difficult to delete this application icon to stop the endless loop. A workaround is to put the device into Airplane mode. In this mode, the endless loop is stopped and you can delete the application icon by following the normal steps to delete apps on iOS devices.
+일부 iOS 7 버전은 완료되거나 오류 표시 없이 무한 루프로 애플리케이션 설치를 시도할 수 있습니다. 설치의 진행상태를 표시하는 애플리케이션 아이콘이 홈 화면에 표시되지만, 무한 루프로 인해서 무한 루프를 중지하기 위해 이 애플리케이션 아이콘을 삭제하기 어렵습니다. 임시 해결책은 디바이스를 통신제한 모드로 변경하는 것입니다. 이 모드에서 무한 루프가 중지되고, iOS 디바이스에서 앱을 삭제하기 위한 일반적인 단계를 수행하여 애플리케이션 아이콘을 삭제할 수 있습니다.
 
-After the application is installed on the device, you can open it.
 
-In general, iOS applications can be installed on the device only if they are signed with a provisioning profile. See [Importing and building the project (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone).
+애플리케이션이 디바이스에 설치된 후에 애플리케이션을 열 수 있습니다.
 
-Since iOS 9, when a company application is opened, depending on the type of the provisioning profile, an Untrusted Enterprise Developer message might display. This message explains that the provisioning profile is not yet trusted on this device. In this case, the application does not open, unless trust is established for this provisioning profile. Establishing trust must be done only once per provisioning profile.
+일반적으로 iOS 애플리케이션은 프로비저닝 프로파일로 서명된 경우에만 디바이스에 설치할 수 있습니다. [프로젝트 가져오기 및 빌드(Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone)를 참조하십시오. 
 
-To establish trust for a provisioning profile after the application is installed:
+iOS 9부터 회사 애플리케이션이 열려 있는 경우, 프로비저닝 프로파일의 유형에 따라 신뢰할 수 없는 엔터프라이즈 개발자 메시지가 표시될 수 있습니다. 이 메시지는 프로비저닝 프로파일을 이 디바이스에서 아직 신뢰할 수 없음을 설명합니다. 이 경우, 이 프로비저닝 프로파일에 대해 신뢰가 설정되지 않으면 애플리케이션이 열리지 않습니다. 신뢰 설정은 프로비저닝 프로파일당 한 번만 수행해야 합니다. 
 
-#### Until iOS 9.1
+애플리케이션이 설치된 후 프로비저닝 프로파일에 대한 신뢰를 설정하려면 다음을 수행하십시오. 
+
+#### iOS 9.1 이하의 경우
 {: #until-ios-91-app }
-1. Go to **Settings → General → Profiles**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. **설정 → 일반 → 프로파일**로 이동하십시오. **엔터프라이즈 앱** 표제 아래, 앱의 프로비저닝 프로파일이 표시됩니다. 
+2. 프로파일을 누르고 신뢰를 확인하십시오. 
 
-#### Since iOS 9.2
+#### iOS 9.2 이상의 경우
 {: #since-ios-92-app }
-1. Go to **Settings → General → Profiles → Device Management or Profiles &amp; Device Management**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. **설정 → 일반 → 프로파일 → 디바이스 관리 또는 프로파일 및 디바이스 관리**로 이동하십시오. **엔터프라이즈 앱** 표제 아래, 앱의 프로비저닝 프로파일이 표시됩니다. 
+2. 프로파일을 누르고 신뢰를 확인하십시오. 
 
-After the trust is confirmed, no application that uses that provisioning profile shows the Untrusted Enterprise Developer message. For more information, see the Apple web site at [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
+신뢰가 확인되고 나면 해당 프로비저닝 프로파일을 사용하는 애플리케이션은 신뢰할 수 없는 엔터프라이즈 개발자 메시지를 표시하지 않습니다. 자세한 정보는 Apple 웹 사이트([https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460))를 참조하십시오. 
 
-## Installing an application on a Windows Phone device
+## Windows Phone 디바이스에 애플리케이션 설치
 {: #installing-an-application-on-a-windows-phone-device }
-From the **Details** view, you can install a company application on your Windows phone device.  
-The **Details** view of the selected application displays information about the application that you want to install.
+**세부사항** 보기에서 회사 애플리케이션을 Windows Phone 디바이스에 설치할 수 있습니다.   
+선택한 애플리케이션의 **세부사항** 보기에는 설치하려는 애플리케이션에 대한 정보가 표시됩니다. 
 
-![Details view of a version of a company application for installation on a Windows Phone device](ac_phone_app_details_wp.jpg)
+![Windows Phone 디바이스에 설치하기 위한 회사 애플리케이션 버전의 세부사항 보기](ac_phone_app_details_wp.jpg)
 
-1. In the **Details** view, tap **Install**. The application is downloaded and installed. You can tap **Cancel** at any time during the downloading of the application to cancel the activity. **Cancel** appears only during the downloading step of the installation process.
+1. **세부사항** 보기에서 **설치**를 누르십시오. 애플리케이션이 다운로드되고 설치됩니다. 활동을 취소하려면 애플리케이션을 다운로드하는 동안 언제든지 **취소**를 누를 수 있습니다. **취소**는 설치 프로세스의 다운로드 단계 중에만 표시됩니다. 
 
-    At the beginning of the installation process, you are requested to confirm whether you want to add the company application to the applications installed on your mobile device.
+    설치 프로세스의 처음에 사용자의 모바일 디바이스에 설치된 애플리케이션에 회사 애플리케이션을 추가할 것인지 확인하도록 요청됩니다. 
 
-2. Tap **Install** to confirm installation of the application or **Cancel** to cancel the installation. The application is marked as a favorite app.
+2. 애플리케이션의 설치를 확인하려면 **설치**를 누르고 설치를 취소하려면 **취소**를 누르십시오. 애플리케이션이 즐겨찾기 애플리케이션으로 표시됩니다.
 
-    ![Confirming or canceling installation of a company application on a Windows Phone device](ac_confirm_instal_app_wp.jpg)
+    ![Windows Phone 디바이스에서 회사 애플리케이션의 설치 확인 또는 취소](ac_confirm_instal_app_wp.jpg)
     
-> **Tip:** When you install a company application on a device, the device must connect to the Microsoft server to verify the application signature. Sometimes, the Microsoft server does not respond. In this case, you can try the installation again a few minutes later.
+> **팁:** 회사 애플리케이션을 디바이스에 설치하는 경우 애플리케이션 서명을 확인하려면 디바이스를 Microsoft 서버에 연결해야 합니다. Microsoft 서버가 응답하지 않는 경우가 있습니다. 이 경우 몇 분 후에 설치를 다시 시도할 수 있습니다.
 
-The possible error messages are:
+가능한 오류 메시지는 다음과 같습니다. 
 
-* **There's a problem with this company app. Contact your company's support person for help.**
+* **이 회사 앱에 문제점이 발생했습니다. 회사 담당자에게 지원을 요청하십시오. **
 
-    You are probably using an unsigned Windows Phone application package (.xap) file. You must sign application package (.xap) files before using them in the Application Center. This message might also occur if the Microsoft server does not respond and the signature of the company application cannot be validated. In this case, try the installation again a few minutes later.
+    서명되지 않은 Windows Phone 애플리케이션 패키지(.xap) 파일을 사용 중일 수 있습니다. Application Center에서 사용하기 전에 애플리케이션 패키지(.xap) 파일을 서명해야 합니다. 이 메시지는 Microsoft 서버가 응답하지 않는 경우 및 회사 애플리케이션의 서명에 대한 유효성을 검증할 수 없는 경우에도 발생할 수 있습니다. 이 경우 몇 분 후에 설치를 다시 시도하십시오. 
 
-* **Before you install this app, you need to add ... company account.**
+* **이 애플리케이션을 설치하기 전에 ... 회사 계정을 추가해야 합니다.**
 
-    The Windows Phone application package (.xap) file is signed, but the device is not enrolled for company applications. You must first install on the device the application enrollment token of the company.
+    Windows Phone 애플리케이션 패키지(.xap) 파일이 서명되었지만 디바이스가 회사 애플리케이션에 등록되어 있지 않습니다. 먼저 회사의 애플리케이션 등록 토큰을 디바이스에 설치해야 합니다. 
 
-* **We haven't been able to contact the company account to make sure you can install this app. ...**
+* **이 앱을 설치할 수 있는지 확인하기 위해 회사 계정에 문의할 수 없었습니다. ...**
 
-    Either the company account is expired or blocked, or the Microsoft server is temporarily not responding. Make sure that your device is connected to the internet and connected to the Microsoft server, and try again.
+    회사 계정이 만료 또는 차단되었거나 Microsoft 서버가 일시적으로 응답하지 않을 수 있습니다. 디바이스가 인터넷에 연결되어 있고 Microsoft 서버에 연결되어 있는지 확인한 후 다시 시도하십시오. 
 
-> **Note:** If a device is registered with several company accounts, the Windows Phone operating system might display the wrong company account in the message **Would you like to install application from company name?**. This message is outside the control of the Application Center. This situation is a display problem only and does not affect the functionality.
+> **참고:** 디바이스가 여러 회사 계정에 등록되어 있는 경우 Windows Phone 운영 체제가 **회사 이름으로부터 애플리케이션을 설치하시겠습니까?** 메시지에 잘못된 회사 계정을 표시할 수 있습니다. 이 메시지는 Application Center의 제어를 받지 않습니다. 이 상황은 표시 문제일 뿐이며 기능에 영향을 미치지 않습니다.
 
-Depending on the action that you take, the application is installed or not.
+수행하는 조치에 따라 애플리케이션이 설치되거나 설치되지 않습니다. 
 
-> **Tip:** The install process will not work if the PFX certificate used to code sign the application package (.xap) file of the application that you want to install has expired. Windows Phone operating system returns an error with **HRESULT 0x81030110**. When you renew your PFX certificate, you must code sign again with this new certificate all the deployed applications that you have in your Application Center catalog.
+> **팁:** 설치하려는 애플리케이션의 애플리케이션 패키지(.xap) 파일을 코드 서명하는 데 사용된 PFX 인증서가 만료된 경우 설치 프로세스가 작동하지 않습니다. Windows Phone 운영 체제에서 **HRESULT 0x81030110** 오류를 리턴합니다. PFX 인증서를 갱신하는 경우 이 새 인증서를 사용하여 Application Center 카탈로그에 있는 배치된 모든 애플리케이션을 다시 코드 서명해야 합니다.
 > 
-When you renew your PFX code-signing certificate, you must also renew the enrollment token and deploy it on the Application Center console. Devices must also be re-enrolled to the company account with this new token. Users of devices enrolled with an expired token cannot install any applications.
+PFX 코드 서명 인증서를 갱신하는 경우 등록 토큰도 갱신해야 하며 이를 Application Center 콘솔에 배치해야 합니다. 디바이스는 이 새 토큰으로 회사 계정에도 다시 등록해야 합니다. 만료된 토큰으로 등록한 디바이스의 사용자는 모든 애플리케이션을 설치할 수 없습니다. 
 
-In Windows Phone 8.1, if the Application Center client is not code signed (for example, when you debug it in Visual Studio), you cannot install any application by using this unsigned client. In this case, the Windows Phone operating system returns an error with **HRESULT 0x800703F0**. Before installing applications in Windows Phone 8.1, you must code sign the application package (.xap) file of the client.
+Windows Phone 8.1에서 Application Center 클라이언트가 코드 서명되지 않은 경우(예를 들어, Visual Studio에서 디버그하는 경우) 이 서명되지 않은 클라이언트를 사용하여 애플리케이션을 설치할 수 없습니다. 이 경우, Windows Phone 운영 체제는 **HRESULT 0x800703F0**와 함께 오류를 리턴합니다. Windows Phone 8.1에 애플리케이션을 설치하기 전에 클라이언트의 애플리케이션 패키지(.xap) 파일을 코드 서명해야 합니다. 
 
-## Installing a Windows Store application on a Windows device
+## Windows 디바이스에 Windows 스토어 애플리케이션 설치
 {: #installing-a-windows-store-application-on-a-windows-device }
-Use sideloading to install Windows Store apps through Application Center.
+사이드로딩을 사용하여 Application Center를 통해 Windows 스토어 앱을 설치하십시오. 
 
-You must check that your configuration satisfies the application sideloading prerequisites that are described in Prepare to Sideload Apps.  
-The device user needs administrator rights on the device to execute the Application Center client.
+사용자 구성이 사이드로드 앱 준비에 설명되어 있는 애플리케이션 사이드로딩 전제조건을 충족하는지 확인해야 합니다.   
+디바이스 사용자는 Application Center 클라이언트를 실행하려면 디바이스에 대한 관리자 역할이 필요합니다. 
 
-Installing APPX packages through Application Center is done by a process called sideloading. As part of Windows 8.1 Update, sideloading is enabled for all Windows 8.1 Pro devices that are part of an Active Directory domain, which matches the current behavior of Windows 8.1 Enterprise. If you use either of those product versions and the device is part of an Active Directory domain, you have no concerns about sideloading keys or activating sideloading.
+Application Center를 통한 APPX 패키지 설치는 사이드로딩이라는 프로세스에 의해 수행됩니다. Windows 8.1 Update의 일부로서, Active Directory 도메인의 일부인 모든 Windows 8.1 Pro 디바이스에 대해 사이드로딩이 사용으로 설정됩니다. 이는 Windows 8.1 Enterprise의 현재 동작과 일치합니다. 해당 제품 버전 중 하나를 사용하고 디바이스가 Active Directory 도메인의 일부인 경우 사이드로딩 키 또는 사이드로딩 활성화에 아무 문제가 없습니다.
 
-When you develop a Windows Store application, Microsoft Visual Studio automatically generates a self-signed certificate and uses it to code sign the application package. To be able to install the application later by using Application Center, you must import this certificate into the "Trusted Root Certification Authorities" store of the "Local Machine". Importing the certificate is a manual procedure.
 
-> **Note:** Manual installation of a certificate is only required for the development phase, because APPX code signing relies on a self-signed certificate generated by Microsoft Visual Studio. In production, your APPX file must be signed by a genuine certificate purchased from a recognized root certificate authority.
+Windows 스토어 애플리케이션을 개발하는 경우 Microsoft Visual Studio에서 자동으로 자체 서명된 인증서를 생성하여 애플리케이션 패키지를 코드 서명하는 데 사용합니다. Application Center를 사용하여 나중에 애플리케이션을 설치할 수 있으려면, 이 인증서를 "로컬 시스템"의 "신뢰할 수 있는 루트 인증 기관" 저장소에 가져와야 합니다.  인증서 가져오기는 수동 프로시저입니다. 
 
-The first step of this procedure tells you how to install the certificate before you can install the application through Application Center.
+> **참고:** 인증서의 수동 설치는 개발 단계에 대해서만 필요합니다. APPX 코드 서명이 Microsoft Visual Studio에서 생성한 자체 서명된 인증서에 의존하기 때문입니다. 프로덕션에서 APPX 파일은 공인 루트 인증 기관에서 구매한 정품 인증서로 서명되어야 합니다.
 
-1. Import this certificate into the "Trusted Root Certification Authorities" store of the "Local Machine".
-    * After you have generated an APPX file by using Visual Studio, place this file in your file system. In the folder of the APPX file, you can see a certificate (.cer) file that contains the self-signed certificate that you must import.
-    ![Certificate file in the application package folder](cer_file_win8.jpg)
-    * To open the certificate, double-click the CER file.
-    * Click Install Certificate.
-    ![General information about the certificate](cert_props_win8.jpg)    
-    * Select "Local Machine" and click **Next**.
-    ![Specifying the local machine in the Certificate Import Wizard](cert_localmachine_win8.jpg)    
-    * Select "Place all certificate in the following store" and then browse to select "Trusted Root Certification Authorities".
-    ![Placing the certificate in "Trusted Root Certificate Authorities"](cert_trustedroot_win8.jpg)    
-    * Click **Next** and then **Finish**. The successful import of the certificate should be confirmed.
+이 프로시저의 첫 번째 단계는 Application Center를 통해 애플리케이션을 설치하기 전에 인증서를 설치하는 방법에 대해 설명합니다. 
 
-The following steps describe how to perform the installation of a Windows Store application on a Windows device by using Application Center.
+1. 이 인증서를 "로컬 시스템"의 "신뢰할 수 있는 루트 인증 기관" 저장소로 가져오십시오. 
+    * Visual Studio를 사용하여 APPX 파일을 생성한 후 이 파일을 파일 시스템에 배치하십시오. APPX 파일의 폴더에서 가져와야 하는 자체 서명된 인증서가 포함된 인증서(.cer) 파일을 확인할 수 있습니다.
+![애플리케이션 패키지 폴더에 있는 인증서 파일](cer_file_win8.jpg)
+    * 인증서를 열려면 CER 파일을 두 번 클릭하십시오. 
+    * 인증서 설치를 클릭하십시오.
+    ![인증서에 대한 일반 정보](cert_props_win8.jpg)    
+    * "로컬 시스템"을 선택하고 **다음**을 클릭하십시오.
+    ![인증서 가져오기 마법사에서 로컬 시스템 지정](cert_localmachine_win8.jpg)    
+    * "다음 저장소에 모든 인증서 배치"를 선택한 후 "신뢰할 수 있는 루트 인증 기관"을 선택하기 위해 찾아보십시오.
+    !["신뢰할 수 있는 루트 인증 기관"에 인증서 배치](cert_trustedroot_win8.jpg)    
+    * **다음**을 클릭한 후 **완료**를 클릭하십시오. 인증서 가져오기가 완료되었는지 확인해야 합니다. 
 
-1. Log in to the Application Center mobile client for Windows Store applications.
-2. Select the application that you want to install to access its details.
+다음 단계는 Application Center를 사용하여 Windows 디바이스에 Windows 스토어 애플리케이션의 설치를 수행하는 방법에 대해 설명합니다. 
 
-    ![Details view for installing a Windows Store app](ac_details_wstore_app.jpg)
+1. Windows 스토어 애플리케이션을 위한 Application Center 모바일 클라이언트에 로그인하십시오. 
+2. 설치하려는 애플리케이션을 선택하여 세부사항에 액세스하십시오. 
 
-3. To install the application, tap **Install**. If the application is already installed and other versions are available, you can decide to update to a later version or to revert to a previous version.
+    ![Windows 스토어 앱 설치를 위한 세부사항 보기](ac_details_wstore_app.jpg)
 
-## Installing applications through public app stores
+3. 애플리케이션을 설치하려면 **설치**를 누르십시오. 애플리케이션이 이미 설치되어 있고 다른 버전을 사용할 수 있는 경우 최신 버전으로 업데이트하거나 이전 버전으로 되돌리도록 선택할 수 있습니다. 
+
+## 공용 앱 스토어를 통한 애플리케이션 설치
 {: #installing-applications-through-public-app-stores }
-You can link from the mobile client to applications that are stored in supported public app stores and install these applications on your compatible device by following the normal procedure of the public app store.
+모바일 클라이언트에서 지원되는 공용 앱 스토어에 저장되는 애플리케이션에 링크하고, 공용 앱 스토어의 일반 프로시저에 따라 이러한 애플리케이션을 호환 가능한 디바이스에 설치할 수 있습니다. 
 
-The Application Center administrator can create links to selected applications stored in supported public app stores and make them available to users of the Application Center mobile client on the operating systems that match these applications. See [Adding an application from a public app store](../appcenter-console/#adding-an-application-from-a-public-app-store). You can install these applications through the mobile client on your compatible device.
+Application Center 관리자는 지원되는 공용 앱 스토어에 저장되어 있는 선택된 애플리케이션의 링크를 작성하고, 이러한 애플리케이션과 일치하는 운영 체제의 Application Center 모바일 클라이언트 사용자가 사용 가능하게 할 수 있습니다. [공용 앱 스토어에서 애플리케이션 추가](../appcenter-console/#adding-an-application-from-a-public-app-store)를 참조하십시오. 모바일 클라이언트를 통해 이러한 애플리케이션을 호환 가능한 디바이스에 설치할 수 있습니다. 
 
-Links to Android applications stored in Google play and to iOS applications stored in Apple iTunes are listed in the application list on the device along with the binary files of private applications created within your enterprise.
+Google Play에 저장된 Android 애플리케이션 및 Apple iTunes에 저장된 iOS 애플리케이션의 링크가 엔터프라이즈에서 작성된 개인 애플리케이션의 2진 파일과 함께 디바이스의 애플리케이션 목록에 나열됩니다. 
 
-1. Select an application stored in a public app store from the application list to see the application details. Instead of Install, you see Go to Store.
-2. Tap **Go to Store** to open Google play or Apple iTunes.
+1. 애플리케이션 목록에서 공용 앱 스토어에 저장된 애플리케이션을 선택하여 애플리케이션 세부사항을 보십시오. 설치 대신에 스토어로 이동이 표시됩니다. 
+2. **스토어로 이동**을 눌러 Google Play 또는 Apple iTunes를 여십시오. 
 
     **Android**
-    ![Accessing an application in Google play from the mobile client on the device](ac_and_link_app.jpg)
+    ![디바이스의 모바일 클라이언트에서 Google play의 애플리케이션에 액세스](ac_and_link_app.jpg)
     
     **iOS**
-    ![Accessing an application in Apple iTunes from the mobile client on the device](ac_ios_link_app.jpg)
+    ![디바이스의 모바일 클라이언트에서 Apple iTunes의 애플리케이션에 액세스](ac_ios_link_app.jpg)
     
-3. Follow the usual procedure of the public app store to install the application.
+3. 애플리케이션을 설치하기 위해 공용 앱 스토어의 일반 프로시저를 수행하십시오. 
 
-## Removing an installed application
+## 설치된 애플리케이션 제거
 {: #removing-an-installed-application }
-You can remove an application that is installed on your mobile device.
+모바일 디바이스에 설치된 애플리케이션을 제거할 수 있습니다. 
 
-1. Start the removal procedure that is valid for the operating system of your device.
-    * **Android**: See the procedure in step 2.
-    * **iOS**: You can remove applications only from the iOS Home screen, and not through the Application Center client. Use the normal iOS procedure for removing an application.
-    * **Windows Phone**: You can remove applications only from the Windows Phone Home screen, and not through the Application Center client. Use the normal Windows Phone procedure for removing an application.
-    * **Windows Store**: You can remove applications either from the Application Center mobile client or from the Windows home screen.
-2. **Android only**: Remove an application from an Android device.
-    * In the **Details** view of any version of the application, tap **Uninstall**. The **Uninstall** button appears in the **Details** view only when a version of the application is installed. You are requested to confirm that the application version is to be uninstalled.
-        * Tap **Uninstall** to uninstall the application version or **Cancel** to notify the application that the uninstallation command has been canceled.
+1. 디바이스의 운영 체제에 유효한 제거 프로시저를 시작하십시오. 
+    * **Android**: 2단계의 프로시저를 참조하십시오. 
+    * **iOS**: Application Center 클라이언트를 통해서가 아닌 iOS 홈 화면에서만 애플리케이션을 제거할 수 있습니다. 애플리케이션 제거에 대한 일반 iOS 프로시저를 사용하십시오. 
+    * **Windows Phone**: Application Center 클라이언트를 통해서가 아닌 Windows Phone 홈 화면에서만 애플리케이션을 제거할 수 있습니다. 애플리케이션 제거에 대한 일반 Windows Phone 프로시저를 사용하십시오. 
+    * **Windows 스토어**: Application Center 클라이언트를 통하거나 Windows 홈 화면에서 애플리케이션을 제거할 수 있습니다. 
+2. **Android만 해당**: Android 디바이스에서 애플리케이션을 제거하십시오. 
+    * 애플리케이션 버전의 **세부사항** 보기에서 **설치 제거**를 누르십시오. 애플리케이션 버전이 설치되어 있는 경우에만 **설치 제거** 단추가 **세부사항** 보기에 표시됩니다. 애플리케이션 버전이 설치 제거됨을 확인하도록 요청됩니다. 
+        * 애플리케이션 버전을 설치 제거하려면 **설치 제거**를 누르고 설치 제거 명령이 취소되었음을 애플리케이션에 알리려면 **취소**를 누르십시오. 
 
-## Showing details of a specific application version
+## 특정 애플리케이션 버전의 세부사항 표시
 {: #showing-details-of-a-specific-application-version }
-You can show the details of the selected version of an application by following the appropriate procedure for an Android or iOS phone or tablet, a Windows Phone device, or a Windows device.
+Android 또는 iOS phone 또는 태블릿, Windows Phone 디바이스 또는 Windows 디바이스에 대한 적절한 프로시저를 따라 애플리케이션의 선택한 버전에 대한 세부사항을 표시할 수 있습니다. 
 
-1. Show details of a specific application version on a mobile device by selecting the appropriate procedure for your device.
-    * A Windows Phone, Android, or iOS phoneA phone; see step 2.
-    * A Windows device; see step 3
-    * A tablet; see step 4.
-2. **Windows Phone, Android, iOS only**: Show details of a specific application version on a Windows Phone, Android, or iOS phone.
-    * Tap **Select a version** to navigate to the version list view.
-    ![Specific version of an application selected in the list of versions on a Windows Phone, Android, or iOS phone](ac_version_select.jpg) 
-    * Tap the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
-3. Windows only: Show details of a specific Windows Store application version on a Windows device. If more than one version is available for the Windows Store application, then you can select which version that you want to install.
-    * Tap the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
-4. Tablet devices only: Show details of a specific application version on a tablet.
-    * Tap **Select version**.
-    * In the menu, select the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
+1. 디바이스에 대해 적절한 프로시저를 선택하여 모바일 디바이스에서 특정 애플리케이션 버전의 세부사항을 표시하십시오.
+    * Windows Phone, Android 또는 iOS phoneA 전화기는 2단계를 참조하십시오. 
+    * Windows 디바이스는 3단계를 참조하십시오. 
+    * 태블릿은 4단계를 참조하십시오. 
+2. **Windows Phone, Android, iOS에만 해당**: Windows Phone, Android 또는 iOS 전화기에서 특정 애플리케이션 버전의 세부사항을 표시하십시오. 
+    * **버전 선택**을 눌러 버전 목록 보기로 이동하십시오.
+   ![Windows Phone, Android 또는 iOS 전화기의 버전 목록에서 선택한 특정 버전의 애플리케이션](ac_version_select.jpg) 
+    * 적절한 애플리케이션 버전을 누르십시오. **세부사항** 보기가 업데이트되고 선택된 애플리케이션 버전에 대한 세부사항을 표시합니다. 
+3. Windows만 해당: Windows 디바이스에서 특정 Windows 스토어 애플리케이션 버전의 세부사항을 표시하십시오. Windows 스토어 애플리케이션에 대해 둘 이상의 버전이 사용 가능한 경우 설치하려는 버전을 선택할 수 있습니다. 
+    * 적절한 애플리케이션 버전을 누르십시오. **세부사항** 보기가 업데이트되고 선택된 애플리케이션 버전에 대한 세부사항을 표시합니다. 
+4. 태블릿 디바이스만 해당: 태블릿에서 특정 애플리케이션 버전에 대한 세부사항을 표시하십시오. 
+    * **버전 선택**을 누르십시오. 
+    * 메뉴에서 적절한 애플리케이션 버전을 선택하십시오. **세부사항** 보기가 업데이트되고 선택된 애플리케이션 버전에 대한 세부사항을 표시합니다. 
 
-## Updating an application
+## 애플리케이션 업데이트
 {: #updating-an-application }
-Follow this procedure to make the latest versions of favorite and recommended apps available on your device. Applications that are marked as favorites and that have an updated version are listed in the **Updates** view. The applications that are marked as recommended by the Application Center server administrator are also listed in the **Updates** view, even if they are not favorites.
+최신 버전의 즐겨찾기 및 권장 앱을 디바이스에서 사용 가능하게 만들려면 이 프로시저를 수행하십시오. 즐겨찾기로 표시되고 업데이트된 버전이 있는 애플리케이션은 **업데이트** 보기에 나열됩니다. Application Center 서버 관리자가 권장으로 표시한 애플리케이션은 즐겨찾기가 아닌 경우에도 **업데이트** 보기에 함께 나열됩니다. 
 
-If a more up-to-date version of an installed application is available on the server, it is listed under **Update or Recommended**.
+최신 버전의 설치된 애플리케이션이 서버에서 사용 가능한 경우 **업데이트 또는 권장** 아래에 나열됩니다. 
 
-1. In the **Updates** view, navigate to the **Details** view.
-2. In the **Details** view, select a newer version of the application or take the latest available version.
-3. **Android and Windows 8 Universal**: On Android and Windows 8 Universal devices, tap **Update**.
-4. **iOS only**: On iOS devices, tap **Install latest**.
-5. Follow the appropriate application installation procedure.
-    * [Installing an application on an Android device](#installing-an-application-on-an-android-device)
-    * [Installing an application on an iOS device](#installing-an-application-on-an-ios-device)
-    * [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device)
-    * [Installing a Windows Store application on a Windows device](#installing-a-windows-store-application-on-a-windows-device)
+1. **업데이트** 보기에서 **세부사항** 보기로 이동하십시오. 
+2. **세부사항** 보기에서 새 버전의 애플리케이션을 선택하거나 사용 가능한 최신 버전을 사용하십시오. 
+3. **Android 및 Windows 8 Universal**: Android 및 Windows 8 Universal 디바이스에서 **업데이트**를 누르십시오. 
+4. **iOS만 해당**: iOS 디바이스에서 **최신 설치**를 누르십시오. 
+5. 적절한 애플리케이션 설치 프로시저를 수행하십시오. 
+    * [Android 디바이스에 애플리케이션 설치](#installing-an-application-on-an-android-device)
+    * [iOS 디바이스에 애플리케이션 설치](#installing-an-application-on-an-ios-device)
+    * [Windows Phone 디바이스에 애플리케이션 설치](#installing-an-application-on-a-windows-phone-device)
+    * [Windows 디바이스에 Windows 스토어 애플리케이션 설치](#installing-a-windows-store-application-on-a-windows-device)
 
-## Upgrading the Application Center client automatically
+## Application Center 클라이언트 자동 업그레이드
 {: #upgrading-the-application-center-client-automatically }
-You can enable automatic detection of new versions of the client application. Then, you can choose whether to download and install the new version on your mobile device. This feature is supported for iOS, Android, and Windows Phone.
+새 버전의 클라이언트 애플리케이션에 대한 자동 발견을 사용으로 설정할 수 있습니다. 그런 다음, 새 버전을 다운로드하여 사용자의 모바일 디바이스에 설치할지 여부를 선택할 수 있습니다. 이 기능은 iOS, Android 및 Windows Phone에 대해 지원됩니다. 
 
-New versions of the mobile client application that are available on the Application Center server can be detected automatically. When this feature is enabled, a more recent version of the application, if it exists, can be detected at start up or each time that the Available applications view is refreshed.
+Application Center 서버에서 사용 가능한 새 버전의 모바일 클라이언트 애플리케이션을 자동으로 발견할 수 있습니다. 이 기능을 사용하는 경우 시작 시 또는 사용 가능한 애플리케이션 보기를 새로 고칠 때마다 최신 버전의 애플리케이션을 발견할 수 있습니다(있는 경우). 
 
-f a later version of the application is detected, you are requested to download and install the later version.
+최신 버전의 애플리케이션이 발견되면 최신 버전을 다운로드하여 설치하도록 요청됩니다. 
 
-Automatic upgrade of the Application Center client application is enabled by default with the **appCenterAutoUpgrade** property set to **true**. This property is located in the {{ site.data.keys.product_full }} project for the Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
+Application Center 클라이언트 애플리케이션의 자동 업그레이드는 기본적으로 **appCenterAutoUpgrade** 특성을 **true**로 설정하여 사용합니다. 이 특성은 Application Center의 {{site.data.keys.product_full }} 프로젝트(**IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**)에 있습니다. 
 
-If you want to disable automatic upgrade, you must set this property to false and rebuild the project for the required platforms.
+자동 업그레이드를 사용 안함으로 설정하려면 이 특성을 false로 설정하고 필요한 플랫폼에 대해 프로젝트를 다시 빌드해야 합니다. 
 
-1. When a later version of the client is detected, tap **OK** to start the download and installation sequence.
+1. 최신 버전의 클라이언트가 발견되면 **확인**을 눌러 다운로드 및 설치 순서를 시작하십시오. 
 
-    ![Detection of a later version of the client application available on the server](ac_client_autoupgrade_detect.jpg)
+    ![서버에서 사용 가능한 최신 버전의 클라이언트 발견](ac_client_autoupgrade_detect.jpg)
 
-2. Tap **Install** to install the later version of the application.
+2. **설치**를 눌러 최신 버전의 애플리케이션을 설치하십시오. 
 
-    ![Confirm installation of the updated version of the application](ac_client_autoupgrade_install_app.jpg)
+    ![업데이트된 버전의 애플리케이션 설치 확인](ac_client_autoupgrade_install_app.jpg)
 
-3. Tap **Open** to start the updated application.
+3. **열기**를 눌러 업데이트된 애플리케이션을 시작하십시오. 
 
-    ![Starting the updated application](ac_client_autoupgrade_start_app.jpg)
+    ![업데이트된 애플리케이션 시작](ac_client_autoupgrade_start_app.jpg)
     
-You must log in to the updated version of the application to run it.
+업데이트된 버전의 애플리케이션을 실행하려면 이 버전의 애플리케이션에 로그인해야 합니다. 
 
-![Logging in to the new version of the client application](ac_client_autoupgrade_login_new_version.jpg)
+![새 버전의 클라이언트 애플리케이션에 로그인](ac_client_autoupgrade_login_new_version.jpg)
 
-**Note:** To upgrade the Application Center client, the following conditions apply:
+**참고:** Application Center 클라이언트를 업그레이드하려면 다음 조건을 충족해야 합니다. 
 
-1. The new Application Center client must use the same package name or bundle identifier as the old client.
-2. On iOS, the new Application Center client must be signed with the same provisioning profile as the old client.
-3. On Android, the new Application Center client must have the same signature as the old client.
-4. On Windows Phone, the new Application Center client must be signed with the same company account as the old client.
+1. 새 Application Center 클라이언트가 이전 클라이언트와 동일한 패키지 이름 또는 번들 ID를 사용해야 합니다. 
+2. iOS에서 새 Application Center 클라이언트는 이전 클라이언트와 동일한 프로비저닝 프로파일로 서명되어야 합니다. 
+3. Android에서 새 Application Center 클라이언트는 이전 클라이언트와 동일한 서명을 가지고 있어야 합니다. 
+4. Windows Phone에서 새 Application Center 클라이언트는 이전 클라이언트와 동일한 회사 계정으로 서명되어야 합니다. 
 
-## Reverting an installed application
+## 설치된 애플리케이션 되돌리기
 {: #reverting-an-installed-application }
-You can revert the version of an installed application if an earlier version exists on the server.
+이전 버전이 서버에 있는 경우 설치된 애플리케이션의 버전을 되돌릴 수 있습니다. 
 
-To replace the currently installed version of an application with an earlier version, from the **Catalog**, **Updates**, or **Favorites** view, navigate to the Details view. In the **Details** view, select an earlier version. See [Showing details of a specific application version](#showing-details-of-a-specific-application-version) for information about how to display details of a specific application version on a mobile device.
+현재 설치된 버전의 애플리케이션을 이전 버전으로 대체하려면 **카탈로그**, **업데이트** 또는 **즐겨찾기** 보기에서 세부사항 보기로 이동하십시오. **세부사항** 보기에서 이전 버전을 선택하십시오. 모바일 디바이스에서 특정 애플리케이션 버전의 세부사항을 표시하는 방법에 대한 정보는 [특정 애플리케이션 버전의 세부사항 표시](#showing-details-of-a-specific-application-version)를 참조하십시오. 
 
-### On Android
+### Android의 경우
 {: #on-android }
-If the installed version of the Android operating system is earlier than 4.2.2, tap **Revert**.  
-If the installed version of the Android operating system is 4.2.2 or later, you must uninstall the current version before you can install the earlier version.
+설치된 Android 운영 체제의 버전이 4.2.2 이하인 경우 **되돌리기**를 누르십시오.   
+설치된 Android 운영 체제 버전이 4.2.2 이상인 경우에는 이전 버전을 설치하기 전에 현재 버전을 설치 제거해야 합니다. 
 
-Then, follow the procedure documented in [Installing an application on an Android device](#installing-an-application-on-an-android-device).
+그런 다음, [Android 디바이스에 애플리케이션 설치](#installing-an-application-on-an-android-device)에 설명된 프로시저를 따르십시오. 
 
-### On iOS
+### iOS의 경우
 {: #on-ios }
-Use the normal procedure of the operating system to remove the application.  
-Tap **Install** to install the earlier version of the application. Follow the procedure documented in [Installing an application on an iOS device](#installing-an-application-on-an-ios-device).
+운영 체제의 일반 프로시저를 사용하여 애플리케이션을 제거하십시오.   
+**설치**를 눌러 애플리케이션의 이전 버전을 설치하십시오. [iOS 디바이스에 애플리케이션 설치](#installing-an-application-on-an-ios-device)에 설명된 프로시저를 따르십시오. 
 
-### On Windows Phone
+### Windows Phone의 경우
 {: #on-windows-phone }
-Tap **Revert**. Follow the procedue documented in [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device).
+**되돌리기**를 누르십시오. [Windows Phone 디바이스에 애플리케이션 설치](#installing-an-application-on-a-windows-phone-device)에 설명된 프로시저를 따르십시오. 
 
-## Marking or unmarking a favorite app
+## 즐겨찾기 애플리케이션 표시 또는 표시 제거
 {: #marking-or-unmarking-a-favorite-app }
-Mark your favorite apps or unmark an app to have it removed from the favorites list.
+즐겨찾기 앱으로 표시하거나 즐겨찾기 목록에서 제거하도록 앱의 표시를 제거하십시오. 
 
-An application marked as a favorite on your device indicates that you are interested in this application. This application is then listed in the list of favorite apps to make locating it easier. This application is displayed on every device belonging to you that is compatible with the application. If a later version of the app is available in the Application Center, the application is listed in the **Updates** view.
+디바이스에서 즐겨찾기로 표시된 애플리케이션은 이 애플리케이션에 관심이 있음을 표시합니다. 그러면 이 애플리케이션을 쉽게 찾을 수 있도록 즐겨찾기 애플리케이션 목록에 나열됩니다. 이 애플리케이션은 애플리케이션과 호환 가능한 사용자의 모든 디바이스에 표시됩니다. Application Center에서 최신 버전의 앱이 사용 가능한 경우 해당 애플리케이션이 **업데이트** 보기에 나열됩니다. 
 
-To mark or unmark an application as a favorite app, tap the Favorites icon <img src="ac_favorite_icon.jpg" style="margin:0;display:inline" alt="Icon in the shape of a star that indicates a favorite app"/>. in the header of the **Details** view.  
+애플리케이션을 즐겨찾기 앱으로 표시하거나 표시 제거하려면, **세부사항** 보기의 헤더에 있는 즐겨찾기 아이콘 <img src="ac_favorite_icon.jpg" style="margin:0;display:inline" alt="즐겨찾기 앱을 표시하는 별 모양의 아이콘"/>을 누르십시오.   
 
-An installed application is automatically marked as a favorite app.
+설치된 애플리케이션은 자동으로 즐겨찾기 앱으로 표시됩니다. 
 
-## Submitting a review for an installed application
+## 설치된 애플리케이션의 검토 제출
 {: #submitting-a-review-for-an-installed-application }
-You can review an application version that is installed on your mobile device; the review must include a rating and a comment. You can submit a review of an application version only if that version is installed on your mobile device.
+모바일 디바이스에 설치된 애플리케이션 버전을 검토할 수 있습니다. 검토에는 등급과 주석이 포함되어야 합니다. 애플리케이션 버전이 모바일 디바이스에 설치된 경우에만 해당 버전의 검토를 제출할 수 있습니다. 
 
-1. In the **Details** view, initiate your review.
-    * On iOS phones and tablets, tap **Review version X**.
-    * On Android phones and tablets, tap **Review version X**.
-2. Enter a nonzero star rating.
+1. **세부사항** 보기에서 검토를 시작하십시오. 
+    * iOS 전화기 및 태블릿에서 **버전 X 검토**를 누르십시오. 
+    * Android 전화기 및 태블릿에서 **버전 X 검토**를 누르십시오. 
+2. 0이 아닌 별 등급을 입력하십시오. 
 
-    On mobile devices with touchscreens, tap 1 to 5 stars to represent your approval rating of the version of the application. One star represents the lowest level of appreciation and five stars represent the highest level of appreciation.
+    터치 스크린이 있는 모바일 디바이스에서는 1 - 5개의 별을 눌러 애플리케이션 버전의 승인 등급을 표시하십시오. 별 1개는 최하위 레벨의 평가를 표시하고 별 5개는 최상위 레벨의 평가를 표시합니다. 
 
-3. Enter a comment about this version of the application.
-4. Tap **Submit** to send your review to the Application Center.
+3. 이 애플리케이션 버전에 대한 주석을 입력하십시오. 
+4. **제출**을 눌러 검토를 Application Center에 보내십시오. 
 
-## Viewing reviews
+## 검토 보기
 {: #viewing-reviews }
-You can view reviews of a specific version of an application or of all versions of an application.  
+특정 버전의 애플리케이션 또는 모든 버전의 애플리케이션에 대한 검토를 볼 수 있습니다.   
 
-Reviews are displayed in descending order from the most recent review. If the number of reviews fills more than one screen, tap **Load more** to show more reviews. On Android, iOS, and Windows Phone devices, the review details are visible in the list.
+검토는 최신 검토부터 내림차순으로 표시됩니다. 검토 수가 둘 이상의 화면으로 표시되는 경우 **계속 로드**를 눌러 추가 검토를 표시하십시오. Android, iOS 및 Windows Phone 디바이스에서 검토 세부사항은 목록에 표시됩니다. 
 
-### Viewing reviews of a specific version
+### 특정 버전의 검토 보기
 {: #viewing-reviews-of-a-specific-version }
-The **Details** view always shows the details of a specific version. On a phone, the reviews are for that version.  
-In the **Details** view of an application version:
+**세부사항** 보기는 항상 특정 버전의 세부사항을 표시합니다. 전화기에서 검토는 항상 해당 버전용입니다.   
+애플리케이션 버전의 **세부사항** 보기에서 다음을 수행하십시오. 
 
-* On a Windows Phone, Android, or iOS phone, tap **View Reviews** to navigate to the Reviews view.
-* On a tablet, tap **Reviews** xx, where xx is the displayed version of the application.
+* Windows Phone, Android 또는 iOS 전화기에서 **검토 보기**를 눌러 검토 보기로 이동하십시오. 
+* 태블릿에서 **xx 검토**를 누르십시오. 여기서 xx는 표시된 애플리케이션 버전입니다. 
 
-### Viewing reviews of all versions of an application
+### 모든 버전의 애플리케이션에 대한 검토 보기
 {: #viewing-reviews-of-all-versions-of-an-application }
-In the **Details** view of an application version:
+애플리케이션 버전의 **세부사항** 보기에서 다음을 수행하십시오. 
 
-* On a Windows Phone, Android, or iOS phone, tap **View Reviews** to navigate to the **Reviews** view. Then, tap the settings icon. Tap **All versions**, and confirm the selection.
-* On a tablet, tap **All Reviews**.
+* Windows Phone, Android 또는 iOS 전화기에서 **검토 보기**를 눌러 **검토** 보기로 이동하십시오. 그런 다음 설정 아이콘을 누르십시오. **모든 버전**을 누르고 선택사항을 확인하십시오. 
+* 태블릿에서 **모든 검토**를 누르십시오. 

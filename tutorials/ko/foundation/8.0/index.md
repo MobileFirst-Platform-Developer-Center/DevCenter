@@ -10,20 +10,20 @@ show_breadcrumb: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-{{ site.data.keys.product_full }} radically simplifies building, managing, and updating your mobile application with a pre-integrated, comprehensive set of mobile application services.
+{{site.data.keys.product_full }}은 미리 통합된 포괄적인 세트의 모바일 애플리케이션 서비스로 모바일 애플리케이션 빌드, 관리 및 업데이트를 근본적으로 단순화합니다.
 
-Developers can build their application using the front-end framework and tools of their choice, and easily add push, authentication, offline sync, and business logic to their apps with the {{ site.data.keys.product }} software development kit (SDK) available across a wide range of supported mobile platforms. {{ site.data.keys.product }} enables you to control your application from client to server, and thus allows you to capture business data at the point of interaction. {{ site.data.keys.product }} apps also enable you to employ a streamlined and repeatable process for incremental app updates and run your apps in flexible hybrid cloud patterns.
+개발자는 프론트 엔드 프레임워크와 선택한 도구를 사용하여 애플리케이션을 빌드하고, 광범위한 지원 모바일 플랫폼 전체에서 사용 가능한 {{site.data.keys.product }} SDK(Software Development Kit)로 해당 앱에 푸시, 인증, 오프라인 동기화 및 비즈니스 로직을 쉽게 추가할 수 있습니다. {{site.data.keys.product }}은 클라이언트에서 서버까지 사용자의 애플리케이션을 제어할 수 있도록 하여 상호작용의 지점에서 비즈니스 데이터를 캡처하도록 허용합니다. {{site.data.keys.product }} 앱은 증분 앱 업데이트에 대해 스트림라인으로 된 반복 가능한 프로세스를 사용할 수 있도록 하며 유연한 하이브리드 클라우드 패턴에서 사용자의 앱을 실행합니다. 
 
-To review all categories and tutorials visit:
+모든 카테고리 및 학습서를 검토하려면 다음을 방문하십시오.
 
-* [All Tutorials](all-tutorials/)
+* [모든 학습서](all-tutorials/)
 
-For curated content visit: 
+엄선된 컨텐츠를 보려면 다음을 방문하십시오.  
 
-* [Cordova development](cordova-tutorials/)
-* [iOS development](ios-tutorials/) 
-* [Android development](android-tutorials/) 
-* [Windows 8.1 Universal and Windows 10 UWP development](windows-8-10-tutorials/)
-* [Xamarin development](xamarin-tutorials/)
-* [Web application development](web-tutorials/)
-* [Server-side development](server-side-tutorials/)
+* [Cordova 개발](cordova-tutorials/)
+* [iOS 개발](ios-tutorials/) 
+* [Android 개발](android-tutorials/) 
+* [Windows 8.1 Universal 및 Windows 10 UWP 개발](windows-8-10-tutorials/)
+* [Xamarin 개발](xamarin-tutorials/)
+* [웹 애플리케이션 개발](web-tutorials/)
+* [서버 측 개발](server-side-tutorials/)

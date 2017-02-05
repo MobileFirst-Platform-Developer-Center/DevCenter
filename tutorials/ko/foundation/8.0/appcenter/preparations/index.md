@@ -1,227 +1,227 @@
 ---
 layout: tutorial
-title: Preparations for using the mobile client
-breadcrumb_title: Preparations
+title: 모바일 클라이언트 사용 준비
+breadcrumb_title: 준비
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-The Appcenter Installer application is used to install apps on mobile devices. You can generate this application by using either the provided Cordova or MobileFirst Studio projects, or use a pre-built version of the MobileFirst Studio project for Android, iOS, or Windows 8 Universal, directly.
+Appcenter 설치 프로그램 애플리케이션은 모바일 디바이스에 앱을 설치하는 데 사용됩니다. 제공된 Cordova 또는 MobileFirst Studio 프로젝트를 사용하여 이 애플리케이션을 생성하거나, 미리 빌드된 Android, iOS 또는 Windows 8 Universal용 MobileFirst Studio 프로젝트 버전을 직접 사용할 수 있습니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
-* [Prerequisites](#prerequisites)
-* [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client)
-* [MobileFirst Studio based IBM AppCenter client](#mobilefirst-studio-based-ibm-appcenter-client)
-* [Customizing features (for experts): Android, iOS, Windows Phone](#customizing-features-for-experts-android-ios-windows-phone)
-* [Deploying the mobile client in Application Center](#deploying-the-mobile-client)
+* [전제조건](#prerequisites)
+* [Cordova 기반 IBM AppCenter 클라이언트](#cordova-based-ibm-appcenter-client)
+* [MobileFirst Studio 기반 IBM AppCenter 클라이언트](#mobilefirst-studio-based-ibm-appcenter-client)
+* [기능 사용자 정의(전문가용): Android, iOS, Windows Phone](#customizing-features-for-experts-android-ios-windows-phone)
+* [Application Center에 모바일 클라이언트 배치](#deploying-the-mobile-client)
 
-## Prerequisites
+## 전제조건
 {: #prerequisites }
-### Prerequisites specific to the Android operating system
+### Android 운영 체제에 맞는 전제조건
 {: #prerequisites-specific-to-the-android-operating-system }
-The Native Android version of the mobile client is included in the software delivery in the form of an Android application package (.apk) file. The **IBMApplicationCenter.apk** file is in the directory **ApplicationCenter/installer**. Push notifications are disabled. If you want to enable push notifications, you must rebuild the .apk file. See [Push notifications of application updates](../push-notifications) for more information about push notifications in the Application Center.
+모바일 클라이언트의 원시 Android 버전은 Android 애플리케이션 패키지(.apk) 파일 양식으로 소프트웨어 전달에 포함됩니다. **IBMApplicationCenter.apk** 파일은 **ApplicationCenter/installer** 디렉토리에 있습니다. 푸시 알림은 사용 안함으로 설정되어 있습니다. 푸시 알림을 사용으로 설정하려는 경우 .apk 파일을 다시 빌드해야 합니다. Application Center의 푸시 알림에 대한 자세한 정보는 [애플리케이션 업데이트의 푸시 알림](../push-notifications)을 참조하십시오. 
 
-To build the Android version, you must have the latest version of the Android development tools.
+Android 버전을 빌드하려면 최신 버전의 Android 개발 도구가 있어야 합니다. 
 
-### Prerequisites specific to Apple iOS operating system
+### Apple iOS 운영 체제에 맞는 전제조건
 {: #prerequisites-specific-to-apple-ios-operating-system }
-The Native iOS version for iPad and iPhone is not delivered as a compiled application. The application must be created from the {{ site.data.keys.product_full }} project named **IBMAppCenter**. This project is also delivered as part of the distribution in the **ApplicationCenter/installer** directory.
+iPad 및 iPhone용 원시 iOS 버전은 컴파일된 애플리케이션으로 전달되지 않습니다. 애플리케이션은 **IBMAppCenter**라는 {{site.data.keys.product_full }} 프로젝트에서 작성해야 합니다. 이 프로젝트는 **ApplicationCenter/installer** 디렉토리에 배포의 일부로도 전달됩니다. 
 
-To build the iOS version, you must have the appropriate {{ site.data.keys.product_full }} and Apple software. The version of {{ site.data.keys.mf_studio }} must be the same as the version of {{ site.data.keys.mf_server }} on which this documentation is based. The Apple Xcode version is V6.1.
+iOS 버전을 빌드하려면 적절한 {{site.data.keys.product_full }} 및 Apple 소프트웨어가 있어야 합니다. {{site.data.keys.mf_studio }} 버전은 이 문서의 기반이 되는 {{site.data.keys.mf_server }} 버전과 같아야 합니다. Apple Xcode 버전은 V6.1입니다. 
 
-### Prerequisites specific to Microsoft Windows Phone operating system
+### Microsoft Windows Phone 운영 체제에 특정한 전제조건
 {: #prerequisites-specific-to-microsoft-windows-phone-operating-system }
-The Windows Phone version of the mobile client is included as an unsigned Windows Phone application package (.xap) file in the software delivery. The **IBMApplicationCenterUnsigned.xap** file is in the **ApplicationCenter/installer** directory.
+모바일 클라이언트의 Windows Phone 버전은 서명되지 않은 Windows Phone 애플리케이션 패키지(.xap) 파일로 소프트웨어 전달에 포함됩니다. **IBMApplicationCenterUnsigned.xap** 파일은 **ApplicationCenter/installer** 디렉토리에 있습니다. 
 
-> **Important:** The unsigned .xap file cannot be used directly. You must sign it with your company certificate obtained from Symantec/Microsoft before you can install it on a device.
+> **중요:** 서명되지 않은 .xap 파일은 직접 사용할 수 없습니다. 디바이스에 설치할 수 있으려면 Symantec/Microsoft에서 확보한 회사 인증서로 이 파일에 서명해야 합니다.
 
-Optional: If necessary, you can also build the Windows Phone version from sources. For this purpose, you must have the latest version of Microsoft Visual Studio.
+선택사항: 필요한 경우 소스에서 Windows Phone 버전을 빌드할 수도 있습니다. 이 작업을 수행하려면 최신 버전의 Microsoft Visual Studio가 있어야 합니다. 
 
-### Prerequisites specific to Microsoft Windows 8 operating system
+### Microsoft Windows 8 운영 체제에 특정한 전제조건
 {: #prerequisites-specific-to-microsoft-windows-8-operating-system }
-The Windows 8 version of the mobile client is included as a .zip archive file. The **IBMApplicationCenterWindowsStore.zip** file contains an executable file (.exe) and its dependent Dynamic-Link Library (.dll) files. To use the content of this archive, you download the archive to a location on you local drive and run the executable file.
+모바일 클라이언트의 Windows 8 버전은 .zip 아카이브 파일로 포함됩니다. **IBMApplicationCenterWindowsStore.zip** 파일에는 실행 파일(.exe) 및 해당 종속 동적 링크 라이브러리(.dll) 파일이 포함되어 있습니다. 이 아카이브의 컨텐츠를 사용하려면 로컬 드라이브의 위치에 아카이브를 다운로드하고 실행 파일을 실행하십시오. 
 
-Optional: If necessary, you can also build the Windows 8 version from sources. For this purpose, you must have the latest version of Microsoft Visual Studio.
+선택사항: 필요한 경우 소스에서 Windows 8 버전을 빌드할 수도 있습니다. 이 작업을 수행하려면 최신 버전의 Microsoft Visual Studio가 있어야 합니다. 
 
-## Cordova based IBM AppCenter client
+## Cordova 기반 IBM AppCenter 클라이언트
 {: #cordova-based-ibm-appcenter-client }
-The Cordova based AppCenter client project is located in the `install` directory at: **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**.
+Cordova 기반 AppCenter 클라이언트 프로젝트는 **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**의 `install` 디렉토리에 있습니다. 
 
-This project is based solely on the Cordova framework and thus has no dependency on the {{ site.data.keys.product }} client/server APIs.  
-Since this a standard Cordova app, there is also no dependency on {{ site.data.keys.mf_studio }}. This app uses Dojo for the UI.
+이 프로젝트는 Cordova 프레임워크만을 기반으로 하므로 {{site.data.keys.product }} 클라이언트/서버 API에 대한 종속성이 없습니다.   
+이 앱은 표준 Cordova 앱이므로 {{site.data.keys.mf_studio }}에 대한 종속성도 없습니다. 이 앱은 UI를 위해 Dojo를 사용합니다. 
 
-Follow the steps below to get started:
+시작하려면 아래 단계를 따르십시오. 
 
-1. Install Cordova.
+1. Cordova를 설치하십시오. 
 
 ```bash
 npm install -g cordova@latest
 ```
 
-2. Install Android SDK and set the `ANDROID_HOME`.  
-3. Build and run this project.
+2. Android SDK를 설치하고 `ANDROID_HOME`을 설정하십시오.   
+3. 이 프로젝트를 빌드하고 실행하십시오. 
 
-Build all platforms:
+모든 플랫폼을 빌드합니다. 
 
 ```bash
 cordova build
 ```
 
-Build only Android:
+Android만 빌드합니다. 
 
 ```bash
 cordova build android
 ```
 
-Build only iOS:
+iOS만 빌드합니다. 
 
 ```bash
 cordova build ios
 ```
 
-### Customizing AppCenter Installer application
+### AppCenter 설치 프로그램 애플리케이션 사용자 정의
 {: #customizing-appcenter-installer-application }
-You can further customize the application, such as updating its user interface for your specific company or needs.
+특정 회사 또는 요구에 대한 사용자 인터페이스 업데이트와 같이 추가적으로 애플리케이션을 사용자 정의할 수 있습니다. 
 
-> **Note:** While you can freely customize the application UI and behavior, such changes are not under the support agreement by IBM.
+> **참고:** 애플리케이션 UI 및 동작을 자유롭게 사용자 정의할 수 있지만, 이러한 변경사항은 IBM의 지원 계약에 포함되지 않습니다.
 
 #### Android
 {: #android }
-* Open the Android Studio.
-* Select **Import project (Eclipse ADT, Gradle, etc.)**
-* Select the android folder from **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android**.
+* Android Studio를 여십시오. 
+* **프로젝트(Eclipse ADT, Gradle 등) 가져오기**를 선택하십시오. 
+* **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android**에서 Android 폴더를 선택하십시오. 
 
-This might take some time. Once this is done you are ready to customize.
+시간이 다소 걸릴 수 있습니다. 이 작업이 완료되면 사용자 정의할 준비가 된 것입니다. 
 
-> **Note:** Select to skip the update option on the popup window, for upgrading the gradle version. Refer to `grade-wrapper.properties` for the version.
+> **참고:** Gradle 버전 업그레이드의 경우 팝업 창에서 업데이트 옵션을 건너뛰도록 선택하십시오. 버전은 `grade-wrapper.properties`를 참조하십시오.
 
 #### iOS
 {: #ios }
-* Go to **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
-* Click to open the **IBMAppCenterClient.xcodeproj** file, the project is opened in Xcode and you are ready to customize.
+* **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**로 이동하십시오. 
+* **IBMAppCenterClient.xcodeproj** 파일을 클릭하여 여십시오. 프로젝트가 Xcode에서 열리며 사용자 정의할 준비가 완료됩니다. 
 
-## MobileFirst Studio based IBM AppCenter client
+## MobileFirst Studio 기반 IBM AppCenter 클라이언트
 {: #mobilefirst-studio-based-ibm-appcenter-client }
-Instead of using the Cordova project for iOS and Android, you may also choose to use the previous release of the App Center client application, which is based on MobileFirst Studio 7.1 and supports iOS, Android and Windows Phone.
+iOS 및 Android용 Cordova 프로젝트를 사용하는 대신에, MobileFirst Studio 7.1을 기반으로 하고 iOS, Android 및 Windows Phone을 지원하는 App Center 클라이언트 애플리케이션의 이전 릴리스를 사용하도록 선택할 수 있습니다. 
 
-### Importing and building the project (Android, iOS, Windows Phone)
+### 프로젝트 가져오기 및 빌드(Android, iOS, Windows Phone)
 {: #importing-and-building-the-project-android-ios-windows-phone }
-You must import the **IBMAppCenter** project into {{ site.data.keys.mf_studio }} and then build the project.
+**IBMAppCenter** 프로젝트를 {{site.data.keys.mf_studio }}에 가져온 후 프로젝트를 빌드해야 합니다. 
 
-> **Note:** For V8.0.0, use MobileFirst Studio 7.1. You can download MobileFirst Studio from the [Downloads page]({{site.baseurl}}/downloads). For installation instructions, see [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) in the IBM  Knowledge Center for 7.1.
+> **참고:** V8.0.0의 경우 MobileFirst Studio 7.1을 사용하십시오. MobileFirst Studio는 [다운로드 페이지]({{site.baseurl}}/downloads)에서 다운로드할 수 있습니다. 설치 지시사항은 7.1용 IBM Knowledge Center의 [MobileFirst Studio 설치](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)를 참조하십시오.
 
-1. Select **File → Import**.
-2. Select **General → Existing Project into Workspace**.
-3. On the next page, select **Select root directory** and locate the root of the **IBMAppCenter** project.
-4. Select **IBMAppCenter** project.
-5. Select **Copy projects into workspace**. This selection creates a copy of the project in your workspace. On UNIX systems, the IBMAppCenter project is read only at the original location. so copying projects into workspace avoids problems with file permissions.
-6. Click **Finish** to import the **IBMAppCenter** project into MobileFirst Studio.
+1. **파일 → 가져오기**를 선택하십시오. 
+2. **일반 → 기존 프로젝트를 작업공간으로**를 선택하십시오. 
+3. 다음 페이지에서 **루트 디렉토리 선택**을 선택하고 **IBMAppCenter** 프로젝트의 루트를 찾으십시오. 
+4. **IBMAppCenter** 프로젝트를 선택하십시오. 
+5. **작업공간에 프로젝트 복사**를 선택하십시오. 이 항목을 선택하면 사용자의 작업공간에 프로젝트의 사본을 작성합니다. UNIX 시스템에서 IBMAppCenter 프로젝트는 원래 위치에서 읽기 전용입니다. 따라서 작업공간에 프로젝트를 복사하면 파일 권한 관련 문제가 발생하지 않습니다. 
+6. **완료**를 클릭하여 **IBMAppCenter** 프로젝트를 MobileFirst Studio로 가져오십시오. 
 
-Build the **IBMAppCenter** project. The MobileFirst project contains a single application named **AppCenter**. Right-click the application and select **Run as → Build All Environments**.
+**IBMAppCenter** 프로젝트를 빌드하십시오. MobileFirst 프로젝트에는 **AppCenter**라는 단일 애플리케이션이 포함되어 있습니다. 애플리케이션을 마우스 오른쪽 단추로 클릭하고 **실행 도구 → 모든 환경 빌드**를 선택하십시오. 
 
 #### Android
 {: #android }
-MobileFirst Studio generates a native Android project in **IBMAppCenter/apps/AppCenter/android/native**. A native Android development tools (ADT) project is in the android/native folder. You can compile and sign this project by using the ADT tools. This project requires Android SDK level 16 to be installed, so that the resulting APK is compatible with all Android versions 2.3 and later. If you choose a higher level of the Android SDK when you build the project, the resulting APK will not be compatible with Android version 2.3.
+MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/android/native**에 원시 Android 프로젝트를 생성합니다. 원시 Android 개발 도구(ADT) 프로젝트는 android/native 폴더에 있습니다. ADT 도구를 사용하여 이 프로젝트를 컴파일하고 서명할 수 있습니다. 생성되는 APK가 모든 Android 버전 2.3 이상과 호환 가능하도록 이 프로젝트에서는 Android SDK 레벨 16을 설치해야 합니다. 프로젝트를 빌드할 때 상위 레벨의 Android SDK를 선택하는 경우 생성되는 APK는 Android 버전 2.3과 호환 가능하지 않습니다. 
 
-See the [Android site for developers](https://developer.android.com/index.html) for more specific Android information that affects the mobile client application.
+모바일 클라이언트 애플리케이션에 영향을 미치는 특정 Android 정보는 [개발자용 Android 사이트](https://developer.android.com/index.html)를 참조하십시오. 
 
-If you want to enable push notifications for application updates, you must first configure the Application Center client properties. See [Configuring push notifications for application updates for more information](../push-notifications).
+애플리케이션 업데이트에 대한 푸시 알림을 사용하려면 먼저 Application Center 클라이언트 특성을 구성해야 합니다. 자세한 정보는 [애플리케이션 업데이트에 대한 푸시 알림 구성](../push-notifications)을 참조하십시오. 
 
 #### iOS
 {: #ios }
-MobileFirst Studio generates a native iOS project in **IBMAppCenter/apps/AppCenter/iphone/native**. The **IBMAppCenterAppCenterIphone.xcodeproj** file is in the iphone/native folder. This file is the Xcode project that you must compile and sign by using Xcode.
+MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/iphone/native**에 원시 iOS 프로젝트를 생성합니다. **IBMAppCenterAppCenterIphone.xcodeproj** 파일은 iphone/native 폴더에 있습니다. 이 파일은 Xcode를 사용하여 컴파일하고 서명해야 하는 Xcode 프로젝트입니다. 
 
-See [The Apple developer site](https://developer.apple.com/) to learn more about how to sign the iOS mobile client application. To sign an iOS application, you must change the Bundle Identifier of the application to a bundle identifier that can be used with the provisioning profile that you use. The value is defined in the Xcode project settings as **com.your\_internet\_domain\_name.appcenter**, where **your\_internet\_domain\_name** is the name of your internet domain.
+iOS 모바일 클라이언트 애플리케이션을 서명하는 방법에 대해 자세히 알아보려면 [Apple 개발자 사이트](https://developer.apple.com/)를 참조하십시오. iOS 애플리케이션을 서명하려면 사용하는 프로비저닝 프로파일과 함께 사용할 수 있는 번들 ID로 애플리케이션의 번들 ID를 변경해야 합니다. 값은 Xcode 프로젝트 설정에서 **com.your\_internet\_domain\_name.appcenter**로 정의됩니다. 여기서 **your\_internet\_domain\_name**은 인터넷 도메인의 이름입니다. 
 
-If you want to enable push notifications for application updates, you must first configure the Application Center client properties. See [Configuring push notifications for application updates for more information](../push-notifications).
+애플리케이션 업데이트에 대한 푸시 알림을 사용하려면 먼저 Application Center 클라이언트 특성을 구성해야 합니다. 자세한 정보는 [애플리케이션 업데이트에 대한 푸시 알림 구성](../push-notifications)을 참조하십시오. 
 
 #### Windows Phone 8
 {: #windows-phone-8 }
-MobileFirst Studio generates a native Windows Phone 8 project in **IBMAppCenter/apps/AppCenter/windowsphone8/native**. The **AppCenter.csproj** file is in the windowsphone8/native folder. This file is the Visual Studio project that you must compile by using Visual Studio and the Windows Phone 8.0 SDK.
+MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/windowsphone8/native**에 원시 Windows Phone 8 프로젝트를 생성합니다. **AppCenter.csproj** 파일은 windowsphone8/native 폴더에 있습니다. 이 파일은 Visual Studio 및 Windows Phone 8.0 SDK를 사용하여 컴파일해야 하는 Visual Studio 프로젝트입니다. 
 
-The application is built with the Windows Phone 8.0 SDK so that it can run on Windows Phone 8.0 and 8.1 devices. It is not built with the Windows Phone 8.1 SDK, because the result would not run on earlier Windows Phone 8.0 devices.
+애플리케이션은 Windows Phone 8.0 및 8.1 디바이스에서 실행될 수 있도록 Windows Phone 8.0 SDK로 빌드됩니다. 결과가 이전의 Windows Phone 8.0 디바이스에서 실행되지 않기 때문에 Windows Phone 8.1 SDK로는 빌드되지 않습니다. 
 
-The installation of Visual Studio 2013 enables you to select the installation of the Windows Phone 8.0 SDK in addition to the 8.1 SDK. The Windows Phone 8.0 SDK is also available from [Windows Phone SDK Archives](https://dev.windows.com/en-us/develop/download-phone-sdk).
+Visual Studio 2013을 설치하면 Windows Phone 8.1 SDK 외에 8.0 SDK 설치도 선택할 수 있습니다. Windows Phone 8.0 SDK는 [Windows Phone SDK 아카이브](https://dev.windows.com/en-us/develop/download-phone-sdk)에서도 사용할 수 있습니다. 
 
-See [Windows Phone Dev Center](http://dev.windowsphone.com/en-us) to learn more about how to build and sign the Windows Phone mobile client application.
+Windows Phone 모바일 클라이언트 애플리케이션을 빌드하고 서명하는 방법에 대해 자세히 알아보려면 [Windows Phone Dev Center](http://dev.windowsphone.com/en-us)를 참조하십시오. 
 
-#### Microsoft Windows 8: Building the project
+#### Microsoft Windows 8: 프로젝트 빌드
 {: #microsoft-windows-8-building-the-project }
-The Windows 8 Universal project is provided as a Visual Studio project located at **IBMApplicationCenterWindowsStore\AppCenterClientWindowsStore.csproj.**  
-You must build the client project in Microsoft Visual Studio 2013 before you can distribute it.
+Windows 8 Universal 프로젝트는 **IBMApplicationCenterWindowsStore\AppCenterClientWindowsStore.csproj**에 있는 Visual Studio 프로젝트로 제공됩니다.   
+클라이언트 프로젝트를 분배하기 전에 Microsoft Visual Studio 2013에서 프로젝트를 빌드해야 합니다. 
 
-Building the project is a prerequisite to distributing it to your users, but the Windows 8 application is not intended to be deployed on Application Center for later distribution.
+프로젝트 빌드는 사용자에게 분배하기 위한 전제조건이지만, Windows 8 애플리케이션은 나중에 분배하기 위해 Application Center에 배치하도록 설계되어 있지 않습니다. 
 
-To build the Windows 8 project:
+Windows 8 프로젝트를 빌드하려면 다음을 수행하십시오. 
 
-1. Open the Visual Studio project file called **IBMApplicationCenterWindowsStore\AppCenterClientWindowsStore.csproj** in Microsoft Visual Studio 2013.
-2. Perform a full build of the application.
+1. Microsoft Visual Studio 2013에서 **IBMApplicationCenterWindowsStore\AppCenterClientWindowsStore.csproj**라는 Visual Studio 파일을 여십시오. 
+2. 애플리케이션의 전체 빌드를 수행하십시오. 
 
-To distribute the mobile client to your Application Center users, you can later generate an installer that will install the generated executable (.exe) file and its dependent Dynamic-Link Library (.dll) files. Alternatively, you can provide these files without including them in an installer.
+Application Center 사용자에게 모바일 클라이언트를 배포하기 위해, 생성된 실행 파일(.exe) 및 해당 종속 동적 링크 라이브러리(.dll) 파일을 설치할 설치 프로그램을 나중에 생성할 수 있습니다. 또는 설치 프로그램에 포함시키지 않고 이러한 파일을 제공할 수 있습니다. 
 
-## Customizing features (for experts): Android, iOS, Windows Phone)
+## 기능 사용자 정의(전문가용): Android, iOS, Windows Phone
 {: #customizing-features-for-experts-android-ios-windows-phone }
-You can customize features by editing a central property file and manipulating some other resources.
+중앙 특성 파일을 편집하고 일부 다른 자원을 조작하여 기능을 사용자 정의할 수 있습니다. 
 
-To customize features: several features are controlled by a central property file called **config.json** in the directory **IBMAppCenter/apps/AppCenter/common/js/appcenter/** or **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter**. If you want to change the default application behavior, you can adapt this property file before you build the project.
+기능을 사용자 정의하는 경우 일부 기능은 **IBMAppCenter/apps/AppCenter/common/js/appcenter/** 또는 **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter** 디렉토리의 **config.json**이라는 중앙 특성 파일에 의해 제어됩니다. 기본 애플리케이션 동작을 변경하려는 경우 프로젝트를 빌드하기 전에 이 특성 파일을 조정할 수 있습니다. 
 
-This file contains the properties shown in the following table.
+이 파일에는 다음 표에 표시된 특성이 포함되어 있습니다. 
 
-| Property | Description |
+| 특성     | 설명        |
 |----------|-------------|
-| url | The hardcoded address of the Application Center server. If this property is set, the address fields of the Login view are not displayed. |
-| defaultPort | If the url property is null, this property prefills the port field of the Login view on a phone. This is a default value; the field can be edited by the user. |
-| defaultContext | If the url property is null, this property prefills the context field of the Login view on a phone. This is a default value; the field can be edited by the user. |
-| ssl | The default value of the SSL switch of the Login view. |
-| allowDowngrade | This property indicates whether installation of older versions is authorized or not; an older version can be installed only if the operating system and version permit downgrade. |
-| showPreviousVersions | This property indicates whether the device user can show the details of all the versions of applications or only details of the latest version. |
-| showInternalVersion | This property indicates whether the internal version is shown or not. If the value is false, the internal version is shown only if no commercial version is set. |
-| listItemRenderer | This property can have one of these values:<ul><li>full, the default value; the application lists show application name, rating, and latest version.</li><li>simple: the application lists show the application name only.</li></ul> |
-| listAverageRating | This property can have one of these values:<ul><li>latestVersion: the application lists show the average rating of the latest version of the application.</li><li>allVersions: the application lists show the average rating of all versions of the application.</li></ul> |
-| requestTimeout | This property indicates the timeout in milliseconds for requests to the Application Center server. |
-| gcmProjectId | The Google API project ID (project name = com.ibm.appcenter), which is required for Android push notifications; for example, 123456789012. |
-| allowAppLinkReview | This property indicates whether local reviews of applications from external application stores can be registered and browsed in the Application Center. These local reviews are not visible in the external application store. These reviews are stored in the Application Center server. |
+| url | Application Center 서버의 하드코딩된 주소. 이 특성이 설정되면 로그인 보기의 주소 필드가 표시되지 않습니다.  |
+| defaultPort | url 특성이 널인 경우 이 특성은 전화기에서 로그인 보기의 포트 필드에 미리 채워집니다. 이것이 기본값이며 사용자가 필드를 편집할 수 있습니다.  |
+| defaultContext | url 특성이 널인 경우 이 특성은 전화기에서 로그인 보기의 컨텍스트 필드에 미리 채워집니다. 이것이 기본값이며 사용자가 필드를 편집할 수 있습니다.  |
+| ssl | 로그인 보기의 SSL 전환에 대한 기본값.  |
+| allowDowngrade | 이 특성은 이전 버전의 설치 권한이 부여되었는지 여부를 표시합니다. 이전 버전은 운영 체제 및 버전이 다운그레이드를 허용하는 경우에만 설치할 수 있습니다.  |
+| showPreviousVersions | 이 특성은 디바이스 사용자가 모든 버전의 애플리케이션에 대한 세부사항을 표시할 수 있는지 아니면 최신 버전의 세부사항만 표시할 수 있는지를 표시합니다.  |
+| showInternalVersion | 이 특성은 내부 버전이 표시되는지 여부를 표시합니다. 값이 false인 경우 상업용 버전이 설정되지 않은 경우에만 내부 버전이 표시됩니다.  |
+| listItemRenderer | 이 특성 값은 다음 중 하나입니다. <ul><li>full(기본값): 애플리케이션 목록에 애플리케이션 이름, 등급, 최신 버전이 나열됩니다. </li><li>simple: 애플리케이션 목록에 애플리케이션 이름만 표시됩니다. </li></ul> |
+| listAverageRating | 이 특성 값은 다음 중 하나입니다. <ul><li>latestVersion: 애플리케이션 목록에 최신 버전의 애플리케이션에 대한 평균 등급이 나열됩니다. </li><li>allVersions: 애플리케이션 목록에 모든 버전의 애플리케이션에 대한 평균 등급이 나열됩니다. </li></ul> |
+| requestTimeout | 이 특성은 Application Center 서버에 대한 요청의 제한시간(밀리초)을 표시합니다.  |
+| gcmProjectId | Android 푸시 알림에 필요한 Google API 프로젝트 ID(프로젝트 이름 = com.ibm.appcenter). 예: 123456789012.  |
+| allowAppLinkReview | 이 특성은 외부 애플리케이션 스토어에서 애플리케이션의 로컬 검토를 Application Center에서 등록하고 찾아볼 수 있는지 여부를 표시합니다. 이러한 로컬 검토는 외부 애플리케이션 스토어에서 볼 수 없습니다. 이러한 검토는 Application Center 서버에 저장됩니다.  |
 
-### Other resources
+### 기타 자원
 {: #other-resources }
-Other resources that are available are application icons, application name, splash screen images, icons, and translatable resources of the application.
+사용 가능한 기타 자원은 애플리케이션 아이콘, 애플리케이션 이름, 스플래시 화면 이미지, 아이콘, 애플리케이션의 변환 가능한 자원입니다. 
 
-#### Application icons
+#### 애플리케이션 아이콘
 {: #application-icons }
-* **Android:** The file named **icon.png** in the Android Studio project's **/res/drawabledensity** directories; one directory exists for each density.
-* **iOS:** Files named **iconsize.png** in the Xcode project's **Resources** directory.
-* **Windows Phone:** Files named **ApplicationIcon.png**, **IconicTileSmallIcon.png**, and **IconicTileMediumIcon.png** in the **native** directory of the MobileFirst Studio environment folder for Windows Phone.
+* **Android:** Android Studio 프로젝트의 **/res/drawabledensity** 디렉토리(각 밀도에 대해 하나의 디렉토리가 있음)에 있는 **icon.png** 파일. 
+* **iOS:** Xcode 프로젝트의 **Resources** 디렉토리에 있는 **iconsize.png** 파일. 
+* **Windows Phone:** Windows Phone용 MobileFirst Studio 환경 폴더의 **native** 디렉토리에 있는 **ApplicationIcon.png**, **IconicTileSmallIcon.png** 및 **IconicTileMediumIcon.png** 파일. 
 
-#### Application name
+#### 애플리케이션 이름
 {: #application-name }
-* **Android:** Edit the **app_name** property in the Android Studio project's **res/values/strings.xml** file.
-* **iOS:** Edit the **CFBundleDisplayName** key in the Xcode project's **IBMAppCenterAppCenterIphone-Info.plist** file.
-* **Windows Phone:** Edit the **Title** attribute of the App entry in the Visual Studio's **Properties/WMAppManifest.xml** file.
+* **Android:** Android Studio 프로젝트의 **res/values/strings.xml**에서 **app_name** 특성을 편집하십시오. 
+* **iOS:** Xcode 프로젝트의 **IBMAppCenterAppCenterIphone-Info.plist** 파일에서 **CFBundleDisplayName** 키를 편집하십시오. 
+* **Windows Phone:** Visual Studio의 **Properties/WMAppManifest.xml** 파일에서 App 항목의 **Title** 속성을 편집하십시오. 
 
-#### Splash screen images
+#### 스플래시 화면 이미지
 {: #splash-screen-images }
-* **Android:** Edit the file named **splashimage.9.png** in the Android Studio project's **res/drawable/density** directories; one directory exists for each density. This file is a patch 9 image.
-* **iOS:** Files named **Default-size.png** in the Xcode project's **Resources** directory.
-* Cordova/MobileFirst Studio based projects' splash screen during auto login: **js/idx/mobile/themes/common/idx/Launch.css**
-* **Windows Phone:** Edit the file named **SplashScreenImage.png** in the **native** directory of the MobileFirst Studio environment folder for Windows Phone.
+* **Android:** Android Studio 프로젝트의 **res/drawable/density** 디렉토리(각 밀도에 대해 하나의 디렉토리가 있음)에서 **splashimage.9.png** 파일을 편집하십시오. 이 파일은 패치 9 이미지입니다. 
+* **iOS:** Xcode 프로젝트의 **Resources** 디렉토리에서 **Default-size.png** 파일을 편집하십시오. 
+* 자동 로그인 동안 표시되는 Cordova/MobileFirst Studio 기반 프로젝트의 스플래시 화면: **js/idx/mobile/themes/common/idx/Launch.css**
+* **Windows Phone:** Windows Phone용 MobileFirst Studio 환경 폴더의 **native** 디렉토리에서 **SplashScreenImage.png** 파일을 편집하십시오. 
 
-#### Icons (buttons, stars, and similar objects) of the application
+#### 애플리케이션의 아이콘(단추, 별, 유사 오브젝트)
 {: #icons }
 **IBMAppCenter/apps/AppCenter/common/css/images**.
 
-#### Translatable resources of the application
+#### 애플리케이션의 변환 가능한 자원
 {: #translatable-resources }
 **IBMAppCenter/apps/AppCenter/common/js/appcenter/nls/common.js**.
 
-## Deploying the mobile client in Application Center
+## Application Center에 모바일 클라이언트 배치
 {: #deploying-the-mobile-client }
-Deploy the different versions of the client application to Application Center.
+다양한 버전의 클라이언트 애플리케이션을 Application Center에 배치하십시오. 
 
-The Windows 8 mobile client is not intended to be deployed in Application Center for later distribution. You can choose to distribute the Windows 8 mobile client either by providing users with the client .exe executable file and dynamic link library .dll files directly packaged in an archive, or by creating an executable installer for the Windows 8 mobile client.
+Windows 8 모바일 클라이언트는 나중에 분배하기 위해 Application Center에 배치하도록 설계되어 있지 않습니다. 아카이브로 직접 패키지된 클라이언트 .exe 실행 파일 및 동적 링크 라이브러리 .dll 파일을 사용자에게 제공하거나 Windows 8 모바일 클라이언트에 대한 실행 가능 설치 프로그램을 작성하여 Windows 8 모바일 클라이언트를 분배하도록 선택할 수 있습니다. 
 
-The Android, iOS, and Windows Phone versions of the mobile client must be deployed to the Application Center. To do so, you must upload the Android application package (.apk) files, iOS application (.ipa) files, and Windows Phone application (.xap) files, Web directory archive (.zip) files to the Application Center.
+Android, iOS 및 Windows Phone 버전의 모바일 클라이언트를 Application Center에 배치해야 합니다. 이 작업을 수행하려면 Android 애플리케이션 패키지(.apk) 파일, iOS 애플리케이션(.ipa) 파일, Windows Phone 애플리케이션(.xap) 파일 및 웹 디렉토리 아카이브(.zip) 파일을 Application Center로 업로드해야 합니다. 
 
-Follow the steps described in [Adding a mobile application](../appcenter-console/#adding-a-mobile-application) to add the mobile client application for Android, iOS, and Windows Phone. Make sure that you select the Installer application property to indicate that the application is an installer. Selecting this property enables mobile device users to install the mobile client application easily over the air. To install the mobile client, see the related task that corresponds to the version of the mobile client app determined by the operating system.
+Android, iOS 및 Windows Phone용 모바일 클라이언트 애플리케이션을 추가하려면 [모바일 애플리케이션 추가](../appcenter-console/#adding-a-mobile-application)에 설명된 단계를 따르십시오. 애플리케이션이 설치 프로그램인 것을 표시하기 위해 설치 프로그램 애플리케이션 특성을 선택해야 합니다. 이 특성을 선택하면 모바일 디바이스 사용자가 무선으로 쉽게 모바일 클라이언트 애플리케이션을 설치할 수 있습니다. 모바일 클라이언트를 설치하려면 운영 체제에서 판별한 모바일 클라이언트 애플리케이션의 버전에 해당하는 관련 태스크를 참조하십시오. 

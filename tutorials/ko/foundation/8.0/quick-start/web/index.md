@@ -1,55 +1,55 @@
 ---
 layout: tutorial
-title: Web app end-to-end demonstration
-breadcrumb_title: Web
+title: 웹 앱 엔드-투-엔드 데모
+breadcrumb_title: 웹
 relevantTo: [javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-The purpose of this demonstration is to experience an end-to-end flow:
+이 데모의 목적은 엔드-투-엔드 플로우를 경험해보는 것입니다. 
 
-1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
-2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
-3. The application logic is changed to make a resource request.
+1. {{site.data.keys.product_adj }} 클라이언트 SDK가 사전에 번들된 샘플 애플리케이션을 등록하고 {{site.data.keys.mf_console }}에서 다운로드합니다.
+2. 새 어댑터 또는 제공된 어댑터가 {{site.data.keys.mf_console }}에 배치됩니다.  
+3. 자원 요청을 하도록 애플리케이션 로직이 변경됩니다.
 
-**End result**:
+**종료 결과**:
 
-* Successfully pinging the {{ site.data.keys.mf_server }}.
-* Successfully retrieving data using an adapter.
+* {{site.data.keys.mf_server }} ping을 실행함.
+* 어댑터를 사용하여 데이터를 검색함.
 
-#### Prerequisites:
+#### 전제조건: 
 {: #prerequisites }
-* A modern web browser
-* *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
-* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* 최신 웹 브라우저
+* *선택사항*. {{site.data.keys.mf_cli }} ([다운로드]({{site.baseurl}}/downloads))
+* *선택사항*. 독립형 {{site.data.keys.mf_server }} ([다운로드]({{site.baseurl}}/downloads))
 
-### 1. Starting the {{ site.data.keys.mf_server }}
+### 1. {{site.data.keys.mf_server }} 시작
 {: #starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+[Mobile Foundation 인스턴스를 작성](../../bluemix/using-mobile-foundation)했는지 확인하십시오. 또는  
+[{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)를 사용하는 경우, 서버의 폴더로 이동해서 Mac 및 Linux의 경우 `./run.sh` 또는 Windows의 경우 `run.cmd` 명령을 실행하십시오. 
 
-### 2. Creating and registering an application
+### 2. 애플리케이션 작성 및 등록
 {: #creating-and-registering-an-application }
-In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+브라우저 창에서 URL `http://your-server-host:server-port/mfpconsole`을 로드하여 {{site.data.keys.mf_console }}을 여십시오. 로컬에서 실행 중인 경우 [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)을 사용하십시오. 사용자 이름/비밀번호는 *admin/admin*입니다.
  
-1. Click the **New** button next to **Applications**
-    * Select the **Web** platform
-    * Enter **com.ibm.mfpstarterweb** as the **application identifier**
-    * Click on **Register application**
+1. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하십시오.
+    * **웹** 플랫폼을 선택하십시오.
+    * **com.ibm.mfpstarterweb**을 **애플리케이션 ID**로 입력하십시오.
+    * **애플리케이션 등록**을 클릭하십시오.
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-web.png"/>
+    <img class="gifplayer" alt="애플리케이션 등록" src="register-an-application-web.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the Web sample application.
+2. 웹 샘플 애플리케이션을 다운로드하려면 **스타터 코드 가져오기** 타일에서 클릭하여 선택하십시오.
 
-    <img class="gifplayer" alt="Download sample application" src="download-starter-code-web.png"/>
+    <img class="gifplayer" alt="샘플 애플리케이션 다운로드" src="download-starter-code-web.png"/>
  
-### 3. Editing application logic
+### 3. 애플리케이션 로직 편집
 {: #editing-application-logic }
-1. Open the project in your code editor of choice.
+1. 선택한 코드 편집기로 프로젝트를 여십시오.
 
-2. Select the **client/js/index.js** file and paste the following code snippet, replacing the existing `WLAuthorizationManager.obtainAccessToken()` function:
+2. **client/js/index.js** 파일을 선택하고 다음 코드 스니펫을 붙여넣기하면 다음과 같이 기존 `WLAuthorizationManager.obtainAccessToken()` 함수를 바꿉니다.
 
    ```javascript
    WLAuthorizationManager.obtainAccessToken()
@@ -82,37 +82,37 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
         );
    ```
     
-### 4. Deploy an adapter
+### 4. 어댑터 배치
 {: #deploy-an-adapter }
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
+[이 준비된 .adapter 아티팩트](../javaAdapter.adapter)를 다운로드하고 **조치 → 어댑터 배치** 조치를 사용하여 {{site.data.keys.mf_console }}에서 배치하십시오.
 
-Alternatively, click the **New** button next to **Adapters**.  
+그렇지 않으면 **어댑터** 옆에 있는 **새로 작성** 단추를 클릭하십시오.  
         
-1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
+1. **조치 → 샘플 다운로드** 옵션을 선택하십시오. "Hello World" **Java** 어댑터 샘플을 다운로드하십시오.
 
-   > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
+   > Maven 및 {{site.data.keys.mf_cli }}가 설치되지 않은 경우, 화면상의 **개발 환경 설정** 지시사항을 따르십시오.
 
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+2. **명령행** 창에서 어댑터의 Maven 프로젝트 루트 폴더로 이동해서 다음 명령을 실행하십시오.
 
    ```bash
    mfpdev adapter build
    ```
 
-3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+3. 빌드가 완료되면 **조치 → 어댑터 배치** 조치를 사용하여 {{site.data.keys.mf_console }}에서 배치하십시오. **[adapter]/target** 폴더에서 어댑터를 찾을 수 있습니다.
     
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
+    <img class="gifplayer" alt="어댑터 배치" src="create-an-adapter.png"/>   
 
 
-<img src="web-success.png" alt="sample application" style="float:right"/>
-### 5. Testing the application
+<img src="web-success.png" alt="샘플 애플리케이션" style="float:right"/>
+### 5. 애플리케이션 테스트
 {: #testing-the-application }
-1. From a **Command-line** window, navigate to the **[project root] → node-server** folder.
-2. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
-3. Open the **[project root] → node-server → server.js** file and edit the **host** and **port** variables with the correct values for your {{ site.data.keys.mf_server }}.
-    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**. 
+1. **명령행** 창에서 **[project root] → node-server** 폴더로 이동하십시오.
+2. `npm start` 명령을 실행하여 필요한 Node.js 구성을 설치하고 Node.js 서버를 시작하십시오.
+3. **[project root] → node-server → server.js** 파일을 열고 **호스트** 및 **포트** 변수를 사용자의 {{site.data.keys.mf_server }}에 올바른 값으로 편집하십시오.
+    * 로컬 {{site.data.keys.mf_server }}를 사용 중인 경우, 일반적으로 값은 **http**, **localhost** 및 **9080**입니다.
+    * 원격 {{site.data.keys.mf_server }}를 사용 중인 경우(Bluemix에서), 일반적으로 값은 **https**, **your-server-address** 및 **443**입니다. 
 
-   For example:  
+   예:  
     
    ```javascript
    var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // The Mobile Foundation server address
@@ -120,34 +120,34 @@ Alternatively, click the **New** button next to **Adapters**.
    var mfpURL = host + ':443'; // The Mobile Foundation server port number
    ```
    
-4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
+4. 브라우저에서 URL [http://localhost:9081/home](http://localhost:9081/home)을 방문하십시오.
 
 <br>
-#### Secure Origins Policy
+#### 보안 원본 정책
 {: #secure-origins-policy }
-When using Chrome during development, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
+개발 중에 Chrome을 사용할 때는 "localhost"가 **아닌** 호스트 및 HTTP를 모두 사용하는 경우 브라우저가 애플리케이션을 로드하도록 허용하지 않을 수 있습니다. 이는 이 브라우저에서 기본적으로 구현되고 사용되는 보안 원본 정책으로 인한 것입니다. 
 
-To overcome this, you can start the Chrome browser with the following flag:
+다음 플래그로 Chrome 브라우저를 시작하여 이를 해결할 수 있습니다. 
 
 ```bash
 --unsafely-treat-insecure-origin-as-secure="http://replace-with-ip-address-or-host:port-number" --user-data-dir=/test-to-new-user-profile/myprofile
 ```
 
-- Replace "test-to-new-user-profile/myprofile" with the location of a folder that will act as a new Chrome user profile for the flag to work.
+- 플래그가 작동하게 하려면 "test-to-new-user-profile/myprofile"을 새 Chrome 사용자 프로파일로 작동하는 폴더 위치로 대체하십시오. 
 
 <br clear="all"/>
-### Results
+### 결과
 {: #results }
-* Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
-* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
+* **{{site.data.keys.mf_server }} Ping** 단추를 클릭하면 **{{site.data.keys.mf_server }}에 연결됨**이 표시됩니다.
+* 애플리케이션이 {{site.data.keys.mf_server }}에 연결할 수 없는 경우, 배치된 Java 어댑터를 사용하는 자원 요청이 발생합니다. 
 
-The adapter response is then displayed in an alert.
+그 후에 어댑터 응답이 경보에 표시됩니다.
 
-## Next steps
+## 다음 단계
 {: #next-steps }
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
+애플리케이션에서 어댑터 사용하기 및 {{site.data.keys.product_adj }} 보안 프레임워크를 사용하여 푸시 알림과 같은 추가 서비스를 통합하는 방법에 대해 더 학습합니다.
 
-- Review the [Application development](../../application-development/) tutorials
-- Review the [Adapters development](../../adapters/) tutorials
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review [All Tutorials](../../all-tutorials)
+- [애플리케이션 개발](../../application-development/) 학습서 검토
+- [어댑터 개발](../../adapters/) 학습서 검토
+- [인증 및 보안 학습서](../../authentication-and-security/) 검토
+- [모든 학습서](../../all-tutorials) 검토

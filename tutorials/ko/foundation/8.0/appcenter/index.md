@@ -3,182 +3,183 @@ layout: tutorial
 title: Application Center
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 13
+weight: 12
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-Learn about the {{ site.data.keys.mf_app_center_full }}: what it is for, the different components and features, and how to use the console and the client.
+용도, 여러 컴포넌트 및 기능, 콘솔 및 클라이언트 사용 방법 등 {{site.data.keys.mf_app_center_full }}에 대해 학습하십시오. 
 
-The sale of mobile devices now exceeds that of personal computers. Consequently, mobile applications become critical for businesses.  
-The Application Center is a tool to make sharing mobile applications within an organization easier.
+모바일 디바이스 판매는 이제 개인용 컴퓨터의 판매를 앞지르고 있습니다. 따라서 모바일 애플리케이션이 비즈니스에 매우 중요해졌습니다.   
+Application Center는 조직 내에서 모바일 애플리케이션을 쉽게 공유할 수 있도록 지원하는 도구입니다. 
 
-You can use the Application Center as an enterprise application store. With the Application Center, you can target some mobile applications to particular groups of users within the company.
+Application Center를 엔터프라이즈 애플리케이션 저장소로 사용할 수 있습니다. Application Center를 사용하여 일부 모바일 애플리케이션의 대상을 회사 내 특정 사용자 그룹으로 지정할 수 있습니다. 
 
-A development team can also use the Application Center during the development phase of an application to share applications with testers, designers, or executives in the company. In such a scenario, it makes collaboration easier between all the people who are involved in the development process.
+개발 팀은 애플리케이션 개발 단계 중에 Application Center를 사용하여 회사의 테스터, 디자이너 또는 경영진과 애플리케이션을 공유할 수도 있습니다. 이러한 시나리오에서는 개발 프로세스에 관련된 모든 사용자 간의 협업이 더욱 용이해집니다. 
 
-> You can also review [the Application Center tutorial](app-center-tutorial).
+> 또한 [Application Center 학습서](app-center-tutorial)를 검토할 수 있습니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
-* [Concept of Application Center](#concept-of-application-center)
-* [Specific platform requirements](#specific-platform-requirements)
-* [General architecture](#general-architecture)
-* [Preliminary information](#preliminary-information)
-* [What's next](#whats-next)
+* [Application Center의 개념](#concept-of-application-center)
+* [특정 플랫폼 요구사항](#specific-platform-requirements)
+* [일반 아키텍처](#general-architecture)
+* [예비 정보](#preliminary-information)
+* [다음 단계](#whats-next)
 
-## Concept of Application Center
+## Application Center의 개념
 {: #concept-of-application-center }
-Application Center can be used as an Enterprise application store and is a means of sharing information among different team members within a company.
+Application Center를 엔터프라이즈 애플리케이션 저장소로 사용할 수 있으며 Application Center를 통해 회사 내의 서로 다른 팀 구성원 간에 정보를 공유할 수 있습니다. 
 
-The concept of Application Center is similar to the concept of the Apple public App Store or the Android Market, except that it targets only private usage within a company.
+Application Center의 개념은 회사 내의 개인 사용만 대상으로 한다는 점을 제외하고는 Apple 공용 앱 스토어 또는 Android Market의 개념과 유사합니다. 
 
-By using Application Center, users from the same company or organization download applications to mobile phones or tablets from a single place that serves as a repository of mobile applications.
+Application Center를 사용하면 동일한 회사 또는 조직의 사용자가 모바일 애플리케이션의 저장소 역할을 수행하는 단일 위치에서 휴대전화 또는 태블릿으로 애플리케이션을 다운로드합니다. 
 
-Application Center targets mobile applications that are installed on the device itself. Those applications can be native applications that are built by using the device SDK or hybrid applications that mix native and web content. Application Center does not target mobile web applications; such applications are delivered to the mobile device web browser through a URL like a website.
+Application Center는 디바이스 자체에 설치되어 있는 모바일 애플리케이션을 대상으로 합니다. 이러한 애플리케이션은 원시 및 웹 컨텐츠를 혼합하는 하이브리드 애플리케이션 또는 디바이스 SDK를 사용하여 빌드되는 기본 애플리케이션입니다. Application Center는 모바일 웹 애플리케이션을 대상으로 하지 않습니다. 이러한 애플리케이션은 웹 사이트와 같은 URL을 통해 모바일 디바이스 웹 브라우저에 전달됩니다. 
 
-In the current version, Application Center supports applications that are built for the Google Android platform, the Apple iOS platform, the Windows Phone 8 platform, and the Windows 8 platform.
+현재 버전에서 Application Center는 Google Android 플랫폼, Apple iOS 플랫폼, Windows Phone 8 플랫폼 및 Windows 8 플랫폼용으로 빌드된 애플리케이션을 지원합니다. 
 
-For Windows Phone, only the Windows Phone application package (.xap) file format is currently supported, not the app package (.appx) file format (universal app format). For Windows Store (Desktop applications), the app package (.appx) file format is supported.
+Windows Phone의 경우, 앱 패키지(.appx) 파일 형식(유니버셜 앱 형식)이 아닌 Windows Phone 애플리케이션 패키지(.xap) 파일 형식만 현재 지원됩니다. Windows 스토어(데스크탑 애플리케이션)의 경우, 앱 패키지(.appx) 파일 형식이 지원됩니다. 
 
-Windows Phone 7 and Windows RT, and BlackBerry OS are not supported by the current version of the Application Center.
+Windows Phone 7과 Windows RT 및 BlackBerry OS는 현재 Application Center 버전에서는 지원하지 않습니다. 
 
-Application Center manages mobile applications; it supports any kind of Android, iOS, Windows Phone 8, or Windows 8 application, including applications that are built on top of the {{ site.data.keys.product }}.
+Application Center는 모바일 애플리케이션을 관리합니다. {{site.data.keys.product }}의 최상부에 빌드된 애플리케이션을 포함하여 모든 종류의 Android, iOS, Windows Phone 8 또는 Windows 8 애플리케이션을 지원합니다. 
 
-You can use the Application Center as part of the development process of an application. A typical scenario of Application Center is a team building a mobile application; the development team creates a new version of an Android, iOS, Windows Phone, or Windows 8 application. The development team wants this new version to be reviewed and tested by the extended team. A developer goes to Application Center console and uploads the new version of the application to Application Center. As part of this process, the developer can enter a description of the application version. For example, the description could mention the elements that the development team added or fixed from the previous version. The new version of the application is then available to the other members of the team.
+애플리케이션의 개발 프로세스 일부로 Application Center를 사용할 수 있습니다. Application Center의 일반 시나리오는 모바일 애플리케이션을 빌드하는 팀입니다. 개발 팀은 Android, iOS, Windows Phone 또는 Windows 8 애플리케이션의 새 버전을 작성합니다. 개발 팀은 이 새 버전을 확장 팀에서 검토하고 테스트하기를 원합니다. 개발자는 Application Center 콘솔로 이동하여 애플리케이션의 새 버전을 Application Center로 업로드합니다. 이 프로세스의 일부로 개발자는 애플리케이션 버전에 대한 설명을 입력할 수 있습니다. 예를 들어, 설명에는 개발 팀이 이전 버전에서 추가하거나 수정한 요소를 언급할 수 있습니다. 그리고 나면, 새 버전의 애플리케이션을 팀의 다른 구성원들이 사용할 수 있습니다. 
 
-Another person, for example, a beta tester, can launch Application Center installer application, the mobile client, to locate this new version of a mobile application in the list of available applications and install it on his mobile device. After testing the new version, the beta tester can rate the application and submit feedback. The feedback is visible to the developer from the Application Center console.
+베타 테스터와 같은 다른 사용자의 경우 Application Center 설치 프로그램 애플리케이션, 모바일 클라이언트를 시작하여 사용 가능한 애플리케이션의 목록에서 모바일 애플리케이션의 이 새 버전을 찾고 테스터의 모바일 디바이스에 설치할 수 있습니다. 새 버전을 테스트한 후 베타 테스터는 애플리케이션의 등급을 지정하고 피드백을 제출할 수 있습니다. 피드백은 Application Center 콘솔의 개발자가 볼 수 있습니다. 
 
-Application Center is a convenient way to share mobile applications within a company or a group; it is a means of sharing information among team members.
+Application Center는 회사 또는 그룹 내 모바일 애플리케이션을 공유하는 편리한 방법입니다. 팀 구성원 간에 정보 공유의 수단입니다. 
 
-## Specific platform requirements
+## 특정 플랫폼 요구사항
 {: #specific-platform-requirements }
-Different operating systems impose specific requirements for deploying, installing, or using applications on the appropriate mobile devices.
+각 운영 체제는 적절한 모바일 디바이스에서 애플리케이션을 배치, 설치 또는 사용하기 위한 특정 요구사항이 있습니다. 
 
 ### Android
 {: #android }
-The mobile device must be configured for installation from unknown sources. The corresponding toggle can be found in the Android Settings. See [User Opt-in for apps from unknown sources for details](http://developer.android.com/distribute/open.html#unknown-sources).  
+알 수 없는 소스로부터 설치를 위해 모바일 디바이스를 구성해야 합니다. Android 설정에서 해당 토글을 찾을 수 있습니다. 세부사항은 [알 수 없는 소스의 앱을 위한 사용자 옵트인](http://developer.android.com/distribute/open.html#unknown-sources)을 참조하십시오.   
 
-In Application Center, applications have an internal and a commercial version number. The internal version number is used to distinguish which version is newer while the commercial version is only used as an informative display string. For Android applications, the internal version is the android:[versionCode](http://developer.android.com/guide/topics/manifest/manifest-element.html#vcode) from the application manifest, and it must be an integer.
+Application Center에서 애플리케이션은 내부 및 상업용 버전 번호를 갖습니다. 상업용 버전이 정보 표시 문자열로만 사용되는 반면 내부 버전 번호는 최신 버전을 구분하는 데 사용됩니다. Android 애플리케이션의 경우, 내부 버전은 애플리케이션 Manifest의 android:[versionCode](http://developer.android.com/guide/topics/manifest/manifest-element.html#vcode)이며 이는 정수여야 합니다.
 
 ### iOS
 {: #ios }
-All applications that are managed through Application Center must be packaged for "Ad Hoc Distribution". With an iOS developer account, you can share your application with up to 100 iOS devices. With an iOS enterprise account, you can share your in-house application with an unlimited number of iOS devices. See [iOS Developer Program](https://developer.apple.com/programs/ios/distribute.html) and [iOS Enterprise Program](https://developer.apple.com/programs/ios/enterprise/) for details.
-In Application Center, applications have an internal and a commercial version number. The internal version number is used to distinguish which version is newer while the commercial version is used only as an informative display string. For iOS applications, the internal version is the CFBundleVersion from the application manifest **Info.plist**. The version number must have the following format: `a`, or `a.b`, or `a.b.c`, where `a`, `b`, `c` are non-negative integers, and `a` is not `0`.
+Application Center를 통해 관리되는 모든 애플리케이션은 "임시 배포"용으로 패키지되어야 합니다. iOS 개발자 계정으로 최대 100개의 iOS 디바이스와 사용자의 애플리케이션을 공유할 수 있습니다. iOS 엔터프라이즈 계정이 있는 경우 사용자의 내부 애플리케이션을 iOS 디바이스와 무제한으로 공유할 수 있습니다. 세부사항은 [iOS 개발자 프로그램](https://developer.apple.com/programs/ios/distribute.html) 및 [iOS 엔터프라이즈 프로그램](https://developer.apple.com/programs/ios/enterprise/)을 참조하십시오. Application Center에서 애플리케이션은 내부 및 상업용 버전 번호를 갖습니다. 상업용 버전이 정보 표시 문자열로만 사용되는 반면 내부 버전 번호는 최신 버전을 구분하는 데 사용됩니다. iOS 애플리케이션의 경우, 내부 버전은 애플리케이션 Manifest **Info.plist**의 CFBundleVersion입니다. 버전 번호의 형식은 `a` 또는 `a.b`이거나 `a.b.c`이어야 합니다. 여기서 `a`, `b`, `c`는 음수가 아닌 정수이고 `a`는 `0`이 아닙니다. 
 
 ### Windows Phone 8
 {: #windows-phone-8 }
-Applications are not installed from the Windows Store, but from Application Center, which acts as what Microsoft documentation calls a **Company Hub**. See [Company app distribution for Windows Phone](http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj206943%28v=vs.105%29.aspx) for details.
-To use a company hub, Windows Phone requires you to register a company account with Microsoft and to sign all applications, including the Application Center client, with the company certificate. Only signed applications can be managed through Application Center.
+애플리케이션은 Windows 스토어가 아닌 Application Center에서 설치됩니다. Application Center는 Microsoft 문서에서 **회사 허브**라고 부르는 것과 같은 역할을 합니다. 세부사항은 [Windows Phone용 회사 앱 배포](http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj206943%28v=vs.105%29.aspx)를 참조하십시오.
+회사 허브를 사용하려면, Windows Phone에서는 Microsoft에 회사 계정을 등록하고 Application Center 클라이언트를 포함한 모든 애플리케이션을 회사 인증서로 서명하도록 요구합니다. 서명된 애플리케이션만 Application Center를 통해 관리될 수 있습니다. 
 
-You must enroll all mobile devices through an application enrollment token that is associated with your company account.
+회사 계정과 연관된 애플리케이션 등록 토큰을 통해 모든 모바일 디바이스를 등록해야 합니다. 
 
-Application Center helps you to enroll devices through facilities to distribute the application enrollment token. [See Application enrollment tokens in Windows 8 Universal for details](appcenter-console/#application-enrollment-tokens-in-windows-8-universal).
+Application Center는 애플리케이션 등록 토큰을 분배하기 위한 기능을 통해 디바이스를 등록하도록 지원합니다. [세부사항은 Windows 8 Universal의 애플리케이션 등록 토큰](appcenter-console/#application-enrollment-tokens-in-windows-8-universal)을 참조하십시오. 
 
-Application Center supports the distribution of applications as Windows Phone application package (.xap) files for Microsoft Windows Phone 8.0 and Microsoft Windows Phone 8.1. With Microsoft Windows Phone 8.1, Microsoft introduced a new universal format as app package (.appx) files for Windows Phone. Currently, Application Center does not support the distribution of app package (.appx) files for Microsoft Windows Phone 8.1, but is limited to Windows Phone application package (.xap) files only.
+Application Center는 Microsoft Windows Phone 8.0 및 Microsoft Windows Phone 8.1에 대해 Windows Phone 애플리케이션 패키지(.xap) 파일로 애플리케이션을 배포하도록 지원합니다. Microsoft Windows Phone 8.1에서 Microsoft는 Windows Phone을 위한 앱 패키지(.appx) 파일로 새로운 유니버셜 형식을 도입했습니다. 현재 Application Center는 Microsoft Windows Phone 8.1에 대한 앱 패키지(.appx) 파일의 배포를 지원하지 않으며 Windows Phone 애플리케이션 패키지(.xap) 파일로만 제한됩니다. 
 
-In Application Center, applications have only one version number. The version number is used to distinguish which version is newer. For Windows Phone 8 applications, the version number is in the **Version** field in the **WMAppManifest.xml** file. This version number must have the following format: `a.b.c.d` where `a`, `b`, `c`, `d` are non-negative integers.
+Application Center에서 애플리케이션은 하나의 버전 번호만 있습니다. 이 버전 번호는 최신 버전을 구별하는 데 사용됩니다. Windows Phone 8 애플리케이션의 경우 버전 번호는 **WMAppManifest.xml** 파일의 **버전** 필드에 있습니다. 이 버전 번호의 형식은 `a.b.c.d`여야 합니다. 여기서 `a`, `b`, `c`, `d`는 음수가 아닌 정수입니다. 
 
 ### Windows 8
 {: #windows-8 }
-The Application Center mobile client is provided as a normal desktop executable file (.exe). Use it to install on the device Windows Store applications, which are packaged as .appx files.
-Installing a file of type appx on your device without using Windows Store is called sideloading an app. To sideload an app, you must comply with the prerequisites in [Prepare to sideload apps](http://technet.microsoft.com/fr-fr/library/dn613842.aspx). The Windows 8.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading store apps to Windows 8.1 devices](http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
+Application Center 모바일 클라이언트는 일반 데스크탑 실행 파일(.exe)로 제공됩니다. 이를 사용하여 디바이스에 .appx 파일로 패키징되는 Windows 스토어 애플리케이션을 설치하십시오.
+Windows 스토어를 사용하지 않고 디바이스에 appx 유형의 파일을 설치하는 것을 앱 사이드로딩이라고 합니다. 앱을 사이드로드하려면, [앱 사이드로드 준비](http://technet.microsoft.com/fr-fr/library/dn613842.aspx)의 전제조건을 준수해야 합니다. Windows 8.1 업데이트는 사이드로딩에 대한 전제조건을 간소화합니다. 자세한 정보는 [Windows 8.1 디바이스에 스토어 앱 사이드로딩](http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx)을 참조하십시오. 
 
-Files of type .exe cannot be executed on ARM-based tablets, so Application Center does not support Windows RT; only Windows 8 and Windows 8.1 are supported.
+.exe 유형의 파일은 ARM 기반 태블릿에서 실행할 수 없으므로 Application Center는 Windows RT를 지원하지 않습니다. Windows 8 및 Windows 8.1만 지원됩니다. 
 
-The device user needs administrator rights on the device to execute the Application Center client.
+디바이스 사용자는 Application Center 클라이언트를 실행하려면 디바이스에 대한 관리자 역할이 필요합니다. 
 
-Application Center does not provide any predefined way of distributing the mobile client.
+Application Center는 모바일 클라이언트 배포를 위한 사전 정의된 방법을 제공하지 않습니다. 
 
-In Application Center, applications have only one version number. The version number is used to distinguish which version is newer. For Windows 8 applications, the version number is in the Version field in the AppxManifest.xml file. This version number must have the following format: a.b.c.d, where a, b, c, d are non-negative integers.
+Application Center에서 애플리케이션은 하나의 버전 번호만 있습니다. 이 버전 번호는 최신 버전을 구별하는 데 사용됩니다. Windows 8 애플리케이션의 경우 버전 번호는 AppxManifest.xml 파일의 버전 필드에 있습니다. 이 버전 번호의 형식은 a.b.c.d여야 하며, 여기서 a, b, c, d는 음수가 아닌 정수입니다. 
 
-## General architecture
+## 일반 아키텍처
 {: #general-architecture }
-The Application Center is composed of these main elements: a server-side component, a repository, an administration console, and a mobile client application.
+Application Center는 기본 요소 즉, 서버 측 컴포넌트, 저장소, 관리 콘솔 및 모바일 클라이언트 애플리케이션으로 구성되어 있습니다. 
 
-### Server-side component
+### 서버 측 컴포넌트
 {: #server-side-component }
-The server-side component is a Java™ Enterprise application that must be deployed in a web application server such as IBM  WebSphere  or Apache Tomcat.
+서버 측 컴포넌트는 IBM WebSphere 또는 Apache Tomcat과 같은 웹 애플리케이션 서버에 배치되어야 하는 Java™ 엔터프라이즈 애플리케이션입니다. 
 
-The server-side component consists of an administration console and a mobile application. This mobile application installs the mobile applications available to the client-side component.
+서버 측 컴포넌트는 관리 콘솔과 모바일 애플리케이션으로 구성되어 있습니다. 이 모바일 애플리케이션은 클라이언트 측 컴포넌트에 사용 가능한 모바일 애플리케이션을 설치합니다. 
 
-The web console and the installer application communicate through REST services with the server component.
+웹 콘솔 및 설치 프로그램 애플리케이션은 REST 서비스를 통해 서버 컴포넌트와 통신합니다. 
 
-Several services compose the Application Center server-side component; for example, a service that lists available applications, a service that delivers the application binary files to the mobile device, or a service that registers feedback and ratings.
+여러 서비스가 Application Center 서버 측 컴포넌트를 구성합니다. 예를 들어, 사용 가능한 애플리케이션을 나열하는 서비스, 모바일 디바이스에 애플리케이션 2진 파일을 전달하는 서비스 또는 피드백 및 등급을 등록하는 서비스입니다. 
 
-### Repository
+### 저장소
 {: #repository }
-A database that stores information such as which application is installed on which devices, the feedback about applications, and the mobile application binary files. The Application Center application is associated with the database when you configure the Application Center for a particular web application server and a supported database.
+어느 애플리케이션이 어느 디바이스에 설치되어 있는지, 애플리케이션에 대한 피드백 및 모바일 애플리케이션 2진 파일 등의 정보를 저장하는 데이터베이스. 특정 웹 애플리케이션 서버 및 지원되는 데이터베이스에 대해 Application Center를 구성하는 경우 Application Center 애플리케이션은 해당 데이터베이스와 연관됩니다. 
 
-### Administration console
+### 관리 콘솔
 {: #administration-console }
-A web console through which administrators can manage applications, user access rights to install applications, user feedback about mobile applications, and details about applications installed on devices. See [The Application Center console](appcenter-console).
+관리자가 애플리케이션, 애플리케이션을 설치하기 위한 사용자 액세스 권한, 모바일 애플리케이션에 대한 사용자 피드백 및 디바이스에 설치된 애플리케이션에 대한 세부사항을 관리할 수 있는 웹 콘솔입니다. [Application Center 콘솔](appcenter-console)을 참조하십시오. 
 
-### Mobile client application
+### 모바일 클라이언트 애플리케이션
 {: #mobile-client-application }
-You use the mobile client to install applications on a mobile device and to send feedback about an application to the server. See [The mobile client](mobile-client).
+모바일 클라이언트를 사용하여 애플리케이션을 모바일 디바이스에 설치하고 애플리케이션에 대한 피드백을 서버에 보냅니다. [모바일 클라이언트](mobile-client)를 참조하십시오. 
 
-The following figure shows an overview of the architecture.
+다음 그림은 아키텍처에 대한 개요를 표시합니다. 
 
-![Application Center architecture](ac_arch.jpg)
+![Application Center 아키텍처](ac_arch.jpg)
 
-From the Application Center console, you can take the following actions:
+Application Center 콘솔에서 다음 조치를 수행할 수 있습니다. 
 
-* Upload different versions of mobile applications.
-* Remove unwanted applications.
-* Control access to applications: Each application is associated with the list of people who can install the application.
-* View feedback that mobile users have sent about an application.
-* Obtain information about applications installed on a device.
-* Make an application inactive so that it is not visible in the available applications for download.
+* 모바일 애플리케이션의 다른 버전을 업로드합니다. 
+* 원하지 않는 애플리케이션을 제거합니다. 
+* 애플리케이션에 대한 액세스를 제어합니다. 각 애플리케이션은 애플리케이션을 설치할 수 있는 사용자 목록과 연관되어 있습니다. 
+* 모바일 사용자가 애플리케이션에 대해 전송한 피드백을 살펴봅니다. 
+* 디바이스에 설치된 애플리케이션에 대한 정보를 확보합니다. 
+* 다운로드를 위해 사용 가능한 애플리케이션에 표시되지 않도록 애플리케이션을 비활성화합니다. 
 
-From the mobile client, you can take the following actions:
+모바일 클라이언트에서 다음 조치를 수행할 수 있습니다. 
 
-* List available mobile applications.
-* Install a new application on a device.
-* Send feedback about an application.
+* 사용 가능한 모바일 애플리케이션을 나열합니다. 
+* 새 애플리케이션을 디바이스에 설치합니다. 
+* 애플리케이션에 대한 피드백을 전송합니다. 
 
-The Application Center supports applications for Android, iOS, Windows Phone 8, and Windows 8 devices. Therefore, the mobile client comes in separate versions for Android, iOS, Windows Phone 8, and Windows 8.
+Application Center는 Android, iOS, Windows Phone 8 및 Windows 8 디바이스용 애플리케이션을 지원합니다. 따라서 모바일 클라이언트는 Android, iOS, Windows Phone 8 및 Windows 8에 대해 별도의 버전으로 제공됩니다. 
 
-The Android, iOS, and Windows Phone 8 mobile clients are built on the {{ site.data.keys.product }}. To learn how to configure the Application Center server-side component on various Java application servers after the product is installed and build {{ site.data.keys.product_adj }} applications for the Application Center client, see [Configuring Application Center after installation](../installation-configuration/production/appcenter).
+Android, iOS 및 Windows Phone 8 모바일 클라이언트는 {{site.data.keys.product }}에서 구축되었습니다. 제품이 설치된 후 다양한 Java 애플리케이션 서버에서 Application Center 서버 측 컴포넌트를 구성하고 Application Center 클라이언트에 대해 {{site.data.keys.product_adj }} 애플리케이션을 빌드하는 방법에 대해 학습하려면, [설치 후 Application Center 구성](../installation-configuration/production/appcenter)을 참조하십시오. 
 
-## Preliminary information
+## 예비 정보
 {: #preliminary-information }
-To use the Application Center, you must configure security settings, start the web application server where {{ site.data.keys.product }} is installed, start the Application Center console, and log in.
+Application Center를 사용하려면, 보안 설정을 구성하고, {{site.data.keys.product }}이 설치되어 있는 웹 애플리케이션 서버를 시작하고, Application Center 콘솔을 시작한 후 로그인해야 합니다. 
 
-When you install {{ site.data.keys.product }}, the Application Center is automatically installed in the specified application server.
+{{site.data.keys.product }}을 설치하는 경우 Application Center가 지정된 애플리케이션 서버에 자동으로 설치됩니다. 
 
-If you install the Application Center in WebSphere  Application Server Liberty profile, the server is created in **installation-directory/server**.
+WebSphere Application Server Liberty 프로파일에 Application Center를 설치하는 경우 서버가 **installation-directory/server**에 작성됩니다. 
 
-After the installation is complete, you must configure the security settings for the applications. See [Configuring user authentication for Application Center](../installation-configuration/production/appcenter#configuring-user-authentication-for-application-center) or, if you are using LDAP authentication, [Managing users with LDAP](../installation-configuration/production/appcenter/#managing-users-with-ldap).
+설치가 완료된 후 애플리케이션의 보안 설정을 구성해야 합니다. [Application Center에 대해 사용자 인증 구성](../installation-configuration/production/appcenter#configuring-user-authentication-for-application-center)을 참조하거나 LDAP 인증을 사용하는 경우 [LDAP을 사용하여 사용자 관리](../installation-configuration/production/appcenter/#managing-users-with-ldap)를 참조하십시오. 
 
-### Example: starting the server and the Application Center console on Liberty profile
+### 예: Liberty 프로파일에서 서버 및 Application Center 콘솔 시작
 {: #example-starting-the-server-and-the-application-center-console-on-liberty-profile}
 
-1. Start the Liberty server by using the **server** command that is in the **installation-directory/server/wlp/bin directory**.
+1. **installation-directory/server/wlp/bin directory**에서 **server** 명령을 사용하여 Liberty 서버를 시작하십시오. 
 
    ```bash
    server start worklightServer
    ```
     
-2. When the server is running, start the Application Center console by entering this address in your browser: `http://localhost:9080/appcenterconsole/`
-3. Log in. By default, two users are defined for the installation of the Application Center on Apache Tomcat or WebSphere Application Server Liberty profile:
-    * **demo** with password **demo**
-    * **appcenteradmin** with password **admin**
+2. 서버가 실행 중인 경우 브라우저에 `http://localhost:9080/appcenterconsole/`을 입력하여 Application Center 콘솔을 시작하십시오. 
+3. 로그인하십시오. 기본적으로, Apache Tomcat 또는 WebSphere Application Server Liberty 프로파일에서 Application Center 설치에 대해 두 개의 사용자가 정의됩니다. 
+    * 비밀번호 **demo**를 사용하는 **demo**
+    * 비밀번호 **admin**을 사용하는 **appcenteradmin**
 
-### For more information
+### 추가 정보
 {: #for-more-information }
-To use the Application Center console, refer to [The Application Center console](appcenter-console).
+Application Center 콘솔을 사용하려면, [Application Center 콘솔](appcenter-console)을 참조하십시오. 
 
-To install and run the mobile client on the following operating systems, see:
+다음 운영 체제에서 모바일 클라이언트를 설치 및 실행하려면 다음을 참조하십시오. 
 
-* Android: See [Installing the client on an Android mobile device](mobile-client/#installing-an-application-on-an-android-device).
-* iOS operating system: See [Installing the client on an iOS mobile device](mobile-client/#installing-an-application-on-an-ios-device).
-* Windows Phone 8: See [Installing the client on Windows 8 Universal](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device).
-* Windows 8: The mobile client for Windows 8 is not intended to be deployed in Application Center for later distribution. See [Microsoft Windows 8: Building the project](preparations/#microsoft-windows-8-building-the-project).
+* Android: [Android 모바일 디바이스에 클라이언트 설치](mobile-client/#installing-an-application-on-an-android-device)를 참조하십시오. 
+* iOS 운영 체제: [iOS 모바일 디바이스에 클라이언트 설치](mobile-client/#installing-an-application-on-an-ios-device)를 참조하십시오. 
+* Windows Phone 8: [Windows 8 Universal에 클라이언트 설치](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device)를 참조하십시오. 
+* Windows 8: Windows 8용 모바일 클라이언트는 나중에 배포하기 위해 Application Center에 배치되지 않습니다. [Microsoft Windows 8: 프로젝트 빌드](preparations/#microsoft-windows-8-building-the-project)를 참조하십시오. 
 
-## What's next
+## 다음 단계
 {: #whats-next }
-Follow these topics to use the appcenter mobile client; send notifications to installed applications; learn about the appcenter console, command-line tool, the mobile client; and setting log levels.
+AppCenter 모바일 클라이언트를 사용하려면, 설치된 애플리케이션에 알림 전송, Appcenter 콘솔, 명령행 도구, 모바일 클라이언트에 대해 알아보기 및 로그 레벨 설정 주제에 설명된 프로시저를 따르십시오. 
+
+
 
 
 

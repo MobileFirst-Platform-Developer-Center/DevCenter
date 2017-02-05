@@ -1,95 +1,95 @@
 ---
 layout: tutorial
-title: Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK
-breadcrumb_title: Migrating apps storing mobile data
+title: IMFData 또는 Cloudant SDK로 Cloudant에 모바일 데이터를 저장하는 앱 마이그레이션
+breadcrumb_title: 모바일 데이터를 저장하는 앱 마이그레이션
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-You can store data for your mobile application in a Cloudant  database. Cloudant is an advanced NoSQL database that can handle a wide variety of data types, such as JSON, full-text, and geospatial data. The SDK is available for Java™ , Objective-C, and Swift.
+모바일 애플리케이션의 데이터를 Cloudant 데이터베이스에 저장할 수 있습니다. Cloudant는 JSON, 전체 텍스트 및 지리공간 데이터와 같은 다양한 유형의 데이터를 처리할 수 있는 고급 NoSQL 데이터베이스입니다. SDK는 Java™, Objective-C 및 Swift에 사용 가능합니다. 
 
-> CloudantToolkit and IMFData frameworks are discontinued in {{ site.data.keys.product_full }} v8.0.
+> CloudantToolkit 및 IMFData 프레임워크는 {{site.data.keys.product_full }} v8.0에서 사용되지 않습니다. 
 
-* For iOS, use the [CDTDatastore](https://github.com/cloudant/CDTDatastore) SDK as a replacement for CloudantToolkit and IMFData frameworks.
-* For Android, Use the [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android) as a replacement for CloudantToolkit and IMFData frameworks. With Cloudant Sync, you can persist data locally and replicate with a remote data store.
+* iOS의 경우, CloudantToolkit 및 IMFData 프레임워크 대신 [CDTDatastore](https://github.com/cloudant/CDTDatastore) SDK를 사용하십시오. 
+* Android의 경우, CloudantToolkit 및 IMFData 프레임워크 대신 [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android)를 사용하십시오. Cloudant Sync를 사용하여 원격 데이터 저장소에서 데이터를 논리적으로 지속하고 복제할 수 있습니다. 
 
-If you want to access remote stores directly, use REST calls in your application and refer to the [Cloudant API Reference](https://docs.cloudant.com/api.html).
+원격 저장소에 직접 액세스하려면 애플리케이션에서 REST 호출을 사용하고 [Cloudant API 참조](https://docs.cloudant.com/api.html)를 참조하십시오. 
 
-### Cloudant versus JSONStore
+### Cloudant 대 JSONStore
 {: #cloudant-versus-jsonstore }
-You might consider using JSONStore instead of Cloudant in the following scenarios:
+다음 시나리오에서는 Cloudant 대신 JSONStore를 사용할 것을 고려할 수 있습니다. 
 
-* When you are storing data on the mobile device that must be stored in a FIPS 140-2 compliant manner.
-* When you need to synchronize data between the device and the enterprise.
-* When you are developing a hybrid application.
+* FIPS 140-2 준수 방식으로 저장되어야 하는 모바일 디바이스에 데이터를 저장하는 경우
+* 디바이스와 엔터프라이즈 간에 데이터를 동기화해야 하는 경우
+* 하이브리드 애플리케이션을 개발 중인 경우
 
-For more information about JSONStore, see [JSONStore](../../application-development/jsonstore).
+JSONStore에 대한 자세한 정보는 [JSONStore](../../application-development/jsonstore)를 참조하십시오. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
-* [Integrating {{ site.data.keys.product_adj }} and Cloudant security](#integrating-mobilefirst-and-cloudant-security)
-* [Creating databases](#creating-databases)
-* [Encrypting data on the device](#encrypting-data-on-the-device)
-* [Setting user permissions](#setting-user-permissions)
-* [Modeling data](#modeling-data)
-* [Performing CRUD operations](#performing-crud-operations)
-* [Creating indexes](#creating-indexes)
-* [Querying data](#querying-data)
-* [Supporting offline storage and synchronization](#supporting-offline-storage-and-synchronization)
+* [{{site.data.keys.product_adj }}와 Cloudant 보안 통합](#integrating-mobilefirst-and-cloudant-security)
+* [데이터베이스 작성](#creating-databases)
+* [디바이스의 데이터 암호화](#encrypting-data-on-the-device)
+* [사용자 권한 설정](#setting-user-permissions)
+* [데이터 모델링](#modeling-data)
+* [CRUD 조작 수행](#performing-crud-operations)
+* [색인 작성](#creating-indexes)
+* [데이터 조회](#querying-data)
+* [오프라인 스토리지 및 동기화 지원](#supporting-offline-storage-and-synchronization)
 
-## Integrating {{ site.data.keys.product_adj }} and Cloudant security
+## {{site.data.keys.product_adj }}와 Cloudant 보안 통합
 {: #integrating-mobilefirst-and-cloudant-security }
-### Adapter sample
+### 어댑터 샘플
 {: #adapter-sample }
-To download the sample, see Sample: [mfp-bluelist-on-premises](https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise).
+샘플을 다운로드하려면 샘플: [mfp-bluelist-on-premises](https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise)를 참조하십시오. 
 
-To understand the adapter that is included with the Bluelist sample, you must understand both [Cloudant  security](https://cloudant.com/for-developers/faq/auth/) and [{{ site.data.keys.product_adj }} security framework](../../authentication-and-security).
+Bluelist 샘플과 함께 포함된 어댑터를 이해하려면 [Cloudant 보안](https://cloudant.com/for-developers/faq/auth/)과 [{{site.data.keys.product_adj }} 보안 프레임워크](../../authentication-and-security)를 둘 다 이해해야 합니다. 
 
-The Bluelist adapter sample has two primary functions:
+Bluelist 어댑터 샘플의 두 가지 기본 기능은 다음과 같습니다. 
 
-* Exchange {{ site.data.keys.product_adj }} OAuth tokens for Cloudant session cookies
-* Perform the required admin requests to Cloudant from the Bluelist sample.
+* Cloudant 세션 쿠키에 대해 {{site.data.keys.product_adj }} OAuth 토큰 교환
+* Bluelist 샘플에서 Cloudant에 대해 필요한 관리 요청 수행
 
-The sample demonstrates how to perform API requests that require admin access on the server where it is secure. While it is possible to place your admin credentials on the mobile device, it is a better practice to restrict access from mobile devices.
+샘플은 보안 서버에서 관리 액세스가 필요한 API 요청을 수행하는 방법을 설명합니다. 관리자 신임 정보를 모바일 디바이스에 배치할 수도 있지만 모바일 디바이스로부터의 액세스를 제한하는 것이 더 좋습니다. 
 
-The Bluelist sample integrates {{ site.data.keys.product_adj }} security with Cloudant security. The adapter sample maps a {{ site.data.keys.product_adj }} identity to a Cloudant identity. The mobile device receives a Cloudant session cookie to perform non-admin API requests. The sample uses the Couch Security model.
+Bluelist 샘플은 {{site.data.keys.product_adj }} 보안을 Cloudant 보안과 통합합니다. 어댑터 샘플은 {{site.data.keys.product_adj }} ID를 Cloudant ID에 맵핑합니다. 모바일 디바이스는 비관리 API 요청을 수행하기 위해 Cloudant 세션 쿠키를 수신합니다. 샘플은 Couch 보안 모델을 사용합니다. 
 
-### Enroll REST endpoint
+### 등록 REST 엔드포인트
 {: #enroll-rest-endpoint }
-The following diagram illustrates the integration performed by the Bluelist adapter sample **/enroll** endpoint.
+다음 다이어그램은 Bluelist 어댑터 샘플 **/enroll** 엔드포인트에 의해 수행된 통합을 설명합니다. 
 
-![sample integration diagram](SecurityIntegration.jpg)
+![샘플 통합 다이어그램](SecurityIntegration.jpg)
 
-1. Mobile device obtains the {{ site.data.keys.product_adj }} OAuth token from the {{ site.data.keys.mf_server }}.
-2. Mobile device calls the **/enroll** endpoint on the adapter.
-3. The adapter sample validates the {{ site.data.keys.product_adj }} OAuth token with the {{ site.data.keys.mf_server }}.
-4. If valid, performs admin API requests to Cloudant . The sample checks for an existing Cloudant user in the **_users** database.
-    * If the user exists, look up Cloudant user credentials in the **_users** database.
-    * If a new user is passed, use the Cloudant admin credentials, create a new Cloudant user and store in the **_users** database.
-    * Generate a unique database name for the user and create a remote database on Cloudant with that name.
-    * Give the Cloudant user permissions to read/write the newly created database.
-    * Create the required indexes for the Bluelist application.
-5. Request a new Cloudant session cookie.
-6. The adapter sample returns a Cloudant session cookie, remote database name, and Cloudant URL to the mobile device.
-7. Mobile device makes requests directly to Cloudant until the session cookie expires.
+1. 모바일 디바이스가 {{site.data.keys.mf_server }}에서 {{site.data.keys.product_adj }} OAuth 토큰을 얻습니다. 
+2. 모바일 디바이스가 어댑터에서 **/enroll** 엔드포인트를 호출합니다. 
+3. 어댑터 샘플이 {{site.data.keys.mf_server }}에 대해 {{site.data.keys.product_adj }} OAuth 토큰을 유효성 검증합니다. 
+4. 유효한 경우 Cloudant에 대해 관리 API 요청을 수행합니다. 샘플은 **_users** 데이터베이스에서 기존 Cloudant 사용자를 확인합니다. 
+    * 해당 사용자가 존재하는 경우 **_users** 데이터베이스에서 Cloudant 사용자 신임 정보를 검색하십시오. 
+    * 새 사용자가 전달된 경우, Coudant 관리자 신임 정보를 사용하여 새 Cloudant 사용자를 작성하고 **_users** 데이터베이스에 저장하십시오. 
+    * 사용자를 위한 고유 데이터베이스 이름을 작성하고 그 이름으로 Cloudant에 원격 데이터베이스를 작성하십시오. 
+    * 새로 작성한 데이터베이스를 읽고 쓰기 위한 Cloudant 사용자 권한을 부여하십시오. 
+    * Bluelist 애플리케이션의 필수 색인을 작성하십시오. 
+5. 새 Cloudant 세션 쿠키를 요청하십시오. 
+6. 어댑터 샘플은 Cloudant 세션 쿠키, 원격 데이터베이스 이름 및 Cloudant URL을 모바일 디바이스로 리턴합니다. 
+7. 모바일 디바이스는 세션 쿠키가 만료될 때까지 Cloudant에 대해 직접 요청을 작성합니다. 
 
-### sessioncookie REST Endpoint
+### sessioncookie REST 엔드포인트
 {: #sessioncookie-rest-endpoint }
-In the case of an expired session cookie, the mobile device can exchange a valid {{ site.data.keys.product_adj }} OAuth token for a Cloudant session cookie with the **/sessioncookie** endpoint.
+만료된 세션 쿠키의 경우, 모바일 디바이스는 Cloudant 세션 쿠키에 대해 유효한 {{site.data.keys.product_adj }} OAuth 토큰을 **/sessioncookie** 엔드포인트와 교환할 수 있습니다. 
 
-## Creating databases
+## 데이터베이스 작성
 {: #creating-databases }
-### Accessing local data stores
+### 로컬 데이터 저장소 액세스
 {: #accessing-local-data-stores }
-You can use a local data store to store data on the client device for fast access, even when offline.  
-To create Store objects to access a local database, supply a name for the data store.
+로컬 데이터 저장소를 사용하여 오프라인에서도 빠르게 액세스할 수 있도록 클라이언트 디바이스에 데이터를 저장할 수 있습니다.   
+로컬 데이터베이스에 액세스하기 위해 저장소 오브젝트를 작성하려면 데이터 저장소의 이름을 제공하십시오. 
 
-> **Important:** The database name must be in lowercase.
+> **중요:** 데이터베이스 이름은 소문자여야 합니다. 
 
 #### iOS
 {: #ios }
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 이전(IMFData/CloudantToolkit 사용):
 {: #before-with-imdata-cloudanttoolkit }
 
 **Objective-C**  
@@ -116,7 +116,7 @@ do {
 }
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 이후(Cloundant Sync 사용):
 {: #after-with-cloudant-sync }
 
 **Objective-C**  
@@ -149,7 +149,7 @@ do{
 
 #### Android
 {: #android }
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 이전(IMFData/CloudantToolkit 사용):
 {: before-with-imfdata-cloudanttoolkit }
 
 ```java
@@ -174,7 +174,7 @@ storeTask.continueWith(new Continuation<Store, Void>() {
 });
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 이후(Cloundant Sync 사용):
 {: #after-with-cloudant-sync }
 ```java
 // Create DatastoreManager
@@ -186,13 +186,13 @@ storeTask.continueWith(new Continuation<Store, Void>() {
        Datastore datastore = manager.openDatastore(name);
 ```
 
-### Creating remote data stores
+### 원격 데이터 저장소 작성
 {: #creating-remote-data-stores }
-To save data in the remote store, supply the data store name.
+원격 저장소에 데이터를 저장하려면 데이터 저장소 이름을 제공하십시오. 
 
 #### iOS
 {: #ios }
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 이전(IMFData/CloudantToolkit 사용):
 {: #before-with-imfdata-cloudanttoolkit }
 
 **Objective-c**
@@ -229,7 +229,7 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 })
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 이후(Cloundant Sync 사용):
 {: #after-with-cloudant-sync }
 **Objective-c**
 
@@ -243,49 +243,49 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 
 #### Android
 {: #android }
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 이전(IMFData/CloudantToolkit 사용):
 {: #before-with-imfdata-cloudanttoolkit }
 
 ```java
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 이후(Cloundant Sync 사용):
 {: #after-with-cloudant-sync }
 ```java
 ```
 
-## Encrypting data on the device
+## 디바이스의 데이터 암호화
 {: #encrypting-data-on-the-device }
-To enable the encryption of local data stores on mobile devices, you must make updates to your application to include encryption capabilities and create encrypted data stores.
+모바일 디바이스에서 로컬 데이터 저장소의 암호화를 사용하려면 암호화 기능을 포함하도록 애플리케이션을 업데이트하고 암호화된 데이터 저장소를 작성해야 합니다. 
 
-### Encrypting data on iOS devices
+### iOS 디바이스의 데이터 암호화
 {: #encrypting-data-on-ios-devices }
-1. Obtain the encryption capabilities with CocoaPods.
-   * Open your Podfile and add the following line:
+1. CocoaPods를 사용하여 암호화 기능을 얻으십시오. 
+   * Podfile을 열고 다음 행을 추가하십시오. 
         
-   ##### Before (with IMFData/CloudantToolkit):
-   {: #before-with-imfdata-cloudanttoolkit }    
+   ##### 이전(IMFData/CloudantToolkit 사용):
+   {: # before-with-imfdata-cloudanttoolkit }    
    ```xml
    pod 'IMFDataLocal/SQLCipher'
    ```
         
-   ##### After (with Cloudant Sync):
+   ##### 이후(Cloundant Sync 사용):
    {: after-with-cloudant-sync }
    ```xml
    pod 'CDTDatastore/SQLCipher'
    ```        
         
-   For more information, see the [CDTDatastore encryption documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/encryption.md).
+   자세한 정보는 [CDTDatastore 암호화 문서](https://github.com/cloudant/CDTDatastore/blob/master/doc/encryption.md)를 참조하십시오. 
     
-   * Run the following command to add the dependencies to your application.
+   * 다음 명령을 실행하여 애플리케이션에 종속 항목을 추가하십시오. 
 
      ```bash
      pod install
      ```
 
-2. To use the encryption feature within a Swift application, add the following imports to the associated bridging header for the application: 
+2. Swift 애플리케이션 내에서 암호화 기능을 사용하려면 애플리케이션의 연관된 브릿지 헤더에 다음 가져오기를 추가하십시오.  
     
-   ##### Before (with IMFData/CloudantToolkit):
+   ##### 이전(IMFData/CloudantToolkit 사용):
    {: #before-with-imfdata-cloudanttoolkit}
    ```objc
    #import <CloudantSync.h>
@@ -294,18 +294,18 @@ To enable the encryption of local data stores on mobile devices, you must make u
    #import <IMFData/IMFData.h>
    ```
     
-   ##### After (with Cloudant Sync):
+   ##### 이후(Cloundant Sync 사용):
    {: #after-with-cloudant-sync }
    ```objc
    #import <CloudantSync.h>
    #import <CloudantSyncEncryption.h>
    ```
         
-3. Initialize your local store for encryption with a key provider.
+3. 키 제공자로 암호화에 필요한 로컬 저장소를 초기화하십시오. 
 
-   > **Warning:** If you change the password after creating the database, an error occurs because the existing database cannot be decrypted. You cannot change your password after the database has been encrypted. You must delete the database to change passwords.
+   > **경고:** 데이터베이스를 작성한 후 비밀번호를 변경하면 기존 데이터베이스가 복호화될 수 없으므로 오류가 발생합니다. 데이터베이스가 암호화된 후에는 비밀번호를 변경할 수 없습니다. 비밀번호를 변경하려면 데이터베이스를 삭제해야 합니다.
 
-   ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### 이전(IMFData/CloudantToolkit 사용):
    {: #before-with-imfdata-cloudanttoolkit }
    **Objective-C**
     
@@ -334,10 +334,10 @@ To enable the encryption of local data stores on mobile devices, you must make u
         store = try manager.localStore(name, withEncryptionKeyProvider: keyProvider)
    } catch let error as NSError {
         // Handle error
-   }
-   ```
+}
+```
     
-   ##### AFTER (with Cloudant Sync):
+   ##### 이후(Cloundant Sync 사용):
    {: #after-with-cloudant-sync }
    **Objective-C**
 
@@ -371,9 +371,9 @@ To enable the encryption of local data stores on mobile devices, you must make u
    }
    ```
     
-4. When you are replicating data with an encrypted local store, you must initialize the CDTPullReplication and CDTPushReplication methods with a key provider.
+4. 암호화된 로컬 저장소에서 데이터를 복제하는 경우, 키 제공자로 CDTPullReplication 및 CDTPushReplication 메소드를 초기화해야 합니다. 
 
-   ##### BEFORE (with IMFData/CloudantToolkit):   
+   ##### 이전(IMFData/CloudantToolkit 사용):   
    {: #before-with-imfdata-cloudanttoolkit }
    **Objective-C**
     
@@ -409,17 +409,17 @@ To enable the encryption of local data stores on mobile devices, you must make u
    let push:CDTPushReplication = manager.pushReplicationForStore(databaseName, withEncryptionKeyProvider: keyProvider)
    ```
     
-   ##### AFTER (with Cloudant Sync):
+   ##### 이후(Cloundant Sync 사용):
    {: #after-with-cloudant-sync }
-   Replication with an encrypted database requires no changes from replication with an unencrypted database.
+암호화된 데이터베이스에서 복제하는 경우에는 암호화되지 않은 데이터베이스의 복제를 변경할 필요가 없습니다. 
 
-### Encrypting data on Android devices
+### Android 디바이스의 데이터 암호화
 {: #encrypting-data-on-android-devices }
-To encrypt data on an Android device, obtain encryption capabilities by including the correct libraries in your application. Then, you can initialize your local store for encryption and replicate data.
+Android 디바이스에서 데이터를 암호화하려면 애플리케이션에 정확한 라이브러리를 포함시켜서 암호화 기능을 얻으십시오. 그런 다음 암호화를 위한 로컬 저장소를 초기화하고 데이터를 복제할 수 있습니다. 
 
-1. Add the Cloudant Toolkit library as a dependency in your build.gradle file:
+1. build.gradle 파일에 종속 항목으로 Cloudant Toolkit 라이브러리를 추가하십시오. 
 
-   ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### 이전(IMFData/CloudantToolkit 사용):
    {: #before-with-imfdata-cloudanttoolkit }
    ```xml
    repositories {
@@ -431,7 +431,7 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    }
    ```
     
-   ##### AFTER (with Cloudant Sync):
+   ##### 이후(Cloundant Sync 사용):
    {: #after-with-cloudant-sync }
     ```xml
     repositories {
@@ -447,15 +447,15 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
     }
     ```
     
-2. Download the [SQLCipher for Android v3.2](https://www.zetetic.net/sqlcipher/open-source/) **.jar** and **.so** binary files and include them in your application in the appropriate folders within your app structure:
-    * Add libraries. Add the shared library files and SQLCipher archive to the **jniLibs** folder under your Android app directory.
-    * Add the required ICU compressed file to the assets folder in your app.
-    * Add **sqlcipher.jar** as a file dependency. From the app folder menu in Android studio, select the **Dependencies** tab under **Open Module Settings**.
-3. Initialize your local store for encryption with a key provider.
+2. [SQLCipher for Android v3.2](https://www.zetetic.net/sqlcipher/open-source/) **.jar** 및 **.so** 2진 파일을 다운로드하여 애플리케이션의 앱 구조 내에 있는 적절한 폴더에 포함시키십시오. 
+    * 라이브러리를 추가하십시오. 공유 라이브러리 파일과 SQLCipher 아카이브를 Android 앱 디렉토리 아래의 **jniLibs** 폴더에 추가하십시오. 
+    * 필수 ICU 압축 파일을 앱의 assets 폴더에 추가하십시오. 
+    * **sqlcipher.jar**를 파일 종속 항목으로 추가하십시오. Android Studio의 앱 폴더 메뉴에서 **공개 모듈 설정** 아래의 **종속 항목** 탭을 선택하십시오. 
+3. 키 제공자로 암호화에 필요한 로컬 저장소를 초기화하십시오. 
     
-   > **Warning:** If you change the password after you create the database, an error occurs because the existing database cannot be decrypted. You cannot change your password after the database is encrypted. You must delete the database to change passwords.
+   > **경고:** 데이터베이스를 작성한 후 비밀번호를 변경하면 기존 데이터베이스가 복호화될 수 없으므로 오류가 발생합니다. 데이터베이스가 암호화된 후에는 비밀번호를 변경할 수 없습니다. 비밀번호를 변경하려면 데이터베이스를 삭제해야 합니다.
 
-   ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### 이전(IMFData/CloudantToolkit 사용):
    {: #before-with-imfdata-cloudanttoolkit }
    ```java
    // Get reference to DataManager
@@ -472,8 +472,8 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
         public Void then(Task<Store> task) throws Exception {
             if (task.isFaulted()) {
                 // Handle error
-            } else {
-                // Do something with Store
+    } else {
+        // Do something with Store
                 Store store = task.getResult();
             }
             return null;
@@ -481,7 +481,7 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    });
    ```
     
-   ##### AFTER (with Cloudant Sync):
+   ##### 이후(Cloundant Sync 사용):
    {: #after-with-cloudant-sync }   
    ```java
    // Load SQLCipher libs
@@ -498,9 +498,9 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    Datastore datastore = manager.openDatastore(name, keyProvider);
    ```
 
-4. When you are replicating data with an encrypted local store, you must pass a KeyProvider object into the `pullReplicationForStore()` or `pushReplicationForStore()` method.
+4. 암호화된 데이터 저장소에서 데이터를 복제하는 경우에는 KeyProvider 오브젝트를 `pullReplicationForStore()` 또는 `pushReplicationForStore()` 메소드로 전달해야 합니다. 
 
-   ##### BEFORE (with IMFData/CloudantToolkit):
+   ##### 이전(IMFData/CloudantToolkit 사용):
    {: #before-with-imfdata-cloudanttoolkit }
    ```java
    //Get reference to data manager
@@ -517,15 +517,15 @@ To encrypt data on an Android device, obtain encryption capabilities by includin
    Task<PushReplication> pushTask = manager.pushReplicationForStore(databaseName, keyProvider);
    ```
 
-   ##### AFTER (with Cloudant Sync):
+   ##### 이후(Cloundant Sync 사용):
    {: #after-with-cloudant-sync }
-   Replication with an encrypted database requires no changes from replication with an unencrypted database.
+암호화된 데이터베이스에서 복제하는 경우에는 암호화되지 않은 데이터베이스의 복제를 변경할 필요가 없습니다. 
 
-## Setting user permissions
+## 사용자 권한 설정
 {: #setting-user-permissions }
-You can set user permissions on remote databases.
+원격 데이터베이스에서 사용자 권한을 설정할 수 있습니다. 
 
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 이전(IMFData/CloudantToolkit 사용):
 {: #before-with-imfdata-cloudanttoolkit }
 **Objective-C**
 
@@ -577,27 +577,27 @@ permissionsTask.continueWith(new Continuation<Boolean, Object>() {
 });
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 이후(Cloundant Sync 사용):
 {: #after-with-cloudant-sync }
-You cannot set user permissions from the mobile device. You must set permissions with the Cloudant dashboard or server-side code. For a sample of how to integrate {{ site.data.keys.product_adj }} OAuth tokens with Cloudant Security, see [the Bluelist sample](https://github.ibm.com/MFPSamples/BlueList-On-Premise).
+모바일 디바이스에서는 사용자 권한을 설정할 수 없습니다. Cloudant 대시보드 또는 서버 측 코드를 사용하여 권한을 설정해야 합니다. {{site.data.keys.product_adj }} OAuth 토큰을 Cloudant 보안과 통합하는 방법에 대한 샘플은 [Bluelist 샘플](https://github.ibm.com/MFPSamples/BlueList-On-Premise)을 참조하십시오. 
 
-## Modeling data
+## 데이터 모델링
 {: #modeling-data }
-Cloudant  stores data as JSON documents. To store data as objects in your application, use the included data object mapper class that maps native objects to the underlying JSON document format.
+Cloudant는 데이터를 JSON 문서로 저장합니다. 데이터를 애플리케이션에 오브젝트로 저장하려면 고유 오브젝트를 기본 JSON 문서 형식으로 맵핑하는 포함된 데이터 오브젝트 맵퍼 클래스를 사용하십시오. 
 
-* iOS: Cloudant stores data as JSON documents. The CloudantToolkit framework provided an object mapper to map between native objects and JSON documents. The CDTDatastore API does not provide this feature. The snippets in the following sections demonstrate how to use CDTDatastore objects to accomplish the same operations.
-* Android: AndroidCloudant stores data as JSON documents. The CloudantToolkit API provided an object mapper to map between native objects and JSON documents. Cloudant Sync does not provide this feature. The snippets in the following sections demonstrate how to use DocumentRevision objects to accomplish the same operations.
+* iOS: Cloudant는 데이터를 JSON 문서로 저장합니다. CloudantToolkit 프레임워크는 고유 오브젝트와 JSON 문서 사이를 맵핑하는 오브젝트 맵퍼를 제공했습니다. CDTDatastore API는 이 기능을 제공하지 않습니다. 다음 절의 스니펫은 CDTDatastore 오브젝트를 사용하여 동일한 조작을 달성하는 방법을 설명합니다. 
+* Android: AndroidCloudant는 데이터를 JSON 문서로 저장합니다. CloudantToolkit API는 고유 오브젝트와 JSON 문서 사이를 맵핑하는 오브젝트 맵퍼를 제공했습니다. Cloundant Sync는 이 기능을 제공하지 않습니다. 다음 절의 스니펫은 DocumentRevision 오브젝트를 사용하여 동일한 조작을 달성하는 방법을 설명합니다. 
 
-## Performing CRUD operations
+## CRUD 조작 수행
 {: #performing-crud-operations }
-You can modify the content of a data store.
+데이터 저장소의 컨텐츠를 수정할 수 있습니다. 
 
-* For more details on `create`, `retrieve`, `update`, and `delete` (CRUD) operations, see [CDTDatastore CRUD documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/crud.md).
-* For `create`, `retrieve`, `update`, and `delete` (CRUD) operations on a remote store, see the [Cloudant  Document API](https://docs.cloudant.com/document.html).
+* `create`, `retrieve`, `update` 및 `delete`(CRUD) 조작에 대한 세부사항은 [CDTDatastore CRUD 문서](https://github.com/cloudant/CDTDatastore/blob/master/doc/crud.md)를 참조하십시오. 
+* 원격 저장소에서 `create`, `retrieve`, `update` 및 `delete`(CRUD) 조작에 대해서는 [Cloudant 문서 API](https://docs.cloudant.com/document.html)를 참조하십시오. 
 
-### Creating data
+### 데이터 작성
 {: #creating-data }
-##### BEFORE
+##### 이전
 {: #before }
 
 **Objective-C**
@@ -664,7 +664,7 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### AFTER
+##### 이후
 {: #after }
 ```objc
 // Use an existing store
@@ -725,9 +725,9 @@ revision.body = DocumentBodyFactory.create(body);
 DocumentRevision savedRevision = datastore.createDocumentFromRevision(revision);
 ```
 
-### Reading data
+### 데이터 읽기
 {: #reading-data }
-##### BEFORE
+##### 이전
 {: #before }
 
 **Objective-C**
@@ -790,7 +790,7 @@ fetchTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### AFTER
+##### 이후
 {: #after }
 **Objective-C**
 
@@ -838,9 +838,9 @@ String documentId = existingDocumentId;
 DocumentRevision fetchedRevision = datastore.getDocument(documentId);
 ```
 
-### Updating data
+### 데이터 업데이트
 {: #updating-data }
-##### BEFORE
+##### 이전
 {: #before }
 
 **Objective-C**
@@ -913,7 +913,7 @@ saveTask.continueWith(new Continuation<Object, Void>() {
 });
 ```
 
-##### AFTER
+##### 이후
 {: #after }
 **Objective-C**
 
@@ -973,11 +973,11 @@ revision.body = DocumentBodyFactory.create(body);
 DocumentRevision savedRevision = datastore.updateDocumentFromRevision(revision);
 ```
 
-### Deleting data
+### 데이터 삭제
 {: #deleting-data }
-To delete an object, pass the object that you want to delete to the store.
+오브젝트를 삭제하려면 삭제할 오브젝트를 저장소로 전달하십시오. 
 
-##### BEFORE
+##### 이전
 {: #before }
 **Objective-C**
 
@@ -1038,7 +1038,7 @@ deleteTask.continueWith(new Continuation<String, Void>() {
 });
 ```
 
-##### AFTER
+##### 이후
 {: #after }
 **Objective-C**
 
@@ -1085,16 +1085,16 @@ BasicDocumentRevision documentRevision = (BasicDocumentRevision) existingDocumen
 DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(documentRevision);
 ```
 
-## Creating indexes
+## 색인 작성
 {: #creating-indexes }
-To perform queries, you must create an index.
+조회를 수행하려면 색인을 작성해야 합니다. 
 
-* iOS: For more details, see [CDTDatastore Query documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md). For query operations on a remote store, see the [Cloudant  Query API](https://docs.cloudant.com/cloudant_query.html).
-* Android: For more details, see [Cloudant Sync Query documentation](https://github.com/cloudant/sync-android/blob/master/doc/query.md). For CRUD operations on a remote store, see [Cloudant's Query API](https://docs.cloudant.com/cloudant_query.html).
+* iOS: 세부사항은 [CDTDatastore 조회 문서](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md)를 참조하십시오. 원격 저장소의 조회 조작에 대해서는 [Cloudant 조회 API](https://docs.cloudant.com/cloudant_query.html)를 참조하십시오. 
+* Android: 세부사항은 [Cloundant Sync 조회 문서](https://github.com/cloudant/sync-android/blob/master/doc/query.md)를 참조하십시오. 원격 저장소의 CRUD 조작에 대해서는 [Cloudant의 조회 API](https://docs.cloudant.com/cloudant_query.html)를 참조하십시오. 
 
-1. Create an index that includes the data type. Indexing with the data type is useful when an object mapper is set on the data store.
+1. 데이터 유형을 포함하는 색인을 작성하십시오. 데이터 유형이 있는 색인은 데이터 저장소에서 오브젝트 맵퍼가 설정된 경우에 유용합니다. 
 
-   ##### BEFORE
+   ##### 이전
    {: #before }
    **Objective-C**
     
@@ -1108,10 +1108,10 @@ To perform queries, you must create an index.
    // Create the index
    [store createIndexWithDataType:dataType fields:@[@"year", @"make"] completionHandler:^(NSError *error) {
        if(error){
-           // Handle error
-       }else{
-           // Continue application flow
-       }
+            // Handle error
+        }else{
+            // Continue application flow
+        }
    }];
    ```
     
@@ -1128,8 +1128,8 @@ To perform queries, you must create an index.
    store.createIndexWithDataType(dataType, fields: ["year","make"]) { (error:NSError!) -> Void in
         if nil != error {
             // Handle error
-        } else {
-            // Continue application flow
+    } else {
+        // Continue application flow
         }
    }
    ```
@@ -1163,7 +1163,7 @@ To perform queries, you must create an index.
    });
    ```
     
-   ##### AFTER
+   ##### 이후
    {: #after }
    **Objective-C**
     
@@ -1209,9 +1209,9 @@ To perform queries, you must create an index.
    indexManager.ensureIndexed(indexFields, "automobile_index");
    ```
     
-2. Delete indexes.
+2. 색인을 삭제하십시오. 
 
-   ##### BEFORE
+   ##### 이전
    {: #before }
    **Objective-C**
 
@@ -1243,8 +1243,8 @@ To perform queries, you must create an index.
    store.deleteIndexWithDataType(dataType, completionHandler: { (error:NSError!) -> Void in
         if nil != error {
             // Handle error
-        } else {
-            // Continue application flow
+    } else {
+        // Continue application flow
         }
    })
    ```
@@ -1271,7 +1271,7 @@ To perform queries, you must create an index.
    });
    ```
 
-   ##### AFTER
+   ##### 이후
    {: #after }
    **Objective-C**
 
@@ -1313,17 +1313,17 @@ To perform queries, you must create an index.
    indexManager.deleteIndexNamed(indexName);
    ```
 
-## Querying data
+## 데이터 조회
 {: #querying-data }
-After you create an index, you can query the data in your database.
+색인을 작성한 후 데이터베이스에서 데이터를 조회할 수 있습니다. 
 
-* iOS: For more details, see [CDTDatastore Query documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md).
-* Android: For more details, see [Cloudant  Sync Query documentation](https://github.com/cloudant/sync-android/blob/master/doc/query.md).
-* For query operations on a remote store, see the [Cloudant Query API](https://docs.cloudant.com/cloudant_query.html).
+* iOS: 세부사항은 [CDTDatastore 조회 문서](https://github.com/cloudant/CDTDatastore/blob/master/doc/query.md)를 참조하십시오. 
+* Android: 세부사항은 [Cloundant Sync 조회 문서](https://github.com/cloudant/sync-android/blob/master/doc/query.md)를 참조하십시오. 
+* 원격 저장소의 조회 조작에 대해서는 [Cloudant 조회 API](https://docs.cloudant.com/cloudant_query.html)를 참조하십시오. 
 
 #### iOS
 {: #ios }
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 이전(IMFData/CloudantToolkit 사용):
 {: #before-with-imfdata-cloudanttoolkit }
 
 **Objective-C**
@@ -1362,7 +1362,7 @@ store.performQuery(query, completionHandler: { (results:[AnyObject]!, error:NSEr
 })
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 이후(Cloundant Sync 사용):
 {: #after-with-cloudant-sync }
 **Objective-C**
 
@@ -1388,9 +1388,9 @@ if(results == nil){
 
 #### Android
 {: #android }
-To run a query for objects, create a Cloudant query with the query filters on data type. Run the query against a Store object.
+오브젝트에 대한 조회를 실행하려면 데이터 유형에 대해 조회 필터로 Cloudant 조회를 작성하십시오. 저장소 오브젝트에 대해 조회를 실행하십시오. 
 
-##### BEFORE (with IMFData/CloudantToolkit):
+##### 이전(IMFData/CloudantToolkit 사용):
 {: #before-with-imfdata-cloudanttoolkit }
 ```java
 // Use an existing store
@@ -1440,7 +1440,7 @@ queryTask.continueWith(new Continuation<List, Object>() {
 });
 ```
 
-##### AFTER (with Cloudant Sync):
+##### 이후(Cloundant Sync 사용):
 {: #after-with-cloudant-sync }
 ```java
 // Use an existing store
@@ -1473,16 +1473,16 @@ selectorMap.put("$and", andPredicates);
 QueryResult result = indexManager.find(selectorMap);
 ```
 
-## Supporting offline storage and synchronization
+## 오프라인 스토리지 및 동기화 지원
 {: #supporting-offline-storage-and-synchronization }
-You can synchronize the data on a mobile device with a remote database instance. You can either pull updates from a remote database to the local database on the mobile device, or push local database updates to a remote database.
+모바일 디바이스의 데이터를 원격 데이터베이스 인스턴스와 동기화할 수 있습니다. 원격 데이터베이스에서 모바일 디바이스의 로컬 데이터베이스로 업데이트를 풀하거나 로컬 데이터베이스 업데이트를 원격 데이터베이스에 푸시할 수 있습니다. 
 
-* iOS: For more details, see [CDTDatastore Replication documentation](https://github.com/cloudant/CDTDatastore/blob/master/doc/replication.md).
-* Android For more details, see [Cloudant  Sync Replication documentation](https://github.com/cloudant/sync-android/blob/master/doc/replication.md). For CRUD operations on a remote store, see the [Cloudant Replication API](https://docs.cloudant.com/replication.html).
+* iOS: 세부사항은 [CDTDatastore 복제 문서](https://github.com/cloudant/CDTDatastore/blob/master/doc/replication.md)를 참조하십시오. 
+* Android: 세부사항은 [Cloundant Sync 복제 문서](https://github.com/cloudant/sync-android/blob/master/doc/replication.md)를 참조하십시오. 원격 저장소의 CRUD 조작에 대해서는 [Cloudant 복제 API](https://docs.cloudant.com/replication.html)를 참조하십시오. 
 
-### Running pull replication
+### 풀 복제 실행
 {: #running-pull-replication }
-##### BEFORE
+##### 이전
 {: #before }
 
 **Objective-C**
@@ -1525,7 +1525,7 @@ do {
     
     // start replication
     try replicator.start()
-
+    
     // (optionally) monitor replication via polling
     while replicator.isActive() {
         NSThread.sleepForTimeInterval(1.0)
@@ -1562,7 +1562,7 @@ pullTask.continueWith(new Continuation<PullReplication, Object>() {
 });
 ```
 
-##### AFTER
+##### 이후
 {: #after }
 **Objective-C**
 
@@ -1655,9 +1655,9 @@ replicator.getEventBus().register(new Object() {
 replicator.start();
 ```
 
-### Running push replication
+### 푸시 복제 실행
 {: #running-push-replication }
-##### BEFORE
+##### 이전
 {: #before }
 
 **Objective-C**
@@ -1736,7 +1736,7 @@ pushTask.continueWith(new Continuation<PushReplication, Object>() {
 });
 ```
 
-##### AFTER
+##### 이후
 {: #after }
 **Objective-C**
 

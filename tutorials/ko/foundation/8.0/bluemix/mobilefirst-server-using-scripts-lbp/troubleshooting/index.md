@@ -1,56 +1,56 @@
 ---
 layout: tutorial
-title: Troubleshooting
+title: 문제점 해결
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Resolving problems with {{ site.data.keys.product_full }} on Liberty for Java runtime	
+### Liberty for Java 런타임에서 {{site.data.keys.product_full }}에 대한 문제점 해결	
 {: resolving-problems-with-ibm-mobilefirst-foundation-on-liberty-for-java-runtime }
-When you are unable to resolve a problem encountered while working with IBM MobileFirst Foundation on Liberty for Java runtime, be sure to gather this key information before contacting IBM Support.
+Liberty for Java 런타임에서 IBM MobileFirst Foundation에 대한 작업 중에 발견된 문제점을 해결할 수 없는 경우 IBM 지원 센터에 문의하기 전에 다음 주요 정보를 수집하십시오. 
 
-To help expedite the troubleshooting process, gather the following information:
+문제점 해결 프로세스를 수행하는 데 도움이 되도록 다음 정보를 수집하십시오. 
 
-* The version of IBM MobileFirst Foundation that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
-* The Liberty for Java runtime size selected. For example, 2GB.
-* The Bluemix  dashDB database plan type. For example, EnterpriseTransactional 2.8.500.
-* The mfpconsole route
-* Versions of cloud foundry: `cf -v` 
-* The information returned from running the following Cloud Foundry CLI commands from the organization and space where your MobileFirst  Foundation server is deployed:
+* 사용 중인 IBM MobileFirst Foundation의 버전(V8.0.0 이상이어야 함)과 적용된 임시 수정사항
+* 선택한 Liberty for Java 런타임 크기. 예: 2GB
+* Bluemix dashDB 데이터베이스 플랜 유형. 예: EnterpriseTransactional 2.8.500.
+* mfpconsole 경로
+* Cloud Foundry의 버전: `cf -v` 
+* MobileFirst Foundation 서버가 배치된 조직과 공간에서 다음 Cloud Foundry CLI 명령을 실행하여 리턴된 정보
  - `cf app APP_NAME`
 
-### Unable to create the mfpfsqldb.xml file
+### mfpfsqldb.xml 파일을 작성할 수 없음
 {: #unable-to-create-the-mfpfsqldbxml-file }
-An error occurs at the end of running the **prepareserverdbs.sh** script:
+**prepareserverdbs.sh** 스크립트 실행 종료 시 오류가 발생합니다. 
 
-> Error : unable to create mfpfsqldb.xml
+> 오류: mfpfsqldb.xml을 작성할 수 없음
 
-**How to resolve**  
-The problem might be an intermittent database connectivity issue. Try to run the script again.
+**해결 방법**  
+이 문제점은 중간 데이터베이스 연결 문제일 수 있습니다. 스크립트를 다시 실행하십시오. 
 
-### Script fails and returns message about tokens	
+### 스크립트가 실패하고 토큰에 대한 메시지를 리턴함	
 {: #script-fails-and-returns-message-about-tokens }
-Running a script is not successful and returns a message similar to Refreshing cf tokens or Failed to refresh token.
+스크립트 실행에 실패하고 cf 토큰 새로 고치기 또는 토큰 새로 고치기 실패 같은 메시지가 리턴됩니다. 
 
-**Explanation**  
-The Bluemix session might have timed-out. The user must be logged in to Bluemix before running the scripts.
+**설명**  
+Bluemix 세션의 제한시간이 초과되었을 수 있습니다. Bluemix에 로그인한 후 스크립트를 실행해야 합니다. 
 
-**How to resolve**
-Run the initenv.sh script again to log in to Bluemix and then run the failed script again.
+**해결 방법**
+initenv.sh 스크립트를 다시 실행하여 Bluemix에 로그인한 후 실패한 스크립트를 다시 실행하십시오. 
 
-### Administration DB, Live Update and Push Service show up as inactive	
+### 관리 DB, 활성 업데이트, 푸시 서비스가 비활성으로 표시됨	
 {: #administration-db-live-update-and-push-service-show-up-as-inactive }
-Administration DB, Live Update and Push Service show up as inactive or no runtimes are listed in the MobileFirst Foundation Operations Console even though the **prepareserver.sh** script completed successfully.
+**prepareserver.sh** 스크립트가 정상적으로 완료된 경우에도 관리 DB, 활성 업데이트, 푸시 서비스가 비활성으로 표시되거나 런타임이 MobileFirst Foundation Operations Console에 나열되지 않습니다. 
 
-**Explanation**  
-It is possible that a either a connection to the database service did not get established or that a formatting problem occurred in the server.env file when additional values were appended during deployment.
+**설명**  
+데이터베이스 서비스에 대한 연결이 설정되지 않았거나 배치 중에 추가 값이 추가되었을 때 server.env 파일에서 형식화 문제가 발생했을 가능성이 있습니다. 
 
-If additional values were added to the server.env file without new line characters, the properties would not resolve. You can validate this potential problem by checking the log files for errors caused by unresolved properties that look similar to this error:
+줄 바꾸기 문자 없이 server.env 파일에 값이 추가된 경우 특성을 분석할 수 없습니다. 다음 오류와 유사하게 표시되는 분석되지 않은 특성으로 인해 발생한 오류에 대해 로그 파일을 확인하여 이와 같은 잠재적인 문제점의 유효성을 검증할 수 있습니다. 
 
-> FWLSE0320E: Failed to check whether the admin services are ready. Caused by: [project Sample] java.net.MalformedURLException: Bad host: "${env.IP_ADDRESS}"
+> FWLSE0320E: 관리 서비스 준비 여부를 확인하는 데 실패했습니다. 원인: [프로젝트 샘플] java.net.MalformedURLException: 잘못된 호스트: "${env.IP_ADDRESS}"
 
-**How to resolve**  
-Manually restart the Liberty app. If the problem still exists, check to see if the number of connections to the database service exceeds the number of connections provisioned by your database plan. If so, make any needed adjustments before proceeding.
+**해결 방법**  
+Liberty 앱을 수동으로 다시 시작하십시오. 문제가 지속되면 데이터베이스 서비스에 대한 연결 횟수가 데이터베이스 플랜에서 프로비저닝하는 연결 횟수를 초과하는지 확인하십시오. 횟수를 초과하는 경우 진행하기 전에 필요한 조정을 수행하십시오. 
 
-If the problem was caused by unresolved properties, ensure that your editor adds the linefeed (LF) character to demarcate the end of a line when editing any of the provided files. For example, the TextEdit app on macOS might use the CR character to mark the end of line instead of LF, which would cause the issue.
+분석되지 않은 특성으로 인해 문제가 발생한 경우 제공된 파일을 편집할 때 행 끝을 구별하도록 편집기에서 줄 바꾸기(LF) 문자를 추가하는지 확인하십시오. 예를 들어, macOS의 TextEdit 앱에서는 LF 대신 CR 문자를 사용해 행의 끝을 표시하여 문제가 발생합니다. 
 

@@ -1,141 +1,139 @@
 ---
 layout: tutorial
-title: Administrating applications through the MobileFirst Operations Console
-breadcrumb_title: Administrating using the console
+title: MobileFirst Operations Console을 통해 애플리케이션 관리
+breadcrumb_title: 콘솔을 사용하여 관리
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-You can administer {{ site.data.keys.product_adj }} applications through the {{ site.data.keys.mf_console }} by locking apps or denying access, or by displaying notification messages.
+{{site.data.keys.mf_console }}을 통해 앱을 잠그거나, 액세스를 거부하거나, 알림 메시지를 표시하여 {{site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다. 
 
-You can start the console by entering one of the following URLs:
+다음 URL 중 하나를 입력하여 콘솔을 시작할 수 있습니다. 
 
-* Secure mode for production or test: `https://hostname:secure_port/mfpconsole`
-* Development: `http://server_name:port/mfpconsole`
+* 프로덕션 또는 테스트용 보안 모드: `https://hostname:secure_port/mfpconsole`
+* 개발: `http://server_name:port/mfpconsole`
 
-You must have a login and password that grant you authorization to access the {{ site.data.keys.mf_console }}. For more information, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+{{site.data.keys.mf_console }}에 액세스할 수 있도록 권한이 부여된 로그인과 비밀번호가 있어야 합니다. 자세한 정보는 [{{site.data.keys.mf_server }} 관리를 위한 사용자 인증 구성](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)을 참조하십시오. 
 
-You can use the {{ site.data.keys.mf_console }} to manage your applications.
+{{site.data.keys.mf_console }}을 사용하여 애플리케이션을 관리할 수 있습니다. 
 
-From the {{ site.data.keys.mf_console }}, you can also access the Analytics console and control the collection of mobile data for analysis by the Analytics server. For more information, see [Enabling or disabling data collection from the {{ site.data.keys.mf_console }}](../../analytics/console/#enabledisable-analytics-support).
+{{site.data.keys.mf_console }}에서 Analytics 콘솔에 액세스하고 Analytics 서버가 분석할 모바일 데이터의 수집을 제어할 수도 있습니다. 자세한 정보는 [{{site.data.keys.mf_console }}에서 데이터 콜렉션 사용 또는 사용 안함](../../analytics/console/#enabledisable-analytics-support)을 참조하십시오. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
 
-* [Mobile-application management](#mobile-application-management)
-* [Application status and token licensing](#application-status-and-token-licensing)
-* [Error log of operations on runtime environments](#error-log-of-operations-on-runtime-environments)
-* [Audit log of administration operations](#audit-log-of-administration-operations)
+* [모바일 애플리케이션 관리](#mobile-application-management)
+* [애플리케이션 상태 및 토큰 라이센싱](#application-status-and-token-licensing)
+* [런타임 환경에서 조작의 오류 로그](#error-log-of-operations-on-runtime-environments)
+* [관리 조작의 감사 로그](#audit-log-of-administration-operations)
 
-## Mobile-application management
+## 모바일 애플리케이션 관리
 {: #mobile-application-management }
-The {{ site.data.keys.product_adj }} mobile-application-management capabilities provide {{ site.data.keys.mf_server }} operators and administrators with granular control over user and device access to their applications.
+{{site.data.keys.product_adj }} 모바일 애플리케이션 관리 기능을 통해 {{site.data.keys.mf_server }} 운영자와 관리자는 해당 애플리케이션에 대한 사용자 액세스 권한과 디바이스 액세스 권한을 세부적으로 제어할 수 있습니다. 
 
-{{ site.data.keys.mf_server }} tracks all attempts to access your mobile infrastructure, and stores information about the application, the user, and the device on which the application is installed. The mapping between the application, the user, and the device, forms the basis for the server's mobile-application management capabilities.
+{{site.data.keys.mf_server }}는 사용자의 모바일 인프라에 대한 모든 액세스 시도를 추적하고 애플리케이션, 사용자, 애플리케이션이 설치된 디바이스에 대한 정보를 저장합니다. 애플리케이션, 사용자, 디바이스 간 맵핑은 서버의 모바일 애플리케이션 관리 기능에 대한 기초를 형성합니다. 
 
-Use IBM {{ site.data.keys.mf_console }} to monitor and manage access to your resources:
+IBM {{site.data.keys.mf_console }}을 사용하여 사용자 자원에 대한 액세스를 모니터하고 관리하십시오. 
 
-* Search for a user by name, and view information about the devices and applications that they are using to access your resources.
-* Search for a device by its display name, and view the users that are associated with the device, and the registered {{ site.data.keys.product_adj }} applications that are used on this device.
-* Block access to your resources from all instances of your applications on a specific device. This is useful when a device is lost or stolen.
-* Block access to your resources only for a specific application on a specific device. For example, if an employee changes departments, you can block the employee's access for an application of the previous department, but allow the employee access from other applications on the same device.
-* Unregister a device, and delete all the registration and monitoring data that was gathered for the device.
+* 이름으로 사용자를 검색한 후 해당 사용자가 자원에 액세스하기 위해 사용 중인 디바이스와 애플리케이션에 대한 정보를 확인합니다. 
+* 표시 이름으로 디바이스를 검색한 후 디바이스와 연관된 사용자, 이 디바이스에서 사용되는 등록된 {{site.data.keys.product_adj }} 애플리케이션을 확인합니다. 
+* 특정 디바이스에 있는 애플리케이션의 모든 인스턴스에서 자원에 액세스하는 것을 차단합니다. 이 기능은 디바이스가 손실되거나 디바이스를 도난당한 경우 유용합니다. 
+* 특정 디바이스에 있는 특정 애플리케이션만 자원에 액세스하지 못하도록 차단합니다. 예를 들어 직원의 부서가 변경된 경우 이전 부서의 애플리케이션에 대한 직원의 액세스는 차단하지만 동일한 디바이스에 있는 다른 애플리케이션에서 이루어지는 직원 액세스는 허용할 수 있습니다. 
+* 디바이스의 등록을 취소하고 디바이스에 대해 수집된 모든 등록 데이터와 모니터링 데이터를 삭제합니다. 
 
-Access-blocking has the following characteristics:
+액세스 차단에는 다음과 같은 특성이 있습니다. 
 
-* The blocking operation is reversible. You can remove the block by changing the device or application status in {{ site.data.keys.mf_console }}.
-* The block applies only to protected resources. A blocked client can still use the application to access an unprotected resource. See Unprotected resources.
-* Access to adapter resources on {{ site.data.keys.mf_server }} is blocked immediately when you select this operation. However, this might not be the case for resources on an external server because the application might still have a valid access token that has not expired.
+* 차단 조작은 가역적입니다. {{site.data.keys.mf_console }}에서 디바이스 또는 애플리케이션 상태를 변경하여 차단을 제거할 수 있습니다. 
+* 차단은 보호된 자원에만 적용됩니다. 차단된 클라이언트도 여전히 애플리케이션을 사용하여 보호되지 않은 자원에 액세스할 수 있습니다. 보호되지 않은 자원을 참조하십시오. 
+* 이 조작을 선택하면 {{site.data.keys.mf_server }}의 어댑터 자원에 대한 액세스가 즉시 차단됩니다. 하지만 애플리케이션에 아직 만료되지 않은 유효한 액세스 토큰이 있을 수 있으므로 외부 서버에 있는 자원의 경우에는 이 특성이 적용되지 않습니다. 
 
-### Device status
+### 디바이스 상태
 {: #device-status }
-{{ site.data.keys.mf_server }} maintains status information for every device that accesses the server. The possible status values are **Active**, **Lost**, **Stolen**, **Expired**, and **Disabled**. 
+{{site.data.keys.mf_server }}는 서버에 액세스하는 모든 디바이스의 상태 정보를 유지보수합니다. 상태 값은 **활성**, **손실**, **도난**, **만료**, **사용 안함** 중 하나입니다.  
 
-The default device status is **Active**, which indicates that access from this device is not blocked. You can change the status to **Lost**, **Stolen**, or **Disabled** to block access to your application resources from the device. You can always restore the **Active** status to allow access again. See [Managing device access in {{ site.data.keys.mf_console }}](#managing-device-access-in-mobilefirst-operations-console).
+기본 디바이스 상태는 **활성**으로 이 디바이스의 액세스가 차단되지 않음을 표시합니다. 상태를 **손실**, **도난** 또는 **사용 안함**으로 변경하여 디바이스에서 애플리케이션 자원에 액세스하지 못하게 차단할 수 있습니다. 언제든지 **활성** 상태를 복원하여 다시 액세스할 수 있도록 허용할 수 있습니다. [{{site.data.keys.mf_console }}에서 디바이스 액세스 관리](#managing-device-access-in-mobilefirst-operations-console)를 참조하십시오. 
 
-The **Expired** status is a special status that is set by {{ site.data.keys.mf_server }} after a preconfigured inactivity duration elapses since the last time that the device connected to this server instance. This status is used for license tracking, and it does not affect the access rights of the device. When a device with an **Expired** status reconnects to the server, its status is restored to **Active**, and the device is granted access the server.
+**만료** 상태는 디바이스가 이 서버 인스턴스에 마지막으로 연결된 이후 사전 구성된 비활동 기간이 경과한 경우에 {{site.data.keys.mf_server }}에서 설정하는 특수한 상태입니다. 이 상태는 라이센스 추적에 사용되며 디바이스의 액세스 권한에는 영향을 미치지 않습니다. **만료** 상태의 디바이스가 서버에 다시 연결되면 디바이스 상태가 **활성**으로 복원되고 서버에 대한 액세스 권한이 디바이스에 부여됩니다. 
 
-### Device display name
+### 디바이스 표시 이름
 {: #device-display-name }
-{{ site.data.keys.mf_server }} identifies devices by a unique device ID, which is assigned by the {{ site.data.keys.product_adj }} client SDK. Setting a display name for a device allows you to search for the device by its display name. Application developers can use the `setDeviceDisplayName` method of the `WLClient` class to set the device display name. See the `WLClient` documentation in [{{ site.data.keys.product_adj }} client-side API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html). (The JavaScript class is `WL.Client`.) Java adapter developers (including security-check developers) can also set the device display name by using the `setDeviceDisplayName` method of the com.ibm.mfp.server.registration.external.model `MobileDeviceData` class. See [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc).
+{{site.data.keys.mf_server }}는 {{site.data.keys.product_adj }} 클라이언트 SDK에서 지정하는 고유 디바이스 ID로 디바이스를 식별합니다. 디바이스의 표시 이름을 설정하면 해당 표시 이름으로 디바이스를 검색할 수 있습니다. 애플리케이션 개발자는 `WLClient` 클래스의 `setDeviceDisplayName` 메소드를 사용하여 디바이스 표시 이름을 설정할 수 있습니다. [{{site.data.keys.product_adj }} 클라이언트 측 API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html)의 `WLClient` 문서를 참조하십시오. (JavaScript 클래스는 `WL.Client`입니다.) Java 어댑터 개발자(보안 검사 개발자 포함)는 com.ibm.mfp.server.registration.external.model `MobileDeviceData` 클래스의 `setDeviceDisplayName` 메소드를 사용하여 디바이스 표시 이름을 설정할 수도 있습니다. [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc)를 참조하십시오. 
 
-### Managing device access in {{ site.data.keys.mf_console }}
+### {{site.data.keys.mf_console }}에서 디바이스 액세스 관리
 {: #managing-device-access-in-mobilefirst-operations-console }
-To monitor and manage device access to your resources, select the Devices tab in the {{ site.data.keys.mf_console }} dashboard.
+자원에 대한 디바이스 액세스를 모니터하고 관리하려면 {{site.data.keys.mf_console }} 대시보드에서 디바이스 탭을 선택하십시오. 
 
-Use the search field to search for a device by the user ID that is associated with the device, or by the display name of the device (if set). See [Device display name](#device-display-name). You can also search for part of the user ID or the device display name (at least three characters).
+디바이스와 연관된 사용자 ID 또는 디바이스의 표시 이름(설정되어 있는 경우)으로 디바이스를 검색하려면 검색 필드를 사용하십시오. [디바이스 표시 이름](#device-display-name)을 참조하십시오. 사용자 ID 또는 디바이스 표시 이름의 일부(3자 이상)를 검색할 수도 있습니다. 
 
-The search results display all the devices that match the specified user ID or device display name. For each device, you can see the device ID and display name, the device model, the operating system, and the list of users IDs that are associated with the device.
+검색 결과에는 지정된 사용자 ID 또는 디바이스 표시 이름과 일치하는 모든 디바이스가 표시됩니다. 각 디바이스의 디바이스 ID와 표시 이름, 디바이스 모델, 운영 체제, 디바이스와 연관된 사용자 ID 목록을 확인할 수 있습니다. 
 
-The Device Status column shows the status of the device. You can change the status of the device to **Lost**, **Stolen**, or **Disabled**, to block access from the device to protected resources. Changing the status back to **Active** restores the original access rights.
+디바이스 상태 열에는 디바이스의 상태가 표시됩니다. 디바이스의 상태를 **손실**, **도난** 또는 **사용 안함**으로 변경하여 디바이스에서 보호된 자원에 액세스하지 못하게 차단할 수 있습니다. 상태를 다시 **활성**으로 변경하면 원래 액세스 권한이 복원됩니다. 
 
-You can unregister a device by selecting **Unregister** in the **Actions** column. Unregistering a device deletes the registration data of all the {{ site.data.keys.product_adj }} applications that are installed on the device. In addition, the device display name, the lists of users that are associated with the device, and the public attributes that the application registered for this device are deleted.
+**조치** 열에서 **등록 취소**를 선택하여 디바이스의 등록을 취소할 수 있습니다. 디바이스의 등록을 취소하면 디바이스에 설치되어 있는 모든 {{site.data.keys.product_adj }} 애플리케이션의 등록 데이터가 삭제됩니다. 또한 디바이스 표시 이름, 디바이스와 연관된 사용자 목록, 애플리케이션에서 이 디바이스에 대해 등록한 공용 속성도 삭제됩니다. 
 
-**Note:** The **Unregister** action is not reversible. The next time that one of the {{ site.data.keys.product_adj }} applications on the device attempts to access the server, it will be registered again with a new device ID. When you select to register the device again, the device status is set to **Active**, and the device has access to protected resources, regardless of any previous blocks. Therefore, if you want to block a device, do not unregister it. Instead, change the device status to **Lost**, **Stolen**, or **Disabled**.
+**참고:** **등록 취소** 조치는 되돌릴 수 없습니다. 다음에 디바이스의 {{site.data.keys.product_adj }} 애플리케이션 중 하나에서 서버에 액세스하려고 하면 해당 디바이스가 새 디바이스 ID로 다시 등록됩니다. 디바이스를 다시 등록하도록 선택하면 디바이스 상태가 **활성**으로 설정되고 해당 디바이스는 이전 차단과 관계 없이 보호된 자원에 액세스할 수 있습니다. 그러므로 디바이스를 차단하려면 해당 디바이스의 등록을 취소하지 마십시오. 대신 디바이스 상태를 **손실**, **도난** 또는 **사용 안함**으로 변경하십시오. 
 
-To view of all the applications that were accessed on a specific device, select the expand arrow icon next to the device ID in the devices table. Each row in the displayed applications table contains the name of the application, and the application's access status (whether access to protected resources is enabled for this application on this device). You can change the application's status to **Disabled** to block access from the application specifically on this device.
+특정 디바이스에 액세스한 모든 애플리케이션을 보려면 디바이스 테이블의 디바이스 ID 옆에 있는 펼치기 화살표 아이콘을 선택하십시오. 표시되는 애플리케이션 테이블의 각 행에는 애플리케이션의 이름과 애플리케이션의 액세스 상태(이 디바이스에 있는 해당 애플리케이션에서 보호된 자원에 액세스할 수 있는지 여부)가 포함되어 있습니다. 애플리케이션의 상태를 **사용 안함**으로 변경하여 명확히 이 디바이스에 있는 애플리케이션에서 액세스하지 못하게 차단할 수 있습니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to-1 }
 
-* [Remotely disabling application access to protected resources](#remotely-disabling-application-access-to-protected-resources)
-* [Displaying an administrator message](#displaying-an-administrator-message)
-* [Defining administrator messages in multiple languages](#defining-administrator-messages-in-multiple-languages)
+* [보호된 자원에 대한 애플리케이션 액세스를 사용 안함으로 원격 설정](#remotely-disabling-application-access-to-protected-resources)
+* [관리자 메시지 표시](#displaying-an-administrator-message)
+* [다중 언어로 관리자 메시지 정의](#defining-administrator-messages-in-multiple-languages)
 
-### Remotely disabling application access to protected resources
+### 보호된 자원에 대한 애플리케이션 액세스를 사용 안함으로 원격 설정
 {: #remotely-disabling-application-access-to-protected-resources }
-Use {{ site.data.keys.mf_console }} (the console) to disable user access to a specific version of an application on a specific mobile operating system, and provide a custom message to the user.
+{{site.data.keys.mf_console }}(콘솔)을 사용하여 특정 모바일 운영 체제의 특정 애플리케이션 버전에 대한 사용자 액세스를 사용 안함으로 설정하고 사용자에게 사용자 정의 메시지를 제공할 수 있습니다. 
 
-1. Select your application version from the **Applications** section of the console's navigation sidebar, and then select the application **Management** tab.
-2. Change the status to **Access Disabled**.
-3. In the **URL of latest version** field, optionally provide a URL for a newer version of the application (usually in the appropriate public or private app store). For some environments, the Application Center provides a URL to access the Details view of an application version directly. See [Application properties](../../appcenter/appcenter-console/#application-properties).
-4. In the **Default notification message** field, add the custom notification message to display when the user attempts to access the application. The following sample message directs users to upgrade to the latest version:
+1. 콘솔 탐색 사이드바의 **애플리케이션** 섹션에서 애플리케이션 버전을 선택한 후 애플리케이션 **관리** 탭을 선택하십시오. 
+2. 상태를 **액세스 사용 안함**으로 변경하십시오. 
+3. **최신 버전의 URL** 필드에서 선택적으로 최신 버전의 애플리케이션에 대한 URL을 제공하십시오(일반적으로 해당 공용 또는 개인용 앱 스토어에 있음). 일부 환경에서는 Application Center에서 애플리케이션 버전의 세부사항 보기에 직접 액세스할 수 있도록 URL을 제공합니다. [애플리케이션 특성](../../appcenter/appcenter-console/#application-properties)을 참조하십시오. 
+4. **기본 알림 메시지** 필드에 사용자가 애플리케이션에 액세스하려고 할 때 표시할 사용자 정의 알림 메시지를 추가하십시오. 다음 샘플 메시지는 사용자에게 최신 버전으로 업그레이드하도록 지시합니다. 
 
    ```bash
    This version is no longer supported. Please upgrade to the latest version.
    ```
 
-5. In the **Supported locales** section, you can optionally provide the notification message in other languages.
-6. Select **Save** to apply your changes.
+5. **지원되는 로케일** 섹션에서 선택적으로 다른 언어로 된 알림 메시지를 제공할 수 있습니다. 
+6. 변경사항을 적용하려면 **저장**을 선택하십시오. 
 
-When a user runs an application that was remotely disabled, a dialog window with your custom message is displayed. The message is displayed on any application interaction that requires access to a protected resource, or when the application tries to obtain an access token. If you provided a version-upgrade URL, the dialog has a **Get new version** button for upgrading to a newer version, in addition to the default **Close** button. If the user closes the dialog window without upgrading the version, they can continue to work with the parts of the application that do not require access to protected resources. However, any application interaction that requires access to a protected resource causes the dialog window to be displayed again, and the application is not granted access to the resource.
+사용자가 사용 안함으로 원격 설정된 애플리케이션을 실행하면 사용자 정의 메시지가 포함된 대화 상자 창이 표시됩니다. 이 메시지는 보호된 자원에 대한 액세스가 필요한 애플리케이션 상호작용이 발생하거나 애플리케이션에서 액세스 토큰을 획득하려고 하는 경우에 표시됩니다. 버전 업그레이드 URL을 제공한 경우에는 대화 상자에 기본 **닫기** 단추 외에 최신 버전으로 업그레이드하는 데 사용할 **새 버전 가져오기** 단추도 포함됩니다. 버전을 업그레이드하지 않고 대화 상자를 닫으면 보호된 자원에 대한 액세스가 필요 없는 애플리케이션 파트 관련 작업을 계속 수행할 수 있습니다. 그러나 보호된 자원에 대한 액세스가 필요한 애플리케이션 상호작용이 발생하는 경우에는 다시 대화 상자 창이 표시되고 애플리케이션에 해당 자원에 대한 액세스 권한이 부여되지 않습니다. 
 
 <!-- **Note:** For cross-platform applications, you can customize the default remote-disable behavior: provide an upgrade URL for your application, as outlined in Step 3, and set the **showCloseOnRemoteDisableDenial** attribute in your application's initOptions.js file to false. If the attribute is not defined, define it. When an application-upgrade URL is provided and the value of **showCloseOnRemoteDisableDenial** is false, the **Close** button is omitted from the remote-disable dialog window, leaving only the Get new version button. This forces the user to upgrade the application. When no upgrade URL is provided, the **showCloseOnRemoteDisableDenial** configuration has no effect, and a single **Close** button is displayed. -->
 
-### Displaying an administrator message
+### 관리자 메시지 표시
 {: #displaying-an-administrator-message }
-Follow the outlined procedure to configure the notification message. You can use this message to notify application users of temporary situations, such as a planned service downtime.
+설명된 프로시저에 따라 알림 메시지를 구성하십시오. 이 메시지를 사용하여 애플리케이션 사용자에게 계획된 서비스 작동 중지 시간과 같은 임시 상황에 대해 알릴 수 있습니다. 
 
-1. Select your application version from the **Applications** section of the {{ site.data.keys.mf_console }} navigation sidebar, and then select the application Management tab.
-2. Change the status to **Active and Notifying**.
-3. Add a custom startup message. The following sample message informs the user of planned maintenance work for the application:
+1. {{site.data.keys.mf_console }} 탐색 사이드바의 **애플리케이션** 섹션에서 애플리케이션 버전을 선택한 후 애플리케이션 관리 탭을 선택하십시오. 
+2. 상태를 **활성 및 알림**으로 변경하십시오. 
+3. 사용자 정의 시작 메시지를 추가하십시오. 다음 샘플 메시지는 사용자에게 계획된 애플리케이션 유지보수 작업에 대한 정보를 제공합니다. 
 
    ```bash
    The server will be unavailable on Saturday between 4 AM to 6 PM due to planned maintenance.
    ```
 
-4. In the Supported locales section, you can optionally provide the notification message in other languages.
+4. 지원되는 로케일 섹션에서 선택적으로 다른 언어로 된 알림 메시지를 제공할 수 있습니다. 
 
-5. Select **Save** to apply your changes.
+5. 변경사항을 적용하려면 **저장**을 선택하십시오. 
 
-The message is displayed when the application first uses {{ site.data.keys.mf_server }} to access a protected resource, or obtain an access token. If the application acquires an access token when it starts, the message is displayed at this stage. Otherwise, the message is displayed on the first request from the application to access a protected resource or obtain an access token. The message is displayed only once, for the first interaction.
+이 메시지는 애플리케이션에서 먼저 {{site.data.keys.mf_server }}를 사용하여 보호된 자원에 액세스하거나 액세스 토큰을 얻는 경우에 표시됩니다. 애플리케이션이 시작될 때 액세스 토큰을 획득하는 경우 이 단계에서 메시지가 표시됩니다. 그렇지 않으면 애플리케이션에서 처음으로 보호된 자원에 대한 액세스 또는 액세스 토큰 획득을 요청할 때 메시지가 표시됩니다. 이 메시지는 처음 상호작용할 때 한 번만 표시됩니다. 
 
-### Defining administrator messages in multiple languages
+### 다중 언어로 관리자 메시지 정의
 {: #defining-administrator-messages-in-multiple-languages }
-<b>Note:</b> In Microsoft Internet Explorer (IE) and Microsoft Edge, administrative messages are displayed according to the operating system's region-format preference, and not according to the configured browser or operating-system display-language preferences. See the [IE and Edge web-application limitations](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
+<b>참고:</b> Microsoft Internet Explorer(IE)와 Microsoft Edge에서는 구성된 브라우저 또는 운영 체제 언어 환경 설정이 아니라 운영 체제의 지역 형식 설정에 따라 관리 메시지가 표시됩니다. [IE 및 Edge 웹 애플리케이션 제한사항](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge)을 참조하십시오. 설명된 프로시저를 수행하여 콘솔을 통해 정의한 애플리케이션 관리 메시지를 표시하는 데 사용할 다중 언어를 구성하십시오. 메시지는 디바이스의 로케일을 기반으로 전송되며 모바일 운영 체제에서 로케일을 지정하기 위해 사용하는 표준을 준수해야 합니다. 
 
-Follow the outlined procedure to configure multiple languages for displaying the application administration messages that you defined through the console. The messages are sent based on the locale of the device, and must comply with the standards that the mobile operating system uses to specify locales.
+1. {{site.data.keys.mf_console }} 탐색 사이드바의 **애플리케이션** 섹션에서 애플리케이션 버전을 선택한 후 애플리케이션 **관리** 탭을 선택하십시오. 
+2. **활성 및 알림** 또는 **액세스 사용 안함** 중에서 상태를 택하십시오. 
+3. **로케일 업데이트**를 선택하십시오. 표시된 대화 창의 **파일 업로드** 섹션에서 **업로드**를 선택한 후 로케일을 정의하는 CSV 파일 위치를 찾아보십시오. 
 
-1. Select your application version from the **Applications** section of the {{ site.data.keys.mf_console }} navigation sidebar, and then select the application **Management** tab.
-2. Select the status **Active and Notifying** or **Access Disabled**.
-3. Select **Update Locales**. In the **Upload File** section of the displayed dialog window, select **Upload**, and browse to the location of a CSV file that defines the locales.
-
-   Each line in the CSV file contains a pair of comma-separated strings. The first string is the locale code (such as fr-FR for French (France) or en for English), and the second string is the message text in the corresponding language. The specified locale codes must comply with the standards that the mobile operating system uses to specify locales, such as ISO 639-1, ISO 3166-2, and ISO 15924.
+   CSV 파일의 각 행에는 쉼표로 구분된 문자열 쌍이 포함되어 있습니다. 첫 번째 문자열은 로케일 코드(예: 프랑스어(프랑스)의 경우 fr-FR, 영어의 경우 en)이고 두 번째 문자열은 해당 언어로 된 메시지 텍스트입니다. 지정된 로케일 코드는 모바일 운영 체제에서 로케일을 지정하는 데 사용하는 표준(예: ISO 639-1, ISO 3166-2, ISO 15924)을 준수해야 합니다. 
     
-   > **Note:** To create the CSV file, you must use an editor that supports UTF-8 encoding, such as Notepad.
+   > **참고:** CSV 파일을 작성하려면 메모장과 같이 UTF-8 인코딩을 지원하는 편집기를 사용해야 합니다. 
 
-   Following is a sample CSV file that defines the same message for multiple locales:
+   다음은 동일한 메시지를 다중 로케일로 정의하는 샘플 CSV 파일입니다. 
 
    ```xml
    en,Your application is disabled
@@ -145,60 +143,60 @@ Follow the outlined procedure to configure multiple languages for displaying the
    he,האפליקציה חסמומה
    ```
 
-4. In the **Verify notification message** section, you can see a table of the locale codes and messages from your CSV file. Verify the messages, and select **OK**. 
-You can select Edit, at any time, to replace the locales CSV file. You can also use this option to upload an empty CSV file to remove all locales.
-5. Select **Save** to apply your changes.
+4. **알림 메시지 확인** 섹션에서 CSV 파일의 로케일 코드와 메시지 테이블을 확인할 수 있습니다. 메시지를 확인한 후 **확인**을 선택하십시오.
+언제든지 편집을 선택하여 로케일 CSV 파일을 대체할 수 있습니다. 또한 이 옵션을 사용해서 비어 있는 CSV 파일을 업로드하여 모든 로케일을 제거할 수 있습니다. 
+5. 변경사항을 적용하려면 **저장**을 선택하십시오. 
 
-The localized notification message is displayed on the user's mobile device, according to the locale of the device. If no message was configured for the device locale, the default message that you provided is displayed.
+디바이스의 로케일에 따라 사용자의 모바일 디바이스에 자국어로 지원된 알림 메시지가 표시됩니다. 디바이스 로케일에 맞게 구성된 메시지가 없는 경우에는 사용자가 제공한 기본 메시지가 표시됩니다. 
 
-## Application status and token licensing
+## 애플리케이션 상태 및 토큰 라이센싱
 {: #application-status-and-token-licensing }
-You must manually restore the correct application status in {{ site.data.keys.mf_console }} after Blocked status because of insufficient tokens.
+충분하지 않은 토큰으로 인한 Blocked 상태 후 {{site.data.keys.mf_console }}에서 올바른 애플리케이션 상태를 수동으로 복원해야 합니다. 
 
-If you use token licensing and you no longer have enough license tokens for an application, the application status of all versions of the application changes to **Blocked**. You are no longer able to change the status of any version of the application. The following message is displayed in {{ site.data.keys.mf_console }}:
+토큰 라이센싱을 사용하고 애플리케이션에 사용할 충분한 라이센스 토큰이 더 이상 없는 경우에는 모든 애플리케이션 버전의 애플리케이션 상태가 **Blocked**로 변경됩니다. 애플리케이션 버전의 상태를 더 이상 변경할 수 없습니다. {{site.data.keys.mf_console }}에 다음 메시지가 표시됩니다. 
 
 ```bash
 The application got blocked because its license expired
 ```
 
-If later enough tokens to run the application become free or your organization purchases more tokens, the following message is displayed in {{ site.data.keys.mf_console }}:
+나중에 애플리케이션을 실행하는 데 충분한 토큰이 사용 가능해지거나 조직에서 추가 토큰을 구입하는 경우 다음 메시지가 {{site.data.keys.mf_console }}에 표시됩니다. 
 
 ```bash
 The application got blocked because its license expired but a license is available now
 ```
 
-The display status is still **Blocked**. You must restore the correct current status manually from memory or your own records by editing the Status field. {{ site.data.keys.product }} does not manage the display of **Blocked** status in {{ site.data.keys.mf_console }} of an application that was blocked because of insufficient license tokens. You are responsible for restoring such a blocked application to a real status that can be displayed through {{ site.data.keys.mf_console }}.
+표시 상태는 여전히 **Blocked**입니다. 상태 필드를 편집하여 메모리 또는 사용자 고유 레코드에서 수동으로 올바른 현재 상태를 복원해야 합니다. {{site.data.keys.product }}은 충분하지 않은 라이센스 토큰으로 인해 차단된 애플리케이션의 {{site.data.keys.mf_console }}에서 **Blocked** 상태의 표시를 관리하지 않습니다. 사용자가 {{site.data.keys.mf_console }}을 통해 표시할 수 있는 실제 상태로 차단된 애플리케이션을 복원해야 합니다. 
 
-## Error log of operations on runtime environments
+## 런타임 환경에서 조작의 오류 로그
 {: #error-log-of-operations-on-runtime-environments }
-Use the error log to access failed management operations initiated from {{ site.data.keys.mf_console }} or the command line on the selected runtime environment, and to see the effect of the failure on the servers.
+오류 로그를 사용하여 선택된 런타임 환경의 명령행 또는 {{site.data.keys.mf_console }}에서 시작된 실패한 관리 조작에 액세스하고 실패가 서버에 미치는 영향을 확인할 수 있습니다. 
 
-When a transaction fails, the status bar displays a notification of the error and shows a link to the error log. Use the error log to have more detail about the error, for example, the status of each server with a specific error message, or to have a history of errors. The error log shows the most recent operation first.
+트랜잭션에 실패하면 상태 표시줄에 오류 알림이 표시되고 오류 로그에 대한 링크가 표시됩니다. 오류에 대한 추가 세부사항(예: 특정 오류 메시지가 포함된 각 서버의 상태) 또는 오류의 히스토리를 보려면 오류 로그를 사용하십시오. 오류 로그에는 최근 조작이 먼저 표시됩니다. 
 
-You access the error log by clicking **Error log** of a runtime environment in {{ site.data.keys.mf_console }}.
+{{site.data.keys.mf_console }}에서 런타임 환경의 **오류 로그**를 클릭하여 오류 로그에 액세스합니다. 
 
-Expand the row that refers to the failed operation to access more information about the current state of each server. To access the complete log, download the log by clicking **Download log**.
+실패한 조작을 나타내는 행을 펼쳐 각 서버의 현재 상태에 대한 자세한 정보에 액세스할 수 있습니다. 전체 로그에 액세스하려면 **로그 다운로드**를 클릭하여 로그를 다운로드하십시오. 
 
-![error log in the console](error-log.png)
+![콘솔의 오류 로그](error-log.png)
 
-## Audit log of administration operations
+## 관리 조작의 감사 로그
 {: #audit-log-of-administration-operations }
-In the {{ site.data.keys.mf_console }}, you can refer to an audit log of administration operations.
+{{site.data.keys.mf_console }}에서 관리 조작의 감사 로그를 참조할 수 있습니다. 
 
-{{ site.data.keys.mf_console }} provides access to an audit log for login, logout, and all administration operations, such as deploying apps or adapters or locking apps. The audit log can be disabled by setting the **mfp.admin.audit** Java Naming and Directory Interface (JNDI) property on the web application of the {{ site.data.keys.product_adj }} administration service to **false**.
+{{site.data.keys.mf_console }}은 로그인, 로그아웃, 모든 관리 조작(앱 또는 어댑터 배치, 앱 잠금 등)의 감사 로그에 대한 액세스를 제공합니다. {{site.data.keys.product_adj }} 관리 서비스의 웹 애플리케이션에서 **mfp.admin.audit** JNDI(Java Naming and Directory Interface) 특성을 **false**로 설정하여 감사 로그를 사용 안함으로 설정할 수 있습니다. 
 
-To access the audit log, click the user name in the header bar and select **About**, click **Additional support information**, and then **Download audit log**.
+감사 로그에 액세스하려면 헤더 표시줄에서 사용자 이름을 클릭하고 **정보**를 선택한 다음 **추가 지원 정보**를 클릭한 후 **감사 로그 다운로드**를 클릭하십시오. 
 
-| Field name | Description | 
+| 필드 이름  | 설명        | 
 |------------|-------------|
-| Timestamp	 | Date and time when the record was created. |
-| Type	     | The type of operation. See list of operation types below for the possible values. |
-| User	     | The **username** of the user who is signed in. |
-| Outcome	 | The outcome of the operation; possible values are SUCCESS, ERROR, PENDING. |
-| ErrorCode	 | If the outcome is ERROR, ErrorCode indicates what the error is. |
-| Runtime	 | Name of the {{ site.data.keys.product_adj }} project that is associated with the operation. |
+| Timestamp	 | 레코드가 작성된 날짜 및 시간입니다. |
+| Type	     | 조작의 유형입니다. 가능한 값은 아래의 조작 유형 목록을 참조하십시오. |
+| User	     | 로그인한 사용자의 **사용자 이름**입니다. |
+| Outcome	 | 조작의 결과입니다. 가능한 값은 SUCCESS, ERROR, PENDING입니다. |
+| ErrorCode	 | 결과가 ERROR인 경우 ErrorCode는 오류 내용을 표시합니다. |
+| Runtime	 | 조작과 연관된 {{site.data.keys.product_adj }} 프로젝트의 이름입니다. |
 
-The following list shows the possible values of Type of operation.
+다음 목록은 조작 유형의 가능한 값을 표시합니다. 
 
 * Login
 * Logout

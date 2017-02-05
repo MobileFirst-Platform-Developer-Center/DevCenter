@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Developing for Android
+title: Android용 개발
 show_disqus: false
 use_dropdown: false
 print_pdf: false
@@ -9,46 +9,46 @@ indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-Develop your Android applications by following the tutorials bellow: set-up your development environment, experience the product and add value by integrating with {{ site.data.keys.product }} 8.0 offerings.<br/><br/>
+아래의 학습서에 따라 Android 애플리케이션을 개발하십시오. {{ site.data.keys.product }} 8.0 오퍼링과 통합하여 개발 환경을 설정하고 제품을 경험하고 가치를 추가하십시오. <br/><br/>
 
 <div id="container">
     <div class="row">
         <div id="categoryBoxes">
-            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
+            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="인라인 검색 필드" action="{{site.baseurl}}/search/" method="get">
                 <div class="input-group add-on">
-                    <input style="width: 206px" id="search-input" aria-label="search field" type="text" class="form-control" placeholder="Search for..." name="q">
+                    <input style="width: 206px" id="search-input" aria-label="검색 필드" type="text" class="form-control" placeholder="검색..." name="q">
                 </div>
             </form>
 
             <div class="col-md-3">
                 <a href="#start-here">
                     <div class="categoryBox-start-here hidden-xs hidden-md">
-                        <img alt="tutorials navigation image"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
-                        Start Here
+                        <img alt="학습서 탐색 이미지"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
+                        여기서 시작
                     </div>
                 </a>
             </div>
             <div class="col-md-3">
                 <a href="#get-sdk-and-apis">
                     <div class="categoryBox-sdk hidden-xs hidden-md">
-                        <img alt="tutorials navigation image"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
-                        Use SDKs &amp; APIs
+                        <img alt="학습서 탐색 이미지"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
+                        SDK 및 API 사용
                     </div>
                 </a>
             </div>
             <div class="col-md-3">
                 <a href="#implement-authentication-and-security">
                     <div class="categoryBox-security hidden-xs hidden-md">
-                        <img alt="tutorials navigation image"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
-                        Add Security
+                        <img alt="학습서 탐색 이미지"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
+                        보안 추가
                     </div>
                 </a>
             </div>
             <div class="col-md-3">
                 <a href="#measure-and-engage">
                     <div class="categoryBox-more hidden-xs hidden-md">
-                        <img alt="tutorials navigation image"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
-                        Measure &amp; Engage
+                        <img alt="학습서 탐색 이미지"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
+                        측정 및 계약
                     </div>
                 </a>
             </div>
@@ -59,206 +59,206 @@ Develop your Android applications by following the tutorials bellow: set-up your
 <div id="tutorials-list">
     <hr/>
 
-    <h2><a href="../product-overview/">Product Overview</a></h2>
-    Learn about the {{ site.data.keys.product }} offering.
+    <h2><a href="../product-overview/">제품 개요</a></h2>
+    {{ site.data.keys.product }} 오퍼링에 대해 학습합니다.
 
     <ul>
-        <li><a href="../product-overview/capabilities">Main Capabilities</a></li>
-        <li><a href="../product-overview/components">Product Components</a></li>
-        <li><a href="../product-overview/requirements">System Requirements</a></li>
-        <li><a href="../product-overview/licensing">Licensing in {{ site.data.keys.mf_server }}</a></li>
-        <li><a href="../product-overview/features-matrix">Matrix of features and platforms</a></li>
-        <li><a href="../product-overview/accessibility">Accessibility features for {{ site.data.keys.product_full }}</a></li>
-        <li><a href="../product-overview/release-notes">Release Notes</a></li>
+        <li><a href="../product-overview/capabilities">기본 기능</a></li>
+        <li><a href="../product-overview/components">제품 컴포넌트</a></li>
+        <li><a href="../product-overview/requirements">시스템 요구사항</a></li>
+        <li><a href="../product-overview/licensing">{{ site.data.keys.mf_server }}에서 라이센싱</a></li>
+        <li><a href="../product-overview/features-matrix">기능 및 플랫폼의 매트릭스</a></li>
+        <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full}}의 내게 필요한 옵션 기능</a></li>
+        <li><a href="../product-overview/release-notes">릴리스 정보</a></li>
     </ul>
 
-    <h2><a href="../installation-configuration">Installation and Configuration</a></h2>
-    Set up your development environment to work with {{ site.data.keys.product_full }}.
+    <h2><a href="../installation-configuration">설치 및 구성</a></h2>
+    {{ site.data.keys.product_full }}에 대해 작업할 수 있도록 개발 환경을 설정하십시오.
 
     <ul>
-        <li><a href="../installation-configuration/development/mobilefirst/">Setting up the {{ site.data.keys.product_adj }} development environment</a></li>
-        <li><a href="../installation-configuration/development/android/">Setting up the Android development environment</a></li>
-        <li><a href="../product-overview/components/console/">Using the {{ site.data.keys.mf_console }}</a></li>
+        <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} 개발 환경 설정</a></li>
+        <li><a href="../installation-configuration/development/android/">Android 개발 환경 설정</a></li>
+        <li><a href="../product-overview/components/console/">{{ site.data.keys.mf_console }} 사용</a></li>
     </ul>
 
     <hr id="start-here"/>
-    <h2><a href="../quick-start/">Quick Start</a></h2>
-    Get a feel of {{ site.data.keys.product }}.
+    <h2><a href="../quick-start/">빠른 시작</a></h2>
+    {{ site.data.keys.product }}의 느낌을 얻으십시오.
 
     <ul>
-        <li><a href="../quick-start/android/">Quick Start with Android</a></li>
+        <li><a href="../quick-start/android/">Android로 빠른 시작</a></li>
     </ul>
 
-    <h2><a href="../application-development/sdk">Adding the {{ site.data.keys.product_adj }} SDK</a></h2>
-    Add the {{ site.data.keys.product }} SDK to your Cordova or Native iOS, Android, Windows 8.1 Universal or Windows 10 UWP application.
+    <h2><a href="../application-development/sdk">{{ site.data.keys.product_adj }} SDK 추가</a></h2>
+    {{ site.data.keys.product }} SDK를 Cordova 또는 기본 iOS, Android, Windows 8.1 Universal 또는 Windows 10 UWP 애플리케이션에 추가하십시오.
 
     <ul>
-        <li><a href="../application-development/sdk/android/">Adding the {{ site.data.keys.product }} SDK to Android applications</a></li>
+        <li><a href="../application-development/sdk/android/">{{ site.data.keys.product }} SDK를 Android 애플리케이션에 추가</a></li>
     </ul>
 
     <hr id="get-sdk-and-apis"/>
 
-    <h2><a href="../application-development">Developing Applications</a></h2>
-    Learn to use {{ site.data.keys.product_adj }} APIs: JSONStore, WLResourceRequest, Developer CLI
+    <h2><a href="../application-development">애플리케이션 개발</a></h2>
+    {{ site.data.keys.product_adj }} API 사용법 학습: JSONStore, WLResourceRequest, Developer CLI
 
     <ul>
-        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Using {{ site.data.keys.mf_cli }} to manage {{ site.data.keys.product_adj }} artifacts</a></li>
-        <li><a href="../application-development/resource-request/android/">Resource request from Android applications</a></li>
-        <li><a href="../application-development/jsonstore/android/">JSONStore in Android applications</a></li>
-        <li>Client-side log collection
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">{{ site.data.keys.mf_cli }}를 사용하여 {{ site.data.keys.product_adj }} 아티팩트 관리</a></li>
+        <li><a href="../application-development/resource-request/android/">Android 애플리케이션에서 자원 요청</a></li>
+        <li><a href="../application-development/jsonstore/android/">Android 애플리케이션의 JSONStore</a></li>
+        <li>클라이언트 측 로그 콜렉션
             <ul>
-                <li><a href="../application-development/client-side-log-collection/">Overview of client-side log collection</a></li>
-            	<li><a href="../application-development/client-side-log-collection/android/">Log collection in Android applications</a></li>
+                <li><a href="../application-development/client-side-log-collection/">클라이언트 측 로그 콜렉션 개요</a></li>
+            	<li><a href="../application-development/client-side-log-collection/android/">Android 애플리케이션의 로그 콜렉션</a></li>
             </ul>
         </li>
-        <li><a href="../application-development/live-update/">Live Update</a></li>
-        <li><a href="../application-development/simple-data-sharing/">Simple Data Sharing</a></li>
+        <li><a href="../application-development/live-update/">활성 업데이트</a></li>
+        <li><a href="../application-development/simple-data-sharing/">단순 데이터 공유</a></li>
     </ul>
 
-    <h2><a href="../adapters/">Developing Adapters</a></h2>
-    Develop server-side code to integrate with enterprise back-end systems and cloud services.
+    <h2><a href="../adapters/">어댑터 개발</a></h2>
+    엔터프라이즈 백엔드 시스템 및 클라우드 서비스와 통합하는 서버 측 코드를 개발하십시오.
 
     <ul>
-        <li><a href="../adapters/">Adapters overview</a></li>
-        <li><a href="../adapters/creating-adapters/">Creating Java and JavaScript adapters</a></li>
-        <li><a href="../adapters/javascript-adapters/">JavaScript adapters</a>
+        <li><a href="../adapters/">어댑터 개요</a></li>
+        <li><a href="../adapters/creating-adapters/">Java 및 JavaScript 어댑터 작성</a></li>
+        <li><a href="../adapters/javascript-adapters/">JavaScript 어댑터</a>
             <ul>
-                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP 어댑터</a>
                     <ul>
-                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">Using SSL in JavaScript HTTP Adapters</a></li>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">JavaScript HTTP 어댑터에서 SSL 사용</a></li>
                     </ul>
                 </li>
-                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
-                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">Using Java in JavaScript Adapters</a></li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL 어댑터</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">JavaScript 어댑터에서 Java 사용</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/java-adapters/">Java Adapters</a>
+        <li><a href="../adapters/java-adapters/">Java 어댑터</a>
             <ul>
-                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP adapter</a></li>
-                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL adapter</a></li>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP 어댑터</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL 어댑터</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/developing-adapters/">Developing Adapters in IDEs</a></li>
-        <li><a href="../adapters/testing-and-debugging-adapters/">Testing and debugging adapters</a></li>
-        <li>Server-side log collection
+        <li><a href="../adapters/developing-adapters/">IDE에서 어댑터 개발</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">어댑터 테스트 및 디버깅</a></li>
+        <li>서버 측 로그 콜렉션
             <ul>
-                <li><a href="../adapters/server-side-log-collection/">Overview of server-side log collection</a></li>
-                <li><a href="../adapters/server-side-log-collection/java-adapter/">Log collection in Java adapters</a></li>
-                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Log collection in JavaScript adapters</a></li>
+                <li><a href="../adapters/server-side-log-collection/">서버 측 로그 콜렉션 개요</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Java 어댑터의 로그 콜렉션</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">JavaScript 어댑터의 로그 콜렉션</a></li>
             </ul>
         </li>
-        <li><a href="../adapters/advanced-adapter-usage-mashup/">Advanced adapter usage and mashup</a></li>
-        <li><a href="../adapters/cloudant/">Integrating with Cloudant using an adapter</a></li>
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">고급 어댑터 사용법 및 매시업</a></li>
+        <li><a href="../adapters/cloudant/">어댑터를 사용하여 Cloudant와 통합</a></li>
     </ul>
 
     <hr id="implement-authentication-and-security"/>
 
-    <h2><a href="../authentication-and-security">Authentication and Security</a></h2>
-    Add various layers of protection to your applications.
+    <h2><a href="../authentication-and-security">인증 및 보안</a></h2>
+    애플리케이션에 다양한 보호 계층을 추가하십시오.
 
     <ul>
-        <li><a href="../authentication-and-security/">Authorization concepts</a></li>
-        <li><a href="../authentication-and-security/creating-a-security-check/">Creating a Security Check</a>
+        <li><a href="../authentication-and-security/">권한 개념</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">보안 검사 작성</a>
             <ul>
-                <li><a href="../authentication-and-security/creating-a-security-check/contract">The Security Check Contract</a></li>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">보안 검사 규약</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
             <ul>
-                <li><a href="../authentication-and-security/credentials-validation/security-check/">Implementing the security check</a></li>
-                <li><a href="../authentication-and-security/credentials-validation/android/">Implementing the challenge handler in Android applications</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">보안 검사 구현</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/android/">Android 애플리케이션에서 인증 확인 핸들러 구현</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
             <ul>
-                <li><a href="../authentication-and-security/user-authentication/security-check/">Implementing the security check</a></li>
-                <li><a href="../authentication-and-security/user-authentication/android/">Implementing the challenge handler in Android applications</a></li>
+                <li><a href="../authentication-and-security/user-authentication/security-check/">보안 검사 구현</a></li>
+                <li><a href="../authentication-and-security/user-authentication/android/">Android 애플리케이션에서 인증 확인 핸들러 구현</a></li>
             </ul>
         </li>
         <li><a href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a></li>
-        <li><a href="../authentication-and-security/step-up/">Step Up Authentication</a></li>
-        <li><a href="../authentication-and-security/enrollment/">Enrollment</a></li>
-        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA Security Check</a></li>
-        <li><a href="../authentication-and-security/confidential-clients/">Confidential Clients</a></li>
-        <li><a href="../authentication-and-security/protecting-external-resources/">Protecting External Resources</a>
+        <li><a href="../authentication-and-security/step-up/">인증 강화</a></li>
+        <li><a href="../authentication-and-security/enrollment/">등록</a></li>
+        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA 보안 검사</a></li>
+        <li><a href="../authentication-and-security/confidential-clients/">기밀 클라이언트</a></li>
+        <li><a href="../authentication-and-security/protecting-external-resources/">외부 자원 보호</a>
             <ul>
-                <li><a href="../authentication-and-security/protecting-external-resources/tai">Trust Association Interceptor</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java Token Validation</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js Validation</a></li>
-                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET Message Inspector</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">신뢰 연관 인터셉터</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java 토큰 유효성 검증</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js 유효성 검증</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET 메시지 검사기</a></li>
             </ul>
         </li>
-        <li><a href="../authentication-and-security/application-authenticity/">Application Authenticity</a></li>
-        <li><a href="../authentication-and-security/device-sso/">Configuring Device Single Sign-On</a></li>
-        <li><a href="../authentication-and-security/certificate-pinning/">Certificate Pinning</a></li>
-        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Configuring the {{ site.data.keys.mf_server }} Keystore</a></li>
+        <li><a href="../authentication-and-security/application-authenticity/">애플리케이션 인증</a></li>
+        <li><a href="../authentication-and-security/device-sso/">디바이스 싱글 사인온 구성</a></li>
+        <li><a href="../authentication-and-security/certificate-pinning/">인증서 고정</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">{{ site.data.keys.mf_server }} 키 저장소 구성</a></li>
     </ul>
 
     <hr id="measure-and-engage"/>
 
-    <h2><a href="../notifications">Notifications</a></h2>
-    Send notifications with {{ site.data.keys.product_full }}.
+    <h2><a href="../notifications">알림</a></h2>
+    {{ site.data.keys.product_full }}에서 알림을 보내십시오.
 
     <ul>
-        <li><a href="../notifications/">Notifications Overview</a></li>
-        <li><a href="../notifications/sending-notifications/">Sending Notifications</a></li>
-        <li><a href="../notifications/handling-push-notifications/android/">Handling Push Notifications in Android applications</a></li>
-        <li><a href="../notifications/handling-sms-notifications/android/">Handling SMS Notifications in Android applications</a></li>
-        <li><a href="../notifications/analytics/">Setting Up Analytics Support for Push Notifications</a></li>
-        <li><a href="../notifications/rest-apis/">Push Service REST APIs </a></li>
+        <li><a href="../notifications/">알림 개요</a></li>
+        <li><a href="../notifications/sending-notifications/">알림 전송</a></li>
+        <li><a href="../notifications/handling-push-notifications/android/">Android 애플리케이션에서 푸시 알림 처리</a></li>
+        <li><a href="../notifications/handling-sms-notifications/android/">Android 애플리케이션에서 SMS 알림 처리</a></li>
+        <li><a href="../notifications/analytics/">푸시 알림에 대한 분석 지원 설정</a></li>
+        <li><a href="../notifications/rest-apis/">푸시 서비스 REST API</a></li>
     </ul>
 
     <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
-    Monitor deployed applications and adapters, gain insight on application usage, find out about errors in the wild and more.
+    배치된 애플리케이션 및 어댑터를 모니터하고, 애플리케이션에 대한 통찰을 얻고, 오류를 찾는 등의 작업을 수행하십시오.
 
     <ul>
-        <li><a href="../analytics">Introduction to {{ site.data.keys.mf_analytics_full }}</a></li>
-        <li><a href="../analytics/analytics-api/">Using Analytics API in client applications</a></li>
-        <li><a href="../analytics/analytics-rest-api/">Using Analytics REST API</a></li>
-        <li><a href="../analytics/console/custom-charts/">Creating Custom Charts</a></li>
-        <li><a href="../analytics/console/alerts/">Managing Alerts</a></li>
-        <li><a href="../analytics/console/log-filters/">Configuring Log Filters</a></li>
-        <li><a href="../analytics/console/scenario-loader/">Scenario Loader</a></li>
-        <li><a href="../analytics/console/push-notifications/">Push Notifications</a></li>
-        <li><a href="../analytics/console/analytics-data-purge/">Data Retention and Purging</a></li>
-        <li><a href="../analytics/workflows/">Analytics Workflows</a></li>
+        <li><a href="../analytics">{{ site.data.keys.mf_analytics_full }} 소개</a></li>
+        <li><a href="../analytics/analytics-api/">클라이언트 애플리케이션에서 분석 API 사용</a></li>
+        <li><a href="../analytics/analytics-rest-api/">분석 REST API 사용</a></li>
+        <li><a href="../analytics/console/custom-charts/">사용자 정의 차트 작성</a></li>
+        <li><a href="../analytics/console/alerts/">경보 관리</a></li>
+        <li><a href="../analytics/console/log-filters/">로그 필터 구성</a></li>
+        <li><a href="../analytics/console/scenario-loader/">시나리오 로더</a></li>
+        <li><a href="../analytics/console/push-notifications/">푸시 알림</a></li>
+        <li><a href="../analytics/console/analytics-data-purge/">데이터 유지 및 제거</a></li>
+        <li><a href="../analytics/workflows/">분석 워크플로우</a></li>
     </ul>
 
     <h2><a href="../bluemix">Foundation on Bluemix</a></h2>
-    Deploy {{ site.data.keys.product }} to the cloud using Bluemix.
+    Bluemix를 사용하여 클라우드에 {{ site.data.keys.product }}을 배치하십시오.
 
     <ul>
-        <li><a href="../bluemix/">Introduction to {{ site.data.keys.product_full }} on Bluemix</a></li>
-        <li><a href="../bluemix/using-mobile-foundation/">Create a {{ site.data.keys.mf_server }} instance using the Mobile Foundation Bluemix service</a></li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the {{ site.data.keys.mf_server }} on IBM Containers using Scripts on IBM Container Service</a>
+        <li><a href="../bluemix/">{{ site.data.keys.product_full }} on Bluemix 소개</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Mobile Foundation Bluemix 서비스를 사용하여 {{ site.data.keys.mf_server }} 인스턴스 작성</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">IBM Container Service에서 스크립트를 사용하여 IBM Containers에 대해 {{ site.data.keys.mf_server }} 설정</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Log and trace collection</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">로그 및 추적 콜렉션</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">컨테이너 보안</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">문제점 해결</a></li>
             </ul>
         </li>
-        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Setting Up the {{ site.data.keys.mf_server }} on Bluemix using Scripts on Liberty for Java</a>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Liberty for Java에서 스크립트를 사용하여 Bluemix에 대해 {{ site.data.keys.mf_server }} 설정</a>
             <ul>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Securing containers</a></li>
-                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Troubleshooting</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">컨테이너 보안</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">문제점 해결</a></li>
             </ul>
         </li>
     </ul>
 
-    <h2><a href="../troubleshooting/">Troubleshooting common problems</a></h2>
-    Frequently asked questions and answers.
+    <h2><a href="../troubleshooting/">공통 문제점 해결</a></h2>
+    자주 묻는 질문과 응답입니다.
 
     <ul>
-        <li><a href="../troubleshooting/notifications">Push Notifications</a></li>
+        <li><a href="../troubleshooting/notifications">푸시 알림</a></li>
         <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
-        <li><a href="../troubleshooting/analytics">Analytics</a></li>
+        <li><a href="../troubleshooting/analytics">분석</a></li>
     </ul>
 
-    <h2><a href="../../../product-integration/8.0">Product integration</a></h2>
-    Integrate {{ site.data.keys.product }} 8.0 apps with other IBM products
+    <h2><a href="../../../product-integration/8.0">제품 통합</a></h2>
+    {{ site.data.keys.product }} 8.0 앱을 다른 IBM 제품과 통합
 
     <ul>
-        <li><a href="../../../product-integration/8.0">List of available product integrations</a></li>
+        <li><a href="../../../product-integration/8.0">사용 가능한 제품 통합 목록</a></li>
     </ul>
     <br/>
 </div>

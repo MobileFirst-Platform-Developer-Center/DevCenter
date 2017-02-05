@@ -1,185 +1,183 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation on Bluemix service
-breadcrumb_title: Mobile Foundation service
+title: Mobile Foundation on Bluemix 서비스 사용
+breadcrumb_title: Mobile Foundation 서비스
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-This tutorial provides step-by-step instructions to set up a {{ site.data.keys.mf_server }} instance on Bluemix by using the {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) service.  
-{{ site.data.keys.mf_bm_short }} is a Bluemix service that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
+이 학습서에서는 {{site.data.keys.mf_bm_full }}(**{{site.data.keys.mf_bm_short }}**) 서비스를 사용하여 Bluemix에 {{site.data.keys.mf_server }} 인스턴스를 설정하는 단계별 지시사항을 제공합니다.   
+{{site.data.keys.mf_bm_short }}은 **Liberty for Java 런타임**에 MobileFirst Foundation v8.0의 확장 가능한 개발자 환경과 프로덕션 환경을 빠르고 간편하게 설정할 수 있는 Bluemix 서비스입니다. 
 
-The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
+{{site.data.keys.mf_bm_short }} 서비스는 다음과 같은 플랜 옵션을 제공합니다. 
 
-1. **Developer**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime. The plan does not support the use of external databases or define multiple nodes *and is restricted to development and testing only*. The server instance allows you to register any number of Mobile application for development and testing.
+1. **Developer**: 이 플랜은 {{site.data.keys.mf_server }}를 Liberty for Java 런타임의 Cloud Foundry 앱으로 프로비저닝합니다. 이 플랜은 외부 데이터베이스의 사용 또는 다중 노드 정의를 지원하지 않으며 *개발과 테스트에만 사용되도록 제한됩니다*. 서버 인스턴스를 사용해 개발과 테스트에 사용할 모바일 애플리케이션을 개수에 상관 없이 등록할 수 있습니다. 
 
-    > **Note:** the Developer plan does not offer a persistent database, as such be sure to backup your configuration as explained [in the Troubleshooting section](#troubleshooting).
+    > **참고:** Developer 플랜에서는 지속적 데이터베이스를 제공하지 않으므로 [문제점 해결 섹션](#troubleshooting)에 설명된 대로 구성을 백업하십시오.
 
-2. **Developer Pro**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a {{ site.data.keys.mf_analytics_server }}, deployed on IBM Containers. The Container charges are billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment.
+2. **Developer Pro**: 이 플랜은 {{site.data.keys.mf_server }}를 Liberty for Java 런타임의 Cloud Foundry 앱으로 프로비저닝하며 사용자는 이 플랜을 사용해 개수에 상관 없이 여러 모바일 애플리케이션을 개발하고 테스트할 수 있습니다. 이 플랜을 사용하려면 **dashDB OLTP 서비스**가 있어야 합니다. dashDB 서비스는 별도로 작성되고 청구됩니다. 선택적으로 IBM Containers에 배치된 {{site.data.keys.mf_analytics_server }}를 추가할 수 있습니다. 컨테이너 비용은 별도로 청구됩니다. 이 플랜은 크기가 제한되어 있으며 프로덕션이 아닌 팀 기반 개발 활동과 테스트 활동에 사용됩니다. 비용은 환경의 전체 크기에 따라 다릅니다. 
 
-3. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a {{ site.data.keys.mf_analytics_server }}, deployed on IBM Containers. The Container charges are billed separately. Charges depend on the total size of your environment.
+3. **Professional(용량별):** 이 플랜을 사용하면 모바일 사용자 또는 디바이스의 수에 상관 없이 프로덕션에서 여러 모바일 애플리케이션을 빌드하고 테스트하며 실행할 수 있습니다. 이 플랜은 대규모 배치와 고가용성을 지원합니다. 이 플랜을 사용하려면 **dashDB OLTP 서비스**가 있어야 합니다. dashDB 서비스는 별도로 작성되고 청구됩니다. 선택적으로 IBM Containers에 배치된 {{site.data.keys.mf_analytics_server }}를 추가할 수 있습니다. 컨테이너 비용은 별도로 청구됩니다. 비용은 환경의 전체 크기에 따라 다릅니다. 
 
-4. **Professional 1 Application**: This plan provisions a {{ site.data.keys.mf_server }} in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
+4. **Professional(단일 애플리케이션)**: 이 플랜은 Liberty for Java 런타임의 Cloud Foundry 앱에 {{site.data.keys.mf_server }}를 프로비저닝합니다. 또한 이 플랜을 사용하려면 별도로 작성되고 청구되는 dashDB 데이터베이스 서비스가 필요합니다. 이 플랜을 사용하면 단일 모바일 애플리케이션을 빌드하고 관리할 수 있습니다. 단일 모바일 애플리케이션은 iOS, Android, Windows, Mobile Web과 같은 다중 플레이버로 구성될 수 있습니다. 
 
-> [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
+> 사용 가능한 플랜과 해당 청구에 대한 자세한 정보는 [Bluemix.net의 서비스 페이지](https://console.ng.bluemix.net/catalog/services/mobile-foundation/)를 참조하십시오.
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to}
-* [Setting up the {{ site.data.keys.mf_bm_short }} service](#setting-up-the-mobile-foundation-service)
-* [Using the {{ site.data.keys.mf_bm_short }} service](#using-the-mobile-foundation-service)
-* [Server configuration](#server-configuration)
-* [Advanced server configuration](#advanced-server-configuration)
-* [Adding Analytics support](#adding-analytics-support)
-* [Applying {{ site.data.keys.mf_server }} fixes](#applying-mobilefirst-server-fixes)
-* [Accessing server logs](#accessing-server-logs)
-* [Troubleshooting](#troubleshooting)
-* [Further reading](#further-reading)
+* [{{site.data.keys.mf_bm_short }} 서비스 설정](#setting-up-the-mobile-foundation-service)
+* [{{site.data.keys.mf_bm_short }} 서비스 사용](#using-the-mobile-foundation-service)
+* [서버 구성](#server-configuration)
+* [고급 서버 구성](#advanced-server-configuration)
+* [Analytics 지원 추가](#adding-analytics-support)
+* [{{site.data.keys.mf_server }} 수정사항 적용](#applying-mobilefirst-server-fixes)
+* [서버 로그에 액세스](#accessing-server-logs)
+* [문제점 해결](#troubleshooting)
+* [추가 정보](#further-reading)
 
-## Setting up the {{ site.data.keys.mf_bm_short }} service
+## {{site.data.keys.mf_bm_short }} 서비스 설정
 {: #setting-up-the-mobile-foundation-service }
-To set up the available plans, first follow these steps:
+사용 가능한 플랜을 설정하려면 먼저 다음 단계를 수행하십시오. 
 
-1. Load [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
-2. Search for **Mobile Foundation** and click on the resulting tile option.
-3. *Optional*. Enter a custom name for the service instance, or use the default provided name.
-4. Select the desired pricing plan, then click **Create**.
+1. [bluemix.net](http://bluemix.net)을 로드하고 로그인한 후 **카탈로그**를 클릭하십시오. 
+2. **Mobile Foundation**을 검색하고 바둑판식 옵션이 표시되면 클릭하십시오. 
+3. *선택사항*. 서비스 인스턴스의 사용자 정의 이름을 입력하거나 기본 제공된 이름을 사용하십시오. 
+4. 원하는 가격 책정 플랜을 선택한 후 **작성**을 클릭하십시오. 
 
-    <img class="gifplayer" alt="Creating a {{ site.data.keys.mf_bm_short }} service instance" src="service-creation.png"/>
+    <img class="gifplayer" alt=" {{site.data.keys.mf_bm_short }} 서비스 인스턴스 작성" src="service-creation.png"/>
 
-### Setting up the *developer* plan
+### *Developer* 플랜 설정
 {: #setting-up-the-developer-plan }
-1. Start the {{ site.data.keys.mf_server }}.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
+1. {{site.data.keys.mf_server }}를 시작하십시오. 
+    - 서버 구성을 기본 레벨로 유지하고 **기본 서버 시작**을 클릭할 수 있습니다. 또는
+    - [설정 탭](#advanced-server-configuration)에서 서버 구성을 업데이트하고 **고급 서버 시작**을 클릭할 수 있습니다. 
 
-    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+    이 단계 중에 Cloud Foundry 앱이 {{site.data.keys.mf_bm_short }} 서비스에 사용하도록 생성되고 MobileFirst Foundation 환경은 초기화 중입니다. 이 단계를 수행하는 데 5 - 10분 정도 걸릴 수 있습니다. 
 
-2. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
+2. 인스턴스가 준비되면 [서비스를 사용](#using-the-mobile-foundation-service)할 수 있습니다. 
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
+    ![{{site.data.keys.mf_bm_short }} 설정 이미지](overview-page.png)
 
-### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
+### *Developer Pro* 플랜, *Professional(용량별)* 플랜, *Professional(단일 애플리케이션)* 플랜 설정
 {: #setting-up-the-developer-pro-professional-percapacity-and-professional-1-application-plans }
-1. These plans require an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/).
+1. 이들 플랜을 사용하려면 외부 [dashDB 트랜잭션 데이터베이스 인스턴스](https://console.ng.bluemix.net/catalog/services/dashdb/)가 필요합니다. 
 
-    > Learn more about [setting up a dashDB database instance]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
+    > [dashDB 데이터베이스 인스턴스 설정]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/)에 대해 자세히 알아보십시오.
 
-    If you have an existing dashDB service instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select the **Use Existing Service** option, and provide your credentials:
+    기존 dashDB 서비스 인스턴스(DashDB Enterprise Transactional 2.8.500 또는 Enterprise Transactional 12.128.1400)가 있는 경우에는 **기존 서비스 사용** 옵션을 선택하고 신임 정보를 제공하십시오. 
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-existing.png)
+    ![{{site.data.keys.mf_bm_short }} 설정 이미지](create-dashdb-instance-existing.png)
 
-    1.b. If you do not currently have a dashDB service instance, select the **Create New Service** option and follow the on-screen instructions:
+    1.b. 현재 dashDB 서비스 인스턴스가 없는 경우에는 **새 서비스 작성** 옵션을 선택하고 화면에 표시되는 지시사항을 수행하십시오. 
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-new.png)
+    ![{{site.data.keys.mf_bm_short }} 설정 이미지](create-dashdb-instance-new.png)
 
-2. Start the {{ site.data.keys.mf_server }}.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
+2. {{site.data.keys.mf_server }}를 시작하십시오. 
+    - 서버 구성을 기본 레벨로 유지하고 **기본 서버 시작**을 클릭할 수 있습니다. 또는
+    - [설정 탭](#advanced-server-configuration)에서 서버 구성을 업데이트하고 **고급 서버 시작**을 클릭할 수 있습니다. 
 
-    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+    이 단계 중에 Cloud Foundry 앱이 {{site.data.keys.mf_bm_short }} 서비스에 사용하도록 생성되고 MobileFirst Foundation 환경은 초기화 중입니다. 이 단계를 수행하는 데 5 - 10분 정도 걸릴 수 있습니다. 
 
-3. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
+3. 인스턴스가 준비되면 [서비스를 사용](#using-the-mobile-foundation-service)할 수 있습니다. 
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
+    ![{{site.data.keys.mf_bm_short }} 설정 이미지](overview-page.png)
 
-## Using the {{ site.data.keys.mf_bm_short }} service
+## {{site.data.keys.mf_bm_short }} 서비스 사용
 {: #using-the-mobile-foundation-service }
-> **Note:** The analytics service is available only in the **Dallas** and **UK** regions at this time.
+> **참고:** 현재 **달라스**와 **영국** 지역에서만 분석 서비스를 사용할 수 있습니다. {{site.data.keys.mf_server }}가 이제 실행 중이므로 다음 대시보드가 표시됩니다. 
 
-With the {{ site.data.keys.mf_server }} now running, you are presented with the following Dashboard:
+![{{site.data.keys.mf_bm_short }} 설정 이미지](service-dashboard.png)
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](service-dashboard.png)
+서버 인스턴스에 {{site.data.keys.mf_analytics }} 지원을 추가하려면 **Analytics 추가**를 클릭하십시오.
+[Analytics 지원 추가](#adding-analytics-support) 섹션에서 자세히 알아보십시오. 
 
-Click on **Add Analytics** to add {{ site.data.keys.mf_analytics }} support to your server instance.
-Learn more in the [Adding Analytics support](#adding-analytics-support) section.
+{{site.data.keys.mf_console }}을 열려면 **콘솔 실행**을 클릭하십시오. 기본 사용자 이름은 "admin"이며 "눈" 아이콘을 클릭하여 비밀번호를 표시할 수 있습니다. 
 
-Click on **Launch Console** to open the {{ site.data.keys.mf_console }}. The default user name is "admin" and the password can be revealed by clicking on the "eye" icon.
+![{{site.data.keys.mf_bm_short }} 설정 이미지](dashboard.png)
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](dashboard.png)
-
-### Server configuration
+### 서버 구성
 {: #server-configuration }
-The basic server instance consists of:
+기본 서버 인스턴스는 다음과 같이 구성됩니다. 
 
-* A single node (server size: "small")
-* 1GB memory
-* 2GB storage capacity
+* 단일 노드(서버 크기: "작음")
+* 1GB 메모리
+* 2GB 스토리지 용량
 
-### Advanced server configuration
+### 고급 서버 구성
 {: #advanced-server-configuration }
-Through the **Settings** tab, you can further customize the server instance with
+**설정** 탭을 통해 다음을 사용하여 서버를 상세히 사용자 정의할 수 있습니다. 
 
-* Varying node, memory, and storage combinations
-* {{ site.data.keys.mf_console }} admin password
-* LTPA keys
-* JNDI configuration
-* User registry
+* 다양한 노드, 메모리, 스토리지 조합
+* {{site.data.keys.mf_console }} admin 비밀번호
+* LTPA 키
+* JNDI 구성
+* 사용자 레지스트리
 * TrustStore
-* {{ site.data.keys.mf_analytics }} configuration
-* DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400 database selection (available in the *Professional 1 Application* plan)
+* {{site.data.keys.mf_analytics }} 구성
+* DashDB Enterprise Transactional 2.8.500 또는 Enterprise Transactional 12.128.1400 데이터베이스 선택사항(*Professional(단일 애플리케이션)* 플랜에서 사용 가능)
 * VPN
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](advanced-server-configuration.png)
+![{{site.data.keys.mf_bm_short }} 설정 이미지](advanced-server-configuration.png)
 
-## Adding {{ site.data.keys.mf_analytics_short }} support
+## {{site.data.keys.mf_analytics_short }} 지원 추가
 {: #adding-analytics-support }
-You can add {{ site.data.keys.mf_analytics }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions an IBM Container with an instance of {{ site.data.keys.mf_analytics_server }}.
+서비스의 대시보드 페이지에서 **Analytics 추가**를 클릭하여 {{site.data.keys.mf_analytics }} 지원을 {{site.data.keys.mf_bm_short }} 서비스 인스턴스에 추가할 수 있습니다. 이 조치는 IBM Container에 {{site.data.keys.mf_analytics_server }}의 인스턴스를 프로비저닝합니다. 
 
-* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_short }} service instance to your {{ site.data.keys.mf_server }} instance.  
-* When using the **Developer Pro**, **Professional Per Capacity** or **Proffessional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
+* **Developer** 플랜을 사용하는 경우 이 조치는 {{site.data.keys.mf_analytics_short }} 서비스 인스턴스를 {{site.data.keys.mf_server }} 인스턴스에 자동으로 후크하기도 합니다.   
+* **Developer Pro**, **Professional(용량별)** 또는 **Proffessional(단일 애플리케이션)** 플랜을 사용하는 경우 이 조치를 수행하려면 사용 가능한 노드의 크기, 사용 가능한 메모리, 스토리지 볼륨을 선택하여 추가로 입력해야 합니다. 
 
-Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_console_short }}.  
+조작이 완료되면 브라우저에서 {{site.data.keys.mf_console }} 페이지를 다시 로드하여 {{site.data.keys.mf_analytics_console_short }}에 액세스하십시오.   
 
-> Learn more about {{ site.data.keys.mf_analytics }} in the [{{ site.data.keys.mf_analytics }} category](../../analytics).
+> [{{site.data.keys.mf_analytics }} 카테고리](../../analytics)에서 {{site.data.keys.mf_analytics }}에 대해 자세히 알아보십시오. 
 
-## Applying {{ site.data.keys.mf_server }} fixes
+## {{site.data.keys.mf_server }} 수정사항 적용
 {: #applying-mobilefirst-server-fixes }
-Updates to the {{ site.data.keys.mf_bm }} services are applied automatically without a need for human intervention, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
+{{site.data.keys.mf_bm }} 서비스의 업데이트는 업데이트 수행에 동의하는 외에는 사용자 개입이 없어도 자동으로 적용됩니다. 사용 가능한 업데이트가 있는 경우 서비스의 대시보드 페이지에 지시사항, 조치 단추와 함께 배너가 표시됩니다. 
 
-## Accessing server logs
+## 서버 로그에 액세스
 {: #accessing-server-logs }
-To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
+서버 로그에 액세스하려면 사이드바 탐색을 열고 **앱 → Cloud Foundary 앱**을 클릭하십시오. 서비스를 선택하고 **런타임**을 클릭한 후 **파일** 탭을 클릭하십시오. 
 
-You can find the **messages.log** and **trace.log** files in the **logs** folder.
+**logs** 폴더에 **messages.log** 파일과 **trace.log** 파일이 있습니다. 
 
-#### Tracing
+#### 추적
 {: #tracing }
-To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
+**trace.log** 파일에서 DEBUG 레벨 메시지를 보기 위해 추적을 사용하려면 다음을 수행하십시오. 
 
-1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
-2. Click the **Trace** action option.
-3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
+1. **런타임 → 메모리 및 인스턴스**에서 서비스 인스턴스(인스턴스 ID는 **0**으로 시작됨)를 선택하십시오. 
+2. **추적** 조치 옵션을 클릭하십시오. 
+3. 추적 명령문 `com.worklight.*=debug=enabled`를 입력하고 **추적 제출**을 클릭하십시오. 
 
-The **trace.log** file is now available in the above specified location.
+이제 위에 지정된 위치에서 **trace.log** 파일을 사용할 수 있습니다. 
 
-<img class="gifplayer" alt="Server logs for the {{ site.data.keys.mf_bm_short }} service" src="server-logs.png"/>
+<img class="gifplayer" alt="{{site.data.keys.mf_bm_short }} 서비스의 서버 로그" src="server-logs.png"/>
 
-## Troubleshooting
+## 문제점 해결
 {: #troubleshooting }
-The Developer plan does not offer a persistent database, which could cause at times loss of data. To quickly onboard in such cases, be sure to follow these best practices:
+Developer 플랜에서는 지속적 데이터베이스를 제공하지 않으므로 때때로 데이터가 손실될 수 있습니다. 이런 경우 빨리 복구하려면 다음 우수 사례를 따르십시오. 
 
-* Every time you make any of the following server-side actions:
-    * Deploy an adapter or update any adapter configuration or property value
-    * Perform any security configuration such scope-mapping and alike
+* 다음과 같은 서버 측 조치를 수행하는 경우:
+    * 어댑터 배치 또는 어댑터 구성이나 특성 값 업데이트
+    * 범위 맵핑과 같은 보안 구성 수행
     
-    Run the following from the command-line to download your configuration to a .zip file:
+    명령행에서 다음을 실행하여 구성을 .zip 파일에 다운로드하십시오. 
 
   ```bash
   $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
   ```
 
-* In case you recreate your server or lose your configuration, run the following from the command-line to import the configuration to the server:
+* 서버를 다시 작성하거나 구성이 손실된 경우에는 명령행에서 다음을 실행하여 서버에 구성을 가져오십시오. 
 
   ```bash
   $curl -X POST -u admin:admin -F file=@./export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
   ```
 
-## Further reading
+## 추가 정보
 {: #further-reading }
-Now that the {{ site.data.keys.mf_server }} instance is up and running,
+이제 {{site.data.keys.mf_server }} 인스턴스가 작동하고 실행 중입니다. 
 
-* Familiarize yourself with the [{{ site.data.keys.mf_console }}](../../product-overview/components/console).
-* Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start).
-* Read through all [available tutorials](../../all-tutorials/).
+* [{{site.data.keys.mf_console }}](../../product-overview/components/console)에 익숙해지도록 하십시오. 
+* [빠른 시작 학습서](../../quick-start)를 통해 MobileFirst Foundation을 경험해보십시오. 
+* 모든 [사용 가능한 학습서](../../all-tutorials/)를 읽으십시오. 

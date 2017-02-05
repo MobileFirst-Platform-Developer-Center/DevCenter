@@ -1,25 +1,25 @@
 ---
 layout: tutorial
-title: Securing MobilFirst server
+title: MobilFirst Server 보호
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-Below are several methods you can follow in order to secure your {{ site.data.keys.mf_server }} instance.
+아래에 {{site.data.keys.mf_server }} 인스턴스를 보호하기 위해 수행할 수 있는 몇몇 방법이 있습니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
-* [Configuring App Transport Security (ATS)](#configuring-app-transport-security-ats)
-* [LDAP configuration for containers](#ldap-configuration-for-containers)
+* [ATS(App Transport Security) 구성](#configuring-app-transport-security-ats)
+* [컨테이너의 LDAP 구성](#ldap-configuration-for-containers)
 
-## Configuring App Transport Security (ATS)
+## ATS(App Transport Security) 구성
 {: #configuring-app-transport-security-ats }
-ATS configuration does not impact applications connecting from other, non-iOS, mobile operating systems. Other mobile operating systems do not mandate that servers communicate on the ATS level of security but can still communicate with ATS-configured servers. Before configuring your server, have the generated certificates ready. The following steps assume that the keystore file **ssl_cert.p12** has the personal certificate and **ca.crt** is the signing certificate.
+ATS 구성은 기타 비iOS 모바일 운영 체제에서 연결 중인 애플리케이션에는 영향을 미치지 않습니다. 기타 모바일 운영 체제에서는 서버가 ATS 레벨의 보안에서 통신하지 않아도 되지만 ATS가 구성된 서버와 계속 통신할 수 있습니다. 서버를 구성하기 전에 생성된 인증서를 준비하십시오. 다음 단계에서는 키 저장소 파일 **ssl_cert.p12**에 개인용 인증서가 있으며 **ca.crt**가 서명 인증서라고 가정합니다. 
 
-1. Copy the **ssl_cert.p12** file to the **mfpf-server-libertyapp/usr/security/** folder.
-2. Modify the **mfpf-server-libertyapp/usr/config/keystore.xml** file similar to the following example configuration:
+1. **ssl_cert.p12** 파일을 **mfpf-server-libertyapp/usr/security/** 폴더에 복사하십시오. 
+2. **mfpf-server-libertyapp/usr/config/keystore.xml** 파일을 다음 예제 구성과 유사하게 수정하십시오. 
 
    ```xml
    <server>
@@ -30,12 +30,12 @@ ATS configuration does not impact applications connecting from other, non-iOS, m
         <keyStore id="defaultKeyStore" location="ssl_cert.p12" password="*****" type="PKCS12"/>
    </server>
    ```
-    - **ssl-1.0** is added as a feature in the feature manager to enable the server to work with SSL communication.
-    - **sslProtocol="TLSv1.2"** is added in the ssl tag to mandate that the server communicates only on Transport Layer Security (TLS) version 1.2 protocol. More than one protocol can be added. For example, adding **sslProtocol="TLSv1+TLSv1.1+TLSv1.2"** would ensure that the server could communicate on TLS V1, V1.1, and V1.2. (TLS V1.2 is required for iOS 9 apps.)
-    - **enabledCiphers="TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384"** is added in the ssl tag so that the server enforces communication using only that cipher.
-    - The **keyStore** tag tells the server to use the new certificates that are created as per the above requirements.
+    - 서버가 SSL 통신을 사용하여 작업할 수 있도록 **ssl-1.0**이 기능 관리자에 기능으로 추가되었습니다. 
+    - 서버가 TLS(Transport Layer Security) 버전 1.2 프로토콜에서만 통신하도록 **sslProtocol="TLSv1.2"**가 ssl 태그에 추가되었습니다. 둘 이상의 프로토콜을 추가할 수 있습니다. 예를 들어, **sslProtocol="TLSv1+TLSv1.1+TLSv1.2"**를 추가하면 서버가 TLS V1, V1.1, V1.2에서 통신할 수 있습니다. (TLS V1.2는 iOS 9 앱에 필수입니다.)
+    - 서버가 해당 암호만 사용하여 통신을 강제 실행하도록 **enabledCiphers="TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384"**가 ssl 태그에 추가되었습니다. 
+    - **keyStore** 태그는 위의 요구사항에 따라 작성된 새 인증서를 사용하도록 서버에 알립니다. 
 
-The following specific ciphers require Java Cryptography Extension (JCE) policy settings and an additional JVM option:
+다음과 같은 특정 암호에는 JCE(Java Cryptography Extension) 정책 설정과 추가 JVM 옵션이 필요합니다. 
 
 * TLS\_ECDHE\_ECDSA\_WITH\_AES\_256_GCM\_SHA384
 * TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_CBC\_SHA384
@@ -43,9 +43,9 @@ The following specific ciphers require Java Cryptography Extension (JCE) policy 
 * TLS\_ECDHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384
 * TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384
 
-The the policy files are already installed in the Liberty for Java runtime and you dont have to add tham to the package again.Just add the following JVM option to the **mfpf-server-libertyapp/usr/env/jvm.options** file: `Dcom.ibm.security.jurisdictionPolicyDir=/opt/ibm/wlp/usr/servers/worklight/resources/security/`.
+정책 파일은 Liberty for Java 런타임에 이미 설치되어 있으므로 패키지에 다시 추가할 필요가 없습니다. 다음 JVM 옵션만 **mfpf-server-libertyapp/usr/env/jvm.options** 파일에 추가하십시오. `Dcom.ibm.security.jurisdictionPolicyDir=/opt/ibm/wlp/usr/servers/worklight/resources/security/`.
 
-For development-stage purposes only, you can disable ATS by adding following property to the info.plist file:
+개발 단계 용도로만 info.plist 파일에 다음 특성을 추가하여 ATS를 사용 안함으로 설정할 수 있습니다. 
 
 ```xml
 <key>NSAppTransportSecurity</key>
@@ -55,31 +55,31 @@ For development-stage purposes only, you can disable ATS by adding following pro
 </dict>
 ```
 
-## Security configuration for {{ site.data.keys.product_full }}
+## {{site.data.keys.product_full }}의 보안 구성
 {: #security-configuration-for-ibm-mobilefirst-foundation }
-Your IBM MobileFirst Foundation instance security configuration should include encrypting passwords, enabling application authenticity checking, and securing access to the consoles.
+IBM MobileFirst Foundation 인스턴스 보안 구성은 비밀번호 암호화, 애플리케이션 인증 검사 사용, 콘솔에 대한 액세스 보호를 포함해야 합니다. 
 
-### Encrypting passwords
+### 비밀번호 암호화
 {: #encrypting-passwords }
-Store the passwords for {{ site.data.keys.mf_server }} users in an encrypted format. You can use the securityUtility command available in the Liberty profile to encode passwords with either XOR or AES encryption. Encrypted passwords can then be copied into the /usr/env/server.env file. See Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }} for instructions.
+{{site.data.keys.mf_server }} 사용자의 비밀번호를 암호화된 형식으로 저장하십시오. Liberty 프로파일에서 사용 가능한 securityUtility 명령을 사용하여 XOR 또는 AES 암호화로 비밀번호를 인코딩할 수 있습니다. 그런 다음 암호화된 비밀번호를 /usr/env/server.env 파일에 복사할 수 있습니다. 지시사항은 {{site.data.keys.mf_server }}에 구성된 사용자 역할의 비밀번호 암호화를 참조하십시오. 
 
-### Application-authenticity validation
+### 애플리케이션 인증 유효성 검증
 {: #application-authenticity-validation }
-To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf_server }}, enable the application-authenticity security check. Learn more...
+권한 없는 모바일 애플리케이션에서 {{site.data.keys.mf_server }}에 액세스하지 못하도록 애플리케이션 인증 보안 검사를 사용하십시오. 자세히 보기...
 
 
-### Securing a connection to the back end
+### 백엔드에 대한 연결 보안 설정
 {: #securing-a-connection-to-the-back-end }
-If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers.
+컨테이너와 사내 구축형 백엔드 시스템 간 보안 연결이 필요한 경우 Bluemix Secure Gateway 서비스를 사용할 수 있습니다. 구성 세부사항은 IBM Bluemix Containers의 MobileFirst에서 사내 구축형 백엔드에 안전하게 연결 문서에서 제공됩니다. 
 
-#### Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }}
+#### {{site.data.keys.mf_server }}에 구성된 사용자 역할의 비밀번호 암호화
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
-The passwords for user roles that are configured for the {{ site.data.keys.mf_server }} can be encrypted.  
-Passwords are configured in the **server.env** files in the **package_root/mfpf-server-liberty-app/usr/env** . Passwords should be stored in an encrypted format.
+{{site.data.keys.mf_server }}에 대해 구성된 사용자 역할의 비밀번호를 암호화할 수 있습니다.   
+비밀번호는 **package_root/mfpf-server-liberty-app/usr/env**의 **server.env** 파일에 구성되어 있습니다. 비밀번호를 암호화된 형식으로 저장해야 합니다. 
 
-1. You can use the `securityUtility` command in the Liberty profile to encode the password. Choose either XOR or AES encryption to encode the password.
-2. Copy the encrypted password to the **server.env** file. Example: `MFPF_ADMIN_PASSWORD={xor}PjsyNjE=`
-3. If you are using AES encryption and used your own encryption key instead of the default key, you must create a configuration file that contains your encryption key and add it to the **usr/config** directory. The Liberty server accesses the file to decrypt the password during runtime. The configuration file must have the .xml file extension and resemble the following format:
+1. Liberty 프로파일에서 `securityUtility` 명령을 사용하여 비밀번호를 인코딩할 수 있습니다. XOR 또는 AES 암호화를 선택하여 비밀번호를 인코딩하십시오. 
+2. 암호화된 비밀번호를 **server.env** 파일에 복사하십시오. 예: `MFPF_ADMIN_PASSWORD={xor}PjsyNjE=`
+3. AES 암호화를 사용 중이고 기본 키 대신 사용자 고유 암호화 키를 사용한 경우 암호화 키를 포함하는 구성 파일을 작성하여 **usr/config** 디렉토리에 추가해야 합니다. Liberty 서버가 런타임 중에 파일에 액세스하여 비밀번호를 복호화합니다. 구성 파일의 파일 확장자는 .xml이어야 하고 다음 형식과 유사해야 합니다. 
 
 ```bash
 <?xml version="1.0" encoding="UTF-8"?>
@@ -88,15 +88,15 @@ Passwords are configured in the **server.env** files in the **package_root/mfpf-
 </server>
 ```
 
-#### Restricting access to the consoles running on containers	
+#### 컨테이너에서 실행 중인 콘솔에 대한 액세스 제한	
 {: #restricting-access-to-the-consoles-running-on-containers }
-You can restrict access to the MobileFirst Operations Console and the MobileFirst Analytics Console in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles.
+콘솔에 대한 요청을 차단하기 위해 TAI(Trust Association Interceptor)를 작성하고 배치하여 프로덕션 환경에서 MobileFirst Operations Console과 MobileFirst Analytics Console에 대한 액세스를 제한할 수 있습니다. 
 
-The TAI can implement user-specific filtering logic that decides if a request is forwarded to the console or if an approval is required. This method of filtering provides the flexibility for you to add your own authentication mechanism if needed.
+TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정하는 사용자 특정 필터링 로직을 구현할 수 있습니다. 이 필터링 메소드는 필요한 경우 사용자 고유 인증 메커니즘을 추가하는 유연성을 제공합니다. 
 
-See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_dev_custom_tai.html?view=embed)
+[Liberty 프로파일에 대한 사용자 정의 TAI 개발](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_dev_custom_tai.html?view=embed)도 참조하십시오. 
 
-1. Create a custom TAI that implements your security mechanism to control access to the MobileFirst Operations Console. The following example of a custom TAI uses the IP Address of the incoming request to validate whether to provide access to the MobileFirst Operations Console or not.
+1. 보안 메커니즘을 구현하는 사용자 정의 TAI를 작성하여 MobileFirst Operations Console에 대한 액세스를 제어하십시오. 다음 사용자 정의 TAI 예제에서는 수신 요청의 IP 주소를 사용하여 MobileFirst Operations Console에 대한 액세스 권한을 제공할지 여부의 유효성을 검증합니다. 
 
    ```java
    package com.ibm.mfpconsole.interceptor;
@@ -220,8 +220,8 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
    }
    ```
     
-2. Export the custom TAI Implementation into a .jar file and place it in the applicable **env** folder (**mfpf-server-libertyapp/usr/env**).
-3. Create an XML configuration file that contains the details of the TAI interceptor (see the TAI configuration example code provided in step 1) and then add your .xml file to the applicable folder (**mfpf-server-libertyapp/usr/config**). Your .xml file should resemble the following example. **Tip:** Be sure to update the class name and properties to reflect your implementation.
+2. 사용자 정의 TAI 구현을 .jar 파일에 내보내 적용 가능한 **env** 폴더(**mfpf-server-libertyapp/usr/env**)에 배치하십시오. 
+3. TAI 인터셉터에 대한 세부사항을 포함하는 XML 구성 파일을 작성한 후(1단계에 제공된 TAI 구성 예제 코드 참조 .xml 파일을 적용 가능한 폴더(**mfpf-server-libertyapp/usr/config**)에 추가하십시오. .xml 파일은 다음 예제와 유사해야 합니다. **팁:** 구현을 반영하도록 클래스 이름과 특성을 업데이트하십시오. 
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
@@ -245,33 +245,33 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
    </server>
    ```
 
-4. Re-deploy the server. The MobileFirst Operations Console is now accessible only when the configured TAI security mechanism is satisfied.
+4. 서버를 다시 배치하십시오. 이제 구성된 TAI 보안 메커니즘을 충족하는 경우에만 MobileFirst Operations Console에 액세스할 수 있습니다. 
 
-## LDAP configuration for containers
+## 컨테이너의 LDAP 구성
 {: #ldap-configuration-for-containers }
-You can configure an IBM MobileFirst Foundation to securely connect to an external LDAP repository.
+외부 LDAP 저장소에 안전하게 연결하도록 IBM MobileFirst Foundation을 구성할 수 있습니다. 
 
-The external LDAP registry can be used for the following purposes:
+다음과 같은 용도로 외부 LDAP 레지스트리를 사용할 수 있습니다. 
 
-* To configure the MobileFirst administration security with an external LDAP registry.
-* To configure the MobileFirst mobile applications to work with an external LDAP registry.
+* 외부 LDAP 레지스트리로 MobileFirst 관리 보안을 구성합니다. 
+* 외부 LDAP 레지스트리에 대해 작업하도록 MobileFirst 모바일 애플리케이션을 구성합니다. 
 
-### Configuring administration security with LDAP
+### LDAP을 사용하여 관리 보안 구성
 {: #configuring-administration-security-with-ldap }
-Configure the MobileFirst administration security with an external LDAP registry.  
-The configuration process includes the following steps:
+외부 LDAP 레지스트리로 MobileFirst 관리 보안을 구성합니다.   
+구성 프로세스에는 다음 단계가 포함됩니다. 
 
-* Setup and configuration of an LDAP repository
-* Changes to the registry file (registry.xml)
-* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix  for this step.)
+* LDAP 저장소 설정과 구성
+* 레지스트리 파일(registry.xml)의 변경
+* 로컬 LDAP 저장소와 컨테이너에 연결할 보안 게이트웨이의 구성. (이 단계를 수행하려면 Bluemix에 기존 앱이 있어야 합니다.)
 
-#### LDAP repository
+#### LDAP 저장소
 {: #ldap-repository }
-Create users and groups in the LDAP repository. For groups, authorization is enforced based on user membership.
+LDAP 저장소에 사용자와 그룹을 작성하십시오. 그룹의 경우 권한은 사용자 멤버십을 기반으로 적용됩니다. 
 
-#### Registry file
+#### 레지스트리 파일
 {: #registry-file }
-1. Open the **registry.xml** and find the `basicRegistry` element. Replace the `basicRegistry` element with code that is similar to the following snippet:
+1. **registry.xml**을 열고 `basicRegistry` 요소를 찾으십시오. `basicRegistry` 요소를 다음 스니펫과 유사한 코드로 대체하십시오. 
 
    ```xml
    <ldapRegistry 
@@ -290,15 +290,15 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
    </ldapRegistry>
    ```
     
-    Entry | Description
+    항목 | 설명
     --- | ---
-    `host` and `port` | Host name (IP address) and port number of your local LDAP server.
-    `baseDN` | The domain name (DN) in LDAP that captures all details about a specific organization.
-    `bindDN="uid=admin,ou=system"	` | Binding details of the LDAP server. For example, the default values for an Apache Directory Service would be `uid=admin,ou=system`.
-    `bindPassword="secret"	` | Binding password for the LDAP server. For example, the default value for an Apache Directory Service is `secret`.
-    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | The custom filters that are used for querying the directory service (such as Apache) during authentication and authorization.
+    `host` 및 `port` | 로컬 LDAP 서버의 호스트 이름(IP 주소)과 포트 번호입니다.
+    `baseDN` | 특정 조직에 대한 모든 세부사항을 캡처하는 LDAP의 도메인 이름(DN)입니다.
+    `bindDN="uid=admin,ou=system"	` | LDAP 서버의 바인딩 세부사항입니다. 예를 들어, Apache Directory Service의 기본값은 `uid=admin,ou=system`입니다.
+    `bindPassword="secret"	` | LDAP 서버의 바인딩 비밀번호입니다. 예를 들어, Apache Directory Service의 기본값은 `secret`입니다.
+    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 인증과 권한 부여 중에 디렉토리 서비스(예: Apache)를 조회하는 데 사용되는 사용자 정의 필터입니다.
         
-2. Ensure that the following features are enabled for `appSecurity-2.0` and `ldapRegistry-3.0`:
+2. `appSecurity-2.0`과 `ldapRegistry-3.0`에 다음 기능을 사용할 수 있는지 확인하십시오. 
 
    ```xml
    <featureManager>
@@ -307,19 +307,19 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
    </featureManager>
    ```
     
-   For details about configuring various LDAP server repositories, see the [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
+   여러 LDAP 서버 저장소 구성에 대한 세부사항은 [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html)를 참조하십시오. 
     
-#### Secure gateway
+#### 보안 게이트웨이
 {: #secure-gateway }
-To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this task.
+LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 Bluemix에 Secure Gateway 서비스의 인스턴스를 작성한 후 LDAP 레지스트리의 IP 정보를 얻어야 합니다. 이 태스크를 수행하려면 로컬 LDAP 호스트 이름과 포트 번호가 필요합니다. 
 
-1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
-2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
-3. Go to the Bluemix dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
-4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
-5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
-6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
-7. Capture the **Destination ID** and **Cloud Host : Port** values. Go to the registry.xml file and add these values, replacing any existing values. See the following example of an updated code snippet in the registry.xml file:
+1. Bluemix에 로그온하고 **카탈로그, 카테고리 > 통합**으로 이동한 후 **Secure Gateway**를 클릭하십시오. 
+2. 서비스 추가에서 앱을 선택한 후 **작성**을 클릭하십시오. 이제 서비스가 사용자 앱에 바인드됩니다. 
+3. 앱의 Bluemix 대시보드로 이동하여 **Secure Gateway** 서비스 인스턴스를 클릭한 후 **게이트웨이 추가**를 클릭하십시오. 
+4. 게이트웨이의 이름을 지정하고 **대상 추가**를 클릭한 후 로컬 LDAP 서버의 이름, IP 주소, 포트를 입력하십시오. 
+5. 프롬프트에 따라 연결을 완료하십시오. 초기화된 대상을 확인하려면 LDAP 게이트웨이 서비스의 대상 화면으로 이동하십시오. 
+6. 필요한 호스트 정보와 포트 정보를 얻으려면 LDAP 게이트웨이 서비스 인스턴스의 정보 아이콘을 클릭하십시오(Secure Gateway 대시보드에 있음). 표시되는 세부사항은 로컬 LDAP 서버의 별명입니다. 
+7. **대상 ID** 값과 **클라우드 호스트:포트** 값을 캡처하십시오. registry.xml 파일로 이동해서 해당 값을 추가하여 기존 값을 대체하십시오. registry.xml 파일에 있는 업데이트된 코드 스니펫의 다음 예를 참조하십시오. 
 
 ```xml
 <ldapRegistry 
@@ -338,20 +338,20 @@ To configure a secure gateway connection to your LDAP server, you must create an
 </ldapRegistry>
 ```
 
-### Configuring apps to work with LDAP
+### LDAP에 대해 작업하도록 앱 구성
 {: #configuring-apps-to-work-with-ldap }
-Configure MobileFirst mobile apps to work with an external LDAP registry.  
-The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix for this step.)
+외부 LDAP 레지스트리에 대해 작업하도록 MobileFirst 모바일 앱을 구성합니다.   
+구성 프로세스는 로컬 LDAP 저장소와 컨테이너에 연결할 보안 게이트웨이 구성 단계를 포함합니다. (이 단계를 수행하려면 Bluemix에 기존 앱이 있어야 합니다.)
 
-To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this step.
+LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 Bluemix에 Secure Gateway 서비스의 인스턴스를 작성한 후 LDAP 레지스트리의 IP 정보를 얻어야 합니다. 이 단계를 수행하려면 로컬 LDAP 호스트 이름과 포트 번호가 필요합니다. 
 
-1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
-2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
-3. Go to the Bluemix dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
-4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
-5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
-6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
-7. Capture the **Destination ID** and **Cloud Host : Port** values. Provide these values for the LDAP login module.
+1. Bluemix에 로그온하고 **카탈로그, 카테고리 > 통합**으로 이동한 후 **Secure Gateway**를 클릭하십시오. 
+2. 서비스 추가에서 앱을 선택한 후 **작성**을 클릭하십시오. 이제 서비스가 사용자 앱에 바인드됩니다. 
+3. 앱의 Bluemix 대시보드로 이동하여 **Secure Gateway** 서비스 인스턴스를 클릭한 후 **게이트웨이 추가**를 클릭하십시오. 
+4. 게이트웨이의 이름을 지정하고 **대상 추가**를 클릭한 후 로컬 LDAP 서버의 이름, IP 주소, 포트를 입력하십시오. 
+5. 프롬프트에 따라 연결을 완료하십시오. 초기화된 대상을 확인하려면 LDAP 게이트웨이 서비스의 대상 화면으로 이동하십시오. 
+6. 필요한 호스트 정보와 포트 정보를 얻으려면 LDAP 게이트웨이 서비스 인스턴스의 정보 아이콘을 클릭하십시오(Secure Gateway 대시보드에 있음). 표시되는 세부사항은 로컬 LDAP 서버의 별명입니다. 
+7. **대상 ID** 값과 **클라우드 호스트:포트** 값을 캡처하십시오. LDAP 로그인 모듈에 해당 값을 제공하십시오. 
 
-**Results**  
-The communication between the MobileFirst app on Bluemix with your local LDAP server is established. The authentication and authorization from the Bluemix app is validated against your local LDAP server.
+**결과**  
+로컬 LDAP 서버와 Bluemix의 MobileFirst 앱 간 통신이 설정됩니다. 로컬 LDAP 서버에 대해 Bluemix 앱의 인증과 권한 부여의 유효성을 검증합니다. 

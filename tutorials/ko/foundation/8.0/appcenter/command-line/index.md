@@ -1,172 +1,172 @@
 ---
 layout: tutorial
-title: Command-line tool for uploading or deleting an application
-breadcrumb_title: Uploading or deleting an app
+title: 애플리케이션 업로드 또는 삭제를 위한 명령행 도구
+breadcrumb_title: 앱 업로드 또는 삭제
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-To deploy applications to the Application Center through a build process, use the command-line tool.
+빌드 프로세스를 통해 애플리케이션을 Application Center에 배치하려면 명령행 도구를 사용하십시오. 
 
-You can upload an application to the Application Center by using the web interface of the Application Center console. You can also upload a new application by using a command-line tool.
+Application Center 콘솔의 웹 인터페이스를 사용하여 Application Center에 애플리케이션을 업로드할 수 있습니다. 또한 명령행 도구를 사용하여 새 애플리케이션을 업로드할 수 있습니다. 
 
-This is particularly useful when you want to incorporate the deployment of an application to the Application Center into a build process. This tool is located at: **installDir/ApplicationCenter/tools/applicationcenterdeploytool.jar**.
+Application Center에 대한 애플리케이션 배치를 빌드 프로세스에 통합하려는 경우 특히 유용합니다. 이 도구는 다음 위치에 있습니다. **installDir/ApplicationCenter/tools/applicationcenterdeploytool.jar**.
 
-The tool can be used for application files with extension APK or IPA. It can be used stand alone or as an ant task.
+이 도구는 확장자가 APK 또는 IPA인 애플리케이션 파일에 사용할 수 있습니다. 독립형 또는 Ant 태스크로 사용할 수 있습니다. 
 
-The tools directory contains all the files required to support the use of the tool.
+도구 디렉토리에는 도구 사용을 지원하는 데 필요한 모든 파일이 포함되어 있습니다. 
 
-* **applicationcenterdeploytool.jar**: the upload tool.
-* **json4j.jar**: the library for the JSON format required by the upload tool.
-* **build.xml**: a sample ant script that you can use to upload a single file or a sequence of files to the Application Center.
-* **acdeploytool.sh** and **acdeploytool.bat**: Simple scripts to call java with **applicationcenterdeploytool.jar**.
+* **applicationcenterdeploytool.jar**: 업로드 도구. 
+* **json4j.jar**: 업로드 도구에 필요한 JSON 형식의 라이브러리. 
+* **build.xml**: 단일 파일 또는 일련의 파일을 Application Center에 업로드하는 데 사용할 수 있는 샘플 Ant 스크립트. 
+* **acdeploytool.sh** 및 **acdeploytool.bat**: **applicationcenterdeploytool.jar**을 사용하여 java를 호출하기 위한 간단한 스크립트. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
-* [Using the stand-alone tool to upload an application](#using-the-stand-alone-tool-to-upload-an-application)
-* [Using the stand-alone tool to delete an application](#using-the-stand-alone-tool-to-delete-an-application)
-* [Using the stand-alone tool to clear the LDAP cache](#using-the-stand-alone-tool-to-clear-the-ldap-cache)
-* [Ant task for uploading or deleting an application](#ant-task-for-uploading-or-deleting-an-application)
+* [애플리케이션을 업로드하는 데 독립형 도구 사용](#using-the-stand-alone-tool-to-upload-an-application)
+* [애플리케이션을 삭제하는 데 독립형 도구 사용](#using-the-stand-alone-tool-to-delete-an-application)
+* [LDAP 캐시를 지우는 데 독립형 도구 사용](#using-the-stand-alone-tool-to-clear-the-ldap-cache)
+* [애플리케이션을 업로드 또는 삭제하기 위한 Ant 태스크](#ant-task-for-uploading-or-deleting-an-application)
 
-### Using the stand-alone tool to upload an application
+### 애플리케이션을 업로드하는 데 독립형 도구 사용
 {: #using-the-stand-alone-tool-to-upload-an-application }
-To upload an application, call the stand-alone tool from the command line.  
-Use the stand-alone tool by following these steps.
+애플리케이션을 업로드하려면 명령행에서 독립형 도구를 호출하십시오.   
+다음 단계를 수행하여 독립형 도구를 사용하십시오. 
 
-1. Add **applicationcenterdeploytool.jar** and **json4j.jar** to the java classpath environment variable.
-2. Call the upload tool from the command line:
+1. **applicationcenterdeploytool.jar** 및 **json4j.jar**을 java 클래스 경로 환경 변수에 추가하십시오. 
+2. 명령행에서 업로드 도구를 호출하십시오. 
   
    ```bash
    java com.ibm.appcenter.Upload [options] [files]
    ```
     
-You can pass any of the available options in the command line.
+명령행에서 사용 가능한 옵션을 전달할 수 있습니다. 
 
-| Option | Content indicated by | Description | 
+| 옵션   | 컨텐츠 표시          | 설명        | 
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server. | 
-| -c | context | The context of the Application Center web application. | 
-| -u | user | The user credentials to access the Application Center. | 
-| -p | password | The password of the user. | 
-| -d | description | The description of the application to be uploaded. | 
-| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. | 
-| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. | 
-| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. | 
-| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. | 
-| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. | 
-| -e	  |  | Shows the full exception stack trace on failure. | 
-| -f	  |  | Force uploading of applications, even if they exist already. | 
-| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. | 
+| -s | serverpath | Application Center 서버에 대한 경로.  | 
+| -c | context | Application Center 웹 애플리케이션의 컨텍스트.  | 
+| -u | user | Application Center에 액세스하기 위한 사용자 신임 정보.  | 
+| -p | password | 사용자의 비밀번호.  | 
+| -d | description | 업로드할 애플리케이션에 대한 설명.  | 
+| -l | label | 대체 레이블. 일반적으로 업로드할 파일에 저장되어 있는 애플리케이션 디스크립터에서 레이블을 가져옵니다. 애플리케이션 디스크립터에 레이블이 없는 경우 대체 레이블이 사용됩니다.  | 
+| -isActive | true 또는 false | 애플리케이션이 활성 또는 비활성 애플리케이션으로 Application Center에 저장됩니다.  | 
+| -isInstaller | true 또는 false | 애플리케이션이 "설치 프로그램" 플래그가 적절히 설정되어 Application Center에 저장됩니다.  | 
+| -isReadyForProduction | true 또는 false | 애플리케이션이 "프로덕션 준비 완료" 플래그가 적절히 설정되어 Application Center에 저장됩니다.  | 
+| -isRecommended | true 또는 false | 애플리케이션이 "권장" 플래그가 적절히 설정되어 Application Center에 저장됩니다.  | 
+| -e	  |  | 실패 시 전체 예외 스택 추적을 표시합니다.  | 
+| -f	  |  | 애플리케이션이 이미 있는 경우에도 애플리케이션을 강제로 업로드합니다.  | 
+| -y	  |  | SSL 보안 검사를 사용 안함으로 설정합니다. 이를 통해 SSL 인증서의 유효성을 검증하지 않고 보안 호스트에 공개할 수 있습니다.  |  이 플래그를 사용하면 보안 위험이 발생할 수 있지만, 임시 자체 서명 SSL 인증서로 로컬 호스트를 테스트하는 데 적합합니다.  | 
 
-The files parameter can specify files of type Android application package (.apk) files or iOS application (.ipa) files.  
-In this example user demo has the password demopassword. Use this command line.
+파일 매개변수는 Android 애플리케이션 패키지(.apk) 파일 또는 iOS 애플리케이션(.ipa) 파일의 파일 유형을 지정할 수 있습니다.   
+이 예에서 사용자 demo의 비밀번호는 demopassword입니다. 이 명령행을 사용하십시오. 
 
 ```bash
 java com.ibm.appcenter.Upload -s http://localhost:9080 -c applicationcenter -u demo -p demopassword -f app1.ipa app2.ipa
 ```
 
-### Using the stand-alone tool to delete an application
+### 애플리케이션을 삭제하는 데 독립형 도구 사용
 {: #using-the-stand-alone-tool-to-delete-an-application }
-To delete an application from the Application Center, call the stand-alone tool from the command line.  
-Use the stand-alone tool by following these steps.
+Application Center에서 애플리케이션을 삭제하려면 명령행에서 독립형 도구를 호출하십시오.   
+다음 단계를 수행하여 독립형 도구를 사용하십시오. 
 
-1. Add **applicationcenterdeploytool.jar** and **json4j.jar** to the java classpath environment variable.
-2. Call the upload tool from the command line:
+1. **applicationcenterdeploytool.jar** 및 **json4j.jar**을 java 클래스 경로 환경 변수에 추가하십시오. 
+2. 명령행에서 업로드 도구를 호출하십시오. 
 
    ```bash
    java com.ibm.appcenter.Upload -delete [options] [files or applications]
    ```
     
-You can pass any of the available options in the command line.
+명령행에서 사용 가능한 옵션을 전달할 수 있습니다. 
 
-| Option | Content indicated by	| Description | 
+| 옵션   | 컨텐츠 표시         	| 설명        | 
 |--------|----------------------|-------------|
-| -s |serverpath | The path to the Application Center server. | 
-| -c | context | The context of the Application Center web application. | 
-| -u | user | The user credentials to access the Application Center. | 
-| -p | password | The password of the user. | 
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. | 
+| -s |serverpath | Application Center 서버에 대한 경로.  | 
+| -c | context | Application Center 웹 애플리케이션의 컨텍스트.  | 
+| -u | user | Application Center에 액세스하기 위한 사용자 신임 정보.  | 
+| -p | password | 사용자의 비밀번호.  | 
+| -y | | SSL 보안 검사를 사용 안함으로 설정합니다. 이를 통해 SSL 인증서의 유효성을 검증하지 않고 보안 호스트에 공개할 수 있습니다. 이 플래그를 사용하면 보안 위험이 발생할 수 있지만, 임시 자체 서명 SSL 인증서로 로컬 호스트를 테스트하는 데 적합합니다.  | 
 
-You can specify files or the application package, operating system, and version. If files are specified, the package, operating system and version are determined from the file and the corresponding application is deleted from the Application Center. If applications are specified, they must have one of the following formats:
+파일 또는 애플리케이션 패키지, 운영 체제, 버전을 지정할 수 있습니다. 파일이 지정되는 경우 패키지, 운영 체제 및 버전은 파일에서 결정되고 해당 애플리케이션이 Application Center에서 삭제됩니다. 애플리케이션이 지정되는 경우 형식은 다음 중 하나여야 합니다. 
 
-* `package@os@version`: This exact version is deleted from the Application Center. The version part must specify the “internal version”, not the “commercial version” of the application.
-* `package@os`: All versions of this application are deleted from the Application Center.
-* `package`: All versions of all operating systems of this application are deleted from the Application Center.
+* `package@os@version`: 정확히 이 버전이 Application Center에서 삭제됩니다. 버전 부분은 애플리케이션의 "상업용 버전"이 아닌 "내부 버전"을 지정해야 합니다. 
+* `package@os`: 이 애플리케이션의 모든 버전이 Application Center에서 삭제됩니다. 
+* `package`: 이 애플리케이션의 모든 운영 체제에 대한 모든 버전이 Application Center에서 삭제됩니다. 
 
-#### Example
+#### 예
 {: #example-delete }
-In this example, user demo has the password demopassword. Use this command line to delete the iOS application demo.HelloWorld with internal version 3.0.
+이 예에서 사용자 demo의 비밀번호 demopassword입니다. 이 명령행을 사용하여 내부 버전 3.0의 iOS 애플리케이션 demo.HelloWorld를 삭제하십시오. 
 
 ```bash
 java com.ibm.appcenter.Upload -delete -s http://localhost:9080 -c applicationcenter -u demo -p demopassword demo.HelloWorld@iOS@3.0
 ```
 
-### Using the stand-alone tool to clear the LDAP cache
+### LDAP 캐시를 지우는 데 독립형 도구 사용
 {: #using-the-stand-alone-tool-to-clear-the-ldap-cache }
-Use the stand-alone tool to clear the LDAP cache and make changes to LDAP users and groups visible immediately in the Application Center.
+독립형 도구를 사용하여 LDAP 캐시를 지우고 LDAP 사용자 및 그룹의 변경사항이 Application Center에 즉시 표시되도록 지정하십시오. 
 
-When the Application Center is configured with LDAP, changes to users and groups on the LDAP server become visible to the Application Center after a delay. The Application Center maintains a cache of LDAP data and the changes only become visible after the cache expires. By default, the delay is 24 hours. If you do not want to wait for this delay to expire after changes to users or groups, you can call the stand-alone tool from the command line to clear the cache of LDAP data. By using the stand-alone tool to clear the cache, the changes become visible immediately.
+Application Center가 LDAP으로 구성된 경우 LDAP 서버에 있는 사용자 및 그룹의 변경사항은 지연 이후에 Application Center에 표시됩니다. Application Center는 LDAP 데이터의 캐시를 유지하며 변경사항은 캐시가 만료된 후에만 표시됩니다. 기본적으로 지연은 24시간입니다. 사용자 또는 그룹을 변경한 후 이 지연 시간이 만료될 때까지 기다리지 않으려면, 명령행에서 독립형 도구를 호출하여 LDAP 데이터의 캐시를 지울 수 있습니다. 독립형 도구를 사용하여 캐시를 지우면 변경사항이 즉시 표시됩니다. 
 
-Use the stand-alone tool by following these steps.
+다음 단계를 수행하여 독립형 도구를 사용하십시오. 
 
-1. Add applicationcenterdeploytool.jar and json4j.jar to the java classpath environment variable.
-2. Call the upload tool from the command line:
+1. applicationcenterdeploytool.jar 및 json4j.jar을 java 클래스 경로 환경 변수에 추가하십시오. 
+2. 명령행에서 업로드 도구를 호출하십시오. 
 
    ```bash
    java com.ibm.appcenter.Upload -clearLdapCache [options]
    ```
    
-You can pass any of the available options in the command line.
+명령행에서 사용 가능한 옵션을 전달할 수 있습니다. 
 
-| Option | Content indicated by | Description | 
+| 옵션   | 컨텐츠 표시          | 설명        | 
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server.| 
-| -c | context | The context of the Application Center web application.| 
-| -u | user | The user credentials to access the Application Center.| 
-| -p | password | The password of the user.| 
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.| 
+| -s | serverpath | Application Center 서버에 대한 경로. | 
+| -c | context | Application Center 웹 애플리케이션의 컨텍스트. | 
+| -u | user | Application Center에 액세스하기 위한 사용자 신임 정보. | 
+| -p | password | 사용자의 비밀번호. | 
+| -y | | SSL 보안 검사를 사용 안함으로 설정합니다. 이를 통해 SSL 인증서의 유효성을 검증하지 않고 보안 호스트에 공개할 수 있습니다. 이 플래그를 사용하면 보안 위험이 발생할 수 있지만, 임시 자체 서명 SSL 인증서로 로컬 호스트를 테스트하는 데 적합합니다. | 
 
-#### Example
+#### 예
 {: #example-cache }
-In this example, user demo has the password demopassword.
+이 예에서 사용자 demo의 비밀번호 demopassword입니다. 
 
 ```bash
 java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applicationcenter -u demo -p demopassword
 ```
 
-### Ant task for uploading or deleting an application
+### 애플리케이션을 업로드하거나 삭제하기 위한 Ant 태스크
 {: ant-task-for-uploading-or-deleting-an-application }
-You can use the upload and delete tools as an Ant task and use the Ant task in your own Ant script.  
-Apache Ant is required to run these tasks. The minimum supported version of Apache Ant is listed in [System requirements](../../product-overview/requirements).
+업로드 및 삭제 도구를 Ant 태스크로 사용하고 사용자의 Ant 스크립트에서 Ant 태스크를 사용할 수 있습니다.   
+이 태스크를 실행하려면 Apache Ant가 필요합니다. Apache Ant의 최소 지원 버전은 [시스템 요구사항](../../product-overview/requirements)에 나열되어 있습니다. 
 
-For convenience, Apache Ant 1.8.4 is included in {{ site.data.keys.mf_server }}. In the product_install_dir/shortcuts/ directory, the following scripts are provided:
+편의를 위해 Apache Ant 1.8.4는 {{site.data.keys.mf_server }}에 포함되어 있습니다. product_install_dir/shortcuts/ 디렉토리에서 다음 스크립트가 제공됩니다. 
 
-* ant for UNIX / Linux
-* ant.bat for Windows
+* UNIX/Linux용 ant
+* Windows용 ant.bat
 
-These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable JAVA_HOME is set, the scripts accept it.
+이러한 스크립트는 실행할 준비가 되어 있으며, 특정 환경 변수가 필요하지 않음을 의미합니다. 환경 변수 JAVA_HOME이 설정되어 있는 경우 스크립트는 이를 허용합니다. 
 
-When you use the upload tool as an Ant task, the classname value of the upload Ant task is **com.ibm.appcenter.ant.UploadApps**. The classname value of the delete Ant task is **com.ibm.appcenter.ant.DeleteApps**.
+업로드 도구로 Ant 태스크를 사용하는 경우 업로드 Ant 태스크의 클래스 이름 값은 **com.ibm.appcenter.ant.UploadApps**입니다. 삭제 Ant 태스크의 클래스 이름 값은 **com.ibm.appcenter.ant.DeleteApps**입니다. 
 
-| Parameters of Ant task | Description | 
+| Ant 태스크의 매개변수  | 설명        | 
 |------------------------|-------------|
-| serverPath | To connect to the Application Center. The default value is http://localhost:9080. | 
-| context | The context of the Application Center. The default value is /applicationcenter. | 
-| loginUser | The user name with permissions to upload an application. | 
-| loginPass | The password of the user with permissions to upload an application. | 
-| forceOverwrite | If this parameter is set to true, the Ant task attempts to overwrite applications in the Application Center when it uploads an application that is already present. This parameter is available only in the upload Ant task.
-| file | The .apk or .ipa file to be uploaded to the Application Center or to be deleted from the Application Center. This parameter has no default value. | 
-| fileset | To upload or delete multiple files. | 
-| application | The package name of the application; this parameter is available only in the delete Ant task. | 
-| os | The operating system of the application. (For example, Android or iOS.) This parameter is available only in the delete Ant task. | 
-| version | The internal version of the application; this parameter is available only in the delete Ant task. Do not use the commercial version here, because the commercial version is unsuitable to identify the version exactly. | 
+| serverPath | Application Center에 연결합니다. 기본값은 http://localhost:9080입니다.  | 
+| context | Application Center의 컨텍스트입니다. 기본값은 /applicationcenter입니다.  | 
+| loginUser | 애플리케이션을 업로드할 권한이 있는 사용자 이름입니다.  | 
+| loginPass | 애플리케이션을 업로드할 권한이 있는 사용자의 비밀번호입니다.  | 
+| forceOverwrite | 이 매개변수가 true로 설정되어 있는 경우 이미 있는 애플리케이션을 업로드할 때 Ant 태스크가 Application Center의 애플리케이션을 겹쳐쓰려고 시도합니다. 이 매개변수는 업로드 Ant 태스크에서만 사용할 수 있습니다.
+| file | Application Center에 업로드되거나 Application Center에서 삭제될 .apk 또는 .ipa 파일. 이 매개변수는 기본값이 없습니다.  | 
+| fileset | 여러 파일을 업로드하거나 삭제합니다.  | 
+| application | 애플리케이션의 패키지 이름. 이 매개변수는 삭제 Ant 태스크에서만 사용할 수 있습니다.  | 
+| os | 애플리케이션의 운영 체제. (예: Android 또는 iOS.) 이 매개변수는 삭제 Ant 태스크에서만 사용할 수 있습니다.  | 
+| version | 애플리케이션의 내부 버전. 이 매개변수는 삭제 Ant 태스크에서만 사용할 수 있습니다. 상업용 버전은 버전을 정확히 식별하는 데 적합하지 않으므로 여기에 상업용 버전을 사용하지 마십시오.  | 
 
-#### Example
+#### 예
 {: #example-ant }
-You can find an extended example in the **ApplicationCenter/tools/build.xml** directory.  
-The following example shows how to use the Ant task in your own Ant script.
+**ApplicationCenter/tools/build.xml** 디렉토리에서 확장된 예를 찾을 수 있습니다.   
+다음 예는 사용자의 Ant 스크립트에서 Ant 태스크를 사용하는 방법을 나타냅니다. 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -217,32 +217,32 @@ The following example shows how to use the Ant task in your own Ant script.
 </project>
 ```
 
-This sample Ant script is in the **tools** directory. You can use it to upload a single application to the Application Center.
+이 샘플 Ant 스크립트는 **tools** 디렉토리에 있습니다. 이 스크립트를 사용하여 단일 애플리케이션을 Application Center에 업로드할 수 있습니다. 
 
 ```bash
 ant upload.App -Dupload.file=sample.ipa
 ```
 
-You can also use it to upload all applications that are found in a directory hierarchy.
+또한 이 스크립트를 사용하여 디렉토리 계층 구조에서 찾은 모든 애플리케이션을 업로드할 수 있습니다. 
 
 ```bash
 ant upload.AllApps -Dworkspace.root=myDirectory
 ```
 
-#### Properties of the sample Ant script
+#### 샘플 Ant 스크립트의 특성
 {: #properties-of-the-sample-ant-script }
-| Property | Comment | 
+| 특성     | 주석    | 
 |----------|---------|
-| install.dir | Defaults to ../../ | 
-| server.path | The default value is http://localhost:9080. | 
-| context.path | The default value is applicationcenter. | 
-| upload.file | This property has no default value. It must include the exact file path. | 
-| workspace.root | Defaults to ../../ | 
-| login.user | The default value is appcenteradmin. | 
-| login.pass | The default value is admin. | 
-| force	The default value is true. | 
+| install.dir | 기본값이 ../../로 지정됩니다.  | 
+| server.path | 기본값은 http://localhost:9080입니다.  | 
+| context.path | 기본값은 applicationcenter입니다.  | 
+| upload.file | 이 특성에는 기본값이 없습니다. 여기에는 정확한 파일 경로가 포함되어 있어야 합니다.  | 
+| workspace.root | 기본값이 ../../로 지정됩니다.  | 
+| login.user | 기본값은 appcenteradmin입니다. | 
+| login.pass | 기본값은 admin입니다. | 
+| force |	기본값은 true입니다.  | 
 
-To specify these parameters by command line when you call Ant, add -D before the property name. For example:
+Ant를 호출할 때 명령행에 이러한 매개변수를 지정하려면, 특성 이름 앞에 -D를 추가하십시오. 예: 
 
 ```xml
 -Dserver.path=http://localhost:8888/

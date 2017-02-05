@@ -1,10 +1,10 @@
 ---
 layout: tutorial
-title: Matrix of features & platforms
+title: 기능 및 플랫폼의 매트릭스
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-{{ site.data.keys.product_full }} provides many features and supports many platforms.
+{{site.data.keys.product_full }}는 다양한 기능을 제공하며 많은 플랫폼을 지원합니다.
 
-The [Mobile OS feature mapping for {{ site.data.keys.product }} technote](http://www.ibm.com/support/docview.wss?uid=swg27039422) on the IBM Support Portal lists the features that are available on each of the platforms that {{ site.data.keys.product }} supports.
+IBM Support Portal의 {{site.data.keys.product }} technote에 대한 (http://www.ibm.com/support/docview.wss?uid=swg27039422)Mobile OS 기능 맵핑은 {{site.data.keys.product }}에서 지원하는 각 플랫폼에서 사용 가능한 기능을 나열합니다. 

@@ -1,195 +1,195 @@
 ---
 layout: tutorial
-title: Administrating applications through Terminal
-breadcrumb_title: Administrating using terminal
+title: 터미널을 통해 애플리케이션 관리
+breadcrumb_title: 터미널을 사용하여 관리
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-You can administer {{ site.data.keys.product_adj }} applications through the **mfpadm** program.
+**mfpadm** 프로그램을 통해 {{site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
 
-* [Comparison with other facilities](#comparison-with-other-facilities)
-* [Prerequisites](#prerequisites)
+* [다른 기능과 비교](#comparison-with-other-facilities)
+* [전제조건](#prerequisites)
 
-## Comparison with other facilities
+## 다른 기능과 비교
 {: #comparison-with-other-facilities }
-You can run administration operations with {{ site.data.keys.product_full }} in the following ways:
+다음과 같은 방법으로 {{site.data.keys.product_full }}을 사용해 관리 조작을 실행할 수 있습니다. 
 
-* The {{ site.data.keys.mf_console }}, which is interactive.
-* The mfpadm Ant task.
-* The **mfpadm** program.
-* The {{ site.data.keys.product_adj }} administration REST services.
+* 대화식 {{site.data.keys.mf_console }}
+* mfpadm Ant 태스크
+* **mfpadm** 프로그램
+* {{site.data.keys.product_adj }} 관리 REST 서비스
 
-The **mfpadm** Ant task, mfpadm program, and REST services are useful for automated or unattended execution of operations, such as the following use cases:
+**mfpadm** Ant 태스크, mfpadm 프로그램, REST 서비스는 다음 유스 케이스와 같이 조작을 자동으로 실행하거나 무인 실행하는 경우 유용합니다. 
 
-* Eliminating operator errors in repetitive operations, or
-* Operating outside the operator's normal working hours, or
-* Configuring a production server with the same settings as a test or preproduction server.
+* 반복 조작에서 운영자 오류를 제거하는 경우 또는 
+* 운영자의 정상 근무 시간 외에 조작하는 경우 또는 
+* 테스트 또는 사전 프로덕션 서버와 동일한 설정을 사용하여 프로덕션 서버를 구성하는 경우 
 
-The **mfpadm** program and the mfpadm Ant task are simpler to use and have better error reporting than the REST services. The advantage of the mfpadm program over the mfpadm Ant task is that it is easier to integrate when integration with operating system commands is already available. Moreover, it is more suitable to interactive use.
+**mfpadm** 프로그램과 mfpadm Ant 태스크는 REST 서비스보다 사용이 간편하고 오류 보고 측면에서 우수합니다. mfpadm Ant 태스크에 비해 mfpadm 프로그램의 장점은 운영 체제 명령과 통합을 이미 사용할 수 있는 경우 통합이 보다 쉽다는 점입니다. 또한 대화식 사용에 더 적합합니다. 
 
-## Prerequisites
+## 전제조건
 {: #prerequisites }
-The **mfpadm** tool is installed with the {{ site.data.keys.mf_server }} installer. In the rest of this page, **product\_install\_dir** indicates the installation directory of the {{ site.data.keys.mf_server }} installer.
+**mfpadm** 도구는 {{site.data.keys.mf_server }} 설치 프로그램을 사용해 설치됩니다. 이 페이지의 나머지 부분에서 **product\_install\_dir**은 {{site.data.keys.mf_server }} 설치 프로그램의 설치 디렉토리를 표시합니다. 
 
-The **mfpadm** command is provided in the **product\_install\_dir/shortcuts/** directory as a set of scripts:
+**mfpadm** 명령은 **product\_install\_dir/shortcuts/** 디렉토리에서 스크립트 세트로 제공됩니다. 
 
-* mfpadm for UNIX / Linux
-* mfpadm.bat for Windows
+* UNIX/Linux의 경우 mfpadm
+* Windows의 경우 mfpadm.bat
 
-These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable **JAVA_HOME** is set, the scripts accept it.  
-To use the **mfpadm** program, either put the **product\_install\_dir/shortcuts/** directory into your PATH environment variable, or reference its absolute file name in each call.
+이러한 스크립트는 실행 준비가 되어 있으며 이는 특정 환경 변수가 필요하지 않음을 의미합니다. 환경 변수 **JAVA_HOME**이 설정된 경우 스크립트에서 이를 승인합니다.   
+**mfpadm** 프로그램을 사용하려면 **product\_install\_dir/shortcuts/** 디렉토리를 PATH 환경 변수에 넣거나 각 호출에서 해당 절대 파일 이름을 참조하십시오. 
 
-For more information about running the {{ site.data.keys.mf_server }} installer, see [Running IBM Installation Manager](../../installation-configuration/production/installation-manager/).
+{{site.data.keys.mf_server }} 설치 프로그램 실행에 대한 자세한 정보는 [IBM Installation Manager 실행](../../installation-configuration/production/installation-manager/)을 참조하십시오. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to-1 }
 
-* [Calling the **mfpadm** program](#calling-the-mfpadm-program)
-* [Commands for general configuration](#commands-for-general-configuration)
-* [Commands for adapters](#commands-for-adapters)
-* [Commands for apps](#commands-for-apps)
-* [Commands for devices](#commands-for-devices)
-* [Commands for troubleshooting](#commands-for-troubleshooting)
+* [**mfpadm** 프로그램 호출](#calling-the-mfpadm-program)
+* [일반 구성에 대한 명령](#commands-for-general-configuration)
+* [어댑터에 대한 명령](#commands-for-adapters)
+* [앱에 대한 명령](#commands-for-apps)
+* [디바이스에 대한 명령](#commands-for-devices)
+* [문제점 해결에 대한 명령](#commands-for-troubleshooting)
 
 
-### Calling the **mfpadm** program
+### **mfpadm** 프로그램 호출
 {: #calling-the-mfpadm-program }
-You can use the **mfpadm** program to administer {{ site.data.keys.product_adj }} applications.
+**mfpadm** 프로그램을 사용하여 {{site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다. 
 
-#### Syntax
+#### 구문
 {: #syntax }
-Call the mfpadm program as follows:
+다음과 같이 mfpadm 프로그램을 호출하십시오. 
 
 ```bash
 mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 ```
 
-The **mfpadm** program has the following options:
+**mfpadm** 프로그램의 옵션은 다음과 같습니다. 
 
-| Option	| Type | Description | Required | Default | 
+| 옵션	| 유형 | 설명 | 필수 여부 | 기본값 | 
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | Base URL of the {{ site.data.keys.product_adj }} web application for administration services | Yes | | 
-| --secure	 | Boolean | Whether to avoid operations with security risks | No | true | 
-| --user	 | name | User name for accessing the {{ site.data.keys.product_adj }} admin services | Yes |  | 	 
-| --passwordfile | file | File containing the password for the user | No | 
-| --timeout	     | Number  | Timeout for the entire REST service access, in seconds | No | 	 
-| --connect-timeout | Number | Timeout for establishing a network connection, in seconds | No |
-| --socket-timeout  | Number | Timeout for detecting the loss of a network connection, in seconds | No | 
-| --connection-request-timeout | Number	Timeout for obtaining an entry from a connection request pool, in seconds | No |
-| --lock-timeout | Number | Timeout for acquiring a lock, in seconds | No | 2 | 
-| --verbose	     | Detailed output | No	| |  
+| --url | 	 | URL | 관리 서비스에 사용되는 {{site.data.keys.product_adj }} 웹 애플리케이션의 기본 URL | 예 | | 
+| --secure	 | 부울 | 보안 위험이 있는 조작을 수행하지 않을지 여부 | 아니오 | true | 
+| --user	 | 이름 | {{site.data.keys.product_adj }} 관리 서비스에 액세스하는 데 사용되는 사용자 이름 | 예 |  | 	 
+| --passwordfile | 파일 | 사용자의 비밀번호가 있는 파일 | 아니오 | 
+| --timeout	     | 숫자  | 전체 REST 서비스 액세스의 제한시간(초) | 아니오 | 	 
+| --connect-timeout | 숫자 | 네트워크 연결 설정의 제한시간(초) | 아니오 |
+| --socket-timeout  | 숫자 | 네트워크 연결 끊어짐을 발견할 제한시간(초) | 아니오 | 
+| --connection-request-timeout | 숫자 연결 요청 풀에서 항목을 얻을 제한시간(초) | 아니오 |
+| --lock-timeout | 숫자 | 잠금 획득 제한시간(초) | 아니오 | 2 | 
+| --verbose	     | 자세한 출력 | 아니오	| |  
 
 **url**  
-The URL preferably uses the HTTPS protocol. For example, if you use default ports and context roots, use this URL:
+URL에서는 우선적으로 HTTPS 프로토콜을 사용합니다. 예를 들어, 기본 포트와 컨텍스트 루트를 사용하는 경우 다음 URL을 사용하십시오. 
 
-* For WebSphere  Application Server: https://server:9443/mfpadmin
-* For Tomcat: https://server:8443/mfpadmin
+* WebSphere Application Server의 경우: https://server:9443/mfpadmin
+* Tomcat의 경우: https://server:8443/mfpadmin
 
 **secure**  
-The `--secure` option is set to true by default. Setting it to `--secure=false` might have the following effects:
+`--secure` 옵션은 기본적으로 true로 설정됩니다. 이 옵션을 `--secure=false`로 설정하면 다음과 같은 영향을 미칩니다. 
 
-* The user and password might be transmitted in an unsecured way (possibly even through unencrypted HTTP).
-* The server's SSL certificates are accepted even if self-signed or if they were created for a different host name from the server's host name.
+* 암호화되지 않은 HTTP를 통해서도 사용자와 비밀번호가 안전하지 않은 방법으로 전송될 수 있습니다. 
+* 서버의 SSL 인증서가 자체 서명되었거나 서버의 호스트 이름과 다른 호스트 이름에 대해 작성된 경우에도 해당 인증서가 허용됩니다. 
 
 **password**  
-Specify the password in a separate file that you pass in the `--passwordfile` option. In interactive mode (see Interactive mode), you can alternatively specify the password interactively. The password is sensitive information and therefore needs to be protected. You must prevent other users on the same computer from knowing these passwords. To secure the password, before you enter the password into a file, you must remove the read permissions of the file for users other than yourself. For example, you can use one of the following commands:
+`--passwordfile` 옵션으로 전달되는 별도의 파일에서 비밀번호를 지정합니다. 대화식 모드(대화식 모드 참조)에서 비밀번호를 대화식으로 지정할 수도 있습니다. 비밀번호는 민감한 정보이므로 보호되어야 합니다. 동일한 컴퓨터의 다른 사용자가 이 비밀번호를 알지 못하게 해야 합니다. 비밀번호에 대한 보안을 설정하려면 파일에 비밀번호를 입력하기 전에 자신이 아닌 다른 사용자의 파일 읽기 권한을 제거해야 합니다. 예를 들어, 다음 명령 중 하나를 사용할 수 있습니다. 
 
-* On UNIX: `chmod 600 adminpassword.txt`
-* On Windows: `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+* UNIX의 경우: `chmod 600 adminpassword.txt`
+* Windows의 경우: `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
-For this reason, do not pass the password to a process through a command-line argument. On many operating systems, other users can inspect the command-line arguments of your processes.
+이러한 이유로 명령행 인수를 통해 프로세스에 비밀번호를 전달하지 않도록 하십시오. 여러 운영 체제에서 다른 사용자가 사용자 프로세스의 명령행 인수를 조사할 수 있습니다. 
 
-The mfpadm calls contains a command. The following commands are supported.
+mfpadm 호출은 명령을 포함합니다. 다음 명령이 지원됩니다. 
 
-| Command                           | Description | 
+| 명령                           | 설명 | 
 |-----------------------------------|-------------|
-| show info	| Shows user and configuration information. | 
-| show global-config | Shows global configuration information. | 
-| show diagnostics | Shows diagnostics information. | 
-| show versions	| Shows version information. | 
-| unlock | Releases the general-purpose lock. | 
-| list runtimes [--in-database] | Lists the runtimes. | 
-| show runtime [runtime-name] | Shows information about a runtime. | 
-| delete runtime [runtime-name] condition | Deletes a runtime. | 
-| show user-config [runtime-name] | Shows the user configuration of a runtime. | 
-| set user-config [runtime-name] file | Specifies the user configuration of a runtime. | 
-| set user-config [runtime-name] property = value | Specifies a property in the user configuration of a runtime. | 
-| show confidential-clients [runtime-name] | Shows the configuration of the confidential clients of a runtime. | 
-| set confidential-clients [runtime-name] file | Specifies the configuration of the confidential clients of a runtime. | 
-| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | Specifies a rule for the configuration of the confidential clients of a runtime. | 
-| list adapters [runtime-name] | Lists the adapters. | 
-| deploy adapter [runtime-name] property = value | Deploys an adapter.| 
-| show adapter [runtime-name] adapter-name | Shows information about an adapter.| 
-| delete adapter [runtime-name] adapter-name | Deletes an adapter.| 
-| adapter [runtime-name] adapter-name get binary [> tofile]	| Get the binary data of an adapter.| 
-| list apps [runtime-name] | Lists the apps.| 
-| deploy app [runtime-name] file | Deploys an app.| 
-| show app [runtime-name] app-name | Shows information about an app.| 
-| delete app [runtime-name] app-name | Deletes an app. | 
-| show app version [runtime-name] app-name environment version | Shows information about an app version. |
-| delete app version [runtime-name] app-name environment version | Deletes a version of an app. |
-| app [runtime-name] app-name show license-config | Shows the token license configuration of an app. |
-| app [runtime-name] app-name set license-config app-type license-type | Specifies the token license configuration for an app. |
-| app [runtime-name] app-name delete license-config | Removes the token license configuration for an app. | 
-| app version [runtime-name] app-name environment version get descriptor [> tofile]	| Gets the descriptor of an app version. | 
-| app version [runtime-name] app-name environment version get web-resources [> tofile] | Gets the web resources of an app version. | 
-| app version [runtime-name] app-name environment version set web-resources file | Specifies the web resources of an app version. | 
-| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | Gets the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version set authenticity-data [file] | Specifies the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version delete authenticity-data | Deletes the authenticity data of an app version. | 
-| app version [runtime-name] app-name environment version show user-config | Shows the user configuration of an app version. | 
-| app version [runtime-name] app-name environment version set user-config file | Specifies the user configuration of an app version. | 
-| app version [runtime-name] app-name environment version set user-config property = value | Specifies a property in the user configuration of an app version. |
-| list devices [runtime-name] [--query query] | Lists the devices. |
-| remove device [runtime-name] id | Removes a device. |
-| device [runtime-name] id set status new-status | Changes the status of a device. |
-| device [runtime-name] id set appstatus app-name new-status | Changes the status of a device for an app. |
-| list farm-members [runtime-name] | Lists the servers that are members of the server farm. |
-| remove farm-member [runtime-name] server-id | Removes a server from the list of farm members. |
+| show info	| 사용자 정보와 구성 정보를 표시합니다.  | 
+| show global-config | 글로벌 구성 정보를 표시합니다.  | 
+| show diagnostics | 진단 정보를 표시합니다.  | 
+| show versions	| 버전 정보를 표시합니다.  | 
+| unlock | 일반 용도의 잠금을 해제합니다.  | 
+| list runtimes [--in-database] | 런타임을 나열합니다.  | 
+| show runtime [runtime-name] | 런타임에 대한 정보를 표시합니다.  | 
+| delete runtime [runtime-name] condition | 런타임을 삭제합니다.  | 
+| show user-config [runtime-name] | 런타임의 사용자 구성을 표시합니다.  | 
+| set user-config [runtime-name] file | 런타임의 사용자 구성을 지정합니다.  | 
+| set user-config [runtime-name] property = value | 런타임의 사용자 구성에서 특성을 지정합니다.  | 
+| show confidential-clients [runtime-name] | 런타임의 기밀 클라이언트 구성을 표시합니다.  | 
+| set confidential-clients [runtime-name] file | 런타임의 기밀 클라이언트 구성을 지정합니다.  | 
+| set confidential-clients-rule [runtime-name] id display-name secret allowed-scope | 런타임의 기밀 클라이언트 구성에 대한 규칙을 지정합니다.  | 
+| list adapters [runtime-name] | 어댑터를 나열합니다.  | 
+| deploy adapter [runtime-name] property = value | 어댑터를 배치합니다. | 
+| show adapter [runtime-name] adapter-name | 어댑터에 대한 정보를 표시합니다. | 
+| delete adapter [runtime-name] adapter-name | 어댑터를 삭제합니다. | 
+| adapter [runtime-name] adapter-name get binary [> tofile]	| 어댑터의 2진 데이터를 가져옵니다. | 
+| list apps [runtime-name] | 앱을 나열합니다. | 
+| deploy app [runtime-name] file | 앱을 배치합니다. | 
+| show app [runtime-name] app-name | 앱에 대한 정보를 표시합니다. | 
+| delete app [runtime-name] app-name | 앱을 삭제합니다.  | 
+| show app version [runtime-name] app-name environment version | 앱 버전에 대한 정보를 표시합니다.  |
+| delete app version [runtime-name] app-name environment version | 앱 버전을 삭제합니다.  |
+| app [runtime-name] app-name show license-config | 앱의 토큰 라이센스 구성을 표시합니다.  |
+| app [runtime-name] app-name set license-config app-type license-type | 앱의 토큰 라이센스 구성을 지정합니다.  |
+| app [runtime-name] app-name delete license-config | 앱의 토큰 라이센스 구성을 제거합니다.  | 
+| app version [runtime-name] app-name environment version get descriptor [> tofile]	| 앱 버전의 디스크립터를 가져옵니다.  | 
+| app version [runtime-name] app-name environment version get web-resources [> tofile] | 앱 버전의 웹 자원을 가져옵니다.  | 
+| app version [runtime-name] app-name environment version set web-resources file | 앱 버전의 웹 자원을 지정합니다.  | 
+| app version [runtime-name] app-name environment version get authenticity-data [> tofile] | 앱 버전의 인증 데이터를 가져옵니다.  | 
+| app version [runtime-name] app-name environment version set authenticity-data [file] | 앱 버전의 인증 데이터를 지정합니다.  | 
+| app version [runtime-name] app-name environment version delete authenticity-data | 앱 버전의 인증 데이터를 삭제합니다.  | 
+| app version [runtime-name] app-name environment version show user-config | 앱 버전의 사용자 구성을 표시합니다.  | 
+| app version [runtime-name] app-name environment version set user-config file | 앱 버전의 사용자 구성을 지정합니다.  | 
+| app version [runtime-name] app-name environment version set user-config property = value | 앱 버전의 사용자 구성에서 특성을 지정합니다.  |
+| list devices [runtime-name][--query query] | 디바이스를 나열합니다.  |
+| remove device [runtime-name] id | 디바이스를 제거합니다.  |
+| device [runtime-name] id set status new-status | 디바이스 상태를 변경합니다.  |
+| device [runtime-name] id set appstatus app-name new-status | 앱의 디바이스 상태를 변경합니다.  |
+| list farm-members [runtime-name] | 서버 팜 멤버인 서버를 나열합니다.  |
+| remove farm-member [runtime-name] server-id | 팜 멤버 목록에서 서버를 제거합니다.  |
 
-#### Interactive mode
+#### 대화식 모드
 {: #interactive-mode }
-Alternatively, you can also call **mfpadm** without any command in the command line. You can then enter commands interactively, one per line.
-The `exit` command, or end-of-file on standard input (**Ctrl-D** on UNIX terminals) terminates mfpadm.
+다른 방법으로, 명령행에서 명령을 사용하지 않고 **mfpadm**을 호출할 수도 있습니다. 그런 다음 한 행에 하나씩 대화식으로 명령을 입력할 수 있습니다.
+`exit` 명령 또는 표준 입력에서 파일의 끝(EOF)(UNIX 터미널의 **Ctrl-D**)은 mfpadm을 종료합니다. 
 
-`Help` commands are also available in this mode. For example:
+`Help` 명령도 이 모드에서 사용할 수 있습니다. 예: 
 
 * help
 * help show versions
 * help device
 * help device set status
 
-#### Command history in interactive mode
+#### 대화식 모드의 명령 히스토리
 {: #command-history-in-interactive-mode }
-On some operating systems, the interactive mfpadm command remembers the command history. With the command history, you can select a previous command, using the arrow-up and arrow-down keys, edit it, and execute it.
+일부 운영 체제에서 대화식 mfpadm 명령은 명령 히스토리를 저장합니다. 명령 히스토리에서 위로 화살표 키와 아래로 화살표 키를 사용하여 이전 명령을 선택해서 편집하고 실행할 수 있습니다. 
 
-**On Linux**  
-The command history is enabled in terminal emulator windows if the rlwrap package is installed and found in PATH. To install the rlwrap package:
+**Linux의 경우**  
+rlwrap 패키지가 설치되어 있고 PATH에 있으면 터미널 에뮬레이터 창에서 명령 히스토리를 사용할 수 있습니다. rlwrap 패키지를 설치하려면 다음을 실행하십시오. 
 
-* On Red Hat Linux: `sudo yum install rlwrap`
-* On SUSE Linux: `sudo zypper install rlwrap`
-* On Ubuntu: `sudo apt-get install rlwrap`
+* Red Hat Linux의 경우: `sudo yum install rlwrap`
+* SUSE Linux의 경우: `sudo zypper install rlwrap`
+* Ubuntu의 경우: `sudo apt-get install rlwrap`
 
-**On OS X**  
-The command history is enabled in the Terminal program if the rlwrap package is installed and found in PATH. To install the rlwrap package:
+**OS X의 경우**  
+rlwrap 패키지가 설치되어 있고 PATH에 있으면 터미널 프로그램에서 명령 히스토리를 사용할 수 있습니다. rlwrap 패키지를 설치하려면 다음을 실행하십시오. 
 
-1. Install MacPorts by using the installer from [www.macports.org](http://www.macports.org).
-2. Run the command: `sudo /opt/local/bin/port install rlwrap`
-3. Then, to make the rlwrap program available in PATH, use this command in a Bourne-compatible shell: `PATH=/opt/local/bin:$PATH`
+1. [www.macports.org](http://www.macports.org)에서 설치 프로그램을 사용하여 MacPorts를 설치하십시오. 
+2. `sudo /opt/local/bin/port install rlwrap` 명령을 실행하십시오. 
+3. 그런 다음 PATH에서 rlwrap 프로그램을 사용할 수 있도록 Bourne 호환 가능 쉘에서 `PATH=/opt/local/bin:$PATH` 명령을 사용하십시오. 
 
-**On Windows**  
-The command history is enabled in cmd.exe console windows.
+**Windows의 경우**  
+cmd.exe 콘솔 창에서 명령 히스토리를 사용할 수 있습니다. 
 
-In environments where rlwrap does not work or is not required, you can disable its use through the option `--no-readline`.
+rlwrap가 작동하지 않거나 필요 없는 환경에서는 `--no-readline` 옵션을 통해 사용 안함으로 설정할 수 있습니다. 
 
-#### The configuration file
+#### 구성 파일
 {: #the-configuration-file }
-You can also store the options in a configuration file, instead of passing them on the command line at every call. When a configuration file is present and the option –configfile=file is specified, you can omit the following options:
+모든 호출에서 명령행에 옵션을 전달하는 대신 구성 파일에 옵션을 저장할 수도 있습니다. 구성 파일이 있으며 –configfile=file 옵션이 지정된 경우에는 다음 옵션을 생략할 수 있습니다. 
 
 * --url=URL
 * --secure=boolean
@@ -202,14 +202,14 @@ You can also store the options in a configuration file, instead of passing them 
 * --lock-timeout=seconds
 * runtime-name
 
-Use these commands to store these values in the configuration file.
+다음 명령을 사용하여 이러한 값을 구성 파일에 저장합니다. 
 
-| Command | Comment |
+| 명령 | 주석 |
 |---------|---------| 
 | mfpadm [--configfile=file] config url URL | | 
 | mfpadm [--configfile=file] config secure boolean | | 
 | mfpadm [--configfile=file] config user name | | 
-| mfpadm [--configfile=file] config password | Prompts for the password. | 
+| mfpadm [--configfile=file] config password | 비밀번호를 입력하도록 프롬프트를 표시합니다.  | 
 | mfpadm [--configfile=file] config timeout seconds | | 
 | mfpadm [--configfile=file] config connect-timeout seconds | | 
 | mfpadm [--configfile=file] config socket-timeout seconds | | 
@@ -217,118 +217,118 @@ Use these commands to store these values in the configuration file.
 | mfpadm [--configfile=file] config lock-timeout seconds | | 
 | mfpadm [--configfile=file] config runtime runtime-name | | 
 
-Use this command to list the values that are stored in the configuration file: `mfpadm [--configfile=file] config`
+구성 파일에 저장된 값을 나열하려면 다음 명령을 사용하십시오. `mfpadm [--configfile=file] config`
 
-The configuration file is a text file, in the encoding of the current locale, in Java **.properties** syntax. These are the default configuration files:
+구성 파일은 Java **.properties** 구문에서 현재 로케일로 인코딩된 텍스트 파일입니다. 기본 구성 파일은 다음과 같습니다. 
 
 * UNIX: **${HOME}/.mfpadm.config**
-* Windows: **{{ site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
+* Windows: **{{site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
 
-**Note:** When you do not specify a `--configfile` option, the default configuration file is used only in interactive mode and in config commands. For noninteractive use of the other commands, you must explicitly designate the configuration file if you want to use one.
+**참고:** `--configfile` 옵션을 지정하지 않는 경우 대화식 모드와 구성 명령에서만 기본 구성 파일이 사용됩니다. 기타 명령을 비대화식으로 사용하는 경우 구성 파일을 사용하려면 명시적으로 구성 파일을 지정해야 합니다. 
 
-> **Important:** The password is stored in an obfuscated format that hides the password from an occasional glimpse. However, this obfuscation provides no security.
+> **중요:** 비밀번호는 잠시라도 보이지 않도록 비밀번호를 숨기는 난독화된 형식으로 저장됩니다. 그러나 이러한 난독화가 보안을 제공하지는 않습니다.
 
-#### Generic options
+#### 일반 옵션
 {: #generic-options }
-There are also the usual generic options:
+일반적인 옵션도 있습니다. 
 
-| Option	| Description | 
+| 옵션	| 설명 | 
 |-----------|-------------|
-| --help	| Shows some usage help | 
-| --version	| Shows the version | 
+| --help	| 몇몇 사용법 도움말 표시 | 
+| --version	| 버전 표시 | 
 
-#### XML format
+#### XML 형식
 {: #xml-format }
-The commands that receive an XML response from the server verify that this response complies with the specific schema. You can disable this check by specifying `--xmlvalidation=none`.
+서버에서 XML 응답을 받는 명령은 이 응답이 특정 스키마를 준수하는지 확인합니다. `--xmlvalidation=none`을 지정하여 이 검사를 사용 안함으로 설정할 수 있습니다. 
 
-#### Output character set
+#### 출력 문자 세트
 {: #output-character-set }
-Normal output that is produced by the mfpadm program is encoded in the encoding format of the current locale. On Windows, this encoding format is "ANSI code page". The effects are as follows:
+mfpadm 프로그램에서 생성하는 일반 출력은 현재 로케일의 인코딩 형식으로 인코딩됩니다. Windows에서는 이 인코딩 형식을 "ANSI 코드 페이지"라고 합니다. 영향은 다음과 같습니다. 
 
-* Characters outside of this character set are converted to question marks when they are output.
-* When the output goes to a Windows command prompt window (cmd.exe), non-ASCII characters are incorrectly displayed because such windows assume characters to be encoded in "OEM code page".
+* 이 문자 세트 외부의 문자는 출력 시 물음표로 변환됩니다. 
+* 출력이 Windows 명령 프롬프트 창(cmd.exe)으로 이동하는 경우 해당 창에서는 문자가 "OEM 코드 페이지"에서 인코딩된다고 가정하므로 비ASCII 문자가 올바르지 않게 표시됩니다. 
 
-To work around this limitation:
+이 제한사항의 임시 해결책은 다음과 같습니다. 
 
-* On operating systems other than Windows, use a locale whose encoding is UTF-8. This format is the default locale on Red Hat Linux and OS X. Many other operating systems have a `en_US.UTF-8` locale.
-* Or use the mfpadm Ant task, with attribute `output="some file name"` to redirect the output of a command to a file.
+* Windows 이외의 운영 체제에서 인코딩이 UTF-8인 로케일을 사용하십시오. 이 형식은 Red Hat Linux와 OS X의 기본 로케일입니다. 기타 여러 운영 체제에는 `en_US.UTF-8` 로케일이 있습니다. 
+* 또는 `output="some file name"` 속성이 있는 mfpadm Ant 태스크를 사용하여 명령의 출력 경로를 파일로 재지정하십시오. 
 
-### Commands for general configuration
+### 일반 구성에 대한 명령
 {: #commands-for-general-configuration }
-When you call the **mfpadm** program, you can include various commands that access the global configuration of the IBM {{ site.data.keys.mf_server }} or of a runtime.
+**mfpadm** 프로그램을 호출할 때 IBM {{site.data.keys.mf_server }} 또는 런타임의 글로벌 구성에 액세스하는 여러 명령을 포함할 수 있습니다. 
 
-#### The `show global-config` command
+#### `show global-config` 명령
 {: #the-show-global-config-command }
-The `show global-config` command shows the global configuration.
+`show global-config` 명령은 글로벌 구성을 표시합니다. 
 
-Syntax: `show global-config`
+구문: `show global-config`
 
-It takes the following options:
+여기서는 다음 옵션을 사용합니다. 
 
-| Argument | Description |
+| 인수 | 설명 |
 |----------|-------------|
-| --xml    | Produces XML output instead of tabular output. | 
+| --xml    | 표 형식 출력 대신 XML 출력을 생성합니다.  | 
 
-**Example**  
+**예제**  
 
 ```bash
 show global-config
 ```
 
-This command is based on the [Global Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST service.
+이 명령은 [글로벌 구성(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
-#### The `show user-config` command
+#### `show user-config` 명령
 {: #the-show-user-config-command }
-The `show user-config` command shows the user configuration of a runtime.
+`show user-config` 명령은 런타임의 사용자 구성을 표시합니다. 
 
-Syntax: `show user-config [--xml] [runtime-name]`
+구문: `show user-config [--xml][runtime-name]`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description |
+| 인수 | 설명 |
 |----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | 런타임의 이름입니다.  |
 
-The `show user-config` command takes the following options after the verb.
+`show user-config` 명령에서는 verb 뒤에 다음 옵션을 사용합니다. 
 
-| Argument | Description | Required | Default | 
+| 인수 | 설명 | 필수 여부 | 기본값 | 
 |----------|-------------|----------|---------|
-| --xml | Produces output in XML format instead of JSON format. | No | Standard output | 
+| --xml | JSON 형식 대신 XML 형식으로 출력을 생성합니다.  | 아니오 | 표준 출력 | 
 
-**Example**  
+**예제**  
 
 ```bash
 show user-config mfp
 ```
 
-This command is based on the [Runtime Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST service.
+이 명령은 [런타임 구성(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
-#### The `set user-config` command
+#### `set user-config` 명령
 {: #the-set-user-config-command }
-The `set user-config` command specifies the user configuration of a runtime or a single property among this configuration.
+`set user-config` 명령은 런타임의 사용자 구성 또는 이 구성의 단일 특성을 지정합니다. 
 
-Syntax for the entire configuration: `set user-config [runtime-name] file`
+전체 구성의 구문: `set user-config [runtime-name] file`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Attribute | Description | 
+| 속성 | 설명 | 
 |-----------|-------------|
-| runtime-name | Name of the runtime. | 
-| file | Name of the JSON or XML file that contains the new configuration. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| file | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다.  | 
 
-Syntax for a single property: `set user-config [runtime-name] property = value`
+단일 특성의 구문: `set user-config [runtime-name] property = value`
 
-The `set user-config` command takes the following arguments:
+`set user-config` 명령에서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. |
-| value | The value of the property. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| property | JSON 특성의 이름입니다. 중첩된 특성의 경우 구문 prop1.prop2.....propN을 사용하십시오. JSON 배열 요소의 경우 특성 이름 대신 색인을 사용하십시오.  |
+| value | 특성의 값입니다.  | 
 
-**Examples**  
+**예제**  
 
 ```bash
 set user-config mfp myconfig.json
@@ -338,259 +338,259 @@ set user-config mfp myconfig.json
 set user-config mfp timeout = 240
 ```
 
-This command is based on the [Runtime configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST service.
+이 명령은 [런타임 구성(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST 서비스를 기반으로 합니다. 
 
 <br/>
-#### The `show confidential-clients` command
+#### `show confidential-clients` 명령
 {: #the-show-confidential-clients-command }
-The `show confidential-clients` command shows the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
+`show confidential-clients` 명령은 런타임에 액세스할 수 있는 기밀 클라이언트의 구성을 표시합니다. 기밀 클라이언트에 대한 자세한 정보는 [기밀 클라이언트](../../authentication-and-security/confidential-clients)를 참조하십시오. 
 
-Syntax: `show confidential-clients [--xml] [runtime-name]`
+구문: `show confidential-clients [--xml][runtime-name]`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Attribute | Description |
+| 속성 | 설명 |
 |-----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | 런타임의 이름입니다.  |
 
-The `show confidential-clients` command takes the following options after the verb.
+`show confidential-clients` 명령에서는 verb 뒤에 다음 옵션을 사용합니다. 
 
-| Argument | Description | Required | Default |
+| 인수 | 설명 | 필수 여부 | 기본값 |
 |----------|-------------|----------|---------|
-| --xml | Produces output in XML format instead of JSON format. | No | Standard output |
+| --xml | JSON 형식 대신 XML 형식으로 출력을 생성합니다.  | 아니오 | 표준 출력 |
 
-**Example**
+**예제**
 
 ```bash
 show confidential-clients --xml mfp
 ```
 
-This command is based on the [Confidential Clients (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc#Confidential-Clients--GET-) REST service.
+이 명령은 [기밀 클라이언트(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc#Confidential-Clients--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
-#### The `set confidential-clients` command
+#### `set confidential-clients` 명령
 {: #the-set-confidential-clients-command }
-The `set confidential-clients` command specifies the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
+`set confidential-clients` 명령은 런타임에 액세스할 수 있는 기밀 클라이언트의 구성을 지정합니다. 기밀 클라이언트에 대한 자세한 정보는 [기밀 클라이언트](../../authentication-and-security/confidential-clients)를 참조하십시오. 
 
-Syntax: `set confidential-clients [runtime-name] file`
+구문: `set confidential-clients [runtime-name] file`
 
-Its takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Attribute | Description | 
+| 속성 | 설명 | 
 |-----------|-------------|
-| runtime-name | Name of the runtime. | 
-| file	Name of the JSON or XML file that contains the new configuration. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| 새 구성이 포함된 JSON 또는 XML 파일의 파일 이름입니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 set confidential-clients mfp clients.xml
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+이 명령은 [기밀 클라이언트(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST 서비스를 기반으로 합니다. 
 
 <br/>
-#### The `set confidential-clients-rule` command
+#### `set confidential-clients-rule` 명령
 {: #the-set-confidential-clients-rule-command }
-The `set confidential-clients-rule` command specifies a rule in the configuration of the confidential clients that can access a runtime. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
+`set confidential-clients-rule` 명령은 런타임에 액세스할 수 있는 기밀 클라이언트의 구성에 규칙을 지정합니다. 기밀 클라이언트에 대한 자세한 정보는 [기밀 클라이언트](../../authentication-and-security/confidential-clients)를 참조하십시오. 
 
-Syntax: `set confidential-clients-rule [runtime-name] id displayName secret allowedScope`
+구문: `set confidential-clients-rule [runtime-name] id displayName secret allowedScope`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Attribute	| Description |
+| 속성	| 설명 |
 |-----------|-------------|
-| runtime | Name of the runtime. | 
-| id | The identifier of the rule. | 
-| displayName | The display name of the rule. | 
-| secret | The secret of the rule. | 
-| allowedScope | The scope of the rule. A space-separated list of tokens. Use double-quotes to pass a list of two or more tokens. | 
+| runtime | 런타임의 이름입니다.  | 
+| id | 규칙 ID입니다.  | 
+| displayName | 규칙의 표시 이름입니다.  | 
+| secret | 규칙의 시크릿입니다.  | 
+| allowedScope | 규칙의 범위입니다. 공백으로 구분된 토큰 목록입니다. 둘 이상의 토큰 목록을 전달하려면 큰따옴표를 사용하십시오.  | 
 
-**Example**
+**예제**
 
 ```bash
 set confidential-clients-rule mfp push Push lOa74Wxs "**"
 ```
 
-This command is based on the [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST service.
+이 명령은 [기밀 클라이언트(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST 서비스를 기반으로 합니다. 
 
-### Commands for adapters
+### 어댑터에 대한 명령
 {: #commands-for-adapters }
-When you invoke the **mfpadm** program, you can include various commands for adapters.
+**mfpadm** 프로그램을 호출할 때 어댑터에 대한 여러 명령을 포함할 수 있습니다. 
 
-### The `list adapters` command
+### `list adapters` 명령
 {: #the-list-adapters-command }
-The `list adapters` command returns a list of the adapters that are deployed for a runtime.
+`list adapters` 명령은 런타임에 사용하도록 배치되는 어댑터의 목록을 리턴합니다. 
 
-Syntax: `list adapters [runtime-name]`
+구문: `list adapters [runtime-name]`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | 런타임의 이름입니다.  |
 
-The `list adapters` command takes the following options after the object.
+`list adapters` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description | 
+| 옵션 | 설명 | 
 |--------|-------------|
-| --xml | Produce XML output instead of tabular output. | 
+| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  | 
 
-**Example**  
+**예제**  
 
 ```xml
 list adapters mfp
 ```
 
-This command is based on the [Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST service.
+이 명령은 [어댑터(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
-#### The `deploy adapter` command
+#### `deploy adapter` 명령
 {: #the-deploy-adapter-command }
-The `deploy adapter` command deploys an adapter in a runtime.
+`deploy adapter` 명령은 런타임에 어댑터를 배치합니다. 
 
-Syntax: `deploy adapter [runtime-name] file`
+구문: `deploy adapter [runtime-name] file`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
-| file | Binary adapter file (.adapter) |
+| runtime-name | 런타임의 이름입니다.  |
+| file | 2진 어댑터 파일입니다(.adapter).  |
 
-**Example**
+**예제**
 
 ```bash
 deploy adapter mfp MyAdapter.adapter
 ```
 
-This command is based on the [Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST service.
+이 명령은 [어댑터(POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST 서비스를 기반으로 합니다. 
 
 <br/>
-#### The `show adapter` command
+#### `show adapter` 명령
 {: #the-show-adapter-command }
-The `show adapter` command shows details about an adapter.
+`show adapter` 명령은 어댑터에 대한 세부사항을 표시합니다. 
 
-Syntax: `show adapter [runtime-name] adapter-name`
+구문: `show adapter [runtime-name] adapter-name`
 
-It takes the following arguments.
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
-| adapter-name | Name of an adapter |
+| runtime-name | 런타임의 이름입니다.  |
+| adapter-name | 어댑터의 이름입니다.  |
 
-The `show adapter` command takes the following options after the object.
+`show adapter` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description |
+| 옵션 | 설명 |
 |--------|-------------|
-| --xml | Produce XML output instead of tabular output. |
+| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
 
-**Example**
+**예제**
 
 ```bash
 show adapter mfp MyAdapter
 ```
 
-This command is based on the [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST service.
+이 명령은 [어댑터(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
-#### The `delete adapter` command
+#### `delete adapter` 명령
 {: #the-delete-adapter-command }
-The `delete adapter` command removes (undeploys) an adapter from a runtime.
+`delete adapter` 명령은 런타임에서 어댑터를 제거(배치 취소)합니다. 
 
-Syntax: `delete adapter [runtime-name] adapter-name`
+구문: `delete adapter [runtime-name] adapter-name`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description |
+| 인수 | 설명 |
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| adapter-name | Name of an adapter. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| adapter-name | 어댑터의 이름입니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 delete adapter mfp MyAdapter
 ```
 
-This command is based on the [Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_delete.html?view=kc#Adapter--DELETE-) REST service.
+이 명령은 [어댑터(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_delete.html?view=kc#Adapter--DELETE-) REST 서비스를 기반으로 합니다. 
 
 <br/>
-#### The `adapter` command prefix
+#### `adapter` 명령 접두부
 {: #the-adapter-command-prefix }
-The `adapter` command prefix takes the following arguments before the verb.
+`adapter` 명령 접두부에서는 verb 앞에 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| adapter-name | Name of an adapter. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| adapter-name | 어댑터의 이름입니다.  | 
 
 <br/>
-#### The `adapter get binary` command
+#### `adapter get binary` 명령
 {: #the-adapter-get-binary-command }
-The `adapter get binary` command returns the binary adapter file.
+`adapter get binary` 명령은 2진 어댑터 파일을 리턴합니다. 
 
-Syntax: `adapter [runtime-name] adapter-name get binary [> tofile]`
+구문: `adapter [runtime-name] adapter-name get binary [> tofile]`
 
-It takes the following options after the verb.
+여기서는 verb 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description | Required | Default | 
+| 옵션 | 설명 | 필수 여부 | 기본값 | 
 |--------|-------------|----------|---------|
-| > tofile | Name of the output file. | No | Standard output |
+| > tofile | 출력 파일의 이름입니다.  | 아니오 | 표준 출력 |
 
-**Example**
+**예제**
 
 ```bash
 adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 ```
 
-This command is based on the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST service.
+이 명령은 [런타임 자원 내보내기(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 서비스를 기반으로 합니다. 
 
 <br/>
-#### The `adapter show user-config` command
+#### `adapter show user-config` 명령
 {: #the-adapter-show-user-config-command }
-The `adapter show user-config` command shows the user configuration of the adapter.
+`adapter show user-config` 명령은 어댑터의 사용자 구성을 표시합니다. 
 
-Syntax: `adapter [runtime-name] adapter-name show user-config [--xml]`
+구문: `adapter [runtime-name] adapter-name show user-config [--xml]`
 
-It takes the following options after the verb.
+여기서는 verb 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description |
+| 옵션 | 설명 |
 |--------|-------------|
-| --xml | Produces output in XML format instead of JSON format. | 
+| --xml | JSON 형식 대신 XML 형식으로 출력을 생성합니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 adapter mfp MyAdapter show user-config
 ```
 
-This command is based on the [Adapter Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST service.
+이 명령은 [어댑터 구성(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
-#### The `adapter set user-config` command
+#### `adapter set user-config` 명령
 {: #the-adapter-set-user-config-command }
-The `adapter set user-config` command specifies the user configuration of the adapter or a single property within this configuration.
+`adapter set user-config` 명령은 어댑터의 사용자 구성 또는 이 구성의 단일 특성을 지정합니다. 
 
-Syntax for the entire configuration: `adapter [runtime-name] adapter-name set user-config file`
+전체 구성의 구문: `adapter [runtime-name] adapter-name set user-config file`
 
-It takes the following arguments after the verb.
+여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| Option | Description | 
+| 옵션 | 설명 | 
 |--------|-------------|
-| file | Name of the JSON or XML file that contains the new configuration. |
+| file | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다.  |
 
-Syntax for a single property: `adapter [runtime-name] adapter-name set user-config property = value`
+단일 특성의 구문: `adapter [runtime-name] adapter-name set user-config property = value`
 
-It takes the following arguments after the verb.
+여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| Option | Description |
+| 옵션 | 설명 |
 |--------|-------------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | 
-| value | The value of the property. | 
+| property | JSON 특성의 이름입니다. 중첩된 특성의 경우 구문 prop1.prop2.....propN을 사용하십시오. JSON 배열 요소의 경우 특성 이름 대신 색인을 사용하십시오.  | 
+| value | 특성의 값입니다.  | 
 
-**Examples**
+**예제**
 
 ```bash
 adapter mfp MyAdapter set user-config myconfig.json
@@ -600,325 +600,325 @@ adapter mfp MyAdapter set user-config myconfig.json
 adapter mfp MyAdapter set user-config timeout = 240
 ```
 
-This command is based on the [Adapter configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_put.html?view=kc) REST service.
+이 명령은 [어댑터 구성(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_put.html?view=kc) REST 서비스를 기반으로 합니다. 
 
-### Commands for apps
+### 앱에 대한 명령
 {: #commands-for-apps }
-When you invoke the **mfpadm** program, you can include various commands for apps.
+**mfpadm** 프로그램을 호출할 때 앱에 대한 여러 명령을 포함할 수 있습니다. 
 
-#### The `list apps` command
+#### `list apps` 명령
 {: #the-list-apps-command }
-The `list apps` command returns a list of the apps that are deployed in a runtime.
+`list apps` 명령은 런타임에 배치되는 앱의 목록을 리턴합니다. 
 
-Syntax: `list apps [runtime-name]`
+구문: `list apps [runtime-name]`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
+| runtime-name | 런타임의 이름입니다.  |
 
-The `list apps` command takes the following options after the object.
+`list apps` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description |
+| 옵션 | 설명 |
 |--------|-------------|
-| --xml | Produce XML output instead of tabular output. |
+| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
 
-**Example**
+**예제**
 
 ```bash
 list apps mfp
 ```
 
-This command is based on the [Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST service.
+이 명령은 [애플리케이션(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST 서비스를 기반으로 합니다. 
 
-#### The `deploy app` command
+#### `deploy app` 명령
 {: #the-deploy-app-command }
-The `deploy app` command deploys an app version in a runtime.
+`deploy app` 명령은 런타임에 앱 버전을 배치합니다. 
 
-Syntax: `deploy app [runtime-name] file`
+구문: `deploy app [runtime-name] file`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. |
-| file | The application descriptor, a JSON file. |
+| runtime-name | 런타임의 이름입니다.  |
+| file | 애플리케이션 디스크립터입니다(JSON 파일).  |
 
-**Example**
+**예제**
 
 ```bash
 deploy app mfp MyApp/application-descriptor.json
 ```
 
-This command is based on the [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST service.
+이 명령은 [애플리케이션(POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST 서비스를 기반으로 합니다. 
 
-#### The `show app` command
+#### `show app` 명령
 {: #the-show-app-command }
-The `show app` command shows details about an app in a runtime, in particular its environments and versions.
+`show app` 명령은 런타임에서 앱에 대한 세부사항(특히 해당 환경과 버전)을 표시합니다. 
 
-Syntax: `show app [runtime-name] app-name`
+구문: `show app [runtime-name] app-name`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| app-name | 앱의 이름입니다.  | 
 
-The `show app` command takes the following options after the object.
+`show app` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description |
+| 옵션 | 설명 |
 |--------|-------------|
-| --xml	 | Produce XML output instead of tabular output. |
+| --xml	 | 표 형식 출력 대신 XML 출력을 생성합니다.  |
 
-**Example**
+**예제**
 
 ```bash
 show app mfp MyApp
 ```
 
-This command is based on the [Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST service.
+이 명령은 [애플리케이션(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST 서비스를 기반으로 합니다. 
 
-#### The `delete app` command
+#### `delete app` 명령
 {: #the-delete-app-command }
-The `delete app` command removes (undeploys) an app, from all environments and all versions, from a runtime.
+`delete app` 명령은 런타임의 모든 환경과 모든 버전에서 앱을 제거(배치 취소)합니다. 
 
-Syntax: `delete app [runtime-name] app-name`
+구문: `delete app [runtime-name] app-name`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app | 
+| runtime-name | 런타임의 이름입니다.  | 
+| app-name | 앱의 이름입니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 delete app mfp MyApp
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+이 명령은 [애플리케이션 버전(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST 서비스를 기반으로 합니다. 
 
-#### The `show app version` command
+#### `show app version` 명령
 {: #the-show-app-version-command }
-The `show app version` command show details about an app version in a runtime.
+`show app version` 명령은 런타임에 앱 버전에 대한 세부사항을 표시합니다. 
 
-Syntax: `show app version [runtime-name] app-name environment version`
+구문: `show app version [runtime-name] app-name environment version`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform. | 
-| version | Version of the app. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| app-name | 앱의 이름입니다.  | 
+| environment | 모바일 플랫폼입니다.  | 
+| version | 앱의 버전입니다.  | 
 
-The `show app version` command takes the following options after the object.
+`show app version` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 | ---------|-------------|
-| -- xml | Produces XML output instead of tabular output. | 
+| -- xml | 표 형식 출력 대신 XML 출력을 생성합니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 show app version mfp MyApp iPhone 1.1
 ```
 
-This command is based on the [Application Version (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST service.
+이 명령은 [애플리케이션 버전(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST 서비스를 기반으로 합니다. 
 
-#### The `delete app version` command
+#### `delete app version` 명령
 {: #the-delete-app-version-command }
-The `delete app version` command removes (undeploys) an app version from a runtime.
+`delete app version` 명령은 런타임에서 앱 버전을 제거(배치 취소)합니다. 
 
-Syntax: `delete app version [runtime-name] app-name environment version`
+구문: `delete app version [runtime-name] app-name environment version`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform. | 
-| version | Version of the app. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| app-name | 앱의 이름입니다.  | 
+| environment | 모바일 플랫폼입니다.  | 
+| version | 앱의 버전입니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 delete app version mfp MyApp iPhone 1.1
 ```
 
-This command is based on the [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST service.
+이 명령은 [애플리케이션 버전(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST 서비스를 기반으로 합니다. 
 
-#### The `app` command prefix
+#### `app` 명령 접두부
 {: #the-app-command-prefix }
-The `app` command prefix takes the following arguments before the verb.
+`app` 명령 접두부에서는 verb 앞에 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| app-name | 앱의 이름입니다.  | 
 
-#### The `app show license-config` command
+#### `app show license-config` 명령
 {: #the-app-show-license-config-command }
-The `app show license-config` command shows the token license configuration of an app.
+`app show license-config` 명령은 앱의 토큰 라이센스 구성을 표시합니다. 
 
-Syntax: `app [runtime-name] app-name show license-config`
+구문: `app [runtime-name] app-name show license-config`
 
-It takes the following options after the object:
+여기서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 app mfp MyApp show license-config
 ```
 
-This command is based on the [Application license configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST service.
+이 명령은 [애플리케이션 라이센스 구성(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST 서비스를 기반으로 합니다. 
 
-#### The `app set license-config` command
+#### `app set license-config` 명령
 {: #the-app-set-license-config-command }
-The `app set license-config` command specifies the token license configuration of an app.
+`app set license-config` 명령은 앱의 토큰 라이센스 구성을 지정합니다. 
 
-Syntax: `app [runtime-name] app-name set license-config app-type license-type`
+구문: `app [runtime-name] app-name set license-config app-type license-type`
 
-It takes the following arguments after the verb.
+여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| appType | Type of app: B2C or B2E. | 
-| licenseType | Type of application: APPLICATION or ADDITIONAL_BRAND_DEPLOYMENT or NON_PRODUCTION. | 
+| appType | 앱의 유형입니다(B2C 또는 B2E).  | 
+| licenseType | 애플리케이션의 유형입니다(APPLICATION, ADDITIONAL_BRAND_DEPLOYMENT 또는 NON_PRODUCTION).  | 
 
-**Example**
+**예제**
 
 ```bash
 app mfp MyApp iPhone 1.1 set license-config B2E APPLICATION
 ```
 
-This command is based on the [Application License Configuration (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST service.
+이 명령은 [애플리케이션 라이센스 구성(POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST 서비스를 기반으로 합니다. 
 
-#### The `app delete license-config` command
+#### `app delete license-config` 명령
 {: #the-app-delete-license-config-command }
-The `app delete license-config` command resets the token license configuration of an app, that is, reverts it to the initial state.
+`app delete license-config` 명령은 앱의 토큰 라이센스 구성을 재설정하여 초기 상태로 되돌립니다. 
 
-Syntax: `app [runtime-name] app-name delete license-config`
+구문: `app [runtime-name] app-name delete license-config`
 
-**Example**
+**예제**
 
 ```bash
 app mfp MyApp iPhone 1.1 delete license-config
 ```
 
-This command is based on the [License configuration (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST service.
+이 명령은 [라이센스 구성(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST 서비스를 기반으로 합니다. 
 
-#### The `app version` command prefix
+#### `app version` 명령 접두부
 {: #the-app-version-command-prefix }
-The `app version` command prefix takes the following arguments before the verb.
+`app version` 명령 접두부에서는 verb 앞에 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| app-name | Name of an app. | 
-| environment | Mobile platform | 
-| version | Version of the app | 
+| runtime-name | 런타임의 이름입니다.  | 
+| app-name | 앱의 이름입니다.  | 
+| environment | 모바일 플랫폼입니다.  | 
+| version | 앱의 버전입니다.  | 
 
-#### The `app version get descriptor` command
+#### `app version get descriptor` 명령
 {: #the-app-version-get-descriptor-command }
-The `app version get descriptor` command returns the application descriptor of a version of an app.
+`app version get descriptor` 명령은 앱 버전의 애플리케이션 디스크립터를 리턴합니다. 
 
-Syntax: `app version [runtime-name] app-name environment version get descriptor [> tofile]`
+구문: `app version [runtime-name] app-name environment version get descriptor [> tofile]`
 
-It takes the following arguments after the verb.
+여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| Argument | Description | Required | Default | 
+| 인수 | 설명 | 필수 여부 | 기본값 | 
 |----------|-------------|----------|---------|
-| > tofile | Name of the output file. | No | Standard output | 
+| > tofile | 출력 파일의 이름입니다.  | 아니오 | 표준 출력 | 
 
-**Example**
+**예제**
 
 ```bash
 app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descriptor.json
 ```
 
-This command is based on the [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST service.
+이 명령은 [애플리케이션 디스크립터(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST 서비스를 기반으로 합니다. 
 
-#### The `app version get web-resources` command
+#### `app version get web-resources` 명령
 {: #the-app-version-get-web-resources-command }
-The `app version get web-resources` command returns the web resources of a version of an app, as a .zip file.
+`app version get web-resources` 명령은 앱 버전의 웹 자원을 .zip 파일로 리턴합니다. 
 
-Syntax: `app version [runtime-name] app-name environment version get web-resources [> tofile]`
+구문: `app version [runtime-name] app-name environment version get web-resources [> tofile]`
 
-It takes the following arguments after the verb.
+여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| Argument | Description | Required | Default | 
+| 인수 | 설명 | 필수 여부 | 기본값 | 
 |----------|-------------|----------|---------|
-| > tofile | Name of the output file. | No | Standard output | 
+| > tofile | 출력 파일의 이름입니다.  | 아니오 | 표준 출력 | 
 
-**Example**
+**예제**
 
 ```bash
 app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 ```
 
-This command is based on the [Retrieve Web Resource (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST service.
+이 명령은 [웹 자원 검색(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST 서비스를 기반으로 합니다. 
 
-#### The `app version set web-resources` command
+#### `app version set web-resources` 명령
 {: #the-app-version-set-web-resources-command }
-The `app version set web-resources` command specifies the web resources for a version of an app.
+`app version set web-resources` 명령은 앱 버전의 웹 자원을 지정합니다. 
 
-Syntax: `app version [runtime-name] app-name environment version set web-resources file`
+구문: `app version [runtime-name] app-name environment version set web-resources file`
 
-It takes the following arguments after the verb.
+여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| Argument | Description | 
-| file | Name of the input file (must be a .zip file). | 
+| 인수 | 설명 |
+| 파일 | 입력 파일의 이름입니다(.zip 파일이어야 함). | 
 
-**Example**
+**예제**
 
 ```bash
 app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 ```
 
-This command is based on the [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST service.
+이 명령은 [웹 자원 배치(POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST 서비스를 기반으로 합니다. 
 
-#### The `app version get authenticity-data` command
+#### `app version get authenticity-data` 명령
 {: #the-app-version-get-authenticity-data-command }
-The `app version get authenticity-data` command returns the authenticity data of a version of an app.
+`app version get authenticity-data` 명령은 앱 버전의 인증 데이터를 리턴합니다. 
 
-Syntax: `app version [runtime-name] app-name environment version get authenticity-data [> tofile]`
+구문: `app version [runtime-name] app-name environment version get authenticity-data [> tofile]`
 
-It takes the following arguments after the verb.
+여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| Argument | Description | Required | Default | 
-| > tofile | Name of the output file. | No | Standard output | 
+| 인수 | 설명 | 필수 여부 | 기본값 |
+| > tofile | 출력 파일의 이름입니다. | 아니오 | 표준 출력 | 
 
-**Example**
+**예제**
 
 ```bash
 app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity_data
 ```
 
-This command is based on the [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST service.
+이 명령은 [런타임 자원 내보내기(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 서비스를 기반으로 합니다. 
 
-#### The `app version set authenticity-data` command
+#### `app version set authenticity-data` 명령
 {: #the-app-version-set-authenticity-data-command }
-The `app version set authenticity-data` command specifies the authenticity data for a version of an app.
+`app version set authenticity-data` 명령은 앱 버전의 인증 데이터를 지정합니다. 
 
-Syntax: `app version [runtime-name] app-name environment version set authenticity-data file`
+구문: `app version [runtime-name] app-name environment version set authenticity-data file`
 
-It takes the following arguments after the verb.
+여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| file | Name of the input file:<ul><li>Either a .authenticity_data file,</li><li>Or a device file (.ipa or .apk or .appx), from which the authenticity data is extracted.</li></ul>| 
+| file | 입력 파일의 이름입니다. <ul><li>.authenticity_data 파일</li><li>또는 디바이스 파일(.ipa, .apk 또는 .appx)이며 여기에서 인증 데이터를 추출합니다. </li></ul>| 
 
-**Examples**
+**예제**
 
 ```bash
 app version mfp MyApp iPhone 1.1 set authenticity-data /tmp/MyApp.authenticity_data
@@ -932,64 +932,64 @@ app version mfp MyApp iPhone 1.1 set authenticity-data MyApp.ipa
 app version mfp MyApp android 1.1 set authenticity-data MyApp.apk
 ```
 
-This command is based on the [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST service.
+이 명령은 [애플리케이션 인증 데이터 배치(POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST 서비스를 기반으로 합니다. 
 
-#### The `app version delete authenticity-data` command
+#### `app version delete authenticity-data` 명령
 {: #the-app-version-delete-authenticity-data-command }
-The `app version delete authenticity-data` command deletes the authenticity data for a version of an app.
+`app version delete authenticity-data` 명령은 앱 버전의 인증 데이터를 삭제합니다. 
 
-Syntax: `app version [runtime-name] app-name environment version delete authenticity-data`
+구문: `app version [runtime-name] app-name environment version delete authenticity-data`
 
-**Example**
+**예제**
 
 ```bash
 app version mfp MyApp iPhone 1.1 delete authenticity-data
 ```
 
-This command is based on the [Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST service.
+이 명령은 [애플리케이션 인증(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST 서비스를 기반으로 합니다. 
 
-#### The `app version show user-config` command
+#### `app version show user-config` 명령
 {: #the-app-version-show-user-config-command }
-The `app version show user-config` command shows the user configuration of a version of an app.
+`app version show user-config` 명령은 앱 버전의 사용자 구성을 표시합니다. 
 
-Syntax: `app version [runtime-name] app-name environment version show user-config [--xml]`
+구문: `app version [runtime-name] app-name environment version show user-config [--xml]`
 
-It takes the following options after the verb.
+여기서는 verb 뒤에 다음 옵션을 사용합니다. 
 
-| Argument | Description | Required | Default | 
+| 인수 | 설명 | 필수 여부 | 기본값 | 
 |----------|-------------|----------|---------|
-| [--xml] | Produce output in XML format instead of JSON format. | No | Standard output | 
+| [--xml] | JSON 형식 대신 XML 형식으로 출력을 생성합니다.  | 아니오 | 표준 출력 | 
 
-**Example**
+**예제**
 
 ```bash
 app version mfp MyApp iPhone 1.1 show user-config
 ```
 
-This command is based on the [Application Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST service.
+이 명령은 [애플리케이션 구성(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST 서비스를 기반으로 합니다. 
 
-### The `app version set user-config` command
+### `app version set user-config` 명령
 {: #the-app-version-set-user-config-command }
-The `app version set user-config` command specifies the user configuration for a version of an app or a single property among this configuration.
+`app version set user-config` 명령은 앱 버전의 사용자 구성 또는 이 구성의 단일 특성을 지정합니다. 
 
-Syntax for the entire configuration: `app version [runtime-name] app-name environment version set user-config file`
+전체 구성의 구문: `app version [runtime-name] app-name environment version set user-config file`
 
-It takes the following arguments after the verb.
+여기서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| file | Name of the JSON or XML file that contains the new configuration. | 
+| file | 새 구성이 포함된 JSON 또는 XML 파일의 이름입니다.  | 
 
-Syntax for a single property: `app version [runtime-name] app-name environment version set user-config property = value`
+단일 특성의 구문: `app version [runtime-name] app-name environment version set user-config property = value`
 
-The `app version set user-config` command takes the following arguments after the verb.
+`app version set user-config` 명령에서는 verb 뒤에 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| property | Name of the JSON property. For a nested property, use the syntax prop1.prop2.....propN. For a JSON array element, use the index instead of a property name. | 
-| value | The value of the property. | 
+| property | JSON 특성의 이름입니다. 중첩된 특성의 경우 구문 prop1.prop2.....propN을 사용하십시오. JSON 배열 요소의 경우 특성 이름 대신 색인을 사용하십시오.  | 
+| value | 특성의 값입니다.  | 
 
-**Examples**
+**예제**
 
 ```bash
 app version mfp MyApp iPhone 1.1 set user-config /tmp/MyApp-config.json
@@ -999,32 +999,32 @@ app version mfp MyApp iPhone 1.1 set user-config /tmp/MyApp-config.json
 app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 ```
 
-This command is based on the [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST service.
+이 명령은 [애플리케이션 구성(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST 서비스를 기반으로 합니다. 
 
-### Commands for devices
+### 디바이스에 대한 명령
 {: #commands-for-devices }
-When you invoke the **mfpadm** program, you can include various commands for devices.
+**mfpadm** 프로그램을 호출할 때 디바이스에 대한 여러 명령을 포함할 수 있습니다. 
 
-#### The `list devices` command
+#### `list devices` 명령
 {: #the-list-devices-command }
-The `list devices` command returns the list of devices that have contacted the apps of a runtime.
+`list devices` 명령은 런타임의 앱에 접속한 디바이스의 목록을 리턴합니다. 
 
-Syntax: `list devices [runtime-name] [--query query]`
+구문: `list devices [runtime-name][--query query]`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| query | A friendly name or user identifier, to search for. This parameter specifies a string to search for. All devices that have a friendly name or user identifier that contains this string (with case-insensitive matching) are returned. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| query | 검색할 친숙한 이름 또는 사용자 ID입니다. 이 매개변수는 검색할 문자열을 지정합니다. 이 문자열(대소문자 구분 없이 일치)을 포함하는 친숙한 이름 또는 사용자 ID를 사용하는 모든 디바이스가 리턴됩니다.  | 
 
-The `list devices` command takes the following options after the object.
+`list devices` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description | 
+| 옵션 | 설명 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  | 
 
-**Examples**
+**예제**
 
 ```bash
 list-devices mfp
@@ -1034,51 +1034,51 @@ list-devices mfp
 list-devices mfp --query=john
 ```
 
-This command is based on the [Devices (GET) REST](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) service.
+이 명령은 [디바이스(GET) REST](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) 서비스를 기반으로 합니다. 
 
-#### The `remove device` command
+#### `remove device` 명령
 {: #the-remove-device-command }
-The `remove device` command clears the record about a device that has contacted the apps of a runtime.
+`remove device` 명령은 런타임의 앱에 접속한 디바이스에 대한 레코드를 지웁니다. 
 
-Syntax: `remove device [runtime-name] id`
+구문: `remove device [runtime-name] id`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| id | Unique device identifier. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| id | 고유 디바이스 ID입니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 ```
 
-This command is based on the [Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST service.
+이 명령은 [디바이스(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST 서비스를 기반으로 합니다. 
 
-#### The `device` command prefix
+#### `device` 명령 접두부
 {: #the-device-command-prefix }
-The `device` command prefix takes the following arguments before the verb.
+`device` 명령 접두부에서는 verb 앞에 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| id | Unique device identifier. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| id | 고유 디바이스 ID입니다.  | 
 
-#### The `device set status` command
+#### `device set status` 명령
 {: #the-device-set-status-command }
-The `device set status` command changes the status of a device, in the scope of a runtime.
+`device set status` 명령은 런타임의 범위에서 디바이스의 상태를 변경합니다. 
 
-Syntax: `device [runtime-name] id set status new-status`
+구문: `device [runtime-name] id set status new-status`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| new-status | New status. | 
+| new-status | 새 상태입니다.  | 
 
-The status can have one of the following values:
+상태의 값은 다음 중 하나입니다. 
 
 * ACTIVE
 * LOST
@@ -1086,127 +1086,127 @@ The status can have one of the following values:
 * EXPIRED
 * DISABLED
 
-**Example**
+**예제**
 
 ```bash
 device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED
 ```
 
-This command is based on the [Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST service.
+이 명령은 [디바이스 상태(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST 서비스를 기반으로 합니다. 
 
-#### The `device set appstatus` command
+#### `device set appstatus` 명령
 {: #the-device-set-appstatus-command }
-The `device set appstatus` command changes the status of a device, regarding an app in a runtime.
+`device set appstatus` 명령은 런타임에 애플리케이션과 관련하여 디바이스의 상태를 변경합니다. 
 
-Syntax: `device [runtime-name] id set appstatus app-name new-status`
+구문: `device [runtime-name] id set appstatus app-name new-status`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| app-name | Name of an app. | 
-| new-status | New status. | 
+| app-name | 앱의 이름입니다.  | 
+| new-status | 새 상태입니다.  | 
 
-The status can have one of the following values:
+상태의 값은 다음 중 하나입니다. 
 
 * ENABLED
 * DISABLED
 
 
-**Example**
+**예제**
 
 ```xml
 device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 ```
 
-This command is based on the [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST service.
+이 명령은 [디바이스 애플리케이션 상태(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST 서비스를 기반으로 합니다. 
 
-### Commands for troubleshooting
+### 문제점 해결에 대한 명령
 {: #commands-for-troubleshooting }
-When you invoke the **mfpadm** program, you can include various commands for troubleshooting.
+**mfpadm** 프로그램을 호출할 때 문제점 해결에 대한 여러 명령을 포함할 수 있습니다. 
 
-#### The `show info` command
+#### `show info` 명령
 {: #the-show-info-command }
-The `show info` command shows basic information about the {{ site.data.keys.product_adj }} administration services that can be returned without accessing any runtime nor database. This command can be used to test whether the {{ site.data.keys.product_adj }} administration services are running at all.
+`show info` 명령은 런타임 또는 데이터베이스에 액세스하지 않고 리턴할 수 있는 {{site.data.keys.product_adj }} 관리 서비스에 대한 기본 정보를 표시합니다. 이 명령을 사용하여 {{site.data.keys.product_adj }} 관리 서비스가 실행 중인지 여부를 테스트할 수 있습니다. 
 
-Syntax: `show info`
+구문: `show info`
 
-It takes the following options after the object.
+여기서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description | 
+| 옵션 | 설명 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. |
+| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  |
 
-**Example**
+**예제**
 
 ```bash
 show info
 ```
 
-#### The `show versions` command
+#### `show versions` 명령
 {: #the-show-versions-command }
-The `show versions` command displays the {{ site.data.keys.product_adj }} versions of various components:
+`show versions` 명령은 여러 컴포넌트의 {{site.data.keys.product_adj }} 버전을 표시합니다. 
 
-* **mfpadmVersion**: the exact {{ site.data.keys.mf_server }} version number from **which mfp-ant-deployer.jar** is taken.
-* **productVersion**: the exact {{ site.data.keys.mf_server }} version number from which **mfp-admin-service.war** is taken
-* **mfpAdminVersion**: the exact build version number of **mfp-admin-service.war** alone.
+* **mfpadmVersion**: **mfp-ant-deployer.jar**를 가져온 정확한 {{site.data.keys.mf_server }} 버전 번호입니다. 
+* **productVersion**: **mfp-admin-service.war**를 가져온 정확한 {{site.data.keys.mf_server }} 버전 번호입니다. 
+* **mfpAdminVersion**: **mfp-admin-service.war**의 정확한 빌드 버전 번호입니다. 
 
-Syntax: `show versions`
+구문: `show versions`
 
-It takes the following options after the object.
+여기서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description | 
+| 옵션 | 설명 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 show versions
 ```
 
-#### The `show diagnostics` command
+#### `show diagnostics` 명령
 {: #the-show-diagnostics-command }
-The `show diagnostics` command shows the status of various components that are necessary for the correct operation of the {{ site.data.keys.product_adj }} administration service, such as the availability of the database and of auxiliary services.
+`show diagnostics` 명령은 {{site.data.keys.product_adj }} 관리 서비스의 올바른 조작에 필요한 여러 컴포넌트의 상태를 표시합니다(예: 데이터베이스와 보조 서비스의 사용 가능성). 
 
-Syntax: `show diagnostics`
+구문: `show diagnostics`
 
-It takes the following options after the object.
+여기서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description | 
+| 옵션 | 설명 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 show diagnostics
 ```
 
-#### The `unlock` command
+#### `unlock` 명령
 {: #the-unlock-command }
-The `unlock` command releases the general-purpose lock. Some destructive operations take this lock in order to prevent concurrent modification of the same configuration data. In rare cases, if such an operation is interrupted, the lock might remain in locked state, making further destructive operations impossible. Use the unlock command to release the lock in such situations.
+`unlock` 명령은 일반 용도의 잠금을 해제합니다. 일부 안전하지 않은 조작에서는 동일한 구성 데이터가 동시에 수정되지 않도록 하기 위해 이 잠금을 사용합니다. 드물게 해당 조작이 인터럽트되는 경우 안전하지 않은 조작을 더 이상 수행할 수 없도록 잠금이 잠금 상태로 유지됩니다. 이런 경우 unlock 명령을 사용하여 잠금을 해제하십시오. 
 
-**Example**
+**예제**
 
 ```bash
 unlock
 ```
 
-#### The `list runtimes` command
+#### `list runtimes` 명령
 {: #the-list-runtimes-command }
-The `list runtimes` command returns a list of the deployed runtimes.
+`list runtimes` 명령은 배치된 런타임의 목록을 리턴합니다. 
 
-Syntax: `list runtimes [--in-database]`
+구문: `list runtimes [--in-database]`
 
-It takes the following options:
+여기서는 다음 옵션을 사용합니다. 
 
-| Option | Description | 
+| 옵션 | 설명 | 
 |--------|-------------|
-| --in-database	| Whether to look in the database instead of via MBeans | 
-| --xml | Produces XML output instead of tabular output. | 
+| --in-database	| MBean을 사용하는 대신 데이터베이스에서 찾을 것인지 여부 | 
+| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  | 
 
-**Examples**
+**예제**
 
 ```bash
 list runtimes
@@ -1216,104 +1216,104 @@ list runtimes
 list runtimes --in-database
 ```
 
-This command is based on the [Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST service.
+이 명령은 [런타임(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST 서비스를 기반으로 합니다. 
 
-#### The `show runtime` command
+#### `show runtime` 명령
 {: #the-show-runtime-command }
-The `show runtime` command shows information about a given deployed runtime.
+`show runtime` 명령은 주어진 배치된 런타임에 대한 정보를 표시합니다. 
 
-Syntax: `show runtime [runtime-name]`
+구문: `show runtime [runtime-name]`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
+| runtime-name | 런타임의 이름입니다.  | 
 
-The `show runtime` command takes the following options after the object.
+`show runtime` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description | 
+| 옵션 | 설명 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  | 
 
-This command is based on the [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST service.
+이 명령은 [런타임(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST 서비스를 기반으로 합니다. 
 
-**Example**
+**예제**
 
 ```bash
 show runtime mfp
 ```
 
-#### The `delete runtime` command
+#### `delete runtime` 명령
 {: #the-delete-runtime-command }
-The `delete runtime` command deletes a runtime, including its apps and adapters, from the database. You can delete a runtime only when its web application is stopped.
+`delete runtime` 명령은 데이터베이스에서 해당 앱과 어댑터를 비롯한 런타임을 삭제합니다. 해당 웹 애플리케이션이 중지된 경우에만 런타임을 삭제할 수 있습니다. 
 
-Syntax: `delete runtime [runtime-name] condition`
+구문: `delete runtime [runtime-name] condition`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| condition | Condition when to delete it: empty or always. **Attention:** The always option is dangerous. |
+| runtime-name | 런타임의 이름입니다.  | 
+| condition | 삭제 조건입니다(비어 있음 또는 항상). **주의:** 항상 옵션은 위험합니다.  |
 
-**Example**
+**예제**
 
 ```bash
 delete runtime mfp empty
 ```
 
-This command is based on the [Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST service.
+이 명령은 [런타임(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST 서비스를 기반으로 합니다. 
 
-#### The `list farm-members` command
+#### `list farm-members` 명령
 {: #the-list-farm-members-command }
-The `list farm-members` command returns a list of the farm member servers on which a given runtime is deployed.
+`list farm-members` 명령은 주어진 런타임이 배치되는 팜 멤버 서버의 목록을 리턴합니다. 
 
-Syntax: `list farm-members [runtime-name]`
+구문: `list farm-members [runtime-name]`
 
-It takes the following arguments:
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
+| runtime-name | 런타임의 이름입니다.  | 
 
-The `list farm-members` command takes the following options after the object.
+`list farm-members` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description | 
+| 옵션 | 설명 | 
 |--------|-------------|
-| --xml | Produces XML output instead of tabular output. | 
+| --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 list farm-members mfp
 ```
 
-This command is based on the [Farm topology members (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST service.
+이 명령은 [팜 토폴로지 멤버(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST 서비스를 기반으로 합니다. 
 
-#### The `remove farm-member` command
+#### `remove farm-member` 명령
 {: #the-remove-farm-member-command }
-The `remove farm-member` command removes a server from the list of farm members on which the specified runtime is deployed. Use this command when the server has become unavailable or disconnected.
+`remove farm-member` 명령은 지정된 런타임이 배치된 팜 멤버의 목록에서 서버를 제거합니다. 서버를 사용할 수 없거나 연결이 끊어진 경우 이 명령을 사용하십시오. 
 
-Syntax: `remove farm-member [runtime-name] server-id`
+구문: `remove farm-member [runtime-name] server-id`
 
-It takes the following arguments.
+여기서는 다음 인수를 사용합니다. 
 
-| Argument | Description | 
+| 인수 | 설명 | 
 |----------|-------------|
-| runtime-name | Name of the runtime. | 
-| server-id | Identifier of the server. | 
+| runtime-name | 런타임의 이름입니다.  | 
+| server-id | 서버의 ID입니다.  | 
 
-The `remove farm-member` command takes the following options after the object.
+`remove farm-member` 명령에서는 오브젝트 뒤에 다음 옵션을 사용합니다. 
 
-| Option | Description | 
+| 옵션 | 설명 | 
 |--------|-------------|
-| --force | Force removal of a farm member, even if it is available and connected. | 
+| --force | 사용 가능하거나 연결되어 있는 경우에도 팜 멤버의 제거를 강제 실행합니다.  | 
 
-**Example**
+**예제**
 
 ```bash
 remove farm-member mfp srvlx15
 ```
 
-This command is based on the [Farm topology members (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST service.
+이 명령은 [팜 토폴로지 멤버(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST 서비스를 기반으로 합니다. 

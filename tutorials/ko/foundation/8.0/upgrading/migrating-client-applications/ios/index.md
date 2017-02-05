@@ -1,88 +1,88 @@
 ---
 layout: tutorial
-title: Migrating existing iOS applications
+title: 기존 iOS 애플리케이션 마이그레이션
 breadcrumb_title: iOS
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-To migrate an existing native iOS project that was created with IBM MobileFirst™ Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in V8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
+IBM MobileFirst™ Platform Foundation 버전 6.2.0 이상으로 작성된 기존의 고유 iOS 프로젝트를 마이그레이션하려면 현재 버전에서 SDK를 사용하도록 프로젝트를 수정해야 합니다. 그런 다음 V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체하십시오. 마이그레이션 지원 도구는 코드를 스캔하고 대체할 API의 보고서를 생성할 수 있습니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
-* [Scanning existing {{ site.data.keys.product_adj }} native iOS apps to prepare for a version upgrade](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade)
-* [Migrating an existing iOS project manually](#migrating-an-existing-ios-project-manually)
-* [Migrating an existing native iOS project to with CocoaPods](#migrating-an-existing-native-ios-project-with-cocoapods)
-* [Migrating encryption in iOS](#migrating-encryption-in-ios)
-* [Updating the iOS code](#updating-the-ios-code)
+* [버전 업그레이드 준비를 위해 기존 {{site.data.keys.product_adj }} 고유 iOS 앱 스캔](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade)
+* [기존 iOS 프로젝트를 수동으로 마이그레이션](#migrating-an-existing-ios-project-manually)
+* [CocoaPods를 사용하여 기존 원시 iOS 프로젝트를 마이그레이션](#migrating-an-existing-native-ios-project-with-cocoapods)
+* [iOS에서 암호화 마이그레이션](#migrating-encryption-in-ios)
+* [iOS 코드 업데이트](#updating-the-ios-code)
 
-## Scanning existing {{ site.data.keys.product_adj }} native iOS apps to prepare for a version upgrade
+## 버전 업그레이드 준비를 위해 기존 {{site.data.keys.product_adj }} 고유 iOS 앱 스캔
 {: #scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade }
-The migration assistance tool helps you prepare your apps that were created with previous versions of IBM MobileFirst™ Platform Foundation for migration by scanning the sources of the native iOS apps that were developed by using Swift or Objective-C and generating a report of APIs that are deprecated or discontinued in V8.0.
+마이그레이션 지원 도구는 Swift 또는 Objective-C를 사용하여 개발된 고유 iOS 앱의 소스를 스캔하고 V8.0에서 더 이상 사용되지 않거나 중단된 API의 보고서를 생성하여 마이그레이션을 위해 IBM MobileFirst™ Platform Foundation의 이전 버전으로 작성된 앱을 준비하도록 도와줍니다. 
 
-The following information is important to know before you use the migration assistance tool:
+마이그레이션 지원 도구를 사용하기 전에 다음 정보를 파악하는 것이 중요합니다. 
 
-* You must have an existing IBM MobileFirst Platform Foundation native iOS application.
-* You must have internet access.
-* You must have node.js version 4.0.0 or later installed.
-* Review and understand the limitations of the migration process. For more information, see [Migrating apps from earlier releases](../).
+* 기존 IBM MobileFirst Platform Foundation 고유 iOS 애플리케이션이 있어야 합니다. 
+* 인터넷에 액세스할 수 있어야 합니다. 
+* node.js 버전 4.0.0 이상이 설치되어 있어야 합니다. 
+* 마이그레이션 프로세스의 제한사항을 검토하고 숙지하십시오. 자세한 정보는 [이전 릴리스에서 앱 마이그레이션](../)을 참조하십시오. 
 
-Apps that were created with earlier versions of IBM MobileFirst Platform Foundation are not supported in {{ site.data.keys.product }} 8.0 without some changes. The migration assistance tool simplifies the process by scanning the source files in the existing version app and identifies APIs that are deprecated, no longer supported, or modified in V8.0.
+IBM MobileFirst Platform Foundation의 이전 버전으로 작성된 앱은 몇 가지를 변경하지 않으면 {{site.data.keys.product }} 8.0에서 지원되지 않습니다. 마이그레이션 지원 도구는 기존 버전 앱에서 소스 파일을 스캔하여 프로세스를 단순화하고, V8.0에서 더 이상 사용되지 않거나 더 이상 지원되지 않거나 수정된 API를 식별합니다. 
 
-The migration assistance tool does not modify or move any developer code or comments of your app.
+마이그레이션 지원 도구는 앱의 주석 또는 개발자 코드를 수정하거나 이동하지 않습니다. 
 
-1. Download the migration assistance tool by using one of the following methods:
-    * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
-    * Download the {{ site.data.keys.mf_dev_kit }}, which contains the migration assistance tool as a file named **mfpmigrate-cli.tgz**, from the {{ site.data.keys.mf_console }}.
-2. Install the migration assistance tool.
-    * Change to the directory where you downloaded the tool.
-    * Use NPM to install the tool by entering the following command:
+1. 다음 방법 중 하나를 사용하여 마이그레이션 지원 도구를 다운로드하십시오. 
+    * [Jazzhub 저장소](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool)에서 .tgz 파일을 다운로드하십시오. 
+    * {{site.data.keys.mf_console }}에서 마이그레이션 지원 도구를 포함하는 {{site.data.keys.mf_dev_kit }}을 **mfpmigrate-cli.tgz**라는 파일로 다운로드하십시오. 
+2. 마이그레이션 지원 도구를 설치하십시오. 
+    * 도구를 다운로드한 디렉토리로 변경하십시오. 
+    * 다음 명령을 입력하여 NPM을 사용하여 도구를 설치하십시오. 
 
    ```bash
    npm install -g
    ```
    
-3. Scan the IBM MobileFirst Platform Foundation app by entering the following command:
+3. 다음 명령을 입력하여 IBM MobileFirst Platform Foundation 앱을 스캔하십시오. 
 
    ```bash
    mfpmigrate scan --in source_directory --out destination_directory --type ios
    ```
     
     **source_directory**  
-    The current location of the version project.
+    버전 프로젝트의 현재 위치입니다. 
 
     **destination_directory**  
-    The directory where the report is created.  
+   보고서가 작성된 디렉토리입니다.   
     <br/>
-    When it is used with the scan command, the migration assistance tool identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in V8.0 and saves them in the identified destination directory.
+    스캔 명령과 함께 사용될 때 마이그레이션 지원 도구는 V8.0에서 제거되었거나 더 이상 사용되지 않거나 변경된 API를 기존 IBM MobileFirst Platform Foundation 앱에서 식별하여 식별된 대상 디렉토리에 저장합니다. 
 
-## Migrating an existing iOS project manually
+## 기존 iOS 프로젝트를 수동으로 마이그레이션
 {: #migrating-an-existing-ios-project-manually }
-Migrate your existing native iOS project manually within your Xcode project and continue developing with {{ site.data.keys.product }} V8.0.
+Xcode 프로젝트 내에서 수동으로 기존 원시 iOS 프로젝트를 마이그레이션하고 {{site.data.keys.product }} V8.0으로 계속 개발하십시오. 
 
-Before you begin you must:
+시작하기 전에 다음 조건을 충족해야 합니다. 
 
-* be working in Xcode 7.0 (iOS 9) or later.
-* have an existing native iOS project that was created with IBM MobileFirst Platform Foundation 6.2.0 or later.
-* have access to a copy of the V8.0.0 {{ site.data.keys.product_adj }} iOS SDK files.
+* Xcode 7.0(iOS 9) 이상에서 작업 중이어야 합니다. 
+* IBM MobileFirst Platform Foundation 6.2.0 이상으로 작성된 기존의 고유 iOS 프로젝트가 있어야 합니다. 
+* V8.0.0 {{site.data.keys.product_adj }} iOS SDK 파일의 사본에 대한 액세스 권한이 있어야 합니다. 
 
-1. Delete all of the existing references to the static library **libWorklightStaticLibProjectNative.a** in the **Link Binary With Libraries** tab of **Build Phases** section.
-2. Delete the Headers folder from the **WorklightAPI** folder.
-3. In the **Build Phases** section, link the main required framework **IBMMobileFirstPlatformFoundation.framework** file in the **Link Binary With Libraries** tab.
+1. **빌드 단계** 섹션의 **라이브러리가 포함된 2진 링크** 탭에서 정적 라이브러리 **libWorklightStaticLibProjectNative.a**에 대한 모든 참조를 삭제하십시오. 
+2. **WorklightAPI** 폴더에서 Headers 폴더를 삭제하십시오. 
+3. **빌드 단계** 섹션의 **라이브러리가 포함된 2진 링크** 탭에서 기본 필수 프레임워크 **IBMMobileFirstPlatformFoundation.framework** 파일에 링크하십시오. 
 
-    This framework provides core {{ site.data.keys.product_adj }} functionality. Similarly, you can add [other frameworks for optional functionality](../../../application-development/sdk/ios/#manually-adding-the-mobilefirst-native-sdk).
+    이 프레임워크에서는 코어 {{site.data.keys.product_adj }} 기능이 제공됩니다. 마찬가지로, [선택적 기능을 위한 기타 프레임워크](../../../application-development/sdk/ios/#manually-adding-the-mobilefirst-native-sdk)를 추가할 수 있습니다. 
 
-4. Similar to the preceding step, link the following resources to your project in the **Link Binary With Libraries** section of the **Build Phases** tab.
+4. 이전 단계와 마찬가지로 **빌드 단계** 탭의 **라이브러리가 포함된 2진 링크** 섹션에서 프로젝트에 다음 자원을 링크하십시오. 
     * SystemConfiguration.framework
     * MobileCoreServices.framework
     * Security.framework
-    * Note: Some frameworks might already be linked.
+    * 참고: 일부 프레임워크는 이미 링크되었을 수 있습니다. 
         * libstdc++.6.tbd
         * libz.tbd
         * libc++.tbd
-5. Remove **$(SRCROOT)/WorklightAPI/include** from the header search path.
-6. Replace all of the existing {{ site.data.keys.product_adj }} imports of headers with a single entry of the following new umbrella header:
+5. 헤더 검색 경로에서 **$(SRCROOT)/WorklightAPI/include**를 제거하십시오. 
+6. 헤더의 모든 기존 {{site.data.keys.product_adj }} 가져오기를 다음 새 우산형 헤더의 단일 항목으로 바꾸십시오. 
     * Objective-C: 
 
       ```objc
@@ -94,42 +94,42 @@ Before you begin you must:
       import IBMMobileFirstPlatformFoundation
       ```
         
-Your application is now upgraded to work with the {{ site.data.keys.product }}, V8.0 iOS SDK.
+애플리케이션은 이제 {{site.data.keys.product }}, V8.0 iOS SDK에 대해 작동하도록 업그레이드됩니다. 
 
-#### What do to next
+#### 다음에 수행할 작업
 {: #what-to-do-next }
-Replace the client-side APIs that are discontinued or not in V8.0.
+V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체하십시오. 
 
-## Migrating an existing native iOS project with CocoaPods
+## CocoaPods를 사용하여 기존 원시 iOS 프로젝트를 마이그레이션
 {: #migrating-an-existing-native-ios-project-with-cocoapods }
-Migrate your existing native iOS project to work with V8.0 by getting the {{ site.data.keys.product }} iOS SDK using CocoaPods and making changes in the project configuration.
+CocoaPods를 사용하고 프로젝트 구성을 변경하여 {{site.data.keys.product }} iOS SDK를 가져옴으로써 V8.0에 대해 작동하도록 기존 고유 iOS 프로젝트를 마이그레이션하십시오. 
 
-> **Note:** {{ site.data.keys.product_adj }} development is supported in Xcode from version 7.1 by using iOS 8.0 and later.
+> **참고:** {{site.data.keys.product_adj }} 개발은 iOS 8.0 이상을 사용하여 버전 7.1의 Xcode에서 지원됩니다. 
 
-You must have:
+다음이 있어야 합니다. 
 
-* CocoaPods installed in your development environment.
-* Xcode 7.1 with iOS 8.0 or higher for your development environment.
-* An app integrated with MobileFirst 6.2 or later.
+* 개발 환경에 설치된 CocoaPods
+* 개발 환경에 대한 iOS 8.0 이상이 포함된 Xcode 7.1
+* MobileFirst 6.2 이상과 통합된 앱
 
-The SDK contains required and optional SDKs. Each required or optional SDK has its own pod.  
-The required IBMMobileFirstPlatformFoundation pod is the core of the system. It implements client-to-server connections, handles security, analytics, and application management.
+SDK에는 필수 및 선택적 SDK가 포함됩니다. 각 필수 또는 선택적 SDK에는 고유 POD가 있습니다.   
+필수 IBMMobileFirstPlatformFoundation POD는 시스템의 코어입니다. 이는 클라이언트-서버 연결을 구현하고 보안, 분석 및 애플리케이션 관리를 처리합니다. 
 
-The following optional pods provide additional features.
+다음 선택적 POD에서는 추가 기능을 제공합니다. 
 
-| Pod | Feature | 
+| POD | 기능 | 
 |-----|---------|
-| IBMMobileFirstPlatformFoundationPush | Adds the IBMMobileFirstPlatformFoundationPush framework for enabling Push. | 
-| IBMMobileFirstPlatformFoundationJSONStore | Implements the JSONStore feature. Include this pod in your Podfile if you intend to use the JSONStore feature in your app. |
-| IBMMobileFirstPlatformFoundationOpenSSLUtils | Contains the {{ site.data.keys.product_adj }} embedded OpenSSL feature and loads automatically the openssl framework. Include this pod in your Podfile if you intend to use the OpenSSL provided by {{ site.data.keys.product_adj }}. |
+| IBMMobileFirstPlatformFoundationPush | 푸시를 사용하는 데 필요한 IBMMobileFirstPlatformFoundationPush 프레임워크를 추가합니다.  | 
+| IBMMobileFirstPlatformFoundationJSONStore | JSONStore 기능을 구현합니다. 앱에서 JSONStore 기능을 사용하려면 Podfile에 이 POD를 포함시키십시오.  |
+| IBMMobileFirstPlatformFoundationOpenSSLUtils | {{site.data.keys.product_adj }} 임베디드 OpenSSL 기능을 포함하고 openssl 프레임워크를 자동으로 로드합니다. {{site.data.keys.product_adj }}에서 제공되는 OpenSSL을 사용하려면 Podfile에 이 POD를 포함시키십시오.  |
 
-1. Open your project in Xcode.
-2. Delete the **WorklightAPI** folder from your Xcode project (move it to trash).
-3. Modify your existing code in the following ways:
-    * Remove **$(SRCROOT)/WorklightAPI/include** from the header search path.
-    * Remove **$(PROJECTDIR)/WorklightAPI/frameworks** from the frameworks search path.
-    * Remove any references to the static **librarylibWorklightStaticLibProjectNative.a**.
-4. In the **Build Phases** tab, remove the links to the following frameworks and libraries (these are re-added automatically by CocoaPods):
+1. Xcode에서 프로젝트를 여십시오. 
+2. Xcode 프로젝트에서 **WorklightAPI** 폴더를 삭제(휴지통으로 이동)하십시오. 
+3. 다음 방법으로 기존 코드를 수정하십시오. 
+    * 헤더 검색 경로에서 **$(SRCROOT)/WorklightAPI/include**를 제거하십시오. 
+    * 프레임워크 검색 경로에서 **$(PROJECTDIR)/WorklightAPI/frameworks**를 제거하십시오. 
+    * 정적 **librarylibWorklightStaticLibProjectNative.a**에 대한 참조를 제거하십시오. 
+4. **빌드 단계** 탭에서 다음 프레임워크 및 라이브러리에 대한 링크를 제거하십시오(해당 항목은 CocoaPods에서 자동으로 다시 추가됨). 
     * libWorklightStaticLibProjectNative.a
     * SystemConfiguration.framework
     * MobileCoreServices.framework
@@ -139,13 +139,13 @@ The following optional pods provide additional features.
     * sqlcipher.framework
     * libstdc++.6.dylib
     * libz.dylib
-5. Close Xcode.
-6. Get the {{ site.data.keys.product_adj }} iOS SDK from CocoaPods. To get the SDK, complete the following steps:
-    * Open **Terminal** at the location of your new Xcode project.
-    * Run the `pod init` command to create a **Podfile** file.
-    * Open the Podfile file that is in the root of the project with a text editor.
-    * Comment out or remove the existing content.
-    * Add the following lines and save the changes, including the iOS version:
+5. Xcode를 닫으십시오. 
+6. CocoaPods에서 {{site.data.keys.product_adj }} iOS SDK를 가져오십시오. SDK를 가져오려면 다음 단계를 완료하십시오. 
+    * 새 Xcode 프로젝트의 위치에서 **터미널**을 여십시오. 
+    * `pod init ` 명령을 실행하여 **Podfile** 파일을 작성하십시오. 
+    * 텍스트 편집기로 프로젝트의 루트에 있는 Podfile 파일을 여십시오. 
+    * 기존 컨텐츠를 주석 처리하거나 제거하십시오. 
+    * 다음 행을 추가하고 iOS 버전을 포함하여 변경사항을 저장하십시오. 
 
       ```xml
       use_frameworks!
@@ -153,7 +153,7 @@ The following optional pods provide additional features.
       pod 'IBMMobileFirstPlatformFoundation'
       ```
       
-    * Specify additional pods in the file from the list above, if your app needs to use the additional functionality that they provide. For example, if your app uses OpenSSL, the **Podfile** might look like this:
+    * 앱에서 해당 POD가 제공하는 추가 기능을 사용해야 하는 경우 위 목록에서 파일에 추가 POD를 지정하십시오. 예를 들어, 앱에서 OpenSSL을 사용하는 경우 **Podfile**은 다음과 같습니다. 
     
       ```xml
       use_frameworks!
@@ -162,24 +162,24 @@ The following optional pods provide additional features.
       pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
       ```
         
-      > **Note:** The previous syntax imports the latest version of the **IBMMobileFirstPlatformFoundation** pod. If you are not using the latest version of {{ site.data.keys.product_adj }}, you need to add the full version number, including the major, minor, and patch numbers. The patch number is in the format YYYYMMDDHH. For example, for importing the specific patch version 8.0.2016021411 of the **IBMMobileFirstPlatformFoundation** pod the line would look like this:
+      > **참고:** 위의 구문은 **IBMMobileFirstPlatformFoundation** POD의 최신 버전을 가져옵니다. 최신 버전의 {{site.data.keys.product_adj }}를 사용 중이 아닌 경우, 주 버전 번호, 부 버전 번호 및 패치 번호를 포함하여 전체 버전 번호를 추가해야 합니다. 패치 번호의 형식은 YYYYMMDDHH입니다. 예를 들어, **IBMMobileFirstPlatformFoundation** POD의 특정 패치 버전 8.0.2016021411을 가져오기 위한 행은 다음과 같습니다.
 
       ```xml
       pod 'IBMMobileFirstPlatformFoundation', '8.0.2016021411'
       ```
         
-      Or to get the last patch for the minor version number the syntax such is
+      또는 부 버전 번호의 마지막 패치를 가져오는 경우 구문은 다음과 같습니다. 
     
       ```xml
       pod 'IBMMobileFirstPlatformFoundation', '~>8.0.0'
       ```
       
-    * Verify that the Xcode project is closed.
-    * Run the `pod install` command.
+    * Xcode 프로젝트의 처리가 완료되었는지 확인하십시오. 
+    * `pod install` 명령을 실행하십시오. 
         
-    This command installs the {{ site.data.keys.product_adj }} SDK **IBMMobileFirstPlatformFoundation.framework** and any other frameworks that are specified in the Podfile and their dependencies. It then generates the pods project, and integrates the client project with the {{ site.data.keys.product_adj }} SDK.
-7. Open your **ProjectName.xcworkspace** file in Xcode by typing open **ProjectName.xcworkspace** from a command line. This file is in the same directory as the **ProjectName.xcodeproj** file.
-8. Replace all of the existing {{ site.data.keys.product_adj }} imports of headers with a single entry of the following new umbrella header:
+    이 명령은 {{site.data.keys.product_adj }} SDK **IBMMobileFirstPlatformFoundation.framework** 및 Podfile 및 해당 종속 항목에서 지정되는 기타 프레임워크를 설치합니다. 그런 다음 pods 프로젝트를 생성하고 클라이언트 프로젝트를 {{site.data.keys.product_adj }} SDK와 통합합니다.
+7. 명령행에서 open **ProjectName.xcworkspace**를 입력하여 Xcode에서 **ProjectName.xcworkspace** 파일을 여십시오. 이 파일은 **ProjectName.xcodeproj** 파일과 동일한 디렉토리에 있습니다. 
+8. 헤더의 모든 기존 {{site.data.keys.product_adj }} 가져오기를 다음 새 우산형 헤더의 단일 항목으로 바꾸십시오. 
     
    **Objective-C**
     
@@ -193,7 +193,7 @@ The following optional pods provide additional features.
    import IBMMobileFirstPlatformFoundation
    ```
     
-   If you are using Push or JSONStore, you need to include an independent import.
+   Push 또는 JSONStore를 사용하는 경우 독립적 가져오기를 포함해야 합니다. 
 
    #### Push
    {: #push }
@@ -225,49 +225,49 @@ The following optional pods provide additional features.
    import IBMMobileFirstPlatformFoundationJSONStore
    ```
     
-9. In the **Build Settings** tab, under **Other Linker Flags**, add `$(inherited)` at the beginning of the `-ObjC` flag. For example:
+9. **빌드 설정** 탭의 **기타 링커 플래그** 아래에서 `-ObjC` 플래그의 시작 부분에 `$(inherited)`를 추가하십시오. 예: 
 
-    ![Adding $(inherited) to ObjC flag in Xcode Build Settings](add_inherited_to_ObjC.jpg)
+    ![Xcode 빌드 설정에서 ObjC 플래그에 $(inherited) 추가](add_inherited_to_ObjC.jpg)
  
-10. Beginning with Xcode 7, TLS must be enforced, see Enforcing TLS-secure connections in iOS apps.  
+10. Xcode 7부터는 TLS가 적용됩니다. iOS 앱에서 TLS 보안 연결 적용을 참조하십시오.   
 
 <br/>
-Your application is now upgraded to work with the {{ site.data.keys.product }}, V8.0 iOS SDK.
+애플리케이션은 이제 {{site.data.keys.product }}, V8.0 iOS SDK에 대해 작동하도록 업그레이드됩니다.
 
-#### What to do next
+#### 다음에 수행할 작업
 {: #what-to-do-next }
-Replace the client-side APIs that are discontinued or not in V8.0.
+V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체하십시오. 
 
-## Migrating encryption in iOS
+## iOS에서 암호화 마이그레이션
 {: #migrating-encryption-in-ios }
-If your iOS application used OpenSSL encryption, you might want to migrate your app to the new V8.0 native encryption. Also, if you want to continue using OpenSSL, you must install some additional frameworks.
+iOS 애플리케이션이 OpenSSL 암호화를 사용한 경우, 앱을 새 V8.0 고유 암호화로 마이그레이션할 수 있습니다. 또한 OpenSSL을 계속 사용하려면 일부 추가적인 프레임워크를 설치해야 합니다. 
 
-For more information on the iOS encryption options for migration, see [Enabling OpenSSL for iOS](../../../application-development/sdk/ios/additional-information/#enabling-openssl-for-ios).
+마이그레이션을 위한 iOS 암호화 옵션에 대한 자세한 정보는 [iOS에 대해 OpenSSL 사용](../../../application-development/sdk/ios/additional-information/#enabling-openssl-for-ios)을 참조하십시오. 
 
-## Updating the iOS code 
+## iOS 코드 업데이트 
 {: #updating-the-ios-code }
-After updating the iOS framework and making necessary configuration changes, a number of issues can be relevant to your specific application code.  
-The iOS API changes are listed in the table below.
+iOS 프레임워크를 업데이트하고 필요한 구성 변경사항을 작성한 후 여러 문제가 특정 애플리케이션 코드와 관련될 수 있습니다.   
+iOS API 변경사항을 아래 표에 나열했습니다. 
 
-| API element | Migration path | 
+| API 요소 | 마이그레이션 경로 | 
 |-------------|----------------|
-| {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClient purgeEventTransmissionBuffer]</code></li></ul>{:/} | Geolocation removed. Use native iOS or third-party packages for GeoLocation. |
-| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | No replacement. | 
-| `WL.Client.deleteUserPref(key, options)` | No replacement. You can use an adapter and the [`MFP.Server.getAuthenticatedUser`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser:) API to manage user preferences. | 
-| `[WLClient getRequiredAccessTokenScopeFromStatus]` | Use [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). | 
-| `[WLClient login:withDelegate:]` | Use [`WLAuthorizationManager login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/login:withCredentials:withCompletionHandler:). | 
-| `[WLClient logout:withDelegate:]` | Use [`WLAuthorizationManager logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/logout:withCompletionHandler:). | 
-| {::nomarkdown}<ul><li><code>[WLClient lastAccessToken]</code></li><li><code>[WLClient lastAccessTokenForScope:]</code></li></ul>{:/} | Use [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). | 
-| {::nomarkdown}<ul><li><code>[WLClient obtainAccessTokenForScope:withDelegate:]</code></li><li><code>[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]</code></li></ul>{:/} | Use [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:). |
-| `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString *) eventSource` | Use [Objective-C client-side push API for iOS apps](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps) from the IBMMobileFirstPlatformFoundationPush framework. |
-| `[WLClient - (int) getEventSourceIDFromUserInfo: (NSDictionary *) userInfo]` | Use [Objective-C client-side push API for iOS apps](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps) from the IBMMobileFirstPlatformFoundationPush framework. |
-| `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | Deprecated. Use [`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:) instead. |
-| `[WLClient sendUrlRequest:delegate:]` | Use [`[WLResourceRequest sendWithDelegate:delegate]`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:) instead. |
-| `[WLClient (void) logActivity:(NSString *) activityType]`	| Removed. Use an Objective C logger. | 
-| {::nomarkdown}<ul><li><code>[WLSimpleDataSharing setSharedToken: myName value: myValue]</code></li><li><code>[WLSimpleDataSharing getSharedToken: myName]]</code></li><li><code>[WLSimpleDataSharing clearSharedToken: myName]</code></li></ul>{:/} | Use the OS APIs to share tokens across applications. | 
-| `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | Use [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/BaseChallengeHandler.html?view=kc). | 
-| `BaseProvisioningChallengeHandler` | No replacement. Device provisioning is now handled automatically by the security framework. | 
-| `ChallengeHandler` | For custom gateway challenges, use [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). For {{ site.data.keys.product_adj }} security-check challenges, use [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). | 
-| `WLChallengeHandler` | Use [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). | 
-| `ChallengeHandler.isCustomResponse()` | Use [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc). | 
-| `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc). For {{ site.data.keys.product_adj }} security-check challenge handlers, use [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc). | 
+| {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClient purgeEventTransmissionBuffer]</code></li></ul>{:/} | 위치정보가 제거되었습니다. 위치정보에 대한 기본 iOS 또는 써드파티 패키지를 사용하십시오.  |
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | 대체 없음. | 
+| `WL.Client.deleteUserPref(key, options)` | 대체 없음. 어댑터와 [`MFP.Server.getAuthenticatedUser`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser:) API를 사용하여 사용자 환경 설정을 관리할 수 있습니다.  | 
+| `[WLClient getRequiredAccessTokenScopeFromStatus]` | [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:)를 사용하십시오.  | 
+| `[WLClient login:withDelegate:]` | [`WLAuthorizationManager login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/login:withCredentials:withCompletionHandler:)을 사용하십시오.  | 
+| `[WLClient logout:withDelegate:]` | [`WLAuthorizationManager logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/logout:withCompletionHandler:)을 사용하십시오.  | 
+| {::nomarkdown}<ul><li><code>[WLClient lastAccessToken]</code></li><li><code>[WLClient lastAccessTokenForScope:]</code></li></ul>{:/} | [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:)를 사용하십시오.  | 
+| {::nomarkdown}<ul><li><code>[WLClient obtainAccessTokenForScope:withDelegate:]</code></li><li><code>[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]</code></li></ul>{:/} | [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:)를 사용하십시오.  |
+| `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString *) eventSource` | IBMMobileFirstPlatformFoundationPush 프레임워크에서 [Objective-C client-side push API for iOS apps](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps)를 사용하십시오.  |
+| `[WLClient - (int) getEventSourceIDFromUserInfo: (NSDictionary *) userInfo]` | IBMMobileFirstPlatformFoundationPush 프레임워크에서 [Objective-C client-side push API for iOS apps](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps)를 사용하십시오.  |
+| `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | 더 이상 사용하지 않습니다. 대신 [`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:)를 사용하십시오.  |
+| `[WLClient sendUrlRequest:delegate:]` | 대신 [`[WLResourceRequest sendWithDelegate:delegate]`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:)를 사용하십시오. |
+| `[WLClient (void) logActivity:(NSString *) activityType]`	| 제거되었습니다. Objective C 로거를 사용하십시오.  | 
+| {::nomarkdown}<ul><li><code>[WLSimpleDataSharing setSharedToken: myName value: myValue]</code></li><li><code>[WLSimpleDataSharing getSharedToken: myName]]</code></li><li><code>[WLSimpleDataSharing clearSharedToken: myName]</code></li></ul>{:/} | 애플리케이션 사이에서 토큰을 공유하려면 OS API를 사용하십시오.  | 
+| `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/BaseChallengeHandler.html?view=kc)을 사용하십시오.  | 
+| `BaseProvisioningChallengeHandler` | 대체 없음. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다.  | 
+| `ChallengeHandler` | 사용자 정의 게이트웨이 인증 확인의 경우 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)를 사용하십시오.  | 
+| `WLChallengeHandler` | [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)를 사용하십시오.  | 
+| `ChallengeHandler.isCustomResponse()` | [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc)를 사용하십시오.  | 
+| `ChallengeHandler.submitAdapterAuthentication` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc)를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)를 사용하십시오.  | 

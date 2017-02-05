@@ -1,64 +1,72 @@
 ---
 layout: tutorial
-title: Product Main Capabilities
+title: 제품 주요 기능
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-With {{ site.data.keys.product_full }}, you can use capabilities such as development, testing, back-end connections, push notifications, offline mode, update, security, analytics, monitoring, and application publishing.
+{{site.data.keys.product_full }}에서는 개발, 테스트, 백엔드 연결, 푸시 알림, 오프라인 모드, 업데이트, 보안, 분석, 모니터링 및 애플리케이션 공개와 같은 기능을 사용할 수 있습니다. 
 
-### Development
+### 개발 
 {: #deployment }
-{{ site.data.keys.product }} provides a framework that enables the development, optimization, integration, and management of secure mobile applications (apps). {{ site.data.keys.product }} does not introduce a proprietary programming language or model that users must learn.
+{{site.data.keys.product }}는 보안 모바일 애플리케이션(앱)의 개발, 최적화, 통합 및 관리를 사용하는 프레임워크를 제공합니다. {{site.data.keys.product }}에서는 사용자가 학습해야 하는 전용 프로그래밍 언어 또는 모델을 소개하지 않습니다. 
 
-You can develop apps by using HTML5, CSS3, and JavaScript. You can optionally write native code (Java or Objective-C). {{ site.data.keys.product }} provides an SDK that includes libraries that you can access from native code.
+HTML5 및 CSS3과 JavaScript를 사용하여 앱을 개발할 수 있습니다. 선택적으로 고유 코드(Java 또는 Objective-C)를 작성할 수 있습니다. {{site.data.keys.product }}는 고유 코드를 통해 액세스할 수 있는 라이브러리가 포함된 SDK를 제공합니다. 
 
-#### Supported platforms
+#### 지원되는 플랫폼  
 {: #supported-platforms }
-The {{ site.data.keys.product }} SDKs support the following platforms:
+{{site.data.keys.product }} SDK는 다음 플랫폼을 지원합니다.
 
 * iOS
 * Android
-* Windows Universal 8.1 and Windows 10 UWP
-* Web apps
+* Windows Universal 8.1 및 Windows 10 UWP
+* 웹 앱
 
-### Back-end connections
+> **웹 앱용으로 지원되는 브라우저:**
+> 
+> |      브라우저      | Chrome | Safari* | Internet Explorer | Firefox | Android Browser |
+> |:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
+> | 지원되는 버전 |   43+  |    8+   |        10+        |   38+   |   Android 4.3+  |
+
+* 개인용 찾아보기 모드는 단일 페이지 애플리케이션과만 작동합니다. 기타 애플리케이션은 예상치 않은 동작을 가질 수 있습니다. 
+
+### 백엔드 연결
 {: #back-end-connections }
-Some mobile applications run strictly offline with no connection to a back-end system, but most mobile applications connect to existing enterprise services to provide the critical user-related functions. For example, customers can use a mobile application to shop anywhere, at any time, independent of the operating hours of the store. Their orders must still be processed by using the existing e-commerce platform of the store. To integrate a mobile application with enterprise services, you must use middleware such as a mobile gateway. {{ site.data.keys.product }} can act as this middleware solution and make communication with back-end services easier.
+일부 모바일 애플리케이션은 백엔드 시스템에 연결하지 않고 엄격하게 오프라인으로 실행되지만 대부분의 모바일 애플리케이션은 중요한 사용자 관련 기능을 제공하기 위해 기존 엔터프라이즈 서비스에 연결됩니다. 예를 들어, 고객은 모바일 애플리케이션을 사용하여 상점의 영업 시간과 관계없이 언제든지 어디에서나 쇼핑할 수 있습니다. 상점의 기존 전자 상거래 플랫폼을 사용하여 계속 주문을 처리해야 합니다. 모바일 애플리케이션을 엔터프라이즈 서비스와 통합하려면 모바일 게이트웨이와 같은 미들웨어를 사용해야 합니다. {{site.data.keys.product }}는 이 미들웨어 솔루션으로 작동할 수 있으며 백엔드 서비스와 쉽게 통신할 수 있습니다. 
 
-### Push notifications
+### 푸시 알림
 {: #push-notifications }
-With push notifications, enterprise applications can send information to mobile devices, even when the application is not being used. {{ site.data.keys.product }} includes a unified notification framework which provides a consistent mechanism for such push notifications. With this unified notification framework, you can send push notifications without having to know the details of each targeted device or platform because each mobile platform has a different mechanism for push notification.
+푸시 알림을 사용하면, 엔터프라이즈 애플리케이션은 사용 중이 아닌 경우에도 모바일 디바이스에 정보를 보낼 수 있습니다. {{site.data.keys.product }}에는 이러한 푸시 알림에 대해 일관적인 메커니즘을 제공하는 통합 알림 프레임워크가 포함되어 있습니다. 이러한 통합 알림 프레임워크를 사용하는 경우에는 각 모바일 플랫폼의 푸시 알림에 대한 메커니즘이 서로 다르므로 각 대상 디바이스 또는 플랫폼의 세부사항을 모르는 상태로 푸시 알림을 보낼 수 있습니다. 
 
-### Offline mode
+### 오프라인 모드
 {: #offline-mode }
-In terms of connectivity, mobile applications can operate offline, online, or in a mixed mode. {{ site.data.keys.product }} uses a client/server architecture that can detect whether a device has network connectivity, and the quality of the connection. Acting as a client, mobile applications periodically attempt to connect to the server and to assess the strength of the connection. An offline-enabled mobile application can be used when a mobile device lacks connectivity but some functions can be limited. When you create an offline-enabled mobile application, it is useful to store information about the mobile device that can help preserve its functionality in offline mode. This information typically comes from a back-end system, and you must consider data synchronization with the back end as part of the application architecture. {{ site.data.keys.product }} includes a feature that is called JSONStore for data exchange and storage. With this feature, you can create, read, update, and delete data records from a data source. Each operation is queued when operating offline. When a connection is available, the operation is transferred to the server and each operation is then performed against the source data.
+연결 관점에서 모바일 애플리케이션은 오프라인, 온라인 또는 혼합 모드로 작동할 수 있습니다. {{site.data.keys.product }}는 디바이스에 네트워크 연결이 있는지 여부와 연결의 품질을 발견할 수 있는 클라이언트/서버 아키텍처를 사용합니다. 클라이언트의 역할을 담당하는 모바일 애플리케이션은 서버에 주기적으로 연결하여 연결의 강도를 평가합니다. 모바일 디바이스에 연결이 없지만 일부 기능이 제한될 수 있는 경우 오프라인 가능 모바일 애플리케이션을 사용할 수 있습니다. 오프라인 가능 모바일 애플리케이션을 작성할 때 오프라인 모드에서 기능을 유지하는 데 도움이 될 수 있는 모바일 디바이스에 대한 정보를 저장하면 유용합니다. 이 정보는 일반적으로 백엔드 시스템에서 가져오며 애플리케이션 아키텍처의 일부분으로 백엔드와 데이터 동기화를 고려해야 합니다. {{site.data.keys.product }}에는 데이터 교환 및 스토리지에 대해 JSONStore라는 기능이 있습니다. 이 기능을 사용하여 데이터 소스에서 데이터 레코드 작성, 읽기, 업데이트 및 삭제를 수행할 수 있습니다. 오프라인에서 작동할 때 각 조작이 큐에 대기됩니다. 연결이 사용 가능한 경우 조작이 서버로 전송되고 소스 데이터에 대해 각 조작이 수행됩니다. 
 
-### Update
+### 업데이트
 {: #update }
-{{ site.data.keys.product }} simplifies version management and mobile application compatibility. Whenever a user starts a mobile application, the application communicates with a server. By using this server, {{ site.data.keys.product }} can determine whether a newer version of the application is available, and if so, give information to the user about it, or push an application update to the device. The server can also force an upgrade to the latest version of an application to prevent continued use of an outdated version.
+{{site.data.keys.product }}를 통해 버전 관리 및 모바일 애플리케이션 호환이 간단해집니다. 사용자가 모바일 애플리케이션을 시작할 때마다 애플리케이션이 서버와 통신합니다. {{site.data.keys.product }}는 이 서버를 사용하여 새 버전의 애플리케이션이 사용 가능한지 여부를 판별하고 사용 가능한 경우 사용자에게 이에 대한 정보를 제공하거나 디바이스에 애플리케이션 업데이트를 푸시합니다. 또한 서버는 오래된 버전의 계속적인 사용을 방지하기 위해 최신 버전의 애플리케이션으로 업그레이드하도록 강요할 수 있습니다. 
 
-### Security
+### 보안
 {: #security }
-Protecting confidential and private information is critical for all applications within an enterprise, including mobile applications. Mobile security applies at various levels, such as mobile application, mobile application services, or back-end service. You must ensure customer privacy and protect confidential data from being accessed by unauthorized users. Dealing with privately owned mobile devices means giving up control on certain lower levels of security, such as the mobile operating system.
+모바일 애플리케이션을 포함하여 엔터프라이즈에서 모든 애플리케이션의 기밀 및 개인 정보 보호는 매우 중요합니다. 모바일 보안은 모바일 애플리케이션, 모바일 애플리케이션 서비스 또는 백엔드 서비스와 같은 다양한 레벨에 적용됩니다. 고객의 사생활을 보장하고 권한이 없는 사용자가 액세스하지 못하도록 기밀 데이터를 보호해야 합니다. 개인적으로 소유하는 모바일 디바이스에 대한 처리는 모바일 운영 체제와 같은 특정 하위 레벨 보안에 대한 제어 포기를 의미합니다. 
 
-{{ site.data.keys.product }} provides secure, end-to-end communication by positioning a server that oversees the flow of data between the mobile application and your back-end systems. With {{ site.data.keys.product }}, you can define custom security handlers for any access to this flow of data. Because any access to data of a mobile application has to go through this server instance, you can define different security handlers for mobile applications, web applications, and back-end access. With this kind of granular security, you can define separate levels of authentication for different functions of your mobile application. You can also prevent mobile applications from accessing sensitive information.
+{{site.data.keys.product }}는 모바일 애플리케이션과 백엔드 시스템 간 데이터 흐름을 감시하는 서버를 배치하여 안전한 엔드 투 엔드 통신을 제공합니다. {{site.data.keys.product }}를 사용하여 이 데이터 흐름에 액세스하도록 사용자 정의 보안 핸들러를 정의할 수 있습니다. 모바일 애플리케이션 데이터에 대한 액세스는 이 서버 인스턴스를 통해야 하므로 모바일 애플리케이션, 웹 애플리케이션, 백엔드 액세스를 위한 다른 보안 핸들러를 정의할 수 있습니다. 이러한 종류의 세부 단위의 보안을 사용하면 모바일 애플리케이션의 다양한 기능에 대해 별도의 인증 레벨을 정의할 수 있습니다. 모바일 애플리케이션이 민감한 정보에 액세스하지 못하도록 방지할 수도 있습니다. 
 
-### Analytics
+### 분석
 {: #analytics }
-The {{ site.data.keys.mf_analytics }} feature enables searching across apps, services, devices, and other sources to collect data about usage, or to detect problems.
+{{site.data.keys.mf_analytics }} 기능을 통해 사용법에 대한 데이터를 수집하거나 문제점을 발견하기 위해 앱, 서비스, 디바이스 및 기타 소스를 검색할 수 있습니다.
 
-In addition to reports that summarize app activity, {{ site.data.keys.product }} includes a scalable operational analytics platform accessible in the {{ site.data.keys.mf_console }}. The {{ site.data.keys.mf_analytics_short }} feature enables enterprises to search across logs and events that are collected from devices, apps, and servers for patterns, problems, and platform usage statistics. You can enable analytics, reports, or both, depending on your needs.
+앱 활동을 요약하는 보고서 외에 {{site.data.keys.product }}에는 {{site.data.keys.mf_console }}에서 액세스할 수 있는 확장 가능한 운영 분석 플랫폼이 포함되어 있습니다. {{site.data.keys.mf_analytics_short }} 기능을 통해 엔터프라이즈는 패턴, 문제점 및 플랫폼 사용법 통계에 대해 디바이스, 앱 및 서버에서 수집된 로그 및 이벤트를 검색할 수 있습니다. 필요에 따라 분석, 보고서 중 하나 또는 둘 다 사용할 수 있습니다. 
 
-### Monitoring
+### 모니터링 
 {: #monitoring }
-{{ site.data.keys.product }} includes a range of operational analytics and reporting mechanisms for collecting, viewing, and analyzing data from your {{ site.data.keys.product }} applications and servers, and for monitoring server health.
+{{site.data.keys.product }}에는 {{site.data.keys.product }} 애플리케이션과 서버의 데이터를 수집, 보기 및 분석하고, 서버 상태를 모니터링하기 위한 운영 분석 범위와 보고 메커니즘이 있습니다. 
 
-### Application publishing
+### 애플리케이션 공개
 {: #application-publishing }
-{{ site.data.keys.product }} Application Center is an enterprise application store. With the Application Center, you can install, configure, and administer a repository of mobile applications for use by individuals and groups across your enterprise. You can control who in your organization can access the Application Center and upload applications to the Application Center repository, and who can download and install these applications onto a mobile device. You can also use the Application Center to collect feedback from users and access information about devices on which applications are installed.
+{{site.data.keys.product }} Application Center는 엔터프라이즈 애플리케이션 스토어입니다. Application Center를 사용하면 엔터프라이즈에서 개인 및 그룹에 사용할 모바일 애플리케이션의 저장소를 설치, 구성, 관리할 수 있습니다. Application Center에 액세스하고 Application Center 저장소에 애플리케이션을 업로드할 수 있는 조직의 구성원과 이러한 애플리케이션을 다운로드하여 모바일 디바이스에 설치할 수 있는 구성원을 제어할 수 있습니다. 또한 Application Center를 사용하면 사용자로부터 피드백을 수집하고 애플리케이션이 설치된 디바이스에 대한 정보에 액세스할 수 있습니다. 
 
-The concept of the Application Center is similar to the concept of the Apple public App Store or the Google Play store, except that it targets the development process.
+Application Center의 대상이 개발 프로세스라는 점을 제외하고 Application Center의 개념은 Apple 공용 앱 스토어나 Google Play 스토어의 개념과 비슷합니다. 
 
-The Application Center provides a repository for storing the mobile application files and a web-based console for managing that repository. The Application Center also provides a mobile client application to allow users to browse the catalog of applications that are stored by the Application Center, install applications, leave feedback for the development team, and expose production applications to IBM  Endpoint Manager. Access to download and install applications from the Application Center is controlled by using access control lists (ACLs).
+Application Center는 모바일 애플리케이션 파일을 저장할 수 있는 저장소와 해당 저장소를 관리하기 위한 웹 기반 콘솔을 제공합니다. Application Center는 또한 Application Center에 의해 저장된 애플리케이션의 카탈로그를 찾아보고, 애플리케이션을 설치하고, 개발 팀에 피드백을 남기고, 프로덕션 애플리케이션을 IBM Endpoint Manager에 노출할 수 있도록 하기 위해 모바일 클라이언트 애플리케이션을 제공합니다. Application Center에서 애플리케이션을 다운로드하고 설치하기 위한 액세스는 액세스 제어 목록(ACL)을 사용하여 제어됩니다. 

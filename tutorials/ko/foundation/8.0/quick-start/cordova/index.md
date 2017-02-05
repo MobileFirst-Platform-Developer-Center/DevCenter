@@ -1,57 +1,57 @@
 ---
 layout: tutorial
-title: Cordova end-to-end demonstration
+title: Cordova 엔드-투-엔드 데모
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-The purpose of this demonstration is to experience an end-to-end flow:
+이 데모의 목적은 엔드-투-엔드 플로우를 경험해보는 것입니다. 
 
-1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
-2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
-3. The application logic is changed to make a resource request.
+1. {{site.data.keys.product_adj }} 클라이언트 SDK가 사전에 번들된 샘플 애플리케이션을 등록하고 {{site.data.keys.mf_console }}에서 다운로드합니다.
+2. 새 어댑터 또는 제공된 어댑터가 {{site.data.keys.mf_console }}에 배치됩니다.  
+3. 자원 요청을 하도록 애플리케이션 로직이 변경됩니다.
 
-**End result**:
+**종료 결과**:
 
-* Successfully pinging the {{ site.data.keys.mf_server }}.
-* Successfully retrieving data using an adapter.
+* {{site.data.keys.mf_server }} ping을 실행함.
+* 어댑터를 사용하여 데이터를 검색함.
 
-#### Prerequisites:
+#### 전제조건: 
 {: #prerequisites }
-* Xcode for iOS, Android Studio for Android or Visual Studio 2013/2015 for Windows 8.1 Universal / Windows 10 UWP
+* iOS용 Xcode, Android용 Android Studio 또는 Windows 8.1 Universal/Windows 10 UWP용 Visual Studio 2013/2015
 * Cordova CLI 6.x.
-* *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
-* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* *선택사항*. {{site.data.keys.mf_cli }} ([다운로드]({{site.baseurl}}/downloads))
+* *선택사항*. 독립형 {{site.data.keys.mf_server }} ([다운로드]({{site.baseurl}}/downloads))
 
-### 1. Starting the {{ site.data.keys.mf_server }}
+### 1. {{site.data.keys.mf_server }} 시작
 {: #1-starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+[Mobile Foundation 인스턴스를 작성](../../bluemix/using-mobile-foundation)했는지 확인하십시오. 또는  
+[{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst)를 사용하는 경우, 서버의 폴더로 이동해서 Mac 및 Linux의 경우 `./run.sh` 또는 Windows의 경우 `run.cmd` 명령을 실행하십시오. 
 
-### 2. Creating and registering an application
+### 2. 애플리케이션 작성 및 등록
 {: #2-creating-and-registering-an-application }
-In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+브라우저 창에서 URL `http://your-server-host:server-port/mfpconsole`을 로드하여 {{site.data.keys.mf_console }}을 여십시오. 로컬에서 실행 중인 경우 [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)을 사용하십시오. 사용자 이름/비밀번호는 *admin/admin*입니다.
  
-1. Click the **New** button next to **Applications**
-    * Select a platform: **Android, iOS, Windows**
-    * Enter **com.ibm.mfpstartercordova** as the **application identifier**
-    * Enter **1.0.0** as the **version**
-    * Click on **Register application**
+1. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하십시오.
+    * **Android, iOS, Windows** 플랫폼을 선택하십시오.
+    * **com.ibm.mfpstartercordova**를 **애플리케이션 ID**로 입력하십시오.
+    * **1.0.0**을 **버전**으로 입력하십시오.
+    * **애플리케이션 등록**을 클릭하십시오.
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-cordova.png"/>
+    <img class="gifplayer" alt="애플리케이션 등록" src="register-an-application-cordova.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the Cordova sample application.
+2. Cordova 샘플 애플리케이션을 다운로드하려면 **스타터 코드 가져오기** 타일에서 클릭하여 선택하십시오.
 
-    <img class="gifplayer" alt="Download sample application" src="download-starter-code-cordova.png"/>
+    <img class="gifplayer" alt="샘플 애플리케이션 다운로드" src="download-starter-code-cordova.png"/>
  
-### 3. Editing application logic
+### 3. 애플리케이션 로직 편집
 {: #3-editing-application-logic }
-1. Open the Cordova project in your code editor of choice.
+1. 선택한 코드 편집기로 Cordova 프로젝트를 여십시오.
 
-2. Select the **www/js/index.js** file and paste the following code snippet, replacing the existing `WLAuthorizationManager.obtainAccessToken()` function:
+2. **www/js/index.js** 파일을 선택하고 다음 코드 스니펫을 붙여넣기하면 다음과 같이 기존 `WLAuthorizationManager.obtainAccessToken()` 함수를 바꿉니다.
 
 ```javascript
 WLAuthorizationManager.obtainAccessToken()
@@ -84,55 +84,55 @@ WLAuthorizationManager.obtainAccessToken()
     );
 ```
     
-### 4. Deploy an adapter
+### 4. 어댑터 배치
 {: #4-deploy-an-adapter }
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
+[이 준비된 .adapter 아티팩트](../javaAdapter.adapter)를 다운로드하고 **조치 → 어댑터 배치** 조치를 사용하여 {{site.data.keys.mf_console }}에서 배치하십시오.
 
-Alternatively, click the **New** button next to **Adapters**.  
+그렇지 않으면 **어댑터** 옆에 있는 **새로 작성** 단추를 클릭하십시오.  
         
-1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
+1. **조치 → 샘플 다운로드** 옵션을 선택하십시오. "Hello World" **Java** 어댑터 샘플을 다운로드하십시오.
 
-    > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
+    > Maven 및 {{site.data.keys.mf_cli }}가 설치되지 않은 경우, 화면상의 **개발 환경 설정** 지시사항을 따르십시오.
 
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+2. **명령행** 창에서 어댑터의 Maven 프로젝트 루트 폴더로 이동해서 다음 명령을 실행하십시오.
 
     ```bash
     mfpdev adapter build
     ```
 
-3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+3. 빌드가 완료되면 **조치 → 어댑터 배치** 조치를 사용하여 {{site.data.keys.mf_console }}에서 배치하십시오. **[adapter]/target** 폴더에서 어댑터를 찾을 수 있습니다.
     
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
+    <img class="gifplayer" alt="어댑터 배치" src="create-an-adapter.png"/>   
 
 
-<img src="cordovaQuickStart.png" alt="sample application" style="float:right"/>
-### 5. Testing the application
+<img src="cordovaQuickStart.png" alt="샘플 애플리케이션" style="float:right"/>
+### 5. 애플리케이션 테스트
 {: #5-testing-the-application }
-1. From a **Command-line** window, navigate to the Cordova project's root folder.
-2. Run the command: `cordova platform add ios|android|windows` to add a platform.
-3. In the Cordova project, select the **config.xml** file and edit the  `<mfp:server ... url=" "/>` value with the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
-    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
+1. **명령행** 창에서 Cordova 프로젝트의 루트 폴더로 이동하십시오.
+2. `cordova platform add ios|android|windows` 명령을 실행하여 플랫폼을 추가하십시오.
+3. Cordova 프로젝트에서 **config.xml** 파일을 선택하고 **프로토콜**, **호스트** 및 **포트** 특성의 `<mfp:server ... url=" "/>` 값을 사용자의 {{site.data.keys.mf_server }}에 올바른 값으로 편집하십시오.
+    * 로컬 {{site.data.keys.mf_server }}를 사용 중인 경우, 일반적으로 값은 **http**, **localhost** 및 **9080**입니다.
+    * 원격 {{site.data.keys.mf_server }}를 사용 중인 경우(Bluemix에서), 일반적으로 값은 **https**, **your-server-address** 및 **443**입니다.
 
-    Alternatively, if you have installed the {{ site.data.keys.mf_cli }}, then navigate to the project root folder and run the command `mfpdev app register`. If a remote {{ site.data.keys.mf_server }} is used, [run the command `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add the server, followed by for example: `mfpdev app register myBluemixServer`.
+    또는, {{site.data.keys.mf_cli }}를 설치한 경우에는 프로젝트 루트 폴더로 이동해서 `mfpdev app register` 명령을 실행하십시오. 원격 {{site.data.keys.mf_server }}가 사용된 경우, [`mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 명령을 실행하여 서버를 추가하고, 예를 들면 `mfpdev app register myBluemixServer`를 이어서 실행하십시오.
 	
-If a device is connected, the application will be installed and launched in the device,  
-Otherwise the Simulator or Emulator will be used.
+디바이스가 연결된 경우 애플리케이션이 그 디바이스에 설치되어 실행됩니다.  
+그렇지 않으면 시뮬레이터 또는 에뮬레이터가 사용됩니다.
 
 <br clear="all"/>
-### Results
+### 결과
 {: #results }
-* Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
-* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
+* **{{site.data.keys.mf_server }} Ping** 단추를 클릭하면 **{{site.data.keys.mf_server }}에 연결됨**이 표시됩니다.
+* 애플리케이션이 {{site.data.keys.mf_server }}에 연결할 수 없는 경우, 배치된 Java 어댑터를 사용하는 자원 요청이 발생합니다. 
 
-The adapter response is then displayed in an alert.
+그 후에 어댑터 응답이 경보에 표시됩니다.
 
-## Next steps
+## 다음 단계
 {: #next-steps }
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
+애플리케이션에서 어댑터 사용하기 및 {{site.data.keys.product_adj }} 보안 프레임워크를 사용하여 푸시 알림과 같은 추가 서비스를 통합하는 방법에 대해 더 학습합니다.
 
-- Review the [Application development](../../application-development/) tutorials
-- Review the [Adapters development](../../adapters/) tutorials
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review the [Notifications tutorials](../../notifications/)
-- Review [All Tutorials](../../all-tutorials)
+- [애플리케이션 개발](../../application-development/) 학습서 검토
+- [어댑터 개발](../../adapters/) 학습서 검토
+- [인증 및 보안 학습서](../../authentication-and-security/) 검토
+- [알림 학습서](../../notifications/) 검토
+- [모든 학습서](../../all-tutorials) 검토
