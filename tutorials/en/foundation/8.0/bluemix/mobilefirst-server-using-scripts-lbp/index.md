@@ -127,7 +127,7 @@ If you choose to run the scripts interactively, you can skip the configuration b
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. You can find the empty template files and the explanation of the arguments in the <b>args</b> folder, or post running the scripts interactively in the <b>recorded-args</b> folder. Following are the files:<br/>
+            The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. You can find the empty template files and the explanation of the arguments in the <b>args</b> folder, or after running the scripts interactively in the <b>recorded-args</b> folder. Following are the files:<br/>
             
               <h4>initenv.properties</h4>
               This file contains properties used to run the environment initialization.
