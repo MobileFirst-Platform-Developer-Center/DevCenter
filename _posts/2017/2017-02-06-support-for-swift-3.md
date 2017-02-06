@@ -1,5 +1,5 @@
 ---
-title: IBM MobileFirst Foundation Support for Swift 3.0
+title: IBM MobileFirst Foundation 8.0 Support for Swift 3.0
 date: 2017-02-06
 tags:
 - MobileFirst_Foundation
