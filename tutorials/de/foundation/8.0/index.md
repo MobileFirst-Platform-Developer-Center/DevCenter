@@ -10,20 +10,25 @@ show_breadcrumb: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-{{ site.data.keys.product_full }} radically simplifies building, managing, and updating your mobile application with a pre-integrated, comprehensive set of mobile application services.
+Die {{site.data.keys.product_full }} vereinfacht die Erstellung, Verwaltung und Aktualisierung Ihrer mobilen Anwendung radikal mit einer Reihe vorintegrierter, umfassender Services für mobile Anwendungen.
 
-Developers can build their application using the front-end framework and tools of their choice, and easily add push, authentication, offline sync, and business logic to their apps with the {{ site.data.keys.product }} software development kit (SDK) available across a wide range of supported mobile platforms. {{ site.data.keys.product }} enables you to control your application from client to server, and thus allows you to capture business data at the point of interaction. {{ site.data.keys.product }} apps also enable you to employ a streamlined and repeatable process for incremental app updates and run your apps in flexible hybrid cloud patterns.
+Entwickler können Ihre Anwendung mit dem Front-End-Framework und den Tools Ihrer Wahl erstellen und mit dem
+Software Development Kit (SDK) der {{site.data.keys.product }}, das für ein breites Spektrum unterstützter mobiler Plattformen verfügbar ist,
+ohne großen Aufwand Funktionen für Push, Authentifizierung und Offlinesynchronisation
+sowie Geschäftslogik zu ihren Apps hinzufügen. Mit der {{site.data.keys.product }} können Sie Ihre Anwendung vom Client zum Server kontrollieren und so
+am Interaktionspunkt Geschäftsdaten erfassen. MobileFirst-Foundation-Apps ermöglichen zudem die Implementierung eines optimierten Prozesses für inkrementelle App-Aktualisierungen.
+Sie können Ihre Apps in flexiblen Hybrid-Cloud-Mustern ausführen. 
 
-To review all categories and tutorials visit:
+Besuchen Sie die folgenden Seiten, um sich einen Überblick über sämtliche Kategorien und Lernprogramme zu verschaffen: 
 
-* [All Tutorials](all-tutorials/)
+* [Alle Lernprogramme](all-tutorials/)
 
-For curated content visit: 
+Betreute Inhalte finden Sie auf folgenden Seiten:  
 
-* [Cordova development](cordova-tutorials/)
-* [iOS development](ios-tutorials/) 
-* [Android development](android-tutorials/) 
-* [Windows 8.1 Universal and Windows 10 UWP development](windows-8-10-tutorials/)
-* [Xamarin development](xamarin-tutorials/)
-* [Web application development](web-tutorials/)
-* [Server-side development](server-side-tutorials/)
+* [Cordova-Entwicklung ](cordova-tutorials/)
+* [iOS-Entwicklung](ios-tutorials/) 
+* [Android-Entwicklung](android-tutorials/) 
+* [Entwicklung für Windows 8.1 Universal und Windows 10 UWP](windows-8-10-tutorials/)
+* [Xamarin-Entwicklung](xamarin-tutorials/)
+* [Webanwendungsentwicklung](web-tutorials/)
+* [Serverseitige Entwicklung](server-side-tutorials/)
