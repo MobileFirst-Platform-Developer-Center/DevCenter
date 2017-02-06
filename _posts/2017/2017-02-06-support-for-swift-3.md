@@ -19,6 +19,10 @@ To update the SDK:
 2. Run the command: `pod update`
 3. Open the Xcode project and re-build it.
 
-> **Note:** The Swift Migration assistant for Swift 3.0 may modify some method signatures of APIs belonging to the iOS SDK. To prevent syntax errors, be sure to first update the iOS SDK and only then migrate to Swift 3.0.
+> **Note:** The Swift Migration assistant for Swift 3.0 modifies several method signatures of APIs belonging to the iOS SDK. To prevent syntax errors, be sure to first update the iOS SDK and only then migrate to Swift 3.0.
 
+The update to the SDK makes sure that the following APIs will not break during the Swift Migration assistant's migration process:
 
+* `registerChallengeHandler`
+* `sendUrlRequest`
+* `canHandleResponse`
