@@ -157,11 +157,15 @@ body {
 			background-color: #5AAAFA;
 			color: white;
 			text-align: center;
-			padding: 12px;
+			padding: 12px 10px 10px 10px;
 			border-radius: 0;
 			text-decoration: none;
 			text-shadow: none;
 			font-size: 14px;
+         
+         &:hover {
+            background-color: #28536f;
+         }
 		}
 	}
 
