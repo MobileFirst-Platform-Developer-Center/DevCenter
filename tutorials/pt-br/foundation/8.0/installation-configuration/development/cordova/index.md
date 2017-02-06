@@ -1,8 +1,8 @@
 ---
 layout: tutorial
 title: Configurando o ambiente de desenvolvimento do Cordova
-breadcrumb_title: Cordova
-relevantTo: [cordova]
+breadcrumb_title: android
+relevantTo: [cordova,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
