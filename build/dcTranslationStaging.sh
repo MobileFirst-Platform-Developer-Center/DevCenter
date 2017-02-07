@@ -139,7 +139,6 @@ EXAMPLES
 	local -a dc_tsc_dir_names=( pt-br zh-hans fr de ja ko ru es )
 	# TSCs counter
 	local dc_tscs_ctr=${#dc_tsc_ids[@]}
-	local local_branch="$(git symbolic-ref --short -q HEAD)"
 
 	local input=""
 	local quiet=""
@@ -149,7 +148,19 @@ EXAMPLES
 
 	local merge_commit="--no-commit"
 	local commit_edit="--no-edit"
-	
+
+	local git_head="$(git symbolic-ref --short -q HEAD)"
+	local git_remote=$(git config branch.$git_head.remote)
+	local git_merge_head_ref=$(git config branch.$(git symbolic-ref --short -q HEAD).merge)
+	local git_merge_head=${git_merge_head_ref#refs/heads/}
+
+	# Verify that the current branch is tracking remote branch $DC_TRANS_BRANCH
+	if [ "${DC_TRANS_BRANCH}" != "${git_merge_head}" ]; then
+		echo "ERROR: The current branch (${git_head}) is tracking remote branch ${git_remote}/${git_merge_head}."
+		echo "To run $FUNCNAME, first check out the ${DC_GIT_REPO} ${DC_TRANS_BRANCH} branch."
+		return 1
+	fi
+
 	# Get commands
 	while :
 	do
@@ -202,13 +213,13 @@ EXAMPLES
 		git pull $quiet $verbose ${DC_GIT_REPO_URL} ${DC_TRANS_BRANCH}
 
 		# Fetch from the $DC_GIT_REPO master branch
-		qecho $quiet "Fetching from the ${DC_GIT_REPO} master branch into local branch ${local_branch} ..."
+		qecho $quiet "Fetching from the ${DC_GIT_REPO} master branch into local branch ${git_head} ..."
 		git fetch $quiet $verbose ${DC_GIT_REPO_URL} master
 
 		out=$(git log -p ..FETCH_HEAD)
 		if [ "" == "${out}" ]; then # The local branch is up to date with the master branch -> nothing to merge
 			let is_merge=0
-			qecho $quiet "** Merge not required: local branch ${local_branch} is already up to date with the ${DC_GIT_REPO} master branch."
+			qecho $quiet "** Merge not required: local branch ${git_head} is already up to date with the ${DC_GIT_REPO} master branch."
 		else if [ "" == "$quiet" ]; then # Merge from master is required
 			read -p "Display a patched commit log of the fetched changes [y/n]? " input
 			while :
@@ -236,7 +247,7 @@ EXAMPLES
 
 		if [ 1 -eq $is_merge ]; then
 			# Merge from .git/FETCH_HEAD = $DC_GIT_REPO master
-			qecho $quiet "Merging from the ${DC_GIT_REPO} master branch into local branch ${local_branch} (merge options: $merge_commit $commit_edit) ..."
+			qecho $quiet "Merging from the ${DC_GIT_REPO} master branch into local branch ${git_head} (merge options: $merge_commit $commit_edit) ..."
 			if [ "--no-commit" == "$merge_commit" ]; then # Merge without an automatic commit
 				git merge $quiet $verbose $merge_commit FETCH_HEAD
 				
