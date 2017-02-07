@@ -136,6 +136,7 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 
 ### Client-side
 {: #client-side }
+
 | Java Methods | Description |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
