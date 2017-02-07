@@ -112,8 +112,4 @@
     "name": "Downloads",
     "path": "/downloads",
     "extraClasses": "hidden-xs hidden-sm hidden-md"
-},{
-    "name": "Try Bluemix services",
-    "path": "/bluemix-services",
-    "extraClasses": "hidden-lg hidden-xs hidden-sm hidden-md"
 }]

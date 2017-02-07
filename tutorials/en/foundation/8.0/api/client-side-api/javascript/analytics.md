@@ -17,4 +17,4 @@ The following table lists the two classes available in the IBM® MobileFirst® W
 
 ## API Reference
 {: #api-reference }
-<iframe width="100%" height="1000px" frameBorder="0" src="../../../api-ref/wl-web-analytics-client-js-apidoc/html/refjavascript-web-analytics-client/html/index.html"></iframe>
+<iframe width="100%" height="1000px" frameBorder="0" src="../../../../../../../../../api-ref/wl-web-analytics-client-js-apidoc/html/refjavascript-web-analytics-client/html/index.html"></iframe>
