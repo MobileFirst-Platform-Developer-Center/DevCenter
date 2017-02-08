@@ -93,17 +93,18 @@ If the `push.mobileclient` scope is mapped to a **security check**, you need to 
 
 ### Client-side
 {: #client-side }
-| Swift Methods                                                                                                | Description                                                             |
-|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
-| [`isPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
-| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token)                                                | Sends the device token to the server                                    |
-| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
-| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
-| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
-| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
-| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
+
+| Swift Methods | Description  |
+|---------------|--------------|
+| [`initialize()`](#initialization) | Initializes MFPPush for supplied context. |
+| [`isPushSupported()`](#is-push-supported) | Does the device support push notifications. |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) | Registers the device with the Push Notifications Service.|
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | Sends the device token to the server |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | Subscribes the device to the specified tag(s). |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | Retrieves all tags the device is currently subscribed to. |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | Unregisters the device from the Push Notifications Service              |
 
 #### Initialization
 {: #initialization }
