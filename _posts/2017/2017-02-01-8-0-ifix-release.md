@@ -63,7 +63,7 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
 **MobileFirst CLI**  
 To upgrade, run `npm install -g mfpdev-cli`.
 
-> Be sure to use Node.js 5 or 6. Node.js 7 has a known issue and cannot be used.
+> Be sure to use Node.js 5.x or 6.x, as Node.js 7.x is currently not supported.
 
 ## Individual artifacts build numbers included in iFix
 **Server**  
