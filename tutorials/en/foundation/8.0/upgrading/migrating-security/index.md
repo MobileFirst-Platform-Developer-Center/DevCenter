@@ -7,8 +7,6 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
 weight: 3
 ---
-
-<!-- ==== Overview ==== -->
 ## Overview
 {: #overview }
 
@@ -22,10 +20,9 @@ The [third part](#migrating-other-v71-security-configurations) explains how to m
 {% comment %} I edited and reordered, including splitting part two into two and three - which matches the header levels in the original doc. I moved the links (which I also edited) to each second-level header ("part").
 {% endcomment %}
 
-> **Note:** Before you start the migration, you are advised to read the [V8.0 migration cookbook](../migration-cookbook).<br />
+> **Note:** Before you start the migration, you are advised to read the [V8.0 migration cookbook](../migration-cookbook).  
 > To learn about the basic concepts of the new security framework, see [Authentication and Security](../../authentication-and-security).
 
-<!-- ==== PART 1: Migrating the sample application ==== -->
 ## Migrating the sample application
 {: #migrating-the-sample-application }
 
@@ -327,7 +324,6 @@ The migration of the pin-code challenge handler (`pinCodeChallengeHandler`) is s
 
 You are now done with the migration of the sample V7.0 application to V8.0. Rebuild the application, deploy it to {{ site.data.keys.mf_server }}, test it, and verify that access to the adapter-method resources is protected as expected.
 
-<!-- ==== PART 3: Migrating other types of authentication realms ==== -->
 ## Migrating other types of authentication realms
 {: #migrating-other-types-of-authentication-realms }
 
@@ -379,7 +375,6 @@ The V7.1 remote-disable realm (`wl_remoteDisableRealm`) does not require migrati
 
 To replace the custom V7.1 authenticators and login modules, create a new security check, according to instructions in the [Creating the user-login security-check Java class](#creating-the-user-login-security-check-java-class) sample-application migration step. Your security check can extend either the `UserAuthenticationSecurityCheck` or `CredentialsValidationSecurityCheck` {{ site.data.keys.product }} V8.0 base class. Although you cannot migrate the V7.1 authenticator class or the login module class directly, you can copy relevant code pieces into your security check. This includes code for generating the security challenge, extracting login credentials from the challenge response, or validating the credentials.
 
-<!-- ==== PART 3: Migrating other V7.1 security configurations -->
 ## Migrating other V7.1 security configurations
 {: #migrating-other-v71-security-configurations }
 
@@ -411,11 +406,8 @@ In V7.1, authentication realms can be configured as user-identity realms. Applic
 
 A V7.1 application must define a device-identity realm. In V8.0, this realm is no longer required. In V8.0, the device identity is not associated with a security check. Instead, the device information is registered as part of the client registration flow, which occurs the first time that the client attempts to access a protected resource.
 
-<!-- ==== What's next -->
 ## What's next
 {: #whats-next }
-{% comment %} SLS: I replaced the "Summary" heading because it wasn't really a summary, including in the original version, it's more a "What's Next", and we also don't typically have summaries in our tutorial docs.
-{% endcomment %}
 
 This tutorial covers only the basic steps that are required for migrating to V8.0 the security artifacts of an existing application, developed with a previous version of {{ site.data.keys.product }}. To take full advantage of the V8.0 security features, see the [V8.0 security-framework documentation](../../authentication-and-security/).
 
