@@ -7,7 +7,8 @@ weight: 9
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-By issuing an HTTP request, an application can access corporate HTTP services (APIs) that {{ site.data.keys.mf_server }} provides access to. The predefined application-authenticity [security check](../) ensures that an application that tries to connect to a {{ site.data.keys.mf_server }} instance is the authentic one.
+
+To properly secure your application, enable the predefined {{ site.data.keys.product_adj }} application-authenticity [security check](../#security-check) (`appAuthenticity`). When enabled, this check validates the authenticity of the application before providing it with any services.
 
 To enable application authenticity, you can either follow the on-screen instructions in the **{{ site.data.keys.mf_console }}** → **[your-application]** → **Authenticity**, or review the information below.
 

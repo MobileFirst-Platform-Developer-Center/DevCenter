@@ -8,7 +8,7 @@ downloads:
   - name: Download Android sample
     url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMAndroid/tree/release80
   - name: Download iOS (Swift) sample
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMiOS/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/ISAMSwift/tree/release80
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
