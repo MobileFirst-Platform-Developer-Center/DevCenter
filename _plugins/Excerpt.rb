@@ -7,5 +7,5 @@ end
 
 Jekyll::Hooks.register :pages, :post_init do |page|
   # Set excerpt for pages if not specified in front matter
-  page.data['excerpt'] ||= Jekyll::Excerpt.new(page)
+  page.data['excerpt'] ||= Jekyll::Excerpt.new(page).content
 end
