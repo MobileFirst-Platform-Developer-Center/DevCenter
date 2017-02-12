@@ -33,7 +33,7 @@ Application developers protect access to their resources by defining the require
 ## Authorization entities
 {: #authorization-entities }
 
-### Access Token
+### Access Tokens
 {: #access-tokens }
 
 A {{ site.data.keys.product_adj }} access token is a digitally signed entity that describes the authorization permissions of a client. After the client's authorization request for a specific scope is granted, and the client is authenticated, the authorization server's token endpoint sends the client an HTTP response that contains the requested access token.
@@ -170,7 +170,7 @@ You can protect resources, such as adapters, from unauthorized access by assigni
 
 A scope is defined as a string of one or more space-separated scope elements ("scopeElement1 scopeElement2 ..."), or null to apply the default scope (`RegisteredClient`). The {{ site.data.keys.product_adj }} security framework requires an access token for any adapter resource, even if the resource is not assigned a scope, unless you disable resource protection for the resource. See [Protecting adapter resources](#protecting-adapter-resources ).
 
-#### Scope Element
+#### Scope Elements
 {: #scope-elements }
 
 A scope element can be one of the following:
@@ -231,13 +231,12 @@ You can protect your resources in various ways:
 
 At the application level, you can define a scope that will apply to all the resources used by the application. The security framework runs these checks (if exist) in addition to the security checks of the requested resource scope.
 
-**Notes:**
-
+**Note:**
 * The mandatory application scope is not applied when accessing [an unprotected resource](#unprotected-resources).
 * The access token that is granted for the resource scope does not contain the mandatory application scope.
 
 <br/>
-In the {{ site.data.keys.mf_console }}, select **[your application] → Security tab**. Under **Mandatory Application Scope**, click **Add to Scope**.
+In the {{ site.data.keys.mf_console }}, select your application from the **Applications** section of the navigation sidebar, and then select the **Security** tab. Under **Mandatory Application Scope**, select **Add to Scope**.
 
 <img class="gifplayer" alt="Mandatory application scope" src="mandatory-application-scope.png"/>
 
