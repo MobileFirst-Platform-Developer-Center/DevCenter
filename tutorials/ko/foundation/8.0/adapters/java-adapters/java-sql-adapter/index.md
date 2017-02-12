@@ -1,5 +1,5 @@
 ---
-layout: tutoriall
+layout: tutorial
 title: Java SQL 어댑터
 breadcrumb_title: SQL 어댑터
 relevantTo: [ios,android,windows,javascript]
