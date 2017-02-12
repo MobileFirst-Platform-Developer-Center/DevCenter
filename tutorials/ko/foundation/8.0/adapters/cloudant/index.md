@@ -1,47 +1,45 @@
 ---
 layout: tutorial
-title: Integrating with Cloudant
+title: Cloudant와 통합
 relevantTo: [javascript]
 downloads:
-  - name: Download Cordova project
+  - name: Cordova 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-Cloudant is a NoSQL Database based on CouchDB, which is available as a stand-alone product as well as a Database-as-a-Service (DBaaS) on IBM Bluemix and `cloudant.com`.
+Cloudant는 IBM Bluemix 및 `cloudant.com`에서 DBaaS(Database-as-a-Service) 및 독립형 제품으로 사용할 수 있는, CouchDB를 기반으로 한 NoSQL 데이터베이스입니다. 
 
-As described in the Cloudant documentation:
-> Documents are JSON objects. Documents are containers for your data, and are the basis of the Cloudant database.  
-All documents must have two fields: a unique `_id` field, and a `_rev` field. The `_id` field is either created by you, or generated automatically as a UUID by Cloudant. The `_rev` field is a revision number, and is essential to the Cloudant replication protocol. In addition to these two mandatory fields, documents can contain any other content expressed as JSON.
+Cloudant 문서에서 설명된 바와 같이, 
+> 문서는 JSON 오브젝트입니다. 문서는 데이터의 컨테이너이고 Cloudant 데이터베이스의 기초입니다.   
+모든 문서는 두 개의 필드 즉, 고유 `_id` 필드와 `_rev` 필드가 있어야 합니다. `_id` 필드는 사용자가 작성하거나 Cloudant가 UUID로 자동으로 생성합니다. `_rev` 필드는 개정 번호이고 Cloudant 애플리케이션 프로토콜에 필수적입니다. 이러한 두 개의 필수 필드 외에 문서는 JSON으로 표현된 기타 컨텐츠를 포함할 수 있습니다. Cloudant API는 [IBM Cloudant Documentation](https://docs.cloudant.com/index.html) 사이트에 문서화되어 있습니다. 
 
-The Cloudant API is documented on the [IBM Cloudant Documentation](https://docs.cloudant.com/index.html) site.
+원격 Cloudant 데이터베이스와 통신하기 위해 어댑터를 사용할 수 있습니다. 이 학습서는 사용자에게 일부 예제를 보여줍니다. 
 
-You can use adapters to communicate with a remote Cloudant database. This tutorial shows you some examples.
+이 학습서는 사용자가 어댑터에 익숙하다고 가정하고 있습니다. [JavaScript HTTP 어댑터](../javascript-adapters/js-http-adapter) 또는 [Java 어댑터](../java-adapters)를 참조하십시오.
 
-This tutorial assumes that you are comfortable with adapters. See [JavaScript HTTP Adapter](../javascript-adapters/js-http-adapter) or [Java Adapters](../java-adapters).
-
-### Jump to
+### 다음으로 이동
 {: #jump-to}
-* [JavaScript HTTP adapter](#javascript-http-adapter)
-* [Java adapters](#java-adapters)
-* [Sample application](#sample-application)
+* [JavaScript HTTP 어댑터](#javascript-http-adapter)
+* [Java 어댑터](#java-adapters)
+* [샘플 애플리케이션](#sample-application)
 
 
-## JavaScript HTTP adapter
+## JavaScript HTTP 어댑터
 {: #javascript-http-adapter }
-The Cloudant API can be accessed as a simple HTTP web service.
+Cloudant API는 단순 HTTP 웹 서비스로 액세스될 수 있습니다. 
 
-Using an HTTP adapter, you can connect to the Cloudant HTTP service with the `invokeHttp` method.
+HTTP 어댑터를 사용할 때 `invokeHttp` 메소드로 Cloudant HTTP 서비스에 연결할 수 있습니다. 
 
-### Authentication
+### 인증 
 {: #authentication }
-Cloudant supports several forms of authentication. See the Cloudant documentation about authentication at [https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html). With a JavaScript HTTP adapter, you can use **Basic Authentication**.
+Cloudant는 여러 양식의 인증을 지원합니다. 인증에 대한 Cloudant 문서를 [https://docs.cloudant.com/authentication.html](https://docs.cloudant.com/authentication.html)에서 참조하십시오. JavaScript HTTP 어댑터에서 **기본 인증**을 사용할 수 있습니다. 
 
-In your adapter XML file, specify the `domain` for your Cloudant instance, the `port` and add an `authentication` element of type `basic`. The framework will use those credentials to generate an `Authorization: Basic` HTTP header.
+어댑터 XML 파일에서 Cloudant 인스턴스에 대해 `domain` 및 `port`를 지정하고 `basic` 유형의 `authentication` 요소를 추가하십시오. 프레임워크는 `Authorization: Basic` HTTP 헤더를 생성하기 위해 이러한 신임 정보를 사용합니다. 
 
-**Note:** With Cloudant, you can generate unique API keys to use instead of your real username and password.
+**참고:** Cloudant에서 실제 사용자 이름과 비밀번호 대신 사용할 고유 API 키를 생성할 수 있습니다.
 
 ```xml
 <connectivity>
@@ -67,10 +65,11 @@ In your adapter XML file, specify the `domain` for your Cloudant instance, the `
 </connectivity>
 ```
 
-### Procedures
+### 프로시저
 {: #procedures }
-Your adapter procedures use the `invokeHttp` method to send an HTTP request to one of the URLs that are defined by Cloudant.  
-For example, you can create a new document by sending a `POST` request to `/{*your-database*}/` with the body being a JSON representation of the document that you wish to store.
+어댑터 프로시저는 HTTP 요청을 Cloudant가 정의한 URL 중 하나에게 보내기 위해 `invokeHttp`
+메소드를 사용합니다.   
+예를 들어, 저장하려는 문서에 대한 JSON 표시인 본문과 함께 `POST` 요청을 `/{*your-database*}/`에 전송하여 새 문서를 작성할 수 있습니다. 
 
 ```js
 function addEntry(entry){
@@ -94,22 +93,21 @@ function addEntry(entry){
 }
 ```
 
-The same idea can be applied to all Cloudant functions. See the Cloudant documentation about documents at [https://docs.cloudant.com/document.html](https://docs.cloudant.com/document.html)
+동일한 아이디어가 모든 Cloudant 함수에 적용될 수 있습니다. 문서에 대한 Cloudant 문서를 [https://docs.cloudant.com/document.html](https://docs.cloudant.com/document.html)에서 참조하십시오. 
 
-## Java adapters
+## Java 어댑터
 {: #java-adapters }
-Cloudant provides a [Java client library](https://github.com/cloudant/java-cloudant) for you to easily use all the features of Cloudant.
+Cloudant는 사용자가 Cloudant의 모든 기능을 쉽게 사용할 수 있도록 [Java 클라이언트 라이브러리](https://github.com/cloudant/java-cloudant)를 제공합니다. 
 
-During the initialization of your Java adapter, set up a `CloudantClient` instance to work with.  
-**Note:** With Cloudant, you can generate unique API keys to use instead of your real username and password.
+Java 어댑터의 초기화 동안, 작업할 `CloudantClient` 인스턴스를 설정하십시오.   
+**참고:** Cloudant에서 실제 사용자 이름과 비밀번호 대신 사용할 고유 API 키를 생성할 수 있습니다.
 
 ```java
 CloudantClient cloudantClient = new CloudantClient(cloudantAccount,cloudantKey,cloudantPassword);
 db = cloudantClient.database(cloudantDBName, false);
 ```
 <br/>
-Using [Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) and standard Java API for RESTful Web Services (JAX-RS 2.0), you can create a new document on Cloudant by sending a JSON representation of the document in the HTTP request.
-
+[Plain Old Java Objects](https://en.wikipedia.org/wiki/Plain_Old_Java_Object) 및 JAX-RS 2.0(RESTful 웹 서비스용 표준 Java API)을 사용하여 HTTP 요청에 문서의 JSON 표시를 전송함으로써 Cloudant에서 새 문서를 작성할 수 있습니다.
 ```java
 @POST
 @Consumes(MediaType.APPLICATION_JSON)
@@ -124,16 +122,16 @@ public Response addEntry(User user){
 }
 ```
 
-<img alt="Image of the sample application" src="cloudant-app.png" style="float:right"/>
-## Sample application
+<img alt="샘플 애플리케이션의 이미지" src="cloudant-app.png" style="float:right"/>
+## 샘플 애플리케이션
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80) the Cordova project.
+Cordova 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80)하십시오.
 
-The sample contains two adapters, one in JavaScript and one in Java.  
-It also contains a Cordova application that works with both the Java and JavaScript adapters.
+샘플은 두 개의 어댑터 즉 JavaScript에서 하나 및 Java에서 하나를 포함합니다.   
+또한 Java 및 JavaScript 어댑터 둘 다로 작업하는 Cordova 애플리케이션을 포함합니다.
 
-> **Note:** The sample uses Cloudant Java Client v1.2.3 due to known limitation.
+> **참고:** 샘플은 알려진 제한사항으로 인해 Cloudant Java Client v1.2.3을 사용합니다. 
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+샘플 README.md 파일의 지시사항을 따르십시오. 

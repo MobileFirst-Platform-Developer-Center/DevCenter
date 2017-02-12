@@ -1,31 +1,31 @@
 ---
 layout: tutorial
-title: JSONStore Security Utilities
-breadcrumb_title: Security utilities
+title: JSONStore 보안 유틸리티
+breadcrumb_title: 보안 유틸리티
 relevantTo: [ios,android,cordova]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
-The {{ site.data.keys.product_full }} client-side API provides some security utilities to help protect your user's data. Features like JSONStore are great if you want to protect JSON objects. However, it is not recommended to store binary blobs in a JSONStore collection.
+## 개요
+{{ site.data.keys.product_full }} 클라이언트 측 API는 사용자 데이터를 보호하는 데 도움이 되는 일부 보안 유틸리티를 제공합니다. JSON 오브젝트를 보호하려는 경우 JSONStore와 같은 기능이 매우 유용합니다. 그러나 JSONStore 콜렉션에 2진 BLOB을 저장하는 것은 권장하지 않습니다. 
 
-Instead, store binary data on the file system, and store the file paths and other metadata inside a JSONStore collection. If you want to protect files like images, you can encode them as base64 strings, encrypt it, and write the output to disk. When it is time to decrypt the data, you can look up the metadata in a JSONStore collection, read the encrypted data from the disk, and decrypt it using the metadata that was stored. This metadata can include the key, salt, Initialization Vector (IV), type of file, path to the file, and others.
+대신 파일 시스템에 2진 데이터를 저장하고 파일 경로 및 기타 메타데이터를 JSONStore 콜렉션 내에 저장하십시오. 이미지와 같은 파일을 보호하려면 base64 문자열로 인코딩하고 암호화한 후 디스크에 출력을 쓸 수 있습니다. 데이터를 복호화할 때 JSONStore 콜렉션에서 메타데이터를 찾고 디스크에서 암호화된 데이터를 읽은 후에 저장된 메타데이터를 사용하여 복호화하십시오. 이 메타데이터에는 키, salt, IV(Initialization Vector), 파일 유형, 파일 경로 등이 포함될 수 있습니다. 
 
-At a high level, the SecurityUtils API provides the following APIs:
+상위 레벨에서 SecurityUtils API는 다음 API를 제공합니다. 
 
-* Key generation - Instead of passing a password directly to the encryption function, this key generation function uses Password Based Key Derivation Function v2 (PBKDF2) to generate a strong 256-bit key for the encryption API. It takes a parameter for the number of iterations. The higher the number, the more time it takes an attacker to brute force your key. Use a value of at least 10,000. The salt must be unique and it helps ensure that attackers have a harder time using existing hash information to attack your password. Use a length of 32 bytes.
-* Encryption - Input is encrypted by using the Advanced Encryption Standard (AES). The API takes a key that is generated with the key generation API. Internally, it generates a secure IV, which is used to add randomization to the first block cipher. Text is encrypted. If you want to encrypt an image or other binary format, turn your binary into base64 text by using these APIs. This encryption function returns an object with the following parts:
-    * ct (cipher text, which is also called the encrypted text)
+* 키 생성 - 이 키 생성 기능은 암호화 기능으로 비밀번호를 전달하는 대신 PBKDF2(Password Based Key Derivation Function v2)를 사용하여 암호화 API에 대한 강력한 256비트 키를 생성합니다. 반복 횟수에 대한 매개변수를 사용합니다. 숫자가 클수록 공격자가 키를 무차별 대입공격하는 데 더 많은 시간이 소요됩니다. 10,000 이상의 값을 사용하십시오. salt는 고유해야 하며, 이는 공격자가 기존 해시 정보를 사용하여 비밀번호를 공격하는 것을 어렵게 하는 데 도움이 됩니다. 32바이트 길이를 사용하십시오. 
+* 암호화 - AES(Advanced Encryption Standard)를 사용하여 입력이 암호화됩니다. API는 키 생성 API로 생성되는 키를 사용합니다. 이는 내부에서 첫 번째 블록 암호에 랜덤화를 추가하는 데 사용되는 보안 IV를 생성합니다. 텍스트는 암호화됩니다. 이미지 또는 다른 2진 형식을 암호화하려면 이 API를 사용하여 2진을 base64 텍스트로 바꾸십시오. 이 암호화 기능은 다음 파트가 포함된 오브젝트를 리턴합니다. 
+    * ct(암호화된 텍스트로도 불리는 암호 텍스트)
     * IV
-    * v (version, which allows the API to evolve while still being compatible with an earlier version)
-* Decryption - Takes the output from the encryption API as input, and decrypts the cipher or encrypted text into plain text.
-* Remote random string - Gets a random hex string by contacting a random generator on the {{ site.data.keys.mf_server }}. The default value is 20 bytes, but you can change the number up to 64 bytes.
-* Local random string - Gets a random hex string by generating one locally, unlike the remote random string API, which requires network access. The default value is 32 bytes and there is not a maximum value. The operation time is proportional to the number of bytes.
-* Encode base64 - Takes a string and applies base64 encoding. Incurring a base64 encoding by the nature of the algorithm means that the size of the data is increased by approximately 1.37 times the original size.
-* Decode base64 - Takes a base64 encoded string and applies base64 decoding.
+    * v(API가 전개되면서도 이전 버전과 계속 호환될 수 있도록 하는 버전)
+* 복호화 - 암호화 API의 출력을 입력으로 사용하고 암호 또는 암호화된 텍스트를 일반 텍스트로 복호화합니다. 
+* 원격 랜덤 문자열 - {{ site.data.keys.mf_server }}에서 랜덤 생성기에 접속하여 랜덤 16진 문자열을 가져옵니다. 기본값은 20바이트지만 최대 64바이트로 숫자를 변경할 수 있습니다. 
+* 로컬 랜덤 문자열 - 네트워크 액세스가 필요한 원격 랜덤 문자열 API와는 달리 로컬로 생성하여 랜덤 16진 문자열을 가져옵니다. 기본값은 32바이트이고 최대값은 없습니다. 조작 시간은 바이트 수에 비례합니다. 
+* base64로 인코딩 - 문자열을 가져오고 base64 인코딩을 적용합니다. 알고리즘의 네이처로 인해 base64 인코딩이 발생하면 데이터 크기가 원래 크기보다 약 1.37배 증가합니다. 
+* base64로 디코딩 - base64로 인코딩된 문자열을 가져오고 base64 디코딩을 적용합니다. 
 
-## Setup
-Ensure that you import the following files to use the JSONStore security utilities APIs.
+## 설정
+JSONStore 보안 유틸리티 API를 사용하려면 다음 파일을 가져오십시오. 
 
 ### iOS
 
@@ -40,11 +40,11 @@ import com.worklight.wlclient.api.SecurityUtils
 ```
 
 ### JavaScript
-No setup is required.
+설정이 필요하지 않습니다. 
 
-## Examples
+## 예제
 ### iOS
-#### Encryption and decryption
+#### 암호화 및 복호화
 
 ```objc
 // User provided password, hardcoded only for simplicity.
@@ -77,7 +77,7 @@ NSString* decryptedString = [WLSecurityUtils decryptWithKey:key
                                              error:&error];
 ```
 
-#### Encode and decode base64
+#### base64로 인코딩 및 디코딩
 
 ```objc
 // Input string.
@@ -91,7 +91,7 @@ NSString* encodedString = [WLSecurityUtils base64StringFromData:originalStringDa
 NSString* decodedString = [[NSString alloc] initWithData:[WLSecurityUtils base64DataFromString:encodedString] encoding:NSUTF8StringEncoding];
 ```
 
-#### Get remote random
+#### 원격 랜덤 가져오기
 
 ```objc
 [WLSecurityUtils getRandomStringFromServerWithBytes:32 
@@ -106,7 +106,7 @@ NSString* decodedString = [[NSString alloc] initWithData:[WLSecurityUtils base64
 ```
 
 ### Android
-#### Encryption and decryption
+#### 암호화 및 복호화
 
 ```java
 String password = "HelloPassword";
@@ -123,7 +123,7 @@ JSONObject encryptedObject = SecurityUtils.encrypt(key, originalText);
 String decipheredText = SecurityUtils.decrypt(key, encryptedObject);
 ```
 
-#### Encode and decode base64
+#### base64로 인코딩 및 디코딩
 
 ```java
 import android.util.Base64;
@@ -139,7 +139,7 @@ byte[] base64Decoded = Base64.decode(text.getBytes("UTF-8"), Base64.DEFAULT);
 String decodedText = new String(base64Decoded, "UTF-8");
 ```
 
-#### Get remote random
+#### 원격 랜덤 가져오기
 
 ```java
 Context context; // This is the current Activity's context.
@@ -161,7 +161,7 @@ WLRequestListener listener = new WLRequestListener(){
 SecurityUtils.getRandomStringFromServer(byteLength, context, listener);
 ```
 
-#### Get local random
+#### 로컬 랜덤 가져오기
 
 ```java
 int byteLength = 32;
@@ -169,7 +169,7 @@ String randomString = SecurityUtils.getRandomString(byteLength);
 ```
 
 ### JavaScript
-#### Encryption and decryption
+#### 암호화 및 복호화
 
 ```javascript
 // Keep the key in a variable so that it can be passed to the encrypt and decrypt API.
@@ -216,7 +216,7 @@ WL.SecurityUtils.keygen({
 });
 ```
 
-#### Encode and decode base64
+#### base64로 인코딩 및 디코딩
 
 ```javascript
 WL.SecurityUtils.base64Encode('Hello World!')
@@ -231,7 +231,7 @@ WL.SecurityUtils.base64Encode('Hello World!')
 });
 ```
 
-#### Get remote random
+#### 원격 랜덤 가져오기
 
 ```javascript
 WL.SecurityUtils.remoteRandomString(32)
@@ -243,7 +243,7 @@ WL.SecurityUtils.remoteRandomString(32)
 });
 ```
 
-#### Get local random
+#### 로컬 랜덤 가져오기
 
 ```javascript
 WL.SecurityUtils.localRandomString(32)

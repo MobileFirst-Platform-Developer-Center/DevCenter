@@ -1,30 +1,30 @@
 ---
 layout: tutorial
-title: Setting up the Cordova development environment
+title: Cordova 개발 환경 설정
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-To get started with [Cordova (PhoneGap) development](https://cordova.apache.org/) the very basic required step is to install the Cordova CLI. The Cordova CLI is the tool enabling you to create Cordova applications. These applications can be further enhanced by using various 3rd party frameworks and tools such as Ionic, AngularJS, jQuery Mobile and many more. 
-With Cordova applications you can use your preferred code editor, such as Atom.io, Visual Studio Code, Eclipse, IntelliJ and others for implementing your applications and adapters.
+[Cordova(PhoneGap) 개발](https://cordova.apache.org/)을 시작하기 위해 필요한 매우 기본적인 단계는 Cordova CLI를 설치하는 것입니다. Cordova CLI는 Cordova 애플리케이션을 작성할 수 있게 하는 도구입니다. 이 애플리케이션은 다양한 써드파티 프레임워크 및 도구(예: Ionic, AngularJS, jQuery Mobile 등)를 사용하여 추가적으로 개선될 수 있습니다.
+Cordova 애플리케이션을 사용하면 선호하는 코드 편집기(예: Atom.io, Visual Studio Code, Eclipse, IntelliJ와 애플리케이션 및 어댑터 구현을 위한 기타 편집기)를 사용할 수 있습니다. 
 
-**Prerequisite:** As you setup your Cordova development environment, make sure to also read the [Setting up the {{ site.data.keys.product_adj }} development environment](../mobilefirst/) tutorial.
+**전제조건:** Cordova 개발 환경을 설정할 때는 [{{ site.data.keys.product_adj }} 개발 환경 설정](../mobilefirst/) 학습서도 읽어야 합니다. 
 
-## Installing the Cordova CLI
+## Cordova CLI 설치
 {: #installing-the-cordova-cli }
-{{ site.data.keys.product }} supports Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova).  
-To install:
+{{ site.data.keys.product }}은 Apache [Cordova CLI 6.x](https://www.npmjs.com/package/cordova)를 지원합니다.   
+설치하려면 다음을 수행하십시오. 
 
-1. Download and install [NodeJS](https://nodejs.org/en/).
-2. From a **Command-line** window, run the command: `npm install -g cordova`.
+1. [NodeJS](https://nodejs.org/en/)를 다운로드하여 설치하십시오. 
+2. **명령행** 창에서 `npm install -g cordova` 명령을 실행하십시오. 
 
-## Next steps
+## 다음 단계
 {: #next-steps }
-To continue with {{ site.data.keys.product_adj }} development in Cordova applications, the {{ site.data.keys.product_adj }} Cordova SDK/plug-ins need to be added to the Cordova application.
+Cordova 애플리케이션에서 {{ site.data.keys.product_adj }} 개발을 계속하려면 {{ site.data.keys.product_adj }} Cordova SDK/플러그인을 Cordova 애플리케이션에 추가해야 합니다. 
 
-* Learn how to add the [{{ site.data.keys.product_adj }} SDK to Cordova applications](../../../application-development/sdk/cordova/).
-* For applications development, refer to the [Using the {{ site.data.keys.product }} SDK](../../../application-development/) tutorials.
-* For adapters develpment, refer to the [Adapters](../../../adapters/) category.
+* [{{ site.data.keys.product_adj }} SDK를 Cordova 애플리케이션에](../../../application-development/sdk/cordova/) 추가하는 방법을 학습하십시오. 
+* 애플리케이션 개발에 대해서는 [{{ site.data.keys.product }} SDK 사용](../../../application-development/) 학습서를 참조하십시오. 
+* 어댑터 개발에 대해서는 [어댑터](../../../adapters/) 카테고리를 참조하십시오. 

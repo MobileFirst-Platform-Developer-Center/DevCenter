@@ -1,171 +1,171 @@
 ---
 layout: tutorial
-title: Developing Applications
+title: 애플리케이션 개발
 show_children: true
-weight: 5
+weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Development Concepts and Overview
+## 개발 개념 및 개요
 {: #development-concepts-and-overview }
-When you develop your app with the {{ site.data.keys.product_full }} set of tools, you must develop or configure a variety of components and elements. Learning about the components and elements involved when developing your app helps your development proceed smoothly.
+{{ site.data.keys.product_full }} 도구 세트를 사용하여 앱을 개발하는 경우 여러 컴포넌트 및 요소를 개발하거나 구성해야 합니다. 앱 개발 시 관련되는 컴포넌트와 구성에 대해 학습하여 개발을 원활하게 진행할 수 있습니다. 
 
-In addition to getting familiar with these concepts, you will also learn about {{ site.data.keys.product_adj }}-provided APIs for Native, Cordova and Web applications, such as JSONStore and WLResourceReuest, as well as learn how to debug applications, use Direct Update to refresh the web resources, Live Update to segment your userbase as well as how to handle apps, adapters and other artifacts using the {{ site.data.keys.mf_cli }}.
+이러한 개념을 익히는 것 외에도 고유, Cordova 및 웹 애플리케이션에 대한 {{ site.data.keys.product_adj }} 제공 API(예: JSONStore 및 WLResourceReuest)를 학습하고 애플리케이션 디버깅 방법, 직접 업데이트를 사용하여 웹 자원을 새로 고치는 방법, 활성 업데이트를 사용하여 사용자 기반을 세그먼트화하는 방법 및 {{ site.data.keys.mf_cli }}를 사용하여 앱, 어댑터 및 기타 아티팩트를 처리하는 방법에 대해 학습합니다. 
 
-You can either navigate to the relevant topic from the sidebar navigation, or continue reading to learn more about the various {{ site.data.keys.product_adj }} components.
+사이드바 탐색에서 관련 주제로 이동하거나 계속 읽고 여러 {{ site.data.keys.product_adj }} 컴포넌트에 대해 자세히 알아보십시오. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
-* [Applications](#applications)
+* [애플리케이션](#applications)
 * [{{ site.data.keys.mf_server }}](#mobilefirst-server)
-* [Adapters](#adapters)
-* [Client-side tutorials to follow](#client-side-tutorials-to-follow)
+* [어댑터](#adapters)
+* [다음 클라이언트 측 학습서](#client-side-tutorials-to-follow)
 
-### Applications
+### 애플리케이션
 {: #applications }
-Applications are built for a target {{ site.data.keys.mf_server }} and have a server-side configuration on the target server. You must register your applications on the {{ site.data.keys.mf_server }} before you can configure them.
+애플리케이션은 대상 {{ site.data.keys.mf_server }}에 대해 빌드되며 대상 서버에 대한 서버 측 구성을 포함합니다. 애플리케이션을 구성하려면 먼저 {{ site.data.keys.mf_server }}에서 애플리케이션을 등록해야 합니다. 
 
-Applications are identified by the following elements:
+애플리케이션은 다음 요소에 의해 식별됩니다. 
 
-* An app ID
-* A version number
-* A target deployment platform
+* 앱 ID
+* 버전 번호
+* 대상 배치 플랫폼
 
-> **Note:** The version number is not applicable to web applications. You cannot have multiple versions of the same web application.
+> **참고:** 버전 번호는 웹 애플리케이션에 적용될 수 없습니다. 동일한 웹 애플리케이션을 여러 개 버전으로 보유할 수 없습니다.
 
-These identifiers are used on both the client-side and the server-side to ensure that apps are deployed correctly and use only resources that are assigned to them. Different parts of {{ site.data.keys.product }} use various combinations of these identifiers in different ways.
+클라이언트 측 및 서버 측에서 이러한 ID를 사용하여 앱이 올바르게 배치되고 지정된 자원만 사용하는지 확인합니다. {{ site.data.keys.product }}의 여러 파트에서는 다양한 방식으로 이러한 ID를 여러 가지로 조합하여 사용합니다. 
 
-The app ID depends on the target deployment platform:
+앱 ID는 대상 배치 플랫폼에 따라 다릅니다.
 
 **Android**  
-The identifier is the application package name.
+ID는 애플리케이션 패키지 이름입니다. 
 
 **iOS**  
-The identifier is the application bundle ID.
+ID는 애플리케이션 번들 ID입니다. 
 
 **Windows**  
-The identifier is the application assembly name.
+ID는 애플리케이션 어셈블리 이름입니다. 
 
-**Web**  
-The identifier is a unique ID that is assigned by the developer.
+**웹**  
+ID는 개발자가 지정한 고유 ID입니다. 
 
-If apps for different target platforms all have the same app ID, then the {{ site.data.keys.mf_server }} considers all of these apps to be the same app with different platform instances. For example, the following apps are considered to be different platform instances of *the same app*:
+여러 대상 플랫폼의 앱이 동일한 앱 ID를 사용하는 경우 {{ site.data.keys.mf_server }}는 이러한 앱 모두를 플랫폼 인스턴스가 서로 다른 동일한 앱으로 간주합니다. 예를 들어 다음 앱은 *동일한 앱*의 서로 다른 플랫폼 인스턴스로 간주됩니다. 
 
-* An iOS app with a bundle ID of `com.mydomain.mfp`.
-* An Android app with a package name of `com.mydomain.mfp`.
-* A Windows 10 Universal Windows Platform app with an assembly name of `com.mydomain.mfp`.
-* A web app with an assigned ID of `com.mydomain.mfp`.
+* 번들 ID가 `com.mydomain.mfp`인 iOS 앱
+* 패키지 이름이 `com.mydomain.mfp`인 Android 앱
+* 어셈블리 이름이 `com.mydomain.mfp`인 Windows 10 Universal Windows Platform 앱
+* 지정된 ID가 `com.mydomain.mfp`인 웹 앱
 
-The target deployment platform for the app is independent of whether the app was developed as a native app or as a Cordova app. For example, the following apps are both considered to be iOS apps in {{ site.data.keys.product }}:
+앱의 대상 배치 플랫폼은 앱이 고유 앱으로 개발되었는지, 또는 Cordova 앱으로 개발되었는지 여부와 관계가 없습니다. 예를 들어 다음 앱은 둘 다 {{ site.data.keys.product }}에서 iOS 앱으로 간주됩니다. 
 
-* An iOS app that you develop with Xcode and native code
-* An iOS app that you develop with Cordova cross-platform development technologies
+* Xcode 및 고유 코드를 사용하여 개발되는 iOS 앱
+* Cordova 크로스 플랫폼 개발 기술을 사용하여 개발되는 iOS 앱
 
-> **Note:** The **Keychain Sharing** capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.
+> **참고:** Xcode 8을 사용하는 경우 iOS 시뮬레이터에서 iOS 앱을 실행 중이면 **키 체인 공유** 기능은 필수입니다. 이 기능을 수동으로 사용하도록 설정한 후에 Xcode 프로젝트를 빌드해야 합니다.
 
-### Application configuration
+### 애플리케이션 구성
 {: #application-configuration }
-As mentioned, an application is configured on both the client-side and the server-side.  
+언급된 것과 같이 애플리케이션은 클라이언트 측 및 서버 측 모두에 구성됩니다.   
 
-For native and Cordova iOS, Android, and Windows applications, the client configuration is stored in a client properties file (**mfpclient.plist** for iOS, **mfpclient.properties** for Android, or **mfpclient.resw** for Windows). For web applications, the configuration properties are passed as parameters to the SDK [initialization method](../application-development/sdk/web).
+고유 및 Cordova iOS, Android와 Windows 애플리케이션의 경우 클라이언트 구성은 클라이언트 특성 파일(iOS는 **mfpclient.plist**, Android는 **mfpclient.properties** 또는 Windows는 **mfpclient.resw**)에 저장됩니다. 웹 애플리케이션의 경우 구성 특성은 SDK [초기화 메소드](../application-development/sdk/web)에 매개변수로 전달됩니다. 
 
-The client configuration properties include the application ID and information such as the URL of the {{ site.data.keys.mf_server }} runtime and security keys that are required to access to the server.  
-The server configuration for the app includes information like app management status, web resources for Direct Update, configured security scopes, and log configuration.
+클라이언트 구성 특성에는 서버에 액세스하는 데 필요한 애플리케이션 ID 및 정보(예: {{ site.data.keys.mf_server }} 런타임 URL과 보안 키)가 포함됩니다.   
+앱의 서버 구성에는 앱 관리 상태, 직접 업데이트의 웹 자원, 구성된 보안 범위 및 로그 구성과 같은 정보가 포함됩니다. 
 
-> Learn how to add the {{ site.data.keys.product_adj }} vlient SDKs in the [Adding the {{ site.data.keys.product }} SDK tutorials](sdk).
+> [{{ site.data.keys.product }} SDK 학습서 추가](sdk)에서 {{ site.data.keys.product_adj }} vlient SDK를 추가하는 방법에 대해 알아보십시오.
 
-The client configuration must be defined before you build the application. The client-app configuration properties must match the properties that are defined for this app in the {{ site.data.keys.mf_server }} runtime. For example, security keys in the client configuration must match the keys on the server. For non-web apps, you can change the client configuration with the {{ site.data.keys.mf_cli }}.
+애플리케이션을 빌드하기 전에 클라이언트 구성을 정의해야 합니다. 클라이언트-앱 구성 특성은 {{site.data.keys.mf_server }} 런타임 시 이 앱에 대해 정의된 특성과 일치해야 합니다. 예를 들어 클라이언트 구성의 보안 키는 서버의 키와 일치해야 합니다. 웹 앱이 아닌 항목의 경우 {{ site.data.keys.mf_cli }}를 사용하여 클라이언트 구성을 변경할 수 있습니다. 
 
-The server configuration for an app is tied to the combination of app ID, version number, and target platform. You must register your app to a {{ site.data.keys.mf_server }} runtime before you can add server-side configurations for the app. Configuring the server side of an app is typically done with the {{ site.data.keys.mf_console }}. You can also configure the server side of an app with the following methods:
+앱의 서버 구성은 앱 ID, 버전 번호 및 대상 플랫폼의 조합과 관련이 있습니다. 앱에 대한 서버 측 구성을 추가하려면 먼저 {{ site.data.keys.mf_server }} 런타임에 앱을 등록해야 합니다. 앱의 서버 측 구성은 일반적으로 {{ site.data.keys.mf_console }}을 사용하여 수행됩니다. 다음 메소드를 사용하여 앱의 서버 측을 구성할 수도 있습니다. 
 
-* Grab existing JSON configuration files from the server with the `mfpdev app pull` command, update the file, and upload the changed configuration with the `mfpdev app push` command.
-* Use the **mfpadm** program or Ant task. For information about using mfpadm, see [Administering {{ site.data.keys.product_adj }} applications through the command line](../administering-apps/using-cli) and [Administering {{ site.data.keys.product_adj }} applications through Ant](../administering-apps/using-ant).
-* Use the REST API of the {{ site.data.keys.product_adj }} administration service. For information about the REST API, see [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi).
+* `mfpdev app pull` 명령을 사용하여 서버에서 기존 JSON 구성 파일을 가져오고 파일을 업데이트한 후 `mfpdev app push` 명령을 사용하여 변경된 구성을 업로드하십시오. 
+* **mfpadm** 프로그램 또는 Ant 태스크를 사용하십시오. mfpadm 사용에 대한 정보는 [명령행을 통한 {{ site.data.keys.product_adj }} 애플리케이션 관리](../administering-apps/using-cli) 및 [Ant를 통한 {{ site.data.keys.product_adj }} 애플리케이션 관리](../administering-apps/using-ant)를 참조하십시오. 
+* {{ site.data.keys.product_adj }} 관리 서비스의 REST API를 사용하십시오. REST API에 대한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi)를 참조하십시오. 
 
-You can also use these methods to automate configuration of the {{ site.data.keys.mf_server }}.
+이러한 메소드를 사용하여 {{ site.data.keys.mf_server }}의 구성을 자동화할 수도 있습니다. 
 
-> **Remember:** You can modify the server configuration even while a {{ site.data.keys.mf_server }} is running and receiving traffic from apps. You do not need to stop the server to change the server configuration for an app.
+> **중요:** {{ site.data.keys.mf_server }}가 실행 중이고 앱에서 트래픽을 수신하는 중에도 서버 구성을 수정할 수 있습니다. 앱의 서버 구성 변경 시에 서버를 중지할 필요가 없습니다.
 
-On a production server, the app version typically corresponds to the version of the application published to an app store. Some server configuration elements like the configuration for app authenticity, are unique to the app published to the store.
+프로덕션 서버에서 앱 버전은 일반적으로 앱 스토어에 공개되는 애플리케이션 버전과 일치합니다. 앱 신뢰성의 구성과 같은 일부 서버 구성 요소는 스토어에 공개된 앱에 특정됩니다. 
 
 ## {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-The server-side of your mobile app is {{ site.data.keys.mf_server }}. {{ site.data.keys.mf_server }} gives you access to features like application management and application security, as well giving your mobile app secure access to your other backend systems through adapters.
+모바일 앱의 서버 측은 {{ site.data.keys.mf_server }}입니다. {{ site.data.keys.mf_server }}는 애플리케이션 관리와 애플리케이션 보안 등의 기능에 대한 액세스 및 어댑터를 통한 기타 백엔드 시스템에 대한 모바일 앱 보안 액세스를 제공합니다. 
 
-{{ site.data.keys.mf_server }} is the core component that delivers many {{ site.data.keys.product }} features, including the following features:
+{{ site.data.keys.mf_server }}는 다음 기능을 포함하여 여러 {{ site.data.keys.product }} 기능을 제공하는 핵심 컴포넌트입니다. 
 
-* Application management
-* Application security, including authenticating devices and users and verifying application authenticity
-* Secure access to backend services through adapters
-* Updating Cordova app Web resources with Direct Update
-* Push notifications and push subscriptions
-* App analytics
+* 애플리케이션 관리
+* 디바이스와 사용자 인증 및 애플리케이션 신뢰성 확인을 포함하여 애플리케이션 보안
+* 어댑터를 통한 백엔드 서비스에 대한 보안 액세스
+* 직접 업데이트를 사용하여 Cordova 앱 웹 자원 업데이트
+* 푸시 알림 및 푸시 등록
+* 앱 분석
 
-You need to use {{ site.data.keys.mf_server }} throughout your app's lifecycle from development and test through to production deployment and maintenance.  
+개발 및 테스트에서 프로덕션 배치 및 유지보수에 이르는 앱 라이프사이클 전반에서 {{ site.data.keys.mf_server }}를 사용해야 합니다.   
 
-> A preconfigured server is available for you to use when you develop your app. For information about the {{ site.data.keys.mf_server }} to use when you develop your app, see [Setting up the {{ site.data.keys.product_adj }} Development Environment](../installation-configuration/development).
+> 앱 개발 시에 사전 구성된 서버를 사용할 수 있습니다. 앱 개발 시 사용할 {{ site.data.keys.mf_server }}에 대한 정보는 [{{ site.data.keys.product_adj }} 개발 환경 설정](../installation-configuration/development)을 참조하십시오.
 
-{{ site.data.keys.mf_server }} consists of the following components. All of these components are also included in the {{ site.data.keys.mf_server }}. In simple cases, they are all running on the same application server, but in a production or test environment, the components can be run on different application servers. For information about possible topologies for these {{ site.data.keys.mf_server }} components, see [Topologies and network flows](../installation-configuration/production/topologies).
+{{ site.data.keys.mf_server }}는 다음 컴포넌트로 구성되어 있습니다. 이러한 컴포넌트는 {{ site.data.keys.mf_server }}에도 모두 포함됩니다. 단순 케이스의 경우 모두 동일한 애플리케이션 서버에서 실행되지만 프로덕션 또는 테스트 환경에서는 여러 애플리케이션 서버에서 이러한 컴포넌트를 실행할 수 있습니다. 이러한 {{ site.data.keys.mf_server }} 컴포넌트의 가능한 토폴로지에 대한 정보는 [토폴로지 및 네트워크 플로우](../installation-configuration/production/topologies)를 참조하십시오. 
 
-### {{ site.data.keys.product_adj }} and the {{ site.data.keys.mf_server }} administration service
+### {{ site.data.keys.product_adj }} 및 {{ site.data.keys.mf_server }} 관리 서비스
 {: #mobilefirst-and-the-mobilefirst-server-administration-service }
-The operations console is a web interface that you can use to view and edit the {{ site.data.keys.mf_server }} configurations. You can also access the {{ site.data.keys.mf_analytics_console }} from here. The context root for the operations console in the development server is **/mfpconsole**.
+운영 콘솔은 {{ site.data.keys.mf_server }} 구성을 보고 편집할 수 있는 웹 인터페이스입니다. 여기에서 {{ site.data.keys.mf_analytics_console }}에 액세스할 수도 있습니다. 개발 서버의 운영 콘솔에 대한 컨텍스트 루트는 **/mfpconsole**입니다. 
 
-The administration service is the main entry point for managing your apps. You can access the administration service through a web-based interface with the {{ site.data.keys.mf_console }}. You can also access the administration service with the **mfpadm** command-line tool or the administration service REST API.
+관리 서비스는 앱 관리의 기본 시작점입니다. {{ site.data.keys.mf_console }}을 사용하여 웹 기반 인터페이스를 통해 관리 서비스에 액세스할 수 있습니다. **mfpadm** 명령행 도구 또는 관리 서비스 REST API로 관리 서비스에 액세스할 수도 있습니다. 
 
-> Learn more about the [{{ site.data.keys.mf_console }} features](../product-overview/components/console).
+> [{{ site.data.keys.mf_console }} 기능](../product-overview/components/console)에 대해 자세히 알아보십시오. 
 
-### {{ site.data.keys.product_adj }} runtime
+### {{ site.data.keys.product_adj }} 런타임
 {: #mobilefirst-runtime }
-The runtime is the main entry point for a {{ site.data.keys.product_adj }} client app. The runtime is also the default authorization server for the {{ site.data.keys.product }} OAuth implementation.
+런타임은 {{ site.data.keys.product_adj }} 클라이언트 앱의 기본 시작점입니다. 또한 런타임은 {{ site.data.keys.product }} OAuth 구현에 대한 기본 권한 부여 서버입니다. 
 
-In advanced and rare cases, you can have multiple instances of a device runtime in a single {{ site.data.keys.mf_server }}. Each instance has its own context root. The context root is used to display the name of a runtime in the operations console. Use multiple instances in cases where you require different server-level configuration such as secret keys for keystore.
+고급 케이스 및 드문 케이스의 경우 단일 {{ site.data.keys.mf_server }}에 여러 개의 디바이스 런타임 인스턴스가 있을 수 있습니다. 긱 인스턴스에는 고유 컨텍스트 루트가 있습니다. 컨텍스트 루트는 운영 콘솔에서 런타임 이름을 표시하는 데 사용됩니다. 키 저장소의 비밀 키와 같이 여러 서버 레벨 구성이 필요한 경우 여러 인스턴스를 사용하십시오. 
 
-If you have only one instance of a device runtime in {{ site.data.keys.mf_server }}, you do not typically need to know the runtime context root. For example, when you register an application to a runtime with the `mfpdev app register` command when the {{ site.data.keys.mf_server }} has only one runtime, the application is registered automatically to that runtime.
+{{ site.data.keys.mf_server }}에 하나의 디바이스 런타임 인스턴스만 있는 경우 일반적으로 런타임 컨텍스트 루트를 알 필요가 없습니다. 예를 들어 {{ site.data.keys.mf_server }}에 하나의 런타임만 있고 `mfpdev app register` 명령을 사용하여 런타임에 애플리케이션을 등록하는 경우 애플리케이션이 해당 런타임에 자동으로 등록됩니다. 
 
-### {{ site.data.keys.mf_server }} push service
+### {{ site.data.keys.mf_server }} 푸시 서비스
 {: #mobilefirst-server-push-service }
-The push service is your main access point for push-related operations like push notifications and push subscriptions. To contact the push services, client apps use the URL of the runtime but replace the context root with /mfppush. You can configure and manage the push service with the {{ site.data.keys.mf_console }} or the push service REST API.
+푸시 서비스는 푸시 알림 및 푸시 등록과 같은 푸시 관련 조작의 기본 액세스 지점입니다. 푸시 서비스에 접속하는 경우 클라이언트 앱은 런타임의 URL을 사용하지만 /mfppush로 컨텍스트 루트를 대체합니다. {{ site.data.keys.mf_console }} 또는 푸시 서비스 REST API를 사용하여 푸시 서비스를 구성하고 관리할 수 있습니다. 
 
-If you run the push services in a separate application server from the {{ site.data.keys.product_adj }} runtime, you must route the push service traffic to the correct application server with your HTTP server.
+{{ site.data.keys.product_adj }} 런타임과 별도의 애플리케이션 서버에서 푸시 서비스를 실행하는 경우 HTTP 서버를 사용하여 푸시 서비스 트래픽의 경로를 올바른 애플리케이션 서버로 지정해야 합니다. 
 
-### {{ site.data.keys.mf_analytics }} and the {{ site.data.keys.mf_analytics_console }}
+### {{ site.data.keys.mf_analytics }} 및 {{ site.data.keys.mf_analytics_console }}
 {: #mobilefirst-analytics-and-the-mobilefirst-analytics-console }
-{{ site.data.keys.mf_analytics_full }} is an optional component that provides a scalable analytics feature that you can access from the {{ site.data.keys.mf_console }}. This analytics feature lets you search for patterns, problems and platform usage statistics across logs and events that are collected from devices, apps, and servers.
+{{ site.data.keys.mf_analytics_full }}는 확장 가능한 분석 기능을 제공하는 선택적 컴포넌트로, {{ site.data.keys.mf_console }}에서 액세스할 수 있습니다. 이 분석 기능을 사용하여 디바이스, 앱 및 서버에서 수집되는 로그와 이벤트에서 패턴, 문제점 및 플랫폼 사용량 통계를 검색할 수 있습니다. 
 
-From the {{ site.data.keys.mf_console }}, you can define filters to enable or disable data forwarding to the analytics service. You can also filter the type of information that is sent. On the client side, you can use the client-side log capture API to send events and data to the analytics server.
+{{ site.data.keys.mf_console }}에서 분석 서비스에 대해 데이터 전달을 사용 또는 사용 안함으로 설정하는 필터를 정의할 수 있습니다. 전송되는 정보 유형도 필터링할 수 있습니다. 클라이언트 측에서 클라이언트 측 로그 캡처 API를 사용하여 분석 서버에 이벤트와 데이터를 전송할 수 있습니다. 
 
-After you install and configure {{ site.data.keys.mf_server }} into the topology that you want, any further configuration of {{ site.data.keys.mf_server }} and its applications can be done entirely through any of the following methods:
+{{ site.data.keys.mf_server }}를 설치하고 원하는 토폴로지로 구성한 후 {{ site.data.keys.mf_server }} 및 해당 애플리케이션을 추가 구성할 경우 다음 방법을 통해 완료할 수 있습니다. 
 
-* The {{ site.data.keys.mf_console }}
-* The {{ site.data.keys.mf_server }} administration service REST API
-* The **mfpadm** command-line tool
+* {{ site.data.keys.mf_console }}
+* {{ site.data.keys.mf_server }} 관리 서비스 REST API
+* **mfpadm** 명령행 도구
 
-After the initial installation and configuration, you do not need to access any application server console or interface to configure {{ site.data.keys.product }}.  
-When you deploy your app to production, you can deploy your app to the following {{ site.data.keys.mf_server }} production environments:
+초기 설치 및 구성 후에 {{ site.data.keys.product }}를 구성할 때 애플리케이션 서버 콘솔 또는 인터페이스에 액세스할 필요가 없습니다.   
+앱을 프로덕션에 배치할 때 다음 {{ site.data.keys.mf_server }} 프로덕션 환경에 앱을 배치할 수 있습니다. 
 
-#### On-premises
+#### 사내 구축 환경
 {: #on-premises }
-> For information about installing and configuring {{ site.data.keys.mf_server }} for your on-premises environment, see [Installing IBM {{ site.data.keys.mf_server }}](../installation-configuration/production/appserver).
+> 사내 구축 환경에 사용되는 {{ site.data.keys.mf_server }} 설치 및 구성에 대한 정보는 [IBM {{ site.data.keys.mf_server }} 설치](../installation-configuration/production/appserver)를 참조하십시오.
 
-#### On the cloud
+#### 클라우드
 {: #on-the-cloud }
-* [Using {{ site.data.keys.mf_server }} on IBM Bluemix](../bluemix).
-* [Using {{ site.data.keys.mf_server }} on IBM PureApplication](../installation-configuration/production/pure-application).
+* [IBM Bluemix에서 {{ site.data.keys.mf_server }}사용](../bluemix)
+* [IBM PureApplication에서 {{ site.data.keys.mf_server }} 사용](../installation-configuration/production/pure-application)
 
-## Adapters
+## 어댑터
 {: #adapters }
-Adapters in {{ site.data.keys.product }} securely connect your back-end systems to client applications and cloud services.  
+{{ site.data.keys.product }}의 어댑터는 백엔드 시스템을 클라이언트 애플리케이션 및 클라우드 서비스에 안전하게 연결합니다.   
 
-You can write adapters in either JavaScript or Java, and you can build and deploy adapters as Maven projects.  
-Adapters are deployed to a {{ site.data.keys.product_adj }} runtime in {{ site.data.keys.mf_server }}.
+JavaScript 또는 Java로 어댑터를 작성하고 Maven 프로젝트로 빌드 및 배치할 수 있습니다.   
+어댑터는 {{ site.data.keys.mf_server }}의 {{ site.data.keys.product_adj }} 런타임에 배치됩니다. 
 
-In a production system, adapters typically run in a cluster of application servers. Implement your adapters as REST services with no session information and stored locally on the server to ensure that your adapter works well in a clustered environment.
+프로덕션 시스템에서 어댑터는 일반적으로 애플리케이션 서버 클러스터에서 실행됩니다. 클러스터 환경에서 어댑터가 올바르게 작동하도록 하려면 어댑터를 세션 정보가 없고 서버에 로컬로 저장된 REST 서비스로 구현하십시오. 
 
-An adapter can have user-defined properties. These properties can be configured on the server side without redeploying the adapter. For example, you can change the URL that your adapter uses to access resources when you move from test to production.
+어댑터에는 사용자 정의 특성이 있을 수 있습니다. 이러한 특성은 어댑터를 재배치하지 않고도 서버 측에 구성할 수 있습니다. 예를 들어 테스트에서 프로덕션으로 이동할 때 어댑터가 자원에 액세스하는 데 사용하는 URL을 변경할 수 있습니다. 
 
-You can deploy an adapter to a {{ site.data.keys.product_adj }} runtime from the {{ site.data.keys.mf_console }}, by using the mfpdev adapter deploy command, or directly from Maven.
+mfpdev adapter deploy 명령을 사용하거나 Maven에서 직접 수행하여 {{ site.data.keys.mf_console }}에서 {{ site.data.keys.product_adj }} 런타임에 어댑터를 배치할 수 있습니다. 
 
-> Learn more about adapters and how to develop JavaScript and Java adapters in the [Adapters category](../adapters).
+> [어댑터 카테고리](../adapters)에서 어댑터 및 JavaScript와 Java 어댑터 개발 방법에 대해 자세히 알아보십시오. 
 
-## Client-side tutorials to follow
+## 다음 클라이언트 측 학습서
 {: #client-side-tutorials-to-follow }

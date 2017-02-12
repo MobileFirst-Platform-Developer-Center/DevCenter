@@ -1,24 +1,24 @@
 ---
 layout: tutorial
-title: Java HTTP Adapter
-breadcrumb_title: HTTP Adapter
+title: Java HTTP 어댑터
+breadcrumb_title: HTTP 어댑터
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: 어댑터 Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
 
-Java adapters provide free reign over connectivity to a backend system. It is therefore the developer's responsibility to ensure best practices regarding performance and other implementation details. This tutorial covers an example of a Java adapter that connects to an RSS feed by using a Java `HttpClient`.
+Java 어댑터는 백엔드 시스템으로 연결에 대해 완전한 자유를 제공합니다. 따라서 성능 및 기타 구현 세부사항을 최적화하는 것은 개발자의 책임입니다. 이 학습서는 Java `HttpClient`를 사용하여 RSS 피드에 연결하는 Java 어댑터의 예제를 다룹니다.
 
-**Prerequisite:** Make sure to read the [Java Adapters](../) tutorial first.
+**전제조건:** [Java 어댑터](../) 학습서를 먼저 읽으십시오. 
 
-## Initializing the adapter
+## 어댑터 초기화
 {: #initializing-the-adapter }
 
-In the supplied sample adapter, the `JavaHTTPApplication` class is used to extend `MFPJAXRSApplication` and is a good place to trigger any initialization required by your application.
+제공된 샘플 어댑터에서 `JavaHTTPApplication` 클래스가 `MFPJAXRSApplication`을 확장하는 데 사용되고 이는 애플리케이션에서 요구하는 초기화를 트리거하기 좋은 위치입니다. 
 
 ```java
 @Override
@@ -28,11 +28,11 @@ protected void init() throws Exception {
 }
 ```
 
-## Implementing the adapter Resource class
+## 어댑터 자원 클래스 구현
 {: #implementing-the-adapter-resource-class }
 
-The adapter Resource class is where requests to the server are handled.  
-In the supplied sample adapter, the class name is `JavaHTTPResource`.
+어댑터 자원 클래스는 서버에 대한 요청이 처리되는 위치입니다.   
+제공된 샘플 어댑터에서 클래스 이름은 `JavaHTTPResource`입니다.
 
 ```java
 @Path("/")
@@ -41,9 +41,9 @@ public class JavaHTTPResource {
 }
 ```
 
-`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
+`@Path("/")`는 자원이 URL `http(s)://host:port/ProjectName/adapters/AdapterName/`에서 사용 가능함을 의미합니다. 
 
-### HTTP Client
+### HTTP 클라이언트
 {: #http-client }
 
 ```java
@@ -56,9 +56,12 @@ public static void init() {
 }
 ```
 
-Because every request to your resource will create a new instance of `JavaHTTPResource`, it is important to reuse objects that may impact performance. In this example we made the Http client a `static` object and initialized it in a static `init()` method, which gets called by the `init()` of `JavaHTTPApplication` as described above.
+자원에 대한 모든 요청이 `JavaHTTPResource`의 새 인스턴스를 작성하므로,
+성능에 영향을 줄 수 있는 오브젝트를 재사용하는 것은 중요합니다. 이 예에서 Http 클라이언트를 `static` 오브젝트로 만들었고, static `init()`
+메소드에서 초기화했으며, 위에서 설명한 바와 같이 `JavaHTTPApplication`의 `init()`에
+의해 호출됩니다. 
 
-### Procedure resource
+### 프로시저 자원
 {: #procedure-resource }
 
 ```java
@@ -76,16 +79,17 @@ public void get(@Context HttpServletResponse response, @QueryParam("tag") String
 }
 ```
 
-The sample adapter exposes just one resource URL which allows to retrieve the RSS feed from the backend service.
+샘플 어댑터는 RSS 피드를 백 엔드 서비스에서 검색하도록 허용하는 하나의 자원 URL만 노출시킵니다. 
 
-* `@GET` means that this procedure only responds to `HTTP GET` requests.
-* `@Produces("application/json")` specifies the Content Type of the response to send back. We chose to send the response as a `JSON` object to make it easier on the client-side.
-* `@Context HttpServletResponse response` will be used to write to the response output stream. This enables us more granularity than returning a simple string.
-* `@QueryParam("tag")` String tag enables the procedure to receive a parameter. The choice of `QueryParam` means the parameter is to be passed in the query (`/JavaHTTP/?tag=MobileFirst_Platform`). Other options include `@PathParam`, `@HeaderParam`, `@CookieParam`, `@FormParam`, etc.
-* `throws IOException, ...` means we are forwarding any exception back to the client. The client code is responsible for handling potential exceptions which will be received as `HTTP 500` errors. Another solution (more likely in production code) is to handle exceptions in your server Java code and decide what to send to the client based on the exact error.
-* `execute(new HttpGet("/feed.xml"), response)`. The actual HTTP request to the backend service is handled by another method defined later.
+* `@GET`은 이 프로시저가 `HTTP GET` 요청에 응답함을 의미합니다. 
+* `@Produces("application/json)`는 보낼 응답의 컨텐츠 유형을 지정합니다. 클라이언트 측에서 용이하도록 `JSON` 오브젝트로 응답을 보내기로 선택했습니다. 
+* `@Context HttpServletResponse response`는 응답 출력 스트림에 쓰는 데 사용됩니다. 이는 단순 문자열을 리턴하는 것보다 더 세분화할 수 있게 합니다. 
+* `@QueryParam("tag)` 문자열 태그는 프로시저가 매개변수를 수신할 수 있게 합니다. `QueryParam`을 선택하는 것은 매개변수가 조회( `/JavaHTTP/?tag=MobileFirst_Platform`)에서 전달됨을 의미합니다. 다른 옵션에는 `@PathParam`, `@HeaderParam`,
+`@CookieParam`, `@FormParam` 등이 포함됩니다. 
+* `throws IOException, ...`은 클라이언트로 예외를 다시 전달하고 있음을 의미합니다. 클라이언트 코드는 `HTTP 500` 오류로 수신되는 잠재적 예외를 처리하는 것을 담당합니다. (프로덕션 코드에서 더 가능성이 많은) 다른 솔루션은 서버 Java 코드에서 예외를 처리하고 정확한 오류를 기반으로 클라이언트에 전송할 내용을 결정하는 것입니다. 
+* `execute(new HttpGet("/feed.xml"), response)`. 백 엔드 서비스에 대한 실제 HTTP 요청은 나중에 정의된 다른 메소드에서 처리합니다.
 
-Depending if you pass a `tag` parameter, `execute` will retrieve a different build a different path and retrieve a different RSS file.
+`tag` 매개변수를 전달하는지 여부에 따라 `execute`는 다양한 빌드, 경로 및 RSS 파일을 검색합니다.
 
 ### execute()
 {: #execute }
@@ -111,25 +115,25 @@ public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
 }
 ```
 
-* `HttpResponse RSSResponse = client.execute(host, req)`. We use our static HTTP client to execute the HTTP request and store the response.
-* `ServletOutputStream os = resultResponse.getOutputStream()`. This is the output stream to write a response to the client.
-* `resultResponse.addHeader("Content-Type", "application/json")`. As mentioned before, we chose to send the response as JSON.
-* `String json = XML.toJson(RSSResponse.getEntity().getContent())`. We used `org.apache.wink.json4j.utils.XML` to convert the XML RSS to a JSON string.
-* `os.write(json.getBytes(Charset.forName("UTF-8")))` the resulting JSON string is written to the output stream.
+* `HttpResponse RSSResponse = client.execute(host, req)`. HTTP 요청을 실행하고 응답을 저장하기 위해 정적 HTTP 클라이언트를 사용합니다. 
+* `ServletOutputStream os = resultResponse.getOutputStream()`. 이는 응답을 클라이언트에 쓰기 위한 출력 스트림입니다. 
+* `resultResponse.addHeader("Content-Type", "application/json")`. 앞에서 언급한 것처럼 JSON으로 응답을 보내기로 선택했습니다. 
+* `String json = XML.toJson(RSSResponse.getEntity().getContent())`. JSON 문자열로 XML RSS를 변환하기 위해 `org.apache.wink.json4j.utils.XML`을 사용했습니다. 
+* `os.write(json.getBytes(Charset.forName("UTF-8")))` 결과로 생긴 JSON 문자열이 출력 스트림에 작성됩니다. 
 
-The output stream is then `flush`ed and `close`d.
+그런 다음 출력 스트림은 `flush`되고 `close`됩니다.
 
-If `RSSResponse` is not `200 OK`, we write the status code and reason in the response instead.
+만약 `RSSResponse`가 `200 OK`가 아니면 그 대신 상태 코드 및 이유를 응답에 작성합니다.
 
-## Sample adapter
+## 샘플 어댑터
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
+어댑터 Maven 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)하십시오. 
 
-The Adapters Maven project includes the **JavaHTTP** adapter described above.
+어댑터 Maven 프로젝트는 위에서 설명한 **JavaHTTP** 어댑터를 포함합니다. 
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
 
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaHTTP adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* [JavaHTTP 어댑터를 빌드 및 배치](../../creating-adapters/)하기 위해 Maven, {{ site.data.keys.mf_cli }} 또는 선택한 IDE를 사용하십시오. 
+* 어댑터를 테스트하거나 디버깅하려면 [어댑터 테스트 및 디버깅](../../testing-and-debugging-adapters) 학습서를 참조하십시오. 

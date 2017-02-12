@@ -1,32 +1,32 @@
 ---
 layout: tutorial
-title: Resource request from iOS applications
+title: iOS 애플리케이션의 자원 요청
 breadcrumb_title: iOS
 relevantTo: [ios]
 downloads:
-  - name: Download Xcode project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
-  - name: Download Adapter Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
-weight: 4
+  - 이름: Xcode 프로젝트 다운로드
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80
+  - 이름: 어댑터 Maven 프로젝트 다운로드
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+가중치: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-{{ site.data.keys.product_adj }} applications can access resources using the `WLResourceRequest` REST API.  
-The REST API works with all adapters and external resources.
+{{site.data.keys.product_adj }} 애플리케이션은 `WLResourceRequest` REST API를 사용하여 자원에 액세스할 수 있습니다.   
+REST API는 모든 어댑터 및 외부 자원에서 작동합니다. 
 
-**Prerequisites**:
+**전제조건**:
 
-- Ensure you have [added the {{ site.data.keys.product }} SDK](../../../application-development/sdk/ios) to your Native iOS project.
-- Learn how to [create adapters](../../../adapters/creating-adapters/).
+- 고유 iOS 프로젝트에 [{{ site.data.keys.product }} SDK를 추가](../../../application-development/sdk/ios)했는지 확인하십시오. 
+- [어댑터 작성](../../../adapters/creating-adapters/) 방법에 대해 자세히 알아보십시오. 
 
 ## WLResourceRequest
 {: #wlresourcerequest }
-The `WLResourceRequest` class handles resource requests to adapters or external resources.
+`WLResourceRequest` 클래스는 어댑터 또는 외부 자원에 대한 자원 요청을 처리합니다. 
 
-Create a `WLResourceRequest` object and specify the path to the resource and the HTTP method.  
-Available methods are: `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` and `WLHttpMethodDelete`.
+`WLResourceRequest` 오브젝트를 작성하고 자원에 대한 경로 및 HTTP 메소드를 지정하십시오.   
+사용 가능한 메소드는 `WLHttpMethodGet`, `WLHttpMethodPost`, `WLHttpMethodPut` 및 `WLHttpMethodDelete`입니다. 
 
 Objective-C
 
@@ -42,15 +42,15 @@ let request = WLResourceRequest(
 )
 ```
 
-* For **JavaScript adapters**, use `/adapters/{AdapterName}/{procedureName}`
-* For **Java adapters**, use `/adapters/{AdapterName}/{path}`. The `path` depends on how you defined your `@Path` annotations in your Java code. This would also include any `@PathParam` you used.
-* To access resources outside of the project, use the full URL as per the requirements of the external server.
-* **timeout**: Optional, request timeout in milliseconds
+* **JavaScript 어댑터**의 경우 `/adapters/{AdapterName}/{procedureName}`을 사용하십시오. 
+* **Java 어댑터**의 경우 `/adapters/{AdapterName}/{path}`를 사용하십시오. `path`는 Java 코드로 `@Path` 어노테이션을 정의한 방식에 따라 다릅니다. 여기에는 사용한 `@PathParam`도 포함됩니다. 
+* 프로젝트 외부의 자원에 액세스하려면 외부 서버의 요구사항에 따라 전체 URL을 사용하십시오. 
+* **제한시간**: 요청 제한시간(밀리초)이며 선택사항입니다. 
 
-## Sending the request
+## 요청 보내기
 {: #sending-the-request }
-Request the resource by using the `sendWithCompletionHandler` method.  
-Supply a completion handler to handle the retrieved data:
+`sendWithCompletionHandler` 메소드를 사용하여 자원을 요청하십시오.   
+다음과 같이 완료 핸들러를 제공하여 검색된 데이터를 처리하십시오. 
 
 Objective-C
 
@@ -76,19 +76,19 @@ request.sendWithCompletionHandler { (response, error) -> Void in
 }
 ```
 
-Alternatively, you can use `sendWithDelegate` and provide a delegate that conforms to both the `NSURLConnectionDataDelegate` and `NSURLConnectionDelegate` protocols. This will allow you to handle the response with more granularity, such as handling binary responses.   
+또는 `sendWithDelegate`를 사용하고 `NSURLConnectionDataDelegate` 및 `NSURLConnectionDelegate` 프로토콜을 둘 다 준수하는 위임을 제공할 수 있습니다. 이렇게 하면 보다 세부적인 응답을 처리할 수 있습니다(예: 2진 응답 처리).    
 
-## Parameters
+## 매개변수
 {: #parameters }
-Before sending your request, you may want to add parameters as needed.
+필요한 경우 요청을 보내기 전에 매개변수를 추가할 수 있습니다. 
 
-### Path parameters
+### 경로 매개변수
 {: #path-parameters }
-As explained above, **path** parameters (`/path/value1/value2`) are set during the creation of the `WLResourceRequest` object.
+위에서 설명한 대로 **경로** 매개변수(`/path/value1/value2`)는 `WLResourceRequest` 오브젝트 작성 중에 설정됩니다. 
 
-### Query parameters
+### 조회 매개변수
 {: #query-parameters }
-To send **query** parameters (`/path?param1=value1...`) use the `setQueryParameter` method for each parameter:
+**조회** 매개변수(`/path?param1=value1...`)를 전송하려면 각 매개변수에 `setQueryParameter` 메소드를 사용하십시오. 
 
 Objective-C
 
@@ -103,9 +103,9 @@ request.setQueryParameterValue("value1", forName: "param1")
 request.setQueryParameterValue("value2", forName: "param2")
 ```
 
-#### JavaScript adapters
+#### JavaScript 어댑터
 {: #javascript-adapters-query }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript 어댑터는 이름이 없는 정렬된 매개변수를 사용합니다. Javascript 어댑터에 매개변수를 전달하려면 `params`라는 이름을 사용하여 매개변수 배열을 설정하십시오. 
 
 Objective-C
 
@@ -119,11 +119,11 @@ Swift
 request.setQueryParameterValue("['value1', 'value2']", forName: "params")
 ```
 
-This should be used with `WLHttpMethodGet`.
+이는 `WLHttpMethodGet`와 함께 사용해야 합니다. 
 
-### Form parameters
+### 양식 매개변수
 {: #form-parameters }
-To send **form** parameters in the body, use `sendWithFormParameters` instead of `sendWithCompletionHandler`:
+본문에서 **양식** 매개변수를 보내려면 `sendWithCompletionHandler` 대신 `sendWithFormParameters`를 사용하십시오. 
 
 Objective-C
 
@@ -157,9 +157,9 @@ request.sendWithFormParameters(formParams) { (response, error) -> Void in
 }
 ```
 
-#### JavaScript adapters
+#### JavaScript 어댑터
 {: #javascript-adapters-form }
-JavaScript adapters use ordered nameless parameters. To pass parameters to a Javascript adapter, set an array of parameters with the name `params`:
+JavaScript 어댑터는 이름이 없는 정렬된 매개변수를 사용합니다. Javascript 어댑터에 매개변수를 전달하려면 `params`라는 이름을 사용하여 매개변수 배열을 설정하십시오. 
 
 Objective-C
 
@@ -172,11 +172,11 @@ Swift
 let formParams = ["params":"['value1', 'value2']"]
 ```
 
-This should be used with `WLHttpMethodPost`.
+이는 `WLHttpMethodPost`와 함께 사용해야 합니다. 
 
-### Header parameters
+### 헤더 매개변수
 {: #header-parameters }
-To send a parameter as an HTTP header use the `setHeaderValue` API:
+매개변수를 HTTP 헤더로 보내려면 `setHeaderValue` API를 사용하십시오. 
 
 Objective-C
 
@@ -191,76 +191,42 @@ Swift
 request.setHeaderValue("2015-06-06", forName: "birthdate")
 ```
 
-### Other custom body parameters
+### 기타 사용자 정의 본문 매개변수
 {: #other-custom-body-parameters }
 
-- `sendWithBody` allows you to set an arbitrary String in the body.
-- `sendWithJSON` allows you to set an arbitrary dictionary in the body.
-- `sendWithData` allows you to set an arbitrary `NSData` in the body.
+- `sendWithBody`를 사용하여 본문에서 임의의 문자열을 설정할 수 있습니다. 
+- `sendWithJSON`을 사용하여 본문에서 임의의 사전을 설정할 수 있습니다. 
+- `sendWithData`를 사용하여 본문에서 임의의 `NSData`를 설정할 수 있습니다. 
 
-### Callback queue for completionHandler and delegate
-In order to avoid blocking the UI while receiving responses, a private callback queue can be specified to execute completionHandler block or delegate for `sendWithCompletionHandler` and `sendWithDelegate` set of APIs.
-
-#### Objective-C
-
-```objc
-//creating callback queue
-dispatch_queue_t completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL);
-
-//Sending the request with callback queue
-[request sendWithCompletionHandler:completionQueue completionHandler:^(WLResponse *response, NSError *error) {
-    if (error == nil){
-        NSLog(@"%@", response.responseText);
-    } else {
-        NSLog(@"%@", error.description);
-    }
-}];
-```
-#### Swift
-
-```swift
-//creating callback queue
-var completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL)
-
-//Sending the request with callback queue
-request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void in
-  if (error == nil){
-      NSLog(@"%@", response.responseText);
-  } else {
-      NSLog(@"%@", error.description);
-  }
-}
-```
-
-## The response
+## 응답
 {: #the response }
-The `response` object contains the response data and you can use its methods and properties to retrieve the required information. Commonly used properties are `responseText` (String), `responseJSON` (Dictionary) (if the response is in JSON) and `status` (Int) (the HTTP status of the response).
+`response` 오브젝트에는 응답 데이터가 포함되어 있으며 해당 메소드 및 특성을 사용하여 필수 정보를 검색할 수 있습니다. 일반적으로 사용되는 특성은 `responseText`(문자열), 응답이 JSON 형식인 경우 `responseJSON`(사전) 및 응답의 HTTP 상태인 `status`(정수)입니다. 
 
-Use the `response` and `error` objects to get the data that is retrieved from the adapter.
+`response` 및 `error` 오브젝트를 사용하여 어댑터에서 검색되는 데이터를 가져오십시오. 
 
-## For more information
+## 자세한 정보
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html).
+> WLResourceRequest에 대한 자세한 정보는 [API 참조를 참조하십시오](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html).
 
-<img alt="Image of the sample application" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
-## Sample application
+<img alt="샘플 애플리케이션 이미지" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
+## 샘플 애플리케이션
 {: #sample-application }
-The ResourceRequestSwift project contains an iOS application, implemented in Swift, that makes a resource request using a Java adapter.  
-The adapter Maven project contains the Java adapter used during the resource request call.
+ResourceRequestSwift 프로젝트에는 Swift에서 구현되며 Java 어댑터를 사용하여 자원 요청을 작성하는 iOS 애플리케이션이 포함되어 있습니다.   
+어댑터 Maven 프로젝트에는 자원 요청 호출 중에 사용되는 Java 어댑터가 포함되어 있습니다. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80) the iOS project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the adapter Maven project.
+iOS 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/ResourceRequestSwift/tree/release80)하십시오.   
+어댑터 Maven 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)하십시오. 
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+샘플의 README.md 파일에 있는 지시사항을 따르십시오. 
 
-#### Note about iOS 9:
+#### iOS 9에 대한 참고사항:
 {: #note-about-ios-9 }
 
-> Xcode 7 enables [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) by default. To complete the tutorial disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
->   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
->   2. Paste the following:
+> Xcode 7은 [ATS(Application Transport Security)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14)를 기본적으로 사용합니다. 학습서를 완료하려면 ATS를 사용 안함으로 설정하십시오([자세히 보기](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
+>   1. Xcode에서 **[프로젝트]/info.plist 파일 → 다른 이름으로 열기 → 소스 코드**를 마우스 오른쪽 단추로 클릭하십시오. 
+>   2. 다음을 붙여넣으십시오. 
 >
 ```xml
 >      <key>NSAppTransportSecurity</key>

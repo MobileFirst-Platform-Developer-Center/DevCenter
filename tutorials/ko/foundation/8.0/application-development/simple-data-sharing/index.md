@@ -1,72 +1,72 @@
 ---
 layout: tutorial
-title: Simple Data Sharing
+title: 단순 데이터 공유
 relevantTo: [ios,android,cordova]
 weight: 12
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-The Simple Data Sharing feature makes it possible to securely share lightweight information among a family of applications on a single device. This feature uses native APIs that are already present in the different mobile SDKs to provide one unified developer API. This {{ site.data.keys.product_adj }} API abstracts the different platform complexities, making it easier for developers to quickly implement code that allows for inter-application communication.
+단순 데이터 공유 기능을 사용하여 단일 디바이스에서 애플리케이션 패밀리 간에 경량 정보를 안전하게 공유할 수 있습니다. 이 기능은 여러 모바일 SDK에 이미 존재하는 고유 API를 사용하여 하나의 통합된 개발자 API를 제공합니다. 이 {{ site.data.keys.product_adj }} API는 여러 플랫폼 복잡도를 요약하므로 개발자가 애플리케이션 간 통신에 대해 허용되는 코드를 보다 쉽고 빠르게 구현할 수 있습니다. 
 
-This feature is supported on iOS and Android for both Cordova and native applications.
+이 기능은 iOS 및 Android에서 Cordova 및 고유 애플리케이션 둘 다에 대해 지원됩니다. 
 
-After you enable the Simple Data Sharing feature, you can use the provided Cordova and native APIs to exchange simple string tokens among a family of applications on a device.
+단순 데이터 공유 기능을 사용으로 설정하면 제공된 Cordova 및 고유 API를 사용하여 디바이스의 애플리케이션 패밀리 간에 단순 문자열 토큰을 교환할 수 있습니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to}
-* [Terminology](#terminology)
-* [Enabling the Simple Data Sharing feature](#enabling-the-simple-data-sharing-feature)
-* [Simple Data Sharing API concepts](#simple-data-sharing-api-concepts)
-* [Limitations and considerations](#limitations-and-considerations)
+* [용어](#terminology)
+* [단순 데이터 공유 기능 사용](#enabling-the-simple-data-sharing-feature)
+* [단순 데이터 공유 API 개념](#simple-data-sharing-api-concepts)
+* [제한사항 및 고려사항](#limitations-and-considerations)
 
-## Terminology
+## 용어
 {: #terminology }
-### {{ site.data.keys.product_adj }} application family
+### {{ site.data.keys.product_adj }} 애플리케이션 패밀리
 {: #mobilefirst-application-family }
-An application family is a way to associate a group of applications which share the same level of trust. Applications in the same family can securely and safely share information with each other.
+애플리케이션 패밀리는 동일한 신뢰 레벨을 공유하는 여러 애플리케이션을 연관시키는 방법입니다. 동일한 패밀리에 포함된 애플리케이션은 서로 안전하게 정보를 공유할 수 있습니다. 
 
-To be considered part of the same {{ site.data.keys.product_adj }} application family, all applications in the same family must comply with the following requirements:
+동일한 {{ site.data.keys.product_adj }} 애플리케이션 패밀리의 일부로 간주되려면 동일한 패밀리에 포함된 모든 애플리케이션이 다음 요구사항을 준수해야 합니다. 
 
-* Specify the same value for the application family in the application descriptor.
-	* For iOS applications, this requirement is synonymous to the access group entitlements value.
-	* For Android applications, this requirement is synonymous to the **sharedUserId** value in the **AndroidManifest.xml** file.
+* 애플리케이션 디스크립터에서 애플리케이션 패밀리에 대해 동일한 값을 지정하십시오. 
+	* iOS 애플리케이션의 경우 이 요구사항은 액세스 그룹 인타이틀먼트 값과 동일한 의미입니다. 
+	* Android 애플리케이션의 경우 이 요구사항은 **AndroidManifest.xml** 파일의 **sharedUserId** 값과 동일한 의미입니다. 
 		
-    > **Note:** For Android, the name must be in the **x.y** format.
+    > **참고:** Android의 경우 이름이 **x.y** 형식이어야 합니다. 
 
-* Applications must be signed by the same signing identity. This requirement means that only applications from the same organization can use this feature.	
-    * For iOS applications, this requirement means the same Application ID prefix, provisioning profile, and signing identity is used to sign the application.
-	* For Android applications, this requirement means the same signing certificate and key.
+* 애플리케이션은 동일한 서명 ID로 서명되어야 합니다. 이 요구사항은 동일한 조직의 애플리케이션만 이 기능을 사용할 수 있음을 의미합니다. 	
+    * iOS 애플리케이션의 경우 이 요구사항은 애플리케이션에 서명하는 데 동일한 애플리케이션 ID 접두부, 프로비저닝 프로파일 및 서명 ID가 사용됨을 의미합니다. 
+	* Android 애플리케이션의 경우 이 요구사항은 동일한 서명 인증서 및 키를 의미합니다. 
 
-Aside from the {{ site.data.keys.product }} provided APIs, applications in the same {{ site.data.keys.product_adj }} application family can also use the data sharing APIs that are available through their respective native mobile SDK APIs.
+{{ site.data.keys.product }} 제공 API 외에도, 동일한 {{ site.data.keys.product_adj }} 애플리케이션 패밀리에 포함되는 애플리케이션은 각 고유 모바일 SDK API를 통해 사용 가능한 데이터 공유 API도 사용할 수 있습니다. 
 
-### String tokens
+### 문자열 토큰
 {: #string-tokens }
-Sharing string tokens across applications of the same {{ site.data.keys.product_adj }} application family can now be accomplished in hybrid or native iOS and Android applications through the Simple Data Sharing feature.
+이제 단순 데이터 공유 기능을 통해 하이브리드 또는 고유 iOS 및 Android 애플리케이션에서 동일한 {{ site.data.keys.product_adj }} 애플리케이션 패밀리의 애플리케이션 간에 문자열 토큰을 공유할 수 있습니다. 
 
-String tokens are considered simple strings, such as passwords or cookies. Using large strings results in considerable performance degradation.
+문자열 토큰은 단순 문자열(예: 비밀번호 또는 쿠키)로 간주됩니다. 긴 문자열을 사용하면 성능이 상당히 저하됩니다. 
 
-Consider encrypting tokens when you use the APIs for added security.
+API를 사용하는 경우 토큰을 암호화하여 보안을 강화할 것을 고려하십시오. 
 
-> For more information, see [JSONStore security utilities](../jsonstore/security-utilities/).
+> 자세한 정보는 [JSONStore 보안 유틸리티](../jsonstore/security-utilities/)를 참조하십시오. 
 
-## Enabling the Simple Data Sharing feature
+## 단순 데이터 공유 기능 사용
 {: #enabling-the-simple-data-sharing-feature }
-Wheter your app is a native app or a Cordova-based app, the instructions below apply to both.  
-Open your application in Xcode/Android Studio and:
+고유 앱 및 Cordova 기반 앱 모두에 대해 아래 지시사항이 적용됩니다.   
+Xcode/Android Studio에서 애플리케이션을 열고 다음을 수행하십시오. 
 
 ### iOS
 {: #ios }
-1. In Xcode, add a Keychain Access Group with a unique name for all the apps which you want to make part of the same application family. The application-identifier entitlement must be the same for all applications in your family.
-2. Ensure that applications that are part of the same family share the same Application ID prefix. For more information, see 3. Managing Multiple App ID Prefixes in the iOS Developer Library.
-4. Save and sign applications. Ensure that all applications in this group are signed by the same iOS certificate and provisioning profiles.
-5. Repeat the steps for all applications that you want to make part of the same application family.
+1. Xcode에서 동일한 애플리케이션 패밀리에 포함시키려는 모든 앱에 대해 고유 이름이 있는 키 체인 액세스 그룹을 추가하십시오. 애플리케이션 ID 인타이틀먼트는 패밀리의 모든 애플리케이션에 대해 동일해야 합니다. 
+2. 동일한 애플리케이션 패밀리에 속한 애플리케이션이 동일한 애플리케이션 ID 접두부를 공유하는지 확인하십시오. 자세한 정보는 3. iOS 개발자 라이브러리의 여러 앱 ID 접두부 관리를 참조하십시오. 
+4. 애플리케이션을 저장하고 서명하십시오. 이 그룹의 모든 애플리케이션이 동일한 iOS 인증서 및 프로비저닝 프로파일에 의해 서명되었는지 확인하십시오. 
+5. 동일한 애플리케이션 패밀리에 포함시킬 모든 애플리케이션에 대해 단계를 반복하십시오. 
 
-You can now use the native Simple Data Sharing APIs to share simple strings among the group of applications in the same family. 
+이제 고유 단순 데이터 공유 API를 사용하여 동일한 패밀리의 애플리케이션 그룹 간에 단순 문자열을 공유할 수 있습니다.  
 
 ### Android
 {: #android }
-1. Enable the Simple Data Sharing option by specifying the application family name as the **android:sharedUserId** element in the manifest tag of your **AndroidManifest.xml** file. For example: 
+1. 애플리케이션 패밀리 이름을 **AndroidManifest.xml** 파일의 Manifest 태그에 있는 **android:sharedUserId** 요소로 지정하여 단순 데이터 공유 옵션을 사용하도록 설정하십시오. 예:  
 
    ```xml
    <manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.myApp1"
@@ -75,18 +75,18 @@ You can now use the native Simple Data Sharing APIs to share simple strings amon
         android:sharedUserId="com.myGroup1">
    ```
     
-2. Ensure that applications that are part of the same family are signed by the same signing credentials.
-3. Uninstall any earlier versions of the applications that did not specify a **sharedUserId** or that used a different **sharedUserId**.
-4. Install the application on the device.
-5. Repeat the steps for all applications that you want to make part of the same application family.
+2. 동일한 패밀리에 속한 애플리케이션이 동일한 서명 신임 정보로 서명되었는지 확인하십시오. 
+3. **sharedUserId**를 지정하지 않았거나 다른 **sharedUserId**를 사용한 이전 버전의 애플리케이션을 모두 설치 제거하십시오. 
+4. 디바이스에서 애플리케이션을 설치하십시오. 
+5. 동일한 애플리케이션 패밀리에 포함시킬 모든 애플리케이션에 대해 단계를 반복하십시오. 
 
-You can now use the native Simple Data Sharing APIs that are provided to share simple strings among the group of applications in the same family.
+이제 제공되는 고유 단순 데이터 공유 API를 사용하여 동일한 패밀리의 애플리케이션 그룹 간에 단순 문자열을 공유할 수 있습니다. 
 
-## Simple Data Sharing API concepts
+## 단순 데이터 공유 API 개념
 {: #simple-data-sharing-api-concepts }
-The Simple Data Sharing APIs allow any application in the same family to set, get, and clear key-value pairs from a common place. The Simple Data Sharing APIs are similar for every platform, and provide an abstraction layer, hiding the complexities that exist with each native SDK's APIs, making it easy to use.
+단순 데이터 공유 API를 사용하여 동일한 패밀리에 속한 애플리케이션이 공통된 위치에서 키-값 쌍을 설정하고 가져오며 지울 수 있습니다. 단순 데이터 공유 API는 모든 플랫폼에 대해 유사하며, 추상 계층을 제공하여 각 고유 SDK의 API에 존재하는 복잡도를 숨기고 쉽게 사용하도록 합니다. 
 
-The following examples show how you can set, get, and delete tokens from the shared credential storage for the different environments.
+다음 예제는 서로 다른 환경에 대한 공유 신임 정보 스토리지에서 토큰을 설정하고 가져오며 삭제할 수 있는 방법을 보여줍니다. 
 
 ### JavaScript
 {: #javascript }
@@ -96,7 +96,7 @@ WL.Client.getSharedToken({key: myName})
 WL.Client.clearSharedToken({key: myName})
 ```
 
-> For more information about the Cordova APIs, see the [getSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#setSharedToken), [setSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#getSharedToken), and [clearSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#clearSharedToken) functions in the API reference.
+> Cordova API에 대한 자세한 정보는 API 참조의 [getSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#setSharedToken), [setSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#getSharedToken) 및 [clearSharedToken](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html#clearSharedToken) 함수를 참조하십시오.
 
 ### Objective-C
 {: #objective-c }
@@ -106,7 +106,7 @@ NSString* token = [WLSimpleDataSharing getSharedToken: myName]];
 [WLSimpleDataSharing clearSharedToken: myName];
 ```
 
-> For more information about the Objective-C APIs, see the [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLSimpleDataSharing.html) class in the API reference.
+> Objective-C API에 대한 자세한 정보는 API 참조의 [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLSimpleDataSharing.html) 클래스를 참조하십시오.
 
 ### Java
 {: #java }
@@ -116,30 +116,30 @@ String token = WLSimpleSharedData.getSharedToken(myName);
 WLSimpleSharedData.clearSharedToken(myName);
 ```
 
-> For more information about the Java APIs, see Class [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/WLSimpleDataSharing.html) in the API reference.
+> Java API에 대한 자세한 정보는 API 참조의 [WLSimpleDataSharing](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/WLSimpleDataSharing.html) 클래스를 참조하십시오.
 
-## Limitations and considerations
+## 제한사항 및 고려사항
 {: #limitations-and-considerations }
-### Security considerations
+### 보안 고려사항
 {: #security-considerations }
-Because this feature allows for data access among a group of applications, special care must be taken to protect access to the device from unauthorized users. Consider the following security aspects:
+이 기능은 여러 애플리케이션 간에 데이터 액세스를 허용하므로 권한 없는 사용자가 디바이스에 액세스하는 것을 방지하도록 특히 주의해야 합니다. 다음 보안 측면을 고려하십시오. 
 
-#### Device Lock
+#### 디바이스 잠금
 {: #device-lock }
-For added security, ensure that devices are secured by a device password, passcode, or pin, so that access to the device is secured if the device is lost or stolen.
+보안을 강화하려면 디바이스 비밀번호, 패스코드 또는 핀으로 디바이스를 보호하여 디바이스 유실 또는 도난 시에 디바이스에 대한 액세스를 안전하게 보호하십시오. 
 
-#### Jailbreak Detection
+#### 탈옥 발견
 {: #jailbreak-detection }
-Consider using a mobile device management solution to ensure that devices in your enterprise are not jailbroken or rooted.
+엔터프라이즈의 디바이스가 탈옥 또는 루팅되지 않도록 모바일 디바이스 관리 솔루션을 사용할 것을 고려하십시오. 
 
-#### Encryption
+#### 암호화
 {: #encryption }
-Consider encrypting any tokens before you share them for added security. For more information, see JSONStore security utilities.
+토큰을 암호화한 후 공유하여 보안을 강화할 것을 고려하십시오. 자세한 정보는 JSONStore 보안 유틸리티를 참조하십시오. 
 
-### Size limit
+### 크기 한계
 {: #size-limit }
-This feature is meant for sharing of small strings, such as passwords or cookies. Be cognizant not to abuse this feature, as there are performance implications with such attempts to encrypt and decrypt or read and write any large values of data.
+이 기능은 짧은 문자열(예: 비밀번호 또는 쿠키) 공유에 사용됩니다. 큰 값의 데이터를 암호화 및 복호화하거나 읽고 쓰는 경우 성능에 영향을 주므로 이 기능을 남용하지 않도록 하십시오. 
 
-### Maintenance challenges
+### 유지보수 과제
 {: #maintenance-challenges }
-Android developers must be aware that enabling this feature, or changing the application family value, results in their inability to upgrade existing applications that were installed under a different family name. For security reasons, Android requires earlier applications to be uninstalled before applications under a new family name can be installed.
+Android 개발자는 이 기능을 사용하도록 설정하거나 애플리케이션 패밀리 값을 변경하는 경우 다른 패밀리 이름으로 설치된 기존 애플리케이션을 업그레이드할 수 없다는 점에 유의해야 합니다. 보안상의 이유로 인해 Android에서 새 패밀리 이름으로 애플리케이션을 설치하려면 먼저 이전 애플리케이션을 설치 제거해야 합니다. 

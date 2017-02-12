@@ -1,27 +1,27 @@
 ---
 layout: tutorial
-title: JavaScript Adapters
+title: JavaScript 어댑터
 show_children: true
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
 
-JavaScript adapters provide templates for connection to HTTP and SQL back-ends. It provides a set of services, called procedures and mobile apps can call these procedures by issuing AJAX requests.
+JavaScript 어댑터는 HTTP 및 SQL 백엔드에 연결하기 위한 템플리트를 제공합니다. 일련의 서비스, 호출된 프로시저를 제공하고 모바일 앱이 AJAX 요청을 발행하여 이러한 프로시저를 호출할 수 있습니다. 
 
-**Prerequisite:** Make sure to read the [Creating Java and JavaScript Adapters](../creating-adapters) tutorial first.
+**전제조건:** [Java 및 JavaScript 어댑터 작성](../creating-adapters) 학습서를 먼저 읽으십시오.
 
-## File structure
+## 파일 구조
 {: #file-structure }
 
 ![mvn-adapter](js-adapter-fs.png)
 
-### The adapter-resources folder 
+### adapter-resources 폴더 
 {: #the-adapter-resources-folder }
  
-The `adapter-resources` folder contains an XML configuration file. This configuration file describes the connectivity options and lists the procedures that are exposed to the application or other adapters.
+`adapter-resources` 폴더는 XML 구성 파일을 포함합니다. 이 구성 파일은 연결 옵션을 설명하고, 애플리케이션 또는 기타 어댑터에 제공되는 프로시저를 나열합니다. 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -46,164 +46,182 @@ The `adapter-resources` folder contains an XML configuration file. This configur
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements</b></a>
-            </h4>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>adapter.xml 속성 및 하위 요소에 대해 클릭</b></a></h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>name</b>: <i>Mandatory.</i> The name of the adapter. This name must be unique within the {{ site.data.keys.mf_server }}. It can contain alphanumeric characters and underscores, and must start with a letter. After you define and deploy an adapter, you cannot modify its name.</li>
-					<li><b>displayName</b>: <i>Optional.</i> The name of the adapter that is displayed in the {{ site.data.keys.mf_console }}. If this element is not specified, the value of the name attribute is used instead.</li>
-					<li><b>description</b>: <i>Optional.</i> Additional information about the adapter. Displayed in the {{ site.data.keys.mf_console }}.</li>
-					<li><b>connectivity</b>: <i>Mandatory.</i> Defines the mechanism by which the adapter connects to the back-end application. It contains the <code>connectionPolicy</code> subelement.
-                        <ul>
-                            <li><b>connectionPolicy</b>: <i>Mandatory</i>. The <code>connectionPolicy</code> defines connection properties. The structure of this subelement depends on the integration technology of the back-end application. For more information about connectionPolicy, see <a href="js-http-adapter">HTTP adapter connectionPolicy element</a> and <a href="js-sql-adapter">SQL adapter connectionPolicy element</a>.</li>
+                    <li><b>name</b>: <i>필수.</i> 어댑터 이름입니다.
+이 이름은
+{{ site.data.keys.mf_server }}
+내에서 고유해야 합니다. 이름은 영숫자 문자 및 밑줄을 포함할 수 있으며 문자로 시작해야 합니다. 어댑터를 정의하고 배치한 후에는 이름을 수정할 수 없습니다. </li>
+					<li><b>displayName</b>: <i>선택사항.</i> {{ site.data.keys.mf_console }}에
+표시되는 어댑터의 이름입니다. 이 요소가 지정되지 않으면 이름 속성 값이 대신 사용됩니다. </li>
+					<li><b>description</b>: <i>선택사항.</i> 어댑터에 대한 추가 정보입니다.
+{{ site.data.keys.mf_console }}에 표시됩니다. </li>
+					<li><b>connectivity</b>: <i>필수.</i> 어댑터가 백엔드 애플리케이션에 연결하는 메커니즘을 정의합니다. 여기에는 <code>connectionPolicy</code> 하위 요소가 포함됩니다.
+<ul>
+                            <li><b>connectionPolicy</b>: <i>필수</i>. <code>connectionPolicy</code>는 연결 특성을 정의합니다. 이 하위 요소의 구조는
+백엔드 애플리케이션의 통합 기술에 따라 다릅니다. connectionPolicy에 대한 자세한 정보는 <a href="js-http-adapter">HTTP 어댑터 connectionPolicy
+요소</a> 및 <a href="js-sql-adapter">SQL 어댑터 connectionPolicy 요소</a>를 참조하십시오. </li>
                         </ul>
                     </li>
-                    <li><b>procedure</b>: <i>Mandatory.</i> Defines a process for accessing a service that is exposed by a back-end application.
-                        <ul>
-                            <li><b>name</b>: <i>Mandatory.</i> The name of the procedure. This name must be unique within the adapter. It can contain alphanumeric characters and underscores, and must start with a letter.</li>
-                            <li><b>audit</b>: <i>Optional.</i> Defines whether calls to the procedure are logged in the audit log. The following values are valid: 
-                                <ul>
-                                    <li><b>true</b>: Calls to the procedure are logged in the audit log.</li> 
-                                    <li><b>false</b>: Default. Calls to the procedure are not logged in the audit log.</li>
+                    <li><b>procedure</b>: <i>필수.</i> 백엔드 애플리케이션에 의해 노출되는
+서비스에 액세스하기 위한 프로세스를 정의합니다. <ul>
+                            <li><b>name</b>: <i>필수.</i> 프로시저 이름입니다. 이 이름은
+어댑터 내에서 고유해야 합니다. 이름은 영숫자 문자 및 밑줄을 포함할 수 있으며 문자로 시작해야 합니다. </li>
+                            <li><b>audit</b>: <i>선택사항.</i> 프로시저에 대한 호출이 감사 로그에
+로그되는지 여부를 정의합니다. 유효값은 다음과 같습니다.<ul>
+                                    <li><b>true</b>: 프로시저에 대한 호출이 감사 로그에 기록됩니다.
+</li> 
+                                    <li><b>false</b>: 기본값입니다. 프로시저에 대한 호출이 감사 로그에 로그되지 않습니다.
+</li>
                                 </ul>
                             </li>
-                            <li><b>scope</b>: <i>Optional.</i> The security scope that protects the adapter resource procedure, as a string of zero or more space-separated scope elements. A scope element can be a keyword that is mapped to a security check, or the name of a security check. The default value of the scope attribute is an empty string. When the value of the <b>secured</b> attribute is false, the scope attribute is ignored. For information on OAuth resource protection, see the <a href="../../authentication-and-security">Authorization Concepts</a> tutorial.</li>
-                            <li><b>secured</b>: <i>Optional.</i> Defines whether the adapter resource procedure is protected by the {{ site.data.keys.product }} security framework. The following values are valid:
-                                <ul>
-                                    <li><b>true</b>: Default. The procedure is protected. Calls to the procedure require a valid access token.</li>
-                                    <li><b>false</b>. The procedure is not protected. Calls to the procedure do not require an access token. When this value is set, the <b>scope</b> attribute is ignored. To understand the implications of disabling resource protection, see the <a href="../../authentication-and-security/#unprotected-resources">Unprotected resources</a> topic in the <a href="../../authentication-and-security">Authorization Concepts</a> tutorial.</li>
+                            <li><b>scope</b>: <i>선택사항.</i> 어댑터 자원 프로시저를 보호하는 보안 범위로, 공백으로 구분된 0개 이상의
+범위 요소 문자열입니다. 범위 요소는 보안 검사 또는 보안 검사의 이름에 맵핑되는
+키워드일 수 있습니다. scope 속성의 기본값은
+빈 문자열입니다. <b>secured</b> 속성의 값이 false이면 scope 속성이 무시됩니다. OAuth 자원 보호에 대한 정보는 <a href="../../authentication-and-security">권한 부여 개념</a> 학습서를 참조하십시오. </li>
+                            <li><b>secured</b>: <i>선택사항.</i> 어댑터 자원 프로시저가 {{ site.data.keys.product }} 보안 프레임워크에 의해 보호되는지 여부를 정의합니다. 유효값은 다음과 같습니다.<ul>
+                                    <li><b>true</b>: 기본값입니다. 프로시저가 보호됩니다. 프로시저를 호출하려면
+유효한 액세스 토큰이 필요합니다.</li>
+                                    <li><b>false</b>. 프로시저가 보호되지 않습니다. 프로시저를 호출하는 데
+액세스 토큰이 필요하지 않습니다. 이 값을 설정하면 <b>scope</b> 속성이 무시됩니다. 자원 보호를 사용하지 않는 경우의 내재된 의미를 이해하려면 <a href="../../authentication-and-security">권한 부여 개념</a> 학습서에서 <a href="../../authentication-and-security/#unprotected-resources">보호되지 않은 자원</a> 주제를 참조하십시오. </li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><b>securityCheckDefinition</b>: <i>Optional.</i> Defines a security-check object. Learn more about security checks in the <a href="../../authentication-and-security/creating-a-security-check">Creating a Security Checks</a> tutorial.</li>
-        			<li><b>property</b>: <i>Optional.</i> Declares a user-defined property. Learn more in the Custom properties topic below.</li>
+                    <li><b>securityCheckDefinition</b>: <i>선택사항.</i> 보안 검사 오브젝트를 정의합니다. <a href="../../authentication-and-security/creating-a-security-check">보안 검사 작성</a> 학습서에서 보안 검사에 대해 자세히 알아보십시오. </li>
+        			<li><b>property</b>: <i>선택사항.</i> 사용자 정의 특성을 선언합니다. 아래 사용자 정의 특성 주제에서 자세히 알아보십시오. </li>
                 </ul>
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>섹션 닫기</b></a>
             </div>
         </div>
     </div>
 </div>
 
-#### Custom properties
+#### 사용자 정의 특성
 {: #custom-properties }
 
-The **adapter.xml** file can also contain user-defined custom properties. The values that developers assign to them during the creation of the adapter can be overridden in the **{{ site.data.keys.mf_console }} → [your adapter] → Configurations tab**, without redeploying the adapter. User-defined properties can be read using the [getPropertyValue API](#getpropertyvalue) and then further customized at run time.
+**adapter.xml** 파일은 또한 사용자 정의 사용자 정의 특성을 포함할 수 있습니다. 어댑터 작성 동안 개발자가 지정하는 값은 어댑터를 재배치하지 않고 **{{ site.data.keys.mf_console }} → [사용자의 어댑터] → 구성 탭**에서 대체될 수 있습니다. 사용자 정의 특성은 [getPropertyValue API](#getpropertyvalue)를 사용하여 읽은 후 런타임 시 추가로 사용자 정의될 수 있습니다.
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must always be located *below* the `procedure` elements. In the example above we defined a displayName property with a default value, so it could be used later.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **참고:** 구성 특성 요소는 항상 `procedure` 요소 *아래*에 위치해야 합니다. 위의 예에서 기본값으로 displayName 특성을 정의하였고 나중에 이를 사용할 수 있습니다. `<property>` 요소는 다음 속성을 사용합니다. 
 
-The `<property>` element takes the following attributes:
+- **name**: 구성 클래스에 정의된 특성의 이름입니다. 
+- **defaultValue**: 구성 클래스에 정의된 기본값을 대체합니다. 
+- **displayName**: *선택사항*, 콘솔에 표시될 친근한 이름.
+- **description**: *선택사항*, 콘솔에 표시될 설명.
+- **type**: *선택사항*, `integer`, `string`, `boolean` 또는 유효값의 목록과 같이 특정 유형의 특성을 확인합니다(예: `type="['1','2','3']"`).
 
-- **name**: The name of the property, as defined in the configuration class.
-- **defaultValue**: Overrides the default value defined in the configuration class.
-- **displayName**: *optional*, a friendly name to be displayed in the console.
-- **description**: *optional*, a description to be displayed in the console.
-- **type**: *optional*, ensures that the property is of a specific type such as `integer`, `string`, `boolean` or a list of valid values (for example `type="['1','2','3']"`).
+![콘솔 특성](console-properties.png)
 
-![Console properties](console-properties.png)
-
-#### Pull and Push Configurations
+#### 구성 풀 및 푸시
 {: #pull-and-push-configurations }
 
-Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
-To do so, use the `pull` and `push` commands described below using either Maven or the {{ site.data.keys.mf_cli }}. For the properties to be shared, you need to *change the default values given to the properties*.
+사용자 정의된 어댑터 특성은 **구성 파일 탭**에서 발견되는 어댑터 구성 파일을 사용하여 공유될 수 있습니다.   
+이를 수행하기 위해서 Maven 또는 {{ site.data.keys.mf_cli }} 중 하나를 사용하여 아래 설명된 `pull` 및 `push` 명령을 사용하십시오. 공유할 특성에 대해서는 *특성에 제공된 기본값을 변경*해야 합니다. 
 
-Run the commands from the root folder of the adapter Maven project:
+어댑터 Maven 프로젝트의 루트 폴더에서 명령을 실행하십시오. 
 
 **Maven**  
 
-* To **pull** the configurations file  
+* 구성 파일을 **풀**하려면 다음을 실행하십시오.   
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
   
-* To **push** the configurations file
+* 구성 파일을 **푸시**하려면 다음을 실행하십시오. 
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
   ```
 
 **{{ site.data.keys.mf_cli }}**  
 
-* To **pull** the configurations file
+* 구성 파일을 **풀**하려면 다음을 실행하십시오. 
   ```bash
   mfpdev adapter pull
   ```
   
-* To **push** the configurations file
+* 구성 파일을 **푸시**하려면 다음을 실행하십시오. 
   ```bash
   mfpdev adapter push
   ```
 
-#### Pushing configurations to multiple servers
+#### 다중 서버에 구성 푸시
 {: #pushing-configurations-to-multiple-servers }
 
-The **pull** and **push** commands can help to create various DevOps flows, where different values are required in adapters depending on the environment you're at (DEV, QA, UAT, PRODUCTION).
+**pull** 및 **push** 명령은 다양한 DevOps 플로우를 작성하도록 도울 수 있으며 이러한 플로우에서는 사용자가 위치한 환경(DEV, QA, UAT, PRODUCTION)에 따라 어댑터에 여러 다양한 값이 필요합니다. 
 
 **Maven**  
-Note above how by default you specify a **config.json** file. Create files with different names to address different targets.
+위의 **config.json** 파일을 기본적으로 지정하는 방법을 기록하십시오. 여러 대상을 다루기 위해 여러 이름으로 파일을 작성하십시오. 
 
 **{{ site.data.keys.mf_cli }}**  
-Use the **--configFile** or **-c** flag to specify a different configuration file than the default one:
+**--configFile** 또는 **-c** 플래그를 사용하여 기본값과 다른 구성 파일을 지정하십시오. 
 
 ```bash
 mfpdev adapter pull -c [adapterProject]/alternate_config.json
 ```
 
-> Learn more in by using `mfpdev help adapter pull/push`.
+> `mfpdev help adapter pull/push`를 사용하여 자세히 알아보십시오. 
 
-### The js folder
+### js 폴더
 {: #the-js-folder }
  
-This folder contains all the JavaScript implementation file of the procedures that are declared in the **adapter.xml** file. It also contains zero, one, or more XSL files, which contain a transformation scheme for retrieved raw XML data. Data that is retrieved by an adapter can be returned raw or preprocessed by the adapter itself. In either case, it is presented to the application as a **JSON object**.
+이 폴더는 **adapter.xml** 파일에서 선언되는 프로시저의 모든 JavaScript
+구현 파일을 포함합니다. 또한 0개 또는 하나 이상의 XSL 파일을 포함하며, 검색된 원시 XML 데이터를 위한 변환 스키마를 포함합니다. 어댑터가 검색하는 데이터는 원시 상태로 또는 어댑터 자체에 의해 사전 처리되어 리턴될 수 있습니다. 어느 경우이든 **JSON 오브젝트**로 애플리케이션에 제공됩니다. 
 
-## JavaScript adapter procedures
+## JavaScript 어댑터 프로시저
 {: #javascript-adapter-procedures }
 
-Procedures are declared in XML and are implemented with server-side JavaScript, for the following purposes:
+프로시저는 XML로 선언되고 다음을 위해 서버 측 JavaScript로 구현됩니다. 
 
-* To provide adapter functions to the application
-* To call back-end services to retrieve data or to perform actions
+* 어댑터 함수를 애플리케이션에 제공
+* 데이터를 검색하고 조치를 수행하기 위해 백엔드 서비스 호출
 
-Each procedure that is declared in the **adapter.xml** file must have a corresponding function in the JavaScript file.
+**adapter.xml** 파일에 선언되는 각 프로시저는 JavaScript 파일에서 해당하는
+함수가 있어야 합니다. 
 
-By using server-side JavaScript, a procedure can process the data before or after it calls the service. You can apply more filtering to retrieved data by using simple XSLT code.  
-JavaScript adapter procedures are implemented in JavaScript. However, because an adapter is a server-side entity, it is possible to [use Java in the adapter](../javascript-adapters/using-java-in-javascript-adapters) code.
+서버 측 JavaScript를 사용하여 프로시저는 서비스를 호출하기 전 또는 호출한 후에 데이터를 처리할 수 있습니다.단순 XSLT 코드를 사용하여 추가 필터링을 검색된 데이터에 적용할 수 있습니다.   
+JavaScript 어댑터 프로시저는 JavaScript에서 구현됩니다. 그러나 어댑터가 서버 측 엔티티이기 때문에, [어댑터 코드에서 Java를 사용](../javascript-adapters/using-java-in-javascript-adapters)하는 것이 가능합니다. 
 
-### Using global variables
+### 글로벌 변수 사용
 {: #using-global-variables }
 
-The {{ site.data.keys.mf_server }} does not rely on HTTP sessions and each request may reach a different node. You should not rely on global variables to keep data from one request to the next.
+{{ site.data.keys.mf_server }}는 HTTP 세션에 의존하지 않으며 각 요청은 다른 노드에 도달할 수 있습니다. 한 요청에서 다른 요청까지 데이터를 유지하려면 글로벌 변수에 의존하면 안 됩니다. 
 
-### Adapter response threshold
+### 어댑터 응답 임계값
 {: #adapter-response-threshold }
 
-Adapter calls are not designed to return huge chunks of data because the adapter response is stored in {{ site.data.keys.mf_server }} memory as a string. Thus, data that exceeds the amount of available memory might cause an out-of-memory exception and the failure of the adapter invocation. To prevent such failure, you configure a threshold value from which the {{ site.data.keys.mf_server }} returns gzipped HTTP responses. The HTTP protocol has standard headers to support gzip compression. The client application must also be able to support gzip content in HTTP.
+어댑터 자원이 {{ site.data.keys.mf_server }} 메모리에
+문자열로 저장되므로 어댑터 호출은 대량의 데이터를 리턴하도록 설계되지
+않았습니다. 따라서 사용 가능한 메모리의 양을 초과하는 데이터는 메모리 부족 예외와 어댑터 호출 실패를
+일으킬 수 있습니다. 이러한 실패를 방지하기 위해 {{ site.data.keys.mf_server }}에서 gzip으로 압축된 HTTP 응답을 리턴하는 임계값을 구성합니다. HTTP 프로토콜은 gzip 압축을 지원하기 위해 표준 헤더를 사용합니다. 또한 클라이언트 애플리케이션이
+HTTP에서 gzip 컨텐츠를 지원할 수 있어야 합니다. 
 
-#### Server-side
+#### 서버 측
 {: #server-side }
 
-In the {{ site.data.keys.mf_console }}, under **Runtimes > Settings > GZIP compression threshold for adapter responses**, set the desired threshold value. The default value is 20 KB.  
-**Note:** By saving the change in the {{ site.data.keys.mf_console }}, the change is effective immediately in the runtime.
+{{site.data.keys.mf_console }}의 **런타임 > 설정 > 어댑터 응답에 대해 GZIP 압축 임계값** 아래에서 원하는 임계값을 설정하십시오. 기본값은 20KB입니다.   
+**참고:** {{ site.data.keys.mf_console }}에 변경을 저장하면 변경이 런타임 시 즉각 적용됩니다.
 
-#### Client-side
+#### 클라이언트 측 
 {: #client-side }
 
-Ensure that you enable the client to parse a gzip response, by setting the value of the `Accept-Encoding` header to `gzip` in every client request.
-Use the `addHeader` method with your request variable, for example: `request.addHeader("Accept-Encoding","gzip");`
+모든 클라이언트 요청에서 `gzip`에 `Accept-Encoding`
+헤더의 값을 설정하여, 클라이언트가 gzip 응답을 구문 분석할 수 있게 하십시오. 사용자의 요청 변수와 함께 `addHeader` 메소드를 사용하십시오. 예: `request.addHeader("Accept-Encoding","gzip);`
 
-## Server-side APIs
+## 서버 측 API
 {: #server-side-apis }
 
-JavaScript adapters can use server-side APIs to perform operations that are related to {{ site.data.keys.mf_server }}, such as calling other JavaScript adapters, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
+JavaScript 어댑터는 다른 JavaScript 어댑터 호출, 서버 로그에 로깅, 구성 특성 값 획득, Analytics에 활동 보고, 요청 발행자 ID 획득과 같이 {{ site.data.keys.mf_server }}와 관련된 조작을 수행하기 위해 서버 측 Java API를 사용할 수 있습니다.   
 
 ### getPropertyValue
 {: #getpropertyvalue }
 
-Use the `MFP.Server.getPropertyValue(propertyName)` API to retrieve properties defined in the **adapter.xml** or in the {{ site.data.keys.mf_console }}:
+**adapter.xml**에서 또는 {{site.data.keys.mf_console }}에서 정의된 특성을 검색하려면 `MFP.Server.getPropertyValue(propertyName)`
+API를 사용하십시오. 
 
 ```js
 MFP.Server.getPropertyValue("name");
@@ -212,9 +230,9 @@ MFP.Server.getPropertyValue("name");
 ### getTokenIntrospectionData
 {: #gettokenintrospectiondata }
 
-Use the `MFP.Server.getTokenIntrospectionData()` API to
+현재 사용자 ID의 사용을 얻으려면 `MFP.Server.getTokenIntrospectionData()` API를 사용하십시오. 
 
-To get the current User ID use:
+ 
 
 ```js
 function getAuthUserId(){
@@ -228,24 +246,28 @@ function getAuthUserId(){
 ### getAdapterName
 {: #getadaptername }
 
-Use the `getAdapterName()` API to retrieve the adapter name.
+어댑터 이름을 검색하려면 `getAdapterName()` API를 사용하십시오. 
 
 ### invokeHttp
 {: #invokehttp }
 
-Use the `MFP.Server.invokeHttp(options)` API in HTTP adapters.  
-You can see usage examples on the [JavaScript HTTP Adapter](js-http-adapter) tutorial.
+HTTP 어댑터에서 `MFP.Server.invokeHttp(options)` API를 사용하십시오.   
+[JavaScript HTTP 어댑터](js-http-adapter) 학습서에 사용법 예제를
+볼 수 있습니다. 
 
 ### invokeSQL
 {: #invokesql }
 
-Use the `MFP.Server.invokeSQLStatement(options)` and the `MFP.Server.invokeSQLStoredProcedure(options)` APIs in SQL adapters.  
-You can see usage examples on the [JavaScript SQL Adapter](js-sql-adapter) tutorial.
+SQL 어댑터에서 `MFP.Server.invokeSQLStatement(options)` 및 `MFP.Server.invokeSQLStoredProcedure(options)`
+API를 사용하십시오.   
+[JavaScript SQL 어댑터](js-sql-adapter) 학습서에 사용법 예제를
+볼 수 있습니다. 
 
 ### addResponseHeader
 {: #addresponseheader }
 
-Use the `MFP.Server.addResponseHeader(name,value)` API to add a new header(s) to the response:
+응답에 새 헤더를 추가하려면 `MFP.Server.addResponseHeader(name,value)`
+API를 사용하십시오.
 
 ```js
 MFP.Server.addResponseHeader("Expires","Sun, 5 October 2014 18:00:00 GMT");
@@ -253,7 +275,8 @@ MFP.Server.addResponseHeader("Expires","Sun, 5 October 2014 18:00:00 GMT");
 ### getClientRequest
 {: #getclientrequest }
 
-Use the `MFP.Server.getClientRequest()` API to get a reference to the Java HttpServletRequest object that was used to invoke an adapter procedure:
+어댑터 프로시저를 호출하는 데 사용된 Java HttpServletRequest 오브젝트에 대한 참조를 얻으려면 `MFP.Server.getClientRequest()`
+API를 사용하십시오.
 
 ```js
 var request = MFP.Server.getClientRequest();
@@ -263,14 +286,17 @@ var userAgent = request.getHeader("User-Agent");
 ### invokeProcedure
 {: #invokeprocedure }
 
-Use the `MFP.Server.invokeProcedure(invocationData)` to call other JavaScript adapters.  
-You can see usage examples on the [Advanced Adapter Usage and Mashup](../advanced-adapter-usage-mashup) tutorial.
+다른 JavaScript 어댑터를 호출하려면 `MFP.Server.invokeProcedure(invocationData)`를
+사용하십시오.   
+[고급 어댑터 사용법 및 매시업](../advanced-adapter-usage-mashup)
+학습서에서 사용법 예제를 볼 수 있습니다. 
 
-### Logging
+### 로깅
+
 {: #logging }
 
-The JavaScript API provides logging capabilities through the MFP.Logger class. It contains four functions that correspond to four standard logging levels.  
-You can see the [server-side log collection](../server-side-log-collection) tutorial for more information.
+JavaScript API는 MFP.Logger 클래스를 통해 로깅 기능을 제공합니다. 여기에는 네 개의 표준 로깅 레벨에 해당하는 네 개의 함수가 포함되어 있습니다.   
+자세한 정보는 [서버 측 로그 콜렉션](../server-side-log-collection) 학습서에 있습니다. 
 
-## JavaScript adapter examples
+## JavaScript 어댑터 예제
 {:# javascript-adapter-examples }

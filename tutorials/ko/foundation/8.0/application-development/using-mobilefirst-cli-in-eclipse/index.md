@@ -1,169 +1,169 @@
 ---
 layout: tutorial
-title: Using the MobileFirst CLI in Eclipse
+title: Eclipse에서 MobileFirst CLI 사용
 relevantTo: [ios,android,windows,cordova]
-breadcrumb_title: MobileFirst Eclipse plug-in
+breadcrumb_title: MobileFirst Eclipse 플러그인
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-Using the Cordova CLI you can create and manage your Cordova applications. You can also achieve the same in the Eclipse IDE by using the [THyM](https://www.eclipse.org/thym/) plug-in.
+Cordova CLI를 사용하여 Cordova 애플리케이션을 작성하고 관리할 수 있습니다. 또한 Eclipse IDE에서 [THyM](https://www.eclipse.org/thym/) 플러그인을 사용하여 동일한 작업을 수행할 수 있습니다. 
 
-THyM provides support for importing and managing Cordova projects in Eclipse. You can create new Cordova projects, as well as import existing Cordova projects. You can also install Cordova plug-ins into your project through this plug-in.
+THyM을 통해 Eclipse에서 Cordova 프로젝트를 가져오고 관리할 수 있습니다. 새 Cordova 프로젝트를 작성하고 기존 Cordova 프로젝트를 가져올 수 있습니다. 또한 이 플러그인을 통해 프로젝트에 Cordova 플러그인을 설치할 수도 있습니다. 
 
-Learn more about THyM in its [official website](https://www.eclipse.org/thym/).
+[공식 웹 사이트](https://www.eclipse.org/thym/)에서 THyM에 대해 자세히 알아보십시오. 
 
-The {{ site.data.keys.mf_studio }} plug-in for Eclipse exposes the various {{ site.data.keys.product_adj }} commands in the Eclipse IDE.
-Specifically, it provides the following commands: Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App.
+Eclipse용 {{ site.data.keys.mf_studio }} 플러그인은 Eclipse IDE에서 여러 {{ site.data.keys.product_adj }} 명령을 공개합니다.
+특히 Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App 명령을 제공합니다. 
 
-This tutorial walks you through installing the THyM and MobileFirst Eclipse plug-ins.
+이 학습서에서는 THyM 및 MobileFirst Eclipse 플러그인 설치에 대해 안내합니다. 
 
-**Prerequisites:**
+**전제조건:**
 
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* 로컬로 실행되는 {{ site.data.keys.mf_server }} 또는 원격으로 실행되는 {{ site.data.keys.mf_server }}가 있습니다. 
+* 개발자 워크스테이션에 {{ site.data.keys.mf_cli }}가 설치되어 있습니다. 
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to }
-* [Installing the {{ site.data.keys.mf_studio }} plug-in](#installing-the-mobilefirst-studio-plug-in)
-* [Installing the THyM plug-in](#installing-the-thym-plug-in)
-* [Creating a Cordova project](#creating-a-cordova-project)
-* [Importing an existing Cordova project](#importing-an-existing-cordova-project)
-* [Adding the {{ site.data.keys.product_adj }} SDK to Cordova project](#adding-the-mobilefirst-sdk-to-cordova-project)
-* [{{ site.data.keys.product_adj }} Commands](#mobilefirst-commands)
-* [Tips and Tricks](#tips-and-tricks)
+* [{{ site.data.keys.mf_studio }} 플러그인 설치](#installing-the-mobilefirst-studio-plug-in)
+* [THyM 플러그인 설치](#installing-the-thym-plug-in)
+* [Cordova 프로젝트 작성](#creating-a-cordova-project)
+* [기존 Cordova 프로젝트 가져오기](#importing-an-existing-cordova-project)
+* [Cordova 프로젝트에 {{ site.data.keys.product_adj }} SDK 추가](#adding-the-mobilefirst-sdk-to-cordova-project)
+* [{{ site.data.keys.product_adj }} 명령](#mobilefirst-commands)
+* [팁과 요령](#tips-and-tricks)
 
 
-## Installing the {{ site.data.keys.mf_studio }} plug-in
+## {{ site.data.keys.mf_studio }} 플러그인 설치
 {: #installing-the-mobilefirst-studio-plug-in}
-1. While in Eclipse click **Help → Eclipse Marketplace...**
-2. In the find field search "{{ site.data.keys.product_adj }}" then click "Go"
-3. Click "Install"
+1. Eclipse에서 **도움말 → Eclipse 마켓플레이스...**를 클릭하십시오. 
+2. 찾기 필드에서 "{{ site.data.keys.product_adj }}"를 검색한 후 "이동"을 클릭하십시오. 
+3. "설치"를 클릭하십시오. 
 
-	![Image of {{ site.data.keys.mf_studio }} installation](mff_install.png)
+	![{{ site.data.keys.mf_studio }} 설치 이미지](mff_install.png)
 
-4. Complete the installation process
-5. Restart Eclipse for the installation to take affect.
+4. 설치 프로세스를 완료하십시오. 
+5. 설치를 적용하려면 Eclipse를 다시 시작하십시오. 
 
 
-## Installing the THyM plug-in
+## THyM 플러그인 설치
 {: #installing-the-thym-plug-in }
-**Note:** To run THyM you must be running Eclipse Mars or later
+**참고:** THyM을 실행하려면 Eclipse Mars 이상을 실행 중이어야 합니다. 
 
-1. While in Eclipse click **Help → Eclipse Marketplace...**
-2. In the find field search "thym" then click "Go"
-3. Click "Install" for Eclipse Thym
+1. Eclipse에서 **도움말 → Eclipse 마켓플레이스...**를 클릭하십시오. 
+2. 찾기 필드에서 "thym"을 검색한 후 "이동"을 클릭하십시오. 
+3. Eclipse Thym에 대해 "설치"를 클릭하십시오. 
 
-	![Image of THyM installation](Thym_install.png)
+	![THyM 설치 이미지](Thym_install.png)
 
-4. Complete the installation process
-5. Restart Eclipse for the installation to take affect.
+4. 설치 프로세스를 완료하십시오. 
+5. 설치를 적용하려면 Eclipse를 다시 시작하십시오. 
 
-## Creating a Cordova project
+## Cordova 프로젝트 작성
 {: #creating-a-cordova-project }
-In this section we will discuss how to create a new Cordova project using THyM.
+이 절에서는 THyM을 사용하여 새 Cordova 프로젝트를 작성하는 방법에 대해 설명합니다. 
 
-1. While in Eclipse click **File → New → Other...**
-2. Narrow options by searching for "Cordova" and select **Hybrid Mobile (Cordova) Application Project** in the **Mobile** directory and click **Next**
+1. Eclipse에서 **파일 → 새로 작성 → 기타...**를 클릭하십시오. 
+2. "Cordova"를 검색하여 옵션 수를 줄이고 **모바일** 디렉토리에서 **하이브리드 모바일(Cordova) 애플리케이션 프로젝트**를 선택하고 **다음**을 클릭하십시오. 
 
-	![Image of new Cordova wizard](New_cordova_wizard.png)
+	![새 Cordova 마법사 이미지](New_cordova_wizard.png)
 
-3. Name the project, and click **Next**
+3. 프로젝트의 이름을 지정하고 **다음**을 클릭하십시오. 
 
-	![Image of new Cordova naming](New_cordova_naming.png)
+	![새 Cordova 이름 지정 이미지](New_cordova_naming.png)
 
-4. Add the desired platform for your project and click **Finish**
+4. 프로젝트에 사용하려는 플랫폼을 추가하고 **완료**를 클릭하십시오. 
 
-**Note**: If you need additional platforms after creation see [Adding platforms](#adding-platforms)
+**참고**: 작성 후에 추가 플랫폼이 필요한 경우 [플랫폼 추가](#adding-platforms)를 참조하십시오. 
 
-## Importing an existing Cordova project
+## 기존 Cordova 프로젝트 가져오기
 {: #importing-an-existing-cordova-project }
-In this section we will discuss how to import an existing Cordova project that has already been created using the Cordova CLI.
+이 절에서는 Cordova CLI를 사용하여 이미 작성된 기존 Cordova 프로젝트를 가져오는 방법에 대해 설명합니다. 
 
-1. While in Eclipse click **File → Import...**
-2. Select **Import Cordova Project** in the **Mobile** directory and click **Next >**
-3. Click **Browse...** and select the root directory of the existing Cordova project.
-4. Ensure the project is checked in the "Projects:" sections and click **Finish**
-	![Image of importing Cordova project](Import_cordova.png)
+1. Eclipse에서 **파일 → 가져오기...**를 클릭하십시오. 
+2. **모바일** 디렉토리에서 **Cordova 프로젝트 가져오기**를 선택하고 **다음>**을 클릭하십시오. 
+3. **찾아보기...**를 클릭하고 기존 Cordova 프로젝트의 루트 디렉토리를 선택하십시오. 
+4. "프로젝트:" 섹션에서 프로젝트가 선택되었는지 확인하고 **완료**를 클릭하십시오.
+	![Cordova 프로젝트 가져오기 이미지](Import_cordova.png)
 
-If you import a project without any platforms you will see the following error, please see the [adding platforms](#adding-platforms) section on how to resolve this error.
-![No platforms error image](no-platforms-error.png)
+플랫폼 없이 프로젝트를 가져오면 다음 오류가 표시됩니다. 이 오류를 해결하는 방법은 [플랫폼 추가](#adding-platforms) 절을 참조하십시오.
+![플랫폼 없음 오류 이미지](no-platforms-error.png)
 
-**Note**: If you need to additional platforms after an import see [adding platforms](#adding-platforms)
+**참고**: 가져오기 후에 추가 플랫폼이 필요한 경우 [플랫폼 추가](#adding-platforms)를 참조하십시오. 
 
-## Adding the {{ site.data.keys.product_adj }} SDK to Cordova project
+## Cordova 프로젝트에 {{ site.data.keys.product_adj }} SDK 추가
 {: #adding-the-mobilefirst-sdk-to-cordova-project }
-Once you have [installed THyM](#installing-the-thym-plug-in) and the [{{ site.data.keys.mf_cli }} plugin](#installing-the-mobilefirst-studio-plug-in) into Eclipse and have either [created a Cordova project](#creating-a-cordova-project) or [imported a Cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the {{ site.data.keys.product_adj }} SDK via Cordova plugin.
+Eclipse에 [THyM](#installing-the-thym-plug-in) 및 [{{ site.data.keys.mf_cli }} 플러그인을 설치](#installing-the-mobilefirst-studio-plug-in)하고 [Cordova 프로젝트를 작성](#creating-a-cordova-project)하거나 [Cordova 프로젝트를 가져온](#importing-an-existing-cordova-project) 후에 아래 단계에 따라 Cordova 플러그인을 통해 {{ site.data.keys.product_adj }} SDK를 설치할 수 있습니다. 
 
-1. In the Project Explorer right click the **plugins** directory and select **Install Cordova Plug-in**
-2. In the Registry tab of the presented dialog box search **mfp** and select **cordova-plugin-mfp** and click **Finish**
+1. 프로젝트 탐색기에서 **플러그인** 디렉토리를 마우스 오른쪽 단추로 클릭하고 **Cordova 플러그인 설치**를 선택하십시오. 
+2. 표시되는 대화 상자의 레지스트리 탭에서 **mfp**를 검색하고 **cordova-plugin-mfp**를 선택한 다음 **완료**를 클릭하십시오. 
 
-	![Image of new Cordova plugin install](New_installing_cordova_plugin.png)
+	![새 Cordova 플러그인 설치 이미지](New_installing_cordova_plugin.png)
 
-## {{ site.data.keys.product_adj }} Commands
+## {{ site.data.keys.product_adj }} 명령
 {: #mobilefirst-commands }
-To access {{ site.data.keys.product }} shortcuts, right-click the root project directory and navigate to **IBM MobileFirst Foundation**.
+{{ site.data.keys.product }} 단축 아이콘에 액세스하려면 루트 프로젝트 디렉토리를 마우스 오른쪽 단추로 클릭하고 **IBM MobileFirst Foundation**으로 이동하십시오. 
 
-Here you will be able to select from the following commands:
+여기에서 다음 명령 중에 선택할 수 있습니다. 
 
-| Menu option         | Action                                                                                                                                       | MobileFirst command-line interface equivalent |
+| 메뉴 옵션         | 조치                                                                                                                                       | 해당 MobileFirst 명령행 인터페이스 |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| Open Server Console | When the server definition exists, opens the console so you can view the actions of the specified server.                                    | mfpdev server console                         |
-| Preview App         | Opens the app in the browser preview mode.                                                                                                   | Opens the app in the browser preview mode.    |
-| Register App        | Registers the app with the server that is specified in your server definitions.                                                              | mfpdev app register                           |
-| Encrypt App         | Runs the web resource encryption tool on your app.                                                                                           | mfpdev app webencrypt                         |
-| Pull App            | Retrieves the existing app configuration from the server that is specified in the server definition.                                         | mfpdev app pull                               |
-| Push App            | Sends the app configuration of your current app to the server that is specified in the build definition so you can reuse it for another app. | mfpdev app push                               |
-| Updated App         | Packages the contents of the www folder in a .zip file, and replaces the version on the server with the package.                             | mfpdev app webupdate                          |
+| 서버 콘솔 열기 | 서버 정의가 있는 경우 지정된 서버의 조치를 볼 수 있도록 콘솔을 엽니다.                                    | mfpdev server console                         |
+| 앱 미리보기         | 브라우저 미리보기 모드에서 앱을 엽니다.                                                                                                   | 브라우저 미리보기 모드에서 앱을 엽니다.    |
+| 앱 등록        | 서버 정의에 지정된 서버에 앱을 등록합니다.                                                              | mfpdev app register                           |
+| 앱 암호화         | 앱에서 웹 자원 암호화 도구를 실행합니다.                                                                                           | mfpdev app webencrypt                         |
+| 앱 가져오기            | 서버 정의에 지정된 서버에서 기존 앱 구성을 검색합니다.                                         | mfpdev app pull                               |
+| 앱 푸시            | 현재 앱의 앱 구성을 빌드 정의에 지정된 서버에 전송하여 다른 앱에 재사용할 수 있도록 합니다. | mfpdev app push                               |
+| 업데이트된 앱         | www 폴더의 컨텐츠를 .zip 파일에 패키지하고 해당 패키지로 서버의 버전을 대체합니다.                             | mfpdev app webupdate                          |
 
 
-## Tips and Tricks
+## 팁과 요령
 {: #tips-and-tricks }
-<img src="runAsContextMenu.png" alt="context-menu in Eclipse to open in External IDEs" style="float:right;width:35%;margin-left: 10px"/>
-### External IDE's
+<img src="runAsContextMenu.png" alt="외부 IDE에서 열 Eclipse의 컨텍스트 메뉴" style="float:right;width:35%;margin-left: 10px"/>
+### 외부 IDE에서
 {: #external-ides }
-If you would like to test or deploy to a device via an External IDE (Android Studio or Xcode) this can be accomplished via the the context menu.
+외부 IDE(Android Studio 또는 Xcode)를 통해 디바이스를 테스트하거나 배치하려는 경우 컨텍스트 메뉴를 통해 수행할 수 있습니다. 
 
-**Note**:  Please be sure to manually import your project into Android Studio to set up the gradle configuration before launching from Eclipse.  Otherwise you might run into unnecessary steps or errors.  From Android Studio select import **Import project (Eclipse ADT Gradle, etc.)** and navigate to your project and select the **android** directory within the **platforms** directory.
+**참고**: Android Studio에 프로젝트를 수동으로 가져와서 Gradle 구성을 설정한 후 Eclipse에서 실행하십시오. 그렇지 않으면 불필요한 단계 또는 오류가 발생할 수 있습니다. Android Studio에서 **프로젝트(Eclipse ADT Gradle 등) 가져오기** 가져오기를 선택하고 프로젝트로 이동한 다음 **platforms** 디렉토리 내의 **android** 디렉토리를 선택하십시오. 
 
-In the Eclipse project explorer right click the desired platform (i.e. **android** or **ios** in the **platforms** directory) → hover over **Run As** in the context menu → select the appropriate external IDE.
+Eclipse 프로젝트 탐색기에서 원하는 플랫폼(예: **platforms** 디렉토리의 **android** 또는 **ios**)을 마우스 오른쪽 단추로 클릭하고 컨텍스트 메뉴의 **다음으로 실행**에 마우스 커서를 둔 다음 적절한 외부 IDE를 선택하십시오. 
 
-### Adding platforms
+### 플랫폼 추가
 {: #adding-platforms }
 
-Adding additional platforms is a simple process that the THyM plugin does not make intuitive. You have two options to accomplish the same task, and they are as follows.
+플랫폼 추가는 THyM 플러그인으로 직관적으로 수행할 수 있는 단순 프로세스가 아닙니다. 다음과 같은 두 가지 옵션을 통해 동일한 태스크를 수행할 수 있습니다. 
 
-1. Via Properties
-	1. Right click your project and select **properties** from the context menu.
-	1. In the presented dialog select **Hybrid Mobile Engine** from the left hand menu.
-	1. In this pane you will be able to select or download the desired platforms.
+1. 특성을 통해
+	1. 프로젝트를 마우스 오른쪽 단추로 클릭하고 컨텍스트 메뉴에서 **특성**을 선택하십시오. 
+	1. 표시되는 대화 상자의 왼쪽 메뉴에서 **하이브리드 모바일 엔진**을 선택하십시오. 
+	1. 이 분할창에서 원하는 플랫폼을 선택하거나 다운로드할 수 있습니다. 
 
-1. Via Terminal
-	1. Right click your project and hover over **Show In** and select **Terminal** from the context menu.
-	1. This should add a tab to next to the console in Eclipse
-	1. Here you will be able to manually add platforms using the Cordova CLI commands
-		*  `cordova platform ls` will list the installed and available platforms
-		*  `cordova platform add <platform>`  where *<platform>* equals your desired platform, will add the specified platform to the project.
-		*  For more information on Cordova platform specific commands see <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova platform command documentation</a>.
+1. 터미널을 통해
+	1. 프로젝트를 마우스 오른쪽 단추로 클릭하고 **표시 대상** 위에 마우스 커서를 두고 컨텍스트 메뉴에서 **터미널**을 선택하십시오. 
+	1. 이를 수행하면 Eclipse에서 콘솔 옆에 탭이 추가되어야 합니다. 
+	1. 여기서 Cordova CLI 명령을 사용하여 플랫폼을 수동으로 추가할 수 있습니다. 
+		*  `cordova platform ls`는 설치되고 사용 가능한 플랫폼을 나열합니다. 
+		*  `cordova platform add <platform>`. 여기서 *<platform>*은 원하는 플랫폼이며, 해당 명령은 지정된 플랫폼을 프로젝트에 추가합니다. 
+		*  Cordova 플랫폼 특정 명령에 대한 자세한 정보는 <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova 플랫폼 명령 문서</a>를 참조하십시오. 
 
-### Debug mode
+### 디버그 모드
 {: #debug-mode }
-Enabling debug mode will show debug level logs in the Eclipse console, while previewing the application in a browser.  To enable debug mode do the following:
+디버그 모드를 사용하면 브라우저에서 애플리케이션을 미리 보는 동안 Eclipse 콘솔에 디버그 레벨 로그가 표시됩니다. 디버그 모드를 사용하려면 다음을 수행하십시오. 
 
-1. Open Eclipse's Preferences.
-2. Select **MobileFirst Studio Plugins** to show the plug-ins preferences page.
-3. Ensure the **Enable debug mode** check bocks is selected, then click **Apply → OK**
+1. Eclipse 환경 설정을 여십시오. 
+2. **MobileFirst Studio 플러그인**을 선택하여 플러그인 환경 설정 페이지를 표시하십시오. 
+3. **디버그 모드 사용** 선택란이 선택되었는지 확인한 후 **적용 → 확인**을 클릭하십시오. 
 
-### Live update
+### 활성 업데이트
 {: #live-update }
-While previewing an application live update is available. You can make updates and save you changes and watch them auto refresh in the preview.
+애플리케이션 미리보기 중에 활성 업데이트를 사용할 수 있습니다. 업데이트를 작성하고 변경사항을 저장한 다음 미리보기에서 자동으로 새로 고치기가 수행되는 것을 볼 수 있습니다. 
 
-### Integrating {{ site.data.keys.mf_server }} into Eclipse
+### Eclipse에 {{ site.data.keys.mf_server }} 통합
 {: #integrating-mobilefirst-server-into-eclipse }
-Using the {{ site.data.keys.mf_dev_kit }}, You can couple together the above with [running the {{ site.data.keys.mf_server }} in Eclipse](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse) to create a more integrated development environment.
+{{ site.data.keys.mf_dev_kit }}을 사용하여 위 사항과 함께 [Eclipse에서 {{ site.data.keys.mf_server }}를 실행](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse)함으로써 보다 통합된 개발 환경을 작성할 수 있습니다. 
 
-### Demo Video
+### 데모 비디오
 {: #demo-video }
 <div class="sizer">
 	<div class="embed-responsive embed-responsive-16by9">

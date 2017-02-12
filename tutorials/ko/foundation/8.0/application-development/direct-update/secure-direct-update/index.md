@@ -1,22 +1,22 @@
 ---
 layout: tutorial
-title: Implementing Secure Direct Update
-breadcrumb_title: Secure Direct Update
+title: 보안 직접 업데이트 구현
+breadcrumb_title: 보안 직접 업데이트
 relevantTo: [cordova]
 weight: 2
 ---
 
-## Overview
+## 개요
 {: #overview }
-For secure Direct Update to work, a user-defined keystore file must be deployed in {{ site.data.keys.mf_server }} and a copy of the matching public key must be included in the deployed client application.
+보안 직접 업데이트가 작동하려면 사용자 정의 키 저장소 파일이 {{ site.data.keys.mf_server }}에 배치되고 일치하는 공개 키의 사본이 배치된 클라이언트 애플리케이션에 포함되어야 합니다. 
 
-This topic describes how to bind a public key to new client applications and existing client applications that were upgraded. For more information on configuring the keystore in {{ site.data.keys.mf_server }}, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
+이 주제에서는 새 클라이언트 애플리케이션 및 업그레이드된 기존 클라이언트 애플리케이션에 공개 키를 바인드하는 방법에 대해 설명합니다. {{ site.data.keys.mf_server }}에서 키 저장소를 구성하는 데 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 키 저장소 구성](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)을 참조하십시오. 
 
-The server provides a built-in keystore that can be used for testing secure Direct Update for development phases.
+서버는 개발 단계(Phase)에 대해 보안 직접 업데이트를 테스트하는 데 사용할 수 있는 기본 제공 키 저장소를 제공합니다. 
 
-**Note:** After you bind the public key to the client application and rebuild it, you do not need to upload it again to the {{ site.data.keys.mf_server }}. However, if you previously published the application to the market, without the public key, you must republish it.
+**참고:** 클라이언트 애플리케이션에 공개 키를 바인드하고 다시 빌드한 후에는 {{ site.data.keys.mf_server }}에 다시 업로드할 필요가 없습니다. 그러나 이전에 공개 키 없이 애플리케이션을 마켓에 공개한 경우 다시 공개해야 합니다. 
 
-For development purposes, the following default, dummy public key is provided with {{ site.data.keys.mf_server }}:
+개발 용도로 사용하도록 다음 기본 더미 공개 키가 {{ site.data.keys.mf_server }}와 함께 제공됩니다. 
 
 ```xml
 -----BEGIN PUBLIC KEY-----
@@ -36,38 +36,39 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
 -----END PUBLIC KEY-----
 ```
 
-> Important: Do not use the public key for production purposes.
+> 중요: 프로덕션 용도로 공개 키를 사용하지 마십시오. 
 
-## Generating and deploying the keystore
+## 키 저장소 생성 및 배치
 {: #generating-and-deploying-the-keystore }
-There are many tools available for generating certificates and extracting public keys from a keystore. The following example demonstrates the procedures with the JDK keytool utility and openSSL.
+키 저장소에서 인증서를 생성하고 공개 키를 추출하는 데 사용 가능한 여러 가지 도구가 있습니다. 다음 예제는 JDK keytool 유틸리티 및 openSSL을 사용하는 프로시저를 설명합니다. 
 
-1. Extract the public key from the keystore file that is deployed in the {{ site.data.keys.mf_server }}.  
-   Note: The public key must be Base64 encoded.
+1. {{ site.data.keys.mf_server }}에 배치된 키 저장소 파일에서 공개 키를 추출하십시오.
+     
+참고: 공개 키는 Base64로 인코딩되어야 합니다. 
     
-   For example, assume that the alias name is `mfp-server` and the keystore file is **keystore.jks**.  
-   To generate a certificate, issue the following command:
+   예를 들어 별명이 `mfp-server`이고 키 저장소 파일이 **keystore.jks**라고 가정하십시오.   
+   인증서를 생성하려면 다음 명령을 실행하십시오. 
     
    ```bash
    keytool -export -alias mfp-server -file certfile.cert
    -keystore keystore.jks -storepass keypassword
    ```
     
-   A certificate file is generated.  
-   Issue the following command to extract the public key:
+   인증서 파일이 생성됩니다.   
+   다음 명령을 실행하여 공개 키를 추출하십시오. 
     
    ```bash
    openssl x509 -inform der -in certfile.cert -pubkey -noout
    ```
     
-   **Note:** Keytool alone cannot extract public keys in Base64 format.
+   **참고:** Keytool만 사용하여 Base64 형식으로 공개 키를 추출할 수는 없습니다. 
     
-2. Perform one of the following procedures:
-    * Copy the resulting text, without the `BEGIN PUBLIC KEY` and `END PUBLIC KEY` markers into the mfpclient property file of the application, immediately after `wlSecureDirectUpdatePublicKey`.
-    * From the command prompt, issue the following command: `mfpdev app config direct_update_authenticity_public_key <public_key>`
+2. 다음 프로시저 중 하나를 수행하십시오. 
+    * 애플리케이션의 mfpclient 특성에 `BEGIN PUBLIC KEY` 및 `END PUBLIC KEY` 마커를 사용하지 말고 `wlSecureDirectUpdatePublicKey` 바로 뒤에 결과 텍스트를 복사하십시오. 
+    * 명령 프롬프트에서 `mfpdev app config direct_update_authenticity_public_key <public_key>` 명령을 실행하십시오. 
     
-    For `<public_key>`, paste the text that results from Step 1, without the `BEGIN PUBLIC KEY` and `END PUBLIC KEY` markers.
+    `<public_key>`의 경우 `BEGIN PUBLIC KEY` 및 `END PUBLIC KEY` 마커 없이 1단계의 결과 텍스트를 붙여넣으십시오. 
 
-3. Run the cordova build command to save the public key in the application.
+3. cordova build 명령을 실행하여 애플리케이션에 공개 키를 저장하십시오. 
 
 

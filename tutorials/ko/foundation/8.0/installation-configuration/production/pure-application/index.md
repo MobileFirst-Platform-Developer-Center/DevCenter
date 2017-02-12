@@ -1,146 +1,147 @@
 ---
 layout: tutorial
-title: Deploying MobileFirst Server on IBM PureApplication System
-breadcrumb_title: Installing Pure Application System
+title: IBM PureApplication System에 MobileFirst Server 배치
+breadcrumb_title: Pure Application System 설치
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-{{ site.data.keys.product_full }} provides the capability to deploy and manage {{ site.data.keys.mf_server }} and {{ site.data.keys.product_adj }} applications on IBM  PureApplication System and IBM PureApplication Service on SoftLayer .
+{{ site.data.keys.product_full }}은 {{ site.data.keys.mf_server }} 및 {{ site.data.keys.product_adj }} 애플리케이션을 IBM  PureApplication System 및 IBM PureApplication Service on SoftLayer에 배치하고 관리하는 기능을 제공합니다. 
 
-{{ site.data.keys.product }} in combination with IBM PureApplication System and IBM PureApplication Service on SoftLayer provides a simple and intuitive environment for developers and administrators, to develop mobile applications, test them, and deploy them to the cloud. This version of {{ site.data.keys.mf_system_pattern_full }} provides {{ site.data.keys.product }} runtime and artifacts support for the PureApplication Virtual System Pattern technologies that are included in the most recent versions of IBM PureApplication System and IBM PureApplication Service on SoftLayer. Classic Virtual System Pattern was supported in earlier versions of IBM PureApplication System.
+{{ site.data.keys.product }}을 IBM PureApplication System 및 IBM PureApplication Service on SoftLayer와 조합하면 개발자 및 관리자가 모바일 애플리케이션을 개발하고 테스트하며 클라우드에 배치하는 데 필요한 단순하고 직관적인 환경이 제공됩니다. 이 버전의 {{ site.data.keys.mf_system_pattern_full }}은 IBM PureApplication System 및 IBM PureApplication Service on SoftLayer의 최신 버전에 포함된 PureApplication 가상 시스템 패턴 기술에 대한 {{ site.data.keys.product }} 런타임 및 아티팩트 지원을 제공합니다. IBM PureApplication System의 이전 버전에서는 클래식 가상 시스템 패턴이 지원되었습니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
-* [Installing {{ site.data.keys.mf_system_pattern }}](#installing-mobilefirst-system-pattern)
-* [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern)
-* [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-* [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
-* [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-* [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
-* [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
-* [Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile-server)
-* [Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile-server)
-* [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)
-* [Configuring an external database with a {{ site.data.keys.mf_system_pattern }}](#configuring-an-external-database-with-a-mobilefirst-system-pattern)
-* [Deploying and configuring {{ site.data.keys.mf_analytics }}](#deploying-and-configuring-mobilefirst-analytics)
-* [Predefined templates for {{ site.data.keys.mf_system_pattern }}](#predefined-templates-for-mobilefirst-system-pattern)
-* [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server)
-* [Upgrading {{ site.data.keys.mf_system_pattern }}](#upgrading-mobilefirst-system-pattern)
+* [{{ site.data.keys.mf_system_pattern }} 설치](#installing-mobilefirst-system-pattern)
+* [{{ site.data.keys.mf_system_pattern }}의 토큰 라이센싱 요구사항](#token-licensing-requirements-for-mobilefirst-system-pattern)
+* [단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
+* [복수 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
+* [단일 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
+* [복수 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
+* [WebSphere Application Server Network Deployment 서버 클러스터에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
+* [단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_app_center }} 배치](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile-server)
+* [단일 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_app_center }} 배치](#deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile-server)
+* [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)
+* [{{ site.data.keys.mf_system_pattern }}을 사용하여 외부 데이터베이스 구성](#configuring-an-external-database-with-a-mobilefirst-system-pattern)
+* [{{ site.data.keys.mf_analytics }} 배치 및 구성](#deploying-and-configuring-mobilefirst-analytics)
+* [{{ site.data.keys.mf_system_pattern }}의 사전 정의된 템플리트](#predefined-templates-for-mobilefirst-system-pattern)
+* [{{ site.data.keys.mf_server }}의 스크립트 패키지](#script-packages-for-mobilefirst-server)
+* [{{ site.data.keys.mf_system_pattern }} 업그레이드](#upgrading-mobilefirst-system-pattern)
 
-### Key benefits
+### 주요 이점
 {: #key-benefits }
-{{ site.data.keys.mf_system_pattern }} provides the following benefits:
+{{ site.data.keys.mf_system_pattern }}은 다음과 같은 이점을 제공합니다.
 
-* Predefined templates enable you to build patterns in a simple way for the most typical {{ site.data.keys.mf_server }} deployment topologies. Examples of the topologies are  
-    * IBM WebSphere  Application Server Liberty profile single node
-    * IBM WebSphere Application Server Liberty profile multiple nodes
-    * IBM WebSphere Application Server full profile single node
-    * IBM WebSphere Application Server full profile multiple nodes
-    * Clusters of WebSphere Application Server Network Deployment servers
-    * {{ site.data.keys.mf_app_center }} deployment topologies such as
-        * IBM WebSphere Application Server Liberty profile single node
-        * IBM WebSphere Application Server full profile single node
-* Script packages act as building blocks to compose extended deployment topologies such as automating the inclusion of an analytics server in a pattern and flexible DB VM deployment options. WebSphere Application Server and DB2 script packages are available through the inclusion of WebSphere Application Server and DB2 pattern types.
-* Optional JNDI properties in the runtime deployment script package allow fine-grained tuning for the deployment topology. In addition, deployment topologies that are built with IBM WebSphere Application Server full profile now support accessing the WebSphere Application Server Administration Console, which gives you full control over the configuration of the application server.
+* 사전 정의된 템플리트를 사용하면 대부분의 일반적인 {{ site.data.keys.mf_server }} 배치 토폴로지에 대해 간단한 방법으로 패턴을 빌드할 수 있습니다. 토폴로지의 예는 다음과 같습니다.   
+    * IBM WebSphere  Application Server Liberty 프로파일 단일 노드
+    * IBM WebSphere Application Server Liberty 프로파일 복수 노드
+    * IBM WebSphere Application Server 전체 프로파일 단일 노드
+    * IBM WebSphere Application Server 전체 프로파일 복수 노드
+    * WebSphere Application Server Network Deployment 서버 클러스터
+    * 다음과 같은 {{ site.data.keys.mf_app_center }} 배치 토폴로지
+        * IBM WebSphere Application Server Liberty 프로파일 단일 노드
+        * IBM WebSphere Application Server 전체 프로파일 단일 노드
+* 스크립트 패키지는 패턴에의 분석 서버 포함 자동화 및 유연한 DB VM 배치 옵션 등의 확장된 배치 토폴로지를 작성하는 구성 요소 역할을 합니다. WebSphere Application Server 및 DB2 스크립트 패키지는 WebSphere Application Server 및 DB2 패턴 유형을 포함시키면 사용 가능하게 됩니다. 
+* 런타임 배치 스크립트 패키지의 선택적 JNDI 특성을 사용하여 배치 토폴로지를 미세 조정할 수 있습니다. 또한 IBM WebSphere Application Server 전체 프로파일을 사용하여 빌드되는 배치 토폴로지는 이제 WebSphere Application Server 관리 콘솔로의 액세스를 지원하며, 이로 인해 애플리케이션 서버의 구성을 완전하게 제어할 수 있습니다. 
 
-### Important restrictions
+### 중요한 제한사항
 {: #important-restrictions }
-Depending on the pattern template you use, do not change some of the component attributes. If you change any of these component attributes, the deployment of patterns that are based on these templates fails.
+사용하는 패턴 템플리트에 따라 일부 컴포넌트 속성을 변경하지 마십시오. 이러한 컴포넌트 속성을 변경하는 경우, 이러한 템플리트를 기반으로 하는 패턴을 배치하는 데 실패합니다.
 
-#### {{ site.data.keys.product }} (Application Center Liberty single node)
+#### {{ site.data.keys.product }}(Application Center Liberty 단일 노드)
 {: #mobilefirst-foundation-application-center-liberty-single-node }
-Do not change the values for the following attributes in the Liberty profile server:
+Liberty profile server에서 다음 속성의 값을 변경하지 마십시오. 
 
-* WebSphere product Installation directory
-* Configuration data location
-* Liberty profile server name
-* Under Install an IBM Java SDK, select only Java SDK V7.0 or Java SDK V7.1
-* Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
+* WebSphere 제품 설치 디렉토리
+* 구성 데이터 위치
+* Liberty 프로파일 서버 이름
+* IBM Java SDK 설치에서 Java SDK V7.0 또는 Java SDK V7.1만 선택하십시오.
+* 추가 기능 설치를 선택하고 IBM WebSphere eXtreme Scale 선택을 취소하십시오. 
 
-#### {{ site.data.keys.product }} (Application Center WebSphere Application Server single node)
+#### {{ site.data.keys.product }}(Application Center WebSphere Application Server 단일 노드)
 {: #mobilefirst-foundation-application-center-websphere-application-server-single-node }
-Do not change the values for the following attributes in the Liberty profile server:
+Liberty profile server에서 다음 속성의 값을 변경하지 마십시오. 
 
-* WebSphere product Installation directory
-* Configuration data location
-* Cell name
-* Node name
-* Profile name
-* Under Install an IBM Java SDK, select only Java SDK V7.0 or Java SDK V7.1
-* Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
+* WebSphere 제품 설치 디렉토리
+* 구성 데이터 위치
+* 셀 이름
+* 노드 이름
+* 프로파일 이름
+* IBM Java SDK 설치에서 Java SDK V7.0 또는 Java SDK V7.1만 선택하십시오.
+* 추가 기능 설치를 선택하고 IBM WebSphere eXtreme Scale 선택을 취소하십시오. 
 
-#### {{ site.data.keys.product }} (Liberty single node)
+#### {{ site.data.keys.product }}(Liberty 단일 노드)
 {: #mobilefirst-foundation-liberty-single-node }
-Do not change the values for the following attributes in the Liberty profile server:
+Liberty profile server에서 다음 속성의 값을 변경하지 마십시오. 
 
-* WebSphere product Installation directory
-* Configuration data location
-* Liberty profile server name
-* Under Install an IBM Java SDK, select only Java SDK V7.0 or Java SDK V7.1
-* Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
+* WebSphere 제품 설치 디렉토리
+* 구성 데이터 위치
+* Liberty 프로파일 서버 이름
+* IBM Java SDK 설치에서 Java SDK V7.0 또는 Java SDK V7.1만 선택하십시오.
+* 추가 기능 설치를 선택하고 IBM WebSphere eXtreme Scale 선택을 취소하십시오. 
 
-#### {{ site.data.keys.product }} (Liberty server farm)
+#### {{ site.data.keys.product }}(Liberty 서버 팜)
 {: #mobilefirst-foundation-liberty-server-farm }
-Do not change the values for the following attributes in the Liberty profile server:
+Liberty profile server에서 다음 속성의 값을 변경하지 마십시오. 
 
-* WebSphere product Installation directory
-* Configuration data location
-* Liberty profile server name
-* Under Install an IBM Java SDK, select only Java SDK V7.0 or Java SDK V7.1
-* Select the Install additional features and clear the selection of IBM WebSphere eXtreme Scale.
+* WebSphere 제품 설치 디렉토리
+* 구성 데이터 위치
+* Liberty 프로파일 서버 이름
+* IBM Java SDK 설치에서 Java SDK V7.0 또는 Java SDK V7.1만 선택하십시오.
+* 추가 기능 설치를 선택하고 IBM WebSphere eXtreme Scale 선택을 취소하십시오. 
 
-#### {{ site.data.keys.product }} (WebSphere Application Server single node) template
+#### {{ site.data.keys.product }}(WebSphere Application Server 단일 노드) 템플리트
 {: #mobilefirst-foundation-websphere-application-server-single-node-template }
-In the **Standalone server component** of the MobileFirst Platform Server node, do not unlock or change the values for any of the following attributes:
+MobileFirst Platform Server 노드의 **Standalone server 컴포넌트**에서 다음 속성의 값을 잠금 해제하거나 변경하지 마십시오.
 
-* Cell name
-* Node name
-* Profile name
-* If you change any of these attributes, your pattern deployment fails.
+* 셀 이름
+* 노드 이름
+* 프로파일 이름
+* 이러한 속성을 변경하면 패턴 배치에 실패합니다. 
 
-#### {{ site.data.keys.product }} (WebSphere Application Server server farm) template
+#### {{ site.data.keys.product }}(WebSphere Application Server 서버 팜) 템플리트
 {: #mobilefirst-foundation-websphere-application-server-server-farm-template }
-In the **Standalone server component** of the MobileFirst Platform Server node, do not unlock or change the values for any of the following attributes:
+MobileFirst Platform Server 노드의 **Standalone server 컴포넌트**에서 다음 속성의 값을 잠금 해제하거나 변경하지 마십시오.
 
-* Cell name
-* Node name
-* Profile name
-* If you change any of these attributes, your pattern deployment fails.
+* 셀 이름
+* 노드 이름
+* 프로파일 이름
+* 이러한 속성을 변경하면 패턴 배치에 실패합니다. 
 
-#### {{ site.data.keys.product }} (WebSphere Application Server Network Deployment) template
+#### {{ site.data.keys.product }}(WebSphere Application Server Network Deployment) 템플리트
 {: #mobilefirst-foundation-websphere-application-server-network-deployment-template }
-In the **Deployment manager component** of the **DmgrNode node** or the **Custom nodes component** of the **CustomNode node**, do not unlock or change the values for any of the following attributes:
+**DmgrNode 노드**의 **Deployment Manager 컴포넌트** 또는 **CustomNode 노드**의 **Custom nodes 컴포넌트**에서 다음 속성의 값을 잠금 해제하거나 변경하지 마십시오. 
 
-* Cell name
-* Node name
-* Profile name
+* 셀 이름
+* 노드 이름
+* 프로파일 이름
 
-If you change any of these attributes, your pattern deployment fails.
+이러한 속성을 변경하면 패턴 배치에 실패합니다. 
 
-### Limitations
+### 제한사항
 {: #limitations }
-The following limitations apply:
+다음과 같은 제한사항이 적용됩니다. 
 
-* Dynamic scaling for WebSphere Application Server Liberty profile server farms and WebSphere Application Server full profile server farms is not supported. The number of server farm nodes can be specified in the pattern by setting the scaling policy but cannot be changed during run time.
-* The {{ site.data.keys.v63_to_80prerebrand_product_full }} System Pattern Extension for {{ site.data.keys.mf_studio }} and Ant command-line interface that are supported in versions earlier than V7.0, are not available for the current version of {{ site.data.keys.mf_system_pattern }}.
-* {{ site.data.keys.mf_system_pattern }} depends on WebSphere Application Server Patterns, which has its own restrictions. For more information, see [Restrictions for WebSphere Application Server Patterns](http://ibm.biz/knowctr#SSAJ7T_1.0.0/com.ibm.websphere.waspatt20base.doc/ae/rins_patternsB_restrictions.html).
-* Due to restrictions in the uninstallation of Virtual System Patterns, you must delete the script packages manually after you delete the pattern type. In IBM PureApplication System, go to **Catalog → Script Packages** to delete the script packages that are listed in the **Components** section.
-* The MobileFirst (WebSphere Application Server Network Deployment) pattern template does not support token licensing. If you want to use this pattern, you must use perpetual licensing. All other patterns support token licensing.
+* WebSphere Application Server Liberty 프로파일 서버 팜 및 WebSphere Application Server 전체 프로파일 서버 팜의 동적 스케일링은 지원되지 않습니다. 서버 팜 노드 수는 스케일링 정책을 설정하여 패턴에서 지정할 수 있지만 런타임 동안에는 변경할 수 없습니다. 
+* V7.0 전의 버전에서 지원되는 {{ site.data.keys.v63_to_80prerebrand_product_full }} System Pattern Extension for {{ site.data.keys.mf_studio }} 및 Ant 명령행 인터페이스는 {{ site.data.keys.mf_system_pattern }}의 현재 버전에서는 사용할 수 없습니다. 
+* {{ site.data.keys.mf_system_pattern }}은 WebSphere Application Server 패턴에 의존하며 여기에는 자체 고유의 제한사항이 적용됩니다. 자세한 정보는 [WebSphere Application Server 패턴 제한사항](http://ibm.biz/knowctr#SSAJ7T_1.0.0/com.ibm.websphere.waspatt20base.doc/ae/rins_patternsB_restrictions.html)을 참조하십시오.
+* 가상 시스템 패턴의 설치 제거 제한사항으로 인해, 패턴 유형을 삭제한 후에는 수동으로 스크립트 패키지를 삭제해야 합니다. IBM PureApplication System에서 **카탈로그 → 스크립트 패키지**로 이동하여 **컴포넌트** 섹션에 나열된 스크립트 패키지를 삭제하십시오. 
+* MobileFirst(WebSphere Application Server Network Deployment) 패턴 템플리트는 토큰 라이센싱을 지원하지 않습니다. 이 패턴을 사용하려면 영구 라이센싱을 사용해야 합니다. 기타 모든 패턴에서는 토큰 라이센싱을 지원합니다. 
 
-### Composition
+### 컴포지션
 {: #composition }
-{{ site.data.keys.mf_system_pattern }} is composed of the following patterns:
+{{ site.data.keys.mf_system_pattern }}은 다음 패턴으로 구성됩니다. 
 
 * IBM WebSphere Application Server Network Deployment Patterns 2.2.0.0.
-* [PureApplication Service] WebSphere 8558 for Mobile IM repository to allow the WebSphere Application Server Network Deployment Patterns to work. Contact the administrator for IBM PureApplication System to confirm that the WebSphere 8558 IM repository is installed.
+* [PureApplication Service] WebSphere Application Server Network Deployment Patterns가 작동할 수 있도록 하는 WebSphere 8558 for Mobile IM 저장소. IBM PureApplication System 관리자에게 문의하여 WebSphere 8558 IM 저장소가 설치되어 있는지 확인하십시오. 
 * IBM DB2 with BLU Acceleration  Pattern 1.2.4.0.
 * {{ site.data.keys.mf_system_pattern }}.
 
-### Components
+### 컴포넌트
 {: #components }
-In addition to all components provided by IBM WebSphere Application Server Pattern and IBM DB2 with BLU Acceleration Pattern, {{ site.data.keys.mf_system_pattern }} provides the following Script Packages:
+IBM WebSphere Application Server Pattern 및 IBM DB2 with BLU Acceleration Pattern에서 제공하는 모든 컴포넌트 이외에,
+{{ site.data.keys.mf_system_pattern }}은 다음 스크립트 패키지를 제공합니다. 
 
 * MFP Administration DB
 * MFP Runtime DB
@@ -154,1486 +155,1485 @@ In addition to all components provided by IBM WebSphere Application Server Patte
 * MFP WAS SDK Level
 * MFP Server Application Center
 
-### Compatibility between pattern types and artifacts created with different product versions
+### 다른 제품 버전으로 작성된 패턴 유형 및 아티팩트 간의 호환성
 {: #compatibility-between-pattern-types-and-artifacts-created-with-different-product-versions }
-If you use MobileFirst Studio V6.3.0 or earlier to develop your applications, you can upload the associated runtime, application, and adapter artifacts into patterns associated with {{ site.data.keys.v63_to_80prerebrand_product_full }} V7.0.0 and later.
+MobileFirst Studio V6.3.0 또는 이전 버전을 사용하여 애플리케이션을 개발하는 경우, 연관된 런타임, 애플리케이션 및 어댑터 아티팩트를 {{ site.data.keys.v63_to_80prerebrand_product_full }} V7.0.0 이상과 연관된 패턴에 업로드할 수 있습니다. 
 
-Pattern types that are associated with {{ site.data.keys.v63_to_80prerebrand_product_full }} V6.3.0 or earlier are not compatible with runtime, application, and adapter artifacts created by using MobileFirst Studio V7.0.0 and later.
+{{ site.data.keys.v63_to_80prerebrand_product_full }} V6.3.0 또는 이전 버전과 연관된 패턴 유형은 MobileFirst Studio V7.0.0 이상을 사용하여 작성된 런타임, 애플리케이션 및 어댑터 아티팩트와 호환 가능하지 않습니다. 
 
-For versions V6.0.0 and earlier, only the same versions of server, **.war** file, application (**.wlapp** file), and adapters are compatible.
+V6.0.0 및 이전 버전의 경우, 동일한 버전의 서버, **.war** 파일, 애플리케이션(**.wlapp** 파일) 및 어댑터만 호환 가능합니다.
 
-## Installing {{ site.data.keys.mf_system_pattern }}
+## {{ site.data.keys.mf_system_pattern }} 설치
 {: #installing-mobilefirst-system-pattern }
-You can find the **{{ site.data.keys.mf_system_pattern_file }}** file. Make sure you extract the file before you start this procedure.
+**{{ site.data.keys.mf_system_pattern_file }}** 파일을 찾을 수 있습니다. 이 파일을 추출한 후 다음 프로시저를 시작하십시오. 
 
-1. Log in to IBM  PureApplication System with an account that has permission to create new pattern types.
-2. Go to **Catalog → Pattern Types**.
-3. Upload the {{ site.data.keys.mf_system_pattern }} **.tgz** file:
-    * On the toolbar, click **+**. The "Install a pattern type" window opens.
-    * In the Local tab, click **Browse**, select the {{ site.data.keys.mf_system_pattern }} **.tgz** file, and then wait for the upload process to complete. The pattern type is displayed in the list and is marked as not enabled.
-4. In the list of pattern types, click the uploaded pattern type. Details of the pattern type are displayed.
-5. In the License Agreement row, click **License**. The License window is displayed stating the terms of the license agreement.
-6. To accept the license, click **Accept**. Details of the pattern type now show that the license is accepted.
-7. In the Status row, click **Enable**. The pattern type is now listed as being enabled.
-8. Mandatory for PureApplication Service: After the pattern type is enabled successfully, go to **Catalog → Script** Packages and select script packages with names similar to "MFP \*\*\*". On the details page to the right, accept the license in the **License agreement** field. Repeat for all eleven script packages listed in the Components section.
+1. 새 패턴 유형을 작성할 권한이 있는 계정으로 IBM  PureApplication System에 로그인하십시오. 
+2. **카탈로그 → 패턴 유형**으로 이동하십시오. 
+3. 다음과 같이 {{ site.data.keys.mf_system_pattern }} **.tgz** 파일을 업로드하십시오. 
+    * 도구 모음에서 **+**를 클릭하십시오. "패턴 유형 설치" 창이 열립니다. 
+    * 로컬 탭에서 **찾아보기**를 클릭하고 {{ site.data.keys.mf_system_pattern }} **.tgz** 파일을 선택한 후 업로드 프로세스가 완료될 때까지 기다리십시오. 패턴 유형이 목록에 표시되고 사용 가능하지 않은 것으로 표시됩니다.
+4. 패턴 유형 목록에서 업로드된 패턴 유형을 클릭하십시오. 패턴 유형의 세부사항이 표시됩니다. 
+5. 라이센스 계약 행에서 **라이센스**를 클릭하십시오. 라이센스 계약 조항이 있는 라이센스 창이 표시됩니다.
+6. 라이센스에 동의하려면 **동의**를 클릭하십시오. 그러면 패턴 유형의 세부사항에 라이센스가 승인되었음이 표시됩니다.
+7. 상태 행에서 **사용**을 클릭하십시오. 그러면 패턴 유형이 사용 가능한 것으로 나열됩니다.
+8. PureApplication Service의 경우 필수: 패턴 유형이 사용 가능하게 설정되면 **카탈로그 → 스크립트** 패키지로 이동하여 "MFP \*\*\*"와 이름이 유사한 스크립트 패키지를 선택하십시오. 오른쪽의 세부사항 페이지에 있는 **라이센스 계약** 필드에서 라이센스에 동의하십시오. 컴포넌트 섹션에 나열된 11개의 스크립트 패키지 모두에 대해 이 조작을 반복하십시오. 
 
-## Token licensing requirements for {{ site.data.keys.mf_system_pattern }}
+## {{ site.data.keys.mf_system_pattern }}의 토큰 라이센싱 요구사항
 {: #token-licensing-requirements-for-mobilefirst-system-pattern }
-If you use token licensing to license {{ site.data.keys.product }}, you must install IBM  Rational  License Key Server and configure with your licenses before you deploy the {{ site.data.keys.mf_system_pattern_full }}.
+토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, {{ site.data.keys.mf_system_pattern_full }}을 배치하기 전에 IBM  Rational  License Key Server를 설치하고 라이센스를 지정하여 구성해야 합니다. 
 
-> **Important:** The {{ site.data.keys.product }} (WAS ND) pattern template does not support token licensing. You must be using perpetual licensing when you deploy patterns based on the {{ site.data.keys.product }} (WAS ND) pattern template. All other pattern templates support token licensing.
+> **중요:** {{ site.data.keys.product }}(WAS ND) 패턴 템플리트는 토큰 라이센싱을 지원하지 않습니다. {{ site.data.keys.product }}(WAS ND) 패턴 템플리트에 기반하여 패턴을 배치할 때는 영구 라이센싱을 사용해야 합니다. 기타 모든 패턴 템플리트에서는 토큰 라이센싱을 지원합니다.
 
-Your IBM Rational License Key Server must be external to your PureApplication  System. {{ site.data.keys.system_pattern }} does not support the PureApplication System shared service for IBM Rational License Key Server.
+IBM Rational License Key Server는 PureApplication  System의 외부에 있어야 합니다. {{ site.data.keys.system_pattern }}은 IBM Rational License Key Server에 대해 PureApplication System 공유 서비스를 지원하지 않습니다. 
 
-In addition, you must know the following information about your Rational License Key Server to add the license key server information to your pattern attributes:
+또한, 패턴 속성에 라이센스 키 서버 정보를 추가하려면 Rational License Key Server에 대한 다음 정보를 알아야 합니다. 
 
-* Fully qualified host name or IP address of your Rational License Key Server
-* License manager daemon (**lmgrd**) port
-* Vendor daemon (**ibmratl**) port
+* Rational License Key Server의 완전한 호스트 이름 또는 IP 주소
+* 라이센스 관리자 디먼(**lmgrd**) 포트
+* 공급업체 디먼(**ibmratl**) 포트
 
-If you have a firewall between your Rational License Key Server and your PureApplication System, ensure that both daemon ports are open in your firewall.
-The deployment of {{ site.data.keys.system_pattern }} fails if the license key server cannot be contacted or if insufficient license tokens are available.
+Rational License Key Server와 PureApplication System의 사이에 방화벽이 있는 경우, 방화벽에서 두 디먼 포트가 모두 열려 있는지 확인하십시오.
+라이센스 키 서버에 연결할 수 없거나 사용할 수 있는 라이센스 토큰이 충분하지 않으면 {{ site.data.keys.system_pattern }} 배치에 실패합니다. 
 
-For details about installing and configuring Rational License Key Server, see [IBM Support - Rational licensing start page](http://www.ibm.com/software/rational/support/licensing/).
+Rational License Key Server 설치 및 구성에 대한 세부사항은 [IBM Support - Rational 라이센싱 시작 페이지](http://www.ibm.com/software/rational/support/licensing/)를 참조하십시오.
 
-## Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server
+## 단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치
 {: #deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server }
-You use a predefined template to deploy {{ site.data.keys.mf_server }} on a single-node WebSphere  Application Server Liberty profile server.
+사전 정의된 템플리트를 사용하여 {{ site.data.keys.mf_server }}를 단일 노드 WebSphere Application Server Liberty 프로파일 서버에 배치합니다. 
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+이 프로시저에는 필수 애플리케이션 및 어댑터와 같은 특정 아티팩트를 IBM  PureApplication  System에 업로드하는 작업이 포함됩니다. 시작하기 전에 해당 아티팩트가 업로드 가능한지 확인하십시오. 
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**토큰 라이센싱 요구사항:** 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 계속하기 전에 [{{ site.data.keys.mf_system_pattern }}의 토큰 라이센싱 요구사항](#token-licensing-requirements-for-mobilefirst-system-pattern)에 요약된 요구사항을 검토하십시오. 라이센스 키 서버에 연결할 수 없거나 사용할 수 있는 라이센스 토큰이 충분하지 않으면 이 패턴을 배치하는 데 실패합니다. 
 
-Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+템플리트에 있는 스크립트 패키지의 일부 매개변수는 권장 값으로 구성되어 있으므로 이 절에서는 언급하지 않습니다. 미세 조정을 위해서는 [{{ site.data.keys.mf_server }}의 스크립트 패키지](#script-packages-for-mobilefirst-server)에서 스크립트 패키지의 모든 매개변수에 대한 자세한 정보를 참조하십시오.
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.product }} (Liberty single node) template](#mobilefirst-foundation-liberty-single-node-template).
+이 프로시저에서 사용되는 사전 정의된 템플리트의 컴포지션 및 구성 옵션에 대한 자세한 정보는 [{{ site.data.keys.product }}(Liberty 단일 노드) 템플리트](#mobilefirst-foundation-liberty-single-node-template)를 참조하십시오. 
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (Liberty single node)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure {{ site.data.keys.mf_server }} administration. You can skip this step if you want to specify the user credential with {{ site.data.keys.mf_server }} administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
+1. 사전 정의된 템플리트에서 패턴을 작성하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 가상 시스템 패턴 페이지가 열립니다. 
+    * **가상 시스템 패턴** 페이지에서 **새로 작성**을 클릭한 후 팝업 창의 사전 정의된 템플리트 목록에서 **MobileFirst Platform(Liberty 단일 노드)**를 선택하십시오. 길이 때문에 이름이 일부만 표시되는 경우에는 **자세한 정보** 탭에서 해당 설명을 검토하여 올바른 템플리트가 선택되었는지 확인할 수 있습니다. 
+    * **이름** 필드에 패턴의 이름을 제공하십시오. 
+    * **버전** 필드에 패턴의 버전 번호를 지정하십시오. 
+    * **빌드 시작**을 클릭하십시오.
+2. AIX의 경우 필수: Power 에서 실행 중인 IBM PureApplication System에서, MobileFirst Platform DB 노드는 jfs2 파일 시스템을 지원하기 위해 AIX 고유 추가 기능 컴포넌트인 "Default AIX add disk"를 사용하여 템플리트의 "Default add disk" 컴포넌트를 대체해야 합니다. 
+    * 패턴 빌더에서 **MobileFirst Platform DB** 노드를 선택하십시오. 
+    * **컴포넌트 추가 기능 추가** 단추를 클릭하십시오(이 단추는 **MobileFirst Platform DB** 노드 위에 커서를 놓을 때 컴포넌트 상자 위에 표시됨). 
+    * **추가 기능 추가** 목록에서 **Default AIX add disk**를 선택하십시오. 이 컴포넌트가 MobileFirst Platform DB 노드의 최하위 컴포넌트로 추가됩니다. 
+    * **Default AIX add disk** 컴포넌트를 선택하고 다음 속성을 지정하십시오. 
+        * **DISK_SIZE_GB:** DB 서버로 확장되는 스토리지 크기(GB)입니다. 예제 값: **10**.
+        * **FILESYSTEM_TYPE:** AIX에서 지원되는 파일 시스템입니다. 기본값: **jfs2**.
+        * **MOUNT_POINT:** MobileFirst Platform DB 노드의 Database Server 컴포넌트에 있는 **인스턴스 소유자의 마운트 위치** 속성과 일치합니다. 예제 값: **/dbinst**.
+        * **VOLUME_GROUP:** 예제 값: **group1**. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
+    * MobileFirst Platform DB 노드에서 **Default add disk** 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
+    * 패턴을 저장하십시오.
+3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오.
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+    * MobileFirst Platform Server 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
+    * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
+    * 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우 다음 필드를 완료하십시오. 토큰 라이센싱을 사용하지 않으면 다음 필드를 공백으로 두십시오.
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    **ACTIVATE\_TOKEN\_LICENSE**: 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오.  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오.   
+    **LMGRD\_PORT**: 라이센스 관리자 디먼(**lmrgd**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 라이센스 관리자 디먼 포트는 27000입니다.  
+    **IBMRATL\_PORT**: 공급업체 디먼(**ibmratl**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 공급업체 디먼 포트는 일반적으로 27001입니다.  
 
-4. Optional: Configure {{ site.data.keys.mf_server }} runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 9. To specify the context root name now, complete these steps:
-    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
-    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
+    패턴 배치 중에 {{ site.data.keys.mf_server }}의 기본 관리 계정이 작성됩니다. 
 
-5. Upload application and adapter artifacts:
+4. 선택사항: {{ site.data.keys.mf_server }} 런타임 배치를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 런타임의 컨텍스트 루트 이름을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 컨텍스트 루트 이름을 지정하려면 다음 단계를 완료하십시오.
+    * MobileFirst Platform Server 노드에서 **MFP Server Runtime Deployment** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **runtime\_contextRoot** 필드 옆에 있는 **삭제** 단추를 클릭하여 패턴 레벨 매개변수 설정을 지우십시오. 
+    * **runtime\_contextRoot** 필드에 런타임 컨텍스트 루트 이름을 지정하십시오. 컨텍스트 루트 이름은 슬래시(/)로 시작해야 합니다(예: `/HelloWorld`). 
 
-    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
-    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
-    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty {{ site.data.keys.mf_console }} deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it.
+5. 애플리케이션 및 어댑터 아티팩트를 업로드하십시오.
 
-6. Optional: Add more application or adapter artifacts for deployment:
-    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename it to **{{ site.data.keys.product_adj }} App\_X** or **{{ site.data.keys.product_adj }} Adatper\_X** (where **X** stands for a unique number for differentiation).
-    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
-    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
-    * Repeat step 7 to add more applications and adapters for deployment.
+    > **중요:** 애플리케이션 및 어댑터의 대상 경로를 지정할 때 모든 애플리케이션 및 어댑터가 동일한 디렉토리에 배치되었는지 확인하십시오. 예를 들어, 하나의 대상 경로가 **/opt/tmp/deploy/HelloWorld-common.json**인 경우 다른 모든 대상 경로는 `/opt/tmp/deploy/*`여야 합니다.
+    * MobileFirst Platform Server 노드에서 **MFP Server Application** 또는 **MFP Server Adapter** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 애플리케이션 또는 어댑터 아티팩트를 찾아 업로드하십시오. 
+    * **대상 경로** 필드에서 아티팩트를 저장할 전체 경로(해당 파일 이름 포함)를 지정하십시오(예: **/opt/tmp/deploy/HelloWorld-common.json**). 
+    * 패턴에 애플리케이션 또는 어댑터를 배치하지 않는 경우에는 관련 컴포넌트 내부의 **X** 단추를 클릭하여 해당 컴포넌트를 제거하십시오. 앱 또는 어댑터가 설치되어 있지 않는 비어 있는 {{ site.data.keys.mf_console }}을 배치하려면 MFP Server Application Adapter Deployment 컴포넌트 내부의 X 단추를 클릭하여 해당 컴포넌트를 제거하십시오. 
 
-7. Optional: Configure application and adapter deployment to {{ site.data.keys.mf_server }}. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 9. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
-    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
-    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+6. 선택사항: 배치할 애플리케이션 또는 어댑터 아티팩트를 추가하십시오. 
+    * **자산** 도구 모음에서 **소프트웨어 컴포넌트**를 펼친 후 **추가 파일** 컴포넌트를 캔버스의 MobileFirst Platform Server 노드 위로 끌어서 놓으십시오. 이름을 **{{ site.data.keys.product_adj }} App\_X** 또는 **{{ site.data.keys.product_adj }} Adatper\_X**로 바꾸십시오(여기서 **X**는 구별을 위한 고유 번호임).
+    * 새로 추가된 앱 또는 어댑터 컴포넌트 위에 커서를 놓은 후 **위로 이동** 및 **아래로 이동** 단추를 클릭하여 노드에서 해당 컴포넌트의 순서를 조정하십시오. 해당 컴포넌트가 MFP Runtime Deployment 컴포넌트와 MFP Server Application Adapter Deployment 컴포넌트 사이에 배치되었는지 확인하십시오. 
+    * 새로 추가된 애플리케이션 또는 어댑터 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 6단계의 단계를 참조하여 애플리케이션 또는 어댑터 아티팩트를 업로드하고 해당 대상 경로를 지정하십시오. 
+    * 7단계를 반복하여 배치할 애플리케이션 및 어댑터를 추가하십시오. 
 
-8. Configure and launch the pattern deployment:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
-    * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
+7. 선택사항: {{ site.data.keys.mf_server }}로의 애플리케이션 및 어댑터 배치를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 배치 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 3단계에서 기본 관리 사용자 신임을 지정한 경우에는 지금 배치자를 지정할 수 있습니다. 이는 관리 사용자 신임과 일치해야 합니다. 
+    * MobileFirst Platform Server 노드에서 **MFP Server Application Adapter Deployment** 컴포넌트를 선택하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **deployer_user** 및 **deployer_password** 매개변수를 찾은 후 인접한 삭제 단추를 클릭하여 패턴 레벨 매개변수 설정을 지우십시오. 
+    * **deployer\_user** 및 **deployer\_password** 필드에 사용자 이름 및 비밀번호를 지정하십시오. 
 
-        Supply the following information in the fields provided:
+8. 패턴 배치를 구성하고 실행하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 
+    * **가상 시스템 패턴** 페이지에서 **검색** 필드를 사용하여 사용자가 작성한 패턴을 찾아 선택하십시오.
+    * 패턴에 대한 자세한 정보가 표시되는 패널 위의 도구 모음에서 배치 단추를 클릭하십시오. 
+    * 패턴 배치 창의 구성 패널에 있는 **환경 프로파일** 목록에서 올바른 환경 프로파일을 선택하고 기타 IBM PureApplication System 환경 매개변수를 제공하십시오. 올바른 정보를 얻으려면 IBM PureApplication System 관리자에게 문의하십시오. 
+    * 가운데 열에서 **패턴 속성**을 클릭하여 속성(예: 사용자 이름 및 비밀번호)을 표시하십시오. 
 
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+        표시되는 필드에 다음과 같은 정보를 제공하십시오.
+
+        > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
         
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 {{ site.data.keys.mf_server }} 관리자 계정을 작성하십시오. 기본값: demo.
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 관리자 계정 비밀번호입니다. 기본값: demo.
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오. 영구 라이센스를 사용하는 경우 이 필드를 빈 상태로 두십시오. 
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오. 
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 라이센스 관리자 디먼(lmrgd)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 라이센스 관리자 디먼 포트는 27000입니다.
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 공급업체 디먼(ibmratl)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 공급업체 디먼 포트는 일반적으로 27001입니다.
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+        5단계에서 구성된 경우 표시되지 않습니다. {{ site.data.keys.mf_server }} 런타임의 컨텍스트 루트 이름입니다. 이름은 "/"로 시작해야 합니다. 
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 계정의 사용자 이름입니다. 외부 LDAP 서버가 구성되지 않은 경우, 앱 및 어댑터 배치 권한이 부여된 사용자만 기본 관리 사용자이므로 관리 서비스의 기본 관리 사용자를 작성할 때 지정한 값과 동일한 값을 입력해야 합니다.
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 사용자의 사용자 비밀번호입니다.
         
-        **MFP Vms Password(root)**  
-        Root password for {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        **MFP Vms 비밀번호(루트)**  
+        {{ site.data.keys.mf_server }} 및 {{ site.data.keys.product }} DB 노드의 루트 비밀번호입니다. 기본값: passw0rd.
         
-        **MFP DB Password(Instance owner)**  
-        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+        **MFP DB 비밀번호(인스턴스 소유자)**  
+        MobileFirst Platform DB 노드의 인스턴스 소유자 비밀번호입니다. 기본값: **passw0rd**.    
+    * **빠른 배치**를 클릭하여 패턴 배치를 실행하십시오. 몇 초 후 패턴 실행이 시작되었다는 메시지가 표시됩니다. 메시지에 표시된 URL을 클릭하여 패턴 배치 상태를 추적하거나 **패턴 → 가상 시스템 인스턴스**로 이동하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색할 수 있습니다.
 
-    If you use token licensing to license {{ site.data.keys.product }}, your pattern will fail to deploy if insufficient license tokens are available or if the license key server IP address and port were entered incorrectly.
+    토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 사용 가능한 라이센스 토큰이 충분하지 않거나 라이센스 키 서버 IP 주소 및 포트를 잘못 입력하면 패턴 배치에 실패합니다.
 
-9. Access the {{ site.data.keys.mf_console }}:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there. Make sure it is in Running state.
-    * Select the pattern name and expand the **Virtual machine perspective** option in the panel displaying details of the selected instance.
-    * Find the {{ site.data.keys.mf_server }} VM that has a name similar to **MobileFirst\_Platform\_Server.** and make a note of its Public IP address: you need this information in the following step.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+9. {{ site.data.keys.mf_console }}에 액세스하십시오. 
+    * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오. 패턴이 실행 중 상태인지 확인하십시오. 
+    * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 **가상 머신 퍼스펙티브** 옵션을 펼치십시오. 
+    * 이름이 **MobileFirst\_Platform\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공용 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다. 
+    * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오. 
         * `http://{MFP Server VM Public IP}:9080/mfpconsole`
         * `https://{MFP Server VM Public IP}:9443/mfpconsole`
-    * Log in to the Console with admin user and password specified in step 3 or step 9.
+    * 3단계 또는 9단계에서 지정한 관리 사용자 및 비밀번호로 콘솔에 로그인하십시오.
 
-## Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server
+## 복수 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치
 {: #deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server }
-You use a predefined template to deploy {{ site.data.keys.mf_server }} on a multiple-node WebSphere  Application Server Liberty profile server.
+사전 정의된 템플리트를 사용하여 {{ site.data.keys.mf_server }}를 복수 노드 WebSphere Application Server Liberty 프로파일 서버에 배치합니다. 
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+이 프로시저에는 필수 애플리케이션 및 어댑터와 같은 특정 아티팩트를 IBM  PureApplication  System에 업로드하는 작업이 포함됩니다. 시작하기 전에 해당 아티팩트가 업로드 가능한지 확인하십시오. 
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**토큰 라이센싱 요구사항:** 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 계속하기 전에 [{{ site.data.keys.mf_system_pattern }}의 토큰 라이센싱 요구사항](#token-licensing-requirements-for-mobilefirst-system-pattern)에 요약된 요구사항을 검토하십시오. 라이센스 키 서버에 연결할 수 없거나 사용할 수 있는 라이센스 토큰이 충분하지 않으면 이 패턴을 배치하는 데 실패합니다. 
 
-Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+템플리트에 있는 스크립트 패키지의 일부 매개변수는 권장 값으로 구성되어 있으므로 이 절에서는 언급하지 않습니다. 미세 조정을 위해서는 [{{ site.data.keys.mf_server }}의 스크립트 패키지](#script-packages-for-mobilefirst-server)에서 스크립트 패키지의 모든 매개변수에 대한 자세한 정보를 참조하십시오.
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.product }} (Liberty server farm) template](#mobilefirst-foundation-liberty-server-farm-template).
+이 프로시저에서 사용되는 사전 정의된 템플리트의 컴포지션 및 구성 옵션에 대한 자세한 정보는 [{{ site.data.keys.product }}(Liberty 서버 팜) 템플리트](#mobilefirst-foundation-liberty-server-farm-template)를 참조하십시오. 
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (Liberty server farm)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the **jfs2** file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure {{ site.data.keys.mf_server }} administration. You can skip this step if you want to specify the user credential with {{ site.data.keys.mf_server }} administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
+1. 사전 정의된 템플리트에서 패턴을 작성하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. **가상 시스템 패턴** 페이지가 열립니다.
+    * **가상 시스템 패턴** 페이지에서 **새로 작성**을 클릭한 후 팝업 창의 사전 정의된 템플리트 목록에서 **MobileFirst Platform(Liberty 서버 팜)**을 선택하십시오. 길이 때문에 이름이 일부만 표시되는 경우에는 **자세한 정보** 탭에서 해당 설명을 검토하여 올바른 템플리트가 선택되었는지 확인할 수 있습니다. 
+    * **이름** 필드에 패턴의 이름을 제공하십시오. 
+    * **버전** 필드에 패턴의 버전 번호를 지정하십시오. 
+    * **빌드 시작**을 클릭하십시오.
+2. AIX의 경우 필수: Power 에서 실행 중인 IBM PureApplication System에서, MobileFirst Platform DB 노드는 **jfs2** 파일 시스템을 지원하기 위해 AIX 고유 추가 기능 컴포넌트인 "Default AIX add disk"를 사용하여 템플리트의 "Default add disk" 컴포넌트를 대체해야 합니다. 
+    * 패턴 빌더에서 **MobileFirst Platform DB** 노드를 선택하십시오. 
+    * **컴포넌트 추가 기능 추가** 단추를 클릭하십시오(이 단추는 **MobileFirst Platform DB** 노드 위에 커서를 놓을 때 컴포넌트 상자 위에 표시됨). 
+    * **추가 기능 추가** 목록에서 **Default AIX add disk**를 선택하십시오. 이 컴포넌트가 MobileFirst Platform DB 노드의 최하위 컴포넌트로 추가됩니다. 
+    * **Default AIX add disk** 컴포넌트를 선택하고 다음 속성을 지정하십시오. 
+        * **DISK_SIZE_GB:** DB 서버로 확장되는 스토리지 크기(GB)입니다. 예제 값: **10**.
+        * **FILESYSTEM_TYPE:** AIX에서 지원되는 파일 시스템입니다. 기본값: **jfs2**.
+        * **MOUNT_POINT:** MobileFirst Platform DB 노드의 Database Server 컴포넌트에 있는 **인스턴스 소유자의 마운트 위치** 속성과 일치합니다. 예제 값: **/dbinst**.
+        * **VOLUME_GROUP:** 예제 값: **group1**. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
+    * MobileFirst Platform DB 노드에서 **Default add disk** 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
+    * 패턴을 저장하십시오.
+3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오. 
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
+    > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+    * MobileFirst Platform Server 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
+    * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
+    * 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우 다음 필드를 완료하십시오. 토큰 라이센싱을 사용하지 않으면 다음 필드를 공백으로 두십시오.
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    **ACTIVATE\_TOKEN\_LICENSE**: 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오.  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오.   
+    **LMGRD\_PORT**: 라이센스 관리자 디먼(**lmrgd**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 라이센스 관리자 디먼 포트는 27000입니다.  
+    **IBMRATL\_PORT**: 공급업체 디먼(**ibmratl**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 공급업체 디먼 포트는 일반적으로 27001입니다.  
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    패턴 배치 중에 {{ site.data.keys.mf_server }}의 기본 관리 계정이 작성됩니다. 
     
-4. Optional: Configure {{ site.data.keys.mf_server }} runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 10. To specify the context root name now, complete these steps:
-    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
-    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
+4. 선택사항: {{ site.data.keys.mf_server }} 런타임 배치를 구성하십시오. 나중에 10단계의 패턴 배치 구성 단계(Phase) 중에 런타임의 컨텍스트 루트 이름을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 컨텍스트 루트 이름을 지정하려면 다음의 단계를 완료하십시오. 
+    * MobileFirst Platform Server 노드에서 **MFP Server Runtime Deployment** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **runtime\_contextRoot** 필드 옆에 있는 **삭제** 단추를 클릭하여 패턴 레벨 매개변수 설정을 지우십시오. 
+    * **runtime\_contextRoot** 필드에 런타임 컨텍스트 루트 이름을 지정하십시오. 컨텍스트 루트 이름은 슬래시(/)로 시작해야 합니다(예: `/HelloWorld`). 
 
-5. Upload application and adapter artifacts:
+5. 애플리케이션 및 어댑터 아티팩트를 업로드하십시오.
 
-    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
-    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
-    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty {{ site.data.keys.mf_console }} deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it. 
+    > **중요:** 애플리케이션 및 어댑터의 대상 경로를 지정할 때 모든 애플리케이션 및 어댑터가 동일한 디렉토리에 배치되었는지 확인하십시오. 예를 들어, 하나의 대상 경로가 **/opt/tmp/deploy/HelloWorld-common.json**인 경우 다른 모든 대상 경로는 `/opt/tmp/deploy/*`여야 합니다.
+    * MobileFirst Platform Server 노드에서 **MFP Server Application** 또는 **MFP Server Adapter** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 애플리케이션 또는 어댑터 아티팩트를 찾아 업로드하십시오. 
+    * **대상 경로** 필드에서 아티팩트를 저장할 전체 경로(해당 파일 이름 포함)를 지정하십시오(예: **/opt/tmp/deploy/HelloWorld-common.json**). 
+    * 패턴에 애플리케이션 또는 어댑터를 배치하지 않는 경우에는 관련 컴포넌트 내부의 **X** 단추를 클릭하여 해당 컴포넌트를 제거하십시오. 앱 또는 어댑터가 설치되어 있지 않는 비어 있는 {{ site.data.keys.mf_console }}을 배치하려면 MFP Server Application Adapter Deployment 컴포넌트 내부의 X 단추를 클릭하여 해당 컴포넌트를 제거하십시오.  
 
-6. Optional: Add more application or adapter artifacts for deployment:
-    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename it **{{ site.data.keys.product_adj }} App\_X** or **{{ site.data.keys.product_adj }} Adatper\_X** (where **X** stands for a unique number for differentiation).
-    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
-    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
-    * Repeat step 7 to add more applications and adapters for deployment.
+6. 선택사항: 배치할 애플리케이션 또는 어댑터 아티팩트를 추가하십시오. 
+    * **자산** 도구 모음에서 **소프트웨어 컴포넌트**를 펼친 후 **추가 파일** 컴포넌트를 캔버스의 MobileFirst Platform Server 노드 위로 끌어서 놓으십시오. 이름을 **{{ site.data.keys.product_adj }} App\_X** 또는 **{{ site.data.keys.product_adj }} Adatper\_X**로 바꾸십시오(여기서 **X**는 구별을 위한 고유 번호임).
+    * 새로 추가된 앱 또는 어댑터 컴포넌트 위에 커서를 놓은 후 **위로 이동** 및 **아래로 이동** 단추를 클릭하여 노드에서 해당 컴포넌트의 순서를 조정하십시오. 해당 컴포넌트가 MFP Runtime Deployment 컴포넌트와 MFP Server Application Adapter Deployment 컴포넌트 사이에 배치되었는지 확인하십시오. 
+    * 새로 추가된 애플리케이션 또는 어댑터 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 6단계의 단계를 참조하여 애플리케이션 또는 어댑터 아티팩트를 업로드하고 해당 대상 경로를 지정하십시오. 
+    * 7단계를 반복하여 배치할 애플리케이션 및 어댑터를 추가하십시오. 
 
-7. Optional: Configure application and adapter deployment to {{ site.data.keys.mf_server }}. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 9. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
-    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
-    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+7. 선택사항: {{ site.data.keys.mf_server }}로의 애플리케이션 및 어댑터 배치를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 배치 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 3단계에서 기본 관리 사용자 신임을 지정한 경우에는 지금 배치자를 지정할 수 있습니다. 이는 관리 사용자 신임과 일치해야 합니다. 
+    * MobileFirst Platform Server 노드에서 **MFP Server Application Adapter Deployment** 컴포넌트를 선택하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **deployer_user** 및 **deployer_password** 매개변수를 찾은 후 인접한 삭제 단추를 클릭하여 패턴 레벨 매개변수 설정을 지우십시오. 
+    * **deployer\_user** 및 **deployer\_password** 필드에 사용자 이름 및 비밀번호를 지정하십시오. 
 
-8. Configure base scaling policy:
-    * In the MobileFirst Platform Server node, select the **Base Scaling Policy** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Number of Instances** field, specify the number of server nodes to be instantiated during pattern deployment. The default value is 2 in the predefined template. Because dynamic scaling is not supported in this release, do not specify values in the remaining attribute fields.
+8. 기본 스케일링 정책을 구성하십시오. 
+    * MobileFirst Platform Server 노드에서 **Base Scaling Policy** 컴포넌트를 선택하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **인스턴스 수** 필드에 패턴 배치 중에 인스턴스화할 서버 노드의 수를 지정하십시오. 사전 정의된 템플리트에서 기본값은 2입니다. 이 릴리스에서는 동적 스케일링이 지원되지 않으므로 나머지 속성 필드에 값을 지정하지 마십시오. 
 
-9. Configure and launch the pattern deployment:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
-    * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
+9. 패턴 배치를 구성하고 실행하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 
+    * **가상 시스템 패턴** 페이지에서 **검색** 필드를 사용하여 사용자가 작성한 패턴을 찾아 선택하십시오.
+    * 패턴에 대한 자세한 정보가 표시되는 패널 위의 도구 모음에서 배치 단추를 클릭하십시오. 
+    * 패턴 배치 창의 구성 패널에 있는 **환경 프로파일** 목록에서 올바른 환경 프로파일을 선택하고 기타 IBM PureApplication System 환경 매개변수를 제공하십시오. 올바른 정보를 얻으려면 IBM PureApplication System 관리자에게 문의하십시오. 
+    * 가운데 열에서 **패턴 속성**을 클릭하여 속성(예: 사용자 이름 및 비밀번호)을 표시하십시오. 
 
-        Supply the following information in the fields provided:
+        표시되는 필드에 다음과 같은 정보를 제공하십시오.
 
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+        > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
         
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 {{ site.data.keys.mf_server }} 관리자 계정을 작성하십시오. 기본값: demo.
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 관리자 계정 비밀번호입니다. 기본값: demo.
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오. 영구 라이센스를 사용하는 경우 이 필드를 빈 상태로 두십시오. 
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오. 
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 라이센스 관리자 디먼(lmrgd)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 라이센스 관리자 디먼 포트는 27000입니다.
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 공급업체 디먼(ibmratl)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 공급업체 디먼 포트는 일반적으로 27001입니다.
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+        5단계에서 구성된 경우 표시되지 않습니다. {{ site.data.keys.mf_server }} 런타임의 컨텍스트 루트 이름입니다. 이름은 "/"로 시작해야 합니다. 
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 계정의 사용자 이름입니다. 외부 LDAP 서버가 구성되지 않은 경우, 앱 및 어댑터 배치 권한이 부여된 사용자만 기본 관리 사용자이므로 관리 서비스의 기본 관리 사용자를 작성할 때 지정한 값과 동일한 값을 입력해야 합니다.
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 사용자의 사용자 비밀번호입니다.
         
-        **MFP Vms Password(root)**  
-        Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        **MFP Vms 비밀번호(루트)**  
+        {{ site.data.keys.mf_server }} 및 {{ site.data.keys.product }} DB 노드의 루트 비밀번호입니다. 기본값: passw0rd.
         
-        **MFP DB Password(Instance owner)**  
-        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+        **MFP DB 비밀번호(인스턴스 소유자)**  
+        MobileFirst Platform DB 노드의 인스턴스 소유자 비밀번호입니다. 기본값: **passw0rd**.    
+    * **빠른 배치**를 클릭하여 패턴 배치를 실행하십시오. 몇 초 후 패턴 실행이 시작되었다는 메시지가 표시됩니다. 메시지에 표시된 URL을 클릭하여 패턴 배치 상태를 추적하거나 **패턴 → 가상 시스템 인스턴스**로 이동하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색할 수 있습니다.
 
-    If you use token licensing to license {{ site.data.keys.product }}, your pattern will fail to deploy if insufficient license tokens are available or if the license key server IP address and port were entered incorrectly.
+    토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 사용 가능한 라이센스 토큰이 충분하지 않거나 라이센스 키 서버 IP 주소 및 포트를 잘못 입력하면 패턴 배치에 실패합니다.
     
-10. Access the {{ site.data.keys.mf_console }}:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there. Make sure it is in Running state.
-    * Select the pattern name and expand the **Virtual machine perspective** option in the panel displaying details of the selected instance.
-    * Find the IHS Server VM that has a name similar to **IHS\_Server.*** and make a note of its Public IP address: you need this information in the following step.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+10. {{ site.data.keys.mf_console }}에 액세스하십시오. 
+    * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오. 패턴이 실행 중 상태인지 확인하십시오. 
+    * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 **가상 머신 퍼스펙티브** 옵션을 펼치십시오. 
+    * 이름이 **IHS\_Server.***와 유사한 IHS Server VM을 찾아 해당 공용 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다. 
+    * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오. 
         * `http://{IHS Server VM Public IP}/mfpconsole`
         * `https://{IHS Server VM Public IP}/mfpconsole`
-    * Log in to the Console with the admin user ID and password specified in step 3 or step 10.
+    * 3단계 또는 10단계에서 지정한 관리 사용자 ID 및 비밀번호로 콘솔에 로그인하십시오.
 
-## Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server
+## 단일 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치
 {: #deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server }
-You use a predefined template to deploy a single-node {{ site.data.keys.mf_server }} to a WebSphere  Application Server full profile server.
+사전 정의된 템플리트를 사용하여 단일 노드 {{ site.data.keys.mf_server }}를 WebSphere Application Server 전체 프로파일 서버에 배치합니다. 
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+이 프로시저에는 필수 애플리케이션 및 어댑터와 같은 특정 아티팩트를 IBM  PureApplication  System에 업로드하는 작업이 포함됩니다. 시작하기 전에 해당 아티팩트가 업로드 가능한지 확인하십시오. 
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**토큰 라이센싱 요구사항:** 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 계속하기 전에 [{{ site.data.keys.mf_system_pattern }}의 토큰 라이센싱 요구사항](#token-licensing-requirements-for-mobilefirst-system-pattern)에 요약된 요구사항을 검토하십시오. 라이센스 키 서버에 연결할 수 없거나 사용할 수 있는 라이센스 토큰이 충분하지 않으면 이 패턴을 배치하는 데 실패합니다. 
 
-Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+템플리트에 있는 스크립트 패키지의 일부 매개변수는 권장 값으로 구성되어 있으므로 이 절에서는 언급하지 않습니다. 미세 조정을 위해서는 [{{ site.data.keys.mf_server }}의 스크립트 패키지](#script-packages-for-mobilefirst-server)에서 스크립트 패키지의 모든 매개변수에 대한 자세한 정보를 참조하십시오.
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.product }} (WAS single node) template](#mobilefirst-foundation-was-single-node-template).
+이 프로시저에서 사용되는 사전 정의된 템플리트의 컴포지션 및 구성 옵션에 대한 자세한 정보는 [{{ site.data.keys.product }}(WAS 단일 노드) 템플리트](#mobilefirst-foundation-was-single-node-template)를 참조하십시오. 
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (WAS single node)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the **jfs2** file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure {{ site.data.keys.mf_server }} administration. You can skip this step if you want to specify the user credential with {{ site.data.keys.mf_server }} administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
+1. 사전 정의된 템플리트에서 패턴을 작성하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. **가상 시스템 패턴** 페이지가 열립니다.
+    * **가상 시스템 패턴** 페이지에서 **새로 작성**을 클릭한 후 팝업 창의 사전 정의된 템플리트 목록에서 **MobileFirst Platform(WAS 단일 노드)**를 선택하십시오. 길이 때문에 이름이 일부만 표시되는 경우에는 **자세한 정보** 탭에서 해당 설명을 검토하여 올바른 템플리트가 선택되었는지 확인할 수 있습니다. 
+    * **이름** 필드에 패턴의 이름을 제공하십시오. 
+    * **버전** 필드에 패턴의 버전 번호를 지정하십시오. 
+    * **빌드 시작**을 클릭하십시오.
+2. AIX의 경우 필수: Power 에서 실행 중인 IBM PureApplication System에서, MobileFirst Platform DB 노드는 **jfs2** 파일 시스템을 지원하기 위해 AIX 고유 추가 기능 컴포넌트인 "Default AIX add disk"를 사용하여 템플리트의 "Default add disk" 컴포넌트를 대체해야 합니다. 
+    * 패턴 빌더에서 **MobileFirst Platform DB** 노드를 선택하십시오. 
+    * **컴포넌트 추가 기능 추가** 단추를 클릭하십시오(이 단추는 **MobileFirst Platform DB** 노드 위에 커서를 놓을 때 컴포넌트 상자 위에 표시됨). 
+    * **추가 기능 추가** 목록에서 **Default AIX add disk**를 선택하십시오. 이 컴포넌트가 MobileFirst Platform DB 노드의 최하위 컴포넌트로 추가됩니다. 
+    * **Default AIX add disk** 컴포넌트를 선택하고 다음 속성을 지정하십시오. 
+        * **DISK_SIZE_GB:** DB 서버로 확장되는 스토리지 크기(GB)입니다. 예제 값: **10**.
+        * **FILESYSTEM_TYPE:** AIX에서 지원되는 파일 시스템입니다. 기본값: **jfs2**.
+        * **MOUNT_POINT:** MobileFirst Platform DB 노드의 Database Server 컴포넌트에 있는 **인스턴스 소유자의 마운트 위치** 속성과 일치합니다. 예제 값: **/dbinst**.
+        * **VOLUME_GROUP:** 예제 값: **group1**. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
+    * MobileFirst Platform DB 노드에서 **Default add disk** 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
+    * 패턴을 저장하십시오.
+3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오. 
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
+    > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+    * MobileFirst Platform Server 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
+    * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
+    * 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우 다음 필드를 완료하십시오. 토큰 라이센싱을 사용하지 않으면 다음 필드를 공백으로 두십시오.
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    **ACTIVATE\_TOKEN\_LICENSE**: 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오.  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오.   
+    **LMGRD\_PORT**: 라이센스 관리자 디먼(**lmrgd**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 라이센스 관리자 디먼 포트는 27000입니다.  
+    **IBMRATL\_PORT**: 공급업체 디먼(**ibmratl**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 공급업체 디먼 포트는 일반적으로 27001입니다.  
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    패턴 배치 중에 {{ site.data.keys.mf_server }}의 기본 관리 계정이 작성됩니다. 
 
-4. Optional: Configure {{ site.data.keys.mf_server }} runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 9. To specify the context root name now, complete these steps:
-    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
-    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
+4. 선택사항: {{ site.data.keys.mf_server }} 런타임 배치를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 런타임의 컨텍스트 루트 이름을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 컨텍스트 루트 이름을 지정하려면 다음 단계를 완료하십시오.
+    * MobileFirst Platform Server 노드에서 **MFP Server Runtime Deployment** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **runtime\_contextRoot** 필드 옆에 있는 **삭제** 단추를 클릭하여 패턴 레벨 매개변수 설정을 지우십시오. 
+    * **runtime\_contextRoot** 필드에 런타임 컨텍스트 루트 이름을 지정하십시오. 컨텍스트 루트 이름은 슬래시(/)로 시작해야 합니다(예: `/HelloWorld`). 
 
-5. Upload application and adapter artifacts:
+5. 애플리케이션 및 어댑터 아티팩트를 업로드하십시오.
 
-    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
-    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
-    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty {{ site.data.keys.mf_console }} deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it. 
+    > **중요:** 애플리케이션 및 어댑터의 대상 경로를 지정할 때 모든 애플리케이션 및 어댑터가 동일한 디렉토리에 배치되었는지 확인하십시오. 예를 들어, 하나의 대상 경로가 **/opt/tmp/deploy/HelloWorld-common.json**인 경우 다른 모든 대상 경로는 `/opt/tmp/deploy/*`여야 합니다.
+    * MobileFirst Platform Server 노드에서 **MFP Server Application** 또는 **MFP Server Adapter** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 애플리케이션 또는 어댑터 아티팩트를 찾아 업로드하십시오. 
+    * **대상 경로** 필드에서 아티팩트를 저장할 전체 경로(해당 파일 이름 포함)를 지정하십시오(예: **/opt/tmp/deploy/HelloWorld-common.json**). 
+    * 패턴에 애플리케이션 또는 어댑터를 배치하지 않는 경우에는 관련 컴포넌트 내부의 **X** 단추를 클릭하여 해당 컴포넌트를 제거하십시오. 앱 또는 어댑터가 설치되어 있지 않는 비어 있는 {{ site.data.keys.mf_console }}을 배치하려면 MFP Server Application Adapter Deployment 컴포넌트 내부의 X 단추를 클릭하여 해당 컴포넌트를 제거하십시오.  
 
-6. Optional: Add more application or adapter artifacts for deployment:
-    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename it **{{ site.data.keys.product_adj }} App\_X** or **{{ site.data.keys.product_adj }} Adatper\_X** (where **X** stands for a unique number for differentiation).
-    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
-    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
-    * Repeat step 7 to add more applications and adapters for deployment.
+6. 선택사항: 배치할 애플리케이션 또는 어댑터 아티팩트를 추가하십시오. 
+    * **자산** 도구 모음에서 **소프트웨어 컴포넌트**를 펼친 후 **추가 파일** 컴포넌트를 캔버스의 MobileFirst Platform Server 노드 위로 끌어서 놓으십시오. 이름을 **{{ site.data.keys.product_adj }} App\_X** 또는 **{{ site.data.keys.product_adj }} Adatper\_X**로 바꾸십시오(여기서 **X**는 구별을 위한 고유 번호임).
+    * 새로 추가된 앱 또는 어댑터 컴포넌트 위에 커서를 놓은 후 **위로 이동** 및 **아래로 이동** 단추를 클릭하여 노드에서 해당 컴포넌트의 순서를 조정하십시오. 해당 컴포넌트가 MFP Runtime Deployment 컴포넌트와 MFP Server Application Adapter Deployment 컴포넌트 사이에 배치되었는지 확인하십시오. 
+    * 새로 추가된 애플리케이션 또는 어댑터 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 6단계의 단계를 참조하여 애플리케이션 또는 어댑터 아티팩트를 업로드하고 해당 대상 경로를 지정하십시오. 
+    * 7단계를 반복하여 배치할 애플리케이션 및 어댑터를 추가하십시오. 
 
-7. Optional: Configure application and adapter deployment to {{ site.data.keys.mf_server }}. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 9. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
-    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
-    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+7. 선택사항: {{ site.data.keys.mf_server }}로의 애플리케이션 및 어댑터 배치를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 배치 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 3단계에서 기본 관리 사용자 신임을 지정한 경우에는 지금 배치자를 지정할 수 있습니다. 이는 관리 사용자 신임과 일치해야 합니다. 
+    * MobileFirst Platform Server 노드에서 **MFP Server Application Adapter Deployment** 컴포넌트를 선택하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **deployer_user** 및 **deployer_password** 매개변수를 찾은 후 인접한 삭제 단추를 클릭하여 패턴 레벨 매개변수 설정을 지우십시오. 
+    * **deployer\_user** 및 **deployer\_password** 필드에 사용자 이름 및 비밀번호를 지정하십시오. 
 
-8. Configure base scaling policy:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the Search field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the **Deploy** button.
-    * In the **Deploy Pattern** window, in the **Configure** panel, select the correct **Environment Profile** and other IBM PureApplication System environment parameters by consulting your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to set attributes such as user name and passwords.
+8. 기본 스케일링 정책을 구성하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 
+    * **가상 시스템 패턴** 페이지에서 검색 필드를 사용하여 사용자가 작성한 패턴을 찾아 선택하십시오.
+    * 패턴에 대한 자세한 정보가 표시되는 패널 위의 도구 모음에서 **배치** 단추를 클릭하십시오. 
+    * **패턴 배치** 창의 **구성** 패널에서 IBM PureApplication System 관리자에게 문의하여 올바른 **환경 프로파일** 및 기타 IBM PureApplication System 환경 매개변수를 선택하십시오. 
+    * 가운데 열에서 **패턴 속성**을 클릭하여 속성(예: 사용자 이름 및 비밀번호)을 설정하십시오. 
 
-        Supply the following information in the fields provided:
+        표시되는 필드에 다음과 같은 정보를 제공하십시오.
         
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+        > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+        **WebSphere 관리 사용자 이름**  
+        WebSphere 관리 콘솔 로그인에 필요한 관리 사용자 ID입니다. 기본값: virtuser.
 
-        **WebSphere administrative user name**  
-        Admin user ID for WebSphere administration console login. Default value: virtuser.
-
-        **WebSphere administrative password**  
-        Admin user password for WebSphere administration console login. Default value: passw0rd.
+        **WebSphere 관리 비밀번호**  
+        WebSphere 관리 콘솔 로그인에 필요한 관리 사용자 비밀번호입니다. 기본값: passw0rd.
         
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 {{ site.data.keys.mf_server }} 관리자 계정을 작성하십시오. 기본값: demo.
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 관리자 계정 비밀번호입니다. 기본값: demo.
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오. 영구 라이센스를 사용하는 경우 이 필드를 빈 상태로 두십시오. 
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오. 
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 라이센스 관리자 디먼(lmrgd)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 라이센스 관리자 디먼 포트는 27000입니다.
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 공급업체 디먼(ibmratl)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 공급업체 디먼 포트는 일반적으로 27001입니다.
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+        5단계에서 구성된 경우 표시되지 않습니다. {{ site.data.keys.mf_server }} 런타임의 컨텍스트 루트 이름입니다. 이름은 "/"로 시작해야 합니다. 
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 계정의 사용자 이름입니다. 외부 LDAP 서버가 구성되지 않은 경우, 앱 및 어댑터 배치 권한이 부여된 사용자만 기본 관리 사용자이므로 관리 서비스의 기본 관리 사용자를 작성할 때 지정한 값과 동일한 값을 입력해야 합니다.
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 사용자의 사용자 비밀번호입니다.
         
-        **MFP Vms Password(root)**  
-        Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        **MFP Vms 비밀번호(루트)**  
+        {{ site.data.keys.mf_server }} 및 {{ site.data.keys.product }} DB 노드의 루트 비밀번호입니다. 기본값: passw0rd.
         
-        **MFP DB Password(Instance owner)**  
-        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.
+        **MFP DB 비밀번호(인스턴스 소유자)**  
+        MobileFirst Platform DB 노드의 인스턴스 소유자 비밀번호입니다. 기본값: **passw0rd**.
 
-        **Important restriction:**  
-        When you set these attrbutes, do not change the following attributes in the {{ site.data.keys.mf_server }} section:
+        **중요한 제한사항:**  
+        이러한 속성을 설정할 때 {{ site.data.keys.mf_server }} 섹션의 다음 속성을 변경하지 마십시오. 
         
-        * Cell name
-        * Node name
-        * Profile name
+        * 셀 이름
+        * 노드 이름
+        * 프로파일 이름
 
-        If you change any of these attributes, your pattern deployment will fail.
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the **Virtual System Instances** page and search for your pattern there.
+        이러한 속성을 변경하면 패턴 배치에 실패합니다. 
+    * **빠른 배치**를 클릭하여 패턴 배치를 실행하십시오. 몇 초 후 패턴 실행이 시작되었다는 메시지가 표시됩니다. 메시지에 표시된 URL을 클릭하여 패턴 배치 상태를 추적하거나 **패턴 → 가상 시스템 인스턴스**로 이동하여 **가상 시스템 인스턴스** 페이지를 열고 거기서 패턴을 검색할 수 있습니다.
 
-9. Access the {{ site.data.keys.mf_console }}:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there. Make sure it is in Running state.
-    * Select the pattern name and expand the **Virtual machine perspective** option in the panel displaying details of the selected instance.
-    * Find the {{ site.data.keys.mf_server }} VM that has a name similar to **MobileFirst\_Platform\_Server.** and make a note of its Public IP address: you need this information in the following step.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+9. {{ site.data.keys.mf_console }}에 액세스하십시오. 
+    * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오. 패턴이 실행 중 상태인지 확인하십시오. 
+    * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 **가상 머신 퍼스펙티브** 옵션을 펼치십시오. 
+    * 이름이 **MobileFirst\_Platform\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공용 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다. 
+    * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오. 
         * `http://{MFP Server VM Public IP}:9080/mfpconsole`
         * `https://{MFP Server VM Public IP}:9443/mfpconsole`
-    * Log in to the Console with admin user and password specified in step 3 or step 9.
+    * 3단계 또는 9단계에서 지정한 관리 사용자 및 비밀번호로 콘솔에 로그인하십시오.
 
-## Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server
+## 복수 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치
 {: #deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server }
-You use a predefined template to deploy {{ site.data.keys.mf_server }} on a multiple-node WebSphere  Application Server full profile server.
+사전 정의된 템플리트를 사용하여 {{ site.data.keys.mf_server }}를 복수 노드 WebSphere Application Server 전체 프로파일 서버에 배치합니다. 
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+이 프로시저에는 필수 애플리케이션 및 어댑터와 같은 특정 아티팩트를 IBM  PureApplication  System에 업로드하는 작업이 포함됩니다. 시작하기 전에 해당 아티팩트가 업로드 가능한지 확인하십시오. 
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**토큰 라이센싱 요구사항:** 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 계속하기 전에 [{{ site.data.keys.mf_system_pattern }}의 토큰 라이센싱 요구사항](#token-licensing-requirements-for-mobilefirst-system-pattern)에 요약된 요구사항을 검토하십시오. 라이센스 키 서버에 연결할 수 없거나 사용할 수 있는 라이센스 토큰이 충분하지 않으면 이 패턴을 배치하는 데 실패합니다. 
 
-Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+템플리트에 있는 스크립트 패키지의 일부 매개변수는 권장 값으로 구성되어 있으므로 이 절에서는 언급하지 않습니다. 미세 조정을 위해서는 [{{ site.data.keys.mf_server }}의 스크립트 패키지](#script-packages-for-mobilefirst-server)에서 스크립트 패키지의 모든 매개변수에 대한 자세한 정보를 참조하십시오.
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.product }} (WAS server farm) template](#mobilefirst-foundation-was-server-farm-template).
+이 프로시저에서 사용되는 사전 정의된 템플리트의 컴포지션 및 구성 옵션에 대한 자세한 정보는 [{{ site.data.keys.product }}(WAS 서버 팜) 템플리트](#mobilefirst-foundation-was-server-farm-template)를 참조하십시오. 
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (WAS server farm)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure {{ site.data.keys.mf_server }} administration. You can skip this step if you want to specify the user credential with {{ site.data.keys.mf_server }} administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
+1. 사전 정의된 템플리트에서 패턴을 작성하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 가상 시스템 패턴 페이지가 열립니다. 
+    * **가상 시스템 패턴** 페이지에서 **새로 작성**을 클릭한 후 팝업 창의 사전 정의된 템플리트 목록에서 **MobileFirst Platform(WAS 서버 팜)**을 선택하십시오. 길이 때문에 이름이 일부만 표시되는 경우에는 **자세한 정보** 탭에서 해당 설명을 검토하여 올바른 템플리트가 선택되었는지 확인할 수 있습니다. 
+    * **이름** 필드에 패턴의 이름을 제공하십시오. 
+    * **버전** 필드에 패턴의 버전 번호를 지정하십시오. 
+    * **빌드 시작**을 클릭하십시오.
+2. AIX의 경우 필수: Power 에서 실행 중인 IBM PureApplication System에서, MobileFirst Platform DB 노드는 jfs2 파일 시스템을 지원하기 위해 AIX 고유 추가 기능 컴포넌트인 "Default AIX add disk"를 사용하여 템플리트의 "Default add disk" 컴포넌트를 대체해야 합니다. 
+    * 패턴 빌더에서 **MobileFirst Platform DB** 노드를 선택하십시오. 
+    * **컴포넌트 추가 기능 추가** 단추를 클릭하십시오(이 단추는 **MobileFirst Platform DB** 노드 위에 커서를 놓을 때 컴포넌트 상자 위에 표시됨). 
+    * **추가 기능 추가** 목록에서 **Default AIX add disk**를 선택하십시오. 이 컴포넌트가 MobileFirst Platform DB 노드의 최하위 컴포넌트로 추가됩니다. 
+    * **Default AIX add disk** 컴포넌트를 선택하고 다음 속성을 지정하십시오. 
+        * **DISK_SIZE_GB:** DB 서버로 확장되는 스토리지 크기(GB)입니다. 예제 값: **10**.
+        * **FILESYSTEM_TYPE:** AIX에서 지원되는 파일 시스템입니다. 기본값: **jfs2**.
+        * **MOUNT_POINT:** MobileFirst Platform DB 노드의 Database Server 컴포넌트에 있는 **인스턴스 소유자의 마운트 위치** 속성과 일치합니다. 예제 값: **/dbinst**.
+        * **VOLUME_GROUP:** 예제 값: **group1**. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
+    * MobileFirst Platform DB 노드에서 **Default add disk** 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
+    * 패턴을 저장하십시오.
+3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오. 
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
+    > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+    * MobileFirst Platform Server 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
+    * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
+    * 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우 다음 필드를 완료하십시오. 토큰 라이센싱을 사용하지 않으면 다음 필드를 공백으로 두십시오.
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    **ACTIVATE\_TOKEN\_LICENSE**: 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오.  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오.   
+    **LMGRD\_PORT**: 라이센스 관리자 디먼(**lmrgd**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 라이센스 관리자 디먼 포트는 27000입니다.  
+    **IBMRATL\_PORT**: 공급업체 디먼(**ibmratl**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 공급업체 디먼 포트는 일반적으로 27001입니다.  
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    패턴 배치 중에 {{ site.data.keys.mf_server }}의 기본 관리 계정이 작성됩니다. 
 
-4. Optional: Configure {{ site.data.keys.mf_server }} runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 10. To specify the context root name now, complete these steps:
-    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
-    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
+4. 선택사항: {{ site.data.keys.mf_server }} 런타임 배치를 구성하십시오. 나중에 10단계의 패턴 배치 구성 단계(Phase) 중에 런타임의 컨텍스트 루트 이름을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 컨텍스트 루트 이름을 지정하려면 다음의 단계를 완료하십시오. 
+    * MobileFirst Platform Server 노드에서 **MFP Server Runtime Deployment** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **runtime\_contextRoot** 필드 옆에 있는 **삭제** 단추를 클릭하여 패턴 레벨 매개변수 설정을 지우십시오. 
+    * **runtime\_contextRoot** 필드에 런타임 컨텍스트 루트 이름을 지정하십시오. 컨텍스트 루트 이름은 슬래시(/)로 시작해야 합니다(예: `/HelloWorld`). 
 
-5. Upload application and adapter artifacts:
+5. 애플리케이션 및 어댑터 아티팩트를 업로드하십시오.
 
-    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
-    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
-    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty {{ site.data.keys.mf_console }} deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it.
+    > **중요:** 애플리케이션 및 어댑터의 대상 경로를 지정할 때 모든 애플리케이션 및 어댑터가 동일한 디렉토리에 배치되었는지 확인하십시오. 예를 들어, 하나의 대상 경로가 **/opt/tmp/deploy/HelloWorld-common.json**인 경우 다른 모든 대상 경로는 `/opt/tmp/deploy/*`여야 합니다.
+    * MobileFirst Platform Server 노드에서 **MFP Server Application** 또는 **MFP Server Adapter** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 애플리케이션 또는 어댑터 아티팩트를 찾아 업로드하십시오. 
+    * **대상 경로** 필드에서 아티팩트를 저장할 전체 경로(해당 파일 이름 포함)를 지정하십시오(예: **/opt/tmp/deploy/HelloWorld-common.json**). 
+    * 패턴에 애플리케이션 또는 어댑터를 배치하지 않는 경우에는 관련 컴포넌트 내부의 **X** 단추를 클릭하여 해당 컴포넌트를 제거하십시오. 앱 또는 어댑터가 설치되어 있지 않는 비어 있는 {{ site.data.keys.mf_console }}을 배치하려면 MFP Server Application Adapter Deployment 컴포넌트 내부의 X 단추를 클릭하여 해당 컴포넌트를 제거하십시오. 
 
-6. Optional: Add more application or adapter artifacts for deployment:
-    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename it **{{ site.data.keys.product_adj }} App\_X** or **{{ site.data.keys.product_adj }} Adatper\_X** (where **X** stands for a unique number for differentiation).
-    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
-    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
-    * Repeat step 7 to add more applications and adapters for deployment.
+6. 선택사항: 배치할 애플리케이션 또는 어댑터 아티팩트를 추가하십시오. 
+    * **자산** 도구 모음에서 **소프트웨어 컴포넌트**를 펼친 후 **추가 파일** 컴포넌트를 캔버스의 MobileFirst Platform Server 노드 위로 끌어서 놓으십시오. 이름을 **{{ site.data.keys.product_adj }} App\_X** 또는 **{{ site.data.keys.product_adj }} Adatper\_X**로 바꾸십시오(여기서 **X**는 구별을 위한 고유 번호임).
+    * 새로 추가된 앱 또는 어댑터 컴포넌트 위에 커서를 놓은 후 **위로 이동** 및 **아래로 이동** 단추를 클릭하여 노드에서 해당 컴포넌트의 순서를 조정하십시오. 해당 컴포넌트가 MFP Runtime Deployment 컴포넌트와 MFP Server Application Adapter Deployment 컴포넌트 사이에 배치되었는지 확인하십시오. 
+    * 새로 추가된 애플리케이션 또는 어댑터 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 6단계의 단계를 참조하여 애플리케이션 또는 어댑터 아티팩트를 업로드하고 해당 대상 경로를 지정하십시오. 
+    * 7단계를 반복하여 배치할 애플리케이션 및 어댑터를 추가하십시오. 
 
-7. Optional: Configure application and adapter deployment to {{ site.data.keys.mf_server }}. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 10. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
-    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
-    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+7. 선택사항: {{ site.data.keys.mf_server }}로의 애플리케이션 및 어댑터 배치를 구성하십시오. 나중에 10단계의 패턴 배치 구성 단계(Phase) 중에 배치 권한이 있는 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 3단계에서 기본 관리 사용자 신임을 지정한 경우에는 지금 배치자를 지정할 수 있습니다. 이는 관리 사용자 신임과 일치해야 합니다. 
+    * MobileFirst Platform Server 노드에서 **MFP Server Application Adapter Deployment** 컴포넌트를 선택하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **deployer_user** 및 **deployer_password** 매개변수를 찾은 후 인접한 삭제 단추를 클릭하여 패턴 레벨 매개변수 설정을 지우십시오. 
+    * **deployer\_user** 및 **deployer\_password** 필드에 사용자 이름 및 비밀번호를 지정하십시오. 
 
-8. Configure base scaling policy:
-    * In the **{{ site.data.keys.mf_server }}** node, select the **Base Scaling Policy** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Number of Instances** field, specify the number of server nodes to be instantiated during pattern deployment. The default value is 2 in the predefined template. Because dynamic scaling is not supported in this release, do not specify values in the remaining attribute fields.
+8. 기본 스케일링 정책을 구성하십시오. 
+    * **{{ site.data.keys.mf_server }}** 노드에서 **Base Scaling Policy** 컴포넌트를 선택하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **인스턴스 수** 필드에 패턴 배치 중에 인스턴스화할 서버 노드의 수를 지정하십시오. 사전 정의된 템플리트에서 기본값은 2입니다. 이 릴리스에서는 동적 스케일링이 지원되지 않으므로 나머지 속성 필드에 값을 지정하지 마십시오. 
 
-9. Configure and launch the pattern deployment:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
-    * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
+9. 패턴 배치를 구성하고 실행하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 
+    * **가상 시스템 패턴** 페이지에서 **검색** 필드를 사용하여 사용자가 작성한 패턴을 찾아 선택하십시오.
+    * 패턴에 대한 자세한 정보가 표시되는 패널 위의 도구 모음에서 배치 단추를 클릭하십시오. 
+    * 패턴 배치 창의 구성 패널에 있는 **환경 프로파일** 목록에서 올바른 환경 프로파일을 선택하고 기타 IBM PureApplication System 환경 매개변수를 제공하십시오. 올바른 정보를 얻으려면 IBM PureApplication System 관리자에게 문의하십시오. 
+    * 가운데 열에서 **패턴 속성**을 클릭하여 속성(예: 사용자 이름 및 비밀번호)을 표시하십시오. 
 
-        Supply the following information in the fields provided:
+        표시되는 필드에 다음과 같은 정보를 제공하십시오.
 
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+        > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
         
         **runtime_contextRoot_list**  
-        Context root names of the {{ site.data.keys.mf_server }} runtimes in case multiple runtimes exist. Use a semicolon, ";" to separate each runtime context root; for example, **HelloMobileFirst;HelloWorld**.
+        여러 런타임이 존재하는 경우 {{ site.data.keys.mf_server }} 런타임의 컨텍스트 루트 이름입니다. 세미콜론(";")을 사용하여 각 런타임 컨텍스트 루트를 구분하십시오(예: **HelloMobileFirst;HelloWorld**).
 
-        **Important:** **runtime_contextRoot_list** must align with the context root specified in the MFP Server Runtime Deployment node; otherwise, IHS will not be able to correctly route requests that contain the runtime context root.
+        **중요:** **runtime_contextRoot_list**는 MFP Server Runtime Deployment 노드에 지정된 컨텍스트 루트와 일치해야 합니다. 그렇지 않은 경우 IHS는 런타임 컨텍스트 루트가 포함된 요청을 올바르게 라우팅할 수 없습니다. 
         
-        **WebSphere administrative user name**  
-        Admin user ID for WebSphere administration console login. Default value: virtuser.
+        **WebSphere 관리 사용자 이름**  
+        WebSphere 관리 콘솔 로그인에 필요한 관리 사용자 ID입니다. 기본값: virtuser.
         
-        **WebSphere administrative password**  
-        Admin user password for WebSphere administration console login. Default value: passw0rd.
+        **WebSphere 관리 비밀번호**  
+        WebSphere 관리 콘솔 로그인에 필요한 관리 사용자 비밀번호입니다. 기본값: passw0rd.
 
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 {{ site.data.keys.mf_server }} 관리자 계정을 작성하십시오. 기본값: demo.
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 관리자 계정 비밀번호입니다. 기본값: demo.
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오. 영구 라이센스를 사용하는 경우 이 필드를 빈 상태로 두십시오. 
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오. 
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 라이센스 관리자 디먼(lmrgd)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 라이센스 관리자 디먼 포트는 27000입니다.
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 공급업체 디먼(ibmratl)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 공급업체 디먼 포트는 일반적으로 27001입니다.
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+        5단계에서 구성된 경우 표시되지 않습니다. {{ site.data.keys.mf_server }} 런타임의 컨텍스트 루트 이름입니다. 이름은 "/"로 시작해야 합니다. 
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 계정의 사용자 이름입니다. 외부 LDAP 서버가 구성되지 않은 경우, 앱 및 어댑터 배치 권한이 부여된 사용자만 기본 관리 사용자이므로 관리 서비스의 기본 관리 사용자를 작성할 때 지정한 값과 동일한 값을 입력해야 합니다.
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 사용자의 사용자 비밀번호입니다.
         
-        **MFP Vms Password(root)**  
-        Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        **MFP Vms 비밀번호(루트)**  
+        {{ site.data.keys.mf_server }} 및 {{ site.data.keys.product }} DB 노드의 루트 비밀번호입니다. 기본값: passw0rd.
         
-        **MFP DB Password(Instance owner)**  
-        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+        **MFP DB 비밀번호(인스턴스 소유자)**  
+        MobileFirst Platform DB 노드의 인스턴스 소유자 비밀번호입니다. 기본값: **passw0rd**.    
+    * **빠른 배치**를 클릭하여 패턴 배치를 실행하십시오. 몇 초 후 패턴 실행이 시작되었다는 메시지가 표시됩니다. 메시지에 표시된 URL을 클릭하여 패턴 배치 상태를 추적하거나 **패턴 → 가상 시스템 인스턴스**로 이동하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색할 수 있습니다.
 
-    If you use token licensing to license {{ site.data.keys.product }}, your pattern will fail to deploy if insufficient license tokens are available or if the license key server IP address and port were entered incorrectly.
+    토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 사용 가능한 라이센스 토큰이 충분하지 않거나 라이센스 키 서버 IP 주소 및 포트를 잘못 입력하면 패턴 배치에 실패합니다.
     
-10. Access the {{ site.data.keys.mf_console }}:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there. Make sure it is in Running state.
-    * Select the pattern name and expand the **Virtual machine perspective** option in the panel displaying details of the selected instance.
-    * Find the IHS Server VM that has a name similar to **IHS\_Server.*** and make a note of its Public IP address: you need this information in the following step.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+10. {{ site.data.keys.mf_console }}에 액세스하십시오. 
+    * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오. 패턴이 실행 중 상태인지 확인하십시오. 
+    * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 **가상 머신 퍼스펙티브** 옵션을 펼치십시오. 
+    * 이름이 **IHS\_Server.***와 유사한 IHS Server VM을 찾아 해당 공용 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다. 
+    * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오. 
         * `http://{IHS Server VM Public IP}/mfpconsole`
         * `https://{IHS Server VM Public IP}/mfpconsole`
-    * Log in to the Console with the admin user ID and password specified in step 3 or step 10.
+    * 3단계 또는 10단계에서 지정한 관리 사용자 ID 및 비밀번호로 콘솔에 로그인하십시오.
 
-## Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers
+## WebSphere Application Server Network Deployment 서버 클러스터에 {{ site.data.keys.mf_server }} 배치
 {: #deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers }
-You can use a predefined template to deploy {{ site.data.keys.mf_server }} on clusters of WebSphere  Application Server Network Deployment servers. This {{ site.data.keys.mf_system_pattern_short }} template does not support token licensing.
+사전 정의된 템플리트를 사용하여 {{ site.data.keys.mf_server }}를 WebSphere  Application Server Network Deployment 서버의 클러스터에 배치할 수 있습니다. 이 {{ site.data.keys.mf_system_pattern_short }} 템플리트는 토큰 라이센싱을 지원하지 않습니다. 
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+이 프로시저에는 필수 애플리케이션 및 어댑터와 같은 특정 아티팩트를 IBM  PureApplication  System에 업로드하는 작업이 포함됩니다. 시작하기 전에 해당 아티팩트가 업로드 가능한지 확인하십시오. 
 
-If you are running the System Monitoring for WebSphere Application Server shared service, the {{ site.data.keys.product }} runtime environment might fail to start correctly when you deploy the pattern. If possible, stop the shared service before you continue with this procedure. If you cannot stop the shared service, you might need to restart the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console to fix the problem. For more information, see [{{ site.data.keys.product }} runtime synchronization limitation with WebSphere Application Server Network Deployment](#mobilefirst-foundation-runtime-synchronization-limitation-with-websphere-application-server-network-deployment). 
+System Monitoring for WebSphere Application Server 공유 서비스를 실행 중인 경우, 패턴 배치 시 {{ site.data.keys.product }} 런타임 환경이 올바르게 시작되지 않을 수도 있습니다. 가능한 경우, 이 프로시저를 계속하기 전에 공유 서비스를 중지하십시오. 공유 서비스를 중지할 수 없는 경우, 문제점을 수정하기 위해 WebSphere Application Server 관리 콘솔에서 {{ site.data.keys.product }} 런타임을 다시 시작해야 할 수도 있습니다. 자세한 정보는 [WebSphere Application Server Network Deployment에서의 {{ site.data.keys.product }} 런타임 동기화 제한사항](#mobilefirst-foundation-runtime-synchronization-limitation-with-websphere-application-server-network-deployment)을 참조하십시오.  
 
-**Important token licensing restriction:** This pattern template does not support token licensing. You must be using perpetual licensing when you deploy patterns based on the {{ site.data.keys.product }} (WAS ND) pattern template.
+**중요한 토큰 라이센싱 제한사항:** 이 패턴 템플리트는 토큰 라이센싱을 지원하지 않습니다. {{ site.data.keys.product }}(WAS ND) 패턴 템플리트에 기반하여 패턴을 배치할 때는 영구 라이센싱을 사용해야 합니다. 
 
-Some parameters of script packages in the template are configured with recommended values and are not covered in this topic. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+템플리트에 있는 스크립트 패키지의 일부 매개변수는 권장 값으로 구성되어 있으므로 이 주제에서는 언급하지 않습니다. 미세 조정을 위해서는 [{{ site.data.keys.mf_server }}의 스크립트 패키지](#script-packages-for-mobilefirst-server)에서 스크립트 패키지의 모든 매개변수에 대한 자세한 정보를 참조하십시오.
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.product }} (WAS ND) template](#mobilefirst-foundation-was-nd-template).
+이 프로시저에서 사용되는 사전 정의된 템플리트의 컴포지션 및 구성 옵션에 대한 자세한 정보는 [{{ site.data.keys.product }}(WAS ND) 템플리트](#mobilefirst-foundation-was-nd-template)를 참조하십시오. 
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (WAS ND)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure {{ site.data.keys.mf_server }} administration. You can skip this step if you want to specify the user credential with {{ site.data.keys.mf_server }} administration privilege later during the pattern deployment configuration phase in step 9. To specify it now, complete these steps:
+1. 사전 정의된 템플리트에서 패턴을 작성하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 가상 시스템 패턴 페이지가 열립니다. 
+    * **가상 시스템 패턴** 페이지에서 **새로 작성**을 클릭한 후 팝업 창의 사전 정의된 템플리트 목록에서 **MobileFirst Platform(WAS ND)**를 선택하십시오. 길이 때문에 이름이 일부만 표시되는 경우에는 **자세한 정보** 탭에서 해당 설명을 검토하여 올바른 템플리트가 선택되었는지 확인할 수 있습니다. 
+    * **이름** 필드에 패턴의 이름을 제공하십시오. 
+    * **버전** 필드에 패턴의 버전 번호를 지정하십시오. 
+    * **빌드 시작**을 클릭하십시오.
+2. AIX의 경우 필수: Power 에서 실행 중인 IBM PureApplication System에서, MobileFirst Platform DB 노드는 jfs2 파일 시스템을 지원하기 위해 AIX 고유 추가 기능 컴포넌트인 "Default AIX add disk"를 사용하여 템플리트의 "Default add disk" 컴포넌트를 대체해야 합니다. 
+    * 패턴 빌더에서 **MobileFirst Platform DB** 노드를 선택하십시오. 
+    * **컴포넌트 추가 기능 추가** 단추를 클릭하십시오(이 단추는 **MobileFirst Platform DB** 노드 위에 커서를 놓을 때 컴포넌트 상자 위에 표시됨). 
+    * **추가 기능 추가** 목록에서 **Default AIX add disk**를 선택하십시오. 이 컴포넌트가 MobileFirst Platform DB 노드의 최하위 컴포넌트로 추가됩니다. 
+    * **Default AIX add disk** 컴포넌트를 선택하고 다음 속성을 지정하십시오. 
+        * **DISK_SIZE_GB:** DB 서버로 확장되는 스토리지 크기(GB)입니다. 예제 값: **10**.
+        * **FILESYSTEM_TYPE:** AIX에서 지원되는 파일 시스템입니다. 기본값: **jfs2**.
+        * **MOUNT_POINT:** MobileFirst Platform DB 노드의 Database Server 컴포넌트에 있는 **인스턴스 소유자의 마운트 위치** 속성과 일치합니다. 예제 값: **/dbinst**.
+        * **VOLUME_GROUP:** 예제 값: **group1**. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
+    * MobileFirst Platform DB 노드에서 **Default add disk** 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
+    * 패턴을 저장하십시오.
+3. 선택사항: {{ site.data.keys.mf_server }} 관리를 구성하십시오. 나중에 9단계의 패턴 배치 구성 단계(Phase) 중에 {{ site.data.keys.mf_server }} 관리 권한을 가진 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 지정하려면 다음 단계를 완료하십시오. 
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the MobileFirst Platform Server node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
+    > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+    * MobileFirst Platform Server 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
+    * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
+    * 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우 다음 필드를 완료하십시오. 토큰 라이센싱을 사용하지 않으면 다음 필드를 공백으로 두십시오.
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    **ACTIVATE\_TOKEN\_LICENSE**: 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오.  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오.   
+    **LMGRD\_PORT**: 라이센스 관리자 디먼(**lmrgd**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 라이센스 관리자 디먼 포트는 27000입니다.  
+    **IBMRATL\_PORT**: 공급업체 디먼(**ibmratl**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 공급업체 디먼 포트는 일반적으로 27001입니다.  
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    패턴 배치 중에 {{ site.data.keys.mf_server }}의 기본 관리 계정이 작성됩니다. 
 
-4. Optional: Configure {{ site.data.keys.mf_server }} runtime deployment. You can skip this step if you want to specify the context root name for the runtime later during the pattern deployment configuration phase in step 10. To specify the context root name now, complete these steps:
-    * In the MobileFirst Platform Server node, click the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **runtime\_contextRoot** field, click the **Delete** button to clear the pattern level parameter setting.
-    * In the **runtime\_contextRoot** field, specify the runtime context root name. Note that the context root name must start with a forward slash, /; for example, `/HelloWorld`.
+4. 선택사항: {{ site.data.keys.mf_server }} 런타임 배치를 구성하십시오. 나중에 10단계의 패턴 배치 구성 단계(Phase) 중에 런타임의 컨텍스트 루트 이름을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 지금 컨텍스트 루트 이름을 지정하려면 다음의 단계를 완료하십시오. 
+    * MobileFirst Platform Server 노드에서 **MFP Server Runtime Deployment** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **runtime\_contextRoot** 필드 옆에 있는 **삭제** 단추를 클릭하여 패턴 레벨 매개변수 설정을 지우십시오. 
+    * **runtime\_contextRoot** 필드에 런타임 컨텍스트 루트 이름을 지정하십시오. 컨텍스트 루트 이름은 슬래시(/)로 시작해야 합니다(예: `/HelloWorld`). 
 
-5. Optional: Adjust the number of application server nodes in your WebSphere Application Server Network Deployment clusters for the {{ site.data.keys.product_adj }} Administration component and the {{ site.data.keys.product }} runtime environment.
+5. 선택사항: {{ site.data.keys.product_adj }} 관리 컴포넌트 및 {{ site.data.keys.product }} 런타임 환경의 WebSphere Application Server Network Deployment 클러스터 내에 있는 애플리케이션 서버 노드 수를 조정하십시오. 
 
-    By default, the Administration component and runtime environment each have two application server nodes in their respective clusters.
-    * In the DmgrNode node, click the **MFP Server Administration** component. The properties of the component are displayed next to the canvas.
-    * In the **NUMBER\_OF\_CLUSTERMEMBERS** field, specify the number of application server nodes that you want in your WebSphere Application Server Network Deployment cluster for the {{ site.data.keys.product_adj }} Administration component.
-    * In the DmgrNode node, click the **MFP Server Runtime Deployment** component. The properties of the component are displayed next to the canvas.
-    * In the **NUMBER\_OF\_CLUSTERMEMBERS** field, specify the number of application server nodes that you want in your WebSphere Application Server Network Deployment cluster for the {{ site.data.keys.product }} runtime environment.
-    * In the CustomNode node, click the **Base Scaling Policy** component.
-    * Adjust the **Number of Instances** value to account for the total number of application server nodes that you entered in the **NUMBER\_OF\_CLUSTERMEMBERS** field for each component.
-    The minimum value for **Number of Instances** is the total number of server nodes for the {{ site.data.keys.product_adj }} Administration component and the {{ site.data.keys.product }} runtime environments.
+    기본적으로 관리 컴포넌트 및 런타임 환경은 각각 해당 클러스터에	두 개의 애플리케이션 서버 노드를 포함합니다. 
+    * DmgrNode 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 컴포넌트의 특성이	캔버스 옆에 표시됩니다.
+    * **NUMBER\_OF\_CLUSTERMEMBERS** 필드에 {{ site.data.keys.product_adj }} 관리 컴포넌트의 WebSphere Application Server Network Deployment 클러스터에서 사용할 애플리케이션 서버 노드의 수를 지정하십시오. 
+    * DmgrNode 노드에서 **MFP Server Runtime Deployment** 컴포넌트를 클릭하십시오. 컴포넌트의 특성이	캔버스 옆에 표시됩니다.
+    * **NUMBER\_OF\_CLUSTERMEMBERS** 필드에 {{ site.data.keys.product }} 런타임 환경의 WebSphere Application Server Network Deployment 클러스터에서 사용할 애플리케이션 서버 노드의 수를 지정하십시오. 
+    * CustomNode 노드에서 **Base Scaling Policy** 컴포넌트를 클릭하십시오. 
+    * 각 컴포넌트에 대해 **NUMBER\_OF\_CLUSTERMEMBERS** 필드에 입력한 애플리케이션 서버 노드의 총 수를 나타내도록 **인스턴스 수** 값을 조정하십시오.
+    **인스턴스 수**의	최소 값은 {{ site.data.keys.product_adj }} 관리 컴포넌트 및 {{ site.data.keys.product }} 런타임 환경의 총 서버 노드 수입니다.
 
-    For example, the default value for **Number of Instances** is 4 for the default topology with two nodes for the administration component and two nodes for the runtime environment. If you change **NUMBER\_OF\_CLUSTERMEMBERS** values for the administration component to 3 and for the runtime environment to 5, the minimum value for Number of Instances is 8.
+    예를 들어, 관리 컴포넌트에 2개의 노드가 있고 런타임 환경에 2개의 노드가 있는 기본 토폴로지의 **인스턴스 수** 기본값은 4입니다. **NUMBER\_OF\_CLUSTERMEMBERS** 값을 관리 컴포넌트의 경우 3으로 변경하고 런타임 환경의 경우 5로 변경하는 경우, 인스턴스 수의 최소값은 8입니다. 
 
-6. Upload application and adapter artifacts:
+6. 애플리케이션 및 어댑터 아티팩트를 업로드하십시오.
 
-    > **Important:** When specifying the Target path for applications and adapters, make sure all the applications and adapters are placed in the same directory. For example, if one target path is **/opt/tmp/deploy/HelloWorld-common.json**, all the other target paths should be `/opt/tmp/deploy/*`.
-    * In the MobileFirst Platform Server node, click the **MFP Server Application** or **MFP Server Adapter** component. The properties of the selected component are displayed next to the canvas.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/deploy/HelloWorld-common.json**.
-    * If no application or adapter is to be deployed in the pattern, remove the relevant component by clicking the **X** button inside it. To get an empty {{ site.data.keys.mf_console }} deployed without any app or adapter installed, remove the MFP Server Application Adapter Deployment component by clicking the X button inside it.
+    > **중요:** 애플리케이션 및 어댑터의 대상 경로를 지정할 때 모든 애플리케이션 및 어댑터가 동일한 디렉토리에 배치되었는지 확인하십시오. 예를 들어, 하나의 대상 경로가 **/opt/tmp/deploy/HelloWorld-common.json**인 경우 다른 모든 대상 경로는 `/opt/tmp/deploy/*`여야 합니다.
+    * MobileFirst Platform Server 노드에서 **MFP Server Application** 또는 **MFP Server Adapter** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 애플리케이션 또는 어댑터 아티팩트를 찾아 업로드하십시오. 
+    * **대상 경로** 필드에서 아티팩트를 저장할 전체 경로(해당 파일 이름 포함)를 지정하십시오(예: **/opt/tmp/deploy/HelloWorld-common.json**). 
+    * 패턴에 애플리케이션 또는 어댑터를 배치하지 않는 경우에는 관련 컴포넌트 내부의 **X** 단추를 클릭하여 해당 컴포넌트를 제거하십시오. 앱 또는 어댑터가 설치되어 있지 않는 비어 있는 {{ site.data.keys.mf_console }}을 배치하려면 MFP Server Application Adapter Deployment 컴포넌트 내부의 X 단추를 클릭하여 해당 컴포넌트를 제거하십시오. 
 
-7. Optional: Add more application or adapter artifacts for deployment:
-    * From the **Components** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename it **{{ site.data.keys.product_adj }} App\_X** or **{{ site.data.keys.product_adj }} Adatper\_X** (where **X** stands for a unique number for differentiation).
-    * Hover the cursor over the newly added App or Adapter component, and then click the **Move Up** and **Move Down** buttons to adjust its sequence in the node. Make sure it is placed after the MFP Runtime Deployment component but before the MFP Server Application Adapter Deployment component.
-    * Click the newly added application or adapter component. The properties of the selected component are displayed next to the canvas. Upload the application or adapter artifact and specify its target path by referring to the steps in step 6.
-    * In the **Additional file** field, click the **Browse** button to locate and upload the application or adapter artifact.
-    * In the **Target path** field, specify the full path for storing the artifact, including its file name. For example, **/opt/tmp/deploy/HelloWorld-common.wlapp**.
+7. 선택사항: 배치할 애플리케이션 또는 어댑터 아티팩트를 추가하십시오. 
+    * **컴포넌트** 도구 모음에서 **소프트웨어 컴포넌트**를 펼친 후 **추가 파일** 컴포넌트를 캔버스의 MobileFirst Platform Server 노드 위로 끌어서 놓으십시오. 이름을 **{{ site.data.keys.product_adj }} App\_X** 또는 **{{ site.data.keys.product_adj }} Adatper\_X**로 바꾸십시오(여기서 **X**는 구별을 위한 고유 번호임).
+    * 새로 추가된 앱 또는 어댑터 컴포넌트 위에 커서를 놓은 후 **위로 이동** 및 **아래로 이동** 단추를 클릭하여 노드에서 해당 컴포넌트의 순서를 조정하십시오. 해당 컴포넌트가 MFP Runtime Deployment 컴포넌트와 MFP Server Application Adapter Deployment 컴포넌트 사이에 배치되었는지 확인하십시오. 
+    * 새로 추가된 애플리케이션 또는 어댑터 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 6단계의 단계를 참조하여 애플리케이션 또는 어댑터 아티팩트를 업로드하고 해당 대상 경로를 지정하십시오. 
+    * **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 애플리케이션 또는 어댑터 아티팩트를 찾아 업로드하십시오. 
+    * **대상 경로** 필드에 아티팩트 저장을 위한 전체 경로(해당 파일 이름 포함)를 지정하십시오. 예: **/opt/tmp/deploy/HelloWorld-common.wlapp**. 
 
-    Repeat this step if you want to add more applications and adapters for deployment.
+    배치할 애플리케이션 및 어댑터를 추가하려는 경우 이 단계를 반복하십시오.
 
-8. Optional: Configure application and adapter deployment to {{ site.data.keys.mf_server }}. You can skip this step if you want to specify the user credential with deployment privilege later during the pattern deployment configuration phase in step 10. If you have specified the default admin user credential in step 3, you can now specify the deployer user, which must align with the admin user credential:
-    * In the MobileFirst Platform Server node, select the **MFP Server Application Adapter Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Find the parameters named **deployer_user** and **deployer_password**, and then click the adjacent Delete buttons to clear the pattern level parameter settings.
-    * In the **deployer\_user** and **deployer\_password** fields, specify the user name and password.
+8. 선택사항: {{ site.data.keys.mf_server }}로의 애플리케이션 및 어댑터 배치를 구성하십시오. 나중에 10단계의 패턴 배치 구성 단계(Phase) 중에 배치 권한이 있는 사용자 신임을 지정하려는 경우 이 단계를 건너뛸 수 있습니다. 3단계에서 기본 관리 사용자 신임을 지정한 경우에는 지금 배치자를 지정할 수 있습니다. 이는 관리 사용자 신임과 일치해야 합니다. 
+    * MobileFirst Platform Server 노드에서 **MFP Server Application Adapter Deployment** 컴포넌트를 선택하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **deployer_user** 및 **deployer_password** 매개변수를 찾은 후 인접한 삭제 단추를 클릭하여 패턴 레벨 매개변수 설정을 지우십시오. 
+    * **deployer\_user** 및 **deployer\_password** 필드에 사용자 이름 및 비밀번호를 지정하십시오. 
 
-9. Configure base scaling policy:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the Search field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the **Deploy** button.
-    * In the **Deploy Pattern** window, in the **Configure** panel, select the correct **Environment Profile** and other IBM PureApplication System environment parameters by consulting your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to set attributes such as user name and passwords.
+9. 기본 스케일링 정책을 구성하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 
+    * **가상 시스템 패턴** 페이지에서 검색 필드를 사용하여 사용자가 작성한 패턴을 찾아 선택하십시오.
+    * 패턴에 대한 자세한 정보가 표시되는 패널 위의 도구 모음에서 **배치** 단추를 클릭하십시오. 
+    * **패턴 배치** 창의 **구성** 패널에서 IBM PureApplication System 관리자에게 문의하여 올바른 **환경 프로파일** 및 기타 IBM PureApplication System 환경 매개변수를 선택하십시오. 
+    * 가운데 열에서 **패턴 속성**을 클릭하여 속성(예: 사용자 이름 및 비밀번호)을 설정하십시오. 
 
-        Supply the following information in the fields provided:
+        표시되는 필드에 다음과 같은 정보를 제공하십시오.
         
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+        > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+        **WebSphere 관리 사용자 이름**  
+        WebSphere 관리 콘솔 로그인에 필요한 관리 사용자 ID입니다. 기본값: virtuser.
 
-        **WebSphere administrative user name**  
-        Admin user ID for WebSphere administration console login. Default value: virtuser.
-
-        **WebSphere administrative password**  
-        Admin user password for WebSphere administration console login. Default value: passw0rd.
+        **WebSphere 관리 비밀번호**  
+        WebSphere 관리 콘솔 로그인에 필요한 관리 사용자 비밀번호입니다. 기본값: passw0rd.
         
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 {{ site.data.keys.mf_server }} 관리자 계정을 작성하십시오. 기본값: demo.
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 관리자 계정 비밀번호입니다. 기본값: demo.
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오. 영구 라이센스를 사용하는 경우 이 필드를 빈 상태로 두십시오. 
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오. 
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 라이센스 관리자 디먼(lmrgd)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 라이센스 관리자 디먼 포트는 27000입니다.
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 공급업체 디먼(ibmratl)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 공급업체 디먼 포트는 일반적으로 27001입니다.
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+        5단계에서 구성된 경우 표시되지 않습니다. {{ site.data.keys.mf_server }} 런타임의 컨텍스트 루트 이름입니다. 이름은 "/"로 시작해야 합니다. 
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 계정의 사용자 이름입니다. 외부 LDAP 서버가 구성되지 않은 경우, 앱 및 어댑터 배치 권한이 부여된 사용자만 기본 관리 사용자이므로 관리 서비스의 기본 관리 사용자를 작성할 때 지정한 값과 동일한 값을 입력해야 합니다.
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 사용자의 사용자 비밀번호입니다.
         
-        **MFP Vms Password(root)**  
-        Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        **MFP Vms 비밀번호(루트)**  
+        {{ site.data.keys.mf_server }} 및 {{ site.data.keys.product }} DB 노드의 루트 비밀번호입니다. 기본값: passw0rd.
         
-        **MFP VMs Password(virtuser)**  
-        Password for the virtuser user of the DmgrNode, CustomNode, IHSNode and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        **MFP VM 비밀번호(virtuser)**  
+        DmgrNode, CustomNode, IHSNode 및 {{ site.data.keys.product }} DB 노드의 virtuser 사용자의 비밀번호입니다. 기본값: passw0rd.
         
-        **Open firewall ports for WAS**  
-        The WebSphere Application Server nodes that are deployed in the CustomNode VM nodes require open firewall ports to connect to the database server and the LDAP server (if configured for LDAP). If you need to specify multiple port numbers, separate the port numbers with a semicolon (;). For example, 50000;636The default value is 50000 (the default port for DB2  server).
+        **WAS용 열린 방화벽 포트**  
+        CustomNode VM 노드에 배치된 WebSphere Application Server 노드는 데이터베이스 서버 및 LDAP 서버(LDAP용으로 구성되어 있는 경우)에 연결하기 위해 열린 방화벽 포트가 필요합니다. 여러 포트 번호를 지정해야 하는 경우에는 세미콜론(;)으로 포트 번호를 구분하십시오. 예를 들어, 50000;636입니다. 기본값은 50000(DB2  서버의 기본 포트)입니다. 
 
-        **Important restriction:**  
-        When you set these attrbutes, do not change the following attributes in the {{ site.data.keys.mf_server }} section:
+        **중요한 제한사항:**  
+        이러한 속성을 설정할 때 {{ site.data.keys.mf_server }} 섹션의 다음 속성을 변경하지 마십시오. 
         
-        * Cell name
-        * Node name
-        * Profile name
+        * 셀 이름
+        * 노드 이름
+        * 프로파일 이름
 
-        If you change any of these attributes, your pattern deployment will fail.
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the **Virtual System Instances** page and search for your pattern there.
+        이러한 속성을 변경하면 패턴 배치에 실패합니다. 
+    * **빠른 배치**를 클릭하여 패턴 배치를 실행하십시오. 몇 초 후 패턴 실행이 시작되었다는 메시지가 표시됩니다. 메시지에 표시된 URL을 클릭하여 패턴 배치 상태를 추적하거나 **패턴 → 가상 시스템 인스턴스**로 이동하여 **가상 시스템 인스턴스** 페이지를 열고 거기서 패턴을 검색할 수 있습니다.
 
-10. Access the {{ site.data.keys.mf_console }}:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there. Make sure it is in Running state.
-    * Select the pattern name and expand the **Virtual machine perspective** option in the panel displaying details of the selected instance.
-    * Find the {{ site.data.keys.mf_server }} VM that has a name similar to **MobileFirst\_Platform\_Server.** and make a note of its Public IP address: you need this information in the following step.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+10. {{ site.data.keys.mf_console }}에 액세스하십시오. 
+    * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오. 패턴이 실행 중 상태인지 확인하십시오. 
+    * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 **가상 머신 퍼스펙티브** 옵션을 펼치십시오. 
+    * 이름이 **MobileFirst\_Platform\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공용 IP 주소를 메모하십시오. 다음 단계에서 이 정보가 필요합니다. 
+    * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오. 
         * `http://{MFP Server VM Public IP}:9080/mfpconsole`
         * `https://{MFP Server VM Public IP}:9443/mfpconsole`
-    * Log in to the Console with admin user and password specified in step 3 or step 9.
+    * 3단계 또는 9단계에서 지정한 관리 사용자 및 비밀번호로 콘솔에 로그인하십시오.
 
-    If the console does not display the {{ site.data.keys.product }} runtimes, restart the {{ site.data.keys.product }} runtime node from the WebSphere Application Server administrative console. For instructions about restarting the runtime node from the administrative console, see [Restarting the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console](#restarting-the-mobilefirst-foundation-runtime-from-the-websphere-application-server-administrative-console).
+    콘솔에 {{ site.data.keys.product }} 런타임이 표시되지 않는 경우, WebSphere Application Server 관리 콘솔에서 {{ site.data.keys.product }} 런타임 노드를 다시 시작하십시오. 관리 콘솔에서 런타임 노드를 다시 시작하는 방법에 대해서는 [WebSphere Application Server 관리 콘솔에서 {{ site.data.keys.product }} 런타임 다시 시작](#restarting-the-mobilefirst-foundation-runtime-from-the-websphere-application-server-administrative-console)을 참조하십시오. 
 
-### {{ site.data.keys.product }} runtime synchronization limitation with WebSphere Application Server Network Deployment
+### WebSphere Application Server Network Deployment에서의 {{ site.data.keys.product }} 런타임 동기화 제한사항
 {: #mobilefirst-foundation-runtime-synchronization-limitation-with-websphere-application-server-network-deployment }
-If you deploy a PureApplication  pattern based on the {{ site.data.keys.product }} (WAS ND) template and run the System Monitoring for WebSphere  Application Server shared service, the {{ site.data.keys.product }} runtime environment might fail to start correctly, when you deploy the pattern.
+{{ site.data.keys.product }}(WAS ND) 템플리트를 기반으로 PureApplication 패턴을 배치하고 System Monitoring for WebSphere  Application Server 공유 서비스를 실행하는 경우, 패턴 배치 시 {{ site.data.keys.product }} 런타임 환경이 올바르게 시작되지 않을 수도 있습니다. 
 
-A PureApplication virtual system pattern based on the {{ site.data.keys.product }} (WAS ND) template deploys the {{ site.data.keys.product_adj }} administration service and the {{ site.data.keys.product }} runtime into different WebSphere Application Server Network Deployment clusters. For the {{ site.data.keys.product }} runtime to work correctly, it must be started after the {{ site.data.keys.product_adj }} administration service. If the {{ site.data.keys.product }} runtime starts first, the runtime service fails to detect the {{ site.data.keys.product_adj }} administration service, which causes errors in the runtime service.
+{{ site.data.keys.product }}(WAS ND) 템플리트에 기반한 PureApplication 가상 시스템 패턴은 {{ site.data.keys.product_adj }} 관리 서비스 및 {{ site.data.keys.product }} 런타임을 서로 다른 WebSphere Application Server Network Deployment 클러스터에 배치합니다. {{ site.data.keys.product }} 런타임이 올바르게 작동하도록 하려면 이를 {{ site.data.keys.product_adj }} 관리 서비스 다음에 시작해야 합니다. {{ site.data.keys.product }} 런타임을 먼저 시작하면 런타임 서비스가 {{ site.data.keys.product_adj }} 관리 서비스를 발견하지 못하기 때문에 런타임 서비스에서 오류가 발생합니다.
 
-When the deployment of a PureApplication pattern is almost complete, the System Monitoring for WebSphere Application Server shared service restarts all of the WebSphere Application Server nodes that are deployed from the pattern. The nodes restart in a random order, so the nodes that contain the {{ site.data.keys.product }} runtime might be restarted before the nodes that contain the {{ site.data.keys.product_adj }} administration service.
+PureApplication 패턴의 배치가 거의 완료되면 System Monitoring for WebSphere Application Server 공유 서비스는 패턴에서 배치된 모든 WebSphere Application Server 노드를 다시 시작합니다. 이러한 노드는 랜덤 순서로 다시 시작되므로 {{ site.data.keys.product }} 런타임을 포함하는 노드가 {{ site.data.keys.product_adj }} 관리 서비스를 포함하는 노드보다 먼저 다시 시작될 수 있습니다.
 
-You must stop the System Monitoring for WebSphere Application Server shared service before you deploy the pattern. If you cannot stop the shared service, you might need to restart the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console to fix the problem.
+패턴을 배치하기 전에 System Monitoring for WebSphere Application Server 공유 서비스를 중지해야 합니다. 공유 서비스를 중지할 수 없는 경우, 문제점을 수정하기 위해 WebSphere Application Server 관리 콘솔에서 {{ site.data.keys.product }} 런타임을 다시 시작해야 할 수도 있습니다. 
 
-### Restarting the {{ site.data.keys.product }} runtime from the WebSphere Application Server administrative console
+### WebSphere Application Server 관리 콘솔에서 {{ site.data.keys.product }} 런타임 다시 시작
 {: #restarting-the-mobilefirst-foundation-runtime-from-the-websphere-application-server-administrative-console }
-If your {{ site.data.keys.mf_console }} is empty after you deploy a PureApplication  System pattern based on the {{ site.data.keys.product }} (WAS ND) template, you might need to restart the IBM {{ site.data.keys.product }} runtime from the WebSphere  Application Server administrative console.
+{{ site.data.keys.product }}(WAS ND) 템플리트를 기반으로 PureApplication  System 패턴을 배치한 후 {{ site.data.keys.mf_console }}이 비어 있는 경우, WebSphere  Application Server 관리 콘솔에서 IBM {{ site.data.keys.product }} 런타임을 다시 시작해야 할 수도 있습니다. 
 
-This procedure applies only when you are deploying PureApplication virtual system patterns based on the {{ site.data.keys.product }} (WAS ND) template when you are running the System Monitoring for WebSphere Application Server shared service. If you do not use this shared service or are deploying a pattern based on a different template, this procedure does not apply to you.
+이 프로시저는 System Monitoring for WebSphere Application Server 공유 서비스 실행 중에 {{ site.data.keys.product }}(WAS ND) 템플리트를 기반으로 PureApplication 가상 시스템 패턴을 배치하는 경우에만 적용됩니다. 이 공유 서비스를 사용하지 않거나 다른 템플리트를 기반으로 패턴을 배치하는 경우에는 이 프로시저가 적용되지 않습니다.
 
-You must deploy your pattern before you do this procedure.
+이 프로시저를 수행하기 전에 패턴을 배치해야 합니다.
 
-To work correctly, the {{ site.data.keys.product_adj }} administration service nodes must be started before the {{ site.data.keys.product }} runtime nodes. If the System Monitoring for WebSphere Application Server shared service is running when you deploy a pattern, the shared service restarts all of the WebSphere Application Server nodes that are deployed from the pattern. The nodes restart in a random order, which means that the {{ site.data.keys.product }} runtime nodes might be started before the {{ site.data.keys.product_adj }} administration service nodes.
+{{ site.data.keys.product_adj }} 관리 서비스 노드가 올바르게 작동하려면 이 노드를 {{ site.data.keys.product }} 런타임 노드보다 먼저 시작해야 합니다. 패턴을 배치할 때 System Monitoring for WebSphere Application Server 공유 서비스가 실행 중인 경우, 이 공유 서비스는 패턴에서 배치되는 모든 WebSphere Application Server 노드를 다시 시작합니다. 이러한 노드는 랜덤 순서로 다시 시작되며 이는 {{ site.data.keys.product }} 런타임 노드가 {{ site.data.keys.product_adj }} 관리 서비스 노드보다 먼저 시작될 수 있음을 의미합니다. 
 
-1. Confirm that the System Monitoring for WebSphere Application Server shared service is deployed and running:
-    * In the PureApplication System dashboard, click Patterns and then under Pattern Instances, click Shared Services.
+1. System Monitoring for WebSphere Application Server 공유 서비스가 배치되어 실행 중인지 확인하십시오. 
+    * PureApplication System 대시보드에서 패턴을 클릭한 후 패턴 인스턴스에서 공유 서비스를 클릭하십시오. 
 
-        > **Important:** Shared Services appears twice in the **Patterns** menu, ensure that you click **Shared Services** under **Pattern Instances** and not under Patterns.
-    * On the **Shared Service Instances** page, look for a name that starts with **System Monitoring for WebSphere Application Server**. Click that name to expand its entry
+        > **중요:** 공유 서비스는 **패턴** 메뉴에 두 번 표시되므로, 반드시 패턴이 아니라 **패턴 인스턴스**에 있는 **공유 서비스**를 클릭하십시오.
+    * **공유 서비스 인스턴스 ** 페이지에서 **System Monitoring for WebSphere Application Server**로 시작하는 이름을 찾으십시오. 해당 이름을 클릭하여 해당 항목을 펼치십시오.
     
-        If you do not see an entry for **System Monitoring for WebSphere Application Server**, the System Monitoring for WebSphere Application Server shared service is not deployed and you do not need to continue with this procedure.
-    * Check the **Status** column for the service.
+        **System Monitoring for WebSphere Application Server**의 항목이 표시되지 않는 경우, System Monitoring for WebSphere Application Server 공유 서비스가 표시되지 않으므로 이 프로시저를 계속할 필요가 없습니다. 
+    * 서비스의 **상태** 열을 확인하십시오. 
     
-        If **Status** says `Stopped`, the System Monitoring for WebSphere Application Server shared service is stopped and you do not need to continue with this procedure.  
-        If **Status** says `Started`, the System Monitoring for WebSphere Application Server shared service is running. Continue with the rest of this procedure.
+        **상태**가 `중지됨`인 경우, System Monitoring for WebSphere Application Server 공유 서비스가 중지되어 있으므로 이 프로시저를 계속할 필요가 없습니다.   
+        **상태**가 `시작됨`인 경우, System Monitoring for WebSphere Application Server 공유 서비스가 실행 중입니다. 계속해서 이 프로시저의 나머지를 수행하십시오. 
 
-2. Confirm that your pattern is running, and access the {{ site.data.keys.mf_console }} from the PureApplication System dashboard.
+2. 패턴이 실행 중인지 확인하고 PureApplication System 대시보드에서 {{ site.data.keys.mf_console }}에 액세스하십시오. 
 
-    For instructions about how access the {{ site.data.keys.mf_console }} from the PureApplication System dashboard, see step 10 in [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers).
+    PureApplication System 대시보드에서 {{ site.data.keys.mf_console }}에 액세스하는 방법에 대한 지시사항은 [WebSphere Application Server Network Deployment 서버 클러스터에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)의 10단계를 참조하십시오. 
     
-3. If the console appears empty or is otherwise not displaying {{ site.data.keys.product }} runtimes, restart the {{ site.data.keys.product }} runtime node from the WebSphere Application Server administrative console:
-    * In the **PureApplication System** dashboard, click **Patterns → Virtual System Instances**.
-    * On the **Virtual System Instances** page, find your pattern instance and confirm that it is running. If it is not running, start the pattern instance.
-    * Click the name of your pattern instance and in the details panel, find the **Virtual machine perspective** section.
-    * In the **Virtual machine perspective** section, find the virtual machine whose name starts with **DmgrNode** and note its public IP address.
-    * Open the WebSphere Application Server administrative console at the following URL:
+3. 콘솔이 비어 있거나 {{ site.data.keys.product }} 런타임이 표시되지 않는 경우, WebSphere Application Server 관리 콘솔에서 {{ site.data.keys.product }} 런타임 노드를 다시 시작하십시오. 
+    * **PureApplication System** 대시보드에서 **패턴 → 가상 시스템 인스턴스**를 클릭하십시오. 
+    * **가상 시스템 인스턴스** 페이지에서 패턴 인스턴스를 찾아 실행 중인지 확인하십시오. 실행 중이 아니면 패턴 인스턴스를 시작하십시오.
+    * 패턴 인스턴스의 이름을 클릭하고 세부사항 패널에서 **가상 머신 퍼스펙티브** 섹션을 찾으십시오.
+    * **가상 머신 퍼스펙티브** 섹션에서 이름이 **DmgrNode**로 시작하는 가상 머신을 찾아 해당 공용 IP 주소를 메모하십시오.
+    * 다음 URL에서 WebSphere Application Server 관리 콘솔을 여십시오. 
     
         ```bash
         https://{DmgrNode VM public IP address}:9043/ibm/console
         ```
     
-        Use the user ID and password that you specified for the WebSphere Application Server administrative console when you deployed the pattern.
-    * In the WebSphere Application Server administrative console, expand **Applications** and click **All applications**.
-    * Restart the {{ site.data.keys.product }} runtime:
-        * In the list of applications, select the application with name that begins with IBM\_Worklight\_project\_runtime\_MFP.
-        * In the **Action** column, select **Stop**.
-        * Click **Submit Action**.
-        * Wait until the application status in the **Status** column shows the stopped icon.
-        * In the **Action** column, select **Start**.
-        * Click S**ubmit Action**.
+        패턴을 배치할 때 WebSphere Application Server 관리 콘솔용으로 지정한 사용자 ID 및 비밀번호를 사용하십시오. 
+    * WebSphere Application Server 관리 콘솔에서 **애플리케이션**을 펼치고 **모든 애플리케이션**을 클릭하십시오. 
+    * {{ site.data.keys.product }} 런타임을 다시 시작하십시오. 
+        * 애플리케이션 목록에서 이름이 IBM\_Worklight\_project\_runtime\_MFP로 시작하는 애플리케이션을 선택하십시오. 
+        * **조치** 열에서 **중지**를 선택하십시오.
+        * **조치 제출**을 클릭하십시오.
+        * **상태** 열의 애플리케이션 상태가 중지됨 아이콘을 표시할 때까지 기다리십시오. 
+        * **조치** 열에서 **시작**을 선택하십시오.
+        * **조치 제출**을 클릭하십시오.
 
-        Repeat this step for each {{ site.data.keys.product }} runtime application in the list.
+        목록에 있는 {{ site.data.keys.product }} 런타임 애플리케이션마다 이 단계를 반복하십시오. 
 
-4. Access the {{ site.data.keys.mf_console }} again and confirm that your {{ site.data.keys.product }} runtimes are now visible.
+4. {{ site.data.keys.mf_console }}에 다시 액세스하여 {{ site.data.keys.product }} 런타임이 표시되는지 확인하십시오.
 
-## Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server Liberty profile server
+## 단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_app_center }} 배치
 {: #deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-liberty-profile-server }
-You use a predefined template to deploy {{ site.data.keys.mf_app_center }} on a single-node WebSphere  Application Server Liberty profile server.
+사전 정의된 템플리트를 사용하여 {{ site.data.keys.mf_app_center }}를 단일 노드 WebSphere Application Server Liberty 프로파일 서버에 배치합니다. 
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+이 프로시저에는 필수 애플리케이션 및 어댑터와 같은 특정 아티팩트를 IBM  PureApplication  System에 업로드하는 작업이 포함됩니다. 시작하기 전에 해당 아티팩트가 업로드 가능한지 확인하십시오. 
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements that are outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. If the license key server cannot be contacted or if insufficient license tokens are available then the deployment of this pattern fails.
+**토큰 라이센싱 요구사항:** 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 계속하기 전에 [{{ site.data.keys.mf_system_pattern }}의 토큰 라이센싱 요구사항](#token-licensing-requirements-for-mobilefirst-system-pattern)에 요약된 요구사항을 검토하십시오. 라이센스 키 서버에 연결할 수 없거나 사용 가능한 라이센스 토큰이 충분하지 않으면 이 패턴의 배치에 실패합니다.
 
-Some parameters of script packages in the template is configured with the recommended values and are not mentioned here. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+템플리트에 있는 스크립트 패키지의 일부 매개변수는 권장 값으로 구성되어 있으므로 여기서는 언급하지 않습니다. 미세 조정을 위해서는 [{{ site.data.keys.mf_server }}의 스크립트 패키지](#script-packages-for-mobilefirst-server)에서 스크립트 패키지의 모든 매개변수에 대한 자세한 정보를 참조하십시오.
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.mf_app_center }} (Liberty single node) template](#mobilefirst-application-center-liberty-single-node-template).
+이 프로시저에서 사용되는 사전 정의된 템플리트의 컴포지션 및 구성 옵션에 대한 자세한 정보는 [{{ site.data.keys.mf_app_center }}(Liberty 단일 노드) 템플리트](#mobilefirst-application-center-liberty-single-node-template)를 참조하십시오. 
 
-1. Create a pattern from the predefined template:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (AppCenter Liberty single node)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the **More information** tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power, the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
-    * In the Pattern Builder, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX add disk** component and specify the following attributes:
-        * **DISK_SIZE_GB:** Storage size (measured in GB) to be extended to the DB server. Example value: **10**.
-        * **FILESYSTEM_TYPE:** Supported file system in AIX. Default value: **jfs2**.
-        * **MOUNT_POINT:** Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Example value: **/dbinst**.
-        * **VOLUME_GROUP:** Example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MFP AppCenter DB node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
-3. Optional: Configure **MFP Server Application Center** in the **MFP AppCenter Server** node.
+1. 사전 정의된 템플리트에서 패턴을 작성하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 가상 시스템 패턴 페이지가 열립니다. 
+    * **가상 시스템 패턴** 페이지에서 **새로 작성**을 클릭한 후 팝업 창의 사전 정의된 템플리트 목록에서 **MobileFirst Platform(AppCenter Liberty 단일 노드)**를 선택하십시오. 길이 때문에 이름이 일부만 표시되는 경우에는 **자세한 정보** 탭에서 해당 설명을 검토하여 올바른 템플리트가 선택되었는지 확인할 수 있습니다. 
+    * **이름** 필드에 패턴의 이름을 제공하십시오. 
+    * **버전** 필드에 패턴의 버전 번호를 지정하십시오. 
+    * **빌드 시작**을 클릭하십시오.
+2. AIX의 경우 필수: Power 에서 실행 중인 IBM PureApplication System에서, MobileFirst Platform DB 노드는 jfs2 파일 시스템을 지원하기 위해 AIX 고유 추가 기능 컴포넌트인 "Default AIX add disk"를 사용하여 템플리트의 "Default add disk" 컴포넌트를 대체해야 합니다. 
+    * 패턴 빌더에서 **MobileFirst Platform DB** 노드를 선택하십시오. 
+    * **컴포넌트 추가 기능 추가** 단추를 클릭하십시오(이 단추는 **MobileFirst Platform DB** 노드 위에 커서를 놓을 때 컴포넌트 상자 위에 표시됨). 
+    * **추가 기능 추가** 목록에서 **Default AIX add disk**를 선택하십시오. 이 컴포넌트가 MobileFirst Platform DB 노드의 최하위 컴포넌트로 추가됩니다. 
+    * **Default AIX add disk** 컴포넌트를 선택하고 다음 속성을 지정하십시오. 
+        * **DISK_SIZE_GB:** DB 서버로 확장되는 스토리지 크기(GB)입니다. 예제 값: **10**.
+        * **FILESYSTEM_TYPE:** AIX에서 지원되는 파일 시스템입니다. 기본값: **jfs2**.
+        * **MOUNT_POINT:** MobileFirst Platform DB 노드의 Database Server 컴포넌트에 있는 **인스턴스 소유자의 마운트 위치** 속성과 일치합니다. 예제 값: **/dbinst**.
+        * **VOLUME_GROUP:** 예제 값: **group1**. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
+    * MFP AppCenter DB 노드에서 **Default add disk** 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
+    * 패턴을 저장하십시오.
+3. 선택사항: **MFP AppCenter Server** 노드에서 **MFP Server Application Center**를 구성하십시오. 
     
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply more LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the M**FP AppCenter Server** node, click the **MFP Server Application Center** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin_password** fields, specify the administration user name and password.
-    * Next to the **db_user** and **db_password** fields, click the **Delete** button to clear their pattern level parameter settings.
-    * In the **db_user** and **db_password** fields, specify the database user name and password.
-    * In the **db_name**, **db_instance**, **db_ip**, and **db_port** fields, specify the database user name, password, instance name, IP, and port number.
+    > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+    * M**FP AppCenter Server** 노드에서 **MFP Server Application Center** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
+    * **admin_user** 및 **admin_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
+    * **db_user** 및 **db_password** 필드 옆에 있는 **삭제** 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오. 
+    * **db_user** 및 **db_password** 필드에 데이터베이스 사용자 이름 및 비밀번호를 지정하십시오. 
+    * **db_name**, **db_instance**, **db_ip** 및 **db_port** 필드에 데이터베이스 사용자 이름, 비밀번호, 인스턴스 이름, IP 및 포트 번호를 지정하십시오. 
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    패턴 배치 중에 {{ site.data.keys.mf_server }}의 기본 관리 계정이 작성됩니다. 
 
-4. Configure and launch the pattern deployment:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel that displays the detailed information about the pattern, click the **Deploy** button.
-    * In the **Deploy Pattern** window, in the **Configure** panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
-    * In the middle column, click Pattern attributes to display attributes such as user names and passwords.
+4. 패턴 배치를 구성하고 실행하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 
+    * **가상 시스템 패턴** 페이지에서 **검색** 필드를 사용하여 사용자가 작성한 패턴을 찾아 선택하십시오.
+    * 패턴에 대한 자세한 정보가 표시되는 패널 위의 도구 모음에서 **배치** 단추를 클릭하십시오. 
+    * **패턴 배치** 창의 **구성** 패널에 있는 **환경 프로파일** 목록에서 올바른 환경 프로파일을 선택하고 기타 IBM PureApplication System 환경 매개변수를 제공하십시오. 올바른 정보를 얻으려면 IBM PureApplication System 관리자에게 문의하십시오. 
+    * 가운데 열에서 패턴 속성을 클릭하여 속성(예: 사용자 이름 및 비밀번호)을 표시하십시오. 
 
-    Supply the following information in the fields provided:
+    표시되는 필드에 다음과 같은 정보를 제공하십시오.
 
-    > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
     
     **admin\_user**  
-    Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+    3단계에서 구성된 경우 표시되지 않습니다. 기본 {{ site.data.keys.mf_server }} 관리자 계정을 작성하십시오. 기본값: demo.
     
     **admin\_password**  
-    Not visible if configured in step 3. Default admin account password. Default value: demo.
+    3단계에서 구성된 경우 표시되지 않습니다. 기본 관리자 계정 비밀번호입니다. 기본값: demo.
     
     **ACTIVATE\_TOKEN\_LICENSE**  
-    Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+    3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오. 영구 라이센스를 사용하는 경우 이 필드를 빈 상태로 두십시오. 
     
     **LICENSE\_SERVER\_HOSTNAME**  
-    Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+    3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오. 
     
     **LMGRD\_PORT**   
-    Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-    The default license manager daemon port is 27000.
+    3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 라이센스 관리자 디먼(lmrgd)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+    기본 라이센스 관리자 디먼 포트는 27000입니다.
 
     **IBMRATL\_PORT**  
-    Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-    The default vendor daemon port is typically 27001.
+    3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 공급업체 디먼(ibmratl)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+    기본 공급업체 디먼 포트는 일반적으로 27001입니다.
 
     **runtime\_contextRoot**  
-    Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+    5단계에서 구성된 경우 표시되지 않습니다. {{ site.data.keys.mf_server }} 런타임의 컨텍스트 루트 이름입니다. 이름은 "/"로 시작해야 합니다. 
     
     **deployer\_user**  
-    Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+    8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 계정의 사용자 이름입니다. 외부 LDAP 서버가 구성되지 않은 경우, 앱 및 어댑터 배치 권한이 부여된 사용자만 기본 관리 사용자이므로 관리 서비스의 기본 관리 사용자를 작성할 때 지정한 값과 동일한 값을 입력해야 합니다.
     
     **deployer\_password**  
-    Not visible if configured in step 8. User password for the user with deployment privilege.
+    8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 사용자의 사용자 비밀번호입니다.
     
-    **MFP Vms Password(root)**  
-    Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+    **MFP Vms 비밀번호(루트)**  
+    {{ site.data.keys.mf_server }} 및 {{ site.data.keys.product }} DB 노드의 루트 비밀번호입니다. 기본값: passw0rd.
     
-    **MFP DB Password(Instance owner)**  
-    Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
-* Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+    **MFP DB 비밀번호(인스턴스 소유자)**  
+    MobileFirst Platform DB 노드의 인스턴스 소유자 비밀번호입니다. 기본값: **passw0rd**.    
+* **빠른 배치**를 클릭하여 패턴 배치를 실행하십시오. 몇 초 후 패턴 실행이 시작되었다는 메시지가 표시됩니다. 메시지에 표시된 URL을 클릭하여 패턴 배치 상태를 추적하거나 **패턴 → 가상 시스템 인스턴스**로 이동하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색할 수 있습니다.
 
-5. To access the {{ site.data.keys.mf_console }} perform the following steps:
-    * Click **Patterns → Virtual System Instances** to open the **Virtual System Instances** page and search for your pattern there.
-    * Select your pattern name and expand the Virtual machine perspective in the panel that displays the details of the selected instance.
-    * Find the {{ site.data.keys.mf_server }} VM that has a name similar to **MFP\_AppCenter\_Server.**, make a note of its public IP address.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+5. {{ site.data.keys.mf_console }}에 액세스하려면 다음 단계를 수행하십시오. 
+    * **패턴 → 가상 시스템 인스턴스**를 클릭하여 **가상 시스템 인스턴스** 페이지를 열고 거기서 패턴을 검색하십시오. 
+    * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 가상 머신 퍼스펙티브를 펼치십시오. 
+    * 이름이 **MFP\_AppCenter\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공용 IP 주소를 메모하십시오. 
+    * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오. 
         * `http://{MFP Server VM Public IP}:9080/appcenterconsole`
         * `https://{MFP Server VM Public IP}:9443/appcenterconsole`
-    * Log in to the Console with admin user and password specified in step 3.
+    * 3단계에서 지정한 관리 사용자 및 비밀번호로 콘솔에 로그인하십시오.
 
-## Deploying {{ site.data.keys.mf_app_center }} on a single-node WebSphere Application Server full profile server
+## 단일 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_app_center }} 배치
 {: #deploying-mobilefirst-application-center-on-a-single-node-websphere-application-server-full-profile-server }
-You use a predefined template to deploy a single-node {{ site.data.keys.mf_app_center }} to a WebSphere  Application Server full profile server.
+사전 정의된 템플리트를 사용하여 단일 노드 {{ site.data.keys.mf_app_center }}를 WebSphere Application Server 전체 프로파일 서버에 배치합니다. 
 
-This procedure involves uploading certain artifacts to IBM  PureApplication  System such as the required application and adapter. Before you begin, ensure that the artifacts are available for upload.
+이 프로시저에는 필수 애플리케이션 및 어댑터와 같은 특정 아티팩트를 IBM  PureApplication  System에 업로드하는 작업이 포함됩니다. 시작하기 전에 해당 아티팩트가 업로드 가능한지 확인하십시오. 
 
-**Token licensing requirements:** If you use token licensing to license {{ site.data.keys.product }}, review the requirements outlined in [Token licensing requirements for {{ site.data.keys.mf_system_pattern }}](#token-licensing-requirements-for-mobilefirst-system-pattern) before you continue. The deployment of this pattern fails if the license key server cannot be contacted or if insufficient license tokens are available.
+**토큰 라이센싱 요구사항:** 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 계속하기 전에 [{{ site.data.keys.mf_system_pattern }}의 토큰 라이센싱 요구사항](#token-licensing-requirements-for-mobilefirst-system-pattern)에 요약된 요구사항을 검토하십시오. 라이센스 키 서버에 연결할 수 없거나 사용할 수 있는 라이센스 토큰이 충분하지 않으면 이 패턴을 배치하는 데 실패합니다. 
 
-Some parameters of script packages in the template have been configured with the recommended values and are not mentioned in this section. For fine-tuning purposes, see more information about all the parameters of script packages in [Script packages for {{ site.data.keys.mf_server }}](#script-packages-for-mobilefirst-server).
+템플리트에 있는 스크립트 패키지의 일부 매개변수는 권장 값으로 구성되어 있으므로 이 절에서는 언급하지 않습니다. 미세 조정을 위해서는 [{{ site.data.keys.mf_server }}의 스크립트 패키지](#script-packages-for-mobilefirst-server)에서 스크립트 패키지의 모든 매개변수에 대한 자세한 정보를 참조하십시오.
 
-For more information about the composition and configuration options of the predefined template that is used in this procedure, see [{{ site.data.keys.mf_app_center }} (WAS single node) template](#mobilefirst-application-center-was-single-node-template).
+이 프로시저에서 사용되는 사전 정의된 템플리트의 컴포지션 및 구성 옵션에 대한 자세한 정보는 [{{ site.data.keys.mf_app_center }}(WAS 단일 노드) 템플리트](#mobilefirst-application-center-was-single-node-template)를 참조하십시오. 
 
-1. Create a pattern from the predefined template:
-    * In **the IBM PureApplication System** dashboard, click P**atterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, click **Create New**, and then in the pop-up window, select **MobileFirst Platform (AppCenter Liberty single node)** from the list of predefined templates. If the name is only partially visible due to its length, you can confirm that the correct template is selected by viewing its description on the More information tab.
-    * In the **Name** field, provide a name for the pattern.
-    * In the **Version** field, specify the version number of the pattern.
-    * Click **Start Building**.
-2. Mandatory for AIX : In IBM PureApplication System running on Power , the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the **jfs2** file system:
-    * In the Pattern Builder, select the **MFP AppCenter DB** node.
-    * Click the **Add a Component** Add-on button (the button is visible above the component box when you hover the cursor over the **MFP AppCenter** DB node).
-    * From the Add Add-ons list, select **Default AIX** add disk. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the **Default AIX** add disk component and specify the following attributes:
+1. 사전 정의된 템플리트에서 패턴을 작성하십시오. 
+    * **IBM PureApplication System** 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 가상 시스템 패턴 페이지가 열립니다. 
+    * **가상 시스템 패턴** 페이지에서 **새로 작성**을 클릭한 후 팝업 창의 사전 정의된 템플리트 목록에서 **MobileFirst Platform(AppCenter Liberty 단일 노드)**를 선택하십시오. 길이 때문에 이름이 일부만 표시되는 경우에는 자세한 정보 탭에서 해당 설명을 검토하여 올바른 템플리트가 선택되었는지 확인할 수 있습니다. 
+    * **이름** 필드에 패턴의 이름을 제공하십시오. 
+    * **버전** 필드에 패턴의 버전 번호를 지정하십시오. 
+    * **빌드 시작**을 클릭하십시오.
+2. AIX의 경우 필수: Power 에서 실행 중인 IBM PureApplication System에서, MobileFirst Platform DB 노드는 **jfs2** 파일 시스템을 지원하기 위해 AIX 고유 추가 기능 컴포넌트인 "Default AIX add disk"를 사용하여 템플리트의 "Default add disk" 컴포넌트를 대체해야 합니다. 
+    * 패턴 빌더에서 **MFP AppCenter DB** 노드를 선택하십시오.
+    * **컴포넌트 추가 기능 추가** 단추를 클릭하십시오(**MFP AppCenter DB** 노드 위에 커서를 놓으면 컴포넌트 상자 위에 이 단추가 표시됨). 
+    * 추가 기능 추가 목록에서 **Default AIX add disk**를 선택하십시오. 이 컴포넌트가 MobileFirst Platform DB 노드의 최하위 컴포넌트로 추가됩니다. 
+    * **Default AIX add disk** 컴포넌트를 선택하고 다음 속성을 지정하십시오. 
         
         **DISK\_SIZE\_GB**  
-        Storage size (measured in GB) to be extended to the DB server. Following is the example value: 10.
+        DB 서버로 확장되는 스토리지 크기(GB)입니다. 예제 값: 10.
 
         **FILESYSTEM\_TYPE**  
-        Supported file system in AIX. Following is the default value: **jfs2**.
+        AIX에서 지원되는 파일 시스템입니다. 기본값: **jfs2**.
 
         **MOUNT\_POINT**  
-        Align with the attribute **Mount point for instance owner** in the Database Server component in the MobileFirst Platform DB node. Following is the example value: /dbinst.
+        MobileFirst Platform DB 노드의 Database Server 컴포넌트에 있는 **인스턴스 소유자의 마운트 위치** 속성과 일치합니다. 예제 값: /dbinst.
 
         **VOLUME\_GROUP**  
-        Following is the example value: **group1**. Contact your IBM PureApplication System administrator for the correct value.
-    * In the **MFP AppCenter DB** node, select the **Default add disk** component, and then click the bin icon to delete it.
-    * Save the pattern.
+        예제 값: **group1**. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
+    * **MFP AppCenter DB** 노드에서 **Default add disk** 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
+    * 패턴을 저장하십시오.
 
-3. Optional: Configure **MFP Server Application Center** in the **MFP AppCenter Server** node.
+3. 선택사항: **MFP AppCenter Server** 노드에서 **MFP Server Application Center**를 구성하십시오. 
 
-    > **Note:** If you want to configure administration security with an LDAP server, you need to supply more LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
-    * In the **MFP AppCenter Server** node, click the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Next to the **admin_user** and **admin_password** fields, click the Delete button to clear their pattern level parameter settings.
-    * In the **admin_user** and **admin\_password** fields, specify the administration user name and password.
-    * If you use token licensing to license {{ site.data.keys.product }}, complete the following fields. If you do not use token licensing, leave these fields blank.
+    > **참고:** LDAP 서버를 사용하여 관리 보안을 구성하려는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
+    * **MFP AppCenter Server** 노드에서 **MFP Server Administration** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **admin_user** 및 **admin_password** 필드 옆에 있는 삭제 단추를 클릭하여 해당 패턴 레벨 매개변수 설정을 지우십시오.
+    * **admin_user** 및 **admin\_password** 필드에 관리 사용자 이름 및 비밀번호를 지정하십시오. 
+    * 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우 다음 필드를 완료하십시오. 토큰 라이센싱을 사용하지 않으면 다음 필드를 공백으로 두십시오.
 
-    **ACTIVATE\_TOKEN\_LICENSE**: Select this field to license your pattern with token licensing.  
-    **LICENSE\_SERVER\_HOSTNAME**: Enter the fully qualified host name or IP address of your Rational License Key Server.  
-    **LMGRD\_PORT**: Enter the port number that the license manager daemon (**lmrgd**) listens for connections on. The default license manager daemon port is 27000.  
-    **IBMRATL\_PORT**:Enter the port number that the vendor daemon (**ibmratl**) listens for connections on. The default vendor daemon port is typically 27001.  
+    **ACTIVATE\_TOKEN\_LICENSE**: 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오.  
+    **LICENSE\_SERVER\_HOSTNAME**: Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오.   
+    **LMGRD\_PORT**: 라이센스 관리자 디먼(**lmrgd**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 라이센스 관리자 디먼 포트는 27000입니다.  
+    **IBMRATL\_PORT**: 공급업체 디먼(**ibmratl**)이 연결을 청취하는 포트 번호를 입력하십시오. 기본 공급업체 디먼 포트는 일반적으로 27001입니다.  
 
-    A default administration account for {{ site.data.keys.mf_server }} is created during pattern deployment.
+    패턴 배치 중에 {{ site.data.keys.mf_server }}의 기본 관리 계정이 작성됩니다. 
 
-4. Configure and launch the pattern deployment:
-    * In the IBM PureApplication System dashboard, click **Patterns → Virtual System Patterns**.
-    * On the **Virtual System Patterns** page, use the **Search** field to find the pattern you created, and then select the pattern.
-    * In the toolbar above the panel displaying detailed information about the pattern, click the Deploy button.
-    * In the Deploy Pattern window, in the Configure panel, select the correct environment profile from the **Environment Profile** list, and provide other IBM PureApplication System environment parameters. To obtain the correct information, consult your IBM PureApplication System administrator.
-    * In the middle column, click **Pattern attributes** to display attributes such as user names and passwords.
+4. 패턴 배치를 구성하고 실행하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 
+    * **가상 시스템 패턴** 페이지에서 **검색** 필드를 사용하여 사용자가 작성한 패턴을 찾아 선택하십시오.
+    * 패턴에 대한 자세한 정보가 표시되는 패널 위의 도구 모음에서 배치 단추를 클릭하십시오. 
+    * 패턴 배치 창의 구성 패널에 있는 **환경 프로파일** 목록에서 올바른 환경 프로파일을 선택하고 기타 IBM PureApplication System 환경 매개변수를 제공하십시오. 올바른 정보를 얻으려면 IBM PureApplication System 관리자에게 문의하십시오. 
+    * 가운데 열에서 **패턴 속성**을 클릭하여 속성(예: 사용자 이름 및 비밀번호)을 표시하십시오. 
 
-        Supply the following information in the fields provided:
+        표시되는 필드에 다음과 같은 정보를 제공하십시오.
 
-        > **Note:** Make appropriate changes to the default values of the pattern-level parameters even if an external LDAP server is configured. If you configure administration security by using an LDAP server, you need to supply additional LDAP information. For more information, see [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+        > **참고:** 외부 LDAP 서버가 구성되어 있는 경우에도 패턴 레벨 매개변수의 값을 적절히 변경하십시오. LDAP 서버를 사용하여 관리 보안을 구성하는 경우 추가 LDAP 정보를 제공해야 합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)을 참조하십시오.
         
         **admin\_user**  
-        Not visible if configured in step 3. Create a default {{ site.data.keys.mf_server }} administrator account. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 {{ site.data.keys.mf_server }} 관리자 계정을 작성하십시오. 기본값: demo.
         
         **admin\_password**  
-        Not visible if configured in step 3. Default admin account password. Default value: demo.
+        3단계에서 구성된 경우 표시되지 않습니다. 기본 관리자 계정 비밀번호입니다. 기본값: demo.
         
         **ACTIVATE\_TOKEN\_LICENSE**  
-        Not visible if configured in step 3. Select this field to license your pattern with token licensing. Leave this field clear if you use perpetual licenses.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 패턴의 라이센스를 부여하려면 이 필드를 선택하십시오. 영구 라이센스를 사용하는 경우 이 필드를 빈 상태로 두십시오. 
         
         **LICENSE\_SERVER\_HOSTNAME**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the fully-qualified hostname or IP address of your Rational License Key Server IP address. Otherwise, leave this field blank.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, Rational License Key Server의 완전한 호스트 이름 또는 IP 주소를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오. 
         
         **LMGRD\_PORT**   
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the license manager daemon (lmrgd) listens for connections on. Otherwise, leave this field blank.
-        The default license manager daemon port is 27000.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 라이센스 관리자 디먼(lmrgd)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 라이센스 관리자 디먼 포트는 27000입니다.
 
         **IBMRATL\_PORT**  
-        Not visible if configured in step 3. If you use token licensing to license {{ site.data.keys.product }}, enter the port number that the vendor daemon (ibmratl) listens for connections on. Otherwise, leave this field blank.
-        The default vendor daemon port is typically 27001.
+        3단계에서 구성된 경우 표시되지 않습니다. 토큰 라이센싱을 사용하여 {{ site.data.keys.product }}의 라이센스를 부여하는 경우, 공급업체 디먼(ibmratl)이 연결을 청취하는 포트 번호를 입력하십시오. 그렇지 않은 경우, 이 필드를 공백으로 두십시오.
+        기본 공급업체 디먼 포트는 일반적으로 27001입니다.
 
         **runtime\_contextRoot**  
-        Not visible if configured in step 5. Context root name for the {{ site.data.keys.mf_server }} runtime. The name must start with "/".
+        5단계에서 구성된 경우 표시되지 않습니다. {{ site.data.keys.mf_server }} 런타임의 컨텍스트 루트 이름입니다. 이름은 "/"로 시작해야 합니다. 
         
         **deployer\_user**  
-        Not visible if configured in step 8. User name for the account with deployment privilege. If an external LDAP server is not configured, you must enter the same value as was specified when creating the default admin user for the administration service, because in this case, the only authorized user for app and adapter deployment is the default admin user.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 계정의 사용자 이름입니다. 외부 LDAP 서버가 구성되지 않은 경우, 앱 및 어댑터 배치 권한이 부여된 사용자만 기본 관리 사용자이므로 관리 서비스의 기본 관리 사용자를 작성할 때 지정한 값과 동일한 값을 입력해야 합니다.
         
         **deployer\_password**  
-        Not visible if configured in step 8. User password for the user with deployment privilege.
+        8단계에서 구성된 경우 표시되지 않습니다. 배치 권한이 있는 사용자의 사용자 비밀번호입니다.
         
-        **MFP Vms Password(root)**  
-        Root password for the {{ site.data.keys.mf_server }} and {{ site.data.keys.product }} DB nodes. Default value: passw0rd.
+        **MFP Vms 비밀번호(루트)**  
+        {{ site.data.keys.mf_server }} 및 {{ site.data.keys.product }} DB 노드의 루트 비밀번호입니다. 기본값: passw0rd.
         
-        **MFP DB Password(Instance owner)**  
-        Instance owner password for the MobileFirst Platform DB node. Default value: **passw0rd**.    
-    * Click **Quick Deploy** to launch your pattern deployment. After a few seconds, a message is displayed to indicate that the pattern has started to launch. You can click the URL provided in the message to track your pattern deployment status or go to **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
+        **MFP DB 비밀번호(인스턴스 소유자)**  
+        MobileFirst Platform DB 노드의 인스턴스 소유자 비밀번호입니다. 기본값: **passw0rd**.    
+    * **빠른 배치**를 클릭하여 패턴 배치를 실행하십시오. 몇 초 후 패턴 실행이 시작되었다는 메시지가 표시됩니다. 메시지에 표시된 URL을 클릭하여 패턴 배치 상태를 추적하거나 **패턴 → 가상 시스템 인스턴스**로 이동하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색할 수 있습니다.
 
-5. To access the {{ site.data.keys.mf_console }} perform the following steps:
-    * Click **Patterns → Virtual System Instances** to open the Virtual System Instances page and search for your pattern there.
-    * Select your pattern name and expand the Virtual machine perspective in the panel that displays the details of the selected instance.
-    * Find the {{ site.data.keys.mf_server }} VM that has a name similar to **MFP\_AppCenter\_Server.**, make a note of its public IP address.
-    * In the browser, open the {{ site.data.keys.mf_console }} by composing its URL with one of the following formats:
+5. {{ site.data.keys.mf_console }}에 액세스하려면 다음 단계를 수행하십시오. 
+    * **패턴 → 가상 시스템 인스턴스**를 클릭하여 가상 시스템 인스턴스 페이지를 열고 거기서 패턴을 검색하십시오. 
+    * 패턴 이름을 선택한 후 선택된 인스턴스의 세부사항이 표시되는 패널에서 가상 머신 퍼스펙티브를 펼치십시오. 
+    * 이름이 **MFP\_AppCenter\_Server.**와 유사한 {{ site.data.keys.mf_server }} VM을 찾아 해당 공용 IP 주소를 메모하십시오. 
+    * 브라우저에서 다음 형식 중 하나로 해당 URL을 작성하여 {{ site.data.keys.mf_console }}을 여십시오. 
         * `http://{MFP Server VM Public IP}:9080/appcenterconsole`
         * `https://{MFP Server VM Public IP}:9443/appcenterconsole`
-    * Log in to the Console with admin user and password specified in step 3.
+    * 3단계에서 지정한 관리 사용자 및 비밀번호로 콘솔에 로그인하십시오.
 
-## Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository
+## 외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성
 {: #configuring-mobilefirst-administration-security-with-an-external-ldap-repository }
-You can configure {{ site.data.keys.product_adj }} administration security to enable connecting out to an external LDAP repository. The configuration is common for both WebSphere  Application Server Liberty profile and full profile.
+외부 LDAP 저장소와의 연결이 가능하도록 {{ site.data.keys.product_adj }} 관리 보안을 구성할 수 있습니다. 구성은 WebSphere  Application Server Liberty 프로파일 및 전체 프로파일 둘 다에 공통됩니다. 
 
-This procedure involves configuring the LDAP parameters for connecting to the external user registry server. Before you begin, ensure the LDAP server is working and consult your LDAP administrator to obtain the required configuration information.
+이 프로시저에는 외부 사용자 레지스트리 서버에 연결하기 위해 LDAP 매개변수를 구성하는 작업이 포함됩니다. 시작하기 전에 LDAP 서버가 작동 중인지 확인하고 LDAP 관리자에게 문의하여 필요한 구성 정보를 얻으십시오. 
 
-**Important:**  
-When the LDAP repository configuration is enabled, a default user for {{ site.data.keys.product_adj }} administration is not automatically created. Instead, you must specify the administration user name and password that are stored in the LDAP repository. This information is required by WebSphere Application Server Liberty profile and a server farm of WebSphere Application Server full profile.
+**중요:**  
+LDAP 저장소 구성이 사용되는 경우 {{ site.data.keys.product_adj }} 관리의 기본 사용자가 자동으로 작성되지 않습니다. 대신 LDAP 저장소에 저장되는 관리 사용자 이름 및 비밀번호를 지정해야 합니다. 이 정보는 WebSphere Application Server Liberty 프로파일과 WebSphere Application Server 전체 프로파일의 서버 팜에서 필요합니다. 
 
-If the runtime to be deployed in the pattern is configured to use LDAP for application authentication, make sure that the LDAP server configured in the runtime is the same as the LDAP server that is configured for the {{ site.data.keys.product_adj }} Administration; different LDAP servers are not supported. Also, the protocol and port for LDAP connection must be identical. For example, if connections from the runtime to the LDAP server are configured to use the SSL protocol and port is 636, connections from the {{ site.data.keys.product_adj }} Administration to the LDAP server must use the SSL protocol and port 636 as well.
+패턴에 배치되는 런타임을 애플리케이션 인증에 LDAP를 사용하도록 구성하는 경우, 런타임에 구성된 LDAP 서버가 {{ site.data.keys.product_adj }} 관리용으로 구성된 LDAP 서버와 동일한지 확인하십시오. 서로 다른 LDAP 서버는 지원되지 않습니다. 또한 LDAP 연결을 위한 프로토콜 및 포트도 동일해야 합니다. 예를 들어, 런타임에서 LDAP 서버로의 연결이 SSL 프로토콜을 사용하도록 구성되어 있고 포트가 636인 경우, {{ site.data.keys.product_adj }} 관리에서 LDAP 서버로의 연결도 SSL 프로토콜 및 포트 636을 사용해야 합니다.
 
-1. Build a pattern with any topology you need. For more information, see the following topics:
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
-2. Mandatory for AIX : In IBM  PureApplication  System running on Power, the MobileFirst Platform DB node needs to use the AIX-specific add-on component "Default AIX add disk" to replace the "Default add disk" component in the template to support the jfs2 file system:
-    * In the **Pattern Builder**, select the **MobileFirst Platform DB** node.
-    * Click the **Add a Component Add-on** button (the button is visible above the component box when you hover the cursor over the **MobileFirst Platform DB** node).
-    * From the **Add Add-ons** list, select **Default AIX add disk**. The component is added as the lowest component of the MobileFirst Platform DB node.
-    * Select the Default AIX add disk component and specify the following attributes:
+1. 필요한 토폴로지로 패턴을 빌드하십시오. 자세한 정보는 다음 주제를 참조하십시오.
+    * [단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
+    * [복수 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
+    * [단일 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
+    * [복수 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
+    * [WebSphere Application Server Network Deployment 서버 클러스터에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
+2. AIX의 경우 필수: Power 에서 실행 중인 IBM PureApplication System에서, MobileFirst Platform DB 노드는 jfs2 파일 시스템을 지원하기 위해 AIX 고유 추가 기능 컴포넌트인 "Default AIX add disk"를 사용하여 템플리트의 "Default add disk" 컴포넌트를 대체해야 합니다. 
+    * **패턴 빌더**에서 **MobileFirst Platform DB** 노드를 선택하십시오. 
+    * **컴포넌트 추가 기능 추가** 단추를 클릭하십시오(이 단추는 **MobileFirst Platform DB** 노드 위에 커서를 놓을 때 컴포넌트 상자 위에 표시됨). 
+    * **추가 기능 추가** 목록에서 **Default AIX add disk**를 선택하십시오. 이 컴포넌트가 MobileFirst Platform DB 노드의 최하위 컴포넌트로 추가됩니다. 
+    * Default AIX add disk 컴포넌트를 선택하고 다음 속성을 지정하십시오. 
 
         **DISK\_SIZE\_GB**  
-        Storage size (measured in GB) to be extended to the DB server. Example value: 10.
+        DB 서버로 확장되는 스토리지 크기(GB)입니다. 예제 값: 10. 
         
         **FILESYSTEM\_TYPE**  
-        Supported file system in AIX. Default value: jfs2.
+        AIX에서 지원되는 파일 시스템입니다. 기본값: jfs2.
         
         **MOUNT\_POINT**  
-        Align with the attribute **Mount point for instance owner** in the **Database Server component** in the **MobileFirst Platform DB** node. Example value: `/dbinst`.
+        **MobileFirst Platform DB** 노드의 **Database Server** 컴포넌트에 있는 **인스턴스 소유자의 마운트 위치** 속성과 일치합니다. 예제 값: `/dbinst`.
         
         **VOLUME\_GROUP**  
-        Example value: `group1`. Contact your IBM PureApplication System administrator for the correct value.
-    * In the MobileFirst Platform DB node, select the Default add disk component, and then click the bin icon to delete it.
-    * Save the pattern.
+        예제 값: `group1`. 올바른 값은 IBM PureApplication System 관리자에게 문의하십시오. 
+    * MobileFirst Platform DB 노드에서 Default add disk 컴포넌트를 선택한 후 바이너리 아이콘을 클릭하여 삭제하십시오. 
+    * 패턴을 저장하십시오.
 
-3. Configure {{ site.data.keys.mf_server }} administration:
-    * In IBM PureApplication System, in the dashboard, click P**atterns → Virtual System Patterns**. The Virtual System Patterns page opens.
-    * On the **Virtual System Patterns** page, use the **Search** field to find and select the pattern you created, and then click **Open** to open the **Pattern Builder** page.
-    * In the MobileFirst Platform Server node (or the DmgrNode node when using the {{ site.data.keys.product }} (WAS ND) template), select the MFP Server Administration component. The properties of the selected component are displayed next to the canvas.
-    * Supply the following LDAP information in the fields provided:
+3. {{ site.data.keys.mf_server }} 관리를 구성하십시오. 
+    * IBM PureApplication System의 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. 가상 시스템 패턴 페이지가 열립니다. 
+    * **가상 시스템 패턴** 페이지에서 **검색** 필드를 사용하여 사용자가 작성한 패턴을 찾아 선택한 후 **열기**를 클릭하여 **패턴 빌더** 페이지를 여십시오. 
+    * MobileFirst Platform Server 노드({{ site.data.keys.product }}(WAS ND) 템플리트를 사용 중인 경우, DmgrNode 노드)에서 MFP Server Administration 컴포넌트를 선택하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * 표시되는 필드에 다음과 같은 LDAP 정보를 제공하십시오. 
 
     **admin_user**  
-    User ID of the account that has {{ site.data.keys.mf_server }} administration privilege. This value is stored in the LDAP repository. Not required if the {{ site.data.keys.mf_server }} is to be deployed on a single node of WebSphere Application Server full profile.
+    {{ site.data.keys.mf_server }} 관리 권한이 있는 계정의 사용자 ID입니다. 이 값은 LDAP 저장소에 저장됩니다. {{ site.data.keys.mf_server }}를 WebSphere Application Server 전체 프로파일의 단일 노드에 배치하는 경우에는 필요하지 않습니다. 
     
     **admin_password**  
-    Admin user password. This value is stored in the LDAP repository. Not required if the {{ site.data.keys.mf_server }} is to be deployed on a single node of WebSphere Application Server full profile.
+    관리 사용자 비밀번호입니다. 이 값은 LDAP 저장소에 저장됩니다. {{ site.data.keys.mf_server }}를 WebSphere Application Server 전체 프로파일의 단일 노드에 배치하는 경우에는 필요하지 않습니다. 
     
     **LDAP_TYPE**  
-    LDAP server type of your user registry. One of the following values:  
+    사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.  
     --- **None**  
-    LDAP connection is disabled. When this is set, all the other LDAP parameters are treated as placeholders only.  
+    LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다.   
     --- **TivoliDirectoryServer**  
-    Select this if the LDAP repository is an IBM Tivoli  Directory Server.  
+    LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오.   
     --- **ActiveDirectory**  
-    Select this if the LDAP repository is a Microsoft Active Directory.  
-    Default value: None.
+    LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오.   
+    기본값: None.
     
     **LDAP_IP**  
-    LDAP server IP address.
+    LDAP 서버 IP 주소입니다. 
     
     **LDAP_SSL_PORT**  
-    LDAP port for secure connection.
+    보안 연결을 위한 LDAP 포트입니다. 
     
     **LDAP_PORT**  
-    LDAP port for non-secure connection.
+    비보안 연결을 위한 LDAP 포트입니다. 
     
     **BASE_DN**  
-    Base DN.
+    기본 DN입니다. 
     
     **BIND_DN**  
-    Bind DN.
+    바인드 DN입니다. 
     
     **BIND_PASSWORD**  
-    Bind DN password.
+    바인드 DN 비밀번호입니다. 
     
     **REQUIRE_SSL**  
-    Select true for secure connection to the LDAP server. Default value: false.
+    LDAP 서버로의 보안 연결을 위해서는 true를 선택하십시오. 기본값: false.
     
     **USER_FILTER**  
-    LDAP user filter that applies when searching the existing user registry for users.
+    기존 사용자 레지스트리에서 사용자를 검색할 때 적용되는 LDAP 사용자 필터입니다. 
     
     **GROUP_FILTER**  
-    LDAP group filter that applies when searching the existing user registry for groups.
+    기존 사용자 레지스트리에서 그룹을 검색할 때 적용되는 LDAP 그룹 필터입니다. 
     
     **LDAP\_REPOSITORY\_NAME**  
-    LDAP server name.
+    LDAP 서버 이름입니다. 
     
     **CERT\_FILE\_PATH**  
-    Target path of the uploaded LDAP server certification.
+    업로드된 LDAP 서버 인증의 대상 경로입니다. 
     
     **mfpadmin**  
-    Admin role for {{ site.data.keys.mf_server }}. One of the following values:
+    {{ site.data.keys.mf_server }}의 관리자 역할입니다. 다음 값 중 하나입니다.
     --- **None**  
-        No user.  
+        사용자가 없습니다.   
     --- **AllAuthenticatedUsers**  
-        Authenticated users  
+        인증된 사용자입니다.   
     --- **Everyone**  
-        All users.  
+        모든 사용자입니다.   
         
-    Default value: None. For more information about security roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    기본값: None. 보안 역할에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리용 사용자 인증 구성](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)을 참조하십시오. 
     
     **mfpdeployer**  
-    Deployer role for {{ site.data.keys.mf_server }}. One of the following values:
+    {{ site.data.keys.mf_server }}의 배치자 역할입니다. 다음 값 중 하나입니다.
     --- **None**  
-        No user.  
+        사용자가 없습니다.   
     --- **AllAuthenticatedUsers**  
-        Authenticated users  
+        인증된 사용자입니다.   
     --- **Everyone**  
-        All users.
+        모든 사용자입니다. 
     
-    Default value: None. For more information about security roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    기본값: None. 보안 역할에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리용 사용자 인증 구성](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)을 참조하십시오. 
     
     **mfpmonitor**  
-    Monitor role for {{ site.data.keys.mf_server }}. One of the following values:    
+    {{ site.data.keys.mf_server }}의 모니터 역할입니다. 다음 값 중 하나입니다.    
     --- **None**  
-        No user.  
+        사용자가 없습니다.   
     --- **AllAuthenticatedUsers**  
-        Authenticated users     
+        인증된 사용자입니다.      
     --- **Everyone**  
-        All users.
+        모든 사용자입니다. 
     
-    Default value: None. For more information about security roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    기본값: None. 보안 역할에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리용 사용자 인증 구성](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)을 참조하십시오. 
     
     **mfpoperator**  
-    Operator role for {{ site.data.keys.mf_server }}. One of the following values:
+    {{ site.data.keys.mf_server }}의 운영자 역할입니다. 다음 값 중 하나입니다.
     --- **None**  
-        No user.  
+        사용자가 없습니다.   
     --- **AllAuthenticatedUsers**  
-        Authenticated users  
+        인증된 사용자입니다.   
     --- **Everyone**  
-        All users.
+        모든 사용자입니다. 
 
-    Default value: None. For more information about security roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+    기본값: None. 보안 역할에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리용 사용자 인증 구성](../../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)을 참조하십시오. 
 
-4. Optional: Configure the LDAP SSL connection. This step is required only if you set **REQUIRE_SSL** to true in the previous step to use secure connections to the LDAP server:
-    * From the **Assets** toolbar, expand **Software Components**, and then drag and drop an **Additional file** component onto the MobileFirst Platform Server node in the canvas. Rename the component "MobileFirst LDAP Cert", for example.
-    * Hover the cursor over the newly added component, and then click the **Move up** and **Move down** buttons to adjust the position of the component in the node. Make sure that it is placed between the **MFP Server Prerequisite** component and the **MFP Server Administration** component.
-    * Click the **MobileFirst LDAP Cert** component. The properties of the selected component are displayed next to the canvas. Upload the LDAP certification artifact in the **Additional file** field by clicking the **Browse** button to locate it
-    * In the **Target** path field, specify the full path for storing the artifact including its file name; for example, **/opt/tmp/tdscert.der**.
-    * In the MobileFirst Platform Server node (or the DmgrNode node when using the {{ site.data.keys.product }} (WebSphere Application Server Network Deployment) template), select the MFP Server Administration component, and then click the **Add reference** button next to the **CERT\_FILE\_PATH** field. In the pop-up window, click the **component-level parameter** tab. From the Component list, select **MobileFirst LDAP Cert**. In the **Output** attribute list, select **target\_path**. Click the **Add** button to refresh the **Output value** field, and then click **OK**.
+4. 선택사항: LDAP SSL 연결을 구성하십시오. LDAP 서버로의 보안 연결을 사용하기 위해 이전 단계에서 **REQUIRE_SSL**을 true로 설정한 경우에만 이 단계가 필요합니다. 
+    * **자산** 도구 모음에서 **소프트웨어 컴포넌트**를 펼친 후 **추가 파일** 컴포넌트를 캔버스의 MobileFirst Platform Server 노드 위로 끌어서 놓으십시오. 예를 들어, "MobileFirst LDAP Cert" 컴포넌트의 이름을 바꾸십시오. 
+    * 새로 추가된 컴포넌트 위에 커서를 놓은 후 **위로 이동** 및 **아래로 이동** 단추를 클릭하여 노드에서 해당 컴포넌트의 위치를 조정하십시오. **MFP Server Prerequisite** 컴포넌트와 **MFP Server Administration** 컴포넌트 사이에 해당 컴포넌트를 배치해야 합니다. 
+    * **MobileFirst LDAP Cert** 컴포넌트를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. **추가 파일** 필드에서 **찾아보기** 단추를 클릭하여 LDAP 인증 아티팩트를 찾아 업로드하십시오. 
+    * **대상 경로** 필드에 아티팩트를 저장할 전체 경로(해당 파일 이름 포함)를 지정하십시오(예: **/opt/tmp/tdscert.der**). 
+    * MobileFirst Platform Server 노드({{ site.data.keys.product }}(WebSphere Application Server Network Deployment) 템플리트를 사용 중인 경우, DmgrNode 노드)에서 MFP Server Administration 컴포넌트를 선택한 후 **CERT\_FILE\_PATH** 필드 옆의 **참조 추가** 단추를 클릭하십시오. 팝업 창에서 **컴포넌트 레벨 매개변수** 탭을 클릭하십시오. 컴포넌트 목록에서 **MobileFirst LDAP Cert**를 선택하십시오. **출력** 속성 목록에서 **target\_path**를 선택하십시오. **추가** 단추를 클릭하여 **출력 값** 필드를 새로 고친 후 **확인**을 클릭하십시오.
 
-5. Configure and launch the pattern deployment. On the Deploy Pattern page, in the Nodes list, you can adjust your LDAP configurations by clicking **MobileFirst Server** (or **DmgrNode** when using the {{ site.data.keys.product }} (WAS ND) template) and then expanding **MFP Server Administration**. For more information about pattern deployment, see the "Configure and launch the pattern deployment" step in one of the following topics depending on the topology you selected when creating the pattern:
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 8.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 8.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 9 onwards.
+5. 패턴 배치를 구성하고 실행하십시오. 패턴 배치 페이지의 노드 목록에서 **MobileFirst Server**({{ site.data.keys.product }}(WAS ND) 템플리트를 사용 중인 경우, **DmgrNode**)를 클릭한 후 **MFP Server Administration**을 펼쳐 LDAP 구성을 조정할 수 있습니다. 패턴 배치에 대한 자세한 정보는 패턴 작성 시 선택한 토폴로지에 따라 다음 주제 중 하나에서 "패턴 배치를 구성하고 실행하십시오" 단계를 참조하십시오. 
+    * [단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), 8단계.
+    * [복수 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), 9단계.
+    * [단일 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), 8단계.
+    * [복수 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), 9단계.
+    * [WebSphere Application Server Network Deployment 서버 클러스터에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), 9단계 이후.
 
-6. Access the {{ site.data.keys.mf_console }}. Use the administrator user name and password to log in to the {{ site.data.keys.mf_console }} through your LDAP configuration. For more information, see the "Access the {{ site.data.keys.mf_console }}:" step in one of the following topics depending on the topology you selected when creating the pattern;
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 10.
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 10.
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.
+6. {{ site.data.keys.mf_console }}에 액세스하십시오. 관리자 이름 및 비밀번호를 사용하여 LDAP 구성을 통해 {{ site.data.keys.mf_console }}에 로그인하십시오. 자세한 정보는 패턴 작성 시 선택한 토폴로지에 따라 다음 주제 중 하나에서 "{{ site.data.keys.mf_console }}에 액세스하십시오" 단계를 참조하십시오. 
+    * [단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), 9단계.
+    * [복수 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), 10단계.
+    * [단일 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), 9단계.
+    * [복수 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), 10단계.
+    * [WebSphere Application Server Network Deployment 서버 클러스터에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), 10단계 이후.
 
-## Configuring an external database with a {{ site.data.keys.mf_system_pattern }}
+## {{ site.data.keys.mf_system_pattern }}을 사용하여 외부 데이터베이스 구성
 {: #configuring-an-external-database-with-a-mobilefirst-system-pattern }
-You can configure {{ site.data.keys.mf_system_pattern }} to enable connecting out to an external database. IBM DB2 is the only supported external database. The configuration is common for all the supported patterns.
+외부 데이터베이스와의 연결이 가능하도록 {{ site.data.keys.mf_system_pattern }}을 구성할 수 있습니다. 지원되는 외부 데이터베이스는 IBM DB2뿐입니다. 구성은 지원되는 모든 패턴에 공통됩니다. 
 
-**Before you begin**
-This procedure involves configuring the external database parameters for connecting to the external database. Before you begin, ensure the following:
+**시작하기 전에**
+이 프로시저에는 외부 데이터베이스에 연결하기 위해 외부 데이터베이스 매개변수를 구성하는 작업이 포함됩니다. 시작하기 전에 다음을 수행하십시오.
 
-* Configure the external database instance on your installed IBM DB2.
-* Make a note of the database instance name, database user name, database password, database host name or IP and database instance port.
+* 설치된 IBM DB2에서 외부 데이터베이스 인스턴스를 구성하십시오. 
+* 데이터베이스 인스턴스 이름, 데이터베이스 사용자 이름, 데이터베이스 비밀번호, 데이터베이스 호스트 이름 또는 IP 및 데이터베이스 인스턴스 포트를 메모하십시오.
 
-1. Build a pattern with any topology you need. For more information, see the following topics:
-    [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
+1. 필요한 토폴로지로 패턴을 빌드하십시오. 자세한 정보는 다음 주제를 참조하십시오.
+    [단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
+    * [복수 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
+    * [단일 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
+    * [복수 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
+    * [WebSphere Application Server Network Deployment 서버 클러스터에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
 
-2. Select **MobileFirst Platform DB** and click **Remove component**.
-3. Configure {{ site.data.keys.mf_server }} administration:
-    * In IBM PureApplication  System, in the dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
-    * On the **Virtual System Patterns** page, use the **Search** field to find and select the pattern you created, and then click **Open** to open the **Pattern Builder** page.
-    * In the MobileFirst Platform Server node (or the DmgrNode node when using the {{ site.data.keys.product }} (WAS ND) template), select the **MFP Server Administration** component. The properties of the selected component are displayed next to the canvas.
-    * Check the option **USE\_EXTERNAL\_DATABASE** and configure the following parameters:
+2. **MobileFirst Platform DB**를 선택하고 **컴포넌트 제거**를 클릭하십시오. 
+3. {{ site.data.keys.mf_server }} 관리를 구성하십시오. 
+    * IBM PureApplication  System의 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. **가상 시스템 패턴** 페이지가 열립니다.
+    * **가상 시스템 패턴** 페이지에서 **검색** 필드를 사용하여 사용자가 작성한 패턴을 찾아 선택한 후 **열기**를 클릭하여 **패턴 빌더** 페이지를 여십시오. 
+    * MobileFirst Platform Server 노드({{ site.data.keys.product }}(WAS ND) 템플리트를 사용 중인 경우, DmgrNode 노드)에서 **MFP Server Administration** 컴포넌트를 선택하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **USE\_EXTERNAL\_DATABASE** 옵션을 선택하고 다음 매개변수를 구성하십시오. 
 
         **db_instance**  
-        External database instance name.
+        외부 데이터베이스 인스턴스 이름입니다.
         
         **db_user**  
-        External database user name.
+        외부 데이터베이스 사용자 이름입니다.
         
         **db_name**  
-        External database name.
+        외부 데이터베이스 이름입니다.
         
         **db_password**  
-        External database password.
+        외부 데이터베이스 비밀번호입니다.
         
         **db_ip**  
-        External database IP.
+        외부 데이터베이스 IP입니다.
         
         **db_port**  
-        External database port number.
+        외부 데이터베이스 포트 번호입니다.
         
-        > **Note:** If you are using the {{ site.data.keys.product }} (WAS ND) pattern template, you will need to additionally configure the attribute **Open firewall ports for WAS** to the external database port number.
-    * In the MobileFirst Platform Server node (or the DmgrNode node when using the {{ site.data.keys.product }} (WAS ND) template), select the **MFP Server Runtime Deployment** component. The properties of the selected component are displayed next to the canvas.
-    * Under the **USE\_EXTERNAL\_DATABASE** configure the following parameters:
+        > **참고:** {{ site.data.keys.product }}(WAS ND) 패턴 템플리트를 사용 중인 경우, 외부 데이터베이스 포트 번호에 **WAS용 열린 방화벽 포트** 속성을 추가로 구성해야 합니다.
+    * MobileFirst Platform Server 노드({{ site.data.keys.product }}(WAS ND) 템플리트를 사용 중인 경우, DmgrNode 노드)에서 **MFP Server Runtime Deployment** 컴포넌트를 선택하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. 
+    * **USE\_EXTERNAL\_DATABASE**에서 다음 매개변수를 구성하십시오. 
 
         **rtdb_instance**  
-        External database instance name.
+        외부 데이터베이스 인스턴스 이름입니다.
         
         **rtdb_user**  
-        External runtime database user name.
+        외부 런타임 데이터베이스 사용자 이름입니다.
         
         **rtdb_name**  
-        External runtime database name, which will be created.
+        작성되는 외부 런타임 데이터베이스 이름입니다.
         
         **rtdb_password**
-        External runtime database password.
+        외부 런타임 데이터베이스 비밀번호입니다. 
 
-## Deploying and configuring {{ site.data.keys.mf_analytics }}
+## {{ site.data.keys.mf_analytics }} 배치 및 구성
 {: #deploying-and-configuring-mobilefirst-analytics }
-You can deploy and configure the {{ site.data.keys.mf_analytics }} on both WebSphere  Application Server Liberty profile and full profile to enable the Analytics features in the pattern.
+WebSphere  Application Server Liberty 프로파일 및 전체 프로파일 둘 다에 {{ site.data.keys.mf_analytics }}를 배치하고 구성하여 패턴의 Analytics 기능을 사용 가능하게 설정할 수 있습니다. 
 
-Before you begin,  
-If you intend to use an LDAP repository to protect the Analytics Console, ensure that the LDAP server is working and consult your LDAP administrator to obtain the required configuration information.
+시작하기 전에,  
+LDAP 저장소를 사용하여 Analytics 콘솔을 보호하려는 경우, LDAP 서버가 작동 중인지 확인한 후 LDAP 관리자에게 문의하여 필요한 구성 정보를 얻으십시오. 
 
-> **Important:** When the LDAP repository configuration is enabled in the Analytics component, a default administration user is not created for {{ site.data.keys.mf_analytics }}. Instead, you must specify the administration user name and password values that are stored in the LDAP repository. These values are required to protect the Analytics Console.
+> **중요:** Analytics 컴포넌트에서 LDAP 저장소 구성이 사용되는 경우 {{ site.data.keys.mf_analytics }}의 기본 관리 사용자가 작성되지 않습니다. 대신 LDAP 저장소에 저장되는 관리 사용자 이름 및 비밀번호를 지정해야 합니다. 이러한 값은 Analytics 콘솔을 보호하는 데 필요합니다.
 
-1. Build a pattern with the topology you need. For more information, see the following topics:
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
+1. 필요한 토폴로지로 패턴을 빌드하십시오. 자세한 정보는 다음 주제를 참조하십시오.
+    * [단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server)
+    * [복수 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server)
+    * [단일 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server)
+    * [복수 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server)
+    * [WebSphere Application Server Network Deployment 서버 클러스터에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers)
 
-2. Add and configure {{ site.data.keys.mf_analytics }}:
-    * In the IBM  PureApplication  System dashboard, click **Patterns → Virtual System Patterns**. The **Virtual System Patterns** page opens.
-    * On the **Virtual System Patterns** page, use the **Search** field to find and select the pattern you created, and then click **Open** to open the **Pattern Builder** page.
-    * From the **Assets** list, expand **Software Components**, and then drag and drop one of the following components onto the canvas:
+2. {{ site.data.keys.mf_analytics }}를 추가하고 구성하십시오. 
+    * IBM PureApplication System 대시보드에서 **패턴 → 가상 시스템 패턴**을 클릭하십시오. **가상 시스템 패턴** 페이지가 열립니다.
+    * **가상 시스템 패턴** 페이지에서 **검색** 필드를 사용하여 사용자가 작성한 패턴을 찾아 선택한 후 **열기**를 클릭하여 **패턴 빌더** 페이지를 여십시오. 
+    * **자산** 목록에서 **소프트웨어 컴포넌트**를 펼친 후 다음 컴포넌트 중 하나를 캔버스로 끌어서 놓으십시오. 
 
         **Liberty profile server**  
-        Select this component if you want to deploy {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty profile.
+        WebSphere Application Server Liberty 프로파일에 {{ site.data.keys.mf_analytics }}를 배치하려는 경우 이 컴포넌트를 선택하십시오. 
         
         **Standalone server**  
-        Select this component if you want to deploy {{ site.data.keys.mf_analytics }} on WebSphere Application Server full profile.
+        WebSphere Application Server 전체 프로파일에 {{ site.data.keys.mf_analytics }}를 배치하려는 경우 이 컴포넌트를 선택하십시오. 
 
-        A new node is created with the name "OS Node". Rename it "{{ site.data.keys.mf_analytics }}".
-    * Make the following configuration changes depending on the type of application server you want to deploy Analytics to:
-        * If you are deploying {{ site.data.keys.mf_analytics }} to WebSphere Application Server Liberty profile, click **Liberty profile server** in the {{ site.data.keys.mf_analytics }} node. The properties of the selected component are displayed next to the canvas. In the **Configuration data location** field, enter the path **/opt/IBM/WebSphere/Liberty** and specify the administrative user name and password. Use the default values for the other parameters.
-        * If you are deploying {{ site.data.keys.mf_analytics }} to WebSphere Application Server full profile, click **Standalone server** in the {{ site.data.keys.mf_analytics }} node. The properties of the selected component are displayed next to the canvas. In the **Configuration data location** field, enter the path **/opt/IBM/WebSphere/AppServer/Profiles**, change Profile name to **AppSrv01**, and specify the administrative user name and password. Use the default values for the other parameters.
+        이름이 "OS Node"인 새 노드가 작성됩니다. 이름을 "{{ site.data.keys.mf_analytics }}"로 바꾸십시오.
+    * Analytics를 배치할 애플리케이션 서버의 유형에 따라 다음과 같은 구성 변경을 수행하십시오. 
+        * WebSphere Application Server Liberty 프로파일에 {{ site.data.keys.mf_analytics }}를 배치하는 경우 {{ site.data.keys.mf_analytics }} 노드에서 **Liberty profile server**를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. **구성 데이터 위치** 필드에 경로 **/opt/IBM/WebSphere/Liberty**를 입력하고 관리 사용자 이름 및 비밀번호를 지정하십시오. 기타 매개변수에는 기본값을 사용하십시오. 
+        * WebSphere Application Server 전체 프로파일에 {{ site.data.keys.mf_analytics }}를 배치하는 경우 {{ site.data.keys.mf_analytics }} 노드에서 **Standalone server**를 클릭하십시오. 선택한 컴포넌트의 특성이 캔버스 옆에 표시됩니다. **구성 데이터 위치** 필드에 경로 **/opt/IBM/WebSphere/AppServer/Profiles**를 입력하고 프로파일 이름을 **AppSrv01**로 변경한 후 관리 사용자 이름 및 비밀번호를 지정하십시오. 기타 매개변수에는 기본값을 사용하십시오. 
     
-        > **Important:** The WebSphere Application Server administrative user will be created in the WebSphere Application Server user repository. If LDAP will be configured for the Analytics server, avoid user name conflicts with the WebSphere Application Server administrative user. For example, if "user1" will be introduced by the LDAP server through its configuration, do not set "user1" as the WebSphere Application Server administrative user name.
-    * From the Components list, expand **Scripts**, and then drag and drop an **MFP Server Prerequisite** component and a MFP WAS SDK Level component onto the {{ site.data.keys.mf_analytics }} node on the canvas.
-    * From the Components list, expand **Scripts**, and then drag and drop an **MFP Analytics** component onto the {{ site.data.keys.mf_analytics }} node on the canvas. Make sure the MFP Analytics component is positioned after the Liberty profile server component (or the Standalone server component).
-    * Supply the following {{ site.data.keys.mf_analytics }} information in the fields provided:
+        > **중요:** WebSphere Application Server 관리 사용자가 WebSphere Application Server 사용자 저장소에 작성됩니다. Analytics 서버용으로 LDAP가 구성되는 경우, 사용자 이름과 WebSphere Application Server 관리 사용자가 충돌하지 않도록 하십시오. 예를 들어, LDAP 서버에서 해당 구성을 통해 "user1"을 도입하는 경우, "user1"을 WebSphere Application Server 관리 사용자 이름으로 설정하지 마십시오.
+    * 컴포넌트 목록에서 **스크립트**를 펼친 후 **MFP Server Prerequisite** 컴포넌트 및 MFP WAS SDK Level 컴포넌트를 캔버스 위의 {{ site.data.keys.mf_analytics }} 노드로 끌어서 놓으십시오. 
+    * 컴포넌트 목록에서 **스크립트**를 펼친 후 **MFP Analytics** 컴포넌트를 캔버스 위의 {{ site.data.keys.mf_analytics }} 노드로 끌어서 놓으십시오. MFP Analytics 컴포넌트가 Liberty profile server 컴포넌트(또는 Standalone server 컴포넌트) 다음에 배치되도록 해야 합니다. 
+    * 표시되는 필드에 다음과 같은 {{ site.data.keys.mf_analytics }} 정보를 제공하십시오. 
         
-        The LDAP parameters are exactly the same as the MFP Server Administration parameters. For more information, see the "Configure MFP Server Administration" step in 3:
+        LDAP 매개변수는 MFP Server Administration 매개변수와 정확히 동일합니다. 자세한 정보는 3의 "MFP Server Administration을 구성하십시오" 단계를 참조하십시오. 
         
-        > **Important:** For LDAP SSL connection configuration in {{ site.data.keys.mf_analytics }}, make sure that in step 4b in [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository), the dragged-in {{ site.data.keys.product_adj }} LDAP Cert component in the {{ site.data.keys.mf_analytics }} node must be moved to between the Liberty profile server (or Stanalone server) and the MFP Analytics script package.
+        > **중요:** {{ site.data.keys.mf_analytics }}에서의 LDAP SSL 연결 구성의 경우, [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)의 4b 단계에서, {{ site.data.keys.mf_analytics }} 노드 내에 끌어서 놓은 {{ site.data.keys.product_adj }} LDAP Cert 컴포넌트를 Liberty profile server(또는 Stanalone server)와 MFP Analytics 스크립트 패키지의 사이로 이동시켜야 합니다.
         
    #### WAS_ROOT
-    * If {{ site.data.keys.mf_analytics }} is being installed on WebSphere Application Server Liberty profile, specify the installation directory of the Liberty profile for Analytics:
-        * Click the **Add reference** button next to the **WAS_ROOT** field and in the pop-up window, click the **component-level parameter** tab.
-        * In the **Component** field, select **Liberty profile server** (it might be called **Liberty profile server\_1** if the {{ site.data.keys.mf_server }} is also deployed on WebSphere Application Server Liberty profile).
-        * In the **Output attribute** field, select **install_directory**. Click the **Add** button to refresh the Output value field, and then click **OK**.
-    * If {{ site.data.keys.mf_analytics }} is being installed on WebSphere Application Server full profile, specify the installation directory of the WebSphere Application Server full profile for Analytics:
-        * Click the **Add reference** button next to the WAS_ROOT field and in the pop-up window, click the **component-level parameter** tab.
-        * In the **Component** field, select **Standalone server** (it might be called **Standalone server\_1** if the {{ site.data.keys.mf_server }} is also deployed on WebSphere Application Server full profile)
-        * In the **Output attribute** field, select **install_directory**. Click the **Add** button to refresh the Output value field, and then click **OK**.
+    * {{ site.data.keys.mf_analytics }}를 WebSphere Application Server Liberty 프로파일에 설치하는 경우, Analytics용 Liberty 프로파일의 설치 디렉토리를 지정하십시오. 
+        * **WAS_ROOT** 필드 옆의 **참조 추가** 단추를 클릭한 후 팝업 창에서 **컴포넌트 레벨 매개변수** 탭을 클릭하십시오. 
+        * **컴포넌트** 필드에서 **Liberty profile server**(WebSphere Application Server Liberty 프로파일에 {{ site.data.keys.mf_server }}도 배치되는 경우 **Liberty profile server\_1**이라고도 함)를 선택하십시오. 
+        * **출력 속성** 필드에서 **install_directory**를 선택하십시오. **추가** 단추를 클릭하여 출력 값 필드를 새로 고친 후 **확인**을 클릭하십시오.
+    * {{ site.data.keys.mf_analytics }}를 WebSphere Application Server 전체 프로파일에 설치하는 경우, Analytics용 WebSphere  Application Server 전체 프로파일의 설치 디렉토리를 지정하십시오. 
+        * WAS_ROOT 필드 옆의 **참조 추가** 단추를 클릭한 후 팝업 창에서 **컴포넌트 레벨 매개변수** 탭을 클릭하십시오. 
+        * **컴포넌트** 필드에서 **Standalone server**(WebSphere Application Server 전체 프로파일에 {{ site.data.keys.mf_server }}도 배치되는 경우 **Standalone server\_1**이라고도 함)를 선택하십시오. 
+        * **출력 속성** 필드에서 **install_directory**를 선택하십시오. **추가** 단추를 클릭하여 출력 값 필드를 새로 고친 후 **확인**을 클릭하십시오.
         
    #### HEAP\_MIN\_SIZE
    
-    Applicable to WebSphere Application Server full profile only.
+    WebSphere Application Server 전체 프로파일에만 적용됩니다. 
 
-    The amount of Analytics data that is generated is directly proportional to the amount of memory required to handle it. Set this value to allow a larger minimum heap size for WebSphere Application Server full profile. Make sure that the **Memory size** value specified in the Core OS component of the {{ site.data.keys.mf_analytics }} node is larger than **HEAP\_MIN\_SIZE**. Consider setting a value equal to **HEAP\_MAX\_SIZE**.
+    생성되는 Analytics 데이터의 양은 해당 데이터를 처리하는 데 필요한 메모리의 양에 정비례합니다. WebSphere Application Server 전체 프로파일의 최소 힙 크기를 증가시킬 수 있도록 이 값을 설정하십시오. {{ site.data.keys.mf_analytics }} 노드의 Core OS 컴포넌트에 지정되는 **메모리 크기** 값은 **HEAP\_MIN\_SIZE**보다 커야 합니다. **HEAP\_MAX\_SIZE**와 동일한 값을 설정하는 것이 좋습니다. 
     
-    Default value: 4096 MB.
+    기본값: 4096MB.
 
    #### HEAP\_MAX\_SIZE
-    Applicable to WebSphere Application Server full profile only.
+    WebSphere Application Server 전체 프로파일에만 적용됩니다. 
 
-    The amount of Analytics data that is generated is directly proportional to the amount of memory required to handle it. Set this value to allow a larger maximum heap size for WebSphere Application Server full profile. Make sure that the **Memory size** value specified in the Core OS component of the {{ site.data.keys.mf_analytics }} node is larger than **HEAP\_MAX\_SIZE**. Consider setting a value equal to **HEAP\_MIN\_SIZE**.
+    생성되는 Analytics 데이터의 양은 해당 데이터를 처리하는 데 필요한 메모리의 양에 정비례합니다. WebSphere Application Server 전체 프로파일의 최대 힙 크기를 증가시킬 수 있도록 이 값을 설정하십시오. {{ site.data.keys.mf_analytics }} 노드의 Core OS 컴포넌트에 지정되는 **메모리 크기** 값은 **HEAP\_MAX\_SIZE**보다 커야 합니다. **HEAP\_MIN\_SIZE**와 동일한 값을 설정하는 것이 좋습니다. 
 
-    Default value: 4096 MB.
+    기본값: 4096MB.
     
    #### WAS\_admin\_user
-    * Applicable to WebSphere Application Server full profile only.  
-    WebSphere Application Server full profile admin user ID for the Analytics server.
-        * Click the **Add reference** button next to the **WAS\_admin\_user** field and in the pop-up window, click the **component-level** parameter tab.
-        * In the **Component** field, select **Standalone server** (it may be called **Standalone server_1** if the {{ site.data.keys.mf_server }} is also deployed on WebSphere Application Server full profile)
-        * In the **Output attribute** field, select **was\_admin**. Click the **Add** button to refresh the **Output** value field, and then click **OK**.
+    * WebSphere Application Server 전체 프로파일에만 적용됩니다.   
+Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사용자 ID입니다. 
+        * **WAS\_admin\_user** 필드 옆의 **참조 추가** 단추를 클릭한 후 팝업 창에서 **컴포넌트 레벨 매개변수** 탭을 클릭하십시오. 
+        * **컴포넌트** 필드에서 **Standalone server**(WebSphere Application Server 전체 프로파일에 {{ site.data.keys.mf_server }}도 배치되는 경우 **Standalone server_1**이라고도 함)를 선택하십시오. 
+        * **출력 속성** 필드에서 **was\_admin**을 선택하십시오. **추가** 단추를 클릭하여 **출력 값** 필드를 새로 고친 후 **확인**을 클릭하십시오.
     
-    For Liberty profile, the default value can be used.
+    Liberty 프로파일의 경우 기본값을 사용할 수 있습니다. 
     
    #### WAS\_admin\_password
-    Applicable to WebSphere Application Server full profile only.
+    WebSphere Application Server 전체 프로파일에만 적용됩니다. 
 
-    WebSphere Application Server full profile admin user ID for the Analytics server.
-    * Click the **Add reference** button next to the **WAS\_admin\_password** field and in the pop-up window, click the **component-level parameter** tab.
-    * In the **Component** field, select **Standalone server** (it may be called **Standalone server_1** if the {{ site.data.keys.mf_server }} is also deployed on WebSphere Application Server full profile)
-    * In the **Output** attribute field, select **was\_admin\_password**. Click the **Add** button to refresh the **Output** value field, and then click **OK**.
+    Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사용자 ID입니다. 
+    * **WAS\_admin\_password** 필드 옆의 **참조 추가** 단추를 클릭한 후 팝업 창에서 **컴포넌트 레벨 매개변수** 탭을 클릭하십시오. 
+    * **컴포넌트** 필드에서 **Standalone server**(WebSphere Application Server 전체 프로파일에 {{ site.data.keys.mf_server }}도 배치되는 경우 **Standalone server_1**이라고도 함)를 선택하십시오. 
+    * **출력** 속성 필드에서 **was\_admin\_password**를 선택하십시오. **추가** 단추를 클릭하여 **출력 값** 필드를 새로 고친 후 **확인**을 클릭하십시오.
     
-    For Liberty profile, the default value can be used.
+    Liberty 프로파일의 경우 기본값을 사용할 수 있습니다. 
 
    #### admin_user
-    * If an LDAP repository is not enabled, create a default administration user for {{ site.data.keys.mf_analytics_console }} protection.
-    * If an LDAP repository is enabled, specify the user name that has {{ site.data.keys.mf_analytics }} administration privilege. The value is stored in the LDAP repository.
+    * LDAP 저장소가 사용되지 않는 경우 {{site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자를 작성하십시오. 
+    * LDAP 저장소가 사용되는 경우에는 {{ site.data.keys.mf_analytics }} 관리 권한이 있는 사용자 이름을 지정하십시오. 값은 LDAP 저장소에 저장됩니다. 
 
    #### admin_password
-    * If an LDAP repository is not enabled, specify the password for the default administration user for {{ site.data.keys.mf_analytics_console }} protection.
-    * If an LDAP repository is enabled, specify the administration user password. The value is stored in the LDAP repository.
+    * LDAP 저장소가 사용되지 않는 경우 {{site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자의 비밀번호를 지정하십시오. 
+    * LDAP 저장소가 사용되는 경우에는 관리 사용자 비밀번호를 지정하십시오. 값은 LDAP 저장소에 저장됩니다. 
     
-    Optional: Enable the LDAP repository for {{ site.data.keys.mf_analytics_console }} protection. The LDAP parameters in {{ site.data.keys.mf_analytics }} are exactly the same as those for {{ site.data.keys.mf_server }} Administration. For more information, see “Configure MFP Server Administration” (step 3) in [Configuring {{ site.data.keys.product_adj }} administration security with an external LDAP repository](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository).
+    선택사항: {{site.data.keys.mf_analytics_console }} 보호를 위해 LDAP 저장소를 사용 가능하게 설정하십시오. {{ site.data.keys.mf_analytics }}의 LDAP 매개변수는 {{ site.data.keys.mf_server }} 관리용 매개변수와 정확히 동일합니다. 자세한 정보는 [외부 LDAP 저장소를 사용하여 {{ site.data.keys.product_adj }} 관리 보안 구성](#configuring-mobilefirst-administration-security-with-an-external-ldap-repository)에서 "MFP Server Administration을 구성하십시오"(3단계)를 참조하십시오. 
 
-3. Configure {{ site.data.keys.mf_server }} runtime deployment for {{ site.data.keys.mf_analytics }} connection:
-    * In the MobileFirst Platform Server node (or the DmgrNode node when using the {{ site.data.keys.product }} (WAS ND) template), select the **MFP Server Runtime Deployment** component.
-    * Drag a link from the MFP Server Runtime Deployment component to the Liberty profile server component or to the Standalone server component in the {{ site.data.keys.mf_analytics }} node, depending on the type of application server being used. The Configure Data Dependencies pop-up window opens.
-    * Configure the data dependencies:
-        * In the Configure Data Dependencies window, clear any existing recommended data dependency entries by clicking the **X** button next to each entry.
-        * Below **MFP Server Runtime Deployment** component, select **analytics_ip** and below **Liberty profile server** or **Standalone server**, select **IP**.
-        * Click the **Add** button to add the new data dependency.
-        * Click **OK** to save your changes.
+3. {{ site.data.keys.mf_analytics }} 연결용으로 {{ site.data.keys.mf_server }} 런타임 배치를 구성하십시오. 
+    * MobileFirst Platform Server 노드({{ site.data.keys.product }}(WAS ND) 템플리트를 사용 중인 경우, DmgrNode 노드)에서 **MFP Server Runtime Deployment** 컴포넌트를 선택하십시오. 
+    * 사용하는 애플리케이션 서버의 유형에 따라, MFP Server Runtime Deployment 컴포넌트로부터의 링크를 {{ site.data.keys.mf_analytics }} 노드의 Liberty profile server 컴포넌트 또는 Standalone server 컴포넌트로 끌어서 놓으십시오. 데이터 종속성 구성 팝업 창이 열립니다. 
+    * 데이터 종속성을 구성하십시오. 
+        * 데이터 종속성 구성 창에서 각 항목 옆의 **X** 단추를 클릭하여 기존의 권장 데이터 종속성 항목을 모두 지우십시오. 
+        * **MFP Server Runtime Deployment** 컴포넌트 아래에서 **analytics_ip**를 선택하고 **Liberty profile server** 또는 **Standalone server** 아래에서 **IP**를 선택하십시오.
+        * **추가** 단추를 클릭하여 새 데이터 종속성을 추가하십시오. 
+        * **확인**을 클릭하여 변경사항을 저장하십시오. 
 
-            ![Adding link from MFP Server Runtime component to the Liberty server](pureapp_analytics_link_1.jpg)
+            ![MFP Server Runtime 컴포넌트에서 Liberty 서버로의 링크 추가](pureapp_analytics_link_1.jpg)
             
-            The link from the MFP Server Runtime Deployment component to the Liberty profile server component (or the Standalone server component) is built.
-    * Drag another link from the MFP Server Runtime Deployment component to the MFP Analytics component in the {{ site.data.keys.mf_analytics }} node. The Configure Data Dependencies pop-up window opens.
-    * Configure the data dependencies:
-        * In the Configure Data Dependencies window, clear all the recommended data dependencies entries by clicking the **X** button next to each entry.
-        * Below **MFP Server Runtime Deployment** component, select **analytics\_admin\_user** and below **MFP Analytics**, select **admin_user**.
-        * Click the **Add** button to add the new data dependency.
-        * Repeat the process to configure a data dependency from **analytics\_admin\_password** to **admin_password**.
-        * Click **OK** to save your changes.
+            MFP Server Runtime Deployment 컴포넌트에서 Liberty profile server 컴포넌트(또는 Standalone server 컴포넌트)로의 링크가 빌드됩니다. 
+    * MFP Server Runtime Deployment 컴포넌트로부터의 또 하나의 링크를 {{ site.data.keys.mf_analytics }} 노드의 MFP Analytics 컴포넌트로 끌어서 놓으십시오. 데이터 종속성 구성 팝업 창이 열립니다. 
+    * 데이터 종속성을 구성하십시오. 
+        * 데이터 종속성 구성 창에서 각 항목 옆의 **X** 단추를 클릭하여 권장 데이터 종속성 항목을 모두 지우십시오. 
+        * **MFP Server Runtime Deployment** 컴포넌트 아래에서 **analytics\_admin\_user**를 선택하고 **MFP Analytics** 아래에서 **admin_user**를 선택하십시오. 
+        * **추가** 단추를 클릭하여 새 데이터 종속성을 추가하십시오. 
+        * **analytics\_admin\_password**에서 **admin_password**로의 데이터 종속성을 구성하는 프로세스를 반복하십시오. 
+        * **확인**을 클릭하여 변경사항을 저장하십시오. 
             
-            ![Adding link from MFP Server Runtime Deployment component to the MFP Analytics component](pureapp_analytics_link_2.jpg)
+            ![MFP Server Runtime Deployment 컴포넌트에서 MFP Analytics 컴포넌트로의 링크 추가](pureapp_analytics_link_2.jpg)
             
-    The following figure shows an example of a {{ site.data.keys.mf_analytics }} node added to a {{ site.data.keys.product }} WAS ND pattern:
+    다음 그림은 {{ site.data.keys.product }} WAS ND 패턴에 추가된 {{ site.data.keys.mf_analytics }} 노드의 예를 보여줍니다. 
 
-    ![{{ site.data.keys.mf_analytics }} node added to a {{ site.data.keys.product }} WAS ND pattern](pureapp_analytics_node.jpg)
+    ![{{ site.data.keys.product }} WAS ND 패턴에 추가된 {{ site.data.keys.mf_analytics }} 노드](pureapp_analytics_node.jpg)
 
-4. Configure and launch the pattern deployment.
+4. 패턴 배치를 구성하고 실행하십시오. 
 
-    On the Deploy Pattern page, you can adjust your {{ site.data.keys.mf_analytics }} configuration settings by clicking the {{ site.data.keys.mf_analytics }} component under the Nodes list in the middle column and then expanding MFP Analytics.
+    패턴 배치 페이지에서 가운데 열의 노드 목록 아래에 있는 {{ site.data.keys.mf_analytics }} 컴포넌트를 클릭한 후 MFP Analytics를 펼쳐 {{ site.data.keys.mf_analytics }} 구성 설정을 조정할 수 있습니다. 
 
-    For more information about pattern deployment, see the "Configure and launch the pattern deployment" step in the following topics depending on the topology you selected when creating the pattern:
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 8.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 8.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 9 onwards.
+    패턴 배치에 대한 자세한 정보는 패턴 작성 시 선택한 토폴로지에 따라 다음 주제에서 "패턴 배치를 구성하고 실행하십시오" 단계를 참조하십시오. 
+    * [단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), 8단계.
+    * [복수 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), 9단계.
+    * [단일 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), 8단계.
+    * [복수 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), 9단계.
+    * [WebSphere Application Server Network Deployment 서버 클러스터에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), 9단계 이후.
 
-5. Access {{ site.data.keys.mf_analytics }} through the {{ site.data.keys.mf_console }}.
+5. {{ site.data.keys.mf_console }}을 통해 {{ site.data.keys.mf_analytics }}에 액세스하십시오. 
 
-    For more information, see the "Access the {{ site.data.keys.mf_console }}" step in one of the following topics depending on the topology you selected when creating the pattern:
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server Liberty profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), step 10.
-    * [Deploying {{ site.data.keys.mf_server }} on a single-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), step 9.
-    * [Deploying {{ site.data.keys.mf_server }} on a multiple-node WebSphere Application Server full profile server](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), step 10.
-    * [Deploying {{ site.data.keys.mf_server }} on clusters of WebSphere Application Server Network Deployment servers](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), step 10 onwards.    
+    자세한 정보는 패턴 작성 시 선택한 토폴로지에 따라 다음 주제 중 하나에서 "{{ site.data.keys.mf_console }}에 액세스하십시오" 단계를 참조하십시오. 
+    * [단일 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-liberty-profile-server), 9단계.
+    * [복수 노드 WebSphere Application Server Liberty 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-liberty-profile-server), 10단계.
+    * [단일 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-single-node-websphere-application-server-full-profile-server), 9단계.
+    * [복수 노드 WebSphere Application Server 전체 프로파일 서버에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-a-multiple-node-websphere-application-server-full-profile-server), 10단계.
+    * [WebSphere Application Server Network Deployment 서버 클러스터에 {{ site.data.keys.mf_server }} 배치](#deploying-mobilefirst-server-on-clusters-of-websphere-application-server-network-deployment-servers), 10단계 이후.    
     
-## Predefined templates for {{ site.data.keys.mf_system_pattern }}
+## {{ site.data.keys.mf_system_pattern }}의 사전 정의된 템플리트
 {: #predefined-templates-for-mobilefirst-system-pattern }
-{{ site.data.keys.mf_system_pattern }} includes predefined templates that you can use to build patterns for the most typical deployment topologies.  
-The following templates are available:
+{{ site.data.keys.mf_system_pattern }}에는 가장 일반적인 배치 토폴로지에 대한 패턴을 빌드하는 데 사용할 수 있는 사전 정의된 템플리트가 포함되어 있습니다.   
+다음 템플리트를 사용할 수 있습니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to-1 }
-* [{{ site.data.keys.product }} (Liberty single node) template](#mobilefirst-foundation-liberty-single-node-template)
-* [{{ site.data.keys.product }} (Liberty server farm) template](#mobilefirst-foundation-liberty-server-farm-template)
-* [{{ site.data.keys.product }} (WAS single node) template](#mobilefirst-foundation-was-single-node-template)
-* [{{ site.data.keys.product }} (WAS server farm) template](#mobilefirst-foundation-was-server-farm-template)
-* [{{ site.data.keys.product }} (WAS ND) template](#mobilefirst-foundation-was-nd-template)
-* [{{ site.data.keys.mf_app_center }} (Liberty single node) template](#mobilefirst-application-center-liberty-single-node-template)
-* [{{ site.data.keys.mf_app_center }} (WAS single node) template](#mobilefirst-application-center-was-single-node-template)
+* [{{ site.data.keys.product }}(Liberty 단일 노드) 템플리트](#mobilefirst-foundation-liberty-single-node-template)
+* [{{ site.data.keys.product }}(Liberty 서버 팜) 템플리트](#mobilefirst-foundation-liberty-server-farm-template)
+* [{{ site.data.keys.product }}(WAS 단일 노드) 템플리트](#mobilefirst-foundation-was-single-node-template)
+* [{{ site.data.keys.product }}(WAS 서버 팜) 템플리트](#mobilefirst-foundation-was-server-farm-template)
+* [{{ site.data.keys.product }}(WAS ND) 템플리트](#mobilefirst-foundation-was-nd-template)
+* [{{ site.data.keys.mf_app_center }}(Liberty 단일 노드) 템플리트](#mobilefirst-application-center-liberty-single-node-template)
+* [{{ site.data.keys.mf_app_center }}(WAS 단일 노드) 템플리트](#mobilefirst-application-center-was-single-node-template)
 
-### {{ site.data.keys.product }} (Liberty single node) template
+### {{ site.data.keys.product }}(Liberty 단일 노드) 템플리트
 {: #mobilefirst-foundation-liberty-single-node-template }
-The following diagram shows the composition of the "MobileFirst Platform (Liberty single node)" template.
+다음 다이어그램은 "MobileFirst Platform(Liberty 단일 노드)" 템플리트의 컴포지션을 보여줍니다. 
 
-![{{ site.data.keys.product }} (Liberty single node) template](pureapp_templ_Lib_single_node.jpg)
+![{{ site.data.keys.product }}(Liberty 단일 노드) 템플리트](pureapp_templ_Lib_single_node.jpg)
 
-The {{ site.data.keys.product }} (Liberty single node) template is composed of the following nodes and components:
+{{ site.data.keys.product }}(Liberty 단일 노드) 템플리트는 다음과 같은 노드 및 컴포넌트로 구성됩니다. 
 
-| Node | Components | 
+| 노드 | 컴포넌트 | 
 |------|------------|
-| MobileFirst Platform Server | **Liberty profile server**<br/>WebSphere Application Server Liberty profile server installation.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration web application including {{ site.data.keys.mf_console }}.<br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MFP Server Application**<br/>{{ site.data.keys.product_adj }} application to be added to the deployment.<br/><br/>**MFP Server Adapter**<br/>. An adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to {{ site.data.keys.mf_server }}. | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 xdatabase server installation.<br/><br/>**MFP Administration DB**<br/>MobileFirst administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+| MobileFirst Platform Server | **Liberty profile server**<br/>WebSphere  Application Server Liberty 프로파일 서버 설치입니다.<br/><br/>**MFP Server Prerequisite**<br/>SSL 및 Ant를 포함하는 {{ site.data.keys.mf_server }} 설치의 필수 소프트웨어입니다.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_console }}을 포함하는 {{ site.data.keys.mf_server }} 관리 웹 애플리케이션입니다.<br/>**MFP Server Runtime Deployment**<br/>런타임 컨텍스트 루트 구성입니다.<br/><br/>**MFP Server Application**<br/>배치에 추가되는 {{ site.data.keys.product_adj }} 애플리케이션입니다.<br/><br/>**MFP Server Adapter**<br/>. 배치에 추가되는 어댑터입니다.<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }}로의 애플리케이션 및 어댑터 배치입니다. | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 데이터베이스 서버 설치입니다.<br/><br/>**MFP Administration DB**<br/>MobileFirst 관리 데이터베이스 스키마 설치입니다.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} 런타임 데이터베이스 스키마 설치입니다.<br/><br/>**Default add disk**<br/>디스크 크기 구성입니다. | 
 
-### {{ site.data.keys.product }} (Liberty server farm) template
+### {{ site.data.keys.product }}(Liberty 서버 팜) 템플리트
 {: #mobilefirst-foundation-liberty-server-farm-template }
-The following diagram shows the composition of the "MobileFirst Platform (Liberty server farm)" template.
+다음 다이어그램은 "MobileFirst Platform(Liberty 서버 팜)" 템플리트의 컴포지션을 보여줍니다. 
 
-![{{ site.data.keys.product }} (Liberty server farm) template](pureapp_templ_Lib_server_farm.jpg)
+![{{ site.data.keys.product }}(Liberty 서버 팜) 템플리트](pureapp_templ_Lib_server_farm.jpg)
 
-The {{ site.data.keys.product }} (Liberty server farm) template is composed of the following nodes and components:
+{{ site.data.keys.product }}(Liberty 서버 팜) 템플리트는 다음과 같은 노드 및 컴포넌트로 구성됩니다. 
 
-| Node | Components | 
+| 노드 | 컴포넌트 | 
 |------|------------|
-| IHS Server | **IBM  HTTP servers**<br/>IBM HTTP Server installation.<br/><br/>**MFP IHS Configuration**<br/>Automatic configuration of IBM HTTP Server. | 
-| MobileFirst Platform Server | **Liberty profile server**<br/>WebSphere Application Server Liberty profile server installation.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration web application including {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MFP Server Application**<br/>{{ site.data.keys.product_adj }} application to be added to the deployment.<br/><br/>**MFP Server Adapter**<br/>An adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to {{ site.data.keys.mf_server }}.<br/><br/>**Base Scaling Policy**<br/>VM scaling policy: number of VMs. | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+| IHS Server | **IBM HTTP Server**<br/>IBM HTTP Server 설치입니다.<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server의 자동 구성입니다. | 
+| MobileFirst Platform Server | **Liberty profile server**<br/>WebSphere Application Server Liberty 프로파일 서버 설치입니다.<br/><br/>**MFP Server Prerequisite**<br/>SSL 및 Ant를 포함하는 {{ site.data.keys.mf_server }} 설치의 필수 소프트웨어입니다.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_console }}을 포함하는 {{ site.data.keys.mf_server }} 관리 웹 애플리케이션입니다.<br/><br/>**MFP Server Runtime Deployment**<br/>런타임 컨텍스트 루트 구성입니다.<br/><br/>**MFP Server Application**<br/>배치에 추가되는 {{ site.data.keys.product_adj }} 애플리케이션입니다.<br/><br/>**MFP Server Adapter**<br/>배치에 추가되는 어댑터입니다.<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }}로의 애플리케이션 및 어댑터 배치입니다.<br/><br/>**Base Scaling Policy**<br/>VM 스케일링 정책: VM 수. | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 데이터베이스 서버 설치입니다.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 관리 데이터베이스 스키마 설치입니다.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} 런타임 데이터베이스 스키마 설치입니다.<br/><br/>**Default add disk**<br/>디스크 크기 구성입니다. | 
 
-### {{ site.data.keys.product }} (WAS single node) template
+### {{ site.data.keys.product }}(WAS 단일 노드) 템플리트
 {: #mobilefirst-foundation-was-single-node-template }
-The following diagram shows the composition of the "MobileFirst Platform (WAS single node)" template.
+다음 다이어그램은 "MobileFirst Platform(WAS 단일 노드)" 템플리트의 컴포지션을 보여줍니다. 
 
-![{{ site.data.keys.product }} (WAS single node) template](pureapp_templ_WAS_single_node.jpg)
+![{{ site.data.keys.product }}(WAS 단일 노드) 템플리트](pureapp_templ_WAS_single_node.jpg)
 
-The {{ site.data.keys.product }} (WAS single node) template is composed of the following nodes and components:
+{{ site.data.keys.product }}(WAS 단일 노드) 템플리트는 다음과 같은 노드 및 컴포넌트로 구성됩니다. 
 
-| Node | Components | 
+| 노드 | 컴포넌트 | 
 |------|------------|
-| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction:<br/>Do not change the values for the following component attributes: {::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration web application including {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**{{ site.data.keys.product_adj }} App**<br/>{{ site.data.keys.product_adj }} application to be added to the deployment.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**<br/>{{ site.data.keys.product_adj }} adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to {{ site.data.keys.mf_server }}. | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server 전체 프로파일 서버 설치입니다.<br/><br/>제한사항: <br/>다음 컴포넌트 속성의 값을 변경하지 마십시오.{::nomarkdown}<ul><li>셀 이름</li><li>노드 이름</li><li>프로파일 이름</li></ul>{:/}이러한 속성의 값을 변경하면 이 템플리트를 기반으로 하는 패턴의 배치에 실패합니다.<br/><br/>**MFP Server Prerequisite**<br/>SSL 및 Ant를 포함하는 {{ site.data.keys.mf_server }} 설치의 필수 소프트웨어입니다.<br/><br/>**MFP Server Administration**<br/>다음을 포함하는 {{ site.data.keys.mf_server }} Administration 웹 애플리케이션입니다.<br/><br/>**MFP Server Runtime Deployment**<br/>런타임 컨텍스트 루트 구성입니다. <br/><br/>**{{ site.data.keys.product_adj }} App**<br/>배치에 추가되는 {{ site.data.keys.product_adj }} 애플리케이션입니다.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**<br/>배치에 추가되는 {{ site.data.keys.product_adj }} 어댑터입니다.<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }}로의 애플리케이션 및 어댑터 배치입니다. | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 데이터베이스 서버 설치입니다.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 관리 데이터베이스 스키마 설치입니다.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} 런타임 데이터베이스 스키마 설치입니다.<br/><br/>**Default add disk**<br/>디스크 크기 구성입니다. | 
 
-### {{ site.data.keys.product }} (WAS server farm) template
+### {{ site.data.keys.product }}(WAS 서버 팜) 템플리트
 {: #mobilefirst-foundation-was-server-farm-template }
-The following diagram shows the composition of the "MobileFirst Platform (WAS server farm)" template.
+다음 다이어그램은 "MobileFirst Platform(WAS 서버 팜)" 템플리트의 컴포지션을 보여줍니다. 
 
-![{{ site.data.keys.product }} (WAS server farm) template](pureapp_templ_WAS_server_farm.jpg)
+![{{ site.data.keys.product }}(WAS 서버 팜) 템플리트](pureapp_templ_WAS_server_farm.jpg)
 
-The {{ site.data.keys.product }} (WAS server farm) template is composed of the following nodes and components:
+{{ site.data.keys.product }}(WAS 서버 팜) 템플리트는 다음과 같은 노드 및 컴포넌트로 구성됩니다. 
 
-| Node | Components | 
+| 노드 | 컴포넌트 | 
 |------|------------|
-| IHS Server | **IBM HTTP servers**<br/>IBM HTTP Server installation.<br/><br/>**MFP IHS Configuration**<br/>Automatic configuration of IBM HTTP Server. | 
-| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration web application including {{ site.data.keys.mf_console }}.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**{{ site.data.keys.product_adj }} App**<br/>{{ site.data.keys.product_adj }} application to be added to the deployment.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**An adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to {{ site.data.keys.mf_server }}.<br/><br/>**Base Scaling Policy**<br/>VM scaling policy: number of VMs. | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
+| IHS Server | **IBM HTTP Server**<br/>IBM HTTP Server 설치입니다.<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server의 자동 구성입니다. | 
+| MobileFirst Platform Server | **Standalone server**<br/>WebSphere Application Server 전체 프로파일 서버 설치입니다.<br/><br/>제한사항: 다음 컴포넌트 속성의 값을 변경하지 마십시오.{::nomarkdown}<ul><li>셀 이름</li><li>노드 이름</li><li>프로파일 이름</li></ul>{:/}이러한 속성의 값을 변경하면 이 템플리트를 기반으로 하는 패턴의 배치에 실패합니다.<br/><br/>**MFP Server Prerequisite**<br/>SSL 및 Ant를 포함하는 {{ site.data.keys.mf_server }} 설치의 필수 소프트웨어입니다.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_console }}을 포함하는 {{ site.data.keys.mf_server }} 관리 웹 애플리케이션입니다.<br/><br/>**MFP Server Runtime Deployment**<br/>런타임 컨텍스트 루트 구성입니다.<br/><br/>**{{ site.data.keys.product_adj }} App**<br/>배치에 추가되는 {{ site.data.keys.product_adj }} 애플리케이션입니다.<br/><br/>**{{ site.data.keys.product_adj }} Adapter**배치에 추가되는 어댑터입니다.<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }}로의 애플리케이션 및 어댑터 배치입니다.<br/><br/>**Base Scaling Policy**<br/>VM 스케일링 정책: VM 수. | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 데이터베이스 서버 설치입니다.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 관리 데이터베이스 스키마 설치입니다.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} 런타임 데이터베이스 스키마 설치입니다.<br/><br/>**Default add disk**<br/>디스크 크기 구성입니다. | 
 
-### {{ site.data.keys.product }} (WAS ND) template
+### {{ site.data.keys.product }}(WAS ND) 템플리트
 {: #mobilefirst-foundation-was-nd-template }
-The following diagram shows the composition of the "MobileFirst Platform (WAS ND)" template.
+다음 다이어그램은 "MobileFirst Platform(WAS ND)" 템플리트의 컴포지션을 보여줍니다. 
 
-![{{ site.data.keys.product }} (WAS ND) template](pureapp_templ_WAS_ND.jpg)
+![{{ site.data.keys.product }}(WAS ND) 템플리트](pureapp_templ_WAS_ND.jpg)
 
-The {{ site.data.keys.product }} (WAS ND) template is composed of the following nodes and components:
+{{ site.data.keys.product }}(WAS ND) 템플리트는 다음과 같은 노드 및 컴포넌트로 구성됩니다. 
 
-| Node | Components | 
+| 노드 | 컴포넌트 | 
 |------|------------|
-| IHS Server | **IBM HTTP servers**<br/>IBM HTTP Server installation.<br/><br/>**MFP IHS Configuration**<br/>Automatic configuration of IBM HTTP Server. | 
-| DmgrNode | **Deployment manager**<br/>WebSphere Application Server deployment manager installation.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_server }} Administration web application including {{ site.data.keys.mf_console }}.<br/><br/>**MFP Runtime**<br/>Runtime WAR file.<br/><br/>**MFP Server Runtime Deployment**<br/>Runtime context root configuration.<br/><br/>**MFP Application**<br/>{{ site.data.keys.product_adj }} application to be added to the deployment.<br/><br/>**MFP Adapter**<br/>An adapter to be added to the deployment.<br/><br/>**MFP Server Application Adapter Deployment**<br/>Application and adapter deployment to {{ site.data.keys.mf_server }}. | 
-| MobileFirst Platform DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} administration database schema installation.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} runtime database schema installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
-| CustomNode | **Custom nodes**<br/>Details of the cells and nodes in the clusters of WebSphere Application Server Network Deployment servers.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>Ports that must be open to enable connection to the database server and the LDAP server.<br/><br/>**Base scaling policy**<br/>Number of virtual machine instances required for the chosen topology. | 
+| IHS Server | **IBM HTTP Server**<br/>IBM HTTP Server 설치입니다.<br/><br/>**MFP IHS Configuration**<br/>IBM HTTP Server의 자동 구성입니다. | 
+| DmgrNode | **Deployment Manager**<br/>WebSphere Application Server 배치 관리자 설치입니다.<br/><br/>제한사항: 다음 컴포넌트 속성의 값을 변경하지 마십시오.{::nomarkdown}<ul><li>셀 이름</li><li>노드 이름</li><li>프로파일 이름</li></ul>{:/}이러한 속성의 값을 변경하면 이 템플리트를 기반으로 하는 패턴의 배치에 실패합니다.<br/><br/>**MFP Server Prerequisite**<br/>SSL 및 Ant를 포함하는 {{ site.data.keys.mf_server }} 설치의 필수 소프트웨어입니다.<br/><br/>**MFP Server Administration**<br/>{{ site.data.keys.mf_console }}을 포함하는 {{ site.data.keys.mf_server }} 관리 웹 애플리케이션입니다.<br/><br/>**MFP Runtime**<br/>런타임 WAR 파일입니다.<br/><br/>**MFP Server Runtime Deployment**<br/>런타임 컨텍스트 루트 구성입니다.<br/><br/>**MFP Application**<br/>배치에 추가되는 {{ site.data.keys.product_adj }} 애플리케이션입니다.<br/><br/>**MFP Adapter**<br/>배치에 추가되는 어댑터입니다.<br/><br/>**MFP Server Application Adapter Deployment**<br/>{{ site.data.keys.mf_server }}로의 애플리케이션 및 어댑터 배치입니다. | 
+| MobileFirst Platform DB | **Database Server**<br/>DB2 데이터베이스 서버 설치입니다.<br/><br/>**MFP Administration DB**<br/>{{ site.data.keys.product_adj }} 관리 데이터베이스 스키마 설치입니다.<br/><br/>**MFP Runtime DB**<br/>{{ site.data.keys.product }} 런타임 데이터베이스 스키마 설치입니다.<br/><br/>**Default add disk**<br/>디스크 크기 구성입니다. | 
+| CustomNode | **Custom nodes**<br/>WebSphere Application Server Network Deployment 서버 클러스터에 있는 셀 및 노드의 세부사항입니다.<br/><br/>제한사항: 다음 컴포넌트 속성의 값을 변경하지 마십시오.{::nomarkdown}<ul><li>셀 이름</li><li>노드 이름</li><li>프로파일 이름</li></ul>{:/}이러한 속성의 값을 변경하면 이 템플리트를 기반으로 하는 패턴의 배치에 실패합니다.<br/><br/>**MFP Open Firewall Ports for WAS**<br/>데이터베이스 서버 및 LDAP 서버와의 연결을 가능하게 하기 위해 열려 있어야 하는 포트입니다.<br/><br/>**Base scaling policy**<br/>선택한 토폴로지에 필요한 가상 머신 인스턴스 수입니다. | 
 
-### {{ site.data.keys.mf_app_center }} (Liberty single node) template
+### {{ site.data.keys.mf_app_center }}(Liberty 단일 노드) 템플리트
 {: #mobilefirst-application-center-liberty-single-node-template }
-The following diagram shows the composition of the "MobileFirst Platform Application Center (Liberty single node)" template.
+다음 다이어그램은 "MobileFirst Platform Application Center(Liberty 단일 노드)" 템플리트의 컴포지션을 보여줍니다. 
 
-![{{ site.data.keys.mf_app_center }} (Liberty single node) template](pureapp_templ_appC_Lib_single_node.jpg)
+![{{ site.data.keys.mf_app_center }}(Liberty 단일 노드) 템플리트](pureapp_templ_appC_Lib_single_node.jpg)
 
-The {{ site.data.keys.mf_app_center }} (Liberty single node) template is composed of the following nodes and components:
+{{ site.data.keys.mf_app_center }}(Liberty 단일 노드) 템플리트는 다음과 같은 노드 및 컴포넌트로 구성됩니다. 
 
-| Node | Components |
+| 노드 | 컴포넌트 |
 |------|------------|
-| MFP AppCenter DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
-| MFP AppCenter Server | **Liberty profile server**<br/>WebSphere Application Server Liberty profile server installation.<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Application Center**<br/>This script package sets up the {{ site.data.keys.mf_app_center }} server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. | 
+| MFP AppCenter DB | **Database Server**<br/>DB2 데이터베이스 서버 설치입니다.<br/><br/>**Default add disk**<br/>디스크 크기 구성입니다. | 
+| MFP AppCenter Server | **Liberty profile server**<br/>WebSphere Application Server Liberty 프로파일 서버 설치입니다.<br/><br/>**MFP Server Prerequisite**<br/>SSL 및 Ant를 포함하는 {{ site.data.keys.mf_server }} 설치의 필수 소프트웨어입니다.<br/><br/>**MFP Server Application Center**<br/>이 스크립트 패키지는 WebSphere Application Server 전체 프로파일 또는 WebSphere Application Server Liberty 프로파일 서버에서 {{ site.data.keys.mf_app_center }} 서버를 설정합니다.  | 
 
-### {{ site.data.keys.mf_app_center }} (WAS single node) template
+### {{ site.data.keys.mf_app_center }}(WAS 단일 노드) 템플리트
 {: #mobilefirst-application-center-was-single-node-template }
-The diagram shows the composition of the "MobileFirst Platform Application Center (WAS single node)" template.
+다음 다이어그램은 "MobileFirst Platform Application Center(WAS 단일 노드)" 템플리트의 컴포지션을 보여줍니다. 
 
-![{{ site.data.keys.mf_app_center }} (WAS single node) template](pureapp_templ_appC_WAS_single_node.jpg)
+![{{ site.data.keys.mf_app_center }}(WAS 단일 노드) 템플리트](pureapp_templ_appC_WAS_single_node.jpg)
 
-The {{ site.data.keys.mf_app_center }} (WAS single node) template is composed of the following nodes and components:
+{{ site.data.keys.mf_app_center }}(WAS 단일 노드) 템플리트는 다음과 같은 노드 및 컴포넌트로 구성됩니다. 
 
-| Node | Components | 
+| 노드 | 컴포넌트 | 
 |------|------------|
-| MFP AppCenter DB | **Database Server**<br/>DB2 database server installation.<br/><br/>**Default add disk**<br/>Disk size configuration. | 
-| MFP AppCenter Server | **Standalone server**<br/>WebSphere Application Server full profile server installation.<br/><br/>Restriction: Do not change the values for the following component attributes:{::nomarkdown}<ul><li>Cell name</li><li>Node name</li><li>Profile name</li></ul>{:/}If you change any of these attributes, the deployment of patterns that are based on this template fails.<br/><br/>**MFP WAS SDK Level**<br/>Purpose of this script is to set the required SDK level as the default SDK for the WAS Profile<br/><br/>**MFP Server Prerequisite**<br/>Prerequisites for {{ site.data.keys.mf_server }} installation including SSL and Ant.<br/><br/>**MFP Server Application Center**<br/>This script package sets up the {{ site.data.keys.mf_app_center }} server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. | 
+| MFP AppCenter DB | **Database Server**<br/>DB2 데이터베이스 서버 설치입니다.<br/><br/>**Default add disk**<br/>디스크 크기 구성입니다. | 
+| MFP AppCenter Server | **Standalone server**<br/>WebSphere Application Server 전체 프로파일 서버 설치입니다.<br/><br/>제한사항: 다음 컴포넌트 속성의 값을 변경하지 마십시오.{::nomarkdown}<ul><li>셀 이름</li><li>노드 이름</li><li>프로파일 이름</li></ul>{:/}이러한 속성의 값을 변경하면 이 템플리트를 기반으로 하는 패턴의 배치에 실패합니다.<br/><br/>**MFP WAS SDK Level**<br/>이 스크립트의 목적은 필요한 SDK 레벨을 WAS 프로파일의 기본 SDK로 설정하는 것입니다.<br/><br/>**MFP Server Prerequisite**<br/>SSL 및 Ant를 포함하는 {{ site.data.keys.mf_server }} 설치의 필수 소프트웨어입니다.<br/><br/>**MFP Server Application Center**<br/>이 스크립트 패키지는 WebSphere Application Server 전체 프로파일 또는 WebSphere Application Server Liberty 프로파일 서버에서 {{ site.data.keys.mf_app_center }} 서버를 설정합니다.  | 
 
 
-## Script packages for {{ site.data.keys.mf_server }}
+## {{ site.data.keys.mf_server }}의 스크립트 패키지
 {: #script-packages-for-mobilefirst-server }
-{{ site.data.keys.mf_system_pattern }} provides script packages that are the building blocks to compose various pattern topologies.  
-The following sections list and describe the parameters for each script package.
+{{ site.data.keys.mf_system_pattern }}에서는 다양한 패턴 토폴로지를 구성하기 위한 구성 요소인 스크립트 패키지를 제공합니다.  
+다음 절에서는 각 스크립트 패키지의 매개변수를 나열하고 설명합니다.
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to-2 }
 * [MFP Administration DB](#mfp-administration-db)
 * [MFP Analytics](#mfp-analytics)
@@ -1649,221 +1649,221 @@ The following sections list and describe the parameters for each script package.
 
 ### MFP Administration DB
 {: #mfp-administration-db }
-This script package sets up the administration database schema in a DB2  database. It must be used with the Database Server (DB2) software component.
+이 스크립트 패키지는 DB2  데이터베이스에서 관리 데이터베이스 스키마를 설정합니다. 이는 Database Server(DB2) 소프트웨어 컴포넌트와 함께 사용해야 합니다. 
 
-| Parameter | Description | 
+| 매개변수 | 설명 | 
 |-----------|-------------|
-| db_user   | Mandatory. User name to create the Administration database. It can be mapped to the Instance name of the Database Server component. Default value: db2inst1. |
-| db_name	| Mandatory. Database name to create the Administration database. Default value: WLADM. |
-| db_password |	Mandatory. User password to create the Administration database. It can be mapped to the Instance owner password of the Database Server component. Default value: passw0rd (as pattern level parameter). |
-| other\_db\_args | Mandatory. Four parameters to create the Administration database:SQL type, Codeset,Territory and Collate. Default value: DB2 UTF-8 US SYSTEM. |
+| db_user   | 필수. 관리 데이터베이스를 작성하는 데 필요한 사용자 이름입니다. Database Server 컴포넌트의 인스턴스 이름에 맵핑할 수 있습니다. 기본값: db2inst1. |
+| db_name	| 필수. 관리 데이터베이스를 작성하는 데 필요한 데이터베이스 이름입니다. 기본값: WLADM. |
+| db_password |	필수. 관리 데이터베이스를 작성하는 데 필요한 사용자 비밀번호입니다. Database Server 컴포넌트의 인스턴스 소유자 비밀번호에 맵핑할 수 있습니다. 기본값: passw0rd(패턴 레벨 매개변수로서). |
+| other\_db\_args | 필수. 관리 데이터베이스를 작성하는 데 필요한 네 가지 매개변수입니다(SQL type, Codeset, Territory 및 Collate). 기본값: DB2 UTF-8 US SYSTEM. |
 
 ### MFP Analytics
 {: #mfp-analytics }
-This script package sets up {{ site.data.keys.mf_analytics_server }} in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server, and sets up the connection and mapping of Analytics administration security roles to an external TDS or AD server. It must be used with the WebSphere Application Server Liberty profile server or WebSphere Application Server full profile (display name: Standalone server) software component . It must be installed after the Liberty profile or Standalone server software component.
+이 스크립트 패키지는 WebSphere Application Server 전체 프로파일 또는 WebSphere Application Server Liberty 프로파일 서버에서 {{ site.data.keys.mf_analytics_server }}를 설정하고 외부 TDS 또는 AD 서버로의 연결과 Analytics 관리 보안 역할 맵핑을 설정합니다. 이는 WebSphere Application Server Liberty 프로파일 서버 또는 WebSphere Application Server 전체 프로파일(표시 이름: Standalone server) 소프트웨어 컴포넌트와 함께 사용해야 합니다. Liberty profile 또는 Standalone server 소프트웨어 컴포넌트 다음에 설치해야 합니다.
 
-| Parameter | Description | 
+| 매개변수 | 설명 | 
 |-----------|-------------|
-| WAS_ROOT  | Mandatory.{::nomarkdown}<ul><li>If Analytics is installed on WebSphere Application Server Liberty profile, specify the installation directory of the WebSphere Application Server Liberty profile for Analytics.</li><li>If Analytics is installed on WebSphere Application Server full profile, specify the installation directory of the WebSphere Application Server full profile for Analytics.</li></ul>{:/} | 
-| HEAP\_MIN\_SIZE | WebSphere Application Server full profile only.<br/><br/>Depending on the amount of Analytics data that is generated, more memory is required for more data handling. Set this to allow larger minimum heap size for WebSphere Application Server full profile. Make sure the memory size specified in the Core OS component of {{ site.data.keys.mf_analytics }} is larger than this. It is recommended to set the same value as HEAP_MAX_SIZE.<br/><br/>Default value: 4096 (MB). | 
-| HEAP\_MAX\_SIZE	| WebSphere Application Server full profile only.<br/><br/>Depending on the amount of Analytics data that is generated, more memory is required for more data handling. Set this to allow larger maximum heap size for WebSphere Application Server full profile. Make sure the memory size specified in the Core OS component of {{ site.data.keys.mf_analytics }} is larger than this. It is recommended to set the same value asHEAP_MIN_SIZE.<br/><br/>Default value: 4096 (MB). | 
-| WAS\_admin\_user | WebSphere Application Server full profile only.<br/><br/>WebSphere Application Server full profile admin user for the Analytics server. For WebSphere Application Server Liberty profile, leave the default value unchanged. | 
-| WAS\_admin\_password | WebSphere Application Server full profile only.<br/><br/>WebSphere Application Server full profile admin user password for the Analytics server. For WebSphere Application Server Liberty profile, leave the default value unchanged. | 
-| admin_user | Mandatory.{::nomarkdown}<ul><li>If LDAP repository not enabled, create a default administration user for {{ site.data.keys.mf_analytics_console }} protection.</li><li>If LDAP repository is enabled, specify the user name that has {{ site.data.keys.mf_analytics }} administration privilege. The value is stored in the LDAP repository.</li></ul> |
-| admin_password | Mandatory.<ul><li>If an LDAP repository is not enabled, specify the password for the default administration user for {{ site.data.keys.mf_analytics_console }} protection.</li><li>If an LDAP repository is enabled, specify the admin user password. The value is stored in the LDAP repository.</li></ul>{:/} | 
-| LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry:<br/><br/>None<br/>LDAP connection is disabled. When this is set, all the other LDAP parameters are treated as placeholders only.<br/><br/>TivoliDirectoryServer<br/>Select this if the LDAP repository is an IBM  Tivoli  Directory Server.<br/><br/>ActiveDirectory<br/>Select this if the LDAP repository is a Microsoft Active Directory.<br/><br/>Default value: None. | 
-| LDAP_IP | (LDAP parameter). LDAP server IP address. | 
-| LDAP\_SSL\_PORT | (LDAP parameter) LDAP port for secure connection. | 
-| LDAP_PORT | (LDAP parameter) LDAP port for non-secure connection. | 
-| BASE_DN | (LDAP parameter) Base DN. | 
-| BIND_DN | (LDAP parameter) Bind DN. | 
-| BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
-| REQUIRE_SSL | (LDAP parameter) Set it to true for secure connection to LDAP server.{::nomarkdown}<ul><li>When it is true, LDAP_SSL_PORT is used and CERT_FILE_PATH is required to locate the certification file of the LDAP server.</li><li>When it is false, LDAP_PORT is used.</li></ul>{:/}Default value: false. | 
-| USER_FILTER | (LDAP parameter) LDAP user filter that searches the existing user registry for users. | 
-| GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
-| LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
-| CERT\_FILE\_PATH | (LDAP parameter) Target path of the uploaded LDAP server certification. It is mandatory when REQUIRE_SSL is set to true. | 
-| mfpadmin | (LDAP parameter) Admin role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpdeployer | (LDAP parameter) Deployer role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpmonitor | (LDAP parameter) Monitor role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpoperator | (LDAP parameter) Operator role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+| WAS_ROOT  | 필수. {::nomarkdown}<ul><li>Analytics가 WebSphere Application Server Liberty 프로파일에 설치된 경우, Analytics용 WebSphere Application Server Liberty 프로파일의 설치 디렉토리를 지정하십시오. </li><li>Analytics가 WebSphere Application Server 전체 프로파일에 설치된 경우, Analytics용 WebSphere Application Server 전체 프로파일의 설치 디렉토리를 지정하십시오. </li></ul>{:/} | 
+| HEAP\_MIN\_SIZE | WebSphere Application Server 전체 프로파일에만 해당됩니다.<br/><br/>생성되는 Analytics 데이터의 양에 따라 추가 데이터 처리를 위한 추가 메모리가 필요합니다. WebSphere Application Server 전체 프로파일의 최소 힙 크기를 증가시킬 수 있도록 이 값을 설정하십시오. {{ site.data.keys.mf_analytics }}의 코어 OS 컴포넌트에서 지정된 메모리 크기가 이 값보다 커야 합니다. HEAP_MAX_SIZE와 동일한 값을 설정하는 것이 좋습니다.<br/><br/>기본값: 4096(MB). | 
+| HEAP\_MAX\_SIZE	| WebSphere Application Server 전체 프로파일에만 해당됩니다.<br/><br/>생성되는 Analytics 데이터의 양에 따라 추가 데이터 처리를 위한 추가 메모리가 필요합니다. WebSphere Application Server 전체 프로파일의 최대 힙 크기를 증가시킬 수 있도록 이 값을 설정하십시오. {{ site.data.keys.mf_analytics }}의 코어 OS 컴포넌트에서 지정된 메모리 크기가 이 값보다 커야 합니다. HEAP_MIN_SIZE와 동일한 값을 설정하는 것이 좋습니다.<br/><br/>기본값: 4096(MB). | 
+| WAS\_admin\_user | WebSphere Application Server 전체 프로파일에만 해당됩니다.<br/><br/>Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사용자입니다. WebSphere Application Server Liberty 프로파일의 경우 기본값을 변경하지 않고 그대로 두십시오. | 
+| WAS\_admin\_password | WebSphere Application Server 전체 프로파일에만 해당됩니다.<br/><br/>Analytics 서버용 WebSphere Application Server 전체 프로파일 관리 사용자 비밀번호입니다. WebSphere Application Server Liberty 프로파일의 경우 기본값을 변경하지 않고 그대로 두십시오. | 
+| admin_user | 필수. {::nomarkdown}<ul><li>LDAP 저장소가 사용되지 않는 경우 {{site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자를 작성하십시오. </li><li>LDAP 저장소가 사용되는 경우에는 {{ site.data.keys.mf_analytics }} 관리 권한이 있는 사용자 이름을 지정하십시오. 값은 LDAP 저장소에 저장됩니다. </li></ul> |
+| admin_password | 필수. <ul><li>LDAP 저장소가 사용되지 않는 경우 {{site.data.keys.mf_analytics_console }} 보호를 위한 기본 관리 사용자의 비밀번호를 지정하십시오. </li><li>LDAP 저장소가 사용되는 경우에는 관리 사용자 비밀번호를 지정하십시오. 값은 LDAP 저장소에 저장됩니다. </li></ul>{:/} | 
+| LDAP_TYPE | (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<br/><br/>None<br/>    LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다. <br/><br/>TivoliDirectoryServer<br/>    LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오. <br/><br/>ActiveDirectory<br/>    LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오. <br/><br/>    기본값: None. | 
+| LDAP_IP | (LDAP 매개변수). LDAP 서버 IP 주소입니다. | 
+| LDAP\_SSL\_PORT | (LDAP 매개변수) 보안 연결을 위한 LDAP 포트입니다. | 
+| LDAP_PORT | (LDAP 매개변수) 비보안 연결을 위한 LDAP 포트입니다. | 
+| BASE_DN | (LDAP 매개변수) 기본 DN입니다. | 
+| BIND_DN | (LDAP 매개변수) 바인드 DN입니다. | 
+| BIND_PASSWORD | (LDAP 매개변수) 바인드 DN 비밀번호입니다. | 
+| REQUIRE_SSL | (LDAP 매개변수) LDAP 서버로의 보안 연결을 위해서는 true로 설정하십시오. {::nomarkdown}<ul><li>true인 경우, LDAP_SSL_PORT가 사용되고 LDAP 서버의 인증 파일을 찾기 위해 CERT_FILE_PATH가 필요합니다.</li><li>false이면 LDAP_PORT가 사용됩니다.</li></ul>{:/}기본값: false. | 
+| USER_FILTER | (LDAP 매개변수) 기존 사용자 레지스트리에서 사용자를 검색하는 LDAP 사용자 필터입니다. | 
+| GROUP_FILTER | (LDAP 매개변수) 기존 사용자 레지스트리에서 그룹을 검색하는 LDAP 그룹 필터입니다. | 
+| LDAP\_REPOSITORY\_NAME | (LDAP 매개변수) LDAP 서버 이름입니다. | 
+| CERT\_FILE\_PATH | (LDAP 매개변수) 업로드된 LDAP 서버 인증의 대상 경로입니다. REQUIRE_SSL이 true로 설정된 경우 필수입니다. | 
+| mfpadmin | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 관리자 역할입니다. 다음 값 중 하나를 사용하십시오.<br/><br/>None<br/>        사용자가 없습니다. <br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다. <br/><br/>    기본값: None. | 
+| mfpdeployer | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 배치자 역할입니다.<br/><br/>None<br/>        사용자가 없습니다. <br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다. <br/><br/>    기본값: None. | 
+| mfpmonitor | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 모니터 역할입니다.<br/><br/>None<br/>        사용자가 없습니다. <br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다. <br/><br/>    기본값: None. | 
+| mfpoperator | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 운영자 역할입니다.<br/><br/>None<br/>        사용자가 없습니다. <br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다. <br/><br/>    기본값: None. | 
 
 ### MFP IHS Configuration
 {: #mfp-ihs-configuration }
-This script package configures the IBM HTTP Server to work as a load balancer for multiple instances of {{ site.data.keys.mf_server }}. It must be used with the IBM HTTP servers software component . It must be installed after the IBM HTTP servers software component.
+이 스크립트 패키지는 IBM HTTP Server가 {{ site.data.keys.mf_server }}의 복수 인스턴스에 대한 로드 밸런서로 작동하도록 구성합니다. IBM HTTP Server 소프트웨어 컴포넌트와 함께 사용해야 합니다. IBM HTTP Server 소프트웨어 컴포넌트 다음에 설치해야 합니다.
 
-| Parameter | Description | 
+| 매개변수 | 설명 | 
 |-----------|-------------|
-| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node, or installation directory of Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attribute `install_directory` of Liberty profile server, Standalone server, or Deployment manager. | 
-| profile_name | Optional. The profile name that contains the files for the WebSphere Application Server runtime environment.<br/><br/>In the pattern templates, it is mapped to output attribute **dmgr\_profile\_name** of Deployment manager or sa_profile_name of Standalone server. | 
-| runtime\_contextRoot\_list | Mandatory. Runtime context root list that allows IHS to route requests that have matching context roots. Use semicolons (;) to separate the runtime context roots. For example, HelloMobileFirst;HelloWorld<br/><br/>Important: It must align with the context root specified in the MFP Server Runtime Deployment. Otherwise, IHS cannot correctly route requests that contain the Runtime context root. | 
-| http_port | Mandatory. Open the firewall port in the IHS Server node to allow the HTTP transport from IHS Server to {{ site.data.keys.mf_server }}. Must be 9080. | 
-| https_port | Mandatory. Open the firewall port in the IHS Server node to allow the HTTPS transport from IHS Server to {{ site.data.keys.mf_server }}. Must be 9443. | 
-| server_hostname | Mandatory. Host name of IBM HTTP servers. It is mapped to the host output attribute of IBM HTTP servers in the pattern template. | 
+| WAS_ROOT | 필수. MobileFirst Platform Server 노드에 있는 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 설치 디렉토리이거나 DmgrNode 노드에 있는 Deployment Manager의 설치 디렉토리입니다. 패턴 템플리트에서 Liberty profile server, Standalone server 또는 Deployment Manager의 `install_directory` 출력 속성에 맵핑됩니다. | 
+| profile_name | 선택사항. WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다. <br/><br/>패턴 템플리트에서 Deployment Manager의 **dmgr\_profile\_name** 또는 Standalone server의 sa_profile_name 출력 속성에 맵핑됩니다. | 
+| runtime\_contextRoot\_list | 필수. IHS가 일치하는 컨텍스트 루트가 있는 요청을 라우팅하는 데 사용되는 런타임 컨텍스트 루트 목록입니다. 세미콜론(;)을 사용하여 런타임 컨텍스트 루트를 구분하십시오. 예: HelloMobileFirst;HelloWorld<br/><br/>중요: MFP Server Runtime Deployment에 지정된 컨텍스트 루트와 일치해야 합니다. 그렇지 않으면 IHS가 런타임 컨텍스트 루트가 포함된 요청을 올바르게 라우팅할 수 없습니다. | 
+| http_port | 필수. IHS Server 노드의 방화벽 포트를 열어 IHS Server에서 {{ site.data.keys.mf_server }}로의 HTTP 전송을 가능하게 하십시오. 9080이어야 합니다. | 
+| https_port | 필수. IHS Server 노드의 방화벽 포트를 열어 IHS Server에서 {{ site.data.keys.mf_server }}로의 HTTPS 전송을 가능하게 하십시오. 9443이어야 합니다. | 
+| server_hostname | 필수. IBM HTTP 서버의 호스트 이름입니다. 패턴 템플리트에서 IBM HTTP 서버의 host 출력 속성에 맵핑됩니다. | 
 
 ### MFP Open Firewall Ports for WAS
 {: #mfp-open-firewall-ports-for-was }
-This script package is only applicable for Custom nodes in the {{ site.data.keys.product_adj }} (WAS ND) pattern template (WebSphere Application Server Network Deployment). Its purpose is to open the necessary firewall ports of the Custom nodes that host the {{ site.data.keys.product_adj }} Administration Services and runtime. As well as defining some WebSphere Application Server predefined ports, you need to specify the other ports for connecting to the DB2 server and the LDAP server.
+이 스크립트 패키지는 {{ site.data.keys.product_adj }}(WAS ND) 패턴 템플리트(WebSphere Application Server Network Deployment)의 사용자 정의 노드에만 적용 가능합니다. 이 스크립트 패키지는 {{ site.data.keys.product_adj }} 관리 서비스 및 런타임을 호스트하는 사용자 정의 노드의 필요한 방화벽 포트를 여는 데 사용됩니다. 일부 WebSphere Application Server의 사전 정의된 포트를 정의하는 것 외에, DB2 서버 및 LDAP 서버로의 연결을 위한 기타 포트를 지정해야 합니다. 
 
-| Parameter | Description | 
+| 매개변수 | 설명 | 
 |-----------|-------------|
-| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Network Deployment Custom nodes in the CustomNode node. In the pattern templates, it is mapped to output attribute install_directory of Custom nodes server. |
-| profile_name | Mandatory. The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute cn_profile_name of Custom nodes. | 
-| WAS\_admin\_user | Mandatory. It is mapped to the was_admin output attribute of Custom nodes in the pattern template. | 
-| Ports	| Mandatory. Other ports that need to be opened for connecting to DB2 server and LDAP server (optional). Port values can be separated by semicolons; for example, '50000;636'<br/><br/>Default value: 50000. | 
+| WAS_ROOT | 필수. CustomNode 노드에 있는 WebSphere Application Server Network Deployment 사용자 정의 노드의 설치 디렉토리입니다. 패턴 템플리트에서 Custom nodes 서버의 install_directory 출력 속성에 맵핑됩니다. |
+| profile_name | 필수. WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다. 패턴 템플리트에서 Custom nodes의 cn_profile_name 출력 속성에 맵핑됩니다. | 
+| WAS\_admin\_user | 필수. 패턴 템플리트에서 Custom nodes의 was_admin 출력 속성에 맵핑됩니다. | 
+| Ports	| 필수. DB2 서버 및 LDAP 서버(선택사항)에 연결하기 위해 열어야 하는 기타 포트입니다. 포트 값은 세미콜론으로 구분할 수 있습니다. 예: '50000;636'<br/><br/>기본값: 50000. | 
 
 ### MFP WAS SDK Level
 {: #mfp-was-sdk-level }
-This script package is only applicable where ever the WAS Profiles are available in the pattern template (WebSphere Application Server Network Deployment).
+이 스크립트 패키지는 패턴 템플리트(WebSphere Application Server Network Deployment)에서 WAS 프로파일이 사용 가능한 경우에만 적용할 수 있습니다. 
 
-| Parameter | Description | 
+| 매개변수 | 설명 | 
 |-----------|-------------|
-| WAS_ROOT | Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node or the installation directory of the Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attribute **install_directory** of Liberty profile server, Standalone server, or Deployment manager. |
-| profile_name | The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute **dmgr\_profile\_name** of Deployment manager or **sa\_profile\_name** of Standalone server. | 
-| SDK_name | Name of the SDK that needs to be enabled for this WebSphere installation | 
+| WAS_ROOT | MobileFirst Platform Server 노드에 있는 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 설치 디렉토리이거나 DmgrNode 노드에 있는 Deployment Manager의 설치 디렉토리입니다. 패턴 템플리트에서 Liberty profile server, Standalone server 또는 Deployment Manager의 **install_directory** 출력 속성에 맵핑됩니다. |
+| profile_name | WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다. 패턴 템플리트에서 Deployment Manager의 **dmgr\_profile\_name** 또는 Standalone server의 **sa\_profile\_name** 출력 속성에 맵핑됩니다. | 
+| SDK_name | 이 WebSphere 설치를 위해 사용 가능하게 설정해야 하는 SDK의 이름입니다. | 
 
 ### MFP Runtime DB
 {: #mfp-runtime-db }
-This script package sets up the runtime database schema in a DB2 database.
+이 스크립트 패키지는 DB2 데이터베이스에서 런타임 데이터베이스 스키마를 설정합니다. 
 
-| Parameter | Description | 
+| 매개변수 | 설명 | 
 |-----------|-------------|
-| db_user | Mandatory. User name to create the Runtime database. It can be mapped to the Instance name of the Database Server component. Default value: db2inst1. | 
-| db_name | Mandatory. Database name to create the Runtime database. Default value: WLRTIME. | 
-| db_password | Mandatory. User password to create the Runtime database. It can be mapped to the Instance owner password of the Database Server component. Default value: passw0rd (as pattern level parameter). | 
-| other\_db\_args |	Mandatory. Four parameters to create the Runtime database:SQL type, Codeset,Territory and Collate. Default value: DB2 UTF-8 US SYSTEM. | 
+| db_user | 필수. 런타임 데이터베이스를 작성하는 데 필요한 사용자 이름입니다. Database Server 컴포넌트의 인스턴스 이름에 맵핑할 수 있습니다. 기본값: db2inst1. | 
+| db_name | 필수. 런타임 데이터베이스를 작성하는 데 필요한 데이터베이스 이름입니다. 기본값: WLRTIME. | 
+| db_password | 필수. 런타임 데이터베이스를 작성하는 데 필요한 사용자 비밀번호입니다. Database Server 컴포넌트의 인스턴스 소유자 비밀번호에 맵핑할 수 있습니다. 기본값: passw0rd(패턴 레벨 매개변수로서). | 
+| other\_db\_args |	필수. 런타임 데이터베이스를 작성하는 데 필요한 네 가지 매개변수입니다(SQL type, Codeset, Territory 및 Collate). 기본값: DB2 UTF-8 US SYSTEM. | 
 
 ### MFP Server Administration
 {: #mfp-server-administration }
-This script package sets up the {{ site.data.keys.product_adj }} Administration component (including the {{ site.data.keys.mf_console }}) in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server, and setting up the connection and mapping administration security roles to an external TDS or AD server.
+이 스크립트 패키지는 WebSphere Application Server 전체 프로파일 또는 WebSphere Application Server Liberty 프로파일 서버에서 {{ site.data.keys.product_adj }} 관리 컴포넌트({{ site.data.keys.mf_console }} 포함)를 설정하고, 외부 TDS 또는 AD 서버로의 연결과 관리 보안 역할 맵핑을 설정합니다. 
 
-The script package must be used with the WebSphere Application Server Liberty profile server software component or the WebSphere Application Server full profile software component (display name: Standalone server), and must be installed after the MFP Server Prerequisite but prior to any other MFP * Script Packages in the {{ site.data.keys.mf_server }} VM node.
+이 스크립트 패키지는 WebSphere Application Server Liberty 프로파일 서버 소프트웨어 컴포넌트 또는 WebSphere Application Server 전체 프로파일 소프트웨어 컴포넌트(표시 이름: Standalone server)와 함께 사용해야 하며, MFP Server Prerequisite 다음에, 그리고 {{ site.data.keys.mf_server }} VM 노드 내의 다른 MFP * 스크립트 패키지 전에 설치해야 합니다. 
 
-| Parameter | Description |
+| 매개변수 | 설명 |
 |-----------|-------------|
-| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node or the installation directory of the Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attribute `install_directory` of Liberty profile server, Standalone server, or Deployment manager. | 
-| profile_name | Optional. The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute dmgr_profile_name of Deployment manager or sa_profile_name of Standalone server. | 
-| NUMBER\_OF\_CLUSTERMEMBERS | Optional. Only applicable for the {{ site.data.keys.product }} (WAS ND) pattern template. It specifies the number of cluster members for the cluster to deploy the MFP administration service. Default value: 2. | 
-| db_user | Mandatory. User name that created the Administration database. It is mapped to the db_user output attribute of the MFP Administration DB script package in the pattern template. | 
-| db_name | Mandatory. Name of the Administration database. It is mapped to the `db_name` output attribute of the MFP Administration DB script package in the pattern template. | 
-| db_password |	Mandatory. Password for user who created the Administration database. It is mapped to the db_password output attribute of the MFP Administration DB script package in the pattern template.| 
-| db_ip | IP address of the DB server where the Administration database is installed. It is mapped to the IP output attribute of the Database Server software component in the pattern template. | 
-| db_port |  Port number of the DB server where the Administration database is installed. It is mapped to the instancePort output attribute of the Database Server software component in the pattern template. | 
-| admin_user | User name that has {{ site.data.keys.mf_server }} administration privilege.{::nomarkdown}<ul><li>When LDAP_TYPE is None, create the default admin user.</li><li>When LDAP_TYPE is set to TivoliDirectoryServer or ActiveDirectory and other LDAP parameters are specified according to your LDAP server configuration, the admin_user value should be taken from the configured LDAP user repository. Not required when the {{ site.data.keys.mf_server }} is to be deployed on a single node of WebSphere Application Server full profile.</li></ul> | 
-| admin_password | Password of the admin user.<ul><li>When LDAP_TYPE is None, create the default admin user password.</li><li>When an external LDAP server is configured, the user password is taken from the LDAP repository. Not required when the {{ site.data.keys.mf_server }} is to be deployed on a single node of WebSphere Application Server full profile.</li></ul> | 
-| install_console | Whether the {{ site.data.keys.mf_console }} is to be deployed in the MobileFirst Platform Server node. Default value: Selected. (Check box) |
-| WAS\_admin\_user | Optional. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to the was_adminoutput attribute of Standalone server in the pattern template. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin output attribute of Deployment manager in the pattern template. | 
-| WAS\_admin\_password | Optional. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to the was\_admin\_password output attribute of Standalone server in the pattern template. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server Network Deployment, it is mapped to the was\_admin\_password output attribute of Deployment manager in the pattern template. | 
-| server_hostname | Mandatory. Host name of the {{ site.data.keys.mf_server }} or Deployment manager. Mapped to the host output attribute of Liberty profile server, Standalone Server, or Deployment manager. | 
-| server\_farm\_mode | Mandatory. Whether the {{ site.data.keys.mf_server }} is to be deployed in server farm mode. Must be selected for a server farm topology and must be cleared for a standalone topology. Default value: set according to the topology defined in the pattern template. | 
-| webserver_ip | Optional. When IBM HTTP servers is deployed in the pattern template, this parameter is mapped to the IP output attribute of IBM HTTP servers. | 
-| LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry. One of the following values:<ul>None – LDAP connection is disabled. When this value is selected, all the other LDAP parameters are treated as placeholders only.</li><li>TivoliDirectoryServer: Select this value if the LDAP repository is IBM Tivoli Directory Server</li><li>ActiveDirectory: Select this value if the LDAP repository is Microsoft Active Directory</li></ul>{:/}Default value: None. | 
-| LDAP_IP | (LDAP parameter) LDAP server IP address. | 
-| LDAP_SSL_PORT | (LDAP parameter) LDAP port for secure connection. | 
-| LDAP_PORT | (LDAP parameter) LDAP port for non-secure connection. | 
-| BASE_DN | (LDAP parameter) Base DN. | 
-| BIND_DN | (LDAP parameter) Bind DN. | 
-| BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
-| REQUIRE_SSL | (LDAP parameter) Set to true for secure connection to LDAP server.{::nomarkdown}<ul><li>When true, the LDAP\_SSL\_PORT is used and CERT\_FILE\_PATH is required to locate the certification file of the LDAP server.</li><li>When false, LDAP_PORT is used.</li></ul>{:/}Default value: false. | 
-| USER_FILTER | (LDAP parameter) User filter that searches the existing user registry for users. | 
-| GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
-| LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
-| CERT\_FILE\_PATH | (LDAP parameter) Target path of the uploaded LDAP server certification. It is mandatory when REQUIRE_SSL is set to true. | 
-| mfpadmin | Admin role for {{ site.data.keys.mf_server }}. One of the following values:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpdeployer | (LDAP parameter) Deployer role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpmonitor | (LDAP parameter) Monitor role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
-| mfpoperator | (LDAP parameter) Operator role for {{ site.data.keys.mf_server }}:<br/><br/>None<br/>No user.<br/><br/>AllAuthenticatedUsers<br/>Authenticated users<br/><br/>Everyone<br/>All users.<br/><br/>Default value: None. | 
+| WAS_ROOT | 필수. MobileFirst Platform Server 노드에 있는 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 설치 디렉토리이거나 DmgrNode 노드에 있는 Deployment Manager의 설치 디렉토리입니다. 패턴 템플리트에서 Liberty profile server, Standalone server 또는 Deployment Manager의 `install_directory` 출력 속성에 맵핑됩니다. | 
+| profile_name | 선택사항. WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다. 패턴 템플리트에서 Deployment Manager의 dmgr_profile_name 또는 Standalone server의 sa_profile_name 출력 속성에 맵핑됩니다. | 
+| NUMBER\_OF\_CLUSTERMEMBERS | 선택사항. {{ site.data.keys.product }}(WAS ND) 패턴 템플리트에만 적용 가능합니다. MFP 관리 서비스를 배치하는 클러스터의 클러스터 멤버 수를 지정합니다. 기본값: 2. | 
+| db_user | 필수. 관리 데이터베이스를 작성한 사용자 이름입니다. 패턴 템플리트에서 MFP Administration DB 스크립트 패키지의 db_user 출력 속성에 맵핑됩니다. | 
+| db_name | 필수. 관리 데이터베이스의 이름입니다. 패턴 템플리트에서 MFP Administration DB 스크립트 패키지의 `db_name` 출력 속성에 맵핑됩니다. | 
+| db_password |	필수. 관리 데이터베이스를 작성한 사용자의 비밀번호입니다. 패턴 템플리트에서 MFP Administration DB 스크립트 패키지의 db_password 출력 속성에 맵핑됩니다.| 
+| db_ip | 관리 데이터베이스가 설치되는 DB 서버의 IP 주소입니다. 패턴 템플리트에서 Database Server 소프트웨어 컴포넌트의 IP 출력 속성에 맵핑됩니다. | 
+| db_port |  관리 데이터베이스가 설치되는 DB 서버의 포트 번호입니다. 패턴 템플리트에서 Database Server 소프트웨어 컴포넌트의 instancePort 출력 속성에 맵핑됩니다. | 
+| admin_user | {{ site.data.keys.mf_server }} 관리 권한이 있는 사용자 이름입니다. {::nomarkdown}<ul><li>LDAP_TYPE이 None인 경우에는 기본 관리 사용자를 작성하십시오.</li><li>LDAP_TYPE을 TivoliDirectoryServer 또는 ActiveDirectory로 설정하고 기타 LDAP 매개변수를 LDAP 서버 구성에 따라 지정하는 경우, 구성된 LDAP 사용자 저장소에서 admin_user 값을 가져와야 합니다. {{ site.data.keys.mf_server }}를 WebSphere Application Server 전체 프로파일의 단일 노드에 배치하는 경우에는 필요하지 않습니다.</li></ul> | 
+| admin_password | 관리 사용자의 비밀번호입니다. <ul><li>LDAP_TYPE이 None인 경우에는 기본 관리 사용자 비밀번호를 작성하십시오.</li><li>외부 LDAP 서버가 구성된 경우에는 LDAP 저장소에서 사용자 비밀번호를 가져옵니다. {{ site.data.keys.mf_server }}를 WebSphere Application Server 전체 프로파일의 단일 노드에 배치하는 경우에는 필요하지 않습니다.</li></ul> | 
+| install_console | {{ site.data.keys.mf_console }}이 MobileFirst Platform Server 노드에 배치되는지 여부입니다. 기본값: Selected. (선택란) |
+| WAS\_admin\_user | 선택사항. {{ site.data.keys.mf_server }}가 WebSphere Application Server 전체 프로파일에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Standalone server의 was_admin 출력 속성에 맵핑됩니다. {{ site.data.keys.mf_server }}가 WebSphere Application Server Network Deployment에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Deployment Manager의 was_admin 출력 속성에 맵핑됩니다. | 
+| WAS\_admin\_password | 선택사항. {{ site.data.keys.mf_server }}가 WebSphere Application Server 전체 프로파일에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Standalone server의 was\_admin\_password 출력 속성에 맵핑됩니다. {{ site.data.keys.mf_server }}가 WebSphere Application Server Network Deployment에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Deployment Manager의 was\_admin\_password 출력 속성에 맵핑됩니다. | 
+| server_hostname | 필수. {{ site.data.keys.mf_server }} 또는 Deployment Manager의 호스트 이름입니다. Liberty profile server, Standalone Server 또는 Deployment Manager의 host 출력 속성에 맵핑됩니다. | 
+| server\_farm\_mode | 필수. {{ site.data.keys.mf_server }}가 서버 팜 모드에서 배치되는지 여부입니다. 서버 팜 토폴로지의 경우 이 매개변수를 선택해야 하고, 독립형 토폴로지의 경우 이 매개변수를 선택 취소해야 합니다. 기본값: 패턴 템플리트에서 정의된 토폴로지에 따라 설정합니다. | 
+| webserver_ip | 선택사항. IBM HTTP Server가 패턴 템플리트에서 배치되는 경우, 이 매개변수는 IBM HTTP Server의 IP 출력 속성에 맵핑됩니다. | 
+| LDAP_TYPE | (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<ul>None – LDAP 연결이 사용되지 않습니다. 이 값이 선택된 경우, 다른 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다.</li><li>TivoliDirectoryServer: LDAP 저장소가 IBM Tivoli Directory Server인 경우 이 값을 선택하십시오.</li><li>ActiveDirectory: LDAP 저장소가 Microsoft Active Directory인 경우 이 값을 선택하십시오.</li></ul>{:/}    기본값: None. | 
+| LDAP_IP | (LDAP 매개변수) LDAP 서버 IP 주소입니다. | 
+| LDAP_SSL_PORT | (LDAP 매개변수) 보안 연결을 위한 LDAP 포트입니다. | 
+| LDAP_PORT | (LDAP 매개변수) 비보안 연결을 위한 LDAP 포트입니다. | 
+| BASE_DN | (LDAP 매개변수) 기본 DN입니다. | 
+| BIND_DN | (LDAP 매개변수) 바인드 DN입니다. | 
+| BIND_PASSWORD | (LDAP 매개변수) 바인드 DN 비밀번호입니다. | 
+| REQUIRE_SSL | (LDAP 매개변수) LDAP 서버로의 보안 연결을 위해서는 true로 설정하십시오. {::nomarkdown}<ul><li>true인 경우, LDAP\_SSL\_PORT가 사용되고 LDAP 서버의 인증 파일을 찾기 위해 CERT\_FILE\_PATH가 필요합니다.</li><li>false이면 LDAP_PORT가 사용됩니다.</li></ul>{:/}기본값: false. | 
+| USER_FILTER | (LDAP 매개변수) 기존 사용자 레지스트리에서 사용자를 검색하는 사용자 필터입니다. | 
+| GROUP_FILTER | (LDAP 매개변수) 기존 사용자 레지스트리에서 그룹을 검색하는 LDAP 그룹 필터입니다. | 
+| LDAP\_REPOSITORY\_NAME | (LDAP 매개변수) LDAP 서버 이름입니다. | 
+| CERT\_FILE\_PATH | (LDAP 매개변수) 업로드된 LDAP 서버 인증의 대상 경로입니다. REQUIRE_SSL이 true로 설정된 경우 필수입니다. | 
+| mfpadmin | {{ site.data.keys.mf_server }}의 관리자 역할입니다. 다음 값 중 하나입니다.<br/><br/>None<br/>        사용자가 없습니다. <br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다. <br/><br/>    기본값: None. | 
+| mfpdeployer | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 배치자 역할입니다.<br/><br/>None<br/>        사용자가 없습니다. <br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다. <br/><br/>    기본값: None. | 
+| mfpmonitor | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 모니터 역할입니다.<br/><br/>None<br/>        사용자가 없습니다. <br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다. <br/><br/>    기본값: None. | 
+| mfpoperator | (LDAP 매개변수) {{ site.data.keys.mf_server }}의 운영자 역할입니다.<br/><br/>None<br/>        사용자가 없습니다. <br/><br/>AllAuthenticatedUsers<br/>인증된 사용자<br/><br/>Everyone<br/>        모든 사용자입니다. <br/><br/>    기본값: None. | 
 
 ### MFP Server Application Adapter Deployment
 {: #mfp-server-application-adapter-deployment }
-This script package deploys applications and adapters to the {{ site.data.keys.mf_server }}. It must be installed after the corresponding MFP Server Runtime Deployment script package that installed the runtime where the application and adapter are to be deployed.
+이 스크립트 패키지는 애플리케이션 및 어댑터를 {{ site.data.keys.mf_server }}에 배치합니다. 이 스크립트 패키지는 애플리케이션 및 어댑터가 배치되는 런타임을 설치한 해당 MFP Server Runtime Deployment 스크립트 패키지 다음에 설치해야 합니다.
 
-| Parameter | Description | 
+| 매개변수 | 설명 | 
 |-----------|-------------|
-| artifact_dir | Mandatory. Installation path of application and adapter for deployment. It is mapped to the target_pathoutput attribute of the {{ site.data.keys.product_adj }} App component in the pattern template. | 
-| admin_context | Mandatory. Must be mfpadmin. | 
-| runtime_context | Mandatory. Align with the runtime context root specified in the MFP Server Runtime Deployment component. It is mapped to runtime_contextRoot output attribute of the MFP Server Runtime Deployment component. | 
-| deployer_user | Mandatory. User account with application and adapter deployment privilege. Set as pattern level parameter in the pattern template. | 
-| deployer_password | Mandatory. User password with application and adapter deployment privilege. Set as pattern level parameter in the pattern template. | 
-| webserver_ip | Optional. When IBM HTTP servers is deployed in the pattern template, it is mapped to the same output attribute of MFP Server Administration. | 
+| artifact_dir | 필수. 배치할 애플리케이션 및 어댑터의 설치 경로입니다. 패턴 템플리트에서 {{ site.data.keys.product_adj }} App 컴포넌트의 target_path 출력 속성에 맵핑됩니다. | 
+| admin_context | 필수. mfpadmin이어야 합니다. | 
+| runtime_context | 필수. MFP Server Runtime Deployment 컴포넌트에 지정된 런타임 컨텍스트 루트와 일치합니다. MFP Server Runtime Deployment 컴포넌트의 runtime_contextRoot 출력 속성에 맵핑됩니다. | 
+| deployer_user | 필수. 애플리케이션 및 어댑터 배치 권한이 있는 사용자 계정입니다. 패턴 템플리트에서 패턴 레벨 매개변수로 설정됩니다. | 
+| deployer_password | 필수. 애플리케이션 및 어댑터 배치 권한이 있는 사용자 비밀번호입니다. 패턴 템플리트에서 패턴 레벨 매개변수로 설정됩니다. | 
+| webserver_ip | 선택사항. IBM HTTP Server가 패턴 템플리트에서 배치되는 경우, 이 매개변수는 MFP Server Administration의 동일한 출력 속성에 맵핑됩니다. | 
 
 ### MFP Server Application Center
 {: #mfp-server-application-center }
-This script package sets up the {{ site.data.keys.mf_app_center }} server in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server. It must be used with the WebSphere Application Server Liberty profile server and MFP Server Prerequisite or WebSphere Application Server full profile (Standalone server), MFP WAS SDK Level and MFP Server Prerequisite. It must be installed after the Liberty profile or Standalone server software component.
+이 스크립트 패키지는 WebSphere Application Server 전체 프로파일 또는 WebSphere Application Server Liberty 프로파일 서버에서 {{ site.data.keys.mf_app_center }} 서버를 설정합니다. 이 스크립트 패키지는 WebSphere Application Server Liberty 프로파일 서버 및 MFP Server Prerequisite, 또는 WebSphere Application Server 전체 프로파일(Standalone server), MFP WAS SDK Level 및 MFP Server Prerequisite과 함께 사용해야 합니다. Liberty profile 또는 Standalone server 소프트웨어 컴포넌트 다음에 설치해야 합니다.
 
-| Parameter | Description | 
+| 매개변수 | 설명 | 
 |-----------|-------------|
-| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node. In the pattern templates, it is mapped to output attribute `install_directory` of Liberty profile server or Standalone server. | 
-| profile_name | The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute sa_profile_name of Standalone server. | 
-| db_instance | Name of the database instance. It is mapped to the instancePort output attribute of the Database Server software component in the pattern template. | 
-| db_user | User name that created the Administration database. It is mapped to the db_user output attribute of the MFP Administration DB script package in the pattern template. | 
-| db_name | Name of the Administration database. It is mapped to the `db_name` output attribute of the MFP Administration DB script package in the pattern template. |
-| db_password | Password for user who created the Administration database. It is mapped to the db_password output attribute of the MFP Administration DB script package in the pattern template. | 
-| db_ip | IP address of the DB server where the Administration database is installed. It is mapped to the IP output attribute of the Database Server software component in the pattern template. | 
-| db_port | Port number of the DB server where the Administration database is installed. It is mapped to the instancePort output attribute of the Database Server software component in the pattern template.|
-| admin_user | User name that has {{ site.data.keys.mf_server }} administration privilege.<br/><br/>In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
-| admin_password | admin user password.<br/><br/>In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
-| WAS\_admin\_user | Mandatory for WebSphere Application Server. Optional for WebSphere Application Server Liberty. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to the was_adminoutput attribute of Standalone server in the pattern template.<br/><br/>When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin output attribute of Deployment manager in the pattern template. | 
-| WAS\_admin\_password | Mandatory for WebSphere Application Server. Optional for WebSphere Application Server Liberty. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to the was\_admin\_password output attribute of Standalone server in the pattern template. |
-| server_hostname | Host name of the {{ site.data.keys.mf_server }}. It is mapped to the host output attribute of Liberty profile server or Standalone Server. |
-| LDAP_TYPE | (LDAP parameter) Mandatory. LDAP server type of your user registry:<br/><br/>None<br/>LDAP connection is disabled. When this is set, all the other LDAP parameters are treated as placeholders only.<br/><br/>TivoliDirectoryServer<br/>Select this if the LDAP repository is an IBM  Tivoli  Directory Server.<br/><br/>ActiveDirectory<br/>Select this if the LDAP repository is a Microsoft Active Directory.<br/><br/>Default value: None. | 
-| LDAP_IP | (LDAP parameter). LDAP server IP address. | 
-| LDAP\_SSL\_PORT | (LDAP parameter) LDAP port for secure connection. | 
-| LDAP_PORT | (LDAP parameter) LDAP port for non-secure connection. | 
-| BASE_DN | (LDAP parameter) Base DN. | 
-| BIND_DN | (LDAP parameter) Bind DN. | 
-| BIND_PASSWORD | (LDAP parameter) Bind DN password. | 
-| REQUIRE_SSL | (LDAP parameter) Set it to true for secure connection to LDAP server.{::nomarkdown}<ul><li>When it is true, LDAP_SSL_PORT is used and CERT_FILE_PATH is required to locate the certification file of the LDAP server.</li><li>When it is false, LDAP_PORT is used.</li></ul>Default value: false. | 
-| USER_FILTER | (LDAP parameter) LDAP user filter that searches the existing user registry for users. | 
-| GROUP_FILTER | (LDAP parameter) LDAP group filter that searches the existing user registry for groups. | 
-| LDAP\_REPOSITORY\_NAME | (LDAP parameter) LDAP server name. | 
-| CERT\_FILE\_PATH | (LDAP parameter) Target path of the uploaded LDAP server certification. It is mandatory when REQUIRE_SSL is set to true. | 
-| appcenteradmin | Admin role for {{ site.data.keys.mf_app_center }}. Use one of the following values:<ul><li>None</li><li>No user</li><li>AllAuthenticatedUsers</li>Authenticated users</li><li>Everyone</li><li>All users</li></ul>{:/}Default value: None | 
+| WAS_ROOT | 필수. MobileFirst Platform Server 노드에 있는 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 설치 디렉토리입니다. 패턴 템플리트에서 Liberty profile server 또는 Standalone server의 `install_directory` 출력 속성에 맵핑됩니다. | 
+| profile_name | WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다. 패턴 템플리트에서 Standalone server의 sa_profile_name 출력 속성에 맵핑됩니다. | 
+| db_instance | 데이터베이스 인스턴스의 이름입니다. 패턴 템플리트에서 Database Server 소프트웨어 컴포넌트의 instancePort 출력 속성에 맵핑됩니다. | 
+| db_user | 관리 데이터베이스를 작성한 사용자 이름입니다. 패턴 템플리트에서 MFP Administration DB 스크립트 패키지의 db_user 출력 속성에 맵핑됩니다. | 
+| db_name | 관리 데이터베이스의 이름입니다. 패턴 템플리트에서 MFP Administration DB 스크립트 패키지의 `db_name` 출력 속성에 맵핑됩니다. |
+| db_password | 관리 데이터베이스를 작성한 사용자의 비밀번호입니다. 패턴 템플리트에서 MFP Administration DB 스크립트 패키지의 db_password 출력 속성에 맵핑됩니다. | 
+| db_ip | 관리 데이터베이스가 설치되는 DB 서버의 IP 주소입니다. 패턴 템플리트에서 Database Server 소프트웨어 컴포넌트의 IP 출력 속성에 맵핑됩니다. | 
+| db_port | 관리 데이터베이스가 설치되는 DB 서버의 포트 번호입니다. 패턴 템플리트에서 Database Server 소프트웨어 컴포넌트의 instancePort 출력 속성에 맵핑됩니다.|
+| admin_user | {{ site.data.keys.mf_server }} 관리 권한이 있는 사용자 이름입니다. <br/><br/>패턴 템플리트에서 이 매개변수는 패턴 레벨 매개변수로서 MFP Server Administration 스크립트 패키지 내에 있는 동일한 이름의 매개변수와 연관되며, 이로써 이러한 매개변수는 동일한 값으로 설정됩니다. | 
+| admin_password | 관리 사용자 비밀번호입니다. <br/><br/>패턴 템플리트에서 이 매개변수는 패턴 레벨 매개변수로서 MFP Server Administration 스크립트 패키지 내에 있는 동일한 이름의 매개변수와 연관되며, 이로써 이러한 매개변수는 동일한 값으로 설정됩니다. | 
+| WAS\_admin\_user | WebSphere Application Server의 경우 필수입니다. WebSphere Application Server Liberty의 경우 선택사항입니다. {{ site.data.keys.mf_server }}가 WebSphere Application Server 전체 프로파일에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Standalone server의 was_admin 출력 속성에 맵핑됩니다. <br/><br/>{{ site.data.keys.mf_server }}가 WebSphere Application Server Network Deployment에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Deployment Manager의 was_admin 출력 속성에 맵핑됩니다. | 
+| WAS\_admin\_password | WebSphere Application Server의 경우 필수입니다. WebSphere Application Server Liberty의 경우 선택사항입니다. {{ site.data.keys.mf_server }}가 WebSphere Application Server 전체 프로파일에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Standalone server의 was\_admin\_password 출력 속성에 맵핑됩니다.  |
+| server_hostname | {{ site.data.keys.mf_server }}의 호스트 이름입니다. Liberty profile server 또는 Standalone server의 host 출력 속성에 맵핑됩니다. |
+| LDAP_TYPE | (LDAP 매개변수) 필수. 사용자 레지스트리의 LDAP 서버 유형입니다. 다음 값 중 하나입니다.<br/><br/>None<br/>    LDAP 연결이 사용되지 않습니다. 이 값이 설정된 경우, 기타 모든 LDAP 매개변수는 플레이스홀더로만 취급됩니다. <br/><br/>TivoliDirectoryServer<br/>    LDAP 저장소가 IBM Tivoli  Directory Server인 경우 이를 선택하십시오. <br/><br/>ActiveDirectory<br/>    LDAP 저장소가 Microsoft Active Directory인 경우 이를 선택하십시오. <br/><br/>    기본값: None. | 
+| LDAP_IP | (LDAP 매개변수). LDAP 서버 IP 주소입니다. | 
+| LDAP\_SSL\_PORT | (LDAP 매개변수) 보안 연결을 위한 LDAP 포트입니다. | 
+| LDAP_PORT | (LDAP 매개변수) 비보안 연결을 위한 LDAP 포트입니다. | 
+| BASE_DN | (LDAP 매개변수) 기본 DN입니다. | 
+| BIND_DN | (LDAP 매개변수) 바인드 DN입니다. | 
+| BIND_PASSWORD | (LDAP 매개변수) 바인드 DN 비밀번호입니다. | 
+| REQUIRE_SSL | (LDAP 매개변수) LDAP 서버로의 보안 연결을 위해서는 true로 설정하십시오. {::nomarkdown}<ul><li>true인 경우, LDAP_SSL_PORT가 사용되고 LDAP 서버의 인증 파일을 찾기 위해 CERT_FILE_PATH가 필요합니다.</li><li>false이면 LDAP_PORT가 사용됩니다.</li></ul>기본값: false. | 
+| USER_FILTER | (LDAP 매개변수) 기존 사용자 레지스트리에서 사용자를 검색하는 LDAP 사용자 필터입니다. | 
+| GROUP_FILTER | (LDAP 매개변수) 기존 사용자 레지스트리에서 그룹을 검색하는 LDAP 그룹 필터입니다. | 
+| LDAP\_REPOSITORY\_NAME | (LDAP 매개변수) LDAP 서버 이름입니다. | 
+| CERT\_FILE\_PATH | (LDAP 매개변수) 업로드된 LDAP 서버 인증의 대상 경로입니다. REQUIRE_SSL이 true로 설정된 경우 필수입니다. | 
+| appcenteradmin | {{ site.data.keys.mf_app_center }}의 관리자 역할입니다. 다음 값 중 하나를 사용하십시오.<ul><li>None</li><li>사용자 없음</li><li>AllAuthenticatedUsers</li>인증된 사용자</li><li>Everyone</li><li>모든 사용자</li></ul>{:/}기본값: None | 
 
 ### MFP Server Prerequisite
 {: #mfp-server-prerequisite }
-This script package includes all prerequisites that are required to install the {{ site.data.keys.mf_server }}, including the DB2 JDBC driver and Apache Ant. The script package must be used with the WebSphere Application Server Liberty profile server software component or the WebSphere Application Server full profile software component (display name: Standalone server), and must be installed after the server software component but prior to any other MFP* script packages in the MobileFirst Platform Server node.
+이 스크립트 패키지는 DB2 JDBC 드라이버 및 Apache Ant를 비롯하여 {{ site.data.keys.mf_server }}를 설치하는 데 필요한 모든 필수 소프트웨어를 포함합니다. 이 스크립트 패키지는 WebSphere Application Server Liberty 프로파일 서버 소프트웨어 컴포넌트 또는 WebSphere Application Server 전체 프로파일 소프트웨어 컴포넌트(표시 이름: Standalone server)와 함께 사용해야 하며, 서버 소프트웨어 컴포넌트 다음에, 그리고 MobileFirst Platform Server 노드 내의 다른 MFP * 스크립트 패키지 전에 설치해야 합니다.
 
-| Parameter | Description |
+| 매개변수 | 설명 |
 |-----------|-------------|
-| None | No parameters for this script package. | 
+| None | 이 스크립트 패키지의 매개변수가 없습니다. | 
 
 ### MFP Server Runtime Deployment
 {: #mfp-server-runtime-deployment }
-This script package installs the {{ site.data.keys.product }} runtime in a WebSphere Application Server full profile or WebSphere Application Server Liberty profile server with the {{ site.data.keys.mf_console }} installed. The script package also sets up the connection to the {{ site.data.keys.mf_analytics_server }}. It must be installed after the MFP Server Administration script package.
+이 스크립트 패키지는 WebSphere Application Server 전체 프로파일 또는 WebSphere Application Server Liberty 프로파일 서버({{ site.data.keys.mf_console }}이 설치된 경우)에 {{ site.data.keys.product }} 런타임을 설치합니다. 또한 {{ site.data.keys.mf_analytics_server }}로의 연결을 설정합니다. 이 스크립트 패키지는 MFP Server Administration 스크립트 패키지 다음에 설치해야 합니다.
 
-| Parameter | Description |
+| 매개변수 | 설명 |
 |-----------|-------------|
-| WAS_ROOT | Mandatory. Installation directory of WebSphere Application Server Liberty profile or WebSphere Application Server full profile in the MobileFirst Platform Server node, or installation directory of Deployment manager in the DmgrNode node. In the pattern templates, it is mapped to output attribute install_directory of Liberty profile server or Standalone server. | 
-| profile_name | Optional. The profile name that contains the files for the WebSphere Application Server runtime environment. In the pattern templates, it is mapped to output attribute dmgr\_profile\_name of Deployment manager or sa\_profile\_name of Standalone server. |
-| NUMBER\_OF\_CLUSTERMEMBERS | Optional. Only applicable for the {{ site.data.keys.product }} (WAS ND) pattern template. It specifies the number of cluster members for the cluster to deploy MFP runtime. Default value: 2. | 
-| db_ip | IP address of the DB server where the Runtime (and optional Reports) database is installed. It is mapped to the IP output attribute of the Database Server software component in the pattern template. |
-| db_port | Port number of the DB server where the Runtime (and optional Reports) database is installed. It is mapped to theinstancePort output attribute of the Database Server software component in the pattern template. |
-| admin_user | Mandatory. User name that has {{ site.data.keys.mf_server }} administration privilege. In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
-| admin_password | Mandatory. admin user password. In the pattern template, it is associated with the parameter of the same name in the MFP Server Administration script package as a pattern level parameter to ensure they are set to the same value | 
-| runtime_path | Mandatory. Runtime WAR file installed path. For example: it can be mapped to the target_path output attribute of MFP Server Runtime in the pattern template. | 
-| runtime_contextRoot | Mandatory. Runtime context root. Must start with a forward slash, /; for example, "/HelloWorld". It is set as a pattern level parameter in the pattern template. | 
-| rtdb_name | Mandatory. Name of the Runtime database. It is mapped to the `db_name` output attribute of the MFP Runtime DB script package in the pattern template. | 
-| rtdb_user | Mandatory. User that created the Runtime database. It is mapped to the `db_user` output attribute of the MFP Runtime DB script package in the pattern template. |
-| rtdb_password | Mandatory. Password of the user that created the Runtime database. It is mapped to the `db_password` output attribute of the MFP Runtime DB script package in the pattern template. |
-| rptdb_name | Optional. Name of the Reports database. It is mapped to the `db_name` output attribute of the MFP Reports DB script package in the pattern template. Leave blank if you do not want to connect to a Reports database. |
-| rptdb_user | Optional. User that created the Reports database. It is mapped to the `db_user` output attribute of the MFP Reports DB script package in the pattern template. | 
-| rptdb_password | Optional. Password of the user that created the Reports database. It is mapped to the `db_password` output attribute of MFP Reports DB script package in the pattern template. \ 
-| was\_admin\_user	| Optional. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to the was_adminoutput attribute of Standalone server in the pattern template. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin output attribute of Deployment manager in the pattern template. |
-| was_admin_password | Optional. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server full profile, it is mapped to thewas_admin_password output attribute of Standalone server in the pattern template. When the {{ site.data.keys.mf_server }} is deployed on WebSphere Application Server Network Deployment, it is mapped to the was_admin_password output attribute of Deployment manager in the pattern template. | 
-| server_farm_mode | Mandatory. Map it to the same attribute of MFP Server Administration. | 
-| server_hostname | Mandatory. Host name of the {{ site.data.keys.mf_server }}. It is mapped to the host output attribute of Liberty profile server, Standalone Server, or Deployment manager. |
-| analytics_ip | Optional. {{ site.data.keys.mf_analytics }} Node IP address to enable the Analytics capability in the MFP Server Runtime. |
-| analytics_admin_user | Optional. Administrator name of the {{ site.data.keys.mf_analytics_server }}. | 
-| analytics_admin_password | Optional. Password of administrator of the {{ site.data.keys.mf_analytics_server }}. | 
+| WAS_ROOT | 필수. MobileFirst Platform Server 노드에 있는 WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일의 설치 디렉토리이거나 DmgrNode 노드에 있는 Deployment Manager의 설치 디렉토리입니다. 패턴 템플리트에서 Liberty profile server 또는 Standalone server의 install_directory 출력 속성에 맵핑됩니다. | 
+| profile_name | 선택사항. WebSphere Application Server 런타임 환경의 파일이 포함된 프로파일 이름입니다. 패턴 템플리트에서 Deployment Manager의 dmgr\_profile\_name 또는 Standalone server의 sa\_profile\_name 출력 속성에 맵핑됩니다. |
+| NUMBER\_OF\_CLUSTERMEMBERS | 선택사항. {{ site.data.keys.product }}(WAS ND) 패턴 템플리트에만 적용 가능합니다. MFP 런타임을 배치하는 클러스터의 클러스터 멤버 수를 지정합니다. 기본값: 2. | 
+| db_ip | 런타임(및 선택사항인 보고서) 데이터베이스가 설치되는 DB 서버의 IP 주소입니다. 패턴 템플리트에서 Database Server 소프트웨어 컴포넌트의 IP 출력 속성에 맵핑됩니다. |
+| db_port | 런타임(및 선택사항인 보고서) 데이터베이스가 설치되는 DB 서버의 포트 번호입니다. 패턴 템플리트에서 Database Server 소프트웨어 컴포넌트의 instancePort 출력 속성에 맵핑됩니다. |
+| admin_user | 필수. {{ site.data.keys.mf_server }} 관리 권한이 있는 사용자 이름입니다. 패턴 템플리트에서 이 매개변수는 패턴 레벨 매개변수로서 MFP Server Administration 스크립트 패키지 내에 있는 동일한 이름의 매개변수와 연관되며, 이로써 이러한 매개변수는 동일한 값으로 설정됩니다. | 
+| admin_password | 필수. 관리 사용자 비밀번호입니다. 패턴 템플리트에서 이 매개변수는 패턴 레벨 매개변수로서 MFP Server Administration 스크립트 패키지 내에 있는 동일한 이름의 매개변수와 연관되며, 이로써 이러한 매개변수는 동일한 값으로 설정됩니다. | 
+| runtime_path | 필수. 런타임 WAR 파일 설치 경로입니다. 예를 들어, 패턴 템플리트에서 MFP Server Runtime의 target_path 출력 속성에 맵핑될 수 있습니다. | 
+| runtime_contextRoot | 필수. 런타임 컨텍스트 루트입니다. 슬래시(/)로 시작해야 합니다(예: "/HelloWorld"). 패턴 템플리트에서 패턴 레벨 매개변수로 설정됩니다. | 
+| rtdb_name | 필수. 런타임 데이터베이스의 이름입니다. 패턴 템플리트에서 MFP Runtime DB 스크립트 패키지의 `db_name` 출력 속성에 맵핑됩니다. | 
+| rtdb_user | 필수. 런타임 데이터베이스를 작성한 사용자입니다. 패턴 템플리트에서 MFP Runtime DB 스크립트 패키지의 `db_user` 출력 속성에 맵핑됩니다. |
+| rtdb_password | 필수. 런타임 데이터베이스를 작성한 사용자의 비밀번호입니다. 패턴 템플리트에서 MFP Runtime DB 스크립트 패키지의 `db_password` 출력 속성에 맵핑됩니다. |
+| rptdb_name | 선택사항. 보고서 데이터베이스의 이름입니다. 패턴 템플리트에서 MFP Reports DB 스크립트 패키지의 `db_name` 출력 속성에 맵핑됩니다. 보고서 데이터베이스에 연결하지 않으려면 공백으로 두십시오. |
+| rptdb_user | 선택사항. 보고서 데이터베이스를 작성한 사용자입니다. 패턴 템플리트에서 MFP Reports DB 스크립트 패키지의 `db_user` 출력 속성에 맵핑됩니다. | 
+| rptdb_password | 선택사항. 보고서 데이터베이스를 작성한 사용자의 비밀번호입니다. 패턴 템플리트에서 MFP Reports DB 스크립트 패키지의 `db_password` 출력 속성에 맵핑됩니다.\ 
+| was\_admin\_user	| 선택사항. {{ site.data.keys.mf_server }}가 WebSphere Application Server 전체 프로파일에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Standalone server의 was_admin 출력 속성에 맵핑됩니다. {{ site.data.keys.mf_server }}가 WebSphere Application Server Network Deployment에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Deployment Manager의 was_admin 출력 속성에 맵핑됩니다. |
+| was_admin_password | 선택사항. {{ site.data.keys.mf_server }}가 WebSphere Application Server 전체 프로파일에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Standalone server의 was_admin_password 출력 속성에 맵핑됩니다. {{ site.data.keys.mf_server }}가 WebSphere Application Server Network Deployment에 배치되는 경우, 이 매개변수는 패턴 템플리트에서 Deployment Manager의 was_admin_password 출력 속성에 맵핑됩니다. | 
+| server_farm_mode | 필수. MFP Server Administration의 동일한 속성에 이 매개변수를 맵핑하십시오. | 
+| server_hostname | 필수. {{ site.data.keys.mf_server }}의 호스트 이름입니다. Liberty profile server, Standalone Server 또는 Deployment Manager의 host 출력 속성에 맵핑됩니다. |
+| analytics_ip | 선택사항. MFT Server Runtime의 Analytics 기능을 사용 가능하게 설정하기 위한 {{ site.data.keys.mf_analytics }} 노드 IP 주소입니다. |
+| analytics_admin_user | 선택사항. {{ site.data.keys.mf_analytics_server }}의 관리자 이름입니다. | 
+| analytics_admin_password | 선택사항. {{ site.data.keys.mf_analytics_server }}의 관리자 비밀번호입니다. | 
 
-## Upgrading {{ site.data.keys.mf_system_pattern }}
+## {{ site.data.keys.mf_system_pattern }} 업그레이드
 {: #upgrading-mobilefirst-system-pattern }
-To upgrade {{ site.data.keys.mf_system_pattern }}, upload the **.tgz** file that contains the latest updates.
+{{ site.data.keys.mf_system_pattern }}을 업그레이드하려면 최신 업데이트가 포함된 **.tgz** 파일을 업로드하십시오.
 
-1. Log into IBM  PureApplication  System with an account that is allowed to upload new system plugins.
-2. From the IBM PureApplication System console, navigate to **Catalog → System Plug-ins**.
-3. Upload the {{ site.data.keys.mf_system_pattern }} **.tgz** file that contains the updates.
-4. Enable the plugins you have uploaded.
-5. Redeploy the pattern.
+1. 새 시스템 플러그인을 업로드할 수 있는 계정으로 IBM  PureApplication  System에 로그인하십시오.
+2. IBM PureApplication System 콘솔에서 **카탈로그 → 시스템 플러그인**으로 이동하십시오.
+3. 업데이트가 포함된 {{ site.data.keys.mf_system_pattern }} **.tgz** 파일을 업로드하십시오.
+4. 업로드한 플러그인을 사용 가능하게 설정하십시오.
+5. 패턴을 다시 배치하십시오.
 

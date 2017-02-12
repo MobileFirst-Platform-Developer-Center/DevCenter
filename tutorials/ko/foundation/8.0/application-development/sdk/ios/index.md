@@ -1,63 +1,63 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to iOS Applications
+title: iOS 애플리케이션에 MobileFirst Foundation SDK 추가
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-The MobileFirst Foundation SDK consists of a collection of pods that are available through [CocoaPods](http://guides.cocoapods.org) and which you can add to your Xcode project.  
-The pods correspond to core functions and other functions:
+MobileFirst Foundation SDK는 [CocoaPods](http://guides.cocoapods.org)를 통해 사용 가능하며 Xcode 프로젝트에 추가할 수 있는 POD 콜렉션으로 구성됩니다.   
+POD는 핵심 기능 및 다른 기능에 해당됩니다. 
 
-* **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../jsonstore/ios/).
-* **IBMMobileFirstPlatformFoundationPush** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
-* **IBMMobileFirstPlatformFoundationWatchOS** - Contains support for Apple WatchOS.
+* **IBMMobileFirstPlatformFoundation** - 클라이언트 대 서버 연결을 구현하고 인증 및 보안 측면, 자원 요청과 기타 필수 핵심 기능을 처리합니다. 
+* **IBMMobileFirstPlatformFoundationJSONStore** - JSONStore 프레임워크를 포함합니다. 자세한 정보는 [iOS용 JSONStore 학습서](../../jsonstore/ios/)를 검토하십시오. 
+* **IBMMobileFirstPlatformFoundationPush** - 푸시 알림 프레임워크를 포함합니다. 자세한 정보는 [알림 학습서](../../../notifications/)를 검토하십시오. 
+* **IBMMobileFirstPlatformFoundationWatchOS** - Apple WatchOS에 대한 지원을 포함합니다. 
 
-In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaPods to a new or existing iOS application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
+이 학습서에서는 신규 또는 기존 iOS 애플리케이션에 CocoaPods를 사용하여 MobileFirst 고유 SDK를 추가하는 방법에 대해 학습합니다. 또한 애플리케이션을 인식하도록 {{ site.data.keys.mf_server }}를 구성하는 방법도 학습합니다. 
 
-**Prerequisites:**
+**전제조건:**
 
-- Xcode and MobileFirst CLI installed on the developer workstation.  
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your iOS development environment](../../../installation-configuration/development/ios) tutorials.
+- 개발자 워크스테이션에 Xcode 및 MobileFirst CLI가 설치되어 있습니다.   
+- {{ site.data.keys.mf_server }}의 로컬 또는 원격 인스턴스가 실행 중입니다. 
+- [MobileFirst 개발 환경 설정](../../../installation-configuration/development/mobilefirst) 및 [iOS 개발 환경 설정](../../../installation-configuration/development/ios) 학습서를 읽으십시오. 
 
-> **Note:** **Keychain Sharing** capability is mandatory while running iOS apps on simulators using XCode 8.
+> **참고:** XCode 8을 사용하여 시뮬레이터에서 iOS 앱을 실행 중인 경우 **키 체인 공유** 기능은 필수입니다. 
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to }
-- [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
-- [Adding Support for Apple watchOS](#adding-support-for-apple-watchos)
-- [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Bitcode and TLS 1.2](#bitcode-and-tls-12)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [MobileFirst 고유 SDK 추가](#adding-the-mobilefirst-native-sdk)
+- [MobileFirst 고유 SDK를 수동으로 추가](#manually-adding-the-mobilefirst-native-sdk)
+- [Apple watchOS에 대한 지원 추가](#adding-support-for-apple-watchos)
+- [MobileFirst 고유 SDK 업데이트](#updating-the-mobilefirst-native-sdk)
+- [생성된 MobileFirst 고유 SDK 아티팩트](#generated-mobilefirst-native-sdk-artifacts)
+- [비트 코드 및 TLS 1.2](#bitcode-and-tls-12)
+- [다음 학습서](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## {{ site.data.keys.product_adj }} 고유 SDK 추가
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product }} Native SDK to a new or existing Xcode project, and to register the application to the {{ site.data.keys.mf_server }}.
+아래 지시사항에 따라 신규 또는 기존 Xcode 프로젝트에 {{ site.data.keys.product }} 고유 SDK를 추가하고 {{ site.data.keys.mf_server }}에 애플리케이션을 등록하십시오. 
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
+시작하기 전에 {{ site.data.keys.mf_server }}가 실행 중인지 확인하십시오.   
+로컬로 설치된 서버를 사용하는 경우: **명령행** 창에서 서버의 폴더로 이동하고 `./run.sh` 명령을 실행하십시오. 
 
-### Creating an application
+### 애플리케이션 작성
 {: #creating-an-application }
-Create an Xcode project or use an existing one (Swift or Objective-C).  
+Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을 사용하십시오.   
 
-### Adding the SDK
+### SDK 추가
 {: #adding-the-sdk }
-1. The {{ site.data.keys.product }} Native SDK is provided via CocoaPods.
-    - If [CocoaPods](http://guides.cocoapods.org) is already installed in your development environment, skip to step 2.
-    - If CocoaPods is not installed, install it as follows:  
-        - Open a **Command-line** window and navigate to the root of the Xcode project.
-        - Run the command: `sudo gem install cocoapods` followed by `pod setup`. **Note:** These commands might take several minutes to complete.
-2. Run the command: `pod init`. This creates a `Podfile`.
-3. Using your favorite code editor, open the `Podfile`.
-    - Comment out or delete the contents of the file.
-    - Add the following lines and save the changes:
+1. {{site.data.keys.product }} 고유 SDK는 CocoaPods를 통해 제공됩니다. 
+    - 개발 환경에 [CocoaPods](http://guides.cocoapods.org)가 이미 설치되어 있는 경우 2단계로 건너뛰십시오. 
+    - CocoaPods가 설치되지 않은 경우 다음과 같이 설치하십시오.   
+        - **명령행** 창을 열고 Xcode 프로젝트의 루트로 이동하십시오. 
+        - `sudo gem install cocoapods` 및 `pod setup` 명령을 순서대로 실행하십시오. **참고:** 이러한 명령을 완료하려면 몇 분 정도 소요될 수 있습니다. 
+2. `pod init` 명령을 실행하십시오. `Podfile` 파일이 작성됩니다. 
+3. 선호하는 코드 편집기에서 `Podfile`을 여십시오. 
+    - 파일 컨텐츠를 주석 처리하거나 삭제하십시오. 
+    - 다음 행을 추가하고 변경사항을 저장하십시오. 
 
       ```xml
       use_frameworks!
@@ -67,111 +67,112 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
           pod 'IBMMobileFirstPlatformFoundation'
       end
       ```
-      - Replace **Xcode-project-target** with the name of your Xcode project's target.
+      - Xcode 프로젝트의 대상 이름으로 **Xcode-project-target**을 대체하십시오. 
 
-4. Back in the command-line window, run the commands: `pod install`, followed by `pod update`. These command add the {{ site.data.keys.product }} Native SDK files, add the **mfpclient.plist** file, and generate a Pod project.  
-    **Note:** The commands might take several minutes to complete.
+4. 명령행 창으로 돌아가서 `pod install` 및 `pod update` 명령을 순서대로 실행하십시오. 이러한 명령은 {{ site.data.keys.product }} 고유 SDK 파일 및 **mfpclient.plist** 파일을 추가하고 Pod 프로젝트를 생성합니다.
+      
+    **참고:** 명령을 완료하려면 몇 분 정도 소요될 수 있습니다. 
 
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요**: 여기서부터 `[ProjectName].xcworkspace` 파일을 사용하여 Xcode에서 프로젝트를 여십시오. `[ProjectName].xcodeproj` 파일을 사용하지 **마십시오**. CocoaPods 기반 프로젝트는 애플리케이션(실행 파일) 및 라이브러리(CocoaPod 관리자가 가져오는 모든 프로젝트 종속 항목)를 포함하는 작업공간으로 관리됩니다.
 
-### Manually adding the {{ site.data.keys.product_adj }} Native SDK
+### {{ site.data.keys.product_adj }} 고유 SDK를 수동으로 추가
 {: manually-adding-the-mobilefirst-native-sdk }
-You can also manually add the {{ site.data.keys.product }} SDK:
+{{ site.data.keys.product }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다. 
 
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Click for instructions</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>지시사항을 보려면 클릭</b></a>
             </h4>
         </div>
 
         <div id="collapse-ios-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk">
             <div class="panel-body">
-                <p>To manually add the {{ site.data.keys.product }} SDK, first download the SDK .zip file from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab.</p>
+                <p>{{ site.data.keys.product }} SDK를 수동으로 추가하려면 먼저 <b>{{ site.data.keys.mf_console }} → 다운로드 센터 → SDK</b> 탭에서 SDK .zip 파일을 다운로드하십시오. </p>
 
                 <ul>
-                    <li>In your Xcode project, add the {{ site.data.keys.product }} framework files to your project.
+                    <li>Xcode 프로젝트에서 {{ site.data.keys.product }} 프레임워크 파일을 다음과 같이 프로젝트에 추가하십시오.
                         <ul>
-                            <li>Select the project root icon in the project explorer.</li>
-                            <li>Select <b>File → Add Files</b> and navigate to the folder that contains the framework files previously downloaded.</li>
-                            <li>Click the <b>Options</b> button.</li>
-                            <li>Select <b>Copy items if needed</b> and <b>Create groups for any added folders</b>.<br/>
-                            <b>Note:</b> If you do not select the <b>Copy items if needed</b> option, the framework files are not copied but are linked from their original location.</li>
-                            <li>Select the main project (first option) and select the app target.</li>
-                            <li>In the <b>General</b> tab, remove any frameworks that would get added automatically to <b>Linked Frameworks and Libraries</b>.</li>
-                            <li>Required: In <b>Embedded Binaries</b>, add the following frameworks:
+                            <li>프로젝트 탐색기에서 프로젝트 루트 아이콘을 선택하십시오. </li>
+                            <li><b>파일 → 파일 추가</b>를 선택하고 이전에 다운로드된 프레임워크 파일이 있는 폴더로 이동하십시오. </li>
+                            <li><b>옵션</b> 단추를 클릭하십시오. </li>
+                            <li><b>필요한 경우 항목 복사</b> 및 <b>추가된 폴더에 대한 그룹 작성</b>을 선택하십시오.<br/>
+                            <b>참고:</b> <b>필요한 경우 항목 복사</b> 옵션을 선택하지 않는 경우 프레임워크 파일이 복사되지는 않지만 원래 위치에 링크됩니다. </li>
+                            <li>기본 프로젝트(첫 번째 옵션)를 선택하고 앱 대상을 선택하십시오. </li>
+                            <li><b>일반</b> 탭에서 <b>링크된 프레임워크 및 라이브러리</b>에 자동으로 추가될 프레임워크를 모두 제거하십시오. </li>
+                            <li>필수: <b>임베디드 2진</b>에서 다음 프레임워크를 추가하십시오.
                                 <ul>
                                     <li>IBMMobileFirstPlatformFoundation.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
                                     <li>Localizations.bundle</li>
                                 </ul>
-                                Performing this step will automatically add these frameworks to <b>Linked Frameworks and Libraries</b>.
+                                이 단계를 수행하면 이러한 프레임워크가 <b>링크된 프레임워크 및 라이브러리</b>에 자동으로 추가됩니다.
                             </li>
-                            <li>In <b>Linked Frameworks and Libraries</b>, add the following frameworks:
+                            <li><b>링크된 프레임워크 및 라이브리러</b>에 다음 프레임워크를 추가하십시오.
                                 <ul>
                                     <li>IBMMobileFirstPlatformFoundationJSONStore.framework</li>
                                     <li>sqlcipher.framework</li>
                                     <li>openssl.framework</li>
                                 </ul>
                             </li>
-                            <blockquote><b>Note:</b> These steps copy the relevant {{ site.data.keys.product }} frameworks to your project and link them within the Link Binary with Libraries list in the Build Phases tab. If you link the files to their original location (without choosing the Copy items if needed option as described previously), you need to set the Framework Search Paths as described below.</blockquote>
+                            <blockquote><b>참고:</b> 이 단계는 프로젝트에 관련 {{ site.data.keys.product }} 프레임워크를 추가하고 빌드 단계(Phase) 탭의 라이브러리가 포함된 2진 링크 목록 내에 링크합니다. 앞의 설명대로 필요한 항목 복사 옵션을 선택하지 않고 원래 위치로 파일을 링크하는 경우 아래 설명된 대로 프레임워크 검색 경로를 설정해야 합니다. </blockquote>
                         </ul>
                     </li>
-                    <li>The frameworks added in Step 1, would be automatically added to the <b>Link Binary with Libraries</b> section, in the <b>Build Phases</b> tab.</li>
-                    <li><i>Optional:</i> If you did not copy the framework files into your project as described previously , perform the following steps by using the <b>Copy items if needed</b> option, in the <b>Build Phases</b> tab.
+                    <li>1단계에서 추가된 프레임워크는 <b>빌드 단계(Phase)</b> 탭의 <b>라이브러리가 포함된 2진 링크</b> 섹션에 자동으로 추가됩니다. </li>
+                    <li><i>선택사항:</i> 앞의 설명대로 프레임워크 파일을 프로젝트에 복사하지 않은 경우 <b>빌드 단계(Phase)</b> 탭에서 <b>필요한 항목 목사</b> 옵션을 사용하여 다음 단계를 수행하십시오.
                         <ul>
-                            <li>Open the <b>Build Settings</b> page.</li>
-                            <li>Find the <b>Search Paths</b> section.</li>
-                            <li>Add the path of the folder that contains the frameworks to the <b>Framework Search Paths</b> folder.</li>
+                            <li><b>빌드 설정</b> 페이지를 여십시오. </li>
+                            <li><b>검색 경로</b> 섹션을 찾으십시오. </li>
+                            <li><b>프레임워크 검색 경로</b> 폴더에 프레임워크가 있는 폴더의 경로를 추가하십시오. </li>
                         </ul>
                     </li>
-                    <li>In the <b>Deployment</b> section of the <b>Build Settings</b> tab, select a value for the <b>iOS Deployment Target</b> field that is greater than or equal to 8.0.</li>
-                    <li><i>Optional:</i> From Xcode 7, bitcode is set as the default. For limitations and requirements see <a href="additional-information/#working-with-bitcode-in-ios-apps">Working with bitcode in iOS apps</a>. To disable bitcode:
+                    <li><b>빌드 설정</b> 탭의 <b>배치</b> 섹션에서 <b>iOS 배치 대상</b> 필드의 값을 8.0 이상으로 선택하십시오. </li>
+                    <li><i>선택사항:</i> Xcode 7부터 비트 코드가 기본적으로 설정됩니다. 제한사항 및 요구사항은 <a href="additional-information/#working-with-bitcode-in-ios-apps">iOS 앱의 비트 코드 작업</a>을 참조하십시오. 비트 코드를 사용 안함으로 설정하려면 다음을 수행하십시오.
                         <ul>
-                            <li>Open the <b>Build Options</b> section.</li>
-                            <li>Set <b>Enable Bitcode</b> to <b>No</b>.</li>
+                            <li><b>빌드 옵션</b> 섹션을 여십시오. </li>
+                            <li><b>비트 코드 사용</b>을 <b>아니오</b>로 설정하십시오. </li>
                         </ul>
                     </li>
-                    <li>Beginning with Xcode 7, TLS must be enforced. See <a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">Enforcing TLS-secure connections in iOS apps</a>.</li>
+                    <li>Xcode 7부터 TLS를 강제 실행해야 합니다. <a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">iOS 앱에서 TLS 보안 연결 강제 실행</a>을 참조하십시오. </li>
                 </ul>
 
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>닫기 섹션</b></a>
             </div>
         </div>
     </div>
 </div>
 
-### Registering the application
+### 애플리케이션 등록
 {: #registering-the-application }
-1. Open a **Command-line** window and navigate to the root of the Xcode project.  
+1. **명령행** 창을 열고 Xcode 프로젝트의 루트로 이동하십시오.   
 
-2. Run the command:
+2. 다음 명령을 실행하십시오. 
 
     ```bash
     mfpdev app register
     ```
-    - If a remote server is used, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 추가하십시오. 
 
-    You are asked to provide the application's BundleID. **Important**: The BundleID is **case sensitive**.  
+    애플리케이션의 번들 ID를 제공하라는 메시지가 표시됩니다. **중요**: 번들 ID는 **대소문자를 구분**합니다.   
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then generates the **mfpclient.plist** file at the root of the Xcode project, and adds to it the metadata that identifies the {{ site.data.keys.mf_server }}.  
+`mfpdev app register` CLI 명령은 먼저 {{ site.data.keys.mf_server }}에 연결하여 애플리케이션을 등록한 후에 Xcode 프로젝트의 루트에서 **mfpclient.plist** 파일을 생성하고 {{ site.data.keys.mf_server }}를 식별하는 메타데이터에 추가합니다.   
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **팁:** {{ site.data.keys.mf_console }}에서 애플리케이션을 등록할 수도 있습니다.     
 >
-> 1. Load the {{ site.data.keys.mf_console }}.
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
-> 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.plist** file. Follow the onscreen instructions to add the file to your project.
+> 1. {{ site.data.keys.mf_console }}을 로드하십시오. 
+> 2. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하여 새 애플리케이션을 등록하고 화면의 지시사항에 따르십시오.   
+> 3. 애플리케이션이 등록된 후에 애플리케이션의 **구성 파일** 탭으로 이동하고 **mfpclient.plist** 파일을 복사하거나 다운로드하십시오. 화면의 지시사항에 따라 프로젝트에 파일을 추가하십시오.
 
-### Completing the setup process
+### 설정 프로세스 완료
 {: #completing-the-setup-process }
-In Xcode, right-click the project entry, click on **Add Files To [ProjectName]** and select the **mfpclient.plist** file, located at the root of the Xcode project.
+Xcode에서 프로젝트 항목을 마우스 오른쪽 단추로 클릭하고 **[프로젝트 이름]에 파일 추가**를 클릭한 다음 Xcode 프로젝트의 루트에 있는 **mfpclient.plist** 파일을 선택하십시오. 
 
-### Referencing the SDK
+### SDK 참조
 {: #referencing-the-sdk }
-Whenever you want to use the {{ site.data.keys.product }} Native SDK, make sure that you import the {{ site.data.keys.product }} framework:
+{{ site.data.keys.product }} 고유 SDK를 사용할 때마다 {{ site.data.keys.product }} 프레임워크를 가져오십시오. 
 
 Objective-C:
 
@@ -186,11 +187,11 @@ import IBMMobileFirstPlatformFoundation
 ```
 
 <br>
-#### Note about iOS 9 and above:
+#### iOS 9 이상에 대한 참고사항:
 {: #note-about-ios-9-and-above }
-> Starting Xcode 7, [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) is enabled by default. In order to run apps during development, you can disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
->   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
->   2. Paste the following:
+> Xcode 7부터 [ATS(Application Transport Security)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14)가 기본적으로 사용됩니다. 개발 중에 앱을 실행하려는 경우 ATS를 사용 안함으로 설정할 수 있습니다([자세히 보기](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
+>   1. Xcode에서 **[프로젝트]/info.plist 파일 → 다른 이름으로 열기 → 소스 코드**를 마우스 오른쪽 단추로 클릭하십시오. 
+>   2. 다음을 붙여넣으십시오. 
 > 
 ```xml
 >      <key>NSAppTransportSecurity</key>
@@ -200,10 +201,10 @@ import IBMMobileFirstPlatformFoundation
 >      </dict>
 ```
 
-## Adding Support for Apple watchOS
+## Apple watchOS에 대한 지원 추가
 {: #adding-support-for-apple-watchos}
-If you are developing for Apple watchOS 2 and later, the Podfile must contain sections corresponding to the main app and the watchOS extension. See below example for
-watchOS 2:
+Apple watchOS 2 이상에 대해 개발 중인 경우 Podfile에는 기본 앱 및 watchOS 확장에 해당하는 섹션이 포함되어 있어야 합니다. watchOS 2에 대한 아래 예제를
+참조하십시오. 
 
 ```xml
 # Replace with the name of your watchOS application
@@ -224,42 +225,42 @@ target :MyWatchApp WatchKit Extension do
 end
 ```
 
-Verify that the Xcode project is closed and run the `pod install` command.
+Xcode 프로젝트가 처리완료되었는지 확인하고 `pod install` 명령을 실행하십시오. 
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## {{ site.data.keys.product_adj }} 고유 SDK 업데이트
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product }} Native SDK with the latest release, run the following command from the root folder of the Xcode project in a **Command-line** window:
+최신 릴리스로 {{ site.data.keys.product }} 고유 SDK를 업데이트하려면 **명령행** 창의 Xcode 프로젝트 루트 폴더에서 다음 명령을 실행하십시오. 
 
 ```bash
 pod update
 ```
 
-SDK releases can be found in the SDK's [CocoaPods repository](https://cocoapods.org/?q=ibm%20mobilefirst).
+SDK 릴리스는 SDK의 [CocoaPods 저장소](https://cocoapods.org/?q=ibm%20mobilefirst)에 있습니다. 
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
+## 생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트
 {: generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
-Located at the root of the project, this file defines the client-side properties used for registering your iOS app on the {{ site.data.keys.mf_server }}.
+이 파일은 프로젝트의 루트에 있으며 {{ site.data.keys.mf_server }}에서 iOS 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다. 
 
-| Property            | Description                                                         | Example values |
+| 특성            | 설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| protocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
-| host        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| port        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
-| wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
-| languagePreferences | Sets the default language for client sdk system messages.           | en             |
+| wlServerProtocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
+| wlServerHost        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
+| wlServerPort        | {{ site.data.keys.mf_server }}의 포트입니다.                                 | 9080           |
+| wlServerContext     | {{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다.  | /mfp/          |
+| languagePreferences | 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.            | en             |
 
-## Bitcode and TLS 1.2
+## 비트 코드 및 TLS 1.2
 {: #bitcode-and-tls-12 }
-For information about support for Bitcode and TLS 1.2 see the [Additional Information](additional-information) page.
+비트 코드 및 TLS 1.2의 지원에 대한 정보는 [추가 정보](additional-information) 페이지를 참조하십시오. 
 
-## Tutorials to follow next
+## 다음 학습서
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product }} Native SDK now integrated, you can now:
+이제 {{ site.data.keys.product }} 고유 SDK가 통합되었으므로 다음을 수행할 수 있습니다. 
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- [{{ site.data.keys.product }} SDK 사용 학습서](../) 검토
+- [어댑터 개발 학습서](../../../adapters/) 검토
+- [인증 및 보안 학습서](../../../authentication-and-security/) 검토
+- [알림 학습서](../../../notifications/) 검토
+- [모든 학습서](../../../all-tutorials) 검토

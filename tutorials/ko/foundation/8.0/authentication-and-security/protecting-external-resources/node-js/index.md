@@ -1,39 +1,39 @@
 ---
 layout: tutorial
-title: Node.js Validator
-breadcrumb_title: Node.js validator
+title: Node.js 유효성 검증기
+breadcrumb_title: Node.js 유효성 검증기
 relevantTo: [android,ios,windows,javascript]
 weight: 3
-downloads:
-  - name: Download sample
+다운로드:
+  - 이름: 샘플 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-{{ site.data.keys.product_full }} provides a Node.js framework to enforce security capabilities on external resources.  
-The Node.js framework is provided as an npm module (**passport-mfp-token-validation**).
+{{ site.data.keys.product_full }}은 외부 자원에서 보안 기능을 강제 실행하기 위해 Node.js 프레임워크를 제공합니다.  
+Node.js 프레임워크는 npm 모듈(**passport-mfp-token-validation**)로 제공됩니다. 
 
-This tutorial shows how to protect a simple Node.js resource, `GetBalance`, by using a scope (`accessRestricted`).
+이 학습서는 범위(`accessRestricted`)를 사용하여 단순 Node.js 자원, `GetBalance`를 보호하는 방법을 보여줍니다. 
 
-**Prerequsites:**  
+**전제조건:**  
 
-* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product }} security framework](../../).
+* [외부 자원을 인증하기 위해 {{ site.data.keys.mf_server }} 사용](../) 학습서를 읽으십시오. 
+* [{{ site.data.keys.product }} 보안 프레임워크](../../)를 이해하십시오. 
 
-## The passport-mfp-token-validation module
+## passport-mfp-token-validation 모듈
 {: #the-passport-mfp-token-validation-module }
-The passport-mfp-token-validation module provides an authentication mechanism to verify access tokens that are issued by the {{ site.data.keys.mf_server }}.
+passport-mfp-token-validation 모듈은 {{ site.data.keys.mf_server }}에서 발행한 액세스 토큰을 확인하기 위해 인증 메커니즘을 제공합니다. 
 
-To install the module, run:
+모듈을 설치하려면 다음을 실행하십시오. 
 
 ```bash
 npm install passport-mfp-token-validation@8.0.X
 ```
 
-## Usage
+## 사용법
 {: #usage }
-* The sample uses the `express` and `passport-mfp-token-validation` modules:
+* 샘플은 `express` 및 `passport-mfp-token-validation` 모듈을 사용합니다. 
 
   ```javascript
   var express = require('express');
@@ -41,7 +41,7 @@ npm install passport-mfp-token-validation@8.0.X
   var mfpStrategy = require('passport-mfp-token-validation').Strategy;
   ```
 
-* Set up the `Strategy` as follows:
+* 다음과 같이 `Strategy`를 설정하십시오. 
 
   ```javascript
   passport.use(new mfpStrategy({
@@ -58,12 +58,12 @@ npm install passport-mfp-token-validation@8.0.X
   }));
   ```
   
- * `authServerUrl`: Replace `localhost:9080` with your {{ site.data.keys.mf_server }} IP address and port number.
- * `confClientID`, `confClientPass`: Replace the confidential client ID and password with the ones that you defined in the {{ site.data.keys.mf_console }}.
- * `analytics`: The analytics item is optional, and required only if you wish to log analytics events to {{ site.data.keys.product }}.  
- Replace `localhost:9080`, `username`, and `password` with your Analytics Server IP address, port number, user name, and password.
+ * `authServerUrl`: `localhost:9080`을 사용자의 {{ site.data.keys.mf_server }} IP 주소 및 포트 번호로 대체하십시오. 
+ * `confClientID`, `confClientPass`: 기밀 클라이언트 ID 및 비밀번호를 사용자가 {{ site.data.keys.mf_console }}에서 정의한 것으로 대체하십시오. 
+ * `analytics`: 분석 항목은 선택적이며 분석 이벤트를 {{ site.data.keys.product }}에 로그하려는 경우에만 필요합니다.   
+`localhost:9080`, `username`, 및 `password`를 사용자의 Analytics Server IP 주소, 포트 번호, 사용자 이름, 비밀번호로 대체하십시오. 
 
-* Authenticate requests by calling `passport.authenticate`:
+* `passport.authenticate`를 호출하여 요청을 인증하십시오. 
 
   ```javascript
   var app = express();
@@ -83,19 +83,19 @@ npm install passport-mfp-token-validation@8.0.X
   });
   ```
 
- * The `Strategy` to employ should be `mobilefirst-strategy`.
- * Set `session` to `false`.
- * Specify the `scope` name.
+ * 사용할 `Strategy`는 `mobilefirst-strategy`이어야 합니다. 
+ * `session`을 `false`로 설정하십시오. 
+ * `scope` 이름을 지정하십시오.
 
-## Sample application 
+## 샘플 애플리케이션 
 {: #sample-application }
-[Download the Node.js sample](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80).
+[Node.js 샘플을 다운로드하십시오](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80).
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
-1. Navigate to the sample's root folder and run the command: `npm install` followed by: `npm start`.
-2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-4. Register the matching application.
-5. Map the `accessRestricted` scope to the security check.
-6. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. 샘플의 루트 폴더로 이동하여 다음 명령을 차례로 입력하십시오. `npm install` `npm start`.
+2. [기밀 클라이언트](../#confidential-client) 및 본인확인정보 값을 {{ site.data.keys.mf_console }}에서 업데이트하십시오. 
+3. **[UserLogin](../../user-authentication/security-check/)** 또는 **[PinCodeAttempts](../../credentials-validation/security-check/)** 보안 검사 중 하나를 배치하십시오. 
+4. 일치하는 애플리케이션을 등록하십시오. 
+5. `accessRestricted` 범위를 보안 검사에 맵핑하십시오. 
+6. 서블릿 URL에 대한 `WLResourceRequest`를 작성하기 위해 클라이언트 애플리케이션을 업데이트하십시오. 

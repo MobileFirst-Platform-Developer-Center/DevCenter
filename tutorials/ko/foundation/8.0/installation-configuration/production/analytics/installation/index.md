@@ -1,34 +1,34 @@
 ---
-layout: tutorial
-title: MobileFirst Analytics Server Installation Guide
-breadcrumb_title: Installation Guide
+레이이웃: 학습서
+title: MobileFirst Analytics Server 설치 안내서
+breadcrumb_title: 설치 안내서
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-{{ site.data.keys.mf_analytics_server }} is implemented and shipped as a set of two Java EE standard web application archive (WAR) files, or one enterprise application archive (EAR) file. Therefore, it can be installed in one of the following supported application servers: WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat (WAR files only).
+{{ site.data.keys.mf_analytics_server }}는 두 개의 Java EE 표준 웹 애플리케이션 아카이브(WAR) 파일로 구성된 하나의 세트 또는 하나의 엔터프라이즈 애플리케이션 아카이브(EAR) 파일로 구현 및 제공됩니다. 따라서 지원되는 애플리케이션 서버인 WebSphere Application Server, WebSphere Application Server Liberty 또는 Apache Tomcat(WAR 파일 전용) 중 하나에서 설치될 수 있습니다. 
 
-{{ site.data.keys.mf_analytics_server }} uses an embedded Elasticsearch library for the data store and cluster management. Because it intends to be a highly performant in-memory search and query engine, requiring fast disk I/O, you must follow some production system requirements. In general, you are most likely to run out of memory and disk (or discover that disk I/O is your performance bottleneck) before CPU becomes a problem. In a clustered environment, you want a fast, reliable, co-located cluster of nodes.
+{{ site.data.keys.mf_analytics_server }}는 데이터 저장 및 클러스터 관리를 위해 임베디드 Elasticsearch 라이브러리를 사용합니다. 빠른 디스크 I/O가 필요한 고성능 인메모리 검색 및 조회 엔진이 되도록 되어 있으므로 일부 프로덕션 시스템 요구사항을 수행해야 합니다. 일반적으로는 CPU가 문제가 되기 전에 메모리 및 디스크 부족이 발생할 수 있습니다(또는 디스크 I/O에서 성능 병목 현상이 발생함). 클러스터된 환경에서는 빠르고 신뢰할 수 있으며 동일한 호스트에 배치된 노드 클러스터를 원합니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
 
-* [System requirements](#system-requirements)
-* [Capacity considerations](#capacity-considerations)
-* [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty](#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
-* [Installing {{ site.data.keys.mf_analytics }} on Tomcat](#installing-mobilefirst-analytics-on-tomcat)
-* [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server](#installing-mobilefirst-analytics-on-websphere-application-server)
-* [Installing {{ site.data.keys.mf_analytics }} with Ant tasks](#installing-mobilefirst-analytics-with-ant-tasks)
-* [Installing {{ site.data.keys.mf_analytics_server }} on servers running previous versions](#installing-mobilefirst-analytics-server-on-servers-running-previous-versions)
+* [시스템 요구사항](#system-requirements)
+* [용량 고려사항](#capacity-considerations)
+* [WebSphere Application Server Liberty에 {{ site.data.keys.mf_analytics }} 설치](#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
+* [Tomcat에 {{ site.data.keys.mf_analytics }} 설치](#installing-mobilefirst-analytics-on-tomcat)
+* [WebSphere Application Server에 {{ site.data.keys.mf_analytics }} 설치](#installing-mobilefirst-analytics-on-websphere-application-server)
+* [Ant 태스크를 사용한 {{ site.data.keys.mf_analytics }} 설치](#installing-mobilefirst-analytics-with-ant-tasks)
+* [이전 버전을 실행 중인 서버에 {{ site.data.keys.mf_analytics_server }} 설치](#installing-mobilefirst-analytics-server-on-servers-running-previous-versions)
 
-## System requirements
+## 시스템 요구사항
 {: #system-requirements }
 
-### Operating systems
+### 운영 체제
 {: #operating-systems }
 * CentOS/RHEL 6.x/7.x
-* Oracle Enterprise Linux 6/7 with RHEL Kernel only
+* RHEL 커널이 있는 Oracle Enterprise Linux 6/7 전용
 * Ubuntu 12.04/14.04
 * SLES 11/12
 * OpenSuSE 13.2
@@ -41,73 +41,73 @@ weight: 1
 * Oracle JVM 1.8u20+
 * IcedTea OpenJDK 1.7.0.55+
 
-### Hardware
+### 하드웨어
 {: #hardware }
-* RAM: More RAM is better, but no more than 64 GB per node. 32 GB and 16 GB are also acceptable. Less than 8 GB requires many small nodes in the cluster, and 64 GB is wasteful and problematic due to the way Java uses memory for pointers.
-* Disk: Use SSDs when possible, or fast spinning traditional disks in RAID 0 configuration if SSDs are not possible.
-* CPU: CPU tends not to be the performance bottleneck. Use systems with 2 to 8 cores.
-* Network: When you cross into the need to scale out horizontally, you need a fast, reliable, data center with 1 GbE to 10 GbE supported speeds.
+* RAM: RAM은 클수록 좋지만 노드당 64GB 이하여야 합니다. 32GB 및 16GB도 승인할 수 있습니다. 8GB 미만인 경우 클러스터에 다수의 작은 노드가 필요하고 64GB는 지나치게 커서 Java가 포인터에 메모리를 사용하는 방식으로 인해 문제가 발생할 수 있습니다. 
+* 디스크: 가능하면 SSD를 사용하고 SSD를 사용할 수 없는 경우에는 RAID 0 구성의 고속 스핀 일반 디스크를 사용하십시오. 
+* CPU: CPU는 성능 병목 현상이 나타나지 않도록 되어 있습니다. 코어가 2개 - 8개 있는 시스템을 사용하십시오. 
+* 네트워크: 수평으로 용량을 확장해야 하는 경우에는 1GbE - 10GbE의 속도를 지원하는 고속의 신뢰할 수 있는 데이터 센터가 필요합니다. 
 
-### Hardware configuration
+### 하드웨어 구성
 {: #hardware-configuration }
-* Give your JVM half of the available RAM, but do not cross 32 GB
-    * Setting the **ES\_HEAP\_SIZE** environment variable to 32g.
-    * Setting the JVM flags by using -Xmx32g -Xms32g.
-* Turn off disk swap. Allowing the operating system to swap heap on and off disk significantly degrades performance.
-    * Temporarily: `sudo swapoff -a`
-    * Permanently: Edit **/etc/fstab** according to the operating system documentation.
-    * If neither option is possible, set the Elasticsearch option **bootstrap.mlockall: true** (this value is the default in the embedded Elasticsearch instance).
-* Increase the allowed open file descriptors.
-    * Linux typically limits a per-process number of open file descriptors to a small 1024.
-    * Consult your operating system documentation for how to permanently increase this value to something much larger, like 64,000.
-* Elasticsearch also uses a mix of NioFS and MMapFS for the various files. Increase the maximum map count so plenty of virtual memory is available for mmapped files.
-    * Temporarily: `sysctl -w vm.max_map_count=262144`
-    * Permanently: Modify the **vm.max\_map\_count** setting in your **/etc/sysctl.conf**.
-* If you use BSDs and Linux, ensure that your operating system I/O scheduler is set to **deadline** or **noop**, not **cfq**.
+* JVM에 사용 가능한 RAM의 절반을 제공하되 32GB는 넘지 마십시오. 
+    * **ES\_HEAP\_SIZE** 환경 변수를 32g로 설정
+    * -Xmx32g -Xms32g를 사용하여 JVM 플래그 설정
+* 디스크 스왑을 끄십시오. 운영 체제가 디스크에서 힙 스왑을 켜고 끌 수 있도록 허용하면 성능이 심각하게 저하됩니다. 
+    * 임시: `sudo swapoff -a`
+    * 영구: 운영 체제 문서를 따라 **/etc/fstab**를 편집하십시오. 
+    * 옵션이 둘 다 가능하지 않은 경우 Elasticsearch 옵션 **bootstrap.mlockall: true**를 설정하십시오(이 값은 임베디드 Elasticsearch 인스턴스에서 기본값임). 
+* 허용된 열린 파일 디스크립터를 늘리십시오. 
+    * Linux는 일반적으로 프로세스당 열린 파일 디스크립터 수를 작은 값인 1024로 제한합니다. 
+    * 운영 체제 문서를 참조하여 영구적으로 이 값을 훨씬 더 큰 값(예: 64,000)으로 늘리는 방법을 알아보십시오. 
+* Elasticsearch에서는 다양한 파일에 대해 NioFS와 MMapFS를 혼합해서 사용하기도 합니다. 맵핑된 파일에서 가상 메모리를 많이 사용할 수 있도록 최대 맵 수를 늘리십시오. 
+    * 임시: `sysctl -w vm.max_map_count=262144`
+    * 영구: **/etc/sysctl.conf**에서 **vm.max\_map\_count** 설정을 수정하십시오. 
+* BSDs 및 Linux를 사용하는 경우에는 운영 체제 I/O 스케줄러를 **cfq**가 아니라 **deadline** 또는 **noop**로 설정해야 합니다. 
 
-## Capacity considerations
+## 용량 고려사항
 {: #capacity-considerations }
-Capacity is the single-most common question. How much RAM do you need? How much disk space? How many nodes? The answer is always: it depends.
+용량은 가장 일반적인 질문입니다. 필요한 RAM은 얼마인가? 디스크 공간은? 노드 수는? 대답은 항상 '경우에 따라 다르다'입니다. 
 
-IBM {{ site.data.keys.mf_analytics }} Analytics gives you the opportunity to collect many heterogeneous event types, including raw client SDK debug logs, server-reported network events, custom data, and much more. It is a big data system with big data system requirements.
+IBM {{ site.data.keys.mf_analytics }}는 원시 클라이언트 SDK 디버그 로그, 서버에서 보고된 네트워크 이벤트, 사용자 정의 데이터 등을 포함한 다수의 이기종 이벤트 유형을 수집할 수 있는 기회를 제공합니다. 이는 빅 데이터 시스템 요구사항을 가진 빅 데이터 시스템입니다. 
 
-The type and amount of data that you choose to collect, and how long you choose to keep it, has a dramatic impact on your storage requirements and overall performance. As an example, consider the following questions.
+수집하도록 선택하는 데이터의 유형 및 크기와 이를 보존하도록 선택하는 기간은 스토리지 요구사항 및 전체 성능에 큰 영향을 미칩니다. 예를 들어, 다음과 같은 질문을 생각해 보십시오. 
 
-* Are raw debug client logs useful after a month?
-* Are you using the **Alerts** feature in {{ site.data.keys.mf_analytics }}? If so, are you querying on events that occurred in the last few minutes or over a longer range?
-* Are you using custom charts? If so, are you creating these charts for built-in data or custom instrumented key/value pairs? How long do you keep the data?
+* 1개월 후에 원시 디버그 클라이언트 로그가 유용합니까? 
+* {{ site.data.keys.mf_analytics }}의 **경보** 기능을 사용 중입니까? 사용 중인 경우에는 마지막 몇 분 또는 더 긴 기간 동안 발생한 이벤트를 조회합니까? 
+* 사용자 정의 차트를 사용 중입니까? 사용 중인 경우에는 기본 제공 데이터 또는 사용자 정의 인스트루먼테이션 키/값 쌍에 대해 해당 차트를 작성합니까? 얼마 동안 데이터를 보관합니까? 
 
-The built-in charts on the {{ site.data.keys.mf_analytics_console }} are rendered by querying data that the {{ site.data.keys.mf_analytics_server }} already summarized and optimized specifically for the fastest possible console user experience. Because it is pre-summarized and optimized for the built-in charts, it is not suitable for use in alerts or custom charts where the console user defines the queries.
+{{ site.data.keys.mf_analytics_console }}의 기본 제공 차트는 {{ site.data.keys.mf_analytics_server }}가 이미 요약하고 가장 빠른 가능한 콘솔 사용자 경험을 위해 고유하게 최적화한 데이터를 조회하여 렌더링됩니다. 이 데이터는 미리 요약되고 기본 제공 차트에 대해 최적화되었으므로 콘솔 사용자가 조회를 정의하는 사용자 정의 차트 또는 경보에 사용하기에는 적합하지 않습니다. 
 
-When you query raw documents, apply filters, perform aggregations, and ask the underlying query engine to calculate averages and percentages, the query performance necessarily suffers. It is this use case that requires careful capacity considerations. After your query performance suffers, it is time to decide whether you really must keep old data for real-time console visibility or purge it from the {{ site.data.keys.mf_analytics_server }}. Is real-time console visibility truly useful for data from four months ago?
+원시 문서를 조회하고 필터를 적용하고 집계를 수행하고 기본 조회 엔진에 평균 및 백분율을 계산하도록 요청하면 조회 성능이 필연적으로 저하됩니다. 이러한 경우가 바로 용량을 주의해서 고려해야 하는 유스 케이스입니다. 조회 성능이 저하되면 실시간 콘솔 가시성을 위해 오래된 데이터를 보존해야 하는지 아니면 {{ site.data.keys.mf_analytics_server }}에서 제거해야 하는지를 결정해야 합니다. 4개월 전의 데이터에 대해 실시간 콘솔 가시성이 정말 유용할까요? 
 
-### Indicies, Shards, and Nodes
+### 색인, 샤드 및 노드
 {: #indicies-shards-and-nodes }
-The underlying data store is Elasticsearch. You must know a bit about indices, shards and nodes, and how the configuration affects performance. Roughly, you can think of an index as a logical unit of data. An index is mapped one-to-many to shards where the configuration key is shards. The {{ site.data.keys.mf_analytics_server }} creates a separate index per document type. If your configuration does not discard any document types, you have a number of indices that are created that is equivalent to the number of document types that are offered by the {{ site.data.keys.mf_analytics_server }}.
+기본 데이터 저장소는 Elasticsearch입니다. 색인, 샤드 및 노드와 구성이 성능에 미치는 영향에 대해 조금이라도 알고 있어야 합니다. 대략 색인을 데이터의 논리 단위로 간주할 수 있습니다. 색인은 구성 키가 shards인 샤드에 일대다로 맵핑됩니다. {{ site.data.keys.mf_analytics_server }}는 문서 유형마다 별도의 색인을 작성합니다. 구성이 문서 유형을 버리지 않는 경우 작성되는 색인 수는 {{ site.data.keys.mf_analytics_server }}에서 제공하는 문서 유형 수와 같습니다. 
 
-If you configure the shards to 1, each index only ever has one primary shard to which data is written. If you set shards to 10, each index can balance to 10 shards. However, more shards have a performance cost when you have only one node. That one node is now balancing each index to 10 shards on the same physical disk. Only set shards to 10 if you plan to immediately (or nearly immediately) scale up to 10 physical nodes in the cluster.
+shards를 1로 구성하면 각 색인에는 데이터가 작성된 하나의 기본 샤드만 있습니다. shards를 10으로 설정하면 각 색인의 샤드는 10개로 조정될 수 있습니다. 하지만 노드가 하나만 있을 때 샤드가 많으면 성능이 저하됩니다. 이 하나의 노드가 이제 동일한 실제 디스크에서 각 색인의 샤드를 10개로 조정합니다. 즉시(또는 거의 즉시) 클러스터에서 실제 노드를 10개로 늘릴 계획인 경우에만 shards를 10으로 설정하십시오. 
 
-The same principle applies to **replicas**. Only set **replicas** to something greater than 0 if you intend to immediately (or nearly immediately) scale up to the number of nodes to match the math.  
-For example, if you set **shards** to 4 and **replicas** to 2, you can scale to 8 nodes, which is 4 * 2.
+동일한 원칙이 **replicas**에 적용됩니다. 즉시(또는 거의 즉시) 노드 수를 계산에 맞게 늘리려는 경우에만 **replicas**를 0보다 큰 값으로 설정하십시오.   
+예를 들어, **shards**를 4로 설정하고 **replicas**를 2로 설정하면 노드 수를 8개(4 * 2)로 늘릴 수 있습니다. 
 
-## Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty
+## WebSphere Application Server Liberty에 {{ site.data.keys.mf_analytics }} 설치
 {: #installing-mobilefirst-analytics-on-websphere-application-server-liberty }
-Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear **file is found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install WebSphere Application Server Liberty, see the [About WebSphere Liberty](https://developer.ibm.com/wasdev/websphere-liberty/) article on IBM  developerWorks .
+{{ site.data.keys.mf_analytics }} EAR 파일을 이미 가지고 있는지 확인하십시오. 설치 아티팩트에 대한 자세한 정보는 [애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치](../../appserver)를 참조하십시오. **analytics.ear** 파일은 **<mf_server_install_dir>\analytics** 폴더에 있습니다. WebSphere Application Server Liberty를 다운로드하여 설치하는 방법에 대한 자세한 정보는 IBM developerWorks에서 [WebSphere Liberty 정보](https://developer.ibm.com/wasdev/websphere-liberty/) 기사를 참조하십시오. 
 
-1. Create a server by running the following command in your **./wlp/bin** folder.
+1. **./wlp/bin** 폴더에서 다음 명령을 실행하여 서버를 작성하십시오. 
 
    ```bash
    ./server create <serverName>
    ```
 
-2. Install the following features by running the following command in your **./bin** folder.
+2. **./bin** 폴더에서 다음 명령을 실행하여 다음과 같은 기능을 설치하십시오. 
 
    ```bash
    ./featureManager install jsp-2.2 ssl-1.0 appSecurity-1.0 localConnector-1.0
    ```
 
-3. Add the **analytics.ear** file to the **./usr/servers/<serverName>/apps** folder of your Liberty Server.
-4. Replace the contents of the `<featureManager>` tag of the **./usr/servers/<serverName>/server.xml** file with the following content:
+3. **analytics.ear** 파일을 Liberty 서버의 **./usr/servers/<serverName>/apps** 폴더에 추가하십시오. 
+4. **./usr/servers/<serverName>/server.xml** 파일의 `<featureManager>` 태그 컨텐츠를 다음 컨텐츠로 바꾸십시오. 
 
    ```xml
    <featureManager>
@@ -118,7 +118,7 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For
    </featureManager>
    ```
 
-5. Configure **analytics.ear** as an application with role-based security in the **server.xml** file. The following example creates a basic hardcoded user registry, and assigns a user to each of the different analytics roles.
+5. **server.xml** 파일에서 **analytics.ear**을 역할 기반 보안이 설정된 애플리케이션으로 구성하십시오. 다음 예에서는 기본 하드코딩된 사용자 레지스트리를 작성하고 사용자를 각각의 서로 다른 분석 역할에 지정합니다. 
 
    ```xml
    <application location="analytics.ear" name="analytics-ear" type="ear">
@@ -150,34 +150,34 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} EAR file. For
    </basicRegistry>
    ```
 
-   > For more information about how to configure other user registry types, such as LDAP, see the [Configuring a user registry for Liberty](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) topic in the WebSphere Application Server product documentation.
+   > 기타 사용자 레지스트리 유형(예: LDAP) 구성 방법에 대한 자세한 정보는 WebSphere Application Server 제품 문서에서 [Liberty에 대한 사용자 레지스트리 구성](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.iseries.doc/ae/twlp_sec_registries.html) 주제를 참조하십시오.
 
-6. Start the Liberty Server by running the following command inside your **bin** folder
+6. **bin** 폴더에서 다음 명령을 실행하여 Liberty 서버를 시작하십시오. 
 
    ```bash
    ./server start <serverName>
    ```
 
-7. Go to the {{ site.data.keys.mf_analytics_console }}.
+7. {{ site.data.keys.mf_analytics_console }}로 이동하십시오. 
 
    ```bash
    http://localhost:9080/analytics/console
    ```
 
-For more information about administering WebSphere Application Server Liberty, see the [Administering Liberty from the command line](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html) topic in the WebSphere Application Server product documentation.
+WebSphere Application Server Liberty 관리에 대한 자세한 정보는 WebSphere Application Server 제품 문서에서 [명령행에서 Liberty 관리](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_admin_script.html) 주제를 참조하십시오. 
 
-## Installing {{ site.data.keys.mf_analytics }} on Tomcat
+## Tomcat에 {{ site.data.keys.mf_analytics }} 설치
 {: #installing-mobilefirst-analytics-on-tomcat }
-Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder. For more information about how to download and install Tomcat, see [Apache Tomcat](http://tomcat.apache.org/). Ensure that you download the version that supports Java 7 or higher. For more information about which version of Tomcat supports Java 7, see [Apache Tomcat Versions](http://tomcat.apache.org/whichversion.html).
+{{ site.data.keys.mf_analytics }} WAR 파일을 이미 가지고 있는지 확인하십시오. 설치 아티팩트에 대한 자세한 정보는 [애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치](../../appserver)를 참조하십시오. **analytics-ui.war** 및 **analytics-service.war** 파일은 **<mf_server_install_dir>\analytics** 폴더에 있습니다. Tomcat 다운로드 및 설치 방법에 대한 자세한 정보는 [Apache Tomcat](http://tomcat.apache.org/)을 참조하십시오. Java 7 이상을 지원하는 버전을 다운로드해야 합니다. Java 7을 지원하는 Tomcat 버전에 대한 자세한 정보는 [Apache Tomcat 버전](http://tomcat.apache.org/whichversion.html)을 참조하십시오. 
 
-1. Add **analytics-service.war** and the **analytics-ui.war** files to the Tomcat **webapps** folder.
-2. Uncomment the following section in the **conf/server.xml** file, which is present, but commented out, in a freshly downloaded Tomcat archive.
+1. **analytics-service.war** 및 **analytics-ui.war** 파일을 Tomcat **webapps** 폴더에 추가하십시오. 
+2. **conf/server.xml** 파일에서 다음 섹션을 주석 해제하십시오. 이 섹션은 새로 다운로드한 Tomcat 아카이브에 주석 처리된 상태로 있습니다. 
 
    ```xml
    <Valve className ="org.apache.catalina.authenticator.SingleSignOn"/>
    ```
 
-3. Declare the two war files in the **conf/server.xml** file, and define a user registry.
+3. **conf/server.xml** 파일에서 두 개의 war 파일을 선언하고 사용자 레지스트리를 정의하십시오. 
 
    ```xml
    <Context docBase ="analytics-service" path ="/analytics-service"></Context>
@@ -185,10 +185,10 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. Fo
    <Realm className ="org.apache.catalina.realm.MemoryRealm"/>
    ```
 
-   The **MemoryRealm** recognizes the users that are defined in the **conf/tomcat-users.xml** file. For more information about other choices, see [Apache Tomcat Realm Configuration HOW-TO](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html).
+   **MemoryRealm**은 **conf/tomcat-users.xml** 파일에서 정의되는 사용자를 인식합니다. 기타 선택사항에 대한 자세한 정보는 [Apache Tomcat 영역 구성 방법](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html)을 참조하십시오. 
 
-4. Add the following sections to the **conf/tomcat-users.xml** file to configure a **MemoryRealm**.
-    * Add the security roles.
+4. 다음 섹션을 **conf/tomcat-users.xml** 파일에 추가하여 **MemoryRealm**을 구성하십시오. 
+    * 보안 역할을 추가하십시오. 
 
       ```xml
       <role rolename="analytics_administrator"/>
@@ -197,7 +197,7 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. Fo
       <role rolename="analytics_developer"/>
       <role rolename="analytics_business"/>
       ```
-    * Add a few users with the roles you want.
+    * 원하는 역할을 가진 몇몇 사용자를 추가하십시오. 
 
       ```xml
       <user name="admin" password="admin" roles="analytics_administrator"/>
@@ -206,98 +206,98 @@ Ensure that you already have the {{ site.data.keys.mf_analytics }} WAR files. Fo
       <user name="developer" password="demo" roles="analytics_developer"/>
       <user name="infrastructure" password="demo" roles="analytics_infrastructure"/>
       ```    
-    * Start your Tomcat Server and go to the {{ site.data.keys.mf_analytics_console }}.
+    * Tomcat Server를 시작하고 {{ site.data.keys.mf_analytics_console }}로 이동하십시오. 
 
       ```xml
       http://localhost:8080/analytics/console
       ```
 
-    For more information about how to start the Tomcat Server, see the official Tomcat site. For example, [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html), for Tomcat 7.0.
+    Tomcat Server를 시작하는 방법에 대한 자세한 정보는 공식 Tomcat 사이트를 참조하십시오. 예를 들어, Tomcat 7.0의 경우 [Apache Tomcat 7](http://tomcat.apache.org/tomcat-7.0-doc/introduction.html)입니다. 
 
-## Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server
+## WebSphere Application Server에 {{ site.data.keys.mf_analytics }} 설치
 {: #installing-mobilefirst-analytics-on-websphere-application-server }
-For more information on initial installation steps for acquiring the installation artificats (JAR and EAR files), see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics.ear**, **analytics-ui.war**, and **analytics-service.war** files are found in the **<mf_server_install_dir>\analytics** folder.
+설치 아티팩트(JAR 및 EAR 파일) 확보를 위한 초기 설치 단계에 대한 자세한 정보는 [애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치](../../appserver)를 참조하십시오. **analytics.ear**, **analytics-ui.war** 및 **analytics-service.war** 파일은 **<mf_server_install_dir>\analytics** 폴더에 있습니다. 
 
-The following steps describe how to install and run the Analytics EAR file on WebSphere Application Server. If you are installing the individual WAR files on WebSphere Application Server, follow only steps 2 - 7 on the **analytics-service** WAR file after you deploy both WAR files. The class loading order must not be altered on the analytics-ui WAR file.
+다음의 단계에서는 WebSphere Application Server에서 Analytics EAR 파일을 설치하고 실행하는 방법을 설명합니다. WebSphere Application Server에 개별 WAR 파일을 설치하는 경우에는 두 WAR 파일을 모두 배치한 후 **analytics-service** WAR 파일에서 2단계 - 7단계만 수행하십시오.  analytics-ui WAR 파일에서 클래스 로드 순서를 변경해서는 안 됩니다. 
 
-1. Deploy the EAR file to the application server, but do not start it. . For more information about how to install an EAR file on WebSphere Application Server, see the [Installing enterprise application files with the console](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) topic in the WebSphere Application Server product documentation.
+1. EAR 파일을 애플리케이션 서버에 배치하되 시작하지는 마십시오. WebSphere Application Server에 EAR 파일을 설치하는 방법에 대한 자세한 정보는 WebSphere Application Server 제품 문서에서 [콘솔을 사용한 엔터프라이즈 애플리케이션 파일 설치](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/trun_app_instwiz.html) 주제를 참조하십시오. 
 
-2. Select the **MobileFirst Analytics** application from the **Enterprise Applications** list.
+2. **엔터프라이즈 애플리케이션** 목록에서 **MobileFirst Analytics** 애플리케이션을 선택하십시오. 
 
-    ![Install WebSphere Enterprise applications](install_webphere_ent_app.jpg)
+    ![WebSphere 엔터프라이즈 애플리케이션 설치](install_webphere_ent_app.jpg)
 
-3. Click **Class loading and update detection**.
+3. **클래스 로드 및 업데이트 발견**을 클릭하십시오. 
 
-    ![Class loading in WebSphere](install_websphere_class_load.jpg)
+    ![WebSphere에서 클래스 로드](install_websphere_class_load.jpg)
 
-4. Set the class loading order to **parent last**.
+4. 클래스 로드 순서를 **상위 마지막**으로 설정하십시오. 
 
-    ![Change the class loading order](install_websphere_app_class_load_order.jpg)
+    ![클래스 로드 순서 변경](install_websphere_app_class_load_order.jpg)
 
-5. Click **Security role to user/group mapping** to map the admin user.
+5. **사용자/그룹에 보안 역할 맵핑**을 클릭하여 관리자를 맵핑하십시오. 
 
-    ![War class loading order](install_websphere_sec_role.jpg)
+    ![War 클래스 로드 순서](install_websphere_sec_role.jpg)
 
-6. Click **Manage Modules**.
+6. **모듈 관리**를 클릭하십시오. 
 
-    ![Managing modules in WebSphere](install_websphere_manage_modules.jpg)
+    ![WebSphere에서 모듈 관리](install_websphere_manage_modules.jpg)
 
-7. Select the **analytics** module and change the class loader order to **parent last**.
+7. **Analytics** 모듈을 선택한 후 클래스 로더 순서를 **상위 마지막**으로 변경하십시오. 
 
-    ![Analytics module in WebSphere](install_websphere_module_class_load_order.jpg)
+    ![WebSphere의 Analytics 모듈](install_websphere_module_class_load_order.jpg)
 
-8. Enable **Administrative security** and **application security** in the WebSphere Application Server administration console:
-    * Log in to the WebSphere Application Server administration console.
-    * In the **Security > Global Security** menu, ensure that **Enable administrative security** and **Enable application security** are both selected. Note: Application security can be selected only after **Administrative security** is enabled.
-    * Click **OK** and save changes.
-9. Start the {{ site.data.keys.mf_analytics }} application and go to the link in the browser: `http://<hostname>:<port>/analytics/console`.
+8. WebSphere Application Server 관리 콘솔에서 **관리 보안** 및 **애플리케이션 보안**을 사용으로 설정하십시오. 
+    * WebSphere Application Server 관리 콘솔에 로그인하십시오. 
+    * **보안 > 글로벌 보안** 메뉴에서 **관리 보안 사용**과 **애플리케이션 보안 사용**이 모두 선택되어 있는지 확인하십시오. 참고: 애플리케이션 보안은 **관리 보안**이 사용으로 설정된 후에만 선택할 수 있습니다. 
+    * **확인**을 클릭하고 변경사항을 저장하십시오. 
+9. {{ site.data.keys.mf_analytics }} 애플리케이션을 시작한 후 브라우저에서 `http://<hostname>:<port>/analytics/console` 링크로 이동하십시오. 
 
-## Installing {{ site.data.keys.mf_analytics }} with Ant tasks
+## Ant 태스크를 사용한 {{ site.data.keys.mf_analytics }} 설치
 {: #installing-mobilefirst-analytics-with-ant-tasks }
-Ensure that you have the necessary WAR and configuration files: **analytics-ui.war** and **analytics-service.war**. For more information on the installation artifacts, see [Installing {{ site.data.keys.mf_server }} to an application server](../../appserver). The **analytics-ui.war** and **analytics-service.war** files are found in the **MobileFirst_Platform_Server\analytics**.
+필요한 WAR 및 구성 파일을 가지고 있는지 확인하십시오(**analytics-ui.war** 및 **analytics-service.war**). 설치 아티팩트에 대한 자세한 정보는 [애플리케이션 서버에 {{ site.data.keys.mf_server }} 설치](../../appserver)를 참조하십시오. **analytics-ui.war** 및 **analytics-service.war** 파일은 **MobileFirst_Platform_Server\analytics**에 있습니다. 
 
-You must run the Ant task on the computer where the application server is installed, or the Network Deployment Manager for WebSphere  Application Server Network Deployment. If you want to start the Ant task from a computer on which {{ site.data.keys.mf_server }} is not installed, you must copy the file **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** to that computer.
+애플리케이션이 설치되는 컴퓨터 또는 WebSphere Application Server Network Deployment용 Network Deployment Manager에서 Ant 태스크를 실행해야 합니다. {{ site.data.keys.mf_server }}가 설치되는 컴퓨터에서 Ant 태스크를 시작하려면 **<mf_server_install_dir>/MobileFirstServer/mfp-ant-deployer.jar** 파일을 해당 컴퓨터에 복사해야 합니다. 
 
-> Note: The **mf_server_install_dir** placeholder is the directory where you installed {{ site.data.keys.mf_server }}.
+> 참고: **mf_server_install_dir** 플레이스홀더는 {{ site.data.keys.mf_server }}를 설치한 디렉토리입니다. 
 
-1. Edit the Ant script that you use later to deploy {{ site.data.keys.mf_analytics }} WAR files.
-    * Review the sample configuration files in [Sample configuration files for {{ site.data.keys.mf_analytics }}](../../installation-reference/#sample-configuration-files-for-mobilefirst-analytics).
-    * Replace the placeholder values with the properties at the beginning of the file.
+1. {{ site.data.keys.mf_analytics }} WAR 파일을 배치하기 위해 나중에 사용하는 Ant 스크립트를 편집하십시오. 
+    * [{{ site.data.keys.mf_analytics }}에 대한 샘플 구성 파일](../../installation-reference/#sample-configuration-files-for-mobilefirst-analytics)에서 샘플 구성 파일을 검토하십시오. 
+    * 파일의 시작 부분에 있는 특성으로 플레이스홀더 값을 바꾸십시오. 
 
-    > Note: The following special characters must be escaped when they are used in the values of the Ant XML scripts:
+    > 참고: 다음과 같은 특수 문자는 Ant XML 스크립트의 값에서 사용될 때 이스케이프해야 합니다. 
     >
-    > * The dollar sign ($) must be written as $$, unless you explicitly want to reference an Ant variable through the syntax ${variable}, as described in the  [Properties](http://ant.apache.org/manual/properties.html) section of the Apache Ant Manual.
-    > * The ampersand character (&) must be written as &amp;, unless you explicitly want to reference an XML entity.
-    > * Double quotation marks (") must be written as &quot;, except when it is inside a string that is enclosed in single quotation marks.
+    > * Apache Ant 매뉴얼의 [특성](http://ant.apache.org/manual/properties.html) 절에 설명된 대로 ${variable} 구문을 통해 Ant 변수를 명시적으로 참조하려는 경우가 아니면 달러 부호($)는 $$로 써야 합니다.
+    > * XML 엔티티를 명시적으로 참조하려는 경우가 아니면 앰퍼샌드 문자(&)는 &amp;로 써야 합니다. 
+    > * 작은따옴표로 묶인 문자열에 있는 경우를 제외하고 큰따옴표(")는 &quot;로 써야 합니다.
 
-2. If you install a cluster of nodes on several servers:
-    * You must uncomment the property **wl.analytics.masters.list**, and set its value to the list of host name and transport port of the master nodes. For example: `node1.mycompany.com:96000,node2.mycompany.com:96000`
-    * Add the attribute **mastersList** to the **elasticsearch** elements in the tasks **installanalytics**, **updateanalytics**, and **uninstallanalytics**.
+2. 여러 서버에 노드의 클러스터를 설치하는 경우: 
+    * **wl.analytics.masters.list** 특성을 주석 해제하고 해당 값을 마스터 노드의 전송 포트 및 호스트 이름의 목록으로 설정해야 합니다. 예를 들어, `node1.mycompany.com:96000,node2.mycompany.com:96000`입니다. 
+    * **mastersList** 속성을 **installanalytics**, **updateanalytics** 및 **uninstallanalytics** 태스크의 **elasticsearch** 요소에 추가하십시오. 
 
-    **Note:** If you install on a cluster on WebSphere Application Server Network Deployment, and you do not set the property, the Ant task computes the data end points for all the members of the cluster at the time of installation, and sets the **masternodes** JNDI property to that value.
+    **참고:** WebSphere Application Server Network Deployment의 클러스터에 설치하는 경우 특성을 설정하지 않으면 Ant 태스크는 설치 시 클러스터의 모든 멤버에 대한 데이터 종료점을 계산하고 **masternodes** JNDI 특성을 해당 값으로 설정합니다. 
 
-3. To deploy the WAR files, run the following command: `ant -f configure-appServer-analytics.xml install`
-    You can find the Ant command in **mf_server_install_dir/shortcuts**. This installs a node of {{ site.data.keys.mf_analytics }}, with the default type master and data, on the server, or on each member of a cluster if you install on WebSphere Application Server Network Deployment.
-4. Save the Ant file. You might need it later to apply a fix pack or perform an upgrade.
-    If you do not want to save the passwords, you can replace them by "************" (12 stars) for interactive prompting.
+3. WAR 파일을 배치하려면 `ant -f configure-appServer-analytics.xml install` 명령을 실행하십시오.
+    **mf_server_install_dir/shortcuts**에서 Ant 명령을 찾을 수 있습니다. 서버에(WebSphere Application Server Network Deployment에 설치하는 경우에는 클러스터의 각 멤버에) 기본 유형 마스터 및 데이터를 사용하여 {{ site.data.keys.mf_analytics }}의 노드를 설치합니다. 
+4. Ant 파일을 저장하십시오. 나중에 수정팩을 적용하거나 업그레이드를 수행하기 위해 이 파일이 필요합니다.
+    비밀번호를 저장하지 않으려면 대화식 프롬프트에 대해 비밀번호를 "************"(12개의 별표)로 바꾸십시오. 
 
-    **Note:** If you add a node to a cluster of {{ site.data.keys.mf_analytics }}, you must update the analytics/masternodes JNDI property, so that it contains the ports of all the master nodes of the cluster.
+    **참고:** {{ site.data.keys.mf_analytics }}의 클러스터에 노드를 추가하는 경우에는 클러스터의 모든 마스터 노드의 포트를 포함하도록 analytics/masternodes JNDI 특성을 업데이트해야 합니다. 
 
-## Installing {{ site.data.keys.mf_analytics_server }} on servers running previous versions
+## 이전 버전을 실행 중인 서버에 {{ site.data.keys.mf_analytics_server }} 설치
 {: #installing-mobilefirst-analytics-server-on-servers-running-previous-versions }
-Although there is no option to upgrade previous versions of the {{ site.data.keys.mf_analytics_server }}, when you install {{ site.data.keys.mf_analytics_server }} V8.0.0 on a server that hosted a previous version, some properties and analytics data need to be migrated.
+{{ site.data.keys.mf_analytics_server }}의 이전 버전을 업그레이드하는 옵션이 없더라도 이전 버전을 호스팅한 서버에 {{ site.data.keys.mf_analytics_server }} V8.0.0을 설치하는 경우에는 일부 특성 및 분석 데이터를 마이그레이션해야 합니다. 
 
-For servers previously running earlier of versions of {{ site.data.keys.mf_analytics_server }} update the analytics data and the JNDI properties.
+{{ site.data.keys.mf_analytics_server }}의 이전 버전을 이전에 실행 중인 서버의 경우 분석 데이터 및 JNDI 특성을 업데이트하십시오. 
 
-### Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}
+### 이전 버전의 {{ site.data.keys.mf_analytics_server }}에서 사용한 서버 특성 마이그레이션
 {: #migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server }
-If you install {{ site.data.keys.mf_analytics_server }} V8.0.0 on a server that was previously running an earlier version of {{ site.data.keys.mf_analytics_server }}, you must update the values of the JNDI properties on the hosting server.
+{{ site.data.keys.mf_analytics_server }}의 이전 버전을 이전에 실행 중이었던 서버에 {{ site.data.keys.mf_analytics_server }} V8.0.0을 설치하는 경우에는 호스팅 서버에서 JNDI 특성의 값을 업데이트해야 합니다. 
 
-Some event types were changed between earlier versions of {{ site.data.keys.mf_analytics_server }} and V8.0.0. Because of this change, any JNDI properties that were previously configured in your server configuration file must be converted to the new event type.
+이전 버전의 {{ site.data.keys.mf_analytics_server }}와 V8.0.0 사이에 일부 이벤트 유형이 변경되었습니다. 이 변경으로 인해 서버 구성 파일에서 이전에 구성된 JNDI 특성을 모두 새 이벤트 유형으로 변환해야 합니다. 
 
-The following table shows the mapping between old event types and new event types. Some event types did not change.
+다음 테이블은 이전 이벤트 유형과 새 이벤트 유형 사이의 맵핑을 보여줍니다. 일부 이벤트 유형은 변경되지 않았습니다. 
 
-| Old event type            | New event type         |
+| 이전 이벤트 유형            | 새 이벤트 유형         |
 |---------------------------|------------------------|
 | AlertDefinition	        | AlertDefinition        |
 | AlertNotification	        | AlertNotification      |
@@ -318,28 +318,28 @@ The following table shows the mapping between old event types and new event type
 | mfpAppName	            | appName                |
 | mfpAppVersion	            | appVersion             |
 
-### Analytics data migration
+### Analytics 데이터 마이그레이션
 {: #analytics-data-migration }
-The internals of the {{ site.data.keys.mf_analytics_console }} were improved, which required changing the format in which the data is stored. To continue to interact with the analytics data that was already collected, the data must be migrated into the new data format.
+{{ site.data.keys.mf_analytics_console }}의 내부 항목이 향상되어 데이터가 저장되는 형식을 변경해야 합니다. 이미 수집된 분석 데이터와 계속 상호작용하려면 해당 데이터를 새 데이터 형식으로 마이그레이션해야 합니다. 
 
-When you first view the {{ site.data.keys.mf_analytics_console }} after you upgrade to V8.0.0, no statistics are rendered in the {{ site.data.keys.mf_analytics_console }}. Your data is not lost, but it must be migrated to the new data format.
+V8.0.0으로 업그레이드한 후 처음으로 {{ site.data.keys.mf_analytics_console }}을 보면 {{ site.data.keys.mf_analytics_console }}에 통계가 렌더링되지 않습니다. 데이터가 유실되지는 않았지만 데이터를 새 데이터 형식으로 마이그레이션해야 합니다. 
 
-An alert is displayed on every page of the {{ site.data.keys.mf_analytics_console }} that reminds you that documents must be migrated. The alert text includes a link to the **Migration** page.
+문서를 마이그레이션해야 함을 알리는 경보가 {{ site.data.keys.mf_analytics_console }}의 모든 페이지에 표시됩니다. 경보 텍스트에는 **마이그레이션** 페이지에 대한 링크가 포함되어 있습니다. 
 
-The following image shows a sample alert from the **Overview** page of the **Dashboard** section:
+다음 이미지는 **대시보드** 섹션의 **개요** 페이지에서 제공되는 샘플 경보를 보여줍니다. 
 
-![Migration alert in the console](migration_alert.jpg)
+![콘솔의 마이그레이션 경보](migration_alert.jpg)
 
-### Migration page
+### 마이그레이션 페이지
 {: #migration-page }
-You can access the Migration page from the wrench icon in the {{ site.data.keys.mf_analytics_console }}. From the **Migration** page, you can see how many documents must be migrated, and which indices they are stored on. Only one action is available: **Perform Migration**.
+{{ site.data.keys.mf_analytics_console }}의 렌치 아이콘에서 마이그레이션 페이지에 액세스할 수 있습니다. **마이그레이션** 페이지에서 마이그레이션해야 하는 문서 수와 문서가 저장되는 색인을 볼 수 있습니다. **마이그레이션 수행**이라는 하나의 조치만 사용할 수 있습니다. 
 
-The following image shows the **Migration** page when you have documents that must be migrated:
+다음 이미지는 마이그레이션해야 하는 문서가 있을 때 **마이그레이션** 페이지를 보여줍니다. 
 
-![Migration page in the console](migration_page.jpg)
+![콘솔의 마이그레이션 페이지](migration_page.jpg)
 
-> **Note:** This process might take a long time, depending on the amount of data you have, and it cannot be stopped during migration.
+> **참고:** 이 프로세스는 사용자가 가지고 있는 데이터의 양에 따라 시간이 오래 걸릴 수 있으며 마이그레이션 중에 중지할 수 없습니다.
 
-The migration can take approximately 3 minutes to migrate 1 million documents on a single node with 32G of RAM, with 16G allocated to the JVM, with a 4-core processor. Documents that are not migrated are not queried, so they are not rendered in the {{ site.data.keys.mf_analytics_console }}.
+RAM이 32G이고 JVM에 16G가 할당되었으며 4-코어 프로세서가 장착된 단일 노드에서 1백만 개의 문서를 마이그레이션 하는 경우 약 3분이 소요될 수 있습니다. 마이그레이션되지 않은 문서는 조회되지 않으므로 {{ site.data.keys.mf_analytics_console }}에 렌더링되지 않습니다. 
 
-If the migration fails while in progress, retry the migration. Retrying the migration does not remigrate documents that were already migrated, and your data integrity is maintained.
+진행 중에 마이그레이션이 실패하면 마이그레이션을 재시도하십시오. 마이그레이션을 재시도해도 이미 마이그레이션된 문서는 다시 마이그레이션되지 않으므로 데이터 무결성은 유지됩니다. 

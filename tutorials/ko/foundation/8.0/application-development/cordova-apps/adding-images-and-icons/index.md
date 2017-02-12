@@ -1,28 +1,28 @@
 ---
 layout: tutorial
-title: Adding custom splash screens and icons to Cordova apps
-breadcrumb_title: Adding images and icons
+title: Cordova 앱에 사용자 정의 스플래시 화면 및 아이콘 추가
+breadcrumb_title: 이미지 및 아이콘 추가
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-If you used the **cordova-plugin-mfp** plug-in, and you did not use the {{ site.data.keys.product_adj }} template or add the Cordova **cordova-plugin-splashscreen** plug-in to your app, you can replace the images for icons and splash screens that are provided by {{ site.data.keys.product_full }} with your own images. If you used the template, then you can replace the splash images that the Cordova app uses, as they are the files that are displayed.
+**cordova-plugin-mfp** 플러그인을 사용했지만 {{ site.data.keys.product_adj }} 템플리트를 사용하지 않았거나 앱에 Cordova **cordova-plugin-splashscreen** 플러그인을 추가하지 않은 경우 {{ site.data.keys.product_full }}에서 제공하는 아이콘 및 스플래시 화면에 대한 이미지를 고유 이미지로 바꿀 수 있습니다. 템플리트를 사용한 경우 표시되는 파일인 Cordova 앱에서 사용하는 스플래시 이미지를 바꿀 수 있습니다. 
 
-You must create a new folder to hold the splash images and icons, and modify the **config.xml** configuration file to point to them.
+스플래시 이미지 및 아이콘을 저장할 새 폴더를 작성하고 **config.xml** 구성 파일이 해당 항목을 가리키도록 수정해야 합니다. 
 
-1. Create a folder inside the root directory of your Cordova project. The folder can be in any level of nested subfolder when the parent folder is under the Cordova project root.
-2. Place your source splash image and icon images in this folder.
-3. Update the **config.xml** configuration file to point to your custom files.
+1. Cordova 프로젝트의 루트 디렉토리 내에 폴더를 작성하십시오. 상위 폴더가 Cordova 프로젝트 루트 아래에 있는 경우 이 폴더는 임의의 중첩 서브폴더 레벨에 있을 수 있습니다. 
+2. 소스 스플래시 이미지와 아이콘 이미지를 이 폴더에 저장하십시오. 
+3. 사용자 정의 파일을 가리키도록 **config.xml** 구성 파일을 업데이트하십시오. 
 
 ### Android
 {: #android }
-If you have an Android app, the requirements to for identifying the splash images depends on whether you created the app with or without the {{ site.data.keys.product_adj }} template.
+Android 앱이 있는 경우 스플래시 이미지를 식별하는 데 대한 요구사항은 앱을 작성할 때 {{ site.data.keys.product_adj }} 템플리트를 사용했는지 여부에 따라 다릅니다. 
 
-#### Splash screens
+#### 스플래시 화면
 {: #splash-screens }
-If you did *not* use the {{ site.data.keys.product_adj }} template when you created your app, the splash images that are displayed are those that are retrieved from the {{ site.data.keys.product_adj }} images location. The target file paths and file names must remain exactly as in the example when you do not use the template. Change the source paths and file names (`src`) to the path of the files that you want to display. Add lines similar to the following example between the `<platform name="android">` and `</platform>` tags in the **config.xml** file: 
+앱을 작성할 때 {{ site.data.keys.product_adj }} 템플리트를 사용하지 *않은* 경우 표시되는 스플래시 이미지는 {{ site.data.keys.product_adj }} 이미지 위치에서 검색되는 스플래시 이미지입니다. 템플리트를 사용하지 않은 경우 대상 파일 경로 및 파일 이름은 예제와 동일하게 유지되어야 합니다. 소스 경로 및 파일 이름(`src`)을 표시하려는 파일의 경로로 변경하십시오. **config.xml** 파일에서 `<platform name="android">` 및 `</platform>` 태그 사이에 다음 예제와 유사한 행을 추가하십시오.  
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -32,7 +32,7 @@ If you did *not* use the {{ site.data.keys.product_adj }} template when you crea
 <update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" /> 
 ```
 
-If you used the {{ site.data.keys.product_adj }} template when you created your app, you must update the splash images that Cordova uses. Change the source paths and file names (src) to the path of the files that you want to display. Add lines similar to the following example between the <platform name="android"> and </platform> tags in the config.xml file:
+앱 작성 시 {{ site.data.keys.product_adj }} 템플리트를 사용한 경우 Cordova에서 사용하는 스플래시 이미지를 업데이트해야 합니다. 소스 경로 맟 파일 이름(src)을 표시하려는 파일의 경로로 변경하십시오. config.xml 파일에서 <platform name="android"> 및 </platform> 태그 사이에 다음 예제와 유사한 행을 추가하십시오. 
 
 ```xml
 <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -45,9 +45,9 @@ If you used the {{ site.data.keys.product_adj }} template when you created your 
 <splash density="xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
 ```
 
-#### Icons
+#### 아이콘
 {: #icons }
-The file names of the icon files must be the same as the entries in the following example. The paths can be any path. The name of each image corresponds to its size.
+아이콘 파일의 파일 이름이 다음 예제의 항목과 같아야 합니다. 경로는 임의의 경로일 수 있습니다. 각 이미지의 이름은 크기에 해당합니다. 
 
 ```xml
 <icon src="res/icon/android/icon-96-xhdpi.png" />
@@ -60,11 +60,11 @@ The file names of the icon files must be the same as the entries in the followin
 
 ### iOS
 {: #ios }
-If you have an iOS app, add lines similar to the following example between the `<platform name="ios">` and `</platform>` tags:
+iOS 앱이 있는 경우 `<platform name="ios">` 및 `</platform>` 태그 사이에 다음 예제와 유사한 행을 추가하십시오. 
     
-#### Splash screens
+#### 스플래시 화면
 {: #splash-screens-ios }
-The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
+스플래시 화면 파일의 경로와 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 각 이미지의 이름은 크기에 해당합니다. 
 
 ```xml
 <splash height="480" src="res/screen/ios/Default˜iphone.png" width="320" />
@@ -78,9 +78,9 @@ The paths and file names of the splash screen files must be the same as the name
 <splash height="1242" src="res/screen/ios/Default-736h-Landscape˜iphone.png" width="2208" />
 ```
 
-#### Icons
+#### 아이콘
 {: #icons-ios}
-The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
+아이콘 파일의 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 경로는 임의의 경로일 수 있습니다. 각 이미지의 이름은 크기에 해당합니다. 
 
 ```xml
 <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
@@ -104,11 +104,11 @@ The file names of the icon files must be the same as the names in the following 
 
 ### Windows
 {: #windows }
-If you have a Windows app, add lines similar to the lines in the following example between the `<platform name="windows">` and `</platform>` tags:
+Windows 앱이 있는 경우 `<platform name="windows">` 및 `</platform>` 태그 사이에 다음 예제의 행과 유사한 행을 추가하십시오. 
 
-#### Splash screens
+#### 스플래시 화면
 {: #splash-screens-windows }
-The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
+스플래시 화면 파일의 경로와 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 각 이미지의 이름은 크기에 해당합니다. 
 
 ```xml
 <splash src="res/screen/windows/SplashScreen.scale-100.png" width="620" height="300"/>
@@ -117,9 +117,9 @@ The paths and file names of the splash screen files must be the same as the name
 <splash src="res/screen/windows/Wide310x150Logo.scale-240.png" width="744" height="360"/>
 ```
 
-#### Icons
+#### 아이콘
 {: #icons-windows }
-The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
+아이콘 파일의 파일 이름이 다음 예제에 포함된 이름과 같아야 합니다. 경로는 임의의 경로일 수 있습니다. 각 이미지의 이름은 크기에 해당합니다. 
 
 ```xml
 <icon src="res/icon/windows/Square30x30Logo.scale-100.png" width="30" height="30" />

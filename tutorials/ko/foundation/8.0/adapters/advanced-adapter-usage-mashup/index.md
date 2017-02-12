@@ -1,62 +1,62 @@
 ---
 layout: tutorial
-title: Advanced Adapter Usage and Mashup
-breadcrumb_title: Adapter Mashup
+title: 고급 어댑터 사용법 및 매시업
+breadcrumb_title: 어댑터 매시업
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Cordova project
+  - name: Cordova 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-Now that basic usage of different types of adapters has been covered, it is important to remember that adapters can be combined to make a procedure that uses different adapters to generate one processed result. You can combine several sources (different HTTP servers, SQL, etc).
+여러 유형 어댑터의 기본 사용법을 다루었고, 이제 하나의 처리된 결과를 생성하기 위해 다양한 어댑터를 사용하는 프로시저를 작성하도록 어댑터를 결합할 수 있음을 기억하는 것이 중요합니다. 여러 소스(서로 다른 HTTP 서버, SQL 등)를 결합할 수 있습니다. 
 
-In theory, from the client side, you could make several requests successively, one depending on the other.
-However, writing this logic on the server side could be faster and cleaner.
+이론적으로는 클라이언트 측에서 한 요청이 다른 요청에 종속된 여러 개의 요청을 연속으로 작성할 수 있습니다. 그러나 서버 측에서 이 논리를 작성하는 것이 더 빠르고 명확할 수 있습니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to}
-* [JavaScript adapter API](#javascript-adapter-api)
-* [Java adapter API](#java-adapter-api)
-* [Data mashup example](#data-mashup-example)
-* [Sample application](#sample-application)
+* [JavaScript 어댑터 API](#javascript-adapter-api)
+* [Java 어댑터 API](#java-adapter-api)
+* [데이터 매시업 예제](#data-mashup-example)
+* [샘플 애플리케이션](#sample-application)
 
-## JavaScript adapter API
+## JavaScript 어댑터 API
 {: #javascript-adapter-api }
 
-### Calling a JavaScript adapter procedure from a JavaScript adapter
+### JavaScript 어댑터에서 JavaScript 어댑터 프로시저 호출
 {: #calling-a-javascript-adapter-procedure-from-a-javascript-adapter }
 
-When calling a JavaScript adapter procedure from another JavaScript adapter use the `MFP.Server.invokeProcedure(invocationData)` API. This API enables to invoke a procedure on any of your JavaScript adapters. `MFP.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
+다른 JavaScript 어댑터에서 JavaScript 어댑터 프로시저를 호출할 때 `MFP.Server.invokeProcedure(invocationData)`
+API를 사용하십시오. 이 API를 사용하면 사용자의 어떤 JavaScript 어댑터에서도 프로시저를 호출할 수 있습니다. `MFP.Server.invokeProcedure(invocationData)`는 호출된 프로시저에서 검색된 결과 오브젝트를 리턴합니다. 
 
-The `invocationData` function signature is:  
+`invocationData` 함수 시그니처는 다음과 같습니다.  
 `MFP.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
 
-For example:
+예: 
 
 ```javascript
 MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate]});
 ```
 
-> Calling a Java adapter from a JavaScript adapter is not supported
+> JavaScript 어댑터에서 Java 어댑터 호출은 지원되지 않습니다. 
 
-## Java adapter API
+## Java 어댑터 API
 {: #java-adapter-api }
 
-Before you can call another adapter - the AdaptersAPI must be assigned to a variable:
+다른 어댑터를 호출하기 전에 AdaptersAPI를 변수에 지정해야 합니다.
 
 ```java
 @Context
 AdaptersAPI adaptersAPI;
 ```
 
-### Calling a Java adapter from a Java adapter
+### Java 어댑터에서 Java 어댑터 호출
 {: #calling-a-java-adapter-from-a-java-adapter }
 
-When calling an adapter procedure from a Java adapter use the `executeAdapterRequest` API.
-This call returns an `HttpResponse` object.
+Java 어댑터에서 어댑터 프로시저를 호출할 때 `executeAdapterRequest` API를
+사용하십시오. 이 호출은 `HttpResponse` 오브젝트를 리턴합니다. 
 
 ```java
 HttpUriRequest req = new HttpGet(JavaAdapterProcedureURL);
@@ -64,10 +64,10 @@ HttpResponse response = adaptersAPI.executeAdapterRequest(req);
 JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 ```
 
-### Calling a JavaScript adapter procedure from a Java adapter
+### Java 어댑터에서 JavaScript 어댑터 프로시저 호출
 {: calling-a-javascript-adapter-procedure-from-a-java-adapter }
  
-When calling a JavaScript adapter procedure from a Java adapter use both the `executeAdapterRequest` API and the `createJavascriptAdapterRequest` API that creates an `HttpUriRequest` to pass as a parameter to the `executeAdapterRequest` call.
+Java 어댑터에서 JavaScript 어댑터 프로시저를 호출할 때 `executeAdapterRequest` API 및 `executeAdapterRequest` 호출에 매개변수를 전달하기 위해 `HttpUriRequest`를 작성하는 `createJavascriptAdapterRequest` API를 둘 다 사용하십시오.  
 
 ```java
 HttpUriRequest req = adaptersAPI.createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
@@ -75,42 +75,42 @@ org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
 JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 ```
 
-## Data mashup example
+## 데이터 매시업 예제
 {: #data-mashup-example }
 
-The following example shows how to mash up data from 2 data sources, a *database table* and *Fixer.io (exchange rate and currency conversion service)*, And to return the data stream to the application as a single object.
+다음 예제에서는 2개 데이터 소스 즉, *database table*과 *Fixer.io(환율 및 통화 변환 서비스)*에서 데이터를 매시업하는 방법과 단일오브젝트로 애플리케이션에 데이터 스트림을 리턴하는 방법을 보여줍니다. 
 
-In this example we will use 2 adapters:
+이 예제에서는 2개의 어댑터를 사용합니다. 
 
-* SQL Adapter:
-  * Extract a list of currencies from a currencies database table.
-  * The result contains the list of currencies. Each currency will have an id, symbol and name. For example: {3, EUR, Euro}
-  * This adapter will also have a procedure that calls the HTTP adapter passing 2 parameters - a base currency and a target currency to retrieve the updated exchange-rate.
-* HTTP Adapter:
-  * Connect to the Fixer.io service.
-  * Extract an updated exchange-rate for the requested currencies that are retrieved as parameters via the SQL adapter.
+* SQL 어댑터:
+  * 통화 데이터베이스 테이블에서 통화 목록을 추출하십시오. 
+  * 결과 테이블에 통화 목록이 포함됩니다. 각 통화는 ID, 기호, 이름이 있습니다. 예: {3, EUR, Euro}
+  * 이 어댑터는 또한 업데이트된 환율을 검색하기 위해 두 매개변수 - 기준 환율 및 대상 통화를 전달하는 HTTP 어댑터를 호출하는 프로시저를 가지게 됩니다. 
+* HTTP 어댑터:
+  * Fixer.io 서비스에 연결하십시오.
+  * SQL 어댑터를 통해 매개변수로 검색되는 요청된 통화에 대한 업데이트된 환율을 추출하십시오. 
 
-Afterward, the mashed-up data is returned to the application for display.
+나중에 매시업 데이터가 표시를 위해 애플리케이션에 리턴됩니다. 
 
-![Adapter Mashup Diagram](AdaptersMashupDiagram.jpg)
+![어댑터 매시업 다이어그램](AdaptersMashupDiagram.jpg)
 
-The provided sample in this tutorial demonstrates the implementation of this scenario using 3 different mashup types.  
-In each one of them the names of the adapters are slightly different.  
-Here is a list of the mashup types and the corresponding adapter names:
+이 학습서에서 제공된 샘플은 세 개의 서로 다른 매시업 유형을 사용하여 이 시나리오의 구현을 보여줍니다.   
+각 매시업 유형에서 어댑터의 이름은 약간 다릅니다.   
+다음은 매시업 유형 및 해당 어댑터 이름의 목록 입니다. 
 
-| Scenario                                         |      SQL Adapter name        |  HTTP Adapter name    |  
+| 시나리오                                         |      SQL 어댑터 이름        |  HTTP 어댑터 이름    |  
 |--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** adapter → **JavaScript** adapter  | SQLAdapterJS                 | HTTPAdapterJS         |  
-| **Java** adapter → **JavaScript** adapter        | SQLAdapterJava               | HTTPAdapterJS         |  
-| **Java** adapter → **Java** adapter              | SQLAdapterJava               | HTTPAdapterJava       |
+| **JavaScript** 어댑터 → **JavaScript** 어댑터  | SQLAdapterJS                 | HTTPAdapterJS         |  
+| **Java** 어댑터 → **JavaScript** 어댑터        | SQLAdapterJava               | HTTPAdapterJS         |  
+| **Java** 어댑터 → **Java** 어댑터              | SQLAdapterJava               | HTTPAdapterJava       |
 
 
-### Mashup Sample Flow
+### 매시업 샘플 플로우
 {: #mashup sample flow }
 
-**1. Create a procedure / adapter call that create a request to a back-end endpoint for the requested currencies and retrieves the corresponding data:**  
+**요청된 통화에 대해 백엔드 엔드포인트로 요청을 작성하고 해당 데이터를 검색하는 프로시저/어댑터 호출을 작성하십시오. **  
 
-(HTTPAdapterJS adapter) XML:
+(HTTPAdapterJS 어댑터) XML:
 
 ```xml
 <connectivity>
@@ -123,7 +123,7 @@ Here is a list of the mashup types and the corresponding adapter names:
 </connectivity>
 ```
 
-(HTTPAdapterJS adapter) JavaScript:
+(HTTPAdapterJS 어댑터) JavaScript:
 
 ```javascript
 function getExchangeRate(fromCurrencySymbol, toCurrencySymbol) {
@@ -141,7 +141,7 @@ function getPath(from, to) {
 }
 ```
 
-(HTTPAdapterJava adapter)
+(HTTPAdapterJava 어댑터)
 
 ```java
 @GET
@@ -166,9 +166,9 @@ private Response execute(HttpUriRequest req) throws IOException, IllegalStateExc
 }
 ```
 
-**2. Create a procedure that fetches the currencies records from the database and returns a resultSet / JSONArray to the application:**
+**2. 데이터베이스에서 통화 레코드를 페치하고 resultSet/JSONArray를 애플리케이션으로 리턴하는 프로시저를 작성하십시오. **
 
-(SQLAdapterJS adapter)
+(SQLAdapterJS 어댑터)
 
 ```javascript
 var getCurrenciesListStatement = "SELECT id, symbol, name FROM currencies;";
@@ -182,7 +182,7 @@ function getCurrenciesList() {
 }
 ```
 
-(SQLAdapterJava adapter)
+(SQLAdapterJava 어댑터)
 
 ```java
 @GET
@@ -208,9 +208,9 @@ public JSONArray getCurrenciesList() throws SQLException, IOException {
 }
 ```
 
-**3. Create a procedure that calls the HTTPAdapter procedure (which we created in step 1) with the base-currency and the target-currency:**
+**3. 기준 환율 및 대상 환율로 HTTPAdapter 프로시저(1단계에서 작성한)를 호출하는 프로시저를 작성하십시오. **
 
-(SQLAdapterJS adapter)
+(SQLAdapterJS 어댑터)
 
 ```javascript
 function getExchangeRate(fromId, toId) {
@@ -237,7 +237,7 @@ function getExchangeRate(fromId, toId) {
 }
 ```
 
-(SQLAdapterJava adapter - mashup with another Java adapter)
+(SQLAdapterJava 어댑터 - 다른 Java 어댑터와 매시업)
 
 ```java
 @GET
@@ -269,7 +269,7 @@ public JSONObject getExchangeRate_JavaToJava(@QueryParam("fromCurrencyId") Integ
 }
 ```
 
-(SQLAdapterJava adapter - mashup with a JavaScript adapter)
+(SQLAdapterJava 어댑터 - JavaScript 어댑터와 매시업)
 
 ```java
 @GET
@@ -300,32 +300,32 @@ public JSONObject getExchangeRate_JavaToJS(@QueryParam("fromCurrencyId") Integer
 }
 ```
 
-<img alt="sample application" src="AdaptersMashupSample.png" style="float:right"/>
+<img alt="샘플 애플리케이션" src="AdaptersMashupSample.png" style="float:right"/>
 
-## Sample application
+## 샘플 애플리케이션
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) the Cordova project.
+Cordova 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80)하십시오.
 
-**Note:** the sample application's client-side is for Cordova applications, however the server-side code in the adapters applies to all platforms.
+**참고:** 샘플 애플리케이션의 클라이언트 측은 Cordova 애플리케이션용이지만 어댑터의 서버 측 코드는 모든 플랫폼에 적용됩니다. 
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
 
-#### Adapter setup
+#### 어댑터 설정
 {: #adapter-setup }
 
-An example of currencies list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`.
+SQL에서 통화 목록 예제는 `Utils/mobilefirstTraining.sql` 아래에 있는 제공된 어댑터 maven 프로젝트(Cordova 프로젝트 내에 위치)에서 사용 가능합니다. 
 
-1. Run the .sql script in your SQL database.
-2. Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the adapters](../../adapters/creating-adapters/).
-3. Open the {{ site.data.keys.mf_console }}
-    - Click on the **SQLAdapterJS** adapter and update the database connectivity properties.
-    - Click on the **SQLAdapterJava** adapter and update the database connectivity properties.
+1. SQL 데이터베이스에서.sql 스크립트를 실행하십시오. 
+2. [어댑터를 빌드 및 배치](../../adapters/creating-adapters/)하기 위해 Maven, {{ site.data.keys.mf_cli }} 또는 선택한 IDE를 사용하십시오. 
+3. {{ site.data.keys.mf_console }}을 여십시오. 
+    - **SQLAdapterJS** 어댑터를 클릭하고 데이터베이스 연결 특성을 업데이트하십시오. 
+    - **SQLAdapterJava** 어댑터를 클릭하고 데이터베이스 연결 특성을 업데이트하십시오. 
 
-#### Application setup
+#### 애플리케이션 설정
 {: #application-setup }
 
-1. From the command line, navigate to the **CordovaApp** project's root folder.
-2. Add a platform by running the `cordova platform add` command.
-3. Register the application by running the command: `mfpdev app register`.
-4. Run the Cordova application by running the `cordova run` command.
+1. 명령행에서 **CordovaApp** 프로젝트의 루트 폴더로 이동하십시오. 
+2. `cordova platform add` 명령을 실행하여 플랫폼을 추가하십시오. 
+3. `mfpdev app register` 명령을 실행하여 애플리케이션을 등록하십시오.
+4. `cordova run` 명령을 실행하여 Cordova 애플리케이션을 실행하십시오. 

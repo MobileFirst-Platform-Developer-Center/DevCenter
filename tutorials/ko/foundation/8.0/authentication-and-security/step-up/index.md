@@ -1,74 +1,71 @@
 ---
 layout: tutorial
-title: Step Up Authentication
-breadcrumb_title: Step Up Authentication
+title: 인증 설정
+breadcrumb_title: 인증 설정
 relevantTo: [android,ios,windows,javascript]
 weight: 5
-downloads:
-  - name: Download Cordova project
+다운로드:
+  - 이름: Cordova 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80
-  - name: Download iOS Swift project
+  - 이름: iOS Swift 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80
-  - name: Download Android project
+  - 이름: Android 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80
-  - name: Download Win8 project
+  - 이름: Win8 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80
-  - name: Download Win10 project
+  - 이름: Win10 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80
-  - name: Download Web project
+  - 이름: 웹 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80
-  - name: Download SecurityCheck Maven project
+  - 이름: SecurityCheck Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-Resources can be protected by several security checks. In such a scenario, the {{ site.data.keys.mf_server }} sends all the relevant challenges simultaneously to the application.  
+자원은 여러 보안 검사에 의해 보호될 수 있습니다. 이러한 시나리오에서 {{ site.data.keys.mf_server }}는 애플리케이션에 모든 관련된 인증 확인을 동시에 전송합니다.  
 
-A security check can also be dependent on another security check. Therefore, it is important to be able to control when the challenges are sent.  
-For example, this tutorial describes an application that has two resources protected by a user name and password, where the second resource also requires an additional PIN code.
+보안 검사는 또한 다른 보안 검사에 종속될 수 있습니다. 따라서 언제 인증 확인이 보내지는지를 제어할 수 있는 것이 중요합니다.   
+예를 들어 이 학습서는 사용자 이름과 비밀번호로 보호되는 두 개의 자원(두 번째 자원은 추가 PIN 코드도 요구함)을 갖는 애플리케이션을 설명합니다. 
 
-**Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) and [UserAuthenticationSecurityCheck](../user-authentication) tutorials before continuing.
+**전제조건:** 계속하기 전에 [CredentialsValidationSecurityCheck](../credentials-validation) 및 [UserAuthenticationSecurityCheck](../user-authentication) 학습서를 읽으십시오. 
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to }
-* [Referencing a Security Check](#referencing-a-security-check)
-* [State Machine](#state-machine)
-* [The Authorize Method](#the-authorize-method)
-* [Challenge Handlers](#challenge-handlers)
-* [Sample Applications](#sample-applications)
+* [보안 검사 참조](#referencing-a-security-check)
+* [상태 머신](#state-machine)
+* [Authorize 메소드](#the-authorize-method)
+* [인증 확인 핸들러](#challenge-handlers)
+* [샘플 애플리케이션](#sample-applications)
 
-## Referencing a Security Check
+## 보안 검사 참조
 {: #referencing-a-security-check }
-Create two security checks: `StepUpPinCode` and `StepUpUserLogin`. Their initial implementation is the same as the implementation described in the [Credentials Validation](../credentials-validation/security-check/) and [User Authentication](../user-authentication/security-check/) tutorials.
+두 개의 보안 검사 `StepUpPinCode` 및 `StepUpUserLogin`을 작성하십시오. 초기 구현은 [신임 정보 유효성 검증](../credentials-validation/security-check/) 및 [사용자 인증](../user-authentication/security-check/) 학습서에 설명된 구현과 동일합니다. 
 
-In this example, `StepUpPinCode` **depends on** `StepUpUserLogin`. The user should be asked to enter a PIN code only after a successful login to `StepUpUserLogin`. For this purpose, `StepUpPinCode` must be able to **reference** the `StepUpUserLogin` class.  
+이 예제에서 `StepUpPinCode`는 `StepUpUserLogin`에 **종속됩니다**. 사용자는 `StepUpUserLogin`에 성공적으로 로그인한 후에만 PIN 코드를 입력하도록 요청받아야 합니다. 이를 위해 `StepUpPinCode`가 `StepUpUserLogin` 클래스를 **참조**할 수 있어야 합니다.  
 
-The {{ site.data.keys.product_adj }} framework provides an annotation to inject a reference.  
-In your `StepUpPinCode` class, at the class level, add:
+{{ site.data.keys.product_adj }} 프레임워크는 참조를 삽입하기 위해 어노테이션을 제공합니다.   
+사용자의 `StepUpPinCode` 클래스에서 클래스 레벨에 다음을 추가하십시오. 
 
 ```java
 @SecurityCheckReference
 private transient StepUpUserLogin userLogin;
 ```
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Both security check implementations need to be bundled inside the same adapter.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 두 보안 검사 구현 모두 동일한 어댑터 내부에 번들되어야 합니다. 이 참조를 해결하기 위해 프레임워크는 적절한 클래스를 갖는 보안 검사를 검색하고 종속적 보안 검사로 참조를 삽입합니다.   
+동일한 클래스의 보안 검사가 둘 이상 있을 경우 어노테이션은 선호하는 검사의 고유 이름을 지정하는 데 사용할 수 있는 선택적인 `name` 매개변수를 가집니다. 
 
-To resolve this reference, the framework looks up for a security check with the appropriate class, and injects its reference into the dependent security check.  
-If there are more than one security check of the same class, the annotation has an optional `name` parameter, which you can use to specify the unique name of the referred check.
-
-## State machine
+## 상태 머신
 {: #state-machine }
-All classes that extend `CredentialsValidationSecurityCheck` (which includes both `StepUpPinCode` and `StepUpUserLogin`) inherit a simple state machine. At any given moment, the security check can be in one of these states:
+`CredentialsValidationSecurityCheck`(`StepUpPinCode` 및 `StepUpUserLogin` 둘 다 포함)를 확장하는 모든 클래스는 단순 상태 머신을 상속합니다. 지정된 시점에 보안 검사는 다음 상태 중 하나일 수 있습니다. 
 
-- `STATE_ATTEMPTING`: A challenge has been sent and the security check is waiting for the client response. The attempt count is maintained during this state.
-- `STATE_SUCCESS`: The credentials have been successfully validated.
-- `STATE_BLOCKED`: The maximum number of attempts has been reached and the check is in locked state.
+- `STATE_ATTEMPTING`: 인증 확인이 전송되었고 보안 검사가 클라이언트 응답을 대기 중입니다. 시도 계수는 이 상태 동안 유지보수됩니다.
+- `STATE_SUCCESS`: 신임 정보가 유효성 검증되었습니다. 
+- `STATE_BLOCKED`: 최대 시도 횟수에 도달했고 검사가 잠금 상태에 있습니다. 
 
-The current state can be obtained using the inherited `getState()` method.
+현재 상태는 상속된 `getState()` 메소드를 사용하여 얻을 수 있습니다. 
 
-In `StepUpUserLogin`, add a convenience method to check whether the user is currently logged-in.
-This method is used later in the tutorial.
+`StepUpUserLogin`에서 convenience 메소드를 추가하여 사용자가 현재 로그인 상태인지 확인하십시오. 이 메소드는 나중에 학습서에서 사용됩니다.
 
 ```java
 public boolean isLoggedIn(){
@@ -76,12 +73,12 @@ public boolean isLoggedIn(){
 }
 ```
 
-## The Authorize Method
+## Authorize 메소드
 {: #the-authorize-method }
-The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, such as sending a challenge or validating the request.  
-The class `CredentialsValidationSecurityCheck`, which `StepUpPinCode` extends, already includes an implementation for this method. However, in this case, the goal is to check the state of `StepUpUserLogin` before starting the default behavior of the `authorize` method.
+`SecurityCheck` 인터페이스는 `authorize`라는 메소드를 정의합니다. 이 메소드는 인증 확인 전송 또는 요청 유효성 검사같은 보안 검사의 기본 로직 구현을 책임집니다.   
+`StepUpPinCode`가 확장하는 `CredentialsValidationSecurityCheck` 클래스는 이미 이 메소드에 대한 구현을 포함합니다. 하지만 이 경우 목표는 `authorize` 메소드의 기본 동작을 시작하기 전에 `StepUpUserLogin`의 상태를 확인하는 것입니다. 
 
-To do so, **override** the `authorize` method:
+이를 위해 `authorize` 메소드를 **대체**하십시오. 
 
 ```java
 @Override
@@ -92,14 +89,14 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-This implementation checks the current state of the `StepUpUserLogin` reference:
+이 구현은 `StepUpUserLogin` 참조의 현재 상태를 확인합니다. 
 
-* If the state is `STATE_SUCCESS` (the user is logged in), the normal flow of the security check continues.
-* If `StepUpUserLogin` is in any other state, nothing is done: no challenge is sent, neither success nor failure.
+* 상태가 `STATE_SUCCESS`(사용자가 로그인됨)인 경우 보안 검사의 정상 플로우가 계속됩니다. 
+* `StepUpUserLogin`이 다른 상태에 있으면 아무것도 수행되지 않습니다. 인증 확인이 전송되지 않으며 성공도 실패도 아닙니다. 
 
-Assuming the resource is protected by **both** `StepUpPinCode` and `StepUpUserLogin`, this flow makes sure that the user is logged in before being prompted for the secondary credential (PIN code). The client never receives both challenges at the same time, even though both security checks are activated.
+자원이 `StepUpPinCode` 및 `StepUpUserLogin` **둘 다**로 보호된다고 가정하여, 이 플로우는 2차 신임 정보(PIN 코드)를 프롬프트하기 전에 사용자가 로그인했는지 확인합니다. 클라이언트는 두 보안 검사가 활성화된 경우에도 동시에 두 인증 확인을 수신하지 않습니다. 
 
-Alternatively, if the resource is protected **only** by `StepUpPinCode` (the framework will activate only this security check), you can change the `authorize` implementation to trigger `StepUpUserLogin` manually:
+또는 자원이 `StepUpPinCode`**로만** 보호되는 경우(프레임워크가 이 보안 검사만 활성화) `StepUpUserLogin`을 수동으로 트리거하기 위해 `authorize` 구현을 변경할 수 있습니다. 
 
 ```java
 @Override
@@ -114,11 +111,11 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-## Retrieve current user
+## 현재 사용자 검색
 {: #retrieve-current-user }
-In the `StepUpPinCode` security check, you are interested in knowing the current user's ID so that you can look up this user's PIN code in some database.
+`StepUpPinCode` 보안 검사에서 현재 사용자의 PIN 코드를 일부 데이터베이스에서 검색할 수 있도록 해당 사용자 ID를 알고자 합니다. 
 
-In the `StepUpUserLogin` security check, add the following method to obtain the current user from the **authorization context**:
+`StepUpUserLogin` 보안 검사에서 **권한 부여 컨텍스트**에서 현재 사용자를 얻기 위해 다음 메소드를 추가하십시오. 
 
 ```java
 public AuthenticatedUser getUser(){
@@ -126,7 +123,7 @@ public AuthenticatedUser getUser(){
 }
 ```
 
-In `StepUpPinCode`, you can then use the `userLogin.getUser()` method to get the current user from the `StepUpUserLogin` security check, and check the valid PIN code for this specific user:
+`StepUpPinCode`에서 `userLogin.getUser()` 메소드를 사용하여 `StepUpUserLogin` 보안 검사에서 현재 사용자를 가져오고 이 특정 사용자에 대한 올바른 PIN 코드를 확인할 수 있습니다. 
 
 ```java
 @Override
@@ -149,29 +146,30 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Challenge Handlers
+## 인증 확인 핸들러
 {: #challenge-handlers }
-On the client side, there are no special APIs to handle multiple steps. Rather, each challenge handler handles its own challenge. In this example, you must register two separate challenge handlers: one to handle challenges from `StepUpUserLogin` and one to handle challenges from `StepUpPincode`.
+클라이언트 측에서, 여러 단계를 핸들하기 위한 특수 API는 없습니다. 오히려 각 인증 핸들러는 자체 인증 확인을 핸들합니다. 
+이 예제에서 두 개의 별도 인증 확인 핸들러를 등록해야 합니다. `StepUpUserLogin`에서 인증 확인을 핸들하기 위한 하나와 `StepUpPincode`에서 인증 확인을 핸들하기 위한 하나입니다. 
 
-<img alt="Step-up sample application" src="sample_application.png" style="float:right"/>
-## Sample Applications
+<img alt="단계별 샘플 애플리케이션" src="sample_application.png" style="float:right"/>
+## 샘플 애플리케이션
 {: #sample-applications }
-### Security check
+### 보안 검사
 {: #security-check }
-The `StepUpUserLogin` and `StepUpPinCode` security checks are available in the SecurityChecks project under the StepUp Maven project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+`StepUpUserLogin` 및 `StepUpPinCode` 보안 검사를 StepUp Maven 프로젝트 아래 SecurityChecks 프로젝트에서 사용할 수 있습니다.
+보안 검사 Maven 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80)하십시오. 
 
-### Applications
+### 애플리케이션
 {: #applications }
-Sample applications are available for iOS (Swift), Android, Windows 8.1/10, Cordova, and Web.
+샘플 애플리케이션은 OS(Swift), Android, Windows 8.1/10, Cordova 및 웹에서 사용 가능합니다. 
 
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80) the Cordova project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80) the iOS Swift project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80) the Android project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80) the Windows 8.1 project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80) the Windows 10 project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80) the Web app project.
+* Cordova 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/StepUpCordova/tree/release80)하십시오. 
+* iOS Swift 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/StepUpSwift/tree/release80)하십시오. 
+* Android 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/StepUpAndroid/tree/release80)하십시오. 
+* Windows 8.1 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin8/tree/release80)하십시오. 
+* Windows 10 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWin10/tree/release80)하십시오. 
+* 웹 앱 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/StepUpWeb/tree/release80)하십시오. 
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+샘플의 README.md 파일에 있는 지시사항을 따르십시오. 

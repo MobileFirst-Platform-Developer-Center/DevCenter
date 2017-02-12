@@ -1,38 +1,39 @@
 ---
-layout: tutorial
-title: Java SQL Adapter
-breadcrumb_title: SQL Adapter
+layout: tutoriall
+title: Java SQL 어댑터
+breadcrumb_title: SQL 어댑터
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: 어댑터 Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
 
-Java adapters give developers control over connectivity to a back end system. It is therefore the responsibility of the developer to ensure best practices regarding performance and other implementation details.
-This tutorial covers an example of a Java adapter that connects to a MySQL back end to make CRUD (Create, Read, Update, Delete) operations on a `users` table, using REST concepts.
+Java 어댑터는 백엔드 시스템으로 연결에 대한 제어를 개발자에게 부여합니다. 따라서 성능 및 기타 구현 세부사항을 최적화하는 것은 개발자의 책임입니다. 
+이 학습서는 REST 개념을 사용하여 `users` 테이블에 CRUD(작성, 읽기, 업데이트, 삭제) 조작을 수행하기 위해 MySQL 백엔드에 연결하는 Java 어댑터의 예를 다룹니다. 
 
-**Prerequisites:**
+**전제조건:**
 
-* Make sure to read the [Java Adapters](../) tutorial first.
-* This tutorial assumes knowledge of SQL.
+* [Java 어댑터](../) 학습서를 먼저 읽으십시오. 
+* 이 학습서는 SQL에 대한 지식을 가지고 있다고 가정합니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
 
-* [Setting up the data source](#setting-up-the-data-source)
-* [Implemeting SQL in the adapter Resource class](#implementing-sql-in-the-adapter-resource-class)
-* [Sample adapter](#sample-adapter)
+* [데이터 소스 설정](#setting-up-the-data-source)
+* [어댑터 자원 클래스에서 SQL 구현](#implementing-sql-in-the-adapter-resource-class)
+* [샘플 어댑터](#sample-adapter)
 
-## Setting up the data source
+## 데이터 소스 설정
 {: #setting-up-the-data-source }
 
-In order to configure the {{ site.data.keys.mf_server }} to be able to connect to the MySQL server, the adapter's XML file needs to be configured with **configuration properties**. These properties can later be edited through the {{ site.data.keys.mf_console }}.
+MySQL 서버에 연결할 수 있도록 {{site.data.keys.mf_server }}를 구성하려면 어댑터의
+XML 파일이 **configuration properties**로 구성되어야 합니다. 이러한 특성은 {{site.data.keys.mf_console }}을 통해 나중에 편집될 수 있습니다. 
 
-Edit the adater.xml file and add the following properties:
+adater.xml 파일을 편집하고 다음 특성을 추가하십시오.
 
 ```xml
 <mfp:adapter name="JavaSQL"
@@ -51,15 +52,14 @@ Edit the adater.xml file and add the following properties:
 </mfp:adapter>
 ```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must always be located *below* the `JAXRSApplicationClass` element.  
-Here we define the connection settings and give them a default value, so they could be used later in the AdapterApplication class.
-
-## Implementing SQL in the adapter Resource class
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **참고:** 구성 특성 요소는 항상 `JAXRSApplicationClass` 요소 *아래*에 위치해야 합니다.   
+여기서 연결 설정을 정의하고 기본값을 제공하여 나중에 AdapterApplication 클래스에 사용할 수 있습니다.
+## 어댑터 자원 클래스에서 SQL 구현
 {: #implementing-sql-in-the-adapter-resource-class }
 
-The adapter Resource class is where requests to the server are handled.
+어댑터 자원 클래스는 서버에 대한 요청이 처리되는 위치입니다. 
 
-In the supplied sample adapter, the class name is `JavaSQLResource`.
+제공된 샘플 어댑터에서 클래스 이름은 `JavaSQLResource`입니다.
 
 ```java
 @Path("/")
@@ -67,12 +67,14 @@ In the supplied sample adapter, the class name is `JavaSQLResource`.
 }
 ```
 
-`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
+`@Path("/")`는 자원이 URL `http(s)://host:port/ProjectName/adapters/AdapterName/`에서 사용 가능함을 의미합니다. 
 
-### Using DataSource
+### 데이터 소스 사용
+
 {: #using-datasource }
 
-When the adapter is deployed, or whenever the configuration is changed from the {{ site.data.keys.mf_console }}, the adapter's `MFPJAXRSApplication`'s `init` method is called. This is a good place to [load the connection properties](../#configuration-api) and create a `DataSource`.
+어댑터가 배치될 때 또는 구성이 {{site.data.keys.mf_console }}에서 변경될 때마다 어댑터의
+`MFPJAXRSApplication`의 `init` 메소드가 호출됩니다. 이는 [연결 특성 로드](../#configuration-api) 및 `DataSource`를 작성하는 좋은 위치입니다. 
 
 ```java
 public class JavaSQLApplication extends MFPJAXRSApplication{
@@ -93,8 +95,8 @@ public class JavaSQLApplication extends MFPJAXRSApplication{
 }
 ```
 
-In the resource class, create a helper method to get an SQL connection.
-Use the `AdaptersAPI` to get the current `MFPJAXRSApplication` instance:
+자원 클래스에서 SQL 연결을 얻기 위한 헬퍼 방법을 작성하십시오. 현재 `MFPJAXRSApplication` 인스턴스를 얻으려면 `AdaptersAPI`를
+사용하십시오.
 
 ```java
 @Context
@@ -108,10 +110,11 @@ public Connection getSQLConnection() throws SQLException{
 ```
 
 
-### Create User
+### 사용자 작성
+
 {: #create-user }
 
-Used to create a new user record in the database.
+데이터베이스에서 새 사용자 레코드를 작성하는 데 사용됩니다. 
 
 ```java
 @POST
@@ -145,23 +148,25 @@ public Response createUser(@FormParam("userId") String userId,
 }
 ```
 
-Because this method does not have any `@Path`, it is accessible as the root URL of the resource. Because it uses `@POST`, it is accessible via `HTTP POST` only.  
-The method has a series of `@FormParam` arguments, which means that those can be sent in the HTTP body as `x-www-form-urlencoded` parameters.
+이 메소드가 `@Path`를 가지지 않으므로, 자원의 루트 URL로 액세스 가능합니다. `@POST`을 사용하기 때문에, `HTTP POST`를 통해서만 액세스 가능합니다.   
+메소드는 일련의 `@FormParam` 인수를 가지고 있으며, 이러한 인수는 `x-www-form-urlencoded` 매개변수로서 HTTP 본문에서 전송될 수 있습니다. 
 
-It is also possible to pass the parameters in the HTTP body as JSON objects, by using `@Consumes(MediaType.APPLICATION_JSON)`, in which case the method needs a `JSONObject` argument, or a simple Java object with properties that match the JSON property names.
+`@Consumes(MediaType.APPLICATION_JSON)`를 사용하여 JSON 오브젝트로서
+HTTP 본문에서 매개변수를 전달할 수도 있습니다. 이 경우에 메소드에 `JSONObject`
+인수 또는 JSON 특성 이름과 일치하는 특성을 가진 단순한 Java 오브젝트가 필요합니다. 
 
-The `Connection con = getSQLConnection();` method gets the connection from the data source that was defined earlier.
+`Connection con = getSQLConnection();` 메소드는 더 먼저 정의된 데이터 소스에서 연결을 얻습니다. 
 
-The SQL queries are built by the `PreparedStatement` method.
+SQL 조회는 `PreparedStatement` 메소드에 의해 빌드됩니다. 
 
-If the insertion was successful, the `return Response.ok().build()` method is used to send a `200 OK` back to the client. If there was an error, a different `Response` object can be built with a specific HTTP status code. In this example, a `409 Conflict` error code is sent. It is advised to also check whether all the parameters are sent (not shown here) or any other data validation.
+삽입에 성공하면, `return Response.ok().build()` 메소드는 `200
+OK`를 클라이언트로 다시 전송하는 데 사용됩니다. 오류가 있으면, 다른 `Response` 오브젝트가 특정 HTTP 상태 코드로 빌드될 수 있습니다. 이 예에서, `409 Conflict` 오류 코드가 전송됩니다. 또한 모든 매개변수가 전송되는지 여부(여기에 표시되지 않음) 또는 기타 데이터 유효성 검증을 확인하는 것이 권장됩니다.
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Make sure to close resources, such as prepared statements and connections.
-
-### Get User
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** 준비된 명령문 및 연결과 같은 자원을 닫았는지 확인하십시오.
+### 사용자 가져오기
 {: #get-user }
 
-Retrieve a user from the database.
+사용자를 데이터베이스에서 검색하십시오. 
 
 ```java
 @GET
@@ -198,17 +203,17 @@ public Response getUser(@PathParam("userId") String userId) throws SQLException{
 }
 ```
 
-This method uses `@GET` with a `@Path("/{userId}")`, which means that it is available via `HTTP GET /adapters/UserAdapter/{userId}`, and the `{userId}` is retrieved by the `@PathParam("userId")` argument of the method.
+이 메소드는 `@GET`을 `@Path("/{userId}")`와 함께 사용하며 이는 메소드가 `HTTP GET /adapters/UserAdapter/{userId}`를 통해 사용 가능하고 `{userId}`가 메소드의 `@PathParam("userId")` 인수에 의해 검색됨을 의미합니다. 
 
-If the user is not found, the `404 NOT FOUND` error code is returned.  
-If the user is found, a response is built from the generated JSON object.
+사용자를 찾을 수 없는 경우, `404 NOT FOUND` 오류 코드가 리턴됩니다.   
+사용자가 발견되면, 응답은 생성된 JSON 오브젝트에서 빌드됩니다. 
 
-Prepending the method with `@Produces("application/json")` makes sure that the `Content-Type` of the output is correct.
+`@Produces("application/json)`를 메소드 앞에 추가하여 출력의 `Content-Type`이 정확하다는 것을 확인합니다. 
 
-### Get all users
+### 모든 사용자 가져오기
 {: #get-all-users }
 
-This method is similar to `getUser`, except for the loop over the `ResultSet`.
+이 메소드는 `ResultSet`에 대한 루프를 제외하고 `getUser`와 유사합니다. 
 
 ```java
 @GET
@@ -236,10 +241,11 @@ public Response getAllUsers() throws SQLException{
 }
 ```
 
-### Update user
+### 사용자 업데이트
+
 {: #update-user }
 
-Update a user record in the database.
+데이터베이스에서 사용자 레코드를 업데이트하십시오. 
 
 ```java
 @PUT
@@ -282,12 +288,12 @@ public Response updateUser(@PathParam("userId") String userId,
 }
 ```
 
-When updating an existing resource, it is standard practice to use `@PUT` (for `HTTP PUT`) and to use the resource ID in the `@Path`.
+기존 자원을 업데이트할 때 (`HTTP PUT`에 대해) `@PUT`을 사용하고 `@Path`에서 자원 ID을 사용하는 것이 일반적 사례입니다. 
 
-### Delete user
+### 사용자 삭제
 {: #delete-user }
 
-Delete a user record from the database.
+사용자를 데이터베이스에서 삭제하십시오. 
 
 ```java
 @DELETE
@@ -320,20 +326,20 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 }
 ```
 
-`@DELETE` (for `HTTP DELETE`) is used together with the resource ID in the `@Path`, to delete a user.
+(`HTTP DELETE`에 대해) `@DELETE`는 사용자를 삭제하기 위해 `@Path`에서 자원 ID와 함께 사용됩니다. 
 
-## Sample adapter
+## 샘플 어댑터
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
+어댑터 Maven 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)하십시오. 
 
-The Adapters Maven project includes the **JavaSQL** adapter described above.  
-Also included is an SQL script in the **Utils** folder.
+어댑터 Maven 프로젝트는 위에서 설명한 **JavaSQL** 어댑터를 포함합니다.   
+또한 **Utils** 폴더에 SQL 스크립트가 포함됩니다. 
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
 
-* Run the .sql script in your SQL database.
-* Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaSQL adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* SQL 데이터베이스에서.sql 스크립트를 실행하십시오. 
+* `mobilefirst@%` 사용자가 지정된 모든 액세스 권한이 있는지 확인하십시오. 
+* [JavaSQL 어댑터를 빌드 및 배치](../../creating-adapters/)하기 위해 Maven, {{ site.data.keys.mf_cli }} 또는 선택한 IDE를 사용하십시오. 
+* 어댑터를 테스트하거나 디버깅하려면 [어댑터 테스트 및 디버깅](../../testing-and-debugging-adapters) 학습서를 참조하십시오. 

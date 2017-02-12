@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-title: JSONStore Code Examples
-breadcrumb_title: Code examples
+title: JSONStore 코드 예제
+breadcrumb_title: 코드 예제
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Cordova
 {: #cordova }
-#### Initialize and open connections, get an Accessor, and add data
+#### 초기화하고 연결 열기, 액세서 가져오기 및 데이터 추가
 {: #initialize-and-open-connections-get-an-accessor-and-add-data }
 ```javascript
 var collectionName = 'people';
@@ -65,7 +65,7 @@ WL.JSONStore.init(collections, options)
 });
 ```
 
-#### Find - locate documents inside the Store
+#### 찾기 - 저장소 내에서 문서 찾기
 {: #find-locate-documents-inside-the-store }
 ```javascript
 var collectionName = 'people';
@@ -107,7 +107,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### 대체 - 콜렉션 내에 이미 저장된 문서 변경
 
 ```javascript 
 var collectionName = 'people';
@@ -135,7 +135,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Remove - delete all documents that match the query
+#### 제거 - 조회와 일치하는 문서 모두 삭제
 {: #remove-delete-all-documents-that-match-the-query }
 ```javascript
 var collectionName = 'people';
@@ -165,7 +165,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Count - gets the total number of documents that match a query
+#### 계수 - 조회와 일치하는 총 문서 수 가져오기
 {: #count-gets-the-total-number-of-documents-that-match-a-query }
 ```javascript
 var collectionName = 'people';
@@ -193,7 +193,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### 영구 삭제 - 모든 사용자의 데이터를 지우고 내부 스토리지를 영구 삭제하고 보안 아티팩트 지우기
 {: #destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```javascript
 WL.JSONStore.destroy()
@@ -207,7 +207,7 @@ WL.JSONStore.destroy()
 });
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### 보안 - 현재 사용자의 열려 있는 모든 콜렉션에 대한 액세스 닫기
 {: #security-close-access-to-all-opened-collections-for-the-current-user }
 ```javascript
 WL.JSONStore.closeAll()
@@ -221,7 +221,7 @@ WL.JSONStore.closeAll()
 });
 ```
 
-#### Security - change the password that is used to access a Store
+#### 보안 - 저장소에 액세스하는 데 사용되는 비밀번호 변경
 {: #security-change-the-password-that-is-used-to-access-a-store }
 ```javascript
 // The password should be user input. 
@@ -256,7 +256,7 @@ WL.JSONStore.changePassword(oldPassword, newPassword, username)
 });
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### 푸시 - 더티로 표시되는 모든 문서를 가져오고 어댑터에 전송하고 정리된 것으로 표시
 {: #push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```javascript
 var collectionName = 'people';
@@ -296,7 +296,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Pull - get new data from an adapter
+#### 가져오기 - 어댑터에서 새 데이터 가져오기
 {: #pull-get-new-data-from-an-adapter }
 ```javascript
 var collectionName = 'people';
@@ -346,7 +346,7 @@ resource.send()
 });
 ```
 
-#### Check whether a document is dirty
+#### 문서의 더티 여부 확인
 {: #check-whether-a-document-is-dirty }
 ```javascript
 var collectionName = 'people';
@@ -367,7 +367,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Check the number of dirty documents
+#### 더티 문서 수 확인
 {: #check-the-number-of-dirty-documents }
 ```javascript
 var collectionName = 'people';
@@ -385,7 +385,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Remove a Collection
+#### 콜렉션 제거
 {: #remove-a-collection }
 ```javascript
 var collectionName = 'people';
@@ -406,7 +406,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Clear all data that is inside a Collection
+#### 콜렉션 내에 있는 모든 데이터 지우기
 {: #clear-all-data-that-is-inside-a-collection }
 ```javascript
 var collectionName = 'people';
@@ -427,7 +427,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### 트랜잭션 시작, 일부 데이터 추가, 문서 제거, 트랜잭션 커미트 후 트랜잭션 롤백(실패한 경우)
 {: transaction }
 ```javascript
 WL.JSONStore.startTransaction()
@@ -471,7 +471,7 @@ WL.JSONStore.startTransaction()
 });
 ```
 
-#### Get file information
+#### 파일 정보 가져오기
 {: #get-file-information }
 ```javascript
 WL.JSONStore.fileInfo()
@@ -484,7 +484,7 @@ WL.JSONStore.fileInfo()
 });
 ```
 
-#### Search with like, rightLike, and leftLike
+#### like, rightLike, leftLike를 사용한 검색
 {: #search-with-like-rightlike-and-leftlike }
 ```javascript
 // Match all records that contain the search string on both sides.
@@ -505,7 +505,7 @@ var arr2 = WL.JSONStore.QueryPart().leftLike('name', 'los');  // returns {name: 
 
 ## iOS
 {: #ios }
-#### Initialize and open connections, get an Accessor, and add data
+#### 초기화하고 연결 열기, 액세서 가져오기 및 데이터 추가
 {: #ios-initialize-and-open-connections-get-an-accessor-and-add-data }
 ```objc
 // Create the collections object that will be initialized.
@@ -560,7 +560,7 @@ Initialize with a secure random token from the server
 }];
 ```
 
-#### Find - locate documents inside the Store
+#### 찾기 - 저장소 내에서 문서 찾기
 {: #ios-find-locate-documents-inside-the-store }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -599,7 +599,7 @@ for (NSDictionary* result in results) {
 }
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### 대체 - 콜렉션 내에 이미 저장된 문서 변경
 {: #ios-replace-change-the-documents-that-are-already-stored-inside-a-collection }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -616,7 +616,7 @@ NSError* error = nil;
 int docsReplaced = [[people replaceDocuments:docs andMarkDirty:NO error:&error] intValue];
 ```
 
-#### Remove - delete all documents that match the query
+#### 제거 - 조회와 일치하는 문서 모두 삭제
 {: #ios-remove-delete-all-documents-that-match-the-query }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -629,7 +629,7 @@ NSError* error = nil;
 int docsRemoved = [[people removeWithIds:@[@1] andMarkDirty:NO error:&error] intValue];
 ```
 
-#### Count - gets the total number of documents that match a query
+#### 계수 - 조회와 일치하는 총 문서 수 가져오기
 {: #ios-count-gets-the-total-number-of-documents-that-match-a-query }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -648,7 +648,7 @@ NSError* error = nil;
 int countResult = [[people countWithQueryParts:@[queryPart] error:&error] intValue];
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### 영구 삭제 - 모든 사용자의 데이터를 지우고 내부 스토리지를 영구 삭제하고 보안 아티팩트 지우기
 {: #ios-destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```objc
 // This object will point to an error if one occurs.
@@ -658,7 +658,7 @@ NSError* error = nil;
 [[JSONStore sharedInstance] destroyDataAndReturnError:&error];
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### 보안 - 현재 사용자의 열려 있는 모든 콜렉션에 대한 액세스 닫기
 {: #ios-security-close-access-to-all-opened-collections-for-the-current-user }
 ```objc
 // This object will point to an error if one occurs.
@@ -668,7 +668,7 @@ NSError* error = nil;
 [[JSONStore sharedInstance] closeAllCollectionsAndReturnError:&error];
 ```
 
-#### Security - change the password that is used to access a Store
+#### 보안 - 저장소에 액세스하는 데 사용되는 비밀번호 변경
 {: #ios-security-change-the-password-that-is-used-to-access-a-store }
 ```objc
 // The password should be user input.
@@ -688,7 +688,7 @@ oldPassword = nil;
 newPassword = nil;
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### 푸시 - 더티로 표시되는 모든 문서를 가져오고 어댑터에 전송하고 정리된 것으로 표시
 {: #ios-push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -707,7 +707,7 @@ NSArray* dirtyDocs = [people allDirtyAndReturnError:&error];
 int numCleaned = [[people markDocumentsClean:dirtyDocs error:&error] intValue];
 ```
 
-#### Pull - get new data from an adapter
+#### 가져오기 - 어댑터에서 새 데이터 가져오기
 {: #ios-pull-get-new-data-from-an-adapter }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -725,7 +725,7 @@ NSArray* data = @[ @{@"id" : @1, @"ssn": @"111-22-3333", @"name": @"carlos"} ];
 int numChanged = [[people changeData:data withReplaceCriteria:@[@"id", @"ssn"] addNew:YES markDirty:NO error:&error] intValue];
 ```
 
-#### Check whether a document is dirty
+#### 문서의 더티 여부 확인
 {: #ios-check-whether-a-document-is-dirty }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -738,7 +738,7 @@ NSError* error = nil;
 BOOL isDirtyResult = [people isDirtyWithDocumentId:1 error:&error];
 ```
 
-#### Check the number of dirty documents
+#### 더티 문서 수 확인
 {: #ios-check-the-number-of-dirty-documents }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -751,7 +751,7 @@ NSError* error = nil;
 int dirtyDocsCount = [[people countAllDirtyDocumentsWithError:&error] intValue];
 ```
 
-#### Remove a Collection
+#### 콜렉션 제거
 {: #ios-remove-a-collection }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -764,7 +764,7 @@ NSError* error = nil;
 [people removeCollectionWithError:&error];
 ```
 
-#### Clear all data that is inside a Collection
+#### 콜렉션 내에 있는 모든 데이터 지우기
 {: #ios-clear-all-data-that-is-inside-a-collection }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -777,7 +777,7 @@ NSError* error = nil;
 [people clearCollectionWithError:&error];
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### 트랜잭션 시작, 일부 데이터 추가, 문서 제거, 트랜잭션 커미트 후 트랜잭션 롤백(실패한 경우)
 {: #ios-transaction }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -806,7 +806,7 @@ if (addError != nil || removeError != nil) {
 }
 ```
 
-#### Get file information
+#### 파일 정보 가져오기
 {: #ios-get-file-information }
 ```objc
 // This object will point to an error if one occurs
@@ -819,7 +819,7 @@ NSArray* results = [[JSONStore sharedInstance] fileInfoAndReturnError:&error];
 
 ## Android
 {: #android }
-#### Initialize and open connections, get an Accessor, and add data
+#### 초기화하고 연결 열기, 액세서 가져오기 및 데이터 추가
 {: #android-initialize-and-open-connections-get-an-accessor-and-add-data }
 ```java
 // Fill in the blank to get the Android application context.
@@ -859,7 +859,7 @@ throw ex;
 }
 ```
 
-#### Initialize with a secure random token from the server
+#### 서버의 보안 랜덤 토큰을 사용하여 초기화
 {: #android-initialize-with-a-secure-random-token-from-the-server }
 ```java
 // Fill in the blank to get the Android application context.
@@ -920,7 +920,7 @@ AsyncTask<Context, Void, Void> aTask = new AsyncTask<Context, Void, Void>() {
 aTask.execute(ctx);
 ```
 
-#### Find - locate documents inside the Store
+#### 찾기 - 저장소 내에서 문서 찾기
 {: #android-find-locate-documents-inside-the-store }
 ```java
 // Fill in the blank to get the Android application context.
@@ -961,7 +961,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### 대체 - 콜렉션 내에 이미 저장된 문서 변경
 {: #android-replace-change-the-documents-that-are-already-stored-inside-a-collection }
 ```java
 // Fill in the blank to get the Android application context.
@@ -988,7 +988,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Remove - delete all documents that match the query
+#### 제거 - 조회와 일치하는 문서 모두 삭제
 {: #android-remove-delete-all-documents-that-match-the-query }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1019,7 +1019,7 @@ catch (JSONException ex) {
 }
 ```
 
-#### Count - gets the total number of documents that match a query
+#### 계수 - 조회와 일치하는 총 문서 수 가져오기
 {: android-count-gets-the-total-number-of-documents-that-match-a-query }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1047,7 +1047,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### 영구 삭제 - 모든 사용자의 데이터를 지우고 내부 스토리지를 영구 삭제하고 보안 아티팩트 지우기
 {: #android-destory-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1063,7 +1063,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### 보안 - 현재 사용자의 열려 있는 모든 콜렉션에 대한 액세스 닫기
 {: #android-security-close-access-to-all-opened-collections-for-the-current-user }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1079,7 +1079,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Security - change the password that is used to access a Store
+#### 보안 - 저장소에 액세스하는 데 사용되는 비밀번호 변경
 {: #android-security-change-the-password-that-is-used-to-access-a-store }
 ```java 
 // The password should be user input. 
@@ -1105,7 +1105,7 @@ finally {
 }
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### 푸시 - 더티로 표시되는 모든 문서를 가져오고 어댑터에 전송하고 정리된 것으로 표시
 {: #android-push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1127,7 +1127,7 @@ try {
 }
 ```
 
-#### Pull - get new data from an adapter
+#### 가져오기 - 어댑터에서 새 데이터 가져오기
 {: #android-pull-get-new-data-from-an-adapter }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1168,7 +1168,7 @@ catch (JSONException ex) {
 }
 ```
 
-#### Check whether a document is dirty
+#### 문서의 더티 여부 확인
 {: #android-check-whetther-a-document-is-dirty }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1187,7 +1187,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Check the number of dirty documents
+#### 더티 문서 수 확인
 {: #android-check-the-number-of-dirty-documents }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1206,7 +1206,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Remove a Collection
+#### 콜렉션 제거
 {: #android-remove-a-collection }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1226,7 +1226,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Clear all data that is inside a Collection
+#### 콜렉션 내에 있는 모든 데이터 지우기
 {: #android-clear-all-data-that-is-inside-a-collection }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1245,7 +1245,7 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### 트랜잭션 시작, 일부 데이터 추가, 문서 제거, 트랜잭션 커미트 후 트랜잭션 롤백(실패한 경우)
 {: #android-transaction }
 ```java
 // Fill in the blank to get the Android application context.
@@ -1286,7 +1286,7 @@ catch (JSONException ex) {
 }
 ```
 
-#### Get file information
+#### 파일 정보 가져오기
 {: #android-get-file-information }
 ```java
 Context ctx = getContext();

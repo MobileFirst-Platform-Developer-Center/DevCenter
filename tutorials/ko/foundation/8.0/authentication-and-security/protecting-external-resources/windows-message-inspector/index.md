@@ -1,43 +1,43 @@
 ---
 layout: tutorial
-title: Windows .NET Message Inspector
-breadcrumb_title: Windows .NET Message Inspector
+title: Windows .NET 메시지 검사기
+breadcrumb_title: Windows .NET 메시지 검사기
 relevantTo: [android,ios,windows,javascript]
 weight: 4
-downloads:
-  - name: Download sample
+다운로드:
+  - 이름: 샘플 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-This tutorial will show how to protect a simple Windows .NET resource, `GetBalanceService`, using a scope (`accessRestricted`).
-In the sample we will protect a service which is self-hosted by a console application called DotNetTokenValidator.
+이 학습서는 범위(`accessRestricted`)를 사용하여 단순 Windows .NET 자원, `GetBalanceService`를 보호하는 방법을 보여줍니다. 샘플에서는 DotNetTokenValidator라는 콘솔 애플리케이션으로 자체 호스트되는 서비스를 보호합니다.
 
-First we will define a **Message Inspector** that will help us controlling the incoming request to the `GetBalanceService` resource.
-Using this Message Inspector we will examine the incoming request and validate that it provides all the necessary headers required by **{{ site.data.keys.product_adj }} Authorization Server**.
+먼저 `GetBalanceService` 자원에 대한 수신 요청을 제어하도록 도울 **메시지 검사기**를 정의합니다.
+이 메시지 검사기를 사용하여 수신 요청을 검사하고 **{{ site.data.keys.product_adj }} 권한 부여 서버**에서 요구하는 모든 필수 헤더를 제공하는지를 유효성 검증합니다. 
 
-**Prerequesites:**
+**전제조건:
+**
 
-* Make sure to read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product_adj }}security framework](../../).
+* [외부 자원을 인증하기 위해 {{ site.data.keys.mf_server }} 사용](../) 학습서를 읽으십시오. 
+* [{{ site.data.keys.product_adj }} 보안 프레임워크](../../)를 이해하십시오. 
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to }
-* [Create and configure WCF Web HTTP Service](#create-and-configure-wcf-web-http-service)
-* [Define a Message Inspector](#define-a-message-inspector)
-* [Message Inspector Implementation](#message-inspector-implementation)
-    * [Pre-process Validation](#pre-process-validation)
-    * [Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server](#obtain-access-token-from-mobilefirst-authorization-server)
-    * [Send request to Introspection Endpoint with client token](#send-request-to-introspection-endpoint-with-client-token)
-    * [Post-process Validation](#post-process-validation)
+* [WCF 웹 HTTP 서비스 작성 및 구성](#create-and-configure-wcf-web-http-service)
+* [메시지 검사기 정의](#define-a-message-inspector)
+* [메시지 검사기 구현](#message-inspector-implementation)
+    * [사전 프로세스 유효성 검증](#pre-process-validation)
+    * [{{ site.data.keys.product_adj }} 권한 부여 서버에서 액세스 토큰 얻기](#obtain-access-token-from-mobilefirst-authorization-server)
+    * [클라이언트 토큰과 함께 자체 점검 엔드포인트에 요청 전송](#send-request-to-introspection-endpoint-with-client-token)
+    * [사후 프로세스 유효성 검증](#post-process-validation)
 
-## Create and configure WCF Web HTTP Service
+## WCF 웹 HTTP 서비스 작성 및 구성
 {: #create-and-configure-wcf-web-http-service }
-First we will create a **WCF service** and call it `GetBalanceService` which we will protect later by a **message inspector**.
-In our example we are using a console application as a hosting program for the service.
+먼저 **WCF 서비스**를 작성하고 이를 `GetBalanceService`라고 이름 지정합니다. 이는 나중에 **메시지 검사기**로 보호할 서비스입니다.
+이 예제에서는 서비스에 대한 호스팅 프로그램으로 콘솔 애플리케이션을 사용하고 있습니다.
 
-Here is the code of `getBalance` (the protected resource):
+다음은 `getBalance`(보호된 자원)의 코드입니다. 
 
 ```csharp
 public class GetBalanceService : IGetBalanceService {
@@ -49,7 +49,7 @@ public class GetBalanceService : IGetBalanceService {
 }
 ```
 
-We should also define a `ServiceContract`:
+`ServiceContract`도 정의해야 합니다. 
 
 ```csharp
 [ServiceContract]
@@ -64,7 +64,7 @@ public interface IGetBalanceService
 }
 ```
 
-Now that we have our service ready we can configure how it will be used by the host application. This is done in the App.config file as follows:
+이제 서비스가 준비가 되었으며 호스트 애플리케이션에서 어떻게 사용할지를 구성할 수 있습니다.이는 다음과 같이 App.config 파일에서 수행됩니다. 
 
 ```xml
 <service behaviorConfiguration="Default" name="DotNetTokenValidator.GetBalanceService">
@@ -76,7 +76,7 @@ Now that we have our service ready we can configure how it will be used by the h
   </host>
 </service>
 ```
-Lastly we should run it from the hosting program `Main` method:
+마지막으로 호스팅 프로그램 `Main` 메소드에서 이를 실행해야 합니다.
 
 ```csharp
 static void Main(string[] args) {
@@ -99,18 +99,18 @@ static void Main(string[] args) {
 }
 ```
 
-> For More information about WCF REST services refer to [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
+> WCF REST 서비스에 대한 자세한 정보는 [기본 WCF 웹 HTTP 서비스 작성](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100)을 참조하십시오.
 
-## Define a Message Inspector
+## 메시지 검사기 정의
 {: #define-a-message-inspector }
-Before we dive into the validation process we must create and define a **message inspector** which we will use to protect the resource (the service endpoint).
-A message inspector is an extensibility object that can be used in the service to inspect and alter messages after they are received or before they are sent. Service message inspectors should implement the `IDispatchMessageInspector` interface:
+유효성 검증 프로세스를 시작하기 전에 자원(서비스 엔드포인트)을 보호하기 위해 사용할 **메시지 검사기**를 작성하고 정의해야 합니다.
+메시지 검사기는 메시지가 전송되기 전 또는 수신된 후 메시지를 검사하고 변경하기 위해 서비스에서 사용될 수 있는 확장성 오브젝트입니다. 서비스 메시지 검사기는 `IDispatchMessageInspector` 인터페이스를 구현해야 합니다. 
 
 ```csharp
 public class MyInspector : IDispatchMessageInspector
 ```
 
-Any service message inspector must implement the two `IDispatchMessageInspector` methods `AfterReceiveRequest` and `BeforeSendReply`:
+서비스 메시지 검사기는 두 개의 `IDispatchMessageInspector` 메소드인 `AfterReceiveRequest` 및 `BeforeSendReply`를 구현해야 합니다. 
 
 ```csharp
 public class MyInspector : IDispatchMessageInspector {
@@ -125,8 +125,7 @@ public class MyInspector : IDispatchMessageInspector {
 }
 ```
 
-After creating the message inspector it should be defined to protect a certain endpoint. This is done by using behaviors. A **behavior** is a class that changes the behavior of the service model runtime by changing the default configuration or adding extensions (such as message inspectors) to it.
-This is done using 2 classes: one that configures the message inspector to protect the application endpoint,  and the other to return this behavior class instance and type.
+메시지 검사기를 작성한 후에는 특정 엔드포인트를 보호하도록 정의되어야 합니다. 이는 behavior를 사용하여 수행됩니다.  **behavior**는 기본 구성을 변경하거나 확장기능(메시지 검사기 등)을 추가하여 서비스 런타임 모델의 동작을 변경하는 클래스입니다. 두 개의 클래스를 사용하여 수행되는 데 하나는 애플리케이션 엔드포인트를 보호하기 위해 메시지 검사기를 구성하는 클래스이고 다른 하나는 이 behavior 클래스 인스턴스와 유형을 리턴하기 위한 클래스입니다. 
 
 ```csharp
 public class MyCustomBehavior : IEndpointBehavior
@@ -153,7 +152,7 @@ public class MyCustomBehaviorExtension : BehaviorExtensionElement
 }
 ```
 
-In the `App.config` file we define a `behaviorExtension` and attach it to the behavior class we just created:
+`App.config` 파일에서 `behaviorExtension`를 정의하고 방금 작성한 behavior 클래스에 이를 첨부합니다. 
 
 ```xml
 <extensions>
@@ -163,7 +162,7 @@ In the `App.config` file we define a `behaviorExtension` and attach it to the be
 </extensions>
 ```
 
-Then we add this behaviorExtension to the webBehavior element that is configured in our service as endpoint behavior:
+그런 다음 이 behaviorExtension을 서비스에 구성된 webBehavior 요소에 엔드포인트 동작으로 추가합니다. 
 
 ```xml
 <behavior name="webBehavior">
@@ -172,8 +171,8 @@ Then we add this behaviorExtension to the webBehavior element that is configured
 </behavior>
 ```
 
-## Message Inspector Implementation
-First let's define some constants as class members in our message inspector: {{ site.data.keys.mf_server }} URL, our confidential client credentials and the `scope` that we will use to protect our service with. We can also define a static variable to keep the token received from {{ site.data.keys.product_adj }} Authorization server, so it will be available to all users:
+## 메시지 검사기 구현
+먼저 메시지 검사기에 클래스 멤버로 일부 상수를 정의합니다. 즉, {{ site.data.keys.mf_server }} URL, 기밀 클라이언트 신임 정보 및 `scope`를 정의하며 이는 서비스를 보호하기 위해 사용됩니다. 또한 {{ site.data.keys.product_adj }} 권한 서버에서 수신한 토큰을 유지하기 위해 정적 변수를 정의하여 모든 사용자가 이용할 수 있게 할 수 있습니다.
 
 ```csharp
 private const string azServerBaseURL = "http://YOUR-SERVER-URL:9080/mfp/api/az/v1/";
@@ -183,7 +182,7 @@ private const string filterUserName = "USERNAME"; // Confidential Client Usernam
 private const string filterPassword = "PASSWORD";  // Confidential Client Secret
 ```
 
-Next we will create our `validateRequest` method which is the starting-point of the validation process that we will implement in our message inspector. Then we will add a call to this method inside the `AfterReceiveRequest` method we mentioned before:
+그 다음 `validateRequest` 메소드를 작성하며 이 메소드는 메시지 검사기에서 구현할 유효성 검증 프로세스의 시작점이 됩니다. 그리고 나서 앞에서 언급한 `AfterReceiveRequest` 메소드 내부에 이 메소드에 대한 호출을 추가합니다. 
 
 ```csharp
 public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext) {
@@ -192,11 +191,11 @@ public object AfterReceiveRequest(ref Message request, IClientChannel channel, I
 }
 ```
 
-Inside `validateRequest` there are 3 main steps that we will implement:
+`validateRequest` 내부에는 구현할 3개의 단계가 있습니다. 
 
-1. **Pre-process validation** - check if the request has an **authorization header**, and if there is - is it starting with the **"Bearer"** prefix.
-2. **Get token** from {{ site.data.keys.product_adj }} Authorization Server - This token will be used to authenticate the client's token against {{ site.data.keys.product_adj }} Authorization Server.
-3. **Post-process validation** - check for **conflicts**, validate that the request sent the right **scope**, and check that the request is **active**.
+1. **사전 프로세스 유효성 검증** - 요청에 **권한 부여 헤더**가 있는지, 만약 있다면 **"Bearer"** 접두부로 시작하는지를 확인합니다. 
+2. {{ site.data.keys.product_adj }} 권한 부여 서버에서 **토큰 가져오기** - 이 토큰은 {{ site.data.keys.product_adj }} 권한 부여 서버에 대해 클라이언트의 토큰을 인증하는 데 사용됩니다. 
+3. **사후 프로세스 유효성 검증** - **충돌**을 확인하고 요청이 올바른 **범위**를 전송했는지 및 요청이 **활성**인지를 확인합니다. 
 
 ```csharp
 private void validateRequest(Message request)
@@ -226,16 +225,16 @@ private void validateRequest(Message request)
 }
 ```
 
-## Pre-process Validation
+## 사전 프로세스 유효성 검증
 {: #pre-process-validation }
-The pre-process validation is done as part of the getClientTokenFromHeader() method.
-This process is based upon 2 checks:
+사전 프로세스 유효성 검증은 getClientTokenFromHeader() 메소드의 일부로 수행됩니다.
+이 프로세스는 2개의 검사를 기반으로 합니다. 
 
-1. Check that the authorization header of the request is not empty.
-2. If it is not empty - check that the authorization header starts with the "Bearer " prefix.
+1. 요청의 권한 부여 헤더가 비어 있지 않은지 검사합니다. 
+2. 비어 있지 않으면 권한 부여 헤더가 "Bearer" 접두부로 시작하는지 확인합니다. 
 
-In both cases we should respond with an **Unauthorized response status** (401) and add the **WWW-Authenticate:Bearer** header.  
-After validating the authorization header this method returns the token received from the client application.
+두 경우 모두 **권한 없는 응답 상태**(401)로 응답해야 하고 **WWW-Authenticate:Bearer** 헤더를 추가해야 합니다.  
+권한 부여 헤더를 유효성 검증한 후 이 메소드는 클라이언트 애플리케이션에서 수신한 토큰을 리턴합니다. 
 
 ```csharp
 private string getClientTokenFromHeader(Message request)
@@ -267,7 +266,7 @@ private string getClientTokenFromHeader(Message request)
 }
 ```
 
-`returnErrorResponse` is a helper method that receives an httpStatusCode and a WebHeaderCollection, prepares the response and sends it back to the client application. After sending the response to the client application it completes the request.
+`returnErrorResponse`는 httpStatusCode 및 WebHeaderCollection을 수신하고 응답을 준비하며 클라이언트 애플리케이션에 이를 다시 전송하는 헬퍼 메소드입니다. 응답을 클라이언트 애플리케이션에 전송한 후 요청을 완료합니다. 
 
 ```csharp
 private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollection headers)
@@ -281,9 +280,9 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 }
 ```
 
-## Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server
-In order to authenticate the client token we should **obtain an access token as the message inspector** by making a request to the **token endpoint**.
-Later we will use this received token to pass the client token for introspection.
+## {{ site.data.keys.product_adj }} 권한 부여 서버에서 액세스 토큰 얻기
+클라이언트 토큰을 인증하기 위해서는 **토큰 엔드포인트**에 대한 요청을 작성하여 **메시지 검사기로서 액세스 토큰을 획득**해야 합니다.
+나중에 수신된 이 토큰을 사용하여 자체 점검을 위해 클라이언트 토큰을 전달합니다. 
 
 ```csharp
 private string getIntrospectionToken()
@@ -319,8 +318,8 @@ private string getIntrospectionToken()
 }
 ```
 
-The `sendRequest` method is a helper method that is responsible for sending requests to {{ site.data.keys.product_adj }} Authorization server.  
-It is being used by `getIntrospectionToken` to send a request to the token endpoint, and by `introspectClientRequest` method to send a request to the introspection endpoint. This method returns an `HttpWebResponse` which we use in `getIntrospectionToken` method to extract the access_token from and store it as the message inspector token. In `introspectClientRequest` method it is used just to return the MFP authorization server response.
+`sendRequest` 메소드는 요청을 {{ site.data.keys.product_adj }} 권한 서버로 전송하는 것을 책임지는 헬퍼 메소드입니다.  
+토큰 엔드포인트로 요청을 전송하기 위해 `getIntrospectionToken`에서, 그리고 자체 점검 엔드포인트에 요청을 전송하기 위해 `introspectClientRequest` 메소드에서 사용됩니다. 이 메소드는 `HttpWebResponse`를 리턴하며, 이는 액세스 토큰을 추출하고 메시지 검사기 토큰으로 저장하기 위해 `getIntrospectionToken`에서 사용됩니다. `introspectClientRequest` 메소드에서는 MFP 인증 서버 응답을 리턴하기 위해서만 사용됩니다. 
 
 ```csharp
 private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, string endPoint, string authHeader) {
@@ -346,10 +345,10 @@ private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, s
 }
 ```
 
-## Send request to Introspection Endpoint with client token
+## 클라이언트 토큰과 함께 자체 점검 엔드포인트에 요청 전송
 {: #send-request-to-introspection-endpoint-with-client-token }
-Now that we are authorized by {{ site.data.keys.product_adj }} Authorization Server we can **validate the client token** content. We send a request to the **Introspection endpoint**, adding the token we received in the previous step (`filterIntrospectionToken`) to the request header and the client token in the post data of the request.  
-Next we will examine the response from {{ site.data.keys.product_adj }} Authorization Server in `postProcess` method.
+이제 {{ site.data.keys.product_adj }} 권한 서버에 의해 권한이 부여되었으므로 **클라이언트 토큰 컨텐츠를 유효성 검증**할 수 있습니다.  이전 단계에서 수신한 토큰(`filterIntrospectionToken`)을 요청의 포스트 데이터에 있는 클라이언트 토큰 및 요청 헤더에 추가하여 요청을 **자체 점검 엔드포인트**로 전송할 수 있습니다.   
+그 다음 `postProcess` 메소드에서 {{ site.data.keys.product_adj }} 권한 서버로부터 응답을 검사합니다. 
 
 ```csharp
 private HttpWebResponse introspectClientRequest(string clientToken) {
@@ -362,10 +361,10 @@ private HttpWebResponse introspectClientRequest(string clientToken) {
 }
 ```
 
-## Post-process Validation
+## 사후 프로세스 유효성 검증
 {: #post-process-validation }
-Before proceeding to the `postProcess` method we want to make sure that the response status is not **401 (Unauthorized)**.  
-401 (Unauthorized) response status at this point indicates that the message inspector token (`filterIntrospectionToken`) has expired. If the response status is 401 (Unauthorized) then we call `getIntrospectionToken` to get a new token for the message inspector and call `introspectClientRequest` again with the new token.
+`postProcess` 메소드를 진행하기 전에 응답 상태가 **401(권한 없음)**이 아닌지 확인하려고 합니다.  
+이 위치에서 401(권한 없음) 응답 상태는 메시지 검사기 토큰(`filterIntrospectionToken`)이 만료되었음을 표시합니다.만약 응답 상태가 401(권한 없음)이면 `getIntrospectionToken`을 호출하여 메시지 검사기에 대해 새 토큰을 가져오고 새 토큰과 함께 `introspectClientRequest`를 다시 호출합니다. 
 
 ```csharp
 if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -375,8 +374,8 @@ if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
 }
 ```
 
-The main purpose of the postProcess method is to examine the response we received from {{ site.data.keys.product_adj }}  Authorization Server, but before extracting and checking the response, we must **make sure that the response status is 200 (OK)**. If the response status is **409 (Conflict)** we should forward this response to the client application, otherwise we should throw an exception.  
-If the response status is 200 (OK) then we initialize the `AzResponse` class, which is a class defined to reprisent the {{ site.data.keys.product_adj }} Authorization Server response, with the current response. Then we check that the **response is active** and that it includes the right **scope**:
+postProcess 메소드의 기본 목적은 {{ site.data.keys.product_adj }} 권한 부여 서버에서 수신한 응답을 검사하는 것이지만 응답을 추출하고 검사하기 전에 **응답 상태가 200(OK)인지 확인**해야 합니다. 응답 상태가 **409(충돌)**이면 이 응답을 클라이언트 애플리케이션으로 전달해야 합니다. 그렇지 않으면 예외를 발생시켜야 합니다.   
+응답 상태가 200(OK)이면 `AzResponse` 클래스를 인스턴스화하는데 이는 현재 응답으로 {{ site.data.keys.product_adj }} 권한 부여 서버 응답을 나타내기 위해 정의된 클래스입니다. **응답이 활성**인지 그리고 올바른 **범위**가 포함되어 있는지 확인합니다. 
 
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)
@@ -415,15 +414,15 @@ private void postProcess(HttpWebResponse introspectionResponse)
 }
 ```
 
-## Sample application
+## 샘플 애플리케이션
 {: #sample-application }
-[Download the .NET message inspector sample](https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80).
+[.NET 메시지 검사기 샘플을 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80)하십시오. 
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
-1. Use Visual Studio to open, build and run the sample as a service (run Visual Studio as an administrator).
-2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-4. Register the matching application.
-5. Map the `accessRestricted` scope to the security check.
-6. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. Visual Studio를 사용하여 서비스로 샘플을 열고, 빌드하고 실행하십시오(관리자로 Visual Studio를 실행).
+2. [기밀 클라이언트](../#confidential-client) 및 본인확인정보 값을 {{ site.data.keys.mf_console }}에서 업데이트하십시오.
+3. **[UserLogin](../../user-authentication/security-check/)** 또는 **[PinCodeAttempts](../../credentials-validation/security-check/)** 보안 검사 중 하나를 배치하십시오. 
+4. 일치하는 애플리케이션을 등록하십시오. 
+5. `accessRestricted` 범위를 보안 검사에 맵핑하십시오. 
+6. 서블릿 URL에 대한 `WLResourceRequest`를 작성하기 위해 클라이언트 애플리케이션을 업데이트하십시오. 

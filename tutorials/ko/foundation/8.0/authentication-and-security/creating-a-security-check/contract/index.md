@@ -1,65 +1,120 @@
 ---
 layout: tutorial
-title: Security Check Contract
-breadcrumb_title: security check contract
+title: 보안 검사 규약
+breadcrumb_title: 보안 검사 규약
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-Every security check must implement the `com.ibm.mfp.server.security.external.SecurityCheck` interface (the security-check interface). This interface constitutes the basic contract between the security check and the {{ site.data.keys.product_adj }} security framework. The security-check implementation must fulfill the following requirements:
+모든 보안 검사는 `com.ibm.mfp.server.security.external.SecurityCheck` 인터페이스(보안 검사 인터페이스)를 구현해야 합니다. 이 인터페이스가 보안 검사와 {{ site.data.keys.product_adj }}
+보안 프레임워크 사이의 기본 규약을 구성하게 됩니다. 보안 검사를 구현하려면
+다음과 같은 요구사항을 충족해야 합니다. 
 
-* **Functions**: the security check must provide the client-`authorization` and `introspection` functions.
-* **State management**: the security check must manage its state, including creation, disposal, and current-state management.
-* **Configuration**: the security check must create a security-check configuration object, which defines the supported security-check configuration properties, and validates the types and values of customizations of the basic configuration.
+* **기능**: 보안 검사는 클라이언트 `authorization` 및 `introspection` 기능을 제공해야 합니다. 
+* **상태 관리**: 보안 검사는 작성, 폐기, 현재 상태 관리를 포함하여 상태를 관리해야 합니다.
+* **구성**: 보안 검사는 지원되는 보안 검사 구성 특성을 정의하고 기본 구성의 사용자 정의 유형과 값을 유효성 검증하는 보안 검사 구성 오브젝트를 작성해야 합니다. 
 
-For a complete reference of the security-check interface, [see `SecurityCheck` in the API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheck.html?view=kc).
+보안 검사 인터페이스의 전체 내용은 [API 참조에서 `SecurityCheck`를 참조하십시오.](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheck.html?view=kc)
 
-## Security-check functions
+## 보안 검사 기능
 {: #securityc-check-functions }
-A security check provides two main functions to the security framework:
+보안 검사가 보안 프레임워크에 제공하는 두 가지 기본 기능은 다음과 같습니다.
 
-### Authorization
+### 권한 부여
 {: #authorization }
-The framework uses the `SecurityCheck.authorize` method to authorize client requests. When the client requests access to a specific OAuth scope, the framework maps the scope elements into security checks. For each security check in the scope, the framework calls the `authorize` method to request authorization for a scope that contains the scope elements that mapped to this security check. This scope is provided in the method's **scope** parameter. 
+프레임워크는 `SecurityCheck.authorize` 메소드를 사용하여 클라이언트 요청에
+권한을 부여합니다. 클라이언트가 특정 OAuth 범위에 대한 액세스 권한을 요청할 때 프레임워크는 범위 요소를 보안 검사에 맵핑합니다. 범위에 속한 각 보안 검사에 대해 프레임워크에서
+`authorize` 메소드를 호출하여 이 보안 검사에 맵핑된 범위 요소를 포함하는
+범위에 대한 권한 부여를 요청합니다. 이 범위는 메소드의 **scope** 매개변수에서 제공됩니다.  
 
-The security check adds its response to the [`AuthorizationResponse` object](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.html?view=kc) that is passed to it within the response parameter. The response contains the name of the security check and the response type, which can be success, failure, or a challenge ([see `AuthorizationResponse.ResponseType`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.ResponseType.html?view=kc)).
+보안 검사는 응답 매개변수 내에서 전달된 [`AuthorizationResponse` 오브젝트](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.html?view=kc)에 응답을 추가합니다. 응답은 보안 검사 이름 및 응답 유형(성공, 실패 또는 인증 확인)을 포함합니다([`AuthorizationResponse.ResponseType` 참조](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.ResponseType.html?view=kc)).
 
-When the response contains a challenge object or custom success or failure data, the framework passes the data to the client's security-check challenge handler within a JSON object. For success, the response also contains the scope for which the authorization was requested (as set in the **scope** parameter), and the expiration time for the granted authorization. To grant the client access to the requested scope, the `authorize` method of each of the scope's security checks must return success, and all expiration times must be later than the current time.
+응답에 인증 확인 오브젝트나 사용자 정의 성공 또는 실패 데이터가 있으면
+프레임워크에서 이 데이터를 JSON 오브젝트 내에 있는 클라이언트의
+보안 검사 인증 확인 핸들러로
+전달합니다. 성공의 경우, 응답에 권한 부여가 요청된 범위(**scope** 변수에
+설정됨), 그리고 부여된 권한의 만기 시간도 포함되어
+있습니다. 요청된 범위에 대한 액세스 권한을 클라이언트에 부여하려면
+개별 범위 보안 검사의 `authorize` 메소드가 성공을 리턴하고,
+모든 만기 시간이 현재 시간 이후여야 합니다. 
 
-### Introspection
+### 자체 점검
 {: #introspection }
-The framework uses the `SecurityCheck.introspect` method to retrieve introspection data for a resource server. This method is called for each security check that is contained in the scope for which introspection was requested. As with the `authorize` method, the `introspect` method receives a **scope** parameter that contains the scope elements that mapped to this security check. Before returning the introspection data, the method verifies that the current state of the security check still supports the authorization that was previously granted for this scope. If the authorization is still valid, the `introspect` method adds its response to the [IntrospectionResponse object](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/IntrospectionResponse.html?view=kc) that is passed to it within the **response** parameter.
+프레임워크에서 `SecurityCheck.introspect` 메소드를 사용하여
+자원 서버의 자체 점검 데이터를 검색할 수 있습니다. 이 메소드는 자체 점검이 요청된 범위에
+포함되어 있는 각 보안 검사마다
+호출됩니다. `authorize` 메소드와 마찬가지로,
+`introspect` 메소드는 이 보안 검사에 맵핑된 범위 요소를 포함하는
+**scope** 매개변수를 검색합니다.
+자체 점검 데이터를 리턴하기 전에 이 메소드는 보안 검사의 현재 상태가
+이전에 이 범위에 부여된 권한을 여전히 지원하는지
+확인합니다.  권한이 여전히 유효하면, `introspect` 메소드는 **response**
+매개변수 내에 전달된 [IntrospectionResponse 오브젝트](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/IntrospectionResponse.html?view=kc)에 해당 응답을 추가합니다. 
 
-The response contains the name of the security check, the scope for which the authorization was requested (as set in the **scope** parameter), the expiration time for the granted authorization, and the requested custom introspection data. If authorization can no longer be granted (for example, if the expiration time for a previous successful state elapses), the method returns without adding a response.
+응답에는 보안 검사의 이름, 권한 부여가 요청된
+범위(**scope** 매개변수에 설정됨), 부여된 권한의 만기 시간, 그리고 요청된
+사용자 정의 자체 점검 데이터가 포함되어 있습니다. 권한을 더 이상 부여할 수 없는 경우(예:
+이전 성공 상태의 만기 시간이 경과함) 메소드가 응답 추가 없이
+리턴됩니다. 
 
-**Note:**
+**참고:**
 
-* The security framework collects the processing results from the security checks, and passes relevant data to the client. The framework processing is entirely ignorant of the states of the security checks.
-* Calls to the `authorize` or `introspect` methods can result in a change in the current state of the security check, even if the expiration time of the current state did not elapse. 
+* 보안 프레임워크는 보안 검사에서 처리 결과를 수집하고, 관련 데이터를
+클라이언트로 전달합니다. 프레임워크 처리에서 보안 검사의 상태는
+전적으로 무시됩니다. 
+* `authorize` 또는 `introspect` 메소드를 호출하면
+현재 상태의 만기 시간이 경과하지 않았더라도 보안 검사의 현재 상태가
+변경될 수 있습니다. 
 
-> Learn more about the `authorize` and `introspect` methods [in the ExternalizableSecurityCheck](../../externalizable-security-check) tutorial.
-
-### Security-check state management
+> [ExternalizableSecurityCheck](../../externalizable-security-check) 학습서에서 `authorize` 및 `introspect` 메소드에 대해 자세히 알아보십시오.
+### 보안 검사 상태 관리
 {: #security-check-state-management }
-Security checks are stateful, meaning that the security check is responsible for tracking and retaining its interaction state. On each authorization or introspection request, the security framework retrieves the states of relevant security checks from external storage (usually, distributed cache). At the end of request processing, the framework stores the security-check states back in external storage.
+보안 검사는 Stateful이므로, 해당 상호작용 상태를 추적하고 유지할 수 있습니다.
+개별 권한 부여 또는 자체 점검 요청 시, 보안 프레임워크는 외부
+스토리지(일반적으로, 분배된 캐시)에서 관련 보안 검사의 상태를
+검색합니다. 요청 처리 종료 시, 프레임워크는 보안 검사 상태를 외부
+스토리지에 다시 저장합니다. 
 
-The security check contract requires that a security check:
+보안 검사 규약은 보안 검사가 다음과 같을 것을 요구합니다. 
 
-* Implement the `java.io.Externalizable` interface. The security check uses this interface to manage the serialization and deserialization of its state.
-* Define an expiration time and an inactivity timeout for its current state. The state of the security check represents a stage in the authorization process, and cannot be indefinite. The specific periods for the state's validity and maximum inactivity time are set in the security-check implementation, according to the implemented logic. The security check informs the framework of its selected expiration time and inactivity timeout via the implementation of the `getExpiresAt` and `getInactivityTimeoutSec` methods of the SecurityCheck interface.
+* `java.io.Externalizable` 인터페이스를 구현합니다.
+보안 검사는 이 인터페이스를 사용하여 해당 상태의 직렬화 및 직렬화 해제를
+관리합니다. 
+* 해당 현재 상태에 대해 비활성 제한시간 및 만기 시간을 정의합니다.
+보안 검사의 상태는 권한 부여 프로세스의 스테이지를 나타내며 무제한일 수
+없습니다. 상태의 유효성 및 최대 비활성 시간에 대한 특정 기간은 구현된 로직에
+따라 보안 검사 구현에서 설정됩니다. 보안 검사는 `getExpiresAt`의 구현과 SecurityCheck 인터페이스의 `getInactivityTimeoutSec`
+메소드를 통해 해당 선택한 만기 시간 및 비활성 제한시간의 프레임워크에게 알립니다. 
 
-### Security-check configuration
+### 보안 검사 구성
 {: #security-check-configuration }
-A security check can expose configuration properties, whose values can be customized both at the adapter and at the application level. The security-check definition of a specific class determines which of the supported configuration properties of this class to expose, and can customize the default values set in the class definition. The property values can be further customized, dynamically, both for the adapter that defines the security checks, and for each application that uses the check.
+보안 검사는 어댑터 레벨과 애플리케이션 레벨에서 모두 값을 사용자 정의할 수 있는
+구성 특성을 표시할 수 있습니다. 특정 클래스의 보안 검사 정의에 따라
+표시할 수 있는 이 클래스의 구성 특성이 결정되고, 클래스 정의에서 기본값을 사용자
+정의할 수 있습니다. 특성 값은 보안 검사를 정의하는
+어댑터와 검사를 사용하는 각 애플리케이션에 대해 모두 동적으로
+추가 사용자 정의할 수 있습니다. 
 
-A security-check class exposes its supported properties by implementing a `createConfiguration` method, which creates an instance of a security-check configuration class that implements the `com.ibm.mfp.server.security.external.SecurityCheckConfiguration` interface (the security-check configuration interface). This interface complements the `SecurityCheck` interface, and is also part of the security-check contract. The security check can create a configuration object that does not expose any properties, but the `createConfiguration` method must return a valid configuration object and cannot return null. For a complete reference of the security-check configuration interface, see [`SecurityCheckConfiguration`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheckConfiguration.html?view=kc). 
+보안 검사 클래스는 `com.ibm.mfp.server.security.external.SecurityCheckConfiguration`
+인터페이스(보안 검사 구성 인터페이스)를 구현하는 보안 검사 구성 클래스의
+인스턴스를 작성하는 `createConfiguration` 메소드를 구현하여
+지원되는 특성을 표시합니다. 이 인터페이스는 `SecurityCheck` 인터페이스를
+보완하는 동시에 보안 검사 계약의 일부가 됩니다. 보안 검사에서 아무 특성도 표시하지 않는 구성 오브젝트를 작성할 수 있지만,
+`createConfiguration` 메소드는 유효한 구성 오브젝트를 리턴해야 하고 null을 리턴할 수 없습니다. 보안 검사 구성 인터페이스의 전체 내용은 [`SecurityCheckConfiguration`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheckConfiguration.html?view=kc)을 참조하십시오.  
 
-The security framework calls the security-check's `createConfiguration` method during deployment, which occurs for any adapter or application configuration change. The method's properties parameter contains the properties that are defined in the adapter's security-check definition, and their current customized values (or the default value if there was no customization). The implementation of the security-check configuration should validate the values of the received properties, and provide methods for returning the validation results.
+어댑터 또는 애플리케이션 구성을 변경하는 경우,
+보안 프레임워크는 배치 동안 보안 검사의 `createConfiguration`
+메소드를 호출합니다. 이 메소드의 properties
+매개변수에는 어댑터의 보안 검사 정의에 정의된 특성과 현재 사용자 정의된
+값(또는 사용자 정의가 없는 경우에는 기본값)이 포함되어 있습니다.
+보안 검사 구성을 구현할 때 수신된 특성 값의 유효성을
+검증하고, 유효성 검증 결과를 리턴하는 메소드를
+제공해야 합니다. 
 
-The security-check configuration must implement the `getErrors`, `getWarnings`, and `getInfo` methods. The abstract security-check configuration base class, [`SecurityCheckConfigurationBase`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/impl/SecurityCheckConfigurationBase.html?view=kc) also defines and implements custom `getStringProperty`, `getIntProperty`, and `addMessage` methods. See the code documentation of this class for details.
+보안 검사 구성은 `getErrors`, `getWarnings`, 및 `getInfo` 메소드를 구현해야 합니다. 또한 abstract 보안 검사 구성 기본 클래스 [`SecurityCheckConfigurationBase`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/impl/SecurityCheckConfigurationBase.html?view=kc)는 `getStringProperty`, `getIntProperty`, 및 `addMessage` 메소드를 정의하고 구현합니다. 자세한 정보는 이 클래스의 코드 문서를 참조하십시오. 
 
-**Note:** The names and values of the configuration properties in the security-check definition and in any adapter or application customization, must match the supported properties and allowed values, as defined in the configuration class.
+**참고:** 보안 검사 정의 및 어댑터 또는 애플리케이션 사용자 정의에 있는 구성 특성의 이름 및 값은 구성 클래스에서 정의된 대로 지원 특성 및 허용 값과 일치해야 합니다. 
 
-> Learn more about [creating custom properties](../#security-check-configuration) in Security Checks.
+> 보안 검사의 [사용자 정의 특성 작성](../#security-check-configuration)에 대해 자세히 알아보십시오. 

@@ -1,80 +1,79 @@
 ---
 layout: tutorial
-title: Serving Direct Update requests from a CDN
-breadcrumb_title: CDN Support
+title: CDN에서 직접 업데이트 요청 처리
+breadcrumb_title: CDN 지원
 relevantTo: [cordova]
 weight: 1
 ---
-## Overview
+## 개요
 {: #overview }
-You can configure Direct Update requests to be served from a CDN (content delivery network) instead of from the {{ site.data.keys.mf_server }}.
+{{ site.data.keys.mf_server }} 대신 CDN(Content Delivery Network)에서 처리되도록 직접 업데이트 요청을 구성할 수 있습니다. 
 
-#### Advantages of using a CDN
+#### CDN 사용 시 장점
 {: #advantages-of-using-a-cdn }
-Using a CDN instead of the {{ site.data.keys.mf_server }} to serve Direct Update requests has the following advantages:
+{{ site.data.keys.mf_server }} 대신 CDN을 사용하여 직접 업데이트 요청을 처리하는 경우 다음 장점이 있습니다. 
 
-* Removes network overheads from the {{ site.data.keys.mf_server }}.
-* Increases transfer rates higher than the 250 MB/second limit when serving requests from a {{ site.data.keys.mf_server }}.
-* Ensures a more uniform Direct Update experience for all users regardless of their geographical location.
+* {{ site.data.keys.mf_server }}에서 네트워크 오버헤드를 제거합니다. 
+* {{ site.data.keys.mf_server }}에서 요청 처리 시 한계인 초당 250MB보다 전송률이 늘어납니다. 
+* 지리적 위치에 관계없이 모든 사용자에게 보다 일관된 직업 업데이트 경험을 제공합니다. 
 
-#### General requirements
+#### 일반 요구사항
 {: #general-requirements }
-To serve Direct Update requests from a CDN, ensure that your configuration conforms to the following conditions:
+CDN에서 직접 업데이트 요청을 처리하려면 구성이 다음 조건을 준수하는지 확인하십시오. 
 
-* The CDN must be a reverse proxy in front of the {{ site.data.keys.mf_server }} (or in front of another reverse proxy if needed).
-* When building the application from your development environment, set up your target server to the CDN host and port instead of the host and port of the {{ site.data.keys.mf_server }}. For example, when running the {{ site.data.keys.mf_cli }} command mfpdev server add, provide the CDN host and port.
-* In the CDN administration panel, you need to mark the following Direct Update URLs for caching to ensure that the CDN passes all requests to the {{ site.data.keys.mf_server }} except for the Direct Update requests. For Direct Update requests, the CDN determines whether it obtained the content. If it has, it returns it without going to the {{ site.data.keys.mf_server }}; if not, it goes to the {{ site.data.keys.mf_server }}, gets the Direct Update archive (.zip file), and stores it for the next requests for that specific URL. For applications that are built with v8.0 of {{ site.data.keys.product_full }}, the Direct Update URL is: `PROTOCOL://DOMAIN:PORT/CONTEXT_PATH/api/directupdate/VERSION/CHECKSUM/TYPE`.
-The `PROTOCOL://DOMAIN:PORT/CONTEXT_PATH` prefix is constant for all runtime requests. For example: http://my.cdn.com:9080/mfp/api/directupdate/0.0.1/742914155/full?appId=com.ibm.DirectUpdateTestApp&clientPlatform=android
+* CDN이 {{ site.data.keys.mf_server }} 앞(또는 필요한 경우 다른 역방향 프록시 앞)의 역방향 프록시여야 합니다. 
+* 개발 환경에서 애플리케이션을 빌드하는 경우 {{ site.data.keys.mf_server }}의 호스트 및 포트 대신 CDN 호스트 및 포트로 대상 서버를 설정하십시오. 예를 들어 {{ site.data.keys.mf_cli }} 명령 mfpdev server add를 실행하는 경우 CDN 호스트 및 포트를 제공하십시오. 
+* CDN 관리 패널에서 다음 직접 업데이트 URL을 캐시하도록 표시하여 CDN이 직접 업데이트 요청을 제외한 모든 요청을 {{ site.data.keys.mf_server }}에 전달하도록 해야 합니다. 직접 업데이트 요청의 경우 CDN은 컨텐츠를 확보했는지 여부를 판별합니다. 컨텐츠를 확보한 경우 {{ site.data.keys.mf_server }}로 이동하지 않고 컨텐츠를 리턴하며, 컨텐츠를 확보하지 않은 경우에는 {{ site.data.keys.mf_server }}로 이동하고 직접 업데이트 아카이브(.zip 파일)를 가져와서 해당 특정 URL에 대한 다음 요청에 사용하도록 저장합니다. {{ site.data.keys.product_full }} v8.0을 사용하여 빌드된 애플리케이션의 경우 직접 업데이트 URL은 `PROTOCOL://DOMAIN:PORT/CONTEXT_PATH/api/directupdate/VERSION/CHECKSUM/TYPE`입니다.
+`PROTOCOL://DOMAIN:PORT/CONTEXT_PATH` 접두부는 모든 런타임 요청에 대해 같습니다. 예: http://my.cdn.com:9080/mfp/api/directupdate/0.0.1/742914155/full?appId=com.ibm.DirectUpdateTestApp&clientPlatform=android
 
-In the example, there are additional request parameters that are also part of the request.
+예제에는 요청의 일부이기도 한 추가 요청 매개변수가 있습니다. 
 
-* The CDN must allow caching of the request parameters. Two different Direct Update archives might differ only by the request parameters.
-* The CDN must support TTL on the Direct Update response. The support is needed to support multiple direct updates for the same version.
-* The CDN must not change or remove the HTTP headers that are used in the server-client protocol.
+* CDN이 요청 매개변수의 캐싱을 허용해야 합니다. 두 개의 서로 다른 직접 업데이트 아카이브는 요청 매개변수만 다를 수 있습니다. 
+* CDN은 직접 업데이트 응답에서 TTL을 지원해야 합니다. 이는 동일한 버전에 대해 다중 직접 업데이트를 지원하는 데 필요합니다. 
+* CDN은 서버-클라이언트 프로토콜에서 사용되는 HTTP 헤더를 변경하거나 제거하지 않아야 합니다. 
 
-## Example configuration
+## 구성 예제
 {: #example-configuration }
-This example is based on using an Akamai CDN configuration that caches the Direct Update archive. The following tasks are completed by the network administrator, the {{ site.data.keys.product_adj }} administrator, and the Akamai administrator:
+이 예제는 직접 업데이트 아카이브를 캐시하는 Akamai CDN 구성 사용을 기반으로 합니다. 다음 태스크는 네트워크 관리자, {{ site.data.keys.product_adj }} 관리자 및 Akamai 관리자에 의해 완료됩니다. 
 
-#### Network administrator
+#### 네트워크 관리자 
 {: #network-administrator }
-Create another domain in the DNS for your {{ site.data.keys.mf_server }}. For example, if your server domain is yourcompany.com you need to create an additional domain such as `cdn.yourcompany.com`.
-In the DNS for the new `cdn.yourcompany.com` domain, set a `CNAME` to the domain name that is provided by Akamai. For example, `yourcompany.com.akamai.net`.
+{{ site.data.keys.mf_server }}에 대한 DNS에 다른 도메인을 작성하십시오. 예를 들어 서버 도메인이 yourcompany.com인 경우 `cdn.yourcompany.com`과 같은 추가 도메인을 작성해야 합니다. 새 `cdn.yourcompany.com` 도메인의 DNS에서 `CNAME`을 Akamai가 제공하는 도메인 이름으로 설정하십시오. 예를 들어 `yourcompany.com.akamai.net`입니다. 
 
-#### {{ site.data.keys.product_adj }} administrator
+#### {{ site.data.keys.product_adj }} 관리자
 {: #mobilefirst-administrator }
-Set the new cdn.yourcompany.com domain as the {{ site.data.keys.mf_server }} URL for the {{ site.data.keys.product_adj }} applications. For example, for the Ant builder task, the property is: `<property name="wl.server" value="http://cdn.yourcompany.com/${contextPath}/"/>`.
+새 cdn.yourcompany.com 도메인을 {{ site.data.keys.product_adj }} 애플리케이션의 {{ site.data.keys.mf_server }} URL로 설정하십시오. 예를 들어 Ant 빌더 태스크의 경우 특성은 `<property name="wl.server" value="http://cdn.yourcompany.com/${contextPath}/"/>`입니다. 
 
-#### Akamai administrator
+#### Akamai 관리자
 {: #akamai-administrator }
-1. Open the Akamai property manager and set the property **host name** to the value of the new domain.
+1. Akamai 특성 관리자를 열고 **host name** 특성을 새 도메인의 값으로 설정하십시오. 
 
-    ![Set the property host name to the value of the new domain](direct_update_cdn_3.jpg)
+    ![특성 호스트 이름을 새 도메인의 값으로 설정](direct_update_cdn_3.jpg)
     
-2. On the Default Rule tab, configure the original {{ site.data.keys.mf_server }} host and port, and set the **Custom Forward Host Header** value to the newly created domain.
+2. 기본 규칙 탭에서 원래 {{ site.data.keys.mf_server }} 호스트 및 포트를 구성하고 **사용자 정의 전달 호스트 헤더** 값을 새로 작성된 도메인으로 설정하십시오. 
 
-    ![Set the Custom Forward Host Header value to the newly created domain](direct_update_cdn_4.jpg)
+    ![사용자 정의 전달 호스트 헤더 값을 새로 작성된 도메인으로 설정](direct_update_cdn_4.jpg)
     
-3. From the **Caching Option** list, select **No Store**.
+3. **캐싱 옵션** 목록에서 **저장소 없음**을 선택하십시오. 
 
-    ![From the Caching Option list, select No Store](direct_update_cdn_5.jpg)
+    ![캐싱 옵션 목록에서 저장소 없음 선택](direct_update_cdn_5.jpg)
 
-4. From the **Static Content configuration** tab, configure the matching criteria according to the Direct Update URL of the application. For example, create a condition that states `If Path matches one of direct_update_URL`.
+4. **정적 컨텐츠 구성** 탭에서 애플리케이션의 직접 업데이트 URL에 따라 일치하는 기준을 구성하십시오. 예를 들어 `If Path matches one of direct_update_URL`이 명시된 조건을 작성하십시오. 
 
-    ![Configure the matching criteria according to the Direct Update URL of the application](direct_update_cdn_6.jpg)
+    ![애플리케이션의 직접 업데이트 URL에 따라 일치하는 기준 구성](direct_update_cdn_6.jpg)
     
-5. Set values similar to the following values to configure the caching behavior to make cache the Direct Update URL and to set TTL.
+5. 직접 업데이트 URL을 캐시하고 TTL을 설정하려면 다음 값과 유사한 값을 설정하여 캐싱 동작을 구성하십시오. 
 
-    | Field | Value |
+    | 필드 | 값 |
     |-------|-------|
-    | Caching Option | Cache |
-    | Force Revaluation of Stale Objects | Serve stale if unable to validate |
-    | Max-Age | 3 minutes |
+    | 캐싱 옵션 | 캐시 |
+    | 시간이 경과된(stale) 오브젝트의 재평가 강제 실행 | 유효성 검증할 수 없는 경우 시간 경과됨(stale)으로 처리 |
+    | 최대 시간 | 3분 |
 
-    ![Set values to configure the caching behavior](direct_update_cdn_7.jpg)
+    ![캐싱 동작을 구성하는 값 설정](direct_update_cdn_7.jpg)
 
-6. Configure the cache key behavior to use all request parameters in the cache key (you must do so to cache different Direct Update archives for different applications or versions). For example, from the **Behavior** list, select `Include all parameters (preserve order from request)`.
+6. 캐시 키의 모든 요청 매개변수를 사용하도록 캐시 키 동작을 구성하십시오(여러 애플리케이션 또는 버전에 대한 여러 직접 업데이트 아카이브를 캐시하려면 이를 수행해야 합니다). 예를 들어 **동작** 목록에서 `Include all parameters (preserve order from request)`를 선택하십시오. 
 
-    ![Configure the cache key behavior to use all request parameters in the cache key](direct_update_cdn_8.jpg)
+    ![캐시 키의 모든 요청 매개변수를 사용하도록 캐시 키 동작 구성](direct_update_cdn_8.jpg)
 
 

@@ -1,66 +1,66 @@
 ---
 layout: tutorial
-title: Creating Java and JavaScript Adapters
-breadcrumb_title: Creating Adapters
+title: Java 및 JavaScript 어댑터 작성
+breadcrumb_title: 어댑터 작성
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-An adapter can be created using either Maven commands or by using the {{ site.data.keys.mf_cli }} (that is dependent on Maven being installed and configured). The Adapter code can then be edited and built using your IDE of choice, such as Eclipse and IntelliJ. This tutorial explains how to create, build and deploy **Java or JavaScript adapters** using Maven and the {{ site.data.keys.mf_cli }}. To learn how to use the Eclipse or IntelliJ IDEs to create and build adapters, review the [Developing Adapters in Eclipse](../developing-adapters) tutorial.
+어댑터는 Maven 명령 또는 {{ site.data.keys.mf_cli }}(설치 및 구성되는 Maven에 종속된)를 사용하여 작성될 수 있습니다.어댑터 코드는 Eclipse 및 IntelliJ와 같이 사용자가 선택한 IDE를 사용하여 편집 및 빌드할 수 있습니다. 이 학습서에서는 Maven 및 {{ site.data.keys.mf_cli }}를 사용하여 **Java 또는 JavaScript 어댑터**를 작성, 빌드 및 배치하는 방법을 설명합니다. 어댑터를 작성하고 빌드하기 위해 Eclipse 또는 IntelliJ IDE를 사용하는 방법을 알아보려면 [Eclipse에서 어댑터 개발](../developing-adapters) 학습서를 검토하십시오. 
 
-**Prerequisite:** Make sure that you read the [Adapters Overview](../) first.
+**전제조건:** 먼저 [어댑터 개요](../)를 읽어야 합니다.
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
-* [Install Maven](#install-maven)
-* [Creating Adapters Using {{ site.data.keys.mf_cli }}](#creating-adapters-using-mobilefirst-cli)
-* [Install {{ site.data.keys.mf_cli }}](#install-mobilefirst-cli)
-* [Creating an Adapter](#creating-an-adapter)
-* [Creating Adapters Using Maven Archetype](#creating-adapters-using-maven-archetype-adapter-maven-archetype)
-* [File Structure](#file-structure)
-* [Build and Deploy Adapters](#build-and-deploy-adapters)
-* [Dependencies](#dependencies)
-* [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
-* [Downloading or Deploying Adapters Using {{ site.data.keys.mf_console }}](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
-* [Updating the Adapter Maven Project](#updating-the-adapter-maven-project)
-* [Working offline](#working-offline)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [Maven 설치](#install-maven)
+* [{{ site.data.keys.mf_cli }}를 사용하여 어댑터 작성](#creating-adapters-using-mobilefirst-cli)
+* [{{ site.data.keys.mf_cli }} 설치](#install-mobilefirst-cli)
+* [어댑터 작성](#creating-an-adapter)
+* [Maven 아키타입을 사용하여 어댑터 작성](#creating-adapters-using-maven-archetype-adapter-maven-archetype)
+* [파일 구조](#file-structure)
+* [어댑터 빌드 및 배치](#build-and-deploy-adapters)
+* [종속성](#dependencies)
+* [단일 Maven 프로젝트에서 어댑터 그룹화](#grouping-adapters-in-a-single-maven-project)
+* [{{ site.data.keys.mf_console }}을 사용하여 어댑터 다운로드 또는 배치](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
+* [어댑터 Maven 프로젝트 업데이트](#updating-the-adapter-maven-project)
+* [오프라인으로 작업](#working-offline)
+* [다음 학습서](#tutorials-to-follow-next)
 
-## Install Maven
+## Maven 설치
 {: #install-maven }
-In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
+어댑터를 작성하려면 먼저 Maven을 다운로드하고 설치해야 합니다. [Apache Maven 웹 사이트](https://maven.apache.org/)로 이동하여 Maven을 다운로드하고 설치하는 방법에 대한 지시사항을 따르십시오.
 
-## Creating Adapters Using {{ site.data.keys.mf_cli }}
+## {{ site.data.keys.mf_cli }}를 사용하여 어댑터 작성
 {: #creating-adapters-using-mobilefirst-cli }
 
-### Install {{ site.data.keys.mf_cli }}
+### {{ site.data.keys.mf_cli }} 설치
 {: #install-mobilefirst-cli }
-Follow the installation instructions in the [Downloads]({{site.baseurl}}/downloads/) page to Install {{ site.data.keys.mf_cli }}.  
-**Prerequisite:** To create adapters using the Developer CLI, Maven must be installed.
+{{ site.data.keys.mf_cli }}를 설치하려면 [다운로드]({{site.baseurl}}/downloads/) 페이지에서 설치 지시사항을 따르십시오.  
+**전제조건:** Developer CLI를 사용하여 어댑터를 작성하려면 Maven이 설치되어 있어야 합니다.
 
-### Creating an Adapter
+### 어댑터 작성
 {: #creating-an-adapter }
-To create a Maven adapter project, use the `mfpdev adapter create` command.
-You can choose to run the command interactively or directly.
+Maven 어댑터 프로젝트를 작성하려면 `mfpdev adapter create` 명령을 사용하십시오.
+명령을 직접 또는 대화식으로 실행하도록 선택할 수 있습니다. 
 
-#### Interactive Mode
+#### 대화식 모드
 {: #interactive-mode }
-1. Open a **Command-line** window and run:
+1. **명령행** 창을 열고 다음을 실행하십시오. 
 
    ```bash
    mfpdev adapter create
    ```
 
-2. Enter an adapter name. For example:
+2. 어댑터 이름을 입력하십시오. 예: 
 
    ```bash
    ? Enter Adapter Name: SampleAdapter
    ```
 
-3. Select an adapter type using the arrows and the enter keys:
+3. 화살표와 Enter 키를 사용하여 어댑터 유형을 선택하십시오. 
 
    ```bash
    ? Select Adapter Type:
@@ -68,82 +68,83 @@ You can choose to run the command interactively or directly.
       SQL
    ❯ Java
    ```
-  * Select `HTTP` to create a JavaScript HTTP adapter
-  * Select `SQL` to create a JavaScript SQL adapter  
-  * Select `Java` to create a Java adapter
+  * `HTTP`를 선택하여 JavaScript HTTP 어댑터를 작성하십시오. 
+  * `SQL`를 선택하여 JavaScript SQL 어댑터를 작성하십시오.   
+  * `Java`를 선택하여 Java 어댑터를 작성하십시오. 
 
-4. Enter an adapter package (this option is valid for Java adapters only). For example:
+4. 어댑터 패키지를 입력하십시오(이 옵션은 Java 어댑터에만 유효합니다.). 예: 
 
    ```bash
    ? Enter Package: com.mypackage
    ```
 
-5. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
+5. 빌드할 Maven 프로젝트의 [그룹 ID](https://maven.apache.org/guides/mini/guide-naming-conventions.html)를 입력하십시오.예: 
 
    ```bash
    ? Enter Group ID: com.mycompany
    ```
 
-#### Direct Mode
+#### 직접 모드
 {: #direct-mode }
-Replace the placeholders with the actual values and run the command:
+실제 값으로 플레이스홀더를 대체하고 명령을 실행하십시오. 
 
 ```bash
 mfpdev adapter create <adapter_name> -t <adapter_type> -p <adapter_package_name> -g <maven_project_groupid>
 ```
 
-## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
+## Maven 아키타입 "adapter-maven-archetype"을 사용하여 어댑터 작성
 {: #creating-adapters-using-maven-archetype-adapter-maven-archetype }
 
-The "adapter-maven-archetype" is a {{ site.data.keys.product }}-provided archetype, that based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html), and is used by Maven in order to create the adapter Maven project.
+"adapter-maven-archetype"은 [Maven 아키타입 툴킷](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)을 기반으로 하는 {{ site.data.keys.product }} 제공 아키타입이며 어댑터 Maven 프로젝트를 작성하기 위해 Maven에서 사용합니다.
 
-To create a Maven adapter project, use the `archetype:generate` Maven command. Once the command is executed, Maven will download (or use the local repositories mentioned above) required files in order to generate the adapter Maven project.
+Maven 어댑터 프로젝트를 작성하려면 `archetype:generate` Maven 명령을 사용하십시오.
+명령이 실행되면, Maven은 어댑터 Maven 프로젝트를 생성하기 위해 필수 파일을 다운로드하거나 위에 언급된 로컬 저장소를 사용합니다. 
 
-You can choose to run the command interactively or directly.
+명령을 직접 또는 대화식으로 실행하도록 선택할 수 있습니다. 
 
-#### Interactive Mode
+#### 대화식 모드
 {: #interactive-mode-archetype }
 
-1. From a **Command-line** window, navigate to a location of your choosing.  
-   This is also where the Maven project will be generated.
+1. **Command-line** 창에서 사용자가 선택한 위치로 이동하십시오.   
+이는 또한 Maven 프로젝트가 생성될 위치입니다.
 
-2. Replace the **DarchetypeArtifactId** placeholder with the actual value and run:
+2. **DarchetypeArtifactId** 플레이스홀더를 실제 값으로 대체하고 다음을 실행하십시오.
 
    ```bash
    mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=replace-with-the-adapter-type-artifact-ID
    ```
    
-  * The `Archetype Group Id` and Archetype Version are required parameters to identify the archetype.
-  * The `Archetype Artifact Id` is a required parameter to identify the adapter type:
-     * Use `adapter-maven-archetype-java` to create a Java adapter
-     * Use `adapter-maven-archetype-http` to create a JavaScript HTTP adapter
-     * Use `adapter-maven-archetype-sql` to create a JavaScript SQL adapter  
+  * `Archetype Group Id` 및 Archetype Version은 아키타입을 식별하기 위한 필수 매개변수입니다. 
+  * `Archetype Artifact Id`는 어댑터 유형을 식별하기 위한 필수 매개변수입니다. 
+     * Java 어댑터를 작성하려면 `adapter-maven-archetype-java`를 사용하십시오. 
+     * JavaScript HTTP 어댑터를 작성하려면 `adapter-maven-archetype-http`를 사용하십시오. 
+     * JavaScript SQL 어댑터를 작성하려면 `adapter-maven-archetype-sql`을 사용하십시오.   
 
-3. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
+3. 빌드할 Maven 프로젝트의 [그룹 ID](https://maven.apache.org/guides/mini/guide-naming-conventions.html)를 입력하십시오. 예: 
 
    ```bash
    Define value for property 'groupId': : com.mycompany
    ```
 
-4. Enter an Artifact Id of the Maven project **which will later be used also as the adapter name**. For example:
+4. Maven 프로젝트의 아티팩트를 입력하십시오. **이 아티팩트는 나중에 어댑터 이름으로도 사용됩니다**. 예: 
 
    ```bash
    Define value for property 'artifactId': : SampleAdapter
    ```
 
-5. Enter a Maven project version (the default is `1.0-SNAPSHOT`). For example:
+5. Maven 프로젝트 버전을 입력하십시오(기본값은 `1.0-SNAPSHOT`). 예: 
 
    ```bash
    Define value for property 'version':  1.0-SNAPSHOT: : 1.0
    ```
 
-6. Enter an adapter package name (the default is the `groupId`). For example:
+6. 어댑터 패키지 이름을 입력하십시오(기본값은 `groupId`). 예: 
 
    ```bash
    Define value for property 'package':  com.mycompany: : com.mypackage
    ```
 
-7. Enter `y` to confirm:
+7. `y`를 눌러 다음을 확인하십시오. 
 
    ```bash
    Confirm properties configuration:
@@ -155,56 +156,56 @@ You can choose to run the command interactively or directly.
    Y: : y
    ```
 
-#### Direct Mode
+#### 직접 모드
 {: #direct-mode-archetype }
-Replace the placeholders with the actual values and run the command:
+실제 값으로 플레이스홀더를 대체하고 명령을 실행하십시오. 
 
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DgroupId=<maven_project_groupid> -DartifactId=<maven_project_artifactid>  -Dpackage=<adapter_package_name>
 ```
 
-> For more information about the `archetype:generate` command see the [Maven documentation](http://maven.apache.org/).
+> `archetype:generate` 명령에 대한 자세한 정보는 [Maven 문서](http://maven.apache.org/)를 참조하십시오.
 
-## File Structure
+## 파일 구조
 {: #file-structure }
-After creating the adapter the result will be a Maven project containing a **src** folder and a **pom.xml** file:
+어댑터를 작성한 후 결과는 **src** 폴더와 **pom.xml** 파일을 포함하는 Maven 프로젝트가 됩니다. 
 
 ![mvn-adapter](adapter-fs.png)
 
-## Build and Deploy Adapters
+## 어댑터 빌드 및 배치
 {: #build-and-deploy-adapters }
 
-### Build
+### 빌드
 {: #build }
 
-* **Using the {{ site.data.keys.mf_cli }}** - Run the `adapter build` command from the project's root folder.
+* **{{ site.data.keys.mf_cli }} 사용** - 프로젝트의 루트 폴더에서 `adapter build` 명령을 실행하십시오. 
     
   ```bash
   mfpdev adapter build
   ```
     
-* **Using Maven** - The adapter is built each time you run the `install` command to build the Maven project.
+* **Maven 사용** - Maven 프로젝트를 빌드하기 위해 `install` 명령을 실행할 때마다 어댑터가 빌드됩니다.
 
   ```bash
   mvn install
   ```
 
-### Build All
+### 모두 빌드
 {: #build-all }
-If you have multiple adapters in a filesystem folder and you'd like to build all of them, use:
+파일 시스템 폴더에 여러 개의 어댑터가 있고 모두를 빌드하려면 다음을 사용하십시오.
 
 ```bash
 mfpdev adapter build all
 ```
 
-The outcome is an **.adapter** archive file which can be found in the **target** folder of each adapter:
+결과는 각 어댑터의 **target** 폴더에서 볼 수 있는 **.adapter** 아카이브 파일입니다.
 
 ![java-adapter-result](adapter-result.png)
 
-### Deploy
+### 배치
 {: #deploy }
 
-1. The **pom.xml** file contains the following `properties`:
+1. **pom.xml** 파일은 다음 `properties`를 포함합니다. 
 
    ```xml
    <properties>
@@ -216,52 +217,51 @@ The outcome is an **.adapter** archive file which can be found in the **target**
    </properties>
    ```
    
-   * Replace **localhost:9080** with your {{ site.data.keys.mf_server }} IP address and port number.
-   * **Optional**. Replace the **mfpfUser** and **mfpfPassword** default values with your admin user name and password.
-   * **Optional**. Replace the **mfpfRuntime** default value with your runtime name.
-2. Run the deploy command from the project's root folder:
- * **Using the {{ site.data.keys.mf_cli }}**:
+   * **localhost:9080**을 {{ site.data.keys.mf_server }} IP 주소 및 포트 번호로 대체하십시오. 
+   * **선택사항**. **mfpfUser** 및 **mfpfPassword** 기본값을 admin 사용자 이름 및 비밀번호로 대체하십시오. 
+   * **선택사항**. **mfpfRuntime** 기본값을 런타임 이름으로 대체하십시오. 
+2. 프로젝트의 루트 폴더에서 배치 명령을 실행하십시오. 
+ * **{{ site.data.keys.mf_cli }} 사용**:
 
    ```bash
    mfpdev adapter deploy -x
    ```
    
-   The `-x` option deploys the adapter to the {{ site.data.keys.mf_server }} that is specified in adapter's **pom.xml** file.  
-   If the option is not used, the CLI will use the default server specified in the CLI settings.
+   `-x` 옵션은 어댑터의 **pom.xml** 파일에 지정된 {{ site.data.keys.mf_server }}에 어댑터를 배치합니다.   
+옵션이 사용되지 않으면 CLI가 CLI 설정에 지정된 기본 서버를 사용합니다. 
     
-   > For more CLI deployment options run the command: `mfpdev help adapter deploy`.
+   > 추가 CLI 배치 옵션에 대해서는 다음 명령을 실행하십시오. `mfpdev help adapter deploy`.
    
- * **Using Maven**:
+ * **Maven 사용**:
 
    ```bash
    mvn adapter:deploy
    ```
 
-### Deploy All
+### 모두 배치
 {:# deploy-all }
-If you have multiple adapters in a filesystem folder and you'd like to deploy all of them, use:
+파일 시스템 폴더에 여러 개의 어댑터가 있고 모두 배치하려면 다음을 사용하십시오.
 
 ```bash
 mfpdev adapter deploy all
 ```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
-
-### Deploying to different runtimes
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **팁:** 단일 명령 `mvn install adapter:deploy`를 사용하여 어댑터를 빌드하고 배치할 수도 있습니다.
+### 여러 런타임에 배치
 {: #deploying-to-different-runtimes }
-If you run multiple runtimes, see [Registering applications and deploying adapters to different runtimes](../../installation-configuration/production/server-configuration/#registering-applications-and-deploying-adapters-to-different-runtimes).
+다중 런타임이 있는 경우 [애플리케이션 등록 및 여러 런타임에 어댑터 배치](../../installation-configuration/production/server-configuration/#registering-applications-and-deploying-adapters-to-different-runtimes)를 참조하십시오. 
 
-## Dependencies
+## 종속성
 {: #dependencies }
-In order to use an external library in your adapter, follow one of the following suggested instructions:
+어댑터에서 외부 라이브러리를 사용하려면 다음 제안된 지시사항 중 하나를 따르십시오.
 
-#### Adding a local dependency
+#### 로컬 종속성 추가
 {: #adding-a-local-dependency }
 
-1. Add a **lib** folder under the root Maven project folder and put the external library in it.
-2. Add the library path under the `dependencies` element in the Maven project's **pom.xml** file.  
+1. 루트 Maven 프로젝트 폴더 아래에 **lib** 폴더를 추가하고 그 안에 외부 라이브러리를 넣으십시오. 
+2. Maven 프로젝트의 **pom.xml** 파일에서 `dependencies` 요소 아래에 라이브러리 경로를 추가하십시오.   
 
-For example:
+예: 
 
 ```xml
 <dependency>
@@ -273,13 +273,14 @@ For example:
 </dependency>
 ```
 
-#### Adding an external dependency
+#### 외부 종속성 추가
 {: #adding-an-external-dependency }
 
-1. Search online repositories such as [The Central Repository](http://search.maven.org/) for the dependency.
-2. Copy the POM dependency information and paste it under the `dependencies` element in the Maven project's **pom.xml** file.
+1. [중앙 저장소](http://search.maven.org/)와 같은 온라인 저장소에서 종속성을 검색하십시오. 
+2. POM 종속성 정보를 복사하고 Maven 프로젝트의 **pom.xml** 파일에서 `dependencies`
+요소 아래에 붙여넣으십시오. 
 
-The following example uses the `cloudant-client artifactId`:
+다음 예제는 `cloudant-client artifactId`를 사용합니다. 
 
 ```xml
 <dependency>
@@ -289,18 +290,18 @@ The following example uses the `cloudant-client artifactId`:
 </dependency>
 ```
 
-> For more information about dependencies see the Maven documentation.
+> 종속성에 관한 자세한 정보는 Maven 문서를 참조하십시오. 
 
-## Grouping Adapters in a Single Maven Project
+## 단일 Maven 프로젝트에서 어댑터 그룹화
 {: #grouping-adapters-in-a-single-maven-project }
 
-If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides benefits such as build all, deploy all and sharing dependencies. You can also build all and deploy all adapters even if they are not grouped in a single Maven project using the `mfpdev adapter build all` and `mfpdev adapter deploy all` CLI commands.
+프로젝트에 여러 어댑터가 있다면 단일 Maven 프로젝트 하에서 배열하고 싶을 수 있습니다. 어댑터를 그룹화하면 모두 빌드, 모두 배치 및 종속성 공유와 같은 장점이 있습니다.또한 `mfpdev adapter build all` 및 `mfpdev adapter deploy all` CLI 명령을 사용하여 단일 Maven 프로젝트에서 그룹화하지 않은 경우에도 모든 어댑터를 빌드하고 배치할 수 있습니다. 
 
-To group adapters you need to:
+어댑터를 그룹화하려면 다음을 수행해야 합니다.
 
-1. Create a root folder and call it, for example, "GroupAdapters".
-2. Put the Maven adapter projects in it.
-3. Create a **pom.xml** file:
+1. 루트 폴더를 작성하고 이름 지정(예를 들어 "GroupAdapters")하십시오. 
+2. Maven 어댑터 프로젝트를 루트 폴더 안에 넣으십시오. 
+3. **pom.xml** 파일을 작성하십시오. 
 
    ```xml
    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -338,41 +339,41 @@ To group adapters you need to:
    </project>
    ```
    
-  1. Define a **`groupId`** element of your choice
-  2. Add an **`artifactId`** element - the root folder's name
-  3. Add a **`module`** element for each adapter
-  4. Add the **`build`** element
-  5. **Optional**. Replace **localhost:9080** with your specific {{ site.data.keys.mf_server }} IP address and port number.
-  6. **Optional**. Replace the **`mfpfUser`** and **`mfpfPassword`** default values with your admin user name and password.
-  7. **Optional**. Replace the **`mfpfRuntime`** default value with your runtime name.
+  1. 선택한 **`groupId`** 요소를 정의하십시오. 
+  2. **`artifactId`** 요소 - 루트 폴더의 이름을 추가하십시오. 
+  3. 각 어댑터에 대해 **`module`** 요소를 추가하십시오. 
+  4. **`build`** 요소를 추가하십시오. 
+  5. **선택사항**. **localhost:9080**을 특정 {{ site.data.keys.mf_server }} IP 주소 및 포트 번호로 대체하십시오. 
+  6. **선택사항**. **'mfpfUser'** 및 **'mfpfPassword'** 기본값을 admin 사용자 이름 및 비밀번호로 대체하십시오. 
+  7. **선택사항**. **'mfpfRuntime'** 기본값을 런타임 이름으로 대체하십시오. 
 
-4. To [build or deploy](#build-and-deploy-adapters) all adapters, run the Maven commands from the root "GroupAdapters" project.
+4. 모든 어댑터를 [빌드 또는 배치](#build-and-deploy-adapters)하려면 루트 "GroupAdapters" 프로젝트에서 Maven 명령을 실행하십시오. 
 
-## Downloading or Deploying Adapters Using {{ site.data.keys.mf_console }}
+## {{site.data.keys.mf_console }}을 사용하여 어댑터 다운로드 또는 배치
 {: #downloading-or-deploying-adapters-using-mobilefirst-operations-console}
 
-1. Open your browser of choice and load the {{ site.data.keys.mf_console }} using the address `http://<IP>:<PORT>/mfpconsole/`.  
-2. Click on the "New" button next to Adapters. You have two options to create an adapter:
- * Using Maven or {{ site.data.keys.mf_cli }} as previously explained above.
- * Download a template adapter project (step 2).
-3. Build the adapter Using Maven or {{ site.data.keys.mf_cli }}.
-4. Choose one of the following ways to upload the generated **.adapter** file which can be found in the target folder of the adapter project:
- * Click on the Deploy Adapter button (step 5).
- * Drag and drop the file into the "Create new" adapter screen.
+1. 선택한 브라우저를 열고 주소 `http://<IP>:<PORT>/mfpconsole/`를 사용하여 {{site.data.keys.mf_console }}을 로드하십시오.   
+2. 어댑터의 옆에 "새로 작성" 단추를 클릭하십시오. 어댑터를 작성하는 두 개의 옵션이 있습니다.
+ * 위에서 이미 설명한 것처럼 Maven 또는 {{ site.data.keys.mf_cli }}를 사용합니다. 
+ * 템플리트 어댑터 프로젝트를 다운로드합니다(2 단계).
+3. Maven 또는 {{ site.data.keys.mf_cli }}를 사용하여 어댑터를 빌드하십시오. 
+4. 다음 방법 중 하나를 선택하여, 어댑터 프로젝트의 대상 폴더에서 찾을 수 있는 생성된 **.adapter** 파일을 업로드하십시오.
+ * 어댑터 배치 단추를 클릭하십시오(5 단계).
+ * 새 어댑터 작성 화면으로 파일을 끌어서 놓으십시오. 
 
-    ![Creating adapter using console](Create_adapter_console.png)
+    ![콘솔을 사용하여 어댑터 작성](Create_adapter_console.png)
 
-5. After successfully deploying the adapter, the details page will be displayed containing the following tabs:
- * Configurations - properties defined by the adapter XML file. Here you can change the configurations without having to deploy again.
- * Resources - a list of the adapter resources.
- * Configurations Files - adapter configuration data, to be used in DevOps environments.
+5. 어댑터 배치를 완료한 후 다음 탭을 포함하는 세부사항 페이지가 표시됩니다.
+ * 구성 - 어댑터 XML 파일에 정의된 특성. 다시 배치할 필요 없이 여기서 구성을 변경할 수 있습니다. 
+ * 자원 - 어댑터 자원의 목록. 
+ * 구성 파일 - DevOps 환경에서 사용될 어댑터 구성 데이터. 
 
-## Updating the Adapter Maven Project
+## 어댑터 Maven 프로젝트 업데이트
 {: #updating-the-adapter-maven-project }
 
-To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) by searching for "IBM MobileFirst Platform", and update the following properties in the adapter Maven project's **pom.xml** file:
+최신 릴리스로 어댑터 Maven 프로젝트를 업데이트하려면 [Maven의 중앙 저장소](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation)에서 "IBM MobileFirst Platform"을 검색하여 API 및 플러그인 아티팩트의 **버전 번호**를 찾은 다음, 어댑터 Maven 프로젝트의 **pom.xml** 파일에서 다음 특성을 업데이트하십시오. 
 
-1. The `adapter-maven-api` version:
+1. `adapter-maven-api` 버전:
 
    ```xml
    <dependency>
@@ -383,7 +384,7 @@ To update the adapter Maven project with the latest release, find the **version 
    </dependency>
    ```
    
-2. The `adapter-maven-plugin` version:
+2. `adapter-maven-plugin` 버전:
 
    ```xml
    <plugin>
@@ -394,16 +395,18 @@ To update the adapter Maven project with the latest release, find the **version 
    </plugin>
    ```
 
-## Working offline
+## 오프라인으로 작업 
 {: #working-offline }
 
-If you do not have online access to the Maven Central Repository, you can share {{ site.data.keys.product }} Maven artifacts in the internal repository of your organization.
+Maven 중앙 저장소에 대한 온라인 액세스 권한이 없는 경우 조직의 내부 저장소에 있는 {{site.data.keys.product }} Maven 아티팩트를 공유할 수 있습니다. 
 
-1. [Visit the Downloads page]({{site.baseurl}}/downloads/) and download the {{ site.data.keys.mf_dev_kit_full }} Installer.
-2. Start {{ site.data.keys.mf_server }} and in a browser, load the {{ site.data.keys.mf_console }} from the following URL: `http://<your-server-host:server-port>/mfpconsole`.
-3. Click **Download Center**. Under **Tools → Adapter Archetypes**, click **Download**. The **mfp-maven-central-artifacts-adapter.zip** archive is downloaded.
-4. Add the adapter archetypes and security checks to the internal Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
-5. The following JAR files are required by adapter-maven-api. Make sure they are located either in developers' local **.m2** folder, or in the Maven repository of your organization. You can download them from The Central Repository.
+1. [다운로드 페이지를 방문]({{site.baseurl}}/downloads/)하여 {{ site.data.keys.mf_dev_kit_full }} 설치 프로그램을 다운로드하십시오. 
+2. {{ site.data.keys.mf_server }}를 시작하고 브라우저에서 URL `http://<your-server-host:server-port>/mfpconsole`을 통해 {{ site.data.keys.mf_console }}을 로드하십시오.
+3. **다운로드 센터**를 클릭하십시오. **도구 → 어댑터 아키타입** 아래에서 **다운로드**를 클릭하십시오. **mfp-maven-central-artifacts-adapter.zip** 아카이브가 다운로드됩니다. 
+4. **install.sh** 스크립트(Linux 및 Mac의 경우) 또는
+**install.bat** 스크립트(Windows의 경우)를 실행하여 내부 Maven 저장소에 어댑터 아키타입 및 보안 검사를 추가하십시오. 
+5. 다음 JAR 파일은 adapter-maven-api에 필요합니다.
+이러한 파일들이 개발자의 로컬 **.m2** 폴더 또는 사용자 조직의 Maven 저장소 중 하나에 위치하는지 확인하십시오. 중앙 저장소에서 JAR 파일을 다운로드할 수 있습니다. 
     * javax.ws.rs:javax.ws.rs-api:2.0
     * javax:javaee-web-api:6.0
     * org.apache.httpcomponents:httpclient:4.3.4
@@ -415,11 +418,11 @@ If you do not have online access to the Maven Central Repository, you can share 
     * com.ibm.websphere.appserver.api:com.ibm.websphere.appserver.api.json:1.0
     * javax.servlet:javax.servlet-api:3.0.1
 
-## Tutorials to follow next
+## 다음 학습서
 {: #tutorials-to-follow-next }
 
-* [Learn about Java adapters](../java-adapters/)
-* [Learn about JavaScript adapters](../javascript-adapters/)
-* [Develop adapters in IDEs](../developing-adapters/)
-* [Testing and debugging adapters](../testing-and-debugging-adapters/)
-* [Review all Adapters tutorials](../#tutorials-to-follow-next)
+* [Java 어댑터 학습](../java-adapters/)
+* [JavaScript 어댑터 학습](../javascript-adapters/)
+* [IDE에서 어댑터 개발](../developing-adapters/)
+* [어댑터 테스트 및 디버깅](../testing-and-debugging-adapters/)
+* [모든 어댑터 학습서 검토](../#tutorials-to-follow-next)

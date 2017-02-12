@@ -1,155 +1,110 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Windows 8.1 Universal or Windows 10 UWP Applications
+title: Windows 8.1 Universal 또는 Windows 10 UWP 애플리케이션에 MobileFirst Foundation SDK 추가
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are available through [Nuget](https://www.nuget.org/), and which you can add to your Visual Studio project. The dependencies correspond to core functions and other functions:
+{{ site.data.keys.product }} SDK는  [Nuget](https://www.nuget.org/)을 통해 사용 가능한 종속 항목 콜렉션으로 구성되며, Visual Studio 프로젝트에 추가할 수 있습니다. 종속 항목은 핵심 기능 및 다른 기능에 해당됩니다. 
 
-* **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
+* **IBMMobileFirstPlatformFoundation** - 클라이언트 대 서버 연결을 구현하고 인증 및 보안 측면, 자원 요청과 기타 필수 핵심 기능을 처리합니다. 
 
-In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using Nuget to a new or existing Windows 8.1 Universal application or to a Windows 10 UWP (Universal Windows Platform) application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application, and to find information about the {{ site.data.keys.product_adj }} configuration files that are added to the project.
+이 학습서에서는 Nuget을 사용하여 신규 또는 기존 Windows 8.1 Universal 애플리케이션이나 Windows 10 UWP(Universal Windows Platform) 애플리케이션에 {{ site.data.keys.product_adj }} 고유 SDK를 추가하는 방법에 대해 학습합니다. 또한 애플리케이션을 인식하도록 {{ site.data.keys.mf_server }}를 구성하는 방법 및 프로젝트에 추가되는 {{ site.data.keys.product_adj }} 구성 파일에 대한 정보를 찾는 방법에 대해서도 학습합니다. 
 
-**Prerequisites:**
+**전제조건:**
 
-- Microsoft Visual Studio 2013 or 2015 and {{ site.data.keys.mf_cli }} installed on the developer workstation. Developing Windows 10 UWP solution requires at least Visual Studio 2015.
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Windows 8 Universal and Windows 10 UWP development environment](../../../installation-configuration/development/windows) tutorials.
+- 개발자 워크스테이션에 Microsoft Visual Studio 2013 또는 2015 및 {{ site.data.keys.mf_cli }}가 설치되어 있습니다. Windows 10 UWP 솔루션을 개발하려면 Visual Studio 2015 이상이 필요합니다. 
+- {{ site.data.keys.mf_server }}의 로컬 또는 원격 인스턴스가 실행 중입니다. 
+- [{{ site.data.keys.product_adj }} 개발 환경 설정](../../../installation-configuration/development/mobilefirst)과 [Windows 8 Universal 및 Windows 10 UWP 개발 환경 설정](../../../installation-configuration/development/windows) 학습서를 읽으십시오. 
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to }
-- [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Manually Adding the {{ site.data.keys.product_adj }} Native SDK](#manually-adding-the-mobilefirst-win-native-sdk) 
-- [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Generated {{ site.data.keys.product_adj }} Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [{{ site.data.keys.product_adj }} 고유 SDK 추가](#adding-the-mobilefirst-native-sdk)
+- [{{ site.data.keys.product_adj }} 고유 SDK 업데이트](#updating-the-mobilefirst-native-sdk)
+- [생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트](#generated-mobilefirst-native-sdk-artifacts)
+- [다음 학습서](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## {{ site.data.keys.product_adj }} 고유 SDK 추가
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product_adj }} Native SDK to a new or existing Visual Studio project, and to register the application to the {{ site.data.keys.mf_server }}.
+아래 지시사항에 따라 신규 또는 기존 Visual Studio 프로젝트에 {{ site.data.keys.product_adj }} 고유 SDK를 추가하고 {{ site.data.keys.mf_server }}에 애플리케이션을 등록하십시오. 
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} instance is running.  
-If you use a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.cmd`.
+시작하기 전에 {{ site.data.keys.mf_server }} 인스턴스가 실행 중인지 확인하십시오.   
+로컬로 설치된 서버를 사용하는 경우: **명령행** 창에서 서버의 폴더로 이동하고 `./run.cmd` 명령을 실행하십시오. 
 
-### Creating an application
+### 애플리케이션 작성
 {: #creating-an-application }
-Create a Windows 8.1 Universal or Windows 10 UWP project by using Visual Studio 2013/2015 or use an existing project.  
+Visual Studio 2013/2015를 사용하여 Windows 8.1 Universal 또는 Windows 10 UWP 프로젝트를 작성하거나 기존 프로젝트를 사용하십시오.   
 
-### Adding the SDK
+### SDK 추가
 {: #adding-the-sdk }
-1. To import {{ site.data.keys.product_adj }} packages, use the NuGet package manager.
-NuGet is the package manager for the Microsoft development platform, including .NET. The NuGet client tools provide the ability to produce and use packages. The NuGet Gallery is the central package repository used by all package authors and users.
+1. {{ site.data.keys.product_adj }} 패키지를 가져오려면 NuGet 패키지 관리자를 사용하십시오.
+NuGet은 .NET를 포함하여 Microsoft 개발 플랫폼에 대한 패키지 관리자입니다. NuGet 클라이언트 도구는 패키지를 생성하고 사용하는 기능을 제공합니다. NuGet Gallery는 모든 패키지 작성자 및 사용자가 사용하는 중앙 패키지 저장소입니다. 
 
-2. Open the Windows 8.1 Universal or Windows 10 UWP project in Visual studio 2013/2015. Right-click the project solution and select  **Manage Nuget packages**.
+2. Visual Studio 2013/2015에서 Windows 8.1 Universal 또는 Windows 10 UWP 프로젝트를 여십시오. 프로젝트 솔루션을 마우스 오른쪽 단추로 클릭하고 **Nuget 패키지 관리**를 선택하십시오. 
 
     ![Add-Nuget-tosolution-VS-settings](Add-Nuget-tosolution0.png)
 
-3. In the search option, search for "IBM MobileFirst Platform". Choose **IBM.MobileFirstPlatform.{{ site.data.keys.product_V_R_M_I }}**.
+3. 검색 옵션에서 "IBM MobileFirst Platform"을 검색하십시오. **IBM.MobileFirstPlatform{{ site.data.keys.product_V_R_M_I }}**을 선택하십시오. 
 
     ![Add-Nuget-tosolution-search](Add-Nuget-tosolution1.png)
 
     ![Add-Nuget-tosolution-choose](Add-Nuget-tosolution2.png)
 
-4. Click **Install**. This action installs the {{ site.data.keys.product }} Native SDK and its dependencies. This step also generates an empty `mfpclient.resw` file in the `strings` folder of the Visual Studio project.
+4. **설치**를 클릭하십시오. 이 조치는 {{site.data.keys.product }} 고유 SDK 및 해당 종속 항목을 설치합니다. 또한 이 단계는 Visual Studio 프로젝트의 `strings` 폴더에 비어 있는 `mfpclient.resw` 파일을 생성합니다. 
 
-5. Ensure that, at a minimum, the following capabilities are enabled in `Package.appxmanifest`:
+5. 최소한 다음 기능이 `Package.appxmanifest`에서 사용되는지 확인하십시오. 
 
-    - Internet (Client)
+    - 인터넷(클라이언트)
 
-### Manually adding the {{ site.data.keys.product_adj }} Native SDK
-{: #manually-adding-the-mobilefirst-win-native-sdk }
-
-You can also manually add the {{ site.data.keys.product }} SDK:
-
-<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist" aria-multiselectable="false">
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="win-sdk">
-            <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Click for instructions</b></a>
-            </h4>
-        </div>
-
-        <div id="collapse-win-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk">
-            <div class="panel-body">
-                <p>You can prepare your environment for developing MobileFirst applications by getting the framework and library files manually. The {{ site.data.keys.product }} SDK for Windows 8 and Windows 10 Universal Windows Platform (UWP) is also available from NuGet.</p>
-
-                <ol>
-                    <li>Get the {{ site.data.keys.product }} SDK from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab.
-                    </li>
-                    <li>Extract the contents of the downloaded SDK obtained in step 1.</li>
-                    <li>Open the Windows Universal native project in Visual Studio. Perform the following steps.
-                        <ol>
-                            <li>Select <b>Tools → NuGet Package Manager → Package Manager Settings</b>.</li>
-                            <li>Select <b>Package Sources</b> option. Click <b>+</b> icon to add new package source.</li>
-                            <li>Provide a name for the package source (for example: <em>windows8nuget</em>)</li>
-                            <li>Navigate to the MobileFirst SDK folder that was downloaded and extracted. Click <b>OK</b>.</li>
-                            <li>Click <b>Update</b> and then click <b>OK</b>.</li>
-                            <li>Right-click the <b>Solution project-name</b> in <b>Solution explorer</b> tab, which is to the right corner of the screen.</li>
-                            <li>Select <b>Manage NuGet Packages for Solutions → Online → windows8nuget</b>.</li>
-                            <li>Click <b>Install</b> option. You get the option to <b>Select Projects</b>.</li>
-                            <li>Ensure that all the check boxes are checked. Click <b>OK</b>.</li>
-                        </ol>
-
-                    </li>
-                </ol>
-
-                <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Close section</b></a>
-            </div>
-        </div>
-    </div>
-</div>
-
-### Registering the application
+### 애플리케이션 등록
 {: #reigstering-the-application }
-1. Open the **Command-line** and navigate to the root of the Visual Studio project.  
+1. **명령행**을 열고 Visual Studio 프로젝트의 루트로 이동하십시오.   
 
-2. Run the command:
+2. 다음 명령을 실행하십시오. 
 
    ```bash
    mfpdev app register
    ```
-    - If you use a remote server, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 추가하십시오. 
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then updates the **mfpclient.resw** file in the **strings** folder in the Visual Studio project, and adds to it the metadata that identifies the {{ site.data.keys.mf_server }}.
+`mfpdev app register` CLI 명령은 먼저 {{ site.data.keys.mf_server }}에 연결하여 애플리케이션을 등록한 후에 Visual Studio 프로젝트의 **strings** 폴더에서 **mfpclient.resw** 파일을 업데이트하고 {{ site.data.keys.mf_server }}를 식별하는 메타데이터에 추가합니다. 
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **팁:** {{ site.data.keys.mf_console }}에서 애플리케이션을 등록할 수도 있습니다.     
 >
-> 1. Load the {{ site.data.keys.mf_console }}.  
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
-> 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.resw** file. Follow the onscreen instructions to add the file to your project.
+> 1. {{ site.data.keys.mf_console }}을 로드하십시오.   
+> 2. **애플리케이션** 옆에 있는 **새로 작성** 단추를 클릭하여 새 애플리케이션을 등록하고 화면의 지시사항에 따르십시오.   
+> 3. 애플리케이션이 등록된 후에 애플리케이션의 **구성 파일** 탭으로 이동하고 **mfpclient.resw** 파일을 복사하거나 다운로드하십시오. 화면의 지시사항에 따라 프로젝트에 파일을 추가하십시오.
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## {{ site.data.keys.product_adj }} 고유 SDK 업데이트
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, run the following command from the root folder of the Visual Studio project in a **Command-line** window:
+최신 릴리스로 {{ site.data.keys.product_adj }} 고유 SDK를 업데이트하려면 **명령행** 창의 Visual Studio 프로젝트 루트 폴더에서 다음 명령을 실행하십시오. 
 
 ```bash
 Nuget update
 ```
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
+## 생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.resw
 {: #mfpclientresw }
-Located in the `strings` folder of the project, this file contains server connectivity properties and is user-editable:
+이 파일은 프로젝트의 `strings` 폴더에 있으며, 서버 연결 특성을 포함하고 사용자가 편집할 수 있습니다. 
 
-- `protocol` – The communication protocol to {{ site.data.keys.mf_server }}. Either `HTTP` or `HTTPS`.
-- `WlAppId` - The identifier of the application. This should be same as the application identifier in the server.
-- `host` – The host name of the {{ site.data.keys.mf_server }} instance.
-- `port` – The port of the {{ site.data.keys.mf_server }} instance.
-- `wlServerContext` – The context root path of the application on the {{ site.data.keys.mf_server }} instance.
-- `languagePreference` - Sets the default language for client sdk system messages.
+- `protocol` – {{ site.data.keys.mf_server }}에 대한 통신 프로토콜입니다. `HTTP` 또는 `HTTPS`입니다. 
+- `WlAppId` - 애플리케이션의 ID입니다. 이는 서버의 애플리케이션 ID와 동일해야 합니다. 
+- `host` – {{ site.data.keys.mf_server }} 인스턴스의 호스트 이름입니다. 
+- `port` – {{ site.data.keys.mf_server }} 인스턴스의 포트입니다. 
+- `wlServerContext` – {{ site.data.keys.mf_server }} 인스턴스에서 애플리케이션의 컨텍스트 루트 경로입니다. 
+- `languagePreference` - 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다. 
 
-## Tutorials to follow next
+## 다음 학습서
 {: #tutorials-to-follow-next }
-With the MobileFirst Native SDK now integrated, you can now:
+이제 MobileFirst 고유 SDK가 통합되었으므로 다음을 수행할 수 있습니다. 
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- [{{ site.data.keys.product }} SDK 사용 학습서](../) 검토
+- [어댑터 개발 학습서](../../../adapters/) 검토
+- [인증 및 보안 학습서](../../../authentication-and-security/) 검토
+- [알림 학습서](../../../notifications/) 검토
+- [모든 학습서](../../../all-tutorials) 검토

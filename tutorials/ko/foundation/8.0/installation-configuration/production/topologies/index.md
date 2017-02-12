@@ -1,309 +1,309 @@
 ---
 layout: tutorial
-title: Topologies and Network flows
+title: 토폴로지 및 네트워크 플로우
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-The information presented here details possible server topologies for {{ site.data.keys.mf_server }} components, as well as available network flows.  
-The components are deployed according to the server topology that you use. The network flows explain to you how the components communicate with one another and with the end-user devices.
+여기에서 제공하는 정보는 {{ site.data.keys.mf_server }} 컴포넌트의 가능한 서버 토폴로지 및 사용 가능한 네트워크 플로우에 대해 자세히 설명합니다.   
+컴포넌트는 사용하는 서버 토폴로지에 따라 배치됩니다. 네트워크 플로우는 컴포넌트가 서로 통신하는 방법과 일반 사용자 디바이스와 통신하는 방법을 설명합니다. 
 
-#### Jump to
+#### 다음으로 이동
 {: #jump-to }
 
-* [Network flows between the {{ site.data.keys.mf_server }} components](#network-flows-between-the-mobilefirst-server-components)
-* [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics)
-* [Multiple {{ site.data.keys.product }} runtimes](#multiple-mobilefirst-foundation-runtimes)
-* [Multiple instances of {{ site.data.keys.mf_server }} on the same server or WebSphere Application Server cell](#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell)
+* [{{ site.data.keys.mf_server }} 컴포넌트 간의 네트워크 플로우](#network-flows-between-the-mobilefirst-server-components)
+* [{{ site.data.keys.mf_server }} 컴포넌트 및 {{ site.data.keys.mf_analytics }}에 대한 제한조건](#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics)
+* [복수 {{ site.data.keys.product }} 런타임](#multiple-mobilefirst-foundation-runtimes)
+* [동일 서버 또는 WebSphere Application Server 셀의 복수 {{ site.data.keys.mf_server }} 인스턴스](#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell)
 
-## Network flows between the {{ site.data.keys.mf_server }} components
+## {{ site.data.keys.mf_server }} 컴포넌트 간의 네트워크 플로우
 {: #network-flows-between-the-mobilefirst-server-components }
-The {{ site.data.keys.mf_server }} components can communicate with each other over JMX or HTTP. You need to configure certain JNDI properties to enable the communications.  
-The network flows between the components and the device can be illustrated by the following image:
+{{ site.data.keys.mf_server }} 컴포넌트는 JMX 또는 HTTP를 통해 서로 통신할 수 있습니다. 이러한 통신을 가능하게 하려면 특정 JNDI 특성을 구성해야 합니다.  
+다음 이미지는 컴포넌트와 디바이스 간의 네트워크 플로우를 설명합니다. 
 
-![Diagram of the {{ site.data.keys.product }} components network flows](mfp_components_network_flows.jpg)
+![{{ site.data.keys.product }} 컴포넌트 네트워크 플로우 다이어그램](mfp_components_network_flows.jpg)
 
-The flows between the various {{ site.data.keys.mf_server }} components, {{ site.data.keys.mf_analytics }}, the mobile devices, and the application server are explained in the following sections:
+다양한 {{ site.data.keys.mf_server }} 컴포넌트, {{ site.data.keys.mf_analytics }}, 모바일 디바이스 및 애플리케이션 서버 사이의 플로우에 대해서는 다음 절에서 설명합니다.
 
-1. [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)
-2. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)
-3. [{{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime to the deployment manager on WebSphere Application Server Network Deployment](#mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
-4. [{{ site.data.keys.mf_server }} push service and {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_analytics }}](#mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics)
-5. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} live update service](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)
-6. [{{ site.data.keys.mf_console }} to {{ site.data.keys.mf_server }} administration service](#mobilefirst-operations-console-to-mobilefirst-server-administration-service)
-7. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)
-8. [{{ site.data.keys.mf_server }} push service to an external push notification service (outbound)](#mobilefirst-server-push-service-to-an-external-push-notification-service-outbound)
-9. [Mobile devices to {{ site.data.keys.product }} runtime](#mobile-devices-to-mobilefirst-foundation-runtime)
+1. [{{ site.data.keys.product }} 런타임에서 {{ site.data.keys.mf_server }} 관리 서비스로](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)
+2. [{{ site.data.keys.mf_server }} 관리 서비스에서 다른 서버의 {{ site.data.keys.product }} 런타임으로](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)
+3. [{{ site.data.keys.mf_server }} 관리 서비스 및 {{ site.data.keys.product_adj }} 런타임에서 WebSphere Application Server Network Deployment의 배치 관리자로](#mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
+4. [{{ site.data.keys.mf_server }} 푸시 서비스 및 {{ site.data.keys.product }} 런타임에서 {{ site.data.keys.mf_analytics }}](#mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics)로
+5. [{{ site.data.keys.mf_server }} 관리 서비스에서 {{ site.data.keys.mf_server }} 라이브 업데이트 서비스로](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)
+6. [{{ site.data.keys.mf_console }}에서 {{ site.data.keys.mf_server }} 관리 서비스로](#mobilefirst-operations-console-to-mobilefirst-server-administration-service)
+7. [{{ site.data.keys.mf_server }} 관리 서비스에서 {{ site.data.keys.mf_server }} 푸시 서비스 및 권한 부여 서버로](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)
+8. [{{ site.data.keys.mf_server }} 푸시 서비스에서 외부 푸시 알림 서비스로(아웃바운드)](#mobilefirst-server-push-service-to-an-external-push-notification-service-outbound)
+9. [모바일 디바이스에서 {{ site.data.keys.product }} 런타임으로](#mobile-devices-to-mobilefirst-foundation-runtime)
 
-### {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service
+### {{ site.data.keys.product }} 런타임에서 {{ site.data.keys.mf_server }} 관리 서비스로
 {: #mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service }
-The runtime and the administration service can communicate with each other through JMX and HTTP. This communication occurs during the initialization phase of the runtime. The runtime contacts the administration service local to its application server to get the list of the adapters and applications that it needs to serve. The communication also happens when some administration operations are run from {{ site.data.keys.mf_console }} or the administration service. On WebSphere  Application Server Network Deployment, the runtime can contact an administration service that is installed on another server of the cell. This enables the non-symmetric deployment (see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)). However, on all other application servers (Apache Tomcat, WebSphere Application Server Liberty, or stand-alone WebSphere Application Server), the administration service must be running on the same server as the runtime.
+런타임과 관리 서비스는 JMX 및 HTTP를 통해 서로 통신할 수 있습니다. 이 통신은 런타임의 초기화 단계 중에 수행됩니다. 런타임은 해당 애플리케이션 서버에 대해 로컬인 관리 서비스에 접속하여 서비스를 제공해야 하는 어댑터 및 애플리케이션 목록을 가져옵니다. {{ site.data.keys.mf_console }} 또는 관리 서비스에서 일부 관리 조작이 실행되는 경우에도 통신이 수행됩니다. WebSphere  Application Server Network Deployment에서 런타임은 셀의 다른 서버에 설치된 관리 서비스에 접속할 수 있습니다. 이로써 비대칭 배치가 가능해집니다([{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product }} 런타임에 대한 제한조건](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime) 참조). 그러나 기타 모든 애플리케이션 서버(Apache Tomcat, WebSphere Application Server Liberty 또는 독립형 WebSphere Application Server)에서는 관리 서비스가 런타임과 동일한 서버에서 실행 중이어야 합니다. 
 
-The protocols for JMX depend on the application server:
+JMX의 프로토콜은 애플리케이션 서버에 따라 다릅니다. 
 
 * Apache Tomcat - RMI
-* WebSphere Application Server Liberty - HTTPS (with the REST connector)
-* WebSphere Application Server - SOAP or RMI
+* WebSphere Application Server Liberty - HTTPS(REST 커넥터 포함)
+* WebSphere Application Server - SOAP 또는 RMI
 
-For the communication via JMX, it is required that these protocols are available on the application server. For more information about the requirements, see [Application server prerequisites](../appserver/#application-server-prerequisites).
+JMX를 통한 통신의 경우, 애플리케이션 서버에서 이러한 프로토콜이 사용 가능해야 합니다. 요구사항에 대한 자세한 정보는 [애플리케이션 서버 전제조건](../appserver/#application-server-prerequisites)을 참조하십시오.
 
-The JMX beans of the runtime and the administration service are obtained from the application server. However, in the case of WebSphere Application Server Network Deployment, the JMX beans are obtained from the deployment manager. The deployment manager has the view of all the beans of a cell on WebSphere Application Server Network Deployment. As such, some configurations are not needed on WebSphere Application Server Network Deployment (such as the farm configuration), and non-symmetric deployment is possible on WebSphere Application Server Network Deployment. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
+런타임 및 관리 서비스의 JMX Bean은 애플리케이션 서버에서 얻습니다. 그러나 WebSphere Application Server Network Deployment의 경우 배치 관리자에서 JMX Bean을 얻습니다. 배치 관리자에는 WebSphere Application Server Network Deployment에 있는 셀의 모든 Bean에 대한 보기가 있습니다. 따라서 WebSphere Application Server Network Deployment에서는 일부 구성(예: 팜 구성)이 필요 없고 비대칭 배치가 가능합니다. 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product }} 런타임에 대한 제한조건](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)을 참조하십시오. 
 
-To distinguish different installation of {{ site.data.keys.mf_server }} on the same application server or on the same WebSphere Application Server cell, you can use an environment ID, which is a JNDI variable. By default, this variable has an empty value. A runtime with a given environment ID communicates only with an administration service that has the same environment ID. For example, the administration service has an environment ID set to X, and the runtime has a different environment ID (for example, Y), then the two components do not see each other. The {{ site.data.keys.mf_console }} shows no runtime available.
+동일한 애플리케이션 서버 또는 동일한 WebSphere Application Server 셀에 있는 {{ site.data.keys.mf_server }}의 서로 다른 설치를 구별하기 위해 JNDI 변수인 환경 ID를 사용할 수 있습니다. 기본적으로 이 변수는 빈 값을 가집니다. 지정된 환경 ID를 갖는 런타임은 동일한 환경 ID를 갖는 관리 서비스와만 통신합니다. 예를 들어, 관리 서비스의 환경 ID가 X로 설정되어 있고 런타임의 환경 ID가 이와 다른 경우(예를 들어, Y인 경우), 이 두 컴포넌트는 서로를 인식할 수 없습니다. {{ site.data.keys.mf_console }}에는 사용 가능한 런타임이 표시되지 않습니다. 
 
-An administration service must be able to communicate with all the {{ site.data.keys.product }} runtime components of a cluster. When an administration operation is run, such as uploading a new version of an adapter, or changing the active status of an application, all runtime components of the cluster must be notified about the change. If the application server is not WebSphere Application Server Network Deployment, this communication can happen only if a farm is configured. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
+관리 서비스는 클러스터의 모든 {{ site.data.keys.product }} 런타임 컴포넌트와 통신할 수 있어야 합니다. 새 버전의 어댑터 업로드 또는 애플리케이션의 활성 상태 변경과 같은 관리 조작이 실행되는 경우, 클러스터의 모든 런타임 컴포넌트에서 이러한 변경에 대한 알림을 수신해야 합니다. 애플리케이션 서버가 WebSphere Application Server Network Deployment가 아닌 경우에는 팜이 구성된 경우에만 이러한 통신이 수행될 수 있습니다. 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product }} 런타임에 대한 제한조건](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)을 참조하십시오. 
 
-The runtime also communicates with the administration service through HTTP or HTTPS to download large artifacts such as the adapters. A URL is generated by the administration service and the runtime opens and outbound HTTP or HTTPS connection to request an artifact from this URL. It is possible to override the default URL generation by defining the JNDI properties (mfp.admin.proxy.port, mfp.admin.proxy.protocol, and mfp.admin.proxy.host) in the administration service. The administration service might also need to communicate with the runtime through HTTP or HTTPS to get the OAuth tokens that are used to run the push operations. For more information, see [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server).
+또한 런타임은 HTTP 또는 HTTPS를 통해 관리 서비스와 통신하여 어댑터와 같은 대형 아티팩트를 다운로드합니다. 관리 서비스에 의해 URL이 생성되고 런타임이 아웃바운드 HTTP 또는 HTTPS 연결을 열어 이 URL의 아티팩트를 요청합니다. 관리 서비스에서 JNDI 특성(mfp.admin.proxy.port, mfp.admin.proxy.protocol 및 mfp.admin.proxy.host)을 정의하여 기본 URL 생성을 대체할 수 있습니다. 또한 관리 서비스는 푸시 조작을 실행하는 데 사용되는 OAuth 토큰을 얻기 위해 HTTP 또는 HTTPS를 통해 런타임과 통신해야 할 수도 있습니다. 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스에서 {{ site.data.keys.mf_server }} 푸시 서비스 및 권한 부여 서버로](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)를 참조하십시오. 
 
-The JNDI properties that are used for the communication between the runtime and the administration service are as follows:
+런타임과 관리 서비스 사이의 통신에 사용되는 JNDI 특성은 다음과 같습니다. 
 
-#### {{ site.data.keys.mf_server }} administration service
+#### {{ site.data.keys.mf_server }} 관리 서비스
 {: #mobilefirst-server-administration-service }
 
-* [JNDI properties for administration services: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)
-* [JNDI properties for administration services: proxies](../server-configuration/#jndi-properties-for-administration-service-proxies)
-* [JNDI properties for administration services: topologies](../server-configuration/#jndi-properties-for-administration-service-topologies)
+* [관리 서비스의 JNDI 특성: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)
+* [관리 서비스의 JNDI 특성: 프록시](../server-configuration/#jndi-properties-for-administration-service-proxies)
+* [관리 서비스의 JNDI 특성: 토폴로지](../server-configuration/#jndi-properties-for-administration-service-topologies)
 
-#### {{ site.data.keys.product }} runtime
+#### {{ site.data.keys.product }} 런타임
 {: #mobilefirst-foundation-runtime }
 
-* [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
-### {{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers
+### {{ site.data.keys.mf_server }} 관리 서비스에서 다른 서버의 {{ site.data.keys.product }} 런타임으로
 {: #mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers }
-As described in [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service), it is required to have the communication between an administration service and all the runtime components of a cluster. When an administration operation is run, all the runtime components of a cluster can then be notified about this modification. The communication is through JMX.
+[{{ site.data.keys.product }} 런타임에서 {{ site.data.keys.mf_server }} 관리 서비스로](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)에 설명된 대로, 관리 서비스와 클러스터의 모든 런타임 컴포넌트 사이에는 통신이 필요합니다. 관리 조작이 실행되면 클러스터의 모든 런타임 컴포넌트에서 이러한 수정에 대한 알림을 수신할 수 있습니다. 통신은 JMX를 통해 수행됩니다. 
 
-On WebSphere Application Server Network Deployment, this communication can occur without any specific configuration. All the JMX MBeans that correspond to the same environment ID are obtained from the deployment manager.
+WebSphere Application Server Network Deployment에서는 특정한 구성 없이 이 통신이 수행될 수 있습니다. 동일한 환경 ID에 해당되는 모든 JMX MBean은 배치 관리자에서 얻습니다.
 
-For a cluster of stand-alone WebSphere Application Server, WebSphere Application Server Liberty profile, or Apache Tomcat, the communication can happen only if a farm is configured. For more information, see [Installing a server farm](../appserver/#installing-a-server-farm).
+독립형 WebSphere Application Server, WebSphere Application Server Liberty 프로파일 또는 Apache Tomcat 클러스터에서는 팜이 구성된 경우에만 통신이 수행될 수 있습니다. 자세한 정보는 [서버 팜 설치](../appserver/#installing-a-server-farm)를 참조하십시오.
 
-### {{ site.data.keys.mf_server }} administration service and MobileFirst runtime to the deployment manager on WebSphere Application Server Network Deployment
+### {{ site.data.keys.mf_server }} 관리 서비스 및 MobileFirst 런타임에서 WebSphere Application Server Network Deployment의 배치 관리자로
 {: #mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment }
-On WebSphere Application Server Network Deployment, the runtime and the administration service obtain the JMX MBeans that are used in [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) and [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers) by communicating with the deployment manager. The corresponding JNDI properties are **mfp.admin.jmx.dmgr.*** in [JNDI properties for administration services: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx).
+WebSphere Application Server Network Deployment에서 런타임 및 관리 서비스는 배치 관리자와 통신하여 [{{ site.data.keys.product }} 런타임에서 {{ site.data.keys.mf_server }} 관리 서비스로](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) 및 [{{ site.data.keys.mf_server }} 관리 서비스에서 다른 서버의 {{ site.data.keys.product }} 런타임으로](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)에서 사용되는 JMX MBean을 얻습니다. 해당하는 JNDI 특성은 [관리 서비스의 JNDI 특성: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)의 **mfp.admin.jmx.dmgr.***입니다. 
 
-The deployment manager must be running to allow the operations that require JMX communication between the runtime and the administration service. Such operations can be a runtime initialization, or the notification of a modification performed through the administration service.
+런타임과 관리 서비스 사이의 JMX 통신이 필요한 조작을 수행하려면 배치 관리자가 실행 중이어야 합니다. 이러한 조작은 런타임 초기화이거나 관리 서비스를 통해 수행된 수정의 알림일 수 있습니다.
 
-### {{ site.data.keys.mf_server }} push service and {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_analytics }}
+### {{ site.data.keys.mf_server }} 푸시 서비스 및 {{ site.data.keys.product }} 런타임에서 {{ site.data.keys.mf_analytics }}로
 {: #mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics }
-The runtime sends data to {{ site.data.keys.mf_analytics }} through HTTP or HTTPS. The JNDI properties of the runtime that are used to define this communication are:
+런타임은 HTTP 또는 HTTPS를 통해 {{ site.data.keys.mf_analytics }}에 데이터를 전송합니다. 이 통신을 정의하는 데 사용되는 런타임의 JNDI 특성은 다음과 같습니다.
 
-* **mfp.analytics.url** - the URL that is exposed by {{ site.data.keys.mf_analytics }} service to receive incoming analytics data from the runtime. Example: `http://<hostname>:<port>/analytics-service/rest`
+* **mfp.analytics.url** - 런타임으로부터의 수신 분석 데이터를 수신하며 {{ site.data.keys.mf_analytics }} 서비스에 의해 공개되는 URL입니다. 예: `http://<hostname>:<port>/analytics-service/rest`
 
-    When {{ site.data.keys.mf_analytics }} is installed as a cluster, the data can be sent to any member of the cluster.
+    {{ site.data.keys.mf_analytics }}가 클러스터로 설치된 경우, 클러스터의 임의의 멤버에 데이터가 전송될 수 있습니다.
 
-* **mfp.analytics.username** - the user name that is used to access {{ site.data.keys.mf_analytics }} service. The analytics service is protected by a security role.
-* **mfp.analytics.password** - the password to access the analytics service.
-* **mfp.analytics.console.url** - the URL that is passed to {{ site.data.keys.mf_console }} to display a link to {{ site.data.keys.mf_analytics_console }}. Example: `http://<hostname>:<port>/analytics/console`
+* **mfp.analytics.username** - {{ site.data.keys.mf_analytics }} 서비스에 액세스하는 데 사용되는 사용자 이름입니다. 분석 서비스는 보안 역할에 의해 보호됩니다.
+* **mfp.analytics.password** - 분석 서비스에 액세스하기 위한 비밀번호입니다. 
+* **mfp.analytics.console.url** - {{ site.data.keys.mf_analytics_console }}에 대한 링크를 표시하기 위해 {{ site.data.keys.mf_console }}에 전달되는 URL입니다. 예: `http://<hostname>:<port>/analytics/console`
 
-    The JNDI properties of the push service that are used to define this communication are:
-* **mfp.push.analytics.endpoint** - the URL that is exposed by {{ site.data.keys.mf_analytics }} service to receive incoming analytics data from the push service. Example: `http://<hostname>:<port>/analytics-service/rest`
+    이 통신을 정의하는 데 사용되는 푸시 서비스의 JNDI 특성은 다음과 같습니다.
+* **mfp.push.analytics.endpoint** - 푸시 서비스로부터의 수신 분석 데이터를 수신하며 {{ site.data.keys.mf_analytics }} 서비스에 의해 공개되는 URL입니다. 예: `http://<hostname>:<port>/analytics-service/rest`
 
-    When {{ site.data.keys.mf_analytics }} is installed as a cluster, the data can be sent to any member of the cluster.    
-* **mfp.push.analytics.username** - the user name that is used to access {{ site.data.keys.mf_analytics }} service. The analytics service is protected a security role.
-* **mfp.push.analytics.password** - the password to access the analytics service.
+    {{ site.data.keys.mf_analytics }}가 클러스터로 설치된 경우, 클러스터의 임의의 멤버에 데이터가 전송될 수 있습니다.    
+* **mfp.push.analytics.username** - {{ site.data.keys.mf_analytics }} 서비스에 액세스하는 데 사용되는 사용자 이름입니다. 분석 서비스는 보안 역할에 의해 보호됩니다.
+* **mfp.push.analytics.password** - 분석 서비스에 액세스하기 위한 비밀번호입니다.
 
-### {{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} live update service
+### {{ site.data.keys.mf_server }} 관리 서비스에서 {{ site.data.keys.mf_server }} 라이브 업데이트 서비스로
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service }
-The administration service communicates with the live update service to store and retrieve configuration information about the {{ site.data.keys.product }} artifacts. The communication is performed through HTTP or HTTPS.
+관리 서비스는 {{ site.data.keys.product }} 아티팩트에 대한 구성 정보를 저장하고 검색하기 위해 라이브 업데이트 서비스와 통신합니다. 통신은 HTTP 또는 HTTPS를 통해 수행됩니다.
 
-The URL to contact the live update service is automatically generated by the administration service. Both services must be on the same application server. The context root of the live update service must define in this way: `<adminContextRoot>config`. For example, if the context root of the administration service is **mfpadmin**, then the context root of the live update service must be **mfpadminconfig**. It is possible to override the default URL generation by defining the JNDI properties (**mfp.admin.proxy.port**, **mfp.admin.proxy.protocol**, and **mfp.admin.proxy.host**) in the administration service.
+라이브 업데이트 서비스에 접속하기 위한 URL은 관리 서비스에서 자동으로 생성됩니다. 두 서비스 모두 동일한 애플리케이션 서버에 있어야 합니다. 라이브 업데이트 서비스의 컨텍스트 루트는 `<adminContextRoot>config`와 같이 정의해야 합니다. 예를 들어, 관리 서비스의 컨텍스트 루트가 **mfpadmin**이면 라이브 업데이트 서비스의 컨텍스트 루트는 **mfpadminconfig**여야 합니다. 관리 서비스에서 JNDI 특성(**mfp.admin.proxy.port**, **mfp.admin.proxy.protocol** 및 **mfp.admin.proxy.host**)을 정의하여 기본 URL 생성을 대체할 수 있습니다. 
 
-The JNDI properties to configure this communication between the two services are:
+두 서비스 사이에 이 통신을 구성하기 위한 JNDI 특성은 다음과 같습니다.
 
 * **mfp.config.service.user**
 * **mfp.config.service.password**
-* And those properties in [JNDI properties for administration services: proxies](../server-configuration/#jndi-properties-for-administration-service-proxies).
+* 및 [관리 서비스의 JNDI 특성: 프록시](../server-configuration/#jndi-properties-for-administration-service-proxies)의 특성.
 
-### {{ site.data.keys.mf_console }} to {{ site.data.keys.mf_server }} administration service
+### {{ site.data.keys.mf_console }}에서 {{ site.data.keys.mf_server }} 관리 서비스로
 {: #mobilefirst-operations-console-to-mobilefirst-server-administration-service }
-{{ site.data.keys.mf_console }} is a web user interface and acts as the front end to the administration service. It communicates with the REST services of the administration service through HTTP or HTTPS. The users who are allowed to use the console, must also be allowed to use the administration service. Each user that is mapped to a certain security role of the console must also be mapped to the same security role of the service. With this setup, the requests from the console can thus be accepted by the service.
+{{ site.data.keys.mf_console }}은 웹 사용자 인터페이스이며 관리 서비스에 대한 프론트 엔드 역할을 수행합니다. HTTP 또는 HTTPS를 통해 관리 서비스의 REST 서비스와 통신합니다. 콘솔 사용이 허용된 사용자는 관리 서비스 사용도 허용되어야 합니다. 콘솔의 특정 보안 역할에 맵핑되는 각 사용자는 서비스의 동일한 보안 역할에도 맵핑되어야 합니다. 이러한 설정을 수행함으로써 서비스는 콘솔에서의 요청을 수락할 수 있습니다. 
 
-The JNDI properties to configure this communication are in [JNDI properties for the {{ site.data.keys.mf_console }}](../server-configuration/#jndi-properties-for-mobilefirst-operations-console).
+이 통신을 구성하기 위한 JNDI 특성은 [{{ site.data.keys.mf_console }}의 JNDI 특성](../server-configuration/#jndi-properties-for-mobilefirst-operations-console)에 있습니다. 
 
-> Note: The **mfp.admin.endpoint** property enables the console to locate the administration service. You can use the asterisk character "\*" as wildcard for specifying that the URL, generated by the console to contact the administration services, use the same value as the incoming HTTP request to the console. For example: `*://*:*/mfpadmin` means use the same protocol, host, and port as the console, but use **mfpadmin** as context root. This property is specified for the console application.
+> 참고: **mfp.admin.endpoint** 특성은 콘솔에서 관리 서비스를 찾는 데 사용됩니다.  관리 서비스에 접속하기 위해 콘솔에서 생성되는 URL에 콘솔로 수신되는 HTTP 요청과 동일한 값이 사용되도록 지정하는 데 별표 문자 "\*"를 와일드카드로 사용할 수 있습니다. 예: `*://*:*/mfpadmin`은 콘솔과 동일한 프로토콜, 호스트 및 포트를 사용하지만 컨텍스트 루트로는 **mfpadmin**을 사용함을 의미합니다. 이 특성은 콘솔 애플리케이션에 대해 지정됩니다.
 
-### {{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server
+### {{ site.data.keys.mf_server }} 관리 서비스에서 {{ site.data.keys.mf_server }} 푸시 서비스 및 권한 부여 서버로
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server }
-The administration service communicates with the push service to request various push operations. This communication is secured through the OAuth protocol. Both services need to be registered as confidential clients. An initial registration can be performed at installation time. In this process, both services need to contact an authorization server. This authorization server can be {{ site.data.keys.product }} runtime.
+관리 서비스는 다양한 푸시 조작을 요청하기 위해 푸시 서비스와 통신합니다. 이 통신은 OAuth 프로토콜을 통해 보호됩니다. 두 서비스 모두 기밀 클라이언트로 등록되어야 합니다. 초기 등록은 설치 시에 수행할 수 있습니다. 이 프로세스에서는 두 서비스 모두 권한 부여 서버에 접속해야 합니다. 이 권한 부여 서버는 {{ site.data.keys.product }} 런타임일 수 있습니다.
 
-The JNDI properties of the administration service to configure this communication are:
+이 통신을 구성하기 위한 관리 서비스의 JNDI 특성은 다음과 같습니다.
 
-* **mfp.admin.push.url** - the URL of the push service.
-* **mfp.admin.authorization.server.url** - the URL of the {{ site.data.keys.product }} authorization server.
-* **mfp.admin.authorization.client.id** - the client ID of the administration service, as an OAuth confidential client.
-* **mfp.admin.authorization.client.secret** - the secret code that is used to get the OAuth-based tokens.
+* **mfp.admin.push.url** - 푸시 서비스의 URL입니다.
+* **mfp.admin.authorization.server.url** - {{ site.data.keys.product }} 권한 부여 서버의 URL입니다. 
+* **mfp.admin.authorization.client.id** - OAuth 기밀 클라이언트로서의 관리 서비스의 클라이언트 ID입니다.
+* **mfp.admin.authorization.client.secret** - OAuth 기반 토큰을 가져오는 데 사용되는 시크릿 코드입니다.
 
-> Note: The **mfp.push.authorization.client.id** and **mfp.push.authorization.client.secret** properties of the administration service can be used to register the push service automatically as a confidential client when the administration service starts. The push service must be configured with the same values.
+> 참고: 관리 서비스의 **mfp.push.authorization.client.id** 및 **mfp.push.authorization.client.secret** 특성은 관리 서비스가 시작될 때 푸시 서비스를 기밀 클라이언트로서 자동으로 등록하는 데 사용될 수 있습니다. 푸시 서비스는 동일한 값으로 구성해야 합니다.
 
-The JNDI properties of the push service to configure this communication are:
+이 통신을 구성하기 위한 푸시 서비스의 JNDI 특성은 다음과 같습니다.
 
-* **mfp.push.authorization.server.url** - the URL of the {{ site.data.keys.product }} authorization server. Same as the property **mfp.admin.authorization.server.url**.
-* **mfp.push.authorization.client.id** - the client ID of the push service to contact the authorization server.
-* **mfp.push.authorization.client.secret** - the secret code that is used to contact the authorization server.
+* **mfp.push.authorization.server.url** - {{ site.data.keys.product }} 권한 부여 서버의 URL입니다. **mfp.admin.authorization.server.url** 특성과 동일합니다.
+* **mfp.push.authorization.client.id** - 권한 부여 서버에 접속하기 위한 푸시 서비스의 클라이언트 ID입니다.
+* **mfp.push.authorization.client.secret** - 권한 부여 서버에 접속하는 데 사용되는 시크릿 코드입니다.
 
-### {{ site.data.keys.mf_server }} push service to an external push notification service (outbound)
+### {{ site.data.keys.mf_server }} 푸시 서비스에서 외부 푸시 알림 서비스로(아웃바운드)
 {: #mobilefirst-server-push-service-to-an-external-push-notification-service-outbound }
-The push service generates outbound traffic to the external notification service such as Apple Push Notification Service (APNS) or Google Cloud Messaging (GCM). This communication can also be done through a proxy. Depending on the notification service, the following JNDI properties must be set:
+푸시 서비스는 APNS(Apple Push Notification Service) 또는 GCM(Google Cloud Messaging) 등의 외부 알림 서비스에 대한 아웃바운드 트래픽을 생성합니다. 이 통신은 프록시를 통해 수행할 수도 있습니다. 알림 서비스에 따라 다음과 같은 JNDI 특성을 설정해야 합니다. 
 
 * **push.apns.proxy**
 * **push.gcm.proxy**
 
-For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+자세한 정보는 [{{ site.data.keys.mf_server }} 푸시 서비스의 JNDI 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)을 참조하십시오.
 
-### Mobile devices to {{ site.data.keys.product }} runtime
+### 모바일 디바이스에서 {{ site.data.keys.product }} 런타임으로
 {: #mobile-devices-to-mobilefirst-foundation-runtime }
-The mobile devices contact the runtime. The security of this communication is determined by the configuration of the application and the adapters that are requested. For more information, see [{{ site.data.keys.product_adj }} security framework](../../../authentication-and-security).
+모바일 디바이스는 런타임에 접속합니다. 이 통신의 보안은 요청되는 애플리케이션 및 어댑터의 구성에 의해 결정됩니다. 자세한 정보는 [{{ site.data.keys.product_adj }} 보안 프레임워크](../../../authentication-and-security)를 참조하십시오.
 
-## Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}
+## {{ site.data.keys.mf_server }} 컴포넌트 및 {{ site.data.keys.mf_analytics }}에 대한 제한조건
 {: #constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics }
-Understand the constraints on the various {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }} before you decide your server topology.
+서버 토폴로지를 결정하기 전에 다양한 {{ site.data.keys.mf_server }} 컴포넌트 및 {{ site.data.keys.mf_analytics }}에 대한 제한조건을 이해합니다. 
 
-* [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)
-* [Constraints on {{ site.data.keys.mf_server }} push service](#constraints-on-mobilefirst-server-push-service)
+* [{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product }} 런타임에 대한 제한조건](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)
+* [{{ site.data.keys.mf_server }} 푸시 서비스에 대한 제한조건](#constraints-on-mobilefirst-server-push-service)
 
-### Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime
+### {{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product }} 런타임에 대한 제한조건
 {: #constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime }
-Find out the constraints and the deployment mode of the administration service, live update service, and the runtime per server topology.
+서버 토폴로지별로 관리 서비스, 라이브 업데이트 서비스 및 런타임의 배치 모드 및 제한조건을 설명합니다.
 
-The live update service must be always installed with the administration service on the same application server as explained in [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} live update service](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service). The context root of the live update service must define in this way: `/<adminContextRoot>config`. For example, if the context root of the administration service is **/mfpadmin**, then the context root of the live update service must be **/mfpadminconfig**.
+[{{ site.data.keys.mf_server }} 관리 서비스에서 {{ site.data.keys.mf_server }} 라이브 업데이트 서비스로](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)에 설명된 대로, 라이브 업데이트 서비스는 항상 관리 서비스와 함께 동일한 애플리케이션 서버에 설치되어 있어야 합니다. 라이브 업데이트 서비스의 컨텍스트 루트는 `/<adminContextRoot>config`와 같이 정의해야 합니다. 예를 들어, 관리 서비스의 컨텍스트 루트가 **/mfpadmin**이면 라이브 업데이트 서비스의 컨텍스트 루트는 **/mfpadminconfig**여야 합니다.
 
-You can use the following topologies of application servers:
+사용 가능한 애플리케이션 서버 토폴로지는 다음과 같습니다. 
 
-* Stand-alone server: WebSphere  Application Server Liberty profile, Apache Tomcat, or WebSphere Application Server full profile
-* Server farm: WebSphere Application Server Liberty profile, Apache Tomcat, or WebSphere Application Server full profile
-* WebSphere Application Server Network Deployment cell
-* Liberty collective
+* 독립형 서버: WebSphere  Application Server Liberty 프로파일, Apache Tomcat 또는 WebSphere Application Server 전체 프로파일
+* 서버 팜: WebSphere Application Server Liberty 프로파일, Apache Tomcat 또는 WebSphere Application Server 전체 프로파일
+* WebSphere Application Server Network Deployment 셀
+* Liberty 집합
 
-#### Modes of deployment
+#### 배치 모드
 {: #modes-of-deployment }
-Depending on the application server topology that you use, you have two modes of deployment choice for deploying the administration service, the live update service and the runtime in the application server infrastructure. In asymmetric deployment, you can install the runtimes on different application servers from the administration and the live update services.
+애플리케이션 서버 인프라에 관리 서비스, 라이브 업데이트 서비스 및 런타임을 배치할 때 사용하는 애플리케이션 서버 토폴로지에 따라 두 가지 배치 모드 중 하나를 선택할 수 있습니다. 비대칭 배치에서는 관리 및 라이브 업데이트 서비스와 다른 애플리케이션 서버에 런타임을 설치할 수 있습니다. 
 
-**Symmetric deployment**  
-In symmetrical deployment, you must install the {{ site.data.keys.product }} administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service applications) and the runtime on the same application server.
+**대칭 배치**  
+대칭 배치의 경우, {{ site.data.keys.product }} 관리 컴포넌트({{ site.data.keys.mf_console }}, 관리 서비스 및 라이브 업데이트 서비스 애플리케이션) 및 런타임을 동일한 애플리케이션 서버에 설치해야 합니다.
 
-**Asymmetric deployment**  
-In asymmetric deployment, you can install the runtimes on different application servers from the {{ site.data.keys.product }} administration components.  
-Asymmetric deployment is only supported for WebSphere Application Server Network Deployment cell topology and for Liberty collective topology.
+**비대칭 배치**  
+비대칭 배치의 경우, 런타임을 {{ site.data.keys.product }} 관리 컴포넌트와 다른 애플리케이션 서버에 설치할 수 있습니다.   
+비동기 배치는 WebSphere Application Server Network Deployment 셀 토폴로지 및 Liberty 집합 토폴로지에만 지원됩니다. 
 
-#### Select a topology
+#### 토폴로지 선택
 {: #select-a-topology }
 
-* [Stand-alone server topology](#stand-alone-server-topology)
-* [Server farm topology](#server-farm-topology)
-* [Liberty collective topology](#liberty-collective-topology)
-* [WebSphere Application Server Network Deployment topologies](#websphere-application-server-network-deployment-topologies)
-* [Using a reverse proxy with server farm and WebSphere Application Server Network Deployment topologies](#using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies)
+* [독립형 서버 토폴로지](#stand-alone-server-topology)
+* [서버 팜 토폴로지](#server-farm-topology)
+* [Liberty 집합 토폴로지](#liberty-collective-topology)
+* [WebSphere Application Server Network Deployment 토폴로지](#websphere-application-server-network-deployment-topologies)
+* [서버 팜 및 WebSphere Application Server Network Deployment 토폴로지에서 리버스 프록시 사용](#using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies)
 
-### Stand-alone server topology
+### 독립형 서버 토폴로지
 {: #stand-alone-server-topology }
-You can configure a stand-alone topology for WebSphere  Application Server full profile, WebSphere Application Server Liberty profile, and Apache Tomcat.
-In this topology, all the administration components and the runtimes are deployed in a single Java Virtual Machine (JVM).
+WebSphere  Application Server 전체 프로파일, WebSphere Application Server Liberty 프로파일 및 Apache Tomcat에 대해 독립형 토폴로지를 구성할 수 있습니다.
+이 토폴로지에서는 모든 관리 컴포넌트 및 런타임이 하나의 JVM(Java Virtual Machine)에 배치됩니다. 
 
-![Stand-alone topology](standalone_topology.jpg)
+![독립형 토폴로지](standalone_topology.jpg)
 
-With one JVM, only symmetric deployment is possible with the following characteristics:
+하나의 JVM에서는 다음과 같은 특성의 대칭 배치만 가능합니다. 
 
-* One or several administration components can be deployed. Each {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed.
-* One {{ site.data.keys.mf_console }} can manage several runtimes.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* 하나 이상의 관리 컴포넌트를 배치할 수 있습니다. 각 {{ site.data.keys.mf_console }}은 하나의 관리 서비스 및 하나의 라이브 업데이트 서비스와 통신합니다. 
+* 하나 이상의 런타임을 배치할 수 있습니다. 
+* 하나의 {{ site.data.keys.mf_console }}이 여러 런타임을 관리할 수 있습니다. 
+* 하나의 런타임은 하나의 {{ site.data.keys.mf_console }}에 의해서만 관리됩니다. 
+* 각 관리 서비스는 고유의 관리 데이터베이스 스키마를 사용합니다. 
+* 각 라이브 업데이트 서비스는 고유의 라이브 업데이트 데이터베이스 스키마를 사용합니다.
+* 각 런타임은 고유의 런타임 데이터베이스 스키마를 사용합니다. 
 
-#### Configuration of JNDI properties
+#### JNDI 특성의 구성
 {: #configuration-of-jndi-properties }
-Some JNDI properties are required to enable Java Management Extensions (JMX) communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+관리 서비스와 런타임 간의 JMX(Java Management Extensions) 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하려면 몇 가지 JNDI 특성이 필요합니다. 이러한 특성에 대한 세부사항은 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오. 
 
-**Stand-alone WebSphere Application Server Liberty profile server**  
-The following global JNDI properties are required for the administration services and the runtimes.
+**독립형 WebSphere Application Server Liberty 프로파일 서버**  
+관리 서비스 및 런타임에는 다음과 같은 글로벌 JNDI 특성이 필요합니다. 
 
-| JNDI properties          | Values |
+| JNDI 특성          | 값 |
 |--------------------------|--------|
 | mfp.topology.platform	   | Liberty |
 | mfp.topology.clustermode | Standalone |
-| mfp.admin.jmx.host       | The host name of the WebSphere Application Server Liberty profile server. |
-| mfp.admin.jmx.port       | The port of the REST connector that is the port of the httpsPort attribute declared in the `<httpEndpoint>` element of the server.xml file of WebSphere Application Server Liberty profile server. This property has no default value. |
-| mfp.admin.jmx.user       | The user name of the WebSphere Application Server Liberty administrator, which must be identical to the name defined in the `<administrator-role>` element of the server.xml file of the WebSphere Application Server Liberty profile server. |
-| mfp.admin.jmx.pwd        | The password of the WebSphere Application Server Liberty administrator user. |
+| mfp.admin.jmx.host       | WebSphere Application Server Liberty 프로파일 서버의 호스트 이름 |
+| mfp.admin.jmx.port       | WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<httpEndpoint>` 요소에 선언된 httpsPort 속성의 포트인 REST 커넥터의 포트. 이 특성에는 기본값이 없습니다. |
+| mfp.admin.jmx.user       | WebSphere Application Server Liberty 관리자의 사용자 이름. WebSphere Application Server Liberty 프로파일 서버에 있는 server.xml 파일의 `<administrator-role>` 요소에 정의된 이름과 동일해야 합니다. |
+| mfp.admin.jmx.pwd        | WebSphere Application Server Liberty 관리자의 비밀번호 |
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다. 
 
-When you deploy several administration components, you must specify:
+여러 관리 컴포넌트를 배치하는 경우 다음을 지정해야 합니다. 
 
-* On each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* 각 관리 서비스에서, 로컬 **mfp.admin.environmentid** JNDI 특성에 고유한 값
+* 각 런타임에서, 런타임을 관리하는 관리 서비스에 대해 정의된 값과 동일한 로컬 **mfp.admin.environmentid** JNDI 특성의 값
 
-**Stand-alone Apache Tomcat server**
-The following local JNDI properties are required for the administration services and the runtimes.
+**독립형 Apache Tomcat 서버**
+관리 서비스 및 런타임에는 다음과 같은 로컬 JNDI 특성이 필요합니다. 
 
-| JNDI properties        |	Values    |
+| JNDI 특성        |	값    |
 |------------------------|------------|
 | mfp.topology.platform   | Tomcat     |
 | mfp.topology.clustermode | Standalone |
 
-JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
+JVM 특성은 JMX(Java Management Extensions) RMI(Remote Method Invocation)를 정의하는 데도 필요합니다. 자세한 정보는 [Apache Tomcat용 JMX 연결 구성](../appserver/#apache-tomcat-prerequisites)을 참조하십시오. 
 
-If the Apache Tomcat server is running behind a firewall, the **mfp.admin.rmi.registryPort** and **mfp.admin.rmi.serverPort** JNDI properties are required for the administration service. See [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
+Apache Tomcat 서버가 방화벽 뒤에서 실행 중이면 **mfp.admin.rmi.registryPort** 및 **mfp.admin.rmi.serverPort** JNDI 특성이 관리 서비스에 필요합니다. [Apache Tomcat용 JMX 연결 구성](../appserver/#apache-tomcat-prerequisites)을 참조하십시오. 
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.  
-When you deploy several administration components, you must specify:
+여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다.   
+여러 관리 컴포넌트를 배치하는 경우 다음을 지정해야 합니다. 
 
-* On each administration service, a unique value for the local mfp.admin.environmentid JNDI property.
-* On each runtime, the same value for the local mfp.admin.environmentid JNDI property as the value defined for the administration service that manages the runtime.
+* 각 관리 서비스에서, 로컬 mfp.admin.environmentid JNDI 특성에 고유한 값
+* 각 런타임에서, 런타임을 관리하는 관리 서비스에 대해 정의된 값과 동일한 로컬 mfp.admin.environmentid JNDI 특성의 값
 
-**Stand-alone WebSphere Application Server**  
-The following local JNDI properties are required for the administration services and the runtimes.
+**독립형 WebSphere Application Server**  
+관리 서비스 및 런타임에는 다음과 같은 로컬 JNDI 특성이 필요합니다. 
 
-| JNDI properties          | Values                 |
+| JNDI 특성          | 값                 |
 |--------------------------| -----------------------|
 | mfp.topology.platform    | WAS                    |
 | mfp.topology.clustermode | Standalone             |
-| mfp.admin.jmx.connector  | The JMX connector type; the value can be SOAP or RMI. |
+| mfp.admin.jmx.connector  | JMX 커넥터 유형. 가능한 값은 SOAP 또는 RMI입니다. |
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.  
-When you deploy several administration components, you must specify:
+여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다.   
+여러 관리 컴포넌트를 배치하는 경우 다음을 지정해야 합니다. 
 
-* On each administration service, a unique value for the **local mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* 각 관리 서비스에서, 로컬 **mfp.admin.environmentid** JNDI 특성에 고유한 값
+* 각 런타임에서, 런타임을 관리하는 관리 서비스에 대해 정의된 값과 동일한 로컬 **mfp.admin.environmentid** JNDI 특성의 값
 
-### Server farm topology
+### 서버 팜 토폴로지
 {: #server-farm-topology }
-You can configure a farm of WebSphere  Application Server full profile, WebSphere Application Server Liberty profile, or Apache Tomcat application servers.
+WebSphere  Application Server 전체 프로파일, WebSphere Application Server Liberty 프로파일 또는 Apache Tomcat 애플리케이션 서버의 팜을 구성할 수 있습니다.
 
-A farm is a set of individual servers where the same components are deployed and where the same administration service database and runtime database are shared between the servers. The farm topology enables the load of {{ site.data.keys.product }} applications to be distributed across several servers. Each server in the farm must be a Java virtual machine (JVM) of the same type of application server; that is, a homogeneous server farm. For example, a set of several Liberty servers can be configured as a server farm. Conversely, a mix of Liberty server, Tomcat server, or stand-alone WebSphere Application Server cannot be configured as a server farm.
+팜은 동일한 컴포넌트가 배치된 개별 서버의 세트이며 이러한 서버 간에는 동일한 관리 서비스 데이터베이스 및 런타임 데이터베이스가 공유됩니다. 팜 토폴로지를 사용하면 {{ site.data.keys.product }} 애플리케이션의 로드를 여러 서버에서 분산시킬 수 있습니다. 팜의 각 서버는 애플리케이션 서버 유형이 동일한 JVM(Java Virtual Machine)이어야 합니다. 즉, 동종 서버 팜이어야 합니다. 예를 들어, 여러 Liberty 서버로 구성된 세트를 하나의 서버 팜으로 구성할 수 있습니다. 반대로, Liberty 서버, Tomcat 서버 또는 독립형 WebSphere Application Server가 혼합된 경우에는 서버 팜으로 구성할 수 없습니다. 
 
-In this topology, all the administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service) and the runtimes are deployed on every server in the farm.
+이 토폴로지에서는 모든 관리 컴포넌트({{ site.data.keys.mf_console }}, 관리 서비스 및 라이브 업데이트 서비스) 및 런타임이 팜의 모든 서버에 배치됩니다. 
 
-![Topology for a server farm](server_farm_topology.jpg)
+![서버 팜의 토폴로지](server_farm_topology.jpg)
 
-This topology supports only symmetric deployment. The runtimes and the administration components must be deployed on every server in the farm. The deployment of this topology has the following characteristics:
+이 토폴로지는 대칭 배치만 지원합니다. 런타임 및 관리 컴포넌트를 팜의 모든 서버에 배치해야 합니다. 이 토폴로지의 배치 특성은 다음과 같습니다. 
 
-* One or several administration components can be deployed. Each instance of {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* The administration components must be deployed on all servers in the farm.
-* One or several runtimes can be deployed.
-* The runtimes must be deployed on all servers in the farm.
-* One {{ site.data.keys.mf_console }} can manage several runtimes.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema. All deployed instances of the same administration service share the same administration database schema.
-* Each live update service uses its own live update database schema. All deployed instances of the same live update service share the same live update database schema.
-* Each runtime uses its own runtime database schema. All deployed instances of the same runtime share the same runtime database schema.
+* 하나 이상의 관리 컴포넌트를 배치할 수 있습니다. {{ site.data.keys.mf_console }}의 각 인스턴스는 하나의 관리 서비스 및 하나의 라이브 업데이트 서비스와 통신합니다. 
+* 관리 컴포넌트는 팜의 모든 서버에 배치되어야 합니다. 
+* 하나 이상의 런타임을 배치할 수 있습니다. 
+* 런타임은 팜의 모든 서버에 배치되어야 합니다. 
+* 하나의 {{ site.data.keys.mf_console }}이 여러 런타임을 관리할 수 있습니다. 
+* 하나의 런타임은 하나의 {{ site.data.keys.mf_console }}에 의해서만 관리됩니다. 
+* 각 관리 서비스는 고유의 관리 데이터베이스 스키마를 사용합니다. 동일한 관리 서비스의 배치된 모든 인스턴스는 동일한 관리 데이터베이스 스키마를 공유합니다. 
+* 각 라이브 업데이트 서비스는 고유의 라이브 업데이트 데이터베이스 스키마를 사용합니다. 동일한 라이브 업데이트 서비스의 배치된 모든 인스턴스는 동일한 라이브 업데이트 데이터베이스 스키마를 공유합니다.
+* 각 런타임은 고유의 런타임 데이터베이스 스키마를 사용합니다. 동일한 런타임의 배치된 모든 인스턴스는 동일한 런타임 데이터베이스 스키마를 공유합니다. 
 
-#### Configuration of JNDI properties
+#### JNDI 특성의 구성
 {: #configuration-of-jndi-properties-1 }
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime of the same server, and to define the administration service that manages a runtime. For convenience, the following tables list these properties. For instructions about how to install a server farm, see [Installing a server farm](../appserver/#installing-a-server-farm). For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+동일한 서버의 관리 서비스와 런타임 간의 JMX 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하려면 몇 가지 JNDI 특성이 필요합니다. 편의를 위해 다음 표에서 이러한 특성을 나열합니다. 서버 팜 설치 방법에 대한 지시사항은 [서버 팜 설치](../appserver/#installing-a-server-farm)를 참조하십시오. JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오.
 
-**WebSphere Application Server Liberty profile server farm**  
-The following global JNDI properties are required in each server of the farm for the administration services and the runtimes.
+**WebSphere Application Server Liberty 프로파일 서버 팜**  
+팜의 각 서버에서는 관리 서비스 및 런타임에 다음과 같은 글로벌 JNDI 특성이 필요합니다. 
 
 <table>
     <tr>
         <th>
-            JNDI properties
+            JNDI 특성
         </th>
         <th>
-            Values
+            값
         </th>
     </tr>
     <tr>
@@ -327,7 +327,7 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.host
         </td>
         <td>
-            The host name of the WebSphere Application Server Liberty profile server
+            WebSphere Application Server Liberty 프로파일 서버의 호스트 이름
         </td>
     </tr>
     <tr>
@@ -335,7 +335,7 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.port
         </td>
         <td>
-            The port of the REST connector that must be identical to the value of the httpsPort attribute declared in the <code>httpEndpoint</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server. 
+            REST 커넥터의 포트. WebSphere Application Server Liberty 프로파일 서버에 있는 <b>server.xml</b> 파일의 <code>httpEndpoint</code> 요소에 선언된 httpsPort 속성의 값과 동일해야 합니다.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
@@ -347,8 +347,7 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.user
         </td>
         <td>
-            The user name of the WebSphere Application Server Liberty administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server.
-            
+            WebSphere Application Server Liberty 프로파일 서버에 있는 <b>server.xml</b> 파일의 <code>administrator-role</code> 요소에 정의된 WebSphere Application Server Liberty 관리자의 사용자 이름.            
 {% highlight xml %}
 <administrator-role>
     <user>MfpRESTUser</user>
@@ -361,94 +360,94 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.pwd
         </td>
         <td>
-            The password of the WebSphere Application Server Liberty administrator user.
+            WebSphere Application Server Liberty 관리자의 비밀번호
         </td>
     </tr>
 </table>
 
-The **mfp.admin.serverid** JNDI property is required for the administration service to manage the server farm configuration. Its value is the server identifier, which must be different for each server in the farm.
+**mfp.admin.serverid** JNDI 특성은 관리 서비스가 서버 팜 구성을 관리하는 데 필요합니다. 해당 값은 서버 ID이며, 팜에 있는 서버마다 값이 달라야 합니다. 
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다. 
 
-When you deploy several administration components, you must specify:
+여러 관리 컴포넌트를 배치하는 경우 다음을 지정해야 합니다. 
 
-* On each administration service, a unique value for the local mfp.admin.environmentid JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* 각 관리 서비스에서, 로컬 mfp.admin.environmentid JNDI 특성에 고유한 값
+* 각 런타임에서, 런타임을 관리하는 관리 서비스에 대해 정의된 값과 동일한 로컬 **mfp.admin.environmentid** JNDI 특성의 값
 
-**Apache Tomcat server farm**  
-The following global JNDI properties are required in each server of the farm for the administration services and the runtimes.
+**Apache Tomcat 서버 팜**  
+팜의 각 서버에서는 관리 서비스 및 런타임에 다음과 같은 글로벌 JNDI 특성이 필요합니다. 
 
-| JNDI properties          |	Values |
+| JNDI 특성          |	값 |
 |--------------------------|-----------|
 | mfp.topology.platform	   | Tomcat    |
 | mfp.topology.clustermode | Farm      |
 
-JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
+JVM 특성은 JMX(Java Management Extensions) RMI(Remote Method Invocation)를 정의하는 데도 필요합니다. 자세한 정보는 [Apache Tomcat용 JMX 연결 구성](../appserver/#apache-tomcat-prerequisites)을 참조하십시오. 
 
-The **mfp.admin.serverid** JNDI property is required for the administration service to manage the server farm configuration. Its value is the server identifier, which must be different for each server in the farm.
+**mfp.admin.serverid** JNDI 특성은 관리 서비스가 서버 팜 구성을 관리하는 데 필요합니다. 해당 값은 서버 ID이며, 팜에 있는 서버마다 값이 달라야 합니다. 
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다. 
 
-When you deploy several administration components, you must specify:
+여러 관리 컴포넌트를 배치하는 경우 다음을 지정해야 합니다. 
 
-* On each administration service, a unique value for the local mfp.admin.environmentid JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* 각 관리 서비스에서, 로컬 mfp.admin.environmentid JNDI 특성에 고유한 값
+* 각 런타임에서, 런타임을 관리하는 관리 서비스에 대해 정의된 값과 동일한 로컬 **mfp.admin.environmentid** JNDI 특성의 값
 
-**WebSphere Application Server full profile server farm**  
-The following global JNDI properties are required on each server in the farm for the administration services and the runtimes.
+**WebSphere Application Server 전체 프로파일 서버 팜**  
+팜의 각 서버에서는 관리 서비스 및 런타임에 다음과 같은 글로벌 JNDI 특성이 필요합니다. 
 
-| JNDI properties            | Values |
+| JNDI 특성            | 값 |
 |----------------------------|--------|
 | mfp.topology.platform	WAS  | WAS    |
 | mfp.topology.clustermode   | Farm   |
 | mfp.admin.jmx.connector    | SOAP   |
 
-The following JNDI properties are required for the administration service to manage the server farm configuration.
+관리 서비스에서 서버 팜 구성을 관리하려면 다음과 같은 JNDI 특성이 필요합니다. 
 
-| JNDI properties    | Values |
+| JNDI 특성    | 값 |
 |--------------------|--------|
-| mfp.admin.jmx.user | The user name of WebSphere Application Server. This user must be defined in the WebSphere Application Server user registry. |
-| mfp.admin.jmx.pwd	 | The password of the WebSphere Application Server user. |
-| mfp.admin.serverid | The server identifier, which must be different for each server in the farm and identical to the value of this property used for this server in the server farm configuration file. |
+| mfp.admin.jmx.user | WebSphere Application Server의 사용자 이름. WebSphere Application Server 사용자 레지스트리에 이 사용자가 정의되어 있어야 합니다.  |
+| mfp.admin.jmx.pwd	 | WebSphere Application Server 사용자의 비밀번호입니다.  |
+| mfp.admin.serverid | 서버 ID. 팜에 있는 서버마다 달라야 하며 서버 팜 구성 파일에서 해당 서버에 사용된 이 특성의 값과 동일해야 합니다.  |
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트에서 동일한 JVM을 실행할 수 있습니다. 
 
-When you deploy several administration components, you must specify the following values:
+여러 관리 컴포넌트를 배치하는 경우 다음 값을 지정해야 합니다. 
 
-* On each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* 각 관리 서비스에서, 로컬 **mfp.admin.environmentid** JNDI 특성에 고유한 값
+* 각 런타임에서, 런타임을 관리하는 관리 서비스에 대해 정의된 값과 동일한 로컬 **mfp.admin.environmentid** JNDI 특성의 값
 
-### Liberty collective topology
+### Liberty 집합 토폴로지
 {: #liberty-collective-topology }
-You can deploy the {{ site.data.keys.mf_server }} components in a Liberty collective topology.
+Liberty 집합 토폴로지에 {{ site.data.keys.mf_server }} 컴포넌트를 배치할 수 있습니다.
 
-In the Liberty collective topology, the {{ site.data.keys.mf_server }} administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service) are deployed in a collective controller and the {{ site.data.keys.product }} runtimes in collective member. This topology supports only asymmetric deployment, the runtimes cannot be deployed in a collective controller.
+Liberty 집합 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴포넌트({{ site.data.keys.mf_console }}, 관리 서비스, 라이브 업데이트 서비스)는 집합 제어기와 집합 멤버의 {{ site.data.keys.product }} 런타임에 배치됩니다. 이 토폴로지는 비대칭 배치만 지원하며, 런타임을 집합 제어기에 배치할 수 없습니다.
 
-![Topology for Liberty Collective](liberty_collective_topology.jpg)
+![Liberty 집합의 토폴로지](liberty_collective_topology.jpg)
 
-The deployment of this topology has the following characteristics:
+이 토폴로지의 배치 특성은 다음과 같습니다. 
 
-* One or several administration components can be deployed in one or several controllers of the collective. Each instance of * * {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in the cluster members of the collective.
-* One {{ site.data.keys.mf_console }} manages several runtimes that are deployed in the cluster members of the collective.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* 하나 이상의 관리 컴포넌트를 집합의 하나 이상의 제어기에 배치할 수 있습니다. * * {{ site.data.keys.mf_console }}의 각 인스턴스는 하나의 관리 서비스 및 하나의 라이브 업데이트 서비스와 통신합니다.
+* 집합의 클러스터 멤버에 하나 이상의 런타임을 배치할 수 있습니다.
+* 하나의 {{ site.data.keys.mf_console }}은 집합의 클러스터 멤버에 배치된 여러 런타임을 관리합니다.
+* 하나의 런타임은 하나의 {{ site.data.keys.mf_console }}에 의해서만 관리됩니다. 
+* 각 관리 서비스는 고유의 관리 데이터베이스 스키마를 사용합니다. 
+* 각 라이브 업데이트 서비스는 고유의 라이브 업데이트 데이터베이스 스키마를 사용합니다.
+* 각 런타임은 고유의 런타임 데이터베이스 스키마를 사용합니다. 
 
-#### Configuration of JNDI properties
+#### JNDI 특성의 구성
 {: #configuration-of-jndi-properties-2 }
-The following tables list the JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For more information about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). For instructions about how to install a Liberty collective manually, see [Manual installation on WebSphere Application Server Liberty collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
+다음 표에서는 관리 서비스와 런타임 간의 JMX 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하는 데 필요한 JNDI 특성을 나열합니다. 이러한 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오. Liberty 집합을 수동으로 설치하는 방법에 대한 지시사항은 [WebSphere Application Server Liberty 집합에 수동 설치](../appserver/#manual-installation-on-websphere-application-server-liberty-collective)를 참조하십시오. 
 
-The following global JNDI properties are required for the administration services:
+관리 서비스에는 다음과 같은 글로벌 JNDI 특성이 필요합니다. 
 
 <table>
     <tr>
         <th>
-            JNDI properties
+            JNDI 특성
         </th>
         <th>
-            Values
+            값
         </th>
     </tr>
     <tr>
@@ -465,11 +464,11 @@ The following global JNDI properties are required for the administration service
     </tr>
     <tr>
         <td>mfp.admin.jmx.host</td>
-        <td>The host name of the Liberty controller.</td>
+        <td>Liberty 제어기의 호스트 이름</td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.port</td>
-        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code>httpEndpoint</code> element of the server.xml file of the Liberty controller.
+        <td>REST 커넥터의 포트. Liberty 제어기에 있는 server.xml 파일의 <code>httpEndpoint</code> 요소에 선언된 <b>httpsPort</b> 속성의 값과 동일해야 합니다.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
@@ -478,7 +477,7 @@ The following global JNDI properties are required for the administration service
     </tr>
     <tr>
         <td>mfp.admin.jmx.user</td>
-        <td>The user name of the controller administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the Liberty controller.
+        <td>Liberty 제어기에 있는 <b>server.xml</b> 파일의 <code>administrator-role</code> 요소에 정의된 제어기 관리자의 사용자 이름.
 
 {% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
@@ -487,23 +486,23 @@ The following global JNDI properties are required for the administration service
     </tr>
     <tr>
         <td>mfp.admin.jmx.pwd</td>
-        <td>The password of the Liberty controller administrator user.</td>
+        <td>Liberty 제어기 관리자의 비밀번호</td>
     </tr>
 </table>
 
-Several administration components can be deployed to enable the controller to run separate administration components that manage different runtimes.
+여러 관리 컴포넌트를 배치하여 제어기가 서로 다른 런타임을 관리하는 개별 관리 컴포넌트를 실행하도록 할 수 있습니다. 
 
-When you deploy several administration components, you must specify on each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
+여러 관리 컴포넌트를 배치하는 경우, 각 관리 서비스에서 로컬 **mfp.admin.environmentid** JNDI 특성에 고유한 값을 지정해야 합니다.
 
-The following global JNDI properties are required for the runtimes:
+런타임에는 다음과 같은 글로벌 JNDI 특성이 필요합니다. 
 
 <table>
     <tr>
         <th>
-            JNDI properties
+            JNDI 특성
         </th>
         <th>
-            Values
+            값
         </th>
     </tr>
     <tr>
@@ -516,15 +515,15 @@ The following global JNDI properties are required for the runtimes:
     </tr>
     <tr>
         <td>mfp.admin.serverid</td>
-        <td>A value that identifies uniquely the collective member. It must be different for each member in the collective. The value <code>controller</code> cannot be used as it is reserved for the collective controller.</td>
+        <td>집합 멤버를 고유하게 식별하는 값. 이 값은 집합의 멤버마다 달라야 합니다. <code>controller</code> 값은 집합 제어기용으로 예약되어 있으므로 사용할 수 없습니다.</td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.host</td>
-        <td>The host name of the Liberty controller.</td>
+        <td>Liberty 제어기의 호스트 이름</td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.port</td>
-        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code>httpEndpoint</code> element of the server.xml file of the Liberty controller.
+        <td>REST 커넥터의 포트. Liberty 제어기에 있는 server.xml 파일의 <code>httpEndpoint</code> 요소에 선언된 <b>httpsPort</b> 속성의 값과 동일해야 합니다.
 
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
@@ -533,7 +532,7 @@ The following global JNDI properties are required for the runtimes:
     </tr>
     <tr>
         <td>mfp.admin.jmx.user</td>
-        <td>The user name of the controller administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the Liberty controller.
+        <td>Liberty 제어기에 있는 <b>server.xml</b> 파일의 <code>administrator-role</code> 요소에 정의된 제어기 관리자의 사용자 이름.
 
 {% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
@@ -542,139 +541,139 @@ The following global JNDI properties are required for the runtimes:
     </tr>
     <tr>
         <td>mfp.admin.jmx.pwd</td>
-        <td>The password of the Liberty controller administrator user.</td>
+        <td>Liberty 제어기 관리자의 비밀번호</td>
     </tr>
 </table>
 
-The following JNDI property is required for the runtime when several controllers (replicas) using the same administration components are used:
+동일한 관리 컴포넌트를 사용하는 여러 제어기(복제본)가 사용되는 경우 런타임에 다음 JNDI 특성이 필요합니다. 
 
-| JNDI properties | Values | 
+| JNDI 특성 | 값 | 
 |-----------------|--------|
-| mfp.admin.jmx.replica | Endpoint list of the different controller replicas with the following syntax: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
+| mfp.admin.jmx.replica | 서로 다른 제어기 복제본의 엔드포인트 목록(`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 구문을 사용함) | 
 
-When several administration components are deployed in the controller, each runtime must have the same value for the local **mfp.admin.environmentid** JNDI property as the value that is defined for the administration service that manages the runtime.
+여러 관리 컴포넌트가 제어기에 배치되는 경우, 각 런타임에서 로컬 **mfp.admin.environmentid** JNDI 특성의 값은 런타임을 관리하는 관리 서비스에 대해 정의된 값과 동일해야 합니다. 
 
-### WebSphere Application Server Network Deployment topologies
+### WebSphere Application Server Network Deployment 토폴로지
 {: #websphere-application-server-network-deployment-topologies }
-The administration components and the runtimes are deployed in servers or clusters of the WebSphere  Application Server Network Deployment cell.
+관리 컴포넌트 및 런타임은 WebSphere  Application Server Network Deployment 셀의 서버 또는 클러스터에 배치됩니다. 
 
-Examples of these topologies support either asymmetric or symmetric deployment, or both. You can, for example, deploy the administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service) in one cluster and the runtimes managed by these components in another cluster.
+이러한 토폴로지의 예는 비대칭 배치나 대칭 배치, 또는 둘 다를 지원합니다. 예를 들어, 관리 컴포넌트({{ site.data.keys.mf_console }}, 관리 서비스 및 라이브 업데이트 서비스)를 하나의 클러스터에 배치하고 이러한 컴포넌트가 관리하는 런타임을 다른 클러스터에 배치할 수 있습니다.
 
-#### Symmetric deployment in the same server or cluster
+#### 동일한 서버 또는 클러스터 내의 대칭 배치
 {: #symmetric-deployment-in-the-same-server-or-cluster }
-The diagram below shows symmetric deployment where the runtimes and the administration components are deployed in the same server or cluster.
+아래의 다이어그램은 런타임과 관리 컴포넌트가 동일한 서버 또는 클러스터에 배치된 대칭 배치를 보여줍니다. 
 
-![A topology of WAS ND](was_nd_topology_1.jpg)
+![WAS ND의 토폴로지](was_nd_topology_1.jpg)
 
-The deployment of this topology has the following characteristics:
+이 토폴로지의 배치 특성은 다음과 같습니다. 
 
-* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of * {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in the same server or cluster as the administration components that manage them.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* 하나 이상의 관리 컴포넌트를 셀에 있는 하나 이상의 서버 또는 클러스터에 배치할 수 있습니다. * {{ site.data.keys.mf_console }}의 각 인스턴스는 하나의 관리 서비스 및 하나의 라이브 업데이트 서비스와 통신합니다.
+* 하나 이상의 런타임을 이들을 관리하는 관리 컴포넌트와 동일한 서버 또는 클러스터에 배치할 수 있습니다. 
+* 하나의 런타임은 하나의 {{ site.data.keys.mf_console }}에 의해서만 관리됩니다. 
+* 각 관리 서비스는 고유의 관리 데이터베이스 스키마를 사용합니다. 
+* 각 라이브 업데이트 서비스는 고유의 라이브 업데이트 데이터베이스 스키마를 사용합니다.
+* 각 런타임은 고유의 런타임 데이터베이스 스키마를 사용합니다. 
 
-#### Asymmetric deployment with runtimes and administration services in different server or cluster
+#### 런타임과 관리 서비스가 서로 다른 서버 또는 클러스터에 있는 비대칭 배치
 {: #asymmetric-deployment-with-runtimes-and-administration-services-in-different-server-or-cluster }
-The diagram below shows a topology where the runtimes are deployed in a different server or cluster from the administration services.
+아래의 다이어그램은 런타임이 관리 서비스와 다른 서버 또는 클러스터에 배치된 토폴로지를 보여줍니다. 
 
-![Topology for WAS ND](was_nd_topology_2.jpg)
+![WAS ND의 토폴로지](was_nd_topology_2.jpg)
 
-The deployment of this topology has the following characteristics:
+이 토폴로지의 배치 특성은 다음과 같습니다. 
 
-* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of * {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in other servers or clusters of the cell.
-* One {{ site.data.keys.mf_console }} manages several runtimes deployed in the other servers or clusters of the cell.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* 하나 이상의 관리 컴포넌트를 셀에 있는 하나 이상의 서버 또는 클러스터에 배치할 수 있습니다. * {{ site.data.keys.mf_console }}의 각 인스턴스는 하나의 관리 서비스 및 하나의 라이브 업데이트 서비스와 통신합니다.
+* 하나 이상의 런타임을 셀의 다른 서버 또는 클러스터에 배치할 수 있습니다. 
+* 하나의 {{ site.data.keys.mf_console }}에서 셀의 다른 서버 또는 클러스터에 배치된 여러 런타임을 관리합니다. 
+* 하나의 런타임은 하나의 {{ site.data.keys.mf_console }}에 의해서만 관리됩니다. 
+* 각 관리 서비스는 고유의 관리 데이터베이스 스키마를 사용합니다. 
+* 각 라이브 업데이트 서비스는 고유의 라이브 업데이트 데이터베이스 스키마를 사용합니다.
+* 각 런타임은 고유의 런타임 데이터베이스 스키마를 사용합니다. 
 
-This topology is advantageous, because it enables the runtimes to be isolated from the administration components and from other runtimes. It can be used to provide performance isolation, to isolate critical applications, and to enforce Service Level Agreement (SLA).
+이 토폴로지는 런타임을 관리 컴포넌트 및 다른 런타임과 격리시킬 수 있기 때문에 많은 장점이 있습니다. 이 토폴로지를 사용하면 성능을 격리시키고 주요 애플리케이션을 격리시키며 서비스 레벨 계약(SLA)을 시행할 수 있습니다. 
 
-#### Symmetric and asymmetric deployment
+#### 대칭 및 비대칭 배치
 {: #symmetric-and-asymmetric-deployment }
-The diagram below shows an example of symmetric deployment in Cluster1 and of asymmetric deployment in Cluster2, where Runtime2 and Runtime3 are deployed in a different cluster from the administration components. {{ site.data.keys.mf_console }} manages the runtimes deployed in Cluster1 and Cluster2.
+아래의 다이어그램은 클러스터1의 대칭 배치와 클러스터2의 비대칭 배치를 보여줍니다. 런타임2 및 런타임3이 관리 컴포넌트와 다른 클러스터에 배치되어 있습니다. {{ site.data.keys.mf_console }}에서는 클러스터1 및 클러스터2에 배치된 런타임을 관리합니다. 
 
-![Topology for WAS ND](was_nd_topology_3.jpg)
+![WAS ND의 토폴로지](was_nd_topology_3.jpg)
 
-The deployment of this topology has the following characteristics:
+이 토폴로지의 배치 특성은 다음과 같습니다. 
 
-* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in one or several servers or clusters of the cell.
-* One {{ site.data.keys.mf_console }} can manage several runtimes deployed in the same or other servers or clusters of the cell.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* 하나 이상의 관리 컴포넌트를 셀에 있는 하나 이상의 서버 또는 클러스터에 배치할 수 있습니다. {{ site.data.keys.mf_console }}의 각 인스턴스는 하나의 관리 서비스 및 하나의 라이브 업데이트 서비스와 통신합니다. 
+* 하나 이상의 런타임을 셀에 있는 하나 이상의 서버 또는 클러스터에 배치할 수 있습니다. 
+* 하나의 {{ site.data.keys.mf_console }}에서 셀의 동일한 서버 또는 클러스터에 배치되었거나 다른 서버 또는 클러스터에 배치된 여러 런타임을 관리할 수 있습니다. 
+* 하나의 런타임은 하나의 {{ site.data.keys.mf_console }}에 의해서만 관리됩니다. 
+* 각 관리 서비스는 고유의 관리 데이터베이스 스키마를 사용합니다. 
+* 각 라이브 업데이트 서비스는 고유의 라이브 업데이트 데이터베이스 스키마를 사용합니다.
+* 각 런타임은 고유의 런타임 데이터베이스 스키마를 사용합니다. 
 
-#### Configuration of JNDI properties
+#### JNDI 특성의 구성
 {: #configuration-of-jndi-properties-3 }
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+관리 서비스와 런타임 간의 JMX 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하려면 몇 가지 JNDI 특성이 필요합니다. 이러한 특성에 대한 세부사항은 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오. 
 
-The following local JNDI properties are required for the administration services and for the runtimes:
+관리 서비스 및 런타임에는 다음과 같은 로컬 JNDI 특성이 필요합니다. 
 
-| JNDI properties |	Values |
+| JNDI 특성 |	값 |
 |-----------------|--------|
 | mfp.topology.platform	| WAS |
 | mfp.topology.clustermode | Cluster |
-| mfp.admin.jmx.connector |	The JMX connector type to connect with the deployment manager. The value can be SOAP or RMI. SOAP is the default and preferred value. You must use RMI if the SOAP port is disabled. |
-| mfp.admin.jmx.dmgr.host |	The host name of the deployment manager. |
-| mfp.admin.jmx.dmgr.port |	The RMI or the SOAP port used by the deployment manager, depending on the value of mfp.admin.jmx.connector. |
+| mfp.admin.jmx.connector |	배치 관리자와 연결하는 데 사용되는 JMX 커넥터 유형. 가능한 값은 SOAP 또는 RMI입니다. SOAP는 기본값이며 선호되는 값이기도 합니다. SOAP 포트가 사용되지 않는 경우에는 RMI를 사용해야 합니다.  |
+| mfp.admin.jmx.dmgr.host |	배치 관리자의 호스트 이름 |
+| mfp.admin.jmx.dmgr.port |	배치 관리자에서 사용하는 RMI 또는 SOAP 포트. mfp.admin.jmx.connector의 값에 따라 다릅니다.  |
 
-Several administration components can be deployed to enable you to run the same server or cluster with separate administration components managing each of the different runtimes.
+여러 관리 컴포넌트를 배치하여 서로 다른 런타임을 관리하는 개별 관리 컴포넌트로 동일한 서버 또는 클러스터를 실행할 수 있습니다. 
 
-When several administration components are deployed, you must specify:
+여러 관리 컴포넌트를 배치하는 경우 다음을 지정해야 합니다. 
 
-* On each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** as the value defined for the administration service that manages that runtime.
+* 각 관리 서비스에서, 로컬 **mfp.admin.environmentid** JNDI 특성에 고유한 값
+* 각 런타임에서, 해당 런타임을 관리하는 관리 서비스에 대해 정의된 값과 동일한 로컬 **mfp.admin.environmentid**의 값
 
-If the virtual host that is mapped to an administration service application is not the default host, you must set the following properties on the administration service application:
+관리 서비스 애플리케이션에 맵핑된 가상 호스트가 기본 호스트가 아닌 경우 관리 서비스 애플리케이션에서 다음 특성을 설정해야 합니다.
 
-* **mfp.admin.jmx.user**: the user name of the WebSphere Application Server administrator
-* **mfp.admin.jmx.pwd**: the password of the WebSphere Application Server administrator
+* **mfp.admin.jmx.user**: WebSphere Application Server 관리자의 사용자 이름
+* **mfp.admin.jmx.pwd**: WebSphere Application Server 관리자의 비밀번호
 
-### Using a reverse proxy with server farm and WebSphere Application Server Network Deployment topologies
+### 서버 팜 및 WebSphere Application Server Network Deployment 토폴로지에서 리버스 프록시 사용
 {: #using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies }
-You can use a reverse proxy with distributed topologies. If your topology uses a reverse proxy, configure the required JNDI properties for the administration service.
+분산 토폴로지에서 리버스 프록시를 사용할 수 있습니다. 토폴로지에서 리버스 프록시를 사용하는 경우 관리 서비스에 필요한 JNDI 특성을 구성하십시오. 
 
-You can use a reverse proxy, such as IBM  HTTP Server, to front server farm or WebSphere  Application Server Network Deployment topologies. In this case, you must configure the administration components appropriately.
+서버 팜 또는 WebSphere  Application Server Network Deployment 토폴로지의 전면에 IBM  HTTP Server 등의 리버스 프록시를 사용할 수 있습니다. 이 경우 관리 컴포넌트를 적절히 구성해야 합니다. 
 
-You can call the reverse proxy from:
+다음 위치에서 리버스 프록시를 호출할 수 있습니다.
 
-* The browser when you access {{ site.data.keys.mf_console }}.
-* The runtime when it calls the administration service.
-* The {{ site.data.keys.mf_console }} component when it calls the administration service.
+* {{ site.data.keys.mf_console }}에 액세스하는 경우 브라우저
+* 관리 서비스를 호출하는 경우 런타임
+* 관리 서비스를 호출하는 경우 {{ site.data.keys.mf_console }} 컴포넌트
 
-If the reverse proxy is in a DMZ (a firewall configuration for securing local area networks) and a firewall is used between the DMZ and the internal network, this firewall must authorize all incoming requests from the application servers.
+리버스 프록시가 DMZ(근거리 통신망을 보안하기 위한 방화벽 구성) 내에 있고 DMZ와 내부 네트워크 사이에서 방화벽이 사용되는 경우, 이 방화벽은 애플리케이션 서버에서 수신되는 모든 요청에 권한을 부여해야 합니다. 
 
-When a reverse proxy is used in front of the application server infrastructure, the following JNDI properties must be defined for the administration service.
+리버스 프록시를 애플리케이션 서버 인프라 전면에서 사용하는 경우 관리 서비스에 대해 다음 JNDI 특성을 정의해야 합니다. 
 
-| JNDI properties |	Values |
+| JNDI 특성 |	값 |
 |-----------------|--------|
-| mfp.admin.proxy.protocol | The protocol that is used to communicate with the reverse proxy. It can be HTTP or HTTPS. |
-| mfp.admin.proxy.host | The host name of the reverse proxy. |
-| mfp.admin.proxy.port | The port number of the reverse proxy. |
+| mfp.admin.proxy.protocol | 리버스 프록시와 통신하는 데 사용되는 프로토콜. HTTP 또는 HTTPS일 수 있습니다. |
+| mfp.admin.proxy.host | 리버스 프록시의 호스트 이름 |
+| mfp.admin.proxy.port | 리버스 프록시의 포트 번호 |
 
-The **mfp.admin.endpoint** property that references the URL of the reverse proxy is also required for {{ site.data.keys.mf_console }}.
+리버스 프록시의 URL을 참조하는 **mfp.admin.endpoint** 특성은 {{ site.data.keys.mf_console }}에도 필요합니다. 
 
-### Constraints on {{ site.data.keys.mf_server }} push service
+### {{ site.data.keys.mf_server }} 푸시 서비스에 대한 제한조건
 {: #constraints-on-mobilefirst-server-push-service }
-The push service can be on the same application server as the administration service or the runtime, or can be on a different application server. The URL used by the client apps to contact the push service is the same as the URL used by the client apps to contact the runtime, excepted that the context root of the runtime is replaced by imfpush. If you install the push service on a different server than the runtime, your HTTP server must direct the traffic to the /imfpush context root to a server where the push service runs.
+푸시 서비스는 관리 서비스 또는 런타임과 동일한 애플리케이션 서버에 배치하거나 다른 애플리케이션 서버에 배치할 수 있습니다. 클라이언트 앱이 푸시 서비스에 접속하는 데 사용하는 URL은 클라이언트 앱이 런타임에 접속하는 데 사용하는 URL과 동일합니다(단, 런타임의 컨텍스트 루트는 imfpush로 대체됨). 런타임과 다른 서버에 푸시 서비스를 설치하는 경우, HTTP 서버는 /imfpush 컨텍스트 루트로의 트래픽을 푸시 서비스가 실행되는 서버로 경로 지정해야 합니다. 
 
-For more information about the JNDI properties that are needed to adapt the installation to a topology, see [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server). The push service must be installed with the context root **/imfpush**.
+토폴로지에 적합하게 설치를 구성하는 데 필요한 JNDI 특성에 대해서는 [{{ site.data.keys.mf_server }} 관리 서비스에서 {{ site.data.keys.mf_server }} 푸시 서비스 및 권한 부여 서버로](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)를 참조하십시오. 푸시 서비스는 컨텍스트 루트 **/imfpush**를 사용하여 설치해야 합니다.
 
-## Multiple {{ site.data.keys.product }} runtimes
+## 복수 {{ site.data.keys.product }} 런타임
 {: #multiple-mobilefirst-foundation-runtimes }
-You can install multiple runtimes. Each runtime must have its own context root, and all of these runtimes are managed by the same {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.mf_console }}.
+복수 런타임을 설치할 수 있습니다. 각 런타임은 고유의 컨텍스트 루트를 가져야 하며, 이러한 런타임은 모두 동일한 {{ site.data.keys.mf_server }} 관리 서비스 및 {{ site.data.keys.mf_console }}에 의해 관리됩니다. 
 
-The constraints as described in [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime) applies. Each runtime (with its context root) must have its own database tables.
+[{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product }} 런타임에 대한 제한조건](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)에 설명된 제한조건이 적용됩니다. 각 런타임(해당 컨텍스트 루트 포함)에는 자체 고유의 데이터베이스 테이블이 있어야 합니다.
 
-> For instructions, see [Configuring multiple runtimes](../server-configuration/#configuring-multiple-runtimes).
+> 지시사항은 [복수 런타임 구성](../server-configuration/#configuring-multiple-runtimes)을 참조하십시오.
 
-## Multiple instances of {{ site.data.keys.mf_server }} on the same server or WebSphere Application Server cell
+## 동일 서버 또는 WebSphere Application Server 셀의 복수 {{ site.data.keys.mf_server }} 인스턴스
 {: #multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell }
-By defining a common environment ID, multiple instances of {{ site.data.keys.mf_server }} are possible to be installed on the same server.
+공통 환경 ID를 정의함으로써 {{ site.data.keys.mf_server }}의 복수 인스턴스를 동일한 서버에 설치할 수 있습니다.
 
-You can install multiple instances of {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, and {{ site.data.keys.product }} runtime on the same application server or WebSphere  Application Server cell. However, you must distinguish their installations with the JNDI variable: **mfp.admin.environmentid**, which is a variable of the administration service and of the runtime. The administration service manages only the runtimes that have the same environment identifier. As such, only the runtime components and the administration service that have the same value for **mfp.admin.environmentid** are considered as part of the same installation.
+{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스, {{ site.data.keys.product }} 런타임의 복수 인스턴스를 동일한 애플리케이션 서버 또는 WebSphere  Application Server 셀에 설치할 수 있습니다. 그러나 관리 서비스 및 런타임의 변수인 JNDI 변수, **mfp.admin.environmentid**를 사용하여 설치를 구별해야 합니다. 관리 서비스는 환경 ID가 동일한 런타임만 관리합니다. 따라서 **mfp.admin.environmentid**의 값이 동일한 런타임 컴포넌트 및 관리 서비스만 동일한 설치의 일부로 간주됩니다.

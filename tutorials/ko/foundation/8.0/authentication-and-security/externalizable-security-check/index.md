@@ -1,35 +1,35 @@
 ---
 layout: tutorial
-title: Implementing the ExternalizableSecurityCheck
+title: ExternalizableSecurityCheck 구현
 breadcrumb_title: ExternalizableSecurityCheck
 relevantTo: [android,ios,windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-The abstract `ExternalizableSecurityCheck` class implements the `SecurityCheck` interface and handles two important aspects of the security check functionality: externalization and state management.
+abstract `ExternalizableSecurityCheck` 클래스는 `SecurityCheck` 인터페이스를 구현하고 보안 검사 기능성의 두 가지 중요 측면인 외부화 및 상태 관리를 핸들합니다. 
 
-* Externalization - this class implements the `Externalizable` interface, so that the derived classes don't need to implement it themselves.
-* State management - this class predefines a `STATE_EXPIRED` state, which means that the security check is expired and its state is not preserved. The derived classes need to define other states supported by their security check.
+* 외부화 - 이 클래스는 `Externalizable` 인터페이스를 구현하므로 파생된 클래스는 스스로 이를 구현할 필요가 없습니다. 
+* 상태 관리 - 이 클래스는 `STATE_EXPIRED` 상태를 사전 정의하는데 이는 보안 검사가 만료되고 상태가 유지되지 않음을 의미합니다.파생된 클래스는 보안 검사에서 지원하는 다른 상태를 정의해야 합니다. 
 
-Three methods are required to be implemented by the subclasses: `initStateDurations`, `authorize`, and `introspect`.
+서브클래스에 의해 구현되려면 세 개의 메소드 `initStateDurations`, `authorize` 및 `introspect`가 필요합니다. 
 
-This tutorial explains how to implement the class and demonstrates how to manage states.
+이 학습서는 클래스를 구현하는 방법을 설명하고 상태를 관리하는 방법을 보여줍니다.
 
-**Prerequisites:** Make sure to read the [Authorization concepts](../) and [Creating a Security Check](../creating-a-security-check) tutorials.
+**전제조건:** [권한 부여 개념](../) 및 [보안 검사 작성](../creating-a-security-check) 학습서를 읽으십시오. 
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to }
-* [The initStateDurations Method](#the-initstatedurations-method)
-* [The authorize Method](#the-authorize-method)
-* [The introspect Method](#the-introspect-method)
-* [The AuthorizationContext Object](#the-authorizationcontext-object)
-* [The RegistrationContext Object](#the-registrationcontext-object)
+* [initStateDurations 메소드](#the-initstatedurations-method)
+* [authorize 메소드](#the-authorize-method)
+* [introspect 메소드](#the-introspect-method)
+* [AuthorizationContext 오브젝트](#the-authorizationcontext-object)
+* [RegistrationContext 오브젝트](#the-registrationcontext-object)
 
-## The initStateDurations Method
+## initStateDurations 메소드
 {: #the-initstatedurations-method }
-The `ExternalizableSecurityCheck` defines an abstract method called `initStateDurations`. The subclasses must implement that method by providing the names and durations for all states supported by their security check. The duration values usually come from the security check configuration.
+`ExternalizableSecurityCheck`는 `initStateDurations`라는 abstract 메소드를 정의합니다. 서브클래스는 보안 검사가 지원하는 모든 상태에 대해 이름과 기간을 제공하여 해당 메소드를 구현해야 합니다. 기간 값은 대게 보안 검사 구성에서 가져옵니다. 
 
 ```java
 private static final String SUCCESS_STATE = "success";
@@ -39,13 +39,13 @@ protected void initStateDurations(Map<String, Integer> durations) {
 }
 ```
 
-> For more information about security check configuration, see the [configuration class section](../credentials-validation/security-check/#configuration-class) in the Implementing the CredentialsValidationSecurityCheck tutorial.
+> 보안 검사 구성에 대한 자세한 정보는 CredentialsValidationSecurityCheck 구현 학습서의 [configurationclass 섹션](../credentials-validation/security-check/#configuration-class)을 참조하십시오.
 
-## The authorize Method
+## authorize 메소드
 {: #the-authorize-method }
-The `SecurityCheck` interface defines a method called `authorize`. This method is responsible for implementing the main logic of the security check, managing states and sending a response to the client (success, challenge, or failure).
+`SecurityCheck` 인터페이스는 `authorize`라는 메소드를 정의합니다. 이 메소드는 보안 검사의 기본 로직의 구현, 상태 관리 및 클라이언트에 응답 전송(성공, 인증 확인 또는 실패)을 책임집니다. 
 
-Use the following helper methods to manage states:
+다음 헬퍼 메소드를 사용하여 상태를 관리하십시오. 
 
 ```java
 protected void setState(String name)
@@ -53,7 +53,7 @@ protected void setState(String name)
 ```java
 public String getState()
 ```
-The following example simply checks whether the user is logged-in and returns success or failure accordingly:
+다음 예제는 사용자가 로그인했는지 여부를 간단히 확인하고 이에 따라 성공 또는 실패를 리턴합니다.
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -69,32 +69,33 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-The `AuthorizationResponse.addSuccess` method adds the success scope and its expiration to the response object. It requires:
+`AuthorizationResponse.addSuccess` 메소드는 성공 범위와 해당 만기를 응답 오브젝트에 추가합니다. 다음이 필요합니다. 
 
-* The scope granted by the security check.
-* The expiration of the granted scope.  
-The `getExpiresAt` helper method returns the time at which the current state expires, or 0 if the current state is null:
+* 보안 검사에서 부여한 범위
+* 부여된 범위의 만기.
+  
+`getExpiresAt` 헬퍼 메소드는 현재 상태가 만료되는 시간을 리턴하거나 현재 상태가 널이면 0을 리턴합니다. 
 
   ```java
   public long getExpiresAt()
   ```
    
-* The name of the security check.
+* 보안 검사의 이름.
 
-The `AuthorizationResponse.addFailure` method adds a failure to the response object. It requires:
+`AuthorizationResponse.addFailure` 메소드는 실패를 응답 오브젝트에 추가합니다. 다음이 필요합니다. 
 
-* The name of the security check.
-* A failure `Map` object.
+* 보안 검사의 이름.
+* 실패 `Map` 오브젝트. 
 
-The `AuthorizationResponse.addChallenge` method adds a challenge to the response object. It requires:
+`AuthorizationResponse.addChallenge` 메소드는 인증 확인을 응답 오브젝트에 추가합니다. 다음이 필요합니다. 
 
-* The name of the security check.
-* A challenge `Map` object.
+* 보안 검사의 이름.
+* 인증 확인 `Map` 오브젝트. 
 
-## The introspect Method
+## introspect 메소드
 {: #the-introspect-method }
-The `SecurityCheck` interface defines a method called `introspect`. This method must make sure that the security check is in the state that grants the requested scope. If the scope is granted, the security check must report the granted scope, its expiration, and a custom introspection data to the result parameter. If the scope is not granted, the security check does nothing.  
-This method might change the state of the security check and/or the client registration record.
+`SecurityCheck` 인터페이스는 `introspect`라는 메소드를 정의합니다. 이 메소드는 보안 검사가 요청된 범위를 부여하는 상태에 있음을 확인해야 합니다. 범위가 부여되면, 보안 검사는 결과 매개변수에 부여된 범위, 해당 만기 및 사용자 정의 자체 점검 데이터를 보고해야 합니다. 범위가 부여되지 않으면, 보안 검사는 아무것도 수행하지 않습니다.   
+이 메소드는 보안 검사 및/또는 클라이언트 등록 레코드의 상태를 변경할 수도 있습니다. 
 
 ```java
 public void introspect(Set<String> checkScope, IntrospectionResponse response) {
@@ -104,58 +105,58 @@ public void introspect(Set<String> checkScope, IntrospectionResponse response) {
 }
 ```
 
-## The AuthorizationContext Object
+## AuthorizationContext 오브젝트
 {: #the-authorizationcontext-object }
-The `ExternalizableSecurityCheck` class provides the `AuthorizationContext authorizationContext` object which is used for storing transient data associated with the current client for the security check.  
-Use the following methods to store and obtain data:
+`ExternalizableSecurityCheck` 클래스는 보안 검사에 대한 현재 클라이언트와 연관된 임시 데이터를 저장하는 데 사용되는 `AuthorizationContext authorizationContext` 오브젝트를 제공합니다.  
+다음 메소드를 사용하여 데이터를 저장하고 얻으십시오. 
 
-* Get the authenticated user set by this security check for the current client:
+* 현재 클라이언트를 위해 이 보안 검사에서 설정한 인증된 사용자를 가져오십시오.
 
   ```java
   AuthenticatedUser getActiveUser();
   ```
   
-* Set the active user for the current client by this security check:
+* 이 보안 검사로 현재 클라이언트를 위한 활성 사용자를 설정하십시오. 
 
   ```java
   void setActiveUser(AuthenticatedUser user);
   ```
 
-## The RegistrationContext Object
+## RegistrationContext 오브젝트
 {: #the-registrationcontext-object }
-The `ExternalizableSecurityCheck` class provides the `RegistrationContext registrationContext` object which is used for storing persistent/deployment data associated with the current client.  
-Use the following methods to store and obtain data:
+`ExternalizableSecurityCheck` 클래스는 현재 클라이언트와 연관된 지속적/배치 데이터를 저장하는 데 사용되는 `RegistrationContext registrationContext` 오브젝트를 제공합니다.  
+다음 메소드를 사용하여 데이터를 저장하고 얻으십시오. 
 
-* Get the user that is registered by this security check for the current client:
+* 현재 클라이언트를 위해 이 보안 검사에서 등록한 사용자를 가져오십시오.
 
   ```java
   AuthenticatedUser getRegisteredUser();
   ```
   
-* Register the given user for the current client:
+* 현재 클라이언트를 위해 지정된 사용자를 등록하십시오.
 
   ```java
   setRegisteredUser(AuthenticatedUser user);
   ```
   
-* Get the public persistent attributes of the current client:
+* 현재 클라이언트의 public 지속적 속성을 가져오십시오.
 
   ```java
   PersistentAttributes getRegisteredPublicAttributes();
   ```
   
-* Get the protected persistent attributes of the current client:
+* 현재 클라이언트의 protected 지속적 속성을 가져오십시오.
 
   ```java
   PersistentAttributes getRegisteredProtectedAttributes();
   ```
   
-* Find the registration data of mobile clients by the given search criteria:
+* 지정된 검색 기준으로 모바일 클라이언트의 등록 데이터를 찾으십시오. 
 
   ```java
   List<ClientData> findClientRegistrationData(ClientSearchCriteria criteria);
   ```
 
-## Sample Application
+## 샘플 애플리케이션
 {: #sample-application }
-For a sample that implements the `ExternalizableSecurityCheck`, see the [Enrollment](../enrollment) tutorial.
+`ExternalizableSecurityCheck`를 구현하는 샘플에 대해서는 [등록](../enrollment) 학습서를 참조하십시오. 

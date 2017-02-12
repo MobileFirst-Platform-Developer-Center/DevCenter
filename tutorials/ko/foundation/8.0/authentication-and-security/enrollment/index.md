@@ -1,51 +1,51 @@
 ---
 layout: tutorial
-title: Enrollment
-breadcrumb_title: Enrollment
+title: 등록
+breadcrumb_title: 등록
 relevantTo: [android,ios,windows,javascript]
 weight: 7
-downloads:
-  - name: Download Cordova project
+다운로드:
+  - 이름: Cordova 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80
-  - name: Download iOS Swift project
+  - 이름: iOS Swift 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80
-  - name: Download Android project
+  - 이름: Android 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80
-  - name: Download Web project
+  - 이름: 웹 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80
-  - name: Download SecurityCheck Maven project
+  - 이름: SecurityCheck Maven 프로젝트 다운로드
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-This sample demonstrates a custom enrollment process and step-up authorization. During this one-time enrollment process, the user is required to enter his user name and password, and to define a PIN code.  
+이 샘플은 사용자 정의 등록 프로세스 및 설정 권한 부여를 보여줍니다. 이 일회성 등록 프로세스 동안 사용자는 PIN 코드를 정의하기 위해 사용자 이름과 비밀번호를 입력하도록 요청됩니다.  
 
-**Prerequisites:** Make sure to read the [ExternalizableSecurityCheck](../externalizable-security-check/) and [Step-up](../step-up/) tutorials.
+**전제조건:** [ExternalizableSecurityCheck](../externalizable-security-check/) 및 [설정](../step-up/) 학습서를 읽으십시오. 
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to }
-* [Application Flow](#application-flow)
-* [Storing Data in Persistent Attributes](#storing-data-in-persistent-attributes)
-* [Security Checks](#security-checks)
-* [Sample Applications](#sample-applications)
+* [애플리케이션 플로우](#application-flow)
+* [지속적 속성에 데이터 저장](#storing-data-in-persistent-attributes)
+* [보안 검사](#security-checks)
+* [샘플 애플리케이션](#sample-applications)
 
-## Application Flow
+## 애플리케이션 플로우
 {: #application-flow }
-* When the application starts for the first time (before enrollment), it shows the UI with two buttons: **Get public data** and **Enroll**.
-* When the user taps on the **Enroll** button to start enrollment, he is prompted with a log-in form and is then requested to set a PIN code.
-* After the user has enrolled successfully, the UI includes four buttons: **Get public data**, **Get balance**, **Get transactions**, and **Logout**. The user can access all four buttons without entering the PIN code.
-* When the application is launched for a second time (after enrollment), the UI still includes all four buttons. However, when the user clicks the **Get transactions*** button, he is required to enter the PIN code.
+* 애플리케이션이 처음으로 시작될 때(등록 전에) **공용 데이터 가져오기** 및 **등록**의 두 개 단추가 있는 UI가 표시됩니다. 
+* 사용자가 등록을 시작하기 위해 **등록** 단추를 누르면 로그인 양식이 프롬프트로 표시되고 PIN 코드를 설정하도록 요청됩니다. 
+* 사용자가 성공적으로 등록한 후 UI는 **공용 데이터 가져오기**, **잔고 가져오기**, **거래 가져오기**, **로그아웃**의 네 가지 단추를 포함하게 됩니다. 사용자는 PIN 코드를 입력하지 않고 네 개 단추 모두에 액세스할 수 있습니다.
+* 애플리케이션이 두 번째 실행될 때(등록 후) UI가 여전히 네 개 단추를 포함합니다.하지만 사용자가 **거래 가져오기*** 단추를 클릭할 경우 PIN 코드를 입력하도록 요청됩니다. 
 
-After three failing attempts at entering the PIN code, the user is prompted to authenticate again with a user name and password, and to reset a PIN code.
+PIN 코드 입력 시도에 세 번 실패한 후에는 사용자 이름과 비밀번호로 다시 인증받고 PIN 코드를 재설정하도록 프롬프트가 표시됩니다.
 
-## Storing Data in Persistent Attributes
+## 지속적 속성에 데이터 저장
 {: #storing-data-in-persistent-attributes }
-You can choose to save protected data in the `PersistentAttributes` object which is a container for custom attributes of a registered client. The object can be accessed either from a security check class or from an adapter resource class.
+보호된 데이터를 등록된 클라이언트의 사용자 속성에 대한 컨테이너인 `PersistentAttributes` 오브젝트에 저장하도록 선택할 수 있습니다.오브젝트는 보안 검사 클래스 또는 어댑터 자원 클래스 중 하나에서 액세스할 수 있습니다. 
 
-In the provided sample application the `PersistentAttributes` object is used in the adapter resource class to store the PIN code:
+제공된 샘플 애플리케이션에서 `PersistentAttributes` 오브젝트는 PIN 코드를 저장하기 위해 어댑터 자원 클래스에 사용됩니다. 
 
-* The **setPinCode** resource adds the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
+* **setPinCode** 자원은 **pinCode** 속성을 추가하고 변경을 저장하기 위해 `AdapterSecurityContext.storeClientRegistrationData()` 메소드를 호출합니다. 
 
   ```java
   @POST
@@ -60,9 +60,9 @@ In the provided sample application the `PersistentAttributes` object is used in 
   }
   ```
   
-  Here, `users` has a key called `EnrollmentUserLogin` which itself contains the `AuthenticatedUser` object.
+  여기서 `users`는 `AuthenticatedUser` 오브젝트를 포함하는 `EnrollmentUserLogin`이라는 키를 갖습니다.
 
-* The **unenroll** resource deletes the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
+* **unenroll** 자원은 **pinCode** 속성을 삭제하고 변경을 저장하기 위해 `AdapterSecurityContext.storeClientRegistrationData()` 메소드를 호출합니다. 
 
   ```java
   @DELETE
@@ -79,15 +79,15 @@ In the provided sample application the `PersistentAttributes` object is used in 
   }
   ```
 
-## Security Checks
+## 보안 검사
 {: #security-checks }
-The Enrollment sample contains three security checks:
+등록 샘플은 세 개의 보안 검사를 포함합니다.
 
 ### EnrollmentUserLogin
 {: #enrollmentuserlogin }
-The `EnrollmentUserLogin` security check protects the **setPinCode** resource so that only authenticated users can set a PIN code. This security check is meant to expire quickly and to hold only for the duration of the "first time experience". It is identical to the `UserLogin` security check explained in the [Implementing the UserAuthenticationSecurityCheck](../user-authentication/security-check) tutorial? except for the extra `isLoggedIn` and `getRegisteredUser` methods.  
-The `isLoggedIn` method returns `true` if the security check state equals SUCCESS and `false` otherwise.  
-The `getRegisteredUser` method returns the authenticated user.
+`EnrollmentUserLogin` 보안 검사는 인증된 사용자만 PIN 코드를 설정할 수 있도록 **setPinCode** 자원을 보호합니다. 이 보안 검사는 금방 만료되고 "처음 경험"하는 동안에만 유지됨을 의미합니다. 추가 `isLoggedIn` 및 `getRegisteredUser` 메소드를 제외하고 [UserAuthenticationSecurityCheck 구현](../user-authentication/security-check) 학습서에서 설명한 `UserLogin` 보안 검사와 동일합니다.   
+`isLoggedIn` 메소드는 보안 검사 상태가 SUCCESS일 경우 `true`를 리턴하고 그 외의 경우는 `false`를 리턴합니다.    
+`getRegisteredUser` 메소드는 인증된 사용자를 리턴합니다. 
 
 ```java
 public boolean isLoggedIn(){
@@ -102,16 +102,16 @@ public AuthenticatedUser getRegisteredUser() {
 
 ### EnrollmentPinCode
 {: #enrollmentpincode }
-The `EnrollmentPinCode` security check protects the **Get transactions** resource and is similar to the `PinCodeAttempts` security check explained in the [Implementing the CredentialsValidationSecurityCheck](../credentials-validation/security-check) tutorial, except for a few changes.
+`EnrollmentPinCode` 보안 검사는 **거래 가져오기** 자원을 보호하고 몇 가지 변경사항을 제외하고는 [CredentialsValidationSecurityCheck 구현](../credentials-validation/security-check) 학습서에 설명된 `PinCodeAttempts` 보안 검사와 유사합니다.
 
-In this tutorial's example, `EnrollmentPinCode` **depends on** `EnrollmentUserLogin`. After a successfully login to `EnrollmentUserLogin`, the user is only asked to enter a PIN code.
+이 학습서의 예제에서 `EnrollmentPinCode`는 `EnrollmentUserLogin`에 **종속됩니다**. `EnrollmentUserLogin`에 성공적으로 로그인한 후 사용자는 PIN 코드를 입력하도록 요청받습니다.
 
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
 
-When the application starts **for the first time** and the user is successfully enrolled, the user must able to access the **Get transactions** resource without having to enter the PIN code that he just set. For this purpose, the `authorize` method uses the `EnrollmentUserLogin.isLoggedIn` method to check whether the user is logged in. This means that as long as `EnrollmentUserLogin` is not expired, the user can access **Get transactions**.
+애플리케이션이 **처음으로** 시작되고 사용자가 성공적으로 등록한 경우, 사용자는 방금 설정한 PIN 코드를 입력하지 않고도 **거래 가져오기** 자원에 액세스할 수 있어야 합니다. 이를 위해 `authorize` 메소드는 `EnrollmentUserLogin.isLoggedIn` 메소드를 사용하여 사용자가 로그인되어 있는지를 확인합니다. 이는 `EnrollmentUserLogin`이 만료되지 않는 한 사용자가 **거래 가져오기**에 액세스할 수 있음을 의미합니다. 
 
 ```java
 @Override
@@ -124,7 +124,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-When the user fails to enter the PIN code after three attempts, the tutorial is designed so that the **pinCode** attribute is deleted before the user is prompted to authenticate by using the user name and password and resetting a PIN code.
+사용자가 세 번의 시도 후 PIN 코드 입력에 실패하면 사용자 이름과 비밀번호를 사용하고 PIN 코드를 재설정하여 사용자가 인증을 받도록 프롬프트되기 전에 **pinCode** 속성이 삭제되도록 학습서가 설계되어 있습니다. 
 
 ```java
 @Override
@@ -143,7 +143,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-The `validateCredentials` method is the same as in the `PinCodeAttempts` security check, except that here the credentials are compared to the stored **pinCode** attribute.
+`validateCredentials` 메소드는 `PinCodeAttempts` 보안 검사와 동일하며, 여기서 신임 정보는 저장된 **pinCode** 속성에 해당합니다. 
 
 ```java
 @Override
@@ -171,15 +171,15 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ### IsEnrolled
 {: #isenrolled }
-The `IsEnrolled` security check protects:
+`IsEnrolled` 보안 검사는 다음을 보호합니다. 
 
-* The **getBalance** resource so that only enrolled users can see the balance.
-* The **transactions** resource so that only enrolled users can get the transactions.
-* The **unenroll** resource so that deleting the **pinCode** is possible only if it has been set before.
+* 등록된 사용자만 잔고를 볼 수 있도록 **getBalance** 자원을 보호합니다. 
+* 등록된 사용자만 거래를 가져올 수 있도록 **거래** 자원을 보호합니다. 
+* 이전에 설정된 경우에만 **pinCode**를 삭제할 수 있도록 **등록 취소** 자원을 보호합니다.
 
-#### Creating the Security Check
+#### 보안 검사 작성
 {: #creating-the-security-check }
-[Create a Java adapter](../../adapters/creating-adapters/) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
+[Java 어댑터를 작성](../../adapters/creating-adapters/)하고 `ExternalizableSecurityCheck`를 확장하는 `IsEnrolled`라는 Java 클래스를 추가하십시오. 
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
@@ -191,9 +191,9 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
 }
 ```
 
-#### The IsEnrolledConfig Configuration Class
+#### IsEnrolledConfig 구성 클래스
 {: #the-isenrolledconfig-configuration-class }
-Create an `IsEnrolledConfig` configuration class that extends `ExternalizableSecurityCheckConfig`:
+`ExternalizableSecurityCheckConfig`를 확장하는 `IsEnrolledConfig` 구성 클래스를 작성하십시오. 
 
 ```java
 public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
@@ -207,7 +207,8 @@ public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
 }
 ```
 
-Add the `createConfiguration` method to the `IsEnrolled` class:
+`createConfiguration` 메소드를 `IsEnrolled`
+클래스에 추가하십시오.
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
@@ -217,9 +218,9 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
     }
 }
 ```
-#### The initStateDurations Method
+#### initStateDurations 메소드
 {: #the-initstatedurations-method }
-Set the duration for the SUCCESS state to `successStateExpirationSec`:
+SUCCESS 상태의 기간을 `successStateExpirationSec`로 설정하십시오. 
 
 ```java
 @Override
@@ -228,9 +229,9 @@ protected void initStateDurations(Map<String, Integer> durations) {
 }
 ```
 
-#### The authorize Method
+#### authorize 메소드
 {: #the-authorize-method }
-The code sample simply checks whether the user is enrolled and returns success or failure accordingly:
+코드 샘플은 사용자가 등록되었는지 간단히 확인하고 이에 따라 성공 또는 실패를 리턴합니다. 
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -247,25 +248,25 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-* In case the `pinCode` attribute exists:
+* `pinCode` 속성이 존재하는 경우:
 
- * Set the state to SUCCESS by using the `setState` method.
- * Add success to the response object by using the `addSuccess` method.
+ * `setState` 메소드를 사용하여 상태를 SUCCESS로 설정하십시오. 
+ * `addSuccess` 메소드를 사용하여 성공을 응답 오브젝트에 추가하십시오. 
 
-* In case the `pinCode` attribute doesn't exist:
+* `pinCode` 속성이 존재하지 않는 경우:
 
- * Set the state to EXPIRED by using the `setState` method.
- * Add failure to the response object by using the `addFailure` method.
+ * `setState` 메소드를 사용하여 상태를 EXPIRED로 설정하십시오. 
+ * `addFailure` 메소드를 사용하여 실패를 응답 오브젝트에 추가하십시오. 
 
 <br/>
-The `IsEnrolled` security check **depends on** `EnrollmentUserLogin`:
+`IsEnrolled` 보안 검사는 `EnrollmentUserLogin`에 **종속**됩니다.
 
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
 
-Set the active user by adding the following code:
+다음 코드를 추가하여 활성 사용자를 설정하십시오. 
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -287,7 +288,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
    
-Then, the `transactions` resource gets the current `AuthenticatedUser` object to present the display name:
+그런 다음 `transactions` 자원이 표시 이름을 제공하기 위해 현재 `AuthenticatedUser` 오브젝트를 가져옵니다. 
 
 ```java
 @GET
@@ -301,9 +302,8 @@ public String getTransactions(){
 }
 ```
     
-> For more information about the `securityContext`, see the [Security API](../../adapters/java-adapters/#security-api) section in the Java adapter tutorial.
-
-Add the registered user to the response object by adding the following:
+> `securityContext`에 대한 자세한 정보는 Java 어댑터 학습서에서 [보안
+API](../../adapters/java-adapters/#security-api) 섹션을 참조하십시오. 다음을 추가하여 등록된 사용자를 응답 오브젝트에 추가하십시오.
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -325,26 +325,26 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
     
-In our sample code, the `IsEnrolled` challenge handler's `handleSuccess` method use the user object to present the display name.
+샘플 코드에서 `IsEnrolled` 인증 확인 핸들러의 `handleSuccess`
+메소드는 표시 이름을 제공하기 위해 사용자 오브젝트를 사용합니다. 
 
-<img alt="Enrollment sample application" src="sample_application.png" style="float:right"/>
-## Sample Applications
+<img alt="등록 샘플 애플리케이션" src="sample_application.png" style="float:right"/>
+## 샘플 애플리케이션
 {: #sample-applications }
 
-### Security check
+### 보안 검사
 {: #security-check }
-The `EnrollmentUserLogin`, `EnrollmentPinCode`, and `IsEnrolled` security checks are available in the SecurityChecks project under the Enrollment Maven project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+`EnrollmentUserLogin`, `EnrollmentPinCode` 및 `IsEnrolled` 보안 검사는 등록 Maven 프로젝트 아래의 SecurityChecks 프로젝트에서 사용 가능합니다. 보안 검사 Maven 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80)하십시오. 
 
-### Applications
+### 애플리케이션
 {: #applications }
-Sample applications are available for iOS (Swift), Android, Cordova, and Web.
+샘플 애플리케이션은 OS(Swift), Android, Cordova 및 웹에서 사용 가능합니다. 
 
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80) the Cordova project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80) the iOS Swift project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80) the Android project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) the Web app project.
+* Cordova 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80)하십시오. 
+* iOS Swift 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80)하십시오. 
+* Android 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80)하십시오. 
+* 웹 앱 프로젝트를 [다운로드하려면 클릭](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80)하십시오. 
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+샘플의 README.md 파일에 있는 지시사항을 따르십시오. 

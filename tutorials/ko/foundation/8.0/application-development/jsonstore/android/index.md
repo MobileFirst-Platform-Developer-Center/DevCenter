@@ -1,48 +1,48 @@
 ---
 layout: tutorial
-title: JSONStore in Android applications
+title: Android 애플리케이션의 JSONStore
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 downloads:
-  - name: Download Android Studio project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
-  - name: Download Adapter Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+  - 이름: Android Studio 프로젝트 다운로드
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
+  - 이름: 어댑터 Maven 프로젝트 다운로드
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Prerequisites
+## 전제조건
 {: #prerequisites }
 
-* Read the [JSONStore parent tutorial](../)
-* Make sure the {{ site.data.keys.product_adj }} Native SDK was added to the Android Studio project. Follow the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android/) tutorial.
+* [JSONStore 상위 학습서](../)를 읽으십시오. 
+* {{ site.data.keys.product_adj }} 고유 SDK가 Android Studio 프로젝트에 추가되었는지 확인하십시오. [Android 애플리케이션에 {{ site.data.keys.product }} SDK 추가](../../../application-development/sdk/android/) 학습서에 따르십시오. 
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to }
-* [Adding JSONStore](#adding-jsonstore)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-* [Sample application](#sample-application)
+* [JSONStore 추가](#adding-jsonstore)
+* [기본 사용법](#basic-usage)
+* [고급 사용법](#advanced-usage)
+* [샘플 애플리케이션](#sample-application)
 
-## Adding JSONStore
+## JSONStore 추가
 {: #adding-jsonstore }
-1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
+1. **Android → Gradle 스크립트**에서 **build.gradle(모듈: 앱)** 파일을 선택하십시오. 
 
-2. Add the following to the existing `dependencies` section:
+2. 기존 `dependencies` 섹션에 다음을 추가하십시오. 
 
 ```
 compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
 ```
 
-## Basic Usage
+## 기본 사용법
 {: #basic-usage }
-### Open
+### 열기
 {: #open }
-Use `openCollections` to open one or more JSONStore collections.
+`openCollections`를 사용하여 하나 이상의 JSONStore 콜렉션을 여십시오. 
 
-Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists. If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
+콜렉션 시작 또는 프로비저닝은 콜렉션 및 문서를 보관하는 지속적 스토리지가 없는 경우 이를 작성하는 것을 의미합니다. 지속적 스토리지가 암호화되어 있고 올바른 비밀번호가 전달되면 데이터에 액세스할 수 있게 하는 필수 보안 프로시저가 실행됩니다. 
 
-For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
+초기화 시 사용할 수 있는 선택적 기능은 이 학습서의 두 번째 파트에서 **보안, 다중 사용자 지원** 및 **{{ site.data.keys.product_adj }} 어댑터 통합**을 참조하십시오. 
 
 ```java
 Context context = getContext();
@@ -59,9 +59,9 @@ try {
 }
 ```
 
-### Get
+### 가져오기
 {: #get }
-Use `getCollectionByName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionByName`.
+`getCollectionByName`을 사용하여 콜렉션에 대한 액세서를 작성하십시오. `getCollectionByName`을 호출하기 전에 `openCollections`를 먼저 호출해야 합니다. 
 
 ```java
 Context context = getContext();
@@ -74,11 +74,11 @@ try {
 }
 ```
 
-The variable `collection` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`
+이제 변수 `collection`을 사용하여 `people` 콜렉션에 대한 조작(예: `add`, `find` 및 `replace`)을 수행할 수 있습니다. 
 
-### Add
+### 추가
 {: #add }
-Use `addData` to store data as documents inside a collection
+`addData`를 사용하여 데이터를 콜렉션 내에 문서로 저장하십시오. 
 
 ```java
 Context context = getContext();
@@ -96,9 +96,9 @@ try {
 }
 ```
 
-### Find
+### 찾기
 {: #find }
-Use `findDocuments` to locate a document inside a collection by using a query. Use `findAllDocuments` to retrieve all the documents inside a collection. Use `findDocumentById` to search by the document unique identifier.
+`findDocuments`를 사용하여 조회를 통해 콜렉션 내에서 문서를 찾으십시오. `findAllDocuments`를 사용하여 콜렉션 내의 모든 문서를 검색하십시오. `findDocumentById`를 사용하여 문서 고유 ID로 검색하십시오. 
 
 ```java
 Context context = getContext();
@@ -120,9 +120,9 @@ try {
 }
 ```
 
-### Replace
+### 대체
 {: #replace }
-Use `replaceDocument` to modify documents inside a collection. The field that you use to perform the replacement is `_id,` the document unique identifier.
+`replaceDocument`를 사용하여 콜렉션 내의 문서를 수정하십시오. 대체 수행 시 사용하는 필드는 문서 고유 ID인 `_id,`입니다. 
 
 ```java
 Context context = getContext();
@@ -140,12 +140,12 @@ try {
 }
 ```
 
-This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
+이 예제에서는 `{_id: 1, json: {name: 'yoel', age: 23} }` 문서가 콜렉션에 있다고 가정합니다. 
 
-### Remove
+### 제거
 {: #remove }
-Use `removeDocumentById` to delete a document from a collection.
-Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial.
+`removeDocumentById`를 사용하여 콜렉션에서 문서를 삭제하십시오.
+`markDocumentClean`을 호출할 때까지 콜렉션에서 문서가 지워지지 않습니다. 자세한 정보는 이 학습서 뒤쪽에 있는 **{{ site.data.keys.product_adj }} 어댑터 통합** 절을 참조하십시오. 
 
 ```java
 Context context = getContext();
@@ -162,9 +162,9 @@ try {
 }
 ```
 
-### Remove Collection
+### 콜렉션 제거
 {: #remove-collection }
-Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+`removeCollection`을 사용하여 콜렉션 내에 저장된 모든 문서를 삭제하십시오. 이 조작은 데이터베이스 용어로 된 테이블을 삭제하는 것과 유사합니다. 
 
 ```java
 Context context = getContext();
@@ -178,14 +178,14 @@ try {
 }
 ```
 
-### Destroy
+### 영구 삭제
 {: #destroy }
-Use `destroy` to remove the following data:
+`destroy`를 사용하여 다음 데이터를 제거합니다. 
 
-* All documents
-* All collections
-* All Stores - See **Multiple User Support** later in this tutorial
-* All JSONStore metadata and security artifacts - See **Security** later in this tutorial
+* 모든 문서
+* 모든 콜렉션
+* 모든 저장소 - 이 학습서 뒤쪽의 **다중 사용자 지원** 참조
+* 모든 JSONStore 메타데이터 및 보안 아티팩트 - 이 학습서 뒤쪽의 **보안** 참조
 
 ```java
 Context context = getContext();
@@ -197,18 +197,18 @@ try {
 }
 ```
 
-## Advanced Usage
+## 고급 사용법
 {: #advanced-usage }
-### Security
+### 보안
 {: #security }
-You can secure all the collections in a store by passing a `JSONStoreInitOptions` object with a password to the `openCollections` function. If no password is passed, the documents of all the collections in the store are not encrypted.
+비밀번호를 사용하여 `JSONStoreInitOptions` 오브젝트를 `openCollections` 함수에 전달함으로써 저장소의 모든 콜렉션을 보호할 수 있습니다. 비밀번호가 전달되지 않으면 저장소에 포함된 모든 콜렉션의 문서가 암호화되지 않습니다. 
 
-Some security metadata is stored in the shared preferences (Android).  
-The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
+일부 보안 메타데이터는 공유 환경 설정(Android)에 저장됩니다.   
+저장소는 256비트 AES(Advanced Encryption Standard) 키로 암호화됩니다. 모든 키는 PBKDF2(Password-Based Key Derivation Function 2)로 강화됩니다. 
 
-Use `closeAll` to lock access to all the collections until you call `openCollections` again. If you think of `openCollections` as a login function you can think of `closeAll` as the corresponding logout function.
+`openCollections`를 다시 호출할 때까지 `closeAll`을 사용하여 모든 콜렉션에 대한 액세스를 잠그십시오. `openCollections`를 로그인 함수로 고려하는 경우 `closeAll`을 해당 로그아웃 함수로 고려할 수 있습니다. 
 
-Use `changePassword` to change the password.
+`changePassword`를 사용하여 비밀번호를 변경하십시오. 
 
 ```java
 Context context = getContext();
@@ -227,9 +227,9 @@ try {
 }
 ```
 
-#### Multiple User Support
+#### 다중 사용자 지원
 {: #multiple-user-support }
-You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `openCollections` function can take an options object with a username. If no username is given, the default username is ""**jsonstore**"".
+단일 {{ site.data.keys.product_adj }} 애플리케이션에 여러 콜렉션을 포함하는 다중 저장소를 작성할 수 있습니다. `openCollections` 함수는 사용자 이름을 사용하여 옵션 오브젝트를 가져올 수 있습니다. 사용자 이름이 없는 경우 기본 사용자 이름은 ""**jsonstore**""입니다. 
 
 ```java
 Context context = getContext();
@@ -248,14 +248,14 @@ try {
 }
 ```
 
-#### {{ site.data.keys.product_adj }} Adapter Integration
+#### {{ site.data.keys.product_adj }} 어댑터 통합
 {: #mobilefirst-adapter-integration }
-This section assumes that you are familiar with adapters. Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
-You can achieve these goals by using functions such as `WLResourceRequest` or your own instance of an `HttpClient` if you need more flexibility.
+이 절에서는 사용자가 어댑터에 익숙하다고 가정합니다. 어댑터 통합은 선택사항이며 콜렉션의 데이터를 어댑터로 전송하고 어댑터의 데이터를 콜렉션으로 가져오는 방법을 제공합니다.
+보다 유연해야 하는 경우 `WLResourceRequest`와 같은 함수를 사용하거나 고유 `HttpClient` 인스턴스를 사용하여 해당 목표를 달성할 수 있습니다. 
 
-#### Adapter Implementation
+#### 어댑터 구현
 {: #adapter-implementation }
-Create an adapter and name it "**JSONStoreAdapter**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+어댑터를 작성하고 이름을 "**JSONStoreAdapter**"로 지정하십시오. 해당 프로시저 `addPerson`, `getPeople`, `pushPeople`, `removePerson` 및 `replacePerson`을 정의하십시오. 
 
 ```javascript
 function getPeople() {
@@ -286,9 +286,9 @@ function replacePerson(data) {
 }
 ```
 
-#### Load data from {{ site.data.keys.product_adj }} Adapter
+#### {{ site.data.keys.product_adj }} 어댑터의 데이터 로드
 {: #load-data-from-mobilefirst-adapter }
-To load data from an adapter use `WLResourceRequest`.
+어댑터의 데이터를 로드하려면 `WLResourceRequest`를 사용하십시오. 
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -314,9 +314,9 @@ try {
 }
 ```
 
-#### Get Push Required (Dirty Documents)
+#### 푸시 가져오기 필요(더티 문서)
 {: #get-push-required-dirty-documents }
-Calling `findAllDirtyDocuments` returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
+`findAllDirtyDocuments`를 호출하면 백엔드 시스템에 존재하지 않는 로컬 수정이 포함된 문서인 "더티 문서" 배열이 리턴됩니다. 
 
 ```java
 Context  context = getContext();
@@ -330,11 +330,11 @@ try {
 }
 ```
 
-To prevent JSONStore from marking the documents as "dirty", pass the option `options.setMarkDirty(false)` to `add`, `replace`, and `remove`.
+JSONStore에서 문서를 "더티"로 표시하지 않게 하려면 `options.setMarkDirty(false)` 옵션을 `add`, `replace` 및 `remove`에 전달하십시오. 
 
-#### Push changes
+#### 변경사항 푸시
 {: #push-changes }
-To push changes to an adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
+어댑터에 변경사항을 푸시하려면 `findAllDirtyDocuments`를 호출하여 수정된 문서 목록을 가져온 후 `WLResourceRequest`를 사용하십시오. 데이터가 전송되고 성공 응답을 수신하면 `markDocumentsClean`을 호출하십시오. 
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -366,15 +366,15 @@ try {
 }
 ```
 
-<img alt="Image of the sample application" src="android-native-screen.jpg" style="float:right; width:240px;"/>
-## Sample application
+<img alt="샘플 애플리케이션 이미지" src="android-native-screen.jpg" style="float:right; width:240px;"/>
+## 샘플 애플리케이션
 {: #sample-application }
-The JSONStoreAndroid project contains a native Android application that utilizes the JSONStore API set.  
-Included is a JavaScript adapter Maven project.
+JSONStoreAndroid 프로젝트에는 JSONStore API 세트를 이용하는 고유 Android 애플리케이션이 있습니다.   
+JavaScript 어댑터 Maven 프로젝트에서도 사용 가능합니다. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) the Native Android project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
+고유 Android 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid)하십시오.   
+어댑터 Maven 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80)하십시오.   
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+샘플의 README.md 파일에 있는 지시사항을 따르십시오. 

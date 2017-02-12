@@ -1,35 +1,35 @@
 ---
 layout: tutorial
-title: Multilingual translation of JavaScript (Cordova, Web) applications
-breadcrumb_title: Multilingual translation
+title: JavaScript(Cordova, 웹) 애플리케이션의 다국어 변환
+breadcrumb_title: 다국어 변환
 relevantTo: [javascript]
 weight: 9
 downloads:
-  - name: Download Cordova project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
+  - 이름: Cordova 프로젝트 다운로드
+    URL: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 개요
 {: #overview }
-You can use the {{ site.data.keys.product_full }} framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
-Items that can be translated are application strings and system messages. 
+{{ site.data.keys.product_full }} 프레임워크를 사용하여 JavaScript(Cordova, 웹) 애플리케이션에서 다른 언어로의 다국어 변환을 추가할 수 있습니다.   
+변환될 수 있는 항목은 애플리케이션 문자열과 시스템 메시지입니다.  
 
-#### Jump to:
+#### 다음으로 이동:
 {: #jump-to }
-* [Translating application strings](#translating-application-strings)
-* [Translating system messages](#translating-system-messages)
-* [Multilanguage translation](#multilanguage-translation)
-* [Detecting the device locale and language](#detecting-the-device-locale-and-language)
-* [Sample application](#sample-application)
+* [애플리케이션 문자열 변환](#translating-application-strings)
+* [시스템 메시지 변환](#translating-system-messages)
+* [다국어 변환](#multilanguage-translation)
+* [디바이스 로케일 및 언어 발견](#detecting-the-device-locale-and-language)
+* [샘플 애플리케이션](#sample-application)
 
-## Translating application strings
+## 애플리케이션 문자열 변환
 {: #translating-application-strings }
-Strings that are destined to be translated are stored in a `JSON` object called "Messages". 
+변환될 예정인 문자열은 "메시지"라는 `JSON` 오브젝트에 저장됩니다.  
 
-- In Cordova applications that use the {{ site.data.keys.product_adj }} SDK, you can find it in the **index.js** file of the Cordova application: **[cordova-project-root-directory]/www/js/index.js**.
-- In Web applications, you need to add it.
+- {{ site.data.keys.product_adj }} SDK를 사용하는 Cordova 애플리케이션에서는 Cordova 애플리케이션의 **index.js** 파일(**[cordova-project-root-directory]/www/js/index.js**)에 있습니다. 
+- 웹 애플리케이션에서는 이를 추가해야 합니다. 
 
-### JSON object structure example
+### JSON 오브젝트 구조 예제
 {: #json-object-structure-example }
 
 ```javascript
@@ -40,49 +40,49 @@ var Messages = {
 };
 ```
 
-Strings stored in the Messages `JSON` object can be referenced in two ways in the application logic:
+메시지 `JSON` 오브젝트에 저장된 문자열은 애플리케이션 로직에서 다음 두 가지 방법으로 참조될 수 있습니다. 
 
-**As a JavaScript object property:**
+**JavaScript 오브젝트 특성으로:**
 
 ```javascript
 Messages.headerText
 ```
 
-**As an ID of an HTML element with `class="translate"`:**
+**클래스가 "translate"인 HTML 요소의 ID로:**
 
 ```html
 <h1 id="headerText" class="translate"></h1>
 ```
 
-## Translating system messages
+## 시스템 메시지 변환
 {: #translating-system-messages }
-It is also possible to translate the system messages that the application displays, for example "Internet connection is not available" or "Invalid username or password". System messages are stored in the `WL.ClientMessages` object.
+애플리케이션에서 표시하는 시스템 메시지(예: "인터넷 연결을 사용할 수 없음" 또는 "잘못된 사용자 이름 또는 비밀번호")를 변환할 수도 있습니다. 시스템 메시지는 `WL.ClientMessages` 오브젝트에 저장되어 있습니다. 
 
-**Note:** Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.
+**참고:** 코드의 일부 파트는 애플리케이션이 올바르게 초기화된 후에만 실행되므로 글로벌 JavaScript 레벨에서 시스템 메시지를 대체하십시오. 
 
-### Web applications
+### 웹 애플리케이션
 {: #web-applications }
-You can find a full list of system messages in the `messages.json` file, located in the **[project root folder]\node_modules\ibm-mfp-web-sdk\lib\messages\ folder**.
+전체 시스템 메시지 목록은 **[project root folder]\node_modules\ibm-mfp-web-sdk\lib\messages\ folder**의 `messages.json` 파일에 있습니다. 
 
-### Cordova applications
+### Cordova 애플리케이션
 {: #cordova-applications }
-You can find a full list of system messages in the `messages.json` file, located inside the generated project.
+전체 시스템 메시지 목록은 생성된 프로젝트 내의 `messages.json` 파일에 있습니다. 
 
 - Android: `[Cordova-project]\platforms\android\assets\www\plugins\cordova-plugin-mfp\worklight\messages`
 - iOS, Windows: `[Cordova-project]\platforms\[ios or windows]\www\plugins\cordova-plugin-mfp\worklight\messages`
 
-To translate a system message, override it in the application code.
+시스템 메시지를 변환하려면 애플리케이션 코드에서 대체하십시오. 
 
 ```javascript
 WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
 ```
 
-## Multilanguage translation
+## 다국어 변환
 {: #multilanguage-translation }
-Using JavaScript, you can implement multilanguage translation for your application.  
-The below steps explain the implementation of this tutorial's sample application.
+JavaScript를 사용하여 애플리케이션에 대해 다국어 변환을 구현할 수 있습니다.   
+아래 단계에서는 이 학습서의 샘플 애플리케이션 구현에 대해 설명합니다. 
 
-1. Set up the default application strings in the `index.js` file.
+1. `index.js` 파일에서 기본 애플리케이션 문자열을 설정하십시오. 
 
    ```javascript
    var Messages = {
@@ -96,7 +96,7 @@ The below steps explain the implementation of this tutorial's sample application
    };
    ```
 
-2. Override specific strings when required.
+2. 필요한 경우 특정 문자열을 대체하십시오. 
 
    ```javascript
    function setFrench(){
@@ -106,7 +106,7 @@ The below steps explain the implementation of this tutorial's sample application
    }
    ```
 
-3. Update the GUI components with the new strings. You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic. Each time that an element is updated, it is updated with different strings according to the active language.
+3. 새 문자열로 GUI 컴포넌트를 업데이트하십시오. 히브리어 또는 아랍어와 같이 오른쪽에서 왼쪽으로 쓰는 언어에 대해 텍스트 방향을 설정하는 것과 같은 추가 태스크를 수행할 수 있습니다. 요소가 업데이트될 때마다 활성 언어에 따라 다른 문자열로 업데이트됩니다. 
 
    ```javascript
    function languageChanged(lang) {
@@ -139,20 +139,20 @@ The below steps explain the implementation of this tutorial's sample application
    }
    ```
 
-## Detecting the device locale and language
+## 디바이스 로케일 및 언어 발견
 {: #detecting-the-device-locale-and-language }
-To detect the language used by the device or browser:
+디바이스 또는 브라우저에서 사용되는 언어를 발견하려면 다음을 수행하십시오. 
 
-### Web applications
+### 웹 애플리케이션
 {: #web-applications-locale}
-Detect the browser language using `navigator.language` or any number of available frameworks and solutins.
+`navigator.language` 또는 사용 가능한 프레임워크 및 솔루션을 사용하여 브라우저 언어를 발견하십시오. 
 
-### Cordova applications
+### Cordova 애플리케이션
 {: #cordova-applications-locale }
-Detect the locale and the language of the device using the Cordova's globalization plug-in: `cordova-plugin-globalization`.  
-The globalization plug-in is auto-installed when adding a platform to the Cordova application.
+Cordova의 다국어 지원 플러그인 `cordova-plugin-globalization`을 사용하여 디바이스의 로케일 및 언어를 발견하십시오.   
+다국어 지원 플러그인은 Cordova 애플리케이션에 플랫폼을 추가할 때 자동으로 설치됩니다. 
 
-Use the `navigator.globalization.getLocaleName` and `navigator.globalization.getPreferredLanguage` functions to detect the locale and language respectively.
+로케일 및 언어를 발견하려면 `navigator.globalization.getLocaleName` 및 `navigator.globalization.getPreferredLanguage` 함수를 각각 사용하십시오. 
 
 ```javascript
 navigator.globalization.getLocaleName(
@@ -179,15 +179,15 @@ navigator.globalization.getPreferredLanguage(
 );
 ```
 
-The result can then be seen in the device log, for example from Android Studio's LogCat:  
-![Get device localle and language](DeviceLocaleLangugae.png)
+결과가 디바이스 로그(예: Android Studio의 LogCat)에 표시됩니다.   
+![디바이스 로케일 및 언어 가져오기](DeviceLocaleLangugae.png)
 
-## Sample application
+## 샘플 애플리케이션
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation) the Cordova project.  
+Cordova 프로젝트를 [클릭하여 다운로드](https://github.com/MobileFirst-Platform-Developer-Center/Translation)하십시오.   
 
-### Sample usage
+### 샘플 사용법
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+샘플의 README.md 파일에 있는 지시사항을 따르십시오. 
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can inspect Android's LogCat from Android Studio's LogCat console while the application is running.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **팁:** 애플리케이션이 실행되는 동안 Android Studio의 LogCat 콘솔에서 Android LogCat을 검사할 수 있습니다.
