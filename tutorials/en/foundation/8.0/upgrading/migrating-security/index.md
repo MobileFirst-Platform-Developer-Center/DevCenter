@@ -7,8 +7,6 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
 weight: 3
 ---
-
-<!-- ==== Overview ==== -->
 ## Overview
 {: #overview }
 
@@ -22,10 +20,9 @@ The [third part](#migrating-other-v71-security-configurations) explains how to m
 {% comment %} I edited and reordered, including splitting part two into two and three - which matches the header levels in the original doc. I moved the links (which I also edited) to each second-level header ("part").
 {% endcomment %}
 
-> **Note:** Before you start the migration, you are advised to read the [V8.0 migration cookbook](../migration-cookbook).<br />
+> **Note:** Before you start the migration, you are advised to read the [V8.0 migration cookbook](../migration-cookbook).  
 > To learn about the basic concepts of the new security framework, see [Authentication and Security](../../authentication-and-security).
 
-<!-- ==== PART 1: Migrating the sample application ==== -->
 ## Migrating the sample application
 {: #migrating-the-sample-application }
 
@@ -46,7 +43,7 @@ Follow these steps to migrate the sample V7.1 application to V8.0:
 Start by migrating the resource adapter. In {{ site.data.keys.product }} V8.0, adapters are developed as separate Maven projects, unlike in V7.1 where adapters are part of the application project. Thus, you can migrate the resource adapter, and build and deploy the migrated adapter, independently of the client application. The same is true for the V8.0 client application, and the V8.0 security checks (which are implemented within adapters). Therefore, you can migrate these artifacts in the order of your choice. The tutorial begins with instructions for migrating the resource adapter, including an introduction the OAuth security scope elements that are used for the V8.0 resource protection.
 
 > **Note:** 
-> *  The following instructions are for the migration of the sample `AccountAdapter` resource adapter. You do not need to migrate the sample `PinCodeAdapter` because the adapter-based authentication that it implements is no longer supported in V8.0. The [Migrating the adapter-based authentication realm (PinCodeRealm)](#migrating-the-pin-code-realm) step explains how to replace the V7.1 pin-code adapter with a V8.0 security check that offers similar protection.
+> *  The following instructions are for the migration of the sample `AccountAdapter` resource adapter. You do not need to migrate the sample `PinCodeAdapter` because the adapter-based authentication that it implements is no longer supported in V8.0. The [Replacing the pin-code adapter-based authentication realm](#replacing-the-pin-code-adapter-based-authentication-realm) step explains how to replace the V7.1 pin-code adapter with a V8.0 security check that offers similar protection.
 > *  For instructions on how to migrate adapters to V8.0, see the [V8.0 migration cookbook](../migration-cookbook).
 
 The `AccountAdpter` methods in the V7.1 sample are protected with the `@OAuthSecurity` annotation, which defines the methods' protecting scopes (`UserLoginRealm` and `PinCodeRealm`). The same annotation is used in V8.0, but the scope elements have a different significance: in V7.1, scope elements refer to security realms that are defined in the **authenticationConfig.xml** file. In V8.0, scope elements are mapped to security checks that are defined in an adapter that is deployed to {{ site.data.keys.mf_server }}. You can select to keep the resource-protection code, including the scope-element names, unchanged. However, because the “realm” terminology is no longer used in {{ site.data.keys.product }} V8.0, the scope elements in the V8.0 application are renamed to `UserLogin` and `PinCode`:
@@ -327,7 +324,6 @@ The migration of the pin-code challenge handler (`pinCodeChallengeHandler`) is s
 
 You are now done with the migration of the sample V7.0 application to V8.0. Rebuild the application, deploy it to {{ site.data.keys.mf_server }}, test it, and verify that access to the adapter-method resources is protected as expected.
 
-<!-- ==== PART 3: Migrating other types of authentication realms ==== -->
 ## Migrating other types of authentication realms
 {: #migrating-other-types-of-authentication-realms }
 
@@ -379,7 +375,6 @@ The V7.1 remote-disable realm (`wl_remoteDisableRealm`) does not require migrati
 
 To replace the custom V7.1 authenticators and login modules, create a new security check, according to instructions in the [Creating the user-login security-check Java class](#creating-the-user-login-security-check-java-class) sample-application migration step. Your security check can extend either the `UserAuthenticationSecurityCheck` or `CredentialsValidationSecurityCheck` {{ site.data.keys.product }} V8.0 base class. Although you cannot migrate the V7.1 authenticator class or the login module class directly, you can copy relevant code pieces into your security check. This includes code for generating the security challenge, extracting login credentials from the challenge response, or validating the credentials.
 
-<!-- ==== PART 3: Migrating other V7.1 security configurations -->
 ## Migrating other V7.1 security configurations
 {: #migrating-other-v71-security-configurations }
 
@@ -411,11 +406,8 @@ In V7.1, authentication realms can be configured as user-identity realms. Applic
 
 A V7.1 application must define a device-identity realm. In V8.0, this realm is no longer required. In V8.0, the device identity is not associated with a security check. Instead, the device information is registered as part of the client registration flow, which occurs the first time that the client attempts to access a protected resource.
 
-<!-- ==== What's next -->
 ## What's next
 {: #whats-next }
-{% comment %} SLS: I replaced the "Summary" heading because it wasn't really a summary, including in the original version, it's more a "What's Next", and we also don't typically have summaries in our tutorial docs.
-{% endcomment %}
 
 This tutorial covers only the basic steps that are required for migrating to V8.0 the security artifacts of an existing application, developed with a previous version of {{ site.data.keys.product }}. To take full advantage of the V8.0 security features, see the [V8.0 security-framework documentation](../../authentication-and-security/).
 
