@@ -25,6 +25,10 @@ To enable application authenticity, you can either follow the on-screen instruct
 - [Application Authenticity flow](#application-authenticity-flow)
 - [Enabling Application Authenticity](#enabling-application-authenticity)
 - [Configuring Application Authenticity](#configuring-application-authenticity)
+- [Validation Types](#validation)
+- [Build Time Secret (BTS)](#bts)
+- [Troubleshooting](#troubleshooting)
+- [Legacy App Authenticity](#legacy)
 
 ## Application Authenticity Flow
 {: #application-authenticity-flow }
@@ -34,30 +38,17 @@ See [Configuring application authenticity](#configuring-application-authenticity
 
 ## Enabling Application Authenticity
 {: #enabling-application-authenticity }
-For application authenticity to be enabled in your Cordova or native application, the application binary file must be signed by using the mfp-app-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android, and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
+For application authenticity to be enabled in your application:
 
-1. Download the mfp-app-authenticity tool from the **{{ site.data.keys.mf_console }} → Download Center**.
-2. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
-
-   For example:
-
-   ```bash
-   java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
-   ```
-
-   This command generates an `.authenticity_data` file, called `MyBankApp.authenticity_data`, next to the `MyBankApp.ipa` file.
-
-3. Open the {{ site.data.keys.mf_console }} in your favorite browser.
-4. Select your application from the navigation sidebar and click on the **Authenticity** menu item.
-5. Click on **Upload Authenticity File** to upload the `.authenticity_data` file.
-
-When the `.authenticity_data` file is uploaded, application authenticity is enabled.
+1. Open the {{ site.data.keys.mf_console }} in your favorite browser.
+2. Select your application from the navigation sidebar and click on the **Authenticity** menu item.
+3. Toggle the **On/Off** button in the **Status** box.
 
 ![Enable Application Authenticity](enable_application_authenticity.png)
 
 ### Disabling Application Authenticity
 {: #disabling-application-authenticity }
-To disable application authenticity, click the **Delete Authenticity File** button.
+To disable application authenticity, toggle back the **On/Off** button in the **Status** box.
 
 ## Configuring Application Authenticity
 {: #configuring-application-authenticity }
@@ -78,3 +69,57 @@ After an authenticity check has completed, it does not occur again until the tok
 3. Set a new value in seconds.
 
 ![Configuring the expirationSec property in the console](configuring_expirationSec.png)
+
+## Validation Type
+{: #validation }
+By default, when application authenticity is enabled it uses a validation algorithm called **dynamic**. The dynamic validation type checks various signals to determine whether the application is authentic. This algorithm varies slightly across different platforms.
+
+Alternatively, we also provide a validation algorithm called **static**. The static validation type is less sensitive to changes in the application.
+
+To switch between validation types, use the [**mfpadm** CLI](../../administering-apps/using-cli/):
+
+```bash
+app version [RUNTIME-NAME] APP-NAME ENVIRONMENT VERSION set authenticity-validation TYPE
+```
+`TYPE` can either be `dynamic` or `static`.
+
+## Build Time Secret (BTS)
+{: #bts }
+For iOS application, there is an optional tool to increase security by injecting a random secret into your application at build time. This way, two builds of the exact same application will have different fingerprints.
+
+The BTS tool can be downloaded from the **{{ site.data.keys.mf_console }}** → **Download Center**.
+
+To use the BTS tool in Xcode:
+1. Under the **Build Phases** tab click the **+** button and create new **Run Script Phase**.
+2. Copy the path of BTS Tool and paste in the new "Run Script Phase" you have created.
+3. Drag the run script phase above the **Compile sources** phase.
+
+Ideally, this should only be enabled when building a release build.
+
+## Troubleshooting
+{: #troubleshooting }
+
+- Not all changes to your application may necessarily lead it to be considered not authentic. The algorithm and signals it uses to reach this decision are proprietary and may change over time.
+- During development, it is recommended to disable application authenticity as it may detect legitimate changes to your application.
+- The first device to connect to your application after enabling application authenticity will define the fingerprint of the application. If you would like to reset this fingerprint, you can either **disable** then **enable** the feature, or use the [**mfpadm** CLI](../../administering-apps/using-cli/) to call the **reset** endpoint.
+
+## Legacy Application Authenticity
+{: #legacy }
+The dynamic and static validation types are only supported by client SDKs released in **February 2017 or later**. For SDK versions **8.0.0.0-MFPF-IF201701250919 or earlier**, you need to use the legacy tool-based validation type.
+
+The application binary file must be signed by using the mfp-app-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android, and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
+
+1. Download the mfp-app-authenticity tool from the **{{ site.data.keys.mf_console }} → Download Center**.
+2. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
+
+   For example:
+
+   ```bash
+   java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
+   ```
+
+   This command generates an `.authenticity_data` file, called `MyBankApp.authenticity_data`, next to the `MyBankApp.ipa` file.
+3. Upload the `.authenticity_data` file using the [**mfpadm** CLI](../../administering-apps/using-cli/):
+  ```bash
+  app version [RUNTIME-NAME] APP-NAME ENVIRONMENT VERSION set authenticity-data FILE
+  ```
