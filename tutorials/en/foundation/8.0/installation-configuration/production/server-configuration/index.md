@@ -459,7 +459,7 @@ The administration service uses a push service as an auxiliary facility to store
 | mfp.push.authorization.client.id | Optional/conditionally mandatory | The identifier of the confidential client that handles OAuth authorization for the push service. Mandatory only if the **mfp.admin.push.url** property is specified. |
 | mfp.push.authorization.client.secret | Optional/conditionally mandatory | The secret of the confidential client that handles OAuth authorization for the push service. Mandatory only if the **mfp.admin.push.url** property is specified |
 | mfp.admin.authorization.client.id | Optional/conditionally mandatory | The identifier of the confidential client that handles OAuth authorization for the administration service. Mandatory only if the **mfp.admin.push.url** property is specified. |
-| mfp.push.authorization.client.secret | Optional/conditionally mandatory | The secret of the confidential client that handles OAuth authorization for the administration service. Mandatory only if the **mfp.admin.push.url** property is specified. |
+| mfp.admin.authorization.client.secret | Optional/conditionally mandatory | The secret of the confidential client that handles OAuth authorization for the administration service. Mandatory only if the **mfp.admin.push.url** property is specified. |
 
 ### JNDI properties for {{ site.data.keys.mf_console }}
 {: #jndi-properties-for-mobilefirst-operations-console }
