@@ -25,10 +25,10 @@ To enable application authenticity, you can either follow the on-screen instruct
 - [Application Authenticity flow](#application-authenticity-flow)
 - [Enabling Application Authenticity](#enabling-application-authenticity)
 - [Configuring Application Authenticity](#configuring-application-authenticity)
-- [Validation Types](#validation)
 - [Build Time Secret (BTS)](#bts)
 - [Troubleshooting](#troubleshooting)
-- [Legacy App Authenticity](#legacy)
+  - [Validation Types](#validation)
+  - [Legacy App Authenticity](#legacy)
 
 ## Application Authenticity Flow
 {: #application-authenticity-flow }
@@ -70,19 +70,6 @@ After an authenticity check has completed, it does not occur again until the tok
 
 ![Configuring the expirationSec property in the console](configuring_expirationSec.png)
 
-## Validation Type
-{: #validation }
-By default, when application authenticity is enabled it uses a validation algorithm called **dynamic**. The dynamic validation type checks various signals to determine whether the application is authentic. This algorithm varies slightly across different platforms.
-
-Alternatively, we also provide a validation algorithm called **static**. The static validation type is less sensitive to changes in the application.
-
-To switch between validation types, use the [**mfpadm** CLI](../../administering-apps/using-cli/):
-
-```bash
-app version [RUNTIME-NAME] APP-NAME ENVIRONMENT VERSION set authenticity-validation TYPE
-```
-`TYPE` can either be `dynamic` or `static`.
-
 ## Build Time Secret (BTS)
 {: #bts }
 For iOS application, there is an optional tool to increase security by injecting a random secret into your application at build time. This way, two builds of the exact same application will have different fingerprints.
@@ -99,11 +86,25 @@ Ideally, this should only be enabled when building a release build.
 ## Troubleshooting
 {: #troubleshooting }
 
-- Not all changes to your application may necessarily lead it to be considered not authentic. The algorithm and signals it uses to reach this decision are proprietary and may change over time.
 - During development, it is recommended to disable application authenticity as it may detect legitimate changes to your application.
 - The first device to connect to your application after enabling application authenticity will define the fingerprint of the application. If you would like to reset this fingerprint, you can either **disable** then **enable** the feature, or use the [**mfpadm** CLI](../../administering-apps/using-cli/) to call the **reset** endpoint.
 
-## Legacy Application Authenticity
+### Validation Type
+{: #validation }
+Not all changes to your application may necessarily lead it to be considered not authentic. The algorithm and signals it uses to reach this decision are proprietary and may change over time.
+
+By default, when application authenticity is enabled it uses a validation algorithm called **dynamic**. The dynamic validation type checks various signals to determine whether the application is authentic. This algorithm varies slightly across different platforms.
+
+Alternatively, we also provide a validation algorithm called **static**. The static validation type is less sensitive to changes in the application.
+
+To switch between validation types, use the [**mfpadm** CLI](../../administering-apps/using-cli/):
+
+```bash
+app version [RUNTIME-NAME] APP-NAME ENVIRONMENT VERSION set authenticity-validation TYPE
+```
+`TYPE` can either be `dynamic` or `static`.
+
+### Legacy Application Authenticity
 {: #legacy }
 The dynamic and static validation types are only supported by client SDKs released in **February 2017 or later**. For SDK versions **8.0.0.0-MFPF-IF201701250919 or earlier**, you need to use the legacy tool-based validation type.
 
