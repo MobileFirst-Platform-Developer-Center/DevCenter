@@ -8,7 +8,7 @@ weight: 9
 ## Overview
 {: #overview }
 
-To properly secure your application, enable the predefined {{ site.data.keys.product_adj }} application-authenticity [security check](../#security-check) (`appAuthenticity`). When enabled, this check validates the authenticity of the application before providing it with any services.
+To properly secure your application, enable the predefined {{ site.data.keys.product_adj }} application-authenticity [security check](../#security-check) (`appAuthenticity`). When enabled, this check validates the authenticity of the application before providing it with any services. Applications in production environment should have this feature enabled.
 
 To enable application authenticity, you can either follow the on-screen instructions in the **{{ site.data.keys.mf_console }}** → **[your-application]** → **Authenticity**, or review the information below.
 
@@ -32,7 +32,7 @@ To enable application authenticity, you can either follow the on-screen instruct
 
 ## Application Authenticity Flow
 {: #application-authenticity-flow }
-By default, the application-authenticity security check is run during the application's runtime registration to {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. The authenticity challenge does not occur again.
+The application-authenticity security check is run during the application's registration to {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. By default the authenticity check does not run again.
 
 See [Configuring application authenticity](#configuring-application-authenticity) to learn how to customize this behavior.
 
@@ -48,11 +48,13 @@ For application authenticity to be enabled in your application:
 
 ### Disabling Application Authenticity
 {: #disabling-application-authenticity }
+Some changes to the application during development might cause it to fail the authenticity validation. Accordingly, it is recommended to disable application authenticity during the development process. Applications in production environment should have this feature enabled.
+
 To disable application authenticity, toggle back the **On/Off** button in the **Status** box.
 
 ## Configuring Application Authenticity
 {: #configuring-application-authenticity }
-By default, Application Authenticity is checked only during client registration. Just like any other security check, you can decide to protect your application or resources with the `appAuthenticity` security check from the console, following the instructions under [Protecting resources](../#protecting-resources).
+By default, Application Authenticity is checked only during client registration. However, just like any other security check, you can decide to protect your application or resources with the `appAuthenticity` security check from the console, following the instructions under [Protecting resources](../#protecting-resources).
 
 You can configure the predefined application-authenticity security check with the following property:
 
@@ -72,7 +74,7 @@ After an authenticity check has completed, it does not occur again until the tok
 
 ## Build Time Secret (BTS)
 {: #bts }
-For iOS application, there is an optional tool to increase security by injecting a random secret into your application at build time. This way, two builds of the exact same application will have different fingerprints.
+The Build Time Secret (BTS) is an optional tool to enhance authenticity validation, for iOS applications only. The tool injects the application with a secret determined at build time, which is later used in the authenticity validation process.
 
 The BTS tool can be downloaded from the **{{ site.data.keys.mf_console }}** → **Download Center**.
 
@@ -81,13 +83,13 @@ To use the BTS tool in Xcode:
 2. Copy the path of BTS Tool and paste in the new "Run Script Phase" you have created.
 3. Drag the run script phase above the **Compile sources** phase.
 
-Ideally, this should only be enabled when building a release build.
+The tool should  be used when building a production version of the application.
 
 ## Troubleshooting
 {: #troubleshooting }
 
-- During development, it is recommended to disable application authenticity as it may detect legitimate changes to your application.
-- The first device to connect to your application after enabling application authenticity will define the fingerprint of the application. If you would like to reset this fingerprint, you can either **disable** then **enable** the feature, or use the [**mfpadm** CLI](../../administering-apps/using-cli/) to call the **reset** endpoint.
+### Reset
+The first device to connect to your application after enabling application authenticity will define the fingerprint of the application. If you would like to reset this fingerprint, you can either **disable** then **enable** the feature, or use the [**mfpadm** CLI](../../administering-apps/using-cli/) to call the **reset** endpoint.
 
 ### Validation Type
 {: #validation }
