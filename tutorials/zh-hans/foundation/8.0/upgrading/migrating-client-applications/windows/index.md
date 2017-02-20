@@ -112,6 +112,7 @@ for Windows Phone 作为对应用程序的引用。要执行此操作，请在 V
 
 #### 不推荐使用的 Windows C# API 类
 {: #deprecated-windows-c-api-classes }
+
 | 类别 | 描述 | 推荐操作 | 
 |----------|-------------|--------------------|
 | `ChallengeHandler`  | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。
@@ -136,6 +137,7 @@ for Windows Phone 作为对应用程序的引用。要执行此操作，请在 V
 
 #### 不推荐使用的 Windows C# API 接口
 {: #deprecated-windows-c-api-interfaces }
+
 | 类别 | 描述 | 推荐操作 | 
 |----------|-------------|--------------------|
 | `WLHttpResponseListener` | 不受支持。 | 

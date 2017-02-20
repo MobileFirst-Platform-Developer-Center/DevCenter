@@ -321,6 +321,7 @@ IBM MobileFirs Foundation v8.0 Cordova SDK(JavaScript)는 코드 조정이 필�
 
 #### 중단된 JavaScript UI 요소
 {: #discontinued-javascript-ui-elements }
+
 | API 요소 | 마이그레이션 경로 |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Cordova 플러그인 또는 HTML 5 요소를 사용하십시오.  |
@@ -336,6 +337,7 @@ IBM MobileFirs Foundation v8.0 Cordova SDK(JavaScript)는 코드 조정이 필�
 
 #### 기타 중단된 JavaScript 요소
 {: #other-discontinued-javascript-elements }
+
 | API | 마이그레이션 경로 |
 |-----|----------------|
 | `WL.Client.checkForDirectUpdate(options)` | 대체 없음.<br/><br/>참고: 사용 가능한 경우 [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 호출하여 직접 업데이트를 트리거할 수 있습니다. 서버에서 직접 업데이트를 사용할 수 있는 경우 보안 토큰에 액세스하면 직접 업데이트가 트리거됩니다. 그러나 요청 시 직접 업데이트를 트리거할 수 없습니다.  |
@@ -373,11 +375,11 @@ IBM MobileFirs Foundation v8.0 Cordova SDK(JavaScript)는 코드 조정이 필�
 | `wlChallengeHandler.processSucccess()` 여기서 `wlChallengeHandler`는 `WL.Client.createWLChallengeHandler()`에서 리턴한 인증 확인 핸들러 오브젝트입니다.  | `securityCheckChallengeHandler.handleSuccess()`를 사용하십시오. 여기서 `securityCheckChallengeHandler`는 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트입니다.  |
 | `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트를 사용하십시오.  |
 | `WL.Client.AbstractChallengeHandler.submitFailure(err)` | [`WL.Client.AbstractChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html?view=kc#cancel)을 사용하십시오.  |
-| `WL.Client.createProvisioningChallengeHandler()` | 대체 없음. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다.
- |
+| `WL.Client.createProvisioningChallengeHandler()` | 대체 없음. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다.|
 
 #### 더 이상 사용되지 않는 JavaScript API
 {: #deprecated-javascript-apis }
+
 | API | 마이그레이션 경로 |
 |-----|----------------|
 | {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)</code></li><li><code>WL.Client.invokeProcedure(invocationData, options)</code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProcedureInvocationResult</code></li></ul>{:/} | 대신 `WLResourceRequest`를 사용하십시오. 참고: invokeProcedure의 구현은 WLResourceRequest를 사용합니다.  |

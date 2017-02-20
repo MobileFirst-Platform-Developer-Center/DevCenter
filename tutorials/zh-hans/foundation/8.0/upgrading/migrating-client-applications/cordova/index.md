@@ -321,6 +321,7 @@ IBM MobileFirs Foundation V8.0 Cordova SDK (JavaScript) 引入了许多需要调
 
 #### 停用的 JavaScript UI 元素
 {: #discontinued-javascript-ui-elements }
+
 | API 元素 | 迁移路径 |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | 使用 Cordova 插件或 HTML 5 元素。 |
@@ -337,6 +338,7 @@ IBM MobileFirs Foundation V8.0 Cordova SDK (JavaScript) 引入了许多需要调
 
 #### 其他停用的 JavaScript 元素
 {: #other-discontinued-javascript-elements }
+
 | API | 迁移路径 |
 |-----|----------------|
 | `WL.Client.checkForDirectUpdate(options)` | 无替换。<br/><br/>注：您可以调用 [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) 以触发直接更新（如果可用）。访问安全性令牌会触发服务器上可用的“直接更新”。但无法根据需要触发“直接更新”。 |
@@ -379,6 +381,7 @@ options)</code></li></ul>{:/} | 无替换。您可以使用适配器和 [MFP.Ser
 
 #### 不推荐使用的 JavaScript API
 {: #deprecated-javascript-apis }
+
 | API | 迁移路径 |
 |-----|----------------|
 | {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)</code></li><li><code>WL.Client.invokeProcedure(invocationData, options)</code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener

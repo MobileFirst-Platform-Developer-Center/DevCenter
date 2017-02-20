@@ -321,6 +321,7 @@ v8.0 では、多くの {{site.data.keys.product_adj }} API エレメントが�
 
 #### 使用が中止された JavaScript UI エレメント
 {: #discontinued-javascript-ui-elements }
+
 | API エレメント | マイグレーション・パス |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Cordova プラグインまたは HTML 5 エレメントを使用してください。 |
@@ -336,6 +337,7 @@ v8.0 では、多くの {{site.data.keys.product_adj }} API エレメントが�
 
 #### 使用が中止されたその他の JavaScript エレメント
 {: #other-discontinued-javascript-elements }
+
 | API | マイグレーション・パス |
 |-----|----------------|
 | `WL.Client.checkForDirectUpdate(options)` | 代替はありません。<br/><br/>注: [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)を呼び出すことでダイレクト・アップデートをトリガーできます (ダイレクト・アップデートが使用可能な場合)。サーバーでダイレクト・アップデートが使用可能な場合は、セキュリティー・トークンにアクセスするとダイレクト・アップデートがトリガーされます。ただし、ダイレクト・アップデートをオンデマンドでトリガーすることはできません。 |
@@ -377,6 +379,7 @@ v8.0 では、多くの {{site.data.keys.product_adj }} API エレメントが�
 
 #### 非推奨になった JavaScript API
 {: #deprecated-javascript-apis }
+
 | API | マイグレーション・パス |
 |-----|----------------|
 | {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener) </code></li><li><code>WL.Client.invokeProcedure(invocationData, options) </code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProcedureInvocationResult</code></li></ul>{:/} | 代わりに `WLResourceRequest` を使用してください。注: invokeProcedure の実装は、WLResourceRequest を使用します。 |

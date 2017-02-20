@@ -107,6 +107,7 @@ V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체
 
 #### 더 이상 사용되지 않는 Windows C# API 클래스
 {: #deprecated-windows-c-api-classes }
+
 | 카테고리 | 설명 | 권장 조치 | 
 |----------|-------------|--------------------|
 | `ChallengeHandler`  | 사용자 정의 게이트웨이 인증 확인의 경우 `GatewayChallengeHandler`를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 `SecurityCheckChallengeHandler`를 사용하십시오.  |
@@ -128,6 +129,7 @@ V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체
 
 #### 더 이상 사용되지 않는 Windows C# API 인터페이스
 {: #deprecated-windows-c-api-interfaces }
+
 | 카테고리 | 설명 | 권장 조치 | 
 |----------|-------------|--------------------|
 | `WLHttpResponseListener` | 지원되지 않음.  | 

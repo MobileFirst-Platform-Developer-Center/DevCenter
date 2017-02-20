@@ -90,6 +90,7 @@ compile group: 'com.ibm.mobile.foundation',
 
 #### 使用が中止された Android API エレメント
 {: #discontinued-android-api-elements }
+
 | API エレメント | マイグレーション・パス | 
 |-------------|----------------|
 | `WLConfig WLClient.getConfig()` | 代替はありません。 | 
@@ -114,6 +115,7 @@ compile group: 'com.ibm.mobile.foundation',
 
 #### サポートされなくなった、レガシー `org.apach.http` API に依存している Android API
 {: #android-apis-depending-on-the-legacy-orgapachhttp-apis-are-no-longer-supported }
+
 | API エレメント | マイグレーション・パス | 
 |-------------|----------------|
 | `org.apache.http.Header[]` は非推奨になっています。そのため、以下のメソッドは削除されました。 | |

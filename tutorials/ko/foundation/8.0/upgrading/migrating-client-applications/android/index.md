@@ -89,6 +89,7 @@ V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체
 
 #### 중단된 Android API 요소
 {: #discontinued-android-api-elements }
+
 | API 요소 | 마이그레이션 경로 | 
 |-------------|----------------|
 | `WLConfig WLClient.getConfig()` | 대체 없음. | 
@@ -113,6 +114,7 @@ V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체
 
 #### 레거시 `org.apach.http` API에 종속되는 Android API는 더 이상 지원되지 않음
 {: #android-apis-depending-on-the-legacy-orgapachhttp-apis-are-no-longer-supported }
+
 | API 요소 | 마이그레이션 경로 | 
 |-------------|----------------|
 | `org.apache.http.Header[]`는 이제 더 이상 사용되지 않습니다. 따라서 다음 메소드가 제거됩니다.  | |

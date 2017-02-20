@@ -90,6 +90,7 @@ compile group: 'com.ibm.mobile.foundation',
 
 #### 停用的 Android API 元素
 {: #discontinued-android-api-elements }
+
 | API 元素 | 迁移路径 | 
 |-------------|----------------|
 | `WLConfig WLClient.getConfig()` | 无替换。 | 
@@ -125,6 +126,7 @@ context)` | 无替换 |
 
 #### 取决于旧 `org.apach.http` API 的 Android API 不再受支持
 {: #android-apis-depending-on-the-legacy-orgapachhttp-apis-are-no-longer-supported }
+
 | API 元素 | 迁移路径 | 
 |-------------|----------------|
 | 现在不推荐使用 `org.apache.http.Header[]`。因此，移除了以下方法： | |
