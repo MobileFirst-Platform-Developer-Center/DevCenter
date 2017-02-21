@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Accessibility features for IBM MobileFirst Foundation
-breadcrumb_title: Accessibility features
+title: Características de accesibilidad de IBM MobileFirst Foundation
+breadcrumb_title: Características de accesibilidad
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
