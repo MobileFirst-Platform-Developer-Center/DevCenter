@@ -5,11 +5,15 @@
 	color: #264a60;
 	padding-top: 103px;
 	margin-top: 0;
-	font-size: 160%;
+	font-size: 150%;
 }
 .migrationPath {
-	height: 324px;
-	font-family: "Helvetica Neue Medium", Helvetica, Arial;	
+	height: 375px;
+	font-family: "Helvetica Neue Medium", Helvetica, Arial;
+	background-size: auto cover;
+	position: relative;
+	overflow: scroll;
+
 }
 .setupAndTools {
 	padding-left: 64px !important;
@@ -29,8 +33,11 @@
 	padding-left: 18px;
 }
 .topics li {
-	line-height: 1.3em !important;
+	line-height: 1.2em !important;
 	padding-bottom: 12px;
+	float: left;
+	position: relative;
+	display: inline-block;
 }
 
 #migrationSteps h2 {
