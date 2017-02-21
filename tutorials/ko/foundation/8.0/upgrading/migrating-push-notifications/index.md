@@ -994,7 +994,7 @@ v8.0에서 마이그레이션하려면 이 모델을 Unicast 알림으로 변환
    ```
     
 ##### 서버
-:{ #server-ios-2 }
+{: #server-ios-2 }
 어댑터에서 `WL.Server`가 사용된 경우 이를 제거하십시오.
 
 * `notifyAllDevices()`

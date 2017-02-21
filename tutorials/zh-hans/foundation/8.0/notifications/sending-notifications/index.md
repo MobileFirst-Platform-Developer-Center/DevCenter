@@ -339,7 +339,7 @@ phoneNumber | 用于注册设备和接收通知的电话号码。这是单点广
 ```
 
 #### 发送通知
-{ #sending-the-notification }
+{: #sending-the-notification }
 可使用不同工具来发送通知。  
 出于测试目的，将使用 Postman，如下所述：
 

@@ -18,7 +18,7 @@ weight: 1
 事前構成済みで、データベースやアプリケーション・サーバーなどのソフトウェア前提条件が必要ない、{{site.data.keys.mf_server }} の簡素化バージョンが開発者用に使用可能です。[{{site.data.keys.product_adj }} 開発サーバーのセットアップ](../../../installation-configuration/development)を参照してください。
 
 ## {{site.data.keys.mf_server }} コンポーネント
-{ #mobilefirst-server-components }
+{: #mobilefirst-server-components }
 {{site.data.keys.mf_server }} コンポーネントのアーキテクチャーを以下に示します。
 
 ![{{site.data.keys.mf_server }} を構成するコンポーネント](server_components.jpg)

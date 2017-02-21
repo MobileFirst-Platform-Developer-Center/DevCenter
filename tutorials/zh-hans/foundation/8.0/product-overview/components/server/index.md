@@ -18,7 +18,7 @@ weight: 1
 预先配置且不需要必备软件（例如，数据库或应用程序服务器）的 {{ site.data.keys.mf_server }}    简化版本可供开发者使用。请参阅[设置 {{ site.data.keys.product_adj }}    开发服务器](../../../installation-configuration/development)。
 
 ## {{ site.data.keys.mf_server }}    组件
-{ #mobilefirst-server-components }
+{: #mobilefirst-server-components }
 {{ site.data.keys.mf_server }}    组件的体系结构如下图所示：
 
 ![组成 {{ site.data.keys.mf_server }}    的组件](server_components.jpg)

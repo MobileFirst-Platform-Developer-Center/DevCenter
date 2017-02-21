@@ -19,7 +19,7 @@ Los arreglos temporales proporcionan parches y actualizaciones para corregir pro
 [Lea las novedades en los arreglos temporales](interim-fixes).
 
 ### Elementos de API y características en desuso
-{ #deprecated-features-and-api-elements }
+{: #deprecated-features-and-api-elements }
 Los nuevos releases de {{site.data.keys.product }} podrían introducir características o elementos de API que reemplazasen características y elementos de API releases anteriores. Las características y los elementos de API reemplazados pasan a estar en desuso y podrían ser eliminados en futuros releases.
   
 [Lea acerca de los elementos de API y las características en desuso](deprecated-discontinued).
