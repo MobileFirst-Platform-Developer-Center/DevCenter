@@ -27,6 +27,7 @@ To enable application authenticity, you can either follow the on-screen instruct
 - [Configuring Application Authenticity](#configuring-application-authenticity)
 - [Build Time Secret (BTS)](#bts)
 - [Troubleshooting](#troubleshooting)
+  - [Reset](#reset)
   - [Validation Types](#validation)
   - [Legacy App Authenticity](#legacy)
 
@@ -74,7 +75,7 @@ After an authenticity check has completed, it does not occur again until the tok
 
 ## Build Time Secret (BTS)
 {: #bts }
-The Build Time Secret (BTS) is an optional tool to enhance authenticity validation, for iOS applications only. The tool injects the application with a secret determined at build time, which is later used in the authenticity validation process.
+The Build Time Secret (BTS) is an **optional tool to enhance authenticity validation**, for iOS applications only. The tool injects the application with a secret determined at build time, which is later used in the authenticity validation process.
 
 The BTS tool can be downloaded from the **{{ site.data.keys.mf_console }}** → **Download Center**.
 
@@ -89,7 +90,12 @@ The tool should  be used when building a production version of the application.
 {: #troubleshooting }
 
 ### Reset
-The first device to connect to your application after enabling application authenticity will define the fingerprint of the application. If you would like to reset this fingerprint, you can either **disable** then **enable** the feature, or use the [**mfpadm** CLI](../../administering-apps/using-cli/) to call the **reset** endpoint.
+{: #reset }
+The application authenticity algorithm uses application data and metadata in its validation. The first device to connect to the server after enabling application authenticity provides a "fingerprint" of the application, containing some of this data.
+
+It is possible to reset this fingerprint, providing the algorithm with new data. This could be useful during development (for example after changing the application in Xcode). To reset this fingerprint, use the **reset** command from the [**mfpadm** CLI](../../administering-apps/using-cli/).
+
+After resetting the fingerprint, the appAuthenticity security check continues to work as before (this will be seamless to the user).
 
 ### Validation Type
 {: #validation }
