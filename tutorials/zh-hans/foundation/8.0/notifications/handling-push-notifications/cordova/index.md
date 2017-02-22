@@ -60,7 +60,7 @@ weight: 4
    ```
 
 ### iOS 平台
-{ #ios-platform } 
+{: #ios-platform } 
 iOS 平台需要完成一个额外的步骤。  
 在 Xcode 的**功能**屏幕中，为您的应用程序启用推送通知。
 

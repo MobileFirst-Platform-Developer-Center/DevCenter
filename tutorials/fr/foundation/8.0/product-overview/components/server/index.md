@@ -18,7 +18,7 @@ Les opérations d'administration et de déploiement des artefacts {{site.data.ke
 Une version simplifiée de {{site.data.keys.mf_server }} préconfigurée et ne nécessitant pas de logiciel prérequis, tel qu'une base de données ou un serveur d'applications, est disponible pour les développeurs. Voir [Configuration du serveur de développement {{site.data.keys.product_adj }}](../../../installation-configuration/development).
 
 ## Composants de {{site.data.keys.mf_server }}
-{ #mobilefirst-server-components }
+{: #mobilefirst-server-components }
 L'architecture des composants de {{site.data.keys.mf_server }} est illustrée comme suit :
 
 ![Composants de {{site.data.keys.mf_server }}](server_components.jpg)

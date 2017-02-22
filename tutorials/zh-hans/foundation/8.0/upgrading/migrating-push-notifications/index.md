@@ -1009,7 +1009,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
    ```
     
 ##### 服务器
-：{ #server-ios-2 }
+：{: #server-ios-2 }
 除去适配器中的 `WL.Server`（如果已使用）。
 
 * `notifyAllDevices()`

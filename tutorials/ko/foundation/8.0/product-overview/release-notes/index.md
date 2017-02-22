@@ -18,7 +18,7 @@ weight: 7
 [임시 수정사항의 새로운 기능을 읽어보십시오](interim-fixes).
 
 ### 더 이상 사용되지 않는 기능 및 API 요소
-{ #deprecated-features-and-api-elements }
+{: #deprecated-features-and-api-elements }
 {{site.data.keys.product }}의 새 릴리스는 과거 릴리스에서 기능 및 API 요소를 대체하는 기능 및 API 요소를 소개합니다. 대체된 기능 및 API 요소는 더 이상 사용되지 않으며 향후 릴리스에서 제거될 수 있습니다.   
 [더 이상 사용되지 않는 기능 및 API 요소를 읽어보십시오](deprecated-discontinued).
 

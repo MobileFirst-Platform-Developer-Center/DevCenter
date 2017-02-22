@@ -352,7 +352,7 @@ phoneNumber | デバイスを登録し、通知を受け取るために使用さ
 ```
 
 #### 通知の送信
-{ #sending-the-notification }
+{: #sending-the-notification }
 通知は、いろいろなツールを使用して送信できます。  
 テスト目的では、以下で説明するように Postman が使用されます。
 

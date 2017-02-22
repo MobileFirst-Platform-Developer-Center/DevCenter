@@ -18,7 +18,7 @@ Les correctifs temporaires fournissent des modules de correction et de mises à 
 [Lire la rubrique Nouveautés en matière de correctifs temporaires](interim-fixes).
 
 ### Fonctions et éléments d'API obsolètes
-{ #deprecated-features-and-api-elements }
+{: #deprecated-features-and-api-elements }
 Les nouvelles éditions de {{site.data.keys.product }} peuvent introduire des fonctions ou des éléments d'API qui remplacent les fonctions et les éléments d'API propres à des éditions précédentes. Les fonctions et éléments d'API obsolètes sont dépréciés et sont susceptibles d'être retirés dans des éditions ultérieures.  
 [Lire la rubrique sur les fonctions et les éléments d'API obsolètes](deprecated-discontinued)
 

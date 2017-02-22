@@ -18,7 +18,7 @@ weight: 1
 개발자는 사전 구성되었으며 데이터베이스 또는 애플리케이션 서버 등의 필수 소프트웨어가 필요하지 않은 {{site.data.keys.mf_server }}의 단순화 버전을 사용할 수 있습니다. [{{site.data.keys.product_adj }} Development Server 설정](../../../installation-configuration/development)을 참조하십시오.
 
 ## {{site.data.keys.mf_server }} 컴포넌트
-{ #mobilefirst-server-components }
+{: #mobilefirst-server-components }
 {{site.data.keys.mf_server }} 컴포넌트의 아키텍처는 다음과 같이 설명됩니다. 
 
 ![{{site.data.keys.mf_server }}를 구성하는 컴포넌트](server_components.jpg) 
