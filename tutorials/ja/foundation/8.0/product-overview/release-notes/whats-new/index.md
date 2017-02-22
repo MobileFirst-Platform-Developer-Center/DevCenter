@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: tutorial
 title: 新機能
 weight: 1
 ---
