@@ -321,6 +321,7 @@ The table below lists those API elements that require removal, with suggestions 
 
 #### Discontinued JavaScript UI elements
 {: #discontinued-javascript-ui-elements }
+
 | API element | Migration path |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Use Cordova plug-ins or HTML 5 elements. |
@@ -336,6 +337,7 @@ The table below lists those API elements that require removal, with suggestions 
 
 #### Other Discontinued JavaScript elements
 {: #other-discontinued-javascript-elements }
+
 | API | Migration path |
 |-----|----------------|
 | `WL.Client.checkForDirectUpdate(options)` | No replacement.<br/><br/>Note: You can call [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to trigger a direct update if one is available. The access to a security token triggers a direct update if one is available on the server. But you cannot trigger Direct Update on demand. |
@@ -377,6 +379,7 @@ The table below lists those API elements that require removal, with suggestions 
 
 #### Deprecated JavaScript APIs
 {: #deprecated-javascript-apis }
+
 | API | Migration path |
 |-----|----------------|
 | {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)</code></li><li><code>WL.Client.invokeProcedure(invocationData, options)</code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProcedureInvocationResult</code></li></ul>{:/} | Use `WLResourceRequest` instead. Note: The implementation of invokeProcedure uses WLResourceRequest. |
@@ -446,21 +449,21 @@ Then in their **index.html** file or anywhere inside their app they can reuse th
 
 ### Settings page
 {: #settings-page }
-The **settings page** was a UI available in the MobileFirst hybrid app that allowed the developer to change the server URL at runtime for testing purposes. The developer can now use existing {{ site.data.keys.product_adj }} Client API to change the server URL at runtime. For more information, see [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?lang=en-us&cp=SSHS8R_8.0.0&view=kc#setServerUrl).
+The **settings page** was a UI available in the MobileFirst hybrid app that allowed the developer to change the server URL at runtime for testing purposes. The developer can now use existing {{ site.data.keys.product_adj }} Client API to change the server URL at runtime. For more information, see [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?cp=SSHS8R_8.0.0#setServerUrl).
 
 ### Minification
 {: #minification }
 MobileFirst Studio 7.1 provided an OOTB method of reducing the size of your JavaScript code by removing all unnecessary characters before compilation. This removed functionality can be replaced by adding Cordova hooks to your project.
 
-Many hooks are available for minifying your Javascript and css files and can be placed in the config.xml at the before_prepare event.
+Many hooks are available for minifying your JavaScript and CSS files. These hooks can be placed in the `before_prepare` event in the app's **config.xml** file.
 
 Here are some recommended hooks:
 
 * [https://www.npmjs.com/package/uglify-js](https://www.npmjs.com/package/uglify-js)
 * [https://www.npmjs.com/package/clean-css](https://www.npmjs.com/package/clean-css)
 
-These hooks can be defined in either a plug-in file or in the app's config.xml file, using the `<hook>` elements.  
-In this example, using the before_prepare hook event, a script is run for minifying before cordova prepare copies the files to each platform's www/ folder:
+These hooks can be defined either in a plug-in file or in the app's **config.xml** file, by using the `<hook>` element.  
+In this example, the `before_prepare` hook event is used to run a script that minifies the code before Cordova prepares to copy the files to each platform's **www/** folder:
 
 ```html
 <hook type="before_prepare" src="scripts/uglify.js" />

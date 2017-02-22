@@ -132,11 +132,11 @@ In the Eclipse project explorer right click the desired platform (i.e. **android
 ### Adding platforms
 {: #adding-platforms }
 
-Adding additional platforms is a simple process that the THyM plugin does not make intuitive.  You have two options to accomplish the same task, and they are as follows.
+Adding additional platforms is a simple process that the THyM plugin does not make intuitive. You have two options to accomplish the same task, and they are as follows.
 
 1. Via Properties
 	1. Right click your project and select **properties** from the context menu.
-	1. In the presented dialog select **Hybrid Mobile Engin** from the left hand menu.
+	1. In the presented dialog select **Hybrid Mobile Engine** from the left hand menu.
 	1. In this pane you will be able to select or download the desired platforms.
 
 1. Via Terminal

@@ -90,6 +90,7 @@ The tables below list changes in the {{ site.data.keys.product_adj }} Android SD
 
 #### Discontinued Android API elements
 {: #discontinued-android-api-elements }
+
 | API element | Migration path | 
 |-------------|----------------|
 | `WLConfig WLClient.getConfig()` | No replacement. | 
@@ -114,6 +115,7 @@ The tables below list changes in the {{ site.data.keys.product_adj }} Android SD
 
 #### Android APIs depending on the legacy `org.apach.http` APIs are no longer supported
 {: #android-apis-depending-on-the-legacy-orgapachhttp-apis-are-no-longer-supported }
+
 | API element | Migration path | 
 |-------------|----------------|
 | `org.apache.http.Header[]` is now deprecated. Therefore, the following methods are removed: | |

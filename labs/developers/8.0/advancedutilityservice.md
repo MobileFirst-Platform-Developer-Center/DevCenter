@@ -37,6 +37,8 @@ We will be utilizing the Bluemix services:
 * Weather Company Data - to check the weather at work locations
 * Watson Speech to Text - to securely transcribe an audio file with Watson services
 
+![scenario diagram](../advancedutilityservice/diagram.png)
+
 ## Lab Steps
 Head over to the [lab's GitHub repository](https://github.com/MobileFirst-Platform-Developer-Center/UtilitiesDemoApp) to see the labs mentioned below.
 

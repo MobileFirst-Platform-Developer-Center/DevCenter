@@ -8,9 +8,9 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
+
 Security checks constitute the basic server-side building block of the {{ site.data.keys.product_adj }} security framework. A security check is a server-side entity that implements a specific authorization logic, such as obtaining and validating client credentials. You protect a resource by assigning it a scope that maps to zero or more security checks. The security framework ensures that only a client that passes all of the security checks of the protecting scope is granted access to the resource. You can use security checks to authorize access both to resources that are hosted on {{ site.data.keys.mf_server }} and to resources on an external resource server.
 
-Both Java and JavaScript adapters can theoretically define a security check in their respective definition files, however note that the security checks are implemented in Java code only.  
 An adapter can either be a *resource* adapter (meaning it serves resources and content to send to the client), a *SecurityCheck* adapter, or **both**.
 
 > <b>Note:</b> While security checks are implemented within adapters, the {{ site.data.keys.product_adj }} security-framework and adapter APIs are separate and cannot be mixed. Therefore, you cannot use an adapter API, such as the `AdpatersAPI` interface, in your security-check code, and you cannot use security-check APIs in adapter resource code.
@@ -31,14 +31,15 @@ The security check base classes that are described below are available are part 
 
 #### Jump to:
 {: #jump-to }
-* [Defining a security Check](#defining-a-security-check)
-* [Security Check Implementation](#security-check-implementation)
-* [Security Check Configuration](#security-check-configuration)
-* [Predefined Security Checks](#predefined-security-checks)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [Defining security checks](#defining-a-security-check)
+* [Implementing security checks](#security-check-implementation)
+* [Configuring security checks](#security-check-configuration)
+* [Predefined security checks](#predefined-security-checks)
+* [What's next](#what-s-next)
 
-## Defining a Security Check
+## Defining security checks
 {: #defining-a-security-check }
+
 [Create a Java or JavaScript adapter](../../adapters/creating-adapters/) or use an exiting one.
 
 > When creating a Java adapter, the default template assumes that the adapter will serve **resources**. It is the developer's choice to bundle security checks and resources in the same adapter, or to separate them into distinct adapters.
@@ -58,7 +59,7 @@ In the Java adapter's **adapter.xml** file, add an XML element called `securityC
 * The `name` attribute is the name of your security check.
 * The `class` attribute specifies the implementation Java class of the security check. You need to create this class.
 * Security checks can be [further configured](#security-check-configuration) with a list of `property` elements.
-* For defining custom properties, see [Security Check Configuration](#security-check-configuration).
+* For defining custom properties, see [Configuring security checks](#security-check-configuration).
 
 After you successfully deploy an adapter with a security-check definition to the {{ site.data.keys.mf_server }}, you can also see your security check and its configuration information, and make runtime configuration changes, from **{{ site.data.keys.mf_console }} → Adapters → [your adapter]**:
 
@@ -67,8 +68,9 @@ After you successfully deploy an adapter with a security-check definition to the
 For each property, the value that is configured in the `defaultValue` attribute is shown as the current value. You can change the value to override the default value from your security-check definition. You can also restore, at any time, the original default values from your security-check definition. 
 * You can also select an application version from the **Applications** section of the {{ site.data.keys.mf_console }}.
 
-## Security Check Implementation
+## Implementing security checks
 {: #security-check-implementation }
+
 Create the **Java class** for the security check. The implementation should extend one of the provided base classes, as shown below. The parent class you choose determines the balance between customization and simplicity.
 
 ### Security Check
@@ -99,8 +101,9 @@ This class extends the `CredentialsValidationSecurityCheck` and therefore inheri
 
 > Learn more in the [UserAuthentication security check](../user-authentication/) tutorials.
 
-## Security Check Configuration
+## Configuring security checks
 {: #security-check-configuration }
+
 Each security-check implementation class can use a `SecurityCheckConfiguration` class that defines properties available for that security check. Each base `SecurityCheck` class comes with a matching `SecurityCheckConfiguration` class. You can create your own implementation that extends one of the base `SecurityCheckConfiguration` classes and use it for your custom security check.
 
 For example, the `createConfiguration` method of `UserAuthenticationSecurityCheck` returns an instance of `UserAuthenticationSecurityCheckConfig`.
@@ -204,16 +207,18 @@ You can also manually edit the adapter's configuration JSON file with the requir
    
 4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
 
-## Predefined Security Checks
+## Predefined security checks
 {: #predefined-security-checks }
+
 These predefined security checks are also available:
 
 - [Application Authenticity](../application-authenticity/)
 - [Direct Update](../../application-development/direct-update)
 - LTPA
 
-## Tutorials to follow next
-{: #tutorials-to-follow-next }
+## What's next
+{: #what-s-next }
+
 Continue reading about security checks in the following tutorials.  
 Remember to deploy your adapter when you're done developing or making changes.
 

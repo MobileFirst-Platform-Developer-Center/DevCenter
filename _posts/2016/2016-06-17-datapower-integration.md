@@ -145,7 +145,7 @@ To configure with LDAP, consult the documentation for your application server.
 ### Import pattern
 > The following was tested in DataPower XG45.7.0.0.10.
 
-1. Download the [MFP\_LTPA\_Integration](https://raw.githubusercontent.com/nasht00/DataPowerIntegration/master/pattern/MFP_LTPA_Integration.zip) pattern file.
+1. Download the [MFP\_LTPA\_Integration](https://raw.githubusercontent.com/mfpdev/DataPowerLTPA/release80/pattern/MFP_LTPA_Integration.zip) pattern file.
 2. Create a new **Application Domain** in your DataPower instance, switch to this new domain.
 3. Before deploying the pattern, you need to configure the **SSL Proxy Profile** that DataPower will use to support **HTTPS** requests from the clients. If you don't have one already, search for **SSL Proxy Profile** in the DataPower search bar and add a new profile. You may need to upload a certificate and private keys. Those steps are not covered here, please see DataPower documentation.
 ![SSL Proxy Profile]({{site.baseurl}}/assets/blog/2016-02-20-datapower-integration/ssl-proxy-profile.png)

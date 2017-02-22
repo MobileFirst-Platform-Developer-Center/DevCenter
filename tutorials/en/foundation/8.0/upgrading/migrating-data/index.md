@@ -264,7 +264,7 @@ To enable the encryption of local data stores on mobile devices, you must make u
    * Open your Podfile and add the following line:
         
    ##### Before (with IMFData/CloudantToolkit):
-   {: # before-with-imfdata-cloudanttoolkit }    
+   {: #before-with-imfdata-cloudanttoolkit }    
    ```xml
    pod 'IMFDataLocal/SQLCipher'
    ```
