@@ -3,9 +3,9 @@
 We've open sourced our tutorials and samples so that if you will find an error in a sample or the documentation, you'll have an easy way and to submit a correction by making a *pull request* or by opening a *new issue*. Contributing pull requests leads to better, more accurate and more helpful tutorials and samples.
 
 * For sample applications, please use the [specific sample's repository](https://github.com/MobileFirst-Platform-Developer-Center) for opening issues and pull requests.  
-* For product documentation, please use this very repository.
+* For product documentation, please use this very repository. The source files for product documentation or tutorials is in markdown.
 * If you have a question about a sample or about the product, start a new question on [StackOverflow](https://stackoverflow.com/questions/ask) with the **ibm-mobilefirst** tag or join our [Slack community](https://mobilefirstplatform.ibmcloud.com/blog/2015/08/19/come-chat-with-us/).
-  
+
 #### Pull requests  
 Make small pull requests. The smaller a change is, the easier it is to confirm and accept it. When submitting a pull reuqest, be descriptive - what did you change, and why did you make the change.
 
@@ -20,10 +20,10 @@ If you'd like to contribute a blog post about work you've done with IBM MobileFi
 3. Place the .md file under `_posts/<year>/your-blogpost.md`.
 
     Your blog post should be named `YYY-MM-DD-your-lowercase-title.md`. For example `2016-09-10-my-new-blog-post.md`.
-    
+
 4. Make a pull request of your changes back to this repository.
 
-At the very top of the .md file, add the following. For example: 
+At the very top of the .md file, add the following. For example:
 
 ```
 ---
@@ -47,7 +47,7 @@ Include a brief introduction that describes the purpose of your post, and explai
 
 ### Code Snippets
 #### One-line
-In Markdown, to show a small piece of code such as `myFunction()` you use the backtik symbol (\`), like so: 
+In Markdown, to show a small piece of code such as `myFunction()` you use the backtik symbol (\`), like so:
 
 ```javascript
 `myFunction()`
@@ -64,7 +64,7 @@ To include a code snippet, you can start your code with 3 backticks: ` ````` `, 
 
 ### Images
 #### Hosting
-If the image is hosted externally, that's easy enough. 
+If the image is hosted externally, that's easy enough.
 
 Syntax example:  
 `![my-alt-text](http(s)://myexample.com/image-filename.png)`

@@ -321,6 +321,7 @@ The table below lists those API elements that require removal, with suggestions 
 
 #### Discontinued JavaScript UI elements
 {: #discontinued-javascript-ui-elements }
+
 | API element | Migration path |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Use Cordova plug-ins or HTML 5 elements. |
@@ -336,6 +337,7 @@ The table below lists those API elements that require removal, with suggestions 
 
 #### Other Discontinued JavaScript elements
 {: #other-discontinued-javascript-elements }
+
 | API | Migration path |
 |-----|----------------|
 | `WL.Client.checkForDirectUpdate(options)` | No replacement.<br/><br/>Note: You can call [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to trigger a direct update if one is available. The access to a security token triggers a direct update if one is available on the server. But you cannot trigger Direct Update on demand. |
@@ -377,6 +379,7 @@ The table below lists those API elements that require removal, with suggestions 
 
 #### Deprecated JavaScript APIs
 {: #deprecated-javascript-apis }
+
 | API | Migration path |
 |-----|----------------|
 | {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)</code></li><li><code>WL.Client.invokeProcedure(invocationData, options)</code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProcedureInvocationResult</code></li></ul>{:/} | Use `WLResourceRequest` instead. Note: The implementation of invokeProcedure uses WLResourceRequest. |
