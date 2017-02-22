@@ -130,6 +130,7 @@ Replace the client-side APIs that are discontinued or not in V8.0.
 
 #### Deprecated Windows C# API Interfaces
 {: #deprecated-windows-c-api-interfaces }
+
 | Category | Description | Recommended action | 
 |----------|-------------|--------------------|
 | `WLHttpResponseListener` | Not supported. | 
