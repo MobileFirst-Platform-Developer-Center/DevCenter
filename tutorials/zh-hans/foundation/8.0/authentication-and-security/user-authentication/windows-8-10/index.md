@@ -1,33 +1,33 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications
+title: 在 Windows 8.1 Universal 和 Windows 10 UWP 应用程序中实现验证问题处理程序
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: Download RememberMe Win8 project
+  - name: 下载 RememberMe Win8 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80
-  - name: Download RememberMe Win10 project
+  - name: 下载 RememberMe Win10 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80
-  - name: Download PreemptiveLogin Win8 project
+  - name: 下载 PreemptiveLogin Win8 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80
-  - name: Download PreemptiveLogin Win10 project
+  - name: 下载 PreemptiveLogin Win10 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: 下载 SecurityCheck Maven 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck** [challenge handler implementation](../../credentials-validation/windows-8-10) tutorial.
+**先决条件：**确保阅读 **CredentialsValidationSecurityCheck** [验证问题处理程序实施](../../credentials-validation/windows-8-10)教程。
 
-The challenge handler tutorial demonstrate a few additional features (APIs) such as preemptive `Login`, `Logout`, and `ObtainAccessToken`.
+验证问题处理程序教程演示一些其他功能 (API)，例如，优先的 `Login`、`Logout` 和 `ObtainAccessToken`。
 
-## Login
+## 登录
 {: #login }
-In this example, `UserLoginSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a Boolean `rememberMe` key, which tells the security check to remember this user for a longer period. In the sample application, this is collected by a Boolean value from a checkbox in the login form.
+在此示例中，`UserLoginSecurityCheck` 期望使用名为 `username` 和 `password` 的 *key:value*s。它还可选择接受布尔值 `rememberMe` 键，这告知安全性检查在较长时间段内记住此用户。在样本应用程序中，通过来自登录表单复选框中的布尔值收集此项。
 
-The `credentials` argument is a `JSONObject` containing `username`, `password`, and `rememberMe`:
+`credentials` 自变量为包含 `username`、`password` 和 `rememberMe` 的 `JSONObject`：
 
 ```csharp
 public override void SubmitChallengeAnswer(object answer)
@@ -36,19 +36,19 @@ public override void SubmitChallengeAnswer(object answer)
 }
 ```
 
-You may also want to log in a user without any challenge being received. For example, you can show a login screen as the first screen of the application, or show a login screen after a logout, or a login failure. Those scenarios are called **preemptive logins**.
+您可能还想要在不接收任何验证问题的情况下登录用户。例如，您可以将登录屏幕显示为应用程序的第一个屏幕，或者在注销或登录失败后显示登录屏幕。这些场景被称为**优先登录**。
 
-You cannot call the `challengeAnswer` API if there is no challenge to answer. For those scenarios, the {{ site.data.keys.product }} SDK includes the `Login` API:
+如果没有要回答的验证问题，那么无法调用 `challengeAnswer` API。对于这些场景，{{ site.data.keys.product }} SDK 包含 `Login` API：
 
 ```csharp
 WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Login(String securityCheckName, JObject credentials);
 ```
 
-If the credentials are wrong, the security check sends back a **challenge**.
+如果凭证错误，那么安全性检查将发送回**验证问题**。
 
-It is the developer's responsibility to know when to use `Login`, as oppposed to `challengeAnswer`, based on the application's needs. One way to achieve this is to define a Boolean flag, for example `isChallenged`, and set it to `true` when `HandleChallenge` is reached, or set it to `false` in any other cases (failure, success, initialization, etc).
+开发者负责根据应用程序的需求了解，相对于 `challengeAnswer` 何时要使用 `Login`。实现此目标的一种方式是定义布尔标志，例如，`isChallenged`，并在 `HandleChallenge` 到达时将其设置为 `true`，或者在任何其他情况下（失败、成功、初始化等）将其设置为 `false`。
 
-When the user clicks the **Login** button, you can dynamically choose which API to use:
+在用户单击**登录**按钮时，您可以动态选择要使用的 API：
 
 ```csharp
 public async void login(JSONObject credentials)
@@ -63,11 +63,11 @@ public async void login(JSONObject credentials)
     }
 }
 ```
-## Obtaining an access token
+## 获取访问令牌
 {: #obtaining-an-access-token }
-Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in, when the application starts.
+因为此安全性检查支持 **RememberMe** 功能（作为 `rememberMe` 布尔值键），所以它将用于在应用程序启动时检查客户机当前是否已登录。
 
-The {{ site.data.keys.product }} SDK provides the `ObtainAccessToken` API to ask the server for a valid token:
+{{ site.data.keys.product }} SDK 提供 `ObtainAccessToken` API 以要求服务器提供有效令牌：
 
 ```csharp
 WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken(String scope);
@@ -83,16 +83,16 @@ else
 
 ```
 
-If the client is already logged-in or is in the *remembered* state, the API triggers a success. If the client is not logged in, the security check sends back a challenge.
+如果客户机已登录或者处于*已记住*状态，那么 API 会触发成功。如果客户机未登录，那么安全性检查将发送回验证问题。
 
-The `ObtainAccessToken` API takes in a **scope**. The scope can be the name of your **security check**.
+`ObtainAccessToken` API 接受**作用域**。作用域可以是**安全性检查**的名称。
 
-> Learn more about **scopes** in the [Authorization concepts](../../) tutorial.
+> 在[授权概念](../../)教程中了解有关**作用域**的更多信息。
 
-## Retrieving the authenticated user
+## 检索已认证的用户
 {: #retrieving-the-authenticated-user }
-The challenge handler `HandleSuccess` method receives a `JObject identity` as a parameter.
-If the security check sets an `AuthenticatedUser`, this object contains the user's properties. You can use `HandleSuccess` to save the current user:
+验证问题处理程序 `HandleSuccess` 方法接收 `JObject identity` 作为参数。
+如果安全性检查设置 `AuthenticatedUser`，那么此对象包含用户的属性。您可以使用 `HandleSuccess` 来保存当前用户：
 
 ```csharp
 public override void HandleSuccess(JObject identity)
@@ -110,7 +110,7 @@ public override void HandleSuccess(JObject identity)
 }
 ```
 
-Here, `identity` has a key called `user` which itself contains a `JObject` representing the `AuthenticatedUser`:
+此处，`identity` 具有一个名为 `user` 的键，其自身包含表示 `AuthenticatedUser` 的 `JObject`：
 
 ```json
 {
@@ -123,32 +123,31 @@ Here, `identity` has a key called `user` which itself contains a `JObject` repre
 }
 ```
 
-## Logout
+## 注销
 {: #logout }
-The {{ site.data.keys.product }} SDK also provides a `Logout` API to logout from a specific security check:
+{{ site.data.keys.product }} SDK 还提供 `Logout` API 以从特定安全性检查注销：
 
 ```csharp
 WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Logout(securityCheckName);
 ```
 
-## Sample applications
+## 样本应用程序
 {: #sample-applications }
-Two samples are associated with this tutorial:
+两个样本与此教程相关联：
 
-- **PreemptiveLoginWin**: An application that always starts with a login screen, using the preemptive `Login` API.
-- **RememberMeWin**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
+- **PreemptiveLoginWin**：使用优先 `Login` API 且始终从登录屏幕开始的应用程序。
+- **RememberMeWin**：具有*记住我*复选框的应用程序。在下一次打开应用程序时，用户可绕过登录屏幕。
 
-Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapters** adapter Maven project.
+两个样本均使用来自 **SecurityCheckAdapters** 适配器 Maven 项目的相同 `UserLoginSecurityCheck`。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80) the Remember Me Win8 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80) the Remember Me Win10 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80) the PreemptiveLogin Win8 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80) the PreemptiveLoginWin10 project.
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) SecurityCheckAdapters Maven 项目。  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80) Remember Me Win8 项目。  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80) Remember Me Win10 项目。  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80) PreemptiveLogin Win8 项目。  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80) PreemptiveLoginWin10 项目。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
-The username/password for the app must match, i.e. "john"/"john".
+请遵循样本的 README.md 文件获取指示信息。应用程序的用户名/密码必须匹配，例如，“john”/“john”。
 
-![sample application](RememberMe.png)
+![样本应用程序](RememberMe.png)

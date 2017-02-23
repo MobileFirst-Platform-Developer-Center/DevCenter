@@ -1,79 +1,79 @@
 ---
 layout: tutorial
-title: Application Authenticity
+title: 应用程序真实性
 relevantTo: [android,ios,windows,javascript]
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-By issuing an HTTP request, an application can access corporate HTTP services (APIs) that {{ site.data.keys.mf_server }} provides access to. The predefined application-authenticity [security check](../) ensures that an application that tries to connect to a {{ site.data.keys.mf_server }} instance is the authentic one.
+通过发出 HTTP 请求，应用程序可访问 {{ site.data.keys.mf_server }} 提供访问权的企业 HTTP 服务 (API)。预定义应用程序真实性[安全检查](../)可确保尝试连接到 {{ site.data.keys.mf_server }} 实例的应用程序是真实的应用程序。
 
-To enable application authenticity, you can either follow the on-screen instructions in the **{{ site.data.keys.mf_console }}** → **[your-application]** → **Authenticity**, or review the information below.
+要启用应用程序真实性，可遵循 **{{ site.data.keys.mf_console }}** → **[您的应用程序]** → **真实性**中的屏幕说明，或查看以下信息。
 
-#### Availability
+#### 可用性
 {: #availability }
-* Application authenticity is available in all supported platforms (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) in both Cordova and native applications.
+* 应用程序真实性在 Cordova 和本机应用程序中的所有受支持平台（iOS、Android、Windows 8.1 Universal、Windows 10 UWP）上均可用。
 
-#### Limitations
+#### 限制
 {: #limitations }
-* Application authenticity does not support **Bitcode** in iOS. Therefore, before using application authenticity, disable Bitcode in the Xcode project properties.
+* 应用程序真实性在 iOS 中不支持**位码**。因此，在使用应用程序真实性之前，请在 Xcode 项目属性中禁用位码。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-- [Application Authenticity flow](#application-authenticity-flow)
-- [Enabling Application Authenticity](#enabling-application-authenticity)
-- [Configuring Application Authenticity](#configuring-application-authenticity)
+- [应用程序真实性流程](#application-authenticity-flow)
+- [启用应用程序真实性](#enabling-application-authenticity)
+- [配置应用程序真实性](#configuring-application-authenticity)
 
-## Application Authenticity Flow
+## 应用程序真实性流程
 {: #application-authenticity-flow }
-By default, the application-authenticity security check is run during the application's runtime registration to {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. The authenticity challenge does not occur again.
+缺省情况下，将在应用程序运行时注册到 {{ site.data.keys.mf_server }} 期间运行应用程序真实性安全检查，这会在应用程序实例首次尝试连接到服务器时发生。真实性验证问题不会重现。
 
-See [Configuring application authenticity](#configuring-application-authenticity) to learn how to customize this behavior.
+请参阅[配置应用程序真实性](#configuring-application-authenticity)，了解如何定制此行为。
 
-## Enabling Application Authenticity
+## 启用应用程序真实性
 {: #enabling-application-authenticity }
-For application authenticity to be enabled in your Cordova or native application, the application binary file must be signed by using the mfp-app-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android, and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
+要在 Cordova 或本机应用程序中启用应用程序真实性，必须使用 mfp-app-authenticity 工具签署应用程序二进制文件。合格的二进制文件有：`ipa`（针对 iOS）、`apk`（针对 Android）和 `appx`（针对 Windows 8.1 Universal 和 Windows 10 UWP）。
 
-1. Download the mfp-app-authenticity tool from the **{{ site.data.keys.mf_console }} → Download Center**.
-2. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
+1. 通过 **{{ site.data.keys.mf_console }} → 下载中心**来下载 mfp-app-authenticity 工具。
+2. 打开**命令行**窗口并运行以下命令：`java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
 
-   For example:
+   例如：
 
    ```bash
    java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
    ```
 
-   This command generates an `.authenticity_data` file, called `MyBankApp.authenticity_data`, next to the `MyBankApp.ipa` file.
+   此命令可在 `MyBankApp.ipa` 文件旁生成一个名为 `MyBankApp.authenticity_data` 的 `.authenticity_data` 文件。
 
-3. Open the {{ site.data.keys.mf_console }} in your favorite browser.
-4. Select your application from the navigation sidebar and click on the **Authenticity** menu item.
-5. Click on **Upload Authenticity File** to upload the `.authenticity_data` file.
+3. 在您最喜爱的浏览器中打开 {{ site.data.keys.mf_console }}。
+4. 从导航侧边栏中选择应用程序，然后单击**真实性**菜单项。
+5. 单击**上载真实性文件**以上载 `.authenticity_data` 文件。
 
-When the `.authenticity_data` file is uploaded, application authenticity is enabled.
+上载 `.authenticity_data` 文件时，将启用应用程序真实性。
 
-![Enable Application Authenticity](enable_application_authenticity.png)
+![启用应用程序真实性](enable_application_authenticity.png)
 
-### Disabling Application Authenticity
+### 禁用应用程序真实性
 {: #disabling-application-authenticity }
-To disable application authenticity, click the **Delete Authenticity File** button.
+要禁用应用程序真实性，请单击**删除真实性文件**按钮。
 
-## Configuring Application Authenticity
+## 配置应用程序真实性
 {: #configuring-application-authenticity }
-By default, Application Authenticity is checked only during client registration. Just like any other security check, you can decide to protect your application or resources with the `appAuthenticity` security check from the console, following the instructions under [Protecting resources](../#protecting-resources).
+缺省情况下，仅在客户机注册期间检查应用程序真实性。正如其他任何安全性检查一样，您可以遵循[保护资源](../#protecting-resources)下的指示信息，从控制台中使用 `appAuthenticity` 安全性检查来保护应用程序或资源。
 
-You can configure the predefined application-authenticity security check with the following property:
+您可以使用以下属性配置预定义的应用程序真实性安全检查：
 
-- `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the authenticity token expires.
+- `expirationSec`：缺省为 3600 秒/1 小时。定义真实性令牌到期前的持续时间。
 
-After an authenticity check has completed, it does not occur again until the token has expired based on the set value.
+完成真实性检查后，直到令牌到期（根据设定值）才会重新进行。
 
-#### To configure the `expirationSec` property:
+#### 要配置 `expirationSec` 属性，请执行以下操作：
 {: #to-configure-the-expirationsec property }
-1. Load the {{ site.data.keys.mf_console }}, navigate to **[your application]** → **Security** → **Security-Check Configurations**, and click on **New**.
+1. 装入 {{ site.data.keys.mf_console }}，导航至 **[您的应用程序]** → **安全性** → **安全性检查配置**，然后单击**新建**。
 
-2. Search for the `appAuthenticity` scope element.
+2. 搜索 `appAuthenticity` 作用域元素。
 
-3. Set a new value in seconds.
+3. 设置新值（秒）。
 
-![Configuring the expirationSec property in the console](configuring_expirationSec.png)
+![在控制台中配置 expirationSec 属性](configuring_expirationSec.png)

@@ -1,50 +1,48 @@
 ---
 layout: tutorial
-title: Configuring the MobileFirst Server Keystore
-breadcrumb_title: Configuring the Server Keystore
+title: 配置 MobileFirst Server 密钥存储库
+breadcrumb_title: 配置服务器密钥存储库
 weight: 14
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-A keystore is a repository of security keys and certificates that is used to verify and authenticate the validity of parties involved in a network transaction. The {{ site.data.keys.mf_server }} keystore defines the identity of {{ site.data.keys.mf_server }} instances, and is used to digitally sign OAuth tokens and Direct Update packages. In addition, when an adapter communicates with a back-end server using mutual HTTPS (SSL) authentication, the keystore is used to validate the SSL-client identity of the {{ site.data.keys.mf_server }} instance.
+密钥库是安全密钥和证书的存储库，用于验证和认证网络事务中所涉及各方的有效性。{{ site.data.keys.mf_server }} 密钥库定义了 {{ site.data.keys.mf_server }} 实例的身份，并用于以数字方式签署 OAuth 令牌和直接更新包。此外，在适配器使用相互 HTTPS (SSL) 认证与后端服务器进行通信时，密钥库用于验证 {{ site.data.keys.mf_server }} 实例的 SSL 客户机身份。
 
-For production-level security, during the move from development to production the administrator must configure {{ site.data.keys.mf_server }} to use a user-defined keystore. The default {{ site.data.keys.mf_server }} keystore is intended to be used only during development.
+对于生产级安全性，在开发到生产过程中，管理员必须配置 {{ site.data.keys.mf_server }} 来使用用户定义的密钥库。缺省 {{ site.data.keys.mf_server }} 密钥库规定为仅在开发过程中使用。
 
-### Notes
+### 注释
 {: #notes }
-* To use the keystore to verify the authenticity of a Direct Update package, statically bind the application with the public key of the {{ site.data.keys.mf_server }} identity that is defined in the keystore. See [Implementing secure Direct Update on the client side](../../application-development/direct-update).
-* Reconfiguring the {{ site.data.keys.mf_server }} keystore after production should be considered carefully. Changing the configuration has the following potential effects:
-    * The client might need to acquire a new OAuth token in place of a token signed with the previous keystore. In most cases, this process is transparent to the application.
-    * If the client application is bound to a public key that does not match the {{ site.data.keys.mf_server }} identity in the new keystore configuration, Direct Update fails. To continue getting updates, bind the application with the new public key, and republish the application. Alternatively, change the keystore configuration again to match the public key to which the application is bound. See [Implementing secure Direct Update on the client side](../../application-development/direct-update).
-    *  For mutual SSL authentication, if the SSL-client identity alias and password that are configured in the adapter are not found in the new keystore, or do not match the SSL certifications, SSL authentication fails. See the adapter configuration information in Step 2 of the following procedure.
+* 要使用密钥库验证直接更新包的真实性，请将应用程序与密钥库中定义的 {{ site.data.keys.mf_server }} 身份的公用密钥静态绑定。请参阅[在客户端实施安全直接更新](../../application-development/direct-update)。
+* 应慎重考虑在生产后重新配置 {{ site.data.keys.mf_server }} 密钥库。更改配置会产生以下潜在影响：
+    * 客户机可能需要获得一个新的 OAuth 令牌来取代使用先前密钥库签署的令牌。在大多数情况下，这一过程对于应用程序是透明的。
+    * 如果客户机应用程序绑定到与新密钥库配置中的 {{ site.data.keys.mf_server }} 身份不匹配的公用密钥，那么直接更新将失败。要继续获取更新，请将应用程序与新的公用密钥绑定，并重新发布此应用程序。或者，再次更改密钥库配置，以便与应用程序绑定的公用密钥相匹配。请参阅[在客户端实施安全直接更新](../../application-development/direct-update)。
+    *  对于相互 SSL 认证，如果在新的密钥库中找不到适配器中配置的 SSL 客户机身份别名和密码，或者其与 SSL 证书不匹配，那么 SSL 认证将失败。请参阅以下过程步骤 2 中的适配器配置信息。
 
-## Setup
+## 设置
 {: #setup }
-1. Create a Java keystore (JKS) or PKCS 12 keystore file with an alias that contains a key pair that defines the identity of your {{ site.data.keys.mf_server }}. If you already have an appropriate keystore file, skip to the next step.
+1. 使用包含密钥对（用于定义 {{ site.data.keys.mf_server }} 的身份）的别名创建 Java 密钥库 (JKS) 或 PKCS 12 密钥库文件。如果您已有相应的密钥库文件，请跳至下一步。
 
-   > **Note:** The type of the alias key-pair algorithm must be RSA. The following instructions explain how to set the algorithm type to RSA when using the **keytool** utility.
-
-   You can use a third-party tool to create the keystore file. For example, you can generate a JKS keystore file by running the Java **keytool** utility with the following command (where `<keystore name>` is the name of your keystore and `<alias name>` is your selected alias):
+   > **注：**别名密钥对算法类型必须为 RSA。以下指示信息说明在使用 **keytool** 实用程序时，如何将算法类型设置为 RSA。
+   您可以使用第三方工具来创建密钥库文件。例如，您可以通过运行 Java **keytool** 实用程序并使用以下命令来生成 JKS 密钥库文件（其中，`<keystore name>` 是密钥库的名称，`<alias name>` 是您选择的别名）：
     
    ```bash
    keytool -keystore <keystore name> -genkey -alias <alias name> -keylag RSA
    ```
     
-   The following sample command generates a **my_company.keystore** JKS file with a `my_alias` alias:
+   以下样本命令将生成别名为 **my_alias** 的 `my_company.keystore` JKS 文件：
     
    ```bash
    keytool -keystore my_company.keystore -genkey -alias my_alias -keyalg RSA
    ```
     
-   The utility prompts you to provide different input parameters, including the passwords for your keystore file and alias.
+   实用程序将提示您提供不同的输入参数，包括密钥库文件和别名的密码。
 
-   > **Note:** You must set the `-keyalg RSA` option to set the type of the generated key algorithm to RSA instead of the default DSA.
+   > **注：**必须设置 `-keyalg RSA` 选项，以将生成的密钥算法类型设置为 RSA，而不是缺省的 DSA。
+   要将密钥库用于适配器与后端服务器之间的相互 SSL 认证，也要将 {{ site.data.keys.product }} SSL 客户机身份别名添加到密钥库。您可以使用通过 {{ site.data.keys.mf_server }} 身份别名创建密钥库文件所用的相同方法来执行此操作，但是改为提供 SSL 客户机身份的别名和密码。
 
-   To use the keystore for mutual SSL authentication between an adapter and a back-end server, also add a {{ site.data.keys.product }} SSL-client identity alias to the keystore. You can do this by using the same method that you used to create the keystore file with the {{ site.data.keys.mf_server }} identity alias, but provide instead the alias and password for the SSL-client identity.
+2. 配置 {{ site.data.keys.mf_server }} 以使用密钥库：在 {{ site.data.keys.mf_console }} 导航侧边栏中，选择**运行时设置**，然后选择**密钥库**选项卡。遵循此选项卡上的指示信息来配置用户定义的 {{ site.data.keys.mf_server }} 密钥库。相关步骤包括上载密钥库文件、指示其类型以及提供密钥库密码、{{ site.data.keys.mf_server }} 身份别名名称和别名密码。 
 
-2. Configure {{ site.data.keys.mf_server }} to use your keystore: in the {{ site.data.keys.mf_console }} navigation sidebar, select **Runtime Settings**, and then select the **Keystore** tab. Follow the instructions on this tab to configure your user-defined {{ site.data.keys.mf_server }} keystore. The steps include uploading your keystore file, indicating its type, and providing your keystore password, the name of your {{ site.data.keys.mf_server }} identity alias, and the alias password. 
+成功配置后，状态将更改为“用户定义”。否则，将显示错误，状态仍为“缺省”。
 
-When configured successfully, the Status changes to "User Defined". Otherwise, an error is displayed and the status remains "Default".
-
-The SSL-client identity alias (if used) and its password are configured in the descriptor file of the relevant adapter, within the `<sslCertificateAlias>` and `<sslCertificatePassword>` subelements of the `<connectionPolicy>` element. See [HTTP adapter connectionPolicy element](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file).
+在 `<connectionPolicy>` 元素的 `<sslCertificateAlias>` 和 `<sslCertificatePassword>` 子元素内，在相关适配器的描述符文件中配置 SSL 客户机身份别名（如使用）及其密码。请参阅 [HTTP 适配器 connectionPolicy 元素](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)。

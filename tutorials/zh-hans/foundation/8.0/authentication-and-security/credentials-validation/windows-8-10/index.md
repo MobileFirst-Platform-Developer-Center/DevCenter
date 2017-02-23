@@ -1,22 +1,22 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications
+title: 在 Windows 8.1 Universal 和 Windows 10 UWP 应用程序中实现验证问题处理程序
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: Download Win8 project
+  - name: 下载 Win8 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80
-  - name: Download Win10 project
+  - name: 下载 Win10 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: 下载 SecurityCheck Maven 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-When trying to access a protected resource, the server (the security check) sends back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a `JSON` object, listing the security check name with an optional `JSON` of additional data:
+在尝试访问受保护资源时，服务器（安全性检查）会向客户机发回一个列表，其中包含一个或多个**验证问题**，供客户机处理。  
+该列表会作为 `JSON` 对象接收，列出安全性检查名称以及其他数据的可选 `JSON`：
 
 ```json
 {
@@ -29,16 +29,16 @@ This list is received as a `JSON` object, listing the security check name with a
 }
 ```
 
-The client should then register a **challenge handler** for each security check.  
-The challenge handler defines the client-side behavior that is specific to the security check.
+然后，客户机应该为每项安全性检查注册**验证问题处理程序**。  
+验证问题处理程序可定义特定于安全性检查的客户机端行为。
 
-## Creating the challenge handler
+## 创建验证问题处理程序
 {: #creating-the-challenge-handler }
-A challenge handler is a class that handles the challenges sent by the {{ site.data.keys.mf_server }}, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
+验证问题处理程序是可处理 {{ site.data.keys.mf_server }} 发送的验证问题的类，如显示登录屏幕、收集凭证和将其提交回安全性检查。
 
-In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to log in (`remainingAttempts`), and an optional `errorMsg`.
+在此示例中，安全性检查为 `PinCodeAttempts`，在[实现 CredentialsValidationSecurityCheck](../security-check) 中定义。此安全性检查发送的验证问题包含剩余登录尝试次数 (`remainingAttempts`) 以及可选 `errorMsg`。
 
-Create a C# class that extends `Worklight.SecurityCheckChallengeHandler`:
+创建可扩展 `Worklight.SecurityCheckChallengeHandler` 的 C# 类：
 
 ```csharp
 public class PinCodeChallengeHandler : Worklight.SecurityCheckChallengeHandler
@@ -46,11 +46,11 @@ public class PinCodeChallengeHandler : Worklight.SecurityCheckChallengeHandler
 }
 ```
 
-## Handling the challenge
+## 处理验证问题
 {: #handling-the-challenge }
-The minimum requirement from the `SecurityCheckChallengeHandler` class is to implement a constructor and a `HandleChallenge` method, that is responsible for asking the user to provide the credentials. The `HandleChallenge` method receives the challenge as an `Object`.
+`SecurityCheckChallengeHandler` 类的最低要求是实现构造方法和 `HandleChallenge` 方法，它负责请求用户提供凭证。`HandleChallenge` 方法会接收作为 `Object` 的验证问题。
 
-Add a constructor method:
+添加构造方法：
 
 ```csharp
 public PinCodeChallengeHandler(String securityCheck) {
@@ -58,14 +58,13 @@ public PinCodeChallengeHandler(String securityCheck) {
 }
 ```
 
-In this `HandleChallenge` example, an alert prompts the user to enter the PIN code:
+在此 `HandleChallenge` 示例中，警报会提示用户输入 PIN 码：
 
 ```csharp
 public override void HandleChallenge(Object challenge)
 {
-    try
-    {
-      JObject challengeJSON = (JObject)challenge;
+    try { 
+JObject challengeJSON = (JObject)challenge;
 
       if (challengeJSON.GetValue("errorMsg") != null)
       {
@@ -96,13 +95,13 @@ public override void HandleChallenge(Object challenge)
 }
 ```
 
-> The implementation of `showChallenge` is included in the sample application.
+> 样本应用程序中包含 `showChallenge` 的实现。
 
-If the credentials are incorrect, you can expect the framework to call `HandleChallenge` again.
+如果凭证不正确，那么预计框架会再次调用 `HandleChallenge`。
 
-## Submitting the challenge's answer
+## 提交验证问题的答案
 {: #submitting-the-challenges-answer }
-After the credentials have been collected from the UI, use the `SecurityCheckChallengeHandler`'s `ShouldSubmitChallengeAnswer()` and `GetChallengeAnswer()` methods to send an answer back to the security check. `ShouldSubmitChallengeAnswer()` returns a Boolean value that indicates whether the challenge response should be sent back to the security check. In this example, `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+在从 UI 收集凭证之后，使用 `SecurityCheckChallengeHandler` 的 `ShouldSubmitChallengeAnswer()` 和 `GetChallengeAnswer()` 方法将答案发送回安全性检查。`ShouldSubmitChallengeAnswer()` 会返回一个布尔值，指示是否应将验证问题响应发送回安全性检查。在此示例中，`PinCodeAttempts` 预期有一个名为 `pin` 且包含提交的 PIN 码的属性：
 
 ```csharp
 public override bool ShouldSubmitChallengeAnswer()
@@ -120,11 +119,11 @@ public override JObject GetChallengeAnswer()
 
 ```
 
-## Cancelling the challenge
+## 取消验证问题
 {: #cancelling-the-challenge }
-In some cases, such as clicking a **Cancel** button in the UI, you want to tell the framework to discard this challenge completely.
+在某些情况下（如单击 UI 中的**取消**按钮），您想要通知框架完全丢弃此验证问题。
 
-To achieve this, override the `ShouldCancel` method.
+要实现此目标，请覆盖 `ShouldCancel` 方法。
 
 
 ```csharp
@@ -134,34 +133,34 @@ public override bool ShouldCancel()
 }
 ```
 
-## Registering the challenge handler
+## 注册验证问题处理程序
 {: #registering-the-challenge-handler }
-For the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.
+为了使验证问题处理程序侦听正确的验证问题，您必须通知框架将验证问题处理程序与特定的安全性检查名称相关联。
 
-To do so, initialize the challenge handler with the security check as follows:
+为此，请使用安全性检查初始化验证问题处理程序，如下所述：
 
 ```csharp
 PinCodeChallengeHandler pinCodeChallengeHandler = new PinCodeChallengeHandler("PinCodeAttempts");
 ```
 
-You must then **register** the challenge handler instance:
+然后，您必须**注册**验证问题处理程序实例：
 
 ```csharp
 IWorklightClient client = WorklightClient.createInstance();
 client.RegisterChallengeHandler(pinCodeChallengeHandler);
 ```
 
-## Sample application
+## 样本应用程序
 {: #sample-application }
-The **PinCodeWin8** and **PinCodeWin10** samples are C# applications that use `ResourceRequest` to get a bank balance.  
-The method is protected with a PIN code, with a maximum of 3 attempts.
+**PinCodeWin8** 和 **PinCodeWin10** 样本为使用 `ResourceRequest` 获取银行存款余额的 C# 应用程序。  
+该方法通过 PIN 码受到保护，最多有 3 次尝试机会。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80) the Windows 8 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80) the Windows 10 UWP project.
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) SecurityCheckAdapters Maven 项目。  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin8/tree/release80) Windows 8 项目。  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWin10/tree/release80) Windows 10 UWP 项目。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+请遵循样本的 README.md 文件获取指示信息。
 
-![Sample application](sample-application.png)   
+![样本应用程序](sample-application.png)   

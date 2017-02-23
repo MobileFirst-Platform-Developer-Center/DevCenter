@@ -1,31 +1,31 @@
 ---
 layout: tutorial
-title: Java Token Validator
-breadcrumb_title: Java Token Validator
+title: Java 令牌验证程序
+breadcrumb_title: Java 令牌验证程序
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Download sample
+  - name: 下载样本
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-{{ site.data.keys.product_full }} provides a Java library to enforce security capabilities on external resources.  
-The Java library is provided as a JAR file (**mfp-java-token-validator-8.0.0.jar**).
+{{ site.data.keys.product_full }} 提供 Java 库以对外部资源实施安全功能。  
+Java 库是作为 JAR 文件 (**mfp-java-token-validator-8.0.0.jar**) 提供的。
 
-This tutorial shows how to protect a simple Java Servlet, `GetBalance`, by using a scope (`accessRestricted`).
+本教程显示如何使用作用域 (`accessRestricted`) 来保护简单 Java Servlet `GetBalance`。
 
-**Prerequesites:**
+**先决条件：**
 
-* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product_adj }} Foundation security framework](../../).
+* 阅读[使用 {{ site.data.keys.mf_server }} 来认证外部资源](../)教程。
+* 了解 [{{ site.data.keys.product_adj }} Foundation 安全框架](../../)。
 
-![Flow](JTV_flow.jpg)
+![流程](JTV_flow.jpg)
 
-## Adding the .jar file dependency
+## 添加 .jar 文件依赖关系
 {: #adding-the-jar-file-dependency }
-The **mfp-java-token-validator-8.0.0.jar** file is available as a **maven dependency**:
+**mfp-java-token-validator-8.0.0.jar** 文件可用作 **maven 依赖关系**：
 
 ```xml
 <dependency>
@@ -35,32 +35,31 @@ The **mfp-java-token-validator-8.0.0.jar** file is available as a **maven depend
 </dependency>
 ```
 
-## Instantiating the TokenValidationManager
+## 实例化 TokenValidationManager
 {: #instantiating-the-tokenvalidationmanager }
-To be able to validate tokens, instantiate `TokenValidationManager`.
+为了能够验证令牌，请实例化 `TokenValidationManager`。
 
 ```java
 TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret);
 ```
 
-- `authorizationURI`: the URI of the Authorization server, usually the {{ site.data.keys.mf_server }}. For example **http://localhost:9080/mfp/api**.
-- `clientId`: The confidential client ID that you configured in the {{ site.data.keys.mf_console }}.
-- `clientSecret`: The confidential client secret that you configured in the {{ site.data.keys.mf_console }}.
+- `authorizationURI`：授权服务器的 URI，通常为 {{ site.data.keys.mf_server }}。例如，**http://localhost:9080/mfp/api**。
+- `clientId`：在 {{ site.data.keys.mf_console }} 中配置的保密客户机标识。
+- `clientSecret`：在 {{ site.data.keys.mf_console }} 中配置的保密客户机密钥。
 
-> The library exposes an API that encapsulates and simplifies the interaction with the authorization server's introspection endpoint. For a detailed API reference, [see the {{ site.data.keys.product_adj }} Java Token Validator API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
-
-## Validating the credentials
+> 该库会公开一个 API，用于封装并简化与授权服务器的自省端点的交互。有关详细 API 参考，[请参阅 {{ site.data.keys.product_adj }} Java 令牌验证程序 API 参考](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)。
+## 验证凭证
 {: #validating-the-credentials }
-The `validate` API method asks the authorization server to validate the authorization header:
+`validate` API 方法会要求授权服务器验证授权头：
 
 ```java
 public TokenValidationResult validate(java.lang.String authorizationHeader, java.lang.String expectedScope);
 ```
 
-- `authorizationHeader`: The content of the `Authorization` HTTP header, which is the access token. For example, it could be obtained from an  `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`).
-- `expectedScope`: The scope to validate the token against, for example `accessRestricted`.
+- `authorizationHeader`：`Authorization` HTTP 头的内容，这是访问令牌。例如，可以从 `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`) 中获取。
+- `expectedScope`：用于验证令牌的作用域，例如，`accessRestricted`。
 
-You can query the resulting `TokenValidationResult` object for an error or for valid introspection data:
+您可以查询生成的 `TokenValidationResult` 对象以查找错误或有效的自省数据：
 
 ```java
 TokenValidationResult tokenValidationRes = validator.validate(authCredentials, expectedScope);
@@ -74,9 +73,9 @@ if (tokenValidationRes.getAuthenticationError() != null) {
 }
 ```                    
 
-## Introspection data
+## 自省数据
 {: #introspection-data }
-The `TokenIntrospectionData` object returned by `getIntrospectionData()` provides you with some information about the client, such as the user name of the currently active user:
+`getIntrospectionData()` 返回的 `TokenIntrospectionData` 对象为您提供有关客户机的一些信息，例如，当前活动用户的用户名：
 
 ```java
 httpServletRequest.setAttribute("introspection-data", tokenValidationRes.getIntrospectionData());
@@ -87,21 +86,21 @@ TokenIntrospectionData introspectionData = (TokenIntrospectionData) request.getA
 String username = introspectionData.getUsername();
 ```
 
-## Cache
+## 高速缓存
 {: #cache }
-The `TokenValidationManager` class comes with an internal cache which caches tokens and introspection data. The purpose of the cache is to reduce the amount of token *introspections* done against the Authorization Server, if a request is made with the same header.
+`TokenValidationManager` 类随附一个内部高速缓存，用于高速缓存令牌和自省数据。高速缓存的目的是减少针对授权服务器完成的令牌*自省*总量（如果使用相同的头发出请求）。
 
-The default cache size is **50000 items**. After this capacity is reached, the oldest token is removed.  
+缺省高速缓存大小为 **50000 个项**。在到达此容量后，将除去最旧的令牌。  
 
-The constructor of `TokenValidationManager` can also accept a `cacheSize` (number of introspection data items) to store:
+`TokenValidationManager` 的构造方法也可接受要存储的 `cacheSize`（自省数据项的数量）：
 
 ```java
 public TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret, long cacheSize);
 ```
 
-## Protecting a simple Java Servlet
+## 保护简单 Java Servlet
 {: #protecting-a-simple-java-servlet }
-1. Create a simple Java Servlet called `GetBalance`, which returns a hardcoded value:
+1. 创建名为 `GetBalance` 的简单 Java Servlet，这将返回硬编码值：
 
    ```java
    @WebServlet("/GetBalance")
@@ -116,7 +115,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    }
    ```
 
-2. Create a `javax.servlet.Filter` implementation, called `JTVFilter`, which will validate the authorization header for a given scope:
+2. 创建名为 `JTVFilter` 的 `javax.servlet.Filter` 实现，这将针对指定作用域验证授权头：
 
    ```java
    public class JTVFilter implements Filter {
@@ -169,7 +168,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    }
    ```
 
-3. In the servlet's **web.xml** file, declare an instance of `JTVFilter` and pass the **scope** `accessRestricted` as a parameter:
+3. 在 servlet 的 **web.xml** 文件中，声明 `JTVFilter` 的实例，并传递 **scope**`accessRestricted` 作为参数：
 
    ```xml
    <filter>
@@ -182,7 +181,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    </filter>
    ```
 
-   Then protect your servlet with the filter:
+   然后，使用过滤器保护 servlet：
 
    ```xml
    <filter-mapping>
@@ -191,16 +190,16 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    </filter-mapping>
    ```
 
-## Sample application
+## 样本应用程序
 {: #sample-application }
 
-You can deploy the project on the supported application servers (Tomcat, WebSphere Application Server full profile, and WebSphere Application Server Liberty profile).  
-[Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80).
+您可以在受支持的应用程序服务器（Tomcat、WebSphere Application Server Full Profile 和 WebSphere Application Server Liberty Profile）上部署项目。  
+[下载简单 Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80)。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-1. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-3. Register the matching application.
-4. Map the `accessRestricted` scope to the security check.
-5. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. 确保[更新保密客户机](../#confidential-client)和 {{ site.data.keys.mf_console }} 中的密钥值。
+2. 部署安全性检查：**[UserLogin](../../user-authentication/security-check/)** 或 **[PinCodeAttempts](../../credentials-validation/security-check/)**。
+3. 注册匹配应用程序。
+4. 将 `accessRestricted` 作用域映射到安全性检查。
+5. 更新客户机应用程序以针对 servlet URL 生成 `WLResourceRequest`。

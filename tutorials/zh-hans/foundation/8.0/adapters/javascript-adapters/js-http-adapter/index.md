@@ -1,37 +1,37 @@
 ---
 layout: tutorial
-title: JavaScript HTTP Adapter
-breadcrumb_title: HTTP Adapter
+title: JavaScript HTTP 适配器
+breadcrumb_title: HTTP 适配器
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: 下载适配器 Maven 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-By using HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
+通过 HTTP 适配器，您可以发送 GET 或 POST HTTP 请求，并从响应头或主体检索数据。HTTP 适配器与 RESTful 和基于 SOAP 的服务一起使用，可以读取结构化的 HTTP 源（例如 RSS 订阅源）。
 
-You can easily customize HTTP adapters with simple server-side JavaScript code. For example, you could set up server-side filtering if necessary. The retrieved data can be in XML, HTML, JSON, or plain text format.
+您可以通过简单的服务器端 JavaScript 代码来轻松定制 HTTP 适配器。例如，您可以根据需要设置服务器端过滤。检索的数据可以为 XML、HTML、JSON 或纯文本格式。
 
-The adapter is configured with XML to define the adapter properties and procedures.  
-Optionally, it is also possible to use XSL to filter received records and fields.
+使用 XML 配置适配器，以定义适配器属性和过程。  
+（可选）也可以使用 XSL 来过滤接收到的记录和字段。
 
-**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
+**先决条件：**确保首先阅读 [JavaScript 适配器](../)教程。
 
-## The XML File
+## XML 文件
 {: #the-xml-file }
 
-The XML file contains settings and metadata.  
-To edit the adapter XML file, you must:
+此 XML 文件中包含设置和元数据。  
+要编辑适配器 XML 文件，您必须：
 
-* Set the protocol to HTTP or HTTPS.  
-* Set the HTTP domain to the domain part of HTTP URL.  
-* Set the TCP Port.  
+* 将协议设置为 HTTP 或 HTTPS。  
+* 将 HTTP 域设置为 HTTP URL 的域部分。  
+* 设置 TCP 端口。  
 
-Declare the required procedures below the `connectivity` element:
+在 `connectivity` 元素下声明所需的过程：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -62,40 +62,38 @@ Declare the required procedures below the `connectivity` element:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for <code>connectionPolicy</code> attributes and subelements</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>单击获取 <code>connectionPolicy</code> 属性和子元素</b></a>
             </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>xsi:type</b>: <i>Mandatory.</i> The value of this attribute must be http:HTTPConnectionPolicyType.</li>
-                    <li><b>cookiePolicy</b>: <i>Optional.</i> This attribute sets how the HTTP adapter handles cookies that arrive from the back-end application. The following values are valid.
-                        <ul>
-                            <li>BEST_MATCH: default value</li>
+                    <li><b>xsi:type</b>：<i>必填。</i> 此属性的值必须是 http:HTTPConnectionPolicyType。</li>
+                    <li><b>cookiePolicy</b>：<i>可选。</i>此属性决定 HTTP 适配器如何处理来自后端应用程序的 cookie。下列值有效。<ul>
+                            <li>BEST_MATCH：缺省值</li>
                             <li>BROWSER_COMPATIBILITY</li>
                             <li>RFC_2109</li>
                             <li>RFC_2965</li>
                             <li>NETSCAPE</li>
                             <li>IGNORE_COOKIES</li>
                         </ul>
-                        For more information about these values, see the Apache <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP components</a> page.
-                    </li>
-                    <li><b>maxRedirects</b>: <i>Optional.</i> The maximum number of redirects that the HTTP adapter can follow. This attribute is useful when the back-end application sends circular redirects as a result of some error, such as authentication failures. If this attribute is set to 0, the adapter does not attempt to follow redirects at all, and the HTTP 302 response is returned to the user. The default value is 10.</li>
-                    <li><b>protocol</b>: <i>Optional.</i> The URL protocol to use. The following values are valid: <b>http</b> (default), <b>https</b>.</li>
-                    <li><b>domain</b>: <i>Mandatory.</i> The host address.</li>
-                    <li><b>port</b>: <i>Optional.</i> The port address. If no port is specified the default HTTP/S port is used (80/443)</li>
-                    <li><b>sslCertificateAlias</b>: Optional for regular HTTP authentication and simple SSL authentication. Mandatory for mutual SSL authentication. The alias of the adapter private SSL key, which is used by the HTTP adapter key manager to access the correct SSL certificate in the keystore. For more information about the keystore setup process, see <a href="using-ssl">Using SSL in HTTP adapters</a> tutorial.</li>
-                    <li><b>sslCertificatePassword</b>: Optional for regular HTTP authentication and simple SSL authentication. Mandatory for mutual SSL authentication. The password of the adapter private SSL key, which is used by the HTTP adapter key manager to access the correct SSL certificate in the keystore. For more information about the keystore setup process, see <a href="using-ssl">Using SSL in HTTP adapters</a> tutorial.</li>
-                    <li><b>authentication</b>: <i>Optional.</i> Authentication configuration of the HTTP adapter. The HTTP adapter can use one of two authentication protocols. Define the <b>authentication</b>< element, as follows:
-                        <ul>
-                            <li>Basic authentication
+有关这些值的更多信息，请参阅 Apache <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP 组件</a>页面。</li>
+                    <li><b>maxRedirects</b>：<i>可选。</i>HTTP 可以跟随的最大重定向数。当后端应用程序由于某些错误（如认证失败）而发送循环重定向时，此属性非常有用。如果此属性设置为 0，那么适配器根本不尝试跟随重定向，并会向用户返回 HTTP 302 响应。缺省值为 10。
+</li>
+                    <li><b>protocol</b>：<i>可选。</i>要使用的 URL 协议。下列值有效：<b>http</b>（缺省值）和 <b>https</b>。</li>
+                    <li><b>domain</b>：<i>必填。</i>主机地址。</li>
+                    <li><b>port</b>：<i>可选。</i>端口地址。如果未指定任何端口，那么将使用缺省 HTTP/S 端口 (80/443)</li>
+                    <li><b>sslCertificateAlias</b>：对于常规 HTTP 认证和简单 SSL 认证是可选的。对于交互 SSL 认证是必需的。适配器专用 SSL 密钥的别名，HTTP 适配器密钥管理器使用该密钥来访问密钥库中的正确 SSL 证书。有关密钥库设置过程的更多信息，请参阅<a href="using-ssl">在 HTTP 适配器中使用 SSL</a> 教程。</li>
+                    <li><b>sslCertificatePassword</b>：对于常规 HTTP 认证和简单 SSL 认证是可选的。对于交互 SSL 认证是必需的。适配器专用 SSL 密钥的密码，HTTP 适配器密钥管理器使用该密码来访问密钥库中的正确 SSL 证书。有关密钥库设置过程的更多信息，请参阅<a href="using-ssl">在 HTTP 适配器中使用 SSL</a> 教程。</li>
+                    <li><b>authentication</b>：<i>可选。</i>HTTP 适配器的认证配置。HTTP 适配器可以使用两种认证协议中的一种。定义 <b>authentication</b>< 元素，如下所示：<ul>
+                            <li>基本认证
 {% highlight xml %}
 <authentication>
     <basic/>
 </authentication>
 {% endhighlight %}</li>
-                            <li>Digest authentication
+                            <li>摘要认证
 {% highlight xml %}
 <authentication>
     <digest/>
@@ -103,7 +101,7 @@ Declare the required procedures below the `connectivity` element:
 {% endhighlight %}</li>
 
 
-                            The connection policy can contain a <code>serverIdentity</code> element. This feature applies to all authentication schemes. For example:
+                            连接策略可以包含一个 <code>serverIdentity</code> 元素。此功能适用于所有认证方案。例如：
 {% highlight xml %}
 <authentication>
     <basic/>
@@ -115,8 +113,7 @@ Declare the required procedures below the `connectivity` element:
 {% endhighlight %}
                         </ul>
                     </li>
-                    <li><b>proxy</b>: <i>Optional.</i> The proxy element specifies the details of the proxy server to use when accessing the back-end application. The proxy details must include the protocol domain and port. If the proxy requires authentication, add a nested <code>authentication</code> element inside <code>proxy</code>. This element has the same structure as the one used to describe the authentication protocol of the adapter. The following example shows a proxy that requires basic authentication and uses a server identity.
-                    
+                    <li><b>proxy</b>：<i>可选。</i>proxy 元素指定访问后端应用程序时要使用的代理服务器的详细信息。代理详细信息中必须包含协议域和端口。如果代理需要认证，请在 <code>proxy</code> 中添加嵌套 <code>authentication</code> 元素。此元素与描述适配器的认证协议的元素具有相同的结构。以下示例显示需要基本认证并使用服务器身份的代理。                    
 {% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
   <protocol>http</protocol>
@@ -135,54 +132,50 @@ Declare the required procedures below the `connectivity` element:
   </proxy>
 </connectionPolicy>
 {% endhighlight %}</li>
-                    <li><b>maxConcurrentConnectionsPerNode</b>: <i>Optional.</i> Defines the maximum number of concurrent connections, which the {{ site.data.keys.mf_server }} can open to the back end. {{ site.data.keys.product }} does not limit the incoming service requests from applications. This limits only the number of concurrent HTTP connections to the back-end service.
-                    <br/><br/>
-                    The default number of concurrent HTTP connections is 50. You can modify this number based on the expected concurrent requests to the adapter and the maximum requests allowed on the back-end service. You can also configure the back-end service to limit the number of concurrent incoming requests.
-                    <br/><br/>
-                    Consider a two-node system, where the expected load on the system is 100 concurrent requests and the back-end service can support up to 80 concurrent requests. You can set maxConcurrentConnectionsPerNode to 40. This setting ensures that no more than 80 concurrent requests are made to the back-end service.
-                    <br/><br/>
-                    If you increase the value, the back-end application needs more memory. To avoid memory issues, do not to set this value too high. Instead, estimate the average and peak number of transactions per second, and evaluate their average duration. Then, calculate the number of required concurrent connections as indicated in this example, and add a 5-10% margin. Then, monitor your back end, and adjust this value as required, to ensure that your back-end application can process all incoming requests.
-                    <br/><br/>
-                    When you deploy adapters to a cluster, set the value of this attribute to the maximum required load divided by the number of cluster members.
-                    <br/><br/>
-                    For more information about how to size your back-end application, see the <a href="{{site.baseurl}}/learn-more">Scalability and Hardware Sizing document</a> and its accompanying hardware calculator spreadsheet</li>
-                    <li><b>connectionTimeoutInMilliseconds</b>: <i>Optional.</i> The timeout in milliseconds until a connection to the back-end can be established. Setting this timeout does not ensure that a timeout exception occurs after a specific time elapses after the invocation of the HTTP request. If you pass a different value for this parameter in the <code>invokeHTTP()</code> function, you can override the value that is defined here.</li>
-                    <li><b>socketTimeoutInMilliseconds</b>: <i>Optional.</i> The timeout in milliseconds between two consecutive packets, starting from the connection packet. Setting this timeout does not ensure that a timeout exception occurs after a specific time elapses after the invocation of the HTTP request. If you pass a different value for the <code>socketTimeoutInMilliseconds</code> parameter in the <code>invokeHttp()</code> function, you can override the value that is defined here.</li>
+                    <li><b>maxConcurrentConnectionsPerNode</b>：<i>可选。</i>定义 {{ site.data.keys.mf_server }} 可以打开的到后端的最大并发连接数。{{ site.data.keys.product }} 不限制来自应用程序的入站服务请求。此项仅限制到后端服务的并发 HTTP 连接数。<br/><br/>
+                    并发 HTTP 连接的缺省数目为 50。您可以基于到适配器的期望并发请求数和后端服务允许的最大请求数来修改此数值。也可以配置后端服务以限制并发入站请求的数目。<br/><br/>
+                    注意双节点系统，其系统上期望的负载是 100 个并发请求，后端服务最多可支持 80 个并发请求。您可以将 maxConcurrentConnectionsPerNode 设置为 40。此设置可确保对后端服务发出的并发请求数不超过 80 个。<br/><br/>
+                    如果增加此值，那么后端应用程序将需要更多内存。为避免出现内存问题，请勿将此值设置太高。您可以预测每秒事务数的平均值和峰值，并且估算其平均持续时间。之后，根据此示例中的指示计算所需的并发连接数，并增加 5-10% 的范围。然后，监控后端并根据需要调整此值，以确保后端应用程序可以处理所有入站请求。
+<br/><br/>
+                    将适配器部署到集群时，将此属性的值设置为最大所需负载除以集群成员数。<br/><br/>
+                    有关如何调整后端应用程序大小的更多信息，请参阅<a href="{{site.baseurl}}/learn-more">“可伸缩性和硬件大小调整”文档</a>及其随附的硬件计算器电子表格</li>
+                    <li><b>connectionTimeoutInMilliseconds</b>：<i>可选。</i>可以建立到后端的连接之前的超时（毫秒）。设置此超时并不确保在调用 HTTP 请求后经过特定时间后会发生超时异常。如果在 <code>invokeHTTP()</code> 函数中为此参数传递了其他值，那么将覆盖此处定义的值。</li>
+                    <li><b>socketTimeoutInMilliseconds</b>：<i>可选。</i>从连接包开始两个连续包之间的超时（毫秒）。设置此超时并不确保在调用 HTTP 请求后经过特定时间后会发生超时异常。如果在 <code>invokeHttp()</code> 函数中为 <code>socketTimeoutInMilliseconds</code> 参数传递了其他值，那么将覆盖此处定义的值。</li>
                 </ul>
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>结束部分</b></a>
             </div>
         </div>
     </div>
 </div>
 
 
-## JavaScript implementation
+## JavaScript 实施
 {: #javascript-implementation }
 
-A service URL is used for procedure invocations. Some parts of the URL are constant; for example, http://example.com/.  
-Other parts of the URL can be parameterized; that is, substituted at run time by parameter values that are provided to the procedure.
+服务 URL 用于过程调用。URL 的一些部分是常量；例如 http://example.com/。  
+可以用参数表示 URL 的其他部分；即，可在运行时替换为提供给过程的参数值。
 
-The following URL parts can be parameterized.
+可以用参数表示以下 URL 部分。
 
-* Path elements
-* Query string parameters
-* Fragments
+* 路径元素
+* 查询字符串参数
+* 片段
 
-To call an HTTP request, use the `MFP.Server.invokeHttp` method.  
-Provide an input parameter object, which must specify:
+要调用 HTTP 请求，请使用 `MFP.Server.invokeHttp` 方法。  
+提供必须指定以下内容的输入参数对象：
 
-* The HTTP method: `GET`,`POST`, `PUT`, `DELETE`
-* The returned content type: `XML`, `JSON`, `HTML`, or `plain`
-* The service `path`
-* The query parameters (optional)
-* The request body (optional)
-* The transformation type (optional)
+* HTTP 方法：`GET`、`POST`、`PUT` 或 `DELETE`
+* 返回的内容类型：`XML`、`JSON`、`HTML` 或 `plain`
+* 服务 `path`
+* 查询参数（可选）
+* 请求主体（可选）
+* 变换类型（可选）
 
 ```js
 function getFeed() {
-  var input = {
-      method : 'get',
+  var input = { 
+method : 'get',
       returnedContentType : 'xml',
       path : "feed.xml"
   };
@@ -192,21 +185,21 @@ function getFeed() {
 }
 ```
 
-> See the API Reference for "MFP.Server.invokeHttp" in the user documentation for a complete list of options.
+> 请参阅用户文档中的“MFP.Server.invokeHttp”API 参考，以获取完整的选项列表。
 
-## XSL transformation filtering
+## XSL 变换过滤
 {: #xsl-transformation-filtering }
 
-You can also apply XSL transformation to the received data, for example to filter the data.  
-To apply XSL transformation, create a **filtered.xsl** file next to the JavaScript implementation file.
+您也可以针对接收的数据应用 XSL 变换，例如过滤数据。  
+要应用 XSL 变换，请在 JavaScript 实施文件后创建 **filtered.xsl** 文件。
 
-You can then specify the transformation options in the input parameters of the procedure invocation. For example:
+之后，可以在过程调用的输入参数中指定变换选项。例如：
 
 ```js
 function getFeedFiltered() {
 
-  var input = {
-      method : 'get',
+  var input = { 
+method : 'get',
       returnedContentType : 'xml',
       path : "feed.xml",
       transformation : {
@@ -219,11 +212,11 @@ function getFeedFiltered() {
 }
 ```
 
-## Creating a SOAP-based service request
+## 创建基于 SOAP 的服务请求
 {: #creating-a-soap-based-service-request }
 
-You can use the `MFP.Server.invokeHttp` API method to create a **SOAP** envelope.  
-Note: To call a SOAP-based service in a JavaScript HTTP adapter, you can encode the SOAP XML envelope within the request body using **E4X**.
+您可以使用 `MFP.Server.invokeHttp` API 方法来创建 **SOAP** 包络。  
+注：要在 JavaScript HTTP 适配器中调用基于 SOAP 的服务，可以使用 **E4X** 在请求主体中对 SOAP XML 包络进行编码。
 
 ```js
 var request =
@@ -239,13 +232,13 @@ var request =
 		</soap:Envelope>;
 ```
 
-The `MFP.Server.invokeHttp(options)` method is then used to call a request for a SOAP service.  
-The Options object must include the following properties:
+之后，`MFP.Server.invokeHttp(options)` 方法将用于调用 SOAP 服务的请求。  
+Options 对象必须包含以下属性：
 
-* A `method` property: usually `POST`
-* A `returnedContentType` property: usually `XML`
-* A `path` property: a service path
-* A `body` property: `content` (SOAP XML as a string) and `contentType`
+* `method` 属性：通常为 `POST`
+* `returnedContentType` 属性：通常为 `XML`
+* `path` 属性：服务路径
+* `body` 属性：`content`（SOAP XML 作为字符串）和 `contentType`
 
 ```js
 var input = {
@@ -261,10 +254,10 @@ var input = {
 var result = MFP.Server.invokeHttp(input);
 ```
 
-## Invoking results of SOAP-based service
+## 基于 SOAP 的服务的调用结果
 {: #invoking-results-of-soap-based-service }
 
-The result is wrapped into a `JSON` object:
+结果将包裹在 `JSON` 对象中：
 
 ```json
 {
@@ -300,12 +293,12 @@ The result is wrapped into a `JSON` object:
 }
 ```
 
-Note the `Envelope` property, which is specific of SOAP-based requests.  
-The `Envelope` property contains the result content of the SOAP-based request.
+注：`Envelope` 属性，该属性特定于基于 SOAP 的请求。  
+`Envelope` 属性包含基于 SOAP 的请求的结果内容。
 
-To access the XML content:
+要访问 XML 内容：
 
-* On client-side, jQuery can be used to wrap the result string, and follow the DOM nodes:
+* 在客户机端，jQuery 可用于包裹结果字符串并跟随 DOM 节点：
 
 ```javascript
 var resourceRequest = new WLResourceRequest(
@@ -330,7 +323,7 @@ resourceRequest.send().then(
     }
 )
 ```
-* On server-side, create an XML object with the result string. The nodes can then be accessed as properties:
+* 在服务器端，创建具有结果字符串的 XML 对象。之后，节点可作为属性来访问：
 
 ```javascript
 var xmlDoc = new XML(result.Envelope.Body.GetWeatherResponse.GetWeatherResult);
@@ -342,13 +335,13 @@ var weatherInfo = {
 };
 ```
 
-## Sample adapter
+## 样本适配器
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80/) the Adapters Maven project.
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80/)适配器 Maven 项目。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
 
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* 使用 Maven、{{ site.data.keys.mf_cli }} 或您所选的 IDE 来[构建和部署 JavaScriptHTTP 适配器](../../creating-adapters/)。
+* 要测试或调试适配器，请参阅[测试和调试适配器](../../testing-and-debugging-adapters)教程。

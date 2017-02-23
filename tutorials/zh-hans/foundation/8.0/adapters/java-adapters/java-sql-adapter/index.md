@@ -1,38 +1,38 @@
 ---
 layout: tutorial
-title: Java SQL Adapter
-breadcrumb_title: SQL Adapter
+title: Java SQL 适配器
+breadcrumb_title: SQL 适配器
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: 下载适配器 Maven 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-Java adapters give developers control over connectivity to a back end system. It is therefore the responsibility of the developer to ensure best practices regarding performance and other implementation details.
-This tutorial covers an example of a Java adapter that connects to a MySQL back end to make CRUD (Create, Read, Update, Delete) operations on a `users` table, using REST concepts.
+Java 适配器能够使开发人员控制到后端系统的连接。因此，开发人员应负责确保有关性能和其他实施细节的最佳实践。
+本教程中包含一个 Java 适配器示例，该适配器使用 REST 概念连接到 MySQL 后端，以对 `users` 表进行 CRUD（创建、读取、更新和删除）操作。
 
-**Prerequisites:**
+**先决条件：**
 
-* Make sure to read the [Java Adapters](../) tutorial first.
-* This tutorial assumes knowledge of SQL.
+* 确保首先阅读 [Java 适配器](../)教程。
+* 本教程默认您已具备 SQL 知识。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
 
-* [Setting up the data source](#setting-up-the-data-source)
-* [Implemeting SQL in the adapter Resource class](#implementing-sql-in-the-adapter-resource-class)
-* [Sample adapter](#sample-adapter)
+* [设置数据源](#setting-up-the-data-source)
+* [在适配器资源类中实施 SQL](#implementing-sql-in-the-adapter-resource-class)
+* [样本适配器](#sample-adapter)
 
-## Setting up the data source
+## 设置数据源
 {: #setting-up-the-data-source }
 
-In order to configure the {{ site.data.keys.mf_server }} to be able to connect to the MySQL server, the adapter's XML file needs to be configured with **configuration properties**. These properties can later be edited through the {{ site.data.keys.mf_console }}.
+为了将 {{ site.data.keys.mf_server }} 配置为能够连接到 MySQL 服务器，需要为适配器的 XML 文件配置**配置属性**。之后，可以通过 {{ site.data.keys.mf_console }} 对这些属性进行编辑。
 
-Edit the adater.xml file and add the following properties:
+编辑 adater.xml 文件并添加以下属性：
 
 ```xml
 <mfp:adapter name="JavaSQL"
@@ -51,15 +51,14 @@ Edit the adater.xml file and add the following properties:
 </mfp:adapter>
 ```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must always be located *below* the `JAXRSApplicationClass` element.  
-Here we define the connection settings and give them a default value, so they could be used later in the AdapterApplication class.
-
-## Implementing SQL in the adapter Resource class
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注：**配置属性元素必须始终位于 `JAXRSApplicationClass` 元素*下*。  
+在此，我们将定义一些连接设置并为其提供缺省值，以便稍后可以在 AdapterApplication 类中使用这些设置。
+## 在适配器资源类中实施 SQL
 {: #implementing-sql-in-the-adapter-resource-class }
 
-The adapter Resource class is where requests to the server are handled.
+适配器资源类用于处理服务器的请求。
 
-In the supplied sample adapter, the class name is `JavaSQLResource`.
+在提供的样本适配器中，类名为 `JavaSQLResource`。
 
 ```java
 @Path("/")
@@ -67,12 +66,12 @@ In the supplied sample adapter, the class name is `JavaSQLResource`.
 }
 ```
 
-`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
+`@Path("/")` 表示可从 URL `http(s)://host:port/ProjectName/adapters/AdapterName/` 获取资源。
 
-### Using DataSource
+### 使用 DataSource
 {: #using-datasource }
 
-When the adapter is deployed, or whenever the configuration is changed from the {{ site.data.keys.mf_console }}, the adapter's `MFPJAXRSApplication`'s `init` method is called. This is a good place to [load the connection properties](../#configuration-api) and create a `DataSource`.
+部署适配器后或从 {{ site.data.keys.mf_console }} 更改配置时，都会调用适配器的 `MFPJAXRSApplication` 的 `init` 方法。这是[装入连接属性](../#configuration-api)和创建 `DataSource` 的最佳选择。
 
 ```java
 public class JavaSQLApplication extends MFPJAXRSApplication{
@@ -93,8 +92,8 @@ public class JavaSQLApplication extends MFPJAXRSApplication{
 }
 ```
 
-In the resource class, create a helper method to get an SQL connection.
-Use the `AdaptersAPI` to get the current `MFPJAXRSApplication` instance:
+在资源类中，创建 helper 方法以获取 SQL 连接。
+使用 `AdaptersAPI` 以获取当前的 `MFPJAXRSApplication` 实例：
 
 ```java
 @Context
@@ -108,10 +107,10 @@ public Connection getSQLConnection() throws SQLException{
 ```
 
 
-### Create User
+### 创建用户
 {: #create-user }
 
-Used to create a new user record in the database.
+用于在数据库中创建新的用户记录。
 
 ```java
 @POST
@@ -145,23 +144,22 @@ public Response createUser(@FormParam("userId") String userId,
 }
 ```
 
-Because this method does not have any `@Path`, it is accessible as the root URL of the resource. Because it uses `@POST`, it is accessible via `HTTP POST` only.  
-The method has a series of `@FormParam` arguments, which means that those can be sent in the HTTP body as `x-www-form-urlencoded` parameters.
+由于此方法不具有任何 `@Path`，因此可作为资源的根 URL 进行访问。由于它使用 `@POST`，因此仅可通过 `HTTP POST` 进行访问。  
+此方法具有一系列 `@FormParam` 自变量，这意味着可将其作为 `x-www-form-urlencoded` 参数在 HTTP 主体中发送。
 
-It is also possible to pass the parameters in the HTTP body as JSON objects, by using `@Consumes(MediaType.APPLICATION_JSON)`, in which case the method needs a `JSONObject` argument, or a simple Java object with properties that match the JSON property names.
+还可以使用 `@Consumes(MediaType.APPLICATION_JSON)` 在 HTTP 主体中将参数作为 JSON 对象进行传递，在此情况下，该方法需要一个 `JSONObject` 自变量，或一个具有与 JSON 属性名称匹配的属性的简单 Java 对象。
 
-The `Connection con = getSQLConnection();` method gets the connection from the data source that was defined earlier.
+`Connection con = getSQLConnection();` 方法从先前定义的数据源中获取连接。
 
-The SQL queries are built by the `PreparedStatement` method.
+SQL 查询通过 `PreparedStatement` 方法构建。
 
-If the insertion was successful, the `return Response.ok().build()` method is used to send a `200 OK` back to the client. If there was an error, a different `Response` object can be built with a specific HTTP status code. In this example, a `409 Conflict` error code is sent. It is advised to also check whether all the parameters are sent (not shown here) or any other data validation.
+如果插入成功，那么会使用 `return Response.ok().build()` 方法将 `200 OK`发送回客户机。如果出现错误，那么将构建具有特定 HTTP 状态代码的其他 `Response` 对象。在此示例中，将发送 `409 Conflict` 错误代码。另外，还建议检查所有参数是否都发送（此处未显示）或任何其他数据验证。
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Make sure to close resources, such as prepared statements and connections.
-
-### Get User
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点：**确保关闭资源，如 prepared 语句和连接。
+### 获取用户
 {: #get-user }
 
-Retrieve a user from the database.
+从数据库中检索用户。
 
 ```java
 @GET
@@ -198,17 +196,17 @@ public Response getUser(@PathParam("userId") String userId) throws SQLException{
 }
 ```
 
-This method uses `@GET` with a `@Path("/{userId}")`, which means that it is available via `HTTP GET /adapters/UserAdapter/{userId}`, and the `{userId}` is retrieved by the `@PathParam("userId")` argument of the method.
+此方法使用 `@GET` 与 `@Path("/{userId}")`，这表示可通过 `HTTP GET /adapters/UserAdapter/{userId}` 获得此方法，并可通过此方法的 `@PathParam("userId")` 自变量检索 `{userId}`。
 
-If the user is not found, the `404 NOT FOUND` error code is returned.  
-If the user is found, a response is built from the generated JSON object.
+如果未找到此用户，那么将返回 `404 NOT FOUND` 错误代码。  
+如果找到了此用户，那么将通过生成的 JSON 对象构建响应。
 
-Prepending the method with `@Produces("application/json")` makes sure that the `Content-Type` of the output is correct.
+为此方法前置 `@Produces("application/json")`，以确保输出的 `Content-Type` 正确。
 
-### Get all users
+### 获取所有用户
 {: #get-all-users }
 
-This method is similar to `getUser`, except for the loop over the `ResultSet`.
+除针对 `ResultSet` 进行循环外，此方法与 `getUser` 类似。
 
 ```java
 @GET
@@ -236,10 +234,10 @@ public Response getAllUsers() throws SQLException{
 }
 ```
 
-### Update user
+### 更新用户
 {: #update-user }
 
-Update a user record in the database.
+更新数据库中的用户记录。
 
 ```java
 @PUT
@@ -282,12 +280,12 @@ public Response updateUser(@PathParam("userId") String userId,
 }
 ```
 
-When updating an existing resource, it is standard practice to use `@PUT` (for `HTTP PUT`) and to use the resource ID in the `@Path`.
+更新现有的资源时，常规做法是使用 `@PUT`（表示 `HTTP PUT`）并在 `@Path` 中使用资源标识。
 
-### Delete user
+### 删除用户
 {: #delete-user }
 
-Delete a user record from the database.
+从数据库中删除用户记录。
 
 ```java
 @DELETE
@@ -320,20 +318,20 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 }
 ```
 
-`@DELETE` (for `HTTP DELETE`) is used together with the resource ID in the `@Path`, to delete a user.
+`@DELETE`（表示 `HTTP DELETE`）与 `@Path` 中的资源标识一起用于删除某个用户。
 
-## Sample adapter
+## 样本适配器
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)适配器 Maven 项目。
 
-The Adapters Maven project includes the **JavaSQL** adapter described above.  
-Also included is an SQL script in the **Utils** folder.
+适配器 Maven 项目包含上面所述的 **JavaSQL** 适配器。  
+另外，还包含 **Utils** 文件夹中的 SQL 脚本。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
 
-* Run the .sql script in your SQL database.
-* Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaSQL adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* 运行关系型数据库中的 .sql 脚本。
+* 确保 `mobilefirst@%` 用户具有分配的所有访问许可权。
+* 使用 Maven、{{ site.data.keys.mf_cli }} 或您所选的 IDE 来[构建和部署 JavaSQL 适配器](../../creating-adapters/)。
+* 要测试或调试适配器，请参阅[测试和调试适配器](../../testing-and-debugging-adapters)教程。

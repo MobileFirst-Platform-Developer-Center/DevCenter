@@ -1,33 +1,32 @@
 ---
 layout: tutorial
-title: Using Java in JavaScript Adapters
+title: 在 JavaScript 适配器中使用 Java
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: 下载适配器 Maven 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-When JavaScript is not sufficient to implement required functionality, or if a Java class already exists, you can use Java code as an extension for the JavaScript adapter.
+当 JavaScript 不足以实施所需的功能，或者 Java 类已存在时，您可以使用 Java 代码作为 JavaScript 适配器的扩展。
 
-**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
+**先决条件：**确保首先阅读 [JavaScript 适配器](../)教程。
 
-## Adding custom Java classes 
+## 添加定制 Java 类
 {: #adding-custom-java-classes }
 
 ![UsingJavainJS](UsingJavainJS.png)
 
-To use an existing Java library, add the JAR file as a dependency to your project. For more information on how to add a dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../creating-adapters/#dependencies) tutorial.
+要使用现有的 Java 库，请将 JAR 文件作为依赖关系添加到项目中。有关如何添加依赖关系的更多信息，请参阅[创建 Java 和 JavaScript 适配器](../../creating-adapters/#dependencies)教程的“依赖关系”部分。
 
-To add custom Java code to your project, add a folder named **java** to the **src/main** folder in your adapter project and put your package in it. The sample in this tutorial uses a `com.sample.customcode` package and a Java class file named `Calculator.java`.   
+要将定制 Java 代码添加到项目中，请向适配器项目中的 **src/main** 文件夹添加名为 **java** 的文件夹，然后将您自己的程序包放入其中。本教程中的样本使用 `com.sample.customcode` 程序包和名为 `Calculator.java` 的 Java 类文件。   
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** The package name must start with either `com`, `org`, or `net`.
-
-Add methods to your Java class.  
-Here are an examples of a static method (that does not require a new instance) and an instance method:
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点：**程序包名称必须以 `com`、`org` 或 `net` 开头。
+向您的 Java 类添加方法。  
+以下是静态方法（不需要新实例）和实例方法的示例：
 
 ```java
 public class Calculator {
@@ -44,12 +43,12 @@ public class Calculator {
 }
 ```
 
-## Invoking custom Java classes from the adapter
+## 从适配器调用定制 Java 类
 {: #invoking-custom-java-classes-from-the-adapter }
 
-After your custom Java code is created and any required JAR files are added, you can call it from the JavaScript code:
+创建定制 Java 代码并添加所需的所有 JAR 文件后，您即可以从 JavaScript 代码进行调用：
 
-* Invoke the static Java method as shown, and use the full class name to reference it directly:
+* 如下所示调用静态 Java 方法，并使用完整类名直接引用此方法：
 
 ```javascript
 function addTwoIntegers(a,b){
@@ -59,7 +58,7 @@ function addTwoIntegers(a,b){
 }
 ```
   
-* To use the instance method, create a class instance and invoke the instance method from it:
+* 要使用实例方法，请创建类实例并从中调用实例方法：
 
 ```javascript
 function subtractTwoIntegers(a,b){
@@ -70,15 +69,16 @@ function subtractTwoIntegers(a,b){
 }
 ```
 
-## Sample adapter
+## 样本适配器
+
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Maven project.
+[单击以下载 ](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)Maven 项目。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
 
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* 使用 Maven、{{ site.data.keys.mf_cli }} 或您所选的 IDE 来[构建和部署 JavaScriptHTTP 适配器](../../creating-adapters/)。
+* 要测试或调试适配器，请参阅[测试和调试适配器](../../testing-and-debugging-adapters)教程。
 
-When testing, the adapter expects an array with numbers to add or subtract, for example: `[1,2]`.
+测试时，适配器预期有一个数组，其中包含用于加减的数字，例如：`[1，2]`。

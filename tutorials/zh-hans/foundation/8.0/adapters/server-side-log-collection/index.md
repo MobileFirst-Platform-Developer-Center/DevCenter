@@ -1,32 +1,32 @@
 ---
-title: Server-side log collection
-breadcrumb_title: Server-side log collection
+title: 服务器端日志集合
+breadcrumb_title: 服务器端日志集合
 relevantTo: [ios,android,windows,javascript]
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging. The {{ site.data.keys.mf_server }} gives you the ability to control  which logs should be collected remotely. This gives the server administrator more fine tuned control over the server resources.
+日志记录是使用 API 调用来记录消息，从而促进诊断和调试的源代码工具。{{ site.data.keys.mf_server }} 允许您远程控制应当收集的日志。这使得服务器管理员能够更加细微地控制服务器资源。
 
-Logging libraries typically have verbosity controls that are frequently called **levels**. From least to most verbose: ERROR, WARN, INFO, and DEBUG. 
+日志记录库通常具有常常称为**级别**的详细程度控制。从最低到最高详细度为：ERROR、WARN、INFO 和 DEBUG。 
 
-## Log Collection in Adapters
+## 适配器中的日志集合
 {: #log-collection-in-adapters }
 
-Logs in adapters can be viewed in the underlying application server logging mechanism.  
-In WebSphere full profile and Liberty profile the **messages.log** and **trace.log** files are used, depending on the specified logging level. 
+可以在底层应用程序服务器日志记录机制中查看适配器中的日志。  
+在 WebSphere 完整概要文件和 Liberty 概要文件中，根据指定的日志记录级别，使用 **messages.log** 和 **trace.log** 文件。 
 
-These logs can also be forwarded to the Analytics console as explained in the tutorials for [Java adapters](java-adapter) and [JavaScript adapters](javascript-adapter).
+如 [Java 适配器](java-adapter)和 [JavaScript 适配器](javascript-adapter)的教程中所述，也可以将这些日志转发至分析控制台。
 
-## Accessing the log files
+## 访问日志文件
 {: #accessing-the-log-files }
 
-* In an on-prem installation of the {{ site.data.keys.mf_server }}, the file is available depending on the underlying application server. 
-    * [IBM WebSphere Application Server Full Profile](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html)
-    * [IBM WebSphere Application Server Liberty Profile](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
+* 在 {{ site.data.keys.mf_server }} 的预安装中，根据底层应用程序服务器提供该文件。 
+    * [IBM WebSphere Application Server 完整概要文件](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html)
+    * [IBM WebSphere Application Server Liberty 概要文件](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)
-* To get to the logs in a cloud deployment in:
-    * IBM Containers or Liberty Build Pack, see the [IBM Containers log and trace collection](../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/) tutorial.
-    * Mobile Foundation Bluemix service, see [Accessing server logs](../../bluemix/using-mobile-foundation/#accessing-server-logs) section in the [Using Mobile Foundation](../../bluemix/using-mobile-foundation) tutorial.
+* 要获取以下各项中云部署中的日志：
+    * IBM Containers 或 Liberty Build Pack，请参阅 [IBM Containers 日志和跟踪集合](../../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection/)教程。
+    * Mobile Foundation Bluemix 服务，请参阅[使用 Mobile Foundation](../../bluemix/using-mobile-foundation) 教程中的[访问服务器日志](../../bluemix/using-mobile-foundation/#accessing-server-logs)部分。

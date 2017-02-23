@@ -1,39 +1,39 @@
 ---
 layout: tutorial
-title: Node.js Validator
-breadcrumb_title: Node.js validator
+title: Node.js 验证程序
+breadcrumb_title: Node.js 验证程序
 relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:
-  - name: Download sample
+  - name: 下载样本
     url: https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-{{ site.data.keys.product_full }} provides a Node.js framework to enforce security capabilities on external resources.  
-The Node.js framework is provided as an npm module (**passport-mfp-token-validation**).
+{{ site.data.keys.product_full }} 提供 Node.js 框架以对外部资源实施安全功能。  
+提供了 Node.js 框架作为 npm 模块 (**passport-mfp-token-validation**)。
 
-This tutorial shows how to protect a simple Node.js resource, `GetBalance`, by using a scope (`accessRestricted`).
+本教程显示如何使用作用域 (`accessRestricted`) 来保护简单 Node.js 资源 `GetBalance`。
 
-**Prerequsites:**  
+**先决条件：**  
 
-* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product }} security framework](../../).
+* 阅读[使用 {{ site.data.keys.mf_server }} 来认证外部资源](../)教程。
+* 了解 [{{ site.data.keys.product }} 安全框架](../../)。
 
-## The passport-mfp-token-validation module
+## passport-mfp-token-validation 模块
 {: #the-passport-mfp-token-validation-module }
-The passport-mfp-token-validation module provides an authentication mechanism to verify access tokens that are issued by the {{ site.data.keys.mf_server }}.
+passport-mfp-token-validation 模块提供认证机制以验证 {{ site.data.keys.mf_server }} 发出的访问令牌。
 
-To install the module, run:
+要安装该模块，请运行：
 
 ```bash
 npm install passport-mfp-token-validation@8.0.X
 ```
 
-## Usage
+## 用法
 {: #usage }
-* The sample uses the `express` and `passport-mfp-token-validation` modules:
+* 该样本使用 `express` 和 `passport-mfp-token-validation` 模块：
 
   ```javascript
   var express = require('express');
@@ -41,7 +41,7 @@ npm install passport-mfp-token-validation@8.0.X
   var mfpStrategy = require('passport-mfp-token-validation').Strategy;
   ```
 
-* Set up the `Strategy` as follows:
+* 如下所示设置 `Strategy`：
 
   ```javascript
   passport.use(new mfpStrategy({
@@ -58,12 +58,12 @@ npm install passport-mfp-token-validation@8.0.X
   }));
   ```
   
- * `authServerUrl`: Replace `localhost:9080` with your {{ site.data.keys.mf_server }} IP address and port number.
- * `confClientID`, `confClientPass`: Replace the confidential client ID and password with the ones that you defined in the {{ site.data.keys.mf_console }}.
- * `analytics`: The analytics item is optional, and required only if you wish to log analytics events to {{ site.data.keys.product }}.  
- Replace `localhost:9080`, `username`, and `password` with your Analytics Server IP address, port number, user name, and password.
+ * `authServerUrl`：将 `localhost:9080` 替换为您的 {{ site.data.keys.mf_server }} IP 地址和端口号。
+ * `confClientID` 和 `confClientPass`：将保密客户机标识和密码替换为在 {{ site.data.keys.mf_console }} 中定义的项。
+ * `analytics`：分析项为可选，仅在想要将分析事件记录到 {{ site.data.keys.product }} 时才是必需的。  
+ 将 `localhost:9080`、`username` 和 `password` 替换为分析服务器 IP 地址、端口号、用户名和密码。
 
-* Authenticate requests by calling `passport.authenticate`:
+* 通过调用 `passport.authenticate` 来认证请求：
 
   ```javascript
   var app = express();
@@ -83,19 +83,19 @@ npm install passport-mfp-token-validation@8.0.X
   });
   ```
 
- * The `Strategy` to employ should be `mobilefirst-strategy`.
- * Set `session` to `false`.
- * Specify the `scope` name.
+ * 要采用的 `Strategy` 应当是 `mobilefirst-strategy`。
+ * 将 `session` 设置为 `false`。
+ * 指定 `scope` 名称。
 
-## Sample application 
+## 样本应用程序 
 {: #sample-application }
-[Download the Node.js sample](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80).
+[下载 Node.js 样本](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80)。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-1. Navigate to the sample's root folder and run the command: `npm install` followed by: `npm start`.
-2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-4. Register the matching application.
-5. Map the `accessRestricted` scope to the security check.
-6. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. 导航至样本的根文件夹并运行命令：`npm install`，后跟：`npm start`。
+2. 确保[更新保密客户机](../#confidential-client)和 {{ site.data.keys.mf_console }} 中的密钥值。
+3. 部署安全性检查：**[UserLogin](../../user-authentication/security-check/)** 或 **[PinCodeAttempts](../../credentials-validation/security-check/)**。
+4. 注册匹配应用程序。
+5. 将 `accessRestricted` 作用域映射到安全性检查。
+6. 更新客户机应用程序以针对 servlet URL 生成 `WLResourceRequest`。
