@@ -1,38 +1,38 @@
 ---
 layout: tutorial
-title: Trust Association Interceptor
-breadcrumb_title: Trust Association Interceptor
+title: 信任关联拦截器
+breadcrumb_title: 信任关联拦截器
 relevantTo: [android,ios,windows,javascript]
 weight: 2
 downloads:
-  - name: Download sample
+  - name: 下载样本
     url: https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-{{ site.data.keys.product_full }} provides a Java library to facilitate the authentication of external resources through [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita).
+{{ site.data.keys.product_full }} 提供 Java 库以便于通过 [IBM WebSphere 信任关联拦截器](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita)对外部资源进行认证。
 
-The Java library is provided as a JAR file (**com.ibm.mfp.oauth.tai-8.0.0.jar**).
+Java 库是作为 JAR 文件 (**com.ibm.mfp.oauth.tai-8.0.0.jar**) 提供的。
 
-This tutorial shows how to protect a simple Java Servlet, `TAI/GetBalance`, by using a scope (`accessRestricted`).
+本教程显示如何使用作用域 (`accessRestricted`) 来保护简单 Java Servlet `TAI/GetBalance`。
 
-**Prerequisite:**
+**先决条件：**
 
-* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Be familiar with the [{{ site.data.keys.product }} security framework](../../).
+* 阅读[使用 {{ site.data.keys.mf_server }} 来认证外部资源](../)教程。
+* 熟悉 [{{ site.data.keys.product }} 安全框架](../../)。
 
-![Flow](TAI_flow.jpg)
+![流程](TAI_flow.jpg)
 
-## Server setup
+## 服务器设置
 {: #server-setup }
-1. Download the Security Tools .zip from the **{{ site.data.keys.mf_console }} → Download Center → Tools** tab. In it you will find a `mfp-oauth-tai.zip` archive. Unpack this zip.
-2. Add the `com.ibm.mfp.oauth.tai.jar` file to the WebSphere Application Server instance inside **usr/extension/lib**.
-3. Add the `OAuthTai.mf` file to the WebSphere Application Server instance inside **usr/extension/lib/features**.
+1. 从 **{{ site.data.keys.mf_console }} → 下载中心 → 工具**选项卡下载安全工具 .zip。您将在其中找到 `mfp-oauth-tai.zip` 归档。解压缩此 zip。
+2. 将 `com.ibm.mfp.oauth.tai.jar` 文件添加到 **usr/extension/lib** 中的 WebSphere Application Server 实例。
+3. 将 `OAuthTai.mf` 文件添加到 **usr/extension/lib/features** 中的 WebSphere Application Server 实例。
 
-### web.xml setup
+### web.xml 设置
 {: #webxml-setup }
-Add a security constraint and a security role to the `web.xml` file of the WebSphere Application Server instance:
+将安全性约束和安全角色添加到 WebSphere Application Server 实例的 `web.xml` 文件：
 
 ```xml
 <security-constraint>
@@ -53,9 +53,9 @@ Add a security constraint and a security role to the `web.xml` file of the WebSp
 
 ### server.xml
 {: #serverxml }
-Modify the WebSphere Application Server `server.xml` file to your external resource.
+将 WebSphere Application Server `server.xml` 文件修改为您的外部资源。
 
-* Configure the feature manager to include the following features:
+* 配置功能管理器以包含以下功能：
 
   ```xml
   <featureManager>
@@ -67,13 +67,13 @@ Modify the WebSphere Application Server `server.xml` file to your external resou
   </featureManager>
   ```
 
-* Add a security role as a class annotation in your Java servlet :
+* 添加安全角色作为 Java servlet 中的类注释：
 
 ```java
 @ServletSecurity(@HttpConstraint(rolesAllowed = "TAIUserRole"))
 ```
 
-If you are using servlet-2.x , you need to define the security role in your web.xml file:
+如果使用 servlet-2.x，那么需要在 web.xml 文件中定义安全角色：
 
 ```xml
 <application contextRoot="TAI" id="TrustAssociationInterceptor" location="TAI.war" name="TrustAssociationInterceptor"/>
@@ -85,30 +85,30 @@ If you are using servlet-2.x , you need to define the security role in your web.
 </application>
 ```
 
-* Configure OAuthTAI. This is where URLs are set to be protected:
+* 配置 OAuthTAI。在此将 URL 设置为受保护的 URL：
 
   ```xml
   <usr_OAuthTAI id="myOAuthTAI" authorizationURL="http://localhost:9080/mfp/api" clientId="ExternalResourceId" clientSecret="ExternalResourcePass" cacheSize="500">
             <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/GetBalance"></securityConstraint>
   </usr_OAuthTAI>
   ```
-    - **authorizationURL**:  Either your {{ site.data.keys.mf_server }} (`http(s):/your-hostname:port/runtime-name/api`), or an external AZ Server such as IBM DataPower.
+    - **authorizationURL**：{{ site.data.keys.mf_server }} (`http(s):/your-hostname:port/runtime-name/api`) 或外部 AZ 服务器，例如，IBM DataPower。
 
-    - **clientID**: The Resource server must be a registered confidential client. To learn how to register a confidential client, read the [Confidential Clients](../../confidential-clients/) tutorial. *The confidential-client **MUST** have the allowed scope `authorization.introspect` so that it can validate tokens.
+    - **clientID**：资源服务器必须是已注册的保密客户机。要了解如何注册保密客户机，请阅读[保密客户机](../../confidential-clients/)教程。*保密客户机**必须** 具有允许的作用域 `authorization.introspect`，以使其可验证令牌。
 
-    - **clientSecret**: The Resource server must be a registered confidential client. To learn how to register a confidential client, read the [Confidential Clients](../../confidential-clients/) tutorial.
-    - **cacheSize (optional)**: TAI uses the Java-Token-Validator cache to cache tokens and introspection data as values, so that a token that comes in the request from the client won't need to be introspected again in a short time interval.
+    - **clientSecret**：资源服务器必须是已注册的保密客户机。要了解如何注册保密客户机，请阅读[保密客户机](../../confidential-clients/)教程。
+    - **cacheSize（可选）**：TAI 使用 Java-Token-Validator 高速缓存来缓存令牌和自省数据作为值，从而在较短时间间隔内无需再次自省来自客户机请求中的令牌。
 
-        The default size is 50,000 tokens.  
+        缺省大小为 50000 个令牌。  
 
-        If you want to guarantee that the tokens are introspected on each request, set the cache value to 0.  
+        如果想要保证在每个请求上自省令牌，请将高速缓存值设置为 0。  
 
-    - **scope**: The resource server authenticates against one or more scopes. A scope can be a security check or a scope element mapped to security checks.
+    - **scope**：资源服务器针对一个或多个作用域进行认证。作用域可以是安全性检查或映射到安全性检查的作用域元素。
 
-## Using the Token Introspection Data From the TAI
+## 使用来自 TAI 的令牌自省数据
 {: #using-the-token-introspection-data-from-the-tai }
-From your resource, you may want to access the token information that was intercepted and validated by the TAI. You can find the list of data found on the token in this user documentation topic: https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-java-token-validator/html/com/ibm/mfp/java/token/validator/data/package-summary.html
-To obtain this data, use the [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html):
+通过资源，您可能想要访问 TAI 拦截和验证的令牌信息。您可以在此用户文档主题中查找在令牌上找到的数据列表：https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-java-token-validator/html/com/ibm/mfp/java/token/validator/data/package-summary.html
+要获取此数据，请使用 [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html)：
 
 ```java
 Map<String, String> credentials = WSSubject.getCallerSubject().getPublicCredentials(Hashtable.class).iterator().next();
@@ -117,16 +117,16 @@ JSONObject securityContext = new JSONObject(credentials.get("securityContext"));
 securityContext.get('mfp-device')
 ```
 
-## Sample application
+## 样本应用程序
 {: #sample-application }
-You can deploy the project on supported application servers (WebSphere Application Server full profile and WebSphere Application Server Liberty profile).  
-[Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80).
+您可以在受支持的应用程序服务器（WebSphere Application Server Full Profile 和 WebSphere Application Server Liberty Profile）上部署项目。  
+[下载简单 Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/TrustAssociationInterceptor/tree/release80)。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-1. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-3. Register the matching application.
-4. Map the `accessRestricted` scope to the security check.
-5. Update the client application to make the `WLResourceRequest` to your servlet URL.
-6. Set the scope of your securityConstraint scope to be the security check that your client needs to authenticate against.
+1. 确保[更新保密客户机](../#confidential-client)和 {{ site.data.keys.mf_console }} 中的密钥值。
+2. 部署安全性检查：**[UserLogin](../../user-authentication/security-check/)** 或 **[PinCodeAttempts](../../credentials-validation/security-check/)**。
+3. 注册匹配应用程序。
+4. 将 `accessRestricted` 作用域映射到安全性检查。
+5. 更新客户机应用程序以针对 servlet URL 生成 `WLResourceRequest`。
+6. 将 securityConstraint 作用域设置为客户机需要进行认证的安全性检查。

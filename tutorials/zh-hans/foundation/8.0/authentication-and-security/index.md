@@ -1,74 +1,73 @@
 ---
 layout: tutorial
-title: Authentication and Security
-weight: 7
+title: 认证和安全性
+weight: 6
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-The {{ site.data.keys.product_adj }} security framework is based on the [OAuth 2.0](http://oauth.net/) protocol. According to this protocol, a resource can be protected by a **scope** that defines the required permissions for accessing the resource. To access a protected resource, the client must provide a matching **access token**, which encapsulates the scope of the authorization that is granted to the client.
+{{ site.data.keys.product_adj }} 安全框架基于 [OAuth 2.0](http://oauth.net/) 协议。根据本协议，可通过定义访问资源的必需许可权的**作用域**来保护资源。要访问受保护资源，客户机必须提供匹配的**访问令牌**，用于封装授予客户机的授权作用域。
 
-The OAuth protocol separates the roles of the authorization server and the resource server on which the resource is hosted.
+OAuth 协议将授权服务器与托管资源的资源服务器的角色相分离。
 
-* The authorization server manages the client authorization and token generation.
-* The resource server uses the authorization server to validate the access token that is provided by the client, and ensure that it matches the protecting scope of the requested resource.
+* 授权服务器管理客户机授权和令牌生成。
+* 资源服务器使用授权服务器来验证由客户机提供的访问令牌，并确保它匹配所请求资源的保护作用域。
 
-The security framework is built around an authorization server that implements the OAuth protocol, and exposes the OAuth endpoints with which the client interacts to obtain access tokens. The security framework provides the building blocks for implementing a custom authorization logic on top of the authorization server and the underlying OAuth protocol.  
-By default, {{ site.data.keys.mf_server }} functions also as the **authorization server**. However, you can configure an IBM WebSphere DataPower appliance to act as the authorization server and interact with {{ site.data.keys.mf_server }}.
+安全框架围绕实施 OAuth 协议的授权服务器而构建，并公开客户机与之交互以获取访问令牌的 OAuth 端点。安全框架提供构建块，用于在授权服务器和底层 OAuth 协议上实施定制授权逻辑。  
+缺省情况下，{{ site.data.keys.mf_server }} 也充当**授权服务器**。但是，您可以配置 IBM WebSphere DataPower 设备以充当授权服务器并与 {{ site.data.keys.mf_server }} 进行交互。
 
-The client application can then use these tokens to access resources on a **resource server**, which can be either the {{ site.data.keys.mf_server }} itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. The separation between resource server and authorization server allows you to enforce security on resources that are running outside {{ site.data.keys.mf_server }}.
+然后，客户机应用程序可以使用这些令牌来访问**资源服务器**上的资源，这可以是 {{ site.data.keys.mf_server }} 本身或者外部服务器。资源服务器会检查令牌的有效性，以确保可授权客户机访问所请求的资源。资源服务器与授权服务器分离使您能够对在 {{ site.data.keys.mf_server }} 之外运行的资源实施安全性。
 
-Application developers protect access to their resources by defining the required scope for each protected resource, and implementing **security checks** and **challenge handlers**. The server-side security framework and the client-side API handle the OAuth message exchange and the interaction with the authorization server transparently, allowing developers to focus only on the authorization logic.
+应用程序开发者通过为每个保护的资源定义所需的作用域，并实施**安全性检查**和**验证问题处理程序**来保护对资源的访问。服务器端安全框架和客户机端 API 用于处理 OAuth 消息交换以及与授权服务器的透明交互，从而使开发者能够仅专注于授权逻辑。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Authorization entities](#authorization-entities)
-* [Protecting resources](#protecting-resources)
-* [Authorization flow](#authorization-flow)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [授权实体](#authorization-entities)
+* [保护资源](#protecting-resources)
+* [授权流](#authorization-flow)
+* [后续关注教程](#tutorials-to-follow-next)
 
-## Authorization entities
+## 授权实体
 {: #authorization-entities }
-### Access Token
+### 访问令牌
 {: #access-token }
-A {{ site.data.keys.product_adj }} access token is a digitally signed entity that describes the authorization permissions of a client. After the client's authorization request for a specific scope is granted, and the client is authenticated, the authorization server's token endpoint sends the client an HTTP response that contains the requested access token.
+{{ site.data.keys.product_adj }} 访问令牌是描述客户机授权许可权的数字签名实体。在针对特定作用域授予客户机授权请求且认证客户机后，授权服务器的令牌端点会向客户机发送包含所请求的访问令牌的 HTTP 响应。
 
-#### Structure
+#### 结构
 {: #structure }
-The {{ site.data.keys.product_adj }} access token contains the following information:
+{{ site.data.keys.product_adj }} 访问令牌包含以下信息：
 
-* **Client ID**: a unique identifier of the client.
-* **Scope**: the scope for which the token was granted (see OAuth scopes). This scope does not include the [mandatory application scope](#mandatory-application-scope).
-* **Token-expiration time**: the time at which the token becomes invalid (expires), in seconds.
+* **客户机标识**：客户机的唯一标识。
+* **作用域**：授予令牌的作用域（请参阅 OAuth 作用域）。此作用域不包括[必需的应用程序作用域](#mandatory-application-scope)。
+* **令牌到期时间**：令牌无效（到期）的时间（秒）。
 
-#### Token expiration
+#### 令牌到期
 {: #token-expiration }
-The granted access token remains valid until its expiration time elapses. The access token's expiration time is set to the shortest expiration time from among the expiration times of all the security checks in the scope. But if the period until the shortest expiration time is longer than the application's maximum token-expiration period, the token's expiration time is set to the current time plus the maximum expiration period. The default maximum token-expiration period (validity duration) is 3,600 seconds (1 hour), but it can be configured by setting the value of the `maxTokenExpiration` property. See Configuring the maximum access-token expiration period.
+授予的访问令牌将一直保持有效直至到期。访问令牌的到期时间设置为作用域内所有安全性检查到期时间中最短的到期时间。但是，如果到最短到期时间的时间段长于应用程序的最长令牌到期时间段，那么令牌的到期时间将设置为当前时间加上最长到期时间段。缺省最长令牌到期时间段（有效持续时间）为 3600 秒（1 小时），但是可通过设置 `maxTokenExpiration` 属性的值进行配置。请参阅“配置最长访问令牌到期时间段”。
 
 <div class="panel-group accordion" id="configuration-explanation" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="access-token-expiration">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>Configuring the maximum access-token expiration period</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>配置最长访问令牌到期时间段</b></a>
             </h4>
         </div>
 
         <div id="collapse-access-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="access-token-expiration">
             <div class="panel-body">
-            <p>Configure the application’s maximum access-token expiration period by using one of the following alternative methods:</p>
+            <p>通过使用以下一种备选方法配置应用程序的最长访问令牌到期时间段：</p>
             <ul>
-                <li>Using the {{ site.data.keys.mf_console }}
+                <li>使用 {{ site.data.keys.mf_console }}
                     <ul>
-                        <li>Select <b>[your application] → Security</b> tab.</li>
-                        <li>In the <b>Token Configuration</b> section, set the value of the Maximum <b>Token-Expiration Period (seconds)</b> field to your preferred value, and click **Save**. You can repeat this procedure, at any time, to change the maximum token-expiration period, or select <b>Restore Default Values</b> to restore the default value.</li>
+                        <li>选择 <b>[您的应用程序] → 安全</b>选项卡。</li>
+                        <li>在<b>令牌配置</b>部分中，将<b>最长令牌到期时间段（秒）</b>字段的值设置为您的首选值，然后单击**保存**。您可以随时重复此过程以更改最长令牌到期时间段，或者选择<b>复原缺省值</b>以恢复缺省值。</li>
                     </ul>
                 </li>
-                <li>Editing the application's configuration file
-                    <ol>
-                        <li>From a <b>command-line window</b>, navigate to the project's root folder and run the <code>mfpdev app pull</code>.</li>
-                        <li>Open the configuration file, located in the <b>[project-folder\mobilefirst</b> folder.</li>
-                        <li>Edit the file by defining a <code>maxTokenExpiration</code> property, key and set its value to the maximum access-token expiration period, in seconds:
+                <li>编辑应用程序的配置文件<ol>
+                        <li>从<b>命令行窗口</b>中，导航至项目的根文件夹并运行 <code>mfpdev app pull</code>。</li>
+                        <li>打开 <b>[project-folder\mobilefirst</b> 文件夹中的配置文件。</li>
+                        <li>通过定义 <code>maxTokenExpiration</code> 属性来编辑文件，键入其值并将该值设置为最长访问令牌到期时间段（秒）：
 
 {% highlight xml %}
 {
@@ -76,13 +75,13 @@ The granted access token remains valid until its expiration time elapses. The ac
     "maxTokenExpiration": 7200
 }
 {% endhighlight %}</li>
-                        <li>Deploy the updated configuration JSON file by running the command: <code>mfpdev app push</code>.</li>
+                        <li>通过运行以下命令部署更新的配置 JSON 文件：<code>mfpdev app push</code>。</li>
                     </ol>
                 </li>
             </ul>
                 
             <br/>
-            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>Close section</b></a>
+            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>结束部分</b></a>
             </div>
         </div>
     </div>
@@ -92,13 +91,13 @@ The granted access token remains valid until its expiration time elapses. The ac
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="response-structure">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>Access-token response structure</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>访问令牌响应结构</b></a>
             </h4>
         </div>
 
         <div id="collapse-response-structure" class="panel-collapse collapse" role="tabpanel" aria-labelledby="response-structure">
             <div class="panel-body">
-                <p>A successful HTTP response to an access-token request contains a JSON object with the access token and additional data. Following is an example of a valid-token response from the authorization server:</p>
+                <p>访问令牌请求的成功 HTTP 响应包含一个 JSON 对象以及访问令牌和其他数据。以下是来自授权服务器的有效令牌响应的示例：</p>
 
 {% highlight json %}
 HTTP/1.1 200 OK
@@ -113,91 +112,89 @@ Pragma: no-cache
 }
 {% endhighlight %}
 
-<p>The token-response JSON object has these property objects:</p>
+<p>令牌响应 JSON 对象具有以下属性对象：</p>
 <ul>
-    <li><b>token_type</b>: the token type is always <i>"Bearer"</i>, in accordance with the <a href="https://tools.ietf.org/html/rfc6750">OAuth 2.0 Bearer Token Usage specification</a>.</li>
-    <li><b>expires_in</b>: the expiration time of the access token, in seconds.</li>
-    <li><b>access_token</b>: the generated access token (actual access tokens are longer than shown in the example).</li>
-    <li><b>scope</b>: the requested scope.</li>
+    <li><b>token_type</b>：根据 <a href="https://tools.ietf.org/html/rfc6750">OAuth 2.0 Bearer Token Usage 规范</a>，令牌类型始终为<i>“Bearer”</i>。</li>
+    <li><b>expires_in</b>：访问令牌的到期时间（秒）。</li>
+    <li><b>access_token</b>：生成的访问令牌（实际访问令牌长于示例中显示的值）。</li>
+    <li><b>scope</b>：请求的作用域。</li>
 </ul>
 
-<p>The <b>expires_in</b> and <b>scope</b> information is also contained within the token itself (<b>access_token</b>).</p>
+<p>令牌本身 (<b>access_token</b>) 也包含 <b>expires_in</b> 和 <b>scope</b> 信息。</p>
 
-<blockquote><b>Note:</b> The structure of a valid access-token response is relevant if you use the low-level <code>WLAuthorizationManager</code> class and manage the OAuth interaction between the client and the authorization and resource servers yourself, or if you use a confidential client. If you are using the high-level <code>WLResourceRequest</code> class, which encapsulates the OAuth flow for accessing protected resources, the security framework handles the processing of access-token responses for you. <a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_oauth_client_apis.html?view=kc#c_oauth_client_apis">See Client security APIs</a> and <a href="confidential-clients">Confidential clients</a>.</blockquote>
+<blockquote><b>注：</b>如果使用低级别 <code>WLAuthorizationManager</code> 类并自行管理客户机与授权和资源服务器之间的 OAuth 交互，或者如果使用保密客户机，那么有效访问令牌响应结构则相关。如果使用封装 OAuth 流以访问受保护资源的高级别 <code>WLResourceRequest</code> 类，那么安全框架为您执行访问令牌响应的处理工作。<a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_oauth_client_apis.html?view=kc#c_oauth_client_apis">请参阅客户机安全性 API</a> 和<a href="confidential-clients">保密客户机</a>。</blockquote>
 
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>结束部分</b></a>
             </div>
         </div>
     </div>
 </div>
 
-### Security Check
+### 安全性检查
 {: #security-check }
-A security check is a server-side entity that implements the security logic for protecting server-side application resources. A simple example of a security check is a user-login security check that receives the credentials of a user, and verifies the credentials against a user registry. Another example is the predefined {{ site.data.keys.product_adj }} application-authenticity security check, which validates the authenticity of the mobile application and thus protects against unlawful attempts to access the application's resources. The same security check can also be used to protect several resources.
+安全性检查是实施安全逻辑来保护服务器端应用程序资源的服务器端实体。安全性检查的简单示例是用户登录安全性检查，用于接收用户凭证，并针对用户注册表验证凭证。另一个示例是预定义的 {{ site.data.keys.product_adj }} 应用程序真实性安全检查，用于验证移动应用程序的真实性，并因而防止非法尝试访问应用程序资源。也可使用相同的安全性检查来保护多种资源。
 
-A security check typically issues security challenges that require the client to respond in a specific way to pass the check. This handshake occurs as part of the OAuth access-token-acquisition flow. The client uses **challenge handlers** to handle challenges from security checks.
+安全性检查通常会发出安全验证问题，要求客户机以特定方式进行响应以通过检查。此握手是作为 OAuth 访问令牌获取流程的一部分发生的。客户机使用**验证问题处理程序**以处理来自安全性检查的验证问题。
 
-#### Built-in Security Checks
+#### 内置安全性检查
 {: #built-in-security-checks }
-The following predefined security checks are available:
+以下预定义安全性检查可用：
 
-- [Application Authenticity](application-authenticity/)
-- [LTPA-based single sign-on (SSO)](ltpa-security-check/)
-- [Direct Update](../application-development/direct-update)
+- [应用程序真实性](application-authenticity/)
+- [基于 LTPA 的单点登录 (SSO)](ltpa-security-check/)
+- [直接更新](../application-development/direct-update)
 
-### Challenge Handler
+### 验证问题处理程序
 {: #challenge-handler }
-When trying to access a protected resource, the client may be faced with a challenge. A challenge is a question, a security test, a prompt by the server to make sure that the client is allowed to access this resource. Most commonly, this challenge is a request for credentials, such as a user name and password.
+在尝试访问受保护资源时，客户机可能面临验证问题。验证问题是服务器发出的问题、安全测试和提示，用于确定允许客户机访问此资源。最常见的情况是，该验证问题是对凭证的请求，例如，用户名和密码。
 
-A challenge handler is a client-side entity that implements the client-side security logic and the related user interaction.  
-**Important**: After a challenge is received, it cannot be ignored. You must answer or cancel it. Ignoring a challenge might lead to unexpected behavior.
+验证问题处理程序是客户机端实体，实施客户机端安全逻辑和相关的用户交互。  
+**重要信息**：在收到验证问题后，不能将其忽略。必须回答或者取消。忽略验证问题可能会导致意外的行为。
 
-> Learn more about security checks in the [Creating a Security Check](creating-a-security-check/) tutorial, and about challenge handlers in the [Credentials Validation](credentials-validation) tutorial.
-
-### Scope
+> 在[创建安全性检查](creating-a-security-check/)教程中了解有关安全性检查的更多信息，并在[凭证验证](credentials-validation)教程中了解有关验证问题处理程序的更多信息。
+### 作用域
 {: #scope }
-You can protect resources such as adapters from unauthorized access by specifying a **scope**.  
+您可以通过指定**作用域**来保护资源（例如，适配器）免遭未经授权的访问。  
 
-A scope is a space-separated list of zero or more **scope elements**, for example `element1 element2 element3`.
-The {{ site.data.keys.product_adj }} security framework requires an access token for any adapter resource, even if the resource is not explicitly assigned a scope.
+作用域是零个或多个**作用域元素**的空格分隔列表，例如，`element1 element2 element3`。
+{{ site.data.keys.product_adj }} 安全框架需要任何适配器资源的访问令牌，即使资源未明确指定作用域。
 
-#### Scope Element
+#### 作用域元素
 {: #scope-element }
-A scope element can be one of the following:
+作用域元素可以为以下之一：
 
-* The name of a security check.
-* An arbitrary keyword such as `access-restricted` or `deletePrivilege` which defines the level of security needed for this resource. This keyword is later mapped to a security check.
+* 安全性检查的名称。
+* 任意关键字，例如，`access-restricted` 或 `deletePrivilege`，用于定义此资源所需的安全级别。之后可将此关键字映射到安全性检查。
 
-#### Scope Mapping
+#### 作用域映射
 {: #scope-mapping }
-By default, the **scope elements** you write in your **scope** are mapped to a **security check with the same name**.  
-For example, if you write a security check called `PinCodeAttempts`, you can use a scope element with the same name within your scope.
+缺省情况下，在**作用域**中编写的**作用域元素**将映射到**具有相同名称的安全性检查**。  
+例如，如果编写名为 `PinCodeAttempts` 的安全性检查，那么可在作用域中使用具有相同名称的作用域元素。
 
-Scope Mapping allows to map scope elements to security checks. When the client asks for a scope element, this configuration defines which security checks should be applied.   For example, you can map the scope element `access-restricted` to your `PinCodeAttempts` security check.
+作用域映射允许将作用域元素映射到安全性检查。在客户机请求作用域元素时，此配置定义应该应用的安全性检查。例如，您可以将作用域元素 `access-restricted` 映射到 `PinCodeAttempts` 安全性检查。
 
-Scope mapping is useful if you want to protect a resource differently depending on which application is trying to access it.  
-You can also map a scope to a list of zero or more security checks.
+如果想要根据尝试访问资源的应用程序以不同方式保护资源，那么作用域映射非常有用。  
+您还可以将一个作用域映射到包含零项或多项安全性检查的列表。
 
-For example:  
+例如：  
 scope = `access-restricted deletePrivilege`
 
-* In app A
-  * `access-restricted` is mapped to `PinCodeAttempts`.
-  * `deletePrivilege` is mapped to an empty string.
-* In app B
-  * `access-restricted` is mapped to `PinCodeAttempts`.
-  * `deletePrivilege` is mapped to `UserLogin`.
+* 在应用程序 A 中
+  * `access-restricted` 映射到 `PinCodeAttempts`。
+  * `deletePrivilege` 映射到空字符串。
+* 在应用程序 B 中
+  * `access-restricted` 映射到 `PinCodeAttempts`。
+  * `deletePrivilege` 映射到 `UserLogin`。
 
-> To map your scope element to an empty string, do not select any security check in the **Add New Scope Element Mapping** pop-up menu.
+> 要将作用域元素映射到空字符串，请勿在**添加新作用域元素映射**弹出菜单中选择任何安全性检查。
+<img class="gifplayer" alt="作用域映射" src="scope_mapping.png"/>
 
-<img class="gifplayer" alt="Scope mapping" src="scope_mapping.png"/>
+您还可以使用必需的配置来手动编辑应用程序的配置 JSON 文件，并将更改推送回 {{ site.data.keys.mf_server }}。
 
-You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a {{ site.data.keys.mf_server }}.
-
-1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
-2. Open the configuration file, located in the **[project-folder\mobilefirst** folder.
-3. Edit the file by defining a `scopeElementMapping` property, in this property, define data pairs that are each composed of the name of your selected scope element, and a string of zero or more space-separated security checks to which the element maps. For example: 
+1. 从**命令行窗口**导航至项目的根文件夹，然后运行 `mfpdev app pull`。
+2. 打开位于 **[project-folder\mobilefirst** 文件夹中的配置文件。
+3. 通过定义 `scopeElementMapping` 属性来编辑文件，在此属性中，定义由选中的作用域元素的名称和零项或多项空格分隔的安全性检查（将元素映射到此检查）的字符串组成的数据对。例如： 
 
     ```xml
     "scopeElementMapping": {
@@ -205,49 +202,46 @@ You can also manually edit the application's configuration JSON file with the re
         "SSOUserValidation": "LtpaBasedSSO CredentialsValidation"
     }
     ```
-4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
+4. 运行以下命令来部署更新的配置 JSON 文件：`mfpdev app push`。
 
-> You can also push updated configurations to remote servers. Review the [Using {{ site.data.keys.mf_cli }} to Manage {{ site.data.keys.product_adj }} artifacts](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
-
-## Protecting resources
+> 您还可以将更新的配置推送到远程服务器。请查看[使用 {{ site.data.keys.mf_cli }} 来管理 {{ site.data.keys.product_adj }} 工件](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)教程。
+## 保护资源
 {: #protecting-resources }
-In the OAuth model, a protected resource is a resource that requires an access token. You can use the {{ site.data.keys.product_adj }} security framework to protect both resources that are hosted on an instance of {{ site.data.keys.mf_server }}, and resources on an external server. You protect a resource by assigning it a scope that defines the required permissions for acquiring an access token for the resource. 
+在 OAuth 模型中，受保护资源是需要访问令牌的资源。您可以使用 {{ site.data.keys.product_adj }} 安全框架来保护在 {{ site.data.keys.mf_server }} 实例上托管的资源以及外部服务器上的资源。您可以通过为资源分配定义必需的许可权（用于获取资源的访问令牌）的作用域来保护资源。 
 
-You can protect your resources in various ways:
+您可以通过各种方式来保护资源：
 
-### Mandatory application scope
+### 必需的应用程序作用域
 {: #mandatory-application-scope }
-At the application level, you can define a scope that will apply to all the resources used by the application. The security framework runs these checks (if exist) in addition to the security checks of the requested resource scope.
+可以在应用程序级别定义应用于应用程序所使用的所有资源的作用域。除了所请求资源作用域的安全性检查，安全框架还运行这些检查（如果存在）。
 
-**Notes:**
+**注：**
 
-* The mandatory application scope is not applied when accessing [an unprotected resource](#unprotected-resources).
-* The access token that is granted for the resource scope does not contain the mandatory application scope.
+* 在访问[不受保护的资源](#unprotected-resources)时，不会应用必需的应用程序作用域。
+* 为资源作用域授予的访问令牌不包含必需的应用程序作用域。
 
 <br/>
-In the {{ site.data.keys.mf_console }}, select **[your application] → Security tab**. Under **Mandatory Application Scope**, click **Add to Scope**.
+在 {{ site.data.keys.mf_console }} 中，选择**[您的应用程序] → 安全**。在**必需的应用程序作用域**下，单击**添加到作用域**。
+<img class="gifplayer" alt="必需的应用程序作用域" src="mandatory-application-scope.png"/>
 
-<img class="gifplayer" alt="Mandatory application scope" src="mandatory-application-scope.png"/>
+您还可以使用必需的配置来手动编辑应用程序的配置 JSON 文件，并将更改推送回 {{ site.data.keys.mf_server }}。
 
-You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a {{ site.data.keys.mf_server }}.
-
-1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
-2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
-3. Edit the file by defining a `mandatoryScope` property, and setting the property value to a scope string that contains a space-separated list of your selected scope elements. For example: 
+1. 从**命令行窗口**导航至项目的根文件夹，然后运行 `mfpdev app pull`。
+2. 打开位于 **project-folder\mobilefirst** 文件夹中的配置文件。
+3. 通过定义 `mandatoryScope` 属性，并将属性值设置为包含选中作用域元素的空格分隔列表的作用域字符串来编辑文件。例如： 
 
    ```xml
    "mandatoryScope": "appAuthenticity PincodeValidation"
    ```
    
-4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
+4. 运行以下命令来部署更新的配置 JSON 文件：`mfpdev app push`。
 
-> You can also push updated configurations to remote servers. Review the [Using {{ site.data.keys.mf_cli }} to Manage {{ site.data.keys.product_adj }} artifacts](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
-
-### Resource-level
+> 您还可以将更新的配置推送到远程服务器。请查看[使用 {{ site.data.keys.mf_cli }} 来管理 {{ site.data.keys.product_adj }} 工件](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts)教程。
+### 资源级别
 {: #resource-level }
-#### Java adapters
+#### Java 适配器
 {: #java-adapters }
-You can specify the scope of a resource method by using the `@OAuthSecurity` annotation.
+您可以使用 `@OAuthSecurity` 注释来指定资源方法的作用域。
 
 ```java
 @DELETE
@@ -259,91 +253,88 @@ public void deleteUser(@PathParam("userId") String userId){
 }
 ```
 
-In the example above, the `deleteUser` method uses the annotation `@OAuthSecurity(scope="deletePrivilege")`, which means that it is protected by a scope containing the scope element `deletePrivilege`.
+在以上示例中，`deleteUser` 方法使用注释 `@OAuthSecurity(scope="deletePrivilege")`，这意味着它由包含作用域元素 `deletePrivilege` 的作用域来保护。
 
-* A scope can be made of several scope elements, separated by spaces: `@OAuthSecurity(scope="element1 element2 element3")`.
-* If you do not specify the `@OAuthSecurity` annotation, or set the scope to an empty string, the {{ site.data.keys.product_adj }} security framework still requires an access token for any incoming request.
-* You can use the `@OAuthSecurity` annotation also at the resource class level, to define a scope for the entire Java class.
+* 作用域可以由空格分隔的多个作用域元素组成：`@OAuthSecurity(scope="element1 element2 element3")`。
+* 如果您未指定 `@OAuthSecurity` 注释，或者将作用域设置为空字符串，那么 {{ site.data.keys.product_adj }} 安全框架针对任何入局请求仍需要访问令牌。
+* 您还可以在资源类级别使用 `@OAuthSecurity` 注释以定义整个 Java 类的作用域。
 
-#### JavaScript adapters
+#### JavaScript 适配器
 {: #javascript-adapters }
-You can protect a JavaScript adapter procedure by assigning a scope to the procedure definition in the adapter XML file:
+您可以通过在适配器 XML 文件中将作用域指定给过程定义来保护 JavaScript 适配器程序：
 
 ```xml
 <procedure name="deleteUser" scope="deletePrivilege">
 ```
 
-* A scope can be made of several scope elements, separated by spaces: `scope="element1 element2 element3"`
-* If you do not specify any scope, or use an empty string, the {{ site.data.keys.product_adj }} security framework still requires an access token for any incoming request.
+* 作用域可以由空格分隔的多个作用域元素组成：`scope="element1 element2 element3"`
+* 如果您未指定任何作用域，或者使用空字符串，那么 {{ site.data.keys.product_adj }} 安全框架针对任何入局请求仍需要访问令牌。
 
-### Disabling protection
+### 禁用保护
 {: #disabling-protection }
-The default value of the annotation’s `enabled` element is `true`. When the `enabled` element is set to `false`, the `scope` element is ignored, and the resource or resource class is not protected.  
-**Disabling protection** allows any client to access the resource: the {{ site.data.keys.product_adj }} security framework will **not** require an access token.
+注释的 `enabled` 元素的缺省值为 `true`。在将 `enabled` 元素设置为 `false` 时，将忽略 `scope` 元素，并且资源或资源类将不受保护。  
+**禁用保护**允许任何客户机访问资源：{{ site.data.keys.product_adj }} 安全框架将**不**需要访问令牌。
 
-**Note:** When you assign a scope to a resource method that is contained in an unprotected class, the method is protected despite the class annotation, provided you do not also set the enabled element to false in the resource annotation.
+**注：**在将作用域指定给不受保护的类中包含的资源方法时，将保护该方法而不论类注释如何，但前提是未在资源注释中将 enabled 元素设置为 false。
 
-#### Java adapters
+#### Java 适配器
 {: #java-adapters-protection }
-If you want to disable protection, you can use: `@OAuthSecurity(enabled=false)`.
+如果想要禁用保护，可以使用：`@OAuthSecurity(enabled=false)`。
 
-#### JavaScript adapters
+#### JavaScript 适配器
 {: #javascript-adapters-protection }
-If you want to disable protection, you can use `secured="false"`.
+如果想要禁用保护，可以使用 `secured="false"`。
 
 ```xml
 <procedure name="deleteUser" secured="false">
 ```
 
-### Unprotected resources
+### 不受保护的资源
 {: #unprotected-resources }
-An unprotected resource is a resource that does not require an access token. The {{ site.data.keys.product_adj }} security framework does not manage access to unprotected resources, and does not validate or check the identity of clients that access these resources. Therefore, features such as Direct Update, blocking device access, or remotely disabling an application, are not supported for unprotected resources.
+不受保护的资源是不需要访问令牌的资源。{{ site.data.keys.product_adj }} 安全框架不会管理对不受保护资源的访问，并且不会验证或检查访问这些资源的客户机的身份。因此，对于不受保护的资源，不支持诸如直接更新、阻止设备访问或远程禁用应用程序之类的功能。
 
-### External resources
+### 外部资源
 {: external-resources }
-To protect external resources, you add a resource filter with an access-token validation module to the external resource server. The token-validation module uses the introspection endpoint of the security framework's authorization server to validate {{ site.data.keys.product_adj }} access tokens before granting the OAuth client access to the resources. You can use the [{{ site.data.keys.product_adj }} REST API for the {{ site.data.keys.product_adj }} runtime](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api) to create your own access-token validation module for any external server. Alternatively, use one of the provided {{ site.data.keys.product_adj }} extensions for protecting external Java resources, as outlined in the [Protecting External Resources](protecting-external-resources) tutorial.
+要保护外部资源，可向外部资源服务器添加包含访问令牌验证模块的资源过滤器。令牌验证模块使用安全框架授权服务器的自省端点来验证 {{ site.data.keys.product_adj }} 访问令牌，然后再授权 OAuth 客户机访问资源。您可以将 [{{ site.data.keys.product_adj }} REST API 用于 {{ site.data.keys.product_adj }} 运行时](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api)，以针对任何外部服务器创建自己的访问令牌验证模块。或者，使用一个提供的 {{ site.data.keys.product_adj }} 扩展来保护外部 Java 资源，如[保护外部资源](protecting-external-resources)教程中所述。
 
-## Authorization flow
+## 授权流
 {: #authorization-flow }
-The authorization flow has two phases:
+授权流具有两个阶段：
 
-1. The client acquires an access token.
-2. The client uses the token to access a protected resource.
+1. 客户机获取访问令牌。
+2. 客户机使用令牌来访问受保护资源。
 
-### Obtaining an access token
+### 获取访问令牌
 {: #obtaining-an-access-token }
-In this phase, the client undergoes **security checks** in order to receive an access token.
+在此阶段中，客户机进行**安全性检查**以接收访问令牌。
 
-Before the request for an access token the client registers itself with the {{ site.data.keys.mf_server }}. As part of the registration, the client provides a public key that will be used for authenticating its identity. This phase occurs once in the lifetime of a mobile application instance. If the application-authenticity security check is enabled the authenticity of the application is validated during its registration.
+在请求访问令牌之前，客户机向 {{ site.data.keys.mf_server }} 注册自身。在注册过程中，客户机提供将用于认证其身份的公用密钥。在移动应用程序实例生命周期中，此阶段发生一次。如果启用了应用程序真实性安全检查，那么在注册期间将验证应用程序的真实性。
 
-![Obtain Token](auth-flow-1.jpg)
+![获取令牌](auth-flow-1.jpg)
 
-1. The client application sends a request to obtain an access token for a specified scope.
+1. 客户机应用程序发送请求以获取指定作用域的访问令牌。
 
-    > The client requests an access token with a certain scope. The requested scope should map to the same security check as the scope of the protected resource that the client wants to access, and can optionally also map to additional security checks. If the client does not have prior knowledge about the scope of the protected resource, it can first request an access token with an empty scope, and try to access the resource with the obtained token. The client will receive a response with a 403 (Forbidden) error and the required scope of the requested resource.
+    > 客户机请求具有特定作用域的访问令牌。请求的作用域应映射到与客户机想要访问的受保护资源的作用域相同的安全性检查，而且也可以选择映射到其他安全性检查。如果客户机先前不知道受保护资源的作用域，那么首先可请求具有空作用域的访问令牌，然后尝试使用获取的令牌访问资源。客户机将收到一个响应，包含 403（禁止）错误以及所请求资源的必需作用域。
+2. 客户机应用程序将根据请求的作用域进行安全性检查。
 
-2. The client application undergoes security checks according to the requested scope.
+    > {{ site.data.keys.mf_server }} 运行要将客户机请求的作用域映射到的安全性检查。授权服务器将根据这些检查的结果授权或拒绝客户机请求。如果定义了必需的应用程序作用域，那么除了请求的作用域检查，还会运行此作用域的安全性检查。
+3. 在成功完成验证问题流程后，客户机应用程序会将请求转发给授权服务器。
 
-    > {{ site.data.keys.mf_server }} runs the security checks to which the scope of the client's request is mapped. The authorization server either grants or rejects the client's request based on the results of these checks. If a mandatory application scope is defined, the security checks of this scope are run in addition to the checks of the requested scope.
+    > 在成功授权后，客户机将重定向到授权服务器的令牌端点，在此处将使用在客户机注册期间提供的公用密钥对其进行认证。在成功认证后，授权服务器会向客户机发出数字签名的访问令牌，此令牌封装客户机标识、请求的作用域和令牌的到期时间。
+4. 客户机应用程序接收访问令牌。
 
-3. After a successful completion of the challenge process, the client application forwards the request to the authorization server.
-
-    > After successful authorization, the client is redirected to the authorization server's token endpoint, where it is authenticated by using the public key that was provided as part of the client's registration. Upon successful authentication, the authorization server issues the client a digitally signed access token that encapsulates the client's ID, the requested scope, and the token's expiration time.
-
-4. The client application receives the access token.
-
-### Using a token to access a protected resource
+### 使用令牌来访问受保护资源
 {: #using-a-token-to-access-a-protected-resource }
-It is possible to enforce security both on resources that run on {{ site.data.keys.mf_server }}, as shown in this diagram, and on resources that run on any external resource server, as explained in tutorial [Using {{ site.data.keys.mf_server }} to authenticate external resources](protecting-external-resources/).
+可以针对在 {{ site.data.keys.mf_server }} 上运行的资源（如此图中所示）以及在任何外部资源服务器上运行的资源（如教程[使用 {{ site.data.keys.mf_server }} 来认证外部资源](protecting-external-resources/)中所解释）实施安全性。
 
-After obtaining an access token, the client attaches the obtained token to subsequent requests to access protected resources. The resource server uses the authorization server's introspection endpoint to validate the token. The validation includes using the token's digital signature to verify the client's identity, verifying that the scope matches the authorized requested scope, and ensuring that the token has not expired. When the token is validated, the client is granted access to the resource.
+在获取访问令牌后，客户机将获取的令牌附加到后续请求以访问受保护资源。资源服务器使用授权服务器的自省端点来验证令牌。验证包括使用令牌的数字签名来验证客户机的身份，验证作用域与授权的请求作用域是否匹配以及确保令牌未到期。在验证令牌后，将授权客户机访问资源。
 
-![Protect Resources](auth-flow-2.jpg)
+![保护资源](auth-flow-2.jpg)
 
-1. The client application sends a request with the received token.
-2. The validation module validates the token.
-3. {{ site.data.keys.mf_server }} proceeds to adapter invocation.
+1. 客户机应用程序发送包含已收到令牌的请求。
+2. 验证模块会验证令牌。
+3. {{ site.data.keys.mf_server }} 继续进行适配器调用。
 
-## Tutorials to follow next
+## 后续关注教程
 {: #tutorials-to-follow-next }
-Continue reading about authentication in {{ site.data.keys.product_adj }} Foundation by following the tutorials from the sidebar navigation.  
+通过关注侧边栏导航中的教程，继续阅读 {{ site.data.keys.product_adj }} Foundation 中有关认证的信息。  

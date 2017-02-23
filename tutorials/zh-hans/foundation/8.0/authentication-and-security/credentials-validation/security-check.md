@@ -1,34 +1,34 @@
 ---
 layout: tutorial
-title: Implementing the CredentialsValidationSecurityCheck class
-breadcrumb_title: Security Check
+title: 实现 CredentialsValidationSecurityCheck 类
+breadcrumb_title: 安全性检查
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Download Security Checks
+  - name: 下载安全性检查
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are mandatory: `validateCredentials` and `createChallenge`.  
-The `CredentialsValidationSecurityCheck` class is meant for simple flows to validate arbitrary credentials in order to grant access to a resource. Also provided is a built-in capability to block access after a set number of attempts.
+此抽象类可扩展 `ExternalizableSecurityCheck`，并实现其大多数方法来简化使用过程。以下两种方法为必需方法：`validateCredentials` 和 `createChallenge`。  
+`CredentialsValidationSecurityCheck` 类用于简单流以验证任意凭证，以便授权访问资源。同时还提供一项内置功能，用于在进行一定次数的尝试后阻止访问。
 
-This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client app instance is blocked for 60 seconds).
+本教程使用硬编码 PIN 码示例来保护资源，并给予用户 3 次尝试机会（此后将阻止客户机应用程序实例 60 秒）。
 
-**Prerequisites:** Make sure to read the [Authorization concepts](../../) and [Creating a Security Check](../../creating-a-security-check) tutorials.
+**先决条件：**确保阅读[授权概念](../../)和[创建安全性检查](../../creating-a-security-check)教程。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Creating the Security Check](#creating-the-security-check)
-* [Creating the Challenge](#creating-the-challenge)
-* [Validating the user credentials](#validating-the-user-credentials)
-* [Configuring the security check](#configuring-the-security-check)
-* [Sample security check](#sample-security-check)
+* [创建安全性检查](#creating-the-security-check)
+* [创建验证问题](#creating-the-challenge)
+* [验证用户凭证](#validating-the-user-credentials)
+* [配置安全性检查](#configuring-the-security-check)
+* [样本安全性检查](#sample-security-check)
 
-## Creating the Security Check
+## 创建安全性检查
 {: #creating-the-security-check }
-[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
+[创建 Java 适配器](../../../adapters/creating-adapters)，并添加名为 `PinCodeAttempts` 且可扩展 `CredentialsValidationSecurityCheck` 的 Java 类。
 
 ```java
 public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
@@ -45,12 +45,12 @@ public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
 }
 ```
 
-## Creating the challenge
+## 创建验证问题
 {: #creating-the-challenge }
-When the security check is triggered, it sends a challenge to the client. Returning `null` creates an empty challenge, which may be sufficient in some cases.  
-Optionally, you can return data with the challenge, such as an error message to display, or any other data that can be used by the client.
+在触发安全性检查时，会将验证问题发送给客户机。返回 `null` 会创建空的验证问题，在某些情况下这可能已足够。  
+您可以选择使用验证问题返回数据，如要显示的错误消息，或可由客户机使用的任何其他数据。
 
-For example, `PinCodeAttempts` sends a predefined error message and the number of remaining attempts.
+例如，`PinCodeAttempts` 会发送预定义的错误消息以及剩余尝试次数。
 
 ```java
 @Override
@@ -62,13 +62,13 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
-> The implementation of `errorMsg` is included in the sample application.
+> 样本应用程序中包含 `errorMsg` 的实现。
 
-`getRemainingAttempts()` is inherited from `CredentialsValidationSecurityCheck`.
+`getRemainingAttempts()` 从 `CredentialsValidationSecurityCheck` 继承而来。
 
-## Validating the user credentials
+## 验证用户凭证
 {: #validating-the-user-credentials }
-When the client sends the answer from the challenge, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
+在客户机发送验证问题的答案时，此答案会作为 `Map` 传递至 `validateCredentials`。如果凭证有效，此方法应实施您的逻辑并返回 `true`。
 
 ```java
 @Override
@@ -94,11 +94,11 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-### Configuration class
+### 配置类
 {: #configuration-class }
-You can also configure the valid PIN code by using the adapter.xml file and the {{ site.data.keys.mf_console }}.
+您还可以使用 adapter.xml 文件和 {{ site.data.keys.mf_console }} 来配置有效的 PIN 码。
 
-Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent security check class, in order to inherit the default configuration.
+创建可扩展 `CredentialsValidationSecurityCheckConfig` 的新 Java 类。重要的是要扩展与父安全性检查类匹配的类，以便继承缺省配置。
 
 ```java
 public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
@@ -113,9 +113,9 @@ public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
 }
 ```
 
-The only required method in this class is a constructor that can handle a `Properties` instance. Use the `get[Type]Property` method to retrieve a specific property from the adapter.xml file. If no value is found, the third parameter defines a default value (`1234`).
+此类中唯一需要的方法是可处理 `Properties` 实例的构造方法。`get[Type]Property` 方法可用于从 adapter.xml 文件检索特定的属性。如果找不到任何值，那么第三个参数会定义缺省值 (`1234`)。
 
-You can also add error handling in this constructor by using the `addMessage` method:
+您还可以使用 `addMessage` 方法，在此构造方法中添加错误处理：
 
 ```java
 public PinCodeConfig(Properties properties) {
@@ -131,8 +131,8 @@ public PinCodeConfig(Properties properties) {
     }
 
     //Check that the PIN code is numeric. Triggers warning.
-    try {
-        int i = Integer.parseInt(pinCode);
+    try { 
+int i = Integer.parseInt(pinCode);
     }
     catch(NumberFormatException nfe) {
         addMessage(warnings,"pinCode","PIN code contains non-numeric characters");
@@ -140,7 +140,7 @@ public PinCodeConfig(Properties properties) {
 }
 ```
 
-In your main class (`PinCodeAttempts`), add the following two methods to be able to load the configuration:
+在主类 (`PinCodeAttempts`) 中，添加能够装入配置的以下两种方法：
 
 ```java
 @Override
@@ -153,9 +153,9 @@ protected PinCodeConfig getConfiguration() {
 }
 ```
 
-You can now use the `getConfiguration().pinCode` method to retrieve the default PIN code.  
+您现在可以使用 `getConfiguration().pinCode` 方法来检索缺省 PIN 码。  
 
-You can modify the `validateCredentials` method to use the PIN code from the configuration instead of the hardcoded value.
+您可以修改 `validateCredentials` 方法来使用配置中的 PIN 码，而不使用硬编码值。
 
 ```java
 @Override
@@ -181,9 +181,9 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Configuring the security check
+## 配置安全性检查
 {: #configuring-the-security-check }
-In your adapter.xml, add a `<securityCheckDefinition>` element:
+在 adapter.xml 中，添加 `<securityCheckDefinition>` 元素：
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">
@@ -194,11 +194,11 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 </securityCheckDefinition>
 ```
 
-The `name` attribute must the name of the security check. Set the `class` parameter to the class that you created previously.
+`name` 属性必须是安全性检查的名称。将 `class` 参数设置为先前创建的类。
 
-A `securityCheckDefinition` can contain zero or more `property` elements. The `pinCode` property is the one defined in the `PinCodeConfig` configuration class. The other properties are inherited from the `CredentialsValidationSecurityCheckConfig` configuration class.
+`securityCheckDefinition` 可以包含零个或多个 `property` 元素。`pinCode` 属性是 `PinCodeConfig` 配置类中定义的属性。其他属性从 `CredentialsValidationSecurityCheckConfig` 配置类继承而来。
 
-By default, if you do not specify those properties in the adapter.xml file, you receive the default values that are set by `CredentialsValidationSecurityCheckConfig`:
+缺省情况下，如果您未在 adapter.xml 文件中指定这些属性，那么将会接收由 `CredentialsValidationSecurityCheckConfig` 设置的缺省值：
 
 ```java
 public CredentialsValidationSecurityCheckConfig(Properties properties) {
@@ -209,18 +209,18 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
     blockedStateExpirationSec = getIntProperty("blockedStateExpirationSec", properties, 0);
 }
 ```
-The `CredentialsValidationSecurityCheckConfig` class defines the following properties:
+`CredentialsValidationSecurityCheckConfig` 类可定义以下属性：
 
-- `maxAttempts`: How many attempts are allowed before reaching a *failure*.
-- `attemptingStateExpirationSec`: Interval in seconds during which the client must provide valid credentials, and attempts are counted.
-- `successStateExpirationSec`: Interval in seconds during which the successful login holds.
-- `blockedStateExpirationSec`: Interval in seconds during which the client is blocked after reaching `maxAttempts`.
+- `maxAttempts`：在达到 *failure* 之前允许的尝试次数。
+- `attemptingStateExpirationSec`：客户机必须提供有效凭证并统计尝试次数的时间间隔（秒）。
+- `successStateExpirationSec`：保持成功登录的时间间隔（秒）。
+- `blockedStateExpirationSec`：达到 `maxAttempts` 后阻止客户机的时间间隔（秒）。
 
-Note that the default value for `blockedStateExpirationSec` is set to `0`: if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
+请注意，`blockedStateExpirationSec` 的缺省值将设置为 `0`：如果客户机发送无效凭证，它可以“在 0 秒后”重试。这意味着在缺省情况下，将禁用“尝试”功能。
 
 
-## Sample Security Check
+## 样本安全性检查
 {: #sample-security-check }
-[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+[下载](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80)安全性检查 Maven 项目。
 
-The Maven project contains an implementation of CredentialsValidationSecurityCheck.
+Maven 项目包含 CredentialsValidationSecurityCheck 的实现。
