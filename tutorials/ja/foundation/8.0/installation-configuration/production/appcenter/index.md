@@ -7,7 +7,8 @@ weight: 8
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説 
 {: #overview }
-Application Center を {{site.data.keys.mf_server }} インストールの一部としてインストールします。インストールは、次のいずれかの方法で行うことができます。
+Application Center を {{site.data.keys.mf_server }} インストールの一部としてインストールします。
+インストールは、次のいずれかの方法で行うことができます。
 
 * IBM Installation Manager を使用したインストール
 * Ant タスクを使用したインストール
@@ -242,8 +243,10 @@ Application Center の Ant タスクは、{{site.data.keys.mf_server }} の配�
 * Android SDK プラットフォーム・ツール・パッケージの、aapt プログラムのバイナリー・ファイルが入ったディレクトリー: **mf\_server\_install\_dir/ApplicationCenter/tools/android-sdk**
 * **mf\_server\_install\_dir/ApplicationCenter/configuration-samples** 内の Ant サンプル・ファイル
 
-> **注:** **mf\_server\_install\_dir** プレースホルダーは、{{site.data.keys.mf_server }} をインストールしたディレクトリーを表します。[オプションのデータベース作成](#optional-creation-of-databases)の説明に従ってデータベースを手動で作成しなかった場合には、次のステップ 1 から 3 を実行してください。データベースが既に存在する場合は、データベース表のみを作成する必要があります。
-次のステップ 4 から 7 を実行してください。
+> **注:** **mf\_server\_install\_dir** プレースホルダーは、{{site.data.keys.mf_server }} をインストールしたディレクトリーを表します。
+
+[オプションのデータベース作成](#optional-creation-of-databases)の説明に従ってデータベースを手動で作成しなかった場合には、次のステップ 1 から 3 を実行してください。
+データベースが既に存在する場合は、データベース表のみを作成する必要があります。次のステップ 4 から 7 を実行してください。
 
 1. DBMS に対応したサンプル Ant ファイルをコピーします。データベースを作成するためのファイルは、以下のパターンに従って命名されます。
 
@@ -364,7 +367,9 @@ DB2 データベースを手動で構成するには、データベースを作�
 
 1. ご使用のオペレーティング・システムに合った適切なコマンドを使用して、**worklight** という名前のシステム・ユーザーを DB2 管理グループ (例えば **DB2USERS**) 内に作成します。それにパスワード **worklight** を付与します。詳しくは、DB2 資料およびオペレーティング・システムの資料を参照してください。
 
-> **重要:** ユーザーを異なる名前にしたり、異なるパスワードを設定したりすることができますが、適切なユーザー名およびパスワードを DB2 データベース・セットアップ全体を通して正しく入力するように注意してください。DB2 では、ユーザー名とパスワードの長さが、UNIX および Linux システムの場合は 8 文字まで、Windows の場合は 30 文字までという制限があります。2. **SYSADM** または **SYSCTRL** 権限を持つユーザーで DB2 コマンド・ライン・プロセッサーを開きます。
+> **重要:** ユーザーを異なる名前にしたり、異なるパスワードを設定したりすることができますが、適切なユーザー名およびパスワードを DB2 データベース・セットアップ全体を通して正しく入力するように注意してください。DB2 では、ユーザー名とパスワードの長さが、UNIX および Linux システムの場合は 8 文字まで、Windows の場合は 30 文字までという制限があります。
+
+2. **SYSADM** または **SYSCTRL** 権限を持つユーザーで DB2 コマンド・ライン・プロセッサーを開きます。
     * Windows システムでは、**「開始 (Start)」→「IBM DB2」→「コマンド・ライン・プロセッサー (Command Line Processor)」**とクリックします。
     * Linux システムまたは UNIX システムでは、**~/sqllib/bin** に移動し、`./db2` と入力します。
 
@@ -1892,9 +1897,7 @@ Application Center の ACL 管理を構成するには、以下のプロセス�
 LDAP 認証を行うように Apache Tomcat サーバーを構成し、Application Center Services Web アプリケーション (**applicationcenter.war**) および Application Center Console Web アプリケーション (**appcenterconsole.war**) の web.xml ファイル内で、セキュリティー (Java™ Platform, Enterprise Edition) を構成します。
 
 **LDAP ユーザー認証**  
-**server.xml** ファイル
-内の `<Host>` エレメント
-に **JNDIRealm** を構成する必要があります。レルムの構成について詳しくは、Apache Tomcat Web サイトのレルム・コンポーネントを参照してください。
+**server.xml** ファイル内の `<Host>` エレメントに **JNDIRealm** を構成する必要があります。レルムの構成について詳しくは、Apache Tomcat Web サイトのレルム・コンポーネントを参照してください。
 
 **LDAP サーバーに照らして認証を行うための Apache Tomcat での構成例**  
 この例は、 LDAP 認証が有効にされているサーバー上でのユーザーの許可と比較することによって、Apache Tomcat サーバー上でのユーザー認証を構成する方法を示しています。
@@ -2105,8 +2108,7 @@ Invalid operation: result set is closed. ERRORCODE=-4470, SQLSTATE=null
 {: #managing-the-db2-transaction-log-size }
 IBM MobileFirst Foundation Application Center コンソールで 40 MB 以上の大きさのアプリケーションをアップロードすると、「トランザクション・ログが満杯です」というエラーを受け取る場合があります。
 
-以下のシステム出力は、「**トランザクション・ログが満杯です
-**」エラー・コードの例です。
+以下のシステム出力は、「**トランザクション・ログが満杯です**」エラー・コードの例です。
 
 ```bash
 DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
@@ -2323,9 +2325,7 @@ Secure Sockets Layer (SSL) 証明書を要求し、受け取った文書を処�
 
     要求は認証局に送信されます。
 
-2. SSL 証明書を受け取ったら、認証局が提供する指示に従って、
-その SSL 証明書およびチェーン証明書を鍵ストアにインポートします。対応するオプションが、WebSphere 管理コンソールの**「セキュリティー (Security)」→「SSL 証明書 および鍵管理 (SSL certificate and key management)」→「エンドポイント・セキュリティー構成の管理 (Manage endpoint security configurations)」→「node SSL settings」→「鍵 ストアおよび証明書 (Key stores and certificates)」→
-「keystore」→「個人証明書 (Personal certificates)」→「certificate」→「認証局からの証明書の受信 (Receive a certificate from a certificate authority)」**にあります。
+2. SSL 証明書を受け取ったら、認証局が提供する指示に従って、その SSL 証明書およびチェーン証明書を鍵ストアにインポートします。対応するオプションが、WebSphere 管理コンソールの**「セキュリティー (Security)」→「SSL 証明書 および鍵管理 (SSL certificate and key management)」→「エンドポイント・セキュリティー構成の管理 (Manage endpoint security configurations)」→「node SSL settings」→「鍵 ストアおよび証明書 (Key stores and certificates)」→「keystore」→「個人証明書 (Personal certificates)」→「certificate」→「認証局からの証明書の受信 (Receive a certificate from a certificate authority)」**にあります。
 
     各部の意味は次のとおりです。  
     * **node SSL settings** は、構成内のノードの SSL 設定を示します。

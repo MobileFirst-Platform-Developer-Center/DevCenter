@@ -35,8 +35,7 @@ weight: 2
 マルチノード・クラスターにスケールアウトした後、フル・クラスター再始動が時々必要になる場合があります。フル・クラスター再始動が必要な場合は、リカバリー設定を検討する必要があります。クラスターに 10 台のノードがあり、1 度に 1 ノードずつクラスターが起動されていくときに、マスター・ノードは、各ノードがクラスターに加わるとすぐに、データのバランシングを開始する必要があると見なします。マスターのこのような動作が許可されると、多くの不要なリバランシングが必要になります。最小数のノードがクラスターに加わるまで待機してから、マスターがノードへのリバランシング命令の開始を許可されるように、クラスター設定を構成する必要があります。それにより、クラスターの再始動を、数時間から数分へと削減することができます。
 
 * クラスターで指定数のノードが起動して加わるまで、Elasticsearch がリバランシングを開始しないようにするには、**gateway.recover\_after\_nodes** プロパティーを必要な値に設定してください。クラスターに 10 個のノードがあれば、**gateway.recover\_after\_nodes** プロパティー値を 8 に設定すると妥当であるかもしれません。
-* **gateway.expected\_nodes** プロパティーは、クラスター内に予期するノード数に設定する必要があります。この例で、
-**gateway.expected_nodes** プロパティーの値は 10 です。
+* **gateway.expected\_nodes** プロパティーは、クラスター内に予期するノード数に設定する必要があります。この例で、**gateway.expected_nodes** プロパティーの値は 10 です。
 * マスター・ノードの始動から、設定した時間が経過するまで、リバランスした命令を送信するのを待つようにマスターに指示するために、**gateway.recover\_after\_time** プロパティーを設定する必要があります。
 
 前の設定の組み合わせは、Elasticsearch が、**gateway.recover\_after\_nodes** 値の数のノードが稼働するまで待つことを意味します。そして、**gateway.recover\_after\_time** 値の分数後、または **gateway.expected\_nodes** 値の数のノードがクラスターに加わった後 (いずれか早い方) に、リカバリーが開始されます。
@@ -45,27 +44,17 @@ weight: 2
 {: #what-not-to-do }
 * 実動クラスターは放置しないでください。
     * クラスターには、モニターと保守が必要です。タスク専用の有効な Elasticsearch モニター・ツールが多く使用可能です。
-* **datapath** 設定に Network Attached Storage (NAS) を使用しないでください。
-NAS により、待ち時間が長くなり、Single Point of Failure となってしまいます。
-常にローカル・ホスト・ディスクを使用してください。
-* クラスターが複数のデータ・センターに及ばないようにしてください。
-また、クラスターが地理的に遠距離に渡ることは必ず避けてください。
-ノード間の待ち時間は、重大なパフォーマンス・ボトルネックとなります。
+* **datapath** 設定に Network Attached Storage (NAS) を使用しないでください。NAS により、待ち時間が長くなり、Single Point of Failure となってしまいます。常にローカル・ホスト・ディスクを使用してください。
+* クラスターが複数のデータ・センターに及ばないようにしてください。また、クラスターが地理的に遠距離に渡ることは必ず避けてください。ノード間の待ち時間は、重大なパフォーマンス・ボトルネックとなります。
 * 独自のクラスター構成管理ソリューションを運用してください。Puppet、Chef、Ansible など、多くの有効な構成管理ソリューションが利用可能です。
 
 ## 構成プロパティー
 {: #configuration-properties }
-{{site.data.keys.mf_analytics_server }}
-は、追加の構成をしなくても正常に開始できます。
+{{site.data.keys.mf_analytics_server }} は、追加の構成をしなくても正常に開始できます。
 
-構成は、JNDI プロパティーを通じて {{site.data.keys.mf_server }} と
-{{site.data.keys.mf_analytics_server }} の両方で行われます。
-さらに、{{site.data.keys.mf_analytics_server }}
-では、構成を制御するための環境変数の使用をサポートします。
-環境変数は、JNDI プロパティーより優先されます。
+構成は、JNDI プロパティーを通じて {{site.data.keys.mf_server }} と {{site.data.keys.mf_analytics_server }} の両方で行われます。さらに、{{site.data.keys.mf_analytics_server }} では、構成を制御するための環境変数の使用をサポートします。環境変数は、JNDI プロパティーより優先されます。
 
 これらのプロパティーの変更を有効にするには、分析ランタイム Web アプリケーションを再始動する必要があります。アプリケーション・サーバー全体を再始動する必要はありません。
-
 
 WebSphere Application Server Liberty で JNDI プロパティーを設定するには、**server.xml** ファイルに以下のようにタグを追加します。
 
@@ -146,8 +135,7 @@ TTL は実際上、データ保存ポリシーの設定および保守方法で�
 
 #### Elasticsearch
 {: #elasticsearch }
-{{site.data.keys.mf_analytics_console }}
-の処理を行うストレージおよびクラスタリングの基盤テクノロジーは Elasticsearch です。  
+{{site.data.keys.mf_analytics_console }} の処理を行うストレージおよびクラスタリングの基盤テクノロジーは Elasticsearch です。  
 Elasticsearch では、主にパフォーマンス・チューニング用に、チューナブル・プロパティーが多く用意されています。 JNDI プロパティーの多くは、Elasticsearch で提供されるプロパティーの抽象化です。
 
 Elasticsearch により提供されるすべてのプロパティーは、プロパティー名の前に **analytics/** を付加した JNDI プロパティーを使用することでも設定できます。 例えば、**threadpool.search.queue_size** は、Elasticsearch が提供するプロパティーです。 これは、以下の JNDI プロパティーで設定できます。 
@@ -168,20 +156,11 @@ Elasticsearch により提供されるすべてのプロパティーは、プロ
 {: #backing-up-analytics-data }
 {{site.data.keys.mf_analytics }} のバックアップ方法について説明します。
 
-{{site.data.keys.mf_analytics }}
-のデータは、{{site.data.keys.mf_analytics_server }}
-ファイル・システム上のファイル・セットとして保管されます。
-このフォルダーの場所は、{{site.data.keys.mf_analytics_server }} 構成で datapath JNDI プロパティーによって指定されます。JNDI プロパティーについて詳しくは、[構成プロパティー](#configuration-properties)を参照してください。
+{{site.data.keys.mf_analytics }} のデータは、{{site.data.keys.mf_analytics_server }} ファイル・システム上のファイル・セットとして保管されます。このフォルダーの場所は、{{site.data.keys.mf_analytics_server }} 構成で datapath JNDI プロパティーによって指定されます。JNDI プロパティーについて詳しくは、[構成プロパティー](#configuration-properties)を参照してください。
 
 {{site.data.keys.mf_analytics_server }} 構成もファイル・システムに保管され、その名前は server.xml です。
 
-これらのファイルは、既に機能している既存のサーバー・バックアップ手順があれば、それを使用してバックアップすることができます。
-これらのファイルをバックアップする際に特別な手順は不要ですが、
-{{site.data.keys.mf_analytics_server }} は必ず停止してください。
-そうでないと、データがバックアップの実行中に変更される可能性があり、メモリーに保管されたデータが、ファイル・システムに書き込まれない可能性があります。
-データの不整合が発生しないようにするために、バックアップの開始前に
-{{site.data.keys.mf_analytics_server }}
-を停止してください。
+これらのファイルは、既に機能している既存のサーバー・バックアップ手順があれば、それを使用してバックアップすることができます。これらのファイルをバックアップする際に特別な手順は不要ですが、{{site.data.keys.mf_analytics_server }} は必ず停止してください。そうでないと、データがバックアップの実行中に変更される可能性があり、メモリーに保管されたデータが、ファイル・システムに書き込まれない可能性があります。データの不整合が発生しないようにするために、バックアップの開始前に {{site.data.keys.mf_analytics_server }} を停止してください。
 
 ## クラスター管理と Elasticsearch
 {: #cluster-management-and-elasticsearch }
@@ -189,91 +168,59 @@ Elasticsearch により提供されるすべてのプロパティーは、プロ
 
 ### クラスターへのノードの追加
 {: #add-a-node-to-the-cluster }
-クラスターに新しいノードを追加するには、{{site.data.keys.mf_analytics_server }}
-をインストールするか、またはスタンドアロン Elasticsearch インスタンスを実行します。
+クラスターに新しいノードを追加するには、{{site.data.keys.mf_analytics_server }} をインストールするか、またはスタンドアロン Elasticsearch インスタンスを実行します。
 
-スタンドアロン Elasticsearch インスタンスを選んだ場合は、メモリーとキャパシティーの要件に関するクラスターの負担は一部緩和されますが、
-データ取り込みの負担は緩和されません。データ・レポートは、
-データの整合性維持と最適化のために、パーシスタント・ストアに行く前に
-{{site.data.keys.mf_analytics_server }} を常に通らなければなりません。
+スタンドアロン Elasticsearch インスタンスを選んだ場合は、メモリーとキャパシティーの要件に関するクラスターの負担は一部緩和されますが、データ取り込みの負担は緩和されません。データ・レポートは、データの整合性維持と最適化のために、パーシスタント・ストアに行く前に {{site.data.keys.mf_analytics_server }} を常に通らなければなりません。
 
 ミックス・アンド・マッチが可能です。
 
-基盤の Elasticsearch データ・ストアは、ノードが同種であることを予期するため、クラスター内にパワフルな
-8 コア 64 GB RAM ラック・システムと、残り物の余ったノートブックを混在させないでください。
-ノード間で類似したハードウェアを使用してください。
+基盤の Elasticsearch データ・ストアは、ノードが同種であることを予期するため、クラスター内にパワフルな 8 コア 64 GB RAM ラック・システムと、残り物の余ったノートブックを混在させないでください。ノード間で類似したハードウェアを使用してください。
 
 #### クラスターへの {{site.data.keys.mf_analytics_server }}の追加
 {: #adding-a-mobilefirst-analytics-server-to-the-cluster }
-{{site.data.keys.mf_analytics_server }}
-をクラスターに追加する方法を説明します。
+{{site.data.keys.mf_analytics_server }} をクラスターに追加する方法を説明します。
 
-Elasticsearch は {{site.data.keys.mf_analytics_server }}
-に組み込まれていてクラスターに参加する責任があるため、
-アプリケーション・サーバーの機能でクラスターの動作を定義しないでください。
-例えば、WebSphere Application Server Liberty ファームは作成すべきではありません。クラスターへの参加は、基盤の Elasticsearch ランタイムに任せてください。
-ただし、それを適切に構成する必要があります。
+Elasticsearch は {{site.data.keys.mf_analytics_server }} に組み込まれていてクラスターに参加する責任があるため、アプリケーション・サーバーの機能でクラスターの動作を定義しないでください。例えば、WebSphere Application Server Liberty ファームは作成すべきではありません。クラスターへの参加は、基盤の Elasticsearch ランタイムに任せてください。ただし、それを適切に構成する必要があります。
 
-以下の手順例で、ノードをマスター・ノードにもデータ・ノードにも構成しないでください。
-代わりに、Elasticsearch REST API がモニターおよび動的構成のために公開されるように一時的に稼働する目的の「検索ロード・バランサー」としてノードを構成してください。
+以下の手順例で、ノードをマスター・ノードにもデータ・ノードにも構成しないでください。代わりに、Elasticsearch REST API がモニターおよび動的構成のために公開されるように一時的に稼働する目的の「検索ロード・バランサー」としてノードを構成してください。
 
-**注:
-**
+**注:**
 
 * 必ず、[システム要件](../installation/#system-requirements)に従って、このノードのハードウェアとオペレーティング・システムを構成してください。
-* ポート 9600 は、Elasticsearch が使用する転送ポートです。
-そのため、ポート 9600 は、クラスター・ノード間のどのファイアウォールも通すように開放されていなければなりません。
+* ポート 9600 は、Elasticsearch が使用する転送ポートです。そのため、ポート 9600 は、クラスター・ノード間のどのファイアウォールも通すように開放されていなければなりません。
 
-1. 新しく割り振られたシステム上のアプリケーション・サーバーに、分析サービス WAR ファイルと分析 UI WAR ファイル (UI が必要な場合) をインストールします。{{site.data.keys.mf_analytics_server }} のこのインスタンスを、
-サポートされる任意のアプリケーション・サーバーにインストールします。
-
+1. 新しく割り振られたシステム上のアプリケーション・サーバーに、分析サービス WAR ファイルと分析 UI WAR ファイル (UI が必要な場合) をインストールします。{{site.data.keys.mf_analytics_server }} のこのインスタンスを、サポートされる任意のアプリケーション・サーバーにインストールします。
     * [{{site.data.keys.mf_analytics }} の WebSphere Application Server Liberty へのインストール](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
     * [{{site.data.keys.mf_analytics }} の Tomcat へのインストール](../installation/#installing-mobilefirst-analytics-on-tomcat)
     * [{{site.data.keys.mf_analytics }} の WebSphere Application Server へのインストール](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
 
-2. JNDI プロパティーに関するアプリケーション・サーバーの構成ファイルを編集 (またはシステム環境変数を使用) して、
-少なくとも以下のフラグを構成します。
+2. JNDI プロパティーに関するアプリケーション・サーバーの構成ファイルを編集 (またはシステム環境変数を使用) して、少なくとも以下のフラグを構成します。
 
     | フラグ | 値 (例) | デフォルト | 注記 |
     |------|-----------------|---------|------|
     | cluster.name | 	worklight	 | worklight | 	このノードが参加するクラスター。 |
     | discovery.zen.ping.multicast.enabled | 	false | 	true | 	偶発的なクラスター参加を回避するには、false に設定します。 |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	なし | 	既存クラスター内のマスター・ノードのリスト。
-マスター・ノードで転送ポート設定を指定した場合は、デフォルト・ポート 9600 を変更してください。 |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	なし | 	既存クラスター内のマスター・ノードのリスト。マスター・ノードで転送ポート設定を指定した場合は、デフォルト・ポート 9600 を変更してください。 |
     | node.master | 	false | 	true | 	このノードがマスター・ノードになれないようにします。 |
     | node.data|	false | 	true | 	このノードがデータを保管できないようにします。 |
     | http.enabled | 	true	 | true | 	Elasticsearch REST API 用に非セキュアの HTTP ポート 9200 を開きます。 |
 
-3. 実動シナリオでは、すべての構成フラグを検討してください。Elasticsearch が、データとは異なるファイル・システム・ディレクトリーにプラグインを保持するようにしたい場合があります。
-そのために、**path.plugins** フラグを設定する必要があります。
+3. 実動シナリオでは、すべての構成フラグを検討してください。Elasticsearch が、データとは異なるファイル・システム・ディレクトリーにプラグインを保持するようにしたい場合があります。そのために、**path.plugins** フラグを設定する必要があります。
 4. 必要に応じ、アプリケーション・サーバーを実行して WAR アプリケーションを開始します。
-5. この新規ノードのコンソール出力を監視するか、
-{{site.data.keys.mf_analytics_console }}
-の**「管理」**ページで**「クラスターとノード」**セクションのノード・カウントを監視することで、
-この新規ノードがクラスターに参加したことを確認してください。
+5. この新規ノードのコンソール出力を監視するか、 {{site.data.keys.mf_analytics_console }} の**「管理」**ページで**「クラスターとノード」**セクションのノード・カウントを監視することで、この新規ノードがクラスターに参加したことを確認してください。
 
 #### クラスターへのスタンドアロン Elasticsearch ノードの追加
 {: #adding-a-stand-alone-elasticsearch-node-to-the-cluster }
 スタンドアロン Elasticsearch ノードをクラスターに追加する方法を説明します。
 
-簡単な数個のステップで、スタンドアロン Elasticsearch ノードを既存の
-{{site.data.keys.mf_analytics }}
-クラスターに追加することができます。
-ただし、このノードのロールを決定する必要があります。
-それは、マスター適格ノードになりますか?
-その場合には、必ずスプリット・ブレーンの問題が発生しないようにしてください。それは、データ・ノードになりますか?
-それは、クライアント専用ノードになりますか?
-ノードを一時的に開始して、Elasticsearch の REST API を直接公開して稼働中のクラスターに動的構成変更を作用させるために、おそらくクライアント専用ノードが必要になります。
+簡単な数個のステップで、スタンドアロン Elasticsearch ノードを既存の {{site.data.keys.mf_analytics }} クラスターに追加することができます。ただし、このノードのロールを決定する必要があります。それは、マスター適格ノードになりますか? その場合には、必ずスプリット・ブレーンの問題が発生しないようにしてください。それは、データ・ノードになりますか? それは、クライアント専用ノードになりますか? ノードを一時的に開始して、Elasticsearch の REST API を直接公開して稼働中のクラスターに動的構成変更を作用させるために、おそらくクライアント専用ノードが必要になります。
 
-以下の手順例で、ノードをマスター・ノードにもデータ・ノードにも構成しないでください。
-代わりに、Elasticsearch REST API がモニターおよび動的構成のために公開されるように一時的に稼働する目的の「検索ロード・バランサー」としてノードを構成してください。
+以下の手順例で、ノードをマスター・ノードにもデータ・ノードにも構成しないでください。代わりに、Elasticsearch REST API がモニターおよび動的構成のために公開されるように一時的に稼働する目的の「検索ロード・バランサー」としてノードを構成してください。
 
-**注:
-**
+**注:**
 
 * 必ず、[システム要件](../installation/#system-requirements)に従って、このノードのハードウェアとオペレーティング・システムを構成してください。
-* ポート 9600 は、Elasticsearch が使用する転送ポートです。
-そのため、ポート 9600 は、クラスター・ノード間のどのファイアウォールも通すように開放されていなければなりません。
+* ポート 9600 は、Elasticsearch が使用する転送ポートです。そのため、ポート 9600 は、クラスター・ノード間のどのファイアウォールも通すように開放されていなければなりません。
 
 1. Elasticsearch を [https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz](https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz) からダウンロードします。
 2. ファイルを解凍します。
@@ -283,8 +230,7 @@ Elasticsearch は {{site.data.keys.mf_analytics_server }}
     |------|-----------------|---------|------|
     | cluster.name | 	worklight	 | worklight | 	このノードが参加するクラスター。 |
     | discovery.zen.ping.multicast.enabled | 	false | 	true | 	偶発的なクラスター参加を回避するには、false に設定します。 |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	なし | 	既存クラスター内のマスター・ノードのリスト。
-マスター・ノードで転送ポート設定を指定した場合は、デフォルト・ポート 9600 を変更してください。 |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	なし | 	既存クラスター内のマスター・ノードのリスト。マスター・ノードで転送ポート設定を指定した場合は、デフォルト・ポート 9600 を変更してください。 |
     | node.master | 	false | 	true | 	このノードがマスター・ノードになれないようにします。 |
     | node.data|	false | 	true | 	このノードがデータを保管できないようにします。 |
     | http.enabled | 	true	 | true | 	Elasticsearch REST API 用に非セキュアの HTTP ポート 9200 を開きます。 |
@@ -293,20 +239,12 @@ Elasticsearch は {{site.data.keys.mf_analytics_server }}
 4. 実動シナリオでは、すべての構成フラグを検討してください。Elasticsearch が、データとは異なるファイル・システム・ディレクトリーにプラグインを保持するようにしたい場合があります。そのために、path.plugins フラグを設定する必要があります。
 5. `./bin/plugin -i elasticsearch/elasticsearch-analytics-icu/2.7.0` を実行して、ICU プラグインをインストールします。
 6. `./bin/elasticsearch` を実行します。
-7. この新規ノードのコンソール出力を監視するか、
-{{site.data.keys.mf_analytics_console }}
-の**「管理」**ページで**「クラスターとノード」**セクションのノード・カウントを監視することで、
-この新規ノードがクラスターに参加したことを確認してください。
+7. この新規ノードのコンソール出力を監視するか、{{site.data.keys.mf_analytics_console }} の**「管理」**ページで**「クラスターとノード」**セクションのノード・カウントを監視することで、この新規ノードがクラスターに参加したことを確認してください。
 
 #### 回路ブレーカー
 {: #circuit-breakers }
 Elasticsearch の回路ブレーカーについて説明します。
 
-Elasticsearch には、操作で **OutOfMemoryError** が発生しないようにするための回路ブレーカーが複数含まれています。
-例えば、{{site.data.keys.mf_console }}
-にデータを提供する照会で JVM ヒープの 40 % を使用することになった場合、回路ブレーカーが起動して例外が発生し、コンソールは空のデータを受け取ります。
+Elasticsearch には、操作で **OutOfMemoryError** が発生しないようにするための回路ブレーカーが複数含まれています。例えば、{{site.data.keys.mf_console }} にデータを提供する照会で JVM ヒープの 40 % を使用することになった場合、回路ブレーカーが起動して例外が発生し、コンソールは空のデータを受け取ります。
 
-Elasticsearch では、ディスク満杯の防御も行われます。
-Elasticsearch データ・ストアの書き込みに構成されているディスクが容量の 90 % に達すると、Elasticsearch ノードがクラスター内のマスター・ノードに通知します。それにより、マスター・ノードは、満杯になりそうなノードを避けて、新たな文書書き込みを宛先変更します。
-クラスター内にノードが 1 つしかない場合、データを書き込みできる 2 次ノードはありません。
-そのため、データは書き込まれず、失われます。
+Elasticsearch では、ディスク満杯の防御も行われます。Elasticsearch データ・ストアの書き込みに構成されているディスクが容量の 90 % に達すると、Elasticsearch ノードがクラスター内のマスター・ノードに通知します。それにより、マスター・ノードは、満杯になりそうなノードを避けて、新たな文書書き込みを宛先変更します。クラスター内にノードが 1 つしかない場合、データを書き込みできる 2 次ノードはありません。そのため、データは書き込まれず、失われます。
