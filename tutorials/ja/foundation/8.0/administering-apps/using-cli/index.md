@@ -13,8 +13,7 @@ weight: 4
 {: #jump-to }
 
 * [他の機能との比較](#comparison-with-other-facilities)
-* [前提条件
-](#prerequisites)
+* [前提条件](#prerequisites)
 
 ## 他の機能との比較
 {: #comparison-with-other-facilities }
@@ -34,22 +33,15 @@ weight: 4
 **mfpadm** プログラムと mfpadm Ant タスクは、REST サービスよりも使い方が簡単で、エラー・レポートも充実しています。mfpadm Ant タスクよりも mfpadm プログラムが優れている点は、オペレーティング・システム・コマンドとの統合がすでに使用可能なときに、統合がより容易であることです。また、対話式の使用にも、より適しています。
 
 ## 前提条件
-
 {: #prerequisites }
-
-**mfpadm** ツールは、
-{{site.data.keys.mf_server }}
-インストーラーを使用してインストールされます。
-このページの残りの部分では、**product\_install\_dir** は {{site.data.keys.mf_server }} インストーラーのインストール・ディレクトリーを示します。
+**mfpadm** ツールは、{{site.data.keys.mf_server }} インストーラーを使用してインストールされます。このページの残りの部分では、**product\_install\_dir** は {{site.data.keys.mf_server }} インストーラーのインストール・ディレクトリーを示します。
 
 **mfpadm** コマンドは、スクリプトのセットとして **product\_install\_dir/shortcuts/** ディレクトリーにあります。
 
 * mfpadm (UNIX / Linux の場合)
 * mfpadm.bat (Windows の場合)
 
-これらのスクリプトはいつでも実行できる状態にあります。つまり、特定の環境変数を必要としないということです。
-環境変数 **JAVA_HOME** が設定された場合、スクリプトはこれを受け入れます。
-  
+これらのスクリプトはいつでも実行できる状態にあります。つまり、特定の環境変数を必要としないということです。環境変数 **JAVA_HOME** が設定された場合、スクリプトはこれを受け入れます。  
 **mfpadm** プログラムを使用するには、PATH 環境変数に **product\_install\_dir/shortcuts/** ディレクトリーを組み込むか、各呼び出しでプログラムの絶対ファイル名を参照します。
 
 {{site.data.keys.mf_server }} インストーラーの実行について詳しくは、[IBM インストール・マネージャーの実行 (Running IBM Installation Manager) ](../../installation-configuration/production/installation-manager/)を参照してください。
@@ -105,8 +97,7 @@ URL には、HTTPS プロトコルを使用することを推奨します。例�
 * サーバーの SSL 証明書は、たとえ自己署名された場合でも、あるいはサーバーのホスト名とは異なるホスト名のために作成された場合でも、受け入れられます。
 
 **password**  
-パスワードは、`--passwordfile` オプションで渡される別個のファイルで指定します。
-あるいは、対話モード (「対話モード」を参照) でパスワードを対話式に指定することもできます。パスワードは機密情報であり、保護する必要があります。同じコンピューター上の他のユーザーがこれらのパスワードを知ることができないようにしてください。パスワードを保護するには、パスワードをファイルに入力する前に、自分以外のユーザーに対しファイルの読み取り権限を削除する必要があります。例えば、以下のいずれかのコマンドを使用できます。
+パスワードは、`--passwordfile` オプションで渡される別個のファイルで指定します。あるいは、対話モード (「対話モード」を参照) でパスワードを対話式に指定することもできます。パスワードは機密情報であり、保護する必要があります。同じコンピューター上の他のユーザーがこれらのパスワードを知ることができないようにしてください。パスワードを保護するには、パスワードをファイルに入力する前に、自分以外のユーザーに対しファイルの読み取り権限を削除する必要があります。例えば、以下のいずれかのコマンドを使用できます。
 
 * UNIX の場合: `chmod 600 adminpassword.txt`
 * Windows の場合: `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
@@ -167,7 +158,6 @@ mfpadm 呼び出しは、1 つのコマンドを含みます。以下のコマ�
 `exit` コマンド、または標準入力 (UNIX ターミナルでは **Ctrl-D**) の EOF によって、mfpadm は終了します。
 
 このモードでは、`Help` コマンドも使用できます。例えば、次のとおりです。
-
 
 * help
 * help show versions
@@ -237,6 +227,7 @@ rlwrap が使用できない環境または不要の環境では、オプショ�
 **注:** `--configfile` オプションを指定しない場合、デフォルトの構成ファイルは対話モードおよび config コマンドでのみ使用されます。他のコマンドを非対話式で使用するとき、構成ファイルを使いたい場合は、その構成ファイルを明示的に指定する必要があります。
 
 > **重要:** パスワードは、偶発的な表示から隠すために、難読化した形式で保管されます。ただし、この難読化はセキュリティー機能を持ちません。
+
 #### 一般オプション
 {: #generic-options }
 通常の一般オプションもあります。
@@ -248,8 +239,7 @@ rlwrap が使用できない環境または不要の環境では、オプショ�
 
 #### XML 形式
 {: #xml-format }
-サーバーから XML 応答を受け取るコマンドは、その応答が特定のスキーマに従うか検証します。
-`--xmlvalidation=none` を指定することで、この検証を無効にすることができます。
+サーバーから XML 応答を受け取るコマンドは、その応答が特定のスキーマに従うか検証します。`--xmlvalidation=none` を指定することで、この検証を無効にすることができます。
 
 #### 出力文字セット
 {: #output-character-set }
@@ -269,8 +259,7 @@ mfpadm プログラムより生成される通常の出力は、現行のロケ�
 
 #### `show global-config` コマンド
 {: #the-show-global-config-command }
-`show
-global-config` コマンドは、グローバル構成を表示します。
+`show global-config` コマンドは、グローバル構成を表示します。
 
 構文: `show global-config`
 
@@ -301,9 +290,7 @@ show global-config
 |----------|-------------|
 | runtime-name | ランタイムの名前。 |
 
-
-`show user-config` コマンドは、動詞の後に以下のオプ
-ションを取ります。
+`show user-config` コマンドは、動詞の後に以下のオプションを取ります。
 
 | 引数 | 説明 | 必要 | デフォルト | 
 |----------|-------------|----------|---------|
@@ -320,8 +307,7 @@ show user-config mfp
 <br /> 
 #### `set user-config` コマンド
 {: #the-set-user-config-command }
-`set
-user-config` コマンドは、ランタイムのユーザー構成か、またはこの構成のうちの単一プロパティーを指定します。
+`set user-config` コマンドは、ランタイムのユーザー構成か、またはこの構成のうちの単一プロパティーを指定します。
 
 構成全体の場合の構文: `set user-config [runtime-name] file`
 
@@ -334,9 +320,7 @@ user-config` コマンドは、ランタイムのユーザー構成か、また�
 
 単一プロパティーの場合の構文: `set user-config [runtime-name] property = value`
 
-
-`set user-config` コマンドは以下の引数を取ります。
-
+`set user-config` コマンドは以下の引数を取ります 
 
 | 引数 | 説明 | 
 |----------|-------------|
@@ -359,12 +343,7 @@ set user-config mfp timeout = 240
 <br /> 
 #### `show confidential-clients` コマンド
 {: #the-show-confidential-clients-command }
-`show
-confidential-clients` コマンドは、ランタイムにアクセスできる
-機密クライアントの構成を表示します。機密クライアントについて詳しくは、
-[
-機密クライアント (Confidential
-clients)](../../authentication-and-security/confidential-clients) を参照してください。
+`show confidential-clients` コマンドは、ランタイムにアクセスできる機密クライアントの構成を表示します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
 
 構文: `show confidential-clients [--xml][runtime-name]`
 
@@ -374,9 +353,7 @@ clients)](../../authentication-and-security/confidential-clients) を参照し�
 |-----------|-------------|
 | runtime-name | ランタイムの名前。 |
 
-
-`show confidential-clients` コマンドは、動詞の後に以下
-のオプションを取ります。
+`show confidential-clients` コマンドは、動詞の後に以下のオプションを取ります。
 
 | 引数 | 説明 | 必要 | デフォルト |
 |----------|-------------|----------|---------|
@@ -393,12 +370,7 @@ show confidential-clients --xml mfp
 <br /> 
 #### `set confidential-clients` コマンド
 {: #the-set-confidential-clients-command }
-`set
-confidential-clients` コマンドは、ランタイムにアクセスできる
-機密クライアントの構成を指定します。機密クライアントについて詳しくは、
-[
-機密クライアント (Confidential
-clients)](../../authentication-and-security/confidential-clients) を参照してください。
+`set confidential-clients` コマンドは、ランタイムにアクセスできる機密クライアントの構成を指定します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
 
 構文: `set confidential-clients [runtime-name] file`
 
@@ -420,13 +392,7 @@ set confidential-clients mfp clients.xml
 <br /> 
 #### `set confidential-clients-rule` コマンド
 {: #the-set-confidential-clients-rule-command }
-
-`set confidential-clients-rule` コマンドは、ランタイムにアク
-セスできる機密クライアントの構
-成におけるルールを指定します。機密クライアントについて詳しくは、
-[
-機密クライアント (Confidential
-clients)](../../authentication-and-security/confidential-clients) を参照してください。
+`set confidential-clients-rule` コマンドは、ランタイムにアクセスできる機密クライアントの構成におけるルールを指定します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。
 
 構文: `set confidential-clients-rule [runtime-name] id displayName secret allowedScope`
 
@@ -454,8 +420,7 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"
 
 ### `list adapters` コマンド
 {: #the-list-adapters-command }
-`list
-adapters` コマンドは、ランタイムにデプロイされたアダプターのリストを返します。
+`list adapters` コマンドは、ランタイムにデプロイされたアダプターのリストを返します。
 
 構文: `list adapters [runtime-name]`
 
@@ -482,8 +447,7 @@ list adapters mfp
 <br /> 
 #### `deploy adapter` コマンド
 {: #the-deploy-adapter-command }
-`deploy
-adapter` コマンドは、アダプターをランタイムにデプロイします。
+`deploy adapter` コマンドは、アダプターをランタイムにデプロイします。
 
 構文: `deploy adapter [runtime-name] file`
 
@@ -505,8 +469,7 @@ deploy adapter mfp MyAdapter.adapter
 <br /> 
 #### `show adapter` コマンド
 {: #the-show-adapter-command }
-`show
-adapter` コマンドは、アダプターに関する詳細を表示します。
+`show adapter` コマンドは、アダプターに関する詳細を表示します。
 
 構文: `show adapter [runtime-name] adapter-name`
 
@@ -534,8 +497,7 @@ show adapter mfp MyAdapter
 <br /> 
 #### `delete adapter` コマンド
 {: #the-delete-adapter-command }
-`delete
-adapter` コマンドは、アダプターをランタイムから削除 (アンデプロイ) します。
+`delete adapter` コマンドは、アダプターをランタイムから削除 (アンデプロイ) します。
 
 構文: `delete adapter [runtime-name] adapter-name`
 
@@ -567,8 +529,7 @@ delete adapter mfp MyAdapter
 <br /> 
 #### `adapter get binary` コマンド
 {: #the-adapter-get-binary-command }
-`adapter
-get binary` コマンドは、バイナリー・アダプター・ファイルを返します。
+`adapter get binary` コマンドは、バイナリー・アダプター・ファイルを返します。
 
 構文: `adapter [runtime-name] adapter-name get binary [> tofile]`
 
@@ -584,10 +545,7 @@ get binary` コマンドは、バイナリー・アダプター・ファイル�
 adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 ```
 
-このコマンドは、
-[
-ランタイム・リソースのエクスポート (GET) (Export runtime resources
-(GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST サービスに基づいています。
+このコマンドは、[ ランタイム・リソースのエクスポート (GET) (Export runtime resources (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST サービスに基づいています。
 
 <br /> 
 #### `adapter show user-config` コマンド
@@ -608,15 +566,11 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 adapter mfp MyAdapter show user-config
 ```
 
-このコマンドは、
-[
-アダプター構成 (GET) (Adapter Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST サービ
-スに基づいています。
+このコマンドは、[ アダプター構成 (GET) (Adapter Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST サービスに基づいています。
 
 <br /> 
 #### `adapter set user-config` コマンド
 {: #the-adapter-set-user-config-command }
-
 `adapter set user-config` コマンドは、アダプターのユーザー構成か、またはこの構成のうちの単一プロパティーを指定します。
 
 構成全体の場合の構文: `adapter [runtime-name] adapter-name set user-config file`
@@ -701,8 +655,7 @@ deploy app mfp MyApp/application-descriptor.json
 
 #### `show app` コマンド
 {: #the-show-app-command }
-`show app` コマンドは、
-ランタイム内のアプリケーションに関する詳細 (特に、その環境やバージョン) を表示します。
+`show app` コマンドは、ランタイム内のアプリケーションに関する詳細 (特に、その環境やバージョン) を表示します。
 
 構文: `show app [runtime-name] app-name`
 
@@ -729,9 +682,7 @@ show app mfp MyApp
 
 #### `delete app` コマンド
 {: #the-delete-app-command }
-`delete
-app` コマンドはすべての環境およびすべてのバージョンで、
-ランタイムからアプリケーションを削除 (アンデプロイ) します。
+`delete app` コマンドはすべての環境およびすべてのバージョンで、ランタイムからアプリケーションを削除 (アンデプロイ) します。
 
 構文: `delete app [runtime-name] app-name`
 
@@ -748,13 +699,11 @@ app` コマンドはすべての環境およびすべてのバージョンで、
 delete app mfp MyApp
 ```
 
-このコマンドは、[アプリケーション・バージョン (DELETE) (Application Version
-(DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST サービスに基づいています。
+このコマンドは、[アプリケーション・バージョン (DELETE) (Application Version (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST サービスに基づいています。
 
 #### `show app version` コマンド
 {: #the-show-app-version-command }
-`show app
-version` コマンドはランタイムでのアプリケーション・バージョンに関する詳細を表示します。
+`show app version` コマンドはランタイムでのアプリケーション・バージョンに関する詳細を表示します。
 
 構文: `show app version [runtime-name] app-name environment version`
 
@@ -766,7 +715,6 @@ version` コマンドはランタイムでのアプリケーション・バー�
 | app-name | アプリケーションの名前。 | 
 | environment | モバイル・プラットフォーム。 | 
 | version | アプリケーションのバージョン。 | 
-
 
 `show app version` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
@@ -780,13 +728,11 @@ version` コマンドはランタイムでのアプリケーション・バー�
 show app version mfp MyApp iPhone 1.1
 ```
 
-このコマンドは、[アプリケーション・バージョン (GET) (Application Version (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-)
-REST サービスに基づいています。
+このコマンドは、[アプリケーション・バージョン (GET) (Application Version (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST サービスに基づいています。
 
 #### `delete app version` コマンド
 {: #the-delete-app-version-command }
-`delete
-app version` コマンドは、アプリケーション・バージョンをランタイムから削除 (アンデプロイ) します。
+`delete app version` コマンドは、アプリケーション・バージョンをランタイムから削除 (アンデプロイ) します。
 
 構文: `delete app version [runtime-name] app-name environment version`
 
@@ -805,8 +751,7 @@ app version` コマンドは、アプリケーション・バージョンをラ�
 delete app version mfp MyApp iPhone 1.1
 ```
 
-このコマンドは、[アプリケーション・バージョン (DELETE) (Application Version
-(DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST サービスに基づいています。
+このコマンドは、[アプリケーション・バージョン (DELETE) (Application Version (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST サービスに基づいています。
 
 #### `app` コマンド接頭部
 {: #the-app-command-prefix }
@@ -819,14 +764,11 @@ delete app version mfp MyApp iPhone 1.1
 
 #### `app show license-config` コマンド
 {: #the-app-show-license-config-command }
-`app
-show license-config` コマンドは、アプリケーションのトークン
-・ライセンス構成を表示します。
+`app show license-config` コマンドは、アプリケーションのトークン・ライセンス構成を表示します。
 
 構文: `app [runtime-name] app-name show license-config`
 
 オブジェクトの後に以下のオプションを取ります。
-
 
 | 引数 | 説明 | 
 |----------|-------------|
@@ -838,16 +780,11 @@ show license-config` コマンドは、アプリケーションのトークン
 app mfp MyApp show license-config
 ```
 
-このコマンドは、
-[
-アプリケーション・ライセンス構成 (GET) (Application license
-configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST サービスに基づいています。
+このコマンドは、[ アプリケーション・ライセンス構成 (GET) (Application license configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST サービスに基づいています。
 
 #### `app set license-config` コマンド
 {: #the-app-set-license-config-command }
-`app set
-license-config` コマンドは、アプリケーションのトークン・
-ライセンス構成を指定します。
+`app set license-config` コマンドは、アプリケーションのトークン・ライセンス構成を指定します。
 
 構文: `app [runtime-name] app-name set license-config app-type license-type`
 
@@ -868,8 +805,7 @@ app mfp MyApp iPhone 1.1 set license-config B2E APPLICATION
 
 #### `app delete license-config` コマンド
 {: #the-app-delete-license-config-command }
-`app
-delete license-config` コマンドは、アプリケーションのトークン・ライセンス構成をリセットします。つまり、構成を初期状態に戻します。
+`app delete license-config` コマンドは、アプリケーションのトークン・ライセンス構成をリセットします。つまり、構成を初期状態に戻します。
 
 構文: `app [runtime-name] app-name delete license-config`
 
@@ -879,13 +815,11 @@ delete license-config` コマンドは、アプリケーションのトークン
 app mfp MyApp iPhone 1.1 delete license-config
 ```
 
-このコマンドは、[ライセンス構成 (DELETE) (License configuration (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST
-サービスに基づいています。
+このコマンドは、[ライセンス構成 (DELETE) (License configuration (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST サービスに基づいています。
 
 #### `app version` コマンド接頭部
 {: #the-app-version-command-prefix }
-`app
-version` コマンド接頭部では、動詞の前に以下の引数を取ります。
+`app version` コマンド接頭部では、動詞の前に以下の引数を取ります。
 
 | 引数 | 説明 | 
 |----------|-------------|
@@ -896,8 +830,7 @@ version` コマンド接頭部では、動詞の前に以下の引数を取り�
 
 #### `app version get descriptor` コマンド
 {: #the-app-version-get-descriptor-command }
-`app
-version get descriptor` コマンドは、アプリケーションのバージョンのアプリケーション記述子を返します。
+`app version get descriptor` コマンドは、アプリケーションのバージョンのアプリケーション記述子を返します。
 
 構文: `app version [runtime-name] app-name environment version get descriptor [> tofile]`
 
@@ -913,8 +846,7 @@ version get descriptor` コマンドは、アプリケーションのバージ�
 app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descriptor.json
 ```
 
-このコマンドは、[アプリケーション記述子 (GET) (Application
-Descriptor (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST サービスに基づいています。
+このコマンドは、[アプリケーション記述子 (GET) (Application Descriptor (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST サービスに基づいています。
 
 #### `app version get web-resources` コマンド
 {: #the-app-version-get-web-resources-command }
@@ -938,7 +870,6 @@ app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 
 #### `app version set web-resources` コマンド
 {: #the-app-version-set-web-resources-command }
-
 `app version set web-resources` コマンドは、アプリケーションのバージョンの Web リソースを指定します。
 
 構文: `app version [runtime-name] app-name environment version set web-resources file`
@@ -954,16 +885,11 @@ app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 ```
 
-このコマンドは、
-[Web
-リソースのデプロイ (POST) (Deploy a web resource (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST
-サービスに基づいています。
+このコマンドは、[Web リソースのデプロイ (POST) (Deploy a web resource (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST サービスに基づいています。
 
 #### `app version get authenticity-data` コマンド
 {: #the-app-version-get-authenticity-data-command }
-
-`app version get authenticity-data` コマンドは、アプ
-リケーションのバージョンの認証データを返します。
+`app version get authenticity-data` コマンドは、アプリケーションのバージョンの認証データを返します。
 
 構文: `app version [runtime-name] app-name environment version get authenticity-data [> tofile]`
 
@@ -978,16 +904,11 @@ app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity_data
 ```
 
-このコマンドは、
-[
-ランタイム・リソースのエクスポート (GET) (Export runtime resources
-(GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST サービスに基づいています。
+このコマンドは、[ ランタイム・リソースのエクスポート (GET) (Export runtime resources (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST サービスに基づいています。
 
 #### `app version set authenticity-data` コマンド
 {: #the-app-version-set-authenticity-data-command }
-
-`app version set authenticity-data` コマンドは、アプ
-リケ ーションのバージョンの認証データを指定します。
+`app version set authenticity-data` コマンドは、アプリケ ーションのバージョンの認証データを指定します。
 
 構文: `app version [runtime-name] app-name environment version set authenticity-data file`
 
@@ -1011,14 +932,11 @@ app version mfp MyApp iPhone 1.1 set authenticity-data MyApp.ipa
 app version mfp MyApp android 1.1 set authenticity-data MyApp.apk
 ```
 
-このコマンドは、[アプリケーション認証データのデプロイ (POST) (Deploy Application Authenticity Data (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST サービスに基づ
-いています。
+このコマンドは、[アプリケーション認証データのデプロイ (POST) (Deploy Application Authenticity Data (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST サービスに基づいています。
 
 #### `app version delete authenticity-data` コマンド
 {: #the-app-version-delete-authenticity-data-command }
-
-`app version delete authenticity-data` コマンドは、
-アプ リケ ーションのバージョンの認証データを削除します。
+`app version delete authenticity-data` コマンドは、アプリケーションのバージョンの認証データを削除します。
 
 構文: `app version [runtime-name] app-name environment version delete authenticity-data`
 
@@ -1028,16 +946,11 @@ app version mfp MyApp android 1.1 set authenticity-data MyApp.apk
 app version mfp MyApp iPhone 1.1 delete authenticity-data
 ```
 
-このコマンドは、
-[
-アプリケーション認証性 (DELETE) (Application
-Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST サービスに基づいています。
+このコマンドは、[ アプリケーション認証性 (DELETE) (Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST サービスに基づいています。
 
 #### `app version show user-config` コマンド
 {: #the-app-version-show-user-config-command }
-
-`app version show user-config` コマンドは、アプリケ
-ーションのバージョンのユーザー構成を表示します。
+`app version show user-config` コマンドは、アプリケーションのバージョンのユーザー構成を表示します。
 
 構文: `app version [runtime-name] app-name environment version show user-config [--xml]`
 
@@ -1053,12 +966,10 @@ Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.
 app version mfp MyApp iPhone 1.1 show user-config
 ```
 
-このコマンドは、[アプリケーション構成 (GET) (Application Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-)
-REST サービスに基づいています。
+このコマンドは、[アプリケーション構成 (GET) (Application Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST サービスに基づいています。
 
 ### `app version set user-config` コマンド
 {: #the-app-version-set-user-config-command }
-
 `app version set user-config` コマンドは、アプリケーションのバージョンのユーザー構成か、またはこの構成内での単一プロパティーを指定します。
 
 構成全体の場合の構文: `app version [runtime-name] app-name environment version set user-config file`
@@ -1096,8 +1007,7 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 
 #### `list devices` コマンド
 {: #the-list-devices-command }
-`list
-devices` コマンドは、ランタイムのアプリケーションと接触のあるデバイスのリストを返します。
+`list devices` コマンドは、ランタイムのアプリケーションと接触のあるデバイスのリストを返します。
 
 構文: `list devices [runtime-name][--query query]`
 
@@ -1107,7 +1017,6 @@ devices` コマンドは、ランタイムのアプリケーションと接触�
 |----------|-------------|
 | runtime-name | ランタイムの名前。 | 
 | query | 検索対象の分かりやすい名前またはユーザー ID。このパラメーターには、検索対象のストリングを指定します。このストリングが含まれる (大/小文字を区別しないマッチングによって)、分かりやすい名前またはユーザー ID を持つすべてのデバイスが返されます。 | 
-
 
 `list devices` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
@@ -1129,8 +1038,7 @@ list-devices mfp --query=john
 
 #### `remove device` コマンド
 {: #the-remove-device-command }
-`remove
-device` コマンドは、ランタイムのアプリケーションと接触のあるデバイスに関するレコードを消去します。
+`remove device` コマンドは、ランタイムのアプリケーションと接触のあるデバイスに関するレコードを消去します。
 
 構文: `remove device [runtime-name] id`
 
@@ -1160,8 +1068,7 @@ remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 
 #### `device set status` コマンド
 {: #the-device-set-status-command }
-`device
-set status` コマンドは、ランタイムの有効範囲でデバイスの状況を変更します。
+`device set status` コマンドは、ランタイムの有効範囲でデバイスの状況を変更します。
 
 構文: `device [runtime-name] id set status new-status`
 
@@ -1189,8 +1096,7 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED
 
 #### `device set appstatus` コマンド
 {: #the-device-set-appstatus-command }
-`device
-set appstatus` コマンドは、ランタイム内のアプリケーションに関して、デバイスの状況を変更します。
+`device set appstatus` コマンドは、ランタイム内のアプリケーションに関して、デバイスの状況を変更します。
 
 構文: `device [runtime-name] id set appstatus app-name new-status`
 
@@ -1242,12 +1148,8 @@ show info
 `show versions` コマンドは、各種コンポーネントの {{site.data.keys.product_adj }} バージョンを表示します。
 
 * **mfpadmVersion**: **which mfp-ant-deployer.jar** が取得される {{site.data.keys.mf_server }} の正確なバージョン番号。
-* **productVersion**:
-**mfp-admin-service.war** が取得される
-{{site.data.keys.mf_server }}
-の正確なバージョン番号。
-* **mfpAdminVersion**: **mfp-admin-service.war** のみの正確なビルド・バー
-ジョン番号。
+* **productVersion**: **mfp-admin-service.war** が取得される {{site.data.keys.mf_server }} の正確なバージョン番号。
+* **mfpAdminVersion**: **mfp-admin-service.war** のみの正確なビルド・バージョン番号。
 
 構文: `show versions`
 
@@ -1265,10 +1167,7 @@ show versions
 
 #### `show diagnostics` コマンド
 {: #the-show-diagnostics-command }
-
-`show diagnostics` コマンドは、データベースや補助サービスの可用性など、{{site.data.keys.product_adj }}
-管理サービスの正しい運用に必要な各種コンポーネントの状況を表示します。
-
+`show diagnostics` コマンドは、データベースや補助サービスの可用性など、{{site.data.keys.product_adj }} 管理サービスの正しい運用に必要な各種コンポーネントの状況を表示します。
 
 構文: `show diagnostics`
 
@@ -1286,8 +1185,7 @@ show diagnostics
 
 #### `unlock` コマンド
 {: #the-unlock-command }
-`unlock` コマンドは汎用ロックをリリースします。破棄する動作の一部は
-、同じ構成データの同時修正を防ぐために、このロックを取得します。まれに、そのような動作が中断されると、ロックはロック状態のままとなり、それ以上の破棄操作が不可能になります。このような状況でロックをリリースするには、unlock コマンドを使用してください。
+`unlock` コマンドは汎用ロックをリリースします。破棄する動作の一部は、同じ構成データの同時修正を防ぐために、このロックを取得します。まれに、そのような動作が中断されると、ロックはロック状態のままとなり、それ以上の破棄操作が不可能になります。このような状況でロックをリリースするには、unlock コマンドを使用してください。
 
 **例**
 
@@ -1305,8 +1203,7 @@ unlock
 
 | オプション | 説明 | 
 |--------|-------------|
-| --in-database	| MBeans 経由の代わりにデータベースを検索するかどうか。
- | 
+| --in-database	| MBeans 経由の代わりにデータベースを検索するかどうか。 | 
 | --xml | 表形式の出力の代わりに、XML 出力を生成します。 | 
 
 **例**
@@ -1339,8 +1236,7 @@ list runtimes --in-database
 |--------|-------------|
 | --xml | 表形式の出力の代わりに、XML 出力を生成します。 | 
 
-このコマンドは、
-[Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST サービスに基づいています。
+このコマンドは、[Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST サービスに基づいています。
 
 **例**
 
@@ -1350,10 +1246,7 @@ show runtime mfp
 
 #### `delete runtime` コマンド
 {: #the-delete-runtime-command }
-`delete
-runtime` コマンドは、
-ランタイム (そのアプリケーションとアダプターを含む) をデータベースから削除します。
-ランタイムを削除できるのは、その Web アプリケーションが停止している場合のみです。
+`delete runtime` コマンドは、ランタイム (そのアプリケーションとアダプターを含む) をデータベースから削除します。ランタイムを削除できるのは、その Web アプリケーションが停止している場合のみです。
 
 構文: `delete runtime [runtime-name] condition`
 
@@ -1400,7 +1293,6 @@ list farm-members mfp
 
 #### `remove farm-member` コマンド
 {: #the-remove-farm-member-command }
-
 `remove farm-member` コマンドは、指定されたランタイムがデプロイされているファーム・メンバーのリストから特定のサーバーを削除します。サーバーが使用不可になったとき、または切断されたときに、このコマンドを使用します。
 
 構文: `remove farm-member [runtime-name] server-id`
@@ -1411,7 +1303,6 @@ list farm-members mfp
 |----------|-------------|
 | runtime-name | ランタイムの名前。 | 
 | server-id | サーバーの ID。 | 
-
 
 `remove farm-member` コマンドは、オブジェクトの後に以下のオプションを取ります。
 
