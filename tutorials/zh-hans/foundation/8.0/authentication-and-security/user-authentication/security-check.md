@@ -1,35 +1,35 @@
 ---
 layout: tutorial
-title: Implementing the UserAuthenticationSecurityCheck Class
-breadcrumb_title: Security Check
+title: 实现 UserAuthenticationSecurityCheck 类
+breadcrumb_title: 安全性检查
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Download Security Checks
+  - name: 下载安全性检查
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-This abstract class extends `CredentialsValidationSecurityCheck` and builds upon it to fit the most common use-cases of simple user authentication. In addition to validating the credentials, it creates a **user identity** that is accessible from various parts of the framework, allowing you to identify the current user. Optionally, `UserAuthenticationSecurityCheck` also provides **Remember Me** capabilities.
+此抽象类扩展 `CredentialsValidationSecurityCheck`，且基于其而构建以适合最常见的简单用户认证用例。除了验证凭证，它还创建了可从框架的各个部分访问的**用户身份**，从而使您能够标识当前用户。（可选）`UserAuthenticationSecurityCheck` 还提供**记住我**功能。
 
-This tutorial uses the example of a security check that asks for a user name and password, and uses the user name to represent an authenticated user.
+本教程使用的安全性检查示例会请求用户名和密码，并使用用户名来表示已认证的用户。
 
-**Prerequisites:** Make sure to read the [CredentialsValidationSecurityCheck](../../credentials-validation/) tutorial.
+**先决条件：**确保阅读 [CredentialsValidationSecurityCheck](../../credentials-validation/) 教程。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Creating the Security Check](#creating-the-security-check)
-* [Creating the Challenge](#creating-the-challenge)
-* [Validating the user credentials](#validating-the-user-credentials)
-* [Creating the AuthenticatedUser object](#creating-the-authenticateduser-object)
-* [Adding RememberMe functionality](#adding-rememberme-functionality)
-* [Configuring the security check](#configuring-the-security-check)
-* [Sample security check](#sample-security-check)
+* [创建安全性检查](#creating-the-security-check)
+* [创建验证问题](#creating-the-challenge)
+* [验证用户凭证](#validating-the-user-credentials)
+* [创建 AuthenticatedUser 对象](#creating-the-authenticateduser-object)
+* [添加 RememberMe 功能](#adding-rememberme-functionality)
+* [配置安全性检查](#configuring-the-security-check)
+* [样本安全性检查](#sample-security-check)
 
-## Creating the Security Check
+## 创建安全性检查
 {: #creating-the-security-check }
-[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck`.
+[创建 Java 适配器](../../../adapters/creating-adapters)，并添加名为 `UserLogin` 且可扩展 `UserAuthenticationSecurityCheck` 的 Java 类。
 
 ```java
 public class UserLogin extends UserAuthenticationSecurityCheck {
@@ -51,9 +51,9 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 }
 ```
 
-## Creating the challenge
+## 创建验证问题
 {: #creating-the-challenge }
-The challenge is exactly the same as the one described in [Implementing the CredentialsValidationSecurityCheck](../../credentials-validation/security-check/).
+验证问题与[实现 CredentialsValidationSecurityCheck](../../credentials-validation/security-check/) 中描述的内容完全相同。
 
 ```java
 @Override
@@ -65,11 +65,11 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
-## Validating the user credentials
+## 验证用户凭证
 {: #validating-the-user-credentials }
-When the client sends the challenge answer, the answer is passed to `validateCredentials` as a `Map`. Use this method to implement your logic. The method returns `true` if the credentials are valid.
+在客户机发送验证问题答案时，此答案会作为 `Map` 传递至 `validateCredentials`。使用此方法来实施您的逻辑。如果凭证是有效的，那么该方法将返回 `true`。
 
-In this example, credentials are considered "valid" when`username` and `password` are the same:
+在此示例中，在 `username` 和 `password` 相同时，凭证被认为是“有效”的：
 
 ```java
 @Override
@@ -91,14 +91,14 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 }
 ```
 
-## Creating the AuthenticatedUser object
+## 创建 AuthenticatedUser 对象
 {: #creating-the-authenticateduser-object }
-The `UserAuthenticationSecurityCheck` class stores a representation of the current client (user, device, application) in persistent data, allowing you to retrieve the current user in various parts of your code, such as the challenge handlers or the adapters.
-Users are represented by an instance of the class `AuthenticatedUser`. Its constructor takes the `id`, `displayName`, and `securityCheckName` parameters.
+`UserAuthenticationSecurityCheck` 类在持久数据中存储当前客户机（用户、设备和应用程序）的表示，使您能够在代码的各个部分中检索当前用户，例如，验证问题处理程序或适配器。
+通过类 `AuthenticatedUser` 的实例来表示用户。其构造方法采用 `id`、`displayName` 和 `securityCheckName` 参数。
 
-This example uses `username` for both the `id` and `displayName` parameters.
+此示例针对 `id` 和 `displayName` 参数使用 `username`。
 
-1. First, modify the `validateCredentials` method to save the `username` argument:
+1. 首先，修改 `validateCredentials` 方法以保存 `username` 自变量：
 
    ```java
    private String userId, displayName;
@@ -124,7 +124,7 @@ This example uses `username` for both the `id` and `displayName` parameters.
    }
    ```
 
-2. Then, override the `createUser` method to return a new instance of `AuthenticatedUser`:
+2. 然后，覆盖 `createUser` 方法以返回 `AuthenticatedUser` 的新实例：
 
    ```java
    @Override
@@ -133,36 +133,36 @@ This example uses `username` for both the `id` and `displayName` parameters.
    }
    ```
 
-You can use `this.getName()` to get the current security check name.
+您可以使用 `this.getName()` 来获取当前安全性检查名称。
 
-`UserAuthenticationSecurityCheck` calls your `createUser()` implementation after a successful `validateCredentials`.
+在成功的 `validateCredentials` 之后，`UserAuthenticationSecurityCheck` 会调用 `createUser()` 实现。
 
-### Storing attributes in the AuthenticatedUser
+### 在 AuthenticatedUser 中存储属性
 {: #storing-attributes-in-the-authenticateduser }
-`AuthenticatedUser` has an alternate constructor:
+`AuthenticatedUser` 具有一个替代构造方法：
 
 ```java
 AuthenticatedUser(String id, String displayName, String securityCheckName, Map<String, Object> attributes);
 ```
 
-This constructor adds a `Map` of custom attributes to be stored with the user representation. The map can be used to store additional information such as a profile picture, a website, etc. This information is accessible to the client side (challenge handler) and the resource (using introspection data).
+此构造方法添加要使用用户表示存储的定制属性的 `Map`。映射可用于存储其他信息，例如，个人档案图片、Web 站点等。此信息可供客户机端（验证问题处理程序）和资源（使用自省数据）访问。
 
-> **Note:**
-> The attributes `Map` must contain only objects of types/classes bundled in the Java library (such as `String`, `int`, `Map`, etc), and **not** custom classes.
+> **注：**
+>属性 `Map` 必须仅包含 Java 库中绑定的类型/类对象（例如，`String`、`int` 和 `Map` 等），而**不能**包含定制类。
 
-## Adding RememberMe functionality
+## 添加 RememberMe 功能
 {: #adding-rememberme-functionality }
-By default, `UserAuthenticationSecurityCheck` uses the `successStateExpirationSec` property to determine how long the success state lasts. This property is inherited from `CredentialsValidationSecurityCheck`.
+缺省情况下，`UserAuthenticationSecurityCheck` 使用 `successStateExpirationSec` 属性来确定成功状态的持续时间。此属性继承自 `CredentialsValidationSecurityCheck`。
 
-If you want to allow users to stay logged-in past the `successStateExpirationSec` value, `UserAuthenticationSecurityCheck` adds this capability.
+如果想要允许用户保持登录的时间超过 `successStateExpirationSec` 值，那么 `UserAuthenticationSecurityCheck` 可添加此功能。
 
-`UserAuthenticationSecurityCheck` adds a property called `rememberMeDurationSec` whose default value is `0`: by default, users are remembered for **0 seconds**, which means that by default, the feature is disabled. Change this value to a number that makes sense for your application (a day, a week, a month...).
+`UserAuthenticationSecurityCheck` 会添加一个名为 `rememberMeDurationSec` 的属性，其缺省值为 `0`：缺省情况下，将记住用户 **0 秒**，这意味着缺省情况下禁用此功能。将该值更改为对您的应用程序有意义的数字（一天、一周、一个月……）。
 
-You can also manage the feature by overriding the `rememberCreatedUser()` method, which returns `true` by default, meaning that the feature is active by default (provided that you changed the duration property).
+您还可以通过覆盖 `rememberCreatedUser()` 方法来管理该功能，此方法缺省情况下返回 `true`，表示缺省情况下激活此功能（前提是更改了持续时间属性）。
 
-In this example, the client decides to enable/disable the **RememberMe** feature by sending a `boolean` value as part of the submitted credentials.
+在此示例中，客户通过发送 `boolean` 值作为所提交凭证的一部分来决定启用/禁用 **RememberMe** 功能。
 
-1. First, modify the `validateCredentials` method to save the `rememberMe` choice:
+1. 首先，修改 `validateCredentials` 方法以保存 `rememberMe` 选择：
 
    ```java
    private String userId, displayName;
@@ -195,7 +195,7 @@ In this example, the client decides to enable/disable the **RememberMe** feature
    }
    ```
 
-2. Then, override the `rememberCreatedUser()` method:
+2. 然后，覆盖 `rememberCreatedUser()` 方法：
 
    ```java
    @Override
@@ -204,9 +204,9 @@ In this example, the client decides to enable/disable the **RememberMe** feature
    }
    ```
 
-## Configuring the security check
+## 配置安全性检查
 {: #configuring-the-security-check }
-In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
+在 **adapter.xml** 文件中，添加 `<securityCheckDefinition>` 元素：
 
 ```xml
 <securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">
@@ -216,12 +216,11 @@ In the **adapter.xml** file, add a `<securityCheckDefinition>` element:
   <property name="rememberMeDurationSec" defaultValue="120" description="How long is the user remembered by the RememberMe feature (seconds)."/>
 </securityCheckDefinition>
 ```
-As mentioned previously, `UserAuthenticationSecurityCheck` inherits all the `CredentialsValidationSecurityCheck` properties, such as `blockedStateExpirationSec`, `successStateExpirationSec`, etc.
+如前所述，`UserAuthenticationSecurityCheck` 继承所有 `CredentialsValidationSecurityCheck` 属性，例如，`blockedStateExpirationSec` 和 `successStateExpirationSec` 等。
+此外，您还可以配置 `rememberMeDurationSec` 属性。
 
-In addition, you can also configure a `rememberMeDurationSec` property.
-
-## Sample Security Check
+## 样本安全性检查
 {: #sample-security-check }
-[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+[下载](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80)安全性检查 Maven 项目。
 
-The Maven project contains an implementation of `UserAuthenticationSecurityCheck`.
+Maven 项目包含 `UserAuthenticationSecurityCheck` 的实现。

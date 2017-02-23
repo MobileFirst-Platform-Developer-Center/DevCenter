@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: UserAuthenticationSecurityCheck
-breadcrumb_title: User Authentication
+breadcrumb_title: 用户认证
 relevantTo: [android,ios,windows,javascript]
 show_children: true
 show_disqus: false
@@ -9,13 +9,13 @@ print_pdf: false
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-The **UserAuthenticationSecurityCheck** class inherits all the features of **CredentialsValidationSecurityCheck** and adds:
+**UserAuthenticationSecurityCheck** 类继承 **CredentialsValidationSecurityCheck** 的所有功能并添加：
 
-- The concept of an `AuthenticatedUser`, creating a user identity.
-- An optional **Remember Me** capability
+- 创建用户身份的 `AuthenticatedUser` 概念。
+- 可选的**记住我**功能
 
-> **Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) tutorial before continuing.
+> **先决条件：**在继续前先阅读 [CredentialsValidationSecurityCheck](../credentials-validation) 教程。
 
-Select a tutorial:
+选择教程：

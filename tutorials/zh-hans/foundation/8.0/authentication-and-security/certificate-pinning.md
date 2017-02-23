@@ -1,47 +1,47 @@
 ---
 layout: tutorial
-title: Certificate Pinning
+title: 证书锁定
 relevantTo: [ios,android,cordova]
 weight: 13
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-When communicating over public networks it is essential to send and receive information securely. The protocol widely used to secure these communications is SSL/TLS. (SSL/TLS refers to Secure Sockets Layer or to its successor, TLS, or Transport Layer Security). SSL/TLS uses digital certificates to provide authentication and encryption. To trust that a certificate is genuine and valid, it is digitally signed by a root certificate belonging to a trusted certificate authority (CA). Operating systems and browsers maintain lists of trusted CA root certificates so that they can easily verify certificates that the CAs have issued and signed.
+通过公用网络进行通信时，必须安全地发送和接收信息。广泛用于保护这些通信的协议是 SSL/TLS。（SSL/TLS 指的是安全套接字层或其后续项 TLS，即传输层安全性）。SSL/TLS 使用数字证书来提供认证和加密。要信任某证书真实有效，该证书必须通过可信认证中心 (CA) 的根证书进行数字签名。操作系统和浏览器保留有可信 CA 根证书的列表，以便它们可以轻松验证由这些 CA 发布和签署的证书。
 
-Protocols that rely on certificate chain verification, such as SSL/TLS, are vulnerable to a number of dangerous attacks, including man-in-the-middle attacks, which occur when an unauthorized party is able to view and modify all traffic passing between the mobile device and the backend systems.
+依赖于证书链验证的协议（如 SSL/TLS）容易遭受多种危险的攻击（包括中间人攻击），这种情况会在未经授权方能够查看和修改在移动设备与后端系统间传递的所有流量时发生。
 
-{{ site.data.keys.product_full }} provides an API to enable **certificate pinning**. It is supported in native iOS, native Android, and cross-platform Cordova {{ site.data.keys.product_adj }} applications.
+{{ site.data.keys.product_full }} 提供一个用于启用**证书锁定**的 API。它在本机 iOS、本机 Android 和跨平台 Cordova {{ site.data.keys.product_adj }} 应用程序中受支持。
 
-## Certificate pinning process
+## 证书锁定过程
 {: #certificate-pinning-process }
-Certificate pinning is the process of associating a host with its expected public key. Because you own both the server-side code and the client-side code, you can configure your client code to accept only a specific certificate for your domain name, instead of any certificate that corresponds to a trusted CA root certificate recognized by the operating system or browser.
+证书锁定是将主机与其期望的公用密钥关联的过程。由于您同时拥有服务器端代码和客户机端代码，因此可以将客户机代码配置为仅接受用于自己域名的特定证书，而不接受与操作系统或浏览器认可的可信 CA 根证书对应的任何证书。
 
-A copy of the certificate is placed in the application and is used during the SSL handshake (the first request to the server). The {{ site.data.keys.product_adj }} client SDK verifies that the public key of the server certificate matches the public key of the certificate that is stored in the app.
+证书副本将放入应用程序中，并在 SSL 握手（针对服务器的第一条请求）期间使用。{{ site.data.keys.product_adj }} 客户机 SDK 会验证服务器证书的公用密钥是否与应用程序中存储的证书的公用密钥匹配。
 
-#### Important
+#### 重要信息
 {: #important }
-* Some mobile operating systems might cache the certificate validation check result. Therefore, your code should call the certificate pinning API method **before** making a secured request. Otherwise, any subsequent request might skip the certificate validation and pinning check.
-* Make sure to use only {{ site.data.keys.product }} APIs for all communications with the related host, even after the certificate pinning. Using third-party APIs to interact with the same host might lead to unexpected behavior, such as caching of a non-verified certificate by the mobile operating system.
-* Calling the certificate pinning API method a second time overrides the previous pinning operation.
+* 某些移动操作系统可能会高速缓存证书验证检查结果。因此，在发出安全请求**之前**，您的代码应调用证书锁定 API 方法。否则，任何后续请求可能会跳过证书验证和锁定检查。
+* 确保只使用 {{ site.data.keys.product }} API 与相关主机进行所有通信，即使在证书锁定后也如此。使用第三方 API 与相同的主机交互可能会导致发生意外的行为，如移动操作系统对未验证证书进行高速缓存。
+* 再次调用证书锁定 API 方法会覆盖先前的锁定操作。
 
-If the pinning process is successful, the public key inside the provided certificate is used to verify the integrity of the {{ site.data.keys.mf_server }} certificate during the secured request SSL/TLS handshake. If the pinning process fails, all SSL/TLS requests to the server are rejected by the client application.
+如果锁定过程成功，那么在安全请求 SSL/TLS 握手期间，将使用所提供证书内的公用密钥来验证 {{ site.data.keys.mf_server }} 证书的完整性。如果锁定过程失败，那么客户机应用程序将拒绝针对服务器的所有 SSL/TLS 请求。
 
-## Certificate setup
+## 证书设置
 {: #certificate-setup }
-You must use a certificate purchased from a certificate authority. Self-signed certificates are **not supported**. For compatibility with the supported environments, make sure to use a certificate that is encoded in **DER** (Distinguished Encoding Rules, as defined in the International Telecommunications Union X.690 standard) format.
+您必须使用从认证中心购买的证书。自签名证书**不受支持**。为了与受支持的环境保持兼容，请确保使用以 **DER**（特异编码规则，根据国际电信联盟 X.690 标准定义）格式编码的证书。
 
-The certificate must be placed in both the {{ site.data.keys.mf_server }} and in your application. Place the certificate as follows:
+证书必须放入 {{ site.data.keys.mf_server }} 和应用程序中。按如下方式放置证书：
 
-* In the {{ site.data.keys.mf_server }} (WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat): Consult the documentation for your specific application server for information about how to configure SSL/TLS and certificates.
-* In your application:
-    - Native iOS: add the certificate to the application **bundle**
-    - Native Android: place the certificate in the **assets** folder
-    - Cordova: place the certificate in the **app-name\www\certificates** folder (if the folder is not already there, create it)
+* 在 {{ site.data.keys.mf_server }}（WebSphere Application Server、WebSphere Application Server Liberty 或 Apache Tomcat）中：参考您的特定应用程序服务器的文档，以获取有关如何配置 SSL/TLS 和证书的信息。
+* 在您的应用程序中：
+    - 本机 iOS：向应用程序**捆绑软件**添加证书
+    - 本机 Android：将证书放入 **assets** 文件夹中
+    - Cordova：将证书放入 **app-name\www\certificates** 文件夹中（如果此文件夹尚不存在，请予以创建）
 
-## Certificate pinning API
+## 证书锁定 API
 {: #certificate-pinning-api }
-Certificate pinning consists of a single API method, that has a parameter `certificateFilename`, where `certificateFilename` is the name of the certificate file.
+证书锁定包含一个 API 方法，该方法具有 `certificateFilename` 参数，其中 `certificateFilename` 是证书文件的名称。
 
 ### Android
 {: #android }
@@ -49,30 +49,30 @@ Certificate pinning consists of a single API method, that has a parameter `certi
 WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");
 ```
 
-The certificate pinning method will throw an exception in two cases:
+在以下两种情况下，证书锁定方法将抛出异常：
 
-* The file does not exist
-* The file is in the wrong format
+* 文件不存在
+* 文件格式错误
 
 ### iOS
 {: #ios }
-**In Objective-C:**
+**在 Objective-C 中：**
 
 ```objc
 [[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFile:@"myCertificate.cer"];
 
 ```
 
-**In Swift:**
+**在 Swift 中：**
 
 ```swift
 WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
 ```
 
-The certificate pinning method will raise an exception in two cases:
+在以下两种情况下，证书锁定方法将引发异常：
 
-* The file does not exist
-* The file is in the wrong format
+* 文件不存在
+* 文件格式错误
 
 ### Cordova
 {: #cordova }
@@ -81,13 +81,13 @@ WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onF
 
 ```
 
-The certificate pinning method returns a promise:
+证书锁定方法会返回预期结果：
 
-* The certificate pinning method will call the onSuccess method in case of successful pinning.
-* The certificate pinning method will trigger the onFailure callback in two cases:
-* The file does not exist
-* The file is in the wrong format
+* 成功锁定时，证书锁定方法将调用 onSuccess 方法。
+* 在以下两种情况下，证书锁定方法将触发 onFailure 回调：
+* 文件不存在
+* 文件格式错误
 
-Later, if a secured request is made to a server whose certificate is not pinned, the `onFailure` callback of the specific request (for example, `obtainAccessToken` or `WLResourceRequest`) is called.
+之后，如果对未锁定其证书的服务器发出安全请求，那么将调用特定请求（例如，`obtainAccessToken` 或 `WLResourceRequest`）的 `onFailure` 回调。
 
-> Learn more about the certificate pinning API method in the [API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_client_api.html)
+> 在 [API 参考](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_client_api.html)中了解有关证书锁定 API 方法的更多信息

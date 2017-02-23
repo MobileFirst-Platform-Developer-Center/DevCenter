@@ -1,43 +1,43 @@
 ---
 layout: tutorial
-title: Windows .NET Message Inspector
-breadcrumb_title: Windows .NET Message Inspector
+title: Windows .NET 消息检验器
+breadcrumb_title: Windows .NET 消息检验器
 relevantTo: [android,ios,windows,javascript]
 weight: 4
 downloads:
-  - name: Download sample
+  - name: 下载样本
     url: https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-This tutorial will show how to protect a simple Windows .NET resource, `GetBalanceService`, using a scope (`accessRestricted`).
-In the sample we will protect a service which is self-hosted by a console application called DotNetTokenValidator.
+本教程显示如何使用作用域 (`accessRestricted`) 来保护简单 Windows .NET 资源 `GetBalanceService`。
+在样本中，我们将保护名为 DotNetTokenValidator 的控制台应用程序自托管的服务。
 
-First we will define a **Message Inspector** that will help us controlling the incoming request to the `GetBalanceService` resource.
-Using this Message Inspector we will examine the incoming request and validate that it provides all the necessary headers required by **{{ site.data.keys.product_adj }} Authorization Server**.
+首先，我们将定义**消息检验器**，用于帮助我们控制 `GetBalanceService` 资源的入局请求。
+使用此消息检验器，我们将检查入局请求并验证其是否提供 **{{ site.data.keys.product_adj }} 授权服务器**所需的所有必需头。
 
-**Prerequesites:**
+**先决条件：**
 
-* Make sure to read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product_adj }}security framework](../../).
+* 确保阅读[使用 {{ site.data.keys.mf_server }} 来认证外部资源](../)教程。
+* 了解 [{{ site.data.keys.product_adj }} 安全框架](../../)。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Create and configure WCF Web HTTP Service](#create-and-configure-wcf-web-http-service)
-* [Define a Message Inspector](#define-a-message-inspector)
-* [Message Inspector Implementation](#message-inspector-implementation)
-    * [Pre-process Validation](#pre-process-validation)
-    * [Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server](#obtain-access-token-from-mobilefirst-authorization-server)
-    * [Send request to Introspection Endpoint with client token](#send-request-to-introspection-endpoint-with-client-token)
-    * [Post-process Validation](#post-process-validation)
+* [创建和配置 WCF Web HTTP 服务](#create-and-configure-wcf-web-http-service)
+* [定义消息检验器](#define-a-message-inspector)
+* [消息检验器实施](#message-inspector-implementation)
+    * [预处理验证](#pre-process-validation)
+    * [从 {{ site.data.keys.product_adj }} 授权服务器获取访问令牌](#obtain-access-token-from-mobilefirst-authorization-server)
+    * [使用客户机令牌将请求发送到自省端点](#send-request-to-introspection-endpoint-with-client-token)
+    * [处理后验证](#post-process-validation)
 
-## Create and configure WCF Web HTTP Service
+## 创建和配置 WCF Web HTTP 服务
 {: #create-and-configure-wcf-web-http-service }
-First we will create a **WCF service** and call it `GetBalanceService` which we will protect later by a **message inspector**.
-In our example we are using a console application as a hosting program for the service.
+首先，我们将创建 **WCF 服务**并称之为 `GetBalanceService`，稍后将通过**消息检验器**进行保护。
+在示例中，我们将使用控制台应用程序作为服务的托管程序。
 
-Here is the code of `getBalance` (the protected resource):
+以下是 `getBalance`（受保护资源）的代码：
 
 ```csharp
 public class GetBalanceService : IGetBalanceService {
@@ -49,7 +49,7 @@ public class GetBalanceService : IGetBalanceService {
 }
 ```
 
-We should also define a `ServiceContract`:
+我们也应定义 `ServiceContract`：
 
 ```csharp
 [ServiceContract]
@@ -64,7 +64,7 @@ public interface IGetBalanceService
 }
 ```
 
-Now that we have our service ready we can configure how it will be used by the host application. This is done in the App.config file as follows:
+现在，我们已准备好服务，可配置主机应用程序如何使用服务。在 App.config 文件中完成此操作，如下所示：
 
 ```xml
 <service behaviorConfiguration="Default" name="DotNetTokenValidator.GetBalanceService">
@@ -76,7 +76,7 @@ Now that we have our service ready we can configure how it will be used by the h
   </host>
 </service>
 ```
-Lastly we should run it from the hosting program `Main` method:
+最后，我们应通过托管程序 `Main` 方法运行：
 
 ```csharp
 static void Main(string[] args) {
@@ -99,18 +99,18 @@ static void Main(string[] args) {
 }
 ```
 
-> For More information about WCF REST services refer to [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
+> 有关 WCF REST 服务的更多信息，请参阅 [Create a Basic WCF Web HTTP Service](https://msdn.microsoft.com/en-us/library/bb412178(v=vs.100).aspx)
 
-## Define a Message Inspector
+## 定义消息检验器
 {: #define-a-message-inspector }
-Before we dive into the validation process we must create and define a **message inspector** which we will use to protect the resource (the service endpoint).
-A message inspector is an extensibility object that can be used in the service to inspect and alter messages after they are received or before they are sent. Service message inspectors should implement the `IDispatchMessageInspector` interface:
+在开始验证过程之前，必须创建并定义用于保护资源（服务端点）的**消息检验器**。
+消息检验器是一个扩展性对象，可在服务中用于在接收消息之后或者在发送消息之前检查和更改消息。服务消息检验器应实现 `IDispatchMessageInspector` 接口：
 
 ```csharp
 public class MyInspector : IDispatchMessageInspector
 ```
 
-Any service message inspector must implement the two `IDispatchMessageInspector` methods `AfterReceiveRequest` and `BeforeSendReply`:
+任何服务消息检验器都必须实现两个 `IDispatchMessageInspector` 方法 `AfterReceiveRequest` 和 `BeforeSendReply`：
 
 ```csharp
 public class MyInspector : IDispatchMessageInspector {
@@ -125,8 +125,8 @@ public class MyInspector : IDispatchMessageInspector {
 }
 ```
 
-After creating the message inspector it should be defined to protect a certain endpoint. This is done by using behaviors. A **behavior** is a class that changes the behavior of the service model runtime by changing the default configuration or adding extensions (such as message inspectors) to it.
-This is done using 2 classes: one that configures the message inspector to protect the application endpoint,  and the other to return this behavior class instance and type.
+在创建消息检验器之后，应进行定义以保护特定端点。使用行为完成此操作。**行为**是一个类，通过更改缺省配置或添加扩展（例如，消息检验器）更改服务模型运行时的行为。
+使用 2 个类完成此操作：一个配置消息检验器以保护应用程序端点，另一个返回此行为类实例和类型。
 
 ```csharp
 public class MyCustomBehavior : IEndpointBehavior
@@ -153,7 +153,7 @@ public class MyCustomBehaviorExtension : BehaviorExtensionElement
 }
 ```
 
-In the `App.config` file we define a `behaviorExtension` and attach it to the behavior class we just created:
+在 `App.config` 文件中，我们定义 `behaviorExtension`，并将其附加到刚刚创建的行为类：
 
 ```xml
 <extensions>
@@ -163,7 +163,7 @@ In the `App.config` file we define a `behaviorExtension` and attach it to the be
 </extensions>
 ```
 
-Then we add this behaviorExtension to the webBehavior element that is configured in our service as endpoint behavior:
+然后，将此 behaviorExtension 添加到在服务中配置为端点行为的 webBehavior 元素：
 
 ```xml
 <behavior name="webBehavior">
@@ -172,8 +172,8 @@ Then we add this behaviorExtension to the webBehavior element that is configured
 </behavior>
 ```
 
-## Message Inspector Implementation
-First let's define some constants as class members in our message inspector: {{ site.data.keys.mf_server }} URL, our confidential client credentials and the `scope` that we will use to protect our service with. We can also define a static variable to keep the token received from {{ site.data.keys.product_adj }} Authorization server, so it will be available to all users:
+## 消息检验器实施
+首先，在消息检验器中，将一些常量定义为类成员：{{ site.data.keys.mf_server }} URL、保密客户机凭证以及将用于保护服务的 `scope`。我们还可以定义静态变量以保留从 {{ site.data.keys.product_adj }} 授权服务器收到的令牌，因此它将可用于所有用户：
 
 ```csharp
 private const string azServerBaseURL = "http://YOUR-SERVER-URL:9080/mfp/api/az/v1/";
@@ -183,7 +183,7 @@ private const string filterUserName = "USERNAME"; // Confidential Client Usernam
 private const string filterPassword = "PASSWORD";  // Confidential Client Secret
 ```
 
-Next we will create our `validateRequest` method which is the starting-point of the validation process that we will implement in our message inspector. Then we will add a call to this method inside the `AfterReceiveRequest` method we mentioned before:
+接下来将创建 `validateRequest` 方法，这是将在消息检验器中实施的验证过程的起点。然后，在之前提及的 `AfterReceiveRequest` 方法中添加对此方法的调用：
 
 ```csharp
 public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext) {
@@ -192,11 +192,11 @@ public object AfterReceiveRequest(ref Message request, IClientChannel channel, I
 }
 ```
 
-Inside `validateRequest` there are 3 main steps that we will implement:
+在 `validateRequest` 中，我们将实施 3 个主要步骤：
 
-1. **Pre-process validation** - check if the request has an **authorization header**, and if there is - is it starting with the **"Bearer"** prefix.
-2. **Get token** from {{ site.data.keys.product_adj }} Authorization Server - This token will be used to authenticate the client's token against {{ site.data.keys.product_adj }} Authorization Server.
-3. **Post-process validation** - check for **conflicts**, validate that the request sent the right **scope**, and check that the request is **active**.
+1. **预处理验证** - 检查请求是否具有**授权头**，并且如果存在，那么是否以**“Bearer”**前缀开头。
+2. 从 {{ site.data.keys.product_adj }} 授权服务器**获取令牌** - 此令牌将用于针对 {{ site.data.keys.product_adj }} 授权服务器认证客户机的令牌。
+3. **处理后验证** - 检查**冲突**，验证请求是否已发送正确的**作用域**，并检查请求是否为**活动**状态。
 
 ```csharp
 private void validateRequest(Message request)
@@ -226,16 +226,16 @@ private void validateRequest(Message request)
 }
 ```
 
-## Pre-process Validation
+## 预处理验证
 {: #pre-process-validation }
-The pre-process validation is done as part of the getClientTokenFromHeader() method.
-This process is based upon 2 checks:
+预处理验证是作为 getClientTokenFromHeader() 方法的一部分完成的。
+此过程基于 2 项检查：
 
-1. Check that the authorization header of the request is not empty.
-2. If it is not empty - check that the authorization header starts with the "Bearer " prefix.
+1. 检查请求的授权头是否不为空。
+2. 如果不为空，检查授权头是否以“Bearer”前缀开头。
 
-In both cases we should respond with an **Unauthorized response status** (401) and add the **WWW-Authenticate:Bearer** header.  
-After validating the authorization header this method returns the token received from the client application.
+在两种情况下，都应以**未经授权的响应状态** (401) 进行响应，并添加 **WWW-Authenticate:Bearer** 头。  
+在验证授权头之后，此方法将返回从客户机应用程序收到的令牌。
 
 ```csharp
 private string getClientTokenFromHeader(Message request)
@@ -267,7 +267,7 @@ private string getClientTokenFromHeader(Message request)
 }
 ```
 
-`returnErrorResponse` is a helper method that receives an httpStatusCode and a WebHeaderCollection, prepares the response and sends it back to the client application. After sending the response to the client application it completes the request.
+`returnErrorResponse` 是一个 helper 方法，用于接收 httpStatusCode 和 WebHeaderCollection、准备响应并将其发送回客户机应用程序。在将响应发送到客户机应用程序之后，它会完成该请求。
 
 ```csharp
 private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollection headers)
@@ -281,9 +281,9 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 }
 ```
 
-## Obtain Access Token from {{ site.data.keys.product_adj }} Authorization Server
-In order to authenticate the client token we should **obtain an access token as the message inspector** by making a request to the **token endpoint**.
-Later we will use this received token to pass the client token for introspection.
+## 从 {{ site.data.keys.product_adj }} 授权服务器获取访问令牌
+为认证客户机令牌，我们应通过针对**令牌端点**发出请求来**获取访问令牌作为消息检验器**。
+稍后，我们将使用此收到的令牌来传递客户机令牌以进行自省。
 
 ```csharp
 private string getIntrospectionToken()
@@ -302,8 +302,8 @@ private string getIntrospectionToken()
   postParameters.Add("grant_type", "client_credentials");
   postParameters.Add("scope", "authorization.introspect");
 
-  try {
-    HttpWebResponse resp = sendRequest(postParameters, "token", "Basic " + Base64Credentials);
+  try { 
+HttpWebResponse resp = sendRequest(postParameters, "token", "Basic " + Base64Credentials);
     Stream dataStream = resp.GetResponseStream();
     StreamReader reader = new StreamReader(dataStream);
     strResponse = reader.ReadToEnd();
@@ -319,8 +319,8 @@ private string getIntrospectionToken()
 }
 ```
 
-The `sendRequest` method is a helper method that is responsible for sending requests to {{ site.data.keys.product_adj }} Authorization server.  
-It is being used by `getIntrospectionToken` to send a request to the token endpoint, and by `introspectClientRequest` method to send a request to the introspection endpoint. This method returns an `HttpWebResponse` which we use in `getIntrospectionToken` method to extract the access_token from and store it as the message inspector token. In `introspectClientRequest` method it is used just to return the MFP authorization server response.
+`sendRequest` 方法是一个 helper 方法，负责将请求发送到 {{ site.data.keys.product_adj }} 授权服务器。  
+`getIntrospectionToken` 使用它将请求发送到令牌端点，`introspectClientRequest` 方法使用它将请求发送到自省端点。此方法返回 `HttpWebResponse`，在 `getIntrospectionToken` 方法中用于抽取 access_token，并将其存储为消息检验器令牌。在 `introspectClientRequest` 方法中，它仅用于返回 MFP 授权服务器响应。
 
 ```csharp
 private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, string endPoint, string authHeader) {
@@ -346,10 +346,10 @@ private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, s
 }
 ```
 
-## Send request to Introspection Endpoint with client token
+## 使用客户机令牌将请求发送到自省端点
 {: #send-request-to-introspection-endpoint-with-client-token }
-Now that we are authorized by {{ site.data.keys.product_adj }} Authorization Server we can **validate the client token** content. We send a request to the **Introspection endpoint**, adding the token we received in the previous step (`filterIntrospectionToken`) to the request header and the client token in the post data of the request.  
-Next we will examine the response from {{ site.data.keys.product_adj }} Authorization Server in `postProcess` method.
+现在，我们已获得 {{ site.data.keys.product_adj }} 授权服务器的授权，可**验证客户机令牌**内容。我们将请求发送到**自省端点**，将在先前步骤 (`filterIntrospectionToken`) 中收到的令牌添加到请求头，并在请求的发布数据中添加客户机令牌。  
+接下来，我们将在 `postProcess` 方法中检查来自 {{ site.data.keys.product_adj }} 授权服务器的响应。
 
 ```csharp
 private HttpWebResponse introspectClientRequest(string clientToken) {
@@ -362,10 +362,10 @@ private HttpWebResponse introspectClientRequest(string clientToken) {
 }
 ```
 
-## Post-process Validation
+## 处理后验证
 {: #post-process-validation }
-Before proceeding to the `postProcess` method we want to make sure that the response status is not **401 (Unauthorized)**.  
-401 (Unauthorized) response status at this point indicates that the message inspector token (`filterIntrospectionToken`) has expired. If the response status is 401 (Unauthorized) then we call `getIntrospectionToken` to get a new token for the message inspector and call `introspectClientRequest` again with the new token.
+在进入 `postProcess` 方法之前，我们想要确保响应状态不是 **401（未经授权）**。  
+此时的“401（未经授权）”响应状态指示消息检验器令牌 (`filterIntrospectionToken`) 已到期。如果响应状态为“401（未经授权）”，那么调用 `getIntrospectionToken` 以获取新的消息检验器令牌，并使用新令牌重新调用 `introspectClientRequest`。
 
 ```csharp
 if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -375,8 +375,8 @@ if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
 }
 ```
 
-The main purpose of the postProcess method is to examine the response we received from {{ site.data.keys.product_adj }}  Authorization Server, but before extracting and checking the response, we must **make sure that the response status is 200 (OK)**. If the response status is **409 (Conflict)** we should forward this response to the client application, otherwise we should throw an exception.  
-If the response status is 200 (OK) then we initialize the `AzResponse` class, which is a class defined to reprisent the {{ site.data.keys.product_adj }} Authorization Server response, with the current response. Then we check that the **response is active** and that it includes the right **scope**:
+postProcess 方法的主要目的是检查从 {{ site.data.keys.product_adj }} 授权服务器收到的响应，但是在抽取并检查响应之前，必须**确保响应状态为“200（正常）”**。如果响应状态为 **409（冲突）**，那么应将此响应转发到客户机应用程序，否则应抛出异常。  
+如果响应状态为“200（正常）”，那么初始化 `AzResponse` 类，这是定义为使用当前响应表示 {{ site.data.keys.product_adj }} 授权服务器响应的类。然后，检查**响应是否为“活动”状态**，并且包含正确的**作用域**：
 
 ```csharp
 private void postProcess(HttpWebResponse introspectionResponse)
@@ -395,10 +395,8 @@ private void postProcess(HttpWebResponse introspectionResponse)
     {
       throw new WebFaultException<string>("Authentication did not succeed, Please try again...", HttpStatusCode.BadRequest);
     }
-  }
-  else
-  {                
-    AzResponse azResp = new AzResponse(introspectionResponse); // Casting the response to an object
+  } else {
+AzResponse azResp = new AzResponse(introspectionResponse); // Casting the response to an object
     WebHeaderCollection webHeaderCollection = new WebHeaderCollection();
 
     if (!azResp.isActive)
@@ -415,15 +413,15 @@ private void postProcess(HttpWebResponse introspectionResponse)
 }
 ```
 
-## Sample application
+## 样本应用程序
 {: #sample-application }
-[Download the .NET message inspector sample](https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80).
+[下载 .NET 消息检验器样本](https://github.com/MobileFirst-Platform-Developer-Center/DotNetTokenValidator/tree/release80)。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-1. Use Visual Studio to open, build and run the sample as a service (run Visual Studio as an administrator).
-2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-4. Register the matching application.
-5. Map the `accessRestricted` scope to the security check.
-6. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. 使用 Visual Studio 以服务形式打开、构建和运行样本（以管理员身份运行 Visual Studio）。
+2. 确保[更新保密客户机](../#confidential-client)和 {{ site.data.keys.mf_console }} 中的密钥值。
+3. 部署安全性检查：**[UserLogin](../../user-authentication/security-check/)** 或 **[PinCodeAttempts](../../credentials-validation/security-check/)**。
+4. 注册匹配应用程序。
+5. 将 `accessRestricted` 作用域映射到安全性检查。
+6. 更新客户机应用程序以针对 servlet URL 生成 `WLResourceRequest`。

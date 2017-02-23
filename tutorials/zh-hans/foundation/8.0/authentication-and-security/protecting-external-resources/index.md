@@ -1,47 +1,47 @@
 ---
 layout: tutorial
-title: Using MobileFirst Server to authenticate external resources
-breadcrumb_title: Protecting External Resources
+title: 使用 MobileFirst Server 来认证外部资源
+breadcrumb_title: 保护外部资源
 relevantTo: [android,ios,windows,javascript]
 weight: 12
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Protected resources can run on the {{ site.data.keys.mf_server }} (such as **Adapters**), or on **external servers**. You can protect resources on external servers by using the validation modules that are provided with {{ site.data.keys.product }}.
+受保护资源可在 {{ site.data.keys.mf_server }}（例如，**适配器**）或**外部服务器**上运行。您可以使用 {{ site.data.keys.product }} 随附的验证模块来保护外部服务器上的资源。
 
-In this tutorial, you learn how to protect an external **resource server** by implementing a **filter** that validates a {{ site.data.keys.product_adj }} **access token**.  
-You can implement such protection either entirely with custom code, or by using one of the {{ site.data.keys.product }} helper libraries that encapsulate part of the flow.
+在此教程中，您将了解如何通过实施验证 {{ site.data.keys.product_adj }} **访问令牌**的**过滤器**来保护外部**资源服务器**。  
+您可以完全使用定制代码或者使用封装部分流程的一个 {{ site.data.keys.product }} helper 库来实施此类保护。
 
-**Prerequesite:**  
+**先决条件：**  
 
-* Understanding of the [{{ site.data.keys.product_adj }} security framework](../).
+* 了解 [{{ site.data.keys.product_adj }} 安全框架](../)。
 
-## Flow
+## 流程
 {: #flow }
-![Protecting external resources diagram](external_resources_flow.jpg)
+![保护外部资源图](external_resources_flow.jpg)
 
-The {{ site.data.keys.mf_server }} has a component called the **introspection endpoint** which is capable of validating and extracting data from a {{ site.data.keys.product_adj }} **access token**. This introspection endpoint is available via a REST API.
+{{ site.data.keys.mf_server }} 具有一个名为**自省端点**的组件，能够验证 {{ site.data.keys.product_adj }} **访问令牌**中的数据以及从中抽取数据。可通过 REST API 使用此自省端点。
 
-1. An application with the {{ site.data.keys.product }} client SDK makes a resource request call (or any HTTP request) to a protected resource with or without the `Authorization` header (**client access token**).
-2. To communicate with the introspection endpoint, the **filter** on the resource server needs to obtain a separate token for itself (see the **confidential client** section).
-3. The **filter** on the resource server extracts the **client access token** from step 1, and sends it to the introspection endpoint for validation.
-4. If the {{ site.data.keys.product_adj }} Authorization Server determined that the token is invalid (or doesn't exist), the resource server redirects the client to obtain a new token for the required scope. This part happens internally when the {{ site.data.keys.product_adj }} lient SDK is used.
+1. 使用 {{ site.data.keys.product }} 客户机 SDK 的应用程序使用或不使用 `Authorization` 头（**客户机访问令牌**）对受保护资源进行资源请求调用（或任何 HTTP 请求）。
+2. 要与自省端点进行通信，资源服务器上的**过滤器**需要为自身获取单独的令牌（请参阅**保密客户机**部分）。
+3. 资源服务器上的**过滤器**通过步骤 1 抽取**客户机访问令牌**，并将其发送到自省端点以进行验证。
+4. 如果 {{ site.data.keys.product_adj }} 授权服务器确定令牌无效（或者不存在），那么资源服务器会重定向客户机以获取必需作用域的新令牌。在使用 {{ site.data.keys.product_adj }} 客户机 SDK 时，本部分会在内部发生。
 
-## Confidential Client
+## 保密客户机
 {: #confidential-client }
-Because the introspection endpoint is an internal resource protected by the scope `authorization.introspect`, the resource server needs to obtain a separate token in order to send any data to it. If you attempt to make a request to the introspection endpoint without an authorization header, a 401 response is returned.
+因为自省端点是作用域 `authorization.introspect` 保护的内部资源，所以资源服务器需要获取单独的令牌以向其发送任何数据。如果尝试针对自省端点发出请求而不使用授权头，那么将返回 401 响应。
 
-For the external resource server to be able to request a token for the `authorization.introspect` scope, the server needs to be registered as a **confidential client** via the {{ site.data.keys.mf_console }}.  
+要使外部资源服务器能够请求 `authorization.introspect` 作用域的令牌，需要通过 {{ site.data.keys.mf_console }} 将服务器注册为**保密客户机**。  
 
-> Learn more in the [Confidential Clients](../confidential-clients/) tutorial.
+> 在[保密客户机](../confidential-clients/)教程中了解更多信息。
 
-In the {{ site.data.keys.mf_console }}, under **Settings → Confidential Clients**, add a new entry. Choose a **client ID** and **API secret** value. Make sure to set `authorization.introspect` as the **Allowed Scope**.
+在 {{ site.data.keys.mf_console }} 中的**设置 → 保密客户机**下，添加新条目。选择**客户机标识**和 **API 密钥**值。确保将 `authorization.introspect` 设置为**允许的作用域**。
 
-<img class="gifplayer" alt="Configurting a confidential client" src="confidential-client.png"/>
+<img class="gifplayer" alt="配置保密客户机" src="confidential-client.png"/>
 
-## Implementations
+## 实施
 {: #implementations }
-This flow can be implemented manually by making HTTP requests directly to the various REST APIs (see documentation).  
-{{ site.data.keys.product }} also provides libraries to help you achieve this on **WebSphere** servers by using the provided **Trust Association Interceptor**, or any other Java-based filter using the provided **Java Token Validator**:
+可通过直接对各种 REST API 发出 HTTP 请求来手动实施此流程（请参阅文档）。  
+{{ site.data.keys.product }} 还提供库，以帮助您使用提供的**信任关联拦截器**在 **WebSphere** 服务器上实现此操作，或者使用提供的 **Java 令牌验证程序**在其他任何基于 Java 的过滤器上实现此操作：

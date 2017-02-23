@@ -1,51 +1,51 @@
 ---
 layout: tutorial
-title: Enrollment
-breadcrumb_title: Enrollment
+title: 注册
+breadcrumb_title: 注册
 relevantTo: [android,ios,windows,javascript]
 weight: 7
 downloads:
-  - name: Download Cordova project
+  - name: 下载 Cordova 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80
-  - name: Download iOS Swift project
+  - name: 下载 iOS Swift 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80
-  - name: Download Android project
+  - name: 下载 Android 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80
-  - name: Download Web project
+  - name: 下载 Web 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: 下载 SecurityCheck Maven 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-This sample demonstrates a custom enrollment process and step-up authorization. During this one-time enrollment process, the user is required to enter his user name and password, and to define a PIN code.  
+该样本演示了定制注册流程和递增授权。在此一次性注册流程中，用户需要输入其用户名和密码，还需要定义 PIN 码。  
 
-**Prerequisites:** Make sure to read the [ExternalizableSecurityCheck](../externalizable-security-check/) and [Step-up](../step-up/) tutorials.
+**先决条件：**确保阅读 [ExternalizableSecurityCheck](../externalizable-security-check/) 和[递增](../step-up/)教程。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Application Flow](#application-flow)
-* [Storing Data in Persistent Attributes](#storing-data-in-persistent-attributes)
-* [Security Checks](#security-checks)
-* [Sample Applications](#sample-applications)
+* [应用程序流](#application-flow)
+* [将数据存储在持久性属性中](#storing-data-in-persistent-attributes)
+* [安全性检查](#security-checks)
+* [样本应用程序](#sample-applications)
 
-## Application Flow
+## 应用程序流
 {: #application-flow }
-* When the application starts for the first time (before enrollment), it shows the UI with two buttons: **Get public data** and **Enroll**.
-* When the user taps on the **Enroll** button to start enrollment, he is prompted with a log-in form and is then requested to set a PIN code.
-* After the user has enrolled successfully, the UI includes four buttons: **Get public data**, **Get balance**, **Get transactions**, and **Logout**. The user can access all four buttons without entering the PIN code.
-* When the application is launched for a second time (after enrollment), the UI still includes all four buttons. However, when the user clicks the **Get transactions*** button, he is required to enter the PIN code.
+* 在应用程序初次启动时（注册前），会显示具有以下两个按钮的 UI：**获取公共数据**和**注册**。
+* 在用户点击**注册**按钮开始注册时，会使用登录表单进行提示，然后请求该用户设置 PIN 码。
+* 在用户成功注册后，UI 包含四个按钮：**获取公共数据**、**获取余额**、**获取交易**和**注销**。用户无需输入 PIN 码，便可访问全部四个按钮。
+* 再次启动应用程序时（注册后），UI 仍包含所有四个按钮。然而，当用户单击**获取交易*** 按钮时，会要求该用户输入 PIN 码。
 
-After three failing attempts at entering the PIN code, the user is prompted to authenticate again with a user name and password, and to reset a PIN code.
+尝试输入 PIN 码三次失败后，会提示该用户使用用户名和密码重新认证和重置 PIN 码。
 
-## Storing Data in Persistent Attributes
+## 将数据存储在持久性属性中
 {: #storing-data-in-persistent-attributes }
-You can choose to save protected data in the `PersistentAttributes` object which is a container for custom attributes of a registered client. The object can be accessed either from a security check class or from an adapter resource class.
+您可以选择将受保护数据保存在 `PersistentAttributes` 对象中，此对象是已注册客户机的定制属性的容器。可以从安全性检查类或从适配器资源类访问该对象。
 
-In the provided sample application the `PersistentAttributes` object is used in the adapter resource class to store the PIN code:
+在提供的样本应用程序中，在适配器资源类中使用 `PersistentAttributes` 对象来存储 PIN 码：
 
-* The **setPinCode** resource adds the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
+* **setPinCode** 资源可添加 **pinCode** 属性，并调用 `AdapterSecurityContext.storeClientRegistrationData()` 方法来存储更改。
 
   ```java
   @POST
@@ -60,9 +60,9 @@ In the provided sample application the `PersistentAttributes` object is used in 
   }
   ```
   
-  Here, `users` has a key called `EnrollmentUserLogin` which itself contains the `AuthenticatedUser` object.
+  此处，`users` 具有一个名为 `EnrollmentUserLogin` 的键，其本身包含 `AuthenticatedUser` 对象。
 
-* The **unenroll** resource deletes the **pinCode** attribute and calls the `AdapterSecurityContext.storeClientRegistrationData()` method to store the changes.
+* **unenroll** 资源可删除 **pinCode** 属性，并调用 `AdapterSecurityContext.storeClientRegistrationData()` 方法来存储更改。
 
   ```java
   @DELETE
@@ -79,15 +79,15 @@ In the provided sample application the `PersistentAttributes` object is used in 
   }
   ```
 
-## Security Checks
+## 安全性检查
 {: #security-checks }
-The Enrollment sample contains three security checks:
+注册样本包含三项安全性检查：
 
 ### EnrollmentUserLogin
 {: #enrollmentuserlogin }
-The `EnrollmentUserLogin` security check protects the **setPinCode** resource so that only authenticated users can set a PIN code. This security check is meant to expire quickly and to hold only for the duration of the "first time experience". It is identical to the `UserLogin` security check explained in the [Implementing the UserAuthenticationSecurityCheck](../user-authentication/security-check) tutorial? except for the extra `isLoggedIn` and `getRegisteredUser` methods.  
-The `isLoggedIn` method returns `true` if the security check state equals SUCCESS and `false` otherwise.  
-The `getRegisteredUser` method returns the authenticated user.
+`EnrollmentUserLogin` 安全性检查保护 **setPinCode** 资源，以便只有已认证的用户才能够设置 PIN 码。此安全性检查意味着快速到期，并且仅在“初次体验”期间进行。它与[实现 UserAuthenticationSecurityCheck](../user-authentication/security-check) 教程中所解释的 `UserLogin` 安全性检查相同，但额外的 `isLoggedIn` 和 `getRegisteredUser` 方法除外。  
+如果安全性检查状态等于 SUCCESS，`isLoggedIn` 方法会返回 `true`，否则将返回 `false`。  
+`getRegisteredUser` 方法会返回已认证的用户。
 
 ```java
 public boolean isLoggedIn(){
@@ -102,16 +102,16 @@ public AuthenticatedUser getRegisteredUser() {
 
 ### EnrollmentPinCode
 {: #enrollmentpincode }
-The `EnrollmentPinCode` security check protects the **Get transactions** resource and is similar to the `PinCodeAttempts` security check explained in the [Implementing the CredentialsValidationSecurityCheck](../credentials-validation/security-check) tutorial, except for a few changes.
+`EnrollmentPinCode` 安全性检查可保护**获取交易**资源，与[实现 CredentialsValidationSecurityCheck](../credentials-validation/security-check) 教程中所解释的 `PinCodeAttempts` 安全性检查相似（一些更改除外）。
 
-In this tutorial's example, `EnrollmentPinCode` **depends on** `EnrollmentUserLogin`. After a successfully login to `EnrollmentUserLogin`, the user is only asked to enter a PIN code.
+在本教程的示例中，`EnrollmentPinCode` **取决于** `EnrollmentUserLogin`。成功登录到 `EnrollmentUserLogin` 后，只会要求用户输入 PIN 码。
 
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
 
-When the application starts **for the first time** and the user is successfully enrolled, the user must able to access the **Get transactions** resource without having to enter the PIN code that he just set. For this purpose, the `authorize` method uses the `EnrollmentUserLogin.isLoggedIn` method to check whether the user is logged in. This means that as long as `EnrollmentUserLogin` is not expired, the user can access **Get transactions**.
+在应用程序**初次**启动且用户成功注册时，用户必须能够在无需输入其刚刚设置的 PIN 码的情况下访问**获取交易**资源。为此，`authorize` 方法使用 `EnrollmentUserLogin.isLoggedIn` 方法来检查用户是否登录。这意味着只要 `EnrollmentUserLogin` 不到期，用户便能够访问**获取交易**。
 
 ```java
 @Override
@@ -124,7 +124,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-When the user fails to enter the PIN code after three attempts, the tutorial is designed so that the **pinCode** attribute is deleted before the user is prompted to authenticate by using the user name and password and resetting a PIN code.
+本教程针对用户尝试三次后输入 PIN 码失败的情况而设计，以便在提示用户使用用户名和密码并重置 PIN 码进行认证之前，先删除 **pinCode** 属性。
 
 ```java
 @Override
@@ -143,7 +143,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-The `validateCredentials` method is the same as in the `PinCodeAttempts` security check, except that here the credentials are compared to the stored **pinCode** attribute.
+`validateCredentials` 方法与在 `PinCodeAttempts` 安全性检查中相同，只是此处会将凭证与存储的 **pinCode** 属性进行比较。
 
 ```java
 @Override
@@ -171,15 +171,15 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ### IsEnrolled
 {: #isenrolled }
-The `IsEnrolled` security check protects:
+`IsEnrolled` 安全性检查可保护：
 
-* The **getBalance** resource so that only enrolled users can see the balance.
-* The **transactions** resource so that only enrolled users can get the transactions.
-* The **unenroll** resource so that deleting the **pinCode** is possible only if it has been set before.
+* **getBalance** 资源，以便只有注册用户才能看到余额。
+* **transactions** 资源，以便只有注册用户才能获取交易。
+* **unenroll** 资源，以便只有在先前设置了 **pinCode** 的情况下才能将其删除。
 
-#### Creating the Security Check
+#### 创建安全性检查
 {: #creating-the-security-check }
-[Create a Java adapter](../../adapters/creating-adapters/) and add a Java class named `IsEnrolled` that extends `ExternalizableSecurityCheck`.
+[创建 Java 适配器](../../adapters/creating-adapters/)，并添加名为 `IsEnrolled` 且可扩展 `ExternalizableSecurityCheck` 的 Java 类。
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
@@ -191,9 +191,9 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
 }
 ```
 
-#### The IsEnrolledConfig Configuration Class
+#### IsEnrolledConfig 配置类
 {: #the-isenrolledconfig-configuration-class }
-Create an `IsEnrolledConfig` configuration class that extends `ExternalizableSecurityCheckConfig`:
+创建可扩展 `ExternalizableSecurityCheckConfig` 的 `IsEnrolledConfig` 配置类：
 
 ```java
 public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
@@ -207,7 +207,7 @@ public class IsEnrolledConfig extends ExternalizableSecurityCheckConfig {
 }
 ```
 
-Add the `createConfiguration` method to the `IsEnrolled` class:
+将 `createConfiguration` 方法添加到 `IsEnrolled` 类中：
 
 ```java
 public class IsEnrolled  extends ExternalizableSecurityCheck{
@@ -217,9 +217,9 @@ public class IsEnrolled  extends ExternalizableSecurityCheck{
     }
 }
 ```
-#### The initStateDurations Method
+#### initStateDurations 方法
 {: #the-initstatedurations-method }
-Set the duration for the SUCCESS state to `successStateExpirationSec`:
+将 SUCCESS 状态的持续时间设置为 `successStateExpirationSec`：
 
 ```java
 @Override
@@ -228,9 +228,9 @@ protected void initStateDurations(Map<String, Integer> durations) {
 }
 ```
 
-#### The authorize Method
+#### authorize 方法
 {: #the-authorize-method }
-The code sample simply checks whether the user is enrolled and returns success or failure accordingly:
+代码样本仅检查用户是否注册，并相应地返回成功或失败：
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -247,25 +247,25 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
 
-* In case the `pinCode` attribute exists:
+* 如果存在 `pinCode` 属性：
 
- * Set the state to SUCCESS by using the `setState` method.
- * Add success to the response object by using the `addSuccess` method.
+ * 请使用 `setState` 方法将状态设置为 SUCCESS。
+ * 请使用 `addSuccess` 方法将成功添加到响应对象中。
 
-* In case the `pinCode` attribute doesn't exist:
+* 如果 `pinCode` 属性不存在：
 
- * Set the state to EXPIRED by using the `setState` method.
- * Add failure to the response object by using the `addFailure` method.
+ * 请使用 `setState` 方法将状态设置为 EXPIRED。
+ * 请使用 `addFailure` 方法将失败添加到响应对象中。
 
 <br/>
-The `IsEnrolled` security check **depends on** `EnrollmentUserLogin`:
+`IsEnrolled` 安全性检查**取决于** `EnrollmentUserLogin`：
 
 ```java
 @SecurityCheckReference
 private transient EnrollmentUserLogin userLogin;
 ```
 
-Set the active user by adding the following code:
+通过添加以下代码来设置活动用户：
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -287,7 +287,7 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
    
-Then, the `transactions` resource gets the current `AuthenticatedUser` object to present the display name:
+然后，`transactions` 资源可获取当前的 `AuthenticatedUser` 对象来呈现显示名称：
 
 ```java
 @GET
@@ -301,9 +301,9 @@ public String getTransactions(){
 }
 ```
     
-> For more information about the `securityContext`, see the [Security API](../../adapters/java-adapters/#security-api) section in the Java adapter tutorial.
+> 有关 `securityContext` 的更多信息，请参阅 Java 适配器教程中的[安全性 API](../../adapters/java-adapters/#security-api) 部分。
 
-Add the registered user to the response object by adding the following:
+通过添加以下内容，将注册用户添加到响应对象中：
 
 ```java
 public void authorize(Set<String> scope, Map<String, Object> credentials, HttpServletRequest request, AuthorizationResponse response) {
@@ -325,26 +325,26 @@ public void authorize(Set<String> scope, Map<String, Object> credentials, HttpSe
 }
 ```
     
-In our sample code, the `IsEnrolled` challenge handler's `handleSuccess` method use the user object to present the display name.
+在样本代码中，`IsEnrolled` 验证问题处理程序的 `handleSuccess` 方法使用用户对象来呈现显示名称。
 
-<img alt="Enrollment sample application" src="sample_application.png" style="float:right"/>
-## Sample Applications
+<img alt="注册样本应用程序" src="sample_application.png" style="float:right"/>
+## 样本应用程序
 {: #sample-applications }
 
-### Security check
+### 安全性检查
 {: #security-check }
-The `EnrollmentUserLogin`, `EnrollmentPinCode`, and `IsEnrolled` security checks are available in the SecurityChecks project under the Enrollment Maven project.
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+注册 Maven 项目下的 SecurityChecks 项目中提供了 `EnrollmentUserLogin`、`EnrollmentPinCode` 和 `IsEnrolled` 安全性检查。
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80)安全性检查 Maven 项目。
 
-### Applications
+### 应用程序
 {: #applications }
-Sample applications are available for iOS (Swift), Android, Cordova, and Web.
+样本应用程序可用于 iOS (Swift)、Android、Cordova 和 Web。
 
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80) the Cordova project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80) the iOS Swift project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80) the Android project.
-* [Click to download](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) the Web app project.
+* [单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentCordova/tree/release80) Cordova 项目。
+* [单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentSwift/tree/release80) iOS Swift 项目。
+* [单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentAndroid/tree/release80) Android 项目。
+* [单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/EnrollmentWeb/tree/release80) Web 应用程序项目。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+请遵循样本的 README.md 文件获取指示信息。
