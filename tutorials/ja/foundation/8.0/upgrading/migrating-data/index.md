@@ -58,6 +58,7 @@ Bluelist のサンプルでは、{{site.data.keys.product_adj }} のセキュリ
 ### REST エンドポイントの登録
 {: #enroll-rest-endpoint }
 以下の図は、Bluelist アダプター・サンプルの **/enroll** エンドポイントによって実行される統合を示したものです。
+
 ![サンプル統合図](SecurityIntegration.jpg)
 
 1. モバイル・デバイスが、{{site.data.keys.product_adj }} OAuth トークンを {{site.data.keys.mf_server }} から取得します。
@@ -245,11 +246,13 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
 ##### 変更前 (IMFData/CloudantToolkit を使用):
 {: #before-with-imfdata-cloudanttoolkit }
 
-```java```
+```java
+```
 
 ##### 変更後 (Cloudant Sync を使用):
 {: #after-with-cloudant-sync }
-```java```
+```java
+```
 
 ## デバイスのデータの暗号化
 {: #encrypting-data-on-the-device }
@@ -974,7 +977,6 @@ DocumentRevision savedRevision = datastore.updateDocumentFromRevision(revision);
 {: #deleting-data }
 オブジェクトを削除するには、削除するオブジェクトをストアに渡します。
 
-
 ##### 変更前
 {: #before }
 **Objective-C**
@@ -987,7 +989,7 @@ Automobile *automobile = existingAutomobile;
 // Delete the Automobile object from the store
 [store delete:automobile completionHandler:^(NSString *deletedObjectId, NSString *deletedRevisionId, NSError *error) {
     if (error) {
-// delete was not successful, handler received an error
+        // delete was not successful, handler received an error
     } else {
         // use the result
         NSLog(@"deleted Automobile doc-%@-rev-%@", deletedObjectId, deletedRevisionId);
@@ -1106,10 +1108,10 @@ DocumentRevision deletedRevision = datastore.deleteDocumentFromRevision(document
    // Create the index
    [store createIndexWithDataType:dataType fields:@[@"year", @"make"] completionHandler:^(NSError *error) {
        if(error){
-            // Handle error
-        }else{
-            // Continue application flow
-        }
+           // Handle error
+       }else{
+           // Continue application flow
+       }
    }];
    ```
     
