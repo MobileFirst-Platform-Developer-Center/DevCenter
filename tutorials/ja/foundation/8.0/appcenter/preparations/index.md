@@ -12,37 +12,29 @@ AppCenter Installer アプリケーションは、モバイル・デバイスに
 
 #### ジャンプ先
 {: #jump-to }
-* [前提条件
-](#prerequisites)
+* [前提条件](#prerequisites)
 * [Cordova ベースの IBM AppCenter クライアント](#cordova-based-ibm-appcenter-client)
 * [MobileFirst Studio ベースの IBM AppCenter クライアント](#mobilefirst-studio-based-ibm-appcenter-client)
 * [フィーチャーのカスタマイズ (エキスパート向け): Android、iOS、Windows Phone](#customizing-features-for-experts-android-ios-windows-phone)
 * [Application Center でのモバイル・クライアントのデプロイ](#deploying-the-mobile-client)
 
 ## 前提条件
-
 {: #prerequisites }
 ### Android オペレーティング・システム固有の前提条件
 {: #prerequisites-specific-to-the-android-operating-system }
-モバイル・クライアントのネイティブ Android バージョンは、Android アプリケーション・パッケージ (.apk) ファイルの形でソフトウェア配信に組み込まれます。**IBMApplicationCenter.apk** ファイルがディレクトリー **ApplicationCenter/installer** に入っています。
-プッシュ通知は使用不可です。
-プッシュ通知を使用可能にしたい場合は、.apk ファイルを再ビルドする必要があります。Application Center でのプッシュ通知について詳しくは、[『アプリケーション更新のプッシュ通知』](../push-notifications)を参照してください。
+モバイル・クライアントのネイティブ Android バージョンは、Android アプリケーション・パッケージ (.apk) ファイルの形でソフトウェア配信に組み込まれます。**IBMApplicationCenter.apk** ファイルがディレクトリー **ApplicationCenter/installer** に入っています。プッシュ通知は使用不可です。プッシュ通知を使用可能にしたい場合は、.apk ファイルを再ビルドする必要があります。Application Center でのプッシュ通知について詳しくは、[『アプリケーション更新のプッシュ通知』](../push-notifications)を参照してください。
 
 Android バージョンをビルドするには、Android 開発ツールの最新バージョンが必要です。
 
-
 ### Apple iOS オペレーティング・システム固有の前提条件
 {: #prerequisites-specific-to-apple-ios-operating-system }
-iPad および iPhone のネイティブ iOS バージョンはコンパイル済みアプリケーションとして配信されません。
-**IBMAppCenter** という名前の {{site.data.keys.product_full }} プロジェクトからそのアプリケーションを作成する必要があります。このプロジェクトは、**ApplicationCenter/installer** ディレクトリーの配布の一部としても配信されます。
-
+iPad および iPhone のネイティブ iOS バージョンはコンパイル済みアプリケーションとして配信されません。**IBMAppCenter** という名前の {{site.data.keys.product_full }} プロジェクトからそのアプリケーションを作成する必要があります。このプロジェクトは、**ApplicationCenter/installer** ディレクトリーの配布の一部としても配信されます。
 
 iOS バージョンをビルドするには、適切な {{site.data.keys.product_full }} および Apple ソフトウェアが必要です。{{site.data.keys.mf_studio }} のバージョンは、この資料の基礎となっている {{site.data.keys.mf_server }} のバージョンと同じでなければなりません。Apple Xcode のバージョンは V6.1 です。
 
 ### Microsoft Windows Phone オペレーティング・システム固有の前提条件
 {: #prerequisites-specific-to-microsoft-windows-phone-operating-system }
 モバイル・クライアントの Windows Phone バージョンは、未署名の Windows Phone アプリケーション・パッケージ (.xap) ファイルとしてソフトウェア配信に組み込まれます。**IBMApplicationCenterUnsigned.xap** ファイルが **ApplicationCenter/installer** ディレクトリーに入っています。
-
 
 > **重要:** 未署名の .xap ファイルを直接使用することはできません。これをデバイスにインストールする前に、Symantec/Microsoft から取得した企業証明書を使用してこれに署名する必要があります。
 
@@ -105,6 +97,7 @@ cordova build ios
 これには時間がかかる場合があります。これが行われた後、カスタマイズする準備が整います。
 
 > **注:** ポップアップ・ウィンドウに表示される Gradle バージョンのアップグレードのための更新オプションはスキップすることを選択してください。このバージョンについては、`grade-wrapper.properties` を参照してください。
+
 #### iOS
 {: #ios }
 * **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms** に進みます。
@@ -127,32 +120,23 @@ iOS および Android 用の Cordova プロジェクトを使用する代わり�
 5. **「プロジェクトをワークスペースにコピー」**を選択します。この選択により、プロジェクトのコピーがワークスペースに作成されます。 UNIX システムでは、IBMAppCenter プロジェクトは元の場所でしか読み取られないので、プロジェクトをワークスペースにコピーすることでファイル許可の問題が回避されます。
 6. **「完了」**をクリックすると、**IBMAppCenter** プロジェクトが MobileFirst Studio にインポートされます。
 
-**IBMAppCenter** プロジェクトをビルドします。
-MobileFirst プロジェクトには、**AppCenter** という名前のアプリケーションが 1 つだけ入っています。このアプリケーションを右クリックし、**「実行 (Run as)」→「すべての環境をビルド (Build All Environments)」**を選択します。
+**IBMAppCenter** プロジェクトをビルドします。MobileFirst プロジェクトには、**AppCenter** という名前のアプリケーションが 1 つだけ入っています。このアプリケーションを右クリックし、**「実行 (Run as)」→「すべての環境をビルド (Build All Environments)」**を選択します。
 
 #### Android
 {: #android }
-MobileFirst Studio は、ネイティブの Android プロジェクトを **IBMAppCenter/apps/AppCenter/android/native** に生成します。ネイティブの Android 開発ツール (ADT) プロジェクトが android/native フォルダーに入っています。この ADT ツールを使用して、このプロジェクトをコンパイルし、それに署名することができます。
-このプロジェクトを使用するには Android SDK レベル 16 をインストールする必要があります。その結果生じる APK は 2.3 以降のすべての Android バージョンと互換性があります。
-このプロジェクトのビルド時にこれより高いレベルの Android SDK を選択すると、結果の APK は Android バージョン 2.3 と非互換になります。
-
+MobileFirst Studio は、ネイティブの Android プロジェクトを **IBMAppCenter/apps/AppCenter/android/native** に生成します。ネイティブの Android 開発ツール (ADT) プロジェクトが android/native フォルダーに入っています。この ADT ツールを使用して、このプロジェクトをコンパイルし、それに署名することができます。このプロジェクトを使用するには Android SDK レベル 16 をインストールする必要があります。その結果生じる APK は 2.3 以降のすべての Android バージョンと互換性があります。このプロジェクトのビルド時にこれより高いレベルの Android SDK を選択すると、結果の APK は Android バージョン 2.3 と非互換になります。
 
 モバイル・クライアント・アプリケーションに影響する詳細な Android 情報については、[開発者向けの Android サイト](https://developer.android.com/index.html)を参照してください。
 
-アプリケーション更新に対してプッシュ通知を使用可能にしたい場合は、まず Application Center クライアント・プロパティーを構成する必要があります。
-[アプリケーション更新のためのプッシュ通知の構成](../push-notifications)を参照してください。
+アプリケーション更新に対してプッシュ通知を使用可能にしたい場合は、まず Application Center クライアント・プロパティーを構成する必要があります。[アプリケーション更新のためのプッシュ通知の構成](../push-notifications)を参照してください。
 
 #### iOS
 {: #ios }
 MobileFirst Studio は、ネイティブの iOS プロジェクトを **IBMAppCenter/apps/AppCenter/iphone/native** に生成します。**IBMAppCenterAppCenterIphone.xcodeproj** ファイルが iphone/native フォルダーに入っています。このファイルは、Xcode を使用してコンパイルと署名を行う必要がある Xcode プロジェクトです。
 
+iOS モバイル・クライアント・アプリケーションに署名する方法についてさらに学ぶためには、[Apple 開発者サイト](https://developer.apple.com/)を参照してください。iOS アプリケーションに署名するためには、そのアプリケーションのバンドル ID を、ご使用のプロビジョニング・プロファイルと一緒に使用できるバンドル ID に変更する必要があります。値は Xcode プロジェクト設定で **com.your\_internet\_domain\_name.appcenter** と定義されています。ここで、**your\_internet\_domain\_name** は、ご自分のインターネット・ドメインの名前です。
 
-iOS モバイル・クライアント・アプリケーションに署名する方法についてさらに学ぶためには、[Apple 開発者サイト](https://developer.apple.com/)を参照してください。
-iOS アプリケーションに署名するためには、そのアプリケーションのバンドル ID を、ご使用のプロビジョニング・プロファイルと一緒に使用できるバンドル ID に変更する必要があります。
-値は Xcode プロジェクト設定で **com.your\_internet\_domain\_name.appcenter** と定義されています。ここで、**your\_internet\_domain\_name** は、ご自分のインターネット・ドメインの名前です。
-
-アプリケーション更新に対してプッシュ通知を使用可能にしたい場合は、まず Application Center クライアント・プロパティーを構成する必要があります。
-[アプリケーション更新のためのプッシュ通知の構成](../push-notifications)を参照してください。
+アプリケーション更新に対してプッシュ通知を使用可能にしたい場合は、まず Application Center クライアント・プロパティーを構成する必要があります。[アプリケーション更新のためのプッシュ通知の構成](../push-notifications)を参照してください。
 
 #### Windows Phone 8
 {: #windows-phone-8 }
@@ -182,10 +166,7 @@ Application Center のユーザーにモバイル・クライアントを配布�
 {: #customizing-features-for-experts-android-ios-windows-phone }
 セントラル・プロパティー・ファイルを編集し、その他のいくつかのリソースを操作することによって、フィーチャーをカスタマイズすることができます。
 
-
-フィーチャーをカスタマイズするため: 一部のフィーチャーは、ディレクトリー **IBMAppCenter/apps/AppCenter/common/js/appcenter/** または **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter** 内の **config.json** というセントラル・プロパティー・ファイルによって制御されます。
-デフォルトのアプリケーション動作を変更したい場合は、プロジェクトをビルドする前に、このプロパティー・ファイルを改作することができます。
-
+フィーチャーをカスタマイズするため: 一部のフィーチャーは、ディレクトリー **IBMAppCenter/apps/AppCenter/common/js/appcenter/** または **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter** 内の **config.json** というセントラル・プロパティー・ファイルによって制御されます。デフォルトのアプリケーション動作を変更したい場合は、プロジェクトをビルドする前に、このプロパティー・ファイルを改作することができます。
 
 このファイルには、次の表に示されているプロパティーが含まれています。
 
@@ -228,7 +209,6 @@ Application Center のユーザーにモバイル・クライアントを配布�
 * **Windows Phone:** Windows Phone 用の MobileFirst Studio 環境フォルダーの **native** ディレクトリー内の **SplashScreenImage.png** という名前のファイルを編集します。
 
 #### アプリケーションのアイコン (ボタン、星印、および同様のオブジェクト)
-
 {: #icons }
 **IBMAppCenter/apps/AppCenter/common/css/images**.
 
