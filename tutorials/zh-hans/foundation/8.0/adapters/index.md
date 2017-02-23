@@ -1,92 +1,92 @@
 ---
 layout: tutorial
-title: Developing Adapters
+title: 开发适配器
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 6
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Adapters are Maven projects that contain server-side code implemented in either Java or JavaScript.  
-Adapters are used perform any necessary server-side logic, and to transfer and retrieve information from back-end systems to client applications and cloud services. 
+适配器是包含以 Java 或 JavaScript 实现的服务器端代码的 Maven 项目。  
+适配器用于执行任何必要的服务器端逻辑，并从后端系统检索信息并将信息传输到客户机应用程序和云服务。 
 
-Each adapter has its own isolated sandbox, which runs without knowing about or interrupting other adapter sandboxes. That said, adapters can still communicate with one another by calling API which makes "[adapter mashup](advanced-adapter-usage-mashup)" possible.
+每个适配器都有各自的隔离沙箱，可以在不知道其他适配器沙箱或不中断这些沙箱的情况下运行。也就是说，适配器仍然可以通过调用可能生成“[适配器聚合](advanced-adapter-usage-mashup)”的 API 来与其他适配器通信。
 
-It is possible to include third-party libraries that are required by the adapter code by defining them as Maven dependencies in the adapter's **pom.xml** file. For more information, see the [Dependencies](creating-adapters/#dependencies) section in the [Creating Java and JavaScript Adapters](creating-adapters) tutorial.
+要包含适配器代码所需的第三方库，可在适配器的 **pom.xml** 文件中将它们定义为 Maven 依赖关系。有关更多信息，请参阅[创建 Java 和 JavaScript 适配器](creating-adapters)教程中的[依赖关系](creating-adapters/#dependencies)部分。
 
-Adapters also support DevOps needs:
+适配器也支持 DevOps 需求：
 
-* You can "hot deploy" adapters, meaning deploy, undeploy, and redeploy them at run time. This capability lends great flexibility to the server-side development process.
-* An adapter can have user-defined properties that can be configured by administration personnel, without redeploying the adapter. This feature lets you customize adapter behavior for different environments, for example development, testing, and production.
+* 您可以“热部署”适配器，即在运行时部署、取消部署和重新部署适配器。此功能给予服务器端开发流程很大的灵活性。
+* 适配器可以具有由管理人员配置的用户定义的属性，无需重新部署适配器。该功能允许您针对不同的环境（例如开发、测试以及生产）定制适配器行为。
 
-Continue reading for an overview of Java and JavaScript adapters. Then follow the tutorials in the sidebar navigation to learn how to: create, build, update, develop, test and deploy Java and JavaScript adapters, learn how to use IDEs for adapters development, collect server-side logs, as well as more advanced topics such as adapters mashup and Cloudant integration.
+继续阅读以了解 Java 和 JavaScript 适配器的概述。然后遵循侧边栏导航中的教程来学习如何：创建、构建、更新、开发、测试以及部署 Java 和 JavaScript 适配器，学习如何使用 IDE 进行适配器开发，收集服务器端日志以及更多高级主题（例如适配器聚合和 Cloudant 集成）。
 
 ![adapter_overview](adapter_overview_top.jpg)
 
-### Benefits of using adapters
+### 使用适配器的优点
 {: #benefits-of-using-adapters }
 
-#### Universality
+#### 普遍性
 {: #universality }
 
-* Adapters support multiple integration technologies and back-end information systems.
+* 适配器支持多种集成技术和后端信息系统。
 
-#### Read-only and transactional capabilities
+#### 只读和事务功能
 {: #read-only-and-transactional-capabilities }
 
-* Adapters support read-only and transactional access modes to back-end systems.
+* 适配器支持对后端系统的只读和事务访问方式。
 
-#### Fast development
+#### 加速开发
 {: #fast-development }
 
-* Adapters use simple XML syntax and are easily configured with JavaScript API or Java API.
+* 适配器使用简单的 XML 语法，并可以使用 JavaScript API 或 Java API 轻松配置。
 
-#### Security
+#### 安全性
 {: #security }
 
-* Adapters use flexible authentication facilities to create connections with back-end systems.
-* Adapters offer control over the identity of the connected user.
+* 适配器使用灵活的认证功能来创建与后端系统的连接。
+* 适配器提供对已连接用户的身份进行控制。
 
-#### Transparency
+#### 透明性
 {: #transparency }
 
-* Data that is retrieved from back-end applications is exposed in a uniform manner, regardless of the adapter type.  
+* 以统一的方式公开从后端应用程序检索到的数据，无论是什么样的适配器类型。  
 
-### Benefits specific to Java adapters
+### 特定于 Java 适配器的优点
 {: #benefits-specific-to-java-adapters }
 
-* Ability to fully control the URL structure, the content types, the request and response headers, content and encoding
-* Ability to test the adapter by using a 3rd-party tool such as Postman
-* Easy and fast deployment to a running {{ site.data.keys.mf_server }} instance with no compromise on performance and no downtime
-* Security integration with the {{ site.data.keys.product }} security model with no additional customization, by using simple annotations in the source code
+* 能够完全控制 URL 结构、内容类型、请求和响应头、内容以及编码
+* 能够使用第三方工具（例如 Postman）测试适配器
+* 能够简单快速地部署到运行的 {{ site.data.keys.mf_server }} 实例，而不会影响性能并且无停机时间
+* 通过在源代码中使用简单注释，无需其他定制便能与 {{ site.data.keys.product }} 安全模型进行安全集成
 
-## JavaScript adapters
+## JavaScript 适配器
 {: #javascript-adapters }
 
-JavaScript adapters provide templates for communicating with HTTP and SQL back-ends. These templates contain a set of services called procedures. Mobile apps can call these procedures by issuing AJAX requests. The procedure retrieves information from the back-end application and return data to the application. Using a REST interface, you can benefit from the [OAuth 2.0-based security framework](../authentication-and-security) provided by {{ site.data.keys.product }}.
+JavaScript 适配器提供用于与 HTTP 和 SQL 后端通信的模板。这些模板包含一组服务，称为过程。移动应用程序可以通过发出 AJAX 请求来调用这些过程。过程从后端应用程序检索信息，并将数据返回给应用程序。使用 REST 接口，您可得益于由 {{ site.data.keys.product }} 提供的[基于 OAuth 2.0 的安全框架](../authentication-and-security)。
 
-* If the format of the data is JSON then the {{ site.data.keys.mf_server }} keeps the data intact. Otherwise the {{ site.data.keys.mf_server }} automatically converts it to JSON.  
-* Alternatively you can provide XSL transformation to convert the data to JSON. In this case, the returned content type from the back-end must be XML. Then, you can use an XSLT to filter the data based on requirements.
-* With an HTTP adapter, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
-* With an SQL adapter, you can communicate with any SQL data source. You can use plain SQL queries or stored procedures.
+* 如果数据的格式是 JSON，那么 {{ site.data.keys.mf_server }} 使数据保持原样。否则，{{ site.data.keys.mf_server }} 自动将该数据转换为 JSON。  
+* 或者，您可以提供 XSL 变换以将数据转换为 JSON。在这种情况下，从后端返回的内容类型必须是 XML。然后，您可以使用 XSLT 来根据需求过滤数据。
+* 通过 HTTP 适配器，您可以发送 GET 或 POST HTTP 请求，并从响应头或主体检索数据。HTTP 适配器与 RESTful 和基于 SOAP 的服务一起使用，可以读取结构化的 HTTP 源（例如 RSS 订阅源）。
+* 通过 SQL 适配器，您可以与任何 SQL 数据源进行通信。您可以使用普通 SQL 查询或存储过程。
 
-> * Learn how to create adapters in the [Creating Adapters](creating-adapters) tutorial.
-> * Learn more about [JavaScript adapters](javascript-adapters)
+> * 在[创建适配器](creating-adapters)教程中学习如何创建适配器。
+> * 了解有关 [JavaScript 适配器](javascript-adapters)的更多信息
 
 ![javascript_adapters](javascript_adapters.png)
 
-## Java adapters
+## Java 适配器
 {: #java-adapters }
 
-Java adapters are based on the [JAX-RS 2.0 specification](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html) and are thus written in Java, and expose a full REST API to the client. In Java adapters, it is up to the developer to define the returned content and its format, as well as the URL structure of each resource. The only exception is if the client sending the request supports GZip, then the returned content encoding of the Java adapter is compressed by GZip. All operations on the returned content are done and owned by the developer.
+Java 适配器基于 [JAX-RS 2.0 规范](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/index.html)，因而使用 Java 编写，并将完整的 REST API 公开给客户机。在 Java 适配器中，由开发人员定义返回的内容及其格式，以及每个资源的 URL 结构。唯一例外是，如果发送请求的客户机支持 GZip，那么返回的 Java 适配器的内容编码用 GZip 压缩。对所返回内容的所有操作均由开发人员完成和拥有。
 
-The diagram below depicts how a mobile device can access any Java adapter from its REST endpoint. The REST interface is protected by the {{ site.data.keys.product }} OAuth security filter, meaning that the client needs to obtain an access token to access the adapter resources. Each of the resources of the adapter has its own URL, so it is possible to protect {{ site.data.keys.product }} endpoints using any firewall. The REST interface invokes the Java code (JAX-RS service) to handle incoming requests. The Java code can perform operations on the server by using the Java {{ site.data.keys.mf_server }} API. In addition, the Java code can connect to the enterprise system to fetch data, update data, or perform any other operation that the enterprise system exposes.
+下图描述移动设备如何从其 REST 端点访问任何 Java 适配器。REST 接口受 {{ site.data.keys.product }} OAuth 安全过滤器保护，这表示客户机需要获得访问令牌才能访问适配器资源。适配器的每个资源都有其自己的 URL，所以可使用任何防火墙保护 {{ site.data.keys.product }} 端点。REST 接口调用 Java 代码（JAX-RS 服务）以处理传入请求。Java 代码可使用 Java {{ site.data.keys.mf_server }} API 在服务器上执行操作。此外，Java 代码可以连接到企业系统以访存数据、更新数据或执行企业系统公开的任何其他操作。
 
-> * Learn how to create adapters in the [Creating Adapters](creating-adapters) tutorial.
-> * Learn more about [Java adapters](java-adapters)
+> * 在[创建适配器](creating-adapters)教程中学习如何创建适配器。
+> * 了解有关 [Java 适配器](java-adapters) 的更多信息
 
 ![java-adapter](java_adapter.jpg)
 
-## Tutorials to follow next
+## 后续教程
 {: #tutorials-to-follow-next }

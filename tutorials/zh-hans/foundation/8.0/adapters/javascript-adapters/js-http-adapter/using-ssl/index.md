@@ -1,23 +1,22 @@
 ---
 layout: tutorial
-title: Using SSL in JavaScript HTTP Adapter
-breadcrumb_title: Using SSL
+title: 在 JavaScript HTTP 适配器中使用 SSL
+breadcrumb_title: 使用 SSL
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-You can use SSL in an HTTP adapter with simple and mutual authentication to connect to back-end services.  
-SSL represents transport level security, which is independent of basic authentication. It is possible to do basic authentication either over HTTP or HTTPS.
+您可以在 HTTP 适配器中使用 SSL，以通过使用简单认证和相互认证来连接到后端服务。  
+SSL 表示传输级别安全性，独立于基本认证。能够通过 HTTP 或 HTTPS 实现基本认证。
+1. 在 adapter.xml 文件中，将 HTTP 适配器的 URL 协议设置为 <b>https</b>。
+2. 将 SSL 证书存储到 {{ site.data.keys.mf_server }} 密钥库中。[请参阅“配置 {{ site.data.keys.mf_server }} 密钥库”](../../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)。
 
-1. Set the URL protocol of the HTTP adapter to <b>https</b> in the adapter.xml file.
-2. Store SSL certificates in the {{ site.data.keys.mf_server }} keystore. [See Configuring the {{ site.data.keys.mf_server }} keystore](../../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
-
-### SSL with mutual authentication
+### 使用相互认证的 SSL
 {:# ssl-with-mutual-authentication }
 
-If you use SSL with mutual authentication, you must also perform the following steps:
+如果使用“使用相互认证的 SSL”，那么您还必须执行以下步骤：
 
-1. Generate your own private key for the HTTP adapter or use one provided by a trusted authority.
-2. If you generated your own private key, export the public certificate of the generated private key and import it into the back-end truststore.
-3. Define an alias and password for the private key in the `connectionPolicy` element of the **adapter.xml** file. 
+1. 为 HTTP 适配器生成自己的专用密钥，或使用可信的证书颁发中心提供的密钥。
+2. 如果您生成自己的专用密钥，请导出所生成专用密钥的公用证书，然后将其导入后端信任库。
+3. 在 **adapter.xml** 文件的 `connectionPolicy` 元素中为专用密钥定义别名和密码。 
