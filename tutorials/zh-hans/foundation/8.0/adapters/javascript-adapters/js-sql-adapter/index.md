@@ -1,36 +1,36 @@
 ---
 layout: tutorial
-title: JavaScript SQL Adapter
-breadcrumb_title: SQL Adapter
+title: JavaScript SQL 适配器
+breadcrumb_title: SQL 适配器
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: 下载适配器 Maven 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-An SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.
+SQL 适配器旨在与任何 SQL 数据源进行通信。您可以使用普通 SQL 查询或存储过程。
 
-To connect to a database, JavaScript code needs a JDBC connector driver for the specific database type. You must download the JDBC connector driver for the specific database type separately and add it as a dependency in your project. For more information on how to add a dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../creating-adapters/#dependencies) tutorial.
+要连接到数据库，JavaScript 代码需要特定数据库类型的 JDBC 连接器驱动程序。您必须单独下载特定数据库类型的 JDBC 连接器驱动程序并将其作为依赖关系添加到项目中。有关如何添加依赖关系的更多信息，请参阅[创建 Java 和 JavaScript 适配器](../../creating-adapters/#dependencies)教程的“依赖关系”部分。
 
-In this tutorial and in the accompanying sample, you learn how to use an adapter to connect to a MySQL database.
+在此教程和随附的样本中，您将了解如何使用适配器连接到 MySQL 数据库。
 
-**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
+**先决条件：**确保首先阅读 [JavaScript 适配器](../)教程。
 
-## The XML File
+## XML 文件
 {: #the-xml-file }
 
-The XML file contains settings and metadata.
+此 XML 文件中包含设置和元数据。
 
-In the **adapter.xml** file, declare the following parameters:
+在 **adapter.xml** 文件中，声明以下参数：
 
- * JDBC Driver Class
- * Database URL
- * Username
- * Password<br/><br/>
+ * JDBC 驱动程序类
+ * 数据库 URL
+ * 用户名
+ * 密码<br/><br/>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -58,15 +58,15 @@ In the **adapter.xml** file, declare the following parameters:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>单击获取 adapter.xml 属性和子元素</b></a>
             </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>xsi:type</b>: <i>Mandatory.</i> The value of this attribute must be set to sql:SQLConnectionPolicy.</li>
-                    <li><b>dataSourceDefinition</b>: <i>Optional.</i> Contains the parameters that are needed to connect to a data source. The adapter creates a connection for each request. For example:
+                    <li><b>xsi:type</b>：<i>必填。</i> 此属性的值必须设置为 sql:SQLConnectionPolicy。</li>
+                    <li><b>dataSourceDefinition</b>：<i>可选。</i>包含连接到数据源所需的参数。适配器会为每个请求创建连接。例如：
 
 {% highlight xml %}
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -79,7 +79,7 @@ In the **adapter.xml** file, declare the following parameters:
 </connectionPolicy>
 {% endhighlight %}</li>
 
-                    <li><b>dataSourceJNDIName</b>: <i>Optional.</i> Connect to the data source by using the JNDI name of a data source that is provided by the application server. The adapter takes the connection from the server connection pool that is associated with the JNDI name. Application servers provide a way to configure data sources. For more information, see Installing {{ site.data.keys.mf_server }} to an application server. For example:
+                    <li><b>dataSourceJNDIName</b>：<i>可选。</i>使用应用程序服务器提供的数据源的 JNDI 名称来连接到数据源。适配器从与该 JNDI 名称关联的服务器连接池中获取连接。应用程序服务器提供了一种配置数据源的方式。有关更多信息，请参阅“将 {{ site.data.keys.mf_server }} 安装到应用程序服务器”。例如：
                     
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -93,28 +93,28 @@ In the **adapter.xml** file, declare the following parameters:
 </div>
 
 
-With the `connectionPolicy` configured, declare a procedure in the adapter XML file.
+配置 `connectionPolicy` 后，在适配器 XML 文件中声明过程。
 
 ```js
 <procedure name="getAccountTransactions1"/>
 ```
 
-## JavaScript implementation
+## JavaScript 实施
 {: #javascript-implementation }
 
-The adapter JavaScript file is used to implement the procedure logic.  
-There are two ways of running SQL statements:
+适配器 JavaScript 文件用于实施过程逻辑。  
+可通过以下两种方式运行 SQL 语句：
 
-* SQL statement query
-* SQL stored procedure
+* SQL 语句查询
+* SQL 存储过程
 
-### SQL statement query
+### SQL 语句查询
 {: #sql-statement-query }
 
-1. Assign your SQL query to a variable. This must always be done outside the function scope.
-2. Add parameters, if necessary.
-3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries.
-4. Return the result to the application or to another procedure.
+1. 将 SQL 查询分配给变量。该操作必须始终在函数作用域以外完成。
+2. 根据需要添加参数。
+3. 使用 `MFP.Server.invokeSQLStatement` 方法调用 prepared 查询。
+4. 将结果返回到应用程序或其他过程。
 
    ```javascript
    // 1. Assign your SQL query to a variable (outside the function scope)
@@ -136,10 +136,10 @@ There are two ways of running SQL statements:
    }
    ```       
 
-### SQL stored procedure
+### SQL 存储过程
 {: #sql-stored-procedure }
 
-To run a SQL stored procedure, use the `MFP.Server.invokeSQLStoredProcedure` method. Specify a SQL stored procedure name as an invocation parameter.
+要运行 SQL 存储过程，请使用 `MFP.Server.invokeSQLStoredProcedure` 方法。将 SQL 存储过程名称指定为调用参数。
 
 ```javascript
 // Invoke stored SQL procedure and return invocation result
@@ -152,10 +152,10 @@ function getAccountTransactions2(accountId){
 }
 ```  
 
-### Using multiple parameters
+### 使用多个参数
 {: #using-multiple-parameters }
  
-When using either single or multiple parameters in an SQL query make sure to accept the variables in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters in an **array**.
+在 SQL 查询中使用单个或多个参数时，请确保接受函数中的变量，并将其传递给 **array** 中的 `invokeSQLStatement` 或 `invokeSQLStoredProcedure` 参数。
 
 ```javascript
 var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
@@ -173,10 +173,10 @@ function getAccountTransactions1(fromAccount, toAccount){
 }
 ```
 
-## Invocation Results
+## 调用结果
 {: #invocation-results }
 
-The result is retrieved as a JSON object:
+将结果作为 JSON 对象进行检索：
 
 ```json
 {
@@ -198,25 +198,25 @@ The result is retrieved as a JSON object:
   }]
 }
 ```
-* The `isSuccessful` property defines whether the invocation was successful.
-* The `resultSet` object is an array of returned records.
- * To access the `resultSet` object on the client-side: `result.invocationResult.resultSet`
- * To access the `resultSet` object on the server-side: `result.ResultSet`
+* `isSuccessful` 属性定义调用是否成功。
+* `resultSet` 对象是包含返回记录的数组。
+ * 要在客户机端访问 `resultSet` 对象：`result.invocationResult.resultSet`
+ * 要在服务器端访问 `resultSet` 对象：`result.ResultSet`
 
-## Sample adapter
+## 样本适配器
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the Adapters Maven project.
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/Adapters)适配器 Maven 项目。
 
-The Adapters Maven project includes the **JavaScriptSQL** adapter described above.  
-Also included is an SQL script in the **Utils** folder.
+适配器 Maven 项目包含上面所述的 **JavaScriptSQL** 适配器。  
+另外，还包含 **Utils** 文件夹中的 SQL 脚本。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
 
-* Run the .sql script in your SQL database.
-* Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* 运行关系型数据库中的 .sql 脚本。
+* 确保 `mobilefirst@%` 用户具有分配的所有访问许可权。
+* 使用 Maven、{{ site.data.keys.mf_cli }} 或您所选的 IDE 来[构建和部署 JavaScriptSQL 适配器](../../creating-adapters/)。
+* 要测试或调试适配器，请参阅[测试和调试适配器](../../testing-and-debugging-adapters)教程。
 
-When testing, the account value should be passed in an array: `["12345"]`.
+测试时，应当在数组 `["12345"]` 中传递帐户值。
