@@ -15,9 +15,7 @@ weight: 6
 * キーボードのみによる操作
 * スクリーンリーダーを使用する操作
 
-{{site.data.keys.product }} では、[US Section 508](http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards)、および [Web Content Accessibility Guidelines (WCAG) 2.0](http://www.w3.org/TR/WCAG20/) に準拠するために、最新の W3C 標準である [WAI-ARIA
-1.0](http://www.w3.org/TR/wai-aria/) が使用されています。アクセシビリティー機能を活用するには、最新リリースのスクリーン・リーダーを、この製品でサポートされる最新の Web ブラウザーと組み合わせて使用してください。
-
+{{site.data.keys.product }} では、[US Section 508](http://www.access-board.gov/guidelines-and-standards/communications-and-it/about-the-section-508-standards/section-508-standards)、および [Web Content Accessibility Guidelines (WCAG) 2.0](http://www.w3.org/TR/WCAG20/) に準拠するために、最新の W3C 標準である [WAI-ARIA 1.0](http://www.w3.org/TR/wai-aria/) が使用されています。アクセシビリティー機能を活用するには、最新リリースのスクリーン・リーダーを、この製品でサポートされる最新の Web ブラウザーと組み合わせて使用してください。
 
 ### キーボードによるナビゲーション
 {: #keyboard-navigation }
@@ -31,8 +29,7 @@ weight: 6
 
 ### {{site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
-デフォルトでは、{{site.data.keys.mf_cli }} で表示される状況メッセージには、正常終了、エラー、警告を表すため、さまざまな色が使用されます。
-どの {{site.data.keys.mf_cli }} コマンドでも、`--no-color` オプションを使用することで、そのコマンドでのそれらの色の使用を抑止できます。`--no-color` を指定すると、出力は、オペレーティング・システム・コンソールに設定されているテキスト表示色で表示されます。
+デフォルトでは、{{site.data.keys.mf_cli }} で表示される状況メッセージには、正常終了、エラー、警告を表すため、さまざまな色が使用されます。どの {{site.data.keys.mf_cli }} コマンドでも、`--no-color` オプションを使用することで、そのコマンドでのそれらの色の使用を抑止できます。`--no-color` を指定すると、出力は、オペレーティング・システム・コンソールに設定されているテキスト表示色で表示されます。
 
 ### Web インターフェース 
 {: #web-interface }
@@ -46,16 +43,12 @@ weight: 6
 {: #installation-and-configuration }
 {{site.data.keys.product }} をインストールして構成するには、グラフィカル・ユーザー・インターフェース (GUI) による方法と、コマンド・ラインによる方法の 2 つがあります。
 
-グラフィカル・ユーザー・インターフェース (ウィザード・モードの IBM Installation Manager や、サーバー構成ツール
-) ではユーザー・インターフェース・オブジェクトに関する情報は提供されませんが、同等の機能を
-コマンド・ライン・インターフェースでは利用できます。
-GUI の機能はすべてコマンド・ラインでサポートされます。また、コマンド・ラインのみで使用できる特定のインストール機能や構成機能もいくつかあります。[IBM Installation Manager](http://www.ibm.com/support/knowledgecenter/SSDV2W/im_family_welcome.html?lang=en&view=kc) のアクセシビリティー機能については、IBM Knowledge Center を参照してください。
+グラフィカル・ユーザー・インターフェース (ウィザード・モードの IBM Installation Manager や、サーバー構成ツール) ではユーザー・インターフェース・オブジェクトに関する情報は提供されませんが、同等の機能をコマンド・ライン・インターフェースでは利用できます。GUI の機能はすべてコマンド・ラインでサポートされます。また、コマンド・ラインのみで使用できる特定のインストール機能や構成機能もいくつかあります。[IBM Installation Manager](http://www.ibm.com/support/knowledgecenter/SSDV2W/im_family_welcome.html?lang=en&view=kc) のアクセシビリティー機能については、IBM Knowledge Center を参照してください。
 
 以下のトピックに、GUI を使用せずにインストールおよび構成を実行する方法についての情報があります。
 
 * IBM Installation Manager 用のサンプル応答ファイルの処理
-この方法を使用すると、{{site.data.keys.mf_server }} および Application Center のサイレント・インストールと構成を行うことができます。install-no-appcenter.xml という応答ファイルを使用することで、Application Center がインストールされないようにすることができます。その場合、Ant タスクを使用して、後の段階でそれをインストールできます。
-『Ant タスクを使用した Application Center のインストール』を参照してください。この場合、Application Center のインストールとアップグレードをそれぞれ単独で行うことができます。
+この方法を使用すると、{{site.data.keys.mf_server }} および Application Center のサイレント・インストールと構成を行うことができます。install-no-appcenter.xml という応答ファイルを使用することで、Application Center がインストールされないようにすることができます。その場合、Ant タスクを使用して、後の段階でそれをインストールできます。『Ant タスクを使用した Application Center のインストール』を参照してください。この場合、Application Center のインストールとアップグレードをそれぞれ単独で行うことができます。
 * Ant タスクを使用したインストール
 * Ant タスクを使用した Application Center のインストール
 

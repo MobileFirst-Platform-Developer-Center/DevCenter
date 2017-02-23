@@ -38,5 +38,4 @@ Rational License Key Server 8.1.4.9 と共にリリースされた Rational Lice
 
 {{site.data.keys.mf_server }} でのトークン・ライセンスの使用の計画については、『トークン・ライセンスの使用計画』を参照してください。
 
-{{site.data.keys.product }} のライセンス・キーを入手するには、IBM Rational License Key Center にアクセスする必要があります。ライセンス・キーの生成と管理について詳しくは、
-[IBM Support - Licensing](http://www.ibm.com/software/rational/support/licensing/) を参照してください。
+{{site.data.keys.product }} のライセンス・キーを入手するには、IBM Rational License Key Center にアクセスする必要があります。ライセンス・キーの生成と管理について詳しくは、[IBM Support - Licensing](http://www.ibm.com/software/rational/support/licensing/) を参照してください。
