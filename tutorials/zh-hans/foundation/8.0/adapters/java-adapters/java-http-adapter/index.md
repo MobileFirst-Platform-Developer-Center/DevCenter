@@ -1,24 +1,25 @@
 ---
 layout: tutorial
-title: Java HTTP Adapter
+title: Java HTTP 适配器
 breadcrumb_title: HTTP Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: 下载适配器 Maven 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-Java adapters provide free reign over connectivity to a backend system. It is therefore the developer's responsibility to ensure best practices regarding performance and other implementation details. This tutorial covers an example of a Java adapter that connects to an RSS feed by using a Java `HttpClient`.
+Java 适配器可自由控制与后端系统的连接。因此，开发人员有责任确保有关性能和其他实施细节的最佳实践。
+本教程包含 Java 适配器的示例，该适配器通过 Java `HttpClient` 连接到 RSS 订阅源。
 
-**Prerequisite:** Make sure to read the [Java Adapters](../) tutorial first.
+**先决条件：**请务必先阅读 [Java 适配器](../)教程。
 
-## Initializing the adapter
+## 初始化适配器
 {: #initializing-the-adapter }
 
-In the supplied sample adapter, the `JavaHTTPApplication` class is used to extend `MFPJAXRSApplication` and is a good place to trigger any initialization required by your application.
+在提供的样本适配器中，`JavaHTTPApplication` 类用于扩展 `MFPJAXRSApplication`，可用于触发应用程序所需的任何初始化。
 
 ```java
 @Override
@@ -28,11 +29,11 @@ protected void init() throws Exception {
 }
 ```
 
-## Implementing the adapter Resource class
+## 实现适配器资源类
 {: #implementing-the-adapter-resource-class }
 
-The adapter Resource class is where requests to the server are handled.  
-In the supplied sample adapter, the class name is `JavaHTTPResource`.
+适配器资源类用于处理服务器的请求。  
+在提供的样本适配器中，类名是 `JavaHTTPResource`。
 
 ```java
 @Path("/")
@@ -41,9 +42,9 @@ public class JavaHTTPResource {
 }
 ```
 
-`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
+`@Path("/")` 表示可从 URL `http(s)://host:port/ProjectName/adapters/AdapterName/` 获取资源。
 
-### HTTP Client
+### HTTP 客户机
 {: #http-client }
 
 ```java
@@ -56,9 +57,9 @@ public static void init() {
 }
 ```
 
-Because every request to your resource will create a new instance of `JavaHTTPResource`, it is important to reuse objects that may impact performance. In this example we made the Http client a `static` object and initialized it in a static `init()` method, which gets called by the `init()` of `JavaHTTPApplication` as described above.
+因为资源的每个请求都将创建一个新 `JavaHTTPResource` 实例，所以复用可能影响性能的对象很重要。在此示例中，我们将为 Http 客户机生成一个 `static` 对象，并使用静态 `init()` 方法对其初始化，可通过如上所述的 `JavaHTTPApplication` 的 `init()` 来调用该方法。
 
-### Procedure resource
+### 过程资源
 {: #procedure-resource }
 
 ```java
@@ -76,16 +77,16 @@ public void get(@Context HttpServletResponse response, @QueryParam("tag") String
 }
 ```
 
-The sample adapter exposes just one resource URL which allows to retrieve the RSS feed from the backend service.
+样本适配器仅公开一个资源 URL，其允许从后端服务检索 RSS 订阅源。
 
-* `@GET` means that this procedure only responds to `HTTP GET` requests.
-* `@Produces("application/json")` specifies the Content Type of the response to send back. We chose to send the response as a `JSON` object to make it easier on the client-side.
-* `@Context HttpServletResponse response` will be used to write to the response output stream. This enables us more granularity than returning a simple string.
-* `@QueryParam("tag")` String tag enables the procedure to receive a parameter. The choice of `QueryParam` means the parameter is to be passed in the query (`/JavaHTTP/?tag=MobileFirst_Platform`). Other options include `@PathParam`, `@HeaderParam`, `@CookieParam`, `@FormParam`, etc.
-* `throws IOException, ...` means we are forwarding any exception back to the client. The client code is responsible for handling potential exceptions which will be received as `HTTP 500` errors. Another solution (more likely in production code) is to handle exceptions in your server Java code and decide what to send to the client based on the exact error.
-* `execute(new HttpGet("/feed.xml"), response)`. The actual HTTP request to the backend service is handled by another method defined later.
+* `@GET` 表示此过程仅响应 `HTTP GET` 请求。
+* `@Produces("application/json")` 指定送回的响应的内容类型。我们选择将响应作为 `JSON` 对象发送，使其在客户机端上更加简单。
+* `@Context HttpServletResponse response` 用于写入响应输出流。这使我们能够返回更加详细的内容，而不是简单的字符串。
+* `@QueryParam("tag")` 字符串标记使过程能够接收参数。选择 `QueryParam` 表示将在查询（`/JavaHTTP/?tag=MobileFirst_Platform`）中传递参数。其他选项包括 `@PathParam`、`@HeaderParam`、`@CookieParam`、`@FormParam` 等。
+* `throws IOException, ...` 表示将任何异常转发回客户机。客户机代码负责处理将接收为 `HTTP 500` 错误的潜在异常。另一个解决方案（很可能在生产代码中出现）处理服务器 Java 代码中的异常，并根据确切的错误，确定发送到客户机的内容。
+* `execute(new HttpGet("/feed.xml"), response)`. 后端服务的实际 HTTP 请求由稍后定义的其他方法处理。
 
-Depending if you pass a `tag` parameter, `execute` will retrieve a different build a different path and retrieve a different RSS file.
+根据是否传递 `tag` 参数，`execute` 将检索其他构建的不同路径并检索其他 RSS 文件。
 
 ### execute()
 {: #execute }
@@ -111,25 +112,26 @@ public void execute(HttpUriRequest req, HttpServletResponse resultResponse)
 }
 ```
 
-* `HttpResponse RSSResponse = client.execute(host, req)`. We use our static HTTP client to execute the HTTP request and store the response.
-* `ServletOutputStream os = resultResponse.getOutputStream()`. This is the output stream to write a response to the client.
-* `resultResponse.addHeader("Content-Type", "application/json")`. As mentioned before, we chose to send the response as JSON.
-* `String json = XML.toJson(RSSResponse.getEntity().getContent())`. We used `org.apache.wink.json4j.utils.XML` to convert the XML RSS to a JSON string.
-* `os.write(json.getBytes(Charset.forName("UTF-8")))` the resulting JSON string is written to the output stream.
+* `HttpResponse RSSResponse = client.execute(host, req)`. 我们使用静态 HTTP 客户机来执行 HTTP 请求并存储响应。
+* `ServletOutputStream os = resultResponse.getOutputStream()`. 这是用于写入客户机响应的输出流。
+* `resultResponse.addHeader("Content-Type", "application/json")`. 如上所述，我们选择以 JSON 格式发送响应。
+* `String json = XML.toJson(RSSResponse.getEntity().getContent())`. 我们使用 `org.apache.wink.json4j.utils.XML` 将 XML RSS 转换为 JSON 字符串。
+* `os.write(json.getBytes(Charset.forName("UTF-8")))` 生成的 JSON 字符串将写入到输出流中。
 
-The output stream is then `flush`ed and `close`d.
+然后 `flush` 并 `close` 输出流。
 
-If `RSSResponse` is not `200 OK`, we write the status code and reason in the response instead.
+如果 `RSSResponse` 不是 `200 OK`，我们将在响应中写入状态码和原因。
 
-## Sample adapter
+## 样本适配器
+
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80)适配器 Maven 项目。
 
-The Adapters Maven project includes the **JavaHTTP** adapter described above.
+适配器 Maven 项目包含上面所述的 **JavaHTTP** 适配器。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
 
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaHTTP adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* 使用 Maven {{ site.data.keys.mf_cli }} 或您选择的 IDE 来[构建和部署 JavaHTTP 适配器](../../creating-adapters/)。
+* 要测试或调试适配器，请参阅[测试和调试适配器](../../testing-and-debugging-adapters)教程。
