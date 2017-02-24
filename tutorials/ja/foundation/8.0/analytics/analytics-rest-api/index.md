@@ -9,7 +9,7 @@ weight: 2
 ## 概説
 {: #overview }
 
-{{site.data.keys.mf_analytics_full }} は、分析データのインポート (POST) およびエクスポート (GET) において開発者を支援する REST API を提供します。
+{{ site.data.keys.mf_analytics_full }} は、分析データのインポート (POST) およびエクスポート (GET) において開発者を支援する REST API を提供します。
 
 ## ジャンプ先:
 {: #jump-to }
@@ -49,11 +49,12 @@ REST API メソッド | エンドポイント | 説明
 {: #try-it-out-on-swagger-docs }
 
 Swagger Docs 上にある Analytics REST API を実際に使用してみましょう。  
-{{site.data.keys.mf_server }} 構成で Analytics を有効にした状態で、`<ipaddress>:<port>/analytics-service` にアクセスします。
+{{ site.data.keys.mf_server }} 構成で Analytics を有効にした状態で、`<ipaddress>:<port>/analytics-service` にアクセスします。
 
-![{{site.data.keys.mf_analytics }} Swagger Docs UI](analytics-swagger.png)
+![{{ site.data.keys.mf_analytics }} Swagger Docs UI](analytics-swagger.png)
 
 **「命令の展開 (Expand Operations)」**をクリックすると、各メソッドの実装メモ、パラメーター、および応答メッセージを閲覧できます。
 
 > 警告: **「Try it out!」**を使用して送信されるデータはすべて、既にデータ・ストア内にあるデータに干渉する場合があります。特に実稼働環境へのデータ送信を試みていない場合は、`x-mfp-analytics-api-key` のテスト名を使用してください。
+
 ![Swagger Docs のテスト](test-swagger.png)
