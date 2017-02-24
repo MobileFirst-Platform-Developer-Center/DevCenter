@@ -32,7 +32,9 @@ MobileFirst Foundation をワークステーションに迅速にセットアッ
 {: #mobilefirst-developer-kit }
 {{site.data.keys.mf_dev_kit_short }} には、最小限の必要構成ですぐに開発できる環境が用意されています。キットは、{{site.data.keys.mf_server }} および {{site.data.keys.mf_console }}、MobileFirst Developer コマンド・ライン・インターフェース (CLI) のコンポーネントで構成されるほか、オプションで、ダウンロード用のクライアント SDK およびアダプター・ツールを用意しています。
 
-> **注:**インターネットにアクセスできないコンピューターで開発環境をセットアップする必要がある場合、オフラインでコンポーネントをインストールすることが可能です。「[How to set up an offline IBM MobileFirst development environment]({{site.baseurl}}/blog/2016/03/31/howto-set-up-an-offline-ibm-mobilefirst-8-0-development-environment)」を参照してください。### {{site.data.keys.mf_dev_kit_short }}Installer
+> **注:**インターネットにアクセスできないコンピューターで開発環境をセットアップする必要がある場合、オフラインでコンポーネントをインストールすることが可能です。「[How to set up an offline IBM MobileFirst development environment]({{site.baseurl}}/blog/2016/03/31/howto-set-up-an-offline-ibm-mobilefirst-8-0-development-environment)」を参照してください。
+
+### {{site.data.keys.mf_dev_kit_short }}Installer
 {: #developer-kit-installer }
 インストーラーでは、インターネット接続を利用できないローカル・インストール用のコンポーネントをパッケージ化しています。  
 コンポーネントは、{{site.data.keys.mf_console }} のダウンロード・センターから入手できます。

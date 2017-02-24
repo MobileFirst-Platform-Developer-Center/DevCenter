@@ -5,19 +5,19 @@ relevantTo: [ios,android,windows8,cordova]
 show_in_nav: false
 weight: 7
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-{{ site.data.keys.mf_app_center_full }}    是类似于通用应用商店的**移动应用程序存储库**，但其关注的是组织或团队的需求。它是一个专用应用商店。
+{{ site.data.keys.mf_app_center_full }} 是类似于通用应用商店的**移动应用程序存储库**，但其关注的是组织或团队的需求。它是一个专用应用商店。
 
 Application Center 有助于共享移动应用程序：
 
 * 您可以**共享反馈和评级**信息。  
 * 您可以使用访问控制表来限制可安装应用程序的人员。
 
-Application Center 可处理 {{ site.data.keys.product_adj }}    应用程序和非 {{ site.data.keys.product_adj }}    应用程序，并且支持任何 **iOS、Android**、**BlackBerry 6/7** 和 **Windows/Phone 8.x** 应用程序。
+Application Center 可处理 {{ site.data.keys.product_adj }} 应用程序和非 {{ site.data.keys.product_adj }} 应用程序，并且支持任何 **iOS、Android**、**BlackBerry 6/7** 和 **Windows/Phone 8.x** 应用程序。
 
 > **注：**使用 Test Flight 或 iTunes Connect 生成且用于在商店提交/验证 iOS 应用程序的归档/IPA 文件可能导致运行时崩溃/失败，请阅读博客 [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) 以了解更多信息。
-
 您可以在不同的上下文中使用 Application Center。例如：
 
 * 作为整个组织的企业应用商店。
@@ -36,7 +36,7 @@ Application Center 可处理 {{ site.data.keys.product_adj }}    应用程序和
 
 ## 安装和配置
 {: #installing-and-configuring }
-在使用 IBM Installation Manager 安装 {{ site.data.keys.mf_server }}  期间，安装 Application Center。
+在使用 IBM Installation Manager 安装 {{ site.data.keys.mf_server }} 期间，安装 Application Center。
 
 **先决条件：**在安装 Application Center 之前，必须已安装应用程序服务器和数据库：
 
@@ -47,7 +47,7 @@ Application Center 可处理 {{ site.data.keys.product_adj }}    应用程序和
 
 1. IBM Installation Manager 将引导您使用所选的数据库和应用程序服务器来安装 Application Center。
 
-    > 有关更多信息，请参阅有关[安装 {{ site.data.keys.mf_server }} ](../../installation-configuration) 的主题。
+    > 有关更多信息，请参阅有关[安装 {{ site.data.keys.mf_server }}](../../installation-configuration) 的主题。
 
     因为 iOS 7.1 仅支持 https 协议，所以如果您打算针对运行 iOS 7.1 或更高版本的设备分发应用程序，那么必须使用 SSL（至少使用 TLS v.1）来保护 Application Center 服务器。不推荐使用自签名证书，但这类证书可用于测试目的，前提是已将自签名 CA 证书分发到设备上。
 
@@ -58,19 +58,17 @@ Application Center 可处理 {{ site.data.keys.product_adj }}    应用程序和
 4. 此时，您可以配置用户认证。例如，可连接到 LDAP 存储库。
 
     > 有关更多信息，请参阅有关[在安装后配置 Application Center](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation) 的主题。
-
 5. 为 Android、iOS、BlackBerry 6/7 和 Windows Phone 8 准备移动式客户机
 
 移动式客户机是用于浏览目录和安装应用程序的移动应用程序。
 
 > **注：**对于生产安装，请考虑通过运行所提供的 Ant 任务来安装 Application Center：这可减少因更新 Application Center 而导致更新服务器的次数。
-
 ## 基于 Cordova 的 IBM AppCenter 客户机
 {: #cordova-based-ibm-appcenter-client }
 基于 Cordova 的 AppCenter 客户机项目位于`安装`目录中：**install_dir/ApplicationCenter/installer/CordovaAppCenterClient**。
 
-此项目仅基于 Cordova 框架，因此不依赖于 {{ site.data.keys.product }}    客户机/服务器 API。  
-由于这是标准 Cordova 应用程序，所以也不依赖于 {{ site.data.keys.mf_studio }}   。此应用程序针对 UI 使用 Dojo。
+此项目仅基于 Cordova 框架，因此不依赖于 {{ site.data.keys.product }} 客户机/服务器 API。  
+由于这是标准 Cordova 应用程序，所以也不依赖于 {{ site.data.keys.mf_studio }}。此应用程序针对 UI 使用 Dojo。
 
 请执行以下步骤以开始操作：
 
@@ -106,7 +104,6 @@ cordova build ios
 您可以进一步定制应用程序，例如，针对特定公司或需求来更新其用户界面。
 
 > **注：**虽然您可以自由地定制应用程序 UI 和行为，但此类更改不在 IBM 支持协议的服务范围内。
-
 #### Android
 {: #android }
 * 打开 Android Studio。
@@ -116,7 +113,6 @@ cordova build ios
 可能要花费一些时间。一旦完成，即可开始定制。
 
 > **注：**选择此项将会跳过弹出窗口上用于升级 gradle 版本的更新选项。请参阅 `grade-wrapper.properties` 以了解版本。
-
 #### iOS
 {: #ios }
 * 转至 **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**。
@@ -129,7 +125,6 @@ cordova build ios
 移动式客户机作为已编译的应用程序 (APK) 交付，并且位于 **install_dir/ApplicationCenter/installer/IBMApplicationCenter.apk**
 
 > **注：**如果使用 Cordova 框架来构建 Android 和 iOS AppCenter 客户机，请参阅[基于 Cordova 的 IBM AppCenter 客户机](#cordova-based-ibm-appcenter-client)。
-
 ### 对于 iPad 和 iPhone
 {: #for-ipad-and-iphone }
 1. 编译并签署源代码中提供的客户机应用程序。这是必需的操作。
@@ -139,10 +134,10 @@ cordova build ios
 3. 使用**运行为 → 在 MobileFirst Development Server 上运行**以构建该项目。
 
 4. 在 Xcode 中使用 Apple iOS Enterprise 概要信息构建和签署应用程序。
+  
 您可以在 Xcode 中手动打开生成的本机项目（在 **iphone\native** 中），或者右键单击 iPhone 文件夹并选择**运行为 → Xcode 项目**。此操作将生成项目并在 Xcode 中打开该项目。
 
 > **注：**如果使用 Cordova 框架来构建 Android 和 iOS AppCenter 客户机，请参阅[基于 Cordova 的 IBM AppCenter 客户机](#cordova-based-ibm-appcenter-client)。
-
 ### 对于 Blackberry
 {: #for-blackberry }
 * 要构建 BlackBerry 版本，您必须具有带有 BlackBerry SDK 6.0 的 BlackBerry Eclipse IDE（或带有 BlackBerry Java 插件的 Eclipse）。以 BlackBerry SDK 6.0 编译该应用程序时，该应用程序还会在 BlackBerry OS 7 上运行。
@@ -152,6 +147,7 @@ cordova build ios
 ### 对于 Windows Phone 8
 {: #for-windows-phone-8}
 1.  向 Microsoft 注册一个公司帐户。
+  
 Application Center 仅管理那些使用公司帐户随附的公司证书签署的公司应用程序。
 
 2. 以下位置中提供了 Windows Phone 版本的移动式客户机：**install\_dir/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap**
@@ -161,13 +157,10 @@ Application Center 仅管理那些使用公司帐户随附的公司证书签署�
 * 要在设备上安装公司应用程序，请先通过安装公司注册标记来向公司注册设备。
 
 > 有关公司帐户和注册标记的更多信息，请参阅 [Microsoft 开发人员 Web 站点 → Windows Phone 的企业应用分发](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) 页面。
-
 > 有关如何签署 Windows Phone 移动式客户机应用程序的更多信息，请访问 [Microsoft 开发人员 Web 站点](http://dev.windows.com/en-us/develop)。
-
 <br/>
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点：****不能**直接使用未签名的 `.xap` 文件。必须先使用从 Symantec 或 Microsoft 获取的公司证书来签署该文件，然后才能在设备上安装。
-
 ### 对于 Windows Store Apps for Windows 8.1 Pro
 {: #for-windows-store-apps-for-windows-81-pro }
 * **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** 文件包含 Application Center 客户机的可执行文件。将此文件分发到客户端计算机上并进行解压缩。其中包含可执行程序。

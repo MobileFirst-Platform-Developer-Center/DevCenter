@@ -11,7 +11,8 @@ weight: 1
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="building-apps">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-building-apps" aria-expanded="true" aria-controls="collapse-building-apps">アプリケーションのビルドの新機能</a></h4>
+                <a role="button" data-toggle="collapse" data-parent="#release-notes" href="#collapse-building-apps" aria-expanded="true" aria-controls="collapse-building-apps">アプリケーションのビルドの新機能</a>
+            </h4>
         </div>
 
         <div id="collapse-building-apps" class="panel-collapse collapse" role="tabpanel" aria-labelledby="building-apps">

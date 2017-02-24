@@ -5,16 +5,17 @@ relevantTo: [ios,android,windows8,cordova]
 show_in_nav: false
 weight: 7
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-{{site.data.keys.mf_app_center_full }}는 공용 앱 스토어와 유사한 **모바일 애플리케이션의 저장소**이지만 조직 또는 팀의 요구에 초점이 맞춰져 있습니다. 개인용 앱 스토어입니다. 
+{{ site.data.keys.mf_app_center_full }}는 공용 앱 스토어와 유사한 **모바일 애플리케이션의 저장소**이지만 조직 또는 팀의 요구에 초점이 맞춰져 있습니다. 개인용 앱 스토어입니다. 
 
 Application Center는 다음 모바일 애플리케이션을 쉽게 공유할 수 있습니다. 
 
 * **피드백 및 등급 정보를 공유**할 수 있습니다.   
 * 액세스 제어 목록을 사용하여 애플리케이션을 설치할 수 있는 사용자를 제한할 수 있습니다. 
 
-Application Center는 {{site.data.keys.product_adj }} 앱 및 비{{site.data.keys.product_adj }} 앱과 함께 작동하며 **iOS, Android**, **BlackBerry 6/7** 및 **Windows/Phone 8.x** 애플리케이션을 지원합니다. 
+Application Center는 {{ site.data.keys.product_adj }} 앱 및 비{{ site.data.keys.product_adj }} 앱과 함께 작동하며 **iOS, Android**, **BlackBerry 6/7** 및 **Windows/Phone 8.x** 애플리케이션을 지원합니다. 
 
 > **참고:** 스토어 제출/iOS 앱의 유효성 검증을 위해 Test Flight 또는 iTunes Connect를 사용하여 생성된 아카이브/IPA 파일은 런타임 충돌/실패를 야기할 수 있으며, 자세한 사항은 [IBM MobileFirst Foundation 8.0에서 앱 스토어 제출을 위해 iOS 앱 준비](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) 블로그를 읽어보십시오.
 
@@ -36,7 +37,7 @@ Application Center는 {{site.data.keys.product_adj }} 앱 및 비{{site.data.key
 
 ## 설치 및 구성
 {: #installing-and-configuring }
-Application Center는 IBM Installation Manager를 사용하는 {{site.data.keys.mf_server }} 설치의 일부로 설치됩니다. 
+Application Center는 IBM Installation Manager를 사용하는 {{ site.data.keys.mf_server }} 설치의 일부로 설치됩니다. 
 
 **전제조건:** Application Center를 설치하기 전에 애플리케이션 서버와 데이터베이스가 설치되어 있어야 합니다. 
 
@@ -47,7 +48,7 @@ Application Center는 IBM Installation Manager를 사용하는 {{site.data.keys.
 
 1. IBM Installation Manager는 데이터베이스와 애플리케이션 서버의 선택사항과 함께 Application Center의 설치를 안내합니다. 
 
-    > 자세한 정보는 [{{site.data.keys.mf_server }} 설치](../../installation-configuration)에 대한 주제를 참조하십시오. 
+    > 자세한 정보는 [{{ site.data.keys.mf_server }} 설치](../../installation-configuration)에 대한 주제를 참조하십시오. 
 
     iOS 7.1은 https 프로토콜만 지원하기 때문에 iOS 7.1 이상을 실행하는 디바이스용 앱을 분배할 계획이라면 SSL(최소한 TLS v.1 이상)을 사용하여 Application Center 서버의 보안을 설정해야 합니다. 자체 서명된 인증서는 권장하지 않지만, 디바이스에 자체 서명된 인증서가 분배되는 경우 테스트 목적으로 사용할 수 있습니다. 
 
@@ -69,8 +70,8 @@ Application Center는 IBM Installation Manager를 사용하는 {{site.data.keys.
 {: #cordova-based-ibm-appcenter-client }
 Cordova 기반 AppCenter 클라이언트 프로젝트는 **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**의 `install` 디렉토리에 있습니다. 
 
-이 프로젝트는 Cordova 프레임워크만을 기반으로 하므로 {{site.data.keys.product }} 클라이언트/서버 API에 대한 종속성이 없습니다.   
-이 앱은 표준 Cordova 앱이므로 {{site.data.keys.mf_studio }}에 대한 종속성도 없습니다. 이 앱은 UI를 위해 Dojo를 사용합니다. 
+이 프로젝트는 Cordova 프레임워크만을 기반으로 하므로 {{ site.data.keys.product }} 클라이언트/서버 API에 대한 종속성이 없습니다.   
+이 앱은 표준 Cordova 앱이므로 {{ site.data.keys.mf_studio }}에 대한 종속성도 없습니다. 이 앱은 UI를 위해 Dojo를 사용합니다. 
 
 시작하려면 아래 단계를 따르십시오. 
 
