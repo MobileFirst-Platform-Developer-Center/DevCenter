@@ -5,7 +5,7 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Examinez attentivement la façon dont les éléments des fonctions et des API supprimées affectent votre environnement {{site.data.keys.product_full }}.
+Examinez attentivement la façon dont les éléments des fonctions et des API supprimées affectent votre environnement {{ site.data.keys.product_full }}.
 
 #### Accéder à
 {: #jump-to }
@@ -15,7 +15,7 @@ Examinez attentivement la façon dont les éléments des fonctions et des API su
 
 ## Fonctions abandonnées et fonctions absentes de la version 8.0
 {: #dicontinued-features-and-features-that-are-not-included-in-v-80 }
-{{site.data.keys.product }}La version 8.0 a été simplifiée de manière radicale par rapport à la version précédente. En conséquences, certaines fonctions de la version 7.1 ne sont pas suivies dans la version 8.0. Dans la plupart des cas, une autre manière de les implémenter est proposée. Ces fonctions sont signalées comme abandonnées. D'autres fonctions de la version V7.1. n'ont pas été reconduites en version 8.0, sans que cela soit dû au remaniement de celle-ci. Pour les distinguer des fonctions abandonnées à partir de la version 8.0, elles sont signalées comme non disponibles en version 8.0.
+{{ site.data.keys.product }}La version 8.0 a été simplifiée de manière radicale par rapport à la version précédente. En conséquences, certaines fonctions de la version 7.1 ne sont pas suivies dans la version 8.0. Dans la plupart des cas, une autre manière de les implémenter est proposée. Ces fonctions sont signalées comme abandonnées. D'autres fonctions de la version V7.1. n'ont pas été reconduites en version 8.0, sans que cela soit dû au remaniement de celle-ci. Pour les distinguer des fonctions abandonnées à partir de la version 8.0, elles sont signalées comme non disponibles en version 8.0.
 
 <table class="table table-striped">
     <tr>
@@ -23,12 +23,12 @@ Examinez attentivement la façon dont les éléments des fonctions et des API su
         <td>Statut et chemin de remplacement</td>
     </tr>
     <tr>
-        <td><p>MobileFirst Studio est remplacé par le plug-in {{site.data.keys.mf_studio }} pour Eclipse.</p></td>
-        <td><p>Remplacée par le plug-in {{site.data.keys.mf_studio }} pour Eclipse. Montée en puissance avec les plug-in de communauté et standard Eclipse. Vous pouvez développer des applications hybrides directement dans l'interface de ligne de commande Apache Cordova ou à l'aide d'un environnement de développement intégré Cordova, par exemple Visual Studio Code, Eclipse ou IntelliJ. Pour davantage d'informations sur l'utilisation d'Eclipse en tant qu'environnement IDE Cordova, voir <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">///IBM {{site.data.keys.mf_studio }} plug-in for managing Cordova projects in Eclipse</a>.</p>
+        <td><p>MobileFirst Studio est remplacé par le plug-in {{ site.data.keys.mf_studio }} pour Eclipse.</p></td>
+        <td><p>Remplacée par le plug-in {{ site.data.keys.mf_studio }} pour Eclipse. Montée en puissance avec les plug-in de communauté et standard Eclipse. Vous pouvez développer des applications hybrides directement dans l'interface de ligne de commande Apache Cordova ou à l'aide d'un environnement de développement intégré Cordova, par exemple Visual Studio Code, Eclipse ou IntelliJ. Pour davantage d'informations sur l'utilisation d'Eclipse en tant qu'environnement IDE Cordova, voir <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">IBM {{ site.data.keys.mf_studio }} plug-in for managing Cordova projects in Eclipse</a>.</p>
 
         <p>Vous pouvez développer des adaptateurs avec Apache Maven ou un environnement IDE Maven tel qu'Eclipse, IntelliJ ou autre. Pour plus d'informations sur le développement des adaptateurs, voir la <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">catégorie Adaptateurs</a>. Pour en savoir plus sur l'utilisation d'Eclipse en tant qu'IDE Maven, consultez le <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">tutoriel Developing Adapters in Eclipse</a>.</p>
 
-        <p>Installez {{site.data.keys.mf_dev_kit_full }} pour tester les adaptateurs et les applications avec {{site.data.keys.mf_server }}. Vous pouvez également accéder à des outils de développement et des SDK {{site.data.keys.product_adj }}, si vous ne voulez pas les télécharger à partir des référentiels Internet tels que NPM, Maven, Cocoapod ou NuGet. Pour plus d'informations sur {{site.data.keys.mf_dev_kit }}, voir <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{site.data.keys.mf_dev_kit }}</a>.</p>
+        <p>Installez {{ site.data.keys.mf_dev_kit_full }} pour tester les adaptateurs et les applications avec {{ site.data.keys.mf_server }}. Vous pouvez également accéder à des outils de développement et des SDK {{ site.data.keys.product_adj }}, si vous ne voulez pas les télécharger à partir des référentiels Internet tels que NPM, Maven, Cocoapod ou NuGet. Pour plus d'informations sur {{ site.data.keys.mf_dev_kit }}, voir <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{ site.data.keys.mf_dev_kit }}</a>.</p>
         </td>
     </tr>
     <tr>
@@ -37,8 +37,8 @@ Examinez attentivement la façon dont les éléments des fonctions et des API su
         </td>
     </tr>
     <tr>
-        <td><p>Sencha Touch ne peut plus être importé dans des projets {{site.data.keys.product_adj }} pour des applications hybrides.</p></td>
-        <td><p>Abandonnée. Les applications hybrides {{site.data.keys.product_adj }} sont développées directement avec Apache Cordova, et les fonctions de {{site.data.keys.product_adj }} sont fournies en tant que plug-in Cordova. Consultez la documentation Sencha Touch pour intégrer Sencha Touch et Cordova.</p>
+        <td><p>Sencha Touch ne peut plus être importé dans des projets {{ site.data.keys.product_adj }} pour des applications hybrides.</p></td>
+        <td><p>Abandonnée. Les applications hybrides {{ site.data.keys.product_adj }} sont développées directement avec Apache Cordova, et les fonctions de {{ site.data.keys.product_adj }} sont fournies en tant que plug-in Cordova. Consultez la documentation Sencha Touch pour intégrer Sencha Touch et Cordova.</p>
         </td>
     </tr>
     <tr>
@@ -51,7 +51,7 @@ Examinez attentivement la façon dont les éléments des fonctions et des API su
         <td><p>Non disponible en version 8.0.</p></td>
     </tr>
     <tr>
-        <td><p>Adaptateurs avec configuration dépendante des sessions. Dans V7.1.0, vous pouvez configurer {{site.data.keys.mf_server }} pour fonctionner en mode indépendant de session (par défaut) ou en mode dépendant de session. A partir de la version 8.0, le mode dépendant de session n'est plus pris en charge. Le serveur est intrinsèquement indépendant de la session HTTP, et aucune configuration associée n'est requise.</p></td>
+        <td><p>Adaptateurs avec configuration dépendante des sessions. Dans V7.1.0, vous pouvez configurer {{ site.data.keys.mf_server }} pour fonctionner en mode indépendant de session (par défaut) ou en mode dépendant de session. A partir de la version 8.0, le mode dépendant de session n'est plus pris en charge. Le serveur est intrinsèquement indépendant de la session HTTP, et aucune configuration associée n'est requise.</p></td>
         <td><p>Abandonnée.</p></td>
     </tr>
     <tr>
@@ -147,35 +147,35 @@ Examinez attentivement la façon dont les éléments des fonctions et des API su
         <td>Non disponible en version 8.0.</td>
     </tr>
     <tr>
-        <td>Cloudant utilisé comme base de données pour {{site.data.keys.mf_server }} n'est pas pris en charge en version 8.0.	</td>
+        <td>Cloudant utilisé comme base de données pour {{ site.data.keys.mf_server }} n'est pas pris en charge en version 8.0.	</td>
         <td>Non disponible en version 8.0.</td>
     </tr>
     <tr>
-        <td>Géolocalisation : la prise en charge de la géolocalisation n'est plus disponible dans {{site.data.keys.product }} v8.0. L'API REST pour les alarmes et les médiateurs est abandonnée. Les API côté client et côté serveur WL.Geo et WL.Device sont abandonnées.	</td>
+        <td>Géolocalisation : la prise en charge de la géolocalisation n'est plus disponible dans {{ site.data.keys.product }} v8.0. L'API REST pour les alarmes et les médiateurs est abandonnée. Les API côté client et côté serveur WL.Geo et WL.Device sont abandonnées.	</td>
         <td>Abandonnée. Utilisez l'API de périphérique natif ou les plug-in Cordova tiers pour la géolocalisation.</td>
     </tr>
     <tr>
-        <td>La fonction {{site.data.keys.product_adj }} Data
+        <td>La fonction {{ site.data.keys.product_adj }} Data
 Proxy est abandonnée. Les API Cloudant IMFData et CloudantToolkit sont également abandonnées.	</td>
         <td>Abandonnée. Pour plus d'informations sur le remplacement des API IMFData et CloudantToolkit dans vos applications, voir la rubrique Migration d'applications qui stockent des données mobiles dans Cloudant à l'aide du kit de développement de logiciels IMFData ou Cloudant.</td>
     </tr>
     <tr>
-        <td>Le kit de développement de logiciels IBM Tealeaf n'est plus intégré à {{site.data.keys.product }}.	</td>
+        <td>Le kit de développement de logiciels IBM Tealeaf n'est plus intégré à {{ site.data.keys.product }}.	</td>
         <td>Abandonnée. Utilisez le kit de développement de logiciels IBM Tealeaf. Pour plus d'informations, voir <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/AndroidGuide1010/CFs/TLAnddLggFrwkInstandImpl/TealeafAndroidLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-1-0&lang=en">Tealeaf installation and implementation in an Android application</a> et <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/iOSGuide1010/CFs/TLiOSLggFrwkInstandImpl/TealeafIOSLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-3-1&lang=en">Tealeaf iOS Logging Framework Installation and Implementation</a> dans la documentation IBM Tealeaf Customer Experience.</td>
     </tr>
     <tr>
-        <td>{{site.data.keys.mf_test_workbench_full }} n'est pas intégré à {{site.data.keys.product }}</td>
+        <td>{{ site.data.keys.mf_test_workbench_full }} n'est pas intégré à {{ site.data.keys.product }}</td>
         <td>Abandonnée.</td>
     </tr>
     <tr>
-        <td>BlackBerry, Adobe AIR et Windows Silverlight ne sont pas pris en charge par {{site.data.keys.product }} v8.0. Aucun SDK n'est fourni pour ces plateformes.	</td>
+        <td>BlackBerry, Adobe AIR et Windows Silverlight ne sont pas pris en charge par {{ site.data.keys.product }} v8.0. Aucun SDK n'est fourni pour ces plateformes.	</td>
         <td>Abandonnée.</td>
     </tr>
 </table>
 
 ## Modifications des API côté serveur
 {: server-side-api-changes }
-Pour faire migrer le côté serveur de votre application {{site.data.keys.product_adj }}, tenez compte des modifications apportées aux API.  
+Pour faire migrer le côté serveur de votre application {{ site.data.keys.product_adj }}, tenez compte des modifications apportées aux API.  
 Les tableaux suivants montrent les éléments des API côté serveur abandonnés en version 8.0, les éléments obsolètes des mêmes API et les chemins de migration proposés. Pour plus d'informations sur la migration du côté serveur de votre application, 
 
 ### Eléments des API JavaScript abandonnés en version 8.0
@@ -204,9 +204,9 @@ Les tableaux suivants montrent les éléments des API côté serveur abandonnés
 | Elément d'API                                | Chemin de remplacement                               |
 |-------------------------------------------|------------------------------------------------|
 | `WL.Server.getUserNotificationSubscription`, `WL.Server.notifyAllDevices`, `WL.Server.sendMessage`, `WL.Server.notifyDevice`, `WL.Server.notifyDeviceSubscription`, `WL.Server.notifyAll`, `WL.Server.createDefaultNotification`, `WL.Server.submitNotification` 	| Pour effectuer une migration des notifications d'événement basées sur la source aux notifications basées sur l'étiquette, voir Migration vers les notifications push à partir de notifications basées sur la source d'événement. |
-| `WL.Server.subscribeSMS`	                | Utilisez l'API REST Push Device Registration (POST) pour enregistrer le terminal. Pour envoyer et recevoir des notifications par SMS, indiquez un numéro de téléphone dans le contenu lors de l'appel de l'API.                               |
-| `WL.Server.unsubscribeSMS`	                | Utilisez l'API REST Push Device Registration (DELETE) pour annuler l'enregistrement du terminal. |
-| `WL.Server.getSMSSubscription`	            | Utilisez l'API REST Push Device Registration GET) pour obtenir les enregistrements de terminal. |
+| `WL.Server.subscribeSMS`	                | Utilisez l'API REST Push Device Registration (POST) pour enregistrer l'appareil. Pour envoyer et recevoir des notifications par SMS, indiquez un numéro de téléphone dans le contenu lors de l'appel de l'API.                               |
+| `WL.Server.unsubscribeSMS`	                | Utilisez l'API REST Push Device Registration (DELETE) pour annuler l'enregistrement de l'appareil. |
+| `WL.Server.getSMSSubscription`	            | Utilisez l'API REST Push Device Registration GET) pour obtenir les enregistrements d'appareil. |
 
 #### Services de localisation
 {: #location-services }
@@ -250,12 +250,12 @@ Les tableaux suivants montrent les éléments des API côté serveur abandonnés
 | Interface `ConfigurationAPI` dans le package `com.worklight.adapters.rest.api` | Utilisez l'interface `ConfigurationAPI` dans le package `com.ibm.mfp.adapter.api` à la place. |
 | Annotation `OAuthSecurity` dans le package `com.worklight.core.auth` | Utilisez l'annotation `OAuthSecurity` dans le package `com.ibm.mfp.adapter.api` à la place. | 
 | Classe `MFPJAXRSApplication` dans le package `com.worklight.wink.extensions` | Utilisez la classe `MFPJAXRSApplication` dans le package `com.ibm.mfp.adapter.api` à la place. |
-| Interface `WLServerAPI` dans le package `com.worklight.adapters.rest.api` | Utilisez l'annotation JAX-RS `Context` pour accéder directement aux interfaces d'API {{site.data.keys.product_adj }}. |
-| Classe `WLServerAPIProvider` dans le package `com.worklight.adapters.rest.api` | Utilisez l'annotation JAX-RS `Context` pour accéder directement aux interfaces d'API {{site.data.keys.product_adj }}. | 
+| Interface `WLServerAPI` dans le package `com.worklight.adapters.rest.api` | Utilisez l'annotation JAX-RS `Context` pour accéder directement aux interfaces d'API {{ site.data.keys.product_adj }}. |
+| Classe `WLServerAPIProvider` dans le package `com.worklight.adapters.rest.api` | Utilisez l'annotation JAX-RS `Context` pour accéder directement aux interfaces d'API {{ site.data.keys.product_adj }}. | 
 
 ## Modifications d'API côté client
 {: #client-side-api-changes }
-Les modifications suivantes dans les API sont pertinentes pour la migration de votre application client {{site.data.keys.product_adj }}.  
+Les modifications suivantes dans les API sont pertinentes pour la migration de votre application client {{ site.data.keys.product_adj }}.  
 Les tableaux suivants montrent les éléments des API côté client abandonnés en version 8.0.0, les éléments obsolètes des mêmes API et les chemins de migration proposés.
 
 ### API JavaScript
@@ -265,14 +265,14 @@ Les API JavaScript qui affectent l'interface utilisateur ne sont plus prises en 
 | Elément d'API           | Chemin de migration                           |
 |-----------------------|------------------------------------------|
 | `WL.BusyIndicator`, `WL.OptionsMenu`, `WL.TabBar`, `WL.TabBarItem` | Utilisez des plug-in Cordova ou 5 éléments HTML. |
-| `WL.App.close` | Gérez cet événement en dehors de {{site.data.keys.product_adj }}. |
+| `WL.App.close` | Gérez cet événement en dehors de {{ site.data.keys.product_adj }}. |
 | `WL.App.copyToClipboard()` | Utilisez les plug-in Cordova qui fournissent cette fonctionnalité. |
 | `WL.App.openUrl(url, target, options)` | Utilisez les plug-in Cordova qui fournissent cette fonctionnalité. **Remarque :** A titre d'information, le plug-in Cordova **InAppBrowser** fournit cette fonction. |
 | `WL.App.overrideBackButton(callback)`, `WL.App.resetBackButton()` | Utilisez les plug-in Cordova qui fournissent cette fonctionnalité. **Remarque :** A titre d'information, le plug-in Cordova **backbutton** fournit cette fonction. |
 | `WL.App.getDeviceLanguage()` | Utilisez les plug-in Cordova qui fournissent cette fonctionnalité. **Remarque :** A titre d'information, le plug-in Cordova **cordova-plugin-globalization** fournit cette fonction. | 
 | `WL.App.getDeviceLocale()` | Utilisez les plug-in Cordova qui fournissent cette fonctionnalité. **Remarque :** A titre d'information, le plug-in Cordova **cordova-plugin-globalization** fournit cette fonction. |
 | `WL.App.BackgroundHandler` | Pour exécuter une fonction de gestionnaire personnalisée, utiliser le programme d'écoute d'événement de mise en pause Cordova. Utilisez un plug-in Cordova qui fournit la confidentialité et empêche les systèmes et utilisateurs iOS et Android de prendre des clichés ou des captures d'écran. Pour plus d'informations, voir la description **[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)**. |
-| `WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` | Les fonctions ont été fournies pour prendre en charge la plateforme Adobe AIR, non prise en charge par {{site.data.keys.product }} V8.0.0. |
+| `WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` | Les fonctions ont été fournies pour prendre en charge la plateforme Adobe AIR, non prise en charge par {{ site.data.keys.product }} V8.0.0. |
 | `WL.Toast.show(string)` | Utilisez les plug-in Cordova pour Toast. |
 
 Cet ensemble d'API n'est plus pris en charge en v8.0.
@@ -301,7 +301,7 @@ Cet ensemble d'API n'est plus pris en charge en v8.0.
 | `WL.SecurityUtils.remoteRandomString(bytes)` | Créez un adaptateur personnalisé qui fournit la même fonctionnalité. |
 | `WL.Client.getAppProperty(property)` | Vous pouvez extraite la propriété de version d'application à l'aide du plug-in **cordova-plugin-appversion**. La version renvoyée est la version d'application native (Android et iOS uniquement). | 
 | `WL.Client.Push.*` | Utilisez l'API push côté client JavaScript à partir du plug-in **cordova-plugin-mfp-push**. | 
-| `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` | Utilisez `MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)` pour enregistrer le terminal pour push et SMS. |
+| `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` | Utilisez `MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)` pour enregistrer l'appareil pour push et SMS. |
 | `WLAuthorizationManager.obtainAuthorizationHeader(scope)` | Utilisez `WLAuthorizationManager.obtainAccessToken` dans le but d'obtenir un jeton pour la portée demandée. |
 | `WLClient.getLastAccessToken(scope)` | Utilisez `WLAuthorizationManager.obtainAccessToken` | 
 | `WLClient.getLoginName()`, `WL.Client.getUserName(realm)` | Pas de remplacement | 
@@ -309,12 +309,12 @@ Cet ensemble d'API n'est plus pris en charge en v8.0.
 | `WL.Client.isUserAuthenticated(realm)` | Pas de remplacement |
 | `WLUserAuth.deleteCertificate(provisioningEntity)` | Pas de remplacement | 
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | Pas de remplacement |
-| `WL.Client.createChallengeHandler(realmName)` | Pour créer un gestionnaire de demandes d'authentification afin de traiter les demandes d'authentification de passerelle personnalisées, utilisez `WL.Client.createGatewayChallengeHandler(gatewayName)`. Pour créer un gestionnaire de demandes d'authentification afin de traiter des demandes d'authentification de contrôle de sécurité {{site.data.keys.product_adj }}, utilisez `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. | 
+| `WL.Client.createChallengeHandler(realmName)` | Pour créer un gestionnaire de demandes d'authentification afin de traiter les demandes d'authentification de passerelle personnalisées, utilisez `WL.Client.createGatewayChallengeHandler(gatewayName)`. Pour créer un gestionnaire de demandes d'authentification afin de traiter des demandes d'authentification de contrôle de sécurité {{ site.data.keys.product_adj }}, utilisez `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. | 
 | `WL.Client.createWLChallengeHandler(realmName)` | Utilisez `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. | 
 | `challengeHandler.isCustomResponse()` où challengeHandler est un objet de gestionnaire de demandes d'authentification renvoyé par `WL.Client.createChallengeHandler()` | Utilisez `gatewayChallengeHandler.canHandleResponse()` où `gatewayChallengeHandler` est un objet de gestionnaire de demandes d'authentification renvoyé par `WL.Client.createGatewayChallengeHandler()`. | 
 | `wlChallengeHandler.processSucccess()` où `wlChallengeHandler` est un objet de gestionnaire de demandes d'authentification renvoyé par `WL.Client.createWLChallengeHandler()` | Utilisez `securityCheckChallengeHandler.handleSuccess()` où `securityCheckChallengeHandler` est un objet de gestionnaire de demandes d'authentification renvoyé par `WL.Client.createSecurityCheckChallengeHandler()`. | 
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implémentez une logique similaire dans votre gestionnaire de demandes d'authentification. Pour les gestionnaires de demandes d'authentification de passerelle personnalisés, utilisez un objet de gestionnaire de demandes d'authentification renvoyé par `WL.Client.createGatewayChallengeHandler()`. Pour les gestionnaires de demandes d'authentification de contrôle de sécurité {{site.data.keys.product_adj }}, utilisez un objet de gestionnaire de demandes d'authentification renvoyé par `WL.Client.createSecurityCheckChallengeHandler()`. | 
-| `WL.Client.createProvisioningChallengeHandler()` | Pas de remplacement. La mise à disposition de terminal est maintenant traitée automatiquement par l'infrastructure de sécurité. | 
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implémentez une logique similaire dans votre gestionnaire de demandes d'authentification. Pour les gestionnaires de demandes d'authentification de passerelle personnalisés, utilisez un objet de gestionnaire de demandes d'authentification renvoyé par `WL.Client.createGatewayChallengeHandler()`. Pour les gestionnaires de demandes d'authentification de contrôle de sécurité {{ site.data.keys.product_adj }}, utilisez un objet de gestionnaire de demandes d'authentification renvoyé par `WL.Client.createSecurityCheckChallengeHandler()`. | 
+| `WL.Client.createProvisioningChallengeHandler()` | Pas de remplacement. La mise à disposition d'appareil est maintenant traitée automatiquement par l'infrastructure de sécurité. | 
 
 #### API JavaScript dépréciées
 {: #deprecated-javascript-apis }
@@ -348,7 +348,7 @@ Cet ensemble d'API n'est plus pris en charge en v8.0.
 | `WLSimpleSharedData.setSharedToken(myName, myValue)`, `WLSimpleSharedData.getSharedToken(myName)`, `WLSimpleSharedData.clearSharedToken(myName)` | Utilisez les API Android pour partager des jetons entre les applications. |
 | `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | Pas de remplacement |
 | `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | Utilisez `BaseChallengeHandler.cancel()` | 
-| `ChallengeHandler` | Pour les demandes d'authentification de passerelle personnalisées, utilisez `GatewayChallengeHandler`. Pour les demandes d'authentification de contrôle de sécurité {{site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler` | Pour les demandes d'authentification de passerelle personnalisées, utilisez `GatewayChallengeHandler`. Pour les demandes d'authentification de contrôle de sécurité {{ site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler`. |
 | `WLChallengeHandler` | Utilisez `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler.isCustomResponse()` | Utilisez `GatewayChallengeHandler.canHandleResponse()`. | 
 | `ChallengeHandler.submitAdapterAuthentication` | Implémentez une logique similaire dans votre gestionnaire de demandes d'authentification. Pour les gestionnaires de demandes d'authentification de passerelle personnalisés, utilisez `GatewayChallengeHandler`. |
@@ -377,7 +377,7 @@ Cet ensemble d'API n'est plus pris en charge en v8.0.
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | Pas de remplacement. Le client MFP autorise des redirections circulaires. | 
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | Retiré en raison des dépendances Apache HTTP Client dépréciées. Créez votre propre demande afin de disposer d'un contrôle complet sur la demande et la réponse. |
 
-#### Le package `com.worklight.androidgap.api` fournit la fonctionnalité de plateforme Android pour les applications Cordova. Dans {{site.data.keys.product }}, un certain nombre de modifications a été effectué afin d'assurer la prise en charge de l'intégration Cordova.
+#### Le package `com.worklight.androidgap.api` fournit la fonctionnalité de plateforme Android pour les applications Cordova. Dans {{ site.data.keys.product }}, un certain nombre de modifications a été effectué afin d'assurer la prise en charge de l'intégration Cordova.
 {: #comworklightandroidgapapi }
 
 | Elément d'API           | Chemin de migration                           |
@@ -408,11 +408,11 @@ Cet ensemble d'API n'est plus pris en charge en v8.0.
 | `[WLClient (void) logActivity:(NSString *) activityType]` | Retiré. Utilisez un consignateur Objective C. |
 | `[WLSimpleDataSharing setSharedToken: myName value: myValue]`, `[WLSimpleDataSharing getSharedToken: myName]]`, `[WLSimpleDataSharing clearSharedToken: myName]` | Utilisez les API OS pour partager des jetons entre les applications. |
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | Utilisez `BaseChallengeHandler.cancel()`. |
-| `BaseProvisioningChallengeHandler` | Pas de remplacement. La mise à disposition de terminal est maintenant traitée automatiquement par l'infrastructure de sécurité. | 
-| `ChallengeHandler` | Pour les demandes d'authentification de passerelle personnalisées, utilisez `GatewayChallengeHandler`. Pour les demandes d'authentification de contrôle de sécurité {{site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler`. |
+| `BaseProvisioningChallengeHandler` | Pas de remplacement. La mise à disposition d'appareil est maintenant traitée automatiquement par l'infrastructure de sécurité. | 
+| `ChallengeHandler` | Pour les demandes d'authentification de passerelle personnalisées, utilisez `GatewayChallengeHandler`. Pour les demandes d'authentification de contrôle de sécurité {{ site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler`. |
 | `WLChallengeHandler` | Utilisez `SecurityCheckChallengeHandler`. | 
 | `ChallengeHandler.isCustomResponse()` | Utilisez `GatewayChallengeHandler.canHandleResponse()`. | 
-| `ChallengeHandler.submitAdapterAuthentication` | Implémentez une logique similaire dans votre gestionnaire de demandes d'authentification. Pour les gestionnaires de demandes d'authentification de passerelle personnalisés, utilisez `GatewayChallengeHandler`. Pour les gestionnaires de demandes d'authentification de contrôle de sécurité {{site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler.submitAdapterAuthentication` | Implémentez une logique similaire dans votre gestionnaire de demandes d'authentification. Pour les gestionnaires de demandes d'authentification de passerelle personnalisés, utilisez `GatewayChallengeHandler`. Pour les gestionnaires de demandes d'authentification de contrôle de sécurité {{ site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler`. |
 
 ### API Windows C#
 {: #windows-c-apis }
@@ -421,10 +421,10 @@ Cet ensemble d'API n'est plus pris en charge en v8.0.
 
 | Elément d'API           | Chemin de migration                           |
 |-----------------------|------------------------------------------|
-| `ChallengeHandler` | Pour les demandes d'authentification de passerelle personnalisées, utilisez `GatewayChallengeHandler`. Pour les demandes d'authentification de contrôle de sécurité {{site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler` | Pour les demandes d'authentification de passerelle personnalisées, utilisez `GatewayChallengeHandler`. Pour les demandes d'authentification de contrôle de sécurité {{ site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler. isCustomResponse()` | Utilisez `GatewayChallengeHandler.canHandleResponse()`. | 
-| `ChallengeHandler.submitAdapterAuthentication` | Implémentez une logique similaire dans votre gestionnaire de demandes d'authentification. Pour les gestionnaires de demandes d'authentification de passerelle personnalisés, utilisez `GatewayChallengeHandler`. Pour les gestionnaires de demandes d'authentification de contrôle de sécurité {{site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler`. | 
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | Pour les gestionnaires de demandes d'authentification de passerelle personnalisées, utilisez`GatewayChallengeHandler.Shouldcancel()`. Pour les gestionnaires de demandes d'authentification de contrôle de sécurité {{site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler.ShouldCancel()`. | 
+| `ChallengeHandler.submitAdapterAuthentication` | Implémentez une logique similaire dans votre gestionnaire de demandes d'authentification. Pour les gestionnaires de demandes d'authentification de passerelle personnalisés, utilisez `GatewayChallengeHandler`. Pour les gestionnaires de demandes d'authentification de contrôle de sécurité {{ site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler`. | 
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | Pour les gestionnaires de demandes d'authentification de passerelle personnalisées, utilisez`GatewayChallengeHandler.Shouldcancel()`. Pour les gestionnaires de demandes d'authentification de contrôle de sécurité {{ site.data.keys.product_adj }}, utilisez `SecurityCheckChallengeHandler.ShouldCancel()`. | 
 | `WLAuthorizationManager` | Utilisez `WorklightClient.WorklightAuthorizationManager` à la place. | 
 | `WLChallengeHandler` | Utilisez `SecurityCheckChallengeHandler`. |
 | `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | Utilisez `SecurityCheckChallengeHandler.ShouldCancel()`. | 

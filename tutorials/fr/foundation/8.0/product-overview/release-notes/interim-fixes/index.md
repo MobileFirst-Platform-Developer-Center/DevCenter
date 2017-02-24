@@ -6,13 +6,13 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Les correctifs temporaires fournissent des modules de correction et de mises à jour permettant de corriger des problèmes et de maintenir {{site.data.keys.product_full }} à jour pour les nouvelles éditions des systèmes d'exploitation mobiles.
+Les correctifs temporaires fournissent des modules de correction et de mises à jour permettant de corriger des problèmes et de maintenir {{ site.data.keys.product_full }} à jour pour les nouvelles éditions des systèmes d'exploitation mobiles.
 
 Les correctifs temporaires sont cumulatifs. Lorsque vous téléchargez le dernier correctif temporaire v8.0, vous obtenez tous les correctifs des correctifs temporaires antérieurs
 
 Téléchargez et installez le dernier correctif temporaire pour obtenir tous les correctifs décrits dans les sections ci-après. Si vous installez des correctifs antérieurs, vous n'obtiendrez peut-être pas tous les correctifs décrits ci-après.
 
-> Pour obtenir la liste des éditions de correctif temporaire de {{site.data.keys.product }} 8.0, [voir ces articles de blogue]({{site.baseurl}}/blog/tag/iFix_8.0/).
+> Pour obtenir la liste des éditions de correctif temporaire de {{ site.data.keys.product }} 8.0, [voir ces articles de blogue]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
 Pour un numéro d'APAR répertorié, vous pouvez confirmer qu'un correctif temporaire possède cette fonction en recherchant ce numéro d'APAR dans le fichier README du correctif temporaire.
 
@@ -20,13 +20,23 @@ Pour un numéro d'APAR répertorié, vous pouvez confirmer qu'un correctif tempo
 {: #licensing }
 #### Octroi de licence PVU
 {: #pvu-licensing }
-Une nouvelle offre, {{site.data.keys.product }} Extension V8.0.0, est disponible via l'octroi de licence PVU (unité de valeur par coeur de processeur). Pour plus d'informations sur l'octroi de licence par unité de valeur par coeur de processeur pour {{site.data.keys.product }} Extension, voir [Licensing {{site.data.keys.product_adj }}](../../licensing).
+Une nouvelle offre, {{ site.data.keys.product }} Extension V8.0.0, est disponible via l'octroi de licence PVU (unité de valeur par coeur de processeur). Pour
+plus d'informations sur l'octroi de licence par unité de valeur par coeur de
+processeur pour {{ site.data.keys.product }} Extension, voir
+[Octroi de licence dans {{ site.data.keys.product_adj }}](../../licensing).
 
 ### Applications Web
 {: #web-applications }
-#### Enregistrement d'applications Web à partir de l'{{site.data.keys.mf_cli }} (APAR PI65327)
+#### Enregistrement d'applications Web à partir de
+l'interface de ligne de commande {{ site.data.keys.mf_cli }} (APAR PI65327)
 {: #registering-web-applications-from-the-mobilefirst-cli-apar-pi65327 }
-Vous pouvez désormais enregistrer des applications Web client sur {{site.data.keys.mf_server }} en utilisant l'{{site.data.keys.mf_cli }} (mfpdev) à la place de la console {{site.data.keys.mf_console }}. Pour plus d'informations, voir la rubrique Enregistrement d'applications Web à partir de l'{{site.data.keys.mf_cli }}.
+Vous pouvez désormais enregistrer des applications Web client sur
+{{ site.data.keys.mf_server }} en utilisant
+l'interface de ligne de commande {{ site.data.keys.mf_cli }} (mfpdev) à la
+place de la
+console {{ site.data.keys.mf_console }}. Pour plus d'informations, voir
+la rubrique Enregistrement d'applications Web à partir de
+l'interface de ligne de commande {{ site.data.keys.mf_cli }}.
 
 ### Applications Cordova
 {: #cordova-applications }
@@ -51,4 +61,7 @@ Les modifications suivantes ont été apportées afin d'améliorer la facilité 
 {: #adapters }
 #### Commandes `mfpdev push` et `pull` ajoutées pour les configurations d'adaptateur Java et JavaScript
 {: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
-Vous pouvez utiliser l'{{site.data.keys.mf_cli }} pour insérer des configurations d'adaptateur Java et JavaScript sur le serveur {{site.data.keys.mf_server }} et extraire des configurations d'adaptateur du serveur {{site.data.keys.mf_server }}.
+Vous pouvez utiliser l'interface de ligne de
+commande {{ site.data.keys.mf_cli }}
+pour insérer des
+configurations d'adaptateur Java et JavaScript sur le serveur {{ site.data.keys.mf_server }} et extraire des configurations d'adaptateur du serveur {{ site.data.keys.mf_server }}.

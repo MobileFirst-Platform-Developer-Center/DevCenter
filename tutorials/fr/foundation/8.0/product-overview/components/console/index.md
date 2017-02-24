@@ -8,11 +8,11 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-La console {{site.data.keys.mf_console_full }} est une interface utilisateur basée sur le Web qui active des flux de travaux simplifiés pour le développeur et pour l'administrateur afin de créer, surveiller, sécuriser et administrer des adaptateurs et des applications.
+La console {{ site.data.keys.mf_console_full }} est une interface utilisateur basée sur le Web qui active des flux de travaux simplifiés pour le développeur et pour l'administrateur afin de créer, surveiller, sécuriser et administrer des adaptateurs et des applications.
 
 #### En tant que développeur
 {: #as-a-developer }
-* Développer des applications pour un environnement et les enregistrer sur {{site.data.keys.mf_server }}.
+* Développer des applications pour un environnement et les enregistrer sur {{ site.data.keys.mf_server }}.
 * Voir toutes vos applications et tous vos adaptateurs déployés en un seul coup d'oeil. Voir le tableau de bord.
 * Gérer et configurer des applications enregistrées, notamment la mise à jour directe, la désactivation à distance et les paramètres de sécurité pour
 l'authenticité de l'application et l'authentification d'utilisateur.
@@ -23,7 +23,7 @@ l'authenticité de l'application et l'authentification d'utilisateur.
 #### En tant qu'administrateur informatique
 {: #as-an-it-administrator }
 * Surveiller divers services.
-* Rechercher des terminaux qui accèdent à {{site.data.keys.mf_server }} et gérer leurs droits d'accès.
+* Rechercher des appareils qui accèdent à {{ site.data.keys.mf_server }} et gérer leurs droits d'accès.
 * Mettre à jour des configurations d'adaptateur de façon dynamique.
 * Ajuster les configurations de consignateur client via des profils de journal.
 * Effectuer le suivi de l'usage des licences d'utilisation du produit.
@@ -35,9 +35,9 @@ l'authenticité de l'application et l'authentification d'utilisateur.
 
 ## Accès à la console
 {: #accessing-the-console }
-Vous pouvez accéder à la console {{site.data.keys.mf_console }} en procédant comme suit :
+Vous pouvez accéder à la console {{ site.data.keys.mf_console }} en procédant comme suit :
 
-### A partir d'un serveur {{site.data.keys.mf_server }} installé localement
+### A partir d'un serveur {{ site.data.keys.mf_server }} installé localement
 {: #from-a-locally-installed-mobilefirst-server }
 #### Navigateur de bureau
 {: #desktop-browser }
@@ -45,9 +45,12 @@ A partir du navigateur de votre choix, chargez l'URL [http://localhost:9080/mfpc
 
 #### Ligne de commande
 {: #command-line }
-A partir d'une fenêtre de **ligne de commande**, avec l'{{site.data.keys.mf_cli }} installée, exécutez la commande suivante : `mfpdev server console`.
+A partir d'une fenêtre de **ligne de commande**, avec
+l'interface de ligne de commande {{ site.data.keys.mf_cli }} installée,
+exécutez la commande
+suivante : `mfpdev server console`.
 
-### A partir d'un serveur {{site.data.keys.mf_server }} installé à distance
+### A partir d'un serveur {{ site.data.keys.mf_server }} installé à distance
 {: #from-a-remotely-installed-mobilefirst-server }
 #### Navigateur de bureau
 {: #desktop-browser-remote }
@@ -56,7 +59,8 @@ Le serveur hôte peut être soit un serveur appartenant à un client, soit le se
 
 #### Ligne de commande
 {: #command-line-remote }
-A partir d'une fenêtre de **ligne de commande**, avec l'{{site.data.keys.mf_cli }} installée, 
+A partir d'une fenêtre de **ligne de commande**, avec
+l'interface de ligne de commande {{ site.data.keys.mf_cli }} installée, 
 
 1. Ajoutez une définition de serveur distant :
 
@@ -72,7 +76,7 @@ A partir d'une fenêtre de **ligne de commande**, avec l'{{site.data.keys.mf_cli
 
 2. Exécutez la commande `mfpdev server console MyRemoteServer`.
 
-> Pour plus d'informations sur les différentes commandes d'interface de ligne de commande, voir le tutoriel [Using CLI to manage {{site.data.keys.product_adj }} artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
+> Pour plus d'informations sur les différentes commandes d'interface de ligne de commande, voir le tutoriel [Using CLI to manage {{ site.data.keys.product_adj }} artifacts](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/).
 
 ## Navigation dans la console
 {: #navigating-the-console }
@@ -96,21 +100,21 @@ Editez les propriétés d'exécution, les variables de sécurité globales, le m
 
 ### Journal des erreurs
 {: #error-log }
-Le journal des erreurs répertorie les opérations de gestion ayant échoué qui ont été lancées à partir de la console {{site.data.keys.mf_console }} ou de la ligne de commande, sur l'environnement d'exécution en cours. Consultez le journal pour voir l'impact des échecs sur les serveurs.
+Le journal des erreurs répertorie les opérations de gestion ayant échoué qui ont été lancées à partir de la console {{ site.data.keys.mf_console }} ou de la ligne de commande, sur l'environnement d'exécution en cours. Consultez le journal pour voir l'impact des échecs sur les serveurs.
 
 > Pour plus d'informations, voir dans la documentation utilisateur la rubrique sur le journal des erreurs liées aux opérations exécutées sur des environnements d'exécution.
 
 ![Illustration de l'écran Journal des erreurs](error-log.png)
 
-### Terminaux
+### Appareils
 {: #devices }
-Les administrateurs peuvent rechercher des terminaux qui accèdent au serveur {{site.data.keys.mf_server }} et peuvent gérer leurs droits d'accès.  
-Les terminaux peuvent être recherchés à l'aide d'un ID utilisateur ou d'un nom explicite. L'ID utilisateur est l'identificateur qui a été utilisé pour la connexion.  
-Un nom explicite est un nom qui est associé au terminal afin de le distinguer des autres terminaux qui partagent l'ID utilisateur. 
+Les administrateurs peuvent rechercher des appareils qui accèdent au serveur {{ site.data.keys.mf_server }} et peuvent gérer leurs droits d'accès.  
+Les appareils peuvent être recherchés à l'aide d'un ID utilisateur ou d'un nom explicite. L'ID utilisateur est l'identificateur qui a été utilisé pour la connexion.  
+Un nom explicite est un nom qui est associé à l'appareil afin de le distinguer des autres appareils qui partagent l'ID utilisateur. 
 
-> Pour plus d'informations, voir la rubrique sur la gestion des accès de terminal dans la documentation utilisateur.
+> Pour plus d'informations, voir la rubrique sur la gestion des accès d'appareil dans la documentation utilisateur.
 
-![Illustration de l'écran Gestion des terminaux](devices.png)
+![Illustration de l'écran Gestion des appareils](devices.png)
 
 ### Applications
 {: #applications }
@@ -130,7 +134,7 @@ Gérez et configurez des applications enregistrées en utilisant la [mise à jou
 {: #authentication-and-security }
 Configurez des paramètres de sécurité d'application, tels que la valeur d'expiration de jeton par défaut, mappez des éléments de portée à des contrôles de sécurité, définissez des portées d'application obligatoires et configurez des options de contrôle de sécurité.
 
-> [En savoir plus](../../../authentication-and-security/) sur l'infrastructure de sécurité {{site.data.keys.product_adj }}.
+> [En savoir plus](../../../authentication-and-security/) sur l'infrastructure de sécurité {{ site.data.keys.product_adj }}.
 
 ![Illustration de l'écran de configuration de la sécurité d'application](authentication-and-security.png)
 
@@ -142,7 +146,7 @@ Configurez le nom d'affichage de l'application dans la console, ainsi que le typ
 
 #### Notifications
 {: #notifications }
-Configurez des [notifications push](../../../notifications/) et les paramètres connexes, par exemple des certificats et des détails GCM, définissez des étiquettes et envoyez des notifications à des terminaux.
+Configurez des [notifications push](../../../notifications/) et les paramètres connexes, par exemple des certificats et des détails GCM, définissez des étiquettes et envoyez des notifications à des appareils.
 
 ![Illustration de l'écran de configuration de notifications push](push-notifications.png)
 
@@ -162,7 +166,7 @@ Une fois qu'un adaptateur est déployé, il peut être configuré dans la consol
 
 ### Journaux client
 {: #client-logs }
-Les administrateurs peuvent utiliser des profils de journal pour ajuster des configurations de consignateur client, telles que des filtres de niveau de journal et de package de journal, pour n'importe quelle combinaison de système d'exploitation, version de système d'exploitation, application, version d'application et modèle de terminal.
+Les administrateurs peuvent utiliser des profils de journal pour ajuster des configurations de consignateur client, telles que des filtres de niveau de journal et de package de journal, pour n'importe quelle combinaison de système d'exploitation, version de système d'exploitation, application, version d'application et modèle d'appareil.
 
 Lorsqu'un administrateur crée un profil de configuration, la configuration de journal est concaténée avec des appels API de réponses, telles que `WLResourceRequest`, et est appliquée automatiquement.
 
@@ -174,9 +178,9 @@ Lorsqu'un administrateur crée un profil de configuration, la configuration de j
 {: #license-tracking }
 Accessible à partir des boutons Paramètres situés dans la partie supérieure de l'écran.
 
-Les terme de licence varient en fonction de l'édition (Enterprise ou Consumer) de {{site.data.keys.product }} utilisée.   Le suivi des licences est activé par défaut. Il assure le suivi des indicateurs relatifs aux règles de licence, tels que Terminal client actif et Applications installées. Ces informations permettent de déterminer si l'utilisation actuelle de {{site.data.keys.product }} respecte les niveaux d'autorisation de licence, et peuvent empêcher de potentielles violations de licence.
+Les terme de licence varient en fonction de l'édition (Enterprise ou Consumer) de {{ site.data.keys.product }} utilisée.   Le suivi des licences est activé par défaut. Il assure le suivi des indicateurs relatifs aux règles de licence, tels qu'Appareil client actif et Applications installées. Ces informations permettent de déterminer si l'utilisation actuelle de {{ site.data.keys.product }} respecte les niveaux d'autorisation de licence, et peuvent empêcher de potentielles violations de licence.
 
-En assurant le suivi de l'utilisation des terminaux client et en déterminant si les terminaux sont actifs, les administrateurs peuvent déclasser des terminaux qui ne doivent plus accéder au service. Cette situation peut se produire si un employé a quitté l'entreprise, par exemple.
+En assurant le suivi de l'utilisation des appareils client et en déterminant si les appareils sont actifs, les administrateurs peuvent déclasser des appareils qui ne doivent plus accéder au service. Cette situation peut se produire si un employé a quitté l'entreprise, par exemple.
 
 > Pour plus d'informations, voir la rubrique sur le suivi des licences dans la documentation utilisateur.
 
@@ -184,7 +188,7 @@ En assurant le suivi de l'utilisation des terminaux client et en déterminant si
 
 ### Téléchargements
 {: #downloads }
-Lorsque la connectivité Internet est indisponible, vous pouvez télécharger un instantané des différents artefacts de développement de {{site.data.keys.product }} à partir du centre de téléchargement dans la console {{site.data.keys.mf_console }}.
+Lorsque la connectivité Internet est indisponible, vous pouvez télécharger un instantané des différents artefacts de développement de {{ site.data.keys.product }} à partir du centre de téléchargement dans la console {{ site.data.keys.mf_console }}.
 
 ![Illustration des artefacts disponibles](downloads.png)
 
