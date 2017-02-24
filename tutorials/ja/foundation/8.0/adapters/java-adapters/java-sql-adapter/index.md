@@ -12,7 +12,8 @@ weight:
 ## 概説
 {: #overview }
 
-Java アダプターは、バックエンド・システムへの接続に対する制御権を開発者に与えます。したがって、開発者の責任で、パフォーマンスおよびその他の実装の詳細についてのベスト・プラクティスを実現する必要があります。このチュートリアルでは、MySQL バックエンドに接続し、REST 概念を使用して `users` テーブルに対する CRUD (作成、読み取り、更新、削除) 操作を行う Java アダプターの例を取り上げます。
+Java アダプターは、バックエンド・システムへの接続に対する制御権を開発者に与えます。したがって、開発者の責任で、パフォーマンスおよびその他の実装の詳細についてのベスト・プラクティスを実現する必要があります。
+このチュートリアルでは、MySQL バックエンドに接続し、REST 概念を使用して `users` テーブルに対する CRUD (作成、読み取り、更新、削除) 操作を行う Java アダプターの例を取り上げます。
 
 **前提条件:**
 
@@ -29,7 +30,7 @@ Java アダプターは、バックエンド・システムへの接続に対す
 ## データ・ソースのセットアップ
 {: #setting-up-the-data-source }
 
-MySQL サーバーに接続できるように {{site.data.keys.mf_server }} を構成するには、**構成プロパティー**を使用してアダプターの XML ファイルを構成する必要があります。これらのプロパティーは、後で {{site.data.keys.mf_console }} で編集できます。
+MySQL サーバーに接続できるように {{ site.data.keys.mf_server }} を構成するには、**構成プロパティー**を使用してアダプターの XML ファイルを構成する必要があります。これらのプロパティーは、後で {{ site.data.keys.mf_console }} で編集できます。
 
 adater.xml ファイルを編集して、以下のプロパティーを追加します。
 
@@ -52,6 +53,7 @@ adater.xml ファイルを編集して、以下のプロパティーを追加し
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注:**  構成プロパティー・エレメントは、必ず `JAXRSApplicationClass` エレメントの*下に* 配置する必要があります。  
 ここでは、デフォルト値を指定して接続設定を定義し、これらの接続設定を後で AdapterApplication クラスで使用できるようにしてあります。
+
 ## アダプター・リソース・クラスへの SQL の実装
 {: #implementing-sql-in-the-adapter-resource-class }
 
@@ -70,7 +72,7 @@ adater.xml ファイルを編集して、以下のプロパティーを追加し
 ### DataSource の使用
 {: #using-datasource }
 
-アダプターをデプロイするとき、または {{site.data.keys.mf_console }}から構成を変更するたびに、アダプターの `MFPJAXRSApplication` の `init` メソッドが呼び出されます。これは、[接続プロパティーをロード](../#configuration-api)して `DataSource` を作成するのに適しています。
+アダプターをデプロイするとき、または {{ site.data.keys.mf_console }}から構成を変更するたびに、アダプターの `MFPJAXRSApplication` の `init` メソッドが呼び出されます。これは、[接続プロパティーをロード](../#configuration-api)して `DataSource` を作成するのに適しています。
 
 ```java
 public class JavaSQLApplication extends MFPJAXRSApplication{
@@ -270,7 +272,6 @@ public Response updateUser(@PathParam("userId") String userId,
         } else{
             return Response.status(Status.NOT_FOUND).entity("User not found...").build();
         }
-
     }
     finally{
         //Close resources in all cases
@@ -309,7 +310,6 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
         } else{
             return Response.status(Status.NOT_FOUND).entity("User not found...").build();
         }
-
     }
     finally{
         //Close resources in all cases
@@ -335,5 +335,5 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 
 * SQL データベースで .sql スクリプトを実行します。
 * `mobilefirst@%`  ユーザーが、すべてのアクセス権限を割り当てられていることを確認します。
-* Maven、{{site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaSQL アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
+* Maven、{{ site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaSQL アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
 * アダプターをテストまたはデバッグするには、[アダプターのテストおよびデバッグ](../../testing-and-debugging-adapters)チュートリアルを参照してください。

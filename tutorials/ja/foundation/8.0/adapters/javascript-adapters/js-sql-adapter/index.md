@@ -68,7 +68,6 @@ XML ファイルには、設定およびメタデータが含まれています�
                     <li><b>xsi:type</b>: <i>必須。</i> この属性の値は sql:SQLConnectionPolicy に設定される必要があります。</li>
                     <li><b>dataSourceDefinition</b>: <i>オプション。</i> データ・ソースへの接続に必要なパラメーターを含みます。アダプターは、各要求で接続を作成します。以下に例を示します。
 
-
 {% highlight xml %}
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
     <dataSourceDefinition>
@@ -80,7 +79,7 @@ XML ファイルには、設定およびメタデータが含まれています�
 </connectionPolicy>
 {% endhighlight %}</li>
 
-                    <li><b>dataSourceJNDIName</b>: <i>オプション。</i> アプリケーション・サーバーで提供されているデータ・ソースの JNDI 名を使用して、データ・ソースに接続します。アダプターは、JNDI 名に関連付けられたサーバー接続プールから接続を受け取ります。アプリケーション・サーバーには、データ・ソースを構成する方法が用意されています。詳しくは、アプリケーション・サーバーへの {{site.data.keys.mf_server }} のインストールを参照してください。以下に例を示します。 
+                    <li><b>dataSourceJNDIName</b>: <i>オプション。</i> アプリケーション・サーバーで提供されているデータ・ソースの JNDI 名を使用して、データ・ソースに接続します。アダプターは、JNDI 名に関連付けられたサーバー接続プールから接続を受け取ります。アプリケーション・サーバーには、データ・ソースを構成する方法が用意されています。詳しくは、アプリケーション・サーバーへの {{ site.data.keys.mf_server }} のインストールを参照してください。以下に例を示します。 
                     
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -101,12 +100,10 @@ XML ファイルには、設定およびメタデータが含まれています�
 ```
 
 ## JavaScript 実装
-
 {: #javascript-implementation }
 
 アダプター JavaScript ファイルを使用してプロシージャー・ロジックを実装します。  
 SQL ステートメントを実行するには以下の 2 つの方法があります。
-
 
 * SQL ステートメント照会
 * SQL ストアード・プロシージャー
@@ -131,7 +128,8 @@ SQL ステートメントを実行するには以下の 2 つの方法があり�
     // 準備した SQL 照会を呼び出し、呼び出し結果を返します。
    function getAccountTransactions1(accountId){
    // 3. 「MFP.Server.invokeSQLStatement」メソッドを使用して、作成した照会を呼び出します。
-   // 4. 結果をアプリケーションまたは別のプロシージャーに返します。return MFP.Server.invokeSQLStatement({
+   // 4. 結果をアプリケーションまたは別のプロシージャーに返します。
+        return MFP.Server.invokeSQLStatement({
 	       preparedStatement : getAccountsTransactionsStatement,
 	       parameters : [accountId, accountId]
         });
@@ -218,7 +216,7 @@ function getAccountTransactions1(fromAccount, toAccount){
 
 * SQL データベースで .sql スクリプトを実行します。
 * `mobilefirst@%` ユーザーが、すべてのアクセス権限を割り当てられていることを確認します。
-* Maven、{{site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaScriptSQL アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
+* Maven、{{ site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaScriptSQL アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
 * アダプターをテストまたはデバッグするには、[アダプターのテストおよびデバッグ](../../testing-and-debugging-adapters)チュートリアルを参照してください。
 
 テスト時には、アカウント値を配列 (`["12345"]`) で渡す必要があります。
