@@ -42,7 +42,7 @@ weight: 11
    
 4. 다음 명령 `mfpdev app push`를 실행하여 업데이트된 구성 JSON 파일을 배치하십시오. 
 
-## 사전 존재 샘플과 함께 디바이스 SSO 사용
+## 기존의 샘플과 함께 디바이스 SSO 사용
 {: #using-device-sso-with-a-pre-existing-sample }
 디바이스 SSO를 구성하는 데 샘플이 사용되므로 [신임 정보 유효성 검증](../credentials-validation/) 학습서를 읽으십시오.   
 이 데모의 경우 Cordova 샘플 애플리케이션이 사용되지만 iOS, Android, 및 Windows 샘플 애플리케이션을 사용해서 동일하게 작업할 수도 있습니다.

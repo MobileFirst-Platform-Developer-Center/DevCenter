@@ -8,9 +8,9 @@ weight: 6
 ## 概説
 {: #overview }
 
-IDE (Eclipse、IntelliJ、またはそれに相当するもの) を使用して、Java アダプターおよび JavaScript アダプターのテストや、Java アダプターまたは JavaScript アダプターで使用するために実装された Java コードのデバッグを行うことができます。  
+IDE (Eclipse、IntelliJ、または類似のもの) を使用して、Java アダプターおよび JavaScript アダプターのテストや、Java アダプターまたは JavaScript アダプターで使用するために実装された Java コードのデバッグを行うことができます。  
 
-このチュートリアルでは、{{site.data.keys.mf_cli }} または Postman を使用してアダプターをテストする方法、および Eclipse IDE を使用して Java アダプターをデバッグする方法について説明します。
+このチュートリアルでは、{{ site.data.keys.mf_cli }} または Postman を使用してアダプターをテストする方法、および Eclipse IDE を使用して Java アダプターをデバッグする方法について説明します。
 
 #### ジャンプ先
 {: #jump-to }
@@ -36,12 +36,12 @@ IDE (Eclipse、IntelliJ、またはそれに相当するもの) を使用して�
 {: #passing-parameters }
 
 * Java アダプターを使用しているときは、アダプターをどのように構成したかに応じて、パラメーターを URL、本文、フォームなどで渡すことができます。
-* JavaScript アダプターを使用しているときは、パラメーターは `params=["param1", "param2"]` として渡されます。つまり、JavaScript プロシージャーは、**順に並べられた、名前のない値の配列**でなければならない `params` というただ 1 つのパラメーターしか受け取りません。このパラメーターは、`Content-Type: application/x-www-form-urlencoded` を使用して、URL (`GET`) または body (`POST`) のいずれかに置くことができます。
+* JavaScript アダプターを使用しているときは、パラメーターは `params=["param1", "param2"]` として渡します。つまり、JavaScript プロシージャーは、**順に並べられた、名前のない値の配列**でなければならない `params` というただ 1 つのパラメーターしか受け取りません。このパラメーターは、`Content-Type: application/x-www-form-urlencoded` を使用して、URL (`GET`) または body (`POST`) のいずれかに置くことができます。
 
 ### セキュリティーの取り扱い
 {: #handling-security }
 
-{{site.data.keys.product }} のセキュリティー・フレームワークでは、リソースに明示的にスコープが割り当てられていない場合でも、アダプター・リソース用のアクセス・トークンが必要です。そのため、セキュリティーを明示的に使用不可にした場合を除き、エンドポイントは常に保護されます。
+{{ site.data.keys.product }} のセキュリティー・フレームワークでは、アダプター・リソースに明示的にスコープが割り当てられていない場合でも、そのリソース用のアクセス・トークンが必要です。そのため、セキュリティーを明示的に使用不可にした場合を除き、エンドポイントは常に保護されます。
 
 Java アダプターでセキュリティーを使用不可にするには、`OAuthSecurity` アノテーションをメソッド/クラスに付加します。
 
@@ -55,7 +55,7 @@ JavaScript アダプターでセキュリティーを使用不可にするには
 <procedure name="adapter-procedure-name" secured="false"/>
 ```
 
-別の方法として、{{site.data.keys.mf_server }} の開発バージョンには、セキュリティー・チャレンジをバイパスするためのテスト・トークン・エンドポイントが組み込まれています。
+別の方法として、{{ site.data.keys.mf_server }} の開発バージョンには、セキュリティー・チャレンジをバイパスするためのテスト・トークン・エンドポイントが組み込まれています。
 
 ### Postman の使用
 {: #using-postman }
@@ -63,17 +63,18 @@ JavaScript アダプターでセキュリティーを使用不可にするには
 #### テスト・トークン
 {: #test-token }
 
-テスト・トークンを受け取るには、下部にある「Postman で実行 (Run in Postman)」ボタンをクリックして、準備完了要求が含まれた Postman アプリケーションにコレクションをインポートするか、次のステップに従って、ご自身で要求を作成してください。
+テスト・トークンを受け取るには、下部にある「Postman で実行 (Run in Postman)」ボタンをクリックして、準備完了要求が含まれた Postman アプリケーションにコレクションをインポートするか、次のステップに従って要求を作成します。
 
 <a href="https://app.getpostman.com/run-collection/d614827491450d43c10e"><img src="https://run.pstmn.io/button.svg" alt="Postmanで実行" style="margin: 0"></a>
 
 {% comment %}
-1. 「{{site.data.keys.mf_console }}」→**「設定」**→**「機密クライアント」**タブで、機密クライアントを作成するか、デフォルトの機密クライアントを使用します。  
+1. 「{{ site.data.keys.mf_console }}」→**「設定」**→**「機密クライアント」**タブで、機密クライアントを作成するか、デフォルトの機密クライアントを使用します。  
 テスト目的の場合は、**「許可されるスコープ」**を `**` に設定します。
 
-  ![機密クライアントの設定のイメージ](confidential_client.png) {% endcomment %}
+  ![機密クライアントの設定のイメージ](confidential_client.png)
+{% endcomment %}
 
-1. `Content-Type: application/x-www-form-urlencoded` を使用して以下のパラメーターを持つ `http://<IP>:<PORT>/mfp/api/az/v1/token` への HTTP `POST` 要求を作成するには、HTTP クライアント (Postman) を使用します。
+1. `Content-Type: application/x-www-form-urlencoded` を使用して以下のパラメーターを指定した、`http://<IP>:<PORT>/mfp/api/az/v1/token` への HTTP `POST` 要求を作成するには、HTTP クライアント (Postman) を使用します。
 
 * `grant_type` : `client_credentials`
 * `scope` : リソースを保護するスコープを使用してください。  
@@ -81,8 +82,9 @@ JavaScript アダプターでセキュリティーを使用不可にするには
 
 
   ![Postman の本文構成のイメージ](Body_configuration.png)
-2. `Basic authentication` を使用し、機密クライアント ID ("test") と秘密鍵 ("test") を指定して、`authorization header` を追加します。
+2. `Basic authentication` を使用し、機密クライアント ID (「test」) と秘密鍵 (「test」) を指定して、`authorization header` を追加します。
 > 機密クライアントの詳細については、[機密クライアント](../../authentication-and-security/confidential-clients)チュートリアルを参照してください。
+
   ![Postman の許可構成のイメージ](Authorization_configuration.png)
 
 
@@ -112,7 +114,7 @@ Swagger を使用すると、開発者は、アダプター・エンドポイン
 
 Swagger にアクセスするには、次のようにします。
 
-1. {{site.data.keys.mf_console }} を開いて、アダプター・リストからアダプターを選択します。
+1. {{ site.data.keys.mf_console }} を開いて、アダプター・リストからアダプターを選択します。
 2. **「リソース」**タブをクリックします。
 3. **「Swagger 文書の表示」**ボタンをクリックします。  
 4. **「表示/非表示」**ボタンをクリックします。
@@ -129,6 +131,7 @@ Swagger にアクセスするには、次のようにします。
 Swagger UI に対して認可するスコープを選択するように求められます (テスト目的の場合、すべて選択することができます)。初めて Swagger UI を使用する場合は、機密クライアント ID と秘密鍵を指定してログインするように要求されることがあります。その場合は、**「許可されるスコープ」**に `*` を指定した新規機密クライアントを作成する必要があります。
 
 > 機密クライアントの詳細については、[機密クライアント](../../authentication-and-security/confidential-clients)チュートリアルを参照してください。
+
 <br/><br/>
 
 #### 要求の送信
@@ -169,7 +172,7 @@ public Map<String, String> enterInfo(
 
 
 {% comment %}
-### {{site.data.keys.mf_cli }} の使用
+### {{ site.data.keys.mf_cli }} の使用
 {: #using-mobilefirst-cli }
 
 アダプターの機能をテストするために、`mfpdev adapter call` コマンドを使用して、コマンド・ラインから Java アダプターまたは JavaScript アダプターを呼び出します。
@@ -184,6 +187,7 @@ public Map<String, String> enterInfo(
 mfpdev adapter call adapterName/path
 ```
 例えば、以下のようにします。
+
 ```bash
 mfpdev adapter call SampleAdapter/users/World
 
@@ -201,6 +205,7 @@ Hello World
 mfpdev adapter call adapterName/procedureName
 ```
 例えば、以下のようにします。
+
 ```bash
 mfpdev adapter call SampleAdapter/getFeed
 
@@ -243,7 +248,7 @@ Hello World
     - **「参照」**をクリックして、Maven プロジェクトを選択します。
     - **「デバッグ」**をクリックします。
 
-    ![{{site.data.keys.mf_server }} のデバッグ・パラメーターの設定方法を示すイメージ](setting-debug-parameters.png)
+    ![{{ site.data.keys.mf_server }} のデバッグ・パラメーターの設定方法を示すイメージ](setting-debug-parameters.png)
 
 4. **「ウィンドウ」→「ビューの表示」→「デバッグ」**をクリックして、*デバッグ・モード* を入力します。これで、標準 Java アプリケーションの場合と同様に、Java コードを正常にデバッグすることができます。アダプターのコードを実行して設定されたブレークポイントがヒットするようにするには、アダプターに対して要求を発行する必要があります。[アダプターのテスト・セクション](#testing-adapters)に記載されたアダプター・リソースの呼び出し方法の説明に従うことで、これを実行できます。
 

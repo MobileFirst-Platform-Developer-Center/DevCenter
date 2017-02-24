@@ -9,37 +9,36 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-アダプターを作成するには、Maven コマンドまたは {{site.data.keys.mf_cli }} を使用できます (Maven がインストールされ、構成されているかどうかによって異なります)。その後、任意の IDE (Eclipse や IntelliJ など) を使用して、アダプター・コードを編集し、ビルドすることができます。このチュートリアルでは、Maven および {{site.data.keys.mf_cli }} を使用して **Java アダプターまたは JavaScript アダプター**を作成、ビルド、およびデプロイする方法について説明します。Eclipse IDE または IntelliJ IDE を使用してアダプターの作成およびビルドを行う方法については、[Eclipse でのアダプターの開発](../developing-adapters)チュートリアルを参照してください。
+アダプターを作成するには、Maven コマンドまたは {{ site.data.keys.mf_cli }} を使用できます (Maven がインストールされ、構成されているかどうかによって異なります)。その後、任意の IDE (Eclipse や IntelliJ など) を使用して、アダプター・コードを編集し、ビルドすることができます。このチュートリアルでは、Maven および {{ site.data.keys.mf_cli }} を使用して **Java アダプターまたは JavaScript アダプター**を作成、ビルド、およびデプロイする方法について説明します。Eclipse IDE または IntelliJ IDE を使用してアダプターの作成およびビルドを行う方法については、[Eclipse でのアダプターの開発](../developing-adapters)チュートリアルを参照してください。
 
 **前提条件:** 最初に必ず、[アダプターの概説](../)をお読みください。
 
 #### ジャンプ先
 {: #jump-to }
 * [Maven のインストール](#install-maven)
-* [{{site.data.keys.mf_cli }} を使用したアダプターの作成](#creating-adapters-using-mobilefirst-cli)
-* [{{site.data.keys.mf_cli }} のインストール](#install-mobilefirst-cli)
+* [{{ site.data.keys.mf_cli }} を使用したアダプターの作成](#creating-adapters-using-mobilefirst-cli)
+* [{{ site.data.keys.mf_cli }} のインストール](#install-mobilefirst-cli)
 * [アダプターの作成](#creating-an-adapter)
 * [Maven アーキタイプを使用したアダプターの作成](#creating-adapters-using-maven-archetype-adapter-maven-archetype)
 * [ファイル構造](#file-structure)
 * [アダプターのビルドとデプロイ](#build-and-deploy-adapters)
 * [依存関係](#dependencies)
 * [単一の Maven プロジェクトへのアダプターのグループ化](#grouping-adapters-in-a-single-maven-project)
-* [{{site.data.keys.mf_console }}を使用したアダプターのダウンロードまたはデプロイ](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
+* [{{ site.data.keys.mf_console }}を使用したアダプターのダウンロードまたはデプロイ](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
 * [アダプター Maven プロジェクトの更新](#updating-the-adapter-maven-project)
-* [オフライン作業
-](#working-offline)
+* [オフライン作業](#working-offline)
 * [次に使用するチュートリアル](#tutorials-to-follow-next)
 
 ## Maven のインストール
 {: #install-maven }
 アダプターを作成するには、まず Maven をダウンロードしてインストールする必要があります。[Apache Maven Web サイト](https://maven.apache.org/)に移動し、Maven のダウンロードおよびインストール方法の手順に従ってください。
 
-## {{site.data.keys.mf_cli }}を使用したアダプターの作成
+## {{ site.data.keys.mf_cli }}を使用したアダプターの作成
 {: #creating-adapters-using-mobilefirst-cli }
 
-### {{site.data.keys.mf_cli }} のインストール
+### {{ site.data.keys.mf_cli }} のインストール
 {: #install-mobilefirst-cli }
-[ダウンロード]({{site.baseurl}}/downloads/)ページのインストール手順に従って {{site.data.keys.mf_cli }} をインストールします。  
+[ダウンロード]({{site.baseurl}}/downloads/)ページのインストール手順に従って {{ site.data.keys.mf_cli }} をインストールします。  
 **前提条件:** Developer CLI を使用してアダプターを作成するには、Maven がインストールされている必要があります。
 
 ### アダプターの作成
@@ -96,7 +95,7 @@ mfpdev adapter create <adapter_name> -t <adapter_type> -p <adapter_package_name>
 ## Maven アーキタイプ「adapter-maven-archetype」を使用したアダプターの作成
 {: #creating-adapters-using-maven-archetype-adapter-maven-archetype }
 
-「adapter-maven-archetype」は、{{site.data.keys.product }} 提供のアーキタイプで、[Maven アーキタイプ・ツールキット](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)に基づいていて、Maven でアダプター Maven プロジェクトを作成するために使用されます。
+「adapter-maven-archetype」は、{{ site.data.keys.product }} 提供のアーキタイプで、[Maven アーキタイプ・ツールキット](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)に基づいていて、Maven でアダプター Maven プロジェクトを作成するために使用されます。
 
 Maven アダプター・プロジェクトを作成するには、`archetype:generate` Mavenコマンドを使用します。このコマンドを実行すると、Maven は、アダプター Maven プロジェクトを生成するために必要なファイルをダウンロードします (または前に説明したローカル・リポジトリーを使用します)。
 
@@ -178,7 +177,7 @@ mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<ada
 ### ビルド
 {: #build }
 
-* **{{site.data.keys.mf_cli }} を使用する場合** - プロジェクトのルート・フォルダーから `adapter build` コマンドを実行します。
+* **{{ site.data.keys.mf_cli }} を使用する場合** - プロジェクトのルート・フォルダーから `adapter build` コマンドを実行します。
     
   ```bash
   mfpdev adapter build
@@ -217,17 +216,17 @@ mfpdev adapter build all
    </properties>
    ```
    
-   * **localhost:9080** を、{{site.data.keys.mf_server }} IP アドレスおよびポート番号で置き換えます。
+   * **localhost:9080** を、{{ site.data.keys.mf_server }} IP アドレスおよびポート番号で置き換えます。
    * **オプション**。**mfpfUser** および **mfpfPassword** のデフォルト値を、管理ユーザー名およびパスワードで置き換えます。
    * **オプション**。**mfpfRuntime** のデフォルト値をランタイム名で置き換えます。
 2. プロジェクトのルート・フォルダーから deploy コマンドを実行します。
- * **{{site.data.keys.mf_cli }} を使用する場合**:
+ * **{{ site.data.keys.mf_cli }} を使用する場合**:
 
    ```bash
    mfpdev adapter deploy -x
    ```
    
-   `-x` オプションを指定した場合、アダプターは、アダプターの **pom.xml** ファイルで指定された {{site.data.keys.mf_server }} にデプロイされます。  
+   `-x` オプションを指定した場合、アダプターは、アダプターの **pom.xml** ファイルで指定された {{ site.data.keys.mf_server }} にデプロイされます。  
    このオプションを使用しない場合、CLI は CLI 設定で指定されたデフォルトのサーバーを使用します。
     
    > 他の CLI デプロイメント・オプションについては、コマンド `mfpdev help adapter deploy` を実行してください。
@@ -263,7 +262,6 @@ mfpdev adapter deploy all
 2. Maven プロジェクトの **pom.xml** ファイル内の `dependencies` エレメントの下に、ライブラリー・パスを追加します。  
 
 以下に例を示します。
-
 
 ```xml
 <dependency>
@@ -344,20 +342,20 @@ mfpdev adapter deploy all
   2. **`artifactId`** エレメント (ルート・フォルダーの名前) を追加します。
   3. 各アダプターの **`module`** エレメントを追加します。
   4. **`build`** エレメントを追加します。
-  5. **オプション**。**localhost:9080** を特定の {{site.data.keys.mf_server }} IP アドレスおよびポート番号で置き換えます。
+  5. **オプション**。**localhost:9080** を特定の {{ site.data.keys.mf_server }} IP アドレスおよびポート番号で置き換えます。
   6. **オプション**。**`mfpfUser`** および **`mfpfPassword`** のデフォルト値を管理ユーザー名およびパスワードで置き換えます。
   7. **オプション**。**`mfpfRuntime`** のデフォルト値をランタイム名で置き換えます。
 
 4. すべてのアダプターを[ビルドまたはデプロイ](#build-and-deploy-adapters)するには、ルートの「GroupAdapters」プロジェクトから Maven コマンドを実行します。
 
-## {{site.data.keys.mf_console }}を使用したアダプターのダウンロードまたはデプロイ
+## {{ site.data.keys.mf_console }}を使用したアダプターのダウンロードまたはデプロイ
 {: #downloading-or-deploying-adapters-using-mobilefirst-operations-console}
 
-1. 任意のブラウザーを開き、アドレス `http://<IP>:<PORT>/mfpconsole/` を使用して {{site.data.keys.mf_console }} をロードします。  
+1. 任意のブラウザーを開き、アドレス `http://<IP>:<PORT>/mfpconsole/` を使用して {{ site.data.keys.mf_console }} をロードします。  
 2. 「アダプター」の横にある「新規作成」ボタンをクリックします。アダプターを作成するには以下の 2 つのオプションがあります。
- * 前に説明したように、Maven または {{site.data.keys.mf_cli }} を使用する。
+ * 前に説明したように、Maven または {{ site.data.keys.mf_cli }} を使用する。
  * テンプレート・アダプター・プロジェクトをダウンロードする (ステップ 2)。
-3. Maven または {{site.data.keys.mf_cli }} を使用してアダプターをビルドします。
+3. Maven または {{ site.data.keys.mf_cli }} を使用してアダプターをビルドします。
 4. 以下のいずれかの方法を選択して、生成された **.adapter** ファイルをアップロードします。このファイルはアダプター・プロジェクトのターゲット・フォルダーに入っています。
  * 「アダプターのデプロイ」ボタンをクリックします (ステップ 5)。
  * ファイルを「新規アダプターの作成」画面にドラッグ・アンド・ドロップします。
@@ -397,13 +395,12 @@ mfpdev adapter deploy all
    ```
 
 ## オフライン作業
-
 {: #working-offline }
 
-Maven 中央リポジトリーにオンラインでアクセスできない場合、組織の内部リポジトリーで {{site.data.keys.product }} Maven 成果物を共有できます。
+Maven 中央リポジトリーにオンラインでアクセスできない場合、組織の内部リポジトリーで {{ site.data.keys.product }} Maven 成果物を共有できます。
 
-1. [ダウンロード・ページにアクセス]({{site.baseurl}}/downloads/)し、{{site.data.keys.mf_dev_kit_full }} インストーラーをダウンロードします。
-2. {{site.data.keys.mf_server }} を開始し、ブラウザーで URL `http://<your-server-host:server-port>/mfpconsole` から {{site.data.keys.mf_console }} をロードします。
+1. [ダウンロード・ページにアクセス]({{site.baseurl}}/downloads/)し、{{ site.data.keys.mf_dev_kit_full }} インストーラーをダウンロードします。
+2. {{ site.data.keys.mf_server }} を開始し、ブラウザーで URL `http://<your-server-host:server-port>/mfpconsole` から {{ site.data.keys.mf_console }} をロードします。
 3. **「ダウンロード・センター」**をクリックします。**「ツール」→「アダプターのアーキタイプ」**の**「ダウンロード」**をクリックします。**mfp-maven-central-artifacts-adapter.zip** アーカイブがダウンロードされます。
 4. **install.sh** スクリプト (Linux および Mac の場合) または **install.bat** スクリプト (Windows の場合) を実行して、アダプター・アーキタイプおよびセキュリティー検査を内部 Maven リポジトリーに追加します。
 5. adapter-maven-api には、以下の JAR ファイルが必要です。これらが、開発者のローカル **.m2** フォルダーまたは組織の Maven リポジトリーのいずれかに配置されていることを確認してください。これらは、中央リポジトリーからダウンロードできます。

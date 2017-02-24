@@ -135,7 +135,7 @@ XML ファイルには、設定およびメタデータが含まれています�
   </proxy>
 </connectionPolicy>
 {% endhighlight %}</li>
-                    <li><b>maxConcurrentConnectionsPerNode</b>: <i>オプション。</i> {{site.data.keys.mf_server }} がバックエンドに対して開くことができる同時接続の最大数を定義します。 {{site.data.keys.product }} は、アプリケーションからの着信サービス要求を制限しません。これは、バックエンド・サービスへの同時 HTTP 接続の数のみを制限します。
+                    <li><b>maxConcurrentConnectionsPerNode</b>: <i>オプション。</i> {{ site.data.keys.mf_server }} がバックエンドに対して開くことができる同時接続の最大数を定義します。 {{ site.data.keys.product }} は、アプリケーションからの着信サービス要求を制限しません。これは、バックエンド・サービスへの同時 HTTP 接続の数のみを制限します。
                     <br/><br/>
                     同時 HTTP 接続のデフォルト数は 50 個です。この数は、予期されるアダプターへの同時要求数と、バックエンド・サービスで許可される最大要求数に基づいて変更できます。また、同時着信要求の数を制限するようにバックエンド・サービスを構成することもできます。
                     <br/><br/>
@@ -193,7 +193,6 @@ function getFeed() {
 ```
 
 > オプションの完全なリストについては、ユーザー文書で「MFP.Server.invokeHttp」に関する API 解説書を参照してください。
-
 
 ## XSL Transformation フィルター
 {: #xsl-transformation-filtering }
@@ -259,7 +258,8 @@ var input = {
 	}
 };
 
-var result = MFP.Server.invokeHttp(input);```
+var result = MFP.Server.invokeHttp(input);
+```
 
 ## SOAP ベースのサービスの結果の呼び出し
 {: #invoking-results-of-soap-based-service }
@@ -350,5 +350,5 @@ var weatherInfo = {
 ### 使用例
 {: #sample-usage }
 
-* Maven、{{site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaScriptHTTP アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
+* Maven、{{ site.data.keys.mf_cli }}、または任意の IDE を使用して、[JavaScriptHTTP アダプターのビルドとデプロイ](../../creating-adapters/)を行います。
 * アダプターをテストまたはデバッグするには、[アダプターのテストおよびデバッグ](../../testing-and-debugging-adapters)チュートリアルを参照してください。

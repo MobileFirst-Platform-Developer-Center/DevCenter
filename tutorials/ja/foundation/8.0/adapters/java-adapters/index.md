@@ -9,7 +9,7 @@ weight: 4
 ## 概説
 {: #overview }
 
-Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換えれば、Java アダプターは、{{site.data.keys.mf_server }} インスタンスに容易にデプロイでき、{{site.data.keys.mf_server }} API およびその他のサード・パーティー API にアクセスできる JAX-RS 2.0 サービスです。
+Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換えれば、Java アダプターは、{{ site.data.keys.mf_server }} インスタンスに容易にデプロイでき、{{ site.data.keys.mf_server }} API およびその他のサード・パーティー API にアクセスできる JAX-RS 2.0 サービスです。
 
 **前提条件:** 最初に必ず、[Java アダプターおよび JavaScript アダプターの作成](../creating-adapters)チュートリアルをお読みください。
 
@@ -65,9 +65,9 @@ Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換�
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>name</b>: <i>必須。</i> アダプターの名前。この名前は {{site.data.keys.mf_server }} 内で固有でなければなりません。 英数字およびアンダースコアーを含めることができ、先頭は文字である必要があります。 アダプターを定義してデプロイした後に、その名前を変更することはできません。</li>
-					<li><b>displayName</b>: <i>オプション。</i> {{site.data.keys.mf_console }} に表示されるアダプターの名前。このエレメントが指定されない場合は、代わりに name 属性の値が使用されます。</li>
-					<li><b>description</b>: <i>オプション。</i> アダプターに関する追加情報。{{site.data.keys.mf_console }} に表示されます。</li>
+                    <li><b>name</b>: <i>必須。</i> アダプターの名前。この名前は {{ site.data.keys.mf_server }} 内で固有でなければなりません。 英数字およびアンダースコアーを含めることができ、先頭は文字である必要があります。 アダプターを定義してデプロイした後に、その名前を変更することはできません。</li>
+					<li><b>displayName</b>: <i>オプション。</i> {{ site.data.keys.mf_console }} に表示されるアダプターの名前。このエレメントが指定されない場合は、代わりに name 属性の値が使用されます。</li>
+					<li><b>description</b>: <i>オプション。</i> アダプターに関する追加情報。{{ site.data.keys.mf_console }} に表示されます。</li>
 					<li><b>JAXRSApplicationClass</b>: <i>/adapter エンドポイントを公開するために必須。</i> このアダプターの JAX-RS アプリケーションのクラス名を定義します。例では、<b>com.sample.JavaAdapterApplication</b> です。</li>
 					<li><b>securityCheckDefinition</b>: <i>オプション。</i> セキュリティー検査オブジェクトを定義します。<a href="../../authentication-and-security/creating-a-security-check">セキュリティー検査の作成</a>チュートリアルで、セキュリティー検査についての詳細を参照してください。</li>
 					<li><b>property</b>: <i>オプション。</i> ユーザー定義プロパティーを宣言します。以下の『カスタム・プロパティー』トピックで詳細を参照してください。</li>
@@ -82,7 +82,7 @@ Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換�
 #### カスタム・プロパティー
 {: #custom-properties }
 
-**adapter.xml** ファイルには、ユーザー定義のカスタム・プロパティーを含めることもできます。開発者がアダプターの作成中にそれらのプロパティーに割り当てた値は、アダプターを再デプロイせずに、**{{site.data.keys.mf_console }} → [ご使用のアダプター] → 「構成」タブ**でオーバーライドすることができます。ユーザー定義プロパティーは、[ConfigurationAPI インターフェース](#configuration-api)を使用して読み取り、実行時にさらにカスタマイズできます。
+**adapter.xml** ファイルには、ユーザー定義のカスタム・プロパティーを含めることもできます。開発者がアダプターの作成中にそれらのプロパティーに割り当てた値は、アダプターを再デプロイせずに、**{{ site.data.keys.mf_console }} → 「[ご使用のアダプター]」→ 「構成」タブ**でオーバーライドすることができます。ユーザー定義プロパティーは、[ConfigurationAPI インターフェース](#configuration-api)を使用して読み取り、実行時にさらにカスタマイズできます。
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **注:**  構成プロパティー・エレメントは、`JAXRSApplicationClass` エレメントの**下に**配置する必要があります。  
 上の例では、デフォルト値を指定して接続設定を定義し、これらの接続設定を後で AdapterApplication クラスで使用できるようにしてあります。
@@ -101,7 +101,7 @@ Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換�
 {: #pull-and-push-configurations }
 
 カスタマイズしたアダプター・プロパティーは、**「構成ファイル」タブ**に表示されるアダプター構成ファイルを使用して共有できます。  
-共有するためには、Maven または {{site.data.keys.mf_cli }} を使用して、以下で説明する `pull` コマンドと `push` コマンドを使用します。共有するプロパティーについては、*そのプロパティーに対して指定されたデフォルト値を変更する* 必要があります。
+共有するためには、Maven または {{ site.data.keys.mf_cli }} を使用して、以下で説明する `pull` コマンドと `push` コマンドを使用します。共有するプロパティーについては、*そのプロパティーに対して指定されたデフォルト値を変更する* 必要があります。
 
 アダプター Maven プロジェクトのルート・フォルダーから以下のコマンドを実行します。
 
@@ -117,7 +117,7 @@ Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換�
   mvn adapter:configpush -DmfpfConfigFile=config.json
   ```
 
-**{{site.data.keys.mf_cli }}**  
+**{{ site.data.keys.mf_cli }}**  
 
 * 構成ファイルを**プルする**場合
   ```bash
@@ -132,12 +132,12 @@ Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換�
 #### 複数のサーバーへの構成のプッシュ
 {: #pushing-configurations-to-multiple-servers }
 
-**pull** コマンドと **push** コマンドは、使用している環境 (DEV、QA、UAT、PRODUCTION) に応じてアダプターで異なる値が必要となるような各種の DevOps フローを作成する場合に役立ちます。
+**pull** コマンドと **push** コマンドは、使用している環境 (DEV、QA、UAT、PRODUCTION) に応じてアダプターで異なる値が必要となる各種の DevOps フローを作成する場合に役立ちます。
 
 **Maven**  
-デフォルトでは **config.json** ファイルをどのように指定するかについて、上の説明に注意してください。異なるターゲットを処理するには、異なる名前のファイルを作成します。
+上記の説明で、デフォルトでの **config.json** ファイルの指定方法を確認してください。異なるターゲットを処理するには、異なる名前のファイルを作成します。
 
-**{{site.data.keys.mf_cli }}**  
+**{{ site.data.keys.mf_cli }}**  
 デフォルトとは異なる構成ファイルを指定するには、**--configFile** フラグまたは **-c** フラグを使用します。
 
 ```bash
@@ -182,8 +182,7 @@ public class JavaAdapterApplication extends MFPJAXRSApplication{
 }
 ```
 
-`MFPJAXRSApplication` クラスは、
-パッケージをスキャンして JAX-RS 2.0 リソースを見つけ、自動的にリストを作成します。さらに、アダプターがデプロイされるとすぐ (サービスを開始する前) に、{{site.data.keys.product }} ランタイムの開始時に、{{site.data.keys.mf_server }} によってこのクラスの `init` メソッドが呼び出されます。
+`MFPJAXRSApplication` クラスは、パッケージをスキャンして JAX-RS 2.0 リソースを見つけ、自動的にリストを作成します。さらに、アダプターがデプロイされるとすぐ (サービスを開始する前) に、{{ site.data.keys.product }} ランタイムの開始時に、{{ site.data.keys.mf_server }} によってこのクラスの `init` メソッドが呼び出されます。
 
 ## JAX-RS 2.0 リソースの実装
 {: #implementing-a-jax-rs-20-resource }
@@ -220,30 +219,29 @@ public class JavaAdapterResource {
 
 	同じアダプターに、ブログの投稿を管理するための、`@Path("/posts")` が指定された別のリソース `PostResource` を含めることもできます。これには、`http(s)://host:port/ProjectName/adapters/AdapterName/posts/` という URL を介してアクセスできます。  
 
-	上の例ではリソース・クラスは 1 つのみであるため、
-`http(s)://host:port/Adapters/adapters/JavaAdapter/` を介してアクセスできるように、`@Path("/")` に設定されます。  
+	上の例ではリソース・クラスは 1 つのみであるため、`http(s)://host:port/Adapters/adapters/JavaAdapter/` を介してアクセスできるように、`@Path("/")` に設定されます。  
 
 * 各メソッドの前には 1 つ以上の JAX-RS 2.0 アノテーション (例えば、`@GET`、`@PUT`、`@POST`、`@DELETE`、または`@HEAD` などの「HTTP 要求」タイプのアノテーション) を指定します。これらのアノテーションは、そのメソッドにアクセス可能な方法を定義します。  
 
 * もう 1 つの例 `@Path("/{username}")` は、(リソース・レベルのパスに加えて) このプロシージャーにアクセスするためのパスを定義しています。見ると分かるとおり、このパスには変数部分が含まれています。この変数は、後で、`@PathParam("username") String name` のように定義して、メソッドのパラメーターとして使用されます。  
 
-> その他のさまざまのアノテーションを使用できます。ここで、**アノテーション・タイプの要約**を参照してください。
+> その他のさまざまなアノテーションを使用できます。以下で、**『Annotation Types Summary』** を参照してください。
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
 ## HTTP セッション
 {: #http-session }
 
-{{site.data.keys.mf_server }} は HTTP セッションに依存しないため、各要求が異なるノードに到達する可能性があります。データをある要求から次の要求へと保持するためには、HTTP セッションに依存しないようにする必要があります。
+{{ site.data.keys.mf_server }} は HTTP セッションに依存しないため、各要求が異なるノードに到達する可能性があります。データをある要求から次の要求へと保持するためには、HTTP セッションに依存しないようにする必要があります。
 
 ## サーバー・サイド API
 {: #server-side-apis}
 
-Java アダプターは、サーバー・サイド Java API を使用して、{{site.data.keys.mf_server }}に関連する操作 (他のアダプターの呼び出し、サーバー・ログへの記録、構成プロパティーの値の取得、Analytics へのアクティビティーの報告、要求の発行者の ID の取得など) を実行できます。  
+Java アダプターは、サーバー・サイド Java API を使用して、{{ site.data.keys.mf_server }}に関連する操作 (他のアダプターの呼び出し、サーバー・ログへの記録、構成プロパティーの値の取得、Analytics へのアクティビティーの報告、要求の発行者の ID の取得など) を実行できます。  
 
 ### 構成 API
 {: #configuration-api }
 
-`ConfigurationAPI` クラスは、**adapter.xml** または {{site.data.keys.mf_console }} で定義されているプロパティーを取得するための API を提供します。
+`ConfigurationAPI` クラスは、**adapter.xml** または {{ site.data.keys.mf_console }} で定義されているプロパティーを取得するための API を提供します。
 
 Java クラス内に、クラス・レベルで以下を追加します。
 
@@ -254,12 +252,11 @@ ConfigurationAPI configurationAPI;
 
 その後、`configurationAPI` インスタンスを使用してプロパティーを取得できます。
 
-
 ```java
 configurationAPI.getPropertyValue("DB_url");
 ```
 
-アダプター構成が {{site.data.keys.mf_console }} から変更されると、JAX-RS アプリケーション・クラスが再ロードされ、その `init` メソッドが再び呼び出されます。
+アダプター構成が {{ site.data.keys.mf_console }} から変更されると、JAX-RS アプリケーション・クラスが再ロードされ、その `init` メソッドが再び呼び出されます。
 
 `getServerJNDIProperty` メソッドを使用して、サーバー構成の JNDI プロパティーを取得することも可能です。
 

@@ -13,14 +13,14 @@ weight: 8
 {: #overview }
 さまざまなタイプのアダプターの基本的な使用法について説明してきましたが、これらのアダプターを組み合わせると、異なるアダプターを使用して 1 つの処理結果を生成するプロシージャーを作成できることを覚えておくことは重要です。複数のソース (異なる HTTP サーバー、SQL など) を組み合わせることができます。
 
-理論上は、クライアント・サイドから複数の要求を連続的に行うことができ、一方が他方に依存した状態になります。ただし、サーバー・サイドにこのロジックを作成することで、速度が向上し、よりクリーンになる可能性があります。
+理論上は、クライアント・サイドから複数の要求を連続的に行うことができ、一方が他方に依存した状態になります。
+ただし、サーバー・サイドにこのロジックを作成することで、速度が向上し、よりクリーンになる可能性があります。
 
 #### ジャンプ先
 {: #jump-to}
 * [JavaScript アダプター API](#javascript-adapter-api)
 * [Java アダプター API](#java-adapter-api)
-* [データ・マッシュアップの例
-](#data-mashup-example)
+* [データ・マッシュアップの例](#data-mashup-example)
 * [サンプル・アプリケーション](#sample-application)
 
 ## JavaScript アダプター API
@@ -76,7 +76,6 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 ```
 
 ## データ・マッシュアップの例
-
 {: #data-mashup-example }
 
 次の例では、2 つのデータ・ソース、1 つの*データベース表*、および *Fixer.io (為替レートおよび通貨の変換サービス)* をマッシュアップする方法、およびデータ・ストリームを単一のオブジェクトとしてアプリケーションに返す方法を示します。
@@ -92,7 +91,6 @@ JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
   * SQL アダプターを介してパラメーターとして取得される要求通貨の、更新済みの為替レートを取り出します。
 
 その後、マッシュアップされたデータがアプリケーションに返されて表示されます。
-
 
 ![アダプターのマッシュアップ・ダイアグラム](AdaptersMashupDiagram.jpg)
 
@@ -319,8 +317,8 @@ public JSONObject getExchangeRate_JavaToJS(@QueryParam("fromCurrencyId") Integer
 SQL の通貨リストの例は、`Utils/mobilefirstTraining.sql` の提供されているアダプター Maven プロジェクト (Cordova プロジェクトの中にあります) で使用できます。
 
 1. SQL データベースで .sql スクリプトを実行します。
-2. Maven、{{site.data.keys.mf_cli }}、または任意の IDE を使用して、[アダプターのビルドとデプロイ](../../adapters/creating-adapters/)を行います。
-3. {{site.data.keys.mf_console }}を開きます。
+2. Maven、{{ site.data.keys.mf_cli }}、または任意の IDE を使用して、[アダプターのビルドとデプロイ](../../adapters/creating-adapters/)を行います。
+3. {{ site.data.keys.mf_console }}を開きます。
     - **SQLAdapterJS** アダプターをクリックし、データベース接続プロパティーを更新します。
     - **SQLAdapterJava** アダプターをクリックし、データベース接続プロパティーを更新します。
 
