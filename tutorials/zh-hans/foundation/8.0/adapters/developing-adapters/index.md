@@ -1,99 +1,97 @@
 ---
 layout: tutorial
-title: Developing Adapters in Eclipse
+title: 在 Eclipse 中开发适配器
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-As taught in previous [Adapters tutorials](../), adapters are Maven projects that are created by using either Maven directly or via the {{ site.data.keys.mf_cli }}. The adapter code can then be edited in any IDE, and later built and deployed using either Maven or the {{ site.data.keys.mf_cli }}. A developer may also choose to create, develop, build and deploy all inside a supported IDEs, such as Eclipse or IntelliJ. In this tutorial an adapter is created and built from the Eclipse IDE.
+如先前[适配器教程](../)中所讨论，适配器是通过直接使用 Maven 或通过 {{ site.data.keys.mf_cli }} 创建的 Maven 项目。之后可在任何 IDE 中编辑适配器代码，以后使用 Maven 或 {{ site.data.keys.mf_cli }} 进行构建和部署。开发人员也可选择在支持的 IDE（如 Eclipse 或 IntelliJ）内创建、开发、构建和部署所有适配器。在本教程中，从 Eclipse IDE 创建和构建适配器。
 
-> For instructions how to use IntelliJ see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters) Blog Post.
+> 有关如何使用 IntelliJ 的指示信息，请参阅[使用 IntelliJ 开发 MobileFirst Java 适配器]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters)博客帖子。
+**先决条件：**
 
-**Prerequisite:**
+* 先通过阅读[适配器教程](../)来熟悉适配器。
+* Eclipse 中的 Maven 集成。从 Eclipse Kepler (v4.3) 开始，Maven 支持内置于 Eclipse 中。如果您的 Eclipse 实例不支持 Maven，那么请遵循[ m2e 指示信息](http://www.eclipse.org/m2e/)以添加 Maven 支持。
 
-* Get familiarized with adapters by reading the [Adapters tutorials](../) first.
-* Maven integration in Eclipse. Starting Eclipse Kepler (v4.3), Maven support is built-in in Eclipse. If your Eclipse instance does not support Maven, [follow the m2e instructions](http://www.eclipse.org/m2e/) to add Maven support.
-
-#### Jump to
+#### 跳转至
 {: #jump-to }
 
-* [Creating a new adapter Maven project](#creating-a-new-adapter-maven-project)
-* [Importing an existing adapter Maven project](#importing-an-existing-adapter-maven-project)
-* [Building and deploying an adapter Maven project](#building-and-deploying-an-adapter-maven-project)
-* [Further reading](#further-reading)
+* [新建一个适配器 Maven 项目](#creating-a-new-adapter-maven-project)
+* [导入现有适配器 Maven 项目](#importing-an-existing-adapter-maven-project)
+* [构建和部署适配器 Maven 项目](#building-and-deploying-an-adapter-maven-project)
+* [其他阅读材料](#further-reading)
 
-## Create or import an Adapter Maven project
+## 创建或导入适配器 Maven 项目
 {: #create-or-import-an-adapter-maven-project }
 
-Follow the bellow instructions to either create a new adapter Maven project or import an existing one.
+遵循以下指示信息，新建适配器 Maven 项目或导入现有适配器 Maven 项目。
 
-### Creating a new adapter Maven project
+### 新建一个适配器 Maven 项目
 {: #creating-a-new-adapter-maven-project }
 
-1. To create a new adapter Maven project, select: **File → New → Other... → Maven → Maven Project** and click **Next**.
+1. 要新建一个适配器 Maven 项目，选择：**文件 → 新建 → 其他... → Maven → Maven 项目**，然后单击**下一步**。
 
-    ![Image showing how to create an adapter Maven project in Eclipse](new-maven-project.png)
+    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](new-maven-project.png)
 
-2. Provide project name and location.  
-    - Make sure the option to create a simple project is ticked **off** and click **Next**.
+2. 提供项目名称和位置。  
+    - 确保将创建简单项目的选项标记为**关闭**，然后单击**下一步**。
 
-    ![Image showing how to create an adapter Maven project in Eclipse](select-project-name-and-location.png)
+    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](select-project-name-and-location.png)
 
-3. Select or add the adapter Archetype.
-    - If you [installed the archetypes locally](../creating-adapters/#install-maven) and they are not appearing in the list of archetypes, select **Configure → Add Local Catalog → Browse to the /.m2/repository/archetype-catalog.xml in the home directory**.
-    - Click on **Add Archetype** and provide the following details:
-        - **Archetype Group Id**: `com.ibm.mfp`
-        - **Archetype Artifact Id**: either `adapter-maven-archetype-java`, `adapter-maven-archetype-http` or `adapter-maven-archetype-sql`
-        - **Archetype Version**: `8.0.2016061011` (you can find the latest available version in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation))
+3. 选择或添加适配器 Archetype。
+    - 如果[在本地安装了 archetype](../creating-adapters/#install-maven)，但它们并没有出现在 archetype 列表中，请选择**配置 → 添加本地目录 → 浏览到主目录中的 /.m2/repository/archetype-catalog.xml**。
+    - 单击**添加 Archetype** 并提供以下详细信息：
+        - **Archetype 组标识**：`com.ibm.mfp`
+        - **Archetype 工件标识**： `adapter-maven-archetype-java`、`adapter-maven-archetype-http` 或 `adapter-maven-archetype-sql`
+        - **Archetype 版本**：`8.0.2016061011`（您可以在 [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) 中找到最新的可用版本）
 
-    ![Image showing how to create an adapter Maven project in Eclipse](create-an-archetype.png)
+    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](create-an-archetype.png)
 
-4. Specify Maven project parameters.  
-    - Specify required **Group Id**, **Artifact Id**, **Version** and **package** parameters, and click **Finish**.
+4. 指定 Maven 项目参数。  
+    - 指定所需的**组标识**、**工件标识**、**版本**和**包**参数，然后单击**完成**。
 
-    ![Image showing how to create an adapter Maven project in Eclipse](project-parameters.png)
+    ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](project-parameters.png)
 
-### Importing an existing adapter Maven project
+### 导入现有适配器 Maven 项目
 {: #importing-an-existing-adapter-maven-project }
 
-To import the adapter Maven project, select **File → Import... → Maven → Existing Maven Projects**.
+要导入适配器 Maven 项目，选择**文件 → 导入... → Maven → 现有 Maven 项目**。
 
-![Image showing how to import an adapter Maven project to Eclipse](import-adapter-maven-project.png)
+![图像显示如何将适配器 Maven 项目导入到 Eclipse](import-adapter-maven-project.png)
 
-## Building and deploying an adapter Maven project
+## 构建并部署适配器 Maven 项目
 {: #building-and-deploying-an-adapter-maven-project }
 
-An adapter project can be built and deployed by using either Maven command-line commands, the {{ site.data.keys.mf_cli }} or from Eclipse.  
-[Learn how to build and deploy adapters](../creating-adapters/#build-and-deploy-adapters).
+可使用 Maven 命令行命令、{{ site.data.keys.mf_cli }} 或从 Eclipse 构建并部署适配器项目。  
+[了解如何构建并部署适配器](../creating-adapters/#build-and-deploy-adapters)。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Eclipse can also be enhanced to ease the deployment step by integrating a **Command-line** window using a plug-in, creating a consistant development environment. From this window Maven or {{ site.data.keys.mf_cli }} commands can be run.
-
-### Building an adapter
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **提示：**也可通过使用插件集成**命令行**窗口，创建一致的开发环境来增强 Eclipse，从而简化开发步骤。可从此窗口运行 Maven 或 {{ site.data.keys.mf_cli }} 命令。
+### 构建适配器
 {: #building-an-adapter }
 
-To build an adapter, right-click on the adapter folder and select **Run As → Maven install**.  
+要构建适配器，请右键单击适配器文件夹，然后选择**运行方式 → Maven 安装**。  
 
-### Deploying an adapter
+### 部署适配器
 {: #deploying-an-adapter }
 
-To deploy an adapter, first add the deploy Maven command:
+要部署适配器，请先添加部署 Maven 命令：
 
-1. Select **Run → Run Configurations...**, right-click on **Maven Build** and select **New**.
-2. Provide a Name: "Maven deploy".
-2. Set as a Goal: "adapter:deploy".
-3. Click **Apply** followed by clicking on **Run** to have an initial deploy.
+1. 选择**运行 → 运行配置...**，右键单击 **Maven 构建**，然后选择**新建**。
+2. 提供一个名称："Maven 部署"。
+2. 设置为目标："适配器：部署"。
+3. 单击**应用**，然后单击**运行**以进行初始部署。
 
-You can now right-click on the adapter folder and select **Run As → Maven Deploy**
+您现在可以右键单击适配器文件夹，然后选择**运行方式 → Maven 部署**
 
-### Building and deploying an adapter
+### 构建并部署适配器
 {: #building-and-deploying-an-adapter }
 
-You can also combine the "build" and  "deploy" Maven Goals to a single "build and deploy" Goal: "clean install adapter:deploy".
+您也可以将"构建"和"部署"Maven 目标合并为单个"构建并部署"目标："清除安装适配器：部署"。
 
-## Further reading
+## 更多参考资料
 {: #further-reading }
 
-Learn how to debug Java code in adapters in the [Testing and debugging adaters](../testing-and-debugging-adapters) tutorial.
+在[测试和调试适配器](../testing-and-debugging-adapters)教程中了解如何调试适配器中的 Java 代码。
