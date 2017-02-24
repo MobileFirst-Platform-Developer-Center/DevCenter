@@ -48,7 +48,7 @@ configuredatabase Ant 태스크에 대한 참조 정보입니다. 이 참조 정
 
 **configuredatabase** 태스크는 다음과 같은 속성을 가지고 있습니다. 
 
-| 속성      | 설명        | 필수     | 기본값  | 
+| 속성      | 설명        | 필수     | 기본값       | 
 |-----------|-------------|----------|---------|
 | kind      | 데이터베이스의 유형: {{ site.data.keys.mf_server }}에서 : MobileFirstRuntime, MobileFirstConfig, MobileFirstAdmin 또는 푸시. Application Center에서: ApplicationCenter.  | 예 | 없음 |
 | includeConfigurationTables | 라이브 업데이트 서비스와 관리 서비스 모두에서 데이터베이스 조작을 수행할지 아니면 관리 서비스에서만 데이터베이스 조작을 수행할지를 지정합니다. 값은 true 또는 false입니다.  |  아니오 | true |
@@ -347,7 +347,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | 속성              | 설명                                                                      | 필수     | 기본값      | 
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
 | contextroot       | {{ site.data.keys.mf_console }}의 URI입니다.                             | 아니오       | /mfpconsole |
-| install           | {{ site.data.keys.mf_console }}을 설치해야 하는지 여부를 표시합니다.  | 아니오       | Yes         |
+| install           | {{ site.data.keys.mf_console }}을 설치해야 하는지 여부를 표시합니다.  | 아니오       | 예         |
 | warfile           | 콘솔 WAR 파일입니다. 	                                                    |아니오        | mfp-admin-ui.war 파일은 mfp-ant-deployer.jar 파일과 동일한 디렉토리에 있습니다.  |
 
 `<console>` 요소는 다음 요소를 지원합니다. 
@@ -397,9 +397,9 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 속성                     | 설명                                      | 필수      | 기본값  | 
 |--------------------------|----------------------------------------|----------|---------|
-| serverName               | Collective 제어기의 이름입니다. 	| Yes      | 없음    |
-| controllerAdminName      | Collective 제어기에서 정의되는 관리 사용자 이름입니다. 이 이름은 새 멤버를 Collective에 결합하는 데 사용되는 사용자와 동일한 사용자입니다.                                                          | Yes      | 없음    |
-| controllerAdminPassword  | 관리 사용자 비밀번호입니다. 	    | Yes      | 없음    |
+| serverName               | Collective 제어기의 이름입니다. 	| 예      | 없음    |
+| controllerAdminName      | Collective 제어기에서 정의되는 관리 사용자 이름입니다. 이 이름은 새 멤버를 Collective에 결합하는 데 사용되는 사용자와 동일한 사용자입니다.                                                          | 예      | 없음    |
+| controllerAdminPassword  | 관리 사용자 비밀번호입니다. 	    | 예      | 없음    |
 | createControllerAdmin    | Collective 제어기의 기본 레지스트리에서 관리 사용자를 작성해야 하는지 여부를 표시합니다. 가능한 값은 true 또는 false입니다.                                                               | 아니오	   | true    |
 
 ### 라이브 업데이트 서비스 구성 지정
@@ -408,7 +408,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 속성                     | 설명                                                              | 필수      | 기본값  | 
 |--------------------------|----------------------------------------------------------------|----------|---------|
-| install                  | 라이브 업데이트 서비스를 설치해야 하는지 여부를 표시합니다. 	| Yes | true |
+| install                  | 라이브 업데이트 서비스를 설치해야 하는지 여부를 표시합니다. 	| 예 | true |
 | configAdminUser	       | 라이브 업데이트 서비스의 관리자입니다. 	                | 아니오(서버 팜 토폴로지의 경우에는 필수임) |정의되지 않은 경우에는 사용자가 생성됩니다. 서버 팜 토폴로지에서 사용자 이름은 팜의 모든 멤버에 대해 동일해야 합니다.  |
 | configAdminPassword      | 라이브 업데이트 서비스 사용자에 대한 관리자 비밀번호입니다.        | **configAdminUser**에 대해 사용자가 지정된 경우 | 없음. 서버 팜 토폴로지에서 비밀번호는 팜의 모든 멤버에 대해 동일해야 합니다.  |
 | createConfigAdminUser	   | 관리자가 누락된 경우 애플리케이션 서버의 기본 레지스트리에서 관리자를 작성할지 여부를 표시합니다.  | 아니오 | true |
@@ -425,8 +425,8 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 속성        | 설명                                                                       | 필수      | 기본값  | 
 |-------------|-------------------------------------------------------------------------|----------|---------|
-| role	      | 애플리케이션에 대한 올바른 보안 역할입니다. 가능한 값: configadmin.	| Yes      | 없음    |
-| name	      | 사용자 이름입니다. 	                                                        | Yes      | 없음    |
+| role	      | 애플리케이션에 대한 올바른 보안 역할입니다. 가능한 값: configadmin.	| 예      | 없음    |
+| name	      | 사용자 이름입니다. 	                                                        | 예      | 없음    |
 | password	  | 사용자를 작성해야 하는 경우 비밀번호입니다. 	                        | 아니오       | 없음    |
 
 `<user>` 요소를 사용하여 사용자를 정의한 후에는 {{ site.data.keys.mf_console }}에서 인증을 위해 `configadmin` 역할에 해당 사용자를 맵핑할 수 있습니다. 
@@ -439,8 +439,8 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 속성       | 설명                          | 필수      | 기본값  | 
 |------------|----------------------------|----------|---------|
-| name       | 특성의 이름입니다.   | Yes      | 없음    | 
-| value	     | 특성의 값입니다.  |	Yes      | 없음    |
+| name       | 특성의 이름입니다.   | 예      | 없음    | 
+| value	     | 특성의 값입니다.  |	예      | 없음    |
 
 이 요소를 사용하면 자체 JNDI 특성을 정의하거나 {{ site.data.keys.mf_console }} WAR 파일 및 관리 서비스에서 제공하는 JNDI 특성의 기본값을 대체할 수 있습니다. JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)을 참조하십시오. 
 
@@ -464,8 +464,8 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 속성        | 설명                                                       | 필수      | 기본값  | 
 |-------------|---------------------------------------------------------|----------|---------|
-| serverName  |	Collective 멤버의 이름입니다.                       | Yes      | 없음    |
-| clusterName |	Collective 멤버가 속하는 클러스터 이름입니다.  | Yes	   | 없음    |
+| serverName  |	Collective 멤버의 이름입니다.                       | 예      | 없음    |
+| clusterName |	Collective 멤버가 속하는 클러스터 이름입니다.  | 예	   | 없음    |
 
 > **참고:** 푸시 서비스와 런타임 컴포넌트가 동일한 Collective 멤버에 설치되는 경우 이들은 동일한 클러스터 이름을 가지고 있어야 합니다. 이 컴포넌트가 동일한 Collective의 구별되는 멤버에 설치되는 경우 클러스터 이름은 다를 수 있습니다.
 
@@ -476,9 +476,9 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 | 속성          | 설명                                                                         | 필수      | 기본값  | 
 |---------------|---------------------------------------------------------------------------|----------|---------|
 | install	    | 푸시 서비스를 {{ site.data.keys.mf_analytics }}에 연결할지 여부를 표시합니다.  | 아니오       | false   |
-| analyticsURL 	| {{ site.data.keys.mf_analytics }} 서비스의 URL입니다. 	                            | Yes	   | 없음    |
-| username	    | 사용자 이름입니다. 	                                                        | Yes	   | 없음    |
-| password	    | 비밀번호입니다. 	                                                            | Yes	   | 없음    |
+| analyticsURL 	| {{ site.data.keys.mf_analytics }} 서비스의 URL입니다. 	                            | 예	   | 없음    |
+| username	    | 사용자 이름입니다. 	                                                        | 예	   | 없음    |
+| password	    | 비밀번호입니다. 	                                                            | 예	   | 없음    |
 | validate	    | {{ site.data.keys.mf_analytics_console }}에 액세스 가능한지 여부를 유효성 검증합니다. 	| 아니오	   | true    |
 
 **install**  
@@ -509,7 +509,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 속성          | 설명                                               | 필수      | 기본값  | 
 |---------------|-------------------------------------------------|----------|---------|
-| kind          | 데이터베이스의 유형입니다(Push). 	                  | Yes	     | 없음    |
+| kind          | 데이터베이스의 유형입니다(Push). 	                  | 예	     | 없음    |
 | validate	    | 데이터베이스에 액세스할 수 있는지 여부를 유효성 검증합니다.  | 아니오       | true    |
 
 `<database>` 요소는 다음과 같은 요소를 지원합니다. 관계형 DBMS에 대한 이 데이터베이스 요소의 구성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블을 참조하십시오. 
@@ -528,7 +528,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 | 속성          | 설명                                               | 필수      | 기본값                    | 
 |---------------|-------------------------------------------------|----------|---------------------------|
 | url           | Cloudant 계정의 URL입니다.                 | 아니오       | https://user.cloudant.com |
-| user          | Cloudant 계정의 사용자 이름입니다. 	      | Yes	     | 없음                      |
+| user          | Cloudant 계정의 사용자 이름입니다. 	      | 예	     | 없음                      |
 | password      | Cloudant 계정의 비밀번호입니다. 	          | 아니오	     | 대화식으로 조회됨     |
 | dbName        | Cloudant 데이터베이스 이름입니다. **중요:** 이 데이터베이스 이름은 소문자로 시작해야 하며 소문자(a - z) 및 숫자(0 - 9)와 _, $ 및 - 문자만 포함해야 합니다.                                 | 아니오       | mfp_push_db               |
 
@@ -592,8 +592,8 @@ JNDI 환경 항목을 사용하여 푸시 서비스에 대한 구성 특성을 �
 | auto               | 권한 부여 서버 URL이 계산되는지 여부를 표시합니다. 가능한 값은 true 또는 false입니다. 	| WebSphere Application Server Network Deployment 클러스터 또는 노드의 경우 필수   	 | true | 
 | authorizationURL   | 권한 부여 서버의 URL입니다. 	 | 모드가 auto가 아닌 경우 | 로컬 서버에 있는 런타임의 컨텍스트 루트 |
 | runtimeContextRoot | 런타임의 컨텍스트 루트입니다. 	     | 아니오	     | /mfp       | 
-| pushClientID	     | 권한 부여 서버의 푸시 서비스 기밀 ID입니다.   | Yes | 없음 |
-| pushClientSecret	 | 권한 부여 서버의 푸시 서비스 기밀 클라이언트 비밀번호입니다.  | Yes | 없음 |
+| pushClientID	     | 권한 부여 서버의 푸시 서비스 기밀 ID입니다.   | 예 | 없음 |
+| pushClientSecret	 | 권한 부여 서버의 푸시 서비스 기밀 클라이언트 비밀번호입니다.  | 예 | 없음 |
 
 #### auto
 {: #auto }
@@ -618,8 +618,8 @@ JNDI 환경 항목을 사용하여 푸시 서비스에 대한 구성 특성을 �
 
 | 속성       | 설명                          | 필수      | 기본값  | 
 |------------|----------------------------|----------|---------|
-| name       | 특성의 이름입니다.   |	Yes	     | 없음    |
-| value	     | 특성의 값입니다.  |	Yes	     | 없음    |
+| name       | 특성의 이름입니다.   |	예	     | 없음    |
+| value	     | 특성의 값입니다.  |	예	     | 없음    |
 
 이 요소를 사용하면 자체 JNDI 특성을 정의하거나 푸시 서비스 WAR 파일이 제공하는 JNDI 특성의 기본값을 대체할 수 있습니다. 
 
@@ -646,8 +646,8 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 
 | 속성        | 설명                                  | 필수      | 기본값  | 
 |-------------|------------------------------------|----------|---------|
-| serverName  | Collective 멤버의 이름입니다.  | Yes      | 없음    |
-| clusterName |	Collective 멤버가 속하는 클러스터 이름입니다.  | Yes | 없음 |
+| serverName  | Collective 멤버의 이름입니다.  | 예      | 없음    |
+| clusterName |	Collective 멤버가 속하는 클러스터 이름입니다.  | 예 | 없음 |
 
 > **참고:** 푸시 서비스와 런타임 컴포넌트가 동일한 Collective 멤버에 설치되는 경우 이들은 동일한 클러스터 이름을 가지고 있어야 합니다. 이 컴포넌트가 동일한 Collective의 구별되는 멤버에 설치되는 경우 클러스터 이름은 다를 수 있습니다.
 
@@ -658,9 +658,9 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 | 속성         | 설명                                  | 필수      | 기본값  | 
 |--------------|------------------------------------|----------|---------|
 | install	   | 푸시 서비스를 {{ site.data.keys.mf_analytics }}에 연결할지 여부를 표시합니다.  | 아니오 | false | 
-| analyticsURL | {{ site.data.keys.mf_analytics }} 서비스의 URL입니다.  | Yes | 없음 | 
-| username	   | 사용자 이름입니다.  | Yes | 없음 | 
-| password	   | 비밀번호입니다.  | Yes | 없음 | 
+| analyticsURL | {{ site.data.keys.mf_analytics }} 서비스의 URL입니다.  | 예 | 없음 | 
+| username	   | 사용자 이름입니다.  | 예 | 없음 | 
+| password	   | 비밀번호입니다.  | 예 | 없음 | 
 | validate	   | {{ site.data.keys.mf_analytics_console }}에 액세스 가능한지 여부를 유효성 검증합니다.  | 아니오 | true | 
 
 #### install
@@ -694,7 +694,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 
 | 속성         | 설명                            | 필수      | 기본값  | 
 |--------------|------------------------------|----------|---------|
-| kind         | 데이터베이스의 유형입니다(Push).  | Yes      | 없음    |
+| kind         | 데이터베이스의 유형입니다(Push).  | 예      | 없음    |
 | validate	   | 데이터베이스에 액세스할 수 있는지 여부를 유효성 검증합니다.  | 아니오 | true |
 
 `<database>` 요소는 다음과 같은 요소를 지원합니다. 관계형 DBMS에 대한 이 데이터베이스 요소의 구성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블을 참조하십시오. 
@@ -713,7 +713,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 | 속성         | 설명                                      | 필수        | 기본값  | 
 |--------------|----------------------------------------|------------|---------|
 | url	       | Cloudant 계정의 URL입니다.        | 아니오         | https://user.cloudant.com | 
-| user	       | Cloudant 계정의 사용자 이름입니다.  | Yes | 없음 |
+| user	       | Cloudant 계정의 사용자 이름입니다.  | 예 | 없음 |
 | password	   | Cloudant 계정의 비밀번호입니다. 	| 아니오  | 대화식으로 조회됨 |
 | dbName	   | Cloudant 데이터베이스 이름입니다. **중요:** 이 데이터베이스 이름은 소문자로 시작해야 하며 소문자(a - z) 및 숫자(0 - 9)와 _, $ 및 - 문자만 포함해야 합니다.  |아니오	| mfp_push_db |
 
@@ -791,8 +791,8 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 | 속성      | 설명                          | 필수      | 기본값  | 
 |-----------|----------------------------|----------|---------|
-| name      | 특성의 이름입니다. 	 | Yes      | 없음    |
-| value	    | 특성의 값입니다. | Yes	    | 없음    |  
+| name      | 특성의 이름입니다. 	 | 예      | 없음    |
+| value	    | 특성의 값입니다. | 예	    | 없음    |  
 
 `<applicationserver>` 요소는 {{ site.data.keys.product_adj }} 애플리케이션이 배치되는 애플리케이션 서버를 설명합니다. 이 요소는 다음 요소 중 하나의 컨테이너입니다. 
 
@@ -805,14 +805,14 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 | 속성            | 설명                                                      | 필수                      | 기본값  | 
 |-----------------|--------------------------------------------------------|--------------------------|---------|
-| installdir      |	WebSphere Application Server 설치 디렉토리입니다.    | Yes                      | 없음    |
-| profile         |	WebSphere Application Server 프로파일 또는 Liberty입니다.       | Yes	                  | 없음    |
+| installdir      |	WebSphere Application Server 설치 디렉토리입니다.    | 예                      | 없음    |
+| profile         |	WebSphere Application Server 프로파일 또는 Liberty입니다.       | 예	                  | 없음    |
 | user            I	WebSphere Application Server 관리자 이름입니다. 	               | 예(Liberty 제외)  | 없음    |
 | password        | WebSphere Application Server 관리자 비밀번호입니다.    | 아니오  |         | 
 | libertyEncoding |	WebSphere Application Server Liberty에 대한 데이터 소스 비밀번호를 인코딩하는 알고리즘입니다. 가능한 값은 없음, xor 및 aes입니다. xor 또는 aes 인코딩이 사용되는지 여부에 관계없이 명확한 비밀번호가 인수로 securityUtility 프로그램에 전달되며 이는 외부 프로세스를 통해 호출됩니다. ps 명령을 사용하거나 UNIX 운영 체제의 /proc 파일 시스템에서 비밀번호를 볼 수 있습니다.                                                          | 아니오                       |	xor     |
 | jeeVersion      |	Liberty 프로파일용입니다. JEE6 웹 프로파일 또는 JEE7 웹 프로파일의 기능을 설치할지 여부를 지정합니다. 가능한 값은 6, 7 또는 auto입니다. | 아니오 | auto |
 | configureFarm   |	WebSphere Application Server Liberty 및 WebSphere Application Server Full 프로파일용입니다(WebSphere Application Server Network Deployment 에디션 및 Liberty Collective용이 아님). 서버가 서버 팜 멤버인지 여부를 지정합니다. 가능한 값은 true 또는 false입니다.  | 아니오	      | false   |
-| farmServerId    |	서버 팜에서 서버를 고유하게 식별하는 문자열입니다. {{ site.data.keys.mf_server }} 관리 서비스 및 이와 통신하는 모든 {{ site.data.keys.product_adj }} 런타임은 동일한 값을 공유해야 합니다.                                                                 | Yes                      |	없음    |
+| farmServerId    |	서버 팜에서 서버를 고유하게 식별하는 문자열입니다. {{ site.data.keys.mf_server }} 관리 서비스 및 이와 통신하는 모든 {{ site.data.keys.product_adj }} 런타임은 동일한 값을 공유해야 합니다.                                                                 | 예                      |	없음    |
 
 이 요소는 단일 서버 배치를 위해 다음 요소를 지원합니다. 
 
@@ -824,7 +824,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 | 속성      | 설명                | 필수      | 기본값  | 
 |-----------|------------------|----------|---------|
-| name	    | 서버 이름입니다.  | Yes      | 없음    |
+| name	    | 서버 이름입니다.  | 예      | 없음    |
 
 이 요소는 Liberty Collective를 위해 다음과 같은 요소를 지원합니다. 
 
@@ -836,13 +836,13 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 | 속성                    | 설명                | 필수      | 기본값  | 
 |-------------------------|------------------|----------|---------|
-| serverName              |	Collective 멤버의 이름입니다.                        | Yes | 없음 | 
-| clusterName             |	Collective 멤버가 속하는 클러스터 이름입니다.   | Yes | 없음 | 
-| serverId                |	Collective 멤버를 고유하게 식별하는 문자열입니다.  | Yes | 없음 | 
-| controllerHost          |	Collective 제어기의 이름입니다.                    | Yes | 없음 | 
-| controllerHttpsPort     |	Collective 제어기의 HTTPS 포트입니다.              | Yes | 없음 | 
-| controllerAdminName     |	Collective 제어기에서 정의되는 관리 사용자 이름입니다. 이 이름은 새 멤버를 Collective에 결합하는 데 사용되는 사용자와 동일한 사용자입니다.  | Yes | 없음 | 
-| controllerAdminPassword |	관리 사용자 비밀번호입니다. 	                     | Yes | 없음 | 
+| serverName              |	Collective 멤버의 이름입니다.                        | 예 | 없음 | 
+| clusterName             |	Collective 멤버가 속하는 클러스터 이름입니다.   | 예 | 없음 | 
+| serverId                |	Collective 멤버를 고유하게 식별하는 문자열입니다.  | 예 | 없음 | 
+| controllerHost          |	Collective 제어기의 이름입니다.                    | 예 | 없음 | 
+| controllerHttpsPort     |	Collective 제어기의 HTTPS 포트입니다.              | 예 | 없음 | 
+| controllerAdminName     |	Collective 제어기에서 정의되는 관리 사용자 이름입니다. 이 이름은 새 멤버를 Collective에 결합하는 데 사용되는 사용자와 동일한 사용자입니다.  | 예 | 없음 | 
+| controllerAdminPassword |	관리 사용자 비밀번호입니다. 	                     | 예 | 없음 | 
 | createControllerAdmin   |	Collective 멤버의 기본 레지스트리에서 관리 사용자를 작성해야 하는지 여부를 표시합니다. 가능한 값은 true 또는 false입니다.  | 아니오 | true |
 
 이 요소는 Network Deployment를 위해 다음과 같은 요소를 지원합니다. 
@@ -860,34 +860,34 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 
 | 속성      | 설명                 | 필수      | 기본값  | 
 |-----------|-------------------|----------|---------|
-| name      | 클러스터 이름입니다.  | Yes	   | 없음    |
+| name      | 클러스터 이름입니다.  | 예	   | 없음    |
 
 `<node>` 요소는 다음과 같은 속성을 가지고 있습니다. 
 
 | 속성      | 설명              | 필수      | 기본값  | 
 |-----------|----------------|----------|---------|
-| name      | 노드 이름입니다.  | Yes	    | 없음    |
+| name      | 노드 이름입니다.  | 예	    | 없음    |
 
 Network Deployment 컨텍스트에서 사용되는 `<server>` 요소는 다음과 같은 속성을 가지고 있습니다. 
 
 | 속성       | 설명                | 필수      | 기본값  | 
 |------------|------------------|----------|---------|
-| nodeName   | 노드 이름입니다.    | Yes	   | 없음    |
-| serverName | 서버 이름입니다.  | Yes      | 없음    |
+| nodeName   | 노드 이름입니다.    | 예	   | 없음    |
+| serverName | 서버 이름입니다.  | 예      | 없음    |
 
 `<tomcat>` 요소는 Apache Tomcat 서버를 나타냅니다. 이 요소는 다음과 같은 속성을 가지고 있습니다. 
 
 | 속성          | 설명                | 필수      | 기본값  | 
 |---------------|------------------|----------|---------|
-| installdir    | Apache Tomcat의 설치 디렉토리입니다. CATALINA_HOME 디렉토리와 CATALINA_BASE 디렉토리 사이에서 분할되는 Tomcat 설치의 경우 CATALINA_BASE 환경 변수의 값을 지정하십시오.      | Yes | 없음    | 
+| installdir    | Apache Tomcat의 설치 디렉토리입니다. CATALINA_HOME 디렉토리와 CATALINA_BASE 디렉토리 사이에서 분할되는 Tomcat 설치의 경우 CATALINA_BASE 환경 변수의 값을 지정하십시오.      | 예 | 없음    | 
 | configureFarm | 서버가 서버 팜 멤버인지 여부를 지정합니다. 가능한 값은 true 또는 false입니다. 	| 아니오 | false |
-| farmServerId	| 서버 팜에서 서버를 고유하게 식별하는 문자열입니다. {{ site.data.keys.mf_server }} 관리 서비스 및 이와 통신하는 모든 {{ site.data.keys.product_adj }} 런타임은 동일한 값을 공유해야 합니다.  | Yes | 없음 |
+| farmServerId	| 서버 팜에서 서버를 고유하게 식별하는 문자열입니다. {{ site.data.keys.mf_server }} 관리 서비스 및 이와 통신하는 모든 {{ site.data.keys.product_adj }} 런타임은 동일한 값을 공유해야 합니다.  | 예 | 없음 |
 
 `<database>` 요소는 특정 데이터베이스에 액세스하기 위해 필요한 정보를 지정합니다. `<database>` 요소는 `<dba>` 및 `<client>` 요소를 가지고 있지 않다는 점을 제외하고 configuredatabase Ant 태스크와 비슷하게 지정됩니다. 하지만 `<property>` 요소는 가지고 있습니다. `<database>` 요소는 다음과 같은 속성을 가지고 있습니다. 
 
 | 속성      | 설명                                          | 필수      | 기본값  | 
 |-----------|--------------------------------------------|----------|---------|
-| kind      | 데이터베이스의 유형입니다({{ site.data.keys.product_adj }} 런타임).  | Yes | 없음 |
+| kind      | 데이터베이스의 유형입니다({{ site.data.keys.product_adj }} 런타임).  | 예 | 없음 |
 | validate  | 데이터베이스에 액세스 가능한지 여부를 유효성 검증합니다. 가능한 값은 true 또는 false입니다.  | 아니오 | true |
 
 `<database>` 요소는 다음과 같은 요소를 지원합니다. 
@@ -905,10 +905,10 @@ Network Deployment 컨텍스트에서 사용되는 `<server>` 요소는 다음�
 | 속성         | 설명                                                                                | 필수      | 기본값  | 
 |--------------|----------------------------------------------------------------------------------|----------|---------|
 | install      | {{ site.data.keys.product_adj }} 런타임을 {{ site.data.keys.mf_analytics }}에 연결할지 여부를 표시합니다.  | 아니오       | false   |
-| analyticsURL | {{ site.data.keys.mf_analytics }} 서비스의 URL입니다. 	                                      | Yes      | 없음    |
-| consoleURL   | {{ site.data.keys.mf_analytics_console }}의 URL입니다. 	                                      | Yes      | 없음    |
-| username     | 사용자 이름입니다. 	                                                                  | Yes      | 없음    |
-| password     | 비밀번호입니다. 	                                                                  | Yes      | 없음    |
+| analyticsURL | {{ site.data.keys.mf_analytics }} 서비스의 URL입니다. 	                                      | 예      | 없음    |
+| consoleURL   | {{ site.data.keys.mf_analytics_console }}의 URL입니다. 	                                      | 예      | 없음    |
+| username     | 사용자 이름입니다. 	                                                                  | 예      | 없음    |
+| password     | 비밀번호입니다. 	                                                                  | 예      | 없음    |
 | validate     | {{ site.data.keys.mf_analytics_console }}에 액세스 가능한지 여부를 유효성 검증합니다. 	      | 아니오	     | true    |
 | tenant       | {{ site.data.keys.product_adj }} 런타임에서 수집되는 데이터의 색인화를 위한 테넌트입니다. 	      | 아니오       | 내부 ID |
 
@@ -949,7 +949,7 @@ Network Deployment 컨텍스트에서 사용되는 `<server>` 요소는 다음�
 | 속성       | 설명                                          | 필수      | 기본값  | 
 |------------|--------------------------------------------|----------|---------|
 | database	 | 데이터베이스 이름입니다. 	                      | 아니오       |	유형에 따라 MFPDATA, MFPADM, MFPCFG, MFPPUSH 또는 APPCNTR |
-| datadir	 | 데이터베이스가 포함된 디렉토리입니다.  |	Yes	     | 없음    |
+| datadir	 | 데이터베이스가 포함된 디렉토리입니다.  |	예	     | 없음    |
 | schema     |	스키마 이름입니다.                           |	아니오	     | 유형에 따라 MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH 또는 APPCENTER |
 
 `<derby>` 요소는 다음과 같은 요소를 지원합니다. 
@@ -971,7 +971,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 | 속성       | 설명                                          | 필수      | 기본값  | 
 |------------|--------------------------------------------|----------|---------|
 | database   | 데이터베이스 이름입니다.  | 아니오 I 유형에 따라 MFPDATA, MFPADM, MFPCFG, MFPPUSH 또는 APPCNTR | 
-| server     | 데이터베이스 서버의 호스트 이름입니다.       | Yes	     | 없음    | 
+| server     | 데이터베이스 서버의 호스트 이름입니다.       | 예	     | 없음    | 
 | port       | 데이터베이스 서버의 포트입니다.            | 아니오	     | 50000   | 
 | user       | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다.      | 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다.                                  | 예 | 없음 | 
 | password   | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다.       | 아니오       | 대화식으로 조회됨 | 
@@ -997,17 +997,17 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 | 속성       | 설명                                          | 필수      | 기본값  | 
 |------------|--------------------------------------------|----------|---------|
 | database	 | 데이터베이스 이름입니다. 	                      | 아니오       | 유형에 따라 MFPDATA, MFPADM, MFPCFG, MFPPUSH 또는 APPCNTR | 
-| server	 | 데이터베이스 서버의 호스트 이름입니다. 	  | Yes      | 없음    |
+| server	 | 데이터베이스 서버의 호스트 이름입니다. 	  | 예      | 없음    |
 | port	     | 데이터베이스 서버의 포트입니다.            | 아니오	     | 3306    |
-| user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다.  | 예 | Yes | 없음 |
+| user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다.  | 예 | 예 | 없음 |
 | password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. 	  | 아니오	     | 대화식으로 조회됨 |
 
 **database**, **server** 및 **port** 대신 URL을 지정할 수도 있습니다. 이 경우에는 다음과 같은 속성을 사용하십시오. 
 
 | 속성       | 설명                                          | 필수      | 기본값  | 
 |------------|--------------------------------------------|----------|---------|
-| url	     | 데이터베이스에 연결하는 데 필요한 URL입니다. 	  | Yes	     | 없음    |
-| user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다.  | Yes  | 없음 |
+| url	     | 데이터베이스에 연결하는 데 필요한 URL입니다. 	  | 예	     | 없음    |
+| user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다.  | 예  | 없음 |
 | password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. 	  | 아니오       | 대화식으로 조회됨 |
 
 MySQL 사용자 계정에 대한 자세한 정보는 [MySQL 사용자 계정 관리](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html)를 참조하십시오. 
@@ -1033,7 +1033,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 | database   | 데이터베이스 이름 또는 Oracle 서비스 이름입니다. 참고: 항상 서비스 이름을 사용하여 PDB 데이터베이스에 연결해야 합니다.  | 아니오 | ORCL |
 | server	 | 데이터베이스 서버의 호스트 이름입니다. I 예 I 없음 I
 | port	     | 데이터베이스 서버의 포트입니다. I 없음 I 1521 I
-| user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. 이 테이블 아래의 참고를 참조하십시오.  | Yes | 없음 |
+| user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. 이 테이블 아래의 참고를 참조하십시오.  | 예 | 없음 |
 | password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. 	  | 아니오       | 대화식으로 조회됨 |
 
 > **참고:** **user** 속성의 경우 대문자로 된 사용자 이름을 사용하는 것이 좋습니다. Oracle 사용자 이름은 일반적으로 대문자입니다. 다른 데이터베이스 도구와 달리 **installmobilefirstruntime** Ant 태스크는 사용자 이름의 소문자를 대문자로 변환하지 않습니다. **installmobilefirstruntime** Ant 태스크가 데이터베이스에 연결하는 데 실패하면 **user** 속성의 값을 대문자로 입력하십시오.
@@ -1042,8 +1042,8 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 | 속성       | 설명                                          | 필수      | 기본값  | 
 |------------|--------------------------------------------|----------|---------|
-| url	     | 데이터베이스에 연결하는 데 필요한 URL입니다. 	  | Yes      | 없음    |
-| user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. 이 테이블 아래의 참고를 참조하십시오.  | Yes | 없음 |
+| url	     | 데이터베이스에 연결하는 데 필요한 URL입니다. 	  | 예      | 없음    |
+| user	     | 데이터베이스에 액세스하는 데 필요한 사용자 이름입니다. 이 사용자에게는 데이터베이스에 대한 확장된 권한이 필요하지 않습니다. 데이터베이스에 대한 제한을 구현하는 경우에는 데이터베이스 사용자 및 권한에 나열되는 제한된 권한을 가진 사용자를 설정할 수 있습니다. 이 테이블 아래의 참고를 참조하십시오.  | 예 | 없음 |
 | password	 | 데이터베이스에 액세스하는 데 필요한 비밀번호입니다. 	  | 아니오	     | 대화식으로 조회됨 |
 
 > **참고:** **user** 속성의 경우 대문자로 된 사용자 이름을 사용하는 것이 좋습니다. Oracle 사용자 이름은 일반적으로 대문자입니다. 다른 데이터베이스 도구와 달리 **installmobilefirstruntime** Ant 태스크는 사용자 이름의 소문자를 대문자로 변환하지 않습니다. **installmobilefirstruntime** Ant 태스크가 데이터베이스에 연결하는 데 실패하면 **user** 속성의 값을 대문자로 입력하십시오.
@@ -1068,9 +1068,9 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 | 속성       | 설명                                          | 필수      | 기본값  | 
 |------------|--------------------------------------------|----------|---------|
-| name       | 특성의 이름입니다. 	              | Yes      | 없음    |
+| name       | 특성의 이름입니다. 	              | 예      | 없음    |
 | type	     | 특성 값의 Java 유형입니다(일반적으로 java.lang.String/Integer/Boolean).  | 아니오 | java.lang.String |
-| value	     | 특성의 값입니다. 	              | Yes      |  없음   |
+| value	     | 특성의 값입니다. 	              | 예      |  없음   |
 
 ## Application Center 설치를 위한 Ant 태스크
 {: #ant-tasks-for-installation-of-application-center }
@@ -1182,7 +1182,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 | 속성         | 설명                                                      | 필수      | 기본값  | 
 |--------------|--------------------------------------------------------|----------|---------|
-| kind         | 데이터베이스의 유형입니다(ApplicationCenter).               | Yes      | 없음    |
+| kind         | 데이터베이스의 유형입니다(ApplicationCenter).               | 예      | 없음    |
 | validate	   | 데이터베이스에 액세스 가능한지 여부를 유효성 검증합니다.  | 아니오       | True    |
 
 `<database>` 요소는 다음과 같은 요소를 지원합니다. 이 데이터베이스 요소의 구성에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블을 참조하십시오. 
@@ -1201,8 +1201,8 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 | 속성         | 설명                                                      | 필수      | 기본값  | 
 |--------------|--------------------------------------------------------|----------|---------|
-| role         | 사용자 역할 appcenteradmin입니다.  | Yes | 없음 |
-| name	       | 사용자 이름입니다.  | Yes | 없음 |
+| role         | 사용자 역할 appcenteradmin입니다.  | 예   | 없음 |
+| name	       | 사용자 이름입니다.  | 예 | 없음 |
 | password	   | 비밀번호입니다(사용자를 작성해야 하는 경우). 	| 아니오 | 없음 |
 
 ## {{ site.data.keys.mf_analytics }} 설치를 위한 Ant 태스크
@@ -1255,10 +1255,10 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 | 속성              | 설명                                         | 필수      | 기본값  | 
 |-------------------|-------------------------------------------|----------|---------|
-| console	        | {{ site.data.keys.mf_analytics }}   	                | Yes	   | 1       |
+| console	        | {{ site.data.keys.mf_analytics }}   	                | 예   	   | 1       |
 | user	            | 보안 역할에 맵핑될 사용자입니다. 	| 아니오	   | 0..     |
-| storage	        | 스토리지의 유형입니다. 	                    | Yes 	   | 1       |
-| applicationserver	| 애플리케이션 서버입니다. 	                | Yes	   | 1       |
+| storage	        | 스토리지의 유형입니다. 	                    | 예 	   | 1       |
+| applicationserver	| 애플리케이션 서버입니다. 	                | 예 	   | 1       |
 | property          | 특성입니다. 	                            | 아니오 	   | 0..     |
 
 ### {{ site.data.keys.mf_analytics_console }} 지정
@@ -1295,8 +1295,8 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 | 속성       | 설명                          | 필수      | 기본값  | 
 |------------|----------------------------|----------|---------|
-| name       | 특성의 이름입니다.   | Yes      | 없음    | 
-| value	     | 특성의 값입니다.  |	Yes      | 없음    |
+| name       | 특성의 이름입니다.   | 예      | 없음    | 
+| value	     | 특성의 값입니다.  |	예      | 없음    |
 
 ### 사용자 및 보안 역할 지정
 {: #to-specify-a-user-and-a-security-role-1 }
@@ -1304,8 +1304,8 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 | 속성        | 설명                                             | 필수      | 기본값  | 
 |-------------|-----------------------------------------------|----------|---------|
-| role	      | 애플리케이션에 대한 올바른 보안 역할입니다.     | Yes      | 없음    |
-| name	      | 사용자 이름입니다. 	                              | Yes      | 없음    |
+| role	      | 애플리케이션에 대한 올바른 보안 역할입니다.     | 예      | 없음    |
+| name	      | 사용자 이름입니다. 	                              | 예      | 없음    |
 | password	  | 사용자를 작성해야 하는 경우 비밀번호입니다.  | 아니오       | 없음    |
 
 `<user>` 요소를 사용하여 사용자를 정의한 후에는 {{ site.data.keys.mf_console }}에서 인증을 위해 다음과 같은 역할에 해당 사용자를 맵핑할 수 있습니다. 
@@ -1409,8 +1409,8 @@ ElasticSearch 클러스터에서 각 샤드에 대해 작성할 복제본의 수
 
 | 속성       | 설명                          | 필수      | 기본값  | 
 |------------|----------------------------|----------|---------|
-| name       | 특성의 이름입니다.   | Yes      | 없음    | 
-| value	     | 특성의 값입니다.  |	Yes      | 없음    |
+| name       | 특성의 이름입니다.   | 예      | 없음    | 
+| value	     | 특성의 값입니다.  |	예      | 없음    |
 
 ## 내부 런타임 데이터베이스
 {: #internal-runtime-databases }
