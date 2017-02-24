@@ -17,11 +17,11 @@ Lorsque vous avez terminé un cycle de développement de votre application, dép
 * [Génération d'une application pour un environnement de test ou de production](#building-an-application-for-a-test-or-production-environment)
 * [Enregistrement d'une application sur un environnement de production](#registering-an-application-to-a-production-environment)
 * [Transfert d'artefacts côté serveur vers un serveur de test ou de production](#transferring-server-side-artifacts-to-a-test-or-production-server)
-* [Mise à jour d'applications {{site.data.keys.product_adj }} en production](#updating-mobilefirst-apps-in-production)
+* [Mise à jour d'applications {{ site.data.keys.product_adj }} en production](#updating-mobilefirst-apps-in-production)
 
 ## Déploiement ou mise à jour d'un adaptateur dans un environnement de production
 {: #deploying-or-updating-an-adapter-to-a-production-environment }
-Les adaptateurs contiennent le code côté serveur des applications qui sont déployées et gérées par {{site.data.keys.product }}. Consultez cette liste de contrôle avant de déployer ou de mettre à jour un adaptateur sur un environnement de production. Pour plus d'informations sur la création et la génération d'adaptateurs, voir[Développement du côté serveur d'une application {{site.data.keys.product_adj }}](../../adapters).
+Les adaptateurs contiennent le code côté serveur des applications qui sont déployées et gérées par {{ site.data.keys.product }}. Consultez cette liste de contrôle avant de déployer ou de mettre à jour un adaptateur sur un environnement de production. Pour plus d'informations sur la création et la génération d'adaptateurs, voir [Développement du côté serveur d'une application {{ site.data.keys.product_adj }}](../../adapters).
 
 Les adaptateurs peuvent être envoyés par téléchargement, mis à jour ou configurés alors qu'un serveur de production est en cours d'exécution. Une fois que tous les noeuds d'un parc de serveurs ont reçu le nouvel adaptateur ou la nouvelle configuration, toutes les demandes entrantes sur l'adaptateur utilisent les nouveaux paramètres.
 
@@ -29,7 +29,7 @@ Les adaptateurs peuvent être envoyés par téléchargement, mis à jour ou conf
 
     Le même adaptateur peut être utilisé par plusieurs applications, ou par plusieurs versions de la même application, qui sont déjà publiées sur le magasin et utilisées. Avant de mettre à jour l'adaptateur dans un environnement de production, exécutez des tests de non régression dans un serveur de test sur le nouvel adaptateur et les copies des applications qui sont générées pour le serveur de test.
 
-2. Pour les adaptateurs Java, si l'adaptateur utilise Java URLConnection avec HTTPS, assurez-vous que les certificats de back end figurent dans le magasin de clés {{site.data.keys.mf_server }}.
+2. Pour les adaptateurs Java, si l'adaptateur utilise Java URLConnection avec HTTPS, assurez-vous que les certificats de back end figurent dans le magasin de clés {{ site.data.keys.mf_server }}.
         
     Pour plus d'informations, voir [Utilisation de SSL dans les adaptateurs HTTP](../../adapters/javascript-adapters/js-http-adapter/using-ssl/). Pour plus d'informations sur l'utilisation des certificats auto-signés, voir [Configuration de SSL entre des adaptateurs et des serveurs de back end à l'aide de certificats auto-signés](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates).
 
@@ -42,14 +42,14 @@ Les adaptateurs peuvent être envoyés par téléchargement, mis à jour ou conf
         
 ## Configuration de SSL entre des adaptateurs et des serveurs de back end à l'aide de certificats auto-signés
 {: #configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates }
-Vous pouvez configurer SSL entre des adaptateurs et des serveurs de back end en important le certificat SSL auto-signé du serveur dans le magasin de clés {{site.data.keys.product_adj }}.
+Vous pouvez configurer SSL entre des adaptateurs et des serveurs de back end en important le certificat SSL auto-signé du serveur dans le magasin de clés {{ site.data.keys.product_adj }}.
 
 1. Exportez le certificat public de serveur à partir du magasin de clés de serveur de back end.
 
     > **Remarque :** Exportez les certificats publics de back end à partir du magasin de clés de back end à l'aide de keytool ou de la bibliothèque openssl. N'utilisez pas la fonction d'exportation d'un navigateur Web.
 
-2. Importez le certificat de serveur de back end dans le magasin de clés {{site.data.keys.product_adj }}.
-3. Déployez le nouveau magasin de clés {{site.data.keys.product_adj }}. Pour plus d'informations, voir [Configuration du magasin de clés {{site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
+2. Importez le certificat de serveur de back end dans le magasin de clés {{ site.data.keys.product_adj }}.
+3. Déployez le nouveau magasin de clés {{ site.data.keys.product_adj }}. Pour plus d'informations, voir [Configuration du magasin de clés {{ site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
 ### Exemple
 {: #example }
@@ -117,7 +117,7 @@ le fichier **server.xml** :
    keytool -export -alias backend -keystore backend.keystore -rfc -file backend.crt
    ```
         
-5. Importez le certificat exporté dans votre magasin de clés {{site.data.keys.mf_server }} :
+5. Importez le certificat exporté dans votre magasin de clés {{ site.data.keys.mf_server }} :
 
    ```bash
    keytool -import -alias backend -file backend.crt -storetype JKS -keystore mfp.keystore
@@ -129,19 +129,19 @@ le fichier **server.xml** :
    keytool -list -keystore mfp.keystore
    ```
         
-7. Déployez le nouveau magasin de clés {{site.data.keys.mf_server }}.
+7. Déployez le nouveau magasin de clés {{ site.data.keys.mf_server }}.
 
 ## Génération d'une application pour un environnement de test ou de production
 {: #building-an-application-for-a-test-or-production-environment }
 Pour générer une application pour un environnement de test ou de production, vous devez la configurer pour son serveur cible. Pour générer une application pour un environnement de production, vous devez exécuter des étapes supplémentaires.
 
 1. Assurez-vous que le magasin de clés de serveur cible est configuré.
-Pour plus d'informations, voir [Configuration du magasin de clés {{site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
+Pour plus d'informations, voir [Configuration du magasin de clés {{ site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 
 2. Si vous prévoyez de distribuer l'artefact installable de l'application, incrémentez la version de l'application.
 3. Avant de générer votre application, configurez-la pour le serveur cible.
 
-    Vous définissez l'URL et le nom d'exécution du serveur cible dans le fichier de propriétés du client. Vous pouvez également modifier le serveur cible en utilisant l'{{site.data.keys.mf_cli }}. Pour configurer l'application pour un serveur cible sans enregistrer l'application sur un serveur en cours d'exécution, vous pouvez utiliser les commandes `mfpdev app config server <server URL>` et `mfpdev app config runtime <runtime_name>`. Vous pouvez aussi enregistrer l'application sur un serveur en cours d'exécution en exécutant la commande `mfpdev app register`. Utilisez l'URL publique du serveur. L'application mobile utilise cette URL pour se connecter  au serveur {{site.data.keys.mf_server }}.
+    Vous définissez l'URL et le nom d'exécution du serveur cible dans le fichier de propriétés du client. Vous pouvez également modifier le serveur cible en utilisant l'{{ site.data.keys.mf_cli }}. Pour configurer l'application pour un serveur cible sans enregistrer l'application sur un serveur en cours d'exécution, vous pouvez utiliser les commandes `mfpdev app config server <server URL>` et `mfpdev app config runtime <runtime_name>`. Vous pouvez aussi enregistrer l'application sur un serveur en cours d'exécution en exécutant la commande `mfpdev app register`. Utilisez l'URL publique du serveur. L'application mobile utilise cette URL pour se connecter  au serveur {{ site.data.keys.mf_server }}.
     
     Par exemple, pour configurer l'application pour un serveur cible mfp.mycompany.com avec un environnement d'exécution dont le nom par défaut est mfp, exécutez
     `mfpdev app config server https://mfp.mycompany.com` et `mfpdev app config runtime mfp`.
@@ -154,11 +154,11 @@ Pour plus d'informations, voir [Configuration du magasin de clés {{site.data.ke
 
 5. Si vous prévoyez d'utiliser la mise à jour directe pour une application développée avec Apache Cordova, archivez les versions des plug-in Cordova que vous avez utilisés pour générer l'application.
 
-    La mise à jour directe ne peut pas être utilisée pour mettre à jour un code natif. Si vous avez modifié une bibliothèque native ou l'un des outils de génération dans un projet Cordova et envoyé par téléchargement un tel fichier sur le serveur {{site.data.keys.mf_server }}, celui-ci détecte la différence et n'envoie aucune mise à jour pour l'application client. Les modifications apportées à la bibliothèque native peuvent inclure une autre version de Cordova, un plug-in iOS Cordova plus récent ou même un groupe de correctifs de plug-in mfpdev plus récent que celui utilisé pour générer l'application d'origine.
+    La mise à jour directe ne peut pas être utilisée pour mettre à jour un code natif. Si vous avez modifié une bibliothèque native ou l'un des outils de génération dans un projet Cordova et envoyé par téléchargement un tel fichier sur le serveur {{ site.data.keys.mf_server }}, celui-ci détecte la différence et n'envoie aucune mise à jour pour l'application client. Les modifications apportées à la bibliothèque native peuvent inclure une autre version de Cordova, un plug-in iOS Cordova plus récent ou même un groupe de correctifs de plug-in mfpdev plus récent que celui utilisé pour générer l'application d'origine.
     
 6. Configurez l'application afin de vous en servir en environnement de production.
-    * Vous pouvez envisager de désactiver l'impression dans le journal de terminal.
-    * Si vous prévoyez d'utiliser {{site.data.keys.mf_analytics }}, assurez-vous que votre application envoie les données collectées au serveur  {{site.data.keys.mf_server }}.
+    * Vous pouvez envisager de désactiver l'impression dans le journal d'appareil.
+    * Si vous prévoyez d'utiliser {{ site.data.keys.mf_analytics }}, assurez-vous que votre application envoie les données collectées au serveur  {{ site.data.keys.mf_server }}.
     * Envisagez de désactiver les fonctions de votre application qui appellent l'API `setServerURL`, sauf si vous prévoyez de créer une seule génération pour plusieurs serveurs de test.
 
 7. Si vous effectuez une génération pour un serveur de production et prévoyez de distribuer l'artefact installable, archivez le code source de l'application afin de pouvoir exécuter des tests de non régression pour cette application sur un serveur de test.
@@ -177,13 +177,13 @@ Lorsque vous enregistrez une application sur un serveur de production, vous envo
 
 #### Avant de commencer
 {: #before-you-begin }
-* Vérifiez que le magasin de clés {{site.data.keys.mf_server }} est configuré et qu'il ne s'agit pas du magasin de clés par défaut. Vous ne devez pas utiliser un serveur en production avec un magasin de clés par défaut. Le magasin de clés {{site.data.keys.mf_server }} définit l'identité des instances {{site.data.keys.mf_server }} et est utilisé pour signer numériquement les jetons OAuth et les modules de mise à jour directe. Vous devez configurer le magasin de clés du serveur avec une clé secrète avant de l'utiliser en environnement de production. Pour plus d'informations, voir [Configuration du magasin de clés {{site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
+* Vérifiez que le magasin de clés {{ site.data.keys.mf_server }} est configuré et qu'il ne s'agit pas du magasin de clés par défaut. Vous ne devez pas utiliser un serveur en production avec un magasin de clés par défaut. Le magasin de clés {{ site.data.keys.mf_server }} définit l'identité des instances {{ site.data.keys.mf_server }} et est utilisé pour signer numériquement les jetons OAuth et les modules de mise à jour directe. Vous devez configurer le magasin de clés du serveur avec une clé secrète avant de l'utiliser en environnement de production. Pour plus d'informations, voir [Configuration du magasin de clés {{ site.data.keys.mf_server }}](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
 * Déployez les adaptateurs utilisés par l'application. Pour plus d'informations, voir [Déploiement ou mise à jour d'un adaptateur dans un environnement de production](#deploying-or-updating-an-adapter-to-a-production-environment).
 * Générez l'application pour votre serveur cible. Pour plus d'informations, voir [Génération d'une application pour un environnement de test ou de production](#building-an-application-for-a-test-or-production-environment).
 
 Lorsque vous enregistrez une application auprès d'un serveur de production, vous envoyez par téléchargement son descripteur, vous définissez son type de licence et, le cas échéant, vous activez son authenticité. Vous avez également la possibilité de mettre à jour votre stratégie si une version plus ancienne de votre application est déjà déployée. Prenez soin de lire la procédure décrite ci-après afin de découvrir les principales étapes, ainsi que les méthodes permettant de les automatiser à l'aide du programme **mfpadm**.
 
-1. Si votre serveur {{site.data.keys.mf_server }} est configuré pour l'octroi de licence de jeton, vérifiez que vous disposez de suffisamment de jetons disponibles sur le serveur de clé de licence. Pour plus d'informations, voir[Validation de licence de jeton](../license-tracking/#token-license-validation) et [Planification pour l'utilisation de l'octroi de licence de jeton](../../installation-configuration/production/token-licensing/#planning-for-the-use-of-token-licensing).
+1. Si votre serveur {{ site.data.keys.mf_server }} est configuré pour l'octroi de licence de jeton, vérifiez que vous disposez de suffisamment de jetons disponibles sur le serveur de clé de licence. Pour plus d'informations, voir [Validation de licence de jeton](../license-tracking/#token-license-validation) et [Planification pour l'utilisation de l'octroi de licence de jeton](../../installation-configuration/production/token-licensing/#planning-for-the-use-of-token-licensing).
 
    > **Astuce :** Vous pouvez définir le type de licence de jeton de votre application avant d'enregistrer la première version de votre application. Pour plus d'informations, voir [Définition des informations de licence d'application](../license-tracking/#setting-the-application-license-information).
 
@@ -196,21 +196,21 @@ Lorsque vous enregistrez une application auprès d'un serveur de production, vou
 
    > **Remarque :** Vous avez besoin du fichier binaire d'application pour créer le fichier d'authenticité de l'application. Pour plus d'informations, voir [Activation du contrôle de sécurité de l'authenticité de l'application](../../authentication-and-security/application-authenticity/#enabling-application-authenticity).
 
-5. Si votre application utilise la notification push, envoyez par téléchargement les certificats de notification push sur le serveur. Vous pouvez envoyer par téléchargement les certificats push pour votre application à l'aide de la console {{site.data.keys.mf_console }}. Les certificats sont communs à toutes les versions d'une application.
+5. Si votre application utilise la notification push, envoyez par téléchargement les certificats de notification push sur le serveur. Vous pouvez envoyer par téléchargement les certificats push pour votre application à l'aide de la console {{ site.data.keys.mf_console }}. Les certificats sont communs à toutes les versions d'une application.
 
    > **Remarque :** Vous ne pourrez peut-être pas tester la notification push pour votre application avec des certificats de production avant que votre application ne soit publiée sur le magasin.
 
 6. Vérifiez les éléments suivants avant de publier l'application sur le magasin :
     * Testez la fonction de gestion des applications mobiles que vous prévoyez d'utiliser, telle que la désactivation d'applications distantes ou l'affichage d'un message d'administrateur. Pour plus d'informations, voir [Gestion des applications mobiles](../using-console/#mobile-application-management).
-    * Dans le cas d'une mise à jour, définissez la stratégie de mise à jour. Pour plus d'informations, voir [Mise à jour d'applications {{site.data.keys.product_adj }} en production](#updating-mobilefirst-apps-in-production).
+    * Dans le cas d'une mise à jour, définissez la stratégie de mise à jour. Pour plus d'informations, voir [Mise à jour d'applications {{ site.data.keys.product_adj }} en production](#updating-mobilefirst-apps-in-production).
 
 ## Transfert d'artefacts côté serveur vers un serveur de test ou de production
 {: #transferring-server-side-artifacts-to-a-test-or-production-server }
 Vous pouvez transférer une configuration d'application d'un serveur vers un autre à l'aide d'outils de ligne de commande ou d'une API REST.
 
-Le fichier descripteur d'application est un fichier JSON contenant la description et la configuration de votre application. Lorsque vous exécutez une application qui se connecte à une instance {{site.data.keys.mf_server }}, l'application doit être enregistrée avec ce serveur et configurée. Une fois que vous avez défini une configuration pour votre application, vous pouvez transférer le descripteur d'application vers un autre serveur, par exemple, vers un serveur de test ou un serveur de production. Une fois le descripteur d'application transféré vers le nouveau serveur, l'application est enregistrée auprès du nouveau serveur. Différentes procédures sont disponibles selon que vous développez des applications mobiles en ayant accès au code ou que vous administrez des serveurs sans avoir accès au code de l'application mobile.
+Le fichier descripteur d'application est un fichier JSON contenant la description et la configuration de votre application. Lorsque vous exécutez une application qui se connecte à une instance {{ site.data.keys.mf_server }}, l'application doit être enregistrée avec ce serveur et configurée. Une fois que vous avez défini une configuration pour votre application, vous pouvez transférer le descripteur d'application vers un autre serveur, par exemple, vers un serveur de test ou un serveur de production. Une fois le descripteur d'application transféré vers le nouveau serveur, l'application est enregistrée auprès du nouveau serveur. Différentes procédures sont disponibles selon que vous développez des applications mobiles en ayant accès au code ou que vous administrez des serveurs sans avoir accès au code de l'application mobile.
 
-> **Important :** Si vous importez une application comprenant des données d'authenticité et si l'application proprement dite a été recompilée depuis la création des données d'authenticité, vous devez actualiser ces dernières. Pour plus d'informations, voir[Configuration du contrôle de sécurité de l'authenticité de l'application](../../authentication-and-security/application-authenticity/#configuring-application-authenticity).
+> **Important :** Si vous importez une application comprenant des données d'authenticité et si l'application proprement dite a été recompilée depuis la création des données d'authenticité, vous devez actualiser ces dernières. Pour plus d'informations, voir [Configuration du contrôle de sécurité de l'authenticité de l'application](../../authentication-and-security/application-authenticity/#configuring-application-authenticity).
 
 * Si vous avez accès au code de l'application mobile, utilisez les commandes `mfpdev app pull` et `mfpdev app push`.
 * Si vous n'avez pas accès au code de l'application mobile, utilisez le service d'administration.
@@ -227,12 +227,12 @@ Le fichier descripteur d'application est un fichier JSON contenant la descriptio
 {: #transferring-an-application-configuration-by-using-mfpdev }
 Après avoir développé une application, vous pouvez la transférer depuis votre environnement de développement vers un environnement de test ou de production.
 
-* Vous devez disposer d'une application {{site.data.keys.product_adj }} sur votre ordinateur local. Cette application doit être enregistrée sur un serveur {{site.data.keys.mf_server }}. Pour toute information sur la création d'un profil de serveur, exécutez **mfpdev app register** ou consultez la rubrique relative à l'enregistrement de votre type d'application décrite dans la section Développement d'applications de cette documentation.
+* Vous devez disposer d'une application {{ site.data.keys.product_adj }} sur votre ordinateur local. Cette application doit être enregistrée sur un serveur {{ site.data.keys.mf_server }}. Pour toute information sur la création d'un profil de serveur, exécutez **mfpdev app register** ou consultez la rubrique relative à l'enregistrement de votre type d'application décrite dans la section Développement d'applications de cette documentation.
 * Vous devez disposer d'une connectivité entre votre ordinateur local et le serveur sur lequel votre application est enregistrée et le serveur vers lequel vous souhaitez transférer votre application.
-* Un profil de serveur doit exister sur l'ordinateur local à la fois pour le serveur {{site.data.keys.mf_server }} d'origine et pour le serveur vers lequel vous souhaitez transférer votre application. Pour toute information sur la création d'un profil de serveur, exécutez **mfpdev server add**.
-* Vous devez avoir installé l'{{site.data.keys.mf_cli }}.
+* Un profil de serveur doit exister sur l'ordinateur local à la fois pour le serveur {{ site.data.keys.mf_server }} d'origine et pour le serveur vers lequel vous souhaitez transférer votre application. Pour toute information sur la création d'un profil de serveur, exécutez **mfpdev server add**.
+* Vous devez avoir installé l'{{ site.data.keys.mf_cli }}.
 
-Vous utilisez la commande **mfpdev app pull** pour envoyer une copie des fichiers de configuration côté serveur pour votre application sur votre ordinateur local. Vous utilisez ensuite la commande **mfpdev app push** pour l'envoyer à un autre serveur {{site.data.keys.mf_server }}. La commande **mfpdev app push** enregistre également l'application sur le serveur spécifié.
+Vous utilisez la commande **mfpdev app pull** pour envoyer une copie des fichiers de configuration côté serveur pour votre application sur votre ordinateur local. Vous utilisez ensuite la commande **mfpdev app push** pour l'envoyer à un autre serveur {{ site.data.keys.mf_server }}. La commande **mfpdev app push** enregistre également l'application sur le serveur spécifié.
 
 Vous pouvez aussi utiliser ces commandes pour transférer une configuration d'exécution d'un serveur vers un autre.
 
@@ -244,57 +244,57 @@ appID-platform-version-artifacts.zip
 
 où **appID** représente le nom de l'application, **platform** désigne **android**, **ios** ou **windows** et version correspond au niveau de version de votre application. Pour les applications Cordova, un fichier .zip distinct est créé pour chaque plateforme cible.
 
-Lorsque vous utilisez la commande **mfpdev app push**, le fichier de propriétés client de l'application est modifié de manière à refléter le nom de profil et l'URL du nouveau serveur {{site.data.keys.mf_server }}.
+Lorsque vous utilisez la commande **mfpdev app push**, le fichier de propriétés client de l'application est modifié de manière à refléter le nom de profil et l'URL du nouveau serveur {{ site.data.keys.mf_server }}.
 
 1. Sur votre ordinateur de développement, accédez à un répertoire qui est le répertoire racine de votre application ou à l'un de ses sous-répertoires.
-2. Exécutez la commande **mfpdev app pull**. Si vous spécifiez la commande sans paramètres, l'application est extraite du serveur {{site.data.keys.mf_server }} par défaut. Vous pouvez également spécifier un serveur spécifique et son mot de passe administrateur. Par exemple, pour une application Android nommée **myapp1** :
+2. Exécutez la commande **mfpdev app pull**. Si vous spécifiez la commande sans paramètres, l'application est extraite du serveur {{ site.data.keys.mf_server }} par défaut. Vous pouvez également spécifier un serveur spécifique et son mot de passe administrateur. Par exemple, pour une application Android nommée **myapp1** :
 
    ```bash
    cd myapp1
    mfpdev app pull Server10 -password secretPassword!
    ```
     
-   Cette commande recherche les fichiers de configuration pour l'application en cours sur le serveur {{site.data.keys.mf_server }} dont le profil de serveur est Server10. Il envoie ensuite le fichier compressé **myapp1-android-1.0.0-artifacts.zip** contenant ces fichiers de configuration sur l'ordinateur local et le place dans le répertoire **myapp1/mobilefirst**.
+   Cette commande recherche les fichiers de configuration pour l'application en cours sur le serveur {{ site.data.keys.mf_server }} dont le profil de serveur est Server10. Il envoie ensuite le fichier compressé **myapp1-android-1.0.0-artifacts.zip** contenant ces fichiers de configuration sur l'ordinateur local et le place dans le répertoire **myapp1/mobilefirst**.
     
-3. Exécutez la commande **mfpdev app push**. Si vous spécifiez la commande sans paramètres, l'application est envoyée sur le serveur {{site.data.keys.mf_server }} par défaut. Vous pouvez également spécifier un serveur spécifique et son mot de passe administrateur. Par exemple, pour l'application qui a été envoyée lors de l'étape précédente : `mfpdev app push Server12 -password secretPass234!`.
+3. Exécutez la commande **mfpdev app push**. Si vous spécifiez la commande sans paramètres, l'application est envoyée sur le serveur {{ site.data.keys.mf_server }} par défaut. Vous pouvez également spécifier un serveur spécifique et son mot de passe administrateur. Par exemple, pour l'application qui a été envoyée lors de l'étape précédente : `mfpdev app push Server12 -password secretPass234!`.
     
-   Cette commande envoie le fichier **myapp1-android-1.0.0-artifacts.zip** au serveur {{site.data.keys.mf_server }} dont le profil de serveur s'appelle Server12 et le mot de passe administrateur est **secretPass234!** Le fichier de propriétés client **myapp1/app/src/main/assets/mfpclient.properties** est modifié de manière à refléter le fait que le serveur sur lequel l'application est enregistrée s'appelle Server12, avec l'URL du serveur.
+   Cette commande envoie le fichier **myapp1-android-1.0.0-artifacts.zip** au serveur {{ site.data.keys.mf_server }} dont le profil de serveur s'appelle Server12 et le mot de passe administrateur est **secretPass234!** Le fichier de propriétés client **myapp1/app/src/main/assets/mfpclient.properties** est modifié de manière à refléter le fait que le serveur sur lequel l'application est enregistrée s'appelle Server12, avec l'URL du serveur.
 
-Les fichiers de configuration côté serveur de l'application sont présents sur le serveur {{site.data.keys.mf_server }} que vous avez spécifié dans la commande mfpdev app push. L'application est enregistrée sur ce nouveau serveur.
+Les fichiers de configuration côté serveur de l'application sont présents sur le serveur {{ site.data.keys.mf_server }} que vous avez spécifié dans la commande mfpdev app push. L'application est enregistrée sur ce nouveau serveur.
 
 ### Transfert d'une configuration d'application à l'aide du service d'administration
 {: #transferring-an-application-configuration-with-the-administration-service }
-En tant qu'administrateur, vous pouvez transférer une configuration d'application d'un serveur vers un autre à l'aide du service d'administration du serveur {{site.data.keys.mf_server }}. L'accès au code d'application n'est pas requis, mais l'application client doit être générée pour le serveur cible.
+En tant qu'administrateur, vous pouvez transférer une configuration d'application d'un serveur vers un autre à l'aide du service d'administration du serveur {{ site.data.keys.mf_server }}. L'accès au code d'application n'est pas requis, mais l'application client doit être générée pour le serveur cible.
 
 #### Avant de commencer
 {: #before-you-begin-1 }
 Générez l'application client pour votre serveur cible. Pour plus d'informations, voir [Génération d'une application pour un environnement de test ou de production](#building-an-application-for-a-test-or-production-environment).
 
-Envoyez par téléchargement le descripteur d'application depuis le serveur sur lequel l'application est configurée et déployez-le sur le nouveau serveur. Le descripteur d'application est visible dans la console {{site.data.keys.mf_console }}.
+Envoyez par téléchargement le descripteur d'application depuis le serveur sur lequel l'application est configurée et déployez-le sur le nouveau serveur. Le descripteur d'application est visible dans la console {{ site.data.keys.mf_console }}.
 
 1. Facultatif : Examinez le descripteur d'application sur le serveur où le serveur d'applications est configuré.
-    Ouvrez la console {{site.data.keys.mf_console }} pour ce serveur, sélectionnez la version de votre application et accédez à l'onglet **Fichiers de configuration**.
+    Ouvrez la console {{ site.data.keys.mf_console }} pour ce serveur, sélectionnez la version de votre application et accédez à l'onglet **Fichiers de configuration**.
 
 2. Recevez par téléchargement le descripteur d'application à partir du serveur sur lequel l'application est configurée. Vous pouvez le recevoir par téléchargement à l'aide de l'API REST ou du programme **mfpadm**.
 
-   > **Remarque :** Vous pouvez également exporter une application ou une version d'application depuis la console {{site.data.keys.mf_console }}. Voir [Exportation et importation d'applications et d'adaptateurs depuis la console {{site.data.keys.mf_console }}](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console).
+   > **Remarque :** Vous pouvez également exporter une application ou une version d'application depuis la console {{ site.data.keys.mf_console }}. Voir [Exportation et importation d'applications et d'adaptateurs depuis la console {{ site.data.keys.mf_console }}](#exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console).
     * Pour recevoir par téléchargement le descripteur d'application à l'aide de l'API REST, utilisez l'API REST [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-).
 
-    L'URL suivante renvoie le descripteur d'application pour l'application dont l'ID est **my.test.application**, pour la plateforme **ios** et la version **0.0.1**. L'appel est émis vers le serveur {{site.data.keys.mf_server }} : `http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`
+    L'URL suivante renvoie le descripteur d'application pour l'application dont l'ID est **my.test.application**, pour la plateforme **ios** et la version **0.0.1**. L'appel est émis vers le serveur {{ site.data.keys.mf_server }} : `http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`
     
     Par exemple, vous pouvez utiliser une URL de ce type avec un outil tel que curl : `curl -user admin:admin http://[...]/ios/0.0.1/descriptor > desc.json`.
     
     <br/>
     Modifiez les éléments suivants de l'URL en fonction de la configuration de votre serveur :
-     * **9080** est le port HTTP par défaut du serveur {{site.data.keys.mf_server }} lors du développement.
+     * **9080** est le port HTTP par défaut du serveur {{ site.data.keys.mf_server }} lors du développement.
      * **mfpadmin** est la racine de contexte par défaut du service d'administration. 
 
-    Pour plus d'informations sur l'API REST, voir l'API REST pour le service d'administration du serveur {{site.data.keys.mf_server }}.
+    Pour plus d'informations sur l'API REST, voir l'API REST pour le service d'administration du serveur {{ site.data.keys.mf_server }}.
      * Recevez par téléchargement le descripteur d'application à l'aide du programme **mfpadm**.
 
-       Le programme **mfpadm** est installé lorsque vous exécutez le programme d'installation du serveur {{site.data.keys.mf_server }}. Vous le démarrez à partir du répertoire **product\_install\_dir/shortcuts/**, où **product\_install\_dir** désigne le répertoire d'installation du serveur {{site.data.keys.mf_server }}.
+       Le programme **mfpadm** est installé lorsque vous exécutez le programme d'installation du serveur {{ site.data.keys.mf_server }}. Vous le démarrez à partir du répertoire **product\_install\_dir/shortcuts/**, où **product\_install\_dir** désigne le répertoire d'installation du serveur {{ site.data.keys.mf_server }}.
     
-       L'exemple suivant crée un fichier de mot de passe, requis par la commande **mfpadm**, puis reçoit par téléchargement le descripteur d'application de l'application dont l'ID est **my.test.application**, pour la plateforme **ios** et la version **0.0.1**. L'URL fournie est l'URL HTTPS du serveur {{site.data.keys.mf_server }} lors du développement.
+       L'exemple suivant crée un fichier de mot de passe, requis par la commande **mfpadm**, puis reçoit par téléchargement le descripteur d'application de l'application dont l'ID est **my.test.application**, pour la plateforme **ios** et la version **0.0.1**. L'URL fournie est l'URL HTTPS du serveur {{ site.data.keys.mf_server }} lors du développement.
     
        ```bash
        echo password=admin > password.txt
@@ -303,11 +303,11 @@ Envoyez par téléchargement le descripteur d'application depuis le serveur sur 
        ```
     
        Modifiez les éléments suivants de la ligne de commande en fonction de la configuration de votre serveur :
-        * **9443** est le port HTTPS par défaut du serveur {{site.data.keys.mf_server }} lors du développement.
+        * **9443** est le port HTTPS par défaut du serveur {{ site.data.keys.mf_server }} lors du développement.
         * **mfpadmin** est la racine de contexte par défaut du service d'administration. 
         * --secure false indique que le certificat SSL du serveur est accepté même s'il est auto-signé ou s'il est créé pour un nom d'hôte différent du nom d'hôte du serveur utilisé dans l'URL.
 
-       Pour plus d'informations sur le programme **mfpadm**, voir [Administration des applications {{site.data.keys.product_adj }} via la ligne de commande](../using-cli).
+       Pour plus d'informations sur le programme **mfpadm**, voir [Administration des applications {{ site.data.keys.product_adj }} via la ligne de commande](../using-cli).
     
 3. Envoyez par téléchargement le descripteur d'application sur le nouveau serveur pour enregistrer l'application ou mettre à jour sa configuration.
 Vous pouvez l'envoyer par téléchargement à l'aide de l'API REST ou du programme **mfpadm**.
@@ -337,7 +337,7 @@ Vous pouvez l'envoyer par téléchargement à l'aide de l'API REST ou du program
 
 ### Transfert d'artefacts côté serveur à l'aide de l'API REST
 {: #transferring-server-side-artifacts-by-using-the-rest-api }
-Quel que soit votre rôle, vous pouvez exporter des applications, des adaptateurs et des ressources à des fins de sauvegarde ou de réutilisation à l'aide du service d'administration du serveur {{site.data.keys.mf_server }}. En tant qu'administrateur ou déployeur, vous pouvez également déployer une archive d'exportation sur un autre serveur. L'accès au code d'application n'est pas requis, mais l'application client doit être générée pour le serveur cible.
+Quel que soit votre rôle, vous pouvez exporter des applications, des adaptateurs et des ressources à des fins de sauvegarde ou de réutilisation à l'aide du service d'administration du serveur {{ site.data.keys.mf_server }}. En tant qu'administrateur ou déployeur, vous pouvez également déployer une archive d'exportation sur un autre serveur. L'accès au code d'application n'est pas requis, mais l'application client doit être générée pour le serveur cible.
 
 #### Avant de commencer
 {: #before-you-begin-2 }
@@ -354,7 +354,7 @@ L'API d'exportation extrait les artefacts sélectionnés pour un environnement d
 
 * Pour exporter toutes les ressources, ou un sous-ensemble de ressources sélectionné, pour un adaptateur ou pour tous les adaptateurs, utilisez l'API [Export adapter resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapter_resources_get.html?view=kc) ou [Export adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_adapters_get.html?view=kc).
 * Pour exporter toutes les ressources sous un environnement d'application spécifique (par exemple, Android ou iOS), autrement dit, toutes les versions et toutes les ressources de la version de cet environnement, utilisez l'API [Export application environment (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_environment_get.html?view=kc).
-* Pour exporter toutes les ressources d'une version spécifique d'une application (par exemple, la version 1.0 ou 2.0 d'une application Android), utilisez l'API[Export application environment resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_environment_resources_get.html?view=kc).
+* Pour exporter toutes les ressources d'une version spécifique d'une application (par exemple, la version 1.0 ou 2.0 d'une application Android), utilisez l'API [Export application environment resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_environment_resources_get.html?view=kc).
 * Pour exporter une application spécifique ou toutes les applications d'un environnement d'exécution, utilisez l'API [Export applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_applications_get.html?view=kc) ou [Export application resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_application_resources_get.html?view=kc). **Remarque :** Les données d'identification de notification push ne sont pas exportées avec les autres ressources d'application.
 * Pour exporter le contenu d'adaptateur, le descripteur, la configuration de licence, le contenu, la configuration utilisateur, le magasin de clés et les ressources Web d'une application, utilisez l'API [Export resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_resources_get.html?view=kc#Export-resources--GET-).
 * Pour exporter la totalité ou certaines des ressources d'un environnement d'exécution, utilisez l'API [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc). Par exemple, vous pouvez utiliser cette commande curl générale pour extraire toutes les ressources sous la forme d'un fichier .zip.
@@ -377,7 +377,7 @@ L'API d'exportation extrait les artefacts sélectionnés pour un environnement d
 
 Si vous déployez une archive d'exportation sur le même environnement d'exécution, l'application ou la version n'est pas nécessairement restaurée telle qu'elle a été exportée. Autrement dit, le redéploiement ne retire pas les modifications apportées ultérieurement. En revanche, si certaines ressources d'application sont modifiées entre le moment de l'exportation et celui du redéploiement, seules les ressources incluses dans l'archive exportée sont redéployées dans leur état d'origine. Par exemple, si vous exportez une application sans données d'authenticité, que vous envoyez par téléchargement des données d'authenticité, puis que vous importez l'archive initiale, les données d'authenticité ne sont pas effacées.
 
-### Exportation et importation d'applications et d'adaptateurs depuis la console {{site.data.keys.mf_console }}
+### Exportation et importation d'applications et d'adaptateurs depuis la console {{ site.data.keys.mf_console }}
 {: #exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console }
 Depuis la console, lorsque certaines conditions sont réunies, vous pouvez exporter une application ou l'une de ses versions, puis l'importer ultérieurement dans un autre environnement d'exécution sur le même serveur ou un autre serveur. Vous pouvez également exporter et réimporter des adaptateurs. Utilisez cette fonction à des fins de sauvegarde ou de réutilisation.
 
@@ -407,9 +407,9 @@ Le panneau principal de la console affiche les détails de l'application ou de l
 
 Si vous effectuez une importation dans le même environnement d'exécution, l'application ou la version n'est pas nécessairement restaurée telle qu'elle a été exportée. Autrement dit, le redéploiement lors de l'importation ne retire pas les modifications apportées ultérieurement. En revanche, si certaines ressources d'application sont modifiées entre le moment de l'exportation et celui du redéploiement lors de l'importation, seules les ressources incluses dans l'archive exportée sont redéployées dans leur état d'origine. Par exemple, si vous exportez une application sans données d'authenticité, que vous envoyez par téléchargement des données d'authenticité, puis que vous importez l'archive initiale, les données d'authenticité ne sont pas effacées.
 
-## Mise à jour d'applications {{site.data.keys.product_adj }} en production
+## Mise à jour d'applications {{ site.data.keys.product_adj }} en production
 {: #updating-mobilefirst-apps-in-production }
-Il existe des instructions générales vous permettant de mettre à niveau vos applications {{site.data.keys.product_adj }} déjà en production, sur Application Center ou dans des magasins d'applications.
+Il existe des instructions générales vous permettant de mettre à niveau vos applications {{ site.data.keys.product_adj }} déjà en production, sur Application Center ou dans des magasins d'applications.
 
 Lorsque vous effectuez une mise à niveau d'une application, vous pouvez déployer une nouvelle version de l'application et laisser l'ancienne version active, ou déployer une nouvelle version de l'application et bloquer l'ancienne version. Dans le cas d'une application développée avec Apache Cordova, vous pouvez également envisager de mettre à jour uniquement les ressources Web.
 
@@ -419,7 +419,7 @@ Le chemin de mise à niveau le plus couramment utilisé lorsque vous ajoutez de 
 
 1. Incrémentez le numéro de version d'application.
 2. Générez et testez votre application. Pour plus d'informations, voir [Génération d'une application pour un environnement de test ou de production](#building-an-application-for-a-test-or-production-environment).
-3. Enregistrez l'application sur le serveur {{site.data.keys.mf_server }} et configurez-la.
+3. Enregistrez l'application sur le serveur {{ site.data.keys.mf_server }} et configurez-la.
 4. Envoyez les nouveaux fichiers .apk, .ipa, .appx ou .xap à leurs magasins d'applications respectifs.
 5. Attendez la phase d'examen et d'approbation et la mise à disposition des applications.
 6. Facultatif - Envoyez un message de notification aux utilisateurs de l'ancienne version pour leur annoncer la mise sur le marché de la nouvelle version. Voir [Affichage d'un message d'administrateur](../using-console/#displaying-an-administrator-message) et  [Définition de messages d'administrateur dans plusieurs langues](../using-console/#defining-administrator-messages-in-multiple-languages).
@@ -432,21 +432,21 @@ Ce chemin de mise à niveau est utilisé lorsque vous souhaitez forcer les utili
 1. Facultatif - Envoyez un message de notification aux utilisateurs de l'ancienne version pour leur annoncer qu'une mise à jour obligatoire sera disponible dans quelques jours. Voir [Affichage d'un message d'administrateur](../using-console/#displaying-an-administrator-message) et  [Définition de messages d'administrateur dans plusieurs langues](../using-console/#defining-administrator-messages-in-multiple-languages).
 2. Incrémentez le numéro de version d'application.
 3. Générez et testez votre application. Pour plus d'informations, voir [Génération d'une application pour un environnement de test ou de production](#building-an-application-for-a-test-or-production-environment).
-4. Enregistrez l'application sur le serveur {{site.data.keys.mf_server }} et configurez-la.
+4. Enregistrez l'application sur le serveur {{ site.data.keys.mf_server }} et configurez-la.
 5. Envoyez les nouveaux fichiers .apk, .ipa, .appx ou .xap à leurs magasins d'applications respectifs.
 6. Attendez la phase d'examen et d'approbation et la mise à disposition des applications.
 7. Copiez des liens vers la nouvelle version de l'application.
-8. Bloquez l'ancienne version de l'application dans la console {{site.data.keys.mf_console }} en fournissant un message et établissez un lien vers la nouvelle version. Voir [Désactivation à distance de l'accès d'une application à des ressources protégées](../using-console/#remotely-disabling-application-access-to-protected-resources).
+8. Bloquez l'ancienne version de l'application dans la console {{ site.data.keys.mf_console }} en fournissant un message et établissez un lien vers la nouvelle version. Voir [Désactivation à distance de l'accès d'une application à des ressources protégées](../using-console/#remotely-disabling-application-access-to-protected-resources).
 
-> **Remarque :** Si vous désactivez l'ancienne application, elle n'est plus en capacité de communiquer avec le serveur {{site.data.keys.mf_server }}. Les utilisateurs peuvent toujours démarrer l'application et l'utiliser en mode hors ligne sauf si vous forcez une connexion serveur lors du démarrage de l'application.
+> **Remarque :** Si vous désactivez l'ancienne application, elle n'est plus en capacité de communiquer avec le serveur {{ site.data.keys.mf_server }}. Les utilisateurs peuvent toujours démarrer l'application et l'utiliser en mode hors ligne sauf si vous forcez une connexion serveur lors du démarrage de l'application.
 
 ### Mise à jour directe (pas de modification de code natif)
 {: #direct-update-no-native-code-changes }
-La mise à jour directe est un mécanisme de mise à niveau obligatoire utilisé pour déployer des correctifs rapides sur une application de production. Lorsque vous redéployez une application sur un serveur {{site.data.keys.mf_server }} sans en modifier la version, le serveur {{site.data.keys.mf_server }} insère directement les ressources Web mises à jour sur le terminal lorsque l'utilisateur se connecte au serveur. Il n'insère pas de code natif mis à jour. Les éléments à prendre en compte lorsque vous envisagez d'effectuer une mise à jour directe sont les suivants :
+La mise à jour directe est un mécanisme de mise à niveau obligatoire utilisé pour déployer des correctifs rapides sur une application de production. Lorsque vous redéployez une application sur un serveur {{ site.data.keys.mf_server }} sans en modifier la version, le serveur {{ site.data.keys.mf_server }} insère directement les ressources Web mises à jour sur l'appareil lorsque l'utilisateur se connecte au serveur. Il n'insère pas de code natif mis à jour. Les éléments à prendre en compte lorsque vous envisagez d'effectuer une mise à jour directe sont les suivants :
 
 1. La mise à jour directe ne met pas à jour la version de l'application. L'application ne change pas de version, mais un ensemble différent de ressources Web lui est affecté. Le numéro de version inchangé peut générer de la confusion s'il n'est pas utilisé à bon escient.
 2. La mise à jour directe n'est pas non plus incluse dans le processus de révision du magasin d'applications car techniquement il ne s'agit pas d'une nouvelle édition. Cela ne doit pas se produire trop souvent car les fournisseurs peuvent être mécontents si vous déployez une toute nouvelle version de votre application en sautant leur processus de révision. Il est de votre responsabilité de lire les contrats d'utilisation de chaque magasin et de vous y conformer. La mise à jour directe est idéale pour traiter des problèmes urgents dont la résolution ne peut attendre plusieurs jours.
 3. La mise à jour directe est considérée comme un mécanisme de sécurité ; par conséquent, elle est obligatoire et non facultative. Lorsque vous initiez la mise à jour directe, tous les utilisateurs doivent mettre à jour leur application pour pouvoir l'utiliser.
-4. La mise à jour directe ne fonctionne pas si une application est compilée (construite) avec une autre version de {{site.data.keys.product }} que celle qui a été utilisée pour le déploiement initial.
+4. La mise à jour directe ne fonctionne pas si une application est compilée (construite) avec une autre version de {{ site.data.keys.product }} que celle qui a été utilisée pour le déploiement initial.
 
-> **Remarque :** Les fichiers archive/IPA générés à l'aide de Test Flight ou d'iTunes Connect pour la soumission/validation de magasin d'applications iOS peuvent générer une panne lors de l'exécution. Pour en savoir plus, lisez le blogue [Preparing iOS apps for App Store submission in {{site.data.keys.product }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/).
+> **Remarque :** Les fichiers archive/IPA générés à l'aide de Test Flight ou d'iTunes Connect pour la soumission/validation de magasin d'applications iOS peuvent générer une panne lors de l'exécution. Pour en savoir plus, lisez le blogue [Preparing iOS apps for App Store submission in {{ site.data.keys.product }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/).

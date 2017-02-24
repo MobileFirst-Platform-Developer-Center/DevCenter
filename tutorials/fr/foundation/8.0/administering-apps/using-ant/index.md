@@ -7,7 +7,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-Vous pouvez administrer des applications {{site.data.keys.product_adj }} via la tâche Ant **mfpadm**.
+Vous pouvez administrer des applications {{ site.data.keys.product_adj }} via la tâche Ant **mfpadm**.
 
 #### Accéder à
 {: #jump-to }
@@ -17,12 +17,12 @@ Vous pouvez administrer des applications {{site.data.keys.product_adj }} via la 
 
 ## Comparaison avec d'autres fonctions
 {: #comparison-with-other-facilities }
-Vous pouvez exécuter des opérations d'administration à l'aide d'{{site.data.keys.product_full }} en utilisant les composants suivants :
+Vous pouvez exécuter des opérations d'administration à l'aide d'{{ site.data.keys.product_full }} en utilisant les composants suivants :
 
-* La console {{site.data.keys.mf_console }}, qui est interactive.
+* La console {{ site.data.keys.mf_console }}, qui est interactive.
 * La tâche Ant **mfpadm**.
 * Le programme **mfpadm**.
-* Les services REST d'administration de {{site.data.keys.product_adj }}.
+* Les services REST d'administration de {{ site.data.keys.product_adj }}.
 
 La tâche Ant **mfpadm**, le programme **mfpadm** et les services REST sont utiles pour l'exécution automatisée ou sans assistance d'opérations, telles que les suivantes :
 
@@ -34,18 +34,18 @@ La tâche Ant **mfpadm** et le programme **mfpadm** sont plus simples à utilise
 
 ## Prérequis
 {: #prerequisites }
-L'outil **mfpadm** est installé à l'aide du programme d'installation de {{site.data.keys.mf_server }}. Sur cette page,  **product\_install\_dir** indique le répertoire d'installation du programme d'installation de {{site.data.keys.mf_server }}.
+L'outil **mfpadm** est installé à l'aide du programme d'installation de {{ site.data.keys.mf_server }}. Sur cette page,  **product\_install\_dir** indique le répertoire d'installation du programme d'installation de {{ site.data.keys.mf_server }}.
 
 Apache Ant est requis pour l'exécution de la tâche **mfpadm**. Pour toute information sur la version Ant minimale prise en charge, voir la section Configuration requise.
 
-Pour plus de commodité, Apache Ant 1.9.4 est inclus dans {{site.data.keys.mf_server }}. Dans le répertoire **product\_install\_dir/shortcuts/**, les scripts suivants sont fournis.
+Pour plus de commodité, Apache Ant 1.9.4 est inclus dans {{ site.data.keys.mf_server }}. Dans le répertoire **product\_install\_dir/shortcuts/**, les scripts suivants sont fournis.
 
 * ant pour UNIX/Linux
 * ant.bat pour Windows
 
 Ces scripts sont prêts à être exécutés, ce qui signifie qu'ils ne nécessitent pas de variables d'environnement spécifiques. Si la variable d'environnement JAVA_HOME est définie, les scripts l'acceptent.
 
-Vous pouvez utiliser la tâche Ant **mfpadm** sur un autre ordinateur que celui sur lequel vous avez installé {{site.data.keys.mf_server }}.
+Vous pouvez utiliser la tâche Ant **mfpadm** sur un autre ordinateur que celui sur lequel vous avez installé {{ site.data.keys.mf_server }}.
 
 * Copiez le fichier **product\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar** sur l'ordinateur.
 * Assurez-vous qu'une version prise en charge d'Apache Ant et un environnement d'exécution Java sont installés sur l'ordinateur.
@@ -70,7 +70,7 @@ Les autres commandes d'initialisation qui font référence au même fichier **mf
 </taskdef>
 ```
 
-Pour plus d'informations sur l'exécution du programme d'installation de {{site.data.keys.mf_server }}, voir[Exécution d'IBM Installation Manager](../../installation-configuration/production/installation-manager/).
+Pour plus d'informations sur l'exécution du programme d'installation de {{ site.data.keys.mf_server }}, voir [Exécution d'IBM Installation Manager](../../installation-configuration/production/installation-manager/).
 
 #### Accéder à
 {: #jump-to-1 }
@@ -79,12 +79,12 @@ Pour plus d'informations sur l'exécution du programme d'installation de {{site.
 * [Commandes de configuration générale](#commands-for-general-configuration)
 * [Commandes pour adaptateurs](#commands-for-adapters)
 * [Commandes pour applications](#commands-for-apps)
-* [Commandes pour terminaux](#commands-for-devices)
+* [Commandes pour appareils](#commands-for-devices)
 * [Commandes de traitement des incidents](#commands-for-troubleshooting)
 
 ### Appel de la tâche Ant mfpadm
 {: #calling-the-mfpadm-ant-task }
-Vous pouvez utiliser la tâche Ant **mfpadm** et les commandes qui lui sont associées pour administrer des applications {{site.data.keys.product_adj }}.
+Vous pouvez utiliser la tâche Ant **mfpadm** et les commandes qui lui sont associées pour administrer des applications {{ site.data.keys.product_adj }}.
 Appelez la tâche Ant **mfpadm** comme suit :
 
 ```xml
@@ -99,9 +99,9 @@ La tâche Ant **mfpadm** possède les attributs suivants :
 
 | Attribut      | Description | Obligatoire | Par défaut | 
 |----------------|-------------|----------|---------|
-| url	         | URL de base de l'application Web {{site.data.keys.product_adj }} pour les services d'administration | Oui	 | |
+| url	         | URL de base de l'application Web {{ site.data.keys.product_adj }} pour les services d'administration | Oui	 | |
 | secure	     | Indique si les opérations présentant des risques de sécurité doivent être évitées | Non | true |
-| user	         | Nom d'utilisateur permettant d'accéder aux services d'administration de {{site.data.keys.product_adj }} | Oui | |
+| user	         | Nom d'utilisateur permettant d'accéder aux services d'administration de {{ site.data.keys.product_adj }} | Oui | |
 | password	     | Mot de passe de l'utilisateur | L'un des deux est obligatoire | |
 | passwordfile   |	Fichier contenant le mot de passe de l'utilisateur | L'un des deux est obligatoire | |	 
 | timeout	     | Délai d'attente relatif à l'accès à l'ensemble du service REST, exprimé en secondes | Non | |
@@ -164,9 +164,9 @@ Vous pouvez utiliser les éléments suivants dans des appels **mfpadm** :
 | delete-app-version            | Supprime une version d'une application | 0..∞ | 
 | Application	                        | Autres opérations sur une application | 0..∞ | 
 | app-version	                | Autres opérations sur une version d'application | 0..∞ | 
-| list-devices	                | Répertorie les terminaux | 0..∞ | 
-| remove-device	                | Retire un terminal | 0..∞ | 
-| device	                    | Autres opérations pour un terminal | 0..∞ | 
+| list-devices	                | Répertorie les appareils | 0..∞ | 
+| remove-device	                | Retire un appareil | 0..∞ | 
+| device	                    | Autres opérations pour un appareil | 0..∞ | 
 | list-farm-members	            | Répertorie les membres du parc de serveurs | 0..∞ | 
 | remove-farm-member	        | Retire un membre de parc de serveurs | 0..∞ | 
 
@@ -188,7 +188,7 @@ Pour contourner cette limitation :
 
 ### Commandes de configuration générale
 {: #commands-for-general-configuration }
-Lorsque vous appelez la tâche Ant **mfpadm**, vous pouvez inclure différentes commandes permettant d'accéder à la configuration globale d'un serveur IBM {{site.data.keys.mf_server }} ou d'un environnement d'exécution.
+Lorsque vous appelez la tâche Ant **mfpadm**, vous pouvez inclure différentes commandes permettant d'accéder à la configuration globale d'un serveur IBM {{ site.data.keys.mf_server }} ou d'un environnement d'exécution.
 
 #### Commande `show-global-config`
 {: #the-show-global-config-command }
@@ -260,7 +260,7 @@ Cette commande est basée sur le service REST [Runtime configuration (PUT)](http
 <br/>
 #### Commande `show-confidential-clients`
 {: #the-show-confidential-clients-command }
-La commande `show-confidential-clients` affiche la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients). Cette commande possède les attributs suivants :
+La commande `show-confidential-clients` affiche la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentiels](../../authentication-and-security/confidential-clients). Cette commande possède les attributs suivants :
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
@@ -280,7 +280,7 @@ Cette commande est basée sur le service REST [Confidential Clients (GET)](http:
 <br/>
 #### Commande `set-confidential-clients`
 {: #the-set-confidential-clients-command }
-La commande `set-confidential-clients` spécifie la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients). Cette commande possède les attributs suivants :
+La commande `set-confidential-clients` spécifie la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentiels](../../authentication-and-security/confidential-clients). Cette commande possède les attributs suivants :
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
@@ -298,7 +298,7 @@ Cette commande est basée sur le service REST [Confidential Clients (PUT)](http:
 <br/>
 #### Commande `set-confidential-clients-rule`
 {: #the-set-confidential-clients-rule-command }
-La commande `set-confidential-clients-rule` spécifie une règle dans la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients). Cette commande possède les attributs suivants :
+La commande `set-confidential-clients-rule` spécifie une règle dans la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentiels](../../authentication-and-security/confidential-clients). Cette commande possède les attributs suivants :
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
@@ -785,7 +785,7 @@ La commande `set-authenticity-data`, spécifiée au sein d'un élément `<app-ve
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| file | Nom du fichier d'entrée :<ul><li>Fichier de données d'authenticité</li><li>ou fichier de terminal (fichier .ipa, .apk ou .appx) à partir duquel les données d'authenticité sont extraites.</li></ul> |  Oui | Non disponible | 
+| file | Nom du fichier d'entrée :<ul><li>Fichier de données d'authenticité</li><li>ou fichier d'appareil (fichier .ipa, .apk ou .appx) à partir duquel les données d'authenticité sont extraites.</li></ul> |  Oui | Non disponible | 
 
 **Exemples**  
 
@@ -881,18 +881,18 @@ La commande `set-user-config` possède les attributs suivants permettant de déf
 </app-version>
 ```
 
-### Commandes pour terminaux
+### Commandes pour appareils
 {: #commands-for-devices }
-Lorsque vous appelez la tâche Ant **mfpadm**, vous pouvez inclure différentes commandes pour terminaux.
+Lorsque vous appelez la tâche Ant **mfpadm**, vous pouvez inclure différentes commandes pour appareils.
 
 #### Commande `list-devices`
 {: #the-list-devices-command }
-La commande `list-devices` renvoie la liste des terminaux ayant contacté les applications d'un environnement d'exécution. Elle possède les attributs suivants :
+La commande `list-devices` renvoie la liste des appareils ayant contacté les applications d'un environnement d'exécution. Elle possède les attributs suivants :
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
 | runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
-| query	 | Nom usuel ou identificateur utilisateur à rechercher. Ce paramètre spécifie une chaîne à rechercher. Tous les terminaux possédant un nom usuel ou un identificateur utilisateur contenant cette | chaîne (avec une correspondance insensible à la casse) sont renvoyés. | Non | Non applicable | 
+| query	 | Nom usuel ou identificateur utilisateur à rechercher. Ce paramètre spécifie une chaîne à rechercher. Tous les appareils possédant un nom usuel ou un identificateur utilisateur contenant cette | chaîne (avec une correspondance insensible à la casse) sont renvoyés. | Non | Non applicable | 
 | output | 	Nom du fichier de sortie. | Non | Non applicable | 
 | outputproperty | 	Nom de la propriété Ant du résultat. | Non | Non applicable | 
 
@@ -911,12 +911,12 @@ Cette commande est basée sur le service REST [Devices (GET)](http://www.ibm.com
 <br/>
 #### Commande `remove-device`
 {: #the-remove-device-command }
-La commande `remove-device` efface l'enregistrement relatif à un terminal ayant contacté les applications d'un environnement d'exécution. Elle possède les attributs suivants :
+La commande `remove-device` efface l'enregistrement relatif à un appareil ayant contacté les applications d'un environnement d'exécution. Elle possède les attributs suivants :
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
 | runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
-| id | Identificateur unique de terminal. | Oui | Non disponible | 
+| id | Identificateur unique d'appareil. | Oui | Non disponible | 
 
 **Exemple**  
 
@@ -934,7 +934,7 @@ Le groupe de commandes `device` possède les attributs suivants :
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
 | runtime | Nom de l'environnement d'exécution. | Oui | Non disponible | 
-| id | Identificateur unique de terminal. | Oui | Non disponible | 
+| id | Identificateur unique d'appareil. | Oui | Non disponible | 
 
 La commande `device` prend en charge les éléments suivants :
 
@@ -946,7 +946,7 @@ La commande `device` prend en charge les éléments suivants :
 <br/>
 #### Commande `set-status`
 {: #the-set-status-command }
-La commande `set-status` modifie le statut d'un terminal, dans la limite de la portée d'un environnement d'exécution. Elle possède les attributs suivants :
+La commande `set-status` modifie le statut d'un appareil, dans la limite de la portée d'un environnement d'exécution. Elle possède les attributs suivants :
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
@@ -973,7 +973,7 @@ Cette commande est basée sur le service REST [Device Status (PUT)](http://www.i
 <br/>
 #### Commande `set-appstatus`
 {: #the-set-appstatus-command }
-La commande `set-appstatus` modifie le statut d'un terminal concernant une application d'un environnement d'exécution. Elle possède les attributs suivants :
+La commande `set-appstatus` modifie le statut d'un appareil concernant une application d'un environnement d'exécution. Elle possède les attributs suivants :
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
@@ -997,11 +997,11 @@ Cette commande est basée sur le service REST [Device Application Status (PUT)](
 
 ### Commandes de traitement des incidents
 {: #commands-for-troubleshooting }
-Vous pouvez utiliser les commandes de tâche Ant pour analyser les incidents liés à des applications Web {{site.data.keys.mf_server }}.
+Vous pouvez utiliser les commandes de tâche Ant pour analyser les incidents liés à des applications Web {{ site.data.keys.mf_server }}.
 
 #### Commande `show-info`
 {: #the-show-info-command }
-La commande `show-info` affiche des informations de base sur les services d'administration de {{site.data.keys.product_adj }} pouvant être renvoyées sans accéder à aucun environnement d'exécution ni à aucune base de données. Cette commande permet de vérifier si les services d'administration de {{site.data.keys.product_adj }} sont en cours d'exécution. Elle possède les attributs suivants :
+La commande `show-info` affiche des informations de base sur les services d'administration de {{ site.data.keys.product_adj }} pouvant être renvoyées sans accéder à aucun environnement d'exécution ni à aucune base de données. Cette commande permet de vérifier si les services d'administration de {{ site.data.keys.product_adj }} sont en cours d'exécution. Elle possède les attributs suivants :
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
@@ -1017,10 +1017,10 @@ La commande `show-info` affiche des informations de base sur les services d'admi
 <br/>
 #### Commande `show-versions`
 {: #the-show-versions-command }
-La commande `show-versions` affiche les versions {{site.data.keys.product_adj }} des différents composants :
+La commande `show-versions` affiche les versions {{ site.data.keys.product_adj }} des différents composants :
 
-* **mfpadmVersion** : numéro de version {{site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-ant-deployer.jar**.
-* **productVersion** : numéro de version {{site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-admin-service.war**.
+* **mfpadmVersion** : numéro de version {{ site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-ant-deployer.jar**.
+* **productVersion** : numéro de version {{ site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-admin-service.war**.
 * **mfpAdminVersion** : numéro de version de génération exact du fichier **mfp-admin-service.war**.
 
 La commande possède les attributs suivants :
@@ -1039,7 +1039,7 @@ La commande possède les attributs suivants :
 <br/>
 #### Commande `show-diagnostics`
 {: #the-show-diagnostics-command }
-La commande `show-diagnostics` affiche le statut des différents composants nécessaires pour assurer le fonctionnement correct du service d'administration de {{site.data.keys.product_adj }}, par exemple, la disponibilité de la base de données et des services secondaires. Cette commande possède les attributs suivants :
+La commande `show-diagnostics` affiche le statut des différents composants nécessaires pour assurer le fonctionnement correct du service d'administration de {{ site.data.keys.product_adj }}, par exemple, la disponibilité de la base de données et des services secondaires. Cette commande possède les attributs suivants :
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|

@@ -7,7 +7,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-Vous pouvez administrer des applications {{site.data.keys.product_adj }} via le programme **mfpadm**.
+Vous pouvez administrer des applications {{ site.data.keys.product_adj }} via le programme **mfpadm**.
 
 #### Accéder à
 {: #jump-to }
@@ -17,12 +17,12 @@ Vous pouvez administrer des applications {{site.data.keys.product_adj }} via le 
 
 ## Comparaison avec d'autres fonctions
 {: #comparison-with-other-facilities }
-Vous pouvez exécuter des opérations d'administration à l'aide d'{{site.data.keys.product_full }} en utilisant les composants suivants :
+Vous pouvez exécuter des opérations d'administration à l'aide d'{{ site.data.keys.product_full }} en utilisant les composants suivants :
 
-* La console {{site.data.keys.mf_console }}, qui est interactive.
+* La console {{ site.data.keys.mf_console }}, qui est interactive.
 * La tâche Ant mfpadm.
 * Le programme **mfpadm**.
-* Les services REST d'administration de {{site.data.keys.product_adj }}.
+* Les services REST d'administration de {{ site.data.keys.product_adj }}.
 
 La tâche Ant **mfpadm**, le programme mfpadm et les services REST sont utiles pour l'exécution automatisée ou sans assistance d'opérations, telles que celles présentées dans les cas d'utilisation suivants :
 
@@ -34,7 +34,7 @@ Le programme **mfpadm** et la tâche Ant mfpadm sont plus faciles à utiliser et
 
 ## Prérequis
 {: #prerequisites }
-L'outil **mfpadm** est installé à l'aide du programme d'installation de {{site.data.keys.mf_server }}. Sur cette page,  **product\_install\_dir** indique le répertoire d'installation du programme d'installation de {{site.data.keys.mf_server }}.
+L'outil **mfpadm** est installé à l'aide du programme d'installation de {{ site.data.keys.mf_server }}. Sur cette page,  **product\_install\_dir** indique le répertoire d'installation du programme d'installation de {{ site.data.keys.mf_server }}.
 
 La commande **mfpadm** est fournie dans le répertoire **product\_install\_dir/shortcuts/** sous la forme d'un ensemble de scripts :
 
@@ -44,7 +44,7 @@ La commande **mfpadm** est fournie dans le répertoire **product\_install\_dir/s
 Ces scripts sont prêts à être exécutés, ce qui signifie qu'ils ne nécessitent pas de variables d'environnement spécifiques. Si la variable d'environnement**JAVA_HOME** est définie, les scripts l'acceptent.  
 Pour utiliser le programme **mfpadm**, placez le répertoire **product\_install\_dir/shortcuts/** dans votre variable d'environnement PATH ou faites référence à son nom de fichier absolu dans chaque appel.
 
-Pour plus d'informations sur l'exécution du programme d'installation de {{site.data.keys.mf_server }}, voir[Exécution d'IBM Installation Manager](../../installation-configuration/production/installation-manager/).
+Pour plus d'informations sur l'exécution du programme d'installation de {{ site.data.keys.mf_server }}, voir [Exécution d'IBM Installation Manager](../../installation-configuration/production/installation-manager/).
 
 #### Accéder à
 {: #jump-to-1 }
@@ -53,13 +53,13 @@ Pour plus d'informations sur l'exécution du programme d'installation de {{site.
 * [Commandes de configuration générale](#commands-for-general-configuration)
 * [Commandes pour adaptateurs](#commands-for-adapters)
 * [Commandes pour applications](#commands-for-apps)
-* [Commandes pour terminaux](#commands-for-devices)
+* [Commandes pour appareils](#commands-for-devices)
 * [Commandes de traitement des incidents](#commands-for-troubleshooting)
 
 
 ### Appel du programme **mfpadm**
 {: #calling-the-mfpadm-program }
-Vous pouvez utiliser le programme **mfpadm** pour administrer des applications {{site.data.keys.product_adj }}.
+Vous pouvez utiliser le programme **mfpadm** pour administrer des applications {{ site.data.keys.product_adj }}.
 
 #### Syntaxe
 {: #syntax }
@@ -73,9 +73,9 @@ Le programme **mfpadm** comporte les options suivantes :
 
 | Option	| Type | Description | Obligatoire | Par défaut | 
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | URL de base de l'application Web {{site.data.keys.product_adj }} pour les services d'administration | Oui | | 
+| --url | 	 | URL | URL de base de l'application Web {{ site.data.keys.product_adj }} pour les services d'administration | Oui | | 
 | --secure	 | Booléen | Indique si les opérations présentant des risques de sécurité doivent être évitées | Non | true | 
-| --user	 | name | Nom d'utilisateur permettant d'accéder aux services d'administration de {{site.data.keys.product_adj }} | Oui |  | 	 
+| --user	 | name | Nom d'utilisateur permettant d'accéder aux services d'administration de {{ site.data.keys.product_adj }} | Oui |  | 	 
 | --passwordfile | file | Fichier contenant le mot de passe de l'utilisateur | Non | 
 | --timeout	     | Nombre  | Délai d'attente relatif à l'accès à l'ensemble du service REST, exprimé en secondes | Non | 	 
 | --connect-timeout | Nombre | Délai d'attente relatif à l'établissement d'une connexion réseau, exprimé en secondes | Non |
@@ -145,10 +145,10 @@ Les appels du programme mfpadm contiennent une commande. Les commandes suivantes
 | app version [runtime-name] app-name environment version show user-config | Affiche la configuration utilisateur d'une version d'application. | 
 | app version [runtime-name] app-name environment version set user-config file | Spécifie la configuration utilisateur d'une version d'application. | 
 | app version [runtime-name] app-name environment version set user-config property = value | Spécifie une propriété dans la configuration utilisateur d'une version d'application. |
-| list devices [runtime-name][--query query] | Répertorie les terminaux. |
-| remove device [runtime-name] id | Retire un terminal. |
-| device [runtime-name] id set status new-status | Modifie le statut d'un terminal. |
-| device [runtime-name] id set appstatus app-name new-status | Modifie le statu d'un terminal pour une application. |
+| list devices [runtime-name][--query query] | Répertorie les appareils. |
+| remove device [runtime-name] id | Retire un appareil. |
+| device [runtime-name] id set status new-status | Modifie le statut d'un appareil. |
+| device [runtime-name] id set appstatus app-name new-status | Modifie le statu d'un appareil pour une application. |
 | list farm-members [runtime-name] | Répertorie les serveurs membres du parc de serveurs. |
 | remove farm-member [runtime-name] server-id | Retire un serveur de la liste des membres du parc de serveurs. |
 
@@ -222,7 +222,7 @@ Utilisez la commande suivante pour répertorier les valeurs stockées dans le fi
 Le fichier de configuration est un fichier texte, dans le codage de l'environnement local en cours et dans la syntaxe Java **.properties**. Les fichiers de configuration par défaut sont les suivants :
 
 * UNIX : **${HOME}/.mfpadm.config**
-* Windows : **{{site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
+* Windows : **{{ site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
 
 **Remarque :** Lorsque vous ne spécifiez pas une option `--configfile`, le fichier de configuration par défaut est utilisé uniquement en mode interactif et dans des commandes config. Pour une utilisation non interactive des autres commandes, vous devez spécifier explicitement le fichier de configuration si vous souhaitez en utiliser un.
 
@@ -255,7 +255,7 @@ Pour contourner cette limitation :
 
 ### Commandes de configuration générale
 {: #commands-for-general-configuration }
-Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes commandes qui accèdent à la configuration globale du serveur IBM {{site.data.keys.mf_server }} ou d'un module d'exécution.
+Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes commandes qui accèdent à la configuration globale du serveur IBM {{ site.data.keys.mf_server }} ou d'un module d'exécution.
 
 #### Commande `show global-config`
 {: #the-show-global-config-command }
@@ -343,7 +343,7 @@ Cette commande est basée sur le service REST [Runtime configuration (PUT)](http
 <br/>
 #### Commande `show confidential-clients`
 {: #the-show-confidential-clients-command }
-La commande `show confidential-clients` affiche la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients).
+La commande `show confidential-clients` affiche la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentiels](../../authentication-and-security/confidential-clients).
 
 Syntaxe : `show confidential-clients [--xml][runtime-name]`
 
@@ -370,7 +370,7 @@ Cette commande est basée sur le service REST [Confidential Clients (GET)](http:
 <br/>
 #### Commande `set confidential-clients`
 {: #the-set-confidential-clients-command }
-La commande `set confidential-clients` spécifie la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients).
+La commande `set confidential-clients` spécifie la configuration des clients confidentiels pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentiels](../../authentication-and-security/confidential-clients).
 
 Syntaxe : `set confidential-clients [runtime-name] file`
 
@@ -392,7 +392,7 @@ Cette commande est basée sur le service REST [Confidential Clients (PUT)](http:
 <br/>
 #### Commande `set confidential-clients-rule`
 {: #the-set-confidential-clients-rule-command }
-La commande `set confidential-clients-rule` spécifie une règle dans la configuration des clients confidentielles pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentielles](../../authentication-and-security/confidential-clients).
+La commande `set confidential-clients-rule` spécifie une règle dans la configuration des clients confidentielles pouvant accéder à un environnement d'exécution. Pour plus d'informations sur les clients confidentiels, voir [Clients confidentiels](../../authentication-and-security/confidential-clients).
 
 Syntaxe : `set confidential-clients-rule [runtime-name] id displayName secret allowedScope`
 
@@ -916,7 +916,7 @@ Elle accepte les arguments suivants après le verbe.
 
 | Argument | Description | 
 |----------|-------------|
-| file | Nom du fichier d'entrée :<ul><li>Fichier .authenticity_data</li><li>ou fichier de terminal (.ipa, .apk ou .appx) à partir duquel les données d'authenticité sont extraites.</li></ul>| 
+| file | Nom du fichier d'entrée :<ul><li>Fichier .authenticity_data</li><li>ou fichier d'appareil (.ipa, .apk ou .appx) à partir duquel les données d'authenticité sont extraites.</li></ul>| 
 
 **Exemples**
 
@@ -1001,13 +1001,13 @@ app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 
 Cette commande est basée sur le service REST [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc).
 
-### Commandes pour terminaux
+### Commandes pour appareils
 {: #commands-for-devices }
-Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes commandes pour terminaux.
+Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes commandes pour appareils.
 
 #### Commande `list devices`
 {: #the-list-devices-command }
-La commande `list devices` renvoie la liste des terminaux ayant contacté les applications d'un environnement d'exécution.
+La commande `list devices` renvoie la liste des appareils ayant contacté les applications d'un environnement d'exécution.
 
 Syntaxe : `list devices [runtime-name][--query query]`
 
@@ -1016,7 +1016,7 @@ Elle accepte les arguments suivants :
 | Argument | Description | 
 |----------|-------------|
 | runtime-name | Nom de l'environnement d'exécution. | 
-| query | Nom usuel ou identificateur utilisateur à rechercher. Ce paramètre spécifie une chaîne à rechercher. Tous les terminaux possédant un nom usuel ou un identificateur utilisateur contenant cette chaîne (avec une correspondance insensible à la casse) sont renvoyés. | 
+| query | Nom usuel ou identificateur utilisateur à rechercher. Ce paramètre spécifie une chaîne à rechercher. Tous les appareils possédant un nom usuel ou un identificateur utilisateur contenant cette chaîne (avec une correspondance insensible à la casse) sont renvoyés. | 
 
 La commande `list devices` accepte les options suivantes après l'objet.
 
@@ -1038,7 +1038,7 @@ Cette commande est basée sur le service [Devices (GET) REST](http://www.ibm.com
 
 #### Commande `remove device`
 {: #the-remove-device-command }
-La commande `remove device` efface l'enregistrement relatif à un terminal ayant contacté les applications d'un environnement d'exécution.
+La commande `remove device` efface l'enregistrement relatif à un appareil ayant contacté les applications d'un environnement d'exécution.
 
 Syntaxe : `remove device [runtime-name] id`
 
@@ -1047,7 +1047,7 @@ Elle accepte les arguments suivants :
 | Argument | Description | 
 |----------|-------------|
 | runtime-name | Nom de l'environnement d'exécution. | 
-| id | Identificateur unique de terminal. | 
+| id | Identificateur unique d'appareil. | 
 
 **Exemple**
 
@@ -1064,11 +1064,11 @@ Le préfixe de la commande `device` accepte les arguments suivants avant le verb
 | Argument | Description | 
 |----------|-------------|
 | runtime-name | Nom de l'environnement d'exécution. | 
-| id | Identificateur unique de terminal. | 
+| id | Identificateur unique d'appareil. | 
 
 #### Commande `device set status`
 {: #the-device-set-status-command }
-La commande `device set status` modifie le statut d'un terminal, dans la limite de la portée d'un environnement d'exécution.
+La commande `device set status` modifie le statut d'un appareil, dans la limite de la portée d'un environnement d'exécution.
 
 Syntaxe : `device [runtime-name] id set status new-status`
 
@@ -1096,7 +1096,7 @@ Cette commande est basée sur le service REST [Device Status (PUT)](http://www.i
 
 #### Commande `device set appstatus`
 {: #the-device-set-appstatus-command }
-La commande `device set appstatus` modifie le statut d'un terminal concernant une application d'un environnement d'exécution.
+La commande `device set appstatus` modifie le statut d'un appareil concernant une application d'un environnement d'exécution.
 
 Syntaxe : `device [runtime-name] id set appstatus app-name new-status`
 
@@ -1127,7 +1127,7 @@ Lorsque vous appelez le programme **mfpadm**, vous pouvez inclure différentes c
 
 #### Commande `show info`
 {: #the-show-info-command }
-La commande `show info` affiche des informations de base sur les services d'administration de {{site.data.keys.product_adj }} pouvant être renvoyées sans accéder à aucun environnement d'exécution ni à aucune base de données. Cette commande permet de vérifier si les services d'administration de {{site.data.keys.product_adj }} sont en cours d'exécution.
+La commande `show info` affiche des informations de base sur les services d'administration de {{ site.data.keys.product_adj }} pouvant être renvoyées sans accéder à aucun environnement d'exécution ni à aucune base de données. Cette commande permet de vérifier si les services d'administration de {{ site.data.keys.product_adj }} sont en cours d'exécution.
 
 Syntaxe : `show info`
 
@@ -1145,10 +1145,10 @@ show info
 
 #### Commande `show versions`
 {: #the-show-versions-command }
-La commande `show versions` affiche les versions {{site.data.keys.product_adj }} de différents composants :
+La commande `show versions` affiche les versions {{ site.data.keys.product_adj }} de différents composants :
 
-* **mfpadmVersion** : numéro de version {{site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-ant-deployer.jar**.
-* **productVersion** : numéro de version {{site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-admin-service.war**.
+* **mfpadmVersion** : numéro de version {{ site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-ant-deployer.jar**.
+* **productVersion** : numéro de version {{ site.data.keys.mf_server }} exact dont est extrait le fichier **mfp-admin-service.war**.
 * **mfpAdminVersion** : numéro de version de génération exact du fichier **mfp-admin-service.war**.
 
 Syntaxe : `show versions`
@@ -1167,7 +1167,7 @@ show versions
 
 #### Commande `show diagnostics`
 {: #the-show-diagnostics-command }
-La commande `show diagnostics` affiche le statut des différents composants nécessaires pour assurer le fonctionnement correct du service d'administration de {{site.data.keys.product_adj }}, par exemple, la disponibilité de la base de données et des services secondaires.
+La commande `show diagnostics` affiche le statut des différents composants nécessaires pour assurer le fonctionnement correct du service d'administration de {{ site.data.keys.product_adj }}, par exemple, la disponibilité de la base de données et des services secondaires.
 
 Syntaxe : `show diagnostics`
 
