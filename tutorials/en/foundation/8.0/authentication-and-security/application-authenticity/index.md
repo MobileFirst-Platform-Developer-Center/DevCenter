@@ -29,7 +29,7 @@ To enable application authenticity, you can either follow the on-screen instruct
 - [Troubleshooting](#troubleshooting)
   - [Reset](#reset)
   - [Validation Types](#validation)
-  - [Legacy App Authenticity](#legacy)
+  - [Support for SDK versions 8.0.0.0-MFPF-IF201701250919 or earlier](#legacy)
 
 ## Application Authenticity Flow
 {: #application-authenticity-flow }
@@ -93,17 +93,16 @@ The tool should  be used when building a production version of the application.
 {: #reset }
 The application authenticity algorithm uses application data and metadata in its validation. The first device to connect to the server after enabling application authenticity provides a "fingerprint" of the application, containing some of this data.
 
-It is possible to reset this fingerprint, providing the algorithm with new data. This could be useful during development (for example after changing the application in Xcode). To reset this fingerprint, use the **reset** command from the [**mfpadm** CLI](../../administering-apps/using-cli/).
+It is possible to reset this fingerprint, providing the algorithm with new data. This could be useful during development (for example after changing the application in Xcode). To reset the fingerprint, use the **reset** command from the [**mfpadm** CLI](../../administering-apps/using-cli/).
 
-After resetting the fingerprint, the appAuthenticity security check continues to work as before (this will be seamless to the user).
+After resetting the fingerprint, the appAuthenticity security check continues to work as before (this will be transparent to the user).
 
 ### Validation Type
 {: #validation }
-Not all changes to your application may necessarily lead it to be considered not authentic. The algorithm and signals it uses to reach this decision are proprietary and may change over time.
 
-By default, when application authenticity is enabled it uses a validation algorithm called **dynamic**. The dynamic validation type checks various signals to determine whether the application is authentic. This algorithm varies slightly across different platforms.
+By default, when application authenticity is enabled it uses the **dynamic** validation algorithm. The dynamic application authenticity validation uses mobile platform specific features to determine the authenticity of the application. Accordingly it might be affected if non backward compatible changes are introduced to the mobile operating system, which could result in preventing authentic applications from connecting to the server.
 
-Alternatively, we also provide a validation algorithm called **static**. The static validation type is less sensitive to changes in the application.
+To mitigate such potential issues, the **static** validation algorithm is available. This validation type is less sensitive to OS specific changes.
 
 To switch between validation types, use the [**mfpadm** CLI](../../administering-apps/using-cli/):
 
@@ -112,9 +111,9 @@ app version [RUNTIME-NAME] APP-NAME ENVIRONMENT VERSION set authenticity-validat
 ```
 `TYPE` can either be `dynamic` or `static`.
 
-### Legacy Application Authenticity
+### Support for SDK versions 8.0.0.0-MFPF-IF201701250919 or earlier
 {: #legacy }
-The dynamic and static validation types are only supported by client SDKs released in **February 2017 or later**. For SDK versions **8.0.0.0-MFPF-IF201701250919 or earlier**, you need to use the legacy tool-based validation type.
+The dynamic and static validation types are only supported by client SDKs released in **February 2017 or later**. For SDK versions **8.0.0.0-MFPF-IF201701250919 or earlier**, use the legacy application authenticity tool:
 
 The application binary file must be signed by using the mfp-app-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android, and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
 
