@@ -7,9 +7,9 @@ weight: 9
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-アプリケーションは、HTTP 要求を発行することで、{{site.data.keys.mf_server }} からアクセスできる企業の HTTP サービス (API) にアクセスできます。事前定義されているアプリケーション認証性[セキュリティー検査](../)によって、{{site.data.keys.mf_server }} インスタンスに接続しようとするアプリケーションが認証済みのアプリケーションであることが保証されます。
+アプリケーションは、HTTP 要求を発行することで、{{ site.data.keys.mf_server }} からアクセスできる企業の HTTP サービス (API) にアクセスできます。事前定義されているアプリケーション認証性[セキュリティー検査](../)によって、{{ site.data.keys.mf_server }} インスタンスに接続しようとするアプリケーションが認証済みのアプリケーションであることが保証されます。
 
-アプリケーション認証性を有効にするには、**{{site.data.keys.mf_console }}** →**「 [ご使用のアプリケーション] 」**→**「認証性」**の画面上の指示に従うか、下記の情報を参考にできます。
+アプリケーション認証性を有効にするには、**{{ site.data.keys.mf_console }}** →**「 [ご使用のアプリケーション] 」**→**「認証性」**の画面上の指示に従うか、下記の情報を参考にできます。
 
 #### 可用性
 {: #availability }
@@ -27,7 +27,7 @@ weight: 9
 
 ## アプリケーション認証性フロー
 {: #application-authenticity-flow }
-デフォルトで、アプリケーション認証性セキュリティー検査は、{{site.data.keys.mf_server }} へのアプリケーションのランタイム登録時に実行されます。これは、アプリケーションのインスタンスが初めてサーバーに接続しようとしたときに行われます。その後、認証性チャレンジが再度発生することはありません。
+デフォルトで、アプリケーション認証性セキュリティー検査は、{{ site.data.keys.mf_server }} へのアプリケーションのランタイム登録時に実行されます。これは、アプリケーションのインスタンスが初めてサーバーに接続しようとしたときに行われます。その後、認証性チャレンジが再度発生することはありません。
 
 この動作をカスタマイズする方法については、[アプリケーション認証性の構成](#configuring-application-authenticity)を参照してください。
 
@@ -35,11 +35,10 @@ weight: 9
 {: #enabling-application-authenticity }
 Cordova アプリケーションまたはネイティブ・アプリケーションのアプリケーション認証性を有効にするためには、mfp-app-authenticity ツールを使用してアプリケーション・バイナリー・ファイルに署名する必要があります。適格なバイナリー・ファイルは、iOS の場合は `ipa`、Android の場合は `apk`、および Windows 8.1 Universal と Windows 10 UWP の場合は `appx` です。
 
-1. **{{site.data.keys.mf_console }} →「ダウンロード・センター」**から mfp-app-authenticity ツールをダウンロードします。
+1. **{{ site.data.keys.mf_console }} →「ダウンロード・センター」**から mfp-app-authenticity ツールをダウンロードします。
 2. **コマンド・ライン**・ウィンドウを開き、コマンド `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file` を実行します。
 
    例えば、次のとおりです。
-
 
    ```bash
    java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
@@ -47,7 +46,7 @@ Cordova アプリケーションまたはネイティブ・アプリケーショ
 
    このコマンドは、`MyBankApp.ipa` ファイルの次に `MyBankApp.authenticity_data` という名前の `.authenticity_data` ファイルを生成します。
 
-3. 任意のブラウザーで {{site.data.keys.mf_console }} を開きます。
+3. 任意のブラウザーで {{ site.data.keys.mf_console }} を開きます。
 4. ご使用のアプリケーションをナビゲーション・サイドバーから選択し、**「認証性」**メニュー項目をクリックします。
 5. **「認証性ファイルのアップロード」**をクリックして `.authenticity_data` ファイルをアップロードします。
 
@@ -71,7 +70,7 @@ Cordova アプリケーションまたはネイティブ・アプリケーショ
 
 #### `expirationSec` プロパティーを構成するには、次のようにします。
 {: #to-configure-the-expirationsec property }
-1. {{site.data.keys.mf_console }} をロードし、**「 [ご使用のアプリケーション] 」**→**「セキュリティー」**→**「セキュリティー検査の構成」**にナビゲートし、**「新規」**をクリックします。
+1. {{ site.data.keys.mf_console }} をロードし、**「 [ご使用のアプリケーション] 」**→**「セキュリティー」**→**「セキュリティー検査の構成」**にナビゲートし、**「新規」**をクリックします。
 
 2. `appAuthenticity` スコープ・エレメントを検索します。
 

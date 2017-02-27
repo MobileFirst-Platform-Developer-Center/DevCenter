@@ -11,7 +11,7 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、Swift を使用して iOS アプリケーションでプッシュ通知を処理する方法について学習します。
+{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、Swift を使用して iOS アプリケーションでプッシュ通知を処理する方法について学習します。
 
 サイレント通知または対話式通知については、以下を参照してください。
 
@@ -22,10 +22,10 @@ downloads:
 
 * 必ず、以下のチュートリアルをお読みください。
 	* [プッシュ通知の概要](../../)
-    * [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
-    * [iOS アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/ios)
-* ローカルで稼働している {{site.data.keys.mf_server }}、またはリモートで稼働している {{site.data.keys.mf_server }}
-* 開発者ワークステーションに {{site.data.keys.mf_cli }} がインストールされていること
+    * [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
+    * [iOS アプリケーションへの {{ site.data.keys.product }} SDK の追加](../../../application-development/sdk/ios)
+* ローカルで稼働している {{ site.data.keys.mf_server }}、またはリモートで稼働している {{ site.data.keys.mf_server }}
+* 開発者ワークステーションに {{ site.data.keys.mf_cli }} がインストールされていること
 
 
 ### ジャンプ先:
@@ -37,7 +37,8 @@ downloads:
 
 ### 通知構成
 {: #notifications-configuration }
-新しい Xcode プロジェクトを作成するか、または既存のプロジェクトを使用します。{{site.data.keys.product_adj }} Native iOS SDK がプロジェクトにまだ存在しない場合は、[iOS  アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/ios)チュートリアルの説明に従ってください。
+新しい Xcode プロジェクトを作成するか、または既存のプロジェクトを使用します。
+{{ site.data.keys.product_adj }} Native iOS SDK がプロジェクトにまだ存在しない場合は、[iOS  アプリケーションへの {{ site.data.keys.product }} SDK の追加](../../../application-development/sdk/ios)チュートリアルの説明に従ってください。
 
 
 ### プッシュ SDK の追加

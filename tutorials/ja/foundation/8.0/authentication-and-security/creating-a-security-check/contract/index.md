@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-すべてのセキュリティー検査で `com.ibm.mfp.server.security.external.SecurityCheck` インターフェース (セキュリティー検査インターフェース) を実装する必要があります。このインターフェースは、セキュリティー検査と {{site.data.keys.product_adj }} セキュリティー・フレームワーク間の基本コントラクトを構成します。セキュリティー検査の実装は、以下の要件を満たす必要があります。
+すべてのセキュリティー検査で `com.ibm.mfp.server.security.external.SecurityCheck` インターフェース (セキュリティー検査インターフェース) を実装する必要があります。このインターフェースは、セキュリティー検査と {{ site.data.keys.product_adj }} セキュリティー・フレームワーク間の基本コントラクトを構成します。セキュリティー検査の実装は、以下の要件を満たす必要があります。
 
 * **機能**: セキュリティー検査では、クライアント `authorization` および `introspection` の機能を提供する必要があります。
 * **状態管理**: セキュリティー検査は、作成、破棄、現行状態の管理など、その状態を管理する必要があります。
@@ -22,8 +22,7 @@ weight: 1
 
 ### Authorization
 {: #authorization }
-フレームワークは `SecurityCheck.authorize` メソッドを使用してクライアント要求を許可します。クライアントが特定の OAuth スコープへのアクセスを要求すると、フレームワークはスコープ・エレメントをセキュリティー検査にマップします。スコープ内のセキュリティー検査ごとに、フレームワークは `authorize` メソッドを呼び出して、当該セキュリティー検査にマップされたスコープ・エレメントが含まれているスコープの許可を要求します。
-このスコープは、メソッドの **scope** パラメーターに指定します。 
+フレームワークは `SecurityCheck.authorize` メソッドを使用してクライアント要求を許可します。クライアントが特定の OAuth スコープへのアクセスを要求すると、フレームワークはスコープ・エレメントをセキュリティー検査にマップします。スコープ内のセキュリティー検査ごとに、フレームワークは `authorize` メソッドを呼び出して、当該セキュリティー検査にマップされたスコープ・エレメントが含まれているスコープの許可を要求します。このスコープは、メソッドの **scope** パラメーターに指定します。 
 
 セキュリティー検査は、response パラメーターに入れて渡された [`AuthorizationResponse` オブジェクト](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.html?view=kc)に応答を追加します。応答には、セキュリティー検査の名前および応答タイプ (成功、失敗、またはチャレンジのいずれか) が含まれます ([`AuthorizationResponse.ResponseType` を参照](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.ResponseType.html?view=kc))。
 
@@ -31,13 +30,11 @@ weight: 1
 
 ### イントロスペクション
 {: #introspection }
-フレームワークは `SecurityCheck.introspect` メソッドを使用して、リソース・サーバーのイントロスペクション・データを取得します。このメソッドは、イントロスペクションが要求されたスコープに含まれているセキュリティー検査ごとに呼び出されます。`authorize` メソッドと同様に、`introspect` メソッドは、当該セキュリティー検査にマップされたスコープ・エレメントが含まれている **scope** パラメーターを受け取ります。
-イントロスペクション・データを返す前に、このメソッドは、セキュリティー検査の現行状態がこのスコープに対して以前に付与された許可をまだサポートしているかを検査します。許可がまだ有効な場合、`introspect` メソッドは、**response** パラメーターに入れて渡された [IntrospectionResponse オブジェクト](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/IntrospectionResponse.html?view=kc)に応答を追加します。
+フレームワークは `SecurityCheck.introspect` メソッドを使用して、リソース・サーバーのイントロスペクション・データを取得します。このメソッドは、イントロスペクションが要求されたスコープに含まれているセキュリティー検査ごとに呼び出されます。`authorize` メソッドと同様に、`introspect` メソッドは、当該セキュリティー検査にマップされたスコープ・エレメントが含まれている **scope** パラメーターを受け取ります。イントロスペクション・データを返す前に、このメソッドは、セキュリティー検査の現行状態がこのスコープに対して以前に付与された許可をまだサポートしているかを検査します。許可がまだ有効な場合、`introspect` メソッドは、**response** パラメーターに入れて渡された [IntrospectionResponse オブジェクト](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/IntrospectionResponse.html?view=kc)に応答を追加します。
 
 応答には、セキュリティー検査の名前、許可が要求されたスコープ (**scope** パラメーターで設定)、付与された許可の有効期限時刻、および要求されたカスタム・イントロスペクション・データが含まれます。許可を付与できなくなっている場合 (例えば、以前の成功状態の有効期限時刻が経過している場合)、このメソッドは、応答を追加することなく戻ります。
 
-**注:
-**
+**注:**
 
 * セキュリティー・フレームワークは、セキュリティー検査からの処理結果を収集し、関連データをクライアントに渡します。フレームワークの処理は、セキュリティー検査の状態を一切認識しません。
 * `authorize` メソッドまたは `introspect` メソッドを呼び出すと、現行状態の有効期限時刻が経過していなくても、セキュリティー検査の現行状態が変更される可能性があります。 

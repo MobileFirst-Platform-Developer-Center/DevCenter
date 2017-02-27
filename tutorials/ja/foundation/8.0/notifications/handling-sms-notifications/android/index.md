@@ -17,10 +17,10 @@ SMS 通知は、プッシュ通知のサブセットです。したがって、�
 
 * 必ず、以下のチュートリアルをお読みください。
   * [通知の概要](../../)
-  * [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
-  * [iOS アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/ios)
-* ローカルで稼働している {{site.data.keys.mf_server }}、またはリモートで稼働している {{site.data.keys.mf_server }}
-* 開発者ワークステーションに {{site.data.keys.mf_cli }} がインストールされていること
+  * [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
+  * [iOS アプリケーションへの {{ site.data.keys.product }} SDK の追加](../../../application-development/sdk/ios)
+* ローカルで稼働している {{ site.data.keys.mf_server }}、またはリモートで稼働している {{ site.data.keys.mf_server }}
+* 開発者ワークステーションに {{ site.data.keys.mf_cli }} がインストールされていること
 
 
 #### ジャンプ先:
@@ -68,7 +68,6 @@ MFPPush.getInstance().registerDevice(new MFPPushResponseListener<String>() {
 
 * **optionObject**: デバイスを登録するときに使用する電話番号を含んでいる `JSONObject` です。例えば、次のとおりです。
 
-
 ```java
 JSONObject optionObject = new JSONObject();
 try {
@@ -76,7 +75,8 @@ try {
     optionObject.put("phoneNumber", editPhoneText.getText().toString());
 }
 catch(Exception ex) {
-    ex.printStackTrace();        }
+    ex.printStackTrace();
+}
 ```
 
 > [プッシュ・デバイス登録 (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html) を使用してデバイスを登録することもできます。
