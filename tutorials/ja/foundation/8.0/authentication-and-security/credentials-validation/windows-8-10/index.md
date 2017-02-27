@@ -34,7 +34,7 @@ downloads:
 
 ## チャレンジ・ハンドラーの作成
 {: #creating-the-challenge-handler }
-チャレンジ・ハンドラーは、{{site.data.keys.mf_server }} によって送信されるチャレンジを処理するクラスです。例えば、ログイン画面を表示したり、資格情報を収集したり、それらを元のセキュリティー検査に送信したりします。
+チャレンジ・ハンドラーは、{{ site.data.keys.mf_server }} によって送信されるチャレンジを処理するクラスです。例えば、ログイン画面を表示したり、資格情報を収集したり、それらを元のセキュリティー検査に送信したりします。
 
 この例の場合、セキュリティー検査は `PinCodeAttempts` であり、これは [CredentialsValidationSecurityCheck の実装](../security-check)で定義したものです。このセキュリティー検査によって送信されるチャレンジには、ログインを試行できる残りの回数 (`remainingAttempts`) と、オプションで `errorMsg` が含まれます。
 
@@ -63,8 +63,9 @@ public PinCodeChallengeHandler(String securityCheck) {
 ```csharp
 public override void HandleChallenge(Object challenge)
 {
-                try {
-JObject challengeJSON = (JObject)challenge;
+    try
+    {
+      JObject challengeJSON = (JObject)challenge;
 
       if (challengeJSON.GetValue("errorMsg") != null)
       {

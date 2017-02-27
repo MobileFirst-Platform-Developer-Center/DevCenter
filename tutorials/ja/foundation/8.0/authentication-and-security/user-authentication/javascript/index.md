@@ -33,7 +33,7 @@ userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password'
 
 チャレンジを何も受け取っていない場合でもユーザーのログインを可能にする必要がある場合があります。例えば、アプリケーションの最初の画面としてログイン画面を表示したり、ログアウト後やログイン失敗後にログイン画面を表示したりする場合です。そのようなシナリオを**プリエンプティブ・ログイン**と呼びます。
 
-応答すべきチャレンジが存在しない場合、`submitChallengeAnswer` API を呼び出すことはできません。そのようなシナリオ用に、{{site.data.keys.product }} SDK には `login` API が組み込まれています。
+応答すべきチャレンジが存在しない場合、`submitChallengeAnswer` API を呼び出すことはできません。そのようなシナリオ用に、{{ site.data.keys.product }} SDK には `login` API が組み込まれています。
 
 ```js
 WLAuthorizationManager.login(securityCheckName,{'username':username, 'password':password, rememberMe: rememberMeState}).then(
@@ -61,15 +61,14 @@ WLAuthorizationManager.login(securityCheckName,{'username':username, 'password':
 }
 ```
 
-> **注:
-**
+> **注:**
 >`WLAuthorizationManager` `login()` API には、独自の `onSuccess` メソッドと `onFailure` メソッドがあり、関連するチャレンジ・ハンドラーの `handleSuccess` メソッドまたは `handleFailure` メソッド**も**呼び出されます。
 
 ## アクセス・トークンの取得
 {: #obtaining-an-access-token }
 このセキュリティー検査は **RememberMe** 機能 (`rememberMe` ブール・キー) をサポートしているため、アプリケーションの開始時に、クライアントがログインしているかどうかをチェックすると役立ちます。
 
-{{site.data.keys.product }} SDK は、サーバーに有効なトークンを尋ねるための `obtainAccessToken` API を提供しています。
+{{ site.data.keys.product }} SDK は、サーバーに有効なトークンを尋ねるための `obtainAccessToken` API を提供しています。
 
 ```js
 WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheckName).then(
@@ -123,7 +122,7 @@ userLoginChallengeHandler.handleSuccess = function(data) {
 
 ## ログアウト
 {: #logout }
-{{site.data.keys.product }} SDK は、特定のセキュリティー検査からログアウトするための `logout` API も提供しています。
+{{ site.data.keys.product }} SDK は、特定のセキュリティー検査からログアウトするための `logout` API も提供しています。
 
 ```js
 WLAuthorizationManager.logout(securityCheckName).then(
