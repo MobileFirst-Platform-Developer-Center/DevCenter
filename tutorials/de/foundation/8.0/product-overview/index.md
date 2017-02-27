@@ -1,19 +1,29 @@
 ---
 layout: tutorial
-title: Product Overview
+title: Produktübersicht
 show_children: true
-weight: 2
+weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_full }} is an integrated platform that helps you extend your business to mobile devices.
+Die {{ site.data.keys.product_full }} ist
+eine integrierte Plattform, mit der Sie Ihr Geschäft auf mobile Geräte ausdehnen können. 
 
-{{ site.data.keys.product }} includes a comprehensive development environment, mobile-optimized runtime middleware, a private enterprise application store, and an integrated management and analytics console, all supported by various security mechanisms.
+Zur {{ site.data.keys.product }} gehören
+eine umfassende
+Entwicklungsumgebung, für mobile Anwendungen optimierte Laufzeitmiddleware, ein privater Store für Unternehmensanwendungen und eine integrierte Management- und
+Analysekonsole. Alle diese Komponenten werden von
+verschiedenen Sicherheitsmechanismen unterstützt. 
 
-With {{ site.data.keys.product }}, your organization can efficiently develop, connect, run, and manage rich mobile applications (apps) that can access the full capabilities of your target mobile devices. {{ site.data.keys.product }} can help reduce time-to-market, cost, and complexity of development, and enables an optimized customer and employee user experience across multiple environments.
+Mit der {{ site.data.keys.product }} kann Ihr
+Unternehmen auf effiziente Weise erweiterte mobile Anwendungen (Apps) mit Zugriff auf das gesamte Leistungsspektrum der vorgesehenen mobilen Zielgeräte
+entwickeln, verbinden, ausführen und verwalten. Die {{ site.data.keys.product }} kann Sie dabei unterstützen, die
+Markteinführungszeit zu verkürzen, die Entwicklungskosten zu senken und die Komplexität der Entwicklung zu reduzieren. Sie ermöglicht
+für mehrere Umgebungen eine optimierte Kunden- und Mitarbeitererfahrung. 
 
-As part of this comprehensive mobile solution, {{ site.data.keys.product }} can be integrated with application lifecycle, security, management, and analytics capabilities to help you address the unique mobile needs of your business.
+Im Rahmen einer umfassenden mobilen Lösung können in die {{ site.data.keys.product }}
+auf Ihre individuellen Geschäftsanforderungen zugeschnittene Funktionen für Anwendungszyklen, Sicherheit, Management und Analyse integriert werden. 
 
-Find below further information about the product. Main capabilities and product components, system requirements, supported features and release notes.
+Unten finden Sie weitere Informationen zum Produkt (Hauptfunktionen, Produktkomponenten, Systemvoraussetzungen, unterstützte Features und Releaseinformationen). 
 

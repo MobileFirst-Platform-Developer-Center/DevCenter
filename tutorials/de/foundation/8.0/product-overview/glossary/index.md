@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Glossary
+title: Glossar
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -9,7 +9,7 @@ weight: 8
 {% comment %}
 Do note use keywords in the keyword terms, as this presents issues with the glossary sort tool. (You can use keywords in the definitions.)
 When the term should logically use a keyword, use the keyword text in the term, and add a no-translation comment.
-For example, instead of using "{{ site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
+For example, instead of using "{{site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
 <!-- START NON-TRANSLATABLE -->
@@ -19,330 +19,341 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 <!-- END NON-TRANSLATABLE -->
 
 <br/>
-This glossary provides terms and definitions for {{ site.data.keys.product }} software and products.
+Dieses Glossar enthält Begriffe und Definitionen für
+die Software und Produkte der {{site.data.keys.product }}.
 
-The following cross-references are used in this glossary:
+Folgende Querverweise
+werden in diesem Glossar verwendet: 
 
-* **See** refers you from a nonpreferred term to the preferred term or from an abbreviation to the spelled-out form.
-* **See also** refers you to a related or contrasting term.
+* **Siehe** verweist Sie von einem wenig verwendeten Begriff zu dem bevorzugten Begriff oder von einer Abkürzung auf die
+ausgeschriebene Form.
+* **Siehe auch** verweist Sie auf einen verwandten oder einen gegensätzlichen Begriff.
 
-For other terms and definitions, see the [IBM Terminology website](http://www.ibm.com/software/globalization/terminology/).
+Weitere Begriffe und Definitionen
+finden Sie
+auf der Website [IBM Terminology](http://www.ibm.com/software/globalization/terminology/).
 
-## A
+## A 
 {: #a }
 
-### acquisition policy
-{: #acquisition-policy }
-A policy that controls how data is collected from a sensor of a mobile device. The policy is defined by application code.
+### Abfrage
+{: #challenge }
+Eine an ein System gerichtete Anfrage nach bestimmten Informationen. Die Informationen, die mit der Antwort auf die Anfrage an den Server zurückgesendet werden,
+sind für die Clientauthentifizierung notwendig.
 
-### adapter
+### Abfrage-Handler
+{: #challenge-handler }
+Eine Clientkomponente, die auf der Serverseite eine Reihe von Abfragen absetzt und auf der Clientseite antwortet. 
+
+### Abonnement
+{: #subscription }
+Ein Datensatz mit den Informationen, die ein Abonnent an einen lokalen Broker oder Server übermittelt, um die Veröffentlichungen
+zu abonnieren, die er empfangen möchte.
+
+### Adapter
 {: #adapter }
-The server-side code of a {{ site.data.keys.product_adj }} application. Adapters connect to enterprise applications, deliver data to and from mobile applications, and perform any necessary server-side logic on sent data.
+Der serverseitige Code einer {{site.data.keys.product_adj }}-Anwendung. Adapter stellen eine Verbindung
+zu Unternehmensanwendungen her, stellen Daten für mobile Anwendungen und von mobilen Anwendungen bereit und
+wenden auf gesendete Daten die erforderliche serverseitige Logik an.
 
-### administration database
-{: #administration-database }
-The database of the {{ site.data.keys.mf_console }} and of the Administration Services. The database tables define elements such as applications, adapters, projects with their descriptions and orders of magnitude.
-
-### Administration Services
-{: #administration-services }
-An application that hosts the REST services and administration tasks. The Administration Services application is packaged in its own WAR file.
-
-### alias
+### Alias
 {: #alias }
-An assumed or actual association between two data entities, or between a data entity and a pointer.
+Eine vorausgesetzte oder tatsächliche Beziehung zwischen zwei Datenentitäten oder einer Datenentität und einem
+Zeiger.
 
 ### Android
 {: #android }
-A mobile operating system created by Google, most of which is released under the Apache 2.0 and GPLv2 open source licenses. See also mobile device.
+Ein von Google erstelltes Betriebssystem für mobile Geräte, dessen größter Teil unter den Open-Source-Lizenzen für
+Apache 2.0 und GPLv2 freigegeben wird. Siehe auch
+"Mobiles Gerät".
 
-### API / Application Programming Interface (API)
+### Ansicht
+{: #view }
+Ein Teilfenster außerhalb des Editorbereichs, in dem Ressourcen der Workbench angezeigt oder mit Ressourcen der Workbench
+gearbeitet werden kann.
+
+### Antippen
+{: #tap }
+Das kurze Berühren eines Touchscreens. Bei Apps werden in der Regel Elemente durch Antippen
+ausgewählt (was mit dem Klicken mit der linken Maustaste vergleichbar ist).
+
+### Anwendungsdeskriptordatei
+{: #application-descriptor-file }
+Eine Metadatendatei, in der diverse Aspekte einer Anwendung definiert sind.
+
+### Anwendungsprogrammierschnittstelle (API)
 {: #api-application-programming-interfacae-api }
-An interface that allows an application program that is written in a high-level language to use specific data or functions of the operating system or another program.
+Eine Schnittstelle, mit deren Hilfe ein in einer höheren Programmiersprache geschriebenes Anwendungsprogramm
+bestimmte Daten oder Funktionen des Betriebssystems oder eines anderen Programms nutzen kann.
 
-### app
+### App
 {: #app }
-A web or mobile device application. See also web application.
+Eine Webanwendung oder Anwendung für ein mobiles Gerät. Siehe auch "Webanwendung".
 
 ### Application Center
 {: #application-center }
-A {{ site.data.keys.product_adj }} component that can be used to share applications and facilitate collaboration between team members in a single repository of mobile applications.
+Eine {{site.data.keys.product_adj }}-Komponente für die gemeinsame Nutzung von Anwendungen
+in einem Repository für mobile Anwendungen und für eine einfachere Zusammenarbeit von Teammitgliedern. 
 
-### Application Center installer
+### Application-Center-Installationsprogramm
 {: #application-center-installer }
-An application that lists the catalog of available applications in the Application Center. The Application Center Installer must be present on a device so that one can install applications from your private application repository.
+Eine Anwendung, die den Katalog mit den im Application Center verfügbaren Anwendungen anzeigt. Das Application-Center-Installationsprogramm muss
+auf einem Gerät vorhanden sein, damit Sie Anwendungen aus Ihrem privaten Anwendungsrepository installieren
+können.
 
-### application descriptor file
-{: #application-descriptor-file }
-A metadata file that defines various aspects of an application.
+### Auslösen
+{: #fire }
+Im Bereich der objektorientierten Programmierung das Verursachen eines Zustandsübergangs.
 
-### authentication
+### Auslöser
+{: #trigger }
+Ein Mechanismus, der eine Begebenheit erkennt und daraufhin zusätzliche Verarbeitungsschritte
+einleiten kann. Auslöser können aktiviert werden, wenn es Änderungen im Gerätekontext gibt. Siehe auch "Gerätekontext".
+
+### Authentifizierung
 {: #authentication }
-A security service that provides proof that a user of a computer system is genuinely who that person claims to be. Common mechanisms for implementing this service are passwords and digital signatures.
+Ein Sicherheitsservice, der beweist, dass ein Benutzer eines Computersystems tatsächlich der ist, der er vorgibt zu sein. Dieser Service wird
+häufig mithilfe von Kennwörtern und digitalen Signaturen implementiert.
+
 
 ## B
 {: #b }
 ### Base64
 {: #base64 }
-A plain-text format that is used to encode binary data. Base64 encoding is commonly used in User Certificate Authentication to encode X.509 certificates, X.509 CSRs, and X.509 CRLs. See also DER encoded, PEM encoded.
+Einfaches Textformat, das für die Verschlüsselung von Binärdaten verwendet wird. Die Base64-Verschlüsselung wird bei der Authentifizierung mit
+Benutzerzertifikat häufig zum Verschlüsseln von
+X.509-Zertifikaten, X.509-Zertifikatsignieranforderungen und X.509-Zertifikatsperrlisten verwendet. Siehe auch "DER", "PEM-Verschlüsselung".
 
-### binary
+### Benachrichtigung
+{: #notification }
+Eine Begebenheit innerhalb eines Prozesses, die eine Aktion auslösen kann. Benachrichtigungen können zum Modellieren von Zuständen und Bedingungen
+verwendet werden, die von einem Absender an eine (in der Regel unbekannte) Gruppe Interessierter (die Empfänger) übertragen werden.
+
+### Berechtigungsnachweis
+{: #credential }
+Informationen, die einem Benutzer oder Prozess bestimmte Zugriffsrechte
+gewähren.
+
+### Bereitstellung
+{: #provisin }
+Das Zurverfügungstellen, Implementieren und Verfolgen eines Service, einer Komponente, einer Anwendung oder
+einer Ressource.
+
+### Bibliothek
+{: #library }
+Ein Systemobjekt, das anderen Objekten als Verzeichnis dient. In einer Bibliothek sind verwandte Objekte zusammengefasst.
+Benutzer können Objekte in der Bibliothek anhand des Objektnamens finden. Eine Sammlung von Modellelementen, zu denen unter anderem Geschäftselemente, Prozesse, Aufgaben, Ressourcen und Organisationen
+gehören.
+
+### Binär
 {: #binary }
-Pertaining to something that is compiled, or is executable.
+Der Begriff wird im Zusammenhang mit Daten verwendet, die kompiliert werden oder ausführbar sind.
 
-### block
+### Block
 {: #block }
-A collection of several properties (such as adapter, procedure, or parameter).
+Eine Zusammenstellung mehrerer Eigenschaften (z. B. Adapter-, Verfahrens- oder Parametereigenschaften).
 
-### broadcast notification
+### Broadcastbenachrichtigung
 {: #broadcast-notification }
-A notification that is targeted to all of the users of a specific {{ site.data.keys.product_adj }} application. See also tag-based notification.
+Eine an alle Benutzer einer bestimmten
+{{site.data.keys.product_adj }}-Anwendung adressierte Benachrichtigung. Siehe auch "Tagbasierte
+Benachrichtigung".
 
-### build definition
+### Builddefinition
 {: #build-definition }
-An object that defines a build, such as a weekly project-wide integration build.
+Ein Objekt, das einen Build definiert (z. B. einen wöchentlichen Integrationsbuild für ein gesamtes Projekt).
 
 ## C
 {: #c }
 
-### CA / Certificate Authority (CA)
-{: #ca--certificate-authority-ca }
-A trusted third-party organization or company that issues the digital certificates. The certificate authority typically verifies the identity of the individuals who are granted the unique certificate. See also [certificate](#certificate).
-
-### callback function
+### Callback-Funktion
 {: #callback-function }
-Executable code that allows a lower-level software layer to call a function defined in a higher-level layer.
+Ausführbarer Code, mit dessen Hilfe eine niedere Softwareschicht eine in einer höheren Schicht definierte Funktion
+aufrufen kann.
 
-### catalog
-{: #catalog }
-A collection of apps.
-
-### certificate
-{: #certificate }
-In computer security, a digital document that binds a public key to the identity of the certificate owner, thereby enabling the certificate owner to be authenticated. A certificate is issued by a certificate authority and is digitally signed by that authority. See also [certificate authority](#ca--certificate-authority-ca).
-
-### certificate authority enterprise application
-{: #certificate-authority-enterprise-application }
-A company application that provides certificates and private keys for its client applications.
-
-### challenge
-{: #challenge }
-A request for certain information to a system. The information, which is sent back to the server in response to this request, is necessary for client authentication.
-
-### challenge handler
-{: #challenge-handler }
-A client-side component that issues a sequence of challenges on the server side and responds on the client side.
-
-### client
+### Client
 {: #client }
-A software program or computer that requests services from a server.
+Ein Softwareprogramm oder ein Computer, mit dem Services von einem Server angefordert werden.
 
-### client-side authentication component
+### Clientseitige Authentifizierungskomponente
 {: #client-side-authentication-componnet }
-A component that collects client information, then uses login modules to verify this information.
+Eine Komponente, die Clientinformationen sammelt und diese dann mit Anmeldemodulen verifiziert.
 
-### clone
-{: #clone }
-An identical copy of the latest approved version of a component, with a new unique component ID.
-
-### cluster
+### Cluster
 {: #cluster }
-A collection of complete systems that work together to provide a single, unified computing capability.
-
-### company application
-{: #company-application }
-An application that is designed for internal use inside a company.
-
-### Company Hub
-{: #company-hub }
-An application that can distribute other specified applications to be installed on a mobile device. For example, Application Center is a Company Hub. See also [Application Center](#application-center).
-
-### component
-{: #component }
-A reusable object or program that performs a specific function and works with other components and applications.
-
-### credential
-{: #credential }
-A set of information that grants a user or process certain access rights.
-
-### CRL / Certificate Revocation List (CRL)
-{: #crl-certificate-revocation-list-crl }
-A list of certificates that have been revoked before their scheduled expiration date. Certificate revocation lists are maintained by the certificate authority and used, during a Secure Sockets Layer (SSL) handshake to ensure that the certificates involved have not been revoked.
+Eine Sammlung vollständiger Systeme, die für die Bereitstellung einer einheitlichen Datenverarbeitungsfunktion zusammenarbeiten.
 
 ## D
 {: #d }
 
-### data source
+### Datenquelle
 {: #data-source }
-The means by which an application accesses data from a database.
+Die Mittel, die Anwendung für den Zugriff auf Daten in einer Datenbank verwendet.
 
-### deployment
-{: #deployment }
-The process of installing and configuring a software application and all its components.
-
-### DER encoded
+### DER (Distinguished Encoding Rules)
 {: #der-encoded }
-Pertaining to a binary form of an ASCII PEM formatted certificate. See also Base64, PEM encoded.
+Regeln für das Binärformat eines PEM-verschlüsselten ASCII-Zertifikats.
+Siehe auch "Base64", "PEM-Verschlüsselung".
 
-### device
-{: #device }
-See [mobile device](#mobile-device)
-
-### device context
-{: #device-context }
-Data that is used to identify the location of a device. This data can include geographical coordinates, WiFi access points, and timestamp details. See also trigger.
-
-### device enrollment
-{: #device-enrollment }
-The process of a device owner registering their device as trusted.
-
-### documentify
+### Documentify
 {: #documentify }
-A JSONStore command used to create a document.
+Ein JSONStore-Befehl für die Erzeugung eines Dokuments.
 
 ## E
 {: #e }
 
-### emulator
+### Emulator
 {: emulator }
-An application that can be used to run an application meant for a platform other than the current platform.
+Eine Anwendung, mit deren Hilfe eine nicht für die aktuelle Plattform bestimmte Anwendung ausgeführt
+werden kann.
 
-### encryption
-{: #encryption }
-In computer security, the process of transforming data into an unintelligible form in such a way that the original data either cannot be obtained or can be obtained only by using a decryption process.
-
-### enterprise application
-{: #enterprise-application }
-See company application.
-
-### entity
+### Entität
 {: #entity }
-A user, group, or resource that is defined to a security service.
+Ein Benutzer, eine Gruppe oder eine Ressource, der bzw. die für einen Sicherheitsservice definiert ist.
 
-### environment
-{: #environment }
-A specific instance of a configuration of hardware and software.
-
-### event
+### Ereignis
 {: #event }
-An occurrence of significance to a task or system. Events can include completion or failure of an operation, a user action, or the change in state of a process.
+Eine für eine Aufgabe oder ein System wichtige Begebenheit. Ereignisse können der Abschluss oder Fehlschlag einer Operation, eine Benutzeraktion
+oder die Änderung des Zustands eines Prozesses sein.
 
-### event source
+### Ereignisquelle
 {: #event-source }
-An object that supports an asynchronous notification server within a single Java™ virtual machine. Using an event source, the event listener object can be registered and used to implement any interface.
+Ein Objekt, das in einer
+Java Virtual Machine einen Server für asynchrone Benachrichtigung unterstützt.
+Mithilfe einer Ereignisquelle kann das Ereignis-Listener-Objekt registriert und für die Implementierung von Schnittstellen
+verwendet werden.
+
+### Erfassungsrichtlinie
+{: #acquisition-policy }
+Diese Richtlinie steuert, wie ein Sensor eines mobilen Gerätes Daten erfasst. Sie ist im Anwendungscode definiert.
 
 ## F
 {: #f }
 
-### facet
+### Facette
 {: #facet }
-An XML entity that restricts XML data types.
+Eine XML-Entität zur Beschränkung von XML-Datentypen.
 
-### farm node
+### Farmknoten
 {: #farm-node }
-A networked server that is housed in a server farm.
-
-### fire
-{: #fire }
-In object-oriented programming, to cause a state transition.
+Ein Netzserver, der sich in einer Server-Farm befindet.
 
 ## G
 {: #g }
-### gateway
+### Gateway
 {: #gateway }
-A device or program used to connect networks or systems with different network architectures.
+Ein Gerät oder Programm, das Netze oder Systeme mit unterschiedlichen Netzarchitekturen
+verbindet.
 
-### geocoding
+### Geocodierung
 {: #geocoding }
-The process of identifying geocodes from more traditional geographic markers (addresses, postal codes, and so on). For example, a landmark can be located at the intersection of two streets, but the geocode of that landmark consists of a number sequence.
+Der Prozess der Identifizierung von Geocodes anhand konventioneller geografischer Marker (wie Adressen, Postleitzahlen usw.). Ein Orientierungspunkt kann sich beispielsweise
+an der Kreuzung zweier Straßen befinden. Der Geocode eines solchen Orientierungspunktes besteht aus einer Zahlenfolge. 
 
-### geolocation
+### Geoortung
 {: #geolocation }
-The process of pinpointing a location based on the assessment of various types of signals. In mobile computing, often WLAN access points and cell towers are used to approximate a location. See also geocoding, location services.
+Das Ausfindigmachen einer Position durch die Analyse verschiedener Arten von Signalen. Im Bereich des Mobile Computing werden oft
+WLAN-Zugriffspunkte und Mobilfunkmasten zur näherungsweisen Berechnung eines Standortes verwendet. Siehe auch "Geocodierung",
+"Ortungsdienste".
+
+### Gerät
+{: #device }
+Siehe [Mobiles Gerät](#mobile-device). 
+
+### Gerätekontext
+{: #device-context }
+Daten, über die die Position eines Gerätes ermittelt werden kann. Zu diesen Daten können
+geografische Koordinaten, WiFi-Zugriffspunkte und Zeitmarkendetails gehören. Siehe auch "Auslöser".
+
+### Geräteregistrierung
+{: #device-enrollment }
+Der Prozess, mit dem Eigentümer ihre Geräte als vertrauenswürdig registrieren. 
 
 ## H
 {: #h }
 
-### homogeneous server farm
+### Homogene Server-Farm
 {: #homogeneous-server-farm }
-A server farm in which all application servers are of the same type, level, and version.
+Eine Server-Farm, bei der alle Anwendungsserver vom selben Typ sind und denselben Versionsstand haben. 
 
-### hybrid application
+### Hybridanwendung
 {: #hybrid-application }
-An application that is primarily written in web-oriented languages (HTML5, CSS, and JS), but is wrapped in a native shell so that the app behaves like, and provides the user with all the capabilities of, a native app.
+Eine Anwendung, die vorwiegend in weborientierten Sprachen
+(HTML5, CSS und JS) geschrieben, jedoch in einer nativen Shell eingeschlossen ist, sodass die App sich wie eine native App verhält und dem Benutzer
+die gesamte Funktionalität einer nativen App zur Verfügung stellt.
 
 ## I
 {: #i }
 
-### in-house application
-{: #in-house-application }
-See [company application](#company-application).
+### Implementierung
+{: #deployment }
+Der Prozess der Installation und Konfiguration einer Softwareanwendung mit all ihren Komponenten.
 
 ## J
 {: #j }
 
-### JMX / Java Management Extensions (JMX)
+### Java Management Extensions (JMX)
 {: #jmx--java-management-extensions-jmx }
-A means of doing management of and through Java technology. JMX is a universal, open extension of the Java programming language for management that can be deployed across all industries, wherever management is needed.
+Ein Instrument für die Verwaltung von und mit Java-Technologie. JMX
+ist eine universelle offene Erweiterung der Programmiersprache Java für eine Verwaltung, die in allen Branchen implementiert werden kann, in denen Verwaltungsaufgaben
+anfallen.
 
 ## K
 {: #k }
 
-### key
-{: #key }
-A cryptographic mathematical value that is used to digitally sign, verify, encrypt, or decrypt a message. See also private key, public key.
-One or more characters within an item of data that are used to uniquely identify a record and establish its order with respect to other records.
+### Katalog
+{: #catalog }
+Eine Zusammenstellung von Apps.
 
-### keychain
+### Keychain
 {: #keychain }
-A password management system for Apple software. A keychain acts as a secure storage container for passwords that are used by multiple applications and services.
+Ein Kennwortmanagementsystem für Apple-Software. Eine Keychain agiert als sicherer Speichercontainer für Kennwörter, die von mehreren Anwendungen
+und Services verwendet werden.
 
-### key pair
-{: #key-pair }
-In computer security, a public key and a private key. When the key pair is used for encryption, the sender uses the receiver's public key to encrypt the message, and the recipient uses their private key to decrypt the message. When the key pair is used for signing, the signer uses their private key to encrypt a representation of the message, and the recipient uses the sender's public key to decrypt the representation of the message for signature verification.
+### Klon
+{: #clone }
+Eine identische Kopie der zuletzt genehmigten Version einer Komponente mit einer neuen eindeutigen Komponenten-ID.
+
+### Knoten
+{: #node }
+Eine logische Gruppe verwalteter Server.
+
+### Komponente
+{: #component }
+Ein wiederverwendbares Objekt oder Programm, das eine bestimmte Funktion ausführt und mit anderen Komponenten und Anwendungen
+zusammenarbeitet.
 
 ## L
 {: #l }
 
-### library
-{: #library }
-A system object that serves as a directory to other objects. A library groups related objects, and allows users to find objects by name.
-A collection of model elements, including business items, processes, tasks, resources, and organizations.
-
-### load balancing
+### Lastausgleich
 {: #load-balancing }
-A computer networking method for distributing workloads across multiple computers or a computer cluster, network links, central processing units, disk drives, or other resources. Successful load balancing optimizes resource use, maximizes throughput, minimizes response time, and avoids overload.
+In Computernetzen eine Methode der Verteilung von Arbeitslasten auf mehrere Computer oder
+einen Computercluster, Netzlinks, CPUs, Plattenlaufwerke oder andere Ressourcen. Bei erfolgreichem Lastausgleich
+wird die Ressourcennutzung optimiert, der Durchsatz maximiert, die Antwortzeit auf ein Minimum reduziert und
+eine Überlastung vermieden.
 
-### local store
+### Lokaler Speicher
 {: #local-store }
-An area on a device where applications can locally store and retrieve data without the need for a network connection.
+Auf einem Gerät ein Bereich, in dem Anwendungen Daten lokal speichern und aus dem Anwendungen Daten lokal abrufen können, ohne dass eine
+Netzverbindung notwendig ist.
 
 ## M
 {: #m }
 
-### MBean / Managed Bean (MBean)
+### Managed Bean (MBean)
 {: #mbean--managed-bean-mbean}
-In the Java Management Extensions (JMX) specification, the Java objects that implement resources and their instrumentation.
+In der JMX-Spezifikation (Java Management Extensions) die Java-Objekte, die Ressourcen und ihre Instrumentierung
+implementieren.
 
-### mobile
-{: #mobile }
-See [mobile device](#mobile-device).
-
-### mobile client
-{: #mobile-client }
-See [Application Center installer](#application-center-installer).
-
-### mobile device
-{: #mobile-device }
-A telephone, tablet, or personal digital assistant that operates on a radio network. See also Android.
-
-### MobileFirst adapter
+### MobileFirst-Adapter
 {: #mobilfirst-adapter }
 <!-- START NON-TRANSLATABLE -->
 {% comment %}
 Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-See [adapter](#adapter)
+Siehe [Adapter](#adapter).
 
 ### MobileFirst Data Proxy
 {: #mobilefirst-data-proxy }
@@ -351,26 +362,28 @@ See [adapter](#adapter)
 Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-A server-side component to the IMFData SDK that can be used to secure mobile application calls to Cloudant  by using {{ site.data.keys.product }} OAuth security capabilities. The {{ site.data.keys.product_adj }} Data Proxy requires an authentication through the trust association interceptor.
-
-### MobileFirst Operations Console
+Für das IMFData-SDK eine serverseitige Komponente, mit der an
+Cloudant adressierte Aufrufe mobiler Anwendungen gesichert werden können. Dazu werden die
+MobileFirst-Foundation-OAuth-Sicherheitsfunktionen verwendet. Der {{site.data.keys.product_adj }}
+Data Proxy erfordert eine Authentifizierung über den Trust Association Interceptor. ### MobileFirst Operations Console
 {: #mobilefirst-operations-console }
 <!-- START NON-TRANSLATABLE -->
 {% comment %}
 Do not translate "MobileFirst Operations Console" in the term above (site.data.keys.mf_console keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-A web-based interface that is used to control and manage {{ site.data.keys.product_adj }} runtime environments that are deployed in {{ site.data.keys.mf_server }}, and to collect and analyze user statistics.
-
-### MobileFirst runtime environment
+Eine webbasierte Schnittstelle zum Steuern und Verwalten von {{site.data.keys.product_adj }}-Laufzeitumgebungen, die in
+{{site.data.keys.mf_server }} implementiert sind, sowie zum Erfassen und Analysieren von Benutzerstatistiken.
+### MobileFirst-Laufzeitumgebung
 {: #mobilefirts-runtime-environment }
 <!-- START NON-TRANSLATABLE -->
 {% comment %}
 Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-A mobile-optimized server-side component that runs the server side of your mobile applications (back-end integration, version management, security, unified push notification). Each runtime environment is packaged as a web application (WAR file).
-
+Eine serverseitige Komponente, die für mobile Anwendungen optimiert ist und die serverseitigen Funktionen dieser Anwendungen
+(Back-End-Integration, Versionsmanagement, Sicherheit, einheitliche Push-Benachrichtigungen) ausführt. Jede Laufzeitumgebung
+ist als Webanwendung (WAR-Datei) gepackt.
 ### MobileFirst Server
 {: #mobilefirst-server }
 <!-- START NON-TRANSLATABLE -->
@@ -378,214 +391,319 @@ A mobile-optimized server-side component that runs the server side of your mobil
 Do not translate "MobileFirst Server" in the term above (site.data.keys.mf_server keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-A {{ site.data.keys.product_adj }} component that handles security, back-end connections, push notifications, mobile application management, and analytics. The {{ site.data.keys.mf_server }} is a collection of apps that run on an application server and acts as a runtime container for {{ site.data.keys.product_adj }} runtime environments.
+Eine {{site.data.keys.product_adj }}-Komponente, die für Sicherheit, Back-End-Verbindungen, Push-Benachrichtigungen, Analysen und die Verwaltung mobiler Anwendungen
+zuständig ist.
+{{site.data.keys.mf_server }} besteht aus einer Sammlung von Apps, die in einem Anwendungsserver ausgeführt werden. Er dient
+als Laufzeitcontainer für {{site.data.keys.product_adj }}-Laufzeitumgebungen.
+### Mobiler Client
+{: #mobile-client }
+Siehe [Application-Center-Installationsprogramm](#application-center-installer).
+
+### Mobiles Gerät
+{: #mobile-device }
+Ein Telefon, Tablet oder Personal Digital Assistant, das bzw. der in einem Funknetz arbeitet. Siehe auch
+"Android".
+
+### Mobiltelefon
+{: #mobile }
+Siehe
+[Mobiles Gerät](#mobile-device).
 
 ## N
 {: #n }
 
-### native app
+### Native App
 {: #native-app }
-An app that is compiled into binary code for use on the mobile operating system on the device.
-
-### node
-{: #node }
-A logical group of managed servers.
-
-### notification
-{: #notification }
-An occurrence within a process that can trigger an action. Notifications can be used to model conditions of interest to be transmitted from a sender to a (typically unknown) set of interested parties (the receivers).
+Eine in Binärcode kompilierte App, die unter dem Betriebssystem für mobile Geräte ausgeführt werden kann.
 
 ## O
 {: #o }
 
 ### OAuth
 {: #oauth }
-An HTTP-based authorization protocol that gives applications scoped access to a protected resource on behalf of the resource owner, by creating an approval interaction between the resource owner, client, and resource server.
+Ein HTTP-basiertes Autorisierungsprotokoll, das Anwendungen im Namen des Ressourceneigners einen bereichsorientierten Zugriff auf eine geschützte Ressource gewährt. Dazu
+wird eine Genehmigungsinteraktion zwischen dem Ressourceneigentümer, dem Client und dem Ressourcenserver erstellt. 
+
+### Oberfläche
+{: #skin }
+Ein Element einer grafischen Benutzerschnittstelle, das ohne Einfluss auf die Funktionalität geändert werden kann,
+wenn ein anderes Aussehen erwünscht ist.
+
+### Öffentlicher Schlüssel
+{: #public-key }
+Im Bereich der sicheren Kommunikation ein algorithmisches Muster für die Entschlüsselung von Nachrichten, die mit dem entsprechenden
+privaten Schlüssel verschlüsselt wurden. Ein öffentlicher Schlüssel wird auch zum Verschlüsseln von Nachrichten verwendet, die dann nur mit dem
+entsprechenden privaten Schlüssel entschlüsselt werden können. Benutzer senden ihre öffentlichen Schlüssel per Broadcast an alle Personen, mit denen
+sie verschlüsselte Nachrichten austauschen müssen. Siehe
+auch "Schlüssel", "Privater Schlüssel".
 
 ## P
 {: #p }
 
-### page navigation
-{: #page-navigation }
-A browser feature that enables users to navigate backwards and forwards in a browser.
-
-### PEM encoded
+### PEM-Verschlüsselung (Privacy Enhanced Mail)
 {: #pem-encoded }
-Pertaining to a Base64 encoded certificate. See also Base64, DER encoded.
+Eine Form der Base64-Verschlüsselung für Zertifikate. Siehe auch "Base64", "DER".
 
-### PKI / Public Key Infrastructure (PKI)
-{: #pki--public-key-infrastructure-pki }
-A system of digital certificates, certification authorities, and other registration authorities that verify and authenticate the validity of each party involved in a network transaction.
-
-### PKI bridge
+### PKI Bridge
 {: #pki-bridge }
-A {{ site.data.keys.mf_server }} concept that enables the User Certificate Authentication framework to communicate with a PKI.
+Ein MobileFirst-Server-Konzept, das
+dem Framework für die Authentifizierung mit Benutzerzertifikaten ermöglicht, mit einer Public Key Infrastructure (PKI) zu
+kommunizieren.
 
-### poll
-{: #poll }
-To repeatedly request data from a server.
-
-### private key
+### Privater Schlüssel
 {: #private-key }
-In secure communication, an algorithmic pattern used to encrypt messages that only the corresponding public key can decrypt. The private key is also used to decrypt messages that were encrypted by the corresponding public key. The private key is kept on the user system and is protected by a password. See also key, public key.
+Im Bereich der sicheren Kommunikation ein algorithmisches Muster für die Verschlüsselung von Nachrichten, die nur mit dem entsprechenden
+öffentlichen Schlüssel entschlüsselt werden können. Der private Schlüssel wird auch zum Entschlüsseln von Nachrichten verwendet, die mit dem entsprechenden
+öffentlichen Schlüssel verschlüsselt wurden. Der private Schlüssel wird auf dem Benutzersystem aufbewahrt und ist durch ein Kennwort geschützt. Siehe
+auch "Schlüssel", "Öffentlicher Schlüssel".
 
-### project
+### Projekt
 {: #project }
-The development environment for various components, such as applications, adapters, configuration files, custom Java code, and libraries.
+Die Entwicklungsumgebung für verschiedene Komponenten, z. B. für Anwendungen, Adapter, Konfigurationsdateien,
+angepassten Java-Code und Bibliotheken.
 
-### project WAR file
+### Projekt-WAR-Datei
 {: #project-war-file }
-A web archive (WAR) file that contains the configurations for the {{ site.data.keys.product_adj }} runtime environment and is deployed on an application server.
+Die in einem Anwendungsserver implementierte Webarchivdatei mit den Konfigurationen für die MobileFirst-Laufzeitumgebung.
 
-### provision
-{: #provisin }
-To provide, deploy, and track a service, component, application, or resource.
-
-### proxy
+### Proxy
 {: #proxy }
-An application gateway from one network to another for a specific network application such as Telnet or FTP, for example, where a firewall proxy Telnet server performs authentication of the user and then lets the traffic flow through the proxy as if it were not there. Function is performed in the firewall and not in the client workstation, causing more load in the firewall.
+Ein Anwendungsgateway zwischen zwei Netzen für eine bestimmte Netzanwendung wie
+Telnet oder FTP. Ein Telnet-Server, der als Firewallproxy fungiert, könnte beispielsweise den Benutzer authentifizieren und dann den Datenverkehr
+weiterleiten, als wäre der Proxy nicht vorhanden. Die Funktion wird in der Firewall und nicht auf der Clientworkstation
+ausgeführt, sodass die Firewall eine größere Arbeitslast zu bewältigen hat.
 
-### public key
-{: #public-key }
-In secure communication, an algorithmic pattern used to decrypt messages that were encrypted by the corresponding private key. A public key is also used to encrypt messages that can be decrypted only by the corresponding private key. Users broadcast their public keys to everyone with whom they must exchange encrypted messages. See also key, private key.
+### Public Key Infrastructure (PKI)
+{: #pki--public-key-infrastructure-pki }
+Ein System von digitalen Zertifikaten, Zertifizierungsstellen und anderen Registrierungsstellen, das die Echtheit von Teilnehmern an einer Netztransaktion
+verifiziert und authentifiziert. 
 
-### push
+### Push
 {: #push }
-To send information from a server to a client. When a server pushes content, it is the server that initiates the transaction, not a request from the client.
+Das Senden von Informationen von einem Server an einen Client. Wenn ein Server Inhalte mit einer Push-Operation
+sendet, wird die Transaktion vom Server selbst und nicht nach einer Aufforderung durch den Client eingeleitet.
 
-### push notification
+### Push-Benachrichtigung
 {: #push-notification }
-An alert indicating a change or update that appears on a mobile app icon.
+Ein Alert, der auf eine Änderung oder ein Update hinweist und beim Symbol einer mobilen App angezeigt wird.
 
 ## R
 {: #r }
 
-### reverse proxy
+### Reverse Proxy
 {: #reverse-proxy }
-An IP-forwarding topology where the proxy is on behalf of the back-end HTTP server. It is an application proxy for servers using HTTP.
-
-### root
-{: #root }
-The directory that contains all other directories in a system.
+Eine IP-Weiterleitungstopologie, in der der Proxy anstelle des Back-End-HTTP-Servers handelt. Der Reverse Proxy ist ein Anwendungsproxy für
+Server, die HTTP verwenden.
 
 ## S
 {: #s}
 
-### salt
+### Salt
 {: #salt }
-Randomly generated data that is inserted into a password or passphrase hash, making those passwords uncommon (and more difficult to hack).
+Nach dem Zufallsprinzip generierte Daten, die in einen Kennwort- oder Kennphrasen-Hash eingefügt werden, um diese Kennwörter oder Kennphrasen unüblich (und damit schwerer zu hacken)
+zu machen. 
 
-### SDK / Software Development Kit (SDK)
-{: #sdk--software-development-kit-sdk }
-A set of tools, APIs, and documentation to assist with the development of software in a specific computer language or for a particular operating environment.
+### Schablone
+{: #template }
+Eine Gruppe von Elementen mit gemeinsamen Eigenschaften. Diese Eigenschaften können nur einmal auf Schablonenebene definiert werden und
+werden von allen Elementen, die die Schablone nutzen, übernommen.
 
-### security test
-{: #security-test }
-An ordered set of authentication realms that is used to protect a resource such as an adapter procedure, an application, or a static URL.
+### Schlüssel
+{: #key }
+Ein kryptografischer mathematischer Wert, mit dem eine Nachricht digital signiert, verifiziert, verschlüsselt oder entschlüsselt
+wird. Siehe auch "Privater Schlüssel", "Öffentlicher Schlüssel". Zeichen in einem Datenelement, mit deren Hilfe ein Datensatz eindeutig identifiziert und seine Position in Relation zu anderen Datensätzen
+festgelegt werden kann.
 
-### server farm
+### Schlüsselpaar
+{: #key-pair }
+Im Bereich der IT-Sicherheit ein Paar aus öffentlichem und privatem Schlüssel. Der Absender verwendet den öffentlichen Schlüssel des Empfängers, um die Nachricht zu verschlüsseln,
+und der Empfänger entschlüsselt die Nachricht mit dem privaten Schlüssel. Wenn das Schlüsselpaar zum Signieren verwendet wird, verschlüsselt der Unterzeichner eine Darstellung der Nachricht
+mit dem privaten Schlüssel. Der Empfänger entschlüsselt die Darstellung der Nachricht mit dem öffentlichen Schlüssel des Absenders, um die Signatur zu überprüfen.
+
+### Seitennavigation
+{: #page-navigation }
+Ein Browserfeature, mit dem Benutzer in einem Browser vorwärts und rückwärts navigieren können.
+
+### Sendeaufruf
+{: #poll }
+Das wiederholte Anfordern von Daten von einem Server.
+
+### Server-Farm
 {: #server-farm }
-A group of networked servers.
+Eine Gruppe vernetzter Server.
 
-### service
+### Service
 {: #service }
-A program that performs a primary function within a server or related software.
+Ein Programm, das primäre Funktionen in einem Server oder in zugehöriger Software ausführt.
 
-### session
-{: #sessions }
-A logical or virtual connection between two stations, software programs, or devices on a network that allows the two elements to communicate and exchange data for the duration of the session.
+### Sicherheitstest
+{: #security-test }
+Eine geordnete Gruppe von Authentifizierungsrealms für den Schutz einer Ressource, z. B. einer Adapterprozedur, einer Anwendung oder einer
+statischen URL. 
 
-### sign
+### Signieren
 {: #sign }
-To attach a unique electronic signature, derived from the sender's user ID, to a document or field when a document is mailed. Signing mail ensures that if an unauthorized user creates a new copy of a user's ID, the unauthorized user cannot forge signatures with it. In addition, the signature verifies that no one has tampered with the data while the message was in transit.
+Das Hinzufügen einer eindeutigen elektronischen, aus der Benutzer-ID des Absenders abgeleiteten Signatur
+zu einem Dokument oder einem Feld, wenn ein Dokument per Mail verschickt wird. Durch das Signieren von Mails wird sichergestellt,
+dass ein nicht berechtigter Benutzer, der eine neue Kopie der ID eines Benutzers erstellt, mit dieser kopierten ID keine
+Signaturen fälschen kann.
+Die Signatur bestätigt außerdem, dass die Daten während des Sendens der Nachricht nicht manipuliert wurden.
 
-### simulator
+### Simulator
 {: #simulator }
-An environment for staging code that is written for a different platform. Simulators are used to develop and test code in the same IDE, but then deploy that code to its specific platform. For example, one can develop code for an Android device on a computer, then test it using a simulator on that computer.
+Eine Umgebung für die Bereitstellung von Code, der für eine andere Plattform geschrieben wurde. Simulatoren werden
+zum Entwickeln und Testen von Code in derselben IDE verwendet. Implementiert wird der Code dann jedoch auf der Plattform, für die er
+bestimmt ist. Es ist beispielsweise möglich, Code für ein
+Android-Gerät auf einem Computer zu entwickeln und den Code dann mit einem Simulator auf demselben
+Computer zu testen.
 
-### skin
-{: #skin }
-An element of a graphical user interface that can be changed to alter the appearance of the interface without affecting its functionality.
+### Sitzung
+{: #sessions }
+Eine logische oder virtuelle Verbindung zwischen zwei Stationen, Softwareprogrammen oder Geräten in einem Netz, die die Kommunikation und den
+Datenaustausch zwischen beiden für die Dauer der Sitzung ermöglicht.
 
-### slide
-{: #slide }
-To move a slider interface item horizontally on a touchscreen. Typically, apps use slide gestures to lock and unlock phones, or toggle options.
+### Software Development Kit (SDK)
+{: #sdk--software-development-kit-sdk }
+Eine Reihe von Tools und APIs mit Dokumentation zur Unterstützung der Entwicklung von Software in einer bestimmten
+Maschinensprache oder für eine bestimmte Betriebsumgebung. 
 
-### subelement
-{: #subelement }
-In UN/EDIFACT EDI standards, an EDI data element that is part of an EDI composite data element. For example, an EDI data element and its qualifier are subelements of an EDI composite data element.
+### Stammverzeichnis
+{: #root }
+Das Verzeichnis, das alle anderen Verzeichnisse eines Systems enthält.
 
-### subscription
-{: #subscription }
-A record that contains the information that a subscriber passes to a local broker or server to describe the publications that it wants to receive.
-
-### syntax
+### Syntax
 {: #syntax }
-The rules for the construction of a command or statement.
+Die Regeln für das Konstruieren eins Befehls oder einer Anweisung.
 
-### system message
+### Systemnachricht
 {: #system-message }
-An automated message on a mobile device that provides operational status or alerts, for example if connections are successful or not.
+Auf einem mobilen Gerät eine automatisierte Nachricht, die den Betriebsstatus oder Alerts enthält.
+Systemnachrichten teilen dem Benutzer beispielsweise mit, ob Verbindungen erfolgreich hergestellt werden konnten oder nicht.
 
 ## T
 {: t}
 
-### tag-based notification
+### Tagbasierte Benachrichtigung
 {: #tag-based-notification }
-A notification that is targeted to devices that are subscribed for a specific tag. Tags are used to represent topics that are of interest to a user. See also broadcast notification.
+Eine Benachrichtigung, die an Geräte adressiert ist, die ein bestimmtes Tag abonniert haben. Tags repräsentieren Themen, die für einen Benutzer
+von Interesse sind. Siehe auch "Broadcastbenachrichtigung".
 
-### TAI / Trust Association Interceptor (TAI)
+### Trust Association Interceptor (TAI)
 {: #tai--trust-association-interceptor-tai }
-The mechanism by which trust is validated in the product environment for every request received by the proxy server. The method of validation is agreed upon by the proxy server and the interceptor.
-
-### tap
-{: #tap }
-To briefly touch a touchscreen. Typically, apps use tap gestures to select items (similar to a left mouse button click).
-
-### template
-{: #template }
-A group of elements that share common properties. These properties can be defined only once, at the template level, and are inherited by all elements that use the template.
-
-### trigger
-{: #trigger }
-A mechanism that detects an occurrence, and can cause additional processing in response. Triggers can be activated when changes occur in the device context. See also device context.
+Der Mechanismus, mit dem die Vertrauensbeziehung in der Produktumgebung für jede vom Proxy-Server
+empfangene Anforderung validiert wird. Der Proxy-Server und der Interceptor einigen sich auf die Validierungsmethode. 
 
 ## U
 {: #u }
 
+### Umgebung
+{: #environment }
+Eine bestimmte Instanz einer Hardware- oder Softwarekonfiguration.
+
+### Unterelement
+{: #subelement }
+In EDI-Standards von UN/EDIFACT ein EDI-Datenelement, das Teil eines zusammengesetzten EDI-Datenelements ist. Ein EDI-Datenelement und sein Qualifikationsmerkmal sind
+beispielsweise Unterelemente eines zusammengesetzten EDI-Datenelements.
+
+### Unternehmensanwendung
+{: #company-application }
+Eine Anwendung, die für den internen Gebrauch innerhalb eines Unternehmens bestimmt ist.
+
+### Unternehmens-Hub
+{: #company-hub }
+Eine Anwendung, die andere angegebene Anwendungen, die auf einem mobilen Gerät installiert werden sollen, verteilen kann. Das Application Center
+ist beispielsweise ein Unternehmens-Hub. Siehe auch [Application
+Center](#application-center).
+
+### Unternehmensinterne Anwendung
+{: #in-house-application }
+Siehe [Unternehmensanwendung](#company-application).
+
 ## V
 {: #v }
 
-### view
-{: #view }
-A pane that is outside of the editor area that can be used to look at or work with the resources in the workbench.
+### Verschieben
+{: #slide }
+Das waagerechte Bewegen eines Slider-Schnittstellenelements auf einem Touchscreen.
+Apps verwenden in der Regel Verschiebegesten zum Sperren und Freigeben von Telefonen oder zum
+Umschalten von Optionen.
+
+### Verschlüsselung
+{: #encryption }
+Im Bereich der IT-Sicherheit der Prozess, mit dem Daten in eine unverständliche Form umgewandelt werden, sodass
+die ursprünglichen Daten nicht oder nur über einen Entschlüsselungsprozess abgerufen werden können.
+
+### Verwaltungsdatenbank
+{: #administration-database }
+Die Datenbank für die {{site.data.keys.mf_console }} und die Verwaltungsservices. In den Datenbanktabellen sind Elemente wie Anwendungen, Adapter und Projekte mit Beschreibungen und Größenordnung
+definiert.
+
+### Verwaltungsservices
+{: #administration-services }
+Eine Anwendung, die die REST-Services und Verwaltungsaufgaben bereitstellt. Die Anwendung "Verwaltungsservices" ist als eigenständige WAR-Datei
+verfügbar.
 
 ## W
 {: #w}
 
-### web app / application
+### Webanwendung
 {: #web-app--application }
-An application that is accessible by a web browser and that provides some function beyond static display of information, for instance by allowing the user to query a database. Common components of a web application include HTML pages, JSP pages, and servlets. See also [app](#A).
+Eine Anwendung, auf die über einen Webbrowser zugegriffen werden kann und die über die statische Informationsanzeige hinausgehende
+Funktionen bereitstellt. Sie kann dem Benutzer beispielsweise ermöglichen, eine Datenbank abzufragen. Zu den üblichen Komponenten einer Webanwendung gehören
+HTML-Seiten, JSPs und Servlets. Siehe auch [App](#A).
 
-### web application server
+### Webanwendungsserver
 {: #web-application-server }
-The runtime environment for dynamic web applications. A Java EE web application server implements the services of the Java EE standard.
+Die Laufzeitumgebung für dynamische Webanwendungen. Ein Java-EE-Webanwendungsserver implementiert die
+Services des Java-EE-Standards.
 
-### web resource
+### Webressource
 {: #web-resource }
-Any one of the resources that are created during the development of a web application for example web projects, HTML pages, JavaServer Pages (JSP) files, servlets, custom tag libraries, and archive files.
+Jede Ressource, die während der Entwicklung einer Webanwendung erstellt wird, z. B. Webprojekte, HTML-Seiten, JSP-Dateien
+(JavaServer Pages), Servlets, Bibliotheken mit angepassten Tags und Archivdateien.
 
-### widget
+### Widget
 {: #widget }
-A portable, reusable application or piece of dynamic content that can be placed into a web page, receive input, and communicate with an application or with another widget.
+Eine Anwendung oder ein Teil dynamischer Inhalte, die bzw. der portiert und auf eine Webseite gestellt werden, Eingaben empfangen und mit
+einer Anwendung oder einem anderen Widget kommunizieren kann.
 
-### wrapper
+### Wrapper
 {: #wrapper }
-A section of code that contains code that could otherwise not be interpreted by the compiler. The wrapper acts as an interface between the compiler and the wrapped code.
+Ein Codeabschnitt für Code, der anders nicht vom Compiler interpretiert werden könnte. Der Wrapper dient als Schnittstelle zwischen
+dem Compiler und dem eingeschlossenen Code.
 
 ## X
 {: #x }
 
-### X.509 certificate
+### X.509-Zertifikat
 {: #x509-certificate }
-A certificate that contains information that is defined by the X.509 standard.
+Ein Zertifikat mit Informationen nach dem
+Standard X.509.
+## Z
+{: #z }
+
+### Zertifikat
+{: #certificate }
+Im Bereich der IT-Sicherheit ein digitales Dokument, das die Identität des Zertifikateigners mit einem öffentlichen Schlüssel verbindet, um die
+Authentifizierung des Zertifikateigners zu ermöglichen. Ein Zertifikat wird von einer Zertifizierungsstelle ausgestellt und digital signiert. Siehe auch
+[Zertifizierungsstelle](#ca--certificate-authority-ca).
+
+### Zertifikatsperrliste
+{: #crl-certificate-revocation-list-crl }
+Eine Liste von Zertifikaten, die vor ihrem geplanten Ablaufdatum entzogen wurden. Zertifikatsperrlisten werden von der
+Zertifizierungsstelle verwaltet und bei einem SSL-Handshake verwendet, um sicherzustellen, dass die betreffenden Zertifikate nicht
+widerrufen wurden.
+
+### Zertifizierungsanwendung des Unternehmens
+{: #certificate-authority-enterprise-application }
+Eine Unternehmensanwendung, die Zertifikate und private Schlüssel für die zugehörigen Clientanwendungen
+bereitstellt.
+
+### Zertifizierungsstelle
+{: #ca--certificate-authority-ca }
+Eine anerkannte Organisation oder ein anerkanntes Unternehmen, die bzw. das digitale Zertifikate
+ausstellt. Die Zertifizierungsstelle überprüft in aller Regel die Identität der Individuen, für die ein eindeutiges Zertifikat
+ausgestellt wird.
+Siehe auch
+[Zertifikat](#certificate).
+

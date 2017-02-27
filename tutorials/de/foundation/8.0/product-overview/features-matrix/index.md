@@ -1,10 +1,12 @@
 ---
 layout: tutorial
-title: Matrix of features & platforms
+title: Matrix der Features und Plattformen
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-{{ site.data.keys.product_full }} provides many features and supports many platforms.
+Die {{ site.data.keys.product_full }} stellt viele Features bereit und unterstützt diverse Plattformen.
 
-The [Mobile OS feature mapping for {{ site.data.keys.product }} technote](http://www.ibm.com/support/docview.wss?uid=swg27039422) on the IBM Support Portal lists the features that are available on each of the platforms that {{ site.data.keys.product }} supports.
+Im technischen Hinweis [Mobile OS feature mapping for {{ site.data.keys.product }}](http://www.ibm.com/support/docview.wss?uid=swg27039422),
+der im IBM Support-Portal verfügbar ist, sind die Features aufgelistet, die auf den von der
+{{ site.data.keys.product }} unterstützten Plattformen verfügbar sind. 
