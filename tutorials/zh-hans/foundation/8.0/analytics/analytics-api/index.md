@@ -100,7 +100,7 @@ import IBMMobileFirstPlatformFoundation
 在调用 **WLAnalytics** 类的其他方法之前，调用 `WLAnalytics.sharedInstance()`。
 
 ### Android
-#{: #android }
+{: #android }
 
 #### 导入 WLAnalytics
 {: #import-wlanalytics }
