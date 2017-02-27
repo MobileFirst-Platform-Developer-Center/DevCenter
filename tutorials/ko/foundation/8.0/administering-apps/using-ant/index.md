@@ -7,7 +7,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-**mfpadm** Ant 태스크를 통해 {{site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다. 
+**mfpadm** Ant 태스크를 통해 {{ site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다. 
 
 #### 다음으로 이동
 {: #jump-to }
@@ -17,12 +17,12 @@ weight: 3
 
 ## 다른 기능과 비교
 {: #comparison-with-other-facilities }
-다음과 같은 방법으로 {{site.data.keys.product_full }}을 사용해 관리 조작을 실행할 수 있습니다. 
+다음과 같은 방법으로 {{ site.data.keys.product_full }}을 사용해 관리 조작을 실행할 수 있습니다. 
 
-* 대화식 {{site.data.keys.mf_console }}
+* 대화식 {{ site.data.keys.mf_console }}
 * **mfpadm** Ant 태스크
 * **mfpadm** 프로그램
-* {{site.data.keys.product_adj }} 관리 REST 서비스
+* {{ site.data.keys.product_adj }} 관리 REST 서비스
 
 **mfpadm** Ant 태스크, **mfpadm** 프로그램, REST 서비스는 조작을 자동으로 실행하거나 무인 실행하는 경우 유용합니다. 예를 들면 다음과 같습니다. 
 
@@ -34,18 +34,18 @@ weight: 3
 
 ## 전제조건
 {: #prerequisites }
-**mfpadm** 도구는 {{site.data.keys.mf_server }} 설치 프로그램을 사용해 설치됩니다. 이 페이지의 나머지 부분에서 **product\_install\_dir**은 {{site.data.keys.mf_server }} 설치 프로그램의 설치 디렉토리를 표시합니다. 
+**mfpadm** 도구는 {{ site.data.keys.mf_server }} 설치 프로그램을 사용해 설치됩니다. 이 페이지의 나머지 부분에서 **product\_install\_dir**은 {{ site.data.keys.mf_server }} 설치 프로그램의 설치 디렉토리를 표시합니다. 
 
 **mfpadm** 태스크를 실행하려면 Apache Ant가 필요합니다. Ant의 최소 지원 버전에 대한 정보는 시스템 요구사항을 참조하십시오. 
 
-편의를 위해 Apache Ant 1.9.4가 {{site.data.keys.mf_server }}에 포함되어 있습니다. **product\_install\_dir/shortcuts/** 디렉토리에서 다음 스크립트가 제공됩니다. 
+편의를 위해 Apache Ant 1.9.4가 {{ site.data.keys.mf_server }}에 포함되어 있습니다. **product\_install\_dir/shortcuts/** 디렉토리에서 다음 스크립트가 제공됩니다. 
 
 * UNIX/Linux의 경우 ant
 * Windows의 경우 ant.bat
 
 이러한 스크립트는 실행 준비가 되어 있으며 이는 특정 환경 변수가 필요하지 않음을 의미합니다. 환경 변수 JAVA_HOME이 설정된 경우 스크립트에서 이를 승인합니다. 
 
-{{site.data.keys.mf_server }}가 설치된 컴퓨터가 아닌 다른 컴퓨터에서 **mfpadm** Ant 태스크를 사용할 수 있습니다. 
+{{ site.data.keys.mf_server }}가 설치된 컴퓨터가 아닌 다른 컴퓨터에서 **mfpadm** Ant 태스크를 사용할 수 있습니다. 
 
 * **product\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar** 파일을 컴퓨터에 복사하십시오. 
 * 지원되는 버전의 Apache Ant와 JRE(Java Runtime Environment)가 컴퓨터에 설치되어 있는지 확인하십시오. 
@@ -70,7 +70,7 @@ weight: 3
 </taskdef>
 ```
 
-{{site.data.keys.mf_server }} 설치 프로그램 실행에 대한 자세한 정보는 [IBM Installation Manager 실행](../../installation-configuration/production/installation-manager/)을 참조하십시오. 
+{{ site.data.keys.mf_server }} 설치 프로그램 실행에 대한 자세한 정보는 [IBM Installation Manager 실행](../../installation-configuration/production/installation-manager/)을 참조하십시오. 
 
 #### 다음으로 이동
 {: #jump-to-1 }
@@ -84,7 +84,7 @@ weight: 3
 
 ### mfpadm Ant 태스크 호출
 {: #calling-the-mfpadm-ant-task }
-**mfpadm** Ant 태스크와 연관 명령을 사용해 {{site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다.
+**mfpadm** Ant 태스크와 연관 명령을 사용해 {{ site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다.
 다음과 같이 **mfpadm** Ant 태스크를 호출하십시오. 
 
 ```xml
@@ -99,9 +99,9 @@ weight: 3
 
 | 속성      | 설명 | 필수 여부 | 기본값 | 
 |----------------|-------------|----------|---------|
-| url	         | 관리 서비스에 사용되는 {{site.data.keys.product_adj }} 웹 애플리케이션의 기본 URL | 예	 | |
+| url	         | 관리 서비스에 사용되는 {{ site.data.keys.product_adj }} 웹 애플리케이션의 기본 URL | 예	 | |
 | secure	     | 보안 위험이 있는 조작을 수행하지 않을지 여부 | 아니오 | true |
-| user	         | {{site.data.keys.product_adj }} 관리 서비스에 액세스하는 데 사용되는 사용자 이름 | 예 | |
+| user	         | {{ site.data.keys.product_adj }} 관리 서비스에 액세스하는 데 사용되는 사용자 이름 | 예 | |
 | password	     | 사용자의 비밀번호 | 하나는 필수임 | |
 | passwordfile   |	사용자의 비밀번호가 있는 파일 | 하나는 필수임 | |	 
 | timeout	     | 전체 REST 서비스 액세스의 제한시간(초) | 아니오 | |
@@ -111,7 +111,7 @@ weight: 3
 | lockTimeout    |	잠금 획득 제한시간 | 아니오 | |
 
 **url**<br/>
-기본 URL은 우선적으로 HTTPS 프로토콜을 사용합니다. 예를 들어, 기본 포트와 컨텍스트 루트를 사용하는 경우 다음 URL을 사용하십시오. 
+기본 URL에서는 우선적으로 HTTPS 프로토콜을 사용합니다. 예를 들어, 기본 포트와 컨텍스트 루트를 사용하는 경우 다음 URL을 사용하십시오. 
 
 * WebSphere Application Server의 경우: [https://server:9443/worklightadmin](https://server:9443/worklightadmin)
 * Tomcat의 경우: [https://server:8443/worklightadmin](https://server:8443/worklightadmin)
@@ -188,7 +188,7 @@ mfpadm Ant 태스크의 일반 출력은 현재 로케일의 인코딩 형식으
 
 ### 일반 구성에 대한 명령
 {: #commands-for-general-configuration }
-**mfpadm** Ant 태스크를 호출할 때 IBM {{site.data.keys.mf_server }} 또는 런타임의 글로벌 구성에 액세스하는 여러 명령을 포함할 수 있습니다. 
+**mfpadm** Ant 태스크를 호출할 때 IBM {{ site.data.keys.mf_server }} 또는 런타임의 글로벌 구성에 액세스하는 여러 명령을 포함할 수 있습니다. 
 
 #### `show-global-config` 명령
 {: #the-show-global-config-command }
@@ -785,7 +785,7 @@ app 명령 그룹은 다음 요소를 지원합니다.
 
 | 속성      | 설명 |	필수 여부 | 기본값 |
 |----------------|-------------|-------------|---------|
-| file | 입력 파일의 이름입니다. <ul><li>authenticity_data 파일</li><li>또는 디바이스 파일(.ipa, .apk 또는 .appx 파일)이며 여기에서 인증 데이터를 추출합니다. </li></ul> |  예 | 사용할 수 없음 | 
+| file | 입력 파일의 이름입니다. {::nomarkdown}<ul><li>authenticity_data 파일</li><li>또는 디바이스 파일(.ipa, .apk 또는 .appx 파일)이며 여기에서 인증 데이터를 추출합니다. </li></ul>{:/} |  예 | 사용할 수 없음 | 
 
 **예제**  
 
@@ -997,11 +997,11 @@ app 명령 그룹은 다음 요소를 지원합니다.
 
 ### 문제점 해결에 대한 명령
 {: #commands-for-troubleshooting }
-Ant 태스크 명령을 사용하여 {{site.data.keys.mf_server }} 웹 애플리케이션 관련 문제점을 조사할 수 있습니다. 
+Ant 태스크 명령을 사용하여 {{ site.data.keys.mf_server }} 웹 애플리케이션 관련 문제점을 조사할 수 있습니다. 
 
 #### `show-info` 명령
 {: #the-show-info-command }
-`show-info` 명령은 런타임 또는 데이터베이스에 액세스하지 않고 리턴할 수 있는 {{site.data.keys.product_adj }} 관리 서비스에 대한 기본 정보를 표시합니다. 이 명령을 사용하여 {{site.data.keys.product_adj }} 관리 서비스가 실행 중인지 여부를 테스트합니다. 이 명령에는 다음과 같은 속성이 있습니다. 
+`show-info` 명령은 런타임 또는 데이터베이스에 액세스하지 않고 리턴할 수 있는 {{ site.data.keys.product_adj }} 관리 서비스에 대한 기본 정보를 표시합니다. 이 명령을 사용하여 {{ site.data.keys.product_adj }} 관리 서비스가 실행 중인지 여부를 테스트합니다. 이 명령에는 다음과 같은 속성이 있습니다. 
 
 | 속성      | 설명 |	필수 여부 | 기본값 |
 |----------------|-------------|-------------|---------|
@@ -1017,10 +1017,10 @@ Ant 태스크 명령을 사용하여 {{site.data.keys.mf_server }} 웹 애플리
 <br/>
 #### `show-versions` 명령
 {: #the-show-versions-command }
-`show-versions` 명령은 여러 컴포넌트의 {{site.data.keys.product_adj }} 버전을 표시합니다. 
+`show-versions` 명령은 여러 컴포넌트의 {{ site.data.keys.product_adj }} 버전을 표시합니다. 
 
-* **mfpadmVersion**: **mfp-ant-deployer.jar** 파일을 가져온 정확한 {{site.data.keys.mf_server }} 버전 번호입니다. 
-* **productVersion**: **mfp-admin-service.war** 파일을 가져온 정확한 {{site.data.keys.mf_server }} 버전 번호입니다. 
+* **mfpadmVersion**: **mfp-ant-deployer.jar** 파일을 가져온 정확한 {{ site.data.keys.mf_server }} 버전 번호입니다. 
+* **productVersion**: **mfp-admin-service.war** 파일을 가져온 정확한 {{ site.data.keys.mf_server }} 버전 번호입니다. 
 * **mfpAdminVersion**: **mfp-admin-service.war**의 정확한 빌드 버전 번호입니다. 
 
 명령의 속성은 다음과 같습니다. 
@@ -1039,7 +1039,7 @@ Ant 태스크 명령을 사용하여 {{site.data.keys.mf_server }} 웹 애플리
 <br/>
 #### `show-diagnostics` 명령
 {: #the-show-diagnostics-command }
-`show-diagnostics` 명령은 {{site.data.keys.product_adj }} 관리 서비스의 올바른 조작에 필요한 여러 컴포넌트의 상태를 표시합니다(예: 데이터베이스와 보조 서비스의 사용 가능성). 이 명령에는 다음과 같은 속성이 있습니다. 
+`show-diagnostics` 명령은 {{ site.data.keys.product_adj }} 관리 서비스의 올바른 조작에 필요한 여러 컴포넌트의 상태를 표시합니다(예: 데이터베이스와 보조 서비스의 사용 가능성). 이 명령에는 다음과 같은 속성이 있습니다. 
 
 | 속성      | 설명 |	필수 여부 | 기본값 |
 |----------------|-------------|-------------|---------|
