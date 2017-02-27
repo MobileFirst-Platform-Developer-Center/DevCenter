@@ -12,7 +12,7 @@ IBM MobileFirst Foundation 버전 6.2.0 이상으로 작성된 기존 Cordova �
 #### 다음으로 이동
 {: #jump-to }
 * [v8.0으로 개발된 Cordova 앱과 v7.1 이하 버전으로 개발된 Cordova 앱의 비교](#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before)
-* [기존 하이브리드 또는 크로스 플랫폼 앱을 {{site.data.keys.product_full }} 8.0이 지원하는 Cordova 앱으로 마이그레이션](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
+* [기존 하이브리드 또는 크로스 플랫폼 앱을 {{ site.data.keys.product_full }} 8.0이 지원하는 Cordova 앱으로 마이그레이션](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
 * [iOS Cordova의 암호화 마이그레이션](#migrating-encryption-for-ios-cordova)
 * [직접 업데이트 마이그레이션](#migrating-direct-update)
 * [WebView 업그레이드](#upgrading-the-webview)
@@ -20,14 +20,14 @@ IBM MobileFirst Foundation 버전 6.2.0 이상으로 작성된 기존 Cordova �
 
 ## v8.0으로 개발된 Cordova 앱과 v7.1 이하 버전으로 개발된 Cordova 앱의 비교
 {: #comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before }
-{{site.data.keys.product_adj }} v8.0으로 개발된 Cordova 앱과 IBM MobileFirst Platform Foundation v7.1로 개발된 하이브리드 앱을 비교하십시오. 
+{{ site.data.keys.product_adj }} v8.0으로 개발된 Cordova 앱과 IBM MobileFirst Platform Foundation v7.1로 개발된 하이브리드 앱을 비교하십시오. 
 
-| 기능 | IBM {{site.data.keys.product }} v8.0으로 개발된<br/>Cordova 앱 |	IBM MobileFirst Platform Foundation v7.1로 개발된<br/>Cordova 앱 | IBM MobileFirst Platform Foundation V7.1로 개발된<br/>MobileFirst 하이브리드 앱 |
+| 기능 | Cordova 앱<br/>IBM {{ site.data.keys.product }} v8.0으로 개발 |	Cordova 앱<br/>IBM MobileFirst Platform Foundation v7.1로 개발 | MobileFirst 하이브리드 앱<br/>IBM MobileFirst Platform Foundation V7.1로 개발 |
 |---------|-------|---------|-------|------|
 | **IDE Eclipse Studio** | | | | |	 	 	 
 | Eclipse 플러그인 및 통합 | 예 | 지원되지 않음 | 예(전용) |
-| 애플리케이션 컴포넌트 | 예(Cordova)<br/><br/>참고: 조직에서 애플리케이션 컴포넌트를 관리하려면 고유의 Cordova 플러그인을 작성하십시오.  | 예(Cordova)<br/><br/>참고: 조직에서 애플리케이션 컴포넌트를 관리하려면 고유의 Cordova 플러그인을 작성하십시오.  | 예(전용) |
-| 프로젝트 템플리트 | 예(Cordova)<br/><br/>참고: Apache Cordova `cordova create --template` 명령을 사용하십시오.  | 예(Cordova)<br/><br/>참고: `mfp cordova create --template` 또는 Apache Cordova 명령 `cordova create --copy-from`을 사용하십시오.  | 예(전용) |
+| 애플리케이션 컴포넌트 | 예(Cordova) <br/><br/>참고: 조직에서 애플리케이션 컴포넌트를 관리하려면 고유의 Cordova 플러그인을 작성하십시오.  | 예(Cordova) <br/><br/>참고: 조직에서 애플리케이션 컴포넌트를 관리하려면 고유의 Cordova 플러그인을 작성하십시오.  | 예(전용) |
+| 프로젝트 템플리트 | 예(Cordova) <br/><br/>참고: Apache Cordova `cordova create --template` 명령을 사용하십시오.  | 예(Cordova) <br/><br/>참고: `mfp cordova create --template` 또는 Apache Cordova 명령 `cordova create --copy-from`을 사용하십시오.  | 예(전용) |
 | Dojo 및 jQuery IDE 인스트루먼테이션 | 예<br/><br/>참고: Dojo 및 jQuery Mobile은 Cordova 앱에서 사용할 수 있는 JavaScript 프레임워크입니다.  | 예<br/><br/>참고: Dojo 및 jQuery Mobile은 Cordova 앱에서 사용할 수 있는 JavaScript 프레임워크입니다.  | 예 |
 | 모바일 UI 패턴 | 지원되지 않음 | 지원되지 않음 | 더 이상 사용되지 않음 |
 | **애플리케이션 하위 유형** | | |
@@ -37,41 +37,41 @@ IBM MobileFirst Foundation 버전 6.2.0 이상으로 작성된 기존 Cordova �
 | 모바일 OS	| iOS 8 이상, Android 4.1 이상, Windows Phone 8.1, Windows Phone 10. | iOS 7 이상, Android 4 이상.  | iOS, Android 및 Windows Phone 8 |
 | 웹 애플리케이션 | 예. Apache Cordova 없이 개발된 JavaScript 애플리케이션.  | 지원되지 않음 | 예. desktopbrowser 또는 mobilewebapp 환경.  |
 | 직접 업데이트 | 예.  | 예 | 예 |
-| {{site.data.keys.product_adj }} 보안 프레임워크 | 예 | 예 | 예 |
+| {{ site.data.keys.product_adj }} 보안 프레임워크 | 예 | 예 | 예 |
 | 애플리케이션 인증 | 예 | 예 | 예 |
 | 인증서 고정 | 예 | 아니오 | 예 |
 | JSONStore | 예.  | cordova-plugin-mfp-jsonstore 플러그인을 사용하십시오.  | 예 | 예 |
-| FIPS 140-2 | 예. cordova-plugin-mfp-fips 플러그인을 사용하십시오. <br/><br/>제한사항: FIPS는 Android 및 iOS를 위해 지원됩니다. FIPS는 Windows를 위해 지원되지 않습니다.  | 아니오 | 예 |
+| FIPS 140-2 | 예. cordova-plugin-mfp-fips 플러그인을 사용하십시오.<br/><br/>제한사항: FIPS는 Android 및 iOS를 위해 지원됩니다. FIPS는 Windows를 위해 지원되지 않습니다.  | 아니오 | 예 |
 | 애플리케이션 2진 파일 내에서 애플리케이션과 연관된 웹 자원의 암호화 | 예 |	아니오 | 예 |
 | 앱이 실행을 시작할 때마다 체크섬을 사용하여 웹 자원의 무결성 검증 | 예 | 지원되지 않음 | 예 |
 | 주소 지정 가능 디바이스 라이센스 추적을 위한 앱의 대상 카테고리(B2E 또는 B2C) 스펙 | 예 | 아니오 | 예 |
 | 단순 데이터 공유 | 아니오 | 예 | 예 |
 | 싱글 사인온 | 예<br/><br/>참고: 디바이스 싱글 사인온(SSO)은 이제 새 사전 정의된 enableSSO 보안 검사 애플리케이션 디스크립터 구성 특성을 사용하여 지원됩니다.  | 예 | 예 |
-| {{site.data.keys.product_adj }} 애플리케이션 스킨 | 아니오<br/><br/>참고: 여러 디바이스 화면 크기를 감지하고 처리하려면 빠른 응답 웹 디자인과 같은 표준 웹 개발 사례를 사용하십시오.  | 아니오<br/><br/>참고: 여러 디바이스 화면 크기를 감지하고 처리하려면 빠른 응답 웹 디자인과 같은 표준 웹 개발 사례를 사용하십시오.  | 예 |
+| {{ site.data.keys.product_adj }} 애플리케이션 스킨 | 아니오<br/><br/>참고: 여러 디바이스 화면 크기를 감지하고 처리하려면 빠른 응답 웹 디자인과 같은 표준 웹 개발 사례를 사용하십시오.  | 아니오<br/><br/>참고: 여러 디바이스 화면 크기를 감지하고 처리하려면 빠른 응답 웹 디자인과 같은 표준 웹 개발 사례를 사용하십시오.  | 예 |
 | 환경 최적화 | 예(Cordova).  |  merges 디렉토리를 사용하여 특정 플랫폼에 대한 웹 자원을 정의하십시오.  | 예(Cordova). merges 디렉토리를 사용하여 특정 플랫폼에 대한 웹 자원을 정의하십시오. 자세한 정보는 Apache Cordova 문서의 merges를 사용하여 각 플랫폼 사용자 정의를 참조하십시오.  | 예(전용) |
-| 푸시 알림 | 예. cordova-plugin-mfp-push 플러그인을 사용하십시오.<br/><br/>제한사항: 사전 정의된 {{site.data.keys.product_adj }} 보안 검사는 push.mobileclient 범위에만 맵핑할 수 있습니다. JavaScript 인증 확인 핸들러가 호출되지 않으므로 사용자 정의 보안 검사는 지원되지 않습니다.  | 예<br/><br/>참고: Android의 경우, cordova-plugin-mfp-push 플러그인을 추가해야 합니다. 코어 mfp 플러그인에 iOS에 대한 푸시 클라이언트 측 지원이 포함되어 있으므로 iOS의 경우에는 이 플러그인이 필요하지 않습니다.  | 예 |
+| 푸시 알림 | 예. cordova-plugin-mfp-push 플러그인을 사용하십시오.<br/><br/>제한사항: 사전 정의된 {{ site.data.keys.product_adj }} 보안 검사는 push.mobileclient 범위에만 맵핑할 수 있습니다. JavaScript 인증 확인 핸들러가 호출되지 않으므로 사용자 정의 보안 검사는 지원되지 않습니다.  | 예<br/><br/>참고: Android의 경우, cordova-plugin-mfp-push 플러그인을 추가해야 합니다. 코어 mfp 플러그인에 iOS에 대한 푸시 클라이언트 측 지원이 포함되어 있으므로 iOS의 경우에는 이 플러그인이 필요하지 않습니다.  | 예 |
 | Cordova 플러그인 관리 | 예 | 예 | 아니오 |
 | MESSAGES(i18n) | 예 | 예 | 예 |
 | 토큰 라이센싱 | 예 | 예 | 예 |
 | **애플리케이션 최적화** | | |
-| 축소 | 예(Cordova)<br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(Cordova)<br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(전용) |
-| JS 및 CSS의 연결 | 예(Cordova)<br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(Cordova)<br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(전용) |
-| 난독화 | 예(Cordova)<br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(Cordova)<br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(전용) |
-| Android Pro Guard | 예<br/><br/>참고: {{site.data.keys.product }} V8.0.0에는 Android ProGuard 난독화를 위해 {{site.data.keys.product_adj }} Android 애플리케이션과 함께 사전 정의된 proguard-project.txt 구성 파일이 포함되지 않습니다.  | 예<br/><br/>참고: Pro Guard를 사용하려면 Android 문서를 참조하십시오.  | 예 |
+| 축소 | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(전용) |
+| JS 및 CSS의 연결 | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(전용) |
+| 난독화 | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(Cordova) <br/><br/>참고: 공통 개방형 소스 도구를 사용하십시오.  | 예(전용) |
+| Android Pro Guard | 예<br/><br/>참고: {{ site.data.keys.product }} V8.0.0에는 Android ProGuard 난독화를 위해 {{ site.data.keys.product_adj }} Android 애플리케이션과 함께 사전 정의된 proguard-project.txt 구성 파일이 포함되지 않습니다.  | 예<br/><br/>참고: Pro Guard를 사용하려면 Android 문서를 참조하십시오.  | 예 |
 
-## 기존 하이브리드 또는 크로스 플랫폼 앱을 {{site.data.keys.product }} 8.0이 지원하는 Cordova 앱으로 마이그레이션
+## 기존 하이브리드 또는 크로스 플랫폼 앱을 {{ site.data.keys.product }} 8.0이 지원하는 Cordova 앱으로 마이그레이션
 {: #migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80 }
-IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하이브리드 또는 크로스 플랫폼(Cordova) 앱을 {{site.data.keys.product }} v8.0에서 지원되는 Cordova 앱으로 마이그레이션할 수 있습니다. 
+IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하이브리드 또는 크로스 플랫폼(Cordova) 앱을 {{ site.data.keys.product }} v8.0에서 지원되는 Cordova 앱으로 마이그레이션할 수 있습니다. 
 
 #### 다음으로 이동
 {: #jump-to }
 * [마이그레이션 지원 도구로 Cordova 앱 마이그레이션 시작](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)
-* [{{site.data.keys.product_adj }} 하이브리드 앱의 마이그레이션 완료](#completing-migration-of-a-mobilefirst-hybrid-app)
-* [{{site.data.keys.product_adj }} Cordova 앱의 마이그레이션 완료](#completing-migration-of-a-mobilefirst-cordova-app)
+* [{{ site.data.keys.product_adj }} 하이브리드 앱의 마이그레이션 완료](#completing-migration-of-a-mobilefirst-hybrid-app)
+* [{{ site.data.keys.product_adj }} Cordova 앱의 마이그레이션 완료](#completing-migration-of-a-mobilefirst-cordova-app)
 
 ### 마이그레이션 지원 도구로 Cordova 앱 마이그레이션 시작
 {: #starting-the-cordova-app-migration-with-the-migration-assistance-tool }
-마이그레이션 지원 도구는 더 이상 유효하지 않은 API를 식별하고 v8.0에서 지원되는 Cordova 앱으로 프로젝트를 복사하여 이전 버전의 {{site.data.keys.product_adj }}에서 작성된 크로스 플랫폼 앱의 준비를 도와줍니다. 
+마이그레이션 지원 도구는 더 이상 유효하지 않은 API를 식별하고 v8.0에서 지원되는 Cordova 앱으로 프로젝트를 복사하여 이전 버전의 {{ site.data.keys.product_adj }}에서 작성된 크로스 플랫폼 앱의 준비를 도와줍니다. 
 
 마이그레이션 지원 도구를 사용하기 전에 다음 정보를 파악하는 것이 중요합니다. 
 
@@ -150,7 +150,7 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
       mfpmigrate scan --in source_directory --out destination_directory --type hybrid
       ```
         * **source_directory**  
-        스캔할 파일의 현재 위치입니다. IBM MobileFirst Platform Foundation 하이브리드 앱에서 이 위치는 앱의 **common** 디렉토리입니다. {{site.data.keys.product }} 버전 8.0 Cordova 크로스 플랫폼 앱에서 이 위치는 **www** 디렉토리입니다. 
+        스캔할 파일의 현재 위치입니다. IBM MobileFirst Platform Foundation 하이브리드 앱에서 이 위치는 앱의 **common** 디렉토리입니다. {{ site.data.keys.product }} 버전 8.0 Cordova 크로스 플랫폼 앱에서 이 위치는 **www** 디렉토리입니다. 
         * **destination_directory**  
         스캔 결과가 출력되는 디렉토리입니다.
 		* **scan_type**  
@@ -158,7 +158,7 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
     * **api-report.html** 파일에서 식별된 나머지 API 문제를 해결하십시오. 
 6. 6단계를 반복하여 모든 문제가 해결될 때까지 새 Cordova 앱에 대해 스캔 도구를 실행하십시오. 
 
-### {{site.data.keys.product_adj }} 하이브리드 앱의 마이그레이션 완료
+### {{ site.data.keys.product_adj }} 하이브리드 앱의 마이그레이션 완료
 {: #completing-migration-of-a-mobilefirst-hybrid-app }
 마이그레이션 지원 도구를 사용한 후 코드의 일부를 수동으로 수정하여 마이그레이션 프로세스를 완료해야 합니다. 
 
@@ -167,7 +167,7 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
 * 새 버전의 JQuery를 다운로드(1c단계)해야 하거나 추가 Cordova 플러그인을 설치(6단계)해야 하는 경우, 인터넷 액세스 권한이 있어야 합니다. 
 * 추가 Cordova 플러그인을 설치(6단계)해야 하는 경우, node.js 버전 4.0.0 이상이 설치되어 있어야 합니다. 
 
-이 태스크의 단계를 완료하여 IBM MobileFirst Platform Foundation 7.1에서 {{site.data.keys.product }} 8.0에 대한 지원을 포함하는 Cordova 애플리케이션으로의 MobileFirst 하이브리드 애플리케이션 마이그레이션을 완료하십시오. 
+이 태스크의 단계를 완료하여 IBM MobileFirst Platform Foundation 7.1에서 {{ site.data.keys.product }} 8.0에 대한 지원을 포함하는 Cordova 애플리케이션으로의 MobileFirst 하이브리드 애플리케이션 마이그레이션을 완료하십시오. 
 
 마이그레이션을 완료한 후 앱은 IBM MobileFirst Platform Foundation과 별도로 얻은 Cordova 플랫폼 및 플러그인을 사용할 수 있으며, 선호하는 Cordova 개발 도구를 사용하여 앱을 계속 개발할 수 있습니다. 
 
@@ -259,7 +259,7 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
 5. 선택사항: 원래 애플리케이션이 FIPS 기능을 사용하는 경우, JQuery 이벤트 리스너를 WL/FIPS/READY 이벤트를 청취하는 JavaScript 이벤트 리스너로 변경하십시오. FIPS에 대한 자세한 정보는 [FIPS 140-2 지원](../../../administering-apps/federal/#fips-140-2-support)을 참조하십시오. 
 6. 선택사항: 원래 애플리케이션이 마이그레이션 지원 도구로 대체되지 않거나 제공되지 않는 써드파티 Cordova 플러그인을 사용하는 경우, `cordova plugin add` 명령을 사용하여 해당 플러그인을 Cordova 앱에 수동으로 추가하십시오. 도구에 의해 대체되는 플러그인에 대한 정보는 [마이그레이션 지원 도구로 Cordova 앱 마이그레이션 시작](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)을 참조하십시오. 
 
-### {{site.data.keys.product_adj }} Cordova 앱의 마이그레이션 완료
+### {{ site.data.keys.product_adj }} Cordova 앱의 마이그레이션 완료
 {: #completing-migration-of-a-mobilefirst-cordova-app }
 마이그레이션 지원 도구를 사용한 후 코드의 일부를 수동으로 수정하여 마이그레이션 프로세스를 완료해야 합니다. 
 
@@ -268,23 +268,23 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
 * 인터넷에 액세스할 수 있어야 합니다. 
 * node.js 버전 4.0.0 이상이 설치되어 있어야 합니다. 
 
-**mfp cordova create**로 작성한 Cordova 앱은 IBM MobileFirst Platform Foundation 이전 버전과 함께 제공된 Cordova 플랫폼 및 플러그인 버전을 사용합니다. 마이그레이션을 완료하면 마이그레이션된 앱에서 {{site.data.keys.product }}과 별도로 얻은 Cordova 플랫폼 및 플러그인을 사용할 수 있습니다. 이는 Cordova 애플리케이션에 대해 IBM MobileFirs Foundation v8.0과 함께 사용 가능한 유일한 지원 유형입니다. 
+**mfp cordova create**로 작성한 Cordova 앱은 IBM MobileFirst Platform Foundation 이전 버전과 함께 제공된 Cordova 플랫폼 및 플러그인 버전을 사용합니다. 마이그레이션을 완료하면 마이그레이션된 앱에서 {{ site.data.keys.product }}과 별도로 얻은 Cordova 플랫폼 및 플러그인을 사용할 수 있습니다. 이는 Cordova 애플리케이션에 대해 IBM MobileFirs Foundation v8.0과 함께 사용 가능한 유일한 지원 유형입니다. 
 
 마이그레이션하려면 마이그레이션 지원 도구를 실행한 후 앱의 기타 사항을 수정하십시오. 
 
-1. 선택한 Cordova 개발 도구를 사용하여 원래 애플리케이션에 있었던 {{site.data.keys.product_adj }} 기능을 사용하는 Cordova 플러그인 외의 Cordova 플러그인을 추가하십시오. 예를 들어 Cordova CLI를 사용하여 **cordova-plugin-file** 및 **cordova-plugin-file-transfer** 플러그인을 추가하려면 다음을 입력하십시오. 
+1. 선택한 Cordova 개발 도구를 사용하여 원래 애플리케이션에 있었던 {{ site.data.keys.product_adj }} 기능을 사용하는 Cordova 플러그인 외의 Cordova 플러그인을 추가하십시오. 예를 들어 Cordova CLI를 사용하여 **cordova-plugin-file** 및 **cordova-plugin-file-transfer** 플러그인을 추가하려면 다음을 입력하십시오. 
 
    ```bash
    cordova plugin add cordova-plugin-file cordova-plugin-file-transfer
    ```
 
-   > **참고:** **mfpmigrate** 마이그레이션 지원 도구가 {{site.data.keys.product_adj }} 기능을 위한 Cordova 플러그인을 추가했으므로 이를 추가할 필요가 없습니다. 이러한 플러그인에 대한 자세한 정보는 [{{site.data.keys.product_adj }}용 Cordova 플러그인](../../../application-development/sdk/cordova)을 참조하십시오.
+   > **참고:** **mfpmigrate** 마이그레이션 지원 도구가 {{site.data.keys.product_adj }} 기능을 위한 Cordova 플러그인을 추가했으므로 이를 추가할 필요가 없습니다. 이러한 플러그인에 대한 자세한 정보는 [{{ site.data.keys.product_adj }}용 Cordova 플러그인](../../../application-development/sdk/cordova)을 참조하십시오.
 
 2. 선택사항: 원래 애플리케이션이 FIPS 기능을 사용하는 경우, JQuery 이벤트 리스너를 WL/FIPS/READY 이벤트를 청취하는 JavaScript 이벤트 리스너로 변경하십시오. FIPS에 대한 자세한 정보는 [FIPS 140-2 지원](../../../administering-apps/federal/#fips-140-2-support)을 참조하십시오. 
 3. 선택사항: 원래 애플리케이션이 마이그레이션 지원 도구로 대체되지 않거나 제공되지 않는 써드파티 Cordova 플러그인을 사용하는 경우, **cordova plugin add** 명령을 사용하여 해당 플러그인을 Cordova 앱에 수동으로 추가하십시오. 도구에 의해 대체되는 플러그인에 대한 정보는 [마이그레이션 지원 도구로 Cordova 앱 마이그레이션 시작](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)을 참조하십시오. 
 4. 선택사항: (iOS 플랫폼을 포함하는 앱과 OpenSSL을 사용하는 앱만 해당) **cordova-plugin-mfp-encrypt-utils** 플러그인을 앱에 추가하십시오. **cordova-plugin-mfp-encrypt-utils** 플러그인은 Cordova 애플리케이션의 암호화를 위해 iOS 플랫폼과 함께 iOS OpenSSL 프레임워크를 제공합니다. 
 
-이제 선호하는 Cordova 도구를 사용하여 Cordova 앱을 계속 개발할 수 있지만 {{site.data.keys.product_adj }} 기능도 포함됩니다. 
+이제 선호하는 Cordova 도구를 사용하여 Cordova 앱을 계속 개발할 수 있지만 {{ site.data.keys.product_adj }} 기능도 포함됩니다. 
 
 ## iOS Cordova의 암호화 마이그레이션
 {: #migrating-encryption-for-ios-cordova }
@@ -296,12 +296,12 @@ iOS 하이브리드 또는 Cordova 애플리케이션이 OpenSSL 암호화를 �
 {: #migrating-direct-update }
 직접 업데이트는 보호된 자원에 처음 액세스한 후 트리거됩니다. 새 웹 자원을 배치하기 위한 프로세스는 v8.0에서 변경되었습니다. 
 
-이전 버전과 달리, v8.0에서는 애플리케이션이 보안 {{site.data.keys.product_adj }} 자원에 액세스하지 않는 경우 클라이언트 애플리케이션은 서버에서 업데이트가 사용 가능한 경우에도 업데이트를 수신하지 않습니다. 예를 들어, `@OAuth(security=false)` 어노테이션 또는 구성에 의해 OAuth가 사용 안함으로 설정되어서 자원이 보호되지 않을 수 있습니다. 다음 방법 중 하나로 이 위험을 임시로 해결할 수 있습니다. 
+이전 버전과 달리, v8.0에서는 애플리케이션이 보안 {{ site.data.keys.product_adj }} 자원에 액세스하지 않는 경우 클라이언트 애플리케이션은 서버에서 업데이트가 사용 가능한 경우에도 업데이트를 수신하지 않습니다. 예를 들어, `@OAuth(security=false)` 어노테이션 또는 구성에 의해 OAuth가 사용 안함으로 설정되어서 자원이 보호되지 않을 수 있습니다. 다음 방법 중 하나로 이 위험을 임시로 해결할 수 있습니다. 
 
 * 액세스 토큰을 명시적으로 얻으십시오. [`WLAuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc) 클래스에서 `obtainAccessToken` API를 참조하십시오. 
 * 보호된 다른 자원을 호출하십시오. [`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html?view=kc) 클래스를 참조하십시오. 
 
-직접 업데이트를 사용하려면 v8.0부터는 더 이상 **.wlapp** 파일을 {{site.data.keys.mf_server }}로 업로드할 필요가 없습니다. 대신 작은 웹 자원 아카이브(.zip 파일)를 업로드합니다. 이 아카이브 파일에는 이전 버전에서 광범위하게 사용되던 웹 미리보기 파일이나 스킨이 더 이상 포함되지 않습니다. 이는 더 이상 사용되지 않습니다. 아카이브에는 클라이언트로 전송되는 웹 자원 및 직접 업데이트 유효성 검증을 위한 체크섬만 포함됩니다. 
+직접 업데이트를 사용하려면 v8.0부터는 더 이상 **.wlapp** 파일을 {{ site.data.keys.mf_server }}로 업로드할 필요가 없습니다. 대신 작은 웹 자원 아카이브(.zip 파일)를 업로드합니다. 이 아카이브 파일에는 이전 버전에서 광범위하게 사용되던 웹 미리보기 파일이나 스킨이 더 이상 포함되지 않습니다. 이는 더 이상 사용되지 않습니다. 아카이브에는 클라이언트로 전송되는 웹 자원 및 직접 업데이트 유효성 검증을 위한 체크섬만 포함됩니다. 
 
 > 자세한 정보는 [직접 업데이트 문서](../../../application-development/direct-update)를 참조하십시오. 
 
@@ -325,14 +325,14 @@ IBM MobileFirs Foundation v8.0 Cordova SDK(JavaScript)는 코드 조정이 필�
 | API 요소 | 마이그레이션 경로 |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Cordova 플러그인 또는 HTML 5 요소를 사용하십시오.  |
-| `WL.App.close()` | {{site.data.keys.product_adj }} 외부에서 이 이벤트를 처리하십시오.  |
+| `WL.App.close()` | {{ site.data.keys.product_adj }} 외부에서 이 이벤트를 처리하십시오.  |
 | `WL.App.copyToClipboard()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오.  |
-| `WL.App.openUrl(url, target, options)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오.<br/><br/>참고: Cordova InAppBrowser 플러그인이 이 기능을 제공합니다.  |
-| {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오.<br/><br/>참고: Cordova backbutton 플러그인이 이 기능을 제공합니다.  |
-| `WL.App.getDeviceLanguage()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오.<br/><br/>참고: Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다.  |
-| `WL.App.getDeviceLocale()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오.<br/><br/>참고: Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다.  |
+| `WL.App.openUrl(url, target, options)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: Cordova InAppBrowser 플러그인이 이 기능을 제공합니다. |
+| {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: Cordova backbutton 플러그인이 이 기능을 제공합니다. |
+| `WL.App.getDeviceLanguage()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다. |
+| `WL.App.getDeviceLocale()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/> 참고: Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다. |
 | `WL.App.BackgroundHandler` | 사용자 정의 핸들러 함수를 실행하려면 표준 Cordova 일시정지 이벤트 리스너를 사용하십시오. 개인정보 보호정책을 제공하는 Cordova 플러그인을 사용하여 iOS 및 Android 시스템과 사용자의 스냅샷 또는 화면 캡처를 방지하십시오. 자세한 정보는 [https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)에서 PrivacyScreenPlugin의 설명을 참조하십시오.  |
-| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| 이 함수는 {{site.data.keys.product }} v8.0에서는 지원되지 않는 Adobe AIR 플랫폼을 지원하기 위해 제공되었습니다.  |
+| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| 이 함수는 {{ site.data.keys.product }} v8.0에서는 지원되지 않는 Adobe AIR 플랫폼을 지원하기 위해 제공되었습니다.  |
 | `WL.Toast.show(string)` | Toast에 대한 Cordova 플러그인을 사용하십시오.  |
 
 #### 기타 중단된 JavaScript 요소
@@ -352,10 +352,10 @@ IBM MobileFirs Foundation v8.0 Cordova SDK(JavaScript)는 코드 조정이 필�
 | {::nomarkdown}<ul><li><code>WL.Client.transmitEvent(event, immediate)</code></li><li><code>WL.Client.purgeEventTransmissionBuffer()</code></li><li><code>WL.Client.setEventTransmissionPolicy(policy)</code></li></ul>{:/} | 이러한 이벤트의 알림을 수신할 사용자 정의 어댑터를 작성하십시오.  |
 | {::nomarkdown}<ul><li><code>WL.Device.getContext()</code></li><li><code>WL.Device.startAcquisition(policy, triggers, onFailure)</code></li><li><code>WL.Device.stopAcquisition()</code></li><li><code>WL.Device.Wifi</code></li><li><code>WL.Device.Geo.Profiles</code></li><li><code>WL.Geo</code></li></ul>{:/} | 위치정보에 대한 고유 API 또는 써드파티 Cordova 플러그인을 사용하십시오.  |
 | `WL.Client.makeRequest (url, options)` | 동일한 기능을 제공하는 사용자 정의 어댑터를 작성하십시오.  |
-| `WL.Device.getID(options)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오.<br/><br/>참고: **cordova-plugin-device** 플러그인의 **device.uuid**가 이 기능을 제공합니다.  |
+| `WL.Device.getID(options)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: **cordova-plugin-device** 플러그인의 **device.uuid**가 이 기능을 제공합니다. |
 | `WL.Device.getFriendlyName()` | `WL.Client.getDeviceDisplayName`을 사용하십시오.  |
 | `WL.Device.setFriendlyName()` | `WL.Client.setDeviceDisplayName`을 사용하십시오.  |
-| `WL.Device.getNetworkInfo(callback)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오.<br/><br/>참고: **cordova-plugin-network-information** 플러그인이 이 기능을 제공합니다.  |
+| `WL.Device.getNetworkInfo(callback)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. <br/><br/>참고: **cordova-plugin-network-information** 플러그인이 이 기능을 제공합니다. |
 | `WLUtils.wlCheckReachability()` | 사용자 정의 어댑터를 작성하여 서버 가용성을 확인하십시오.  |
 | `WL.EncryptedCache` | JSONStore를 사용하여 암호화된 데이터를 로컬로 저장하십시오. JSONStore는 **cordova-plugin-mfp-jsonstore**에 있습니다.  |
 | `WL.SecurityUtils.remoteRandomString(bytes)` | 동일한 기능을 제공하는 사용자 정의 어댑터를 작성하십시오.  |
@@ -369,13 +369,14 @@ IBM MobileFirs Foundation v8.0 Cordova SDK(JavaScript)는 코드 조정이 필�
 | `WL.Client.isUserAuthenticated(realm)` | 대체 없음 |
 | `WLUserAuth.deleteCertificate(provisioningEntity)` | 대체 없음 |
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | 대체 없음 |
-| `WL.Client.createChallengeHandler(realmName)` | 사용자 정의 게이트웨이 인증 확인을 처리하기 위한 인증 확인 핸들러를 작성하려면 [`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인을 처리하기 위한 인증 확인 핸들러를 작성하려면 [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)를 사용하십시오.  |
+| `WL.Client.createChallengeHandler(realmName)` | 사용자 정의 게이트웨이 인증 확인을 처리하기 위한 인증 확인 핸들러를 작성하려면 [`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인을 처리하기 위한 인증 확인 핸들러를 작성하려면 [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)를 사용하십시오.  |
 | `WL.Client.createWLChallengeHandler(realmName)` | [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)를 사용하십시오.  |
 | `challengeHandler.isCustomResponse()` 여기서 `challengeHandler`는 `WL.Client.createChallengeHandler()`에서 리턴한 인증 확인 핸들러 오브젝트입니다.  | `gatewayChallengeHandler.canHandleResponse()`를 사용하십시오. 여기서 `gatewayChallengeHandler`는 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트입니다.  |
 | `wlChallengeHandler.processSucccess()` 여기서 `wlChallengeHandler`는 `WL.Client.createWLChallengeHandler()`에서 리턴한 인증 확인 핸들러 오브젝트입니다.  | `securityCheckChallengeHandler.handleSuccess()`를 사용하십시오. 여기서 `securityCheckChallengeHandler`는 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트입니다.  |
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트를 사용하십시오.  |
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)에서 리턴한 인증 확인 핸들러 오브젝트를 사용하십시오.  |
 | `WL.Client.AbstractChallengeHandler.submitFailure(err)` | [`WL.Client.AbstractChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html?view=kc#cancel)을 사용하십시오.  |
-| `WL.Client.createProvisioningChallengeHandler()` | 대체 없음. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다.|
+| `WL.Client.createProvisioningChallengeHandler()` | 대체 없음. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다.
+ |
 
 #### 더 이상 사용되지 않는 JavaScript API
 {: #deprecated-javascript-apis }
@@ -389,7 +390,7 @@ IBM MobileFirs Foundation v8.0 Cordova SDK(JavaScript)는 코드 조정이 필�
 
 ## 제거된 컴포넌트
 {: #removed-components }
-MobileFirst Platform Foundation Studio 7.1로 작성한 Cordova 프로젝트에는 적절성 기능을 지원하는 많은 자원이 포함되었습니다. 그러나 v8.0에서는 순수한 Cordova만 지원되며 {{site.data.keys.product_adj }} API는 더 이상 이러한 기능을 지원하지 않습니다. 
+MobileFirst Platform Foundation Studio 7.1로 작성한 Cordova 프로젝트에는 적절성 기능을 지원하는 많은 자원이 포함되었습니다. 그러나 v8.0에서는 순수한 Cordova만 지원되며 {{ site.data.keys.product_adj }} API는 더 이상 이러한 기능을 지원하지 않습니다. 
 
 ### 스킨
 {: #skins }
@@ -449,21 +450,21 @@ Cordova 및 HTML 5에서 제공하는 응답 웹 디자인 메소드를 채택�
 
 ### 설정 페이지
 {: #settings-page }
-**설정 페이지**는 개발자가 테스트 용도로 런타임에 서버 URL을 변경할 수 있는 MobileFirst 하이브리드 앱에서 사용 가능한 UI입니다. 이제 개발자는 기존 {{site.data.keys.product_adj }} 클라이언트 API를 사용하여 런타임 시 서버 URL을 변경할 수 있습니다. 자세한 정보는 [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?lang=en-us&cp=SSHS8R_8.0.0&view=kc#setServerUrl)을 참조하십시오. 
+**설정 페이지**는 개발자가 테스트 용도로 런타임에 서버 URL을 변경할 수 있는 MobileFirst 하이브리드 앱에서 사용 가능한 UI입니다. 이제 개발자는 기존 {{ site.data.keys.product_adj }} 클라이언트 API를 사용하여 런타임 시 서버 URL을 변경할 수 있습니다. 자세한 정보는 [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?cp=SSHS8R_8.0.0#setServerUrl)을 참조하십시오. 
 
 ### 축소
 {: #minification }
 MobileFirst Studio 7.1은 컴파일 전에 불필요한 문자를 모두 제거하여 JavaScript 코드의 크기를 줄이는 OOTB 메소드를 제공했습니다. 프로젝트에 Cordova 후크를 추가하여 이 제거된 기능을 대체할 수 있습니다. 
 
-여러 후크를 사용하여 Javascript 및 css 파일을 축소할 수 있으며 config.xml에서 before_prepare 이벤트에 이러한 후크를 배치할 수 있습니다. 
+여러 후크를 사용하여 JavaScript 및 CSS 파일을 축소할 수 있습니다. 앱의 **config.xml** 파일에서 `before_prepare` 이벤트에 후크를 배치할 수 있습니다.
 
 다음은 일부 권장되는 후크입니다. 
 
 * [https://www.npmjs.com/package/uglify-js](https://www.npmjs.com/package/uglify-js)
 * [https://www.npmjs.com/package/clean-css](https://www.npmjs.com/package/clean-css)
 
-이러한 후크는 `<hook>` 요소를 사용하여 플러그인 파일 또는 앱의 config.xml 파일에서 정의될 수 있습니다.   
-다음 예제에서는 cordova prepare가 각 플랫폼의 www/ 폴더에 파일을 복사하기 전에 before_prepare 후크 이벤트를 사용하여 최소화에 필요한 스크립트가 실행됩니다. 
+이러한 후크는 `<hook>` 요소를 사용하여 플러그인 파일 또는 앱의 **config.xml** 파일에서 정의할 수 있습니다.  
+다음 예제에서는 Cordova가 각 플랫폼의 **www/** 폴더에 파일을 복사하기 전에 `before_prepare` 후크 이벤트를 사용하여 코드를 축소하는 스크립트를 실행합니다.
 
 ```html
 <hook type="before_prepare" src="scripts/uglify.js" />
