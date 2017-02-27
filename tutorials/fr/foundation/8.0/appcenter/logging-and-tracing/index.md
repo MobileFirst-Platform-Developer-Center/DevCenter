@@ -10,7 +10,7 @@ weight: 6
 {: #overview }
 Vous pouvez définir des paramètres de journalisation et de traçage pour des serveurs d'applications particuliers et utiliser les propriétés JNDI pour contrôler la sortie sur tous les serveurs d'applications pris en charge.
 
-Vous pouvez définir les niveaux de journalisation et le fichier de sortie pour les opérations de traçage pour Application Center de manière spécifique pour des serveurs d'applications particuliers. En outre, {{site.data.keys.product_full }} fournit des propriétés Java™ Naming et Directory Interface (JNDI) pour contrôler la mise en forme et la redirection de la sortie de trace et pour imprimer les instructions SQL générées.
+Vous pouvez définir les niveaux de journalisation et le fichier de sortie pour les opérations de traçage pour Application Center de manière spécifique pour des serveurs d'applications particuliers. En outre, {{ site.data.keys.product_full }} fournit des propriétés Java™ Naming et Directory Interface (JNDI) pour contrôler la mise en forme et la redirection de la sortie de trace et pour imprimer les instructions SQL générées.
 
 #### Accéder à
 {: #jump-to }
@@ -23,12 +23,12 @@ Vous pouvez définir les niveaux de journalisation et le fichier de sortie pour 
 {: #logging-in-websphere }
 Vous pouvez définir les niveaux de journalisation et le fichier de sortie pour les opérations de traçage sur le serveur d'applications.
 
-Lorsque vous essayez de diagnostiquer des problèmes dans Application Center (ou d'autres composants de {{site.data.keys.product }}), il est important de pouvoir afficher les messages du journal. Pour imprimer des messages de journal lisibles dans des fichiers journaux, vous devez spécifier les paramètres applicables en tant que propriétés de machine virtuelle Java™ (JVM).
+Lorsque vous essayez de diagnostiquer des problèmes dans Application Center (ou d'autres composants de {{ site.data.keys.product }}), il est important de pouvoir afficher les messages du journal. Pour imprimer des messages de journal lisibles dans des fichiers journaux, vous devez spécifier les paramètres applicables en tant que propriétés de machine virtuelle Java™ (JVM).
 
 1. Ouvrez la console d'administration de WebSphere Application Server.
 2. Sélectionnez **Troubleshooting → Logs and Trace**.
 3. Dans **Logging and tracing**, sélectionnez le serveur d'applications approprié, puis sélectionnez **Change log detail levels**.
-4. Sélectionnez les modules et leur niveau de détail correspondant. Cet exemple permet la journalisation de {{site.data.keys.product }}, y compris Application Center, avec le niveau **FINEST** (équivalent à **ALL**).
+4. Sélectionnez les modules et leur niveau de détail correspondant. Cet exemple permet la journalisation de {{ site.data.keys.product }}, y compris Application Center, avec le niveau **FINEST** (équivalent à **ALL**).
 
 ```xml
 com.ibm.puremeap.*=all
@@ -39,7 +39,7 @@ com.worklight.*=all
 Où :
 
 * **com.ibm.puremeap.*** est pour Application Center.
-* **com.ibm.worklight.*** et **com.worklight.*** sont pour les autres composants {{site.data.keys.product_adj }}.
+* **com.ibm.worklight.*** et **com.worklight.*** sont pour les autres composants {{ site.data.keys.product_adj }}.
 
 Les traces sont envoyées vers un fichier appelé **trace.log**, et non vers **SystemOut.log** ou **SystemErr.log**.
 
@@ -49,7 +49,7 @@ Vous pouvez définir les niveaux de journalisation et le fichier de sortie pour 
 
 Lorsque vous tentez de diagnostiquer des problèmes dans Application Center, il est important de pouvoir afficher les messages du journal. Pour imprimer des messages de journal lisibles dans des fichiers journaux, vous devez spécifier les paramètres applicables.
 
-Pour activer la journalisation de {{site.data.keys.product }}, y compris Application Center, avec le niveau FINEST (équivalent à ALL), ajoutez une ligne au fichier server.xml. Par exemple :
+Pour activer la journalisation de {{ site.data.keys.product }}, y compris Application Center, avec le niveau FINEST (équivalent à ALL), ajoutez une ligne au fichier server.xml. Par exemple :
 
 ```xml
 <logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
@@ -67,7 +67,7 @@ Vous pouvez définir les niveaux de journalisation et le fichier de sortie pour 
 
 Lorsque vous tentez de diagnostiquer des problèmes dans Application Center, il est important de pouvoir afficher les messages du journal. Pour imprimer des messages de journal lisibles dans des fichiers journaux, vous devez spécifier les paramètres applicables.
 
-Pour activer la journalisation de {{site.data.keys.product }}, y compris Application Center, avec le niveau **FINEST** (équivalent à **ALL**), éditez le fichier **conf/logging.properties**. Par exemple, ajoutez des lignes similaires à ces lignes :
+Pour activer la journalisation de {{ site.data.keys.product }}, y compris Application Center, avec le niveau **FINEST** (équivalent à **ALL**), éditez le fichier **conf/logging.properties**. Par exemple, ajoutez des lignes similaires à ces lignes :
 
 ```xml
 com.ibm.puremeap.level = ALL
