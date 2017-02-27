@@ -5,58 +5,111 @@ relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.mf_server }} consists of several components. An overview of {{ site.data.keys.mf_server }} architecture is provided for you to understand the functions of each component.
+{{ site.data.keys.mf_server }} umfasst mehrere Komponenten. Hier finden Sie eine Übersicht über die
+MobileFirst-Server-Architektur, die Ihnen helfen soll, die Funktion der einzelnen Komponenten besser zu verstehen. 
 
-Unlike {{ site.data.keys.mf_server }} V7.1 or earlier, the installation process for V8.0.0 is separated from the development and deployment of mobile app operations. In V8.0.0, after the server components and the database are installed and configured, {{ site.data.keys.mf_server }} can be operated for most operations without the need to access the application server or database configuration.
+Anders als bei {{ site.data.keys.mf_server }} bis Version 7.1
+ist der Installationsprozess für Version 8.0.0 von den Operationen für die Entwicklung und Implementierung mobiler Apps getrennt. Wenn die Serverkomponenten und die Datenbank für Version
+8.0.0 installiert und konfguriert sind, kann
+{{ site.data.keys.mf_server }} für die meisten Operationen eingesetzt werden, ohne dass
+auf die Anwendungsserver- oder Datenbankkonfiguration zugegriffen werden muss. 
 
-The administration and deployment operations of the {{ site.data.keys.product_adj }} artifacts are done through {{ site.data.keys.mf_console }}, or the REST API of the {{ site.data.keys.mf_server }} administration service. The operations can also be done by using some command line tools that wrap this API, such as mfpdev or mfpadm. The authorized users of {{ site.data.keys.mf_server }} can modify the server-side configuration of mobile applications, upload, or configure server-side code (the adapters), upload new web resources for Cordova mobile apps, run application management operations and more.
+Die Verwaltungs- und Implementierungsoperationen für
+die {{ site.data.keys.product_adj }}-Artefakte werden in der
+{{ site.data.keys.mf_console }} oder über die REST-API des
+MobileFirst-Server-Verwaltungsservice ausgeführt. Sie können für diese Operationen auch Befehlszeilentools verwenden, in die diese REST-API eingebunden ist, z. B.
+mfpdev oder mfpadm. Autorisierte Benutzer von
+{{ site.data.keys.mf_server }}
+können die serverseitige Konfiguration mobiler Anwendungen modifizieren, serverseitigen Code (Adapter)
+hochladen oder konfigurieren, neue Webressourcen für mobile Cordova-Apps hochladen, Operationen für die Anwendungsverwaltung ausführen usw. 
 
-{{ site.data.keys.mf_server }} offers extra layers of security, in addition to the security layers of the network infrastructure or the application server. The security features include the control of application authenticity and the access control to the server-side resources and the adapters. These security configurations can also be done by the authorized users of {{ site.data.keys.mf_console }} and the administration service. You determine the authorization of the {{ site.data.keys.product_adj }} administrators by mapping them to security roles as described in [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../../../installation-configuration/production/server-configuration).
+{{ site.data.keys.mf_server }} stellt zusätzliche Sicherheitsschichten bereit, die
+die Sicherheitsschichten der Netzinfrastruktur und des
+Anwendungsservers ergänzen. Zu den Sicherheitsfeatures gehören die Kontrolle der Anwendungsauthentizität
+und die Steuerung des Zugriffs auf serverseitige Ressourcen und Adapter. Die Sicherheitskonfigurationen können von den autorisierten Benutzern der
+{{ site.data.keys.mf_console }} und des Verwaltungsservice erstellt werden. Sie legen die
+Autorisierung der {{ site.data.keys.product_adj }}-Administratoren fest, indem Sie sie
+Sicherheitsrollen zuordnen (siehe
+[Benutzerauthentifizierung für die MobileFirst-Server-Verwaltung konfigurieren](../../../installation-configuration/production/server-configuration)). 
 
-A simplified version of {{ site.data.keys.mf_server }} that is preconfigured and does not need software prerequisite such as database or an application server is available for developers. See [Setting up the {{ site.data.keys.product_adj }} Development Server](../../../installation-configuration/development).
+Für Entwickler gibt es eine vereinfachte Version von
+{{ site.data.keys.mf_server }}, die voronfiguriert ist und für die keine Software
+wie eine Datenbank oder ein Anwendungsserver
+vorausgesetzt wird (siehe [{{ site.data.keys.product_adj }} Development Server einrichten](../../../installation-configuration/development)). 
 
-## {{ site.data.keys.mf_server }} Components
-{: #mobilefirst-server-components }
-The architecture of the {{ site.data.keys.mf_server }} components is illustrated as follows:
+## Komponenten von {{ site.data.keys.mf_server }}
+{ #mobilefirst-server-components }
+Die Architektur der MoibleFirst-Server-Komponenten ist in der folgenden Abbildung
+dargestellt: 
 
-![Components that make up the {{ site.data.keys.mf_server }}](server_components.jpg)
+![Komponenten von {{ site.data.keys.mf_server }}](server_components.jpg)
 
-### Core components of {{ site.data.keys.mf_server }}
+### Kernkomponenten von {{ site.data.keys.mf_server }}
 {: #core-components-of-mobilefirst-server }
-{{ site.data.keys.mf_console }}, the {{ site.data.keys.mf_server }} administration service, the {{ site.data.keys.mf_server }} live update service, the {{ site.data.keys.mf_server }} artifacts, and the {{ site.data.keys.product_adj }} runtime are the minimum set of the components to install. 
+Für eine Minimalinstallation müssen die Komponenten {{ site.data.keys.mf_console }}, MobileFirst-Server-Verwaltungsservice,
+MobileFirst-Server-Liveaktualisierungsservice, MobileFirst-Server-Artefakte und
+{{ site.data.keys.product_adj }}-Laufzeit installiert werden.  
 
-* The runtime provides the {{ site.data.keys.product_adj }} services to the mobile apps that run on the mobile devices.
-* The administration service provides the configuration and administration capabilities. You use the administration service via {{ site.data.keys.mf_console }}, the live update service REST API, or command line tools such as mfpadm or mfpdev. 
-* The live update service manages configuration data and is used by the administration service.
+* Die Laufzeit
+stellt die {{ site.data.keys.product_adj }}-Services für die mobilen Apps bereit, die auf den mobilen
+Geräten ausgeführt werden. 
+* Der Verwaltungsservice stellt die Konfigurations- und Verwaltungsfunktionen bereit. Sie können den Verwaltungsservice über
+die {{ site.data.keys.mf_console }}, die REST-API des Liveaktualisierungsservice
+oder Befehlszeilentools wie mfpadm und
+mfpdev nutzen.  
+* Der Liveaktualisierungsservice verwaltet Konfigurationsdaten und wird vom Verwaltungsservice verwendet. 
 
-These components require a database. The database table name for each component does not have any intersection. As such, you can use the same database or even the same schema to store all the tables of these components. For more information, see [Setting up databases](../../../installation-configuration/production/server-configuration).
+Für diese Komponenten ist eine
+Datenbank erforderlich. Bei den Datenbanktabellennamen für die einzelnen Komponenten gibt es keine Überschneidungspunkte. Sie können daher
+eine Datenbank und sogar ein Schema verwenden, um alle Tabellen für diese Komponenten zu speichern. Weitere Informationen finden Sie unter
+[Datenbanken einrichten](../../../installation-configuration/production/server-configuration). 
 
-It is possible to install more than one instance of the runtime. In this case, each instance needs its own database. The artifacts component provides resources for {{ site.data.keys.mf_console }}. It does not requires a database.
+Sie haben die Möglichkeit, mehr als eine Instanz der Laufzeit
+zu installieren. In dem Fall benötigen Sie für jede Instanz eine eigene Datenbank. Die Artefaktkomponente stellt Ressourcen für die
+{{ site.data.keys.mf_console }} bereit. Sie erfordert keine Datenbank. 
 
-### Optional components of {{ site.data.keys.mf_server }}
+### Optionale Komponenten von {{ site.data.keys.mf_server }}
 {: #optional-components-of-mobliefirst-server }
-The {{ site.data.keys.mf_server }} push service provides push notification capabilities. It must be installed to provide these capabilities of the mobile apps use the {{ site.data.keys.product_adj }} Push features. From the perspective of mobile apps, the URL of the push service is the same as the URL as the runtime, except that its context root is `/imfpush`.
+Mit dem MobileFirst-Server-Push-Service werden Push-Benachrichtigungsfunktionen bereitgestellt. Der Service muss installiert sein, damit mobile Apps
+die {{ site.data.keys.product_adj }}-Push-Funktionen nutzen können. Aus Sicht der mobilen Apps ist die URL des
+Push-Service, abgesehen vom Kontextstammverzeichnis `/imfpush`), die gleiche wie die URL der Laufzeit. 
 
-If you plan to install the push service on a different server or cluster than the runtime, you need to configure the routing rules of your HTTP server. The configuration is to ensure that the requests to the push service and the runtime are properly routed. 
+Wenn Sie den Push-Service
+und die Laufzeit auf verschiedenen Servern oder in verschiedenen Clustern installieren möchten, müssen Sie die Routing-Regeln Ihres HTTP-Servers
+konfigurieren. Diese Konfiguration soll sicherstellen, dass Anforderungen an den Push-Service und an die Laufzeit ordnungsgemäß weitergeleitet werden.  
 
-The push service requires a database. The tables of the push service have no intersection with the tables of the runtime, the administration service, and the live update service. Thus, it can also be installed in the same database or schema.
+Für den Push-Service ist eine
+Datenbank erforderlich. Die Tabellen des Push-Service haben keinen Überschneidungspunkt mit den Tabellen der Laufzeit, des Verwaltungsservice und des
+Liveaktualisierungsservice. Sie können die Tabellen daher in derselben Datenbank oder gemäß demselben Schema installieren. 
 
-The {{ site.data.keys.mf_analytics }} service and {{ site.data.keys.mf_analytics_console }} provide monitoring and analytics information about the mobile apps usage. Mobile apps can provide more insight by using the Logger SDK. The {{ site.data.keys.mf_analytics }} service does not need a database. It stores its data locally on disk by using Elasticsearch. The data is structured in shards that can be replicated between the members of a cluster of the Analytics service.
+Der {{ site.data.keys.mf_analytics }}
+Service und die {{ site.data.keys.mf_analytics_console }}
+stellen Überwachungs- und Analysedaten zur Nutzung der mobilen Apps bereit. Mit dem
+Logger-SDK können Sie weitere Einblicke in die mobilen
+Apps erhalten.
+Für den {{ site.data.keys.mf_analytics }}
+Service ist keine Datenbank erforderlich. Der Service speichert seine Daten mit
+Elasticsearch lokal auf einer Platte. Die Daten sind in Shards strukturiert, die von den Membern eines Analytics-Service-Clusters
+repliziert werden können.
 
-For more information about the network flows and the topology constraints for these components, see [Topologies and network flows](../../../installation-configuration/production/server-configuration).
+Weitere Informationen zu den Netzabläufen und zu den Topologiebeschränkungen für diese Komponenten finden Sie unter
+[Topologien und Netzabläufe](../../../installation-configuration/production/server-configuration). 
 
-### Installation process
+### Installationsprozess
 {: #installation-process }
-The installation of {{ site.data.keys.mf_server }} on-premises can be done by using the following ways:
+Eine MobileFirst-Server-Installation vor Ort kann auf einem der folgenden Wege ausgeführt werden: 
 
-* The Server Configuration Tool - a graphical wizard
-* Ant tasks through the command line tools
-* Manual installation
+* mit dem Server Configuration Tool (einem grafisch orientierten Assistenten)
+* mit Ant-Tasks über die Befehlszeilentools
+* manuelle Installation
 
-For more information about the installation of {{ site.data.keys.mf_server }} on-premises is provided, see:
+Weitere Informationen zu einer lokalen Installation von {{ site.data.keys.mf_server }} enthalten die folgenden Quellen: 
 
-* A [guide through a complete installation](../../../installation-configuration/production/) of {{ site.data.keys.mf_server }} farm on WebSphere  Application Server Liberty profile. The guide is based on a simple scenario for you to try out the installation either in graphical mode or in command line mode.
-* A [detailed section](../../../installation-configuration/production/) that contains details about the installation prerequisites, database setup, server topologies, deployment of the components to the application server, and server configuration.
+* Der [Leitfaden für eine vollständige Installation](../../../installation-configuration/production/) einer
+MobileFirst-Server-Farm in WebSphere Application Server Liberty Profile. Im Leitfaden wird ein einfaches Szenario vorgestellt, anhand dessen Sie die Installation im Grafikmodus oder im Befehlszeilenmodus
+ausprobieren können. 
+* Der [ausführliche Abschnitt](../../../installation-configuration/production/), in dem Sie Details zu den Installationsvoraussetzungen, zum Datenbank-Setup, zu Servertopologien, zur Implementierung der Komponenten im Anwendungsserver
+und zur Serverkonfiguration finden. 
 

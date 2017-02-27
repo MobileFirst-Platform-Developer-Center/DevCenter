@@ -1,59 +1,58 @@
 ---
 layout: tutorial
-title: What's new in Interim Fixes
+title: Neuerungen bei vorläufigen Fixes
 breadcrumb_title: Interim iFixes
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Interim fixes provide patches and updates to correct problems and keep {{ site.data.keys.product_full }} current for new releases of mobile operating systems.
+Mit vorläufigen Fixes werden Patches und Aktualisierungen bereitgestellt, um Probleme zu lösen und die {{ site.data.keys.product_full }} hinsichtlich neuer Releases von Betriebssystemen für mobile Geräte auf dem neuesten Stand zu halten. Vorläufige Fixes sind kumulativ. Wenn Sie den neusten vorläufigen Fix für Version 8.0 herunterladen, erhalten Sie gleichzeitig die Korrekturen aus allen früheren vorläufigen Fixes. 
 
-Interim fixes are cumulative. When you download the latest v8.0 interim fix, you get all of the fixes from earlier interim fixes.
+Laden Sie den neuesten vorläufigen Fix herunter und installieren Sie ihn. Sie erhalten damit alle in den folgenden Abschnitten beschriebenen Korrekturen. Wenn Sie frühere Fixes installieren, erhalten Sie möglicherweise nicht alle der hier beschriebenen Korrekturen. 
 
-Download and install the latest interim fix to obtain all of the fixes that are described in the following sections. If you install earlier fixes, you might not get all of the fixes described here.
+> Eine Liste der iFix-Releases für {{ site.data.keys.product }} 8.0 finden Sie [in diesen Blogbeiträgen]({{site.baseurl}}/blog/tag/iFix_8.0/).
 
-> For a list of iFix releases of {{ site.data.keys.product }} 8.0, [see these blog posts]({{site.baseurl}}/blog/tag/iFix_8.0/).
+Wenn eine APAR-Nummer aufgeführt ist, können Sie überprüfen, ob das betreffende Feature in einem vorläufigen Fix enthalten ist, indem Sie in der Readme-Datei zum vorläufigen Fix nach dieser APAR-Nummer suchen. 
 
-Where an APAR number is listed, you can confirm that an interim fix has that feature by searching the interim fix README file for that APAR number.
-
-### Licensing
+### Lizenzierung
 {: #licensing }
-#### PVU licensing
+#### PVU-Lizenzierung
 {: #pvu-licensing }
-A new offering, {{ site.data.keys.product }} Extension V8.0.0, is available through PVU (processor value unit) licensing. For more information on PVU licensing for {{ site.data.keys.product }} Extension, see [Licensing {{ site.data.keys.product_adj }}](../../licensing).
+{{ site.data.keys.product }} Extension Version 8.0.0 ist als neues Angebot mit PVU-Lizenzierung (Prozessor-Value-Unit) erhältlich. Weitere Informationen zur PVU-Lizenzierung
+für {{ site.data.keys.product }} Extension finden Sie unter [{{ site.data.keys.product_adj }}-Lizenzierung](../../licensing).
 
-### Web applications
+### Webanwendungen
 {: #web-applications }
-#### Registering web applications from the {{ site.data.keys.mf_cli }} (APAR PI65327)
+#### Webanwendungen über die
+{{ site.data.keys.mf_cli }} registrieren (APAR PI65327)
 {: #registering-web-applications-from-the-mobilefirst-cli-apar-pi65327 }
-You can now register client web applications to {{ site.data.keys.mf_server }} by using the {{ site.data.keys.mf_cli }} (mfpdev) as an alternative to registration from the {{ site.data.keys.mf_console }}. For more information, see Registering web applications from the {{ site.data.keys.mf_cli }}.
+Alternativ zur Registrierung von Clientanwendungen in der {{ site.data.keys.mf_console }}
+können Sie die Anwendungen jetzt über die {{ site.data.keys.mf_cli }} (mfpdev) bei {{ site.data.keys.mf_server }} registrieren. Weitere Informationen finden Sie unter "Webanwendungen über die
+{{ site.data.keys.mf_cli }} registrieren". 
 
-### Cordova applications
+### Cordova-Anwendungen
 {: #cordova-applications }
-#### Opening the native IDE for a Cordova project from Eclipse with the Studio plug-in
+#### Native IDE für ein Cordova-Projekt mit dem Studio-Plug-in in Eclipse öffnen
 {: #opening-the-native-ide-for-a-cordova-project-from-eclipse-with-the-studio-plug-in }
-With the Studio plug-in installed in your Eclipse IDE, you can open an existing Cordova project in Android Studio or Xcode from the Eclipse interface to build and run the project.
+Wenn Sie das Studio-Plug-in in Ihrer Eclipse-IDE installiert haben, können Sie
+von der Eclipse-Schnittstelle aus ein vorhandenes Cordova-Projekt in Android Studio oder Xcode öffnen, einen Projektbuild erstellen und das Projekt ausführen. 
 
-#### Added *projectName* directory as an option when you use the Migration Assistance tool
+#### Neues Verzeichnis *projectName* als Option bei Verwendung des Unterstützungstools für die Migration
 {: #added-projectname-directory-as-an-option-when-you-use-the-migration-assistance-tool }
-You can specify a name for your Cordova project directory when you migrate projects with the migration assistance tool. If you do not provide a name, the default name is *app_name-app_id-version*.
+Wenn Sie das Unterstützungstool für die Migration verwenden, um Projekte zu migrieren, können Sie einen Namen für das Verzeichnis Ihres Cordova-Projekts angeben. Falls Sie keinen Namen angeben, wird der Standardname *App-Name-App-ID-Version* verwendet.
 
-#### Usability improvements to the Migration Assistance tool
+#### Verbesserung der Benutzerfreundlichkeit des Unterstützungstools für die Migration
 {: #usability-improvements-to-the-migration-assistance-tool }
-Made the following changes to improve the usability of the Migration Assistance tool:
+Es wurden folgende Änderungen vorgenommen, um die Benutzerfreundlichkeit des Unterstützungstools für die Migration zu verbessern: 
 
-* The Migration Assistance tool scans HTML files and JavaScript files.
-* The scan report opens in your default browser automatically after the scan is finished.
-* The *--out* flag is optional. The working directory is used if it is not specified.
-* When the *--out* flag is specified and the directory does not exist, the directory is created.
+* Das Unterstützungstool für die Migration scannt HTML-Dateien und JavaScript-Dateien. 
+* Im Anschluss an den Scan wird automatisch der Scanbericht in Ihrem Standardbrowser geöffnet. 
+* Das Flag *--out* ist optional. Wenn kein Verzeichnis angegeben ist, wird das Arbeitsverzeichnis verwendet. 
+* Wenn das Flag *--out* angegeben und das Verzeichnis nicht vorhanden ist, wird das Verzeichnis erstellt. 
 
-### Adapters
+### Adapter
 {: #adapters }
-#### Added `mfpdev push` and `pull` commands for Java and JavaScript adapter configurations
+#### Neue Befehle `mfpdev push` und `mfpdev pull` für die Konfiguration von Java- und JavaScript-Adaptern
 {: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
-You can use {{ site.data.keys.mf_cli }} to push Java and JavaScript adapter configurations to the {{ site.data.keys.mf_server }} and pull adapter configurations from the {{ site.data.keys.mf_server }}.
-
-### Application Center
-{: #application-center}
-
-Cordova based application center client is now available for iOS and Android.
+Sie können die {{ site.data.keys.mf_cli }} verwenden, um die Konfiguration von Java- und JavaScript-Adaptern
+per Push-Operation zu {{ site.data.keys.mf_server }} zu übertragen und Adapterkonfigurationen per Pull-Operation von {{ site.data.keys.mf_server }} abzurufen. 

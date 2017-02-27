@@ -1,64 +1,153 @@
 ---
 layout: tutorial
-title: Product Main Capabilities
+title: Hauptfunktionen des Produkts
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-With {{ site.data.keys.product_full }}, you can use capabilities such as development, testing, back-end connections, push notifications, offline mode, update, security, analytics, monitoring, and application publishing.
+Die {{ site.data.keys.product_full }}
+stellt Funktionen für Entwicklung, Tests,
+Back-End-Verbindungen, Push-Benachrichtigungen, Offlinemodus, Aktualisierung, Sicherheit, Analyse, Überwachung und für die Veröffentlichung von Anwendungen
+bereit.
 
-### Development
+### Entwicklung
 {: #deployment }
-{{ site.data.keys.product }} provides a framework that enables the development, optimization, integration, and management of secure mobile applications (apps). {{ site.data.keys.product }} does not introduce a proprietary programming language or model that users must learn.
+Mit der {{ site.data.keys.product }}
+verfügen Sie über ein Framework
+für die Entwicklung, Optimierung, Integration und Verwaltung sicherer mobiler Anwendungen (Apps). Die {{ site.data.keys.product }}
+führt keine
+proprietäre Programmiersprache und kein proprietäres Modell ein, mit denen sich Benutzer erst vertraut machen müssten. 
 
-You can develop apps by using HTML5, CSS3, and JavaScript. You can optionally write native code (Java or Objective-C). {{ site.data.keys.product }} provides an SDK that includes libraries that you can access from native code.
+Sie können HTML5, CSS3 und JavaScript für die App-Entwicklung verwenden.
+Sie haben die Möglichkeit,
+nativen Code
+(Java oder Objective-C) zu schreiben. Die
+{{ site.data.keys.product }}
+stellt ein SDK mit Bibliotheken bereit, auf die Sie vom nativen Code aus
+zugreifen können.
 
-#### Supported platforms
+#### Unterstützte Plattformen
 {: #supported-platforms }
-The {{ site.data.keys.product }} SDKs support the following platforms:
+Die SDKs der {{ site.data.keys.product }} unterstützen folgende Plattformen: 
 
 * iOS
 * Android
-* Windows Universal 8.1 and Windows 10 UWP
-* Web apps
+* Windows Universal 8.1 und Windows 10 UWP
+* Web-Apps
 
-### Back-end connections
+> **Unterstützte Browser für Web-Apps:**
+> 
+> |      Browser      | Chrome | Safari* | Internet Explorer | Firefox | Android-Browser |
+> |:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
+> | Unterstützte Version |   43+  |    8+   |        10+        |   38+   |   Android 4.3+  |
+
+* Der private Modus des Browsers funktioniert nur für Anwendungen, die nur eine Seite umfassen. Bei anderen Anwendungen kann sich ein nicht erwartetes Verhalten zeigen. 
+
+### Back-End-Verbindungen
 {: #back-end-connections }
-Some mobile applications run strictly offline with no connection to a back-end system, but most mobile applications connect to existing enterprise services to provide the critical user-related functions. For example, customers can use a mobile application to shop anywhere, at any time, independent of the operating hours of the store. Their orders must still be processed by using the existing e-commerce platform of the store. To integrate a mobile application with enterprise services, you must use middleware such as a mobile gateway. {{ site.data.keys.product }} can act as this middleware solution and make communication with back-end services easier.
+Einige mobile Anwendungen werden nur offline (d. h. ohne Verbindung zu einem Back-End-System) ausgeführt.
+Die meisten mobilen Anwendungen stellen jedoch eine Verbindung zu vorhandenen Unternehmensservices her, um die kritischen Benutzerfunktionen bereitstellen
+zu können. Kunden können eine mobile Anwendung beispielsweise nutzen, um jederzeit und unabhängig von Öffnungszeiten online einzukaufen. Die Aufträge müssen in jedem Fall von der vorhandenen
+E-Commerce-Plattform des Onlinegeschäfts verarbeitet werden. Für den gemeinsamen Einsatz von mobilen Anwendungen und Unternehmensservices
+müssen Sie Middleware verwenden, z. B. ein mobiles Gateway. Die
+{{ site.data.keys.product }}
+kann als eine solche
+Middleware-Lösung genutzt werden und die Kommunikation mit Back-End-Services vereinfachen.
 
-### Push notifications
+### Push-Benachrichtigungen
 {: #push-notifications }
-With push notifications, enterprise applications can send information to mobile devices, even when the application is not being used. {{ site.data.keys.product }} includes a unified notification framework which provides a consistent mechanism for such push notifications. With this unified notification framework, you can send push notifications without having to know the details of each targeted device or platform because each mobile platform has a different mechanism for push notification.
+Mit Push-Benachrichtigungen können Unternehmensanwendungen Informationen an mobile Geräte senden, auch wenn die
+Anwendungen nicht genutzt werden. Die
+{{ site.data.keys.product }}
+stellt ein einheitliches
+Benachrichtigungsframework als konsistenten Mechanismus für solche Push-Benachrichtigungen bereit. Angesichts der Tatsache, dass jede mobile Plattform ein anderes
+Verfahren für Push-Benachrichtigungen nutzt, können Sie mithilfe dieses einheitlichen Benachrichtigungsframeworks
+Push-Benachrichtigungen senden, ohne die Details der einzelnen adressierten Geräte oder Plattformen zu kennen.
 
-### Offline mode
+### Offlinemodus
 {: #offline-mode }
-In terms of connectivity, mobile applications can operate offline, online, or in a mixed mode. {{ site.data.keys.product }} uses a client/server architecture that can detect whether a device has network connectivity, and the quality of the connection. Acting as a client, mobile applications periodically attempt to connect to the server and to assess the strength of the connection. An offline-enabled mobile application can be used when a mobile device lacks connectivity but some functions can be limited. When you create an offline-enabled mobile application, it is useful to store information about the mobile device that can help preserve its functionality in offline mode. This information typically comes from a back-end system, and you must consider data synchronization with the back end as part of the application architecture. {{ site.data.keys.product }} includes a feature that is called JSONStore for data exchange and storage. With this feature, you can create, read, update, and delete data records from a data source. Each operation is queued when operating offline. When a connection is available, the operation is transferred to the server and each operation is then performed against the source data.
+Unter dem Gesichtspunkt der Konnektivität können mobile Anwendungen offline, online oder im gemischten Modus
+arbeiten. Die
+{{ site.data.keys.product }} nutzt eine Client-Server-Architektur, die
+erkennen kann, ob ein Gerät mit dem Netz verbunden ist und welche Qualität diese Verbindung hat. In ihrer Funktion als Clients versuchen
+mobile Anwendungen
+regelmäßig, eine Verbindung zum Server herzustellen und die Stabilität der Verbindung zu beurteilen. Bei mangelnder Konnektivität kann eine mobile Anwendung genutzt werden,
+die offline ausgeführt werden kann. Einige Funktionen können dann jedoch eingeschränkt sein. Wenn Sie eine mobile Anwendung für den Offlinebetrieb erstellen, ist es hilfreich, Informationen zu dem mobilen Gerät
+zu speichern, damit die Funktionalität im Offlinemodus erhalten bleibt. Diese Informationen kommen in der Regel von einem Back-End-System.
+Sie müssen die Datensynchronisation mit dem Back-End-System daher als Teil der Anwendungsarchitektur berücksichtigen. In der
+{{ site.data.keys.product }} gibt es ein Feature für
+das Austauschen und Speichern von Daten
+mit der Bezeichnung
+JSONStore.
+Mit diesem
+Feature können Sie Datensätze in einer Datenquelle erstellen, lesen, aktualisieren und löschen. Im Offlinebetrieb werden die einzelnen Operationen
+in eine Warteschlange gestellt.
+Sobald eine Verbindung hergestellt ist, wird die Operation zum Server übertragen und dann für die Quellendaten ausgeführt.
 
-### Update
+### Aktualisierung
 {: #update }
-{{ site.data.keys.product }} simplifies version management and mobile application compatibility. Whenever a user starts a mobile application, the application communicates with a server. By using this server, {{ site.data.keys.product }} can determine whether a newer version of the application is available, and if so, give information to the user about it, or push an application update to the device. The server can also force an upgrade to the latest version of an application to prevent continued use of an outdated version.
+Die {{ site.data.keys.product }} vereinfacht das Versionsmanagement und die Kompatibilität
+mobiler Anwendungen. Immer, wenn ein Benutzer eine mobile Anwendung startet, kommuniziert die Anwendung mit einem Server. Im Kontakt zu diesem Server kann die {{ site.data.keys.product }} feststellen, ob eine neuere
+Version der Anwendung verfügbar ist und den Benutzer ggf. darüber informieren oder mittels Push-Operation eine Aktualisierung der Anwendung auf dem Gerät
+durchführen.
+Der Server kann auch ein Upgrade auf die neueste Version einer Anwendung forcieren, um die Weiterverwendung einer veralteten
+Version zu verhindern.
 
-### Security
+### Sicherheit
 {: #security }
-Protecting confidential and private information is critical for all applications within an enterprise, including mobile applications. Mobile security applies at various levels, such as mobile application, mobile application services, or back-end service. You must ensure customer privacy and protect confidential data from being accessed by unauthorized users. Dealing with privately owned mobile devices means giving up control on certain lower levels of security, such as the mobile operating system.
+Der Schutz vertraulicher und privater Daten ist für alle Anwendungen in einem Unternehmen kritisch. Dies gilt
+auch für mobile Anwendungen. Die mobile Sicherheit greift auf mehreren Ebenen, z. B. auf der Ebene der mobilen Anwendung, der Ebene mobiler Anwendungsservices oder
+der Ebene von Back-End-Services. Sie müssen für den Schutz der Privatsphäre Ihrer Kunden sorgen und verhindern, dass nicht berechtigte Benutzer
+auf vertrauliche Daten zugreifen. Bei mobilen Geräten, die in Privatbesitz sind, erfolgt die Kontrolle z. B. durch das Betriebssystem für mobile Geräte und
+damit auf etwas niedrigerem Sicherheitsniveau.
 
-{{ site.data.keys.product }} provides secure, end-to-end communication by positioning a server that oversees the flow of data between the mobile application and your back-end systems. With {{ site.data.keys.product }}, you can define custom security handlers for any access to this flow of data. Because any access to data of a mobile application has to go through this server instance, you can define different security handlers for mobile applications, web applications, and back-end access. With this kind of granular security, you can define separate levels of authentication for different functions of your mobile application. You can also prevent mobile applications from accessing sensitive information.
+Die
+{{ site.data.keys.product }} ermöglicht eine
+sichere End-to-End-Kommunikation mit einem Server, der den Datenfluss zwischen der mobilen Anwendung und Ihren Back-End-Systemen überwacht. Mit der
+{{ site.data.keys.product }} haben Sie die Möglichkeit,
+angepasste Sicherheits-Handler für jeglichen Zugriff auf diesen Datenfluss zu definieren. Da bei jedem Zugriff auf Daten einer mobilen Anwendung diese Serverinstanz passiert wird, können Sie unterschiedliche Sicherheits-Handler für mobile Anwendungen, Webanwendungen
+und den Back-End-Zugriff festlegen.
+Durch diese Differenzierung können Sie für verschiedene Funktionen Ihrer mobilen Anwendung separate Authentifizierungsstufen
+definieren oder den Zugriff einer mobilen Anwendung auf sensitive Daten unterbinden.
 
 ### Analytics
 {: #analytics }
-The {{ site.data.keys.mf_analytics }} feature enables searching across apps, services, devices, and other sources to collect data about usage, or to detect problems.
+Mit dem Feature {{ site.data.keys.mf_analytics }} können Sie Apps, Services, Geräte und andere Quellen durchsuchen, um Daten zur Nutzung
+zu erfassen oder Probleme zu erkennen.
 
-In addition to reports that summarize app activity, {{ site.data.keys.product }} includes a scalable operational analytics platform accessible in the {{ site.data.keys.mf_console }}. The {{ site.data.keys.mf_analytics_short }} feature enables enterprises to search across logs and events that are collected from devices, apps, and servers for patterns, problems, and platform usage statistics. You can enable analytics, reports, or both, depending on your needs.
+Neben zusammenfassenden Berichten über App-Aktivitäten stellt
+die {{ site.data.keys.product }} eine skalierbare Plattform für Betriebsanalyse bereit, auf die
+über die {{ site.data.keys.mf_console }} zugegriffen werden kann.
+Mit dem {{ site.data.keys.mf_analytics_short }}-Feature können Unternehmen
+von Geräten, Apps und Servern erfasste Protokolle und Ereignisse durchsuchen, um Muster und Probleme zu finden und Statistiken zur Plattformnutzung
+zu erstellen. Sie können ganz nach Bedarf die Analyse und/oder Berichte aktivieren.
 
-### Monitoring
+### Überwachung
 {: #monitoring }
-{{ site.data.keys.product }} includes a range of operational analytics and reporting mechanisms for collecting, viewing, and analyzing data from your {{ site.data.keys.product }} applications and servers, and for monitoring server health.
+In der {{ site.data.keys.product }} gibt es eine Reihe
+von Verfahren für Betriebsanalysen und die Erstellung von Berichten, mit denen Sie Daten
+Ihrer
+MobileFirst-Foundation-Anwendungen und -Server sammeln, anzeigen und analysieren und den Serverzustand
+überwachen können. 
 
-### Application publishing
+### Anwendungen veröffentlichen
 {: #application-publishing }
-{{ site.data.keys.product }} Application Center is an enterprise application store. With the Application Center, you can install, configure, and administer a repository of mobile applications for use by individuals and groups across your enterprise. You can control who in your organization can access the Application Center and upload applications to the Application Center repository, and who can download and install these applications onto a mobile device. You can also use the Application Center to collect feedback from users and access information about devices on which applications are installed.
+Das {{ site.data.keys.product }} Application Center
+ist ein Speicher für Unternehmensanwendungen. Mit dem Application Center
+steht Einzelpersonen und Gruppen in Ihrem Unternehmen ein Repository mobiler Anwendungen zur Verfügung, das Sie installieren, konfigurieren und verwalten
+können. Sie steuern, welche Personen in Ihrer Organisation Zugriff auf das Application
+Center haben und Anwendungen in das Application-Center-Repository hochladen können und
+welche Personen diese Anwendungen herunterladen und auf einem mobilen Gerät installieren dürfen.
+Über das Application Center können Sie auch Rückmeldungen von
+Benutzern und Zugriffsinformationen von Geräten, auf denen Anwendungen installiert sind, erfassen.
 
-The concept of the Application Center is similar to the concept of the Apple public App Store or the Google Play store, except that it targets the development process.
+Das Konzept des Application Center ist mit dem öffentlichen
+App Store von Apple oder dem Google Play Store vergleichbar. Im Unterschied zu den genannten Stores ist das Application Center jedoch
+auf den Entwicklungsprozess ausgerichtet. 
 
-The Application Center provides a repository for storing the mobile application files and a web-based console for managing that repository. The Application Center also provides a mobile client application to allow users to browse the catalog of applications that are stored by the Application Center, install applications, leave feedback for the development team, and expose production applications to IBM  Endpoint Manager. Access to download and install applications from the Application Center is controlled by using access control lists (ACLs).
+In dem vom Application Center bereitgestellten Repository können Dateien mobiler Anwendungen gespeichert werden.
+Mit einer webbasierten Konsole kann das Repository verwaltet werden. Mit der außerdem vom Application Center zur Verfügung gestellten mobilen Clientanwendung
+können Benutzer den Katalog der im Application Center gespeicherten Anwendungen ansehen, Anwendungen installieren, Feedback für das Entwicklerteam geben und
+Produktionsanwendungen für IBM Endpoint Manager zugänglich machen. Der
+Application-Center-Zugriff mit dem Ziel, Anwendungen herunterzuladen und zu installieren, wird über Zugriffskontrolllisten gesteuert.

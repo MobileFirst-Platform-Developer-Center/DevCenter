@@ -1,41 +1,93 @@
 ---
 layout: tutorial
-title: Licensing in MobileFirst Server
+title: Lizenzierung für MobileFirst Server
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-The IBM {{ site.data.keys.mf_server }} supports two different licensing methods based on what you have purchased.
+IBM {{ site.data.keys.mf_server }} unterstützt zwei verschiedene, von der Art der gekauften Lizenzen
+abhängige Lizenzierungsmethoden. 
 
-If you have purchased Perpetual licenses, you can consume what you have purchased and verify your usage and compliance through the **License tracking page** in the {{ site.data.keys.mf_console }} and through [License Tracking report](../../administering-apps/license-tracking/#license-tracking-report). If you have purchased Token licenses, configure your {{ site.data.keys.mf_server }} to communicate with a remote token license server.
+Wenn Sie zeitlich unbegrenzte Lizenzen erworben haben, können Sie diese nutzen
+und Ihre vertragskonforme Verwendung auf der Seite
+**Lizenzüberwachung** der
+{{ site.data.keys.mf_console }} sowie anhand des
+[Lizenzüberwachungsberichts](../../administering-apps/license-tracking/#license-tracking-report) verifizieren.
+Wenn Sie Tokenlizenzen erworben haben,
+konfigurieren Sie Ihren {{ site.data.keys.mf_server }} so, dass er mit einem fernen Tokenlizenzserver
+kommuniziert. 
 
-### Application or Addressable Device licenses
+### Lizenzen für Anwendungen oder adressierbare Geräte
 {: #application-or-addressable-device-licenses }
-If you have purchased Application or Addressable Device licenses, you can consume what you have purchased and verify your usage and compliance through the License tracking page in the {{ site.data.keys.mf_console }} and through License Tracking report.
+Wenn Sie Lizenzen für Anwendungen oder adressierbare Geräte erworben haben, können Sie diese nutzen
+und Ihre vertragskonforme Verwendung auf der Seite
+"Lizenzüberwachung" der {{ site.data.keys.mf_console }} sowie anhand des
+Lizenzüberwachungsberichts verifizieren.
 
-### Processor value unit (PVU) licensing
+
+### PVU-Lizenzierung
 {: #processor-value-unit-pvu-licensing }
-Processor value unit (PVU) licensing is available if you have purchased IBM {{ site.data.keys.product }} Extension (see [License Information documents](http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument)), but only after the purchase of IBM  WebSphere  Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise.
+Die PVU-Lizenzierung (Prozessor-Value-Unit) ist verfügbar, wenn Sie
+IBM {{ site.data.keys.product }} Extension gekauft haben
+(siehe Dokumente mit den [Lizenzinformationen](http://www.ibm.com/software/sla/sladb.nsf/lilookup/C154C7B1C8C840F38525800A0037B46E?OpenDocument)).
+Voraussetzung ist jedoch, dass Sie bereits IBM  WebSphere Application Server Network Deployment, IBM API Connect™ Professional oder
+IBM API Connect Enterprise erworben haben. 
 
-The PVU license pricing structure is responsive to both the type and number of processors that are available to installed products. Entitlements can be full capacity or subcapacity. Under the processor value unit licensing structure, you license software based on the number of value units assigned to each processor core.
+Bei einer PVU-Lizenz richtet sich die Preisstruktur nach Typ und Anzahl der Prozessoren, die für installierte Produkte verfügbar sind. Berechtigungen können dem Full-Capacity- oder dem Sub-Capacity-Modell entsprechen. Gemäß der PVU-Lizenzierungsstruktur wird die Software
+abhängig von der jedem Prozessorkern zugeordneten Anzahl von Value-Units lizenziert. 
 
-For example, processor type A is assigned 80 value units per core and processor type B is assigned 100 value units per core. If you license a product to run on two type A processors, you must acquire an entitlement for 160 value units per core. If the product is to run on two type B processors, the required entitlement is 200 value units per core.
+Nehmen wir beispielsweise an, einem Prozessortyp A sind 80 Value-Units pro Kern zugeordnet und einem Prozessortyp B 100 Value-Units pro Kern. Wenn Sie eine Produktlizenz für die Ausführung von zwei Prozessoren vom Typ A benötigen, müssen Sie eine
+Berechtigung für 160 Value-Units pro Kern anfordern. Wird das Produkt auf zwei Prozessoren vom Typ B ausgeführt, sind Berechtigungen für 200 Value-Units pro Kern erforderlich. 
 
-> [Read more information](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html) on PVU licensing.
+> [Weitere Informationen zur PVU-Lizenzierung](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html)
 
-### Token Licensing
+### Tokenlizenzierung
 {: #token-licensing }
-In a token environment, every product consumes a predefined token value per license, compared to a traditional floating environment where a predefined quantity per license is consumed. The license key has a pool of tokens from which the license server calculates the tokens that are checked in and checked out. Tokens are either consumed or released when a product checks in or checks out licenses from the license server.
+In einer Tokenumgebung konsumiert jedes Produkt pro Lizenz eine vordefinierte Tokenanzahl. In einer
+traditionellen Floating-Umgebung wird dagegen eine vordefinierte Anzahl von Lizenzen konsumiert.
+Der Lizenzschlüssel verfügt über einen Tokenpool.
+Der Lizenzserver berechnet auf der Basis dieses Pools die Token, die ein- und ausgecheckt werden. Wenn ein Produkt Lizenzen vom Lizenzserver
+ein- oder auscheckt, werden Token konsumiert oder freigegeben. 
 
-Your licensing contract defines whether you might be able to use token licensing, the number of tokens available, and features that are validated by tokens. See Token license validation.
+In Ihrem Lizenzvertrag ist definiert, ob Sie die
+Tokenlizenzierung nutzen können, wie viele Token verfügbar sind und welche Features von Token validiert werden
+(siehe "Tokenlizenzvalidierung").
 
-If you have purchased token-based licenses, install a version of the {{ site.data.keys.mf_server }} that supports token licenses and configure your application server so that your server can communicate with the remote token server. See Installing and configuring for token licensing.
+Wenn Sie
+tokenbasierte Lizenzen erworben haben, installieren Sie
+eine Version von {{ site.data.keys.mf_server }}, die
+Tokenlizenzen unterstützt, und konfigurieren Sie Ihren Anwendungsserver so, dass Ihr Server mit dem fernen Tokenserver kommunizieren
+kann (siehe "Installation und Konfiguration für
+die Tokenlizenzierung"). 
 
-With token licensing, you can specify the license app type in the application descriptor of each one of your apps before deploying them. The license app type can be either APPLICATION or ADDITIONAL_BRAND_DEPLOYMENT. For testing, you can set the value of the license app type to NON_PRODUCTION. For more information, see Setting the application license information.
+Bei der
+Tokenlizenzierung können Sie für jede App im Anwendungsdeskriptor den App-Typ für die Lizenzierung angeben, bevor Sie die App implementieren. Der App-Typ für die Lizenzierung
+kann APPLICATION oder ADDITIONAL_BRAND_DEPLOYMENT sein.
+Für Tests können Sie den App-Typ für die Lizenzierung auf NON_PRODUCTION setzen.
+Weitere Informationen finden Sie unter
+"Anwendungslizenzinformationen definieren".
 
-The Rational License Key Server Administration and Reporting tool that is released with Rational License Key Server 8.1.4.9 can administer and generate reports for the license consumed by {{ site.data.keys.product }}. You can identify the relevant parts of the report by the following display names: **MobileFirst Platform Foundation Application** or **MobileFirst Platform Additional Brand Deployment**. These names refer to the license app type for which the tokens are consumed. For more information, see [Rational License Key Server Administration](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/c_rlks_admin_tool_overview.html) and [Reporting Tool overview and Rational License Key Server Fix Pack 9 (8.1.4.9)](http://www.ibm.com/support/docview.wss?uid=swg24040300).
+Das mit Rational License Key Server 8.1.4.9
+bereitgestellte Rational License Key Server Administration and Reporting Tool
+kann die von
+der {{ site.data.keys.product }} konsumierten Lizenzen verwalten und entsprechende
+Berichte generieren.
+Die relevanten Abschnitte des Berichts finden Sie mithilfe der folgenden Anzeigenamen:
+**MobileFirst Platform Foundation Application** und **MobileFirst
+Platform Additional Brand Deployment**. Diese Namen beziehen sich auf den App-Typ, für den
+Lizenzierungstoken konsumiert werden. Weitere Informationen finden Sie in der
+[Übersicht über das Rational License Key Server Administration and Reporting Tool](https://www.ibm.com/support/knowledgecenter/SSSTWP_8.1.4/com.ibm.rational.license.doc/topics/c_rlks_admin_tool_overview.html)
+und im
+[Rational License Key Server Administration and Reporting Tool Fixpack 9 (8.1.4.9)](http://www.ibm.com/support/docview.wss?uid=swg24040300).
 
-For information on planning to use token licensing with {{ site.data.keys.mf_server }}, see Planning for the use of token licensing.
+Informationen zur Planung der Tokenlizienzierung für
+{{ site.data.keys.mf_server }} finden Sie
+unter
+"Verwendung der
+Tokenlizenzierung planen".
 
-To obtain the license keys for {{ site.data.keys.product }}, you need to access IBM  Rational License Key Center. For more information about generating and managing your license keys, see [IBM Support - Licensing](http://www.ibm.com/software/rational/support/licensing/).
+Wenn Sie Lizenzschlüssel für
+die {{ site.data.keys.product }} anfordern möchten, benötigen Sie Zugang zum
+IBM Rational License Key Center.
+Weitere Informationen zum Generieren und Verwalten Ihrer Lizenzschlüssel finden Sie unter [IBM Support - Licensing](http://www.ibm.com/software/rational/support/licensing/).
