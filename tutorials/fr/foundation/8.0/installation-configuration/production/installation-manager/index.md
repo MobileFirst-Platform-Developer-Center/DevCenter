@@ -6,37 +6,38 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-IBM Installation Manager installe les fichiers et les outils de {{site.data.keys.mf_server_full }} sur votre ordinateur. 
+IBM Installation Manager installe les fichiers et les outils de {{ site.data.keys.mf_server_full }} sur votre ordinateur. 
 
-Vous exécutez Installation Manager pour installer les fichiers binaires de {{site.data.keys.mf_server }} et les outils pour déployer les applications {{site.data.keys.mf_server }} sur un serveur d'applications sur votre ordinateur. Les fichiers et les outils installés par le programme d'installation sont décrits dans la rubrique [Structure de distribution de {{site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server).
+Vous exécutez Installation Manager pour installer les fichiers binaires de {{ site.data.keys.mf_server }} et les outils pour déployer les applications {{ site.data.keys.mf_server }} sur un serveur d'applications sur votre ordinateur. Les fichiers et les outils installés par le programme d'installation sont décrits dans la rubrique [Structure de distribution de {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server).
 
-IBM Installation Manager version 1.8.4 ou ultérieure est requis pour exécuter le programme d'installation de {{site.data.keys.mf_server }}. Vous pouvez l'exécuter en mode graphique ou en mode de ligne de commande.   
+IBM Installation Manager version 1.8.4 ou ultérieure est requis pour exécuter le programme d'installation de {{ site.data.keys.mf_server }}. Vous pouvez l'exécuter en mode graphique ou en mode de ligne de commande.   
 Deux options principales sont proposées lors du processus d'installation :
 
 * Activation de l'octroi de licence de jeton
-* Installation et déploiement d'{{site.data.keys.mf_app_center }}
+* Installation et déploiement d'{{ site.data.keys.mf_app_center }}
 
 ### Octroi de licence de jeton
 {: #token-licensing }
-L'octroi de licence de jeton est l'une des méthodes d'octroi de licence prises en charge par {{site.data.keys.mf_server }}. Vous devez déterminer si vous avez besoin d'activer ou non l'octroi de licence de jeton. Si vous ne disposez pas d'un contrat définissant l'utilisation de l'octroi de licence de jeton avec Rational License Key Server, vous n'avez pas besoin d'activer l'octroi de licence de jeton. Si vous activez cette option, vous devez configurer {{site.data.keys.mf_server }} pour l'octroi de licence de jeton. Pour plus d'informations, voir[Installation et configuration pour l'octroi de licence de jeton](../token-licensing).
+L'octroi de licence de jeton est l'une des méthodes d'octroi de licence prises en charge par {{ site.data.keys.mf_server }}. Vous devez déterminer si vous avez besoin d'activer ou non l'octroi de licence de jeton. Si vous ne disposez pas d'un contrat définissant l'utilisation de l'octroi de licence de jeton avec Rational License Key Server, vous n'avez pas besoin d'activer l'octroi de licence de jeton. Si vous activez cette option, vous devez configurer {{ site.data.keys.mf_server }} pour l'octroi de licence de jeton. Pour
+plus d'informations, voir [Installation et configuration pour l'octroi de licence de jeton](../token-licensing).
 
-### {{site.data.keys.mf_app_center_full }}
+### {{ site.data.keys.mf_app_center_full }}
 {: #ibm-mobilefirst-foundation-application-center }
-Application Center est un composant de {{site.data.keys.product }}. Avec Application Center, vous pouvez partager des applications mobiles en cours de développement au sein de votre organisation dans un unique référentiel d'applications mobiles.
+Application Center est un composant de {{ site.data.keys.product }}. Avec Application Center, vous pouvez partager des applications mobiles en cours de développement au sein de votre organisation dans un unique référentiel d'applications mobiles.
 
 
 Si vous choisissez d'installer Application Center à l'aide d'Installation Manager, vous devez définir les paramètres de base de données et de serveur d'applications de sorte qu'Installation Manager puisse configurer les bases de données et déployer Application Center sur le serveur d'applications. Si vous choisissez de ne pas installer Application Center à l'aide d'Installation Manager, ce dernier sauvegarde le fichier WAR et les ressources d'Application Center sur votre disque. Il ne configure pas les bases de données et ne déploie pas le fichier WAR d'Application Center sur votre serveur d'applications. Vous pourrez effectuer ce opérations ultérieurement à l'aide de tâches Ant ou manuellement. L'option d'installation d'Application Center est un excellent moyen de découvrir ce composant car vous êtes assisté par un assistant graphique lors du processus d'installation. 
 
-Toutefois, dans le cadre d'une installation pour un environnement de production, utilisez des tâches Ant pour installer Application Center. L'installation à l'aide de tâches Ant vous permet de découpler les mises à jour sur {{site.data.keys.mf_server }} à partir des mises à jour apportées à Application Center.
+Toutefois, dans le cadre d'une installation pour un environnement de production, utilisez des tâches Ant pour installer Application Center. L'installation à l'aide de tâches Ant vous permet de découpler les mises à jour sur {{ site.data.keys.mf_server }} à partir des mises à jour apportées à Application Center.
 
 * Avantage lié à l'installation d'Application Center à l'aide d'Installation Manager.
     * Un assistant graphique vous guide lors du processus d'installation et de déploiement. 
 * Inconvénients liés à l'installation d'Application Center à l'aide d'Installation Manager.
     * Si Installation Manager est exécuté à l'aide du superutilisateur sous UNIX ou Linux, il peut créer des fichiers appartenant au superutilisateur dans le répertoire du serveur d'applications sur lequel Application Center est déployé. Par conséquent, vous devez exécuter le serveur d'applications en tant que superutilisateur. 
     * Vous n'avez pas accès aux scripts de base de données et vous ne pouvez les fournir à votre administrateur de base de données pour créer les tables avant d'exécuter la procédure d'installation. Installation Manager crée les tables de base de données pour vous avec des paramètres par défaut. 
-    * Chaque fois que vous effectuez une mise à niveau du produit, par exemple, pour installer un correctif temporaire, Application Center est mis à niveau en premier. La mise à niveau d'Application Center comprend des opérations sur la base de données et le serveur d'applications. Si la mise à niveau d'Application Center échoue, Installation Manager ne peut pas terminer la mise à niveau, et cela vous empêche d'effectuer la mise à niveau d'autres composants {{site.data.keys.mf_server }}. Pour une installation dans un environnement de production, vous ne devez pas déployer Application Center à l'aide d'Installation Manager. Installez Application Center séparément à l'aide de tâches Ant après qu'Installation Manager a installé {{site.data.keys.mf_server }}. Pour plus d'informations sur Application Center, voir [Installation et configuration d'Application Center](../../../appcenter).
+    * Chaque fois que vous effectuez une mise à niveau du produit, par exemple, pour installer un correctif temporaire, Application Center est mis à niveau en premier. La mise à niveau d'Application Center comprend des opérations sur la base de données et le serveur d'applications. Si la mise à niveau d'Application Center échoue, Installation Manager ne peut pas terminer la mise à niveau, et cela vous empêche d'effectuer la mise à niveau d'autres composants {{ site.data.keys.mf_server }}. Pour une installation dans un environnement de production, vous ne devez pas déployer Application Center à l'aide d'Installation Manager. Installez Application Center séparément à l'aide de tâches Ant après qu'Installation Manager a installé {{ site.data.keys.mf_server }}. Pour plus d'informations sur Application Center, voir [Installation et configuration d'Application Center](../../../appcenter).
 
-> **Important : **Le programme d'installation de {{site.data.keys.mf_server }} installe uniquement les fichiers binaires et les outils de {{site.data.keys.mf_server }} sur votre disque. Il ne déploie pas les applications {{site.data.keys.mf_server }} sur votre serveur d'applications. Après avoir exécuté l'installation à l'aide d'Installation Manager, vous devez configurer les bases de données et déployer les applications {{site.data.keys.mf_server }} sur votre serveur d'applications.   
+> **Important : **Le programme d'installation de {{ site.data.keys.mf_server }} installe uniquement les fichiers binaires et les outils de {{ site.data.keys.mf_server }} sur votre disque. Il ne déploie pas les applications {{ site.data.keys.mf_server }} sur votre serveur d'applications. Après avoir exécuté l'installation à l'aide d'Installation Manager, vous devez configurer les bases de données et déployer les applications {{ site.data.keys.mf_server }} sur votre serveur d'applications.   
 > De même, lorsque vous exécutez Installation Manager pour mettre à jour une installation existante, seuls les fichiers présents sur votre disque sont mis à jour. Vous devez effectuer d'autres actions pour mettre à jour les applications qui sont déployées sur vos serveurs d'applications.
 
 #### Accéder à
@@ -45,13 +46,13 @@ Toutefois, dans le cadre d'une installation pour un environnement de production,
 * [Installation à l'aide de l'assistant d'installation d'IBM Installation Manager](#installing-by-using-ibm-installation-manager-install-wizard)
 * [Installation en exécutant IBM Installation Manager en ligne de commande](#installing-by-running-ibm-installation-manager-in-command-line)
 * [Installation à l'aide de fichiers de réponses XML (installation en mode silencieux)](#installing-by-using-xml-response-files---silent-installation)
-* [Structure de distribution de {{site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server)
+* [Structure de distribution de {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server)
 
 ## Mode administrateur et mode utilisateur
 {: #administrator-versus-user-mode }
-Vous pouvez installer {{site.data.keys.mf_server }} dans deux modes IBM Installation Manager distincts. Ce mode varie en fonction de la façon dont IBM Installation Manager est lui-même installé. Le mode détermine les répertoires et les commandes que vous utilisez pour Installation Manager et pour les packages.
+Vous pouvez installer {{ site.data.keys.mf_server }} dans deux modes IBM Installation Manager distincts. Ce mode varie en fonction de la façon dont IBM Installation Manager est lui-même installé. Le mode détermine les répertoires et les commandes que vous utilisez pour Installation Manager et pour les packages.
 
-{{site.data.keys.product }} prend en charge les deux modes Installation Manager suivants : 
+{{ site.data.keys.product }} prend en charge les deux modes Installation Manager suivants : 
 
 * Mode administrateur
 * Mode utilisateur (non administrateur)
@@ -71,18 +72,18 @@ Pour plus d'informations sur les modes Installation Manager, voir [Installation 
 
 ## Installation à l'aide de l'assistant d'installation d'IBM Installation Manager
 {: #installing-by-using-ibm-installation-manager-install-wizard }
-Suivez la procédure décrite ci-après pour installer les ressources de {{site.data.keys.mf_server }} et les outils (par exemple, l'outil de configuration de serveur, les tâches Ant et le programme mfpadm).   
+Suivez la procédure décrite ci-après pour installer les ressources de {{ site.data.keys.mf_server }} et les outils (par exemple, l'outil de configuration de serveur, les tâches Ant et le programme mfpadm).   
 Les décisions dans les deux panneaux suivants de l'assistant d'installation sont obligatoires :
 
 * Panneau **Paramètres généraux**.
 * Panneau **Choisir la configuration** pour installer Application Center
 
 1. Lancez Installation Manager.
-2. Ajoutez le référentiel de {{site.data.keys.mf_server }} dans Installation Manager.
+2. Ajoutez le référentiel de {{ site.data.keys.mf_server }} dans Installation Manager.
     * Accédez à **Fichier → Préférences** et cliquez sur **Ajouter des référentiels...**.
     * Recherchez le fichier référentiel dans le répertoire où le programme d'installation a été extrait. 
 
-        Si vous décompressez le fichier {{site.data.keys.product }} V8.0 .zip pour {{site.data.keys.mf_server }} dans le dossier **mfp\_installer\_directory**, le fichier référentiel se trouve dans **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
+        Si vous décompressez le fichier {{ site.data.keys.product }} V8.0 .zip pour {{ site.data.keys.mf_server }} dans le dossier **mfp\_installer\_directory**, le fichier référentiel se trouve dans **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
 
         Vous souhaiterez peut-être appliquer le dernier groupe de correctifs que vous pouvez télécharger à partir du [portail de support IBM](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Prenez soin d'entrer le référentiel pour le groupe de correctifs. Si vous décompressez le groupe de correctifs dans le dossier **fixpack_directory**, le fichier référentiel se trouve dans **fixpack\_directory/MobileFirst\_Platform\_Server/d le /diskTag.inf**.
 
@@ -92,11 +93,11 @@ Les décisions dans les deux panneaux suivants de l'assistant d'installation son
 3. Après avoir accepté les dispositions du contrat de licence du produit, cliquez sur **Suivant**.
 4. Choisissez le groupe de packages pour installer le produit. 
 
-    {{site.data.keys.product }} V8.0 remplace les éditions précédentes dont le nom d'installation est différent :
+    {{ site.data.keys.product }} V8.0 remplace les éditions précédentes dont le nom d'installation est différent :
     * Worklight for V5.0.6
     * IBM Worklight for V6.0 vers V6.3
     
-    Si l'une de ces anciennes versions du produit est installée sur votre ordinateur, Installation Manager vous offre une option vous permettant d'utiliser un groupe de packages existant au début du processus d'installation. Cette option désinstalle votre ancienne version du produit et réutilise vos options d'installation précédentes pour mettre à niveau {{site.data.keys.mf_app_center_full }} si ce composant a été installé. 
+    Si l'une de ces anciennes versions du produit est installée sur votre ordinateur, Installation Manager vous offre une option vous permettant d'utiliser un groupe de packages existant au début du processus d'installation. Cette option désinstalle votre ancienne version du produit et réutilise vos options d'installation précédentes pour mettre à niveau {{ site.data.keys.mf_app_center_full }} si ce composant a été installé. 
     
     Pour une installation distincte, sélectionnez l'option permettant de créer un nouveau groupe de packages afin de pouvoir installer la nouvelle version et l'ancienne version côte à côte.   
     Si aucune autre version du produit n'est installée sur votre ordinateur, choisissez l'option permettant de créer un nouveau groupe de packages afin de pouvoir installer le produit dans un nouveau groupe de packages. 
@@ -104,38 +105,38 @@ Les décisions dans les deux panneaux suivants de l'assistant d'installation son
 5. Cliquez sur **Suivant**. 
 6. Décidez si l'octroi de licence de jeton doit être ou non activé dans la section **Activer l'octroi de licence de jeton** du panneau **Paramètres généraux**. 
 
-Si vous disposez d'un contrat d'utilisation de l'octroi de licence de jeton avec Rational License Key Server, sélectionnez l'option **Activer l'octroi de licence de jeton avec Rational License Key Server**. Après avoir activé l'octroi de licence de jeton, vous devez exécuter des étapes supplémentaires pour configurer {{site.data.keys.mf_server }}. Sinon, sélectionnez l'option **Ne pas activer l'octroi de licence de jeton avec Rational License Key Server** pour continuer.
-7. Conservez l'option par défaut (Non) dans la section **Installer {{site.data.keys.product }} for iOS** du panneau **Paramètres généraux**. 
+Si vous disposez d'un contrat d'utilisation de l'octroi de licence de jeton avec Rational License Key Server, sélectionnez l'option **Activer l'octroi de licence de jeton avec Rational License Key Server**. Après avoir activé l'octroi de licence de jeton, vous devez exécuter des étapes supplémentaires pour configurer {{ site.data.keys.mf_server }}. Sinon, sélectionnez l'option **Ne pas activer l'octroi de licence de jeton avec Rational License Key Server** pour continuer.
+7. Conservez l'option par défaut (Non) dans la section **Installer {{ site.data.keys.product }} for iOS** du panneau **Paramètres généraux**. 
 8. Indiquez dans le panneau **Choisir la configuration** si Application Center doit être installé. 
 
-    Dans le cadre d'une installation pour un environnement de production, utilisez des tâches Ant pour installer Application Center. L'installation à l'aide de tâches Ant vous permet de découpler les mises à jour sur {{site.data.keys.mf_server }} à partir des mises à jour apportées à Application Center. Dans ce cas, sélectionnez l'option Non dans le panneau Choisir la configuration de sorte qu'Application Center ne soit pas installé. 
+    Dans le cadre d'une installation pour un environnement de production, utilisez des tâches Ant pour installer Application Center. L'installation à l'aide de tâches Ant vous permet de découpler les mises à jour sur {{ site.data.keys.mf_server }} à partir des mises à jour apportées à Application Center. Dans ce cas, sélectionnez l'option Non dans le panneau Choisir la configuration de sorte qu'Application Center ne soit pas installé. 
 
     Si vous sélectionnez Oui, vous devez, à l'aide des panneaux suivants, entrer les détails relatifs à la base de données que vous prévoyez d'utiliser et au serveur d'applications sur lequel vous prévoyez de déployer Application Center. Vous devez également disposer du pilote JDBC correspondant à votre base de données.
 9. Cliquez sur **Suivant** jusqu'à ce que vous ayez atteint le panneau **Merci**. Ensuite, poursuivez l'installation. 
 
-Un répertoire d'installation contenant les ressources nécessaires pour installer les composants {{site.data.keys.product_adj }} est installé. 
+Un répertoire d'installation contenant les ressources nécessaires pour installer les composants {{ site.data.keys.product_adj }} est installé. 
 
 Ces ressources figurent dans les dossiers suivants :
 
-* Dossier **MobileFirstServer** pour {{site.data.keys.mf_server }}
-* Dossier **PushService** pour le service push de {{site.data.keys.mf_server }}
+* Dossier **MobileFirstServer** pour {{ site.data.keys.mf_server }}
+* Dossier **PushService** pour le service push de {{ site.data.keys.mf_server }}
 * Dossier **ApplicationCenter** pour Application Center
-* Dossier **Analytics** pour {{site.data.keys.mf_analytics }}
+* Dossier **Analytics** pour {{ site.data.keys.mf_analytics }}
 
 En outre, le dossier **shortcuts** contient des raccourcis pour l'outil de configuration de serveur, les tâches Ant et le programme mfpadm. 
 
 ## Installation en exécutant IBM Installation Manager en ligne de commande
 {: #installing-by-running-ibm-installation-manager-in-command-line }
 
-1. Passez en revue le contrat de licence de {{site.data.keys.mf_server }}. Vous pouvez visualiser les fichiers de licence lorsque vous téléchargez le référentiel d'installation à partir de Passport Advantage. 
-2. Décompressez dans un dossier le fichier compressé du référentiel de {{site.data.keys.mf_server }} que vous avez téléchargé. 
+1. Passez en revue le contrat de licence de {{ site.data.keys.mf_server }}. Vous pouvez visualiser les fichiers de licence lorsque vous téléchargez le référentiel d'installation à partir de Passport Advantage. 
+2. Décompressez dans un dossier le fichier compressé du référentiel de {{ site.data.keys.mf_server }} que vous avez téléchargé. 
 
-    Vous pouvez télécharger le référentiel à partir de {{site.data.keys.product }} eAssembly sur le site [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). Le nom du package est **IBM MobileFirst Foundation V{{site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
+    Vous pouvez télécharger le référentiel à partir de {{ site.data.keys.product }} eAssembly sur le site [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). Le nom du package est **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
 
     Dans les étapes décrites ci-après, le répertoire dans lequel vous décompressez le programme d'installation s'appelle **mfp\_repository\_dir**. Il contient un dossier **MobileFirst\_Platform\_Server/disk1**.
 3. Démarrez une session de ligne de commande et accédez à **installation\_manager\_install\_dir/tools/eclipse/**.
 
-    Si vous acceptez les dispositions du contrat de licence que vous avez passé en revue à l'étape 1, vous pouvez installer {{site.data.keys.mf_server }}.
+    Si vous acceptez les dispositions du contrat de licence que vous avez passé en revue à l'étape 1, vous pouvez installer {{ site.data.keys.mf_server }}.
     * Pour une installation sans application de l'octroi de licence de jeton (si vous ne disposez pas d'un contrat définissant l'utilisation de l'octroi de licence de jeton), entrez la commande suivante : 
 
       ```bash
@@ -147,16 +148,16 @@ En outre, le dossier **shortcuts** contient des raccourcis pour l'outil de confi
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
       ```
     
-        La valeur de la propriété **user.licensed.by.tokens** est **true**. Vous devez configurer {{site.data.keys.mf_server }} pour l'[octroi de licence de jeton](../token-licensing).
+        La valeur de la propriété **user.licensed.by.tokens** est **true**. Vous devez configurer {{ site.data.keys.mf_server }} pour l'[octroi de licence de jeton](../token-licensing).
         
-        Les propriétés suivantes permettent d'installer {{site.data.keys.mf_server }} sans Application Center :
+        Les propriétés suivantes permettent d'installer {{ site.data.keys.mf_server }} sans Application Center :
         * **user.appserver.selection2**=none
         * **user.database.selection2**=none
         * **user.database.preinstalled**=false
         
         Cette propriété indique si l'octroi de licence de jeton est activé ou non : **user.licensed.by.tokens=true/false**.
         
-        Affectez la valeur false à la propriété user.use.ios.edition pour installer {{site.data.keys.product }}.
+        Affectez la valeur false à la propriété user.use.ios.edition pour installer {{ site.data.keys.product }}.
         
 5. Si vous souhaitez effectuer une installation avec le dernier correctif temporaire, ajoutez le référentiel de correctif temporaire au paramètre **-repositories**. Le paramètre **-repositories** accepte une liste de référentiels séparés par des virgules. 
 
@@ -164,20 +165,20 @@ En outre, le dossier **shortcuts** contient des raccourcis pour l'outil de confi
     
     Pour plus d'informations sur la commande imcl, voir [Installation Manager : Installation de packages via les commandes `imcl`](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en).
     
-Un répertoire d'installation contenant les ressources nécessaires pour installer les composants {{site.data.keys.product_adj }} est installé. 
+Un répertoire d'installation contenant les ressources nécessaires pour installer les composants {{ site.data.keys.product_adj }} est installé. 
 
 Ces ressources figurent dans les dossiers suivants :
 
-* Dossier **MobileFirstServer** pour {{site.data.keys.mf_server }}
-* Dossier **PushService** pour le service push de {{site.data.keys.mf_server }}
+* Dossier **MobileFirstServer** pour {{ site.data.keys.mf_server }}
+* Dossier **PushService** pour le service push de {{ site.data.keys.mf_server }}
 * Dossier **ApplicationCenter** pour Application Center
-* Dossier **Analytics** pour {{site.data.keys.mf_analytics }}    
+* Dossier **Analytics** pour {{ site.data.keys.mf_analytics }}    
 
 En outre, le dossier **shortcuts** contient des raccourcis pour l'outil de configuration de serveur, les tâches Ant et le programme mfpadm. 
 
 ## Installation à l'aide de fichiers de réponses XML (installation en mode silencieux)
 {: #installing-by-using-xml-response-files---silent-installation }
-Si vous souhaitez installer {{site.data.keys.mf_app_center_full }} à l'aide d'IBM Installation Manager en ligne de commande, vous devez fournir une grande liste d'arguments. Dans ce cas, utilisez les fichiers de réponses XML pour fournir ces arguments. 
+Si vous souhaitez installer {{ site.data.keys.mf_app_center_full }} à l'aide d'IBM Installation Manager en ligne de commande, vous devez fournir une grande liste d'arguments. Dans ce cas, utilisez les fichiers de réponses XML pour fournir ces arguments. 
 
 Les installations en mode silencieux sont définies par un fichier XML appelé fichier de réponses. Ce fichier contient les données nécessaires pour exécuter les opérations d'installation en mode silencieux. Les installations en mode silencieux sont lancées à partir de la ligne de commande ou d'un fichier de commandes. 
 
@@ -188,7 +189,7 @@ L'installation en mode silencieux est décrite dans la documentation utilisation
 
 Deux méthodes permettent de créer un fichier de réponses adapté :
 
-* Utilisation d'exemples de fichier de réponses fournis dans la documentation utilisateur de {{site.data.keys.product_adj }}. 
+* Utilisation d'exemples de fichier de réponses fournis dans la documentation utilisateur de {{ site.data.keys.product_adj }}. 
 * Utilisation d'un fichier de réponses enregistré sur un autre ordinateur.
 
 Ces deux méthodes sont documentées dans les sections suivantes :
@@ -264,9 +265,9 @@ Des exemples de fichier de réponses pour IBM Installation Manager sont fournis 
     </table>
     
     > **Remarque :** L'utilisation de MySQL conjointement avec le profil Liberty de WebSphere Application Server ou le profil complet de WebSphere Application Server n'est pas considérée comme une configuration prise en charge. Pour plus d'informations, voir [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Vous pouvez utiliser IBM DB2 ou un autre système de gestion de base de données qui est pris en charge par WebSphere Application Server afin de bénéficier d'une configuration entièrement prise en charge par le support IBM.
-    Pour la désinstallation, utilisez un exemple de fichier qui dépend de la version de {{site.data.keys.mf_server }} ou de Worklight Server que vous avez initialement installé dans le groupe de packages spécifique : 
+    Pour la désinstallation, utilisez un exemple de fichier qui dépend de la version de {{ site.data.keys.mf_server }} ou de Worklight Server que vous avez initialement installé dans le groupe de packages spécifique : 
     
-    * {{site.data.keys.mf_server }} utilise le groupe de packages {{site.data.keys.mf_server }}.
+    * {{ site.data.keys.mf_server }} utilise le groupe de packages {{ site.data.keys.mf_server }}.
     * Worklight Server V6.x, ou version ultérieure, utilise le groupe de packages IBM Worklight.
     * Worklight Server V5.x utilise le groupe de packages Worklight.
 
@@ -276,7 +277,7 @@ Des exemples de fichier de réponses pour IBM Installation Manager sont fournis 
       <td></td>
       <td></td>
       <td></td>
-            <th>Version initiale de {{site.data.keys.mf_server }}</th>
+            <th>Version initiale de {{ site.data.keys.mf_server }}</th>
             <th>Exemple de fichier</th>
         </tr>
         <tr>
@@ -341,7 +342,7 @@ dans les exemples suivants :
     * Pour WebSphere Application Server Liberty : `wlp/usr/servers/<server>/server.xml`
     * Pour Apache Tomcat : `conf/server.xml`
 4. Modifiez le fichier de réponses de manière à tenir compte des différences entre la machine sur laquelle le fichier de réponses a été créé et la machine cible. 
-5. Installez {{site.data.keys.mf_server }} en utilisant le fichier de réponses de la machine cible, comme indiqué dans [Installation d'un package en mode silencieux avec un fichier de réponses](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
+5. Installez {{ site.data.keys.mf_server }} en utilisant le fichier de réponses de la machine cible, comme indiqué dans [Installation d'un package en mode silencieux avec un fichier de réponses](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
 
 ### Paramètres de ligne de commande (installation en mode silencieux)
 {: #command-line-silent-installation-parameters }
@@ -355,7 +356,7 @@ dans les exemples suivants :
     <tr>
         <td>user.use.ios.edition</td>
         <td>Toujours</td>
-        <td>Indiquez la valeur <code>false</code> si vous prévoyez d'installer {{site.data.keys.product }}. Si vous prévoyez d'installer le produit pour l'édition iOS, vous devez indiquer la valeur <code>true</code>.</td>
+        <td>Indiquez la valeur <code>false</code> si vous prévoyez d'installer {{ site.data.keys.product }}. Si vous prévoyez d'installer le produit pour l'édition iOS, vous devez indiquer la valeur <code>true</code>.</td>
         <td><code>true</code> ou <code>false</code></td>
     </tr>
     <tr>
@@ -445,7 +446,7 @@ dans les exemples suivants :
     <tr>
       <td>user.appserver.was.serial</td>
       <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-      <td>Suffixe qui distingue les applications à installer des autres installations de {{site.data.keys.mf_server }}.</td>
+      <td>Suffixe qui distingue les applications à installer des autres installations de {{ site.data.keys.mf_server }}.</td>
       <td>Chaîne de 10 décimaux. </td>
     </tr>
     <tr>
@@ -630,17 +631,17 @@ dans les exemples suivants :
     </tr>
 </table>
 
-## Structure de distribution de {{site.data.keys.mf_server }}
+## Structure de distribution de {{ site.data.keys.mf_server }}
 {: #distribution-structure-of-mobilefirst-server }
-Les fichiers et les outils de {{site.data.keys.mf_server }} sont installés dans le répertoire d'installation de {{site.data.keys.mf_server }}. 
+Les fichiers et les outils de {{ site.data.keys.mf_server }} sont installés dans le répertoire d'installation de {{ site.data.keys.mf_server }}. 
 
 #### Fichiers et sous-répertoires du sous-répertoire d'Analytics
 {: #files-and-subdirectories-in-the-analytics-subdirectory }
 
 | Elément | Description |
 |------|-------------|
-| **analytics.ear** et **analytics-*.war** | Fichiers EAR et WAR permettant d'installer {{site.data.keys.mf_analytics }}. |
-| **configuration-samples** | Contient les exemples de fichier Ant permettant d'installer {{site.data.keys.mf_analytics }} à l'aide de tâches Ant. |
+| **analytics.ear** et **analytics-*.war** | Fichiers EAR et WAR permettant d'installer {{ site.data.keys.mf_analytics }}. |
+| **configuration-samples** | Contient les exemples de fichier Ant permettant d'installer {{ site.data.keys.mf_analytics }} à l'aide de tâches Ant. |
 
 #### Fichiers et sous-répertoires du sous-répertoire d'Application Center
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
@@ -653,16 +654,16 @@ Les fichiers et les outils de {{site.data.keys.mf_server }} sont installés dans
 | **installer** | Contient les ressources permettant de créer le client Application Center.  | 
 | **tools** | Outils d'Application Center. | 
 
-#### Fichiers et sous-répertoires du sous-répertoire de {{site.data.keys.mf_server }}
+#### Fichiers et sous-répertoires du sous-répertoire de {{ site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
 | Elément | Description |
 |------|-------------|
-| **mfp-ant-deployer.jar** | Ensemble de tâches Ant pour {{site.data.keys.mf_server }}.  |
-| **mfp-*.war** | Fichiers WAR des composants {{site.data.keys.mf_server }}. |
-| **configuration-samples** | Contient les exemples de fichier Ant permettant d'installer les composants {{site.data.keys.mf_server }} à l'aide de tâches Ant. | 
+| **mfp-ant-deployer.jar** | Ensemble de tâches Ant pour {{ site.data.keys.mf_server }}.  |
+| **mfp-*.war** | Fichiers WAR des composants {{ site.data.keys.mf_server }}. |
+| **configuration-samples** | Contient les exemples de fichier Ant permettant d'installer les composants {{ site.data.keys.mf_server }} à l'aide de tâches Ant. | 
 | **ConfigurationTool** | Contient les fichiers binaires de l'outil de configuration de serveur. L'outil est lancé à partir de **rép_install_serbeur_mfp/shortcuts**. |
-| **databases** | Contient les scripts SQL à utiliser pour créer manuellement les tables destinées aux composants {{site.data.keys.mf_server }} (service d'administration de {{site.data.keys.mf_server }}, service de configuration de {{site.data.keys.mf_server }} et environnement d'exécution de {{site.data.keys.product_adj }}).  | 
+| **databases** | Contient les scripts SQL à utiliser pour créer manuellement les tables destinées aux composants {{ site.data.keys.mf_server }} (service d'administration de {{ site.data.keys.mf_server }}, service de configuration de {{ site.data.keys.mf_server }} et environnement d'exécution de {{ site.data.keys.product_adj }}).  | 
 | **external-server-libraries** |  Contient les fichiers JAR utilisés par différents outils (par exemple, l'outil d'authenticité et l'outil de sécurité OAuth).  |
 
 #### Fichiers et sous-répertoires du sous-répertoire du service push
@@ -670,22 +671,22 @@ Les fichiers et les outils de {{site.data.keys.mf_server }} sont installés dans
 
 | Elément | Description |
 |------|-------------|
-| **mfp-push-service.war** | Fichier WAR permettant d'installer le service push de {{site.data.keys.mf_server }}.  |
-| **databases** | Contient les scripts SQL à utiliser pour créer manuellement les tables destinées au service push de {{site.data.keys.mf_server }}.  | 
+| **mfp-push-service.war** | Fichier WAR permettant d'installer le service push de {{ site.data.keys.mf_server }}.  |
+| **databases** | Contient les scripts SQL à utiliser pour créer manuellement les tables destinées au service push de {{ site.data.keys.mf_server }}.  | 
 
 #### Fichiers et sous-répertoires du sous-répertoire de licences
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
 | Elément | Description |
 |------|-------------|
-| **Text** | Contient la licence de {{site.data.keys.product }}. | 
+| **Text** | Contient la licence de {{ site.data.keys.product }}. | 
 
-#### Fichiers et sous-répertoire du répertoire d'installation de {{site.data.keys.mf_server }}
+#### Fichiers et sous-répertoire du répertoire d'installation de {{ site.data.keys.mf_server }}
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
 | Elément | Description |
 |------|-------------|
-| **shortcuts** | Scripts de programme de lancement pour Apache Ant, l'outil de configuration de serveur et la commande mfpadmin, fournis avec {{site.data.keys.mf_server }}. | 
+| **shortcuts** | Scripts de programme de lancement pour Apache Ant, l'outil de configuration de serveur et la commande mfpadmin, fournis avec {{ site.data.keys.mf_server }}. | 
 
 #### Fichiers et sous-répertoire du sous-répertoire d'outils
 {: #files-and-subdirectories-in-the-tools-subdirectory }

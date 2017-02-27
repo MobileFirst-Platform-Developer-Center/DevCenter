@@ -7,24 +7,18 @@ weight: 8
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation 
 {: #overview }
-Vous installez Application Center dans le cadre de l'installation de {{site.data.keys.mf_server }}.
+Vous installez Application Center dans le cadre de l'installation de {{ site.data.keys.mf_server }}.
 Vous pouvez l'installer de différentes façons : 
 
 * Installation avec IBM Installation Manager
 * Installation à l'aide de tâches Ant 
 * Installation manuelle
 
-Si vous le souhaitez, vous pouvez créer la base de données de votre choix avant d'installer {{site.data.keys.mf_server }} avec Application
-Center.  
-Après avoir installé Application Center sur le serveur d'applications Web de votre choix, vous devez effectuer d'autres tâches de configuration. Pour plus
-d'informations, voir la section Configuration d'Application Center après son installation ci-dessous. Si vous avez choisi l'installation manuelle dans le programme
-d'installation, voir la documentation du serveur de votre choix. 
+Si vous le souhaitez, vous pouvez créer la base de données de votre choix avant d'installer {{ site.data.keys.mf_server }} avec Application Center.  
+Après avoir installé Application Center sur le serveur d'applications Web de votre choix, vous devez effectuer d'autres tâches de configuration. Pour plus d'informations, voir la section Configuration d'Application Center après son installation ci-dessous. Si vous avez choisi l'installation manuelle dans le programme d'installation, voir la documentation du serveur de votre choix. 
 
-> **Remarque :** si vous prévoyez d'installer des applications sur des terminaux iOS via Application Center, vous devez d'abord
-configurer le serveur d'Application Center avec SSL.
-Pour la liste des fichiers et des outils installés, voir
-[Structure
-de distribution de {{site.data.keys.mf_server }}](../installation-manager/#distribution-structure-of-mobilefirst-server).
+> **Remarque :** si vous prévoyez d'installer des applications sur des appareils iOS via Application Center, vous devez d'abord configurer le serveur d'Application Center avec SSL.
+Pour la liste des fichiers et des outils installés, voir [Structure de distribution de {{ site.data.keys.mf_server }}](../installation-manager/#distribution-structure-of-mobilefirst-server).
 
 #### Aller à 
 {: #jump-to }
@@ -38,36 +32,27 @@ de distribution de {{site.data.keys.mf_server }}](../installation-manager/#distr
 {: #installing-application-center-with-ibm-installation-manager }
 Avec IBM Installation Manager, vous pouvez installer Application Center, créer sa base de données et procéder à son déploiement sur un serveur d'applications.
   
-Avant de commencer, vérifiez que l'utilisateur qui exécute IBM Installation Manager dispose des privilèges décrits dans
-[Configuration requise pour le système de fichiers](../appserver/#file-system-prerequisites).
+Avant de commencer, vérifiez que l'utilisateur qui exécute IBM Installation Manager dispose des privilèges décrits dans [Configuration requise pour le système de fichiers](../appserver/#file-system-prerequisites).
 
 Pour installer IBM Application Center avec IBM Installation Manager, procédez comme suit. 
 
-1. Facultatif : vous pouvez créer manuellement des bases de données pour Application Center, comme décrit dans
-[Création optionnelle de bases de données](#optional-creation-of-databases) ci-dessous. IBM Installation Manager peut créer les bases de
-données d'Application Center pour vous avec les paramètres par défaut. 
+1. Facultatif : vous pouvez créer manuellement des bases de données pour Application Center, comme décrit dans [Création optionnelle de bases de données](#optional-creation-of-databases) ci-dessous. IBM Installation Manager peut créer les bases de données d'Application Center pour vous avec les paramètres par défaut. 
 2. Exécutez IBM Installation Manager comme décrit dans [Exécution d'IBM Installation Manager](../installation-manager).
 3. Sélectionnez **Oui** en réponse à la question **Installer IBM Application Center**.
 
 #### Aller à 
 {: #jump-to-1 }
 * [Création optionnelle de bases de données](#optional-creation-of-databases)
-* [Installation d'Application Center dans WebSphere
-Application Server Network Deployment](#installing-application-center-in-websphere-application-server-network-deployment)
+* [Installation d'Application Center dans WebSphere Application Server Network Deployment](#installing-application-center-in-websphere-application-server-network-deployment)
 * [Finalisation de l'installation](#completing-the-installation)
-* [ID de connexion et mots de passe par
-défaut créés par IBM Installation Manager pour Application Center](#default-logins-and-passwords-created-by-ibm-installation-manager-for-the-application-center)
+* [ID de connexion et mots de passe par défaut créés par IBM Installation Manager pour Application Center](#default-logins-and-passwords-created-by-ibm-installation-manager-for-the-application-center)
 
 ### Création optionnelle de bases de données 
 {: #optional-creation-of-databases }
-Si vous voulez activer l'option permettant d'installer Application Center lorsque vous exécutez le programme d'installation de
-{{site.data.keys.mf_server }},
-vous devez disposer de certains droits d'accès à la base de données permettant de créer les tables requises par Application Center. 
+Si vous voulez activer l'option permettant d'installer Application Center lorsque vous exécutez le programme d'installation de {{ site.data.keys.mf_server }}, vous devez disposer de certains droits d'accès à la base de données permettant de créer les tables requises par Application Center. 
 
-Si vos données d'identification pour l'administration de la base de données sont suffisantes et si vous entrez le nom d'utilisateur et le mot de passe
-de l'administrateur dans le programme d'installation lorsque vous y êtes invité, le programme d'installation peut créer les bases de données pour vous.
-Sinon, vous devez demander à votre administrateur de base de données de créer la base de données requise. Celle-ci doit être créée avant le lancement du
-programme d'installation de {{site.data.keys.mf_server }}. 
+Si vos données d'identification pour l'administration de la base de données sont suffisantes et si vous entrez le nom d'utilisateur et le mot de passe de l'administrateur dans le programme d'installation lorsque vous y êtes invité, le programme d'installation peut créer les bases de données pour vous.
+Sinon, vous devez demander à votre administrateur de base de données de créer la base de données requise. Celle-ci doit être créée avant le lancement du programme d'installation de {{ site.data.keys.mf_server }}. 
 
 Les rubriques ci-dessous décrivent la procédure pour les systèmes de gestion de base de données pris en charge. 
 
@@ -82,24 +67,13 @@ Les rubriques ci-dessous décrivent la procédure pour les systèmes de gestion 
 {: #creating-the-db2-database-for-application-center }
 Au cours de l'installation d'IBM MobileFirst Foundation, le programme d'installation peut créer la base de données d'Application Center pour vous. 
 
-Le programme d'installation peut créer la base de données d'Application Center pour vous si vous entrez le nom et le mot de passe d'un compte
-utilisateur sur le serveur de base de données qui dispose du privilège DB2 SYSADM ou SYSCTRL, et si le compte est accessible via SSH. Sinon,
-l'administrateur de base de données peut créer la base de données d'Application Center pour vous. Pour plus d'informations, voir la documentation utilisateur de la
-[solution DB2](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html). 
+Le programme d'installation peut créer la base de données d'Application Center pour vous si vous entrez le nom et le mot de passe d'un compte utilisateur sur le serveur de base de données qui dispose du privilège DB2 SYSADM ou SYSCTRL, et si le compte est accessible via SSH. Sinon, l'administrateur de base de données peut créer la base de données d'Application Center pour vous. Pour plus d'informations, voir la documentation utilisateur de la [solution DB2](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html). 
 
-Lorsque vous créez la base de données manuellement, vous pouvez remplacer le nom de la base de données (ici, APPCNTR) et le mot de passe par un nom
-de base de données et un mot de passe de votre choix. 
+Lorsque vous créez la base de données manuellement, vous pouvez remplacer le nom de la base de données (ici, APPCNTR) et le mot de passe par un nom de base de données et un mot de passe de votre choix. 
 
-> **Important :** vous pouvez nommer votre base de données et votre utilisateur différemment, ou définir un autre mot de passe ;
-toutefois, veillez à entrer le nom de base de données, le nom d'utilisateur et le mot de passe appropriés correctement au cours de la configuration de
-la base de données DB2. Un nom de base de données DB2 ne peut pas comporter plus de 8 caractères, quelle que soit la plateforme, et les noms
-d'utilisateur DB2 ainsi que les mots de passe DB2 ne peuvent pas comporter plus de 8 caractères sur les systèmes UNIX et Linux, et 30 caractères sur les
-systèmes Windows.
+> **Important :** vous pouvez nommer votre base de données et votre utilisateur différemment, ou définir un autre mot de passe ; toutefois, veillez à entrer le nom de base de données, le nom d'utilisateur et le mot de passe appropriés correctement au cours de la configuration de la base de données DB2. Un nom de base de données DB2 ne peut pas comporter plus de 8 caractères, quelle que soit la plateforme, et les noms d'utilisateur DB2 ainsi que les mots de passe DB2 ne peuvent pas comporter plus de 8 caractères sur les systèmes UNIX et Linux, et 30 caractères sur les systèmes Windows.
 1. Créez un utilisateur système, par exemple **wluser** dans un groupe d'administrateurs DB2 tel que
-**DB2USERS**, à l'aide des commandes appropriées à votre système d'exploitation. Associez-lui un mot de passe, par exemple **wluser**. Si
-vous voulez que plusieurs instances d'IBM {{site.data.keys.mf_server }} se connectent à la même base de données, utilisez un nom d'utilisateur
-différent pour chaque connexion. Chaque utilisateur de base de données possède un schéma par défaut distinct. Pour plus d'informations sur les utilisateurs
-de base de données, voir la documentation DB2 ainsi que la documentation de votre système d'exploitation. 
+**DB2USERS**, à l'aide des commandes appropriées à votre système d'exploitation. Associez-lui un mot de passe, par exemple **wluser**. Si vous voulez que plusieurs instances d'IBM {{ site.data.keys.mf_server }} se connectent à la même base de données, utilisez un nom d'utilisateur différent pour chaque connexion. Chaque utilisateur de base de données possède un schéma par défaut distinct. Pour plus d'informations sur les utilisateurs de base de données, voir la documentation DB2 ainsi que la documentation de votre système d'exploitation. 
 
 2. Ouvrez un processeur de ligne de commande DB2 en tant qu'utilisateur disposant des droits **SYSADM** ou **SYSCTRL** : 
 
@@ -116,22 +90,14 @@ Center en remplaçant le nom d'utilisateur **wluser** par les noms d'utilisateur
       QUIT
       ```
       
-3. Le programme d'installation peut créer les objets et les tables de base de données pour Application Center dans un schéma spécifique. Ainsi,
-vous pouvez utiliser la même base de données pour Application Center et pour un projet MobileFirst. Si les droits IMPLICIT\_SCHEMA sont accordés à
-l'utilisateur créé à l'étape 1 (valeur par défaut dans le script de création de base de données à l'étape 2), aucune intervention n'est
-requise. Si
-l'utilisateur ne dispose pas des droits IMPLICIT\_SCHEMA, vous devez créer un SCHEMA pour les objets et les tables de base de données d'Application Center.
+3. Le programme d'installation peut créer les objets et les tables de base de données pour Application Center dans un schéma spécifique. Ainsi, vous pouvez utiliser la même base de données pour Application Center et pour un projet MobileFirst. Si les droits IMPLICIT\_SCHEMA sont accordés à l'utilisateur créé à l'étape 1 (valeur par défaut dans le script de création de base de données à l'étape 2), aucune intervention n'est requise. Si l'utilisateur ne dispose pas des droits IMPLICIT\_SCHEMA, vous devez créer un SCHEMA pour les objets et les tables de base de données d'Application Center.
 
 
 #### Création de la base de données MySQL pour Application Center
 {: #creating-the-mysql-database-for-application-center }
 Au cours de l'installation de MobileFirst, le programme d'installation peut créer la base de données d'Application Center pour vous. 
 
-Le programme d'installation peut créer la base de données pour vous si vous entrez le nom et le mot de passe du compte du superutilisateur. Pour
-plus d'informations, voir [Securing the Initial MySQL Accounts](http://dev.mysql.com/doc/refman/5.1/en/default-privileges.html) sur votre
-serveur de base de données MySQL. Votre administrateur de base de données peut également créer les bases de données pour vous. Lorsque vous créez la base
-de données manuellement, vous pouvez remplacer le nom de la base de données (ici, APPCNTR) et le mot de passe par un nom de base de données et un mot de
-passe de votre choix. Notez que les noms de base de données MySQL sont sensibles à la casse sous UNIX. 
+Le programme d'installation peut créer la base de données pour vous si vous entrez le nom et le mot de passe du compte du superutilisateur. Pour plus d'informations, voir [Securing the Initial MySQL Accounts](http://dev.mysql.com/doc/refman/5.1/en/default-privileges.html) sur votre serveur de base de données MySQL. Votre administrateur de base de données peut également créer les bases de données pour vous. Lorsque vous créez la base de données manuellement, vous pouvez remplacer le nom de la base de données (ici, APPCNTR) et le mot de passe par un nom de base de données et un mot de passe de votre choix. Notez que les noms de base de données MySQL sont sensibles à la casse sous UNIX. 
 
 1. Démarrez l'outil de ligne de commande MySQL. 
 2. Entrez les commandes suivantes : 
@@ -143,36 +109,24 @@ passe de votre choix. Notez que les noms de base de données MySQL sont sensible
    FLUSH PRIVILEGES;
    ```
    
-   Ici, vous devez remplacer **hôte-Worklight** par le nom de l'hôte sur lequel s'exécute IBM MobileFirst
-Foundation. 
+   Ici, vous devez remplacer **hôte-Worklight** par le nom de l'hôte sur lequel s'exécute IBM MobileFirst Foundation. 
 
 #### Création de la base de données Oracle pour Application Center 
 {: #creating-the-oracle-database-for-application-center }
-Au cours de l'installation, le programme d'installation peut créer pour vous la base de données d'Application Center (sauf si le type de base de données
-est Oracle 12c) ou l'utilisateur et le schéma dans une base de données existante. 
+Au cours de l'installation, le programme d'installation peut créer pour vous la base de données d'Application Center (sauf si le type de base de données est Oracle 12c) ou l'utilisateur et le schéma dans une base de données existante. 
 
-Le programme d'installation peut créer la base de données (sauf si le type de base de données est Oracle 12c) ou l'utilisateur et le schéma dans
-une base de données existante, si vous entrez le nom et le mot de passe de l'administrateur Oracle sur le serveur de base de données et si le compte est
-accessible via SSH. Sinon, l'administrateur de base de données peut créer la base de données ou l'utilisateur et le schéma pour vous. Lorsque vous créez la
-base de données ou l'utilisateur manuellement, vous pouvez utiliser les noms de base de données, les noms d'utilisateur et un mot de passe de votre choix. Notez que les minuscules dans les noms d'utilisateur Oracle peuvent générer des problèmes. 
+Le programme d'installation peut créer la base de données (sauf si le type de base de données est Oracle 12c) ou l'utilisateur et le schéma dans une base de données existante, si vous entrez le nom et le mot de passe de l'administrateur Oracle sur le serveur de base de données et si le compte est accessible via SSH. Sinon, l'administrateur de base de données peut créer la base de données ou l'utilisateur et le schéma pour vous. Lorsque vous créez la base de données ou l'utilisateur manuellement, vous pouvez utiliser les noms de base de données, les noms d'utilisateur et un mot de passe de votre choix. Notez que les minuscules dans les noms d'utilisateur Oracle peuvent générer des problèmes. 
 
-1. Si vous ne disposez pas encore d'une base de données nommée **ORCL**, utilisez l'assistant de configuration de
-base de données
-Oracle (DBCA) et suivez les étapes qu'il présente afin de créer une base de données à usage général nommée **ORCL**:
+1. Si vous ne disposez pas encore d'une base de données nommée **ORCL**, utilisez l'assistant de configuration de base de données Oracle (DBCA) et suivez les étapes qu'il présente afin de créer une base de données à usage général nommée **ORCL**:
     * Utilisez un nom de base de données global de type **ORCL\_votre\_domaine** et l'identificateur système (SID) **ORCL**.
-    * Dans l'onglet **Custom Scripts** de l'étape **Database Content**, n'exécutez pas les scripts SQL car
-vous devez d'abord créer un compte utilisateur. 
+    * Dans l'onglet **Custom Scripts** de l'étape **Database Content**, n'exécutez pas les scripts SQL car vous devez d'abord créer un compte utilisateur. 
     * Dans l'onglet **Character Sets** de l'étape **Initialization Parameters**, sélectionnez **Use Unicode (AL32UTF8) character set and UTF8 - Unicode 3.0 UTF-8 national character set**.
     * Terminez la procédure en acceptant les valeurs par défaut. 
 2. Créez un utilisateur de base de données en utilisant **Oracle Database Control** ou l'interpréteur de ligne de commande **Oracle SQLPlu**s. 
     * Avec **Oracle Database Control** :
         * Connectez-vous en tant que **SYSDBA**.
-        * Accédez à la page **Users** : cliquez sur **Server**, puis sur **Users** dans la
-section **Security**. 
-        * Créez un utilisateur, par exemple **APPCENTER**. Si vous voulez que plusieurs instances d'IBM
-{{site.data.keys.mf_server }} se connectent à la base de données à usage général que vous avez créée à l'étape 1, utilisez un nom d'utilisateur
-différent pour chaque
-connexion. Chaque utilisateur de base de données possède un schéma par défaut distinct. 
+        * Accédez à la page **Users** : cliquez sur **Server**, puis sur **Users** dans la section **Security**. 
+        * Créez un utilisateur, par exemple **APPCENTER**. Si vous voulez que plusieurs instances d'IBM {{ site.data.keys.mf_server }} se connectent à la base de données à usage général que vous avez créée à l'étape 1, utilisez un nom d'utilisateur différent pour chaque connexion. Chaque utilisateur de base de données possède un schéma par défaut distinct. 
         * Affectez les attributs suivants : 
             * Profile: **DEFAULT**
             * Authentication: **password**
@@ -195,19 +149,13 @@ Les commandes de l'exemple suivant créent un utilisateur nommé APPCENTER pour 
 
 ### Installation d'Application Center dans WebSphere Application Server Network Deployment
 {: #installing-application-center-in-websphere-application-server-network-deployment }
-Pour installer Application Center sur un ensemble de serveurs WebSphere Application Server Network Deployment, exécutez IBM Installation
-Manager sur la machine sur laquelle s'exécute le gestionnaire de déploiement. 
+Pour installer Application Center sur un ensemble de serveurs WebSphere Application Server Network Deployment, exécutez IBM Installation Manager sur la machine sur laquelle s'exécute le gestionnaire de déploiement. 
 
-1. Lorsqu'IBM Installation Manager vous invite à spécifier le type de base de données, sélectionnez une option autre qu'**Apache Derby**. IBM
-MobileFirst Foundation prend en charge Apache Derby en mode imbriqué seulement et ce choix n'est pas compatible avec un déploiement via WebSphere Application Server Network Deployment.
-2. Dans le panneau du programme d'installation dans lequel vous spécifiez le répertoire d'installation de WebSphere Application Server, sélectionnez
-le profil de gestionnaire de déploiement. 
+1. Lorsqu'IBM Installation Manager vous invite à spécifier le type de base de données, sélectionnez une option autre qu'**Apache Derby**. IBM MobileFirst Foundation prend en charge Apache Derby en mode imbriqué seulement et ce choix n'est pas compatible avec un déploiement via WebSphere Application Server Network Deployment.
+2. Dans le panneau du programme d'installation dans lequel vous spécifiez le répertoire d'installation de WebSphere Application Server, sélectionnez le profil de gestionnaire de déploiement. 
 
-    > **Attention :** il ne faut pas sélectionner un profil de serveur d'applications, puis un serveur géré unique. Sinon, le
-gestionnaire de déploiement remplace la configuration du serveur, que vous procédiez à l'installation sur la machine sur laquelle s'exécute le
-gestionnaire de déploiement ou sur une autre machine.
-3. Sélectionnez la portée requise selon l'emplacement auquel Application Center doit être installé. Le tableau suivant répertorie les portées
-disponibles : 
+    > **Attention :** il ne faut pas sélectionner un profil de serveur d'applications, puis un serveur géré unique. Sinon, le gestionnaire de déploiement remplace la configuration du serveur, que vous procédiez à l'installation sur la machine sur laquelle s'exécute le gestionnaire de déploiement ou sur une autre machine.
+3. Sélectionnez la portée requise selon l'emplacement auquel Application Center doit être installé. Le tableau suivant répertorie les portées disponibles : 
 
     | Portée | Explication | 
     |--------|-------------|
@@ -218,15 +166,9 @@ disponibles :
 
 4. Redémarrez les serveurs cible en suivant la procédure décrite dans [Finalisation de l'installation](#completing-the-installation) ci-dessous. 
 
-L'installation n'a pas d'effet hors de l'ensemble de serveurs qui se trouvent dans la portée spécifiée. Les fournisseurs JDBC et les sources de données JDBC sont définis avec la portée spécifiée. Le
-nom des entités dont la portée est la cellule (les applications et, pour DB2, l'alias d'authentification) comportent un suffixe qui les rend uniques. Par
-conséquent, vous pouvez installer Application Center dans différentes configurations, et même différentes versions d'Application Center, dans différents
-clusters de la même cellule. 
+L'installation n'a pas d'effet hors de l'ensemble de serveurs qui se trouvent dans la portée spécifiée. Les fournisseurs JDBC et les sources de données JDBC sont définis avec la portée spécifiée. Le nom des entités dont la portée est la cellule (les applications et, pour DB2, l'alias d'authentification) comportent un suffixe qui les rend uniques. Par conséquent, vous pouvez installer Application Center dans différentes configurations, et même différentes versions d'Application Center, dans différents clusters de la même cellule. 
 
-> **Remarque :** Etant donné que le pilote JDBC n'est installé que sur l'ensemble spécifié de serveurs d'applications, il se peut que le
-bouton Tester
-la connexion pour les sources de données JDBC dans la console d'administration WebSphere Application Server du gestionnaire de déploiement ne fonctionne
-pas. Si vous utilisez un serveur HTTP frontal, vous devez aussi configurer l'adresse URL publique. 
+> **Remarque :** Etant donné que le pilote JDBC n'est installé que sur l'ensemble spécifié de serveurs d'applications, il se peut que le bouton Tester la connexion pour les sources de données JDBC dans la console d'administration WebSphere Application Server du gestionnaire de déploiement ne fonctionne pas. Si vous utilisez un serveur HTTP frontal, vous devez aussi configurer l'adresse URL publique. 
 
 ### Finalisation de l'installation
 {: #completing-the-installation }
@@ -234,27 +176,19 @@ Une fois l'installation terminée, dans certains cas, vous devez redémarrer le 
 Vous devez le redémarrer dans les circonstances suivantes : 
 
 * Lorsque vous utilisez WebSphere Application Server avec une base de données de type DB2. 
-* Lorsque vous utilisez WebSphere Application Server et que vous l'avez ouvert sans avoir activé la sécurité des applications avant
-d'installer IBM
-MobileFirst Application Center ou {{site.data.keys.mf_server }}.
+* Lorsque vous utilisez WebSphere Application Server et que vous l'avez ouvert sans avoir activé la sécurité des applications avant d'installer IBM MobileFirst Application Center ou {{ site.data.keys.mf_server }}.
 
-Le programme d'installation de MobileFirst doit activer la sécurité des applications de WebSphere Application Server (si elle ne l'est pas) pour
-l'installation d'Application
-Center. Ensuite, pour que cette activation soit prise en compte, vous devez redémarrer le serveur d'applications une
-fois l'installation de {{site.data.keys.mf_server }} terminée. 
+Le programme d'installation de MobileFirst doit activer la sécurité des applications de WebSphere Application Server (si elle ne l'est pas) pour l'installation d'Application Center. Ensuite, pour que cette activation soit prise en compte, vous devez redémarrer le serveur d'applications une
+fois l'installation de {{ site.data.keys.mf_server }} terminée. 
 
 * Lorsque vous utilisez WebSphere Application Server Liberty ou Apache Tomcat.
-* Après avoir procédé à une mise à niveau depuis une version précédente de {{site.data.keys.mf_server }}.
+* Après avoir procédé à une mise à niveau depuis une version précédente de {{ site.data.keys.mf_server }}.
 
 Si vous utilisez WebSphere Application Server Network Deployment et avez choisi une installation via le gestionnaire de déploiement : 
 
-* Vous devez redémarrer les serveurs qui s'exécutaient lors de l'installation et sur lesquels sont installées les applications Web de
-{{site.data.keys.mf_server }}. 
+* Vous devez redémarrer les serveurs qui s'exécutaient lors de l'installation et sur lesquels sont installées les applications Web de {{ site.data.keys.mf_server }}. 
 
-Pour redémarrer ces serveurs par le biais de la console du gestionnaire de
-déploiement, sélectionnez **Applications → Types d'application → Applications
-d'entreprise WebSphere → IBM_Application\_Center\_Services → Etat de l'application
-spécifique à la cible**.
+Pour redémarrer ces serveurs par le biais de la console du gestionnaire de déploiement, sélectionnez **Applications → Types d'application → Applications d'entreprise WebSphere → IBM_Application\_Center\_Services → Etat de l'application spécifique à la cible**.
 
 * Il n'est pas nécessaire de redémarrer le gestionnaire de déploiement ni les agents de noeud. 
 
@@ -262,30 +196,22 @@ spécifique à la cible**.
 
 ### ID de connexion et mots de passe par défaut créés par IBM Installation Manager pour Application Center
 {: #default-logins-and-passwords-created-by-ibm-installation-manager-for-the-application-center }
-IBM Installation Manager crée les ID de connexion par défaut pour Application Center selon votre serveur d'applications. Vous pouvez les utiliser afin de
-tester Application Center.
+IBM Installation Manager crée les ID de connexion par défaut pour Application Center selon votre serveur d'applications. Vous pouvez les utiliser afin de tester Application Center.
 
 #### Profil complet de WebSphere Application Server 
 {: #websphere-application-server-full-profile }
 L'ID de connexion **appcenteradmin** est créé avec un mot de passe qui est généré et affiché au cours de l'installation.
 
-Tous les utilisateurs authentifiés dans le superdomaine de l'application sont
-également autorisés à accéder au rôle **appcenteradmin**. Il
-n'est pas recommandé d'utiliser cet ID de connexion dans un environnement de production, notamment si WebSphere Application Server est configuré avec un
-domaine de sécurité unique. 
+Tous les utilisateurs authentifiés dans le superdomaine de l'application sont également autorisés à accéder au rôle **appcenteradmin**. Il n'est pas recommandé d'utiliser cet ID de connexion dans un environnement de production, notamment si WebSphere Application Server est configuré avec un domaine de sécurité unique. 
 
-Pour plus d'informations sur la modification de ces ID de connexion, voir
-[Configuration des rôles de sécurité Java EE dans le
-profil complet de WebSphere Application Server](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile).
+Pour plus d'informations sur la modification de ces ID de connexion, voir [Configuration des rôles de sécurité Java EE dans le profil complet de WebSphere Application Server](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile).
 
 #### Profil Liberty de WebSphere Application Server 
 {: #websphere-application-server-liberty-profile }
 * L'ID de connexion demo est créé dans l'élément basicRegistry avec le mot de passe demo. 
 * L'ID de connexion appcenteradmin est créé dans l'élémet basicRegistry avec le mot de passe admin. 
 
-Pour plus d'informations sur la modification de ces ID de connexion, voir
-[Configuration des rôles de sécurité Java EE dans le
-profil Liberty de WebSphere Application Server](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile).
+Pour plus d'informations sur la modification de ces ID de connexion, voir [Configuration des rôles de sécurité Java EE dans le profil Liberty de WebSphere Application Server](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile).
 
 #### Apache Tomcat
 {: #apache-tomcat }
@@ -293,8 +219,7 @@ profil Liberty de WebSphere Application Server](#configuring-the-java-ee-securit
 * L'ID de connexion guest est créé avec le mot de passe guest. 
 * L'ID de connexion appcenteradmin est créé avec le mot de passe admin. 
 
-Pour plus d'informations sur la modification de ces ID de connexion, voir
-[Configuration des rôles de sécurité Java EE sur Apache Tomcat](#configuring-the-java-ee-security-roles-on-apache-tomcat).
+Pour plus d'informations sur la modification de ces ID de connexion, voir [Configuration des rôles de sécurité Java EE sur Apache Tomcat](#configuring-the-java-ee-security-roles-on-apache-tomcat).
 
 ## Installation d'Application Center à l'aide de tâches Ant
 {: #installing-the-application-center-with-ant-tasks }
@@ -303,39 +228,29 @@ Découvrez les tâches Ant que vous pouvez utiliser pour installer Application C
 #### Aller à 
 {: #jump-to-3 }
 
-* [Création et configuration de la base de données pour Application
-Center à l'aide de tâches Ant](#creating-and-configuring-the-database-for-application-center-with-ant-tasks)
-* [Déploiement
-des services et de la console Application Center à
-l'aide de tâches Ant](#deploying-the-application-center-console-and-services-with-ant-tasks)
+* [Création et configuration de la base de données pour Application Center à l'aide de tâches Ant](#creating-and-configuring-the-database-for-application-center-with-ant-tasks)
+* [Déploiement des services et de la console Application Center à l'aide de tâches Ant](#deploying-the-application-center-console-and-services-with-ant-tasks)
 
 ### Création et configuration de la base de données pour Application Center à l'aide de tâches Ant 
 {: #creating-and-configuring-the-database-for-application-center-with-ant-tasks }
-Si vous n'avez pas créé la base de données manuellement, vous pouvez utiliser des tâches Ant afin de créer et de configurer votre base de données pour
-Application Center. Si votre base de données existe déjà, il est possible de n'effectuer que les étapes de configuration à l'aide de tâches Ant. 
+Si vous n'avez pas créé la base de données manuellement, vous pouvez utiliser des tâches Ant afin de créer et de configurer votre base de données pour Application Center. Si votre base de données existe déjà, il est possible de n'effectuer que les étapes de configuration à l'aide de tâches Ant. 
 
-Avant de commencer, vérifiez qu'un système de gestion de base de données (SGBD) est installé et exécuté sur un serveur de base de données, sur le
-même ordinateur ou un autre. 
+Avant de commencer, vérifiez qu'un système de gestion de base de données (SGBD) est installé et exécuté sur un serveur de base de données, sur le même ordinateur ou un autre. 
 
-Les tâches Ant pour Application Center se trouvent dans le répertoire **ApplicationCenter/configuration-samples** de la
-distribution {{site.data.keys.mf_server }}. 
+Les tâches Ant pour Application Center se trouvent dans le répertoire **ApplicationCenter/configuration-samples** de la distribution {{ site.data.keys.mf_server }}. 
 
-Si vous voulez lancer la tâche Ant depuis un ordinateur sur lequel {{site.data.keys.mf_server }} n'est pas installé, vous devez copier les
-fichiers suivants sur cet ordinateur : 
+Si vous voulez lancer la tâche Ant depuis un ordinateur sur lequel {{ site.data.keys.mf_server }} n'est pas installé, vous devez copier les fichiers suivants sur cet ordinateur : 
     
 * La bibliothèque **rép\_install\_serveur\_mf/MobileFirstServer/mfp-ant-deployer.jar**
 * Le répertoire contenant les fichiers binaires du programme aapt depuis le package Android SDK platform-tools :
 **rép\_install\_serveur\_mf/ApplicationCenter/tools/android-sdk**
 * Les exemples de fichier Ant qui se trouvent dans **rép\_install\_serveur\_mf/ApplicationCenter/configuration-samples**
 
-> **Remarque :** la marque de réservation **rép\_install\_serveur\_mf** représente le répertoire dans lequel vous
-avez installé {{site.data.keys.mf_server }}.
-Si vous n'avez pas créé votre base de données manuellement comme décrit dans [Création optionnelle des
-bases de données](#optional-creation-of-databases), suivez les étapes 1 à 3 ci-dessous.
+> **Remarque :** la marque de réservation **rép\_install\_serveur\_mf** représente le répertoire dans lequel vous avez installé {{ site.data.keys.mf_server }}.
+Si vous n'avez pas créé votre base de données manuellement comme décrit dans [Création optionnelle des bases de données](#optional-creation-of-databases), suivez les étapes 1 à 3 ci-dessous.
 Si votre base de données existe déjà, il suffit de créer les tables de base de données. Suivez les étapes 4 à 7 ci-dessous. 
 
-1. Copiez l'exemple de fichier Ant correspondant à votre système de gestion de base de données. Le format de nom des fichiers permettant de créer
-une base de données est le suivant : 
+1. Copiez l'exemple de fichier Ant correspondant à votre système de gestion de base de données. Le format de nom des fichiers permettant de créer une base de données est le suivant : 
 
     ```bash
     create-appcenter-database-<sgbd>.xml
@@ -352,8 +267,7 @@ une base de données est le suivant :
     
     Si la base de données existe déjà, il suffit de créer les tables de base de données en effectuant les étapes suivantes : 
 
-4. Copiez l'exemple de fichier Ant correspondant à votre serveur d'applications et à votre système de gestion de base de données. Le format de
-nom des fichiers permettant de configurer une base de données existante est le suivant : 
+4. Copiez l'exemple de fichier Ant correspondant à votre serveur d'applications et à votre système de gestion de base de données. Le format de nom des fichiers permettant de configurer une base de données existante est le suivant : 
     
     ```bash
     configure-appcenter-<serveurApp>-<sgbd>.xml
@@ -375,35 +289,28 @@ Si vous ne voulez pas sauvegarder les mots de passe, vous pouvez les remplacer p
 ### Déploiement des services et de la console Application Center à l'aide de tâches
 Ant 
 {: #deploying-the-application-center-console-and-services-with-ant-tasks }
-Utilisez des tâches Ant pour déployer les services et la console Application Center sur un serveur d'applications et configurer les sources de données, les
-propriétés et les pilotes de base de données qui sont utilisés par Application Center. 
+Utilisez des tâches Ant pour déployer les services et la console Application Center sur un serveur d'applications et configurer les sources de données, les propriétés et les pilotes de base de données qui sont utilisés par Application Center. 
 
 Avant de commencer 
 
-* Suivez la procédure décrite à la section [Création et
-configuration de la base de données pour Application Center à l'aide de tâches Ant](#creating-and-configuring-the-database-for-application-center-with-ant-tasks).
-* Vous devez exécuter la tâche Ant sur l'ordinateur sur lequel est installé le serveur d'applications ou le gestionnaire de déploiement réseau pour WebSphere
-Application Server Network Deployment. Si vous voulez lancer la tâche Ant depuis un ordinateur sur lequel {{site.data.keys.mf_server }} n'est pas
-installé, vous devez copier les fichiers et les répertoires suivants sur cet ordinateur : 
+* Suivez la procédure décrite à la section [Création et configuration de la base de données pour Application Center à l'aide de tâches Ant](#creating-and-configuring-the-database-for-application-center-with-ant-tasks).
+* Vous devez exécuter la tâche Ant sur l'ordinateur sur lequel est installé le serveur d'applications ou le gestionnaire de déploiement réseau pour WebSphere Application Server Network Deployment. Si vous voulez lancer la tâche Ant depuis un ordinateur sur lequel {{ site.data.keys.mf_server }} n'est pas installé, vous devez copier les fichiers et les répertoires suivants sur cet ordinateur : 
 
     * La bibliothèque **rép\_install\_serveur\_mf/MobileFirstServer/mfp-ant-deployer.jar**
     * Les applications Web (fichiers WAR et EAR) qui se trouvent dans **rép\_install\_serveur_mf/ApplicationCenter/console**
-    * Le répertoire contenant les fichiers binaires du programme aapt depuis le package Android SDK platform-tools :
-**rép\_install\_serveur\_mf/ApplicationCenter/tools/android-sdk**
+    * Le répertoire contenant les fichiers binaires du programme aapt depuis le package Android SDK platform-tools : **rép\_install\_serveur\_mf/ApplicationCenter/tools/android-sdk**
     * Les exemples de fichier Ant qui se trouvent dans **rép\_install\_serveur\_mf/ApplicationCenter/configuration-samples**
 
-> **Remarque :** la marque de réservation rép_install_serveur_mf** représente le répertoire dans lequel vous avez installé {{site.data.keys.mf_server }}. 
+> **Remarque :** la marque de réservation rép_install_serveur_mf** représente le répertoire dans lequel vous avez installé {{ site.data.keys.mf_server }}. 
 
-1. Copiez le fichier Ant correspondant à votre serveur d'applications et à votre système de gestion de base de données. Le format de nom des
-fichiers permettant de configurer Application Center est le suivant : 
+1. Copiez le fichier Ant correspondant à votre serveur d'applications et à votre système de gestion de base de données. Le format de nom des fichiers permettant de configurer Application Center est le suivant : 
 
     ```bash
     configure-appcenter-<serveurApp>-<sgbd>.xml
     ```
     
 2. Editez le fichier Ant et remplacez les marques de réservation par les propriétés au début du fichier. 
-3. Exécutez la commande suivante pour déployer les services et la console
-Application Center sur un serveur d'applications : 
+3. Exécutez la commande suivante pour déployer les services et la console Application Center sur un serveur d'applications : 
 
     ```bash
     ant -f configure-appcenter-<serveurApp>-<sgbd>.xml install
@@ -416,10 +323,8 @@ Application Center sur un serveur d'applications :
     > * Désinstaller Application Center, avec la cible **uninstall**.
     > * Mettre à jour Application Center, avec la cible **minimal-update**, afin d'appliquer un groupe de correctifs. 
 
-4. Sauvegardez le fichier Ant. Vous en aurez peut-être besoin plus tard pour appliquer un groupe de correctifs ou effectuer une mise à niveau. Si
-vous ne voulez pas sauvegarder les mots de passe, vous pouvez les remplacer par "************" (12 astérisques) pour une invite interactive. 
-5. Si vous avez procédé à l'installation sur le profil Liberty de WebSphere Application Server ou sur Apache Tomcat, vérifiez que le programme aapt
-est exécutable pour tous les utilisateurs. Si nécessaire, vous devez définir les droits utilisateur appropriés. Par exemple, sur les systèmes UNIX et Linux : 
+4. Sauvegardez le fichier Ant. Vous en aurez peut-être besoin plus tard pour appliquer un groupe de correctifs ou effectuer une mise à niveau. Si vous ne voulez pas sauvegarder les mots de passe, vous pouvez les remplacer par "************" (12 astérisques) pour une invite interactive. 
+5. Si vous avez procédé à l'installation sur le profil Liberty de WebSphere Application Server ou sur Apache Tomcat, vérifiez que le programme aapt est exécutable pour tous les utilisateurs. Si nécessaire, vous devez définir les droits utilisateur appropriés. Par exemple, sur les systèmes UNIX et Linux : 
 
     ```bash
     chmod a+x rép_install_serveur_mf/ApplicationCenter/tools/android-sdk/*/aapt*
@@ -427,16 +332,11 @@ est exécutable pour tous les utilisateurs. Si nécessaire, vous devez définir 
 
 ## Installation manuelle d'Application Center
 {: #manually-installing-application-center }
-Une reconfiguration est nécessaire pour que {{site.data.keys.mf_server }} puisse utiliser une base de données ou un schéma différent de celle ou
-de celui qui a été spécifié au cours de son installation. Elle dépend du type de base de données ainsi que du serveur d'applications. 
+Une reconfiguration est nécessaire pour que {{ site.data.keys.mf_server }} puisse utiliser une base de données ou un schéma différent de celle ou de celui qui a été spécifié au cours de son installation. Elle dépend du type de base de données ainsi que du serveur d'applications. 
 
 Sur les serveurs d'applications autres qu'Apache Tomcat, vous pouvez déployer Application Center à partir de deux fichiers WAR ou d'un fichier EAR. 
 
-> **Restriction :** que vous installiez Application Center avec IBM Installation Manager dans le cadre de l'installation de
-{{site.data.keys.mf_server }} ou manuellement, gardez à l'esprit que la
-"distribution des mises à jour" d'Application Center n'est pas prise en
-charge. En d'autres termes, vous ne pouvez pas installer deux versions d'Application Center (par exemple la version 5.0.6
-et la version 6.0.0) utilisant la même base de données.
+> **Restriction :** que vous installiez Application Center avec IBM Installation Manager dans le cadre de l'installation de {{ site.data.keys.mf_server }} ou manuellement, gardez à l'esprit que la "distribution des mises à jour" d'Application Center n'est pas prise en charge. En d'autres termes, vous ne pouvez pas installer deux versions d'Application Center (par exemple la version 5.0.6 et la version 6.0.0) utilisant la même base de données.
 #### Aller à 
 {: #jump-to-4 }
 
@@ -447,17 +347,13 @@ et la version 6.0.0) utilisant la même base de données.
 * [Déploiement manuel des fichiers WAR
 d'Application
 Center et configuration manuelle du serveur d'applications](#deploying-the-application-center-war-files-and-configuring-the-application-server-manually)
-* [Déploiement manuel du fichier EAR
-d'Application
-Center et configuration manuelle du serveur d'applications](#deploying-the-application-center-ear-file-and-configuring-the-application-server-manually)
+* [Déploiement manuel du fichier EAR d'Application Center et configuration manuelle du serveur d'applications](#deploying-the-application-center-ear-file-and-configuring-the-application-server-manually)
 
 ### Configuration manuelle de la base de données DB2 pour Application Center 
 {: #configuring-the-db2-database-manually-for-application-center }
-Vous configurez la base de données DB2 manuellement en créant la base de données et les tables de base de données, puis en configurant le serveur
-d'applications approprié en vue de l'utilisation de cette configuration de base de données. 
+Vous configurez la base de données DB2 manuellement en créant la base de données et les tables de base de données, puis en configurant le serveur d'applications approprié en vue de l'utilisation de cette configuration de base de données. 
 
-1. Créez la base de données. Cette étape est décrite à la section [Création de la base
-de données DB2 pour Application Center](#creating-the-db2-database-for-application-center).
+1. Créez la base de données. Cette étape est décrite à la section [Création de la base de données DB2 pour Application Center](#creating-the-db2-database-for-application-center).
 2. Créez les tables dans la base de données. Cette étape est décrite à la section
 [Configuration manuelle de votre base de données DB2 pour Application Center](#setting-up-your-db2-database-manually-for-application-center).
 3. Procédez à la configuration propre au serveur d'applications conformément à la liste ci-après. 
@@ -466,28 +362,22 @@ de données DB2 pour Application Center](#creating-the-db2-database-for-applicat
 {: #jump-to-5 }
 
 * [Configuration manuelle de votre base de données DB2 pour Application Center](#setting-up-your-db2-database-manually-for-application-center)
-* [Configuration manuelle du profil Liberty pour DB2 pour
-Application Center](#configuring-liberty-profile-for-db2-manually-for-application-center)
-* [Configuration manuelle de WebSphere Application
-Server pour DB2 pour Application Center](#configuring-websphere-application-server-for-db2-manually-for-application-center)
+* [Configuration manuelle du profil Liberty pour DB2 pour Application Center](#configuring-liberty-profile-for-db2-manually-for-application-center)
+* [Configuration manuelle de WebSphere Application Server pour DB2 pour Application Center](#configuring-websphere-application-server-for-db2-manually-for-application-center)
 * [Configuration manuelle d'Apache Tomcat pour DB2 pour Application Center](#configuring-apache-tomcat-for-db2-manually-for-application-center)
 
 ##### Configuration manuelle de votre base de données DB2 pour Application Center 
 {: #setting-up-your-db2-database-manually-for-application-center }
 Configurez votre base de données DB2 pour Application Center en créant le schéma de base de données. 
 
-1. Créez un utilisateur système, **worklight**, dans un groupe d'administrateurs DB2 tel que **DB2USERS**, à
-l'aide des commandes appropriées à votre système d'exploitation. Associez-lui le mot de passe **worklight**. Pour plus d'informations, voir la documentation DB2 ainsi que la documentation de votre système d'exploitation. 
+1. Créez un utilisateur système, **worklight**, dans un groupe d'administrateurs DB2 tel que **DB2USERS**, à l'aide des commandes appropriées à votre système d'exploitation. Associez-lui le mot de passe **worklight**. Pour plus d'informations, voir la documentation DB2 ainsi que la documentation de votre système d'exploitation. 
 
-> **Important :** vous pouvez nommer votre utilisateur différemment, ou définir un autre mot de passe ;
-toutefois, veillez à entrer le nom d'utilisateur et le mot de passe appropriés correctement au cours de la configuration de la
-base de données DB2. Les noms d'utilisateur DB2 ainsi que les mots de passe DB2 ne peuvent pas comporter plus de 8 caractères sur les systèmes UNIX et Linux, et 30 caractères sur les systèmes Windows.
+> **Important :** vous pouvez nommer votre utilisateur différemment, ou définir un autre mot de passe ; toutefois, veillez à entrer le nom d'utilisateur et le mot de passe appropriés correctement au cours de la configuration de la base de données DB2. Les noms d'utilisateur DB2 ainsi que les mots de passe DB2 ne peuvent pas comporter plus de 8 caractères sur les systèmes UNIX et Linux, et 30 caractères sur les systèmes Windows.
 2. Ouvrez un processeur de ligne de commande DB2 en tant qu'utilisateur disposant des droits **SYSADM** ou **SYSCTRL** : 
     * Sur les systèmes Windows, cliquez sur **Démarrer → IBM DB2 → Command Line Processor**.
     * Sur les systèmes Linux et UNIX, accédez à **~/sqllib/bin** et entrez `./db2`.
 
-3. Entrez les instructions SQL et de gestionnaire de base de données suivantes afin de créer une base de données nommée
-**APPCNTR** :
+3. Entrez les instructions SQL et de gestionnaire de base de données suivantes afin de créer une base de données nommée **APPCNTR** :
 
    ```bash
    CREATE DATABASE APPCNTR COLLATE USING SYSTEM PAGESIZE 32768 
@@ -496,9 +386,7 @@ base de données DB2. Les noms d'utilisateur DB2 ainsi que les mots de passe DB2
    QUIT
    ```
     
-4. Exécutez DB2 à l'aide des commandes ci-dessous afin de créer les tables **APPCNTR** dans un schéma nommé
-**APPSCHM** (vous pouvez changer le nom du schéma). Vous pouvez exécuter cette commande sur une base de données existante dont la taille
-de page est compatible avec celle définie à l'étape 3. 
+4. Exécutez DB2 à l'aide des commandes ci-dessous afin de créer les tables **APPCNTR** dans un schéma nommé **APPSCHM** (vous pouvez changer le nom du schéma). Vous pouvez exécuter cette commande sur une base de données existante dont la taille de page est compatible avec celle définie à l'étape 3. 
     
    ```bash
    db2 CONNECT TO APPCNTR
@@ -514,8 +402,7 @@ Terminez la procédure de configuration de la base de données DB2 avant de cont
 1. Ajoutez le fichier JAR du pilote JDBC DB2 dans le répertoire **$LIBERTY\_HOME/wlp/usr/shared/resources/db2**.
 
     Si ce répertoire n'existe pas, créez-le. Vous pouvez extraire le fichier de l'une des façons suivantes : 
-    * Téléchargez-le depuis la page [DB2 JDBC Driver Versions and
-Downloads](http://www.ibm.com/support/docview.wss?uid=swg21363866).
+    * Téléchargez-le depuis la page [DB2 JDBC Driver Versions and Downloads](http://www.ibm.com/support/docview.wss?uid=swg21363866).
     * Procédez à son extraction depuis le répertoire **rép\_install\_db2/java** sur le serveur DB2. 
 
 2. Configurez la source de données dans le fichier **$LIBERTY_HOME/wlp/usr/servers/serveurWorklight/server.xml** comme suit : 
@@ -536,18 +423,14 @@ Downloads](http://www.ibm.com/support/docview.wss?uid=swg21363866).
    </dataSource>
    ```
     
-   La marque de réservation **worklight** après **user=** correspond au nom de l'utilisateur système disposant
-de l'accès **CONNECT** à la base de données **APPCNTR** que vous avez créée précédemment.   
+   La marque de réservation **worklight** après **user=** correspond au nom de l'utilisateur système disposant de l'accès **CONNECT** à la base de données **APPCNTR** que vous avez créée précédemment.   
     
-   La marque de réservation **worklight** après **password=** correspond au mot de passe de cet utilisateur. Si
-vous avez défini un autre nom d'utilisateur et/ou un autre mot de passe, remplacez **worklight** en conséquence. De plus, remplacez
-**serveurdb2** par le nom d'hôte de votre serveur DB2 (par exemple **localhost** s'il se trouve sur le même
+   La marque de réservation **worklight** après **password=** correspond au mot de passe de cet utilisateur. Si vous avez défini un autre nom d'utilisateur et/ou un autre mot de passe, remplacez **worklight** en conséquence. De plus, remplacez **serveurdb2** par le nom d'hôte de votre serveur DB2 (par exemple **localhost** s'il se trouve sur le même
 ordinateur). 
 
    Les noms d'utilisateur DB2 ainsi que les mots de passe DB2 ne peuvent pas comporter plus de 8 caractères sur les systèmes UNIX et Linux, et 30 caractères sur les systèmes Windows. 
 
-3. Vous pouvez chiffrer le mot de passe de la base de données à l'aide du programme securityUtility qui se trouve dans
-**rép\_install\_liberty/bin**.
+3. Vous pouvez chiffrer le mot de passe de la base de données à l'aide du programme securityUtility qui se trouve dans **rép\_install\_liberty/bin**.
 
 ##### Configuration manuelle de WebSphere Application Server pour DB2 pour Application Center
 {: #configuring-websphere-application-server-for-db2-manually-for-application-center }
@@ -571,15 +454,11 @@ Vous pouvez configurer et définir votre base de données DB2 manuellement pour 
     * Sélectionnez la portée appropriée dans la zone de liste déroulante **Portée**. 
     * Cliquez sur **Nouveau**.
     * Dans la zone **Type de base de données**, définissez **DB2**.
-    * Dans la zone **Type de fournisseur**, définissez
-**DB2 Using IBM JCC Driver** (DB2 utilisant le pilote JCC IBM). 
+    * Dans la zone **Type de fournisseur**, définissez **DB2 Using IBM JCC Driver** (DB2 utilisant le pilote JCC IBM). 
     * Dans la zone **Type d'implémentation**, définissez **Source de données du pool de connexions**.
-    * Dans la zone **Nom**, définissez **DB2 Using IBM
-JCC Driver** (DB2 utilisant le pilote JCC IBM).
+    * Dans la zone **Nom**, définissez **DB2 Using IBM JCC Driver** (DB2 utilisant le pilote JCC IBM).
     * Cliquez sur **Suivant**. 
-    * Ajoutez au chemin d'accès aux classes l'ensemble de fichiers JAR qui se trouvent dans le répertoire que vous avez identifié à l'étape 1 en
-remplaçant
-**rép\_install\_was/profiles/nom-profil** par la référence de variable WebSphere Application Server `${USER_INSTALL_ROOT}`.
+    * Ajoutez au chemin d'accès aux classes l'ensemble de fichiers JAR qui se trouvent dans le répertoire que vous avez identifié à l'étape 1 en remplaçant **rép\_install\_was/profiles/nom-profil** par la référence de variable WebSphere Application Server `${USER_INSTALL_ROOT}`.
     * Ne définissez pas **Chemin d'accès aux bibliothèques natives**.
     * Cliquez sur **Suivant**. 
     * Cliquez sur **Terminer**. 
@@ -599,10 +478,8 @@ remplaçant
         * **Nom du serveur** : localhost
         * **Numéro de port** : 50000 (valeur par défaut) 
     * Cliquez sur **Suivant**. 
-    * Créez les données d'authentification JAAS-J2C en spécifiant le nom d'utilisateur et le mot de passe DB2 comme propriétés. Si nécessaire,
-revenez à l'assistant de création de source de données en répétant les étapes 4.a à 4.h. 
-    * Sélectionnez l'alias d'authentification que vous avez créé dans la zone de liste déroulante **Alias d'authentification géré par
-composant** (et non dans la zone de liste déroulante **Alias d'authentification géré par conteneur**). 
+    * Créez les données d'authentification JAAS-J2C en spécifiant le nom d'utilisateur et le mot de passe DB2 comme propriétés. Si nécessaire, revenez à l'assistant de création de source de données en répétant les étapes 4.a à 4.h. 
+    * Sélectionnez l'alias d'authentification que vous avez créé dans la zone de liste déroulante **Alias d'authentification géré par composant** (et non dans la zone de liste déroulante **Alias d'authentification géré par conteneur**). 
     * Cliquez sur **Suivant**, puis sur **Terminer**.
     * Cliquez sur **Sauvegarder**.
     * Dans **Ressources → JDBC → Sources de données**, sélectionnez la nouvelle source de données. 
@@ -610,25 +487,20 @@ composant** (et non dans la zone de liste déroulante **Alias d'authentification
     * Sélectionnez la case à cocher **Source de données non transactionnelle**. 
     * Cliquez sur **OK**. 
     * Cliquez sur **Sauvegarder**.
-    * Cliquez sur **Propriétés personnalisées** pour la source
-de données, sélectionnez la propriété **currentSchema**, puis
-définissez comme valeur le schéma utilisé pour créer les tables d'Application Center (APPSCHM dans cet exemple).
-5. Testez la connexion à la source de données en sélectionnant **Source de données**, puis en cliquant sur **Tester la
-connexion**.
+    * Cliquez sur **Propriétés personnalisées** pour la source de données, sélectionnez la propriété **currentSchema**, puis définissez comme valeur le schéma utilisé pour créer les tables d'Application Center (APPSCHM dans cet exemple).
+5. Testez la connexion à la source de données en sélectionnant **Source de données**, puis en cliquant sur **Tester la connexion**.
 
 Laissez la case à cocher **Utiliser cette source de données dans la persistance CMP** sélectionnée. 
 
 ##### Configuration manuelle d'Apache Tomcat pour DB2 pour Application Center 
 {: #configuring-apache-tomcat-for-db2-manually-for-application-center }
-Si vous voulez configurer et définir votre base de données DB2 manuellement pour Application Center avec un serveur Apache Tomcat, suivez la procédure
-ci-dessous.   
+Si vous voulez configurer et définir votre base de données DB2 manuellement pour Application Center avec un serveur Apache Tomcat, suivez la procédure ci-dessous.   
 Avant de continuer, terminez la procédure de configuration de la base de données DB2. 
 
 1. Ajoutez le fichier JAR du pilote JDBC DB2. 
 
     Vous pouvez extraire ce fichier JAR de plusieurs façons :
-    * Téléchargez-le depuis la page [DB2 JDBC Driver Versions and
-Downloads](http://www.ibm.com/support/docview.wss?uid=swg21363866).
+    * Téléchargez-le depuis la page [DB2 JDBC Driver Versions and Downloads](http://www.ibm.com/support/docview.wss?uid=swg21363866).
     * Procédez à son extraction depuis le répertoire **rép\_install\_db2/java** sur le serveur DB2 dans **$TOMCAT_HOME/lib**. 
 
 2. Préparez une instruction XML qui définit la source de données, conformément à l'exemple de code ci-dessous. 
@@ -643,48 +515,35 @@ Downloads](http://www.ibm.com/support/docview.wss?uid=swg21363866).
             url="jdbc:db2://server:50000/APPCNTR:currentSchema=APPSCHM;"/>
    ```
     
-   Le paramètre **worklight** après **username=** correspond au nom de l'utilisateur système disposant de
-l'accès "CONNECT" à la base de données **APPCNTR** que vous avez créée précédemment. Le paramètre
-**mot_de_passe** après **password=** correspond au mot de passe de cet utilisateur. Si vous avez défini un autre nom
-d'utilisateur et/ou un autre mot de passe, remplacez ces entrées en conséquence. 
+   Le paramètre **worklight** après **username=** correspond au nom de l'utilisateur système disposant de l'accès "CONNECT" à la base de données **APPCNTR** que vous avez créée précédemment. Le paramètre **mot_de_passe** après **password=** correspond au mot de passe de cet utilisateur. Si vous avez défini un autre nom d'utilisateur et/ou un autre mot de passe, remplacez ces entrées en conséquence. 
 
    DB2 impose des limites relatives à la longueur des noms d'utilisateur et des mots de passe. 
     * Pour les systèmes UNIX et Linux : 8 caractères 
     * Pour les systèmes Windows : 30 caractères 
 
-3. Insérez cette instruction dans le fichier server.xml, comme indiqué à la section
-[Configuration manuelle d'Apache Tomcat pour Application Center](#configuring-apache-tomcat-for-application-center-manually).
+3. Insérez cette instruction dans le fichier server.xml, comme indiqué à la section [Configuration manuelle d'Apache Tomcat pour Application Center](#configuring-apache-tomcat-for-application-center-manually).
 
 ### Configuration manuelle de la base de données Apache Derby pour Application Center 
 {: #configuring-the-apache-derby-database-manually-for-application-center }
-Vous configurez la base de données Apache Derby manuellement en créant la base de données et les tables de base de données, puis en configurant le serveur
-d'applications approprié en vue de l'utilisation de cette configuration de base de données. 
+Vous configurez la base de données Apache Derby manuellement en créant la base de données et les tables de base de données, puis en configurant le serveur d'applications approprié en vue de l'utilisation de cette configuration de base de données. 
 
-1. Créez la base de données et ses tables. Cette étape est décrite à la section
-[Configuration manuelle de votre base de données Apache Derby pour Application
-Center](#setting-up-your-apache-derby-database-manually-for-application-center).
+1. Créez la base de données et ses tables. Cette étape est décrite à la section [Configuration manuelle de votre base de données Apache Derby pour Application Center](#setting-up-your-apache-derby-database-manually-for-application-center).
 2. Configurez le serveur d'applications en vue de l'utilisation de cette configuration de base de données. Accédez à l'une des rubriques ci-après.
 
 
 #### Aller à 
 {: #jump-to-6 }
 
-* [Configuration manuelle de votre base de données Apache
-Derby pour
-Application Center](#setting-up-your-apache-derby-database-manually-for-application-center)
-* [Configuration manuelle du profil Liberty pour Derby pour
-Application Center](#configuring-liberty-profile-for-derby-manually-for-application-center)
-* [Configuration manuelle de WebSphere Application
-Server pour Derby pour Application Center](#configuring-websphere-application-server-for-derby-manually-for-application-center)
-* [Configuration manuelle d'Apache Tomcat pour Derby pour
-Application Center](#configuring-apache-tomcat-for-derby-manually-for-application-center)
+* [Configuration manuelle de votre base de données Apache Derby pour Application Center](#setting-up-your-apache-derby-database-manually-for-application-center)
+* [Configuration manuelle du profil Liberty pour Derby pour Application Center](#configuring-liberty-profile-for-derby-manually-for-application-center)
+* [Configuration manuelle de WebSphere Application Server pour Derby pour Application Center](#configuring-websphere-application-server-for-derby-manually-for-application-center)
+* [Configuration manuelle d'Apache Tomcat pour Derby pour Application Center](#configuring-apache-tomcat-for-derby-manually-for-application-center)
 
 ##### Configuration manuelle de votre base de données Apache Derby pour Application Center 
 {: #setting-up-your-apache-derby-database-manually-for-application-center }
 Configurez votre base de données Apache Derby pour Application Center en créant le schéma de base de données. 
 
-1. A l'emplacement auquel vous voulez créer la base de données, exécutez **ij.bat** sur les systèmes Windows et **ij.sh**
-sur les systèmes UNIX et Linux. 
+1. A l'emplacement auquel vous voulez créer la base de données, exécutez **ij.bat** sur les systèmes Windows et **ij.sh** sur les systèmes UNIX et Linux. 
 
    > **Remarque :** le programme ij est intégré à Apache Derby. S'il n'est pas installé, vous pouvez le télécharger depuis la page [Apache Derby: Downloads](http://db.apache.org/derby/derby_downloads).
    Pour prendre connaissance des versions prises en charge d'Apache Derby, voir
@@ -701,12 +560,9 @@ sur les systèmes UNIX et Linux.
 
 ##### Configuration manuelle du profil Liberty pour Derby pour Application Center
 {: #configuring-liberty-profile-for-derby-manually-for-application-center }
-Si vous voulez configurer et définir votre base de données Apache Derby manuellement pour Application Center avec le profil Liberty de WebSphere
-Application Server, suivez la
-procédure ci-dessous. Terminez la procédure de configuration de la base de données Apache Derby avant de continuer. 
+Si vous voulez configurer et définir votre base de données Apache Derby manuellement pour Application Center avec le profil Liberty de WebSphere Application Server, suivez la procédure ci-dessous. Terminez la procédure de configuration de la base de données Apache Derby avant de continuer. 
 
-Configurez la source de données dans le fichier $LIBERTY_HOME/usr/servers/serveurWorklight/server.xml (dans ce chemin, vous pouvez remplacer
-serveurWorklight par le nom de votre serveur) comme suit :
+Configurez la source de données dans le fichier $LIBERTY_HOME/usr/servers/serveurWorklight/server.xml (dans ce chemin, vous pouvez remplacer serveurWorklight par le nom de votre serveur) comme suit :
 
 
 ```xml
@@ -730,11 +586,9 @@ serveurWorklight par le nom de votre serveur) comme suit :
 
 ##### Configuration manuelle de WebSphere Application Server pour Derby pour Application Center
 {: #configuring-websphere-application-server-for-derby-manually-for-application-center }
-Vous pouvez configurer et définir votre base de données Apache Derby manuellement pour Application Center avec WebSphere Application Server. Terminez la
-procédure de configuration de la base de données Apache Derby avant de continuer. 
+Vous pouvez configurer et définir votre base de données Apache Derby manuellement pour Application Center avec WebSphere Application Server. Terminez la procédure de configuration de la base de données Apache Derby avant de continuer. 
 
-1. Identifiez un répertoire adapté pour le fichier JAR du pilote JDBC dans le répertoire d'installation de WebSphere Application Server. Si ce
-répertoire n'existe pas, créez-le.
+1. Identifiez un répertoire adapté pour le fichier JAR du pilote JDBC dans le répertoire d'installation de WebSphere Application Server. Si ce répertoire n'existe pas, créez-le.
     * Pour un serveur autonome, vous pouvez utiliser un répertoire tel que
 **rép\_install\_was/optionalLibraries/IBM/Worklight/derby**.
     * Pour le déploiement dans une cellule WebSphere Application Server ND, utilisez
@@ -745,26 +599,20 @@ répertoire n'existe pas, créez-le.
 **rép\_install\_was/profiles/nom-profil/config/cells/nom-cellule/nodes/nom-noeud/Worklight/derby**.
     * Pour le déploiement sur un serveur WebSphere Application Server ND, utilisez
 **rép\_install\_was/profiles/nom-profil/config/cells/nom-cellule/nodes/nom-noeud/servers/nom-serveur/Worklight/derby**.
-2. Ajoutez le fichier JAR **Derby** **rép\_install\_produit/ApplicationCenter/tools/lib/derby.jar** dans le
-répertoire identifié à l'étape 1. 
+2. Ajoutez le fichier JAR **Derby** **rép\_install\_produit/ApplicationCenter/tools/lib/derby.jar** dans le répertoire identifié à l'étape 1. 
 3. Configurez le fournisseur JDBC. 
-    * Dans la console WebSphere Application Server, sélectionnez
-**Ressources → JDBC → Fournisseurs JDBC**.
+    * Dans la console WebSphere Application Server, sélectionnez **Ressources → JDBC → Fournisseurs JDBC**.
     * Sélectionnez la portée appropriée dans la zone de liste déroulante **Portée**. 
     * Cliquez sur **Nouveau**.
     * Dans la zone **Type de base de données**, indiquez **Défini par l'utilisateur**.
-    * Comme **nom d'implémentation de classe**,
-indiquez **org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource40**.
+    * Comme **nom d'implémentation de classe**, indiquez **org.apache.derby.jdbc.EmbeddedConnectionPoolDataSource40**.
     * Dans la zone **Nom**, indiquez **Worklight - Fournisseur JDBC Derby**.
     * Dans la zone **Description**, indiquez **Fournisseur JDBC Derby pour Worklight**.
     * Cliquez sur **Suivant**. 
-    * Ajoutez au **chemin d'accès aux classes** le fichier JAR qui se trouve dans le répertoire identifié à l'étape 1 en
-remplaçant
-**rép\_install\_was/profiles/nom-profil** par la référence de variable WebSphere Application Server **${USER\_INSTALL\_ROOT}**.
+    * Ajoutez au **chemin d'accès aux classes** le fichier JAR qui se trouve dans le répertoire identifié à l'étape 1 en remplaçant **rép\_install\_was/profiles/nom-profil** par la référence de variable WebSphere Application Server **${USER\_INSTALL\_ROOT}**.
     * Cliquez sur **Terminer**. 
 4. Créez la source de données pour la base de données **Worklight**. 
-    * Dans la console WebSphere Application Server, sélectionnez
-**Ressources → JDBC → Sources de données**.
+    * Dans la console WebSphere Application Server, sélectionnez **Ressources → JDBC → Sources de données**.
     * Sélectionnez la portée appropriée dans la zone de liste déroulante **Portée**. 
     * Cliquez sur **Nouveau**.
     * Dans la zone **Nom de la source de données**, indiquez **Base de données d'Application Center**.
@@ -778,9 +626,7 @@ remplaçant
     * Dans la table, cliquez sur la source de données **Base de données d'Application Center** que vous avez créée. 
     * Sous **Propriétés supplémentaires**, cliquez sur **Propriétés personnalisées**.
     * Cliquez sur **nom_base_de_données**.
-    * Dans la zone **Valeur**, indiquez le chemin d'accès à la base de données **APPCNTR** qui a été créée à
-l'étape [Configuration manuelle de votre base de données Apache
-Derby pour Application Center](#setting-up-your-apache-derby-database-manually-for-application-center).
+    * Dans la zone **Valeur**, indiquez le chemin d'accès à la base de données **APPCNTR** qui a été créée à l'étape [Configuration manuelle de votre base de données Apache Derby pour Application Center](#setting-up-your-apache-derby-database-manually-for-application-center).
     * Cliquez sur **OK**. 
     * Cliquez sur **Sauvegarder**.
     * En haut de la page, cliquez sur **Base de données d'Application Center**.
@@ -789,15 +635,13 @@ Derby pour Application Center](#setting-up-your-apache-derby-database-manually-f
     * Cliquez sur **OK**. 
     * Cliquez sur **Sauvegarder**.
     * Dans la table, sélectionnez la source de données **Base de données d'Application Center** que vous avez créée. 
-    * Facultatif : uniquement si vous ne vous trouvez pas dans une console WebSphere Application Server Deployment Manager, cliquez sur
-**Tester la connexion**.
+    * Facultatif : uniquement si vous ne vous trouvez pas dans une console WebSphere Application Server Deployment Manager, cliquez sur **Tester la connexion**.
 
 ##### Configuration manuelle d'Apache Tomcat pour Derby pour Application Center
 {: #configuring-apache-tomcat-for-derby-manually-for-application-center }
 Vous pouvez configurer et définir votre base de données Apache Derby manuellement pour Application Center avec le serveur d'applications Apache Tomcat. Terminez la procédure de configuration de la base de données Apache Derby avant de continuer. 
 
-1. Ajoutez le fichier JAR **Derby** **rép\_install\_produit/ApplicationCenter/tools/lib/derby.jar** dans le
-répertoire **$TOMCAT\_HOME/lib**. 
+1. Ajoutez le fichier JAR **Derby** **rép\_install\_produit/ApplicationCenter/tools/lib/derby.jar** dans le répertoire **$TOMCAT\_HOME/lib**. 
 2. Préparez une instruction XML qui définit la source de données, conformément à l'exemple de code ci-dessous. 
 
    ```xml
@@ -810,32 +654,23 @@ répertoire **$TOMCAT\_HOME/lib**.
             url="jdbc:derby:REP_BASE_DONNEES_DERBY/APPCNTR"/>
    ```
 
-3. Insérez cette instruction dans le fichier **server.xml**, comme indiqué à la section
-[Configuration manuelle d'Apache Tomcat pour Application Center](#configuring-apache-tomcat-for-application-center-manually).
+3. Insérez cette instruction dans le fichier **server.xml**, comme indiqué à la section [Configuration manuelle d'Apache Tomcat pour Application Center](#configuring-apache-tomcat-for-application-center-manually).
 
 ### Configuration manuelle de la base de données MySQL pour Application Center 
 {: #configuring-the-mysql-database-manually-for-application-center }
-Vous configurez la base de données MySQL manuellement en créant la base de données et les tables de base de données, puis en configurant le serveur
-d'applications approprié en vue de l'utilisation de cette configuration de base de données. 
+Vous configurez la base de données MySQL manuellement en créant la base de données et les tables de base de données, puis en configurant le serveur d'applications approprié en vue de l'utilisation de cette configuration de base de données. 
 
-1. Créez la base de données. Cette étape est décrite à la section [Création de la
-base de données MySQL pour Application Center](#creating-the-mysql-database-for-application-center).
-2. Créez les tables dans la base de données. Cette étape est décrite à la section
-[Configuration manuelle de votre base de données MySQL pour Application
-Center](#setting-up-your-mysql-database-manually-for-application-center).
+1. Créez la base de données. Cette étape est décrite à la section [Création de la base de données MySQL pour Application Center](#creating-the-mysql-database-for-application-center).
+2. Créez les tables dans la base de données. Cette étape est décrite à la section [Configuration manuelle de votre base de données MySQL pour Application Center](#setting-up-your-mysql-database-manually-for-application-center).
 3. Procédez à la configuration propre au serveur d'applications conformément à la liste ci-après. 
 
 #### Aller à 
 {: #jump-to-7 }
 
-* [Configuration manuelle de votre base de données MySQL pour
-Application Center](#setting-up-your-mysql-database-manually-for-application-center)
-* [Configuration manuelle du profil Liberty pour MySQL pour
-Application Center](#configuring-liberty-profile-for-mysql-manually-for-application-center)
-* [Configuration manuelle de WebSphere Application
-Server pour MySQL pour Application Center](#configuring-websphere-application-server-for-mysql-manually-for-application-center)
-* [Configuration manuelle d'Apache Tomcat pour MySQL pour
-Application Center](#configuring-apache-tomcat-for-mysql-manually-for-application-center)
+* [Configuration manuelle de votre base de données MySQL pour Application Center](#setting-up-your-mysql-database-manually-for-application-center)
+* [Configuration manuelle du profil Liberty pour MySQL pour Application Center](#configuring-liberty-profile-for-mysql-manually-for-application-center)
+* [Configuration manuelle de WebSphere Application Server pour MySQL pour Application Center](#configuring-websphere-application-server-for-mysql-manually-for-application-center)
+* [Configuration manuelle d'Apache Tomcat pour MySQL pour Application Center](#configuring-apache-tomcat-for-mysql-manually-for-application-center)
 
 ##### Configuration manuelle de votre base de données MySQL pour Application Center 
 {: #setting-up-your-mysql-database-manually-for-application-center }
@@ -855,10 +690,7 @@ Suivez la procédure ci-dessous pour configurer votre base de données MySQL.
    SOURCE rép_install_produit/ApplicationCenter/databases/create-appcenter-mysql.sql;
    ```
     
-   Où **worklight** avant l'arobase (@) correspond au nom d'utilisateur, **worklight** après
-`IDENTIFIED
-BY` correspond au mot de passe de cet utilisateur, et **hôte-worklight** correspond au nom de l'hôte sur lequel s'exécute IBM
-MobileFirst Foundation. 
+   Où **worklight** avant l'arobase (@) correspond au nom d'utilisateur, **worklight** après `IDENTIFIED BY` correspond au mot de passe de cet utilisateur, et **hôte-worklight** correspond au nom de l'hôte sur lequel s'exécute IBM MobileFirst Foundation. 
 
 2. Ajoutez la propriété suivante à votre fichier d'options MySQL : max_allowed_packet=256M.  
     Pour plus d'informations sur les fichiers d'options, voir la documentation MySQL sur le site MySQL. 
@@ -868,19 +700,11 @@ MobileFirst Foundation.
 
 ##### Configuration manuelle du profil Liberty pour MySQL pour Application Center
 {: #configuring-liberty-profile-for-mysql-manually-for-application-center }
-Si vous voulez configurer et définir votre base de données MySQL manuellement pour Application Center avec le profil Liberty de WebSphere Application
-Server, suivez la procédure ci-dessous. Terminez la procédure de configuration de la base de données MySQL avant de continuer. 
+Si vous voulez configurer et définir votre base de données MySQL manuellement pour Application Center avec le profil Liberty de WebSphere Application Server, suivez la procédure ci-dessous. Terminez la procédure de configuration de la base de données MySQL avant de continuer. 
 
-> **Remarque :** la base de données MySQL combinée au profil Liberty ou complet de WebSphere Application Server ne constitue pas une
-configuration prise en charge. Pour plus d'informations, voir [WebSphere
-Application
-Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Vous pouvez utiliser IBM DB2 ou une autre base de données prise en charge par WebSphere Application Server pour bénéficier
-d'une configuration entièrement prise en charge par le support IBM.
-1. Ajoutez le fichier JAR du pilote JDBC MySQL à **$LIBERTY_HOME/wlp/usr/shared/resources/mysql**. Si ce répertoire n'existe pas,
-créez-le. 
-2. Configurez la source de données dans le fichier **$LIBERTY_HOME/usr/servers/serveurWorklight/server.xml** (dans ce chemin, vous
-pouvez
-remplacer **serveurWorklight** par le nom de votre serveur) comme suit : 
+> **Remarque :** la base de données MySQL combinée au profil Liberty ou complet de WebSphere Application Server ne constitue pas une configuration prise en charge. Pour plus d'informations, voir [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Vous pouvez utiliser IBM DB2 ou une autre base de données prise en charge par WebSphere Application Server pour bénéficier d'une configuration entièrement prise en charge par le support IBM.
+1. Ajoutez le fichier JAR du pilote JDBC MySQL à **$LIBERTY_HOME/wlp/usr/shared/resources/mysql**. Si ce répertoire n'existe pas, créez-le. 
+2. Configurez la source de données dans le fichier **$LIBERTY_HOME/usr/servers/serveurWorklight/server.xml** (dans ce chemin, vous pouvez remplacer **serveurWorklight** par le nom de votre serveur) comme suit : 
 
    ```xml
    <!-- Declare the jar files for MySQL access through JDBC. -->
@@ -897,52 +721,35 @@ remplacer **serveurWorklight** par le nom de votre serveur) comme suit :
    </dataSource>
    ```
 
-   Où **worklight** après **user=** correspond au nom d'utilisateur, **worklight** après
-**password=** correspond au mot de passe de cet utilisateur et **monserveursql** correspond au nom d'hôte de votre
-serveur MySQL (par exemple, localhost s'il se trouve sur la même machine).
+   Où **worklight** après **user=** correspond au nom d'utilisateur, **worklight** après **password=** correspond au mot de passe de cet utilisateur et **monserveursql** correspond au nom d'hôte de votre serveur MySQL (par exemple, localhost s'il se trouve sur la même machine).
 
 
-3. Vous pouvez chiffrer le mot de passe de la base de données à l'aide du programme securityUtility qui se trouve dans
-`<rép_install_liberty>/bin`. 
+3. Vous pouvez chiffrer le mot de passe de la base de données à l'aide du programme securityUtility qui se trouve dans `<rép_install_liberty>/bin`. 
 
 ##### Configuration manuelle de WebSphere Application Server pour MySQL pour Application Center
 {: #configuring-websphere-application-server-for-mysql-manually-for-application-center }
-Si vous voulez configurer et définir votre base de données MySQL manuellement pour Application Center avec WebSphere Application
-Server, suivez la procédure ci-dessous. Terminez la procédure de configuration de la base de données MySQL avant de continuer. 
+Si vous voulez configurer et définir votre base de données MySQL manuellement pour Application Center avec WebSphere Application Server, suivez la procédure ci-dessous. Terminez la procédure de configuration de la base de données MySQL avant de continuer. 
 
-> **Remarque :** la base de données MySQL combinée au profil Liberty ou complet de WebSphere Application Server ne constitue pas une
-configuration prise en charge. Pour plus d'informations, voir [WebSphere Application
-Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Il est recommandé d'utiliser IBM DB2 ou une autre base de données prise en charge par WebSphere Application Server
-pour bénéficier d'une configuration entièrement prise en charge par le support IBM.
+> **Remarque :** la base de données MySQL combinée au profil Liberty ou complet de WebSphere Application Server ne constitue pas une configuration prise en charge. Pour plus d'informations, voir [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). Il est recommandé d'utiliser IBM DB2 ou une autre base de données prise en charge par WebSphere Application Server pour bénéficier d'une configuration entièrement prise en charge par le support IBM.
 1. Identifiez un répertoire adapté pour le fichier JAR du pilote JDBC dans le répertoire d'installation de WebSphere Application Server. 
-    * Pour un serveur autonome, vous pouvez utiliser un répertoire tel
-que **REP\_INSTALL\_WAS/optionalLibraries/IBM/Worklight/mysql**.
-    * Pour le déploiement dans une cellule WebSphere Application Server ND, utilisez
-**REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/Worklight/mysql**.
-    * Pour le déploiement dans un cluster WebSphere Application Server ND, utilisez
-**REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/clusters/nom-cluster/Worklight/mysql**.
-    * Pour le déploiement sur un noeud WebSphere Application Server ND, utilisez
-**REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/nodes/nom-noeud/Worklight/mysql**.
-    * Pour le déploiement sur un serveur WebSphere Application Server ND, utilisez
-**REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/nodes/nom-noeud/servers/nom-serveur/Worklight/mysql**.
+    * Pour un serveur autonome, vous pouvez utiliser un répertoire tel que **REP\_INSTALL\_WAS/optionalLibraries/IBM/Worklight/mysql**.
+    * Pour le déploiement dans une cellule WebSphere Application Server ND, utilisez **REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/Worklight/mysql**.
+    * Pour le déploiement dans un cluster WebSphere Application Server ND, utilisez **REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/clusters/nom-cluster/Worklight/mysql**.
+    * Pour le déploiement sur un noeud WebSphere Application Server ND, utilisez **REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/nodes/nom-noeud/Worklight/mysql**.
+    * Pour le déploiement sur un serveur WebSphere Application Server ND, utilisez **REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/nodes/nom-noeud/servers/nom-serveur/Worklight/mysql**.
 
     Si ce répertoire n'existe pas, créez-le.
     
-2. Ajoutez le fichier JAR du pilote JDBC MySQL depuis la page [Download Connector/J](http://dev.mysql.com/downloads/connector/j/)
-dans le
-répertoire identifié à l'étape 1. 
+2. Ajoutez le fichier JAR du pilote JDBC MySQL depuis la page [Download Connector/J](http://dev.mysql.com/downloads/connector/j/) dans le répertoire identifié à l'étape 1. 
 3. Configurez le fournisseur JDBC :
-    * Dans la console WebSphere Application Server, sélectionnez
-**Ressources → JDBC → Fournisseurs JDBC**.
+    * Dans la console WebSphere Application Server, sélectionnez **Ressources → JDBC → Fournisseurs JDBC**.
     * Sélectionnez la portée appropriée dans la zone de liste déroulante **Portée**. 
     * Cliquez sur **Nouveau**.
     * Créez un **fournisseur JDBC** nommé **MySQL**.
     * Dans la zone **Type de base de données**, indiquez **Défini par l'utilisateur**.
     * Dans la zone **Portée**, définissez **Cellule**.
     * Dans la zone **Classe d'implémentation**, définissez **com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource**.
-    * Ajoutez au **chemin d'accès aux classes de base de données** le **fichier JAR** qui se trouve dans le
-répertoire identifié à l'étape 1 en remplaçant **REP\_INSTALL\_WAS/profiles/nom-profil** par la référence de variable WebSphere
-Application Server **${USER_INSTALL_ROOT}**.
+    * Ajoutez au **chemin d'accès aux classes de base de données** le **fichier JAR** qui se trouve dans le répertoire identifié à l'étape 1 en remplaçant **REP\_INSTALL\_WAS/profiles/nom-profil** par la référence de variable WebSphere Application Server **${USER_INSTALL_ROOT}**.
     * Sauvegardez vos modifications. 
 4. Créez une source de données pour la base de données d'IBM Application Center : 
     * Sélectionnez **Ressources → JDBC → Sources de données**.
@@ -970,8 +777,7 @@ Application Server **${USER_INSTALL_ROOT}**.
     ```
 
 6. Définissez les propriétés personnalisées de WebSphere Application Server pour la nouvelle source de données. 
-    * Dans **Ressources → JDBC → Sources de données**,
-sélectionnez la **nouvelle source de données**. 
+    * Dans **Ressources → JDBC → Sources de données**, sélectionnez la **nouvelle source de données**. 
     * Cliquez sur **Propriétés de la source de données WebSphere Application Server**.
     * Sélectionnez **Source de données non transactionnelle**.
     * Cliquez sur **OK**. 
@@ -979,13 +785,10 @@ sélectionnez la **nouvelle source de données**.
 
 ##### Configuration manuelle d'Apache Tomcat pour MySQL pour Application Center 
 {: #configuring-apache-tomcat-for-mysql-manually-for-application-center }
-Si vous voulez configurer et définir votre base de données MySQL manuellement pour Application Center avec le serveur Apache Tomcat, suivez la procédure
-ci-dessous. Terminez la procédure de configuration de la base de données MySQL avant de continuer. 
+Si vous voulez configurer et définir votre base de données MySQL manuellement pour Application Center avec le serveur Apache Tomcat, suivez la procédure ci-dessous. Terminez la procédure de configuration de la base de données MySQL avant de continuer. 
 
 1. Ajoutez le fichier JAR MySQL Connector/J dans le répertoire **$TOMCAT_HOME/lib**. 
-2. Préparez une instruction XML qui définit la source de données, conformément à l'exemple de code ci-dessous. Insérez cette instruction dans le
-fichier server.xml, comme indiqué à la section [Configuration manuelle d'Apache
-Tomcat pour Application Center](#configuring-apache-tomcat-for-application-center-manually).
+2. Préparez une instruction XML qui définit la source de données, conformément à l'exemple de code ci-dessous. Insérez cette instruction dans le fichier server.xml, comme indiqué à la section [Configuration manuelle d'Apache Tomcat pour Application Center](#configuring-apache-tomcat-for-application-center-manually).
 
 ```xml
 <Resource name="jdbc/AppCenterDS"
@@ -1002,27 +805,19 @@ Tomcat pour Application Center](#configuring-apache-tomcat-for-application-cente
 
 ### Configuration manuelle de la base de données Oracle pour Application Center 
 {: #configuring-the-oracle-database-manually-for-application-center }
-Vous configurez la base de données Oracle manuellement en créant la base de données et les tables de base de données, puis en configurant le serveur
-d'applications approprié en vue de l'utilisation de cette configuration de base de données. 
+Vous configurez la base de données Oracle manuellement en créant la base de données et les tables de base de données, puis en configurant le serveur d'applications approprié en vue de l'utilisation de cette configuration de base de données. 
 
-1. Créez la base de données. Cette étape est décrite à la section [Création de la
-base de données Oracle pour Application Center](#creating-the-oracle-database-for-application-center).
-2. Créez les tables dans la base de données. Cette étape est décrite à la section
-[Configuration manuelle de votre base de données Oracle pour Application
-Center](#setting-up-your-oracle-database-manually-for-application-center).
+1. Créez la base de données. Cette étape est décrite à la section [Création de la base de données Oracle pour Application Center](#creating-the-oracle-database-for-application-center).
+2. Créez les tables dans la base de données. Cette étape est décrite à la section [Configuration manuelle de votre base de données Oracle pour Application Center](#setting-up-your-oracle-database-manually-for-application-center).
 3. Procédez à la configuration propre au serveur d'applications conformément à la liste ci-après. 
 
 #### Aller à 
 {: #jump-to-8 }
 
-* [Configuration manuelle de votre base de données Oracle pour
-Application Center](#setting-up-your-oracle-database-manually-for-application-center)
-* [Configuration manuelle du profil Liberty pour Oracle pour
-Application Center](#configuring-liberty-profile-for-oracle-manually-for-application-center)
-* [Configuration manuelle de WebSphere Application
-Server pour Oracle pour Application Center](#configuring-websphere-application-server-for-oracle-manually-for-application-center)
-* [Configuration manuelle d'Apache Tomcat pour Oracle pour
-Application Center](#configuring-apache-tomcat-for-oracle-manually-for-application-center)
+* [Configuration manuelle de votre base de données Oracle pour Application Center](#setting-up-your-oracle-database-manually-for-application-center)
+* [Configuration manuelle du profil Liberty pour Oracle pour Application Center](#configuring-liberty-profile-for-oracle-manually-for-application-center)
+* [Configuration manuelle de WebSphere Application Server pour Oracle pour Application Center](#configuring-websphere-application-server-for-oracle-manually-for-application-center)
+* [Configuration manuelle d'Apache Tomcat pour Oracle pour Application Center](#configuring-apache-tomcat-for-oracle-manually-for-application-center)
 
 ##### Configuration manuelle de votre base de données Oracle pour Application Center 
 {: #setting-up-your-oracle-database-manually-for-application-center }
@@ -1030,16 +825,12 @@ Suivez la procédure ci-dessous pour configurer votre base de données Oracle.
 
 1. Assurez-vous de disposer d'au moins une base de données Oracle. 
 
-    Dans la plupart des installations Oracle, la base de données par défaut possède l'identificateur système (SID ou nom) ORCL. Pour de meilleurs
-résultats, spécifiez **Unicode (AL32UTF8)** comme jeu de caractères pour la base de données. 
+    Dans la plupart des installations Oracle, la base de données par défaut possède l'identificateur système (SID ou nom) ORCL. Pour de meilleurs résultats, spécifiez **Unicode (AL32UTF8)** comme jeu de caractères pour la base de données. 
 
-    Si l'installation Oracle se trouve sur un ordinateur UNIX ou Linux, assurez-vous que la base de données est démarrée au redémarrage de
-l'installation Oracle. A cette fin, veillez à ce que la ligne dans /etc/oratab qui correspond à la base de données se termine par la lettre Y, et non la
-lettre N. 
+    Si l'installation Oracle se trouve sur un ordinateur UNIX ou Linux, assurez-vous que la base de données est démarrée au redémarrage de l'installation Oracle. A cette fin, veillez à ce que la ligne dans /etc/oratab qui correspond à la base de données se termine par la lettre Y, et non la lettre N. 
     
 2. Créez l'utilisateur APPCENTER à l'aide d'Oracle Database Control ou de l'interpréteur de ligne de commande Oracle SQLPlus. 
-    * Afin de créer l'utilisateur pour la base de données/le schéma d'Application Center, avec Oracle
-Database Control, procédez comme suit :
+    * Afin de créer l'utilisateur pour la base de données/le schéma d'Application Center, avec Oracle Database Control, procédez comme suit :
 
         * Connectez-vous en tant que **SYSDBA**.
         * Accédez à la page Users. 
@@ -1067,8 +858,7 @@ Database Control, procédez comme suit :
       ```
 
 3. Créez les tables pour la base de données d'Application Center : 
-    * A l'aide de l'interpréteur de ligne de commande Oracle SQLPlus, créez les tables pour la base de données d'Application Center en exécutant le
-fichier **create-appcenter-oracle.sql** : 
+    * A l'aide de l'interpréteur de ligne de commande Oracle SQLPlus, créez les tables pour la base de données d'Application Center en exécutant le fichier **create-appcenter-oracle.sql** : 
 
    ```bash
    CONNECT APPCENTER/mot_de_passe_APPCENTER@ORCL
@@ -1082,11 +872,9 @@ fichier **create-appcenter-oracle.sql** :
 
 ##### Configuration manuelle du profil Liberty pour Oracle pour Application Center
 {: #configuring-liberty-profile-for-oracle-manually-for-application-center }
-Vous pouvez configurer et définir manuellement votre base de données Oracle pour Application Center avec le profil Liberty de WebSphere Application Server
-en ajoutant le fichier JAR du pilote JDBC Oracle. Avant de continuer, configurez la base de données Oracle. 
+Vous pouvez configurer et définir manuellement votre base de données Oracle pour Application Center avec le profil Liberty de WebSphere Application Server en ajoutant le fichier JAR du pilote JDBC Oracle. Avant de continuer, configurez la base de données Oracle. 
 
-1. Ajoutez le fichier JAR du pilote JDBC Oracle dans le répertoire **$LIBERTY_HOME/wlp/usr/shared/resources/oracle**. Si ce
-répertoire n'existe pas, créez-le. 
+1. Ajoutez le fichier JAR du pilote JDBC Oracle dans le répertoire **$LIBERTY_HOME/wlp/usr/shared/resources/oracle**. Si ce répertoire n'existe pas, créez-le. 
 2. Si vous utilisez l'interface JNDI, configurez les sources de données dans le fichier
 **$LIBERTY_HOME/wlp/usr/servers/serveurMobileFirst/server.xml** conformément à l'exemple de code JNDI suivant : 
 
@@ -1114,37 +902,25 @@ répertoire n'existe pas, créez-le.
     * **mot_de_passe_APPCENTER** après **password=** est le mot de passe de cet utilisateur et 
     * **serveuro** est le nom d'hôte de votre serveur Oracle (par exemple localhost s'il se trouve sur la même machine). 
 
-    > **Remarque :** pour plus d'informations sur la connexion du serveur Liberty à la base de données Oracle avec un nom de service ou
-avec une adresse URL, voir la section **properties.oracle** dans la
-[documentation
-de WebSphere Application Server Liberty Core 8.5.5](http://www-01.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html?cp=SSD28V_8.5.5%2F1-5-0).
-3. Vous pouvez chiffrer le mot de passe de la base de données à l'aide du programme securityUtility qui se trouve dans
-**rép\_install\_liberty/bin**.
+    > **Remarque :** pour plus d'informations sur la connexion du serveur Liberty à la base de données Oracle avec un nom de service ou avec une adresse URL, voir la section **properties.oracle** dans la [documentation de WebSphere Application Server Liberty Core 8.5.5](http://www-01.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/autodita/rwlp_metatype_core.html?cp=SSD28V_8.5.5%2F1-5-0).
+3. Vous pouvez chiffrer le mot de passe de la base de données à l'aide du programme securityUtility qui se trouve dans **rép\_install\_liberty/bin**.
 
 ##### Configuration manuelle de WebSphere Application Server pour Oracle pour Application Center
 {: #configuring-websphere-application-server-for-oracle-manually-for-application-center }
-Si vous voulez configurer et définir votre base de données Oracle manuellement pour Application Center avec WebSphere Application Server, suivez la
-procédure ci-dessous. Terminez la procédure de configuration de la base de données Oracle avant de continuer. 
+Si vous voulez configurer et définir votre base de données Oracle manuellement pour Application Center avec WebSphere Application Server, suivez la procédure ci-dessous. Terminez la procédure de configuration de la base de données Oracle avant de continuer. 
 
 1. Identifiez un répertoire adapté pour le fichier JAR du pilote JDBC dans le répertoire d'installation de WebSphere Application Server. 
     * Pour un serveur autonome, vous pouvez utiliser un répertoire tel que REP_INSTALL_WAS/optionalLibraries/IBM/Worklight/oracle.
-    * Pour le déploiement dans une cellule WebSphere Application Server ND, utilisez
-**REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/Worklight/oracle**.
-    * Pour le déploiement dans un cluster WebSphere Application Server ND, utilisez
-**REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/clusters/nom-cluster/Worklight/oracle**.
-    * Pour le déploiement sur un noeud WebSphere Application Server ND, utilisez
-**REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/nodes/nom-noeud/Worklight/oracle**.
-    * Pour le déploiement sur un serveur WebSphere Application Server ND, utilisez
-**REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/nodes/nom-noeud/servers/nom-serveur/Worklight/oracle**.
+    * Pour le déploiement dans une cellule WebSphere Application Server ND, utilisez **REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/Worklight/oracle**.
+    * Pour le déploiement dans un cluster WebSphere Application Server ND, utilisez **REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/clusters/nom-cluster/Worklight/oracle**.
+    * Pour le déploiement sur un noeud WebSphere Application Server ND, utilisez **REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/nodes/nom-noeud/Worklight/oracle**.
+    * Pour le déploiement sur un serveur WebSphere Application Server ND, utilisez **REP\_INSTALL\_WAS/profiles/nom-profil/config/cells/nom-cellule/nodes/nom-noeud/servers/nom-serveur/Worklight/oracle**.
 
     Si ce répertoire n'existe pas, créez-le.
 
-2. Ajoutez le fichier﻿**ojdbc6.jar** téléchargé depuis
-la page [JDBC and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) dans le
-répertoire identifié à l'étape 1. 
+2. Ajoutez le fichier﻿**ojdbc6.jar** téléchargé depuis la page [JDBC and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) dans le répertoire identifié à l'étape 1. 
 3. Configurez le fournisseur JDBC :
-    * Dans la console WebSphere Application Server, sélectionnez
-**Ressources → JDBC → Fournisseurs JDBC**.
+    * Dans la console WebSphere Application Server, sélectionnez **Ressources → JDBC → Fournisseurs JDBC**.
     * Sélectionnez la portée appropriée dans la zone de liste déroulante **Portée**. 
     * Cliquez sur **Nouveau**.
     * Renseignez les zones **Fournisseur JDBC** conformément au tableau suivant :
@@ -1156,10 +932,7 @@ répertoire identifié à l'étape 1.
         | Type d'implémentation | Source de données du pool de connexions |
         | Nom  | Pilote JDBC Oracle |
     * Cliquez sur **Suivant**. 
-    * Ajoutez au **chemin d'accès aux classes** le fichier JAR qui se trouve dans le répertoire identifié à
-l'étape 1 en
-remplaçant **REP\_INSTALL\_WAS/profiles/nom-profil** par la référence de variable WebSphere Application Server
-**${USER_INSTALL_ROOT}**. 
+    * Ajoutez au **chemin d'accès aux classes** le fichier JAR qui se trouve dans le répertoire identifié à l'étape 1 en remplaçant **REP\_INSTALL\_WAS/profiles/nom-profil** par la référence de variable WebSphere Application Server **${USER_INSTALL_ROOT}**. 
     * Cliquez sur **Suivant**. 
 
     Le fournisseur JDBC est créé. 
@@ -1173,18 +946,14 @@ remplaçant **REP\_INSTALL\_WAS/profiles/nom-profil** par la référence de vari
     * Cliquez sur **Suivant**. 
     * Cliquez sur **Sélectionner un fournisseur JDBC existant** et sélectionnez **Pilote JDBC Oracle** dans la liste. 
     * Cliquez sur **Suivant**. 
-    * Dans la zone de valeur **URL**, indiquez **jdbc:oracle:thin:@serveuro:1521:ORCL**, où
-**serveuro** correspond au nom d'hôte de votre serveur Oracle (par exemple **localhost** s'il se trouve sur la même
-machine). 
+    * Dans la zone de valeur **URL**, indiquez **jdbc:oracle:thin:@serveuro:1521:ORCL**, où **serveuro** correspond au nom d'hôte de votre serveur Oracle (par exemple **localhost** s'il se trouve sur la même machine). 
     * Cliquez sur **Suivant** deux fois. 
-    * Sélectionnez **Ressources → JDBC → Sources de données → Source de
-données du pilote JDBC Oracle → Propriétés personnalisées**.
+    * Sélectionnez **Ressources → JDBC → Sources de données → Source de données du pilote JDBC Oracle → Propriétés personnalisées**.
     * Associez **oracleLogPackageName** à la valeur **oracle.jdbc.driver**.
     * Définissez **user = APPCENTER**.
     * Définissez **password = mot_de_passe_APPCENTER**.
     * Cliquez sur **OK** et sauvegardez les modifications. 
-    * Dans **Ressources → JDBC → Sources de données**,
-sélectionnez la nouvelle source de données. 
+    * Dans **Ressources → JDBC → Sources de données**, sélectionnez la nouvelle source de données. 
     * Cliquez sur **Propriétés de la source de données WebSphere Application Server**.
     * Sélectionnez la case à cocher **Source de données non transactionnelle**. 
     * Cliquez sur **OK**. 
@@ -1192,13 +961,10 @@ sélectionnez la nouvelle source de données.
 
 ##### Configuration manuelle d'Apache Tomcat pour Oracle pour Application Center
 {: #configuring-apache-tomcat-for-oracle-manually-for-application-center }
-Si vous voulez configurer et définir votre base de données Oracle manuellement pour Application Center avec le serveur Apache Tomcat, suivez la procédure
-ci-dessous. Terminez la procédure de configuration de la base de données Oracle avant de continuer. 
+Si vous voulez configurer et définir votre base de données Oracle manuellement pour Application Center avec le serveur Apache Tomcat, suivez la procédure ci-dessous. Terminez la procédure de configuration de la base de données Oracle avant de continuer. 
 
 1. Ajoutez le fichier JAR du pilote JDBC Oracle dans le répertoire **$TOMCAT_HOME/lib**.
-2. Préparez une instruction XML qui définit la source de données, conformément à l'exemple de code ci-dessous. Insérez cette instruction dans le
-fichier server.xml, comme indiqué à la section [Configuration manuelle d'Apache
-Tomcat pour Application Center](#configuring-apache-tomcat-for-application-center-manually).
+2. Préparez une instruction XML qui définit la source de données, conformément à l'exemple de code ci-dessous. Insérez cette instruction dans le fichier server.xml, comme indiqué à la section [Configuration manuelle d'Apache Tomcat pour Application Center](#configuring-apache-tomcat-for-application-center-manually).
   
 ```xml
 <Resource name="jdbc/AppCenterDS"
@@ -1210,10 +976,7 @@ Tomcat pour Application Center](#configuring-apache-tomcat-for-application-cente
         password="mot_de_passe_APPCENTER"/>
 ```
 
-Où **APPCENTER** après **username=** correspond au nom de l'utilisateur système disposant de l'accès "CONNECT"
-à la base de données **APPCNTR** que vous avez créée précédemment et **mot_de_passe_APPCENTER** après
-password= correspond au mot de passe de cet utilisateur. Si vous avez défini un autre nom d'utilisateur et/ou un autre mot de passe, remplacez ces valeurs
-en conséquence. 
+Où **APPCENTER** après **username=** correspond au nom de l'utilisateur système disposant de l'accès "CONNECT" à la base de données **APPCNTR** que vous avez créée précédemment et **mot_de_passe_APPCENTER** après password= correspond au mot de passe de cet utilisateur. Si vous avez défini un autre nom d'utilisateur et/ou un autre mot de passe, remplacez ces valeurs en conséquence. 
 
 ### Déploiement manuel des fichiers WAR d'Application Center et configuration manuelle du serveur d'applications 
 {: #deploying-the-application-center-war-files-and-configuring-the-application-server-manually }
@@ -1221,7 +984,7 @@ La procédure permettant de déployer manuellement les fichiers WAR d'Applicatio
 d'applications configuré.   
 Ces instructions de déploiement manuel supposent que vous connaissez bien votre serveur d'applications. 
 
-> **Remarque :** il est recommandé d'utiliser le programme d'installation de {{site.data.keys.mf_server }} pour
+> **Remarque :** il est recommandé d'utiliser le programme d'installation de {{ site.data.keys.mf_server }} pour
 installer
 Application Center plutôt que de procéder à une installation manuelle, à éviter autant que possible. Si vous préférez procéder à une installation manuelle,
 suivez les étapes ci-dessous afin de configurer votre serveur d'applications pour Application Center. Vous devez déployer les fichiers appcenterconsole.war
@@ -1383,7 +1146,7 @@ ne peut être activée que si la sécurité administrative est activée.
         * **Applications → Nouveau → Nouvelle application
 d'entreprise**
         * **Applications → Nouvelle application → Nouvelle application d'entreprise**
-    * Accédez au répertoire d'installation de {{site.data.keys.mf_server }} **rép\_install\_serveur_mf/ApplicationCenter/console**.
+    * Accédez au répertoire d'installation de {{ site.data.keys.mf_server }} **rép\_install\_serveur_mf/ApplicationCenter/console**.
     * Sélectionnez **appcenterconsole.war** et cliquez sur **Suivant**.
     * Dans la page **Comment voulez-vous installer l'application ?**, cliquez sur **Détaillé**, puis cliquez
 sur **Suivant**.
@@ -1416,7 +1179,7 @@ de classe local (dernier parent)**.
         * **Applications → Nouveau → Nouvelle application d'entreprise**
         * **Applications → Nouvelle application → Nouvelle application
 d'entreprise**
-    * Accédez au répertoire d'installation de {{site.data.keys.mf_server }}
+    * Accédez au répertoire d'installation de {{ site.data.keys.mf_server }}
 **rép\_install\_serveur_mf/ApplicationCenter/console**.
     * Sélectionnez **applicationcenter.war** et cliquez sur **Suivant**.
     * Dans la page **Comment voulez-vous installer l'application ?**, cliquez sur **Détaillé**, puis cliquez
@@ -1566,7 +1329,7 @@ Application Center](#configuring-apache-tomcat-for-oracle-manually-for-applicati
 
 ### Déploiement manuel du fichier EAR d'Application Center et configuration manuelle du serveur d'applications 
 {: #deploying-the-application-center-ear-file-and-configuring-the-application-server-manually }
-Au lieu de suivre la procédure du programme d'installation de {{site.data.keys.mf_server }}, vous pouvez suivre la procédure de déploiement manuel
+Au lieu de suivre la procédure du programme d'installation de {{ site.data.keys.mf_server }}, vous pouvez suivre la procédure de déploiement manuel
 du fichier EAR d'Application Center et configurer manuellement votre serveur d'applications WebSphere. Ces instructions de déploiement manuel supposent que
 vous connaissez bien votre serveur d'applications. 
 
@@ -1575,8 +1338,8 @@ d'applications. Le déploiement manuel n'est pris en charge que pour le profil L
 Server.
 
 > **Astuce :** il est plus fiable d'installer Application Center par le biais du programme d'installation de
-{{site.data.keys.mf_server }} que manuellement. Par conséquent, autant que possible, utilisez le programme d'installation de
-{{site.data.keys.mf_server }}. Toutefois, si vous préférez suivre la procédure d'installation manuelle, déployez le fichier
+{{ site.data.keys.mf_server }} que manuellement. Par conséquent, autant que possible, utilisez le programme d'installation de
+{{ site.data.keys.mf_server }}. Toutefois, si vous préférez suivre la procédure d'installation manuelle, déployez le fichier
 **appcentercenter.ear** qui se trouve dans le répertoire **rép\_install\_produit/ApplicationCenter/console**.
 #### Configuration manuelle du profil Liberty pour Application Center 
 {: #configuring-the-liberty-profile-for-application-center-manually-1 }
@@ -1710,7 +1473,7 @@ Application Server existe.
     * Selon votre version de WebSphere Application Server, sélectionnez l'une des options suivantes : 
         * **Applications → Nouveau → Nouvelle application d'entreprise**
         * **Applications → Nouvelle application → Nouvelle application d'entreprise**
-    * Accédez au répertoire d'installation de {{site.data.keys.mf_server }}
+    * Accédez au répertoire d'installation de {{ site.data.keys.mf_server }}
 **rép\_install\_serveur_mf/ApplicationCenter/console**.
     * Sélectionnez **appcenterconsole.war** et cliquez sur **Suivant**.
     * Dans la page **Comment voulez-vous installer l'application ?**, cliquez sur **Détaillé**, puis cliquez
@@ -1811,7 +1574,7 @@ Application Center sur le
 serveur d'applications Web par le programme d'installation. Deux rôles de sécurité Java™ Platform, Enterprise Edition (Java EE) sont définis pour Application Center :   
 
 * Le rôle **appcenteruser** représente un utilisateur ordinaire d'Application Center qui peut installer des applications mobiles
-depuis le catalogue sur un terminal mobile lui appartenant. 
+depuis le catalogue sur un appareil mobile lui appartenant. 
 * Le rôle **appcenteradmin** représente un utilisateur qui peut effectuer des tâches administratives dans la console Application
 Center. 
 
@@ -1827,7 +1590,7 @@ Application Center.
 
 Après avoir configuré l'authentification des utilisateurs d'Application Center, qui inclut la configuration de LDAP si vous prévoyez de l'utiliser,
 vous pouvez, si nécessaire, définir le noeud final des ressources d'application. Vous devez ensuite générer le client mobile d'Application Center. Celui-ci
-est utilisé pour installer des applications sur des terminaux mobiles. Voir [Préparatifs pour
+est utilisé pour installer des applications sur des appareils mobiles. Voir [Préparatifs pour
 l'utilisation du client mobile](../../../appcenter/preparations/) pour apprendre à générer le client mobile d'Application Center. 
 
 #### Aller à 
@@ -2625,10 +2388,9 @@ alloué en fonction des besoins.
 ### Définition du noeud final des ressources d'application 
 {: #defining-the-endpoint-of-the-application-resources }
 Lorsque vous ajoutez une application mobile depuis la console Application Center, le composant côté serveur crée des URI (Uniform
-Resource Identifier) pour les ressources d'application (package et icônes). Le client mobile utilise ces URI pour gérer les applications sur votre
-terminal. 
+Resource Identifier) pour les ressources d'application (package et icônes). Le client mobile utilise ces URI pour gérer les applications sur votre appareil. 
 
-Pour gérer les applications sur votre terminal, la console Application Center doit être capable de localiser les services REST d'Application
+Pour gérer les applications sur votre appareil, la console Application Center doit être capable de localiser les services REST d'Application
 Center et de générer le nombre requis d'URI permettant au client mobile de trouver les services REST d'Application Center. 
 
 Par défaut, le protocole d'URI, le nom d'hôte et le port sont les mêmes que ceux définis sur le serveur d'applications Web utilisé pour accéder à la
@@ -2671,7 +2433,7 @@ fichier EAR.
 ##### Si vous avez déployé des fichiers WAR : 
 {: #if-you-deployed-war-files }
 Suivez la procédure ci-dessous si vous devez changer le protocole d'URI, le nom d'hôte et le port utilisés par le client mobile pour gérer les
-applications sur votre terminal. Depuis IBM Worklight version 6.0, vous utilisez des entrées d'environnement JNDI. 
+applications sur votre appareil. Depuis IBM Worklight version 6.0, vous utilisez des entrées d'environnement JNDI. 
 
 Pour la liste complète des propriétés JNDI, voir [Propriétés JNDI pour Application Center](#jndi-properties-for-application-center).
 
@@ -2724,7 +2486,7 @@ Pour le profil Liberty, configurez le noeud final des ressources d'application p
 
 A partir d'IBM Worklight version 6.0, suivez la procédure ci-dessous si vous devez changer le protocole d'URI, le nom d'hôte et le port utilisés
 par le client Application Center pour gérer les
-applications sur votre terminal. 
+applications sur votre appareil. 
 
 Editez le fichier **server.xml**. Pour que vous puissiez définir des entrées JNDI, l'élément `<feature>`
 doit être défini correctement dans le fichier **server.xml** : 
@@ -2776,7 +2538,7 @@ Pour le serveur Apache Tomcat, configurez le noeud final des ressources d'applic
 
 A partir d'IBM Worklight version 6.0, suivez la procédure ci-dessous si vous devez changer le protocole d'URI, le nom d'hôte et le port utilisés
 par le
-client Application Center pour gérer les applications sur votre terminal. 
+client Application Center pour gérer les applications sur votre appareil. 
 
 Editez le fichier **server.xml** dans le répertoire conf de votre installation Apache Tomcat.
   
@@ -2835,15 +2597,14 @@ Dans la section `<context>` de l'application des services d'Application Center :
 Apprenez à configurer SSL pour Application Center sur les serveurs d'applications pris en charge et découvrez les limitations de la vérification de
 certificat sur les systèmes d'exploitation mobiles. 
 
-Vous pouvez configurer Application Center avec ou sans SSL, **sauf** si vous prévoyez d'installer des applications sur des
-terminaux iOS. Pour les applications iOS, vous devez configurer le serveur Application Center avec SSL. 
+Vous pouvez configurer Application Center avec ou sans SSL, **sauf** si vous prévoyez d'installer des applications sur des appareils iOS. Pour les applications iOS, vous devez configurer le serveur Application Center avec SSL. 
 
 SSL transmet des données sur le réseau via un canal sécurisé. Vous devez acheter un certificat SSL officiel auprès d'une autorité de certification
 SSL. Le certificat SSL doit être compatible avec Android et iOS. Les certificats autosignés ne fonctionnent pas avec Application Center. 
 
 Lorsque le client accède au serveur via SSL, il vérifie le serveur à l'aide du certificat SSL. Si l'adresse du serveur correspond à l'adresse
 indiquée dans le certificat SSL, le client accepte la connexion. Pour que la vérification réussisse, le client doit connaître le certificat racine de
-l'autorité de certification. De nombreux certificats racine sont préinstallés sur les terminaux Android et iOS. La liste exacte des certificats racine
+l'autorité de certification. De nombreux certificats racine sont préinstallés sur les appareils Android et iOS. La liste exacte des certificats racine
 préinstallés varie d'une version de système d'exploitation mobile à l'autre. 
 
 Pour des informations sur les certificats pris en charge sur les versions de système
@@ -2855,7 +2616,7 @@ applications mobiles sont installées, ce contrôle n'est pas effectué par un n
 
 Certaines versions des systèmes d'exploitation Android, iOS et Windows Phone ne prennent pas en charge cette boîte de dialogue de confirmation dans
 les appels système. Il est donc essentiel d'éviter les certificats autosignés ou les certificats SSL non adaptés aux systèmes d'exploitation mobiles. Sur
-les systèmes Android, iOS et Windows Phone, vous pouvez installer un certificat de l'autorité de certification autosigné sur le terminal afin de
+les systèmes Android, iOS et Windows Phone, vous pouvez installer un certificat de l'autorité de certification autosigné sur l'appareil afin de
 permettre à ce dernier de gérer les appels système relatifs à ce certificat autosigné. Cette pratique n'est pas appropriée si Application Center se trouve
 dans un environnement de production, mais peut être adaptée pour la période de test. Pour des détails, voir
 [Gestion et installation de certificats de
@@ -2965,16 +2726,16 @@ magasin de clés.
 ##### Gestion et installation de certificats de l'autorité de certification autosignés dans un environnement de test Application Center 
 {: #managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment }
 Utilisez des certificats de l'autorité de certification autosignés dans des environnements de test afin d'installer des applications avec Application
-Center sur un terminal mobile depuis un serveur sécurisé. 
+Center sur un appareil mobile depuis un serveur sécurisé. 
 
 **Téléchargement ou suppression d'un certificat**  
-Lorsque vous installez le client mobile Application Center depuis OTA (la page d'amorçage), l'utilisateur du terminal doit télécharger et installer
+Lorsque vous installez le client mobile Application Center depuis OTA (la page d'amorçage), l'utilisateur de l'appareil doit télécharger et installer
 le fichier de l'autorité de certification autosigné avant l'installation du client mobile Application Center. 
 
 Lorsque vous utilisez Application Center pour une installation de test, il se peut que l'administrateur ne dispose pas d'un véritable certificat SSL
 (Secure Sockets Layer). Il est recommandé d'utiliser un certificat de l'autorité de certification autosigné. De tels certificats fonctionnent s'ils sont
-installés sur le terminal comme certificat racine. En tant qu'administrateur, vous pouvez distribuer facilement les certificats de l'autorité de
-certification autosignés aux terminaux. 
+installés sur l'appareil comme certificat racine. En tant qu'administrateur, vous pouvez distribuer facilement les certificats de l'autorité de
+certification autosignés aux appareils. 
 
 La procédure ci-dessous concerne principalement les environnements iOS et Android. La prise en charge des certificats X.509 est fournie par les plateformes
 mobiles individuelles et non par IBM MobileFirst Foundation. Pour plus d'informations sur les exigences propres aux certificats X.509, voir la
@@ -2998,7 +2759,7 @@ certification, c'est-à-dire que son extension X509 appelée **BasicConstraint**
 
 * Pour supprimer un certificat, cliquez sur l'icône représentant une poubelle à droite du nom de fichier certificat dans la liste. 
 
-**Installation d'un certificat de l'autorité de certification autosigné sur un terminal**  
+**Installation d'un certificat de l'autorité de certification autosigné sur un appareil**  
 Les certificats de l'autorité de certification autosignés enregistrés sont disponibles depuis la page d'amorçage à l'adresse
 `http://nomhôte:numéroport/appcenterconsole/installers.html`.
 
@@ -3009,7 +2770,7 @@ Où :
 
 1. Cliquez sur l'onglet **Certificats SSL**.
 2. Pour afficher les détails d'un certificat, sélectionnez le certificat enregistré approprié. 
-3. Pour télécharger et installer le certificat sur le terminal, cliquez sur **Installer**.
+3. Pour télécharger et installer le certificat sur l'appareil, cliquez sur **Installer**.
 
 ### Propriétés JNDI pour Application Center
 {: #jndi-properties-for-application-center }
@@ -3028,7 +2789,7 @@ Vous pouvez configurer des propriétés JNDI pour Application Center.
 | ibm.appcenter.apns.p12.certificate.password | Mot de passe du certificat permettant à Application Center d'envoyer des notifications push sur les mises à jour des applications iOS. Voir [Configuration du serveur Application Center pour la connexion à Apple Push Notification Services](../../../appcenter/push-notifications/#apns). | 
 | ibm.appcenter.forceUpgradeDBTo60 | La conception de la base de données a été changée dans IBM Worklight version 6.0. La base de données est mise à jour automatiquement lorsque l'application Web Application Center démarre. Si vous voulez réappliquer cette mise à jour, vous pouvez associer ce paramètre à la valeur **true** et redémarrer l'application Web. Vous pouvez réassocier ce paramètre à la valeur **false** ultérieurement. | 
 | ibm.appcenter.gcm.signature.googleapikey | Clé d'API Google permettant à Application Center d'envoyer des notifications push sur les mises à jour des applications Android. Exemple : AIxaScCHg0VSGdgfOZKtzDJ44-oi0muUasMZvAs. Voir [Configuration du serveur Application Center pour la connexion à Google Cloud Messaging](../../../appcenter/push-notifications/#gcm). | 
-| ibm.appcenter.ios.plist.onetimeur | Indique si les adresses URL stockées dans les manifestes plist iOS utilisent le mécanisme d'adresse URL à usage unique sans données d'identification. Si vous associez cette propriété à la valeur true, le niveau de sécurité est moyen car les adresses URL à usage unique sont générées à l'aide d'un mécanisme de chiffrement de sorte que personne ne puisse deviner l'adresse URL, mais la connexion de l'utilisateur n'est pas requise. L'association de cette propriété à false permet de garantir une sécurité maximale car l'utilisateur doit se connecter pour chaque adresse URL. Toutefois, le fait de demander à l'utilisateur de se connecter plusieurs fois lorsque vous installez une application iOS peut dégrader l'acquis utilisateur. Voir [Installation du client sur un terminal mobile iOS](../../../appcenter/mobile-client/#installing-the-client-on-an-ios-mobile-device). | 
+| ibm.appcenter.ios.plist.onetimeur | Indique si les adresses URL stockées dans les manifestes plist iOS utilisent le mécanisme d'adresse URL à usage unique sans données d'identification. Si vous associez cette propriété à la valeur true, le niveau de sécurité est moyen car les adresses URL à usage unique sont générées à l'aide d'un mécanisme de chiffrement de sorte que personne ne puisse deviner l'adresse URL, mais la connexion de l'utilisateur n'est pas requise. L'association de cette propriété à false permet de garantir une sécurité maximale car l'utilisateur doit se connecter pour chaque adresse URL. Toutefois, le fait de demander à l'utilisateur de se connecter plusieurs fois lorsque vous installez une application iOS peut dégrader l'acquis utilisateur. Voir [Installation du client sur un appareil mobile iOS](../../../appcenter/mobile-client/#installing-the-client-on-an-ios-mobile-device). | 
 | ibm.appcenter.ldap.active | Indique si Application Center est configuré pour LDAP. Associez cette propriété à la valeur true pour activer LDAP et à la valeur false pour désactiver LDAP. Voir [Gestion des utilisateurs avec LDAP](#managing-users-with-ldap). | 
 | ibm.appcenter.ldap.cache.expiration.seconds | Application Center gère un cache de données LDAP et les changements deviennent visibles après expiration du cache seulement. Spécifiez le nombre de secondes pendant lequel une entrée dans le cache LDAP est valide. Associez cette propriété à une valeur supérieure à 3600 (1 heure) afin de réduire la quantité de demandes LDAP. Si vous n'entrez pas de valeur, la valeur par défaut est 86400, c'est-à-dire 24 heures. Si vous devez effacer le cache des données LDAP manuellement, entrez la commande suivante : `acdeploytool.sh -clearLdapCache -s urlserveur -c contexte -u utilisateur -p motdepasse`. Voir [Utilisation de l'outil autonome pour effacer le cache LDAP](../../../appcenter/command-line/#using-the-stand-alone-tool-to-clear-the-ldap-cache).  |
 | ibm.appcenter.ldap.connectionURL | Adresse URL permettant d'accéder au serveur LDAP lorsqu'aucun VMM (Virtuel Member Manager) n'est utilisé. Voir [Configuration de la gestion de la liste de contrôle d'accès (ACL) LDAP (profil Liberty)](#configuring-ldap-acl-management-liberty-profile) et [Configuration de la gestion de la liste de contrôle d'accès (ACL) LDAP (Apache Tomcat)](#configuring-ldap-acl-management-apache-tomcat). | 
