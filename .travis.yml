@@ -10,7 +10,7 @@ env:
     - BUILD=buildElastic.sh
 script: ./build/$BUILD
 branches:
-  only:  
+  only:
   - master
   - translation-staging
 rvm:
@@ -22,3 +22,5 @@ notifications:
     rooms:
       secure: LL9BQGH/n8hSdXPiLfZZna2zHAvBe1NfQRdZtWglKQ5z/K8w4hH5yV9cHxZOHblkznAi7HotEB5vmTp4Pizm5aCPgY4R/HM95Y57fOH1joKIGv1rw433JsFKR7GdFyKfQuthjW9q2bvN5T0LQp6V1GJfQ3PiYDX+lFbCY9Rr/aA=
     on_success: never
+  email:
+    - sreelathas@in.ibm.com
