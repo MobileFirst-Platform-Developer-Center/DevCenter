@@ -13,12 +13,12 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product_adj }} アプリケーションは `WLResourceRequest` REST API を使用してリソースにアクセスできます。  
+{{ site.data.keys.product_adj }} アプリケーションは `WLResourceRequest` REST API を使用してリソースにアクセスできます。  
 REST API は、すべてのアダプターおよび外部リソースで機能します。
 
 **前提条件**:
 
-- 必ずご使用のネイティブ iOS プロジェクトに [{{site.data.keys.product }} SDK を追加](../../../application-development/sdk/ios)しておいてください。
+- 必ずご使用のネイティブ iOS プロジェクトに [{{ site.data.keys.product }} SDK を追加](../../../application-development/sdk/ios)しておいてください。
 - [アダプターの作成](../../../adapters/creating-adapters/)方法を参照してください。
 
 ## WLResourceRequest
@@ -51,7 +51,6 @@ let request = WLResourceRequest(
 {: #sending-the-request }
 `sendWithCompletionHandler` メソッドを使用して、リソースを要求します。  
 取得したデータを処理するには、完了ハンドラーを指定します。
-
 
 Objective-C
 

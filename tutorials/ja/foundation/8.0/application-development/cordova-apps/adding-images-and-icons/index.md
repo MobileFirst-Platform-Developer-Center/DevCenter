@@ -8,11 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-**cordova-plugin-mfp** プラグインを使用していた場合で、
-{{site.data.keys.product_adj }}
-テンプレートを使用したり、アプリケーションに Cordova **cordova-plugin-splashscreen** プラグインを追加したりしていなかった場合、{{site.data.keys.product_full }}
-によって提供されるアイコンおよびスプラッシュ画面のイメージを独自のイメージに置き換えることができます。テンプレートを使用した場合は、Cordova アプリケーションで使用されるスプラッシュ・イメージが表示されるファイルであるため、それらのスプラッシュ・イメージを置換することができます。
-
+**cordova-plugin-mfp** プラグインを使用していた場合で、{{ site.data.keys.product_adj }} テンプレートを使用したり、アプリケーションに Cordova **cordova-plugin-splashscreen** プラグインを追加したりしていなかった場合、{{ site.data.keys.product_full }} によって提供されるアイコンおよびスプラッシュ画面のイメージを独自のイメージに置き換えることができます。テンプレートを使用した場合は、Cordova アプリケーションで使用されるスプラッシュ・イメージが表示されるファイルであるため、それらのスプラッシュ・イメージを置換することができます。
 
 新規フォルダーを作成してスプラッシュ・イメージおよびアイコンを入れ、それらを指すように **config.xml** 構成ファイルを変更してください。
 
@@ -22,18 +18,11 @@ weight: 1
 
 ### Android
 {: #android }
-Android アプリケーションがある場合、スプラッシュ・イメージを識別するための要件は、
-アプリケーションの作成に
-{{site.data.keys.product_adj }} テンプレートを使用したかどうかによって異なります。
+Android アプリケーションがある場合、スプラッシュ・イメージを識別するための要件は、アプリケーションの作成に {{ site.data.keys.product_adj }} テンプレートを使用したかどうかによって異なります。
 
 #### スプラッシュ画面
 {: #splash-screens }
-アプリケーションの作成時に {{site.data.keys.product_adj }}
-テンプレートを*使用しなかった* 場合、表示されるスプラッシュ・イメージは、
-{{site.data.keys.product_adj }} のイメージ・ロケーションから取得されたものです。
-テンプレートを使用しない場合、ターゲット・ファイルのパスとファイル名は、例とまったく同じにする必要があります。
-ソースのパスとファイル名 (`src`) は、表示するファイルのパスに変更します。
-**config.xml** ファイルで、`<platform name="android">` タグと `</platform>` タグの間に以下の例のような行を追加します。 
+アプリケーションの作成時に {{ site.data.keys.product_adj }} テンプレートを*使用しなかった* 場合、表示されるスプラッシュ・イメージは、{{ site.data.keys.product_adj }} のイメージ・ロケーションから取得されたものです。テンプレートを使用しない場合、ターゲット・ファイルのパスとファイル名は、例とまったく同じにする必要があります。ソースのパスとファイル名 (`src`) は、表示するファイルのパスに変更します。**config.xml** ファイルで、`<platform name="android">` タグと `</platform>` タグの間に以下の例のような行を追加します。 
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -43,10 +32,7 @@ Android アプリケーションがある場合、スプラッシュ・イメー
 <update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" /> 
 ```
 
-アプリケーションの作成時に
-{{site.data.keys.product_adj }} テンプレートを使用した場合は、
-Cordova が使用するスプラッシュ・イメージを更新する必要があります。
-ソースのパスとファイル名 (src) は、表示するファイルのパスに変更します。config.xml ファイルで、<platform name="android"> タグと </platform> タグの間に以下の例のような行を追加します。
+アプリケーションの作成時に {{ site.data.keys.product_adj }} テンプレートを使用した場合は、Cordova が使用するスプラッシュ・イメージを更新する必要があります。ソースのパスとファイル名 (src) は、表示するファイルのパスに変更します。config.xml ファイルで、<platform name="android"> タグと </platform> タグの間に以下の例のような行を追加します。
 
 ```xml
 <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -61,8 +47,7 @@ Cordova が使用するスプラッシュ・イメージを更新する必要が
 
 #### アイコン
 {: #icons }
-アイコン・ファイルのファイル名は、以下の例のエントリーと同じでなければなりません。
-パスは任意のパスにすることができます。各イメージの名前は、そのサイズに対応しています。
+アイコン・ファイルのファイル名は、以下の例のエントリーと同じでなければなりません。パスは任意のパスにすることができます。各イメージの名前は、そのサイズに対応しています。
 
 ```xml
 <icon src="res/icon/android/icon-96-xhdpi.png" />
@@ -95,8 +80,7 @@ iOS アプリケーションがある場合、`<platform name="ios">` タグと 
 
 #### アイコン
 {: #icons-ios}
-アイコン・ファイルのファイル名は、以下の例の名前と同じでなければなりません。
-パスは任意のパスにすることができます。各イメージの名前は、そのサイズに対応しています。
+アイコン・ファイルのファイル名は、以下の例の名前と同じでなければなりません。パスは任意のパスにすることができます。各イメージの名前は、そのサイズに対応しています。
 
 ```xml
 <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
@@ -135,8 +119,7 @@ Windows アプリケーションがある場合、`<platform name="windows">` �
 
 #### アイコン
 {: #icons-windows }
-アイコン・ファイルのファイル名は、以下の例の名前と同じでなければなりません。
-パスは任意のパスにすることができます。各イメージの名前は、そのサイズに対応しています。
+アイコン・ファイルのファイル名は、以下の例の名前と同じでなければなりません。パスは任意のパスにすることができます。各イメージの名前は、そのサイズに対応しています。
 
 ```xml
 <icon src="res/icon/windows/Square30x30Logo.scale-100.png" width="30" height="30" />

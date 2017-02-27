@@ -20,17 +20,16 @@ weight: 10
 #### ジャンプ先:
 {: #jump-to }
 
-* [{{site.data.keys.mf_mbs }} によるデバッグ](#debugging-with-the-mobile-browser-simulator)
+* [{{ site.data.keys.mf_mbs }} によるデバッグ](#debugging-with-the-mobile-browser-simulator)
 * [Ripple によるデバッグ](#debugging-with-ripple)
-* [iOS Remote Web Inspector によるデバッグ
-](#debugging-with-ios-remote-web-inspector)
+* [iOS Remote Web Inspector によるデバッグ](#debugging-with-ios-remote-web-inspector)
 * [Chrome Remote Web Inspector によるデバッグ](#debugging-with-chrome-remote-web-inspector)
-* [{{site.data.keys.product_adj }} ロガーによるデバッグ](#debugging-with-mobilefirst-logger)
+* [{{ site.data.keys.product_adj }} ロガーによるデバッグ](#debugging-with-mobilefirst-logger)
 * [WireShark によるデバッグ](#debugging-with-wireshark)
 
-## {{site.data.keys.mf_mbs }} によるデバッグ
+## {{ site.data.keys.mf_mbs }} によるデバッグ
 {: #debugging-with-the-mobile-browser-simulator }
-{{site.data.keys.product_full }} {{site.data.keys.mf_mbs }} (MBS) を使用して、{{site.data.keys.product_adj }} アプリケーションをプレビューし、デバッグできます。  
+{{ site.data.keys.product_full }} {{ site.data.keys.mf_mbs }} (MBS) を使用して、{{ site.data.keys.product_adj }} アプリケーションをプレビューし、デバッグできます。  
 MBS を使用するには、**コマンド・ライン**・ウィンドウを開き、次のコマンドを実行します。
 
 ```bash
@@ -45,7 +44,7 @@ mfpdev app preview -p <platform>
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** プレビュー・フィーチャーにはいくつかの既知の制限があります。アプリケーションは、プレビュー中は予想どおりに動作しない場合があります。例えば、機密クライアントを使用してセキュリティー・フィーチャーを迂回します。したがって、チャレンジ・ハンドラーはトリガーされません。
 
-### {{site.data.keys.mf_mbs }}
+### {{ site.data.keys.mf_mbs }}
 {: #mobile-browser-simulator}
 
 ![MBS](mbs.png)
@@ -55,7 +54,7 @@ mfpdev app preview -p <platform>
 
 ![MBS](simple.png)
 
-> {{site.data.keys.mf_cli }} については、[『{{site.data.keys.mf_cli }} を使用した{{site.data.keys.product_adj }} 成果物の管理』](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts)チュートリアルを参照してください。
+> {{ site.data.keys.mf_cli }} については、[『{{ site.data.keys.mf_cli }} を使用した{{ site.data.keys.product_adj }} 成果物の管理』](../using-mobilefirst-cli-to-manage-mobilefirst-artifacts)チュートリアルを参照してください。
 
 ## Ripple によるデバッグ
 {: #debugging-with-ripple }
@@ -65,7 +64,8 @@ Ripple を使用すると、ご使用のブラウザーで Cordova アプリケ�
 ### Ripple のインストール
 {: #installing-ripple }
 
-1. [Node.js](https://nodejs.org/en/) の最新バージョンをダウンロードしてインストールします。Node.js インストール済み環境を検証するには、端末で `npm -v` と入力します。
+1. [Node.js](https://nodejs.org/en/) の最新バージョンをダウンロードしてインストールします。
+Node.js インストール済み環境を検証するには、端末で `npm -v` と入力します。
 2. 端末を開き、以下を入力します。
 
    ```bash
@@ -85,7 +85,6 @@ ripple emulate
 > Apache Ripple™ の詳細情報は、[Apache Ripple ページ](http://ripple.incubator.apache.org/)または [npm ripple-emulator ページ](https://www.npmjs.com/package/ripple-emulator)にあります。
 
 ## iOS Remote Web Inspector によるデバッグ
-
 {: #debugging-with-ios-remote-web-inspector }
 iOS 6 以降、Apple は iOS デバイス上で Web アプリケーションをデバッグするためのリモート [Web インスペクター](https://developer.apple.com/safari/tools/)を導入しました。デバッグを行うためには、ご使用のデバイス (または iOS シミュレーター) で**「プライベートブラウズ」**オプションがオフになっていることを確認してください。  
 
@@ -107,9 +106,9 @@ Google Chrome を使用すると、Android デバイスまたは Android エミ�
 
 ![Chrome Remote Web Inspector](Chrome-Remote-Web-Inspector.png)
 
-### {{site.data.keys.product_adj }} ロガーによるデバッグ
+### {{ site.data.keys.product_adj }} ロガーによるデバッグ
 {: #debugging-with-mobilefirst-logger }
-{{site.data.keys.product }} には、ログ・メッセージを出力するために使用できる、`WL.Logger` オブジェクトが用意されています。  
+{{ site.data.keys.product }} には、ログ・メッセージを出力するために使用できる、`WL.Logger` オブジェクトが用意されています。  
 `WL.Logger` には、複数のレベルのロギング (`WL.Logger.info`、`WL.Logger.debug`、`WL.Logger.error`) が含まれています。
 
 > 詳しくは、ユーザー文書の API リファレンスの部分にある `WL.Logger` についての記載を参照してください。

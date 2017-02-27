@@ -14,8 +14,7 @@ Apple の App Transport Security (ATS) は、アプリケーションとサー�
 
 **開発目的**のため、App Transport Security Technote に記載されているように、アプリケーション内の info.plist ファイルで例外を指定することによって、デフォルトの動作をオーバーライドすることができます。ただし**完全な実稼働** 環境では、すべての iOS アプリケーションで、正しく機能するために TLS セキュア接続を適用する必要があります。
 
-非 TLS 接続を有効にするには、**project-name\Resources** フォルダーにある
-**project-name-info.plist** ファイル内に、以下の例外が記述されている必要があります。
+非 TLS 接続を有効にするには、**project-name\Resources** フォルダーにある **project-name-info.plist** ファイル内に、以下の例外が記述されている必要があります。
 
 ```xml
 <key>NSExceptionDomains</key>
@@ -49,13 +48,12 @@ Apple の App Transport Security (ATS) は、アプリケーションとサー�
    
    SSL ポート番号は、サーバー上の **server.xml** 内の `httpEndpoint` 定義で定義されています。
     
-3. TLS 1.2 プロトコル用に有効になっているサーバーを構成します。詳しくは、[『Configuring {{site.data.keys.mf_server }} to enable TLS V1.2』を参照してください](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)。
+3. TLS 1.2 プロトコル用に有効になっているサーバーを構成します。詳しくは、[『Configuring {{ site.data.keys.mf_server }} to enable TLS V1.2』を参照してください](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)。
 4. ご使用のセットアップに適用される暗号および証明書の設定を行います。詳しくは、「[App Transport Security Technote](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/)」、『[Secure communications using Secure Sockets Layer (SSL) for WebSphere Application Server Network Deployment](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en)』、および『[Liberty プロファイルの SSL 通信の使用可能化](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0)』を参照してください。
 
 ## Cordova アプリケーションでの OpenSSL の有効化
 {: #enabling-openssl-in-cordova-applications }
-{{site.data.keys.product_adj }} Cordova SDK for iOS は、暗号化にネイティブの iOS API を使用します。
-代わりに Cordova iOS アプリケーションで OpenSSL 暗号化ライブラリーが使用されるように、アプリケーションを構成できます。
+{{ site.data.keys.product_adj }} Cordova SDK for iOS は、暗号化にネイティブの iOS API を使用します。代わりに Cordova iOS アプリケーションで OpenSSL 暗号化ライブラリーが使用されるように、アプリケーションを構成できます。
 
 暗号化/暗号化解除機能は、以下の JavaScript API を使用して提供されます。
 
@@ -64,13 +62,13 @@ Apple の App Transport Security (ATS) は、アプリケーションとサー�
 
 ### オプション 1: ネイティブの暗号化/暗号化解除
 {: #option-1-native-encryptiondecryption }
-デフォルトで、{{site.data.keys.product_adj }} は OpenSSLを使用しないネイティブの暗号化/暗号化解除を提供します。これは、以下の暗号化/暗号化解除の動作を明示的に設定することと同じです。
+デフォルトで、{{ site.data.keys.product_adj }} は OpenSSLを使用しないネイティブの暗号化/暗号化解除を提供します。これは、以下の暗号化/暗号化解除の動作を明示的に設定することと同じです。
 
 * WL.SecurityUtils.enableNativeEncryption(true)
 
 ## オプション 2: OpenSSL の有効化
 {: #option-2-enabling-openssl }
-{{site.data.keys.product_adj }} 提供の OpenSSL は、デフォルトでは無効になっています。
+{{ site.data.keys.product_adj }} 提供の OpenSSL は、デフォルトでは無効になっています。
 
 OpenSSL をサポートするために必要なフレームワークをインストールするには、まず、以下のように Cordova プラグインをインストールします。
 
@@ -82,11 +80,11 @@ cordova plugin add cordova-plugin-mfp-encrypt-utils
 
 * WL.SecurityUtils.enableNativeEncryption(false)
 
-このセットアップにより、暗号化/暗号化解除の呼び出しは、以前のバージョンの {{site.data.keys.product }} と同様に OpenSSL を使用します。
+このセットアップにより、暗号化/暗号化解除の呼び出しは、以前のバージョンの {{ site.data.keys.product }} と同様に OpenSSL を使用します。
 
 ### マイグレーション・オプション
 {: #migration-options }
-以前のバージョンの {{site.data.keys.product_adj }} 製品で作成されたプロジェクトがある場合、引き続き OpenSSL を使用するためには、変更の組み込みが必要になる場合があります。
+以前のバージョンの {{ site.data.keys.product_adj }} 製品で作成されたプロジェクトがある場合、引き続き OpenSSL を使用するためには、変更の組み込みが必要になる場合があります。
 
 * アプリケーションが暗号化/暗号化解除 API を使用しておらず、デバイスでキャッシュに入れられた暗号化データがない場合、アクションは不要です。
 * アプリケーションが暗号化/暗号化解除 API を使用している場合、これらの API で OpenSSL を使用することも、使用しないことも可能です。

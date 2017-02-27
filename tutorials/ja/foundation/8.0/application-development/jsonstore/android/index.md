@@ -12,19 +12,16 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 前提条件
-
 {: #prerequisites }
 
 * [JSONStore 親チュートリアル](../)を読む。
-* {{site.data.keys.product_adj }} ネイティブ SDK が Android Studio プロジェクトに追加されていることを確認する。[『Android アプリケーションへの {{site.data.keys.product }} SDK の追加』](../../../application-development/sdk/android/)チュートリアルに従ってください。
+* {{ site.data.keys.product_adj }} ネイティブ SDK が Android Studio プロジェクトに追加されていることを確認する。[『Android アプリケーションへの {{ site.data.keys.product }} SDK の追加』](../../../application-development/sdk/android/)チュートリアルに従ってください。
 
 #### ジャンプ先:
 {: #jump-to }
 * [JSONStore の追加](#adding-jsonstore)
-* [基本的な使用法
-](#basic-usage)
-* [高度な使用法
-](#advanced-usage)
+* [基本的な使用法](#basic-usage)
+* [高度な使用法](#advanced-usage)
 * [サンプル・アプリケーション](#sample-application)
 
 ## JSONStore の追加
@@ -38,7 +35,6 @@ compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.
 ```
 
 ## 基本的な使用法
-
 {: #basic-usage }
 ### 開く
 {: #open }
@@ -46,8 +42,7 @@ compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.
 
 コレクションの開始またはプロビジョニングは、コレクションとドキュメントが含まれる永続ストレージを作成することを意味します (永続ストレージが存在しない場合)。永続ストレージが暗号化され、正しいパスワードが渡されると、そのデータにアクセスできるようにするための、セキュリティー上必要な手順が実行されます。
 
-
-初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』、『複数ユーザー・サポート』**、および**『{{site.data.keys.product_adj }} アダプターの統合』**を参照してください。
+初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』、『複数ユーザー・サポート』**、および**『{{ site.data.keys.product_adj }} アダプターの統合』**を参照してください。
 
 ```java
 Context context = getContext();
@@ -65,7 +60,6 @@ try {
 ```
 
 ### 取得
-
 {: #get }
 コレクションへのアクセス機能を作成するには、`getCollectionByName` を使用します。`getCollectionByName` を呼び出す前に `openCollections` を呼び出す必要があります。
 
@@ -103,7 +97,6 @@ try {
 ```
 
 ### 検索
-
 {: #find }
 照会を使用してコレクション内のドキュメントを見つけるには、`findDocuments` を使用します。 コレクション内のすべてのドキュメントを取り出すには、`findAllDocuments` を使用します。ドキュメントの固有 ID で検索するには、`findDocumentById` を使用します。
 
@@ -128,7 +121,6 @@ try {
 ```
 
 ### 置換
-
 {: #replace }
 コレクション内のドキュメントを変更するには、`replaceDocument` を使用します。置換の実行に使用するフィールドは `_id,` で、これはドキュメントの固有 ID です。
 
@@ -151,9 +143,9 @@ try {
 この例では、ドキュメント `{_id: 1, json: {name: 'yoel', age: 23} }` がコレクションにあることを前提としています。
 
 ### 削除
-
 {: #remove }
-ドキュメントをコレクションから削除するには、`removeDocumentById` を使用します。`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。詳しくは、このチュートリアルの後半にある**{{site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
+ドキュメントをコレクションから削除するには、`removeDocumentById` を使用します。
+`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。詳しくは、このチュートリアルの後半にある**{{ site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
 
 ```java
 Context context = getContext();
@@ -171,7 +163,6 @@ try {
 ```
 
 ### コレクションの削除
-
 {: #remove-collection }
 コレクション内に保管されているすべてのドキュメントを削除するには、 `removeCollection` を使用します。 この操作は、データベース用語における、表のドロップと似ています。
 
@@ -192,9 +183,7 @@ try {
 以下のデータを削除するには、`destroy` を使用します。
 
 * すべてのドキュメント
-
 * すべてのコレクション
-
 * すべてのストア - このチュートリアル後半の**『複数ユーザー・サポート』**を参照してください。
 * すべての JSONStore メタデータおよびセキュリティー成果物 - このチュートリアル後半の**『セキュリティー』**を参照してください。
 
@@ -209,17 +198,13 @@ try {
 ```
 
 ## 高度な使用法
-
 {: #advanced-usage }
 ### セキュリティー
 {: #security }
 `JSONStoreInitOptions` オブジェクトとパスワードを `openCollections` 関数に渡すことにより、ストア内のすべてのコレクションを保護できます。パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
 
-
 一部のセキュリティー・メタデータは共有設定で保管されます (Android)。  
-ストアは 256 ビットの Advanced Encryption Standard
-(AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation
-Function 2 (PBKDF2) により強化されています。
+ストアは 256 ビットの Advanced Encryption Standard (AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation Function 2 (PBKDF2) により強化されています。
 
 `closeAll` を使用して、`closeAll` を再度呼び出すまですべてのコレクションへのアクセスをロックします。`openCollections` をログイン関数と考えると、`closeAll` はそれに対応するログアウト関数と考えることができます。
 
@@ -244,7 +229,7 @@ try {
 
 #### 複数ユーザー・サポート
 {: #multiple-user-support }
-単一の {{site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`openCollections` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名 ""**jsonstore**"" が使用されます。
+単一の {{ site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`openCollections` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名 ""**jsonstore**"" が使用されます。
 
 ```java
 Context context = getContext();
@@ -263,9 +248,10 @@ try {
 }
 ```
 
-#### {{site.data.keys.product_adj }} アダプターの統合
+#### {{ site.data.keys.product_adj }} アダプターの統合
 {: #mobilefirst-adapter-integration }
-このセクションは、ユーザーがアダプターについて理解していることを前提とします。アダプターの統合はオプションであり、コレクションからアダプターにデータを送信する方法、およびアダプターからコレクションにデータを取得する方法を提供します。`WLResourceRequest` などの関数を使用することで、またはより柔軟性が必要な場合は `HttpClient` の独自インスタンスを使用することで、これらの目標を達成できます。
+このセクションは、ユーザーがアダプターについて理解していることを前提とします。アダプターの統合はオプションであり、コレクションからアダプターにデータを送信する方法、およびアダプターからコレクションにデータを取得する方法を提供します。
+`WLResourceRequest` などの関数を使用することで、またはより柔軟性が必要な場合は `HttpClient` の独自インスタンスを使用することで、これらの目標を達成できます。
 
 #### アダプターの実装
 {: #adapter-implementation }
@@ -300,7 +286,7 @@ function replacePerson(data) {
 }
 ```
 
-#### データを {{site.data.keys.product_adj }} アダプターからロード
+#### データを {{ site.data.keys.product_adj }} アダプターからロード
 {: #load-data-from-mobilefirst-adapter }
 データをアダプターからロードするには、`WLResourceRequest` を使用します。
 

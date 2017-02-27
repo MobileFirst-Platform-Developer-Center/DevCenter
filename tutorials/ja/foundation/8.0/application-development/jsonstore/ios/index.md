@@ -12,18 +12,15 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 前提条件
-
 {: #prerequisites }
 * [JSONStore 親チュートリアル](../)を読む。
-* {{site.data.keys.product_adj }} ネイティブ SDK が Xcode プロジェクトに追加されていることを確認する。[『iOS アプリケーションへの {{site.data.keys.product }} SDK の追加』](../../../application-development/sdk/ios/)チュートリアルに従ってください。
+* {{ site.data.keys.product_adj }} ネイティブ SDK が Xcode プロジェクトに追加されていることを確認する。[『iOS アプリケーションへの {{ site.data.keys.product }} SDK の追加』](../../../application-development/sdk/ios/)チュートリアルに従ってください。
 
 #### ジャンプ先:
 {: #jump-to }
 * [JSONStore の追加](#adding-jsonstore)
-* [基本的な使用法
-](#basic-usage)
-* [高度な使用法
-](#advanced-usage)
+* [基本的な使用法](#basic-usage)
+* [高度な使用法](#advanced-usage)
 * [サンプル・アプリケーション](#sample-application)
 
 ## JSONStore の追加
@@ -50,7 +47,6 @@ import IBMMobileFirstPlatformFoundationJSONStore
 ```
 
 ## 基本的な使用法
-
 {: #basic-usage }
 ### 開く
 {: #open }
@@ -59,8 +55,7 @@ import IBMMobileFirstPlatformFoundationJSONStore
 コレクションの開始またはプロビジョニングは、コレクションとドキュメントが含まれる永続ストレージを作成することを意味します (永続ストレージが存在しない場合)。  
 永続ストレージが暗号化され、正しいパスワードが渡されると、そのデータにアクセスできるようにするための、セキュリティー上必要な手順が実行されます。
 
-
-初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』、『複数ユーザー・サポート』**、および**『{{site.data.keys.product_adj }} アダプターの統合』**を参照してください。
+初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』、『複数ユーザー・サポート』**、および**『{{ site.data.keys.product_adj }} アダプターの統合』**を参照してください。
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -76,7 +71,6 @@ do  {
 ```
 
 ### 取得
-
 {: #get }
 コレクションへのアクセス機能を作成するには、`getCollectionWithName` を使用します。`getCollectionWithName` を呼び出す前に `openCollections` を呼び出す必要があります。
 
@@ -105,7 +99,6 @@ do  {
 ```
 
 ### 検索
-
 {: #find }
 照会を使用してコレクション内のドキュメントを見つけるには、`findWithQueryParts` を使用します。 コレクション内のすべてのドキュメントを取り出すには、`findAllWithOptions` を使用します。ドキュメントの固有 ID で検索するには、`findWithIds` を使用します。
 
@@ -154,7 +147,8 @@ do {
 
 ### 削除
 {: #remove }
-ドキュメントをコレクションから削除するには、`removeWithIds` を使用します。`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。詳しくは、このチュートリアルの後半にある**{{site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
+ドキュメントをコレクションから削除するには、`removeWithIds` を使用します。
+`markDocumentClean` を呼び出すまで、ドキュメントはコレクションから消去されません。詳しくは、このチュートリアルの後半にある**{{ site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
 
 ```swift
 let collectionName:String = "people"
@@ -187,9 +181,7 @@ do  {
 以下のデータを削除するには、`destroyData` を使用します。
 
 * すべてのドキュメント
-
 * すべてのコレクション
-
 * すべてのストア - このチュートリアル後半の**『複数ユーザー・サポート』**を参照してください。
 * すべての JSONStore メタデータおよびセキュリティー成果物 - このチュートリアル後半の**『セキュリティー』**を参照してください。
 
@@ -208,9 +200,7 @@ do {
 `JSONStoreOpenOptions` オブジェクトとパスワードを `openCollections` 関数に渡すことにより、ストア内のすべてのコレクションを保護できます。パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
 
 一部のセキュリティー・メタデータはキーチェーンに保管されます (iOS)。  
-ストアは 256 ビットの Advanced Encryption Standard
-(AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation
-Function 2 (PBKDF2) により強化されています。
+ストアは 256 ビットの Advanced Encryption Standard (AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation Function 2 (PBKDF2) により強化されています。
 
 `closeAllCollections` を使用して、`openCollections` を再度呼び出すまですべてのコレクションへのアクセスをロックします。`openCollections` をログイン関数と考えると、`closeAllCollections` はそれに対応するログアウト関数と考えることができます。
 
@@ -233,7 +223,7 @@ do {
 
 ### 複数ユーザー・サポート
 {: #multiple-user-support }
-単一の {{site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`openCollections` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名は「jsonstore」です。
+単一の {{ site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`openCollections` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名は「jsonstore」です。
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -250,7 +240,7 @@ do {
 }
 ```
 
-### {{site.data.keys.product_adj }} アダプターの統合
+### {{ site.data.keys.product_adj }} アダプターの統合
 {: #mobilefirst-adapter-integration }
 このセクションは、ユーザーがアダプターについて理解していることを前提とします。アダプターの統合はオプションであり、コレクションからアダプターにデータを送信する方法、およびアダプターからコレクションにデータを取得する方法を提供します。
 
@@ -289,7 +279,7 @@ function replacePerson(data) {
 }
 ```
 
-#### データを {{site.data.keys.product_adj }} アダプターからロード
+#### データを {{ site.data.keys.product_adj }} アダプターからロード
 {: #load-data-from-mobilefirst-adapter }
 データを MobileFirst アダプターからロードするには、`WLResourceRequest` を使用します。
 

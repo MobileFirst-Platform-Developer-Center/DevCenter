@@ -7,34 +7,32 @@ relevantTo: [ios,android,windows,javascript]
 ---
 ## 概説
 {: #overview }
-{{site.data.keys.product_full }} には、クライアント成果物およびサーバー成果物を簡単に管理するための、開発者向けのコマンド・ライン・インターフェース (CLI) ツール **mfpdev** が用意されています。  
-この CLI を使用して、{{site.data.keys.product_adj }} Cordova プラグインを使用した Cordova ベースのアプリケーション、および {{site.data.keys.product_adj }} ネイティブ SDK を使用したネイティブ・アプリケーションを管理できます。
+{{ site.data.keys.product_full }} には、クライアント成果物およびサーバー成果物を簡単に管理するための、開発者向けのコマンド・ライン・インターフェース (CLI) ツール **mfpdev** が用意されています。  
+この CLI を使用して、{{ site.data.keys.product_adj }} Cordova プラグインを使用した Cordova ベースのアプリケーション、および {{ site.data.keys.product_adj }} ネイティブ SDK を使用したネイティブ・アプリケーションを管理できます。
 
-ローカルまたはリモートの {{site.data.keys.mf_server }} インスタンスに対するアダプターを作成、登録、管理し、コマンド・ラインから、あるいは REST サービス経由で、あるいは {{site.data.keys.mf_console }} から、プロジェクトを管理することもできます。
+ローカルまたはリモートの {{ site.data.keys.mf_server }} インスタンスに対するアダプターを作成、登録、管理し、コマンド・ラインから、あるいは REST サービス経由で、あるいは {{ site.data.keys.mf_console }} から、プロジェクトを管理することもできます。
 
 **mfpdev** コマンドには、対話モードと直接モードの 2 つのモードがあります。対話モードでは、オプションを指定せずにコマンドを入力すると、応答を求めるプロンプトが出されます。直接モードでは、オプションも含めて完全なコマンドを入力します。プロンプトは出されません。該当する場合、プロンプトは、アプリケーションのターゲット・プラットフォーム (コマンドを実行したディレクトリーによって判別される) のコンテキストに依存したものになります。キーボードの上下矢印キーを使用して選択項目間を移動し、目的の選択項目が強調表示され、その前に「>」という 文字が表示されたら、Enter キーを押します。
 
-このチュートリアルでは、`mfpdev` コマンド・ライン・インターフェース (CLI) のインストール方法と、この CLI を使用して {{site.data.keys.mf_server }} のインスタンス、アプリケーション、およびアダプターを管理する方法について学習します。
+このチュートリアルでは、`mfpdev` コマンド・ライン・インターフェース (CLI) のインストール方法と、この CLI を使用して {{ site.data.keys.mf_server }} のインスタンス、アプリケーション、およびアダプターを管理する方法について学習します。
 
-> Cordova アプリケーションおよびネイティブ・アプリケーションとの SDK の統合について詳しくは、[{{site.data.keys.product }} SDK の追加](../../application-development/sdk/)カテゴリーのチュートリアルを参照してください。
+> Cordova アプリケーションおよびネイティブ・アプリケーションとの SDK の統合について詳しくは、[{{ site.data.keys.product }} SDK の追加](../../application-development/sdk/)カテゴリーのチュートリアルを参照してください。
 
 #### ジャンプ先
 {: #jump-to }
-* [前提条件
-](#prerequisites)
-* [{{site.data.keys.mf_cli }}](#installing-the-mobilefirst-cli) のインストール
+* [前提条件](#prerequisites)
+* [{{ site.data.keys.mf_cli }}](#installing-the-mobilefirst-cli) のインストール
 * [CLI コマンドのリスト](#list-of-cli-commands)
 * [対話モードと直接モード](#interactive-and-direct-modes)
-* [{{site.data.keys.mf_server }} インスタンスの管理](#managing-mobilefirst-server-instances)
+* [{{ site.data.keys.mf_server }} インスタンスの管理](#managing-mobilefirst-server-instances)
 * [アプリケーションの管理](#managing-applications)
 * [アダプターの管理とテスト](#managing-and-testing-adapters)
 * [役立つコマンド](#helpful-commands)
 * [コマンド・ライン・インターフェースの更新とアンインストール](#update-and-uninstall-the-command-line-interface)
 
 ## 前提条件
-
 {: #prerequisites }
-{{site.data.keys.mf_cli }} は、NPM パッケージとして [NPM レジストリー](https://www.npmjs.com/)で入手できます。  
+{{ site.data.keys.mf_cli }} は、NPM パッケージとして [NPM レジストリー](https://www.npmjs.com/)で入手できます。  
 
 NPM パッケージをインストールするため、開発環境に **node.js** がインストールされていることを確認します。  
 [nodejs.org](https://nodejs.org) のインストール手順に従って、node.js をインストールします。
@@ -48,7 +46,7 @@ v4.2.3
 
 > **注:** サポートされている node.js の最小バージョンは 4.2.3 です。
 
-## {{site.data.keys.mf_cli }} のインストール
+## {{ site.data.keys.mf_cli }} のインストール
 {: #installing-the-mobilefirst-cli }
 コマンド・ライン・インターフェースをインストールするには、次のコマンドを実行します。
 
@@ -56,7 +54,7 @@ v4.2.3
 npm install -g mfpdev-cli
 ```
 
-CLI の .zip ファイルを {{site.data.keys.mf_console }} のダウンロード・センターからダウンロードした場合は、次のコマンドを使用します。
+CLI の .zip ファイルを {{ site.data.keys.mf_console }} のダウンロード・センターからダウンロードした場合は、次のコマンドを使用します。
 
 ```bash
 npm install -g <path-to-mfpdev-cli.tgz>
@@ -93,33 +91,33 @@ DESCRIPTION
 
 | コマンド接頭部                                                | コマンド・アクション                               | 説明                                                             |
 |---------------------------------------------------------------|----------------------------------------------|-------------------------------------------------------------------------|
-| `mfpdev app`	                                                | register                                     | アプリケーションを {{site.data.keys.mf_server }} に登録します。                           |
+| `mfpdev app`	                                                | register                                     | アプリケーションを {{ site.data.keys.mf_server }} に登録します。                           |
 |                                                               | config                                       | アプリケーションで使用するバックエンド・サーバーおよびランタイムを指定できます。さらに、Cordova アプリケーションの場合、システム・メッセージのデフォルト言語やチェックサム・セキュリティー検査を実行するかどうかなどのさまざまな側面も構成できます。Cordova アプリケーションでは、その他の構成パラメーターが含まれます。                                                                                                                                                |
 |                                                               | pull                                         | サーバーから既存のアプリケーション構成を取得します。                |
 |                                                               | push                                         | アプリケーションの構成をサーバーに送信します。                             |
-|                                                               | preview                                      | ターゲット・プラットフォーム・タイプの実際のデバイスがなくても Cordova アプリケーションをプレビューできます。{{site.data.keys.mf_mbs }}か Web ブラウザーのいずれかでプレビューを表示できます。                                                                               |
+|                                                               | preview                                      | ターゲット・プラットフォーム・タイプの実際のデバイスがなくても Cordova アプリケーションをプレビューできます。{{ site.data.keys.mf_mbs }}か Web ブラウザーのいずれかでプレビューを表示できます。                                                                               |
 |                                                               | webupdate                                    | www ディレクトリーに入っているアプリケーション・リソースを、ダイレクト・アップデート・プロセスで使用できる .zip ファイルにパッケージします。                                                                                                                                     |
-| mfpdev server	                                                | info                                         | {{site.data.keys.mf_server }} に関する情報を表示します。                      |
+| mfpdev server	                                                | info                                         | {{ site.data.keys.mf_server }} に関する情報を表示します。                      |
 |                                                               | add                                          | 新規サーバー定義を環境に追加します。                        |
 |                                                               | edit                                         | サーバー定義を編集できます。                                |
 |                                                               | remove                                       | サーバー定義を環境から削除します。                      |
-|                                                               | console                                      | {{site.data.keys.mf_console }} を開きます。                               |
-|                                                               | clean                                        | アプリケーションを登録抹消し、アダプターを {{site.data.keys.mf_server }} から削除します。      |
+|                                                               | console                                      | {{ site.data.keys.mf_console }} を開きます。                               |
+|                                                               | clean                                        | アプリケーションを登録抹消し、アダプターを {{ site.data.keys.mf_server }} から削除します。      |
 | mfpdev adapter                                                | create                                       | アダプターを作成します。                                                     |
 |                                                               | build                                        | アダプターをビルドします。                                                      |
 |                                                               | build all                                    | 現行ディレクトリーおよびそのサブディレクトリー内にあるすべてのアダプターを検出してビルドします。 |
-|                                                               | deploy                                       | アダプターを {{site.data.keys.mf_server }} にデプロイします。                           |
-|                                                               | deploy all                                   | 現行ディレクトリーおよびそのサブディレクトリー内にあるすべてのアダプターを検出して、{{site.data.keys.mf_server }} にそれらをデプロイします。 |
-|                                                               | call                                         | {{site.data.keys.mf_server }} でアダプターのプロシージャーを呼び出します。                 |
+|                                                               | deploy                                       | アダプターを {{ site.data.keys.mf_server }} にデプロイします。                           |
+|                                                               | deploy all                                   | 現行ディレクトリーおよびそのサブディレクトリー内にあるすべてのアダプターを検出して、{{ site.data.keys.mf_server }} にそれらをデプロイします。 |
+|                                                               | call                                         | {{ site.data.keys.mf_server }} でアダプターのプロシージャーを呼び出します。                 |
 |                                                               | pull                                         | サーバーから既存のアダプター構成を取得します。                |
 |                                                               | push                                         | アダプターの構成をサーバーに送信します。                             |
 | mfpdev                                                        | config                                       | mfpdev コマンド・ライン・インターフェースのプレビュー・ブラウザー・タイプ、プレビュー・タイムアウト値、およびサーバー・タイムアウト値の構成設定を指定します。                                                                                                                   |
 |                                                               | info                                         | オペレーティング・システム、メモリー使用量、ノード・バージョン、コマンド・ライン・インターフェースのバージョンなど、環境に関する情報を表示します。現行ディレクトリーが Cordova アプリケーションである場合、Cordova cordova info コマンドで提供される情報も表示されます。 |
-|                                                               | -v                                           | 現在使用されている {{site.data.keys.mf_cli }} のバージョン番号を表示します。 |
+|                                                               | -v                                           | 現在使用されている {{ site.data.keys.mf_cli }} のバージョン番号を表示します。 |
 |                                                               | -d, --debug                                  | デバッグ・モード: デバッグ出力を生成します。                                      |
 |                                                               | -dd, --ddebug                                | 冗長デバッグ・モード: 冗長デバッグ出力を生成します。                      |
 |                                                               | -no-color                                    | コマンド出力でのカラーの使用を抑止します。                              |
-| mfpdev help                                                   | コマンドの名前                              | {{site.data.keys.mf_cli }} (mfpdev) コマンドのヘルプを表示します。引数を指定した場合、各コマンド・タイプまたはコマンドに関するより具体的なヘルプ・テキストを表示します。例: 「mfpdev help server add」 |
+| mfpdev help                                                   | コマンドの名前                              | {{ site.data.keys.mf_cli }} (mfpdev) コマンドのヘルプを表示します。引数を指定した場合、各コマンド・タイプまたはコマンドに関するより具体的なヘルプ・テキストを表示します。例: 「mfpdev help server add」 |
 
 ## 対話モードと直接モード
 {: #interactive-and-direct-modes }
@@ -150,13 +148,13 @@ mfpdev server add mydevserver --url http://mydevserver.example.com:9080 --login 
 直接モードでのコマンドの正しい構文を見るには、`mfpdev help < コマンドを使用します。>`.
 
 
-## {{site.data.keys.mf_server }} インスタンスの管理
+## {{ site.data.keys.mf_server }} インスタンスの管理
 {: #managing-mobilefirst-server-instances }
-`mfpdev server <option>` コマンドを使用すると、現在使用中の {{site.data.keys.mf_server }} インスタンスを管理できます。常に、少なくとも 1 つのサーバー・インスタンスがデフォルト・インスタンスとしてリストされている必要があります。別のサーバーが指定されなかった場合は、常にデフォルト・サーバーが使用されます。
+`mfpdev server <option>` コマンドを使用すると、現在使用中の {{ site.data.keys.mf_server }} インスタンスを管理できます。常に、少なくとも 1 つのサーバー・インスタンスがデフォルト・インスタンスとしてリストされている必要があります。別のサーバーが指定されなかった場合は、常にデフォルト・サーバーが使用されます。
 
 ### サーバー・インスタンスのリスト
 {: #list-server-instances }
-使用可能なすべての {{site.data.keys.mf_server }} インスタンスをリストするには、次のコマンドを実行します。
+使用可能なすべての {{ site.data.keys.mf_server }} インスタンスをリストするには、次のコマンドを実行します。
 
 ```bash
 mfpdev server info
@@ -166,14 +164,14 @@ mfpdev server info
 
 ### 新規サーバー・インスタンスの追加
 {: #add-a-new-server-instance }
-ローカルまたはリモートの {{site.data.keys.mf_server }} インスタンスをさらに使用する場合、次のコマンドを使用して、使用可能なインスタンスのリストに、そのインスタンスを追加できます。
+ローカルまたはリモートの {{ site.data.keys.mf_server }} インスタンスをさらに使用する場合、次のコマンドを使用して、使用可能なインスタンスのリストに、そのインスタンスを追加できます。
 
 ```bash
 mfpdev server add
 ```
 
 対話式プロンプトに従って、サーバーの名前、サーバー URL、およびユーザー/パスワード資格情報を指定します。  
-例えば、Mobile Foundation Bluemix サービス上で稼働している {{site.data.keys.mf_server }} を追加するには、次のようにします。
+例えば、Mobile Foundation Bluemix サービス上で稼働している {{ site.data.keys.mf_server }} を追加するには、次のようにします。
 
 ```bash
 $ mfpdev server add
@@ -216,7 +214,7 @@ mfpdev server remove
 
 その後、対話式リストから目的のサーバーを選択します。
 
-### {{site.data.keys.mf_console }} を開く
+### {{ site.data.keys.mf_console }} を開く
 {: #open-mobilefirst-operations-console }
 登録済みデフォルト・サーバーのコンソールを開くには、次のコマンドを実行します。
 
@@ -243,11 +241,11 @@ mfpdev server clean
 
 ## アプリケーションの管理
 {: #managing-applications }
-コマンド `mfpdev app <option>` を使用すると、{{site.data.keys.product }} SDK を使用して作成されたアプリケーションの管理を行うことができます。
+コマンド `mfpdev app <option>` を使用すると、{{ site.data.keys.product }} SDK を使用して作成されたアプリケーションの管理を行うことができます。
 
 ### サーバー・インスタンスへのアプリケーションの登録
 {: #register-an-application-in-a-server-instance }
-実行の準備の整ったアプリケーションは、{{site.data.keys.mf_server }} に登録する必要があります。  
+実行の準備の整ったアプリケーションは、{{ site.data.keys.mf_server }} に登録する必要があります。  
 アプリケーションを登録するには、そのアプリケーション・プロジェクトのルート・フォルダーから次のコマンドを実行します。
 
 ```bash
@@ -293,10 +291,11 @@ mfpdev app config
 
 * アプリケーションの登録先となるサーバー・アドレスおよびサーバー・ランタイム
 
-    > **ユース・ケースの例:** アプリケーションを、ある特定のアドレスを持つ {{site.data.keys.mf_server }} に登録するが、さらにそのアプリケーションが異なるサーバー・アドレス (DataPower アプライアンスなど) に接続するように設定する場合は、次のようにします。
+    > **ユース・ケースの例:** アプリケーションを、ある特定のアドレスを持つ {{ site.data.keys.mf_server }} に登録するが、さらにそのアプリケーションが異なるサーバー・アドレス (DataPower アプライアンスなど) に接続するように設定する場合は、次のようにします。
     >
-    > 1. `mfpdev app register` を実行して、アプリケーションを目的の {{site.data.keys.mf_server }} アドレスに登録します。
+    > 1. `mfpdev app register` を実行して、アプリケーションを目的の {{ site.data.keys.mf_server }} アドレスに登録します。
     > 2. `mfpdev app config` を実行し、**server** プロパティーの値を、DataPower アプライアンスのアドレスと一致するように変更します。また、このコマンドを**直接モード**で、次のように実行することもできます: `mfpdev app config server http(s)://server-ip-or-host:port`
+
 * ダイレクト・アップデートの認証性フィーチャー用の公開鍵の設定 
 * アプリケーションのデフォルト言語の設定 (デフォルトは英語 (en))
 * Web リソース・チェックサム・テストを有効にするかどうか
@@ -409,14 +408,14 @@ mfpdev app config
 どのプラットフォームをプレビューし、どのタイプのプレビューを使用するかを選択するためのプロンプトが出されます。
 プレビューのオプションには、MBS とブラウザーの 2 つがあります。
 
-* MBS: {{site.data.keys.mf_mbs }}。この方式は、ブラウザーでモバイル・デバイスをシミュレートするだけでなく、カメラ、ファイルのアップロード、地理位置情報など、基本的な Cordova API のシミュレーションも提供します。注: MBS オプションでは Cordova Browser は使用できません。
+* MBS: {{ site.data.keys.mf_mbs }}。この方式は、ブラウザーでモバイル・デバイスをシミュレートするだけでなく、カメラ、ファイルのアップロード、地理位置情報など、基本的な Cordova API のシミュレーションも提供します。注: MBS オプションでは Cordova Browser は使用できません。
 * ブラウザー: Simple Browser レンダリング。この方式は、Cordova アプリケーションの www リソースを、通常のブラウザーの Web ページとして表現します。
 
 > プレビュー・オプションについて詳しくは、[Cordova 開発のチュートリアル](../cordova-apps)を参照してください。
 
 ### ダイレクト・アップデートでの Web リソースの更新
 {: #update-web-resources-for-direct-update }
-モバイル・デバイスでアプリケーションを再インストールしなくても、Cordova アプリケーションの Web リソース (**www** フォルダー内にある .html ファイル、.css ファイル、.js ファイルなど) を更新できます。これは、{{site.data.keys.product }} によって提供されるダイレクト・アップデート・フィーチャーによって可能になります。
+モバイル・デバイスでアプリケーションを再インストールしなくても、Cordova アプリケーションの Web リソース (**www** フォルダー内にある .html ファイル、.css ファイル、.js ファイルなど) を更新できます。これは、{{ site.data.keys.product }} によって提供されるダイレクト・アップデート・フィーチャーによって可能になります。
 
 > ダイレクト・アップデートがどのように機能するかについて詳しくは、チュートリアル[Cordova アプリケーションでのダイレクト・アップデートの使用](../direct-update)を参照してください。
 
@@ -426,7 +425,7 @@ mfpdev app config
 mfpdev app webupdate
 ```
 
-このコマンドにより、更新された Web リソースが .zip ファイルにパッケージ化され、登録済みのデフォルトの {{site.data.keys.mf_server }} にアップロードされます。パッケージ化された Web リソースは、**[cordova-project-root-folder]/mobilefirst/** フォルダー内にあります。
+このコマンドにより、更新された Web リソースが .zip ファイルにパッケージ化され、登録済みのデフォルトの {{ site.data.keys.mf_server }} にアップロードされます。パッケージ化された Web リソースは、**[cordova-project-root-folder]/mobilefirst/** フォルダー内にあります。
 
 Web リソースを別のサーバー・インスタンスにアップロードするには、コマンドの一部としてサーバー名とランタイムを指定します。
 
@@ -452,21 +451,21 @@ mfpdev app webupdate --file mobilefirst/com.ibm.test-android-1.0.0.zip
 mfpdev app webupdate --encrypt
 ```
 
-### {{site.data.keys.product_adj }} アプリケーション構成のプルおよびプッシュ
+### {{ site.data.keys.product_adj }} アプリケーション構成のプルおよびプッシュ
 {: #pull-and-push-the-mobilefirst-application-configuration }
-{{site.data.keys.product_adj }} アプリケーションを {{site.data.keys.mf_server }} に登録したら、{{site.data.keys.mf_server }} Console を使用してアプリケーション構成の一部を変更し、それらの構成を、次のコマンドでサーバーからアプリケーションにプルすることができます。
+{{ site.data.keys.product_adj }} アプリケーションを {{ site.data.keys.mf_server }} に登録したら、{{ site.data.keys.mf_server }} Console を使用してアプリケーション構成の一部を変更し、それらの構成を、次のコマンドでサーバーからアプリケーションにプルすることができます。
 
 ```bash
 mfpdev app pull
 ```
 
-また、アプリケーション構成をローカルに変更して、次のコマンドで変更を {{site.data.keys.mf_server }} にプッシュすることもできます。
+また、アプリケーション構成をローカルに変更して、次のコマンドで変更を {{ site.data.keys.mf_server }} にプッシュすることもできます。
 
 ```bash
 mfpdev app push
 ```
 
-**例:** {{site.data.keys.mf_console }} でセキュリティー検査へのスコープ・マッピングを実行した後、上記のコマンドを使用してサーバーからプルすることができます。ダウンロードした .zip ファイルは、プロジェクトの **[root directory]/mobilefirst** フォルダーに保管されるので、後でこれを `mfpdev app push` コマンドを使用して別の {{site.data.keys.mf_server }} にアップロードすることができます。このように、事前に定義済みの構成を再利用することで、迅速な構成とセットアップが可能になります。
+**例:** {{ site.data.keys.mf_console }} でセキュリティー検査へのスコープ・マッピングを実行した後、上記のコマンドを使用してサーバーからプルすることができます。ダウンロードした .zip ファイルは、プロジェクトの **[root directory]/mobilefirst** フォルダーに保管されるので、後でこれを `mfpdev app push` コマンドを使用して別の {{ site.data.keys.mf_server }} にアップロードすることができます。このように、事前に定義済みの構成を再利用することで、迅速な構成とセットアップが可能になります。
 
 ## アダプターの管理とテスト
 {: #managing-and-testing-adapters }
