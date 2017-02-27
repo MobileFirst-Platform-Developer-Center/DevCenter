@@ -7,7 +7,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-以下に示すいくつかの方法に従うことで、{{site.data.keys.mf_server }} インスタンスを保護できます。
+以下に示すいくつかの方法に従うことで、{{ site.data.keys.mf_server }} インスタンスを保護できます。
 
 #### ジャンプ先
 {: #jump-to }
@@ -31,8 +31,7 @@ ATS の構成は、iOS 以外の他のモバイル・オペレーティング・
    </server>
    ```
     - サーバーが SSL 通信を処理できるようにするために、フィーチャー管理機能に **ssl-1.0** がフィーチャーとして追加されています。
-    - サーバーが Transport Layer Security (TLS) バージョン 1.2 プロトコルのみに基づいて通信することを義務付けるために、**sslProtocol="TLSv1.2"** が ssl タグに追加されています。複数のプロトコルを追加できます。
-例えば、**sslProtocol="TLSv1+TLSv1.1+TLSv1.2"** を追加すると、サーバーは TLS V1、V1.1、および V1.2 に基づいて通信できます。(iOS 9 アプリケーションでは、TLS V1.2 が必要です。)
+    - サーバーが Transport Layer Security (TLS) バージョン 1.2 プロトコルのみに基づいて通信することを義務付けるために、**sslProtocol="TLSv1.2"** が ssl タグに追加されています。複数のプロトコルを追加できます。例えば、**sslProtocol="TLSv1+TLSv1.1+TLSv1.2"** を追加すると、サーバーは TLS V1、V1.1、および V1.2 に基づいて通信できます。(iOS 9 アプリケーションでは、TLS V1.2 が必要です。)
     - **enabledCiphers="TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384"** が ssl タグに追加され、サーバーがその暗号のみを使用して通信を実行するようにします。
     - **keyStore** タグは、上記の要件のとおりに作成された新規の証明書を使用するようにサーバーに伝えます。
 
@@ -56,26 +55,26 @@ ATS の構成は、iOS 以外の他のモバイル・オペレーティング・
 </dict>
 ```
 
-## {{site.data.keys.product_full }} のセキュリティー構成
+## {{ site.data.keys.product_full }} のセキュリティー構成
 {: #security-configuration-for-ibm-mobilefirst-foundation }
 IBM MobileFirst Foundation インスタンスのセキュリティー構成には、パスワードの暗号化、アプリケーション認証性検査の有効化、およびコンソールへのアクセスの保護を組み込む必要があります。
 
 ### パスワードの暗号化
 {: #encrypting-passwords }
-{{site.data.keys.mf_server }} ユーザーのパスワードを、暗号化された形式で保管します。Liberty プロファイル内で使用可能な securityUtility コマンドを使用すると、XOR 暗号化または AES 暗号化のいずれかを使用してパスワードをエンコードすることができます。その後、暗号化されたパスワードを /usr/env/server.env ファイルにコピーできます。指示については、「{{site.data.keys.mf_server }} に構成されたユーザー役割のパスワードの暗号化」を参照してください。
+{{ site.data.keys.mf_server }} ユーザーのパスワードを、暗号化された形式で保管します。Liberty プロファイル内で使用可能な securityUtility コマンドを使用すると、XOR 暗号化または AES 暗号化のいずれかを使用してパスワードをエンコードすることができます。その後、暗号化されたパスワードを /usr/env/server.env ファイルにコピーできます。指示については、「{{ site.data.keys.mf_server }} に構成されたユーザー役割のパスワードの暗号化」を参照してください。
 
 ### アプリケーション認証性検査
 {: #application-authenticity-validation }
-無許可のモバイル・アプリケーションが {{site.data.keys.mf_server }} にアクセスしないようにするために、アプリケーション認証性セキュリティー検査を有効にします。詳細...
+無許可のモバイル・アプリケーションが {{ site.data.keys.mf_server }} にアクセスしないようにするために、アプリケーション認証性セキュリティー検査を有効にします。詳細...
 
 
 ### バックエンドへの接続の保護
 {: #securing-a-connection-to-the-back-end }
 コンテナーとオンプレミスのバックエンド・システムとの間の接続を保護する必要がある場合は、Bluemix セキュア・ゲートウェイ・サービスを使用できます。構成の詳細は、以下の記事に記載されています。 Connecting Securely to On-Premise Backends from MobileFirst on IBM Bluemix containers。
 
-#### {{site.data.keys.mf_server }} に構成されたユーザー役割のパスワードの暗号化
+#### {{ site.data.keys.mf_server }} に構成されたユーザー役割のパスワードの暗号化
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
-{{site.data.keys.mf_server }} 用に構成されたユーザー役割のパスワードを暗号化することができます。  
+{{ site.data.keys.mf_server }} 用に構成されたユーザー役割のパスワードを暗号化することができます。  
 パスワードは、**package_root/mfpf-server-liberty-app/usr/env** フォルダーの **server.env** ファイルに構成されます。パスワードは、暗号化された形式で保管する必要があります。
 
 1. Liberty プロファイル内の `securityUtility` コマンドを使用して、パスワードをエンコードすることができます。XOR 暗号化または AES 暗号化のいずれかを選択して、パスワードをエンコードします。
@@ -342,7 +341,7 @@ LDAP サーバーへのセキュア・ゲートウェイ接続を構成するに
 ### LDAP と連動するためのアプリケーションの構成
 {: #configuring-apps-to-work-with-ldap }
 外部 LDAP レジストリーと連動するように MobileFirst モバイル・アプリケーションを構成します。  
-構成プロセスのステップとして、ローカル LDAP リポジトリーおよびコンテナーに接続するようにセキュア・ゲートウェイを構成します。(このステップを実行するためには、Bluemix 上に既存のアプリが必要です。)
+構成プロセスには、「ローカル LDAP リポジトリーおよびコンテナーに接続するためのセキュア・ゲートウェイの構成」ステップが含まれます。(このステップを実行するためには、Bluemix 上に既存のアプリが必要です。)
 
 LDAP サーバーへのセキュア・ゲートウェイ接続を構成するには、Bluemix 上に Secure Gateway サービスのインスタンスを作成し、LDAP レジストリーの IP 情報を取得する必要があります。このステップには、ローカル LDAP ホスト名とポート番号が必要です。
 

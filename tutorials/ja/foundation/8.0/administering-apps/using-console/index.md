@@ -7,18 +7,18 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-アプリをロックまたはアクセスを拒否するか、通知メッセージを表示することにより、 {{site.data.keys.mf_console }} を使用して {{site.data.keys.product_adj }} アプリケーションを管理することができます。
+アプリをロックまたはアクセスを拒否するか、通知メッセージを表示することにより、 {{ site.data.keys.mf_console }} を使用して {{ site.data.keys.product_adj }} アプリケーションを管理することができます。
 
 以下のいずれかの URL を入力することによって、コンソールを開始できます。
 
 * 実動またはテスト用のセキュア・モード: `https://hostname:secure_port/mfpconsole`
 * 開発: `http://server_name:port/mfpconsole`
 
-{{site.data.keys.mf_console }} にアクセスする権限を持つログインとパスワードが必要です。詳しくは、[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
+{{ site.data.keys.mf_console }} にアクセスする権限を持つログインとパスワードが必要です。詳しくは、[{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
 
-{{site.data.keys.mf_console }} を使用してアプリケーションを管理することができます。
+{{ site.data.keys.mf_console }} を使用してアプリケーションを管理することができます。
 
-{{site.data.keys.mf_console }} から Analytics コンソールにアクセスして、Analytics サーバーによる分析用モバイル・データの収集を制御することもできます。詳しくは、[{{site.data.keys.mf_console }} からのデータ収集の有効化または無効化](../../analytics/console/#enabledisable-analytics-support)を参照してください。
+{{ site.data.keys.mf_console }} から Analytics コンソールにアクセスして、Analytics サーバーによる分析用モバイル・データの収集を制御することもできます。詳しくは、[{{ site.data.keys.mf_console }} からのデータ収集の有効化または無効化](../../analytics/console/#enabledisable-analytics-support)を参照してください。
 
 #### ジャンプ先
 {: #jump-to }
@@ -30,39 +30,39 @@ weight: 2
 
 ## モバイル・アプリケーションの管理
 {: #mobile-application-management }
-{{site.data.keys.product_adj }} モバイル・アプリケーション管理機能により、 {{site.data.keys.mf_server }} オペレーターと管理者は、アプリケーションに対するユーザーおよびデバイスのアクセス権限について、より詳細な管理が可能になります。
+{{ site.data.keys.product_adj }} モバイル・アプリケーション管理機能により、 {{ site.data.keys.mf_server }} オペレーターと管理者は、アプリケーションに対するユーザーおよびデバイスのアクセス権限について、より詳細な管理が可能になります。
 
-{{site.data.keys.mf_server }} は、モバイル・インフラストラクチャーにアクセスする試みをすべてトラッキングし、アプリケーション、ユーザー、アプリケーションがインストールされるデバイスに関する情報を保管します。アプリケーション、ユーザー、およびデバイス間のマッピングは、サーバーのモバイル・アプリケーション管理機能の基礎を形成します。
+{{ site.data.keys.mf_server }} は、モバイル・インフラストラクチャーにアクセスする試みをすべてトラッキングし、アプリケーション、ユーザー、アプリケーションがインストールされるデバイスに関する情報を保管します。アプリケーション、ユーザー、およびデバイス間のマッピングは、サーバーのモバイル・アプリケーション管理機能の基礎を形成します。
 
-IBM {{site.data.keys.mf_console }} を使用して、リソースへのアクセスをモニターし管理します。
+IBM {{ site.data.keys.mf_console }} を使用して、リソースへのアクセスをモニターし管理します。
 
 * ユーザーを名前で検索し、ユーザーがリソースへのアクセスに使用しているデバイスおよびアプリケーションに関する情報を表示します。
-* デバイスをデバイスの表示名で検索し、デバイスに関連づけられたユーザーおよびこのデバイスで使用される登録された {{site.data.keys.product_adj }} アプリケ―ションを表示します。
+* デバイスをデバイスの表示名で検索し、デバイスに関連づけられたユーザーおよびこのデバイスで使用される登録された {{ site.data.keys.product_adj }} アプリケ―ションを表示します。
 * 特定のデバイス上にあるアプリケーションのすべてのインスタンスからリソースにアクセスするのをブロックします。これは、デバイスが紛失したり盗まれたときに便利です。
 * 特定のデバイス上にある特定のアプリケーションに対してのみ、リソースにアクセスするのをブロックします。例えば、従業員の部署が変更になったときに、その従業員の以前の部署のアプリケーションのアクセスはブロックする一方で、同じデバイス上にある他のアプリケーションからのアクセスは許可することができます。
 * デバイスの登録を抹消し、すべての登録とそのデバイスで収集されたモニター・データを削除します。
 
 アクセス・ブロックには以下の特徴があります。
 
-* ブロッキング・オペレーションは元に戻すことができます。{{site.data.keys.mf_console }} でデバイスまたはアプリケーション・ステータスを変更すると、ブロックを解除することができます。
+* ブロッキング・オペレーションは元に戻すことができます。{{ site.data.keys.mf_console }} でデバイスまたはアプリケーション・ステータスを変更すると、ブロックを解除することができます。
 * ブロックは保護リソースにのみ適用されます。ブロックされたクライアントは、引き続きアプリケーションを使用して保護されていないリソースにアクセスすることができます。保護されていないリソース (Unprotected resources) を参照してください。
-* {{site.data.keys.mf_server }} 上のアダプター・リソースへのアクセスは、この操作を選択した直後にブロックされます。ただし、これは外部サーバー上のリソースには当てはまらない場合があります。アプリケーションに期限切れになっていない有効なアクセス・トークンがまだ存在する可能性があるためです。
+* {{ site.data.keys.mf_server }} 上のアダプター・リソースへのアクセスは、この操作を選択した直後にブロックされます。ただし、これは外部サーバー上のリソースには当てはまらない場合があります。アプリケーションに期限切れになっていない有効なアクセス・トークンがまだ存在する可能性があるためです。
 
 ### デバイスの状況
 {: #device-status }
-{{site.data.keys.mf_server }} は、サーバーにアクセスするすべてのデバイスの状況情報を保守します。使用できるステータス値は、 **アクティブ (Active)**、**紛失 (Lost)**、 **盗難 (Stolen)**、**期限切れ (Expired)**、および**使用不可 (Disabled)**です。 
+{{ site.data.keys.mf_server }} は、サーバーにアクセスするすべてのデバイスの状況情報を保守します。使用できるステータス値は、 **アクティブ (Active)**、**紛失 (Lost)**、 **盗難 (Stolen)**、**期限切れ (Expired)**、および**使用不可 (Disabled)**です。 
 
-デフォルト・デバイスの状況は **アクティブ (Active)** で、このデバイスからのアクセスがブロックされないことを示します。このステータスを **紛失 (Lost)**、 **盗難 (Stolen)**、または **使用不可 (Disabled)** に変更して、デバイスからアプリケーション・リソースへのアクセスをブロックすることができます。ステータスはいつでも**アクティブ (Active)** に復元してアクセスを再度許可することができます。[{{site.data.keys.mf_console }} でのデバイス・アクセスの管理](#managing-device-access-in-mobilefirst-operations-console)を参照してください。
+デフォルト・デバイスの状況は **アクティブ (Active)** で、このデバイスからのアクセスがブロックされないことを示します。このステータスを **紛失 (Lost)**、 **盗難 (Stolen)**、または **使用不可 (Disabled)** に変更して、デバイスからアプリケーション・リソースへのアクセスをブロックすることができます。ステータスはいつでも**アクティブ (Active)** に復元してアクセスを再度許可することができます。[{{ site.data.keys.mf_console }} でのデバイス・アクセスの管理](#managing-device-access-in-mobilefirst-operations-console)を参照してください。
 
-**期限切れ (Expired)** ステータスは、デバイスがこのサーバー・インスタンスに最後に接続してから事前構成の非活動期間が経過した後に {{site.data.keys.mf_server }} によって設定される、特殊なステータスです。このステータスは、ライセンス・トラッキングに使用され、デバイスのアクセス権に影響しません。**期限切れ (Expired)** ステータスのデバイスがサーバーに再接続すると、そのステータスは **アクティブ (Active)**に復元され、デバイスにサーバーへのアクセス権限が付与されます。
+**期限切れ (Expired)** ステータスは、デバイスがこのサーバー・インスタンスに最後に接続してから事前構成の非活動期間が経過した後に {{ site.data.keys.mf_server }} によって設定される、特殊なステータスです。このステータスは、ライセンス・トラッキングに使用され、デバイスのアクセス権に影響しません。**期限切れ (Expired)** ステータスのデバイスがサーバーに再接続すると、そのステータスは **アクティブ (Active)**に復元され、デバイスにサーバーへのアクセス権限が付与されます。
 
 ### デバイスの表示名
 {: #device-display-name }
-{{site.data.keys.mf_server }} は、{{site.data.keys.product_adj }} クライアント SDK が割り当てる固有のデバイス ID でデバイスを識別します。デバイスの表示名を設定すると、デバイスをその表示名で検索することができます。アプリケーション開発者は `WLClient` クラスの `setDeviceDisplayName` メソッドを使用して、デバイスの表示名を設定します。 [{{site.data.keys.product_adj }} クライアント・サイド API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html) の `WLClient` 文書を参照してください。(JavaScript クラスは `WL.Client` です。) Java アダプター開発者 (セキュリティー検査の開発者など) は、com.ibm.mfp.server.registration.external.model `MobileDeviceData` クラスの `setDeviceDisplayName` メソッドを使用してデバイス表示名を設定することもできます。 [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc) を参照してください。
+{{ site.data.keys.mf_server }} は、{{ site.data.keys.product_adj }} クライアント SDK が割り当てる固有のデバイス ID でデバイスを識別します。デバイスの表示名を設定すると、デバイスをその表示名で検索することができます。アプリケーション開発者は `WLClient` クラスの `setDeviceDisplayName` メソッドを使用して、デバイスの表示名を設定します。 [{{ site.data.keys.product_adj }} クライアント・サイド API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html) の `WLClient` 文書を参照してください。(JavaScript クラスは `WL.Client` です。) Java アダプター開発者 (セキュリティー検査の開発者など) は、com.ibm.mfp.server.registration.external.model `MobileDeviceData` クラスの `setDeviceDisplayName` メソッドを使用してデバイス表示名を設定することもできます。 [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc) を参照してください。
 
-### {{site.data.keys.mf_console }} でのデバイス・アクセスの管理
+### {{ site.data.keys.mf_console }} でのデバイス・アクセスの管理
 {: #managing-device-access-in-mobilefirst-operations-console }
-リソースへのデバイス・アクセスをモニターして管理するには、{{site.data.keys.mf_console }} ダッシュボードの「デバイス」タブを選択します。
+リソースへのデバイス・アクセスをモニターして管理するには、{{ site.data.keys.mf_console }} ダッシュボードの「デバイス」タブを選択します。
 
 検索フィールドを使用して、デバイスに関連付けられた ユーザー ID でデバイスを検索するか、デバイスの表示名で検索します (設定されている場合)。[デバイスの表示名](#device-display-name)を参照してください。ユーザー ID の一部またはデバイス表示名の一部でも検索することができます (最低 3 文字)。
 
@@ -77,12 +77,12 @@ IBM {{site.data.keys.mf_console }} を使用して、リソースへのアクセ
 **アクション (Actions)** 列で**登録
 抹消 (Unregister)** を選択して、デバイスの登録を抹消する
 ことができます。
-デバイスの登録抹消は、デバイスにインストールされているすべての {{site.data.keys.product_adj }}
+デバイスの登録抹消は、デバイスにインストールされているすべての {{ site.data.keys.product_adj }}
 アプリケーションの登録データを削除します。また、デバイスの表示名、デバイスに関連付けられたユ
 ーザーのリスト、およびアプリケーションがこのデバイスに登録したパブ リック属性が削除されます。
 
 **注:** **登録抹消 (Unregister)** アクションは元に戻すことができません。デバイス上の
-{{site.data.keys.product_adj }}
+{{ site.data.keys.product_adj }}
 アプリケーションの 1 つが次回サーバーにアクセスしようとすると、新しい
 デバイス ID を使用して再登録されます。デバイスを再登録することを選択すると、デバイスの状況が**アクティブ (Active)** に設定され、以前のブ
 ロックの有無にかかわらず、デバイスに保護リソースへのアクセス権限が付
@@ -110,7 +110,7 @@ IBM {{site.data.keys.mf_console }} を使用して、リソースへのアクセ
 ### 保護リソースへのアプリケーション・アクセスの
 リモート側での無効化
 {: #remotely-disabling-application-access-to-protected-resources }
-{{site.data.keys.mf_console }}
+{{ site.data.keys.mf_console }}
 (コンソール) を使用して、特定のモバイル・オペレーティング・システム上
 のアプリケーションの特定バージョンへのユーザー・アクセスを無効化し、
 ユーザーにカスタム・メッセージを表示することができます。
@@ -158,7 +158,7 @@ IBM {{site.data.keys.mf_console }} を使用して、リソースへのアクセ
 な保守のダウンタイムなど、一時的な状態をアプリケーション・ユーザーに
 通知することができます。
 
-1. {{site.data.keys.mf_console }} ナビゲーション・サイドバーの**「アプリケーション」**セクションからご使用のアプリケーションのバージョンを選択し、次にアプリケーションの「管理」タブを選択します。
+1. {{ site.data.keys.mf_console }} ナビゲーション・サイドバーの**「アプリケーション」**セクションからご使用のアプリケーションのバージョンを選択し、次にアプリケーションの「管理」タブを選択します。
 2. ステータスを**「アクティブおよび通知 (Active and
 Notifying)」**に変更します。
 3. カスタム始動メッセージを追加します。以下のサンプル・メッセージは、ユーザーにアプリケーションの計画
@@ -173,7 +173,7 @@ Notifying)」**に変更します。
 
 5. **「保存」**を選択して変更を適用します。
 
-メッセージは、アプリケーションが最初に {{site.data.keys.mf_server }} を使用して保護リソースにアクセスするときや、アクセス・トークンを取得するときに表示されます。
+メッセージは、アプリケーションが最初に {{ site.data.keys.mf_server }} を使用して保護リソースにアクセスするときや、アクセス・トークンを取得するときに表示されます。
 アプリケーションが始動時にアクセス・トークンを取得すると、メッセージ
 はこの段階で表示されます。それ以外の場合は、メッセージは、保護リソースへアクセス
 するかアクセス・トークンを取得するアプリケーションからの最初の要求で表示さ
@@ -185,7 +185,7 @@ Notifying)」**に変更します。
 もので、モバイル・オペレーティング・システムがロケールの指定に使用する標準に準拠していなければなりません。
 
 
-1. {{site.data.keys.mf_console }}
+1. {{ site.data.keys.mf_console }}
 ナビゲーション・サイドバーの**「アプリケーション」**セクションからご使用のアプリケーショ
 ンのバージョンを選択し、次にアプリケーションの**「管理」**タブを選択します。
 2. **「アクティブおよび通知 (Active and
@@ -229,12 +229,12 @@ message)」**セクションで、 CSV ファイルのロケール・コード�
 
 ## アプリケーションの状況とトークン・ライセンス
 {: #application-status-and-token-licensing }
-不十分なトークンが原因でブロック済みの状況が生じたら、{{site.data.keys.mf_console }} で正しいアプリケーション状況に手動で復元する必要があります。
+不十分なトークンが原因でブロック済みの状況が生じたら、{{ site.data.keys.mf_console }} で正しいアプリケーション状況に手動で復元する必要があります。
 
 トークン・ライセンスを使用している場合、アプリケーションのライセンス・トークンが不十分になると、そのアプリケーションのすべてのバージョンのアプリケーション状況が**ブロック済み**に変わります。この場合、そのアプリケーシ
 ョンのいずれのバージョンの状況も変更できなくなります。
 以下のメッセージが
-{{site.data.keys.mf_console }}
+{{ site.data.keys.mf_console }}
 に表示されます。
 
 
@@ -244,7 +244,7 @@ message)」**セクションで、 CSV ファイルのロケール・コード�
 
 その後、アプリケーション実行のために十分なトークンが空くか、お客様
 の組織が追加でトークンを購入すれば、
-{{site.data.keys.mf_console }}
+{{ site.data.keys.mf_console }}
 に以下のメッセージが表示されます。
 
 ```bash
@@ -253,18 +253,18 @@ message)」**セクションで、 CSV ファイルのロケール・コード�
 
 この時点ではまだ、表示された状況は**ブロック済み**の
 ままです。「状況」フィールドを編集することで、メモリーまたは独自のレコードから正しい現在の状況を手動で復元する必要があります。
-{{site.data.keys.product }}
+{{ site.data.keys.product }}
 は、不十分なライセンス・トークンが原因でブロックされたアプリケーショ
 ンの
-{{site.data.keys.mf_console }}
+{{ site.data.keys.mf_console }}
 内の**ブロック済み**状況の表示を管理しません。
 そのようなブロック済みアプリケーションを
-{{site.data.keys.mf_console }}
+{{ site.data.keys.mf_console }}
 で表示可能な本来の状況に復元する作業は、お客様の責任で行ってください。
 
 ## ランタイム環境での操作のエラー・ログ
 {: #error-log-of-operations-on-runtime-environments }
-エラー・ログを使用すると、選択したランタイム環境で {{site.data.keys.mf_console }} またはコマンド・ラインから開始され、失敗した管理操作にアクセスして、サーバーへ失敗の影響を確認できます。
+エラー・ログを使用すると、選択したランタイム環境で {{ site.data.keys.mf_console }} またはコマンド・ラインから開始され、失敗した管理操作にアクセスして、サーバーへ失敗の影響を確認できます。
 
 トランザクションが失敗すると、ステータス・バーにエラーの通知が表示
 され、エラー・ログへのリンクが表示されます。エラー・ログを使用すると、例えば各サーバーの状
@@ -272,7 +272,7 @@ message)」**セクションで、 CSV ファイルのロケール・コード�
 ーの履歴を調べることができます。
 エラー・ログでは、最新の操作が最初に表示されます。
 
-{{site.data.keys.mf_console }} でランタイム環境の**「エラー・ログ」**をクリックして、エラー・ログにアクセスします。
+{{ site.data.keys.mf_console }} でランタイム環境の**「エラー・ログ」**をクリックして、エラー・ログにアクセスします。
 
 失敗した操作を参照する行を展開し、各サーバーの現在の状態についての詳細にアクセスします。完全なログにアクセスするには、**「ログのダウンロード」**をクリックしてログをダウンロードします。
 
@@ -280,22 +280,20 @@ message)」**セクションで、 CSV ファイルのロケール・コード�
 
 ## 管理操作の監査ログ
 {: #audit-log-of-administration-operations }
-{{site.data.keys.mf_console }} では、管理操作の監査ログを参照することができます。
+{{ site.data.keys.mf_console }} では、管理操作の監査ログを参照することができます。
 
-{{site.data.keys.mf_console }} は、ログインの監査ログ、ログアウトの監査ログ、およびアプリケーションまたはアダプターのデプロイまたはアプリケーションのロックといったすべての管理操作の監査ログへのアクセスを提供します。監査ログは、{{site.data.keys.product_adj }} 管理サービスの Web アプリケーション上の **mfp.admin.audit** Java Naming and Directory Interface (JNDI) プロパティーを **false** に設定することで無効にすることができます。
+{{ site.data.keys.mf_console }} は、ログインの監査ログ、ログアウトの監査ログ、およびアプリケーションまたはアダプターのデプロイまたはアプリケーションのロックといったすべての管理操作の監査ログへのアクセスを提供します。監査ログは、{{ site.data.keys.product_adj }} 管理サービスの Web アプリケーション上の **mfp.admin.audit** Java Naming and Directory Interface (JNDI) プロパティーを **false** に設定することで無効にすることができます。
 
 監査ログにアクセスするには、ヘッダー・バーのユーザー名をクリックして**「バージョン情報」**を選択し、**「追加サポート情報 (Additional support information)」**、**「監査ログのダウンロード」**とクリックします。
 
 | フィールド名 | 説明 | 
 |------------|-------------|
-| タイム・スタンプ	 | レコードが作成された日時。
- |
+| タイム・スタンプ	 | レコードが作成された日時。 |
 | タイプ	     | 操作のタイプ。 可能な値については、以下の操作タイプのリストを参照してください。 |
 | User	     | サインインしているユーザーの**ユーザー名**。 |
 | Outcome	 | 操作の結果。可能な値は、SUCCESS、ERROR、PENDINGです。 |
 | ErrorCode	 | 結果が ERROR の場合、ErrorCode はエラーの内容を示します。 |
-| Runtime
-	 | 操作に関連する {{site.data.keys.product_adj }} プロジェクトの名前。 |
+| Runtime	 | 操作に関連する {{ site.data.keys.product_adj }} プロジェクトの名前。 |
 
 以下のリストに操作の Type の可能な値を示します。
 

@@ -9,7 +9,7 @@ weight: 5
 {: #overview }
 モバイル・アプリケーションのデータを Cloudant データベースに保管できます。Cloudant は、JSON データ、フルテキスト・データ、および地理情報データなどの幅広い種類のデータ・タイプの処理が可能な、拡張 NoSQL データベースです。Java™ 、Objective-C、および Swift 用の SDK があります。
 
-> CloudantToolkit および IMFData のフレームワークは {{site.data.keys.product_full }} v8.0 で非推奨になりました
+> CloudantToolkit および IMFData のフレームワークは {{ site.data.keys.product_full }} v8.0 で非推奨になりました
 
 * iOS の場合は、CloudantToolkit フレームワークおよび IMFData フレームワークの代わりに [CDTDatastore](https://github.com/cloudant/CDTDatastore) SDK を使用します。
 * Android の場合は、CloudantToolkit フレームワークおよび IMFData フレームワークの代わりに [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android) を使用します。Cloudant Sync を使用すると、データをローカル側で永続化させ、リモート・データ・ストアで複製することができます。
@@ -28,7 +28,7 @@ JSONStore について詳しくは、『[JSONStore](../../application-developmen
 
 #### ジャンプ先
 {: #jump-to }
-* [{{site.data.keys.product_adj }} と Cloudant のセキュリティーの統合](#integrating-mobilefirst-and-cloudant-security)
+* [{{ site.data.keys.product_adj }} と Cloudant のセキュリティーの統合](#integrating-mobilefirst-and-cloudant-security)
 * [データベースの作成](#creating-databases)
 * [デバイスのデータの暗号化](#encrypting-data-on-the-device)
 * [ユーザー・アクセス権の設定](#setting-user-permissions)
@@ -38,22 +38,22 @@ JSONStore について詳しくは、『[JSONStore](../../application-developmen
 * [データの照会](#querying-data)
 * [オフライン・ストレージおよび同期のサポート](#supporting-offline-storage-and-synchronization)
 
-## {{site.data.keys.product_adj }} と Cloudant のセキュリティーの統合
+## {{ site.data.keys.product_adj }} と Cloudant のセキュリティーの統合
 {: #integrating-mobilefirst-and-cloudant-security }
 ### アダプター・サンプル
 {: #adapter-sample }
 サンプルをダウンロードするには、「Sample: [mfp-bluelist-on-premises](https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise)」を参照してください。
 
-Bluelist サンプルに含まれるアダプターを理解するには、[Cloudant セキュリティー](https://cloudant.com/for-developers/faq/auth/)と [{{site.data.keys.product_adj }} セキュリティー・フレームワーク](../../authentication-and-security)の両方を理解する必要があります。
+Bluelist サンプルに含まれるアダプターを理解するには、[Cloudant セキュリティー](https://cloudant.com/for-developers/faq/auth/)と [{{ site.data.keys.product_adj }} セキュリティー・フレームワーク](../../authentication-and-security)の両方を理解する必要があります。
 
 Bluelist アダプター・サンプルには以下の 2 つの主要な機能があります。
 
-* {{site.data.keys.product_adj }} OAuth トークンを Cloudant セッション Cookie と交換する。
+* {{ site.data.keys.product_adj }} OAuth トークンを Cloudant セッション Cookie と交換する。
 * Bluelist サンプルから、Cloudant への必要な admin 要求を実行する。
 
 サンプルでは、サーバー上で admin 権限を求める API 要求を実行する方法を示します (そのようにすることがセキュアである場合)。自分の admin 資格情報をモバイル・デバイスに配置することは可能ですが、モバイル・デバイスからのアクセスを制限することをお勧めします。
 
-Bluelist のサンプルでは、{{site.data.keys.product_adj }} のセキュリティーと Cloudant のセキュリティーを統合します。アダプターのサンプルでは、{{site.data.keys.product_adj }} ID を Cloudant ID にマップします。モバイル・デバイスは、Cloudant セッション Cookie を受け取って、非 admin API 要求を実行します。このサンプルでは、Couch セキュリティー・モデルを使用します。
+Bluelist のサンプルでは、{{ site.data.keys.product_adj }} のセキュリティーと Cloudant のセキュリティーを統合します。アダプターのサンプルでは、{{ site.data.keys.product_adj }} ID を Cloudant ID にマップします。モバイル・デバイスは、Cloudant セッション Cookie を受け取って、非 admin API 要求を実行します。このサンプルでは、Couch セキュリティー・モデルを使用します。
 
 ### REST エンドポイントの登録
 {: #enroll-rest-endpoint }
@@ -61,9 +61,9 @@ Bluelist のサンプルでは、{{site.data.keys.product_adj }} のセキュリ
 
 ![サンプル統合図](SecurityIntegration.jpg)
 
-1. モバイル・デバイスが、{{site.data.keys.product_adj }} OAuth トークンを {{site.data.keys.mf_server }} から取得します。
+1. モバイル・デバイスが、{{ site.data.keys.product_adj }} OAuth トークンを {{ site.data.keys.mf_server }} から取得します。
 2. モバイル・デバイスは、 アダプターで **/enroll** でエンドポイントを呼び出します。
-3.  アダプター・サンプルが {{site.data.keys.mf_server }} を使用して {{site.data.keys.product_adj }} OAuth トークンを検証します。
+3.  アダプター・サンプルが {{ site.data.keys.mf_server }} を使用して {{ site.data.keys.product_adj }} OAuth トークンを検証します。
 4. 有効である場合は、Cloudant への admin API 要求を実行します。サンプルは、**_users** データベースで既存の Cloudant ユーザーをチェックします。
     * そのユーザーが存在する場合は、**_users** データベースで Cloudant ユーザー資格情報を検索します。
     * 新規ユーザーが渡された場合は、 Cloudant 管理者資格情報を使用し、新規 Cloudant ユーザーを作成し、**_users** データベースに保管します。
@@ -76,7 +76,7 @@ Bluelist のサンプルでは、{{site.data.keys.product_adj }} のセキュリ
 
 ### セッション Cookie REST エンドポイント
 {: #sessioncookie-rest-endpoint }
-セッション Cookie の有効期限が切れた場合、モバイル・デバイスは Cloudant セッション cookie と {{site.data.keys.product_adj }} OAuth トークンを **/sessioncookie** エンドポイントで交換できます。
+セッション Cookie の有効期限が切れた場合、モバイル・デバイスは Cloudant セッション cookie と {{ site.data.keys.product_adj }} OAuth トークンを **/sessioncookie** エンドポイントで交換できます。
 
 ## データベースの作成
 {: #creating-databases }
@@ -579,7 +579,7 @@ permissionsTask.continueWith(new Continuation<Boolean, Object>() {
 
 ##### 変更後 (Cloudant Sync を使用):
 {: #after-with-cloudant-sync }
-モバイル・デバイスからユーザー・アクセス権を設定することはできません。Cloudant ダッシュボードまたはサーバー・サイド・コードを使用してアクセス権を設定する必要があります。{{site.data.keys.product_adj }} OAuth のトークンと Cloudant のセキュリティーとの統合方法のサンプルについては、[Bluelist サンプル](https://github.ibm.com/MFPSamples/BlueList-On-Premise)を参照してください。
+モバイル・デバイスからユーザー・アクセス権を設定することはできません。Cloudant ダッシュボードまたはサーバー・サイド・コードを使用してアクセス権を設定する必要があります。{{ site.data.keys.product_adj }} OAuth のトークンと Cloudant のセキュリティーとの統合方法のサンプルについては、[Bluelist サンプル](https://github.ibm.com/MFPSamples/BlueList-On-Premise)を参照してください。
 
 ## データのモデル化
 {: #modeling-data }
