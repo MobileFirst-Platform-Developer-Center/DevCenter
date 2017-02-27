@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation
 {: #overview }
-L'application AppCenter Installer permet d'installer des applications sur des terminaux mobiles. Vous pouvez générer cette application à l'aide des projets Cordova ou MobileFirst Studio fournis, ou utiliser directement une version préconfigurés du projet MobileFirst Studio pour Android, iOS ou Windows 8 Universal.
+L'application AppCenter Installer permet d'installer des applications sur des appareils mobiles. Vous pouvez générer cette application à l'aide des projets Cordova ou MobileFirst Studio fournis, ou utiliser directement une version préconfigurés du projet MobileFirst Studio pour Android, iOS ou Windows 8 Universal.
 
 #### Accéder à
 {: #jump-to }
@@ -28,15 +28,15 @@ Pour générer la version Android, vous devez disposer de la dernière version d
 
 ### Prérequis spécifiques au système d'exploitation iOS d'Apple
 {: #prerequisites-specific-to-apple-ios-operating-system }
-La version iOS native pour iPad et iPhone n'est pas livrée en tant qu'application compilée. L'application doit être créée à partir du projet {{site.data.keys.product_full }} nommé **IBMAppCenter**. Ce projet est également fourni dans le cadre de la distribution dans le répertoire **ApplicationCenter/installer**.
+La version iOS native pour iPad et iPhone n'est pas livrée en tant qu'application compilée. L'application doit être créée à partir du projet {{ site.data.keys.product_full }} nommé **IBMAppCenter**. Ce projet est également fourni dans le cadre de la distribution dans le répertoire **ApplicationCenter/installer**.
 
-Pour générer la version d'iOS, vous devez disposer des logiciels appropriés {{site.data.keys.product_full }} et Apple. La version de {{site.data.keys.mf_studio }} doit être identique à celle de {{site.data.keys.mf_server }} sur laquelle cette documentation est basée. La version d'Apple Xcode est V6.1.
+Pour générer la version d'iOS, vous devez disposer des logiciels appropriés {{ site.data.keys.product_full }} et Apple. La version de {{ site.data.keys.mf_studio }} doit être identique à celle de {{ site.data.keys.mf_server }} sur laquelle cette documentation est basée. La version d'Apple Xcode est V6.1.
 
 ### Prérequis spécifiques au système d'exploitation Microsoft Windows Phone
 {: #prerequisites-specific-to-microsoft-windows-phone-operating-system }
 La version Windows Phone du client mobile est incluse dans un fichier de module d'application Windows Phone (.xap) non signé dans la livraison du logiciel. Le fichier **IBMApplicationCenterUnsigned.xap** se trouve dans le répertoire **ApplicationCenter/installer**.
 
-> **Important :** le fichier .xap non signé ne peut pas être utilisé directement. Vous devez le signer avec votre certificat de certificat obtenu auprès de Symantec/Microsoft avant de pouvoir l'installer sur un terminal.
+> **Important :** le fichier .xap non signé ne peut pas être utilisé directement. Vous devez le signer avec votre certificat de certificat obtenu auprès de Symantec/Microsoft avant de pouvoir l'installer sur un appareil.
 
 Facultatif : si nécessaire, vous pouvez également générer la version Windows Phone à partir de sources. Pour cela, vous devez disposer de la dernière version de Microsoft Visual Studio.
 
@@ -50,8 +50,8 @@ Facultatif : si nécessaire, vous pouvez également générer la version Windows
 {: #cordova-based-ibm-appcenter-client }
 Le projet client AppCenter basé sur Cordova est situé dans le répertoire `install`, à l'adresse : **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**.
 
-Ce projet est basé uniquement sur l'infrastructure Cordova et n'a donc aucune dépendance sur les API client/serveur de {{site.data.keys.product }}.  
-Dans la mesure où il s'agit d'une application Cordova standard, il n'y a pas non plus de dépendance de {{site.data.keys.mf_studio }}. Cette application utilise Dojo pour l'interface utilisateur.
+Ce projet est basé uniquement sur l'infrastructure Cordova et n'a donc aucune dépendance sur les API client/serveur de {{ site.data.keys.product }}.  
+Dans la mesure où il s'agit d'une application Cordova standard, il n'y a pas non plus de dépendance de {{ site.data.keys.mf_studio }}. Cette application utilise Dojo pour l'interface utilisateur.
 
 Suivez les étapes ci-dessous pour apprendre à :
 
@@ -109,7 +109,7 @@ Au lieu d'utiliser le projet Cordova pour iOS et Android, vous pouvez également
 
 ### Importation et génération du projet (Android, iOS, Windows Phone)
 {: #importing-and-building-the-project-android-ios-windows-phone }
-Vous devez importer le projet **IBMAppCenter** dans {{site.data.keys.mf_studio }}, puis générer le projet.
+Vous devez importer le projet **IBMAppCenter** dans {{ site.data.keys.mf_studio }}, puis générer le projet.
 
 > **Remarque :** pour V8.0.0, utilisez MobileFirst Studio 7.1. Vous pouvez télécharger MobileFirst Studio depuis la page [Downloads]({{site.baseurl}}/downloads). Pour les instructions d'installation, voir [Installing MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) dans IBM Knowledge Center pour 7.1.
 
@@ -142,7 +142,7 @@ Si vous souhaitez activer les notifications push pour les mises à jour d'applic
 {: #windows-phone-8 }
 MobileFirst Studio génère un projet Windows Phone 8 natif dans **IBMAppCenter/apps/AppCenter/windowsphone8/native**. Le fichier **AppCenter.csproj** se trouve dans le dossier windowsphone8/native. Ce fichier est le projet Visual Studio que vous devez compiler en utilisant le SDK Visual Studio et Windows Phone 8.0.
 
-L'application est générée avec le SDK Windows Phone 8.0 afin qu'elle puisse s'exécuter sur les terminaux Windows Phone 8.0 et 8.1. Elle n'est pas générée avec le SDK Windows Phone 8.1, car le résultat ne fonctionnerait pas sur des terminaux Windows Phone 8.0 antérieurs.
+L'application est générée avec le SDK Windows Phone 8.0 afin qu'elle puisse s'exécuter sur les appareils Windows Phone 8.0 et 8.1. Elle n'est pas générée avec le SDK Windows Phone 8.1, car le résultat ne fonctionnerait pas sur des appareils Windows Phone 8.0 antérieurs.
 
 L'installation de Visual Studio 2013 vous permet de sélectionner l'installation du SDK Windows Phone 8.0 en plus du SDK 8.1. Le SDK Windows Phone 8.0 est également disponible à partir de [Windows Phone SDK Archives](https://dev.windows.com/en-us/develop/download-phone-sdk).
 
@@ -177,7 +177,7 @@ Ce fichier contient les propriétés indiquées dans le tableau suivant.
 | defaultContext | Si la propriété url est NULL, cette propriété pré-remplit la zone Context de la vue Login sur un téléphone. Il s'agit d'une valeur par défaut ; la zone peut être modifiée par l'utilisateur. |
 | ssl | Valeur par défaut du commutateur SSL de la vue Login. |
 | allowDowngrade | Cette propriété indique si l'installation de versions antérieures est autorisée ou non ; une version plus ancienne ne peut être installée que si le système d'exploitation et la version permettent la rétromigration. |
-| showPreviousVersions | Cette propriété indique si l'utilisateur du terminal peut afficher les détails de toutes les versions d'applications ou uniquement les détails de la dernière version. |
+| showPreviousVersions | Cette propriété indique si l'utilisateur de l'appareil peut afficher les détails de toutes les versions d'applications ou uniquement les détails de la dernière version. |
 | showInternalVersion | Cette propriété indique si la version interne est affichée ou non. Si la valeur est false, la version interne est affichée uniquement si aucune version commerciale n'est définie. |
 | listItemRenderer | Cette propriété peut avoir l'une des valeurs suivantes :<ul><li>full, la valeur par défaut ; les listes d'application indiquent le nom de l'application, l'évaluation et la dernière version.</li><li>simple : les listes d'application ne montrent que le nom de l'application.</li></ul> |
 | listAverageRating | Cette propriété peut avoir l'une des valeurs suivantes :<ul><li>latestVersion : les listes d'application indiquent l'évaluation moyenne de la dernière version de l'application.</li><li>allVersions : les listes d'application indiquent l'évaluation moyenne de toutes les versions de l'application.</li></ul> |
@@ -224,4 +224,4 @@ Le client mobile Windows 8 n'est pas destiné à être déployé dans Applicatio
 
 Les versions Android, iOS et Windows Phone du client mobile doivent être déployées dans Application Center. Pour ce faire, vous devez télécharger les fichiers du module d'application Android (.apk), les fichiers d'application iOS (.ipa) et les fichiers d'application Windows Phone (.xap), les fichiers d'archive de répertoire Web (.zip) dans Application Center.
 
-Suivez les étapes décrites dans [Adding a mobile application](../appcenter-console/#adding-a-mobile-application) pour ajouter l'application client mobile pour Android, iOS et Windows Phone. Veillez à sélectionner la propriété d'application Installer pour indiquer que l'application est un programme d'installation. La sélection de cette propriété permet aux utilisateurs de terminaux mobiles d'installer facilement l'application de client mobile. Pour installer le client mobile, reportez-vous à la tâche associée correspondant à la version de l'application de client mobile déterminée par le système d'exploitation.
+Suivez les étapes décrites dans [Adding a mobile application](../appcenter-console/#adding-a-mobile-application) pour ajouter l'application client mobile pour Android, iOS et Windows Phone. Veillez à sélectionner la propriété d'application Installer pour indiquer que l'application est un programme d'installation. La sélection de cette propriété permet aux utilisateurs d'appareils mobiles d'installer facilement l'application de client mobile. Pour installer le client mobile, reportez-vous à la tâche associée correspondant à la version de l'application de client mobile déterminée par le système d'exploitation.
