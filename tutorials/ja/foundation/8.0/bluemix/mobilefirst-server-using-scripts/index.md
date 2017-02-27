@@ -8,27 +8,27 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-下記の指示に従って {{site.data.keys.mf_server }} インスタンスおよび {{site.data.keys.mf_analytics }} インスタンスを IBM Bluemix 上で構成します。これは、次のような手順で行います。 
+下記の指示に従って {{ site.data.keys.mf_server }} インスタンスおよび {{ site.data.keys.mf_analytics }} インスタンスを IBM Bluemix 上で構成します。これは、次のような手順で行います。 
 
 * 必要なツール (Cloud Foundry CLI、Docker、および IBM Containers 拡張機能 (cf ic) プラグイン) を使用して、ホスト・コンピューターをセットアップする
 * Bluemix アカウントをセットアップする
-* {{site.data.keys.mf_server }} イメージをビルドし、これを Bluemix リポジトリーにプッシュする
+* {{ site.data.keys.mf_server }} イメージをビルドし、これを Bluemix リポジトリーにプッシュする
 
 最後に、このイメージを IBM Containers 上で単一コンテナーまたはコンテナー・グループとして実行し、アプリケーションを登録して、アダプターをデプロイします。
 
 **注:**  
 
 * Windows OS でのこれらのスクリプトの実行は現在サポートされていません。  
-* {{site.data.keys.mf_server }} 構成ツールは IBM Containers へのデプロイメントには使用できません。
+* {{ site.data.keys.mf_server }} 構成ツールは IBM Containers へのデプロイメントには使用できません。
 
 #### ジャンプ先:
 {: #jump-to }
 * [Bluemix でアカウントを登録する](#register-an-account-at-bluemix)
 * [ホスト・マシンをセットアップする](#set-up-your-host-machine)
-* [{{site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする](#download-the-ibm-mfpf-container-8000-archive)
+* [{{ site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする](#download-the-ibm-mfpf-container-8000-archive)
 * [前提条件](#prerequisites)
-* [IBM Containers 上での {{site.data.keys.product_adj }} Server と Analytics Server のセットアップ](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
-* [{{site.data.keys.mf_server }} 修正の適用](#applying-mobilefirst-server-fixes)
+* [IBM Containers 上での {{ site.data.keys.product_adj }} Server と Analytics Server のセットアップ](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
+* [{{ site.data.keys.mf_server }} 修正の適用](#applying-mobilefirst-server-fixes)
 * [Bluemix からのコンテナーの削除](#removing-a-container-from-bluemix)
 * [Bluemix からのデータベース・サービス構成の削除](#removing-the-database-service-configuration-from-bluemix)
 
@@ -78,12 +78,12 @@ macOS では、Docker コマンドを実行するには、次の 2 つのオプ�
 1. [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195) をインストールします。
 2. [IBM Containers プラグイン (cf ic)](https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html) をインストールします。
 
-## {{site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする
+## {{ site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする
 {: #download-the-ibm-mfpf-container-8000}-archive
-IBM Containers 上で {{site.data.keys.product }} をセットアップするには、まず最初にイメージを作成する必要があります。このイメージは、のちほど Bluemix にプッシュします。  
-<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">このページの指示に従って</a>、{{site.data.keys.mf_server }} の IBM Containers 用アーカイブ (.zip ファイル。*CNBL0EN* で検索) をダウンロードしてください。
+IBM Containers 上で {{ site.data.keys.product }} をセットアップするには、まず最初にイメージを作成する必要があります。このイメージは、のちほど Bluemix にプッシュします。  
+<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">このページの指示に従って</a>、{{ site.data.keys.mf_server }} の IBM Containers 用アーカイブ (.zip ファイル。*CNBL0EN* で検索) をダウンロードしてください。
 
-このアーカイブ・ファイルには、イメージをビルドするためのファイル (**dependencies** と **mfpf-libs**)、{{site.data.keys.mf_analytics }} コンテナーをビルドしてデプロイするためのファイル (**mfpf-analytics**)、および {{site.data.keys.mf_server }} コンテナーを構成するためのファイル (**mfpf-server**) が含まれています。
+このアーカイブ・ファイルには、イメージをビルドするためのファイル (**dependencies** と **mfpf-libs**)、{{ site.data.keys.mf_analytics }} コンテナーをビルドしてデプロイするためのファイル (**mfpf-analytics**)、および {{ site.data.keys.mf_server }} コンテナーを構成するためのファイル (**mfpf-server**) が含まれています。
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -97,25 +97,25 @@ IBM Containers 上で {{site.data.keys.product }} をセットアップするに
             <div class="panel-body">
                 <img src="zip.png" alt="アーカイブ・ファイルのファイル・システム構成を示すイメージ" style="float:right;width:570px"/>
                 <h4>dependencies フォルダー</h4>
-                <p>{{site.data.keys.product }} ランタイムおよび IBM Java JRE 8 が含まれています。</p>
+                <p>{{ site.data.keys.product }} ランタイムおよび IBM Java JRE 8 が含まれています。</p>
                 
                 <h4>mfpf-libs フォルダー</h4>
-                <p>{{site.data.keys.product_adj }} 製品コンポーネント・ライブラリーおよび CLI が含まれています。</p>
+                <p>{{ site.data.keys.product_adj }} 製品コンポーネント・ライブラリーおよび CLI が含まれています。</p>
                 
                 <h4>mfpf-server フォルダーと mfpf-analytics フォルダー</h4>
                 
                 <ul>
                     <li><b>Dockerfile</b>: イメージをビルドするのに必要なコマンドがすべて含まれているテキスト文書です。</li>
-                    <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。また、Bluemix へのログイン、{{site.data.keys.mf_server }}/{{site.data.keys.mf_analytics }} イメージのビルドおよび Bluemix へのイメージのプッシュと実行に必要なスクリプトも含まれます。スクリプトは、対話式に実行することも、(後述のように) 構成ファイルを事前に設定することで実行することもできます。カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
+                    <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。また、Bluemix へのログイン、{{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} イメージのビルドおよび Bluemix へのイメージのプッシュと実行に必要なスクリプトも含まれます。スクリプトは、対話式に実行することも、(後述のように) 構成ファイルを事前に設定することで実行することもできます。カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
                     <li><b>usr</b> フォルダー:
                         <ul>
                             <li><b>bin</b> フォルダー: コンテナーの始動時に実行されるスクリプト・ファイルが入っています。実行する独自のカスタム・コードを追加できます。</li>
-                            <li><b>config</b> フォルダー: {{site.data.keys.mf_server }}/{{site.data.keys.mf_analytics }} によって使用されるサーバー構成フラグメント (鍵ストア、サーバー・プロパティー、ユーザー・レジストリー) が含まれます。</li>
+                            <li><b>config</b> フォルダー: {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} によって使用されるサーバー構成フラグメント (鍵ストア、サーバー・プロパティー、ユーザー・レジストリー) が含まれます。</li>
                             <li><b>keystore.xml</b> - SSL 暗号化に使用されるセキュリティー証明書のリポジトリーの構成が含まれています。リストされたファイルは、./usr/security フォルダー内で参照される必要があります。</li>
-                            <li><b>mfpfproperties.xml</b> - {{site.data.keys.mf_server }}および {{site.data.keys.mf_analytics }} の構成プロパティー。以下の資料トピックにリストされた、サポートされるプロパティーを参照してください。
+                            <li><b>mfpfproperties.xml</b> - {{ site.data.keys.mf_server }}および {{ site.data.keys.mf_analytics }} の構成プロパティー。以下の資料トピックにリストされた、サポートされるプロパティーを参照してください。
                                 <ul>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a></li>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト</a></li>
                                 </ul>
                             </li>
                             <li><b>registry.xml</b> - ユーザー・レジストリー構成。basicRegistry (基本の XML ベースのユーザー・レジストリー構成がデフォルトとして提供されています。basicRegistry 用にユーザー名とパスワードを構成できます。または ldapRegistry を構成することができます。</li>
@@ -158,12 +158,12 @@ IBM Containers 上で {{site.data.keys.product }} をセットアップするに
                                         <tr>
                                             <td>MFPF_ADMIN_ROOT	</td>
                                             <td>mfpadmin</td>
-                                            <td>{{site.data.keys.mf_server }} Administration Services が使用可能になるコンテキスト・ルート。</td>
+                                            <td>{{ site.data.keys.mf_server }} Administration Services が使用可能になるコンテキスト・ルート。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_CONSOLE_ROOT	</td>
                                             <td>mfpconsole</td>
-                                            <td>{{site.data.keys.mf_console }} が使用可能になるコンテキスト・ルート。</td>
+                                            <td>{{ site.data.keys.mf_console }} が使用可能になるコンテキスト・ルート。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_GROUP</td>
@@ -188,22 +188,22 @@ IBM Containers 上で {{site.data.keys.product }} をセットアップするに
                                         <tr>
                                             <td>MFPF_SERVER_ADMIN_USER</td>
                                             <td>WorklightRESTUser</td>
-                                            <td>{{site.data.keys.mf_server }} Administration Services の Liberty サーバー管理者ユーザー。</td>
+                                            <td>{{ site.data.keys.mf_server }} Administration Services の Liberty サーバー管理者ユーザー。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_SERVER_ADMIN_PASSWORD</td>
                                             <td>mfpadmin。実稼働環境にデプロイする前に、デフォルト値を個人用パスワードに変更するようにしてください。</td>
-                                            <td>{{site.data.keys.mf_server }} Administration Services の Liberty サーバー管理者ユーザーのパスワード。</td>
+                                            <td>{{ site.data.keys.mf_server }} Administration Services の Liberty サーバー管理者ユーザーのパスワード。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_USER	</td>
                                             <td>admin</td>
-                                            <td>{{site.data.keys.mf_server }} 操作の管理者役割のユーザー名。</td>
+                                            <td>{{ site.data.keys.mf_server }} 操作の管理者役割のユーザー名。</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_PASSWORD</td>
                                             <td>admin</td>
-                                            <td>{{site.data.keys.mf_server }} 操作の管理者役割のパスワード。</td>
+                                            <td>{{ site.data.keys.mf_server }} 操作の管理者役割のパスワード。</td>
                                         </tr>
                                     </table>
                                     
@@ -256,7 +256,7 @@ IBM Containers 上で {{site.data.keys.product }} をセットアップするに
                     <li><b>jre-security</b> フォルダー: JRE セキュリティー関連のファイル (トラストストア、ポリシー JAR ファイルなど) を、このフォルダーに配置することで更新できます。このフォルダー内のファイルは、コンテナーの JAVA_HOME/jre/lib/security/ フォルダーにコピーされます。</li>
                     <li><b>security</b> フォルダー: 鍵ストア、トラストストア、および LTPA 鍵ファイル (ltpa.keys) の保管場所として使用します。</li>
                     <li><b>ssh</b> フォルダー: SSH 公開鍵ファイル (id_rsa.pub) の保管場所として使用されます。SSH 公開鍵ファイルは、コンテナーへの SSH アクセスを可能にするために使用されます。</li>
-                    <li><b>wxs</b> フォルダー ({{site.data.keys.mf_server }} 用のみ): データ・キャッシュをサーバーの属性ストアとして使用する場合に、データ・キャッシュ / extreme-scale クライアント・ライブラリーが含まれます。</li>
+                    <li><b>wxs</b> フォルダー ({{ site.data.keys.mf_server }} 用のみ): データ・キャッシュをサーバーの属性ストアとして使用する場合に、データ・キャッシュ / extreme-scale クライアント・ライブラリーが含まれます。</li>
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>
@@ -292,7 +292,7 @@ IBM Containers 上で {{site.data.keys.product }} をセットアップするに
 
 > IC コマンドについて詳しく知るには、`ic help` コマンドを使用します。
 
-## IBM Containers 上での {{site.data.keys.product_adj }} Server と Analytics Server のセットアップ
+## IBM Containers 上での {{ site.data.keys.product_adj }} Server と Analytics Server のセットアップ
 {: #setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers }
 前述のとおり、スクリプトは、対話式に実行することも、構成ファイルを使用して実行することもできます。
 
@@ -301,9 +301,9 @@ IBM Containers 上で {{site.data.keys.product }} をセットアップするに
 
 **注:** スクリプトを対話式に実行する場合は、この構成をスキップしてかまいませんが、少なくとも、指定することになる引数について一読し、理解しておくことを、強くお勧めします。
 
-### {{site.data.keys.mf_analytics }}
+### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{site.data.keys.mf_server }} で分析を使用する場合は、ここから開始します。
+{{ site.data.keys.mf_server }} で分析を使用する場合は、ここから開始します。
 
 <div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -360,7 +360,7 @@ IBM Containers 上で {{site.data.keys.product }} をセットアップするに
                 <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
                 <ol>
                     <li><b>initenv.sh – Bluemix へのログイン</b><br />
-                    次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{site.data.keys.mf_analytics }} をビルドして実行するための環境を作成します。
+                    次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.mf_analytics }} をビルドして実行するための環境を作成します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -413,8 +413,8 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                             </div>
                         </div>
                     </li>
-                    <li><b>prepareanalytics.sh - {{site.data.keys.mf_analytics }} イメージの準備</b><br />
-                        次のように <b>prepareanalytics.sh</b> スクリプトを実行して、{{site.data.keys.mf_analytics }} イメージをビルドし、これを Bluemix リポジトリーにプッシュします。
+                    <li><b>prepareanalytics.sh - {{ site.data.keys.mf_analytics }} イメージの準備</b><br />
+                        次のように <b>prepareanalytics.sh</b> スクリプトを実行して、{{ site.data.keys.mf_analytics }} イメージをビルドし、これを Bluemix リポジトリーにプッシュします。
 
 {% highlight bash %}
 ./prepareanalytics.sh args/prepareanalytics.properties
@@ -457,7 +457,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                   
                     </li>
                     <li><b>startanalytics.sh - IBM コンテナーでのイメージの実行</b><br />
-                    <b>startanalytics.sh</b> スクリプトを使用して {{site.data.keys.mf_analytics }} イメージを IBM コンテナー上で実行します。また、このスクリプトを実行すると、<b>ANALYTICS_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。</li>
+                    <b>startanalytics.sh</b> スクリプトを使用して {{ site.data.keys.mf_analytics }} イメージを IBM コンテナー上で実行します。また、このスクリプトを実行すると、<b>ANALYTICS_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。</li>
 
                     次のコマンドを実行します。
 {% highlight bash %}
@@ -541,7 +541,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>オプション。[-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>{{site.data.keys.mf_analytics }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。注: このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
+                                                <td>{{ site.data.keys.mf_analytics }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。注: このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
                                             </tr>
                                         </table>
                                         
@@ -556,7 +556,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                             </div>
                         </div>   
                     <li><b>startanalyticsgroup.sh - IBM コンテナー・グループでのイメージの実行</b><br />
-                    <b>startanalyticsgroup.sh</b> スクリプトを使用して {{site.data.keys.mf_analytics }} イメージを IBM コンテナー・グループ上で実行します。また、このスクリプトを実行すると、<b>ANALYTICS_CONTAINER_GROUP_HOST</b> プロパティーで構成したホスト名にイメージがバインドされます。
+                    <b>startanalyticsgroup.sh</b> スクリプトを使用して {{ site.data.keys.mf_analytics }} イメージを IBM コンテナー・グループ上で実行します。また、このスクリプトを実行すると、<b>ANALYTICS_CONTAINER_GROUP_HOST</b> プロパティーで構成したホスト名にイメージがバインドされます。
 
                         次のコマンドを実行します。
 {% highlight bash %}
@@ -620,7 +620,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                             </tr>
                                             <tr>
                                                 <td>オプション。[-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>{{site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest/v2</code></td>
+                                                <td>{{ site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest/v2</code></td>
                                             </tr>
                                             <tr>
                                                 <td>オプション。[-m|--memory] SERVER_MEM	</td>
@@ -658,7 +658,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
     </div>
 </div>
 
-### {{site.data.keys.mf_server }}
+### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server}
 <div class="panel-group accordion" id="scripts2" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -680,7 +680,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                     <li><b>BLUEMIX_SPACE - </b>ご使用の Bluemix スペース (前述のとおり)。</li>
                 </ul>
                 <h4>prepareserverdbs.properties</h4>
-                {{site.data.keys.mf_bm_short }} サービスには、外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional データベース</i> ・インスタンス</a> (<i>Enterprise Transactional 2.8.500</i> または <i>Enterprise Transactional 12.128.1400</i>) が必要です。<br/>
+                {{ site.data.keys.mf_bm_short }} サービスには、外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional データベース</i> ・インスタンス</a> (<i>Enterprise Transactional 2.8.500</i> または <i>Enterprise Transactional 12.128.1400</i>) が必要です。<br/>
                 <b>注:</b> dashDB Enterprise Transactional プランのデプロイメントは即時に行われない場合があります。サービスのデプロイメントの前に、販売チームから問い合わせを受けることがあります。<br/><br/>
                 dashDB インスタンスのセットアップが完了したら、必要な引数を入力します。
                 <ul>
@@ -702,7 +702,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                   IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code><br/>
                   IP アドレスは、スペース内の複数のコンテナーで再使用できます。<br/>
                   既に割り当て済みの IP アドレスがある場合は、次のコマンドを実行できます。<code>cf ic ip list</code></li>
-                    <li><b>MFPF_PROPERTIES - </b>コンマ区切り (<b>スペースなし</b>) の {{site.data.keys.mf_server }} JNDI プロパティー。ここで、次のように分析関連のプロパティーを定義します。<code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
+                    <li><b>MFPF_PROPERTIES - </b>コンマ区切り (<b>スペースなし</b>) の {{ site.data.keys.mf_server }} JNDI プロパティー。ここで、次のように分析関連のプロパティーを定義します。<code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
                 <h4>startservergroup.properties</h4>
                 <ul>
@@ -710,7 +710,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                     <li><b>SERVER_CONTAINER_GROUP_NAME - </b>ご使用の Bluemix コンテナー・グループの名前。</li>
                     <li><b>SERVER_CONTAINER_GROUP_HOST - </b>ホスト名。</li>
                     <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>ドメイン名。デフォルトは <code>mybluemix.net</code> です。</li>
-                    <li><b>MFPF_PROPERTIES - </b>コンマ区切り (<b>スペースなし</b>) の {{site.data.keys.mf_server }}JNDI プロパティー。ここで、次のように分析関連のプロパティーを定義します。 <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
+                    <li><b>MFPF_PROPERTIES - </b>コンマ区切り (<b>スペースなし</b>) の {{ site.data.keys.mf_server }}JNDI プロパティー。ここで、次のように分析関連のプロパティーを定義します。 <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
             </div>
         </div>
@@ -729,7 +729,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
             
             <ol>
                 <li><b>initenv.sh – Bluemix へのログイン</b><br />
-                    次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{site.data.keys.product }} をビルドして実行するための環境を作成します。
+                    次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.product }} をビルドして実行するための環境を作成します。
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -775,7 +775,6 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
-
                     
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Close section</b></a>
                                 </div>
@@ -783,8 +782,8 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                         </div>
                     </div>
                 </li>
-                <li><b>prepareserverdbs.sh - {{site.data.keys.mf_server }} データベースの準備</b><br />
-                    <b>prepareserverdbs.sh</b> スクリプトを使用して、dashDB データベース・サービスが含まれた {{site.data.keys.mf_server }} を構成します。手順 1 でログインした組織およびスペースにおいて、dashDB サービスのサービス・インスタンスが使用可能になっている必要があります。次のコマンドを実行します。
+                <li><b>prepareserverdbs.sh - {{ site.data.keys.mf_server }} データベースの準備</b><br />
+                    <b>prepareserverdbs.sh</b> スクリプトを使用して、dashDB データベース・サービスが含まれた {{ site.data.keys.mf_server }} を構成します。手順 1 でログインした組織およびスペースにおいて、dashDB サービスのサービス・インスタンスが使用可能になっている必要があります。次のコマンドを実行します。
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
@@ -848,8 +847,8 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
 
                 </li>
-                <li><b>prepareserver.sh - {{site.data.keys.mf_server }} イメージの準備</b><br />
-                     {{site.data.keys.mf_server }} イメージをビルドし、これを Bluemix リポジトリーにプッシュするため、<b>prepareserver.sh</b> スクリプトを実行します。Bluemix リポジトリー内にある使用可能なすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
+                <li><b>prepareserver.sh - {{ site.data.keys.mf_server }} イメージの準備</b><br />
+                     {{ site.data.keys.mf_server }} イメージをビルドし、これを Bluemix リポジトリーにプッシュするため、<b>prepareserver.sh</b> スクリプトを実行します。Bluemix リポジトリー内にある使用可能なすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
                     リストには、イメージ名、作成日、および ID が表示されます。<br/>
                   
 {% highlight bash %}
@@ -873,7 +872,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                                         </tr>
                                         <tr>
                                             <td>[-t|--tag] SERVER_IMAGE_NAME	</td>
-                                            <td>カスタマイズされた {{site.data.keys.mf_server }} イメージに使用する名前。フォーマット: registryUrl/namespace/imagename</td>
+                                            <td>カスタマイズされた {{ site.data.keys.mf_server }} イメージに使用する名前。フォーマット: registryUrl/namespace/imagename</td>
                                         </tr>
                                     </table>
                                   
@@ -890,7 +889,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                     </div>  
                 </li>
                 <li><b>startserver.sh - IBM コンテナーでのイメージの実行</b><br />
-                    <b>startserver.sh</b> スクリプトを使用して {{site.data.keys.mf_server }} イメージを IBM コンテナー上で実行します。また、このスクリプトを実行すると、<b>SERVER_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。次のコマンドを実行します。</li> 
+                    <b>startserver.sh</b> スクリプトを使用して {{ site.data.keys.mf_server }} イメージを IBM コンテナー上で実行します。また、このスクリプトを実行すると、<b>SERVER_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。次のコマンドを実行します。</li> 
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -911,11 +910,11 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                     </tr>
                                     <tr>
                                         <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                        <td>{{site.data.keys.mf_server }} イメージの名前。</td>
+                                        <td>{{ site.data.keys.mf_server }} イメージの名前。</td>
                                     </tr>
                                     <tr>
                                         <td>[-i|--ip] SERVER_IP	</td>
-                                        <td>{{site.data.keys.mf_server }} コンテナーのバインド先の IP アドレス。(使用可能なパブリック IP を指定するか、<code>cf ic ip request</code> コマンドを使用してパブリック IP を要求できます。)</td>
+                                        <td>{{ site.data.keys.mf_server }} コンテナーのバインド先の IP アドレス。(使用可能なパブリック IP を指定するか、<code>cf ic ip request</code> コマンドを使用してパブリック IP を要求できます。)</td>
                                     </tr>
                                     <tr>
                                         <td>オプション。[-si|--services] SERVICE_INSTANCES	</td>
@@ -959,7 +958,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                     </tr>
                                     <tr>
                                         <td>オプション。[-e|--env] MFPF_PROPERTIES	</td>
-                                        <td>{{site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>。<b>注</b>: このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
+                                        <td>{{ site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>。<b>注</b>: このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
                                     </tr>
                                 </table>
                                 
@@ -974,7 +973,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                         </div>
                     </div>
                 <li><b>startservergroup.sh - IBM コンテナー・グループでのイメージの実行</b><br />
-                    <b>startservergroup.sh</b> スクリプトを使用して {{site.data.keys.mf_server }} イメージを IBM コンテナー・グループ上で実行します。また、このスクリプトを実行すると、<b>SERVER_CONTAINER_GROUP_HOST</b> プロパティーで構成したホスト名にイメージがバインドされます。</li>
+                    <b>startservergroup.sh</b> スクリプトを使用して {{ site.data.keys.mf_server }} イメージを IBM コンテナー・グループ上で実行します。また、このスクリプトを実行すると、<b>SERVER_CONTAINER_GROUP_HOST</b> プロパティーで構成したホスト名にイメージがバインドされます。</li>
                     次のコマンドを実行します。
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties
@@ -997,11 +996,11 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                                <td>Bluemix レジストリー内の {{site.data.keys.mf_server }} コンテナー・イメージの名前。</td>
+                                                <td>Bluemix レジストリー内の {{ site.data.keys.mf_server }} コンテナー・イメージの名前。</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
-                                                <td>{{site.data.keys.mf_server }} コンテナー・グループの名前。</td>
+                                                <td>{{ site.data.keys.mf_server }} コンテナー・グループの名前。</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gh|--host] SERVER_CONTAINER_GROUP_HOST	</td>
@@ -1046,7 +1045,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                             </tr>
                                             <tr>
                                                 <td>オプション。[-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>{{site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
+                                                <td>{{ site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
                                                 <b>注:</b> このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
                                             </tr>
                                             <tr>
@@ -1079,18 +1078,18 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 
 > **注:** 何らかの構成変更が行われた後は、コンテナーを再始動する必要があります (`cf ic restart containerId`)。コンテナー・グループの場合は、グループ内の各コンテナー・インスタンスを再始動する必要があります。例えば、ルート証明書を変更する場合、新規の証明書が追加された後で、各コンテナー・インスタンスを再始動する必要があります。
 
-次の URL をロードして {{site.data.keys.mf_console }} を起動します。http://MF\_CONTAINER\_HOST/mfpconsole (しばらく時間がかかる場合があります)。  
-[{{site.data.keys.mf_cli }} を使用した {{site.data.keys.product_adj }} 成果物の管理](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)チュートリアルの指示に従って、リモート・サーバーを追加します。  
+次の URL をロードして {{ site.data.keys.mf_console }} を起動します。http://MF\_CONTAINER\_HOST/mfpconsole (しばらく時間がかかる場合があります)。  
+[{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)チュートリアルの指示に従って、リモート・サーバーを追加します。  
 
-これで、IBM Bluemix で実行中の {{site.data.keys.mf_server }} を使用して、アプリケーション開発を始めることができます。{{site.data.keys.product }} [チュートリアルを確認してください。](../../all-tutorials).
+これで、IBM Bluemix で実行中の {{ site.data.keys.mf_server }} を使用して、アプリケーション開発を始めることができます。{{ site.data.keys.product }} [チュートリアルを確認してください。](../../all-tutorials)
 
 #### ポート番号に関する制約
 {: #port-number-limitation }
-現在、IBM Containers には、パブリック・ドメインに使用可能なポート番号に関して制約があります。そのため、{{site.data.keys.mf_analytics }} コンテナーと {{site.data.keys.mf_server }} コンテナーに指定されたデフォルトのポート番号 (HTTP の場合は 9080、HTTPS の場合は 9443) を変更することはできません。コンテナー・グループ内のコンテナーは、HTTP ポート 9080 を使用する必要があります。コンテナー・グループでは、複数のポート番号および  HTTPS 要求の使用はサポートされません。
+現在、IBM Containers には、パブリック・ドメインに使用可能なポート番号に関して制約があります。そのため、{{ site.data.keys.mf_analytics }} コンテナーと {{ site.data.keys.mf_server }} コンテナーに指定されたデフォルトのポート番号 (HTTP の場合は 9080、HTTPS の場合は 9443) を変更することはできません。コンテナー・グループ内のコンテナーは、HTTP ポート 9080 を使用する必要があります。コンテナー・グループでは、複数のポート番号および  HTTPS 要求の使用はサポートされません。
 
-## {{site.data.keys.mf_server }} 修正の適用
+## {{ site.data.keys.mf_server }} 修正の適用
 {: #applying-mobilefirst-server-fixes }
-IBM Containers 上の {{site.data.keys.mf_server }} 用の暫定修正を [IBM Fix Central](http://www.ibm.com/support/fixcentral) から取得できます。  
+IBM Containers 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM Fix Central](http://www.ibm.com/support/fixcentral) から取得できます。  
 暫定修正を適用する前に、既存の構成ファイルのバックアップを取ってください。構成ファイルは、**package_root/mfpf-analytics/usr** フォルダーおよび **package_root/mfpf-server/usr** フォルダー内にあります。
 
 1. 暫定修正アーカイブをダウンロードし、その内容を既存のインストール・フォルダーに解凍して、既存のファイルを上書きします。
@@ -1114,11 +1113,11 @@ Bluemix からコンテナーを削除する場合、レジストリーからイ
 
 ## Bluemix からのデータベース・サービス構成の削除	
 {: #removing-the-database-service-configuration-from-bluemix }
-{{site.data.keys.mf_server }} イメージの構成時に **prepareserverdbs.sh** スクリプトを実行した場合、{{site.data.keys.mf_server }} に必要な構成およびデータベース・テーブルが作成されます。このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
+{{ site.data.keys.mf_server }} イメージの構成時に **prepareserverdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_server }} に必要な構成およびデータベース・テーブルが作成されます。このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
 
 Bluemix からデータベース・サービス構成を削除するには、Bluemix ダッシュボードを使用して、以下の手順を実行します。
 
 1. Bluemix ダッシュボードから、使用した dashDB サービスを選択します。**prepareserverdbs.sh** スクリプトの実行時にパラメーターとして指定した dashDB サービス名を選択します。
 2. 選択した dashDB サービス・インスタンスのスキーマおよびデータベース・オブジェクトを対処するために、dashDB コンソールを「起動」します。
-3. IBM {{site.data.keys.mf_server }} 構成に関連したスキーマを選択します。スキーマ名は、**prepareserverdbs.sh** スクリプトの実行時にパラメーターとして指定したスキーマ名です。
+3. IBM {{ site.data.keys.mf_server }} 構成に関連したスキーマを選択します。スキーマ名は、**prepareserverdbs.sh** スクリプトの実行時にパラメーターとして指定したスキーマ名です。
 4. スキーマ名とその下のオブジェクトを慎重に調べた後で、それぞれのスキーマを削除します。Bluemix からデータベース構成が削除されます。

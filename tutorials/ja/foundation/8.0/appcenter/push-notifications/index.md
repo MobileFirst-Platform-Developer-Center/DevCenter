@@ -13,7 +13,6 @@ weight: 2
 Application Center 管理者は、プッシュ通知を使用して、すべての iOS デバイスまたは Android デバイスに通知を自動送信します。お気に入りのアプリケーションの更新、および Application Centerサーバーにデプロイされるか推奨としてマーク付けされている新規アプリケーションについて、通知が送信されます。
 
 ### プッシュ通知プロセス
-
 {: #push-notification-process }
 以下の条件を満たしている場合に、プッシュ通知がデバイスに送信されます。
 
@@ -25,49 +24,34 @@ Application Center 管理者は、プッシュ通知を使用して、すべて�
 
 あるデバイスで初めて Application Center クライアントが開始されたとき、着信プッシュ通知を受け取るかどうかとユーザーに聞いてくることがあります。これは、iOS モバイル・デバイスの場合です。プッシュ通知フィーチャーは、モバイル・デバイスでサービスが使用不可になっているときは機能しません。
 
-
 iOS オペレーティング・システム・バージョンと最新の Android オペレーティング・システム・バージョンには、このサービスをアプリケーションごとにオンまたはオフに切り替える方法が備わっています。
-
 
 プッシュ通知用にモバイル・デバイスを構成する方法については、デバイス・ベンダーにお問い合わせください。
 
-
 #### ジャンプ先
 {: #jump-to }
-* [アプリケーション更新のためのプッシュ通知の構成
-](#configuring-push-notifications)
+* [アプリケーション更新のためのプッシュ通知の構成](#configuring-push-notifications)
 * [Google Cloud Messaging に接続するための Application Center サーバーの構成](#gcm)
-* [Apple Push Notification Services に接続するための Application Center サーバーの構成
-](#apns)
-* [GCM API に依存しないモバイル・クライアントのバージョンのビルド
-](#no-gcm)
+* [Apple Push Notification Services に接続するための Application Center サーバーの構成](#apns)
+* [GCM API に依存しないモバイル・クライアントのバージョンのビルド](#no-gcm)
 
 ## アプリケーション更新のためのプッシュ通知の構成
-
 {: #configuring-push-notifications }
 サード・パーティーのプッシュ通知サーバーと通信できるように Application Center サービスの資格情報または証明書を構成する必要があります。
 
 ### Application Center のサーバー・スケジューラーの構成
 {: #configuring-the-server-scheduler }
-サーバー・スケジューラーは、サーバーと一緒に自動的に開始したり停止したりするバックグラウンド・サービスです。
-このスケジューラーは、管理者のアクションによって、送信されるプッシュ更新メッセージで自動的に埋められるスタックを定期的に空にするために使用されます。
-プッシュ更新メッセージのバッチを送信するデフォルト間隔は 12 時間です。
-このデフォルト値が適切でない場合は、サーバー環境変数 **ibm.appcenter.push.schedule.period.amount** および **ibm.appcenter.push.schedule.period.unit** を使用して変更することができます。
+サーバー・スケジューラーは、サーバーと一緒に自動的に開始したり停止したりするバックグラウンド・サービスです。このスケジューラーは、管理者のアクションによって、送信されるプッシュ更新メッセージで自動的に埋められるスタックを定期的に空にするために使用されます。プッシュ更新メッセージのバッチを送信するデフォルト間隔は 12 時間です。このデフォルト値が適切でない場合は、サーバー環境変数 **ibm.appcenter.push.schedule.period.amount** および **ibm.appcenter.push.schedule.period.unit** を使用して変更することができます。
 
-**ibm.appcenter.push.schedule.period.amount** の値は整数です。
-**ibm.appcenter.push.schedule.period.unit** の値は、「seconds」、「minutes」、または「hours」です。単位が指定されなかった場合、数値は時間数で表される間隔です。
-これらの変数は、プッシュ・メッセージのバッチとバッチの間の経過時間を定義するために使用されます。
-
+**ibm.appcenter.push.schedule.period.amount** の値は整数です。**ibm.appcenter.push.schedule.period.unit** の値は、「seconds」、「minutes」、または「hours」です。単位が指定されなかった場合、数値は時間数で表される間隔です。これらの変数は、プッシュ・メッセージのバッチとバッチの間の経過時間を定義するために使用されます。
 
 JNDI プロパティーを使用して、これらの変数を定義します。
 
+> **重要:** 実動では単位を「seconds」に設定しないようにしてください。経過時間が短いほどサーバーの負荷は大きくなります。秒で表される単位はテストと評価の目的でのみ実装されます。例えば、経過時間が 10 秒に設定されると、プッシュ・メッセージはほぼすぐに送信されます。
 
-> **重要:** 実動では単位を「seconds」に設定しないようにしてください。経過時間が短いほどサーバーの負荷は大きくなります。
-秒で表される単位はテストと評価の目的でのみ実装されます。例えば、経過時間が 10 秒に設定されると、プッシュ・メッセージはほぼすぐに送信されます。
 設定できるすべてのプロパティーのリストについては、[Application Center のための JNDI プロパティー](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)を参照してください。
 
 ### Apache Tomcat サーバーの場合の例
-
 {: tomcat }
 server.xml ファイル内の JNDI プロパティーを使用して以下の変数を定義します。
 
@@ -91,44 +75,27 @@ WebSphere Application Server Liberty プロファイルの場合の JNDI 変数�
 
 プッシュ通知サービスをセットアップするための残りのアクションは、ターゲット・アプリケーションがインストールされているデバイスのベンダーによって異なります。
 
-
 ## Google Cloud Messaging に接続するための Application Center サーバーの構成
 {: #gcm }
-特定のアプリケーションについて Google Cloud Messaging (GCM) を使用可能にするには、GCM サービスを Google API 対応の開発者 Google アカウントに接続する必要があります。
-詳しくは、[GCM 入門](http://developer.android.com/google/gcm/gs.html)を参照してください。
+特定のアプリケーションについて Google Cloud Messaging (GCM) を使用可能にするには、GCM サービスを Google API 対応の開発者 Google アカウントに接続する必要があります。詳しくは、[GCM 入門](http://developer.android.com/google/gcm/gs.html)を参照してください。
 
-> 重要: Google Cloud Messaging のない Application Center クライアント: Application Center は Google Cloud Messaging (GCM) API が使用可能であることを想定しています。この API は、中国など一部の地域ではデバイスで利用できない可能性があります。
-このような地域をサポートするために、GCM API に依存しない Application Center クライアントのバージョンをビルドすることができます。
-プッシュ通知フィーチャーは、そのバージョンの Application Center クライアントでは機能しません。
-詳しくは、[GCM API に依存しないモバイル・クライアントのバージョンのビルド](#no-gcm)を参照してください。
+> 重要: Google Cloud Messaging のない Application Center クライアント: Application Center は Google Cloud Messaging (GCM) API が使用可能であることを想定しています。この API は、中国など一部の地域ではデバイスで利用できない可能性があります。このような地域をサポートするために、GCM API に依存しない Application Center クライアントのバージョンをビルドすることができます。プッシュ通知フィーチャーは、そのバージョンの Application Center クライアントでは機能しません。詳しくは、[GCM API に依存しないモバイル・クライアントのバージョンのビルド](#no-gcm)を参照してください。
 
 1. 適切な Google アカウントを持っていない場合は、[Google アカウントの作成](https://mail.google.com/mail/signup)に移動し、Application Center クライアント用の Google アカウントを作成します。
-2. [Google API コンソール](https://code.google.com/apis/console/)で Google API を使用して、このアカウントを登録します。
-登録によって新しいデフォルト・プロジェクトが作成されます。このプロジェクトは名前変更することができます。
-この GCM プロジェクトに付ける名前は、Android アプリケーション・パッケージ名とは無関係です。
-プロジェクトが作成されると、GCM プロジェクト ID がプロジェクト URL の最後に追加されます。
-この末尾番号は、後で必要になることがあるので、プロジェクト ID として記録してください。
-
+2. [Google API コンソール](https://code.google.com/apis/console/)で Google API を使用して、このアカウントを登録します。登録によって新しいデフォルト・プロジェクトが作成されます。このプロジェクトは名前変更することができます。この GCM プロジェクトに付ける名前は、Android アプリケーション・パッケージ名とは無関係です。プロジェクトが作成されると、GCM プロジェクト ID がプロジェクト URL の最後に追加されます。この末尾番号は、後で必要になることがあるので、プロジェクト ID として記録してください。
 3. GCM サービスをプロジェクト用に使用可能にします。Google API コンソールで、左側にある**「サービス (Services)」**タブをクリックし、サービスのリストにある "Google Cloud Messaging for Android" サービスを使用可能にします。
 4. アプリケーション通信に Simple API Access Server キーが使用可能であることを確認します。
-
     * コンソールの左側にある**「API Access」**垂直タブをクリックします。
-
-    * Simple API Access Server キーを作成します。あるいは、デフォルト・キーが既に作成されている場合、そのデフォルト・キーの詳細を書き留めます。
-他に 2 種類のキーが存在しますが、今のところは影響のあるものではありません。
-
-    * 将来 GCM を通じてアプリケーション通信で使用できるように Simple API Access Server キーを保存します。
-このキーは長さ約 40 文字で、Google API キーと呼ばれます。このキーは、後でサーバー・サイドで必要になります。
-
+    * Simple API Access Server キーを作成します。あるいは、デフォルト・キーが既に作成されている場合、そのデフォルト・キーの詳細を書き留めます。他に 2 種類のキーが存在しますが、今のところは影響のあるものではありません。
+    * 将来 GCM を通じてアプリケーション通信で使用できるように Simple API Access Server キーを保存します。このキーは長さ約 40 文字で、Google API キーと呼ばれます。このキーは、後でサーバー・サイドで必要になります。
 5. Application Center Android クライアントの JavaScript プロジェクトで GCM プロジェクト ID をストリング・リソース・プロパティーとして入力します。**IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json** テンプレート・ファイルで、次の行を独自の値で変更します。
 
    ```xml
    gcmProjectId:""// Google API project (project name = com.ibm.appcenter) ID needed for Android push.
-   // example : 123456789012```
+   // example : 123456789012
+   ```
 
-6. Google API キーを Application Center サーバーの JNDI プロパティーとして登録します。キー名は **ibm.appcenter.gcm.signature.googleapikey** です。
-例えば、このキーを、**server.xml** ファイル内の JNDI プロパティーとして Apache Tomcat サーバー用に構成することができます。
-
+6. Google API キーを Application Center サーバーの JNDI プロパティーとして登録します。キー名は **ibm.appcenter.gcm.signature.googleapikey** です。例えば、このキーを、**server.xml** ファイル内の JNDI プロパティーとして Apache Tomcat サーバー用に構成することができます。
 
    ```xml
    <Context docBase="AppCenterServices" path="/applicationcenter" reloadable="true" source="org.eclipse.jst.jee.server:AppCenterServices">
@@ -137,22 +104,17 @@ WebSphere Application Server Liberty プロファイルの場合の JNDI 変数�
    </Context>
    ```
 
-   JNDI プロパティーは、アプリケーション・サーバーの要件に従って定義する必要があります。
-  
+   JNDI プロパティーは、アプリケーション・サーバーの要件に従って定義する必要があります。  
 設定できるすべてのプロパティーのリストについては、[Application Center のための JNDI プロパティー](../../installation-configuration/production/appcenter/#jndi-properties-for-application-center)を参照してください。
     
 **重要:**
 
-* GCM を古い Android バージョンで使用する場合は、GCM を効果的に機能させるために、デバイスと既存の Google アカウントをペアにする必要があるかもしれません。
-[GCM サービス](http://developer.android.com/google/gcm/gcm.html)を参照: "GCM は Google サービス用に既存の接続を使用します。このため、3.0 より前のデバイスでは、ユーザーはそれぞれ自分のモバイル・デバイスで自分の Google アカウントをセットアップする必要があります。
-Google アカウントは、Android 4.0.4 以上が稼働するデバイスでは必要条件ではありません。"
+* GCM を古い Android バージョンで使用する場合は、GCM を効果的に機能させるために、デバイスと既存の Google アカウントをペアにする必要があるかもしれません。[GCM サービス](http://developer.android.com/google/gcm/gcm.html)を参照: "GCM は Google サービス用に既存の接続を使用します。このため、3.0 より前のデバイスでは、ユーザーはそれぞれ自分のモバイル・デバイスで自分の Google アカウントをセットアップする必要があります。Google アカウントは、Android 4.0.4 以上が稼働するデバイスでは必要条件ではありません。"
 * プッシュ通知を動作させるには、ポート 443 での android.googleapis.com への発信接続をファイアウォールが受け入れることも確認する必要があります。
 
 ## Apple Push Notification Services に接続するための Application Center サーバーの構成
-
 {: #apns }
-iOS プロジェクトを Apple Push Notification Services (APNs) 用に構成します。
-以下のサーバーが Application Center サーバーからアクセス可能であることを確認します。
+iOS プロジェクトを Apple Push Notification Services (APNs) 用に構成します。以下のサーバーが Application Center サーバーからアクセス可能であることを確認します。
 
 **Sandbox サーバー**  
 gateway.sandbox.push.apple.com:2195
@@ -162,15 +124,8 @@ feedback.sandbox.push.apple.com:2196
 gateway.push.apple.com:2195
 feedback.push.apple.com:2196
 
-Apple Push Notification Services (APNs) で iOS プロジェクトを正常に構成するためには登録済みの Apple 開発者でなければなりません。
-企業では、Apple 開発を担当する管理ロールは APNs 使用可能化を要求します。
-この要求に応えて、iOS アプリケーション・バンドル用の APNs 対応プロビジョニング・プロファイル、つまり、Xcode プロジェクトの構成ページで定義されるストリング値が提供されるはずです。
-このプロビジョニング・プロファイルは、シグニチャー証明書ファイルを生成するために使用されます。
-プロビジョニング・プロファイルには開発プロファイルと実動プロファイルの 2 種類があり、それぞれ開発環境および実稼働環境を扱います。
-開発プロファイルはもっぱら Apple 開発 APNs サーバーを扱います。
-実動プロファイルはもっぱら Apple 実動 APNs サーバーを扱います。
-これらの種類のサーバーは同じサービス品質を提供しません。
-
+Apple Push Notification Services (APNs) で iOS プロジェクトを正常に構成するためには登録済みの Apple 開発者でなければなりません。企業では、Apple 開発を担当する管理ロールは APNs 使用可能化を要求します。この要求に応えて、iOS アプリケーション・バンドル用の APNs 対応プロビジョニング・プロファイル、つまり、Xcode プロジェクトの構成ページで定義されるストリング値が提供されるはずです。このプロビジョニング・プロファイルは、シグニチャー証明書ファイルを生成するために使用されます。
+プロビジョニング・プロファイルには開発プロファイルと実動プロファイルの 2 種類があり、それぞれ開発環境および実稼働環境を扱います。開発プロファイルはもっぱら Apple 開発 APNs サーバーを扱います。実動プロファイルはもっぱら Apple 実動 APNs サーバーを扱います。これらの種類のサーバーは同じサービス品質を提供しません。
 
 注: ファイアウォールを使用している会社の WiFi に接続されているデバイスは、以下のアドレス・タイプがファイアウォールでブロックされていない場合にのみプッシュ通知を受け取ることができます。
 

@@ -12,7 +12,7 @@ IBM MobileFirst Foundation バージョン 6.2.0 以降で作成された既存�
 #### ジャンプ先
 {: #jump-to }
 * [v8.0 を使用して開発した Cordova アプリケーションと v7.1 以前を使用して開発した Cordova アプリケーションの比較](#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before)
-* [{{site.data.keys.product_full }} 8.0 でサポートされる Cordova アプリケーションへの、既存のハイブリッド・アプリケーションまたはクロスプラットフォーム・アプリケーションのマイグレーション](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
+* [{{ site.data.keys.product_full }} 8.0 でサポートされる Cordova アプリケーションへの、既存のハイブリッド・アプリケーションまたはクロスプラットフォーム・アプリケーションのマイグレーション](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
 * [iOS Cordova での暗号化のマイグレーション](#migrating-encryption-for-ios-cordova)
 * [ダイレクト・アップデートのマイグレーション](#migrating-direct-update)
 * [WebView のアップグレード](#upgrading-the-webview)
@@ -20,9 +20,9 @@ IBM MobileFirst Foundation バージョン 6.2.0 以降で作成された既存�
 
 ## v8.0 を使用して開発した Cordova アプリケーションと v7.1 以前を使用して開発した Cordova アプリケーションの比較
 {: #comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before }
-{{site.data.keys.product_adj }} v8.0 で開発された Cordova アプリケーションと、IBM MobileFirst Platform Foundation v7.1 で開発された Cordova アプリケーションおよびハイブリッド・アプリケーションを比較します。
+{{ site.data.keys.product_adj }} v8.0 で開発された Cordova アプリケーションと、IBM MobileFirst Platform Foundation v7.1 で開発された Cordova アプリケーションおよびハイブリッド・アプリケーションを比較します。
 
-| 機能 | Cordova アプリケーション (IBM<br/>{{site.data.keys.product }} v8.0 を使用) |	Cordova アプリケーション (IBM<br/>MobileFirst Platform Foundation v7.1 を使用) | MobileFirst ハイブリッド・アプリケーション (IBM<br/>MobileFirst Platform Foundation V7.1 を使用) |
+| 機能 | Cordova アプリケーション (IBM<br/>{{ site.data.keys.product }} v8.0 を使用) |	Cordova アプリケーション (IBM<br/>MobileFirst Platform Foundation v7.1 を使用) | MobileFirst ハイブリッド・アプリケーション (IBM<br/>MobileFirst Platform Foundation V7.1 を使用) |
 |---------|-------|---------|-------|------|
 | **IDE Eclipse Studio** | | | | |	 	 	 
 | Eclipse プラグインおよび統合 | はい | サポートされない | はい (プロプラエタリー) |
@@ -37,7 +37,7 @@ IBM MobileFirst Foundation バージョン 6.2.0 以降で作成された既存�
 | モバイル OS	| iOS 8 以上、Android 4.1 以上、Windows Phone 8.1、Windows Phone 10。 | iOS 7 以上、Android 4 以上。 | iOS、Android、および Windows Phone 8。 |
 | Web アプリケーション | はい、Apache Cordova を使用せずに開発された JavaScript アプリケーションとして。 | サポートされない | はい、desktopbrowser 環境または mobilewebapp 環境として。 |
 | ダイレクト・アップデート | はい。 | はい | はい |
-| {{site.data.keys.product_adj }} セキュリティー・フレームワーク | はい | はい | はい |
+| {{ site.data.keys.product_adj }} セキュリティー・フレームワーク | はい | はい | はい |
 | アプリケーション認証性 | はい | はい | はい |
 | 証明書ピン留め | はい | いいえ | はい |
 | JSONStore | はい。 | cordova-plugin-mfp-jsonstore プラグインを使用してください。 | はい | はい |
@@ -47,9 +47,9 @@ IBM MobileFirst Foundation バージョン 6.2.0 以降で作成された既存�
 | アドレス可能なデバイスのライセンス・トラッキングのためのアプリケーションのターゲット・カテゴリー (B2E または B2C) の指定 | はい | いいえ | はい |
 | 単純データ共有 | いいえ | はい | はい |
 | シングル・サインオン | はい<br/><br/>注: デバイスのシングル・サインオン(SSO) が、新しい定義済みの enableSSO セキュリティー検査アプリケーション記述子構成プロパティーを通じてサポートされるようになりました。 | はい | はい |
-| {{site.data.keys.product_adj }} アプリケーション・スキン | いいえ<br/><br/>注: さまざまなデバイス画面サイズを検出および処理するには、レスポンシブ Web デザインなどの標準 Web 開発手法を使用してください | いいえ<br/><br/>注: さまざまなデバイス画面サイズを検出および処理するには、レスポンシブ Web デザインなどの標準 Web 開発手法を使用してください。 | はい |
+| {{ site.data.keys.product_adj }} アプリケーション・スキン | いいえ<br/><br/>注: さまざまなデバイス画面サイズを検出および処理するには、レスポンシブ Web デザインなどの標準 Web 開発手法を使用してください | いいえ<br/><br/>注: さまざまなデバイス画面サイズを検出および処理するには、レスポンシブ Web デザインなどの標準 Web 開発手法を使用してください。 | はい |
 | 環境の最適化 | はい (Cordova)。 |  merges ディレクトリーを使用して、プラットフォームに固有の Web リソースを定義します。 | はい (Cordova)。merges ディレクトリーを使用して、プラットフォームに固有の Web リソースを定義します。詳しくは、Apache Cordova 資料の『Using Merges to Customize Each Platform』を参照してください。 | はい (プロプラエタリー) |
-| プッシュ通知 | はい。cordova-plugin-mfp-push プラグインを使用してください。<br/><br/>制約事項: 事前定義の {{site.data.keys.product_adj }} セキュリティー検査は、push.mobileclient スコープにのみマップできます。カスタム・セキュリティー検査は、JavaScript チャレンジ・ハンドラーが呼び出されないためサポートされません。 | はい<br/><br/>注: Android の場合、cordova-plugin-mfp-push プラグインを追加する必要があります。iOS では、このプラグインは不要です。これは、iOS 用のプッシュ・クライアント・サイド・サポートがコア mfp プラグインに含まれているためです。 | はい |
+| プッシュ通知 | はい。cordova-plugin-mfp-push プラグインを使用してください。<br/><br/>制約事項: 事前定義の {{ site.data.keys.product_adj }} セキュリティー検査は、push.mobileclient スコープにのみマップできます。カスタム・セキュリティー検査は、JavaScript チャレンジ・ハンドラーが呼び出されないためサポートされません。 | はい<br/><br/>注: Android の場合、cordova-plugin-mfp-push プラグインを追加する必要があります。iOS では、このプラグインは不要です。これは、iOS 用のプッシュ・クライアント・サイド・サポートがコア mfp プラグインに含まれているためです。 | はい |
 | Cordova プラグイン管理 | はい | はい | いいえ |
 | メッセージ (国際化対応) | はい | はい | はい |
 | トークン・ライセンス | はい | はい | はい |
@@ -57,21 +57,21 @@ IBM MobileFirst Foundation バージョン 6.2.0 以降で作成された既存�
 | ミニファイ | はい (Cordova)<br/><br/>はい: 一般的なオープン・ソース・ツールを使用してください。 | はい (Cordova)<br/><br/>はい: 一般的なオープン・ソース・ツールを使用してください。 | はい (プロプラエタリー) |
 | JS と CSS の連結 | はい (Cordova)<br/><br/>はい: 一般的なオープン・ソース・ツールを使用してください。 | はい (Cordova)<br/><br/>はい: 一般的なオープン・ソース・ツールを使用してください。 | はい (プロプラエタリー) |
 | 難読化 | はい (Cordova)<br/><br/>はい: 一般的なオープン・ソース・ツールを使用してください。 | はい (Cordova)<br/><br/>はい: 一般的なオープン・ソース・ツールを使用してください。 | はい (プロプラエタリー) |
-| Android Pro Guard | はい<br/><br/>注: {{site.data.keys.product }} V8.0.0 には、{{site.data.keys.product_adj }} Android アプリケーションでの Android ProGuard 難読化用の事前定義の proguard-project.txt 構成ファイルは含まれていません。 | はい<br/><br/>注: Pro Guard を有効にするには、Android 資料を参照してください。 | はい |
+| Android Pro Guard | はい<br/><br/>注: {{ site.data.keys.product }} V8.0.0 には、{{ site.data.keys.product_adj }} Android アプリケーションでの Android ProGuard 難読化用の事前定義の proguard-project.txt 構成ファイルは含まれていません。 | はい<br/><br/>注: Pro Guard を有効にするには、Android 資料を参照してください。 | はい |
 
-## {{site.data.keys.product }} 8.0 でサポートされる Cordova アプリケーションへの既存のハイブリッドまたはクロスプラットフォーム・アプリケーションのマイグレーション
+## {{ site.data.keys.product }} 8.0 でサポートされる Cordova アプリケーションへの既存のハイブリッドまたはクロスプラットフォーム・アプリケーションのマイグレーション
 {: #migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80 }
-IBM MobileFirst Platform Foundation バージョン 6.2 以降で開発された既存のハイブリッドまたはクロスプラットフォーム (Cordova) のアプリケーションを、{{site.data.keys.product }} v8.0 でサポートされる Cordova アプリケーションにマイグレーションできます。
+IBM MobileFirst Platform Foundation バージョン 6.2 以降で開発された既存のハイブリッドまたはクロスプラットフォーム (Cordova) のアプリケーションを、{{ site.data.keys.product }} v8.0 でサポートされる Cordova アプリケーションにマイグレーションできます。
 
 #### ジャンプ先
 {: #jump-to }
 * [マイグレーション・アシスト・ツールを使用した Cordova アプリケーションのマイグレーションの開始](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)
-* [{{site.data.keys.product_adj }} ハイブリッド・アプリケーションのマイグレーションの完了](#completing-migration-of-a-mobilefirst-hybrid-app)
-* [{{site.data.keys.product_adj }} Cordova アプリケーションのマイグレーションの完了](#completing-migration-of-a-mobilefirst-cordova-app)
+* [{{ site.data.keys.product_adj }} ハイブリッド・アプリケーションのマイグレーションの完了](#completing-migration-of-a-mobilefirst-hybrid-app)
+* [{{ site.data.keys.product_adj }} Cordova アプリケーションのマイグレーションの完了](#completing-migration-of-a-mobilefirst-cordova-app)
 
 ### マイグレーション・アシスト・ツールを使用した Cordova アプリケーションのマイグレーションの開始
 {: #starting-the-cordova-app-migration-with-the-migration-assistance-tool }
-マイグレーション・アシスト・ツールは、もう有効でない API を識別し、v8.0 でサポートされる Cordova アプリケーションにプロジェクトをコピーすることにより、{{site.data.keys.product_adj }} の以前のバージョンで作成されたクロスプラットフォーム・アプリケーションをマイグレーションする準備を支援します。
+マイグレーション・アシスト・ツールは、もう有効でない API を識別し、v8.0 でサポートされる Cordova アプリケーションにプロジェクトをコピーすることにより、{{ site.data.keys.product_adj }} の以前のバージョンで作成されたクロスプラットフォーム・アプリケーションをマイグレーションする準備を支援します。
 
 マイグレーション・アシスト・ツールを使用する前に、以下の情報を知っておくことが重要です。
 
@@ -150,7 +150,7 @@ IBM MobileFirst Platform Foundation バージョン 6.2 以降で開発された
       mfpmigrate scan --in source_directory --out destination_directory --type hybrid
       ```
         * **source_directory**  
-スキャンするファイルの現在のロケーション。IBM MobileFirst Platform Foundation ハイブリッド・アプリケーションでは、このロケーションは、アプリケーションの **common** ディレクトリーです。{{site.data.keys.product }} バージョン 8.0 の Cordova クロスプラットフォーム・アプリケーションでは、このロケーションは **www** ディレクトリーです。
+スキャンするファイルの現在のロケーション。IBM MobileFirst Platform Foundation ハイブリッド・アプリケーションでは、このロケーションは、アプリケーションの **common** ディレクトリーです。{{ site.data.keys.product }} バージョン 8.0 の Cordova クロスプラットフォーム・アプリケーションでは、このロケーションは **www** ディレクトリーです。
         * **destination_directory**  
 スキャンの結果が出力されるディレクトリー。
 		* **scan_type**  
@@ -158,7 +158,7 @@ IBM MobileFirst Platform Foundation バージョン 6.2 以降で開発された
     * **api-report.html** ファイル内で特定された残りの API の問題に対処します。
 6. すべての問題が解決されるまで、ステップ 6 を繰り返して、新しい Cordova アプリケーションに対してスキャン・ツールを実行します。
 
-### {{site.data.keys.product_adj }} ハイブリッド・アプリケーションのマイグレーションの完了
+### {{ site.data.keys.product_adj }} ハイブリッド・アプリケーションのマイグレーションの完了
 {: #completing-migration-of-a-mobilefirst-hybrid-app }
 マイグレーション・アシスト・ツールを使用した後、コードの一部を手動で変更してマイグレーション・プロセスを完了する必要があります。
 
@@ -167,7 +167,7 @@ IBM MobileFirst Platform Foundation バージョン 6.2 以降で開発された
 * JQuery の新規バージョンをダウンロードする必要がある (ステップ 1c) 場合、または追加の Cordova プラグインをインストールする必要がある (ステップ 6) 場合は、インターネット・アクセスが必要です。
 * 追加の Cordova プラグインをインストールする必要がある (ステップ 6) 場合は、node.js バージョン 4.0.0 以降がインストールされている必要があります。
 
-このタスクのステップを完了して、IBM MobileFirst Platform Foundation 7.1 から、{{site.data.keys.product }}  8.0 のサポートが組み込まれた Cordova アプリケーションへの、MobileFirst ハイブリッド・アプリケーションのマイグレーションを完了します。
+このタスクのステップを完了して、IBM MobileFirst Platform Foundation 7.1 から、{{ site.data.keys.product }}  8.0 のサポートが組み込まれた Cordova アプリケーションへの、MobileFirst ハイブリッド・アプリケーションのマイグレーションを完了します。
 
 マイグレーションが完了すると、マイグレーション後のアプリケーションでは、IBM MobileFirst Platform Foundation とは独立して入手する Cordova のプラットフォームやプラグインを使用できます。また、引き続き、任意の Cordova 開発ツールを使用してアプリケーションを開発できます。
 
@@ -175,9 +175,9 @@ IBM MobileFirst Platform Foundation バージョン 6.2 以降で開発された
     * 以下の CSS コードを、index.html ファイルの先頭、既にある CSS コードの前に追加します。
 
       ```html
-<link rel="stylesheet" href="worklight/worklight.css">
+      <link rel="stylesheet" href="worklight/worklight.css">
       <link rel="stylesheet" href="css/main.css">
-```
+      ```
 
       > **注:** **worklight.css** ファイルは、body 属性を relative に設定します。これがアプリケーションのスタイルに影響する場合は、ユーザー自身の CSS コードで position に別の値を宣言してください。 例えば、以下のようにします。
 
@@ -259,7 +259,7 @@ IBM MobileFirst Platform Foundation バージョン 6.2 以降で開発された
 5. オプション: 元のアプリケーションで FIPS フィーチャーを使用している場合は、JQuery イベント・リスナーを、WL/FIPS/READY イベントを listen する JavaScript イベント・リスナーに変更します。FIPS について詳しくは、『[FIPS 140-2 サポート](../../../administering-apps/federal/#fips-140-2-support)』を参照してください。
 6. オプション: 元のアプリケーションで、マイグレーション・アシスト・ツールによって置き換えも提供もされない、サード・パーティーの Cordova プラグインを使用している場合は、`cordova plugin add` コマンドを使用して、手動でそれらのプラグインを Cordova アプリケーションに追加してください。このツールでどのプラグインが置き換えられるかについて詳しくは、[マイグレーション・アシスト・ツールを使用した Cordova アプリケーションのマイグレーションの開始](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)を参照してください。
 
-### {{site.data.keys.product_adj }} Cordova アプリケーションのマイグレーションの完了
+### {{ site.data.keys.product_adj }} Cordova アプリケーションのマイグレーションの完了
 {: #completing-migration-of-a-mobilefirst-cordova-app }
 マイグレーション・アシスト・ツールを使用した後、コードの一部を手動で変更してマイグレーション・プロセスを完了する必要があります。
 
@@ -268,23 +268,23 @@ IBM MobileFirst Platform Foundation バージョン 6.2 以降で開発された
 * インターネット・アクセスが必要です。
 * node.js バージョン 4.0.0 以降がインストールされている必要があります。
 
-**mfp cordova create** を使用して作成した Cordova アプリケーションは、IBM MobileFirst Platform Foundation の以前のバージョンで提供されていた Cordova のプラットフォームとプラグインを使用します。マイグレーションが完了すると、マイグレーション後のアプリケーションは、{{site.data.keys.product }} とは独立して入手した Cordova プラットフォームおよびプラグインを使用できます。これは、IBM MobileFirs Foundation v8.0 で使用可能な唯一のタイプの Cordova アプリケーション・サポートです。
+**mfp cordova create** を使用して作成した Cordova アプリケーションは、IBM MobileFirst Platform Foundation の以前のバージョンで提供されていた Cordova のプラットフォームとプラグインを使用します。マイグレーションが完了すると、マイグレーション後のアプリケーションは、{{ site.data.keys.product }} とは独立して入手した Cordova プラットフォームおよびプラグインを使用できます。これは、IBM MobileFirs Foundation v8.0 で使用可能な唯一のタイプの Cordova アプリケーション・サポートです。
 
 マイグレーションするには、マイグレーション・アシスト・ツールを実行し、次にアプリケーションに他の変更を行います。
 
-1. 任意の Cordova 開発ツールを使用して、元のアプリケーションに含まれていた {{site.data.keys.product_adj }}機能を有効にする Cordova プラグイン以外の任意の Cordova プラグインを追加します。例えば、Cordova CLI では、プラグイン **cordova-plugin-file** および **cordova-plugin-file-transfer** を追加するには、以下を入力します。 
+1. 任意の Cordova 開発ツールを使用して、元のアプリケーションに含まれていた {{ site.data.keys.product_adj }}機能を有効にする Cordova プラグイン以外の任意の Cordova プラグインを追加します。例えば、Cordova CLI では、プラグイン **cordova-plugin-file** および **cordova-plugin-file-transfer** を追加するには、以下を入力します。 
 
    ```bash
    cordova plugin add cordova-plugin-file cordova-plugin-file-transfer
    ```
 
-   > **注:** **mfpmigrate** マイグレーション・アシスト・ツールによって {{site.data.keys.product_adj }} フィーチャー用の Cordova プラグインが追加されていますので、ユーザーがそれらを追加する必要はありません。これらのプラグインについて詳しくは、[{{site.data.keys.product_adj }} 用の Cordova プラグイン](../../../application-development/sdk/cordova)を参照してください。
+   > **注:** **mfpmigrate** マイグレーション・アシスト・ツールによって {{ site.data.keys.product_adj }} フィーチャー用の Cordova プラグインが追加されていますので、ユーザーがそれらを追加する必要はありません。これらのプラグインについて詳しくは、[{{ site.data.keys.product_adj }} 用の Cordova プラグイン](../../../application-development/sdk/cordova)を参照してください。
 
 2. オプション: 元のアプリケーションで FIPS フィーチャーを使用している場合は、JQuery イベント・リスナーを、WL/FIPS/READY イベントを listen する JavaScript イベント・リスナーに変更します。FIPS について詳しくは、『[FIPS 140-2 サポート](../../../administering-apps/federal/#fips-140-2-support)』を参照してください。
 3. オプション: 元のアプリケーションで、マイグレーション・アシスト・ツールによって置き換えも提供もされない、サード・パーティーの Cordova プラグインを使用している場合は、**cordova plugin add** コマンドを使用して、手動でそれらのプラグインを Cordova アプリケーションに追加してください。このツールでどのプラグインが置き換えられるかについて詳しくは、[マイグレーション・アシスト・ツールを使用した Cordova アプリケーションのマイグレーションの開始](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)を参照してください。
 4. オプション: (iOS プラットフォームを含み、OpenSSL を使用するアプリケーションの場合のみ。) **cordova-plugin-mfp-encrypt-utils ** プラグインをアプリケーションに追加します。**cordova-plugin-mfp-encrypt-utils ** プラグインは、iOS プラットフォームを使用する Cordova アプリケーションの暗号化のための iOS OpenSSL フレームワークを提供します。
 
-これで、任意の Cordova ツールを使用して開発を続行できるが、{{site.data.keys.product_adj }} 機能も含まれている Cordova アプリケーションが用意できました。
+これで、任意の Cordova ツールを使用して開発を続行できるが、{{ site.data.keys.product_adj }} 機能も含まれている Cordova アプリケーションが用意できました。
 
 ## iOS Cordova での暗号化のマイグレーション
 {: #migrating-encryption-for-ios-cordova }
@@ -296,12 +296,12 @@ iOS ハイブリッドまたは Cordova のアプリケーションで OpenSSL �
 {: #migrating-direct-update }
 ダイレクト・アップデートは、保護リソースに初めてアクセスした後にトリガーされます。新規 Web リソースのデプロイ・プロセスが v8.0 で変更されました。
 
-以前のバージョンと異なり、v8.0 では、アプリケーションがセキュア {{site.data.keys.product_adj }} リソースにアクセスしない場合、サーバーで更新が使用可能になっても、クライアント・アプリケーションは更新を受け取りません。OAuth がアノテーション `@OAuth(security=false)` または構成によって無効にされているなどのため、リソースが無保護の可能性があります。このリスクは、以下のいずれかの方法で回避できます。
+以前のバージョンと異なり、v8.0 では、アプリケーションがセキュア {{ site.data.keys.product_adj }} リソースにアクセスしない場合、サーバーで更新が使用可能になっても、クライアント・アプリケーションは更新を受け取りません。OAuth がアノテーション `@OAuth(security=false)` または構成によって無効にされているなどのため、リソースが無保護の可能性があります。このリスクは、以下のいずれかの方法で回避できます。
 
 * アクセス・トークンを明示的に取得する。[`WLAuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc) クラスの `obtainAccessToken` API を参照してください。
 * 別の保護リソースを呼び出す。[`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html?view=kc)クラスを参照してください。
 
-ダイレクト・アップデートを使用するには: v8.0 以降、**.wlapp** ファイルを {{site.data.keys.mf_server }} にアップロードしなくなりました。代わりに、それより小さい Web リソース・アーカイブ (.zip ファイル) をアップロードします。このアーカイブ・ファイルには、以前のバージョンで広く使用されていた Web プレビュー・ファイルまたはスキンは含まれなくなりました。それらは廃止されました。アーカイブに含まれるのは、クライアントに送信される Web リソースと、ダイレクト・アップデートの妥当性検査のためのチェックサムのみです。
+ダイレクト・アップデートを使用するには: v8.0 以降、**.wlapp** ファイルを {{ site.data.keys.mf_server }} にアップロードしなくなりました。代わりに、それより小さい Web リソース・アーカイブ (.zip ファイル) をアップロードします。このアーカイブ・ファイルには、以前のバージョンで広く使用されていた Web プレビュー・ファイルまたはスキンは含まれなくなりました。それらは廃止されました。アーカイブに含まれるのは、クライアントに送信される Web リソースと、ダイレクト・アップデートの妥当性検査のためのチェックサムのみです。
 
 > 詳しくは、[ダイレクト・アップデートの資料](../../../application-development/direct-update)を参照してください。
 
@@ -315,29 +315,27 @@ IBM MobileFirs Foundation v8.0 の Cordova SDK (JavaScript) では、コード�
 * 必要な Web リソース・エレメントを前のバージョンのコードで置き換える
 * SDK の変更に準拠するように JavaScript コードに必要な変更を行う
 
-v8.0 では、多くの {{site.data.keys.product_adj }} API エレメントが削除されました。削除されたエレメントは、JavaScript の自動修正をサポートする IDE 内では、存在しないものとして明確なマークがついています。
+v8.0 では、多くの {{ site.data.keys.product_adj }} API エレメントが削除されました。削除されたエレメントは、JavaScript の自動修正をサポートする IDE 内では、存在しないものとして明確なマークがついています。
 
 以下の表では、削除する必要がある API エレメント、および機能を置き換える方法の推奨をリストします。削除されたエレメントの多くは、Cordova プラグインまたは HTML 5 エレメントに置き換えることができる UI エレメントです。一部のメソッドが変更されています。
 
 #### 使用が中止された JavaScript UI エレメント
 {: #discontinued-javascript-ui-elements }
-
 | API エレメント | マイグレーション・パス |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Cordova プラグインまたは HTML 5 エレメントを使用してください。 |
-| `WL.App.close()` | {{site.data.keys.product_adj }} の外部でこのイベントを処理してください。 |
+| `WL.App.close()` | {{ site.data.keys.product_adj }} の外部でこのイベントを処理してください。 |
 | `WL.App.copyToClipboard()` | この機能を提供する Cordova プラグインを使用してください。 |
 | `WL.App.openUrl(url, target, options)` | この機能を提供する Cordova プラグインを使用してください。<br/><br/>注: ご参考までに、Cordova の InAppBrowser プラグインがこの機能を提供しています。 |
 | {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | この機能を提供する Cordova プラグインを使用してください。<br/><br/>注: ご参考までに、Cordova の backbutton プラグインがこの機能を提供しています。 |
 | `WL.App.getDeviceLanguage()` | この機能を提供する Cordova プラグインを使用してください。<br/><br/>注: ご参考までに、Cordova の **cordova-plugin-globalization** プラグインがこの機能を提供しています。 |
 | `WL.App.getDeviceLocale()` | この機能を提供する Cordova プラグインを使用してください。<br/><br/>注: ご参考までに、Cordova の **cordova-plugin-globalization** プラグインがこの機能を提供しています。 |
 | `WL.App.BackgroundHandler` | カスタム・ハンドラー関数を実行するには、標準 Cordova pause イベント・リスナーを使用してください。プライバシーを保護し、iOS システム、Android システム、およびユーザーがスナップショットまたは画面キャプチャーを取るのを防止する Cordova プラグインを使用します。詳しくは、PrivacyScreenPlugin ([https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)) を参照してください。 |
-| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| これらの関数は、{{site.data.keys.product }} v8.0 ではサポートされていない Adobe AIR プラットフォームをサポートするために提供されていました。 |
+| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| これらの関数は、{{ site.data.keys.product }} v8.0 ではサポートされていない Adobe AIR プラットフォームをサポートするために提供されていました。 |
 | `WL.Toast.show(string)` | Toast 用 Cordova プラグインを使用してください。 |
 
 #### 使用が中止されたその他の JavaScript エレメント
 {: #other-discontinued-javascript-elements }
-
 | API | マイグレーション・パス |
 |-----|----------------|
 | `WL.Client.checkForDirectUpdate(options)` | 代替はありません。<br/><br/>注: [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)を呼び出すことでダイレクト・アップデートをトリガーできます (ダイレクト・アップデートが使用可能な場合)。サーバーでダイレクト・アップデートが使用可能な場合は、セキュリティー・トークンにアクセスするとダイレクト・アップデートがトリガーされます。ただし、ダイレクト・アップデートをオンデマンドでトリガーすることはできません。 |
@@ -369,17 +367,16 @@ v8.0 では、多くの {{site.data.keys.product_adj }} API エレメントが�
 | `WL.Client.isUserAuthenticated(realm)` | 代替はありません。 |
 | `WLUserAuth.deleteCertificate(provisioningEntity)` | 代替はありません。 |
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | 代替はありません。 |
-| `WL.Client.createChallengeHandler(realmName)` | カスタム・ゲートウェイ・チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、[`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、[`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) を使用します。 |
+| `WL.Client.createChallengeHandler(realmName)` | カスタム・ゲートウェイ・チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、[`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、[`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) を使用します。 |
 | `WL.Client.createWLChallengeHandler(realmName)` | [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) を使用します。 |
 | `challengeHandler.isCustomResponse()`。ここで、`challengeHandler` は、`WL.Client.createChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 | `gatewayChallengeHandler.canHandleResponse()` を使用します。ここで、`gatewayChallengeHandler` は、[`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) によって返されるチャレンジ・ハンドラー・オブジェクトです。 |
 | `wlChallengeHandler.processSucccess()`。ここで、`wlChallengeHandler` は、`WL.Client.createWLChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 | `securityCheckChallengeHandler.handleSuccess()` を使用します。ここで、`securityCheckChallengeHandler` は、[`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) によって返されるチャレンジ・ハンドラー・オブジェクトです。 |
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、[`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、[`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。 |
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、[`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、[`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。 |
 | `WL.Client.AbstractChallengeHandler.submitFailure(err)` | [`WL.Client.AbstractChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html?view=kc#cancel) を使用します。 |
 | `WL.Client.createProvisioningChallengeHandler()` | 代替はありません。デバイス・プロビジョニングは、自動的にセキュリティー・フレームワークによって処理されるようになりました。 |
 
 #### 非推奨になった JavaScript API
 {: #deprecated-javascript-apis }
-
 | API | マイグレーション・パス |
 |-----|----------------|
 | {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener) </code></li><li><code>WL.Client.invokeProcedure(invocationData, options) </code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProcedureInvocationResult</code></li></ul>{:/} | 代わりに `WLResourceRequest` を使用してください。注: invokeProcedure の実装は、WLResourceRequest を使用します。 |
@@ -389,7 +386,7 @@ v8.0 では、多くの {{site.data.keys.product_adj }} API エレメントが�
 
 ## 削除されたコンポーネント
 {: #removed-components }
-MobileFirst Platform Foundation Studio 7.1 によって作成された Cordova プロジェクトには、専有機能をサポートする多くのリソースが含まれていました。ただし、v8.0 では、ピュア Cordova のみがサポートされ、{{site.data.keys.product_adj }} API ではこれらの機能はサポートされなくなっています。
+MobileFirst Platform Foundation Studio 7.1 によって作成された Cordova プロジェクトには、専有機能をサポートする多くのリソースが含まれていました。ただし、v8.0 では、ピュア Cordova のみがサポートされ、{{ site.data.keys.product_adj }} API ではこれらの機能はサポートされなくなっています。
 
 ### スキン
 {: #skins }
@@ -449,7 +446,7 @@ MobileFirst アプリケーション・スキン は、各種デバイスおよ�
 
 ### 「設定」ページ
 {: #settings-page }
-**「設定」ページ**は、MobileFirst ハイブリッド・アプリケーションで使用可能な UI でした。このページにより、開発者は、テスト目的のためにサーバー URL を実行時に変更できました。現在、開発者は、既存の {{site.data.keys.product_adj }} クライアント API を使用してサーバー URL を実行時に変更できるようになっています。詳しくは、[WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?lang=en-us&cp=SSHS8R_8.0.0&view=kc#setServerUrl) を参照してください。
+**「設定」ページ**は、MobileFirst ハイブリッド・アプリケーションで使用可能な UI でした。このページにより、開発者は、テスト目的のためにサーバー URL を実行時に変更できました。現在、開発者は、既存の {{ site.data.keys.product_adj }} クライアント API を使用してサーバー URL を実行時に変更できるようになっています。詳しくは、[WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?lang=en-us&cp=SSHS8R_8.0.0&view=kc#setServerUrl) を参照してください。
 
 ### ミニファイ
 {: #minification }
