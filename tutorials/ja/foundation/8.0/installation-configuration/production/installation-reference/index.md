@@ -6,30 +6,29 @@ weight: 9
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.mf_server_full }}、
-{{site.data.keys.mf_app_center_full }}、および {{site.data.keys.mf_analytics_full }} のインストールのための Ant タスクおよび構成のサンプル・ファイルに関する参照情報。
+{{ site.data.keys.mf_server_full }}、{{ site.data.keys.mf_app_center_full }}、および {{ site.data.keys.mf_analytics_full }} のインストールのための Ant タスクおよび構成のサンプル・ファイルに関する参照情報。
 
 #### ジャンプ先
 {: #jump-to }
 * [Ant configuredatabase タスクの参照情報](#ant-configuredatabase-task-reference)
-* [{{site.data.keys.mf_console }}、{{site.data.keys.mf_server }} 成果物、{{site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [{{site.data.keys.mf_server }} プッシュ・サービスのインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
-* [{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+* [{{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 成果物、{{ site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
+* [{{ site.data.keys.mf_server }} プッシュ・サービスのインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
 * [Application Center のインストール用の Ant タスク](#ant-tasks-for-installation-of-application-center)
-* [{{site.data.keys.mf_analytics }} のインストール用の Ant タスク](#ant-tasks-for-installation-of-mobilefirst-analytics)
+* [{{ site.data.keys.mf_analytics }} のインストール用の Ant タスク](#ant-tasks-for-installation-of-mobilefirst-analytics)
 * [内部ランタイム・データベース](#internal-runtime-databases)
 * [サンプル構成ファイル](#sample-configuration-files)
-* [{{site.data.keys.mf_analytics }} のサンプル構成ファイル](#sample-configuration-files-for-mobilefirst-analytics)
+* [{{ site.data.keys.mf_analytics }} のサンプル構成ファイル](#sample-configuration-files-for-mobilefirst-analytics)
 
 ## Ant configuredatabase タスクの参照情報
 {: #ant-configuredatabase-task-reference }
 configuredatabase Ant タスクの参照情報。この参照情報は、リレーショナル・データベース専用です。Cloudant には適用されません。
 
-**configuredatabase** Ant タスクは、{{site.data.keys.mf_server }} 管理サービス、{{site.data.keys.mf_server }} ライブ更新サービス、{{site.data.keys.mf_server }} プッシュ・サービス、{{site.data.keys.product_adj }} ランタイム、および Application Center のサービスによって使用されるリレーショナル・データベースを作成します。この Ant タスクは、以下のアクションによってリレーショナル・データベースを構成します。
+**configuredatabase** Ant タスクは、{{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} ライブ更新サービス、{{ site.data.keys.mf_server }} プッシュ・サービス、{{ site.data.keys.product_adj }} ランタイム、および Application Center のサービスによって使用されるリレーショナル・データベースを作成します。この Ant タスクは、以下のアクションによってリレーショナル・データベースを構成します。
 
-* {{site.data.keys.product_adj }} 表があるかどうかを確認して、必要であれば作成します。
-* 旧バージョンの {{site.data.keys.product }} の表がある場合、それらの表を現行バージョンにマイグレーションします。
-* 現行バージョンの {{site.data.keys.product }} の表がある場合は、何もしません。
+* {{ site.data.keys.product_adj }} 表があるかどうかを確認して、必要であれば作成します。
+* 旧バージョンの {{ site.data.keys.product }} の表がある場合、それらの表を現行バージョンにマイグレーションします。
+* 現行バージョンの {{ site.data.keys.product }} の表がある場合は、何もしません。
 
 また、以下のいずれかの条件が満たされている場合を考えます。
 
@@ -51,13 +50,13 @@ configuredatabase Ant タスクの参照情報。この参照情報は、リレ�
 
 | 属性 | 説明 | 必要 | デフォルト | 
 |-----------|-------------|----------|---------|
-| kind      | データベースのタイプ: {{site.data.keys.mf_server }}: MobileFirstRuntime、MobileFirstConfig、MobileFirstAdmin、または push。Application Center: ApplicationCenter。 | はい | なし |
+| kind      | データベースのタイプ: {{ site.data.keys.mf_server }}: MobileFirstRuntime、MobileFirstConfig、MobileFirstAdmin、または push。Application Center: ApplicationCenter。 | はい | なし |
 | includeConfigurationTables | データベース操作をライブ更新サービスと管理サービスの両方で実行するか、または管理サービスのみで実行するかを指定します。値は true または false のいずれかになります。 |  いいえ | true |
 | execute | configuredatabase Ant タスクを実行するかどうかを指定します。値は true または false のいずれかになります。 | いいえ | true | 
 
 #### kind
 {: #kind }
-{{site.data.keys.product }} は、4 種類のデータベースをサポートしています。{{site.data.keys.product_adj }} ランタイムは、**MobileFirstRuntime** データベースを使用します。{{site.data.keys.mf_server }} 管理サービスは **MobileFirstAdmin** データベースを使用します。{{site.data.keys.mf_server }} ライブ更新サービスは **MobileFirstConfig** データベースを使用します。デフォルトでは、**MobileFirstAdmin** の kind で作成されます。{{site.data.keys.mf_server }} プッシュ・サービスは **push** データベースを使用します。Application Center は **ApplicationCenter** データベースを使用します。
+{{ site.data.keys.product }} は、4 種類のデータベースをサポートしています。{{ site.data.keys.product_adj }} ランタイムは、**MobileFirstRuntime** データベースを使用します。{{ site.data.keys.mf_server }} 管理サービスは **MobileFirstAdmin** データベースを使用します。{{ site.data.keys.mf_server }} ライブ更新サービスは **MobileFirstConfig** データベースを使用します。デフォルトでは、**MobileFirstAdmin** の kind で作成されます。{{ site.data.keys.mf_server }} プッシュ・サービスは **push** データベースを使用します。Application Center は **ApplicationCenter** データベースを使用します。
 
 #### includeConfigurationTables
 {: #includeconfigurationtables }
@@ -77,8 +76,7 @@ configuredatabase Ant タスクの参照情報。この参照情報は、リレ�
 | `<oracle>`          |	Oracle のパラメーター。  | 0..1  | 
 | `<driverclasspath>` | JDBC ドライバーのクラスパス。 | 0..1  | 
 
-各データベース・タイプに対し、`<property>` エレメントを使用してデータベースにアクセスするための JDBC 接続プロパティーを指定することができます。
-`<property>` エレメントには以下の属性があります。
+各データベース・タイプに対し、`<property>` エレメントを使用してデータベースにアクセスするための JDBC 接続プロパティーを指定することができます。`<property>` エレメントには以下の属性があります。
 
 | 属性 | 説明                | 必要 | デフォルト | 
 |-----------|----------------------------|----------|---------|
@@ -163,8 +161,7 @@ MySQL ユーザー・アカウントについて詳しくは、[MySQL User Accou
 | `<dba>`      | データベース管理者の資格情報。          | 0..1  |
 | `<client>`   | データベースへのアクセスを許可されたホスト。 | 0..∞  | 
 
-使用可能なプロパティーについては、[Driver/Datasource Class Names, URL Syntax and Configuration
-Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html) を参照してください。
+使用可能なプロパティーについては、[Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html) を参照してください。  
 内部エレメント `<dba>` は、データベース管理者資格情報を指定します。このエレメントには以下の属性があります。
 
 | 属性 | 説明                            | 必要 | デフォルト | 
@@ -174,8 +171,7 @@ Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-
 
 `<dba>` エレメントに指定するユーザーは、MySQL スーパーユーザー・アカウントでなければなりません。詳しくは、[Securing the Initial MySQL Accounts](http://dev.mysql.com/doc/refman/5.5/en/default-privileges.html) を参照してください。
 
-各 `<client>` 内部エレメントがクライアント・コンピューターまたはクライアント・コンピューターのワイルドカードを指定します。
-これらのコンピューターは、データベースへの接続が許可されます。このエレメントには以下の属性があります。
+各 `<client>` 内部エレメントがクライアント・コンピューターまたはクライアント・コンピューターのワイルドカードを指定します。これらのコンピューターは、データベースへの接続が許可されます。このエレメントには以下の属性があります。
 
 | 属性 | 説明                                                              | 必要 | デフォルト | 
 |-----------|--------------------------------------------------------------------------|----------|---------|
@@ -185,9 +181,7 @@ hostname の構文について詳しくは、[Specifying Account Names](http://d
 
 `<driverclasspath>` エレメントには、MySQL Connector/J JAR ファイルが含まれている必要があります。このファイルは [Download Connector/J](http://www.mysql.com/downloads/connector/j/) ページからダウンロードできます。
 
-または、以下の属性を持つ
-`<mysql>` エレメントを使用することもできます。
-
+または、以下の属性を持つ `<mysql>` エレメントを使用することもできます。
 
 | 属性 | 説明                            | 必要 | デフォルト               | 
 |-----------|----------------------------------------|----------|-----------------------|
@@ -197,7 +191,7 @@ hostname の構文について詳しくは、[Specifying Account Names](http://d
 
 > `注:` 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。この場合、**configuredatabase** タスクはデータベースおよびユーザーの作成を試行せず、
 ユーザーのアクセス権限の付与も試行しません。
-**configuredatabase** タスクにより確実となるのは、現行バージョンの {{site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント `<dba>` と `<client>` を指定する必要はありません。#### Oracle 
+**configuredatabase** タスクにより確実となるのは、現行バージョンの {{ site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント `<dba>` と `<client>` を指定する必要はありません。#### Oracle 
 {: #oracle }
 エレメント `<oracle>` には以下の属性があります。
 
@@ -229,8 +223,7 @@ Oracle ユーザー・アカウントについて詳しくは、[Overview of Aut
 | user	         | データベースにアクセスするユーザー名。この表の下の注を参照してください。	| はい      | なし    | 
 | password	     | データベースにアクセスするパスワード。                                    | いいえ       | 対話式に照会 | 
 
-`<driverclasspath>` エレメントには、Oracle JDBC ドライバーの JAR ファイルが含まれている必要があります。Oracle
-JDBC ドライバーは、[JDBC and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) からダウンロードできます。
+`<driverclasspath>` エレメントには、Oracle JDBC ドライバーの JAR ファイルが含まれている必要があります。Oracle JDBC ドライバーは、[JDBC and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) からダウンロードできます。
 
 表スペースなどの表割り振りの詳細を、Ant タスクで指定することはできません。表スペースを制御する場合は、ユーザー・アカウントを手動で作成し、そのアカウントにデフォルト表スペースを割り当ててから、Ant タスクを実行することができます。他の詳細を制御する場合は、[Oracle データベースおよびユーザーの要件](../databases/#oracle-database-and-user-requirements)のセクションにある手動での指示を使用する必要があります。
 
@@ -240,24 +233,24 @@ JDBC ドライバーは、[JDBC and Universal Connection Pool (UCP)](http://www.
 | user	    | データベースにアクセスするユーザー名。 | はい      | なし                  |
 | password	| データベースにアクセスするパスワード。	 | いいえ       | 対話式に照会 |
 
-> **注:** 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。この場合、タスクはデータベースおよびユーザーの作成を試行せず、ユーザーのアクセス権限の付与も試行しません。**configuredatabase** タスクにより確実となるのは、現行バージョンの {{site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント`<dba>` を指定する必要はありません。
+> **注:** 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。この場合、タスクはデータベースおよびユーザーの作成を試行せず、ユーザーのアクセス権限の付与も試行しません。**configuredatabase** タスクにより確実となるのは、現行バージョンの {{ site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント`<dba>` を指定する必要はありません。
 
-## {{site.data.keys.mf_console }}、{{site.data.keys.mf_server }} 成果物、{{site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク
+## {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 成果物、{{ site.data.keys.mf_server }} 管理サービス、およびライブ更新サービスのインストールのための Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services }
-**installmobilefirstadmin**、**updatemobilefirstadmin**、および **uninstallmobilefirstadmin** の各 Ant タスクが、{{site.data.keys.mf_console }}、成果物コンポーネント、管理サービス、およびライブ更新サービスのインストールのために提供されています。
+**installmobilefirstadmin**、**updatemobilefirstadmin**、および **uninstallmobilefirstadmin** の各 Ant タスクが、{{ site.data.keys.mf_console }}、成果物コンポーネント、管理サービス、およびライブ更新サービスのインストールのために提供されています。
 
 ### タスクの結果
 {: #task-effects }
 
 #### installmobilefirstadmin
 {: #installmobilefirstadmin }
-**installmobilefirstadmin** Ant タスクは、管理サービスおよびライブ更新サービスの WAR ファイルを Web アプリケーションとして実行するように、また、オプションで {{site.data.keys.mf_console }} をインストールするように、アプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。
+**installmobilefirstadmin** Ant タスクは、管理サービスおよびライブ更新サービスの WAR ファイルを Web アプリケーションとして実行するように、また、オプションで {{ site.data.keys.mf_console }} をインストールするように、アプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。
 
 * 指定されたコンテキスト・ルート (デフォルトで /mfpadmin) で管理サービス Web アプリケーションを宣言します。
 * 管理サービスの、指定されたコンテキスト・ルートから派生したコンテキスト・ルートでライブ更新サービス Web アプリケーションを宣言します。デフォルトで、/mfpadminconfig です。
 * リレーショナル・データベースの場合、データ・ソースを宣言し、WebSphere Application Server フル・プロファイルでは管理サービスの JDBC プロバイダーを宣言します。
 * 管理サービスとライブ更新サービスをアプリケーション・サーバーにデプロイします。
-* オプションで、指定されたコンテキスト・ルート (デフォルトでは /mfpconsole) で、{{site.data.keys.mf_console }} を Web アプリケーションとして宣言します。{{site.data.keys.mf_console }} インスタンスが指定されている場合、Ant タスクは、対応する管理サービスと通信するために適切な JNDI 環境項目を宣言します。以下に例を示します。
+* オプションで、指定されたコンテキスト・ルート (デフォルトでは /mfpconsole) で、{{ site.data.keys.mf_console }} を Web アプリケーションとして宣言します。{{ site.data.keys.mf_console }} インスタンスが指定されている場合、Ant タスクは、対応する管理サービスと通信するために適切な JNDI 環境項目を宣言します。以下に例を示します。
 
 ```xml
 <target name="adminstall">
@@ -265,27 +258,28 @@ JDBC ドライバーは、[JDBC and Universal Connection Pool (UCP)](http://www.
     <console install="${mfp.admin.console.install}" warFile="${mfp.console.war.file}"/>
 ```
 
-* オプションで、{{site.data.keys.mf_console }} のインストール時に、指定されたコンテキスト・ルート /mfp-dev-artifacts で {{site.data.keys.mf_server }} 成果物 Web アプリケーションを宣言します。
+* オプションで、{{ site.data.keys.mf_console }} のインストール時に、指定されたコンテキスト・ルート /mfp-dev-artifacts で {{ site.data.keys.mf_server }} 成果物 Web アプリケーションを宣言します。
 * JNDI 環境項目を使用して管理サービスの構成プロパティーが構成されます。これらの JNDI 環境項目は、アプリケーション・サーバー・トポロジーに関するいくつかの追加情報も提供します。例えば、トポロジーがスタンドアロン構成か、クラスターか、またはサーバー・ファームかなどです。
-* オプションで、{{site.data.keys.mf_console }} と、管理サービスおよびライブ更新サービスの Web アプリケーションで使用されるロールにマップするユーザーを構成します。
+* オプションで、{{ site.data.keys.mf_console }} と、管理サービスおよびライブ更新サービスの Web アプリケーションで使用されるロールにマップするユーザーを構成します。
 * JMX の使用のためにアプリケーション・サーバーが構成されます。
-* オプションで、{{site.data.keys.mf_server }} プッシュ・サービスとの通信を構成します。
-* オプションで、MobileFirst JNDI 環境項目を設定して、{{site.data.keys.mf_server }} 管理パート用にアプリケーション・サーバーをサーバー・ファーム・メンバーとして構成します。
+* オプションで、{{ site.data.keys.mf_server }} プッシュ・サービスとの通信を構成します。
+* オプションで、MobileFirst JNDI 環境項目を設定して、{{ site.data.keys.mf_server }} 管理パート用にアプリケーション・サーバーをサーバー・ファーム・メンバーとして構成します。
 
 #### updatemobilefirstadmin
 {: #updatemobilefirstadmin }
-**updatemobilefirstadmin** Ant タスクは、アプリケーション・サーバー上の構成済み {{site.data.keys.mf_server }} Web アプリケーションを更新します。このタスクは以下のような結果をもたらします。
+**updatemobilefirstadmin** Ant タスクは、アプリケーション・サーバー上の構成済み {{ site.data.keys.mf_server }} Web アプリケーションを更新します。このタスクは以下のような結果をもたらします。
 
 * 管理サービス WAR ファイルを更新します。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。
 * ライブ更新サービス WAR ファイルを更新します。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。
-* {{site.data.keys.mf_console }} の WAR ファイルを更新します。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。このタスクは、アプリケーション・サーバー構成、すなわち Web アプリケーション構成、データ・ソース、JNDI 環境項目、ユーザーとロールのマッピング、および JMX 構成を変更しません。
+* {{ site.data.keys.mf_console }} の WAR ファイルを更新します。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。
+このタスクは、アプリケーション・サーバー構成、すなわち Web アプリケーション構成、データ・ソース、JNDI 環境項目、ユーザーとロールのマッピング、および JMX 構成を変更しません。
 
 #### uninstallmobilefirstadmin
 {: #uninstallmobilefirstadmin }
 **uninstallmobilefirstadmin** Ant タスクは、installmobilefirstadmin の以前の実行の結果を元に戻します。このタスクは以下のような結果をもたらします。
 
 * 指定されたコンテキスト・ルートを持つ管理サービス Web アプリケーションの構成が削除されます。その結果、このタスクは、そのアプリケーションに手動で追加された設定も削除します。
-* オプションで、管理サービスおよびライブ更新サービスの WAR ファイル、および {{site.data.keys.mf_console }} をアプリケーション・サーバーから削除します。
+* オプションで、管理サービスおよびライブ更新サービスの WAR ファイル、および {{ site.data.keys.mf_console }} をアプリケーション・サーバーから削除します。
 * リレーショナル DBMS の場合、データ・ソースを削除し、WebSphere Application Serverフル・プロファイルでは管理サービスおよびライブ更新サービスの JDBC プロバイダーを削除します。
 * リレーショナル DBMS の場合、管理サービスおよびライブ更新サービスによって使用されたデータベース・ドライバーをアプリケーション・サーバーから削除します。
 * 関連する JNDI 環境項目が削除されます。
@@ -298,22 +292,22 @@ JDBC ドライバーは、[JDBC and Universal Connection Pool (UCP)](http://www.
 
 | 属性         | 説明                                                              | 必要 | デフォルト | 
 |-------------------|--------------------------------------------------------------------------|----------|---------|
-| contextroot       | {{site.data.keys.product_adj }} ランタイム環境、アプリケーション、およびアダプターに関する情報を取得するための、管理サービスの URL の共通接頭部 | いいえ | /mfpadmin | 
+| contextroot       | {{ site.data.keys.product_adj }} ランタイム環境、アプリケーション、およびアダプターに関する情報を取得するための、管理サービスの URL の共通接頭部 | いいえ | /mfpadmin | 
 | id                | さまざまなデプロイメントを区別する。              | いいえ | 空 | 
-| environmentId     | さまざまな {{site.data.keys.product_adj }} 環境を区別する。 | いいえ | 空 | 
+| environmentId     | さまざまな {{ site.data.keys.product_adj }} 環境を区別する。 | いいえ | 空 | 
 | servicewar        | 管理サービスの WAR ファイル       | いいえ | mfp-admin-service.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。 | 
 | shortcutsDir      | ショートカットを配置するディレクトリー。            | いいえ | なし | 
 | wasStartingWeight | WebSphere Application Server の開始順序。低い値から先に開始されます。 | いいえ | 1 | 
 
 #### contextroot および id
 {: #contextroot-and-id }
-**contextroot** 属性と **id** 属性は、{{site.data.keys.mf_console }} および管理サービスの異なるデプロイメントを識別します。
+**contextroot** 属性と **id** 属性は、{{ site.data.keys.mf_console }} および管理サービスの異なるデプロイメントを識別します。
 
 WebSphere Application Server Liberty プロファイルおよび Tomcat の環境では、この目的には contextroot パラメーターで十分です。WebSphere Application Server フル・プロファイル環境では、id 属性が代わりに使用されます。この id 属性がないと、同じコンテキスト・ルートを持つ 2 つの WAR ファイルが競合し、これらのファイルがデプロイされない可能性があります。
 
 #### environmentId
 {: #environmentid }
-**environmentId** 属性を使用して、独立して作動しなければならない、{{site.data.keys.mf_server }} 管理サービスおよび {{site.data.keys.product_adj }} ランタイム Web アプリケーションのそれぞれから構成される、複数の環境を区別します。例えば、このオプションを使用して、同じサーバー上、または同じ WebSphere Application Server Network Deployment セル内のテスト環境、実動前環境、および実稼働環境をホストすることができます。この environmentId 属性は、管理サービスと {{site.data.keys.product_adj }} ランタイムのプロジェクトが Java Management Extensions (JMX) を介して通信するときに使用する MBean 名に追加される接尾部を作成します。
+**environmentId** 属性を使用して、独立して作動しなければならない、{{ site.data.keys.mf_server }} 管理サービスおよび {{ site.data.keys.product_adj }} ランタイム Web アプリケーションのそれぞれから構成される、複数の環境を区別します。例えば、このオプションを使用して、同じサーバー上、または同じ WebSphere Application Server Network Deployment セル内のテスト環境、実動前環境、および実稼働環境をホストすることができます。この environmentId 属性は、管理サービスと {{ site.data.keys.product_adj }} ランタイムのプロジェクトが Java Management Extensions (JMX) を介して通信するときに使用する MBean 名に追加される接尾部を作成します。
 
 #### servicewar
 {: #servicewar }
@@ -321,19 +315,18 @@ WebSphere Application Server Liberty プロファイルおよび Tomcat の環�
 
 #### shortcutsDir
 {: #shortcutsdir }
-**shortcutsDir** 属性は、{{site.data.keys.mf_console }} のショートカットを配置する場所を指定します。この属性を設定した場合、そのディレクトリーに以下のファイルを追加できます。
+**shortcutsDir** 属性は、{{ site.data.keys.mf_console }} のショートカットを配置する場所を指定します。この属性を設定した場合、そのディレクトリーに以下のファイルを追加できます。
 
-* **mobilefirst-console.url** - このファイルは、Windows のショートカットです。これは、{{site.data.keys.mf_console }} をブラウザーで開きます。
-* **mobilefirst-console.sh** - このファイルは、UNIX のシェル・スクリプトであり、{{site.data.keys.mf_console }} をブラウザーで開きます。
-* **mobilefirst-admin-service.url** - このファイルは、Windows のショートカットです。これはブラウザーで開き、JSON 形式で管理できる {{site.data.keys.product_adj }} プロジェクトのリストを返す REST サービスを呼び出します。リストされている {{site.data.keys.product_adj }} の各プロジェクトについて、それらの成果物に関する詳細情報 (アプリケーションの数、アダプターの数、アクティブ・デバイスの数、廃止されたデバイスの数など) も表示されます。このリストには、{{site.data.keys.product_adj }} プロジェクト・ランタイムが実行中であるかアイドル状態であるかも示されます。
+* **mobilefirst-console.url** - このファイルは、Windows のショートカットです。これは、{{ site.data.keys.mf_console }} をブラウザーで開きます。
+* **mobilefirst-console.sh** - このファイルは、UNIX のシェル・スクリプトであり、{{ site.data.keys.mf_console }} をブラウザーで開きます。
+* **mobilefirst-admin-service.url** - このファイルは、Windows のショートカットです。これはブラウザーで開き、JSON 形式で管理できる {{ site.data.keys.product_adj }} プロジェクトのリストを返す REST サービスを呼び出します。リストされている {{ site.data.keys.product_adj }} の各プロジェクトについて、それらの成果物に関する詳細情報 (アプリケーションの数、アダプターの数、アクティブ・デバイスの数、廃止されたデバイスの数など) も表示されます。このリストには、{{ site.data.keys.product_adj }} プロジェクト・ランタイムが実行中であるかアイドル状態であるかも示されます。
 * **mobilefirst-admin-service.sh** - このファイルは、**mobilefirst-admin-service.url** ファイルと同じ出力を行う UNIX のシェル・スクリプトです。
 
 #### wasStartingWeight
 {: #wasstartingweight }
-**wasStartingWeight** 属性を使用して、開始順序が順守されることを確実にするためのウェイトとして WebSphere Application Server で使用される値を指定します。この開始順序の値の結果、管理サービス Web アプリケーションは、他のどの {{site.data.keys.product_adj }} ランタイム・プロジェクトよりも前にデプロイされて開始されます。{{site.data.keys.product_adj }} プロジェクトが Web アプリケーションより前にデプロイまたは開始されると、JMX 通信は確立されず、ランタイムは管理サービス・データベースと同期化することも、サーバー要求を処理することもできません。
+**wasStartingWeight** 属性を使用して、開始順序が順守されることを確実にするためのウェイトとして WebSphere Application Server で使用される値を指定します。この開始順序の値の結果、管理サービス Web アプリケーションは、他のどの {{ site.data.keys.product_adj }} ランタイム・プロジェクトよりも前にデプロイされて開始されます。{{ site.data.keys.product_adj }} プロジェクトが Web アプリケーションより前にデプロイまたは開始されると、JMX 通信は確立されず、ランタイムは管理サービス・データベースと同期化することも、サーバー要求を処理することもできません。
 
-**installmobilefirstadmin**、**updatemobilefirstadmin**、および
-**uninstallmobilefirstadmin** の各 Ant タスクでは、以下のエレメントがサポートされます。
+**installmobilefirstadmin**、**updatemobilefirstadmin**、および **uninstallmobilefirstadmin** の各 Ant タスクでは、以下のエレメントがサポートされます。
 
 | エレメント               | 説明                                      | カウント |
 |-----------------------|--------------------------------------------------|-------|
@@ -346,21 +339,21 @@ WebSphere Application Server Liberty プロファイルおよび Tomcat の環�
 | `<push>`              | プッシュ・サービス。	                               | 0..1  |
 | `<user>`              | セキュリティー・ロールにマップされるユーザー。	       | 0..   |
 
-### {{site.data.keys.mf_console }} を指定するには
+### {{ site.data.keys.mf_console }} を指定するには
 {: #to-specify-a-mobilefirst-operations-console }
-`<console>` エレメントは、{{site.data.keys.mf_console }} のインストールをカスタマイズするための情報を収集します。このエレメントには以下の属性があります。
+`<console>` エレメントは、{{ site.data.keys.mf_console }} のインストールをカスタマイズするための情報を収集します。このエレメントには以下の属性があります。
 
 | 属性         | 説明                                                               | 必要 | デフォルト     | 
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
-| contextroot       | {{site.data.keys.mf_console }} の URI。                            | いいえ       | /mfpconsole |
-| install           | {{site.data.keys.mf_console }} をインストールする必要があるかどうかを示す。 | いいえ       | はい         |
+| contextroot       | {{ site.data.keys.mf_console }} の URI。                            | いいえ       | /mfpconsole |
+| install           | {{ site.data.keys.mf_console }} をインストールする必要があるかどうかを示す。 | いいえ       | はい         |
 | warfile           | コンソール WAR ファイル。	                                                    |いいえ        | mfp-admin-ui.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。 |
 
 `<console>` エレメントでは、以下のエレメントがサポートされます。
 
 | エレメント               | 説明                                      | カウント |
 |-----------------------|--------------------------------------------------|-------|
-| `<artifacts>`         | {{site.data.keys.mf_server }} 成果物。                | 0..1  |
+| `<artifacts>`         | {{ site.data.keys.mf_server }} 成果物。                | 0..1  |
 | `<property>`	        | プロパティー。	                               | 0..   |
 
 `<artifacts>` エレメントには以下の属性があります。
@@ -370,19 +363,18 @@ WebSphere Application Server Liberty プロファイルおよび Tomcat の環�
 | install           | 成果物コンポーネントをインストールする必要があるかどうかを示す。            | いいえ       | true        |
 | warFile           | 成果物 WAR ファイル。                                                   | いいえ       | mfp-dev-artifacts.war ファイルは、mfp-ant-deployer.jar ファイルと同じディレクトリー内にあります。 |
 
-このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。
+このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{ site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。
 
-`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。
-これには、以下の属性があります。
+`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。これには、以下の属性があります。
 
 | 属性  | 説明                | 必要 | デフォルト | 
 |------------|----------------------------|----------|---------|
 | 名前       | プロパティーの名前。  | はい      | なし    | 
 | value	     | プロパティーの値。 |	はい      | なし    |
 
-このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。
+このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{ site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。
 
-JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
+JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
 
 ### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server }
@@ -393,7 +385,7 @@ JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }}
 | `<websphereapplicationserver>` または `<was>` | WebSphere Application Server のパラメーター。<br/><br/> `<websphereapplicationserver>` エレメント (短縮形では `was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。               | 0..1  |
 | `<tomcat>`                                | Apache Tomcat のパラメーター。	               | 0..1  |
 
-これらのエレメントの属性および内部エレメントについては、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。  
+これらのエレメントの属性および内部エレメントについては、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。  
 ただし、Liberty 集合の `<was>` エレメントの内部エレメントについては、以下の表を参照してください。
 
 | エレメント                  | 説明                      | カウント |
@@ -436,19 +428,20 @@ JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }}
 | 名前	      | ユーザー名。	                                                        | はい      | なし    |
 | password	  | ユーザーを作成する必要がある場合のパスワード。	                        | いいえ       | なし    |
 
-`<user>` エレメントを使用してユーザーを定義した後、それらのユーザーを、{{site.data.keys.mf_console }} 内の以下の認証用のロールにマップすることができます。`configadmin`
+`<user>` エレメントを使用してユーザーを定義した後、それらのユーザーを、{{ site.data.keys.mf_console }} 内の以下の認証用のロールにマップすることができます。`configadmin`
 
-特定のロールによってどの許可が暗黙指定されているかについて詳しくは、[{{site.data.keys.mf_server }} 管理用のユーザー認証の構成](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
+特定のロールによってどの許可が暗黙指定されているかについて詳しくは、[{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)を参照してください。
 
-> **ヒント:** ユーザーが外部 LDAP ディレクトリーに存在する場合は、**role** 属性と **name** 属性のみを設定し、パスワードは定義しないでください。`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。
-これには、以下の属性があります。
+> **ヒント:** ユーザーが外部 LDAP ディレクトリーに存在する場合は、**role** 属性と **name** 属性のみを設定し、パスワードは定義しないでください。
+
+`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。これには、以下の属性があります。
 
 | 属性  | 説明                | 必要 | デフォルト | 
 |------------|----------------------------|----------|---------|
 | 名前       | プロパティーの名前。  | はい      | なし    | 
 | value	     | プロパティーの値。 |	はい      | なし    |
 
-このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
+このエレメントを使用して、独自の JNDI プロパティーを定義したり、管理サービスおよび {{ site.data.keys.mf_console }} の WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
 
 ### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server-1 }
@@ -459,7 +452,7 @@ JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }}
 | `<websphereapplicationserver>` または `<was>`	| WebSphere Application Server のパラメーター。<br/><br/><websphereapplicationserver> エレメント (短縮形では <was>) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。 | 0..1  | 
 | `<tomcat>`   | Apache Tomcat のパラメーター。                        | 0..1  |
 
-これらのエレメントの属性および内部エレメントについては、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。  
+これらのエレメントの属性および内部エレメントについては、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。  
 ただし、Liberty 集合の <was> エレメントの内部エレメントについては、以下の表を参照してください。
 
 | エレメント               | 説明                  | カウント |
@@ -477,32 +470,32 @@ JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }}
 
 ### Analytics の指定
 {: #to-specify-analytics }
-`<analytics>` エレメントは、既にインストールされている {{site.data.keys.mf_analytics }} サービスに {{site.data.keys.product_adj }} プッシュ・サービスを接続することを指示します。これには、以下の属性があります。
+`<analytics>` エレメントは、既にインストールされている {{ site.data.keys.mf_analytics }} サービスに {{ site.data.keys.product_adj }} プッシュ・サービスを接続することを指示します。これには、以下の属性があります。
 
 | 属性     | 説明                                                               | 必要 | デフォルト | 
 |---------------|---------------------------------------------------------------------------|----------|---------|
-| install	    | プッシュ・サービスを {{site.data.keys.mf_analytics }} に接続するかどうかを示します。 | いいえ       | false   |
-| analyticsURL 	| {{site.data.keys.mf_analytics }} サービスの URL。	                            | はい	   | なし    |
+| install	    | プッシュ・サービスを {{ site.data.keys.mf_analytics }} に接続するかどうかを示します。 | いいえ       | false   |
+| analyticsURL 	| {{ site.data.keys.mf_analytics }} サービスの URL。	                            | はい	   | なし    |
 | username	    | ユーザー名。	                                                        | はい	   | なし    |
 | password	    | パスワード。	                                                            | はい	   | なし    |
-| validate	    | {{site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。	| いいえ	   | true    |
+| validate	    | {{ site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。	| いいえ	   | true    |
 
 **install**  
-install 属性は、このプッシュ・サービスが接続され、イベントを {{site.data.keys.mf_analytics }} に送信する必要があることを指示するために使用します。有効な値は true または false です。
+install 属性は、このプッシュ・サービスが接続され、イベントを {{ site.data.keys.mf_analytics }} に送信する必要があることを指示するために使用します。有効な値は true または false です。
 
 **analyticsURL**  
-analyticsURL 属性は、着信分析データを受信する {{site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。
+analyticsURL 属性は、着信分析データを受信する {{ site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。
 
 例えば、`http://<hostname>:<port>/analytics-service/rest` などです。
 
 **username**  
-username 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名を指定するために使用します。
+username 属性は、{{ site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名を指定するために使用します。
 
 **password**  
-password 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるパスワードを指定するために使用します。
+password 属性は、{{ site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるパスワードを指定するために使用します。
 
 **validate**  
-validate 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可能かどうかを検証するため、およびパスワードでのユーザー名認証を検査するために使用します。指定可能な値は true または false です。
+validate 属性は、{{ site.data.keys.mf_analytics_console }}にアクセス可能かどうかを検証するため、およびパスワードでのユーザー名認証を検査するために使用します。指定可能な値は true または false です。
 
 ### プッシュ・サービス・データベースへの接続の指定
 {: #to-specify-a-connection-to-the-push-service-database }
@@ -518,7 +511,7 @@ validate 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可�
 | kind          | データベースの種類 (Push)。	                  | はい	     | なし    |
 | validate	    | データベースがアクセス可能かどうかを検証します。 | いいえ       | true    |
 
-`<database>` エレメントは以下のエレメントをサポートしています。リレーショナル DBMS の場合のこれらのデータベース・エレメントの構成について詳しくは、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
+`<database>` エレメントは以下のエレメントをサポートしています。リレーショナル DBMS の場合のこれらのデータベース・エレメントの構成について詳しくは、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
 
 | エレメント            | 説明                                                      | カウント |
 |--------------------|----------------------------------------------------------------- |-------|
@@ -538,7 +531,7 @@ validate 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可�
 | password      | Cloudant アカウントのパスワード。	          | いいえ	     | 対話式に照会     |
 | dbName        | Cloudant データベースの名前。**重要:** このデータベース名は小文字で開始し、小文字 (a から z)、数字 (0 から 9)、文字 _、$、および - のみを含んでいる必要があります。                                | いいえ       | mfp_push_db               |
 
-## {{site.data.keys.mf_server }} プッシュ・サービスのインストールに関する Ant タスク
+## {{ site.data.keys.mf_server }} プッシュ・サービスのインストールに関する Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-server-push-service }
 **installmobilefirstpush**、**updatemobilefirstpush**、および **uninstallmobilefirstpush** の各 Ant タスクが、プッシュ・サービスのインストール用に用意されています。
 
@@ -546,15 +539,22 @@ validate 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可�
 {: #task-effects-1 }
 #### installmobilefirstpush
 {: #installmobilefirstpush }
-**installmobilefirstpush** Ant タスクは、プッシュ・サービス WAR ファイルを Web アプリケーションとして実行するようにアプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。**/imfpush** コンテキスト・ルートで、プッシュ・サービス Web アプリケーションを宣言します。コンテキスト・ルートは変更できません。リレーショナル・データベースの場合、データ・ソースを宣言し、WebSphere Application Server フル・プロファイルではプッシュ・サービスの JDBC プロバイダーを宣言します。JNDI 環境項目を使用してプッシュ・サービスの構成プロパティーが構成されます。これらの JNDI 環境項目は、{{site.data.keys.product_adj }} 許可サーバーおよび {{site.data.keys.mf_analytics }} との、また Cloudant の使用時には Cloudant との OAuth 通信を構成します。
+**installmobilefirstpush** Ant タスクは、プッシュ・サービス WAR ファイルを Web アプリケーションとして実行するようにアプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。**/imfpush** コンテキスト・ルートで、プッシュ・サービス Web アプリケーションを宣言します。コンテキスト・ルートは変更できません。
+リレーショナル・データベースの場合、データ・ソースを宣言し、WebSphere Application Server フル・プロファイルではプッシュ・サービスの JDBC プロバイダーを宣言します。
+JNDI 環境項目を使用してプッシュ・サービスの構成プロパティーが構成されます。
+これらの JNDI 環境項目は、{{ site.data.keys.product_adj }} 許可サーバーおよび {{ site.data.keys.mf_analytics }} との、また Cloudant の使用時には Cloudant との OAuth 通信を構成します。
 
 #### updatemobilefirstpush
 {: #updatemobilefirstpush }
-**updatemobilefirstpush** Ant タスクは、アプリケーション・サーバー上の構成済み {{site.data.keys.mf_server }} Web アプリケーションを更新します。このタスクにより、プッシュ・サービスの WAR ファイルが更新されます。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。
+**updatemobilefirstpush** Ant タスクは、アプリケーション・サーバー上の構成済み {{ site.data.keys.mf_server }} Web アプリケーションを更新します。このタスクにより、プッシュ・サービスの WAR ファイルが更新されます。このファイルは、以前にデプロイされた、対応する WAR ファイルと同じベース名を持っている必要があります。
 
 #### uninstallmobilefirstpush
 {: #uninstallmobilefirstpush }
-**uninstallmobilefirstpush** Ant タスクは、**installmobilefirstpush** の以前の実行の結果を元に戻します。このタスクは以下のような結果をもたらします。指定されたコンテキスト・ルートを持つプッシュ・サービス Web アプリケーションの構成が削除されます。その結果、このタスクは、そのアプリケーションに手動で追加された設定も削除します。アプリケーション・サーバーからプッシュ・サービスの WAR ファイルを削除します (オプション)。リレーショナル DBMS の場合、データ・ソースを削除し、WebSphere Application Server フル・プロファイルではプッシュ・サービスの JDBC プロバイダーを削除します。関連する JNDI 環境項目が削除されます。
+**uninstallmobilefirstpush** Ant タスクは、**installmobilefirstpush** の以前の実行の結果を元に戻します。このタスクは以下のような結果をもたらします。
+指定されたコンテキスト・ルートを持つプッシュ・サービス Web アプリケーションの構成が削除されます。その結果、このタスクは、そのアプリケーションに手動で追加された設定も削除します。
+アプリケーション・サーバーからプッシュ・サービスの WAR ファイルを削除します (オプション)。
+リレーショナル DBMS の場合、データ・ソースを削除し、WebSphere Application Server フル・プロファイルではプッシュ・サービスの JDBC プロバイダーを削除します。
+関連する JNDI 環境項目が削除されます。
 
 ### 属性およびエレメント
 {: #attributes-and-elements-1 }
@@ -562,7 +562,8 @@ validate 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可�
 
 | 属性 | 説明                           | 必要 | デフォルト     | 
 |-----------|---------------------------------------|----------|-------------|
-| id        | さまざまなデプロイメントを区別する。	| いいえ	   | 空| warFile	| プッシュ・サービスの WAR ファイル	| いいえ	   | ../PushService/mfp-push-service.war ファイルは、mfp-ant-deployer.jar ファイルを含む MobileFirstServer ディレクトリーに対して相対です。 |
+| id        | さまざまなデプロイメントを区別する。	| いいえ	   | 空
+| warFile	| プッシュ・サービスの WAR ファイル	| いいえ	   | ../PushService/mfp-push-service.war ファイルは、mfp-ant-deployer.jar ファイルを含む MobileFirstServer ディレクトリーに対して相対です。 |
 
 ### id
 {: #id }
@@ -572,20 +573,19 @@ validate 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可�
 {: #warfile }
 **warFile** 属性を使用して、プッシュ・サービス WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
 
-**installmobilefirstpush**、**updatemobilefirstpush**、および
-**uninstallmobilefirstpush** の各 Ant タスクでは、以下のエレメントがサポートされます。
+**installmobilefirstpush**、**updatemobilefirstpush**、および **uninstallmobilefirstpush** の各 Ant タスクでは、以下のエレメントがサポートされます。
 
 | エレメント               | 説明             | カウント |
 |-----------------------|-------------------------|-------|
 | `<applicationserver>` | アプリケーション・サーバー。 | 1     |
 | `<analytics>`	        | 分析。	      | 0..1  | 
-| `<authorization>`	    | 他の {{site.data.keys.mf_server }} コンポーネントとの通信を認証するための許可サーバー。 | 1 |
+| `<authorization>`	    | 他の {{ site.data.keys.mf_server }} コンポーネントとの通信を認証するための許可サーバー。 | 1 |
 | `<database>`	        | データベース。	      | 1     |
 | `<property>`	        | プロパティー。	      | 0..∞  | 
 
 ### 許可サーバーを指定するには
 {: #to-specify-the-authorization-server }
-`<authorization>` エレメントは、他の {{site.data.keys.mf_server }} コンポーネントとの認証通信用の許可サーバーを構成するための情報を収集します。このエレメントには以下の属性があります。
+`<authorization>` エレメントは、他の {{ site.data.keys.mf_server }} コンポーネントとの認証通信用の許可サーバーを構成するための情報を収集します。このエレメントには以下の属性があります。
 
 | 属性          | 説明                           | 必要 | デフォルト     | 
 |--------------------|---------------------------------------|----------|-------------|
@@ -601,23 +601,20 @@ validate 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可�
 
 #### authorizationURL
 {: #authorizationurl }
-許可サーバーの URL。許可サーバーが {{site.data.keys.product_adj }} ランタイムの場合、この URL はランタイムの URL です。例えば、`http://myHost:9080/mfp` などです。
+許可サーバーの URL。許可サーバーが {{ site.data.keys.product_adj }} ランタイムの場合、この URL はランタイムの URL です。例えば、`http://myHost:9080/mfp` などです。
 
 #### runtimeContextRoot
 {: #runtimecontextroot }
 自動モードで許可サーバーの URL を計算するために使用されるランタイムのコンテキスト・ルート。
 #### pushClientID
 {: #pushclientid }
-許可サーバーの機密クライアントとしての、このプッシュ・サービス・インスタンスの ID。この ID と秘密鍵は、許可サーバー用に登録されている必要があります。登録は、
-**installmobilefirstadmin** Ant タスクによって、もしくは {{site.data.keys.mf_console }} から行えます。
+許可サーバーの機密クライアントとしての、このプッシュ・サービス・インスタンスの ID。この ID と秘密鍵は、許可サーバー用に登録されている必要があります。登録は、**installmobilefirstadmin** Ant タスクによって、もしくは {{ site.data.keys.mf_console }} から行えます。
 
 #### pushClientSecret
 {: #pushclientsecret }
-許可サーバーの機密クライアントとしての、このプッシュ・サービス・インスタンスの秘密鍵。この ID と秘密鍵は、許可サーバー用に登録されている必要があります。登録は、
-**installmobilefirstadmin** Ant タスクによって、もしくは {{site.data.keys.mf_console }} から行えます。
+許可サーバーの機密クライアントとしての、このプッシュ・サービス・インスタンスの秘密鍵。この ID と秘密鍵は、許可サーバー用に登録されている必要があります。登録は、**installmobilefirstadmin** Ant タスクによって、もしくは {{ site.data.keys.mf_console }} から行えます。
 
-`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。
-これには、以下の属性があります。
+`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。これには、以下の属性があります。
 
 | 属性  | 説明                | 必要 | デフォルト | 
 |------------|----------------------------|----------|---------|
@@ -626,7 +623,7 @@ validate 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可�
 
 このエレメントを使用して、独自の JNDI プロパティーを定義したり、プッシュ・サービス WAR ファイルによって提供されている JNDI プロパティーのデフォルト値をオーバーライドしたりすることができます。
 
-JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
+JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} プッシュ・サービスの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)を参照してください。
 
 ### アプリケーション・サーバーを指定するには
 {: #to-specify-an-application-server-2 }
@@ -637,7 +634,7 @@ JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }}
 | <websphereapplicationserver> または <was>	| WebSphere Application Server のパラメーター。 | `<websphereapplicationserver>` エレメント (短縮形では `<was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。 | 0..1 |
 | `<tomcat>` | Apache Tomcat のパラメーター。 | 0..1 |
 
-これらのエレメントの属性および内部エレメントについては、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。
+これらのエレメントの属性および内部エレメントについては、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。
 
 ただし、Liberty 集合の `<was>` エレメントの内部エレメントについては、以下の表を参照してください。
 
@@ -652,39 +649,40 @@ JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }}
 | serverName  | 集合メンバーの名前。 | はい      | なし    |
 | clusterName |	集合メンバーが所属しているクラスター名。 | はい | なし |
 
-> **注:** プッシュ・サービスとランタイム・コンポーネントが同じ集合メンバーにインストールされている場合、それらのクラスター名は同じでなければなりません。これらのコンポーネントが、同じ集合の別々のメンバーにインストールされている場合、
-クラスター名は異なっていてもかまいません。### Analytics の指定
+> **注:** プッシュ・サービスとランタイム・コンポーネントが同じ集合メンバーにインストールされている場合、それらのクラスター名は同じでなければなりません。これらのコンポーネントが、同じ集合の別々のメンバーにインストールされている場合、クラスター名は異なっていてもかまいません。
+
+### Analytics の指定
 {: #to-specify-analytics-1 }
-`<analytics>` エレメントは、既にインストールされている {{site.data.keys.mf_analytics }} サービスに {{site.data.keys.product_adj }} プッシュ・サービスを接続することを指示します。これには、以下の属性があります。
+`<analytics>` エレメントは、既にインストールされている {{ site.data.keys.mf_analytics }} サービスに {{ site.data.keys.product_adj }} プッシュ・サービスを接続することを指示します。これには、以下の属性があります。
 
 | 属性    | 説明                        | 必要 | デフォルト | 
 |--------------|------------------------------------|----------|---------|
-| install	   | プッシュ・サービスを {{site.data.keys.mf_analytics }} に接続するかどうかを示します。 | いいえ | false | 
-| analyticsURL | {{site.data.keys.mf_analytics }} サービスの URL。 | はい | なし | 
+| install	   | プッシュ・サービスを {{ site.data.keys.mf_analytics }} に接続するかどうかを示します。 | いいえ | false | 
+| analyticsURL | {{ site.data.keys.mf_analytics }} サービスの URL。 | はい | なし | 
 | username	   | ユーザー名。 | はい | なし | 
 | password	   | パスワード。 | はい | なし | 
-| validate	   | {{site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。 | いいえ | true | 
+| validate	   | {{ site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。 | いいえ | true | 
 
 #### install
 {: #install }
-**install** 属性は、このプッシュ・サービスが接続され、イベントを {{site.data.keys.mf_analytics }} に送信する必要があることを指示するために使用します。有効な値は true または false です。
+**install** 属性は、このプッシュ・サービスが接続され、イベントを {{ site.data.keys.mf_analytics }} に送信する必要があることを指示するために使用します。有効な値は true または false です。
 
 #### analyticsURL
 {: #analyticsurl }
-**analyticsURL** 属性は、着信分析データを受信する {{site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
+**analyticsURL** 属性は、着信分析データを受信する {{ site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
 例えば、`http://<hostname>:<port>/analytics-service/rest` などです。
 
 #### username
 {: #username }
-**username** 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名を指定するために使用します。
+**username** 属性は、{{ site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名を指定するために使用します。
 
 #### password
 {: #password }
-**password** 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるパスワードを指定するために使用します。
+**password** 属性は、{{ site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるパスワードを指定するために使用します。
 
 #### validate
 {: #validate }
-**validate** 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可能かどうかを検証するため、およびパスワードでのユーザー名認証を検査するために使用します。指定可能な値は true または false です。
+**validate** 属性は、{{ site.data.keys.mf_analytics_console }}にアクセス可能かどうかを検証するため、およびパスワードでのユーザー名認証を検査するために使用します。指定可能な値は true または false です。
 
 ### プッシュ・サービス・データベースへの接続の指定
 {: #to-specify-a-connection-to-the-push-service-database-1 }
@@ -699,7 +697,7 @@ JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }}
 | kind         | データベースの種類 (Push)。 | はい      | なし    |
 | validate	   | データベースがアクセス可能かどうかを検証します。 | いいえ | true |
 
-`<database>` エレメントは以下のエレメントをサポートしています。リレーショナル DBMS の場合のこれらのデータベース・エレメントの構成について詳しくは、[{{site.data.keys.product_adj }} ランタイム環境のインストール用の Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
+`<database>` エレメントは以下のエレメントをサポートしています。リレーショナル DBMS の場合のこれらのデータベース・エレメントの構成について詳しくは、[{{ site.data.keys.product_adj }} ランタイム環境のインストール用の Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
 
 | エレメント              | 説明                               | カウント |
 |----------------------|-------------------------------------------|-------|
@@ -719,7 +717,7 @@ JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }}
 | password	   | Cloudant アカウントのパスワード。	| いいえ  | 対話式に照会 |
 | dbName	   | Cloudant データベースの名前。**重要:** このデータベース名は小文字で開始し、小文字 (a から z)、数字 (0 から 9)、文字 _、$、および - のみを含んでいる必要があります。 |いいえ	| mfp_push_db |
 
-## {{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク
+## {{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-runtime-environments }
 **installmobilefirstruntime**、**updatemobilefirstruntime**、および **uninstallmobilefirstruntime** の各 Ant タスクに関する参照情報を示します。
 
@@ -728,25 +726,24 @@ JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }}
 
 #### installmobilefirstruntime
 {: #installmobilefirstruntime }
-**installmobilefirstruntime** Ant タスクは、{{site.data.keys.product_adj }} ランタイム WAR ファイルを Web アプリケーションとして実行するようにアプリケーション・サーバーを構成します。このタスクの結果は以下のとおりです。
+**installmobilefirstruntime** Ant タスクは、{{ site.data.keys.product_adj }} ランタイム WAR ファイルを Web アプリケーションとして実行するようにアプリケーション・サーバーを構成します。このタスクの結果は以下のとおりです。
 
-* {{site.data.keys.product_adj }} Web アプリケーションを、指定されたコンテキスト・ルート (デフォルトでは /mfp) の中で宣言します。
+* {{ site.data.keys.product_adj }} Web アプリケーションを、指定されたコンテキスト・ルート (デフォルトでは /mfp) の中で宣言します。
 * ランタイム WAR ファイルをアプリケーション・サーバーにデプロイします。
 * データ・ソースおよび (WebSphere Application Server フル・プロファイルにおける) ランタイム用の JDBC プロバイダーを宣言します。
 * アプリケーション・サーバーにデータベース・ドライバーがデプロイされます。
-* JNDI 環境項目を使用して、{{site.data.keys.product_adj }} 構成プロパティーを設定します。
-* オプションで、{{site.data.keys.product_adj }} JNDI 環境項目を設定して、ランタイム用にアプリケーション・サーバーをサーバー・ファーム・メンバーとして構成します。
+* JNDI 環境項目を使用して、{{ site.data.keys.product_adj }} 構成プロパティーを設定します。
+* オプションで、{{ site.data.keys.product_adj }} JNDI 環境項目を設定して、ランタイム用にアプリケーション・サーバーをサーバー・ファーム・メンバーとして構成します。
 
 #### updatemobilefirstruntime
 {: #updatemobilefirstruntime }
-**updatemobilefirstruntime** Ant タスクは、既にアプリケーション・サーバー上に構成されている {{site.data.keys.product_adj }} ランタイムを更新します。このタスクは、ランタイム WAR ファイルを更新します。このファイルは、以前にデプロイされたランタイム WAR ファイルと同じベース名を持つ必要があります。これを除き、このタスクはアプリケーション・サーバー構成 (Web アプリケーション構成、データ・ソース、および JNDI 環境項目) を変更しません。
+**updatemobilefirstruntime** Ant タスクは、既にアプリケーション・サーバー上に構成されている {{ site.data.keys.product_adj }} ランタイムを更新します。このタスクは、ランタイム WAR ファイルを更新します。このファイルは、以前にデプロイされたランタイム WAR ファイルと同じベース名を持つ必要があります。これを除き、このタスクはアプリケーション・サーバー構成 (Web アプリケーション構成、データ・ソース、および JNDI 環境項目) を変更しません。
 
 #### uninstallmobilefirstruntime
 {: #uninstallmobilefirstruntime }
-**uninstallmobilefirstruntime** Ant タスクは、以前の **installmobilefirstruntime** 実行の結果を元に戻します。
-このタスクの結果は以下のとおりです。
+**uninstallmobilefirstruntime** Ant タスクは、以前の **installmobilefirstruntime** 実行の結果を元に戻します。このタスクの結果は以下のとおりです。
 
-* 指定されたコンテキスト・ルートを持つ {{site.data.keys.product_adj }} Web アプリケーションの構成が削除されます。このタスクは、そのアプリケーションに手動で追加された設定も削除します。
+* 指定されたコンテキスト・ルートを持つ {{ site.data.keys.product_adj }} Web アプリケーションの構成が削除されます。このタスクは、そのアプリケーションに手動で追加された設定も削除します。
 * アプリケーション・サーバーからランタイム WAR ファイルを削除します。
 * データ・ソースおよび (WebSphere Application Server フル・プロファイルにおける) ランタイム用の JDBC プロバイダーを削除します。
 * 関連する JNDI 環境項目が削除されます。
@@ -759,28 +756,27 @@ JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }}
 |-------------------|-----------------------------------------------------------------------------|------------|---------------------------|
 | contextroot       | アプリケーションの URL の共通接頭部 (コンテキスト・ルート)                | いいえ | /mfp  |
 | id	            | さまざまなデプロイメントを区別する。                                       | いいえ | 空 |
-| environmentId	    | さまざまな {{site.data.keys.product_adj }} 環境を区別する。                          | いいえ | 空 |
-| warFile	        | {{site.data.keys.product_adj }} ランタイムの WAR ファイル。                                       | いいえ | mfp-server.war ファイルは、mfp-ant-deployer.jar file と同じディレクトリー内にあります。 |
+| environmentId	    | さまざまな {{ site.data.keys.product_adj }} 環境を区別する。                          | いいえ | 空 |
+| warFile	        | {{ site.data.keys.product_adj }} ランタイムの WAR ファイル。                                       | いいえ | mfp-server.war ファイルは、mfp-ant-deployer.jar file と同じディレクトリー内にあります。 |
 | wasStartingWeight | WebSphere Application Server の開始順序。低い値から先に開始されます。 | いいえ | 2     |                           | 
 
 #### contextroot および id
 {: #contextroot-and-id-1 }
-**contextroot** および **id** 属性は、さまざまな {{site.data.keys.product_adj }} プロジェクトを区別します。
+**contextroot** および **id** 属性は、さまざまな {{ site.data.keys.product_adj }} プロジェクトを区別します。
 
 WebSphere Application Server Liberty プロファイルおよび Tomcat の環境では、この目的には contextroot パラメーターで十分です。WebSphere Application Server フル・プロファイル環境では、id 属性が代わりに使用されます。
 
 #### environmentId
 {: #environmentid-1 }
-**environmentId** 属性を使用して、独立して作動しなければならない、{{site.data.keys.mf_server }} 管理サービスおよび {{site.data.keys.product_adj }} ランタイム Web アプリケーションのそれぞれから構成される、複数の環境を区別します。管理サービス・アプリケーションの場合、
-この属性には、<installmobilefirstadmin> 呼び出しで設定されたものと同じランタイム・アプリケーションの値を設定する必要があります。
+**environmentId** 属性を使用して、独立して作動しなければならない、{{ site.data.keys.mf_server }} 管理サービスおよび {{ site.data.keys.product_adj }} ランタイム Web アプリケーションのそれぞれから構成される、複数の環境を区別します。管理サービス・アプリケーションの場合、この属性には、<installmobilefirstadmin> 呼び出しで設定されたものと同じランタイム・アプリケーションの値を設定する必要があります。
 
 #### warFile
 {: #warfile-1 }
-**warFile** 属性を使用して、{{site.data.keys.product_adj }} ランタイム WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
+**warFile** 属性を使用して、{{ site.data.keys.product_adj }} ランタイム WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
 
 #### wasStartingWeight
 {: #wasstartingweight-1 }
-**wasStartingWeight** 属性を使用して、開始順序が順守されることを確実にするためのウェイトとして WebSphere Application Server で使用される値を指定します。この開始順序の値の結果、{{site.data.keys.mf_server }} 管理サービス Web アプリケーションは、他のどの {{site.data.keys.product_adj }} ランタイム・プロジェクトよりも前にデプロイされて開始されます。{{site.data.keys.product_adj }} プロジェクトが Web アプリケーションよりも前にデプロイまたは開始されると、JMX 通信は確立されず、{{site.data.keys.product_adj }} プロジェクトは管理できません。
+**wasStartingWeight** 属性を使用して、開始順序が順守されることを確実にするためのウェイトとして WebSphere Application Server で使用される値を指定します。この開始順序の値の結果、{{ site.data.keys.mf_server }} 管理サービス Web アプリケーションは、他のどの {{ site.data.keys.product_adj }} ランタイム・プロジェクトよりも前にデプロイされて開始されます。{{ site.data.keys.product_adj }} プロジェクトが Web アプリケーションよりも前にデプロイまたは開始されると、JMX 通信は確立されず、{{ site.data.keys.product_adj }} プロジェクトは管理できません。
 
 **installmobilefirstruntime**、**updatemobilefirstruntime**、および **uninstallmobilefirstruntime** の各タスクでは、以下のエレメントがサポートされます。
 
@@ -791,15 +787,14 @@ WebSphere Application Server Liberty プロファイルおよび Tomcat の環�
 | `<database>`          | データベース。                                   | 1     |
 | `<analytics>`         | 分析。                                   | 0..1  |
 
-`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。
-これには、以下の属性があります。
+`<property>` エレメントは、アプリケーション・サーバーに定義するデプロイメント・プロパティーを指定します。これには、以下の属性があります。
 
 | 属性 | 説明                | 必要 | デフォルト | 
 |-----------|----------------------------|----------|---------|
 | 名前      | プロパティーの名前。	 | はい      | なし    |
 | value	    | プロパティーの値。| はい	    | なし    |  
 
-`<applicationserver>` エレメントは、{{site.data.keys.product_adj }} アプリケーションのデプロイ先のアプリケーション・サーバーを記述します。これは、以下のエレメントの 1 つに対するコンテナーです。
+`<applicationserver>` エレメントは、{{ site.data.keys.product_adj }} アプリケーションのデプロイ先のアプリケーション・サーバーを記述します。これは、以下のエレメントの 1 つに対するコンテナーです。
 
 | エレメント                                    | 説明                                      | カウント |
 |--------------------------------------------|--------------------------------------------------|-------|
@@ -817,7 +812,7 @@ WebSphere Application Server Liberty プロファイルおよび Tomcat の環�
 | libertyEncoding |	WebSphere Application Server Liberty のデータ・ソース・パスワードをエンコードするアルゴリズム。指定可能な値は none、xor、および aes です。xor エンコードが使用されているか aes エンコードが使用されているかに関係なく、外部プロセスによって呼び出される securityUtility プログラムにクリア・パスワードが引数として渡されます。このパスワードは ps コマンドにより確認できます。また、UNIX オペレーティング・システム上では /proc ファイル・システム内で確認できます。                                                         | いいえ                       |	xor     |
 | jeeVersion      |	Liberty プロファイル用。JEE6 Web プロファイルまたは JEE7 Web プロファイルのフィーチャーをインストールするかどうかを指定する。指定可能な値は、6、7、または auto。| いいえ | auto |
 | configureFarm   |	WebSphere Application Server Liberty および WebSphere Application Server フル・プロファイル用 (WebSphere Application Server Network Deployment エディションおよび Liberty 集合用ではない)。サーバーがサーバー・ファーム・メンバーかどうかを指定します。指定可能な値は true または false です。 | いいえ	      | false   |
-| farmServerId    |	サーバー・ファーム内でサーバーを一意的に識別するストリング。そのサーバーと通信する {{site.data.keys.mf_server }} 管理サービスおよびすべての {{site.data.keys.product_adj }} ランタイムは、同じ値を共有する必要があります。                                                                | はい                      |	なし    |
+| farmServerId    |	サーバー・ファーム内でサーバーを一意的に識別するストリング。そのサーバーと通信する {{ site.data.keys.mf_server }} 管理サービスおよびすべての {{ site.data.keys.product_adj }} ランタイムは、同じ値を共有する必要があります。                                                                | はい                      |	なし    |
 
 シングル・サーバー・デプロイメントの場合、以下のエレメントがサポートされます。
 
@@ -880,20 +875,19 @@ Network Deployment コンテキストで使用される `<server>` エレメン�
 | nodeName   | ノード名。   | はい	   | なし    |
 | serverName | サーバー名。 | はい      | なし    |
 
-`<tomcat>` エレメントは Apache
-Tomcat サーバーを示します。これには、以下の属性があります。
+`<tomcat>` エレメントは Apache Tomcat サーバーを示します。これには、以下の属性があります。
 
 | 属性     | 説明      | 必要 | デフォルト | 
 |---------------|------------------|----------|---------|
 | installdir    | Apache Tomcat のインストール・ディレクトリー。CATALINA_HOME ディレクトリーと CATALINA_BASE ディレクトリーに分割されている Tomcat のインストール済み環境の場合、CATALINA_BASE 環境変数の値を指定します。     | はい | なし    | 
 | configureFarm | サーバーがサーバー・ファーム・メンバーかどうかを指定します。指定可能な値は true または false です。	| いいえ | false |
-| farmServerId	| サーバー・ファーム内でサーバーを一意的に識別するストリング。そのサーバーと通信する {{site.data.keys.mf_server }} 管理サービスおよびすべての {{site.data.keys.product_adj }} ランタイムは、同じ値を共有する必要があります。 | はい | なし |
+| farmServerId	| サーバー・ファーム内でサーバーを一意的に識別するストリング。そのサーバーと通信する {{ site.data.keys.mf_server }} 管理サービスおよびすべての {{ site.data.keys.product_adj }} ランタイムは、同じ値を共有する必要があります。 | はい | なし |
 
 `<database>` エレメントは、特定のデータベースにアクセスするために必要な情報を指定します。`<database>` エレメントは、configuredatabase Ant タスクと同じように指定されますが、`<dba>` エレメントと `<client>` エレメントがない点は異なります。ただし、`<property>` エレメントを含めることはできます。`<database>` エレメントには以下の属性があります。
 
 | 属性 | 説明                                | 必要 | デフォルト | 
 |-----------|--------------------------------------------|----------|---------|
-| kind      | データベースの種類 ({{site.data.keys.product_adj }} ランタイム)。 | はい | なし |
+| kind      | データベースの種類 ({{ site.data.keys.product_adj }} ランタイム)。 | はい | なし |
 | validate  | データベースがアクセス可能かどうかを検証します。指定可能な値は true または false です。 | いいえ | true |
 
 `<database>` エレメントは以下のエレメントをサポートします。
@@ -906,44 +900,43 @@ Tomcat サーバーを示します。これには、以下の属性がありま�
 | `<oracle>`          |	Oracle のパラメーター。  | 0..1  | 
 | `<driverclasspath>` | JDBC ドライバーのクラスパス。 | 0..1  | 
 
-`<analytics>` エレメントは、既にインストールされている {{site.data.keys.mf_analytics_console }} およびサービスに {{site.data.keys.product_adj }} ランタイムを接続することを指示します。これには、以下の属性があります。
+`<analytics>` エレメントは、既にインストールされている {{ site.data.keys.mf_analytics_console }} およびサービスに {{ site.data.keys.product_adj }} ランタイムを接続することを指示します。これには、以下の属性があります。
 
 | 属性    | 説明                                                                      | 必要 | デフォルト | 
 |--------------|----------------------------------------------------------------------------------|----------|---------|
-| install      | {{site.data.keys.product_adj }} ランタイムを {{site.data.keys.mf_analytics }} に接続するかどうかを示す。 | いいえ       | false   |
-| analyticsURL | {{site.data.keys.mf_analytics }} サービスの URL。	                                      | はい      | なし    |
-| consoleURL   | {{site.data.keys.mf_analytics_console }} の URL。	                                      | はい      | なし    |
+| install      | {{ site.data.keys.product_adj }} ランタイムを {{ site.data.keys.mf_analytics }} に接続するかどうかを示す。 | いいえ       | false   |
+| analyticsURL | {{ site.data.keys.mf_analytics }} サービスの URL。	                                      | はい      | なし    |
+| consoleURL   | {{ site.data.keys.mf_analytics_console }} の URL。	                                      | はい      | なし    |
 | username     | ユーザー名。	                                                                  | はい      | なし    |
 | password     | パスワード。	                                                                  | はい      | なし    |
-| validate     | {{site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。	      | いいえ	     | true    |
-| tenant       | {{site.data.keys.product_adj }} ランタイムから収集されたデータを索引付けするためのテナント。	      | いいえ       | 内部 ID |
+| validate     | {{ site.data.keys.mf_analytics_console }} がアクセス可能かどうかを検証します。	      | いいえ	     | true    |
+| tenant       | {{ site.data.keys.product_adj }} ランタイムから収集されたデータを索引付けするためのテナント。	      | いいえ       | 内部 ID |
 
 #### install
 {: #install-1 }
-**install** 属性は、この {{site.data.keys.product_adj }} ランタイムが接続され、イベントを {{site.data.keys.mf_analytics }} に送信する必要があることを指示するために使用します。
-有効な値は **true** または **false** です。
+**install** 属性は、この {{ site.data.keys.product_adj }} ランタイムが接続され、イベントを {{ site.data.keys.mf_analytics }} に送信する必要があることを指示するために使用します。有効な値は **true** または **false** です。
 
 #### analyticsURL
 {: #analyticsurl-1 }
-**analyticsURL** 属性は、着信分析データを受信する {{site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
+**analyticsURL** 属性は、着信分析データを受信する {{ site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
 例えば、`http://<hostname>:<port>/analytics-service/rest` などです。
 
 #### consoleURL
 {: #consoleurl }
-**consoleURL** 属性は、{{site.data.keys.mf_analytics_console }}にリンクされる {{site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
+**consoleURL** 属性は、{{ site.data.keys.mf_analytics_console }}にリンクされる {{ site.data.keys.mf_analytics }} によって公開される URL を指定するために使用します。  
 例えば、`http://<hostname>:<port>/analytics/console` などです。
 
 #### username
 {: #username-1 }
-**username** 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名を指定するために使用します。
+**username** 属性は、{{ site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名を指定するために使用します。
 
 #### password
 {: #password-1 }
-**password** 属性は、{{site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるパスワードを指定するために使用します。
+**password** 属性は、{{ site.data.keys.mf_analytics }} のデータ・エントリー・ポイントが基本認証で保護されている場合に使用されるパスワードを指定するために使用します。
 
 #### validate
 {: #validate-1 }
-**validate** 属性は、{{site.data.keys.mf_analytics_console }}にアクセス可能かどうかを検証するため、およびパスワードでのユーザー名認証を検査するために使用します。指定可能な値は **true** または **false** です。
+**validate** 属性は、{{ site.data.keys.mf_analytics_console }}にアクセス可能かどうかを検証するため、およびパスワードでのユーザー名認証を検査するために使用します。指定可能な値は **true** または **false** です。
 
 #### tenant
 {: #tenant }
@@ -969,7 +962,7 @@ Tomcat サーバーを示します。これには、以下の属性がありま�
 
 Liberty サーバーで使用可能なプロパティーについて詳しくは、`properties.derby.embedded` の資料 ([Liberty プロファイル: server.xml ファイルの構成エレメント](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html)) を参照してください。
 
-**mfp-ant-deployer.jar** ファイルが {{site.data.keys.product }} のインストール・ディレクトリー内で使用されている場合には、`<driverclasspath>` エレメントは不要です。
+**mfp-ant-deployer.jar** ファイルが {{ site.data.keys.product }} のインストール・ディレクトリー内で使用されている場合には、`<driverclasspath>` エレメントは不要です。
 
 ### DB2 データベースを指定するには
 {: #to-specify-a-db2-database }
@@ -1047,17 +1040,17 @@ Liberty サーバーで使用可能なプロパティーについて詳しくは
 
 **database**、**server**、および **port** の代わりに、URL を指定することもできます。この場合、以下の属性を使用します。
 
-
 | 属性  | 説明                                | 必要 | デフォルト | 
 |------------|--------------------------------------------|----------|---------|
 | url	     | データベースへの接続の URL。	  | はい      | なし    |
 | user	     | データベースにアクセスするユーザー名。このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、データベースのユーザーおよび特権にリストされている、制限された特権を持つユーザーを設定できます。この表の下の注を参照してください。 | はい | なし |
 | password	 | データベースにアクセスするパスワード。	  | いいえ	     | 対話式に照会 |
 
-> **注:** **user** 属性については、大文字のユーザー名を使用することをお勧めします。Oracle のユーザー名は、一般的に大文字で表されます。他のデータベース・ツールとは異なり、**installmobilefirstruntime** Ant タスクは、ユーザー名に含まれる小文字を大文字に変換しません。**installmobilefirstruntime** Ant タスクがデータベースへの接続に失敗した場合には、**user** 属性の値を大文字で入力してみてください。Oracle ユーザー・アカウントについて詳しくは、[Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374) を参照してください。
+> **注:** **user** 属性については、大文字のユーザー名を使用することをお勧めします。Oracle のユーザー名は、一般的に大文字で表されます。他のデータベース・ツールとは異なり、**installmobilefirstruntime** Ant タスクは、ユーザー名に含まれる小文字を大文字に変換しません。**installmobilefirstruntime** Ant タスクがデータベースへの接続に失敗した場合には、**user** 属性の値を大文字で入力してみてください。
 
-Oracle データベースの接続 URL について詳しくは、[Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm) の『**Database
-URLs and Database Specifiers**』セクションを参照してください。
+Oracle ユーザー・アカウントについて詳しくは、[Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374) を参照してください。
+
+Oracle データベースの接続 URL について詳しくは、[Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm) の『**Database URLs and Database Specifiers**』セクションを参照してください。
 
 以下のエレメントがサポートされます。
 
@@ -1148,7 +1141,7 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 
 #### aaptDir
 {: #aaptdir }
-**aapt** プログラムは、{{site.data.keys.product }} ディストリビューション (**product_install_dir/ApplicationCenter/tools/android-sdk**) の一部です。  
+**aapt** プログラムは、{{ site.data.keys.product }} ディストリビューション (**product_install_dir/ApplicationCenter/tools/android-sdk**) の一部です。  
 この属性が設定されていない場合、apk アプリケーションのアップロード時に、Application Center は独自のコードを使用してこれを解析しますが、限界がある場合があります。
 
 `<installApplicationCenter>`、`<updateApplicationCenter>`、および `<uninstallApplicationCenter>` の各タスクは、以下のエレメントをサポートします。
@@ -1177,7 +1170,7 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 | **websphereapplicationserver** または **was**	| WebSphere Application Server のパラメーター。`<websphereapplicationserver>` エレメント (短縮形では `<was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core もサポートされます。Application Center には Liberty 集合はサポートされません。 | 0..1 | 
 | tomcat            | Apache Tomcat のパラメーター。 | 0..1 |
 
-これらのエレメントの属性および内部エレメントについては、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) ページの表に説明があります。
+これらのエレメントの属性および内部エレメントについては、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) ページの表に説明があります。
 
 ### サービス・データベースへの接続を指定するには
 {: #to-specify-a-connection-to-the-services-database }
@@ -1192,7 +1185,7 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 | kind         | データベースの種類 (ApplicationCenter)。              | はい      | なし    |
 | validate	   | データベースがアクセス可能かどうかを検証します。 | いいえ       | True    |
 
-`<database>` エレメントは以下のエレメントをサポートしています。これらのデータベース・エレメントの構成について詳しくは、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
+`<database>` エレメントは以下のエレメントをサポートしています。これらのデータベース・エレメントの構成について詳しくは、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)の表を参照してください。
 
 | エレメント           | 説明	                            | カウント | 
 |-------------------|-------------------------------------------|-------|
@@ -1212,38 +1205,38 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 | 名前	       | ユーザー名。 | はい | なし |
 | password	   | パスワード (ユーザーを作成する必要がある場合)。	| いいえ | なし |
 
-## {{site.data.keys.mf_analytics }} のインストール用の Ant タスク
+## {{ site.data.keys.mf_analytics }} のインストール用の Ant タスク
 {: #ant-tasks-for-installation-of-mobilefirst-analytics }
-**installanalytics**、**updateanalytics**、および **uninstallanalytics** の各 Ant タスクが、{{site.data.keys.mf_analytics }} のインストール用に用意されています。
+**installanalytics**、**updateanalytics**、および **uninstallanalytics** の各 Ant タスクが、{{ site.data.keys.mf_analytics }} のインストール用に用意されています。
 
-これらの Ant タスクの目的は、アプリケーション・サーバーでのデータの適切なストレージを使用して、{{site.data.keys.mf_analytics_console }}および {{site.data.keys.mf_analytics }} サービスを構成することです。タスクは、マスターおよびデータとして機能する {{site.data.keys.mf_analytics }} ノードをインストールします。詳しくは、[クラスター管理および Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch) を参照してください。
+これらの Ant タスクの目的は、アプリケーション・サーバーでのデータの適切なストレージを使用して、{{ site.data.keys.mf_analytics_console }}および {{ site.data.keys.mf_analytics }} サービスを構成することです。
+タスクは、マスターおよびデータとして機能する {{ site.data.keys.mf_analytics }} ノードをインストールします。詳しくは、[クラスター管理および Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch) を参照してください。
 
 ### タスクの結果
 {: #task-effects-4 }
 #### installanalytics
 {: #installanalytics }
-**installanalytics** Ant タスクは、IBM {{site.data.keys.mf_analytics }} を実行するようアプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。
+**installanalytics** Ant タスクは、IBM {{ site.data.keys.mf_analytics }} を実行するようアプリケーション・サーバーを構成します。このタスクは以下のような結果をもたらします。
 
-* アプリケーション・サーバーで {{site.data.keys.mf_analytics }} サービスおよび {{site.data.keys.mf_analytics_console }}の WAR ファイルをデプロイします。
-* 指定コンテキスト・ルート /analytics-service で {{site.data.keys.mf_analytics }} サービスの Web アプリケーションを宣言します。
-* 指定コンテキスト・ルート /analytics で {{site.data.keys.mf_analytics_console }}の Web アプリケーションを宣言します。
-* JNDI 環境項目を使用して {{site.data.keys.mf_analytics_console }}および {{site.data.keys.mf_analytics }} サービスの構成プロパティーを設定します。
+* アプリケーション・サーバーで {{ site.data.keys.mf_analytics }} サービスおよび {{ site.data.keys.mf_analytics_console }}の WAR ファイルをデプロイします。
+* 指定コンテキスト・ルート /analytics-service で {{ site.data.keys.mf_analytics }} サービスの Web アプリケーションを宣言します。
+* 指定コンテキスト・ルート /analytics で {{ site.data.keys.mf_analytics_console }}の Web アプリケーションを宣言します。
+* JNDI 環境項目を使用して {{ site.data.keys.mf_analytics_console }}および {{ site.data.keys.mf_analytics }} サービスの構成プロパティーを設定します。
 * WebSphere Application Server Liberty プロファイルでは、Web コンテナーを構成します。
-* オプションとして、{{site.data.keys.mf_analytics_console }}を使用するユーザーを作成します。
+* オプションとして、{{ site.data.keys.mf_analytics_console }}を使用するユーザーを作成します。
 
 #### updateanalytics
 {: #updateanalytics }
-**updateanalytics** Ant タスクは、アプリケーション・サーバーで既に構成されている {{site.data.keys.mf_analytics }} サービスおよび {{site.data.keys.mf_analytics_console }}の Web アプリケーションの WAR ファイルを更新します。これらのファイルのベース名は、以前にデプロイされたプロジェクト WAR ファイルと同じでなければなりません。
+**updateanalytics** Ant タスクは、アプリケーション・サーバーで既に構成されている {{ site.data.keys.mf_analytics }} サービスおよび {{ site.data.keys.mf_analytics_console }}の Web アプリケーションの WAR ファイルを更新します。これらのファイルのベース名は、以前にデプロイされたプロジェクト WAR ファイルと同じでなければなりません。
 
 このタスクは、アプリケーション・サーバー構成、すなわち Web アプリケーション構成および JNDI 環境項目を変更しません。
 
 #### uninstallanalytics
 {: #uninstallanalytics }
-**uninstallanalytics** Ant タスクは、以前の **installanalytics** 実行の結果を元に戻します。
-このタスクは以下のような結果をもたらします。
+**uninstallanalytics** Ant タスクは、以前の **installanalytics** 実行の結果を元に戻します。このタスクは以下のような結果をもたらします。
 
-* {{site.data.keys.mf_analytics }} サービスと {{site.data.keys.mf_analytics_console }}の両 Web アプリケーションを、それぞれのコンテキスト・ルートと共に削除します。
-* アプリケーション・サーバーから {{site.data.keys.mf_analytics }} サービスおよび {{site.data.keys.mf_analytics_console }}の WAR ファイルを削除します。
+* {{ site.data.keys.mf_analytics }} サービスと {{ site.data.keys.mf_analytics_console }}の両 Web アプリケーションを、それぞれのコンテキスト・ルートと共に削除します。
+* アプリケーション・サーバーから {{ site.data.keys.mf_analytics }} サービスおよび {{ site.data.keys.mf_analytics_console }}の WAR ファイルを削除します。
 * 関連する JNDI 環境項目が削除されます。
 
 ### 属性およびエレメント
@@ -1252,25 +1245,25 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 
 | 属性    | 説明                                            | 必要 | デフォルト | 
 |--------------|--------------------------------------------------------|----------|---------|
-| serviceWar   | {{site.data.keys.mf_analytics }} サービスの WAR ファイル     | いいえ       | analytics-service.war ファイルはディレクトリー Analytics 内にあります。 |
+| serviceWar   | {{ site.data.keys.mf_analytics }} サービスの WAR ファイル     | いいえ       | analytics-service.war ファイルはディレクトリー Analytics 内にあります。 |
 
 #### serviceWar
 {: #servicewar-2 }
-**serviceWar** 属性を使用して、{{site.data.keys.mf_analytics }} サービスの WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
+**serviceWar** 属性を使用して、{{ site.data.keys.mf_analytics }} サービスの WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
 
 `<installanalytics>`、`<updateanalytics>`、および `<uninstallanalytics>` の各タスクでは、以下のエレメントがサポートされます。
 
 | 属性         | 説明                               | 必要 | デフォルト | 
 |-------------------|-------------------------------------------|----------|---------|
-| コンソール	        | {{site.data.keys.mf_analytics }}   	                | はい	   | 1       |
+| コンソール	        | {{ site.data.keys.mf_analytics }}   	                | はい	   | 1       |
 | user	            | セキュリティー・ロールにマップされるユーザー。	| いいえ	   | 0..     |
 | storage	        | ストレージのタイプ。	                    | はい 	   | 1       |
 | applicationserver	| アプリケーション・サーバー。	                | はい	   | 1       |
 | property          | プロパティー。	                            | いいえ 	   | 0..     |
 
-### {{site.data.keys.mf_analytics_console }} を指定するには
+### {{ site.data.keys.mf_analytics_console }} を指定するには
 {: #to-specify-a-mobilefirst-analytics-console }
-`<console>` エレメントは、{{site.data.keys.mf_analytics_console }} のインストールをカスタマイズするための情報を収集します。このエレメントには以下の属性があります。
+`<console>` エレメントは、{{ site.data.keys.mf_analytics_console }} のインストールをカスタマイズするための情報を収集します。このエレメントには以下の属性があります。
 
 | 属性    | 説明                                  | 必要 | デフォルト | 
 |--------------|----------------------------------------------|----------|---------|
@@ -1279,14 +1272,14 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 
 #### warFile
 {: #warfile-2 }
-**warFile** 属性を使用して、{{site.data.keys.mf_analytics_console }}の WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
+**warFile** 属性を使用して、{{ site.data.keys.mf_analytics_console }}の WAR ファイル用に異なるディレクトリーを指定します。この WAR ファイルの名前は、絶対パスまたは相対パスを使用して指定できます。
 
 #### shortcutsDir
 {: #shortcutsdir-2 }
-**shortcutsDir** 属性は、{{site.data.keys.mf_analytics_console }} のショートカットを配置する場所を指定します。この属性を設定した場合、そのディレクトリーに以下のファイルを追加できます。
+**shortcutsDir** 属性は、{{ site.data.keys.mf_analytics_console }} のショートカットを配置する場所を指定します。この属性を設定した場合、そのディレクトリーに以下のファイルを追加できます。
 
-* **analytics-console.url**: このファイルは、Windows のショートカットです。これは、{{site.data.keys.mf_analytics_console }} をブラウザーで開きます。
-* **analytics-console.sh**: このファイルは UNIX シェル・スクリプトです。これは、{{site.data.keys.mf_analytics_console }} をブラウザーで開きます。
+* **analytics-console.url**: このファイルは、Windows のショートカットです。これは、{{ site.data.keys.mf_analytics_console }} をブラウザーで開きます。
+* **analytics-console.sh**: このファイルは UNIX シェル・スクリプトです。これは、{{ site.data.keys.mf_analytics_console }} をブラウザーで開きます。
 
 > 注: これらのショートカットには、ElasticSearch テナント・パラメーターは含まれません。
 
@@ -1315,16 +1308,16 @@ WebSphere Application Server フル・プロファイル環境では、**id** �
 | 名前	      | ユーザー名。	                              | はい      | なし    |
 | password	  | ユーザーを作成する必要がある場合のパスワード。 | いいえ       | なし    |
 
-` <user>` エレメントを使用してユーザーを定義した後、それらのユーザーを、{{site.data.keys.mf_console }} 内の以下の認証用のロールにマップすることができます。
+` <user>` エレメントを使用してユーザーを定義した後、それらのユーザーを、{{ site.data.keys.mf_console }} 内の以下の認証用のロールにマップすることができます。
 
 * **mfpmonitor**
 * **mfpoperator**
 * **mfpdeployer**
 * **mfpadmin**
 
-### {{site.data.keys.mf_analytics }} のストレージのタイプを指定するには
+### {{ site.data.keys.mf_analytics }} のストレージのタイプを指定するには
 {: #to-specify-a-type-of-storage-for-mobilefirst-analytics }
-`<storage>` エレメントは、{{site.data.keys.mf_analytics }} が収集した情報およびデータを保管するために使用する基盤ストレージ・タイプを指定します。
+`<storage>` エレメントは、{{ site.data.keys.mf_analytics }} が収集した情報およびデータを保管するために使用する基盤ストレージ・タイプを指定します。
 
 以下のエレメントがサポートされます。
 
@@ -1360,8 +1353,7 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 
 例: `hostname1:transport-port1、hostname2:transport-port2`
 
-**注:
-**
+**注:**
 
 * デフォルト値の 9600 以外の **transportPort** を指定した場合、属性 **transportPort** にもその値を設定する必要があります。デフォルトでは、属性 **mastersList** を省略した場合、サポートされるすべてのアプリケーション・サーバーでホスト名と ElasticSearch トランスポート・ポートを検出する試行が行われます。
 * ターゲット・アプリケーション・サーバーが WebSphere Application Server Network Deployment クラスターであり、かつ後からそのクラスターでサーバーを追加または削除した場合、このリストを手動で編集して ElasticSearch クラスターと同期された状態にする必要があります。
@@ -1376,7 +1368,7 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 * Apache Tomcat の場合、この場所は `${CATALINA_HOME}/bin/analyticsData` です。
 * WebSphere Application Server および WebSphere Application Server Network Deployment の場合、この場所は `${was.install.root}/profiles/<profileName>/analyticsData` です。
 
-ディレクトリー **analyticsData** およびそれに含まれるサブディレクトリーとファイルの階層は、{{site.data.keys.mf_analytics }} サービス・コンポーネントがイベントを受信したときにまだ存在しない場合、実行時に自動的に作成されます。
+ディレクトリー **analyticsData** およびそれに含まれるサブディレクトリーとファイルの階層は、{{ site.data.keys.mf_analytics }} サービス・コンポーネントがイベントを受信したときにまだ存在しない場合、実行時に自動的に作成されます。
 
 #### shards
 {: #shards }
@@ -1386,8 +1378,7 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 {: #replicaspershard }
 **replicasPerShard** 属性は、ElasticSearch クラスターでシャードごとに作成するレプリカの数を指定するために使用します。
 
-各シャードには、ゼロ個以上のレプリカを含めることができます。デフォルトでは、各シャードに 1 つのレプリカが含まれますが、レプリカの数は、{{site.data.keys.mf_analytics }} の既存の索引で動的に変更されることがあります。
-レプリカ・シャードは、当該シャードと同じノードで開始できません。
+各シャードには、ゼロ個以上のレプリカを含めることができます。デフォルトでは、各シャードに 1 つのレプリカが含まれますが、レプリカの数は、{{ site.data.keys.mf_analytics }} の既存の索引で動的に変更されることがあります。レプリカ・シャードは、当該シャードと同じノードで開始できません。
 
 #### transportPort
 {: #transportport }
@@ -1397,7 +1388,7 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 {: #to-specify-an-application-server-4 }
 `<applicationserver>` エレメントを使用して、基礎となるアプリケーション・サーバーに依存するパラメーターを定義します。`<applicationserver>` エレメントは以下のエレメントをサポートしています。
 
-**注:** このエレメントの属性および内部エレメントについては、[{{site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。
+**注:** このエレメントの属性および内部エレメントについては、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。
 
 | エレメント                                   | 説明	| カウント   | 
 |-------------------------------------------|---------------|---------|
@@ -1425,21 +1416,20 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 {: #internal-runtime-databases }
 ランタイム・データベース表、その目的、および各表に保管されるデータの概算規模について説明します。リレーショナル・データベースでは、エンティティーはデータベース表で編成されます。
 
-### {{site.data.keys.mf_server }} ランタイムによって使用されるデータベース
+### {{ site.data.keys.mf_server }} ランタイムによって使用されるデータベース
 {: #database-used-by-mobilefirst-server-runtime }
 以下の表に、ランタイム・データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
 | リレーショナル・データベースの表名 | 説明 | 概算規模 |
 |--------------------------------|-------------|--------------------|
-| LICENSE_TERMS	                 | デバイス廃棄タスクが実行されるごとにキャプチャーされる各種ライセンス・メトリックを保管します。 | 数十行。この値は、JNDI プロパティー mfp.device.decommission.when で設定された値を超えることはありません。JNDI プロパティーについて詳しくは、[{{site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)を参照してください。 | 
+| LICENSE_TERMS	                 | デバイス廃棄タスクが実行されるごとにキャプチャーされる各種ライセンス・メトリックを保管します。 | 数十行。この値は、JNDI プロパティー mfp.device.decommission.when で設定された値を超えることはありません。JNDI プロパティーについて詳しくは、[{{ site.data.keys.product_adj }} ランタイムの JNDI プロパティーのリスト](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)を参照してください。 | 
 | ADDRESSABLE_DEVICE	         | アドレス可能デバイス・メトリック (日次) を保管します。また、クラスターが開始されるたびに、1 つの項目が追加されます。	| 約 400 行。毎日、13 カ月より古い項目が削除されます。 |
 | MFP_PERSISTENT_DATA	         | デバイスに関する情報、アプリケーション、クライアントに関連付けられたユーザー、およびデバイスの状況など、OAuth サーバーに登録したクライアント・アプリケーションのインスタンスを保管します。 | デバイスおよびアプリケーションのペアごとに 1 行。 |
 | MFP_PERSISTENT_CUSTOM_ATTR	 | クライアント・アプリケーションのインスタンスに関連付けられたカスタム属性。カスタム属性は、クライアント・インスタンスごとにアプリケーションによって登録されたアプリケーション固有属性です。 | デバイスまたはアプリケーションのペアごとにゼロ行以上。 |
-| MFP_TRANSIENT_DATA	         | クライアントおよびデバイスの認証コンテキスト | デバイスとアプリケーションのペアごとに 2 行。
-デバイス・シングル・サインオンを使用している場合はデバイスごとにさらに 2 行。SSO について詳しくは、[デバイス・シングル・サインオン (SSO) の構成](../../../authentication-and-security/device-sso)を参照してください。 |
+| MFP_TRANSIENT_DATA	         | クライアントおよびデバイスの認証コンテキスト | デバイスとアプリケーションのペアごとに 2 行。デバイス・シングル・サインオンを使用している場合はデバイスごとにさらに 2 行。SSO について詳しくは、[デバイス・シングル・サインオン (SSO) の構成](../../../authentication-and-security/device-sso)を参照してください。 |
 | SERVER_VERSION	             | 製品バージョン。	| 1 行 |
 
-### {{site.data.keys.mf_server }} 管理サービスによって使用されるデータベース
+### {{ site.data.keys.mf_server }} 管理サービスによって使用されるデータベース
 {: #database-used-by-mobilefirst-server-administration-service }
 以下の表に、管理データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
@@ -1455,7 +1445,7 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 | TRANSACTIONS	                 | 内部クラスター同期表。現行のすべての管理アクションの状態を保管します。 | 数十行。 |
 | MFPADMIN_VERSION	             | 製品バージョン。	| 1 行。 |
 
-### {{site.data.keys.mf_server }} ライブ更新サービスによって使用されるデータベース
+### {{ site.data.keys.mf_server }} ライブ更新サービスによって使用されるデータベース
 {: #database-used-by-mobilefirst-server-live-update-service }
 以下の表に、ライブ更新サービス・データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
@@ -1467,7 +1457,7 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 | CS_ATTACHMENTS	             | 各構成インスタンスの添付を保管します。 | 添付ごとに 1 行。 |
 | CS_VERSION	                 | 表またはインスタンスを作成した MFP のバージョンを保管します。 | MFP のバージョンが含まれた表内の単一行。 | 
 
-### {{site.data.keys.mf_server }} プッシュ・サービスによって使用されるデータベース
+### {{ site.data.keys.mf_server }} プッシュ・サービスによって使用されるデータベース
 {: #database-used-by-mobilefirst-server-push-service }
 以下の表に、プッシュ・サービス・データベース表、その説明、およびリレーショナル・データベースでの使用方法のリストを示します。
 
@@ -1485,9 +1475,9 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 データベースについて詳しくは、[データベースのセットアップ](../databases)を参照してください。
 
 ## サンプル構成ファイル
-{{site.data.keys.product }} には、{{site.data.keys.mf_server }} をインストールするための Ant タスクの使用を開始する上で役立つ、多数のサンプル構成ファイルが用意されています。
+{{ site.data.keys.product }} には、{{ site.data.keys.mf_server }} をインストールするための Ant タスクの使用を開始する上で役立つ、多数のサンプル構成ファイルが用意されています。
 
-これらの Ant タスクの使用を開始するには、{{site.data.keys.mf_server }} ディストリビューションの **MobileFirstServer/configuration-samples/** ディレクトリー内に用意されているサンプル構成ファイルを使用して作業を行うのが最も簡単な方法です。Ant タスクを使用した {{site.data.keys.mf_server }} のインストールについて詳しくは、[Ant タスクを使用したインストール](../appserver/#installing-with-ant-tasks)を参照してください。
+これらの Ant タスクの使用を開始するには、{{ site.data.keys.mf_server }} ディストリビューションの **MobileFirstServer/configuration-samples/** ディレクトリー内に用意されているサンプル構成ファイルを使用して作業を行うのが最も簡単な方法です。Ant タスクを使用した {{ site.data.keys.mf_server }} のインストールについて詳しくは、[Ant タスクを使用したインストール](../appserver/#installing-with-ant-tasks)を参照してください。
 
 ### サンプル構成ファイルのリスト
 {: #list-of-sample-configuration-files }
@@ -1496,11 +1486,11 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 | タスク                                                     | Derby                     | DB2                     | MySQL                      | Oracle                       | 
 |----------------------------------------------------------|---------------------------|-------------------------|---------------------------|-----------------------------|
 | データベース管理者資格情報を指定したデータベースの作成 | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
-| {{site.data.keys.mf_server }} を Liberty にインストールします。	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (MySQL に関する注を参照) | configure-liberty-oracle.xml |
-| シングル・サーバーの WebSphere Application Server フル・プロファイル上への {{site.data.keys.mf_server }} のインストール |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (MySQL に関する注を参照) | configure-was-oracle.xml |
-| {{site.data.keys.mf_server }} を WebSphere Application Server Network Deployment にインストールします。(構成ファイルに関する注を参照) | configure-wasnd-cluster-derby.xml、configure-wasnd-server-derby.xml、configure-wasnd-node-derby.xml、configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml、configure-wasnd-server-db2.xml、configure-wasnd-node-db2.xml、configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (MySQL に関する注を参照)、configure-wasnd-server-mysql.xml (MySQL に関する注を参照)、configure-wasnd-node-mysql.xml (MySQL に関する注を参照)、configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml、configure-wasnd-server-oracle.xml、configure-wasnd-node-oracle.xml、configure-wasnd-cell-oracle.xml |
-| {{site.data.keys.mf_server }} を Apache Tomcat にインストールします。	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
-| {{site.data.keys.mf_server }} を Liberty 集合にインストールします。	       | 関連なし              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
+| {{ site.data.keys.mf_server }} を Liberty にインストールします。	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (MySQL に関する注を参照) | configure-liberty-oracle.xml |
+| シングル・サーバーの WebSphere Application Server フル・プロファイル上への {{ site.data.keys.mf_server }} のインストール |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (MySQL に関する注を参照) | configure-was-oracle.xml |
+| {{ site.data.keys.mf_server }} を WebSphere Application Server Network Deployment にインストールします。(構成ファイルに関する注を参照) | configure-wasnd-cluster-derby.xml、configure-wasnd-server-derby.xml、configure-wasnd-node-derby.xml、configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml、configure-wasnd-server-db2.xml、configure-wasnd-node-db2.xml、configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (MySQL に関する注を参照)、configure-wasnd-server-mysql.xml (MySQL に関する注を参照)、configure-wasnd-node-mysql.xml (MySQL に関する注を参照)、configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml、configure-wasnd-server-oracle.xml、configure-wasnd-node-oracle.xml、configure-wasnd-cell-oracle.xml |
+| {{ site.data.keys.mf_server }} を Apache Tomcat にインストールします。	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
+| {{ site.data.keys.mf_server }} を Liberty 集合にインストールします。	       | 関連なし              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
 
 **MySQL に関する注:** WebSphere Application Server Liberty プロファイルまたは WebSphere Application Server フル・プロファイルと組み合わせて使用される MySQL は、サポートされる構成には分類されません。詳しくは、WebSphere Application Server Support Statement を参照してください。IBM サポートによるフルサポートの対象となる構成の利点を活用するために、WebSphere Application Server でサポートされる IBM DB2 などのデータベースの使用を検討してください。
 
@@ -1511,11 +1501,11 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 * **node**: ノード上で稼動していてもクラスターに属していないすべてのサーバーにデプロイします。
 * **cell**: セル上のすべてのサーバーにデプロイします。
 
-## {{site.data.keys.mf_analytics }} のサンプル構成ファイル
+## {{ site.data.keys.mf_analytics }} のサンプル構成ファイル
 {: #sample-configuration-files-for-mobilefirst-analytics }
-{{site.data.keys.product }} には、{{site.data.keys.mf_analytics }} サービスおよび {{site.data.keys.mf_analytics_console }}をインストールするための Ant タスクの使用を開始する上で役立つ、多数のサンプル構成ファイルが用意されています。
+{{ site.data.keys.product }} には、{{ site.data.keys.mf_analytics }} サービスおよび {{ site.data.keys.mf_analytics_console }}をインストールするための Ant タスクの使用を開始する上で役立つ、多数のサンプル構成ファイルが用意されています。
 
-`<installanalytics>`、`<updateanalytics>`、および `<uninstallanalytics>` の各 Ant タスクの使用を開始するには、{{site.data.keys.mf_server }} ディストリビューションの **Analytics/configuration-samples/** ディレクトリー内に用意されている、サンプル構成ファイルを使用して作業を行うのが最も簡単な方法です。
+`<installanalytics>`、`<updateanalytics>`、および `<uninstallanalytics>` の各 Ant タスクの使用を開始するには、{{ site.data.keys.mf_server }} ディストリビューションの **Analytics/configuration-samples/** ディレクトリー内に用意されている、サンプル構成ファイルを使用して作業を行うのが最も簡単な方法です。
 
 ### ステップ 1
 {: #step-1 }
@@ -1523,13 +1513,13 @@ ElasticSearch クラスターは、同じクラスター名を共有する 1 つ
 
 | タスク | アプリケーション・サーバー |
 |------|--------------------|
-| WebSphere Application Server Liberty プロファイルで {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-liberty-analytics.xml | 
-| Apache Tomcat で {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-tomcat-analytics.xml | 
-| WebSphere Application Server フル・プロファイルで {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-was-analytics.xml | 
-| WebSphere Application Server Network Deployment (シングル・サーバー) で {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-server-analytics.xml | 
-| WebSphere Application Server Network Deployment (セル) で {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-cell-analytics.xml | 
-| WebSphere Application Server Network Deployment (ノード) で {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-node.xml | 
-| WebSphere Application Server Network Deployment (クラスター) で {{site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-cluster-analytics.xml | 
+| WebSphere Application Server Liberty プロファイルで {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-liberty-analytics.xml | 
+| Apache Tomcat で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-tomcat-analytics.xml | 
+| WebSphere Application Server フル・プロファイルで {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-was-analytics.xml | 
+| WebSphere Application Server Network Deployment (シングル・サーバー) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-server-analytics.xml | 
+| WebSphere Application Server Network Deployment (セル) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-cell-analytics.xml | 
+| WebSphere Application Server Network Deployment (ノード) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-node.xml | 
+| WebSphere Application Server Network Deployment (クラスター) で {{ site.data.keys.mf_analytics }} サービスおよびコンソールをインストールする | configure-wasnd-cluster-analytics.xml | 
 
 **WebSphere Application Server Network Deployment の構成ファイルに関する注:**  
 wasnd の構成ファイルには、**cluster**、**node**、**server**、または **cell** に設定できる有効範囲が含まれます。例えば、**configure-wasnd-cluster-analytics.xml** の場合、有効範囲は **cluster** です。これらの有効範囲タイプは、以下のようにデプロイメント・ターゲットを定義します。
@@ -1557,10 +1547,8 @@ Windows の場合: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%U
 {: #step-4 }
 ファイルの先頭にあるプロパティーのプレースホルダー値を置き換えます。
 
-**注:
-**  
+**注:**  
 Ant XML スクリプトの値で以下の特殊文字が使用される場合は、エスケープする必要があります。
-
 
 * Apache Ant Manual の『Properties』セクションに説明されているように、ドル記号 (`$`) は、構文 `${variable}` によって Ant 変数を明示的に参照する場合を除き、$$ と記述してください。
 * アンパーサンド文字 (`&`) は、XML エンティティーを明示的に参照する場合を除き、`&amp;` と記述してください。
@@ -1570,9 +1558,10 @@ Ant XML スクリプトの値で以下の特殊文字が使用される場合は
 {: #step-5 }
 次のコマンドを実行します。`ant -f configure-file.xml install`
 
-このコマンドは、アプリケーション・サーバーで {{site.data.keys.mf_analytics }} サービス・コンポーネントおよび {{site.data.keys.mf_analytics_console }}・コンポーネントをインストールします。{{site.data.keys.mf_analytics }} サービス・コンポーネントおよび {{site.data.keys.mf_analytics_console }}・コンポーネントをインストールするには (例えば、{{site.data.keys.mf_server }} フィックスパックを適用する場合は)、以下のコマンドを実行します。`ant -f configure-file.xml minimal-update`
+このコマンドは、アプリケーション・サーバーで {{ site.data.keys.mf_analytics }} サービス・コンポーネントおよび {{ site.data.keys.mf_analytics_console }}・コンポーネントをインストールします。
+{{ site.data.keys.mf_analytics }} サービス・コンポーネントおよび {{ site.data.keys.mf_analytics_console }}・コンポーネントをインストールするには (例えば、{{ site.data.keys.mf_server }} フィックスパックを適用する場合は)、以下のコマンドを実行します。`ant -f configure-file.xml minimal-update`
 
 インストール手順をリバースするには、次のコマンドを実行します。`ant -f configure-file.xml uninstall`
 
-このコマンドは、{{site.data.keys.mf_analytics }} サービス・コンポーネントおよび {{site.data.keys.mf_analytics_console }}・コンポーネントをアンインストールします。
+このコマンドは、{{ site.data.keys.mf_analytics }} サービス・コンポーネントおよび {{ site.data.keys.mf_analytics_console }}・コンポーネントをアンインストールします。
 

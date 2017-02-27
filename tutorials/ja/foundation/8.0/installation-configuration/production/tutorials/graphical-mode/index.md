@@ -6,7 +6,7 @@ weight: 0
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-グラフィカル・モードの IBM Installation Manager とサーバー構成ツールを使用して、{{site.data.keys.mf_server }} をインストールします。
+グラフィカル・モードの IBM Installation Manager とサーバー構成ツールを使用して、{{ site.data.keys.mf_server }} をインストールします。
 
 #### 始める前に
 {: #before-you-begin }
@@ -18,9 +18,7 @@ weight: 0
 
         **重要:** 本製品で必要とされる表の作成場所となるデータベース、およびそのデータベースで表を作成できるデータベース・ユーザーが必要となります。
 
-
-
-        このチュートリアルにおける表の作成手順は DB2 を対象にしています。DB2 インストーラーは、[IBM パスポート・アドバンテージで](http://www.ibm.com/software/passportadvantage/pao_customers.htm) {{site.data.keys.product }} eAssembly のパッケージとして提供されています。  
+        このチュートリアルにおける表の作成手順は DB2 を対象にしています。DB2 インストーラーは、[IBM パスポート・アドバンテージで](http://www.ibm.com/software/passportadvantage/pao_customers.htm) {{ site.data.keys.product }} eAssembly のパッケージとして提供されています。  
         
 * ご使用のデータベースの JDBC ドライバー:
     * DB2 の場合、DB2 JDBC ドライバー・タイプ 4 を使用します。
@@ -30,10 +28,10 @@ weight: 0
 * Java 7 以降。
 
 * IBM Installation Manager V1.8.4 以降のインストーラーは、[Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142) からダウンロードします。
-* また、{{site.data.keys.mf_server }} のインストール・リポジトリーおよび WebSphere Application Server Liberty Core V8.5.5.3 以降のインストーラーも必要です。これらのパッケージを、パスポート・アドバンテージの {{site.data.keys.product }} eAssembly からダウンロードします。
+* また、{{ site.data.keys.mf_server }} のインストール・リポジトリーおよび WebSphere Application Server Liberty Core V8.5.5.3 以降のインストーラーも必要です。これらのパッケージを、パスポート・アドバンテージの {{ site.data.keys.product }} eAssembly からダウンロードします。
 
-**{{site.data.keys.mf_server }} のインストール・リポジトリー**  
-{{site.data.keys.mf_server }} 用の Installation Manager リポジトリーの {{site.data.keys.product }} V8.0 .zip ファイル
+**{{ site.data.keys.mf_server }} のインストール・リポジトリー**  
+{{ site.data.keys.mf_server }} 用の Installation Manager リポジトリーの {{ site.data.keys.product }} V8.0 .zip ファイル
 
 **WebSphere Application Server Liberty プロファイル**  
 IBM WebSphere Application Server - Liberty Core V8.5.5.3 以降
@@ -44,10 +42,9 @@ IBM WebSphere Application Server - Liberty Core V8.5.5.3 以降
 * macOS x86-64
 * Linux x86 または Linux x86-64
 
-その他のオペレーティング・システムをご使用の場合でも、グラフィカル・モードで Installation Manager を使用してインストールを実行できますが、サーバー構成ツールは使用できません。Ant タスクを使用して (説明については[コマンド・ライン・モードでの {{site.data.keys.mf_server }} のインストール](../command-line)を参照)、{{site.data.keys.mf_server }} を Liberty プロファイルにデプロイする必要があります。
+その他のオペレーティング・システムをご使用の場合でも、グラフィカル・モードで Installation Manager を使用してインストールを実行できますが、サーバー構成ツールは使用できません。Ant タスクを使用して (説明については[コマンド・ライン・モードでの {{ site.data.keys.mf_server }} のインストール](../command-line)を参照)、{{ site.data.keys.mf_server }} を Liberty プロファイルにデプロイする必要があります。
 
 **注:** データベースのインストールおよびセットアップについての説明は、このチュートリアルには含まれていません。スタンドアロン・データベースをインストールせずにこのチュートリアルを実行する場合は、組み込みの Derby データベースを使用できます。ただし、このデータベースの使用には以下の制限があります。
-
 
 * グラフィカル・モードで Installation Manager を実行することは可能ですが、サーバーをデプロイするには、このチュートリアルのコマンド・ラインのセクションまでスキップして Ant タスクでインストールする必要があります。
 * サーバー・ファームを構成することはできません。組み込みの Derby データベースは、複数のサーバーからのアクセスをサポートしていません。サーバー・ファームを構成するには、DB2、MySQL、Oracle のいずれかが必要です。
@@ -57,16 +54,16 @@ IBM WebSphere Application Server - Liberty Core V8.5.5.3 以降
 
 * [IBM Installation Manager のインストール](#installing-ibm-installation-manager)
 * [WebSphere Application Server Liberty Core のインストール](#installing-websphere-application-server-liberty-core)
-* [{{site.data.keys.mf_server }} のインストール](#installing-mobilefirst-server)
+* [{{ site.data.keys.mf_server }} のインストール](#installing-mobilefirst-server)
 * [データベースの作成](#creating-a-database)
 * [サーバー構成ツールの実行](#running-the-server-configuration-tool)
 * [インストール済み環境のテスト](#testing-the-installation)
-* [{{site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成](#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server)
-* [ファームのテストと {{site.data.keys.mf_console }} での変更内容の確認](#testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console)
+* [{{ site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成](#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server)
+* [ファームのテストと {{ site.data.keys.mf_console }} での変更内容の確認](#testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console)
 
 ### IBM Installation Manager のインストール
 {: #installing-ibm-installation-manager }
-Installation Manager V1.8.4 以降をインストールする必要があります。製品のポストインストール操作で Java 7 が必要なため、古いバージョンの Installation Manager は {{site.data.keys.product }} V8.0 をインストールできません。古いバージョンの Installation Manager には Java 6 が装備されています。
+Installation Manager V1.8.4 以降をインストールする必要があります。製品のポストインストール操作で Java 7 が必要なため、古いバージョンの Installation Manager は {{ site.data.keys.product }} V8.0 をインストールできません。古いバージョンの Installation Manager には Java 6 が装備されています。
 
 1. ダウンロードした IBM Installation Manager アーカイブを解凍します。インストーラーは [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142) にあります。
 2. 以下のように Installation Manager をインストールします。
@@ -75,7 +72,7 @@ Installation Manager V1.8.4 以降をインストールする必要がありま�
 
 ### WebSphere Application Server Liberty Core のインストール
 {: #installing-websphere-application-server-liberty-core }
-WebSphere Application Server Liberty Core のインストーラーは、{{site.data.keys.product }} のパッケージの一部として提供されています。このタスクでは、Liberty プロファイルがインストールされ、サーバー・インスタンスが作成されます。このサーバー・インスタンス上に {{site.data.keys.mf_server }} をインストールできます。
+WebSphere Application Server Liberty Core のインストーラーは、{{ site.data.keys.product }} のパッケージの一部として提供されています。このタスクでは、Liberty プロファイルがインストールされ、サーバー・インスタンスが作成されます。このサーバー・インスタンス上に {{ site.data.keys.mf_server }} をインストールできます。
 
 1. ダウンロードした WebSphere Application Server Liberty Core の圧縮ファイルを解凍します。
 2. Installation Manager を起動します。
@@ -85,14 +82,11 @@ WebSphere Application Server Liberty Core のインストーラーは、{{site.d
     * ファイルを選択し、**「OK」**をクリックします。
     * **「OK」**をクリックして、「設定」パネルを閉じます。
 4. **「インストール」**をクリックして Liberty をインストールします。
-    * **「IBM WebSphere Application Server Liberty Core」**を選択し、
-**「次へ」**をクリックします。
+    * **「IBM WebSphere Application Server Liberty Core」**を選択し、**「次へ」**をクリックします。
     * 使用条件の条項に同意し、**「次へ」**をクリックします。
 5. このチュートリアルの対象範囲では、確認を求められたとき、追加のアセットのインストールは必要ありません。**「インストール」**をクリックすると、インストール・プロセスが開始します。
-    * 正常にインストールされた場合は、プログラムにより、インストールが正常に行われたことを示すメッセージが
-表示されます。プログラムは、重要なポストインストール指示も表示することがあります。
-    * インストールが正常に行われなかった場合は、**「ログ・ファイルの表示」**を
-クリックして、問題のトラブルシューティングを行います。
+    * 正常にインストールされた場合は、プログラムにより、インストールが正常に行われたことを示すメッセージが表示されます。プログラムは、重要なポストインストール指示も表示することがあります。
+    * インストールが正常に行われなかった場合は、**「ログ・ファイルの表示」**をクリックして、問題のトラブルシューティングを行います。
 6. サーバーを含む **usr** ディレクトリーを、特定の特権が必要とされないロケーションに移動します。
 
     Liberty を管理者モードで Installation Manager を使用してインストールした場合、非管理者ユーザーまたは非 root ユーザーがファイルの変更を行えない場所にファイルが置かれています。このチュートリアルの目的で、サーバーを含む **usr** ディレクトリーを、特定の特権が必要とされない場所に移動してください。そうすることで、特定の特権がなくてもインストールの操作を行うことができます。
@@ -101,7 +95,7 @@ WebSphere Application Server Liberty Core のインストーラーは、{{site.d
     * **etc** ディレクトリー内に、`WLP_USER_DIR=<どのユーザーでも書き込めるディレクトリーのパス>` というコンテンツを含む **server.env** ファイルを作成します。
     
     例えば、Windows の場合は、`WLP_USER_DIR=C:\LibertyServers\usr` です。
-7. チュートリアルのこの後のパートで {{site.data.keys.mf_server }} の最初のノードのインストールに使用する Liberty サーバーを作成します。
+7. チュートリアルのこの後のパートで {{ site.data.keys.mf_server }} の最初のノードのインストールに使用する Liberty サーバーを作成します。
     * コマンド・ラインを開始します。
     * l**iberty\_install\_dir/bin** に移動し、`server create mfp1` と入力します。
     
@@ -112,16 +106,16 @@ WebSphere Application Server Liberty Core のインストーラーは、{{site.d
 
 > **注:** 実動用には、ホスト・コンピューターの始動時に Liberty サーバーがサービスとして始動するようにする必要があります。Liberty サーバーをサービスとして始動させる手順は、このチュートリアルには含まれていません。
 
-### {{site.data.keys.mf_server }} のインストール
+### {{ site.data.keys.mf_server }} のインストール
 {: #installing-mobilefirst-server }
-データベースを作成して {{site.data.keys.mf_server }} を Liberty プロファイルにデプロイする前に、Installation Manager を実行してご使用のディスクに {{site.data.keys.mf_server }} のバイナリー・ファイルをインストールします。Installation Manager を使用した {{site.data.keys.mf_server }} のインストール中に、{{site.data.keys.mf_app_center }} をインストールするオプションが提案されます。 Application Center は、本製品の別のコンポーネントです。このチュートリアルでは、これを {{site.data.keys.mf_server }} と共にインストールする必要はありません。
+データベースを作成して {{ site.data.keys.mf_server }} を Liberty プロファイルにデプロイする前に、Installation Manager を実行してご使用のディスクに {{ site.data.keys.mf_server }} のバイナリー・ファイルをインストールします。Installation Manager を使用した {{ site.data.keys.mf_server }} のインストール中に、{{ site.data.keys.mf_app_center }} をインストールするオプションが提案されます。 Application Center は、本製品の別のコンポーネントです。このチュートリアルでは、これを {{ site.data.keys.mf_server }} と共にインストールする必要はありません。
 
 1. Installation Manager を起動します。
-2. {{site.data.keys.mf_server }} のリポジトリーを Installation Manager 内に追加します。
+2. {{ site.data.keys.mf_server }} のリポジトリーを Installation Manager 内に追加します。
     * **「ファイル」→「設定」に移動して「リポジトリーの追加 (Add Repositories...)」**をクリックします。
     * インストーラーが解凍されたディレクトリー内にあるリポジトリー・ファイルを参照します。
 
-        {{site.data.keys.mf_server }} の {{site.data.keys.product }} V8.0 .zip ファイルを **mfp\_installer\_directory** フォルダーで解凍すると、リポジトリー・ファイルは **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf** にできます。
+        {{ site.data.keys.mf_server }} の {{ site.data.keys.product }} V8.0 .zip ファイルを **mfp\_installer\_directory** フォルダーで解凍すると、リポジトリー・ファイルは **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf** にできます。
 
         [IBM サポート・ポータル](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)からダウンロード可能な最新のフィックスパックを適用することもできます。フィックスパック用のリポジトリーを入力するようにしてください。**fixpack_directory** フォルダーにフィックスパックを解凍した場合、リポジトリー・ファイルは **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf** にあります。
     
@@ -134,31 +128,31 @@ WebSphere Application Server Liberty Core のインストーラーは、{{site.d
 5. **「次へ」**をクリックします。
 6. **「汎用設定 (General settings)」**パネルの**「トークン・ライセンスのアクティブ化 (Activate token licensing)」**セクションで、**「Rational License Key Server でトークン・ライセンスをアクティブ化しない (Do not activate token licensing with the Rational License Key Server)」**オプションを選択します。
 
-    このチュートリアルでは、トークン・ライセンスが不要であることを前提としています。そのため、{{site.data.keys.mf_server }} をトークン・ライセンス用に構成する手順は含まれていません。ただし、実動インストールでは、トークン・ライセンスをアクティブ化する必要があるかどうかを判断する必要があります。Rational License Key Server でトークン・ライセンスを使用する契約がある場合は、「Rational License Key Server でトークン・ライセンスをアクティブにする (Activate token licensing with the Rational License Key Server)」オプションを使用してください。トークン・ライセンスをアクティブ化した後、追加のステップを実行して {{site.data.keys.mf_server }} を構成する必要があります。
-7. **「汎用設定 (General settings)」**パネルの**「{{site.data.keys.product }} for iOS** のインストール」セクションで、デフォルト・オプション (「いいえ」) をそのままにします。
-8. **「構成の選択」**パネルで「いいえ (No)」オプションを選択し、Application Center がインストールされないようにします。実動インストールの場合は、Ant タスクを使用して Application Center をインストールしてください。Ant タスクを使用したインストールでは、{{site.data.keys.mf_server }} に対する更新を Application Center に対する更新から分離することができます。
+    このチュートリアルでは、トークン・ライセンスが不要であることを前提としています。そのため、{{ site.data.keys.mf_server }} をトークン・ライセンス用に構成する手順は含まれていません。ただし、実動インストールでは、トークン・ライセンスをアクティブ化する必要があるかどうかを判断する必要があります。Rational License Key Server でトークン・ライセンスを使用する契約がある場合は、「Rational License Key Server でトークン・ライセンスをアクティブにする (Activate token licensing with the Rational License Key Server)」オプションを使用してください。トークン・ライセンスをアクティブ化した後、追加のステップを実行して {{ site.data.keys.mf_server }} を構成する必要があります。
+7. **「汎用設定 (General settings)」**パネルの**「{{ site.data.keys.product }} for iOS** のインストール」セクションで、デフォルト・オプション (「いいえ」) をそのままにします。
+8. **「構成の選択」**パネルで「いいえ (No)」オプションを選択し、Application Center がインストールされないようにします。実動インストールの場合は、Ant タスクを使用して Application Center をインストールしてください。Ant タスクを使用したインストールでは、{{ site.data.keys.mf_server }} に対する更新を Application Center に対する更新から分離することができます。
 9. **「ありがとうございました (Thank You)」**パネルが表示されるまで、**「次へ (Next)」**をクリックします。 その後、インストールを続行します。
 
-{{site.data.keys.product_adj }} コンポーネントをインストールするためのリソースを含むインストール・ディレクトリーがインストールされます。  
+{{ site.data.keys.product_adj }} コンポーネントをインストールするためのリソースを含むインストール・ディレクトリーがインストールされます。  
 リソースは以下のフォルダーに入っています。
 
-* {{site.data.keys.mf_server }} 用の MobileFirstServer フォルダー
-* {{site.data.keys.mf_server }} プッシュ・サービス用の PushService フォルダー
+* {{ site.data.keys.mf_server }} 用の MobileFirstServer フォルダー
+* {{ site.data.keys.mf_server }} プッシュ・サービス用の PushService フォルダー
 * Application Center 用の ApplicationCenter フォルダー
-* {{site.data.keys.mf_analytics }} 用の Analytics フォルダー
+* {{ site.data.keys.mf_analytics }} 用の Analytics フォルダー
 
-このチュートリアルの目的は、**MobileFirstServer** フォルダー内のリソースを使用して {{site.data.keys.mf_server }} をインストールすることです。  
+このチュートリアルの目的は、**MobileFirstServer** フォルダー内のリソースを使用して {{ site.data.keys.mf_server }} をインストールすることです。  
 また、**shortcuts** フォルダーには、サーバー構成ツール、Ant、および mfpadm プログラムのショートカットも用意されています。
 
 ### データベースの作成
 {: #creating-a-database }
 このタスクでは、ご使用の DBMS にデータベースが存在するようにし、ユーザーがそのデータベースの使用、データベース内での表の作成、およびその表の使用を許可されるようにします。  
-このデータベースは、さまざまな {{site.data.keys.product_adj }} コンポーネントが使用するテクニカル・データを保管するのに使用します。
+このデータベースは、さまざまな {{ site.data.keys.product_adj }} コンポーネントが使用するテクニカル・データを保管するのに使用します。
 
-* {{site.data.keys.mf_server }} 管理サービス
-* {{site.data.keys.mf_server }} ライブ更新サービス
-* {{site.data.keys.mf_server }} プッシュ・サービス
-* {{site.data.keys.product_adj }}runtime
+* {{ site.data.keys.mf_server }} 管理サービス
+* {{ site.data.keys.mf_server }} ライブ更新サービス
+* {{ site.data.keys.mf_server }} プッシュ・サービス
+* {{ site.data.keys.product_adj }}runtime
 
 このチュートリアルでは、すべてのコンポーネント用の表が同じスキーマに置かれています。サーバー構成ツールは同じスキーマ内に表を作成します。より柔軟に対応するには、Ant タスクを使用するか、手動インストールを行うこともできます。
 
@@ -194,33 +188,33 @@ WebSphere Application Server Liberty Core のインストーラーは、{{site.d
 {: #running-the-server-configuration-tool }
 サーバー構成ツールを使用して、以下の操作を実行します。
 
-* データベース内に {{site.data.keys.product_adj }} アプリケーションで必要となる表を作成します。
-* {{site.data.keys.mf_server }} の Web アプリケーション (ランタイム、管理サービス、ライブ更新サービス、プッシュ・サービスのコンポーネント、および {{site.data.keys.mf_console }}) を Liberty サーバーにデプロイします。
+* データベース内に {{ site.data.keys.product_adj }} アプリケーションで必要となる表を作成します。
+* {{ site.data.keys.mf_server }} の Web アプリケーション (ランタイム、管理サービス、ライブ更新サービス、プッシュ・サービスのコンポーネント、および {{ site.data.keys.mf_console }}) を Liberty サーバーにデプロイします。
 
-サーバー構成ツールは以下の {{site.data.keys.product_adj }} アプリケーションをデプロイしません。
+サーバー構成ツールは以下の {{ site.data.keys.product_adj }} アプリケーションをデプロイしません。
 
-#### {{site.data.keys.mf_analytics }}
+#### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{site.data.keys.mf_analytics }} はメモリー所要量が大きいため、通常 {{site.data.keys.mf_server }} とは別のサーバー・セットにデプロイされます。{{site.data.keys.mf_analytics }} は、手動で、もしくは Ant タスクを使用してインストールできます。既にインストール済みの場合は、サーバー構成ツールでその URL、ユーザー名、およびパスワードを入力し、それにデータを送信できるようにします。それにより、サーバー構成ツールが {{site.data.keys.mf_analytics }} にデータを送信するように {{site.data.keys.product_adj }} アプリを構成します。 
+{{ site.data.keys.mf_analytics }} はメモリー所要量が大きいため、通常 {{ site.data.keys.mf_server }} とは別のサーバー・セットにデプロイされます。{{ site.data.keys.mf_analytics }} は、手動で、もしくは Ant タスクを使用してインストールできます。既にインストール済みの場合は、サーバー構成ツールでその URL、ユーザー名、およびパスワードを入力し、それにデータを送信できるようにします。それにより、サーバー構成ツールが {{ site.data.keys.mf_analytics }} にデータを送信するように {{ site.data.keys.product_adj }} アプリを構成します。 
 
 #### Application Center
 {: #application-center }
-このアプリケーションは、社内でモバイル・アプリを使用する従業員に配布するのに使用したり、テスト目的に使用したりできます。これは {{site.data.keys.mf_server }} とは独立していて、{{site.data.keys.mf_server }} と一緒にインストールする必要はありません。
+このアプリケーションは、社内でモバイル・アプリを使用する従業員に配布するのに使用したり、テスト目的に使用したりできます。これは {{ site.data.keys.mf_server }} とは独立していて、{{ site.data.keys.mf_server }} と一緒にインストールする必要はありません。
     
 1. サーバー構成ツールを始動します。
-    * Linux の場合、アプリケーションのショートカットから**「アプリケーション」→「{{site.data.keys.mf_server }}」→「サーバー構成ツール」**とクリックします。
+    * Linux の場合、アプリケーションのショートカットから**「アプリケーション」→「{{ site.data.keys.mf_server }}」→「サーバー構成ツール」**とクリックします。
     * Windows の場合、**「スタート」→「プログラム」→「IBM MobileFirst Platform Server」→「サーバー構成ツール」**とクリックします。
     * macOS の場合、シェル・コンソールを開きます。**mfp_server\_install\_dir/shortcuts and type ./configuration-tool.sh** に移動します。
     
-    mfp_server_install_dir ディレクトリーが、{{site.data.keys.mf_server }} をインストールした場所です。
-2. **「ファイル (File)」→「新規構成 (New Configuration)」**を選択して {{site.data.keys.mf_server }} 構成を作成します。
+    mfp_server_install_dir ディレクトリーが、{{ site.data.keys.mf_server }} をインストールした場所です。
+2. **「ファイル (File)」→「新規構成 (New Configuration)」**を選択して {{ site.data.keys.mf_server }} 構成を作成します。
 3. 構成に 「Hello MobileFirst」という名前を付けて、**「OK」**をクリックします。
 4. 「構成の詳細 (Configuration Details)」のデフォルト項目をそのままにして、**「次へ」**をクリックします。
     
     このチュートリアルでは、環境 ID は使用しません。それは上級のデプロイメント・シナリオ用のフィーチャーです。  
-    そのようなシナリオの一例としては、{{site.data.keys.mf_server }} の複数インスタンスおよび管理サービスを同じアプリケーション・サーバーまたは WebSphere Application Server セル内にインストールする場合などが挙げられます。
+    そのようなシナリオの一例としては、{{ site.data.keys.mf_server }} の複数インスタンスおよび管理サービスを同じアプリケーション・サーバーまたは WebSphere Application Server セル内にインストールする場合などが挙げられます。
 5. 管理サービスとランタイム・コンポーネントのデフォルト・コンテキスト・ルートを保持します。
-6. **「コンソール設定」**パネルのデフォルト項目は変更せず、**「次へ」**をクリックしてデフォルト・コンテキスト・ルートで {{site.data.keys.mf_console }} をインストールします。
+6. **「コンソール設定」**パネルのデフォルト項目は変更せず、**「次へ」**をクリックしてデフォルト・コンテキスト・ルートで {{ site.data.keys.mf_console }} をインストールします。
 7. **「IBM DB2」**をデータベースとして選択し、**「次へ」**をクリックします。
 8. **「DB2 データベース設定 (DB2 Database Settings)」**パネルで、以下の詳細を入力します。
     * DB2 サーバーを実行するホスト名を入力します。ご使用のコンピューター上で実行する場合は、**localhost** と入力できます。
@@ -243,7 +237,7 @@ WebSphere Application Server Liberty Core のインストーラーは、{{site.d
     * サーバー名フィールドで、製品のインストール先にするサーバーを選択します。[WebSphere Application Server Liberty Core のインストール](#installing-websphere-application-server-liberty-core)のステップ 7 で作成された **mfp1** サーバーを選択します。
     * **「ユーザーの作成 (Create a user)」**オプションを、そのデフォルト値で選択されたままにします。
     
-    このオプションにより Liberty サーバーの基本レジストリー内にユーザーが作成され、{{site.data.keys.mf_console }} または管理サービスにサインインできるようになります。実動インストールの場合はこのオプションを使用せず、『{{site.data.keys.mf_server }} 管理用のユーザー認証の構成』の説明のとおり、インストール後にアプリケーションのセキュリティー・ロールを構成します。
+    このオプションにより Liberty サーバーの基本レジストリー内にユーザーが作成され、{{ site.data.keys.mf_console }} または管理サービスにサインインできるようになります。実動インストールの場合はこのオプションを使用せず、『{{ site.data.keys.mf_server }} 管理用のユーザー認証の構成』の説明のとおり、インストール後にアプリケーションのセキュリティー・ロールを構成します。
     * デプロイメント・タイプに「サーバー・ファーム・デプロイメント」オプションを選択します。
     * **「次へ」**をクリックします。
 13. **「プッシュ・サービスのインストール (Install the Push service)」**オプションを選択します。
@@ -258,11 +252,11 @@ WebSphere Application Server Liberty Core のインストーラーは、{{site.d
 16. **「次へ」**をクリックします。
 17. **「Analytics 設定 (Analytics Setting)」**パネルでデフォルト項目をそのまま保持します。
 
-    Analytics サーバーへの接続を使用可能にするには、まず {{site.data.keys.mf_analytics }} をインストールする必要があります。 ただし、インストールはこのチュートリアルの対象範囲に含まれていません。
+    Analytics サーバーへの接続を使用可能にするには、まず {{ site.data.keys.mf_analytics }} をインストールする必要があります。 ただし、インストールはこのチュートリアルの対象範囲に含まれていません。
 18. **「デプロイ」**をクリックします。
 
 実行された操作の詳細を、**「コンソール・ウィンドウ」**で確認できます。  
-Ant ファイルが保存されます。サーバー構成ツールは、構成のインストールと更新のための Ant ファイルの作成を支援します。この Ant ファイルは、**「ファイル」→「構成を Ant ファイルとしてエクスポート...(Export Configuration as Ant Files...)」**を使用してエクスポートできます。この Ant ファイルについて詳しくは、『[コマンド・ライン・モードでの](../command-line) {{site.data.keys.mf_server }} のインストール』の『Ant タスクを使用した {{site.data.keys.mf_server }} の Liberty へのデプロイ』を参照してください。
+Ant ファイルが保存されます。サーバー構成ツールは、構成のインストールと更新のための Ant ファイルの作成を支援します。この Ant ファイルは、**「ファイル」→「構成を Ant ファイルとしてエクスポート...(Export Configuration as Ant Files...)」**を使用してエクスポートできます。この Ant ファイルについて詳しくは、『[コマンド・ライン・モードでの](../command-line) {{ site.data.keys.mf_server }} のインストール』の『Ant タスクを使用した {{ site.data.keys.mf_server }} の Liberty へのデプロイ』を参照してください。
 
 その後、この Ant ファイルが実行され、以下の操作が行われます。
 
@@ -300,7 +294,7 @@ QUIT
 {: #modification-of-the-application-server-settings-specific-to-liberty }
 1. Liberty のフィーチャーが追加されます。
 
-    それらのフィーチャーは各アプリケーションに対して追加され、重複することがあります。例えば、JDBC フィーチャーは、管理サービスとランタイム・コンポーネントの両方に使用されます。この重複があることで、アプリケーションをアンインストールするとき、他のアプリケーションを中断せずにそのフィーチャーを削除することができます。例えば、ある時点でプッシュ・サービスをサーバーからアンインストールして別のサーバーにインストールすることにした場合などがそうです。ただし、すべてのトポロジーが可能というわけではありません。管理サービス、ライブ更新サービス、およびランタイム・コンポーネントは、Liberty プロファイルのある同じアプリケーション・サーバー上にある必要があります。詳しくは、[{{site.data.keys.mf_server }} 管理サービス、{{site.data.keys.mf_server }} ライブ更新サービス、および {{site.data.keys.product_adj }} ランタイムでの制約](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)を参照してください。フィーチャーが重複していても、追加されたフィーチャー同士が競合しなければ、問題は生じません。jdbc-40 および jdbc-41 のフィーチャーを追加すると問題が生じますが、同じフィーチャーを 2 回追加すると問題は生じません。
+    それらのフィーチャーは各アプリケーションに対して追加され、重複することがあります。例えば、JDBC フィーチャーは、管理サービスとランタイム・コンポーネントの両方に使用されます。この重複があることで、アプリケーションをアンインストールするとき、他のアプリケーションを中断せずにそのフィーチャーを削除することができます。例えば、ある時点でプッシュ・サービスをサーバーからアンインストールして別のサーバーにインストールすることにした場合などがそうです。ただし、すべてのトポロジーが可能というわけではありません。管理サービス、ライブ更新サービス、およびランタイム・コンポーネントは、Liberty プロファイルのある同じアプリケーション・サーバー上にある必要があります。詳しくは、[{{ site.data.keys.mf_server }} 管理サービス、{{ site.data.keys.mf_server }} ライブ更新サービス、および {{ site.data.keys.product_adj }} ランタイムでの制約](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)を参照してください。フィーチャーが重複していても、追加されたフィーチャー同士が競合しなければ、問題は生じません。jdbc-40 および jdbc-41 のフィーチャーを追加すると問題が生じますが、同じフィーチャーを 2 回追加すると問題は生じません。
     
 2. `host='*'` が `httpEndPoint` 宣言内で追加されます。
 
@@ -331,8 +325,8 @@ FWLSE3000E: サーバー・エラーが検出されました。
 
 * **mfpadmin**、管理サービス
 * **mfpadminconfig**、ライブ更新サービス
-* **mfpconsole**、{{site.data.keys.mf_console }}
-* **mobilefirs**t、{{site.data.keys.product_adj }} ランタイム・コンポーネント
+* **mfpconsole**、{{ site.data.keys.mf_console }}
+* **mobilefirs**t、{{ site.data.keys.product_adj }} ランタイム・コンポーネント
 * **imfpush**、プッシュ・サービス
 
 サーバー構成ツールはすべてのアプリケーションを同じサーバーにインストールします。アプリケーションを別のアプリケーション・サーバーに分離することもできますが、[トポロジーとネットワーク・フロー](../../topologies)に記載された特定の制約を受けることになります。  
@@ -340,11 +334,11 @@ FWLSE3000E: サーバー・エラーが検出されました。
 
 #### 管理サービス
 {: #administration-service }
-管理サービスは、{{site.data.keys.product_adj }} のアプリケーション、アダプター、およびその構成を管理するためのサービスです。このサービスはセキュリティー・ロールによって保護されます。デフォルトでは、サーバー構成ツールにより管理者ロールを持つユーザー (admin) が作成され、このユーザーを使用して、テストのためにコンソールにログインすることができます。セキュリティー・ロールの構成は、サーバー構成ツールで (または Ant タスクで) インストールを実行した後に行わなければなりません。アプリケーション・サーバーで構成する基本レジストリーまたは LDAP レジストリーからのユーザーまたはグループを、各セキュリティー・ロールにマップすることもできます。
+管理サービスは、{{ site.data.keys.product_adj }} のアプリケーション、アダプター、およびその構成を管理するためのサービスです。このサービスはセキュリティー・ロールによって保護されます。デフォルトでは、サーバー構成ツールにより管理者ロールを持つユーザー (admin) が作成され、このユーザーを使用して、テストのためにコンソールにログインすることができます。セキュリティー・ロールの構成は、サーバー構成ツールで (または Ant タスクで) インストールを実行した後に行わなければなりません。アプリケーション・サーバーで構成する基本レジストリーまたは LDAP レジストリーからのユーザーまたはグループを、各セキュリティー・ロールにマップすることもできます。
 
-Liberty プロファイルおよび WebSphere Application Server、ならびにすべての {{site.data.keys.product_adj }} アプリケーションに対し、クラス・ローダー委任が「親が最後」に設定されます。この設定は、{{site.data.keys.product_adj }} アプリケーションにパッケージされたクラスとアプリケーション・サーバーのクラスの間で生じる競合を回避するためのものです。親が最後になるようクラス・ローダーの委任を設定するのを忘れると、手動インストールにおいて頻繁にエラーが発生する原因になります。Apache Tomcat の場合、この宣言は不要です。
+Liberty プロファイルおよび WebSphere Application Server、ならびにすべての {{ site.data.keys.product_adj }} アプリケーションに対し、クラス・ローダー委任が「親が最後」に設定されます。この設定は、{{ site.data.keys.product_adj }} アプリケーションにパッケージされたクラスとアプリケーション・サーバーのクラスの間で生じる競合を回避するためのものです。親が最後になるようクラス・ローダーの委任を設定するのを忘れると、手動インストールにおいて頻繁にエラーが発生する原因になります。Apache Tomcat の場合、この宣言は不要です。
 
-Liberty プロファイル内では、JNDI プロパティーとして渡されたパスワードの暗号化解除のために、共通ライブラリーがアプリケーションに追加されます。サーバー構成ツールは、管理サービスの 2 つの必須 JNDI プロパティー (**mfp.config.service.user** および **mfp.config.service.password**) を定義します。これらは、管理サービスがその REST API でライブ更新サービスに接続する際に使用します。他にも JNDI プロパティーを定義して、アプリケーションを調整したり、ご使用のインストール済み環境の詳細にアプリケーションを適応させたりすることができます。詳しくは、[{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
+Liberty プロファイル内では、JNDI プロパティーとして渡されたパスワードの暗号化解除のために、共通ライブラリーがアプリケーションに追加されます。サーバー構成ツールは、管理サービスの 2 つの必須 JNDI プロパティー (**mfp.config.service.user** および **mfp.config.service.password**) を定義します。これらは、管理サービスがその REST API でライブ更新サービスに接続する際に使用します。他にも JNDI プロパティーを定義して、アプリケーションを調整したり、ご使用のインストール済み環境の詳細にアプリケーションを適応させたりすることができます。詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
 
 また、サーバー構成ツールは、プッシュ・サービスとの通信のための JNDI プロパティー (機密クライアントを登録するための URL および OAuth パラメーター) も定義します。  
 管理サービス用の表を含むデータベースのデータ・ソース、およびその JDBC ドライバーのライブラリーが宣言されます。
@@ -355,21 +349,21 @@ Liberty プロファイル内では、JNDI プロパティーとして渡され�
 
 管理サービスのセクションで説明されたように、クラス・ローダー委任が「親が最後」に設定されます。
 
-ライブ更新サービスには 1 つのセキュリティー・ロール **admin_config** があります。そのロールにユーザーをマップする必要があります。そのパスワードおよびログインを、JNDI プロパティー **mfp.config.service.user** および **mfp.config.service.password** で管理サービスに指定してください。JNDI プロパティーについて詳しくは、[{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)および[{{site.data.keys.mf_server }} ライブ更新サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service)を参照してください。
+ライブ更新サービスには 1 つのセキュリティー・ロール **admin_config** があります。そのロールにユーザーをマップする必要があります。そのパスワードおよびログインを、JNDI プロパティー **mfp.config.service.user** および **mfp.config.service.password** で管理サービスに指定してください。JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)および[{{ site.data.keys.mf_server }} ライブ更新サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service)を参照してください。
 
 Liberty プロファイル上に、JNDI 名を持つデータ・ソースも必要となります。規則は **context\_root\_of\_config\_server/jdbc/ConfigDS** です。このチュートリアルでは、**mfpadminconfig/jdbc/ConfigDS** として定義されています。サーバー構成ツールまたは Ant タスクを使用したインストールの場合、ライブ更新サービスの表は管理サービスの表と同じデータベースおよびスキーマ内にあります。これらの表にアクセスするユーザーも同じです。
 
-#### {{site.data.keys.mf_console }}
+#### {{ site.data.keys.mf_console }}
 {: #mobilefirst-operations-console }
-{{site.data.keys.mf_console }} が、管理サービスと同じセキュリティー・ロールで宣言されます。{{site.data.keys.mf_console }} のセキュリティー・ロールにマップされたユーザーは、管理サービスの同じセキュリティー・ロールにもマップされなければなりません。実際に、{{site.data.keys.mf_console }} はコンソール・ユーザーの代わりに管理サービスに対する照会を実行します。
+{{ site.data.keys.mf_console }} が、管理サービスと同じセキュリティー・ロールで宣言されます。{{ site.data.keys.mf_console }} のセキュリティー・ロールにマップされたユーザーは、管理サービスの同じセキュリティー・ロールにもマップされなければなりません。実際に、{{ site.data.keys.mf_console }} はコンソール・ユーザーの代わりに管理サービスに対する照会を実行します。
 
-サーバー構成ツールは 1 つの JNDI プロパティー **mfp.admin.endpoint** を配置します。これはコンソールが管理サービスに接続する方法を指示します。サーバー構成ツールによって設定されるデフォルト値は `*://*:*/mfpadmin` です。この設定は、コンソールへの着信 HTTP 要求と同じプロトコル、ホスト名、およびポートを使用する必要があること、そして管理サービスのコンテキスト・ルートが /mfpadmin であることを意味しています。要求が Web プロキシーを経由するよう強制したい場合は、デフォルト値を変更してください。この URL の可能な値についての詳細情報、およびその他の可能な JNDI プロパティーの情報については、[{{site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
+サーバー構成ツールは 1 つの JNDI プロパティー **mfp.admin.endpoint** を配置します。これはコンソールが管理サービスに接続する方法を指示します。サーバー構成ツールによって設定されるデフォルト値は `*://*:*/mfpadmin` です。この設定は、コンソールへの着信 HTTP 要求と同じプロトコル、ホスト名、およびポートを使用する必要があること、そして管理サービスのコンテキスト・ルートが /mfpadmin であることを意味しています。要求が Web プロキシーを経由するよう強制したい場合は、デフォルト値を変更してください。この URL の可能な値についての詳細情報、およびその他の可能な JNDI プロパティーの情報については、[{{ site.data.keys.mf_server }} 管理サービスの JNDI プロパティーのリスト](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)を参照してください。
 
 管理サービスのセクションで説明されたように、クラス・ローダー委任が「親が最後」に設定されます。
 
-#### {{site.data.keys.product_adj }}runtime
+#### {{ site.data.keys.product_adj }}runtime
 {: #mobilefirst-runtime }
-このアプリケーションはセキュリティー・ロールによって保護されていません。このアプリケーションにアクセスするために、Liberty サーバーが認識するユーザーでログインする必要はありません。モバイル・デバイス要求はランタイムに経路指定されます。それらの要求は、他の、製品固有のメカニズム (OAuth など) および {{site.data.keys.product_adj }} アプリケーションの構成固有のメカニズムにより認証されます。
+このアプリケーションはセキュリティー・ロールによって保護されていません。このアプリケーションにアクセスするために、Liberty サーバーが認識するユーザーでログインする必要はありません。モバイル・デバイス要求はランタイムに経路指定されます。それらの要求は、他の、製品固有のメカニズム (OAuth など) および {{ site.data.keys.product_adj }} アプリケーションの構成固有のメカニズムにより認証されます。
 
 管理サービスのセクションで説明されたように、クラス・ローダー委任が「親が最後」に設定されます。
 
@@ -394,7 +388,7 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
 インストールが完了した後、この手順を使用して、インストールされたコンポーネントをテストすることができます。
 
 1. コマンド **server start mfp1** を使用してサーバーを始動します。サーバーのバイナリー・ファイルは **liberty\_install\_dir/bin** にあります。
-2. Web ブラウザーを使用して {{site.data.keys.mf_console }} をテストします。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) に移動します。デフォルトで、サーバーはポート 9080 で稼働します。ただし、**server.xml** ファイルで定義されているエレメント `<httpEndpoint>` でポートを確認できます。ログイン画面が表示されます。
+2. Web ブラウザーを使用して {{ site.data.keys.mf_console }} をテストします。[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) に移動します。デフォルトで、サーバーはポート 9080 で稼働します。ただし、**server.xml** ファイルで定義されているエレメント `<httpEndpoint>` でポートを確認できます。ログイン画面が表示されます。
 
 ![コンソールのログイン画面](mfpconsole_signin.jpg)
 
@@ -404,13 +398,13 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
 
 4. **「管理者トップ (Hello Admin)」→「サインアウト (Sign Out)」**で、コンソールをログアウトします。
 5. Web ブラウザーに次の URL を入力して、証明書を受け入れます。[https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole)デフォルトでは、Web ブラウザーに認識されないデフォルト証明書が Liberty サーバーにより生成されるため、証明書を受け入れる必要があります。Mozilla Firefox はこの認証をセキュリティー例外として提示します。
-6. **admin/admin** で再度ログインします。ご使用の Web ブラウザーと {{site.data.keys.mf_server }} の間では、ログインおよびパスワードが暗号化されます。実動では、HTTP ポートを閉じることもできます。
+6. **admin/admin** で再度ログインします。ご使用の Web ブラウザーと {{ site.data.keys.mf_server }} の間では、ログインおよびパスワードが暗号化されます。実動では、HTTP ポートを閉じることもできます。
 
-### {{site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成
+### {{ site.data.keys.mf_server }} を実行する 2 つの Liberty サーバーのファームの作成
 {: #creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server }
-このタスクでは、同じ {{site.data.keys.mf_server }} を実行し、同じデータベースに接続する 2 番目の Liberty サーバーを作成します。実動では、モバイル・アプリケーションがピーク時に必要とする 1 秒 当たりのトランザクション数に対応するのに十分なサーバーを用意するため、パフォーマンス上の理由で複数のサーバーを使用する場合もあります。また、Single Point of Failure を避けるため、高可用性を実現するという理由もあります。
+このタスクでは、同じ {{ site.data.keys.mf_server }} を実行し、同じデータベースに接続する 2 番目の Liberty サーバーを作成します。実動では、モバイル・アプリケーションがピーク時に必要とする 1 秒 当たりのトランザクション数に対応するのに十分なサーバーを用意するため、パフォーマンス上の理由で複数のサーバーを使用する場合もあります。また、Single Point of Failure を避けるため、高可用性を実現するという理由もあります。
 
-{{site.data.keys.mf_server }} を実行するサーバーが複数ある場合、サーバーはファームとして構成する必要があります。この構成により、どの管理サービスもファームのすべてのランタイムに接続することが可能になります。クラスターがファームとして構成されていない場合、管理操作を実行する管理サービスと同じアプリケーション・サーバーで実行されるランタイムのみが通知を受けます。その他のランタイムは、変更を認識しません。例えば、ファームとして構成されていないクラスターに、新しいバージョンのアダプターをデプロイした場合、その新しいアダプターにサービスを提供するのは 1 つのサーバーのみです。その他のサーバーは、古いアダプターへのサービス提供を継続します。クラスターを持っていて、ファームを構成する必要がない唯一の状況は、サーバーを WebSphere Application Server Network Deployment にインストールする場合のみです。デプロイメント・マネージャーで JMX Bean を照会することで、管理サービスはすべてのサーバーを見つけることができます。管理操作を行えるようにするには、デプロイメント・マネージャーが実行中でなければなりません。これは、セルの {{site.data.keys.product_adj }} JMX Bean のリストを提供するのにデプロイメント・マネージャーが使用されるためです。
+{{ site.data.keys.mf_server }} を実行するサーバーが複数ある場合、サーバーはファームとして構成する必要があります。この構成により、どの管理サービスもファームのすべてのランタイムに接続することが可能になります。クラスターがファームとして構成されていない場合、管理操作を実行する管理サービスと同じアプリケーション・サーバーで実行されるランタイムのみが通知を受けます。その他のランタイムは、変更を認識しません。例えば、ファームとして構成されていないクラスターに、新しいバージョンのアダプターをデプロイした場合、その新しいアダプターにサービスを提供するのは 1 つのサーバーのみです。その他のサーバーは、古いアダプターへのサービス提供を継続します。クラスターを持っていて、ファームを構成する必要がない唯一の状況は、サーバーを WebSphere Application Server Network Deployment にインストールする場合のみです。デプロイメント・マネージャーで JMX Bean を照会することで、管理サービスはすべてのサーバーを見つけることができます。管理操作を行えるようにするには、デプロイメント・マネージャーが実行中でなければなりません。これは、セルの {{ site.data.keys.product_adj }} JMX Bean のリストを提供するのにデプロイメント・マネージャーが使用されるためです。
 
 また、ファームを作成する際、そのファームのすべてのメンバーに対して照会を送信するよう、HTTP サーバーを構成することも必要です。HTTP サーバーの構成は、このチュートリアルには含まれていません。このチュートリアルで扱うのは、管理操作がクラスターのすべてのランタイム・コンポーネントに複製されるようにファームを構成することのみです。
 
@@ -435,7 +429,7 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
         httpsPort="9444" />
       ```
     
-    この変更により、サーバー mfp2 の HTTP ポートおよび HTTPS ポートはサーバー mfp1 のポートと競合しなくなります。{{site.data.keys.mf_server }} のインストールを実行する前に必ずポートを変更するようにしてください。 そうでない場合、インストールが完了した後にポートを変更するのであれば、JNDI プロパティー **mfp.admin.jmx.port** にもポートの変更を反映させなければなりません。
+    この変更により、サーバー mfp2 の HTTP ポートおよび HTTPS ポートはサーバー mfp1 のポートと競合しなくなります。{{ site.data.keys.mf_server }} のインストールを実行する前に必ずポートを変更するようにしてください。 そうでない場合、インストールが完了した後にポートを変更するのであれば、JNDI プロパティー **mfp.admin.jmx.port** にもポートの変更を反映させなければなりません。
     
 3. サーバー構成ツールを実行します。
     *  構成 **Hello MobileFirst 2** を作成します。
@@ -483,13 +477,14 @@ Liberty プロファイル jvm.options ファイルが変更されます。ラ�
 
     Liberty との JMX 通信は、Liberty REST コネクター経由で、HTTPS プロトコルを使用して行われます。この通信を使用可能にするには、ファームの各サーバーが他のメンバーの SSL 証明書を認識できなければなりません。トラストストア内の HTTPS 証明書を交換する必要があります。IBM ユーティリティー (**java/bin** 内の IBM JRE ディストリビューションの一部である Keytool など) を使用して、トラストストアを構成します。鍵ストアおよびトラストストアのロケーションは、**server.xml** ファイルに定義されています。デフォルトで、Liberty プロファイルの鍵ストアは **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks** にあります。**server.xml** ファイルで確認できるとおり、このデフォルトの鍵ストアのパスワードは **mobilefirst** です。
     
-    > **ヒント:** このパスワードは Keytool ユーティリティーで変更できますが、Liberty サーバーがその鍵ストアを読み取れるように、server.xml ファイルでもパスワードの変更を行う必要があります。このチュートリアルでは、デフォルトのパスワードを使用します。    * **WLP\_USER\_DIR/servers/mfp1/resources/security** で、`keytool -list -keystore key.jks` と入力します。このコマンドにより、鍵ストア内の証明書が表示されます。存在するのは **default** という名前の証明書 1 つのみです。鍵が表示される前に、鍵ストアのパスワード (mobilefirst) を要求されます。これは、Keytool ユーティリティーを使用する次のすべてのコマンドに当てはまります。
+    > **ヒント:** このパスワードは Keytool ユーティリティーで変更できますが、Liberty サーバーがその鍵ストアを読み取れるように、server.xml ファイルでもパスワードの変更を行う必要があります。このチュートリアルでは、デフォルトのパスワードを使用します。
+    * **WLP\_USER\_DIR/servers/mfp1/resources/security** で、`keytool -list -keystore key.jks` と入力します。このコマンドにより、鍵ストア内の証明書が表示されます。存在するのは **default** という名前の証明書 1 つのみです。鍵が表示される前に、鍵ストアのパスワード (mobilefirst) を要求されます。これは、Keytool ユーティリティーを使用する次のすべてのコマンドに当てはまります。
     * 次のコマンドを使用して、サーバー mfp1 のデフォルト証明書をエクスポートします。`keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`
         * **WLP\_USER\_DIR/servers/mfp2/resources/security** で、次のコマンドを使用してサーバー mfp2 のデフォルト証明書をエクスポートします。`keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`
     * 同じディレクトリーで、次のコマンドを使用してサーバー mfp1 の証明書をインポートします。`keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`。サーバー mfp1 の証明書がサーバー mfp2 の鍵ストアにインポートされ、サーバー mfp2 がサーバー mfp1 への HTTPS 接続を信頼できるようになります。この証明書を信頼するかどうか確認を求められます。
     * **WLP_USER_DIR/servers/mfp1/resources/security** で、次のコマンドを使用してサーバー mfp2 の証明書をインポートします。`keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`このステップの後、2 つのサーバー間の HTTPS 接続が可能になります。
 
-## ファームのテストと {{site.data.keys.mf_console }} での変更内容の確認
+## ファームのテストと {{ site.data.keys.mf_console }} での変更内容の確認
 {: #testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console }
 
 1. 以下の 2 つのサーバーを始動します。
