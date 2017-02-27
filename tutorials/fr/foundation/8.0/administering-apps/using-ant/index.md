@@ -785,7 +785,7 @@ La commande `set-authenticity-data`, spécifiée au sein d'un élément `<app-ve
 
 | Attribut      | Description |	Obligatoire | Par défaut |
 |----------------|-------------|-------------|---------|
-| file | Nom du fichier d'entrée :<ul><li>Fichier de données d'authenticité</li><li>ou fichier d'appareil (fichier .ipa, .apk ou .appx) à partir duquel les données d'authenticité sont extraites.</li></ul> |  Oui | Non disponible | 
+| file | Nom du fichier d'entrée :{::nomarkdown}<ul><li>Fichier de données d'authenticité</li><li>ou fichier d'appareil (fichier .ipa, .apk ou .appx) à partir duquel les données d'authenticité sont extraites.</li></ul>{:/} |  Oui | Non disponible | 
 
 **Exemples**  
 
