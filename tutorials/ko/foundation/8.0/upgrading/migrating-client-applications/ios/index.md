@@ -11,13 +11,13 @@ IBM MobileFirst™ Platform Foundation 버전 6.2.0 이상으로 작성된 기�
 
 #### 다음으로 이동
 {: #jump-to }
-* [버전 업그레이드 준비를 위해 기존 {{site.data.keys.product_adj }} 고유 iOS 앱 스캔](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade)
+* [버전 업그레이드 준비를 위해 기존 {{ site.data.keys.product_adj }} 고유 iOS 앱 스캔](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade)
 * [기존 iOS 프로젝트를 수동으로 마이그레이션](#migrating-an-existing-ios-project-manually)
 * [CocoaPods를 사용하여 기존 원시 iOS 프로젝트를 마이그레이션](#migrating-an-existing-native-ios-project-with-cocoapods)
 * [iOS에서 암호화 마이그레이션](#migrating-encryption-in-ios)
 * [iOS 코드 업데이트](#updating-the-ios-code)
 
-## 버전 업그레이드 준비를 위해 기존 {{site.data.keys.product_adj }} 고유 iOS 앱 스캔
+## 버전 업그레이드 준비를 위해 기존 {{ site.data.keys.product_adj }} 고유 iOS 앱 스캔
 {: #scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade }
 마이그레이션 지원 도구는 Swift 또는 Objective-C를 사용하여 개발된 고유 iOS 앱의 소스를 스캔하고 V8.0에서 더 이상 사용되지 않거나 중단된 API의 보고서를 생성하여 마이그레이션을 위해 IBM MobileFirst™ Platform Foundation의 이전 버전으로 작성된 앱을 준비하도록 도와줍니다. 
 
@@ -28,13 +28,13 @@ IBM MobileFirst™ Platform Foundation 버전 6.2.0 이상으로 작성된 기�
 * node.js 버전 4.0.0 이상이 설치되어 있어야 합니다. 
 * 마이그레이션 프로세스의 제한사항을 검토하고 숙지하십시오. 자세한 정보는 [이전 릴리스에서 앱 마이그레이션](../)을 참조하십시오. 
 
-IBM MobileFirst Platform Foundation의 이전 버전으로 작성된 앱은 몇 가지를 변경하지 않으면 {{site.data.keys.product }} 8.0에서 지원되지 않습니다. 마이그레이션 지원 도구는 기존 버전 앱에서 소스 파일을 스캔하여 프로세스를 단순화하고, V8.0에서 더 이상 사용되지 않거나 더 이상 지원되지 않거나 수정된 API를 식별합니다. 
+IBM MobileFirst Platform Foundation의 이전 버전으로 작성된 앱은 몇 가지를 변경하지 않으면 {{ site.data.keys.product }} 8.0에서 지원되지 않습니다. 마이그레이션 지원 도구는 기존 버전 앱에서 소스 파일을 스캔하여 프로세스를 단순화하고, V8.0에서 더 이상 사용되지 않거나 더 이상 지원되지 않거나 수정된 API를 식별합니다. 
 
 마이그레이션 지원 도구는 앱의 주석 또는 개발자 코드를 수정하거나 이동하지 않습니다. 
 
 1. 다음 방법 중 하나를 사용하여 마이그레이션 지원 도구를 다운로드하십시오. 
     * [Jazzhub 저장소](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool)에서 .tgz 파일을 다운로드하십시오. 
-    * {{site.data.keys.mf_console }}에서 마이그레이션 지원 도구를 포함하는 {{site.data.keys.mf_dev_kit }}을 **mfpmigrate-cli.tgz**라는 파일로 다운로드하십시오. 
+    * {{ site.data.keys.mf_console }}에서 마이그레이션 지원 도구를 포함하는 {{ site.data.keys.mf_dev_kit }}을 **mfpmigrate-cli.tgz**라는 파일로 다운로드하십시오. 
 2. 마이그레이션 지원 도구를 설치하십시오. 
     * 도구를 다운로드한 디렉토리로 변경하십시오. 
     * 다음 명령을 입력하여 NPM을 사용하여 도구를 설치하십시오. 
@@ -55,11 +55,11 @@ IBM MobileFirst Platform Foundation의 이전 버전으로 작성된 앱은 몇 
     **destination_directory**  
    보고서가 작성된 디렉토리입니다.   
     <br/>
-    스캔 명령과 함께 사용될 때 마이그레이션 지원 도구는 V8.0에서 제거되었거나 더 이상 사용되지 않거나 변경된 API를 기존 IBM MobileFirst Platform Foundation 앱에서 식별하여 식별된 대상 디렉토리에 저장합니다. 
+   스캔 명령과 함께 사용될 때 마이그레이션 지원 도구는 V8.0에서 제거되었거나 더 이상 사용되지 않거나 변경된 API를 기존 IBM MobileFirst Platform Foundation 앱에서 식별하여 식별된 대상 디렉토리에 저장합니다. 
 
 ## 기존 iOS 프로젝트를 수동으로 마이그레이션
 {: #migrating-an-existing-ios-project-manually }
-Xcode 프로젝트 내에서 수동으로 기존 원시 iOS 프로젝트를 마이그레이션하고 {{site.data.keys.product }} V8.0으로 계속 개발하십시오. 
+Xcode 프로젝트 내에서 수동으로 기존 원시 iOS 프로젝트를 마이그레이션하고 {{ site.data.keys.product }} V8.0으로 계속 개발하십시오. 
 
 시작하기 전에 다음 조건을 충족해야 합니다. 
 
@@ -71,7 +71,7 @@ Xcode 프로젝트 내에서 수동으로 기존 원시 iOS 프로젝트를 마�
 2. **WorklightAPI** 폴더에서 Headers 폴더를 삭제하십시오. 
 3. **빌드 단계** 섹션의 **라이브러리가 포함된 2진 링크** 탭에서 기본 필수 프레임워크 **IBMMobileFirstPlatformFoundation.framework** 파일에 링크하십시오. 
 
-    이 프레임워크에서는 코어 {{site.data.keys.product_adj }} 기능이 제공됩니다. 마찬가지로, [선택적 기능을 위한 기타 프레임워크](../../../application-development/sdk/ios/#manually-adding-the-mobilefirst-native-sdk)를 추가할 수 있습니다. 
+    이 프레임워크에서는 코어 {{ site.data.keys.product_adj }} 기능이 제공됩니다. 마찬가지로, [선택적 기능을 위한 기타 프레임워크](../../../application-development/sdk/ios/#manually-adding-the-mobilefirst-native-sdk)를 추가할 수 있습니다. 
 
 4. 이전 단계와 마찬가지로 **빌드 단계** 탭의 **라이브러리가 포함된 2진 링크** 섹션에서 프로젝트에 다음 자원을 링크하십시오. 
     * SystemConfiguration.framework
@@ -82,7 +82,7 @@ Xcode 프로젝트 내에서 수동으로 기존 원시 iOS 프로젝트를 마�
         * libz.tbd
         * libc++.tbd
 5. 헤더 검색 경로에서 **$(SRCROOT)/WorklightAPI/include**를 제거하십시오. 
-6. 헤더의 모든 기존 {{site.data.keys.product_adj }} 가져오기를 다음 새 우산형 헤더의 단일 항목으로 바꾸십시오. 
+6. 헤더의 모든 기존 {{ site.data.keys.product_adj }} 가져오기를 다음 새 우산형 헤더의 단일 항목으로 바꾸십시오. 
     * Objective-C: 
 
       ```objc
@@ -102,9 +102,9 @@ V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체
 
 ## CocoaPods를 사용하여 기존 원시 iOS 프로젝트를 마이그레이션
 {: #migrating-an-existing-native-ios-project-with-cocoapods }
-CocoaPods를 사용하고 프로젝트 구성을 변경하여 {{site.data.keys.product }} iOS SDK를 가져옴으로써 V8.0에 대해 작동하도록 기존 고유 iOS 프로젝트를 마이그레이션하십시오. 
+CocoaPods를 사용하고 프로젝트 구성을 변경하여 {{ site.data.keys.product }} iOS SDK를 가져옴으로써 V8.0에 대해 작동하도록 기존 고유 iOS 프로젝트를 마이그레이션하십시오. 
 
-> **참고:** {{site.data.keys.product_adj }} 개발은 iOS 8.0 이상을 사용하여 버전 7.1의 Xcode에서 지원됩니다. 
+> **참고:** {{ site.data.keys.product_adj }} 개발은 iOS 8.0 이상을 사용하여 버전 7.1의 Xcode에서 지원됩니다. 
 
 다음이 있어야 합니다. 
 
@@ -121,7 +121,7 @@ SDK에는 필수 및 선택적 SDK가 포함됩니다. 각 필수 또는 선택�
 |-----|---------|
 | IBMMobileFirstPlatformFoundationPush | 푸시를 사용하는 데 필요한 IBMMobileFirstPlatformFoundationPush 프레임워크를 추가합니다.  | 
 | IBMMobileFirstPlatformFoundationJSONStore | JSONStore 기능을 구현합니다. 앱에서 JSONStore 기능을 사용하려면 Podfile에 이 POD를 포함시키십시오.  |
-| IBMMobileFirstPlatformFoundationOpenSSLUtils | {{site.data.keys.product_adj }} 임베디드 OpenSSL 기능을 포함하고 openssl 프레임워크를 자동으로 로드합니다. {{site.data.keys.product_adj }}에서 제공되는 OpenSSL을 사용하려면 Podfile에 이 POD를 포함시키십시오.  |
+| IBMMobileFirstPlatformFoundationOpenSSLUtils | {{ site.data.keys.product_adj }} 임베디드 OpenSSL 기능을 포함하고 openssl 프레임워크를 자동으로 로드합니다. {{ site.data.keys.product_adj }}에서 제공되는 OpenSSL을 사용하려면 Podfile에 이 POD를 포함시키십시오.  |
 
 1. Xcode에서 프로젝트를 여십시오. 
 2. Xcode 프로젝트에서 **WorklightAPI** 폴더를 삭제(휴지통으로 이동)하십시오. 
@@ -140,7 +140,7 @@ SDK에는 필수 및 선택적 SDK가 포함됩니다. 각 필수 또는 선택�
     * libstdc++.6.dylib
     * libz.dylib
 5. Xcode를 닫으십시오. 
-6. CocoaPods에서 {{site.data.keys.product_adj }} iOS SDK를 가져오십시오. SDK를 가져오려면 다음 단계를 완료하십시오. 
+6. CocoaPods에서 {{ site.data.keys.product_adj }} iOS SDK를 가져오십시오. SDK를 가져오려면 다음 단계를 완료하십시오. 
     * 새 Xcode 프로젝트의 위치에서 **터미널**을 여십시오. 
     * `pod init ` 명령을 실행하여 **Podfile** 파일을 작성하십시오. 
     * 텍스트 편집기로 프로젝트의 루트에 있는 Podfile 파일을 여십시오. 
@@ -162,7 +162,7 @@ SDK에는 필수 및 선택적 SDK가 포함됩니다. 각 필수 또는 선택�
       pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
       ```
         
-      > **참고:** 위의 구문은 **IBMMobileFirstPlatformFoundation** POD의 최신 버전을 가져옵니다. 최신 버전의 {{site.data.keys.product_adj }}를 사용 중이 아닌 경우, 주 버전 번호, 부 버전 번호 및 패치 번호를 포함하여 전체 버전 번호를 추가해야 합니다. 패치 번호의 형식은 YYYYMMDDHH입니다. 예를 들어, **IBMMobileFirstPlatformFoundation** POD의 특정 패치 버전 8.0.2016021411을 가져오기 위한 행은 다음과 같습니다.
+      > **참고:** 위의 구문은 **IBMMobileFirstPlatformFoundation** POD의 최신 버전을 가져옵니다. 최신 버전의 {{ site.data.keys.product_adj }}를 사용 중이 아닌 경우, 주 버전 번호, 부 버전 번호 및 패치 번호를 포함하여 전체 버전 번호를 추가해야 합니다. 패치 번호의 형식은 YYYYMMDDHH입니다. 예를 들어, **IBMMobileFirstPlatformFoundation** POD의 특정 패치 버전 8.0.2016021411을 가져오기 위한 행은 다음과 같습니다.
 
       ```xml
       pod 'IBMMobileFirstPlatformFoundation', '8.0.2016021411'
@@ -177,9 +177,9 @@ SDK에는 필수 및 선택적 SDK가 포함됩니다. 각 필수 또는 선택�
     * Xcode 프로젝트의 처리가 완료되었는지 확인하십시오. 
     * `pod install` 명령을 실행하십시오. 
         
-    이 명령은 {{site.data.keys.product_adj }} SDK **IBMMobileFirstPlatformFoundation.framework** 및 Podfile 및 해당 종속 항목에서 지정되는 기타 프레임워크를 설치합니다. 그런 다음 pods 프로젝트를 생성하고 클라이언트 프로젝트를 {{site.data.keys.product_adj }} SDK와 통합합니다.
+    이 명령은 {{ site.data.keys.product_adj }} SDK **IBMMobileFirstPlatformFoundation.framework** 및 Podfile 및 해당 종속 항목에서 지정되는 기타 프레임워크를 설치합니다. 그런 다음 pods 프로젝트를 생성하고 클라이언트 프로젝트를 {{ site.data.keys.product_adj }} SDK와 통합합니다.
 7. 명령행에서 open **ProjectName.xcworkspace**를 입력하여 Xcode에서 **ProjectName.xcworkspace** 파일을 여십시오. 이 파일은 **ProjectName.xcodeproj** 파일과 동일한 디렉토리에 있습니다. 
-8. 헤더의 모든 기존 {{site.data.keys.product_adj }} 가져오기를 다음 새 우산형 헤더의 단일 항목으로 바꾸십시오. 
+8. 헤더의 모든 기존 {{ site.data.keys.product_adj }} 가져오기를 다음 새 우산형 헤더의 단일 항목으로 바꾸십시오. 
     
    **Objective-C**
     
@@ -267,7 +267,7 @@ iOS API 변경사항을 아래 표에 나열했습니다.
 | {::nomarkdown}<ul><li><code>[WLSimpleDataSharing setSharedToken: myName value: myValue]</code></li><li><code>[WLSimpleDataSharing getSharedToken: myName]]</code></li><li><code>[WLSimpleDataSharing clearSharedToken: myName]</code></li></ul>{:/} | 애플리케이션 사이에서 토큰을 공유하려면 OS API를 사용하십시오.  | 
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/BaseChallengeHandler.html?view=kc)을 사용하십시오.  | 
 | `BaseProvisioningChallengeHandler` | 대체 없음. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다.  | 
-| `ChallengeHandler` | 사용자 정의 게이트웨이 인증 확인의 경우 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)를 사용하십시오.  | 
+| `ChallengeHandler` | 사용자 정의 게이트웨이 인증 확인의 경우 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)를 사용하십시오.  | 
 | `WLChallengeHandler` | [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)를 사용하십시오.  | 
 | `ChallengeHandler.isCustomResponse()` | [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc)를 사용하십시오.  | 
-| `ChallengeHandler.submitAdapterAuthentication` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc)를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)를 사용하십시오.  | 
+| `ChallengeHandler.submitAdapterAuthentication` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc)를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)를 사용하십시오.  | 
