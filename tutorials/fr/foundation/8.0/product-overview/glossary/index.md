@@ -1,6 +1,6 @@
----
+﻿---
 layout: tutorial
-title: Glossaire
+title: Glossary
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -28,9 +28,9 @@ Les références croisées suivantes sont utilisées dans ce glossaire :
 
 Pour d'autres termes et définitions, voir le [site Web IBM Terminology](http://www.ibm.com/software/globalization/terminology/).
 
-## A 
+## A {
 {: #a }
-
+}
 ### Abonnement
 {: #subscription }
 Enregistrement des informations données par un abonné à un courtier ou serveur local pour décrire les publications qu'il souhaite recevoir.
@@ -609,3 +609,4 @@ Panneau situé hors de la zone de l'éditeur et permettant de visualiser ou d'ut
 ### Widget
 {: #widget }
 Application portable réutilisable ou partie de contenu dynamique pouvant être placée sur une page Web, recevoir des entrées et communiquer avec une application ou avec un autre widget.
+
