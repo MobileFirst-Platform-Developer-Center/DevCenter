@@ -13,12 +13,12 @@ weight: 5
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product_full }} アプリケーションは `WorklightResourceRequest` REST API を使用してリソースにアクセスできます。  
+{{ site.data.keys.product_full }} アプリケーションは `WorklightResourceRequest` REST API を使用してリソースにアクセスできます。  
 REST API は、すべてのアダプターおよび外部リソースで機能します。
 
 **前提条件**:
 
-- 必ずご使用のネイティブ [Xamarin アプリケーション](../../sdk/xamarin/)に {{site.data.keys.product }} SDK を追加しておいてください。
+- 必ずご使用のネイティブ [Xamarin アプリケーション](../../sdk/xamarin/)に {{ site.data.keys.product }} SDK を追加しておいてください。
 - [アダプターの作成](../../../adapters/creating-adapters/)方法を参照してください。
 
 ## WLResourceRequest
@@ -129,7 +129,9 @@ request.AddHeader(headerCollection);
 
 ## 詳細情報
 {: #for-more-information }
-> WLResourceRequest について詳しくは、ユーザー文書を参照してください。<img alt="サンプル・アプリケーションのイメージ" src="resource-request-success-xamarin.png" style="float:right"/>
+> WLResourceRequest について詳しくは、ユーザー文書を参照してください。
+
+<img alt="サンプル・アプリケーションのイメージ" src="resource-request-success-xamarin.png" style="float:right"/>
 
 ## サンプル・アプリケーション
 {: #sample-application }

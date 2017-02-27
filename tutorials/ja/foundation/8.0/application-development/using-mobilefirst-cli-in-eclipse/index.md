@@ -14,34 +14,34 @@ THyM は、Eclipse 内での Cordova プロジェクトのインポートおよ�
 
 THyM について詳しくは、[公式 Web サイト](https://www.eclipse.org/thym/)を参照してください。
 
-Eclipse 向け {{site.data.keys.mf_studio }} プラグインは、Eclipse IDE にさまざまな {{site.data.keys.product_adj }} コマンドを公開します。
+Eclipse 向け {{ site.data.keys.mf_studio }} プラグインは、Eclipse IDE にさまざまな {{ site.data.keys.product_adj }} コマンドを公開します。
 具体的には、Open Server Console、Preview App、Register App、Encrypt App、Pull App、Push App、Update App といったコマンドが提供されます。
 
 このチュートリアルでは、THyM プラグインおよび MobileFirst Eclipse プラグインのインストールについて、順を追って説明します。
 
 **前提条件:**
 
-* {{site.data.keys.mf_server }} をローカルで稼働させるか、またはリモートで稼働する {{site.data.keys.mf_server }} がある。
-* {{site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
+* {{ site.data.keys.mf_server }} をローカルで稼働させるか、またはリモートで稼働する {{ site.data.keys.mf_server }} がある。
+* {{ site.data.keys.mf_cli }} が開発者のワークステーションにインストールされている。
 
 #### ジャンプ先:
 {: #jump-to }
-* [{{site.data.keys.mf_studio }} プラグインのインストール](#installing-the-mobilefirst-studio-plug-in)
+* [{{ site.data.keys.mf_studio }} プラグインのインストール](#installing-the-mobilefirst-studio-plug-in)
 * [THyM プラグインのインストール](#installing-the-thym-plug-in)
 * [Cordova プロジェクトの作成](#creating-a-cordova-project)
 * [既存の Cordova プロジェクトのインポート](#importing-an-existing-cordova-project)
-* [Cordova プロジェクトへの {{site.data.keys.product_adj }} SDK の追加](#adding-the-mobilefirst-sdk-to-cordova-project)
-* [{{site.data.keys.product_adj }} コマンド](#mobilefirst-commands)
+* [Cordova プロジェクトへの {{ site.data.keys.product_adj }} SDK の追加](#adding-the-mobilefirst-sdk-to-cordova-project)
+* [{{ site.data.keys.product_adj }} コマンド](#mobilefirst-commands)
 * [ヒント](#tips-and-tricks)
 
 
-## {{site.data.keys.mf_studio }} プラグインのインストール
+## {{ site.data.keys.mf_studio }} プラグインのインストール
 {: #installing-the-mobilefirst-studio-plug-in}
 1. Eclipse 内で、**「ヘルプ」→「Eclipse マーケットプレイス...」**をクリックします。
-2. 「検索」フィールドで「{{site.data.keys.product_adj }}」を検索して、「実行」をクリックします。
+2. 「検索」フィールドで「{{ site.data.keys.product_adj }}」を検索して、「実行」をクリックします。
 3. 「インストール」をクリックします。
 
-	![{{site.data.keys.mf_studio }} インストール時のイメージ](mff_install.png)
+	![{{ site.data.keys.mf_studio }} インストール時のイメージ](mff_install.png)
 
 4. インストール・プロセスを完了します。
 5. Eclipse を再始動してインストールを有効にします。
@@ -92,18 +92,18 @@ Eclipse 向け {{site.data.keys.mf_studio }} プラグインは、Eclipse IDE �
 
 **注**: インポート後に追加のプラットフォームが必要になった場合は、[プラットフォームの追加](#adding-platforms)を参照してください。
 
-## Cordova プロジェクトへの {{site.data.keys.product_adj }} SDK の追加
+## Cordova プロジェクトへの {{ site.data.keys.product_adj }} SDK の追加
 {: #adding-the-mobilefirst-sdk-to-cordova-project }
-Eclipse に [THyM をインストール](#installing-the-thym-plug-in)し [{{site.data.keys.mf_cli }} プラグイン](#installing-the-mobilefirst-studio-plug-in)をインストールした後、[Cordova プロジェクトを作成](#creating-a-cordova-project)、または [Cordova プロジェクトをインポート](#importing-an-existing-cordova-project)したら、以下の手順に従って Cordova プラグイン経由で {{site.data.keys.product_adj }} SDK をインストールできます。
+Eclipse に [THyM をインストール](#installing-the-thym-plug-in)し [{{ site.data.keys.mf_cli }} プラグイン](#installing-the-mobilefirst-studio-plug-in)をインストールした後、[Cordova プロジェクトを作成](#creating-a-cordova-project)、または [Cordova プロジェクトをインポート](#importing-an-existing-cordova-project)したら、以下の手順に従って Cordova プラグイン経由で {{ site.data.keys.product_adj }} SDK をインストールできます。
 
 1. プロジェクト・エクスプローラーで、**plugins** ディレクトリーを右クリックし、**「Install Cordova Plug-in」**を選択します。
 2. 表示されたダイアログ・ボックスの「Registry」タブで**「mfp」**を検索し、**「cordova-plugin-mfp」**を選択して、**「完了」**をクリックします。
 
 	![新規 Cordova プラグインのインストール時のイメージ](New_installing_cordova_plugin.png)
 
-## {{site.data.keys.product_adj }} コマンド
+## {{ site.data.keys.product_adj }} コマンド
 {: #mobilefirst-commands }
-{{site.data.keys.product }} ショートカットにアクセスするには、プロジェクトのルート・ディレクトリーを右クリックして**「IBM MobileFirst Foundation」**に移動します。
+{{ site.data.keys.product }} ショートカットにアクセスするには、プロジェクトのルート・ディレクトリーを右クリックして**「IBM MobileFirst Foundation」**に移動します。
 
 ここでは、以下のコマンドから選択できます。
 
@@ -151,7 +151,6 @@ THyM プラグインを使用したプラットフォームの追加は、シン
 {: #debug-mode }
 デバッグ・モードを使用可能にすると、アプリケーションをブラウザーでプレビューしながら、デバッグ・レベルのログを Eclipse コンソールで確認できます。デバッグ・モードを使用可能にするには、次のようにします。
 
-
 1. Eclipse の「設定」を開きます。
 2. **「MobileFirst Studio Plugins」**を選択して、このプラグインの設定ページを表示します。
 3. **「デバッグ・モードを使用可能にする」**チェック・ボックスが選択されていることを確認した後、**「適用」→「OK」**をクリックします。
@@ -160,9 +159,9 @@ THyM プラグインを使用したプラットフォームの追加は、シン
 {: #live-update }
 アプリケーションをプレビューしながら、ライブ・アップデートを使用できます。アップデートを実行して変更を保存すると、プレビューで変更の内容が自動リフレッシュされることを確認できます。
 
-### {{site.data.keys.mf_server }} の Eclipse への統合
+### {{ site.data.keys.mf_server }} の Eclipse への統合
 {: #integrating-mobilefirst-server-into-eclipse }
-{{site.data.keys.mf_dev_kit }} を使用すると、[{{site.data.keys.mf_server }} を Eclipse](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse) で実行し、上記機能を結合することで、より統合された開発環境を形成することができます。
+{{ site.data.keys.mf_dev_kit }} を使用すると、[{{ site.data.keys.mf_server }} を Eclipse](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse) で実行し、上記機能を結合することで、より統合された開発環境を形成することができます。
 
 ### デモ・ビデオ
 {: #demo-video }

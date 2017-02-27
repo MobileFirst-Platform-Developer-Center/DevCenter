@@ -8,32 +8,32 @@ weight: 6
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product }} SDK は、[Xamarin Component ストア](https://components.xamarin.com/)を通じて入手可能な依存関係の集合で構成されます。この SDK は、Xamarin プロジェクトに追加できます。  
+{{ site.data.keys.product }} SDK は、[Xamarin Component ストア](https://components.xamarin.com/)を通じて入手可能な依存関係の集合で構成されます。この SDK は、Xamarin プロジェクトに追加できます。  
 これらの pod は、次のようなコア機能およびその他の機能に対応しています。
 
 * **MobileFirst.Xamarin** - クライアントとサーバー間の接続を実装し、認証およびセキュリティーの各側面、リソース要求、およびその他の必要なコア機能を処理します。
 * **MobileFirst.JSONStore** - JSONStore のフレームワークを含んでいます。  
 * **MobileFirst.Push** - プッシュ通知のフレームワークを含んでいます。詳しくは、[通知に関するチュートリアル](../../../notifications/)を参照してください。
 
-このチュートリアルでは、Xamarin Component ストアを使用して {{site.data.keys.product_adj }} ネイティブ SDK を新規または既存の Xamarin Android アプリケーションまたは Xamarin iOS アプリケーションに追加する方法について学習します。また、アプリケーションを認識するように {{site.data.keys.mf_server }} を構成する方法についても学習します。
+このチュートリアルでは、Xamarin Component ストアを使用して {{ site.data.keys.product_adj }} ネイティブ SDK を新規または既存の Xamarin Android アプリケーションまたは Xamarin iOS アプリケーションに追加する方法について学習します。また、アプリケーションを認識するように {{ site.data.keys.mf_server }} を構成する方法についても学習します。
 
 **前提条件:**
 
 - Xamarin Studio が開発者のワークステーションにインストールされている。  
-- {{site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
-- [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/)、および [Xamarin 開発環境のセットアップ](../../../installation-configuration/development/xamarin/)の両チュートリアルを読む。
+- {{ site.data.keys.mf_server }} のローカル・インスタンスまたはリモート・インスタンスが稼働している。
+- [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/development/)、および [Xamarin 開発環境のセットアップ](../../../installation-configuration/development/xamarin/)の両チュートリアルを読む。
 
 #### ジャンプ先:
 {: #jump-to }
-- [{{site.data.keys.product_adj }} ネイティブ SDK の追加](#adding-the-mobilefirst-native-sdk)
-- [{{site.data.keys.product_adj }} ネイティブ SDK の更新](#updating-the-mobilefirst-native-sdk)
+- [{{ site.data.keys.product_adj }} ネイティブ SDK の追加](#adding-the-mobilefirst-native-sdk)
+- [{{ site.data.keys.product_adj }} ネイティブ SDK の更新](#updating-the-mobilefirst-native-sdk)
 - [次に使用するチュートリアル](#tutorials-to-follow-next)
 
-## {{site.data.keys.product_adj }} ネイティブ SDK の追加
+## {{ site.data.keys.product_adj }} ネイティブ SDK の追加
 {: #adding-the-mobilefirst-native-sdk }
-以下の手順に従って、新規または既存の Xcode プロジェクトに {{site.data.keys.product_adj }} ネイティブ SDK を追加し、アプリケーションを {{site.data.keys.mf_server }} に登録します。
+以下の手順に従って、新規または既存の Xcode プロジェクトに {{ site.data.keys.product_adj }} ネイティブ SDK を追加し、アプリケーションを {{ site.data.keys.mf_server }} に登録します。
 
-開始する前に、{{site.data.keys.mf_server }} が稼働していることを確認します。  
+開始する前に、{{ site.data.keys.mf_server }} が稼働していることを確認します。  
 ローカルにインストールされているサーバーを使用する場合: **コマンド・ライン**・ウィンドウで、サーバーのフォルダーに移動し、コマンド `./run.sh` を実行します。
 
 ### アプリケーションの作成
@@ -42,7 +42,7 @@ Xamarin Studio または Visual Studio を使用して Xamarin ソリューシ�
 
 ### SDK の追加
 {: #adding-the-sdk }
-1. {{site.data.keys.product_adj }} ネイティブ SDK は、Xamarin Components ストア経由で提供されます。
+1. {{ site.data.keys.product_adj }} ネイティブ SDK は、Xamarin Components ストア経由で提供されます。
 2. Android プロジェクトまたは iOS プロジェクトを展開します。
 3. Android プロジェクトまたは iOS プロジェクトで、**「コンポーネント (Components)」**を右クリックします。
 4. **「さらにコンポーネントを取得 (Get More Components)」**を選択します。![Add-XamarinSDK-tosolution-search](Add-Xamarin-tosolution.png)
@@ -53,12 +53,10 @@ Xamarin Studio または Visual Studio を使用して Xamarin ソリューシ�
 
 ### アプリケーションの登録
 {: #registering-the-application }
-1. {{site.data.keys.mf_console }} をロードします。
+1. {{ site.data.keys.mf_console }} をロードします。
 2. 「アプリケーション」の横の「新規」ボタンをクリックして、新規アプリケーションを登録し、画面に表示される指示に従います。
 3. Android アプリケーションと iOS アプリケーションは別々に登録する必要があります。そうすることで、Android アプリケーションと iOS アプリケーションの両方が正常にサーバーに接続できるようになります。Android アプリケーションと iOS アプリケーションの登録の詳細は、それぞれ `AndroidManifest.xml` と `Info.plist` に記載されています。
 3. アプリケーションが登録されたら、そのアプリケーションの「構成ファイル」タブに移動して、mfpclient.plist ファイルと mfpclient.properties ファイルをコピーまたはダウンロードします。画面上に表示される指示に従って、ファイルをプロジェクトに追加します。
-
-
 
 ### セットアップ・プロセスの完了
 {: #completing-the-setup-process }
@@ -74,7 +72,7 @@ Xamarin Studio または Visual Studio を使用して Xamarin ソリューシ�
 
 ### SDK の参照
 {: #referencing-the-sdk }
-{{site.data.keys.product_adj }} ネイティブ SDK を使用する場合はいつでも、必ず {{site.data.keys.product }} フレームワークをインポートするようにしてください。
+{{ site.data.keys.product_adj }} ネイティブ SDK を使用する場合はいつでも、必ず {{ site.data.keys.product }} フレームワークをインポートするようにしてください。
 
 CommonProject:
 
@@ -84,38 +82,37 @@ using Worklight;
 
 iOS:
 
-
 ```csharp
 using MobileFirst.Xamarin.iOS;
 ```
 
-Android: 
+Android:
 
 ```csharp
 using Worklight.Xamarin.Android;
 ```
 
-## {{site.data.keys.product_adj }} ネイティブ SDK の更新
+## {{ site.data.keys.product_adj }} ネイティブ SDK の更新
 {: #updating-the-mobilefirst-native-sdk }
-{{site.data.keys.product_adj }} ネイティブ SDK を最新リリースで更新するには、Xamarin Components ストア経由で SDK のバージョンを更新します。
+{{ site.data.keys.product_adj }} ネイティブ SDK を最新リリースで更新するには、Xamarin Components ストア経由で SDK のバージョンを更新します。
 
-## 生成される{{site.data.keys.product_adj }} ネイティブ SDK 成果物
+## 生成される{{ site.data.keys.product_adj }} ネイティブ SDK 成果物
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
-このファイルは、{{site.data.keys.mf_server }} に iOS アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。
+このファイルは、{{ site.data.keys.mf_server }} に iOS アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。
 
 | プロパティー            | 説明                                                         | 値の例 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | {{site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
-| wlServerHost        | {{site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
-| wlServerPort        | {{site.data.keys.mf_server }} のポート。                                 | 9080           |
-| wlServerContext     | {{site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
+| wlServerProtocol    | {{ site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
+| wlServerHost        | {{ site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
+| wlServerPort        | {{ site.data.keys.mf_server }} のポート。                                 | 9080           |
+| wlServerContext     | {{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
 | languagePreferences | クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
 
 ## 次に使用するチュートリアル
 {: #tutorials-to-follow-next }
-これで {{site.data.keys.product_adj }} ネイティブ SDK が組み込まれたので、以下の作業を行うことができます。
+これで {{ site.data.keys.product_adj }} ネイティブ SDK が組み込まれたので、以下の作業を行うことができます。
 
 - [アダプター開発に関するチュートリアル](../../../adapters/)を検討する
 - [認証とセキュリティーに関するチュートリアル](../../../authentication-and-security/)を検討する

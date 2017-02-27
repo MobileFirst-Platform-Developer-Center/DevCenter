@@ -76,7 +76,6 @@ var queryPart1 = WL.JSONStore.QueryPart()
                    .lessOrEqualThan('age', 10)
 
 var options = {
-
   // Returns a maximum of 10 documents, default no limit.
   limit: 10,
 
@@ -200,12 +199,11 @@ WL.JSONStore.get(collectionName)
 WL.JSONStore.destroy()
 
 .then(function () {
-
   // Handle success.
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -215,19 +213,18 @@ WL.JSONStore.destroy()
 WL.JSONStore.closeAll()
 
 .then(function () {
-
   // Handle success.
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
 #### Security - ストアへのアクセスに使用されるパスワードの変更
 {: #security-change-the-password-that-is-used-to-access-a-store }
 ```javascript
-// The password should be user input. 
+// The password should be user input.
 // It is hard-coded in the example for brevity.
 var oldPassword = '123';
 var newPassword = '456';
@@ -251,7 +248,8 @@ WL.JSONStore.changePassword(oldPassword, newPassword, username)
 })
 
 .fail(function (errorObject) {
-   // Make sure you do not leave the password(s) in memory.
+
+  // Make sure you do not leave the password(s) in memory.
   clearPasswords();
 
   // Handle failure.
@@ -288,14 +286,13 @@ WL.JSONStore.get(collectionName)
   // and decide whether or not to mark documents as clean.
   return WL.JSONStore.get(collectionName).markClean(dirtyDocs);
 })
- 
-.then(function () {
 
+.then(function () {
   // Handle markClean success.
 })
  
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -360,12 +357,13 @@ WL.JSONStore.get(collectionName)
 .isDirty(doc)
 
 .then(function (isDocumentDirty) {
-// Handle success.
-// isDocumentDirty - true if dirty, false otherwise.
+  // Handle success.
+
+  // isDocumentDirty - true if dirty, false otherwise.
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -383,7 +381,7 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -397,14 +395,14 @@ WL.JSONStore.get(collectionName)
 .removeCollection()
 
 .then(function () {
-
   // Handle success.
-// Note: You must call the 'init' API to re-use the empty collection.
+
+  // Note: You must call the 'init' API to re-use the empty collection.
   // See the 'clear' API if you just want to remove all data that is inside.
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -418,14 +416,14 @@ WL.JSONStore.get(collectionName)
 .clear()
 
 .then(function () {
-
   // Handle success.
-// Note: You might want to use the 'removeCollection' API
+
+  // Note: You might want to use the 'removeCollection' API
   // instead if you want to change the search fields.
 })
 
 .fail(function (errorObject) {
-   // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -435,7 +433,6 @@ WL.JSONStore.get(collectionName)
 WL.JSONStore.startTransaction()
 
 .then(function () {
-
   // Handle startTransaction success.
   // You can call every JSONStore API method except:
   // init, destroy, removeCollection, and closeAll.
@@ -458,14 +455,13 @@ WL.JSONStore.startTransaction()
 })
 
 .fail(function (errorObject) {
-   // Handle failure for any of the previous JSONStore operation.
+  // Handle failure for any of the previous JSONStore operation.
   //(startTransaction, add, remove).
 
   WL.JSONStore.rollbackTransaction()
 
   .then(function () {
-
-  // Handle rollback success.
+    // Handle rollback success.
   })
 
   .fail(function () {
@@ -484,7 +480,7 @@ WL.JSONStore.fileInfo()
 })
 
   .fail(function () {
-    // Handle failure.
+  // Handle failure.
 });
 ```
 
@@ -1274,6 +1270,7 @@ try {
 }
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
+
   // An exception occured. Take care of it to prevent further damage.
   WLJSONStore.getInstance(ctx).rollbackTransaction();
 

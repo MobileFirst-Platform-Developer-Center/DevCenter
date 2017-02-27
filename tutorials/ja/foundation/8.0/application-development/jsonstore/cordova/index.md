@@ -12,18 +12,15 @@ downloads:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 前提条件
-
 {: #prerequisites }
 * [JSONStore 親チュートリアル](../)を読む。
-* {{site.data.keys.product_adj }} Cordova SDK が プロジェクトに追加されていることを確認する。[『Cordova アプリケーションへの {{site.data.keys.product }} SDK の追加』](../../../application-development/sdk/cordova/)チュートリアルに従ってください。 
+* {{ site.data.keys.product_adj }} Cordova SDK が プロジェクトに追加されていることを確認する。[『Cordova アプリケーションへの {{ site.data.keys.product }} SDK の追加』](../../../application-development/sdk/cordova/)チュートリアルに従ってください。 
 
 #### ジャンプ先:
 {: #jump-to}
 * [JSONStore の追加](#adding-jsonstore)
-* [基本的な使用法
-](#basic-usage)
-* [高度な使用法
-](#advanced-usage)
+* [基本的な使用法](#basic-usage)
+* [高度な使用法](#advanced-usage)
 * [サンプル・アプリケーション](#sample-application)
 
 ## JSONStore の追加
@@ -36,7 +33,6 @@ Cordova アプリケーションに JSONStore プラグインを追加するに�
 ![JSONStore フィーチャーの追加](jsonstore-add-plugin.png)
 
 ## 基本的な使用法
-
 {: #basic-usage }
 ### 初期化
 {: #initialize }
@@ -44,12 +40,10 @@ Cordova アプリケーションに JSONStore プラグインを追加するに�
 
 コレクションの開始またはプロビジョニングは、コレクションとドキュメントが含まれる永続ストレージを作成することを意味します (永続ストレージが存在しない場合)。永続ストレージが暗号化され、正しいパスワードが渡されると、そのデータにアクセスできるようにするための、セキュリティー上必要な手順が実行されます。
 
-
 ```javascript
 var collections = {
     people : {
-
-    searchFields : {name: 'string', age: 'integer'}
+        searchFields : {name: 'string', age: 'integer'}
   }
 };
 
@@ -60,10 +54,9 @@ WL.JSONStore.init(collections).then(function (collections) {
 });
 ```
 
-> 初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』**、**『複数ユーザー・サポート』**、および**『{{site.data.keys.product_adj }} アダプターの統合』**を参照してください。
+> 初期化時に有効にできるオプション・フィーチャーについては、このチュートリアルの後半にある**『セキュリティー』**、**『複数ユーザー・サポート』**、および**『{{ site.data.keys.product_adj }} アダプターの統合』**を参照してください。
 
 ### 取得
-
 {: #get }
 コレクションへのアクセス機能を作成するには、`get` を使用します。get を呼び出す前に `init` を呼び出す必要があります。このようにしないと、`get` の結果は不明確なものになります。
 
@@ -91,7 +84,6 @@ WL.JSONStore.get(collectionName).add(data, options).then(function () {
 ```
 
 ### 検索
-
 {: #find }
 * 照会を使用してコレクション内のドキュメントを見つけるには、`find` を使用します。   
 * コレクション内のすべてのドキュメントを取り出すには、`findAll` を使用します。  
@@ -135,7 +127,6 @@ else {
 ```
 
 ### 置換
-
 {: #replace }
 コレクション内のドキュメントを変更するには、`replace` を使用します。置換の実行に使用するフィールドは `_id` で、これはドキュメントの固有 ID です。
 
@@ -156,12 +147,11 @@ WL.JSONStore.get(collectionName).replace(document, options).then(function (numbe
 この例では、ドキュメント `{_id: 1, json: {name: 'yoel', age: 23} }` がコレクションにあることを前提としています。
 
 ### 削除
-
 {: #remove }
 ドキュメントをコレクションから削除するには、`remove` を使用します。  
 push が呼び出されるまで、ドキュメントはコレクションから消去 されません。  
 
-> 詳しくは、このチュートリアルの後半にある**{{site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
+> 詳しくは、このチュートリアルの後半にある**{{ site.data.keys.product_adj }}『アダプターの統合』**セクションを参照してください。
 
 ```javascript
 var query = {_id: 1};
@@ -194,9 +184,7 @@ WL.JSONStore.get(collectionName).removeCollection().then(function (removeCollect
 以下のデータを削除するには、`destroy` を使用します。
 
 * すべてのドキュメント
-
 * すべてのコレクション
-
 * すべてのストア (このチュートリアル後半の**『複数ユーザー・サポート』**を参照)
 * すべての JSONStore メタデータおよびセキュリティー成果物 (このチュートリアル後半の**『セキュリティー』**を参照)
 
@@ -211,21 +199,17 @@ WL.JSONStore.destroy().then(function () {
 
 ### セキュリティー
 {: #security }
-パスワードを `init` 関数に渡すことにより、ストア内のすべてのコレクションを保護することができます。
-パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
+パスワードを `init` 関数に渡すことにより、ストア内のすべてのコレクションを保護することができます。パスワードを渡さないと、ストア内のすべてのコレクションにあるドキュメントが暗号化されません。
 
 データ暗号化は、Android、iOS、Windows 8.1 Universal および Windows 10 UWP の各環境でのみ使用可能です。  
 一部のセキュリティー・メタデータは、*キーチェーン* (iOS)、*共有設定* (Android) または*資格情報保管ボックス* (Windows 8.1) に保管されます。  
-ストアは 256 ビットの Advanced Encryption Standard
-(AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation
-Function 2 (PBKDF2) により強化されています。
+ストアは 256 ビットの Advanced Encryption Standard (AES) 鍵で暗号化されます。すべての鍵は Password-Based Key Derivation Function 2 (PBKDF2) により強化されています。
 
 `closeAll` を使用して、`init` を再度呼び出すまですべてのコレクションへのアクセスをロックします。`init` をログイン関数と考えると、`closeAll` はそれに対応するログアウト関数と考えることができます。`changePassword` を使用して、パスワードを変更します。
 
 ```javascript
 var collections = {
-    people : {
-
+  people: {
     searchFields: {name: 'string'}
   }
 };
@@ -239,19 +223,18 @@ WL.JSONStore.init(collections, options).then(function () {
 
 #### 暗号化
 {: #encryption }
-*iOS のみ*。デフォルトでは、{{site.data.keys.product_adj }} Cordova SDK for iOS は、iOS 提供の API に暗号化を依存しています。これを OpenSSL に置換したい場合は、以下のようにします。
+*iOS のみ*。デフォルトでは、{{ site.data.keys.product_adj }} Cordova SDK for iOS は、iOS 提供の API に暗号化を依存しています。これを OpenSSL に置換したい場合は、以下のようにします。
 
 1. cordova-plugin-mfp-encrypt-utils プラグイン `cordova plugin add cordova-plugin-mfp-encrypt-utils` を追加します。
 2. アプリケーション・ロジックで、`WL.SecurityUtils.enableNativeEncryption(false)` を使用して OpenSSL オプションを有効にします。
 
 ### 複数ユーザー・サポート
 {: #multiple-user-support }
-単一の {{site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`init` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名 **jsonstore** が使用されます。
+単一の {{ site.data.keys.product_adj }} アプリケーションに、異なるコレクションを含む複数のストアを作成できます。`init` 関数はオプション・オブジェクトとユーザー名を受け取ります。ユーザー名が指定されていない場合、デフォルトのユーザー名 **jsonstore** が使用されます。
 
 ```javascript
 var collections = {
-    people : {
-
+  people: {
     searchFields: {name: 'string'}
   }
 };
@@ -263,7 +246,7 @@ WL.JSONStore.init(collections, options).then(function () {
 });
 ```
 
-### {{site.data.keys.product_adj }} アダプターの統合
+### {{ site.data.keys.product_adj }} アダプターの統合
 {: #mobilefirst-adapter-integration }
 このセクションは、ユーザーがアダプターについて理解していることを前提とします。  
 
@@ -304,12 +287,11 @@ function replacePerson(data) {
 }
 ```
 
-#### {{site.data.keys.product_adj }} アダプターにリンクされているコレクションの初期化
+#### {{ site.data.keys.product_adj }} アダプターにリンクされているコレクションの初期化
 {: #initialize-a-collection-linked-to-a-mobilefirst-adapter }
 ```javascript
 var collections = {
-    people : {
-
+  people : {
     searchFields : {name: 'string', age: 'integer'},
     adapter : {
       name: 'People',
@@ -388,9 +370,9 @@ WL.JSONStore.get(collectionName).push().then(function (response) {
 ```
 
 ### 拡張
-
 {: #enhance }
-コア API をニーズに合うように拡張するには、`enhance` を使用します。それには、関数をコレクションのプロトタイプに追加します。この例 (下記のコード・スニペット) は、`enhance` を使用して、`keyvalue` コレクションで動作する関数 `getValue` を追加する方法を示しています。この関数は、唯一のパラメーターとして `key` (ストリング) を受け取り、単一の結果を返します。
+コア API をニーズに合うように拡張するには、`enhance` を使用します。それには、関数をコレクションのプロトタイプに追加します。
+この例 (下記のコード・スニペット) は、`enhance` を使用して、`keyvalue` コレクションで動作する関数 `getValue` を追加する方法を示しています。この関数は、唯一のパラメーターとして `key` (ストリング) を受け取り、単一の結果を返します。
 
 ```javascript
 var collectionName = 'keyvalue';
