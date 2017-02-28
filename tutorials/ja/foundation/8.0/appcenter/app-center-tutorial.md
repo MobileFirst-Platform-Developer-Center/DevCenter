@@ -19,7 +19,7 @@ Application Center は、{{ site.data.keys.product_adj }} アプリケーショ�
 
 > **注:** iOS アプリケーションのストアへの提出および検証のために Test Flight または iTunes Connect を使用して生成されたアーカイブ・ファイルおよび IPA ファイルにより、ランタイムの異常終了や失敗が発生する場合があります。詳細については、ブログ[『Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0』](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/)をご覧ください。
 
-Application Center はさまざまな状況で使用できます。例えば、以下があります。 
+Application Center はさまざまな状況で使用できます。例えば、以下があります。
 
 * 組織全体の企業アプリケーション・ストアとして。
 * 開発中、チーム内にアプリケーションを配布するため。
@@ -190,7 +190,7 @@ Application Center コンソールを使用して、以下の方法でカタロ�
 
 ### ストアへの新規アプリケーションの追加
 {: #adding-new-applications-to-the-store }
-![App Center にアプリケーションを追加するイメージ]({{)
+![App Center にアプリケーションを追加するイメージ]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
 
 ストアに新規アプリケーションを追加するには、以下のようにします。
 
