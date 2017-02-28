@@ -7,12 +7,12 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-아래에 {{site.data.keys.mf_server }} 컨테이너로 IBM Container를 보호하기 위해 수행할 수 있는 몇몇 방법이 있습니다. 
+아래에 {{ site.data.keys.mf_server }} 컨테이너로 IBM Container를 보호하기 위해 수행할 수 있는 몇몇 방법이 있습니다. 
 
 #### 다음으로 이동
 {: #jump-to }
 * [ATS(App Transport Security) 구성](#configuring-app-transport-security-ats)
-* [IBM Containers에서 {{site.data.keys.product_full }}의 보안 구성](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
+* [IBM Containers에서 {{ site.data.keys.product_full }}의 보안 구성](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
 * [컨테이너의 LDAP 구성](#ldap-configuration-for-containers)
 
 ## ATS(App Transport Security) 구성
@@ -56,30 +56,30 @@ ATS 구성은 기타 비iOS 모바일 운영 체제에서 연결 중인 애플�
 </dict>
 ```
 
-## IBM Containers에서 {{site.data.keys.product_full }}의 보안 구성	
+## IBM Containers에서 {{ site.data.keys.product_full }}의 보안 구성	
 {: #security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers }
-IBM Containers의 {{site.data.keys.product }} 인스턴스 보안 구성은 비밀번호 암호화, 애플리케이션 인증 검사 사용, 콘솔에 대한 액세스 보호를 포함해야 합니다. 
+IBM Containers의 {{ site.data.keys.product }} 인스턴스 보안 구성은 비밀번호 암호화, 애플리케이션 인증 검사 사용, 콘솔에 대한 액세스 보호를 포함해야 합니다. 
 
 ### 비밀번호 암호화
 {: #encrypting-passwords }
-{{site.data.keys.mf_server }} 사용자의 비밀번호를 암호화된 형식으로 저장하십시오. Liberty 프로파일에서 사용 가능한 securityUtility 명령을 사용하여 XOR 또는 AES 암호화로 비밀번호를 인코딩할 수 있습니다. 그런 다음 암호화된 비밀번호를 /usr/env/server.env 파일에 복사할 수 있습니다. 지시사항은 {{site.data.keys.mf_server }}에 구성된 사용자 역할의 비밀번호 암호화를 참조하십시오. 
+{{ site.data.keys.mf_server }} 사용자의 비밀번호를 암호화된 형식으로 저장하십시오. Liberty 프로파일에서 사용 가능한 securityUtility 명령을 사용하여 XOR 또는 AES 암호화로 비밀번호를 인코딩할 수 있습니다. 그런 다음 암호화된 비밀번호를 /usr/env/server.env 파일에 복사할 수 있습니다. 지시사항은 {{ site.data.keys.mf_server }}에 구성된 사용자 역할의 비밀번호 암호화를 참조하십시오. 
 
 ### 애플리케이션 인증 유효성 검증
 {: #application-authenticity-validation }
-권한 없는 모바일 애플리케이션에서 {{site.data.keys.mf_server }}에 액세스하지 못하도록 애플리케이션 인증 보안 검사를 사용하십시오. 자세히 보기...
+권한 없는 모바일 애플리케이션에서 {{ site.data.keys.mf_server }}에 액세스하지 못하도록 [애플리케이션 인증 보안 검사를 사용](../../../authentication-and-security/application-authenticity)하십시오.
 
-### {{site.data.keys.mf_console }}과 {{site.data.keys.mf_analytics_console }}의 SSL 구성
+### {{ site.data.keys.mf_console }}과 {{ site.data.keys.mf_analytics_console }}의 SSL 구성
 {: #configure-ssl-for-mobilefirst-operations-console-and-mobilefirst-analytics-console }
-{{site.data.keys.mf_server }}에서 HTTPS(HTTP over SSL)를 사용하여 {{site.data.keys.mf_console }}과 {{site.data.keys.mf_analytics_console }}에 대한 액세스를 보호할 수 있습니다.   
-{{site.data.keys.mf_server }}에서 HTTPS를 사용하려면 인증서를 포함하는 키 저장소를 작성하여 **usr/security** 폴더에 배치하십시오. 그런 다음 구성된 키 저장소를 사용하도록 **usr/config/keystore.xml** 파일을 업데이트하십시오. 
+{{ site.data.keys.mf_server }}에서 HTTPS(HTTP over SSL)를 사용하여 {{ site.data.keys.mf_console }}과 {{ site.data.keys.mf_analytics_console }}에 대한 액세스를 보호할 수 있습니다.   
+{{ site.data.keys.mf_server }}에서 HTTPS를 사용하려면 인증서를 포함하는 키 저장소를 작성하여 **usr/security** 폴더에 배치하십시오. 그런 다음 구성된 키 저장소를 사용하도록 **usr/config/keystore.xml** 파일을 업데이트하십시오. 
 
 ### 백엔드에 대한 연결 보안 설정
 {: #securing-a-connection-to-the-back-end }
-컨테이너와 사내 구축형 백엔드 시스템 간 보안 연결이 필요한 경우 Bluemix Secure Gateway 서비스를 사용할 수 있습니다. 구성 세부사항은 IBM Bluemix Containers의 {{site.data.keys.product }}에서 사내 구축형 백엔드에 안전하게 연결 문서에서 제공됩니다. 
+컨테이너와 사내 구축형 백엔드 시스템 간 보안 연결이 필요한 경우 Bluemix Secure Gateway 서비스를 사용할 수 있습니다. 구성 세부사항은 IBM Bluemix Containers의 {{ site.data.keys.product }}에서 사내 구축형 백엔드에 안전하게 연결 문서에서 제공됩니다. 
 
-#### {{site.data.keys.mf_server }}에 구성된 사용자 역할의 비밀번호 암호화
+#### {{ site.data.keys.mf_server }}에 구성된 사용자 역할의 비밀번호 암호화
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
-{{site.data.keys.mf_server }}에 대해 구성된 사용자 역할의 비밀번호를 암호화할 수 있습니다.   
+{{ site.data.keys.mf_server }}에 대해 구성된 사용자 역할의 비밀번호를 암호화할 수 있습니다.   
 비밀번호는 **package_root/mfpf-server/usr/env** 폴더와 **package_root/mfpf-analytics/usr/env** 폴더의 **server.env** 파일에 구성되어 있습니다. 비밀번호를 암호화된 형식으로 저장해야 합니다. 
 
 1. Liberty 프로파일에서 `securityUtility` 명령을 사용하여 비밀번호를 인코딩할 수 있습니다. XOR 또는 AES 암호화를 선택하여 비밀번호를 인코딩하십시오. 
@@ -95,27 +95,27 @@ IBM Containers의 {{site.data.keys.product }} 인스턴스 보안 구성은 비�
 
 #### 개인용 IP 주소를 사용하여 컨테이너 통신 보안 설정	
 {: securing-container-communication-using-a-private-ip-address }
-{{site.data.keys.mf_server }} 컨테이너와 {{site.data.keys.mf_analytics }} 컨테이너 간 통신을 보호하려면 `mfpfProperties.xml` 파일에 {{site.data.keys.mf_analytics }} 컨테이너의 개인용 IP 주소를 포함해야 합니다. 
+{{ site.data.keys.mf_server }} 컨테이너와 {{ site.data.keys.mf_analytics }} 컨테이너 간 통신을 보호하려면 `mfpfProperties.xml` 파일에 {{ site.data.keys.mf_analytics }} 컨테이너의 개인용 IP 주소를 포함해야 합니다. 
 
-이 태스크를 완료하려면 {{site.data.keys.mf_analytics }} 컨테이너의 개인용 IP가 필요합니다. `cf ic inspect analytics_container_id` 명령을 사용하여 이 IP를 얻을 수 있습니다. 명령 출력에서 IP 주소 필드를 찾으십시오. **유의사항:** {{site.data.keys.mf_analytics }}를 사용하려는 경우에는 {{site.data.keys.mf_server }} 이미지 구성하고 배치하여 실행하기 전에 {{site.data.keys.mf_analytics }} 이미지를 구성하고 빌드하여 실행해야 합니다. 
+이 태스크를 완료하려면 {{ site.data.keys.mf_analytics }} 컨테이너의 개인용 IP가 필요합니다. `cf ic inspect analytics_container_id` 명령을 사용하여 이 IP를 얻을 수 있습니다. 명령 출력에서 IP 주소 필드를 찾으십시오. **유의사항:** {{ site.data.keys.mf_analytics }}를 사용하려는 경우에는 {{ site.data.keys.mf_server }} 이미지 구성하고 배치하여 실행하기 전에 {{ site.data.keys.mf_analytics }} 이미지를 구성하고 빌드하여 실행해야 합니다. 
 
 mfpf-server/usr/config/mfpfproperties.xml 파일을 편집하여 다음 단계를 완료하십시오. 
 
-1. **mfp.analytics.url** 특성을 {{site.data.keys.mf_analytics }} 컨테이너의 개인용 IP 주소로 설정하십시오. 예: `<jndiEntry jndiName="mfp.analytics.url" value="http://AnalyticsContainerPrivateIP:9080/analytics-service/rest"/>`
+1. **mfp.analytics.url** 특성을 {{ site.data.keys.mf_analytics }} 컨테이너의 개인용 IP 주소로 설정하십시오. 예: `<jndiEntry jndiName="mfp.analytics.url" value="http://AnalyticsContainerPrivateIP:9080/analytics-service/rest"/>`
 
     개인용 IP 주소가 변경된 경우 mfpfproperties.xml 파일에 새 IP 주소를 제공하고 prepareserver.sh 스크립트와 starterserver.sh 스크립트를 실행하여 컨테이너를 다시 빌드하고 배치하십시오. 
     
-2. 네트워크에서 {{site.data.keys.mf_analytics_console }}에 액세스할 수 있도록 **mfp.analytics.console.url** 특성을 {{site.data.keys.mf_analytics }} 컨테이너의 공용 IP 주소로 설정하십시오. 예: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
+2. 네트워크에서 {{ site.data.keys.mf_analytics_console }}에 액세스할 수 있도록 **mfp.analytics.console.url** 특성을 {{ site.data.keys.mf_analytics }} 컨테이너의 공용 IP 주소로 설정하십시오. 예: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
 
 #### 컨테이너에서 실행 중인 콘솔에 대한 액세스 제한	
 {: #restricting-access-to-the-consoles-running-on-containers }
-IBM Containers에서 실행 중인 콘솔에 대한 요청을 차단하기 위해 TAI(Trust Association Interceptor)를 작성하고 배치하여 프로덕션 환경에서 {{site.data.keys.mf_console }}과 {{site.data.keys.mf_analytics_console }}에 대한 액세스를 제한할 수 있습니다. 
+IBM Containers에서 실행 중인 콘솔에 대한 요청을 차단하기 위해 TAI(Trust Association Interceptor)를 작성하고 배치하여 프로덕션 환경에서 {{ site.data.keys.mf_console }}과 {{ site.data.keys.mf_analytics_console }}에 대한 액세스를 제한할 수 있습니다. 
 
 TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정하는 사용자 특정 필터링 로직을 구현할 수 있습니다. 이 필터링 메소드는 필요한 경우 사용자 고유 인증 메커니즘을 추가하는 유연성을 제공합니다. 
 
 [Liberty 프로파일에 대한 사용자 정의 TAI 개발](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_dev_custom_tai.html?view=embed)도 참조하십시오. 
 
-1. 보안 메커니즘을 구현하는 사용자 정의 TAI를 작성하여 {{site.data.keys.mf_console }}에 대한 액세스를 제어하십시오. 다음 사용자 정의 TAI 예제에서는 수신 요청의 IP 주소를 사용하여 {{site.data.keys.mf_console }}에 대한 액세스 권한을 제공할지 여부의 유효성을 검증합니다. 
+1. 보안 메커니즘을 구현하는 사용자 정의 TAI를 작성하여 {{ site.data.keys.mf_console }}에 대한 액세스를 제어하십시오. 다음 사용자 정의 TAI 예제에서는 수신 요청의 IP 주소를 사용하여 {{ site.data.keys.mf_console }}에 대한 액세스 권한을 제공할지 여부의 유효성을 검증합니다. 
 
    ```java
    package com.ibm.mfpconsole.interceptor;
@@ -261,20 +261,20 @@ TAI는 요청이 콘솔에 전달되는지 또는 승인이 필요한지 결정�
    </server>
    ```
 
-4. [이미지를 빌드하고 컨테이너를 실행하십시오](../). 이제 구성된 TAI 보안 메커니즘을 충족하는 경우에만 {{site.data.keys.mf_console }}과 Analytics Console에 액세스할 수 있습니다. 
+4. [이미지를 빌드하고 컨테이너를 실행하십시오](../). 이제 구성된 TAI 보안 메커니즘을 충족하는 경우에만 {{ site.data.keys.mf_console }}과 Analytics Console에 액세스할 수 있습니다. 
 
 ## 컨테이너의 LDAP 구성
 {: #ldap-configuration-for-containers }
-외부 LDAP 저장소에 안전하게 연결하도록 {{site.data.keys.product }} 컨테이너를 구성할 수 있습니다. 
+외부 LDAP 저장소에 안전하게 연결하도록 {{ site.data.keys.product }} 컨테이너를 구성할 수 있습니다. 
 
 다음과 같은 용도로 컨테이너에서 외부 LDAP 레지스트리를 사용할 수 있습니다. 
 
-* 외부 LDAP 레지스트리로 {{site.data.keys.product_adj }} 관리 보안을 구성합니다. 
-* 외부 LDAP 레지스트리에 대해 작업하도록 {{site.data.keys.product_adj }} 모바일 애플리케이션을 구성합니다. 
+* 외부 LDAP 레지스트리로 {{ site.data.keys.product_adj }} 관리 보안을 구성합니다. 
+* 외부 LDAP 레지스트리에 대해 작업하도록 {{ site.data.keys.product_adj }} 모바일 애플리케이션을 구성합니다. 
 
 ### LDAP을 사용하여 관리 보안 구성
 {: #configuring-administration-security-with-ldap }
-외부 LDAP 레지스트리로 {{site.data.keys.product_adj }} 관리 보안을 구성합니다.   
+외부 LDAP 레지스트리로 {{ site.data.keys.product_adj }} 관리 보안을 구성합니다.   
 구성 프로세스에는 다음 단계가 포함됩니다. 
 
 * LDAP 저장소 설정과 구성
@@ -356,7 +356,7 @@ LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 Bluemix�
 
 ### LDAP에 대해 작업하도록 앱 구성
 {: #configuring-apps-to-work-with-ldap }
-외부 LDAP 레지스트리에 대해 작업하도록 {{site.data.keys.product_adj }} 모바일 앱을 구성합니다.   
+외부 LDAP 레지스트리에 대해 작업하도록 {{ site.data.keys.product_adj }} 모바일 앱을 구성합니다.   
 구성 프로세스는 로컬 LDAP 저장소와 컨테이너에 연결할 보안 게이트웨이 구성 단계를 포함합니다. (이 단계를 수행하려면 Bluemix에 기존 앱이 있어야 합니다.)
 
 LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 Bluemix에 Secure Gateway 서비스의 인스턴스를 작성한 후 LDAP 레지스트리의 IP 정보를 얻어야 합니다. 이 단계를 수행하려면 로컬 LDAP 호스트 이름과 포트 번호가 필요합니다. 
@@ -370,4 +370,4 @@ LDAP 서버에 대한 보안 게이트웨이 연결을 구성하려면 Bluemix�
 7. **대상 ID** 값과 **클라우드 호스트:포트** 값을 캡처하십시오. LDAP 로그인 모듈에 해당 값을 제공하십시오. 
 
 **결과**  
-로컬 LDAP 서버와 Bluemix의 컨테이너에 있는 {{site.data.keys.product_adj }} 앱 간 통신이 설정됩니다. 로컬 LDAP 서버에 대해 Bluemix 앱의 인증과 권한 부여의 유효성을 검증합니다. 
+로컬 LDAP 서버와 Bluemix의 컨테이너에 있는 {{ site.data.keys.product_adj }} 앱 간 통신이 설정됩니다. 로컬 LDAP 서버에 대해 Bluemix 앱의 인증과 권한 부여의 유효성을 검증합니다. 

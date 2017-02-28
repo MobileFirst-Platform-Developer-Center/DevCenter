@@ -9,7 +9,7 @@ weight: 8
 {% comment %}
 Do note use keywords in the keyword terms, as this presents issues with the glossary sort tool. (You can use keywords in the definitions.)
 When the term should logically use a keyword, use the keyword text in the term, and add a no-translation comment.
-For example, instead of using "{{site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
+For example, instead of using "{{ site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
 <!-- START NON-TRANSLATABLE -->
@@ -19,7 +19,7 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 <!-- END NON-TRANSLATABLE -->
 
 <br/>
-이 용어집에서는 {{site.data.keys.product }} 소프트웨어 및 제품에 대한 용어 및 정의를 제공합니다.
+이 용어집에서는 {{ site.data.keys.product }} 소프트웨어 및 제품에 대한 용어 및 정의를 제공합니다.
 
 이 용어집에서는 다음과 같은 상호 참조가 사용됩니다.
 
@@ -49,7 +49,7 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 
 ### 관리 데이터베이스(Administration Database)
 {: #administration-database }
-{{site.data.keys.mf_console }} 및 관리 서비스의 데이터베이스입니다. 데이터베이스 테이블은 요소(예: 애플리케이션, 어댑터 및 설명과 규모 순서가 있는 프로젝트)를 정의합니다. 
+{{ site.data.keys.mf_console }} 및 관리 서비스의 데이터베이스입니다. 데이터베이스 테이블은 요소(예: 애플리케이션, 어댑터 및 설명과 규모 순서가 있는 프로젝트)를 정의합니다. 
 
 ### 관리 서비스(Administration Service)
 {: #administration-services }
@@ -156,7 +156,7 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 
 ### 브로드캐스트 알림(Broadcast Notification)
 {: #broadcast-notification }
-특정 {{site.data.keys.product_adj }} 애플리케이션의 모든 사용자로 대상화되는 알림입니다. 태그 기반 알림도 참조하십시오.
+특정 {{ site.data.keys.product_adj }} 애플리케이션의 모든 사용자로 대상화되는 알림입니다. 태그 기반 알림도 참조하십시오.
 
 ### 빌드 정의(Build Definition)
 {: #build-definition }
@@ -234,7 +234,7 @@ REST 서비스와 관리 태스크를 호스트하는 애플리케이션입니�
 
 ### 어댑터(Adapter)
 {: #adapter }
-{{site.data.keys.product_adj }} 애플리케이션의 서버 측 코드입니다. 어댑터는 엔터프라이즈 애플리케이션에 연결하고 모바일 애플리케이션과 데이터를 주고 받고 보낸 데이터에서 필요한 서버 측 로직을 수행합니다. 
+{{ site.data.keys.product_adj }} 애플리케이션의 서버 측 코드입니다. 어댑터는 엔터프라이즈 애플리케이션에 연결하고 모바일 애플리케이션과 데이터를 주고 받고 보낸 데이터에서 필요한 서버 측 로직을 수행합니다. 
 
 ### 에뮬레이터(emulator)
 {: emulator }
@@ -414,7 +414,7 @@ XML 데이터 유형을 제한하는 XML 엔티티입니다.
 
 ### 프로젝트 WAR 파일(project WAR file)
 {: #project-war-file }
-{{site.data.keys.product_adj }} 런타임 환경에 대한 구성을 포함하고 애플리케이션 서버에 배치된 웹 아카이브(WAR) 파일입니다.
+{{ site.data.keys.product_adj }} 런타임 환경에 대한 구성을 포함하고 애플리케이션 서버에 배치된 웹 아카이브(WAR) 파일입니다.
 
 ### 프로젝트(project)
 {: #project }
@@ -454,7 +454,7 @@ UN/EDIFACT EDI 표준에서 EDI 컴포지트 데이터 요소의 일부분인 ED
 {: #binary }
 컴파일되거나 실행 가능한 것과 관련되어 있습니다. 
 
-## A 
+## A
 {: #a }
 
 ### Android
@@ -467,7 +467,7 @@ Google에서 작성한 모바일 운영 체제이며 대부분은 Apache 2.0 및
 
 ### Application Center
 {: #application-center }
-모바일 애플리케이션의 단일 저장소에서 팀 구성원 간에 애플리케이션을 공유하고 협업을 이용하는 데 사용할 수 있는 {{site.data.keys.product_adj }} 컴포넌트입니다. 
+모바일 애플리케이션의 단일 저장소에서 팀 구성원 간에 애플리케이션을 공유하고 협업을 이용하는 데 사용할 수 있는 {{ site.data.keys.product_adj }} 컴포넌트입니다. 
 
 ### Application Center 설치 프로그램(Application Center installer)
 {: #application-center-installer }
@@ -518,14 +518,14 @@ JMX(Java Management Extensions) 스펙에서, 자원 및 인스트루먼테이�
 Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-{{site.data.keys.product }} OAuth 보안 기능을 사용하여 Cloudant에 대한 모바일 애플리케이션 호출을 보안하는 데 사용될 수 있는 IMFData SDK에 대한 서버 측 컴포넌트입니다. {{site.data.keys.product_adj }} Data Proxy는 신뢰 연관 인터셉터를 통해 인증을 필요로 합니다. ### MobileFirst Operations Console
+{{ site.data.keys.product }} OAuth 보안 기능을 사용하여 Cloudant에 대한 모바일 애플리케이션 호출을 보안하는 데 사용될 수 있는 IMFData SDK에 대한 서버 측 컴포넌트입니다. {{ site.data.keys.product_adj }} Data Proxy는 신뢰 연관 인터셉터를 통해 인증을 필요로 합니다. ### MobileFirst Operations Console
 {: #mobilefirst-operations-console }
 <!-- START NON-TRANSLATABLE -->
 {% comment %}
 Do not translate "MobileFirst Operations Console" in the term above (site.data.keys.mf_console keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-{{site.data.keys.mf_server }}에 배치된 {{site.data.keys.product_adj }} 런타임 환경을 제어 및 관리하고 사용자 통계를 수집 및 분석하는 데 사용되는 웹 기반 인터페이스입니다. ### MobileFirst 런타임 환경
+{{ site.data.keys.mf_server }}에 배치된 {{ site.data.keys.product_adj }} 런타임 환경을 제어 및 관리하고 사용자 통계를 수집 및 분석하는 데 사용되는 웹 기반 인터페이스입니다. ### MobileFirst 런타임 환경
 {: #mobilefirts-runtime-environment }
 <!-- START NON-TRANSLATABLE -->
 {% comment %}
@@ -539,7 +539,7 @@ Do not translate "MobileFirst" in the term above (site.data.keys.product_adj key
 Do not translate "MobileFirst Server" in the term above (site.data.keys.mf_server keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-보안, 백엔드 연결, 푸시 알림, 모바일 애플리케이션 관리 및 분석을 처리하는 {{site.data.keys.product_adj }} 컴포넌트입니다. {{site.data.keys.mf_server }}는 애플리케이션 서버에서 실행되는 앱의 콜렉션이며, {{site.data.keys.product_adj }} 런타임 환경에 대한 런타임 컨테이너의 역할을 합니다.## N
+보안, 백엔드 연결, 푸시 알림, 모바일 애플리케이션 관리 및 분석을 처리하는 {{ site.data.keys.product_adj }} 컴포넌트입니다. {{ site.data.keys.mf_server }}는 애플리케이션 서버에서 실행되는 앱의 콜렉션이며, {{ site.data.keys.product_adj }} 런타임 환경에 대한 런타임 컨테이너의 역할을 합니다.## N
 {: #n }
 
 ### MobileFirst 어댑터(MobileFirst adapter)
@@ -567,7 +567,7 @@ Do not translate "MobileFirst" in the term above (site.data.keys.product_adj key
 
 ### PKI 브릿지(PKI bridge)
 {: #pki-bridge }
-PKI와 통신하는 데 사용자 인증서 인증(User Certificate Authentication) 프레임워크를 사용하는 {{site.data.keys.mf_server }} 개념입니다.
+PKI와 통신하는 데 사용자 인증서 인증(User Certificate Authentication) 프레임워크를 사용하는 {{ site.data.keys.mf_server }} 개념입니다.
 
 ## S
 {: #s}
