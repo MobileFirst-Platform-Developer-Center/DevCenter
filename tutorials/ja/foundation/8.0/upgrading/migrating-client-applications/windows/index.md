@@ -65,7 +65,6 @@ Visual Studio プロジェクトを V8.0 に手動でアップグレードでき
 
 1. {{ site.data.keys.product_adj }} SDK を V8.0 に更新します。
     * MobileFirst SDK パッケージを手動で削除します。これには、**wlclient.properties** ファイル、および以下の参照が含まれます。
-
         * Newtonsoft.Json
         * SharpCompress
         * worklight-windows8
@@ -109,6 +108,7 @@ Visual Studio プロジェクトを V8.0 に手動でアップグレードでき
 
 #### 非推奨となった Windows C# API クラス
 {: #deprecated-windows-c-api-classes }
+
 | カテゴリー | 説明 | 推奨処置 | 
 |----------|-------------|--------------------|
 | `ChallengeHandler`  | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
@@ -130,6 +130,7 @@ Visual Studio プロジェクトを V8.0 に手動でアップグレードでき
 
 #### 非推奨となった Windows C# API インターフェース
 {: #deprecated-windows-c-api-interfaces }
+
 | カテゴリー | 説明 | 推奨処置 | 
 |----------|-------------|--------------------|
 | `WLHttpResponseListener` | サポートされません。 | 

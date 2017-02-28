@@ -11,13 +11,13 @@ IBM MobileFirst™ Platform Foundation バージョン 6.2.0 以降で作成さ�
 
 #### ジャンプ先
 {: #jump-to }
-* [バージョンアップの前準備として既存の {{site.data.keys.product_adj }} ネイティブ iOS アプリケーションをスキャン](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade)
+* [バージョンアップの前準備として既存の {{ site.data.keys.product_adj }} ネイティブ iOS アプリケーションをスキャン](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade)
 * [既存の iOS プロジェクトを手動でマイグレーション](#migrating-an-existing-ios-project-manually)
 * [既存のネイティブ iOS プロジェクトを CocoaPods を使用してマイグレーション](#migrating-an-existing-native-ios-project-with-cocoapods)
 * [iOS での暗号化のマイグレーション](#migrating-encryption-in-ios)
 * [iOS コードの更新](#updating-the-ios-code)
 
-## バージョンアップの前準備として既存の {{site.data.keys.product_adj }} ネイティブ iOS アプリケーションをスキャン
+## バージョンアップの前準備として既存の {{ site.data.keys.product_adj }} ネイティブ iOS アプリケーションをスキャン
 {: #scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade }
 マイグレーション・アシスト・ツールは、Swift または Objective-C を使用して開発されたネイティブ iOS アプリケーションのソースをスキャンし、V8.0 で非推奨または使用中止となった API のレポートを生成することにより、以前のバージョンの IBM MobileFirst™ Platform Foundation で作成されたアプリケーションのマイグレーションの準備を支援します。
 
@@ -28,13 +28,13 @@ IBM MobileFirst™ Platform Foundation バージョン 6.2.0 以降で作成さ�
 * node.js バージョン 4.0.0 以降がインストールされている必要があります。
 * マイグレーション・プロセスの制限についてよく読み、理解します。詳しくは、[以前のリリースからのアプリケーションのマイグレーション](../)を参照してください。
 
-以前のバージョンの IBM MobileFirst Platform Foundation で作成されたアプリケーションは、一部変更を行わないと {{site.data.keys.product }} 8.0 ではサポートされません。マイグレーション・アシスト・ツールは、既存バージョンのアプリケーションのソース・ファイルをスキャンすることによりこのプロセスを簡素化し、V8.0 で非推奨となった API、非サポート対象となった API、または変更された API を識別します。
+以前のバージョンの IBM MobileFirst Platform Foundation で作成されたアプリケーションは、一部変更を行わないと {{ site.data.keys.product }} 8.0 ではサポートされません。マイグレーション・アシスト・ツールは、既存バージョンのアプリケーションのソース・ファイルをスキャンすることによりこのプロセスを簡素化し、V8.0 で非推奨となった API、非サポート対象となった API、または変更された API を識別します。
 
 マイグレーション・アシスト・ツールでは、アプリケーションの開発者コードおよびコメントの変更や移動は行いません。
 
 1. 以下のいずれかの方法を使用してマイグレーション・アシスト・ツールをダウンロードします。
     * [Jazzhub リポジトリー](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool)から .tgz ファイルをダウンロードします。
-    * {{site.data.keys.mf_console }} から {{site.data.keys.mf_dev_kit }} をダウンロードします。これには、**mfpmigrate-cli.tgz** という名前のファイルとしてマイグレーション・アシスト・ツールが含まれています。
+    * {{ site.data.keys.mf_console }} から {{ site.data.keys.mf_dev_kit }} をダウンロードします。これには、**mfpmigrate-cli.tgz** という名前のファイルとしてマイグレーション・アシスト・ツールが含まれています。
 2. マイグレーション・アシスト・ツールをインストールします。
     * ツールをダウンロードしたディレクトリーに移動します。
     * 以下のコマンドを入力することにより、NPM を使用してツールをインストールします。
@@ -55,25 +55,23 @@ IBM MobileFirst™ Platform Foundation バージョン 6.2.0 以降で作成さ�
     **destination_directory**  
 レポートが作成されるディレクトリー。  
     <br/>
-    マイグレーション・アシスト・ツールを scan コマンドと共に使用すると、ツールは、既存の IBM MobileFirst Platform Foundation アプリケーション内にある、
-V8.0 で削除された API、非推奨となった API、または変更された API を識別し、識別された宛先ディレクトリーにそれらを保存します。
+マイグレーション・アシスト・ツールを scan コマンドと共に使用すると、ツールは、既存の IBM MobileFirst Platform Foundation アプリケーション内にある、V8.0 で削除された API、非推奨となった API、または変更された API を識別し、識別された宛先ディレクトリーにそれらを保存します。
 
 ## 既存の iOS プロジェクトを手動でマイグレーション
 {: #migrating-an-existing-ios-project-manually }
-Xcode プロジェクト内の既存のネイティブ iOS プロジェクトを手動でマイグレーションし、{{site.data.keys.product }} V8.0 での開発を続行します。
+Xcode プロジェクト内の既存のネイティブ iOS プロジェクトを手動でマイグレーションし、{{ site.data.keys.product }} V8.0 での開発を続行します。
 
 開始前に、以下が必要です。
 
 * Xcode 7.0 (iOS 9) 以降で作業している。
 * IBM MobileFirst Platform Foundation 6.2.0 以降で作成された既存のネイティブ iOS プロジェクトがある。
-* V8.0.0 {{site.data.keys.product_adj }} iOS SDK ファイルのコピーにアクセスできなければならない。
+* V8.0.0 {{ site.data.keys.product_adj }} iOS SDK ファイルのコピーにアクセスできなければならない。
 
 1. **「Build Phases」**セクションの**「Link Binary With Libraries」**タブで静的ライブラリー **libWorklightStaticLibProjectNative.a** への既存のすべての参照を削除します。
 2. **WorklightAPI** フォルダーから Headers フォルダーを削除します。
-3. **「Build Phases」**セクションの**
-「Link Binary With Libraries」**タブで、必要なメイン・フレームワーク **IBMMobileFirstPlatformFoundation.framework** ファイルをリンクします。
+3. **「Build Phases」**セクションの**「Link Binary With Libraries」**タブで、必要なメイン・フレームワーク **IBMMobileFirstPlatformFoundation.framework** ファイルをリンクします。
 
-    このフレームワークは、コア {{site.data.keys.product_adj }} 機能を提供します。同様に、[オプション機能用の他のフレームワーク](../../../application-development/sdk/ios/#manually-adding-the-mobilefirst-native-sdk)を追加できます。
+    このフレームワークは、コア {{ site.data.keys.product_adj }} 機能を提供します。同様に、[オプション機能用の他のフレームワーク](../../../application-development/sdk/ios/#manually-adding-the-mobilefirst-native-sdk)を追加できます。
 
 4. 上記ステップと同様に、**「Build Phases」**タブの**「Link Binary With Libraries」**セクションで以下のリソースをプロジェクトにリンクします。
     * SystemConfiguration.framework
@@ -84,7 +82,7 @@ Xcode プロジェクト内の既存のネイティブ iOS プロジェクトを
         * libz.tbd
         * libc++.tbd
 5. ヘッダー検索パスから **$(SRCROOT)/WorklightAPI/include** を削除します。
-6. ヘッダーの既存の {{site.data.keys.product_adj }} import をすべて、次の新しいアンブレラ・ヘッダーの単一エントリーに置換します。
+6. ヘッダーの既存の {{ site.data.keys.product_adj }} import をすべて、次の新しいアンブレラ・ヘッダーの単一エントリーに置換します。
     * Objective-C: 
 
       ```objc
@@ -96,7 +94,7 @@ Xcode プロジェクト内の既存のネイティブ iOS プロジェクトを
       import IBMMobileFirstPlatformFoundation
       ```
         
-これで、{{site.data.keys.product }}、V8.0 iOS SDK で機能するようにアプリケーションがアップグレードされました。
+これで、{{ site.data.keys.product }}、V8.0 iOS SDK で機能するようにアプリケーションがアップグレードされました。
 
 #### 次の作業
 {: #what-to-do-next }
@@ -104,9 +102,9 @@ Xcode プロジェクト内の既存のネイティブ iOS プロジェクトを
 
 ## 既存のネイティブ iOS プロジェクトを CocoaPods を使用してマイグレーション
 {: #migrating-an-existing-native-ios-project-with-cocoapods }
-CocoaPods 使用して {{site.data.keys.product }} iOS SDK を入手し、プロジェクト構成を変更することにより、V8.0 で動作するように既存のネイティブ iOS プロジェクトをマイグレーションします。
+CocoaPods 使用して {{ site.data.keys.product }} iOS SDK を入手し、プロジェクト構成を変更することにより、V8.0 で動作するように既存のネイティブ iOS プロジェクトをマイグレーションします。
 
-> **注:** {{site.data.keys.product_adj }} の開発は、iOS 8.0 以降を使用して Xcode バージョン 7.1 以降でサポートされます。
+> **注:** {{ site.data.keys.product_adj }} の開発は、iOS 8.0 以降を使用して Xcode バージョン 7.1 以降でサポートされます。
 
 以下が必要です。
 
@@ -123,7 +121,7 @@ SDK には、必須の SDK とオプションの SDK があります。必須ま
 |-----|---------|
 | IBMMobileFirstPlatformFoundationPush | プッシュを有効にするための IBMMobileFirstPlatformFoundationPush フレームワークを追加します。 | 
 | IBMMobileFirstPlatformFoundationJSONStore | JSONStore 機能を実装します。アプリケーションで JSONStore 機能を使用する予定である場合は、Podfile でこの pod を組み込みます。 |
-| IBMMobileFirstPlatformFoundationOpenSSLUtils | {{site.data.keys.product_adj }} 組み込み OpenSSL 機能を含んでおり、openssl フレームワークを自動的にロードします。{{site.data.keys.product_adj }} で提供されている OpenSSL を使用する予定である場合は、Podfile でこの pod を組み込みます。 |
+| IBMMobileFirstPlatformFoundationOpenSSLUtils | {{ site.data.keys.product_adj }} 組み込み OpenSSL 機能を含んでおり、openssl フレームワークを自動的にロードします。{{ site.data.keys.product_adj }} で提供されている OpenSSL を使用する予定である場合は、Podfile でこの pod を組み込みます。 |
 
 1. Xcode でプロジェクトを開きます。
 2. Xcode プロジェクトから **WorklightAPI** フォルダーを削除します (ごみ箱へ移動します)。
@@ -142,7 +140,7 @@ SDK には、必須の SDK とオプションの SDK があります。必須ま
     * libstdc++.6.dylib
     * libz.dylib
 5. Xcode を閉じます。
-6. CocoaPods から {{site.data.keys.product_adj }} iOS SDK を取得します。SDK を取得するには、以下のステップを実行します。
+6. CocoaPods から {{ site.data.keys.product_adj }} iOS SDK を取得します。SDK を取得するには、以下のステップを実行します。
     * 新規 Xcode プロジェクトのロケーションで**「Terminal」**を開きます。
     * `pod init` コマンドを実行して **Podfile** ファイルを作成します。
     * テキスト・エディターを使用して、プロジェクトのルートにある Podfile ファイルを開きます。
@@ -164,7 +162,7 @@ SDK には、必須の SDK とオプションの SDK があります。必須ま
       pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
       ```
         
-      > **注:** 上記の構文は、**IBMMobileFirstPlatformFoundation** pod の最新バージョンをインポートします。{{site.data.keys.product_adj }} の最新バージョンを使用しない場合は、メジャー番号、マイナー番号、パッチ番号を含んだ完全なバージョン番号を追加する必要があります。パッチ番号は、YYYYMMDDHH という形式です。例えば、**IBMMobileFirstPlatformFoundation** pod の特定のパッチ・バージョンである 8.0.2016021411 をインポートする場合は、以下のような行になります。
+      > **注:** 上記の構文は、**IBMMobileFirstPlatformFoundation** pod の最新バージョンをインポートします。{{ site.data.keys.product_adj }} の最新バージョンを使用しない場合は、メジャー番号、マイナー番号、パッチ番号を含んだ完全なバージョン番号を追加する必要があります。パッチ番号は、YYYYMMDDHH という形式です。例えば、**IBMMobileFirstPlatformFoundation** pod の特定のパッチ・バージョンである 8.0.2016021411 をインポートする場合は、以下のような行になります。
 
       ```xml
       pod 'IBMMobileFirstPlatformFoundation', '8.0.2016021411'
@@ -179,9 +177,9 @@ SDK には、必須の SDK とオプションの SDK があります。必須ま
     * Xcode プロジェクトが閉じていることを確認します。
     * `pod install` コマンドを実行します。
         
-    このコマンドは、{{site.data.keys.product_adj }} SDK **IBMMobileFirstPlatformFoundation.framework** と、Podfile に指定されている他のすべてのフレームワークおよびそれらの依存関係をインストールします。次に、このコマンドは、pod プロジェクトを生成し、クライアント・プロジェクトを {{site.data.keys.product_adj }} SDK と統合します。
+このコマンドは、{{ site.data.keys.product_adj }} SDK **IBMMobileFirstPlatformFoundation.framework** と、Podfile に指定されている他のすべてのフレームワークおよびそれらの依存関係をインストールします。次に、このコマンドは、pod プロジェクトを生成し、クライアント・プロジェクトを {{ site.data.keys.product_adj }} SDK と統合します。
 7. コマンド・ラインから open **ProjectName.xcworkspace** と入力することによって、Xcode で **ProjectName.xcworkspace** ファイルを開きます。このファイルは、**ProjectName.xcodeproj** ファイルと同じディレクトリーにあります。
-8. ヘッダーの既存の {{site.data.keys.product_adj }} import をすべて、次の新しいアンブレラ・ヘッダーの単一エントリーに置換します。
+8. ヘッダーの既存の {{ site.data.keys.product_adj }} import をすべて、次の新しいアンブレラ・ヘッダーの単一エントリーに置換します。
     
    **Objective-C**
     
@@ -234,7 +232,7 @@ SDK には、必須の SDK とオプションの SDK があります。必須ま
 10. Xcode 7 以降、TLS の適用が必須になりました。「iOS アプリケーションでの TLS セキュア接続の強制」を参照してください。  
 
 <br/>
-これで、{{site.data.keys.product }}、V8.0 iOS SDK で機能するようにアプリケーションがアップグレードされました。
+これで、{{ site.data.keys.product }}、V8.0 iOS SDK で機能するようにアプリケーションがアップグレードされました。
 
 #### 次の作業
 {: #what-to-do-next }
@@ -269,7 +267,7 @@ iOS フレームワークを更新し、必要な構成変更を行った後に�
 | {::nomarkdown}<ul><li><code>[WLSimpleDataSharing setSharedToken: myName value: myValue]</code></li><li><code>[WLSimpleDataSharing getSharedToken: myName]]</code></li><li><code>[WLSimpleDataSharing clearSharedToken: myName]</code></li></ul>{:/} | OS API を使用して、アプリケーション間でトークンを共有してください。 | 
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/BaseChallengeHandler.html?view=kc) を使用します。 | 
 | `BaseProvisioningChallengeHandler` | 代替はありません。デバイス・プロビジョニングは、自動的にセキュリティー・フレームワークによって処理されるようになりました。 | 
-| `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、[`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc) を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジには、[`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc) を使用します。 | 
+| `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、[`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc) を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジには、[`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc) を使用します。 | 
 | `WLChallengeHandler` | [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc) を使用します。 | 
 | `ChallengeHandler.isCustomResponse()` | [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc) を使用します。 | 
-| `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、[`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc) を使用します。{{site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、[`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc) を使用します。 | 
+| `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、[`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc) を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、[`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc) を使用します。 | 

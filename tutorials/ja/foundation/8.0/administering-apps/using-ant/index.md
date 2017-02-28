@@ -7,7 +7,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-**mfpadm** Ant タスクを通じて {{site.data.keys.product_adj }} アプリケーションを管理することができます。
+**mfpadm** Ant タスクを通じて {{ site.data.keys.product_adj }} アプリケーションを管理することができます。
 
 #### ジャンプ先
 {: #jump-to }
@@ -17,12 +17,12 @@ weight: 3
 
 ## 他の機能との比較
 {: #comparison-with-other-facilities }
-{{site.data.keys.product_full }} の管理操作は、以下の方法で実行できます。
+{{ site.data.keys.product_full }} の管理操作は、以下の方法で実行できます。
 
-* {{site.data.keys.mf_console }}。対話式です。
+* {{ site.data.keys.mf_console }}。対話式です。
 * **mfpadm** Ant タスク。
 * **mfpadm** プログラム。
-* {{site.data.keys.product_adj }} 管理 REST サービス。
+* {{ site.data.keys.product_adj }} 管理 REST サービス。
 
 **mfpadm** Ant タスク、**mfpadm** プログラム、および REST サービスは、次のような操作の自動化または無人実行に役立ちます。
 
@@ -34,18 +34,18 @@ weight: 3
 
 ## 前提条件
 {: #prerequisites }
-**mfpadm** ツールは、{{site.data.keys.mf_server }} インストーラーを使用してインストールされます。このページの残りの部分では、**product\_install\_dir** は {{site.data.keys.mf_server }} インストーラーのインストール・ディレクトリーを示します。
+**mfpadm** ツールは、{{ site.data.keys.mf_server }} インストーラーを使用してインストールされます。このページの残りの部分では、**product\_install\_dir** は {{ site.data.keys.mf_server }} インストーラーのインストール・ディレクトリーを示します。
 
 **mfpadm** タスクを実行するために Apache Ant が必要です。サポートされる Ant の最小バージョンについて詳しくは、システム要件を参照してください。
 
-利便性を考慮して、{{site.data.keys.mf_server }} には Apache Ant 1.9.4 が組み込まれています。**product\_install\_dir/shortcuts/** ディレクトリーで、以下のスクリプトが提供されます。
+利便性を考慮して、{{ site.data.keys.mf_server }} には Apache Ant 1.9.4 が組み込まれています。**product\_install\_dir/shortcuts/** ディレクトリーで、以下のスクリプトが提供されます。
 
 * ant (UNIX / Linux の場合)
 * ant.bat (Windows の場合)
 
 これらのスクリプトはいつでも実行できる状態にあります。つまり、特定の環境変数を必要としないということです。環境変数 JAVA_HOME が設定された場合、スクリプトはこれを受け入れます。
 
-**mfpadm** Ant タスクは、{{site.data.keys.mf_server }} をインストールしたコンピューターとは別のコンピューターで使用できます。
+**mfpadm** Ant タスクは、{{ site.data.keys.mf_server }} をインストールしたコンピューターとは別のコンピューターで使用できます。
 
 * ファイル **product\_install\_dir/MobileFirstServer/mfp-ant-deployer.jar** を目的のコンピューターにコピーします。
 * サポートされているバージョンの Apache Ant と Java ランタイム環境が、目的のコンピューターにインストールされていることを確認します。
@@ -70,7 +70,7 @@ weight: 3
 </taskdef>
 ```
 
-{{site.data.keys.mf_server }} インストーラーの実行について詳しくは、[IBM インストール・マネージャーの実行 (Running IBM Installation Manager) ](../../installation-configuration/production/installation-manager/)を参照してください。
+{{ site.data.keys.mf_server }} インストーラーの実行について詳しくは、[IBM インストール・マネージャーの実行 (Running IBM Installation Manager) ](../../installation-configuration/production/installation-manager/)を参照してください。
 
 #### ジャンプ先
 {: #jump-to-1 }
@@ -84,7 +84,7 @@ weight: 3
 
 ### mfpadm Ant タスクの呼び出し
 {: #calling-the-mfpadm-ant-task }
-**mfpadm** Ant タスクとその関連コマンドを使用して、{{site.data.keys.product_adj }} アプリケーションを管理することができます。
+**mfpadm** Ant タスクとその関連コマンドを使用して、{{ site.data.keys.product_adj }} アプリケーションを管理することができます。
 次のようにして **mfpadm** Ant タスクを呼び出します。
 
 ```xml
@@ -99,9 +99,9 @@ weight: 3
 
 | 属性      | 説明 | 必要 | デフォルト | 
 |----------------|-------------|----------|---------|
-| url	         | 管理サービスの {{site.data.keys.product_adj }} Web アプリケーションのベース URL | はい	 | |
+| url	         | 管理サービスの {{ site.data.keys.product_adj }} Web アプリケーションのベース URL | はい	 | |
 | secure	     | セキュリティー・リスクをともなう操作を回避するかどうか | いいえ | true |
-| user	         | {{site.data.keys.product_adj }} 管理サービスにアクセスするためのユーザー名 | はい | |
+| user	         | {{ site.data.keys.product_adj }} 管理サービスにアクセスするためのユーザー名 | はい | |
 | password	     | ユーザーのパスワード | どちらか 1 つが必要 | |
 | passwordfile   |	ユーザーのパスワードを含むファイル | どちらか 1 つが必要 | |	 
 | timeout	     | REST サービス・アクセス全体のタイムアウト (秒単位) | いいえ | |
@@ -188,7 +188,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 ### 一般構成用のコマンド
 {: #commands-for-general-configuration }
-**mfpadm** Ant タスクを呼び出すときに、IBM {{site.data.keys.mf_server }} またはランタイムのグローバル構成にアクセスするさまざまなコマンドを含めることができます。
+**mfpadm** Ant タスクを呼び出すときに、IBM {{ site.data.keys.mf_server }} またはランタイムのグローバル構成にアクセスするさまざまなコマンドを含めることができます。
 
 #### `show-global-config` コマンド
 {: #the-show-global-config-command }
@@ -785,7 +785,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 | 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
-| file | 入力ファイルの名前。以下のいずれかです。<ul><li>authenticity_data ファイルまたは</li><li>認証データの抽出元である装置ファイル (.ipa、.apk、または .appx ファイル)</li></ul> |  はい | 使用不可 | 
+| file | 入力ファイルの名前。以下のいずれかです。{::nomarkdown}<ul><li>authenticity_data ファイルまたは</li><li>認証データの抽出元である装置ファイル (.ipa、.apk、または .appx ファイル)</li></ul>{:/} |  はい | 使用不可 | 
 
 **例**  
 
@@ -997,11 +997,11 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 ### トラブルシューティング用のコマンド
 {: #commands-for-troubleshooting }
-Ant タスク・コマンドを使用して、{{site.data.keys.mf_server }} Web アプリケーションでの問題を調査することができます。
+Ant タスク・コマンドを使用して、{{ site.data.keys.mf_server }} Web アプリケーションでの問題を調査することができます。
 
 #### `show-info` コマンド
 {: #the-show-info-command }
-`show-info` コマンドは、ランタイムやデータベースにアクセスせずに返されることが可能な、{{site.data.keys.product_adj }} 管理サービスに関する基本情報を表示します。このコマンドを使用して、{{site.data.keys.product_adj }} 管理サービスが実行されているかどうかをテストします。これには、以下の属性があります。
+`show-info` コマンドは、ランタイムやデータベースにアクセスせずに返されることが可能な、{{ site.data.keys.product_adj }} 管理サービスに関する基本情報を表示します。このコマンドを使用して、{{ site.data.keys.product_adj }} 管理サービスが実行されているかどうかをテストします。これには、以下の属性があります。
 
 | 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|
@@ -1017,10 +1017,10 @@ Ant タスク・コマンドを使用して、{{site.data.keys.mf_server }} Web 
 <br /> 
 #### `show-versions` コマンド
 {: #the-show-versions-command }
-`show-versions` コマンドは、各種コンポーネントの {{site.data.keys.product_adj }} バージョンを表示します。
+`show-versions` コマンドは、各種コンポーネントの {{ site.data.keys.product_adj }} バージョンを表示します。
 
-* **mfpadmVersion**: **mfp-ant-deployer.jar ** ファイルが取得される {{site.data.keys.mf_server }} の正確なバージョン番号。
-* **productVersion**: **mfp-admin-service.war** ファイルが取得される {{site.data.keys.mf_server }} の正確なバージョン番号。
+* **mfpadmVersion**: **mfp-ant-deployer.jar ** ファイルが取得される {{ site.data.keys.mf_server }} の正確なバージョン番号。
+* **productVersion**: **mfp-admin-service.war** ファイルが取得される {{ site.data.keys.mf_server }} の正確なバージョン番号。
 * **mfpAdminVersion**: **mfp-admin-service.war** のみの正確なビルド・バージョン番号。
 
 コマンドには、以下の属性があります。
@@ -1039,7 +1039,7 @@ Ant タスク・コマンドを使用して、{{site.data.keys.mf_server }} Web 
 <br /> 
 #### `show-diagnostics` コマンド
 {: #the-show-diagnostics-command }
-`show-diagnostics` コマンドは、データベースや補助サービスの可用性など、{{site.data.keys.product_adj }} 管理サービスの正しい運用に必要な各種コンポーネントの状況を表示します。このコマンドには、以下の属性があります。
+`show-diagnostics` コマンドは、データベースや補助サービスの可用性など、{{ site.data.keys.product_adj }} 管理サービスの正しい運用に必要な各種コンポーネントの状況を表示します。このコマンドには、以下の属性があります。
 
 | 属性      | 説明 |	必要 | デフォルト |
 |----------------|-------------|-------------|---------|

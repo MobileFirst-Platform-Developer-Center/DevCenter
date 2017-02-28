@@ -31,8 +31,7 @@ weight: 1
             <div id="migrationPaths">
                 <div class="col-md-3">
                     <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
-                        <h3 class="setupAndTools no-anchor">セットアップ
-<br/> &amp; ツール</h3>
+                        <h3 class="setupAndTools no-anchor">セットアップ<br/> &amp; ツール</h3>
 
                         <ul class="topics">
                             <li><a href="#env-setup">MobileFirst Server<br/>のセットアップ</a></li>
@@ -181,8 +180,11 @@ weight: 1
                             <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
                                 <div class="panel-body">
                                     <ol>
-                                        <li><b>www/index.html</b> ファイルを更新します。<ul>
-                                                <li>以下の CSS コードを、index.html ファイルの先頭、既にある CSS コードの前に追加します。{% highlight html %}
+                                        <li><b>www/index.html</b> ファイルを更新します。
+                                            <ul>
+                                                <li>以下の CSS コードを、index.html ファイルの先頭、既にある CSS コードの前に追加します。
+
+{% highlight html %}
 <link rel="stylesheet" href="worklight/worklight.css">
 <link rel="stylesheet" href="css/main.css">
 {% endhighlight %}
@@ -202,17 +204,20 @@ body {
 						    <li>以下のコード行がある場合は削除します。<br />
 							<code>&lt;script&gt;window.$ = window.jQuery = WLJQ;&lt;/script&gt;</code>
 							<br />
-							ユーザー独自のバージョンの JQuery をダウンロードし、これを、以下のコード行で示すようにロードすることができます。
-<br />
+							ユーザー独自のバージョンの JQuery をダウンロードし、これを、以下のコード行で示すようにロードすることができます。<br />
 							<code>&lt;script src="lib/jquery.min.js"&gt;&lt;/script&gt;</code>
 							<br />
-                                                        このオプションの jQuery 追加を lib フォルダーへ移動する必要はありません。この追加はどこでも必要な場所に移動できますが、その追加を index.html ファイル内で正しく参照している必要があります。</li>
+                                                        このオプションの jQuery 追加を lib フォルダーへ移動する必要はありません。この追加はどこでも必要な場所に移動できますが、その追加を index.html ファイル内で正しく参照している必要があります。
+                                                    </li>
                                                 </ul>
                                             </li>
 
                                             <li>WL.Client.init を自動的に呼び出すように、<b>www/js/InitOptions.js</b> ファイルを更新します。
                                                 <ul>
-                                                    <li><b>InitOptions.js</b> から以下のコードを削除します。関数 <code>WL.Client.init</code> は自動的にグローバル変数 <code>wlInitOptions</code> を指定して呼び出されます。{% highlight javascript %}
+                                                    <li><b>InitOptions.js</b> から以下のコードを削除します。
+                                                    関数 <code>WL.Client.init</code> は自動的にグローバル変数 <code>wlInitOptions</code> を指定して呼び出されます。
+
+{% highlight javascript %}
 if (window.addEventListener) {
   window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
 } else if (window.attachEvent) {
@@ -270,7 +275,8 @@ if (document.addEventListener) {
                         </ul>
 
                         <b>注:</b> {{ site.data.keys.product }} 8.0 の欠陥により、セキュリティーの側面を含んでいるアプリケーションのプレビューは失敗します。回避策として、エミュレーターまたは物理デバイスでアプリケーションをプレビューしてください。
-<blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/cordova-apps/#mobilefirst-apis" target="_blank">アプリケーションの Web リソースのプレビュー</a>についてもっとよく知る。</blockquote>
+
+                        <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/cordova-apps/#mobilefirst-apis" target="_blank">アプリケーションの Web リソースのプレビュー</a>についてもっとよく知る。</blockquote>
 
                         <p><b>エミュレーター/シミュレーターまたは物理デバイスでのテスト:</b><br/>
                         <ul>
@@ -394,6 +400,7 @@ if (document.addEventListener) {
                         </ul>
 
                         <img alt="API レポート" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-native.png"/>
+
                         <h4>ステップ 2</h4>
                         <p>API レポート内にある問題を解決したら、古いネイティブ SDK を新しい ネイティブ SDK に置き換えることができます。</p>
 
@@ -485,8 +492,7 @@ end{% endhighlight %}
                                           </ul>
                                        </li>
                                        <li>コマンド・ラインから <b>open ProjectName.xcworkspace</b> と入力することによって、Xcode で <b>ProjectName.xcworkspace</b> ファイルを開きます。このファイルは、ProjectName.xcodeproj ファイルと同じディレクトリーにあります。Finder でダブルクリックすることもできます。</li>
-                                       <li>ヘッダーの既存の MobileFirst import をすべて、次の新しいアンブレラ・ヘッダーの単一エントリーに置き換えます。
-<br/>
+                                       <li>ヘッダーの既存の MobileFirst import をすべて、次の新しいアンブレラ・ヘッダーの単一エントリーに置き換えます。<br/>
 
                                             <b>Objective C:</b><br/>
                                             <code>#import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;</code>
@@ -496,21 +502,19 @@ end{% endhighlight %}
                                        </li>
                                        <li><b>「Build Settings」</b>タブの<b>「Other Linker Flags」</b>で、<code>-ObjC</code> フラグの始めに <b>$(inherited)</b> を追加します。</li>
                                        <li>プッシュ通知または JSONStore を使用している場合は、独立した import を組み込む必要があります。
-<br/><br/>
+                                           <br/><br/>
                                             <b>プッシュ通知</b><br/>
                                             Objective C の場合:<br/>
                                             <code>#import &lt;IBMMobileFirstPlatformFoundationPush/IBMMobileFirstPlatformFoundationPush.h&gt;</code>
                                             <br/><br/>
-Swift の場合:
-<br/>
+                                            Swift の場合:<br/>
                                             <code>import IBMMobileFirstPlatformFoundationPush</code>
                                             <br/><br/>
                                             <b>JSONStore</b><br/>
                                             Objective C の場合:<br/>
                                             <code>#import &lt;IBMMobileFirstPlatformFoundationJSONStore/IBMMobileFirstPlatformFoundationJSONStore.h&gt;</code>
                                             <br/><br/>
-Swift の場合:
-<br/>
+                                            Swift の場合:<br/>
                                             <code>import IBMMobileFirstPlatformFoundationJSONStore</code>
                                        </li>
                                     </ol>
@@ -555,16 +559,19 @@ Swift の場合:
                                         <ol>
                                             <li>Android Studio で、<b>「Android」→「Gradle Scripts」</b> に移動し、<b>build.gradle (モジュール: app)</b> ファイルを選択します。</li>
                                             <li>以下の行を <code>apply plugin: 'com.android.application'</code> の下に追加します。
+
 {% highlight xml %}repositories{
     jcenter()
 }{% endhighlight %}            </li>
                                             <li>以下を <b>android</b> 内に追加します。
+
 {% highlight xml %}packagingOptions {
-            pickFirst 'META-INF/ASL2.0'
-pickFirst 'META-INF/LICENSE'
+    pickFirst 'META-INF/ASL2.0'
+    pickFirst 'META-INF/LICENSE'
     pickFirst 'META-INF/NOTICE'
 }{% endhighlight %}            </li>
                                             <li>以下の行を <b>dependencies</b> 内に追加します。
+
 {% highlight xml %}compile group: 'com.ibm.mobile.foundation',
 name: 'ibmmobilefirstplatformfoundation',
 version: '8.0.+',
@@ -572,6 +579,7 @@ ext: 'aar',
 transitive: true{% endhighlight %}
 
                                             アプリケーションで追加の機能を使用する必要がある場合は、複数の成果物を指定できます。例えば、アプリケーションでプッシュ通知を使用する場合は、次の行を追加します。
+
 {% highlight xml %}compile group: 'com.ibm.mobile.foundation',
 name: 'ibmmobilefirstplatformfoundationpush',
 version: '8.0.+',
@@ -606,9 +614,9 @@ transitive: true{% endhighlight %}</li>
                                 <div id="collapseRemoveWindowsSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeWindowsSDK">
                                     <div class="panel-body">
                                         Visual Studio プロジェクトから、次のファイルを削除します。
+
                                         <ul>
-                                            <li>wlclient.properties
-</li>
+                                            <li>wlclient.properties</li>
                                             <li>Newtonsoft.Json</li>
                                             <li>SharpCompress</li>
                                             <li>worklight-windows8</li>
@@ -710,8 +718,7 @@ transitive: true{% endhighlight %}</li>
 
 {% highlight bash %}#### Apache Maven example location
 export MVN_PATH="/usr/local/bin"
-{% endhighlight %}
-                                                    </li>
+{% endhighlight %}</li>
 
                                     <li><i>Windows:</i> <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/" target="_blank">このガイドに従ってください</a>。</li>
                                     <li>次のコマンドを実行してインストールを検証します。<code>mvn -v</code></li>
@@ -796,8 +803,7 @@ export MVN_PATH="/usr/local/bin"
     <groupId>mysql</groupId>
     <artifactId>mysql-connector-java</artifactId>
     <version>5.1.6</version>
-</dependency>{% endhighlight %}
-                                                    </li>
+</dependency>{% endhighlight %}</li>
                         </ol>
 
                         <p>追加の依存関係がある場合は、<b>pom.xml</b> ファイルに追加して、それらの依存関係を指すようにします。ローカル・ファイルでも、リモート依存関係でもかまいません。</p>
@@ -861,8 +867,7 @@ export MVN_PATH="/usr/local/bin"
 	<groupId>com.cloudant</groupId>
 	<artifactId>cloudant-client</artifactId>
 	<version>1.2.3</version>
-</dependency>{% endhighlight %}
-                                                    </li>
+</dependency>{% endhighlight %}</li>
                         </ol>
                         <br/>
                         <blockquote><b>Maven の依存関係についてもっとよく知る:</b>
@@ -952,8 +957,7 @@ export MVN_PATH="/usr/local/bin"
         <h3>アダプター</h3>
         <h4>JavaScript アダプター</h4>
         <b>グローバル変数とセッション</b><br/>
-        <p>JavaScript アダプターでグローバル変数を使用してセッションに関するデータを保存することは避けてください。これは、「セッション」が存在しないためです。この動作変更が<a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html" target="_blank">最初に導入されたのは MobileFirst Platform Foundation 7.1</a> においてです。ただし、グローバル変数を使用して、1 つの要求で使用するデータを保存することはできます。しかしながら、これはもう推奨される方法ではないことに、留意してください。
-</p>
+        <p>JavaScript アダプターでグローバル変数を使用してセッションに関するデータを保存することは避けてください。これは、「セッション」が存在しないためです。この動作変更が<a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html" target="_blank">最初に導入されたのは MobileFirst Platform Foundation 7.1</a> においてです。ただし、グローバル変数を使用して、1 つの要求で使用するデータを保存することはできます。しかしながら、これはもう推奨される方法ではないことに、留意してください。</p>
 
         <blockquote><a href="../../adapters/" target="_blank">アダプター・チュートリアルで</a>、アダプターの作成、ビルド、デプロイ、およびテストについてもっとよく知る。</blockquote>
 
@@ -994,14 +998,12 @@ export MVN_PATH="/usr/local/bin"
 
     {% highlight xml %}<realm loginModule="AuthLoginModule" name="AuthRealm">
         <className>com.worklight.integration.auth.AdapterAuthenticator</className>
-    </realm>{% endhighlight %}
-                                                    </td>
+    </realm>{% endhighlight %}  </td>
                                 <td>関連のある <b>adapter.xml</b> ファイル内で、名前および実装クラスを使用して、次のようにセキュリティー検査を定義する。
     {% highlight xml %}<securityCheckDefinition
         name="securityCheckX"
         class="com.sample.SecurityCheckW">
-    </securityCheckDefinition>{% endhighlight %}
-                                                    </td>
+    </securityCheckDefinition>{% endhighlight %}</td>
                             </tr>
                             <tr>
                                 <td><b>メソッドの開始/終了</b></td>
@@ -1019,14 +1021,14 @@ export MVN_PATH="/usr/local/bin"
                                 <td>次のように、<code>customSecurityTest</code> にカプセル化。これには、1 個以上のレルムを含めることができる。
 {% highlight xml %}<customSecurityTest name="AuthSecurityTest">
     <test isInternalUserID="true" realm="AuthRealm"/>
-</customSecurityTest>{% endhighlight %}
-                                                    </td>
+</customSecurityTest>{% endhighlight %}</td>
                                 <td><b>Scope</b> エレメントにカプセル化。これには、0 個以上のセキュリティー検査を含めることができる。</td>
                             </tr>
                         </table>
 
                         <h3>セキュリティー・テスト対スコープ</h3>
-                        <p>{{ site.data.keys.product }} 8.0 では、<b>スコープ</b>を使用して 0 個以上のセキュリティー検査を集約し、これを使用して、ローカルおよび外部のリソース、またはアプリケーションを保護することができます。これは、以前のリリースの <code>CustomSecurityTest</code> の概念と類似しています。</p>
+                        <p>{{ site.data.keys.product }} 8.0 では、<b>スコープ</b>を使用して 0 個以上のセキュリティー検査を集約し、これを使用して、ローカルおよび外部のリソース、またはアプリケーションを保護することができます。これは、
+                        以前のリリースの <code>CustomSecurityTest</code> の概念と類似しています。</p>
 
                         <table class="table table-striped">
                             <tr>
@@ -1038,10 +1040,10 @@ export MVN_PATH="/usr/local/bin"
                             <tr>
                                 <td><b>定義</b></td>
                                 <td><b>authenticationConfig.xml</b> ファイル内で、名前、1 個以上のセキュリティー・テスト、および <code>UserID</code> を定義するための専用のセキュリティー・テストを少なくとも 1 つ使用して定義される。
+
 {% highlight xml %}<customSecurityTest name="AuthSecurityTest">
     <test isInternalUserID="true" realm="AuthRealm"/>
-</customSecurityTest>{% endhighlight %}
-                                                    </td>
+</customSecurityTest>{% endhighlight %}</td>
                                 <td>{{ site.data.keys.mf_console }} で、または REST API を通じて、定義される。スコープには 0 個以上のセキュリティー検査が含まれる。
 
 {% highlight json %}"scopeElementMapping": {
@@ -1074,8 +1076,8 @@ export MVN_PATH="/usr/local/bin"
                             <tr>
                                 <td><b>ユーザー ID</b></td>
                                 <td>セキュリティー・テスト内の特定のレルムが DeviceID と UserID を定義する。
-{% highlight xml %}<test isInternalUserID="true" realm="AuthRealm"/>{% endhighlight %}
-                                                    </td>
+
+{% highlight xml %}<test isInternalUserID="true" realm="AuthRealm"/>{% endhighlight %}</td>
                                 <td>スコープは、そのスコープを構成するセキュリティー検査を認識しない。</td>
                             </tr>
 
@@ -1092,6 +1094,7 @@ export MVN_PATH="/usr/local/bin"
 
         <h3>通知</h3>
         {{ site.data.keys.product }} 8.0 には、新しいプッシュ・サービスが導入され、通知のセットアップ、構成、および送信の操作性も一新されています。加えて、イベント・ソース・ベースのプッシュ通知の概念は廃止されています。シナリオ・ベースのマイグレーションのための詳しい道程については、次のユーザー向け資料を参照してください。
+
         <ul>
             <li><a href="../migrating-push-notifications" target="_blank">イベント・ソース・ベースの通知からプッシュ通知へのマイグレーション</a></li>
             <li><a href="../migrating-push-notifications/#migration-scenarios" target="_blank">プラットフォーム別のマイグレーション・シナリオ</a></li>

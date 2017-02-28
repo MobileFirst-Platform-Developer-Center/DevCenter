@@ -7,7 +7,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product_full }} v8.0 から、イベント・ソース・ベースのモデルはサポートされず、プッシュ通知機能は全面的にプッシュ・サービス・モデルによって使用可能になっています。以前のバージョンの {{site.data.keys.product_adj }} における既存のイベント・ソース・ベースのアプリケーションを v8.0 に移行する場合は、それらのアプリケーションを新しいプッシュ・サービス・モデルにマイグレーションする必要があります。
+{{ site.data.keys.product_full }} v8.0 から、イベント・ソース・ベースのモデルはサポートされず、プッシュ通知機能は全面的にプッシュ・サービス・モデルによって使用可能になっています。以前のバージョンの {{ site.data.keys.product_adj }} における既存のイベント・ソース・ベースのアプリケーションを v8.0 に移行する場合は、それらのアプリケーションを新しいプッシュ・サービス・モデルにマイグレーションする必要があります。
 
 マイグレーション時には、これは、使用する API を別のものに変更するということではなく、むしろ、使用するモデル/アプローチを別のものに変更するということである点に留意してください。
 
@@ -18,22 +18,23 @@ weight: 4
 * [マイグレーション・シナリオ](#migration-scenarios)
 * [マイグレーション・ツール](#migration-tool)
 
-<br /> 
+<br/>
+
 次の表に、2 つのモデル間の比較を示します。
 
 | ユーザー要件 | イベント・ソース・モデル | プッシュ・サービス・モデル | 
 |------------------|--------------------|--------------------|
 | アプリケーションでプッシュ通知を使用可能にするには | {::nomarkdown}<ul><li>イベント・ソース・アダプターを作成し、その中で EventSource を作成します。</li><li>プッシュ資格情報を使用してアプリケーションを構成またはセットアップします。</li></ul>{:/} | プッシュ資格情報を使用してアプリケーションを構成またはセットアップします。 | 
-| モバイル・クライアント・アプリケーションでプッシュ通知を使用可能にするには | {::nomarkdown}<ul><li>WLClient を作成します。</li><li>{{site.data.keys.mf_server }} に接続します。</li><li>プッシュ・クライアントのインスタンスを取得します。</li><li>イベント・ソースにサブスクライブします。</li></ul>{:/} | {::nomarkdown}<ul><li>プッシュ・クライアントのインスタンスを生成します。</li><li>プッシュ・クライアントを初期化します。</li><li>モバイル・デバイスを登録します。</li></ul>{:/} |
+| モバイル・クライアント・アプリケーションでプッシュ通知を使用可能にするには | {::nomarkdown}<ul><li>WLClient を作成します。</li><li>{{ site.data.keys.mf_server }} に接続します。</li><li>プッシュ・クライアントのインスタンスを取得します。</li><li>イベント・ソースにサブスクライブします。</li></ul>{:/} | {::nomarkdown}<ul><li>プッシュ・クライアントのインスタンスを生成します。</li><li>プッシュ・クライアントを初期化します。</li><li>モバイル・デバイスを登録します。</li></ul>{:/} |
 | モバイル・クライアント・アプリケーションで特定のタグに基づいた通知を使用可能にするには | サポートされません。 | 対象のタグ (タグ名を使用) をサブスクライブします。 | 
 | モバイル・クライアント・アプリケーションで通知を受け取って処理するには | リスナー実装を登録します。 | リスナー実装を登録します。 |
-| プッシュ通知をモバイル・クライアント・アプリケーションに送信するには | {::nomarkdown}<ul><li>WL.Server API を内部的に呼び出してプッシュ通知を送信する、アダプター・プロシージャーを実装します。</li><li>WL サーバー API は、以下のように通知を送信する手段を提供します。<ul><li>ユーザー別</li><li>デバイス別</li><li><li>ブロードキャスト (すべてのデバイス)</li></ul></li><li>その後、バックエンド・サーバー・アプリケーションは、アダプター・プロシージャーを呼び出して、アプリケーション・ロジックの一部としてプッシュ通知をトリガーできます。</li></ul>{:/} | {::nomarkdown}<ul><li>バックエンド・サーバー・アプリケーションは、メッセージ REST API を直接呼び出すことができます。ただし、そのようなアプリケーションは、{{site.data.keys.mf_server }} に機密クライアントとして登録し、有効な OAuth アクセス・トークンを取得し、それを REST API の許可ヘッダーで渡す必要があります。</li><li>REST API は、以下のように通知を送信するオプションを備えています。<ul><li>ユーザー別</li><li>デバイス別</li><li>プラットフォーム別</li><li>タグ別</li><li>ブロードキャスト (すべてのデバイス)</li></ul></li></ul>{:/} |
+| プッシュ通知をモバイル・クライアント・アプリケーションに送信するには | {::nomarkdown}<ul><li>WL.Server API を内部的に呼び出してプッシュ通知を送信する、アダプター・プロシージャーを実装します。</li><li>WL サーバー API は、以下のように通知を送信する手段を提供します。<ul><li>ユーザー別</li><li>デバイス別</li><li><li>ブロードキャスト (すべてのデバイス)</li></ul></li><li>その後、バックエンド・サーバー・アプリケーションは、アダプター・プロシージャーを呼び出して、アプリケーション・ロジックの一部としてプッシュ通知をトリガーできます。</li></ul>{:/} | {::nomarkdown}<ul><li>バックエンド・サーバー・アプリケーションは、メッセージ REST API を直接呼び出すことができます。ただし、そのようなアプリケーションは、{{ site.data.keys.mf_server }} に機密クライアントとして登録し、有効な OAuth アクセス・トークンを取得し、それを REST API の許可ヘッダーで渡す必要があります。</li><li>REST API は、以下のように通知を送信するオプションを備えています。<ul><li>ユーザー別</li><li>デバイス別</li><li>プラットフォーム別</li><li>タグ別</li><li>ブロードキャスト (すべてのデバイス)</li></ul></li></ul>{:/} |
 | 定期的な期間 (ポーリング間隔) でプッシュ通知をトリガーするには |  イベント・ソース・アダプター内にプッシュ通知を送信する関数を実装し、これを createEventSource 関数呼び出しの一部として実装します。 | サポートされません。 |
 | フックを名前、URL、およびイベント・タイプで登録するには | プッシュ通知をサブスクライブまたはアンサブスクライブするデバイスのパスに、フックを実装します。 | サポートされません。 | 
 
 ## マイグレーション・シナリオ
 {: #migration-scenarios }
-{{site.data.keys.product }} v8.0 以降、イベント・ソース・ベースのモデルはサポートされなくなり、プッシュ通知機能は全面的にプッシュ・サービス・モデルによって {{site.data.keys.product }} で使用可能になります。このモデルは、イベント・ソース・モデルよりもシンプルでアジャイルな代替モデルです。
+{{ site.data.keys.product }} v8.0 以降、イベント・ソース・ベースのモデルはサポートされなくなり、プッシュ通知機能は全面的にプッシュ・サービス・モデルによって {{ site.data.keys.product }} で使用可能になります。このモデルは、イベント・ソース・モデルよりもシンプルでアジャイルな代替モデルです。
 
 以前のバージョンの IBM MobileFirst Platform Foundation における既存のイベント・ソース・ベースのアプリケーションは、v8.0 の新しいプッシュ・サービス・モデルにマイグレーションする必要があります。
 
@@ -50,13 +51,13 @@ weight: 4
 
 #### シナリオ 1: アプリケーションで単一のイベント・ソースを使用する既存のアプリケーション
 {: #hybrid-scenario-1-existing-applications-using-single-event-source-in-their-application }
-以前のバージョンの {{site.data.keys.product_adj }} では、イベント・ソース・ベースのモデルを使用したプッシュのみがサポートされていたため、アプリケーションは単一のイベント・ソースを使用していました。
+以前のバージョンの {{ site.data.keys.product_adj }} では、イベント・ソース・ベースのモデルを使用したプッシュのみがサポートされていたため、アプリケーションは単一のイベント・ソースを使用していました。
 
 ##### クライアント
 {: #client-hybrid-1 }
 V8.0.0 にこれをマイグレーションするには、このモデルをユニキャスト通知に変換します。
 
-1. 以下のように、アプリケーションで {{site.data.keys.product_adj }} プッシュ・クライアント・インスタンスを初期化し、成功コールバックで、通知を受け取る必要があるコールバック・メソッドを登録します。
+1. 以下のように、アプリケーションで {{ site.data.keys.product_adj }} プッシュ・クライアント・インスタンスを初期化し、成功コールバックで、通知を受け取る必要があるコールバック・メソッドを登録します。
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -125,13 +126,13 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
     * `notifyDeviceSubscription()`
     * `createEventSource()`
 2. 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
-    1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+    1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
         [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
     2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
     3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
     4. 以下の方法のいずれかを使用して通知を送信できます。
-        * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+        * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
         * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
 #### シナリオ 2: アプリケーションで複数のイベント・ソースを使用する既存のアプリケーション
@@ -209,11 +210,11 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
    ```javascript
    var tags = ['sample-tag1','sample-tag2'];
    MFPPush.subscribe(tags, function(successResponse) {
-		alert("Successfully subscribed");
-	    },
-	  function(failureResponse) {
-		alert("Failed to subscribe");
-	    }
+    	alert("Successfully subscribed");
+        },
+      function(failureResponse) {
+    	alert("Failed to subscribe");
+        }
    );
    ```
 
@@ -240,13 +241,13 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
     [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
 2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
-    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
     * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
 #### シナリオ 3: アプリケーションでブロードキャスト/ユニキャスト通知を使用する既存のアプリケーション
@@ -317,13 +318,13 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 アダプターで `WL.Server.sendMessage()` (使用されている場合) を削除します。  
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
     [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
 2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
-    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
     * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
 #### シナリオ 4: アプリケーションでタグ通知を使用する既存のアプリケーション
@@ -422,13 +423,13 @@ V8.0.0 にこれをマイグレーションするには、このモデルをユ�
 アダプターで `WL.Server.sendMessage()` (使用されている場合) を削除します。  
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
     [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
 2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
-    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
     * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。 
 
 ### ネイティブ Android アプリケーション
@@ -510,13 +511,13 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
     [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
 2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
-    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
     * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。 
 
 #### シナリオ 2: アプリケーションで複数のイベント・ソースを使用する既存のアプリケーション
@@ -525,7 +526,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 ##### クライアント
 {: #client-android-2 }
-これは、対象トピックに基づいてユーザー/デバイスをセグメント化するタグにマップされます。{{site.data.keys.product }} V8.0.0 にこれをマイグレーションするには、このモデルをタグ・ベースの通知に変換します。
+これは、対象トピックに基づいてユーザー/デバイスをセグメント化するタグにマップされます。{{ site.data.keys.product }} V8.0.0 にこれをマイグレーションするには、このモデルをタグ・ベースの通知に変換します。
 
 1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
@@ -553,8 +554,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 	    }
         @Override
         public void onSuccess(String arg0) {
-           Log.i("Push Notifications", "Registered successfully");
-
+            Log.i("Push Notifications", "Registered successfully");
         }
    });
    ```
@@ -634,13 +634,13 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
     [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
 2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
-    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
     * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。     
 
 #### シナリオ 3: アプリケーションでブロードキャスト/ユニキャスト通知を使用する既存のアプリケーション
@@ -707,13 +707,13 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
     [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
 2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
-    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
     * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。    
 
 #### シナリオ 4: アプリケーションでタグ通知を使用する既存のアプリケーション
@@ -747,8 +747,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 	    }
         @Override
         public void onSuccess(String arg0) {
-           Log.i("Push Notifications", "Registered successfully");
-
+            Log.i("Push Notifications", "Registered successfully");
         }
    });
    ```
@@ -783,7 +782,6 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    tags[0] ="sample-tag1";
    tags[1] ="sample-tag2";
    push.subscribe(tags, new MFPPushResponseListener<String[]>(){
-
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Failed to subscribe");
@@ -803,7 +801,6 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    tags[0] ="sample-tag1";
    tags[1] ="sample-tag2";
    push.unsubscribe(tags, new MFPPushResponseListener<String[]>(){
-
         @Override
         public void onFailure(MFPPushException arg0) {
             Log.i("Push Notifications", "Failed to unsubscribe");
@@ -822,13 +819,13 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
     [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
 2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
-    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
     * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
 ### ネイティブ iOS アプリケーション
@@ -837,7 +834,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 #### シナリオ 1: アプリケーションで単一のイベント・ソースを使用する既存のアプリケーション
 {: #ios-scenario-1-existing-applications-using-single-event-source-in-their-application }
-以前のバージョンの {{site.data.keys.product_adj }} では、イベント・ソース・ベースのモデルを使用したプッシュのみがサポートされていたため、アプリケーションは単一のイベント・ソースを使用していました。
+以前のバージョンの {{ site.data.keys.product_adj }} では、イベント・ソース・ベースのモデルを使用したプッシュのみがサポートされていたため、アプリケーションは単一のイベント・ソースを使用していました。
 
 ##### クライアント
 {: #client-ios-1 }
@@ -867,9 +864,9 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
         if(error){
-        	NSLog(@"Failed to unregister");
-        }else{
-        	NSLog(@"Successfully unregistered");
+	       NSLog(@"Failed to unregister");
+        } else {
+	       NSLog(@"Successfully unregistered");
         }
    }];
    ```
@@ -904,13 +901,13 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
     [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
 2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
-    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
     * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
 #### シナリオ 2: アプリケーションで複数のイベント・ソースを使用する既存のアプリケーション
@@ -919,7 +916,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 ##### クライアント
 {: #client-ios-2}
-これは、対象トピックに基づいてユーザー/デバイスをセグメント化するタグにマップされます。{{site.data.keys.product_adj }} V8.0.0 にこれをマイグレーションするには、このモデルをタグ・ベースの通知に変換します。
+これは、対象トピックに基づいてユーザー/デバイスをセグメント化するタグにマップされます。{{ site.data.keys.product_adj }} V8.0.0 にこれをマイグレーションするには、このモデルをタグ・ベースの通知に変換します。
 
 1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
@@ -997,7 +994,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    ```
     
 ##### サーバー
-{: #server-ios-2 }
+:{ #server-ios-2 }
 アダプターで `WL.Server` を削除します (使用されている場合)。
 
 * `notifyAllDevices()`
@@ -1007,13 +1004,13 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
     [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
 2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
-    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
     * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。    
 
 #### シナリオ 3: アプリケーションでブロードキャスト/ユニキャスト通知を使用する既存のアプリケーション
@@ -1067,13 +1064,13 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
     [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
 2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
-    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
     * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。  
 
 #### シナリオ 4: アプリケーションでタグ通知を使用する既存のアプリケーション
@@ -1157,13 +1154,13 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
+1. {{ site.data.keys.mf_console }} を使用して資格情報をセットアップします。『[プッシュ通知設定の構成 (Configuring push notification settings)](../../notifications/sending-notifications)』を参照してください。
 
     [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API (Android アプリケーションの場合) または [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API (iOS アプリケーションの場合) を使用して、資格情報をセットアップすることもできます。
 2. **「スコープ・エレメントのマッピング (Scope Elements Mapping)」**でスコープ `push.mobileclient` を追加します。
 3. プッシュ通知をサブスクライバーに送信できるようにするタグを作成します。プッシュ通知のための[タグの定義](../../notifications/sending-notifications/#defining-tags)を参照してください。
 4. 以下の方法のいずれかを使用して通知を送信できます。
-    * {{site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
+    * {{ site.data.keys.mf_console }}。『[サブスクライバーへのプッシュ通知の送信 (Sending push notifications to subscribers)](../../notifications/sending-notifications/#sending-notifications)』を参照してください。
     * `userId`/`deviceId` を使用した [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。  
 
 ### ネイティブ Windows ユニバーサル・アプリケーション
@@ -1239,8 +1236,8 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
-2. スコープ `push.mobileclient` を、{{site.data.keys.mf_console }} の「セキュリティー」タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
+1. {{ site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
+2. スコープ `push.mobileclient` を、{{ site.data.keys.mf_console }} の「セキュリティー」タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
 3. また、[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API を使用し、`userId`/`deviceId` を指定することで、メッセージを送信することもできます。
 
 #### シナリオ 2: アプリケーションで複数のイベント・ソースを使用する既存のアプリケーション
@@ -1249,7 +1246,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 ##### クライアント
 {: #windows-client-2 }
-これは、対象トピックに基づいてユーザー/デバイスをセグメント化するタグにマップされます。{{site.data.keys.product_adj }} V8.0.0 にこれをマイグレーションするには、このモデルをタグ・ベースの通知に変換します。
+これは、対象トピックに基づいてユーザー/デバイスをセグメント化するタグにマップされます。{{ site.data.keys.product_adj }} V8.0.0 にこれをマイグレーションするには、このモデルをタグ・ベースの通知に変換します。
 
 1. 以下のように、アプリケーションで `MFPPush` クライアント・インスタンスを初期化します。
 
@@ -1343,9 +1340,9 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
-2. スコープ `push.mobileclient` を、{{site.data.keys.mf_console }} の**「セキュリティー」**タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
-3. {{site.data.keys.mf_console }} の**「タグ」**ページでプッシュ・タグを作成します。
+1. {{ site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
+2. スコープ `push.mobileclient` を、{{ site.data.keys.mf_console }} の**「セキュリティー」**タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
+3. {{ site.data.keys.mf_console }} の**「タグ」**ページでプッシュ・タグを作成します。
 4. また、[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API を使用し、ターゲットとして `userId`/`deviceId`/`tagNames` を指定することで、通知を送信することもできます。
 
 #### シナリオ 3: アプリケーションでブロードキャスト/ユニキャスト通知を使用する既存のアプリケーション
@@ -1407,9 +1404,9 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
-2. スコープ `push.mobileclient` を、{{site.data.keys.mf_console }} の**「セキュリティー」**タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
-3. {{site.data.keys.mf_console }} の**「タグ」**ページでプッシュ・タグを作成します。
+1. {{ site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
+2. スコープ `push.mobileclient` を、{{ site.data.keys.mf_console }} の**「セキュリティー」**タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
+3. {{ site.data.keys.mf_console }} の**「タグ」**ページでプッシュ・タグを作成します。
 4. また、[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API を使用し、ターゲットとして `userId`/`deviceId`/`tagNames` を指定することで、通知を送信することもできます。
 
 #### シナリオ 4: アプリケーションでタグ通知を使用する既存のアプリケーション
@@ -1507,18 +1504,18 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 
 同じイベント・ソースを使用していた各アプリケーションに対して、以下のステップを実行します。
 
-1. {{site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
-2. スコープ `push.mobileclient` を、{{site.data.keys.mf_console }} の**「セキュリティー」**タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
-3. {{site.data.keys.mf_console }} の**「タグ」**ページでプッシュ・タグを作成します。
+1. {{ site.data.keys.mf_console }} の**「プッシュ設定」**ページで WNS 資格情報をセットアップするか、WNS Settings REST API を使用します。
+2. スコープ `push.mobileclient` を、{{ site.data.keys.mf_console }} の**「セキュリティー」**タブにある**「スコープ・エレメントのマッピング」**セクションに追加します。
+3. {{ site.data.keys.mf_console }} の**「タグ」**ページでプッシュ・タグを作成します。
 4. また、[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API を使用し、ターゲットとして `userId`/`deviceId`/`tagNames` を指定することで、通知を送信することもできます。
 
 ## マイグレーション・ツール
 {: #migration-tool }
-マイグレーション・ツールは、MobileFirst Platform Foundation 7.1 のプッシュ・データ (デバイス、ユーザーのサブスクリプション、資格情報、およびタグ) を {{site.data.keys.product }} 8.0 にマイグレーションする際に役立ちます。  
+マイグレーション・ツールは、MobileFirst Platform Foundation 7.1 のプッシュ・データ (デバイス、ユーザーのサブスクリプション、資格情報、およびタグ) を {{ site.data.keys.product }} 8.0 にマイグレーションする際に役立ちます。  
 マイグレーション・ツールは、以下の機能を使用してこのプロセスを簡素化します。
 
 1. デバイス、資格情報、タグ、およびユーザー・サブスクリプションを、アプリケーションごとに、MobileFirst Platform Foundation 7.1 データベースから読み取ります。
-2. このデータを、それぞれのアプリケーション用の {{site.data.keys.product }} 8.0 データベース内にある、それぞれの表にコピーします。
+2. このデータを、それぞれのアプリケーション用の {{ site.data.keys.product }} 8.0 データベース内にある、それぞれの表にコピーします。
 3. v8.0 アプリケーションでの環境にかかわらず、v7.1 の全環境の全プッシュ・データをマイグレーションします。
 
 マイグレーション・ツールによってユーザー・サブスクリプション関連、アプリケーション環境関連、およびデバイス関連のデータが変更されることは一切ありません。  
@@ -1526,12 +1523,12 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 マイグレーション・ツールを使用する前に、以下の情報を知っておくことが重要です。
 
 1. Java バージョン 1.6 以上が必要です。
-2. MobileFirst Server 7.1 と {{site.data.keys.mf_server }} 8.0 の両方がセットアップされ、使用できる状態になっていることを確認します。
-3. MobileFirst Server 7.1 と {{site.data.keys.mf_server }} 8.0 の両方のバックアップをとります。
-4. 最新バージョンのアプリケーションを {{site.data.keys.mf_server }} 8.0 に登録します。
+2. MobileFirst Server 7.1 と {{ site.data.keys.mf_server }} 8.0 の両方がセットアップされ、使用できる状態になっていることを確認します。
+3. MobileFirst Server 7.1 と {{ site.data.keys.mf_server }} 8.0 の両方のバックアップをとります。
+4. 最新バージョンのアプリケーションを {{ site.data.keys.mf_server }} 8.0 に登録します。
 	* アプリケーションの表示名は、MobileFirst Platform Foundation 7.1 内でのそのアプリケーションと一致している必要があります。
 	* PacakgeName/BundleID を覚えておき、同じ値をアプリケーションに対して指定します。
-	* アプリケーションが {{site.data.keys.mf_server }} 8.0 に登録されていないと、マイグレーションは成功しません。
+	* アプリケーションが {{ site.data.keys.mf_server }} 8.0 に登録されていないと、マイグレーションは成功しません。
 5. アプリケーションの各環境に応じて、スコープ・エレメントのマッピングを指定します。[スコープのマッピングについてもっとよく知る](../../notifications/sending-notifications/#scope-mapping)。
 
 #### 手順
@@ -1553,13 +1550,13 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
     | pw.db.passwordTarget | MFP 8.0 データベースのパスワード						| pw.db.passwordTarget=root |
     | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight データベースのスキーマ | WRKLGT |
     | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin データベースのスキーマ     | WLADMIN |
-    | pw.db.targetschema   | {{site.data.keys.product }} 8.0 Worklight データベースのスキーマ    | MFPDATA |
+    | pw.db.targetschema   | {{ site.data.keys.product }} 8.0 Worklight データベースのスキーマ    | MFPDATA |
     | ランタイム			   | MobileFirst Platform Foundation 7.1 のランタイム名		 | runtime=worklight |
     | applicationId	       | MobileFirst Platform Foundation 7.1 に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。 | HybridTestApp,NativeiOSTestApp |
-    | targetApplicationId  | {{site.data.keys.product }} 8.0に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。   | com.HybridTestApp,com.NativeiOSTestApp |
+    | targetApplicationId  | {{ site.data.keys.product }} 8.0に登録されているアプリケーションの、コンマ (,) 区切りのリストを指定します。   | com.HybridTestApp,com.NativeiOSTestApp |
 
     * **applicationID** と **targetApplicationId** の両方の値が、正しい順序で指定されていることを確認します。マッピングは、1 対 1 (つまり n 対 n) の方式で行われます。すなわち、**applicationId** リスト内の最初のアプリケーションのデータが、**targetApplicationId** リスト内の最初のアプリケーションにマイグレーションされます。
-	* **targetApplicationId** リストには、アプリケーションの packageName/BundleId を指定します。つまり、MobileFirst Platform Foundation 7.1 の TestApp1 ならば、**targetApplicationId** は com.TestApp1 となります (TestApp1 の packageName/BundleId)。これは、MobileFirst Platform Foundation 7.1 では **applicationId** はアプリケーション名であるのに対し、{{site.data.keys.mf_server }} 8.0 ではこれは、アプリケーションの環境に基づいた packageName/BundleId/packageIdentityName であるためです。
+	* **targetApplicationId** リストには、アプリケーションの packageName/BundleId を指定します。つまり、MobileFirst Platform Foundation 7.1 の TestApp1 ならば、**targetApplicationId** は com.TestApp1 となります (TestApp1 の packageName/BundleId)。これは、MobileFirst Platform Foundation 7.1 では **applicationId** はアプリケーション名であるのに対し、{{ site.data.keys.mf_server }} 8.0 ではこれは、アプリケーションの環境に基づいた packageName/BundleId/packageIdentityName であるためです。
 
 2. 以下のコマンドを使用してツールを実行します。
 

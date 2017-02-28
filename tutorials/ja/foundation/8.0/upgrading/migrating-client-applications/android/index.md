@@ -115,6 +115,7 @@ compile group: 'com.ibm.mobile.foundation',
 
 #### サポートされなくなった、レガシー `org.apach.http` API に依存している Android API
 {: #android-apis-depending-on-the-legacy-orgapachhttp-apis-are-no-longer-supported }
+
 | API エレメント | マイグレーション・パス | 
 |-------------|----------------|
 | `org.apache.http.Header[]` は非推奨になっています。そのため、以下のメソッドは削除されました。 | |
@@ -124,7 +125,7 @@ compile group: 'com.ibm.mobile.foundation',
 | `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | 代わりに、新しい `WLResourceRequest.getHeaders(String headerName)` API を使用してください。 | 
 | `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 代わりに、新しい `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API を使用してください。 | 
 | `WLResourceRequest.setHeader(org.apache.http.Header header)` | 代わりに、新しい `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API を使用してください。 | 
-| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | `java.net.CookieStore getCookieStore WLClient.getCookieStore()`<br/><br/> `java.net.CookieStore getCookieStore WLClient.getCookieStore()` に置き換えられました。 |
+| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | `java.net.CookieStore getCookieStore WLClient.getCookieStore()` と置き換えられました。<br/><br/> `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 代替はありません。MFP クライアントでは、サーキュラー・リダイレクトが許可されます。 | 
 | {::nomarkdown}<ul><li><code>WLHttpResponseListener</code></li><li><code>WLResourceRequest</code>、<code>WLHttpResponseListener</code> を取る以下のすべてのメソッド: <ul><li><code>WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)</code></li><li><code>WLResourceRequest.send(WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)</code></li><li><code>WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)</code></li></ul></li></ul>{:/} | 非推奨になった Apache HTTP クライアント依存関係のために削除されました。要求および応答を完全に制御できる独自の要求を作成してください。 |
 
