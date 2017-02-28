@@ -9,7 +9,7 @@ weight: 1
 ## 概説
 {: #overview }
 
-{{site.data.keys.mf_analytics_full }} は、アプリケーションについての Analytics データの収集を開始するのを支援するクライアント・サイド API を提供します。このチュートリアルでは、クライアント・アプリケーション上での Analytics サポートのセットアップ方法について説明し、使用可能な API をリストします。
+{{ site.data.keys.mf_analytics_full }} は、アプリケーションについての Analytics データの収集を開始するのを支援するクライアント・サイド API を提供します。このチュートリアルでは、クライアント・アプリケーション上での Analytics サポートのセットアップ方法について説明し、使用可能な API をリストします。
 
 #### ジャンプ先
 {: #jump-to }
@@ -23,7 +23,7 @@ weight: 1
 ## クライアント・サイドでの Analytics の構成
 {: #configuring-analytics-on-the-client-side }
 
-{{site.data.keys.mf_analytics }} が提供する事前定義データの収集を開始するには、事前に Analytics サポートを初期設定するために対応するライブラリーをインポートする必要があります。
+{{ site.data.keys.mf_analytics }} が提供する事前定義データの収集を開始するには、事前に Analytics サポートを初期設定するために対応するライブラリーをインポートする必要があります。
 
 ### JavaScript (Cordova)
 {: #javascript-cordova }
@@ -33,12 +33,12 @@ Cordova アプリケーションではセットアップは必要なく、初期
 ### JavaScript (Web)
 {: #javascript-web }
 
-Web アプリケーションでは、分析 JavaScript ファイルを参照する必要があります。最初に必ず {{site.data.keys.product_adj }} Web SDK を追加しておいてください。詳細については、[『Web アプリケーションへの {{site.data.keys.product_adj }} SDK の追加』](../../application-development/sdk/web) チュートリアルを参照してください。  
+Web アプリケーションでは、分析 JavaScript ファイルを参照する必要があります。最初に必ず {{ site.data.keys.product_adj }} Web SDK を追加しておいてください。詳細については、[『Web アプリケーションへの {{ site.data.keys.product_adj }} SDK の追加』](../../application-development/sdk/web) チュートリアルを参照してください。  
 
-{{site.data.keys.product_adj }} Web SDK を追加した方法に応じて、以下のいずれかの方法で進めます。
+{{ site.data.keys.product_adj }} Web SDK を追加した方法に応じて、以下のいずれかの方法で進めます。
 
 
-以下のように、`HEAD` エレメント内の {{site.data.keys.mf_analytics }} を参照します。
+以下のように、`HEAD` エレメント内の {{ site.data.keys.mf_analytics }} を参照します。
 
 ```html
 <head>
@@ -100,7 +100,7 @@ import IBMMobileFirstPlatformFoundation
 **WLAnalytics** クラスの他のメソッドを呼び出す前に、`WLAnalytics.sharedInstance()` を呼び出します。
 
 ### Android
-#{: #android }
+{: #android }
 
 #### WLAnalytics のインポート
 {: #import-wlanalytics }
@@ -122,9 +122,9 @@ WLAnalytics.init(this.getApplication());
 ## クライアント・イベント・タイプの有効化/無効化
 {: #enablingdisabling-client-event-types }
 
-Analytics API では、開発者は {{site.data.keys.mf_analytics_console }} 上で視覚化したいイベントについての Analytics の収集を自由に有効または無効にすることができます。
+Analytics API では、開発者は {{ site.data.keys.mf_analytics_console }} 上で視覚化したいイベントについての Analytics の収集を自由に有効または無効にすることができます。
 
-{{site.data.keys.mf_analytics }} API により、以下のメトリックのキャプチャーが可能になります。
+{{ site.data.keys.mf_analytics }} API により、以下のメトリックのキャプチャーが可能になります。
 
 * **ライフサイクル・イベント**: アプリケーション使用比率、使用所要時間、アプリケーション異常終了比率
 * **ネットワーク使用**: API 呼び出し頻度の明細、ネットワーク・パフォーマンス・メトリック
@@ -144,13 +144,13 @@ Android では特に、この動作になります。
 ### クライアント・ライフサイクル・イベント
 {: #client-lifecycle-events }
 
-Analytics SDK が構成された後、ユーザーのデバイス上でアプリケーション・セッションの記録が開始します。{{site.data.keys.mf_analytics }} でのセッションは、アプリケーションがフォアグラウンドからバックグラウンドに移動され、これにより、{{site.data.keys.mf_analytics_console_short }} でセッションが作成されたときに記録されます。
+Analytics SDK が構成された後、ユーザーのデバイス上でアプリケーション・セッションの記録が開始します。{{ site.data.keys.mf_analytics }} でのセッションは、アプリケーションがフォアグラウンドからバックグラウンドに移動され、これにより、{{ site.data.keys.mf_analytics_console_short }} でセッションが作成されたときに記録されます。
 
-セッションを記録するようにデバイスがセットアップされ、ユーザーがデータを送信するとすぐに、以下に示すようにデータが {{site.data.keys.mf_analytics_console_short }} に設定されているのを確認できます。
+セッションを記録するようにデバイスがセットアップされ、ユーザーがデータを送信するとすぐに、以下に示すようにデータが {{ site.data.keys.mf_analytics_console_short }} に設定されているのを確認できます。
 
 ![セッション-グラフ](analytics-app-sessions.png)
 
-{{site.data.keys.mf_analytics_short }} API を使用して、アプリケーション・セッションの収集を有効または無効にします。
+{{ site.data.keys.mf_analytics_short }} API を使用して、アプリケーション・セッションの収集を有効または無効にします。
 
 #### JavaScript
 {: #javascript }
@@ -412,7 +412,7 @@ WLAnalytics.setUserContext("John Doe");
 #### Web アプリケーション
 {: #web-applications }
 
-{{site.data.keys.product_adj }} Web SDK に `unsetUserContext` はありません。ユーザー・セッションは、別のユーザー・セッションが `ibmmfpfanalytics.setUserContext(user)` に作成されない限り、30 分活動が無ければ終了します。
+{{ site.data.keys.product_adj }} Web SDK に `unsetUserContext` はありません。ユーザー・セッションは、別のユーザー・セッションが `ibmmfpfanalytics.setUserContext(user)` に作成されない限り、30 分活動が無ければ終了します。
 
 #### iOS
 {: #ios }
@@ -439,9 +439,9 @@ WLAnalytics.unsetUserContext();
 ## Analytics データの送信
 {: #sending-analytics-data }
 
-Analytics の送信は、Analytics サーバー上でクライアント・サイドの分析を表示するための重要なステップです。構成済みのイベント・タイプのデータが Analytics のために収集されると、分析ログはクライアント・デバイス上のログ・ファイルに保管されます。ファイルのデータは、Analytics API の  `send` メソッドを使用して {{site.data.keys.mf_analytics_server }} に送信されます。
+Analytics の送信は、Analytics サーバー上でクライアント・サイドの分析を表示するための重要なステップです。構成済みのイベント・タイプのデータが Analytics のために収集されると、分析ログはクライアント・デバイス上のログ・ファイルに保管されます。ファイルのデータは、Analytics API の  `send` メソッドを使用して {{ site.data.keys.mf_analytics_server }} に送信されます。
 
-キャプチャーされたログを定期的にサーバーに送信することを検討してください。定期的にデータを送信することにより、{{site.data.keys.mf_analytics_console }} で常に最新の分析データを参照できるようになります。
+キャプチャーされたログを定期的にサーバーに送信することを検討してください。定期的にデータを送信することにより、{{ site.data.keys.mf_analytics_console }} で常に最新の分析データを参照できるようになります。
 
 #### JavaScript (Cordova)
 {: #javascript-cordova }

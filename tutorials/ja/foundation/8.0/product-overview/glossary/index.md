@@ -9,7 +9,7 @@ weight: 8
 {% comment %}
 Do note use keywords in the keyword terms, as this presents issues with the glossary sort tool. (You can use keywords in the definitions.)
 When the term should logically use a keyword, use the keyword text in the term, and add a no-translation comment.
-For example, instead of using "{{site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
+For example, instead of using "{{ site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
 <!-- START NON-TRANSLATABLE -->
@@ -19,7 +19,7 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 <!-- END NON-TRANSLATABLE -->
 
 <br/>
-この用語集では、{{site.data.keys.product }} のソフトウェアと製品の用語および定義を示します。
+この用語集では、{{ site.data.keys.product }} のソフトウェアと製品の用語および定義を示します。
 
 この用語集では、以下の相互参照が使用されています。
 
@@ -28,20 +28,20 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 
 その他の用語および定義については、[IBM Terminology Web サイト](http://www.ibm.com/software/globalization/terminology/)を参照してください。
 
-## A {
+## A
 {: #a }
-}
+
 ### 取得ポリシー (acquisition policy)
 {: #acquisition-policy }
 モバイル・デバイスのセンサーからデータを収集する方法をコントロールするポリシー。ポリシーはアプリケーション・コードにより定義されます。
 
 ### アダプター (adapter)
 {: #adapter }
-{{site.data.keys.product_adj }} アプリケーションのサーバー・サイドのコード。アダプターはエンタープライズ・アプリケーションと接続し、モバイル・アプリケーションとのデータの送受信を行ったり、送信されたデータに必要なすべてのサーバー・サイド・ロジックを実行したりします。
+{{ site.data.keys.product_adj }} アプリケーションのサーバー・サイドのコード。アダプターはエンタープライズ・アプリケーションと接続し、モバイル・アプリケーションとのデータの送受信を行ったり、送信されたデータに必要なすべてのサーバー・サイド・ロジックを実行したりします。
 
 ### 管理データベース (administration database)
 {: #administration-database }
-{{site.data.keys.mf_console }} および Administration Services のデータベース。データベース表に、アプリケーション、アダプター、プロジェクトなどの要素が、それぞれの説明とともに、規模順に明示されます。
+{{ site.data.keys.mf_console }} および Administration Services のデータベース。データベース表に、アプリケーション、アダプター、プロジェクトなどの要素が、それぞれの説明とともに、規模順に明示されます。
 
 ### Administration Services
 {: #administration-services }
@@ -65,7 +65,7 @@ Web またはモバイル・デバイスのアプリケーション。「Web ア
 
 ### Application Center
 {: #application-center }
-{{site.data.keys.product_adj }} のコンポーネントの 1 つ。これを使用すれば、チーム・メンバー同士が、モバイル・アプリケーションの単一リポジトリーでアプリケーションを共有したりコラボレーションを促進したりできます。
+{{ site.data.keys.product_adj }} のコンポーネントの 1 つ。これを使用すれば、チーム・メンバー同士が、モバイル・アプリケーションの単一リポジトリーでアプリケーションを共有したりコラボレーションを促進したりできます。
 
 ### Application Center インストーラー (Application Center installer)
 {: #application-center-installer }
@@ -95,7 +95,7 @@ Application Center で入手可能なアプリケーションのカタログを�
 
 ### ブロードキャスト通知 (broadcast notification)
 {: #broadcast-notification }
-特定の {{site.data.keys.product_adj }} アプリケーションのユーザー全員に宛てた通知。「タグ・ベースの通知 (tag-based notification)」も参照。
+特定の {{ site.data.keys.product_adj }} アプリケーションのユーザー全員に宛てた通知。「タグ・ベースの通知 (tag-based notification)」も参照。
 
 ### ビルド定義 (build definition)
 {: #build-definition }
@@ -351,7 +351,7 @@ Do not translate "MobileFirst" in the term above (site.data.keys.product_adj key
 Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-{{site.data.keys.product }} OAuth セキュリティー機能の使用により、Cloudant へのモバイル・アプリケーション呼び出しをセキュアに使用できる IMFData SDK に対するサーバー・サイド・コンポーネント。{{site.data.keys.product_adj }} データ・プロキシーにより、Trust Association Interceptor (TAI) を通じた認証を要求されます。
+{{ site.data.keys.product }} OAuth セキュリティー機能の使用により、Cloudant へのモバイル・アプリケーション呼び出しをセキュアに使用できる IMFData SDK に対するサーバー・サイド・コンポーネント。{{ site.data.keys.product_adj }} データ・プロキシーにより、Trust Association Interceptor (TAI) を通じた認証を要求されます。
 
 ### MobileFirst Operations Console
 {: #mobilefirst-operations-console }
@@ -360,7 +360,7 @@ Do not translate "MobileFirst" in the term above (site.data.keys.product_adj key
 Do not translate "MobileFirst Operations Console" in the term above (site.data.keys.mf_console keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-{{site.data.keys.mf_server }} でデプロイされる {{site.data.keys.product_adj }} ランタイム環境を制御および管理し、ユーザー統計値を収集および分析するために使用される Web ベースのインターフェース。
+{{ site.data.keys.mf_server }} でデプロイされる {{ site.data.keys.product_adj }} ランタイム環境を制御および管理し、ユーザー統計値を収集および分析するために使用される Web ベースのインターフェース。
 
 ### MobileFirst ランタイム環境 (MobileFirst runtime environment)
 {: #mobilefirts-runtime-environment }
@@ -378,7 +378,7 @@ Do not translate "MobileFirst" in the term above (site.data.keys.product_adj key
 Do not translate "MobileFirst Server" in the term above (site.data.keys.mf_server keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-{{site.data.keys.product_adj }} のコンポーネントの 1 つ。セキュリティー、バックエンド接続、プッシュ通知、モバイル・アプリケーション管理、および分析を処理します。{{site.data.keys.mf_server }} は、アプリケーション・サーバー上で稼動するアプリケーションの集合であり、{{site.data.keys.product_adj }} ランタイム環境用のランタイム・コンテナーとして動作します。
+{{ site.data.keys.product_adj }} のコンポーネントの 1 つ。セキュリティー、バックエンド接続、プッシュ通知、モバイル・アプリケーション管理、および分析を処理します。{{ site.data.keys.mf_server }} は、アプリケーション・サーバー上で稼動するアプリケーションの集合であり、{{ site.data.keys.product_adj }} ランタイム環境用のランタイム・コンテナーとして動作します。
 
 ## N
 {: #n }
@@ -419,7 +419,7 @@ Base64 エンコードされた証明書に関連すること。「Base64」、�
 
 ### PKI ブリッジ (PKI bridge)
 {: #pki-bridge }
-ユーザー証明書認証フレームワークを使用可能にして PKI による通信を行う、{{site.data.keys.mf_server }} の概念。
+ユーザー証明書認証フレームワークを使用可能にして PKI による通信を行う、{{ site.data.keys.mf_server }} の概念。
 
 ### ポール (poll)
 {: #poll }
@@ -435,7 +435,7 @@ Base64 エンコードされた証明書に関連すること。「Base64」、�
 
 ### プロジェクト WAR ファイル (project WAR file)
 {: #project-war-file }
-{{site.data.keys.product_adj }} ランタイム環境の構成を含む Web アーカイブ (WAR) ファイル。アプリケーション・サーバーにデプロイされます。
+{{ site.data.keys.product_adj }} ランタイム環境の構成を含む Web アーカイブ (WAR) ファイル。アプリケーション・サーバーにデプロイされます。
 
 ### プロビジョン (provision)
 {: #provisin }

@@ -5,22 +5,23 @@ relevantTo: [ios,android,windows8,cordova]
 show_in_nav: false
 weight: 7
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.mf_app_center_full }} は、公開アプリケーション・ストアに似た**モバイル・アプリケーションのリポジトリー **ですが、組織やチームのニーズに焦点を置いています。これは専用アプリ・ストアです。
+{{ site.data.keys.mf_app_center_full }} は、公開アプリケーション・ストアに似た**モバイル・アプリケーションのリポジトリー **ですが、組織やチームのニーズに焦点を置いています。これは専用アプリケーション・ストアです。
 
 Application Center を使用すると、簡単にモバイル・アプリケーションを共有できます。
 
 * **フィードバックおよび評価情報の共有**を行うことができます。  
 * アプリケーションをインストールできるユーザーを制限するためにアクセス制御リストを使用できます。
 
-Application Center は、{{site.data.keys.product_adj }} アプリケーションおよび非 {{site.data.keys.product_adj }} アプリケーションと連携し、**iOS、Android**、**BlackBerry 6/7**、および **Windows/Phone 8.x** の各種アプリケーションをすべてサポートします。
+Application Center は、{{ site.data.keys.product_adj }} アプリケーションおよび非 {{ site.data.keys.product_adj }} アプリケーションと連携し、**iOS、Android**、**BlackBerry 6/7**、および **Windows/Phone 8.x** の各種アプリケーションをすべてサポートします。
 
 > **注:** iOS アプリケーションのストアへの提出および検証のために Test Flight または iTunes Connect を使用して生成されたアーカイブ・ファイルおよび IPA ファイルにより、ランタイムの異常終了や失敗が発生する場合があります。詳細については、ブログ[『Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0』](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/)をご覧ください。
 
 Application Center はさまざまな状況で使用できます。例えば、以下があります。 
 
-* 組織全体の企業アプリ・ストアとして。
+* 組織全体の企業アプリケーション・ストアとして。
 * 開発中、チーム内にアプリケーションを配布するため。
 
 > **注:** iOS AppCenter Installer アプリケーションのビルドには、MobileFirst 7.1 が必要です。
@@ -36,7 +37,7 @@ Application Center はさまざまな状況で使用できます。例えば、�
 
 ## インストールおよび構成
 {: #installing-and-configuring }
-Application Center は、IBM Installation Manager によって {{site.data.keys.mf_server }} のインストールの一部としてインストールされます。
+Application Center は、IBM Installation Manager によって {{ site.data.keys.mf_server }} のインストールの一部としてインストールされます。
 
 **前提条件:** Application Center をインストールする前に、アプリケーション・サーバーおよびデータベースをインストールしておく必要があります。
 
@@ -47,9 +48,9 @@ Application Center は、IBM Installation Manager によって {{site.data.keys.
 
 1. IBM Installation Manager に従って、データベースおよびアプリケーション・サーバーを選択して Application Center をインストールします。
 
-    > 詳しくは、トピック[『{{site.data.keys.mf_server }} のインストール』](../../installation-configuration)を参照してください。
+    > 詳しくは、トピック[『{{ site.data.keys.mf_server }} のインストール』](../../installation-configuration)を参照してください。
 
-    iOS 7.1 は https プロトコルのみをサポートしているため、iOS 7.1 以降を実行するデバイス用のアプリケーションを配布することを計画している場合は、Application Center サーバーを SSL (少なくとも TLS v.1) で保護する必要があります。自己署名証明書は推奨されませんが、自己署名 CA 証明書がデバイスに配布される場合は、テストの目的では使用できます。
+    iOS 7.1 は https プロトコルのみをサポートしているため、iOS 7.1 以降を実行するデバイス用のアプリケーションを配布することを計画している場合は、Application Center サーバーを SSL (少なくとも TLS v.1) で保護する必要があります。自己署名証明書は推奨されませんが、自己署名 CA 証明書がデバイスに配布されている場合は、テストの目的で使用できます。
 
 2. Application Center が IBM Installation Manager を使用してインストールされた後に、コンソール `http://localhost:9080/appcenterconsole` を開きます。
 
@@ -58,6 +59,7 @@ Application Center は、IBM Installation Manager によって {{site.data.keys.
 4. この時点で、ユーザー認証を構成できます。例えば、LDAP リポジトリーに接続できます。
 
     > 詳しくは、トピック[『インストール後の Application Center の構成』](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation)を参照してください。
+
 5. Android、iOS、BlackBerry 6/7、および Windows Phone 8 用にモバイル・クライアントを準備します。
 
 モバイル・クライアントは、カタログの参照およびアプリケーションのインストールに使用するモバイル・アプリケーションです。
@@ -68,8 +70,8 @@ Application Center は、IBM Installation Manager によって {{site.data.keys.
 {: #cordova-based-ibm-appcenter-client }
 Cordova ベースの AppCenter クライアント・プロジェクトは、**install_dir/ApplicationCenter/installer/CordovaAppCenterClient** の `install` ディレクトリーにあります。
 
-このプロジェクトは、Cordova フレームワークのみに基づいており、{{site.data.keys.product }} クライアント/サーバー API にまったく依存していません。  
-これは標準 Cordova アプリケーションであるため、{{site.data.keys.mf_studio }} にも依存していません。このアプリケーションは、UI には Dojo を使用します。
+このプロジェクトは、Cordova フレームワークのみに基づいており、{{ site.data.keys.product }} クライアント/サーバー API にまったく依存していません。  
+これは標準 Cordova アプリケーションであるため、{{ site.data.keys.mf_studio }} にも依存していません。このアプリケーションは、UI には Dojo を使用します。
 
 以下の手順に従って開始してください。
 
@@ -144,7 +146,7 @@ cordova build ios
 
 ### Blackberry の場合
 {: #for-blackberry }
-* BlackBerry バージョンをビルドするには、BlackBerry Eclipse IDE (または BlackBerry Java プラグインがインストールされた Eclipse) と BlackBerry SDK 6.0 が必要です。BlackBerry SDK 6.0 でコンパイルすると、アプリケーションの実行も BlackBerry OS 7 上で行われます。
+* BlackBerry バージョンをビルドするには、BlackBerry Eclipse IDE (または BlackBerry Java プラグインがインストールされた Eclipse) と BlackBerry SDK 6.0 が必要です。BlackBerry SDK 6.0 でコンパイルすると、アプリケーションは BlackBerry OS 7 上でも実行されます。
 
 BlackBerry プロジェクトは、**install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6** 内にあります。
 
@@ -175,7 +177,7 @@ Application Center は、企業アカウントに付随する企業証明書を�
 
 ## Application Center コンソールでのアプリケーションの管理
 {: #managing-applications-in-the-application-center-console }
-![Application Center でのアプリケーション管理のイメージ]({{ site.baseurl }}/assets/backup/overview1.png)
+![Application Center でのアプリケーション管理のイメージ]({{)
 
 Application Center コンソールを使用して、以下の方法でカタログ内でアプリケーションを管理します。
 
@@ -188,7 +190,7 @@ Application Center コンソールを使用して、以下の方法でカタロ�
 
 ### ストアへの新規アプリケーションの追加
 {: #adding-new-applications-to-the-store }
-![App Center にアプリケーションを追加するイメージ]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
+![App Center にアプリケーションを追加するイメージ]({{)
 
 ストアに新規アプリケーションを追加するには、以下のようにします。
 
@@ -205,13 +207,13 @@ Application Center コンソールを使用して、以下の方法でカタロ�
 
     「アプリケーション詳細」ビューで、新規アプリケーションについての情報を確認し、説明などの情報をさらに入力できます。カタログ内のすべてのアプリケーションについて、後でこのビューに戻ることができます。
 
-    ![「アプリケーション詳細」画面のイメージ]({{ site.baseurl }}/assets/backup/appDetails1.png)
+    ![「アプリケーション詳細」画面のイメージ]({{)
 
 * **「終了」**をクリックしてタスクを終了します。
 
 新規アプリケーションがストアに追加されます。
 
-![App Center でのアクセス制御のイメージ]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
+![App Center でのアクセス制御のイメージ]({{)
 
 デフォルトでは、アプリケーションをインストールできるのはストアの許可ユーザーです。
 
@@ -223,7 +225,7 @@ Application Center コンソールを使用して、以下の方法でカタロ�
 2. **「アクセス制御使用可能 (Access control enabled)」**を選択します。これで、アプリケーションをインストールすることが許可されているユーザーまたはグループのリストを入力できます。
 3. LDAP を構成済みの場合は、LDAP リポジトリーに定義されているユーザーおよびグループを追加します。
 
-Google Play や Apple App Store などの公開アプリケーション・ストアのアプリケーションの URL を入力して、それらを追加することもきます。
+Google Play や Apple App Store などの公開アプリケーション・ストアのアプリケーションの URL を入力して、それらを追加することもできます。
 
 ## Application Center モバイル・クライアント
 {: #the-application-center-mobile-client }
@@ -234,13 +236,12 @@ Application Center モバイル・クライアントは、デバイス上のア�
 * アプリケーションのインストールや新規バージョンへのアップグレード。
 * アプリケーションに関するフィードバックおよび 5 つ星の評価を提供。
 
-
 ### カタログへのモバイル・クライアント・アプリケーションの追加
 {: #adding-mobile-client-applications-to-the-catalog }
 Application Center モバイル・クライアント・アプリケーションをカタログに追加する必要があります。
 
 1. Application Center コンソールを開きます。
-2. **「アプリケーションの追加 (Add Application)」**ボタンをクリックして、モバイル・クライアント`.apk`、`.ipa`、`.zip`、または `.xap`のファイルを追加します。
+2. **「アプリケーションの追加 (Add Application)」**ボタンをクリックして、モバイル・クライアントのファイル `.apk`、`.ipa`、`.zip`、または `.xap` を追加します。
 3. **「次へ」**をクリックすると、「アプリケーション詳細」ページが開きます。
 4. 「アプリケーション詳細」ページで、**「インストーラー」**を選択して、このアプリケーションがモバイル・クライアントであることを指定します。
 5. **「終了」**をクリックして、Application Center アプリケーションをカタログに追加します。
@@ -251,7 +252,7 @@ Windows 8.1 Pro 向けの Application Center クライアントは、カタロ�
 {: #windows-phone-8 }
 Windows Phone 8 の場合、Application Center コンソールで、企業アカウントを使用して受け取った登録トークンもインストールする必要があります。 この結果、ユーザーがデバイスを登録できるようになります。Application Center の「設定」ページを使用します。このページは、歯車のアイコンを使用して開くことができます。
 
-![Windows Phone 8 アプリケーション登録のイメージ]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
+![Windows Phone 8 アプリケーション登録のイメージ]({{)
 
 モバイル・クライアントをインストールするには、事前に登録トークンをインストールしてデバイスを企業に登録する必要があります。
 
@@ -264,7 +265,8 @@ Windows Phone 8 の場合、Application Center コンソールで、企業アカ
 
 ### モバイル・デバイスへのモバイル・クライアントのインストール
 {: #installing-the-mobile-client-on-the-mobile-device }
-モバイル・デバイスにモバイル・クライアントをインストールするには、以下のようにします。![アプリケーション・インストーラー・アプリケーションのイメージ]({{ site.baseurl }}/assets/backup/installers_smaller.png)
+モバイル・デバイスにモバイル・クライアントをインストールするには、以下のようにします。
+![アプリケーション・インストーラー・アプリケーションのイメージ]({{)
 
 1. デバイス上で Web ブラウザーを開きます。
 2. 次の URL を入力します。`http://hostname:9080/appcenterconsole/installers.html`
@@ -278,26 +280,25 @@ Windows Phone 8 の場合、Application Center コンソールで、企業アカ
 モバイル・クライアントにログインするには、以下のようにします。
 
 1. サーバーにアクセスするための資格情報を入力してください。
-
 2. サーバーのホスト名または IP アドレスを入力します。
 3. ポート番号がデフォルトのもの (`9080`) でない場合は、**「サーバー・ポート」**フィールドに、ポート番号を入力します。
 4. **「アプリケーション・コンテキスト」**フィールドにコンテキスト `applicationcenter` を入力します。
 
-![「ログイン」画面]({{ site.baseurl }}/assets/backup/login.png)
+![「ログイン」画面]({{)
 
 ### Application Center モバイル・クライアント・ビュー
 {: #application-center-mobile-client-views }
 * **「カタログ」**ビューには、使用可能なアプリケーションのリストが表示されます。
 * アプリケーションを選択すると、アプリケーション上で**「詳細」**ビューが開きます。「詳細」ビューからはアプリケーションをインストールできます。「詳細」ビューで星形のアイコンを使用して、アプリケーションにお気に入りのマークを付けることもできます。
 
-    ![カタログ詳細]({{ site.baseurl }}/assets/backup/catalog_details.001.jpg)
+    ![カタログ詳細]({{)
 
 * **「お気に入り」**ビューには、お気に入りのアプリケーションがリストされます。このリストは、特定のユーザーのすべてのデバイス上で使用できます。
 * **「更新」**ビューには、使用可能なすべての更新がリストされます。「更新」ビューで、「詳細」ビューにナビゲートできます。より新しいアプリケーション・バージョンを選択することも、使用可能な最新のバージョンを取得することも可能です。Application Center がプッシュ通知を送信するように構成されている場合は、プッシュ通知メッセージによって更新についての通知を受け取る場合があります。
 
 モバイル・クライアントからこのアプリケーションを評価し、レビューを送信できます。レビューは、コンソール上でもモバイル・デバイス上でも閲覧できます。
 
-![レビュー]({{ site.baseurl }}/assets/backup/reviewss.png)
+![レビュー]({{)
 
 ## Application Center コマンド・ライン・ツール
 {: #application-center-command-line-tools }
