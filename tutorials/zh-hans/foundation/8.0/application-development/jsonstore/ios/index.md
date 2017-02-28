@@ -1,61 +1,61 @@
 ---
 layout: tutorial
-title: JSONStore in iOS applications
+title: iOS 应用程序中的 JSONStore
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 downloads:
-  - name: Download Xcode project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
-  - name: Download Adapter Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+  - 名称：下载 Xcode 项目
+    url：https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80
+  - 名称：下载适配器 Maven 项目
+    url：https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Prerequisites
+## 先决条件
 {: #prerequisites }
-* Read the [JSONStore parent tutorial](../)
-* Make sure the {{ site.data.keys.product_adj }} Native SDK was added to the Xcode project. Follow the [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios/) tutorial.
+* 阅读 [JSONStore 父教程](../)
+* 确保已将 {{ site.data.keys.product_adj }} 本机 SDK 添加到 Xcode 项目。遵循[向 iOS 应用程序添加 {{ site.data.keys.product }} SDK](../../../application-development/sdk/ios/) 教程。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Adding JSONStore](#adding-jsonstore)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-* [Sample application](#sample-application)
+* [添加 JSONStore](#adding-jsonstore)
+* [基本用法](#basic-usage)
+* [高级用法](#advanced-usage)
+* [样本应用程序](#sample-application)
 
-## Adding JSONStore
+## 添加 JSONStore
 {: #adding-jsonstore }
-1. Add the following to the existing `podfile`, located at the root of the Xcode project:
+1. 将以下代码添加到 Xcode 项目根目录中的现有 `podfile`：
 
    ```xml
    pod 'IBMMobileFirstPlatformFoundationJSONStore'
    ```
 
-2. From a **Command-line** window, navigate to the root of the Xcode project and run the command: `pod install` - note that this action may take a while.
+2. 从**命令行**窗口，浏览至 Xcode 项目的根目录并运行命令：`pod install` - 请注意，此操作可能需要一些时间。
 
-Whenever you want to use JSONStore, make sure that you import the JSONStore header:  
-Objective-C:
+在要使用 JSONStore 时，确保导入 JSONStore 头：  
+Objective-C：
 
 ```objc
 #import <IBMMobileFirstPlatformFoundationJSONStore/IBMMobileFirstPlatformFoundationJSONStore.h>
 ```
 
-Swift:
+Swift：
 
 ```swift
 import IBMMobileFirstPlatformFoundationJSONStore    
 ```
 
-## Basic Usage
+## 基本用法
 {: #basic-usage }
-### Open
+### 打开
 {: #open }
-Use `openCollections` to open one or more JSONStore collections.
+使用 `openCollections` 打开一个或多个 JSONStore 集合。
 
-Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists.  
-If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
+启动或供应集合意味着创建包含集合和文档的持久存储（如果不存在）。  
+如果持久存储已加密且传递了正确密码，那么将运行必需的安全过程才能访问数据。
 
-For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
+有关可在初始化时启用的可选功能，请参阅本教程第二部分中的**安全性、多用户支持**和 **{{ site.data.keys.product_adj }} 适配器集成**。
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -64,26 +64,26 @@ collection.setSearchField("name", withType: JSONStore_String)
 collection.setSearchField("age", withType: JSONStore_Integer)
 
 do {
-  try JSONStore.sharedInstance().openCollections([collection], withOptions: nil)
+try JSONStore.sharedInstance().openCollections([collection], withOptions: nil)
 } catch let error as NSError {
-  // handle error
+// handle error
 }
 ```
 
-### Get
+### 获取
 {: #get }
-Use `getCollectionWithName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionWithName`.
+使用 `getCollectionWithName` 来创建集合存取器。必须先调用 `openCollections`，然后才能调用 `getCollectionWithName`。
 
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 ```
 
-The variable `collection` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`.
+变量 `collection` 现在可用于在 `people` 集合上执行操作，例如，`add`、`find` 和 `replace`。
 
-### Add
+### 添加
 {: #add }
-Use `addData` to store data as documents inside a collection.
+使用 `addData` 以将数据存储为集合中的文档。
 
 ```swift
 let collectionName:String = "people"
@@ -91,16 +91,16 @@ let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWit
 
 let data = ["name" : "yoel", "age" : 23]
 
-do  {
-  try collection.addData([data], andMarkDirty: true, withOptions: nil)
+do {
+try collection.addData([data], andMarkDirty: true, withOptions: nil)
 } catch let error as NSError {
-  // handle error
+// handle error
 }
 ```
 
-### Find
+### 查找
 {: #find }
-Use `findWithQueryParts` to locate a document inside a collection by using a query. Use `findAllWithOptions` to retrieve all the documents inside a collection. Use `findWithIds` to search by the document unique identifier.
+使用 `findWithQueryParts` 以通过查询查找集合中的文档。使用 `findAllWithOptions` 以检索集合中的所有文档。使用 `findWithIds` 以按文档唯一标识进行搜索。
 
 ```swift
 let collectionName:String = "people"
@@ -113,16 +113,18 @@ options.limit = 10
 let query:JSONStoreQueryPart = JSONStoreQueryPart()
 query.searchField("name", like: "yoel")
 
-do  {
-  let results:NSArray = try collection.findWithQueryParts([query], andOptions: options)
+do {
+let results:NSArray = try collection.findWithQueryParts([query], andOptions: options)
 } catch let error as NSError {
-  // handle error
+// handle error
 }
 ```
 
-### Replace
+### 将
+
+
 {: #replace }
-Use `replaceDocuments` to modify documents inside a collection. The field that you use to perform the replacement is `_id,` the document unique identifier.
+使用 `replaceDocuments` 以修改集合中的文档。用于执行替换的字段是文档唯一标识 `_id`。
 
 ```swift
 let collectionName:String = "people"
@@ -137,74 +139,74 @@ replacement["_id"] = 1
 replacement["json"] = document
 
 do {
-  try collection.replaceDocuments([replacement], andMarkDirty: true)
+try collection.replaceDocuments([replacement], andMarkDirty: true)
 } catch let error as NSError {
-  // handle error
+// handle error
 }
 ```
 
-This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
+此示例假定文档 `{_id: 1, json: {name: 'yoel', age: 23} }` 位于集合中。
 
-### Remove
+### 除去
 {: #remove }
-Use `removeWithIds` to delete a document from a collection.
-Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial.
+使用 `removeWithIds` 以删除集合中的文档。
+在调用 `markDocumentClean` 之前，不会从集合中擦除文档。有关更多信息，请参阅本教程后面的 **{{ site.data.keys.product_adj }} 适配器集成**部分。
 
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
 do {
-  try collection.removeWithIds([1], andMarkDirty: true)
+try collection.removeWithIds([1], andMarkDirty: true)
 } catch let error as NSError {
-  // handle error
+// handle error
 }
 ```
 
-### Remove Collection
+### 除去集合
 {: #remove-collection }
-Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+使用 `removeCollection` 来删除集合中存储的所有文档。此操作类似于数据库术语中的删除表。
 
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
 do {
-  try collection.removeCollection()
+try collection.removeCollection()
 } catch let error as NSError {
-  // handle error
+// handle error
 }
 ```
 
-### Destroy
+### 销毁
 {: #destroy }
-Use `destroyData` to remove the following data:
+使用 `destroyData` 以除去以下数据：
 
-* All documents
-* All collections
-* All Stores - See **Multiple User Support** later in this tutorial
-* All JSONStore metadata and security artifacts - See **Security** later in this tutorial
+* 所有文档
+* 所有集合
+* 所有存储区 - 请参阅本教程后面的**多用户支持**。
+* 所有 JSONStore 元数据和安全工件 - 请参阅本教程后面的**安全性**
 
 ```swift
 do {
   try JSONStore.sharedInstance().destroyData()
 } catch let error as NSError {
-  // handle error
+// handle error
 }
 ```
 
-## Advanced Usage
+## 高级用法
 {: #advanced-usage }
-### Security
+### 安全性
 {: #security }
-You can secure all the collections in a store by passing a `JSONStoreOpenOptions` object with a password to the `openCollections` function. If no password is passed, the documents of all the collections in the store are not encrypted.
+您可以通过将包含密码的 `JSONStoreInitOptions` 对象传递到 `openCollections` 函数来保护存储区中的所有集合。如果未传递密码，那么将不会加密存储区中所有集合的文档。
 
-Some security metadata is stored in the keychain (iOS).  
-The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
+某些安全元数据存储在密钥链 (iOS) 中。  
+此存储区利用 256 位高级加密标准 (AES) 密钥进行加密。所有密钥通过基于密码的密钥派生功能 2 (PBKDF2) 进行增强。
 
-Use `closeAllCollections` to lock access to all the collections until you call `openCollections` again. If you think of `openCollections` as a login function you can think of `closeAllCollections` as the corresponding logout function.
+使用 `closeAllCollections` 以锁定对所有集合的访问，直至再次调用 `openCollections`。如果将 `openCollections` 当作登录函数，那么可将 `closeAllCollections` 当作对应的注销函数。
 
-Use `changeCurrentPassword` to change the password.
+使用 `changeCurrentPassword` 来更改密码。
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -217,13 +219,13 @@ options.password = "123"
 do {
   try JSONStore.sharedInstance().openCollections([collection], withOptions: options)
 } catch let error as NSError {
-  // handle error
+// handle error
 }
 ```
 
-### Multiple User Support
+### 多用户支持
 {: #multiple-user-support }
-You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `openCollections` function can take an options object with a username. If no username is given, the default username is "jsonstore".
+您可以在单个 {{ site.data.keys.product_adj }} 应用程序中创建包含不同集合的多个存储区。`openCollections` 函数可使用包含用户名的选项对象。如果未指定用户名，那么缺省用户名为 jsonstore。
 
 ```swift
 let collection:JSONStoreCollection = JSONStoreCollection(name: "people")
@@ -236,19 +238,20 @@ options.username = "yoel"
 do {
   try JSONStore.sharedInstance().openCollections([collection], withOptions: options)
 } catch let error as NSError {
-  // handle error
+// handle error
 }
 ```
 
-### {{ site.data.keys.product_adj }} Adapter Integration
+### {{ site.data.keys.product_adj }} 适配器集成
 {: #mobilefirst-adapter-integration }
-This section assumes that you are familiar with adapters. Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
+此部分假定您熟悉适配器。适配器集成为可选，其支持将数据从集合发送到适配器以及从适配器将数据获取到集合。
 
-You can achieve these goals by using functions such as `WLResourceRequest`.
 
-#### Adapter Implementation
+您可以使用诸如 `WLResourceRequest` 的函数实现这些目标。
+
+#### 适配器实现
 {: #adapter-implementation }
-Create an adapter and name it "**People**". Define it's procedures `addPerson`,  `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+创建一个适配器并将其命名为“**People**”。将其过程定义为 `addPerson`、`getPeople`、`pushPeople`、`removePerson` 和 `replacePerson`。
 
 ```javascript
 function getPeople() {
@@ -279,9 +282,9 @@ function replacePerson(data) {
 }
 ```
 
-#### Load data from {{ site.data.keys.product_adj }} Adapter
+#### 从 {{ site.data.keys.product_adj }} 适配器装入数据
 {: #load-data-from-mobilefirst-adapter }
-To load data from a MobileFirst Adapter use `WLResourceRequest`.
+要从 MobileFirst 适配器装入数据，请使用 `WLResourceRequest`。
 
 ```swift
 // Start - LoadFromAdapter
@@ -304,26 +307,26 @@ let loadDelegate:LoadFromAdapter = LoadFromAdapter()
 pull.sendWithDelegate(loadDelegate)
 ```
 
-#### Get Push Required (Dirty Documents)
+#### 获取所需推送（脏文档）
 {: #get-push-required-dirty-documents }
-Calling `allDirty` returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
+调用 `allDirty` 将返回名为“脏文档”的数组，这些是包含后端系统上不存在的本地修订的文档。
 
 ```swift
 let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
 do {
-  let dirtyDocs:NSArray = try collection.allDirty()
+let dirtyDocs:NSArray = try collection.allDirty()
 } catch let error as NSError {
-  // handle error
+// handle error
 }
 ```
 
-To prevent JSONStore from marking the documents as "dirty", pass the option `andMarkDirty:false` to `add`, `replace`, and `remove`.
+要阻止 JSONStore 将文档标记为“脏”，请将选项 `andMarkDirty:false` 传递到 `add`、`replace` 和 `remove`。
 
-#### Push changes
+#### 推送更改
 {: #push-changes }
-To push changes to an adapter, call the `allDirty` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
+要将更改推送到适配器，请调用 `allDirty` 以获取包含修订的文档列表，然后使用 `WLResourceRequest`。在发送数据并且收到成功响应后，确保调用 `markDocumentsClean`。
 
 ```swift
 // Start - PushToAdapter
@@ -342,7 +345,7 @@ let collectionName:String = "people"
 let collection:JSONStoreCollection = JSONStore.sharedInstance().getCollectionWithName(collectionName)
 
 do {
-  let dirtyDocs:NSArray = try collection.allDirty()
+let dirtyDocs:NSArray = try collection.allDirty()
   let pushData:NSData = NSKeyedArchiver.archivedDataWithRootObject(dirtyDocs)
 
   let push = WLResourceRequest(URL: NSURL(string: "/adapters/People/pushPeople"), method: "POST")
@@ -351,19 +354,19 @@ do {
   push.sendWithData(pushData, delegate: pushDelegate)
 
 } catch let error as NSError {
-  // handle error
+// handle error
 }
 ```
 
-<img alt="Image of the sample application" src="jsonstore-ios-screen.png" style="float:right; width:240px;"/>
-## Sample application
+<img alt="样本应用程序的图像" src="jsonstore-ios-screen.png" style="float:right; width:240px;"/>
+## 示例应用程序
 {: #sample-application }
-The JSONStoreSwift project contains a native iOS Swift application that utilizes the JSONStore API set.  
-Included is a JavaScript adapter Maven project.
+JSONStoreSwift 项目包含利用 JSONStore API 集合的本机 iOS Swift 应用程序。  
+随附一个 JavaScript 适配器 Maven 项目。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80) the Native iOS project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80)本机 iOS 项目。  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80)适配器 Maven 项目。  
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+遵循样本的 README.md 文件以获取指示信息。

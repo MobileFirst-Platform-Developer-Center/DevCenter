@@ -12,7 +12,7 @@ weight: 1
 #### 跳至：
 {: #jump-to }
 * [使用 V8.0 开发的 Cordova 应用程序与使用 V7.1 及更低版本开发的 Cordova 应用程序的比较](#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before)
-* [将现有混合或跨平台应用程序迁移到 {{ site.data.keys.product_full }}    8.0 支持的 Cordova 应用程序](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
+* [将现有混合或跨平台应用程序迁移到 {{ site.data.keys.product_full }} 8.0 支持的 Cordova 应用程序](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
 * [为 iOS Cordova 迁移加密](#migrating-encryption-for-ios-cordova)
 * [迁移“直接更新”](#migrating-direct-update)
 * [升级 WebView](#upgrading-the-webview)
@@ -20,9 +20,9 @@ weight: 1
 
 ## 使用 V8.0 开发的 Cordova 应用程序与使用 V7.1 及更低版本开发的 Cordova 应用程序的比较
 {: #comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before }
-将使用 {{ site.data.keys.product_adj }}    V8.0 开发的 Cordova 应用程序与使用 IBM MobileFirst Platform Foundation V7.1 开发的 Cordova 和混合应用程序进行比较。
+将使用 {{ site.data.keys.product_adj }} V8.0 开发的 Cordova 应用程序与使用 IBM MobileFirst Platform Foundation V7.1 开发的 Cordova 和混合应用程序进行比较。
 
-| 功能 | 使用 <br/>{{ site.data.keys.product }}    V8.0 开发的 Cordova 应用程序 |	使用 IBM<br/>MobileFirst Platform Foundation V7.1 开发的 Cordova 应用程序 | 使用 IBM<br/>MobileFirst Platform Foundation V7.1 开发的 MobileFirst 混合应用程序 |
+| 功能 | 使用 IBM <br/>{{ site.data.keys.product }} v8.0 开发的 Cordova 应用程序 |	使用 IBM<br/>MobileFirst Platform Foundation V7.1 开发的 Cordova 应用程序 | 使用 IBM<br/>MobileFirst Platform Foundation V7.1 开发的混合应用程序 |
 |---------|-------|---------|-------|------|
 | **IDE Eclipse Studio** | | | | |	 	 	 
 | Eclipse 插件和集成 | 是 | 不支持 | 是（专用） |
@@ -31,13 +31,13 @@ weight: 1
 | Dojo 和 jQuery IDE 检测 | 是<br/><br/>注：可在 Cordova 应用程序中使用的 JavaScript 框架包括 Dojo 和 jQuery Mobile。 | 是<br/><br/>注：可在 Cordova 应用程序中使用的 JavaScript 框架包括 Dojo 和 jQuery Mobile。 | 是 |
 | 移动 UI 模式 | 不支持 | 不支持 | 不推荐 |
 | **应用程序子类型** | | |
-| shell 组件 | 不受支持<br/><br/>注：如果先前混合应用程序使用 shell 和内部应用程序，那么建议采用 Cordova 设计模式，并将 shell 组件作为可跨应用程序共享的 Cordova 插件进行实施。 | 不支持 | 是 |
-| 内部混合应用程序 | 不受支持<br/><br/>注：如果先前混合应用程序使用 shell 和内部应用程序，那么建议采用 Cordova 设计模式，并将 shell 组件作为可跨应用程序共享的 Cordova 插件进行实施。 | 不支持 | 是 |
+| shell 组件 | 不支持<br/><br/>注：如果先前混合应用程序使用 shell 和内部应用程序，那么建议采用 Cordova 设计模式，并将 shell 组件作为可以跨应用程序共享的 Cordova 插件进行实施。 | 不支持 | 是 |
+| 内部混合应用程序 | 不支持<br/><br/>注：如果先前混合应用程序使用 shell 和内部应用程序，那么建议采用 Cordova 设计模式，并将 shell 组件作为可以跨应用程序共享的 Cordova 插件进行实施。 | 不支持 | 是 |
 | **应用程序功能部件** | | | 	 	 	 
 | 移动操作系统	| iOS 8 或更高版本、Android 4.1 或更高版本、Windows Phone 8.1 和 Windows Phone 10。 | iOS 7 或更高版本、Android 4 或更高版本。 | iOS、Android 和 Windows Phone 8 |
 | Web 应用程序 | 是，用作未使用 Apache Cordova 开发的 JavaScript 应用程序。 | 不支持 | 是，用作 desktopbrowser 或 mobilewebapp 环境。 |
 | 直接更新 | 是。 | 是 | 是 |
-| {{ site.data.keys.product_adj }}   安全框架 | 是 | 是 | 是 |
+| {{ site.data.keys.product_adj }}安全框架 | 是 | 是 | 是 |
 | 应用程序真实性 | 是 | 是 | 是 |
 | 证书锁定 | 是 | 否 | 是 |
 | JSONStore | 是。 | 使用 cordova-plugin-mfp-jsonstore 插件。 | 是 | 是 |
@@ -47,9 +47,9 @@ weight: 1
 | 为可寻址设备许可证跟踪指定应用程序目标类别（B2E 或 B2C） | 是 | 否 | 是 |
 | 简单数据共享 | 否 | 是 | 是 |
 | 单点登录 | 是<br/><br/>注：现在，可通过新的预定义 enableSSO 安全性检查应用程序描述符配置属性来支持设备单点登录 (SSO) | 是 | 是 |
-| {{ site.data.keys.product_adj }}   应用程序外观 | 否<br/><br/>注：要检测并处理不同的设备屏幕大小，请使用标准的 Web 开发做法，如响应式 Web 设计 | 否<br/><br/>注：要检测并处理不同的设备屏幕大小，请使用标准的 Web 开发做法，如响应式 Web 设计。 | 是 |
+| {{ site.data.keys.product_adj }}应用程序外观 | 否<br/><br/>注：要检测并处理不同的设备屏幕大小，请使用标准的 Web 开发做法，如响应式 Web 设计 | 否<br/><br/>注：要检测并处理不同的设备屏幕大小，请使用标准的 Web 开发做法，如响应式 Web 设计。 | 是 |
 | 环境优化 | 是 (Cordova)。 |  使用 merges 目录定义特定于平台的 Web 资源。 | 是 (Cordova)。使用 merges 目录定义特定于平台的 Web 资源。有关更多信息，请参阅 Apache Cordova 文档中的“使用 merges 定制每个平台”。 | 是（专用） |
-| 推送通知 | 是。使用 cordova-plugin-mfp-push 插件。<br/><br/>限制：您只可以将预定义的 {{ site.data.keys.product_adj }}    安全性检查映射到 push.mobileclient 作用域。不支持定制安全性检查，因为未调用 JavaScript 验证问题处理程序。 | 是<br/><br/>注：对于 Android，您必须添加 cordova-plugin-mfp-push 插件。您不需要对 iOS 使用此插件，因为针对 iOS 的推送客户端支持已包含在核心 mfp 插件中。 | 是 |
+| 推送通知 | 是。使用 cordova-plugin-mfp-push 插件。<br/><br/>限制：您只可以将预定义的 {{ site.data.keys.product_adj }} 安全性检查映射到 push.mobileclient 作用域。不支持定制安全性检查，因为未调用 JavaScript 验证问题处理程序。 | 是<br/><br/>注：对于 Android，您必须添加 cordova-plugin-mfp-push 插件。您不需要对 iOS 使用此插件，因为针对 iOS 的推送客户端支持已包含在核心 mfp 插件中。 | 是 |
 | Cordova 插件管理 | 是 | 是 | 否 |
 | 消息 (i18n) | 是 | 是 | 是 |
 | 令牌许可 | 是 | 是 | 是 |
@@ -57,21 +57,21 @@ weight: 1
 | 缩小 | 是 (Cordova)<br/><br/>注：使用常用的开放式源代码工具。 | 是 (Cordova)<br/><br/>注：使用常用的开放式源代码工具。 | 是（专用） |
 | 并置 JS 和 CSS | 是 (Cordova)<br/><br/>注：使用常用的开放式源代码工具。 | 是 (Cordova)<br/><br/>注：使用常用的开放式源代码工具。 | 是（专用） |
 | 模糊化 | 是 (Cordova)<br/><br/>注：使用常用的开放式源代码工具。 | 是 (Cordova)<br/><br/>注：使用常用的开放式源代码工具。 | 是（专用） |
-| Android Pro Guard | 是<br/><br/>注：{{ site.data.keys.product }}    V8.0.0 不包含预定义的 proguard-project.txt 配置文件，该配置文件用于对 {{ site.data.keys.product_adj }}    Android 应用程序进行 Android ProGuard 模糊处理。 | 是<br/><br/>注：请参阅 Android 文档以启用 Pro Guard。 | 是 |
+| Android Pro Guard | 是<br/><br/>注：{{ site.data.keys.product }} V8.0.0 不包含预定义的 proguard-project.txt 配置文件，该配置文件用于对 {{ site.data.keys.product_adj }} Android 应用程序进行 Android ProGuard 模糊处理。 | 是<br/><br/>注：请参阅 Android 文档以启用 Pro Guard。 | 是 |
 
-## 将现有混合或跨平台应用程序迁移到 {{ site.data.keys.product }}    8.0 支持的 Cordova 应用程序
+## 将现有混合或跨平台应用程序迁移到 {{ site.data.keys.product }} 8.0 支持的 Cordova 应用程序
 {: #migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80 }
-您可以将使用 IBM MobileFirst Platform Foundation V6.2 或更高版本开发的现有混合或跨平台 (Cordova) 应用程序迁移到 {{ site.data.keys.product }}    V8.0 支持的 Cordova 应用程序。
+您可以将使用 IBM MobileFirst Platform Foundation V6.2 或更高版本开发的现有混合或跨平台 (Cordova) 应用程序迁移到 {{ site.data.keys.product }} V8.0 支持的 Cordova 应用程序。
 
 #### 跳至：
 {: #jump-to }
 * [使用迁移辅助工具启动 Cordova 应用程序迁移](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)
-* [完成 {{ site.data.keys.product_adj }}    混合应用程序的迁移](#completing-migration-of-a-mobilefirst-hybrid-app)
-* [完成 {{ site.data.keys.product_adj }}    Cordova 应用程序的迁移](#completing-migration-of-a-mobilefirst-cordova-app)
+* [完成 {{ site.data.keys.product_adj }} 混合应用程序的迁移](#completing-migration-of-a-mobilefirst-hybrid-app)
+* [完成 {{ site.data.keys.product_adj }} Cordova 应用程序的迁移](#completing-migration-of-a-mobilefirst-cordova-app)
 
 ### 使用迁移辅助工具启动 Cordova 应用程序迁移
 {: #starting-the-cordova-app-migration-with-the-migration-assistance-tool }
-迁移辅助工具可帮助您准备通过 {{ site.data.keys.product_adj }}    的更低版本创建的跨平台应用程序进行迁移，方法是识别不再有效的 API 并将项目复制到 V8.0 支持的 Cordova 应用程序。
+迁移辅助工具可帮助您准备通过 {{ site.data.keys.product_adj }} 的更低版本创建的跨平台应用程序进行迁移，方法是识别不再有效的 API 并将项目复制到 V8.0 支持的 Cordova 应用程序。
 
 使用迁移辅助工具之前，务必了解以下信息：
 
@@ -107,7 +107,7 @@ weight: 1
    ```
 
    * **source_directory**  
-您正在迁移的项目的当前位置。在混合应用程序中，这应当指向应用程序的 **application** 文件夹。
+   您正在迁移的项目的当前位置。在混合应用程序中，这应当指向应用程序的 **application** 文件夹。
    * **destination_directory**    
    与 V8.0 兼容的新 Cordova 结构所输出的目录的可选名称。此目录是 **new-project-directory** 文件夹的父目录。如果未指定，那么将在运行命令的目录中创建此文件夹。
    * **new-project-directory**
@@ -149,7 +149,7 @@ weight: 1
       mfpmigrate scan --in source_directory --out destination_directory --type hybrid
       ```
         * **source_directory**  
-        要扫描的文件的当前位置。在 IBM MobileFirst Platform Foundation 混合应用程序中，此位置为应用程序的 **common** 目录。在 {{ site.data.keys.product }}    V8.0 Cordova 跨平台应用程序中，此位置为 **www** 目录。
+        要扫描的文件的当前位置。在 IBM MobileFirst Platform Foundation 混合应用程序中，此位置为应用程序的 **common** 目录。在 {{ site.data.keys.product }} V8.0 Cordova 跨平台应用程序中，此位置为 **www** 目录。
         * **destination_directory**  
         扫描结果的输出目录。
 		* **scan_type**  
@@ -157,7 +157,7 @@ weight: 1
     * 解决 **api-report.html** 文件中确定的任何剩余 API 问题。
 6. 重复步骤 6 以针对新的 Cordova 应用程序运行扫描工具，直到解决所有问题。
 
-### 完成 {{ site.data.keys.product_adj }}    混合应用程序的迁移
+### 完成 {{ site.data.keys.product_adj }} 混合应用程序的迁移
 {: #completing-migration-of-a-mobilefirst-hybrid-app }
 使用迁移辅助工具后，必须手动修改代码的某些部分以完成迁移过程。
 
@@ -166,7 +166,7 @@ weight: 1
 * 如果需要下载 JQuery 的新版本（步骤 1c），或者如果需要安装任何其他 Cordova 插件（步骤 6），那么必须具有因特网访问权。
 * 如果需要安装其他 Cordova 插件（步骤 6），那么必须已安装 node.js V4.0.0 或更高版本。
 
-完成本任务中的步骤，以完成将 MobileFirst 混合应用程序从 IBM MobileFirst Platform Foundation 7.1 迁移到包含 {{ site.data.keys.product }}    8.0 支持的 Cordova 应用程序。
+完成本任务中的步骤，以完成将 MobileFirst 混合应用程序从 IBM MobileFirst Platform Foundation 7.1 迁移到包含 {{ site.data.keys.product }} 8.0 支持的 Cordova 应用程序。
 
 完成迁移后，应用程序可以使用独立于 IBM MobileFirst Platform Foundation 获取的 Cordova 平台和插件，并使用首选 Cordova 开发工具继续开发应用程序。
 
@@ -258,7 +258,7 @@ wlCommonInit();
 5. 可选：如果原始应用程序使用 FIPS 功能部件，请将 JQuery 事件侦听器更改为侦听 WL/FIPS/READY 事件的 JavaScript 事件侦听器。有关 FIPS 的更多信息，请参阅 [FIPS 140-2 支持](../../../administering-apps/federal/#fips-140-2-support)。
 6. 可选：如果原始应用程序使用迁移辅助工具没有替换或提供的任何第三方 Cordova 插件，请使用 `cordova plugin add` 命令将这些插件手动添加到 Cordova 应用程序。有关此工具替换了哪些插件的信息，请参阅[使用迁移辅助工具启动 Cordova 应用程序迁移](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)。
 
-### 完成 {{ site.data.keys.product_adj }}    Cordova 应用程序的迁移
+### 完成 {{ site.data.keys.product_adj }} Cordova 应用程序的迁移
 {: #completing-migration-of-a-mobilefirst-cordova-app }
 使用迁移辅助工具后，必须手动修改代码的某些部分以完成迁移过程。
 
@@ -268,23 +268,24 @@ wlCommonInit();
 * 您必须具有因特网访问权。
 * 您必须已安装 node.js V4.0.0 或更高版本。
 
-通过 **mfp cordova create** 创建的 Cordova 应用程序使用 IBM MobileFirst Platform Foundation 先前版本随附的 Cordova 平台和插件版本。完成迁移后，已迁移的应用程序可以使用独立于 {{ site.data.keys.product }}    获取的 Cordova 平台和插件。这是 IBM MobileFirs Foundation V8.0 提供的唯一一种 Cordova 应用程序支持。
+通过 **mfp cordova create** 创建的 Cordova 应用程序使用 IBM MobileFirst Platform Foundation 先前版本随附的 Cordova 平台和插件版本。完成迁移后，已迁移的应用程序可以使用独立于 {{ site.data.keys.product }} 获取的 Cordova 平台和插件。这是 IBM MobileFirs Foundation V8.0 提供的唯一一种 Cordova 应用程序支持。
 
 要进行迁移，请运行迁移辅助工具，然后对应用程序进行其他修改。
 
-1. 通过所选的 Cordova 开发工具，添加除用于启用原始应用程序中包含的 {{ site.data.keys.product_adj }}    功能部件的 Cordova 插件以外的任何 Cordova 插件。例如，通过 Cordova CLI，要添加插件 **cordova-plugin-file** 和 **cordova-plugin-file-transfer**，请输入：
+1. 通过所选的 Cordova 开发工具，添加除用于启用原始应用程序中包含的 {{ site.data.keys.product_adj }} 功能部件的 Cordova 插件以外的任何 Cordova 插件。例如，通过 Cordova CLI，要添加插件 **cordova-plugin-file** 和 **cordova-plugin-file-transfer**，请输入：
 
 
    ```bash
    cordova plugin add cordova-plugin-file cordova-plugin-file-transfer
    ```
 
-   > **注：****mfpmigrate** 迁移辅助工具已针对 {{ site.data.keys.product_adj }}    功能部件添加 Cordova 插件，因此您不必添加这些插件。有关这些插件的更多信息，请参阅 [{{ site.data.keys.product_adj }}    的 Cordova 插件](../../../application-development/sdk/cordova)。
+   > **注：****mfpmigrate** 迁移辅助工具已针对 {{ site.data.keys.product_adj }} 功能部件添加 Cordova 插件，因此您不必添加这些插件。有关这些插件的更多信息，请参阅 [{{ site.data.keys.product_adj }} 的 Cordova 插件](../../../application-development/sdk/cordova)。
+   
 2. 可选：如果原始应用程序使用 FIPS 功能部件，请将 JQuery 事件侦听器更改为侦听 WL/FIPS/READY 事件的 JavaScript 事件侦听器。有关 FIPS 的更多信息，请参阅 [FIPS 140-2 支持](../../../administering-apps/federal/#fips-140-2-support)。
 3. 可选：如果原始应用程序使用迁移辅助工具没有替换或提供的任何第三方 Cordova 插件，请使用 **cordova plugin add** 命令将这些插件手动添加到 Cordova 应用程序。有关此工具替换了哪些插件的信息，请参阅[使用迁移辅助工具启动 Cordova 应用程序迁移](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)。
 4. 可选：（仅适用于包含 iOS 平台且使用 OpenSSL 的应用程序。）将 **cordova-plugin-mfp-encrypt-utils** 插件添加到应用程序。**cordova-plugin-mfp-encrypt-utils** 插件为使用 iOS 平台的 Cordova 应用程序提供用于加密的 iOS OpenSSL 框架。
 
-您现在具有可以通过首选 Cordova 工具继续开发的 Cordova 应用程序，但其中还包含 {{ site.data.keys.product_adj }}    功能。
+您现在具有可以通过首选 Cordova 工具继续开发的 Cordova 应用程序，但其中还包含 {{ site.data.keys.product_adj }} 功能。
 
 ## 为 iOS Cordova 迁移加密
 {: #migrating-encryption-for-ios-cordova }
@@ -296,12 +297,12 @@ wlCommonInit();
 {: #migrating-direct-update }
 首次访问受保护资源后会触发“直接更新”。在 V8.0 中，已更改了用于部署新 Web 资源的过程。
 
-与先前版本不同，在 V8.0 中，如果应用程序不访问安全的 {{ site.data.keys.product_adj }}    资源，那么客户机应用程序不会接收更新，即使在服务器上有可用更新也如此。资源可能不受保护，例如，因为 OAuth 已由注释 `@OAuth(security=false)` 或由配置禁用。您可以通过以下其中一种方式绕过此风险：
+与先前版本不同，在 V8.0 中，如果应用程序不访问安全的 {{ site.data.keys.product_adj }} 资源，那么客户机应用程序不会接收更新，即使在服务器上有可用更新也如此。资源可能不受保护，例如，因为 OAuth 已由注释 `@OAuth(security=false)` 或由配置禁用。您可以通过以下其中一种方式绕过此风险：
 
 * 显式获取访问令牌。请参阅 [`WLAuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc) 类中的 `obtainAccessToken` API。
 * 调用其他受保护资源。请参阅 [`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html?view=kc) 类。
 
-要使用“直接更新”：从 V8.0 开始，不再将 **.wlapp** 文件上载到 {{ site.data.keys.mf_server }}   。而是上载较小的 Web 资源归档（.zip 文件）。该归档文件不再包含在先前版本中广泛使用的 Web 预览文件或外表。已停用这些功能。该归档仅包含发送到客户机的 Web 资源以及“直接更新”验证的校验和。
+要使用“直接更新”：从 V8.0 开始，不再将 **.wlapp** 文件上载到 {{ site.data.keys.mf_server }}。而是上载较小的 Web 资源归档（.zip 文件）。该归档文件不再包含在先前版本中广泛使用的 Web 预览文件或外表。已停用这些功能。该归档仅包含发送到客户机的 Web 资源以及“直接更新”验证的校验和。
 
 > 有关更多信息，请参阅[“直接更新”文档](../../../application-development/direct-update)。
 
@@ -315,7 +316,7 @@ IBM MobileFirs Foundation V8.0 Cordova SDK (JavaScript) 引入了许多需要调
 * 将必需的 Web 资源元素替换为先前版本中的代码
 * 对 JavaScript 代码进行必需的更改以符合 SDK 更改
 
-在 V8.0 中移除了许多 {{ site.data.keys.product_adj }}    API 元素。在支持 JavaScript 自动更正的 IDE 中，已移除的元素明确标记为不存在。
+在 V8.0 中移除了许多 {{ site.data.keys.product_adj }} API 元素。在支持 JavaScript 自动更正的 IDE 中，已移除的元素明确标记为不存在。
 
 下表列出了需要移除的 API 元素，并附带有关如何替换功能的建议。许多已移除的元素是可以替换为 Cordova 插件或 HTML 5 元素的 UI 元素。某些方法已更改。
 
@@ -325,15 +326,15 @@ IBM MobileFirs Foundation V8.0 Cordova SDK (JavaScript) 引入了许多需要调
 | API 元素 | 迁移路径 |
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | 使用 Cordova 插件或 HTML 5 元素。 |
-| `WL.App.close()` | 在 {{ site.data.keys.product_adj }}    外处理此事件。 |
+| `WL.App.close()` | 在 {{ site.data.keys.product_adj }} 外处理此事件。 |
 | `WL.App.copyToClipboard()` | 使用提供此功能的 Cordova 插件。 |
 | `WL.App.openUrl(url, target, options)` | 使用提供此功能的 Cordova 插件。<br/><br/>注：为供参考，Cordova InAppBrowser 插件提供此功能。 |
 | {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | 使用提供此功能的 Cordova 插件。<br/><br/>注：为供参考，Cordova backbutton 插件提供此功能。 |
-| `WL.App.getDeviceLanguage()` | 使用提供此功能的 Cordova 插件。<br/><br/>注：为供参考，Cordova **cordova-plugin-globalization** 插件提供此功能。 |
-| `WL.App.getDeviceLocale()` | 使用提供此功能的 Cordova 插件。<br/><br/>注：为供参考，Cordova **cordova-plugin-globalization** 插件提供此功能。 |
+| `WL.App.getDeviceLanguage()` | 使用提供此功能的 Cordova 插件。<br/><br/>注：为供参考，**cordova-plugin-globalization** 插件提供此功能。 |
+| `WL.App.getDeviceLocale()` | 使用提供此功能的 Cordova 插件。<br/><br/> 注：为供参考，**cordova-plugin-globalization** 插件提供此功能。 |
 | `WL.App.BackgroundHandler` | 要运行定制处理程序函数，请使用标准 Cordova 暂停事件侦听器。使用可提供隐私并防止 iOS 和 Android 系统与用户拍摄快照或截屏的 Cordova 插件。
 有关更多信息，请参阅 [https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin) 处的 PrivacyScreenPlugin 描述。 |
-| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| 提供了这些功能以支持 {{ site.data.keys.product }}    V8.0 不支持的 Adobe AIR 平台 |
+| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| 提供了这些功能以支持 {{ site.data.keys.product }} V8.0 不支持的 Adobe AIR 平台 |
 | `WL.Toast.show(string)` | 将 Cordova 插件用于 Toast。 |
 
 #### 其他停用的 JavaScript 元素
@@ -354,7 +355,7 @@ options)</code></li></ul>{:/} | 无替换。您可以使用适配器和 [MFP.Ser
 | {::nomarkdown}<ul><li><code>WL.Client.transmitEvent(event, immediate)</code></li><li><code>WL.Client.purgeEventTransmissionBuffer()</code></li><li><code>WL.Client.setEventTransmissionPolicy(policy)</code></li></ul>{:/} | 为接收这些事件的通知创建定制适配器。 |
 | {::nomarkdown}<ul><li><code>WL.Device.getContext()</code></li><li><code>WL.Device.startAcquisition(policy, triggers, onFailure)</code></li><li><code>WL.Device.stopAcquisition()</code></li><li><code>WL.Device.Wifi</code></li><li><code>WL.Device.Geo.Profiles</code></li><li><code>WL.Geo</code></li></ul>{:/} | 使用本机 API 或第三方 Cordova 插件进行地理定位。 |
 | `WL.Client.makeRequest (url, options)` | 创建提供同一功能的定制适配器。 |
-| `WL.Device.getID(options)` | 使用提供此功能的 Cordova 插件。<br/><br/>注：为供参考，**cordova-plugin-device** 插件中的 **device.uuid** 提供此功能。 |
+| `WL.Device.getID(options)` | 使用提供此功能的 Cordova 插件。<br/><br/>注：为供参考，来自 **cordova-plugin-device** 插件的 **device.uuid** 提供此功能。 |
 | `WL.Device.getFriendlyName()` | 使用 `WL.Client.getDeviceDisplayName` |
 | `WL.Device.setFriendlyName()` | 使用 `WL.Client.setDeviceDisplayName` |
 | `WL.Device.getNetworkInfo(callback)` | 使用提供此功能的 Cordova 插件。<br/><br/>注：为供参考，**cordova-plugin-network-information** 插件提供此功能。 |
@@ -371,11 +372,11 @@ options)</code></li></ul>{:/} | 无替换。您可以使用适配器和 [MFP.Ser
 | `WL.Client.isUserAuthenticated(realm)` | 无替换 |
 | `WLUserAuth.deleteCertificate(provisioningEntity)` | 无替换 |
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | 无替换 |
-| `WL.Client.createChallengeHandler(realmName)` | 要创建验证问题处理程序来处理定制网关验证问题，请使用 [`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)。要创建验证问题处理程序来处理 {{ site.data.keys.product_adj }}    安全性检查验证问题，请使用 [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)。 |
+| `WL.Client.createChallengeHandler(realmName)` | 要创建验证问题处理程序来处理定制网关验证问题，请使用 [`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler)。要创建验证问题处理程序来处理 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)。 |
 | `WL.Client.createWLChallengeHandler(realmName)` | 使用 [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler)。 |
 | `challengeHandler.isCustomResponse()`，其中 `challengeHandler` 是 `WL.Client.createChallengeHandler()` 返回的验证问题处理程序对象 | 使用 `gatewayChallengeHandler.canHandleResponse()`，其中 `gatewayChallengeHandler` 是 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) 返回的验证问题处理程序对象。 |
 | `wlChallengeHandler.processSucccess()`，其中 `wlChallengeHandler` 是 `WL.Client.createWLChallengeHandler()` 返回的验证问题处理程序对象 | 使用 `securityCheckChallengeHandler.handleSuccess()`，其中 `securityCheckChallengeHandler` 是 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) 返回的验证问题处理程序对象。 |
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) 返回的验证问题处理程序对象。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) 返回的验证问题处理程序对象。 |
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) 返回的验证问题处理程序对象。对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) 返回的验证问题处理程序对象。 |
 | `WL.Client.AbstractChallengeHandler.submitFailure(err)` | 使用 [`WL.Client.AbstractChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html?view=kc#cancel)。 |
 | `WL.Client.createProvisioningChallengeHandler()` | 无替换。设备供应现在由安全框架自动处理。 |
 
@@ -392,7 +393,7 @@ responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProced
 
 ## 已移除的组件
 {: #removed-components }
-MobileFirst Platform Foundation Studio 7.1 创建的 Cordova 项目包含许多支持格局功能的资源。但是，在 V8.0 中仅支持纯 Cordova，并且 {{ site.data.keys.product_adj }}    API 不再支持这些功能。
+MobileFirst Platform Foundation Studio 7.1 创建的 Cordova 项目包含许多支持格局功能的资源。但是，在 V8.0 中仅支持纯 Cordova，并且 {{ site.data.keys.product_adj }} API 不再支持这些功能。
 
 ### 外表
 {: #skins }
@@ -452,21 +453,21 @@ MobileFirst 应用程序外表提供了用于优化 UI 以适应不同设备和�
 
 ### “设置”页面
 {: #settings-page }
-**设置页面**是 MobileFirst 混合应用程序中提供的 UI，开发人员可以通过该页面在运行时更改服务器 URL 以进行测试。开发人员现在可以使用现有 {{ site.data.keys.product_adj }}    客户机 API 在运行时更改服务器 URL。有关更多信息，请参阅 [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?lang=en-us&cp=SSHS8R_8.0.0&view=kc#setServerUrl)。
+**设置页面**是 MobileFirst 混合应用程序中提供的 UI，开发人员可以通过该页面在运行时更改服务器 URL 以进行测试。开发人员现在可以使用现有 {{ site.data.keys.product_adj }} 客户机 API 在运行时更改服务器 URL。有关更多信息，请参阅 [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?cp=SSHS8R_8.0.0#setServerUrl)。
 
 ### 缩小
 {: #minification }
 MobileFirst Studio 7.1 提供了 OOTB 方法，通过在编译前移除所有不必要的字符来减少 JavaScript 代码量。可以通过向项目中添加 Cordova 挂钩来替换这一已移除的功能。
 
-许多挂钩可用于缩小 Javascript 和 css 文件，并可放在 config.xml 中的 before_prepare 事件处。
+许多挂钩可用于缩小 JavaScript 和 CSS 文件。这些挂钩可放在应用程序的 **config.xml** 文件的 `before_prepare` 事件中。
 
 以下是一些建议挂钩：
 
 * [https://www.npmjs.com/package/uglify-js](https://www.npmjs.com/package/uglify-js)
 * [https://www.npmjs.com/package/clean-css](https://www.npmjs.com/package/clean-css)
 
-可以使用 `<hook>` 元素，在插件文件中或在应用程序的 config.xml 文件中定义这些挂钩。  
-在此示例中，通过使用 before_prepare 挂钩事件，在 cordova prepare 将文件复制到各平台的 www/ 文件夹之前运行脚本以执行缩小操作：
+通过使用 `<hook>` 元素，这些挂钩在插件文件中或在应用程序的 **config.xml** 文件中定义。  
+在此示例中，通过使用 `before_prepare` 挂钩事件，在 Cordova prepares 将文件复制到各平台的 **www/** 文件夹之前运行脚本以执行缩小代码操作：
 
 ```html
 <hook type="before_prepare" src="scripts/uglify.js" />

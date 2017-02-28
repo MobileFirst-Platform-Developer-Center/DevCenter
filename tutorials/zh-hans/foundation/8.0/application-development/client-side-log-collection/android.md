@@ -1,35 +1,35 @@
 ---
 layout: tutorial
-title: Logging in Android Applications
-breadcrumb_title: Logging in Android
+title: 登录 Android 应用程序
+breadcrumb_title: 登录 Android
 relevantTo: [android]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
 
-This tutorial provides the required code snippets in order to add logging capabilities in Android applications.
+此教程提供必需的代码片段以在 Android 应用程序中添加日志记录功能。
 
-**Prerequisite:** Make sure to read the [overview of client-side log collection](../).
+**先决条件：**确保阅读[客户端日志收集的概述](../)。
 
-## Enabling log capture
+## 启用日志捕获
 {: #enabling-log-capture }
-By default, log capture is enabled. Log capture saves logs to the client and can be enabled or disabled programmatically. Logs are sent to the server with an explicit send call, or with auto log
+缺省情况下，已启用日志捕获。日志捕获将日志保存到客户机并且可以编程方式启用或禁用。使用显式发送调用或自动日志将日志发送到服务器
 
-> **Note:** Enabling log capture at verbose levels can impact the consumption of the device CPU, file system space, and the size of the payload when the client sends logs over the network.
+> **注：**按详细级别启用日志捕获可能在客户机通过网络发送日志时影响设备 CPU 使用、文件系统空间和有效内容大小。
 
-To disable log capturing:
+要禁用日志捕获：
 
 ```java
 Logger.setCapture(false);
 ```
 
-## Sending captured logs
+## 发送捕获的日志
 {: #sending-captured-logs }
-Send logs to the {{ site.data.keys.product_adj }} according to your application's logic. Auto log send can also be enabled to automatically send logs. If logs are not sent before the maximum size is reached, the log file is then purged in favor of newer logs.
+根据应用程序逻辑，将日志发送到 {{ site.data.keys.product_adj }}。也可启用自动日志发送以自动发送日志。如果在达到最大大小后才发送日志，那么将清除日志文件以容纳更新的日志。
 
-> **Note:** Adopt the following pattern when you collect log data. Sending data on an interval ensures that you are seeing your log data in near real-time in the {{ site.data.keys.mf_analytics_console }}.
+> **注：**收集日志数据时，采用以下模式。按时间间隔发送数据可确保您在 {{ site.data.keys.mf_analytics_console }} 中近实时地查看日志数据。
 
 ```java
 Timer timer = new Timer();
@@ -41,45 +41,45 @@ timer.schedule(new TimerTask() {
 }, 0, 60000);
 ```
 
-To ensure that all captured logs are sent, consider one of the following strategies:
+要确保发送所有捕获的日志，请考虑以下策略之一：
 
-* Call the `send` method at a time interval.
-* Call the `send` method from within the app lifecycle event callbacks.
-* Increase the max file size of the persistent log buffer (in bytes):
+* 按时间间隔调用 `send` 方法。
+* 从应用程序生命周期事件回调中调用 `send` 方法。
+* 增加持久性日志缓冲区的最大文件大小（字节）：
 
 ```java
 Logger.setMaxFileSize(150000);
 ```
 
-## Auto log sending
+## 自动日志发送
 {: auto-log-sending }
-By default, auto log send is enabled. Each time a successful resource request is sent to the server, the captured logs are also sent, with a 60-second minimum interval between sends. Auto log send can be enabled or disabled from the client. By default auto log send is enabled.
+缺省情况下，启用自动日志发送。每次将成功的资源请求发送到服务器后，也将发送捕获的日志，并且发送之间存在 60 秒最小时间间隔。可以从客户机启用或禁用自动日志发送。缺省情况下，启用自动日志发送。
 
-To enable:
+要启用：
 
 ```java
 Logger.setAutoSendLogs(true);
 ```
 
-To disable:
+要禁用：
 
 ```java
 Logger.setAutoSendLogs(false);
 ```
 
-## Fine-tuning with the Logger API
+## 使用记录器 API 微调
 {: #fine-tuning-with-the-logger-api }
-The {{ site.data.keys.product_adj }} client SDK makes internal use of the Logger API. By default, you are capturing log entries made by the SDK. To fine-tune log collection, use logger instances with package names. You can also control which logging level is captured by the analytics using server-side filters.
+{{ site.data.keys.product_adj }} 客户机 SDK 内部使用记录器 API。缺省情况下，您将捕获 SDK 生成的日志条目。要微调日志收集，请结合使用记录器实例和程序包名。您还可以使用服务器端过滤器来控制由分析捕获哪个日志记录级别。
 
-As an example to capture logs only where the level is ERROR for the `myApp` package name, follow these steps.
+要仅捕获 `myApp` 程序包名的级别为“错误”的日志，请遵循示例中的以下步骤。
 
-1. Use a `logger` instance with the `myApp` package name.
+1. 结合使用 `logger` 实例和 `myApp` 程序包名。
 
    ```java
    Logger logger = Logger.getInstance("MyApp");
    ```
 
-2. **Optional:** Specify a filter to restrict log capture and log output to only the specified level and package programmatically.
+2. **可选：**指定过滤器，以编程方式将日志捕获和日志输出仅限制于指定的级别和程序包。
 
    ```java
    HashMap<String, LEVEL> filters = new HashMap<>();
@@ -87,23 +87,24 @@ As an example to capture logs only where the level is ERROR for the `myApp` pack
    Logger.setFilters(filters);
    ```
 
-3. **Optional:** Control the filters remotely by fetching a server configuration profile.
+3. **可选：**通过访存服务器配置概要文件，远程控制过滤器。
 
-## Fetching server configuration profiles
+## 访存服务器配置概要文件
 {: #fetching-server-configuration-profiles }
-Logging levels can be set by the client or by retrieving configuration profiles from the server. From the {{ site.data.keys.mf_analytics_console }}, a log level can be set globally (all logger instances) or for a specific package or packages. 
+可以通过客户机或通过从服务器中检索配置概要文件来设置日志记录级别。在
+{{ site.data.keys.mf_analytics_console }}
+中，可以全局（针对所有记录器实例）或针对一个或多个特定程序包设置日志级别。 
 
-> For information on configuring the filter from the {{ site.data.keys.mf_analytics_console }}, see [Configuring log filters](../../../analytics/console/log-filters/).
-
-For the client to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+> 有关从 {{ site.data.keys.mf_analytics_console }} 配置过滤器的信息，请参阅[配置日志过滤器](../../../analytics/console/log-filters/)。
+为便于客户机访存服务器上设置的配置覆盖，必须从定期运行的代码中某一位置调用 `updateConfigFromServer` 方法，例如，在应用程序生命周期回调中。
 
 ```java
 Logger.updateConfigFromServer();
 ```
 
-## Logging example
+## 日志记录示例
 {: #logging-example }
-Outputs to a browser JavaScript console, LogCat, or Xcode console.
+输出到浏览器 JavaScript 控制台、LogCat 或 Xcode 控制台。
 
 ```java
 import com.worklight.common.Logger;

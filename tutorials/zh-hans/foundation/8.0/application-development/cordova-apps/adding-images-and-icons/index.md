@@ -1,28 +1,28 @@
 ---
 layout: tutorial
-title: Adding custom splash screens and icons to Cordova apps
-breadcrumb_title: Adding images and icons
+title: 针对 Cordova 应用程序添加定制启动屏幕和图标
+breadcrumb_title: 添加图像和图标
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-If you used the **cordova-plugin-mfp** plug-in, and you did not use the {{ site.data.keys.product_adj }} template or add the Cordova **cordova-plugin-splashscreen** plug-in to your app, you can replace the images for icons and splash screens that are provided by {{ site.data.keys.product_full }} with your own images. If you used the template, then you can replace the splash images that the Cordova app uses, as they are the files that are displayed.
+如果使用 **cordova-plugin-mfp** 插件且未使用 {{ site.data.keys.product_adj }} 模板或向应用程序添加 Cordova **cordova-plugin-splashscreen** 插件，那么可以将 {{ site.data.keys.product_full }} 提供的图标和启动屏幕图像替换为自己的图像。如果使用模板，那么可替换 Cordova 应用程序使用的启动图像，因为它们是显示的文件。
 
-You must create a new folder to hold the splash images and icons, and modify the **config.xml** configuration file to point to them.
+您必须创建新文件夹以保存启动图像和图标，并修改 **config.xml** 配置文件以指向它们。
 
-1. Create a folder inside the root directory of your Cordova project. The folder can be in any level of nested subfolder when the parent folder is under the Cordova project root.
-2. Place your source splash image and icon images in this folder.
-3. Update the **config.xml** configuration file to point to your custom files.
+1. 在 Cordova 项目的根目录中创建一个文件夹。在父文件夹位于 Cordova 项目根目录中时，文件夹可处于嵌套子文件夹的任意级别。
+2. 将源启动图像和图标图像放入此文件夹中。
+3. 更新 **config.xml** 配置文件以指向您的定制文件。
 
 ### Android
 {: #android }
-If you have an Android app, the requirements to for identifying the splash images depends on whether you created the app with or without the {{ site.data.keys.product_adj }} template.
+如果您具有 Android 应用程序，那么标识启动图像的需求取决于创建应用程序时是否使用 {{ site.data.keys.product_adj }} 模板。
 
-#### Splash screens
+#### 启动屏幕
 {: #splash-screens }
-If you did *not* use the {{ site.data.keys.product_adj }} template when you created your app, the splash images that are displayed are those that are retrieved from the {{ site.data.keys.product_adj }} images location. The target file paths and file names must remain exactly as in the example when you do not use the template. Change the source paths and file names (`src`) to the path of the files that you want to display. Add lines similar to the following example between the `<platform name="android">` and `</platform>` tags in the **config.xml** file: 
+如果在创建应用程序时*未*使用 {{ site.data.keys.product_adj }} 模板，那么显示的启动图像将是从 {{ site.data.keys.product_adj }} 图像位置检索的图像。在不使用模板时，目标文件路径和文件名必须仍与示例保持完全相同。将源路径和文件名 (`src`) 更改为想要显示的文件的路径。在 **config.xml** 文件的 `<platform name="android">` 和 `</platform>` 标记之间添加类似于以下示例的行： 
 
 ```xml
 <update src="res/screen/android/splash-hdpi.9.png" target="res/drawable-hdpi/splash.9.png" />
@@ -32,7 +32,7 @@ If you did *not* use the {{ site.data.keys.product_adj }} template when you crea
 <update src="res/screen/android/splash-xxhdpi.9.png" target="res/drawable-xxhdpi/splash.9.png" /> 
 ```
 
-If you used the {{ site.data.keys.product_adj }} template when you created your app, you must update the splash images that Cordova uses. Change the source paths and file names (src) to the path of the files that you want to display. Add lines similar to the following example between the <platform name="android"> and </platform> tags in the config.xml file:
+如果在创建应用程序时使用 {{ site.data.keys.product_adj }} 模板，那么必须更新 Cordova 使用的启动图像。将源路径和文件名 (src) 更改为想要显示的文件的路径。在 config.xml 文件的 <platform name="android"> 和 </platform> 标记之间添加类似于以下示例的行：
 
 ```xml
 <splash density="land-hdpi" src="res/screen/android/screen-hdpi-landscape.png" />
@@ -45,9 +45,9 @@ If you used the {{ site.data.keys.product_adj }} template when you created your 
 <splash density="xhdpi" src="res/screen/android/screen-xhdpi-portrait.png" />
 ```
 
-#### Icons
+#### 图标
 {: #icons }
-The file names of the icon files must be the same as the entries in the following example. The paths can be any path. The name of each image corresponds to its size.
+图标文件的文件名必须与以下示例中的条目相同。路径可以是任何路径。每个图像的名称对应于其大小。
 
 ```xml
 <icon src="res/icon/android/icon-96-xhdpi.png" />
@@ -60,11 +60,11 @@ The file names of the icon files must be the same as the entries in the followin
 
 ### iOS
 {: #ios }
-If you have an iOS app, add lines similar to the following example between the `<platform name="ios">` and `</platform>` tags:
+如果您有 iOS 应用程序，那么在 `<platform name="ios">` 和 `</platform>` 标记之间添加类似于以下示例的行：
     
-#### Splash screens
+#### 启动屏幕
 {: #splash-screens-ios }
-The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
+启动屏幕文件的路径和文件名必须与以下示例中的名称相同。每个图像的名称对应于其大小。
 
 ```xml
 <splash height="480" src="res/screen/ios/Default˜iphone.png" width="320" />
@@ -78,9 +78,9 @@ The paths and file names of the splash screen files must be the same as the name
 <splash height="1242" src="res/screen/ios/Default-736h-Landscape˜iphone.png" width="2208" />
 ```
 
-#### Icons
+#### 图标
 {: #icons-ios}
-The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
+图标文件的文件名必须与以下示例中的名称相同。路径可以是任何路径。每个图像的名称对应于其大小。
 
 ```xml
 <icon height="167" src="res/icon/ios/icon-83.5@2x.png" width="167"/>
@@ -104,11 +104,11 @@ The file names of the icon files must be the same as the names in the following 
 
 ### Windows
 {: #windows }
-If you have a Windows app, add lines similar to the lines in the following example between the `<platform name="windows">` and `</platform>` tags:
+如果您有 Windows 应用程序，在 `<platform name="windows">` 和 `</platform>` 标记之间添加与以下示例中的行类似的行：
 
-#### Splash screens
+#### 启动屏幕
 {: #splash-screens-windows }
-The paths and file names of the splash screen files must be the same as the names in the following example. The name of each image corresponds to its size.
+启动屏幕文件的路径和文件名必须与以下示例中的名称相同。每个图像的名称对应于其大小。
 
 ```xml
 <splash src="res/screen/windows/SplashScreen.scale-100.png" width="620" height="300"/>
@@ -117,9 +117,9 @@ The paths and file names of the splash screen files must be the same as the name
 <splash src="res/screen/windows/Wide310x150Logo.scale-240.png" width="744" height="360"/>
 ```
 
-#### Icons
+#### 图标
 {: #icons-windows }
-The file names of the icon files must be the same as the names in the following example. The paths can be any path. The name of each image corresponds to its size.
+图标文件的文件名必须与以下示例中的名称相同。路径可以是任何路径。每个图像的名称对应于其大小。
 
 ```xml
 <icon src="res/icon/windows/Square30x30Logo.scale-100.png" width="30" height="30" />

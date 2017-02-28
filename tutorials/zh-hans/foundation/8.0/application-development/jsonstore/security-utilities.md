@@ -1,31 +1,36 @@
 ---
 layout: tutorial
-title: JSONStore Security Utilities
-breadcrumb_title: Security utilities
+title: JSONStore 安全实用程序
+breadcrumb_title: 安全实用程序
 relevantTo: [ios,android,cordova]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
-The {{ site.data.keys.product_full }} client-side API provides some security utilities to help protect your user's data. Features like JSONStore are great if you want to protect JSON objects. However, it is not recommended to store binary blobs in a JSONStore collection.
+## 概述
+{{ site.data.keys.product_full }} 客户机端 API 提供一些安全实用程序来帮助保护用户数据。如果要保护 JSON 对象，那么诸如 JSONStore 之类的功能很有效。
+但是，不建议在 JSONStore 集合中存储二元 BLOB。
 
-Instead, store binary data on the file system, and store the file paths and other metadata inside a JSONStore collection. If you want to protect files like images, you can encode them as base64 strings, encrypt it, and write the output to disk. When it is time to decrypt the data, you can look up the metadata in a JSONStore collection, read the encrypted data from the disk, and decrypt it using the metadata that was stored. This metadata can include the key, salt, Initialization Vector (IV), type of file, path to the file, and others.
+应改为在文件系统上存储二元数据，并将文件路径和其他元数据存储在 JSONStore 集合内。如果要保护图像之类的文件，可以将其编码为 base64 字符串、对其加密，并将输出写入磁盘。要解密数据时，可以在 JSONStore 集合中查找元数据、从磁盘中读取加密数据，并使用存储的元数据来解密数据。此元数据可包括密钥、加密盐 (Salt)、初始化向量 (IV)、文件类型、到文件的路径等。
 
-At a high level, the SecurityUtils API provides the following APIs:
+在较高的级别上，SecurityUtils API 可提供以下 API：
 
-* Key generation - Instead of passing a password directly to the encryption function, this key generation function uses Password Based Key Derivation Function v2 (PBKDF2) to generate a strong 256-bit key for the encryption API. It takes a parameter for the number of iterations. The higher the number, the more time it takes an attacker to brute force your key. Use a value of at least 10,000. The salt must be unique and it helps ensure that attackers have a harder time using existing hash information to attack your password. Use a length of 32 bytes.
-* Encryption - Input is encrypted by using the Advanced Encryption Standard (AES). The API takes a key that is generated with the key generation API. Internally, it generates a secure IV, which is used to add randomization to the first block cipher. Text is encrypted. If you want to encrypt an image or other binary format, turn your binary into base64 text by using these APIs. This encryption function returns an object with the following parts:
-    * ct (cipher text, which is also called the encrypted text)
+* 密钥生成 - 此密钥生成功能使用 Password Based
+Key Derivation Function V2 (PBKDF2) 来为加密 API 生成强大的 256 位密钥，而不是直接将密钥传递给加密函数。它以一个参数来表示迭代次数。
+此数字越大，攻击者暴力破解密钥所需时间越长。请使用不低于 10,000 的值。加密盐 (Salt) 必须唯一，它有助于确保攻击者难以使用现有散列信息来攻击密码。请使用 32 字节的长度。
+* 加密 - 使用高级加密标准 (AES) 来对输入加密。API 采用密钥生成 API 所生成的密钥。它在内部生成一个安全 IV，用于为第一个块密码添加随机化。文本经过加密。
+如果要加密图像或其他二进制格式，请使用这些 API 将二进制转换为 base64 文本。此加密功能会返回具有以下组成部分的对象：
+    * ct（密文，也称为加密文本）
     * IV
-    * v (version, which allows the API to evolve while still being compatible with an earlier version)
-* Decryption - Takes the output from the encryption API as input, and decrypts the cipher or encrypted text into plain text.
-* Remote random string - Gets a random hex string by contacting a random generator on the {{ site.data.keys.mf_server }}. The default value is 20 bytes, but you can change the number up to 64 bytes.
-* Local random string - Gets a random hex string by generating one locally, unlike the remote random string API, which requires network access. The default value is 32 bytes and there is not a maximum value. The operation time is proportional to the number of bytes.
-* Encode base64 - Takes a string and applies base64 encoding. Incurring a base64 encoding by the nature of the algorithm means that the size of the data is increased by approximately 1.37 times the original size.
-* Decode base64 - Takes a base64 encoded string and applies base64 decoding.
+    * v（版本，允许 API 升级，并且仍与先前版本兼容）
+* 解密 - 从加密 API 中提取输出作为输入，并将密码或加密文本解密为纯文本。
+* 远程随机字符串 - 通过联系 {{ site.data.keys.mf_server }} 上的随机生成器获取一个随机十六进制字符串。缺省值为 20 字节，但可以将此数字改为最高 64 字节。
+* 本地随机字符串 - 通过本地生成来获取随机十六进制字符串，不同于需要网络访问的远程随机字符串 API。缺省值为 32 字节，没有最大值。
+操作时间与字节数成比例。
+* 编码 base64 - 提取字符串并应用 base64 编码。采用 base64 编码就其算法本质而言，意味着数据大小增加至原始大小的约 1.37 倍。
+* 解码 base64 - 提取 base64 编码的字符串，并应用 base64 解码。
 
-## Setup
-Ensure that you import the following files to use the JSONStore security utilities APIs.
+## 设置
+确保导入以下文件以使用 JSONStore 安全实用程序 API。
 
 ### iOS
 
@@ -40,11 +45,11 @@ import com.worklight.wlclient.api.SecurityUtils
 ```
 
 ### JavaScript
-No setup is required.
+无需任何设置。
 
-## Examples
+## 示例
 ### iOS
-#### Encryption and decryption
+#### 加密和解密
 
 ```objc
 // User provided password, hardcoded only for simplicity.
@@ -57,8 +62,7 @@ NSString* salt = [WLSecurityUtils generateRandomStringWithBytes:32];
 int iterations = 10000;
 
 // Populated with an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Call that generates the key.
 NSString* key = [WLSecurityUtils generateKeyWithPassword:password
                                  andSalt:salt
@@ -77,7 +81,7 @@ NSString* decryptedString = [WLSecurityUtils decryptWithKey:key
                                              error:&error];
 ```
 
-#### Encode and decode base64
+#### 编码和解码 base64
 
 ```objc
 // Input string.
@@ -91,7 +95,7 @@ NSString* encodedString = [WLSecurityUtils base64StringFromData:originalStringDa
 NSString* decodedString = [[NSString alloc] initWithData:[WLSecurityUtils base64DataFromString:encodedString] encoding:NSUTF8StringEncoding];
 ```
 
-#### Get remote random
+#### 获取远程随机对象
 
 ```objc
 [WLSecurityUtils getRandomStringFromServerWithBytes:32 
@@ -106,7 +110,7 @@ NSString* decodedString = [[NSString alloc] initWithData:[WLSecurityUtils base64
 ```
 
 ### Android
-#### Encryption and decryption
+#### 加密和解密
 
 ```java
 String password = "HelloPassword";
@@ -123,7 +127,7 @@ JSONObject encryptedObject = SecurityUtils.encrypt(key, originalText);
 String decipheredText = SecurityUtils.decrypt(key, encryptedObject);
 ```
 
-#### Encode and decode base64
+#### 编码和解码 base64
 
 ```java
 import android.util.Base64;
@@ -134,12 +138,11 @@ byte[] base64Encoded = Base64.encode(text.getBytes("UTF-8"), Base64.DEFAULT);
 String encodedText = new String(base64Encoded, "UTF-8");
 
 byte[] base64Decoded = Base64.decode(text.getBytes("UTF-8"), Base64.DEFAULT);
-
 // Decoded text will be the same as the original text.
 String decodedText = new String(base64Decoded, "UTF-8");
 ```
 
-#### Get remote random
+#### 获取远程随机对象
 
 ```java
 Context context; // This is the current Activity's context.
@@ -161,7 +164,7 @@ WLRequestListener listener = new WLRequestListener(){
 SecurityUtils.getRandomStringFromServer(byteLength, context, listener);
 ```
 
-#### Get local random
+#### 获取本地随机对象
 
 ```java
 int byteLength = 32;
@@ -169,7 +172,7 @@ String randomString = SecurityUtils.getRandomString(byteLength);
 ```
 
 ### JavaScript
-#### Encryption and decryption
+#### 加密和解密
 
 ```javascript
 // Keep the key in a variable so that it can be passed to the encrypt and decrypt API.
@@ -185,9 +188,8 @@ WL.SecurityUtils.keygen({
 .then(function (res) {
 
   // Update the key variable.
-  key = res;
-
-  // Encrypt text.
+key = res;
+// Encrypt text.
   return WL.SecurityUtils.encrypt({
     key: key,
     text: 'My secret text'
@@ -200,7 +202,7 @@ WL.SecurityUtils.keygen({
   res.key = key;
 
   // Decrypt.
-  return WL.SecurityUtils.decrypt(res);
+return WL.SecurityUtils.decrypt(res);
 })
 
 .then(function (res) {
@@ -216,7 +218,7 @@ WL.SecurityUtils.keygen({
 });
 ```
 
-#### Encode and decode base64
+#### 编码和解码 base64
 
 ```javascript
 WL.SecurityUtils.base64Encode('Hello World!')
@@ -231,7 +233,7 @@ WL.SecurityUtils.base64Encode('Hello World!')
 });
 ```
 
-#### Get remote random
+#### 获取远程随机对象
 
 ```javascript
 WL.SecurityUtils.remoteRandomString(32)
@@ -243,7 +245,7 @@ WL.SecurityUtils.remoteRandomString(32)
 });
 ```
 
-#### Get local random
+#### 获取本地随机对象
 
 ```javascript
 WL.SecurityUtils.localRandomString(32)

@@ -68,7 +68,7 @@ IBM Containers 上的 {{ site.data.keys.product }} 实例的安全配置应包�
 
 ### 应用程序真实性验证
 {: #application-authenticity-validation }
-要避免未经授权的移动应用程序访问 {{ site.data.keys.mf_server }}，请启用应用程序真实性安全性检查。了解更多...
+要避免未经授权的移动应用程序访问 {{ site.data.keys.mf_server }}， [ 请启用应用程序真实性安全性检查](../../../authentication-and-security/application-authenticity)。
 
 ### 为 {{ site.data.keys.mf_console }} 和 {{ site.data.keys.mf_analytics_console }} 配置 SSL
 {: #configure-ssl-for-mobilefirst-operations-console-and-mobilefirst-analytics-console }
@@ -267,12 +267,12 @@ allowedIP = properties.getProperty("allowedIPs");
 
 可针对以下目的在容器中使用外部 LDAP 注册表：
 
-* 通过外部 LDAP 注册表配置 {{ site.data.keys.product_adj }}管理安全性。
-* 配置 {{ site.data.keys.product_adj }}移动应用程序以使用外部 LDAP 注册表。
+* 通过外部 LDAP 注册表配置 {{ site.data.keys.product_adj }} 管理安全性。
+* 配置 {{ site.data.keys.product_adj }} 移动应用程序以使用外部 LDAP 注册表。
 
 ### 通过 LDAP 配置管理安全性
 {: #configuring-administration-security-with-ldap }
-通过外部 LDAP 注册表配置 {{ site.data.keys.product_adj }}管理安全性。  
+通过外部 LDAP 注册表配置 {{ site.data.keys.product_adj }} 管理安全性。  
 配置过程包含以下步骤：
 
 * 设置和配置 LDAP 存储库
@@ -286,6 +286,7 @@ allowedIP = properties.getProperty("allowedIPs");
 #### 注册表文件
 {: #registry-file }
 1. 打开 **registry.xml** 并找到 `basicRegistry` 元素。将 `basicRegistry` 元素替换为类似于以下片段的代码：
+
 
    ```xml
    <ldapRegistry 
@@ -308,7 +309,6 @@ allowedIP = properties.getProperty("allowedIPs");
     --- | ---
     `host` 和 `port` | 您的本地 LDAP 服务器的主机名（IP 地址）和端口号。`baseDN` | LDAP 中捕获有关特定组织的所有详细信息的域名 (DN)。`bindDN="uid=admin,ou=system"
 ` | LDAP 服务器的绑定详细信息。例如，Apache 目录服务的缺省值将为 `uid=admin,ou=system`。`bindPassword="secret"	` | LDAP 服务器的绑定密码。例如，Apache 目录服务的缺省值为 `secret`。`<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 用于在认证和授权期间查询目录服务（如 Apache）的定制过滤器。        
-
 2. 确保为 `appSecurity-2.0` 和 `ldapRegistry-3.0` 启用以下功能：
 
    ```xml
@@ -354,7 +354,7 @@ allowedIP = properties.getProperty("allowedIPs");
 
 ### 配置应用程序以使用 LDAP
 {: #configuring-apps-to-work-with-ldap }
-配置 {{ site.data.keys.product_adj }}移动应用程序以使用外部 LDAP 注册表。  
+配置 {{ site.data.keys.product_adj }} 移动应用程序以使用外部 LDAP 注册表。  
 配置流程包含以下步骤：配置安全网关以连接到本地 LDAP 存储库和容器。（对于本步骤，现有应用程序应位于 Bluemix 上。）
 
 要配置到 LDAP 服务器的安全网关连接，必须在 Bluemix 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。您需要本地 LDAP 主机名和端口号才能完成此步骤。
@@ -371,4 +371,4 @@ allowedIP = properties.getProperty("allowedIPs");
 7. 捕获**目标标识**和**云主机：端口**值。针对 LDAP 登录模块提供这些值。
 
 **结果**  
-这样将在 Bluemix 上的容器中的 {{ site.data.keys.product_adj }}应用程序与本地 LDAP 服务器之间建立通信。通过本地 LDAP 服务器验证 Bluemix 应用程序的认证和授权。
+这样将在 Bluemix 上的容器中的 {{ site.data.keys.product_adj }} 应用程序与本地 LDAP 服务器之间建立通信。通过本地 LDAP 服务器验证 Bluemix 应用程序的认证和授权。

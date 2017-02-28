@@ -1,49 +1,49 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Cordova Applications
+title: 将 MobileFirst Foundation SDK 添加到 Cordova 应用程序
 breadcrumb_title: Cordova
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} SDK to a new or existing Cordova application that has been created with Apache Cordova, Ionic, or another thirdy-party tool. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application, and to find information about the {{ site.data.keys.product_adj }} configuration files that are changed in the project.
+在此教程中，了解如何将 {{ site.data.keys.product_adj }} SDK 添加到新的或现有的使用 Apache Cordova、Ionic 或其他第三方工具创建的 Cordova 应用程序。您还可以了解如何配置 {{ site.data.keys.mf_server }} 以识别应用程序，以及查找有关在项目中更改的 {{ site.data.keys.product_adj }} 配置文件的信息。
 
-The {{ site.data.keys.product_adj }} Cordova SDK is provided as a set of Cordova plug-ins, [and is registered at NPM](https://www.npmjs.com/package/cordova-plugin-mfp).  
-Available plug-ins are:
+{{ site.data.keys.product_adj }} Cordova SDK 作为一组 Cordova 插件提供，并且[在 NPM 上注册](https://www.npmjs.com/package/cordova-plugin-mfp)。  
+可用插件包括：
 
-* **cordova-plugin-mfp** - The core SDK plug-in
-* **cordova-plugin-mfp-push** - Provides push notifications support
-* **cordova-plugin-mfp-jsonstore** - Provides JSONStore support
-* **cordova-plugin-mfp-fips** - *Android only*. Provides FIPS support
-* **cordova-plugin-mfp-encrypt-utils** - *iOS only*. Provides support for encryption and decryption
+* **cordova-plugin-mfp** - 核心 SDK 插件
+* **cordova-plugin-mfp-push** - 提供推送通知支持
+* **cordova-plugin-mfp-jsonstore** - 提供 JSONStore 支持
+* **cordova-plugin-mfp-fips** - *仅限 Android*。提供 FIPS 支持
+* **cordova-plugin-mfp-encrypt-utils** - *仅限 iOS*。提供加密和解密支持
 
-#### Support levels
+#### 支持级别
 {: #support-levels }
-The Cordova platform versions supported by the MobileFirst plug-ins, are:
+MobileFirst 插件支持的 Cordova 平台版本包括：
 
-* cordova-ios: **>= 4.1.1 and < 5.0**
-* cordova-android: **>= 5.1.1 and < 6.0**
-* cordova-windows: **>= 4.3.2 and < 5.0**
+* cordova-ios：**>= 4.1.1 以及 < 5.0**
+* cordova-android：**>= 5.1.1 以及 < 6.0**
+* cordova-windows：**>= 4.3.2 以及 < 5.0**
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-- [Cordova SDK components](#cordova-sdk-components)
-- [Adding the {{ site.data.keys.product_adj }} Cordova SDK](#adding-the-mobilefirst-cordova-sdk)
-- [Updating the {{ site.data.keys.product_adj }} Cordova SDK](#updating-the-mobilefirst-cordova-sdk)
-- [Generated {{ site.data.keys.product_adj }} Cordova SDK artifacts](#generated-mobilefirst-cordova-sdk-artifacts)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [Cordova SDK 组件](#cordova-sdk-components)
+- [添加 {{ site.data.keys.product_adj }} Cordova SDK](#adding-the-mobilefirst-cordova-sdk)
+- [更新 {{ site.data.keys.product_adj }} Cordova SDK](#updating-the-mobilefirst-cordova-sdk)
+- [已生成 {{ site.data.keys.product_adj }} Cordova SDK 工件](#generated-mobilefirst-cordova-sdk-artifacts)
+- [接下来要学习的教程](#tutorials-to-follow-next)
 
-> **Note:** The **Keychain Sharing** capability is mandatory while running iOS apps in the iOS Simulator when using Xcode 8. You need to enable this capability manually before building the Xcode project.
+> **注：**使用 Xcode 8 的情况下在 iOS Simulator 中运行 iOS 应用程序时，**密钥链共享**功能是必需的。必须在构建 Xcode 项目之前手动启用此功能。
 
-## Cordova SDK components
+## Cordova SDK 组件
 {: #cordova-sdk-components }
 #### cordova-plugin-mfp
 {: #cordova-plugin-mfp }
-The cordova-plugin-mfp plug-in is the core {{ site.data.keys.product_adj }} plug-in for Cordova, and is required. If you install any of the other {{ site.data.keys.product_adj }} plug-ins, the cordova-plugin-mfp plug-in is automatically installed, too, if not already installed.
+cordova-plugin-mfp 插件是针对 Cordova 的核心 {{ site.data.keys.product_adj }} 插件，且此插件是必需的。如果安装任何其他 {{ site.data.keys.product_adj }} 插件，并且 cordova-plugin-mfp 插件尚未安装，那么也将自动安装此插件。
 
-> The following Cordova plug-ins are installed as dependencies of cordova-plugin-mfp:
+> 以下 Cordova 插件将作为 cordova-plugin-mfp 的依赖项进行安装：
 >   
 >    - cordova-plugin-device
 >    - cordova-plugin-dialogs
@@ -52,81 +52,78 @@ The cordova-plugin-mfp plug-in is the core {{ site.data.keys.product_adj }} plug
 
 #### cordova-plugin-mfp-jsonstore
 {: #cordova-plugin-mfp-jsonstore }
-The cordova-plugin-mfp-jsonstore plug-in enables your app to use JSONstore. For more information about JSONstore, see the [JSONStore tutorial](../../jsonstore/cordova/).  
+cordova-plugin-mfp-jsonstore 插件使您的应用程序能够使用 JSONstore。有关 JSONstore 的更多信息，请参阅 [JSONStore 教程](../../jsonstore/cordova/)。  
 
 #### cordova-plugin-mfp-push
 {: #cordova-plugin-mfp-push }
-The cordova-plugin-mfp-push plug-in provides permissions that are necessary to use push notification from the {{ site.data.keys.mf_server }} for Android applications. Additional setup for using push notification is required. For more information about push notification, see the [Push notifications tutorial](../../../notifications/).
+cordova-plugin-mfp-push 插件提供必需的许可权，以对 Android 应用程序使用来自 {{ site.data.keys.mf_server }} 的推送通知。必需其他设置以使用推送通知。有关推送通知的更多信息，请参阅[推送通知教程](../../../notifications/)。
 
 #### cordova-plugin-mfp-fips
 {: #cordova-plugin-mfp-fips }
-The cordova-plugin-mfp-fips plug-in provides FIPS 140-2 support for the Android platform. For more information, [see FIPS 140-2 support](../../../administering-apps/federal/#fips-140-2-support).
+cordova-plugin-mfp-fips 插件为 Android 平台提供 FIPS 140-2 支持。有关更多信息，请参阅 [FIPS 140-2 支持](../../../administering-apps/federal/#fips-140-2-support)。
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
-The cordova-plugin-mfp-encrypt-utils plug-in provides iOS OpenSSL frameworks for encryption for Cordova applications with the iOS platform. For more information, see [Enabling OpenSSL for Cordova iOS](additional-information).
+cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程序提供用于加密的 iOS OpenSSL 框架。有关更多信息，请参阅[为 Cordova iOS 启用 OpenSSL](additional-information)。
 
-**Prerequisites:**
+**先决条件：**
 
-- [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) and {{ site.data.keys.mf_cli }} installed on the developer workstation.
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Cordova development environment](../../../installation-configuration/development/cordova) tutorials.
+- [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 和 {{ site.data.keys.mf_cli }} 已安装在开发人员工作站上。
+- {{ site.data.keys.mf_server }} 的本地或远程实例正在运行。
+- 阅读[设置您的 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/development/mobilefirst)和[设置您的 Cordova 开发环境](../../../installation-configuration/development/cordova)教程。
 
-## Adding the {{ site.data.keys.product }} Cordova SDK
+## 添加 {{ site.data.keys.product }} Cordova SDK
 {: #adding-the-mobilefirst-cordova-sdk }
-Follow the instructions below to add the {{ site.data.keys.product }} Cordova SDK to a new or existing Cordova project, and register it in the {{ site.data.keys.mf_server }}.
+遵循下面的指示信息将 {{ site.data.keys.product }} Cordova SDK 添加到新的或现有的 Cordova 项目，然后在 {{ site.data.keys.mf_server }} 中进行注册。
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
+在您开始之前，确保 {{ site.data.keys.mf_server }} 正在运行。  
+如果使用本地安装的服务器：从**命令行**窗口，浏览至服务器的文件夹，然后运行命令：`./run.sh`。
 
-> **Note:** If you are adding the SDK to an existing Cordova application, the plug-in overwrites the `MainActivity.java` file for Android and `Main.m` file for iOS.
-
-### Adding the SDK
+> **注：**如果要将 SDK 添加到现有的 Cordova 应用程序，那么插件将覆盖 `MainActivity.java` 文件（针对 Android）和 `Main.m` 文件（针对 iOS）。
+### 添加 SDK
 {: #adding-the-sdk }
-Consider creating the project by using the {{ site.data.keys.product_adj }} Cordova **application template**. The template adds the necessary {{ site.data.keys.product_adj }}-specific plug-in entries to the Cordova project's **config.xml** file, and provides a {{ site.data.keys.product_adj }}-specific, ready-to-use, **index.js** file that is adjusted for {{ site.data.keys.product_adj }} application development.
+考虑使用 {{ site.data.keys.product_adj }} Cordova **应用程序模板**创建项目。此模板会将必需的特定于 {{ site.data.keys.product_adj }} 的插件条目添加到 Cordova 项目的 **config.xml** 文件，并提供特定于 {{ site.data.keys.product_adj }} 并针对 {{ site.data.keys.product_adj }} 应用程序开发进行了调整的现成可用的 **index.js** 文件。
 
-#### New Application
+#### 新建应用程序
 {: #new-application }
-1. Create a Cordova project: `cordova create projectName applicationId --template cordova-template-mfp`.  
-   For example:
+1. 创建 Cordova 项目：`cordova create projectName applicationId --template cordova-template-mfp`。  
+   例如：
 
    ```bash
    cordova create Hello com.example.helloworld HelloWorld --template cordova-template-mfp
    ```
-     - "Hello" is the folder name of the application.
-     - "com.example.helloworld" is the ID of the application.
-     - "HelloWorld" is the Name of the application.
-     - --template modifies the application with {{ site.data.keys.product_adj }}-specific additions.
+     - “Hello”是应用程序的文件夹名称。
+     - “com.example.helloworld”是应用程序的标识。
+     - “HelloWorld”是应用程序的名称。
+     - --template 将使用特定于 {{ site.data.keys.product_adj }} 的新增项来修改应用程序。
 
-    > The templated **index.js** enables you to use additional {{ site.data.keys.product_adj }} features as such [Multilingual application  translation](../../translation) and initialization options (see the user documentation for more information).
+    > 模板化的 **index.js** 使您能够使用其他 {{ site.data.keys.product_adj }} 功能，如[多语言应用程序翻译](../../translation)和初始化选项（请参阅用户文档以获取更多信息）。
+    2. 将目录更改为 Cordova 项目的根目录：`cd hello`
 
-2. Change directory to the root of the Cordova project: `cd hello`
-
-3. Add one or more supported platforms to the Cordova project by using the Cordova CLI command: `cordova platform add ios|android|windows`. For example:
+3. 使用 Cordova CLI 命令将一个或多个受支持的平台添加到 Cordova 项目：`cordova platform add ios|android|windows`。例如：
 
    ```bash
    cordova platform add ios
    ```
 
-   > **Note:** Because the application was configured using the {{ site.data.keys.product_adj }} template, the {{ site.data.keys.product_adj }} core Cordova plug-in is added automatically as the platform is added in step 3.
-
-4. Prepare the application resources by running the `cordova prepare command`:
+   > **注：**由于已使用 {{ site.data.keys.product_adj }} 模板配置应用程序，因此将自动添加 {{ site.data.keys.product_adj }} 核心 Cordova 插件，因为已在步骤 3 中添加平台。
+4. 通过运行 `cordova prepare` 命令来准备应用程序资源：
 
    ```bash
    cordova prepare
    ```
 
-#### Existing Application
+#### 现有应用程序
 {: #existing-application }
-1. Navigate to the root of your existing Cordova project and add the {{ site.data.keys.product_adj }} core Cordova plug-in:
+1. 浏览至现有 Cordova 项目的根目录并添加 {{ site.data.keys.product_adj }} 核心 Cordova 插件：
 
    ```bash
    cordova plugin add cordova-plugin-mfp
    ```
 
-2. Navigate to the **www\js** folder and select the **index.js** file.
+2. 浏览至 **www\js** 文件夹并选择 **index.js** 文件。
 
-3. Add the following function:
+3. 添加以下函数：
 
    ```javascript
    function wlCommonInit() {
@@ -134,48 +131,48 @@ Consider creating the project by using the {{ site.data.keys.product_adj }} Cord
    }
    ```
 
-The {{ site.data.keys.product_adj }} API methods are available after the {{ site.data.keys.product_adj }} client SDK has been loaded. The `wlCommonInit` function is then called.  
-Use this function to call the various {{ site.data.keys.product_adj }} API methods.
+在装入 {{ site.data.keys.product_adj }} 客户机 SDK 之后，{{ site.data.keys.product_adj }} API 方法将可用。然后将调用 `wlCommonInit` 函数。  
+使用此函数调用各种 {{ site.data.keys.product_adj }} API 方法。
 
-### Registering the application
+### 注册应用程序
 {: #registering-the-application }
-1. Open a **Command-line** window and navigate to the root of the Cordova project.  
+1. 打开**命令行**窗口并浏览至 Cordova 项目的根目录。  
 
-2. Register the application to {{ site.data.keys.mf_server }}:
+2. 向 {{ site.data.keys.mf_server }} 注册此应用程序：
 
    ```bash
    mfpdev app register
    ```
-    - If a remote server is used, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - 如果使用的是远程服务器，请[使用命令 `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 进行添加。
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then updates the **config.xml** file at the root of the Cordova project with metadata that identifies the {{ site.data.keys.mf_server }}.
+`mfpdev app register` CLI 命令将先连接到 {{ site.data.keys.mf_server }} 以注册应用程序，然后使用标识 {{ site.data.keys.mf_server }} 的元数据更新 Cordova 项目根目录的 **config.xml** 文件。
 
-Each platform is registered as an application in {{ site.data.keys.mf_server }}.
+会在 {{ site.data.keys.mf_server }} 中将每个平台注册为应用程序。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **提示：**您还可以从 {{ site.data.keys.mf_console }} 注册应用程序：    
 >
-> 1. Load the {{ site.data.keys.mf_console }}.  
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
+> 1. 装入 {{ site.data.keys.mf_console }}。  
+> 2. 单击**应用程序**旁边的**新建**按钮以注册新应用程序，并遵循屏幕上的指示信息。  
 
-### Using the SDK
+### 使用 SDK
 {: #using-the-sdk }
-The {{ site.data.keys.product_adj }} API methods are available after the {{ site.data.keys.product_adj }} client SDK has been loaded. The `wlCommonInit` function is then called.  
-Use this function to call the various {{ site.data.keys.product_adj }} API methods.
+在装入 {{ site.data.keys.product_adj }} 客户机 SDK 之后，{{ site.data.keys.product_adj }} API 方法将可用。然后将调用 `wlCommonInit` 函数。  
+使用此函数调用各种 {{ site.data.keys.product_adj }} API 方法。
 
-## Updating the {{ site.data.keys.product_adj }} Cordova SDK
+## 更新 {{ site.data.keys.product_adj }} Cordova SDK
 {: updating-the-mobilefirst-cordova-sdk }
-To update the {{ site.data.keys.product_adj }} Cordova SDK with the latest release, remove the **cordova-plugin-mfp** plug-in: run the `cordova plugin remove cordova-plugin-mfp` command and then run the `cordova plugin add cordova-plugin-mfp` command to add it again.
+要使用最新发行版更新 {{ site.data.keys.product_adj }} Cordova SDK，请除去 **cordova-plugin-mfp** 插件：运行 `cordova plugin remove cordova-plugin-mfp` 命令，然后运行 `cordova plugin add cordova-plugin-mfp` 命令以重新添加。
 
-SDK releases can be found in the SDK's [NPM repository](https://www.npmjs.com/package/cordova-plugin-mfp).
+可以在 SDK 的 [NPM 存储库](https://www.npmjs.com/package/cordova-plugin-mfp)中找到 SDK 发行版。
 
-## Generated {{ site.data.keys.product_adj }} Cordova SDK artifacts
+## 已生成 {{ site.data.keys.product_adj }} Cordova SDK 工件
 {: #generated-mobilefirst-cordova-sdk-artifacts }
 ### config.xml
 {: #configxml }
-The Cordova configuration file is a mandatory XML file that contains application metadata, and is stored in the root directory of the app.  
-After the {{ site.data.keys.product_adj }} Cordova SDK is added to the project, the Cordova-generated **config.xml** file receives a set of new elements that are identified with the namespace `mfp:`. The added elements contain information related to {{ site.data.keys.product_adj }} features and the {{ site.data.keys.mf_server }}.
+Cordova 配置文件是包含应用程序元数据的必需 XML 文件，存储在应用程序的根目录中。  
+将 {{ site.data.keys.product_adj }} Cordova SDK 添加到项目之后，Cordova 生成的 **config.xml** 文件会接收一组使用名称空间 `mfp:` 标识的新元素。添加的元素包含与 {{ site.data.keys.product_adj }} 功能和 {{ site.data.keys.mf_server }} 相关的信息。
 
-### example of {{ site.data.keys.product_adj }} settings added to the **config.xml** file
+### 添加到 **config.xml** 文件的 {{ site.data.keys.product_adj }} 设置示例
 {: #example-of-mobilefirst-settings-added-to-the-configxml-file}
 ```xml
 <?xml version='1.0'encoding='utf-8'?>
@@ -207,7 +204,7 @@ After the {{ site.data.keys.product_adj }} Cordova SDK is added to the project, 
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="config-xml-properties">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>Click for full list of config.xml properties</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>单击以获取 config.xml 属性的完整列表</b></a>
             </h4>
         </div>
 
@@ -215,116 +212,115 @@ After the {{ site.data.keys.product_adj }} Cordova SDK is added to the project, 
             <div class="panel-body">
                 <table class="table table-striped">
                     <tr>
-                        <td><b>Element</b></td>
-                        <td><b>Description</b></td>
-                        <td><b>Configuration</b></td>
+                        <td><b>元素</b></td>
+                        <td><b>描述</b></td>
+                        <td><b>配置</b></td>
                     </tr>
                     <tr>
                         <td><b>widget</b></td>
-                        <td>Root element of the <a href="http://cordova.apache.org/docs/en/dev/config_ref/index.html">config.xml document</a>. The element contains two required attributes: <ul><li><b>id</b>: This is the application package name that was specified when the Cordova project was created. If this value is manually changed after the application was registered with the {{ site.data.keys.mf_server }}, then the application must be registered again.</li><li><b>xmlns:mfp</b>: The {{ site.data.keys.product_adj }} plug-in XML namespace.</li></ul></td>
+                        <td><a href="http://cordova.apache.org/docs/en/dev/config_ref/index.html">config.xml 文档</a>的根元素。此元素包含两个必需属性：<ul><li><b>id</b>：这是在创建 Cordova 项目时指定的应用程序包名称。如果在向 {{ site.data.keys.mf_server }} 注册应用程序之后手动更改了此值，那么必须重新注册应用程序。</li><li><b>xmlns:mfp</b>：{{ site.data.keys.product_adj }} 插件 XML 名称空间。</li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:platformVersion</b></td>
-                        <td>Required. The product version on which the application was developed.</td>
-                        <td>Set by default. Must not be changed.</td>
+                        <td>必需。开发应用程序所用的产品版本。</td>
+                        <td>缺省情况下已设置。不得更改此值。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:directUpdateAuthenticityPublicKey</b></td>
-                        <td>Optional. When you enable the Direct Update Authenticity feature, the direct update package is digitally signed during deployment. After the client downloaded the package, a security check is run to validate the package authenticity. This string value is the public key that will be used to authenticate the direct update .zip file.</td>
-                        <td>Set with the <code>mfpdev app config direct_update_authenticity_public_key key-value</code> command.</td>
+                        <td>可选。在启用“直接更新真实性”功能时，将在部署期间对直接更新包进行数字签名。在客户机下载包之后，将运行安全性检查以验证包真实性。此字符串值是公用密钥，将用于认证直接更新 .zip 文件。</td>
+                        <td>使用 <code>mfpdev app config direct_update_authenticity_public_key key-value</code> 命令设置。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:languagePreferences</b></td>
-                        <td>Optional. Contains a comma-separated list of locales to display system messages.</td>
-                        <td>Set with the <code>mfpdev app config language_preferences key-value</code> command.</td>
+                        <td>可选。包含用于显示系统消息的语言环境的逗号分隔列表。</td>
+                        <td>使用 <code>mfpdev app config language_preferences key-value</code> 命令设置。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:clientCustomInit</b></td>
-                        <td>Controls how the <code>WL.Client.init</code> method is called. By default, this value is set to false and the <code>WL.Client.init</code> method is automatically called after the {{ site.data.keys.product_adj }} plug-in is initialized. Set this value to <b>true</b> for the client code to explicitly control when <code>WL.Client.init</code> is called.</td>
-                        <td>Edited manually. You can set the <b>enabled</b> attribute value to either <b>true</b> or <b>false</b>.</td>
+                        <td>控制如何调用 <code>WL.Client.init</code> 方法。缺省情况下，将此值设置为 false，将在初始化 {{ site.data.keys.product_adj }} 插件之后自动调用 <code>WL.Client.init</code> 方法。针对客户机代码将此值设置为 <b>true</b>，以显式控制调用 <code>WL.Client.init</code> 的时间。</td>
+                        <td>手动编辑。您可以将 <b>enabled</b> 属性值设置为 <b>true</b> 或 <b>false</b>。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:server</b></td>
-                        <td>Default remote server connection information, which the client application uses to communicate with the {{ site.data.keys.mf_server }}. <ul><li><b>url:</b> The url value specifies the {{ site.data.keys.mf_server }} protocol, host, and port values that the client will use to connect to the server by default.</li><li><b>runtime:</b> The runtime value specifies the {{ site.data.keys.mf_server }} runtime to which the application was registered. For more information about the {{ site.data.keys.product_adj }} runtime, see {{ site.data.keys.mf_server }} overview.</li></ul></td>
-                        <td><ul><li>The server url value is set with <code>the mfpdev app config server</code> command.</li><li>The server runtime value is set with the <code>mfpdev app config runtime</code> command.</li></ul></td>
+                        <td>缺省远程服务器连接信息，客户机应用程序将使用此信息与 {{ site.data.keys.mf_server }} 进行通信。<ul><li><b>url：</b>url 值指定缺省情况下客户机将用于连接到服务器的 {{ site.data.keys.mf_server }} 协议、主机和端口值。</li><li><b>runtime：</b>运行时值指定应用程序注册到的 {{ site.data.keys.mf_server }} 运行时。有关 {{ site.data.keys.product_adj }} 运行时的更多信息，请参阅 {{ site.data.keys.mf_server }} 概述。</li></ul></td>
+                        <td><ul><li>使用 <code>the mfpdev app config server</code> 命令设置服务器 url 值。</li><li>使用 <code>mfpdev app config runtime</code> 命令设置服务器运行时值。</li></ul></td>
                     </tr>
                     <tr>
                         <td><b>mfp:ios</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for the iOS platform.<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <td>此元素包含针对 iOS 平台的所有与 {{ site.data.keys.product_adj }} 相关的客户机应用程序配置。<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:android</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for the Android platform.<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <td>此元素包含针对 Android 平台的所有与 {{ site.data.keys.product_adj }} 相关的客户机应用程序配置。<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:windows</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for the Windows platform.<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:windowsphone8</b></li><li><b>mfp:windows8</b></li><li><b>mfp:windows10</b></li></ul></td>
+                        <td>此元素包含针对 Windows 平台的所有与 {{ site.data.keys.product_adj }} 相关的客户机应用程序配置。<ul><li><b>mfp:appChecksum</b></li><li><b>mfp:windowsphone8</b></li><li><b>mfp:windows8</b></li><li><b>mfp:windows10</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:windows8</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for Windows 8.1 platforms.
-                        <ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
+                        <td>此元素包含针对 Windows 8.1 平台的所有与 {{ site.data.keys.product_adj }} 相关的客户机应用程序配置。<ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:windows10</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for Windows 10 platforms.
+                        <td>此元素包含针对 Windows 10 平台的所有与 {{ site.data.keys.product_adj }} 相关的客户机应用程序配置。
                         <ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:windowsphone8</b></td>
-                        <td>This element contains all {{ site.data.keys.product_adj }}-related client application configuration for Windows Phone 8.1 platforms.
+                        <td>此元素包含针对 Windows Phone 8.1 平台的所有与 {{ site.data.keys.product_adj }} 相关的客户机应用程序配置。
                         <ul><li><b>mfp:sdkChecksum</b></li><li><b>mfp:security</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:appChecksum</b></td>
-                        <td>This value is the checksum of application web resources. It is calculated when <code>mfpdev app webupdate</code> is run.</td>
-                        <td>Not user-configurable. The checksum value is updated when the <code>mfpdev app webupdate</code> command is run. For more details about the <code>mfpdev app webupdate</code> command, type <code>mfpdev help app webupdate</code> in your command window.</td>
+                        <td>此值是应用程序 Web 资源的校验和。在运行 <code>mfpdev app webupdate</code> 时计算。</td>
+                        <td>不是用户可配置的。该校验和值在运行 <code>mfpdev app webupdate</code> 命令时更新。有关 <code>mfpdev app webupdate</code> 命令的更多详细信息，请在命令窗口中输入 <code>mfpdev help app webupdate</code>。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:sdkChecksum</b></td>
-                        <td>This value is the {{ site.data.keys.mf_console }} SDK checksum that is used to identify unique {{ site.data.keys.product_adj }} SDK levels.</td>
-                        <td>Not user-configurable. This value is set by default.</td>
+                        <td>此值是用于标识唯一 {{ site.data.keys.product_adj }} SDK 级别的 {{ site.data.keys.mf_console }} SDK 校验和。</td>
+                        <td>不是用户可配置的。缺省情况下，此值已设置。</td>
                     </tr>
                     <tr>
                         <td><b>mfp:security</b></td>
-                        <td>This element contains the client application's platform-specific configuration for {{ site.data.keys.product_adj }} security. Contains<ul><li><b>mfp:testWebResourcesChecksum</b></li></ul></td>
+                        <td>此元素包含特定于客户机应用程序平台的配置以确保 {{ site.data.keys.product_adj }} 安全性。包含<ul><li><b>mfp:testWebResourcesChecksum</b></li></ul></td>
                         <td></td>
                     </tr>
                     <tr>
                         <td><b>mfp:testWebResourcesChecksum</b></td>
-                        <td>Controls whether the application verifies the integrity of its web resources each time it starts running on the mobile device. Attributes: <ul><li><b>enabled:</b> Valid values are <b>true</b> and <b>false</b>. If this attribute is set to <b>true</b>, the application calculates the checksum of its web resources and compares this checksum with a value that was stored when the application was first run.</li><li><b>ignoreFileExtensions:</b> Checksum calculation can take a few seconds, depending on the size of the web resources. To make it faster, you can provide a list of file extensions to be ignored in this calculation. This value is ignored when the <b>enabled</b> attribute value is <b>false</b>.</li></ul></td>
-                        <td><ul><li>The <b>enabled</b> attribute is set with the <code>mfpdev app config android_security_test_web_resources_checksum key-value</code> command.</li><li>The <b>ignoreFileExtensions</b> attribute is set with the <code>mfpdev app config android_security_ignore_file_extensions value</code> command.</li></ul></td>
+                        <td>控制每次在移动设备上开始运行应用程序时，应用程序是否验证其 Web 资源的完整性。属性：<ul><li><b>enabled：</b>有效值为 <b>true</b> 和 <b>false</b>。如果将此属性设置为 <b>true</b>，那么应用程序将计算其 Web 资源的校验和，并且会将此校验和与初次运行应用程序时存储的值进行比较。</li><li><b>ignoreFileExtensions：</b>校验和计算可能需要几秒钟，这取决于 Web 资源的大小。要使其更加快速，可以提供要在计算中忽略的文件扩展名列表。当 <b>enabled</b> 属性值为 <b>false</b> 时，将忽略此值。</li></ul></td>
+                        <td><ul><li>使用 <code>mfpdev app config android_security_test_web_resources_checksum key-value</code> 命令设置 <b>enabled</b> 属性。</li><li>使用 <code>mfpdev app config android_security_ignore_file_extensions value</code> 命令设置 <b>ignoreFileExtensions</b> 属性。</li></ul></td>
                     </tr>
                 </table>
 
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#config-xml-properties" data-target="#collapse-config-xml-properties" aria-expanded="false" aria-controls="collapse-config-xml-properties"><b>结束部分</b></a>
             </div>
         </div>
     </div>
 </div>
 
-### Editing {{ site.data.keys.product_adj }} settings in the config.xml file
+### 编辑 config.xml 文件中的 {{ site.data.keys.product_adj }} 设置
 {: #editing-mobilefirst-settings-in-the-configxml-file }
-You can use the {{ site.data.keys.mf_cli }} to edit the above settings by running the command:
+您可以使用 {{ site.data.keys.mf_cli }} 通过运行命令来编辑上面的设置：
 
 ```bash
 mfpdev app config
 ```
 
-## Tutorials to follow next
+## 接下来要学习的教程
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product_adj }} Cordova SDK now integrated, you can now:
+集成 {{ site.data.keys.product_adj }} Cordova SDK 之后，您现在可以：
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- 查看[使用 {{ site.data.keys.product }} SDK 教程](../)
+- 查看[适配器开发教程](../../../adapters/)
+- 查看[认证和安全教程](../../../authentication-and-security/)
+- 查看[通知教程](../../../notifications/)
+- 查看[所有教程](../../../all-tutorials)

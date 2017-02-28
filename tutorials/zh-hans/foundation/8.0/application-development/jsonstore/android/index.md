@@ -1,48 +1,48 @@
 ---
 layout: tutorial
-title: JSONStore in Android applications
+title: Android 应用程序中的 JSONStore
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 3
 downloads:
-  - name: Download Android Studio project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
-  - name: Download Adapter Maven project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
+  - 名称：下载 Android Studio 项目
+    url：https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid/tree/release80
+  - 名称：下载适配器 Maven 项目
+    url：https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Prerequisites
+## 先决条件
 {: #prerequisites }
 
-* Read the [JSONStore parent tutorial](../)
-* Make sure the {{ site.data.keys.product_adj }} Native SDK was added to the Android Studio project. Follow the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android/) tutorial.
+* 阅读 [JSONStore 父教程](../)
+* 确保已将 {{ site.data.keys.product_adj }} 本机 SDK 添加到 Android Studio 项目。遵循[向 Android 应用程序添加 {{ site.data.keys.product }} SDK](../../../application-development/sdk/android/) 教程。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Adding JSONStore](#adding-jsonstore)
-* [Basic Usage](#basic-usage)
-* [Advanced Usage](#advanced-usage)
-* [Sample application](#sample-application)
+* [添加 JSONStore](#adding-jsonstore)
+* [基本用法](#basic-usage)
+* [高级用法](#advanced-usage)
+* [样本应用程序](#sample-application)
 
-## Adding JSONStore
+## 添加 JSONStore
 {: #adding-jsonstore }
-1. In **Android → Gradle Scripts**, select the **build.gradle (Module: app)** file.
+1. 在 **Android → Gradle 脚本**中，选择 **build.gradle（模块：应用程序）**文件。
 
-2. Add the following to the existing `dependencies` section:
+2. 将以下代码添加到现有 `dependencies` 部分：
 
 ```
 compile 'com.ibm.mobile.foundation:ibmobilefirstplatformfoundationjsonstore:8.0.+
 ```
 
-## Basic Usage
+## 基本用法
 {: #basic-usage }
-### Open
+### 打开
 {: #open }
-Use `openCollections` to open one or more JSONStore collections.
+使用 `openCollections` 打开一个或多个 JSONStore 集合。
 
-Starting or provisioning a collections means creating the persistent storage that contains the collection and documents, if it does not exists. If the persistent storage is encrypted and a correct password is passed, the necessary security procedures to make the data accessible are run.
+启动或供应集合意味着创建包含集合和文档的持久存储（如果不存在）。如果持久存储已加密且传递了正确密码，那么将运行必需的安全过程才能访问数据。
 
-For optional features that you can enable at initialization time, see **Security, Multiple User Support** and **{{ site.data.keys.product_adj }} Adapter Integration** in the second part of this tutorial.
+有关可在初始化时启用的可选功能，请参阅本教程第二部分中的**安全性、多用户支持**和 **{{ site.data.keys.product_adj }} 适配器集成**。
 
 ```java
 Context context = getContext();
@@ -59,9 +59,10 @@ try {
 }
 ```
 
-### Get
+### 获取
+
 {: #get }
-Use `getCollectionByName` to create an accessor to the collection. You must call `openCollections` before you call `getCollectionByName`.
+使用 `getCollectionByName` 来创建集合存取器。必须先调用 `openCollections`，然后才能调用 `getCollectionByName`。
 
 ```java
 Context context = getContext();
@@ -74,11 +75,11 @@ try {
 }
 ```
 
-The variable `collection` can now be used to perform operations on the `people` collection such as `add`, `find`, and `replace`
+变量 `collection` 现在可用于在 `people` 集合上执行操作，例如，`add`、`find` 和 `replace`
 
-### Add
+### 添加
 {: #add }
-Use `addData` to store data as documents inside a collection
+使用 `addData` 将数据存储为集合中的文档
 
 ```java
 Context context = getContext();
@@ -96,9 +97,9 @@ try {
 }
 ```
 
-### Find
+### 查找
 {: #find }
-Use `findDocuments` to locate a document inside a collection by using a query. Use `findAllDocuments` to retrieve all the documents inside a collection. Use `findDocumentById` to search by the document unique identifier.
+使用 `findDocuments` 来通过查询查找集合中的文档。使用 `findAllDocuments` 来检索集合中的所有文档。使用 `findDocumentById` 来按文档唯一标识进行搜索。
 
 ```java
 Context context = getContext();
@@ -120,9 +121,10 @@ try {
 }
 ```
 
-### Replace
+### 替换
+
 {: #replace }
-Use `replaceDocument` to modify documents inside a collection. The field that you use to perform the replacement is `_id,` the document unique identifier.
+使用 `replaceDocument` 来修改集合中的文档。用于执行替换的字段是文档唯一标识 `_id`。
 
 ```java
 Context context = getContext();
@@ -140,12 +142,12 @@ try {
 }
 ```
 
-This examples assumes that the document `{_id: 1, json: {name: 'yoel', age: 23} }` is in the collection.
+此示例假定文档 `{_id: 1, json: {name: 'yoel', age: 23} }` 位于集合中。
 
-### Remove
+### 除去
 {: #remove }
-Use `removeDocumentById` to delete a document from a collection.
-Documents are not erased from the collection until you call `markDocumentClean`. For more information, see the **{{ site.data.keys.product_adj }} Adapter Integration** section later in this tutorial.
+使用 `removeDocumentById` 以删除集合中的文档。
+在调用 `markDocumentClean` 之前，不会从集合中擦除文档。有关更多信息，请参阅本教程后面的 **{{ site.data.keys.product_adj }} 适配器集成**部分。
 
 ```java
 Context context = getContext();
@@ -162,9 +164,9 @@ try {
 }
 ```
 
-### Remove Collection
+### 除去集合
 {: #remove-collection }
-Use `removeCollection` to delete all the documents that are stored inside a collection. This operation is similar to dropping a table in database terms.
+使用 `removeCollection` 以删除集合中存储的所有文档。此操作类似于数据库术语中的删除表。
 
 ```java
 Context context = getContext();
@@ -178,14 +180,14 @@ try {
 }
 ```
 
-### Destroy
+### 销毁
 {: #destroy }
-Use `destroy` to remove the following data:
+使用 `destroy` 以除去以下数据：
 
-* All documents
-* All collections
-* All Stores - See **Multiple User Support** later in this tutorial
-* All JSONStore metadata and security artifacts - See **Security** later in this tutorial
+* 所有文档
+* 所有集合
+* 所有存储区 - 请参阅本教程后面的**多用户支持**。
+* 所有 JSONStore 元数据和安全工件 - 请参阅本教程后面的**安全性**
 
 ```java
 Context context = getContext();
@@ -197,18 +199,18 @@ try {
 }
 ```
 
-## Advanced Usage
+## 高级用法
 {: #advanced-usage }
-### Security
+### 安全性
 {: #security }
-You can secure all the collections in a store by passing a `JSONStoreInitOptions` object with a password to the `openCollections` function. If no password is passed, the documents of all the collections in the store are not encrypted.
+您可以通过将包含密码的 `JSONStoreInitOptions` 对象传递到 `openCollections` 函数来保护存储区中的所有集合。如果未传递密码，那么将不会加密存储区中所有集合的文档。
 
-Some security metadata is stored in the shared preferences (Android).  
-The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2).
+某些安全元数据存储在共享首选项中 (Android)。  
+此存储利用 256 位高级加密标准 (AES) 密钥进行加密。所有密钥通过基于密码的密钥派生功能 2 (PBKDF2) 进行增强。
 
-Use `closeAll` to lock access to all the collections until you call `openCollections` again. If you think of `openCollections` as a login function you can think of `closeAll` as the corresponding logout function.
+使用 `closeAll` 以锁定对所有集合的访问，直至再次调用 `openCollections`。如果将 `openCollections` 当作登录函数，那么可将 `closeAll` 当作对应的注销函数。
 
-Use `changePassword` to change the password.
+使用 `changePassword` 来更改密码。
 
 ```java
 Context context = getContext();
@@ -227,9 +229,9 @@ try {
 }
 ```
 
-#### Multiple User Support
+#### 多用户支持
 {: #multiple-user-support }
-You can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application. The `openCollections` function can take an options object with a username. If no username is given, the default username is ""**jsonstore**"".
+您可以在单个 {{ site.data.keys.product_adj }} 应用程序中创建包含不同集合的多个存储。`openCollections` 函数可使用包含用户名的选项对象。如果未指定用户名，那么缺省用户名为“**jsonstore**”。
 
 ```java
 Context context = getContext();
@@ -248,14 +250,14 @@ try {
 }
 ```
 
-#### {{ site.data.keys.product_adj }} Adapter Integration
+#### {{ site.data.keys.product_adj }} 适配器集成
 {: #mobilefirst-adapter-integration }
-This section assumes that you are familiar with adapters. Adapter Integration is optional and provides ways to send data from a collection to an adapter and get data from an adapter into a collection.
-You can achieve these goals by using functions such as `WLResourceRequest` or your own instance of an `HttpClient` if you need more flexibility.
+此部分假定您熟悉适配器。适配器集成为可选，其支持将数据从集合发送到适配器以及从适配器将数据获取到集合。
+如果需要提高灵活性，可以使用 `WLResourceRequest` 之类的函数或者自己的 `HttpClient` 实例来实现这些目标。
 
-#### Adapter Implementation
+#### 适配器实现
 {: #adapter-implementation }
-Create an adapter and name it "**JSONStoreAdapter**". Define it's procedures `addPerson`, `getPeople`, `pushPeople`, `removePerson`, and `replacePerson`.
+创建一个适配器并将其命名为“**JSONStoreAdapter**”。将其过程定义为 `addPerson`、`getPeople`、`pushPeople`、`removePerson` 和 `replacePerson`。
 
 ```javascript
 function getPeople() {
@@ -286,9 +288,9 @@ function replacePerson(data) {
 }
 ```
 
-#### Load data from {{ site.data.keys.product_adj }} Adapter
+#### 从 {{ site.data.keys.product_adj }} 适配器装入数据
 {: #load-data-from-mobilefirst-adapter }
-To load data from an adapter use `WLResourceRequest`.
+要从适配器装入数据，请使用 `WLResourceRequest`。
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -298,25 +300,25 @@ WLResponseListener responseListener = new WLResponseListener() {
   }
   @Override
   public void onSuccess(WLResponse response) {
-    try {
-      JSONArray loadedDocuments = response.getResponseJSON().getJSONArray("peopleList");
+    try { 
+JSONArray loadedDocuments = response.getResponseJSON().getJSONArray("peopleList");
     } catch(Exception e) {
       // error decoding JSON data
     }
   }
 };
 
-try {
-  WLResourceRequest request = new WLResourceRequest(new URI("/adapters/JSONStoreAdapter/getPeople"), WLResourceRequest.GET);
+try { 
+WLResourceRequest request = new WLResourceRequest(new URI("/adapters/JSONStoreAdapter/getPeople"), WLResourceRequest.GET);
   request.send(responseListener);
 } catch (URISyntaxException e) {
   // handle error
 }
 ```
 
-#### Get Push Required (Dirty Documents)
+#### 需要推送（脏文档）
 {: #get-push-required-dirty-documents }
-Calling `findAllDirtyDocuments` returns and array of so called "dirty documents", which are documents that have local modifications that do not exist on the back-end system.
+调用 `findAllDirtyDocuments` 将返回名为“脏文档”的数组，这些是包含后端系统上不存在的本地修订的文档。
 
 ```java
 Context  context = getContext();
@@ -330,11 +332,11 @@ try {
 }
 ```
 
-To prevent JSONStore from marking the documents as "dirty", pass the option `options.setMarkDirty(false)` to `add`, `replace`, and `remove`.
+要阻止 JSONStore 将文档标记为“脏”，请将选项 `options.setMarkDirty(false)` 传递到 `add`、`replace` 和 `remove`。
 
-#### Push changes
+#### 推送更改
 {: #push-changes }
-To push changes to an adapter, call the `findAllDirtyDocuments` to get a list of documents with modifications and then use `WLResourceRequest`. After the data is sent and a successful response is received make sure you call `markDocumentsClean`.
+要将更改推送到适配器，请调用 `findAllDirtyDocuments` 以获取包含修订的文档列表，然后使用 `WLResourceRequest`。在发送数据并且收到成功响应后，确保调用 `markDocumentsClean`。
 
 ```java
 WLResponseListener responseListener = new WLResponseListener() {
@@ -349,8 +351,8 @@ WLResponseListener responseListener = new WLResponseListener() {
 };
 Context context = getContext();
 
-try {
-  String collectionName = "people";
+try { 
+String collectionName = "people";
   JSONStoreCollection collection = WLJSONStore.getInstance(context).getCollectionByName(collectionName);
   List<JSONObject> dirtyDocuments = people.findAllDirtyDocuments();
 
@@ -366,15 +368,15 @@ try {
 }
 ```
 
-<img alt="Image of the sample application" src="android-native-screen.jpg" style="float:right; width:240px;"/>
-## Sample application
+<img alt="样本应用程序的图像" src="android-native-screen.jpg" style="float:right; width:240px;"/>
+## 示例应用程序
 {: #sample-application }
-The JSONStoreAndroid project contains a native Android application that utilizes the JSONStore API set.  
-Included is a JavaScript adapter Maven project.
+JSONStoreAndroid 项目包含利用 JSONStore API 集合的本机 Android 应用程序。  
+随附一个 JavaScript 适配器 Maven 项目。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid) the Native Android project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80) the adapter Maven project.  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAndroid)本机 Android 项目。  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80)适配器 Maven 项目。  
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+遵循样本的 README.md 文件以获取指示信息。
