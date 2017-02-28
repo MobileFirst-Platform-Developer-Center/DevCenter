@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Using Direct Update in Cordova applications
-breadcrumb_title: Direct Update
+title: 在 Cordova 应用程序中使用自动更新
+breadcrumb_title: 直接更新
 relevantTo: [cordova]
 weight: 8
 downloads:
@@ -9,107 +9,106 @@ downloads:
     url: https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-With Direct Update, Cordova applications can be updated "over-the-air" with refreshed web resources, such as changed, fixed or new applicative logic (JavaScript), HTML, CSS or images. Organizations are thus able to ensure that end-users always use the latest version of the application.
+通过直接更新，可利用刷新的 Web 资源（例如，已更改、已修订或新的应用逻辑 (JavaScript)、HTML、CSS 或图像）无线更新 Cordova 应用程序。因此，组织能够确保最终用户总是使用最新版本的应用程序。
 
-In order to update an application, the updated web resources of the application need to be packaged and uploaded to the {{ site.data.keys.mf_server }} using the {{ site.data.keys.mf_cli }} or by deploying a generated archive file. Direct Update is then activated automatically  Once activated, it will be enforced on every request to a protected resource.
+为了更新应用程序，需要打包更新后的应用程序 Web 资源并使用 {{ site.data.keys.mf_cli }} 或者通过部署生成的归档文件上载到 {{ site.data.keys.mf_server }}。然后将自动激活直接更新。激活后，将在受保护资源的每个请求上实施。
 
-**Supported Cordova platforms**  
-Direct Update is supported in the Cordova iOS and Cordova Android platforms.
+**受支持的 Cordova 平台**  
+在 Cordova iOS 和 Cordova Android 平台中支持直接更新。
 
-**Direct Update in development, testing, and production**  
-For development and testing purposes, developers typically use Direct Update by simply uploading an archive to the development server. While this process is easy to implement, it is not very secure. For this phase, an internal RSA key pair that is extracted from an embedded {{ site.data.keys.product_adj }} self-signed certificate is used.
+**开发、测试和生产中的直接更新**  
+对于开发和测试之目的，开发人员通常通过简单将归档上载到开发服务器来使用直接更新。虽然此过程易于实施，但是并不十分安全。对于此阶段，将使用从嵌入式 {{ site.data.keys.product_adj }} 自签名证书抽取的内部 RSA 密钥对。
 
-For the phases of live production or even pre-production testing, however, it is strongly recommended to implement secure Direct Update before you publish your application to the app store. Secure Direct Update requires an RSA key pair that is extracted from a real CA signed server certificate.
+但是，对于实际生产甚或预生产测试阶段，强烈建议先实施安全直接更新，然后再将应用程序发布到应用商店。安全直接更新需要从实际 CA 签名服务器证书抽取的 RSA 密钥对。
 
-**Note:** Take care that you do not modify the keystore configuration after the application was published, updates that are downloaded can no longer be authenticated without reconfiguring the application with a new public key and republishing the application. Without performing these two steps, Direct Update fails on the client.
+**注：**请注意，不要在发布应用程序后修改密钥库配置，如果未使用新的公用密钥重新配置应用程序和重新发布应用程序，那么将不再对下载的更新进行认证。如果不执行这两个步骤，客户机上的直接更新将失败。
 
-> Learn more in [Secure Direct Update](#secure-direct-update).
+> 在[安全直接更新](#secure-direct-update)中了解更多信息。
 
-**Direct Update data transfer rates**  
-At optimal conditions, a single {{ site.data.keys.mf_server }} can push data to clients at the rate of 250 MB per second. If higher rates are required, consider a cluster or a CDN service.  
+**直接更新数据传输速率**  
+在最佳情况下，单个 {{ site.data.keys.mf_server }} 可按 250 MB/秒的速率将数据推送到客户机。如果需要更高的速率，请考虑集群或 CDN 服务。  
 
-> Learn more in [Serving Direct Update requests from a CDN](cdn-support)
+> 在[从 CDN 处理直接更新请求](cdn-support)中了解更多信息
 
-### Notes
+### 注意
 {: #notes }
 
-* Direct Update updates only the application's web resources. To update native resources a new application version must be submitted to the respective app store.
-* When you use the Direct Update feature and the [web resources checksum](../cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature) feature is enabled, a new checksum base is established with each Direct Update.
-* If the {{ site.data.keys.mf_server }} was upgraded by using a fix pack, it continues to serve direct updates properly. However, if a recently built Direct Update archive (.zip file) is uploaded, it can halt updates to older clients. The reason is that the archive contains the version of the cordova-plugin-mfp plug-in. Before it serves that archive to a mobile client, the server compares the client version with the plug-in version. If both versions are close enough (meaning that the three most significant digits are identical), Direct Update occurs normally. Otherwise, {{ site.data.keys.mf_server }} silently skips the update. One solution for the version mismatch is to download the cordova-plugin-mfp with the same version as the one in your original Cordova project and regenerate the Direct Update archive.
+* 直接更新仅更新应用程序的 Web 资源。要更新本机资源，必须向各自的应用商店提交新的应用程序版本。
+* 在使用直接更新功能且启用了 [Web 资源校验和](../cordova-apps/securing-apps/#enabling-the-web-resources-checksum-feature)功能时，将随每个直接更新建立一个新的校验和基准。
+* 如果已使用修订包升级 {{ site.data.keys.mf_server }}，那么它继续正确地处理直接更新。但是，如果上载了最近构建的直接更新归档（.zip 文件），那么可能停止对较旧客户机的更新。原因是归档包含 cordova-plugin-mfp 插件版本。在向移动客户机提供此归档之前，服务器将客户机版本与插件版本进行比较。如果两个版本足够接近（意味着三个最高位数字相同），那么直接更新照常进行。否则，{{ site.data.keys.mf_server }} 以静默方式跳过更新。版本不匹配的一个解决方案是下载版本与原始 Cordova 项目中的版本相同的 cordova-plugin-mfp，并重新生成直接更新归档。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to}
 
-- [How Direct Update works](#how-direct-update-works)
-- [Creating and deploying updated web resources](#creating-and-deploying-updated-web-resources)
-- [User experience](#user-experience)
-- [Customizing the Direct Update UI](#customizing-the-direct-update-ui)
-- [Delta and Full Direct Update](#delta-and-full-direct-update)
-- [Secure Direct Update](#secure-direct-update)
-- [Sample application](#sample-application)
+- [直接更新的运作方式](#how-direct-update-works)
+- [创建和部署更新的 Web 资源](#creating-and-deploying-updated-web-resources)
+- [用户体验](#user-experience)
+- [定制直接更新 UI](#customizing-the-direct-update-ui)
+- [增量和完全直接更新](#delta-and-full-direct-update)
+- [安全直接更新](#secure-direct-update)
+- [样本应用程序](#sample-application)
 
-## How Direct Update works
+## 直接更新的运作方式
 {: #how-direct-update-works }
-The application web resources are initially packaged with the application to ensure first offline availability. Afterwards, the application checks for updates on every request to the {{ site.data.keys.mf_server }}.
+应用程序 Web 资源最初与应用程序打包在一起，确保第一个脱机可用性。之后，应用程序检查 {{ site.data.keys.mf_server }} 的每个请求上的更新。
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Note:** after a Direct Update was performed, it is checked for again after 60 minutes.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **注：**在执行直接更新后，将在 60 分钟后再次进行检查。
+在直接更新后，应用程序不再使用预先打包的 Web 资源。而是使用从应用程序沙箱下载的 Web 资源。如果将清除设备上的应用程序高速缓存，那么将再次使用原始打包的 Web 资源。
 
-After a Direct Update, the application no longer uses the pre-packaged web resources. Instead, it will use the downloaded web resources from the application's sandbox. If the application's cache on the device will be cleared, the original packaged web resources will be used again.
+![直接更新的运作方式图](internal_function.jpg)
 
-![Diagram of how direct update works](internal_function.jpg)
-
-### Versioning
+### 版本控制
 {: #versioning }
-A Direct Update applies only to a specific version. In other words, updates generated for an application versioned 2.0 cannot be applied to a different version of the same application.
+直接更新仅应用于特定版本。换句话说，针对 V2.0 的应用程序生成的更新无法应用于不同版本的相同应用程序。
 
-## Creating and deploying updated web resources
+## 创建和部署更新的 Web 资源
 {: #creating-and-deploying-updated-web-resources }
-Once work on new web resources, such as bug fixes or minor changes and the like, is done, the updated web resources need to be packaged and uploaded to the {{ site.data.keys.mf_server }}.
+在完成新 Web 资源工作（例如，错误修复或细微更改等）后，需要打包更新的 Web 资源并上载到 {{ site.data.keys.mf_server }}。
 
-1. Open a **Command-line** window and navigate to the root of the Cordova project.
-2. Run the command: `mfpdev app webupdate`.
+1. 打开**命令行**窗口并浏览至 Cordova 项目的根文件夹。
+2. 运行命令：`mfpdev app webupdate`。
 
-The `mfpdev app webupdate` command packages the updated web resources to a .zip file and uploads it to the default {{ site.data.keys.mf_server }} running in the developer workstation. The packaged web resources can be found at the  **[cordova-project-root-folder]/mobilefirst/** folder.
+`mfpdev app webupdate` 命令将更新的 Web 资源打包为一个 .zip 文件并将其上载到在开发人员工作站中运行的缺省 {{ site.data.keys.mf_server }}。可在 **[cordova-project-root-folder]/mobilefirst/** 文件夹中找到打包的 Web 资源。
 
-Alternatives:
+备用：
 
-* Build the .zip file and upload it to a different {{ site.data.keys.mf_server }}: `mfpdev app webupdate [server-name] [runtime-name]`. For example: 
+* 构建 .zip 文件并将其上载到不同的 {{ site.data.keys.mf_server }}：`mfpdev app webupdate [server-name][runtime-name]`。例如： 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps
   ```
 
-* Upload a previously generated .zip file: `mfpdev app webupdate [server-name] [runtime-name] --file [path-to-packaged-web-resources]`. For example: 
+* 上载先前生成的 .zip 文件：`mfpdev app webupdate [server-name][runtime-name] --file [path-to-packaged-web-resources]`。例如： 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
   ```
 
-* Manually upload packaged web resources to the {{ site.data.keys.mf_server }}:
- 1. Build the .zip file without uploading it:
+* 手动将打包的 Web 资源上载到 {{ site.data.keys.mf_server }}：
+ 1. 构建 .zip 文件而不上载：
 
     ```bash
     mfpdev app webupdate --build
     ```
- 2. Load the {{ site.data.keys.mf_console }} and click on the application entry.
- 3. Click on **Upload Web Resources File** to upload the packaged web resources.
+ 2. 装入 {{ site.data.keys.mf_console }}，然后单击应用程序条目。
+ 3. 单击**上载 Web 资源文件**以上载打包的 Web 资源。
 
-    ![Upload Direct Update .zip file from the console](upload-direct-update-package.png)
+    ![从控制台上载直接更新 .zip 文件](upload-direct-update-package.png)
 
-> Run the command `mfpdev help app webupdate` to learn more.
+> 运行命令 `mfpdev help app webupdate` 以了解更多信息。
 
-## User Experience
+## 用户体验
 {: #user-experience }
-By default, after a Direct Update is received a dialog is displayed and the user is asked whether to begin the update process. After the user approves a progress bar dialog is displayed and the web resources are downloaded. The application is automatically reloaded after the update is complete.
+缺省情况下，在收到直接更新后，将显示一个对话框并询问用户是否开始更新过程。在用户核准后，将显示一个进度条对话框，并下载 Web 资源。在更新完成后将自动重新装入应用程序。
 
-![Direct update example](direct-update-flow.png)
+![直接更新示例](direct-update-flow.png)
 
-## Customizing the Direct Update UI
+## 定制直接更新 UI
 {: #customizing-the-direct-update-ui }
-The default Direct Update UI that is presented to the end-user can be customized.  
-Add the following inside the `wlCommonInit()` function in **index.js**:
+可定制向最终用户显示的缺省直接更新 UI。  
+在 **index.js** 的 `wlCommonInit()` 函数中添加以下代码：
 
 ```javascript
 wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {
@@ -117,21 +116,21 @@ wl_DirectUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-- `directUpdateData` - A JSON object containing the `downloadSize` property that represents the file size (in bytes) of the update package to be downloaded from {{ site.data.keys.mf_server }}.
-- `directUpdateContext` - A JavaScript object exposing the `.start()` and `.stop()` functions, which start and stop the Direct Update flow.
+- `directUpdateData` - 包含 `downloadSize` 属性的 JSON 对象，其表示要从 {{ site.data.keys.mf_server }} 下载的更新软件包的文件大小（字节）。
+- `directUpdateContext` - 公开 `.start()` 和 `.stop()` 函数的 JavaScript 对象，用于启动和停止直接更新流程。
 
-If the web resources are newer on the {{ site.data.keys.mf_server }} than in the application, Direct Update challenge data is added to the server response. Whenever the {{ site.data.keys.product_adj }} client-side framework detects this direct update challenge, it invokes the `wl_directUpdateChallengeHandler.handleDirectUpdate` function.
+如果 {{ site.data.keys.mf_server }} 上的 Web 资源比应用程序中的 Web 资源新，那么会将直接更新验证问题数据添加到服务器响应。在 {{ site.data.keys.product_adj }} 客户机端框架检测到此直接更新验证问题时，任何时候它都会调用 `wl_directUpdateChallengeHandler.handleDirectUpdate` 函数。
 
-The function provides a default Direct Update design: a default message dialog that is displayed when a Direct Update is available and a default progress screen that is displayed when the direct update process is initiated. You can implement custom Direct Update user interface behavior or customize the Direct Update dialog box by overriding this function and implementing your own logic.
+此函数提供缺省直接更新设计：在直接更新可用时显示的缺省消息对话框和初始化直接更新过程时显示的缺省进度屏幕。您可以通过覆盖此函数并实施自己的逻辑来实施定制直接更新用户界面行为或定制直接更新对话框。
 
-<img alt="Image of custom Direct Update dialog" src="custom-direct-update-dialog.jpg" style="float:right; margin-left: 10px"/>
-In the example code below, a `handleDirectUpdate` function implements a custom message in the Direct Update dialog. Add this code into the **www/js/index.js** file of the Cordova project.  
-Additional examples for a customized Direct Update UI:
+<img alt="定制直接更新对话框的图像" src="custom-direct-update-dialog.jpg" style="float:right; margin-left: 10px"/>
+在以下示例代码中，`handleDirectUpdate` 函数在直接更新对话框中实施定制消息。将此代码添加到 Cordova 项目的 **www/js/index.js** 文件。  
+定制的直接更新 UI 的其他示例：
 
-- A dialog that is created by using a third-party JavaScript framework (such as Dojo or jQuery Mobile, Ionic, ...)
-- Fully native UI by executing a Cordova plug-in
-- An alternate HTML that is presented to the user with options
-- And so on...
+- 使用第三方 JavaScript 框架创建的对话框（例如，Dojo、jQuery Mobile 或 Ionic ...）
+- 通过执行 Cordova 插件的完全本机 UI
+- 向用户提供选项的备用 HTML
+- 等等...
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext) {        
@@ -146,42 +145,42 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-You can start the Direct Update process by running the `directUpdateContext.start()` method whenever the user clicks the dialog button. The default progress screen, which resembles the one in previous versions of {{ site.data.keys.mf_server }} is shown.
+任何时候用户单击对话框按钮，都可通过运行 `directUpdateContext.start()` 方法来启动直接更新过程。此时将显示与先前版本的 {{ site.data.keys.mf_server }} 类似的缺省进度屏幕。
 
-This method supports the following types of invocation:
+此方法支持以下类型的调用：
 
-* When no parameters are specified, the {{ site.data.keys.mf_server }} uses the default progress screen.
-* When a listener function such as `directUpdateContext.start(directUpdateCustomListener)` is supplied, the Direct Update process runs in the background while the process sends lifecycle events to the listener. The custom listener must implement the following methods:
+* 在不指定任何参数时，{{ site.data.keys.mf_server }} 使用缺省进度屏幕。
+* 如果提供侦听器函数（例如，`directUpdateContext.start(directUpdateCustomListener)`），那么在进程向侦听器发送生命周期事件时，直接更新进程将在后台运行。定制侦听器必须实现以下方法：
 
 ```javascript
-var  directUpdateCustomListener  = { 
-    onStart : function ( totalSize ){ }, 
-    onProgress : function ( status , totalSize , completedSize ){ }, 
-    onFinish : function ( status ){ } 
+var  directUpdateCustomListener  = {
+    onStart : function ( totalSize ){ },
+    onProgress : function ( status , totalSize , completedSize ){ },
+    onFinish : function ( status ){ }
 };
 ```
 
-The listener methods are started during the direct update process according to following rules:
-* `onStart` is called with the `totalSize` parameter that holds the size of the update file.
-* `onProgress` is called multiple times with status `DOWNLOAD_IN_PROGRESS`, `totalSize`, and `completedSize` (the volume that is downloaded so far).
-* `onProgress` is called with status `UNZIP_IN_PROGRESS`.
-* `onFinish` is called with one of the following final status codes:
+在直接更新进程期间，根据以下规则启动侦听器方法：
+* 使用包含更新文件大小的 `totalSize` 参数调用 `onStart`。
+* 多次调用 `onProgress`，状态为 `DOWNLOAD_IN_PROGRESS`、`totalSize` 和 `completedSize`（迄今为止下载的卷）。
+* 调用 `onProgress`，状态为 `UNZIP_IN_PROGRESS`。
+* 调用 `onFinish`，具有以下最终状态码之一：
 
-| Status code | Description |
+| 状态码 | 描述 |
 |-------------|-------------|
-| `SUCCESS` | Direct update finished with no errors. |
-| `CANCELED` | Direct update was canceled (for example, because the `stop()` method was called). |
-| `FAILURE_NETWORK_PROBLEM` | There was a problem with a network connection during the update. |
-| `FAILURE_DOWNLOADING` | The file was not downloaded completely. |
-| `FAILURE_NOT_ENOUGH_SPACE` | There is not enough space on the device to download and unpack the update file. |
-| `FAILURE_UNZIPPING` | There was a problem unpacking the update file. |
-| `FAILURE_ALREADY_IN_PROGRESS` | The start method was called while direct update was already running. |
-| `FAILURE_INTEGRITY` | Authenticity of update file cannot be verified. |
-| `FAILURE_UNKNOWN` | Unexpected internal error. |
+| `SUCCESS` | 完成直接更新，不含任何错误。 |
+| `CANCELED` | 已取消直接更新（例如，因为已调用 `stop()` 方法）。 |
+| `FAILURE_NETWORK_PROBLEM` | 更新期间网络连接存在问题。 |
+| `FAILURE_DOWNLOADING` | 未完整下载该文件。 |
+| `FAILURE_NOT_ENOUGH_SPACE` | 设备上没有足够的空间用于下载并解压缩更新文件。 |
+| `FAILURE_UNZIPPING` | 解压缩更新文件期间出现问题。 |
+| `FAILURE_ALREADY_IN_PROGRESS` | 已运行直接更新时，调用了 start 方法。 |
+| `FAILURE_INTEGRITY` | 无法验证更新文件的真实性。 |
+| `FAILURE_UNKNOWN` | 发生意外的内部错误。 |
 
-If you implement a custom direct update listener, you must ensure that the app is reloaded when the direct update process is complete and the `onFinish()` method has been called. You must also call `wl_directUpdateChalengeHandler.submitFailure()` if the direct update process fails to complete successfully.
+如果实现定制的直接更新侦听器，必须确保当直接更新进程已完成并且已调用 `onFinish()` 方法时，将重新装入该应用程序。如果直接更新进程未能成功完成，那么还必须调用 `wl_directUpdateChalengeHandler.submitFailure()`。
 
-The following example shows an implementation of a custom direct update listener:
+以下示例显示定制的直接更新侦听器的实现：
 
 ```javascript
 var directUpdateCustomListener = {
@@ -217,23 +216,25 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-### Scenario: Running UI-less direct updates
+### 场景：运行无 UI 的直接更新
 {: scenario-running-ui-less-direct-updates }
-{{ site.data.keys.product_full }} supports UI-less direct update when the application is in the foreground.
+{{ site.data.keys.product_full }} 支持在前台运行应用程序时进行无 UI 的直接更新。
 
-To run UI-less direct updates, implement `directUpdateCustomListener`. Provide empty function implementations to the `onStart` and `onProgress` methods. Empty implementations cause the direct update process to run in the background.
+要运行无 UI 的直接更新，请实施 `directUpdateCustomListener`。
+向 `onStart` 和 `onProgress` 方法提供空的函数实现。
+空的实现会导致在后台运行直接更新进程。
 
-To complete the direct update process, the application must be reloaded. The following options are available:
-* The `onFinish` method can be empty as well. In this case, direct update will apply after the application has restarted.
-* You can implement a custom dialog that informs or requires the user to restart the application. (See the following example.)
-* The `onFinish` method can enforce a reload of the application by calling `WL.Client.reloadApp()`.
+要完成直接更新进程，必须重新装入该应用程序。提供了以下选项：
+* `onFinish` 方法也可以为空。在此情况下，重新启动应用程序后将应用直接更新。
+* 您可以实现定制对话框，通知或要求用户重新启动该应用程序。（请参阅以下示例。）
+* `onFinish` 方法可通过调用 `WL.Client.reloadApp()` 来强制重新装入该应用程序。
 
-Here is an example implementation of `directUpdateCustomListener`:
+以下是 `directUpdateCustomListener` 的实现示例：
 
 ```javascript
 var directUpdateCustomListener = {
   onStart: function(totalSize){
-  },
+},
   onProgress: function(status,totalSize,completeSize){
   },
   onFinish: function(status){
@@ -245,7 +246,8 @@ var directUpdateCustomListener = {
 };
 ```
 
-Implement the `wl_directUpdateChallengeHandler.handleDirectUpdate` function. Pass the `directUpdateCustomListener` implementation that you have created as a parameter to the function. Make sure `directUpdateContext.start(directUpdateCustomListener`) is called. Here is an example `wl_directUpdateChallengeHandler.handleDirectUpdate` implementation:
+实现 `wl_directUpdateChallengeHandler.handleDirectUpdate` 函数。
+将您已创建的 `directUpdateCustomListener` 实现作为参数传递至该函数。确保已调用 `directUpdateContext.start(directUpdateCustomListener`)。以下是 `wl_directUpdateChallengeHandler.handleDirectUpdate` 实现示例：
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext){
@@ -254,19 +256,19 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-**Note:** When the application is sent to the background, the direct-update process is suspended.
+**注：**在将应用程序发送到后台时，将暂挂直接更新过程。
 
-### Scenario: Handling a direct update failure
+### 场景：处理直接更新失败情况
 {: #scenario-handling-a-direct-update-failure }
-This scenario shows how to handle a direct update failure that might be caused, for example, by loss of connectivity. In this scenario, the user is prevented from using the app even in offline mode. A dialog is displayed offering the user the option to try again.
+此场景显示了如何处理由连接中断等问题可能导致的直接更新失败情况。在此场景中，会阻止用户使用应用程序，甚至是在脱机方式下。显示了一个对话框，为用户提供重试选项。
 
-Create a global variable to store the direct update context so that you can use it subsequently when the direct update process fails. For example:
+创建一个全局变量以存储直接更新上下文，以便稍后在直接更新进程失败时可使用该上下文。例如：
 
 ```javascript
 var savedDirectUpdateContext;
 ```
 
-Implement a direct update challenge handler. Save the direct update context here. For example:
+实现直接更新验证问题处理程序。在此处保存直接更新上下文。例如：
 
 ```javascript
 wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, directUpdateContext){
@@ -285,7 +287,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 };
 ```
 
-Create a function that starts the direct update process by using the direct update context. For example:
+创建一个函数，此函数使用直接更新上下文来启动直接更新进程。例如：
 
 ```javascript
 restartDirectUpdate = function () {
@@ -293,7 +295,8 @@ restartDirectUpdate = function () {
 };
 ```
 
-Implement `directUpdateCustomListener`. Add status checking in the `onFinish` method. If the status starts with "FAILURE", open a modal only dialog with the option "Try Again". For example:
+实现 `directUpdateCustomListener`。
+在 `onFinish` 方法中添加状态检查。如果状态以“FAILURE”开头，请使用选项“重试”打开仅模态对话框。例如：
 
 ```javascript
 var directUpdateCustomListener = {
@@ -316,34 +319,33 @@ var directUpdateCustomListener = {
 };
 ```
 
-When the user clicks the **Try Again** button, the application restarts the direct update process.
+当用户单击**重试**按钮时，该应用程序将重新启动直接更新进程。
 
-## Delta and Full Direct Update
+## 增量和完全直接更新
 {: #delta-and-full-direct-update }
-Delta Direct Updates enables an application to download only the files that were changed since the last update instead of the entire web resources of the application. This reduces download time, conserves bandwidth, and improves overall user experience.
+增量直接更新支持应用程序仅下载自上次更新以来更改的文件，而不是应用程序的整个 Web 资源。这可减少下载时间、节约带宽并提高整体用户体验。
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** A **delta update** is possible only if the client application's web resources are one version behind the application that is currently deployed on the server. Client applications that are more than one version behind the currently deployed application (meaning the application was deployed to the server at least twice since the client application was updated), receive a **full update** (meaning that the entire web resources are downloaded and updated).
-
-## Secure Direct Update
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要信息：**仅在客户机应用程序的 Web 资源是当前在服务器上部署的应用程序之后的一个版本时，**增量更新**才可用。在当前已部署的应用程序之后有多个版本（意味着自更新客户机应用程序以后至少将应用程序部署到服务器两次）的客户机应用程序接收**完全更新**（意外着将下载和更新整个 Web 资源）。
+## 安全直接更新
 {: secure-direct-update }
-Disabled by default, Secure Direct Update prevents a 3rd-party attacker from altering the web resources that are transmitted from the {{ site.data.keys.mf_server }} (or from a Content Delivery Network (CDN)) to the client application.
+缺省情况下禁用安全直接更新，此类直接更新将阻止第三方攻击者更改从 {{ site.data.keys.mf_server }}（或来自内容交付网络 (CDN))）传输到客户机应用程序的 Web 资源。
 
-**To enable Direct Update authenticity:**  
-Using a preferred tool, extract the public key from the {{ site.data.keys.mf_server }} keystore and convert it to base64.  
-The produced value should then be used as instructed below:
+**要启用直接更新真实性：**  
+使用首选工具，从 {{ site.data.keys.mf_server }} 密钥库抽取公用密钥并将其转换为 base64。  
+然后，应按如下所示使用生成的值：
 
-1. Open a **Command-line** window and navigate to the root of the Cordova project.
-2. Run the command: `mfpdev app config` and select the "Direct Update Authenticity public key" option.
-3. Provide the public key and confirm.
+1. 打开**命令行**窗口并浏览至 Cordova 项目的根文件夹。
+2. 运行命令 `mfpdev app config` 并选择“直接更新真实性公用密钥”选项。
+3. 提供公用密钥并确认。
 
-Any future Direct Update deliveries to client applications will be protected by Direct Update authenticity.
+直接更新真实性将保护未来到客户机应用程序的任何直接更新交付。
 
-> To configure the application server with the updated keystore file, see [Implementing secure Direct Update](secure-direct-update)
+> 要使用更新的密钥库文件配置应用程序服务器，请参阅[实施安全直接更新](secure-direct-update)
 
-## Sample application
+## 示例应用程序
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) the Cordova project.  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/CustomDirectUpdate/tree/release80) Cordova 项目。  
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+遵循样本的 README.md 文件以获取指示信息。

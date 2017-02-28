@@ -11,13 +11,13 @@ weight: 2
 
 #### 跳至：
 {: #jump-to }
-* [扫描现有 {{ site.data.keys.product_adj }}    本机 iOS 应用程序以准备版本升级](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade)
+* [扫描现有 {{ site.data.keys.product_adj }} 本机 iOS 应用程序以准备版本升级](#scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade)
 * [手动迁移现有 iOS 项目](#migrating-an-existing-ios-project-manually)
 * [使用 CocoaPods 迁移现有本机 iOS 项目](#migrating-an-existing-native-ios-project-with-cocoapods)
 * [在 iOS 中迁移加密](#migrating-encryption-in-ios)
 * [更新 iOS 代码](#updating-the-ios-code)
 
-## 扫描现有 {{ site.data.keys.product_adj }}    本机 iOS 应用程序以准备版本升级
+## 扫描现有 {{ site.data.keys.product_adj }} 本机 iOS 应用程序以准备版本升级
 {: #scanning-existing-mobilefirst-native-ios-apps-to-prepare-for-a-version-upgrade }
 迁移辅助工具可帮助您准备通过 IBM MobileFirst™ Platform Foundation 先前版本创建的应用程序以执行迁移，方法是扫描本机 iOS 应用程序（使用 Swift 或 Objective-C 开发）的源并生成 V8.0 中不推荐使用或停用的 API 的报告。
 
@@ -28,13 +28,13 @@ weight: 2
 * 您必须已安装 node.js V4.0.0 或更高版本。
 * 查看并了解迁移过程的限制。有关更多信息，请参阅[从先前发行版迁移应用程序](../)。
 
-对于使用 IBM MobileFirst Platform Foundation 的先前版本创建的应用程序，在未进行一些更改的情况下在 {{ site.data.keys.product }}    8.0 中不受支持。迁移辅助工具通过扫描现有版本应用程序中的源文件，识别 V8.0 中不推荐使用、不再支持或修改的 API，从而简化此过程。
+对于使用 IBM MobileFirst Platform Foundation 的先前版本创建的应用程序，在未进行一些更改的情况下在 {{ site.data.keys.product }} 8.0 中不受支持。迁移辅助工具通过扫描现有版本应用程序中的源文件，识别 V8.0 中不推荐使用、不再支持或修改的 API，从而简化此过程。
 
 迁移辅助工具不会修改或移动应用程序的任何开发人员代码或注释。
 
 1. 通过使用以下其中一种方法下载迁移辅助工具：
     * 从 [Jazzhub 存储库](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool)下载 .tgz 文件。
-    * 从 {{ site.data.keys.mf_console }}    下载{{ site.data.keys.mf_dev_kit }}   ，其中包含名为 **mfpmigrate-cli.tgz** 的迁移辅助工具文件。
+    * 从 {{ site.data.keys.mf_console }} 下载{{ site.data.keys.mf_dev_kit }}，其中包含名为 **mfpmigrate-cli.tgz** 的迁移辅助工具文件。
 2. 安装迁移辅助工具。
     * 切换到下载工具的目录。
     * 通过输入以下命令，使用 NPM 安装该工具：
@@ -59,19 +59,19 @@ weight: 2
 
 ## 手动迁移现有 iOS 项目
 {: #migrating-an-existing-ios-project-manually }
-在 Xcode 项目中手动迁移现有本机 iOS 项目，并继续使用 {{ site.data.keys.product }}    V8.0 进行开发。
+在 Xcode 项目中手动迁移现有本机 iOS 项目，并继续使用 {{ site.data.keys.product }} V8.0 进行开发。
 
 在开始之前，您必须：
 
 * 在 Xcode 7.0 (iOS 9) 或更高版本中工作。
 * 具有使用 IBM MobileFirst Platform Foundation 6.2.0 或更高版本创建的现有本机 iOS 项目。
-* 对 V8.0.0 {{ site.data.keys.product_adj }}    iOS SDK 文件副本具有访问权。
+* 对 V8.0.0 {{ site.data.keys.product_adj }} iOS SDK 文件副本具有访问权。
 
 1. 在**构建阶段**部分的**将二进制与库进行链接**选项卡中删除对静态库 **libWorklightStaticLibProjectNative.a** 的所有现有引用。
 2. 从 **WorklightAPI** 文件夹中删除 Headers 文件夹。
 3. 在**构建阶段**部分中，链接**将二进制与库进行链接**选项卡中的主要必需框架 **IBMMobileFirstPlatformFoundation.framework** 文件。
 
-    此框架提供核心 {{ site.data.keys.product_adj }}    功能。同样，您可以[针对可选功能添加其他框架](../../../application-development/sdk/ios/#manually-adding-the-mobilefirst-native-sdk)。
+    此框架提供核心 {{ site.data.keys.product_adj }} 功能。同样，您可以[针对可选功能添加其他框架](../../../application-development/sdk/ios/#manually-adding-the-mobilefirst-native-sdk)。
 
 4. 与前面的步骤类似，在**构建阶段**选项卡的**将二进制与库进行链接**部分中将以下资源链接到您的项目。
     * SystemConfiguration.framework
@@ -82,7 +82,7 @@ weight: 2
         * libz.tbd
         * libc++.tbd
 5. 将 **$(SRCROOT)/WorklightAPI/include** 从头文件搜索路径中除去。
-6. 使用以下新保护伞头文件这一单个条目替换头文件的所有现有 {{ site.data.keys.product_adj }}    导入：
+6. 使用以下新保护伞头文件这一单个条目替换头文件的所有现有 {{ site.data.keys.product_adj }} 导入：
     * Objective-C： 
 
       ```objc
@@ -94,7 +94,7 @@ weight: 2
       import IBMMobileFirstPlatformFoundation
       ```
         
-现已升级您的应用程序，它可与 {{ site.data.keys.product }}    V8.0 iOS SDK 配合使用。
+现已升级您的应用程序，它可与 {{ site.data.keys.product }} V8.0 iOS SDK 配合使用。
 
 #### 后续步骤
 {: #what-to-do-next }
@@ -102,9 +102,9 @@ weight: 2
 
 ## 使用 CocoaPods 迁移现有本机 iOS 项目
 {: #migrating-an-existing-native-ios-project-with-cocoapods }
-您可以通过使用 CocoaPods 获取 {{ site.data.keys.product }}    iOS SDK 并在项目配置中进行更改，从而迁移现有的本机 iOS 项目以与 V8.0 配合工作。
+您可以通过使用 CocoaPods 获取 {{ site.data.keys.product }} iOS SDK 并在项目配置中进行更改，从而迁移现有的本机 iOS 项目以与 V8.0 配合工作。
 
-> **注：**从 V7.1 起，在 Xcode 中支持使用 iOS 8.0 和更高版本进行 {{ site.data.keys.product_adj }}    开发。
+> **注：**从 V7.1 起，在 Xcode 中支持使用 iOS 8.0 和更高版本进行 {{ site.data.keys.product_adj }} 开发。
 
 您必须具有：
 
@@ -121,7 +121,7 @@ SDK 包含必需和可选 SDK。每个必需或可选 SDK 具有其自己的 pod
 |-----|---------|
 | IBMMobileFirstPlatformFoundationPush | 添加用于启用推送的 IBMMobileFirstPlatformFoundationPush 框架。 | 
 | IBMMobileFirstPlatformFoundationJSONStore | 实施 JSONStore 功能部件。如果计划在应用程序中使用 JSONStore 功能，请在 Podfile 中包含此 pod。 |
-| IBMMobileFirstPlatformFoundationOpenSSLUtils | 包含 {{ site.data.keys.product_adj }}    嵌入式 OpenSSL 功能并自动装入 openssl 框架。如果计划使用由 {{ site.data.keys.product_adj }}    提供的 OpenSSL，请在 Podfile 中包含此 pod。 |
+| IBMMobileFirstPlatformFoundationOpenSSLUtils | 包含 {{ site.data.keys.product_adj }} 嵌入式 OpenSSL 功能并自动装入 openssl 框架。如果计划使用由 {{ site.data.keys.product_adj }} 提供的 OpenSSL，请在 Podfile 中包含此 pod。 |
 
 1. 在 Xcode 中打开您的项目。
 2. 从 Xcode 项目中删除 **WorklightAPI** 文件夹（将其移至废纸篓）。
@@ -140,7 +140,7 @@ SDK 包含必需和可选 SDK。每个必需或可选 SDK 具有其自己的 pod
     * libstdc++.6.dylib
     * libz.dylib
 5. 关闭 Xcode。
-6. 从 CocoaPods 获取 {{ site.data.keys.product_adj }}    iOS SDK。要获取此 SDK，请完成以下步骤：
+6. 从 CocoaPods 获取 {{ site.data.keys.product_adj }} iOS SDK。要获取此 SDK，请完成以下步骤：
     * 在新 Xcode 项目所在位置打开**终端**。
     * 运行 `pod init ` 命令以创建 **Podfile** 文件。
     * 使用文本编辑器打开项目根目录中的 Podfile 文件。
@@ -162,7 +162,7 @@ SDK 包含必需和可选 SDK。每个必需或可选 SDK 具有其自己的 pod
       pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
       ```
         
-      > **注：**先前的语法将导入最新版本的 **IBMMobileFirstPlatformFoundation** pod。如果使用的不是最新版本的 {{ site.data.keys.product_adj }}   ，那么需要添加完整版本号，包括主版本号、次版本号和补丁号。补丁号的格式为 YYYYMMDDHH。例如，为导入 **IBMMobileFirstPlatformFoundation** pod 的特定补丁版本 8.0.2016021411，该行将如下所示：
+      > **注：**先前的语法将导入最新版本的 **IBMMobileFirstPlatformFoundation** pod。如果使用的不是最新版本的 {{ site.data.keys.product_adj }}，那么需要添加完整版本号，包括主版本号、次版本号和补丁号。补丁号的格式为 YYYYMMDDHH。例如，为导入 **IBMMobileFirstPlatformFoundation** pod 的特定补丁版本 8.0.2016021411，该行将如下所示：
 
       ```xml
       pod 'IBMMobileFirstPlatformFoundation', '8.0.2016021411'
@@ -177,9 +177,9 @@ SDK 包含必需和可选 SDK。每个必需或可选 SDK 具有其自己的 pod
     * 验证 Xcode 项目是否已关闭。
     * 运行 ` pod install` 命令。
         
-    该命令会安装 {{ site.data.keys.product_adj }}    SDK **IBMMobileFirstPlatformFoundation.framework** 和 Podfile 及其依赖关系中指定的任何其他框架。
-然后该命令将生成 pods 项目，并且将客户机项目与  {{ site.data.keys.product_adj }}    SDK 集成。7. 通过从命令行输入 open **ProjectName.xcworkspace**，在 Xcode 中打开 **ProjectName.xcworkspace** 文件。该文件与 **ProjectName.xcodeproj** 文件位于同一目录中。
-8. 使用以下新保护伞头文件这一单个条目替换头文件的所有现有 {{ site.data.keys.product_adj }}    导入：
+    该命令会安装 {{ site.data.keys.product_adj }} SDK **IBMMobileFirstPlatformFoundation.framework** 和 Podfile 及其依赖关系中指定的任何其他框架。然后该命令将生成 pods 项目，并且将客户机项目与  {{ site.data.keys.product_adj }} SDK 集成。
+7. 通过从命令行输入 open **ProjectName.xcworkspace**，在 Xcode 中打开 **ProjectName.xcworkspace** 文件。该文件与 **ProjectName.xcodeproj** 文件位于同一目录中。
+8. 使用以下新保护伞头文件这一单个条目替换头文件的所有现有 {{ site.data.keys.product_adj }} 导入：
     
    **Objective-C**
     
@@ -195,7 +195,7 @@ SDK 包含必需和可选 SDK。每个必需或可选 SDK 具有其自己的 pod
     
    如果使用的是推送或 JSONStore，那么需要包含独立导入。
 
- #### 推送
+    #### 推送
    {: #push }
     
    **Objective-C**
@@ -232,7 +232,7 @@ SDK 包含必需和可选 SDK。每个必需或可选 SDK 具有其自己的 pod
 10. 从 Xcode 7 开始，必须实施 TLS，请参阅“在 iOS 应用程序中实施 TLS 安全连接”。  
 
 <br/>
-现已升级您的应用程序，它可与 {{ site.data.keys.product }}    V8.0 iOS SDK 配合使用。
+现已升级您的应用程序，它可与 {{ site.data.keys.product }} V8.0 iOS SDK 配合使用。
 
 #### 后续步骤
 {: #what-to-do-next }
@@ -251,23 +251,23 @@ SDK 包含必需和可选 SDK。每个必需或可选 SDK 具有其自己的 pod
 
 | API 元素 | 迁移路径 | 
 |-------------|----------------|
-| {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClient purgeEventTransmissionBuffer]</code></li></ul>{:/} | 已除去地理定位。使用本机 iOS 或第三方软件包进行地理定位。 |
+| {::nomarkdown}<ul><li><code>[WLClient getWLDevice][WLClient transmitEvent:]</code></li><li><code>[WLClient setEventTransmissionPolicy]</code></li><li><code>[WLClientpurgeEventTransmissionBuffer]</code></li></ul>{:/} | 已除去地理定位。使用本机 iOS 或第三方软件包进行地理定位。 |
 | {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | 无替换。 | 
 | `WL.Client.deleteUserPref(key, options)` | 无替换。您可以使用适配器和 [`MFP.Server.getAuthenticatedUser`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser:) API 来管理用户首选项。 | 
 | `[WLClient getRequiredAccessTokenScopeFromStatus]` | 使用 [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:)。 | 
 | `[WLClient login:withDelegate:]` | 使用 [`WLAuthorizationManager login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/login:withCredentials:withCompletionHandler:)。 | 
 | `[WLClient logout:withDelegate:]` | 使用 [`WLAuthorizationManager logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/logout:withCompletionHandler:)。 | 
-| {::nomarkdown}<ul><li><code>[WLClient lastAccessToken]</code></li><li><code>[WLClient lastAccessTokenForScope:]</code></li></ul>{:/} | 使用 [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:)。 | 
+| {::nomarkdown}<ul><li><code>[WLClient lastAccessToken]</code></li><li><code>[WLClientlastAccessTokenForScope:]</code></li></ul>{:/} | 使用 [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:)。 | 
 | {::nomarkdown}<ul><li><code>[WLClient obtainAccessTokenForScope:withDelegate:]</code></li><li><code>[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]</code></li></ul>{:/} | 使用 [`WLAuthorizationManager obtainAccessTokenForScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLAuthorizationManager.html?view=kc#//api/name/obtainAccessTokenForScope:withCompletionHandler:)。 |
-| `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString *) eventSource` | 使用来自 IBMMobileFirstPlatformFoundationPush 框架的 [iOS 应用程序的 Objective-C 客户端推送 API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps)。 |
+| `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString*) eventSource` | 使用来自 IBMMobileFirstPlatformFoundationPush 框架的 [iOS 应用程序的 Objective-C 客户端推送 API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps)。 |
 | `[WLClient - (int) getEventSourceIDFromUserInfo: (NSDictionary *) userInfo]` | 使用来自 IBMMobileFirstPlatformFoundationPush 框架的 [iOS 应用程序的 Objective-C 客户端推送 API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_objc_push_api_native_ios_apps.html?view=kc#nativeobjective-capiforandroidapps)。 |
 | `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | 不推荐使用。改用 [`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:)。 |
 | `[WLClient sendUrlRequest:delegate:]` | 改用 [`[WLResourceRequest sendWithDelegate:delegate]`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc#/api/name/sendWithDelegate:)。 |
 | `[WLClient (void) logActivity:(NSString *) activityType]`	| 已除去。使用 Objective C 记录器。 | 
-| {::nomarkdown}<ul><li><code>[WLSimpleDataSharing setSharedToken: myName value: myValue]</code></li><li><code>[WLSimpleDataSharing getSharedToken: myName]]</code></li><li><code>[WLSimpleDataSharing clearSharedToken: myName]</code></li></ul>{:/} | 使用 OS API 在应用程序之间共享令牌。 | 
+| {::nomarkdown}<ul><li><code>[WLSimpleDataSharing setSharedToken: myName value:myValue]</code></li><li><code>[WLSimpleDataSharing getSharedToken:myName]]</code></li><li><code>[WLSimpleDataSharing clearSharedToken:myName]</code></li></ul>{:/} | 使用 OS API 在应用程序之间共享令牌。 | 
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | 使用 [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/BaseChallengeHandler.html?view=kc)。 | 
 | `BaseProvisioningChallengeHandler` | 无替换。设备供应现在由安全框架自动处理。 | 
-| `ChallengeHandler` | 对于定制网关验证问题，请使用 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题，请使用 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。| 
+| `ChallengeHandler` | 对于定制网关验证问题，请使用 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。| 
 | `WLChallengeHandler` | 使用 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。 | 
 | `ChallengeHandler.isCustomResponse()` | 使用 [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc)。 | 
-| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc)。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。 | 
+| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 [`GatewayChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/GatewayChallengeHandler.html?view=kc)。对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 [`SecurityCheckChallengeHandler`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/SecurityCheckChallengeHandler.html?view=kc)。 | 

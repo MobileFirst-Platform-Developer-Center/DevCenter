@@ -1,19 +1,18 @@
 ---
 layout: tutorial
-title: Logging in iOS Applications
-breadcrumb_title: Logging in iOS
+title: 登录 iOS 应用程序
+breadcrumb_title: 登录 iOS
 relevantTo: [ios]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-This tutorial provides the required code snippets in order to add logging capabilities in iOS applications.
+此教程提供必需的代码片段，以在 iOS 应用程序中添加日志记录功能。
 
-**Prerequisite:** Make sure to read the [overview of client-side log collection](../).
+**先决条件：**确保阅读[客户端日志收集的概述](../)。
 
-> **Note:** Using `OCLogger` in Swift requires creating an `OCLogger` extension class (this class can be a separate Swift file, or an extension to your current Swift file):
-
+> **注：**在 Swift 中使用 `OCLogger` 需要创建 `OCLogger` 扩展类（此类可以是单独的 Swift 文件，或者当前 Swift 文件的扩展）：
 ```swift
 extension OCLogger {
     //Log methods with no metadata
@@ -78,15 +77,13 @@ extension OCLogger {
 }
 ```
 
-After including the extension class you may now use `OCLogger` in Swift.
+在包含扩展类后，您现在可以在 Swift 中使用 `OCLogger`。
 
-## Enabling log capture
+## 启用日志捕获
 {: #enabling-log-capture }
-By default, log capture is enabled. Log capture saves logs to the client, and can be enabled or disabled programmatically. Logs are sent to the server with an explicit send call, or with auto log.
+缺省情况下，已启用日志捕获。日志捕获将日志保存到客户机，并且可以编程方式启用或禁用。使用显式发送调用或自动日志将日志发送到服务器。
 
-> **Note:** Enabling log capture at verbose levels can impact the consumption of the device CPU, file system space, and the size of the payload when the client sends logs over the network.
-
-To disable log capturing:
+> **注：**按详细级别启用日志捕获可能在客户机通过网络发送日志时影响设备 CPU 使用、文件系统空间和有效内容大小。要禁用日志捕获：
 
 **Objective-C**
 
@@ -100,13 +97,11 @@ To disable log capturing:
 OCLogger.setCapture(false);
 ```
 
-## Sending captured logs
+## 发送捕获的日志
 {: #sending-captured-logs }
-Send logs to the {{ site.data.keys.product_adj }} according to your application's logic. Auto log send can also be enabled to automatically send logs. If logs are not sent before the maximum size is reached, the log file is then purged in favor of newer logs.
+根据应用程序逻辑，将日志发送到 {{ site.data.keys.product_adj }}。也可启用自动日志发送以自动发送日志。如果在达到最大大小后才发送日志，那么将清除日志文件以容纳更新的日志。
 
-> **Note:** Adopt the following pattern when you collect log data. Sending data periodically ensures that you are seeing your log data in near real-time in the {{ site.data.keys.mf_analytics_console }}.
-
-**Objective-C**
+> **注：**收集日志数据时，采用以下模式。定期发送数据可确保您在 {{ site.data.keys.mf_analytics_console }} 中近实时地查看日志数据。**Objective-C**
 
 ```objc
 [NSTimer scheduledTimerWithTimeInterval:60
@@ -126,11 +121,11 @@ var timer = NSTimer.scheduledTimerWithTimeInterval(60,
   repeats: true)
 ```
 
-To ensure that all captured logs are sent, consider one of the following strategies:
+要确保发送所有捕获的日志，请考虑以下策略之一：
 
-* Call the `send` method at a time interval.
-* Call the `send` method from within the app lifecycle event callbacks.
-* Increase the max file size of the persistent log buffer (in bytes):
+* 按时间间隔调用 `send` 方法。
+* 从应用程序生命周期事件回调中调用 `send` 方法。
+* 增加持久性日志缓冲区的最大文件大小（字节）：
 
 **Objective-C**
 
@@ -145,19 +140,19 @@ To ensure that all captured logs are sent, consider one of the following strateg
 OCLogger.setMaxFileSize(150000);
 ```
 
-## Auto log sending
+## 自动日志发送
 {: #auto-log-sending }
-By default, auto log send is enabled. Each time a successful resource request is sent to the server, the captured logs are also sent, with a 60-second minimum interval between sends. Auto log send can be enabled or disabled from the client. By default auto log send is enabled.
+缺省情况下，启用自动日志发送。每次将成功的资源请求发送到服务器后，也将发送捕获的日志，并且发送之间存在 60 秒最小时间间隔。可以从客户机启用或禁用自动日志发送。缺省情况下，启用自动日志发送。
 
 **Objective-C**
 
-To enable:
+要启用：
 
 ```objc
 [OCLogger setAutoSendLogs:YES];
 ```
 
-To disable:
+要禁用：
 
 ```objc
 [OCLogger setAutoSendLogs:NO];
@@ -165,59 +160,62 @@ To disable:
 
 **Swift**
 
-To enable:
+要启用：
 
 ```swift
 OCLogger.setAutoSendLogs(true);
 ```
 
-To disable:
+要禁用：
 
 ```swift
 OCLogger.setAutoSendLogs(false);
 ```
 
-## Fine-tuning with the Logger API
+## 使用记录器 API 微调
 {: #fine-tuning-with-the-logger-api }
-The {{ site.data.keys.product_adj }} client SDK makes internal use of the Logger API. By default, you are capturing log entries made by the SDK. To fine-tune log collection, use logger instances with package names. You can also control which logging level is captured by the analytics using server-side filters.
+{{ site.data.keys.product_adj }} 客户机 SDK 内部使用记录器 API。缺省情况下，您将捕获 SDK 生成的日志条目。要微调日志集合，请结合使用记录器实例和程序包名。您还可以使用服务器端过滤器来控制由分析捕获哪个日志记录级别。
 
 ### Objective-C
 {: #objective-c}
-As an example of capturing logs only where the level is `ERROR` for the `myApp` package name, follow these steps.
+要仅捕获 `myApp` 程序包名的级别为 `ERROR` 的日志，请遵循示例中的以下步骤。
 
-1. Use a `logger` instance with the `myApp` package name.
+1. 结合使用 `logger` 实例和 `myApp` 程序包名。
 
    ```objc
    OCLogger *logger = [OCLogger getInstanceWithPackage:@"MyApp"];
    ```
 
-2. **Optional:** Specify a filter to restrict log capture and log output to only the specified level and package programmatically.
+2. **可选：**指定过滤器，以编程方式将日志捕获和日志输出仅限制于指定的级别和程序包。
 
    ```objc
    [OCLogger setFilters:@{@"MyApp": @(OCLogger_ERROR)}];
    ```
 
-3. **Optional:** Control the filters remotely by fetching a server configuration profile.
+3. **可选：**通过访存服务器配置概要文件，远程控制过滤器。
 
 ### Swift
 {: #swift }
-1. Using the extension as explained in the Overview, create a logger instance for  your package.
+1. 如“概述”中所述使用扩展，为程序包创建记录器实例。
 
    ```swift
    let logger : OCLogger = OCLogger.getInstanceWithPackage("MyTestLoggerPackage");
    ```
 
-2. **Optional:** Specify a logging level.
+2. **可选：**指定日志记录级别。
 
    ```swift
    OCLogger.setLevel(OCLogger_DEBUG);
    ```
 
-3. **Optional:** Control the filters remotely by fetching a server configuration profile.
+3. **可选：**通过访存服务器配置概要文件，远程控制过滤器。
 
-## Fetching server configuration profiles
+## 访存服务器配置概要文件
 {: #fetching-server-configuration-profiles }
-Logging levels can be set by the client, or by retrieving configuration profiles from the server. From the {{ site.data.keys.mf_analytics_console }}, a log level can be set globally (all logger instances) or for a specific package or packages. For information on configuring the filter from the {{ site.data.keys.mf_analytics_console }}, see [Configuring log filters](../../../analytics/console/log-filters/). For the client to fetch the configuration from the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+可以通过客户机或通过从服务器中检索配置概要文件来设置日志记录级别。在
+{{ site.data.keys.mf_analytics_console }}
+中，可以全局（针对所有记录器实例）或针对一个或多个特定程序包设置日志级别。有关从 {{ site.data.keys.mf_analytics_console }} 配置过滤器的信息，请参阅[配置日志过滤器](../../../analytics/console/log-filters/)。
+为便于客户机从服务器访存配置，必须从定期运行的代码中某一位置调用 `updateConfigFromServer` 方法，例如，在应用程序生命周期回调中。
 
 **Objective-C**
 
@@ -231,9 +229,9 @@ Logging levels can be set by the client, or by retrieving configuration profiles
  OCLogger.updateConfigFromServer();
  ```
 
-## Logging example
+## 日志记录示例
 {: #logging-example }
-Outputs to a browser JavaScript console, LogCat, or Xcode console.
+输出到浏览器 JavaScript 控制台、LogCat 或 Xcode 控制台。
 
 #### Objective-C
 {: #objective-c-example }

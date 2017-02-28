@@ -6,56 +6,59 @@ show_children: true
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-The {{ site.data.keys.product_full }} **JSONStore** is an optional client-side API providing a lightweight, document-oriented storage system. JSONStore enables persistent storage of **JSON documents**. Documents in an application are available in JSONStore even when the device that is running the application is offline. This persistent, always-available storage can be useful to give users access to documents when, for example, there is no network connection available in the device.
+{{ site.data.keys.product_full }} **JSONStore** 是可选的客户机端 API，其提供轻量级、面向文档的存储系统。JSONStore 支持持久存储 **JSON 文档**。即使在运行应用程序的设备脱机时，应用程序中的文档在 JSONStore 中仍可用。此持久、始终可用的存储可用于授予用户对文档的访问权，例如，在设备中无网络连接时。
 
-![JSONStore feature workflow](jstore_workflow.jpg)
+![JSONStore 功能工作流程](jstore_workflow.jpg)
 
-Because it is familiar to developers, relational database terminology is used in this documentation at times to help explain JSONStore. There are many differences between a relational database and JSONStore however. For example, the strict schema that is used to store data in relational databases is different from JSONStore's approach. With JSONStore, you can store any JSON content, and index the content that you need to search.
+由于开发人员对此很熟悉，所以此文档中偶尔使用关系数据库术语以帮助说明 JSONStore。
+但是关系数据库和 JSONStore 之间有很多不同。例如，用于在关系数据库中存储数据的严格模式与 JSONStore 方法不同。使用 JSONStore，您可以存储任何 JSON 内容并可对您需要搜索的内容建立索引。
 
-#### Key features
+#### 主要功能
 {: #key-features }
-* Data indexing for efficient searching
-* Mechanism for tracking local-only changes to the stored data
-* Support for multiple users
-* AES 256 encryption of stored data provides security and confidentiality. You can segment protection by user with password-protection, in the case of more than one user on a single device.
+* 用于提高搜索效率的数据索引
+* 用于跟踪对存储数据的仅本地更改的机制
+* 多用户支持
+* 对存储数据进行 AES 256 加密以提供安全性和机密性。如果单个设备上有多个用户，那么您可以利用密码保护按照用户进行分段保护。
 
-A single store can have many collections, and each collection can have many documents. It is also possible to have a {{ site.data.keys.product_adj }} application that contains multiple stores. For information, see JSONStore multiple user support.
+单个存储可以有多个集合，每个集合可有多个文档。还可以有包含多个存储的 {{ site.data.keys.product_adj }} 应用程序。有关信息，请参阅 JSONStore 多用户支持。
 
-#### Support level
+#### 支持级别
 {: #support-level }
-* JSONStore is supported in Native iOS and Android applications (no support for native Windows (Universal and UWP)).
-* JSONStore is supported in Cordova iOS, Android and Windows (Universal and UWP) applications.
+* 在本机 iOS 和 Android 应用程序中支持 JSONStore（对于本机 Windows（Universal 和 UWP）不支持）。
+* 在 Cordova iOS、Android 和 Windows（Universal 和 UWP）应用程序中支持 JSONStore。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
-* [General JSONStore terminology](#general-jsonstore-terminology)
-* [Features table](#features-table)
-* [Multiple User Support](#multiple-user-support)
-* [Security](#security)
-* [Performance](#performance)
-* [Concurrency](#concurrency)
-* [Analytics](#analytics)
-* [Working with External Data](#working-with-external-data)
-* [Troubleshooting](#troubleshooting)
-* [API Usage](#api-usage)
+* [常规 JSONStore 术语](#general-jsonstore-terminology)
+* [功能表](#features-table)
+* [多用户支持](#multiple-user-support)
+* [安全性](#security)
+* [性能](#performance)
+* [并行性](#concurrency)
+* [分析](#analytics)
+* [使用外部数据](#working-with-external-data)
+* [故障诊断](#troubleshooting)
+* [API 用法](#api-usage)
 
-## General JSONStore Terminology
+## 常规 JSONStore 术语
 {: #general-jsonstore-terminology }
-### Document
+### 文档
 {: #document }
-A document is the basic building block of JSONStore.
+文档是 JSONStore 的基本构建块。
 
-A JSONStore document is a JSON object with an automatically generated identifier (`_id`) and JSON data. It is similar to a record or a row in database terminology. The value of `_id` is always a unique integer inside a specific collection. Some functions like `add`, `replace`, and `remove` in the `JSONStoreInstance` class take an Array of Documents/Objects. These methods are useful to perform operations on various Documents/Objects at a time.
+JSONStore 文档是具有自动生成的标识 (`_id`) 和 JSON 数
+据的 JSON 对象。它类似于数据库术语中的记录或行。
+`_id` 的值始终是特定集合中的唯一整数。`JSONStoreInstance` 类中的某些函数（例如，`add`、`replace` 和 `remove`）可获取文档/对象数组。这些方法可用于一次在多个文档/对象上执行操作。
 
-**Single document**  
+**单个文档**  
 
 ```javascript
 var doc = { _id: 1, json: {name: 'carlos', age: 99} };
 ```
 
-**Array of documents**
+**文档数组**
 
 ```javascript
 var docs = [
@@ -64,10 +67,10 @@ var docs = [
 ]
 ```
 
-### Collection
+### 集合
 {: #collection }
-A JSONStore collection is similar to a table, in database terminology.  
-The below code example is not the way that the documents are stored on disk, but it is a good way to visualize what a collection looks like at a high level.
+JSONStore 集合类似于数据库术语中的表。  
+以下代码示例不是在磁盘上存储文档的方式，而是在较高级别查看集合概况的有效方法。
 
 ```javascript
 [
@@ -76,30 +79,32 @@ The below code example is not the way that the documents are stored on disk, but
 ]
 ```
 
-### Store
+### 存储区
 {: #store }
-A store is the persistent JSONStore file that contains one or more collections.  
-A store is similar to a relational database, in database terminology. A store is also referred to as a JSONStore.
+存储区是包含一个或多个集合的持久性 JSONStore 文件。  
+存储区类似于数据库术语中的关系数据库。存储区也称为 JSONStore。
 
-### Search fields
+### 搜索字段
 {: #search-fields }
-A search field is a key/value pair.  
-Search fields are keys that are indexed for fast lookup times, similar to column fields or attributes, in database terminology.
+搜索字段是键/值对。  
+搜索字段是为了快速查找而编制索引的关键字，与数据库术语中的列字段或属性类似。
 
-Extra search fields are keys that are indexed but that are not part of the JSON data that is stored. These fields define the key whose values (in the JSON collection) are indexed and can be used to search more quickly.
+额外的搜索字段是编制了索引的关键字，但并非存储的 JOSON 数据的一部分。这些字段定义了其值已经编制索引（在 JSON 集合中）的关键字，并且可以用于更加快速地进行搜索。
 
-Valid data types are: string, boolean, number, and integer. These types are only type hints, there is no type validation. Furthermore, these types determine how indexable fields are stored. For example, `{age: 'number'}` will index 1 as 1.0 and `{age: 'integer'}` will index 1 as 1.
+有效数据类型包括：字符串、布尔值、数字和整数。这些类型仅仅是类型提示，不会进行类型验证。
+此外，这些类型决定了如何存储可以编制索引的字段。
+例如，`{age: 'number'}` 将 1 编制为索引 1.0，`{age: 'integer'}` 将 1 编制为索引 1。
 
-**Search fields and extra search fields**
+**搜索字段和额外的搜索字段**
 
 ```javascript
 var searchField = {name: 'string', age: 'integer'};
 var additionalSearchField = {key: 'string'};
 ```
 
-It is only possible to index keys inside an object, not the object itself. Arrays are handled in a pass-through fashion, meaning that you cannot index an array or a specific index of the array (arr[n]), but you can index objects inside an array.
+只能针对对象内的索引键建立索引，而不是对象自身。数组将以传递方式进行处理，这意味着您无法编制数组的索引或编制数组 (arr[n]) 的特定索引，但可以针对数组内的对象编制索引。
 
-**Indexing values inside an array**
+**对数组内的值建立索引**
 
 ```javascript
 
@@ -116,154 +121,186 @@ var myObject = {
 };
 ```
 
-### Queries
+### 查询
 {: #queries }
-Queries are objects that use search fields or extra search fields to look for documents.  
-These examples presumes that the name search field is of type string and the age search field is of type integer.
+查询是使用搜索字段或额外的搜索字段来查找文档的对象。  
+这些示例假定 name 搜索字段为字符串类型并且 age 搜索字段为整数类型。
 
-**Find documents with `name` that matches `carlos`**
+**查找其“name”与“carlos”匹配的文档**
 
 ```javascript
 var query1 = {name: 'carlos'};
 ```
 
-**Find documents with `name` that matches ``carlos`` and `age` matches `99`**
+**查找其“name”与匹配“carlos”匹配且“age”与“99”匹配的文档**
 
 ```javascript
 var query2 = {name: 'carlos', age: 99};
 ```
 
-### Query parts
+### 查询部分
 {: #query-parts }
-Query parts are used to build more advanced searches. Some JSONStore operations, such as some versions of `find` or `count` take query parts. Everything within a query part is joined by `AND` statements, while query parts themselves are joined by `OR` statements. The search criteria returns a match only if everything within a query part is **true**. You can use more than one query part to search for matches that satisfy one or more of the query parts.
+查询部分用于构建更高级的搜索。某些 JSONStore 操作（例如，某些版本的 `find` 或
+`count`）生成查询部分。查询部分中的所有项都由
+`AND` 语句进行连接，而查询部分自身由
+`OR` 语句进行连接。
+仅在查询部分中的所有项为 **true** 时搜索条件才返回匹配项。您可以使用多个查询部分来搜索满足一个或多个查询部分的匹配项。
 
-Find with query parts operate only on top-level search fields. For example: `name`, and not `name.first`. Use multiple collections where all search fields are top-level to get around this. The query parts operations that work with non top-level search fields are: `equal`, `notEqual`, `like`, `notLike`, `rightLike`, `notRightLike`, `leftLike`, and `notLeftLike`. The behavior is undetermined if you use non-top-level search fields.
+使用查询部分进行查找仅作用于顶级搜索字段。例如：
+`name`，而不是 `name.first`。使用所有搜索字段都是顶级的多个集合来避开这点。处理非顶级搜索字段的查询部分操作为：`equal`、`notEqual`、`like`、`notLike`、`rightLike`、`notRightLike`、`leftLike` 和
+`notLeftLike`。如果使用非顶级搜索字段，那么行为不确定。
 
-## Features table
+## 功能表
 {: #features-table }
-Compare JSONStore features to those features of other data storage technologies and formats.
+比较 JSONStore 功能与其他数据存储技术和格式的功能。
 
-JSONStore is a JavaScript API for storing data inside Cordova applications that use the {{ site.data.keys.product_adj }} plug-in, an Objective-C API for native iOS applications, and a Java API for native Android applications. For reference, here is a comparison of different JavaScript storage technologies to see how JSONStore compares to them.
+JSONStore 是一个用于在使用 {{ site.data.keys.product_adj }} 插件的 Cordova 应用程序中存储数据的 JavaScript API，Objective-C API 用于本机 iOS 应用程序，Java API 用于本机 Android 应用程序。请参考以下不同 JavaScript 存储技术的比较，以了解 JSONStore 与它们相比有哪些不同。
 
-JSONStore is similar to technologies such as LocalStorage, Indexed DB, Cordova Storage API, and Cordova File API. The table shows how some features that are provided by JSONStore compare with other technologies. The JSONStore feature is only available on iOS and Android devices and simulators.
+JSONStore 类似于诸如 LocalStorage、Indexed DB、Cordova Storage API 和 Cordova File API 之类的技术。此表显示了 JSONStore 提供的某些功能与其他技术进行对比的结果。JSONStore 功能仅供 iOS 和 Android 设备和仿真程序使用。
 
-| Feature                                            | JSONStore      | LocalStorage | IndexedDB | Cordova storage API | Cordova file API |
+| 功能                                               | JSONStore      | LocalStorage | IndexedDB | Cordova Storage API | Cordova File API |
 |----------------------------------------------------|----------------|--------------|-----------|---------------------|------------------|
-| Android Support (Cordova &amp; Native Applications)|	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| iOS Support (Cordova & Native Applications)	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
-| Windows 8.1 Universal anND Windows 10 UWP          |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
-| Data encryption	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Maximum Storage	                                 |Available Space |    ~5MB     |   ~5MB 	 | Available Space	   | Available Space  |
-| Reliable Storage (See note)	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
-| Keep Track of Local Changes	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Multi-user support                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
-| Indexing	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
-| Type of Storage	                                 | JSON documents | Key/value pairs | JSON documents | Relational (SQL) | Strings     |
+| Android 支持（Cordova 和本机应用程序）             |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| iOS 支持（Cordova 和本机应用程序）           	     |	     ✔ 	      |      ✔	    |     ✔	     |        ✔	           |         ✔	      |
+| Windows 8.1 Universal 和 Windows 10 UWP            |	     ✔ 	      |      ✔	    |     ✔	     |        -	           |         ✔	      |
+| 数据加密         	                                 |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 最大存储         	                                 |可用空间       |    ~5MB    |   ~5MB   	 | 可用空间        	   | 可用空间        |
+| 可靠存储（请参阅注释）       	                     |	     ✔ 	      |      -	    |     -	     |        ✔	           |         ✔	      |
+| 跟踪本地更改                 	                     |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 多用户支持                                         |	     ✔ 	      |      -	    |     -	     |        -	           |         -	      |
+| 编制索引 	                                         |	     ✔ 	      |      -	    |     ✔	     |        ✔	           |         -	      |
+| 存储类型         	                                 | JSON 文档     | 键/值对    | JSON 文档  | 关系数据库 (SQL)    | 字符串          |
 
-**Note:** Reliable Storage means that your data is not deleted unless one of the following events occurs:
+**注：**可靠存储意味着除非发生以下某个事件，否则不会删除您的数据：
 
-* The application is removed from the device.
-* One of the methods that removes data is called.
+* 从设备上移除应用程序。
+* 调用移除数据的某种方法。
 
-## Multiple User Support	
+## 多用户支持	
 {: #multiple-user-support }
-With JSONStore, you can create multiple stores that contain different collections in a single {{ site.data.keys.product_adj }} application.
+借助 JSONStore，您可以在单个 {{ site.data.keys.product_adj }} 应用程序中创建包含不同集合的多个存储区。
 
-The init (JavaScript) or open (Native iOS and Native Android) API can take an options object with a user name. Different stores are separate files in the file system. The user name is used as the file name of the store. These separate stores can be encrypted with different passwords for security and privacy reasons. Calling the closeAll API removes access to all the collections. It is also possible to change the password of an encrypted store by calling the changePassword API.
+init (JavaScript) 或 open（本机 iOS 和本机 Android）API 可获取具有某个用户名的选项对象。不同的存储区是文件系统中的单独文件。用户名用作存储区的文件名。出于安全性和隐私的原因，这些单独存储区可以通过不同的密码进行加密。调用 closeAll API 将除去对所有集合的访问权。还可通过调用 changePassword API 来更改加密存储区的密码。
 
-An example use case would be various employees that share a physical device (for example an iPad or Android tablet) and {{ site.data.keys.product_adj }} application. In addition, if the employees work different shifts and handle private data from different customers while they use the {{ site.data.keys.product_adj }} application, multiple user support is useful.
+示例用例是共享物理设备（例如，iPad 或 Android 平板电脑）和 {{ site.data.keys.product_adj }} 应用程序的不同员工。此外，如果员工工作班次不同并且处理来自不同客户的隐私数据，那么在使用 {{ site.data.keys.product_adj }} 应用程序时，多用户支持非常有用。
 
-## Security
+## 安全性
 {: #security }
-You can secure all of the collections in a store by encrypting them.
+您可以加密存储区中的所有集合以确保其安全性。
 
-To encrypt all of the collections in a store, pass a password to the `init` (JavaScript) or `open` (Native iOS and Native Android) API. If no password is passed, none of the documents in the store collections are encrypted.
+要加密存储器中的所有集合，请将密码传递到 `init` (JavaScript) 或 `open`（本机 iOS 和本机 Android）API。如果未传递任何密码，那么存储器集合中的所有文档都不会加密。
 
-Some security artifacts (for example salt) are stored in the keychain (iOS), shared preferences (Android) and the credential locker (Windows Universal 8.1 and Windows 10 UWP). The store is encrypted with a 256-bit Advanced Encryption Standard (AES) key. All keys are strengthened with Password-Based Key Derivation Function 2 (PBKDF2). You can choose to encrypt data collections for an application, but you cannot switch between encrypted and plain-text formats, or to mix formats within a store.
+某些安全工件（例如，salt）存储在密钥链 (iOS)、共享首选项 (Android) 和凭据保险箱（Windows Universal 8.1 和 Windows 10 UWP）中。此存储区利用 256 位高级加密标准 (AES) 密钥进行加密。所有密钥通过基于密码的密钥派生功能 2 (PBKDF2) 进行增强。您可以选择针对应用程序加密数据集合，但是无法在已加密和明文格式之间进行切换，或者在存储区中混用两种格式。
 
-The key that protects the data in the store is based on the user password that you provide. The key does not expire, but you can change it by calling the changePassword API.
+用于保护存储区中数据的密钥基于您提供的用户密码。密钥不会到期，但是您可以通过调用 changePassword API 进行更改。
 
-The data protection key (DPK) is the key that is used to decrypt the contents of the store. The DPK is kept in the iOS keychain even if the application is uninstalled. To remove both the key in the keychain and everything else that JSONStore puts in the application, use the destroy API. This process is not applicable to Android because the encrypted DPK is stored in shared preferences and wiped out when the application is uninstalled.
+数据保护密钥 (DPK) 是用于解密存储器内容的密钥。DPK 保存在 iOS 密钥链中，即使应用程序已卸载也是如此。要移除密
+钥链中的密钥以及 JSONStore 放入应用程序中的任何项，请使用 destroy API。
+此过程不适用于 Android，因为加密的 DPK 存储在共享首选项中，并且会在卸载应用程序时擦除。
 
-The first time that JSONStore opens a collection with a password, which means that the developer wants to encrypt data inside the store, JSONStore needs a random token. That random token can be obtained from the client or from the server.
+JSONStore 第一次使用密码打开集合时，这意味着开发人员想要加密存储区中的数据，JSONStore 需要随机令牌。可以从客户机或服务器获取此随机令牌。
 
-When the localKeyGen key is present in the JavaScript implementation of the JSONStore API, and it has a value of true, a cryptographically secure token is generated locally. Otherwise, the token is generated by contacting the server, thus requiring connectivity to the {{ site.data.keys.mf_server }}. This token is required only the first time that a store is opened with a password. The native implementations (Objective-C and Java) generate a cryptographically secure token locally by default, or you can pass one through the secureRandom option.
+当 JSONStore API 的 JavaScript 实施中存在 localKeyGen 密钥并且具有值 true 时，将本地生成使用密码的安全令牌。否则，通过联系服
+务器生成令牌，因此需要 {{ site.data.keys.mf_server }} 连通性。
+仅在第一次使用密码打开存储器时需要此令牌。缺省情况下，本机实施（Objective-C 和 Java）本地生成使用密码的安全令
+牌，或者您可以通过 secureRandom 选项传递一个令牌。
 
-The trade-off is between opening a store offline and trusting the client to generate that random token (less secure), or opening the store with access to the {{ site.data.keys.mf_server }} (requires connectivity) and trusting the server (more secure).
+权衡以下两种方法，脱机打开存储区并信任客户机以生成此随机令牌（安全性较低），或者
+通过访问 {{ site.data.keys.mf_server }}（需要连通性）打开存储区并信任服务器（安全性较高）。
 
-### Security Utilities
+### 安全实用程序
 {: #security-utilities }
-The {{ site.data.keys.product_adj }} client-side API provides some security utilities to help protect your user's data. Features like JSONStore are great if you want to protect JSON objects. However, it is not recommended to store binary blobs in a JSONStore collection.
+{{ site.data.keys.product_adj }} 客户机端 API 提供以下安全实用程序来帮助保护用户数据。如果要保护 JSON 对象，那么诸如 JSONStore 之类的功能很有效。
+但是，不建议在 JSONStore 集合中存储二元 BLOB。
 
-Instead, store binary data on the file system, and store the file paths and other metadata inside a JSONStore collection. If you want to protect files like images, you can encode them as base64 strings, encrypt it, and write the output to disk. When it is time to decrypt the data, you can look up the metadata in a JSONStore collection, read the encrypted data from the disk, and decrypt it using the metadata that was stored. This metadata can include the key, salt, Initialization Vector (IV), type of file, path to the file, and others.
+应改为在文件系统上存储二元数据，并将文件路径和其他元数据存储在 JSONStore 集合内。如果要保护图像之类的文件，可以将其编码为 base64 字符串、对其加密，并将输出写入磁盘。要解密数据时，可以在 JSONStore 集合中查找元数据、从磁盘中读取加密数据，并使用存储的元数据来解密数据。此元数据可包括密钥、加密盐 (Salt)、初始化向量 (IV)、文件类型、到文件的路径等。
 
-> Learn more about [JSONStore Security Utilities](security-utilities).
+> 了解有关 [JSONStore 安全实用程序](security-utilities)的更多信息。
 
-### Windows 8.1 Universal and Windows 10 UWP encryption
+### Windows 8.1 Universal 和 Windows 10 UWP 加密
 {: #windows-81-universal-and-windows-10-uwp-encryption }
-You can secure all of the collections in a store by encrypting them.
+您可以加密存储区中的所有集合以确保其安全性。
 
-JSONStore uses [SQLCipher](http://sqlcipher.net/) as its underlying database technology. SQLCipher is a build of SQLite that is produced by Zetetic, LLC adds a layer of encryption to the database.
+JSONStore 使用
+[SQLCipher](http://sqlcipher.net/) 作为其底层数据库技术。SQLCipher 是由 Zetetic 生成的 SQLite 构建，LLC 会向数据库添加一个加密层。
 
-JSONStore uses SQLCipher on all platforms. On Android and iOS a free, open source version of SQLCipher is available, known as the Community Edition and is incorporated into the versions of JSONStore that is included in {{ site.data.keys.product }}. The Windows versions of SQLCipher are only available under a commercial license and cannot be directly redistributed by {{ site.data.keys.product }}.
+JSONStore 在所有平台上使用 SQLCipher。在 Android 和 iOS 上，提供免费的、开放式源代码版本的 SQLCipher，这也称为 Community Edition，其纳入 {{ site.data.keys.product }}
+中包含的 JSONStore 版本。
+只有获取商业许可才能使用 Windows 版本的 SQLCipher，并且 {{ site.data.keys.product }} 不得直接再分发。
 
-Instead, JSONStore for Windows 8 Universal include SQLite as the underlying database. If you need to encrypt data for either of these platforms, you need to acquire your own version of SQLCipher and swap out the SQLite version that is included in {{ site.data.keys.product }}.
+相反，JSONStore for Windows 8 Universal 包含 SQLite 作为底层数据库。如果需要加密其中一个平台的数据，您需要获
+取自己的 SQLCipher 版本并置换
+{{ site.data.keys.product }}
+中包含的 SQLite 版本。
 
-If you do not need encryption, the JSONStore is fully functional (minus encryption) by using the SQLite version in {{ site.data.keys.product }}.
 
-#### Replacing SQLite with SQLCipher for Windows Universal and Windows UWP
+如果不需要加密，那么通过使用
+{{ site.data.keys.product }}
+中的 SQLite 版本使 JSONStore 完全生效（除去加密）。
+
+#### 针对 Windows Universal 和 Windows UWP，将 SQLite 替换为 SQLCipher
 {: #replacing-sqlite-with-sqlcipher-for-windows-universal-and-windows-uwp }
-1. Run the SQLCipher for Windows Runtime 8.1/10 extension that comes with the SQLCipher for Windows Runtime Commercial Edition.
-2. After the extension finishes installing, locate the SQLCipher version of the **sqlite3.dll** file that was just created. There is one for x86, one for x64, and one for ARM.
+1. 运行 SQLCipher for Windows Runtime Commercial Edition 随附的 SQLCipher for Windows Runtime 8.1/10 扩展。
+2. 安装完扩展后，查找刚创建的 **sqlite3.dll** 文件的 SQLCipher 版本。分别存在针对 x86、x64 和 ARM 的版本。
 
    ```bash
    C:\Program Files (x86)\Microsoft SDKs\Windows\v8.1\ExtensionSDKs\SQLCipher.WinRT81\3.0.1\Redist\Retail\<platform>
    ```
     
-3. Copy and replace this file to your {{ site.data.keys.product_adj }} application.
+3. 将此文件复制到您的 {{ site.data.keys.product_adj }} 应用程序并进行替换。
 
    ```bash
    <Worklight project name>\apps\<application name>\windows8\native\buildtarget\<platform>
    ```
 
-## Performance
+## 效果
 {: #performance }
-The following are factors that can affect JSONStore performance.
+以下是可能会影响 JSONStore 性能的因素。
 
-### Network
+### 网络
 {: #network }
-* Check network connectivity before you perform operations, such as sending all dirty documents to an adapter.
-* The amount of data that is sent over the network to a client heavily affects performance. Send only the data that is required by the application, instead of copying everything inside your backend database.
-* If you are using an adapter, consider setting the compressResponse flag to true. That way, responses are compressed, which generally uses less bandwidth and has a faster transfer time than without compression.
+* 在执行操作（例如，将所有脏文档发送到适配器）之前检查网络连接。
+* 通过网络发送至客户机的数据量严重影响性能。只发送应用程序所需的数据，而不是复制后端数据库中的所有项。
+* 如果正在使用适配器，请考虑将 compressResponse 标记设置为 true。通过此方式压缩响应，与无压缩相比，通常这种方式所用带宽较少并且传输速度更快。
 
-### Memory
+### 内存
 {: #memory }
-* When you use the JavaScript API, JSONStore documents are serialized and deserialized as Strings between the Native (Objective-C, Java, or C#) Layer and the JavaScript Layer. One way to mitigate possible memory issues is by using limit and offset when you use the find API. That way, you limit the amount of memory that is allocated for the results and can implement things like pagination (show X number of results per page).
-* Instead of using long key names that are eventually serialized and deserialized as Strings, consider mapping those long key names into smaller ones (for example: `myVeryVeryVerLongKeyName` to `k` or `key`). Ideally, you map them to short key names when you send them from the adapter to the client, and map them to the original long key names when you send data back to the backend.
-* Consider splitting the data inside a store into various collections. Have small documents over various collections instead of monolithic documents in a single collection. This consideration depends on how closely related the data is and the use cases for said data.
-* When you use the add API with an array of objects, it is possible to run into memory issues. To mitigate this issue, call these methods with fewer JSON objects at a time.
-* JavaScript and Java have garbage collectors, while Objective-C has Automatic Reference Counting. Allow it to work, but do not depend on it entirely. Try to null references that are no longer used and use profiling tools to check that memory usage is going down when you expect it to go down.
+* 在使用 JavaScript API
+时，JSONStore 文档将作为本机（Objective-C、Java 或 C#）层和 JavaScript 层之间的字
+符串进行序列化和反序列化。缓解可能的内存问题的一种方法是在使用 find API 时应用限制和偏移量。这样，您限制针对结果分配的内存量并且可实施诸如分页等事项（每页显示 X 条结果）。
+* 不再使用最终作为字符串进行序列化和反序列化的长密钥名称，考虑将这些长密钥名称映射为较短的名称（例如，`myVeryVeryVerLongKeyName` 到 `k` 或 `key`）。理想情况下，在从适配器发送到客户机时将其映射为简短的密钥名称，在将数据发送回后端时将其映射为原始长密钥名称。
+* 考虑将存储区内的数据拆分为不同的集合。
+让小型文档分布在各个集合中，而不是单个集合中包含整个文档。此注意事项取决于数据间的相关程度以及指定数据的用例。
+* 在将 add API 用于对象数组时，可能会遇到内存问题。要缓解此问题，请一次使用较少的 JSON 对象调用这些方法。
+
+* JavaScript 和 Java 具有垃圾收集器，而
+Objective-C 具有自动引用计数。允许其工作，但不要完全依赖。尝试删除不再使用的空引用，并且使用概要分析工具来检查内存使用是否降低（当您预计会降低时）。
 
 ### CPU
 {: #cpu }
-* The amount of search fields and extra search fields that are used affect performance when you call the add method, which does the indexing. Only index the values that are used in queries for the find method.
-* By default, JSONStore tracks local changes to its documents. This behavior can be disabled, thus saving a few cycles, by setting the `markDirty` flag to **false** when you use the add, remove, and replace APIs.
-* Enabling security adds some overhead to the `init` or `open` APIs and other operations that work with documents inside the collection. Consider whether security is genuinely required. For example, the open API is much slower with encryption because it must generate the encryption keys that are used for encryption and decryption.
-* The `replace` and `remove` APIs depend on the collection size as they must go through the whole collection to replace or remove all occurrences. Because it must go through each record, it must decrypt every one of them, which makes it much slower when encryption is used. This performance hit is more noticeable on large collections.
-* The `count` API is relatively expensive. However, you can keep a variable that keeps the count for that collection. Update it every time that you store or remove things from the collection.
-* The `find` APIs (`find`, `findAll`, and `findById`) are affected by encryption, since they must decrypt every document to see whether it is a match or not. For find by query, if a limit is passed, it is potentially faster as it stops when it reaches the limit of results. JSONStore does not need to decrypt the rest of the documents to figure out if any other search results remain.
+* 在调用建立索引的 add 方法时，使用的搜索字段和其他搜索字段的数量会影响性能。仅对 find 方法的查询中使用的值编制索引。
+* 缺省情况下，JSONStore 跟踪对其文档的本地更改。可以禁用此行为，因此在使用 add、remove 和 replace API 时，通过将 `markDirty` 标记设置为 **false** 将省去一些循环周期。
+* 启用安全性会向 `init` 或
+`open` API 以及处理集合中的文档的其
+他操作增加开销。
+考虑安全性是否确实需要。例如，open API 比加密更慢，因为它必须生成用于加密和解密的加密密钥。
+* `replace` 和
+`remove` API 取决于集合大小，因为它们必须浏览整个集合以替换或移除所有出现项。由于它必须浏览每条记录，因为必须加密每个记录，在使用加密时速度会变得很慢。在大型集
+合上，此性能下降更加明显。
+* `count` API 相对开销较多。但是，您可以保留一个变量来保持集合计数。每次从集合存储内容或移除内容时，会将其更新。
+* `find` API（`find`、`findAll` 和 `findById`）受加密影响，因为它们必须解密每个文档以查看其是否匹配。针对 find by query，如果传递了限制，那么当其达到结果限制而停止时，可能会更快。JSONStore 不需要解密剩余的文档即可了解是否保留任何其他搜索结果。
 
-## Concurrency
+## 并行
 {: #concurrency }
 ### JavaScript
 {: #javascript }
-Most of the operations that can be performed on a collection, such as add and find, are asynchronous. These operations return a jQuery promise that is resolved when the operation completes successfully and rejected when a failure occurs. These promises are similar to success and failure callbacks.
+可以对集合执行的大部分操作都是异步的，例如添加和查找。这些操作在操作成功完成时返回解析的 jQuery 承诺，如果失败，则会被拒绝。这些承诺类似于成功和失败的回调。
 
-A jQuery Deferred is a promise that can be resolved or rejected. The following examples are not specific to JSONStore, but are intended to help you understand their usage in general.
+jQuery Deferred 是可以解析或拒绝的承诺。以下示例并非特定于 JSONStore，而是旨在帮助您了解其常规用法。
 
-Instead of promises and callbacks, you can also listen to JSONStore `success` and `failure` events. Perform actions that are based on the arguments that are passed to the event listener.
+不再承诺和回调，您还可以侦听 JSONStore `success` 和 `failure` 事件。基于传递到事件侦听器的参数执行操作。
 
-**Example promise definition**
+**示例承诺定义**
 
 ```javascript
 var asyncOperation = function () {
@@ -278,7 +315,7 @@ var asyncOperation = function () {
 };
 ```
 
-**Example promise usage**
+**示例承诺用法**
 
 ```javascript
 // The function that is passed to .then is executed after 1000 ms.
@@ -287,7 +324,7 @@ asyncOperation.then(function (response) {
 });
 ```
 
-**Example callback definition**
+**示例回调定义**
 
 ```javascript
 var asyncOperation = function (callback) {
@@ -297,7 +334,7 @@ var asyncOperation = function (callback) {
 };
 ```
 
-**Example callback usage**
+**示例回调用法**
 
 ```javascript
 // The function that is passed to asyncOperation is executed after 1000 ms.
@@ -306,7 +343,7 @@ asyncOperation(function (response) {
 });
 ```
 
-**Example events**
+**示例事件**
 
 ```javascript
 $(document.body).on('WL/JSONSTORE/SUCCESS', function (evt, data, src, collectionName) {
@@ -320,25 +357,30 @@ $(document.body).on('WL/JSONSTORE/SUCCESS', function (evt, data, src, collection
 
 ### Objective-C
 {: #objective-c }
-When you use the Native iOS API for JSONStore, all operations are added to a synchronous dispatch queue. This behavior ensures that operations that touch the store are executed in order on a thread that is not the main thread. For more information, see the Apple documentation at [Grand Central Dispatch (GCD)](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html#//apple_ref/c/func/dispatch_sync        ).
+在将本机 iOS
+API 用于 JSONStore 时，所有操作都将添加到同步分派队列。此行为确保在不是主线程的线程上按顺序执行接触存储的操作。有关更多信息，请参阅 [Grand Central Dispatch (GCD)](https://developer.apple.com/library/ios/documentation/Performance/Reference/GCD_libdispatch_Ref/Reference/reference.html#//apple_ref/c/func/dispatch_sync        ) 中的 Apple 文档。
 
 ### Java
 {: #java }
-When you use the Native Android API for JSONStore, all operations are executed on the main thread. You must create threads or use thread pools to have asynchronous behavior. All store operations are thread-safe.
+在将本机 Android API 用于 JSONStore 时，将在主线程上执行所有操作。您必须创建线程或者使用线程池以使用异步行为。所有存储操作都是线程安全的。
 
-## Analytics 
+## 分析 
 {: #analytics }
-ou can collect key pieces of analytics information that are related to JSONStore 
+可收集与 JSONStore 相关的分析信息的关键部分 
 
-### File information
+### 文件信息
 {: #file-information }
-File information is collected once per application session if the JSONStore API is called with the analytics flag set to **true**. An application session is defined as loading the application into memory and removing it from memory. You can use this information to determine how much space is being used by JSONStore content in the application.
+如果在分析标记设置为 **true** 的情况下调用
+JSONStore API，那么将按照每个应用程序会话收集文件信息。
+在将应用程序装入内存以及从内存中移除时，将定义应用程序会话。您可以使用此信息来确定应用程序中的
+JSONStore 内容使用的空间量。
 
-### Performance metrics
+### 性能指标
 {: #performance-metrics }
-Performance metrics are collected every time a JSONStore API is called with information about the start and end times of an operation. You can use this information to determine how much time various operations take in milliseconds.
+每次使用有关操作开始和结束时间的信息调用 JSONStore API 时，都将收集性能指标。
+您可以使用此信息来确定不同操作所用的时间（毫秒）。
 
-### Examples
+### 示例
 {: #examples }
 #### iOS
 {: #ios-example}
@@ -368,35 +410,36 @@ var options = {
 WL.JSONStore.init(..., options);
 ```
 
-## Working With External Data
+## 使用外部数据
 {: #working-with-external-data }
-You can work with external data in several different concepts: **Pull** and **Push**.
+您可以在多个不同的概念中使用外部数据：**拉取**和**推送**。
 
-### Pull
+### 拉取
 {: #pull }
-Many systems use the term pull to refer to getting data from an external source.  
-There are three important pieces:
+许多系统使用词汇“拉取”来指代从外部源获取数据。  
+有三个重要部分：
 
-#### External Data Source
+#### 外部数据源
 {: #external-data-source }
-This source can be a database, a REST or SOAP API, or many others. The only requirement is that it must be accessible from either the {{ site.data.keys.mf_server }} or directly from the client application. Ideally, you want this source to return data in JSON format.
+此源可以为数据库、REST 或 SOAP API 等等。
+唯一要求是，外部数据源必须可以通过 {{ site.data.keys.mf_server }} 访问，或可以直接通过客户机应用程序访问。理想情况下，您希望此源以 JSON 格式返回数据。
 
-#### Transport Layer
+#### 传输层
 {: #transport-layer }
-This source is how you get data from the external source into your internal source, a JSONStore collection inside the store. One alternative is an adapter.
+此源表示您如何将数据从外部源传送到内部源（存储区中的 JSONStore 集合）。一个备选方案是适配器。
 
-#### Internal Data Source API
+#### 内部数据源 API
 {: #internal-data-source-api }
-This source is the JSONStore APIs that you can use to add JSON data to a collection.
+此源是可用于将 JSON 数据添加到集合的 JSONStore API。
 
-**Note:** You can populate the internal store with data that is read from a file, an input field, or hardcoded data in a variable. It does not have to come exclusively from an external source that requires network communication.
+**注：**您可以使用从文件读取的数据、输入字段或变量中的硬编码数据来填充内部存储区。此源不必专门来自需要网络通信的外部源。
 
-All of the following code examples are written in pseudocode that looks similar to JavaScript.
+以下所有代码示例都以类似于 JavaScript 的伪码来编写。
 
-**Note:** Use  adapters for the Transport Layer. Some of the advantages of using adapters are XML to JSON, security, filtering, and decoupling of server-side code and client-side code.
+**注：**针对传输层使用适配器。使用适配器的优点包括服务器端代码和客户机端代码的 XML 到 JSON 转换、安全性、过滤和重复数据删除。
 
-**External Data Source: Backend REST endpoint**  
-Imagine that you have a REST endpoint that read data from a database and returns it as an array of JSON objects.
+**外部数据源：后端 REST 端点**  
+假设您具有一个 REST 端点，用于从数据库读取数据并将其返回为 JSON 对象数组。
 
 ```javascript
 app.get('/people', function (req, res) {
@@ -407,7 +450,7 @@ app.get('/people', function (req, res) {
 });
 ```
 
-The data that is returned can look like the following example:
+返回的数据可能与以下示例类似：
 
 ```xml
 [{id: 0, name: 'carlos', ssn: '111-22-3333'},
@@ -415,14 +458,15 @@ The data that is returned can look like the following example:
  {id: 2, name: 'dgonz' ssn: '111-55-3333')]
 ```
 
-**Transport Layer: adapter**  
-Imagine that you created an adapter that is called people and you defined a procedure that is called getPeople. The procedure calls the REST endpoint and returns the array of JSON objects to the client. You might want to do more work here, for example, return only a subset of the data to the client.
+**传输层：适配器**  
+假设创建名为 people 的适配器并定义名为 getPeople 的过程。
+该过程将调用 REST 端点并将 JSON 对象数组返回到客户机。您可能想在此执行更多操作，如仅将数据的子集返回到客户机。
 
 ```javascript
 function getPeople () {
 
-  var input = {
-    method : 'get',
+  var input = { 
+method : 'get',
     path : '/people'
   };
 
@@ -430,7 +474,7 @@ function getPeople () {
 }
 ```
 
-On the client, you can use the WLResourceRequest API to get the data. Additionally, you might want to pass some parameters from the client to the adapter. One example is a date with the last time that the client got new data from the external source through the adapter.
+在客户机上，您可以使用 WLResourceRequest API 来获取数据。此外，您可能希望将某些参数从客户机传递到适配器。一个示例是客户机上次通过适配器从外部源获取新数据的日期。
 
 ```javascript
 var adapter = 'people';
@@ -443,8 +487,8 @@ resource.send()
 });
 ```
 
-**Note:** You might want to take advantage of the `compressResponse`, `timeout`, and other parameters that can be passed to the `WLResourceRequest` API.  
-Alternatively, you can skip the adapter and use something like jQuery.ajax to directly contact the REST endpoint with the data that you want to store.
+**注：**您可能想要利用可传递到 `WLResourceRequest` API 的 `compressResponse`、`timeout` 以及其他参数。  
+另外，您可以跳过适配器并使用诸如 jQuery.ajax 之类的项，从而直接与具有要存储数据的 REST 端点联系。
 
 ```javascript
 $.ajax({
@@ -456,59 +500,59 @@ $.ajax({
 });
 ```
 
-**Internal Data Source API: JSONStore**
-After you have the response from the backend, you can work with that data by using JSONStore.
-JSONStore provides a way to track local changes. It enables some APIs to mark documents as dirty. The API records the last operation that was performed on the document, and when the document was marked as dirty. You can then use this information to implement features like data synchronization.
+**内部数据源 API：JSONStore**
+在收到后端响应后，您可以使用 JSONStore 来处理此数据。
+JSONStore 提供跟踪本地更改的方法。该方法将启用某些 API 以将文档标记为脏。API 将记录对文档执行的最后一个操作，以及将文档标记为脏的时间。然后可以使用此信息来实现诸如数据同步等功能。
 
-The change API takes the data and some options:
+change API 将采用数据和某些选项：
 
 **replaceCriteria**  
-These search fields are part of the input data. They are used to locate documents that are already inside a collection. For example, if you select:
+这些搜索字段是输入数据的一部分。它们用于查找已存在于集合内的文档。例如，如果选择
 
 ```javascript
 ['id', 'ssn']
 ```
 
-as the replace criteria, pass the following array as the input data:
+作为替换标准，那么将传递以下数组作为输入数据：
 
 ```javascript
 [{id: 1, ssn: '111-22-3333', name: 'Carlos'}]
 ```
 
-and the `people` collection already contains the following document:
+并且 `people` 集合已包含以下文档：
 
 ```javascript
 {_id: 1,json: {id: 1, ssn: '111-22-3333', name: 'Carlitos'}}
 ```
 
-The `change` operation locates a document that matches exactly the following query:
+`change` 操作将查找与以下查询完全匹配的文档：
 
 ```javascript
 {id: 1, ssn: '111-22-3333'}
 ```
 
-Then the `change` operation performs a replacement with the input data and the collection contains:
+`change` 操作将使用输入数据执行替换并且该集合将包含：
 
 ```javascript
 {_id: 1, json: {id:1, ssn: '111-22-3333', name: 'Carlos'}}
 ```
 
-The name was changed from `Carlitos` to `Carlos`. If more than one document matches the replace criteria, then all documents that match are replaced with the respective input data.
+该名称已从 `Carlitos` 更改为 `Carlos`。
+如果多个文档匹配替换标准，那么匹配的所有文档都将替换为各自输入数据。
 
 **addNew**  
-When no documents match the replace criteria, the change API looks at the value of this flag. If the flag is set to **true**, the change API creates a new document and adds it to the store. Otherwise, no further action is taken.
+当没有任何文档与替换标准相匹配时，change API 将查看此标记的值。如果标记设置为 **true**，那么 change API 将创建一个新文档并将其添加到存储区中。否则，不执行任何其他操作。
 
 **markDirty**  
-Determines whether the change API marks documents that are replaced or added as dirty.
+确定 change API 是否将替换或添加的文档标记为脏。
 
-An array of data is returned from the adapter:
+将从适配器返回一个数据数组：
 
 ```javascript
 .then(function (responseFromAdapter) {
 
   var accessor = WL.JSONStore.get('people');
-
-  var data = responseFromAdapter.responseJSON;
+var data = responseFromAdapter.responseJSON;
 
   var changeOptions = {
     replaceCriteria : ['id', 'ssn'],
@@ -524,54 +568,54 @@ An array of data is returned from the adapter:
 })
 ```
 
-You can use other APIs to track changes to the local documents that are stored. Always get an accessor to the collection that you perform operations on.
+可以使用其他 API 来跟踪对存储的本地文档进行的更改。将始终获取对其执行操作的集合的存取器。
 
 ```javascript
 var accessor = WL.JSONStore.get('people')
 ```
 
-Then, you can add data (array of JSON objects) and decide whether you want it to be marked dirty or not. Typically, you want to set the markDirty flag to false when you get changes from the external source. Then, set the flag to true when you add data locally.
+然后，可以添加数据（JSON 对象的数组）并确定是否要将其标记为脏数据。通常情况下，从外部源获取更改时，您会希望将 markDirty 标记设置为 false。之后当在本地添加数据时，您会希望将该标记设置为 true。
 
 ```javascript
 accessor.add(data, {markDirty: true})
 ```
 
-You can also replace a document, and opt to mark the document with the replacements as dirty or not.
+还可以替换文档，并选择是否将替换的文档标记为脏文档。
 
 ```javascript
 accessor.replace(doc, {markDirty: true})
 ```
 
-Similarly, you can remove a document, and opt to mark the removal as dirty or not. Documents that are removed and marked dirty do not show up when you use the find API. However, they are still inside the collection until you use the `markClean` API, which physically removes the documents from the collection. If the document is not marked as dirty, it is physically removed from the collection.
+同样，可以移除文档，并选择是否将移除文档标记为脏文档。使用 find API 时，将不再显示移除的文档和标记为脏的文档。但是，这些文档仍存在于该集合中，直到应用 `markClean` API（此 API 可从集合中物理删除文档）。如果未将文档标记为脏文档，那么会从集合中物理删除文档。
 
 ```javascript
 accessor.remove(doc, {markDirty: true})
 ```
 
-### Push
+### 推送
 {: #push }
-Many systems use the term push to refer to sending data to an external source.
+许多系统使用词汇推送来指代将数据发送到外部源。
 
-There are three important pieces:
+有三个重要部分：
 
-#### Internal Data Source API
+#### 内部数据源 API
 {: #internal-data-source-api-push }
-This source is the JSONStore API that returns documents with local-only changes (dirty).
+此源是 JSONStore API，用于返回包含仅本地更改（脏）的文档。
 
-#### Transport Layer
+#### 传输层
 {: #transport-layer-push }
-This source is how you want to contact the external data source to send the changes.
+此源是您希望联系外部数据源以发送更改的方式。
 
-#### External Data Source
+#### 外部数据源
 {: #external-data-source-push }
-This source is typically a database, REST or SOAP endpoint, among others, that receives the updates that the client made to the data.
+此源通常是数据库、REST 或 SOAP 端点等等，用于接收客户机对数据进行的更新。
 
-All of the following code examples are written in pseudocode that looks similar to JavaScript.
+以下所有代码示例都以类似于 JavaScript 的伪码来编写。
 
-**Note:** Use adapters for the Transport Layer. Some of the advantages of using adapters are XML to JSON, security, filtering, and decoupling of server-side code and client-side code.
+**注：**针对传输层使用适配器。使用适配器的优点是服务器端代码和客户机端代码的 XML 到 JSON 转换、安全性、过滤和重复数据删除。
 
-**Internal Data Source API: JSONStore**  
-After you have an accessor to the collection, you can call the `getAllDirty` API to get all documents that are marked as dirty. These documents have local-only changes that you want to send to the external data source through a transport layer.
+**内部数据源 API：JSONStore**  
+具有集合的存取器后，您可以调用 `getAllDirty` API 以获取标记为脏的所有文档。这些文档中包含您要通过传输层发送到外部数据源的仅限本地更改。
 
 ```javascript
 var accessor = WL.JSONStore.get('people');
@@ -583,7 +627,7 @@ accessor.getAllDirty()
 });
 ```
 
-The `dirtyDocs` argument looks like the following example:
+`dirtyDocs` 参数与以下示例类似：
 
 ```javascript
 [{_id: 1,
@@ -592,14 +636,14 @@ The `dirtyDocs` argument looks like the following example:
   _dirty: '1395774961,12902'}]
 ```
 
-The fields are:
-* `_id`: Internal field that JSONStore uses. Every document is assigned a unique one.
-* `json`: The data that was stored.
-* `_operation`: The last operation that was performed on the document. Possible values are add, store, replace, and remove.
-* `_dirty`: A time stamp that is stored as a number to represent when the document was marked dirty.
+字段包括：
+* `_id`：JSONStore 使用的内部字段。会为每个文档分配唯一的内部字段。
+* `json`：存储的数据。
+* `_operation`：在文档上执行的上一个操作。可能的值为 add、store、replace 和 remove。
+* `_dirty`：存储为数字的时间戳记，其表示文档标记为脏的时间。
 
-**Transport Layer: MobileFirst adapter**  
-You can choose to send dirty documents to a adapter. Assume that you have a `people` adapter that is defined with an `updatePeople` procedure.
+**传输层：MobileFirst 适配器**  
+您可以选择将脏文档发送到适配器。假设您具有使用 `updatePeople` 过程定义的 `people` 适配器。
 
 ```javascript
 .then(function (dirtyDocs) {
@@ -616,15 +660,15 @@ You can choose to send dirty documents to a adapter. Assume that you have a `peo
 })
 ```
 
-**Note:** You might want to take advantage of the `compressResponse`, `timeout`, and other parameters that can be passed to the `WLResourceRequest` API.
+**注：**您可能想要利用可传递到 `WLResourceRequest` API 的 `compressResponse`、`timeout` 以及其他参数。
 
-On the {{ site.data.keys.mf_server }}, the adapter has the `updatePeople` procedure, which might look like the following example:
+在 {{ site.data.keys.mf_server }} 上，适配器具有类似以下示例的 `updatePeople` 过程：
 
 ```javascript
 function updatePeople (dirtyDocs) {
 
-  var input = {
-    method : 'post',
+  var input = { 
+method : 'post',
     path : '/people',
     body: {
       contentType : 'application/json',
@@ -636,9 +680,10 @@ function updatePeople (dirtyDocs) {
 }
 ```
 
-Instead of relaying the output from the `getAllDirty` API on the client, you might have to update the payload to match a format that is expected by the backend. You might have to split the replacements, removals, and inclusions into separate backend API calls.
+您可能必须更新有效内容以与后端预期的格式相匹配，而不是从客户机上的 `getAllDirty` API 传达输出。可能必须将替换项、移除项以及包含项分割成独立的后端 API 调用。
 
-Alternatively, you can iterate over the `dirtyDocs` array and check the `_operation` field. Then, send replacements to one procedure, removals to another procedure, and inclusions to another procedure. The previous example sends all dirty documents in bulk to the adapter.
+或者，可以迭代 `dirtyDocs`
+数组并检查 `_operation` 字段。然后，将替换项发送到某一过程，移除项发送到另一过程，包含项发送到其他过程。先前的示例将所有脏文档成批发送到适配器。
 
 ```javascript
 var len = dirtyDocs.length;
@@ -694,7 +739,7 @@ $.when.apply(this, arrayOfPromises)
 });
 ```
 
-Alternatively, you can skip the adapter and contact the REST endpoint directly.
+或者，您可以跳过适配器并直接联系 REST 端点。
 
 ```javascript
 .then(function (dirtyDocs) {
@@ -711,8 +756,8 @@ Alternatively, you can skip the adapter and contact the REST endpoint directly.
 });
 ```
 
-**External Data Source: Backend REST endpoint**  
-The backend accepts or rejects changes, and then relays a response back to the client. After the client looks at the response, it can pass documents that were updated to the markClean API.
+**外部数据源：后端 REST 端点**  
+后端将接受或拒绝更改，然后将响应传达回到客户机。客户机看到响应后，可以将更新的文档传递给 markClean API。
 
 ```javascript
 .then(function (responseFromAdapter) {
@@ -727,12 +772,12 @@ The backend accepts or rejects changes, and then relays a response back to the c
 })
 ```
 
-After documents are marked as clean, they do not show up in the output from the `getAllDirty` API.
+文档标记为干净后，将不会显示在 `getAllDirty` API 的输出中。
 
-## Troubleshooting
+## 故障排除
 {: #troubleshooting }
-For more information, see the [JSONStore troubleshooting](../../troubleshooting/jsonstore) section.
+有关更多信息，请参阅 [JSONStore 故障诊断](../../troubleshooting/jsonstore)部分。
 
-## API Usage
+## API 用法
 {: #api-usage }
-Select a platform: 
+选择平台： 

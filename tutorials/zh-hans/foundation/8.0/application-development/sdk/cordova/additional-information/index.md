@@ -1,20 +1,20 @@
 ---
 layout: tutorial
-title: Additional Information
-breadcrumb_title: Additional information
+title: 其他信息
+breadcrumb_title: 其他信息
 relevantTo: [cordova]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Enforcing TLS-secure connections in iOS apps
+### 在 iOS 应用程序中实施 TLS 安全连接
 {: #enforcing-tls-secure-connections-in-ios-apps }
-Starting from iOS 9, Transport Layer Security (TLS) protocol version 1.2 must be enforced in all apps. You can disable this protocol and bypass the iOS 9 requirement for development purposes.
+从 iOS 9 开始，必须在所有应用程序中实施传输层安全性 (TLS) 协议 V1.2。出于开发目的，您可以禁用此协议并忽略 iOS 9 需求。
 
-Apple App Transport Security (ATS) is a new feature of iOS 9 that enforces best practices for connections between the app and the server. By default, this feature enforces some connection requirements that improve security. These include client-side HTTPS requests and server-side certificates and connection ciphers that conform to Transport Layer Security (TLS) version 1.2 using forward secrecy.
+Apple 应用程序传输安全性 (ATS) 是 iOS 9 的新功能部件，对应用程序和服务器之间的连接实施最佳实践。缺省情况下，此功能部件实施可提高安全性的一些连接需求。这些包括客户机端 HTTPS 请求以及服务器端证书和连接密码，它们通过使用转发密码遵守传输层安全性 (TLS) V1.2。
 
-For d**evelopment purposes**, you can override the default behavior by specifying an exception in the info.plist file in your app, as described in App Transport Security Technote. However, in a **full production** environment, all iOS apps must enforce TLS-secure connections for them to work properly.
+出于**开发目的**，您可以通过在应用程序的 info.plist 文件中指定异常来覆盖缺省行为，如“应用程序传输安全性技术说明”中所述。但是，在**全生产**环境中，所有 iOS 应用程序都必须实施 TLS 安全连接以确保其正常工作。
 
-To enable non-TLS connections, the following exception must appear in the **project-name-info.plist** file in the **project-name\Resources** folder:
+要启用非 TLS 连接，以下异常必须显示在 **project-name\Resources** 文件夹的 **project-name-info.plist** 文件中：
 
 ```xml
 <key>NSExceptionDomains</key>
@@ -22,7 +22,7 @@ To enable non-TLS connections, the following exception must appear in the **proj
         <key>yourserver.com</key>
     
             <dict>
-            <!--Include to allow subdomains-->
+<!--Include to allow subdomains-->
             <key>NSIncludesSubdomains</key>
             <true/>
 
@@ -33,10 +33,10 @@ To enable non-TLS connections, the following exception must appear in the **proj
     </dict>
 ```
 
-To prepare for production
+为生产做准备
 
-1. Remove, or comment out the code that appears earlier in this page.  
-2. Set up the client to send HTTPS requests by using the following entry to the dictionary:  
+1. 移除或注释掉先前显示在此页面中的代码。  
+2. 设置客户机以使用以下条目将 HTTPS 请求发送到字典：  
 
    ```xml
    <key>protocol</key>
@@ -46,50 +46,49 @@ To prepare for production
    <string>10443</string>
    ```
    
-   The SSL port number is defined on the server in **server.xml** in the `httpEndpoint` definition.
+   在 `httpEndpoint` 定义内的 **server.xml** 中的服务器上定义 SSL 端口号。
     
-3. Configure a server that is enabled for the TLS 1.2 protocol. For more information, [see Configuring {{ site.data.keys.mf_server }} to enable TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)
-4. Make settings for ciphers and certificates, as they apply to your setup. For more information, see [App Transport Security Technote](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/), [Secure communications using Secure Sockets Layer (SSL) for WebSphere  Application Server Network Deployment](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en), and [Enabling SSL communication for the Liberty profile](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0).
+3. 配置针对 TLS 1.2 协议启用的服务器。有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }} 以启用 TLS V1.2](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)
+4. 对密码和证书进行设置，因为它们适用于您的设置。有关更多信息，请参阅[应用程序传输安全性技术说明](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/)、[对 WebSphere Application Server Network Deployment 使用安全套接字层 (SSL) 进行安全通信](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en)以及[对 Liberty Profile 启用 SSL 通信](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0)。
 
-## Enabling OpenSSL in Cordova Applications
+## 在 Cordova 应用程序中启用 OpenSSL
 {: #enabling-openssl-in-cordova-applications }
-The {{ site.data.keys.product_adj }} Cordova SDK for iOS uses native iOS APIs for cryptography. You can configure the application to instead use the OpenSSL cryptography library in your Cordova iOS app.
+针对 iOS 的 {{ site.data.keys.product_adj }} Cordova SDK 将本机 iOS API 用于密码术。您可以配置应用程序，以在 Cordova iOS 应用程序中改用 OpenSSL 密码术库。
 
-The encryption/decryption functionalities are provided with the following Javascript APIs:
+使用以下 JavaScript API 提供加密/解密功能：
 
 * WL.SecurityUtils.encryptText
 * WL.SecurityUtils.decryptWithKey
 
-### Option 1: Native encryption/decryption
+### 选项 1：本机加密/解密
 {: #option-1-native-encryptiondecryption }
-By default {{ site.data.keys.product_adj }} provides native encryption/decryption, without using OpenSSL. This is equivalent to explicitly setting the encryption/decryption behavior:
+缺省情况下，{{ site.data.keys.product_adj }} 在不使用 OpenSSL 的情况下提供本机加密/解密。这相当于以显式方式设置加密/解密行为：
 
 * WL.SecurityUtils.enableNativeEncryption(true)
 
-## Option 2: Enabling OpenSSL
+## 选项 2：启用 OpenSSL
 {: #option-2-enabling-openssl }
-{{ site.data.keys.product_adj }} provided OpenSSL is disabled by default.
+缺省情况下，禁用 {{ site.data.keys.product_adj }} 提供的 OpenSSL。
 
-To install the necessary frameworks for supporting OpenSSL, first install the Cordova plug-in:
+要安装支持 OpenSSL 的必需框架，请先安装 Cordova 插件：
 
 ```bash
 cordova plugin add cordova-plugin-mfp-encrypt-utils
 ```
 
-The following code enables the OpenSSL option for the encryption/decryption:
+以下代码为加密/解密启用 OpenSSL 选项：
 
 * WL.SecurityUtils.enableNativeEncryption(false)
 
-With this setup, the encryption/decryption calls use OpenSSL as in previous versions of {{ site.data.keys.product }}.
+通过此设置，加密/解密调用像 {{ site.data.keys.product }} 先前版本一样使用 OpenSSL。
 
-### Migration options
+### 迁移选项
 {: #migration-options }
-If you have a {{ site.data.keys.product_adj }} project that was written with an earlier version of the product, you might need to incorporate changes to continue using OpenSSL.
+如果您具有在产品先前版本中编写的 {{ site.data.keys.product_adj }} 项目，那么可能需要包含更改才能继续使用 OpenSSL。
 
-* If the application is not using encryption/decryption APIs, and no encrypted data is cached on the device, no action is needed.
-* If the application is using encryption/decryption APIs you have the option of using these APIs with or without OpenSSL.
-    - **Migrating to native encryption:**
-        1. Make sure the default native encryption/decryption option is chosen (see **Option 1**).
-        2. **Migrating cached data**: If the previous product installation of saved encrypted data to the device using OpenSSL, but the native encryption/decryption option is now chosen, the stored data must be decrypted. The first time the application attempts to decrypt the data it will fall back to OpenSSL and then encrypt it using native encryption. This way the data will be auto-migrated to native encryption.
-        **Note:** To allow the decryption from OpenSSL, you must add the OpenSSL frameworks by installing the Cordova plug-in: `cordova plugin add cordova-plugin-mfp-encrypt-utils`
-    - **Continuing with OpenSSL:** If OpenSSL is required use the setup described in **Option 2**.
+* 如果应用程序使用的不是加密/解密 API，并且未在设备上缓存任何加密数据，那么无需操作。
+* 如果应用程序使用的是加密/解密 API，那么可以选择将这些 API 与 OpenSSL 结合使用，也可以选择单独使用这些 API。
+    - **迁移到本机加密：**
+        1. 确保选择缺省本机加密/解密选项（请参阅**选项 1**）。
+        2. **迁移高速缓存的数据**：如果先前产品安装使用 OpenSSL 将已加密数据保存到设备，但现在选择本机加密/解密选项，那么必须对存储的数据进行解密。应用程序首次尝试解密数据时，它将回退到 OpenSSL，然后使用本机加密对其进行加密。通过此方式，数据将自动迁移到本机加密。**注：**要允许通过 OpenSSL 解密，必须通过安装 Cordova 插件来添加 OpenSSL 框架：`cordova plugin add cordova-plugin-mfp-encrypt-utils`
+    - **继续使用 OpenSSL：**如果需要 OpenSSL，请使用**选项 2** 中描述的设置。

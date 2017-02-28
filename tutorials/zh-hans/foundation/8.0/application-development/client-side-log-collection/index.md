@@ -1,50 +1,49 @@
 ---
 layout: tutorial
-title: Client-side Log Collection
-breadcrumb_title: Client-side log collection
+title: 客户端日志收集
+breadcrumb_title: 客户端日志收集
 relevantTo: [ios,android,javascript]
 weight: 7
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Logging is the instrumentation of source code that uses API calls to record messages in order to facilitate diagnostics and debugging.
-{{ site.data.keys.product_full }} provides a set of logging API methods for this purpose.
+日志记录是对源代码的检测，其使用 API 调用来记录消息以促进诊断和调试。
+{{ site.data.keys.product_full }} 针对此目的提供一组日志记录 API 方法。
 
-The {{ site.data.keys.product_adj }} `Logger` API is similar to commonly-used logger APIs, such as `console.log` (JavaScript), `java.util.logging` (Java) and `NSLog` (Objective-C), and provides the additional capability of persistently capturing logged data for sending to the {{ site.data.keys.mf_server }} to be used for analytics gathering and developer inspection. Use the `Logger` APIs to report log data at appropriate levels, so that developers who inspect logs can triage and fix problems without having to reproduce problems in their labs.
+{{ site.data.keys.product_adj }} `Logger` API 类似于常用的记录器 API，例如，`console.log` (JavaScript)、`java.util.logging` (Java) 和 `NSLog` (Objective-C)，并且提供永久捕获所记录数据的额外功能，以将数据发送到 {{ site.data.keys.mf_server }}，用于分析收集和开发人员检查。使用 `Logger` API 在相应的级别报告日志数据，以便检查日志的开发人员可以对问题进行分类并修复问题，而无需在其实验室中重现问题。
 
-#### Availability
+#### 可用性
 {: #availability }
-The {{ site.data.keys.product_adj }}-provided `Logger` API methods can be used with iOS, Android, Web, and Cordova applications.
+{{ site.data.keys.product_adj }} 提供的 `Logger` API 方法可用于 iOS、Android、Web 和 Cordova 应用程序。
 
-## Logging levels
+## 日志记录级别
 {: #logging-levels }
-Logging libraries typically have verbosity controls that are frequently called **levels**.  
-The logging levels from the most verbose to the least are as follows:
+日志记录库一般具有通常称为**级别**的详细程度控件。  
+日志记录级别按详细程度从高到低排列如下：
 
-* TRACE - used for method entry and exit points
-* DEBUG - used for method result output
-* LOG - used for class instantiation
-* INFO - used for reporting initialization
-* WARN - used to log deprecated usage warnings
-* ERROR - used for unexpected exceptions
-* FATAL - used for unrecoverable crashes or hangs
+* 跟踪 - 用于方法入口点和出口点
+* 调试 - 用于方法结果输出
+* 记录 - 用于类实例化
+* 参考 - 用于报告初始化
+* 警告 - 用于记录不推荐的用法警告
+* 错误 - 用于意外的异常情况
+* 严重 - 用于不可恢复的崩溃或挂起
 
-> **Note:** Using FATAL will result in collecting an app crash. To avoid skewing your app crash data we recommend not using this keyword.
+> **注：**使用“严重”将导致收集应用程序崩溃。为避免偏离应用程序崩溃数据，不建议使用此关键字。
+缺省情况下，按“严重”详细程度配置客户机 SDK，这意味着很少或不输出或捕获原始调试日志。您可以编程方式调整详细程度，或者通过在 {{ site.data.keys.mf_analytics_console }} 上设置配置概要文件（必须由应用程序显式检索）进行调整。
 
-The client SDKs are configured at the FATAL verbosity by default, which means little or no raw debug logs are output or captured. You can adjust the verbosity programmatically, or adjust it, by setting a configuration profile on the {{ site.data.keys.mf_analytics_console }}, which must be retrieved explicitly by your app.
-
-### Logging from client applications:
+### 来自客户机应用程序的日志记录：
 {: #logging-from-client-applications }
-* [Logging in JavaScript (Cordova, Web) applications](javascript/)
-* [Logging in iOS applications](ios/)
-* [Logging in Android applications](android/)
+* [JavaScript（Cordova 或 Web）应用程序中的日志记录](javascript/)
+* [iOS 应用程序中的日志记录](ios/)
+* [Android 应用程序中的日志记录](android/)
 
-### Adjusting log verbosity
+### 调整日志详细程度
 {: #adjusting-log-verbosity }
-Once logging level is set, either by setting the client or retrieving the server profile, the client filters the logging messages it sends. If a message below the threshold is explicitly sent, the client ignores it.
+在设置日志记录级别之后，通过设置客户机或检索服务器概要文件，客户机对发送的日志记录消息进行过滤。如果显式发送低于阈值的消息，那么客户机将忽略该消息。
 
-For example, to set the verbosity level to DEBUG:
+例如，要将详细程度级别设置为“调试”：
 
 #### iOS
 {: #ios}
@@ -74,16 +73,16 @@ WL.Logger.config({ level: 'DEBUG' });
 
 #### JavaScript (Web)
 {: #javascript-web }
-For the web SDK the default trace level cannot be changed from the client.
+对于 Web SDK，无法从客户机更改缺省跟踪级别。
 
-## Crash capture
+## 崩溃捕获
 {: #crash-capture }
-The {{ site.data.keys.product_adj }} client SDK, on Android and iOS applications, captures a stack trace upon application crash and logs it at FATAL level. This type of crash is a true crash where the UI disappears from the user's view. In Cordova applications, captures JavaScript global errors and if possible a JavaScript call stack, and logs it at FATAL level. This type of crash is not a crash event, and might or might not have any adverse consequences to the user experience at run time.
+Android 和 iOS 应用程序上的 {{ site.data.keys.product_adj }} 客户机 SDK 根据应用程序崩溃捕获堆栈跟踪并记录为“严重”级别。此类型的崩溃是 UI 从用户视图中消失的实际崩溃。在 Cordova 应用程序中，捕获 JavaScript 全局错误，并且如果可能，还捕获一个 JavaScript 调用堆栈，并将其记录为“严重”级别。此类型的崩溃不是崩溃事件，在运行时可能对用户体验造成负面后果，也可能不会。
 
-Crashes, uncaught exceptions, and global errors are caught and logged automatically once the app is running again.
+在重新运行应用程序后，将自动捕获和记录崩溃、未捕获的异常和全局错误。
 
-## Viewing the logs
+## 查看日志
 {: #viewing-the-logs }
-After the logs are collected and sent to the server, view them in the {{ site.data.keys.mf_analytics_console }}. Choose the **Apps** panel from the navigation bar and click the **Client Log Search** tab.
+在收集日志并发送到服务器后，在 {{ site.data.keys.mf_analytics_console }} 中进行查看。从导航栏中选择**应用程序**面板，然后单击**客户机日志搜索**选项卡。
 
-![Search and view logs](consoleViewClientLogs.png)
+![搜索和查看日志](consoleViewClientLogs.png)

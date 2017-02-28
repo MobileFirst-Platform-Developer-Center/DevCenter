@@ -1,155 +1,109 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to Windows 8.1 Universal or Windows 10 UWP Applications
+title: 将 MobileFirst Foundation SDK 添加到 Windows 8.1 Universal 或 Windows 10 UWP 应用程序
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-The {{ site.data.keys.product }} SDK consists of a collection of dependencies that are available through [Nuget](https://www.nuget.org/), and which you can add to your Visual Studio project. The dependencies correspond to core functions and other functions:
+{{ site.data.keys.product }} SDK 包含通过 [Nuget](https://www.nuget.org/) 可用并且可添加到 Visual Studio 项目的依赖关系集合。依赖关系与核心函数和其他函数对应：
 
-* **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
+* **IBMMobileFirstPlatformFoundation** - 实现客户机到服务器连接，并处理认证和安全方面、资源请求及其他必需的核心函数。
 
-In this tutorial, you learn how to add the {{ site.data.keys.product_adj }} Native SDK by using Nuget to a new or existing Windows 8.1 Universal application or to a Windows 10 UWP (Universal Windows Platform) application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application, and to find information about the {{ site.data.keys.product_adj }} configuration files that are added to the project.
+在此教程中，了解如何使用 Nuget 将 {{ site.data.keys.product_adj }} 本机 SDK 添加到新的或现有的 Windows 8.1 Universal 应用程序或 Windows 10 UWP (Universal Windows Platform) 应用程序。您还可以了解如何配置 {{ site.data.keys.mf_server }} 以识别应用程序，查找有关添加到项目的 {{ site.data.keys.product_adj }} 配置文件的信息。
 
-**Prerequisites:**
+**先决条件：**
 
-- Microsoft Visual Studio 2013 or 2015 and {{ site.data.keys.mf_cli }} installed on the developer workstation. Developing Windows 10 UWP solution requires at least Visual Studio 2015.
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your Windows 8 Universal and Windows 10 UWP development environment](../../../installation-configuration/development/windows) tutorials.
+- Microsoft Visual Studio 2013 或 2015 和 {{ site.data.keys.mf_cli }} 已安装在开发人员工作站上。开发 Windows 10 UWP 解决方案至少需要 Visual Studio 2015。
+- {{ site.data.keys.mf_server }} 的本地或远程实例正在运行。
+- 阅读[设置您的 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/development/mobilefirst)和[设置您的 Windows 8 Universal 和 Windows 10 UWP 开发环境](../../../installation-configuration/development/windows)教程。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-- [Adding the {{ site.data.keys.product_adj }} Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Manually Adding the {{ site.data.keys.product_adj }} Native SDK](#manually-adding-the-mobilefirst-win-native-sdk) 
-- [Updating the {{ site.data.keys.product_adj }} Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Generated {{ site.data.keys.product_adj }} Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [添加 {{ site.data.keys.product_adj }} 本机 SDK](#adding-the-mobilefirst-native-sdk)
+- [更新 {{ site.data.keys.product_adj }} 本机 SDK](#updating-the-mobilefirst-native-sdk)
+- [已生成 {{ site.data.keys.product_adj }} 本机 SDK 工件](#generated-mobilefirst-native-sdk-artifacts)
+- [接下来要学习的教程](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## 添加 {{ site.data.keys.product_adj }} 本机 SDK
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product_adj }} Native SDK to a new or existing Visual Studio project, and to register the application to the {{ site.data.keys.mf_server }}.
+遵循下面的指示信息将 {{ site.data.keys.product_adj }} 本机 SDK 添加到新的或现有的 Visual Studio 项目，以将应用程序注册到 {{ site.data.keys.mf_server }}。
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} instance is running.  
-If you use a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.cmd`.
+在您开始之前，确保 {{ site.data.keys.mf_server }} 实例正在运行。  
+如果使用本地安装的服务器：从**命令行**窗口，浏览至服务器的文件夹，并运行命令：`./run.cmd`。
 
-### Creating an application
+### 创建应用程序
 {: #creating-an-application }
-Create a Windows 8.1 Universal or Windows 10 UWP project by using Visual Studio 2013/2015 or use an existing project.  
+使用 Visual Studio 2013/2015 创建 Windows 8.1 Universal 或 Windows 10 UWP 项目，或者使用现有项目。  
 
-### Adding the SDK
+### 添加 SDK
 {: #adding-the-sdk }
-1. To import {{ site.data.keys.product_adj }} packages, use the NuGet package manager.
-NuGet is the package manager for the Microsoft development platform, including .NET. The NuGet client tools provide the ability to produce and use packages. The NuGet Gallery is the central package repository used by all package authors and users.
+1. 要导入 {{ site.data.keys.product_adj }} 软件包，请使用 NuGet 软件包管理器。NuGet 是 Microsoft 开发平台（包括 .NET）的软件包管理器。NuGet 客户机工具能够生成和使用软件包。NuGet Gallery 是所有软件包作者和用户所使用的中央软件包存储库。
 
-2. Open the Windows 8.1 Universal or Windows 10 UWP project in Visual studio 2013/2015. Right-click the project solution and select  **Manage Nuget packages**.
+2. 在 Visual Studio 2013/2015 中打开 Windows 8.1 Universal 或 Windows 10 UWP 项目。右键单击项目解决方案，然后选择**管理 Nuget 软件包**。
 
     ![Add-Nuget-tosolution-VS-settings](Add-Nuget-tosolution0.png)
 
-3. In the search option, search for "IBM MobileFirst Platform". Choose **IBM.MobileFirstPlatform.{{ site.data.keys.product_V_R_M_I }}**.
+3. 在搜索选项中，搜索“IBM MobileFirst 平台”。选择 **IBM.MobileFirstPlatform.{{ site.data.keys.product_V_R_M_I }}**。
 
     ![Add-Nuget-tosolution-search](Add-Nuget-tosolution1.png)
 
     ![Add-Nuget-tosolution-choose](Add-Nuget-tosolution2.png)
 
-4. Click **Install**. This action installs the {{ site.data.keys.product }} Native SDK and its dependencies. This step also generates an empty `mfpclient.resw` file in the `strings` folder of the Visual Studio project.
+4. 单击**安装**。此操作将安装 {{ site.data.keys.product }} 本机 SDK 及其依赖关系。此步骤还将在 Visual Studio 项目的 `strings` 文件夹中生成空 `mfpclient.resw` 文件。
 
-5. Ensure that, at a minimum, the following capabilities are enabled in `Package.appxmanifest`:
+5. 确保至少在 `Package.appxmanifest` 中启用以下功能：
 
-    - Internet (Client)
+    - 因特网（客户机）
 
-### Manually adding the {{ site.data.keys.product_adj }} Native SDK
-{: #manually-adding-the-mobilefirst-win-native-sdk }
-
-You can also manually add the {{ site.data.keys.product }} SDK:
-
-<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist" aria-multiselectable="false">
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="win-sdk">
-            <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Click for instructions</b></a>
-            </h4>
-        </div>
-
-        <div id="collapse-win-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk">
-            <div class="panel-body">
-                <p>You can prepare your environment for developing MobileFirst applications by getting the framework and library files manually. The {{ site.data.keys.product }} SDK for Windows 8 and Windows 10 Universal Windows Platform (UWP) is also available from NuGet.</p>
-
-                <ol>
-                    <li>Get the {{ site.data.keys.product }} SDK from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab.
-                    </li>
-                    <li>Extract the contents of the downloaded SDK obtained in step 1.</li>
-                    <li>Open the Windows Universal native project in Visual Studio. Perform the following steps.
-                        <ol>
-                            <li>Select <b>Tools → NuGet Package Manager → Package Manager Settings</b>.</li>
-                            <li>Select <b>Package Sources</b> option. Click <b>+</b> icon to add new package source.</li>
-                            <li>Provide a name for the package source (for example: <em>windows8nuget</em>)</li>
-                            <li>Navigate to the MobileFirst SDK folder that was downloaded and extracted. Click <b>OK</b>.</li>
-                            <li>Click <b>Update</b> and then click <b>OK</b>.</li>
-                            <li>Right-click the <b>Solution project-name</b> in <b>Solution explorer</b> tab, which is to the right corner of the screen.</li>
-                            <li>Select <b>Manage NuGet Packages for Solutions → Online → windows8nuget</b>.</li>
-                            <li>Click <b>Install</b> option. You get the option to <b>Select Projects</b>.</li>
-                            <li>Ensure that all the check boxes are checked. Click <b>OK</b>.</li>
-                        </ol>
-
-                    </li>
-                </ol>
-
-                <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>Close section</b></a>
-            </div>
-        </div>
-    </div>
-</div>
-
-### Registering the application
+### 注册应用程序
 {: #reigstering-the-application }
-1. Open the **Command-line** and navigate to the root of the Visual Studio project.  
+1. 打开**命令行**并浏览至 Visual Studio 项目的根目录。  
 
-2. Run the command:
+2. 运行以下命令：
 
    ```bash
    mfpdev app register
    ```
-    - If you use a remote server, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - 如果使用远程服务器，请[使用命令 `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 进行添加。
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then updates the **mfpclient.resw** file in the **strings** folder in the Visual Studio project, and adds to it the metadata that identifies the {{ site.data.keys.mf_server }}.
+`mfpdev app register` CLI 命令将先连接到 {{ site.data.keys.mf_server }} 以注册应用程序，然后更新 Visual Studio 项目内 **strings** 文件夹中的 **mfpclient.resw** 文件，并向该文件添加用来标识 {{ site.data.keys.mf_server }} 的元数据。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **提示：**您还可以从 {{ site.data.keys.mf_console }} 注册应用程序：    
 >
-> 1. Load the {{ site.data.keys.mf_console }}.  
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
-> 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.resw** file. Follow the onscreen instructions to add the file to your project.
+> 1. 装入 {{ site.data.keys.mf_console }}。  
+> 2. 单击**应用程序**旁边的**新建**按钮以注册新应用程序，并遵循屏幕上的指示信息。  
+> 3. 浏览至应用程序的**配置文件**选项卡，然后复制或下载 **mfpclient.resw** 文件。遵循屏幕上的指示信息将此文件添加到您的项目。
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## 更新 {{ site.data.keys.product_adj }} 本机 SDK
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product_adj }} Native SDK with the latest release, run the following command from the root folder of the Visual Studio project in a **Command-line** window:
+要使用最新发行版更新 {{ site.data.keys.product_adj }} 本机 SDK，请在**命令行**窗口中从 Visual Studio 项目的根文件夹运行以下命令：
 
 ```bash
 Nuget update
 ```
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
+## 已生成 {{ site.data.keys.product_adj }} 本机 SDK 工件
 {: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.resw
 {: #mfpclientresw }
-Located in the `strings` folder of the project, this file contains server connectivity properties and is user-editable:
+此文件位于项目的 `strings` 文件夹中，包含服务器连接属性，并且用户可编辑：
 
-- `protocol` – The communication protocol to {{ site.data.keys.mf_server }}. Either `HTTP` or `HTTPS`.
-- `WlAppId` - The identifier of the application. This should be same as the application identifier in the server.
-- `host` – The host name of the {{ site.data.keys.mf_server }} instance.
-- `port` – The port of the {{ site.data.keys.mf_server }} instance.
-- `wlServerContext` – The context root path of the application on the {{ site.data.keys.mf_server }} instance.
-- `languagePreference` - Sets the default language for client sdk system messages.
+- `protocol` – {{ site.data.keys.mf_server }} 的通信协议。`HTTP` 或 `HTTPS`。
+- `WlAppId` - 应用程序的标识。这应该与服务器中的应用程序标识相同。
+- `host` – {{ site.data.keys.mf_server }} 实例的主机名。
+- `port` – {{ site.data.keys.mf_server }} 实例的端口。
+- `wlServerContext` – {{ site.data.keys.mf_server }} 实例上应用程序的上下文根路径。
+- `languagePreference` - 为客户机 sdk 系统消息设置缺省语言。
 
-## Tutorials to follow next
+## 接下来要学习的教程
 {: #tutorials-to-follow-next }
-With the MobileFirst Native SDK now integrated, you can now:
+集成 MobileFirst 本机 SDK 之后，您现在可以：
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- 查看[使用 {{ site.data.keys.product }} SDK 教程](../)
+- 查看[适配器开发教程](../../../adapters/)
+- 查看[认证和安全教程](../../../authentication-and-security/)
+- 查看[通知教程](../../../notifications/)
+- 查看[所有教程](../../../all-tutorials)

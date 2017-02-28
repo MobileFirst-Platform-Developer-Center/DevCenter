@@ -1,14 +1,14 @@
 ---
 layout: tutorial
-title: JSONStore Code Examples
-breadcrumb_title: Code examples
+title: JSONStore 代码示例
+breadcrumb_title: 代码示例
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Cordova
 {: #cordova }
-#### Initialize and open connections, get an Accessor, and add data
+#### 初始化并打开连接、获取存取器，并添加数据
 {: #initialize-and-open-connections-get-an-accessor-and-add-data }
 ```javascript
 var collectionName = 'people';
@@ -65,7 +65,7 @@ WL.JSONStore.init(collections, options)
 });
 ```
 
-#### Find - locate documents inside the Store
+#### 查找 - 找到存储区中的文档
 {: #find-locate-documents-inside-the-store }
 ```javascript
 var collectionName = 'people';
@@ -84,9 +84,8 @@ var options = {
 
   // Search fields to return, default: ['_id', 'json'].
   filter: ['_id', 'json'],
-
-  // How to sort the returned values, default no sort.
-  sort: [{name: WL.constant.ASCENDING}, {age: WL.constant.DESCENDING}]
+// How to sort the returned values, default no sort.
+sort: [{name: WL.constant.ASCENDING}, {age: WL.constant.DESCENDING}]
 };
 
 WL.JSONStore.get(collectionName)
@@ -107,9 +106,9 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### 替换 - 更改已存储在集合内的文档
 
-```javascript 
+```javascript
 var collectionName = 'people';
 
 // Documents will be located with their '_id' field 
@@ -125,7 +124,6 @@ var options = {
 WL.JSONStore.get(collectionName)
 
 .replace(docs, options)
-
 .then(function (numberOfDocumentsReplaced) {
   // Handle success.
 })
@@ -135,14 +133,13 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Remove - delete all documents that match the query
+#### 移除 - 删除所有匹配查询的文档
 {: #remove-delete-all-documents-that-match-the-query }
 ```javascript
 var collectionName = 'people';
 
 // Remove all documents that match the queries.
 var queries = [{_id: 1}];
-
 var options = {
 
   // Exact match (true) or fuzzy search (false), default fuzzy search.
@@ -157,7 +154,7 @@ WL.JSONStore.get(collectionName)
 .remove(queries, options)
 
 .then(function (numberOfDocumentsRemoved) {
-  // Handle success.
+// Handle success.
 })
 
 .fail(function (errorObject) {
@@ -165,7 +162,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Count - gets the total number of documents that match a query
+#### 计数 - 获取匹配查询的文档总数
 {: #count-gets-the-total-number-of-documents-that-match-a-query }
 ```javascript
 var collectionName = 'people';
@@ -193,7 +190,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### 销毁 - 擦除所有用户的数据、销毁内部存储器并清除安全性工件
 {: #destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```javascript
 WL.JSONStore.destroy()
@@ -207,7 +204,7 @@ WL.JSONStore.destroy()
 });
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### 安全性 - 关闭当前用户所有打开的集合的访问权
 {: #security-close-access-to-all-opened-collections-for-the-current-user }
 ```javascript
 WL.JSONStore.closeAll()
@@ -221,7 +218,7 @@ WL.JSONStore.closeAll()
 });
 ```
 
-#### Security - change the password that is used to access a Store
+#### 安全性 - 更改用于访问存储区的密码
 {: #security-change-the-password-that-is-used-to-access-a-store }
 ```javascript
 // The password should be user input. 
@@ -230,19 +227,18 @@ var oldPassword = '123';
 var newPassword = '456';
 
 var clearPasswords = function () {
-  oldPassword = null;
+oldPassword = null;
   newPassword = null;
 };
 
 // Default username if none is passed is: 'jsonstore'.
 var username = 'carlos';
-
 WL.JSONStore.changePassword(oldPassword, newPassword, username)
 
 .then(function () {
 
   // Make sure you do not leave the password(s) in memory.
-  clearPasswords();
+clearPasswords();
 
   // Handle success.
 })
@@ -250,13 +246,13 @@ WL.JSONStore.changePassword(oldPassword, newPassword, username)
 .fail(function (errorObject) {
 
   // Make sure you do not leave the password(s) in memory.
-  clearPasswords();
+clearPasswords();
 
   // Handle failure.
 });
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### 推送 - 获取标记为脏的所有文档，并将它们发送到适配器，然后标记为干净
 {: #push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```javascript
 var collectionName = 'people';
@@ -265,11 +261,9 @@ var dirtyDocs;
 WL.JSONStore.get(collectionName)
  
 .getAllDirty()
- 
 .then(function (arrayOfDirtyDocuments) {
-  // Handle getAllDirty success.
- 
-  dirtyDocs = arrayOfDirtyDocuments;
+// Handle getAllDirty success.
+dirtyDocs = arrayOfDirtyDocuments;
  
   var procedure = 'procedure-name-1';
   var adapter = 'adapter-name';
@@ -296,7 +290,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Pull - get new data from an adapter
+#### 拉取 - 从适配器获取新数据
 {: #pull-get-new-data-from-an-adapter }
 ```javascript
 var collectionName = 'people';
@@ -329,9 +323,8 @@ resource.send()
  
     // Data that does not exist in the Collection will be added, default false.
     addNew : true,
- 
-    // Mark data as dirty (true = yes, false = no), default false.
-    markDirty : false
+// Mark data as dirty (true = yes, false = no), default false.
+markDirty : false
   };
  
   return WL.JSONStore.get(collectionName).change(data, changeOptions);
@@ -346,7 +339,7 @@ resource.send()
 });
 ```
 
-#### Check whether a document is dirty
+#### 检查文档是否为脏文档
 {: #check-whether-a-document-is-dirty }
 ```javascript
 var collectionName = 'people';
@@ -367,7 +360,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Check the number of dirty documents
+#### 检查脏文档的个数
 {: #check-the-number-of-dirty-documents }
 ```javascript
 var collectionName = 'people';
@@ -385,7 +378,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Remove a Collection
+#### 移除集合
 {: #remove-a-collection }
 ```javascript
 var collectionName = 'people';
@@ -406,7 +399,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Clear all data that is inside a Collection
+#### 清除集合中的所有数据
 {: #clear-all-data-that-is-inside-a-collection }
 ```javascript
 var collectionName = 'people';
@@ -427,7 +420,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### 如果出现失败，那么启动事务、添加某些数据、移除文档、提交事务并回滚事务
 {: transaction }
 ```javascript
 WL.JSONStore.startTransaction()
@@ -438,8 +431,7 @@ WL.JSONStore.startTransaction()
   // init, destroy, removeCollection, and closeAll.
 
   var data = [{name: 'carlos'}];
-
-  return WL.JSONStore.get(collectionName).add(data);
+return WL.JSONStore.get(collectionName).add(data);
 })
 
 .then(function () {
@@ -462,7 +454,7 @@ WL.JSONStore.startTransaction()
 
   .then(function () {
     // Handle rollback success.
-  })
+})
 
   .fail(function () {
     // Handle rollback failure.
@@ -471,7 +463,7 @@ WL.JSONStore.startTransaction()
 });
 ```
 
-#### Get file information
+#### 获取文件信息
 {: #get-file-information }
 ```javascript
 WL.JSONStore.fileInfo()
@@ -484,7 +476,7 @@ WL.JSONStore.fileInfo()
 });
 ```
 
-#### Search with like, rightLike, and leftLike
+#### 使用 like、rightLike 和 leftLike 执行搜索
 {: #search-with-like-rightlike-and-leftlike }
 ```javascript
 // Match all records that contain the search string on both sides.
@@ -505,7 +497,7 @@ var arr2 = WL.JSONStore.QueryPart().leftLike('name', 'los');  // returns {name: 
 
 ## iOS
 {: #ios }
-#### Initialize and open connections, get an Accessor, and add data
+#### 初始化并打开连接、获取存取器，并添加数据
 {: #ios-initialize-and-open-connections-get-an-accessor-and-add-data }
 ```objc
 // Create the collections object that will be initialized.
@@ -519,8 +511,7 @@ JSONStoreOpenOptions* options = [JSONStoreOpenOptions new];
 [options setPassword:@"123"]; //Optional password, default no password
 
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Open the collections.
 [[JSONStore sharedInstance] openCollections:@[people] withOptions:options error:&error];
 
@@ -552,23 +543,21 @@ Initialize with a secure random token from the server
   [options setSecureRandom:secureRandom]; //Optional, default one will be generated locally
 
   // This points to an error if one occurs.
-  NSError* error = nil;
-
-  [[JSONStore sharedInstance] openCollections:@[ppl] withOptions:options error:&error];
+  NSError *error = nil;
+[[JSONStore sharedInstance] openCollections:@[ppl] withOptions:options error:&error];
 
   // Other JSONStore operations (e.g. add, remove, replace, etc.) go here.
 }];
 ```
 
-#### Find - locate documents inside the Store
+#### 查找 - 找到存储区中的文档
 {: #ios-find-locate-documents-inside-the-store }
 ```objc
 // Get the accessor to an already initialized collection.
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Add additional find options (optional).
 JSONStoreQueryOptions* options = [JSONStoreQueryOptions new];
 [options setLimit:@10]; // Returns a maximum of 10 documents, default no limit.
@@ -599,7 +588,7 @@ for (NSDictionary* result in results) {
 }
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### 替换 - 更改已存储在集合内的文档
 {: #ios-replace-change-the-documents-that-are-already-stored-inside-a-collection }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -610,26 +599,24 @@ NSArray* docs = @[ @{@"_id" : @1, @"json" : @{ @"name": @"carlitos", @"age" : @9
 
 
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Perform the replacement.
 int docsReplaced = [[people replaceDocuments:docs andMarkDirty:NO error:&error] intValue];
 ```
 
-#### Remove - delete all documents that match the query
+#### 移除 - 删除所有匹配查询的文档
 {: #ios-remove-delete-all-documents-that-match-the-query }
 ```objc
 // Get the accessor to an already initialized collection.
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Find document with _id equal to 1 and remove it.
 int docsRemoved = [[people removeWithIds:@[@1] andMarkDirty:NO error:&error] intValue];
 ```
 
-#### Count - gets the total number of documents that match a query
+#### 计数 - 获取匹配查询的文档总数
 {: #ios-count-gets-the-total-number-of-documents-that-match-a-query }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -642,33 +629,30 @@ JSONStoreQueryPart *queryPart = [[JSONStoreQueryPart alloc] init];
 [queryPart searchField:@"name" equal:@"carlos"];
 
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Perform the count.
 int countResult = [[people countWithQueryParts:@[queryPart] error:&error] intValue];
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### 销毁 - 擦除所有用户的数据、销毁内部存储器并清除安全性工件
 {: #ios-destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```objc
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Perform the destroy.
 [[JSONStore sharedInstance] destroyDataAndReturnError:&error];
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### 安全性 - 关闭当前用户所有打开的集合的访问权
 {: #ios-security-close-access-to-all-opened-collections-for-the-current-user }
 ```objc
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Close access to all collections in the store.
 [[JSONStore sharedInstance] closeAllCollectionsAndReturnError:&error];
 ```
 
-#### Security - change the password that is used to access a Store
+#### 安全性 - 更改用于访问存储区的密码
 {: #ios-security-change-the-password-that-is-used-to-access-a-store }
 ```objc
 // The password should be user input.
@@ -678,8 +662,7 @@ NSString* newPassword = @"456";
 NSString* username = @"carlos";
 
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Perform the change password operation.
 [[JSONStore sharedInstance] changeCurrentPassword:oldPassword withNewPassword:newPassword forUsername:username error:&error];
 
@@ -688,7 +671,7 @@ oldPassword = nil;
 newPassword = nil;
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### 推送 - 获取标记为脏的所有文档，并将它们发送到适配器，然后标记为干净
 {: #ios-push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -707,16 +690,14 @@ NSArray* dirtyDocs = [people allDirtyAndReturnError:&error];
 int numCleaned = [[people markDocumentsClean:dirtyDocs error:&error] intValue];
 ```
 
-#### Pull - get new data from an adapter
+#### 拉取 - 从适配器获取新数据
 {: #ios-pull-get-new-data-from-an-adapter }
 ```objc
 // Get the accessor to an already initialized collection.
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
-
+NSError *error = nil;
 // ACTION REQUIRED: Get data (e.g. Adapter).
 // For this example, it is hardcoded.
 NSArray* data = @[ @{@"id" : @1, @"ssn": @"111-22-3333", @"name": @"carlos"} ];
@@ -725,59 +706,55 @@ NSArray* data = @[ @{@"id" : @1, @"ssn": @"111-22-3333", @"name": @"carlos"} ];
 int numChanged = [[people changeData:data withReplaceCriteria:@[@"id", @"ssn"] addNew:YES markDirty:NO error:&error] intValue];
 ```
 
-#### Check whether a document is dirty
+#### 检查文档是否为脏文档
 {: #ios-check-whether-a-document-is-dirty }
 ```objc
 // Get the accessor to an already initialized collection.
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Check if document with _id '1' is dirty.
 BOOL isDirtyResult = [people isDirtyWithDocumentId:1 error:&error];
 ```
 
-#### Check the number of dirty documents
+#### 检查脏文档的个数
 {: #ios-check-the-number-of-dirty-documents }
 ```objc
 // Get the accessor to an already initialized collection.
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Check if document with _id '1' is dirty.
 int dirtyDocsCount = [[people countAllDirtyDocumentsWithError:&error] intValue];
 ```
 
-#### Remove a Collection
+#### 移除集合
 {: #ios-remove-a-collection }
 ```objc
 // Get the accessor to an already initialized collection.
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Remove the collection.
 [people removeCollectionWithError:&error];
 ```
 
-#### Clear all data that is inside a Collection
+#### 清除集合中的所有数据
 {: #ios-clear-all-data-that-is-inside-a-collection }
 ```objc
 // Get the accessor to an already initialized collection.
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
 // This object will point to an error if one occurs.
-NSError* error = nil;
-
+NSError *error = nil;
 // Remove the collection.
 [people clearCollectionWithError:&error];
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### 如果出现失败，那么启动事务、添加某些数据、移除文档、提交事务并回滚事务
 {: #ios-transaction }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -797,16 +774,15 @@ NSError* removeError = nil;
 [people removeWithIds:@[@1] andMarkDirty:NO error:&removeError];
 
 if (addError != nil || removeError != nil) {
-
-  // Return the store to the state before start transaction was called.
+// Return the store to the state before start transaction was called.
   [[JSONStore sharedInstance] rollbackTransactionAndReturnError:&error];
 } else {
-  // Commit the transaction thus ensuring atomicity.
+// Commit the transaction thus ensuring atomicity.
   [[JSONStore sharedInstance] commitTransactionAndReturnError:&error];
 }
 ```
 
-#### Get file information
+#### 获取文件信息
 {: #ios-get-file-information }
 ```objc
 // This object will point to an error if one occurs
@@ -819,14 +795,14 @@ NSArray* results = [[JSONStore sharedInstance] fileInfoAndReturnError:&error];
 
 ## Android
 {: #android }
-#### Initialize and open connections, get an Accessor, and add data
+#### 初始化并打开连接、获取存取器，并添加数据
 {: #android-initialize-and-open-connections-get-an-accessor-and-add-data }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
+try { 
+List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
   // Create the collections object that will be initialized.
   JSONStoreCollection peopleCollection = new JSONStoreCollection("people");
   peopleCollection.setSearchField("name", SearchFieldType.STRING);
@@ -845,7 +821,7 @@ try {
   WLJSONStore.getInstance(ctx).openCollections(collections, initOptions);
 
   // Add data to the collection.
-  JSONObject newDocument = new JSONObject("{name: 'carlos', age: 10}");
+JSONObject newDocument = new JSONObject("{name: 'carlos', age: 10}");
   JSONStoreAddOptions addOptions = new JSONStoreAddOptions();
   addOptions.setMarkDirty(true);
   peopleCollection.addData(newDocument, addOptions);
@@ -859,7 +835,7 @@ throw ex;
 }
 ```
 
-#### Initialize with a secure random token from the server
+#### 使用来自服务器的安全随机令牌进行初始化
 {: #android-initialize-with-a-secure-random-token-from-the-server }
 ```java
 // Fill in the blank to get the Android application context.
@@ -880,8 +856,8 @@ AsyncTask<Context, Void, Void> aTask = new AsyncTask<Context, Void, Void>() {
       public void onSuccess(WLResponse response) {
         String secureRandom = response.getResponseText();
 
-        try {
-          List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
+        try { 
+List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
           // Create the collections object that will be initialized.
           JSONStoreCollection peopleCollection = new JSONStoreCollection("people");
           peopleCollection.setSearchField("name", SearchFieldType.STRING);
@@ -920,15 +896,15 @@ AsyncTask<Context, Void, Void> aTask = new AsyncTask<Context, Void, Void>() {
 aTask.execute(ctx);
 ```
 
-#### Find - locate documents inside the Store
+#### 查找 - 找到存储区中的文档
 {: #android-find-locate-documents-inside-the-store }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Get the already initialized collection.
-  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try { 
+// Get the already initialized collection.
+JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   JSONStoreQueryParts findQuery = new JSONStoreQueryParts();
   JSONStoreQueryPart part = new JSONStoreQueryPart();
@@ -938,18 +914,16 @@ try {
 
   // Add additional find options (optional).
   JSONStoreFindOptions findOptions = new JSONStoreFindOptions();
-
-  // Returns a maximum of 10 documents, default no limit.
+// Returns a maximum of 10 documents, default no limit.
   findOptions.setLimit(10);
   // Skip 0 documents, default no offset.
   findOptions.setOffset(0);
-
-  // Search fields to return, default: ['_id', 'json'].
+// Search fields to return, default: ['_id', 'json'].
   findOptions.addSearchFilter("_id");
   findOptions.addSearchFilter("json");
 
   // How to sort the returned values, default no sort.
-  findOptions.sortBySearchFieldAscending("name");
+findOptions.sortBySearchFieldAscending("name");
   findOptions.sortBySeachFieldDescending("age");
 
   // Find documents that match the query.
@@ -961,15 +935,15 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### 替换 - 更改已存储在集合内的文档
 {: #android-replace-change-the-documents-that-are-already-stored-inside-a-collection }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Get the already initialized collection.
-  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try { 
+// Get the already initialized collection.
+JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Documents will be located with their '_id' field 
   //and replaced with the data in the 'json' field.
@@ -984,22 +958,22 @@ try {
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-  throw ex;
+throw ex;
 }
 ```
 
-#### Remove - delete all documents that match the query
+#### 移除 - 删除所有匹配查询的文档
 {: #android-remove-delete-all-documents-that-match-the-query }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Get the already initialized collection.
-  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try { 
+// Get the already initialized collection.
+JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Documents will be located with their '_id' field.
-  int id = 1;
+int id = 1;
 
   JSONStoreRemoveOptions removeOptions = new JSONStoreRemoveOptions();
 
@@ -1019,18 +993,18 @@ catch (JSONException ex) {
 }
 ```
 
-#### Count - gets the total number of documents that match a query
+#### 计数 - 获取匹配查询的文档总数
 {: android-count-gets-the-total-number-of-documents-that-match-a-query }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Get the already initialized collection.
-  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try { 
+// Get the already initialized collection.
+JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Count all documents that match the query.
-  JSONStoreQueryParts countQuery = new JSONStoreQueryParts();
+JSONStoreQueryParts countQuery = new JSONStoreQueryParts();
   JSONStoreQueryPart part = new JSONStoreQueryPart();
 
   // Exact match.
@@ -1047,15 +1021,15 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### 销毁 - 擦除所有用户的数据、销毁内部存储器并清除安全性工件
 {: #android-destory-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Destroy the Store.
-  WLJSONStore.getInstance(ctx).destroy();
+try { 
+// Destroy the Store.
+WLJSONStore.getInstance(ctx).destroy();
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations
@@ -1063,23 +1037,23 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### 安全性 - 关闭当前用户所有打开的集合的访问权
 {: #android-security-close-access-to-all-opened-collections-for-the-current-user }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Close access to all collections.
+try { 
+// Close access to all collections.
   WLJSONStore.getInstance(ctx).closeAll();
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-  throw ex;
+throw ex;
 }
 ```
 
-#### Security - change the password that is used to access a Store
+#### 安全性 - 更改用于访问存储区的密码
 {: #android-security-change-the-password-that-is-used-to-access-a-store }
 ```java 
 // The password should be user input. 
@@ -1091,12 +1065,12 @@ String newPassword = "456";
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  WLJSONStore.getInstance(ctx).changePassword(oldPassword, newPassword, username);
+try { 
+WLJSONStore.getInstance(ctx).changePassword(oldPassword, newPassword, username);
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-  throw ex;
+throw ex;
 } 
 finally {
   // It is good practice to not leave passwords in memory
@@ -1105,15 +1079,15 @@ finally {
 }
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### 推送 - 获取标记为脏的所有文档，并将它们发送到适配器，然后标记为干净
 {: #android-push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Get the already initialized collection.
-  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try { 
+// Get the already initialized collection.
+JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Check if document with _id 3 is dirty.
   List<JSONObject> allDirtyDocuments = peopleCollection.findAllDirtyDocuments();
@@ -1127,15 +1101,15 @@ try {
 }
 ```
 
-#### Pull - get new data from an adapter
+#### 拉取 - 从适配器获取新数据
 {: #android-pull-get-new-data-from-an-adapter }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Get the already initialized collection.
-  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try { 
+// Get the already initialized collection.
+JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Pull data here and place in newDocs. For this example, it is hard-coded.
   List<JSONObject> newDocs = new ArrayList<JSONObject>();
@@ -1148,7 +1122,7 @@ try {
   changeOptions.setAddNew(true); 
 
   // Mark data as dirty (true = yes, false = no), default false.
-  changeOptions.setMarkDirty(true);
+changeOptions.setMarkDirty(true);
 
   // The following example assumes that 'id' and 'ssn' are search fields, 
   // default will use all search fields
@@ -1160,7 +1134,7 @@ try {
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-  throw ex;
+throw ex;
 }
 catch (JSONException ex) {
   // Handle failure for any JSON parsing issues.
@@ -1168,53 +1142,53 @@ catch (JSONException ex) {
 }
 ```
 
-#### Check whether a document is dirty
+#### 检查文档是否为脏文档
 {: #android-check-whetther-a-document-is-dirty }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Get the already initialized collection.
-  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try { 
+// Get the already initialized collection.
+JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Check if document with id '3' is dirty.
   boolean isDirty = peopleCollection.isDocumentDirty(3); 
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-  throw ex;
+throw ex;
 }
 ```
 
-#### Check the number of dirty documents
+#### 检查脏文档的个数
 {: #android-check-the-number-of-dirty-documents }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Get the already initialized collection.
-  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try { 
+// Get the already initialized collection.
+JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Get the count of all dirty documents in the people collection.
   int totalDirty = peopleCollection.countAllDirtyDocuments();
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-  throw ex;
+throw ex;
 }
 ```
 
-#### Remove a Collection
+#### 移除集合
 {: #android-remove-a-collection }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Get the already initialized collection.
-  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try { 
+// Get the already initialized collection.
+JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Remove the collection. The collection object is
   // no longer usable.
@@ -1222,38 +1196,38 @@ try {
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-  throw ex;
+throw ex;
 }
 ```
 
-#### Clear all data that is inside a Collection
+#### 清除集合中的所有数据
 {: #android-clear-all-data-that-is-inside-a-collection }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
-try {
-  // Get the already initialized collection.
-  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+try { 
+// Get the already initialized collection.
+JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   // Clear the collection.
-  peopleCollection.clearCollection();    
+peopleCollection.clearCollection();    
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-  throw ex;
+throw ex;
 }
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### 如果出现失败，那么启动事务、添加某些数据、移除文档、提交事务并回滚事务
 {: #android-transaction }
 ```java
 // Fill in the blank to get the Android application context.
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
-  JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
+// Get the already initialized collection.
+JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   WLJSONStore.getInstance(ctx).startTransaction();
 
@@ -1270,8 +1244,7 @@ try {
 } 
 catch (JSONStoreException ex) {
   // Handle failure for any of the previous JSONStore operations.
-
-  // An exception occured. Take care of it to prevent further damage.
+// An exception occured. Take care of it to prevent further damage.
   WLJSONStore.getInstance(ctx).rollbackTransaction();
 
   throw ex;
@@ -1286,7 +1259,7 @@ catch (JSONException ex) {
 }
 ```
 
-#### Get file information
+#### 获取文件信息
 {: #android-get-file-information }
 ```java
 Context ctx = getContext();

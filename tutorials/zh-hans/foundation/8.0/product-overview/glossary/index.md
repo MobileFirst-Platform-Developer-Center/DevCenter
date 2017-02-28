@@ -9,7 +9,7 @@ weight: 8
 {% comment %}
 Do note use keywords in the keyword terms, as this presents issues with the glossary sort tool. (You can use keywords in the definitions.)
 When the term should logically use a keyword, use the keyword text in the term, and add a no-translation comment.
-For example, instead of using "{{ site.data.keys.mf_console }}   " for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
+For example, instead of using "{{ site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
 <!-- START NON-TRANSLATABLE -->
@@ -18,8 +18,8 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
 
-<br/>本词汇表提供{{ site.data.keys.product }}   软件和产品的术语及定义。
-本词汇表中使用了以下交叉引用：
+<br/>
+本词汇表提供了 {{ site.data.keys.product }} 软件和产品的术语及定义。本词汇表中使用了以下交叉引用：
 
 * **请参阅**：让您根据非首选词汇来参考首选词汇，或根据缩写词来参考拼写完整的格式。
 * **另请参阅**：让您参考意思相关或相反的词汇。
@@ -141,11 +141,11 @@ context)。
 
 ### 管理数据库 (administration database)
 {: #administration-database }
-{{ site.data.keys.mf_console }}    和管理服务的数据库。该数据库表定义诸如应用程序、适配器、带有其描述及数量级的项目的元素。
+{{ site.data.keys.mf_console }} 和管理服务的数据库。该数据库表定义诸如应用程序、适配器、带有其描述及数量级的项目的元素。
 
 ### 广播通知 (broadcast notification)
 {: #broadcast-notification }
-针对特定 {{ site.data.keys.product_adj }}    应用程序的所有用户的通知。另请参阅“基于标记的通知 (tag-based notification)”。
+针对特定 {{ site.data.keys.product_adj }} 应用程序的所有用户的通知。另请参阅“基于标记的通知 (tag-based notification)”。
 
 ### 滑动 (slide)
 {: #slide }
@@ -304,7 +304,7 @@ IP 转发拓扑，其中的代理代表的是后端 HTTP 服务器。它是针�
 
 ### 适配器 (adapter)
 {: #adapter }
-{{ site.data.keys.product_adj }}    应用程序的服务器端代码。适配器连接到企业应用程序，与移动应用程序相互传递数据，并对发送的数据执行任何必需的服务器端逻辑。
+{{ site.data.keys.product_adj }} 应用程序的服务器端代码。适配器连接到企业应用程序，与移动应用程序相互传递数据，并对发送的数据执行任何必需的服务器端逻辑。
 
 ### 视图 (view)
 {: #view }
@@ -348,7 +348,7 @@ Java 管理扩展 (JMX) 规范中实现资源及其检测的 Java 对象。
 
 ### 项目 WAR 文件 (project WAR file)
 {: #project-war-file }
-Web 归档 (WAR) 文件，包含 {{ site.data.keys.product_adj }}    运行时环境的配置，部署在应用程序服务器上。
+Web 归档 (WAR) 文件，包含 {{ site.data.keys.product_adj }} 运行时环境的配置，部署在应用程序服务器上。
 
 ### 信任关联拦截器 (TAI / Trust Association Interceptor (TAI))
 {: #tai--trust-association-interceptor-tai }
@@ -418,9 +418,9 @@ UN/EDIFACT EDI 标准中属于 EDI 组合数据元素的 EDI 数据元素。例�
 {: #component }
 可复用的对象或程序，用于执行特定的功能或与其他组件和应用程序进行协作。
 
-## A {
+## A
 {: #a }
-}
+
 ### Administration Services
 {: #administration-services }
 托管 REST 服务和管理任务的应用程序。Administration Services 应用程序打包在其自己的 WAR 文件中。
@@ -431,7 +431,7 @@ Google 创建的移动操作系统，大多数都是根据 Apache 2.0 和 GPLv2 
 
 ### Application Center
 {: #application-center }
-{{ site.data.keys.product_adj }}    组件，可用于共享应用程序并在移动应用程序的单一存储库中促进团队成员之间的协作。
+{{ site.data.keys.product_adj }} 组件，可用于共享应用程序并在移动应用程序的单一存储库中促进团队成员之间的协作。
 
 ### Application Center 安装程序 (Application Center installer)
 {: #application-center-installer }
@@ -481,14 +481,14 @@ Do not translate "MobileFirst" in the term above (site.data.keys.product_adj key
 Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-IMFData SDK 的服务器端组件，可用于通过使用 {{ site.data.keys.product }}    OAuth 安全功能来保护对 Cloudant 的移动应用程序调用。{{ site.data.keys.product_adj }}    数据代理需要通过信任关联拦截器进行认证。### MobileFirst Operations Console
+IMFData SDK 的服务器端组件，可用于通过使用 {{ site.data.keys.product }} OAuth 安全功能来保护对 Cloudant 的移动应用程序调用。{{ site.data.keys.product_adj }} 数据代理需要通过信任关联拦截器进行认证。### MobileFirst Operations Console
 {: #mobilefirst-operations-console }
 <!-- START NON-TRANSLATABLE -->
 {% comment %}
 Do not translate "MobileFirst Operations Console" in the term above (site.data.keys.mf_console keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-基于 Web 的界面，用于控制和管理 {{ site.data.keys.mf_server }}    中部署的 {{ site.data.keys.product_adj }}    运行时环境，以及收集和分析用户统计信息。### MobileFirst 运行时环境
+基于 Web 的界面，用于控制和管理 {{ site.data.keys.mf_server }} 中部署的 {{ site.data.keys.product_adj }} 运行时环境，以及收集和分析用户统计信息。### MobileFirst 运行时环境
 {: #mobilefirts-runtime-environment }
 <!-- START NON-TRANSLATABLE -->
 {% comment %}
@@ -503,7 +503,7 @@ Server
 Do not translate "MobileFirst Server" in the term above (site.data.keys.mf_server keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-{{ site.data.keys.product_adj }}    组件，用于处理安全性、后端连接、推送通知、移动应用程序管理和分析。{{ site.data.keys.mf_server }}    是应用程序服务器上运行的应用程序集合，充当 {{ site.data.keys.product_adj }}    运行时环境的运行时容器。## N
+{{ site.data.keys.product_adj }} 组件，用于处理安全性、后端连接、推送通知、移动应用程序管理和分析。{{ site.data.keys.mf_server }} 是应用程序服务器上运行的应用程序集合，充当 {{ site.data.keys.product_adj }} 运行时环境的运行时容器。## N
 {: #n }
 
 ## O
@@ -522,7 +522,7 @@ Do not translate "MobileFirst Server" in the term above (site.data.keys.mf_serve
 
 ### PKI 网桥 (PKI bridge)
 {: #pki-bridge }
-一项 {{ site.data.keys.mf_server }}    概念，用于支持用户证书认证框架与 PKI 通信。
+一项 {{ site.data.keys.mf_server }} 概念，用于支持用户证书认证框架与 PKI 通信。
 
 ## W
 {: #w}

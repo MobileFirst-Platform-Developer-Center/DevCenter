@@ -1,34 +1,34 @@
 ---
 layout: tutorial
-title: Live Update
+title: 实时更新
 relevantTo: [ios,android]
 weight: 11
 downloads:
-  - name: Download Xcode project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80
-  - name: Download Android Studio project
-    url: https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80
-  - name: Download Live Update adapter
-    url: https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true
+  - 名称：下载 Xcode 项目
+    url：https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80
+  - 名称：下载 Android Studio 项目
+    url：https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80
+  - 名称：下载实时更新适配器
+    url：https://github.com/mfpdev/resources/blob/master/liveUpdateAdapter.adapter?raw=true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-User segmentation is the practice of dividing users into groups that reflect similarity among users in each group. A common example is [geographic segmentation](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation), that is, dividing users on a geographical basis. The goal of segmenting users is to decide how to relate to them in each segment in order to maximize value.
+用户分段是将用户分组的做法，反映每个组的用户之间的相似度。常见示例是[地理分段](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation)，也就是按地理划分用户。分段用户的目标是决定如何关联每个分段中的用户以使价值最大化。
 
-The Live Update feature in {{ site.data.keys.product }} provides a simple way to define and serve different configurations for each segment of users of an application. It includes a component in the {{ site.data.keys.mf_console }} for defining the structure of the configuration as well as the values of the configuration for each segment. Also provided is  a client SDK (available for Android and iOS **native** applications) for consuming the configuration.
+{{ site.data.keys.product }} 中的实时更新功能部件提供一种简单方式以针对应用程序的每个用户分段定义和提供不同的配置。其包含 {{ site.data.keys.mf_console }} 中的组件以供定义配置结构以及每个分段的配置值。另外，随附一个客户机 SDK（适用于 Android 和 iOS **本机**应用程序）以供使用配置。
 
-#### Common Use Cases
+#### 常见用例
 {: #common-use-cases }
-Live Update supports defining and consuming segment-based configurations, making it easy to make segment-based customizations to the application. Common use cases can be:
+实时更新支持定义和使用基于分段的配置，从而易于对应用程序进行基于分段的定制。常见用例可以是：
 
-* Release trains and feature flipping
-* A/B testing
-* Context-based customization of the application (e.g. geographic segmentation)
+* 发行培训和功能部件开关
+* A/B 测试
+* 基于上下文的应用程序定制（例如，地理分段）
 
-#### Demonstration
+#### 演示
 {: #demonstration }
-The following video provides a demonstration of the Live Update feature.
+以下视频提供实时更新功能部件的演示。
 
 <div class="sizer">
     <div class="embed-responsive embed-responsive-16by9">
@@ -36,112 +36,109 @@ The following video provides a demonstration of the Live Update feature.
     </div>
 </div>
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Live Update Architecture](#live-update-architecture)
-* [Adding Live Update to {{ site.data.keys.mf_server }}](#adding-live-update-to-mobilefirst-server)
-* [Configuring Application Security](#configuring-application-security)
-* [Schema and Segments](#schema-and-segments)
-* [Adding Live Update SDK to Applications](#adding-live-update-sdk-to-applications)
-* [Using the Live Update SDK](#using-the-live-update-sdk)
-* [Advanced Topics](#advanced-topics)
-* [Sample Application](#sample-application)
+* [实时更新体系结构](#live-update-architecture)
+* [向 {{ site.data.keys.mf_server }} 添加实时更新](#adding-live-update-to-mobilefirst-server)
+* [配置应用程序安全性](#configuring-application-security)
+* [模式和分段](#schema-and-segments)
+* [向应用程序添加实时更新 SDK](#adding-live-update-sdk-to-applications)
+* [使用实时更新 SDK](#using-the-live-update-sdk)
+* [高级主题](#advanced-topics)
+* [样本应用程序](#sample-application)
 
 
-## Live Update Architecture
+## 实时更新体系结构
 {: #live-update-architecture }
-The following system components function together in order to provide the Live Update functionality.
+以下系统组件一起运行以提供实时更新功能。
 
-![Architecture overview](architecture_overview.png)
+![体系结构概述](architecture_overview.png)
 
-* **Live Update adapter:** an adapter which provides:
- - Application schema and segments management
- - Serving configurations to applications
-* **Segment Resolver adapter:** *Optional*. A custom adapter that is implemented by the developer. The adapter receives application context (such as device and user context, as well as custom parameters) and returns the ID of a segment that corresponds to the context.
-* **Client-side SDK:** the Live Update SDK is used to retrieve and access configuration elements such as features and properties from the {{ site.data.keys.mf_server }}.
-* **{{ site.data.keys.mf_console }}:** used for configuring the Live Update adapter and settings.
-* **Configuration Service:** *Internal*. Provides configuration management services for the Live Update adapter.
+* **实时更新适配器：**提供以下功能的适配器：
+ - 应用程序模式和分段管理
+ - 向应用程序提供配置
+* **分段解析器适配器：***可选*。开发人员实施的定制适配器。适配器接收应用程序上下文（例如，设备和用户上下文以及定制参数）并返回对应于上下文的分段标识。
+* **客户机端 SDK：**实时更新 SDK 用于从 {{ site.data.keys.mf_server }} 检索和访问配置元素，例如，功能部件和属性。
+* **{{ site.data.keys.mf_console }}：**用于配置实时更新适配器和设置。
+* **配置服务：***内部*。针对实时更新适配器提供配置管理服务。
 
-## Adding Live Update to {{ site.data.keys.mf_server }}
+## 向 {{ site.data.keys.mf_server }} 添加实时更新
 {: #adding-live-update-to-mobilefirst-server }
-By default, Live Update Settings in the {{ site.data.keys.mf_console }} is hidden. To enable, the provided Live Update adapter needs to be deployed.  
+缺省情况下，将隐藏 {{ site.data.keys.mf_console }} 中的“实时更新设置”。要启用，需要部署提供的实时更新适配器。  
 
-1. Open the {{ site.data.keys.mf_console }}. From the sidebar navigation click on **Download Center → Tools** tab.
-2. Download and deploy the Live Update adapter.
+1. 打开 {{ site.data.keys.mf_console }}。从侧边栏，单击**下载中心 → 工具**选项卡。
+2. 下载并部署实时更新适配器。
 
-Once deployed, the **Live Update Settings** screen is then revealed for each registered application.
+一旦部署，那么将针对每个已注册的应用程序显示**实时更新设置**屏幕。
 
-<img class="gifplayer" alt="Deploy live update" src="deploy-live-update.png"/>
+<img class="gifplayer" alt="部署实时更新" src="deploy-live-update.png"/>
 
-## Configuring Application Security
+## 配置应用程序安全性
 {: #configuring-application-security }
-In order to allow integration with Live Update, a scope element is required. Without it, the adapter will reject requests from client applications.  
+为支持与实时更新集成，需要一个作用域元素。如果没有，适配器将拒绝来自客户机应用程序的请求。  
 
-Load the {{ site.data.keys.mf_console }} and click on **[your application] → Security tab → Scope-Elements Mapping**. Click **New** and enter the scope element **configuration-user-login**. Then, click **Add**.
+装入 {{ site.data.keys.mf_console }}，然后单击**[您的应用程序] → 安全性选项卡 → 作用域/元素映射**。单击**新建**并输入作用域元素 **configuration-user-login**。然后，单击**添加**。
 
-You can also map the scope element to a security check in case you're using one in your application.
+在应用程序中使用时，也可以将作用域元素映射到安全性检查。
 
-> [Learn more about the {{ site.data.keys.product_adj }} security framework](../../authentication-and-security/)
+> [了解有关 {{ site.data.keys.product_adj }} 安全框架的更多信息](../../authentication-and-security/)
 
-<img class="gifplayer" alt="Add a scope mapping" src="scope-mapping.png"/>
+<img class="gifplayer" alt="添加作用域映射" src="scope-mapping.png"/>
 
-## Schema and Segments
+## 模式和分段
 {: #schema-and-segments }
-Two tabs are available in the Live Update Settings screen:
+“实时更新设置”屏幕上提供两个选项卡：
 
-#### Schema
+#### 模式
 {: #schema }
-A schema is where features and properties are defined.  
+模式用于定义功能部件和属性。  
 
-* Using "features" you can define configurable application features and set their default value.  
-* Using "properties" you can define configurable application properties and set their default value.
+* 使用“功能部件”，您可以定义可配置的应用程序功能部件并设置其缺省值。  
+* 使用“属性”，您可以定义可配置的应用程序属性并设置其缺省值。
 
-#### Segments
+#### 分段
 {: #segments }
-Segments define unique application behaviors by customizing the default features and properties defined by the schema.
+分段通过定制模式所定义的缺省功能部件和属性来定义独特应用程序行为。
 
-### Adding Schema and Segments
+### 添加模式和分段
 {: #adding-schema-and-segments }
-Before adding a schema and segments for an applicaiton, the developer or product management team need to reach a decision about several aspects:
+在针对应用程序添加模式和分段之前，开发人员或产品管理团队需要就多个方面达成决策：
 
-* The set of **features** to utilize Live Update for as well as their default state
-* The set of configurable string **properties** and their default value
-* The market segments for the application
+* 要利用实时更新的**功能部件**及其缺省状态的集合
+* 可配置字符串**属性**及其缺省值的集合
+* 应用程序的消费群
 
-For each market segment it should be decided:
+对于每个消费群，应决定：
 
-* What is the state of every feature, and how this state can change during the application lifetime
-* What is the value of every property, and how this value can change during the application lifetime
+* 每个功能部件的状态，以及在应用程序生命周期内此状态如何更改
+* 每个属性的值，以及在应用程序生命周期内此值如何更改
 
 <br/>
-Once the parameters are decided upon, Schema features &amp; properties and Segments can be added.  
-To add, click **New** and provide the requested values.
-
+在决定参数后，可添加“模式功能部件和属性”以及“分段”。  
+要添加，请单击**新建**并提供请求的值。
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="schema">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#terminology" data-target="#collapseSchema" aria-expanded="false" aria-controls="collapseSchema">Click to review schema terminology</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#terminology" data-target="#collapseSchema" aria-expanded="false" aria-controls="collapseSchema">单击以复审模式术语</a>
             </h4>
         </div>
 
         <div id="collapseSchema" class="panel-collapse collapse" role="tabpanel" aria-labelledby="schema">
             <div class="panel-body">
                 <ul>
-                    <li><b>Feature:</b> A feature determines if some part of the application functionality is enabled or disabled. When defining a feature in the schema of an application the following elements should be provided:
-                        <ul>
-                            <li><i>id</i> – A unique feature identifier. String, Non-editable.</li>
-                            <li><i>name</i> - A descriptive name of the feature. String, Editable.</li>
-                            <li><i>description</i> – A short description of the feature. String, Editable.</li>
-                            <li><i>defaultValue</i> – The default value of the feature that will be served unless it was overridden inside the segment (see Segment below). Boolean, Editable.</li>
+                    <li><b>功能部件：</b>功能部件确定是启用还是禁用某些部分的应用程序功能。在应用程序模式中定义功能部件时，应提供以下元素：<ul>
+                            <li><i>id</i> - 唯一功能部件标识。字符串，不可编辑。</li>
+                            <li><i>name</i> - 功能部件的描述性名称。字符串，可编辑。</li>
+                            <li><i>description</i> - 功能部件的简短描述。字符串，可编辑。</li>
+                            <li><i>defaultValue</i> - 将提供的功能部件的缺省值，除非在分段内进行覆盖（请参阅以下分段）。布尔值，可编辑。</li>
                         </ul>
                     </li>
-                    <li><b>Property:</b> A property is a key:value entity that can be used to customize applications. When defining a property in the schema of an application the following elements should be provided:
-                        <ul>
-                            <li><i>id</i> – A unique property identifier. String, Non-editable.</li>
-                            <li><i>name</i> - A descriptive name of a property. String, Editable.</li>
-                            <li><i>description</i> – A short description of the property. String, Editable.</li>
-                            <li><i>defaultValue</i> - The default value of the property that will be served unless it was overridden inside the segment (see Segment below). String, Editable.</li>
+                    <li><b>属性：</b>属性是一个可用于定制应用程序的“键:值”实体。在应用程序模式中定义属性时，应提供以下元素：<ul>
+                            <li><i>id</i> - 唯一属性标识。字符串，不可编辑。</li>
+                            <li><i>name</i> - 属性的描述性名称。字符串，可编辑。</li>
+                            <li><i>description</i> - 属性的简短描述。字符串，可编辑。</li>
+                            <li><i>defaultValue</i> - 将提供的属性的缺省值，除非在分段内进行覆盖（请参阅以下分段）。字符串，可编辑。</li>
                         </ul>
                     </li>
                 </ul>
@@ -152,28 +149,27 @@ To add, click **New** and provide the requested values.
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="segment">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#terminology" data-target="#collapseSegment" aria-expanded="false" aria-controls="collapseSegment">Click to review segment terminology</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#terminology" data-target="#collapseSegment" aria-expanded="false" aria-controls="collapseSegment">单击以复审分段术语</a>
             </h4>
         </div>
 
         <div id="collapseSegment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="segment">
             <div class="panel-body">
                 <ul>
-                    <li><b>Segment:</b> A segment is an entity that corresponds to a market segment. It contains the features and properties that were defined in the schema and potentially overriding values. When defining a Segment the  following elements should be provided:
-                        <ul>
-                            <li><i>id</i> - A unique segment identifier. String, Non-editable.</li>
-                            <li><i>name</i> - A descriptive name of segment. String, Editable.</li>
-                            <li><i>description</i> – A short description of segment. String, Editable.</li>
-                            <li><i>Features</i>  - A the list of features as defined in the schema, the user can set a static value to a feature which is detached from the schema default.</li>
-                            <li><i>Properties</i> - the list of properties as defined in the schema, the user can set a static value to a property which is detached from the schema default.</li>
+                    <li><b>分段：</b>分段是对应于消费群的实体。其包含在模式中定义的功能和属性，可能会覆盖值。在定义分段时，应提供以下元素：<ul>
+                            <li><i>id</i> - 唯一分段标识。字符串，不可编辑。</li>
+                            <li><i>name</i> - 分段的描述性名称。字符串，可编辑。</li>
+                            <li><i>description</i> - 分段的简短描述。字符串，可编辑。</li>
+                            <li><i>Features</i> - 在模式中定义的功能部件列表，用户可为与模式缺省值分离的功能部件设置静态值。</li>
+                            <li><i>Properties</i> - 模式中定义的属性列表，用户可为与模式缺省值分离的属性设置静态值。</li>
                         </ul>
                     </li>
                 </ul>
 
-                <blockquote><b>Note:</b><br/>
+                <blockquote><b>注：</b><br/>
                     <ul>
-                        <li>When a feature or property is added to a schema, a corresponding feature or property is automatically added to all segments of an application (with the default value)</li>
-                        <li>When a feature or property is removed from a schema, the corresponding feature or property is automatically removed from all the segments of an application.</li>
+                        <li>在向模式添加功能部件或属性时，会自动将对应的功能部件或属性添加到应用程序的所有分段（含缺省值）。</li>
+                        <li>在从模式除去功能部件或属性时，会自动从应用程序的所有分段除去对应的功能部件或属性。</li>
                     </ul>
                 </blockquote>
             </div>
@@ -181,42 +177,42 @@ To add, click **New** and provide the requested values.
     </div>
 </div>
 
-#### Define Schema features and properties with default values
+#### 定义模式功能部件和属性以及缺省值
 {: #define-schema-features-and-properties-with-default-values }
-<img class="gifplayer" alt="Add schema feature and property" src="add-feature-property.png"/>
+<img class="gifplayer" alt="添加模式功能部件和属性" src="add-feature-property.png"/>
 
-#### Define segments that correspond to market segments
+#### 定义对应于消费群的分段
 {: #define-degments-that-correspond-to-market-segments }
-<img class="gifplayer" alt="Add a segment" src="add-segment.png"/>
+<img class="gifplayer" alt="添加分段" src="add-segment.png"/>
 
-#### Override default values of features and properties
+#### 覆盖功能部件和属性的缺省值
 {: #override-default-values-of-features-and-properties }
-Enable a feature and change its default state.
-<img class="gifplayer" alt="Enable a feature" src="feature-enabling.png"/>
+启用功能部件并更改其缺省状态。
+<img class="gifplayer" alt="启用功能部件" src="feature-enabling.png"/>
 
-Override the default value of a property.
-<img class="gifplayer" alt="Override a property" src="property-override.png"/>
+覆盖属性的缺省值。
+<img class="gifplayer" alt="覆盖属性" src="property-override.png"/>
 
-## Adding Live Update SDK to applications
+## 向应用程序添加实时更新 SDK
 {: #adding-live-update-sdk-to-applications}
-The Live Update SDK provides developers with API to query runtime configuration features and properties that were previously defined in the Live Update Settings screen of the registered application in the {{ site.data.keys.mf_console }}.
+实时更新 SDK 向开发人员提供 API 以查询在 {{ site.data.keys.mf_console }} 的注册应用程序的“实时更新设置”屏幕中预先定义的运行时配置功能部件和属性。
 
-* [Cordova plugin documentation](https://github.com/mfpdev/mfp-live-update-cordova-plugin)
-* [iOS Swift SDK documentation](https://github.com/mfpdev/mfp-live-update-ios-sdk)
-* [Android SDK documentation](https://github.com/mfpdev/mfp-live-update-android-sdk)
+* [Cordova 插件文档](https://github.com/mfpdev/mfp-live-update-cordova-plugin)
+* [iOS Swift SDK 文档](https://github.com/mfpdev/mfp-live-update-ios-sdk)
+* [Android SDK 文档](https://github.com/mfpdev/mfp-live-update-android-sdk)
 
-### Adding the Cordova plugin
+### 添加 Cordova 插件
 {: #adding-the-cordova-plugin }
-In your Cordova application folder run:
+在 Cordova 应用程序文件夹中，运行：
 
 ```bash
 cordova plugin add cordova-plugin-mfp-liveupdate
 ```
 
-### Adding the iOS SDK
+### 添加 iOS SDK
 {: #adding-the-ios-sdk }
-1. Edit your application's podfile by adding the `IBMMobileFirstPlatformFoundationLiveUpdate` pod.  
- For example:
+1. 通过添加 `IBMMobileFirstPlatformFoundationLiveUpdate` pod 编辑应用程序的 pod 文件。  
+ 例如：
 
    ```xml
    use_frameworks!
@@ -227,12 +223,12 @@ cordova plugin add cordova-plugin-mfp-liveupdate
    end
    ```
 
-2. From a **command-line** window, nagivate to the Xcode project's root folder and run the commmand: `pod install`.
+2. 从**命令行**窗口，浏览至 Xcode 项目的根文件夹并运行命令：`pod install`。
 
-### Adding the Android SDK
+### 添加 Android SDK
 {: #adding-the-android-sdk }
-1. In Android Studio, select **Android → Gradle Scripts**, then select the **build.gradle (Module: app)** file.
-2. Add `ibmmobilefirstplatformfoundationliveupdate` inside `dependencies`:
+1. 在 Android Studio 中，选择 **Android → Gradle 脚本**，然后选择 **build.gradle（模块：应用程序）**文件。
+2. 在 `dependencies` 中添加 `ibmmobilefirstplatformfoundationliveupdate`：
 
    ```xml
    dependencies {
@@ -250,14 +246,14 @@ cordova plugin add cordova-plugin-mfp-liveupdate
    }   
    ```
     
-## Using the Live Update SDK
+## 使用实时更新 SDK
 {: #using-the-live-update-sdk }
-There are several approaches to using the Live Update SDK.
+可通过多种方法使用实时更新 SDK。
 
-### Pre-determined Segment
+### 预先确定的分段
 {: #pre-determined-segment }
-Implement logic to retrieve a configuration for a relevant segment.  
-Replace "segment-name", "property-name" and "feature-name" with your own.
+实施逻辑以检索相关分段的配置。  
+将“segment-name”、“property-name”和“feature-name”替换为自己的项。
 
 #### Cordova
 {: #cordova }
@@ -272,7 +268,7 @@ Replace "segment-name", "property-name" and "feature-name" with your own.
     } ,
     function(err) {
         if (err) {
-           alert('liveupdate error:'+err);
+alert('liveupdate error:'+err);
         }
   });
 ```
@@ -308,22 +304,22 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", new Configur
 });
 ```
 
-With the Live Update configuration retrieved, the applicative logic and the application flow can be based on the state of features and properties. For example, if today is a national holiday, introduce a new marketing promotion in the application.
+利用检索的实时更新配置，可用逻辑和应用程序流程可基于功能部件和属性的状态。例如，如果今天是全国性假日，那么在应用程序中引入新的市场营销促销活动。
 
-### Segment Resolver adapter
+### 分段解析器适配器
 {: #segment-resolver-adapter }
-In the [Live Update Architecture](#live-update-architecture) topic, a "segment resolver" adapter was mentioned.  
-The purpose of this adapter is to provide custom business logic for retrieving a segment based on the application/device/user context and applicative custom parameters.
+在[实时更新体系结构](#live-update-architecture)主题中，已提及“分段解析器”适配器。  
+此适配器的目的是提供定制业务逻辑，以基于应用程序/设备/用户上下文和可用定制参数检索分段。
 
-To use a Segment Resolver adapter:
+要使用分段解析器适配器：
 
-1. [Create a new Java adapter](../../adapters/creating-adapters/).
-2. Define the adapter as the Segment Resolver adpater in **Adapters → Live Update adapter → segmentResolverAdapterName**.
-3. When development is done remember [to build and deploy it as well](../../adapters/creating-adapters/).
+1. [创建新的 Java 适配器](../../adapters/creating-adapters/)。
+2. 在**适配器 → 实时更新适配器 → segmentResolverAdapterName** 中将适配器定义为分段解析器适配器。
+3. 在完成开发后，请记住要[重新构建并部署](../../adapters/creating-adapters/)。
 
-The Segment Resolver adapter defines a REST interface. The request to this adapter contains in its body all the required information to decide which segment the end-user belongs to and sends it back to the application.
+分段解析器适配器可定义 REST 接口。此适配器的请求在其主体中包含所有必需的信息，以决定最终用户所属的分段并将其发送回应用程序。
 
-To obtain the configuration by parameters, use the Live Update API to send the request:
+要通过参数获取配置，请使用实时更新 API 来发送请求：
 
 #### Cordova
 {: cordova-resolver }
@@ -335,7 +331,7 @@ LiveUpdateManager.obtainConfiguration(input,function(configuration) {
     } ,
     function(err) {
         if (err) {
-           alert('liveupdate error:'+err);
+alert('liveupdate error:'+err);
         }
   });
 ```
@@ -374,14 +370,14 @@ LiveUpdateManager.getInstance().obtainConfiguration(params , new ConfigurationLi
 });
 ```
 
-#### Adapter implementation
+#### 适配器实现
 {: #adapter-implementation }
-The arguments that are provided by the application using the Live Update client SDK are then passed to the Live Update adapter and from there to the Segment Resolver adapter. This is done automatically by the Live Update adapter without any developer action needed.
+然后，会将应用程序使用实时更新客户机 SDK 提供的参数传递到实时更新适配器，并从此处传递到分段解析器适配器。实时更新适配器自动完成此操作，而无需开发人员执行任何操作。
 
-Update your newly created Segment Resolver adapter's implementation to handle these arguments to return the relevant segment.  
-The below is sample code you can use.
+更新新创建的分段解析器适配器的实现，以处理这些参数，从而返回相关分段。  
+以下是可使用的样本代码。
 
-**Note:** Make sure to add the Gson dependency in your adapter's `pom.xml`:
+**注：**确保在适配器的 `pom.xml` 中添加 Gson 依赖关系：
 
 ```xml
 <dependency>
@@ -463,54 +459,55 @@ public class ResolverAdapterData {
 }
 ```
 
-#### REST interface of the Segment Resolver adapter
+#### 分段解析器适配器的 REST 接口
 {: #rest-interface-of-the-segment-resolver-adapter }
-**Request**
+**请求**
 
-| **Attribute** |  **Value**                                                                                     |  
+| **属性** |  **值**                                                                                     |  
 |:----------------|:--------------------------------------------------------------------------------------------------|
 | *URL*           | /segment                                                                                          |
-| *Method*        | POST                                                                                              |               
-| *Content-type*  | application/json                                                                                  |
-| *Body*          | &lt;JSON object containing all required information for segment resolving&gt;                     |
+| *方法*        | POST                                                                                              |               
+| *内容类型*  | application/json                                                                                  |
+| *主体*          | &lt;包含分段解析的所有必需信息的 JSON 对象&gt;                     |
 
-**Response**
+**响应**
 
-|  **Attribute**   |  **Value**                                |
+|  **属性**   |  **值**                                |
 |:-------------------|:--------------------------------------------|
-| *Content-type*     | text/plain                                  |                                                                          
-| *Body*             |  &lt;string describing the segment ID&gt;   |
+| *内容类型*     | 文本/纯文本                                  |                                                                          
+| *主体*             |  &lt;描述分段标识的字符串&gt;   |
 
 
-## Advanced Topics
+## 高级主题
 {: #advanced-topics }
-### Import/Export
+### 导入/导出
 {: #importexport }
-Once a schmea and segments have been defined, the system administrator can export and import them to other server instances.
+在定义模式和分段后，系统管理员可将其导出并导入到其他服务器实例。
 
-#### Export schema
+#### 导出模式
+
 {: #export-schema }
 ```bash
 curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema > schema.txt
 ```
 
-#### Import schema
+#### 导入模式
 {: #import-schema }
 ```bash
 curl -X PUT -d @schema.txt --user admin:admin -H "Content-Type:application/json" http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/schema
 ```
 
-* Replace "admin:admin" with your own (default is "admin")
-* Replace "localhost" and the port number with your own if needed
-* Replace the application identifier "com.sample.HelloLiveUpdate" with your own application's.
+* 将“admin:admin”替换为自己的项（缺省值为“admin”）
+* 将“localhost”和端口号替换为自己的项（如果需要）
+* 将应用程序标识“com.sample.HelloLiveUpdate”替换为自己的应用程序标识。
 
-#### Export segment(s)
+#### 导出分段
 {: #export-segments }
 ```bash
 curl --user admin:admin http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/admin-plugins/liveUpdateAdapter/com.sample.HelloLiveUpdate/segment?embedObjects=true > segments.txt
 ```
 
-#### Import segment(s)
+#### 导入分段
 {: #import-segments }
 ```bash
 #!/bin/bash
@@ -524,18 +521,18 @@ do
 done
 ```
 
-* Replace "admin:admin" with your own (default is "admin")
-* Replace "localhost" and the port number with your own if needed
-* Replace the application identifier "com.sample.HelloLiveUpdate" with your own application's.
+* 将“admin:admin”替换为自己的项（缺省值为“admin”）
+* 将“localhost”和端口号替换为自己的项（如果需要）
+* 将应用程序标识“com.sample.HelloLiveUpdate”替换为自己的应用程序标识。
 
-### Caching
+### 高速缓存
 {: #caching }
-Caching is enabled by default in order to avoid network latency. This means that updates may not take place immediately.  
-Caching can be disabled if more frequent updates are required.
+缺省情况下，启用高速缓存以避免网络等待时间。这意味着更新可能不会立即发生。  
+如果需要较频繁的更新，那么可禁用高速缓存。
 
 #### Cordova
 {: #cordova-caching }
-controlling client side cache by using an optional _useClientCache_ boolean flag:
+使用可选的 *useClientCache* 布尔标志控制客户机端高速缓存：
 
 ```javascript
 	var input = { segmentId :'18' ,useClientCache : false };
@@ -546,7 +543,7 @@ controlling client side cache by using an optional _useClientCache_ boolean flag
         } ,
         function(err) {
                 if (err) {
-                   alert('liveupdate error:'+err);
+alert('liveupdate error:'+err);
                 }
   });
 ```
@@ -582,28 +579,28 @@ LiveUpdateManager.getInstance().obtainConfiguration("segment-name", false, new C
 });
 ```
 
-### Cache expiration
+### 高速缓存到期
 {: #cache-expiration }
-The `expirationPeriod` value that is defined in **Adapters → Live Update adapter** dictates the length of time until the caching expires.
+**适配器 → 实时更新适配器**中定义的 `expirationPeriod` 值规定高速缓存到期前的时间长度。
 
-<img alt="Image of the sample application" src="live-update-app.png" style="margin-left: 10px;float:right"/>
+<img alt="样本应用程序的图像" src="live-update-app.png" style="margin-left: 10px;float:right"/>
 
-## Sample application
+## 示例应用程序
 {: #sample-application }
-In the sample application you select a country flag and using Live Update the app then outputs text in language that corresponds to the selected country. If enabling the map feature and providing the map, a map of the corresponding country will be displayed.
+在样本应用程序中，选择国家或地区标志并使用实时更新，然后应用程序以对应于选中国家或地区的语言输出文本。如果启用地图功能并提供地图，那么将显示对应国家或地区的地图。
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80) the Xcode project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80) the Android Studio project.
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateSwift/tree/release80) Xcode 项目。  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/LiveUpdateAndroid/tree/release80) Android Studio 项目。
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+遵循样本的 README.md 文件以获取指示信息。
 
-#### Changing Live Update Settings
+#### 更改实时更新设置
 {: #changing-live-update-settings }
-Each segment gets the default value from the schema. Change each one according to the language. For example, for French add: **helloText** - **Bonjour le monde**.
+每个分段从模式获取缺省值。根据语言更改每项。例如，对于法语，添加：**helloText** - **Bonjour le monde**。
 
-In **{{ site.data.keys.mf_console }} → [your application] → Live Update Settings → Segments tab**, click on the **Properties** link that belongs, for example, to **FR**.
+在 **{{ site.data.keys.mf_console }} → [您的应用程序] → 实时更新设置 → 分段选项卡**中，单击所属的**属性**链接，例如，**FR**。
 
-* Click the **Edit** icon and provide a link to an image that representes for example the France geography map.
-* To see the map while using the app, you need to enable to `includeMap` feature.
+* 单击**编辑**图标并提供图像链接，例如，表示法国地图的图像。
+* 要在使用应用程序时查看地图，需要启用 `includeMap` 功能。

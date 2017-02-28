@@ -1,22 +1,22 @@
 ---
 layout: tutorial
-title: Implementing Secure Direct Update
-breadcrumb_title: Secure Direct Update
+title: 实施安全直接更新
+breadcrumb_title: 安全直接更新
 relevantTo: [cordova]
 weight: 2
 ---
 
-## Overview
+## 概述
 {: #overview }
-For secure Direct Update to work, a user-defined keystore file must be deployed in {{ site.data.keys.mf_server }} and a copy of the matching public key must be included in the deployed client application.
+要使安全直接更新生效，必须在 {{ site.data.keys.mf_server }} 中部署用户定义的密钥库文件，并且部署的客户机应用程序中必须包含匹配公用密钥的副本。
 
-This topic describes how to bind a public key to new client applications and existing client applications that were upgraded. For more information on configuring the keystore in {{ site.data.keys.mf_server }}, see [Configuring the {{ site.data.keys.mf_server }} keystore](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
+本主题描述如何将公用密钥绑定到新客户机应用程序和升级的现有客户机应用程序。有关在 {{ site.data.keys.mf_server }} 中配置密钥库的更多信息，请参阅[配置 {{ site.data.keys.mf_server }} 密钥库](../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)。
 
-The server provides a built-in keystore that can be used for testing secure Direct Update for development phases.
+服务器提供内置密钥库，可用于针对开发阶段测试安全直接更新。
 
-**Note:** After you bind the public key to the client application and rebuild it, you do not need to upload it again to the {{ site.data.keys.mf_server }}. However, if you previously published the application to the market, without the public key, you must republish it.
+**注：**在将公用密钥绑定到客户机应用程序并重新构建后，无需重新将其上载到 {{ site.data.keys.mf_server }}。但是，如果预先将应用程序发布到市场，而无公用密钥，那么必须重新发布。
 
-For development purposes, the following default, dummy public key is provided with {{ site.data.keys.mf_server }}:
+针对开发目的，随 {{ site.data.keys.mf_server }} 一起提供以下缺省哑元公用密钥：
 
 ```xml
 -----BEGIN PUBLIC KEY-----
@@ -36,38 +36,38 @@ pdGIdLtkrhzbqHFwXE0v3dt+lnLf21wRPIqYHaEu+EB/A4dLO6hm+IjBeu/No7H7TBFm
 -----END PUBLIC KEY-----
 ```
 
-> Important: Do not use the public key for production purposes.
+> 重要信息：请勿将公用密钥用于生产目的。
 
-## Generating and deploying the keystore
+## 生成和部署密钥库
 {: #generating-and-deploying-the-keystore }
-There are many tools available for generating certificates and extracting public keys from a keystore. The following example demonstrates the procedures with the JDK keytool utility and openSSL.
+可使用多种工具从密钥库生成证书和抽取公用密钥。以下示例演示使用 JDK 密钥工具实用程序和 openSSL 的过程。
 
-1. Extract the public key from the keystore file that is deployed in the {{ site.data.keys.mf_server }}.  
-   Note: The public key must be Base64 encoded.
+1. 从在 {{ site.data.keys.mf_server }} 中部署的密钥库文件抽取公用密钥。  
+   注：公用密钥必须为 Base64 编码。
     
-   For example, assume that the alias name is `mfp-server` and the keystore file is **keystore.jks**.  
-   To generate a certificate, issue the following command:
+   例如，假定别名为 `mfp-server` 并且密钥库文件为 **keystore.jks**。  
+   要生成证书，请发出以下命令：
     
    ```bash
    keytool -export -alias mfp-server -file certfile.cert
    -keystore keystore.jks -storepass keypassword
    ```
     
-   A certificate file is generated.  
-   Issue the following command to extract the public key:
+   此时将生成证书文件。  
+   发出以下命令以抽取公用密钥：
     
    ```bash
    openssl x509 -inform der -in certfile.cert -pubkey -noout
    ```
     
-   **Note:** Keytool alone cannot extract public keys in Base64 format.
+   **注：**密钥工具单独无法抽取 Base64 格式的公用密钥。
     
-2. Perform one of the following procedures:
-    * Copy the resulting text, without the `BEGIN PUBLIC KEY` and `END PUBLIC KEY` markers into the mfpclient property file of the application, immediately after `wlSecureDirectUpdatePublicKey`.
-    * From the command prompt, issue the following command: `mfpdev app config direct_update_authenticity_public_key <public_key>`
+2. 执行下列其中一个过程：
+    * 将生成的文本（不含 `BEGIN PUBLIC KEY` 和 `END PUBLIC KEY` 标记）复制到应用程序的 mfpclient 属性文件，紧跟在 `wlSecureDirectUpdatePublicKey` 后面。
+    * 从命令提示符发出以下命令：`mfpdev app config direct_update_authenticity_public_key <public_key>`
     
-    For `<public_key>`, paste the text that results from Step 1, without the `BEGIN PUBLIC KEY` and `END PUBLIC KEY` markers.
+    对于 `<public_key>`，粘贴从步骤 1 生成的文本，而不含 `BEGIN PUBLIC KEY` 和 `END PUBLIC KEY` 标记。
 
-3. Run the cordova build command to save the public key in the application.
+3. 运行 cordova build 命令以将公用密钥保存在应用程序中。
 
 

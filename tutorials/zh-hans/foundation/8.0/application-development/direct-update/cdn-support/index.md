@@ -1,80 +1,79 @@
 ---
 layout: tutorial
-title: Serving Direct Update requests from a CDN
-breadcrumb_title: CDN Support
+title: 从 CDN 处理直接更新请求
+breadcrumb_title: CDN 支持
 relevantTo: [cordova]
 weight: 1
 ---
-## Overview
+## 概述
 {: #overview }
-You can configure Direct Update requests to be served from a CDN (content delivery network) instead of from the {{ site.data.keys.mf_server }}.
+您可以配置从 CDN（内容交付网络）处理直接更新请求，而不是通过 {{ site.data.keys.mf_server }} 来处理。
 
-#### Advantages of using a CDN
+#### 使用 CDN 的优势
 {: #advantages-of-using-a-cdn }
-Using a CDN instead of the {{ site.data.keys.mf_server }} to serve Direct Update requests has the following advantages:
+使用 CDN 代替 {{ site.data.keys.mf_server }} 处理直接更新请求具有以下优势：
 
-* Removes network overheads from the {{ site.data.keys.mf_server }}.
-* Increases transfer rates higher than the 250 MB/second limit when serving requests from a {{ site.data.keys.mf_server }}.
-* Ensures a more uniform Direct Update experience for all users regardless of their geographical location.
+* 避免了 {{ site.data.keys.mf_server }} 的网络开销。
+* 从 {{ site.data.keys.mf_server }} 处理请求时，传输速率超出了 250 MB/秒的限制。
+* 确保针对所有用户提供更统一的直接更新体验，而无论地理位置如何。
 
-#### General requirements
+#### 常规需求
 {: #general-requirements }
-To serve Direct Update requests from a CDN, ensure that your configuration conforms to the following conditions:
+要从 CDN 处理直接更新请求，请确保配置符合以下条件：
 
-* The CDN must be a reverse proxy in front of the {{ site.data.keys.mf_server }} (or in front of another reverse proxy if needed).
-* When building the application from your development environment, set up your target server to the CDN host and port instead of the host and port of the {{ site.data.keys.mf_server }}. For example, when running the {{ site.data.keys.mf_cli }} command mfpdev server add, provide the CDN host and port.
-* In the CDN administration panel, you need to mark the following Direct Update URLs for caching to ensure that the CDN passes all requests to the {{ site.data.keys.mf_server }} except for the Direct Update requests. For Direct Update requests, the CDN determines whether it obtained the content. If it has, it returns it without going to the {{ site.data.keys.mf_server }}; if not, it goes to the {{ site.data.keys.mf_server }}, gets the Direct Update archive (.zip file), and stores it for the next requests for that specific URL. For applications that are built with v8.0 of {{ site.data.keys.product_full }}, the Direct Update URL is: `PROTOCOL://DOMAIN:PORT/CONTEXT_PATH/api/directupdate/VERSION/CHECKSUM/TYPE`.
-The `PROTOCOL://DOMAIN:PORT/CONTEXT_PATH` prefix is constant for all runtime requests. For example: http://my.cdn.com:9080/mfp/api/directupdate/0.0.1/742914155/full?appId=com.ibm.DirectUpdateTestApp&clientPlatform=android
+* CDN 必须为位于 {{ site.data.keys.mf_server }} 之前（或者根据需要，位于其他逆向代理之前）的逆向代理。
+* 在从开发环境构建应用程序时，将目标服务器设置为 CDN 主机和端口，以代替 {{ site.data.keys.mf_server }} 的主机和端口。例如，在运行 {{ site.data.keys.mf_cli }} 命令 mfpdev server add 时，提供 CDN 主机和端口。
+* 在 CDN 管理面板中，需要标记以下直接更新 URL 以用于高速缓存，从而确保 CDN 将所有请求传递到 {{ site.data.keys.mf_server }}，直接更新请求除外。对于直接更新请求，CDN 确定其是否获取了此内容。如果已获取，那么将返回内容，而不会转至 {{ site.data.keys.mf_server }}；如果没有，将转至 {{ site.data.keys.mf_server }}，获取直接更新归档（.zip 文件），并进行存储以用于此特定 URL 的后续请求。对于使用 {{ site.data.keys.product_full }} V8.0 构建的应用程序，直接更新 URL 为：`PROTOCOL://DOMAIN:PORT/CONTEXT_PATH/api/directupdate/VERSION/CHECKSUM/TYPE`。
+`PROTOCOL://DOMAIN:PORT/CONTEXT_PATH` 前缀对于所有运行时请求不变：例如：http://my.cdn.com:9080/mfp/api/directupdate/0.0.1/742914155/full?appId=com.ibm.DirectUpdateTestApp&clientPlatform=android
 
-In the example, there are additional request parameters that are also part of the request.
+在此示例中，存在同样属于请求的其他请求参数。
 
-* The CDN must allow caching of the request parameters. Two different Direct Update archives might differ only by the request parameters.
-* The CDN must support TTL on the Direct Update response. The support is needed to support multiple direct updates for the same version.
-* The CDN must not change or remove the HTTP headers that are used in the server-client protocol.
+* CDN 必须允许请求参数的高速缓存。两个不同的直接更新归档可能仅在请求参数方面不同。
+* CDN 必须支持直接更新响应上的 TTL。需要此支持以针对相同版本支持多个直接更新。
+* CDN 不得更改或除去在服务器/客户端协议中使用的 HTTP 头。
 
-## Example configuration
+## 示例配置
 {: #example-configuration }
-This example is based on using an Akamai CDN configuration that caches the Direct Update archive. The following tasks are completed by the network administrator, the {{ site.data.keys.product_adj }} administrator, and the Akamai administrator:
+此示例基于 Akamai CDN 配置的使用，该配置可对直接更新归档进行高速缓存。网络管理员、{{ site.data.keys.product_adj }} 管理员和 Akamai 管理员完成以下任务：
 
-#### Network administrator
+#### 网络管理员
 {: #network-administrator }
-Create another domain in the DNS for your {{ site.data.keys.mf_server }}. For example, if your server domain is yourcompany.com you need to create an additional domain such as `cdn.yourcompany.com`.
-In the DNS for the new `cdn.yourcompany.com` domain, set a `CNAME` to the domain name that is provided by Akamai. For example, `yourcompany.com.akamai.net`.
+在 DNS 中为您的 {{ site.data.keys.mf_server }} 创建另一个域。例如，如果服务器域是 yourcompany.com，那么需要创建另一个域，例如，`cdn.yourcompany.com`。
+在新 `cdn.yourcompany.com` 域的 DNS 中，将 `CNAME` 设置为 Akamai 提供的域名。例如，`yourcompany.com.akamai.net`。
 
-#### {{ site.data.keys.product_adj }} administrator
+#### {{ site.data.keys.product_adj }} 管理员
 {: #mobilefirst-administrator }
-Set the new cdn.yourcompany.com domain as the {{ site.data.keys.mf_server }} URL for the {{ site.data.keys.product_adj }} applications. For example, for the Ant builder task, the property is: `<property name="wl.server" value="http://cdn.yourcompany.com/${contextPath}/"/>`.
+将新的 cdn.yourcompany.com 域设置为 {{ site.data.keys.product_adj }} 应用程序的 {{ site.data.keys.mf_server }} URL。例如，对于 Ant 构建器任务，属性为：`<property name="wl.server" value="http://cdn.yourcompany.com/${contextPath}/"/>`。
 
-#### Akamai administrator
+#### Akamai 管理员
 {: #akamai-administrator }
-1. Open the Akamai property manager and set the property **host name** to the value of the new domain.
+1. 打开 Akamai 属性管理器并将属性**主机名**设置为新域的值。
 
-    ![Set the property host name to the value of the new domain](direct_update_cdn_3.jpg)
+    ![将属性主机名设置为新域的值](direct_update_cdn_3.jpg)
     
-2. On the Default Rule tab, configure the original {{ site.data.keys.mf_server }} host and port, and set the **Custom Forward Host Header** value to the newly created domain.
-
-    ![Set the Custom Forward Host Header value to the newly created domain](direct_update_cdn_4.jpg)
+2. 在“缺省规则”选项卡上，配置原始 {{ site.data.keys.mf_server }} 主机和端口，并将**定制转发主机头**值设置为新创建的域。
+    ![将“定制转发主机头”值设置为新创建的域](direct_update_cdn_4.jpg)
     
-3. From the **Caching Option** list, select **No Store**.
+3. 从**高速缓存选项**列表中，选择**不存储**。
 
-    ![From the Caching Option list, select No Store](direct_update_cdn_5.jpg)
+    ![从“高速缓存选项”列表中，选择“不存储”](direct_update_cdn_5.jpg)
 
-4. From the **Static Content configuration** tab, configure the matching criteria according to the Direct Update URL of the application. For example, create a condition that states `If Path matches one of direct_update_URL`.
+4. 从**静态内容配置**选项卡，根据应用程序的直接更新 URL 配置匹配条件。例如，创建声明 `IfPath matches one of direct_update_URL` 的条件。
 
-    ![Configure the matching criteria according to the Direct Update URL of the application](direct_update_cdn_6.jpg)
+    ![根据应用程序的直接更新 URL 配置匹配条件](direct_update_cdn_6.jpg)
     
-5. Set values similar to the following values to configure the caching behavior to make cache the Direct Update URL and to set TTL.
+5. 设置与以下类似的值以配置高速缓存行为，从而高速缓存直接更新 URL 并设置 TTL。
 
-    | Field | Value |
+    | 字段 | 值 |
     |-------|-------|
-    | Caching Option | Cache |
-    | Force Revaluation of Stale Objects | Serve stale if unable to validate |
-    | Max-Age | 3 minutes |
+    | 高速缓存选项 | 高速缓存 |
+    | 旧文件对象的强制重新评估 | 如果无法验证，那么提供旧文件 |
+    | Max-Age | 3 分钟 |
 
-    ![Set values to configure the caching behavior](direct_update_cdn_7.jpg)
+    ![设置值以配置高速缓存行为](direct_update_cdn_7.jpg)
 
-6. Configure the cache key behavior to use all request parameters in the cache key (you must do so to cache different Direct Update archives for different applications or versions). For example, from the **Behavior** list, select `Include all parameters (preserve order from request)`.
+6. 配置高速缓存密钥行为以使用高速缓存密钥中的所有请求参数（必须执行此操作以针对不同的应用程序或版本高速缓存不同的直接更新归档）。例如，从**行为**列表，选择 `Include all parameters (preserve order from request)`。
 
-    ![Configure the cache key behavior to use all request parameters in the cache key](direct_update_cdn_8.jpg)
+    ![配置高速缓存密钥行为以使用高速缓存密钥中的所有请求参数](direct_update_cdn_8.jpg)
 
 

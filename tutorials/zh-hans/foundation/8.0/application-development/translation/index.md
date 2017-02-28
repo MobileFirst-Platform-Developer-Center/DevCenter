@@ -1,35 +1,35 @@
 ---
 layout: tutorial
-title: Multilingual translation of JavaScript (Cordova, Web) applications
-breadcrumb_title: Multilingual translation
+title: JavaScript（Cordova 或 Web）应用程序的多语言翻译
+breadcrumb_title: 多语言翻译
 relevantTo: [javascript]
 weight: 9
 downloads:
-  - name: Download Cordova project
+  - name: 下载 Cordova 项目
     url: https://github.com/MobileFirst-Platform-Developer-Center/Translation/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-You can use the {{ site.data.keys.product_full }} framework to add multilingual translation in JavaScript (Cordova, Web) applications into other languages.  
-Items that can be translated are application strings and system messages. 
+您可以使用 {{ site.data.keys.product_full }} 框架将 JavaScript（Cordova 或 Web）应用程序中的多语言翻译添加到其他语言。  
+可以翻译的项包括应用程序字符串和系统消息。 
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Translating application strings](#translating-application-strings)
-* [Translating system messages](#translating-system-messages)
-* [Multilanguage translation](#multilanguage-translation)
-* [Detecting the device locale and language](#detecting-the-device-locale-and-language)
-* [Sample application](#sample-application)
+* [翻译应用程序字符串](#translating-application-strings)
+* [翻译系统消息](#translating-system-messages)
+* [多语言翻译](#multilanguage-translation)
+* [检测设备语言环境和语言](#detecting-the-device-locale-and-language)
+* [样本应用程序](#sample-application)
 
-## Translating application strings
+## 翻译应用程序字符串
 {: #translating-application-strings }
-Strings that are destined to be translated are stored in a `JSON` object called "Messages". 
+确定要翻译的字符串存储在名为“Messages”的 `JSON` 对象中。 
 
-- In Cordova applications that use the {{ site.data.keys.product_adj }} SDK, you can find it in the **index.js** file of the Cordova application: **[cordova-project-root-directory]/www/js/index.js**.
-- In Web applications, you need to add it.
+- 在使用 {{ site.data.keys.product_adj }} SDK 的 Cordova 应用程序中，您可以在 Cordova 应用程序的 **index.js** 文件中找到它：**[cordova-project-root-directory]/www/js/index.js**。
+- 在 Web 应用程序中，您需要添加它。
 
-### JSON object structure example
+### JSON 对象结构示例
 {: #json-object-structure-example }
 
 ```javascript
@@ -40,49 +40,49 @@ var Messages = {
 };
 ```
 
-Strings stored in the Messages `JSON` object can be referenced in two ways in the application logic:
+可以在应用程序逻辑中通过两种方式引用存储在 Messages `JSON` 对象中的字符串：
 
-**As a JavaScript object property:**
+**作为 JavaScript 对象属性：**
 
 ```javascript
 Messages.headerText
 ```
 
-**As an ID of an HTML element with `class="translate"`:**
+**作为具有 `class="translate"` 的 HTML 元素的标识：**
 
 ```html
 <h1 id="headerText" class="translate"></h1>
 ```
 
-## Translating system messages
+## 翻译系统消息
 {: #translating-system-messages }
-It is also possible to translate the system messages that the application displays, for example "Internet connection is not available" or "Invalid username or password". System messages are stored in the `WL.ClientMessages` object.
+还可能会翻译应用程序显示的系统消息，例如，“因特网连接不可用”或“用户名或密码无效”。系统消息存储在 `WL.ClientMessages` 对象中。
 
-**Note:** Override system messages at a global JavaScript level because some parts of the code are executed only after the application has successfully initialized.
+**注：**在全局 JavaScript 级别覆盖系统消息，因为只会在成功初始化应用程序之后才会执行部分代码：
 
-### Web applications
+### Web 应用程序
 {: #web-applications }
-You can find a full list of system messages in the `messages.json` file, located in the **[project root folder]\node_modules\ibm-mfp-web-sdk\lib\messages\ folder**.
+您可以在位于 **[project root folder]\node_modules\ibm-mfp-web-sdk\lib\messages\ 文件夹**内的 `messages.json` 文件中找到系统消息的完整列表。
 
-### Cordova applications
+### Cordova 应用程序
 {: #cordova-applications }
-You can find a full list of system messages in the `messages.json` file, located inside the generated project.
+您可以在位于已生成项目内的 `messages.json` 文件中找到系统消息的完整列表。
 
-- Android: `[Cordova-project]\platforms\android\assets\www\plugins\cordova-plugin-mfp\worklight\messages`
-- iOS, Windows: `[Cordova-project]\platforms\[ios or windows]\www\plugins\cordova-plugin-mfp\worklight\messages`
+- Android：`[Cordova-project]\platforms\android\assets\www\plugins\cordova-plugin-mfp\worklight\messages`
+- iOS 或 Windows：`[Cordova-project]\platforms\[ios or windows]\www\plugins\cordova-plugin-mfp\worklight\messages`
 
-To translate a system message, override it in the application code.
+要翻译系统消息，请在应用程序代码中将其覆盖。
 
 ```javascript
 WL.ClienMessages.loading = "Application HelloWorld is loading... please wait.";
 ```
 
-## Multilanguage translation
+## 多语言翻译
 {: #multilanguage-translation }
-Using JavaScript, you can implement multilanguage translation for your application.  
-The below steps explain the implementation of this tutorial's sample application.
+通过使用 JavaScript，您可以对应用程序实施多语言翻译。  
+下面的步骤解释了此指南的样本应用程序的实施。
 
-1. Set up the default application strings in the `index.js` file.
+1. 在 `index.js` 文件中设置缺省应用程序字符串。
 
    ```javascript
    var Messages = {
@@ -96,7 +96,7 @@ The below steps explain the implementation of this tutorial's sample application
    };
    ```
 
-2. Override specific strings when required.
+2. 在需要时覆盖特定字符串。
 
    ```javascript
    function setFrench(){
@@ -106,7 +106,7 @@ The below steps explain the implementation of this tutorial's sample application
    }
    ```
 
-3. Update the GUI components with the new strings. You can perform more tasks, such as setting the text direction for right-to-left languages such as Hebrew or Arabic. Each time that an element is updated, it is updated with different strings according to the active language.
+3. 使用新字符串更新 GUI 组件。您可以执行更多任务，如为自右向左语言（如希伯来语或阿拉伯语）设置文本方向。每次更新元素时，都会根据活动的语言使用不同的字符串进行更新。
 
    ```javascript
    function languageChanged(lang) {
@@ -139,20 +139,20 @@ The below steps explain the implementation of this tutorial's sample application
    }
    ```
 
-## Detecting the device locale and language
+## 检测设备语言环境和语言
 {: #detecting-the-device-locale-and-language }
-To detect the language used by the device or browser:
+要检测设备或浏览器使用的语言：
 
-### Web applications
+### Web 应用程序
 {: #web-applications-locale}
-Detect the browser language using `navigator.language` or any number of available frameworks and solutins.
+使用 `navigator.language` 或任意数量的可用框架和解决方案检测浏览器语言。
 
-### Cordova applications
+### Cordova 应用程序
 {: #cordova-applications-locale }
-Detect the locale and the language of the device using the Cordova's globalization plug-in: `cordova-plugin-globalization`.  
-The globalization plug-in is auto-installed when adding a platform to the Cordova application.
+使用 Cordova 的全球化插件检测设备的语言环境和语言：`cordova-plugin-globalization`。  
+将平台添加到 Cordova 应用程序时，将自动安装全球化插件。
 
-Use the `navigator.globalization.getLocaleName` and `navigator.globalization.getPreferredLanguage` functions to detect the locale and language respectively.
+分别使用 `navigator.globalization.getLocaleName` 和 `navigator.globalization.getPreferredLanguage` 函数检测语言环境和语言。
 
 ```javascript
 navigator.globalization.getLocaleName(
@@ -179,15 +179,15 @@ navigator.globalization.getPreferredLanguage(
 );
 ```
 
-The result can then be seen in the device log, for example from Android Studio's LogCat:  
-![Get device localle and language](DeviceLocaleLangugae.png)
+然后可以在设备日志（例如从 Android Studio 的 LogCat）中查看结果：  
+![获取设备语言环境和语言](DeviceLocaleLangugae.png)
 
-## Sample application
+## 样本应用程序
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Translation) the Cordova project.  
+[单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/Translation) Cordova 项目。  
 
-### Sample usage
+### 样本用法
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+遵循样本的 README.md 文件获取指示信息。
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** you can inspect Android's LogCat from Android Studio's LogCat console while the application is running.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **提示：**您可以在应用程序正在运行时从 Android Studio 的 LogCat 控制台检查 Android 的 LogCat。

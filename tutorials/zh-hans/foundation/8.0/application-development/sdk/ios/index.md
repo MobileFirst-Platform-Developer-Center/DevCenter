@@ -1,63 +1,63 @@
 ---
 layout: tutorial
-title: Adding the MobileFirst Foundation SDK to iOS Applications
+title: 将 MobileFirst Foundation SDK 添加到 iOS 应用程序
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-The MobileFirst Foundation SDK consists of a collection of pods that are available through [CocoaPods](http://guides.cocoapods.org) and which you can add to your Xcode project.  
-The pods correspond to core functions and other functions:
+MobileFirst Foundation SDK 包含通过 [CocoaPods](http://guides.cocoapods.org) 可用并且可添加到 Xcode 项目的 pod 集合。  
+pod 与核心函数和其他函数对应：
 
-* **IBMMobileFirstPlatformFoundation** - Implements client-to-server connectivity, handles authentication and security aspects, resource requests, and other required core functions.
-* **IBMMobileFirstPlatformFoundationJSONStore** - Contains the JSONStore framework. For more information, review the [JSONStore for iOS tutorial](../../jsonstore/ios/).
-* **IBMMobileFirstPlatformFoundationPush** - Contains the push notification framework. For more information, review the [Notifications tutorials](../../../notifications/).
-* **IBMMobileFirstPlatformFoundationWatchOS** - Contains support for Apple WatchOS.
+* **IBMMobileFirstPlatformFoundation** - 实现客户机到服务器连接，并处理认证和安全方面、资源请求和其他必需的核心函数。
+* **IBMMobileFirstPlatformFoundationJSONStore** - 包含 JSONStore 框架。有关更多信息，请查看[针对 iOS 的 JSONStore 教程](../../jsonstore/ios/)。
+* **IBMMobileFirstPlatformFoundationPush** - 包含推送通知框架。有关更多信息，请查看[通知教程](../../../notifications/)。
+* **IBMMobileFirstPlatformFoundationWatchOS** - 包含对 Apple WatchOS 的支持。
 
-In this tutorial you learn how to add the MobileFirst Native SDK by using CocoaPods to a new or existing iOS application. You also learn how to configure the {{ site.data.keys.mf_server }} to recognize the application.
+在此教程中，了解如何使用 CocoaPods 将 MobileFirst 本机 SDK 添加到新的或现有的 iOS 应用程序。您还可以了解如何配置 {{ site.data.keys.mf_server }} 以识别应用程序。
 
-**Prerequisites:**
+**先决条件：**
 
-- Xcode and MobileFirst CLI installed on the developer workstation.  
-- A local or remote instance of {{ site.data.keys.mf_server }} is running.
-- Read the [Setting up your MobileFirst development environment](../../../installation-configuration/development/mobilefirst) and [Setting up your iOS development environment](../../../installation-configuration/development/ios) tutorials.
+- Xcode 和 MobileFirst CLI 已安装在开发人员工作站上。  
+- {{ site.data.keys.mf_server }} 的本地或远程实例正在运行。
+- 阅读[设置您的 MobileFirst 开发环境](../../../installation-configuration/development/mobilefirst)和[设置您的 iOS 开发环境](../../../installation-configuration/development/ios)教程。
 
-> **Note:** **Keychain Sharing** capability is mandatory while running iOS apps on simulators using XCode 8.
+> **注：**使用 XCode 8 的情况下在模拟器上运行 iOS 应用程序时必需**密钥链共享**功能。
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-- [Adding the MobileFirst Native SDK](#adding-the-mobilefirst-native-sdk)
-- [Manually Adding the MobileFirst Native SDK](#manually-adding-the-mobilefirst-native-sdk)
-- [Adding Support for Apple watchOS](#adding-support-for-apple-watchos)
-- [Updating the MobileFirst Native SDK](#updating-the-mobilefirst-native-sdk)
-- [Generated MobileFirst Native SDK artifacts](#generated-mobilefirst-native-sdk-artifacts)
-- [Bitcode and TLS 1.2](#bitcode-and-tls-12)
-- [Tutorials to follow next](#tutorials-to-follow-next)
+- [添加 MobileFirst 本机 SDK](#adding-the-mobilefirst-native-sdk)
+- [手动添加 MobileFirst 本机 SDK](#manually-adding-the-mobilefirst-native-sdk)
+- [添加对 Apple watchOS 的支持](#adding-support-for-apple-watchos)
+- [更新 MobileFirst 本机 SDK](#updating-the-mobilefirst-native-sdk)
+- [已生成 MobileFirst 本机 SDK 工件](#generated-mobilefirst-native-sdk-artifacts)
+- [位码和 TLS 1.2](#bitcode-and-tls-12)
+- [接下来要学习的教程](#tutorials-to-follow-next)
 
-## Adding the {{ site.data.keys.product_adj }} Native SDK
+## 添加 {{ site.data.keys.product_adj }} 本机 SDK
 {: #adding-the-mobilefirst-native-sdk }
-Follow the instructions below to add the {{ site.data.keys.product }} Native SDK to a new or existing Xcode project, and to register the application to the {{ site.data.keys.mf_server }}.
+遵循下面的指示信息将 {{ site.data.keys.product }} 本机 SDK 添加到新的或现有的 Xcode 项目，以将应用程序注册到 {{ site.data.keys.mf_server }}。
 
-Before you start, make sure that the {{ site.data.keys.mf_server }} is running.  
-If using a locally installed server: From a **Command-line** window, navigate to the server's folder and run the command: `./run.sh`.
+在您开始之前，确保 {{ site.data.keys.mf_server }} 正在运行。  
+如果使用本地安装的服务器：从**命令行**窗口，浏览至服务器的文件夹，然后运行命令：`./run.sh`。
 
-### Creating an application
+### 创建应用程序
 {: #creating-an-application }
-Create an Xcode project or use an existing one (Swift or Objective-C).  
+创建 Xcode 项目或使用现有项目（Swift 或 Objective-C）。  
 
-### Adding the SDK
+### 添加 SDK
 {: #adding-the-sdk }
-1. The {{ site.data.keys.product }} Native SDK is provided via CocoaPods.
-    - If [CocoaPods](http://guides.cocoapods.org) is already installed in your development environment, skip to step 2.
-    - If CocoaPods is not installed, install it as follows:  
-        - Open a **Command-line** window and navigate to the root of the Xcode project.
-        - Run the command: `sudo gem install cocoapods` followed by `pod setup`. **Note:** These commands might take several minutes to complete.
-2. Run the command: `pod init`. This creates a `Podfile`.
-3. Using your favorite code editor, open the `Podfile`.
-    - Comment out or delete the contents of the file.
-    - Add the following lines and save the changes:
+1. 通过 CocoaPods 提供 {{ site.data.keys.product }} 本机 SDK。
+    - 如果您的开发环境中已安装有 [CocoaPods](http://guides.cocoapods.org)，请跳至步骤 2。
+    - 如果未安装 CocoaPods，将按照如下进行安装：  
+        - 打开**命令行**窗口并浏览至 Xcode 项目的根目录。
+        - 运行命令：`sudo gem install cocoapods`，然后运行命令 `pod setup`。**注：**这些命令可能需要几分钟完成。
+2. 运行命令：`pod init`。这将创建 `Podfile`。
+3. 使用您偏爱的代码编辑器打开 `Podfile`。
+    - 注释掉或删除文件的内容。
+    - 添加以下行并保存更改：
 
       ```xml
       use_frameworks!
@@ -67,130 +67,126 @@ Create an Xcode project or use an existing one (Swift or Objective-C).
           pod 'IBMMobileFirstPlatformFoundation'
       end
       ```
-      - Replace **Xcode-project-target** with the name of your Xcode project's target.
+      - 将 **Xcode-project-target** 替换为 Xcode 项目目标的名称。
 
-4. Back in the command-line window, run the commands: `pod install`, followed by `pod update`. These command add the {{ site.data.keys.product }} Native SDK files, add the **mfpclient.plist** file, and generate a Pod project.  
-    **Note:** The commands might take several minutes to complete.
+4. 返回到命令行窗口，运行命令 `pod install`，然后运行命令 `pod update`。这些命令将添加 {{ site.data.keys.product }} 本机 SDK 文件、添加 **mfpclient.plist** 文件并生成 Pod 项目。  
+    **注：**这些命令可能需要几分钟完成。
 
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important**: From here on, use the `[ProjectName].xcworkspace` file in order to open the project in Xcode. Do **not** use the `[ProjectName].xcodeproj` file. A CocoaPods-based project is managed as a workspace containing the application (the executable) and the library (all project dependencies that are pulled by the CocoaPods manager).
-
-### Manually adding the {{ site.data.keys.product_adj }} Native SDK
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点**：从此时开始，使用 `[ProjectName].xcworkspace` 文件在 Xcode 中打开项目。请**勿**使用 `[ProjectName].xcodeproj` 文件。基于 CocoaPods 的项目将作为包含应用程序（可执行程序）和库（CocoaPods 管理器提取的所有项目依赖关系）的工作空间进行管理。
+    ### 手动添加 {{ site.data.keys.product_adj }} 本机 SDK
 {: manually-adding-the-mobilefirst-native-sdk }
-You can also manually add the {{ site.data.keys.product }} SDK:
+您还可以手动添加 {{ site.data.keys.product }} SDK：
 
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-sdk">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Click for instructions</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>单击以获取指示信息</b></a>
             </h4>
         </div>
 
         <div id="collapse-ios-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ios-sdk">
             <div class="panel-body">
-                <p>To manually add the {{ site.data.keys.product }} SDK, first download the SDK .zip file from the <b>{{ site.data.keys.mf_console }} → Download Center → SDKs</b> tab.</p>
+                <p>要手动添加 {{ site.data.keys.product }} SDK，请先通过 <b>{{ site.data.keys.mf_console }} → 下载中心 → SDK</b> 选项卡下载 SDK .zip 文件。</p>
 
                 <ul>
-                    <li>In your Xcode project, add the {{ site.data.keys.product }} framework files to your project.
-                        <ul>
-                            <li>Select the project root icon in the project explorer.</li>
-                            <li>Select <b>File → Add Files</b> and navigate to the folder that contains the framework files previously downloaded.</li>
-                            <li>Click the <b>Options</b> button.</li>
-                            <li>Select <b>Copy items if needed</b> and <b>Create groups for any added folders</b>.<br/>
-                            <b>Note:</b> If you do not select the <b>Copy items if needed</b> option, the framework files are not copied but are linked from their original location.</li>
-                            <li>Select the main project (first option) and select the app target.</li>
-                            <li>In the <b>General</b> tab, remove any frameworks that would get added automatically to <b>Linked Frameworks and Libraries</b>.</li>
-                            <li>Required: In <b>Embedded Binaries</b>, add the following frameworks:
-                                <ul>
+                    <li>在您的 Xcode 项目中，将 {{ site.data.keys.product }} 框架文件添加到您的项目。<ul>
+                            <li>在 Project Explorer 中选择项目根图标。</li>
+                            <li>选择<b>文件 → 添加文件</b>，然后浏览至包含先前已下载框架文件的文件夹。</li>
+                            <li>单击<b>选项</b>按钮。</li>
+                            <li>选择<b>根据需要复制项目</b>和<b>为任何添加的文件夹创建组</b>。<br/>
+                            <b>注：</b>如果未选择<b>根据需要复制项目</b>选项，那么将不会复制框架文件，但会从其原始位置链接框架文件。</li>
+                            <li>选择主要项目（第一个选项）并选择应用程序目标。</li>
+                            <li>在<b>常规</b>选项卡中，移除自动添加到<b>已链接的框架和库</b>的任何框架。</li>
+                            <li>必需：在<b>嵌入式二进制文件</b>中，添加以下框架：
+			    <ul>
                                     <li>IBMMobileFirstPlatformFoundation.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
                                     <li>Localizations.bundle</li>
                                 </ul>
-                                Performing this step will automatically add these frameworks to <b>Linked Frameworks and Libraries</b>.
+                                执行此步骤会自动将这些框架添加到<b>已链接的框架和库</b>。
                             </li>
-                            <li>In <b>Linked Frameworks and Libraries</b>, add the following frameworks:
+                            <li>在<b>已链接的框架和库</b>中，添加以下框架：
                                 <ul>
                                     <li>IBMMobileFirstPlatformFoundationJSONStore.framework</li>
                                     <li>sqlcipher.framework</li>
                                     <li>openssl.framework</li>
                                 </ul>
                             </li>
-                            <blockquote><b>Note:</b> These steps copy the relevant {{ site.data.keys.product }} frameworks to your project and link them within the Link Binary with Libraries list in the Build Phases tab. If you link the files to their original location (without choosing the Copy items if needed option as described previously), you need to set the Framework Search Paths as described below.</blockquote>
+                            <blockquote><b>注：</b>这些步骤会将相关的 {{ site.data.keys.product }} 框架复制到项目，并将“链接二进制文件”中的这些框架与“构建阶段”选项卡中的库列表链接。如果将文件链接到其原始位置（没有按照先前描述选择“根据需要复制项目”选项），那么需要按照下面所述设置“框架搜索路径”。</blockquote>
                         </ul>
                     </li>
-                    <li>The frameworks added in Step 1, would be automatically added to the <b>Link Binary with Libraries</b> section, in the <b>Build Phases</b> tab.</li>
-                    <li><i>Optional:</i> If you did not copy the framework files into your project as described previously , perform the following steps by using the <b>Copy items if needed</b> option, in the <b>Build Phases</b> tab.
-                        <ul>
-                            <li>Open the <b>Build Settings</b> page.</li>
-                            <li>Find the <b>Search Paths</b> section.</li>
-                            <li>Add the path of the folder that contains the frameworks to the <b>Framework Search Paths</b> folder.</li>
+                    <li>在步骤 1 中添加的框架将自动添加到<b>构建阶段</b>选项卡中的<b>将二进制文件与库进行链接</b>部分。</li>
+                    <li><i>可选：</i>如果您没有按照先前所述将框架文件复制到项目中，请在<b>构建阶段</b>选项卡中使用<b>根据需要复制项目</b>选项执行以下步骤。<ul>
+                            <li>打开<b>构建设置</b>页面。</li>
+                            <li>查找<b>搜索路径</b>部分。</li>
+                            <li>将包含框架的文件夹的路径添加到<b>框架搜索路径</b>文件夹。</li>
                         </ul>
                     </li>
-                    <li>In the <b>Deployment</b> section of the <b>Build Settings</b> tab, select a value for the <b>iOS Deployment Target</b> field that is greater than or equal to 8.0.</li>
-                    <li><i>Optional:</i> From Xcode 7, bitcode is set as the default. For limitations and requirements see <a href="additional-information/#working-with-bitcode-in-ios-apps">Working with bitcode in iOS apps</a>. To disable bitcode:
-                        <ul>
-                            <li>Open the <b>Build Options</b> section.</li>
-                            <li>Set <b>Enable Bitcode</b> to <b>No</b>.</li>
+                    <li>在<b>构建设置</b>选项卡的<b>部署</b>部分中，为 <b>iOS 部署目标</b>字段选择一个大于或等于 8.0 的值。</li>
+                    <li><i>可选：</i>从 Xcode 7 开始，将位码设置为缺省项。有关限制和需求，请参阅<a href="additional-information/#working-with-bitcode-in-ios-apps">在 iOS 应用程序中使用位码</a>。要禁用位码：<ul>
+                            <li>打开<b>构建选项</b>部分。</li>
+                            <li>将<b>启用位码</b>设置为<b>否</b>。</li>
                         </ul>
                     </li>
-                    <li>Beginning with Xcode 7, TLS must be enforced. See <a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">Enforcing TLS-secure connections in iOS apps</a>.</li>
+                    <li>从 Xcode 7 开始，必须实施 TLS。请参阅<a href="additional-information/#enforcing-tls-secure-connections-in-ios-apps">在 iOS 应用程序中实施 TLS 安全连接</a>。</li>
                 </ul>
 
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-sdk" data-target="#collapse-ios-sdk" aria-expanded="false" aria-controls="collapse-ios-sdk"><b>结束部分</b></a>
             </div>
         </div>
     </div>
 </div>
 
-### Registering the application
+### 注册应用程序
 {: #registering-the-application }
-1. Open a **Command-line** window and navigate to the root of the Xcode project.  
+1. 打开**命令行**窗口并浏览至 Xcode 项目的根目录。  
 
-2. Run the command:
+2. 运行以下命令：
 
     ```bash
     mfpdev app register
     ```
-    - If a remote server is used, [use the command `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) to add it.
+    - 如果使用的是远程服务器，请[使用命令 `mfpdev server add`](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) 进行添加。
 
-    You are asked to provide the application's BundleID. **Important**: The BundleID is **case sensitive**.  
+    系统会要求您提供应用程序的 BundleID。**要点**：BundleID 是**区分大小写的**。  
 
-The `mfpdev app register` CLI command first connects to the {{ site.data.keys.mf_server }} to register the application, then generates the **mfpclient.plist** file at the root of the Xcode project, and adds to it the metadata that identifies the {{ site.data.keys.mf_server }}.  
+`mfpdev app register` CLI 命令将先连接到 {{ site.data.keys.mf_server }} 以注册应用程序，然后在 Xcode 项目的根目录生成 **mfpclient.plist** 文件，并向该文件添加用来标识 {{ site.data.keys.mf_server }} 的元数据。  
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also register applications from the {{ site.data.keys.mf_console }}:    
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **提示：**您还可以从 {{ site.data.keys.mf_console }} 注册应用程序：    
 >
-> 1. Load the {{ site.data.keys.mf_console }}.
-> 2. Click the **New** button next to **Applications** to register a new application and follow the on-screen instructions.  
-> 3. After the application is registered, navigate to the application's **Configuration Files** tab and copy or download the **mfpclient.plist** file. Follow the onscreen instructions to add the file to your project.
+> 1. 装入 {{ site.data.keys.mf_console }}。
+> 2. 单击**应用程序**旁边的**新建**按钮以注册新应用程序，并遵循屏幕上的指示信息。  
+> 3. 注册应用程序之后，浏览至应用程序的**配置文件**选项卡，然后复制或下载 **mfpclient.plist** 文件。遵循屏幕上的指示信息将此文件添加到您的项目。
 
-### Completing the setup process
+### 完成设置过程
 {: #completing-the-setup-process }
-In Xcode, right-click the project entry, click on **Add Files To [ProjectName]** and select the **mfpclient.plist** file, located at the root of the Xcode project.
+在 Xcode 中，右键单击项目条目，单击**将文件添加到 [ProjectName]**，然后选择位于 Xcode 项目根目录的 **mfpclient.plist** 文件。
 
-### Referencing the SDK
+### 参考 SDK
 {: #referencing-the-sdk }
-Whenever you want to use the {{ site.data.keys.product }} Native SDK, make sure that you import the {{ site.data.keys.product }} framework:
+无论何时您想要使用 {{ site.data.keys.product }} 本机 SDK，都请确保导入 {{ site.data.keys.product }} 框架：
 
-Objective-C:
+Objective-C：
 
 ```objc
 #import <IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h>
 ```
 
-Swift:
+Swift：
 
 ```swift
 import IBMMobileFirstPlatformFoundation
 ```
 
 <br>
-#### Note about iOS 9 and above:
+#### 关于 iOS 9 及以上版本的注意事项：
 {: #note-about-ios-9-and-above }
-> Starting Xcode 7, [Application Transport Security (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14) is enabled by default. In order to run apps during development, you can disable ATS ([read more](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)).
->   1. In Xcode, right-click the **[project]/info.plist file → Open As → Source Code**
->   2. Paste the following:
+> 从 Xcode 7 开始，缺省情况下会启用[应用程序传输安全性 (ATS)](https://developer.apple.com/library/ios/releasenotes/General/WhatsNewIniOS/Articles/iOS9.html#//apple_ref/doc/uid/TP40016198-SW14)。要在开发期间运行应用程序，可以禁用 ATS（[阅读更多](http://iosdevtips.co/post/121756573323/ios-9-xcode-7-http-connect-server-error)）。
+>   1. 在 Xcode 中，右键单击 **[project]/info.plist 文件 → 打开方式 → 源代码**
+>   2. 粘贴以下内容：
 > 
 ```xml
 >      <key>NSAppTransportSecurity</key>
@@ -200,17 +196,15 @@ import IBMMobileFirstPlatformFoundation
 >      </dict>
 ```
 
-## Adding Support for Apple watchOS
+## 添加对 Apple watchOS 的支持
 {: #adding-support-for-apple-watchos}
-If you are developing for Apple watchOS 2 and later, the Podfile must contain sections corresponding to the main app and the watchOS extension. See below example for
-watchOS 2:
+如果是为 Apple watchOS 2 和更高版本进行开发，那么 Podfile 必须包含与主要应用程序和 watchOS 扩展对应的部分。请参阅下面针对 watchOS 2 的示例：
 
 ```xml
 # Replace with the name of your watchOS application
 xcodeproj 'MyWatchApp'
 
 use_frameworks!
-
 #use the name of the iOS target
 target :MyWatchApp do
     platform :ios, 9.0
@@ -224,42 +218,45 @@ target :MyWatchApp WatchKit Extension do
 end
 ```
 
-Verify that the Xcode project is closed and run the `pod install` command.
+验证 Xcode 项目是否已关闭，然后运行 `pod install` 命令。
 
-## Updating the {{ site.data.keys.product_adj }} Native SDK
+## 更新 {{ site.data.keys.product_adj }} 本机 SDK
 {: #updating-the-mobilefirst-native-sdk }
-To update the {{ site.data.keys.product }} Native SDK with the latest release, run the following command from the root folder of the Xcode project in a **Command-line** window:
+要使用最新发行版更新 {{ site.data.keys.product }} 本机 SDK，请在**命令行**窗口中从 Xcode 项目的根文件夹运行以下命令：
 
 ```bash
 pod update
 ```
 
-SDK releases can be found in the SDK's [CocoaPods repository](https://cocoapods.org/?q=ibm%20mobilefirst).
+可以在 SDK 的 [CocoaPods 存储库](https://cocoapods.org/?q=ibm%20mobilefirst)中找到 SDK 发行版。
 
-## Generated {{ site.data.keys.product_adj }} Native SDK artifacts
+## 已生成 {{ site.data.keys.product_adj }} 本机 SDK 工件
 {: generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
-Located at the root of the project, this file defines the client-side properties used for registering your iOS app on the {{ site.data.keys.mf_server }}.
+此文件位于项目的根目录中，定义用于在 {{ site.data.keys.mf_server }} 上注册 iOS 应用程序的客户机端属性。
 
-| Property            | Description                                                         | Example values |
+| 属性            | 描述                                                         | 示例值 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | The communication protocol with the {{ site.data.keys.mf_server }}.             | http or https  |
-| wlServerHost        | The host name of the {{ site.data.keys.mf_server }}.                            | 192.168.1.63   |
-| wlServerPort        | The port of the {{ site.data.keys.mf_server }}.                                 | 9080           |
-| wlServerContext     | The context root path of the application on the {{ site.data.keys.mf_server }}. | /mfp/          |
-| languagePreferences | Sets the default language for client sdk system messages.           | en             |
+| wlServerProtocol    | 与
+{{ site.data.keys.mf_server }}
+的通信协议。             | http 或 https  |
+| wlServerHost        | {{ site.data.keys.mf_server }} 的主机名。                            | 192.168.1.63   |
+| wlServerPort        | {{ site.data.keys.mf_server }} 的端口。
+                                 | 9080           |
+| wlServerContext     | {{ site.data.keys.mf_server }} 上的应用程序的上下文根路径。 | /mfp/          |
+| languagePreferences | 为客户机 sdk 系统消息设置缺省语言。           | zh             |
 
-## Bitcode and TLS 1.2
+## 位码和 TLS 1.2
 {: #bitcode-and-tls-12 }
-For information about support for Bitcode and TLS 1.2 see the [Additional Information](additional-information) page.
+有关对位码和 TLS 1.2 的支持的信息，请参阅[其他信息](additional-information)页面。
 
-## Tutorials to follow next
+## 接下来要学习的教程
 {: #tutorials-to-follow-next }
-With the {{ site.data.keys.product }} Native SDK now integrated, you can now:
+集成 {{ site.data.keys.product }} 本机 SDK 之后，您现在可以：
 
-- Review the [Using the {{ site.data.keys.product }} SDK tutorials](../)
-- Review the [Adapters development tutorials](../../../adapters/)
-- Review the [Authentication and security tutorials](../../../authentication-and-security/)
-- Review the [Notifications tutorials](../../../notifications/)
-- Review [All Tutorials](../../../all-tutorials)
+- 查看[使用 {{ site.data.keys.product }} SDK 教程](../)
+- 查看[适配器开发教程](../../../adapters/)
+- 查看[认证和安全教程](../../../authentication-and-security/)
+- 查看[通知教程](../../../notifications/)
+- 查看[所有教程](../../../all-tutorials)

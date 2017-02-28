@@ -1,93 +1,91 @@
 ---
 layout: tutorial
-title: Developing for Apple watchOS
-breadcrumb_title: watchOS 2, watchOS 3
+title: 针对 Apple watchOS 开发
+breadcrumb_title: watchOS 2 和 watchOS 3
 relevantTo: [ios]
 weight: 13
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-In this example, you will learn how  to set up the development environment for watchOS 2 and later using {{ site.data.keys.product_adj }} framework. The example is created and described using watchOS 2. It also works fine on watchOS 3.
+在此示例中，您将了解如何使用 {{ site.data.keys.product_adj }} 框架为 watchOS 2 和更高版本设置开发环境。将使用 watchOS 2 创建和描述示例。在 watchOS 3 上也可以正常工作。
 
-## Setup
+## 设置
 {: #setup }
-To set up the development environment for watchOS , create the Xcode project, add the watchOS framework, and set up the necessary targets.
+要为 watchOS 设置开发环境，请创建 Xcode 项目，添加 watchOS 框架，然后设置必需的目标。
 
-1. Create a watchOS 2 app in Xcode.
-    * Choose the **File → New → Project** option; the **Choose a template for your new project** dialog appears.
-    * Choose the **watchOS2/Application ** option, click **Next**.
-    * Name the project and click **Next**.
-    * From the navigation dialog, choose the project folder.
+1. 在 Xcode 中创建 watchOS 2 应用程序。
+    * 选择**文件 → 新建 → 项目**选项；将显示**为您的新项目选择模板**对话框。
+    * 选择 **watchOS2/应用程序**选项，单击**下一步**。
+    * 为此项目命名，然后单击**下一步**。
+    * 从导航对话框中选择项目文件夹。
 
-    The project navigation tree now contains a main app folder and a **[project name] WatchKit Extension** folder and target.
+    项目导航树现在包含主要应用程序文件夹以及 **[project name] WatchKit Extension** 文件夹和目标。
 
-    ![WatchOS project in Xcode](WatchOSProject.jpg)
+    ![Xcode 中的 WatchOS 项目](WatchOSProject.jpg)
 
-2. Add the {{ site.data.keys.product_adj }} watchOS framework.
-    * To install the necessary frameworks with CocoaPods, see [Adding the {{ site.data.keys.product_adj }} Native SDK](../../application-development/sdk/ios/#adding-support-for-apple-watchos) tutorial.
-    * To install the necessary frameworks manually:
-        * Obtain the watchOS framework from the Download Center of the {{ site.data.keys.mf_console }}.
-        * Select the **[project name] WatchKit Extension** folder in the left navigation pane.
-        * From the **File** menu, choose **Add Files**.
-        * Click the **Options** button and select the following:
-            * **Copy items if needed** and **Create groups** options.
-            * **[project name] WatchKit Extension** in the **Add to targets** section.
-        * Click **Add**.
+2. 添加 {{ site.data.keys.product_adj }} watchOS 框架。
+    * 要使用 CocoaPods 安装必需的框架，请参阅[添加 {{ site.data.keys.product_adj }} 本机 SDK](../../application-development/sdk/ios/#adding-support-for-apple-watchos) 教程。
+    * 要手动安装必需的框架：
+        * 从 {{ site.data.keys.mf_console }} 的下载中心获取 watchOS 框架。
+        * 在左侧导航窗格中选择 **[project name] WatchKit Extension** 文件夹。
+        * 从**文件**菜单中选择**添加文件**。
+        * 单击**选项**按钮并选择以下项：
+            * **根据需要复制项目**和**创建组**选项。
+            * **添加到目标**部分中的 **[project name] WatchKit Extension**。
+        * 单击 **添加**。
 
-        Now when you select the **[project name] WatchKit Extension** in the **Targets** section:
-            * The framework path appears in the **Framework Search Paths** setting in the **Search Paths** section of the **Build Settings** tab.
-            * The **Link Binary With Libraries** section of the **Build Phases** tab lists the **IBMMobileFirstPlatformFoundationWatchOS.framework** file:
-            ![watchOS linked frameworks](watchOSlinkedframeworks.jpg)
+        现在，当您在**目标**部分中选择 **[project name] WatchKit Extension** 时：
+            * 框架路径将显示在**构建设置**选项卡的**搜索路径**部分内的**框架搜索路径**设置中。
+            * **构建阶段**选项卡的**将二进制文件与库进行链接**部分将列出 **IBMMobileFirstPlatformFoundationWatchOS.framework** 文件：![watchOS 已链接的框架](watchOSlinkedframeworks.jpg)
 
-        > **Note:** WatchOS 2 requires bitcode. From Xcode 7 the **Build Options** is set to **Enable Bitcode Yes** (**Build Settings** tab, **Build Options** section).
-
-3. Register both the main app and the WatchKit extension on the server. Run `mfpdev app register` for each Bundle ID (or register from the {{ site.data.keys.mf_console }}):
+        > **注：**WatchOS 2 需要位码。从 Xcode 7 开始，将**构建选项**设置为**启用位码**（**构建设置**选项卡，**构建选项**部分）。
+3. 在服务器上注册主要应用程序和 WatchKit 扩展。对每个捆绑软件标识运行 `mfpdev app register`（或者从 {{ site.data.keys.mf_console }} 注册）：
     * com.worklight.[project_name]
     * com.worklight.[project_name].watchkitextension
 
-4. In Xcode, from the File->Add File menu, navigate to the mfpclient.plist file created by mfpdev and add it to the project.
-    * Select the file to display the **Target Membership** box. Select the **WatchOSDemoApp WatchKit Extension** target in addition to the **WatchOSDemoApp**.
+4. 在 Xcode 中，从“文件->添加文件”菜单，浏览至通过 mfpdev 创建的 mfpclient.plist 文件，并将其添加到项目。
+    * 选择此文件以显示**目标成员资格**框。除 **WatchOSDemoApp** 之外，选择 **WatchOSDemoApp WatchKit Extension** 目标。
 
-The Xcode project now contains a main app and a watchOS 2 app, each can be developed independently. For Swift, the entry point for the watchOS 2 app is the **InterfaceController.swift** file in the **[project name] watchKit Extension** folder. For Objective-C the entry point is the **ViewController.m** file.
+Xcode 项目现在包含一个主要应用程序和一个 watchOS 2 应用程序，每个应用程序都可以单独开发。对于 Swift，watchOS 2 应用程序的入口点为 **[project name] watchKit Extension** 文件夹中的 **InterfaceController.swift** 文件。对于 Objective-C，入口点为 **ViewController.m** 文件。
 
-## Setting up {{ site.data.keys.product_adj }} security for the iPhone app and the watchOS app
+## 为 iPhone 应用程序和 watchOS 应用程序设置 {{ site.data.keys.product_adj }} 安全性
 {: #setting-up-mobilefirst-security-for-the-iphone-app-and-the-watchos-app }
-The Apple Watch and iPhone devices differs physically. Therefore the security checks for each must be appropriate for the available input devices. For example, the Apple Watch is limited to a number pad and does not allow the usual username/password security check. Therefore access to protected resources on the server could be enabled using a pin code. Because of these and similar differences, it is necessary to apply different security checks for each target.
+Apple Watch 和 iPhone 设备在物理上不同。因此，针对各设备的安全检查必须适合可用的输入设备。例如，Apple Watch 限于数字板，不允许通常的用户名/密码安全性检查。因此，可以使用 pin 码启用对服务器上受保护资源的访问权。由于这些差异及类似差异，需要对每个目标应用不同的安全性检查。
 
-Below is one example of creating an app with both an iPhone and an Apple Watch target. This architecture allows each to have its own security check. The differing security checks are just examples of how you can design features for each target. Additional security checks might be available.
+以下是使用 iPhone 和 Apple Watch 目标创建应用程序的一个示例。此体系结构允许各目标具有自己的安全性检查。不同的安全性检查仅仅是可以如何为每个目标设计功能的示例。可能有其他安全性检查可用。
 
-1. Determine the scope and security checks defined by the protected resource.
-2. In the {{ site.data.keys.mf_console }}:
-    * Ensure that both apps are registered on the server:
+1. 确定由受保护资源定义的范围和安全性检查。
+2. 在 {{ site.data.keys.mf_console }} 中：
+    * 确保两个应用程序都已在服务器上注册：
         * com.worklight.[project_name]
         * com.worklight.[project_name].watchkitextension
-    * Map the scopeName to the defined security checks:
-        * For com.worklight.[project_name] map it to the username/password check.
-        * For com.worklight.[project_name].watchkitapp.watchkitextension map it to the pin code security check.
+    * 将 scopeName 映射到已定义的安全性检查：
+        * 对于 com.worklight.[project_name]，将其映射到用户名/密码检查。
+        * 对于 com.worklight.[project_name].watchkitapp.watchkitextension，将其映射到 pin 码安全性检查。
 
-## WatchOS Limitation
+## WatchOS 限制
 {: #watchos-limitation }
-The optional frameworks that add features to the {{ site.data.keys.product_adj }} app are not provided for watchOS development. Some other features are limited by constraints imposed by the watchOS or Apple Watch device.
+没有为 watchOS 开发提供用于向 {{ site.data.keys.product_adj }} 应用程序添加功能的可选框架。一些其他功能受 watchOS 或 Apple Watch 设备施加的约束限制。
 
-| Feature | Limitation |
+| 功能 | 限制 |
 |---------|------------|
-| openSSL | Not supported |
-| JSONStore| Not supported |
-| Notifications | Not supported |
-| Message alerts displayed by the {{ site.data.keys.product_adj }} code | Not supported |
-| Application authenticity validation | Not compatible with bitcode, and therefore not supported |
-| Remote disable/notify	| Requires customization (see below) |
-| Usernames/password security check | use the CredentialsValidation security check |
+| openSSL | 不受支持 |
+| JSONStore| 不受支持 |
+| 通知 | 不受支持 |
+| {{ site.data.keys.product_adj }} 代码显示的消息警报 | 不受支持 |
+| 应用程序真实性验证 | 与位码不兼容，因此不受支持 |
+| 远程禁用/通知	| 需要定制（见下文） |
+| 用户名/密码安全性检查 | 使用 CredentialsValidation 安全性检查 |
 
-### Remote Disable/Notify
+### 远程禁用/通知
 {: #remote-disablenotify }
-With the {{ site.data.keys.mf_console }}, you can configure the {{ site.data.keys.mf_server }} to disable access (and return a message) to client applications based on the version they are running (see [Remotely disabling application access to protected resources](../../administering-apps/using-console/#remotely-disabling-application-access-to-protected-resources). Two options provide default UI alerts:
+您可以使用 {{ site.data.keys.mf_console }} 配置 {{ site.data.keys.mf_server }}，以根据正在运行的版本禁用对客户机应用程序的访问权并返回消息（请参阅[远程禁用应用程序对受保护资源的访问权](../../administering-apps/using-console/#remotely-disabling-application-access-to-protected-resources)）。两个选项提供缺省 UI 警报：
 
-* when the app is active but a messages is sent: **Active and Notifying**
-* when the app is outdated and access is denied: **Access Denied**
+* 当应用程序处于活动状态但发送消息时：**活动并且正在通知**
+* 当应用程序过时并且访问被拒绝时：**拒绝访问**
 
-For watchOS:
+对于 watchOS：
 
-* To see messages where the app is set to **Active and Notifying,** a custom remote disable challenge handler must be implemented and registered. The custom challenge handler must be initialized with the security check `wl_remoteDisableRealm`.
-* In the case where the access is disabled (**Access Denied**) the client app receives an error message in the failure callback or request delegate handler. The developer can decide how to handle the error, either notifying the user through the UI or writing to the log. In addition the above method of creating a custom challenge handler can be used.
+* 要查看将应用程序设置为**活动并且正在通知**的消息，必须实施和注册定制远程禁用验证问题处理程序。必须使用安全性检查 `wl_remoteDisableRealm` 初始化定制验证问题处理程序。
+* 在禁用访问（**拒绝访问**）情况下，客户机应用程序将在故障回调或请求委派处理程序中收到错误消息。开发人员可以决定如何处理错误，通过 UI 通知用户或者写入日志。此外，还可以使用上述创建定制验证问题处理程序的方法。

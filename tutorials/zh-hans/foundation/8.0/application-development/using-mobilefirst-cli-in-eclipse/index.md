@@ -1,169 +1,169 @@
 ---
 layout: tutorial
-title: Using the MobileFirst CLI in Eclipse
+title: 在 Eclipse 中使用 MobileFirst CLI
 relevantTo: [ios,android,windows,cordova]
-breadcrumb_title: MobileFirst Eclipse plug-in
+breadcrumb_title: MobileFirst Eclipse 插件
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Using the Cordova CLI you can create and manage your Cordova applications. You can also achieve the same in the Eclipse IDE by using the [THyM](https://www.eclipse.org/thym/) plug-in.
+通过使用 Cordova CLI，可以创建和管理您的 Cordova 应用程序。还可以使用 [THyM](https://www.eclipse.org/thym/) 插件在 Eclipse IDE 中实现相同的结果。
 
-THyM provides support for importing and managing Cordova projects in Eclipse. You can create new Cordova projects, as well as import existing Cordova projects. You can also install Cordova plug-ins into your project through this plug-in.
+THyM 支持在 Eclipse 中导入和管理 Cordova 项目。您可以创建新的 Cordova 项目，并且可以导入现有的 Cordova 项目。也可以通过此插件将 Cordova 插件安装到您的项目中。
 
-Learn more about THyM in its [official website](https://www.eclipse.org/thym/).
+在[官方 Web 站点](https://www.eclipse.org/thym/)中了解有关 THyM 的更多信息。
 
-The {{ site.data.keys.mf_studio }} plug-in for Eclipse exposes the various {{ site.data.keys.product_adj }} commands in the Eclipse IDE.
-Specifically, it provides the following commands: Open Server Console, Preview App, Register App, Encrypt App, Pull App, Push App, Update App.
+针对 Eclipse 的 {{ site.data.keys.mf_studio }} 插件将在 Eclipse IDE 中公开各种 {{ site.data.keys.product_adj }} 命令。
+具体来说，它提供以下命令：打开服务器控制台、预览应用程序、注册应用程序、加密应用程序、拉取应用程序、推送应用程序、更新应用程序。
 
-This tutorial walks you through installing the THyM and MobileFirst Eclipse plug-ins.
+此教程将指导您安装 THyM 和 MobileFirst Eclipse 插件。
 
-**Prerequisites:**
+**先决条件：**
 
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* {{ site.data.keys.mf_server }} 在本地运行，或者提供一个远程运行的 {{ site.data.keys.mf_server }}。
+* {{ site.data.keys.mf_cli }} 已安装在开发人员工作站上
 
-#### Jump to:
+#### 跳转至：
 {: #jump-to }
-* [Installing the {{ site.data.keys.mf_studio }} plug-in](#installing-the-mobilefirst-studio-plug-in)
-* [Installing the THyM plug-in](#installing-the-thym-plug-in)
-* [Creating a Cordova project](#creating-a-cordova-project)
-* [Importing an existing Cordova project](#importing-an-existing-cordova-project)
-* [Adding the {{ site.data.keys.product_adj }} SDK to Cordova project](#adding-the-mobilefirst-sdk-to-cordova-project)
-* [{{ site.data.keys.product_adj }} Commands](#mobilefirst-commands)
-* [Tips and Tricks](#tips-and-tricks)
+* [安装 {{ site.data.keys.mf_studio }} 插件](#installing-the-mobilefirst-studio-plug-in)
+* [安装 THyM 插件](#installing-the-thym-plug-in)
+* [创建 Cordova 项目](#creating-a-cordova-project)
+* [导入现有的 Cordova 项目](#importing-an-existing-cordova-project)
+* [将 {{ site.data.keys.product_adj }} SDK 添加到 Cordova 项目](#adding-the-mobilefirst-sdk-to-cordova-project)
+* [{{ site.data.keys.product_adj }} 命令](#mobilefirst-commands)
+* [提示与技巧](#tips-and-tricks)
 
 
-## Installing the {{ site.data.keys.mf_studio }} plug-in
+## 安装 {{ site.data.keys.mf_studio }} 插件
 {: #installing-the-mobilefirst-studio-plug-in}
-1. While in Eclipse click **Help → Eclipse Marketplace...**
-2. In the find field search "{{ site.data.keys.product_adj }}" then click "Go"
-3. Click "Install"
+1. 在 Eclipse 中单击**帮助 → Eclipse Marketplace...**
+2. 在“查找”字段中搜索“{{ site.data.keys.product_adj }}”，然后单击“开始”
+3. 单击“安装”
 
-	![Image of {{ site.data.keys.mf_studio }} installation](mff_install.png)
+	![{{ site.data.keys.mf_studio }} 安装的图像](mff_install.png)
 
-4. Complete the installation process
-5. Restart Eclipse for the installation to take affect.
+4. 完成安装流程
+5. 重新启动 Eclipse 以使安装生效。
 
 
-## Installing the THyM plug-in
+## 安装 THyM 插件
 {: #installing-the-thym-plug-in }
-**Note:** To run THyM you must be running Eclipse Mars or later
+**注：**要运行 THyM，您必须正在运行 Eclipse Mars 或更高版本
 
-1. While in Eclipse click **Help → Eclipse Marketplace...**
-2. In the find field search "thym" then click "Go"
-3. Click "Install" for Eclipse Thym
+1. 在 Eclipse 中单击**帮助 → Eclipse Marketplace...**
+2. 在“查找”字段中搜索“thym”，然后单击“开始”：
+3. 单击 Eclipse Thym 的“安装”
 
-	![Image of THyM installation](Thym_install.png)
+	![THyM 安装的图像](Thym_install.png)
 
-4. Complete the installation process
-5. Restart Eclipse for the installation to take affect.
+4. 完成安装流程
+5. 重新启动 Eclipse 以使安装生效。
 
-## Creating a Cordova project
+## 创建 Cordova 项目
 {: #creating-a-cordova-project }
-In this section we will discuss how to create a new Cordova project using THyM.
+在此部分中，我们将讨论如何使用 THyM 创建新的 Cordova 项目。
 
-1. While in Eclipse click **File → New → Other...**
-2. Narrow options by searching for "Cordova" and select **Hybrid Mobile (Cordova) Application Project** in the **Mobile** directory and click **Next**
+1. 在 Eclipse 中单击**文件 → 新建 → 其他...**
+2. 通过搜索“Cordova”来缩小选项范围，然后在**移动**目录中选择**混合移动 (Cordova) 应用程序项目**，然后单击**下一步**
 
-	![Image of new Cordova wizard](New_cordova_wizard.png)
+	![新 Cordova 向导的图像](New_cordova_wizard.png)
 
-3. Name the project, and click **Next**
+3. 为项目命名，然后单击**下一步**
 
-	![Image of new Cordova naming](New_cordova_naming.png)
+	![新 Cordova 命名的图像](New_cordova_naming.png)
 
-4. Add the desired platform for your project and click **Finish**
+4. 为您的项目添加期望的平台，然后单击**完成**
 
-**Note**: If you need additional platforms after creation see [Adding platforms](#adding-platforms)
+**注**：如果您在创建之后需要其他平台，请参阅[添加平台](#adding-platforms)
 
-## Importing an existing Cordova project
+## 导入现有的 Cordova 项目
 {: #importing-an-existing-cordova-project }
-In this section we will discuss how to import an existing Cordova project that has already been created using the Cordova CLI.
+在此部分中，我们将讨论如何导入已经使用 Cordova CLI 创建的现有 Cordova 项目。
 
-1. While in Eclipse click **File → Import...**
-2. Select **Import Cordova Project** in the **Mobile** directory and click **Next >**
-3. Click **Browse...** and select the root directory of the existing Cordova project.
-4. Ensure the project is checked in the "Projects:" sections and click **Finish**
-	![Image of importing Cordova project](Import_cordova.png)
+1. 在 Eclipse 中单击**文件 → 导入...**
+2. 选择**移动**目录中的**导入 Cordova 项目**，然后单击**下一步 >**
+3. 单击**浏览...**，并选择现有 Cordova 项目的根目录。
+4. 确保在“项目：”部分中检查项目，然后单击**完成**
+	![“导入 Cordova 项目”的图像](Import_cordova.png)
 
-If you import a project without any platforms you will see the following error, please see the [adding platforms](#adding-platforms) section on how to resolve this error.
-![No platforms error image](no-platforms-error.png)
+如果在没有任何平台的情况下导入项目，那么您将看到以下错误，请查看关于如何解决此错误的[添加平台](#adding-platforms)部分。
+![无平台错误图像](no-platforms-error.png)
 
-**Note**: If you need to additional platforms after an import see [adding platforms](#adding-platforms)
+**注**：如果在导入之后需要其他平台，请参阅[添加平台](#adding-platforms)
 
-## Adding the {{ site.data.keys.product_adj }} SDK to Cordova project
+## 将 {{ site.data.keys.product_adj }} SDK 添加到 Cordova 项目
 {: #adding-the-mobilefirst-sdk-to-cordova-project }
-Once you have [installed THyM](#installing-the-thym-plug-in) and the [{{ site.data.keys.mf_cli }} plugin](#installing-the-mobilefirst-studio-plug-in) into Eclipse and have either [created a Cordova project](#creating-a-cordova-project) or [imported a Cordova project](#importing-an-existing-cordova-project) you can then follow the below steps to install the {{ site.data.keys.product_adj }} SDK via Cordova plugin.
+在[将 THyM](#installing-the-thym-plug-in) 和 [{{ site.data.keys.mf_cli }} 插件](#installing-the-mobilefirst-studio-plug-in)安装到 Eclipse 中并且[创建 Cordova 项目](#creating-a-cordova-project)或[导入 Cordova 项目](#importing-an-existing-cordova-project)之后，您可以遵循下面的步骤，通过 Cordova 插件来安装 {{ site.data.keys.product_adj }} SDK。
 
-1. In the Project Explorer right click the **plugins** directory and select **Install Cordova Plug-in**
-2. In the Registry tab of the presented dialog box search **mfp** and select **cordova-plugin-mfp** and click **Finish**
+1. 在 Project Explorer 中，右键单击**插件**目录并选择**安装 Cordova 插件**
+2. 在显示的对话框的“注册表”选项卡中搜索 **mfp**，选择 **cordova-plugin-mfp**，然后单击**完成**
 
-	![Image of new Cordova plugin install](New_installing_cordova_plugin.png)
+	![新 Cordova 插件安装的图像](New_installing_cordova_plugin.png)
 
-## {{ site.data.keys.product_adj }} Commands
+## {{ site.data.keys.product_adj }} 命令
 {: #mobilefirst-commands }
-To access {{ site.data.keys.product }} shortcuts, right-click the root project directory and navigate to **IBM MobileFirst Foundation**.
+要访问 {{ site.data.keys.product }} 快捷方式，请右键单击根项目目录并浏览至 **IBM MobileFirst Foundation**。
 
-Here you will be able to select from the following commands:
+此时，您能够从以下命令中进行选择：
 
-| Menu option         | Action                                                                                                                                       | MobileFirst command-line interface equivalent |
+| 菜单选项         | 操作                                                                                                                                       | MobileFirst 命令行界面等效项 |
 |---------------------|----------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| Open Server Console | When the server definition exists, opens the console so you can view the actions of the specified server.                                    | mfpdev server console                         |
-| Preview App         | Opens the app in the browser preview mode.                                                                                                   | Opens the app in the browser preview mode.    |
-| Register App        | Registers the app with the server that is specified in your server definitions.                                                              | mfpdev app register                           |
-| Encrypt App         | Runs the web resource encryption tool on your app.                                                                                           | mfpdev app webencrypt                         |
-| Pull App            | Retrieves the existing app configuration from the server that is specified in the server definition.                                         | mfpdev app pull                               |
-| Push App            | Sends the app configuration of your current app to the server that is specified in the build definition so you can reuse it for another app. | mfpdev app push                               |
-| Updated App         | Packages the contents of the www folder in a .zip file, and replaces the version on the server with the package.                             | mfpdev app webupdate                          |
+| 打开服务器控制台 | 在服务器定义已存在时，打开控制台，以便您可以查看指定服务器的操作。                                    | mfpdev server console                         |
+| 预览应用程序         | 在浏览器预览方式下打开应用程序。                                                                                                   | 在浏览器预览方式下打开应用程序。    |
+| 注册应用程序        | 向服务器定义中指定的服务器注册应用程序。                                                              | mfpdev app register                           |
+| 加密应用程序         | 在您的应用程序上运行 Web 资源加密工具。                                                                                           | mfpdev app webencrypt                         |
+| 拉取应用程序            | 从服务器定义中指定的服务器检索现有的应用程序配置。                                         | mfpdev app pull                               |
+| 推送应用程序            | 将当前应用程序的应用程序配置发送到在构建定义中指定的服务器，以便您可以对其他应用程序复用此应用程序配置。 | mfpdev app push                               |
+| 已更新应用程序         | 将 www 文件夹的内容打包在 .zip 文件中，并将服务器上的版本替换为此软件包。                             | mfpdev app webupdate                          |
 
 
-## Tips and Tricks
+## 提示与技巧
 {: #tips-and-tricks }
-<img src="runAsContextMenu.png" alt="context-menu in Eclipse to open in External IDEs" style="float:right;width:35%;margin-left: 10px"/>
-### External IDE's
+<img src="runAsContextMenu.png" alt="要在外部 IDE 中打开的 Eclipse 中的上下文菜单" style="float:right;width:35%;margin-left: 10px"/>
+### 外部 IDE
 {: #external-ides }
-If you would like to test or deploy to a device via an External IDE (Android Studio or Xcode) this can be accomplished via the the context menu.
+如果要通过外部 IDE（Android Studio 或 Xcode）测试或部署到设备，可以通过上下文菜单来实现此。
 
-**Note**:  Please be sure to manually import your project into Android Studio to set up the gradle configuration before launching from Eclipse.  Otherwise you might run into unnecessary steps or errors.  From Android Studio select import **Import project (Eclipse ADT Gradle, etc.)** and navigate to your project and select the **android** directory within the **platforms** directory.
+**注**：请确保将项目手动导入 Android Studio 中，以在从 Eclipse 启动之前设置 gradle 配置。否则，您可能会遇到不必要的步骤或错误。从 Android Studio 选择导入：**导入项目（Eclipse ADT Gradle 等）**，并浏览至您的项目，然后选择**平台**目录中的 **android** 目录。
 
-In the Eclipse project explorer right click the desired platform (i.e. **android** or **ios** in the **platforms** directory) → hover over **Run As** in the context menu → select the appropriate external IDE.
+在 Eclipse Project Explorer 中，右键单击期望的平台（例如**平台**目录中的 **android** 或 **ios**）→ 悬停在上下文菜单中的**运行方式** → 选择相应的外部 IDE。
 
-### Adding platforms
+### 添加平台
 {: #adding-platforms }
 
-Adding additional platforms is a simple process that the THyM plugin does not make intuitive.  You have two options to accomplish the same task, and they are as follows.
+添加其他平台是一个简单的过程，THyM 插件不直观显示。您可以通过两个选项来完成同一任务，如下所述。
 
-1. Via Properties
-	1. Right click your project and select **properties** from the context menu.
-	1. In the presented dialog select **Hybrid Mobile Engin** from the left hand menu.
-	1. In this pane you will be able to select or download the desired platforms.
+1. 通过“属性”
+	1. 右键单击您的项目并从上下文菜单中选择**属性**。
+	1. 在显示的对话框中，从左侧菜单选择**混合移动引擎**。
+	1. 在此窗格中，您将能够选择或下载期望的平台。
 
-1. Via Terminal
-	1. Right click your project and hover over **Show In** and select **Terminal** from the context menu.
-	1. This should add a tab to next to the console in Eclipse
-	1. Here you will be able to manually add platforms using the Cordova CLI commands
-		*  `cordova platform ls` will list the installed and available platforms
-		*  `cordova platform add <platform>`  where *<platform>* equals your desired platform, will add the specified platform to the project.
-		*  For more information on Cordova platform specific commands see <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova platform command documentation</a>.
+1. 通过“终端”
+	1. 右键单击您的项目，悬停在**显示于**上，然后从上下文菜单中选择**终端**。
+	1. 这应该会在 Eclipse 中的控制台旁边添加一个选项卡。
+	1. 此时，您将能够使用 Cordova CLI 命令手动添加平台
+		*  `cordova platform ls` 将列示已安装的平台和可用平台
+		*  `cordova platform add <platform>`（其中 *<platform>* 为您期望的平台）会将指定的平台添加到项目。
+		*  有关特定于 Cordova 平台的命令的更多信息，请参阅 <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova 平台命令文档</a>。
 
-### Debug mode
+### 调试方式
 {: #debug-mode }
-Enabling debug mode will show debug level logs in the Eclipse console, while previewing the application in a browser.  To enable debug mode do the following:
+启用调试方式将在浏览器中预览应用程序的同时在 Eclipse 控制台中显示调试级别日志。要启用调试方式，请执行以下操作：
 
-1. Open Eclipse's Preferences.
-2. Select **MobileFirst Studio Plugins** to show the plug-ins preferences page.
-3. Ensure the **Enable debug mode** check bocks is selected, then click **Apply → OK**
+1. 打开 Eclipse 的首选项。
+2. 选择 **MobileFirst Studio 插件**以显示插件首选项页面。
+3. 确保选中**启用调试方式**复选框，然后单击**应用 → 确定**
 
-### Live update
+### 实时更新
 {: #live-update }
-While previewing an application live update is available. You can make updates and save you changes and watch them auto refresh in the preview.
+在预览应用程序时，实时更新可用。您可以进行更新，保存更改，并在预览中观看它们自动更新。
 
-### Integrating {{ site.data.keys.mf_server }} into Eclipse
+### 将 {{ site.data.keys.mf_server }} 集成到 Eclipse 中
 {: #integrating-mobilefirst-server-into-eclipse }
-Using the {{ site.data.keys.mf_dev_kit }}, You can couple together the above with [running the {{ site.data.keys.mf_server }} in Eclipse](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse) to create a more integrated development environment.
+通过使用 {{ site.data.keys.mf_dev_kit }}，您可以将上述项与[在 Eclipse 中运行 {{ site.data.keys.mf_server }}](../../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse) 结合在一起，以创建集成程度更高的开发环境。
 
-### Demo Video
+### 演示视频
 {: #demo-video }
 <div class="sizer">
 	<div class="embed-responsive embed-responsive-16by9">
