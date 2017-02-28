@@ -21,13 +21,13 @@ The external DLLs that are added on platform add from the JSONStore plugin have 
 
 ![Set Properties]({{site.baseurl}}/assets/blog/2017-02-28-jsonstore-windows-compatibility/mfpclientProperties.png)
 
-###*"PERSISTENT\_STORE_FAILURE"* error occurs when initializing a JSON Store collection on cordova-windows. 
+###"PERSISTENT\_STORE_FAILURE" error occurs when initializing a JSON Store collection on cordova-windows. 
 
 For cordova-windows v4.4.3 and below, follow the properties setting of the referenced external DLLs **(sqlite3 and msvcr110)** similar to the workaround mentioned above. Set the **Package Action** property to ***Content*** and the **Copy to Output Directory** property to ***Copy Always***. This occurs as the project will be unable to pick the DLLs content if the DLL's **Package Action** property is set to ***None***. 
  
 ![Set Properties]({{site.baseurl}}/assets/blog/2017-02-28-jsonstore-windows-compatibility/PackageActionSetting.png)
 
-###UWP JSONStore projects error out during runtime with the following error : *"PERSISTENT\_STORE_FAILURE"* error on JsonStore initialization in release mode. 
+###UWP JSONStore projects error out during runtime with the following error : "PERSISTENT\_STORE_FAILURE" error on JsonStore initialization in release mode. 
 
 This is because the dependent DLLs are not referenced in *Release* mode due to a bug in cordova as the runtime directives file is not added to the project. [A bug has been raised in Cordova Jira for this](https://issues.apache.org/jira/browse/CB-12499). 
  
@@ -50,7 +50,7 @@ This ensures that the dependent DLLs are referenced correctly even in *Release* 
 >Learn more on runtime directives here : [Runtime Directives](https://msdn.microsoft.com/en-us/library/dn600639%28v=vs.110%29.aspx)  
 
 
-###JSONStore projects with ARM architecture do not run on win phone due to the runtime error *PERSISTENT\_STORE_FAILURE*. 
+###JSONStore projects with ARM architecture do not run on win phone due to the runtime error PERSISTENT\_STORE_FAILURE. 
 
 The root cause is that the DLLs are being picked from windows desktop folder of the DLLs source rather than the windows phone folder of the DLLs. This is due to a bug in cordova-plugin-mfp-jsonstore. 
 
