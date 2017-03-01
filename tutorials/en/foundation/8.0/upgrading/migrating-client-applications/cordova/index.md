@@ -24,7 +24,7 @@ Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Co
 
 | Feature | Cordova app with IBM<br/>{{ site.data.keys.product }} v8.0 |	Cordova app with IBM<br/>MobileFirst Platform Foundation v7.1 | MobileFirst hybrid app with IBM<br/>MobileFirst Platform Foundation V7.1 |
 |---------|-------|---------|-------|------|
-| **IDE Eclipse Studio** | | | | |	 	 	 
+| **IDE Eclipse Studio** | | | |  	 	 
 | Eclipse plug-in and integration | Yes | Unsupported | Yes (Proprietary) |
 | Application Components | Yes (Cordova)<br/><br/>Note: Create your own Cordova plug-ins to manage application components in your organization. | Yes (Cordova)<br/><br/>Note: Create your own Cordova plug-ins to manage application components in your organization. | Yes (Proprietary) |
 | Project Templates | Yes (Cordova)<br/><br/>Note: Use the Apache Cordova `cordova create --template` command. | Yes (Cordova)<br/><br/>Note: Use `mfp cordova create --template` or the Apache Cordova command `cordova create --copy-from` | Yes (Proprietary) |
@@ -40,7 +40,7 @@ Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Co
 | {{ site.data.keys.product_adj }} Security Framework | Yes | Yes | Yes |
 | Application Authenticity | Yes | Yes | Yes |
 | Certificate pinning | Yes | No | Yes |
-| JSONStore | Yes. | Use the cordova-plugin-mfp-jsonstore plug-in. | Yes | Yes |
+| JSONStore | Yes. | Use the cordova-plugin-mfp-jsonstore plug-in. | Yes |
 | FIPS 140-2 | Yes. Use the cordova-plugin-mfp-fips plug-in.<br/><br/>Restriction: FIPS is supported for Android and iOS. FIPS is not supported for Windows. | No | Yes |
 | Encryption of web resources that are associated with the application within the application binary file | Yes |	No | Yes |
 | Verification of the integrity of web resources by using a checksum each time the app starts running | Yes | Unsupported | Yes |
@@ -48,7 +48,7 @@ Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Co
 | Simple data sharing | No | Yes | Yes |
 | Single sign-on | Yes<br/><br/>Note: Device single sign-on (SSO) is now supported by way of the new predefined enableSSO security-check application-descriptor configuration property | Yes | Yes |
 | {{ site.data.keys.product_adj }} application skins | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design. | Yes |
-| Environment optimizations | Yes (Cordova). |  Use the merges directory to define web resources specific to a platform. | Yes (Cordova). Use the merges directory to define web resources specific to a platform. For more information, see Using merges to Customize Each Platform in the Apache Cordova documentation. | Yes (Proprietary) |
+| Environment optimizations | Yes (Cordova). |  Use the merges directory to define web resources specific to a platform. | Yes (Cordova). Use the merges directory to define web resources specific to a platform. For more information, see Using merges to Customize Each Platform in the Apache Cordova documentation. | 
 | Push Notifications | Yes. Use the cordova-plugin-mfp-push plug-in.<br/><br/>Restriction: You can map predefined {{ site.data.keys.product_adj }} security checks only to the push.mobileclient scope. Custom security checks are not supported because JavaScript challenge handlers are not called. | Yes<br/><br/>Note: For Android, you must add the cordova-plugin-mfp-push plug in. You don't need this plug in for iOS because the push client-side support for iOS is included in the core mfp plugin. | Yes |
 | Cordova plug-ins management | Yes | Yes | No |
 | MESSAGES (i18n) | Yes | Yes | Yes |
