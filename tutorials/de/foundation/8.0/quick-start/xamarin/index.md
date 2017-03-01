@@ -1,69 +1,73 @@
 ---
 layout: tutorial
-title: Xamarin end-to-end demonstration
+title: End-to-End-Demonstration für Xamarin
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-The purpose of this demonstration is to experience an end-to-end flow:
+Bei der folgende Demonstration geht es darum, einen End-to-End-Ablauf zu veranschaulichen: 
 
-1. A sample application that is bundled with the {{ site.data.keys.product_adj }} Xamarin client SDK is registered with the {{ site.data.keys.mf_console }}.
-2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
-3. The application logic is changed to make a resource request.
+1. Ein im Lieferumfang des {{ site.data.keys.product_adj }}-Client-SDK für Xamarin enthaltene Beispielanwendung wird
+in der {{ site.data.keys.mf_console }} registriert. 
+2. Ein neuer oder bereitgestellter Adapter wird über die {{ site.data.keys.mf_console }} implementiert.  
+3. Die Anwendungslogik wird geändert, um eine Ressourcenanforderung zu ermöglichen. 
 
-**End result**:
+**Endergebnis**:
 
-* Successfully pinging the {{ site.data.keys.mf_server }}.
+* Erfolgreiches Absetzen eines Pingsignals an {{ site.data.keys.mf_server }}
 
-#### Prerequisites:
+#### Voraussetzungen: 
 {: #prerequisites }
 * Xamarin Studio
-* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* *Optional*: Eigenständiger {{ site.data.keys.mf_server }} ([Download]({{site.baseurl}}/downloads))
 
-### 1. Starting the {{ site.data.keys.mf_server }}
+### 1. {{ site.data.keys.mf_server }} starten
 {: #1-starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+Stellen Sie sicher, dass eine [Mobile-Foundation-Instanz erstellt](../../bluemix/using-mobile-foundation) wurde oder,   
+falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/) verwenden, navigieren
+Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run.sh` oder unter Windows den Befehl `run.cmd` aus.
 
-### 2. Creating an application
+### 2. Anwendung erstellen
 {: #2-creating-an-application }
-In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+Öffnen Sie in einem Browser die {{ site.data.keys.mf_console }}. Laden Sie dazu die URL `http://your-server-host:server-port/mfpconsole`. Wenn Sie die Konsole lokal ausführen, verwenden Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Geben Sie für Benutzername/Kennwort die Werte *admin/admin* an.
 
-1. Click the **New** button next to **Applications**
-    * Select the **Android** platform
-    * Enter **com.ibm.mfpstarterxamarin** as the **application identifier** (depending on the application scaffold you will download in the next step)
-    * Enter **1.0** as the **version** value
-    * Click on **Register application**
+1. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**. 
+    * Wählen Sie die **Android**-Plattform aus. 
+    * Geben Sie für die **Anwendungs-ID** den Wert **com.ibm.mfpstarterxamarin** ein.
+(Der Wert hängt vom Anwendungsgerüst ab, das Sie im nächsten Schritt herunterladen weren.) 
+    * Geben Sie für die **Version** den Wert **1.0** ein. 
+    * Klicken Sie auf **Anwendung registrieren**. 
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-xamarin.gif"/>
+    <img class="gifplayer" alt="Anwendung registrieren" src="register-an-application-xamarin.gif"/>
 
-### 3. Editing application logic
+### 3. Anwendungslogik bearbeiten
 {: #3-editing-application-logic }
-* Create a Xamarin project.
-* Add the Xamarin SDK as mentioned in the [Adding the SDK](../../application-development/sdk/xamarin/) tutorial.
-* Add a property of type `IWorklightClient` in any class file as below.
+* Erstellen Sie ein Xamarin-Projekt. 
+* Fügen Sie das Xamarin-SDK hinzu, wie es im Lernprogramm [SDK hinzufügen](../../application-development/sdk/xamarin/) beschrieben ist. 
+* Fügen Sie wie unten zu jeder Klassendatei eine Eigenschaft vom Typ `IWorklightClient` hinzu. 
 
    ```csharp
    /// <summary>
-   /// Gets or sets the worklight sample client.
+   /// Ruft den Worklight-Beispielclient ab oder legt diesen fest
    /// </summary>
-   /// <value>The worklight client.</value>
+   /// <value>Worklight-Client</value>
    public static IWorklightClient WorklightClient {get; set;}
    ```
-* If you're devleoping for iOS, paste the following code inside **FinishedLaunching** method of the **AppDelegate.cs** file:
+* Wenn Sie für iOS entwickeln, fügen Sie in der Datei **AppDelegate.cs** den folgenden Code zur Methode **FinishedLaunching** hinzu: 
 
   ```csharp
    {ClassName}.WorklightClient = WorklightClient.CreateInstance();
   ```
-* If you're devleoping for Android, include the following line of code inside **OnCreate** method of the **MainActivity.cs** file:
+* Wenn Sie für Android entwickeln, nehmen Sie
+in der Datei **MainActivity.cs** die folgende Codezeile in die Methode **OnCreate** auf: 
 
   ```csharp
    {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
   ```
-* Define a method to obtain the access token and perform a resource request to the MFP Server as below.
+* Definieren Sie eine Methode, um das Zugriffstoken abzurufen und führen Sie wie unten eine Ressourcenanforderung an den MFP Server aus. 
    
     ```csharp
     public async void ObtainToken()
@@ -95,51 +99,57 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
     }
    ```
   
-* Invoke **ObtainToken** method within a class constructor or on click of a button.
+* Rufen Sie die Methode **ObtainToken** aus einem Klassenkonstruktor heraus oder in Verbindung mit dem Klicken auf eine Schaltfläche auf. 
 
-### 4. Deploy an adapter
+### 4. Adapter implementieren
 {: #4-deploy-an-adapter }
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
+Laden Sie [dieses vorbereitete Adapterartefakt](../javaAdapter.adapter) herunter und implementieren Sie
+es über die {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. 
 
-Alternatively, click the **New** button next to **Adapters**.  
+Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.   
 
-1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
+1. Wählen Sie **Aktionen → Beispiel herunterladen** aus. Laden Sie das **Java**-Adapterbeispiel "Hello World" herunter. 
 
-   > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
+   > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind,
+folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**.
 
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+2. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Adapter-Maven-Projekts und führen Sie den
+folgenden Befehl aus: 
 
    ```bash
    mfpdev adapter build
    ```
 
-3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+3. Wenn der Build fertiggestellt ist, implementieren Sie den Adapter über die
+{{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. Sie finden den Adapter im Ordner
+**[adapter]/target**. 
 
-   <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>
+   <img class="gifplayer" alt="Adapter implementieren" src="create-an-adapter.png"/>
 
 <!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
-### 5. Testing the application
+### 5. Awendung testen
 {: #5-testing-the-application }
-1. In Xamarin Studio, select the **mfpclient.plist** file and edit the **protocol**, **host** and **port** properties with the correct values for your {{ site.data.keys.mf_server }}.
-    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**.
+1. Wählen Sie in Xamarin Studio die Datei **mfpclient.plist** aus und bearbeiten Sie die Eigenschaften **protocol**, **host** und **port**. Geben Sie die für diese Eigenschaften die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} ein.
+    * Wenn Sie einen lokalen {{ site.data.keys.mf_server }} verwenden, lauten die Werte normalerweise **http**, **localhost** und **9080**.
+    * Wenn Sie einen fernen {{ site.data.keys.mf_server }} (für Bluemix) verwenden, lauten die Werte in der Regel **https**, **your-server-address** und **443**.
 
-2. Press the **Play** button.
+2. Klicken Sie auf die Schaltfläche **Play**. 
 
 <br clear="all"/>
-### Results
+### Ergebnisse
 {: #results }
-* Clicking the **Ping MobileFirst Server** button will display **Connected to MobileFirst Server**.
-* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
+* Wenn Sie auf die Schaltfläche **Ping MobileFirst Server** klicken, wird **Connected to MobileFirst Server** angezeigt.
+* Wenn die Anwendung eine Verbindung zu {{ site.data.keys.mf_server }} herstellen konnte, findet ein Ressourcenanforderungsaufruf unter Verwendung des implementierten Java-Adapters statt. 
 
-The adapter response is then printed in the Xamarin Studio Console.
+Die Antwort des Adapters wird in der Konsole von Xamarin Studio ausgegeben. 
 
-![Image of application that successfully called a resource from the {{ site.data.keys.mf_server }}](console-output.png)
+![Anwendung, die erfolgreich eine Ressource von {{ site.data.keys.mf_server }} aufgerufen hat](console-output.png)
 
-## Next steps
+## Nächste Schritte
 {: #next-steps }
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
+Informieren Sie sich über die Verwendung von Adaptern in Anwendungen und über die Integration von zusätzlichen Services wie Push-Benachrichtigungen
+mithilfe des {{ site.data.keys.product_adj }}-Sicherheitsframeworks. Weitere Möglichkeiten sind: 
 
-- Review the [Adapters development](../../adapters/) tutorials
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review [All Tutorials](../../all-tutorials)
+- Gehen Sie die Lernprogramme zur [Adapterentwicklung](../../adapters/) durch. 
+- Gehen Sie die Lernprogramme zu [Authentifizierung und Sicherheit](../../authentication-and-security/) durch. 
+- Sehen Sie sich [alle Lernprogramme](../../all-tutorials) an. 
