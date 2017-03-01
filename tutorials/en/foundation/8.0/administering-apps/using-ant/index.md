@@ -785,7 +785,7 @@ The `set-authenticity-data` command, inside an `<app-version>` element, specifie
 
 | Attribute      | Description |	Required | Default |
 |----------------|-------------|-------------|---------|
-| file | Name of the input file:<ul><li>Either a authenticity_data file,</li><li>or a device file (.ipa, .apk, or .appx file), from which the authenticity data is extracted.</li></ul> |  Yes | Not available | 
+| file | Name of the input file:{::nomarkdown}<ul><li>Either a authenticity_data file,</li><li>or a device file (.ipa, .apk, or .appx file), from which the authenticity data is extracted.</li></ul>{:/} |  Yes | Not available | 
 
 **Examples**  
 
