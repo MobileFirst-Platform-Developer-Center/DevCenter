@@ -100,7 +100,7 @@ No setup required. Pre-initialized by default.
 Before calling other methods of the **WLAnalytics** class, call `WLAnalytics.sharedInstance()`.
 
 ### Android
-#{: #android }
+{: #android }
 
 #### Import WLAnalytics
 {: #import-wlanalytics }
