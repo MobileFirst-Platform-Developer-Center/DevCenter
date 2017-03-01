@@ -1,342 +1,342 @@
 ---
 layout: tutorial
-title: Topologies and Network flows
+title: 拓扑和网络流
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-The information presented here details possible server topologies for {{ site.data.keys.mf_server }} components, as well as available network flows.  
-The components are deployed according to the server topology that you use. The network flows explain to you how the components communicate with one another and with the end-user devices.
+此处提供的信息详细介绍 {{ site.data.keys.mf_server }} 组件可能的服务器拓扑以及可用的网络流。  
+以下组件根据您使用的服务器拓扑进行部署。网络流为您说明了组件之间以及组件与最终用户设备之间的通信方式。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
 
-* [Network flows between the {{ site.data.keys.mf_server }} components](#network-flows-between-the-mobilefirst-server-components)
-* [Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}](#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics)
-* [Multiple {{ site.data.keys.product }} runtimes](#multiple-mobilefirst-foundation-runtimes)
-* [Multiple instances of {{ site.data.keys.mf_server }} on the same server or WebSphere Application Server cell](#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell)
+* [{{ site.data.keys.mf_server }} 组件间的网络流](#network-flows-between-the-mobilefirst-server-components)
+* [对 {{ site.data.keys.mf_server }}组件和 {{ site.data.keys.mf_analytics }} 的约束](#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics)
+* [多个 {{ site.data.keys.product }} 运行时](#multiple-mobilefirst-foundation-runtimes)
+* [同一个服务器或 WebSphere Application Server 单元上的多个 {{ site.data.keys.mf_server }} 实例](#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell)
 
-## Network flows between the {{ site.data.keys.mf_server }} components
+## {{ site.data.keys.mf_server }} 组件间的网络流
 {: #network-flows-between-the-mobilefirst-server-components }
-The {{ site.data.keys.mf_server }} components can communicate with each other over JMX or HTTP. You need to configure certain JNDI properties to enable the communications.  
-The network flows between the components and the device can be illustrated by the following image:
+{{ site.data.keys.mf_server }} 组件可通过 JMX 或 HTTP 相互通信。您需要配置特定的 JNDI 属性以启用通信。  
+可通过下图展示组件与设备间的网络流：
 
-![Diagram of the {{ site.data.keys.product }} components network flows](mfp_components_network_flows.jpg)
+![{{ site.data.keys.product }} 组件网络流图](mfp_components_network_flows.jpg)
 
-The flows between the various {{ site.data.keys.mf_server }} components, {{ site.data.keys.mf_analytics }}, the mobile devices, and the application server are explained in the following sections:
+以下部分中说明了各种 {{ site.data.keys.mf_server }} 组件、{{ site.data.keys.mf_analytics }}、移动设备以及应用程序服务器间的流程：
 
-1. [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)
-2. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)
-3. [{{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime to the deployment manager on WebSphere Application Server Network Deployment](#mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
-4. [{{ site.data.keys.mf_server }} push service and {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_analytics }}](#mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics)
-5. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} live update service](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)
-6. [{{ site.data.keys.mf_console }} to {{ site.data.keys.mf_server }} administration service](#mobilefirst-operations-console-to-mobilefirst-server-administration-service)
-7. [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)
-8. [{{ site.data.keys.mf_server }} push service to an external push notification service (outbound)](#mobilefirst-server-push-service-to-an-external-push-notification-service-outbound)
-9. [Mobile devices to {{ site.data.keys.product }} runtime](#mobile-devices-to-mobilefirst-foundation-runtime)
+1. [{{ site.data.keys.product }} 运行时到 {{ site.data.keys.mf_server }} 管理服务](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)
+2. [其他服务器中的 {{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.product }} 运行时](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)
+3. [WebSphere Application Server Network Deployment 上的 {{ site.data.keys.mf_server }} 管理服务和 {{ site.data.keys.product_adj }} 运行时到 Deployment Manager](#mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment)
+4. [{{ site.data.keys.mf_server }} 推送服务和 {{ site.data.keys.product }} 运行时到 {{ site.data.keys.mf_analytics }}](#mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics)
+5. [{{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.mf_server }} 实时更新服务](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)
+6. [{{ site.data.keys.mf_console }} 到 {{ site.data.keys.mf_server }} 管理服务](#mobilefirst-operations-console-to-mobilefirst-server-administration-service)
+7. [{{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.mf_server }} 推送服务，再到授权服务器](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)
+8. [{{ site.data.keys.mf_server }} 推送服务到外部推送通知服务（出站）](#mobilefirst-server-push-service-to-an-external-push-notification-service-outbound)
+9. [移动设备到 {{ site.data.keys.product }} 运行时](#mobile-devices-to-mobilefirst-foundation-runtime)
 
-### {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service
+### {{ site.data.keys.product }} 运行时到 {{ site.data.keys.mf_server }} 管理服务
 {: #mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service }
-The runtime and the administration service can communicate with each other through JMX and HTTP. This communication occurs during the initialization phase of the runtime. The runtime contacts the administration service local to its application server to get the list of the adapters and applications that it needs to serve. The communication also happens when some administration operations are run from {{ site.data.keys.mf_console }} or the administration service. On WebSphere  Application Server Network Deployment, the runtime can contact an administration service that is installed on another server of the cell. This enables the non-symmetric deployment (see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)). However, on all other application servers (Apache Tomcat, WebSphere Application Server Liberty, or stand-alone WebSphere Application Server), the administration service must be running on the same server as the runtime.
+运行时和管理服务可通过 JMX 和 HTTP 相互通信。
+运行时初始化期间，将进行此通信。运行时会联系其应用程序服务器的本地管理服务，以获取其需要提供提供的适配器和应用程序的列表。在从 {{ site.data.keys.mf_console }} 或管理服务运行某些管理操作时，也将进行此通信。在 WebSphere  Application Server Network Deployment 上，运行时可以联系单元的其他服务器上安装的管理服务。这将启用非对称性部署（请参阅[对 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product }} 运行时的约束](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)）。然而，在所有其他应用程序服务器（Apache Tomcat、WebSphere Application Server Liberty 或独立 WebSphere Application Server）上，必须在与运行时相同的服务器上运行管理服务。
 
-The protocols for JMX depend on the application server:
+针对 JMX 的协议取决于应用程序服务器：
 
 * Apache Tomcat - RMI
-* WebSphere Application Server Liberty - HTTPS (with the REST connector)
-* WebSphere Application Server - SOAP or RMI
+* WebSphere Application Server Liberty - HTTPS（使用 REST 接口）
+* WebSphere Application Server - SOAP 或 RMI
 
-For the communication via JMX, it is required that these protocols are available on the application server. For more information about the requirements, see [Application server prerequisites](../appserver/#application-server-prerequisites).
+要通过 JMX 进行通信，这些协议需在应用程序服务器上可用。有关需求的更多信息，请参阅[应用程序服务器先决条件](../appserver/#application-server-prerequisites)。
 
-The JMX beans of the runtime and the administration service are obtained from the application server. However, in the case of WebSphere Application Server Network Deployment, the JMX beans are obtained from the deployment manager. The deployment manager has the view of all the beans of a cell on WebSphere Application Server Network Deployment. As such, some configurations are not needed on WebSphere Application Server Network Deployment (such as the farm configuration), and non-symmetric deployment is possible on WebSphere Application Server Network Deployment. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
+运行时和管理服务的 JMX Bean 也将从应用程序服务器获取。然而，对于 WebSphere Application Server Network Deployment，JMX Bean 将从 Deployment Manager 获取。Deployment Manager 具有 WebSphere Application Server Network Deployment 上单元的所有 Bean 的视图。同样，WebSphere Application Server Network Deployment 上不需要某些配置（如场配置），WebSphere Application Server Network Deployment 上也可以进行非对称性部署。有关更多信息，请参阅[对 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product }} 运行时的约束](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)。
 
-To distinguish different installation of {{ site.data.keys.mf_server }} on the same application server or on the same WebSphere Application Server cell, you can use an environment ID, which is a JNDI variable. By default, this variable has an empty value. A runtime with a given environment ID communicates only with an administration service that has the same environment ID. For example, the administration service has an environment ID set to X, and the runtime has a different environment ID (for example, Y), then the two components do not see each other. The {{ site.data.keys.mf_console }} shows no runtime available.
+要区分是在同一应用程序服务器，还是在同一 WebSphere Application Server 单元上以不同方式安装 {{ site.data.keys.mf_server }}，可使用环境标识（它是 JNDI 变量）。缺省情况下，此变量的值为空。具有指定环境标识的运行时仅与环境标识相同的管理服务通信。例如，管理服务将环境标识设置为 X，并且运行时具有不同的环境标识（例如，Y），那么这两个组件将彼此不可见。{{ site.data.keys.mf_console }} 未显示任何可用运行时。
 
-An administration service must be able to communicate with all the {{ site.data.keys.product }} runtime components of a cluster. When an administration operation is run, such as uploading a new version of an adapter, or changing the active status of an application, all runtime components of the cluster must be notified about the change. If the application server is not WebSphere Application Server Network Deployment, this communication can happen only if a farm is configured. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime).
+管理服务必须能够与集群的所有 {{ site.data.keys.product }} 运行时组件通信。运行管理操作（如上载新版本适配器或更改应用程序的活动状态）时，必须向集群的所有运行时组件通知更改情况。如果应用程序服务器不是 WebSphere Application Server Network Deployment，那么只有在配置了场的情况下才能进行此通信。有关更多信息，请参阅[对 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product }} 运行时的约束](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)。
 
-The runtime also communicates with the administration service through HTTP or HTTPS to download large artifacts such as the adapters. A URL is generated by the administration service and the runtime opens and outbound HTTP or HTTPS connection to request an artifact from this URL. It is possible to override the default URL generation by defining the JNDI properties (mfp.admin.proxy.port, mfp.admin.proxy.protocol, and mfp.admin.proxy.host) in the administration service. The administration service might also need to communicate with the runtime through HTTP or HTTPS to get the OAuth tokens that are used to run the push operations. For more information, see [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server).
+运行时还能通过 HTTP 或 HTTPS 与管理服务通信，以下载适配器等大型工件。管理服务将生成 URL，并将打开运行时并建立出站 HTTP 或 HTTPS 连接以从此 URL 请求工件。可在管理服务中通过定义 JNDI 属性（mfp.admin.proxy.port、mfp.admin.proxy.protocol 和 mfp.admin.proxy.host）来覆盖缺省 URL 生成过程。管理服务还可能需要通过 HTTP 或 HTTPS 与运行时通信，以获取用于运行推送操作的 OAuth 令牌。有关更多信息，请参阅[{{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.mf_server }} 推送服务，再到授权服务器](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)。
 
-The JNDI properties that are used for the communication between the runtime and the administration service are as follows:
+用于运行时与管理服务间的通信的 JNDI 属性如下：
 
-#### {{ site.data.keys.mf_server }} administration service
+#### {{ site.data.keys.mf_server }} 管理服务
 {: #mobilefirst-server-administration-service }
 
-* [JNDI properties for administration services: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)
-* [JNDI properties for administration services: proxies](../server-configuration/#jndi-properties-for-administration-service-proxies)
-* [JNDI properties for administration services: topologies](../server-configuration/#jndi-properties-for-administration-service-topologies)
+* [管理服务的 JNDI 属性：JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)
+* [管理服务的 JNDI 属性：代理](../server-configuration/#jndi-properties-for-administration-service-proxies)
+* [管理服务的 JNDI 属性：拓扑](../server-configuration/#jndi-properties-for-administration-service-topologies)
 
-#### {{ site.data.keys.product }} runtime
+#### {{ site.data.keys.product }} 运行时
 {: #mobilefirst-foundation-runtime }
 
-* [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
+* [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)
 
-### {{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers
+### 其他服务器中的 {{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.product }} 运行时
 {: #mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers }
-As described in [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service), it is required to have the communication between an administration service and all the runtime components of a cluster. When an administration operation is run, all the runtime components of a cluster can then be notified about this modification. The communication is through JMX.
+如 [{{ site.data.keys.product }} 运行时到 {{ site.data.keys.mf_server }} 管理服务](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)中所述，管理服务与集群的所有运行时组件间需进行通信。运行管理操作时，可通知集群的所有运行时组件此修改情况。通过 JMX 进行通信。
 
-On WebSphere Application Server Network Deployment, this communication can occur without any specific configuration. All the JMX MBeans that correspond to the same environment ID are obtained from the deployment manager.
+在 WebSphere Application Server Network Deployment 上，此通信可在无任何特定配置的情况下进行。可从 Deployment Manager 获取与同一环境标识相对应的所有 JMX MBean。
 
-For a cluster of stand-alone WebSphere Application Server, WebSphere Application Server Liberty profile, or Apache Tomcat, the communication can happen only if a farm is configured. For more information, see [Installing a server farm](../appserver/#installing-a-server-farm).
+对于独立 WebSphere Application Server、WebSphere Application Server Liberty Profile 或 Apache Tomcat 的集群，只有在配置了场的情况下才能进行此通信。有关更多信息，请参阅[安装服务器场](../appserver/#installing-a-server-farm)。
 
-### {{ site.data.keys.mf_server }} administration service and MobileFirst runtime to the deployment manager on WebSphere Application Server Network Deployment
+### WebSphere Application Server Network Deployment 上的 {{ site.data.keys.mf_server }} 管理服务和 MobileFirst 运行时到 Deployment Manager
 {: #mobilefirst-server-administration-service-and-mobilefirst-runtime-to-the-deployment-manager-on-websphere-application-server-network-deployment }
-On WebSphere Application Server Network Deployment, the runtime and the administration service obtain the JMX MBeans that are used in [{{ site.data.keys.product }} runtime to {{ site.data.keys.mf_server }} administration service](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service) and [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.product }} runtime in other servers](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers) by communicating with the deployment manager. The corresponding JNDI properties are **mfp.admin.jmx.dmgr.*** in [JNDI properties for administration services: JMX](../server-configuration/#jndi-properties-for-administration-service-jmx).
+在 WebSphere Application Server Network Deployment 上，运行时和管理服务可通过与 Deployment Manager 进行通信，来获取 [{{ site.data.keys.product }} 运行时到 {{ site.data.keys.mf_server }} 管理服务](#mobilefirst-foundation-runtime-to-mobilefirst-server-administration-service)和其他服务器中 [{{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.product }} 运行时](#mobilefirst-server-administration-service-to-mobilefirst-foundation-runtime-in-other-servers)中使用的 JMX MBean。在 [管理服务的 JNDI 属性：JMX](../server-configuration/#jndi-properties-for-administration-service-jmx)中，对应的 JNDI 属性为 **mfp.admin.jmx.dmgr.***。
 
-The deployment manager must be running to allow the operations that require JMX communication between the runtime and the administration service. Such operations can be a runtime initialization, or the notification of a modification performed through the administration service.
+必须运行 Deployment Manager 以支持需要运行时与管理服务间进行 JMX 通信的操作。此类操作可以是运行时初始化，或通知通过管理服务执行的修改。
 
-### {{ site.data.keys.mf_server }} push service and {{ site.data.keys.product }} runtime to {{ site.data.keys.mf_analytics }}
+### {{ site.data.keys.mf_server }} 推送服务和 {{ site.data.keys.product }} 运行时到 {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-server-push-service-and-mobilefirst-foundation-runtime-to-mobilefirst-analytics }
-The runtime sends data to {{ site.data.keys.mf_analytics }} through HTTP or HTTPS. The JNDI properties of the runtime that are used to define this communication are:
+运行时可通过 HTTP 或 HTTPS 向 {{ site.data.keys.mf_analytics }} 发送数据。用于定义此通信的运行时的 JNDI 属性为：
 
-* **mfp.analytics.url** - the URL that is exposed by {{ site.data.keys.mf_analytics }} service to receive incoming analytics data from the runtime. Example: `http://<hostname>:<port>/analytics-service/rest`
+* **mfp.analytics.url ** - {{ site.data.keys.mf_analytics }} 服务公开的 URL，用于从运行时接收传入的分析数据。示例：`http://<hostname>:<port>/analytics-service/rest`
 
-    When {{ site.data.keys.mf_analytics }} is installed as a cluster, the data can be sent to any member of the cluster.
+    当安装 {{ site.data.keys.mf_analytics }} 作为集群时，可将数据发送至集群中的任何成员。
 
-* **mfp.analytics.username** - the user name that is used to access {{ site.data.keys.mf_analytics }} service. The analytics service is protected by a security role.
-* **mfp.analytics.password** - the password to access the analytics service.
-* **mfp.analytics.console.url** - the URL that is passed to {{ site.data.keys.mf_console }} to display a link to {{ site.data.keys.mf_analytics_console }}. Example: `http://<hostname>:<port>/analytics/console`
+* **mfp.analytics.username** - 用于访问 {{ site.data.keys.mf_analytics }} 服务的用户名。分析服务受安全角色保护。
+* **mfp.analytics.password** - 用于访问分析服务的密码。
+* **mfp.analytics.console.url** - 传递到 {{ site.data.keys.mf_console }} 以显示指向 {{ site.data.keys.mf_analytics_console }} 的链接的 URL。
+示例：`http://<hostname>:<port>/analytics/console`
 
-    The JNDI properties of the push service that are used to define this communication are:
-* **mfp.push.analytics.endpoint** - the URL that is exposed by {{ site.data.keys.mf_analytics }} service to receive incoming analytics data from the push service. Example: `http://<hostname>:<port>/analytics-service/rest`
+    用于定义此通信的推送服务的 JNDI 属性为：
+    * **mfp.push.analytics.endpoint** - {{ site.data.keys.mf_analytics }} 服务公开的 URL，用于从推送服务接收传入的分析数据。
+示例：`http://<hostname>:<port>/analytics-service/rest`
 
-    When {{ site.data.keys.mf_analytics }} is installed as a cluster, the data can be sent to any member of the cluster.    
-* **mfp.push.analytics.username** - the user name that is used to access {{ site.data.keys.mf_analytics }} service. The analytics service is protected a security role.
-* **mfp.push.analytics.password** - the password to access the analytics service.
+    当安装 {{ site.data.keys.mf_analytics }} 作为集群时，可将数据发送至集群中的任何成员。    
+* **mfp.push.analytics.username** - 用于访问 {{ site.data.keys.mf_analytics }} 服务的用户名。分析服务受安全角色保护。
+* **mfp.push.analytics.password** - 用于访问分析服务的密码。
 
-### {{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} live update service
+### {{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.mf_server }} 实时更新服务
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service }
-The administration service communicates with the live update service to store and retrieve configuration information about the {{ site.data.keys.product }} artifacts. The communication is performed through HTTP or HTTPS.
+管理服务可与实时更新服务进行通信，以存储和检索有关 {{ site.data.keys.product }} 工件的配置信息。通过 HTTP 或 HTTPS 执行通信。
 
-The URL to contact the live update service is automatically generated by the administration service. Both services must be on the same application server. The context root of the live update service must define in this way: `<adminContextRoot>config`. For example, if the context root of the administration service is **mfpadmin**, then the context root of the live update service must be **mfpadminconfig**. It is possible to override the default URL generation by defining the JNDI properties (**mfp.admin.proxy.port**, **mfp.admin.proxy.protocol**, and **mfp.admin.proxy.host**) in the administration service.
+管理服务将自动生成用于联系实时更新服务的 URL。两项服务都必须在同一应用程序服务器上。必须以如下方式定义实时更新服务的上下文根：`<adminContextRoot>config`。例如，如果管理服务的上下文根为 **mfpadmin**，那么实时更新服务的上下文根必须为 **mfpadminconfig**。可在管理服务中通过定义 JNDI 属性（**mfp.admin.proxy.port**、**mfp.admin.proxy.protocol** 和 **mfp.admin.proxy.host**）来覆盖缺省 URL 生成过程。
 
-The JNDI properties to configure this communication between the two services are:
+用于配置这两项服务间的此通信的 JNDI 属性为：
 
 * **mfp.config.service.user**
 * **mfp.config.service.password**
-* And those properties in [JNDI properties for administration services: proxies](../server-configuration/#jndi-properties-for-administration-service-proxies).
+* 以及[管理服务的 JNDI 属性：代理](../server-configuration/#jndi-properties-for-administration-service-proxies)中的属性。
 
-### {{ site.data.keys.mf_console }} to {{ site.data.keys.mf_server }} administration service
+### {{ site.data.keys.mf_console }} 到
+{{ site.data.keys.mf_server }} 管理服务
 {: #mobilefirst-operations-console-to-mobilefirst-server-administration-service }
-{{ site.data.keys.mf_console }} is a web user interface and acts as the front end to the administration service. It communicates with the REST services of the administration service through HTTP or HTTPS. The users who are allowed to use the console, must also be allowed to use the administration service. Each user that is mapped to a certain security role of the console must also be mapped to the same security role of the service. With this setup, the requests from the console can thus be accepted by the service.
+{{ site.data.keys.mf_console }} 是一个 Web 用户界面，用作管理服务的前端。它能通过 HTTP 或 HTTPS 与管理服务的 REST 服务通信。还必须支持允许使用控制台的用户使用管理服务。还必须将映射到控制台的某一安全角色的每位用户映射到服务的同一安全角色。利用此设置，服务因此可接受来自控制台的请求。
 
-The JNDI properties to configure this communication are in [JNDI properties for the {{ site.data.keys.mf_console }}](../server-configuration/#jndi-properties-for-mobilefirst-operations-console).
+用于配置此通信的 JNDI 属性位于 [{{ site.data.keys.mf_console }} 的 JNDI 属性](../server-configuration/#jndi-properties-for-mobilefirst-operations-console)中。
 
-> Note: The **mfp.admin.endpoint** property enables the console to locate the administration service. You can use the asterisk character "\*" as wildcard for specifying that the URL, generated by the console to contact the administration services, use the same value as the incoming HTTP request to the console. For example: `*://*:*/mfpadmin` means use the same protocol, host, and port as the console, but use **mfpadmin** as context root. This property is specified for the console application.
-
-### {{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server
+> 注：**mfp.admin.endpoint** 属性支持控制台查找管理服务。您可以使用星号“*”字符作为通配符，以指定控制台生成的 URL（用于联系管理服务）使用与到控制台的入局 HTTP 请求相同的值。例如：`*://*:*/mfpadmin` 意味着使用相同的协议、主机和端口作为控制台，但使用 **mfpadmin** 作为上下文根。
+为控制台应用程序指定该属性。
+### {{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.mf_server }} 推送服务，再到授权服务器
 {: #mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server }
-The administration service communicates with the push service to request various push operations. This communication is secured through the OAuth protocol. Both services need to be registered as confidential clients. An initial registration can be performed at installation time. In this process, both services need to contact an authorization server. This authorization server can be {{ site.data.keys.product }} runtime.
+管理服务可与推送服务通信，以请求各种推送操作。
+将通过 OAuth 协议保护此通信的安全。需注册两项服务作为保密客户端。可在安装时执行初始注册。在此过程中，两项服务均需要联系授权服务器。此授权服务器可以是 {{ site.data.keys.product }} 运行时。
 
-The JNDI properties of the administration service to configure this communication are:
+用于配置此通信的管理服务的 JNDI 属性为：
 
-* **mfp.admin.push.url** - the URL of the push service.
-* **mfp.admin.authorization.server.url** - the URL of the {{ site.data.keys.product }} authorization server.
-* **mfp.admin.authorization.client.id** - the client ID of the administration service, as an OAuth confidential client.
-* **mfp.admin.authorization.client.secret** - the secret code that is used to get the OAuth-based tokens.
+* **mfp.admin.push.url** - 推送服务的 URL。
+* **mfp.admin.authorization.server.url** - {{ site.data.keys.product }} 授权服务器的 URL。
+* **mfp.admin.authorization.client.id** - 管理服务的客户端标识（作为 OAuth 保密客户端）。
+* **mfp.admin.authorization.client.secret** - 用于获取基于 OAuth 的令牌的密码。
 
-> Note: The **mfp.push.authorization.client.id** and **mfp.push.authorization.client.secret** properties of the administration service can be used to register the push service automatically as a confidential client when the administration service starts. The push service must be configured with the same values.
+> 注：管理服务的 **mfp.push.authorization.client.id** 和 **mfp.push.authorization.client.secret** 属性可用于在启动管理服务时，将推送服务自动注册为保密客户端。必须使用相同的值配置推送服务。用于配置此通信的推送服务的 JNDI 属性为：
 
-The JNDI properties of the push service to configure this communication are:
+* **mfp.push.authorization.server.url** - {{ site.data.keys.product }} 授权服务器的 URL。与 **mfp.admin.authorization.server.url** 属性相同。
+* **mfp.push.authorization.client.id** - 用于联系授权服务器的推送服务的客户端标识。
+* **mfp.push.authorization.client.secret** - 用于联系授权服务器的密码。
 
-* **mfp.push.authorization.server.url** - the URL of the {{ site.data.keys.product }} authorization server. Same as the property **mfp.admin.authorization.server.url**.
-* **mfp.push.authorization.client.id** - the client ID of the push service to contact the authorization server.
-* **mfp.push.authorization.client.secret** - the secret code that is used to contact the authorization server.
-
-### {{ site.data.keys.mf_server }} push service to an external push notification service (outbound)
+### {{ site.data.keys.mf_server }} 推送服务到外部推送通知服务（出站）
 {: #mobilefirst-server-push-service-to-an-external-push-notification-service-outbound }
-The push service generates outbound traffic to the external notification service such as Apple Push Notification Service (APNS) or Google Cloud Messaging (GCM). This communication can also be done through a proxy. Depending on the notification service, the following JNDI properties must be set:
+推送服务会生成到外部通知服务（如 Apple Push Notification Service (APNS) 或 Google Cloud Messaging (GCM)）的出站流量。还可以通过代理完成此通信。根据通知服务，必须设置以下 JNDI 属性：
 
 * **push.apns.proxy**
 * **push.gcm.proxy**
 
-For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+有关更多信息，请参阅 [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
 
-### Mobile devices to {{ site.data.keys.product }} runtime
+### 移动设备到 {{ site.data.keys.product }} 运行时
 {: #mobile-devices-to-mobilefirst-foundation-runtime }
-The mobile devices contact the runtime. The security of this communication is determined by the configuration of the application and the adapters that are requested. For more information, see [{{ site.data.keys.product_adj }} security framework](../../../authentication-and-security).
+移动设备可联系运行时。此通信的安全性由应用程序以及所请求适配器的配置来决定。有关更多信息，请参阅 [{{ site.data.keys.product_adj }} 安全框架](../../../authentication-and-security)。
 
-## Constraints on the {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }}
+## 对 {{ site.data.keys.mf_server }} 组件和 {{ site.data.keys.mf_analytics }} 的约束
 {: #constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics }
-Understand the constraints on the various {{ site.data.keys.mf_server }} components and {{ site.data.keys.mf_analytics }} before you decide your server topology.
+了解对各个 {{ site.data.keys.mf_server }} 组件和 {{ site.data.keys.mf_analytics }} 的约束，然后再决定服务器拓扑。
 
-* [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)
-* [Constraints on {{ site.data.keys.mf_server }} push service](#constraints-on-mobilefirst-server-push-service)
+* [对 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product }} 运行时的约束](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)
+* [对 {{ site.data.keys.mf_server }} 推送服务的约束](#constraints-on-mobilefirst-server-push-service)
 
-### Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime
+### 关于 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product }} 运行时的约束
 {: #constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime }
-Find out the constraints and the deployment mode of the administration service, live update service, and the runtime per server topology.
+了解每个服务器拓扑的管理服务、实时更新服务和运行时的约束和部署方式。
 
-The live update service must be always installed with the administration service on the same application server as explained in [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} live update service](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service). The context root of the live update service must define in this way: `/<adminContextRoot>config`. For example, if the context root of the administration service is **/mfpadmin**, then the context root of the live update service must be **/mfpadminconfig**.
+实时更新服务必须始终和管理服务一起安装在同一应用程序服务器上，如 [{{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.mf_server }} 实时更新服务](#mobilefirst-server-administration-service-to-mobilefirst-server-live-update-service)中所述。必须按以下方式定义实时更新服务的上下文根：`/<adminContextRoot>config`。例如，如果管理服务的上下文根为 **/mfpadmin**，那么实时更新服务的上下文根必须为 **/mfpadminconfig**。
 
-You can use the following topologies of application servers:
+您可以使用以下应用程序服务器拓扑：
 
-* Stand-alone server: WebSphere  Application Server Liberty profile, Apache Tomcat, or WebSphere Application Server full profile
-* Server farm: WebSphere Application Server Liberty profile, Apache Tomcat, or WebSphere Application Server full profile
-* WebSphere Application Server Network Deployment cell
-* Liberty collective
+* 独立服务器：WebSphere Application Server Liberty Pofile、Apache Tomcat 或 WebSphere Application Server Full Profile
+* 服务器场：WebSphere Application Server Liberty Pofile、Apache Tomcat 或 WebSphere Application Server Full Profile
+* WebSphere Application Server Network Deployment 单元
+* Liberty 集合体
 
-#### Modes of deployment
+#### 部署方式
 {: #modes-of-deployment }
-Depending on the application server topology that you use, you have two modes of deployment choice for deploying the administration service, the live update service and the runtime in the application server infrastructure. In asymmetric deployment, you can install the runtimes on different application servers from the administration and the live update services.
+根据您使用的应用程序服务器拓扑，您可以选择两种部署方式，在应用程序服务器基础架构中部署管理服务、实时更新服务和运行时。在非对称部署中，运行时与管理和实时更新服务可以安装在不同的应用程序服务器上。
 
-**Symmetric deployment**  
-In symmetrical deployment, you must install the {{ site.data.keys.product }} administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service applications) and the runtime on the same application server.
+**对称部署**  
+在对称部署中，必须在相同的应用程序服务器上安装 {{ site.data.keys.product }} 管理组件（{{ site.data.keys.mf_console }}、管理服务和实时更新服务应用程序）和运行时。
 
-**Asymmetric deployment**  
-In asymmetric deployment, you can install the runtimes on different application servers from the {{ site.data.keys.product }} administration components.  
-Asymmetric deployment is only supported for WebSphere Application Server Network Deployment cell topology and for Liberty collective topology.
+**非对称部署**  
+在非对称部署中，运行时与 {{ site.data.keys.product }} 管理组件可以安装在不同的应用程序服务器上。  
+只有 WebSphere Application Server Network Deployment 单元拓扑和 Liberty 集合体拓扑才支持非对称部署。
 
-#### Select a topology
+#### 选择拓扑
 {: #select-a-topology }
 
-* [Stand-alone server topology](#stand-alone-server-topology)
-* [Server farm topology](#server-farm-topology)
-* [Liberty collective topology](#liberty-collective-topology)
-* [WebSphere Application Server Network Deployment topologies](#websphere-application-server-network-deployment-topologies)
-* [Using a reverse proxy with server farm and WebSphere Application Server Network Deployment topologies](#using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies)
+* [独立服务器拓扑](#stand-alone-server-topology)
+* [服务器场拓扑](#server-farm-topology)
+* [Liberty 集合体拓扑](#liberty-collective-topology)
+* [WebSphere Application Server Network Deployment 拓扑](#websphere-application-server-network-deployment-topologies)
+* [在服务器场和 WebSphere Application Server Network Deployment 拓扑中使用逆向代理](#using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies)
 
-### Stand-alone server topology
+### 独立服务器拓扑
 {: #stand-alone-server-topology }
-You can configure a stand-alone topology for WebSphere  Application Server full profile, WebSphere Application Server Liberty profile, and Apache Tomcat.
-In this topology, all the administration components and the runtimes are deployed in a single Java Virtual Machine (JVM).
+您可以为 WebSphere Application Server Full Profile、WebSphere Application Server Liberty Profile 和 Apache Tomcat 配置独立拓扑。在此拓扑中，所有管理组件和运行时都部署在单个 Java 虚拟机 (JVM) 中。
 
-![Stand-alone topology](standalone_topology.jpg)
+![独立拓扑](standalone_topology.jpg)
 
-With one JVM, only symmetric deployment is possible with the following characteristics:
+如果只有一个 JVM，那么只能进行对称部署；对称部署具有以下特征：
 
-* One or several administration components can be deployed. Each {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed.
-* One {{ site.data.keys.mf_console }} can manage several runtimes.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* 可部署一个或多个管理组件。每个 {{ site.data.keys.mf_console }}
+都与一个管理服务和一个实时更新服务进行通信。
+* 可部署一个或多个运行时。
+* 一个 {{ site.data.keys.mf_console }} 可以管理多个运行时。
+* 每个运行时只能由一个 {{ site.data.keys.mf_console }} 进行管理。
+* 每个管理服务都使用自己的管理数据库模式。
+* 每个实时更新服务都使用其自己的实时更新数据库模式。
+* 每个运行时都使用自己的运行时数据库模式。
 
-#### Configuration of JNDI properties
+#### JNDI 属性配置
 {: #configuration-of-jndi-properties }
-Some JNDI properties are required to enable Java Management Extensions (JMX) communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+必须使用某些 JNDI 属性，才能在管理服务与运行时之间启用 Java 管理扩展 (JMX) 通信，以及定义用于管理运行时的管理服务。有关这些属性的详细信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }}运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
 
-**Stand-alone WebSphere Application Server Liberty profile server**  
-The following global JNDI properties are required for the administration services and the runtimes.
+**独立 WebSphere Application Server Liberty Profile 服务器**  
+以下全局 JNDI 属性是管理服务和运行时所必需的。
 
-| JNDI properties          | Values |
+| JNDI 属性          | 值 |
 |--------------------------|--------|
 | mfp.topology.platform	   | Liberty |
-| mfp.topology.clustermode | Standalone |
-| mfp.admin.jmx.host       | The host name of the WebSphere Application Server Liberty profile server. |
-| mfp.admin.jmx.port       | The port of the REST connector that is the port of the httpsPort attribute declared in the `<httpEndpoint>` element of the server.xml file of WebSphere Application Server Liberty profile server. This property has no default value. |
-| mfp.admin.jmx.user       | The user name of the WebSphere Application Server Liberty administrator, which must be identical to the name defined in the `<administrator-role>` element of the server.xml file of the WebSphere Application Server Liberty profile server. |
-| mfp.admin.jmx.pwd        | The password of the WebSphere Application Server Liberty administrator user. |
+| mfp.topology.clustermode | 独立 |
+| mfp.admin.jmx.host       | WebSphere Application Server Liberty Profile 服务器的主机名。 |
+| mfp.admin.jmx.port       | REST 接口的端口，即 WebSphere Application Server Liberty Profile 服务器的 server.xml 文件中的 `<httpEndpoint>` 元素中声明的 httpsPort 属性的端口。该属性没有缺省值。 |
+| mfp.admin.jmx.user       | WebSphere Application Server Liberty 管理员的用户名，必须与 WebSphere Application Server Liberty Profile 服务器的 server.xml 文件中的 `<administrator-role>` 元素中定义的名称相同。 |
+| mfp.admin.jmx.pwd        | WebSphere Application Server Liberty 管理员用户的密码。 |
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+可以部署多个管理组件以支持在用于管理不同运行时的不同管理组件上运行相同的 JVM。
 
-When you deploy several administration components, you must specify:
+部署多个管理组件时，必须指定：
 
-* On each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* 在每个管理服务上，局部 **mfp.admin.environmentid** JNDI 属性的唯一值。
+* 在每个运行时上，与针对用于管理运行时的管理服务定义的值相同的局部 **mfp.admin.environmentid** JNDI 属性值。
 
-**Stand-alone Apache Tomcat server**
-The following local JNDI properties are required for the administration services and the runtimes.
+**独立 Apache Tomcat 服务器**
+以下局部 JNDI 属性是管理服务和运行时所必需的。
 
-| JNDI properties        |	Values    |
+| JNDI 属性        |	值    |
 |------------------------|------------|
 | mfp.topology.platform   | Tomcat     |
-| mfp.topology.clustermode | Standalone |
+| mfp.topology.clustermode | 独立 |
 
-JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
+还需要使用 JVM 属性来定义 Java 管理扩展 (JMX) 远程方法调用 (RMI)。有关更多信息，请参阅[配置 Apache Tomcat 的 JMX 连接](../appserver/#apache-tomcat-prerequisites)。
 
-If the Apache Tomcat server is running behind a firewall, the **mfp.admin.rmi.registryPort** and **mfp.admin.rmi.serverPort** JNDI properties are required for the administration service. See [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
+如果 Apache Tomcat 服务器在防火墙背后运行，那么 **mfp.admin.rmi.registryPort** 和 **mfp.admin.rmi.serverPort**
+JNDI 属性是管理服务所必需的。请参阅[配置 Apache Tomcat 的 JMX 连接](../appserver/#apache-tomcat-prerequisites)。
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.  
-When you deploy several administration components, you must specify:
+可以部署多个管理组件以支持在用于管理不同运行时的不同管理组件上运行相同的 JVM。  
+部署多个管理组件时，必须指定：
 
-* On each administration service, a unique value for the local mfp.admin.environmentid JNDI property.
-* On each runtime, the same value for the local mfp.admin.environmentid JNDI property as the value defined for the administration service that manages the runtime.
+* 在每个管理服务上，局部 mfp.admin.environmentid JNDI 属性的唯一值。
+* 在每个运行时上，与针对用于管理运行时的管理服务定义的值相同的局部 mfp.admin.environmentid JNDI 属性值。
 
-**Stand-alone WebSphere Application Server**  
-The following local JNDI properties are required for the administration services and the runtimes.
+**独立 WebSphere Application Server
+**  
+以下局部 JNDI 属性是管理服务和运行时所必需的。
 
-| JNDI properties          | Values                 |
+| JNDI 属性          | 值                 |
 |--------------------------| -----------------------|
 | mfp.topology.platform    | WAS                    |
-| mfp.topology.clustermode | Standalone             |
-| mfp.admin.jmx.connector  | The JMX connector type; the value can be SOAP or RMI. |
+| mfp.topology.clustermode | 独立             |
+| mfp.admin.jmx.connector  | JMX 接口类型；该值可以是 SOAP 或 RMI。 |
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.  
-When you deploy several administration components, you must specify:
+可以部署多个管理组件以支持在用于管理不同运行时的不同管理组件上运行相同的 JVM。  
+部署多个管理组件时，必须指定：
 
-* On each administration service, a unique value for the **local mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* 在每个管理服务上，**局部 mfp.admin.environmentid** JNDI 属性的唯一值。
+* 在每个运行时上，与针对用于管理运行时的管理服务定义的值相同的局部 **mfp.admin.environmentid** JNDI 属性值。
 
-### Server farm topology
+### 服务器场拓扑
 {: #server-farm-topology }
-You can configure a farm of WebSphere  Application Server full profile, WebSphere Application Server Liberty profile, or Apache Tomcat application servers.
+您可以配置 WebSphere Application Server Full Profile、WebSphere Application Server Liberty Profile 或 Apache Tomcat 应用程序服务器的场。
 
-A farm is a set of individual servers where the same components are deployed and where the same administration service database and runtime database are shared between the servers. The farm topology enables the load of {{ site.data.keys.product }} applications to be distributed across several servers. Each server in the farm must be a Java virtual machine (JVM) of the same type of application server; that is, a homogeneous server farm. For example, a set of several Liberty servers can be configured as a server farm. Conversely, a mix of Liberty server, Tomcat server, or stand-alone WebSphere Application Server cannot be configured as a server farm.
+场是一组部署了相同组件的独立服务器，在这些服务器之间共享相同的管理服务数据库和运行时数据库。场拓扑支持在多个服务器之间分配 {{ site.data.keys.product }} 应用程序的负载。场中的每个服务器都必须是同一类应用程序服务器的 Java 虚拟机 (JVM)；这里指的是同类服务器场。例如，可以将包含多个 Liberty 服务器的集合配置为服务器场。反过来，不能将 Liberty 服务器、Tomcat 服务器或独立的 WebSphere Application Server 的混用配置为服务器场。
 
-In this topology, all the administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service) and the runtimes are deployed on every server in the farm.
+在此拓扑中，所有管理组件（{{ site.data.keys.mf_console }}、管理服务和实时更新服务）和运行时都部署在场中的每个服务器上。
 
-![Topology for a server farm](server_farm_topology.jpg)
+![服务器场拓扑](server_farm_topology.jpg)
 
-This topology supports only symmetric deployment. The runtimes and the administration components must be deployed on every server in the farm. The deployment of this topology has the following characteristics:
+此拓扑仅支持对称部署。运行时和管理组件必须部署在场中的每个服务器上。采用此拓扑的部署具有以下特征：
 
-* One or several administration components can be deployed. Each instance of {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* The administration components must be deployed on all servers in the farm.
-* One or several runtimes can be deployed.
-* The runtimes must be deployed on all servers in the farm.
-* One {{ site.data.keys.mf_console }} can manage several runtimes.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema. All deployed instances of the same administration service share the same administration database schema.
-* Each live update service uses its own live update database schema. All deployed instances of the same live update service share the same live update database schema.
-* Each runtime uses its own runtime database schema. All deployed instances of the same runtime share the same runtime database schema.
+* 可部署一个或多个管理组件。{{ site.data.keys.mf_console }}
+的每个实例都与一个管理服务和一个实时更新服务进行通信。
+* 管理组件必须部署在场中的所有服务器上。
+* 可部署一个或多个运行时。
+* 运行时必须部署在场中的所有服务器上。
+* 一个 {{ site.data.keys.mf_console }} 可以管理多个运行时。
+* 每个运行时只能由一个 {{ site.data.keys.mf_console }} 进行管理。
+* 每个管理服务都使用自己的管理数据库模式。同一管理服务的所有已部署实例都共享相同的管理数据库模式。
+* 每个实时更新服务都使用其自己的实时更新数据库模式。同一实时更新服务的所有已部署实例都共享相同的实时更新数据库模式。
+* 每个运行时都使用自己的运行时数据库模式。同一运行时的所有已部署实例都共享相同的运行时数据库模式。
 
-#### Configuration of JNDI properties
+#### JNDI 属性配置
 {: #configuration-of-jndi-properties-1 }
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime of the same server, and to define the administration service that manages a runtime. For convenience, the following tables list these properties. For instructions about how to install a server farm, see [Installing a server farm](../appserver/#installing-a-server-farm). For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+必须使用某些 JNDI 属性，才能在相同服务器的管理服务与运行时之间启用 JMX 通信以及定义用于管理运行时的管理服务。方便起见，下表列出了这些属性。有关如何安装服务器场的指示信息，请参阅[安装服务器场](../appserver/#installing-a-server-farm)。有关 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }}运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
 
-**WebSphere Application Server Liberty profile server farm**  
-The following global JNDI properties are required in each server of the farm for the administration services and the runtimes.
+**WebSphere Application Server Liberty Profile 服务器场**  
+在场的每个服务器中，管理服务和运行时需要以下全局 JNDI 属性。
 
 <table>
     <tr>
         <th>
-            JNDI properties
-        </th>
+            JNDI 属性</th>
         <th>
-            Values
-        </th>
+            值</th>
     </tr>
     <tr>
         <td>
             mfp.topology.platform
         </td>
         <td>
-            Liberty
-        </td>
+            Liberty</td>
     </tr>
     <tr>
         <td>
             mfp.topology.clustermode
         </td>
         <td>
-            Farm
-        </td>
+            场</td>
     </tr>
     <tr>
         <td>
             mfp.admin.jmx.host
         </td>
         <td>
-            The host name of the WebSphere Application Server Liberty profile server
-        </td>
+            WebSphere Application Server Liberty Profile 服务器的主机名</td>
     </tr>
     <tr>
         <td>
             mfp.admin.jmx.port
         </td>
         <td>
-            The port of the REST connector that must be identical to the value of the httpsPort attribute declared in the <code>httpEndpoint</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server. 
-
+            REST 接口的端口，必须与 WebSphere Application Server Liberty Profile 服务器的 <b>server.xml</b>文件的 <code>httpEndpoint</code> 元素中声明的 httpsPort 属性值相同。
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*" />
 {% endhighlight %}
@@ -347,7 +347,7 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.user
         </td>
         <td>
-            The user name of the WebSphere Application Server Liberty administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the WebSphere Application Server Liberty profile server.
+            在 WebSphere Application Server Liberty Profile 服务器的 <b>server.xml</b> 文件的 <code>administrator-role</code> 元素中定义的 WebSphere Application Server Liberty 管理员的用户名。
             
 {% highlight xml %}
 <administrator-role>
@@ -361,95 +361,92 @@ The following global JNDI properties are required in each server of the farm for
             mfp.admin.jmx.pwd
         </td>
         <td>
-            The password of the WebSphere Application Server Liberty administrator user.
-        </td>
+            WebSphere Application Server Liberty 管理员用户的密码。</td>
     </tr>
 </table>
 
-The **mfp.admin.serverid** JNDI property is required for the administration service to manage the server farm configuration. Its value is the server identifier, which must be different for each server in the farm.
+管理服务需要使用 **mfp.admin.serverid** JNDI 属性来管理服务器场配置。其值是服务器标识，场中的每个服务器的标识必须不同。
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+可以部署多个管理组件以支持在用于管理不同运行时的不同管理组件上运行相同的 JVM。
 
-When you deploy several administration components, you must specify:
+部署多个管理组件时，必须指定：
 
-* On each administration service, a unique value for the local mfp.admin.environmentid JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* 在每个管理服务上，局部 mfp.admin.environmentid JNDI 属性的唯一值。
+* 在每个运行时上，与针对用于管理运行时的管理服务定义的值相同的局部 **mfp.admin.environmentid** JNDI 属性值。
 
-**Apache Tomcat server farm**  
-The following global JNDI properties are required in each server of the farm for the administration services and the runtimes.
+**Apache Tomcat 服务器场**  
+在场的每个服务器中，管理服务和运行时需要以下全局 JNDI 属性。
 
-| JNDI properties          |	Values |
+| JNDI 属性          |	值 |
 |--------------------------|-----------|
 | mfp.topology.platform	   | Tomcat    |
-| mfp.topology.clustermode | Farm      |
+| mfp.topology.clustermode | 场      |
 
-JVM properties are also required to define Java Management Extensions (JMX) Remote Method Invocation (RMI). For more information, see [Configuring JMX connection for Apache Tomcat](../appserver/#apache-tomcat-prerequisites).
+还需要使用 JVM 属性来定义 Java 管理扩展 (JMX) 远程方法调用 (RMI)。有关更多信息，请参阅[配置 Apache Tomcat 的 JMX 连接](../appserver/#apache-tomcat-prerequisites)。
 
-The **mfp.admin.serverid** JNDI property is required for the administration service to manage the server farm configuration. Its value is the server identifier, which must be different for each server in the farm.
+管理服务需要使用 **mfp.admin.serverid** JNDI 属性来管理服务器场配置。其值是服务器标识，场中的每个服务器的标识必须不同。
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+可以部署多个管理组件以支持在用于管理不同运行时的不同管理组件上运行相同的 JVM。
 
-When you deploy several administration components, you must specify:
+部署多个管理组件时，必须指定：
 
-* On each administration service, a unique value for the local mfp.admin.environmentid JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* 在每个管理服务上，局部 mfp.admin.environmentid JNDI 属性的唯一值。
+* 在每个运行时上，与针对用于管理运行时的管理服务定义的值相同的局部 **mfp.admin.environmentid** JNDI 属性值。
 
-**WebSphere Application Server full profile server farm**  
-The following global JNDI properties are required on each server in the farm for the administration services and the runtimes.
+**WebSphere Application Server Full Profile 服务器场**  
+在场中的每个服务器上，管理服务和运行时需要以下全局 JNDI 属性。
 
-| JNDI properties            | Values |
+| JNDI 属性            | 值 |
 |----------------------------|--------|
 | mfp.topology.platform	WAS  | WAS    |
-| mfp.topology.clustermode   | Farm   |
+| mfp.topology.clustermode   | 场   |
 | mfp.admin.jmx.connector    | SOAP   |
 
-The following JNDI properties are required for the administration service to manage the server farm configuration.
+管理服务需要使用以下 JNDI 属性来管理服务器场配置。
 
-| JNDI properties    | Values |
+| JNDI 属性    | 值 |
 |--------------------|--------|
-| mfp.admin.jmx.user | The user name of WebSphere Application Server. This user must be defined in the WebSphere Application Server user registry. |
-| mfp.admin.jmx.pwd	 | The password of the WebSphere Application Server user. |
-| mfp.admin.serverid | The server identifier, which must be different for each server in the farm and identical to the value of this property used for this server in the server farm configuration file. |
+| mfp.admin.jmx.user | WebSphere Application Server 的用户名。必须在 WebSphere Application Server 用户注册表中定义此用户。 |
+| mfp.admin.jmx.pwd	 | WebSphere Application Server 用户的密码。 |
+| mfp.admin.serverid | 服务器标识，场中的每个服务器的标识必须不同，并且必须与此服务器的服务器场配置文件中使用的该属性值相同。 |
 
-Several administration components can be deployed to enable the same JVM to run on separate administration components that manage different runtimes.
+可以部署多个管理组件以支持在用于管理不同运行时的不同管理组件上运行相同的 JVM。
 
-When you deploy several administration components, you must specify the following values:
+部署多个管理组件时，必须指定以下值：
 
-* On each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** JNDI property as the value defined for the administration service that manages the runtime.
+* 在每个管理服务上，局部 **mfp.admin.environmentid** JNDI 属性的唯一值。
+* 在每个运行时上，与针对用于管理运行时的管理服务定义的值相同的局部 **mfp.admin.environmentid** JNDI 属性值。
 
-### Liberty collective topology
+### Liberty 集合体拓扑
 {: #liberty-collective-topology }
-You can deploy the {{ site.data.keys.mf_server }} components in a Liberty collective topology.
+您可以在 Liberty 集合体拓扑中部署 {{ site.data.keys.mf_server }} 组件。
 
-In the Liberty collective topology, the {{ site.data.keys.mf_server }} administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service) are deployed in a collective controller and the {{ site.data.keys.product }} runtimes in collective member. This topology supports only asymmetric deployment, the runtimes cannot be deployed in a collective controller.
+在 Liberty 集合体拓扑中，{{ site.data.keys.mf_server }} 管理组件（{{ site.data.keys.mf_console }}、管理服务和实时更新服务）部署在集合体控制器中，而 {{ site.data.keys.product }} 运行时部署在集合体成员中。该拓扑仅支持非对称部署，运行时不能部署在集合体控制器中。
 
-![Topology for Liberty Collective](liberty_collective_topology.jpg)
+![Liberty 集合体的拓扑](liberty_collective_topology.jpg)
 
-The deployment of this topology has the following characteristics:
+采用此拓扑的部署具有以下特征：
 
-* One or several administration components can be deployed in one or several controllers of the collective. Each instance of * * {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in the cluster members of the collective.
-* One {{ site.data.keys.mf_console }} manages several runtimes that are deployed in the cluster members of the collective.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* 一个或多个管理组件可以部署在一个或多个集合体控制器中。* * {{ site.data.keys.mf_console }} 的每个实例都与一个管理服务和一个实时更新服务进行通信。
+* 一个或多个运行时可以部署在集合体的集群成员中。
+* 一个 {{ site.data.keys.mf_console }} 管理集合体集群成员中部署的多个运行时。
+* 每个运行时只能由一个 {{ site.data.keys.mf_console }} 进行管理。
+* 每个管理服务都使用自己的管理数据库模式。
+* 每个实时更新服务都使用其自己的实时更新数据库模式。
+* 每个运行时都使用自己的运行时数据库模式。
 
-#### Configuration of JNDI properties
+#### JNDI 属性配置
 {: #configuration-of-jndi-properties-2 }
-The following tables list the JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For more information about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime). For instructions about how to install a Liberty collective manually, see [Manual installation on WebSphere Application Server Liberty collective](../appserver/#manual-installation-on-websphere-application-server-liberty-collective).
+以下各表列出了一些 JNDI 属性，需要这些属性才能在管理服务与运行时之间启用 JMX 通信以及定义用于管理运行时的管理服务。有关这些属性的更多信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }}运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。有关如何手动安装 Liberty 集合体的指示信息，请参阅[手动安装 WebSphere Application Server Liberty 集合体](../appserver/#manual-installation-on-websphere-application-server-liberty-collective)。
 
-The following global JNDI properties are required for the administration services:
+管理服务需要以下全局 JNDI 属性：
 
 <table>
     <tr>
         <th>
-            JNDI properties
-        </th>
+            JNDI 属性</th>
         <th>
-            Values
-        </th>
+            值</th>
     </tr>
     <tr>
         <td>mfp.topology.platform</td>
@@ -457,20 +454,19 @@ The following global JNDI properties are required for the administration service
     </tr>
     <tr>
         <td>mfp.topology.clustermode</td>
-        <td>Cluster</td>
+        <td>集群</td>
     </tr>
     <tr>
         <td>mfp.admin.serverid</td>
-        <td>controller</td>
+        <td>控制器</td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.host</td>
-        <td>The host name of the Liberty controller.</td>
+        <td>Liberty 控制器的主机名。</td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.port</td>
-        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code>httpEndpoint</code> element of the server.xml file of the Liberty controller.
-
+        <td>REST 接口的端口，必须与 Liberty 控制器的 server.xml 文件的 <code>httpEndpoint</code> 元素中声明的 <b>httpsPort</b> 属性值相同。
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
 {% endhighlight %}
@@ -478,33 +474,29 @@ The following global JNDI properties are required for the administration service
     </tr>
     <tr>
         <td>mfp.admin.jmx.user</td>
-        <td>The user name of the controller administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the Liberty controller.
-
-{% highlight xml %}
+        <td>在 Liberty 控制器的 <b>server.xml</b> 文件的 <code>administrator-role</code> 元素中定义的控制器管理员用户名。{% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
 {% endhighlight %}
         </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.pwd</td>
-        <td>The password of the Liberty controller administrator user.</td>
+        <td>Liberty 控制器管理员用户的密码。</td>
     </tr>
 </table>
 
-Several administration components can be deployed to enable the controller to run separate administration components that manage different runtimes.
+可以部署多个管理组件以支持控制器运行用于管理不同运行时的不同管理组件。
 
-When you deploy several administration components, you must specify on each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
+当部署多个管理组件时，必须在每个管理服务上为局部 **mfp.admin.environmentid** JNDI 属性指定唯一值。
 
-The following global JNDI properties are required for the runtimes:
+运行时需要以下全局 JNDI 属性：
 
 <table>
     <tr>
         <th>
-            JNDI properties
-        </th>
+            JNDI 属性</th>
         <th>
-            Values
-        </th>
+            值</th>
     </tr>
     <tr>
         <td>mfp.topology.platform</td>
@@ -512,20 +504,19 @@ The following global JNDI properties are required for the runtimes:
     </tr>
     <tr>
         <td>mfp.topology.clustermode</td>
-        <td>Cluster</td>
+        <td>集群</td>
     </tr>
     <tr>
         <td>mfp.admin.serverid</td>
-        <td>A value that identifies uniquely the collective member. It must be different for each member in the collective. The value <code>controller</code> cannot be used as it is reserved for the collective controller.</td>
+        <td>用于唯一标识集合体成员的值。对于集合体中的每个成员，该值必须不同。不能使用值 <code>controller</code>，因为该值专为集合体控制器保留。</td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.host</td>
-        <td>The host name of the Liberty controller.</td>
+        <td>Liberty 控制器的主机名。</td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.port</td>
-        <td>The port of the REST connector that must be identical to the value of the <b>httpsPort</b> attribute declared in the <code>httpEndpoint</code> element of the server.xml file of the Liberty controller.
-
+        <td>REST 接口的端口，必须与 Liberty 控制器的 server.xml 文件的 <code>httpEndpoint</code> 元素中声明的 <b>httpsPort</b> 属性值相同。
 {% highlight xml %}
 <httpEndpoint id="defaultHttpEndpoint" httpPort="9080" httpsPort="9443" host="*"/>
 {% endhighlight %}
@@ -533,148 +524,149 @@ The following global JNDI properties are required for the runtimes:
     </tr>
     <tr>
         <td>mfp.admin.jmx.user</td>
-        <td>The user name of the controller administrator that is defined in the <code>administrator-role</code> element of the <b>server.xml</b> file of the Liberty controller.
-
-{% highlight xml %}
+        <td>在 Liberty 控制器的 <b>server.xml</b> 文件的 <code>administrator-role</code> 元素中定义的控制器管理员用户名。{% highlight xml %}
 <administrator-role> <user>MfpRESTUser</user> </administrator-role>
 {% endhighlight %}
         </td>
     </tr>
     <tr>
         <td>mfp.admin.jmx.pwd</td>
-        <td>The password of the Liberty controller administrator user.</td>
+        <td>Liberty 控制器管理员用户的密码。</td>
     </tr>
 </table>
 
-The following JNDI property is required for the runtime when several controllers (replicas) using the same administration components are used:
+当使用的若干个控制器（副本）使用同一个管理组件时，运行时需要以下 JNDI 属性：
 
-| JNDI properties | Values | 
+| JNDI 属性 | 值 | 
 |-----------------|--------|
-| mfp.admin.jmx.replica | Endpoint list of the different controller replicas with the following syntax: `replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` | 
+| mfp.admin.jmx.replica | 使用以下语法指定不同控制器副本的端点列表：`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n
+hostname:replica-n port` | 
 
-When several administration components are deployed in the controller, each runtime must have the same value for the local **mfp.admin.environmentid** JNDI property as the value that is defined for the administration service that manages the runtime.
+当在控制器中部署了若干管理组件时，每个运行时的局部 **mfp.admin.environmentid** JNDI 属性值必须与针对用于管理该运行时的管理服务定义的值相同。
 
-### WebSphere Application Server Network Deployment topologies
+### WebSphere Application Server Network Deployment 拓扑
 {: #websphere-application-server-network-deployment-topologies }
-The administration components and the runtimes are deployed in servers or clusters of the WebSphere  Application Server Network Deployment cell.
+管理组件和运行时将部署在 WebSphere Application Server Network Deployment 单元的服务器或集群中。
 
-Examples of these topologies support either asymmetric or symmetric deployment, or both. You can, for example, deploy the administration components ({{ site.data.keys.mf_console }}, the administration service, and the live update service) in one cluster and the runtimes managed by these components in another cluster.
+这些拓扑示例支持非对称部署和/或对称部署。例如，您可以在一个集群中部署管理组件（{{ site.data.keys.mf_console }}、管理服务和实时更新服务），而在另一个集群中部署这些组件所管理的运行时。
 
-#### Symmetric deployment in the same server or cluster
+#### 在同一个服务器或集群中进行对称部署
 {: #symmetric-deployment-in-the-same-server-or-cluster }
-The diagram below shows symmetric deployment where the runtimes and the administration components are deployed in the same server or cluster.
+下图显示了对称部署，在这种部署中，运行时和管理组件部署在同一个服务器或集群中。
 
-![A topology of WAS ND](was_nd_topology_1.jpg)
+![WAS ND 的拓扑](was_nd_topology_1.jpg)
 
-The deployment of this topology has the following characteristics:
+采用此拓扑的部署具有以下特征：
 
-* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of * {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in the same server or cluster as the administration components that manage them.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* 可以在单元的一个或多个服务器或集群中部署一个或多个管理组件。* {{ site.data.keys.mf_console }} 的每个实例都与一个管理服务和一个实时更新服务进行通信。
+* 可以将一个或多个运行时与用于管理这些运行时的管理组件部署在同一个服务器或集群中。
+* 每个运行时只能由一个 {{ site.data.keys.mf_console }} 进行管理。
+* 每个管理服务都使用自己的管理数据库模式。
+* 每个实时更新服务都使用其自己的实时更新数据库模式。
+* 每个运行时都使用自己的运行时数据库模式。
 
-#### Asymmetric deployment with runtimes and administration services in different server or cluster
+#### 非对称部署（运行时和管理服务位于不同的服务器或集群中）
 {: #asymmetric-deployment-with-runtimes-and-administration-services-in-different-server-or-cluster }
-The diagram below shows a topology where the runtimes are deployed in a different server or cluster from the administration services.
+下图显示了运行时与管理服务部署在不同的服务器或集群中的拓扑。
 
-![Topology for WAS ND](was_nd_topology_2.jpg)
+![WAS ND 的拓扑](was_nd_topology_2.jpg)
 
-The deployment of this topology has the following characteristics:
+采用此拓扑的部署具有以下特征：
 
-* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of * {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in other servers or clusters of the cell.
-* One {{ site.data.keys.mf_console }} manages several runtimes deployed in the other servers or clusters of the cell.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* 可以在单元的一个或多个服务器或集群中部署一个或多个管理组件。* {{ site.data.keys.mf_console }} 的每个实例都与一个管理服务和一个实时更新服务进行通信。
+* 可以在单元的其他服务器或集群中部署一个或多个运行时。
+* 每个 {{ site.data.keys.mf_console }} 可以管理在单元的其他服务器或集群中部署的多个运行时。
+* 每个运行时只能由一个 {{ site.data.keys.mf_console }} 进行管理。
+* 每个管理服务都使用自己的管理数据库模式。
+* 每个实时更新服务都使用其自己的实时更新数据库模式。
+* 每个运行时都使用自己的运行时数据库模式。
 
-This topology is advantageous, because it enables the runtimes to be isolated from the administration components and from other runtimes. It can be used to provide performance isolation, to isolate critical applications, and to enforce Service Level Agreement (SLA).
+此拓扑的优势在于它可以将运行时与管理组件和其他运行时分隔开。它可用于提供性能隔离，以隔离关键应用程序并实施服务级别协议 (SLA)。
 
-#### Symmetric and asymmetric deployment
+#### 对称部署和非对称部署
 {: #symmetric-and-asymmetric-deployment }
-The diagram below shows an example of symmetric deployment in Cluster1 and of asymmetric deployment in Cluster2, where Runtime2 and Runtime3 are deployed in a different cluster from the administration components. {{ site.data.keys.mf_console }} manages the runtimes deployed in Cluster1 and Cluster2.
+下图显示了 Cluster1 中的对称部署示例和 Cluster2 中的非对称部署示例，其中 Runtime2 和 Runtime3 与管理组件部署在不同的集群中。{{ site.data.keys.mf_console }} 管理 Cluster1 和 Cluster2 中部署的运行时。
 
-![Topology for WAS ND](was_nd_topology_3.jpg)
+![WAS ND 的拓扑](was_nd_topology_3.jpg)
 
-The deployment of this topology has the following characteristics:
+采用此拓扑的部署具有以下特征：
 
-* One or several administration components can be deployed in one or several servers or clusters of the cell. Each instance of {{ site.data.keys.mf_console }} communicates with one administration service and one live update service.
-* One or several runtimes can be deployed in one or several servers or clusters of the cell.
-* One {{ site.data.keys.mf_console }} can manage several runtimes deployed in the same or other servers or clusters of the cell.
-* One runtime is managed by only one {{ site.data.keys.mf_console }}.
-* Each administration service uses its own administration database schema.
-* Each live update service uses its own live update database schema.
-* Each runtime uses its own runtime database schema.
+* 可以在单元的一个或多个服务器或集群中部署一个或多个管理组件。{{ site.data.keys.mf_console }}
+的每个实例都与一个管理服务和一个实时更新服务进行通信。
+* 可以在单元的一个或多个服务器或集群中部署一个或多个运行时。
+* 每个 {{ site.data.keys.mf_console }} 可以管理在单元的相同或其他服务器或集群中部署的多个运行时。
+* 每个运行时只能由一个 {{ site.data.keys.mf_console }} 进行管理。
+* 每个管理服务都使用自己的管理数据库模式。
+* 每个实时更新服务都使用其自己的实时更新数据库模式。
+* 每个运行时都使用自己的运行时数据库模式。
 
-#### Configuration of JNDI properties
+#### JNDI 属性配置
 {: #configuration-of-jndi-properties-3 }
-Some JNDI properties are required to enable JMX communication between the administration service and the runtime, and to define the administration service that manages a runtime. For details about these properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime).
+必须使用某些 JNDI 属性，才能在管理服务与运行时之间启用 JMX 通信以及定义用于管理运行时的管理服务。有关这些属性的详细信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.product_adj }}运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
 
-The following local JNDI properties are required for the administration services and for the runtimes:
+以下局部 JNDI 属性是管理服务和运行时所必需的：
 
-| JNDI properties |	Values |
+| JNDI 属性 |	值 |
 |-----------------|--------|
 | mfp.topology.platform	| WAS |
-| mfp.topology.clustermode | Cluster |
-| mfp.admin.jmx.connector |	The JMX connector type to connect with the deployment manager. The value can be SOAP or RMI. SOAP is the default and preferred value. You must use RMI if the SOAP port is disabled. |
-| mfp.admin.jmx.dmgr.host |	The host name of the deployment manager. |
-| mfp.admin.jmx.dmgr.port |	The RMI or the SOAP port used by the deployment manager, depending on the value of mfp.admin.jmx.connector. |
+| mfp.topology.clustermode | 集群 |
+| mfp.admin.jmx.connector |	与 Deployment Manager 相连的 JMX 接口类型。该值可以是 SOAP 或 RMI。SOAP 是缺省值和首选值。如果禁用 SOAP 端口，那么必须使用 RMI。 |
+| mfp.admin.jmx.dmgr.host |	Deployment Manager 的主机名。 |
+| mfp.admin.jmx.dmgr.port |	Deployment Manager 使用的 RMI 或 SOAP 端口（取决于 mfp.admin.jmx.connector 的值）。 |
 
-Several administration components can be deployed to enable you to run the same server or cluster with separate administration components managing each of the different runtimes.
+可以部署多个管理组件，以支持运行相同的服务器或集群，并由单独的管理组件管理各个运行时。
 
-When several administration components are deployed, you must specify:
+部署多个管理组件时，必须指定：
 
-* On each administration service, a unique value for the local **mfp.admin.environmentid** JNDI property.
-* On each runtime, the same value for the local **mfp.admin.environmentid** as the value defined for the administration service that manages that runtime.
+* 在每个管理服务上，局部 **mfp.admin.environmentid** JNDI 属性的唯一值。
+* 在每个运行时上，局部 **mfp.admin.environmentid** 的值与针对用于管该理运行时的管理服务定义的值相同。
 
-If the virtual host that is mapped to an administration service application is not the default host, you must set the following properties on the administration service application:
+如果映射到管理服务应用程序的虚拟主机不是缺省主机，那么必须在管理服务器应用程序上设置以下属性：
 
-* **mfp.admin.jmx.user**: the user name of the WebSphere Application Server administrator
-* **mfp.admin.jmx.pwd**: the password of the WebSphere Application Server administrator
+* **mfp.admin.jmx.user**：WebSphere Application Server 管理员的用户名
+* **mfp.admin.jmx.pwd**：WebSphere Application Server 管理员的密码
 
-### Using a reverse proxy with server farm and WebSphere Application Server Network Deployment topologies
+### 在服务器场和 WebSphere Application Server Network Deployment 拓扑中使用逆向代理
 {: #using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies }
-You can use a reverse proxy with distributed topologies. If your topology uses a reverse proxy, configure the required JNDI properties for the administration service.
+可以在分布式拓扑中使用逆向代理。
+如果您的拓扑使用逆向代理，请为管理服务配置所需的 JNDI 属性。
 
-You can use a reverse proxy, such as IBM  HTTP Server, to front server farm or WebSphere  Application Server Network Deployment topologies. In this case, you must configure the administration components appropriately.
+可以在服务器场或 WebSphere Application Server Network Deployment 拓扑的前端使用逆向代理（例如，IBM HTTP Server）。在此情况下，必须适当地配置管理组件。
 
-You can call the reverse proxy from:
+可以通过以下方式调用逆向代理：
 
-* The browser when you access {{ site.data.keys.mf_console }}.
-* The runtime when it calls the administration service.
-* The {{ site.data.keys.mf_console }} component when it calls the administration service.
+* 在访问 {{ site.data.keys.mf_console }} 时使用浏览器。
+* 在调用管理服务时使用运行时。
+* 在调用管理服务时使用 {{ site.data.keys.mf_console }} 组件。
 
-If the reverse proxy is in a DMZ (a firewall configuration for securing local area networks) and a firewall is used between the DMZ and the internal network, this firewall must authorize all incoming requests from the application servers.
+如果逆向代理位于 DMZ（用于保护局域网的防火墙配置）中，并且在 DMZ 和内部网络之间使用了防火墙，那么此防火墙必须授权来自应用程序服务器的所有入局请求。
 
-When a reverse proxy is used in front of the application server infrastructure, the following JNDI properties must be defined for the administration service.
+当在应用程序服务器基础结构的前端使用逆向代理时，必须为管理服务定义以下 JNDI 属性。
 
-| JNDI properties |	Values |
+| JNDI 属性 |	值 |
 |-----------------|--------|
-| mfp.admin.proxy.protocol | The protocol that is used to communicate with the reverse proxy. It can be HTTP or HTTPS. |
-| mfp.admin.proxy.host | The host name of the reverse proxy. |
-| mfp.admin.proxy.port | The port number of the reverse proxy. |
+| mfp.admin.proxy.protocol | 用于与逆向代理进行通信的协议。可以为 HTTP 或 HTTPS。 |
+| mfp.admin.proxy.host | 逆向代理的主机名。 |
+| mfp.admin.proxy.port | 逆向代理的端口号。 |
 
-The **mfp.admin.endpoint** property that references the URL of the reverse proxy is also required for {{ site.data.keys.mf_console }}.
+引用逆向代理 URL 的 **mfp.admin.endpoint** 属性也是 {{ site.data.keys.mf_console }} 所必需的。
 
-### Constraints on {{ site.data.keys.mf_server }} push service
+### {{ site.data.keys.mf_server }} 推送服务的约束
 {: #constraints-on-mobilefirst-server-push-service }
-The push service can be on the same application server as the administration service or the runtime, or can be on a different application server. The URL used by the client apps to contact the push service is the same as the URL used by the client apps to contact the runtime, excepted that the context root of the runtime is replaced by imfpush. If you install the push service on a different server than the runtime, your HTTP server must direct the traffic to the /imfpush context root to a server where the push service runs.
+推送服务与管理服务或运行时可位于相同应用程序服务器上，也可位于不同应用程序服务器上。客户机应用程序用于联系推送服务的 URL 与客户机应用程序用于联系运行时的 URL 相同，只是将运行时的上下文根替换为 imfpush。如果安装推送服务的服务器与安装运行时的服务器不同，那么 HTTP Server 必须将进入 /imfpush 上下文根的流量定向至运行推送服务的服务器。
 
-For more information about the JNDI properties that are needed to adapt the installation to a topology, see [{{ site.data.keys.mf_server }} administration service to {{ site.data.keys.mf_server }} push service, and to the authorization server](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server). The push service must be installed with the context root **/imfpush**.
+有关根据拓扑调整安装所需的 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务到 {{ site.data.keys.mf_server }} 推送服务，再到授权服务器](#mobilefirst-server-administration-service-to-mobilefirst-server-push-service-and-to-the-authorization-server)。必须使用上下文根 **/imfpush** 安装推送服务。
 
-## Multiple {{ site.data.keys.product }} runtimes
+## 多个 {{ site.data.keys.product }} 运行时
 {: #multiple-mobilefirst-foundation-runtimes }
-You can install multiple runtimes. Each runtime must have its own context root, and all of these runtimes are managed by the same {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.mf_console }}.
+可以安装多个运行时。每个运行时都必须具有其自身的上下文根，并且所有这些运行时均由相同的 {{ site.data.keys.mf_server }} 管理服务和 {{ site.data.keys.mf_console }} 进行管理。
 
-The constraints as described in [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product }} runtime](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime) applies. Each runtime (with its context root) must have its own database tables.
+[{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product }} 运行时的约束](#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)中描述的约束适用。每个运行时（具有其上下文根）都必须具有其自身的数据库表。
 
-> For instructions, see [Configuring multiple runtimes](../server-configuration/#configuring-multiple-runtimes).
+> 有关指示信息，请参阅[配置多个运行时](../server-configuration/#configuring-multiple-runtimes)。
 
-## Multiple instances of {{ site.data.keys.mf_server }} on the same server or WebSphere Application Server cell
+## 同一个服务器或 WebSphere Application Server 单元上的多个 {{ site.data.keys.mf_server }} 实例
 {: #multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell }
-By defining a common environment ID, multiple instances of {{ site.data.keys.mf_server }} are possible to be installed on the same server.
+通过定义公共环境标识，可以在同一个服务器上安装多个 {{ site.data.keys.mf_server }} 实例。
 
-You can install multiple instances of {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, and {{ site.data.keys.product }} runtime on the same application server or WebSphere  Application Server cell. However, you must distinguish their installations with the JNDI variable: **mfp.admin.environmentid**, which is a variable of the administration service and of the runtime. The administration service manages only the runtimes that have the same environment identifier. As such, only the runtime components and the administration service that have the same value for **mfp.admin.environmentid** are considered as part of the same installation.
+您可以在同一个应用程序服务器或 WebSphere Application Server 单元上安装 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product }} 运行时的多个实例。但是，必须使用 JNDI 变量 **mfp.admin.environmentid** 来区分这些安装，此变量是管理服务和运行时的变量。管理服务仅管理具有相同环境标识的运行时。因此，只会将具有相同 **mfp.admin.environmentid** 值的运行时组件和管理服务视为同一个安装的一部分。

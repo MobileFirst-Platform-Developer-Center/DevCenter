@@ -44,7 +44,6 @@ Application Center コンソールの Web インターフェースを使用し�
     
 コマンド・ラインにある使用可能なオプションならどれでも渡すことができます。
 
-
 | オプション | 内容 | 説明 | 
 |--------|----------------------|-------------|
 | -s | serverpath | Application Center サーバーへのパス。 | 
@@ -142,7 +141,7 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 アップロード・ツールおよび削除ツールを Ant タスクとして使用し、その Ant タスクを独自の Ant スクリプトの中で使用することができます。   
 これらのタスクを実行するには Apache Ant が必要です。 サポートされる Apache Ant の最小バージョンは、[システム要件](../../product-overview/requirements)にリストされています。
 
-利便性を考慮して、{{site.data.keys.mf_server }} には Apache Ant 1.8.4 が組み込まれています。product_install_dir/shortcuts/ ディレクトリーで、以下のスクリプトが提供されます。
+利便性を考慮して、{{ site.data.keys.mf_server }} には Apache Ant 1.8.4 が組み込まれています。product_install_dir/shortcuts/ ディレクトリーで、以下のスクリプトが提供されます。
 
 * ant (UNIX / Linux の場合)
 * ant.bat (Windows の場合)
@@ -232,6 +231,7 @@ ant upload.AllApps -Dworkspace.root=myDirectory
 
 #### サンプル Ant スクリプトのプロパティー
 {: #properties-of-the-sample-ant-script }
+
 | プロパティー | コメント | 
 |----------|---------|
 | install.dir | デフォルトの ../../ になります。 | 

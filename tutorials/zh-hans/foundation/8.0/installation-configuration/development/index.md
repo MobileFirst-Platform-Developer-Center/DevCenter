@@ -1,52 +1,52 @@
 ---
 layout: tutorial
-title: Setting Up the Development Environment
-breadcrumb_title: Development Environment
+title: 设置开发环境
+breadcrumb_title: 开发环境
 show_children: true
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Before starting to develop client and server code using {{ site.data.keys.product_full }}, the development environment needs to be set-up first. This includes installing various required software and tools. The following is a list of software you may need to install on your developer workstation, depending on your needs.
+在使用 {{ site.data.keys.product_full }} 开始开发客户机和服务器代码之前，首先需要设置开发环境。这包括安装各种必需的软件和工具。下面是您可能需要在开发人员工作站上安装的软件的列表（取决于您的需求）。
 
-You can also find detailed step-by-step instructions [in this workstation installation guide](mobilefirst/installation-guide/).
+您也可以[在本工作站安装指南中](mobilefirst/installation-guide/)找到详细的分步指示信息。
 
-#### Jump to:
+#### 跳至：
 
-* [Server](#server)
-* [Application development](#application-development)
-* [Adapter development](#adapter-development)
-* [Platform-specific instructions](#platform-specific-instructions)
+* [服务器](#server)
+* [应用程序开发](#application-development)
+* [适配器开发](#adapter-development)
+* [特定于平台的指示信息](#platform-specific-instructions)
 
-### Server
+### 服务器
 {: #server }
-You can use the {{ site.data.keys.mf_server }} either via the [Mobile Foundation Bluemix service](../../bluemix/using-mobile-foundation), or locally using the {{ site.data.keys.mf_dev_kit_full }} (used for local development purposes). The {{ site.data.keys.mf_server }} requires Java 7 or 8 to run.
+您可以通过 [Mobile Foundation Bluemix 服务](../../bluemix/using-mobile-foundation) 或在本地通过 {{ site.data.keys.mf_dev_kit_full }}（用于本地开发目的）来使用 {{ site.data.keys.mf_server }}。{{ site.data.keys.mf_server }} 要求运行 Java 7 或 8。
 
-If you intend on using the Mobile Foundation Bluemix service, an account on Bluemix.net is required.
+如果您计划使用 Mobile Foundation Bluemix 服务，那么需要使用 Bluemix.net 帐户。
 
-### Application development
+### 应用程序开发
 {: #application-development }
-At the very minimum, the following software is needed:
+最低需求如下：
 
-* NodeJS (requirement for {{ site.data.keys.mf_cli }})
+* NodeJS（为 {{ site.data.keys.mf_cli }} 所需）
 * {{ site.data.keys.mf_cli }}
 * Cordova CLI
-* IDEs:
+* IDE：
     - Xcode
     - Android Studio
     - Visual Studio
-    - Atom.io / Visual Studio Code / WebStorm / IntelliJ / Eclipse / other IDEs
+    - Atom.io / Visual Studio Code / WebStorm / IntelliJ / Eclipse / 其他 IDE
 
-### Adapter development
+### 适配器开发
 {: #adapter-development }
-At the very minimum, the following software is needed:
+最低需求如下：
 
-* NodeJS (requirement for {{ site.data.keys.mf_cli }})
-* *optional* {{ site.data.keys.mf_cli }}
-* Maven (requires Java)
-* IDEs:
-    - IntelliJ / Eclipse / other IDEs
+* NodeJS（为 {{ site.data.keys.mf_cli }} 所需）
+* *可选* {{ site.data.keys.mf_cli }}
+* Maven（需要 Java）
+* IDE：
+    - IntelliJ / Eclipse / 其他 IDE
 
-### Platform-specific instructions
+### 特定于平台的指示信息
 {: #platform-specific-instructions }

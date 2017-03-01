@@ -1,25 +1,25 @@
 ---
 layout: tutorial
-title: Setting up the Xamarin development environment
+title: 设置 Xamarin 开发环境
 breadcrumb_title: Xamarin
 relevantTo: [xamarin]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-This tutorial explains the steps a developer needs to follow to be able to develop and test native C# Xamarin applications for Android or iOS devices. These steps include installing Xamarin Studio.
+本教程说明了开发人员为 Android 或 iOS 设备开发和测试本机 C# Xamarin 应用程序所需执行的步骤。这些步骤包括安装 Xamarin Studio。
 
-**Prerequisite:** As you setup your Xamarin development environment, make sure to also read the [Setting up the MobileFirst development environment](../../development/) tutorial.
+**先决条件：**设置 Xamarin 开发环境时，请确保您还阅读了[设置 MobileFirst 开发环境](../../development/)教程。
 
-### Development
+### 开发
 {: #development }
-Xamarin applications are developed using [Xamarin Studio](https://www.xamarin.com/studio) or [Microsoft Visual Studio](https://www.visualstudio.com/). Xamarin studio can be installed on Mac OS or Windows.  Alternatively, on Windows 8.1 or 10 desktops, Xamarin can be added as a plugin to Microsoft Visual Studio.   
+Xamarin 应用程序是使用 [Xamarin Studio](https://www.xamarin.com/studio) 或 [Microsoft Visual Studio](https://www.visualstudio.com/) 来开发的。Mac OS 或 Windows 上都可以安装 Xamarin Studio。或者，在 Windows 8.1 或 10 台式机上，Xamarin 可作为插件添加到 Microsoft Visual Studio 上。   
 
-Xamarin Studio can be downloaded at [Xamarin Studio Downloads](https://www.xamarin.com/download)
+可从 [Xamarin Studio Downloads](https://www.xamarin.com/download) 下载 Xamarin Studio
 
 ![Xamarin Studio](xamarin-studio.png)
 
-## What's Next
+## 后续操作
 {: #whats-next }
-Now that the {{ site.data.keys.product_full }} and Xamarin development environments are set up, continue to the [Quick Start](../../../quick-start/xamarin/) category to experience {{ site.data.keys.product }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product }} development.
+现在，您已经设置了 {{ site.data.keys.product_full }} 和 Xamarin 开发环境，接下来，您将转至[快速入门](../../../quick-start/xamarin/)类别来体验 {{ site.data.keys.product }}，或转至[全部教程](../../../all-tutorials)来了解 {{ site.data.keys.product }} 开发的特定方面。

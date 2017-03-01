@@ -1,37 +1,37 @@
 ---
 layout: tutorial
-title: Setting up the Android development environment
+title: 设置 Android 开发环境
 breadcrumb_title: Android
 relevantTo: [android,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-This tutorial explains the steps a developer needs to follow in order to be able to develop and test Android applications. These steps include installing Android Studio and setting the Android SDK.
+本教程说明了开发人员开发和测试 Android 应用程序所需执行的步骤。 这些步骤包括安装 Android Studio 和设置 Android SDK。
 
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the {{ site.data.keys.product_adj }} development environment](../mobilefirst/) tutorial.
+**先决条件：**设置 iOS 开发环境时，请确保您还阅读了[设置 {{ site.data.keys.product_adj }} 开发环境](../mobilefirst/)教程。
 
-#### Support level
+#### 支持级别
 {: #support-level }
-{{ site.data.keys.product_adj }} SDK is compatible with Android version Ice Cream Sandwich (API level 14) and later.
+{{ site.data.keys.product_adj }} SDK 与 Android 版的 Ice Cream Sandwich（API 级别 14）及更高版本兼容。
 
 ### Android Studio
-Follow the steps provided in the [Android Developers website](http://developer.android.com/develop/index.html) website to download and install Android Studio.
+按照 [Android Developers Web 站点](http://developer.android.com/develop/index.html)中提供的步骤来下载和安装 Android Studio。
 
-![Configure the Android SDK](android-studio.png)
+![配置 Android SDK](android-studio.png)
 
 ### Android SDK
-The Android SDK provides the tools and APIs required to develop applications on the Android platform, using the Java programming language.
+Android SDK 提供了一些工具和 API，这些工具和 API 可用于通过 Java 编程语言在 Android 平台上开发应用程序。
 
-Once you open Android Studio for the time, you will be able to configure the Android SDK using the SDK Manager.
+在打开 Android Studio 后，您就可以使用 SDK Manager 来配置 Android SDK。
 
-In the SDK Manager you can install required packages. For more information, [visit the Android Developer website](http://developer.android.com/sdk/index.html).
+在 SDK Manager 中，您可以安装必需的软件包。有关更多信息，请[访问 Android Developers Web 站点](http://developer.android.com/sdk/index.html)。
 
-#### Android Virtual Devices
+#### Android 虚拟设备
 {: #android-virtual-devices }
-You can use an AVD to test your application. For a detailed explanation of all available options, see the [Managing Virtual Devices documentation topic](http://developer.android.com/tools/devices/index.html) in the Android Developers website.
+您可以使用 AVD 来测试应用程序。有关所有可用选项的详细说明，请参阅 Android Developers Web 站点中的[“管理虚拟设备”文档主题](http://developer.android.com/tools/devices/index.html)。
 
-## What's Next
+## 后续操作
 {: #whats-next }
-Now that the {{ site.data.keys.product_adj }} and Android development environment are set up, continue to [Quick Start](../../../quick-start/android/) category to experience {{ site.data.keys.product_adj }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product_adj }} development.
+现在，您已经设置了 {{ site.data.keys.product_adj }} 和 Android 开发环境，接下来，您将转至[快速入门](../../../quick-start/android/)类别来体验 {{ site.data.keys.product_adj }}，或转至[全部教程](../../../all-tutorials)来了解 {{ site.data.keys.product_adj }} 开发的特定方面。

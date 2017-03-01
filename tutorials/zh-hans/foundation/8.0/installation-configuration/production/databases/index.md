@@ -1,65 +1,63 @@
 ---
 layout: tutorial
-title: Setting Up Databases
+title: 设置数据库
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-The following {{ site.data.keys.mf_server_full }} components need to store technical data into a database:
+以下 {{ site.data.keys.mf_server_full }} 组件需要将技术数据存储到数据库中：
 
-* {{ site.data.keys.mf_server }} administration service
-* {{ site.data.keys.mf_server }} live update service
-* {{ site.data.keys.mf_server }} push service
-* {{ site.data.keys.product }} runtime
+* {{ site.data.keys.mf_server }} 管理服务
+* {{ site.data.keys.mf_server }} 实时更新服务
+* {{ site.data.keys.mf_server }} 推送服务
+* {{ site.data.keys.product }} 运行时
 
-> **Note:** If multiple runtime instances are installed with different context root, each instance needs its own set of tables.
-> The database can be a relational database such as IBM  DB2 , Oracle, or MySQL.
+> **注：**如果使用不同的上下文根来安装多个运行时实例，那么每一个实例均需要其自身的一组表。
+>数据库可以是关系数据库（例如，IBM DB2、Oracle 或 MySQL）。
 
-#### Relational databases (DB2, Oracle, or MySQL)
+#### 关系数据库（DB2、Oracle 或 MySQL）
 {: #relational-databases-db2-oracle-or-mysql }
-Each component needs a set of tables. The tables can be created manually by running the SQL scripts specific to each component (see [Create the database tables manually](#create-the-database-tables-manually)), by using Ant Tasks, or the Server Configuration Tool. The table names of each component do not overlap. Thus, it is possible to put all the tables of these components under a single schema.
+每个组件均需要一组表。可以通过运行特定于每个组件的 SQL 脚本（请参阅[手动创建数据库表](#create-the-database-tables-manually)）、通过使用 Ant 任务或 Server Configuration Tool 来手动创建表。每个组件的表名称均不重叠。因此，可以将这些组件的所有表置于一个模式下。
 
-However, if you decide to install multiple instances of {{ site.data.keys.product }} runtime, each with its own context root in the application server, every instance needs its own set of tables. In this case, they need to be in different schemas.
+但是，如果您决定安装 {{ site.data.keys.product }} 运行时的多个实例（每一个在应用程序服务器中均具有其自身的上下文根），那么每个实例均需要其自身的一组表。在这种情况下，它们需要处于不同模式中。
 
-> **Note about DB2:** {{ site.data.keys.product_adj }} licensees are entitled to use DB2 as a supporting system for Foundation. To benefit from this you must, after installing the DB2 software:
+> **有关 DB2 的注释：** {{ site.data.keys.product_adj }} 被许可方有权将 DB2 用作 Foundation 的支持系统。要得益于此，必须在安装 DB2 软件之后：
 > 
-> * Download the restricted use activation image directly from the [IBM Passport Advantage (PPA) website](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)
-> * Apply the restricted use activation license file **db2xxxx.lic** using the **db2licm** command
+> * 直接从 [IBM Passport Advantage (PPA) Web 站点](https://www-01.ibm.com/software/passportadvantage/pao_customer.html)下载受限使用的激活映像
+> * 使用 **db2licm** 命令应用受限使用的激活许可证文件 **db2xxxx.lic**
 >
-> Learn more in the [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html)
-
-#### Jump to
+> 从 [DB2 IBM Knowledge Center](http://www.ibm.com/support/knowledgecenter/SSEPGG_10.5.0/com.ibm.db2.luw.kc.doc/welcome.html) 中获取更多信息
+#### 跳转至
 {: #jump-to }
 
-* [Database users and privileges](#database-users-and-privileges)
-* [Database requirements](#database-requirements)
-* [Create the database tables manually](#create-the-database-tables-manually)
-* [Create the database tables with the Server Configuration Tool](#create-the-database-tables-with-the-server-configuration-tool)
-* [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks)
+* [数据库用户和权限](#database-users-and-privileges)
+* [数据库需求](#database-requirements)
+* [手动创建数据库表](#create-the-database-tables-manually)
+* [使用 Server Configuration Tool 创建数据库表](#create-the-database-tables-with-the-server-configuration-tool)
+* [使用 Ant 任务创建数据库表](#create-the-database-tables-with-ant-tasks)
 
-## Database users and privileges
+## 数据库用户和权限
 {: #database-users-and-privileges }
-At run time, the {{ site.data.keys.mf_server }} applications in the application server use data sources as resources to obtain connection to relational databases. The data source needs a user with certain privileges to access the database.
+在运行时，应用程序服务器中的 {{ site.data.keys.mf_server }} 应用程序使用数据源作为资源来获取到关系数据库的连接。数据源需要具有特定数据库访问权限的用户。
 
-You need to configure a data source for each {{ site.data.keys.mf_server }} application that is deployed to the application server to have the access to the relational database. The data source requires a user with specific privileges to access the database. The number of users that you need to create depends on the installation procedure that is used to deploy {{ site.data.keys.mf_server }} applications to the application server.
+您需要为部署到应用程序服务器的每个 {{ site.data.keys.mf_server }} 应用程序配置数据源，然后才能访问关系数据库。数据源需要具有特定数据库访问权限的用户。您需要创建的用户数量取决于用于将 {{ site.data.keys.mf_server }} 应用程序部署到应用程序服务器的安装过程。
 
-### Installation with the Server Configuration Tool
+### 使用 Server Configuration Tool 安装
 {: #installation-with-the-server-configuration-tool }
-The same user is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} configuration service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
+同一用户将用于所有组件（{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 配置服务、{{ site.data.keys.mf_server }} 推送服务和 {{ site.data.keys.product }} 运行时）
 
-### Installation with Ant tasks
+### 使用 Ant 任务进行安装
 {: #installation-with-ant-tasks }
-The sample Ant files that are provided in the product distribution use the same user for all components. However, it is possible to modify the Ant files to have different users:
+在产品分发版中提供的样本 Ant 文件将对所有组件使用同一用户。但是，可以修改 Ant 文件以具有不同的用户：
 
-* The same user for the administration service and the configuration service as they cannot be installed separately with Ant tasks.
-* A different user for the runtime
-* A different user for the push service.
+* 由于不能使用 Ant 任务单独安装管理服务和配置服务，因此对管理服务和配置服务使用同一用户。
+* 对运行时使用不同用户
+* 对推送服务使用不同用户。
 
-### Manual installation
+### 手动安装
 {: #manual-installation }
-It is possible to assign a different data source, and thus a different user, to each of the {{ site.data.keys.mf_server }} components.
-At run time, the users must have the following privileges on the tables and sequences of their data:
+可以向每个 {{ site.data.keys.mf_server }} 组件分配不同的数据源，以此分配不同的用户。在运行时，用户必须对数据表和序列具有以下权限：
 
 * SELECT TABLE
 * INSERT TABLE
@@ -67,13 +65,13 @@ At run time, the users must have the following privileges on the tables and sequ
 * DELETE TABLE
 * SELECT SEQUENCE
 
-If the tables are not created manually before you run the installation with Ant Tasks or the Server Configuration Tool, ensure that you have a user that is able to create the tables. It also needs the following privileges:
+如果在使用 Ant 任务或 Server Configuration Tool 运行安装之前没有手动创建表，请确保您具有能够创建表的用户。还需要以下权限：
 
 * CREATE INDEX
 * CREATE SEQUENCE
 * CREATE TABLE
 
-For an upgrade of the product, it needs these additional privileges:
+对于产品升级，需要以下额外权限：
 
 * ALTER TABLE
 * CREATE VIEW
@@ -82,31 +80,30 @@ For an upgrade of the product, it needs these additional privileges:
 * DROP TABLE
 * DROP VIEW
 
-## Database requirements
+## 数据库需求
 {: #database-requirements }
-The database stores all the data of the {{ site.data.keys.mf_server }} applications. Before you install the {{ site.data.keys.mf_server }} components, ensure that the database requirements are met.
+数据库用于存储 {{ site.data.keys.mf_server }} 应用程序的所有数据。在安装 {{ site.data.keys.mf_server }} 组件之前，请确保满足数据库需求。
 
-* [DB2 database and user requirements](#db2-database-and-user-requirements)
-* [Oracle database and user requirements](#oracle-database-and-user-requirements)
-* [MySQL database and user requirements](#mysql-database-and-user-requirements)
+* [DB2 数据库和用户需求](#db2-database-and-user-requirements)
+* [Oracle 数据库和用户需求](#oracle-database-and-user-requirements)
+* [MySQL 数据库和用户需求](#mysql-database-and-user-requirements)
 
-> For an up-to-date list of supported database software versions, refer to the [System Requirements](../../../product-overview/requirements/) page.
-
-### DB2 database and user requirements
+> 有关受支持的数据库软件版本的最新列表，请参阅[系统需求](../../../product-overview/requirements/)页面。
+### DB2 数据库和用户需求
 {: #db2-database-and-user-requirements }
-Review the database requirement for DB2. Follow the steps to create user, database, and setup your database to meet the specific requirement.
+查看 DB2 的数据库需求。遵循步骤来创建用户和数据库，并设置您的数据库以满足特定需求。
 
-Ensure that you set the database character set as UTF-8.
+请确保将数据库字符集设置为 UTF-8。
 
-The page size of the database must be at least 32768. The following procedure creates a database with a page size 32768. It also creates a user (**mfpuser**) and then grants the database access to this user. This user can then be used by the Server Configuration Tool or the Ant tasks to create the tables.
+数据库的页面大小必须至少为 32768。以下过程创建了页面大小为 32768 的数据库。此过程还创建了用户 (**mfpuser**)，然后向该用户授予数据库访问权。之后，Server Configuration Tool 或 Ant 任务可使用该用户来创建表。
 
-1. Create a system user named, for example, **mfpuser** in a DB2 admin group such as **DB2USERS**, by using the appropriate commands for your operating system. Give it a password, for example, **mfpuser**.
-2. Open a DB2 command line processor, with a user that has **SYSADM** or **SYSCTRL** permissions.
-    * On Windows systems, click **Start → IBM DB2 → Command Line Processor**.
-    * On Linux or UNIX systems, go to **~/sqllib/bin** and enter `./db2`.
-3. To create the {{ site.data.keys.mf_server }} database, enter the SQL statements similar to the following example.
+1. 使用您操作系统的相应命令在 DB2 管理员组（如 **DB2USERS**）中创建一个系统用户（例如，名为 **mfpuser** 的用户）。为其设置密码，例如，**mfpuser**。
+2. 以具有 **SYSADM** 或 **SYSCTRL** 权限的用户的身份打开 DB2 命令行处理器。
+    * 在 Windows 系统中，单击**开始 → IBM DB2 → 命令行处理器**。
+    * 在 Linux 或 UNIX 系统上，浏览至 **~/sqllib/bin** 并输入 `/db2`。
+3. 要创建 {{ site.data.keys.mf_server }} 数据库，请输入与以下示例类似的 SQL 语句。
 
-Replace the user name **mfpuser** with your own.
+将用户名 **mfpuser** 替换为您自己的用户名。
 
 ```sql
 CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
@@ -116,29 +113,29 @@ DISCONNECT MFPDATA
 QUIT
 ```
 
-### Oracle database and user requirements
+### Oracle 数据库和用户需求
 {: #oracle-database-and-user-requirements }
-Review the database requirement for Oracle. Follow the steps to create user, database, and setup your database to meet the specific requirement.
+查看 Oracle 的数据库需求。遵循步骤来创建用户和数据库，并设置您的数据库以满足特定需求。
 
-Ensure that you set the database character set as Unicode character set (AL32UTF8) and the national character set as UTF8 - Unicode 3.0 UTF-8.  
+请确保将数据库字符集设置为 Unicode character set (AL32UTF8)，将国家字符集设置为 UTF8 - Unicode 3.0 UTF-8。  
 
-The runtime user (as discussed is [Database users and privileges](#database-users-and-privileges)) must have an associated table space and enough quota to write the technical data required by the {{ site.data.keys.product }} services. For more information about the tables that are used by the product, see [Internal runtime databases](../installation-reference/#internal-runtime-databases).
+运行时用户（如[数据库用户和权限](#database-users-and-privileges)中所论述）必须具有关联的表空间和足够的配额来编写 {{ site.data.keys.product }} 服务所需要的技术数据。有关产品所使用的表的更多信息，请参阅[内部运行时数据库](../installation-reference/#internal-runtime-databases)。
 
-The tables are expected to be created in the default schema of the runtime user. The Ant tasks and the Server Configuration Tool create the tables in the default schema of the user passed as argument. For more information about the creation of tables, see [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually).
+期望在运行时用户的缺省模式中创建表。Ant 任务和 Server Configuration Tool 将在作为自变量传递的用户的缺省模式中创建各表。有关创建表的更多信息，请参阅[手动创建 Oracle 数据库表](#creating-the-oracle-database-tables-manually)。
 
-The procedure creates a database if needed. A user that can create tables and index in this database is added and used as a runtime user.
+此过程将创建数据库（如果需要）。将添加可在此数据库中创建表和索引的用户，并且会将该用户用作运行时用户。
 
-1. If you do not already have a database, use the Oracle Database Configuration Assistant (DBCA) and follow the steps in the wizard to create a new general-purpose database, named ORCL in this example:
-    * Use global database name **ORCL\_your\_domain**, and system identifier (SID) **ORCL**.
-    * On the **Custom Scripts** tab of the step **Database Content**, do not run the SQL scripts because you must first create a user account.
-    * On the **Character Sets** tab of the step **Initialization Parameters**, select **Use Unicode (AL32UTF8) character set and UTF8 - Unicode 3.0 UTF-8 national character set**.
-    * Complete the procedure, accepting the default values.
-2. Create a database user by using either Oracle Database Control or the Oracle SQLPlus command line interpreter.
-3. Using Oracle Database Control:
-    * Connect as **SYSDBA**.
-    * Go to the **Users** page and click **Server**, then **Users** in the **Security** section.
-    * Create a user, for example **MFPUSER**.
-    * Assign the following attributes:
+1. 如果您还没有数据库，请使用 Oracle Database Configuration Assistant (DBCA) 并执行向导中的步骤来新建名为 ORCL 的常规用途数据库，如本示例所示：
+    * 使用全局数据库名称 **ORCL\_your\_domain** 和系统标识 (SID) **ORCL**。
+    * 在步骤**数据库内容**的**定制脚本**选项卡上，请不要运行 SQL 脚本，因为您必须先创建一个用户帐户。
+    * 在步骤**初始化参数**的**字符集**选项卡上，选择**使用 Unicode (AL32UTF8) 字符集和 UTF8 - Unicode 3.0 UTF-8 国家字符集**。
+    * 完成此过程（接受缺省值）。
+2. 通过使用 Oracle Database Control 或 Oracle SQLPlus 命令行解释器来创建数据库用户。
+3. 使用 Oracle Database Control：
+    * 以 **SYSDBA** 身份连接。
+    * 转至**用户**页面，单击**服务器**，然后单击**安全**部分中的**用户**。
+    * 创建用户，例如 **MFPUSER**。
+    * 指定以下属性：
         * **Profile**: DEFAULT
         * **Authentication**: password
         * **Default tablespace**: USERS
@@ -146,11 +143,12 @@ The procedure creates a database if needed. A user that can create tables and in
         * **Status**: Unlocked
         * Add system privilege: CREATE SESSION
         * Add system privilege: CREATE SEQUENCE
+
         * Add system privilege: CREATE TABLE
         * Add quota: Unlimited for tablespace USERS
-    * Using the Oracle SQLPlus command line interpreter:
+    * 使用 Oracle SQLPlus 命令行解释器：
 
-The commands in the following example create a user named **MFPUSER** for the database:
+以下示例中的命令将为数据库创建名为 **MFPUSER** 的用户：
 
 ```sql
 CONNECT SYSTEM/<SYSTEM_password>@ORCL
@@ -159,22 +157,22 @@ GRANT CREATE SESSION, CREATE SEQUENCE, CREATE TABLE TO MFPUSER;
 DISCONNECT;
 ```
 
-### MySQL database and user requirements
+### MySQL 数据库和用户需求
 {: #mysql-database-and-user-requirements }
-Review the database requirement for MySQL. Follow the steps to create user, database, and configure your database to meet the specific requirement.
+查看 MySQL 的数据库需求。遵循以下步骤来创建用户和数据库，并配置数据库以满足特定需求。
 
-Make sure that you set the character set to UTF8.
+确保将字符集设置为 UTF8。
 
-The following properties must be assigned with appropriate values:
+必须使用相应的值指定以下属性：
 
-* max_allowed_packet with 256 M or more
-* innodb_log_file_size with 250 M or more
+* max_allowed_packet（使用 256 M 或更高）
+* innodb_log_file_size（使用 250 M 或更高）
 
-For more information about how to set the properties, see the [MySQL documentation](http://dev.mysql.com/doc/).  
-The procedure creates a database (MFPDATA) and a user (mfpuser) that can connect to the database with all privileges from a host (mfp-host).
+有关如何设置这些属性的更多信息，请参阅 [MySQL 文档](http://dev.mysql.com/doc/)。  
+此过程会创建数据库 (MFPDATA) 和用户 (mfpuser)，此用户可从主机 (mfp-host) 连接到具有所有特权的数据库。
 
-1. Run a MySQL command line client with the option `-u root`.
-2. Enter the following commands:
+1. 使用选项 `-u root` 运行 MySQL 命令行客户机。
+2. 输入以下命令：
 
    ```sql
    CREATE DATABASE MFPDATA CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -183,49 +181,49 @@ The procedure creates a database (MFPDATA) and a user (mfpuser) that can connect
    FLUSH PRIVILEGES;
    ```
 
-    Where mfpuser before the "at" sign (@) is the user name, **mfpuser-password** after **IDENTIFIED BY** is its password, and **mfp-host** is the name of the host on which {{ site.data.keys.product_adj }} runs.
+    其中，@ 符号前面的 mfpuser 是用户名，**IDENTIFIED BY** 后面的 **mfpuser-password** 是密码，**mfp-host** 是运行 {{ site.data.keys.product_adj }} 的主机的名称。
     
-    The user must be able to connect to the MySQL server from the hosts that run the Java application server with the {{ site.data.keys.mf_server }} applications installed.
+    用户必须能够从运行安装了 {{ site.data.keys.mf_server }} 应用程序的 Java 应用程序服务器的主机连接到 MySQL 服务器。
     
-## Create the database tables manually
+## 手动创建数据库表
 {: #create-the-database-tables-manually }
-The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details on how to create them manually.
+可以使用 Ant 任务或使用 Server Configuration Tool 来为 {{ site.data.keys.mf_server }} 应用程序手动创建数据库表。这些主题提供了有关如何手动创建这些数据库表的说明和详细信息。
 
-* [Creating the DB2 database tables manually](#creating-the-db2-database-tables-manually)
-* [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually)
-* [Creating the MySQL database tables manually](#creating-the-mysql-database-tables-manually)
+* [手动创建 DB2 数据库表](#creating-the-db2-database-tables-manually)
+* [手动创建 Oracle 数据库表](#creating-the-oracle-database-tables-manually)
+* [手动创建 MySQL 数据库表](#creating-the-mysql-database-tables-manually)
 
-### Creating the DB2 database tables manually
+### 手动创建 DB2 数据库表
 {: #creating-the-db2-database-tables-manually }
-Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the DB2  database tables.
+使用 {{ site.data.keys.mf_server }} 安装中提供的 SQL 脚本创建 DB2 数据库表。
 
-As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. They are the similar to the topic about the possible users for DB2 as described in [Database users and privileges](#database-users-and-privileges).
+如“概述”部分中所述，全部四个 {{ site.data.keys.mf_server }} 组件均需要表。可以在同一模式或不同模式下创建这些组件。但是，某些约束将适用，具体取决于如何将 {{ site.data.keys.mf_server }} 应用程序部署到 Java 应用程序服务器。它们与[数据库用户和权限](#database-users-and-privileges)中所述的有关 DB2 可能用户的主题相类似。
 
-#### Installation with the Server Configuration Tool
+#### 使用 Server Configuration Tool 安装
 {: #installation-with-the-server-configuration-tool-1 }
-The same schema is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
+同一模式用于所有组件（{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务、{{ site.data.keys.mf_server }} 推送服务和 {{ site.data.keys.product }} 运行时）
 
-#### Installation with Ant tasks
+#### 使用 Ant 任务进行安装
 {: #installation-with-ant-tasks-1 }
-The sample Ant files that are provided in the product distribution use the same schema for all components. However, it is possible to modify the Ant files to have different schemas:
+产品分发中提供的样本 Ant 文件将同一模式用于所有组件。但是，可以修改 Ant 文件，使其具有不同的模式：
 
-* The same schema for the administration service and the live update service as they cannot be installed separately with Ant tasks.
-* A different schema for the runtime
-* A different schema for the push service.
+* 管理服务和实时更新服务的模式相同，因为无法单独使用 Ant 任务来安装这两种服务。
+* 运行时的模式不同
+* 推送服务的模式不同。
 
-#### Manual installation
+#### 手动安装
 {: #manual-installation-1 }
-It is possible to assign a different data source, and thus a different schema, to each of the {{ site.data.keys.mf_server }} components.  
-The scripts to create the tables are as follows:
+可以向 {{ site.data.keys.mf_server }} 组件中的每一个组件分配不同的数据源（进而分配不同的模式）。  
+用于创建表的脚本如下所示：
 
-* For the administration service, in **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql**.
-* For the live update service, in **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-db2.sql**.
-* For the runtime component, in **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-db2.sql**.
-* For the push service, in **mfp\_install\_dir/PushService/databases/create-push-db2.sql**.
+* 对于管理服务，位于 **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-db2.sql**。
+* 对于实时更新服务，位于 **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-db2.sql**。
+* 对于运行时组件，位于 **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-db2.sql**。
+* 对于推送服务，位于 **mfp\_install\_dir/PushService/databases/create-push-db2.sql**。
 
-The following procedure creates the tables for all the applications in the same schema (MFPSCM). It assumes that a database and a user are already created. For more information, see [DB2 database and user requirements](#db2-database-and-user-requirements).
+以下过程为处于同一模式 (MFPSCM) 的所有应用程序创建了表。假定已创建数据库和用户。有关更多信息，请参阅 [DB2 数据库和用户需求](#db2-database-and-user-requirements)。
 
-Run DB2 with the following commands with the user (mfpuser):
+通过用户 (mfpuser) 使用以下命令来运行 DB2：
 
 ```sql
 db2 CONNECT TO MFPDATA
@@ -236,24 +234,31 @@ db2 -vf mfp_install_dir/MobileFirstServer/databases/create-runtime-db2.sql -t
 db2 -vf mfp_install_dir/PushService/databases/create-push-db2.sql -t
 ```
 
-If the tables are created by mfpuser, this user has the privileges on the tables automatically and can use them at run time. If you want to restrict the privileges of the runtime user as described in [Database users and privileges](#database-users-and-privileges) or a finer control of privileges, refer to the DB2 documentation.
+如果 mfpuser 创建了表，那么该用户将自动具有访问此表的特权，并且可以在运行时使用此表。如果您要限制[数据库用户和权限](#database-users-and-privileges)中所述的运行时用户的特权或更好地控制特权，请参阅 DB2 文档。
 
-### Creating the Oracle database tables manually
+
+### 手动创建 Oracle 数据库表
 {: #creating-the-oracle-database-tables-manually }
-Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
+使用 {{ site.data.keys.mf_server }} 安装中提供的 SQL 脚本创建 Oracle 数据库表。
 
-As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. The details are described in [Database users and privileges](#database-users-and-privileges).
+如“概述”部分中所述，全部四个 {{ site.data.keys.mf_server }} 组件均需要表。可以在同一模式或不同模式下创建这些组件。但是，某些约束将适用，具体取决于如何将 {{ site.data.keys.mf_server }} 应用程序部署到 Java 应用程序服务器。[数据库用户和权限](#database-users-and-privileges)中描述了详细信息。
 
-The tables must be created in the default schema of the runtime user. The scripts to create the tables are as follows:
 
-* For the administration service, in **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-oracle.sql**.
-* For the live update service, in **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-oracle.sql**.
-* For the runtime component, in **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-oracle.sql**.
-* For the push service, in **mfp\_install\_dir/PushService/databases/create-push-oracle.sql**.
+必须在运行时用户的缺省模式下创建表。用于创建表的脚本如下所示：
 
-The following procedure creates the tables for all the applications for the same user (**MFPUSER**). It assumes that a database and a user are already created. For more information, see [Oracle database and user requirements](#oracle-database-and-user-requirements).
+* 对于管理服务，位于 **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-oracle.sql**。
 
-Run the following commands in Oracle SQLPlus:
+* 对于实时更新服务，位于 **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-oracle.sql**。
+
+* 对于运行时组件，位于 **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-oracle.sql**。
+
+* 对于推送服务，位于 **mfp\_install\_dir/PushService/databases/create-push-oracle.sql**。
+
+
+以下过程为同一用户 (**MFPUSER**) 的所有应用程序创建了表。假定已创建数据库和用户。有关更多信息，请参阅 [Oracle 数据库和用户需求](#oracle-database-and-user-requirements)。
+
+
+在 Oracle SQLPlus 中运行以下命令：
 
 ```sql
 CONNECT MFPUSER/MFPUSER_password@ORCL
@@ -264,42 +269,51 @@ CONNECT MFPUSER/MFPUSER_password@ORCL
 DISCONNECT;
 ```
 
-If the tables are created by MFPUSER, this user has the privileges on the tables automatically and can use them at run time. The tables are created in the user's default schema. If you want to restrict the privileges of the runtime user as described in [Database users and privileges](#database-users-and-privileges) or have a finer control of privileges, refer to the Oracle documentation.
+如果 MFPUSER 创建了表，那么该用户将自动具有访问此表的特权，并且可以在运行时使用此表。将在用户的缺省模式下创建表。如果您要限制[数据库用户和权限](#database-users-and-privileges)中所述的运行时用户的特权或更好地控制特权，请参阅 Oracle 文档。
 
-### Creating the MySQL database tables manually
+
+### 手动创建 MySQL 数据库表
 {: #creating-the-mysql-database-tables-manually }
-Use the SQL scripts that are provided in the {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
+使用 {{ site.data.keys.mf_server }} 安装中提供的 SQL 脚本创建 MySQL 数据库表。
 
-As described in the Overview section, all the four {{ site.data.keys.mf_server }} components need tables. They can be created in the same schema or in different schemas. However, some constraints apply depending on how the {{ site.data.keys.mf_server }} applications are deployed to the Java application server. They are the similar to the topic about the possible users for MySQL as described in [Database users and privileges](#database-users-and-privileges).
+如“概述”部分中所述，全部四个 {{ site.data.keys.mf_server }} 组件均需要表。可以在同一模式或不同模式下创建这些组件。但是，某些约束将适用，具体取决于如何将 {{ site.data.keys.mf_server }} 应用程序部署到 Java 应用程序服务器。它们与[数据库用户和权限](#database-users-and-privileges)中所述的有关 MySQL 可能用户的主题相类似。
 
-#### Installation with the Server Configuration Tool
+
+#### 使用 Server Configuration Tool 安装
+
 {: #installation-with-the-server-configuration-tool-2 }
-The same database is used for all components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.product }} runtime)
+同一数据库用于所有组件（{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务、{{ site.data.keys.mf_server }} 推送服务和 {{ site.data.keys.product }} 运行时）
 
-#### Installation with Ant tasks
+#### 使用 Ant 任务进行安装
 {: #installation-with-ant-tasks-2 }
-The sample Ant files that are provided in the product distribution use the same database for all components. However, it is possible to modify the Ant files to have different database:
+产品分发版中提供的样本 Ant 文件将同一数据库用于所有组件。但是，可以修改 Ant 文件，使其具有不同的数据库：
 
-* The same database for the administration service and the live update service as they cannot be installed separately with Ant tasks.
-* A different database for the runtime
-* A different database for the push service.
+* 管理服务和实时更新服务的数据库相同，因为无法单独使用 Ant 任务来安装这两种服务。
+* 对运行时使用不同的数据库
+* 推送服务的数据库不同。
 
-#### Manual installation
+#### 手动安装
 {: #manual-installation-2 }
-It is possible to assign a different data source, and thus a different database, to each of the {{ site.data.keys.mf_server }} components.  
-The scripts to create the tables are as follows:
+可以向 {{ site.data.keys.mf_server }} 组件中的每一个组件分配不同的数据源（进而分配不同的数据库）。  
+用于创建表的脚本如下所示：
 
-* For the administration service, in **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-mysql.sql**.
-* For the live update service, in **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-mysql.sql**.
-* For the runtime component, in **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-mysql.sql**.
-* For the push service, in **mfp\_install\_dir/PushService/databases/create-push-mysql.sql**.
+* 对于管理服务，位于 **mfp\_install\_dir/MobileFirstServer/databases/create-mfp-admin-mysql.sql**。
 
-The following example creates the tables for all the applications for the same user and database. It assumes that a database and a user has been created as in [Requirements for the databases for MySQL](#database-requirements).
+* 对于实时更新服务，位于 **mfp\_install\_dir/MobileFirstServer/databases/create-configservice-mysql.sql**。
 
-The following procedure creates the tables for all the applications for the same user (mfpuser) and database (MFPDATA). It assumes that a database and a user are already created.
+* 对于运行时组件，位于 **mfp\_install\_dir/MobileFirstServer/databases/create-runtime-mysql.sql**。
 
-1. Run a MySQL command line client with the option: `-u mfpuser`.
-2. Enter the following commands:
+* 对于推送服务，位于 **mfp\_install\_dir/PushService/databases/create-push-mysql.sql**。
+
+
+以下示例为同一用户和数据库的所有应用程序创建了表。
+假定已如[MySQL 的数据库需求](#database-requirements)中所述创建了数据库和用户。
+
+
+以下过程为同一用户 (mfpuser) 和数据库 (MFPDATA) 的所有应用程序创建了表。它假定已创建数据库和用户。
+
+1. 使用以下选项运行 MySQL 命令行客户机：`-u mfpuser`。
+2. 输入以下命令：
 
 ```sql
 USE MFPDATA;
@@ -309,228 +323,246 @@ SOURCE mfp_install_dir/MobileFirstServer/databases/create-runtime-mysql.sql;
 SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 ```
 
-## Create the database tables with the Server Configuration Tool
+## 使用 Server Configuration Tool 创建数据库表
+
 {: #create-the-database-tables-with-the-server-configuration-tool }
-The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details about database setup when you install {{ site.data.keys.mf_server }} with the Server Configuration Tool.
+可以使用 Ant 任务或使用 Server Configuration Tool 来为 {{ site.data.keys.mf_server }} 应用程序手动创建数据库表。以下主题提供了有关使用 Server Configuration Tool 安装 {{ site.data.keys.mf_server }} 时设置数据库的说明和详细信息。
 
-The Server Configuration Tool can create the database tables as part of the installation process. In some cases, it can even create a database and a user for the {{ site.data.keys.mf_server }} components. For an overview of the installation process with the Server Configuration Tool, see [Installing {{ site.data.keys.mf_server }} in graphical mode](../tutorials/graphical-mode).
 
-After you complete the configuration credentials and click **Deploy** in the Server Configuration Tool pane, the following operations are run:
+Server Configuration Tool 可以在安装过程中创建数据库表。在某些情况下，甚至可以为 {{ site.data.keys.mf_server }} 组件创建数据库和用户。有关使用 Server Configuration Tool 的安装流程的概述，请参阅[以图形方式安装 {{ site.data.keys.mf_server }}](../tutorials/graphical-mode)。
 
-* Create the database and user if needed.
-* Verify whether the {{ site.data.keys.mf_server }} tables exist in the database. If they do not exist, create the tables.
-* Deploys the {{ site.data.keys.mf_server }} applications to the application server.
 
-If the database tables are created manually before you run the Server Configuration Tool, the tool can detect them and skip the phase of setting up the tables.
+在完成配置凭证并单击 Server Configuration Tool 窗格中的**部署**之后，将运行以下操作：
 
-Depending on your choice of the supported database management system (DBMS), select one of the following topics for more details on how the tool creates the database tables.
 
-* [Creating the DB2 database tables with the Server Configuration Tool](#creating-the-db2-database-tables-with-the-server-configuration-tool)
-* [Creating the Oracle database tables with the Server Configuration Tool](#creating-the-oracle-database-tables-with-the-server-configuration-tool)
-* [Creating the MySQL database tables with the Server Configuration Tool](#creating-the-mysql-database-tables-with-the-server-configuration-tool)
+* 需要时创建数据库和用户。
+* 验证数据库中是否存在 {{ site.data.keys.mf_server }} 表。如果不存在，请创建这些表。
+* 将 {{ site.data.keys.mf_server }} 应用程序部署到应用程序服务器。
 
-### Creating the DB2 database tables with the Server Configuration Tool
+如果在运行 Server Configuration Tool 之前已手动创建了数据库表，那么此工具会检测到这些表，并跳过设置表的阶段。
+
+
+根据您选择的受支持数据库管理系统 (DBMS)，请选择以下某个主题以了解有关此工具如何创建数据库表的更多详细信息：
+
+* [使用 Server Configuration Tool 创建 DB2 数据库表](#creating-the-db2-database-tables-with-the-server-configuration-tool)
+
+* [使用 Server Configuration Tool 创建 Oracle 数据库表](#creating-the-oracle-database-tables-with-the-server-configuration-tool)
+
+* [使用 Server Configuration Tool 创建 MySQL 数据库表](#creating-the-mysql-database-tables-with-the-server-configuration-tool)
+
+### 使用 Server Configuration Tool 创建 DB2 数据库表
 {: #creating-the-db2-database-tables-with-the-server-configuration-tool }
-Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the DB2  database tables.
+使用 {{ site.data.keys.mf_server }} 安装提供的 Server Configuration Tool 来创建 DB2 数据库表。
 
-The Server Configuration Tool can create a database in the default DB2 instance. In **Database Selection** panel of the Server Configuration Tool, select the IBM DB2 option. In the next three panes, enter the database credentials. If the database name that is entered in the **Database Additional Settings** panel does not exist in the DB2 instance, you can enter additional information to enable the tool to create a database for you.
+Server Configuration Tool 可以在缺省 DB2 实例中创建数据库。在 Server Configuration Tool 的**数据库选择**面板中，选择 IBM DB2 选项。在后续三个窗格中，输入数据库凭证。如果在**数据库额外设置**面板中输入的数据库名称不存在于 DB2 实例中，可以输入额外信息以使该工具能够为您创建数据库。
 
-The Server Configuration Tool creates the database tables with default settings with the following SQL statement:
+Server Configuration Tool 使用以下 SQL 语句按照缺省设置创建数据库表：
 ```sql
 CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 ```
 
-It is not meant to be used for production as in a default DB2 installation, many privileges are granted to PUBLIC.
+此设置并不适用于生产，因为在缺省 DB2 安装中，许多权限都是公开的。
 
-### Creating the Oracle database tables with the Server Configuration Tool
+### 使用 Server Configuration Tool 创建 Oracle 数据库表
 {: #creating-the-oracle-database-tables-with-the-server-configuration-tool }
-Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
+使用 {{ site.data.keys.mf_server }} 安装随附的 Server Configuration Tool 创建 Oracle 数据库表。
 
-In Database Selection panel of the Server Configuration Tool, select the **Oracle Standard or Enterprise Editions, 11g or 12c** option. In the next three panes, enter the database credentials.
+在 Server Configuration Tool 的数据库选择面板中，选择 **Oracle Standard 或 Enterprise Editions 11g 或 12c** 选项。在下面的三个窗格中，输入数据库凭证。
 
-When you enter the Oracle user name in **Database Additional Settings** panel, it must be in uppercase. If you have an Oracle database user (FOO), but you enter a user name with lowercase (foo), the Server Configuration Tool considers it as another user. Unlike other tools for Oracle database, the Server Configuration Tool protects the user name against automatic conversion to uppercase.
+在**数据库附加设置**面板中输入 Oracle 用户名时，必须采用大写形式。如果您使用 Oracle 数据库用户 (FOO)，但以小写形式 (foo) 输入用户名，那么 Server Configuration Tool 会将其视为另一位用户。与 Oracle 数据库的其他工具不同，Server Configuration Tool 会对用户名进行保护，以防止自动转换为大写。
 
-The Server Configuration Tool uses a service name or Oracle System Identifier (SID) to identify a database. However, if you want to make the connection to Oracle RAC, you need to enter a complex JDBC URL. In this case, in the **Database Settings** panel, select the **Connect using generic Oracle JDBC URLs** option and enter a URL for the Oracle thin driver.
+Server Configuration Tool 使用服务名称或 Oracle 系统标识 (SID) 来标识数据库。但是，如果要连接到 Oracle RAC，需输入复杂的 JDBC URL。在这种情况下，在**数据库设置**面板中，选择**使用通用 Oracle JDBC URL 连接**选项，并输入 Oracle 瘦驱动程序的 URL。
 
-If you need to create database and user for Oracle, use the Oracle Database Creation Assistant (DBCA) tool. For more information, see [Oracle database and user requirements](#oracle-database-and-user-requirements).
+如果需要为 Oracle 创建数据库和用户，请使用 Oracle Database Creation Assistant (DBCA) 工具。有关更多信息，请参阅 [Oracle 数据库和用户需求](#oracle-database-and-user-requirements)。
 
-The Server Configuration Tool can do the same but with a limitation. The tool can create a user for Oracle 11g or Oracle 12g. However, it can create a database only for Oracle 11g, and not for Oracle 12c.
 
-If the database name or user name that is entered in the **Database Additional Settings** panel does not exist, refer to the following two sections for the extra steps to create the database or the user.
+Server Configuration Tool 可以执行相同的任务但存在限制。该工具可为 Oracle 11g 或 Oracle 12g 创建用户。
+但是，它只能为 Oracle 11g 创建数据库，而不能为 Oracle 12c 创建数据库。
 
-#### Creating the database
+如果在**数据库附加设置**面板中输入的数据库名称或用户名不存在，请参阅以下两部分内容，以了解有关创建数据库或用户的额外步骤。
+
+#### 创建数据库
 {: #creating-the-database }
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. 在运行 Oracle 数据库的计算机上运行 SSH 服务器。
 
-    The Server Configuration Tool opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer as the Server Configuration Tool.
+    Server Configuration Tool 可打开与 Oracle 主机的 SSH 会话以创建数据库。除了 Linux 和部分版本的 UNIX 系统，即使 Oracle 数据库与 Server Configuration Tool 在相同计算机上运行，也需要 SSH 服务器。
 
-2. In **Database creation request** panel, enter the login ID and password of an Oracle database user that has the privileges to create a database.
-3. In the same panel, also enter the password for the **SYS** user and the **SYSTEM** user for the database that is to be created.
+2. 在**数据库创建请求**面板中，输入有权创建数据库的 Oracle 数据库用户的登录标识和密码。
+3. 在同一面板中，还应为要创建的数据库输入 **SYS** 用户和 **SYSTEM** 用户的密码。
 
-A database is created with the SID name that is entered in the **Database Additional Settings** panel. It is not meant to be used for production.
+将使用在**数据库附加设置**面板中输入的 SID 名称创建数据库。这并不意味着可用于生产。
 
-#### Creating the user
+#### 创建用户
 {: #creating-the-user }
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. 在运行 Oracle 数据库的计算机上运行 SSH 服务器。
 
-    The Server Configuration Tool opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer as the Server Configuration Tool.
+    Server Configuration Tool 可打开与 Oracle 主机的 SSH 会话以创建数据库。除了 Linux 和部分版本的 UNIX 系统，即使 Oracle 数据库与 Server Configuration Tool 在相同计算机上运行，也需要 SSH 服务器。
 
-2. In the **Database Additional Settings** panel, enter the login ID and password of the database user that is to be created.
-3. In **Database creation request** panel, enter the login ID and password of an Oracle database user that has the privileges to create a database user.
-4. In same panel, also enter the password for the **SYSTEM** user of the database.
+2. 在**数据库附加设置**面板中，输入要创建的数据库用户的登录标识和密码。
+3. 在**数据库创建请求**面板中，输入有权创建数据库用户的 Oracle 数据库用户的登录标识和密码。
+4. 在同一面板中，还应输入数据库的 **SYSTEM** 用户的密码。
 
-### Creating the MySQL database tables with the Server Configuration Tool
+### 使用 Server Configuration Tool 创建 MySQL 数据库表
 {: #creating-the-mysql-database-tables-with-the-server-configuration-tool }
-Use the Server Configuration Tool that is provided with {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
+使用 {{ site.data.keys.mf_server }} 安装随附的 Server Configuration Tool 创建 MySQL 数据库表。
 
-The Server Configuration Tool can create a MySQL database for you. In **Database Selection** panel of the Server Configuration Tool, select the **MySQL 5.5.x, 5.6.x or 5.7.x** option. In the next three panes, enter the database credentials. If the database or the user that you enter in the Database Additional Settings panel does not exist, the tool can create it.
+Server Configuration Tool 可以为您创建 MySQL 数据库。在 Server Configuration Tool 的**数据库选择**面板中，选择 **MySQL 5.5.x、5.6.x 或 5.7.x** 选项。在后续三个窗格中，输入数据库凭证。如果您在数据库额外设置面板中输入的数据库或用户不存在，此工具会创建该数据库或用户。
 
-If MySQL server does not have the settings that are recommended in [MySQL database and user requirements](#mysql-database-and-user-requirements), the Server Configuration Tool displays a warning. Make sure to fulfill the requirements before you run the Server Configuration Tool.
+如果 MySQL 服务器无 [MySQL 数据库和用户需求](#mysql-database-and-user-requirements)中建议的设置，那么 Server Configuration Tool 会显示一条警告。运行 Server Configuration Tool 之前，请确保满足这些需求。
 
-The following procedure provides some extra steps that you need to do when you create the database tables with the tool.
+以下过程提供了一些额外步骤，您在使用此工具创建数据库表时需要执行这些步骤。
 
-1. In the **Database Additional Settings** panel, besides the connection settings, you must enter all the hosts from which the user is allowed to connect to the database. That is, all the hosts where {{ site.data.keys.mf_server }} runs.
-2. In the **Database creation request** panel, enter the login ID and the password of a MySQL administrator. By default, the administrator is root.
+1. 在**数据库额外设置**面板中，除了连接设置，必须输入允许用户从中连接到数据库的所有主机。
+也即，所有运行 {{ site.data.keys.mf_server }} 的主机。
+2. 在**数据库创建请求**面板中，输入 MySQL 管理员的登录标识和密码。缺省情况下，管理员为 root 用户。
 
-## Create the database tables with Ant tasks
+## 使用 Ant 任务创建数据库表
 {: #create-the-database-tables-with-ant-tasks }
-The database tables for the {{ site.data.keys.mf_server }} applications can be created manually, with Ant Tasks, or with the Server Configuration Tool. The topics provide the explanation and details on how to create them with Ant tasks.
+可以使用 Ant 任务或使用 Server Configuration Tool 来为 {{ site.data.keys.mf_server }} 应用程序手动创建数据库表。以下主题提供了有关如何使用 Ant 任务创建数据库表的说明及详细信息。
 
-You can find relevant information in this section about the setting up of the database if {{ site.data.keys.mf_server }} is installed with Ant Tasks.
+如果使用 Ant 任务安装 {{ site.data.keys.mf_server }}，那么可在本部分中找到有关如何设置数据库的相关信息。
 
-You can use Ant Tasks to set up the {{ site.data.keys.mf_server }} database tables. In some cases, you can also create a database and a user with these tasks. For an overview of the installation process with Ant Tasks, see [Installing {{ site.data.keys.mf_server }} in command line mode](../tutorials/command-line).
+您可以使用 Ant 任务来设置 {{ site.data.keys.mf_server }} 数据库表。在某些情况下，还可以使用这些任务创建数据库和用户。有关使用 Ant 任务的安装流程的概述，请参阅[以命令行方式安装 {{ site.data.keys.mf_server }}](../tutorials/command-line)。
 
-A set of sample Ant files is provided with the installation to help you get started with the Ant tasks. You can find the files in **mfp\_install\_dir/MobileFirstServer/configurations-samples**. The files are named after the following patterns:
+安装提供了一组样本 Ant 文件，来帮助您着手完成 Ant 任务。您可以在 **mfp\_install\_dir/MobileFirstServer/configurations-samples** 中找到这些文件。文件依据以下模式命名：
 
 #### configure-appserver-dbms.xml
 {: #configure-appserver-dbmsxml }
-The Ant files can do these tasks:
+Ant 文件能够完成以下任务：
 
-* Create the tables in a database if the database and database user exist. The requirements for the database are listed in [Database requirements](#database-requirements).
-* Deploy the WAR files of the {{ site.data.keys.mf_server }} components to the application server. These Ant files use the same database user to create the tables, and to install the run time database user for the applications at run time. The files also use the same database user for all the {{ site.data.keys.mf_server }} applications.
+* 在数据库中创建表（如数据库和数据库用户存在）。[数据库需求](#database-requirements)中列出了数据库的需求。
+* 将 {{ site.data.keys.mf_server }} 组件的 WAR 文件部署到应用程序服务器中。这些 Ant 文件使用相同的数据库用户来创建表，并在运行时为应用程序安装运行时数据库用户。这些文件还针对所有的 {{ site.data.keys.mf_server }} 应用程序使用相同的数据库用户。
 
 #### create-database-dbms.xml
 {: #create-database-dbmsxml }
-The Ant files can create a database if needed on the supported database management system (DBMS), and then create the tables in the database. However, as the database is created with default settings, it is not meant to be used for production.
+Ant 文件可创建数据库（如受支持的数据库管理系统 (DBMS) 上需要），然后在数据库中创建表。然而，尽管数据库是使用缺省设置创建的，但并不意味着可用于生产。
 
-In the Ant files, you can find the predefined targets that use the **configureDatabase** Ant task to set up the database. For more information, see [Ant configuredatabase](../installation-reference/#ant-configuredatabase-task-reference) task reference.
+在 Ant 文件中，可找到使用 **configureDatabase** Ant 任务设置数据库的预定义目标。有关更多信息，请参阅 [Ant configuredatabase](../installation-reference/#ant-configuredatabase-task-reference) 任务参考。
 
-### Using the sample Ant files
+### 使用样本 Ant 文件
 {: #using-the-sample-ant-files }
-The sample Ant files have predefined targets. Follow this procedure to use the files.
+样本 Ant 文件具有预定义目标。请遵循以下过程以使用这些文件。
 
-1. Copy the Ant file according to your application server and database configuration in a working directory.
-2. Edit the file and enter the values for your configuration in the `<! -- Start of Property Parameters -->` section for the Ant file.
-3. Run the Ant file with the databases target: `mfp_install_dir/shortcuts/ant -f your_ant_file databases`.
+1. 根据应用程序服务器和数据库配置复制工作目录中的 Ant 文件。
+2. 编辑该文件并在 Ant 文件的 `<! -- Start of Property Parameters -->` 部分为配置输入值。
+3. 运行具有 databases 目标的 Ant 文件：`mfp_install_dir/shortcuts/ant -f your_ant_file databases`。
 
-This command creates the tables in the specified database and schema for all {{ site.data.keys.mf_server }} applications ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, and {{ site.data.keys.mf_server }} runtime). A log for the operations is produced and stored in your disk.
+此命令用于为所有 {{ site.data.keys.mf_server }} 应用程序（{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务、{{ site.data.keys.mf_server }} 推送服务和 {{ site.data.keys.mf_server }} 运行时），在指定数据库和模式中创建表。将生成操作日志并存储在磁盘中。
 
-* On Windows, it is in the **{{ site.data.keys.prod_server_data_dir_win }}\\Configuration Logs\\** directory.
-* On UNIX, it is in the **{{ site.data.keys.prod_server_data_dir_unix }}/configuration-logs/** directory.
+* 在 Windows 上，位于 **{{ site.data.keys.prod_server_data_dir_win }}\\Configuration Logs\\** 目录。
+* 在 UNIX 上，位于 **{{ site.data.keys.prod_server_data_dir_unix }}/configuration-logs/** 目录。
 
-### Different users for the database tables creation and for run time
+### 用于数据库表创建和运行时的不同用户
 {: #different-users-for-the-database-tables-creation-and-for-run-time }
-The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-samples** use the same database user for:
+**mfp\_install\_dir/MobileFirstServer/configurations-samples** 中的样本 Ant 文件将相同的数据库用户用于：
 
-* All the {{ site.data.keys.mf_server }} applications (the administration service, the live update service, the push service, and the runtime)
-* The user that is used to create the database and the user at run time for the data source in the application server.
+* 所有 {{ site.data.keys.mf_server }} 应用程序（管理服务、实时更新服务、推送服务以及运行时）
+* 用于在运行时为应用程序服务器中的数据源创建数据库和用户的用户。
 
-If you want to separate the users as described in [Database users and privileges](#database-users-and-privileges), you need to create your own Ant file, or modify the sample Ant files so that each database target has a different user. For more information, see the [Installation reference](../installation-reference).
+如果要如[数据库用户和权限](#database-users-and-privileges)中所述分离用户，需创建您自己的 Ant 文件或修改样本 Ant 文件，以便每个数据库目标均有一位不同的用户。有关更多信息，请参阅[安装参考](../installation-reference)。
 
-For DB2  and MySQL, it is possible to have different users for the database creation and for the run time. The privileges for each type of the users are listed in [Database users and privileges](#database-users-and-privileges). For Oracle, you cannot have a different user for database creation and for the run time. The Ant tasks consider that the tables are in the default schema of a user. If you want to reduce privileges for the runtime user, you must create the tables manually in the default schema of the user that will be used at run time. For more information, see [Creating the Oracle database tables manually](#creating-the-oracle-database-tables-manually).
+对于 DB2 和 MySQL，可以让不同用户负责数据库创建和运行时。[数据库用户和权限](#database-users-and-privileges)中列出了每一类用户的特权。对于 Oracle，创建数据库和运行时无法具有不同的用户。Ant 任务认为表属于“一个用户”的缺省模式。如果要减少运行时用户的特权，必须在运行时将使用的那位用户的缺省模式中手动创建表。有关更多信息，请参阅[手动创建 Oracle 数据库表](#creating-the-oracle-database-tables-manually)。
 
-Depending on your choice of the supported database management system (DBMS), select one of the following topics to create the database with Ant tasks.
+根据您所选的受支持的数据库管理系统 (DBMS)，选择以下某个主题以使用 Ant 任务创建数据库。
 
-### Creating the DB2 database tables with Ant tasks
+### 使用 Ant 任务创建 DB2 数据库表
 {: #creating-the-db2-database-tables-with-ant-tasks }
-Use Ant tasks that are provided with {{ site.data.keys.mf_server }} installation to create the DB2  database.
+使用 {{ site.data.keys.mf_server }} 安装提供的 Ant 任务创建 DB2 数据库。
 
-To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
+要在已存在的数据库中创建数据库表，请参阅[使用 Ant 任务创建数据库表](#create-the-database-tables-with-ant-tasks)。
 
-To create a database and the database tables, you can do so by Ant tasks. The Ant tasks create a database in the default instance of DB2 if you use an Ant file that contains the **dba** element. This element can be found in the sample Ant files named as **create-database-<dbms>.xml**.
+要创建数据库和数据库表，可以使用 Ant 任务来执行此操作。如果您使用包含 **dba** 元素的 Ant 文件，那么 Ant 任务会在 DB2 缺省实例中创建数据库。此元素可以在名为 **create-database-<dbms>.xml** 的样本 Ant 文件中找到。
 
-Before you run the Ant tasks, make sure that you have an SSH server on the computer that runs the DB2 database. The **configureDatabase** Ant task opens an SSH session to the DB2 host to create the database. The SSH server is needed even if the DB2 database runs on the same computer where you run the Ant tasks (except on Linux and some versions of UNIX systems).
+在运行 Ant 任务之前，请确保您在运行 DB2 数据库的计算机上具有 SSH 服务器。**configureDatabase** Ant 任务打开与 DB2 主机的 SSH 会话以创建数据库。即使 DB2 数据库在运行 Ant 任务的同一台计算机上运行（Linux 以及部分版本的 UNIX 系统除外），也需要 SSH 服务器。
 
-Follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-db2.xml** file.
+根据[使用 Ant 任务创建数据库表](#create-the-database-tables-with-ant-tasks)中描述的一般准则来编辑 **create-database-db2.xml** 文件的副本。
 
-You must also provide the login ID and password of a DB2 user with administration privileges (**SYSADM** or **SYSCTRL** permissions) in the **dba** element. In the sample Ant file for DB2 (**create-database-db2.xml**), the properties to set are: **database.db2.admin.username** and **database.db2.admin.password**.
+您还必须在 **dba** 元素中为 DB2 用户的登录标识和密码提供管理权限（**SYSADM** 或 **SYSCTRL** 许可权）。在 DB2 样本 Ant 文件 (**create-database-db2.xml**) 中，要设置如下这些属性：**database.db2.admin.username** 和 **database.db2.admin.password**。
 
-When the **databases** Ant target is called, the **configureDatabase** Ant task creates a database with default settings with the following SQL statement:
+在调用 **databases** Ant 目标时，**configureDatabase** Ant 任务会使用以下 SQL 语句按照缺省设置来创建数据库：
+
 
 ```sql
 CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 ```
 
-It is not meant to be used for production as in a default DB2 installation, many privileges are granted to PUBLIC.
+此设置并不适用于生产，因为在缺省 DB2 安装中，许多权限都是公开的。
 
-### Creating the Oracle database tables with Ant tasks
+### 使用 Ant 任务创建 Oracle 数据库表
 {: #creating-the-oracle-database-tables-with-ant-tasks }
-Use Ant tasks that are provided with {{ site.data.keys.mf_server }} installation to create the Oracle database tables.
+使用 {{ site.data.keys.mf_server }} 安装提供的 Ant 任务创建 Oracle 数据库表。
 
-When you enter the Oracle user name in Ant file, it must be in uppercase. If you have an Oracle database user (FOO), but you enter a user name with lowercase (foo), the **configureDatabase** Ant task considers it as another user. Unlike other tools for Oracle database, the **configureDatabase** Ant task protects the user name against automatic conversion to uppercase.
+在 Ant 文件中输入 Oracle 用户名时，必须使用大写。如果您具有 Oracle 数据库用户 (FOO)，但输入小写的用户名 (foo)，那么 **configureDatabase** Ant 任务会将其视为另一个用户。与 Oracle 数据库的其他工具不同，**configureDatabase** Ant 任务会对用户名进行保护，以防止自动转换为大写。
 
-The **configureDatabase** Ant task uses a service name or Oracle System Identifier (SID) to identify a database. However, if you want to make the connection to Oracle RAC, you need to enter a complex JDBC URL. In this case, the **oracle** element that is within the **configureDatabase** Ant task must use the attributes (**url**, **user**, and **password**) instead of these attributes (**database**, **server**, **port**, **user**, and **password**). For more information, see the table in [Ant **configuredatabase** task reference](../installation-reference/#ant-configuredatabase-task-reference). The sample Ant files in **mfp\_install\_dir/MobileFirstServer/configurations-samples** use the **database**, **server**, **port**, **user**, and **password** attributes in the **oracle** element. They must be modified if you need to connect to Oracle with a JDBC URL.
+**configureDatabase** Ant 任务使用服务名称或 Oracle 系统标识 (SID) 来标识数据库。但是，如果要连接到 Oracle RAC，需输入复杂的 JDBC URL。在此情况下，**configureDatabase** Ant 任务中的 **oracle** 元素必须使用特性 **url**、**user** 和 **password**，来代替特性 **database**、**server**、**port**、**user** 和 **password**。有关更多信息，请参阅 [Ant **configuredatabase** 任务参考](../installation-reference/#ant-configuredatabase-task-reference)中的表。**mfp\_install\_dir/MobileFirstServer/configurations-samples** 中的样本 Ant 文件在 **oracle** 元素中使用 **database**、**server**、**port**、**user** 和 **password** 特性。如果需要使用 JDBC URL 连接到 Oracle，必须修改这些特性。
 
-To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
+要在已存在的数据库中创建数据库表，请参阅[使用 Ant 任务创建数据库表](#create-the-database-tables-with-ant-tasks)。
 
-To create a database, user, or the database tables, use the Oracle Database Creation Assistant (DBCA) tool. For more information, see [Oracle database and user requirements](#oracle-database-and-user-requirements).
+要创建数据库、用户或数据库表，请使用 Oracle Database Creation Assistant (DBCA) 工具。有关更多信息，请参阅 [Oracle 数据库和用户需求](#oracle-database-and-user-requirements)。
 
-The **configureDatabase** Ant task can do the same but with a limitation. The task can create a database user for Oracle 11g or Oracle 12g. However, it can create a database only for Oracle 11g, and not for Oracle 12c. Refer to the following two sections for the extra steps that you need to create the database or the user.
 
-#### Creating the database
+**configureDatabase** Ant 任务可以执行相同的任务但存在限制。该任务可以为 Oracle 11g 或 Oracle 12g 创建数据库用户。但是，它只能为 Oracle 11g 创建数据库，而不能为 Oracle 12c 创建数据库。请参阅以下两节以了解创建数据库或用户所需的额外步骤。
+
+#### 创建数据库
 {: #creating-the-database-1 }
-Follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-oracle.xml** file.
+根据[使用 Ant 任务创建数据库表](#create-the-database-tables-with-ant-tasks)中描述的一般准则来编辑 **create-database-oracle.xml** 文件的副本。
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. 在运行 Oracle 数据库的计算机上运行 SSH 服务器。
 
-    The **configureDatabase** Ant task opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer where you run the Ant tasks.
+    **configureDatabase** Ant 任务打开与 Oracle 主机的 SSH 会话以创建数据库。除了 Linux 和部分版本的 UNIX 系统，即使 Oracle 数据库与 Ant 任务在相同计算机上运行，也需要 SSH 服务器。
 
-2. In **dba** element that is defined in the **create-database-oracle.xml** file, enter the login ID and password of an Oracle database user that can connect to the Oracle Server via SSH and has the privileges to create a database. You can assign the values in the following properties:
+2. 在 **create-database-oracle.xml** 文件中定义的 **dba** 元素中，输入可以通过 SSH 连接到 Oracle 服务器切有权创建数据库的 Oracle 数据库的登录标识和密码。您可以在以下属性中指定这些值：
+
     * **database.oracle.admin.username**
     * **database.oracle.admin.password**
-3. In **oracle** element, enter the database name that you want to create. The attribute is **database**. You can assign the value in the **database.oracle.mfp.dbname** property.
-4. In the same **oracle** element, also enter the password for the **SYS** user and the **SYSTEM** user for the database that is to be created. The attributes are **sysPassword** and **systemPassword**. You can assign the values in the corresponding properties:
+3. 在 **oracle** 元素中，输入想要创建的数据库名称。对应特性是 **database**。您可以在 **database.oracle.mfp.dbname** 属性中指定值。
+4. 在同一 **oracle** 元素中，还应为要创建的数据库输入 **SYS** 用户和 **SYSTEM** 用户的密码。对应特性是 **sysPassword** 和 **systemPassword**。
+您可以在对应属性中指定这些值：
+
     * **database.oracle.sysPassword**
     * **database.oracle.systemPassword**
-5. After all the database credentials are entered in the Ant file, save it and run the **databases** Ant target.
+5. 在 Ant 文件中输入所有数据库凭证后，请保存并运行 **databases** Ant 目标。
 
-A database is created with the SID name that is entered in the database of the **oracle** element. It is not meant to be used for production.
+这样将使用 **oracle** 元素的 database 中输入的 SID 名称创建数据库。这并不意味着可用于生产。
 
-#### Creating the user
+#### 创建用户
 {: #creating-the-user-1 }
-Follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-oracle.xml** file.
+根据[使用 Ant 任务创建数据库表](#create-the-database-tables-with-ant-tasks)中描述的一般准则来编辑 **create-database-oracle.xml** 文件的副本。
 
-1. Run an SSH server on the computer that runs the Oracle database.
+1. 在运行 Oracle 数据库的计算机上运行 SSH 服务器。
 
-    The **configureDatabase** Ant task opens an SSH session to the Oracle host to create the database. Except on Linux and some versions of UNIX systems, the SSH server is needed even if the Oracle database runs on the same computer where you run the Ant tasks.
+    **configureDatabase** Ant 任务打开与 Oracle 主机的 SSH 会话以创建数据库。除了 Linux 和部分版本的 UNIX 系统，即使 Oracle 数据库与 Ant 任务在相同计算机上运行，也需要 SSH 服务器。
 
-2. In oracle element that is defined in the **create-database-oracle.xml** file, enter the login ID and password of an Oracle database user that you want to create. The attributes are **user** and **password**. You can assign the values in the corresponding properties:
+2. 在 **create-database-oracle.xml** 文件中定义的 oracle 元素中，输入想要创建的 Oracle 数据库用户的登录标识和密码。对应特性是 **user** 和 **password**。
+您可以在对应属性中指定这些值：
+
     * database.oracle.mfp.username
     * database.oracle.mfp.password
-3. In the same **oracle** element, also enter the password for the **SYSTEM** user for the database. The attribute is **systemPassword**. You can assign the value in the **database.oracle.systemPassword property**.
-4. In the **dba** element, enter the login ID and password of an Oracle database user that has the privileges to create a user. You can assign the values in the following properties:
+3. 在同一个 **oracle** 元素中，同时输入数据库的 **SYSTEM** 用户的密码。对应特性是 **systemPassword**。您可以在 **database.oracle.systemPassword 属性**中指定值。
+4. 在 **dba** 元素中，输入有权创建用户的 Oracle 数据库用户的登录标识和密码。您可以在以下属性中指定这些值：
+
     * **database.oracle.admin.username**
     * **database.oracle.admin.password**
-5. After all the database credentials are entered in the Ant file, save it and run the **databases** Ant target.
+5. 在 Ant 文件中输入所有数据库凭证后，请保存并运行 **databases** Ant 目标。
 
-A database user is created with the name and password that are entered in the **oracle** element. This user has the privileges to create the {{ site.data.keys.mf_server }} tables, upgrade them and use them at run time.
+这样将使用 **oracle** 元素中输入的名称和密码创建数据库用户。此用户有权创建 {{ site.data.keys.mf_server }} 表、升级表以及在运行时使用表。
 
-### Creating the MySQL database tables with Ant tasks
+### 使用 Ant 任务创建 MySQL 数据库表
 {: #creating-the-mysql-database-tables-with-ant-tasks }
-Use Ant Tasks that are provided with {{ site.data.keys.mf_server }} installation to create the MySQL database tables.
+使用 {{ site.data.keys.mf_server }} 安装随附的 Ant 任务创建 MySQL 数据库表。
 
-To create the database tables in a database that already exists, see [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks).
+要在已存在的数据库中创建数据库表，请参阅[使用 Ant 任务创建数据库表](#create-the-database-tables-with-ant-tasks)。
 
-If MySQL server does not have the settings that are recommended in [MySQL database and user requirements](#mysql-database-and-user-requirements), the **configureDatabase** Ant task displays a warning. Make sure to fulfill the requirements before you run the Ant task.
+如果 MySQL 服务器无 [MySQL 数据库和用户需求](#mysql-database-and-user-requirements)中建议的设置，那么 **configureDatabase** Ant 任务会显示一条警告。运行 Ant 任务前，请确保满足需求。
 
-To create a database and the database tables, follow the general guidelines as described in [Create the database tables with Ant tasks](#create-the-database-tables-with-ant-tasks) to edit the copy of the **create-database-mysql.xml** file.
+要创建数据库和数据库表，请遵循[使用 Ant 任务创建数据库表](#create-the-database-tables-with-ant-tasks)中所述的一般准则来编辑 **create-database-mysql.xml** 文件副本。
 
-The following procedure provides some extra steps that you need to do when you create the database tables with the **configureDatabase** Ant task.
+以下过程提供了在使用 **configureDatabase** Ant 任务创建数据库表时需要完成的一些额外的步骤。
 
-1. In the **dba** element that is defined in the **create-database-mysql.xml** file, enter the login ID and password of a MySQL administrator. By default, the administrator is **root**. You can assign the values in the following properties:
+1. 在 **create-database-mysql.xml** 文件中定义的 **dba** 元素中，输入 MySQL 管理员的登录标识和密码。缺省情况下，管理员为 **root**。您可以在以下属性中指定这些值：
+
     * **database.mysql.admin.username**
     * **database.mysql.admin.password**
-2. In the **mysql** element, add a **client** element for each host from which the user is allowed to connect to the database. That is, all the hosts where {{ site.data.keys.mf_server }} runs.
-After all the database credentials are entered in the Ant file, save it and run the **databases** Ant target.
+2. 在 **mysql** 元素中，为允许用户连接到数据库的每个主机添加 **client** 元素。也即，所有运行 {{ site.data.keys.mf_server }} 的主机。在 Ant 文件中输入所有数据库凭证后，请保存并运行 **databases** Ant 目标。

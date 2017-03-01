@@ -1,55 +1,55 @@
 ---
 layout: tutorial
-title: Setting up the Windows 8.1 and Windows 10 development environment
+title: 设置 Windows 8.1 和 Windows 10 开发环境
 breadcrumb_title: Windows
 relevantTo: [windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-This tutorial explains the steps a developer needs to follow in order to be able to develop and test Windows 8.1 Universal and Windows 10 UWP applications.
+本教程说明了开发人员开发和测试 Windows 8.1 Universal 和 Windows 10 UWP 应用程序所需执行的步骤。
 
-**Prerequisite:** As you setup your iOS development environment, make sure to also read the [Setting up the {{ site.data.keys.product }} development environment](../mobilefirst/) tutorial.
+**先决条件：**设置 iOS 开发环境时，请确保您还阅读了[设置 {{ site.data.keys.product }} 开发环境](../mobilefirst/)教程。
 
-### Registration
+### 注册
 {: #registration }
-1. Register as a Windows developer
+1. 注册为 Windows 开发人员
 
-- [Create an Microsoft account](https://signup.live.com/) to be used by your organization/team admin.
-- Using the Microsoft ID, sign-in to the [Windows Dev Center](https://dev.windows.com/en-us/programs/join).
+- [创建 Microsoft 帐户](https://signup.live.com/)，供您的组织/团队管理员使用。
+- 使用 Microsoft 标识登录到 [Windows Dev Center](https://dev.windows.com/en-us/programs/join)。
 
-> Learn more in the [Windows developer support](https://dev.windows.com/en-us/support) website
+> 在 [Windows Developer Support](https://dev.windows.com/en-us/support) Web 站点中了解更多信息
 
-### Development
+### 开发
 {: #development }
-Application development for either Windows 8.1 Universal or Windows 10 UWP requires a PC workstation running either the Windows 8.1 or Windows 10 operating system, with Microsoft  Visual Studio 2013 or 2015.
+要在 Windows 8.1 Universal 或 Windows 10 UWP 上开发应用程序，需要有运行 Windows 8.1 或 Windows 10 操作系统以及 Microsoft Visual Studio 2013 或 2015 的 PC 工作站。
 
 #### Windows 8.1 Universal
 {: #windows-81-universal }
-A Windows 8.1 Universal application Solution is made up from three projects:
+Windows 8.1 Universal 应用程序解决方案由以下三个项目组成：
 
-- Shared code for business logic
-- A project for Windows Desktop/tablet applications
-- A project for Windows Phone applications
+- 用于业务逻辑的共享代码
+- 用于 Windows 台式机/平板电脑应用程序的项目
+- 用于 Windows Phone 应用程序的项目
 
-Windows 8.1 Universal requires:
+Windows 8.1 Universal 需要：
 
-- Windows OS 8.1 or higher
-- Visual Studio 2013 or 2015
+- Windows OS 8.1 或更高版本
+- Visual Studio 2013 或 2015
 
 #### Windows 10 UWP
 {: #windows-10-uwp }
-A Windows 10 UWP (Universal Windows Platform) application Solution is made up from a single project containing:
+Windows 10 UWP (Universal Windows Platform) 应用程序解决方案由一个项目组成，该项目中包括：
 
-- Shared code for business logic
-- Adaptive UI (for both Desktop/tablet and Phone) 
+- 用于业务逻辑的共享代码
+- 自适应 UI（用于台式机/平板电脑和手机） 
 
-Windows 10 UWP requires:
+Windows 10 UWP 需要：
 
-- Windows OS 8.1 or higher
+- Windows OS 8.1 或更高版本
 - Visual Studio 2015
 
-## What's Next
+## 后续操作
 {: #whats-next }
-Now that the {{ site.data.keys.product }} and Windows development environment are set up, continue to [Quick Start](../../../quick-start/windows-8-10/) category to experience {{ site.data.keys.product }}, or to [All Tutorials](../../../all-tutorials) to learn specific aspects of {{ site.data.keys.product }} development.
+现在，您已经设置了 {{ site.data.keys.product }} 和 Windows 开发环境，接下来，您将转至[快速入门](../../../quick-start/windows-8-10/)类别来体验 {{ site.data.keys.product }}，或转至[全部教程](../../../all-tutorials)来了解 {{ site.data.keys.product }} 开发的特定方面。

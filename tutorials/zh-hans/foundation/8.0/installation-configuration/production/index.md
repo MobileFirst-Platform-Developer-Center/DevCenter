@@ -1,69 +1,70 @@
 ---
 layout: tutorial
-title: Installing MobileFirst Server for a Production Environment
-breadcrumb_title: Production Environment
+title: 为生产环境安装 MobileFirst Server
+breadcrumb_title: 生产环境
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-This section provides details to assist you in planning and preparing an installation for your specific environment.  
-For more information about the configuration of the {{ site.data.keys.mf_server }}, see [Configuring {{ site.data.keys.mf_server }}](server-configuration).
+本部分提供了一些详细信息，可帮助您针对特定环境规划和准备安装。  
+有关 {{ site.data.keys.mf_server }} 配置的更多信息，请参阅[配置 {{ site.data.keys.mf_server }}](server-configuration)。
 
-#### Jump to
+#### 跳至：
 {: #jump-to }
 
-* [Prerequisites](#prerequisites)
-* [What's Next](#whats-next)
+* [先决条件](#prerequisites)
+* [后续操作](#whats-next)
 
-## Prerequisites
+## 先决条件
 {: #prerequisites }
-For smooth installation of {{ site.data.keys.mf_server }}, ensure that you fulfill all the software prerequisites.
+为顺利安装 {{ site.data.keys.mf_server }}，请确保满足所有软件先决条件。
 
-**Database Management System (DBMS)**  
-A DBMS is needed to store the technical data of {{ site.data.keys.mf_server }} components. You must use one of the supported DBMS:
+**数据库管理系统 (DBMS)**  
+需要 DBMS 来存储 {{ site.data.keys.mf_server }} 组件的技术数据。您必须使用受支持的某一个 DBMS：
 
-* IBM  DB2 
+* IBM DB2 
 * MySQL
 * Oracle
 
-For more information about the versions of DBMS that are supported by the product, see [System requirements](../../product-overview/requirements). If you use a relational DBMS (IBM DB2, Oracle, or MySQL), you need the JDBC driver for that database during the installation process. The JDBC drivers are not provided by {{ site.data.keys.mf_server }} installer. Make sure that you have the JDBC driver.
+有关产品支持的 DBMS 版本的更多信息，请参阅[系统需求](../../product-overview/requirements)。如果使用关系 DBMS（IBM DB2、Oracle 或 MySQL），那么在安装过程中，此数据库需要 JDBC 驱动程序。{{ site.data.keys.mf_server }} 安装程序未提供 JDBC 驱动程序。确保您有 JDBC 驱动程序。
 
-* For DB2, use the DB2 JDBC driver V4.0 (db2jcc4.jar).
-* For MySQL, use the Connector/J JDBC driver.
-* For Oracle, use the Oracle thin JDBC driver.
+* 对于 DB2，使用 DB2 JDBC 驱动程序 V4.0 (db2jcc4.jar)。
+* 对于 MySQL，使用 Connector/J JDBC 驱动程序。
+* 对于 Oracle，使用 Oracle 瘦 JDBC 驱动程序。
 
-**Java application server**  
-A Java application server is needed to run the {{ site.data.keys.mf_server }} applications. You can use any of the following application servers:
+**Java 应用程序服务器**  
+需要 Java 应用程序服务器才能运行 {{ site.data.keys.mf_server }} 应用程序。您可以使用以下任何应用程序服务器：
 
-* WebSphere  Application Server Liberty Core
+* WebSphere Application Server Liberty Core
 * WebSphere Application Server Liberty Network Deployment
 * WebSphere Application Server
 * Apache Tomcat
 
-For more information about the versions of application servers that are supported by the product, see [System requirements](../../product-overview/requirements). The application server must run with Java 7 or later. By default, some versions of WebSphere Application Server run with Java 6. With this default, they cannot run {{ site.data.keys.mf_server }}
+有关产品支持的应用程序服务器版本的更多信息，请参阅[系统需求](../../product-overview/requirements)。必须使用 Java 7 或更高版本运行应用程序服务器。缺省情况下，使用 Java 6 运行某些版本的 WebSphere Application Server。此时，将无法运行 {{ site.data.keys.mf_server }}
 
-**IBM Installation Manager V1.8.4 or later**  
-Installation Manager is used to run the installer of {{ site.data.keys.mf_server }}. You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product_full }} {{ site.data.keys.product_version }} because the post-installation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
+**IBM Installation Manager V1.8.4 或更高版本**  
+Installation Manager 用于运行 {{ site.data.keys.mf_server }} 的安装程序。必须安装 Installation Manager V1.8.4 或更高版本。更低版本的 Installation Manager 将无法安装 {{ site.data.keys.product_full }} {{ site.data.keys.product_version }}，因为该产品的安装后操作需要使用 Java 7，而更低版本的 Installation Manager 只随附了 Java 6。
 
-Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
 
-**Installation Manager repository for {{ site.data.keys.mf_server }}**  
-You can download the repository from the {{ site.data.keys.product }} eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
+从 [Installation Manager 和 Packaging Utility 下载链接](http://www.ibm.com/support/docview.wss?uid=swg27025142)下载 IBM Installation Manager V1.8.4 或更高版本的安装程序。
 
-You might also want to apply the latest fix pack that can be downloaded from [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). The fix pack cannot be installed without the repository of the base version in the repositories of Installation Manager.
+**{{ site.data.keys.mf_server }} 的 Installation Manager 存储库**  
+可以从 [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) 上的 {{ site.data.keys.product }} eAssembly 中下载该存储库。包名称为 **IBM MobileFirst Platform Server 的 Installation Manager 存储库 IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip 文件**。
 
-The {{ site.data.keys.product }} eAssembly includes the following installers:
+您可能还想应用可从 [IBM 支持门户网站](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)下载的最新修订包。如果 Installation Manager 的存储库中无基本版本的存储库，将无法安装修订包。
+
+{{ site.data.keys.product }} eAssembly 包含以下安装程序：
 
 * IBM DB2 Workgroup Server Edition
 * IBM WebSphere Application Server Liberty Core
 
-For Liberty, you can also use IBM WebSphere SDK Java Technology edition with IBM WebSphere Application Server Liberty Core supplement.
+对于 Liberty，还可以将 IBM WebSphere SDK Java Technology Edition 与 IBM WebSphere Application Server Liberty Core 附加组件结合使用。
 
-## What's Next
+## 后续操作
 {: #whats-next }
 
-* [Running IBM Installation Manager](installation-manager)
-* [Setting up databases](databases)
-* [Topologies and network flows](topologies)
-* [Installing {{ site.data.keys.mf_server }} to an application server](appserver)
+* [运行 IBM Installation Manager](installation-manager)
+* [设置数据库](databases)
+* [拓扑和网络流](topologies)
+* [将 {{ site.data.keys.mf_server }} 安装到应用程序服务器中](appserver)
