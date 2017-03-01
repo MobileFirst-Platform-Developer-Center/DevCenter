@@ -17,7 +17,7 @@ additional_authors :
 Lately, we are seeing a few issues with the more recent versions of the Cordova for Windows platform. This post is to give you a run down of the issues seen with different versions of cordova-windows and how to overcome them. Below is a list of compatibility issues and their solutions. 
 
 
-###"An unhandled win32 exception occurred in WWAHost.exe" error is seen when executing an application with the JSON Store plugin added.  
+### Cordova application with JSONStore plugin crashes on Windows platform. 
 
 ![Win32 Exception]({{site.baseurl}}/assets/blog/2017-02-28-jsonstore-windows-compatibility/Win32Exception.png)
 
@@ -25,15 +25,15 @@ On adding the windows platform using the **cordova platform add windows** comman
 
 ![Set Properties]({{site.baseurl}}/assets/blog/2017-02-28-jsonstore-windows-compatibility/mfpclientProperties.png)
 
-###"PERSISTENT\_STORE_FAILURE" error occurs when initializing a JSONStore collection on cordova-windows. 
+### "PERSISTENT\_STORE_FAILURE" error occurs when initializing a JSONStore collection on cordova-windows. 
 
 For cordova-windows v4.4.3 and below, follow the properties setting of the referenced external DLLs **(sqlite3 and msvcr110)** similar to the workaround mentioned above. Set the **Package Action** property to ***Content*** and the **Copy to Output Directory** property to ***Copy Always***. This error occurs as the project is unable to pick the DLL's content if the DLL's **Package Action** property is set to ***None***. 
  
 ![Set Properties]({{site.baseurl}}/assets/blog/2017-02-28-jsonstore-windows-compatibility/PackageActionSetting.png)
 
-###UWP JSONStore projects error out during runtime with the following error : "PERSISTENT\_STORE_FAILURE" error on JsonStore initialization in release mode. 
+### UWP JSONStore projects error out during runtime with the following error : "PERSISTENT\_STORE_FAILURE" error on JsonStore initialization in release mode. 
 
-This is because the dependent DLLs are not referenced in *Release* mode due to a bug in cordova as the runtime directives file is not added to the project. [A bug has been raised in Cordova Jira for this](https://issues.apache.org/jira/browse/CB-12499). 
+This is because the dependent DLLs are not referenced in *Release* mode due to a bug in cordova as the runtime directives file is not added to the project. [You can track this issue on Cordova Jira here](https://issues.apache.org/jira/browse/CB-12499). 
  
 
 To workaround this issue, you will have to add the "**Default.rd.xml**" file to the UWP app with the default content that is available for a Windows 10 app which is : 
@@ -54,7 +54,7 @@ This ensures that the dependent DLLs are referenced correctly even in *Release* 
 >Learn more on runtime directives here : [Runtime Directives](https://msdn.microsoft.com/en-us/library/dn600639%28v=vs.110%29.aspx)  
 
 
-###JSONStore projects with ARM architecture do not run on Windows Phone due to the runtime error PERSISTENT\_STORE_FAILURE. 
+### JSONStore projects with ARM architecture do not run on Windows Phone due to the runtime error PERSISTENT\_STORE_FAILURE. 
 
 The root cause for this error is that the DLLs are being picked from the Windows desktop folder of the DLL's source rather than from the Windows Phone folder of the DLLs. This is due to a bug in the installation of the JSONStore plugin. 
 
