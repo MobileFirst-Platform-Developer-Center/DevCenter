@@ -9,8 +9,8 @@ version: 8.0
 author:
   name: Srutha Keerthi K
 additional_authors :
-  Srihari Kulkari
-  Shubha S
+  - Srihari Kulkarni
+  - Shubha S
 ---
 
 ## Overview
@@ -36,7 +36,7 @@ For cordova-windows v4.4.3 and below, follow the properties setting of the refer
 This is because the dependent DLLs are not referenced in *Release* mode due to a bug in cordova as the runtime directives file is not added to the project. [A bug has been raised in Cordova Jira for this](https://issues.apache.org/jira/browse/CB-12499). 
  
 
-To workaround this issue, you will have to add the "**Default.rd.xml**" file to the UWP app with the default content that is available for a Win 10 app which is : 
+To workaround this issue, you will have to add the "**Default.rd.xml**" file to the UWP app with the default content that is available for a Windows 10 app which is : 
 
  ```
 <Directives xmlns="http://schemas.microsoft.com/netfx/2013/01/metadata">
@@ -56,9 +56,9 @@ This ensures that the dependent DLLs are referenced correctly even in *Release* 
 
 ###JSONStore projects with ARM architecture do not run on Windows Phone due to the runtime error PERSISTENT\_STORE_FAILURE. 
 
-The root cause for this error is that the DLLs are being picked from the Windows desktop folder of the DLL's source rather than from the Windows Phone folder of the DLL's. This is due to a bug in the installation of the JSONStore plugin. 
+The root cause for this error is that the DLLs are being picked from the Windows desktop folder of the DLL's source rather than from the Windows Phone folder of the DLLs. This is due to a bug in the installation of the JSONStore plugin. 
 
-To resolve this issue, remove the current DLL added to the project and add the dependent DLLs (namely sqlite3.dll and msvcr.dll) from the wp folder of the ARM arch DLLs from the path **&lt;*your_jsonstore_cordova_project_root_folder*&gt;/plugins/cordova-plugin-mfp-jsonstore/src/windows/buildtarget/wp/ARM/&lt;*add_dlls_from_here*&gt;**. The fix for this will be available in the future iFix releases. 
+To resolve this issue, remove the current DLL added to the project and add the dependent DLLs **(namely sqlite3.dll and msvcr.dll)** from the *wp* folder of the ARM arch DLLs from the path **&lt;*your_jsonstore_cordova_project_root_folder*&gt;/plugins/cordova-plugin-mfp-jsonstore/src/windows/buildtarget/wp/ARM/&lt;*add_dlls_from_here*&gt;**. The fix for this will be available in the future iFix releases. 
  
  
  ![WinPhone DLL Addition]({{site.baseurl}}/assets/blog/2017-02-28-jsonstore-windows-compatibility/RemoveAndAddDLL.png)
