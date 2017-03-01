@@ -1,174 +1,175 @@
 ---
 layout: tutorial
-title: Installing MobileFirst Server in graphical mode tutorial
+title: 以图形方式安装 MobileFirst Server 教程
 weight: 0
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Use the graphical mode of IBM  Installation Manager and the Server Configuration Tool to install {{ site.data.keys.mf_server }}.
+使用 IBM Installation Manager 的图形方式和 Server Configuration Tool 来安装 {{ site.data.keys.mf_server }}。
 
-#### Before you begin
+#### 开始之前
 {: #before-you-begin }
-* Make sure that one of the following databases and a supported Java version are installed. You also need the corresponding JDBC driver for the database to be available on your computer:
-    * Database Management System (DBMS) from the list of supported database:
+* 确保安装以下某个数据库和受支持的 Java 版本。计算机上还需要有对应的数据库 JDBC 驱动程序：
+    * 来自受支持数据库列表的数据库管理系统 (DBMS)：
         * DB2 
         * MySQL
         * Oracle
 
-        **Important:** You must have a database where you can create the tables that are needed by the product, and a database user who can create tables in that database.
+        **要点：**您必须具有一个能够创建产品所需表的数据库以及可以在该数据库中创建表的数据库用户。
 
-        In the tutorial, the steps to create the tables are for DB2. You can find the DB2 installer as a package of {{ site.data.keys.product }} eAssembly [on IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm).  
+        在本教程中，用于创建表的步骤适用于 DB2。您可以在 [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) 上查找作为 {{ site.data.keys.product }} eAssembly 软件包一部分的 DB2 安装程序。  
         
-* JDBC driver for your database:
-    * For DB2, use the DB2 JDBC driver type 4.
-    * For MySQL, use the Connector/J JDBC driver.
-    * For Oracle, use the Oracle thin JDBC driver.
+* 适用于您的数据库的 JDBC 驱动程序
+    * 对于 DB2，使用 DB2 JDBC 驱动程序 4 类。
+    * 对于 MySQL，使用 Connector/J JDBC 驱动程序。
+    * 对于 Oracle，使用 Oracle 瘦 JDBC 驱动程序。
 
-* Java 7 or later.
+* Java 7 或更高版本。
 
-* Download the installer of IBM Installation Manager V1.8.4 or later from [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-* You must also have the installation repository of the {{ site.data.keys.mf_server }} and the installer of WebSphere  Application Server Liberty Core V8.5.5.3 or later. Download these packages from the {{ site.data.keys.product }} eAssembly on Passport Advantage:
+* 从 [Installation Manager 和 Packaging Utility 下载链接](http://www.ibm.com/support/docview.wss?uid=swg27025142)下载 IBM Installation Manager V1.8.4 或更高版本的安装程序。
+* 您还必须具有 {{ site.data.keys.mf_server }} 的安装库和 WebSphere Application Server Liberty Core V8.5.5.3 或更高版本的安装程序。请从 Passport Advantage 上的 {{ site.data.keys.product }} eAssembly 下载这些软件包：
 
-**{{ site.data.keys.mf_server }} installation repository**  
-{{ site.data.keys.product }} V8.0 .zip file of Installation Manager Repository for {{ site.data.keys.mf_server }}
+**{{ site.data.keys.mf_server }} 安装库**  
+Installation Manager Repository for {{ site.data.keys.mf_server }} 的 {{ site.data.keys.product }} V8.0 .zip 文件
 
-**WebSphere Application Server Liberty profile**  
-IBM WebSphere Application Server - Liberty Core V8.5.5.3 or later
+**WebSphere Application Server Liberty Profile**  
+IBM WebSphere Application Server - Liberty Core V8.5.5.3 或更高版本
     
-You can run the installation in graphical mode if you are on one of the following operating systems:
+如果您使用以下某种操作系统，可以图形方式运行安装：
 
-* Windows x86 or x86-64
+* Windows x86 或 x86-64
 * macOS x86-64
-* Linux x86 or Linux x86-64
+* Linux x86 或 Linux x86-64
 
-On other operating systems, you can still run the installation with Installation Manager in graphical mode, but the Server Configuration Tool is not available. You need to use Ant tasks (as described in [Installing {{ site.data.keys.mf_server }} in command line mode](../command-line) to deploy {{ site.data.keys.mf_server }} to Liberty profile.
+在其他操作系统上，仍可以图形方式通过 Installation Manager 运行安装，但不能使用 Server Configuration Tool。您需要使用 Ant 任务（如[以命令行方式安装 {{ site.data.keys.mf_server }}](../command-line) 中所述）将 {{ site.data.keys.mf_server }} 部署到 Liberty 概要文件。
 
-**Note:** The instruction to install and set up the database is not part of this tutorial. If you want to run this tutorial without installing a stand-alone database, you can use the embedded Derby database. However, the restrictions for using this database are as follows:
+**注：**用于安装和设置数据库的指示信息不包含在本教程中。如果想要运行本教程而不安装独立数据库，可以使用嵌入式 Derby 数据库。但是，使用此数据库存在如下限制：
 
-* You can run Installation Manager in graphical mode, but to deploy the server, you need to skip to the command line section of this tutorial to install with Ant tasks.
-* You cannot configure a server farm. Embedded Derby database does not support access from multiple servers. To configure a server farm, you need DB2, MySQL, or Oracle.
 
-#### Jump to
+* 您可以图形方式运行 Installation Manager，但要部署服务器，需要跳过本教程中使用 Ant 任务进行安装的命令行部分。
+* 不能配置服务器场。嵌入式 Derby 数据库不支持从多个服务器进行访问。要配置服务器场，需要 DB2、MySQL 或 Oracle。
+
+#### 跳转至
 {: #jump-to }
 
-* [Installing IBM Installation Manager](#installing-ibm-installation-manager)
-* [Installing WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core)
-* [Installing {{ site.data.keys.mf_server }}](#installing-mobilefirst-server)
-* [Creating a database](#creating-a-database)
-* [Running the Server Configuration Tool](#running-the-server-configuration-tool)
-* [Testing the installation](#testing-the-installation)
-* [Creating a farm of two Liberty servers that run {{ site.data.keys.mf_server }}](#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server)
-* [Testing the farm and see the changes in {{ site.data.keys.mf_console }}](#testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console)
+* [安装 IBM Installation Manager](#installing-ibm-installation-manager)
+* [安装 WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core)
+* [安装 {{ site.data.keys.mf_server }}](#installing-mobilefirst-server)
+* [创建数据库](#creating-a-database)
+* [运行 Server Configuration Tool](#running-the-server-configuration-tool)
+* [测试安装](#testing-the-installation)
+* [创建由两台运行 {{ site.data.keys.mf_server }} 的 Liberty 服务器组成的场](#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server)
+* [测试场，并在 {{ site.data.keys.mf_console }} 中查看更改](#testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console)
 
-### Installing IBM Installation Manager
+### 安装 IBM Installation Manager
 {: #installing-ibm-installation-manager }
-You must install Installation Manager V1.8.4 or later. The older versions of Installation Manager are not able to install {{ site.data.keys.product }} V8.0 because the postinstallation operations of the product require Java 7. The older versions of Installation Manager come with Java 6.
+必须安装 Installation Manager V1.8.4 或更高版本。更低版本的 Installation Manager 不能安装 {{ site.data.keys.product }} V8.0，因为产品后安装操作需要 Java 7。更低版本的 Installation Manager 随附 Java 6。
 
-1. Extract the IBM Installation Manager archive that is downloaded. You can find the installer at [Installation Manager and Packaging Utility download links](http://www.ibm.com/support/docview.wss?uid=swg27025142).
-2. Install Installation Manager:
-    * Run **install.exe** to install Installation Manager as administrator. Root is needed on Linux or UNIX. On Windows, the administrator privilege is needed. In this mode, the information about the installed packages is placed in a shared location on the disk and any user that is allowed to run Installation Manager can update the applications.
-    * Run **userinst.exe** to install Installation Manager in user mode. No specific privilege is needed. However, in this mode, the information about the installed packages are placed in the user's home directory. Only that user can update the applications that are installed with Installation Manager.
+1. 解压缩下载的 IBM Installation Manager 归档。您可以在 [Installation Manager 和 Packaging Utility 下载链接](http://www.ibm.com/support/docview.wss?uid=swg27025142)找到安装程序。
+2. 安装 Installation Manager：
+    * 以管理员身份运行 **install.exe** 以安装 Installation Manager。在 Linux 或 UNIX 上，需要 root 用户身份。在 Windows 上，需要管理员权限。在此方式下，有关已安装的程序包的信息放置在磁盘上的共享位置，允许运行 Installation Manager 的任何用户都可更新应用程序。
+    * 运行 **userinst.exe** 以在用户方式下安装 Installation Manager。无需特殊权限。但是在此方式下，有关已安装的程序包的信息放置在用户主目录下。仅限此用户才能更新使用 Installation Manager 安装的应用程序。
 
-### Installing WebSphere Application Server Liberty Core
+### 安装 WebSphere Application Server Liberty Core
 {: #installing-websphere-application-server-liberty-core }
-The installer for WebSphere Application Server Liberty Core is provided as part of the package for {{ site.data.keys.product }}. In this task, Liberty profile is installed and a server instance is created so that you can install {{ site.data.keys.mf_server }} on it.
+WebSphere Application Server Liberty Core 的安装程序是作为 {{ site.data.keys.product }} 软件包的一部分提供的。在此任务中，将安装 Liberty 概要文件并创建服务器实例，以便您可以在其中安装 {{ site.data.keys.mf_server }}。
 
-1. Extract the compressed file for WebSphere Application Server Liberty Core that you downloaded.
-2. Launch Installation Manager.
-3. Add the repository in Installation Manager.
-    * Go to **File → Preferences and click Add Repositories...**.
-    * Browse for the **repository.config** file of **diskTag.inf** file in the directory where the installer is extracted.
-    * Select the file and click **OK**.
-    * Click **OK** to close the Preferences panel.
-4. Click **Install** to install Liberty.
-    * Select **IBM WebSphere Application Server Liberty Core** and click **Next**.
-    * Accept the terms in the license agreements, and click **Next**.
-5. In the scope of this tutorial, do not need to install the additional assets when asked. Click **Install** for the installation process to start.
-    * If the installation is successful, the program displays a message indicating that installation is successful. The program might also display important postinstallation instructions.
-    * If the installation is not successful, click **View Log File** to troubleshoot the problem.
-6. Move the **usr** directory that contains the servers in a location that does not need specific privileges.
+1. 解压缩您下载的 WebSphere Application Server Liberty Core 压缩文件。
+2. 启动 Installation Manager。
+3. 在 Installation Manager 中添加存储库。
+    * 转至**“文件 → 首选项”，然后单击“添加存储库...”**。
+    * 在安装程序的解压缩目录中浏览 **diskTag.inf** 文件的 **repository.config** 文件。
+    * 选择该文件，然后单击**确定**。
+    * 单击**确定**以关闭“首选项”面板。
+4. 单击**安装**以安装 Liberty。
+    * 选择 **IBM WebSphere Application Server Liberty Core** 并单击**下一步**。
+    * 接受许可协议中的所有条款，然后单击**下一步**。
+5. 在本教程的范围中，在系统询问时无需安装额外资产。单击**安装**以启动安装过程。
+    * 如果安装成功，程序将显示一条消息，指示安装成功。程序也可能显示重要的安装后指示信息。
+    * 如果安装不成功，请单击**查看日志文件**以对问题进行故障诊断。
+6. 将包含服务器的 **usr** 目录移至无需特定权限的位置。
 
-    If you install Liberty with Installation Manager in administrator mode, the files are in a location where non-administrator or non-root users cannot modify the files. For the scope of this tutorial, move the **usr** directory that contains the servers in a place that does not need specific privileges. In this way, the installation operations can be done without specific privileges.
-    * Go to the installation directory of Liberty.
-    * Create a directory named **etc**. You need administrator or root privileges.
-    * In **etc** directory, create a **server.env** file with the following content: `WLP_USER_DIR=<path to a directory where any user can write>`
+    如果以管理员方式使用 Installation Manager 安装 Liberty，那么文件位于非管理员或非 root 用户无法修改文件的位置中。在本教程的范围内，将包含服务器的 **usr** 目录移至无需特定权限的位置。由此可在无需特定权限的情况下完成安装操作。
+    * 请跳至 Liberty 的安装目录。
+    * 创建名为 **etc** 的目录。这需要管理员权限或 root 用户权限。
+    * 在 **etc** 目录中，使用以下内容创建 **server.env** 文件：`WLP_USER_DIR=<任何用户都可以写入的目录的路径>`
     
-    For example, on Windows: `WLP_USER_DIR=C:\LibertyServers\usr`
-7. Create a Liberty server that will be used to install the first node of {{ site.data.keys.mf_server }} at the later part of the tutorial.
-    * Start a command line.
-    * Go to l**iberty\_install\_dir/bin**, and enter `server create mfp1`.
+    例如，在 Windows 上：`WLP_USER_DIR=C:\LibertyServers\usr`
+7. 创建 Liberty 服务器，在本教程后半部分，此服务器将用于安装 {{ site.data.keys.mf_server }} 的首个节点。
+    * 启动命令行。
+    * 转至 l**iberty\_install\_dir/bin**，并输入 `server create mfp1`。
     
-    This command creates a Liberty server instance named mfp1. You can see its definition at **liberty\_install\_dir/usr/servers/mfp1** or **WLP\_USER\_DIR/servers/mfp1** (if you modify the directory as described in step 6).
+    此命令会创建名为 mfp1 的 Liberty 服务器实例。您可以在 **liberty\_install\_dir/usr/servers/mfp1** 或 **WLP\_USER\_DIR/servers/mfp1**（如果按步骤 6 中所述修改了目录）中查看其定义。
     
-After the server is created, you can start this server with `server start mfp1` from **liberty\_install\_dir/bin/**. To stop the server, enter the command: `server stop mfp1` from **liberty\_install\_dir/bin/**.  
-The default home page can be viewed at http://localhost:9080.
+创建服务器后，可以从 **liberty\_install\_dir/bin/** 使用 `server start mfp1` 启动此服务器。要停止服务器，请从 **liberty\_install\_dir/bin/** 输入命令：`server stop mfp1`。  
+可在 http://localhost:9080 查看缺省主页。
 
-> **Note:** For production, you need to make sure that the Liberty server is started as a service when the host computer starts. Making the Liberty server start as a service is not part of this tutorial.
+> **注：**对于生产环境，需要确保启动主计算机时，Liberty 服务器作为服务启动。本教程中不涉及将 Liberty 服务器作为服务启动的内容。
 
-### Installing {{ site.data.keys.mf_server }}
+### 安装 {{ site.data.keys.mf_server }}
 {: #installing-mobilefirst-server }
-Run Installation Manager to install the binary files of {{ site.data.keys.mf_server }} on your disk before you create the databases and deploy {{ site.data.keys.mf_server }} to Liberty profile. During the installation of {{ site.data.keys.mf_server }} with Installation Manager, an option is proposed to you to install {{ site.data.keys.mf_app_center }}. Application Center is a different component of the product. For this tutorial, it is not required to be installed with {{ site.data.keys.mf_server }}.
+运行 Installation Manager 以在磁盘上安装 {{ site.data.keys.mf_server }} 的二进制文件，然后再创建数据库并将 {{ site.data.keys.mf_server }} 部署至 Liberty 概要文件。在使用 Installation Manager 安装 {{ site.data.keys.mf_server }} 期间，会建议您安装 {{ site.data.keys.mf_app_center }}。Application Center 是产品的另一个组件。在本教程中，不需要随着 {{ site.data.keys.mf_server }} 一起安装该组件。
 
-1. Launch Installation Manager.
-2. Add the repository of {{ site.data.keys.mf_server }} in Installation Manager.
-    * Go to **File → Preferences and click Add Repositories...**.
-    * Browse for the repository file in the directory where the installer is extracted.
+1. 启动 Installation Manager。
+2. 在 Installation Manager 中添加 {{ site.data.keys.mf_server }} 的存储库。
+    * 转至**“文件 → 首选项”，然后单击“添加存储库...”**。
+    * 在安装程序的解压缩目录中浏览存储库文件。
 
-        If you decompress the {{ site.data.keys.product }} V8.0 .zip file for {{ site.data.keys.mf_server }} in **mfp\_installer\_directory** folder, the repository file can be found at **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
+        如果将 {{ site.data.keys.mf_server }} 的 {{ site.data.keys.product }} V8.0 .zip 文件解压缩到 **mfp\_installer\_directory** 文件夹中，那么存储库文件位于 **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**。
 
-        You might also want to apply the latest fix pack that can be downloaded from [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Make sure to enter the repository for the fix pack. If you decompress the fix pack in **fixpack_directory** folder, the repository file is found in **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf**.
+        您还可能想应用可从 [IBM 支持门户网站](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)下载的最新修订包。确保输入修订包的存储库。如果将修订包解压缩到 **fixpack_directory** 文件夹，那么可以在 **fixpack_directory/MobileFirst_Platform_Server/disk1/diskTag.inf** 中找到存储库文件。
     
-        > **Note:** You cannot install the fix pack without the repository of the base version in the repositories of Installation Manager. The fix packs are incremental installers and need the repository of the base version to be installed.
-    * Select the file and click **OK**.
-    * Click **OK** to close the Preferences panel.
+        > **注：**如果 Installation Manager 存储库中没有基本版本的存储库，那么无法安装修订包。修订包是累积安装程序，需要安装基本版本的存储库。    
+	* 选择该文件，然后单击**确定**。
+    * 单击**确定**以关闭“首选项”面板。
 
-3. After you accept the license terms of the product, click **Next**.
-4. Select the **Create a new package group** option to install the product in that new package group.
-5. Click **Next**.
-6. Select **Do not activate token licensing** with the **Rational License Key Server** option in the **Activate token licensing** section of the **General settings** panel.
+3. 在您接受产品的许可条款之后，单击**下一步**。
+4. 选择**创建新软件包组**选项以将产品安装到该新软件包组中。
+5. 单击**下一步**。
+6. 在**常规设置**面板的**激活令牌许可**部分中，针对 **Rational License Key Server** 选项选择**不激活令牌许可**。
 
-    In this tutorial, it is assumed that token licensing is not needed and the steps to configure {{ site.data.keys.mf_server }} for token licensing are not included. However, for production installation, you must determine whether you need to activate token licensing or not. If you have a contract to use token licensing with Rational  License Key Server, select Activate token licensing with the Rational License Key Server option. After you activate token licensing, you must do extra steps to configure {{ site.data.keys.mf_server }}.
-7. Keep the default option (No) as-is in the Install **{{ site.data.keys.product }} for iOS** section of the **General settings** panel.
-8. Select No option in the **Choose configuration** panel so that Application Center is not installed. For production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to {{ site.data.keys.mf_server }} from the updates to Application Center.
-9. Click **Next** until you reach the **Thank You** panel. Then, proceed with the installation.
+    在本教程中，假定不需要令牌许可，并且不包含为令牌许可配置 {{ site.data.keys.mf_server }} 的步骤。但对于生产安装，您必须确定是否需要激活令牌许可。如果您的某个合同要通过 Rational License Key Server 使用令牌许可，请选择使用 Rational License Key Server 激活令牌许可选项。在激活令牌许可之后，必须执行额外的步骤来配置 {{ site.data.keys.mf_server }}。
+    7. 保持**常规设置**面板的“安装 **{{ site.data.keys.product }} for iOS**”部分中的缺省选项（否）不变。
+8. 在**选择配置**面板中选择“否”选项，这样便不会安装 Application Center。对于生产安装，请使用 Ant 任务来安装 Application Center。使用 Ant 任务进行安装使您能够将 {{ site.data.keys.mf_server }} 的更新与 Application Center 的更新区分开来。
+9. 单击**下一步**直到达到**谢谢您**面板。
+然后，继续进行安装。
 
-An installation directory that contains the resources to install {{ site.data.keys.product_adj }} components is installed.  
-You can find the resources in the following folders:
+安装一个安装目录，其中包含用于安装 {{ site.data.keys.product_adj }} 组件的资源。  
+您可以在以下文件夹中找到资源：
 
-* MobileFirstServer folder for {{ site.data.keys.mf_server }}
-* PushService folder for {{ site.data.keys.mf_server }} push service
-* ApplicationCenter folder for Application Center
-* Analytics folder for {{ site.data.keys.mf_analytics }}
+* MobileFirstServer 文件夹（针对 {{ site.data.keys.mf_server }}）
+* PushService 文件夹（针对 {{ site.data.keys.mf_server }} 推送服务）
+* ApplicationCenter 文件夹（针对 Application Center）
+* Analytics 文件夹（针对 {{ site.data.keys.mf_analytics }}）
 
-The goal of this tutorial is to install {{ site.data.keys.mf_server }} by using the resources in **MobileFirstServer** folder.  
-You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
+本教程的目的是通过使用 **MobileFirstServer** 文件夹中的资源来安装 {{ site.data.keys.mf_server }}。  
+您还可以在 **shortcuts** 文件夹中找到 Server Configuration Tool、Ant 和 mfpadm 程序的一些快捷方式。
 
-### Creating a database
+### 创建数据库
 {: #creating-a-database }
-This task is to ensure that a database exists in your DBMS, and that a user is allowed to use the database, create tables in it, and use the tables.  
-The database is used to store the technical data that is used by the various {{ site.data.keys.product_adj }} components:
+此任务旨在确保您的 DBMS 中存在数据库并且允许用户使用此数据库、在其中创建表并使用这些表。  
+此数据库用于存储供各种 {{ site.data.keys.product_adj }} 组件使用的技术数据：
 
-* {{ site.data.keys.mf_server }} administration service
-* {{ site.data.keys.mf_server }} live update service
-* {{ site.data.keys.mf_server }} push service
-* {{ site.data.keys.product_adj }} runtime
+* {{ site.data.keys.mf_server }} 管理服务
+* {{ site.data.keys.mf_server }} 实时更新服务
+* {{ site.data.keys.mf_server }} 推送服务
+* {{ site.data.keys.product_adj }} 运行时
 
-In this tutorial, the tables for all the components are placed under the same schema. The Server Configuration Tool creates the tables in the same schema. For more flexibility, you might want to use Ant tasks or a manual installation.
+在本教程中，所有组件的表都置于相同模式下。Server Configuration Tool 在同一模式中创建表。要获得更大的灵活性，您可能想要使用 Ant 任务或手动安装。
 
-> **Note:** The steps in this task are for DB2. If you plan to use MySQL or Oracle, see [Database requirements](../../databases/#database-requirements).
+> **注：**此任务中的步骤适合于 DB2。如果您计划使用 MySQL 或 Oracle，请参阅[数据库需求](../../databases/#database-requirements)。
+1. 登录至正在运行 DB2 服务器的计算机。假定存在 DB2 用户，例如名为 **mfpuser** 的用户。
+2. 验证此 DB2 用户是否具有对页面大小不小于 32768 的数据库的访问权，并且允许此用户在该数据库中创建隐式模式和表。
 
-1. Log on to the computer that is running the DB2 server. It is assumed that a DB2 user, for example named as **mfpuser**, exists.
-2. Verify that this DB2 user has the access to a database with a page size 32768 or more, and is allowed to create implicit schemas and tables in that database.
+    缺省情况下，此用户是运行 DB2 的计算机的操作系统上声明的用户。即，具有此计算机的登录权限的用户。如果存在此类用户，那么无需执行步骤 3 中的下一个操作。在本教程的后面，Server Configuration Tool 将在该数据库的某个模式下创建产品所需的所有表。
 
-    By default, this user is a user declared on the operating system of the computer that runs DB2. That is, a user with a login for that computer. If such user exists, the next action in step 3 is not needed. In the later part of the tutorial, the Server Configuration Tool creates all the tables that are required by the product under a schema in that database.
-
-3. Create a database with the correct page size for this installation if you do not have one.
-    * Open a session with a user that has `SYSADM` or `SYSCTRL` permissions. For example, use the user **db2inst1** that is the default admin user that is created by the DB2 installer.
-    * Open a DB2 command line processor:
-        * On Windows systems, click **Start → IBM DB2 → Command Line Processor**.
-        * On Linux or UNIX systems, go to **~/sqllib/bin** (or **db2\_install\_dir/bin** if **sqllib** is not created in the administrator's home directory) and enter `./db2`.
-        * Enter the following SQL statements to create a database that is called **MFPDATA**:
+3. 如果没有数据库，请使用针对此安装的正确页面大小创建一个数据库。
+    * 使用具有 `SYSADM` 或 `SYSCTRL` 权限的用户身份打开一个会话。例如，使用属于由 DB2 安装程序创建的缺省管理用户的用户 **db2inst1**。
+    * 打开 DB2 命令行处理器：
+        * 在 Windows 系统中，单击**开始 → IBM DB2 → 命令行处理器**。
+        * 在 Linux 或 UNIX 系统上，转至 **~/sqllib/bin**（或 **db2\_install\_dir/bin**，前提是 **sqllib** 不是在管理员主目录中创建的）并输入 `./db2`。
+        * 输入以下 SQL 语句以创建一个称为 **MFPDATA** 的数据库：
         
         ```sql
         CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
@@ -180,96 +181,98 @@ In this tutorial, the tables for all the components are placed under the same sc
         QUIT
         ```
         
-If you defined a different user name, replace mfpuser with your own user name.  
+如果定义了其他用户名，请将 mfpuser 替换为您自己的用户名。  
 
-> **Note:** The statement does not remove the default privileges granted to PUBLIC in a default DB2 database. For production, you might need to reduce the privileges in that database to the minimum requirement for the product. For more information about DB2 security and an example of the security practices, see [DB2 security, Part 8: Twelve DB2 security best practices](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/).
-
-### Running the Server Configuration Tool
+> **注：**此语句不会除去授予缺省 DB2 数据库中的 PUBLIC 的缺省权限。对于生产环境，可能需要将此数据库中的权限降低至针对该产品的最低需求。有关 DB2 安全性和安全实践示例的更多信息，请参阅 [DB2 安全第 8 部分：12 项 DB2 安全最佳实践](http://www.ibm.com/developerworks/data/library/techarticle/dm-0607wasserman/)。
+### 运行 Server Configuration Tool
 {: #running-the-server-configuration-tool }
-You use the Server Configuration Tool to run the following operations:
+使用 Server Configuration Tool 来运行以下操作：
 
-* Create the tables in the database that are needed by the {{ site.data.keys.product_adj }} applications
-* Deploy the web applications of {{ site.data.keys.mf_server }} (the runtime, administration service, live update service, push service components, and {{ site.data.keys.mf_console }}) to Liberty server.
+* 在数据库中创建 {{ site.data.keys.product_adj }} 应用程序所需的表
+* 将 {{ site.data.keys.mf_server }} 的 Web 应用程序（运行时、管理服务、实时更新服务、推送服务组件和 {{ site.data.keys.mf_console }}）部署至 Liberty 服务器。
 
-The Server Configuration Tool does not deploy the following {{ site.data.keys.product_adj }} applications:
+Server Configuration Tool 不会部署以下 {{ site.data.keys.product_adj }} 应用程序：
 
 #### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{ site.data.keys.mf_analytics }} is typically deployed on a different set of servers than {{ site.data.keys.mf_server }} because of its high memory requirements. {{ site.data.keys.mf_analytics }} can be installed manually or with Ant tasks. If it is already installed, you can enter its URL, the user name, and password to send data to it in the Server Configuration Tool. The Server Configuration Tool will then configure the {{ site.data.keys.product_adj }} apps to send data to {{ site.data.keys.mf_analytics }}. 
+{{ site.data.keys.mf_analytics }}
+由于内存需求较高，因此通常与 {{ site.data.keys.mf_server }} 部署在不同的服务器集上。{{ site.data.keys.mf_analytics }} 可手动安装或通过 Ant 任务来安装。如果已安装，可以在 Server Configuration Tool 中输入其 URL、用户名和密码来将数据发送到其中。然后，Server Configuration Tool 会将 {{ site.data.keys.product_adj }} 应用配置为向 {{ site.data.keys.mf_analytics }} 发送数据。 
 
 #### Application Center
 {: #application-center }
-This application can be used to distribute mobile apps internally to the employees that use the apps, or for test purpose. It is independent of {{ site.data.keys.mf_server }} and is not necessary to install together with {{ site.data.keys.mf_server }}.
+此应用程序可用于在内部向使用移动应用程序的员工分发这些应用程序，或者用于测试。它独立于 {{ site.data.keys.mf_server }}，并且无需与 {{ site.data.keys.mf_server }} 一起安装。
     
-1. Start the Server Configuration Tool.
-    * On Linux, from **application shortcuts Applications → {{ site.data.keys.mf_server }} → Server Configuration Tool**.
-    * On Windows, click **Start → Programs → IBM MobileFirst Platform Server → Server Configuration Tool**.
-    * On macOS, open a shell console. Go to **mfp_server\_install\_dir/shortcuts and type ./configuration-tool.sh**.
+1. 启动 Server Configuration Tool。
+    * 在 Linux 上，通过**应用程序快捷方式“应用程序 → {{ site.data.keys.mf_server }} → Server Configuration Tool**。
+    * 在 Windows 上，单击**开始 → 程序 → IBM MobileFirst Platform Server → Server Configuration Tool**。
+    * 在 macOS 上，打开 shell 控制台。转至 **mfp_server\_install\_dir/shortcuts，并输入 ./configuration-tool.sh**。
     
-    The mfp_server_install_dir directory is where you installed {{ site.data.keys.mf_server }}.
-2. Select **File → New Configuration...** to create a {{ site.data.keys.mf_server }} Configuration.
-3. Name the configuration "Hello MobileFirst" and click **OK**.
-4. Leave the default entries of Configuration Details as-is and click **Next**.
+    mfp_server_install_dir 是 {{ site.data.keys.mf_server }} 的安装目录。
+2. 选择**文件 → 新建配置...**以创建 {{ site.data.keys.mf_server }} 配置。
+3. 将此配置命名为“Hello MobileFirst”，然后单击**确定**。
+4. 保持配置详细信息缺省条目不变，然后单击**下一步**。
     
-    In this tutorial, the environment ID is not used. It is a feature for advanced deployment scenario.  
-    An example of such scenario would be installing multiple instances of {{ site.data.keys.mf_server }} and administration service in the same application server or WebSphere Application Server cell.
-5. Keep the default context root for the administration service and the runtime component.
-6. Do not change the default entries in the **Console Settings** panel and click **Next** to install {{ site.data.keys.mf_console }} with the default context root.
-7. Select **IBM DB2** as a database and click **Next**.
-8. In the **DB2 Database Settings** panel, complete the details:
-    * Enter the host name that runs your DB2 server. If it is running on your computer, you can enter **localhost**.
-    * Change the port number if the DB2 instance you plan to use is not listening to the default port (50000).
-    * Enter the path to the DB2 JDBC driver. For DB2, the file that is named as **db2jcc4.jar** is expected. It is also needed to have the **db2jcc\_license\_cu.jar** file in the same directory. In a standard DB2 distribution, these files are found in **db2\_install\_dir/java**.
-    * Click **Next**.
+    在本教程中，不使用环境标识。这是用于高级部署方案的功能。  
+    此类方案的一个示例是在同一个应用程序服务器或 WebSphere Application Server 单元中安装多个 {{ site.data.keys.mf_server }} 和管理服务实例。
+5. 保持管理服务和运行时组件的缺省上下文根。
+6. 不要更改**控制台设置**面板中的缺省条目，然后单击**下一步**以使用缺省上下文根安装 {{ site.data.keys.mf_console }}。
+7. 选择 **IBM DB2** 作为数据库，然后单击**下一步**。
+8. 在 **DB2 数据库设置**面板中，填写详细信息：
+    * 输入运行 DB2 服务器的主机名。如果是在您的计算机上运行，可以输入 **localhost**。
+    * 如果计划使用的 DB2 实例未在侦听缺省端口 (50000)，请更改端口号。
+    * 输入 DB2 JDBC 驱动程序的路径。对于 DB2，预期文件名为 **db2jcc4.jar**。同一目录中还需要存在 **db2jcc\_license\_cu.jar** 文件。在标准 DB2 分发版中，可在 **db2\_install\_dir/java** 中找到这些文件。
+    * 单击**下一步**。
 
-    If the DB2 server cannot be reached with the credentials that are entered, the Server Configuration Tool disables the **Next** button and displays an error. The **Next** button is also disabled if the JDBC driver does not contain the expected classes. If everything is correct, the **Next** button is enabled.
+    如果无法使用输入的凭证访问 DB2 服务器，那么 Server Configuration Tool 会禁用**下一步**按钮并显示错误。如果 JDBC 驱动程序不包含预期类，也会禁用**下一步**按钮。如果所有信息正确，**下一步**按钮会呈启用状态。
     
-9. In the **DB2 Additional Settings** panel, complete the details:
-    * Enter **mfpuser** as DB2 user name and its password. Use your own DB2 user name if it is not **mfpuser**.
-    * Enter **MFPDATA** as the name of the database.
-    * Leave **MFPDATA** as the schema in which the tables will be created. Click **Next**. By default, the Server Configuration Tool proposes the value **MFPDATA**.
-10. Do not enter any values in the **Database Creation Request** panel and click **Next**.
+9. 在 **DB2 额外设置**面板中，填写详细信息：
+    * 输入 **mfpuser** 作为 DB2 用户名并输入其密码。如果不是 **mfpuser**，请输入您自己的 DB2 用户名。
+    * 输入 **MFPDATA** 作为数据库的名称。
+    * 保留 **MFPDATA** 作为将在其中创建表的模式。单击**下一步**。缺省情况下，Server Configuration Tool 建议使用值 **MFPDATA**。
+10. 不要在**数据库创建请求**面板中输入任何值，然后单击**下一步**。
 
-    This pane is used when the database that is entered in the previous pane does not exist on the DB2 server. In that case, you can enter the user name and password of the DB2 administrator. The Server Configuration Tool opens an ssh session to the DB2 server and runs the commands as described in [Creating a database](#creating-a-database) to create the database with default settings and the correct page size.
-11. In the **Application Server Selection** panel, select **WebSphere Application Server** option and click **Next**.
-12. In the **Application Server Settings** panel, complete the details:
-    * Enter the installation directory for WebSphere Application Server Liberty.
-    * Select the server where you plan to install the product in the server name field. Select the **mfp1** server that is created in step 7 of [Installing WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core).
-    * Leave the **Create a user** option selected with its default values.
+    当先前窗格中输入的数据库不存在于 DB2 服务器时使用此窗格。在此情况下，您可以输入 DB2 管理员的用户名和密码。Server Configuration Tool 会打开与 DB2 服务器的 SSH 会话，并按照[创建数据库](#creating-a-database)所述运行命令以使用缺省设置和正确的页面大小来创建数据库。
+11. 在**应用程序服务器选择**面板中，选择 **WebSphere Application Server** 选项并单击**下一步**。
+12. 在**应用程序服务器设置**面板中，填写详细信息：
+    * 输入 WebSphere Application Server Liberty 的安装目录。
+    * 在“服务器名称”字段中，选择计划安装产品的服务器。选择在[安装 WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core) 的步骤 7 中创建的 **mfp1** 服务器。
+    * 保持**创建用户**选项选中缺省值。
     
-    This option creates a user in the basic registry of the Liberty server, so that you can sign in to {{ site.data.keys.mf_console }} or to the administration service. For a production installation, do not use this option and configure the security roles of the applications after the installation as described in Configuring user authentication for {{ site.data.keys.mf_server }} administration.
-    * Select the Server farm deployment option for the deployment type.
-    * Click **Next**.
-13. Select **Install the Push service** option.
+    此选项会在 Liberty 服务器的基本注册表中创建用户，以便您可以登录 {{ site.data.keys.mf_console }} 或管理服务。对于生产安装，请勿使用此选项，而是按“配置 {{ site.data.keys.mf_server }} 管理的用户认证”所述在安装后配置应用程序的安全角色。
+    * 对于部署类型，选择服务器场部署选项。
+    * 单击**下一步**。
+13. 选择**安装推送服务**选项。
 
-    When the push service is installed, HTTP or HTTPS flows are needed from the administration service to the push service, and from the administration service and the push service to the runtime component.
-14. Select **Have the Push and Authorization Service URLs computed automatically** option.
+    当安装推送服务时，需要从管理服务到推送服务以及从管理服务和推送服务到运行时组件的 HTTP 或 HTTPS 流。
+    14. 选择**自动计算推送和授权服务 URL** 选项。
 
-    When this option is selected, the Server Configuration Tool configures the applications to connect to the applications installed on the same server. When you use a cluster, enter the URL that is used to connect to the services from your HTTP load balancer. When you install on WebSphere Application Server Network Deployment, it is mandatory to enter a URL manually.
-15. Keep the default entries of **Credentials for secure communication between the Administration and the Push service** as-is.
+    选择此选项时，Server Configuration Tool 会将应用程序配置为连接到同一服务器上安装的应用程序。当您使用聚类时，输入用于从 HTTP 负载均衡器连接到服务的 URL。
+在 WebSphere Application Server Network Deployment 上进行安装时，需要手动输入 URL。
+15. 保持**用于管理和推送服务之间的安全通信的凭证**缺省条目不变。
 
-    A client ID and a password are needed to register the push service and the administration service as the confidential OAuth clients for the authorization server (which is by default, the runtime component). The Server Configuration Tool generates an ID and a random password for each of the service, that you can keep as-is for this getting started tutorial.
-16. Click **Next**.
-17. Keep the default entries of **Analytics Setting** panel as-is.
+    需要客户机标识和密码将推送服务和管理服务注册为授权服务器（缺省情况下为运行时组件）的机密 OAuth 客户机。Server Configuration Tool 为每个服务生成一个标识和随机密码，在本入门教程中，可以保持原值不变。
+16. 单击**下一步**。
+17. 保持**分析设置**面板的缺省条目不变。
 
-    To enable the connection to the Analytics server, you need to first install {{ site.data.keys.mf_analytics }}. However, the installation is not in the scope of this tutorial.
-18. Click **Deploy**.
+    要启用与分析服务器的连接，首先需要安装 {{ site.data.keys.mf_analytics }}。
+但是，此安装不包含在本教程中。
+18. 单击**部署**。
 
-You can see a detail of the operations done in **Console Window**.  
-An Ant file is saved. The Server Configuration Tool helps you create an Ant file for installing and updating your configuration. This Ant file can be exported by using **File → Export Configuration as Ant Files...**. For more information about this Ant file, see Deploying {{ site.data.keys.mf_server }} to Liberty with Ant tasks in Installing {{ site.data.keys.mf_server }} [in command line mode](../command-line).
+您可以在**控制台窗口**中看到已完成操作的详细信息。  
+Ant 文件已保存。Server Configuration Tool 帮助您创建用于安装和更新配置的 Ant 文件。此 Ant 文件可以使用**文件 → 将配置导出为 Ant 文件...**进行导出。有关此 Ant 文件的更多信息，请参阅“[以命令行方式](../command-line)安装 {{ site.data.keys.mf_server }}”中的“使用 Ant 任务将 {{ site.data.keys.mf_server }} 部署到 Liberty”。
 
-Then, the Ant file is run and does the following operations:
+然后，此 Ant 文件将运行并执行以下操作：
 
-1. The tables for the following components are created in the database:
-    * The administration service and the live update service. Created by the **admdatabases** Ant target.
-    * The runtime. Created by the **rtmdatabases** Ant target.
-    * The push service. Created by the pushdatabases Ant target.
-2. The WAR files of the various components are deployed to Liberty server. You can see the details of the operations in the log under **adminstall**, **rtminstall**, and **pushinstall** targets.
+1. 在数据中创建以下组件的表：
+    * 管理服务和实时更新服务。由 **admdatabases** Ant 目标创建。
+    * 运行时。由 **rtmdatabases** Ant 目标创建。
+    * 推送服务。由 pushdatabases Ant 目标创建。
+2. 各种组件的 WAR 文件均部署至 Liberty 服务器。您可以在 **adminstall**、**rtminstall** 和 **pushinstall** 目标下的日志中查看操作的详细信息。
 
-If you have access to the DB2 server, you can list the tables that are created by using these instructions:
+如果您有权访问 DB2 服务器，可以使用以下指示信息列出创建的表：
 
-1. Open a DB2 command line processor with mfpuser as described in step 3 of Creating a database.
-2. Enter the SQL statements:
+1. 使用 mfpuser 打开 DB2 命令行处理器，如“创建数据库”的步骤 3 中所述。
+2. 输入 SQL 语句：
 
 ```sql
 CONNECT TO MFPDATA USER mfpuser USING mfpuser_password
@@ -278,142 +281,141 @@ DISCONNECT MFPDATA
 QUIT
 ```
 
-Take note of the following database factors:
+记录以下数据库因素：
 
-#### Database user consideration
+#### 数据库用户注意事项
 {: #database-user-consideration }
-In the Server Configuration Tool, only one database user is needed. This user is used to create the tables, but is also used as the data source user in the application server at run time. In production environment, you might want to restrict the privileges of the user that is used at run time to the strict minimum (`SELECT / INSERT / DELETE / UPDATE)`, and thus provide a different user for deployment in the application server. The Ant files that are provided as examples also use the same users for both cases. However, in the case of DB2, you might want to create your own versions of files. As such, you can distinguish the user that is used to create the databases from the user that is used for the data source in the application server with the Ant tasks.
+在 Server Configuration Tool 中，只需一个数据库用户。此用户用于创建表，但是也用作为运行时的应用程序服务器中的数据源用户。在生产环境中，您可以将运行时使用的用户权限严格限制为最低限度的权限 (`SELECT / INSERT / DELETE / UPDATE)`，并提供其他用户用于在应用程序服务器中进行部署。作为示例提供的 Ant 文件针对这两种情况使用相同用户。但对于 DB2，您可能希望创建自己版本的文件。由此您可以通过 Ant 任务区分用于创建数据库的用户与用于应用程序服务器中数据源的用户。
 
-#### Database tables creation
+#### 数据库表创建
 {: #database-tables-creation }
-For production, you might want to create the tables manually. For example, if your DBA wants to override some default settings or assign specific table spaces. The database scripts that are used to create the tables are available in **mfp\_server\_install\_dir/MobileFirstServer/databases** and **mfp_server\_install\_dir/PushService/databases**. For more information, see [Creating the database tables manually](../../databases/#create-the-database-tables-manually).
+对于生产环境，您可能希望手动创建表。例如，如果您的 DBA 要覆盖某些缺省设置或者分配特定表空间。在 **mfp\_server\_install\_dir/MobileFirstServer/databases** 和 **mfp_server\_install\_dir/PushService/databases** 中提供了用于创建表的数据库脚本。有关更多信息，请参阅[手动创建数据库表](../../databases/#create-the-database-tables-manually)。
 
-The **server.xml** file and some application server setting are modified during the installation. Before each modification, a copy of the **server.xml** file is made, such as **server.xml.bak**, **server.xml.bak1**, and **server.xml.bak2**. To see everything that was added, you can compare the **server.xml** file with the oldest backup (server.xml.bak). On Linux, you can use the command diff `--strip-trailing-cr server.xml server.xml.bak` to see the differences. On AIX , use the command `diff server.xml server.xml.bak` to find the differences.
+在安装期间修改了 **server.xml** 文件和部分应用程序服务器设置。在每次修改之前，会生成 **server.xml** 文件的副本，例如，**server.xml.bak**、**server.xml.bak1** 和 **server.xml.bak2**。要查看已添加的所有内容，可以将 **server.xml** 文件与最旧的备份 (server.xml.bak) 进行比较。在 Linux 上，可以使用命令 diff `--strip-trailing-cr server.xml server.xml.bak` 来查看区别。在 AIX 上，使用命令 `diff server.xml server.xml.bak` 来查看区别。
 
-#### Modification of the application server settings (specific to Liberty):
+#### 应用程序服务器设置的修改（特定于 Liberty）：
 {: #modification-of-the-application-server-settings-specific-to-liberty }
-1. The Liberty features are added.
+1. Liberty 功能已添加。
 
-    The features are added for each application and can be duplicated. For example, the JDBC feature is used for both the administration service and the runtime components. This duplication allows the removal of the features of an application when it is uninstalled without breaking the other applications. For example, if you decide at some point to uninstall the push service from a server and install it on another server. However, not all topologies are possible. The administration service, the live update service, and the runtime component must be on the same application server with Liberty profile. For more information, see [Constraints on {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service and {{ site.data.keys.product_adj }} runtime](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime). The duplication of features does not create issue unless the features that added are conflicting. Adding the jdbc-40 and jdbc-41 features would cause a problem, but adding twice the same feature does not.
+    针对每个应用程序已添加了这些功能，并且这些功能可以复制。例如，JDBC 功能可用于管理服务和运行时组件。这种复制可以在卸载某个应用程序时移除这些功能而不破坏其他应用程序。例如，如果您决定在某个时候要从服务器卸载推送服务，并将其安装在另一台服务器上。但并非所有拓扑都可用。管理服务、实时更新服务和运行时组件必须与 Liberty 概要文件位于同一台应用程序服务器上。有关更多信息，请参阅[对 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product_adj }} 运行时的约束](../../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)。除非添加的功能存在冲突，否则功能复制不会造成问题。添加 jdbc-40 和 jdbc-41 功能会导致问题，但是将同一个功能添加两次不会造成问题。
     
-2. `host='*'` is added in the `httpEndPoint` declaration.
+2. 在 `httpEndPoint` 声明中添加 `host='*'`。
 
-    This setting is to allow the connection to the server from all network interfaces. In production, you might want to restrict the host value of the HTTP endpoint.
-3. The **tcpOptions** element (**tcpOptions soReuseAddr="true"**) is added in the server configuration to enable immediate rebind to a port with no active listener and improve the throughput of the server.
-4. A keystore with ID **defaultKeyStore** is created if it does not exist.
+    此设置旨在允许从所有网络接口连接至服务器。在生产环境中，您可能希望限制 HTTP 端点的主机值。
+    3. 在服务器配置中添加 **tcpOptions** 元素 (**tcpOptions soReuseAddr="true"**) 以启用与无活动侦听器的端口的即时重新绑定，并改进服务器的吞吐量。
+4. 如果不存在标识为 **defaultKeyStore** 的密钥库，那么会创建此密钥库。
 
-    he keystore is to enable the HTTPS port and more specifically, to enable the JMX communication between the administration service (mfp-admin-service.war) and the runtime component (mfp-server.war). The two applications communicate via JMX. In the case of Liberty profile, restConnector is used to communicate between the applications in a single server and also between the servers of a Liberty Farm. It requires the use of HTTPS. For the keystore that is created by default, Liberty profiles creates a certificate with a validity period of 365 days. This configuration is not intended for production use. For production, you need to reconsider to use your own certificate.    
+    此密钥库旨在启用 HTTPS 端口，更具体而言，旨在启用管理服务 (mfp-admin-service.war) 与运行时组件 (mfp-server.war) 之间的 JMX 通信。这两个应用程序通过 JMX 进行通信。对于 Liberty 概要文件，restConnector 用于单一服务器中这两个应用程序之间的通信，也用于 Liberty 场中服务器之间的通信。它需要使用 HTTPS。对于缺省情况下创建的密钥库，Liberty 概要文件会创建一个证书，其有效期为 365 天。此配置不适用于生产用途。对于生产环境，您需要重新考虑使用自己的证书。    
 
-    To enable JMX, a user with administrator role (named as MfpRESTUser) is created in the basic registry. Its name and password are provided as JNDI properties (mfp.admin.jmx.user and mfp.admin.jmx.pwd) and are used by the runtime component and the administration service to run JMX queries. In the global JMX properties, some properties are used to define the cluster mode (stand-alone server or working in a farm). The Server Configuration Tool sets the mfp.topology.clustermode property to Standalone in Liberty server. In the later part of this tutorial about the creation of a farm, the property is modified to Cluster.
-5. The creation of users (Also valid for Apache Tomcat and WebSphere Application Server)
-    * Optional Users: The Server Configuration Tool creates a test user (admin/admin) so that you can use this user to log to the console after the installation.
-    * Mandatory Users: The Server Configuration Tool also creates a user (named as configUser_mfpadmin with a randomly generated password) to be used by the administration service to contact the local live update service. For Liberty server, MfpRESTUser is created. If your application server is not configured to use a basic registry (for example, an LDAP registry), the Server Configuration Tool is unable to request the name of an existing user. In this case, you need to use Ant tasks.
-6. The **webContainer** element is modified.
+    为启用 JMX，在基本注册表中会创建一个具有管理员角色的用户（名为 MfpRESTUser）。其名称和密码作为 JNDI 属性（mfp.admin.jmx.user 和 mfp.admin.jmx.pwd）提供，供运行时组件和管理服务用于运行 JMX 查询。在全局 JMX 属性中，某些属性用于定义集群方式（独立服务器或在场中工作）。Server Configuration Tool 在 Liberty 服务器中将 mfp.topology.clustermode 属性设置为 Standalone。在本教程后半部分有关创建场的内容中，该属性修改为 Cluster。
+    5. 创建用户（对 Apache Tomcat 和 WebSphere Application Server 同样有效）
+    * 可选用户：Server Configuration Tool 会创建一名测试用户 (admin/admin) 以便您在安装后使用此用户登录控制台。
+    * 必需用户：Server Configuration Tool 还会创建一名用户（名为 configUser_mfpadmin，使用随机生成的密码）供管理服务用于联系本地实时更新服务。对于 Liberty 服务器，会创建 MfpRESTUser。如果您的应用程序服务器没有配置为使用基本注册表（例如，LDAP 注册表），那么 Server Configuration Tool 将无法请求现有用户的名称。在此情况下，您需要使用 Ant 任务。
+6. **webContainer** 元素已修改。
 
-    The `deferServletLoad` web container custom property is set to false. Both the runtime component and the administration service must start when the server starts. These components can thus register the JMX beans and start the synchronization procedure that allows the runtime component to download all the applications and adapters that it needs to serve.
-7. The default executor is customized to set large values to `coreThreads` and `maxThreads` if you use Liberty V8.5.5.5 or earlier. The default executor is automatically tuned by Liberty as of V8.5.5.6.
+    `deferServletLoad` Web 容器定制属性设置为 false。启动服务器时，必须启动运行时组件和管理服务。这些组件由此可注册 JMX Bean，并启动同步过程，以允许运行时组件下载需要维护的所有应用程序和适配器。
+    7. 如果您使用的是 Liberty V8.5.5.5 或更早版本，缺省执行程序需要进行定制，以将 `coreThreads` 和 `maxThreads` 设置为较大的值。从 V8.5.5.6 开始，缺省执行程序由 Liberty 自动调整。
 
-    This setting avoids timeout issues that break the startup sequence of the runtime component and administration service on some Liberty versions. The absence of this statement can be the cause of these errors in the server log file:
+    此设置避免了破坏某些 Liberty 版本上的运行时组件和管理服务的启动顺序的超时问题。在服务器日志文件中，缺少此语句可能导致出现以下错误：
     
     > Failed to obtain JMX connection to access an MBean. There might be a JMX configuration error: Read timed out 
 FWLSE3000E: A server error was detected. 
     > FWLSE3012E: JMX configuration error. Unable to obtain MBeans. Reason: "Read timed out".
 
-#### Declaration of applications
+#### 应用程序声明
 {: #declaration-of-applications }
-The following applications are installed:
+以下应用程序已安装：
 
-* **mfpadmin**, the administration service
-* **mfpadminconfig**, the live update service
-* **mfpconsole**, {{ site.data.keys.mf_console }}
-* **mobilefirs**t, {{ site.data.keys.product_adj }} runtime component
-* **imfpush**, the push service
+* **mfpadmin**，管理服务
+* **mfpadminconfig**，实时更新服务
+* **mfpconsole**，{{ site.data.keys.mf_console }}
+* **mobilefirs**t，{{ site.data.keys.product_adj }} 运行时组件
+* **imfpush**，推送服务
 
-The Server Configuration Tool installs all the applications on the same server. You can separate the applications in different application servers, but under certain constraints that are documented in [Topologies and network flows](../../topologies).  
-For an installation on different servers, you cannot use the Server Configuration Tool. Use Ant tasks or install the product manually.
+Server Configuration Tool 在同一服务器上安装所有应用程序。您可以在不同应用程序服务器中分隔这些应用程序，但必须遵循[拓扑和网络流](../../topologies)中所述的某些约束。  
+要在不同服务器上进行安装，不能使用 Server Configuration Tool。请使用 Ant 任务或手动安装产品。
 
-#### Administration service
+#### 管理服务
 {: #administration-service }
-The administration service is the service for managing {{ site.data.keys.product_adj }} applications, adapters, and their configurations. It is secured by security roles. By default, the Server Configuration Tool adds a user (admin) with the administrator role, that you can use to log in to the console for testing. The configuration of the security role must be done after an installation with the Server Configuration Tool (or with Ant tasks). You might want to map the users or the groups that come from the basic registry or an LDAP registry that you configure in your application server to each security role.
+管理服务是用于管理 {{ site.data.keys.product_adj }} 应用程序、适配器及其配置的服务。它受到安全角色的保护。缺省情况下，Server Configuration Tool 会添加具有管理员角色的用户 (admin)，您可使用此用户登录控制台进行测试。必须在使用 Server Configuration Tool（或使用 Ant 任务）安装后才能进行安全角色的配置。您可以将来自基本注册表或您在自己的应用程序服务器中配置的 LDAP 注册表的用户或组映射到每个安全角色。
 
-The class loader is set with delegation parent last for Liberty profile and WebSphere Application Server, and for all {{ site.data.keys.product_adj }} applications. This setting is to avoid conflicts between the classes packaged in the {{ site.data.keys.product_adj }} applications and the classes of the application server. Forgetting to set the class loader delegation to parent last is a frequent source of error in manual installation. For Apache Tomcat, this declaration is not needed.
+类装入器是以 Liberty 概要文件和 WebSphere Application Server 授权父代最后来设置，适用于所有 {{ site.data.keys.product_adj }} 应用程序。此设置可避免 {{ site.data.keys.product_adj }} 应用程序中打包的类与应用程序服务器的类之间的冲突。忘记将类装入器授权设置为父代最后会导致手动安装频繁出错。对于 Apache Tomcat，无需此声明。
 
-In Liberty profile, a common library is added to the application for decrypting passwords that are passed as JNDI properties. The Server Configuration Tool defines two mandatory JNDI properties for the administration service: **mfp.config.service.user** and **mfp.config.service.password**. They are used by the administration service to connect to the live update service with its REST API. More JNDI properties can be defined to tune the application or adapt it to your installation particularities. For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+在 Liberty 概要文件中，在应用程序中添加公共库用于解密作为 JNDI 属性传递的密码。Server Configuration Tool 为管理服务定义了两个必需 JNDI 属性：**mfp.config.service.user** 和 **mfp.config.service.password**。管理服务使用这些属性来通过其 REST API 连接至实时更新服务。可定义更多 JNDI 属性以微调应用程序或者根据安装特殊需求对其进行调整。有关更多信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。
 
-The Server Configuration Tool also defines the JNDI properties (the URL and the OAuth parameters to register the confidential clients) for the communication with the push service.  
-The data source to the database that contains the tables for the administration service is declared, as well as a library for its JDBC driver.
+Server Configuration Tool 还定义 JNDI 属性（用于注册机密客户机的 URL 和 OAuth 参数）以用于与推送服务进行通信。  
+包含管理服务表的数据库的数据源及其 JDBC 驱动程序库均已声明。
 
-#### Live update service
+#### 实时更新服务
 {: #live-update-service }
-The live update service stores information about the runtime and application configurations. It is controlled by the administration service and must always run on the same server as the administration service. The context root is **context\_root\_of\_admin\_serverconfig**. As such, it is **mfpadminconfig**. The administration service assumes that this convention is respected to create the URL of its requests to the REST services of the live update service.
+实时更新服务用于存储有关运行时和应用程序配置的信息。它受到管理服务的控制，并且必须始终与管理服务在同一台服务器上运行。上下文根为 **context\_root\_of\_admin\_serverconfig**。因此，其上下文根为 **mfpadminconfig**。管理服务假定遵循此约定来创建管理服务对实施更新服务的 REST 服务的请求的 URL。
 
-The class loader is set with delegation parent last as discussed in the administration service section.
+类装入器是使用管理服务部分中讨论的授权父代最后设置的。
 
-The live update service has one security role, **admin_config**. A user must be mapped to that role. Its password and login must be provided to the administration service with the JNDI property: **mfp.config.service.user** and **mfp.config.service.password**. For information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) and [List of JNDI properties for {{ site.data.keys.mf_server }} live update service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service).
+实时更新服务具有一个安全角色：**admin_config**。必须将一个用户映射到该角色。必须使用 JNDI 属性 **mfp.config.service.user** 和 **mfp.config.service.password** 将其密码和登录名提供给管理服务。有关 JNDI 属性的信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)和 [{{ site.data.keys.mf_server }}实时更新服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-live-update-service)。
 
-It also needs a data source with JNDI name on Liberty profile. The convention is **context\_root\_of\_config\_server/jdbc/ConfigDS**. In this tutorial, it is defined as **mfpadminconfig/jdbc/ConfigDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the live update service are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
+它还需要具有 Liberty 概要文件上的 JNDI 名称的数据源。约定为 **context\_root\_of\_config\_server/jdbc/ConfigDS**。在此教程中，此数据源定义为 **mfpadminconfig/jdbc/ConfigDS**。在使用 Server Configuration Tool 或 Ant 任务进行的安装中，实时更新服务表与管理服务表位于相同的数据库和模式中。访问这些表的用户也相同。
 
 #### {{ site.data.keys.mf_console }}
 {: #mobilefirst-operations-console }
-{{ site.data.keys.mf_console }} is declared with the same security roles as the administration service. The users that are mapped to the security roles of {{ site.data.keys.mf_console }} must also be mapped to the same security role of the administration service. Indeed, {{ site.data.keys.mf_console }} runs queries to the administration service on the behalf of the console user.
+使用与管理服务相同的安全角色声明 {{ site.data.keys.mf_console }}。映射至 {{ site.data.keys.mf_console }} 的安全角色的用户还必须映射到管理服务的相同安全角色。实际上，{{ site.data.keys.mf_console }} 代表控制台用户运行到管理服务的查询。
 
-The Server Configuration Tool positions one JNDI property, **mfp.admin.endpoint**, that indicates how the console connects to the administration service. The default value set by the Server Configuration Tool is `*://*:*/mfpadmin`. The setting means that it must use the same protocol, host name, and port as the incoming HTTP request to the console, and the context root of the administration service is /mfpadmin. If you want to force the request to go though a web proxy, change the default value. For more information about the possible values for this URL, or for information about other possible JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+Server Configuration Tool 提供了一个 JNDI 属性 **mfp.admin.endpoint**，用于指示控制台连接到管理服务的方式。Server Configuration Tool 设置的缺省值为 `*://*:*/mfpadmin`。此设置意味着必须使用与控制台的入局 HTTP 请求相同的协议、主机名和端口，并且管理服务的上下文根为 /mfpadmin。如果要强制通过 Web 代理发送请求，请更改缺省值。有关此 URL 的可能值的更多信息或者有关其他可能的 JNDI 属性的信息，请参阅 [{{ site.data.keys.mf_server }}管理服务的 JNDI 属性列表](../../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。
 
-The class loader is set with delegation parent last as discussed in the administration service section.
+类装入器是使用管理服务部分中讨论的授权父代最后设置的。
 
-#### {{ site.data.keys.product_adj }} runtime
+#### {{ site.data.keys.product_adj }} 运行时
 {: #mobilefirst-runtime }
-This application is not secured by a security role. It is not required to log in with a user known by the Liberty server, to access this application. The mobile devices requests are routed to the runtime. They are authenticated by other mechanisms specific to the product (such as OAuth) and the configuration of the {{ site.data.keys.product_adj }} applications.
+此应用程序不受安全角色的保护。使用对 Liberty 服务器已知的用户登录以访问此应用程序时无需安全角色。移动设备请求将路由至运行时。这些请求由特定于产品的其他机制（例如，OAuth）和 {{ site.data.keys.product_adj }} 应用程序的配置来进行认证。
 
-The class loader is set with delegation parent last as discussed in the administration service section.
+类装入器是使用管理服务部分中讨论的授权父代最后设置的。
 
-It also needs a data source with JNDI name on Liberty profile. The convention is **context\_root\_of\_runtime/jdbc/mfpDS**. In this tutorial, it is defined as **mobilefirst/jdbc/mfpDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the runtime are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
+它还需要具有 Liberty 概要文件上的 JNDI 名称的数据源。约定为 **context\_root\_of\_runtime/jdbc/mfpDS**。在此教程中，此数据源定义为 **mobilefirst/jdbc/mfpDS**。在使用 Server Configuration Tool 或 Ant 任务进行的安装中，运行时表与管理服务表位于相同的数据库和模式中。访问这些表的用户也相同。
 
-#### Push service
+#### 推送服务
 {: #push-service }
-This application is secured by OAuth. The valid OAuth tokens must be included in any HTTP request to the service.
+此应用程序受 OAuth 保护。在发送到此服务的任何 HTTP 请求中必须包含有效的 OAuth 令牌。
 
-The configuration of OAuth is made through the JNDI properties (such as the URL of the authorization server, the client ID, and the password of the push service). The JNDI properties also indicate the security plug-in (**mfp.push.services.ext.security**) and the fact that a relational database is used (**mfp.push.db.type**). The requests from the mobile devices to the push service are routed to this service. The context root of the push service must be /imfpush. The client SDK computes the URL of the push service based on the URL of the runtime with the context root (**/imfpush**). If you want to install the push service on a different server than the runtime, you need to have an HTTP router that can route the device requests to the relevant application server.
+通过 JNDI 属性（例如，授权服务器的 URL、客户机标识和推送服务的密码）来进行 OAuth 的配置。JNDI 属性还指示使用安全性插件 (**mfp.push.services.ext.security**) 和关系数据库 (**mfp.push.db.type**)。从移动设备到推送服务的请求将路由至此服务。推送服务的上下文根必须为 /imfpush。客户机 SDK 基于上下文根为 (**/imfpush**) 的运行时 URL 来计算推送服务的 URL。如果要将推送服务与运行时安装在不同服务器上，需要可将设备请求路由至相关应用程序服务器的 HTTP 路由器。
 
-The class loader is set with delegation parent last as discussed in the administration service section.
+类装入器是使用管理服务部分中讨论的授权父代最后设置的。
 
-It also needs a data source with JNDI name on Liberty profile. The JNDI name is **imfpush/jdbc/imfPushDS**. In an installation by the Server Configuration Tool or with Ant tasks, the tables of the push service are in the same database and schema as the tables of the administration service. The user to access these tables is also the same.
+它还需要具有 Liberty 概要文件上的 JNDI 名称的数据源。JNDI 名称为 **imfpush/jdbc/imfPushDS**。在使用 Server Configuration Tool 或 Ant 任务进行的安装中，推送服务表与管理服务表位于相同的数据库和模式中。访问这些表的用户也相同。
 
-#### Other files modification
+#### 其他文件修改
 {: #other-files-modification }
-The Liberty profile jvm.options file is modified. A property (com.ibm.ws.jmx.connector.client.rest.readTimeout) is defined to avoid timeout issues with JMX when the runtime synchronizes with the administration service.
+Liberty Profile jvm.options 文件已修改。定义了一个属性 (com.ibm.ws.jmx.connector.client.rest.readTimeout) 以避免运行时与管理服务同步时 JMX 出现超时问题。
 
-### Testing the installation
+### 测试安装
 {: #testing-the-installation }
-After the installation is complete, you can use this procedure to test the components that are installed.
+安装完成后，可以使用此过程来测试安装的组件。
 
-1. Start the server by using the command **server start mfp1**. The binary file for the server is in **liberty\_install\_dir/bin**.
-2. Test {{ site.data.keys.mf_console }} with a web browser. Go to [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). By default, the server runs on port 9080. However, you can verify the port in the element `<httpEndpoint>` as defined in the **server.xml** file. A login screen is displayed.
+1. 使用命令 **server start mfp1** 启动服务器。服务器的二进制文件位于 **liberty\_install\_dir/bin** 中。
+2. 使用 Web 浏览器测试 {{ site.data.keys.mf_console }}。转至 [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。缺省情况下，服务器在端口 9080 上运行。但是，您可以在元素 `<httpEndpoint>` 中按 **server.xml** 文件中的定义验证此端口。这样会显示一个登录屏幕。
+![控制台的登录屏幕](mfpconsole_signin.jpg)
 
-![The console's login screen](mfpconsole_signin.jpg)
+3. 使用 **admin/admin** 登录。缺省情况下，该用户由 Server Configuration Tool 创建。
 
-3. Log in with **admin/admin**. This user is created by default by the Server Configuration Tool.
+    > **注：**如果使用 HTTP 连接，将在网络中以明文发送登录标识和密码。要进行安全登录，请使用 HTTPS 来登录服务器。可以在 **server.xml** 文件的 `<httpEndpoint>` 元素的 httpsPort 属性中查看 Liberty 服务器的 HTTPS 端口。缺省情况下，该值为 9443。
+    4. 使用**欢迎管理员 → 注销**来从控制台注销。
+5. 在 Web 浏览器中输入以下 URL：[https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole)，并接受证书。缺省情况下，Liberty 服务器会生成对 Web 浏览器未知的缺省证书，您需要接受此证书。Mozilla Firefox 将此证书显示为安全性异常。
+6. 使用 **admin/admin** 再次登录。在 Web 浏览器与 {{ site.data.keys.mf_server }} 之间会对登录和密码加密。对于生产环境，可以关闭 HTTP 端口。
 
-    > **Note:** If you connect with HTTP, the login ID and password are sent in clear text in the network. For a secure login, use HTTPS to log to the server. You can see the HTTPS port of the Liberty server in the httpsPort attribute of the `<httpEndpoint>` element in the **server.xml** file. By default, the value is 9443.
-
-4. Log out of the console with **Hello Admin → Sign Out**.
-5. Enter the following URL: [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) in the web browser and accept the certificate. By default, the Liberty server generates a default certificate that is not known by your web browser, you need to accept the certificate. Mozilla Firefox presents this certification as a security exception.
-6. Log in again with **admin/admin**. The login and password are encrypted between your web browser and {{ site.data.keys.mf_server }}. In production, you might want to close the HTTP port.
-
-### Creating a farm of two Liberty servers that run {{ site.data.keys.mf_server }}
+### 创建由两台运行 {{ site.data.keys.mf_server }} 的 Liberty 服务器组成的场
 {: #creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server }
-In this task, you will create a second Liberty server that runs the same {{ site.data.keys.mf_server }} and connected to the same database. In production, you might use more than one server for performance reasons, to have enough servers to serve the number of transactions per second that is needed for your mobile applications at peak time. It is also for high availability reasons to avoid having a single point of failure.
+在此任务中，您将创建第二台 Liberty 服务器，此服务器与第一台运行相同的 {{ site.data.keys.mf_server }} 并连接到相同的数据库。在生产环境中，您可以使用多台服务器来提升性能，在高峰时间使用足够的服务器来应对移动应用程序所需的每秒事务数。也可以因此实现高可用性，从而避免单一故障点。
 
-When you have more than one server that runs {{ site.data.keys.mf_server }}, the servers must be configured as a farm. This configuration enables any administration service to contact all the runtimes of a farm. If the cluster is not configured as a farm, only the runtime that runs in the same application server as the management service that runs the management operation is notified. Others runtimes are not aware of the change. For example, you deploy a new version of an adapter in a cluster that is not configured as a farm, only one server would serve the new adapter. The other servers would continue to serve the old adapter. The only situation where you can have a cluster and do not need to configure a farm is when you install your servers on WebSphere Application Server Network Deployment. The administration service is able to find all the servers by querying the JMX beans with the deployment manager. The deployment manager must be running to allow management operations because it is used to provide the list of the {{ site.data.keys.product_adj }} JMX beans of the cell.
+有多台服务器运行 {{ site.data.keys.mf_server }} 时，必须将这些服务器配置为一个场。此配置使任何管理服务都能够联系场的所有运行时。如果集群未配置为场，那么将仅发送有关在运行管理操作的管理服务所在的应用程序服务器中运行的运行时的通知。其他运行时不知晓更改。例如，在未配置为场的集群中部署新版本的适配器时，只有一台服务器用于维护新适配器。其他服务器将继续维护旧适配器。仅限在 WebSphere Application Server Network Deployment 上安装服务器时才可拥有集群且无需配置场。管理服务可以通过 Deployment Manager 查询 JMX Bean 来查找所有服务器。Deployment Manager 必须处于运行状态才能允许执行管理操作，因为它用于提供单元的 {{ site.data.keys.product_adj }} JMX Bean 列表。
 
-When you create a farm, you also need to configure an HTTP server to send queries to all the members of the farm. The configuration of an HTTP server is not included in this tutorial. This tutorial is only about configuring the farm so that management operations are replicated to all the runtime components of the cluster.
+创建场时，还需要配置 HTTP Server，以将查询发送到场的所有成员。HTTP Server 的配置不包含在本教程范围内。本教程仅提供有关配置场以将管理操作复制到集群所有运行时组件的信息。
 
-1. Create a second Liberty server on the same computer.
-    * Start a command line.
-    * Go to **liberty\_install\_dir/bin**, and enter **server create mfp2**.
-2. Modify the HTTP and HTTPS ports of the server mfp2 so that they do not conflict with the ports of server mfp1.
-    * Go to the second server directory. The directory is **liberty\_install\_dir/usr/servers/mfp2** or **WLP\_USER\_DIR/servers/mfp2** (if you modify the directory as described in step 6 of [Installing WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core)).
-    * Edit the **server.xml** file. Replace
+1. 在同一台计算机上创建第二台 Liberty 服务器。
+    * 启动命令行。
+    * 转至 **liberty\_install\_dir/bin**，并输入 **server create mfp2**。
+2. 修改服务器 mfp2 的 HTTP 和 HTTPS 端口，以避免与服务器 mfp1 的端口出现冲突。
+    * 转到第二台服务器的目录。目录为 **liberty\_install\_dir/usr/servers/mfp2** 或 **WLP\_USER\_DIR/servers/mfp2**（如果按照[安装 WebSphere Application Server Liberty Core](#installing-websphere-application-server-liberty-core) 的步骤 6 中所述修改目录）。
+    * 编辑 **server.xml** 文件。将
+
 
     ```xml
     <httpEndpoint id="defaultHttpEndpoint"
@@ -421,7 +423,7 @@ When you create a farm, you also need to configure an HTTP server to send querie
     httpsPort="9443" />
     ```
     
-    with:
+    替换为：
     
     ```xml
     <httpEndpoint id="defaultHttpEndpoint"
@@ -429,71 +431,69 @@ When you create a farm, you also need to configure an HTTP server to send querie
     httpsPort="9444" />
     ```
     
-    The HTTP and HTTPS ports of the server mfp2 do not conflict with the ports of the server mfp1 with this change. Make sure to modify the ports before you run the installation of {{ site.data.keys.mf_server }}. Otherwise, if you modify the port after the installation is made, you also need to reflect the change of the port in the JNDI property: **mfp.admin.jmx.port**.
+    通过此更改，服务器 mfp2 的 HTTP 和 HTTPS 端口将不会与服务器 mfp1 的端口出现冲突。在运行 {{ site.data.keys.mf_server }} 的安装之前，请确保修改这些端口。否则，如果在安装之后修改端口，那么还需要在 JNDI 属性 **mfp.admin.jmx.port** 中反映端口更改。
     
-3. Run the Server Configuration Tool.
-    *  Create a configuration **Hello MobileFirst 2**.
-    * Do the same installation procedure as described in [Running the Server Configuration Tool](#running-the-server-configuration-tool) but select **mfp2** as the application server. Use the same database and same schema.
+3. 运行 Server Configuration Tool。
+    *  创建配置 **Hello MobileFirst 2**。
+    * 按照[运行 Server Configuration Tool](#running-the-server-configuration-tool) 所述执行相同的安装过程，但选择 **mfp2** 作为应用程序服务器。使用相同的数据库和相同的模式。
 
-    > **Note:**  
+    > **注：**  
     > 
-    > * If you use an environment ID for server mfp1 (not suggested in the tutorial), the same environment ID must be used for server mfp2.
-    > * If you modify the context root for some applications, use the same context root for server mfp2. The servers of a farm must be symmetric.
-    > * If you create a default user (admin/admin), create the same user in the server mfp2.
+    > * 如果服务器 mfp1 有环境标识（在本教程中不建议使用），那么必须将同一环境标识用于服务器 mfp2。
+    > * 如果修改了某些应用程序的上下文根，那么将相同的上下文根用于服务器 mfp2。一个场的服务器必须是对称的。    > * 如果创建了缺省用户 (admin/admin)，请在服务器 mfp2 中创建相同的用户。
 
-    The Ant tasks detect that the databases exist and do not create the tables (see the following log extract). Then, the applications are deployed to the server.
+    Ant 任务会检测数据库是否存在，并且不会创建表（请参阅以下日志摘要）。然后会将应用程序部署到服务器。
     
     ```xml
     [configuredatabase] Checking connectivity to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser'...
     [configuredatabase] Database MFPDATA exists.
-    [configuredatabase] Connection to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser' succeeded.
-    [configuredatabase] Getting the version of MobileFirstAdmin database MFPDATA...
-    [configuredatabase] Table MFPADMIN_VERSION exists, checking its value...
-    [configuredatabase] GetSQLQueryResult => MFPADMIN_VERSION = 8.0.0
+[configuredatabase] Connection to MobileFirstAdmin database MFPDATA with schema 'MFPDATA' and user 'mfpuser' succeeded.
+[configuredatabase] Getting the version of MobileFirstAdmin database MFPDATA...
+[configuredatabase] Table MFPADMIN_VERSION exists, checking its value...
+[configuredatabase] GetSQLQueryResult => MFPADMIN_VERSION = 8.0.0
     [configuredatabase] Configuring MobileFirstAdmin database MFPDATA...
     [configuredatabase] The database is in latest version (8.0.0), no upgrade required.
-    [configuredatabase] Configuration of MobileFirstAdmin database MFPDATA succeeded.
-    ```
+[configuredatabase] Configuration of MobileFirstAdmin database MFPDATA succeeded.
+```
     
-4. Test the two servers with HTTP connection.
-    * Open a web browser.
-    * Enter the following URL: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The console is served by server mfp1.
-    * Log in with **admin/admin**.
-    * Open a tab in the same web browser and enter the URL: [http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole). The console is served by server mfp2.
-    * Log in with admin/admin. If the installation is done correctly, you can see the same welcome page in both tabs after login.
-    * Return to first browser tab and click **Hello, admin → Download Audit Log**. You are logged out of the console and see the login screen again. This logout behavior is an issue. The problem happens because when you log on to server mfp2, a Lightweight Third Party Authentication (LTPA) token is created and stored in your browser as a cookie. However, this LTPA token is not recognized by server mfp1. Switching between servers is likely to happen in a production environment when you have an HTTP load balancer in front of the cluster. To resolve this issue, you must ensure that both servers (mfp1 and mfp2) generate the LTPA tokens with the same secret keys. Copy the LTPA keys from server mfp1 to server mfp2.
-    * Stop both servers with these commands:
+4. 使用 HTTP 连接测试两台服务器。
+    * 打开 Web 浏览器。
+    * 输入以下 URL：[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole)。此控制台由服务器 mfp1 维护。
+    * 使用 **admin/admin** 登录。
+    * 在相同 Web 浏览器中打开选项卡并输入 URL：[http://localhost:9081/mfpconsole](http://localhost:9081/mfpconsole)。此控制台由服务器 mfp2 维护。
+    * 使用 admin/admin 登录。如果正确完成安装，登录后在两个选项卡中会显示相同的欢迎页面。
+    * 返回至第一个浏览器选项卡，并单击**欢迎管理员 → 下载审计日志**。您将从控制台注销，并再次显示登录屏幕。此注销行为是一个问题。发生此问题的原因是当您登录服务器 mfp2 时，会在您的浏览器中创建轻量级第三方认证 (LTPA) 令牌并将其存储为 cookie。但服务器 mfp1 未识别此 LTPA 令牌。当 HTTP 负载均衡器位于集群之前时，可能会在生产环境中发生切换服务器的情况。要解决此问题，您必须确保两台服务器（mfp1 和 mfp2）都使用相同的密钥生成 LTPA 令牌。将 LTPA 密钥从服务器 mfp1 复制到服务器 mfp2。
+    * 使用以下命令停止这两台服务器：
     
         ```bash
         server stop mfp1
         server stop mfp2
         ```
-    * Copy the LTPA keys of server mfp1 to server mfp2.
-        From **liberty\_install\_dir/usr/servers** or **WLP\_USER\_DIR/servers**, run the following command depending on your operating system. 
-        * On UNIX: `cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
-        * On Windows: `copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
-    * Restart the servers. Switch from one browser tab to another other does not require you to relogin. In a Liberty server farm, all servers must have the same LTPA keys.
-5. Enable the JMX communication between the Liberty servers.
+    * 将服务器 mfp1 的 LTPA 密钥复制到服务器 mfp2。在 **liberty\_install\_dir/usr/servers** 或 **WLP\_USER\_DIR/servers** 中，根据操作系统运行以下命令。 
+        * 在 UNIX 上：`cp mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
+        * 在 Windows 上：`copy mfp1/resources/security/ltpa.keys mfp2/resources/security/ltpa.keys`
+    * 重新启动服务器。这样从某一个浏览器选项卡切换至另一个浏览器选项卡时即可无需重新登录。在 Liberty 服务器场中，所有服务器必须具有相同的 LTPA 密钥。
+5. 在 Liberty 服务器之间启用 JMX 通信。
 
-    The JMX communication with Liberty, is done via the Liberty REST connector over the HTTPS protocol. To enable this communication, each server of the farm must be able to recognize the SSL certificate of the other members. You need to exchange the HTTPS certificates in their truststores. Use IBM utilities such as Keytool, which is part of the IBM JRE distribution in **java/bin** to configure the truststore. The locations of the keystore and truststore are defined in the **server.xml** file. By default, the keystore of Liberty profile is at **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks**. The password of this default keystore, as can be seen in the **server.xml** file, is **mobilefirst**.
+    JMX 与 Liberty 的通信是通过使用 HTTPS 协议的 Liberty REST 接口完成的。要启用此通信，场的每个服务器都必须能识别其他成员的 SSL 证书。您需要在服务器信任库中交换 HTTPS 证书。使用 **java/bin** 中的 IBM 实用程序（例如，属于 IBM JRE 分发版的 Keytool）来配置信任库。在 **server.xml** 文件中定义了密钥库和信任库的位置。缺省情况下，Liberty Profile 的密钥库位于 **WLP\_USER\_DIR/servers/server\_name/resources/security/key.jks** 中。此缺省密钥库的密码（显示在 **server.xml** 文件中）为 **mobilefirst**。
     
-    > **Tip:** You can change it with the Keytool utility, but you must also change the password in the server.xml file so that Liberty server can read that keystore. In this tutorial, use the default password.
-    * In **WLP\_USER\_DIR/servers/mfp1/resources/security**, enter `keytool -list -keystore key.jks`. The command shows the certificates in the keystore. There is only one named **default**. You are prompted for the password of the keystore (mobilefirst) before you can see the keys. This is the case for all the next commands with Keytool utility.
-    * Export the default certificate of server mfp1 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`.
-        * In **WLP\_USER\_DIR/servers/mfp2/resources/security**, export the default certificate of server mfp2 with the command: `keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`.
-    * In the same directory, import the certificate of server mfp1 with the command: `keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`. The certificate of server mfp1 is imported into the keystore of server mfp2 so that server mfp2 can trust the HTTPS connections to server mfp1. You are asked to confirm that you trust the certificate.
-    * In **WLP_USER_DIR/servers/mfp1/resources/security**, import the certificate of server mfp2 with the command: `keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`. After this step, the HTTPS connections between the two servers are possible.
+    > **提示：**您可以使用 Keytool 实用程序来更改此密码，但必须同时更改 server.xml 文件中的密码，以便此 Liberty 服务器可以读取此密钥库。在本教程中，使用缺省密码。    
+    * 在 **WLP\_USER\_DIR/servers/mfp1/resources/security** 中，输入 `keytool -list -keystore key.jks`。此命令会显示密钥库中的证书。只有一个名为 **default** 的证书。系统会在提示您输入密钥库的密码 (mobilefirst)，然后您才能看到密钥。对于使用 Keytool 实用程序的所有后续命令都是如此。
+    * 使用以下命令导出服务器 mfp1 的缺省证书：`keytool -exportcert -keystore key.jks -alias default -file mfp1.cert`。
+    * 在 **WLP\_USER\_DIR/servers/mfp2/resources/security** 中，使用以下命令导出服务器 mfp2 的缺省证书：`keytool -exportcert -keystore key.jks -alias default -file mfp2.cert`。
+     * 在同一个目录中，使用以下命令导入服务器 mfp1 的证书：`keytool -import -file ../../../mfp1/resources/security/mfp1.cert -keystore key.jks`。服务器 mfp1 的证书会导入服务器 mfp2 的米密钥库，以使服务器 mfp2 能够信任到服务器 mfp1 的 HTTPS 连接。系统会要求您确认您信任此证书。
+     * 在 **WLP_USER_DIR/servers/mfp1/resources/security** 中，使用以下命令导入服务器 mfp2 的证书：`keytool -import -file ../../../mfp2/resources/security/mfp2.cert -keystore key.jks`。执行此步骤后，即可在两台服务器之间建立 HTTPS 连接。
 
-## Testing the farm and see the changes in {{ site.data.keys.mf_console }}
+## 测试场，并在 {{ site.data.keys.mf_console }} 中查看更改
 {: #testing-the-farm-and-see-the-changes-in-mobilefirst-operations-console }
 
-1. Start the two servers:
+1. 启动两台服务器：
 
     ```bash
     server start mfp1
     server start mfp2
     ```
     
-2. Access the console. For example, [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole), or [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole) in HTTPS. In the left sidebar, an extra menu that is labeled as **Server Farm Nodes** appears. If you click **Server Farm Nodes**, you can the status of each node. You might need to wait a bit for both nodes to be started.
+2. 访问控制台。例如，[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole) 或 [https://localhost:9443/mfpconsole](https://localhost:9443/mfpconsole)（在 HTTPS 中）。在左侧侧边栏中，会显示一个额外菜单，此菜单标记为**服务器场节点**。如果您单击**服务器场节点**，您可以看到每个节点的状态。您可能需要等待一段时间以便两个节点都完成启动。
     
     

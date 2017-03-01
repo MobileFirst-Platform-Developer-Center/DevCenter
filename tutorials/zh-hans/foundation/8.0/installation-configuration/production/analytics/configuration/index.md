@@ -1,250 +1,253 @@
 ---
 layout: tutorial
-title: MobileFirst Analytics Server Configuration Guide
-breadcrumb_title: Configuration Guide
+title: MobileFirst Analytics Server 配置指南
+breadcrumb_title: 配置指南
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Some configuration for the {{ site.data.keys.mf_analytics_server }} is required. Some of the configuration parameters apply to a single node, and some apply to the whole cluster, as indicated.
+需要对 {{ site.data.keys.mf_analytics_server }} 进行一些配置。如文中所示，某些配置参数适用于单个节点，某些则适用于整个集群。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
 
-* [Configuration properties](#configuration-properties)
-* [Backing up Analytics data](#backing-up-analytics-data)
-* [Cluster management and Elasticsearch](#cluster-management-and-elasticsearch)
+* [配置属性](#configuration-properties)
+* [备份分析数据](#backing-up-analytics-data)
+* [集群管理和 Elasticsearch](#cluster-management-and-elasticsearch)
 
-### Properties
+### 属性
 {: #properties }
-For a complete list of configuration properties and how to set them in your application server, see [Configuration properties](#configuration-properties).
+要获取配置属性的完整列表并了解如何在应用程序服务器中设置这些属性，请参阅[配置属性](#configuration-properties)。
 
-* The **discovery.zen.minimum\_master\_nodes** property must be set to **ceil((number of master-eligible nodes in the cluster / 2) + 1)** to avoid split-brain syndrome.
-    * Elasticsearch nodes in a cluster that are master-eligible must establish a quorum to decide which master-eligible node is the master.
-    * If you add a master eligible node to the cluster, the number of master-eligible nodes changes, and thus the setting must change. You must modify the setting if you introduce new master-eligible nodes to the cluster. For more information about how to manage your cluster, see [Cluster management and Elasticsearch](#cluster-management-and-elasticsearch).
-* Give your cluster a name by setting the **clustername** property in all of your nodes.
-    * Name the cluster to prevent a developer's instance of Elasticsearch from accidentally joining a cluster that is using a default name.
-* Give each node a name by setting the **nodename** property in each node.
-    * By default, Elasticsearch names each node after a random Marvel character, and the node name is different on every node restart.
-* Explicitly declare the file system path to the data directory by setting the **datapath** property in each node.
-* Explicitly declare the dedicated master nodes by setting the **masternodes** property in each node.
+* **discovery.zen.minimum\_master\_nodes** 属性必须设置为 **ceil
+((集群中的主合格节点数 / 2) + 1)**，以避免网络分区症状。
+    * 符合主节点条件的集群中的弹性搜索节点必须建立定额，以确定哪个符合主节点条件的节点是主节点。
+    * 如果将符合主节点条件的节点添加到集群中，那么符合主节点条件的节点数会有所变化，因此必须更改设置。如果要向集群引入新的符合主节点条件的节点，那么必须修改设置。有关如何管理集群的更多信息，请参阅[集群管理和 Elasticsearch](#cluster-management-and-elasticsearch)。
+* 通过在所有节点中设置 **clustername** 属性来为集群命名。
+    * 命名集群，以防止开发人员的 Elasticsearch 实例意外连接使用缺省名称的集群。
+* 通过在每个节点中设置 **nodename** 属性来为每个节点命名。
+    * 缺省情况下，Elasticsearch 以随机 Marvel 字符对每个节点命名，每次重新启动每个节点时，节点名都会改变。
+* 通过在每个节点中设置 **datapath** 属性来显式声明到数据目录的文件系统路径。
+* 通过在每个节点中设置 **masternodes** 属性来显式声明专用主节点。
 
-### Cluster Recovery Settings
+### 集群恢复设置
 {: #cluster-recovery-settings }
-After you scaled out to a multi-node cluster, you might find that an occasional full cluster restart is necessary. When a full cluster restart is required, you must consider the recovery settings. If the cluster has 10 nodes, and as the cluster is brought up, one node at a time, the master node assumes that it needs to start balancing data immediately upon the arrival of each node into the cluster. If the master is allowed to behave this way, much unnecessary rebalancing is required. You must configure the cluster settings to wait for a minimum number of nodes to join the cluster before the master is allowed to start instructing the nodes to rebalance. It can reduce cluster restarts from hours down to minutes.
+向外扩展到多节点集群后，您可能会发现偶尔需要重新启动整个集群。需要重新启动整个集群时，必须考虑恢复设置。如果集群中有 10 个节点，当生成集群（一次一个节点）时，主节点会假定在每个节点到达集群时均需立即开始平衡数据。如果允许主节点的此行为，将需要大量不必要的再平衡过程。必须配置集群设置以等待最小数目的节点连接到集群，以防止允许主节点开始命令节点进行再平衡。这可将集群重新启动时间从几小时降至几分钟。
 
-* The **gateway.recover\_after\_nodes** property must be set to your preference to prevent Elasticsearch from starting a rebalance until the specified number of nodes in the cluster are up and joined. If your cluster has 10 nodes, a value of 8 for the **gateway.recover\_after\_nodes** property might be a reasonable setting.
-* The **gateway.expected\_nodes** property must be set to the number of nodes that you expect to be in the cluster. In this example, the value for the **gateway.expected_nodes** property is 10.
-* The **gateway.recover\_after\_time** property must be set to instruct the master to wait to send rebalanced instructions until after the set time elapsed from the start of the master node.
+* 必须将 **gateway.recover\_after\_nodes** 属性设置为您的首选项，以防止 Elasticsearch 在集群中指定数量的节点启动并连接之前开始重新均衡。如果集群具有 10 个节点，那么 **gateway.recover\_after\_nodes** 属性值为 8 可能是合理设置。
+* 必须将 **gateway.expected\_nodes** 属性设置为您预期集群中存在的节点数。在此示例中，**gateway.expected_nodes** 属性的值为 10。
+* 必须设置 **gateway.recover\_after\_time** 属性以指示主节点在发送重新均衡指令前应等待的时间（从主节点启动开始）。
 
-The combination of the previous settings means that Elasticsearch waits for the value of **gateway.recover\_after\_nodes** nodes to be present. Then, it begins recovering after the value of **gateway.recover\_after\_time** minutes or after the value of **gateway.expected\_nodes** nodes joined the cluster, whichever comes first.
+上述设置的组合意味着 Elasticsearch 将等待至 **gateway.recover\_after\_nodes** 所表示的节点数量存在。然后，在 **gateway.recover\_after\_time** 所表示的分钟数或者在 **gateway.expected\_nodes** 所表示的节点数连接到集群（以先到为准）后再开始恢复。
 
-### What not to do
+### 请勿执行以下操作
 {: #what-not-to-do }
-* Do not ignore your production cluster.
-    * Clusters need monitoring and nurturing. Many good Elasticsearch monitoring tools are available that are dedicated to the task.
-* Do not use network-attached storage (NAS) for your **datapath** setting. NAS introduces more latency, and a single point of failure. Always use the local hosts disks.
-* Avoid clusters that span data centers and definitely avoid clusters that span large geographic distances. The latency between nodes is a severe performance bottleneck.
-* Roll your own cluster configuration management solution. Many good configuration management solutions, such as Puppet, Chef, and Ansible, are available.
+* 请勿忽略生产集群。
+    * 集群需要监控和培养。针对此任务有许多有效的专属 Elasticsearch 监控工具。
+* 请勿对 **datapath** 设置使用网络连接存储器 (NAS)。NAS 造成更长时间的延迟，并且会产生单一故障点。始终使用本地主机磁盘。
+* 避免集群跨多个数据中心，务必避免集群的地域距离跨度过大。节点之间的延迟是严重的性能瓶颈。
+* 实施您自己的集群配置管理解决方案。有许多有效的配置管理解决方案可用，例如，Puppet、Chef 和 Ansible。
 
-## Configuration properties
+## 配置属性
 {: #configuration-properties }
-The {{ site.data.keys.mf_analytics_server }} can start successfully without any additional configuration.
+{{ site.data.keys.mf_analytics_server }} 无需额外配置即可成功启动。
 
-Configuration is done through JNDI properties on both the {{ site.data.keys.mf_server }} and the {{ site.data.keys.mf_analytics_server }}. Additionally, the {{ site.data.keys.mf_analytics_server }} supports the use of environment variables to control configuration. Environment variables take precedence over JNDI properties.
+在 {{ site.data.keys.mf_server }} 和 {{ site.data.keys.mf_analytics_server }} 上通过 JNDI 属性完成配置。
+此外，{{ site.data.keys.mf_analytics_server }} 支持使用环境变量来控制配置。环境变量优先于 JNDI 属性。
 
-The Analytics runtime web application must be restarted for any changes in these properties to take effect. It is not necessary to restart the entire application server.
+必须重新启动 Analytics 运行时 Web 应用程序，以使这些属性中的所有更改生效。不必重新启动整个应用程序服务器。
 
-To set a JNDI property on WebSphere  Application Server Liberty, add a tag to the **server.xml** file as follows.
+要在 WebSphere Application Server Liberty 上设置 JNDI 属性，请在 **server.xml** 文件中添加如下标签。
 
 ```xml
 <jndiEntry jndiName="{PROPERTY NAME}" value="{PROPERTY VALUE}}" />
 ```
 
-To set a JNDI property on Tomcat, add a tag to the context.xml file as follows.
+要在 Tomcat 上设置 JNDI 属性，请在 context.xml 文件中添加如下标签。
 
 ```xml
 <Environment name="{PROPERTY NAME}" value="{PROPERTY VALUE}" type="java.lang.String" override="false" />
 ```
 
-The JNDI properties on WebSphere Application Server are available as environment variables.
+WebSphere Application Server 上的 JNDI 属性可用作环境变量。
 
-* In the WebSphere Application Server console, select **Applications → Application Types → WebSphere Enterprise applications**.
-* Select the **{{ site.data.keys.product_adj }} Administration Service** application.
-* In **Web Module Properties**, click **Environment entries for Web Modules** to display the JNDI properties.
+* 在 WebSphere Application Server 控制台中，选择**应用程序 → 应用程序类型 → WebSphere Enterprise 应用程序**。
+* 选择 **{{ site.data.keys.product_adj }} Administration Service** 应用程序。
+* 在 **Web 模块属性**中，单击 **Web 模块的环境条目**以显示 JNDI 属性。
 
 #### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-The following table shows the properties that can be set in the {{ site.data.keys.mf_server }}.
+下表显示了可在 {{ site.data.keys.mf_server }} 中设置的属性。
 
-| Property                           | Description                                           | Default Value |
+| 属性                           | 描述                                           | 缺省值 |
 |------------------------------------|-------------------------------------------------------|---------------|
-| mfp.analytics.console.url          | Set this property to the URL of your {{ site.data.keys.mf_analytics_console }}. For example, http://hostname:port/analytics/console. Setting this property enables the analytics icon on the {{ site.data.keys.mf_console }}. | None |
-| mfp.analytics.logs.forward         | If this property it set to true, server logs that are recorded on the {{ site.data.keys.mf_server }} are captured in {{ site.data.keys.mf_analytics }}. | true |
-| mfp.analytics.url                  |Required. The URL that is exposed by the {{ site.data.keys.mf_analytics_server }} that receives incoming analytics data. For example, http://hostname:port/analytics-service/rest/v2. | None |
-| analyticsconsole/mfp.analytics.url |	Optional. Full URI of the Analytics REST services. In a scenario with a firewall or a secured reverse proxy, this URI must be the external URI, not the internal URI inside the local LAN. This value can contain * in places of the URI protocol, host name, or port, to denote the corresponding part from the incoming URL.	*://*:*/analytics-service, with the protocol, host name, and port dynamically determined |
-| mfp.analytics.username             | The user name that is used if the data entry point is protected with basic authentication. | None |
-| mfp.analytics.password             | The password that is used if the data entry point is protected with basic authentication. | None |
+| mfp.analytics.console.url          | 将该属性设置为 {{ site.data.keys.mf_analytics_console }} 的 URL。
+例如，http://hostname:port/analytics/console。设置该属性会在 {{ site.data.keys.mf_console }} 上启用分析图标。 | 无 |
+| mfp.analytics.logs.forward         | 如果该属性设置为 true，那么将会在 {{ site.data.keys.mf_analytics }} 中捕获 {{ site.data.keys.mf_server }} 上记录的服务器日志。 | true |
+| mfp.analytics.url                  |必需。由 {{ site.data.keys.mf_analytics_server }} 公开的用于接收入局分析数据的 URL。例如，http://hostname:port/analytics-service/rest/v2。 | 无 |
+| analyticsconsole/mfp.analytics.url |	可选。分析 REST 服务的完整 URI。在有防火墙或安全逆向代理的情况下，该 URI 必须为外部 URI，不能为本地 LAN 中的内部 URI。该值可用 * 代替 URI 协议、主机名或端口，以表示入局 URL 的对应部分。*://*:*/analytics-service，动态确定协议、主机名和端口 |
+| mfp.analytics.username             | 通过基本认证保护数据入口点时使用的用户名。 | 无 |
+| mfp.analytics.password             | 通过基本认证保护数据入口点时使用的密码。 | 无 |
 
 #### {{ site.data.keys.mf_analytics_server }}
 {: #mobilefirst-analytics-server }
-The following table shows the properties that can be set in the {{ site.data.keys.mf_analytics_server }}.
+下表显示了可在 {{ site.data.keys.mf_analytics_server }} 中设置的属性。
 
-| Property                           | Description                                           | Default Value |
+| 属性                           | 描述                                           | 缺省值 |
 |------------------------------------|-------------------------------------------------------|---------------|
-| analytics/nodetype | Defines the Elasticsearch node type. Valid values are master and data. If this property is not set, then the node acts as both a master-eligible node and a data node. | 	None |
-| analytics/shards | The number of shards per index. This value can be set only by the first node that is started in the cluster and cannot be changed. | 1 |
-| analytics/replicas_per_shard | The number of replicas for each shard in the cluster. This value can be changed dynamically in a running cluster. | 0 |
-| analytics/masternodes | A comma-delimited string that contains the host name and ports of the master-eligible nodes. | None |
-| analytics/clustername | Name of the cluster. Set this value if you plan to have multiple clusters that operate in the same subset and need to uniquely identify them. | worklight |
-| analytics/nodename | Name of a node in the cluster. | A randomly generated string
-| analytics/datapath | The path that analytics data is saved to on the file system. | ./analyticsData |
-| analytics/settingspath | The path to an Elasticsearch settings file. For more information, see Elasticsearch. | None |
-| analytics/transportport | The port that is used for node-to-node communication. | 9600 |
-| analytics/httpport | The port that is used for HTTP communication to Elasticsearch. | 9500 |
-| analytics/http.enabled | Enables or disables HTTP communication to Elasticsearch. | false |
-| analytics/serviceProxyURL | The analytics UI WAR file and analytics service WAR file can be installed to separate application servers. If you choose to do so, you must understand that the JavaScript run time in the UI WAR file can be blocked by cross-site scripting prevention in the browser. To bypass this block, the UI WAR file includes Java proxy code so that the JavaScript run time retrieves REST API responses from the origin server. But the proxy is configured to forward REST API requests to the analytics service WAR file. Configure this property if you installed your WAR files to separate application servers. | None |
-| analytics/bootstrap.mlockall | This property prevents any Elasticsearch memory from being swapped to disk. | true |
-| analytics/multicast | Enables or disables multicast node discovery. | false |
-| analytics/warmupFrequencyInSeconds | The frequency at which warmup queries are run. Warmup queries run in the background to force query results into memory, which improves web console performance. Negative values disable the warmup queries. | 600 |
-| analytics/tenant | Name of the main Elasticsearch index.	worklight |
+| analytics/nodetype | 定义 Elasticsearch 节点类型。有效值为 master 和 data。如果未设置该属性，那么该节点将充当主合格节点和数据节点。 | 	无 |
+| analytics/shards | 每个索引的分片数量。该值只能通过集群中启动的第一个节点进行设置，并且不能更改。 | 1 |
+| analytics/replicas_per_shard | 集群中每个分片的副本数量。此值可在运行的集群中动态更改。 | 0 |
+| analytics/masternodes | 逗号分隔的字符串，其中包含主合格节点的主机名和端口。 | 无 |
+| analytics/clustername | 集群的名称。如果计划让多个集群在同一个子集中运行并且需要唯一标识这些集群，请设置该值。 | worklight |
+| analytics/nodename | 集群中节点的名称。 | 随机生成的字符串| analytics/datapath | 分析数据在文件系统上的保存路径。 | ./analyticsData |
+| analytics/settingspath | 到 Elasticsearch 设置文件的路径。有关更多信息，请参阅 Elasticsearch。 | 无 |
+| analytics/transportport | 用于节点到节点通信的端口。 | 9600 |
+| analytics/httpport | 用于到 Elasticsearch 的 HTTP 通信的端口。 | 9500 |
+| analytics/http.enabled | 启用或禁用到 Elasticsearch 的 HTTP 通信。 | false |
+| analytics/serviceProxyURL | 可将分析 UI WAR 文件和分析服务 WAR 文件安装到不同的应用程序服务器。如果您选择这样做，必须了解在浏览器中阻止跨站点脚本编制可能阻止 UI WAR 文件中的 JavaScript 运行时。为绕过此阻止，UI WAR 文件包含 Java 代理代码，以便 JavaScript 运行时从源服务器检索 REST API 响应。但代理配置为将 REST API 请求转发至分析服务 WAR 文件。如果已将 WAR 文件安装至独立应用程序服务器，请配置该属性。 | 无 |
+| analytics/bootstrap.mlockall | 此属性可防止将任何 Elasticsearch 内存交换至磁盘。 | true |
+| analytics/multicast | 启用或禁用多点广播节点发现。 | false |
+| analytics/warmupFrequencyInSeconds | 热启动查询运行频率。热启动查询在后台运行，以强制将查询结果保存到内存中，从而提高 Web 控制台性能。负值会禁用热启动查询。 | 600 |
+| analytics/tenant | 主 Elasticsearch 索引的名称。worklight |
 
-In all cases where the key does not contain a period (like **httpport** but not **http.enabled**), the setting can be controlled by system environment variables where the variable name is prefixed with **ANALYTICS_**. When both the JNDI property and the system environment variable are set, the system environment variable takes precedence. For example, if you have both the **analytics/httpport** JNDI property and the **ANALTYICS_httpport** system environment variable set, the value for **ANALYTICS_httpport** is used.
+在密钥不包含句点（例如 **httpport** 而不是 **http.enabled**）的所有情况下，可通过变量名带有 **ANALYTICS_** 前缀的系统环境变量来控制设置。同时设置 JNDI 属性和系统环境变量时，系统环境变量优先。例如，如果已设置 **analytics/httpport** JNDI 属性和 **ANALTYICS_httpport** 系统环境变量，那么将使用 **ANALYTICS_httpport** 的值。
 
-#### Document Time to Live (TTL)
+#### 文档生存时间 (TTL)
 {: #document-time-to-live-ttl }
-TTL is effectively how you can establish and maintain a data retention policy. Your decisions have dramatic consequences on your system resource needs. The long you keep data, the more RAM, disk, and scaling is likely needed.
+TTL 能有效帮助您建立和维护数据保留时间策略。您的决定对您的系统资源需求影响巨大。您保留数据时间越长，所需 RAM、磁盘越多，扩展性越高。
 
-Each document type has its own TTL. Setting a document's TTL enables automatic deletion of the document after it is stored for the specified amount of time.
+每个文档类型都有其自己的 TTL。设置文档 TTL 支持在文档存储达到指定时长之后自动删除文档。
 
-Each TTL JNDI property is named **analytics/TTL_[document-type]**. For example, the TTL setting for **NetworkTransaction** is named **analytics/TTL_NetworkTransaction**.
+每个 TTL JNDI 属性均命名为 **analytics/TTL_[document-type]**。例如，**NetworkTransaction** 的 TTL 设置命名为 **analytics/TTL_NetworkTransaction**。
 
-These values can be set by using basic time units as follows.
+可通过使用如下基本时间单位来设置这些值。
 
-* 1Y = 1 year
-* 1M = 1 month
-* 1w = 1 week
-* 1d = 1 day
-* 1h = 1 hour
-* 1m = 1 minute
-* 1s = 1 second
-* 1ms = 1 millisecond
+* 1Y = 1 年
+* 1M = 1 个月
+* 1w = 1 周
+* 1d = 1 天
+* 1h = 1 小时
+* 1m = 1 分钟
+* 1s = 1 秒
+* 1ms = 1 毫秒
 
-> Note: If you are migrating from previous versions of {{ site.data.keys.mf_analytics_server }} and previously configured any TTL JNDI properties, see [Migration of server properties used by previous versions of {{ site.data.keys.mf_analytics_server }}](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server).
-
+> 注意：如果要从先前版本的 {{ site.data.keys.mf_analytics_server }} 迁移并且先前已配置任何 TTL JNDI 属性，请参阅[迁移先前版本的 {{ site.data.keys.mf_analytics_server }} 使用的服务器属性](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server)。
 #### Elasticsearch
 {: #elasticsearch }
-The underlying storage and clustering technology that serves the {{ site.data.keys.mf_analytics_console }} is Elasticsearch.  
-Elasticsearch provides many tunable properties, mostly for performance tuning. Many of the JNDI properties are abstractions of properties that are provided by Elasticsearch.
+为 {{ site.data.keys.mf_analytics_console }} 服务的底层存储和集群技术即 Elasticsearch。  
+Elasticsearch 提供许多可调属性，大部分用于性能调整。许多 JNDI 属性都是对 Elasticsearch 所提供属性的抽象。
 
-All properties that are provided by Elasticsearch can also be set by using JNDI properties with **analytics/** prepended before the property name. For example, **threadpool.search.queue_size** is a property that is provided by Elasticsearch. It can be set with the following JNDI property.
+还可通过使用 JNDI 属性并在属性名称前追加 **analytics/** 来设置 Elasticsearch 提供的所有属性。例如，**threadpool.search.queue_size** 是 Elasticsearch 提供的属性。可使用以下 JNDI 属性来设置。
 
 ```xml
 <jndiEntry jndiName="analytics/threadpool.search.queue_size" value="100" />
 ```
 
-These properties are normally set in a custom settings file. If you are familiar with Elasticsearch and the format of its properties files, you can specify the path to the settings file by using the **settingspath** JNDI property, as follows.
+通常，这些属性在定制设置文件中进行设置。如果您对 Elasticsearch 及其属性文件的格式很熟悉，那么可以使用 **settingspath** JNDI 属性按如下方式指定该设置文件的路径。
 
 ```xml
 <jndiEntry jndiName="analytics/settingspath" value="/home/system/elasticsearch.yml" />
 ```
 
-Unless you are an expert Elasticsearch IT manager, identified a specific need, or were instructed by your services or support team, do not be tempted to fiddle with these settings.
+除非您是专家级别的 Elasticsearch IT 经理并且具有特定需求或者受到您的服务或支持团队的指示，否则请勿尝试这些设置。
 
-## Backing up Analytics data
+## 备份分析数据
 {: #backing-up-analytics-data }
-Learn about how to back up your {{ site.data.keys.mf_analytics }} data.
+了解如何备份您的 {{ site.data.keys.mf_analytics }} 数据。
 
-The data for {{ site.data.keys.mf_analytics }} is stored as a set of files on the {{ site.data.keys.mf_analytics_server }} file system. The location of this folder is specified by the datapath JNDI property in the {{ site.data.keys.mf_analytics_server }} configuration. For more information about the JNDI properties, see [Configuration properties](#configuration-properties).
+{{ site.data.keys.mf_analytics }} 的数据作为文件集存储在 {{ site.data.keys.mf_analytics_server }} 文件系统上。通过 {{ site.data.keys.mf_analytics_server }} 配置中的 datapath JNDI 属性来指定此文件夹的位置。有关 JNDI 属性的更多信息，请参阅[配置属性](#configuration-properties)。
 
-The {{ site.data.keys.mf_analytics_server }} configuration is also stored on the file system, and is called server.xml.
+{{ site.data.keys.mf_analytics_server }} 配置也将存储在文件系统上，名为 server.xml。
 
-You can back up these files by using any existing server backup procedures that you might already have in place. No special procedure is required when you back up these files, other than ensuring that the {{ site.data.keys.mf_analytics_server }} is stopped. Otherwise, the data might change while the backup is occurring, and the data that is stored in memory might not yet be written to the file system. To avoid inconsistent data, stop the {{ site.data.keys.mf_analytics_server }} before you start your backup.
+您可以使用可能已到位的任何现有服务器备份过程来备份这些文件。在备份这些文件时，没有需要使用的特别过程，只需确保停止 {{ site.data.keys.mf_analytics_server }}。否则，在进行备份时数据可能会更改，并且可能不会将存储在内存中的数据写入文件系统。为避免出现不一致的数据，请在开始备份之前停止 {{ site.data.keys.mf_analytics_server }}。
 
-## Cluster management and Elasticsearch
+## 集群管理和 Elasticsearch
 {: #cluster-management-and-elasticsearch }
-Manage clusters and add nodes to relieve memory and capacity strain.
+管理集群和添加节点以缓解内存和容量压力。
 
-### Add a Node to the Cluster
+### 向集群添加节点
 {: #add-a-node-to-the-cluster }
-You can add a new node to the cluster by installing the {{ site.data.keys.mf_analytics_server }} or by running a standalone Elasticsearch instance.
+您可以通过安装 {{ site.data.keys.mf_analytics_server }} 或通过运行独立的 Elasticsearch 实例来向集群添加新节点。
 
-If you choose the standalone Elasticsearch instance, you relieve some cluster strain for memory and capacity requirements, but you do not relieve data ingestion strain. Data reports must always go through the {{ site.data.keys.mf_analytics_server }} for preservation of data integrity and data optimization prior to going to persistent store.
+如果选择独立 Elasticsearch 实例，那么可以缓解某些集群在内存和容量需求方面的压力，但是不能缓解数据并入的压力。数据报告必须始终经过 {{ site.data.keys.mf_analytics_server }} 以在进入持久存储之前保留数据完整性和数据优化。
 
-You can mix and match.
+您可以混用这两种方法。
 
-The underlying Elasticsearch data store expects nodes to be homogenous, so do not mix a powerful 8-core 64 GB RAM rack system with a leftover surplus notebook in your cluster. Use similar hardware among the nodes.
+底层的 Elasticsearch 数据存储期望节点为同构节点，因此请勿将强大的 8 核 64 GB RAM 机架系统与集群中多余的笔记本混用。请在节点之中使用相似硬件。
 
-#### Adding a {{ site.data.keys.mf_analytics_server }} to the cluster
+#### 将 {{ site.data.keys.mf_analytics_server }} 添加到集群
 {: #adding-a-mobilefirst-analytics-server-to-the-cluster }
-Learn how to add a {{ site.data.keys.mf_analytics_server }} to the cluster.
+了解如何将 {{ site.data.keys.mf_analytics_server }} 添加到集群。
 
-Because Elasticsearch is embedded in the {{ site.data.keys.mf_analytics_server }}, and it is responsible for participating in the cluster, do not use the application server's features to define cluster behavior. You do not want to create a WebSphere  Application Server Liberty farm, for example. Trust the underlying Elasticsearch run time to participate in the cluster. However, you must configure it properly.
+由于 Elasticsearch 嵌入 {{ site.data.keys.mf_analytics_server }}，并且应该参与到集群中，因此请勿使用应用程序服务器的功能部件来定义集群行为。例如，不需要创建 WebSphere Application Server Liberty 场。请信任底层 Elasticsearch 运行时以参与到集群中。但是，必须对其进行正确配置。
 
-In the following sample instructions, do not configure the node to be a master node or a data node. Instead, configure the node as a "search load balancer" whose purpose is to be up temporarily so that the Elasticsearch REST API is exposed for monitoring and dynamic configuration.
+在以下样本指示信息中，请勿将节点配置为主节点或数据节点。而改为将节点配置为“搜索负载均衡器”，以便能够暂时运行，从而公开 Elasticsearch
+REST API 用于进行监控和动态配置。
 
-**Notes:**
+**注：**
 
-* Remember to configure the hardware and operating system of this node according to the [System requirements](../installation/#system-requirements).
-* Port 9600 is the transport port that is used by Elasticsearch. Therefore, port 9600 must be open through any firewalls between cluster nodes.
+* 请记得根据[系统需求](../installation/#system-requirements)来配置此节点的硬件和操作系统。
+* 端口 9600 是 Elasticsearch 使用的传输端口。因此，必须通过集群节点之间的任何防火墙打开端口 9600。
 
-1. Install the analytics service WAR file and the analytics UI WAR file (if you want the UI) to the application server on the newly allocated system. Install this instance of the {{ site.data.keys.mf_analytics_server }} to any of the supported app servers.
-    * [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server Liberty](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
-    * [Installing {{ site.data.keys.mf_analytics }} on Tomcat](../installation/#installing-mobilefirst-analytics-on-tomcat)
-    * [Installing {{ site.data.keys.mf_analytics }} on WebSphere Application Server](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
+1. 在新分配的系统上将分析服务 WAR 文件和分析 UI WAR 文件（如果需要 UI）安装到应用程序服务器中。将 {{ site.data.keys.mf_analytics_server }} 的此实例安装到任何受支持的应用程序服务器。
+    * [在 WebSphere Application Server Liberty 上安装 {{ site.data.keys.mf_analytics }}](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
+    * [在 Tomcat 上安装 {{ site.data.keys.mf_analytics }}](../installation/#installing-mobilefirst-analytics-on-tomcat)
+    * [在 WebSphere Application Server 上安装 {{ site.data.keys.mf_analytics }}](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
 
-2. Edit the application server's configuration file for JNDI properties (or use system environment variables) to configure at least the following flags.
+2. 为 JNDI 属性编辑应用程序服务器配置文件（或使用系统环境变量）以配置以下至少一个标记。
 
-    | Flag | Value (example) | Default | Note |
+    | 标记 | 值（示例） | 缺省值 | 注释 |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	The cluster that you intend this node to join. |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Set to false to avoid accidental cluster join. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	List of master nodes in the existing cluster. Change the default port of 9600 if you specified a transport port setting on the master nodes. |
-    | node.master | 	false | 	true | 	Do not allow this node to be a master. |
-    | node.data|	false | 	true | 	Do not allow this node to store data. |
-    | http.enabled | 	true	 | true | 	Open unsecured HTTP port 9200 for Elasticsearch REST API. |
+    | cluster.name | 	worklight	 | worklight | 	您希望此节点加入的集群。 |
+    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	设置为 false 以避免意外加入集群。 |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	无 | 	现有集群中主节点的列表。如果已在主节点上指定传输端口设置，请更改缺省值 9600。 |
+    | node.master | 	false | 	true | 	不允许此节点成为主节点。 |
+    | node.data|	false | 	true | 	不允许此节点存储数据。 |
+    | http.enabled | 	true	 | true | 	为 Elasticsearch REST API 打开不受保护的 HTTP 端口 9200。 |
 
-3. Consider all configuration flags in production scenarios. You might want Elasticsearch to keep the plug-ins in a different file system directory than the data, so you must set the **path.plugins** flag.
-4. Run the application server and start the WAR applications if necessary.
-5. Confirm that this new node joined the cluster by watching the console output on this new node, or by observing the node count in the **Cluster and Node** section of the **Administration** page in {{ site.data.keys.mf_analytics_console }}.
+3. 在生产方案中考虑所有配置标记。您可能希望 Elasticsearch 将插件与数据保留在不同文件系统目录中，因此必须设置 **path.plugins** 标记。
+4. 根据需要运行应用程序服务器并启动 WAR 应用程序。
+5. 通过观察此新节点上的控制台输出，或者通过观察 {{ site.data.keys.mf_analytics_console }} 中**管理**页面的**集群和节点**部分中的节点计数来确认此新节点是否已加入集群。
 
-#### Adding a stand-alone Elasticsearch node to the cluster
+#### 向集群添加独立 Elasticsearch 节点
 {: #adding-a-stand-alone-elasticsearch-node-to-the-cluster }
-Learn how to add a stand-alone Elasticsearch node to the cluster.
+了解如何向集群添加独立 Elasticsearch 节点。
 
-You can add a stand-alone Elasticsearch node to your existing {{ site.data.keys.mf_analytics }} cluster in just a few simple steps. However, you must decide the role of this node. Is it going to be a master-eligible node? If so, remember to avoid the split-brain issue. Is it going to be a data node? Is it going to be a client-only node? Perhaps you want a client-only node so that you can start a node temporarily to expose Elasticsearch's REST API directly to affect dynamic configuration changes to your running cluster.
+只需几个简单的步骤即可将独立 Elasticsearch 节点添加到现有 {{ site.data.keys.mf_analytics }} 集群中。但是，必须确定此节点的角色。此节点是否将成为主合格节点？如果是，那么请记得避免网络分区问题。此节点是否将成为数据节点？此节点是否将成为仅限客户机的节点？可能您需要一个仅限客户机的节点，这样就能暂时启动节点，直接公开 Elasticsearch 的 REST API，以影响对运行中集群的动态配置更改。
 
-In the following sample instructions, do not configure the node to be a master node or a data node. Instead, configure the node as a "search load balancer" whose purpose is to be up temporarily so that the Elasticsearch REST API is exposed for monitoring and dynamic configuration.
+在以下样本指示信息中，请勿将节点配置为主节点或数据节点。而改为将节点配置为“搜索负载均衡器”，以便能够暂时运行，从而公开 Elasticsearch
+REST API 用于进行监控和动态配置。
 
-**Notes:**
+**注：**
 
-* Remember to configure the hardware and operating system of this node according to the [System requirements](../installation/#system-requirements).
-* Port 9600 is the transport port that is used by Elasticsearch. Therefore, port 9600 must be open through any firewalls between cluster nodes.
+* 请记得根据[系统需求](../installation/#system-requirements)来配置此节点的硬件和操作系统。
+* 端口 9600 是 Elasticsearch 使用的传输端口。因此，必须通过集群节点之间的任何防火墙打开端口 9600。
 
-1. Download Elasticsearch from [https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz](https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz).
-2. Decompress the file.
-3. Edit the **config/elasticsearch.yml** file and configure at least the following flags.
+1. 从 [https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz](https://download.elastic.co/elasticsearch/elasticsearch/elasticsearch-1.7.5.tar.gz) 下载 Elasticsearch。
+2. 解压缩此文件。
+3. 编辑 **config/elasticsearch.yml** 文件，并配置以下至少一个标记。
 
-    | Flag | Value (example) | Default | Note |
+    | 标记 | 值（示例） | 缺省值 | 注释 |
     |------|-----------------|---------|------|
-    | cluster.name | 	worklight	 | worklight | 	The cluster that you intend this node to join. |
-    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	Set to false to avoid accidental cluster join. |
-    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	None | 	List of master nodes in the existing cluster. Change the default port of 9600 if you specified a transport port setting on the master nodes. |
-    | node.master | 	false | 	true | 	Do not allow this node to be a master. |
-    | node.data|	false | 	true | 	Do not allow this node to store data. |
-    | http.enabled | 	true	 | true | 	Open unsecured HTTP port 9200 for Elasticsearch REST API. |
+    | cluster.name | 	worklight	 | worklight | 	您希望此节点加入的集群。 |
+    | discovery.zen.ping.multicast.enabled | 	false | 	true | 	设置为 false 以避免意外加入集群。 |
+    | discovery.zen.ping.unicast.hosts | 	["9.8.7.6:9600"] | 	无 | 	现有集群中主节点的列表。如果已在主节点上指定传输端口设置，请更改缺省值 9600。 |
+    | node.master | 	false | 	true | 	不允许此节点成为主节点。 |
+    | node.data|	false | 	true | 	不允许此节点存储数据。 |
+    | http.enabled | 	true	 | true | 	为 Elasticsearch REST API 打开不受保护的 HTTP 端口 9200。 |
 
 
-4. Consider all configuration flags in production scenarios. You might want Elasticsearch to keep the plug-ins in a different file system directory than the data, so you must set the path.plugins flag.
-5. Run `./bin/plugin -i elasticsearch/elasticsearch-analytics-icu/2.7.0` to install the ICU plug-in.
-6. Run `./bin/elasticsearch`.
-7. Confirm that this new node joined the cluster by watching the console output on this new node, or by observing the node count in the **Cluster and Node** section of the **Administration** page in {{ site.data.keys.mf_analytics_console }}.
+4. 在生产方案中考虑所有配置标记。您可能希望 Elasticsearch 将插件与数据保留在不同文件系统目录中，因此必须设置 path.plugins 标记。
+5. 运行 `./bin/plugin -i elasticsearch/elasticsearch-analytics-icu/2.7.0` 以安装 ICU 插件。
+6. 运行 `./bin/elasticsearch`。
+7. 通过观察此新节点上的控制台输出，或者通过观察 {{ site.data.keys.mf_analytics_console }} 中**管理**页面的**集群和节点**部分中的节点计数来确认此新节点是否已加入集群。
 
-#### Circuit breakers
+#### 断路器
 {: #circuit-breakers }
-Learn about Elasticsearch circuit breakers.
+了解有关 Elasticsearch 断路器的信息。
 
-Elasticsearch contains multiple circuit breakers that are used to prevent operations from causing an **OutOfMemoryError**. For example, if a query that serves data to the {{ site.data.keys.mf_console }} results in using 40% of the JVM heap, the circuit breaker triggers, an exception is raised, and the console receives empty data.
+Elasticsearch 包含多个断路器，用于防止操作导致 **OutOfMemoryError**。例如，如果将数据提供给 {{ site.data.keys.mf_console }} 的查询导致使用 40% 的 JVM 堆，那么会触发断路器、发出异常并且控制台会收到空数据。
 
-Elasticsearch also has protections for filling up the disk. If the disk on which the Elasticsearch data store is configured to write fills to 90% capacity, the Elasticsearch node informs the master node in the cluster. The master node then redirects new document-writes away from the nearly full node. If you have only one node in your cluster, no secondary node to which data can be written is available. Therefore, no data is written and is lost.
+Elasticsearch 还针对填满磁盘提供保护。如果 Elasticsearch 数据存储配置为写入数据的磁盘填充至 90% 的容量，那么 Elasticsearch 节点会通知集群中的主节点。随后，主节点会将新文档写入从几乎已满的节点重定向至别处。如果集群中只有一个节点，那么没有辅助节点可用于写入数据。因此，将不会写入任何数据，数据将丢失。

@@ -1,94 +1,76 @@
 ---
 layout: tutorial
-title: Setting up the web development environment
+title: 设置 Web 开发环境
 breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Developing and testing web applications is as easy as previewing a local HTML file in your web browser of choice.  
-Developers can use their IDE of choice, and any framework(s) that suits their needs.
+开发和测试 Web 应用程序与在所选的 Web 浏览器中预览本地 HTML 文件一样简单。  
+开发人员可使用他们选择的 IDE 以及符合他们需求的任何框架。
 
-However one thing may stand in the way of developing web applications. Web applications might encounter errors due to [same-origin policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) violation. Same-origin policy is a restriction embosed on web browsers. For example, if an application is hosted on the domain **example.com**, it is not allowed for the same application to also access contect that is available on another server, or for that matter, from the {{ site.data.keys.mf_server }}.
+但是，在 Web 应用程序的开发过程中存在一个障碍。由于违反[同源策略](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)，Web 应用程序可能会发生一些错误。同源策略是 Web 浏览器上的一项限制。例如，如果在 **example.com** 域上托管某个应用程序，那么不允许同一应用程序再访问其他服务器上提供的内容或 {{ site.data.keys.mf_server }} 上的内容。
 
-[Web apps that are to use the {{ site.data.keys.product }} web SDK](../../../application-development/sdk/web) should be handled in a supporting topology, for example by using a Reverse Proxy to internally redirect requests to the appropriate server while maintaining the same single origin.
+[应在支持的拓扑中处理使用 {{ site.data.keys.product }} Web SDK](../../../application-development/sdk/web) 的 Web 应用程序，例如，在保持同一个源的情况下使用逆向代理在内部将请求重定向到相应服务器。
 
-The policy requirements can be satisfied by using either of the following methods:
+可使用以下任一方法来满足策略要求：
 
-- Serving the web application resources' from the same WebSphere Full/Liberty profile application server that also hosts the {{ site.data.keys.mf_server }}.
-- Using Node.js as a proxy to redirect application requests to the {{ site.data.keys.mf_server }}.
+- 通过也托管 {{ site.data.keys.mf_server }} 的同一 WebSphere Full/Liberty Profile 应用程序服务器提供 Web 应用程序资源。
+- 使用 Node.js 作为代理以将应用程序请求重定向到 {{ site.data.keys.mf_server }}。
 
-#### Jump to
-{: #jump-to }
-- [Prerequisites](#prerequisites)
-- [Using WebSphere Liberty profile to serve the web application resources](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
-- [Using Node.js](#using-nodejs)
-- [Next Steps](#next-steps)
+<br/>
+**先决条件：**  
+下面要求在开发人员工作站上安装 Apache Maven 或 Node.js。  
+有关指示信息，请参阅[安装指南](../mobilefirst/installation-guide/)。
 
-## Prerequisites
-{: #prerequisites }
--   {: #web-app-supported-browsers }
-    Web applications are supported for the following browser versions. The version numbers indicate the earliest fully supported version of the respective browser.
-
-    | Browser               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android Browser   |
-    |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
-    | **Supported Version** |  {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
-
-    <sup>*</sup> In Safari, private browsing mode is supported only for single-page applications (SPAs). Other applications might exhibit unexpected behavior.
-
-    {% comment %} [sharonl] [c-web-browsers-ms-edge] See information regarding Microsoft Edge support in Task 111165. {% endcomment %}
-
--   The following setup instructions require either Apache Maven or Node.js installed on the developer's workstation. For further instructions, see the [installation guide](../mobilefirst/installation-guide/).
-
-## Using WebSphere Liberty profile to serve the web application resources
+## 使用 WebSphere Liberty Profile 提供 Web 应用程序资源
 {: #using-websphere-liberty-profile-to-serve-the-web-application-resources }
-In order to serve the web application's resources, these need to be stored in a Maven webapp (a **.war** file).
+为了能够提供 Web 应用程序资源，需要将这些资源存储在 Maven Web 应用程序（**.war** 文件）中。
 
-### Creating a Maven webapp archetype
+### 创建 Maven Web 应用程序原型
 {: #creating-a-maven-webapp-archetype }
-1. From a **command-line** window, navigate to a location of your choosing.
-2. Run the command:
+1. 从**命令行**窗口中，浏览至您选择的位置。
+2. 运行以下命令：
 
    ```bash
    mvn archetype:generate -DgroupId=MyCompany -DartifactId=MyWebApp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
    ```
-    - Replace **MyCompany** and **MyWebApp** with your own values.
-    - To enter the values one-by-one, remove the `-DinteractiveMode=false` flag.
+    - 将 **MyCompany** 和 **MyWebApp** 替换为您自己的值。
+    - 要逐个输入值，请除去 `-DinteractiveMode=false` 标志。
 
-### Building the Maven webapp with the web application's resources 
+### 使用 Web 应用程序资源构建 Maven Web 应用程序 
 {: #building-the-maven-webapp-with-the-web-applications-resources }
-1. Place the web application's resources (such as the HTML, CSS, JavaScript and image files) inside the generated **[MyWebApp] → src → Main → webapp** folder.
+1. 将 Web 应用程序资源（如 HTML、CSS、JavaScript 和图像文件）放在所生成的 **[MyWebApp] → src → Main → webapp** 文件夹中。
 
-    > From here on, consider the **webapp** folder as the development location for the web application.
+    > 从此处开始，请考虑将 **webapp** 文件夹作为 Web 应用程序的开发位置。
 
-2. Run the command: `mvn clean install` to generate a .war file containing the application's web resources.  
-   The generated .war file is available in the **[MyWebApp] → target** folder.
+2. 运行 `mvn clean install` 命令以生成包含应用程序 Web 资源的 .war 文件。  
+   生成的 .war 文件位于 **[MyWebApp] → target** 文件夹中。
    
-    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** `mvn clean install` must be run each time you update a web resource.
-
-### Adding the Maven webapp to the application server
+    > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点：**每次更新 Web 资源时，都必须运行 `mvn clean install`。
+### 将 Maven Web 应用程序添加到应用程序服务器中
 {: #adding-the-maven-webapp-to-the-application-server }
-1. Edit the **server.xml file** of your WebSphere application server.  
-    If using the {{ site.data.keys.mf_dev_kit }}, the file is located in: [**{{ site.data.keys.mf_dev_kit }}] → mfp-server → user → servers → mfp** folder. Add the following entry:
+1. 编辑 WebSphere Application Server 的 **server.xml** 文件。  
+    如果使用 {{ site.data.keys.mf_dev_kit }}，那么该文件位于 [**{{ site.data.keys.mf_dev_kit }}] → mfp-server → user → servers → mfp** 文件夹中。添加以下条目：
 
    ```xml
    <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>
    ```
-    - Replace **name** and **path-to/MyWebApp.war** with your own values.
-    - The application server is automatically restarted after saving the changes to the **server.xml** file.  
+    - 将 **name** 和 **path-to/MyWebApp.war** 替换为您自己的值。
+    - 将更改保存至 **server.xml** 文件后，系统将自动重新启动应用程序服务器。  
 
-### Testing the web application
+### 测试 Web 应用程序
 {: #testing-the-web-application }
-Once you are ready to test your web application, visit the URL: **localhost:9080/MyWebApp**.
-    - Replace **MyWebApp** with your own value.
+一旦您准备好测试 Web 应用程序，请访问以下 URL：**localhost:9080/MyWebApp**。
+    - 将 **MyWebApp** 替换为您自己的值。
 
-## Using Node.js
+## 使用 Node.js
 {: #using-nodejs }
-Node.js can be used as a reverse proxy to tunnel requests from the web application to the {{ site.data.keys.mf_server }}.
+Node.js 可用作逆向代理，以用于将请求从 Web 应用程序传送到 {{ site.data.keys.mf_server }}。
 
-1. From a **command-line** window, navigate to your web application's folder and run the following set of commands: 
+1. 从**命令行**窗口中，浏览至 Web 应用程序文件夹，然后运行以下一组命令： 
 
    ```bash
    npm init
@@ -96,8 +78,8 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
    npm install --save request
    ```
 
-2. Create a new file next to the **node_modules** folder, for example **proxy.js**.
-3. Add the following code to the file:
+2. 在 **node_modules** 文件夹旁边创建一个新文件，例如，**proxy.js**。
+3. 将以下代码添加到该文件中：
 
    ```javascript
    var express = require('express');
@@ -126,21 +108,21 @@ Node.js can be used as a reverse proxy to tunnel requests from the web applicati
         req.pipe(request[req.method.toLowerCase()](url)).pipe(res);
    });
    ```
-    - replace the **port** value with your preferred one.
-    - replace `/myapp` with your preferred path name for your web application.
-    - replace `/index.html` with the name of your main HTML file.
-    - if needed, update `/mfp/*` with the context root of your {{ site.data.keys.product }} runtime.
+    - 将 **port** 值替换为您首选的值。
+    - 将 `/myapp` 替换为 Web 应用程序首选的路径名。
+    - 将 `/index.html` 替换为主 HTML 文件的名称。
+    - 如果需要，请使用 {{ site.data.keys.product }} 运行时的上下文根更新 `/mfp/*`。
 
-4. To start the proxy, run the command: `node proxy.js`.
-5. Once you are ready to test your web application, visit the URL: **server-hostname:port/app-name**, for example: **http://localhost:9081/myapp**
-    - Replace **server-hostname** with your own value.
-    - Replace **port** with your own value.
-    - Replace **app-name** with your own value.
+4. 要启动代理，请运行以下命令：`node proxy.js`。
+5. 一旦您准备好测试 Web 应用程序，请访问以下 URL：**server-hostname:port/app-name**（例如，**http://localhost:9081/myapp**）
+    - 将 **server-hostname** 替换为您自己的值。
+    - 将 **port** 替换为您自己的值。
+    - 将 **app-name** 替换为您自己的值。
 
-## Next steps
+## 后续步骤
 {: #next-steps }
-To continue with {{ site.data.keys.product }} development in Web applications, the {{ site.data.keys.product }} web SDK need to be added to the Web application.
+要在 Web 应用程序中继续开发 {{ site.data.keys.product }}，需要将 {{ site.data.keys.product }} Web SDK 添加到 Web 应用程序中。
 
-* Learn how to add the [{{ site.data.keys.product }} SDK to web applications](../../../application-development/sdk/web/).
-* For applications development, refer to the [Using the {{ site.data.keys.product }} SDK](../../../application-development/) tutorials.
-* For adapters develpment, refer to the [Adapters](../../../adapters/) category.
+* 了解如何[将 {{ site.data.keys.product }} SDK 添加到 Web 应用程序中](../../../application-development/sdk/web/)。
+* 要了解应用程序开发，请参阅[使用 {{ site.data.keys.product }} SDK](../../../application-development/) 教程。
+* 要了解适配器开发，请参阅[适配器](../../../adapters/)类别。

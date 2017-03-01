@@ -1,208 +1,208 @@
 ---
 layout: tutorial
-title: Running the IBM Installation Manager
+title: 运行 IBM Installation Manager
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-IBM  Installation Manager installs the {{ site.data.keys.mf_server_full }} files and tools on your computer.
+IBM Installation Manager 在计算机上安装 {{ site.data.keys.mf_server_full }} 文件和工具。
 
-You run Installation Manager to install the binary files of {{ site.data.keys.mf_server }} and the tools to deploy the {{ site.data.keys.mf_server }} applications to an application server on your computer. The files and tools that are installed by the installer are described in [Distribution structure of {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server).
+可运行 Installation Manager 来安装 {{ site.data.keys.mf_server }} 和工具的二进制文件，以将 {{ site.data.keys.mf_server }} 应用程序部署到您的计算机上的应用程序服务器中。[{{ site.data.keys.mf_server }} 的分布结构](#distribution-structure-of-mobilefirst-server)中描述了安装程序安装的文件和工具。
 
-You need IBM Installation Manager V1.8.4 or later to run the {{ site.data.keys.mf_server }} installer. You can run it either in graphical mode or in command line mode.  
-Two main options are proposed during the installation process:
+您需要 IBM Installation Manager V1.8.4 或更高版本来运行 {{ site.data.keys.mf_server }} 安装程序。可以图形方式或命令行方式运行该程序。  
+安装过程中将对两种主要选项提出建议：
 
-* Activation of token licensing
-* Installation and deployment of {{ site.data.keys.mf_app_center }}
+* 激活令牌许可
+* 安装和部署 {{ site.data.keys.mf_app_center }}
 
-### Token licensing
+### 令牌许可
 {: #token-licensing }
-Token licensing is one of the two licensing methods supported by {{ site.data.keys.mf_server }}. You must determine whether you need to activate token licensing or not. If you do not have a contract that defines the use of token licensing with the Rational  License Key Server, do not activate token licensing. If you activate token licensing, you must configure {{ site.data.keys.mf_server }} for token licensing. For more information, see [Installing and configuring for token licensing](../token-licensing).
+令牌许可是 {{ site.data.keys.mf_server }} 支持的两种许可方法之一。您必须确定是否需要激活令牌许可。如果您没有定义将令牌许可用于 Rational License
+Key Server 的合同，那么请不要激活令牌许可。如果激活令牌许可，那么必须针对令牌许可配置 {{ site.data.keys.mf_server }}。有关更多信息，请参阅[针对令牌许可进行安装和配置](../token-licensing)。
 
 ### {{ site.data.keys.mf_app_center_full }}
 {: #ibm-mobilefirst-foundation-application-center }
-Application Center is a component of {{ site.data.keys.product }}. With Application Center, you can share mobile applications that are under development within your organization in a single repository of mobile applications.
+Application Center 是 {{ site.data.keys.product }} 的组件。利用 Application Center，您可以在单个移动应用程序存储库中共享组织内正在开发的移动应用程序。
 
-If you choose to install Application Center with Installation Manager, you must provide the database and the application server parameters so that Installation Manager configures the databases and deploys Application Center to the application server. If you choose not to install Application Center with Installation Manager, Installation Manager saves the WAR file and the resources of Application Center to your disk. It does not set up the databases nor deploys Application Center WAR file to your application server. You can do this later by using Ant tasks or manually. This option to install Application Center is a convenient way to discover Application Center because you are guided during the installation process by the graphical Install wizard.
+如果选择使用 Installation Manager 安装 Application Center，那么必须提供数据库和应用程序服务器参数，以便 Installation Manager 能够配置数据库并将 Application Center 部署到应用程序服务器上。如果选择不使用 Installation Manager 安装 Application Center，那么 Installation Manager 会将 WAR 文件以及 Application Center 的资源保存到磁盘上。它既不会设置数据库，也不会将 Application Center WAR 文件部署到应用程序服务器上。可以稍后使用 Ant 任务或手动完成此操作。用于安装 Application Center 的这一选项是发现 Application Center 的一种简便方式，因为安装过程中图形安装向导会为您提供指导。
 
-However, for production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to {{ site.data.keys.mf_server }} from the updates to Application Center.
+但是，对于生产安装，请使用 Ant 任务来安装 Application Center。使用 Ant 任务进行安装使您能够将 {{ site.data.keys.mf_server }} 的更新与 Application Center 的更新区分开来。
 
-* Advantage of installing Application Center with Installation Manager.
-    * A guided graphical wizard assists you through the installation and deployment process.
-* Disadvantages of installing Application Center with Installation Manager.
-    * If Installation Manager is run with the root user on UNIX or Linux, it might create files that are owned by root in the directory of the application server where Application Center is deployed. As a result, you must run the application server as root.
-    * You have no access to the database scripts and cannot provide them to your database administrator to create the tables before you run the installation procedure. Installation Manager creates the database tables for you with default settings.
-    * Each time when you upgrade the product, for example to install an interim fix, Application Center is upgraded first. The upgrade of Application Center includes operations on the database and the application server. If the upgrade of Application Center fails, it prevents Installation Manager from completing the upgrade, and prevents you from upgrading other {{ site.data.keys.mf_server }} components. For production installation, do not deploy Application Center with Installation Manager. Install Application Center separately with Ant tasks after Installation Manager installs{{ site.data.keys.mf_server }}. For more information about Application Center, see [Installing and configuring the Application Center](../../../appcenter).
+* 使用 Installation Manager 安装 Application Center 的优势。
+    * 指导性图形向导会帮助您完成安装和部署过程。
+* 使用 Installation Manager 安装 Application Center 的劣势。
+    * 如果在 UNIX 或 Linux 上使用 root 用户运行 Installation Manager，那么可能会创建由部署 Application Center 的应用程序服务器的目录中的根目录所拥有的文件。因此，您必须作为 root 用户运行应用程序服务器。
+    * 您无权访问数据库脚本，也无法向数据库管理员提供此脚本以在运行安装过程前创建表。Installation Manager 可使用缺省设置为您创建数据库表。
+    * 每次升级产品时（例如，要安装临时修订），都首先会升级 Application Center。升级 Application Center 包括在数据库和应用程序服务器上进行操作。如果 Application Center 升级失败，那么将阻止 Installation Manager 完成升级，并阻止您升级其他 {{ site.data.keys.mf_server }} 组件。对于生产安装，请不要使用 Installation Manager 部署 Application Center。在 Installation Manager 安装 {{ site.data.keys.mf_server }} 后，请单独使用 Ant 任务来安装 Application Center。有关 Application Center 的更多信息，请参阅[安装和配置 Application Center](../../../appcenter)。
 
-> **Important:** The {{ site.data.keys.mf_server }} installer installs only the {{ site.data.keys.mf_server }} binary files and tools on your disk. It does not deploy the {{ site.data.keys.mf_server }} applications to your application server. After you run the installation with Installation Manager, you must set up the databases and deploy the {{ site.data.keys.mf_server }} applications to your application server.  
-> Similarly, when you run Installation Manager to update an existing installation, it updates only the files on your disk. You need to perform more actions to update the applications that are deployed to your application servers.
-
-#### Jump to
+> **要点：**{{ site.data.keys.mf_server }} 安装程序仅将 {{ site.data.keys.mf_server }} 二进制文件和工具安装在磁盘上。它不会将 {{ site.data.keys.mf_server }} 应用程序部署到应用程序服务器上。使用 Installation Manager 运行安装后，必须设置数据库并将 {{ site.data.keys.mf_server }} 应用程序部署到应用程序服务器上。  
+> 类似地，运行 Installation Manager 以更新现有安装时，将仅更新磁盘上的文件。需执行更多操作以更新部署到应用程序服务器的应用程序。
+#### 跳转至
 {: #jump-to }
-* [Administrator versus user mode](#administrator-versus-user-mode)
-* [Installing by using IBM Installation Manager Install wizard](#installing-by-using-ibm-installation-manager-install-wizard)
-* [Installing by running IBM Installation Manager in command line](#installing-by-running-ibm-installation-manager-in-command-line)
-* [Installing by using XML response files - silent installation](#installing-by-using-xml-response-files---silent-installation)
-* [Distribution structure of {{ site.data.keys.mf_server }}](#distribution-structure-of-mobilefirst-server)
+* [管理员与用户方式](#administrator-versus-user-mode)
+* [使用 IBM Installation Manager 安装向导进行安装](#installing-by-using-ibm-installation-manager-install-wizard)
+* [在命令行中运行 IBM Installation Manager 来安装](#installing-by-running-ibm-installation-manager-in-command-line)
+* [使用 XML 响应文件进行安装 - 静默安装](#installing-by-using-xml-response-files---silent-installation)
+* [{{ site.data.keys.mf_server }} 的分布结构](#distribution-structure-of-mobilefirst-server)
 
-## Administrator versus user mode
+## 管理员与用户方式
 {: #administrator-versus-user-mode }
-You can install {{ site.data.keys.mf_server }} in two different IBM  Installation Manager modes. The mode depends on how IBM Installation Manager itself is installed. The mode determines the directories and commands that you use for both Installation Manager and packages.
+可以通过两种不同的 IBM Installation Manager 方式来安装 {{ site.data.keys.mf_server }}。方式取决于 IBM Installation Manager 自身的安装方式。方式可决定您用于 Installation Manager 和软件包的目录和命令。
 
-{{ site.data.keys.product }} supports the following two Installation Manager modes:
+{{ site.data.keys.product }} 支持以下两种 Installation Manager 方式：
 
-* Administrator mode
-* User (nonadministrator) mode
+* 管理员方式
+* 用户（非管理员）方式
 
-Group mode that is available on Linux or UNIX is not supported by the product.
+产品不支持 Linux 或 UNIX 上可用的组方式。
 
-### Administrator mode
+### 管理员方式
 {: #administrator-mode }
-In administrator mode, Installation Manager must be run as root under Linux or UNIX, and with administrator privileges under Windows. The repository files of Installation Manager (that is the list of installed software and its version) are installed in a system directory. /var/ibm on Linux or UNIX, or ProgramData on Windows. Do not deploy Application Center with Installation Manager if you run Installation Manager in administrator mode.
+在管理员方式下，必须作为 root 用户在 Linux 或 UNIX 下运行 Installation Manager，在 Windows 下必须使用管理员权限来运行。系统目录中安装有 Installation Manager 的存储库文件（即安装的软件及其版本的列表）。/var/ibm（Linux 或 UNIX）或 ProgramData（Windows 上）。如果以管理员方式运行 Installation Manager，请不要使用 Installation Manager 部署 Application Center。
 
-### User (nonadministrator) mode
+### 用户（非管理员）方式
 {: #user-nonadministrator-mode }
-In user mode, Installation Manager can be run by any user without specific privileges. However, the repository files of Installation manager are stored in the user's home directory. Only that user is able to upgrade an installation of the product.
-If you do not run Installation Manager as root, make sure that you have a user account that is available later when you upgrade the product installation or apply an interim fix.
+在用户方式下，不具有特定权限的任何用户均可运行 Installation Manager。但是，Installation Manager 的存储库文件存储在用户主目录中。只有该用户能够升级产品安装。
+如果未作为 root 用户运行 Installation Manager，请确保您在升级产品安装过程或应用临时修订后提供用户帐户。
 
-For more information about the Installation Manager modes, see [Installing as an administrator, nonadministrator, or group](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc) in the IBM Installation Manager documentation.
+有关 Installation Manager 方式的更多信息，请参阅 IBM Installation Manager 文档中的 [Installing as an administrator, nonadministrator, or group](http://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_admin_nonadmin.html?lang=en&view=kc)。
 
-## Installing by using IBM Installation Manager Install wizard
+## 使用 IBM Installation Manager 安装向导进行安装
 {: #installing-by-using-ibm-installation-manager-install-wizard }
-Follow the steps in the procedure to install the resources of {{ site.data.keys.mf_server }}, and the tools (such as the Server Configuration Tool, Ant, and mfpadm program).  
-The decisions in the following two panes in the installation wizard are mandatory:
+遵循安装 {{ site.data.keys.mf_server }} 的资源和工具（例如，Server Configuration Tool、Ant 和 mfpadm 程序）的过程中的步骤。  
+安装向导的以下两个窗格中的决策为必填：
 
-* The **General settings** panel.
-* The **Choose configuration** panel to install Application Center.
+* **常规设置**面板。
+* **选择配置**面板，用于安装 Application Center。
 
-1. Launch Installation Manager.
-2. Add the repository of {{ site.data.keys.mf_server }} in Installation Manager.
-    * Go to **File → Preferences** and click **Add Repositories...**.
-    * Browse for the repository file in the directory where the installer is extracted.
+1. 启动 Installation Manager。
+2. 在 Installation Manager 中添加 {{ site.data.keys.mf_server }} 的存储库。
+    * 转至**文件 → 首选项**，然后单击**添加存储库...**。
+    * 在安装程序的解压缩目录中浏览存储库文件。
 
-        If you decompress the {{ site.data.keys.product }} V8.0 .zip file for {{ site.data.keys.mf_server }} in **mfp\_installer\_directory** folder, the repository file can be found at **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
+        如果将 {{ site.data.keys.mf_server }} 的 {{ site.data.keys.product }} V8.0 .zip 文件解压缩到 **mfp\_installer\_directory** 文件夹中，那么存储库文件位于 **mfp\_installer\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**。
 
-        You might also want to apply the latest fix pack that can be downloaded from the [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation). Make sure to enter the repository for the fix pack. If you decompress the fix pack in **fixpack_directory** folder, the repository file is found in **fixpack\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**.
+        您还可能想应用可从 [IBM 支持门户网站](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)下载的最新修订包。确保输入修订包的存储库。如果将修订包解压缩到 **fixpack_directory** 文件夹，那么可以在 **fixpack\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf** 中找到存储库文件。
 
-        **Note:** You cannot install the fix pack without the repository of the base version in the repositories of Installation Manager. The fix packs are incremental installers and need the repository of the base version to be installed.
-    * Select the file and click **OK**.
-    * Click **OK** to close the **Preferences** panel.
-3. After you accept the license terms of the product, click **Next**.
-4. Choose the package group to install the product.
+        **注：**如果 Installation Manager 存储库中没有基本版本的存储库，那么无法安装修订包。修订包是累积安装程序，需要安装基本版本的存储库。    * 选择该文件，然后单击**确定**。
+    * 单击**确定**以关闭**首选项**面板。
+3. 在您接受产品的许可条款之后，单击**下一步**。
+4. 选择软件包组以安装产品。
 
-    {{ site.data.keys.product }} V8.0 is a replacement for the previous releases that have a different installation name:
-    * Worklight for V5.0.6
-    * IBM Worklight for V6.0 to V6.3
+    {{ site.data.keys.product }} V8.0 取代具有不同安装名称的先前发行版：
+    * Worklight (V5.0.6)
+    * IBM Worklight（V6.0 至 V6.3）
     
-    If one of these older versions of the product is installed on your computer, Installation Manager offers you an option Use an Existing Package Group at the start of the installation process. This option uninstalls your older version of the product, and reuse your older installation options to upgrade {{ site.data.keys.mf_app_center_full }} if it was installed.
+    如果计算机上安装了上述某个较旧版本的产品，Installation Manager 在开始安装流程时将允许您选择使用现有软件包组。此选项会卸载产品的较旧版本，然后复用较旧安装选项来升级 {{ site.data.keys.mf_app_center_full }}（如果先前已安装）。
     
-    For a separate installation, select the Create a New Package group option so that you can install the new version alongside with the older one.  
-    If no other version of the product is installed on your computer, choose the Create a new package group option to install the product in a new package group.
+    要进行独立安装，请选择创建新软件包组选项，以便您可以并行于较旧版本来安装新版本。  
+    如果未在计算机上安装任何其他版本的产品，那么选择创建新软件包组选项以在新软件包组中安装产品。
     
-5. Click **Next**.
-6. Decide whether to activate token licensing in the **Activate token licensing** section of the **General settings** panel.
+5. 单击**下一步**。
+6. 在**常规设置**面板的**激活令牌许可**部分中决定是否激活令牌许可。
 
-    If you have a contract to use token licensing with Rational  License Key Server, select the **Activate token licensing with the Rational License Key Server** option. After you activate token licensing, you must do extra steps to configure {{ site.data.keys.mf_server }}. Otherwise, select the **Do not activate token licensing with the Rational License Key Server** option to proceed.
-7. Keep the default option (No) as-is in the **Install {{ site.data.keys.product }} for iOS** section of the **General settings** panel.
-8. Decide whether to install Application Center in **Choose configuration** panel.
+    如果您的某个合同要通过 Rational License Key Server 使用令牌许可，请选择**使用 Rational License Key Server 激活令牌许可**选项。在激活令牌许可之后，必须执行额外的步骤来配置 {{ site.data.keys.mf_server }}。否则，请选择**不使用 Rational License Key Server 激活令牌许可**选项以继续。
+7. 保持**常规设置**面板的**安装 {{ site.data.keys.product }} for iOS** 部分中的缺省选项（否）不变。
+8. 在**选择配置**面板中决定是否安装 Application Center。
 
-    For production installation, use Ant tasks to install Application Center. The installation with Ant tasks enables you to decouple the updates to {{ site.data.keys.mf_server }} from the updates to Application Center. In this case, select No option in the Choose configuration panel so that Application Center is not installed.
+    对于生产安装，请使用 Ant 任务来安装 Application Center。使用 Ant 任务进行安装使您能够将 {{ site.data.keys.mf_server }} 的更新与 Application Center 的更新区分开来。在此情况下，在“选择配置”面板中选择“否”选项，这样便不会安装 Application Center。
 
-    If you select Yes, you need to go through the next panes to enter the details about the database you plan to use and the application server where you plan to deploy Application Center. You also need to have the JDBC driver of your database available.
-9. Click **Next** until you reach the **Thank You** panel. Then, proceed with the installation.
+    如果选择“是”，需要完成后续窗格以输入计划使用的数据库以及计划部署 Application Center 的应用程序服务器的详细信息。还需要有可用的数据库 JDBC 驱动程序。9. 单击**下一步**直到达到**谢谢您**面板。
+然后，继续进行安装。
 
-An installation directory that contains the resources to install {{ site.data.keys.product_adj }} components is installed.
+安装一个安装目录，其中包含用于安装 {{ site.data.keys.product_adj }} 组件的资源。
 
-You can find the resources in the following folders:
+您可以在以下文件夹中找到资源：
 
-* **MobileFirstServer** folder for {{ site.data.keys.mf_server }}
-* **PushService** folder for {{ site.data.keys.mf_server }} push service
-* **ApplicationCenter** folder for Application Center
-* **Analytics** folder for {{ site.data.keys.mf_analytics }}
+* **MobileFirstServer**文件夹（针对 {{ site.data.keys.mf_server }}）
+* **PushService** 文件夹（针对 {{ site.data.keys.mf_server }} 推送服务）
+* **ApplicationCenter** 文件夹（针对 Application Center）
+* **Analytics** 文件夹（针对 {{ site.data.keys.mf_analytics }}）
 
-You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
+您还可以在 **shortcuts** 文件夹中找到 Server Configuration Tool、Ant 和 mfpadm 程序的一些快捷方式。
 
-## Installing by running IBM Installation Manager in command line
+## 在命令行中运行 IBM Installation Manager 来安装
 {: #installing-by-running-ibm-installation-manager-in-command-line }
 
-1. Review the license agreement for {{ site.data.keys.mf_server }}. The license files can be viewed when you download the installation repository from Passport Advantage .
-2. Extract the compressed file of {{ site.data.keys.mf_server }} repository, that you downloaded, to a folder.
+1. 查看 {{ site.data.keys.mf_server }} 的许可协议。可以在从 Passport Advantage 下载安装库时查看许可文件。
+2. 将下载的 {{ site.data.keys.mf_server }} 存储库的压缩文件解压缩至某个文件夹中。
 
-    You can download the repository from the {{ site.data.keys.product }} eAssembly on [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm). The name of the pack is **IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip file of Installation Manager Repository for IBM MobileFirst Platform Server**.
+    您可以从 [IBM Passport Advantage](http://www.ibm.com/software/passportadvantage/pao_customers.htm) 上的 {{ site.data.keys.product }} eAssembly 下载存储库。包名称为 **IBM MobileFirst Platform Server 的 Installation Manager 存储库的 IBM MobileFirst Foundation V{{ site.data.keys.product_V_R }} .zip 文件**。
 
-    In the steps that follow, the directory where you extract the installer is referred as **mfp\_repository\_dir**. It contains a **MobileFirst\_Platform\_Server/disk1** folder.
-3. Start a command line and go to **installation\_manager\_install\_dir/tools/eclipse/**.
+    在后续步骤中，解压缩安装程序的目录称为 **mfp\_repository\_dir**。其中包含 **MobileFirst\_Platform\_Server/disk1** 文件夹。
+3. 启动命令行，并转至 **installation\_manager\_install\_dir/tools/eclipse/**。
 
-    If you accept the license agreement after the review in step 1, install {{ site.data.keys.mf_server }}.
-    * For an installation without token licensing enforcement (if you do not have a contract that defines the use of token licensing), enter the command:
+    如果在步骤 1 中查看许可协议后表示接受，即可安装 {{ site.data.keys.mf_server }}。
+    * 对于未强制令牌许可的安装（如果您不具备定义令牌使用许可的合同），请输入以下命令：
 
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=false,user.use.ios.edition=false -acceptLicense
       ```
-    * For an installation with token licensing enforcement, enter the command:
+    * 对于强制令牌许可的安装，请输入以下命令：
+
     
       ```bash
       imcl install com.ibm.mobilefirst.foundation.server -repositories mfp_repository_dir/MobileFirst_Platform_Server/disk1 -properties user.appserver.selection2=none,user.database.selection2=none,user.database.preinstalled=false,user.licensed.by.tokens=true,user.use.ios.edition=false -acceptLicense
       ```
     
-        The value of **user.licensed.by.tokens** property is set to **true**. You must configure {{ site.data.keys.mf_server }} for [token licensing](../token-licensing).
+        **user.licensed.by.tokens** 属性值设置为 **true**。您必须为[令牌许可](../token-licensing)配置 {{ site.data.keys.mf_server }}。
         
-        The following properties are set to install {{ site.data.keys.mf_server }} without Application Center:
+        将设置以下属性，以在无 Application Center 的情况下安装 {{ site.data.keys.mf_server }}：
         * **user.appserver.selection2**=none
         * **user.database.selection2**=none
         * **user.database.preinstalled**=false
         
-        This property indicates whether token licensing is activated or not: **user.licensed.by.tokens=true/false**.
+        此属性指示是否激活令牌许可：**user.licensed.by.tokens=true/false**。
         
-        Set the value of the user.use.ios.edition property to false to install {{ site.data.keys.product }}.
+        将 user.use.ios.edition 属性的值设置为 false 以安装 {{ site.data.keys.product }}。
         
-5. If you want to install with the latest interim fix, add the interim fix repository in the **-repositories** parameter. The **-repositories** parameter takes a comma-separated list of repositories.
+5. 如果要使用最新的临时修订进行安装，请在 **-repositories** 参数中添加临时修订存储库。**-repositories** 参数用于提取存储库的逗号分隔列表。
 
-    Add the version of the interim fix by replacing **com.ibm.mobilefirst.foundation.server** with **com.ibm.mobilefirst.foundation.server_version**. **version** has the form **8.0.0.0-buildNumber**. For example, if you install the interim fix **8.0.0.0-IF20160103101**5, enter the command: `imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`.
+    通过将 **com.ibm.mobilefirst.foundation.server** 替换为 **com.ibm.mobilefirst.foundation.server_version**，来添加临时修订版本。**version** 的格式为 **8.0.0.0-buildNumber**。例如，如果要安装临时修订 **8.0.0.0-IF20160103101**5，请输入以下命令：`imcl install com.ibm.mobilefirst.foundation.server_8.0.0.00-201601031015 -repositories...`。
     
-    For more information about the imcl command, see [Installation Manager: Installing packages by using `imcl` commands](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en).
+    有关 imcl 命令的更多信息，请参阅 [Installation Manager：使用 `imcl` 命令安装软件包](https://www.ibm.com/support/knowledgecenter/SSDV2W_1.8.4/com.ibm.cic.commandline.doc/topics/t_imcl_install.html?lang=en)。
     
-An installation directory that contains the resources to install {{ site.data.keys.product_adj }} components is installed.
+安装一个安装目录，其中包含用于安装 {{ site.data.keys.product_adj }} 组件的资源。
 
-You can find the resources in the following folders:
+您可以在以下文件夹中找到资源：
 
-* **MobileFirstServer** folder for {{ site.data.keys.mf_server }}
-* **PushService** folder for {{ site.data.keys.mf_server }} push service
-* **ApplicationCenter** folder for Application Center
-* **Analytics** folder for {{ site.data.keys.mf_analytics }}    
+* **MobileFirstServer**文件夹（针对 {{ site.data.keys.mf_server }}）
+* **PushService** 文件夹（针对 {{ site.data.keys.mf_server }} 推送服务）
+* **ApplicationCenter** 文件夹（针对 Application Center）
+* **Analytics** 文件夹（针对 {{ site.data.keys.mf_analytics }}）    
 
-You can also find some shortcuts for the Server Configuration Tool, Ant, and mfpadm program in the **shortcuts** folder.
+您还可以在 **shortcuts** 文件夹中找到 Server Configuration Tool、Ant 和 mfpadm 程序的一些快捷方式。
 
-## Installing by using XML response files - silent installation
+## 使用 XML 响应文件进行安装 - 静默安装
 {: #installing-by-using-xml-response-files---silent-installation }
-If you want to install {{ site.data.keys.mf_app_center_full }} with IBM Installation Manager in command line, you need to provide a large list of arguments. In this case, use the XML response files to provide these arguments.
+如果要在命令行中使用 IBM Installation Manager 安装 {{ site.data.keys.mf_app_center_full }}，需要提供较大的自变量列表。在此情况下，可以使用 XML 响应文件提供这些自变量。
 
-Silent installations are defined by an XML file that is called a response file. This file contains the necessary data to complete installation operations silently. Silent installations are started from the command line or a batch file.
+静默安装由称为响应文件的 XML 文件定义。该文件包含静默完成安装操作的必要数据。静默安装从命令行或批处理文件启动。
 
-You can use Installation Manager to record preferences and installation actions for your response file in user interface mode. Alternatively, you can create a response file manually by using the documented list of response file commands and preferences.
+您可在用户界面方式下使用 Installation Manager 为响应文件记录首选项和安装操作。或者，您可使用记录的响应文件命令和首选项的列表，手动创建响应文件。
 
-Silent installation is described in the Installation Manager user documentation, see [Working in silent mode](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silentinstall_overview.html).
+Installation Manager 用户文档中描述了静默安装，请参阅[使用静默方式](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silentinstall_overview.html)。
 
-There are two ways to create a suitable response file:
+可以通过两种方式创建合适的响应文件：
 
-* Working with sample response files provided in the {{ site.data.keys.product_adj }} user documentation.
-* Working with a response file recorded on a different computer.
+* 使用 {{ site.data.keys.product_adj }} 用户文档中提供的样本响应文件。
+* 使用不同计算机上记录的响应文件。
 
-Both of these methods are documented in the following sections.
+后续部分中对这两种方法都进行了介绍。
 
-### Working with sample response files for IBM Installation Manager
+### 使用用于 IBM Installation Manager 的样本响应文件
 {: #working-with-sample-response-files-for-ibm-installation-manager }
-Sample response files for IBM Installation Manager are provided in the **Silent\_Install\_Sample_Files.zip** compressed file. The following procedures describe how to use them.
+**Silent\_Install\_Sample_Files.zip** 压缩文件中包含 IBM Installation Manager 的样本响应文件。以下过程介绍了如何使用这些文件。
 
-1. Pick the appropriate sample response file from the compressed file. The Silent_Install_Sample_Files.zip file contains one subdirectory per release.
+1. 从压缩文件中选取适用的样本响应文件。Silent_Install_Sample_Files.zip 文件对于每个发行版都包含一个子目录。
 
-    > **Important:**  
+    > **要点：**  
     > 
-    > * For an installation that does not install Application Center on an application server, use the file named **install-no-appcenter.xml**.
-    > * For an installation that installs Application Center, pick the sample response file from the following table, depending on your application server and database.
-
-   #### Sample installation response files in the **Silent\_Install\_Sample_Files.zip** file to install the Application Center
+    > *对于不在应用程序服务器上安装 Application Center 的安装，请使用名为 **install-no-appcenter.xml** 的文件。
+    > * 对于要安装 Application Center 的安装，请根据应用程序服务器和数据库从下表中选取样本响应文件。
+   
+   #### **Silent\_Install\_Sample_Files.zip** 文件中用于安装 Application Center 的样本安装响应文件
     
     <table>
         <tr>
@@ -210,9 +210,9 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <th>Application server where you install the Application Center</th>
+            <th>安装 Application Center 的应用程序服务器</th>
             <th>Derby</th>
-            <th>IBM DB2 </th>
+            <th>IBM DB2</th>
             <th>MySQL</th>
             <th>Oracle</th>
         </tr>
@@ -221,10 +221,10 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <td>WebSphere  Application Server Liberty profile</td>
+            <td>WebSphere  Application Server Liberty Profile</td>
             <td>install-liberty-derby.xml</td>
             <td>install-liberty-db2.xml</td>
-            <td>install-liberty-mysql.xml (See Note)</td>
+            <td>install-liberty-mysql.xml（请参阅注释）</td>
             <td>install-liberty-oracle.xml</td>
         </tr>
         <tr>
@@ -232,10 +232,10 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <td>WebSphere Application Server full profile, stand-alone server</td>
+            <td>WebSphere Application Server Full Profile（独立服务器）</td>
             <td>install-was-derby.xml</td>
             <td>install-was-db2.xml</td>
-            <td>install-was-mysql.xml (See Note)</td>
+            <td>install-was-mysql.xml（请参阅注释）</td>
             <td>install-was-oracle.xml</td>
         </tr>
         <tr>
@@ -244,10 +244,10 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
             <td>WebSphere Application Server Network Deployment</td>
-            <td>n/a</td>
-            <td>install-wasnd-cluster-db2.xml, install-wasnd-server-db2.xml, install-wasnd-node-db2.xml, install-wasnd-cell-db2.xml</td>
-            <td>install-wasnd-cluster-mysql.xml (See Note), install-wasnd-server-mysql.xml (See Note), install-wasnd-node-mysql.xml, install-wasnd-cell-mysql.xml (See Note)</td>
-            <td>install-wasnd-cluster-oracle.xml, install-wasnd-server-oracle.xml, install-wasnd-node-oracle.xml, install-wasnd-cell-oracle.xml</td>
+            <td>不适用</td>
+            <td>install-wasnd-cluster-db2.xml、install-wasnd-server-db2.xml、install-wasnd-node-db2.xml 和 install-wasnd-cell-db2.xml</td>
+            <td>install-wasnd-cluster-mysql.xml（请参阅注释）、install-wasnd-server-mysql.xml（请参阅注释）、install-wasnd-node-mysql.xml 和 install-wasnd-cell-mysql.xml（请参阅注释）</td>
+            <td>install-wasnd-cluster-oracle.xml、install-wasnd-server-oracle.xml、install-wasnd-node-oracle.xml 和 install-wasnd-cell-oracle.xml</td>
         </tr>
         <tr>
       <td></td>
@@ -262,13 +262,11 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
         </tr>
     </table>
     
-    > **Note:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311). You can use IBM DB2 or another DBMS that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
-
-    For uninstallation, use a sample file that depends on the version of {{ site.data.keys.mf_server }} or Worklight Server that you initially installed in the particular package group:
+    > **注释：**MySQL 与 WebSphere Application Server Liberty profile 或 WebSphere Application Server Full Profile 的组合不属于受支持的配置。有关更多信息，请参阅 [WebSphere Application Server 支持声明](http://www.ibm.com/support/docview.wss?uid=swg27004311)。您可以使用 IBM DB2 或其他受 WebSphere Application Server 支持的 DBMS，以受益于配置可获得 IBM 支持中心的全面支持。    对于卸载，使用的样本文件取决于在特定软件包组中最初安装的 {{ site.data.keys.mf_server }} 或 Worklight Server 的版本：
     
-    * {{ site.data.keys.mf_server }} uses the package group {{ site.data.keys.mf_server }}.
-    * Worklight Server V6.x, or later, uses the package group IBM Worklight.
-    * Worklight Server V5.x uses the package group Worklight.
+    * {{ site.data.keys.mf_server }} 使用软件包组 {{ site.data.keys.mf_server }}。
+    * Worklight Server V6.x 或更高版本使用软件包组 IBM Worklight。
+    * Worklight Server V5.x 使用软件包组 Worklight。
 
     <table>
         <tr>
@@ -276,8 +274,8 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <th>Initial version of {{ site.data.keys.mf_server }}</th>
-            <th>Sample file</th>
+            <th>{{ site.data.keys.mf_server }} 的初始版本</th>
+            <th>样本文件</th>
         </tr>
         <tr>
       <td></td>
@@ -300,391 +298,415 @@ Sample response files for IBM Installation Manager are provided in the **Silent\
       <td></td>
       <td></td>
       <td></td>
-            <td>IBM MobileFirst Server V6.x or later</td>
+            <td>IBM MobileFirst Server V6.x 或更高版本</td>
             <td>uninstall-initially-mfpserver.xml</td>
         </tr>
     </table>
 
-2. Change the file access rights of the sample file to be as restrictive as possible. Step 4 requires that you supply some passwords. If you must prevent other users on the same computer from learning these passwords, you must remove the read permissions of the file for users other than yourself. You can use a command, such as the following examples:
-    * On UNIX: `chmod 600 <target-file.xml>`
-    * On Windows: `cacls <target-file.xml> /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
-3. Similarly, if the server is a WebSphere Application Server Liberty profile or Apache Tomcat server, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following file:
-    * For WebSphere Application Server Liberty profile: `wlp/usr/servers/<server>/server.xml`
-    * For Apache Tomcat: `conf/server.xml`
-4. Adjust the list of repositories, in the <server> element. For more information about this step, see IBM Installation Manager documentation at [Repositories](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html).
+2. 更改样本文件的文件访问权限，尽可能提高其限制性。步骤 4 将会要求您提供一些密码。
+如果要防止同一台电脑上的其他用户获取这些密码，必须取消其他用户对文件的 read 权限。您可以使用命令，如以下示例：
+    * 在 UNIX 上：`chmod 600 <target-file.xml>`
+    * 在 Windows 上：`cacls <target-file.xml> /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+3. 同样，如果服务器是 WebSphere Application Server Liberty Profile 或 Apache Tomcat 服务器，并且打算只通过您的用户帐户启动该服务器，那么还必须除去除您之外的其他用户对以下文件“读”许可权：
+    * 对于 WebSphere Application Server Liberty Profile：`wlp/usr/servers/<server>/server.xml`
+    * 对于 Apache Tomcat：`conf/server.xml`
+4. 使用 <server> 元素来调整存储库列表。
+有关此步骤的更多信息，请参阅[存储库](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/r_repository_types.html)中的 IBM Installation Manager 文档。
 
-    In the `<profile>` element, adjust the values of each key/value pair.  
-    In the `<offering>` element in the `<install>` element, set the version attribute to match the release you want to install, or remove the version attribute if you want to install the newest version available in the repositories.
-5. Type the following command: `<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
+    使用 `<profile>` 元素来调整每个键/值对的值。  
+    在 `<install>` 元素的 `<offering>` 元素中，设置版本属性，使其与要安装的发行版匹配；但是如果要在存储库中安装可用的最新版本，请除去版本属性。5. 输入以下命令：`<InstallationManagerPath>/eclipse/tools/imcl input <responseFile>  -log /tmp/installwl.log -acceptLicense`
 
-    Where:
-    * `<InstallationManagerPath>` is the installation directory of IBM Installation Manager.
-    * `<responseFile>` is the name of the file that is selected and updated in step 1.
+    其中：
+    * `<InstallationManagerPath>` 是 IBM Installation Manager 的安装目录。
+    * `<responseFile>` 是在步骤 1 中选择并更新的文件的名称。
 
-> For more information, see the IBM Installation Manager documentation at [Installing a package silently by using a response file](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
+> 有关更多信息，请参阅[使用响应文件静默安装软件包](http://ibm.biz/knowctr#SSDV2W_1.8.4/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html)中的 IBM Installation Manager 文档。
     
 
-### Working with a response file recorded on a different machine
+### 处理在不同机器上记录的响应文件
 {: #working-with-a-response-file-recorded-on-a-different-machine }
 
-1. Record a response file, by running IBM Installation Manager in wizard mode and with option `-record responseFile` on a machine where a GUI is available. For more details, see [Record a response file with Installation Manager](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_create_response_files_IM.html).
-2. Change the file access rights of the response file to be as restrictive as possible. Step 4 requires that you supply some passwords. If you must prevent other users on the same computer from learning these passwords, you must remove the **read** permissions of the file for users other than yourself. You can use a command, such as the following examples:
-    * On UNIX: `chmod 600 response-file.xml`
-    * On Windows: `cacls response-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
-3. Similarly, if the server is a WebSphere  Application Server Liberty or Apache Tomcat server, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following file:
-    * For WebSphere Application Server Liberty: `wlp/usr/servers/<server>/server.xml`
-    * For Apache Tomcat: `conf/server.xml`
-4. Modify the response file to take into account differences between the machine on which the response file was created and the target machine.
-5. Install {{ site.data.keys.mf_server }} by using the response file on the target machine, as described in [Install a package silently by using a response file](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html).
+1. 在可以使用 GUI 的机器上，以向导方式运行 IBM Installation
+Manager 并使用 `-record responseFile` 选项，以记录响应文件。有关更多详细信息，请参阅[使用 Installation Manager 记录响应文件](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_create_response_files_IM.html)。
+2. 更改响应文件的文件访问权，使其限制性尽可能高。步骤 4 将会要求您提供一些密码。
+如果要防止同一台电脑上的其他用户获取这些密码，必须取消其他用户对文件的 **read** 权限。您可以使用命令，如以下示例：
+    * 在 UNIX 上：`chmod 600 response-file.xml`
+    * 在 Windows 上：`cacls response-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+3. 同样，如果服务器是 WebSphere Application Server Liberty 或 Apache Tomcat 服务器，并且打算只通过您的用户帐户启动该服务器，那么还必须除去除您之外的其他用户对以下文件“读”许可权：
+    * 对于 WebSphere Application Server Liberty：`wlp/usr/servers/<server>/server.xml`
+    * 对于 Apache Tomcat：`conf/server.xml`
+4. 修改响应文件以考虑到包含创建响应文件的机器与目标机器之间的差别。
+5. 使用目标机器上的响应文件安装 {{ site.data.keys.mf_server }}，如 [使用响应文件静默安装软件包](http://ibm.biz/knowctr#SSDV2W_1.7.0/com.ibm.silentinstall12.doc/topics/t_silent_response_file_install.html)中所述。
 
-### Command-line (silent installation) parameters
+### 命令行（静默安装）参数
 {: #command-line-silent-installation-parameters }
 <table style="word-break:break-all">
     <tr>
-        <th>Key</th>
-        <th>When necessary</th>
-        <th>Description</th>
-        <th>Allowed values</th>
+        <th>键</th>
+        <th>何时必要</th>
+        <th>描述</th>
+        <th>允许的值</th>
     </tr>
     <tr>
         <td>user.use.ios.edition</td>
-        <td>Always</td>
-        <td>Set the value to <code>false</code> if you plan to install {{ site.data.keys.product }}. If you plan to install the product for iOS edition, you must set the value to <code>true</code>.</td>
-        <td><code>true</code> or <code>false</code></td>
+        <td>总是</td>
+        <td>如果计划安装 {{ site.data.keys.product }}，那么将值设置为 <code>false</code>。如果计划为 iOS 版本安装产品，那么必须将值设置为 <code>true</code>。</td>
+        <td><code>true</code> 或 <code>false</code></td>
     </tr>
     <tr>
         <td>user.licensed.by.tokens</td>
-        <td>Always</td>
-        <td>Activation of token licensing. If you plan to use the product with the Rational  License Key Server, you must activate token licensing.<br/><br/>In this case, set the value to <code>true</code>. If you do not plan to use the product with Rational License Key Server, set the value to <code>false</code>.<br/><br/>If you activate license tokens, specific configuration steps are required after you deploy the product to an application server. </td>
-        <td><code>true</code> or <code>false</code></td>    
+        <td>总是</td>
+        <td>激活令牌许可。如果您计划将此产品与 Rational License
+Key Server 一起使用，那么必须激活令牌许可。<br/><br/>在此情况下，将值设置为 <code>true</code>。如果不计划将此产品与 Rational License Key Server 一起使用，那么将值设置为 <code>false</code>。<br/><br/>如果您激活许可令牌，那么在将产品部署到应用程序服务器后将需要执行特定的配置步骤。</td>
+        <td><code>true</code> 或 <code>false</code></td>    
     </tr>
     <tr>
         <td>user.appserver.selection2</td>
-        <td>Always</td>
-        <td>Type of application server. was means preinstalled WebSphere  Application Server 8.5.5. tomcat means Tomcat 7.0.</td>
+        <td>总是</td>
+        <td>应用程序服务器的类型。was 表示预安装的 WebSphere  Application Server 8.5.5。tomcat 表示 Tomcat 7.0。</td>
         <td></td>
     </tr>
     <tr>
         <td>user.appserver.was.installdir</td>
         <td>${user.appserver.selection2} == was</td>
-        <td>WebSphere Application Server installation directory.</td>
-        <td>An absolute directory name.</td>
+        <td>WebSphere Application Server 安装目录。</td>
+        <td>一个绝对目录名称。</td>
     </tr>
     <tr>
         <td>user.appserver.was.profile</td>
         <td>${user.appserver.selection2} == was</td>
-        <td>Profile into which to install the applications. For WebSphere Application Server Network Deployment, specify the Deployment Manager profile. Liberty means the Liberty profile (subdirectory wlp).</td>
-        <td>The name of one of the WebSphere Application Server profiles.</td>
+        <td>要在其中安装应用程序的概要文件。
+对于 WebSphere Application Server Network Deployment，请指定 Deployment Manager 概要文件。Liberty 表示 Liberty 概要文件（子目录 wlp）。</td>
+        <td>某个 WebSphere Application Server 概要文件的名称。</td>
     </tr>
     <tr>
         <td>user.appserver.was.cell</td>
-        <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>WebSphere Application Server cell into which to install the applications.</td>
-        <td>The name of the WebSphere Application Server cell.</td>
+        <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} != Liberty</td>
+        <td>要在其中安装应用程序的 WebSphere Application Server 单元。</td>
+        <td>WebSphere Application Server 单元的名称。</td>
     </tr>
     <tr>
         <td>user.appserver.was.node</td>
-        <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>WebSphere Application Server node into which to install the applications. This corresponds to the current machine.</td>
-        <td>The name of the WebSphere Application Server node of the current machine.</td>
+        <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} != Liberty</td>
+        <td>要在其中安装应用程序的 WebSphere Application Server 节点。这对应于当前机器。</td>
+        <td>当前机器的 WebSphere Application Server 节点的名称。</td>
     </tr>
     <tr>
         <td>user.appserver.was.scope</td>
-        <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-        <td>Type of set of servers into which to install the applications.<br/><br/><code>server</code> means a standalone server.<br/><br/><code>nd-cell</code> means a WebSphere Application Server Network Deployment cell. <code>nd-cluster</code> means a WebSphere Application Server Network Deployment cluster.<br/><br/><code>nd-node</code> means a WebSphere Application Server Network Deployment node (excluding clusters).<br/><br/><code>nd-server</code> means a managed WebSphere Application Server Network Deployment server.</td>
-        <td><code>server</code>, <code>nd-cell</code>, <code>nd-cluster</code>, <code>nd-node</code>, <code>nd-server</code></td>
+        <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} != Liberty</td>
+        <td>要在其中安装应用程序的服务器集合的类型。<br/><br/><code>server</code> 表示独立服务器。<br/><br/><code>nd-cell</code> 表示 WebSphere Application Server Network Deployment 单元。<code>nd-cluster</code> 表示 WebSphere Application Server Network Deployment 集群。<br/><br/><code>nd-node</code> 表示 WebSphere Application Server Network Deployment 节点（排除集群）。<br/><br/><code>nd-server</code> 表示受管 WebSphere Application Server Network Deployment 服务器。</td>
+        <td><code>server</code>、<code>nd-cell</code>、<code>nd-cluster</code>、<code>nd-node</code> 和 <code>nd-server</code></td>
     </tr>
     <tr>
       <td>user.appserver.was.serverInstance</td>
-      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope} == server</td>
-      <td>Name of WebSphere Application Server server into which to install the applications.</td>
-      <td>The name of a WebSphere Application Server server on the current machine.</td>
+      <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope}
+== server</td>
+      <td>要在其中安装应用程序的 WebSphere Application Server 服务器的名称。</td>
+      <td>当前机器上的 WebSphere Application Server 服务器的名称。</td>
     </tr>
     <tr>
       <td>user.appserver.was.nd.cluster</td>
-      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope} == nd-cluster</td>
-      <td>Name of WebSphere Application Server Network Deployment cluster into which to install the applications.</td>
-      <td>The name of a WebSphere Application Server Network Deployment cluster in the WebSphere Application Server cell.</td>
+      <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope}
+== nd-cluster</td>
+      <td>要在其中安装应用程序的 WebSphere Application Server Network Deployment 集群的名称。</td>
+      <td>WebSphere Application Server 单元中 WebSphere Application Server Network Deployment 集群的名称。</td>
     </tr>
     <tr>
       <td>user.appserver.was.nd.node</td>
-      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && (${user.appserver.was.scope} == nd-node || ${user.appserver.was.scope} == nd-server)</td>
-      <td>Name of WebSphere Application Server Network Deployment node into which to install the applications.</td>
-      <td>The name of a WebSphere Application Server Network Deployment node in the WebSphere Application Server cell.</td>
+      <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} != Liberty && (${user.appserver.was.scope}
+== nd-node || ${user.appserver.was.scope} == nd-server)</td>
+      <td>要在其中安装应用程序的 WebSphere Application Server Network Deployment 节点的名称。</td>
+      <td>WebSphere Application Server 单元中 WebSphere Application Server Network Deployment 节点的名称。</td>
     </tr>
     <tr>
       <td>user.appserver.was.nd.server</td>
-      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope} == nd-server</td>
-      <td>Name of WebSphere Application Server Network Deployment server into which to install the applications.</td>
-      <td>The name of a WebSphere Application Server Network Deployment server in the given WebSphere Application Server Network Deployment node.</td>
+      <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} != Liberty && ${user.appserver.was.scope}
+== nd-server</td>
+      <td>要在其中安装应用程序的 WebSphere Application Server Network Deployment 服务器的名称。</td>
+      <td>指定的 WebSphere Application Server Network Deployment 节点中 WebSphere Application Server Network Deployment 服务器的名称。</td>
     </tr>
     <tr>
       <td>user.appserver.was.admin.name</td>
-      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-      <td>Name of WebSphere Application Server administrator.</td>
+      <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} != Liberty</td>
+      <td>WebSphere Application Server 管理员的名称。</td>
       <td></td>
     </tr>
     <tr>
       <td>user.appserver.was.admin.password2</td>
-      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-      <td>Password of WebSphere Application Server administrator, optionally encrypted in a specific way.</td>
+      <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} != Liberty</td>
+      <td>WebSphere Application Server 管理员的密码（可以选择以特定方式加密）。</td>
       <td></td>
     </tr>
     <tr>
       <td>user.appserver.was.appcenteradmin.password</td>
-      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-      <td>Password of <code>appcenteradmin</code> user to add to the WebSphere Application Server users list, optionally encrypted in a specific way.</td>
+      <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} != Liberty</td>
+      <td>要添加到 WebSphere Application Server 用户列表的 <code>appcenteradmin</code> 用户的密码（可以选择以特定方式加密）。</td>
       <td></td>
     </tr>
     <tr>
       <td>user.appserver.was.serial</td>
-      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} != Liberty</td>
-      <td>Suffix that distinguishes the applications to be installed from other installations of {{ site.data.keys.mf_server }}.</td>
-      <td>String of 10 decimal digits.</td>
+      <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} != Liberty</td>
+      <td>用于区分要安装的应用程序与其他 {{ site.data.keys.mf_server }} 安装的后缀。</td>
+      <td>含 10 个十进制数字的字符串。</td>
     </tr>
     <tr>
       <td>user.appserver.was85liberty.serverInstance_</td>
-      <td>${user.appserver.selection2} == was && ${user.appserver.was.profile} == Liberty</td>
-      <td>Name of WebSphere Application Server Liberty server into which to install the applications.</td>
+      <td>${user.appserver.selection2} == was &&
+${user.appserver.was.profile} == Liberty</td>
+      <td>要在其中安装应用程序的 WebSphere Application Server Liberty 服务器的名称。</td>
       <td></td>
     </tr>
     <tr>
       <td>user.appserver.tomcat.installdir</td>
       <td>${user.appserver.selection2} == tomcat</td>
-      <td>Apache Tomcat installation directory. For a Tomcat installation that is split between a <b>CATALINA_HOME</b> directory and a <b>CATALINA_BASE</b> directory, here you need to specify the value of the <b>CATALINA_BASE</b> environment variable.</td>
-      <td>An absolute directory name.</td>
+      <td>Apache Tomcat 安装目录。对于在 <b>CATALINA_HOME</b> 目录与 <b>CATALINA_BASE</b> 目录之间分拆开的 Tomcat 安装，您需要在此指定 <b>CATALINA_BASE</b> 环境变量的值。</td>
+      <td>一个绝对目录名称。</td>
     </tr>
     <tr>
       <td>user.database.selection2</td>
-      <td>Always</td>
-      <td>Type of database management system used to store the databases.</td>
-      <td><code>derby</code>, <code>db2</code>, <code>mysql</code>, <code>oracle</code>, <code>none</code>. The value none means that the installer will not install the Application Center. If this value is used, both <b>user.appserver.selection2</b> and <b>user.database.selection2</b> must take the value none.</td>
+      <td>总是</td>
+      <td>用于存储数据库的数据库管理系统的类型。</td>
+      <td><code>derby</code>、<code>db2</code>、<code>mysql</code>、<code>oracle</code> 和 <code>none</code>。值 none 表示安装程序不会安装 Application Center。如果使用此值，那么 <b>user.appserver.selection2</b> 和 <b>user.database.selection2</b> 都必须采用值 none。</td>
     </tr>
     <tr>
       <td>user.database.preinstalled</td>
-      <td>Always</td>
-      <td><code>true</code> means a preinstalled database management system, <code>false</code> means Apache Derby to install.</td>
-      <td><code>true</code>, <code>false</code></td>
+      <td>总是</td>
+      <td><code>true</code> 表示预安装的数据库管理系统，而 <code>false</code> 表示要安装的 Apache Derby。</td>
+      <td><code>true</code> 和 <code>false</code></td>
     </tr>
     <tr>
       <td>user.database.derby.datadir</td>
       <td>${user.database.selection2} == derby</td>
-      <td>The directory in which to create or assume the Derby databases.</td>
-      <td>An absolute directory name.</td>
+      <td>要在其中创建或采用 Derby 数据库的目录。</td>
+      <td>一个绝对目录名称。</td>
     </tr>
     <tr>
       <td>user.database.db2.host</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The host name or IP address of the DB2  database server.</td>
+      <td>DB2 数据库服务器的主机名或 IP 地址。</td>
       <td></td>
     </tr>
     <tr>
       <td>user.database.db2.port</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The port where the DB2 database server listens for JDBC connections. Usually 50000.</td>
-      <td>A number between 1 and 65535.</td>
+      <td>一个端口，DB2 数据库服务器在此端口侦听 JDBC 连接。通常为 50000。</td>
+      <td>一个 1 到 65535 之间的数字。</td>
     </tr>
     <tr>
       <td>user.database.db2.driver</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The absolute file name of db2jcc4.jar.</td>
-      <td>An absolute file name.</td>
+      <td>db2jcc4.jar 的绝对文件名。</td>
+      <td>一个绝对文件名。</td>
     </tr>
     <tr>
       <td>user.database.db2.appcenter.username</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The user name used to access the DB2 database for Application Center.</td>
-      <td>Non-empty.</td>
+      <td>用于访问 Application Center 的 DB2 数据库的用户名。</td>
+      <td>非空。</td>
     </tr>
     <tr>
       <td>user.database.db2.appcenter.password</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The password used to access the DB2 database for Application Center, optionally encrypted in a specific way.</td>
-      <td>Non-empty password.</td>
+      <td>用于访问 Application Center 的 DB2 数据库的密码，可以选择以特定方式加密。</td>
+      <td>非空密码。</td>
     </tr>
     <tr>
       <td>user.database.db2.appcenter.dbname</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The name of the DB2 database for Application Center.</td>
-      <td>Non-empty; a valid DB2 database name.</td>
+      <td>Application Center 的 DB2 数据库的名称。</td>
+      <td>非空；一个有效的 DB2 数据库名称。</td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.isservicename.jdbc.url</td>
-      <td>Optional</td>
-      <td>Indicates if <b>user.database.mysql.appcenter.dbname</b> is a Service name or a SID name. If the parameter is absent then <b>user.database.mysql.appcenter.dbname</b> is considered to be a SID name.</td>
-      <td><code>true</code> (indicates a Service name) or <code>false</code> (indicates a SID name)</td>
+      <td>可选</td>
+      <td>指示 <b>user.database.mysql.appcenter.dbname</b> 是服务名称还是 SID 名称。如果该参数不存在，那么会将 <b>user.database.mysql.appcenter.dbname</b> 视为 SID 名称。</td>
+      <td><code>true</code>（指示服务名称）或 <code>false</code>（指示 SID 名称）</td>
     </tr>
     <tr>
       <td>user.database.db2.appcenter.schema</td>
       <td>${user.database.selection2} == db2</td>
-      <td>The name of the schema for Application Center in the DB2 database.</td>
+      <td>DB2 数据库中的 Application Center 模式的名称。</td>
       <td></td>
     </tr>
     <tr>
       <td>user.database.mysql.host</td>
       <td>${user.database.selection2} == mysql</td>
-      <td>The host name or IP address of the MySQL database server.</td>
+      <td>MySQL 数据库服务器的主机名或 IP 地址。</td>
       <td></td>
     </tr>
     <tr>
       <td>user.database.mysql.port</td>
       <td>${user.database.selection2} == mysql</td>
-      <td>The port where the MySQL database server listens for JDBC connections. Usually 3306.</td>
-      <td>A number between 1 and 65535.</td>
+      <td>一个端口，MySQL 数据库服务器在此端口侦听 JDBC 连接。
+通常为 3306。</td>
+      <td>一个 1 到 65535 之间的数字。</td>
     </tr>
     <tr>
       <td>user.database.mysql.driver</td>
       <td>${user.database.selection2} == mysql</td>
-      <td>The absolute file name of <b>mysql-connector-java-5.*-bin.jar</b>.</td>
-      <td>An absolute file name.</td>
+      <td><b>mysql-connector-java-5.*-bin.jar</b> 的绝对文件名。</td>
+      <td>一个绝对文件名。</td>
     </tr>
     <tr>
       <td>user.database.mysql.appcenter.username</td>
       <td>${user.database.selection2} == oracle</td>
-      <td>The user name used to access the Oracle database for Application Center.</td>
-      <td>A string consisting of 1 to 30 characters: ASCII digits, ASCII uppercase and lowercase letters, '_', '#', '$' are allowed.</td>
+      <td>用于访问 Application Center 的 Oracle 数据库的用户名。</td>
+      <td>由 1 到 30 个字符组成的字符串：允许使用 ASCII 数字、ASCII 大写和小写字母、“_”、“#”以及“$”。</td>
     </tr>
     <tr>
       <td>user.database.mysql.appcenter.password</td>
       <td>${user.database.selection2} == oracle</td>
-      <td>The password used to access the Oracle database for Application Center, optionally encrypted in a specific way.</td>
-      <td>The password must be a string consisting of 1 to 30 characters: ASCII digits, ASCII uppercase and lowercase letters, '_', '#', '$' are allowed.</td>
+      <td>用于访问 Application Center 的 Oracle 数据库的密码，可以选择以特定方式加密。</td>
+      <td>该密码必须是由 1 到 30 个字符组成的字符串：允许使用 ASCII 数字、ASCII 大写和小写字母、“_”、“#”以及“$”。</td>
     </tr>
     <tr>
       <td>user.database.mysql.appcenter.dbname</td>
-      <td>${user.database.selection2} == oracle, unless ${user.database.oracle.appcenter.jdbc.url} is specified</td>
-      <td>The name of the Oracle database for Application Center.</td>
-      <td>Non-empty, a valid Oracle database name.</td>
+      <td>${user.database.selection2} == oracle，除非指定了 ${user.database.oracle.appcenter.jdbc.url}</td>
+      <td>Application Center 的 Oracle 数据库的名称。</td>
+      <td>非空；一个有效的 Oracle 数据库名称。</td>
     </tr>
     <tr>
       <td>user.database.oracle.host</td>
-      <td>${user.database.selection2} == oracle, unless ${user.database.oracle.appcenter.jdbc.url} is specified</td>
-      <td>The host name or IP address of the Oracle database server.</td>
+      <td>${user.database.selection2} == oracle，除非指定了 ${user.database.oracle.appcenter.jdbc.url}</td>
+      <td>Oracle 数据库服务器的主机名或 IP 地址。</td>
       <td></td>
     </tr>
     <tr>
       <td>user.database.oracle.port</td>
-      <td>${user.database.selection2} == oracle, unless ${user.database.oracle.appcenter.jdbc.url} is specified</td>
-      <td>The port where the Oracle database server listens for JDBC connections. Usually 1521.</td>
-      <td>A number between 1 and 65535.</td>
+      <td>${user.database.selection2} == oracle，除非指定了 ${user.database.oracle.appcenter.jdbc.url}</td>
+      <td>一个端口，Oracle 数据库服务器在此端口侦听 JDBC 连接。
+通常为 1521。</td>
+      <td>一个 1 到 65535 之间的数字。</td>
     </tr>
     <tr>
       <td>user.database.oracle.driver</td>
       <td>${user.database.selection2} == oracle</td>
-      <td>The absolute file name of the Oracle thin driver jar file. (<b>ojdbc6.jar or ojdbc7.jar</b>)</td>
-      <td>An absolute file name.</td>
+      <td>Oracle 瘦驱动程序 jar 文件的绝对文件名。
+（<b>ojdbc6.jar 或 ojdbc7.jar</b>）</td>
+      <td>一个绝对文件名。</td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.username</td>
       <td>${user.database.selection2} == oracle</td>
-      <td>The user name used to access the Oracle database for Application Center.</td>
-      <td>A string consisting of 1 to 30 characters: ASCII digits, ASCII uppercase and lowercase letters, '_', '#', '$' are allowed.</td>
+      <td>用于访问 Application Center 的 Oracle 数据库的用户名。</td>
+      <td>由 1 到 30 个字符组成的字符串：允许使用 ASCII 数字、ASCII 大写和小写字母、“_”、“#”以及“$”。</td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.username.jdbc</td>
       <td>	${user.database.selection2} == oracle</td>
-      <td>The user name used to access the Oracle database for Application Center, in a syntax suitable for JDBC.</td>
-      <td>Same as ${user.database.oracle.appcenter.username} if it starts with an alphabetic character and does not contain lowercase characters, otherwise it must be ${user.database.oracle.appcenter.username} surrounded by double quotes.</td>
+      <td>用于访问 Application Center 的 Oracle 数据库的用户名，采用适合于 JDBC 的语法。</td>
+      <td>如果该用户名以一个字母字符开头并且不包含小写字符，那么与 ${user.database.oracle.appcenter.username} 相同，否则必须是引在双引号内的 ${user.database.oracle.appcenter.username}。</td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.password</td>
       <td>${user.database.selection2} == oracle</td>
-      <td>The password used to access the Oracle database for Application Center, optionally encrypted in a specific way.</td>
-      <td>The password must be a string consisting of 1 to 30 characters: ASCII digits, ASCII uppercase and lowercase letters, '_', '#', '$' are allowed.</td>
+      <td>用于访问 Application Center 的 Oracle 数据库的密码，可以选择以特定方式加密。</td>
+      <td>该密码必须是由 1 到 30 个字符组成的字符串：允许使用 ASCII 数字、ASCII 大写和小写字母、“_”、“#”以及“$”。</td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.dbname</td>
-      <td>${user.database.selection2} == oracle, unless ${user.database.oracle.appcenter.jdbc.url} is specified</td>
-      <td>The name of the Oracle database for Application Center.</td>
-      <td>Non-empty, a valid Oracle database name.
-</td>
+      <td>${user.database.selection2} == oracle，除非指定了 ${user.database.oracle.appcenter.jdbc.url}</td>
+      <td>Application Center 的 Oracle 数据库的名称。</td>
+      <td>非空；一个有效的 Oracle 数据库名称。</td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.isservicename.jdbc.url</td>
-      <td>Optional</td>
-      <td>Indicates if <code>user.database.oracle.appcenter.dbname</code> is a Service name or a SID name. If the parameter is absent then <code>user.database.oracle.appcenter.dbname</code> is considered to be a SID name.</td>
-      <td><code>true</code> (indicates a Service name) or <code>false</code> (indicates a SID name)</td>
+      <td>可选</td>
+      <td>指示 <code>user.database.oracle.appcenter.dbname</code> 是服务名称还是 SID 名称。如果该参数不存在，那么会将 <code>user.database.oracle.appcenter.dbname</code> 视为 SID 名称。</td>
+      <td><code>true</code>（指示服务名称）或 <code>false</code>（指示 SID 名称）</td>
     </tr>
     <tr>
       <td>user.database.oracle.appcenter.jdbc.url</td>
-      <td>${user.database.selection2} == oracle, unless ${user.database.oracle.host}, ${user.database.oracle.port}, ${user.database.oracle.appcenter.dbname} are all specified</td>
-      <td>The JDBC URL of the Oracle database for Application Center.</td>
-      <td>A valid Oracle JDBC URL. Starts with "jdbc:oracle:".</td>
+      <td>${user.database.selection2} == oracle，除非 ${user.database.oracle.host}、${user.database.oracle.port} 和 ${user.database.oracle.appcenter.dbname} 全都已指定</td>
+      <td>Application Center 的 Oracle 数据库的 JDBC URL。</td>
+      <td>一个有效的 Oracle JDBC URL。以“jdbc:oracle:”开头。</td>
     </tr>
     <tr>
       <td>user.writable.data.user</td>
-      <td>Always</td>
-      <td>The operating system user that is allowed to run the installed server.</td>
-      <td>An operating system user name, or empty.</td>
+      <td>总是</td>
+      <td>被允许运行所安装服务器的操作系统用户。</td>
+      <td>一个操作系统用户名，或为空。</td>
     </tr>
     <tr>
       <td>user.writable.data.group2</td>
-      <td>Always</td>
-      <td>The operating system users group that is allowed to run the installed server.</td>
-      <td>An operating system users group name, or empty.</td>
+      <td>总是</td>
+      <td>被允许运行所安装服务器的操作系统用户组。</td>
+      <td>一个操作系统用户组名，或为空。</td>
     </tr>
 </table>
 
-## Distribution structure of {{ site.data.keys.mf_server }}
+## {{ site.data.keys.mf_server }} 的分布结构
 {: #distribution-structure-of-mobilefirst-server }
-The {{ site.data.keys.mf_server }} files and tools are installed in the {{ site.data.keys.mf_server }} installation directory.
+{{ site.data.keys.mf_server }} 文件和工具都安装在 {{ site.data.keys.mf_server }} 安装目录中。
 
-#### Files and subdirectories in the Analytics subdirectory
+#### Analytics 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-analytics-subdirectory }
 
-| Item | Description |
+| 项目 | 描述 |
 |------|-------------|
-| **analytics.ear** and **analytics-*.war** | The EAR and WAR files to install {{ site.data.keys.mf_analytics }}. |
-| **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_analytics }} with Ant tasks. |
+| **analytics.ear** 和 **analytics-*.war** | 用于安装 {{ site.data.keys.mf_analytics }} 的 EAR 和 WAR 文件。 |
+| **configuration-samples** | 包含样本 Ant 文件以使用 Ant 任务安装 {{ site.data.keys.mf_analytics }}。 |
 
-#### Files and subdirectories in the ApplicationCenter subdirectory
+#### ApplicationCenter 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-applicationcenter-subdirectory }
 
-| Item | Description |
+| 项目 | 描述 |
 |------|-------------|
-| **configuration-samples** | Contains the sample Ant files to install Application Center. The Ant tasks create the database table and deploy WAR files to an application server. | 
-| **console** | Contains the EAR and WAR files to install Application Center. The EAR file is uniquely for IBM  PureApplication  System. | 
-| **databases** | Contains the SQL scripts to be used for the manual creation of tables for Application Center. |
-| **installer** | Contains the resources to create the Application Center client. | 
-| **tools** | The tools of Application Center. | 
+| **configuration-samples** | 包含用于安装 Application Center 的样本 Ant 文件。Ant 任务将创建数据库表并将 WAR 文件部署到应用程序服务器。 | 
+| **控制台** | 包含用于安装 Application Center 的 EAR 和 WAR 文件。EAR 文件对于 IBM
+PureApplication System 而言唯一。 | 
+| **数据库** | 包含用于为 Application Center 手动创建表的 SQL 脚本。 |
+| **安装程序** | 包含用于创建 Application Center 客户机的资源。 | 
+| **工具** | Application Center 的工具。 | 
 
-#### Files and subdirectories in the {{ site.data.keys.mf_server }} subdirectory
+#### {{ site.data.keys.mf_server }} 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-mobilefirst-server-subdirectory }
 
-| Item | Description |
+| 项目 | 描述 |
 |------|-------------|
-| **mfp-ant-deployer.jar** | A set of {{ site.data.keys.mf_server }} Ant tasks. |
-| **mfp-*.war** | The WAR files of the {{ site.data.keys.mf_server }} components. |
-| **configuration-samples** | Contains the sample Ant files to install {{ site.data.keys.mf_server }} components with Ant tasks. | 
-| **ConfigurationTool** | Contains the binary files of the Server Configuration Tool. The tool is launched from **mfp_server_install_dir/shortcuts**. |
-| **databases** | Contains the SQL scripts to be used for the manual creation of tables for {{ site.data.keys.mf_server }} components ({{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} configuration service, and {{ site.data.keys.product_adj }} runtime). | 
-| **external-server-libraries** |  Contains the JAR files that are used by different tools (such as the authenticity tool and the OAuth security tool). |
+| **mfp-ant-deployer.jar** | 一组 {{ site.data.keys.mf_server }} Ant 任务。 |
+| **mfp-*.war** | {{ site.data.keys.mf_server }} 组件的 WAR 文件。 |
+| **configuration-samples** | 包含样本 Ant 文件以使用 Ant 任务安装 {{ site.data.keys.mf_server }} 组件。 | 
+| **ConfigurationTool** | 包含 Server Configuration Tool 的二进制文件。可通过 **mfp_server_install_dir/shortcuts** 启动此工具。 |
+| **数据库** | 包含用于为 {{ site.data.keys.mf_server }} 组件（{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 配置服务和 {{ site.data.keys.product_adj }} 运行时）手动创建表的 SQL 脚本。 | 
+| **external-server-libraries** |  包含不同工具（如真实性工具和 OAuth 安全工具）使用的 JAR 文件。 |
 
-#### Files and subdirectories in the PushService subdirectory
+#### PushService 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-pushservice-subdirectory }
 
-| Item | Description |
+| 项目 | 描述 |
 |------|-------------|
-| **mfp-push-service.war** | The WAR file to install {{ site.data.keys.mf_server }} push service. |
-| **databases** | Contains the SQL scripts to be used for the manual creation of tables for {{ site.data.keys.mf_server }} push service. | 
+| **mfp-push-service.war** | 用于安装 {{ site.data.keys.mf_server }} 推送服务的 WAR 文件。 |
+| **数据库** | 包含用于为 {{ site.data.keys.mf_server }} 推送服务手动创建表的 SQL 脚本。 | 
 
-#### Files and subdirectories in the License subdirectory
+#### License 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-license-subdirectory }
 
-| Item | Description |
+| 项目 | 描述 |
 |------|-------------|
-| **Text** | Contains the license for {{ site.data.keys.product }}. | 
+| **Text** | 包含 {{ site.data.keys.product }} 的许可证。 | 
 
-#### Files and subdirectories in the {{ site.data.keys.mf_server }} installation directory
+#### {{ site.data.keys.mf_server }} 安装目录中的文件和子目录
 {: #files-and-subdirectories-in-the-mobilefirst-server-installation-directory }
 
-| Item | Description |
+| 项目 | 描述 |
 |------|-------------|
-| **shortcuts** | Launcher scripts for Apache Ant, the Server Configuration Tool, and the mfpadmin command, which are supplied with {{ site.data.keys.mf_server }}. | 
+| **shortcuts** | {{ site.data.keys.mf_server }} 随附了 Apache Ant 的启动程序脚本、Server Configuration Tool 和 mfpadmin 命令。 | 
 
-#### Files and subdirectories in the tools subdirectory
+#### tools 子目录中的文件和子目录
 {: #files-and-subdirectories-in-the-tools-subdirectory }
 
-| Item | Description |
+| 项目 | 描述 |
 |------|-------------|
-| **tools/apache-ant-version-number** | A binary installation of Apache Ant that is used by the Server Configuration Tool. It can also be used to run the Ant tasks. | 
+| **tools/apache-ant-version-number** | Server Configuration Tool 所使用的 Apache Ant 的二进制安装。它还可用于运行 Ant 任务。 | 

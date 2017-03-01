@@ -1,256 +1,256 @@
 ---
 layout: tutorial
-title: Installation Reference
+title: 安装参考
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-Reference information about Ant tasks and configuration sample files for the installation of {{ site.data.keys.mf_server_full }}, {{ site.data.keys.mf_app_center_full }}, and {{ site.data.keys.mf_analytics_full }}.
+有关用于安装 {{ site.data.keys.mf_server_full }}、{{ site.data.keys.mf_app_center_full }} 和 {{ site.data.keys.mf_analytics_full }} 的 Ant 任务和配置样本文件的参考信息。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
-* [Ant configuredatabase task reference](#ant-configuredatabase-task-reference)
-* [Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
-* [Ant tasks for installation of {{ site.data.keys.mf_server }} push service](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
-* [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
-* [Ant tasks for installation of Application Center](#ant-tasks-for-installation-of-application-center)
-* [Ant tasks for installation of {{ site.data.keys.mf_analytics }}](#ant-tasks-for-installation-of-mobilefirst-analytics)
-* [Internal runtime databases](#internal-runtime-databases)
-* [Sample configuration files](#sample-configuration-files)
-* [Sample configuration files for {{ site.data.keys.mf_analytics }}](#sample-configuration-files-for-mobilefirst-analytics)
+* [Ant configuredatabase 任务参考](#ant-configuredatabase-task-reference)
+* [用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services)
+* [用于安装 {{ site.data.keys.mf_server }} 推送服务的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-server-push-service)
+* [用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)
+* [用于安装 Application Center 的 Ant 任务](#ant-tasks-for-installation-of-application-center)
+* [用于安装 {{ site.data.keys.mf_analytics }} 的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-analytics)
+* [内部运行时数据库](#internal-runtime-databases)
+* [样本配置文件](#sample-configuration-files)
+* [{{ site.data.keys.mf_analytics }} 的样本配置文件](#sample-configuration-files-for-mobilefirst-analytics)
 
-## Ant configuredatabase task reference
+## Ant configuredatabase 任务参考
 {: #ant-configuredatabase-task-reference }
-Reference information for the configuredatabase Ant task. This reference information is for relational databases only. It does not apply to Cloudant .
+configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数据库。它不适用于 Cloudant。
 
-The **configuredatabase** Ant task creates the relational databases that are used by {{ site.data.keys.mf_server }} administration service, {{ site.data.keys.mf_server }} live update service, {{ site.data.keys.mf_server }} push service, {{ site.data.keys.product_adj }} runtime, and the Application Center services. This Ant task configures a relational database through the following actions:
+**configuredatabase** Ant 任务创建由 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务、{{ site.data.keys.mf_server }} 推送服务、{{ site.data.keys.product_adj }} 运行时和 Application Center 服务使用的关系数据库。此 Ant 任务通过以下操作配置关系数据库：
 
-* Checks whether the {{ site.data.keys.product_adj }} tables exist and creates them if necessary.
-* If the tables exist for an older version of {{ site.data.keys.product }}, migrates them to the current version.
-* If the tables exist for the current version of {{ site.data.keys.product }}, does nothing.
+* 检查 {{ site.data.keys.product_adj }} 表是否存在，并根据需要创建这些表。
+* 如果存在较低版本的 {{ site.data.keys.product }} 的表，请将它们迁移至当前版本。
+* 如果存在当前版本的 {{ site.data.keys.product }} 的表，那么无需执行任何操作。
 
-In addition, if one of the following conditions is met:
+此外，如果满足以下条件之一：
 
-* The DBMS type is Derby.
-* An inner element `<dba>` is present.
-* The DBMS type is DB2 , and the specified user has the permissions to create databases.
+* DBMS 类型为 Derby。
+* 存在内部元素 `<dba>`。
+* DBMS 类型为 DB2，并且指定的用户具有创建数据库的许可权。
 
-Then, the task can have the following effects:
+那么该任务可以产生以下影响：
 
-* Create the database if necessary (except for Oracle 12c, and Cloudant).
-* Create a user, if necessary, and grants that user access rights to the database.
+* 根据需要创建数据库（Oracle 12c 和 Cloudant 除外）。
+* 根据需要创建用户，并授予该用户访问该数据库的权利。
 
-> **Note:** The configuredatabase Ant task has not effect if you use it with Cloudant.
+> **注：**如果您将 configuredatabase Ant 任务与 Cloudant 一同使用，此任务将不会产生任何影响。
 
-### Attributes and elements for configuredatabase task
+### configuredatabase 任务的属性和元素
 {: #attributes-and-elements-for-configuredatabase-task }
 
-The **configuredatabase** task has the following attributes:
+**configuredatabase** 任务具有以下属性：
 
-| Attribute | Description | Required | Default | 
+| 属性 | 描述 | 必需 | 缺省值 | 
 |-----------|-------------|----------|---------|
-| kind      | The type of database: In {{ site.data.keys.mf_server }}: MobileFirstRuntime, MobileFirstConfig, MobileFirstAdmin, or push. In Application Center: ApplicationCenter. | Yes | None |
-| includeConfigurationTables | To specify whether to perform database operations on both the live update service and the administration service or on the administration service only. The value is either true or false. |  No | true |
-| execute | To specify whether to execute the configuredatabase Ant task. The value is either true or false. | No | true | 
+| kind      | 数据库类型：在 {{ site.data.keys.mf_server }} 中为：MobileFirstRuntime、MobileFirstConfig、 MobileFirstAdmin 或 push。在 Application Center 中为：ApplicationCenter。 | 是 | 无 |
+| includeConfigurationTables | 指定是同时在实时更新服务和管理服务上还是仅在管理服务上执行数据库操作。值为 true 或 false。 |  否 | true |
+| execute | 指定是否执行 configuredatabase Ant 任务。值为 true 或 false。 | 否 | true | 
 
 #### kind
 {: #kind }
-{{ site.data.keys.product }} supports four kinds of database: {{ site.data.keys.product_adj }} runtime uses **MobileFirstRuntime** database. {{ site.data.keys.mf_server }} administration service uses the **MobileFirstAdmin** database. {{ site.data.keys.mf_server }} Live Update service uses the **MobileFirstConfig** database. By default, it is created with **MobileFirstAdmin** kind. {{ site.data.keys.mf_server }} push service uses the **push** database. Application Center uses the **ApplicationCenter** database.
+{{ site.data.keys.product }} 支持四种类型的数据库：{{ site.data.keys.product_adj }} 运行时使用 **MobileFirstRuntime** 数据库。{{ site.data.keys.mf_server }} 管理服务使用 **MobileFirstAdmin** 数据库。{{ site.data.keys.mf_server }} 实时更新服务使用 **MobileFirstConfig** 数据库。缺省情况下，使用 **MobileFirstAdmin** 类型创建。{{ site.data.keys.mf_server }} 推送服务使用 **push** 数据库。Application Center 使用 **ApplicationCenter** 数据库。
 
 #### includeConfigurationTables
 {: #includeconfigurationtables }
-The **includeConfigurationTables** attribute can be used only when the **kind** attribute is **MobileFirstAdmin**. The valid value can be true or false. When this attribute is set to true, the **configuredatabase** task performs database operations on both the administration service database and the Live Update service database in a single run. When this attribute is set to false, the **configuredatabase** task performs database operations only on the administration service database.
+只有当 **kind** 属性为 **MobileFirstAdmin** 时，才可以使用 **includeConfigurationTables** 属性。有效值可能为 true 或 false。当将此属性设置为 true 时，**configuredatabase** 任务将在单个运行中对管理服务数据库和实时更新服务数据库执行数据库操作。当将此属性设置为 false 时，**configuredatabase** 任务将只对管理服务数据库执行数据库操作。
 
 #### execute
 {: #execute }
-The **execute** attribute enables or disables the execution of the **configuredatabase** Ant task. The valid value can be true or false. When this attribute is set to false, the **configuredatabase** task performs no configuration or database operations.
+**execute** 属性将启用或禁用 **configuredatabase** Ant 任务的执行。有效值可能为 true 或 false。当将此属性设置为 false 时，**configuredatabase** 任务将不执行配置或数据库操作。
 
-The **configuredatabase** task supports the following elements:
+**configuredatabase** 任务支持以下元素：
 
-| Element             | Description	                | Count | 
+| 元素             | 描述	                | 计数 | 
 |---------------------|-----------------------------|-------|
-| `<derby>`           | The parameters for Derby.   | 0..1  | 
-| `<db2>`             |	The parameters for DB2.     | 0..1  | 
-| `<mysql>`           |	The parameters for MySQL.   | 0..1  | 
-| `<oracle>`          |	The parameters for Oracle.  | 0..1  | 
-| `<driverclasspath>` | The JDBC driver class path. | 0..1  | 
+| `<derby>`           | Derby 的参数。   | 0..1  | 
+| `<db2>`             |	DB2 的参数。     | 0..1  | 
+| `<mysql>`           |	MySQL 的参数。   | 0..1  | 
+| `<oracle>`          |	Oracle 的参数。  | 0..1  | 
+| `<driverclasspath>` | JDBC 驱动程序类路径。 | 0..1  | 
 
-For each database type, you can use a `<property>` element to specify a JDBC connection property for access to the database. The `<property>` element has the following attributes:
+对于每种数据库类型，您可以使用 `<property>` 元素指定 JDBC 连接属性来访问该数据库。`<property>` 元素具有以下属性：
 
-| Attribute | Description                | Required | Default | 
+| 属性 | 描述                | 必需 | 缺省值 | 
 |-----------|----------------------------|----------|---------|
-| name      | The name of the property.	 | Yes      | None    |
-| value	    | The value for the property.| Yes	    | None    |   
+| name      | 属性的名称。	 | 是      | 无    |
+| value     | 属性的值。| 是	    | 无    |   
 
 #### Apache Derby
 {: #apache-derby }
-The `<derby>` element has the following attributes:
+`<derby>` 元素具有以下属性：
 
-| Attribute | Description                                | Required | Default                                                                      | 
+| 属性 | 描述                                | 必需 | 缺省值                                                                      | 
 |-----------|--------------------------------------------|----------|------------------------------------------------------------------------------|
-| database  | The database name.                         | No	    | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind.             |
-| datadir   | The directory that contains the databases. | Yes      | None                                                                         | 
-| schema	| The schema name.                           | No       | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH, or APPCENTER, depending on kind. |
+| database  | 数据库名称。                         | 否	    | MFPDATA、MFPADM、MFPCFG、MFPPUSH 或 APPCNTR，取决于类型。             |
+| datadir   | 包含数据库的目录。 | 是      | 无                                                                         | 
+| schema    | 模式名称。                           | 否       | MFPDATA、MFPCFG、MFPADMINISTRATOR、MFPPUSH 或 APPCENTER，取决于类型。 |
 
-The `<derby>` element supports the following element:
+`<derby>` 元素支持以下元素：
 
-| Element      | Description                     | Count   |
+| 元素      | 描述                     | 计数   |
 |--------------|---------------------------------|---------|
-| `<property>` | The JDBC connection property.   | 0..∞    |
+| `<property>` | JDBC 连接属性。   | 0..∞    |
 
-For the available properties, see [Setting attributes for the database connection URL](http://db.apache.org/derby/docs/10.11/ref/rrefattrib24612.html).
+有关可用属性，请参阅 [Setting attributes for the database connection URL](http://db.apache.org/derby/docs/10.11/ref/rrefattrib24612.html)。
 
 #### DB2
 {: #db2 }
-The `<db2>` element has the following attributes:
+`<db2>` 元素具有以下属性：
 
-| Attribute | Description                            | Required | Default | 
+| 属性 | 描述                            | 必需 | 缺省值 | 
 |-----------|----------------------------------------|----------|---------|
-| database  | The database name.                     | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
-| server    | The host name of the database server.	 | Yes      | None  |
-| port      | The port on the database server.       | No	    | 50000 |
-| user      | The user name for accessing databases. | Yes	    | None  |
-| password  | The password for accessing databases.	 | No	    | Queried interactively |
-| instance  | The name of the DB2 instance.          | No	    | Depends on the server |
-| schema    | The schema name.                       | No	    | Depends on the user   |
+| database  | 数据库名称。                     | 否       | MFPDATA、MFPADM、MFPCFG、MFPPUSH 或 APPCNTR，取决于类型。 |
+| server    | 数据库服务器的主机名。	 | 是      | 无  |
+| port      | 数据库服务器上的端口。       | 否	    | 50000 |
+| user      | 用于访问数据库的用户名。 | 是	    | 无  |
+| password  | 用于访问数据库的密码。	 | 否	    | 交互式查询 |
+| instance  | DB2 实例的名称。          | 否	    | 取决于服务器 |
+| schema    | 模式名称。                       | 否	    | 取决于用户   |
 
-For more information about DB2 user accounts, see [DB2 security model overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).  
-The `<db2>` element supports the following elements:
+有关 DB2 用户帐户的更多信息，请参阅 [DB2 安全模型概述](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html)。  
+`<db2>` 元素支持以下元素：
 
-| Element      | Description                             | Count   |
+| 元素      | 描述                             | 计数   |
 |--------------|-----------------------------------------|---------|
-| `<property>` | The JDBC connection property.           | 0..∞    |
-| `<dba>`      | The database administrator credentials. | 0..1    |
+| `<property>` | JDBC 连接属性。           | 0..∞    |
+| `<dba>`      | 数据库管理员凭证。 | 0..1    |
 
-For the available properties, see [Properties for the IBM  Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).  
-The inner element `<dba>` specifies the credentials for the database administrators. This element has the following attributes:
+有关可用属性，请参阅 [IBM  Data Server Driver for JDBC and SQLJ 的属性](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html)。  
+内部元素 `<dba>` 指定数据库管理员的凭证。此元素具有以下属性：
 
-| Attribute | Description                            | Required | Default | 
+| 属性 | 描述                            | 必需 | 缺省值 | 
 |-----------|----------------------------------------|----------|---------|
-| user      | The user name for accessing database.  | Yes      | None    |
-| password  | The password or accessing database.    | No	    | Queried interactively |
+| user      | 用于访问数据库的用户名。  | 是      | 无    |
+| password  | 用于访问数据库的密码。    | 否	    | 交互式查询 |
 
-The user that is specified in a `<dba>` element must have the SYSADM or SYSCTRL DB2 privilege. For more information, see [Authorities overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html).
+在 `<dba>` 元素中指定的用户必须具有 SYSADM 或 SYSCTRL DB2 特权。有关更多信息，请参阅[权限概述](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0055206.html)。
 
-The `<driverclasspath>` element must contain the JAR files for the DB2 JDBC driver and for the associated license. You can retrieve those files in one of the following ways:
+`<driverclasspath>` 元素必须包含 DB2 JDBC 驱动程序和关联许可证的 JAR 文件。您可以通过以下某种方式检索这些文件：
 
-* Download DB2 JDBC drivers from the [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866) page
-* Or fetch the **db2jcc4.jar** file and its associated **db2jcc_license_*.jar** files from the **DB2_INSTALL_DIR/java** directory on the DB2 server.
+* 从 [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866) 页面下载 DB2 JDBC 驱动程序
+* 或从 DB2 服务器上的 **DB2_INSTALL_DIR/java** 目录访存 **db2jcc4.jar** 文件及其关联的 **db2jcc_license_*.jar** 文件。
 
-You cannot specify details of table allocations, such as the table space, by using the Ant task. To control the table space, you must use the manual instructions in section [DB2 database and user requirements](../databases/#db2-database-and-user-requirements).
+不能通过使用 Ant 任务来指定表分配的详细信息，例如，表空间。要控制表空间，必须使用 [DB2 数据库和用户需求](../databases/#db2-database-and-user-requirements)部分中的手动操作指示信息。
 
 #### MySQL
 {: #mysql }
-The element `<mysql>` has the following attributes:
+元素 `<mysql>` 具有以下属性：
 
-| Attribute | Description                            | Required | Default | 
+| 属性 | 描述                            | 必需 | 缺省值 | 
 |-----------|----------------------------------------|----------|---------|
-| database	| The database name.	                 | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
-| server	| The host name of the database server.	 | Yes	    | None |
-| port	    | The port on the database server.	     | No	    | 3306 |
-| user	    | The user name for accessing databases. | Yes	    | None |
-| password	| The password for accessing databases.	 | No	    | Queried interactively |
+| database	| 数据库名称。	                 | 否       | MFPDATA、MFPADM、MFPCFG、MFPPUSH 或 APPCNTR，取决于类型。 |
+| server	| 数据库服务器的主机名。	 | 是	    | 无 |
+| port	    | 数据库服务器上的端口。	     | 否	    | 3306 |
+| user	    | 用于访问数据库的用户名。 | 是	    | 无 |
+| password	| 用于访问数据库的密码。	 | 否	    | 交互式查询 |
 
-For more information about MySQL user accounts, see [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).  
-The `<mysql>` element supports the following elements:
+有关 MySQL 用户帐户的更多信息，请参阅 [MySQL 用户帐户管理](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html)。  
+`<mysql>` 元素支持以下元素：
 
-| Element      | Description                                      | Count |
+| 元素      | 描述                                      | 计数 |
 |--------------|--------------------------------------------------|-------|
-| `<property>` | The JDBC connection property.                    | 0..∞  |
-| `<dba>`      | The database administrator credentials.          | 0..1  |
-| `<client>`   | The host that is allowed to access the database. | 0..∞  | 
+| `<property>` | JDBC 连接属性。                    | 0..∞  |
+| `<dba>`      | 数据库管理员凭证。          | 0..1  |
+| `<client>`   | 允许访问数据库的主机。 | 0..∞  | 
 
-For the available properties, see [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).  
-The inner element `<dba>` specifies the database administrator credentials. This element has the following attributes:
+有关可用属性，请参阅 [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html)。  
+内部元素 `<dba>` 指定数据库管理员凭证。此元素具有以下属性：
 
-| Attribute | Description                            | Required | Default | 
+| 属性 | 描述                            | 必需 | 缺省值 | 
 |-----------|----------------------------------------|----------|---------|
-| user	    | The user name for accessing databases. | Yes	    | None |
-| password	| The password for accessing databases.	 | No	    | Queried interactively |
+| user	    | 用于访问数据库的用户名。 | 是	    | 无 |
+| password	| 用于访问数据库的密码。	 | 否	    | 交互式查询 |
 
-The user that is specified in a `<dba>` element must be a MySQL superuser account. For more information, see [Securing the Initial MySQL Accounts](http://dev.mysql.com/doc/refman/5.5/en/default-privileges.html).
+在 `<dba>` 元素中指定的用户必须是 MySQL 超级用户帐户。有关更多信息，请参阅 [Securing the Initial MySQL Accounts](http://dev.mysql.com/doc/refman/5.5/en/default-privileges.html)。
 
-Each `<client>` inner element specifies a client computer or a wildcard for client computers. These computers are allowed to connect to the database. This element has the following attributes:
+每个 `<client>` 内部元素指定一台客户端计算机或表示多台客户端计算机的通配符。这些计算机可以连接到数据库。此元素具有以下属性：
 
-| Attribute | Description                                                              | Required | Default | 
+| 属性 | 描述                                                              | 必需 | 缺省值 | 
 |-----------|--------------------------------------------------------------------------|----------|---------|
-| hostname	| The symbolic host name, IP address, or template with % as a placeholder. | Yes	  | None    |
+| hostname	| 将 % 作为占位符的符号主机名、IP 地址或模板。 | 是	  | 无    |
 
-For more information about the hostname syntax, see [Specifying Account Names](http://dev.mysql.com/doc/refman/5.5/en/account-names.html).
+有关 hostname 语法的更多信息，请参阅 [Specifying Account Names](http://dev.mysql.com/doc/refman/5.5/en/account-names.html)。
 
-The `<driverclasspath>` element must contain a MySQL Connector/J JAR file. You can download that file from the [Download Connector/J](http://www.mysql.com/downloads/connector/j/) page.
+`<driverclasspath>` 元素必须包含一个 MySQL Connector/J JAR 文件。可以从 [Download Connector/J](http://www.mysql.com/downloads/connector/j/) 页面下载该文件。
 
-Alternatively, you can use the `<mysql>` element with the following attributes:
+或者，您可以将 `<mysql>` 元素与以下属性结合使用：
 
-| Attribute | Description                            | Required | Default               | 
+| 属性 | 描述                            | 必需 | 缺省值               | 
 |-----------|----------------------------------------|----------|-----------------------|
-| url       | The database connection URL.	         | Yes      | None                  |
-| user	    | The user name for accessing databases. | Yes      | None                  |
-| password	| The password for accessing databases.	 | No       | Queried interactively |
+| url       | 数据库连接 URL。	         | 是      | 无                  |
+| user	    | 用于访问数据库的用户名。 | 是      | 无                  |
+| password	| 用于访问数据库的密码。	 | 否       | 交互式查询 |
 
-> `Note:` If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the **configuredatabase** task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current {{ site.data.keys.mf_server }} version. You do not have to specify the inner elements `<dba>` or `<client>`.
+> `注：`如果使用替代属性指定数据库，该数据库和用户帐户都必须存在，数据库也必须能供用户访问。在这种情况下，**configuredatabase** 任务不会尝试创建数据库或用户，也不会尝试向用户授予访问权。**configuredatabase** 任务仅确保数据库具有当前 {{ site.data.keys.mf_server }} 版本的必需表。您无需指定内部元素 `<dba>` 或 `<client>`。
 
 #### Oracle
 {: #oracle }
-The element `<oracle>` has the following attributes:
+元素 `<oracle>` 具有以下属性：
 
-| Attribute      | Description                                                              | Required | Default | 
+| 属性      | 描述                                                              | 必需 | 缺省值 | 
 |----------------|--------------------------------------------------------------------------|----------|---------|
-| database       | The database name, or Oracle service name. **Note:** You must always use a service name to connect to a PDB database. | No | ORCL |
-| server	     | The host name of the database server.                                    | Yes      | None | 
-| port	         | The port on the database server.                                         | No       | 1521 | 
-| user	         | The user name for accessing databases. See the note under this table.	| Yes      | None | 
-| password	     | The password for accessing databases.                                    | No       | Queried interactively | 
-| sysPassword	 | The password for the user SYS.                                           | No       | Queried interactively if the database does not yet exist | 
-| systemPassword | The password for the user SYSTEM.                                        | No       | Queried interactively if the database or the user does not exist yet | 
+| database       | 数据库名称或 Oracle 服务名称。**注：**必须始终使用服务名称来连接到 PDB 数据库。 | 否 | ORCL |
+| server	     | 数据库服务器的主机名。                                    | 是      | 无 | 
+| port	         | 数据库服务器上的端口。                                         | 否       | 1521 | 
+| user	         | 用于访问数据库的用户名。请参阅此表下方的注释。	| 是      | 无 | 
+| password	     | 用于访问数据库的密码。                                    | 否       | 交互式查询 | 
+| sysPassword	 | 用户 SYS 的密码。                                           | 否       | 交互式查询（如果数据库尚不存在） | 
+| systemPassword | 用户 SYSTEM 的密码。                                        | 否       | 交互式查询（如果数据库或用户尚不存在） | 
 
-> `Note:` For the user attribute, use preferably a user name in uppercase letters. Oracle user names are generally in uppercase letters. Unlike other database tools, the **configuredatabase** Ant task does not convert lowercase letters to uppercase letters in the user name. If the **configuredatabase** Ant task fails to connect to your database, try to enter the value for the **user** attribute in uppercase letters.
+> `注：` 对于 user 属性，最好使用大写字母的用户名。Oracle 用户名通常为大写字母。不像其他数据库工具，**configuredatabase** Ant 任务不会将用户名中的小写字母转换为大写字母。如果 **configuredatabase** Ant 任务无法连接到您的数据库，请尝试用大写字母为 **user** 属性输入值。
 
-For more information about Oracle user accounts, see [Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374).  
-The `<oracle>` element supports the following elements:
+有关 Oracle 用户帐户的更多信息，请参阅[认证方法概述](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374)。  
+`<oracle>` 元素支持以下元素：
 
-| Element      | Description                                      | Count |
+| 元素      | 描述                                      | 计数 |
 |--------------|--------------------------------------------------|-------|
-| `<property>` | The JDBC connection property.                    | 0..∞  |
-| `<dba>`      | The database administrator credentials.          | 0..1  |
+| `<property>` | JDBC 连接属性。                    | 0..∞  |
+| `<dba>`      | 数据库管理员凭证。          | 0..1  |
 
-For information about the available connection properties, see [Class OracleDriver](http://docs.oracle.com/cd/E11882_01/appdev.112/e13995/oracle/jdbc/OracleDriver.html).  
-The inner element `<dba>` specifies the database administrator credentials. This element has the following attributes:
+有关可用连接属性的信息，请参阅 [Class OracleDriver](http://docs.oracle.com/cd/E11882_01/appdev.112/e13995/oracle/jdbc/OracleDriver.html)。  
+内部元素 `<dba>` 指定数据库管理员凭证。此元素具有以下属性：
 
-| Attribute      | Description                                                              | Required | Default | 
+| 属性      | 描述                                                              | 必需 | 缺省值 | 
 |----------------|--------------------------------------------------------------------------|----------|---------|
-| user	         | The user name for accessing databases. See the note under this table.	| Yes      | None    | 
-| password	     | The password for accessing databases.                                    | No       | Queried interactively | 
+| user	         | 用于访问数据库的用户名。请参阅此表下方的注释。	| 是      | 无    | 
+| password	     | 用于访问数据库的密码。                                    | 否       | 交互式查询 | 
 
-The `<driverclasspath>` element must contain an Oracle JDBC driver JAR file. You can download Oracle JDBC drivers from [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
+`<driverclasspath>` 元素必须包含一个 Oracle JDBC 驱动程序 JAR 文件。可以从 [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) 下载 Oracle JDBC 驱动程序。
 
-You cannot specify details of table allocation, such as the table space, by using the Ant task. To control the table space, you can create the user account manually and assign it a default table space before you run the Ant task. To control other details, you must use the manual instructions in section [Oracle database and user requirements](../databases/#oracle-database-and-user-requirements).
+不能通过使用 Ant 任务来指定表分配的详细信息，例如，表空间。要控制表空间，可以手动创建用户帐户并在运行 Ant 任务之前向其分配缺省表空间。要控制其他详细信息，必须使用 [Oracle 数据库和用户需求](../databases/#oracle-database-and-user-requirements)部分中的手动操作指示信息。
 
-| Attribute | Description                            | Required | Default               | 
+| 属性 | 描述                            | 必需 | 缺省值               | 
 |-----------|----------------------------------------|----------|-----------------------|
-| url       | The database connection URL.	         | Yes      | None                  |
-| user	    | The user name for accessing databases. | Yes      | None                  |
-| password	| The password for accessing databases.	 | No       | Queried interactively |
+| url       | 数据库连接 URL。	         | 是      | 无                  |
+| user	    | 用于访问数据库的用户名。 | 是      | 无                  |
+| password	| 用于访问数据库的密码。	 | 否       | 交互式查询 |
 
-> **Note:** If you specify the database with the alternative attributes, this database must exist, the user account must exist, and the database must already be accessible to the user. In this case, the task does not attempt to create the database or the user, nor does it attempt to grant access to the user. The **configuredatabase** task ensures only that the database has the required tables for the current {{ site.data.keys.mf_server }} version. You do not have to specify the inner element `<dba>`.
+> **注：**如果使用替代属性指定数据库，该数据库和用户帐户都必须存在，数据库也必须能供用户访问。在这种情况下，任务不会尝试创建数据库或用户，也不会尝试向用户授予访问权。**configuredatabase** 任务仅确保数据库具有当前 {{ site.data.keys.mf_server }} 版本的必需表。您无需指定内部元素 `<dba>`。
 
-## Ant tasks for installation of {{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} artifacts, {{ site.data.keys.mf_server }} administration, and live update services
+## 用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务
 {: #ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services }
-The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks are provided for the installation of {{ site.data.keys.mf_console }}, the artifacts component, the administration service, and the live update service.
+现在提供了 **installmobilefirstadmin**、**updatemobilefirstadmin** 和 **uninstallmobilefirstadmin** Ant 任务以用于安装 {{ site.data.keys.mf_console }}、工件组件、管理服务和实时更新服务。
 
-### Task effects
+### 任务影响
 {: #task-effects }
 
 #### installmobilefirstadmin
 {: #installmobilefirstadmin }
-The **installmobilefirstadmin** Ant task configures an application server to run the WAR files of the administration and live update services as web applications, and optionally, to install the {{ site.data.keys.mf_console }}. This task has the following effects:
+**installmobilefirstadmin** Ant 任务将配置应用程序服务器，以将管理和实时更新服务的 WAR 文件作为 Web 应用程序运行并（可选）安装 {{ site.data.keys.mf_console }}。该任务具有以下影响：
 
-* It declares the administration service web application in the specified context root, by default /mfpadmin.
-* It declares the live update service web application in a context root derived from the specified context root of the administration service. By default, /mfpadminconfig.
-* For the relational databases, it declares data sources and on WebSphere  Application Server full profile, JDBC providers for the administration services.
-* It deploys the administration service and the live update service on the application server.
-* Optionally, it declares{{ site.data.keys.mf_console }} as a web application in the specified context root, by default /mfpconsole. If the {{ site.data.keys.mf_console }} instance is specified, the Ant task declares the appropriate JNDI environment entry to communicate with the corresponding management service. For example,
+* 此任务将在指定上下文根（缺省情况下为 /mfpadmin）中声明管理服务 Web 应用程序。
+* 此任务将在从管理服务的指定上下文根中获取的上下文根中声明实时更新服务 Web 应用程序。缺省情况下为 /mfpadminconfig。
+* 对于关系数据库，此任务将为管理服务声明数据源以及（在 WebSphere Application Server Full Profile 上）JDBC 提供程序。
+* 此任务将在应用程序服务器上部署管理服务和实时更新服务。
+* （可选）此任务将在指定的上下文根（缺省情况下为 /mfpconsole）中将 {{ site.data.keys.mf_console }} 声明为 Web 应用程序。如果已指定 {{ site.data.keys.mf_console }}实例，那么 Ant 任务将声明与对应管理服务进行通信的相应 JNDI 环境。例如，
 
 ```xml
 <target name="adminstall">
@@ -258,1310 +258,1329 @@ The **installmobilefirstadmin** Ant task configures an application server to run
     <console install="${mfp.admin.console.install}" warFile="${mfp.console.war.file}"/>
 ```
 
-* Optionally, it declares the {{ site.data.keys.mf_server }} artifacts web application in the specified context root /mfp-dev-artifacts when {{ site.data.keys.mf_console }} is installed.
-* It configures the configuration properties for the administration service by using JNDI environment entries. These JNDI environment entries also give some additional information about the application server topology, for example whether the topology is a stand-alone configuration, a cluster, or a server farm.
-* Optionally, it configures users that it maps to roles used by {{ site.data.keys.mf_console }}, and the administration and live update services web applications.
-* It configures the application server for use of JMX.
-* Optionally, it configures the communication with the {{ site.data.keys.mf_server }} push service.
-* Optionally, it sets the MobileFirst JNDI environment entries to configure the application server as a server farm member for the {{ site.data.keys.mf_server }} administration part.
+* （可选）在安装了 {{ site.data.keys.mf_console }} 时，此任务将在指定的上下文根 /mfp-dev-artifacts 中将 {{ site.data.keys.mf_server }} 工件声明为 Web 应用程序。
+* 此任务将使用 JNDI 环境条目配置管理服务的配置属性。这些 JNDI 环境条目还给出一些关于应用程序服务器拓扑的其他信息，例如拓扑是独立配置、集群还是服务器场。
+* （可选）此任务将对用户进行配置，将其映射到 {{ site.data.keys.mf_console }} 以及管理和实时更新服务 Web 应用程序所使用的角色。
+* 此任务配置应用程序服务器以供 JMX 使用。
+* （可选）此任务将配置与 {{ site.data.keys.mf_server }} 推送服务之间的通信。
+* （可选）设置 MobileFirst JNDI 环境条目以将应用程序服务器配置为 {{ site.data.keys.mf_server }} 管理部分的服务器场成员。
 
 #### updatemobilefirstadmin
 {: #updatemobilefirstadmin }
-The **updatemobilefirstadmin** Ant task updates an already-configured {{ site.data.keys.mf_server }} web application on an application server. This task has the following effects:
+**updatemobilefirstadmin** Ant 任务将更新已在应用程序服务器上配置的 {{ site.data.keys.mf_server }} Web 应用程序。该任务具有以下影响：
 
-* It updates the administration service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-* It updates the live update service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-* It updates the {{ site.data.keys.mf_console }} WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-The task does not change the application server configuration, that is, the web application configuration, data sources, JNDI environment entries, user-to-role mappings, and JMX configuration.
+* 此任务将更新管理服务 WAR 文件。该文件的基本名称与先前部署的对应 WAR 文件的基本名称必须完全相同。
+* 此任务将更新实时更新服务 WAR 文件。该文件的基本名称与先前部署的对应 WAR 文件的基本名称必须完全相同。
+* 此任务将更新 {{ site.data.keys.mf_console }} WAR 文件。该文件的基本名称与先前部署的对应 WAR 文件的基本名称必须完全相同。该任务不会更改应用程序服务器配置，即 Web 应用程序配置、数据源、JNDI 环境条目、用户到角色映射以及 JMX 配置。
 
 #### uninstallmobilefirstadmin
 {: #uninstallmobilefirstadmin }
-The **uninstallmobilefirstadmin** Ant task undoes the effects of an earlier run of installmobilefirstadmin. This task has the following effects:
+**uninstallmobilefirstadmin** Ant 任务撤销早期运行 installmobilefirstadmin 的影响。该任务具有以下影响：
 
-* It removes the configuration of the administration service web application with the specified context root. As a consequence, the task also removes the settings that were added manually to that application.
-* It removes the WAR files of the administration and live update services, and {{ site.data.keys.mf_console }} from the application server as an option.
-* For the relational DBMS, it removes the data sources and on WebSphere Application Server Full Profile the JDBC providers for the administration and live update services.
-* For the relational DBMS, it removes the database drivers that were used by the administration and live update services from the application server.
-* It removes the associated JNDI environment entries.
-* On WebSphere Application Server Liberty and Apache Tomcat, it removes the users configured by the installmobilefirstadmin invocation.
-* It removes the JMX configuration.
+* 此任务将除去具有指定上下文根的管理服务 Web 应用程序配置。因此，此任务还将除去手动添加到该应用程序的设置。
+* 此任务将从作为选项的应用程序服务器中除去管理服务和实时更新服务以及 {{ site.data.keys.mf_console }} 的 WAR 文件。
+* 对于关系 DBMS，此任务将除去管理服务和实时更新服务的数据源以及（在 WebSphere Application Server Full Profile 上）JDBC 提供程序。
+* 对于关系 DBMS，此任务将从应用程序服务器中除去已由管理服务和实时更新服务使用的数据库驱动程序。
+* 此任务将除去关联的 JNDI 环境条目。
+* 在 WebSphere Application Server Liberty 和 Apache Tomcat 上，此任务将除去 installmobilefirstadmin 调用配置的用户。
+* 此任务将除去 JMX 配置。
 
-### Attributes and elements
+### 属性和元素
 {: #attributes-and-elements }
-The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks have the following attributes:
+**installmobilefirstadmin**、**updatemobilefirstadmin** 和 **uninstallmobilefirstadmin** Ant 任务具有以下属性：
 
-| Attribute         | Description                                                              | Required | Default | 
+| 属性         | 描述                                                              | 必需 | 缺省值 | 
 |-------------------|--------------------------------------------------------------------------|----------|---------|
-| contextroot       | The common prefix for URLs to the administration service to get information about {{ site.data.keys.product_adj }} runtime environments, applications, and adapters. | No | /mfpadmin | 
-| id                | To distinguish different deployments.              | No | Empty | 
-| environmentId     | To distinguish different {{ site.data.keys.product_adj }} environments. | No | Empty | 
-| servicewar        | The WAR file for the administration service.       | No | The mfp-admin-service.war file is in the same directory as the mfp-ant-deployer.jar file. | 
-| shortcutsDir      | The directory where to place shortcuts.            | No | None | 
-| wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 1 | 
+| contextroot       | 用于获取 {{ site.data.keys.product_adj }} 运行时环境、应用程序和适配器相关信息的管理服务 URL 的通用前缀。 | 否 | /mfpadmin | 
+| id                | 区分不同的部署。              | 否 | 空 | 
+| environmentId     | 区分不同的 {{ site.data.keys.product_adj }} 环境。 | 否 | 空 | 
+| servicewar        | 管理服务的 WAR 文件。       | 否 | mfp-admin-service.war 文件与 mfp-ant-deployer.jar 文件位于同一目录中。 | 
+| shortcutsDir      | 放置快捷方式的目录。            | 否 | 无 | 
+| wasStartingWeight | WebSphere Application Server 的启动顺序。从较小的值开始启动。 | 否 | 1 | 
 
-#### contextroot and id
+#### contextroot 和 id
 {: #contextroot-and-id }
-The **contextroot** and **id** attributes distinguish different deployments of {{ site.data.keys.mf_console }} and the administration service.
+**contextroot** 和 **id** 属性区分                                  {{ site.data.keys.mf_console }} 和管理服务的不同部署。
 
-In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server Full profile environments, the id attribute is used instead. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+在 WebSphere Application Server Liberty Profile 和 Tomcat 环境中，contextroot 参数足以实现该目的。在 WebSphere Application Server Full Profile 环境中，改为使用 id 属性。没有该 id 属性时，使用同一上下文根的两个 WAR 文件可能会冲突，并无法部署这些文件。
 
 #### environmentId
 {: #environmentid }
-Use the **environmentId** attribute to distinguish several environments, consisting each of {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime web applications, that must operate independently. For example, with this option you can host a test environment, a pre-production environment, and a production environment on the same server or in the same WebSphere Application Server Network Deployment cell. This environmentId attribute creates a suffix that is added to MBean names that the administration service and the {{ site.data.keys.product_adj }} runtime projects use when they communicate through Java Management Extensions (JMX).
+使用 **environmentId** 属性可区分多个环境，包括必须独立运行的每个 {{ site.data.keys.mf_server }} 管理服务和 {{ site.data.keys.product_adj }} 运行时 Web 应用程序。例如，使用该选项，您可以在同一个服务器或同一个 WebSphere Application Server Network Deployment 单元中托管测试环境、预生产环境和生产环境。该 environmentId 属性会创建一个后缀，此后缀会添加到管理服务和 {{ site.data.keys.product_adj }} 运行时项目通过 Java 管理扩展 (JMX) 进行通信时使用的 MBean 名称上。
 
 #### servicewar
 {: #servicewar }
-Use the **servicewar** attribute to specify a different directory for the administration service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+使用 **servicewar** 属性来指定管理服务 WAR 文件的不同目录。您可以使用绝对路径或相对路径来指定该 WAR 文件的名称。
 
 #### shortcutsDir
 {: #shortcutsdir }
-The **shortcutsDir** attribute specifies where to place shortcuts to the {{ site.data.keys.mf_console }}. If you set this attribute, you can add the following files to that directory:
+**shortcutsDir** 属性指定将快捷方式放置在 {{ site.data.keys.mf_console }}的何处。如果设置该属性，可以将以下文件添加到该目录：
 
-* **mobilefirst-console.url** - this file is a Windows shortcut. It opens the {{ site.data.keys.mf_console }} in a browser.
-* **mobilefirst-console.sh**- this file is a UNIX shell script and opens the {{ site.data.keys.mf_console }} in a browser.
-* **mobilefirst-admin-service.url** - this file is a Windows shortcut. It opens in a browser and calls a REST service that returns a list of the {{ site.data.keys.product_adj }} projects that can be managed in JSON format. For each listed {{ site.data.keys.product_adj }} project, some details are also available about their artifacts, such as the number of applications, the number of adapters, the number of active devices, the number of decommissioned devices. The list also indicates whether the {{ site.data.keys.product_adj }} project runtime is running or idle.
-* **mobilefirst-admin-service.sh** - this file is a UNIX shell script that provides the same output as the **mobilefirst-admin-service.url** file.
+* **mobilefirst-console.url** - 该文件是 Windows 快捷方式。该文件会在浏览器中打开 {{ site.data.keys.mf_console }}。
+* **mobilefirst-console.sh**- 该文件是 UNIX shell 脚本，并在浏览器中打开 {{ site.data.keys.mf_console }}。
+* **mobilefirst-admin-service.url** - 该文件是 Windows 快捷方式。将在浏览器中打开该文件，它将调用一个 REST 服务来返回可管理的 {{ site.data.keys.product_adj }} 项目列表（JSON 格式）。对于每个列出的 {{ site.data.keys.product_adj }} 项目，还提供了关于其工件的某些详细信息，如应用程序数、适配器数、活动设备数以及停用设备数。该列表还指示 {{ site.data.keys.product_adj }} 项目运行时是正在运行还是空闲。
+* **mobilefirst-admin-service.sh** - 该文件是 UNIX shell 脚本，它提供的输出与 **mobilefirst-admin-service.url** 文件提供的输出完全相同。
 
 #### wasStartingWeight
 {: #wasstartingweight }
-Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the administration service web application is deployed and started before any other {{ site.data.keys.product_adj }} runtime projects. If {{ site.data.keys.product_adj }} projects are deployed or started before the web application, the JMX communication is not established and the runtime cannot synchronize with the administration service database and cannot handle server requests.
+使用 **wasStartingWeight** 属性将 WebSphere Application Server 中使用的值指定为权重，以确保启动顺序的稳定可靠。根据启动顺序值，在任何其他 {{ site.data.keys.product_adj }} 运行时项目之前部署和启动管理服务 Web 应用程序。如果在 Web 应用程序之前部署或启动 {{ site.data.keys.product_adj }} 项目，将不会建立 JMX 通信，运行时无法与管理服务数据库同步，并且无法处理服务器请求。
 
-The **installmobilefirstadmin**, **updatemobilefirstadmin**, and **uninstallmobilefirstadmin** Ant tasks support the following elements:
+**installmobilefirstadmin**、**updatemobilefirstadmin** 和 **uninstallmobilefirstadmin** Ant 任务支持以下元素：
 
-| Element               | Description                                      | Count |
+| 元素               | 描述                                      | 计数 |
 |-----------------------|--------------------------------------------------|-------|
-| `<applicationserver>` | The application server.                          | 1     |
-| `<configuration>`     | The live update service.	                       | 1     |
-| `<console>`           | The administration console.                      | 0..1  |
-| `<database>`          | The databases.                                   | 1     |
-| `<jmx>`               | To enable Java Management Extensions.	           | 1     |
-| `<property>`          | The properties.	                               | 0..   |
-| `<push>`              | The push service.	                               | 0..1  |
-| `<user>`              | The user to be mapped to a security role.	       | 0..   |
+| `<applicationserver>` | 应用程序服务器。                          | 1     |
+| `<configuration>`     | 实时更新服务。	                       | 1     |
+| `<console>`           | 管理控制台。                      | 0..1  |
+| `<database>`          | 数据库。                                   | 1     |
+| `<jmx>`               | 启用 Java 管理扩展。	           | 1     |
+| `<property>`          | 属性。	                               | 0..   |
+| `<push>`              | 推送服务。	                               | 0..1  |
+| `<user>`              | 要映射到安全角色的用户。	       | 0..   |
 
-### To specify a {{ site.data.keys.mf_console }}
+### 指定 {{ site.data.keys.mf_console }}
 {: #to-specify-a-mobilefirst-operations-console }
-The `<console>` element collects information to customize the installation of the {{ site.data.keys.mf_console }}. This element has the following attributes:
+`<console>` 元素收集信息以定制 {{ site.data.keys.mf_console }}的安装。此元素具有以下属性：
 
-| Attribute         | Description                                                               | Required | Default     | 
+| 属性         | 描述                                                               | 必需 | 缺省值     | 
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
-| contextroot       | The URI of the {{ site.data.keys.mf_console }}.                            | No       | /mfpconsole |
-| install           | To indicate whether the {{ site.data.keys.mf_console }} must be installed. | No       | Yes         |
-| warfile           | The console WAR file.	                                                    |No        | The mfp-admin-ui.war file is in the same directory as  themfp-ant-deployer.jar file. |
+| contextroot       | {{ site.data.keys.mf_console }} 的 URI。                            | 否       | /mfpconsole |
+| install           | 指示是否必须安装 {{ site.data.keys.mf_console }}。 | 否       | 是         |
+| warfile           | 控制台 WAR 文件。	                                                    |否        | mfp-admin-ui.war 文件与 mfp-ant-deployer.jar 文件位于同一目录中。 |
 
-The `<console>` element supports the following element:
+`<console>` 元素支持以下元素：
 
-| Element               | Description                                      | Count |
+| 元素               | 描述                                      | 计数 |
 |-----------------------|--------------------------------------------------|-------|
-| `<artifacts>`         | The {{ site.data.keys.mf_server }} artifacts.                | 0..1  |
-| `<property>`	        | The properties.	                               | 0..   |
+| `<artifacts>`         | {{ site.data.keys.mf_server }} 工件。                | 0..1  |
+| `<property>`	        | 属性。	                               | 0..   |
 
-The `<artifacts>` element has the following attributes:
+`<artifacts>` 元素具有以下属性：
 
-| Attribute         | Description                                                               | Required | Default     | 
+| 属性         | 描述                                                               | 必需 | 缺省值     | 
 |-------------------|---------------------------------------------------------------------------|----------|-------------|
-| install           | To indicate whether the artifacts component must be installed.            | No       | true        |
-| warFile           | The artifacts WAR file.                                                   | No       | The mfp-dev-artifacts.war file is in the same directory as the mfp-ant-deployer.jar file |
+| install           | 用于指示是否必须安装工件组件。            | 否       | true        |
+| warFile           | 工件 WAR 文件。                                                   | 否       | mfp-dev-artifacts.war 文件与 mfp-ant-deployer.jar 文件位于同一目录中 |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files.
+使用该元素时，可以定义自己的 JNDI 属性，或覆盖管理服务和 {{ site.data.keys.mf_console }} WAR 文件提供的 JNDI 属性的缺省值。
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+`<property>` 元素指定了要在应用程序服务器中定义的部署属性。
+它具有以下属性：
 
-| Attribute  | Description                | Required | Default | 
+| 属性  | 描述                | 必需 | 缺省值 | 
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    | 
-| value	     | The value of the property. |	Yes      | None    |
+| name       | 属性的名称。  | 是      | 无    | 
+| value      | 属性的值。 |	是      | 无    |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files.
+使用该元素时，可以定义自己的 JNDI 属性，或覆盖管理服务和 {{ site.data.keys.mf_console }} WAR 文件提供的 JNDI 属性的缺省值。
 
-For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+有关 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。
 
-### To specify an application server
+### 指定应用程序服务器
 {: #to-specify-an-application-server }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+使用 `<applicationserver>` 元素来定义依赖底层应用程序服务器的参数。`<applicationserver>` 元素支持以下元素。
 
-| Element                                   | Description                                      | Count |
+| 元素                                   | 描述                                      | 计数 |
 |-------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` or `<was>` | The parameters for WebSphere Application Server. <br/><br/>The `<websphereapplicationserver>` element (or `was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment.               | 0..1  |
-| `<tomcat>`                                | The parameters for Apache Tomcat.	               | 0..1  |
+| `<websphereapplicationserver>` 或 `<was>` | WebSphere Application Server 的参数。<br/><br/>`<websphereapplicationserver>` 元素（或其缩写形式 `was>`）表示 WebSphere Application Server 实例。WebSphere Application Server Full Profile（Base 和 Network Deployment）与 WebSphere Application Server Liberty Core 和 WebSphere Application Server Liberty Network Deployment 一样受支持。               | 0..1  |
+| `<tomcat>`                                | Apache Tomcat 的参数。	               | 0..1  |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
-However, for the inner element of the `<was>` element for Liberty collective, see the following table:
+在[用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)表中描述了这些元素的属性和内部元素。  
+但是，有关用于 Liberty 集合体的 `<was>` 元素的内部元素，请参阅下表：
 
-| Element                  | Description                      | Count |
+| 元素                  | 描述                      | 计数 |
 |--------------------------|----------------------------------|-------|
-| `<collectiveController>` | A Liberty collective controller. |	0..1  |
+| `<collectiveController>` | Liberty 集合体控制器。 |	0..1  |
 
-The `<collectiveController>` element has the following attributes:
+`<collectiveController>` 元素具有以下属性：
 
-| Attribute                | Description                            | Required | Default | 
+| 属性                | 描述                            | 必需 | 缺省值 | 
 |--------------------------|----------------------------------------|----------|---------|
-| serverName               | The name of the collective controller.	| Yes      | None    |
-| controllerAdminName      | The administrative user name that is defined in the collective controller. This is the same user that is used to join new members to the   collective.                                                         | Yes      | None    |
-| controllerAdminPassword  | The administrative user password.	    | Yes      | None    |
-| createControllerAdmin    | To indicate whether the administrative user must be created in the basic registry of the collective controller. Possible values are true or false.                                                              | No	   | true    |
+| serverName               | 集合体控制器的名称。	| 是      | 无    |
+| controllerAdminName      | 集合体控制器中定义的管理用户名。此用户还负责将新成员加入到集合体中。                                                         | 是      | 无    |
+| controllerAdminPassword  | 管理用户密码。	    | 是      | 无    |
+| createControllerAdmin    | 用于指示是否必须在集合体控制器的基本注册表中创建管理用户。可能值为 true 或 false。                                                              | 否	   | true    |
 
-### To specify the live update service configuration
+### 指定实时更新服务配置
 {: #to-specify-the-live-update-service-configuration }
-Use the `<configuration>` element to define the parameters that depend on the live update service. The `<configuration>` element has the following attributes.
+使用 `<configuration>` 元素定义依赖于实时更新服务的参数。`<configuration>` 元素具有以下属性。
 
-| Attribute                | Description                                                    | Required | Default | 
+
+| 属性                | 描述                                                    | 必需 | 缺省值 | 
 |--------------------------|----------------------------------------------------------------|----------|---------|
-| install                  | To indicate whether the live update service must be installed.	| Yes | true |
-| configAdminUser	       | The administrator for the live update service.	                | No. However, it is required for a server farm topology. |If not defined, a user is generated. In a server farm topology, the user name must be the same for all the members of the farm. |
-| configAdminPassword      | The administrator password for live update service user.       | If a user is specified for **configAdminUser**. | None. In a server farm topology, the password must be the same for all the members of the farm. |
-| createConfigAdminUser	   | To indicate whether to create an admin user in the basic registry of the application server, if it is missing. | No | true |
-| warFile                  | The live update service WAR file.	                            | No         | The mfp-live-update.war file is in the same directory as the mfp-ant-deployer.jar file. |
+| install                  | 指示是否必须安装实时更新服务。	| 是 | true |
+| configAdminUser	       | 实时更新服务的管理员。	                | 否。但对于服务器场拓扑而言必需。 |如果未定义，将生成用户。在服务器场拓扑中，对于场的所有成员，该用户名必须相同。 |
+| configAdminPassword      | 实时更新服务用户的管理员密码。       | 如果对 **configAdminUser** 指定了用户。 | 无。在服务器场拓扑中，对于场的所有成员，该密码必须相同。 |
+| createConfigAdminUser	   | 用于指示是否在应用程序服务器的基本注册表中创建管理用户（如果缺失）。 | 否 | true |
+| warFile                  | 实时更新服务的 WAR 文件。	                            | 否         | mfp-live-update.war 文件与 mfp-ant-deployer.jar 文件位于同一目录中。 |
 
-The `<configuration>` element supports the following elements:
+`<configuration>` 元素支持以下元素：
 
-| Element      | Description                           | Count |
+| 元素      | 描述                           | 计数 |
 |--------------|---------------------------------------|-------|
-| `<user>`     | The user for the live update service. | 0..1  |
-| `<property>` | The properties.	                   | 0..   |
+| `<user>`     | 实时更新服务的用户。 | 0..1  |
+| `<property>` | 属性。	                   | 0..   |
 
-The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+`<user>` 元素收集关于用户的参数以包含在应用程序的某些安全角色中。
 
-| Attribute   | Description                                                             | Required | Default | 
+| 属性   | 描述                                                             | 必需 | 缺省值 | 
 |-------------|-------------------------------------------------------------------------|----------|---------|
-| role	      | A valid security role for the application. Possible value: configadmin.	| Yes      | None    |
-| name	      | The user name.	                                                        | Yes      | None    |
-| password	  | The password if the user needs to be created.	                        | No       | None    |
+| role	      | 应用程序的有效安全角色。可能的值：configadmin。	| 是      | 无    |
+| name	      | 用户名。	                                                        | 是      | 无    |
+| password	  | 需要创建用户时的密码。	                        | 否       | 无    |
 
-After you defined the users by using the `<user>` element, you can map them to any of the following roles for authentication in {{ site.data.keys.mf_console }}: `configadmin`.
+使用 `<user>` 元素定义用户之后，可以将其映射到以下任一角色以供在 {{ site.data.keys.mf_console }} 中进行认证：`configadmin`。
 
-For more information about which authorizations are implied by the specific roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+有关特定角色暗示哪些授权的更多信息，请参阅[配置 {{ site.data.keys.mf_server }} 管理的用户认证](../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration)。
 
-> **Tip:** If the users exist in an external LDAP directory, set only the **role** and **name** attributes but do not define any passwords.
+> **提示：**如果用户存在于外部 LDAP 目录中，仅设置 **role** 和 **name** 属性，但是不定义任何密码。
+`<property>` 元素指定了要在应用程序服务器中定义的部署属性。
+它具有以下属性：
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
-
-| Attribute  | Description                | Required | Default | 
+| 属性  | 描述                | 必需 | 缺省值 | 
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    | 
-| value	     | The value of the property. |	Yes      | None    |
+| name       | 属性的名称。  | 是      | 无    | 
+| value	     | 属性的值。 |	是      | 无    |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the administration service and the {{ site.data.keys.mf_console }} WAR files. For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} administration service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service).
+使用该元素时，可以定义自己的 JNDI 属性，或覆盖管理服务和 {{ site.data.keys.mf_console }} WAR 文件提供的 JNDI 属性的缺省值。有关 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。
 
-### To specify an application server
+### 指定应用程序服务器
 {: #to-specify-an-application-server-1 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
+使用 `<applicationserver>` 元素来定义依赖底层应用程序服务器的参数。`<applicationserver>` 元素支持以下元素：
 
-| Element      | Description                                              | Count |
+| 元素      | 描述                                              | 计数 |
 |--------------|--------------------------------------------------------- |-------|
-| `<websphereapplicationserver>` or `<was>`	| The parameters for WebSphere Application Server.<br/><br/>The <websphereapplicationserver> element (or <was> in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. | 0..1  | 
-| `<tomcat>`   | The parameters for Apache Tomcat.                        | 0..1  |
+| `<websphereapplicationserver>` 或 `<was>`	| WebSphere Application Server 的参数。<br/><br/><websphereapplicationserver> 元素（或其缩写形式 <was>）表示 WebSphere Application Server 实例。WebSphere Application Server Full Profile（Base 和 Network Deployment）与 WebSphere Application Server Liberty Core 和 WebSphere Application Server Liberty Network Deployment 一样受支持。 | 0..1  | 
+| `<tomcat>`   | Apache Tomcat 的参数。                        | 0..1  |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).  
-However, for the inner element of the <was> element for Liberty collective, see the following table:
+在[用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)表中描述了这些元素的属性和内部元素。  
+但是，有关用于 Liberty 集合体的 <was> 元素的内部元素，请参阅下表：
 
-| Element               | Description                  | Count |
+| 元素               | 描述                  | 计数 |
 |-----------------------|----------------------------- |-------|
-| `<collectiveMember>`	| A Liberty collective member. | 0..1  |
+| `<collectiveMember>`	| Liberty 集合体成员。 | 0..1  |
 
-The `<collectiveMember>` element has the following attributes:
+`<collectiveMember>` 元素具有以下属性：
 
-| Attribute   | Description                                             | Required | Default | 
+| 属性   | 描述                                             | 必需 | 缺省值 | 
 |-------------|---------------------------------------------------------|----------|---------|
-| serverName  |	The name of the collective member.                      | Yes      | None    |
-| clusterName |	The cluster name that the collective member belongs to. | Yes	   | None    |
+| serverName  |	集合体成员的名称。                      | 是      | 无    |
+| clusterName |	集合体成员所属的集群名称。 | 是	   | 无    |
 
-> **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
-
-### To specify Analytics
+> **注：**如果推送服务和运行时组件安装在同一个集合体成员中，那么它们必须具有相同的集群名称。如果这些组件安装在同一个集合体的不同成员中，那么集群名称可以不同。
+### 指定分析
 {: #to-specify-analytics }
-The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} push service to an already installed {{ site.data.keys.mf_analytics }} service. It has the following attributes:
+`<analytics>` 元素表示您想要将 {{ site.data.keys.product_adj }} 推送服务连接至已安装的 {{ site.data.keys.mf_analytics }} 服务。它具有以下属性：
 
-| Attribute     | Description                                                               | Required | Default | 
+| 属性     | 描述                                                               | 必需 | 缺省值 | 
 |---------------|---------------------------------------------------------------------------|----------|---------|
-| install	    | To indicate whether to connect the push service to {{ site.data.keys.mf_analytics }}. | No       | false   |
-| analyticsURL 	| The URL of {{ site.data.keys.mf_analytics }} services.	                            | Yes	   | None    |
-| username	    | The user name.	                                                        | Yes	   | None    |
-| password	    | The password.	                                                            | Yes	   | None    |
-| validate	    | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not.	| No	   | true    |
+| install	    | 指示是否将推送服务连接到 {{ site.data.keys.mf_analytics }}。 | 否       | false   |
+| analyticsURL 	| {{ site.data.keys.mf_analytics }} 服务的 URL。	                            | 是	   | 无    |
+| username	    | 用户名。	                                                        | 是	   | 无    |
+| password	    | 密码。	                                                            | 是	   | 无    |
+| validate	    | 验证 {{ site.data.keys.mf_analytics_console }} 是否可以访问。	| 否	   | true    |
 
 **install**  
-Use the install attribute to indicate that this push service must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are true or false.
+使用 install 属性来指示必须将该推送服务连接至 {{ site.data.keys.mf_analytics }}，并向其发送事件。有效值为 true 或 false。
 
 **analyticsURL**  
-Use the analyticsURL attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.
+使用 analyticsURL 属性来指定由收到入局分析数据的 {{ site.data.keys.mf_analytics }} 公开的 URL。
 
-For example: `http://<hostname>:<port>/analytics-service/rest`
+例如：`http://<hostname>:<port>/analytics-service/rest`
 
 **username**  
-Use the username attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+使用 username 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }} 的数据入口点时所使用的用户名。
 
 **password**  
-Use the password attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+使用 password 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }} 的数据入口点时所使用的密码。
 
 **validate**  
-Use the validate attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
+使用 validate 属性来验证 {{ site.data.keys.mf_analytics_console }} 是否可以访问，并使用密码检查用户名认证。可能的值为 true 或 false。
 
-### To specify a connection to the push service database
+### 指定到推送服务数据库的连接
 {: #to-specify-a-connection-to-the-push-service-database }
 
-The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
+`<database>` 元素收集应用程序服务器中指定数据源声明的参数以访问推送服务数据库。
 
-You must declare a single database: `<database kind="Push">`. You specify the `<database>` element similarly to the configuredatabase Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+您必须声明单个数据库：`<database kind="Push">`。指定 `<database>` 元素类似于 configuredatabase Ant 任务，但是 `<database>` 元素不包含 `<dba>` 和 `<client>` 元素。它可能具有 `<property>` 元素。
 
-The `<database>` element has the following attributes:
+`<database>` 元素具有以下属性：
 
-| Attribute     | Description                                     | Required | Default | 
+| 属性     | 描述                                     | 必需 | 缺省值 | 
 |---------------|-------------------------------------------------|----------|---------|
-| kind          | The kind of database (Push).	                  | Yes	     | None    |
-| validate	    | To validate whether the database is accessible. | No       | true    |
+| kind          | 数据库类型 (Push)。	                  | 是	     | 无    |
+| validate	    | 验证数据库是否可以访问。 | 否       | true    |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+`<database>` 元素支持以下元素。有关关系 DBMS 的这些数据库元素配置的更多信息，请参阅 [用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)表。
 
-| Element            | Description                                                      | Count |
+| 元素            | 描述                                                      | 计数 |
 |--------------------|----------------------------------------------------------------- |-------|
-| <db2>	             | The parameter for DB2  databases.	                            | 0..1  |
-| <derby>	         | The parameter for Apache Derby databases.	                    | 0..1  | 
-| <mysql>	         | The parameter for MySQL databases.                               | 0..1  |
-| <oracle>	         | The parameter for Oracle databases.	                            | 0..1  |
-| <cloudant>	     | The parameter for Cloudant databases.	                        | 0..1  |
-| <driverclasspath>	 | The parameter for JDBC driver class path (relational DBMS only). | 0..1  |
+| <db2>	             | DB2 数据库的参数。	                            | 0..1  |
+| <derby>	         | Apache Derby 数据库的参数。	                    | 0..1  | 
+| <mysql>	         | MySQL 数据库的参数。                               | 0..1  |
+| <oracle>	         | Oracle 数据库的参数。	                            | 0..1  |
+| <cloudant>	     | Cloudant 数据库的参数。	                        | 0..1  |
+| <driverclasspath>	 | JDBC 驱动程序类路径的参数（仅限关系 DBMS）。 | 0..1  |
 
-> **Note:** The attributes of the `<cloudant>` element are slightly different from the runtime. For more information, see the following table:
+> **注：**`<cloudant>` 元素的属性与运行时稍有不同。有关更多信息，请参阅下表：
 
-| Attribute     | Description                                     | Required | Default                   | 
+| 属性     | 描述                                     | 必需 | 缺省值                   | 
 |---------------|-------------------------------------------------|----------|---------------------------|
-| url           | The URL of the Cloudant account.                | No       | https://user.cloudant.com |
-| user          | The user name of the Cloudant account.	      | Yes	     | None                      |
-| password      | The password of the Cloudant account.	          | No	     | Queried interactively     |
-| dbName        | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -.                                | No       | mfp_push_db               |
+| url           | Cloudant 帐户的 URL。                | 否       | https://user.cloudant.com |
+| user          | Cloudant 帐户的用户名。	      | 是	     | 无                      |
+| password      | Cloudant 帐户的密码。	          | 否	     | 交互式查询     |
+| dbName        | Cloudant 数据库名称。**要点：**该数据库名称必须以小写字母开头，并且只能包含小写字符 (a-z)、数字 (0-9) 及以下任意字符：_、$ 和 -。                                | 否       | mfp_push_db               |
 
-## Ant tasks for installation of {{ site.data.keys.mf_server }} push service
+## 用于安装 {{ site.data.keys.mf_server }} 推送服务的 Ant 任务
 {: #ant-tasks-for-installation-of-mobilefirst-server-push-service }
-The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks are provided for the installation of the push service.
+**installmobilefirstpush**、**updatemobilefirstpush** 和 **uninstallmobilefirstpush** Ant 任务是为了推送服务的安装而提供的。
 
-### Task effects
+### 任务影响
 {: #task-effects-1 }
 #### installmobilefirstpush
 {: #installmobilefirstpush }
-The **installmobilefirstpush** Ant task configures an application server to run the push service WAR file as web application. This task has the following effects:
-It declares the push service web application in the **/imfpush** context root. The context root cannot be changed.
-For the relational databases, it declares data sources and, on WebSphere  Application Server Full Profile, JDBC providers for push service.
-It configures the configuration properties for the push service by using JNDI environment entries. These JNDI environment entries configure the OAuth communication with the {{ site.data.keys.product_adj }} authorization server, {{ site.data.keys.mf_analytics }}, and with Cloudant  in case Cloudant is used.
+**installmobilefirstpush** Ant 任务配置应用程序服务器，以将推送服务 WAR 文件作为 Web 应用程序运行。此任务具有以下影响：此任务将在 **/imfpush** 上下文根中声明推送服务 Web 应用程序。
+无法更改上下文根。对于关系数据库，此任务将为推送服务声明数据源以及（在 WebSphere Application Server Full Profile 上）JDBC 提供程序。此任务将使用 JNDI 环境条目配置推送服务的配置属性。这些 JNDI 环境条目将配置与 {{ site.data.keys.product_adj }} 授权服务器、{{ site.data.keys.mf_analytics }} 以及 Cloudant（如果使用 Cloudant）的 OAuth 通信。
 
 #### updatemobilefirstpush
 {: #updatemobilefirstpush }
-The **updatemobilefirstpush** Ant task updates an already-configured {{ site.data.keys.mf_server }} web application on an application server. This task updates the push service WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
+**updatemobilefirstpush** Ant 任务将更新已在应用程序服务器上配置的 {{ site.data.keys.mf_server }} Web 应用程序。此任务将更新推送服务 WAR 文件。该文件的基本名称与先前部署的对应 WAR 文件的基本名称必须完全相同。
 
 #### uninstallmobilefirstpush
 {: #uninstallmobilefirstpush }
-The **uninstallmobilefirstpush** Ant task undoes the effects of an earlier run of **installmobilefirstpush**. This task has the following effects:
-It removes the configuration of the push service web application with the specified context root. As a consequence, the task also removes the settings that were added manually to that application.
-It removes the push service WAR file from the application server as an option.
-For the relational DBMS, it removes the data sources and on WebSphere Application Server Full Profile – the JDBC providers for the push service.
-It removes the associated JNDI environment entries.
+**uninstallmobilefirstpush** Ant 任务将撤销早期运行 **installmobilefirstpush** 的影响。此任务具有以下影响：将除去具有指定上下文根的推送服务 Web 应用程序配置。因此，此任务还将除去手动添加到该应用程序的设置。此任务提供从应用程序服务器中除去推送服务 WAR 文件的选项。对于关系 DBMS，此任务将除去推送服务的数据源以及（在 WebSphere Application Server Full Profile 上）JDBC 提供程序。此任务将除去关联的 JNDI 环境条目。
 
-### Attributes and elements
+### 属性和元素
 {: #attributes-and-elements-1 }
-The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks have the following attributes:
+**installmobilefirstpush**、**updatemobilefirstpush** 和 **uninstallmobilefirstpush** Ant 任务具有以下属性：
 
-| Attribute | Description                           | Required | Default     | 
+| 属性 | 描述                           | 必需 | 缺省值     | 
 |-----------|---------------------------------------|----------|-------------|
-| id        | To distinguish different deployments.	| No	   | Empty
-| warFile	| The WAR file for the push service.	| No	   | The ../PushService/mfp-push-service.war file is relative to the MobileFirstServer directory that contains the  mfp-ant-deployer.jar file. |
+| id        | 区分不同的部署。	| 否	   | 空
+| warFile	| 推送服务的 WAR 文件。	| 否	   | ../PushService/mfp-push-service.war 文件相对于包含 mfp-ant-deployer.jar 文件的 MobileFirstServer 目录。 |
 
 ### Id
 {: #id }
-The **id** attribute distinguishes different deployments of the push service in the same WebSphere Application Server cell. Without this id attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+**id** 属性可区分同一个 WebSphere Application Server 单元中推送服务的不同部署。没有该 id 属性时，使用同一上下文根的两个 WAR 文件可能会冲突，并无法部署这些文件。
 
 ### warFile
 {: #warfile }
-Use the **warFile** attribute to specify a different directory for the push service WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+使用 **warFile** 属性来指定推送服务 WAR 文件的不同目录。您可以使用绝对路径或相对路径来指定该 WAR 文件的名称。
 
-The **installmobilefirstpush**, **updatemobilefirstpush**, and **uninstallmobilefirstpush** Ant tasks support the following elements:
+**installmobilefirstpush**、**updatemobilefirstpush** 和 **uninstallmobilefirstpush** Ant 任务支持以下元素：
 
-| Element               | Description             | Count |
+| 元素               | 描述             | 计数 |
 |-----------------------|-------------------------|-------|
-| `<applicationserver>` | The application server. | 1     |
-| `<analytics>`	        | The Analytics.	      | 0..1  | 
-| `<authorization>`	    | The authorization server for authenticating the communication with other {{ site.data.keys.mf_server }} components. | 1 |
-| `<database>`	        | The databases.	      | 1     |
-| `<property>`	        | The properties.	      | 0..∞  | 
+| `<applicationserver>` | 应用程序服务器。 | 1     |
+| `<analytics>`	        | 分析。	      | 0..1  | 
+| `<authorization>`	    | 授权服务器，用于认证与其他 {{ site.data.keys.mf_server }} 组件的通信。 | 1 |
+| `<database>`	        | 数据库。	      | 1     |
+| `<property>`	        | 属性。	      | 0..∞  | 
 
-### To specify the authorization server
+### 指定授权服务器
 {: #to-specify-the-authorization-server }
-The `<authorization>` element collects information to configure the authorization server for the authentication communication with other {{ site.data.keys.mf_server }} components. This element has the following attributes:
+`<authorization>` 元素将收集信息以配置授权服务器，与其他 {{ site.data.keys.mf_server }} 组件进行认证通信。此元素具有以下属性：
 
-| Attribute          | Description                           | Required | Default     | 
+| 属性          | 描述                           | 必需 | 缺省值     | 
 |--------------------|---------------------------------------|----------|-------------|
-| auto               | To indicate whether the authorization server URL is computed. The possible values are true or false.	| Required on a WebSphere Application Server Network Deployment cluster or node.   	 | true | 
-| authorizationURL   | The URL of the authorization server.	 | If mode is not auto. | The context root of the runtime on the local server. |
-| runtimeContextRoot | The context root of the runtime.	     | No	     | /mfp       | 
-| pushClientID	     | The push service confidential ID in the authorization server.  | Yes | None |
-| pushClientSecret	 | The push service confidential client password in the authorization server. | Yes | None |
+| auto               | 指示是否计算授权服务器 URL。可能的值为 true 或 false。	| 在 WebSphere Application Server Network Deployment 集群或节点上需要。   	 | true | 
+| authorizationURL   | 授权服务器的 URL。	 | 如果方式不是 auto。 | 本地服务器上运行时的上下文根。 |
+| runtimeContextRoot | 运行时的上下文根。	     | 否	     | /mfp       | 
+| pushClientID	     | 授权服务器中的推送服务保密标识。  | 是 | 无 |
+| pushClientSecret	 | 授权服务器中的推送服务保密客户机密码。 | 是 | 无 |
 
 #### auto
 {: #auto }
-If the value is set to true, the URL of the authorization server is computed automatically by using the context root of the runtime on the local application server. The auto mode is not supported if you deploy on WebSphere Application Server Network Deployment on a cluster.
+如果将此值设置为 true，那么将使用本地应用程序服务器上运行时的上下文根来自动计算授权服务器的 URL。如果在集群中的 WebSphere Application Server Network Deployment 上部署，将不支持 auto 方式。
 
 #### authorizationURL
 {: #authorizationurl }
-The URL of the authorization server. If the authorization server is the {{ site.data.keys.product_adj }} runtime, the URL is the URL of the runtime. For example: `http://myHost:9080/mfp`.
+授权服务器的 URL。如果授权服务器是 {{ site.data.keys.product_adj }} 运行时，那么该 URL 是运行时的 URL。例如：`http://myHost:9080/mfp`。
 
 #### runtimeContextRoot
 {: #runtimecontextroot }
-The context root of the runtime that is used to compute the URL of the authorization server in the automatic mode.
+用于以自动方式计算授权服务器的 URL 的运行时上下文根。
 #### pushClientID
 {: #pushclientid }
-The ID of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from {{ site.data.keys.mf_console }}.
+此充当授权服务器的保密客户机的推送服务实例的标识。必须为授权服务器注册标识和密钥。可以通过 **installmobilefirstadmin** Ant 任务或 {{ site.data.keys.mf_console }} 注册。
 
 #### pushClientSecret
 {: #pushclientsecret }
-The secret key of this push service instance as a confidential client of the authorization server. The ID and the secret must be registered for the authorization server. It can be registered by **installmobilefirstadmin** Ant task, or from {{ site.data.keys.mf_console }}.
+此充当授权服务器的保密客户机的推送服务实例的密钥。必须为授权服务器注册标识和密钥。可以通过 **installmobilefirstadmin** Ant 任务或 {{ site.data.keys.mf_console }} 注册。
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+`<property>` 元素指定了要在应用程序服务器中定义的部署属性。
+它具有以下属性：
 
-| Attribute  | Description                | Required | Default | 
+| 属性  | 描述                | 必需 | 缺省值 | 
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  |	Yes	     | None    |
-| value	     | The value of the property. |	Yes	     | None    |
+| name       | 属性的名称。  |	是	     | 无    |
+| value	     | 属性的值。 |	是	     | 无    |
 
-By using this element, you can define your own JNDI properties or override the default value of the JNDI properties that are provided by the push service WAR file.
+使用该元素时，可以定义自己的 JNDI 属性，或覆盖推送服务 WAR 文件提供的 JNDI 属性的缺省值。
 
-For more information about the JNDI properties, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+有关 JNDI 属性的更多信息，请参阅[{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)。
 
-### To specify an application server
+### 指定应用程序服务器
 {: #to-specify-an-application-server-2 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements:
+使用 `<applicationserver>` 元素来定义依赖底层应用程序服务器的参数。`<applicationserver>` 元素支持以下元素：
 
-| Element                               | Description                                      | Count |
+| 元素                               | 描述                                      | 计数 |
 |---------------------------------------|--------------------------------------------------|-------|
-| <websphereapplicationserver> or <was>	| The parameters for WebSphere Application Server. | The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. | 0..1 |
-| `<tomcat>` | The parameters for Apache Tomcat. | 0..1 |
+| <websphereapplicationserver> 或 <was>	| WebSphere Application Server 的参数。 | `<websphereapplicationserver>` 元素（或其缩写形式 `<was>`）表示 WebSphere Application Server 实例。WebSphere Application Server Full Profile（Base 和 Network Deployment）与 WebSphere Application Server Liberty Core 和 WebSphere Application Server Liberty Network Deployment 一样受支持。 | 0..1 |
+| `<tomcat>` | Apache Tomcat 的参数。 | 0..1 |
 
-The attributes and inner elements of these elements are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+在[用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)表中描述了这些元素的属性和内部元素。
 
-However, for the inner element of the `<was>` element for Liberty collective, see the following table:
+但是，有关用于 Liberty 集合体的 `<was>` 元素的内部元素，请参阅下表：
 
-| Element              | Description                  | Count |
+| 元素              | 描述                  | 计数 |
 |----------------------|------------------------------|-------|
-| `<collectiveMember>` | A Liberty collective member. |	0..1  |
+| `<collectiveMember>` | Liberty 集合体成员。 |	0..1  |
 
-The `<collectiveMember>` element has the following attributes:
+`<collectiveMember>` 元素具有以下属性：
 
-| Attribute   | Description                        | Required | Default | 
+| 属性   | 描述                        | 必需 | 缺省值 | 
 |-------------|------------------------------------|----------|---------|
-| serverName  | The name of the collective member. | Yes      | None    |
-| clusterName |	The cluster name that the collective member belongs to. | Yes | None |
+| serverName  | 集合体成员的名称。 | 是      | 无    |
+| clusterName |	集合体成员所属的集群名称。 | 是 | 无 |
 
-> **Note:** If the push service and the runtime components are installed in the same collective member, then they must have the same cluster name. If these components are installed on distinct members of the same collective, the cluster names can be different.
-
-### To specify Analytics
+> **注：**如果推送服务和运行时组件安装在同一个集合体成员中，那么它们必须具有相同的集群名称。如果这些组件安装在同一个集合体的不同成员中，那么集群名称可以不同。
+### 指定分析
 {: #to-specify-analytics-1 }
-The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} push service to an already installed {{ site.data.keys.mf_analytics }} service. It has the following attributes:
+`<analytics>` 元素表示您想要将 {{ site.data.keys.product_adj }} 推送服务连接至已安装的 {{ site.data.keys.mf_analytics }} 服务。它具有以下属性：
 
-| Attribute    | Description                        | Required | Default | 
+| 属性    | 描述                        | 必需 | 缺省值 | 
 |--------------|------------------------------------|----------|---------|
-| install	   | To indicate whether to connect the push service to {{ site.data.keys.mf_analytics }}. | No | false | 
-| analyticsURL | The URL of {{ site.data.keys.mf_analytics }} services. | Yes | None | 
-| username	   | The user name. | Yes | None | 
-| password	   | The password. | Yes | None | 
-| validate	   | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not. | No | true | 
+| install	   | 指示是否将推送服务连接到 {{ site.data.keys.mf_analytics }}。 | 否 | false | 
+| analyticsURL | {{ site.data.keys.mf_analytics }} 服务的 URL。 | 是 | 无 | 
+| username	   | 用户名。 | 是 | 无 | 
+| password	   | 密码。 | 是 | 无 | 
+| validate	   | 验证 {{ site.data.keys.mf_analytics_console }} 是否可以访问。 | 否 | true | 
 
 #### install
 {: #install }
-Use the **install** attribute to indicate that this push service must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are true or false.
+使用 **install** 属性来指示必须将该推送服务连接至 {{ site.data.keys.mf_analytics }}，并向其发送事件。
+有效值为 true 或 false。
 
 #### analyticsURL
 {: #analyticsurl }
-Use the **analyticsURL** attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.  
-For example: `http://<hostname>:<port>/analytics-service/rest`
+使用 **analyticsURL** 属性来指定由收到入局分析数据的 {{ site.data.keys.mf_analytics }} 公开的 URL。  
+例如：`http://<hostname>:<port>/analytics-service/rest`
 
 #### username
 {: #username }
-Use the **username** attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+使用 **username** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }}
+的数据入口点时所使用的用户名。
 
 #### password
 {: #password }
-Use the **password** attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+使用 **password** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }}
+的数据入口点时所使用的密码。
 
 #### validate
 {: #validate }
-Use the **validate** attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are true, or false.
+使用 **validate** 属性来验证 {{ site.data.keys.mf_analytics_console }} 是否可以访问，并使用密码检查用户名认证。可能的值为 true 或 false。
 
-### To specify a connection to the push service database
+### 指定到推送服务数据库的连接
 {: #to-specify-a-connection-to-the-push-service-database-1 }
-The `<database>` element collects the parameters that specify a data source declaration in an application server to access the push service database.
+`<database>` 元素收集应用程序服务器中指定数据源声明的参数以访问推送服务数据库。
 
-You must declare a single database: `<database kind="Push">`. You specify the `<database>` element similarly to the configuredatabase Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+您必须声明单个数据库：`<database kind="Push">`。指定 `<database>` 元素类似于 configuredatabase Ant 任务，但是 `<database>` 元素不包含 `<dba>` 和 `<client>` 元素。它可能具有 `<property>` 元素。
 
-The `<database>` element has the following attributes:
+`<database>` 元素具有以下属性：
 
-| Attribute    | Description                  | Required | Default | 
+| 属性    | 描述                  | 必需 | 缺省值 | 
 |--------------|------------------------------|----------|---------|
-| kind         | The kind of database (Push). | Yes      | None    |
-| validate	   | To validate whether the database is accessible. | No | true |
+| kind         | 数据库类型 (Push)。 | 是      | 无    |
+| validate	   | 验证数据库是否可以访问。 | 否 | true |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements for relational DBMS, see the tables in [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+`<database>` 元素支持以下元素。有关关系 DBMS 的这些数据库元素配置的更多信息，请参阅 [用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)中的表。
 
-| Element              | Description                               | Count |
+| 元素              | 描述                               | 计数 |
 |----------------------|-------------------------------------------|-------|
-| `<db2>`	           | The parameter for DB2  databases.         | 0..1  | 
-| `<derby>`	           | The parameter for Apache Derby databases. | 0..1  | 
-| `<mysql>`	           | The parameter for MySQL databases.        | 0..1  | 
-| `<oracle>`           | The parameter for Oracle databases.       | 0..1  |
-| `<cloudant>`	       | The parameter for Cloudant databases.     | 0..1  | 
-| `<driverclasspath>`  | The parameter for JDBC driver class path (relational DBMS only). | 0..1 |
+| `<db2>`	           | DB2 数据库的参数。         | 0..1  | 
+| `<derby>`	           | Apache Derby 数据库的参数。 | 0..1  | 
+| `<mysql>`	           | MySQL 数据库的参数。        | 0..1  | 
+| `<oracle>`           | Oracle 数据库的参数。       | 0..1  |
+| `<cloudant>`	       | Cloudant 数据库的参数。     | 0..1  | 
+| `<driverclasspath>`  | JDBC 驱动程序类路径的参数（仅限关系 DBMS）。 | 0..1 |
 
-> **Note:** The attributes of the `<cloudant>` element are slightly different from the runtime. For more information, see the following table:
-
-| Attribute    | Description                            | Required   | Default | 
+> **注：**`<cloudant>` 元素的属性与运行时稍有不同。有关更多信息，请参阅下表：
+| 属性    | 描述                            | 必需   | 缺省值 | 
 |--------------|----------------------------------------|------------|---------|
-| url	       | The URL of the Cloudant account.       | No         | https://user.cloudant.com | 
-| user	       | The user name of the Cloudant account. | Yes | None |
-| password	   | The password of the Cloudant account.	| No  | Queried interactively |
-| dbName	   | The Cloudant database name. **Important:** This database name must start with a lowercase letter and contain only lowercase characters (a-z), Digits (0-9), any of the characters _, $, and -. |No	| mfp_push_db |
+| url	       | Cloudant 帐户的 URL。       | 否         | https://user.cloudant.com | 
+| user	       | Cloudant 帐户的用户名。 | 是 | 无 |
+| password	   | Cloudant 帐户的密码。	| 否  | 交互式查询 |
+| dbName	   | Cloudant 数据库名称。**要点：**该数据库名称必须以小写字母开头，并且只能包含小写字符 (a-z)、数字 (0-9) 及以下任意字符：_、$ 和 -。 |否	| mfp_push_db |
 
-## Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments
+## 用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务
 {: #ant-tasks-for-installation-of-mobilefirst-runtime-environments }
-Reference information for the **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks.
+**installmobilefirstruntime**、**updatemobilefirstruntime** 和 **uninstallmobilefirstruntime** Ant 任务的参考信息。
 
-### Task effects
+### 任务影响
 {: #task-effects-2 }
 
 #### installmobilefirstruntime
 {: #installmobilefirstruntime }
-The **installmobilefirstruntime** Ant task configures an application server to run a {{ site.data.keys.product_adj }} runtime WAR file as a web application. This task has the following effects.
+**installmobilefirstruntime** Ant 任务配置应用程序服务器以将 {{ site.data.keys.product_adj }} 运行时 WAR 文件作为 Web 应用程序运行。此任务的影响如下。
 
-* It declares the {{ site.data.keys.product_adj }} web application in the specified context root, by default /mfp.
-* It deploys the runtime WAR file on the application server.
-* It declares data sources and on WebSphere  Application Server full profile JDBC providers for the runtime.
-* It deploys the database drivers in the application server.
-* It sets {{ site.data.keys.product_adj }} configuration properties through JNDI environment entries.
-* Optionally, it sets the {{ site.data.keys.product_adj }} JNDI environment entries to configure the application server as a server farm member for the runtime.
+* 此任务将在指定上下文根（缺省情况下为 /mfp）中声明 {{ site.data.keys.product_adj }} Web 应用程序。
+* 此任务将在应用程序服务器上部署运行时 WAR 文件。
+* 此任务将为运行时声明数据源以及（在 WebSphere Application Server Full Profile 上）JDBC 提供程序。
+* 此任务将在应用程序服务器中部署数据库驱动程序。
+* 此任务通过 JNDI 环境条目设置 {{ site.data.keys.product_adj }} 配置属性。
+* （可选）此任务设置 {{ site.data.keys.product_adj }} JNDI 环境条目以将应用程序服务器配置为运行时的服务器场成员。
 
 #### updatemobilefirstruntime
 {: #updatemobilefirstruntime }
-The **updatemobilefirstruntime** Ant task updates a {{ site.data.keys.product_adj }} runtime that is already configured on an application server. This task updates the runtime WAR file. The file must have the same base name as the runtime WAR file that was previously deployed. Other than that, the task does not change the application server configuration, that is, the web application configuration, data sources, and JNDI environment entries.
+**updatemobilefirstruntime** Ant 任务将更新应用程序服务器上已配置的 {{ site.data.keys.product_adj }} 运行时。此任务将更新运行时 WAR 文件。该文件的基本名称与先前部署的运行时 WAR 文件的基本名称必须完全相同。除此之外，此任务不会更改应用程序服务器配置，即，Web 应用程序配置、数据源和 JNDI 环境条目。
 
 #### uninstallmobilefirstruntime
 {: #uninstallmobilefirstruntime }
-The **uninstallmobilefirstruntime** Ant task undoes the effects of an earlier **installmobilefirstruntime** run. This task has the following effects.
+**uninstallmobilefirstruntime** Ant 任务用于撤销早先运行 **installmobilefirstruntime** 的影响。此任务的影响如下。
 
-* It removes the configuration of the {{ site.data.keys.product_adj }} web application with the specified context root. The task also removes the settings that are added manually to that application.
-* It removes the runtime WAR file from the application server.
-* It removes the data sources and on WebSphere Application Server full profile the JDBC providers for the runtime.
-* It removes the associated JNDI environment entries.
+* 此任务将除去具有指定上下文根的 {{ site.data.keys.product_adj }} Web 应用程序配置。此任务还将除去手动添加到该应用程序的设置。
+* 此任务将从应用程序服务器中除去运行时 WAR 文件。
+* 此任务将除去运行时的数据源以及（在 WebSphere Application Server Full Profile 上）JDBC 提供程序。
+* 此任务将除去关联的 JNDI 环境条目。
 
-### Attributes and elements
+### 属性和元素
 {: #attributes-and-elements-2 }
-The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** Ant tasks have the following attributes:
+**installmobilefirstruntime**、**updatemobilefirstruntime** 和 **uninstallmobilefirstruntime** Ant 任务具有以下属性：
 
-| Attribute         | Description                                                                 | Required   | Default                   | 
+| 属性         | 描述                                                                 | 必需   | 缺省值                   | 
 |-------------------|-----------------------------------------------------------------------------|------------|---------------------------|
-| contextroot       | The common prefix in URLs to the application (context root).                | No | /mfp  |
-| id	            | To distinguish different deployments.                                       | No | Empty |
-| environmentId	    | To distinguish different {{ site.data.keys.product_adj }} environments.                          | No | Empty |
-| warFile	        | The WAR file for {{ site.data.keys.product_adj }} runtime.                                       | No | The mfp-server.war file is in the same directory as the mfp-ant-deployer.jar file. |
-| wasStartingWeight | The start order for WebSphere Application Server. Lower values start first. | No | 2     |                           | 
+| contextroot       | 应用程序的 URL 中的公共前缀（上下文根）。                | 否 | /mfp  |
+| id	            | 区分不同的部署。                                       | 否 | 空 |
+| environmentId	    | 区分不同的 {{ site.data.keys.product_adj }} 环境。                          | 否 | 空 |
+| warFile	        | {{ site.data.keys.product_adj }} 运行时的 WAR 文件。                                       | 否 | mfp-server.war 文件与 mfp-ant-deployer.jar 文件位于同一目录中。 |
+| wasStartingWeight | WebSphere Application Server 的启动顺序。从较小的值开始启动。 | 否 | 2     |                           | 
 
-#### contextroot and id
+#### contextroot 和 id
 {: #contextroot-and-id-1 }
-The **contextroot** and **id** attributes distinguish different {{ site.data.keys.product_adj }} projects.
+**contextroot** 和 **id** 属性区分不同的 {{ site.data.keys.product_adj }} 项目。
 
-In WebSphere Application Server Liberty profiles and in Tomcat environments, the contextroot parameter is sufficient for this purpose. In WebSphere Application Server full profile environments, the id attribute is used instead.
+
+在 WebSphere Application Server Liberty Profile 和 Tomcat 环境中，contextroot 参数足以实现该目的。在 WebSphere Application Server Full Profile 环境中，改为使用 id 属性。
 
 #### environmentId
 {: #environmentid-1 }
-Use the **environmentId** attribute to distinguish several environments, consisting each of {{ site.data.keys.mf_server }} administration service and {{ site.data.keys.product_adj }} runtime web applications, that must operate independently. You must set this attribute to the same value for the runtime application as the one that was set in the <installmobilefirstadmin> invocation, for the administration service application.
+使用 **environmentId** 属性可区分多个环境，包括必须独立运行的每个 {{ site.data.keys.mf_server }} 管理服务和 {{ site.data.keys.product_adj }} 运行时 Web 应用程序。您必须将运行时应用程序的该属性设置为 <installmobilefirstadmin> 调用中针对管理服务应用程序设置的相同值。
 
 #### warFile
 {: #warfile-1 }
-Use the **warFile** attribute to specify a different directory for the {{ site.data.keys.product_adj }} runtime WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+使用 **warFile** 属性来指定 {{ site.data.keys.product_adj }} 运行时 WAR 文件的不同目录。您可以使用绝对路径或相对路径来指定该 WAR 文件的名称。
 
 #### wasStartingWeight
 {: #wasstartingweight-1 }
-Use the **wasStartingWeight** attribute to specify a value that is used in WebSphere Application Server as a weight to ensure that a start order is respected. As a result of the start order value, the {{ site.data.keys.mf_server }} administration service web application is deployed and started before any other {{ site.data.keys.product_adj }} runtime projects. If {{ site.data.keys.product_adj }} projects are deployed or started before the web application, the JMX communication is not established and you cannot manage your {{ site.data.keys.product_adj }} projects.
+使用 **wasStartingWeight** 属性将 WebSphere Application Server 中使用的值指定为权重，以确保启动顺序的稳定可靠。根据启动顺序值，在任何其他 {{ site.data.keys.product_adj }} 运行时项目之前部署和启动 {{ site.data.keys.mf_server }} 管理服务 Web 应用程序。如果 {{ site.data.keys.product_adj }} 项目在 Web 应用程序之前部署或启动，那么不会建立 JMX 通信并且您无法管理 {{ site.data.keys.product_adj }} 项目。
 
-The **installmobilefirstruntime**, **updatemobilefirstruntime**, and **uninstallmobilefirstruntime** tasks support the following elements:
+**installmobilefirstruntime**、**updatemobilefirstruntime** 和 **uninstallmobilefirstruntime** 任务支持以下元素：
 
-| Element               | Description                                      | Count |
+| 元素               | 描述                                      | 计数 |
 |-----------------------|--------------------------------------------------|-------|
-| `<property>`          | The properties.	                               | 0..   |
-| `<applicationserver>` | The application server.                          | 1     |
-| `<database>`          | The databases.                                   | 1     |
-| `<analytics>`         | The analytics.                                   | 0..1  |
+| `<property>`          | 属性。	                               | 0..   |
+| `<applicationserver>` | 应用程序服务器。                          | 1     |
+| `<database>`          | 数据库。                                   | 1     |
+| `<analytics>`         | 分析。                                   | 0..1  |
 
-The `<property>` element specifies a deployment property to be defined in the application server. It has the following attributes:
+`<property>` 元素指定了要在应用程序服务器中定义的部署属性。它具有以下属性：
 
-| Attribute | Description                | Required | Default | 
+| 属性 | 描述                | 必需 | 缺省值 | 
 |-----------|----------------------------|----------|---------|
-| name      | The name of the property.	 | Yes      | None    |
-| value	    | The value for the property.| Yes	    | None    |  
+| name      | 属性的名称。	 | 是      | 无    |
+| value	    | 属性的值。| 是	    | 无    |  
 
-The `<applicationserver>` element describes the application server to which the {{ site.data.keys.product_adj }} application is deployed. It is a container for one of the following elements:
+`<applicationserver>` 元素描述了要将 {{ site.data.keys.product_adj }} 应用程序部署到的应用程序服务器。它是以下某个元素的容器：
 
-| Element                                    | Description                                      | Count |
+| 元素                                    | 描述                                      | 计数 |
 |--------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` or `<was>`  | The parameters for WebSphere Application Server.	| 0..1  |
-| `<tomcat>`                                 | The parameters for Apache Tomcat.                | 0..1  |
+| `<websphereapplicationserver>` 或 `<was>`  | WebSphere Application Server 的参数。	| 0..1  |
+| `<tomcat>`                                 | Apache Tomcat 的参数。                | 0..1  |
 
-The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core and WebSphere Application Server Liberty Network Deployment. The `<websphereapplicationserver>` element has the following attributes:
+`<websphereapplicationserver>` 元素（或其缩写形式 `<was>`）表示 WebSphere Application Server 实例。WebSphere Application Server Full Profile（Base 和 Network Deployment）与 WebSphere Application Server Liberty Core 和 WebSphere Application Server Liberty Network Deployment 一样受支持。`<websphereapplicationserver>` 元素具有以下属性：
 
-| Attribute       | Description                                            | Required                 | Default | 
+| 属性       | 描述                                            | 必需                 | 缺省值 | 
 |-----------------|--------------------------------------------------------|--------------------------|---------|
-| installdir      |	WebSphere Application Server installation directory.   | Yes                      | None    |
-| profile         |	WebSphere Application Server profile, or Liberty.      | Yes	                  | None    |
-| user	WebSphere Application Server administrator name.	               | Yes, except for Liberty  | None    |
-| password        | WebSphere Application Server administrator password.   | No	Queried interactively |         | 
-| libertyEncoding |	The algorithm to encode data source passwords for WebSphere Application Server Liberty. The possible values are none, xor, and aes. Whether the xor or aes encoding is used, the clear password is passed as argument to the securityUtility program, which is called through an external process. You can see the password with a ps command, or in the /proc file system on UNIX operating systems.                                                         | No                       |	xor     |
-| jeeVersion      |	For Liberty profile. To specify whether to install the features of the JEE6 web profile or the JEE7 web profile. Possible values are 6, 7, or auto.| No | auto |
-| configureFarm   |	For WebSphere Application Server Liberty, and WebSphere Application Server full profile (not for WebSphere Application Server Network Deployment edition and Liberty collective). To specify whether the server is a server farm member. Possible values are true or false. | No	      | false   |
-| farmServerId    |	A string that uniquely identify a server in a server farm. The {{ site.data.keys.mf_server }} administration services and all the {{ site.data.keys.product_adj }} runtimes that communicate with it must share the same value.                                                                | Yes                      |	None    |
+| installdir      |	WebSphere Application Server 安装目录。   | 是                      | 无    |
+| profile         |	WebSphere Application Server Profile 或 Liberty。      | 是	                  | 无    |
+| user	             WebSphere Application Server 管理员名称。	               | 是，除 Liberty 之外  | 无    |
+| password        | WebSphere Application Server 管理员密码。   | 否 交互式查询 |         | 
+| libertyEncoding |	针对 WebSphere Application Server Liberty 的数据源密码编码的算法。可能值为 none、xor 和 aes。不管使用 xor 还是 aes 编码，明文密码作为自变量传递给 securityUtility 程序，该程序通过外部进程调用。您可以使用 ps 命令或在 UNIX 操作系统上的 /proc 文件系统中查看密码。                                                         | 否                       |	xor     |
+| jeeVersion      |	针对 Liberty Profile。指定是否安装 JEE6 Web 概要文件或 JEE7 Web 概要文件的功能。可能的值包括：6、7 或 auto。| 否 | auto |
+| configureFarm   |	针对 WebSphere Application Server Liberty 和 WebSphere Application Server Full Profile（不针对 WebSphere Application Server Network Deployment 版本 和 Liberty 集合体）。用于指定服务器是否为服务器场成员。可能值为 true 或 false。 | 否	      | false   |
+| farmServerId    |	在服务器场中唯一标识服务器的字符串。{{ site.data.keys.mf_server }} 管理服务和与其通信的所有 {{ site.data.keys.product_adj }} 运行时必须共享相同的值。                                                                | 是                      |	无    |
 
-It supports the following element for single-server deployment:
+针对单服务器部署支持以下元素：
 
-| Element     | Description      | Count |
+| 元素     | 描述      | 计数 |
 |-------------|------------------|-------|
-| `<server>`  | A single server. | 0..1  |
+| `<server>`  | 单台服务器。 | 0..1  |
 
-The <server> element, which is used in this context, has the following attribute:
+在此上下文中使用的 <server> 元素具有以下属性：
 
-| Attribute | Description      | Required | Default | 
+| 属性 | 描述      | 必需 | 缺省值 | 
 |-----------|------------------|----------|---------|
-| name	    | The server name. | Yes      | None    |
+| name	    | 服务器名称。 | 是      | 无    |
 
-It supports the following elements for Liberty collective:
+针对 Liberty 集合体，支持以下元素：
 
-| Element               | Description                  | Count |
+| 元素               | 描述                  | 计数 |
 |-----------------------|------------------------------|-------|
-| `<collectiveMember>`  | A Liberty collective member. | 0..1  |
+| `<collectiveMember>`  | Liberty 集合体成员。 | 0..1  |
 
-The `<collectiveMember>` element has the following attributes:
+`<collectiveMember>` 元素具有以下属性：
 
-| Attribute               | Description      | Required | Default | 
+| 属性               | 描述      | 必需 | 缺省值 | 
 |-------------------------|------------------|----------|---------|
-| serverName              |	The name of the collective member.                       | Yes | None | 
-| clusterName             |	The cluster name that the collective member belongs to.  | Yes | None | 
-| serverId                |	A string that uniquely identifies the collective member. | Yes | None | 
-| controllerHost          |	The name of the collective controller.                   | Yes | None | 
-| controllerHttpsPort     |	The HTTPS port of the collective controller.             | Yes | None | 
-| controllerAdminName     |	The administrative user name that is defined in the collective controller. This is the same user that is used to join new members to the collective. | Yes | None | 
-| controllerAdminPassword |	The administrative user password.	                     | Yes | None | 
-| createControllerAdmin   |	To indicate whether the administrative user must be created in the basic registry of the collective member. Possible values are true or false. | No | true |
+| serverName              |	集合体成员的名称。                       | 是 | 无 | 
+| clusterName             |	集合体成员所属的集群名称。  | 是 | 无 | 
+| serverId                |	用于唯一标识集合体成员的字符串。 | 是 | 无 | 
+| controllerHost          |	集合体控制器的名称。                   | 是 | 无 | 
+| controllerHttpsPort     |	集合体控制器的 HTTPS 端口。             | 是 | 无 | 
+| controllerAdminName     |	集合体控制器中定义的管理用户名。此用户还负责将新成员加入到集合体中。 | 是 | 无 | 
+| controllerAdminPassword |	管理用户密码。	                     | 是 | 无 | 
+| createControllerAdmin   |	用于指示是否必须在集合体成员的基本注册表中创建管理用户。可能值为 true 或 false。 | 否 | true |
 
-It supports the following elements for Network Deployment:
+针对网络部署，支持以下元素：
 
-| Element     | Description                                   | Count |
+| 元素     | 描述                                   | 计数 |
 |-------------|-----------------------------------------------|-------|
-| `<cell>`    |	The entire cell.	                          | 0..1  |
-| `<cluster>` |	All the servers of a cluster.                 |	0..1  |
-| `<node>`    |	All the servers in a node, clusters excluded. | 0..1  |
-| `<server>`  |	A single server.	                          | 0..1  |
+| `<cell>`    |	整个单元。	                          | 0..1  |
+| `<cluster>` |	集群的所有服务器。                 |	0..1  |
+| `<node>`    |	节点中的所有服务器，不包含集群。 | 0..1  |
+| `<server>`  |	单台服务器。	                          | 0..1  |
 
-The `<cell>` element has no attributes.
+`<cell>` 元素没有属性。
 
-The `<cluster>` element has the following attribute:
+`<cluster>` 元素具有以下属性：
 
-| Attribute | Description       | Required | Default | 
+| 属性 | 描述       | 必需 | 缺省值 | 
 |-----------|-------------------|----------|---------|
-| name      | The cluster name. | Yes	   | None    |
+| name      | 集群名称。 | 是	   | 无    |
 
-The `<node>` element has the following attribute:
+`<node>` 元素具有以下属性：
 
-| Attribute | Description    | Required | Default | 
+| 属性 | 描述    | 必需 | 缺省值 | 
 |-----------|----------------|----------|---------|
-| name      | The node name. | Yes	    | None    |
+| name      | 节点名。 | 是	    | 无    |
 
-The `<server>` element, which is used in a Network Deployment context, has the following attributes:
+在 Network Deployment 上下文中使用的 `<server>` 元素具有以下属性：
 
-| Attribute  | Description      | Required | Default | 
+| 属性  | 描述      | 必需 | 缺省值 | 
 |------------|------------------|----------|---------|
-| nodeName   | The node name.   | Yes	   | None    |
-| serverName | The server name. | Yes      | None    |
+| nodeName   | 节点名。   | 是	   | 无    |
+| serverName | 服务器名称。 | 是      | 无    |
 
-The `<tomcat>` element denotes an Apache Tomcat server. It has the following attribute:
+`<tomcat>` 元素表示 Apache
+Tomcat 服务器。它具有以下属性：
 
-| Attribute     | Description      | Required | Default | 
+| 属性     | 描述      | 必需 | 缺省值 | 
 |---------------|------------------|----------|---------|
-| installdir    | The installation directory of Apache Tomcat. For a Tomcat installation that is split between a CATALINA_HOME directory and a CATALINA_BASE directory, specify the value of the CATALINA_BASE environment variable.     | Yes | None    | 
-| configureFarm | To specify whether the server is a server farm member. Possible values are true or false.	| No | false |
-| farmServerId	| A string that uniquely identify a server in a server farm. The {{ site.data.keys.mf_server }} administration services and all the {{ site.data.keys.product_adj }} runtimes that communicate with it must share the same value. | Yes | None |
+| installdir    | Apache Tomcat 的安装目录。对于在 CATALINA_HOME 目录和 CATALINA_BASE 目录之间拆分的 Tomcat 安装，请指定 CATALINA_BASE 环境变量的值。     | 是 | 无    | 
+| configureFarm | 用于指定服务器是否为服务器场成员。可能值为 true 或 false。	| 否 | false |
+| farmServerId	| 在服务器场中唯一标识服务器的字符串。{{ site.data.keys.mf_server }} 管理服务和与其通信的所有 {{ site.data.keys.product_adj }} 运行时必须共享相同的值。 | 是 | 无 |
 
-The `<database>` element specifies what information is necessary to access a particular database. The `<database>` element is specified like the configuredatabase Ant task, except that it does not have the `<dba>` and `<client>` elements. However, it might have `<property>` elements. The `<database>` element has the following attributes:
+`<database>` 元素指定访问特定数据库所需要的信息。指定 `<database>` 元素类似于 configuredatabase Ant 任务，但是该元素不包含 `<dba>` 和 `<client>` 元素。但是，它可能具有 `<property>` 元素。`<database>` 元素具有以下属性：
 
-| Attribute | Description                                | Required | Default | 
+| 属性 | 描述                                | 必需 | 缺省值 | 
 |-----------|--------------------------------------------|----------|---------|
-| kind      | The kind of database ({{ site.data.keys.product_adj }} Runtime). | Yes | None |
-| validate  | To validate whether the database is accessible or not. The possible values are true or false. | No | true |
+| kind      | 数据库类型（{{ site.data.keys.product_adj }} 运行时）。 | 是 | 无 |
+| validate  | 验证数据库是否可以访问。可能的值为 true 或 false。 | 否 | true |
 
-The `<database>` element supports the following elements:
+`<database>` 元素支持以下元素：
 
-| Element             | Description	                | Count | 
+| 元素             | 描述	                | 计数 | 
 |---------------------|-----------------------------|-------|
-| `<derby>`           | The parameters for Derby.   | 0..1  | 
-| `<db2>`             |	The parameters for DB2.     | 0..1  | 
-| `<mysql>`           |	The parameters for MySQL.   | 0..1  | 
-| `<oracle>`          |	The parameters for Oracle.  | 0..1  | 
-| `<driverclasspath>` | The JDBC driver class path. | 0..1  | 
+| `<derby>`           | Derby 的参数。   | 0..1  | 
+| `<db2>`             |	DB2 的参数。     | 0..1  | 
+| `<mysql>`           |	MySQL 的参数。   | 0..1  | 
+| `<oracle>`          |	Oracle 的参数。  | 0..1  | 
+| `<driverclasspath>` | JDBC 驱动程序类路径。 | 0..1  | 
 
-The `<analytics>` element indicates that you want to connect the {{ site.data.keys.product_adj }} runtime to an already installed {{ site.data.keys.mf_analytics_console }} and services. It has the following attributes:
+`<analytics>` 元素表示您想要将 {{ site.data.keys.product_adj }} 运行时连接至已安装的 {{ site.data.keys.mf_analytics_console }} 和服务。它具有以下属性：
 
-| Attribute    | Description                                                                      | Required | Default | 
+| 属性    | 描述                                                                      | 必需 | 缺省值 | 
 |--------------|----------------------------------------------------------------------------------|----------|---------|
-| install      | To indicate whether to connect the {{ site.data.keys.product_adj }} runtime to {{ site.data.keys.mf_analytics }}. | No       | false   |
-| analyticsURL | The URL of {{ site.data.keys.mf_analytics }} services.	                                      | Yes      | None    |
-| consoleURL   | The URL of{{ site.data.keys.mf_analytics_console }}.	                                      | Yes      | None    |
-| username     | The user name.	                                                                  | Yes      | None    |
-| password     | The password.	                                                                  | Yes      | None    |
-| validate     | To validate whether {{ site.data.keys.mf_analytics_console }} is accessible or not.	      | No	     | true    |
-| tenant       | The tenant for indexing data that is collected from a {{ site.data.keys.product_adj }} runtime.	      | No       | Internal identifier |
+| install      | 指示是否将 {{ site.data.keys.product_adj }} 运行时连接到 {{ site.data.keys.mf_analytics }}。 | 否       | false   |
+| analyticsURL | {{ site.data.keys.mf_analytics }} 服务的 URL。	                                      | 是      | 无    |
+| consoleURL   | {{ site.data.keys.mf_analytics_console }} 的 URL。	                                      | 是      | 无    |
+| username     | 用户名。	                                                                  | 是      | 无    |
+| password     | 密码。	                                                                  | 是      | 无    |
+| validate     | 验证 {{ site.data.keys.mf_analytics_console }} 是否可以访问。	      | 否	     | true    |
+| tenant       | 从 {{ site.data.keys.product_adj }}
+运行时收集的索引数据的租户。	      | 否       | 内部标识 |
 
 #### install
 {: #install-1 }
-Use the **install** attribute to indicate that this {{ site.data.keys.product_adj }} runtime must be connected and send events to {{ site.data.keys.mf_analytics }}. Valid values are **true** or **false**.
+使用 **install** 属性来指示必须将该 {{ site.data.keys.product_adj }} 运行时连接至 {{ site.data.keys.mf_analytics }} 并向其发送事件。
+有效值为 **true** 或 **false**。
 
 #### analyticsURL
 {: #analyticsurl-1 }
-Use the **analyticsURL** attribute to specify the URL that is exposed by {{ site.data.keys.mf_analytics }}, which receives incoming analytics data.  
-For example: `http://<hostname>:<port>/analytics-service/rest`
+使用 **analyticsURL** 属性来指定由收到入局分析数据的 {{ site.data.keys.mf_analytics }} 公开的 URL。  
+例如：`http://<hostname>:<port>/analytics-service/rest`
 
 #### consoleURL
 {: #consoleurl }
-Use the **consoleURL** attribute to the URL that is exposed by {{ site.data.keys.mf_analytics }}, which links to the {{ site.data.keys.mf_analytics_console }}.  
-For example: `http://<hostname>:<port>/analytics/console`
+将 **consoleURL** 属性用于由链接到 {{ site.data.keys.mf_analytics }} 的 {{ site.data.keys.mf_analytics_console }} 公开的 URL。  
+例如：`http://<hostname>:<port>/analytics/console`
 
 #### username
 {: #username-1 }
-Use the **username** attribute to specify the user name that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+使用 **username** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }}
+的数据入口点时所使用的用户名。
 
 #### password
 {: #password-1 }
-Use the **password** attribute to specify the password that is used if the data entry point for the {{ site.data.keys.mf_analytics }} is protected with basic authentication.
+使用 **password** 属性来指定通过基本认证保护 {{ site.data.keys.mf_analytics }}
+的数据入口点时所使用的密码。
 
 #### validate
 {: #validate-1 }
-Use the **validate** attribute to validate whether the {{ site.data.keys.mf_analytics_console }} is accessible or not, and to check the user name authentication with a password. The possible values are **true**, or **false**.
+使用 **validate** 属性来验证 {{ site.data.keys.mf_analytics_console }} 是否可以访问，并使用密码检查用户名认证。可能的值为 **true** 或 **false**。
 
 #### tenant
 {: #tenant }
-For more information about this attribute, see [Configuration properties](../analytics/configuration/#configuration-properties).
+有关此属性的更多信息，请参阅[配置属性](../analytics/configuration/#configuration-properties)。
 
-### To specify an Apache Derby database
+### 指定 Apache Derby 数据库
 {: #to-specify-an-apache-derby-database }
-The `<derby>` element has the following attributes: 
+`<derby>` 元素具有以下属性： 
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 描述                                | 必需 | 缺省值 | 
 |------------|--------------------------------------------|----------|---------|
-| database	 | The database name.	                      | No       |	MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. |
-| datadir	 | The directory that contains the databases. |	Yes	     | None    |
-| schema     |	The schema name.                          |	No	     | MFPDATA, MFPCFG, MFPADMINISTRATOR, MFPPUSH, or APPCENTER, depending on kind. |
+| database	 | 数据库名称。	                      | 否       |	MFPDATA、MFPADM、MFPCFG、MFPPUSH 或 APPCNTR，取决于类型。 |
+| datadir	 | 包含数据库的目录。 |	是	     | 无    |
+| schema     |	模式名称。                          |	否	     | MFPDATA、MFPCFG、MFPADMINISTRATOR、MFPPUSH 或 APPCENTER，取决于类型。 |
 
-The `<derby>` element supports the following element:
+`<derby>` 元素支持以下元素：
 
-| Element       | Description	                | Count | 
+| 元素       | 描述	                | 计数 | 
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | 数据源属性或 JDBC 连接属性。	| 0.. |
 
-For more information about the available properties, see the documentation for Class [EmbeddedDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedDataSource40.html). See also the documentation for [Class EmbeddedConnectionPoolDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedConnectionPoolDataSource40.html).
+有关可用属性的更多信息，请参阅 Class [EmbeddedDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedDataSource40.html) 的文档。另请参阅 [Class EmbeddedConnectionPoolDataSource40](http://db.apache.org/derby/docs/10.8/publishedapi/jdbc4/org/apache/derby/jdbc/EmbeddedConnectionPoolDataSource40.html) 的文档。
 
-For more information about the available properties for a Liberty server, see the documentation for `properties.derby.embedded` at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+有关 Liberty 服务器的可用属性的更多信息，请参阅 [Liberty profile: Configuration elements in the server.xml
+file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html) 中 properties.derby.embedded 的文档。
 
-When the **mfp-ant-deployer.jar** file is used within the installation directory of {{ site.data.keys.product }}, a `<driverclasspath>` element is not necessary.
+当在 {{ site.data.keys.product }} 的安装目录中使用 **mfp-ant-deployer.jar** 文件时，不需要 `<driverclasspath>` 元素。
 
-### To specify a DB2 database
+### 指定 DB2 数据库
 {: #to-specify-a-db2-database }
-The `<db2>` element has the following attributes:
+`<db2>` 元素具有以下属性：
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 描述                                | 必需 | 缺省值 | 
 |------------|--------------------------------------------|----------|---------|
-| database   | The database name. | No	MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. | 
-| server     | The host name of the database server.      | Yes	     | None    | 
-| port       | The port on the database server.           | No	     | 50000   | 
-| user       | The user name for accessing databases.     | This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges                                 | that are listed in Database users and privileges. | Yes	None | 
-| password   | The password for accessing databases.      | No       | Queried interactively | 
-| schema     | The schema name.                           | No       | Depends on the user | 
+| database   | 数据库名称。 | 否 MFPDATA、MFPADM、MFPCFG、MFPPUSH 或 APPCNTR，取决于类型。 | 
+| server     | 数据库服务器的主机名。      | 是	     | 无    | 
+| port       | 数据库服务器上的端口。           | 否	     | 50000   | 
+| user       | 用于访问数据库的用户名。     | 该用户无需拥有对数据库的扩展特权。如果您对数据库施加限制，那么可以设置拥有数据库用户和特权中列出的|受限特权的用户。 | 是	无 | 
+| password   | 用于访问数据库的密码。      | 否       | 交互式查询 | 
+| schema     | 模式名称。                           | 否       | 取决于用户 | 
 
-For more information about DB2 user accounts, see [DB2 security model overview](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html).  
-The `<db2>` element supports the following element:
+有关 DB2 用户帐户的更多信息，请参阅 [DB2 安全模型概述](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html)。  
+`<db2>` 元素支持以下元素：
 
-| Element       | Description	                | Count | 
+| 元素       | 描述	                | 计数 | 
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | 数据源属性或 JDBC 连接属性。	| 0.. |
 
-For more information about the available properties, see [Properties for the IBM  Data Server Driver for JDBC and SQLJ](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html).
+有关可用属性的更多信息，请参阅 [IBM  Data Server Driver for JDBC and SQLJ 的属性](http://ibm.biz/knowctr#SSEPGG_9.7.0/com.ibm.db2.luw.apdv.java.doc/src/tpc/imjcc_rjvdsprp.html)。
 
-For more information about the available properties for a Liberty server, see the **properties.db2.jcc** section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+有关 Liberty 服务器的可用属性的更多信息，请参阅 [Liberty profile: Configuration elements in the server.xml
+file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html) 中的 properties.db2.jcc 部分。
 
-The `<driverclasspath>` element must contain JAR files for the DB2 JDBC driver and the associated license. You can download DB2 JDBC drivers from [DB2 JDBC Driver Versions](http://www.ibm.com/support/docview.wss?uid=swg21363866).
+`<driverclasspath>` 元素必须包含 DB2 JDBC 驱动程序和关联许可证的 JAR 文件。您可以从 [DB2 JDBC 驱动程序版本](http://www.ibm.com/support/docview.wss?uid=swg21363866)下载 DB2 JDBC 驱动程序。
 
-### To specify a MySQL database
+### 指定 MySQL 数据库
 {: #to-specify-a-mysql-database }
-The `<mysql>` element has the following attributes:
+`<mysql>` 元素具有以下属性：
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 描述                                | 必需 | 缺省值 | 
 |------------|--------------------------------------------|----------|---------|
-| database	 | The database name.	                      | No       | MFPDATA, MFPADM, MFPCFG, MFPPUSH, or APPCNTR, depending on kind. | 
-| server	 | The host name of the database server.	  | Yes      | None    |
-| port	     | The port on the database server.           | No	     | 3306    |
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges | that are listed in Database users and privileges. | Yes | None |
-| password	 | The password for accessing databases.	  | No	     | Queried interactively |
+| database	 | 数据库名称。	                      | 否       | MFPDATA、MFPADM、MFPCFG、MFPPUSH 或 APPCNTR，取决于类型。 | 
+| server	 | 数据库服务器的主机名。	  | 是      | 无    |
+| port	     | 数据库服务器上的端口。           | 否	     | 3306    |
+| user	     | 用于访问数据库的用户名。该用户无需拥有对数据库的扩展特权。如果您对数据库施加限制，那么可以设置拥有数据库用户和特权中列出的|受限特权的用户。 | 是 | 无 |
+| password	 | 用于访问数据库的密码。	  | 否	     | 交互式查询 |
 
-Instead of **database**, **server**, and **port**, you can also specify a URL. In this case, use the following attributes:
+还可以指定 URL 来替代 **database**、**server** 和 **port**。在此情况下，使用以下属性：
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 描述                                | 必需 | 缺省值 | 
 |------------|--------------------------------------------|----------|---------|
-| url	     | The URL for connection to the database.	  | Yes	     | None    |
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. | Yes  | None |
-| password	 | The password for accessing databases.	  | No       | Queried interactively |
+| url	     | 用于连接到数据库的 URL。	  | 是	     | 无    |
+| user	     | 用于访问数据库的用户名。该用户无需拥有对数据库的扩展特权。如果您对数据库施加限制，那么可以设置拥有数据库用户和特权中列出的受限特权的用户。 | 是  | 无 |
+| password	 | 用于访问数据库的密码。	  | 否       | 交互式查询 |
 
-For more information about MySQL user accounts, see [MySQL User Account Management](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html).
+有关 MySQL 用户帐户的更多信息，请参阅 [MySQL 用户帐户管理](http://dev.mysql.com/doc/refman/5.5/en/user-account-management.html)。
 
-The `<mysql>` element supports the following element:
+`<mysql>` 元素支持以下元素：
 
-| Element       | Description	                | Count | 
+| 元素       | 描述	                | 计数 | 
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | 数据源属性或 JDBC 连接属性。	| 0.. |
 
-For more information about the available properties, see the documentation at [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html).
+有关可用属性的更多信息，请参阅 [Driver/Datasource Class Names, URL Syntax and Configuration
+Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html) 中的文档。
 
-For more information about the available properties for a Liberty server, see the properties section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+有关 Liberty 服务器的可用属性的更多信息，请参阅 [Liberty profile: Configuration elements in the server.xml
+file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html) 中的 properties 部分。
 
-The `<driverclasspath>` element must contain a MySQL Connector/J JAR file. You can download it from [Download Connector/J](http://www.mysql.com/downloads/connector/j/).
+`<driverclasspath>` 元素必须包含一个 MySQL Connector/J JAR 文件。可以从 [Download Connector/J](http://www.mysql.com/downloads/connector/j/) 下载该文件。
 
-### To specify an Oracle database
+### 指定 Oracle 数据库
 {: #to-specify-an-oracle-database }
-The `<oracle>` element has the following attributes:
+`<oracle>` 元素具有以下属性：
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 描述                                | 必需 | 缺省值 | 
 |------------|--------------------------------------------|----------|---------|
-| database   | The database name, or Oracle service name. Note: You must always use a service name to connect to a PDB database. | No | ORCL |
-| server	 | The host name of the database server.	Yes	None
-| port	     | The port on the database server.	No	1521
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. See the note under this table. | Yes | None |
-| password	 | The password for accessing databases.	  | No       | Queried interactively |
+| database   | 数据库名称或 Oracle 服务名称。注：必须始终使用服务名称来连接到 PDB 数据库。 | 否 | ORCL |
+| server	 | 数据库服务器的主机名。是	无| port	     | 数据库服务器上的端口。否	1521| user	     | 用于访问数据库的用户名。该用户无需拥有对数据库的扩展特权。如果您对数据库施加限制，那么可以设置拥有数据库用户和特权中列出的受限特权的用户。请参阅此表下方的注释。 | 是 | 无 |
+| password	 | 用于访问数据库的密码。	  | 否       | 交互式查询 |
 
-> **Note:** For the **user** attribute, use preferably a user name in uppercase letters. Oracle user names are generally in uppercase letters. Unlike other database tools, the **installmobilefirstruntime** Ant task does not convert lowercase letters to uppercase letters in the user name. If the **installmobilefirstruntime** Ant task fails to connect to your database, try to enter the value for the **user** attribute in uppercase letters.
+> **注：**对于 **user** 属性，最好使用大写字母的用户名。Oracle 用户名通常为大写字母。不像其他数据库工具，**installmobilefirstruntime** Ant 任务不会将用户名中的小写字母转换为大写字母。如果 **installmobilefirstruntime** Ant 任务无法连接到您的数据库，请尝试用大写字母为 **user** 属性输入值。还可以指定 URL 来替代 **database**、**server** 和 **port**。在此情况下，使用以下属性：
 
-Instead of **database**, **server**, and **port**, you can also specify a URL. In this case, use the following attributes:
-
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 描述                                | 必需 | 缺省值 | 
 |------------|--------------------------------------------|----------|---------|
-| url	     | The URL for connection to the database.	  | Yes      | None    |
-| user	     | The user name for accessing databases. This user does not need extended privileges on the databases. If you implement restrictions on the database, you can set a user with the restricted privileges that are listed in Database users and privileges. See the note under this table. | Yes | None |
-| password	 | The password for accessing databases.	  | No	     | Queried interactively |
+| url	     | 用于连接到数据库的 URL。	  | 是      | 无    |
+| user	     | 用于访问数据库的用户名。该用户无需拥有对数据库的扩展特权。如果您对数据库施加限制，那么可以设置拥有数据库用户和特权中列出的受限特权的用户。请参阅此表下方的注释。 | 是 | 无 |
+| password	 | 用于访问数据库的密码。	  | 否	     | 交互式查询 |
 
-> **Note:** For the **user** attribute, use preferably a user name in uppercase letters. Oracle user names are generally in uppercase letters. Unlike other database tools, the **installmobilefirstruntime** Ant task does not convert lowercase letters to uppercase letters in the user name. If the **installmobilefirstruntime** Ant task fails to connect to your database, try to enter the value for the **user** attribute in uppercase letters.
+> **注：**对于 **user** 属性，最好使用大写字母的用户名。Oracle 用户名通常为大写字母。不像其他数据库工具，**installmobilefirstruntime** Ant 任务不会将用户名中的小写字母转换为大写字母。如果 **installmobilefirstruntime** Ant 任务无法连接到您的数据库，请尝试用大写字母为 **user** 属性输入值。有关 Oracle 用户帐户的更多信息，请参阅[认证方法概述](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374)。
 
-For more information about Oracle user accounts, see [Overview of Authentication Methods](http://docs.oracle.com/cd/B28359_01/server.111/b28318/security.htm#i12374).
+有关 Oracle 数据库连接 URL 的更多信息，请参阅 [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm) 中的 **Database
+URLs and Database Specifiers** 部分。
 
-For more information about Oracle database connection URLs, see the **Database URLs and Database Specifiers** section at [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm).
+它支持以下元素：
 
-It supports the following element:
-
-| Element       | Description	                | Count | 
+| 元素       | 描述	                | 计数 | 
 |---------------|-------------------------------|-------|
-| `<property>`  | The data source property or JDBC connection property.	| 0.. |
+| `<property>`  | 数据源属性或 JDBC 连接属性。	| 0.. |
 
-For more information about the available properties, see the **Data Sources and URLs** section at [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm).
+有关可用属性的更多信息，请参阅 [Data Sources and URLs](http://docs.oracle.com/cd/B28359_01/java.111/b31224/urls.htm) 中的 **Data Sources and URLs** 部分。
 
-For more information about the available properties for a Liberty server, see the **properties.oracle** section at [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html).
+有关 Liberty 服务器可用属性的更多信息，请参阅 [Liberty profile: Configuration elements in the server.xml file](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/autodita/rwlp_metatype_4ic.html) 中的 **properties.oracle** 部分。
 
-The `<driverclasspath>` element must contain an Oracle JDBC driver JAR file. You can download Oracle JDBC drivers from [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html).
+`<driverclasspath>` 元素必须包含一个 Oracle JDBC 驱动程序 JAR 文件。可以从 [JDBC, SQLJ, Oracle JPublisher and Universal Connection
+Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) 下载 Oracle JDBC 驱动程序。
 
-The `<property>` element, which can be used inside `<derby>`, `<db2>`,` <mysql>`, or `<oracle>` elements, has the following attributes:
+`<property>` 元素（可用于 `<derby>`、`<db2>`、` <mysql>` 或
+`<oracle>` 元素内部）具有以下属性：
 
-| Attribute  | Description                                | Required | Default | 
+| 属性  | 描述                                | 必需 | 缺省值 | 
 |------------|--------------------------------------------|----------|---------|
-| name       | The name of the property.	              | Yes      | None    |
-| type	     | Java type of the property values, usually java.lang.String/Integer/Boolean. | No | java.lang.String |
-| value	     | The value for the property.	              | Yes      |  None   |
+| name       | 属性的名称。	              | 是      | 无    |
+| type	     | 属性值的 Java 类型（通常为 java.lang.String/Integer/Boolean）。 | 否 | java.lang.String |
+| value	     | 属性的值。	              | 是      |  无   |
 
-## Ant tasks for installation of Application Center
+## 用于安装 Application Center 的 Ant 任务
 {: #ant-tasks-for-installation-of-application-center }
-The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` Ant tasks are provided for the installation of the Application Center Console and Services.
+`<installApplicationCenter>`、`<updateApplicationCenter>` 和 `<uninstallApplicationCenter>` Ant 任务为安装 Application Center Console 和 Services 而提供。
 
-### Task effects
+### 任务影响
 {: #task-effects-3 }
 ### <installApplicationCenter>
 {: #installapplicationcenter }
-The `<installApplicationCenter>` task configures an application server to run the Application Center Services WAR file as a web application, and to install the Application Center Console. This task has the following effects:
+`<installApplicationCenter>` 任务配置应用程序服务器以将 Application Center Services WAR 文件作为 Web 应用程序运行，并安装 Application Center Console。该任务具有以下影响：
 
-* It declares the Application Center Services web application in the /applicationcenter context root.
-* It declares data sources, and on WebSphere  Application Server full profile, it declares also JDBC providers for Application Center Services.
-* It deploys the Application Center Services web application on the application server.
-* It declares the Application Center Console as a web application in the /appcenterconsole context root.
-* It deploys the Application Center Console WAR file on the application server.
-* It configures configuration properties for Application Center Services by using JNDI environment entries. The JNDI environment entries that are related to the endpoint and proxies are commented. You must uncomment them in some cases.
-* It configures users that it maps to roles used by the Application Center Console and Services web applications.
-* On WebSphere Application Server, it configures the necessary custom property for the web container.
+* 该任务声明了 /applicationcenter 上下文根中的 Application Center Services Web 应用程序。
+* 该任务声明数据源，并且在 WebSphere Application Server Full Profile 上还声明了 Application Center Services 的 JDBC 提供程序。
+* 该任务在应用程序服务器上部署 Application Center Services Web 应用程序。
+* 该任务在 /appcenterconsole 上下文根中将 Application Center Console 声明为一个 Web 应用程序。
+* 该任务在应用程序服务器上部署 Application Center Console WAR 文件。
+* 该任务使用 JNDI 环境条目配置 Application Center Services 的配置属性。已注释与端点和代理相关的 JNDI 环境条目。在某些情况下，您必须对它们取消注释。
+* 此任务对用户进行配置，将其映射到 Application Center Console 和 Services Web 应用程序使用的角色。
+* 此任务在 WebSphere Application Server 上，配置 Web 容器所需的定制属性。
 
 #### <updateApplicationCenter>
 {: #updateApplicationCenter }
-The `<updateApplicationCenter>` task updates an already configured Application Center application on an application server. This task has the following effects:
+`<updateApplicationCenter>` 任务对已在应用程序服务器上配置的 Application Center 应用程序进行更新。该任务具有以下影响：
 
-* It updates the Application Center Services WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed.
-* It updates the Application Center Console WAR file. This file must have the same base name as the corresponding WAR file that was previously deployed. 
+* 该任务更新 Application Center Services WAR 文件。该文件的基本名称与先前部署的对应 WAR 文件的基本名称必须完全相同。
+* 该任务更新 Application Center Console WAR 文件。该文件的基本名称与先前部署的对应 WAR 文件的基本名称必须完全相同。 
 
-The task does not change the application server configuration, that is, the web application configuration, data sources, JNDI environment entries, and user-to-role mappings. This task applies only to an installation that is performed by using the <installApplicationCenter> task that is described in this topic.
+该任务不会更改应用程序服务器配置，即 Web 应用程序配置、数据源、JNDI 环境条目以及用户到角色的映射。该任务仅适用于使用此主题中描述的 <installApplicationCenter> 任务所执行的安装。
 
-> **Note:** On WebSphere Application Server Liberty profile, the task does not change the features, which leaves a potential non-minimal list of features in the server.xml file for the installed application.
-
+> **注：**在 WebSphere Application Server Liberty Profile 上，该任务不会更改功能，这将在已安装应用程序的 server.xml 文件中遗留下潜在的非最小功能列表。
 #### <uninstallApplicationCenter>
 {: #uninstallApplicationCenter }
-The `<uninstallApplicationCenter>` Ant task undoes the effects of an earlier run of `<installApplicationCenter>`. This task has the following effects:
+`<uninstallApplicationCenter>` Ant 任务撤销早期运行 `<installApplicationCenter>` 的影响。该任务具有以下影响：
 
-* It removes the configuration of the Application Center Services web application with the **/applicationcenter** context root. As a consequence, the task also removes the settings that were added manually to that application.
-* It removes both the Application Center Services and Console WAR files from the application server.
-* It removes the data sources and, on WebSphere Application Server full profile, it also removes the JDBC providers for the Application Center Services.
-* It removes the database drivers that were used by Application Center Services from the application server.
-* It removes the associated JNDI environment entries.
-* It removes the users who are configured by the `<installApplicationCenter>` invocation.
+* 此任务将除去具有 **/applicationcenter** 上下文根的 Application Center Services Web 应用程序配置。因此，此任务还将除去手动添加到该应用程序的设置。
+* 此任务从应用程序服务器除去 Application Center Services and Console WAR 文件。
+* 此任务将除去数据源，并且在 WebSphere Application Server Full Profile 上还除去 Application Center Services 的 JDBC 提供程序。
+* 此任务从应用程序服务器除去已由 Application Center Services 使用的数据库驱动程序。
+* 此任务将除去关联的 JNDI 环境条目。
+* 此任务将除去由 `<installApplicationCenter>` 调用配置的用户。
 
-### Attributes and elements
+### 属性和元素
 {: #attributes-and-elements-3 }
-The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` tasks have the following attributes:
+`<installApplicationCenter>`、`<updateApplicationCenter>` 和 `<uninstallApplicationCenter>` 任务具有以下属性：
 
-| Attribute    | Description                                | Required | Default | 
+| 属性    | 描述                                | 必需 | 缺省值 | 
 |--------------|--------------------------------------------|----------|---------|
-| id	       | It distinguishes different deployments in WebSphere Application Server full profile.	| No | Empty |
-| servicewar   | The WAR file for the Application Center Services. | No | The applicationcenter.war file is in the application Center console directory: **product_install_dir/ApplicationCenter/console.** |
-| shortcutsDir | The directory where you place the shortcuts. | No | None |
-| aaptDir | The directory that contains the aapt program, from the Android SDK platform-tools package. | No | None |
+| id	       | 用于区分 WebSphere Application Server Full Profile 中的不同部署。	| 否 | 空 |
+| servicewar   | Application Center Services 的 WAR 文件。 | 否 | applicationcenter.war 文件位于 Application Center Console 目录中：**product_install_dir/ApplicationCenter/console。** |
+| shortcutsDir | 放置快捷方式的目录。 | 否 | 无 |
+| aaptDir | 包含来自 Android SDK platform-tools 软件包的 aapt 程序的目录。 | 否 | 无 |
 
 #### id
 {: #id-1 }
-In WebSphere Application Server full profile environments, the **id** attribute is used to distinguish different deployments of Application Center Console and Services. Without this **id** attribute, two WAR files with the same context roots might conflict and these files would not be deployed.
+在 WebSphere Application Server Full Profile 环境中，**id** 属性用于区分不同的 Application Center Console 和 Services 部署。没有该 **id** 属性时，使用同一上下文根的两个 WAR 文件可能会冲突，并无法部署这些文件。
 
 #### servicewar
 {: #servicewar-1 }
-Use the **servicewar** attribute to specify a different directory for the Application Center Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+使用 **servicewar** 属性来指定
+Application Center Services WAR 文件的不同目录。您可以使用绝对路径或相对路径来指定该 WAR 文件的名称。
 
 #### shortcutsDir
 {: #shortcutsdir-1 }
-The **shortcutsDir** attribute specifies where to place shortcuts to the Application Center Console. If you set this attribute, the following files are added to this directory:
+**shortcutsDir** 属性指定将 Application Center Console 的快捷方式放置在何处。如果设置了该属性，会将以下文件添加到该目录：
 
-* **appcenter-console.url**: This file is a Windows shortcut. It opens the Application Center Console in a browser.
-* **appcenter-console.sh**: This file is a UNIX shell script. It opens the Application Center Console in a browser.
+* **appcenter-console.url**：该文件是 Windows 快捷方式。该文件会在浏览器中打开
+Application Center Console。
+* **appcenter-console.sh**：该文件是 UNIX Shell 脚本。该文件会在浏览器中打开
+Application Center Console。
 
 #### aaptDir
 {: #aaptdir }
-The **aapt** program is part of the {{ site.data.keys.product }} distribution: **product_install_dir/ApplicationCenter/tools/android-sdk**.  
-If this attribute is not set, during the upload of an apk application, Application Center parses it by using its own code, which might have limitations.
+**aapt** 程序是 {{ site.data.keys.product }} 分发版的一部分：**product_install_dir/ApplicationCenter/tools/android-sdk**。  
+如果未设置该属性，那么在 apk 应用程序上载期间，Application Center 使用其自身代码对其进行解析时，可能会有限制。
 
-The `<installApplicationCenter>`, `<updateApplicationCenter>`, and `<uninstallApplicationCenter>` tasks support the following elements:
+`<installApplicationCenter>`、`<updateApplicationCenter>` 和 `<uninstallApplicationCenter>`
+任务支持以下元素：
 
-| Element           | Description	                            | Count | 
+| 元素           | 描述	                            | 计数 | 
 |-------------------|-------------------------------------------|-------|
-| applicationserver	| The application server.                   | 1     |
-| console           | The Application Center console.	        | 1     |
-| database          | The databases.	                        | 1     | 
-| user	            | The user to be mapped to a security role. | 0..∞  |
+| applicationserver	| 应用程序服务器。                   | 1     |
+| console           | Application Center Console。	        | 1     |
+| database          | 数据库。	                        | 1     | 
+| user	            | 要映射到安全角色的用户。 | 0..∞  |
 
-### To specify an Application Center console
+### 指定 Application Center Console
 {: #to-specify-an-application-center-console }
-The `<console>` element collects information to customize the installation of the Application Center Console. This element has the following attributes:
+`<console>` 元素收集信息以定制 Application Center Console 的安装。此元素具有以下属性：
 
-| Attribute    | Description                                      | Required | Default | 
+| 属性    | 描述                                      | 必需 | 缺省值 | 
 |--------------|--------------------------------------------------|----------|---------|
-| warfile      | The WAR file for the Application Center Console. |	No       | The appcenterconsole.war file is in the Application Center console directory:  **product_install_dir/ApplicationCenter/console**. |
+| warfile      | Application Center Console 的 WAR 文件。 |	否       | appcenterconsole.war 文件位于 Application Center Console 目录：**product_install_dir/ApplicationCenter/console**。 |
 
-### To specify an application server
+### 指定应用程序服务器
 {: #to-specify-an-application-server-3 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+使用 `<applicationserver>` 元素来定义依赖底层应用程序服务器的参数。`<applicationserver>` 元素支持以下元素。
 
-| Element           | Description	                            | Count | 
+| 元素           | 描述	                            | 计数 | 
 |-------------------|-------------------------------------------|-------|
-| **websphereapplicationserver** or **was**	| The parameters for WebSphere Application Server. The `<websphereapplicationserver>` element (or `<was>` in its short form) denotes a WebSphere Application Server instance. WebSphere Application Server full profile (Base, and Network Deployment) are supported, so is WebSphere Application Server Liberty Core. Liberty collective is not supported for Application Center. | 0..1 | 
-| tomcat            | The parameters for Apache Tomcat. | 0..1 |
+| **websphereapplicationserver** 或 **was**	| WebSphere Application Server 的参数。`<websphereapplicationserver>` 元素（或其缩写形式 `<was>`）表示 WebSphere Application Server 实例。WebSphere Application Server Full Profile（Base 和 Network DeploymentI）与 WebSphere Application Server Liberty Core 一样受支持。Application Center 不支持 Liberty 集合体。 | 0..1 | 
+| tomcat            | Apache Tomcat 的参数。 | 0..1 |
 
-The attributes and inner elements of these elements are described in the tables of the page [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+在[用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)页面的表中描述了这些元素的属性和内部元素。
 
-### To specify a connection to the services database
+### 指定到服务数据库的连接
 {: #to-specify-a-connection-to-the-services-database }
-The `<database>` element collects the parameters that specify a data source declaration in an application server to access the services database.
+`<database>` 元素收集应用程序服务器中指定数据源声明的参数以访问服务数据库。
 
-You must declare a single database: `<database kind="ApplicationCenter">`. You specify the `<database>` element similarly to the `<configuredatabase>` Ant task, except that the `<database>` element does not have the `<dba>` and `<client>` elements. It might have `<property>` elements.
+您必须声明单个数据库：`<database kind="ApplicationCenter">`。指定 `<database>` 元素类似于 `<configuredatabase>` Ant 任务，但是 `<database>` 元素不包含 `<dba>` 和 `<client>` 元素。它可能具有 `<property>` 元素。
 
-The `<database>` element has the following attributes:
+`<database>` 元素具有以下属性：
 
-| Attribute    | Description                                            | Required | Default | 
+| 属性    | 描述                                            | 必需 | 缺省值 | 
 |--------------|--------------------------------------------------------|----------|---------|
-| kind         | The kind of database (ApplicationCenter).              | Yes      | None    |
-| validate	   | To validate whether the database is accessible or not. | No       | True    |
+| kind         | 数据库类型 (ApplicationCenter)。              | 是      | 无    |
+| validate	   | 验证数据库是否可以访问。 | 否       | True    |
 
-The `<database>` element supports the following elements. For more information about the configuration of these database elements, see the tables in [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+`<database>` 元素支持以下元素。有关这些数据库元素配置的更多信息，请参阅[用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)中的表。
 
-| Element           | Description	                            | Count | 
+| 元素           | 描述	                            | 计数 | 
 |-------------------|-------------------------------------------|-------|
-| db2	            | The parameter for DB2  databases.	        | 0..1  |
-| derby             | The parameter for Apache Derby databases.	| 0..1  |
-| mysql             | The parameter for MySQL databases.	    | 0..1  |
-| oracle	        | The parameter for Oracle databases.	    | 0..1  |
-| driverclasspath   | The parameter for JDBC driver class path.	| 0..1  |
+| db2	            | DB2 数据库的参数。	        | 0..1  |
+| derby             | Apache Derby 数据库的参数。	| 0..1  |
+| mysql             | MySQL 数据库的参数。	    | 0..1  |
+| oracle	        | Oracle 数据库的参数。	    | 0..1  |
+| driverclasspath   | 表示 JDBC 驱动程序类路径的参数。	| 0..1  |
 
-### To specify a user and a security role
+### 用于指定用户和安全角色
 {: #to-specify-a-user-and-a-security-role }
-The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+`<user>` 元素收集关于用户的参数以包含在应用程序的某些安全角色中。
 
-| Attribute    | Description                                            | Required | Default | 
+| 属性    | 描述                                            | 必需 | 缺省值 | 
 |--------------|--------------------------------------------------------|----------|---------|
-| role         | The user role appcenteradmin. | Yes | None |
-| name	       | The user name. | Yes | None |
-| password	   | The password, if you must create the user.	| No | None |
+| role         | 用户角色 appcenteradmin。 | 是 | 无 |
+| name	       | 用户名。 | 是 | 无 |
+| password	   | 必须创建用户时的密码。	| 否 | 无 |
 
-## Ant tasks for installation of {{ site.data.keys.mf_analytics }}
+## 用于安装 {{ site.data.keys.mf_analytics }} 的 Ant 任务
 {: #ant-tasks-for-installation-of-mobilefirst-analytics }
-The **installanalytics**, **updateanalytics**, and **uninstallanalytics** Ant tasks are provided for the installation of {{ site.data.keys.mf_analytics }}.
+**installanalytics**、**updateanalytics** 和 **uninstallanalytics** Ant 任务是为了 {{ site.data.keys.mf_analytics }} 的安装而提供的。
 
-The purpose of these Ant Tasks is to configure the {{ site.data.keys.mf_analytics_console }} and the {{ site.data.keys.mf_analytics }} service with the appropriate storage for the data on an application server.
-The task installs {{ site.data.keys.mf_analytics }} nodes that act as a master and data. For more information, see [Cluster management and Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch).
+这些 Ant 任务的目的是使用应用程序服务器上数据的相应存储器来配置 {{ site.data.keys.mf_analytics_console }} 和 {{ site.data.keys.mf_analytics }}
+Service。该任务将安装作为主节点的 {{ site.data.keys.mf_analytics }}
+节点和数据。有关更多信息，请参阅[集群管理和 Elasticsearch](../analytics/configuration/#cluster-management-and-elasticsearch)。
 
-### Task effects
+### 任务影响
 {: #task-effects-4 }
 #### installanalytics
 {: #installanalytics }
-The **installanalytics** Ant task configures an application server to run IBM {{ site.data.keys.mf_analytics }}. This task has the following effects:
+**installanalytics** Ant 任务配置应用程序服务器以运行 {{ site.data.keys.mf_analytics }}。该任务具有以下影响：
 
-* It deploys the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} WAR files on the application server.
-* It declares the {{ site.data.keys.mf_analytics }} Service web application in the specified context root /analytics-service.
-* It declares the {{ site.data.keys.mf_analytics_console }} web application in the specified context root /analytics.
-* It sets {{ site.data.keys.mf_analytics_console }} and {{ site.data.keys.mf_analytics }} Services configuration properties through JNDI environment entries.
-* On WebSphere  Application Server Liberty profile, it configures the web container.
-* Optionally, it creates users to use the {{ site.data.keys.mf_analytics_console }}.
+* 该任务在应用程序服务器上部署 {{ site.data.keys.mf_analytics }}
+Service 和 {{ site.data.keys.mf_analytics_console }} WAR 文件。
+* 该任务在指定的上下文根 (/analytics-service) 中声明 {{ site.data.keys.mf_analytics }} Service Web 应用程序。
+* 该任务在指定的上下文根 (/analytics) 中声明 {{ site.data.keys.mf_analytics_console }} Web 应用程序。
+* 该任务通过 JNDI 环境条目设置 {{ site.data.keys.mf_analytics_console }} 和 {{ site.data.keys.mf_analytics }} Services 配置属性。
+* 在 WebSphere Application Server Liberty Profile 上，该任务配置 Web 容器。
+* （可选）该任务创建使用 {{ site.data.keys.mf_analytics_console }} 的用户。
 
 #### updateanalytics
 {: #updateanalytics }
-The **updateanalytics** Ant task updates the already configured {{ site.data.keys.mf_analytics }} Service and {{ site.data.keys.mf_analytics_console }} web applications WAR files on an application server. These files must have the same base names as the project WAR files that were previously deployed.
+**updateanalytics** Ant 任务在应用程序服务器上更新已配置的 {{ site.data.keys.mf_analytics }}
+Service 和 {{ site.data.keys.mf_analytics_console }} Web 应用程序 WAR 文件。这些文件必须具有与先前部署的项目 WAR 文件相同的基本名称。
 
-The task does not change the application server configuration, that is, the web application configuration and JNDI environment entries.
+该任务不会更改应用程序服务器配置，即 Web 应用程序配置和 JNDI 环境条目。
 
 #### uninstallanalytics
 {: #uninstallanalytics }
-The **uninstallanalytics** Ant task undoes the effects of an earlier **installanalytics** run. This task has the following effects:
+**uninstallanalytics** Ant 任务用于撤销早先运行 **installanalytics** 的影响。该任务具有以下影响：
 
-* It removes the configuration of both the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} web applications with their respective context roots.
-* It removes the {{ site.data.keys.mf_analytics }} Service and the {{ site.data.keys.mf_analytics_console }} WAR files from the application server.
-* It removes the associated JNDI environment entries.
+* 该任务使用 {{ site.data.keys.mf_analytics }}
+Service 和 {{ site.data.keys.mf_analytics_console }} Web 应用程序各自的上下文根除去其配置。
+* 该任务从应用程序服务器除去 {{ site.data.keys.mf_analytics }}
+Service 和 {{ site.data.keys.mf_analytics_console }} WAR 文件。
+* 此任务将除去关联的 JNDI 环境条目。
 
-### Attributes and elements
+### 属性和元素
 {: #attributes-and-elements-4 }
-The **installanalytics**, **updateanalytics**, and **uninstallanalytics** tasks have the following attributes:
+**installanalytics**、**updateanalytics** 和 **uninstallanalytics** 任务具有以下属性：
 
-| Attribute    | Description                                            | Required | Default | 
+| 属性    | 描述                                            | 必需 | 缺省值 | 
 |--------------|--------------------------------------------------------|----------|---------|
-| serviceWar   | The WAR file for the {{ site.data.keys.mf_analytics }} Service     | No       | The analytics-service.war file is in the directory Analytics. |
+| serviceWar   | 用于 {{ site.data.keys.mf_analytics }}
+Service 的 WAR 文件     | 否       | analytics-service.war 文件位于 Analytics 目录中。 |
 
 #### serviceWar
 {: #servicewar-2 }
-Use the **serviceWar** attribute to specify a different directory for the {{ site.data.keys.mf_analytics }} Services WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+使用 **serviceWar** 属性来指定 {{ site.data.keys.mf_analytics }}
+Services WAR 文件的不同目录。您可以使用绝对路径或相对路径来指定该 WAR 文件的名称。
 
-The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` tasks support the following elements:
+`<installanalytics>`、`<updateanalytics>` 和 `<uninstallanalytics>` 任务支持以下元素：
 
-| Attribute         | Description                               | Required | Default | 
+| 属性         | 描述                               | 必需 | 缺省值 | 
 |-------------------|-------------------------------------------|----------|---------|
-| console	        | {{ site.data.keys.mf_analytics }}   	                | Yes	   | 1       |
-| user	            | The user to be mapped to a security role.	| No	   | 0..     |
-| storage	        | The type of storage.	                    | Yes 	   | 1       |
-| applicationserver	| The application server.	                | Yes	   | 1       |
-| property          | Properties.	                            | No 	   | 0..     |
+| console	        | {{ site.data.keys.mf_analytics }}   	                | 是	   | 1       |
+| user	            | 要映射到安全角色的用户。	| 否	   | 0..     |
+| storage	        | 存储器的类型。	                    | 是 	   | 1       |
+| applicationserver	| 应用程序服务器。	                | 是	   | 1       |
+| property          | 属性。	                            | 否 	   | 0..     |
 
-### To specify a {{ site.data.keys.mf_analytics_console }}
+### 指定 {{ site.data.keys.mf_analytics_console }}
 {: #to-specify-a-mobilefirst-analytics-console }
-The `<console>` element collects information to customize the installation of the {{ site.data.keys.mf_analytics_console }}. This element has the following attributes:
+`<console>` 元素收集信息以定制 {{ site.data.keys.mf_analytics_console }}的安装。此元素具有以下属性：
 
-| Attribute    | Description                                  | Required | Default | 
+| 属性    | 描述                                  | 必需 | 缺省值 | 
 |--------------|----------------------------------------------|----------|---------|
-| warfile	   | The console WAR file	                      | No	     | The analytics-ui.war file is in the Analytics directory. |
-| shortcutsdir | The directory where you place the shortcuts. | No	     | None    |
+| warfile	   | 控制台 WAR 文件	                      | 否	     | analytics-ui.war 文件位于 Analytics 目录中。 |
+| shortcutsdir | 放置快捷方式的目录。 | 否	     | 无    |
 
 #### warFile
 {: #warfile-2 }
-Use the **warFile** attribute to specify a different directory for the {{ site.data.keys.mf_analytics_console }} WAR file. You can specify the name of this WAR file with an absolute path or a relative path.
+使用 **warFile** 属性来指定 {{ site.data.keys.mf_analytics_console }} WAR 文件的不同目录。您可以使用绝对路径或相对路径来指定该 WAR 文件的名称。
 
 #### shortcutsDir
 {: #shortcutsdir-2 }
-The **shortcutsDir** attribute specifies where to place shortcuts to the {{ site.data.keys.mf_analytics_console }}. If you set this attribute, you can add the following files to that directory:
+**shortcutsDir** 属性指定将快捷方式放置在 {{ site.data.keys.mf_analytics_console }}的何处。如果设置该属性，可以将以下文件添加到该目录：
 
-* **analytics-console.url**: This file is a Windows shortcut. It opens the {{ site.data.keys.mf_analytics_console }} in a browser.
-* **analytics-console.sh**: This file is a UNIX shell script. It opens the {{ site.data.keys.mf_analytics_console }} in a browser.
+* **analytics-console.url**：该文件是 Windows 快捷方式。该文件会在浏览器中打开 {{ site.data.keys.mf_analytics_console }}。
+* **analytics-console.sh**：该文件是 UNIX Shell 脚本。该文件会在浏览器中打开 {{ site.data.keys.mf_analytics_console }}。
 
-> Note: These shortcuts do not include the ElasticSearch tenant parameter.
+> 注：这些快捷方式不包含 ElasticSearch 租户参数。
 
-The `<console>` element supports the following nested element:
+`<console>` 元素支持以下嵌套元素：
 
-| Element  | Description	| Count | 
+| 元素  | 描述	| 计数 | 
 |----------|----------------|-------|
-| property | Properties	    | 0..   |
+| property | 属性	    | 0..   |
 
-With this element, you can define your own JNDI properties.
+使用该元素，您可以定义自己的 JNDI 属性。
 
-The `<property>` element has the following attributes:
+`<property>` 元素具有以下属性：
 
-| Attribute  | Description                | Required | Default | 
+| 属性  | 描述                | 必需 | 缺省值 | 
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    | 
-| value	     | The value of the property. |	Yes      | None    |
+| name       | 属性的名称。  | 是      | 无    | 
+| value	     | 属性的值。 |	是      | 无    |
 
-### To specify a user and a security role
+### 用于指定用户和安全角色
 {: #to-specify-a-user-and-a-security-role-1 }
-The `<user>` element collects the parameters about a user to include in a certain security role for an application.
+`<user>` 元素收集关于用户的参数以包含在应用程序的某些安全角色中。
 
-| Attribute   | Description                                   | Required | Default | 
+| 属性   | 描述                                   | 必需 | 缺省值 | 
 |-------------|-----------------------------------------------|----------|---------|
-| role	      | A valid security role for the application.    | Yes      | None    |
-| name	      | The user name.	                              | Yes      | None    |
-| password	  | The password if the user needs to be created. | No       | None    |
+| role	      | 应用程序的有效安全角色。    | 是      | 无    |
+| name	      | 用户名。	                              | 是      | 无    |
+| password	  | 需要创建用户时的密码。 | 否       | 无    |
 
-After you defined users by using the` <user>` element, you can map them to any of the following roles for authentication in the {{ site.data.keys.mf_console }}:
+使用 ` <user>` 元素定义用户之后，可以将其映射到以下任一角色以供在 {{ site.data.keys.mf_console }} 中进行认证：
 
 * **mfpmonitor**
 * **mfpoperator**
 * **mfpdeployer**
 * **mfpadmin**
 
-### To specify a type of storage for {{ site.data.keys.mf_analytics }}
+### 指定 {{ site.data.keys.mf_analytics }} 的存储器类型
 {: #to-specify-a-type-of-storage-for-mobilefirst-analytics }
-The `<storage>` element indicates which underlying type of storage {{ site.data.keys.mf_analytics }} uses to store the information and data it collects.
+`<storage>` 元素表示 {{ site.data.keys.mf_analytics }} 用于存储其收集的信息和数据的存储器的底层类型。
 
-It supports the following element:
+它支持以下元素：
 
-| Element       | Description	| Count   | 
+| 元素       | 描述	| 计数   | 
 |---------------|---------------|---------|
-| elasticsearch	| ElasticSearch | cluster |
+| elasticsearch	| ElasticSearch | 集群 |
 
-The `<elasticsearch>` element collects the parameters about an ElasticSearch cluster.
+`<elasticsearch>` 参数收集有关 ElasticSearch 集群的参数。
 
-| Attribute        | Description                                   | Required | Default   | 
+| 属性        | 描述                                   | 必需 | 缺省值   | 
 |------------------|-----------------------------------------------|----------|-----------|
-| clusterName	   | The ElasticSearch cluster name.	           | No       | worklight | 
-| nodeName	       | The ElasticSearch node name. This name must be unique in an ElasticSearch cluster.	| No | `worklightNode_<random number>` |
-| mastersList	   | A comma-delimited string that contains the host name and ports of the ElasticSearch master nodes in the ElasticSearch cluster (For example: hostname1:transport-port1,hostname2:transport-port2)	           | No       |	Depends on the topology |
-| dataPath	       | The ElasticSearch cluster location.	       | No	      | Depends on the application server |
-| shards	       | The number of shards that the ElasticSearch cluster creates. This value can be set only by the master nodes that are created in the ElasticSearch cluster.	| No | 5 |
-| replicasPerShard | The number of replicas for each shard in the ElasticSearch cluster. This value can be set only by the master nodes that are created in the ElasticSearch cluster. | No | 1 |
-| transportPort	   | The port used for node-to-node communication in the ElasticSearch cluster.	| No | 9600 | 
+| clusterName	   | ElasticSearch 集群名称。	           | 否       | worklight | 
+| nodeName	       | ElasticSearch 节点名。在 ElasticSearch 集群中该名称必须唯一。	| 否 | `worklightNode_<random number>` |
+| mastersList	   | 逗号分隔的字符串，其中包含 ElasticSearch 集群中的 ElasticSearch 主节点的主机名和端口（例如： hostname1:transport-port1,hostname2:transport-port2）	           | 否       |	取决于拓扑 |
+| dataPath	       | ElasticSearch 集群位置。	       | 否	      | 取决于应用程序服务器 |
+| shards	       | ElasticSearch 集群创建的分片数量。该值只能通过在 ElasticSearch 集群中创建的主节点进行设置。	| 否 | 5 |
+| replicasPerShard | ElasticSearch 集群中每个分片的副本数量。该值只能通过在 ElasticSearch 集群中创建的主节点进行设置。 | 否 | 1 |
+| transportPort	   | 在 ElasticSearch 集群中用于节点到节点通信的端口。	| 否 | 9600 | 
 
 #### clusterName
 {: #clustername }
-Use the **clusterName** attribute to specify a name of your choice for the ElasticSearch cluster.
+使用 **clusterName** 属性来指定 ElasticSearch 集群的名称。
 
-An ElasticSearch cluster consists of one or more nodes that share the same cluster name so you might specify the same value for the **clusterName** attribute if you configure several nodes.
+由于一个 ElasticSearch 集群由共享相同集群名称的一个或多个节点组成，因此如果您配置多个节点，则可能会为 **clusterName** 属性指定相同的值。
 
 #### nodeName
 {: #nodename }
-Use the **nodeName** attribute to specify a name of your choice for the node to configure in the ElasticSearch cluster. Each node name must be unique in the ElasticSearch cluster even if nodes span on several machines.
+使用 **nodeName** 属性来指定 ElasticSearch 集群中要配置的节点的名称。在 ElasticSearch 集群中，每个节点名都必须是唯一的（即使节点跨多台机器）。
 
 #### mastersList
 {: #masterslist }
-Use the **mastersList** attribute to provide a comma-separated list of the master nodes in your ElasticSearch cluster. Each master node in this list must be identified by its host name, and the ElasticSearch node-to-node communication port. This port is 9600 by default, or it is the port number that you specified with the attribute **transportPort** when you configured that master node.
+使用 **mastersList** 属性提供 ElasticSearch 集群中主节点的逗号分隔列表。该列表中的每个主节点必须由其主机名和 ElasticSearch 节点到节点通信端口来标识。缺省情况下，该端口为 9600 或是您在配置主节点时使用 **transportPort** 属性指定的端口号。
 
-For example: `hostname1:transport-port1, hostname2:transport-port2`.
+例如：`hostname1:transport-port1, hostname2:transport-port2`。
 
-**Note:**
+**注：**
 
-* If you specify a **transportPort** that is different than the default value 9600, you must also set this value with the attribute **transportPort**. By default, when the attribute **mastersList** is omitted, an attempt is made to detect the host name and the ElasticSearch transport port on all supported application servers.
-* If the target application server is WebSphere Application Server Network Deployment cluster, and if you add or remove a server from this cluster at a later point in time, you must edit this list manually to keep in sync with the ElasticSearch cluster.
+* 如果您指定的 **transportPort** 与缺省值 9600 不同，那么还必须使用 **transportPort** 属性设置该值。缺省情况下，省略 **mastersList** 属性时，将尝试检测所有受支持应用程序服务器上的主机名和 ElasticSearch 传输端口。
+* 如果目标应用程序服务器为 WebSphere Application Server Network Deployment 集群，并且您在稍晚时间点对该集群添加或除去了服务器，那么您必须手动编辑该列表以与 ElasticSearch 集群保持同步。
 
 #### dataPath
 {: #datapath }
-Use the **dataPath** attribute to specify a different directory to store ElasticsSearch data. You can specify an absolute path or a relative path.
+使用 **dataPath** 属性来指定存储 ElasticSearch 数据的不同目录。您可以指定绝对路径或相对路径。
 
-If the attribute **dataPath** is not specified, then ElasticSearch cluster data is stored in a default directory that is called **analyticsData**, whose location depends on the application server:
+如果未指定 **dataPath** 属性，那么将 ElasticSearch 集群数据存储于缺省目录（名为**analyticsData**），该目录位置取决于应用程序服务器：
 
-* For WebSphere Application Server Liberty profile, the location is `${wlp.user.dir}/servers/serverName/analyticsData`.
-* For Apache Tomcat, the location is `${CATALINA_HOME}/bin/analyticsData`.
-* For WebSphere Application Server and WebSphere Application Server Network Deployment, the location is `${was.install.root}/profiles/<profileName>/analyticsData`.
+* 对于 WebSphere Application Server Liberty Profile，位置为 `${wlp.user.dir}/servers/serverName/analyticsData`。
+* 对于 Apache Tomcat，位置为：`${CATALINA_HOME}/bin/analyticsData`。
+* 对于 WebSphere Application Server 和 WebSphere Application Server Network Deployment，位置为 `${was.install.root}/profiles/<profileName>/analyticsData`。
 
-The directory **analyticsData** and the hierarchy of sub-directories and files that it contains are automatically created at run time, if they do not already exist when the {{ site.data.keys.mf_analytics }} Service component receives events.
+在 {{ site.data.keys.mf_analytics }}
+Service 组件接收事件时，在运行时将自动创建 **analyticsData** 目录及其包含的子目录和文件的层次结构（如果这些对象先前不存在）。
 
 #### shards
 {: #shards }
-Use the **shards** attribute to specify the number of shards to create in the ElasticSearch cluster.
+使用 **shards** 属性来指定要在 ElasticSearch 集群中创建的分片数量。
 
 #### replicasPerShard
 {: #replicaspershard }
-Use the **replicasPerShard** attribute to specify the number of replicas to create for each shard in the ElasticSearch cluster.
+使用 **replicasPerShard** 属性来指定要在 ElasticSearch 集群中为每个分片创建的副本数量。
 
-Each shard can have zero or more replicas. By default, each shard has one replica, but the number of replicas can be changed dynamically on an existing index in the {{ site.data.keys.mf_analytics }}. A replica shard can never be started on the same node as its shard.
+每个分片可以没有副本，或者具有一个或多个副本。缺省情况下，每个分片具有一个副本，但可以在 {{ site.data.keys.mf_analytics }} 中的现有索引上动态更改副本数量。副本分片决不能在其分片所在的节点上启动。
 
 #### transportPort
 {: #transportport }
-Use the **transportPort** attribute to specify a port that other nodes in the ElasticSearch cluster must use when communicating with this node. You must ensure that this port is available and accessible if this node is behind a proxy or firewall.
+使用 **transportPort** 属性指定与该节点进行通信时，ElasticSearch 集群中的其他节点必须使用的端口。您必须确保该端口可用，并且当该节点位于代理或防火墙后时该端口可访问。
 
-### To specify an application server
+### 指定应用程序服务器
 {: #to-specify-an-application-server-4 }
-Use the `<applicationserver>` element to define the parameters that depend on the underlying application server. The `<applicationserver>` element supports the following elements.
+使用 `<applicationserver>` 元素来定义依赖底层应用程序服务器的参数。`<applicationserver>` 元素支持以下元素。
 
-**Note:** The attributes and inner elements of this element are described in the tables of [Ant tasks for installation of {{ site.data.keys.product_adj }} runtime environments](#ant-tasks-for-installation-of-mobilefirst-runtime-environments).
+**注：**在[用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)表中描述了此元素的属性和内部元素。
 
-| Element                                   | Description	| Count   | 
+| 元素                                   | 描述	| 计数   | 
 |-------------------------------------------|---------------|---------|
-| **websphereapplicationserver** or **was** | The parameters for WebSphere Application Server.	| 0..1 |
-| tomcat	                                | The parameters for Apache Tomcat.	| 0..1 |
+| **websphereapplicationserver** 或 **was** | WebSphere Application Server 的参数。	| 0..1 |
+| tomcat	                                | Apache Tomcat 的参数。	| 0..1 |
 
-### To specify custom JNDI properties
+### 指定定制 JNDI 属性
 {: #to-specify-custom-jndi-properties }
-The `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` elements support the following element:
+`<installanalytics>`、`<updateanalytics>` 和 `<uninstallanalytics>` 元素支持以下元素：
 
-| Element  | Description | Count | 
+| 元素  | 描述 | 计数 | 
 |----------|-------------|-------|
-| property | Properties	 | 0..   |
+| property | 属性	 | 0..   |
 
-By using this element, you can define your own JNDI properties.
+使用该元素，您可以定义自己的 JNDI 属性。
 
-This element has the following attributes:
+此元素具有以下属性：
 
-| Attribute  | Description                | Required | Default | 
+| 属性  | 描述                | 必需 | 缺省值 | 
 |------------|----------------------------|----------|---------|
-| name       | The name of the property.  | Yes      | None    | 
-| value	     | The value of the property. |	Yes      | None    |
+| name       | 属性的名称。  | 是      | 无    | 
+| value	     | 属性的值。 |	是      | 无    |
 
-## Internal runtime databases
+## 内部运行时数据库
 {: #internal-runtime-databases }
-Learn about runtime database tables, their purpose, and order of magnitude of data stored in each table. In relational databases, the entities are organized in database tables.
+了解运行时数据库表、其目的以及每个表中存储的数据的数量级顺序。在关系数据库中，实体都组织在数据库表中。
 
-### Database used by {{ site.data.keys.mf_server }} runtime
+### {{ site.data.keys.mf_server }} 运行时使用的数据库
 {: #database-used-by-mobilefirst-server-runtime }
-The following table provides a list of runtime database tables, their descriptions, and how they are used in relational databases.
+下表提供运行时数据库表、其描述及其在关系数据库中的使用方式的列表。
 
-| Relational database table name | Description | Order of magnitude |
+| 关系数据库表名称 | 描述 | 数量级 |
 |--------------------------------|-------------|--------------------|
-| LICENSE_TERMS	                 | Stores the various license metrics captured every time the device decommissioning task is run. | Tens of rows. This value does not exceed the value set by the JNDI property mfp.device.decommission.when property. For more information about JNDI properties, see [List of JNDI properties for {{ site.data.keys.product_adj }} runtime](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime) | 
-| ADDRESSABLE_DEVICE	         | Stores the addressable device metrics daily. An entry is also added each time that a cluster is started.	| About 400 rows. Entries older than 13 months are deleted daily. |
-| MFP_PERSISTENT_DATA	         | Stores instances of client applications that have registered with the OAuth server, including information about the device, the application, users associated with the client and the device status. | One row per device and application pair. |
-| MFP_PERSISTENT_CUSTOM_ATTR	 | Custom attributes that are associated with instances of client applications. Custom attributes are application-specific attributes that were registered by the application per each client instance. | Zero or more rows per device and application pair |
-| MFP_TRANSIENT_DATA	         | Authentication context of clients and devices | Two rows per device and application pair; if using device single sign-on an extra two rows per device. For more information about SSO, see [Configuring device single sign-on (SSO)](../../../authentication-and-security/device-sso). |
-| SERVER_VERSION	             | The product version.	| One row |
+| LICENSE_TERMS	                 | 存储每次运行设备停用任务时捕获的各种许可证度量值。 | 数十行。该值不超过 JNDI 属性 mfp.device.decommission.when 设置的值。有关 JNDI 属性的更多信息，请参阅 [{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime) | 
+| ADDRESSABLE_DEVICE	         | 每日存储可寻址设备度量。每次启动集群时，还会添加 1 个条目。	| 400 行左右。每天删除久于 13 个月的条目。 |
+| MFP_PERSISTENT_DATA	         | 存储已向 OAuth 服务器注册的客户机应用程序的实例，包括有关设备、应用程序、与客户机关联的用户以及设备状态的信息。 | 每个设备和应用程序对 1 行。 |
+| MFP_PERSISTENT_CUSTOM_ATTR	 | 与客户机应用程序实例关联的定制属性。
+定制属性是根据每个客户机实例通过应用程序注册的特定于应用程序的属性。 | 每个设备和应用程序对 0 行或更多行 |
+| MFP_TRANSIENT_DATA	         | 客户机和设备的认证上下文 | 每个设备和应用程序对 2 行；如果使用设备单点登录，那么每个设备另外增加 2 行。有关 SSO 的更多信息，请参阅[配置设备单点登录 (SSO)](../../../authentication-and-security/device-sso)。 |
+| SERVER_VERSION	             | 产品版本。	| 一行 |
 
-### Database used by {{ site.data.keys.mf_server }} administration service
+### {{ site.data.keys.mf_server }} 管理服务使用的数据库
 {: #database-used-by-mobilefirst-server-administration-service }
-The following table provides a list of administration database tables, their descriptions, and how they are used in relational databases.
+下表提供管理数据库表、其描述及其在关系数据库中的使用方式的列表。
 
-| Relational database table name | Description | Order of magnitude |
+| 关系数据库表名称 | 描述 | 数量级 |
 |--------------------------------|-------------|--------------------|
-| ADMIN_NODE	                 | Stores information about the servers that run the administration service. In a stand-alone topology with only one server, this entity is not used. | One row per server; empty if a stand-alone server is used. |
-| AUDIT_TRAIL	                 | Stores an audit trail of all administrative actions performed with the administration service. | Thousands of rows. | 
-| CONFIG_LINKS	                 | Stores the links to the live update service. Adapters and applications might have configurations that are stored in the live update service, and the links are used to find those configurations.	| Hundreds of rows. Per adapter, 2-3 rows are used. Per application, 4-6 rows are used. |
-| FARM_CONFIG	                 | Stores the configuration of farm nodes when a server farm is used. | Tens of rows; empty if no server farm is used. |
-| GLOBAL_CONFIG	                 | Stores some global configuration data. | 1 row. |
-| PROJECT	                     | Stores the names of the deployed projects. | Tens of rows. |
-| PROJECT_LOCK	                 | Internal cluster synchronization tasks. | Tens of rows. | 
-| TRANSACTIONS	                 | Internal cluster synchronization table; stores the state of all current administrative actions. | Tens of rows. |
-| MFPADMIN_VERSION	             | The product version.	| One row. |
+| ADMIN_NODE	                 | 存储有关运行管理服务的服务器的信息。在仅使用 1 台服务器的独立拓扑中，不使用该实体。 | 每个服务器 1 行；使用独立服务器时为空。 |
+| AUDIT_TRAIL	                 | 存储在使用管理服务器执行的所有管理操作的审计跟踪。 | 数千行。 | 
+| CONFIG_LINKS	                 | 存储指向实时更新服务的链接。适配器和应用程序可能具有存储在实时更新服务中的配置，链接用于查找这些配置。	| 数百行。每个适配器将使用 2 到 3 行。
+| FARM_CONFIG	                 | 存储使用服务器场时场节点的配置。 | 数十行；如果未使用服务器场，那么为空。 |
+| GLOBAL_CONFIG	                 | 存储一些全局配置数据。 | 1 行。 |
+| PROJECT	                     | 存储已部署项目的名称。 | 数十行。 |
+| PROJECT_LOCK	                 | 内部集群同步任务。 | 数十行。 | 
+| TRANSACTIONS	                 | 内部集群同步表；存储所有当前管理操作的状态。 | 数十行。 |
+| MFPADMIN_VERSION	             | 产品版本。	| 1 行。 |
 
-### Database used by {{ site.data.keys.mf_server }} live update service
+### {{ site.data.keys.mf_server }} 实时更新服务使用的数据库
 {: #database-used-by-mobilefirst-server-live-update-service }
-The following table provides a list of live update service database tables, their descriptions, and how they are used in relational databases.
+下表提供实时更新服务数据库表、其描述及其在关系数据库中的使用方式的列表。
 
-| Relational database table name | Description | Order of magnitude |
+| 关系数据库表名称 | 描述 | 数量级 |
 |--------------------------------|-------------|--------------------|
-| CS_SCHEMAS	                 | Stores the versioned schemas that exist in the platform.	| One row per schema. |
-| CS_CONFIGURATIONS	             | Stores instances of configurations for each versioned schema. | One row per configuration | 
-| CS_TAGS	                     | Stores the searchable fields and values for each configuration instance.	| Row for each field name and value for each searchable field in configuration. |
-| CS_ATTACHMENTS	             | Stores the attachments for each configuration instance. | One row per attachment. |
-| CS_VERSION	                 | Stores the version of the MFP that created the tables or instances. | Single row in the table with the version of MFP. | 
+| CS_SCHEMAS	                 | 存储存在于平台中的版本化模式。	| 每个模式 1 行。 |
+| CS_CONFIGURATIONS	             | 存储每个版本化模式的配置的实例。 | 每个配置 1 行。 | 
+| CS_TAGS	                     | 存储每个配置实例的可搜索字段和值。	| 对配置中每个字段名称使用行，每个可搜索字段使用值。
+ |
+| CS_ATTACHMENTS	             | 存储每个配置实例的附件。 | 每个附件 1 行。 |
+| CS_VERSION	                 | 存储已创建表或实例的 MFP 的版本。 | 具有 MFP 版本的表中的一行。 | 
 
-### Database used by {{ site.data.keys.mf_server }} push service
+### {{ site.data.keys.mf_server }} 推送服务使用的数据库
 {: #database-used-by-mobilefirst-server-push-service }
-The following table provides a list of push service database tables, their descriptions, and how they are used in relational databases.
+下表提供推送服务数据库表、其描述及其在关系数据库中的使用方式的列表。
 
-| Relational database table name | Description | Order of magnitude |
+| 关系数据库表名称 | 描述 | 数量级 |
 |--------------------------------|-------------|--------------------|
-| PUSH_APPS	                     | Push notification table; stores details of push applications. | One row per application. |
-| PUSH_ENV	                     | Push notification table; stores details of push environments. | Tens of rows. |
-| PUSH_TAGS	                     | Push notification table; stores details of defined tags.	     | Tens of rows. | 
-| PUSH_DEVICES	                 | Push notification table. Stores a record per device.	         | One row per device. | 
-| PUSH_SUBSCRIPTIONS	         | Push notification table. Stores a record per tag subscription. | One row per device subscription. |
-| PUSH_MESSAGES	                 | Push notification table; stores details of push messages.	 | Tens of rows. | 
-| PUSH_MESSAGE_SEQUENCE_TABLE	 | Push notification table; stores the generated sequence ID.	 | One row. |
-| PUSH_VERSION	                 | The product version.	                                         | One row. |
+| PUSH_APPS	                     | 推送通知表；存储推送应用程序的详细信息。 | 每个应用程序 1 行。 |
+| PUSH_ENV	                     | 推送通知表；存储推送环境的详细信息。 | 数十行。 |
+| PUSH_TAGS	                     | 推送通知表；存储已定义标记的详细信息。	     | 数十行。 | 
+| PUSH_DEVICES	                 | 推送通知表。为每个设备存储一条记录。	         | 每个设备 1 行。 | 
+| PUSH_SUBSCRIPTIONS	         | 推送通知表。为每个标记预订存储一条记录。 | 每个设备预订 1 行。 |
+| PUSH_MESSAGES	                 | 推送通知表；存储推送消息的详细信息。	 | 数十行。 | 
+| PUSH_MESSAGE_SEQUENCE_TABLE	 | 推送通知表；存储生成的序列标识。	 | 1 行。 |
+| PUSH_VERSION	                 | 产品版本。	                                         | 1 行。 |
 
-For more information about setting up the databases, see [Setting up databases](../databases).
+有关设置数据库的更多信息，请参阅[设置数据库](../databases)。
 
-## Sample configuration files
-{{ site.data.keys.product }} includes a number of sample configuration files to help you get started with the Ant tasks to install the {{ site.data.keys.mf_server }}.
+## 样本配置文件
+{{ site.data.keys.product }} 包含许多样本配置文件，可帮助您启动 Ant 任务来安装 {{ site.data.keys.mf_server }}。
 
-The easiest way to get started with these Ant tasks is by working with the sample configuration files provided in the **MobileFirstServer/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution. For more information about installing {{ site.data.keys.mf_server }} with Ant tasks, see [Installing with Ant Tasks](../appserver/#installing-with-ant-tasks).
+启动这些 Ant 任务的最容易方式是使用 {{ site.data.keys.mf_server }} 分发版的 **MobileFirstServer/configuration-samples/** 目录中提供的样本配置文件。有关使用 Ant 任务安装 {{ site.data.keys.mf_server }} 的更多信息，请参阅[使用 Ant 任务进行安装](../appserver/#installing-with-ant-tasks)。
 
-### List of sample configuration files
+### 样本配置文件的列表
 {: #list-of-sample-configuration-files }
-Pick the appropriate sample configuration file. The following files are provided.
+选取相应的样本配置文件。提供以下文件。
 
-| Task                                                     | Derby                     | DB2                     | MySQL                     | Oracle                      | 
+| 任务                                                     | Derby                     | DB2                     | MySQL                     | Oracle                      | 
 |----------------------------------------------------------|---------------------------|-------------------------|---------------------------|-----------------------------|
-| Create databases with database administrator credentials | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
-| Install {{ site.data.keys.mf_server }} on Liberty	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (See Note on MySQL) | configure-liberty-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on WebSphere  Application Server full profile, single server |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml (See Note on MySQL) | configure-was-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on WebSphere Application Server Network Deployment (See Note on configuration files) | configure-wasnd-cluster-derby.xml, configure-wasnd-server-derby.xml, configure-wasnd-node-derby.xml. configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml, configure-wasnd-server-db2.xml, configure-wasnd-node-db2.xml, configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml (See Note on MySQL),  configure-wasnd-server-mysql.xml (See Note on MySQL), configure-wasnd-node-mysql.xml (See Note on MySQL), configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml, configure-wasnd-server-oracle.xml, configure-wasnd-node-oracle.xml, configure-wasnd-cell-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on Apache Tomcat	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
-| Install {{ site.data.keys.mf_server }} on Liberty collective	       | Not relevant              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
+| 通过数据库管理员凭证创建数据库 | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
+| 在 Liberty 上安装 {{ site.data.keys.mf_server }}	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | （请参阅有关 MySQL 的注释） | configure-liberty-oracle.xml |
+| 在 WebSphere Application Server Full Profile 单台服务器上安装 {{ site.data.keys.mf_server }} |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml（请参阅有关 MySQL 的注释） | configure-was-oracle.xml |
+| 在 WebSphere Application Server Network Deployment 上安装 {{ site.data.keys.mf_server }}（请参阅有关配置文件的注释） | configure-wasnd-cluster-derby.xml、configure-wasnd-server-derby.xml 和 configure-wasnd-node-derby.xml。configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml、configure-wasnd-server-db2.xml、configure-wasnd-node-db2.xml 和 configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml（请参阅有关 MySQL 的注释）、configure-wasnd-server-mysql.xml（请参阅有关 MySQL 的注释）、configure-wasnd-node-mysql.xml（请参阅有关 MySQL 的注释）以及 configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml、 configure-wasnd-server-oracle.xml、configure-wasnd-node-oracle.xml 和 configure-wasnd-cell-oracle.xml |
+| 在 Apache Tomcat 上安装 {{ site.data.keys.mf_server }}	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
+| 在 Liberty 集合体上安装 {{ site.data.keys.mf_server }}	       | 不相关              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
 
-**Note on MySQL:** MySQL in combination with WebSphere Application Server Liberty profile or WebSphere Application Server full profile is not classified as a supported configuration. For more information, see WebSphere Application Server Support Statement. Consider using IBM  DB2 or another database that is supported by WebSphere Application Server to benefit from a configuration that is fully supported by IBM Support.
+**有关 MySQL 的注释：**与 WebSphere Application Server Liberty Profile 或 WebSphere Application Server Full Profile 结合使用的 MySQL 不属于受支持的配置。有关更多信息，请参阅 WebSphere Application Server Support Statement。考虑使用 IBM DB2 或其他受 WebSphere Application Server 支持的数据库，以从 IBM 支持中心全面支持的配置中受益。
 
-**Note on configuration files for WebSphere Application Server Network Deployment:** The configuration files for **wasnd** contain a scope that can be set to **cluster**, **node**, **server**, or **cell**. For example, for **configure-wasnd-cluster-derby.xml**, the scope is **cluster**. These scope types define the deployment target as follows:
+**有关 WebSphere Application Server Network Deployment 配置文件的注释：****wasnd** 的配置文件包含作用域，可将其设置为 **cluster**、**node**、**server** 或 **cell**。例如，对于 **configure-wasnd-cluster-derby.xml**，该作用域为 **cluster**。这些作用域类型按如下方式定义部署目标：
 
-* **cluster**: To deploy to a cluster.
-* **server**: To deploy to a single server that is managed by the deployment manager.
-* **node**: To deploy to all the servers that are running on a node, but that do not belong to a cluster.
-* **cell**: To deploy to all the servers on a cell.
+* **cluster**：部署到集群。
+* **server**：部署到由 Deployment Manager 管理的单个服务器。
+* **node**：部署到在节点上运行但不属于集群的所有服务器。
+* **cell**：部署到单元上的所有服务器。
 
-## Sample configuration files for {{ site.data.keys.mf_analytics }}
+## {{ site.data.keys.mf_analytics }} 的样本配置文件
 {: #sample-configuration-files-for-mobilefirst-analytics }
-{{ site.data.keys.product }} includes a number of sample configuration files to help you get started with the Ant tasks to install the {{ site.data.keys.mf_analytics }} Services, and the {{ site.data.keys.mf_analytics_console }}.
+{{ site.data.keys.product }}
+包含多个样本配置文件，这些样本配置文件可帮助您启动 Ant 任务来安装 {{ site.data.keys.mf_analytics }}
+Services 和 {{ site.data.keys.mf_analytics_console }}。
 
-The easiest way to get started with the `<installanalytics>`, `<updateanalytics>`, and `<uninstallanalytics>` Ant tasks is by working with the sample configuration files provided in the **Analytics/configuration-samples/** directory of the {{ site.data.keys.mf_server }} distribution.
+启动 `<installanalytics>`、`<updateanalytics>` 和 `<uninstallanalytics>` Ant 任务的最容易方式就是通过使用 {{ site.data.keys.mf_server }}
+分发版的 **Analytics/configuration-samples/** 目录中提供的样本配置文件。
 
-### Step 1
+### 步骤 1
 {: #step-1 }
-Pick the appropriate sample configuration file. The following XML files are provided. They are referred to as **configure-file.xml** in the next steps.
+选取相应的样本配置文件。提供以下 XML 文件。这些文件在后续步骤中称为 **configure-file.xml**。
 
-| Task | Application server |
+| 任务 | 应用程序服务器 |
 |------|--------------------|
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere  Application Server Liberty profile | configure-liberty-analytics.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on Apache Tomcat | configure-tomcat-analytics.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server full profile | configure-was-analytics.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, single server | configure-wasnd-server-analytics.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, cell | configure-wasnd-cell-analytics.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, node | configure-wasnd-node.xml | 
-| Install {{ site.data.keys.mf_analytics }} Services and Console on WebSphere Application Server Network Deployment, cluster | configure-wasnd-cluster-analytics.xml | 
+| 在 WebSphere Application Server Liberty Profile 上安装 {{ site.data.keys.mf_analytics }} Services and Console | configure-liberty-analytics.xml | 
+| 在 Apache Tomcat 上安装 {{ site.data.keys.mf_analytics }}
+Services and Console | configure-tomcat-analytics.xml | 
+| 在 WebSphere Application Server Full Profile 上安装 {{ site.data.keys.mf_analytics }} Services and Console | configure-was-analytics.xml | 
+| 在 WebSphere Application Server Network Deployment 单台服务器上安装 {{ site.data.keys.mf_analytics }} Services and Console。 | configure-wasnd-server-analytics.xml | 
+| 在 WebSphere Application Server Network Deployment 单元上安装 {{ site.data.keys.mf_analytics }} Services and Console | configure-wasnd-cell-analytics.xml | 
+| 在  WebSphere Application Server Network Deployment 节点上安装 {{ site.data.keys.mf_analytics }} Services and Console | configure-wasnd-node.xml | 
+| 在 WebSphere Application Server Network Deployment 集群上安装 {{ site.data.keys.mf_analytics }} Services and Console | configure-wasnd-cluster-analytics.xml | 
 
-**Note on configuration files for WebSphere Application Server Network Deployment:**  
-The configuration files for wasnd contain a scope that can be set to **cluster**, **node**, **server**, or **cell**. For example, for **configure-wasnd-cluster-analytics.xml**, the scope is **cluster**. These scope types define the deployment target as follows:
+**有关 WebSphere Application Server Network Deployment 配置文件的注释：**  
+wasnd 的配置文件包含作用域，可将其设置为 **cluster**、**node**、**server** 或 **cell**。例如，对于 **configure-wasnd-cluster-analytics.xml**，作用域为 **cluster**。这些作用域类型按如下方式定义部署目标：
 
-* **cluster**: To deploy to a cluster.
-* **server**: To deploy to a single server that is managed by the deployment manager.
-* **node**: To deploy to all the servers that are running on a node, but that do not belong to a cluster.
-* **cell**: To deploy to all the servers on a cell.
+* **cluster**：部署到集群。
+* **server**：部署到由 Deployment Manager 管理的单个服务器。
+* **node**：部署到在节点上运行但不属于集群的所有服务器。
+* **cell**：部署到单元上的所有服务器。
 
-### Step 2
+### 步骤 2
 {: #step-2 }
-Change the file access rights of the sample file to be as restrictive as possible. Step 3 requires that you supply some passwords. If you must prevent other users on the same computer from learning these passwords, you must remove the read permissions of the file for users other than yourself. You can use a command, such as the following examples:
+更改样本文件的文件访问权限，尽可能提高其限制性。步骤 3 需要您提供某些密码。如果要防止同一台电脑上的其他用户获取这些密码，必须除去其他用户对文件的读许可权。您可以使用命令，如以下示例：
 
-On UNIX: `chmod 600 configure-file.xml`
-On Windows: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
+在 UNIX 上：`chmod 600 configure-file.xml`
+在 Windows 上：`cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
-### Step 3
+### 步骤 3 
 {: #step-3 }
-Similarly, if your application server is WebSphere Application Server Liberty profile, or Apache Tomcat, and the server is meant to be started only from your user account, you must also remove the read permissions for users other than yourself from the following files:
+同样，如果应用程序服务器是 WebSphere Application Server Liberty Profile 或 Apache Tomcat，且该服务器仅从您的用户帐户启动，那么还必须从以下文件除去其他用户的读许可权：
 
-* For WebSphere Application Server Liberty profile: **wlp/usr/servers/<server>/server.xml**
-* For Apache Tomcat: **conf/server.xml**
+* 对于 WebSphere Application Server Liberty profile：**wlp/usr/servers/<server>/server.xml**
+* 对于 Apache Tomcat：**conf/server.xml**
 
-### Step 4
+### 步骤 4
 {: #step-4 }
-Replace the placeholder values for the properties at the beginning of the file.
+替换文件开始处的属性的占位符值。
 
-**Note:**  
-The following special characters must be escaped when they are used in the values of the Ant XML scripts:
+**注：**  
+当在 Ant XML 脚本值中使用以下特殊字符时，必须对这些字符进行转义：
+* 美元符号 (`$`) 必须写作 $$，除非您明确希望通过语法 `${variable}` 引用 Ant 变量，如 Apache Ant Manual 的 Properties 部分中所述。
+* 和号 (`&`) 必须写作 `&amp;`，除非您明确希望引用 XML 实体。
+* 双引号 (`"`) 必须写作 `&quot;`，除非它在由单引号括起的字符串内。
 
-* The dollar sign (`$`) must be written as $$, unless you explicitly want to reference an Ant variable through the syntax `${variable}`, as described in Properties section of the Apache Ant Manual.
-* The ampersand character (`&`) must be written as `&amp;`, unless you explicitly want to reference an XML entity.
-* Double quotation marks (`"`) must be written as `&quot;`, except when it is inside a string that is enclosed in single quotation marks.
-
-### Step 5
+### 步骤 5
 {: #step-5 }
-Run the command: `ant -f configure-file.xml install`
+运行命令：`ant -f configure-file.xml install`
 
-This command installs your {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components in the application server.
-To install updated {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components, for example if you apply a {{ site.data.keys.mf_server }} fix pack, run the following command: `ant -f configure-file.xml minimal-update`.
+此命令将 {{ site.data.keys.mf_analytics }} Services 和 {{ site.data.keys.mf_analytics_console }} 组件安装到应用程序服务器中。
+要安装更新的 {{ site.data.keys.mf_analytics }} Services 和 {{ site.data.keys.mf_analytics_console }} 组件，例如，在应用 {{ site.data.keys.mf_server }} 修订包时，运行以下命令：`ant -f configure-file.xml minimal-update`。
 
-To reverse the installation step, run the command: `ant -f configure-file.xml uninstall`
+要撤销安装步骤，请运行命令：`ant -f configure-file.xml uninstall`
 
-This command uninstalls the {{ site.data.keys.mf_analytics }} Services and {{ site.data.keys.mf_analytics_console }} components.
+该命令会卸载 {{ site.data.keys.mf_analytics }} Services 和 {{ site.data.keys.mf_analytics_console }} 组件。
 
