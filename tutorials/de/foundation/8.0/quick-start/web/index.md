@@ -1,55 +1,58 @@
 ---
 layout: tutorial
-title: Web app end-to-end demonstration
-breadcrumb_title: Web
+title: End-to-End-Demonstration für Web-Apps
+breadcrumb_title: Web-Apps
 relevantTo: [javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-The purpose of this demonstration is to experience an end-to-end flow:
+Bei der folgende Demonstration geht es darum, einen End-to-End-Ablauf zu veranschaulichen: 
 
-1. A sample application that is pre-bundled with the {{ site.data.keys.product_adj }} client SDK is registered and downloaded from the {{ site.data.keys.mf_console }}.
-2. A new or provided adapter is deployed to the {{ site.data.keys.mf_console }}.  
-3. The application logic is changed to make a resource request.
+1. Eine im Lieferumfang des {{ site.data.keys.product_adj }}-Client-SDK enthaltene Beispielanwendung wird
+in der {{ site.data.keys.mf_console }} registriert und heruntergeladen. 
+2. Ein neuer oder bereitgestellter Adapter wird über die {{ site.data.keys.mf_console }} implementiert.  
+3. Die Anwendungslogik wird geändert, um eine Ressourcenanforderung zu ermöglichen. 
 
-**End result**:
+**Endergebnis**:
 
-* Successfully pinging the {{ site.data.keys.mf_server }}.
-* Successfully retrieving data using an adapter.
+* Erfolgreiches Absetzen eines Pingsignals an {{ site.data.keys.mf_server }}
+* Erfolgreiches Abrufen von Daten mit einem Adapter
 
-#### Prerequisites:
+#### Voraussetzungen: 
 {: #prerequisites }
-* A modern web browser
-* *Optional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
-* *Optional*. Stand-alone {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* Moderner Web-Browser
+* *Optional*: {{ site.data.keys.mf_cli }} ([Download]({{site.baseurl}}/downloads))
+* *Optional*: Eigenständiger {{ site.data.keys.mf_server }} ([Download]({{site.baseurl}}/downloads))
 
-### 1. Starting the {{ site.data.keys.mf_server }}
+### 1. {{ site.data.keys.mf_server }} starten
 {: #starting-the-mobilefirst-server }
-Make sure you have [created a Mobile Foundation instance](../../bluemix/using-mobile-foundation), or  
-If using the [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navigate to the server's folder and run the command: `./run.sh` in Mac and Linux or `run.cmd` in Windows.
+Stellen Sie sicher, dass eine [Mobile-Foundation-Instanz erstellt](../../bluemix/using-mobile-foundation) wurde oder,   
+falls Sie das [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst) verwenden, navigieren
+Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run.sh` oder unter Windows den Befehl `run.cmd` aus.
 
-### 2. Creating and registering an application
+### 2. Anwendung erstellen und registrieren
 {: #creating-and-registering-an-application }
-In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL: `http://your-server-host:server-port/mfpconsole`. If running locally, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). The username/password are *admin/admin*.
+Öffnen Sie in einem Browser die {{ site.data.keys.mf_console }}. Laden Sie dazu die URL `http://your-server-host:server-port/mfpconsole`. Wenn Sie die Konsole lokal ausführen, verwenden Sie [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). Geben Sie für Benutzername/Kennwort die Werte *admin/admin* an.
  
-1. Click the **New** button next to **Applications**
-    * Select the **Web** platform
-    * Enter **com.ibm.mfpstarterweb** as the **application identifier**
-    * Click on **Register application**
+1. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**. 
+    * Wählen Sie die **Web**-Plattform aus. 
+    * Geben Sie als **Anwendungs-ID** den Wert **com.ibm.mfpstarterweb** ein. 
+    * Klicken Sie auf **Anwendung registrieren**. 
 
-    <img class="gifplayer" alt="Register an application" src="register-an-application-web.png"/>
+    <img class="gifplayer" alt="Anwendung registrieren" src="register-an-application-web.png"/>
  
-2. Click on the **Get Starter Code** tile and select to download the Web sample application.
+2. Klicken Sie auf die Kachel **Startercode abrufen** und wählen Sie die Webbeispielanwendung zum Download aus. 
 
-    <img class="gifplayer" alt="Download sample application" src="download-starter-code-web.png"/>
+    <img class="gifplayer" alt="Beispielanwendung herunterladen" src="download-starter-code-web.png"/>
  
-### 3. Editing application logic
+### 3. Anwendungslogik bearbeiten
 {: #editing-application-logic }
-1. Open the project in your code editor of choice.
+1. Öffnen Sie das Projekt in einem Editor Ihrer Wahl. 
 
-2. Select the **client/js/index.js** file and paste the following code snippet, replacing the existing `WLAuthorizationManager.obtainAccessToken()` function:
+2. Wählen Sie die Datei **client/js/index.js** aus und fügen Sie das folgende Code-Snippet
+als Ersatz für die vorhandene Funktion `WLAuthorizationManager.obtainAccessToken()` ein: 
 
    ```javascript
    WLAuthorizationManager.obtainAccessToken()
@@ -66,8 +69,8 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
                 resourceRequest.setQueryParameter("name", "world");
                 resourceRequest.send().then(
                     function(response) {
-                        // Will display "Hello world" in an alert dialog.
-                        alert("Success: " + response.responseText);
+                        // Zeigt in einem Alertdialog "Hello world" an
+                    alert("Success: " + response.responseText);
                     },
                     function(response) {
                         alert("Failure: " + JSON.stringify(response));
@@ -82,72 +85,81 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
         );
    ```
     
-### 4. Deploy an adapter
+### 4. Adapter implementieren
 {: #deploy-an-adapter }
-Download [this prepared .adapter artifact](../javaAdapter.adapter) and deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action.
+Laden Sie [dieses vorbereitete Adapterartefakt](../javaAdapter.adapter) herunter und implementieren Sie
+es über die {{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. 
 
-Alternatively, click the **New** button next to **Adapters**.  
+Alternativ können Sie neben **Adapter** auf die Schaltfläche **Neu** klicken.   
         
-1. Select the **Actions → Download sample** option. Download the "Hello World" **Java** adapter sample.
+1. Wählen Sie **Aktionen → Beispiel herunterladen** aus. Laden Sie das **Java**-Adapterbeispiel "Hello World" herunter. 
 
-   > If Maven and {{ site.data.keys.mf_cli }} are not installed, follow the on-screen **Set up your development environment** instructions.
+   > Wenn Maven und die {{ site.data.keys.mf_cli }} nicht installiert sind,
+folgen Sie den auf dem Bildschirm angezeigten Anweisungen unter **Entwicklungsumgebung einrichten**.
 
-2. From a **Command-line** window, navigate to the adapter's Maven project root folder and run the command:
+2. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Adapter-Maven-Projekts und führen Sie den
+folgenden Befehl aus: 
 
    ```bash
    mfpdev adapter build
    ```
 
-3. When the build finishes, deploy it from the {{ site.data.keys.mf_console }} using the **Actions → Deploy adapter** action. The adapter can be found in the **[adapter]/target** folder.
+3. Wenn der Build fertiggestellt ist, implementieren Sie den Adapter über die
+{{ site.data.keys.mf_console }}, indem Sie **Aktionen → Adapter implementieren** auswählen. Sie finden den Adapter im Ordner
+**[adapter]/target**. 
     
-    <img class="gifplayer" alt="Deploy an adapter" src="create-an-adapter.png"/>   
+    <img class="gifplayer" alt="Adapter implementieren" src="create-an-adapter.png"/>   
 
 
-<img src="web-success.png" alt="sample application" style="float:right"/>
-### 5. Testing the application
+<img src="web-success.png" alt="Beispielanwendung" style="float:right"/>
+### 5. Awendung testen
 {: #testing-the-application }
-1. From a **Command-line** window, navigate to the **[project root] → node-server** folder.
-2. Run the command: `npm start` to install required Node.js configuration and start the Node.js server.
-3. Open the **[project root] → node-server → server.js** file and edit the **host** and **port** variables with the correct values for your {{ site.data.keys.mf_server }}.
-    * If using a local {{ site.data.keys.mf_server }}, the values are typically **http**, **localhost** and **9080**.
-    * If using a remote {{ site.data.keys.mf_server }} (on Bluemix), the values are typically **https**, **your-server-address** and **443**. 
+1. Navigieren Sie in einem **Befehlszeilenfenster** zum Ordner **[Projektstammverzeichnis] → node-server**. 
+2. Führen Sie den Befehl `npm start` aus, um die erforderliche Node.js-Konfiguration zu installieren und den Node.js-Server zu starten. 
+3. Öffnen Sie die Datei **[Projektstammverzeichnis] → node-server → server.js** und bearbeiten Sie die Variablen **host** und **port**. Geben Sie die entsprechenden Werte für Ihren {{ site.data.keys.mf_server }} an.
+    * Wenn Sie einen lokalen {{ site.data.keys.mf_server }} verwenden, lauten die Werte normalerweise **http**, **localhost** und **9080**.
+    * Wenn Sie einen fernen {{ site.data.keys.mf_server }} (für Bluemix) verwenden, lauten die Werte in der Regel **https**, **your-server-address** und **443**. 
 
-   For example:  
+   Beispiel:   
     
    ```javascript
-   var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // The Mobile Foundation server address
-   var port = 9081; // The local port number to use
-   var mfpURL = host + ':443'; // The Mobile Foundation server port number
+   var host = 'https://mobilefoundation-xxxx.mybluemix.net'; // Adresse von Mobile Foundation Server
+   var port = 9081; // zu verwendende lokale Portnummer
+   var mfpURL = host + ':443'; // Portnummer von Mobile Foundation Server
    ```
    
-4. In your browser, visit the URL: [http://localhost:9081/home](http://localhost:9081/home).
+4. Rufen Sie in Ihrem Browser die URL [http://localhost:9081/home](http://localhost:9081/home) auf.
 
 <br>
-#### Secure Origins Policy
+#### Secure-Origins-Richtlinie
 {: #secure-origins-policy }
-When using Chrome during development, the browser may not allow an application to load if using both HTTP and a host that **is not** "localhost". This is due to the Secure Origins Policy implemented and used by default in this browser.
+Wenn Sie während der Entwicklung Chrome und sowohl HTTP als auch einen Host verwenden, der **nicht** "localhost" ist,
+erlaubt der Browser möglicherweise nicht das Laden einer Anwendung. Der Grund dafür ist die in diesem Browser implementierte und standardmäßig verwendete Secure-Origins-Richtlinie. 
 
-To overcome this, you can start the Chrome browser with the following flag:
+Sie können dies ändern, indem Sie den Chrome-Browser mit folgender Option starten: 
 
 ```bash
 --unsafely-treat-insecure-origin-as-secure="http://replace-with-ip-address-or-host:port-number" --user-data-dir=/test-to-new-user-profile/myprofile
 ```
 
-- Replace "test-to-new-user-profile/myprofile" with the location of a folder that will act as a new Chrome user profile for the flag to work.
+- Die Option funktioniert, wenn Sie "test-to-new-user-profile/myprofile" durch die Position eines Ordners ersetzen, der als neues Chrome-Benutzerprofil verwendet werden kann. 
 
 <br clear="all"/>
-### Results
+### Ergebnisse
 {: #results }
-* Clicking the **Ping {{ site.data.keys.mf_server }}** button will display **Connected to {{ site.data.keys.mf_server }}**.
-* If the application was able to connect to the {{ site.data.keys.mf_server }}, a resource request call using the deployed Java adapter will take place.
+* Wenn Sie auf die Schaltfläche
+**Ping {{ site.data.keys.mf_server }}** klicken, wird
+**Connected to {{ site.data.keys.mf_server }}** angezeigt.
+* Wenn die Anwendung eine Verbindung zu {{ site.data.keys.mf_server }} herstellen konnte, findet ein Ressourcenanforderungsaufruf unter Verwendung des implementierten Java-Adapters statt. 
 
-The adapter response is then displayed in an alert.
+Die Antwort des Adapters wird in Form eines Alerts angezeigt. 
 
-## Next steps
+## Nächste Schritte
 {: #next-steps }
-Learn more on using adapters in applications, and how to integrate additional services such as Push Notifications, using the {{ site.data.keys.product_adj }} security framework and more:
+Informieren Sie sich über die Verwendung von Adaptern in Anwendungen und über die Integration von zusätzlichen Services wie Push-Benachrichtigungen
+mithilfe des {{ site.data.keys.product_adj }}-Sicherheitsframeworks. Weitere Möglichkeiten sind: 
 
-- Review the [Application development](../../application-development/) tutorials
-- Review the [Adapters development](../../adapters/) tutorials
-- Review the [Authentication and security tutorials](../../authentication-and-security/)
-- Review [All Tutorials](../../all-tutorials)
+- Gehen Sie die Lernprogramme zur [Anwendungsentwicklung](../../application-development/) durch. 
+- Gehen Sie die Lernprogramme zur [Adapterentwicklung](../../adapters/) durch. 
+- Gehen Sie die Lernprogramme zu [Authentifizierung und Sicherheit](../../authentication-and-security/) durch. 
+- Sehen Sie sich [alle Lernprogramme](../../all-tutorials) an. 
