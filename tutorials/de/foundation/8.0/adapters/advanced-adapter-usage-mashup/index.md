@@ -1,62 +1,63 @@
 ---
 layout: tutorial
-title: Advanced Adapter Usage and Mashup
-breadcrumb_title: Adapter Mashup
+title: Erweiterte Verwendung von Adaptern und Adapterkombinationen
+breadcrumb_title: Adapterkombinationen
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Cordova project
+  - name: Cordova-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Now that basic usage of different types of adapters has been covered, it is important to remember that adapters can be combined to make a procedure that uses different adapters to generate one processed result. You can combine several sources (different HTTP servers, SQL, etc).
+Nachdem die grundlegende Verwendung verschiedener Adaptertypen besprochen wurde, soll nun erwähnt werden, dass Adapter zu einer Prozedur kombiniert werden können, die verschiedene Adapter verwendet, um ein verarbeitetes Ergebnis zu generieren. Sie können mehrere Quellen (verschiedene HTTP-Server, SQL usw.) miteinander kombinieren. 
 
-In theory, from the client side, you could make several requests successively, one depending on the other.
-However, writing this logic on the server side could be faster and cleaner.
+Theoretisch können Sie von der Clientseite aus nacheinander mehrere Anforderungen absetzen, die voneinander abhängen.
+Es geht jedoch schneller und ist ordentlicher, wenn diese Logik auf der Serverseite geschrieben wird. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to}
-* [JavaScript adapter API](#javascript-adapter-api)
-* [Java adapter API](#java-adapter-api)
-* [Data mashup example](#data-mashup-example)
-* [Sample application](#sample-application)
+* [JavaScript-Adapter-API](#javascript-adapter-api)
+* [Java-Adapter-API](#java-adapter-api)
+* [Datenkombinationsbeispiel](#data-mashup-example)
+* [Beispielanwendung](#sample-application)
 
-## JavaScript adapter API
+## JavaScript-Adapter-API
 {: #javascript-adapter-api }
 
-### Calling a JavaScript adapter procedure from a JavaScript adapter
+### JavaScript-Adapterprozedur von einem JavaScript-Adapter aus aufrufen
 {: #calling-a-javascript-adapter-procedure-from-a-javascript-adapter }
 
-When calling a JavaScript adapter procedure from another JavaScript adapter use the `MFP.Server.invokeProcedure(invocationData)` API. This API enables to invoke a procedure on any of your JavaScript adapters. `MFP.Server.invokeProcedure(invocationData)` returns the result object retrieved from the called procedure.
+Wenn Sie eine JavaScript-Adapterprozedur von einem anderen JavaScript-Adapter aus aufrufen möchten,
+verwenden Sie die API `MFP.Server.invokeProcedure(invocationData)`. Diese API ermöglicht das Aufrufen einer Prozedur in jedem Ihrer JavaScript-Adapter. `MFP.Server.invokeProcedure(invocationData)` gibt das Ergebnisobjekt zurück, das von der aufgerufenen Prozedur abgerufen wurde. 
 
-The `invocationData` function signature is:  
-`MFP.Server.invokeProcedure({adapter: [Adapter Name], procedure: [Procedure Name], parameters: [Parameters seperated by a comma]})`
+Die Funktionssignatur für `invocationData` sieht wie folgt aus:   
+`MFP.Server.invokeProcedure({adapter: [Adaptername], procedure: [Prozedurname], parameters: [durch Komma getrennte Parameter]})`
 
-For example:
+Beispiel: 
 
 ```javascript
 MFP.Server.invokeProcedure({ adapter : "AcmeBank", procedure : " getTransactions", parameters : [accountId, fromDate, toDate]});
 ```
 
-> Calling a Java adapter from a JavaScript adapter is not supported
+> Das Aufrufen eines Java-Adapters von einem JavaScript-Adapter aus wird nicht unterstützt. 
 
-## Java adapter API
+## Java-Adapter-API
 {: #java-adapter-api }
 
-Before you can call another adapter - the AdaptersAPI must be assigned to a variable:
+Bevor Sie einen anderen Adapter aufrufen können, müssen Sie die Adapter-API (AdaptersAPI) einer Variablen zuordnen: 
 
 ```java
 @Context
 AdaptersAPI adaptersAPI;
 ```
 
-### Calling a Java adapter from a Java adapter
+### Java-Adapter von einem Java-Adapter aus aufrufen
 {: #calling-a-java-adapter-from-a-java-adapter }
 
-When calling an adapter procedure from a Java adapter use the `executeAdapterRequest` API.
-This call returns an `HttpResponse` object.
+Wenn Sie eine Adapterprozedur von einem Java-Adapter aus aufrufen möchten, verwenden Sie die API `executeAdapterRequest`.
+Dieser Aufruf gibt ein `HttpResponse`-Objekt zurück. 
 
 ```java
 HttpUriRequest req = new HttpGet(JavaAdapterProcedureURL);
@@ -64,10 +65,12 @@ HttpResponse response = adaptersAPI.executeAdapterRequest(req);
 JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 ```
 
-### Calling a JavaScript adapter procedure from a Java adapter
+### JavaScript-Adapterprozedur von einem Java-Adapter aus aufrufen
 {: calling-a-javascript-adapter-procedure-from-a-java-adapter }
  
-When calling a JavaScript adapter procedure from a Java adapter use both the `executeAdapterRequest` API and the `createJavascriptAdapterRequest` API that creates an `HttpUriRequest` to pass as a parameter to the `executeAdapterRequest` call.
+Wenn Sie eine JavaScript-Adapterprozedur von einem Java-Adapter aus aufrufen möchten, verwenden Sie die
+API `executeAdapterRequest` und die API `createJavascriptAdapterRequest`, die
+eine Anforderung `HttpUriRequest` erstellt, die als Parameter an den Aufruf von `executeAdapterRequest` übergeben wird. 
 
 ```java
 HttpUriRequest req = adaptersAPI.createJavascriptAdapterRequest(AdapterName, ProcedureName, [parameters]);
@@ -75,42 +78,46 @@ org.apache.http.HttpResponse response = adaptersAPI.executeAdapterRequest(req);
 JSONObject jsonObj = adaptersAPI.getResponseAsJSON(response);
 ```
 
-## Data mashup example
+## Datenkombinationsbeispiel
 {: #data-mashup-example }
 
-The following example shows how to mash up data from 2 data sources, a *database table* and *Fixer.io (exchange rate and currency conversion service)*, And to return the data stream to the application as a single object.
+Das folgende Beispiel zeigt die Kombination von Daten aus zwei Datenquellen,
+nämlich aus einer *Datenbanktabelle* und aus (dem Service für Wechselkurse und Währungsumrechnung) *Fixer.io*, und die
+Rückgabe des Datenstroms an die Anwendung in Form eines einzelnen Objekts. 
 
-In this example we will use 2 adapters:
-
-* SQL Adapter:
-  * Extract a list of currencies from a currencies database table.
-  * The result contains the list of currencies. Each currency will have an id, symbol and name. For example: {3, EUR, Euro}
-  * This adapter will also have a procedure that calls the HTTP adapter passing 2 parameters - a base currency and a target currency to retrieve the updated exchange-rate.
-* HTTP Adapter:
-  * Connect to the Fixer.io service.
-  * Extract an updated exchange-rate for the requested currencies that are retrieved as parameters via the SQL adapter.
-
-Afterward, the mashed-up data is returned to the application for display.
-
-![Adapter Mashup Diagram](AdaptersMashupDiagram.jpg)
-
-The provided sample in this tutorial demonstrates the implementation of this scenario using 3 different mashup types.  
-In each one of them the names of the adapters are slightly different.  
-Here is a list of the mashup types and the corresponding adapter names:
-
-| Scenario                                         |      SQL Adapter name        |  HTTP Adapter name    |  
-|--------------------------------------------------|------------------------------|-----------------------|
-| **JavaScript** adapter → **JavaScript** adapter  | SQLAdapterJS                 | HTTPAdapterJS         |  
-| **Java** adapter → **JavaScript** adapter        | SQLAdapterJava               | HTTPAdapterJS         |  
-| **Java** adapter → **Java** adapter              | SQLAdapterJava               | HTTPAdapterJava       |
+In diesem Beispiel werden zwei Adapter verwendet:
 
 
-### Mashup Sample Flow
+* SQL-Adapter:
+  * Der Adapter extrahiert eine Liste mit Währungen aus einer Datenbanktabelle. 
+  * Das Ergebnis enthält die Liste der Währungen. Jede Währung hat eine ID, ein Symbol und einen Namen, z. B. {3, EUR, Euro}. 
+  * Dieser Adapter enthält auch eine Prozedur, die den HTTP-Adapter aufruft und zwei Parameter übergibt, nämlich eine Basiswährung und eine Zielwährung,
+um den aktuellen Wechselkurs abzurufen. 
+* HTTP-Adapter:
+  * Der Adapter stellt eine Verbindung zum Service Fixer.io her. 
+  * Für die angegebenen Währungen, die mithilfe des SQL-Adapters als Parameter abgerufen wurden, wird ein aktualisierter Wechselkurs extrahiert. 
+
+Im Anschluss werden die kombinierten Daten zur Anzeige an die Anwendung zurückgegeben. 
+
+![Diagramm für die Kombination von Aaptern](AdaptersMashupDiagram.jpg)
+
+Das Beispiel in diesem Lernprogramm zeigt die Implementierung dieses Szenarios anhand von drei verschiedenen Kombinationen.   
+In jeder dieser Kombinationen unterscheiden sich die Adapternamen geringfügig.   
+Es folgt eine Liste der Kombinationen mit den entsprechenden Adapternamen: 
+
+| Szenario                                         |    Name des SQL-Adapters     | Name des HTTP-Adapters |
+|--------------------------------------------------|------------------------------|------------------------|
+| **JavaScript**-Adapter → **JavaScript**-Adapter  | SQLAdapterJS                 | HTTPAdapterJS         |  
+| **Java**-Adapter → **JavaScript**-Adapter        | SQLAdapterJava               | HTTPAdapterJS         |  
+| **Java**-Adapter → **Java**-Adapter              | SQLAdapterJava               | HTTPAdapterJava       |
+
+
+### Ablauf des Kombinationsbeispiels
 {: #mashup sample flow }
 
-**1. Create a procedure / adapter call that create a request to a back-end endpoint for the requested currencies and retrieves the corresponding data:**  
+**1. Erstellen Sie eine Prozedur bzw. einen Adapteraufruf, die bzw. der bei einem Back-End-Endpunkt die gewünschten Währungen anfordert und die entsprechenden Daten abruft:**  
 
-(HTTPAdapterJS adapter) XML:
+(Adapter HTTPAdapterJS) XML:
 
 ```xml
 <connectivity>
@@ -123,7 +130,7 @@ Here is a list of the mashup types and the corresponding adapter names:
 </connectivity>
 ```
 
-(HTTPAdapterJS adapter) JavaScript:
+(Adapter HTTPAdapterJS) JavaScript:
 
 ```javascript
 function getExchangeRate(fromCurrencySymbol, toCurrencySymbol) {
@@ -141,7 +148,7 @@ function getPath(from, to) {
 }
 ```
 
-(HTTPAdapterJava adapter)
+(Adapter HTTPAdapterJava)
 
 ```java
 @GET
@@ -166,9 +173,9 @@ private Response execute(HttpUriRequest req) throws IOException, IllegalStateExc
 }
 ```
 
-**2. Create a procedure that fetches the currencies records from the database and returns a resultSet / JSONArray to the application:**
+**2. Erstellen Sie eine Prozedur, die die Währungsdatensätze aus der Datenbank abruft und einen Ergebnissatz oder ein JSON-Array (resultSet/JSONArray) an die Anwendung zurückgibt:**
 
-(SQLAdapterJS adapter)
+(Adapter SQLAdapterJS)
 
 ```javascript
 var getCurrenciesListStatement = "SELECT id, symbol, name FROM currencies;";
@@ -182,7 +189,7 @@ function getCurrenciesList() {
 }
 ```
 
-(SQLAdapterJava adapter)
+(Adapter SQLAdapterJava)
 
 ```java
 @GET
@@ -208,9 +215,9 @@ public JSONArray getCurrenciesList() throws SQLException, IOException {
 }
 ```
 
-**3. Create a procedure that calls the HTTPAdapter procedure (which we created in step 1) with the base-currency and the target-currency:**
+**3. Erstellen Sie eine Prozedur, die die (in Schritt 1 erstellte) HTTP-Adapterprozedur mit der Basiswährung und der Zielwährung aufruft:**
 
-(SQLAdapterJS adapter)
+(Adapter SQLAdapterJS)
 
 ```javascript
 function getExchangeRate(fromId, toId) {
@@ -237,7 +244,7 @@ function getExchangeRate(fromId, toId) {
 }
 ```
 
-(SQLAdapterJava adapter - mashup with another Java adapter)
+(Adapter SQLAdapterJava in Kombination mit einem anderen Java-Adapter)
 
 ```java
 @GET
@@ -269,7 +276,7 @@ public JSONObject getExchangeRate_JavaToJava(@QueryParam("fromCurrencyId") Integ
 }
 ```
 
-(SQLAdapterJava adapter - mashup with a JavaScript adapter)
+(Adapter SQLAdapterJava in Kombination mit einem JavaScript-Adapter)
 
 ```java
 @GET
@@ -300,32 +307,33 @@ public JSONObject getExchangeRate_JavaToJS(@QueryParam("fromCurrencyId") Integer
 }
 ```
 
-<img alt="sample application" src="AdaptersMashupSample.png" style="float:right"/>
+<img alt="Beispielanwendung" src="AdaptersMashupSample.png" style="float:right"/>
 
-## Sample application
+## Beispielanwendung
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80) the Cordova project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80), um das Cordova-Projekt herunterzuladen. 
 
-**Note:** the sample application's client-side is for Cordova applications, however the server-side code in the adapters applies to all platforms.
+**Hinweis:** Die Clientseite der Beispielanwendung ist für Cordova-Anwendungen bestimmt. Der serverseitige Code der Adapter ist dagegen auf alle Plattformen anwendbar. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
 
-#### Adapter setup
+#### Adapterkonfiguration
 {: #adapter-setup }
 
-An example of currencies list in SQL is available in the provided adapter maven project (located inside the Cordova project), under `Utils/mobilefirstTraining.sql`.
+Im bereitgestellten Maven-Adapterprojekt gibt es (innerhalb des Cordova-Projekts) unter `Utils/mobilefirstTraining.sql` eine Beispielliste mit Währungen in SQL. 
 
-1. Run the .sql script in your SQL database.
-2. Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the adapters](../../adapters/creating-adapters/).
-3. Open the {{ site.data.keys.mf_console }}
-    - Click on the **SQLAdapterJS** adapter and update the database connectivity properties.
-    - Click on the **SQLAdapterJava** adapter and update the database connectivity properties.
+1. Führen Sie in Ihrer SQL-Datenbank das SQL-Script aus. 
+2. Verwenden Sie Maven, die {{ site.data.keys.mf_cli }} oder eine IDE Ihrer Wahl, um
+die [Adapter zu erstellen und zu implementieren](../../adapters/creating-adapters/). 
+3. Öffnen Sie die {{ site.data.keys.mf_console }}.
+    - Klicken Sie auf den Adapter **SQLAdapterJS** und aktualisieren Sie die Eigenschaften für Datenbankverbindungen. 
+    - Klicken Sie auf den Adapter **SQLAdapterJava** und aktualisieren Sie die Eigenschaften für Datenbankverbindungen. 
 
-#### Application setup
+#### Anwendungskonfiguration
 {: #application-setup }
 
-1. From the command line, navigate to the **CordovaApp** project's root folder.
-2. Add a platform by running the `cordova platform add` command.
-3. Register the application by running the command: `mfpdev app register`.
-4. Run the Cordova application by running the `cordova run` command.
+1. Navigieren Sie in der Befehlszeile zum Stammverzeichnis des Projekts **CordovaApp**. 
+2. Fügen Sie eine Plattform hinzu. Führen Sie dafür den Befehl `cordova platform add` aus. 
+3. Registrieren Sie die Anwendung mit dem Befehl `mfpdev app register`.
+4. Führen Sie die Cordova-Anwendung mit dem Befehl `cordova run` aus. 

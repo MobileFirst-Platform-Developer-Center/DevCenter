@@ -1,23 +1,22 @@
 ---
 layout: tutorial
-title: Using SSL in JavaScript HTTP Adapter
-breadcrumb_title: Using SSL
+title: SSL in einem JavaScript-HTTP-Adapter verwenden
+breadcrumb_title: SSL verwenden
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-You can use SSL in an HTTP adapter with simple and mutual authentication to connect to back-end services.  
-SSL represents transport level security, which is independent of basic authentication. It is possible to do basic authentication either over HTTP or HTTPS.
+In einem HTTP-Adapter können Sie für die Verbindung zu Back-End-Services SSL mit einfacher und gegenseitiger Authentifizierung verwenden.   
+SSL steht für die Sicherheit auf Transportebene, die nicht von der Basisauthentifizierung abhängig ist. Die Basisauthentifizierung kann über HTTP oder HTTPS erfolgen.
+1. Setzen Sie das URL-Protokoll des HTTP-Adapters in der Datei adapter.xml auf <b>https</b>.
+2. Speichern Sie SSL-Zertifikate im Keystore von {{ site.data.keys.mf_server }} (siehe [Keystore von {{ site.data.keys.mf_server }} konfigurieren](../../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)). 
 
-1. Set the URL protocol of the HTTP adapter to <b>https</b> in the adapter.xml file.
-2. Store SSL certificates in the {{ site.data.keys.mf_server }} keystore. [See Configuring the {{ site.data.keys.mf_server }} keystore](../../../../authentication-and-security/configuring-the-mobilefirst-server-keystore/).
-
-### SSL with mutual authentication
+### SSL mit gegenseitiger Authentifizierung
 {:# ssl-with-mutual-authentication }
 
-If you use SSL with mutual authentication, you must also perform the following steps:
+Wenn Sie SSL mit gegenseitiger Authentifizierung verwenden, müssen Sie zusätzlich die folgenden Schritte ausführen:
 
-1. Generate your own private key for the HTTP adapter or use one provided by a trusted authority.
-2. If you generated your own private key, export the public certificate of the generated private key and import it into the back-end truststore.
-3. Define an alias and password for the private key in the `connectionPolicy` element of the **adapter.xml** file. 
+1. Generieren Sie Ihren eigenen privaten Schlüssel für den HTTP-Adapter oder verwenden Sie einen privaten Schlüssel von einer vertrauenswürdigen Stelle.
+2. Wenn Sie einen eigenen privaten Schlüssel generiert haben, exportieren Sie das öffentliche Zertifikat dieses generierten Schlüssels und importieren Sie es in den Back-End-Truststore.
+3. Definieren Sie im Element `connectionPolicy` der Datei **adapter.xml** einen Alias und ein Kennwort für den privaten Schlüssel.  

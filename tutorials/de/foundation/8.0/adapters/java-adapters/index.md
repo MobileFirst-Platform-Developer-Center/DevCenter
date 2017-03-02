@@ -1,36 +1,39 @@
 ---
 layout: tutorial
-title: Java Adapters
+title: Java-Adapter
 show_children: true
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-Java adapters are based on the JAX-RS 2.0 specification. In other words, a Java adapter is a JAX-RS 2.0 service that can easily be deployed to a {{ site.data.keys.mf_server }} instance and has access to {{ site.data.keys.mf_server }} APIs and other 3rd party APIs.
+Java-Adapter basieren auf der Spezifikation JAX-RS 2.0. Ein Java-Adapter ist also ein JAX-RS-2.0-Service, der ohne großen Aufwand
+in einer Instanz von {{ site.data.keys.mf_server }} implementiert werden kann und auf MobileFirst-Server-APIs sowie APIs anderer Anbieter
+zugreifen kann. 
 
-**Prerequisite:** Make sure to read the [Creating Java and JavaScript Adapters](../creating-adapters) tutorial first.
+**Voraussetzung:** Arbeiten Sie zuerst das Lernprogramm [Java- und JavaScript-Adapter erstellen](../creating-adapters) durch. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
-* [File structure](#file-structure)
-* [JAX-RS 2.0 application class](#jax-rs-20-application-class)
-* [Implementing a JAX-RS 2.0 resource](#implementing-a-jax-rs-20-resource)
-* [HTTP Session](#http-session)
-* [Server-side APIs](#server-side-apis)
+* [Dateistruktur](#file-structure)
+* [Anwendungsklasse von JAX-RS 2.0](#jax-rs-20-application-class)
+* [JAX-RS-2.0-Ressource](#implementing-a-jax-rs-20-resource)
+* [HTTP-Sitzung](#http-session)
+* [Serverseitige APIs](#server-side-apis)
 
-## File structure
+## Dateistruktur
 {: #file-structure }
 
 ![mvn-adapter](java-adapter-fs.png)
 
-### The adapter-resources folder  
+### Ordner 'adapter-resources'  
 {: #the-adapter-resources-folder }
 
-The **adapter-resources** folder contains an XML configuration file (**adapter.xml**). In this configuration file you configure the class name of the JAX-RS 2.0 application for this adapter. For example: `com.sample.JavaAdapterApplication`.
+Der Ordner **adapter-resources** enthält eine XML-Konfigurationsdatei (**adapter.xml**). In dieser Konfigurationsdatei können Sie den Klassennamen
+der JAX-RS-2.0-Anwendung für diesen Adapter definieren, z. B. `com.sample.JavaAdapterApplication`.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -44,13 +47,13 @@ The **adapter-resources** folder contains an XML configuration file (**adapter.x
 
 	<JAXRSApplicationClass>com.sample.JavaAdapterApplication</JAXRSApplicationClass>
 	
-	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
-	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
-	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
-	
 	<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
     	<property name="maxAttempts" defaultValue="3"/>
 	</securityCheckDefinition>
+	
+	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
+	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
+	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
 </mfp:adapter>
 ```
 
@@ -58,106 +61,118 @@ The **adapter-resources** folder contains an XML configuration file (**adapter.x
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Für Attribute und untergeordnete Elemente in adapter.xml hier klicken</b></a>
             </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>name</b>: <i>Mandatory.</i> The name of the adapter. This name must be unique within the {{ site.data.keys.mf_server }}. It can contain alphanumeric characters and underscores, and must start with a letter. After you define and deploy an adapter, you cannot modify its name.</li>
-					<li><b>displayName</b>: <i>Optional.</i> The name of the adapter that is displayed in the {{ site.data.keys.mf_console }}. If this element is not specified, the value of the name attribute is used instead.</li>
-					<li><b>description</b>: <i>Optional.</i> Additional information about the adapter. Displayed in the {{ site.data.keys.mf_console }}.</li>
-					<li><b>JAXRSApplicationClass</b>: <i>Mandatory for exposing an /adapter endpoint.</i> Defines the class name of the JAX-RS application of this adapter. In the example, it is <b>com.sample.JavaAdapterApplication</b>.</li>
-					<li><b>securityCheckDefinition</b>: <i>Optional.</i> Defines a security-check object. Learn more about security checks in the <a href="../../authentication-and-security/creating-a-security-check">Creating a Security Checks</a> tutorial.</li>
-					<li><b>property</b>: <i>Optional.</i> Declares a user-defined property. Learn more in the Custom properties topic below.</li>
+                    <li><b>name</b>: Dieses <i>obligatorische</i> Attribut gibt den Namen des Adapters an. Dieser Name muss innerhalb von {{ site.data.keys.mf_server }} eindeutig sein. Er kann aus alphanumerischen Zeichen und Unterstreichungszeichen bestehen und muss mit einem Buchstaben beginnen. Den Namen eines definierten und implementierten Adapters können Sie nicht mehr ändern.</li>
+					<li><b>displayName</b>: Dieses <i>optionale</i> Attribut gibt den Namen des Adapters an, der in der {{ site.data.keys.mf_console }} angezeigt wird. Wenn dieses Element nicht angegeben ist, wird stattdessen der Wert des Attributs name verwendet. </li>
+					<li><b>description</b>: Dieses <i>optionale</i> Attribut gibt zusätzliche Informationen zum Adapter an. Die Informationen werden in der {{ site.data.keys.mf_console }} angezeigt.</li>
+					<li><b>JAXRSApplicationClass</b>: Dieses Attribut, das <i>obligatorisch ist, um einen Endpunkt /adapter zugänglich zu machen</i>, definiert den Klassennamen der JAX-RS-Anwendung für diesen Adapter. Im Beispiel lautet der Name <b>com.sample.JavaAdapterApplication</b>.
+</li>
+					<li><b>securityCheckDefinition</b>: Dieses <i>optionale</i> Attribut definiert ein Sicherheitsüberprüfungsobjekt. Weitere Informationen zu Sicherheitsüberprüfungen enthält das Lernprogramm <a href="../../authentication-and-security/creating-a-security-check">Sicherheitsüberprüfungen erstellen</a>. </li>
+					<li><b>property</b>: Dieses <i>optionale</i> Attribut deklariert eine benutzerdefinierte Eigenschaft. Weitere Informationen hierzu enthält der folgende Abschnitt. </li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Close section</b></a>.
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Abschnitt schließen</b></a>.
             </div>
         </div>
     </div>
 </div>
 
-#### Custom properties
+#### Angepasste Eigenschaften
 {: #custom-properties }
 
-The **adapter.xml** file can also contain user-defined custom properties. The values that developers assign to them during the creation of the adapter can be overridden in the **{{ site.data.keys.mf_console }} → [your adapter] → Configurations tab**, without redeploying the adapter. User-defined properties can be read using the [ConfigurationAPI interface](#configuration-api) and then further customized at run time.
+Die Datei **adapter.xml** kann auch benutzerdefinierte Eigenschaften enthalten. Die Werte, die Entwickler diesen Eigenschaften während der Adaptererstellung zuweisen, können in der {{ site.data.keys.mf_console }}
+auf der Registerkarte **Konfigurationen** für Ihren Adapter überschrieben werden, ohne dass der Adapter neu implementiert werden muss. Benutzredefinierte Eigenschaften können mit
+der [Schnittstelle ConfigurationAPI](#configuration-api) gelesen
+und später zur Laufzeit weiter angepasst werden. 
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must be located **below** the `JAXRSApplicationClass` element.  
-In the example above we defined the connection settings and gave them default values, so they could be used later in the AdapterApplication class.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Hinweis:** Die Elemente für die Konfigurationseigenschaften müssen
+sich **unter** dem Element `JAXRSApplicationClass` befinden.   
+Im obigen Beispiel wurden die Verbindungseinstellungen definiert und Standardwerte für die Einstellungen festgelegt, sodass sie später in der Klasse AdapterApplication verwendet werden können.
 
-The `<property>` element takes the following attributes:
+Das Element `<property>` wird mit folgenden Attributen verwendet:
 
-- **name**: The name of the property, as defined in the configuration class.
-- **defaultValue**: Overrides the default value defined in the configuration class.
-- **displayName**: *optional*, a friendly name to be displayed in the console.
-- **description**: *optional*, a description to be displayed in the console.
-- **type**: *optional*, ensures that the property is of a specific type such as `integer`, `string`, `boolean` or a list of valid values (for example `type="['1','2','3']"`).
 
-![Console properties](console-properties.png)
+- **name**: Name der Eigenschaft, wie er in der Konfigurationsklasse definiert ist
+- **defaultValue**: Setzt den in der Konfigurationsklasse definierten Wert außer Kraft
+- **displayName**: Anzeigename, der in der Konsole erscheint (*optional*) 
+- **description**: Beschreibung, die in der Konsole angezeigt wird (*optional*)
+- **type**: Stellt sicher, dass die Eigenschaft einen bestimmten Typ hat, z. B. `integer`, `string` oder `boolean` bzw. eine Liste mit gültigen Werten wie `type="['1','2','3']"` (*optional*) 
 
-#### Pull and Push Configurations
+![Eigenschaften in der Konsole](console-properties.png)
+
+#### Pull- und Push-Konfiguration
 {: #pull-and-push-configurations }
 
-Customized adapter properties can be shared using the adapter configuration file found in the **Configuration files tab**.  
-To do so, use the `pull` and `push` commands described below using either Maven or the {{ site.data.keys.mf_cli }}. For the properties to be shared, you need to *change the default values given to the properties*.
+Angepasste Adaptereigenschaften können über die auf der Registerkarte
+**Konfigurationsdateien** angezeigte Adapterkonfiguraionsdatei gemeinsam genutzt werden.
+  
+Verwenden Sie dazu die nachfolgend beschriebenen Befehle `pull` und `push` in Maven
+oder in der {{ site.data.keys.mf_cli }}. Damit die Eigenschaften gemeinsam genutzt werden können, müssen Sie die *Standardwerte der Eigenschaften ändern*.
 
-Run the commands from the root folder of the adapter Maven project:
+Führen Sie die Befehle im Stammordner des Maven-Adapterprojekts aus. 
 
 **Maven**  
 
-* To **pull** the configurations file  
+* Konfigurationsdatei mit **pull** übertragen  
   ```bash
   mvn adapter:configpull -DmfpfConfigFile=config.json
   ```
   
-* To **push** the configurations file
+* Konfigurationsdatei mit **push** übertragen
   ```bash
   mvn adapter:configpush -DmfpfConfigFile=config.json
   ```
 
 **{{ site.data.keys.mf_cli }}**  
 
-* To **pull** the configurations file
+* Konfigurationsdatei mit **pull** übertragen
   ```bash
   mfpdev adapter pull
   ```
   
-* To **push** the configurations file
+* Konfigurationsdatei mit **push** übertragen
   ```bash
   mfpdev adapter push
   ```
 
-#### Pushing configurations to multiple servers
+#### Konfigurationen per Push-Operation auf mehrere Server übertragen
 {: #pushing-configurations-to-multiple-servers }
 
-The **pull** and **push** commands can help to create various DevOps flows, where different values are required in adapters depending on the environment you're at (DEV, QA, UAT, PRODUCTION).
+Die Befehle **pull** und **push** können helfen, diverse DevOps-Abläufe zu erstellen,
+die je nach Umgebung (DEV, QA, UAT, PRODUCTION) unterschiedliche Werte für Adapter erfordern.
 
 **Maven**  
-Note above how by default you specify a **config.json** file. Create files with different names to address different targets.
+Oben ist beschrieben, wie standardmäßig eine Datei **config.json** angegeben wird. Erstellen Sie Dateien mit unterschiedlichen Namen für verschiedene Ziele. 
 
 **{{ site.data.keys.mf_cli }}**  
-Use the **--configFile** or **-c** flag to specify a different configuration file than the default one:
+Verwenden Sie die Option **--configFile** oder **-c**, um eine von der Standarddatei abweichende Konfigurationsdatei anzugeben. 
 
 ```bash
 mfpdev adapter pull -c [adapterProject]/alternate_config.json
 ```
 
-> Learn more in by using `mfpdev help adapter pull/push`.
+> Weitere Informationen erhalten Sie, wenn Sie `mfpdev help adapter pull/push` eingeben.
 
-### The java folder
+### Java-Ordner
 {: #the-java-folder }
 
-the Java sources of the JAX-RS 2.0 service are placed in this folder. JAX-RS 2.0 services are composed of an application class (which extends `com.ibm.mfp.adapter.api.MFPJAXRSApplication`) and the resources classes.
+Die Java-Quellen des Service JAX-RS 2.0 werden in diesen Ordner gestellt. Der Service JAX-RS 2.0 umfasst eine Anwendungsklasse
+(die `com.ibm.mfp.adapter.api.MFPJAXRSApplication` erweitert) und die Ressourcenklassen. 
 
-The JAX-RS 2.0 application and resources classes define the Java methods and their mapping to URLs.  
-`com.sample.JavaAdapterApplication` is the JAX-RS 2.0 application class and `com.sample.JavaAdapterResource` is a JAX-RS 2.0 resource included in the application.
+Die Anwendungs- und Ressourcenklassen von JAX-RS 2.0 definieren die Java-Methoden und ihre Zuordnung zu URLs.  
+Die Anwendungsklasse von JAX-RS 2.0 ist `com.sample.JavaAdapterApplication` und
+`com.sample.JavaAdapterResource` ist eine darin enthaltene JAX-RS-2.0-Ressource. 
 
-## JAX-RS 2.0 application class
+## Anwendungsklasse von JAX-RS 2.0
 {: #jax-rs-20-application-class }
 
-The JAX-RS 2.0 application class tells the JAX-RS 2.0 framework which resources are included in the application.
+Die Anwendungsklasse von JAX-RS 2.0 teilt dem JAX-RS-2.0-Framework mit, welche Ressourcen in der Anwendung enthalten sind. 
 
 ```java
 package com.sample.adapter;
@@ -176,18 +191,25 @@ public class JavaAdapterApplication extends MFPJAXRSApplication{
 
     @Override
     protected String getPackageToScan() {
-        //The package of this class will be scanned (recursively) to find JAX-RS 2.0 resources.
+        // Das Paket mit dieser Klasse wird (rekursiv) gescannt, um JAX-RS-2.0-Ressourcen zu finden.
         return getClass().getPackage().getName();
     }
 }
 ```
 
-The `MFPJAXRSApplication` class scans the package for JAX-RS 2.0 resources and automatically creates a list. Additionally, its `init` method is called by {{ site.data.keys.mf_server }} as soon as the adapter is deployed (before it starts serving) and when the {{ site.data.keys.product }} runtime starts up.
+Die Klasse `MFPJAXRSApplication` scannt das Paket auf
+JAX-RS-2.0-Ressourcen und erstellt automatisch eine Liste. Außerdem
+ruft {{ site.data.keys.mf_server }} die Methode `init`
+der Klasse auf, sobald der Adapter implementiert ist, wenn die
+MobileFirst-Foundation-Laufzeit gestartet wird und vor der Bereitstellung von Services. 
 
-## Implementing a JAX-RS 2.0 resource
+## JAX-RS-2.0-Ressource
 {: #implementing-a-jax-rs-20-resource }
 
-JAX-RS 2.0 resource is a POJO (Plain Old Java Object) which is mapped to a root URL and has Java methods for serving requests to this root URL and its child URLs. Any resource can have a separate set of URLs.
+Die JAX-RS-2.0-Ressource ist ein POJO (Plain Old Java Object), das einer Stamm-URL zugeordnet ist und
+über Java-Methoden verfügt, um an diese Stamm-URL und die zugehörigen untergeordneten URLs gerichtete Anforderungen
+zu bedienen. Jede Ressource kann ein gesondertes
+URL-Set haben. 
 
 ```java
 package com.sample.adapter;
@@ -201,10 +223,10 @@ import javax.ws.rs.PathParam;
 @Path("/")
 public class JavaAdapterResource {
 
-    //Define logger (Standard java.util.Logger)
+    // Logger definieren (Standard: java.util.Logger)
     static Logger logger = Logger.getLogger(JavaAdapterResource.class.getName());
 
-    //Path for method: "<server address>/Adapters/adapters/JavaAdapter/{username}"
+    // Pfad für Methode: "<Serveradresse>/Adapters/adapters/JavaAdapter/{username}"
     @GET
     @Path("/{username}")
     public String helloUser(@PathParam("username") String name){
@@ -213,102 +235,119 @@ public class JavaAdapterResource {
 }
 ```
 
-* `@Path("/")` before the class definition determines the root path of this resource. If you have multiple resource classes, you should set each resource a different path.  
+* `@Path("/")` vor der Klassendefinition legt den Stammverzeichnispfad für diese Ressource fest. Wenn Sie mehrere Ressourcenklassen haben, sollten Sie für jede einen anderen Pfad definieren.   
 
-	For example, if you have a `UserResource` with `@Path("/users")` to manage users of a blog, that resource is accessible via `http(s)://host:port/ProjectName/adapters/AdapterName/users/`.
+	Angenommen, Sie haben eine `UserResource` mit `@Path("/users")`, um die Benutzer eines Blogs zu verwalten.
+Diese Ressource wäre dann über `http(s)://host:port/ProjectName/adapters/AdapterName/users/` zugänglich.
 
-	That same adapter may contain another resource `PostResource` with `@Path("/posts")` to manage posts of a blog. It is accessible via the `http(s)://host:port/ProjectName/adapters/AdapterName/posts/` URL.  
+	Derselbe Adapter könnten eine weitere Ressource `PostResource` mit `@Path("/posts")` für die Verwaltung von Blogbeiträgen enthalten. Diese Ressource wäre dann über
+die URL `http(s)://host:port/ProjectName/adapters/AdapterName/posts/` zugänglich.   
 
-	In the example above, because there it has only one resource class, it is set to `@Path("/")` so that it is accessible via `http(s)://host:port/Adapters/adapters/JavaAdapter/`.  
+	Da es im obigen Beispiel nur eine Ressourcenklasse gibt, ist diese auf `@Path("/")` gesetzt und damit über
+`http(s)://host:port/Adapters/adapters/JavaAdapter/` zugänglich.  
 
-* Each method is preceded by one or more JAX-RS 2.0 annotations, for example an annotation of type "HTTP request" such as `@GET`, `@PUT`, `@POST`, `@DELETE`, or `@HEAD`. Such annotations define how the method can be accessed.  
+* Jeder Methode wird mindestens eine JAX-RS-2.0-Annotation vorangestellt, z. B.
+eine Annotation für HTTP-Anforderungen wie `@GET`, `@PUT`, `@POST`, `@DELETE` oder
+`@HEAD`. Solche Annotationen definieren, wie auf die Methode zugegriffen werden kann.   
 
-* Another example is `@Path("/{username}")`, which defines the path to access this procedure (in addition to the resource-level path). As you can see, this path can include a variable part. This variable is then used as a parameter of the method, as defined `@PathParam("username") String name`.  
+* Ein weiteres Beispiel ist `@Path("/{username}")`, das (neben dem Pfad auf Ressourcenebene) den Pfad für den Zugriff auf diese Prozedur definiert. Wie Sie sehen, kann dieser Pfad einen Variablenabschnitt enthalten. Diese Variable wird dann als Parameter der Methode verwendet (`@PathParam("username") String name`).   
 
-> You can use many other annotations. See **Annotation Types Summary** here:
+> Sie können viele weitere Annoationen verwenden, die in der folgenden **Zusammenfassung der Annotationstypen** angegeben sind: 
 [https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html](https://jax-rs-spec.java.net/nonav/2.0-rev-a/apidocs/javax/ws/rs/package-summary.html)
 
-## HTTP Session
+## HTTP-Sitzung
 {: #http-session }
 
-The {{ site.data.keys.mf_server }} does not rely on HTTP sessions and each request may reach a different node. You should not rely on HTTP sessions to keep data from one request to the next.
+{{ site.data.keys.mf_server }} ist
+nicht auf HTTP-Sitzungen angewiesen, und jede Anforderung kann von einem anderen Knoten empfangen werden. Sie sollten nicht darauf setzen, dass Daten von einer Anforderung zur nächsten durch
+HTTP-Sitzungen erhalten bleiben können. 
 
-## Server-side APIs
+## Serverseitige APIs
 {: #server-side-apis}
 
-Java adapters can use server-side Java APIs to perform operations that are related to {{ site.data.keys.mf_server }}, such as calling other adapters, logging to the server log, getting values of configuration properties, reporting activities to Analytics and getting the identity of the request issuer.  
+Java-Adapter können serverseitige Java-APIs
+verwenden,
+um Operationen im Zusammenhang mit {{ site.data.keys.mf_server }} auszuführen:
+Aufrufen anderer Adapter, Anmeldung beim Serverprotokoll, Abrufen der Werte von Konfigurationseigenschaften,
+Melden von Aktivitäten an Analytics, Abrufen der Identität des Anforderungsausstellers.   
 
-### Configuration API
+### Konfigurations-API
 {: #configuration-api }
 
-The `ConfigurationAPI` class provides an API to retrieve properties defined in the **adapter.xml** or in the {{ site.data.keys.mf_console }}.
+Die Klasse `ConfigurationAPI` stellt eine API bereit, mit der die in
+der Datei **adapter.xml** oder in der {{ site.data.keys.mf_console }} definierten Eigenschaften abgerufen werden können.
 
-Inside your Java class, add the following at the class level:
+Fügen Sie in Ihrer Java-Klasse Folgendes auf Klassenebene hinzu: 
 
 ```java
 @Context
 ConfigurationAPI configurationAPI;
 ```
 
-Then you can use the `configurationAPI` instance to get properties:
+Verwenden Sie dann die `configurationAPI`-Instanz zum Abrufen der Eigenschaften: 
 
 ```java
 configurationAPI.getPropertyValue("DB_url");
 ```
 
-When the adapter configuration is modified from the {{ site.data.keys.mf_console }}, the JAX-RS application class is reloaded and its `init` method is called again.
+Wenn die Adapterkonfiguration
+in der {{ site.data.keys.mf_console }}
+modifiziert wird, wird die JAX-RS-Anwendungsklasse neu geladen und die Methode `init` dieser Klasse erneut
+aufgerufen. 
 
-The `getServerJNDIProperty` method can also be used to retrieve a JNDI property from your server configuration.
+Die Methode `getServerJNDIProperty` kann auch zum Abrufen einer JNDI-Eigenschaft aus Ihrer Serverkonfiguration
+verwendet werden. 
 
-You can see usage examples on the [Java SQL Adapter tutorial](java-sql-adapter).
+Verwendungsbeispiele sind im Lernprogramm [Java-SQL-Adapter](java-sql-adapter) enthalten.
 
-### Adapters API
+### Adapter-API
 {: #adapters-api }
 
-The `AdaptersAPI` class provides an API to retrieve information about the current adapter and send REST requests to other adapters.
+Die Klasse `AdaptersAPI` stellt eine API bereit, mit der Informationen
+zum aktuellen Adapter abgerufen und REST-Anforderungen an andere Adapter gesendet werden können. 
 
-Inside your Java class, add the following at the class level:
+Fügen Sie in Ihrer Java-Klasse Folgendes auf Klassenebene hinzu: 
 
 ```java
 @Context
 AdaptersAPI adaptersAPI;
 ```
 
-You can see usage examples on the [advanced adapter usage mashup tutorial](../advanced-adapter-usage-mashup).
+Verwendungsbeispiele sind im Lernprogramm [Erweiterte Nutzung von Adaptern und Adapterkombinationen](../advanced-adapter-usage-mashup) enthalten.
 
-### Analytics API
+### Analytics-API
 {: #analytics-api }
 
-The `AnalyticsAPI` class provides an API for reporting information to analytics.
+Die Klasse `AnalyticsAPI` stellt eine API bereit, mit der Informationen an Analytics gemeldet werden können. 
 
-Inside your Java class, add the following at the class level:
+Fügen Sie in Ihrer Java-Klasse Folgendes auf Klassenebene hinzu: 
 
 ```java
 @Context
 AnalyticsAPI analyticsAPI;
 ```
 
-You can see usage examples on the [Analytics API tutorial](../../analytics/analytics-api).
+Verwendungsbeispiele sind im Lernprogramm [Analytics-API](../../analytics/analytics-api) enthalten.
 
-### Security API
+### Sicherheits-API
 {: #security-api }
 
-The `AdapterSecurityContext` class provides the security context of an adapter REST call.
+Die Klasse `AdapterSecurityContext` stellt den Adapter für einen REST-Adapteraufruf bereit. 
 
-Inside your Java class, add the following at the class level:
+Fügen Sie in Ihrer Java-Klasse Folgendes auf Klassenebene hinzu: 
 
 ```java
 @Context
 AdapterSecurityContext securityContext;
 ```
 
-You can then, for example, get the current `AuthenticatedUser` using:
+Anschließend können Sie beispielsweise wie folgt den aktuellen authentifizierten Benutzer (`AuthenticatedUser`) abrufen: 
 
 ```java
 AuthenticatedUser currentUser = securityContext.getAuthenticatedUser();
 ```
 
-## Java adapter examples
+## Beispiele für Java-Adapter
 {: #java-adapter-examples }
 
-For examples of Java adapters communicating with an HTTP or SQL back end, see:
+Beispiele für Java-Adapter, die mit einem HTTP- oder SQL-Back-End kommunizieren, finden Sie unter: 

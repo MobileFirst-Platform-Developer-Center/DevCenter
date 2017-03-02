@@ -1,36 +1,40 @@
 ---
 layout: tutorial
-title: JavaScript SQL Adapter
-breadcrumb_title: SQL Adapter
+title: JavaScript-SQL-Adapter
+breadcrumb_title: SQL-Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: Adapter-Maven-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-An SQL adapter is designed to communicate with any SQL data source. You can use plain SQL queries or stored procedures.
+Ein SQL-Adapter ist für die Kommunikation mit SQL-Datenquellen bestimmt.
+Sie können einfache SQL-Abfragen oder gespeicherte Prozeduren verwenden. 
 
-To connect to a database, JavaScript code needs a JDBC connector driver for the specific database type. You must download the JDBC connector driver for the specific database type separately and add it as a dependency in your project. For more information on how to add a dependency, see the Dependencies section in the [Creating Java and JavaScript Adapters](../../creating-adapters/#dependencies) tutorial.
+Für das Herstellen einer Verbindung zu einer
+Datenbank benötigt der JavaScript-Code einen JDBC-Connector-Treiber für den konkreten Datenbanktyp. Sie müssen den
+zum Datenbanktyp passenden JDBC-Connector-Treiber herunterladen und als Abhängigkeit zu Ihrem Projekt hinzufügen. Weitere Informationen zum Hinzufügen einer Abhängigkeit finden Sie im Abschnitt "Abhängigkeiten"
+des Lernprogramms [Java- und JavaScript-Adapter erstellen](../../creating-adapters/#dependencies). 
 
-In this tutorial and in the accompanying sample, you learn how to use an adapter to connect to a MySQL database.
+In diesem Lernprogramm mit dem zugehörigen Beispiel erfahren Sie, wie ein Adapter zum Herstellen einer Verbindung zu einer MySQL-Datenbank verwendet wird. 
 
-**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
+**Voraussetzung:** Arbeiten Sie zuerst das Lernprogramm [JavaScript-Adapter](../) durch. 
 
-## The XML File
+## XML-Datei
 {: #the-xml-file }
 
-The XML file contains settings and metadata.
+Die XML-Datei enthält Einstellungen und Metadaten. 
 
-In the **adapter.xml** file, declare the following parameters:
+Deklarieren Sie in der Datei **adapter.xml** die folgenden Parameter: 
 
- * JDBC Driver Class
- * Database URL
- * Username
- * Password<br/><br/>
+ * JDBC-Treiberklasse
+ * Datenbank-URL
+ * Benutzername
+ * Kennwort<br/><br/>
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -58,15 +62,15 @@ In the **adapter.xml** file, declare the following parameters:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for adapter.xml attributes and subelements</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Für Attribute und untergeordnete Elemente in adapter.xml hier klicken</b></a>
             </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>xsi:type</b>: <i>Mandatory.</i> The value of this attribute must be set to sql:SQLConnectionPolicy.</li>
-                    <li><b>dataSourceDefinition</b>: <i>Optional.</i> Contains the parameters that are needed to connect to a data source. The adapter creates a connection for each request. For example:
+                    <li><b>xsi:type</b>: Dieses <i>obligatorische</i> Attribut muss auf den Wert sql:SQLConnectionPolicy gesetzt sein.</li>
+                    <li><b>dataSourceDefinition</b>: Enthält die Parameter für die Verbindung zu einer Datenquelle (<i>optional</i>). Der Adapter erstellt für jede Anforderung eine Verbindung. Beispiel:
 
 {% highlight xml %}
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -79,7 +83,7 @@ In the **adapter.xml** file, declare the following parameters:
 </connectionPolicy>
 {% endhighlight %}</li>
 
-                    <li><b>dataSourceJNDIName</b>: <i>Optional.</i> Connect to the data source by using the JNDI name of a data source that is provided by the application server. The adapter takes the connection from the server connection pool that is associated with the JNDI name. Application servers provide a way to configure data sources. For more information, see Installing {{ site.data.keys.mf_server }} to an application server. For example:
+                    <li><b>dataSourceJNDIName</b>: Sie können Sie für die Verbindung zur Datenquelle den JNDI-Namen einer vom Anwendungsserver verwendeten Datenquelle verwenden (<i>optional</i>). Der Adapter entnimmt die Verbindung aus dem Serververbindungspool, der dem JNDI-Namen zugeordnet ist. Anwendungsserver bieten eine Möglichkeit, Datenquellen zu konfigurieren. Weitere Informationen finden Sie unter "{{ site.data.keys.mf_server }} in einem Anwendungsserver installieren". Beispiel:
                     
 {% highlight xml %}                        
 <connectionPolicy xsi:type="sql:SQLConnectionPolicy">
@@ -93,42 +97,42 @@ In the **adapter.xml** file, declare the following parameters:
 </div>
 
 
-With the `connectionPolicy` configured, declare a procedure in the adapter XML file.
+Wenn Sie die Verbindungsrichtlinie (`connectionPolicy`) konfiguriert haben, deklarieren Sie in der Adapter-XML-Datei eine Prozedur. 
 
 ```js
 <procedure name="getAccountTransactions1"/>
 ```
 
-## JavaScript implementation
+## JavaScript-Implementierung
 {: #javascript-implementation }
 
-The adapter JavaScript file is used to implement the procedure logic.  
-There are two ways of running SQL statements:
+Die Adapter-JavaScript-Datei wird für die Implementierung der Prozedurlogik verwendet.   
+Es gibt zwei Möglichkeiten, SQL-Anweisungen auszuführen: 
 
-* SQL statement query
-* SQL stored procedure
+* Abfrage mit SQL-Anweisung
+* Gespeicherte SQL-Prozedur
 
-### SQL statement query
+### Abfrage mit SQL-Anweisung
 {: #sql-statement-query }
 
-1. Assign your SQL query to a variable. This must always be done outside the function scope.
-2. Add parameters, if necessary.
-3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries.
-4. Return the result to the application or to another procedure.
+1. Weisen Sie Ihre SQL-Abfrage einer Variablen zu. Diese Zuweisung muss immer außerhalb des Funktionsbereichs erfolgen.
+2. Fügen Sie ggf. Parameter hinzu.
+3. Verwenden Sie die Methode `MFP.Server.invokeSQLStatement`, um vorbereitete Abfragen aufzurufen.
+4. Geben Sie das Ergebnis an die Anwendung oder an eine andere Prozedur zurück.
 
    ```javascript
-   // 1. Assign your SQL query to a variable (outside the function scope)
-   // 2. Add parameters, if necessary
+   // 1. Weisen Sie Ihre SQL-Abfrage (außerhalb des Funktionsbereichs) einer Variablen zu.
+   // 2. Fügen Sie ggf. Parameter hinzu.
    var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
     "FROM accounttransactions " +
     "WHERE accounttransactions.fromAccount = ? OR accounttransactions.toAccount = ? " +
     "ORDER BY transactionDate DESC " +
     "LIMIT 20;";
 
-    // Invoke prepared SQL query and return invocation result
+    // Vorbereitete SQL-Abfrage aufrufen und Aufrufergebnis zurückgeben
    function getAccountTransactions1(accountId){
-   // 3. Use the `MFP.Server.invokeSQLStatement` method to call prepared queries
-   // 4. Return the result to the application or to another procedure.
+   // 3. Verwenden Sie die Methode `MFP.Server.invokeSQLStatement`, um vorbereitete Abfragen aufzurufen.
+   // 4. Geben Sie das Ergebnis an die Anwendung oder an eine andere Prozedur zurück.
         return MFP.Server.invokeSQLStatement({
 	       preparedStatement : getAccountsTransactionsStatement,
 	       parameters : [accountId, accountId]
@@ -136,15 +140,15 @@ There are two ways of running SQL statements:
    }
    ```       
 
-### SQL stored procedure
+### Gespeicherte SQL-Prozedur
 {: #sql-stored-procedure }
 
-To run a SQL stored procedure, use the `MFP.Server.invokeSQLStoredProcedure` method. Specify a SQL stored procedure name as an invocation parameter.
+Führen Sie eine gespeicherte SQL-Prozedur mit der Methode `MFP.Server.invokeSQLStoredProcedure` aus. Geben Sie den Namen einer gespeicherten SQL-Prozedur als Aufrufparameter a. 
 
 ```javascript
-// Invoke stored SQL procedure and return invocation result
+// Gespeicherte SQL-Prozedur aufrufen und Aufrufergebnis zurückgeben
 function getAccountTransactions2(accountId){
-  // To run a SQL stored procedure, use the `MFP.Server.invokeSQLStoredProcedure` method
+  // Gespeicherte SQL-Prozedur mit der Methode MFP.Server.invokeSQLStoredProcedure ausführen
   return MFP.Server.invokeSQLStoredProcedure({
     procedure : "getAccountTransactions",
     parameters : [accountId]
@@ -152,10 +156,11 @@ function getAccountTransactions2(accountId){
 }
 ```  
 
-### Using multiple parameters
+### Mehrere Parameter verwenden
 {: #using-multiple-parameters }
  
-When using either single or multiple parameters in an SQL query make sure to accept the variables in the function and pass them to the `invokeSQLStatement` or `invokeSQLStoredProcedure` parameters in an **array**.
+Wenn Sie in einer SQL-Abfrage einen oder mehrere Parameter verwenden, müssen die Variablen in der Funktion akzeptiert und als **Array**
+an den Parameter `invokeSQLStatement` oder `invokeSQLStoredProcedure` übergeben werden. 
 
 ```javascript
 var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAccount, transactionDate, transactionAmount, transactionType " +
@@ -164,7 +169,7 @@ var getAccountsTransactionsStatement = "SELECT transactionId, fromAccount, toAcc
 	"ORDER BY transactionDate DESC " +
 	"LIMIT 20;";
 
-//Invoke prepared SQL query and return invocation result
+// Vorbereitete SQL-Abfrage aufrufen und Aufrufergebnis zurückgeben
 function getAccountTransactions1(fromAccount, toAccount){
 	return MFP.Server.invokeSQLStatement({
 		preparedStatement : getAccountsTransactionsStatement,
@@ -173,10 +178,10 @@ function getAccountTransactions1(fromAccount, toAccount){
 }
 ```
 
-## Invocation Results
+## Aufrufergebnis
 {: #invocation-results }
 
-The result is retrieved as a JSON object:
+Das Ergebnis wird als JSON-Objekt abgerufen. 
 
 ```json
 {
@@ -198,25 +203,26 @@ The result is retrieved as a JSON object:
   }]
 }
 ```
-* The `isSuccessful` property defines whether the invocation was successful.
-* The `resultSet` object is an array of returned records.
- * To access the `resultSet` object on the client-side: `result.invocationResult.resultSet`
- * To access the `resultSet` object on the server-side: `result.ResultSet`
+* Die Eigenschaft `isSuccessful` definiert, ob der Aufruf erfolgreich war.
+* Das Objekt `resultSet` ist ein Array mit zurückgegebenen Datensätzen.
+ * Schreiben Sie Folgendes, um auf der Clientseite auf das `resultSet`-Objekt zuzugreifen: `result.invocationResult.resultSet`.
+ * Schreiben Sie Folgendes, um auf der Serverseite auf das `resultSet`-Objekt zuzugreifen: `result.ResultSet`.
 
-## Sample adapter
+## Beispieladapter
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters) the Adapters Maven project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/Adapters), um das Maven-Adapterprojekt herunterzuladen. 
 
-The Adapters Maven project includes the **JavaScriptSQL** adapter described above.  
-Also included is an SQL script in the **Utils** folder.
+Zum Maven-Adapterprojekt gehört der oben beschriebene **JavaScriptSQL**-Adapter.   
+Außerdem ist im Ordner **Utils** des Projekts ein SQL-Script enthalten. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
 
-* Run the .sql script in your SQL database.
-* Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptSQL adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* Führen Sie in Ihrer SQL-Datenbank das SQL-Script aus. 
+* Stellen Sie sicher, dass dem Benutzer `mobilefirst@%` alle Zugriffsberechtigungen erteilt wurden. 
+* Verwenden Sie Maven, die {{ site.data.keys.mf_cli }} oder eine IDE Ihrer Wahl, um
+den [JavaScript-SQL-Adapter zu erstellen und zu implementieren](../../creating-adapters/). 
+* Informationen zum Testen oder Debuggen eines Adapters enthält das Lernprogramm [Adapter testen und debuggen](../../testing-and-debugging-adapters). 
 
-When testing, the account value should be passed in an array: `["12345"]`.
+Für Tests muss der Accountwert als Array (`["12345"]`) übergeben werden.
