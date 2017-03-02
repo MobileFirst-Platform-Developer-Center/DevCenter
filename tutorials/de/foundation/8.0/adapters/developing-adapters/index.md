@@ -1,99 +1,111 @@
 ---
 layout: tutorial
-title: Developing Adapters in Eclipse
+title: Adapter in Eclipse entwickeln
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-As taught in previous [Adapters tutorials](../), adapters are Maven projects that are created by using either Maven directly or via the {{ site.data.keys.mf_cli }}. The adapter code can then be edited in any IDE, and later built and deployed using either Maven or the {{ site.data.keys.mf_cli }}. A developer may also choose to create, develop, build and deploy all inside a supported IDEs, such as Eclipse or IntelliJ. In this tutorial an adapter is created and built from the Eclipse IDE.
+Wie Sie aus den bisherigen [Adapterlernprogrammen](../) wissen, sind Adapter Maven-Projekte, die direkt
+in Maven oder mithilfe der {{ site.data.keys.mf_cli }} erstellt werden. Der Adaptercode kann dann in jeder IDE bearbeitet werden. Später kann mit Maven oder mithilfe der {{ site.data.keys.mf_cli }} ein Adapterbuild erstellt und implementiert werden. Ein Entwickler kann Adapter auch in unterstützten IDEs wie Eclipse oder IntelliJ entwickeln, erstellen und implementieren. In diesem Lernprogramm wird ein Adapter in der Eclipse-IDE erstellt. 
 
-> For instructions how to use IntelliJ see the [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters) Blog Post.
+> Anweisungen für die Nutzung von IntelliJ finden Sie im Blogbeitrag [Using IntelliJ to Develop MobileFirst Java Adapters]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters).
 
-**Prerequisite:**
+**Voraussetzungen:**
 
-* Get familiarized with adapters by reading the [Adapters tutorials](../) first.
-* Maven integration in Eclipse. Starting Eclipse Kepler (v4.3), Maven support is built-in in Eclipse. If your Eclipse instance does not support Maven, [follow the m2e instructions](http://www.eclipse.org/m2e/) to add Maven support.
+* Gehen Sie zunächst die [Adapterlernprogramme](../) durch, um sich mit Adaptern vertraut zu machen. 
+* Integration von Maven in Eclipse. Ab Eclipse Kepler (Version 4.3) ist Maven-Unterstützung in Eclipse integriert. Falls Ihre Eclipse-Instanz keine Unterstützung für Maven bietet,
+folgen Sie den Anweisungen unter [M2Eclipse](http://www.eclipse.org/m2e/), um Maven-Unterstützung hinzuzufügen. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
-* [Creating a new adapter Maven project](#creating-a-new-adapter-maven-project)
-* [Importing an existing adapter Maven project](#importing-an-existing-adapter-maven-project)
-* [Building and deploying an adapter Maven project](#building-and-deploying-an-adapter-maven-project)
-* [Further reading](#further-reading)
+* [Neues Maven-Adapterprojekt erstellen](#creating-a-new-adapter-maven-project)
+* [Vorhandenes Maven-Adapterprojekt importieren](#importing-an-existing-adapter-maven-project)
+* [Maven-Adapterprojekt erstellen und implementieren](#building-and-deploying-an-adapter-maven-project)
+* [Weiterführende Informationen](#further-reading)
 
-## Create or import an Adapter Maven project
+## Maven-Adapterprojekt erstellen oder importieren
 {: #create-or-import-an-adapter-maven-project }
 
-Follow the bellow instructions to either create a new adapter Maven project or import an existing one.
+Folgen Sie den nachstehenden Anweisungen, um ein neues Maven-Adapterprojekt zu erstellen oder ein vorhandenes zu importieren. 
 
-### Creating a new adapter Maven project
+### Neues Maven-Adapterprojekt erstellen
 {: #creating-a-new-adapter-maven-project }
 
-1. To create a new adapter Maven project, select: **File → New → Other... → Maven → Maven Project** and click **Next**.
+1. Wählen Sie für die Erstellung eines neuen Maven-Adapterprojekts **Datei → Neu → Andere... → Maven → Maven-Projekt** aus und
+klicken Sie auf **Weiter**.
 
-    ![Image showing how to create an adapter Maven project in Eclipse](new-maven-project.png)
+    ![Erstellung eines Maven-Adapterprojekts in Eclipse](new-maven-project.png)
 
-2. Provide project name and location.  
-    - Make sure the option to create a simple project is ticked **off** and click **Next**.
+2. Geben Sie den Projektnamen und die Projektposition an.   
+    - Vergewissern Sie sich, dass die Option für die Erstellung eines einfachen Projekts **abgewählt** ist, und klicken Sie auf **Weiter**.
 
-    ![Image showing how to create an adapter Maven project in Eclipse](select-project-name-and-location.png)
+    ![Erstellung eines Maven-Adapterprojekts in Eclipse](select-project-name-and-location.png)
 
-3. Select or add the adapter Archetype.
-    - If you [installed the archetypes locally](../creating-adapters/#install-maven) and they are not appearing in the list of archetypes, select **Configure → Add Local Catalog → Browse to the /.m2/repository/archetype-catalog.xml in the home directory**.
-    - Click on **Add Archetype** and provide the following details:
-        - **Archetype Group Id**: `com.ibm.mfp`
-        - **Archetype Artifact Id**: either `adapter-maven-archetype-java`, `adapter-maven-archetype-http` or `adapter-maven-archetype-sql`
-        - **Archetype Version**: `8.0.2016061011` (you can find the latest available version in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation))
+3. Wählen Sie den Archetyp aus oder fügen Sie ihn hinzu. 
+    - Wenn Sie die [Archetypen lokal installiert haben](../creating-adapters/#install-maven) und sie nicht in der Liste der Archetypen angezeigt werden, wählen Sie **Konfigurieren → Lokalen Katalog hinzufügen → Durchsuchen** aus und navigieren Sie im Ausgangsverzeichnis zur Datei /.m2/repository/archetype-catalog.xml. 
+    - Klicken Sie auf **Archetyp hinzufügen** und machen Sie die folgenden Angaben: 
+        - **Gruppen-ID für Archetyp**: `com.ibm.mfp`
+        - **Artefakt-ID für Archetyp**: `adapter-maven-archetype-java`, `adapter-maven-archetype-http` oder `adapter-maven-archetype-sql`
+        - **Archetypversion**: `8.0.2016061011` (Die aktuell verfügbare Version finden Sie
+in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation).)
 
-    ![Image showing how to create an adapter Maven project in Eclipse](create-an-archetype.png)
+    ![Erstellung eines Maven-Adapterprojekts in Eclipse](create-an-archetype.png)
 
-4. Specify Maven project parameters.  
-    - Specify required **Group Id**, **Artifact Id**, **Version** and **package** parameters, and click **Finish**.
+4. Geben Sie Maven-Projektparameter an.   
+    - Geben Sie die erforderlichen Parameter
+**Gruppen-ID**, **Artefakt-ID**, **Version** und **Paket** an und klicken
+Sie auf **Fertigstellen**.
 
-    ![Image showing how to create an adapter Maven project in Eclipse](project-parameters.png)
+    ![Erstellung eines Maven-Adapterprojekts in Eclipse](project-parameters.png)
 
-### Importing an existing adapter Maven project
+### Vorhandenes Maven-Adapterprojekt importieren
 {: #importing-an-existing-adapter-maven-project }
 
-To import the adapter Maven project, select **File → Import... → Maven → Existing Maven Projects**.
+Wählen Sie für den Import des Maven-Adapterprojekts **Datei → Importieren... → Maven → Vorhandene Maven-Projekte** aus.
 
-![Image showing how to import an adapter Maven project to Eclipse](import-adapter-maven-project.png)
+![Import eines Maven-Adapterprojekts in Eclipse](import-adapter-maven-project.png)
 
-## Building and deploying an adapter Maven project
+## Maven-Adapterprojekt erstellen und implementieren
 {: #building-and-deploying-an-adapter-maven-project }
 
-An adapter project can be built and deployed by using either Maven command-line commands, the {{ site.data.keys.mf_cli }} or from Eclipse.  
-[Learn how to build and deploy adapters](../creating-adapters/#build-and-deploy-adapters).
+Ein Adapterprojekt kann mit Befehlen in der Maven-Befehlszeile, mit der {{ site.data.keys.mf_cli }} oder in Eclipse erstellt und implementiert werden.   
+[Hier erfahren Sie, wie Adapter erstellt und implementiert werden](../creating-adapters/#build-and-deploy-adapters).
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** Eclipse can also be enhanced to ease the deployment step by integrating a **Command-line** window using a plug-in, creating a consistant development environment. From this window Maven or {{ site.data.keys.mf_cli }} commands can be run.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tipp:** Eclipse kann auch erweitert werden,
+um den Implementierungsschritt zu erleichtern.
+Integrieren Sie dazu mit einem Plug-in ein **Befehlszeilenfenster**. Sie erhalten so eine konsistente Entwicklungsumgebung. In diesem Fenster können Maven-Befehle oder
+Befehle der {{ site.data.keys.mf_cli }} ausgeführt werden.
 
-### Building an adapter
+### Adapterbuild erstellen
 {: #building-an-adapter }
 
-To build an adapter, right-click on the adapter folder and select **Run As → Maven install**.  
+Klicken Sie zum Erstellen eines Adapterbuilds mit der rechten Maustaste auf den Adapterordner und wählen Sie
+**Ausführen als → Maven-Installation** aus.  
 
-### Deploying an adapter
+### Adapter implementieren
 {: #deploying-an-adapter }
 
-To deploy an adapter, first add the deploy Maven command:
+Für die Implementierung eines Adapters müssen Sie zunächst den Maven-Implementierungsbefehl (deploy) hinzufügen. 
 
-1. Select **Run → Run Configurations...**, right-click on **Maven Build** and select **New**.
-2. Provide a Name: "Maven deploy".
-2. Set as a Goal: "adapter:deploy".
-3. Click **Apply** followed by clicking on **Run** to have an initial deploy.
+1. Wählen Sie **Ausführen → Konfigurationen ausführen...** aus, klicken Sie mit der rechten Maustaste auf
+**Maven-Build** und wählen Sie **Neu** aus.
+2. Geben Sie einen Namen an ("Maven deploy").
+2. Geben Sie als Ziel "adapter:deploy" an.
+3. Klicken Sie für eine Erstimplementierung auf **Anwenden** und dann auf **Ausführen**. 
 
-You can now right-click on the adapter folder and select **Run As → Maven Deploy**
+Jetzt können Sie mit der rechten Maustaste auf den Adapterordner klicken und
+**Ausführen als → Maven-Implementierung** auswählen.
 
-### Building and deploying an adapter
+### Adapter erstellen und implementieren
 {: #building-and-deploying-an-adapter }
 
-You can also combine the "build" and  "deploy" Maven Goals to a single "build and deploy" Goal: "clean install adapter:deploy".
+Sie können die Maven-Ziele "build" und "deploy" auch zu einem Ziel zusammenfassen: "clean install adapter:deploy".
 
-## Further reading
+## Weiterführende Informationen
 {: #further-reading }
 
-Learn how to debug Java code in adapters in the [Testing and debugging adaters](../testing-and-debugging-adapters) tutorial.
+Informieren Sie sich im Lernprogramm [Adapter testen und debuggen](../testing-and-debugging-adapters) über das Debuggen von Java-Code in Adaptern. 

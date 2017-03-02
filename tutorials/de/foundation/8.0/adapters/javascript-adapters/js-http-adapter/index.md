@@ -1,37 +1,41 @@
 ---
 layout: tutorial
-title: JavaScript HTTP Adapter
-breadcrumb_title: HTTP Adapter
+title: JavaScript-HTTP-Adapter
+breadcrumb_title: HTTP-Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: Adapter-Maven-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-By using HTTP adapters, you can send GET or POST HTTP requests and retrieve data from the response headers and body. HTTP adapters work with RESTful and SOAP-based services, and can read structured HTTP sources such as RSS feeds.
+Mit
+HTTP-Adaptern können Sie GET- oder POST-HTTP-Anforderungen senden und Daten aus den Headern und dem Text der Antwort
+abrufen. HTTP-Adapter arbeiten mit REST-konformen und SOAP-basierten Services und können strukturierte HTTP-Quellen wie RSS-Feeds
+lesen. 
 
-You can easily customize HTTP adapters with simple server-side JavaScript code. For example, you could set up server-side filtering if necessary. The retrieved data can be in XML, HTML, JSON, or plain text format.
+Sie können HTTP-Adater ohne großen Aufwand mit einfachem serverseitigem JavaScript-Code anpassen.
+Sie können beispielsweise serverseitige Filter einrichten, sofern dies erforderlich ist. Die abgerufenen Daten können in den Formaten XML, HTML und JSON oder in einfachem Textformat vorliegen. 
 
-The adapter is configured with XML to define the adapter properties and procedures.  
-Optionally, it is also possible to use XSL to filter received records and fields.
+Für die Adapterkonfiguration werden in XML Adaptereigenschaften und -prozeduren definiert.   
+Es ist auch möglich, empfangene Datensätze und Felder mit XSL zu filtern. 
 
-**Prerequisite:** Make sure to read the [JavaScript Adapters](../) tutorial first.
+**Voraussetzung:** Arbeiten Sie zuerst das Lernprogramm [JavaScript-Adapter](../) durch. 
 
-## The XML File
+## XML-Datei
 {: #the-xml-file }
 
-The XML file contains settings and metadata.  
-To edit the adapter XML file, you must:
+Die XML-Datei enthält Einstellungen und Metadaten.   
+Wenn Sie die Adapter-XML-Datei bearbeiten, müssen Sie folgende Schritte ausführen: 
 
-* Set the protocol to HTTP or HTTPS.  
-* Set the HTTP domain to the domain part of HTTP URL.  
-* Set the TCP Port.  
+* Setzen Sie das Protokoll auf HTTP oder HTTPS.  
+* Setzen Sie die HTTP-Domäne auf den Domänenabschnitt der HTTP-URL.  
+* Legen Sie den TCP-Port fest.   
 
-Declare the required procedures below the `connectivity` element:
+Deklarieren Sie die erforderlichen Prozeduren unterhalb des Elements `connectivity`: 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
@@ -62,40 +66,48 @@ Declare the required procedures below the `connectivity` element:
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click for <code>connectionPolicy</code> attributes and subelements</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Für Attribute und untergeordnete Elemente von <code>connectionPolicy</code> hier klicken</b></a>
             </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>xsi:type</b>: <i>Mandatory.</i> The value of this attribute must be http:HTTPConnectionPolicyType.</li>
-                    <li><b>cookiePolicy</b>: <i>Optional.</i> This attribute sets how the HTTP adapter handles cookies that arrive from the back-end application. The following values are valid.
-                        <ul>
-                            <li>BEST_MATCH: default value</li>
+                    <li><b>xsi:type</b>: Dieses <i>obligatorische</i> Attribut muss den Wert
+http:HTTPConnectionPolicyType haben. </li>
+                    <li><b>cookiePolicy</b>: Dieses <i>optionale</i> Attribut legt fest, wie der HTTP-Adapter von der Back-End-Anwendung eingehende Cookies behandelt. Folgende Werte sind gültig: <ul>
+                            <li>BEST_MATCH (Standardwert)</li>
                             <li>BROWSER_COMPATIBILITY</li>
                             <li>RFC_2109</li>
                             <li>RFC_2965</li>
                             <li>NETSCAPE</li>
                             <li>IGNORE_COOKIES</li>
                         </ul>
-                        For more information about these values, see the Apache <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP components</a> page.
+                        Weitere Informationen zu diesen Werten finden Sie auf der Apache-Seite <a href="http://hc.apache.org/httpclient-3.x/cookies.html">HTTP Components</a>.
                     </li>
-                    <li><b>maxRedirects</b>: <i>Optional.</i> The maximum number of redirects that the HTTP adapter can follow. This attribute is useful when the back-end application sends circular redirects as a result of some error, such as authentication failures. If this attribute is set to 0, the adapter does not attempt to follow redirects at all, and the HTTP 302 response is returned to the user. The default value is 10.</li>
-                    <li><b>protocol</b>: <i>Optional.</i> The URL protocol to use. The following values are valid: <b>http</b> (default), <b>https</b>.</li>
-                    <li><b>domain</b>: <i>Mandatory.</i> The host address.</li>
-                    <li><b>port</b>: <i>Optional.</i> The port address. If no port is specified the default HTTP/S port is used (80/443)</li>
-                    <li><b>sslCertificateAlias</b>: Optional for regular HTTP authentication and simple SSL authentication. Mandatory for mutual SSL authentication. The alias of the adapter private SSL key, which is used by the HTTP adapter key manager to access the correct SSL certificate in the keystore. For more information about the keystore setup process, see <a href="using-ssl">Using SSL in HTTP adapters</a> tutorial.</li>
-                    <li><b>sslCertificatePassword</b>: Optional for regular HTTP authentication and simple SSL authentication. Mandatory for mutual SSL authentication. The password of the adapter private SSL key, which is used by the HTTP adapter key manager to access the correct SSL certificate in the keystore. For more information about the keystore setup process, see <a href="using-ssl">Using SSL in HTTP adapters</a> tutorial.</li>
-                    <li><b>authentication</b>: <i>Optional.</i> Authentication configuration of the HTTP adapter. The HTTP adapter can use one of two authentication protocols. Define the <b>authentication</b>< element, as follows:
-                        <ul>
-                            <li>Basic authentication
+                    <li><b>maxRedirects</b>: Dieses <i>optionale</i> Attribut gibt die maximale Anzahl möglicher Umleitungen für den HTTP-Adapter an. Dieses Attribut ist hilfreich, wenn die Back-End-Anwendung
+infolge eines Fehlers (z. B. eines Authentifizierungsfehlers) kreisförmige Umleitungen sendet. Wenn dieses Attribut auf 0 gesetzt ist, versucht der Adapter nicht, Umleitungen zu folgen. An den
+Benutzer wird die Antwort HTTP 302 zurückgegeben. Der Standardwert ist 10.</li>
+                    <li><b>protocol</b>: Dieses <i>optionale</i> Unterelement gibt das zu verwendende URL-Protokoll an. Die folgenden Werte sind gültig: <b>http</b> (Standardwert), <b>https</b>.</li>
+                    <li><b>domain</b>: Dieses <i>obligatorische</i> Unterelement gibt die Hostadresse an. </li>
+                    <li><b>port</b>: Dieses <i>optionale</i> Unterelement gibt die Portadresse an. Wenn kein Port angegeben ist,
+wird der HTTP/S-Standardport (80/443) verwendet. </li>
+                    <li><b>sslCertificateAlias</b>: Für die reguläre HTTP-Authentifizierung und die einfache
+SSL-Authentifizierung ist dieses Unterelement optional. Für die gegenseitige SSL-Authentifizierung ist es obligatorisch. Dies ist der Alias des privaten SSL-Schlüssels des Adapters. Der Key Manager des HTTP-Adapters greift mit diesem
+Alias auf das richtige SSL-Zertifikat im Keystore zu.
+Weitere Informationen zum Setup-Prozess für Keystores enthält das Lernprogramm <a href="using-ssl">SSL in HTTP-Adaptern</a>. </li>
+                    <li><b>sslCertificatePassword</b>: Für die reguläre HTTP-Authentifizierung und die einfache
+SSL-Authentifizierung ist dieses Unterelement optional. Für die gegenseitige SSL-Authentifizierung ist es obligatorisch. Dies ist das Kennwort für den privaten SSL-Schlüssel des Adapters. Der Key Manager des HTTP-Adapters greift mit diesem
+Kennwort auf das richtige SSL-Zertifikat im Keystore zu.
+Weitere Informationen zum Setup-Prozess für Keystores enthält das Lernprogramm <a href="using-ssl">SSL in HTTP-Adaptern</a>. </li>
+                    <li><b>authentication</b>: Dieses <i>optionale</i> Unterelement gibt die Authentifizierungskonfiguration des HTTP-Adapters an. Der HTTP-Adapter kann eines von zwei Authentifizierungsprotokollen verwenden. Definieren Sie das Element <b>authentication</b> wie folgt: <ul>
+                            <li>Basisauthentifizierung
 {% highlight xml %}
 <authentication>
     <basic/>
 </authentication>
 {% endhighlight %}</li>
-                            <li>Digest authentication
+                            <li>Digest-Authentifizierung
 {% highlight xml %}
 <authentication>
     <digest/>
@@ -103,7 +115,7 @@ Declare the required procedures below the `connectivity` element:
 {% endhighlight %}</li>
 
 
-                            The connection policy can contain a <code>serverIdentity</code> element. This feature applies to all authentication schemes. For example:
+                            Die Verbindungsrichtlinie kann ein Element <code>serverIdentity</code> enthalten. Dieses Feature ist auf alle Authentifizierungsschemata anwendbar. Beispiel:
 {% highlight xml %}
 <authentication>
     <basic/>
@@ -115,8 +127,10 @@ Declare the required procedures below the `connectivity` element:
 {% endhighlight %}
                         </ul>
                     </li>
-                    <li><b>proxy</b>: <i>Optional.</i> The proxy element specifies the details of the proxy server to use when accessing the back-end application. The proxy details must include the protocol domain and port. If the proxy requires authentication, add a nested <code>authentication</code> element inside <code>proxy</code>. This element has the same structure as the one used to describe the authentication protocol of the adapter. The following example shows a proxy that requires basic authentication and uses a server identity.
-                    
+                    <li><b>proxy</b>: Dieses <i>optionale</i> Element gibt die Details des Proxy-Servers an, der beim Zugriff auf die Back-End-Anwendung verwendet
+werden soll. Die Proxydetails müssen die Protokolldomäne und den Port enthalten. Falls der Proxy eine Authentifizierung erfordert, fügen Sie innerhalb des Elements <code>proxy</code> ein verschachteltes Element
+<code>authentication</code> hinzu. Dieses Element hat dieselbe Struktur wie das Element, mit dem das Authentifizierungsprotokoll
+des Adapters beschrieben wird. Das folgende Beispiel zeigt einen Proxy, der die Basisauthentifizierung erfordert und eine Serveridentität verwendet.                    
 {% highlight xml %}
 <connectionPolicy xsi:type="http:HTTPConnectionPolicyType">
   <protocol>http</protocol>
@@ -135,49 +149,70 @@ Declare the required procedures below the `connectivity` element:
   </proxy>
 </connectionPolicy>
 {% endhighlight %}</li>
-                    <li><b>maxConcurrentConnectionsPerNode</b>: <i>Optional.</i> Defines the maximum number of concurrent connections, which the {{ site.data.keys.mf_server }} can open to the back end. {{ site.data.keys.product }} does not limit the incoming service requests from applications. This limits only the number of concurrent HTTP connections to the back-end service.
+                    <li><b>maxConcurrentConnectionsPerNode</b>: Dieses <i>optionale</i> Unterelement definiert die maximale Anzahl Verbindungen, die der
+{{ site.data.keys.mf_server }} gleichzeitig zum
+Back-End öffnen kann. In der {{ site.data.keys.product }} gibt es
+kein Limit für Serviceanforderungen, die von Anwendungen eingehen. Es wird nur die Anzahl gleichzeitiger HTTP-Verbindungen zum Back-End-Service begrenzt. <br/><br/>
+                    Standardmäßig sind
+50 gleichzeitige HTTP-Verbindungen möglich. Schätzen Sie ein, wie viele gleichzeitige Anforderungen an den Adapter erwartet werden. Ausgehend von dieser Zahl und von den
+maximal zulässigen Anforderungen seitens des Back-End-Service können Sie die Anzahl der gleichzeitigen HTTP-Verbindungen modifizieren. Außerdem können Sie den Back-End-Service so konfigurieren, dass die Anzahl der gleichzeitig eingehenden Anforderungen begrenzt ist.<br/><br/>
+                    Stellen Sie sich ein System mit zwei Knoten vor, für das eine Belastung von 100 parallelen Anforderungen erwartet wird. Der Back-End-Service
+kann aber nur maximal 80 gleichzeitige Anforderungen unterstützen. Für den Fall können Sie maxConcurrentConnectionsPerNode auf
+40 setzen.
+Durch diese Einstellung ist sichergestellt, dass nicht mehr als 80 gleichzeitige Anforderungen an den Back-End-Service
+gerichtet werden.<br/><br/>
+                    Wenn Sie
+den
+Wert erhöhen, benötigt die Back-End-Anwendung mehr Hauptspeicher. Setzen Sie diesen Wert nicht zu hoch, um Speicherprobleme zu vermeiden. Schätzen Sie vielmehr ein, wie viele Transaktionen durchschnittlich und bei einer Spitzenbelastung anfallen,
+und werten Sie die durchschnittliche Dauer der Transaktionen aus. Berechnen Sie dann die Anzahl der erforderlichen
+gleichzeitig bestehenden Verbindungen wie in diesem Beispiel und addieren Sie eine Reserve
+von 5-10 % hinzu.
+Überwachen Sie dann Ihr Back-End und passen Sie diesen Wert ggf. an, um sicherzustellen, dass Ihre Back-End-Anwendung alle eingehenden Anforderungen
+verarbeiten kann.<br/><br/>
+                    Wenn Sie Adapter in einem Cluster implementieren, setzen Sie dieses Attribut auf den Quotienten aus
+der maximal erforderlichen Arbeitslast und der Anzahl der Clustermember.
                     <br/><br/>
-                    The default number of concurrent HTTP connections is 50. You can modify this number based on the expected concurrent requests to the adapter and the maximum requests allowed on the back-end service. You can also configure the back-end service to limit the number of concurrent incoming requests.
-                    <br/><br/>
-                    Consider a two-node system, where the expected load on the system is 100 concurrent requests and the back-end service can support up to 80 concurrent requests. You can set maxConcurrentConnectionsPerNode to 40. This setting ensures that no more than 80 concurrent requests are made to the back-end service.
-                    <br/><br/>
-                    If you increase the value, the back-end application needs more memory. To avoid memory issues, do not to set this value too high. Instead, estimate the average and peak number of transactions per second, and evaluate their average duration. Then, calculate the number of required concurrent connections as indicated in this example, and add a 5-10% margin. Then, monitor your back end, and adjust this value as required, to ensure that your back-end application can process all incoming requests.
-                    <br/><br/>
-                    When you deploy adapters to a cluster, set the value of this attribute to the maximum required load divided by the number of cluster members.
-                    <br/><br/>
-                    For more information about how to size your back-end application, see the <a href="{{site.baseurl}}/learn-more">Scalability and Hardware Sizing document</a> and its accompanying hardware calculator spreadsheet</li>
-                    <li><b>connectionTimeoutInMilliseconds</b>: <i>Optional.</i> The timeout in milliseconds until a connection to the back-end can be established. Setting this timeout does not ensure that a timeout exception occurs after a specific time elapses after the invocation of the HTTP request. If you pass a different value for this parameter in the <code>invokeHTTP()</code> function, you can override the value that is defined here.</li>
-                    <li><b>socketTimeoutInMilliseconds</b>: <i>Optional.</i> The timeout in milliseconds between two consecutive packets, starting from the connection packet. Setting this timeout does not ensure that a timeout exception occurs after a specific time elapses after the invocation of the HTTP request. If you pass a different value for the <code>socketTimeoutInMilliseconds</code> parameter in the <code>invokeHttp()</code> function, you can override the value that is defined here.</li>
+                    Weitere Informationen zur Berechnung der Größe
+Ihrer Back-End-Anwendung finden Sie im Dokument
+<a href="{{site.baseurl}}/learn-more">Scalability and Hardware Sizing</a> und dem zugehörigen Arbeitsblatt "Hardware Calculator". </li>
+                    <li><b>connectionTimeoutInMilliseconds</b>: Dieses <i>optionale</i> Unterelement gibt das Zeitlimit bis zum Herstellen einer Verbindung zum Back-End in Millisekunden an.
+                Durch das Festlegen dieses Zeitlimits ist nicht sichergestellt, dass nicht eine bestimmte Zeit nach dem Aufrufen der HTTP-Anforderung eine Ausnahme wegen einer Zeitlimitüberschreitung auftritt. Wenn Sie in der Funktion <code>invokeHTTP()</code> einen anderen Wert für diesen Parameter übergeben, wird der hier definierte Wert überschrieben. </li>
+                    <li><b>socketTimeoutInMilliseconds</b>: Dieses <i>optionale</i> Unterelement gibt, beginnend beim Verbindungspaket, das Zeitlimit zwischen zwei
+aufeinanderfolgenden Paketen in Millisekunden an. Durch das Festlegen dieses Zeitlimits ist nicht sichergestellt, dass nicht eine bestimmte Zeit nach dem Aufrufen der HTTP-Anforderung eine Ausnahme wegen einer Zeitlimitüberschreitung auftritt. Wenn Sie in der Funktion <code>invokeHttp()</code> einen anderen Wert für den Parameter <code>socketTimeoutInMilliseconds</code> übergeben, wird der hier definierte Wert überschrieben. </li>
                 </ul>
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Abschnitt schließen</b></a>
             </div>
         </div>
     </div>
 </div>
 
 
-## JavaScript implementation
+## JavaScript-Implementierung
 {: #javascript-implementation }
 
-A service URL is used for procedure invocations. Some parts of the URL are constant; for example, http://example.com/.  
-Other parts of the URL can be parameterized; that is, substituted at run time by parameter values that are provided to the procedure.
+Für Prozeduraufrufe wird eine Service-URL verwendet. Einige Abschnitte der URL sind konstant, z. B. http://example.com/.   
+Andere Abschnitte der URL können parametrisiert, d. h. in der Laufzeit durch Parameterwerte ersetzt werden, die für die
+Prozedur bereitgestellt werden. 
 
-The following URL parts can be parameterized.
+Folgende
+URL-Abschnitte können parametrisiert werden. 
 
-* Path elements
-* Query string parameters
-* Fragments
+* Pfadelemente
+* Parameter für Abfragezeichenfolgen
+* Fragmente
 
-To call an HTTP request, use the `MFP.Server.invokeHttp` method.  
-Provide an input parameter object, which must specify:
+Verwenden Sie zum Aufrufen einer
+HTTP-Anforderung die Methode `MFP.Server.invokeHttp`.   
+Geben Sie ein Eingabeparameterobjekt mit folgenden Optionen an: 
 
-* The HTTP method: `GET`,`POST`, `PUT`, `DELETE`
-* The returned content type: `XML`, `JSON`, `HTML`, or `plain`
-* The service `path`
-* The query parameters (optional)
-* The request body (optional)
-* The transformation type (optional)
+* HTTP-Methode: `GET`,`POST`, `PUT`, `DELETE`
+* Zurückgegebener Inhaltstyp (`XML`, `JSON`, `HTML`
+oder `plain`) 
+* Servicepfad (`path`)
+* Abfrageparameter (optional)
+* Anforderungshauptteil (optional)
+* Umwandlungstyp (optional)
 
 ```js
 function getFeed() {
@@ -192,15 +227,16 @@ function getFeed() {
 }
 ```
 
-> See the API Reference for "MFP.Server.invokeHttp" in the user documentation for a complete list of options.
+> Eine vollständige Liste der Optionen können Sie den API-Referenzinformationen zu "MFP.Server.invokeHttp" in der Benutzerdokumentation entnehmen. 
 
-## XSL transformation filtering
+## XSL-Transformation zum Filtern
 {: #xsl-transformation-filtering }
 
-You can also apply XSL transformation to the received data, for example to filter the data.  
-To apply XSL transformation, create a **filtered.xsl** file next to the JavaScript implementation file.
+Sie können auf die Daten die XSL-Transformation anwenden, um beispielsweise die Feeddaten zu filtern.   
+Erstellen Sie neben der JavaScript-Implementierungsdatei eine Datei **filtered.xsl** für die XSL-Transformation. 
 
-You can then specify the transformation options in the input parameters of the procedure invocation. For example:
+Anschließend können Sie in den Eingabeparametern des Prozeduraufrufs
+die Transformationsoptionen angeben. Beispiel: 
 
 ```js
 function getFeedFiltered() {
@@ -219,11 +255,12 @@ function getFeedFiltered() {
 }
 ```
 
-## Creating a SOAP-based service request
+## SOAP-basierte Serviceanforderung erstellen
 {: #creating-a-soap-based-service-request }
 
-You can use the `MFP.Server.invokeHttp` API method to create a **SOAP** envelope.  
-Note: To call a SOAP-based service in a JavaScript HTTP adapter, you can encode the SOAP XML envelope within the request body using **E4X**.
+Mit der API-Methode `MFP.Server.invokeHttp` können Sie ein **SOAP**-Envelope erstellen.  
+Hinweis: Wenn Sie in einem JavaScript-HTTP-Adapter einen SOAP-basierten Service aufrufen möchten,
+können Sie **E4X** verwenden, um das SOAP-XML-Envelope mit dem Anforderungshauptteil zu codieren. 
 
 ```js
 var request =
@@ -239,13 +276,14 @@ var request =
 		</soap:Envelope>;
 ```
 
-The `MFP.Server.invokeHttp(options)` method is then used to call a request for a SOAP service.  
-The Options object must include the following properties:
+Rufen Sie dann mit der Methode `MFP.Server.invokeHttp(options)` eine SOAP-Serviceanforderung auf.   
+Das Optionsobjekt muss die folgenden Eigenschaften enthalten: 
 
-* A `method` property: usually `POST`
-* A `returnedContentType` property: usually `XML`
-* A `path` property: a service path
-* A `body` property: `content` (SOAP XML as a string) and `contentType`
+* Eigenschaft `method`: in der Regel `POST`
+* Eigenschaft `returnedContentType`: in der Regel `XML`
+* Eigenschaft `path`: ein Servicepfad
+* Eigenschaft `body`: `content` (SOAP-XML als Zeichenfolge)
+und `contentType`
 
 ```js
 var input = {
@@ -261,10 +299,10 @@ var input = {
 var result = MFP.Server.invokeHttp(input);
 ```
 
-## Invoking results of SOAP-based service
+## Ergebnisse eines SOAP-basierten Service aufrufen
 {: #invoking-results-of-soap-based-service }
 
-The result is wrapped into a `JSON` object:
+Das Ergebnis ist in einem `JSON`-Objekt eingeschlossen. 
 
 ```json
 {
@@ -300,12 +338,12 @@ The result is wrapped into a `JSON` object:
 }
 ```
 
-Note the `Envelope` property, which is specific of SOAP-based requests.  
-The `Envelope` property contains the result content of the SOAP-based request.
+Beachten Sie, dass die Eigenschaft `Envelope` für SOAP-basierte Anforderungen spezifisch ist.   
+Die Eigenschaft `Envelope` enthält den Ergebnisinhalt zur SOAP-basierten Anforderung. 
 
-To access the XML content:
+Greifen Sie wie folgt auf den XML-Inhalt zu: 
 
-* On client-side, jQuery can be used to wrap the result string, and follow the DOM nodes:
+* Auf der Clientseite können Sie jQuery verwenden, um die Ergebniszeichenfolge einzuschließen und den DOM-Knoten zu folgen: 
 
 ```javascript
 var resourceRequest = new WLResourceRequest(
@@ -330,7 +368,7 @@ resourceRequest.send().then(
     }
 )
 ```
-* On server-side, create an XML object with the result string. The nodes can then be accessed as properties:
+* Erstellen Sie auf der Serverseite ein XML-Objekt mit der Ergebniszeichenfolge. Die Knoten sind dann als Eigenschaften zugänglich. 
 
 ```javascript
 var xmlDoc = new XML(result.Envelope.Body.GetWeatherResponse.GetWeatherResult);
@@ -342,13 +380,14 @@ var weatherInfo = {
 };
 ```
 
-## Sample adapter
+## Beispieladapter
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80/) the Adapters Maven project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80/), um das Maven-Adapterprojekt herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
 
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaScriptHTTP adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* Verwenden Sie Maven, die {{ site.data.keys.mf_cli }} oder eine IDE Ihrer Wahl, um
+den [JavaScript-HTTP-Adapter zu erstellen und zu implementieren](../../creating-adapters/). 
+* Informationen zum Testen oder Debuggen eines Adapters enthält das Lernprogramm [Adapter testen und debuggen](../../testing-and-debugging-adapters). 

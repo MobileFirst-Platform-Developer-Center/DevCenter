@@ -1,38 +1,39 @@
 ---
 layout: tutorial
-title: Java SQL Adapter
-breadcrumb_title: SQL Adapter
+title: Java-SQL-Adapter
+breadcrumb_title: SQL-Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
-  - name: Download Adapter Maven project
+  - name: Adapter-Maven-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 weight:
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-Java adapters give developers control over connectivity to a back end system. It is therefore the responsibility of the developer to ensure best practices regarding performance and other implementation details.
-This tutorial covers an example of a Java adapter that connects to a MySQL back end to make CRUD (Create, Read, Update, Delete) operations on a `users` table, using REST concepts.
+Mit Java-Adaptern haben Entwickler die Kontrolle über die Möglichkeiten von Verbindungen zu einem Back-End-System. Der Entwickler ist daher dafür verantwortlich, bewährte Verfahren hinsichtlich der Leistung und anderer Implementierungsdetails anzuwenden. In diesem Lernprogramm gibt es ein Beispiel für einen Java-Adapter, der eine Verbindung
+zu einem MySQL-Back-End herstellt, um mit REST-Konzepten CRUD-Operationen (Create, Read, Update, Delete) für eine Tabelle `users` auszuführen. 
 
-**Prerequisites:**
+**Voraussetzungen: **
 
-* Make sure to read the [Java Adapters](../) tutorial first.
-* This tutorial assumes knowledge of SQL.
+* Arbeiten Sie zuerst das Lernprogramm [Java-Adapter](../) durch. 
+* In diesem Lernprogramm werden SQL-Kenntnisse vorausgesetzt. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
-* [Setting up the data source](#setting-up-the-data-source)
-* [Implemeting SQL in the adapter Resource class](#implementing-sql-in-the-adapter-resource-class)
-* [Sample adapter](#sample-adapter)
+* [Datenquelle einrichten](#setting-up-the-data-source)
+* [SQL in der Adapterressourcenklasse implementieren](#implementing-sql-in-the-adapter-resource-class)
+* [Beispieladapter](#sample-adapter)
 
-## Setting up the data source
+## Datenquelle einrichten
 {: #setting-up-the-data-source }
 
-In order to configure the {{ site.data.keys.mf_server }} to be able to connect to the MySQL server, the adapter's XML file needs to be configured with **configuration properties**. These properties can later be edited through the {{ site.data.keys.mf_console }}.
+Für eine Konfiguration, die es {{ site.data.keys.mf_server }} ermöglicht, eine Verbindung zum MySQL-Server herzustellen,
+müssen **Konfigurationseigenschaften** in der Adapter-XML-Datei definiert werden. Diese Eigenschaften können später in der {{ site.data.keys.mf_console }} bearbeitet werden.
 
-Edit the adater.xml file and add the following properties:
+Bearbeiten Sie die Datei adater.xml und fügen Sie die folgenden Eigenschaften hinzu: 
 
 ```xml
 <mfp:adapter name="JavaSQL"
@@ -51,15 +52,16 @@ Edit the adater.xml file and add the following properties:
 </mfp:adapter>
 ```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Note:**  The configuration properties elements must always be located *below* the `JAXRSApplicationClass` element.  
-Here we define the connection settings and give them a default value, so they could be used later in the AdapterApplication class.
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Hinweis:** Die Elemente für die Konfigurationseigenschaften müssen
+sich immer *unter* dem Element `JAXRSApplicationClass` befinden.   
+Mit diesen Eigenschaften werden die Verbindungseinstellungen definiert und ihre Standardwerte festgelegt, die dann später in der Klasse AdapterApplication verwendet werden können.
 
-## Implementing SQL in the adapter Resource class
+## SQL in der Adapterressourcenklasse implementieren
 {: #implementing-sql-in-the-adapter-resource-class }
 
-The adapter Resource class is where requests to the server are handled.
+Die Adapterressourcenklasse behandelt Anforderungen an den Server. 
 
-In the supplied sample adapter, the class name is `JavaSQLResource`.
+Im bereitgestellten Beispieladapter hat die Klasse den Namen `JavaSQLResource`.
 
 ```java
 @Path("/")
@@ -67,12 +69,14 @@ In the supplied sample adapter, the class name is `JavaSQLResource`.
 }
 ```
 
-`@Path("/")` means that the resources will be available at the URL `http(s)://host:port/ProjectName/adapters/AdapterName/`.
+`@Path("/")` bedeutet, dass die Ressourcen unter der URL `http(s)://host:port/ProjectName/adapters/AdapterName/` verfügbar sind.
 
-### Using DataSource
+### Datenquelle verwenden
 {: #using-datasource }
 
-When the adapter is deployed, or whenever the configuration is changed from the {{ site.data.keys.mf_console }}, the adapter's `MFPJAXRSApplication`'s `init` method is called. This is a good place to [load the connection properties](../#configuration-api) and create a `DataSource`.
+Wenn der Adapter implementiert wird oder die Konfiguration in der {{ site.data.keys.mf_console }} geändert wird,
+wird die Methode `init` der Adapterklasse `MFPJAXRSApplication` aufgerufen. Dies ist eine geeignete Stelle für
+das [Laden der Verbindungseigenschaften](../#configuration-api) und das Erstellen einer Datenquelle (`DataSource`).
 
 ```java
 public class JavaSQLApplication extends MFPJAXRSApplication{
@@ -93,25 +97,25 @@ public class JavaSQLApplication extends MFPJAXRSApplication{
 }
 ```
 
-In the resource class, create a helper method to get an SQL connection.
-Use the `AdaptersAPI` to get the current `MFPJAXRSApplication` instance:
+Erstellen Sie in der Ressourcenklasse eine Helper-Methode, um eine SQL-Verbindung zu erhalten.
+Rufen Sie mit `AdaptersAPI` die aktuelle `MFPJAXRSApplication`-Instanz ab: 
 
 ```java
 @Context
 AdaptersAPI adaptersAPI;
 
 public Connection getSQLConnection() throws SQLException{
-  // Create a connection object to the database
+  // Verbindungsobjekt für die Datenbankverbindung erstellen
   JavaSQLApplication app = adaptersAPI.getJaxRsApplication(JavaSQLApplication.class);
   return app.dataSource.getConnection();
 }
 ```
 
 
-### Create User
+### Benutzer erstellen
 {: #create-user }
 
-Used to create a new user record in the database.
+Der Benutzer wird für die Erstellung eines neuen Benutzerdatensatzes in der Datenbank benötigt. 
 
 ```java
 @POST
@@ -130,38 +134,44 @@ public Response createUser(@FormParam("userId") String userId,
         insertUser.setString(3, lastName);
         insertUser.setString(4, password);
         insertUser.executeUpdate();
-        //Return a 200 OK
+        // Meldung "200 OK" zurückgeben
         return Response.ok().build();
     }
     catch (SQLIntegrityConstraintViolationException violation) {
-        //Trying to create a user that already exists
+        // Versuch, einen bereits vorhandenen Benutzer zu erstellen
         return Response.status(Status.CONFLICT).entity(violation.getMessage()).build();
     }
     finally{
-        //Close resources in all cases
+        // Ressourcen in allen Klassen schließen
         insertUser.close();
         con.close();
-    }  
+    }
 }
 ```
 
-Because this method does not have any `@Path`, it is accessible as the root URL of the resource. Because it uses `@POST`, it is accessible via `HTTP POST` only.  
-The method has a series of `@FormParam` arguments, which means that those can be sent in the HTTP body as `x-www-form-urlencoded` parameters.
+Da diese Methode keinen `@Path` hat, ist sie als Stamm-URL der Ressource zugänglich. Die Methode verwendet `@POST` und ist daher nur über `HTTP POST` zugänglich.   
+Die Methode hat eine Reihe von `@FormParam`-Argumenten, die im HTTP-Hauptteil als `x-www-form-urlencoded`-Parameter gesendet werden können. 
 
-It is also possible to pass the parameters in the HTTP body as JSON objects, by using `@Consumes(MediaType.APPLICATION_JSON)`, in which case the method needs a `JSONObject` argument, or a simple Java object with properties that match the JSON property names.
+Es ist auch möglich, die Parameter im HTTP-Hauptteil unter Verwendung von
+`@Consumes(MediaType.APPLICATION_JSON)` als JSON-Objekte zu übergeben.
+In dem Fall benötigt die Methode ein Argument `JSONObject` oder ein einfaches Java-Objekt mit
+Eigenschafften, die den JSON-Eigenschaftsnamen entsprechen. 
 
-The `Connection con = getSQLConnection();` method gets the connection from the data source that was defined earlier.
+Die Methode `Connection con = getSQLConnection();` ruft die Verbindung von der zuvor definierten Datenquelle ab. 
 
-The SQL queries are built by the `PreparedStatement` method.
+Die SQL-Abfragen werden von der Methode `PreparedStatement` erstellt. 
 
-If the insertion was successful, the `return Response.ok().build()` method is used to send a `200 OK` back to the client. If there was an error, a different `Response` object can be built with a specific HTTP status code. In this example, a `409 Conflict` error code is sent. It is advised to also check whether all the parameters are sent (not shown here) or any other data validation.
+Wenn die Einfügung erfolgreich verlaufen ist, wird die Methode `return Response.ok().build()` verwendet,
+um an den Client `200 OK` zurückzusenden. Sollte ein Fehler aufgetreten sein,
+kann ein anderes `Response`-Objekt mit einem bestimmten HTTP-Statuscode erstellt werden. In diesem Beispiel wird er Fehlercode `409 Conflict` gesendet. Sie sollten zudem überprüfen, ob alle Parameter gesendet wurden (was hier nicht demonstriert wird) oder ob eine andere Form der Datenvalidierung durchgeführt wurde. 
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:** Make sure to close resources, such as prepared statements and connections.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:** Stellen Sie sicher, dass Ressourcen
+wie vorbereitete Anweisungen und Verbindungen geschlossen werden.
 
-### Get User
+### Benutzer abrufen
 {: #get-user }
 
-Retrieve a user from the database.
+Rufen Sie einen Benutzer aus der Datenbank ab. 
 
 ```java
 @GET
@@ -190,7 +200,7 @@ public Response getUser(@PathParam("userId") String userId) throws SQLException{
 
     }
     finally{
-        //Close resources in all cases
+        // Ressourcen in allen Klassen schließen
         getUser.close();
         con.close();
     }
@@ -198,17 +208,19 @@ public Response getUser(@PathParam("userId") String userId) throws SQLException{
 }
 ```
 
-This method uses `@GET` with a `@Path("/{userId}")`, which means that it is available via `HTTP GET /adapters/UserAdapter/{userId}`, and the `{userId}` is retrieved by the `@PathParam("userId")` argument of the method.
+Diese Methode verwendet `@GET` mit `@Path("/{userId}")`, sodass
+sie über `HTTP GET /adapters/UserAdapter/{userId}` verfügbar ist.
+Die `{userId}` wird mit dem Argument `@PathParam("userId")` der Methode abgerufen. 
 
-If the user is not found, the `404 NOT FOUND` error code is returned.  
-If the user is found, a response is built from the generated JSON object.
+Wenn der Benutzer nicht gefunden wird, wird der Fehlercode `404 NOT FOUND` zurückgegeben.   
+Wenn der Benutzer gefunden wird, wird aus dem generierten JSON-Objekt eine Antwort erstellt. 
 
-Prepending the method with `@Produces("application/json")` makes sure that the `Content-Type` of the output is correct.
+Wenn der Methode `@Produces("application/json")` vorangestellt wird, wird sichergestellt, dass der `Content-Type` der Ausgabe korrekt ist. 
 
-### Get all users
+### Alle Benutzer abrufen
 {: #get-all-users }
 
-This method is similar to `getUser`, except for the loop over the `ResultSet`.
+Diese Methode ist abgesehen von der `ResultSet`-Schleife mit `getUser` vergleichbar. 
 
 ```java
 @GET
@@ -236,10 +248,10 @@ public Response getAllUsers() throws SQLException{
 }
 ```
 
-### Update user
+### Benutzer aktualisieren
 {: #update-user }
 
-Update a user record in the database.
+Aktualisieren Sie einen Benutzerdatensatz in der Datenbank. 
 
 ```java
 @PUT
@@ -274,7 +286,7 @@ public Response updateUser(@PathParam("userId") String userId,
         }
     }
     finally{
-        //Close resources in all cases
+        // Ressourcen in allen Klassen schließen
         getUser.close();
         con.close();
     }
@@ -282,12 +294,13 @@ public Response updateUser(@PathParam("userId") String userId,
 }
 ```
 
-When updating an existing resource, it is standard practice to use `@PUT` (for `HTTP PUT`) and to use the resource ID in the `@Path`.
+Für die Aktualisierung einer vorhandenen Ressource hat sich die Verwendung von `@PUT` (für `HTTP PUT`) und
+die Verwendung der Ressourcen-ID im `@Path` bewährt.
 
-### Delete user
+### Benutzer löschen
 {: #delete-user }
 
-Delete a user record from the database.
+Löschen Sie einen Benutzerdatensatz aus der Datenbank. 
 
 ```java
 @DELETE
@@ -312,7 +325,7 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
         }
     }
     finally{
-        //Close resources in all cases
+        // Ressourcen in allen Klassen schließen
         getUser.close();
         con.close();
     }
@@ -320,20 +333,21 @@ public Response deleteUser(@PathParam("userId") String userId) throws SQLExcepti
 }
 ```
 
-`@DELETE` (for `HTTP DELETE`) is used together with the resource ID in the `@Path`, to delete a user.
+`@DELETE` (für `HTTP DELETE`) wird zusammen mit der Ressourcen-ID im `@Path` verwendet, um einen Benutzer zu löschen. 
 
-## Sample adapter
+## Beispieladapter
 {: #sample-adapter }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80) the Adapters Maven project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80), um das Maven-Adapterprojekt herunterzuladen. 
 
-The Adapters Maven project includes the **JavaSQL** adapter described above.  
-Also included is an SQL script in the **Utils** folder.
+Zum Maven-Adapterprojekt gehört der oben beschriebene **JavaSQL**-Adapter.   
+Außerdem ist im Ordner **Utils** des Projekts ein SQL-Script enthalten. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
 
-* Run the .sql script in your SQL database.
-* Make sure that the `mobilefirst@%` user has all access permissions assigned.
-* Use either Maven, {{ site.data.keys.mf_cli }} or your IDE of choice to [build and deploy the JavaSQL adapter](../../creating-adapters/).
-* To test or debug an adapter, see the [testing and debugging adapters](../../testing-and-debugging-adapters) tutorial.
+* Führen Sie in Ihrer SQL-Datenbank das SQL-Script aus. 
+* Stellen Sie sicher, dass dem Benutzer `mobilefirst@%` alle Zugriffsberechtigungen erteilt wurden. 
+* Verwenden Sie Maven, die {{ site.data.keys.mf_cli }} oder eine IDE Ihrer Wahl, um
+den [Java-SQL-Adapter zu erstellen und zu implementieren](../../creating-adapters/). 
+* Informationen zum Testen oder Debuggen eines Adapters enthält das Lernprogramm [Adapter testen und debuggen](../../testing-and-debugging-adapters). 
