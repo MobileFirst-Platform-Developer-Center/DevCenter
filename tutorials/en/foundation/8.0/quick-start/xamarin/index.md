@@ -56,33 +56,35 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
 * If you're devleoping for iOS, paste the following code inside **FinishedLaunching** method of the **AppDelegate.cs** file:
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance();
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
+  >Replace ```<ClassName>``` with the name of your Class.
 * If you're devleoping for Android, include the following line of code inside **OnCreate** method of the **MainActivity.cs** file:
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
+  >Replace ```<ClassName>``` with the name of your Class.
 * Define a method to obtain the access token and perform a resource request to the MFP Server as below.
-   
+
     ```csharp
     public async void ObtainToken()
-           { 
+           {
             try
                    {
-       
+
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-       
+
                        if (accessToken.Value != null && accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
-       
+
                            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
                            request.SetQueryParameter("name", "world");
                            WorklightResponse response = await request.Send();
-       
+
                            System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
                        }
                    }
@@ -94,7 +96,7 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
            }
     }
    ```
-  
+
 * Invoke **ObtainToken** method within a class constructor or on click of a button.
 
 ### 4. Deploy an adapter
