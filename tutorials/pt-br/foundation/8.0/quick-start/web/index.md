@@ -6,35 +6,35 @@ relevantTo: [javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão Geral (Overview)
+## Visão Geral 
 {: #overview }
 O propósito desta demonstração é experimentar um fluxo de ponta a ponta:
 
-1. Um aplicativo de amostra que é pré-empacotado com o SDK do cliente {{site.data.keys.product_adj }} é registrado e transferido
-por download a partir do {{site.data.keys.mf_console }}.
-2. Um adaptador novo ou fornecido é implementado no {{site.data.keys.mf_console }}.  
+1. Um aplicativo de amostra que é pré-empacotado com o SDK do cliente {{ site.data.keys.product_adj }} é registrado e transferido
+por download a partir do {{ site.data.keys.mf_console }}.
+2. Um adaptador novo ou fornecido é implementado no {{ site.data.keys.mf_console }}.  
 3. A lógica de aplicativo é alterada para fazer uma solicitação de recurso.
 
 **Resultado final**:
 
-* Ping de {{site.data.keys.mf_server }} executado com sucesso.
+* Ping de {{ site.data.keys.mf_server }} executado com sucesso.
 * Recuperação de dados usando adaptador realizada com sucesso.
 
 #### Pré-requisitos:
 {: #prerequisites }
 * Um navegador da web moderno
-* *Opcional*. {{site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
-* *Opcional*. Independente {{site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
+* *Opcional*. {{ site.data.keys.mf_cli }} ([download]({{site.baseurl}}/downloads))
+* *Opcional*. Independente {{ site.data.keys.mf_server }} ([download]({{site.baseurl}}/downloads))
 
-### 1. Iniciando o {{site.data.keys.mf_server }}
+### 1. Iniciando o {{ site.data.keys.mf_server }}
 {: #starting-the-mobilefirst-server }
 Certifique-se de ter [criado uma instância do Mobile Foundation](../../bluemix/using-mobile-foundation) ou  
-Se estiver usando [{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navegue
+Se estiver usando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), navegue
 para a pasta do servidor e execute o comando: `./run.sh` em Mac e Linux ou `run.cmd` no Windows.
 
 ### 2. Criando e registrando um aplicativo
 {: #creating-and-registering-an-application }
-Em uma janela do navegador, abra {{site.data.keys.mf_console }} carregando a URL:
+Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a URL:
 `http://your-server-host:server-port/mfpconsole`. Se estiver executando localmente, use:
 [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). O nome de usuário/senha são *admin/admin*.
  
@@ -90,13 +90,13 @@ WLAuthorizationManager.obtainAccessToken()
 ### 4. Implemente um adaptador
 {: #deploy-an-adapter }
 Faça o download [deste artefato .adapter preparado](../javaAdapter.adapter) e implemente-o a partir do
-{{site.data.keys.mf_console }} usando a ação **Ações → Implementar Adaptador**.
+{{ site.data.keys.mf_console }} usando a ação **Ações → Implementar Adaptador**.
 
 Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.  
         
 1. Selecione a opção **Ações → Download de Amostra**. Faça o download da amostra do adaptador **Java** "Hello World".
 
-   > Se o Maven e o {{site.data.keys.mf_cli }} não estiverem instalados, siga as instruções **Configure seu ambiente de
+   > Se o Maven e o {{ site.data.keys.mf_cli }} não estiverem instalados, siga as instruções **Configure seu ambiente de
 desenvolvimento** na tela.
 
 2. Em uma janela de **Linha de Comandos**, navegue para a pasta raiz do projeto Maven do adaptador e execute o comando:
@@ -105,7 +105,7 @@ desenvolvimento** na tela.
    mfpdev adapter build
    ```
 
-3. Quando a compilação for concluída, implemente-a a partir do {{site.data.keys.mf_console }} usando a ação **Ações →
+3. Quando a compilação for concluída, implemente-a a partir do {{ site.data.keys.mf_console }} usando a ação **Ações →
 Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/target**.
     
     <img class="gifplayer" alt="Implemente um adaptador" src="create-an-adapter.png"/>   
@@ -117,10 +117,10 @@ Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/ta
 1. Em uma janela de **Linha de Comandos**, navegue para a pasta **[project root] → node-server**.
 2. Execute o comando: `npm start` para instalar a configuração do Node.js necessária e inicie o servidor Node.js.
 3. Abra o arquivo **[project root] → node-server → server.js** e edite as variáveis **host** e
-**port** com os valores corretos para seu {{site.data.keys.mf_server }}.
-    * Se estiver usando um {{site.data.keys.mf_server }} local, os valores normalmente serão **http**,
+**port** com os valores corretos para seu {{ site.data.keys.mf_server }}.
+    * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**,
 **localhost** e **9080**.
-    * Se estiver usando um {{site.data.keys.mf_server }} remoto (no Bluemix), os valores normalmente serão
+    * Se estiver usando um {{ site.data.keys.mf_server }} remoto (no Bluemix), os valores normalmente serão
 **https**, **your-server-address** e **443**. 
 
    Por
@@ -152,9 +152,9 @@ sinalização funcionar.
 <br clear="all"/>
 ### Resultados
 {: #results }
-* Um clique no botão **Ping {{site.data.keys.mf_server }}** exibirá **Conectado ao
-{{site.data.keys.mf_server }}**.
-* Se o aplicativo foi capaz de se conectar ao {{site.data.keys.mf_server }}, uma chamada de solicitação de recurso usando o
+* Um clique no botão **Ping {{ site.data.keys.mf_server }}** exibirá **Conectado ao
+{{ site.data.keys.mf_server }}**.
+* Se o aplicativo foi capaz de se conectar ao {{ site.data.keys.mf_server }}, uma chamada de solicitação de recurso usando o
 adaptador Java implementado acontecerá.
 
 A resposta do adaptador é então exibida em um alerta.
@@ -162,7 +162,7 @@ A resposta do adaptador é então exibida em um alerta.
 ## Etapas Seguintes
 {: #next-steps }
 Saiba mais sobre como usar adaptadores em aplicativos e como integrar serviços adicionais, como Notificações Push, usando a estrutura de
-segurança do {{site.data.keys.product_adj }} e mais:
+segurança do {{ site.data.keys.product_adj }} e mais:
 
 - Revise os tutoriais [Desenvolvimento de Aplicativo](../../application-development/)
 - Revise os tutoriais [Desenvolvimento de Adaptadores](../../adapters/)
