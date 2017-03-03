@@ -23,4 +23,4 @@ O Xamarin Studio pode ser transferido por download em [Xamarin Studio Downloads]
 
 ## O que Vem a Seguir
 {: #whats-next }
-Agora que os ambientes de desenvolvimento do {{site.data.keys.product_full }} e do Xamarin estão configurados, continue com a categoria [Iniciação Rápida](../../../quick-start/xamarin/) para uma experiência com o {{site.data.keys.product }} ou com [Todos os tutoriais](../../../all-tutorials) para saber aspectos específicos de desenvolvimento do {{site.data.keys.product }}. 
+Agora que os ambientes de desenvolvimento do {{ site.data.keys.product_full }} e do Xamarin estão configurados, continue com a categoria [Iniciação Rápida](../../../quick-start/xamarin/) para uma experiência com o {{ site.data.keys.product }} ou com [Todos os tutoriais](../../../all-tutorials) para saber aspectos específicos de desenvolvimento do {{ site.data.keys.product }}. 

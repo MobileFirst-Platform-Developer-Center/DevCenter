@@ -9,7 +9,7 @@ weight: 8
 {% comment %}
 Do note use keywords in the keyword terms, as this presents issues with the glossary sort tool. (You can use keywords in the definitions.)
 When the term should logically use a keyword, use the keyword text in the term, and add a no-translation comment.
-For example, instead of using "{{site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
+For example, instead of using "{{ site.data.keys.mf_console }}" for the console term, use "MobileFirst Operations Console" and add the following between the term and the definition (starting with the "START NON-TRANSLATABLE" comment):
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
 <!-- START NON-TRANSLATABLE -->
@@ -19,7 +19,8 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 <!-- END NON-TRANSLATABLE -->
 
 <br/>
-Este glossário fornece termos e definições para o software e produtos do {{site.data.keys.product }}.
+Este glossário fornece termos e definições para o software e os produtos do {{ site.data.keys.product }}.
+
 As referências cruzadas a seguir são utilizadas neste glossário:
 
 * **Consulte** o encaminha de um termo não preferencial para um termo preferencial
@@ -28,7 +29,7 @@ ou de uma abreviação para o formato completo.
 
 Para obter outros termos e definições, consulte o [website de Terminologia IBM](http://www.ibm.com/software/globalization/terminology/).
 
-## A
+## I
 {: #a }
 
 ### política de aquisição
@@ -39,14 +40,14 @@ um dispositivo móvel. A política é definida pelo código do aplicativo.
 ### adaptador
 {: #adapter }
 O código do lado do servidor de um aplicativo
-{{site.data.keys.product_adj }}. Os adaptadores
+{{ site.data.keys.product_adj }}. Os adaptadores
 conectam-se a aplicativos corporativos, entregam dados para os aplicativos remotos
 e a partir deles, e executam qualquer lógica necessária do lado do servidor nos dados
 enviados.
 
 ### banco de dados de administração
 {: #administration-database }
-O banco de dados do {{site.data.keys.mf_console }} e dos serviços de administração. As tabelas de banco de dados definem elementos, como aplicativos,
+O banco de dados do {{ site.data.keys.mf_console }} e dos serviços de administração. As tabelas de banco de dados definem elementos, como aplicativos,
 adaptadores, projetos com suas descrições e ordens de magnitude.
 
 ### Administration Services
@@ -75,7 +76,7 @@ Um aplicativo de dispositivo móvel ou da web. Consulte também aplicativo da we
 
 ### Centro de aplicativos
 {: #application-center }
-Um componente do {{site.data.keys.product_adj }} que pode ser usado para compartilhar aplicativos e facilitar a colaboração entre os membros da equipe em um único repositório de aplicativos móveis.
+Um componente do {{ site.data.keys.product_adj }} que pode ser usado para compartilhar aplicativos e facilitar a colaboração entre os membros da equipe em um único repositório de aplicativos móveis.
 
 ### Instalador do Application Center
 {: #application-center-installer }
@@ -109,7 +110,7 @@ ou parâmetro).
 
 ### notificação de transmissão
 {: #broadcast-notification }
-Uma notificação que é destinada a todos os usuários de um aplicativo específico do {{site.data.keys.product_adj }}. Consulte também notificação baseada em tag.
+Uma notificação que é destinada a todos os usuários de um aplicativo específico do {{ site.data.keys.product_adj }}. Consulte também notificação baseada em tag.
 
 ### definição de construção
 {: #build-definition }
@@ -407,7 +408,7 @@ Consulte [adaptador](#adapter)
 Do not translate "MobileFirst" in the term above (site.data.keys.product_adj keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-Um componente do lado do servidor para o IMFData SDK que pode ser usado para proteger as chamadas do aplicativo móvel para o Cloudant usando recursos de segurança OAuth do {{site.data.keys.product }}. O {{site.data.keys.product_adj }} Data Proxy requer uma autenticação por meio do Trust Association Interceptor.
+Um componente do lado do servidor para o IMFData SDK que pode ser usado para proteger as chamadas do aplicativo móvel para o Cloudant usando recursos de segurança OAuth do {{ site.data.keys.product }}. O {{ site.data.keys.product_adj }} Data Proxy requer uma autenticação por meio do Trust Association Interceptor.
 
 ### MobileFirst Operations Console
 {: #mobilefirst-operations-console }
@@ -418,9 +419,9 @@ Do not translate "MobileFirst Operations Console" in the term above (site.data.k
 <!-- END NON-TRANSLATABLE -->
 Uma interface baseada na Web que é usada para controlar e
 gerenciar ambientes de tempo de execução do
-{{site.data.keys.product_adj }}
+{{ site.data.keys.product_adj }}
 que são implementados no
-{{site.data.keys.mf_server }}
+{{ site.data.keys.mf_server }}
 e para coletar e analisar estatísticas do usuário.
 
 ### Ambiente de tempo de execução do MobileFirst
@@ -442,7 +443,7 @@ compactado como um aplicativo da web (arquivo WAR).
 Do not translate "MobileFirst Server" in the term above (site.data.keys.mf_server keyword).
 {% endcomment %}
 <!-- END NON-TRANSLATABLE -->
-Um componente do {{site.data.keys.product_adj }} que manipula segurança, conexões de backend, notificações push, gerenciamento de aplicativo móvel e análise de dados. O {{site.data.keys.mf_server }} é uma coleção de aplicativos que são executados em um servidor de aplicativos e age como um contêiner de tempo de execução para ambientes de tempo de execução do {{site.data.keys.product_adj }}.
+Um componente do {{ site.data.keys.product_adj }} que manipula segurança, conexões de backend, notificações push, gerenciamento de aplicativo móvel e análise de dados. O {{ site.data.keys.mf_server }} é uma coleção de aplicativos que são executados em um servidor de aplicativos e age como um contêiner de tempo de execução para ambientes de tempo de execução do {{ site.data.keys.product_adj }}.
 
 ## N
 {: #n }
@@ -484,7 +485,7 @@ Um sistema de certificados digitais, autoridades de certificação e outras auto
 
 ### Ponte PKI
 {: #pki-bridge }
-Um conceito  {{site.data.keys.mf_server }} que permite que a estrutura de Autenticação de Certificado de Usuário se comunique com um PKI.
+Um conceito  {{ site.data.keys.mf_server }} que permite que a estrutura de Autenticação de Certificado de Usuário se comunique com um PKI.
 
 ### poll
 {: #poll }
@@ -502,7 +503,7 @@ adaptadores, arquivos de configuração, código Java customizado e bibliotecas.
 
 ### arquivo WAR do projeto
 {: #project-war-file }
-Um archive web (WAR) que contém as configurações para o ambiente de tempo de execução do {{site.data.keys.product_adj }} e é implementado em um servidor de aplicativos.
+Um archive web (WAR) que contém as configurações para o ambiente de tempo de execução do {{ site.data.keys.product_adj }} e é implementado em um servidor de aplicativos.
 
 ### provisão
 {: #provisin }
