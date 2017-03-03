@@ -142,6 +142,7 @@ To add an application to make it available for installation on mobile devices:
    {: windows-10-universal}
    The application file name extension is **.appx**.
 
+
    Windows Store .appx packages can depend on one or more Windows component library app packages, also known as "framework" packages. MobileFirst hybrid applications for Windows 8 depend on the Microsoft.WinJS framework package. When you use Microsoft Visual Studio to generate the application package, the dependencies packages are also generated and packaged as separate .appx files. To successfully install such applications by using the mobile client, you must upload the application .appx package and any other dependency package onto the Application Center server. When you upload a dependency package, it appears as inactive in the Application Center console. This behavior is expected, so that the framework package does not appear as an installable application in the client. Later, when a user installs an application, the mobile client checks whether the dependency is already installed on the device. If the dependency package is not installed, the client automatically retrieves the dependency package from the Application Center server and installs it on the device. For more information about dependencies, see [Dependencies](http://msdn.microsoft.com/library/windows/apps/hh464929.aspx#dependencies) in the Windows developer documentation about packages and deployment of applications.
 
 4. Click **Next** to access the properties to complete the definition of the application.
@@ -245,7 +246,7 @@ For more information about the following properties, see the Windows Store docum
 * **Label** is the title of the application; **Package** display name attribute in the manifest file of the application.
 * **Vendor** is the vendor who created the application; **Publisher** attribute in the manifest file of the application.
 
-### Properties of Windows 10 Universal applications.
+### Properties of Windows 10 Universal applications
 {: #properties-of-windows-10-universal-applications}
 
 * **Package** is the product identifier of the application; **Package** name attribute in the manifest file of the application.
