@@ -16,7 +16,7 @@ Esse tutorial explica as etapas que um desenvolvedor precisa seguir para desenvo
 * Xcode 7.1 e mais recente 
 * iOS 8 e mais recente 
 
-**Pré-requisito:** Conforme você configura o ambiente de desenvolvimento do iOS, certifique-se também de ler o tutorial [Configurando o ambiente de desenvolvimento do {{site.data.keys.product }}](../mobilefirst/). 
+**Pré-requisito:** Conforme você configura o ambiente de desenvolvimento do iOS, certifique-se também de ler o tutorial [Configurando o ambiente de desenvolvimento do {{ site.data.keys.product }}](../mobilefirst/). 
 
 ### Registro
 {: #registration }
@@ -50,5 +50,5 @@ O Xcode fornece um Simulador iOS para testar seu aplicativo. Para obter uma expl
 
 ## O que Vem a Seguir
 {: #whats-next }
-Agora que os ambientes de desenvolvimento do {{site.data.keys.product_adj }} e do iOS estão configurados, continue com a categoria [Iniciação Rápida](../../../quick-start/ios/) para uma experiência com o {{site.data.keys.product }} ou com [Todos os tutoriais](../../../all-tutorials) para saber aspectos específicos de desenvolvimento do {{site.data.keys.product }}. 
+Agora que os ambientes de desenvolvimento do {{ site.data.keys.product_adj }} e do iOS estão configurados, continue com a categoria [Iniciação Rápida](../../../quick-start/ios/) para uma experiência com o {{ site.data.keys.product }} ou com [Todos os tutoriais](../../../all-tutorials) para saber aspectos específicos de desenvolvimento do {{ site.data.keys.product }}. 
 
