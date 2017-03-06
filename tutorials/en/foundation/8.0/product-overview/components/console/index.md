@@ -127,7 +127,7 @@ Manage and configure registered applications by use of [Direct Update](../../../
 
 #### Authentication and Security
 {: #authentication-and-security }
-Configure application security parameters, such as the default token expiration value, map scope elements to security checks, define mandatory application scopes and configure security check options.
+Configure application security parameters, such as the default token expiration value, map scope elements to security checks, define mandatory application scopes, and configure security-check options.
 
 > [Learn more](../../../authentication-and-security/) about the {{ site.data.keys.product_adj }} security framework.
 
