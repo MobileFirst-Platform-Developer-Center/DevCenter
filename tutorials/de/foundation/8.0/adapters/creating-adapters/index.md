@@ -113,7 +113,8 @@ Sie können wählen, ob Sie den Befehl interaktiv oder direkt ausführen möchte
 #### Interaktiver Modus
 {: #interactive-mode-archetype }
 
-1. Navigieren Sie in einem **Befehlszeilenfenster** zu einer Position Ihrer Wahl. An dieser Position wird das Maven-Projekt generiert. 
+1. Navigieren Sie in einem **Befehlszeilenfenster** zu einer Position Ihrer Wahl.   
+An dieser Position wird das Maven-Projekt generiert. 
 
 2. Ersetzen Sie den Platzhalter für den Wert von **DarchetypeArtifactId** durch den tatsächlichen Wert und führen Sie dann den Befehl aus: 
 

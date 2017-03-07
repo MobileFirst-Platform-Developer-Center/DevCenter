@@ -1,34 +1,44 @@
 ---
 layout: tutorial
-title: Configuring Device Single Sign-On (SSO)
-breadcrumb_title: Device SSO
+title: Geräte-SSO konfigurieren
+breadcrumb_title: Geräte-SSO
 relevantTo: [android,ios,windows,cordova]
 weight: 11
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_full }} offers a Single Sign-On (SSO) feature which enables sharing the state of any custom security check between multiple applications on the same device. For example, by using Device SSO, users can successfully sign on to one application on their device and also be authenticated on other applications on the same device that uses the same implementation.
+Die {{ site.data.keys.product_full }} bietet ein SSO-Feature (Single Sign-on) an,
+mit dem mehrere Anwendungen auf einem Gerät den Zustand angepaster Sicherheitsüberprüfungen teilen können. Benutzer können sich beispielsweise mit dem Geräte-SSO erfolgreich bei einer Anwendung auf ihrem Gerät anmelden und werden gleichzeitig für andere Anwendungen dieser Implementierung auf demselben Gerät authentifiziert. 
 
-**Prerequisite**: Make sure to read the [Authentication and Security](../) tutorials.
+**Voraussetzung**: Arbeiten Sie die Lernprogramme zum Thema [Authentifizierung und Sicherheit](../) durch. 
 
-## Configuring SSO
+## SSO konfigurieren
 {: #configuring-sso }
-In the {{ site.data.keys.mf_console }}:
+Gehen Sie in der {{ site.data.keys.mf_console }} wie folgt vor:
 
-1. Navigate to **[your application] → Security tab →  Security-Check Configurations** section.
-2. Click the **New** button to create a new security check configuration, or the **Edit** icon if a security check configuration already exists.
-3. In the **Configure Security-Check Properties** dialog, set the **Enable Device SSO** setting to **true** and press `OK`.
+1. Navigieren Sie zum Abschnitt **[Ihre Anwendung] → Register "Sicherheit" →  Konfigurationen für Sicherheitsüberprüfungen**. 
+2. Klicken Sie auf die Schaltfläche **Neu**, um eine neue
+Sicherheitsprüfungskonfiguration zu erstellen, oder auf das Symbol
+**Bearbeiten**, falls es bereits eine Sicherheitsprüfungskonfiguration gibt. 
+3. Setzen Sie im Dialog **Eigenschaften für Sicherheitsüberprüfungen konfigurieren**
+die Einstellung **Geräte-SSO aktivieren** auf **wahr** und klicken Sie auf `OK`.
 
-Repeat these steps for each of the applications you want the enable Device SSO for.
+Wiederholen Sie diese Schritte für jede Anwendung, für die Sie das Geräte-SSO aktivieren möchten. 
 
-<img class="gifplayer" alt="Configuring Device SSO in the {{ site.data.keys.mf_console }}" src="enable-device-sso.png"/>
+<img class="gifplayer" alt="Geräte-SSO in der {{ site.data.keys.mf_console }} konfigurieren" src="enable-device-sso.png"/>
 
-You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a {{ site.data.keys.mf_server }}.
+Sie können auch die JSON-Konfigurationsdatei der Anwendung manuell bearbeiten und die erforderliche Konfiguration definieren.
+Senden Sie dann die Änderungen per Push-Operation zurück an {{ site.data.keys.mf_server }}.
 
-1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
-2. Open the configuration file, located in the **[project-folder]\mobilefirst** folder.
-3. Edit the file to enable device SSO for your selected custom security check: device SSO is enabled by setting the `enableSSO` property of a custom security check to `true`. The property configuration is contained within a security-check object that is nested in a `securityCheckConfigurations` object. Locate these objects in your application descriptor file, or create them if they are missing. For example:
+1. Navigieren Sie in eiem **Befehlszeilenfenster** zum Projektstammverzeichnis
+und führen Sie den Befehl `mfpdev app pull` aus.
+2. Öffnen Sie die Konfigurationsdatei aus dem Ordner **[Projektordner]\mobilefirst**. 
+3. Bearbeiten Sie die Datei, um das Geräte-SSO für Ihre ausgewählte angepasste Sicherheitsüberprüfung zu aktivieren.
+Das Geräte-SSO wird aktiviert, indem die Eigenschaft `enableSSO` einer angepassten Sicherheitsüberprüfung auf
+`true` gesetzt wird. Die Eigenschaftskonfiguration ist in einem Sicherheitsprüfungsobjekt enthalten, das sich verschachtelt in einem
+Objekt `securityCheckConfigurations` befindet. Suchen
+Sie diese Objekte in Ihrer Anwendungsdeskriptordatei oder - wenn sie nicht vorhanden sind - erstellen Sie sie. Beispiel: 
 
    ```xml
    "securityCheckConfigurations": {
@@ -40,19 +50,20 @@ You can also manually edit the application's configuration JSON file with the re
    }
    ```
    
-4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
+4. Implementieren Sie die aktualisierte JSON-Konfigurationsdatei. Führen Sie dazu den Befehl `mfpdev app push` aus.
 
-## Using Device SSO with a Pre-Existing Sample
+## Geräte-SSO für vorhandenes Beispiel verwenden
 {: #using-device-sso-with-a-pre-existing-sample }
-Read the  [Credential Validation](../credentials-validation/) tutorial because its sample is used to configure Device SSO.  
-For this demonstration, the Cordova sample application is used, however you can do the same also with the iOS, Android, and Windows sample applications.
+Gehen Sie das Lernprogramm [Berechtigungsnachweise validieren](../credentials-validation/) durch, weil das Beispiel aus dem Lernprogramm für das Konfigurieren des Geräte-SSO verwendet wird.   
+Zur Demonstration wird die Cordova-Beispielanwendung verwendet. Sie können aber auch die iOS-, Android- oder Windows-Beispielanwendung verwenden. 
 
-1. Follow the [sample usage instructions](../credentials-validation/javascript/#sample-usage).
-2. Repeat the steps with a different sample name and application identifier.
-3. Run both applications on the same device. Notice how in each application you are prompted for the pincode ("1234").
-4. In the {{ site.data.keys.mf_console }}, set `Enable Device SSO` to `true` for each of the applications, as instructed above.
-5. Quit both applications and try again. In the first application you open, you are prompted to enter the pincode once by tapping the **Get Balance** button. After you open the second application and tap the **Get Balance** button, you do not need to enter the pincode again to get the balance.
-`
-Note that the `PinCodeAttempts` security check has a 60-second expiration token. Therefore, after one more attempt after 60 seconds, the second application requires a pincode.
+1. Folgen Sie den [Anweisungen zur Verwendung des Beispiels](../credentials-validation/javascript/#sample-usage).
+2. Wiederholen Sie die Schritte mit einem anderen Beispielnamen und einer anderen Anwendungs-ID. 
+3. Führen Sie beide Anwendungen auf demselben Gerät aus. Wie Sie sehen, werden Sie in jeder Anwendung zur Eingabe des PIN-Codes ("1234") aufgefordert.
+4. Setzen Sie in der {{ site.data.keys.mf_console }} die Einstellung `Geräte-SSO aktivieren` für jede der Anwendungen auf
+`wahr`, wie weiter oben beschrieben. 
+5. Beenden Sie beide Anwendungen und versuchen Sie es erneut. In der ersten Anwendung, die Sie öffnen, werden Sie zur einmaligen Eingabe des PIN-Codes aufgefordert, wenn Sie auf die Schaltfläche **Get Balance** tippen. Wenn Sie die zweite Anwendung öffnen und auf die Schaltfläche **Get Balance** tippen, müssen Sie
+den PIN-Code nicht erneut eingeben, um den Kontostand abrufen zu können.
+`Beachten Sie`, dass das Token für die Sicherheitsüberprüfung von PinCodeAttempts nach 60 Sekunden abläuft. Wenn also ein weiterer Versuch nach Ablauf von 60 Sekunden unternommen wird, ist für die zweite Anwendung ein PIN-Code erforderlich. 
 
-![pincode cordova sample application](pincode-attempts-cordova.png)
+![Cordova-Beispielanwendung mit PIN-Code](pincode-attempts-cordova.png)

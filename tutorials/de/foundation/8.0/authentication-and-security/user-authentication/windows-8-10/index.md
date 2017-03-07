@@ -1,33 +1,37 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Windows 8.1 Universal and Windows 10 UWP applications
+title: Abfrage-Handler in universellen Windows-8.1-Anwendungen und Windows-10-UWP-Anwendungen implementieren
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 5
 downloads:
-  - name: Download RememberMe Win8 project
+  - name: Win8-Projekt RememberMe herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80
-  - name: Download RememberMe Win10 project
+  - name: Win10-Projekt RememberMe herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80
-  - name: Download PreemptiveLogin Win8 project
+  - name: Win8-Projekt PreemptiveLogin herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80
-  - name: Download PreemptiveLogin Win10 project
+  - name: Win10-Projekt PreemptiveLogin herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: Maven-Projekt SecurityCheck herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck** [challenge handler implementation](../../credentials-validation/windows-8-10) tutorial.
+**Voraussetzung:** Arbeiten Sie zuerst den Abschnitt
+**CredentialsValidationSecurityCheck** des Lernprogramms [Abfrage-Handler implementieren](../../credentials-validation/windows-8-10) durch. 
 
-The challenge handler tutorial demonstrate a few additional features (APIs) such as preemptive `Login`, `Logout`, and `ObtainAccessToken`.
+Das Abfrage-Handler-Lernprogramm demonstriert einige zusätzliche Features (APIs) wie die bevorrechtigte Anmeldung und Abmeldung sowie das bevorrechtigte Abrufen eines Zugriffstokens für einen Bereich
+(`Login`, `Logout` und `ObtainAccessToken`).
 
-## Login
+## Anmeldung
 {: #login }
-In this example, `UserLoginSecurityCheck` expects *key:value*s called `username` and `password`. Optionally, it also accepts a Boolean `rememberMe` key, which tells the security check to remember this user for a longer period. In the sample application, this is collected by a Boolean value from a checkbox in the login form.
+In diesem Beispiel erwartet `UserLoginSecurityCheck`, dass die Schlüsselwerte (*key:values*) `username` und `password` aufgerufen werden. Optional wird auch ein boolescher Schlüssel `rememberMe` akzeptiert, der
+die Sicherheitsüberprüfung auffordert, sich diesen Benutzer für einen längeren Zeitraum zu merken, In der Beispielanwendung wird dieser boolesche Wert in Form eines Kontrollkästchens im Anmeldeformular erfasst. 
 
-The `credentials` argument is a `JSONObject` containing `username`, `password`, and `rememberMe`:
+Das Argument `credentials` ist ein `JSONObject`,
+das `username`, `password` und `rememberMe` enthält:
 
 ```csharp
 public override void SubmitChallengeAnswer(object answer)
@@ -36,19 +40,23 @@ public override void SubmitChallengeAnswer(object answer)
 }
 ```
 
-You may also want to log in a user without any challenge being received. For example, you can show a login screen as the first screen of the application, or show a login screen after a logout, or a login failure. Those scenarios are called **preemptive logins**.
+Vielleicht möchten Sie ja, dass sich ein Benutzer ohne den Empfang einer Abfrage anmelden kann. Sie könnten beispielsweise eine Anmeldeanzeige als erste Anzeige der Anwendung einblenden oder eine Anmeldeanzeige nach der Abmeldung oder nach einem Anmeldefehler anzeigen. Diese Szenarien werden als **bevorrechtigte Anmeldungen** bezeichnet.
 
-You cannot call the `challengeAnswer` API if there is no challenge to answer. For those scenarios, the {{ site.data.keys.product }} SDK includes the `Login` API:
+Sie können die API `challengeAnswer` nicht aufrufen, wenn es keine zu beantwortende Abfrage gibt. Für solche Szenarien enthält das
+SDK der {{ site.data.keys.product }} die API `Login`. 
 
 ```csharp
 WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Login(String securityCheckName, JObject credentials);
 ```
 
-If the credentials are wrong, the security check sends back a **challenge**.
+Wenn die Berechtigungsnachweise nicht stimmen, sendet die Sicherheitsüberprüfung eine **Abfrage** zurück.
 
-It is the developer's responsibility to know when to use `Login`, as oppposed to `challengeAnswer`, based on the application's needs. One way to achieve this is to define a Boolean flag, for example `isChallenged`, and set it to `true` when `HandleChallenge` is reached, or set it to `false` in any other cases (failure, success, initialization, etc).
+Es ist die Verantwortung des Anwendungsentwicklers zu wissen, wann für eine bestimmte Anwendung `Login` und wann `challengeAnswer` zu verwenden ist. Dazu kann der Entwickler
+beispielsweise ein boolesches Flag definieren, z. B. `isChallenged`, und dieses auf `true` setzen,
+wenn `HandleChallenge` erreicht wird, oder das Flag in allen anderen Fällen (Fehler, Erfolg, Initialisierung usw.) auf
+`false` setzen. 
 
-When the user clicks the **Login** button, you can dynamically choose which API to use:
+Wenn der Benutzer auf die Anmeldeschaltfläche (**Login**) klickt, kann dynamisch entschieden werden, welche API zu verwenden ist: 
 
 ```csharp
 public async void login(JSONObject credentials)
@@ -63,11 +71,13 @@ public async void login(JSONObject credentials)
     }
 }
 ```
-## Obtaining an access token
+## Zugriffstoken anfordern
 {: #obtaining-an-access-token }
-Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in, when the application starts.
+Da diese Sicherheitsüberprüfung die Funktion **RememberMe** (in Form des booleschen Schlüssels
+`rememberMe`) unterstützt, sollte sinnvollerweise überprüft werden,
+ob der Client angemeldet ist, wenn die Anwendung gestartet wird. 
 
-The {{ site.data.keys.product }} SDK provides the `ObtainAccessToken` API to ask the server for a valid token:
+Das SDK der {{ site.data.keys.product }} stellt die API `ObtainAccessToken` bereit, um den Server nach einem gültigen Token zu fragen: 
 
 ```csharp
 WorklightAccessToken accessToken = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.ObtainAccessToken(String scope);
@@ -83,16 +93,17 @@ else
 
 ```
 
-If the client is already logged-in or is in the *remembered* state, the API triggers a success. If the client is not logged in, the security check sends back a challenge.
+Wenn der Client bereits angemeldet ist oder erinnert wird (Zustand *remembered*), löst die API einen Erfolg aus. Wenn der Client nicht angemeldet ist, sendet die Sicherheitsüberprüfung eine Abfrage zurück. 
 
-The `ObtainAccessToken` API takes in a **scope**. The scope can be the name of your **security check**.
+Die API `ObtainAccessToken` nimmt einen Gültigkeitsbereich (**scope**) auf. Der Bereich kann den Namen Ihrer
+**Sicherheitsüberprüfung** haben.
 
-> Learn more about **scopes** in the [Authorization concepts](../../) tutorial.
+> Weitere Informationen zu Bereichen (**scopes**) enthält das Lernprogramm [Autorisierungskonzepte](../../). 
 
-## Retrieving the authenticated user
+## Authentifizierten Benutzer abrufen
 {: #retrieving-the-authenticated-user }
-The challenge handler `HandleSuccess` method receives a `JObject identity` as a parameter.
-If the security check sets an `AuthenticatedUser`, this object contains the user's properties. You can use `HandleSuccess` to save the current user:
+Die Methode `HandleSuccess` des Abfrage-Handlers empfängt eine `JObject identity` als Parameter.
+Wenn die Sicherheitsüberprüfung einen authentifizierten Benutzer (`AuthenticatedUser`) definiert, enthält dieses Objekt die Eigenschaften des Benutzers. Mit `HandleSuccess` können Sie den aktuellen Benutzer speichern. 
 
 ```csharp
 public override void HandleSuccess(JObject identity)
@@ -100,7 +111,7 @@ public override void HandleSuccess(JObject identity)
     isChallenged = false;
     try
     {
-        //Save the current user
+        // Aktuellen Benutzer speichern
         var localSettings = Windows.Storage.ApplicationData.Current.LocalSettings;
         localSettings.Values["useridentity"] = identity.GetValue("user");
 
@@ -110,7 +121,8 @@ public override void HandleSuccess(JObject identity)
 }
 ```
 
-Here, `identity` has a key called `user` which itself contains a `JObject` representing the `AuthenticatedUser`:
+Hier hat `identity` einen Schlüssel mit der Bezeichnung
+`user`, der wiederum ein `JObject` enthält, das den authentifizierten Benutzer (`AuthenticatedUser`) repräsentiert. 
 
 ```json
 {
@@ -123,32 +135,32 @@ Here, `identity` has a key called `user` which itself contains a `JObject` repre
 }
 ```
 
-## Logout
+## Abmeldung
 {: #logout }
-The {{ site.data.keys.product }} SDK also provides a `Logout` API to logout from a specific security check:
+Das SDK der {{ site.data.keys.product }} stellt eine API `Logout` für die Abmeldung bei einer bestimmten Sicherheitsüberprüfung bereit. 
 
 ```csharp
 WorklightResponse response = await Worklight.WorklightClient.CreateInstance().AuthorizationManager.Logout(securityCheckName);
 ```
 
-## Sample applications
+## Beispielanwendungen
 {: #sample-applications }
-Two samples are associated with this tutorial:
+Zu diesem Lernprogramm gibt es zwei Beispiele: 
 
-- **PreemptiveLoginWin**: An application that always starts with a login screen, using the preemptive `Login` API.
-- **RememberMeWin**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
+- **PreemptiveLoginWin**: Diese Anwendung wird immer mit einer Anmeldeanzeige gestartet, die die API `Login` für bevorrechtigte Anmeldung verwendet. 
+- **RememberMeWin**: Diese Anwendung hat ein Kontrollkästchen *Remember Me*. Wenn die Anwendung das nächste Mal geöffnet wird, kann der Benutzer die Anmeldeanzeige umgehen. 
 
-Both samples use the same `UserLoginSecurityCheck` from the **SecurityCheckAdapters** adapter Maven project.
+Beide Beisiele verwenden dieselbe Sicherheitsüberprüfung (`UserLoginSecurityCheck`) des
+Adapter-Maven-Projekts **SecurityCheckAdapters**. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80) the Remember Me Win8 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80) the Remember Me Win10 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80) the PreemptiveLogin Win8 project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80) the PreemptiveLoginWin10 project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80), um das Maven-Projekt SecurityCheckAdapters herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin8/tree/release80), um das Win8-Projekt "Remember Me" herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeWin10/tree/release80), um das Win10-Projekt "Remember Me" herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin8/tree/release80), um das Win8-Projekt PreemptiveLogin herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginWin10/tree/release80), um das Win10-Projekt PreemptiveLogin herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
-The username/password for the app must match, i.e. "john"/"john".
+Anweisungen finden Sie in der Datei README.md zum Beispiel. Benutzername und Kennwort für die App müssen übereinstimmen, z. B. "john"/"john".
 
-![sample application](RememberMe.png)
+![Beispielanwendung](RememberMe.png)

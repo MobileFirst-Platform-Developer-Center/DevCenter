@@ -1,31 +1,32 @@
 ---
 layout: tutorial
-title: Java Token Validator
-breadcrumb_title: Java Token Validator
+title: Java-Token-Validator
+breadcrumb_title: Java-Token-Validator
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Download sample
+  - name: Beispiel herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_full }} provides a Java library to enforce security capabilities on external resources.  
-The Java library is provided as a JAR file (**mfp-java-token-validator-8.0.0.jar**).
+Die {{ site.data.keys.product_full }} stellt eine Java-Bibliothek für die Durchsetzung von Sicherheitsfunktionen für externe Ressourcen bereit.   
+Die Java-Bibliothek wird als JAR-Datei (**mfp-java-token-validator-8.0.0.jar**) bereitgestellt.
 
-This tutorial shows how to protect a simple Java Servlet, `GetBalance`, by using a scope (`accessRestricted`).
+Dieses Lernprogramm zeigt, wie ein einfaches Java-Servlet (`GetBalance`) mit einem Gültigkeitsbereich
+(`accessRestricted`) geschützt wird.
 
-**Prerequesites:**
+**Voraussetzungen: **
 
-* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product_adj }} Foundation security framework](../../).
+* Gehen Sie das Lernprogramm [Externe Ressource mit {{ site.data.keys.mf_server }} authentifizieren](../) durch. 
+* Sie müssen das [{{ site.data.keys.product_adj }}-Foundation-Sicherheitsframework](../../) verstehen.
 
-![Flow](JTV_flow.jpg)
+![Ablauf](JTV_flow.jpg)
 
-## Adding the .jar file dependency
+## JAR-Datei für Abhängigkeit hinzufügen
 {: #adding-the-jar-file-dependency }
-The **mfp-java-token-validator-8.0.0.jar** file is available as a **maven dependency**:
+Die Datei **mfp-java-token-validator-8.0.0.jar** ist als **Maven-Abhängigkeit** verfügbar:
 
 ```xml
 <dependency>
@@ -35,48 +36,51 @@ The **mfp-java-token-validator-8.0.0.jar** file is available as a **maven depend
 </dependency>
 ```
 
-## Instantiating the TokenValidationManager
+## TokenValidationManager-Instanz erstellen
 {: #instantiating-the-tokenvalidationmanager }
-To be able to validate tokens, instantiate `TokenValidationManager`.
+Wenn Sie Token validieren möchten, müssen Sie eine Instanz von `TokenValidationManager` erstellen.
 
 ```java
 TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret);
 ```
 
-- `authorizationURI`: the URI of the Authorization server, usually the {{ site.data.keys.mf_server }}. For example **http://localhost:9080/mfp/api**.
-- `clientId`: The confidential client ID that you configured in the {{ site.data.keys.mf_console }}.
-- `clientSecret`: The confidential client secret that you configured in the {{ site.data.keys.mf_console }}.
+- `authorizationURI`: Die URI des Autorisierungsservers, bei dem es sich in der Regel um {{ site.data.keys.mf_server }} handelt. Beispiel: **http://localhost:9080/mfp/api**
+- `clientId`: Die ID des in der {{ site.data.keys.mf_console }} konfigurierten vertraulichen Clients
+- `clientSecret`: Der geheime Schlüssel des in der {{ site.data.keys.mf_console }} konfigurierten vertraulichen Clients
 
-> The library exposes an API that encapsulates and simplifies the interaction with the authorization server's introspection endpoint. For a detailed API reference, [see the {{ site.data.keys.product_adj }} Java Token Validator API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
+> Die Bibliothek macht eine API zugänglich, in die die Interaktion
+mit dem Introspektionsendpunkt des Autorisierungsservers eingebunden ist und die diese Interaktion vereinfacht. Ausführliche API-Referenzinformationen finden Sie unter
+[{{ site.data.keys.product_adj }}-Java-Token-Validator](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc).
 
-## Validating the credentials
+## Berechtigungsnachweise validieren
 {: #validating-the-credentials }
-The `validate` API method asks the authorization server to validate the authorization header:
+Die API-Methode `validate` fordert den Autorisierungsserver auf, den Authorization-Header zu validieren. 
 
 ```java
 public TokenValidationResult validate(java.lang.String authorizationHeader, java.lang.String expectedScope);
 ```
 
-- `authorizationHeader`: The content of the `Authorization` HTTP header, which is the access token. For example, it could be obtained from an  `HttpServletRequest` (`httpServletRequest.getHeader("Authorization")`).
-- `expectedScope`: The scope to validate the token against, for example `accessRestricted`.
+- `authorizationHeader`: Der Inhalt des `Authorization`-HTTP-Headers, d. h. das Zugriffstoken. Das Token könnte beispielsweise von einer HTTP-Servletanforderung (`HttpServletRequest`) abgerufen werden (`httpServletRequest.getHeader("Authorization")`).
+- `expectedScope`: Der Bereich für die Validierung des Tokens, z. B. `accessRestricted`
 
-You can query the resulting `TokenValidationResult` object for an error or for valid introspection data:
+Sie können Fehler oder gültige Introspektionsdaten aus dem resultierenden `TokenValidationResult`-Objekt abfragen. 
 
 ```java
 TokenValidationResult tokenValidationRes = validator.validate(authCredentials, expectedScope);
 if (tokenValidationRes.getAuthenticationError() != null) {
-    // Error
+    // Fehler
     AuthenticationError error = tokenValidationRes.getAuthenticationError();
     httpServletResponse.setStatus(error.getStatus());
     httpServletResponse.setHeader("WWW-Authenticate", error.getAuthenticateHeader());
 } else if (tokenValidationRes.getIntrospectionData() != null) {
-    // Success logic here
+    // Hier Logik für Erfolg
 }
 ```                    
 
-## Introspection data
+## Introspektionsdaten
 {: #introspection-data }
-The `TokenIntrospectionData` object returned by `getIntrospectionData()` provides you with some information about the client, such as the user name of the currently active user:
+Das von `getIntrospectionData()` zurückgegebene `TokenIntrospectionData`-Objekt
+gibt Ihnen einige Informationen zum Client, z. B. den Benutzernamen des zurzeit aktiven Benutzers. 
 
 ```java
 httpServletRequest.setAttribute("introspection-data", tokenValidationRes.getIntrospectionData());
@@ -89,19 +93,21 @@ String username = introspectionData.getUsername();
 
 ## Cache
 {: #cache }
-The `TokenValidationManager` class comes with an internal cache which caches tokens and introspection data. The purpose of the cache is to reduce the amount of token *introspections* done against the Authorization Server, if a request is made with the same header.
+Die Klasse `TokenValidationManager` hat einen internen Cache, in dem Token und Introspektionsdaten zwischengespeichert werden. Der Cache soll
+bei Anforderungen mit identischem Header die
+Tokenuntersuchungen (*introspections*) reduzieren, die für die Autorisierungsserver durchgeführt werden. 
 
-The default cache size is **50000 items**. After this capacity is reached, the oldest token is removed.  
+Die Standardcachegröße liegt bei **50000 Elementen**. Wenn diese Kapaziatät erreicht ist, wird das älteste Token entfernt.   
 
-The constructor of `TokenValidationManager` can also accept a `cacheSize` (number of introspection data items) to store:
+Der Konstruktor von `TokenValidationManager` kann auch eine Menge von Introspektionsdatenelementen (`cacheSize`) zur Speicherung akzeptieren: 
 
 ```java
 public TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret, long cacheSize);
 ```
 
-## Protecting a simple Java Servlet
+## Einfaches Java-Servlet schützen
 {: #protecting-a-simple-java-servlet }
-1. Create a simple Java Servlet called `GetBalance`, which returns a hardcoded value:
+1. Erstellen Sie ein einfaches Java-Servlet mit der Bezeichnung `GetBalance`, das einen fest codierten Wert zurückgibt: 
 
    ```java
    @WebServlet("/GetBalance")
@@ -109,22 +115,23 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
     	private static final long serialVersionUID = 1L;
 
     	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    		//Return hardcoded value
+    		// Fest codierten Wert zurückgeben
     		response.getWriter().append("17364.9");
     	}
 
    }
    ```
 
-2. Create a `javax.servlet.Filter` implementation, called `JTVFilter`, which will validate the authorization header for a given scope:
+2. Erstellen Sie eine `javax.servlet.Filter`-Implementierung mit der Bezeichnung
+`JTVFilter`, die den Authorization-Header für einen gegebenen Bereich validiert: 
 
    ```java
    public class JTVFilter implements Filter {
 
     	public static final String AUTH_HEADER = "Authorization";
-    	private static final String AUTHSERVER_URI = "http://localhost:9080/mfp/api"; //Set here your authorization server URI
-    	private static final String CLIENT_ID = "jtv"; //Set here your confidential client ID
-    	private static final String CLIENT_SECRET = "jtv"; //Set here your confidential client SECRET
+    	private static final String AUTHSERVER_URI = "http://localhost:9080/mfp/api"; // Hier die Autorisierungsserver-URI definieren
+    	private static final String CLIENT_ID = "jtv"; // Hier die ID des vertraulichen Clients definieren
+    	private static final String CLIENT_SECRET = "jtv"; // Hier geheimen Schlüssel (SECRET) des vertraulichen Clients definieren
 
     	private TokenValidationManager validator;
     	private FilterConfig filterConfig = null;
@@ -152,12 +159,12 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
     		try {
     			TokenValidationResult tokenValidationRes = validator.validate(authCredentials, expectedScope);
     			if (tokenValidationRes.getAuthenticationError() != null) {
-    				// Error
+    				// Fehler
     				AuthenticationError error = tokenValidationRes.getAuthenticationError();
     				httpServletResponse.setStatus(error.getStatus());
     				httpServletResponse.setHeader("WWW-Authenticate", error.getAuthenticateHeader());
     			} else if (tokenValidationRes.getIntrospectionData() != null) {
-    				// Success
+    				// Erfolg
     				httpServletRequest.setAttribute("introspection-data", tokenValidationRes.getIntrospectionData());
     				filterChain.doFilter(req, res);
     			}
@@ -169,7 +176,8 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    }
    ```
 
-3. In the servlet's **web.xml** file, declare an instance of `JTVFilter` and pass the **scope** `accessRestricted` as a parameter:
+3. Deklarieren Sie in der Datei **web.xml** des Servlets eine Instanz von `JTVFilter`
+und übergeben Sie den Bereich (**scope**) `accessRestricted` als Parameter: 
 
    ```xml
    <filter>
@@ -182,7 +190,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    </filter>
    ```
 
-   Then protect your servlet with the filter:
+   Schützen Sie Ihr Servlet dann mit dem Filter: 
 
    ```xml
    <filter-mapping>
@@ -191,16 +199,18 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
    </filter-mapping>
    ```
 
-## Sample application
+## Beispielanwendung
 {: #sample-application }
 
-You can deploy the project on the supported application servers (Tomcat, WebSphere Application Server full profile, and WebSphere Application Server Liberty profile).  
-[Download the simple Java servlet](https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80).
+Sie können das Projekt in den unterstützten Anwendungsservern (Tomcat, WebSphere Application Server Full Profile und WebSphere Application Server Liberty Profile) implementieren.  
+[Laden Sie das einfache Java-Servlet herunter](https://github.com/MobileFirst-Platform-Developer-Center/JavaTokenValidator/tree/release80).
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-1. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-2. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-3. Register the matching application.
-4. Map the `accessRestricted` scope to the security check.
-5. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. Sie müssen [den vertraulichen Client](../#confidential-client)
+und die geheimen Schlüssel in der {{ site.data.keys.mf_console }} aktualisieren.
+2. Implementieren Sie eine der Sicherheitsüberprüfungen: **[UserLogin](../../user-authentication/security-check/)**
+oder **[PinCodeAttempts](../../credentials-validation/security-check/)**.
+3. Registrieren Sie die passende Anwendung. 
+4. Ordnen Sie der Sicherheitsüberprüfung den Bereich `accessRestricted` zu. 
+5. Aktualisieren Sie die Clientanwendung so, dass `WLResourceRequest` Ihre Servlet-URL ist. 

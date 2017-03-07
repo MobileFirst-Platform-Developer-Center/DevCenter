@@ -1,50 +1,93 @@
 ---
 layout: tutorial
-title: Configuring the MobileFirst Server Keystore
-breadcrumb_title: Configuring the Server Keystore
+title: MobileFirst-Server-Keystore konfigurieren
+breadcrumb_title: Server-Keystore konfigurieren
 weight: 14
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-A keystore is a repository of security keys and certificates that is used to verify and authenticate the validity of parties involved in a network transaction. The {{ site.data.keys.mf_server }} keystore defines the identity of {{ site.data.keys.mf_server }} instances, and is used to digitally sign OAuth tokens and Direct Update packages. In addition, when an adapter communicates with a back-end server using mutual HTTPS (SSL) authentication, the keystore is used to validate the SSL-client identity of the {{ site.data.keys.mf_server }} instance.
+Ein
+Keystore ist ein Repository mit Sicherheitsschlüsseln und Zertifikaten, das verwendet wird, um
+die Gültigkeit der an einer Netztransaktion beteiligten Parteien zu validieren und zu authentifizieren. Der Keystore von {{ site.data.keys.mf_server }}
+definiert die Identität von MobileFirst-Server-Instanzen und wird zum digitalen Signieren von OAuth-Token und Paketen für direkte Aktualisierung
+verwendet. Wenn ein
+Adapter unter Verwendung der gegenseitigen HTTPS-Authentifizierung
+(SSL) mit einem Back-End-Server kommuniziert, wird der Keystore auch verwendet, um die SSL-Clientidentität der
+MobileFirst-Server-Instanz zu validieren. 
 
-For production-level security, during the move from development to production the administrator must configure {{ site.data.keys.mf_server }} to use a user-defined keystore. The default {{ site.data.keys.mf_server }} keystore is intended to be used only during development.
+Beim Wechsel von der Entwicklung zur Produktion muss der Administrator für die Produktionssicherheit
+{{ site.data.keys.mf_server }} für die Verwendung eines benutzerdefinierten
+Keystores konfigurieren. Der Standard-Keystore von {{ site.data.keys.mf_server }} ist nur zur Verwendung
+während der Entwicklung bestimmt. 
 
-### Notes
+### Hinweise
 {: #notes }
-* To use the keystore to verify the authenticity of a Direct Update package, statically bind the application with the public key of the {{ site.data.keys.mf_server }} identity that is defined in the keystore. See [Implementing secure Direct Update on the client side](../../application-development/direct-update).
-* Reconfiguring the {{ site.data.keys.mf_server }} keystore after production should be considered carefully. Changing the configuration has the following potential effects:
-    * The client might need to acquire a new OAuth token in place of a token signed with the previous keystore. In most cases, this process is transparent to the application.
-    * If the client application is bound to a public key that does not match the {{ site.data.keys.mf_server }} identity in the new keystore configuration, Direct Update fails. To continue getting updates, bind the application with the new public key, and republish the application. Alternatively, change the keystore configuration again to match the public key to which the application is bound. See [Implementing secure Direct Update on the client side](../../application-development/direct-update).
-    *  For mutual SSL authentication, if the SSL-client identity alias and password that are configured in the adapter are not found in the new keystore, or do not match the SSL certifications, SSL authentication fails. See the adapter configuration information in Step 2 of the following procedure.
+* Wenn Sie den Keystore verwenden möchten, um die Authentizität eines Pakets für direkte Aktualisierung zu verifizieren, binden Sie die
+Anwendung statisch an den öffentlichen Schlüssel der MobileFirst-Server-Identität, die
+im Keystore definiert ist (siehe [Sichere direkte Aktualisierung auf der Clientseite implementieren](../../application-development/direct-update)).
+* Ein Rekonfigurieren des MobileFirst-Server-Keystores nach der Produktion muss gründlich überlegt werden. Eine Änderung der Konfiguation kann folgende
+Auswirkungen haben: 
+    * Unter Umständen muss der Client als Ersatz für ein mit dem vorherigen Keystore signiertes Token ein neues OAuth-Token anfordern. In den meisten Fällen ist dieser Prozess für die Anwendung
+transparent. 
+    * Wenn die Clientanwendung an einen öffentlichen Schlüssel gebunden ist, der nicht mit der MobileFirst-Server-Identität in der neuen Keystore-Konfiguration
+übereinstimmt, schlägt die direkte Aktualisierung fehl. Binden Sie die Anwendung an den neuen öffentlichen Schlüssel und veröffentlichen Sie die Anwendung erneut, damit
+die Anwendung weiterhin Aktualisierungen empfangen kann. Alternativ dazu können Sie die Keystore-Konfiguration erneut ändern und wieder an den öffentlichen Schlüssel anpassen, an den die Anwendung gebunden
+ist (siehe [Sichere direkte Aktualisierung auf der Clientseite implementieren](../../application-development/direct-update)).
+    *  Wenn bei gegenseitiger SSL-Authentifzierung der im Adapter konfigurierte Alias für die SSL-Clientidentiät und das zugehörige Kennwort
+nicht im neuen Keystore gefunden werden oder nicht mit SSL-Zertifizierungen übereinstimmen, schlägt die SSL-Authentifizierung fehl. Lesen Sie hierzu die Informationen zur
+Adapterkonfiguration in Schritt
+2 der folgenden Prozedur. 
 
 ## Setup
 {: #setup }
-1. Create a Java keystore (JKS) or PKCS 12 keystore file with an alias that contains a key pair that defines the identity of your {{ site.data.keys.mf_server }}. If you already have an appropriate keystore file, skip to the next step.
+1. Erstellen Sie eine Java-Keystore-Datei (JKS) oder eine PKCS-12-Keystore-Datei mit einem Alias. Der Keystore muss ein Schlüsselpaar enthalten, das
+die Identität Ihres
+{{ site.data.keys.mf_server }} definiert.
+Wenn Sie bereits eine passende Keystore-Datei haben, übergehen Sie den nächsten Schritt. 
 
-   > **Note:** The type of the alias key-pair algorithm must be RSA. The following instructions explain how to set the algorithm type to RSA when using the **keytool** utility.
+   > **Hinweis:** Der Algorithmus für das Schlüsselpaar mit dem Alias muss vom Typ RSA sein. Nachfolgend ist erklärt, wie der
+Algorithmustyp bei Verwendung des Dienstprogramms **keytool** auf RSA gesetzt wird.    Sie können die Keystore-Datei mit einem Tool eines anderen Anbieters erstellen. Sie können beispielsweise eine JKS-Datei generieren, indem Sie den folgenden Befehl des
+Java-Dienstprogramms **keytool** ausführen.
+(Im Befehl steht `<Keystore-Name>` für den Namen Ihres Keystores und `<Alias>` für Ihren gewählten Alias.)
 
-   You can use a third-party tool to create the keystore file. For example, you can generate a JKS keystore file by running the Java **keytool** utility with the following command (where `<keystore name>` is the name of your keystore and `<alias name>` is your selected alias):
     
    ```bash
-   keytool -keystore <keystore name> -genkey -alias <alias name> -keylag RSA
+   keytool -keystore <Keystore-Name> -genkey -alias <Alias> -keylag RSA
    ```
     
-   The following sample command generates a **my_company.keystore** JKS file with a `my_alias` alias:
+   Der folgende Beispielbefehl generiert eine JKS-Datei **my_company.keystore** mit dem Alias `my_alias`: 
     
    ```bash
    keytool -keystore my_company.keystore -genkey -alias my_alias -keyalg RSA
    ```
     
-   The utility prompts you to provide different input parameters, including the passwords for your keystore file and alias.
+   Das Dienstprogramm fordert Sie zur Eingabe verschiedener Eingabeparameter auf. Sie müssen unter anderem das Kennwort für Ihre Keystore-Datei und für den Alias angeben. 
 
-   > **Note:** You must set the `-keyalg RSA` option to set the type of the generated key algorithm to RSA instead of the default DSA.
+   > **Hinweis:** Sie müssen die Option `-keyalg RSA` festlegen, damit der Algorithmus für die Schlüsselgenerierung auf den Typ RSA und nicht auf den Standardtyp DSA gesetzt wird.    Wenn Sie den Keystore für die gegenseitige SSL-Authentifizierung zwischen
+einem Adapter und einem Back-End-Server
+verwenden möchten, fügen Sie außerdem
+einen Alias für die SSL-Clientidentität der {{ site.data.keys.product }}
+zum Keystore hinzu. Dafür können Sie dieselbe Methode wie beim Erstellen der Keystore-Datei
+mit dem
+Alias für die MobileFirst-Server-Identität verwenden, nur dass Sie jetzt den Alias und das Kennwort für die SSL-Clientidentität angeben müssen. 
 
-   To use the keystore for mutual SSL authentication between an adapter and a back-end server, also add a {{ site.data.keys.product }} SSL-client identity alias to the keystore. You can do this by using the same method that you used to create the keystore file with the {{ site.data.keys.mf_server }} identity alias, but provide instead the alias and password for the SSL-client identity.
+2. Konfigurieren Sie {{ site.data.keys.mf_server }} wie folgt für die Verwendung
+Ihres Keystores:
+Wählen Sie in der Navigationsseitenleiste der {{ site.data.keys.mf_console }}
+**Laufzeiteinstellungen** aus. Wählen Sie dann das Register **Keystore** aus.
+Folgen Sie den Anweisungen auf dieser Registerkarte, um Ihren
+benutzerdefinierten MobileFirst-Server-Keystore zu konfigurieren.
+Unter anderem müssen Sie Ihre Keystore-Datei hochladen und folgende Angaben machen:
+Typ des Keystores, Ihr Keystore-Kennwort,
+Alias für Ihre
+MobileFirst-Server-Identität und Kennwort für den Alias.  
 
-2. Configure {{ site.data.keys.mf_server }} to use your keystore: in the {{ site.data.keys.mf_console }} navigation sidebar, select **Runtime Settings**, and then select the **Keystore** tab. Follow the instructions on this tab to configure your user-defined {{ site.data.keys.mf_server }} keystore. The steps include uploading your keystore file, indicating its type, and providing your keystore password, the name of your {{ site.data.keys.mf_server }} identity alias, and the alias password. 
+Bei erfolgreicher Konfiguration ändert sich der Status in
+"Benutzerdefiniert". Anderfalls wird ein Fehler angezeigt und der Status bleibt "Standard".
 
-When configured successfully, the Status changes to "User Defined". Otherwise, an error is displayed and the status remains "Default".
-
-The SSL-client identity alias (if used) and its password are configured in the descriptor file of the relevant adapter, within the `<sslCertificateAlias>` and `<sslCertificatePassword>` subelements of the `<connectionPolicy>` element. See [HTTP adapter connectionPolicy element](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file).
+Der Alias für die SSL-Clientidentität (falls verwendet) und das zugehörige Kennwort werden in der Deskriptordatei des betreffenden Adapters
+in den Unterelementen
+`<sslCertificateAlias>`
+und `<sslCertificatePassword>` des Elements `<connectionPolicy>`
+konfiguriert (siehe [Element 'connectionPolicy' des HTTP-Adapters](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)).

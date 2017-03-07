@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: UserAuthenticationSecurityCheck
-breadcrumb_title: User Authentication
+breadcrumb_title: Benutzerauthentifizierung
 relevantTo: [android,ios,windows,javascript]
 show_children: true
 show_disqus: false
@@ -9,13 +9,14 @@ print_pdf: false
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-The **UserAuthenticationSecurityCheck** class inherits all the features of **CredentialsValidationSecurityCheck** and adds:
+Die Klasse **UserAuthenticationSecurityCheck** übernimmt alle Funktionen von
+**CredentialsValidationSecurityCheck** und ergänzt diese mit Folgendem: 
 
-- The concept of an `AuthenticatedUser`, creating a user identity.
-- An optional **Remember Me** capability
+- Konzept eines authentifizierten Benutzers (`AuthenticatedUser`) durch Erstellung einer Benutzeridentität
+- optionale Erinnerungsfunktion (**Remember Me**)
 
-> **Prerequisite:** Read the [CredentialsValidationSecurityCheck](../credentials-validation) tutorial before continuing.
+> **Voraussetzung:** Gehen Sie das Lernprogramm [CredentialsValidationSecurityCheck](../credentials-validation) durch, bevor Sie hier fortfahren. 
 
-Select a tutorial:
+Wählen Sie ein Lernprogramm aus: 

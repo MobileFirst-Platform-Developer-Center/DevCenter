@@ -56,3 +56,8 @@ Es wurden folgende Änderungen vorgenommen, um die Benutzerfreundlichkeit des Un
 {: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
 Sie können die {{ site.data.keys.mf_cli }} verwenden, um die Konfiguration von Java- und JavaScript-Adaptern
 per Push-Operation zu {{ site.data.keys.mf_server }} zu übertragen und Adapterkonfigurationen per Pull-Operation von {{ site.data.keys.mf_server }} abzurufen. 
+
+### Application Center
+{: #application-center}
+
+Für iOS und Android ist jetzt ein Cordova-basierter Application-Center-Client verfügbar. 

@@ -1,73 +1,148 @@
 ---
 layout: tutorial
-title: LTPA-based single sign-on (SSO) security check
-breadcrumb_title: LTPA Security Check
+title: Sicherheitsüberprüfung des LTPA-basierten SSO
+breadcrumb_title: LTPA-Sicherheitsüberprüfung
 relevantTo: [android,ios,windows,javascript]
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-A lightweight third-party authentication (LTPA) token is a type of security token that is used by IBM WebSphere Application Server and other IBM products. LTPA can be used to send the credentials of an authenticated user to back-end services. It can also be used as a single sign-on (SSO) token between the user and multiple servers.
+Ein LTPA-Token (Lightweight Third-Party Authentication) ist eine Art Sicherheitstoken, das von
+IBM WebSphere Application Server
+und anderen
+IBM Produkten verwendet wird. Mit LTPA
+können die Berechtigungsnachweise eines authentifizierten Benutzers an Back-End-Services
+gesendet werden. Ein LTPA-Token kann auch als SSO-Token (Single Sign-on) des Benutzers für mehrere
+Server verwendet werden.
 
-Simple client < - > server flow with LTPA:
+Einfacher Client < - > Serverablauf mit LTPA:
 
-![Simple LTPA-based client <-> server flow](ltpa_simple_client_server.jpg)
+![Einfacher LTPA-basierter Client < - > Serverablauf](ltpa_simple_client_server.jpg)
 
-After a user logs in to the server, the server generates an LTPA token, which is an encrypted hash that contains authenticated user information. The token is signed by a private key that is shared among all the servers that want to decode it. The token is usually in cookie form for HTTP services. By sending the token as a cookie, the need for subsequent user interaction is avoided.
+Nach der Anmeldung eines Benutzers beim Server
+generiert der Server ein LTPA-Token, bei dem es sich um einen verschlüsselten Hash-Wert mit
+authentifizierten Benutzerdaten handelt.
+Das Token wird mit einem privaten Schlüssel signiert, über den alle Server verfügen, die den Wert entschlüsseln wollen. Das Token hat in der Regel die Form eines
+Cookies für HTTP-Services. Wenn das Token als Cookie gesendet wird, sind keine weiteren Benutzerinteraktionen erforderlich.
 
-LTPA tokens have a configurable expiration time to reduce the possibility of session hijacking.
+LTPA-Token haben eine Verfallszeit, die konfiguriert werden kann, um die Möglichkeit einer Sitzungsübernahme
+einzuschränken.
 
-## Reverse proxy with LTPA
+## Reverse Proxy mit LTPA
 {: #reverse-proxy-with-ltpa }
-Your infrastructure can also use the LTPA token to communicate with a back-end server that acts on behalf of the user. In a reverse-proxy topology, the user cannot directly access the back-end server. The reverse proxy can be used to authenticate a user's identity, and then send the LTPA token of the authenticated user to back-end servers. This configuration ensures that access to {{ site.data.keys.mf_server }} cannot be obtained until a user is authenticated. This is useful, for example, when you do not want to use {{ site.data.keys.product }} to handle vital user credentials, or when you want to use an existing authentication setup. Enterprise environments should use a reverse proxy, such as IBM WebSphere DataPower or IBM Security Access Manager, in the DMZ, and place the {{ site.data.keys.mf_server }} in the intranet.
+In Ihrer Infrastruktur können Sie das LTPA-Token auch für die Kommunikation mit einem Back-End-Server verwenden, der dann
+im Auftrag des Benutzers handelt. In einer Topologie mit Reverse Proxy hat der Benutzer keinen direkten Zugriff auf den Back-End-Server. Der
+Reverse Proxy kann für die Authentifizierung der Benutzeridentität eingesetzt werden und
+das LTPA-Token des authentifizierten Benutzers an Back-End-Server senden. Bei dieser Konfiguration ist sichergestellt,
+dass der Zugriff auf {{ site.data.keys.mf_server }}
+erst nach einer Benutzerauthentifizierung möglich ist. Dies ist beispielsweise sinnvoll, wenn Sie nicht möchten, dass die
+{{ site.data.keys.product }} geschäftskritische
+Verwendungen bearbeitet, oder wenn Sie eine vorhandene Authentifizierungskonfiguration nutzen wollen. In Unternehmensumgebungen sollte ein
+Reverse Proxy wie IBM WebSphere DataPower oder IBM Security Access Manager in der Datenverwaltungszone verwendet und der
+{{ site.data.keys.mf_server }} im Intranet platziert werden. 
 
-In a reverse-proxy implementation, {{ site.data.keys.mf_server }} must be configured for LTPA authentication to get the user identity.
+In einer Implementierung mit Reverse Proxy
+muss die
+MobileFirst-Server-Instanz
+für die LTPA-Authentifizierung konfiguriert werden, damit sie die Benutzeridentität feststellen kann. 
 
-LTPA flow between a client and a back-end server using a reverse proxy:
+LTPA-Ablauf für einen Client und einen Back-End-Server mit einem Reverse Proxy: 
 
-![Reverse-proxy LTPA flow](ltpa_reverse_proxy.jpg)
+![LTPA-Ablauf mit Reverse Proxy](ltpa_reverse_proxy.jpg)
 
-## {{ site.data.keys.product_adj }} integration with a reverse proxy
+## Integration eines Reverse Proxy in {{ site.data.keys.product_adj }}
 {: #mobilefirst-integration-with-a-reverse-proxy }
-You can use a reverse proxy to enable enterprise connectivity within a {{ site.data.keys.product_adj }} environment, and to provide authentication services to {{ site.data.keys.product }}.
+Mit einem Reverse Proxy können Sie die Unternehmenskonnektivität in einer
+{{ site.data.keys.product_adj }}-Umgebung aktivieren und Authentifizierungsservices für die
+{{ site.data.keys.product }} bereitstellen.
 
-### General architecture
+### Allgemeine Architektur
 {: #general-architecture }
-Reverse proxies typically front {{ site.data.keys.mf_server }} instances as part of the deployment, as shown in the figure below, and follow the gateway pattern.
+Reverse Proxys werden bei der Implementierung in der Regel und wie in
+der folgenden Abbildung dargestellt
+MobileFirst-Server-Instanzen vorgeschaltet und
+folgen dem Gateway-Muster.
 
-![ Integration with reverse proxy](reverse_proxy_integ.jpg)
+![Integration eines Reverse Proxy](reverse_proxy_integ.jpg)
 
-The **MFP** icon represents an instance of {{ site.data.keys.mf_server }}. The **GW** icon represents a reverse-proxy gateway, such as WebSphere DataPower. In addition to protecting {{ site.data.keys.product_adj }} resources from the Internet, the reverse proxy provides termination of HTTPS (SSL) connections and authentication. The reverse proxy can also act as a policy enforcement point (PEP).
+Das **MFP**-Symbol repräsentiert
+eine Instanz von {{ site.data.keys.mf_server }}. Das **GW**-Symbol
+repräsentiert ein Reverse-Proxy-Gateway wie WebSphere
+DataPower. Der Reverse Proxy schützt nicht nur {{ site.data.keys.product_adj }}-Ressourcen vor dem Internet, sondern
+bildet auch die Endstelle für HTTPS-Verbindungen (SSL) und Authentifizierung. Der Reverse Proxy kann auch als Richtliniendurchsetzungspunkt (RDP) genutzt werden.
 
-When a gateway is used, an application (**A**) on a device (**D**) uses the public URI that is advertised by the gateway instead of the internal {{ site.data.keys.mf_server }} URI. The public URI can be exposed as a setting within the application, or can be built in during promotion of the application to production, before the application is published to public or private application stores.
+Bei Verwendung eines Gateways
+verwendet die Anwendung (**A**) auf dem Gerät (**G**) anstelle der internen URI von
+{{ site.data.keys.mf_server }} die vom Gateway zugänglich gemachte öffentliche URI.
+Die öffentliche URI kann
+als Einstellung in der Anwendung verfügbar gemacht werden oder vor der Bereitstellung der Anwendung in öffentlichen oder privaten App Stores
+in die Anwendung integriert werden.
 
-### Authentication at the gateway
+### Authentifizierung am Gateway
 {: #authentication-at-the-gateway }
-If authentication ends at the gateway, {{ site.data.keys.product }} can be informed of the authenticated user by a shared context, such as a custom HTTP header or a cookie. By using the extensible authentication framework, you can configure {{ site.data.keys.product }} to use the user identity from one of these mechanisms, and establish a successful log in. The below figure shows a typical authentication flow for this gateway topology.
+Wenn das Gateway die Endstelle für die Authentifizierung ist, kann die
+{{ site.data.keys.product }} durch einen gemeinsamen Kontext, z. B.
+mithilfe eines angepassten HTTP-Headers oder eines Cookies, über den authentifizierten Benutzer informiert werden. Sie können die
+{{ site.data.keys.product }} unter Verwendung des erweiterbaren Authentifizierungsframeworks für die Verwendung der Benutzer-ID aus
+einem solchen Header oder Cookie konfigurieren, sodass eine erfolgreiche Anmeldung möglich ist. Die folgende Abbildung zeigt einen typischen Authentifizierungsablauf
+für diese Gateway-Topologie. 
 
-![Authentication flow](mf_reverse_proxy_integ_authentication_flow.jpg)
+![Authentifizierungsablauf](mf_reverse_proxy_integ_authentication_flow.jpg)
 
-This configuration was successfully tested with WebSphere DataPower for LTPA-based authentication. On successful authentication, the gateway forwards an LTPA token (in the form of an HTTP cookie) to WebSphere Application Server, which validates the LTPA token and creates a caller principal. {{ site.data.keys.product }} can use this caller principal, as needed.
+Diese Konfiguration wurde erfolgreich mit
+WebSphere DataPower für die LTPA-basierte Authentifizierung getestet.
+Bei erfolgreicher Authentifizierung leitet das Gateway ein LTPA-Token
+(in Form eines HTTP-Cookies) an den
+WebSphere Application Server
+weiter, der das LTPA-Token validiert und einen Aufrufprinzipal erstellt. Die {{ site.data.keys.product }} kann
+diesen Aufrufprinzipal nach Bedarf verwenden. 
 
-## The {{ site.data.keys.product_adj }} LTPA-based SSO security check
+## {{ site.data.keys.product_adj }}-Sicherheitsüberprüfung des
+LTPA-basierten
+SSO
 {: #the-mobilefirst-ltpa-based-sso-security-check }
-The predefined {{ site.data.keys.product_adj }} LTPA-based single-sign on (SSO) security check (**LtpaBasedSSO**) enables integration of {{ site.data.keys.product }} with the WebSphere Application Server LTPA protocol. This security check allows you to integrate instances of {{ site.data.keys.mf_server }} within an LTPA-based gateway topology, as described in the previous sections, and use a back-end service to authenticate users by using an SSO LTPA token.
+Die vordefinierte {{ site.data.keys.product_adj }}-Sicherheitsüberprüfung des
+LTPA-basierten Single Sign-on
+(**LtpaBasedSSO**)
+ermöglicht die Integration des LTPA-Protokolls von WebSphere Application Server
+in die {{ site.data.keys.product }}. Mit dieser Sicherheitsüberprüfung
+können eine LTPA-basierte Gateway-Topologie für Instanzen
+von {{ site.data.keys.mf_server }} integrieren (siehe vorherige Abschnitte) und
+über ein SSO-LTPA-Token Back-End-Services für die Benutzerauthentifizierung nutzen. 
 
-This predefined security check can be used as any other security check in the {{ site.data.keys.product_adj }} security framework you can map a custom scope element to this check, and use the check (or a scope element that contains it) in a protecting resource scope or in a mandatory application scope.
+Diese vordefinierte Sicherheitsüberprüfung
+kann wie jede andere Sicherheitsüberprüfung des
+{{ site.data.keys.product_adj }}-Sicherheitsframeworks
+verwendet werden. Sie können dieser Überprüfung ein angepasstes Bereichselement
+zuordnen und die Überprüfung (oder ein Breichselement mit dieser Überprüfung) in einem Ressourcenschutzbereich oder
+in einem obligatorischen Anwendungsbereich
+nutzen. 
 
-You can also configure the behavior of this security check for your application.
+Sie können das Verhalten dieser Sicherheitsüberprüfung für Ihre Anwendung konfigurieren. 
 
-## Configuring the LTPA-based SSO security check
+## Sicherheitsüberprüfung für LTPA-basiertes SSO konfigurieren
 {: #configuring-the-ltpa-based-sso-security-check }
-The predefined LTPA-based single sign-on (SSO) security check (**LtpaBasedSSO**) has a single configurable property: **expirationSec**. This property sets the expiration period for a successful security-check state. The expiration period determines the minimal interval for invoking the check again after a successful execution.
+Die vordefinierte Sicherheitsüberprüfung für LTPA-basiertes Single Sign-on
+(**LtpaBasedSSO**) hat eine konfigurierbare Eigenschaft mit dem Namen **expirationSec**.
+Mit dieser Eigenschaft wird der Ablaufzeitraum für eine erfolgreiche Sicherheitsprüfung festgelegt. Der Ablaufzeitraum definiert das Mindestintervall für einen erneuten Aufruf der Überprüfung nach einer erfolgreichen Ausführung. 
 
-> **Note:** The procedure explains how to use the {{ site.data.keys.mf_console }} to configure the property value. Alternatively, you can also set the property value directly in the **application-descriptor** file. For detailed information, see Configuring application security-check properties.
+> **Hinweis:** Nachstehend ist die Verwendung der
+{{ site.data.keys.mf_console }} für das Konfigurieren des Eigenschaftswerts
+erklärt. Sie können den Eigenschaftswert auch direkt in der **Anwendungsdeskriptordatei** festlegen. Ausführliche Informationen finden Sie unter
+"Eigenschaften für die Sicherheitsüberprüfung von Anwendungen konfigurieren".
 
-1. Open a {{ site.data.keys.mf_console }} window. Select your application version from the **navigation sidebar**, and then select the  **Security** tab.
-2. In the **Security-Check Configurations** section, click on **New**.
-3. In the **Configure Security-Check Properties** window, configure the **LTPA-based SSO** security check:
-    * In the **Security Check** field, select **LtpaBasedSSO** from the list.
-    * In the **Expiration Period Successful State (seconds)** field, set your preferred expiration period for a successful state of the security check, in seconds.
+1. Öffnen Sie ein Fenster mit der {{ site.data.keys.mf_console }}.
+Wählen Sie in der **Navigationsseitenleiste** Ihre Anwendungsversion und dann das Register
+**Sicherheit** aus. 
+2. Klicken Sie im Abschnitt **Konfigurationen für Sicherheitsüberprüfungen** auf
+**Neu**. 
+3. Konfigurieren Sie die Sicherheitsüberprüfung für **LTPA-basiertes SSO** wie folgt im Fenster **Eigenschaften für Sicherheitsüberprüfungen konfigurieren**: 
+    * Wählen Sie in der Liste für das Feld **Sicherheitsüberprüfung** den Eintrag
+**LtpaBasedSSO** aus. 
+    * Legen Sie im Feld **Expiration Period Successful State
+(seconds)** Ihren Ablaufzeitraum in Sekunden fest, innerhalb dessen die Sicherheitsüberprüfung als erfolgreich gilt. 
 
-When the configuration is done, you can see and edit your LtpaBasedSSO security-check configuration in the Security-Check Configurations table of the application Security tab.
+Im Anschluss können Sie Ihre Sicherheitsprüfungskonfiguration LtpaBasedSSO in der Tabelle
+"Konfigurationen für Sicherheitsüberprüfungen" auf der Registerkarte
+"Sicherheit" der Anwendung anzeigen und bearbeiten. 

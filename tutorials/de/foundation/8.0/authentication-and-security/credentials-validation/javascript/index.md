@@ -1,22 +1,26 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in JavaScript (Cordova, Web) applications
+title: Abfrage-Handler in JavaScript-Anwendungen (Cordova, Web) implementieren
 breadcrumb_title: JavaScript
 relevantTo: [javascript]
 weight: 2
 downloads:
-  - name: Download Web project
+  - name: Webprojekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80
-  - name: Download Cordova project
+  - name: Cordova-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: Maven-Projekt SecurityCheck herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-When trying to access a protected resource, the server (the security check) will send back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a `JSON object`, listing the security check name with an optional `JSON` of additional data:
+Wenn Sie versuchen, auf eine geschützte Ressource zuzugreifen,
+sendet der Server (die Sicherheitsüberprüfung)
+eine Liste
+mit mindestens einer **Abfrage** an den Client zur Bearbeitung zurück.   
+Die Liste wird als `JSON`-Objekt empfangen, in dem die Namen der Sicherheitsüberprüfungen sowie
+optional weitere `JSON`-Daten enthalten sind. 
 
 ```json
 {
@@ -29,33 +33,40 @@ This list is received as a `JSON object`, listing the security check name with a
 }
 ```
 
-The client should then register a **challenge handler** for each security check.  
-The challenge handler defines the client-side behavior that is specific to the security check.
+Der Client sollte für jede Sicherheitsüberprüfung einen **Abfrage-Handler** registrieren.   
+Der Abfrage-Handler definiert das clientseitige Verhalten für die jeweilige Sicherheitsüberprüfung. 
 
-## Creating the challenge handler
+## Abfrage-Handler erstellen
 {: creating-the-challenge-handler }
-A challenge handler handles challenges sent by the {{ site.data.keys.mf_server }}, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
+Ein Abfrage-Handler bearbeitet von {{ site.data.keys.mf_server }} gesendete Abfragen.
+Er zeigt beispielsweise eine Anmeldeanzeige an, erfasst Berechtigungsnachweise und übermittelt diese
+an die Sicherheitsüberprüfung. 
 
-In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to log in (`remainingAttempts`), and an optional `errorMsg`.
+In diesem Beispiel geht es um die Sicherheitsüberprüfung
+`PinCodeAttempts`, die im Abschnitt [CredentialsValidationSecurityCheck implementieren](../security-check) definiert wurde. Die von dieser
+Sicherheitsüberprüfung gesendete Abfrage enthält die verbleibende Anzahl von Anmeldeversuchen (`remainingAttempts`) und
+optional eine Fehlernachricht (`errorMsg`).
 
 
-Use the `WL.Client.createSecurityCheckChallengeHandler()` API method to create and register a challenge Handler:
+Verwenden Sie die API-Methode `WL.Client.createSecurityCheckChallengeHandler()`, um einen Abfrage-Handler zu erstellen und zu registrieren: 
 
 ```javascript
 PinCodeChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("PinCodeAttempts");
 ```
 
-## Handling the challenge
+## Abfrage bearbeiten
 {: #handling-the-challenge }
-The minimum requirement from the `createSecurityCheckChallengeHandler` protocol is to implement the `handleChallenge()` method, which is responsible for asking the user to provide the credentials. The `handleChallenge` method receives the challenge as a `JSON` Object.
+Die Mindestanforderung des Protokolls `createSecurityCheckChallengeHandler` ist die Implementierung
+der Methode `handleChallenge()`, die dafür zuständig ist, den Benutzer zur Angabe der Berechtigungsnachweise aufzufordern. Die Methode
+`handleChallenge` empfängt die Abfrage als `JSON`-Objekt. 
 
-In this example, an alert prompts the user to enter the PIN code:
+Im folgenden Beispiel wird der Benutzer in einem Alert aufgefordert, den PIN-Code einzugeben: 
 
 ```javascript
 PinCodeChallengeHandler.handleChallenge = function(challenge) {
     var msg = "";
 
-    // Create the title string for the prompt
+    // Titelzeichenfolge für die Eingabeaufforderung erstellen
     if(challenge.errorMsg != null) {
         msg =  challenge.errorMsg + "\n";
     } else {
@@ -64,40 +75,45 @@ PinCodeChallengeHandler.handleChallenge = function(challenge) {
 
     msg += "Remaining attempts: " + challenge.remainingAttempts;
 
-    // Display a prompt for user to enter the pin code     
+    // Aufforderung zur Eingabe des PIN-Codes anzeigen
     var pinCode = prompt(msg, "");
 
-    if(pinCode){ // calling submitChallengeAnswer with the entered value
+    if(pinCode){ // Aufruf von submitChallengeAnswer mit dem eingegebenen Wert
         PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
-    } else { // calling cancel in case user pressed the cancel button
-        PinCodeChallengeHandler.cancel();   
-    }                            
+    } else { // Abbruch aufrufen, wenn der Benutzer auf die Abbruchschaltfläche geklickt hat
+        PinCodeChallengeHandler.cancel();
+    }
 };
 ```
 
-If the credentials are incorrect, you can expect the framework to call `handleChallenge` again.
+Wenn die Berechtigungsnachweise nicht stimmen, können Sie erwarten, dass das Framework erneut `handleChallenge` aufruft. 
 
-## Submitting the challenge's answer
+## Antwort auf die Abfrage übergeben
 {: #submitting-the-challenges-answer }
-After the credentials have been collected from the UI, use `createSecurityCheckChallengeHandler`'s `submitChallengeAnswer()` to send an answer back to the security check. In this example, `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+Wenn die Berechtigungsnachweise auf der Benutzerschnittstelle erfasst wurden, verwenden Sie die Methode
+`submitChallengeAnswer()` von `createSecurityCheckChallengeHandler`,
+um eine Antwort an die Sicherheitsüberprüfung zu senden. Im folgenden Beispiel erwartet `PinCodeAttempts`
+eine Eigenschaft mit der Bezeichnung `pin`, die den übergebenen PIN-Code enthält: 
 
 ```javascript
 PinCodeChallengeHandler.submitChallengeAnswer({"pin":pinCode});
 ```
 
-## Cancelling the challenge
+## Abfrage abbrechen
 {: #cancelling-the-challenge }
-In some cases, such as clicking a **Cancel** button in the UI, you want to tell the framework to discard this challenge completely.  
-To achieve this, call:
+Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., indem Sie
+auf die Schaltfläche **Cancel** klicken.   
+Rufen Sie zu diesem Zweck Folgendes auf: 
 
 ```javascript
 PinCodeChallengeHandler.cancel();
 ```
 
-## Handling failures
+## Fehlerbehandlung
 {: #handling-failures }
-Some scenarios might trigger a failure (such as maximum attempts reached). To handle these, implement `createSecurityCheckChallengeHandler`'s `handleFailure()`.  
-The structure of the JSON object passed as a parameter greatly depends on the nature of the failure.
+In einigen Szenarien kann ein Fehler ausgelöst werden (z. B. bei Erreichung der maximalen Anzahl von Versuchen). Implementieren Sie für solche Fälle
+die Methode `handleFailure()` von `createSecurityCheckChallengeHandler`.   
+Die Struktur des als Parameter übergebenen JSON-Objekts hängt in starkem Maße von der Art des Fehlers ab. 
 
 ```javascript
 PinCodeChallengeHandler.handleFailure = function(error) {
@@ -111,34 +127,37 @@ PinCodeChallengeHandler.handleFailure = function(error) {
 };
 ```
 
-## Handling successes
+## Erfolgsbehandlung
 {: #handling-successes }
-In general, successes are automatically processed by the framework to allow the rest of the application to continue.
+Im Erfolgsfall erlaubt das Framework generell die weitere Ausführung der Anwendung. 
 
-Optionally, you can also choose to do something before the framework closes the challenge handler flow, by implementing `createSecurityCheckChallengeHandler`'s `handleSuccess()`. Here again, the content and structure of the `success` JSON object depends on what the security check sends.
+Bei Bedarf können Sie entscheiden, eine Aktion auszuführen, bevor das Framework den Abfrage-Handler-Ablauf schließt,
+indem Sie die Methode `handleSuccess()`
+von `createSecurityCheckChallengeHandler` implementieren. Auch hier sind Inhalt und
+Struktur des JSON-Objekts `success` davon abhängig, was die Sicherheitsüberprüfung sendet. 
 
-In the `PinCodeAttemptsCordova` sample application, the success does not contain any additional data.
+In der Beispielanwendung `PinCodeAttemptsCordova` gibt es im Erfolgsfall keine zusätzlichen Daten. 
 
-## Registering the challenge handler
+## Abfrage-Handler registrieren
 {: #registering-the-challenge-handler }
-For the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.  
-To do so, create the challenge handler with the security check as follows:
+Sie müssen das Framework anweisen, dem Abfrage-Handler den Namen einer bestimmten Sicherheitsüberprüfung zuzuordnen, damit der Abfrage-Handler auf dem Empfang der richtigen Abfragen wartet.   
+Erstellen Sie den Abfrage-Handler dafür wie folgt mit der Sicherheitsüberprüfung: 
 
 ```javascript
 someChallengeHandler = WL.Client.createSecurityCheckChallengeHandler("the-securityCheck-name");
 ```
 
-## Sample applications
+## Beispielanwendungen
 {: #sample-applications }
-The **PinCodeWeb** and **PinCodeCordova**  projects use `WLResourceRequest` to get a bank balance.  
-The method is protected with a PIN code, with a maximum of 3 attempts.
+Die Projekte **PinCodeWeb** und **PinCodeCordova**  verwenden `WLResourceRequest`, um einen Kontostand abzurufen.   
+Die Methode ist mit meinem PIN-Code geschützt, für den es maximal drei Eingabeversuche gibt. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80) the Web project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80) the Cordova project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeWeb/tree/release80), um das Webprojekt herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeCordova/tree/release80), um das Cordova-Projekt herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80), um das Maven-Projekt SecurityAdapters herunterzuladen.   
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 
 
-![Sample application](pincode-attempts-cordova.png)
+![Beispielanwendung](pincode-attempts-cordova.png)

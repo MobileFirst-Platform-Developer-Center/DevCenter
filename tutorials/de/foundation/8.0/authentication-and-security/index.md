@@ -1,74 +1,110 @@
 ---
 layout: tutorial
-title: Authentication and Security
+title: Authentifizierung und Sicherheit
 weight: 7
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-The {{ site.data.keys.product_adj }} security framework is based on the [OAuth 2.0](http://oauth.net/) protocol. According to this protocol, a resource can be protected by a **scope** that defines the required permissions for accessing the resource. To access a protected resource, the client must provide a matching **access token**, which encapsulates the scope of the authorization that is granted to the client.
+Das {{ site.data.keys.product_adj }}-Sicherheitsframework basiert auf dem Protokoll [OAuth 2.0](http://oauth.net/). Gemäß diesem Protokoll kann eine Ressource mit einem **Bereich** geschützt
+werden,
+in dem die erforderlichen Berechtigungen für den Zugriff auf die Ressource definiert sind. Für den Zugriff auf eine geschützte Ressource muss die Clientanwendung ein passendes **Zugriffstoken** bereitstellen, in das der Bereich für die dem Client gewährte Autorisierung eingebunden ist. 
 
-The OAuth protocol separates the roles of the authorization server and the resource server on which the resource is hosted.
+Das OAuth-Protokoll
+unterscheidet die Rolle
+des Autorisierungsservers von der Rolle des Ressourcenservers, der die Ressourcen bereitstellt. 
 
-* The authorization server manages the client authorization and token generation.
-* The resource server uses the authorization server to validate the access token that is provided by the client, and ensure that it matches the protecting scope of the requested resource.
+* Der Autorisierungsserver verwaltet die Clientberechtigungen und die Tokengenerierung. 
+* Der Ressourcenserver
+verwendet den Autorisierungsserver, um das vom Client bereitgestellte Zugriffstoken zu validieren und um sicherzustellen, dass das Token zum Schutzbereich der angeforderten
+Ressource passt. 
 
-The security framework is built around an authorization server that implements the OAuth protocol, and exposes the OAuth endpoints with which the client interacts to obtain access tokens. The security framework provides the building blocks for implementing a custom authorization logic on top of the authorization server and the underlying OAuth protocol.  
-By default, {{ site.data.keys.mf_server }} functions also as the **authorization server**. However, you can configure an IBM WebSphere DataPower appliance to act as the authorization server and interact with {{ site.data.keys.mf_server }}.
+Im Zentrum des Sicherheitsframeworks steht ein
+Autorisierungsserver, der das
+OAuth-Protokoll implementiert und die OAuth-Endpunkte, mit denen der Client beim Anfordern von Zugriffstoken interagiert, zugänglich macht. Das Sicherheitsframework enthält die logischen Bausteine
+für die Implementierung einer angepassten Autorisierungslogik unter Verwendung des Autorisierungsservers und des zugrunde liegenden
+OAuth-Protokolls.   
+{{ site.data.keys.mf_server }} fungiert standardmäßig auch als
+**Autorisierungsserver**. Sie können aber auch ein IBM
+WebSphere-DataPower-Gerät als Autorisierungsserver konfigurieren, der mit
+{{ site.data.keys.mf_server }} interagiert. 
 
-The client application can then use these tokens to access resources on a **resource server**, which can be either the {{ site.data.keys.mf_server }} itself or an external server. The resource server checks the validity of the token to make sure that the client can be granted access to the requested resource. The separation between resource server and authorization server allows you to enforce security on resources that are running outside {{ site.data.keys.mf_server }}.
+Die Clientanwendung kann diese Token dann für den Zugriff auf Ressourcen eines
+**Ressourcenservers** verwenden, bei dem es sich um {{ site.data.keys.mf_server }} oder um einen externen Server handeln kann. Der Ressourcenserver überprüft die
+Gültigkeit des Tokens, um sicherzustellen, dass dem Client der Zugriff auf die angeforderte Ressource gewährt werden kann. Durch die Trennung von Ressourcenserver und
+Autorisierungsserver können Sie die Sicherheit für Ressourcen durchsetzen, die außerhalb von
+{{ site.data.keys.mf_server }} ausgeführt werden.
 
-Application developers protect access to their resources by defining the required scope for each protected resource, and implementing **security checks** and **challenge handlers**. The server-side security framework and the client-side API handle the OAuth message exchange and the interaction with the authorization server transparently, allowing developers to focus only on the authorization logic.
+Anwendungsentwickler schützen den Zugriff auf Ressourcen, indem sie
+für jede Ressource den erforderlichen Bereich definieren
+und die **Sicherheitsüberprüfungen** und **Abfrage-Handler** implementieren. Das serverseitige Sicherheitsframework
+und die clientseitige API kümmern sich transparent um den OAuth-Nachrichtenaustausch und die Interaktion mit dem Autorisierungsserver, sodass
+sich Entwickler vollständig auf die Autorisierungslogik konzentrieren können. 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Authorization entities](#authorization-entities)
-* [Protecting resources](#protecting-resources)
-* [Authorization flow](#authorization-flow)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [Autorisierungsentitäten](#authorization-entities)
+* [Ressourcen schützen](#protecting-resources)
+* [Autorisierungsablauf](#authorization-flow)
+* [Nächste Lernprogramme](#tutorials-to-follow-next)
 
-## Authorization entities
+## Autorisierungsentitäten
 {: #authorization-entities }
-### Access Token
+### Zugriffstoken
 {: #access-token }
-A {{ site.data.keys.product_adj }} access token is a digitally signed entity that describes the authorization permissions of a client. After the client's authorization request for a specific scope is granted, and the client is authenticated, the authorization server's token endpoint sends the client an HTTP response that contains the requested access token.
+Ein MobileFirst-Zugriffstoken
+ist eine digital signierte Entität, die die Autorisierungsberechtigungen eines Clients
+beschreibt.
+Wenn der Autorisierungsanforderung des Clients für einen bestimmten Bereich entsprochen und der Client authentifiziert wurde,
+sendet der Tokenendpunkt des Autorisierungsservers eine HTTP-Antwort mit dem angeforderten Zugriffstoken an den
+Client. 
 
-#### Structure
+#### Struktur
 {: #structure }
-The {{ site.data.keys.product_adj }} access token contains the following information:
+Das
+{{ site.data.keys.product_adj }}-Zugriffstoken
+enthält folgende Informationen: 
 
-* **Client ID**: a unique identifier of the client.
-* **Scope**: the scope for which the token was granted (see OAuth scopes). This scope does not include the [mandatory application scope](#mandatory-application-scope).
-* **Token-expiration time**: the time at which the token becomes invalid (expires), in seconds.
+* **Client-ID**: Eine eindeutige Kennung des Clients 
+* **Bereich**: Der Bereich, für den das Token ausgestellt wurde (siehe "OAuth-Bereiche"). Dieser Bereich umfasst nicht den [obligatorischen
+Anwendungsbereich](#mandatory-application-scope). 
+* **Tokenablaufzeit**: Die Zeit, nach der das Token ungültig wird (abläuft), in Sekunden
 
-#### Token expiration
+#### Tokenablaufzeit
 {: #token-expiration }
-The granted access token remains valid until its expiration time elapses. The access token's expiration time is set to the shortest expiration time from among the expiration times of all the security checks in the scope. But if the period until the shortest expiration time is longer than the application's maximum token-expiration period, the token's expiration time is set to the current time plus the maximum expiration period. The default maximum token-expiration period (validity duration) is 3,600 seconds (1 hour), but it can be configured by setting the value of the `maxTokenExpiration` property. See Configuring the maximum access-token expiration period.
+Das ausgestellte Zugriffstoken bleibt gültig, bis der Ablaufzeitpunkt
+erreicht ist.
+Die Ablaufzeit des Zugriffstokens ist, verglichen mit den Ablaufzeiten aller Sicherheitsüberprüfungen im Bereich, die kürzeste. Wenn jedoch die kürzeste Ablaufzeit länger als der maximale Tokenablaufzeitraum der
+Anwendung ist, wird die Ablaufzeit des Tokens auf die aktuelle Zeit zuzüglich des maximalen Ablaufzeitraums gesetzt. Der Standardwert für den maximalen
+Tokenablaufzeitraum (d. h. die maximale Gültigkeitsdauer) liegt bei
+3.600 Sekunden (1 Stunde). Der Wert kann jedoch konfiguriert werden, indem der Wert der
+Eigenschaft `maxTokenExpiration` gesetzt wird
+(siehe "Maximalen Ablaufzeitraum für Zugriffstoken konfigurieren"). 
 
 <div class="panel-group accordion" id="configuration-explanation" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="access-token-expiration">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>Configuring the maximum access-token expiration period</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>Maximalen Ablaufzeitzeitraum für Zugriffstoken konfigurieren</b></a>
             </h4>
         </div>
 
         <div id="collapse-access-token-expiration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="access-token-expiration">
             <div class="panel-body">
-            <p>Configure the application’s maximum access-token expiration period by using one of the following alternative methods:</p>
+            <p>Wählen Sie eine der folgenden Alternativen, um für die Anwendung den maximalen Ablaufzeitraum für Zugriffstoken zu konfigurieren:</p>
             <ul>
-                <li>Using the {{ site.data.keys.mf_console }}
+                <li>{{ site.data.keys.mf_console }}:
                     <ul>
-                        <li>Select <b>[your application] → Security</b> tab.</li>
-                        <li>In the <b>Token Configuration</b> section, set the value of the Maximum <b>Token-Expiration Period (seconds)</b> field to your preferred value, and click <b>Save</b>. You can repeat this procedure, at any time, to change the maximum token-expiration period, or select <b>Restore Default Values</b> to restore the default value.</li>
+                        <li>Wählen Sie Ihre Anwendung und dann das Register <b>Sicherheit</b> aus.</li>
+                        <li>Setzen Sie im Abschnitt <b>Tokenkonfiguration</b> das Feld <b>Maximaler Tokanablaufzeitraum (Sekunden)</b> auf den gewünschten Wert und klicken Sie auf <b>Speichern</b>. Sie können diesen Schritt jederzeit wiederholen, um den maximalen Tokenablaufzeitraum zu ändern, oder <b>Standardwerte wiederherstellen</b> auswählen, um den Standardwert wiederherzustellen.</li>
                     </ul>
                 </li>
-                <li>Editing the application's configuration file
+                <li>Konfigurationsdatei der Anwendung bearbeiten:
                     <ol>
-                        <li>From a <b>command-line window</b>, navigate to the project's root folder and run the <code>mfpdev app pull</code>.</li>
-                        <li>Open the configuration file, located in the <b>[project-folder]\mobilefirst</b> folder.</li>
-                        <li>Edit the file by defining a <code>maxTokenExpiration</code> property and set its value to the maximum access-token expiration period, in seconds:
+                        <li>Navigieren Sie in eiem <b>Befehlszeilenfenster</b> zum Projektstammverzeichnis und führen Sie den Befehl <code>mfpdev app pull</code> aus.</li>
+                        <li>Öffnen Sie die Konfigurationsdatei aus dem Ordner <b>[Projektordner]\mobilefirst</b>. </li>
+                        <li>Bearbeiten Sie die Datei. Definieren Sie eine Eingeschaft <code>maxTokenExpiration</code> und setzen Sie sie auf den Wert für den maximalen Ablaufzeitraum für Zugriffstoken (in Sekunden).
 
 {% highlight xml %}
 {
@@ -76,14 +112,14 @@ The granted access token remains valid until its expiration time elapses. The ac
     "maxTokenExpiration": 7200
 }
 {% endhighlight %}</li>
-                        <li>Deploy the updated configuration JSON file by running the command: <code>mfpdev app push</code>.</li>
+                        <li>Implementieren Sie die aktualisierte JSON-Konfigurationsdatei. Führen Sie dazu den Befehl <code>mfpdev app push</code> aus.</li>
                     </ol>
                 </li>
             </ul>
                 
             <br/>
-            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>Close section</b></a>
-            </div>
+            <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#access-token-expiration" data-target="#collapse-access-token-expiration" aria-expanded="false" aria-controls="collapse-access-token-expiration"><b>Abschnitt schließen</b></a>
+                </div>
         </div>
     </div>
 </div>
@@ -92,13 +128,13 @@ The granted access token remains valid until its expiration time elapses. The ac
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="response-structure">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>Access-token response structure</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapseresponse-structure"><b>Antwortstruktur für Zugriffstoken</b></a>
             </h4>
         </div>
 
         <div id="collapse-response-structure" class="panel-collapse collapse" role="tabpanel" aria-labelledby="response-structure">
             <div class="panel-body">
-                <p>A successful HTTP response to an access-token request contains a JSON object with the access token and additional data. Following is an example of a valid-token response from the authorization server:</p>
+                <p>Die HTTP-Antwort auf eine erfolgreiche Zugriffstokenanforderung enthält ein JSON-Objekt mit dem Zugriffstoken und zusätzliche Daten. Das folgende Beispiel zeigt eine Antwort mit gültigem Token vom Autorisierungsserver:</p>
 
 {% highlight json %}
 HTTP/1.1 200 OK
@@ -113,91 +149,117 @@ Pragma: no-cache
 }
 {% endhighlight %}
 
-<p>The token-response JSON object has these property objects:</p>
+<p>Das JSON-Objekt mti der Tokenantwort enthält die folgenden Eigenschaftsobjekte:</p>
 <ul>
-    <li><b>token_type</b>: the token type is always <i>"Bearer"</i>, in accordance with the <a href="https://tools.ietf.org/html/rfc6750">OAuth 2.0 Bearer Token Usage specification</a>.</li>
-    <li><b>expires_in</b>: the expiration time of the access token, in seconds.</li>
-    <li><b>access_token</b>: the generated access token (actual access tokens are longer than shown in the example).</li>
-    <li><b>scope</b>: the requested scope.</li>
+    <li><b>token_type</b>: Der Tokentyp ist immer <i>"Bearer"</i> (siehe <a href="https://tools.ietf.org/html/rfc6750">OAuth 2.0 Authorization Framework: Bearer Token Usage</a>).</li>
+    <li><b>expires_in</b>: Die Ablaufzeit des Zugriffstokens in Sekunden</li>
+    <li><b>access_token</b>: Das generierte Zugriffstoken (tatsächliche Token sind länger als im Beispiel dargestellt)</li>
+    <li><b>scope</b>: Der angeforderte Bereich</li>
 </ul>
 
-<p>The <b>expires_in</b> and <b>scope</b> information is also contained within the token itself (<b>access_token</b>).</p>
+<p>Die Angaben <b>expires_in</b> und <b>scope</b> sind auch im Token selbst (<b>access_token</b>) enthalten.</p>
 
-<blockquote><b>Note:</b> The structure of a valid access-token response is relevant if you use the low-level <code>WLAuthorizationManager</code> class and manage the OAuth interaction between the client and the authorization and resource servers yourself, or if you use a confidential client. If you are using the high-level <code>WLResourceRequest</code> class, which encapsulates the OAuth flow for accessing protected resources, the security framework handles the processing of access-token responses for you. <a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_oauth_client_apis.html?view=kc#c_oauth_client_apis">See Client security APIs</a> and <a href="confidential-clients">Confidential clients</a>.</blockquote>
+<blockquote><b>Hinweis:</b> Die Struktur einer gültigen Zugriffstokenantwort ist relevant, wenn Sie die
+untergeordnete Klasse <code>WLAuthorizationManager</code> verwenden und selbst die OAuth-Interaktion zwischen dem Client und dem Autorisierungsserver sowie den Ressourcenservern
+verwalten oder einen vertraulichen Client verwenden. Falls Sie die übergeordnete
+Klasse <code>WLResourceRequest</code> verwenden, die den OAuth-Ablauf für den Zugriff auf geschützte Ressourcen einbindet, verarbeitet das Sicherheitsframework die
+Zugriffstokenantworten für Sie. Lesen Sie hierzu die Informationen unter
+<a href="http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_oauth_client_apis.html?view=kc#c_oauth_client_apis">Client security APIs</a> und
+<a href="confidential-clients">Vertrauliche Clients</a>.</blockquote>
 
                 <br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>Close section</b></a>
-            </div>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#response-structure" data-target="#collapse-response-structure" aria-expanded="false" aria-controls="collapse-response-structure"><b>Abschnitt schließen</b></a>
+                </div>
         </div>
     </div>
 </div>
 
-### Security Check
+### Sicherheitsüberprüfung
 {: #security-check }
-A security check is a server-side entity that implements the security logic for protecting server-side application resources. A simple example of a security check is a user-login security check that receives the credentials of a user, and verifies the credentials against a user registry. Another example is the predefined {{ site.data.keys.product_adj }} application-authenticity security check, which validates the authenticity of the mobile application and thus protects against unlawful attempts to access the application's resources. The same security check can also be used to protect several resources.
+Eine Sicherheitsüberprüfung ist eine serverseitige Entität, die die Sicherheitslogik zum Schutz sererseitiger Anwendungsressourcen
+implementiert. Ein einfaches Beispiel für eine Sicherheitsüberprüfung ist die Sicherheitsüberprüfung einer Benutzeranmeldung, bei der die Berechtigungsnachweise eines Benutzers
+empfangen und anhand einer Benutzerregistry verifiziert werden. Ein weiteres Beispiel ist die vordefinierte
+Sicherheitsüberprüfung der {{ site.data.keys.product_adj }}-Anwendungsauthentizität,
+bei der die Authentizität der mobilen Anwendung validiert wird und die Anwendungsressourcen vor unbefugtem Zugriff gescützt werden. Dieselbe Sicherheitsüberprüfung kann genutzt werden, um diverse Ressourcen zu schützen. 
 
-A security check typically issues security challenges that require the client to respond in a specific way to pass the check. This handshake occurs as part of the OAuth access-token-acquisition flow. The client uses **challenge handlers** to handle challenges from security checks.
+Eine Sicherheitsüberprüfung setzt normalerweise Sicherheitsabfragen ab, auf die der Client in einer bestimmten Weise
+antworten muss, um die Prüfung zu bestehen. Dieser Handshake erfolgt im Rahmen des
+OAuth-Ablaufs für die Anforderung eines Zugriffstokens. Der Client verwendet **Abfrage-Handler** für die Behandlung von Abfragen der Sicherheitsüberprüfungen. 
 
-#### Built-in Security Checks
+#### Integrierte Sicherheitsüberprüfungen
 {: #built-in-security-checks }
-The following predefined security checks are available:
+Die folgenden vordefinierten Sicherheitsüberprüfungen sind verfügbar: 
 
-- [Application Authenticity](application-authenticity/)
-- [LTPA-based single sign-on (SSO)](ltpa-security-check/)
-- [Direct Update](../application-development/direct-update)
+- [Anwendungsauthentizität](application-authenticity/)
+- [LTPA-basiertes Single Sign-on (SSO)](ltpa-security-check/)
+- [Direkte Aktualisierung](../application-development/direct-update)
 
-### Challenge Handler
+### Abfrage-Handler
 {: #challenge-handler }
-When trying to access a protected resource, the client may be faced with a challenge. A challenge is a question, a security test, a prompt by the server to make sure that the client is allowed to access this resource. Most commonly, this challenge is a request for credentials, such as a user name and password.
+Wenn der Client versucht, auf eine geschützte Ressource zuzugreifen, kann er eine Abfrage erhalten. Bei dieser Abfrage kann es sich um eine Frage, einen
+Sicherheitstest oder eine Eingabeaufforderung des Servers handeln. Mit der Abfrage soll sichergestellt werden, dass der Client berechtigt ist, auf diese Ressource zuzugreifen. In den meisten Fällen werden im Rahmen der Abfrage Berechtigungsnachweise angefordert, z. B. ein Benutzername und ein Kennwort. 
 
-A challenge handler is a client-side entity that implements the client-side security logic and the related user interaction.  
-**Important**: After a challenge is received, it cannot be ignored. You must answer or cancel it. Ignoring a challenge might lead to unexpected behavior.
+Ein Abfrage-Handler ist
+eine clientseitige Entität, die die clientseitige Sicherheitslogik und die zugehörigen Benutzerinteraktionen implementiert.   
+**Wichtiger Hinweis**: Eine erhaltene Abfrage kann nicht ignoriert werden. Sie muss beantwortet werden oder der laufende Vorgang
+muss abgebrochen werden. Das Ignorieren einer Abfrage kann zu nicht erwartetem Verhalten führen. 
 
-> Learn more about security checks in the [Creating a Security Check](creating-a-security-check/) tutorial, and about challenge handlers in the [Credentials Validation](credentials-validation) tutorial.
-
-### Scope
+> Weitere Informationen zu Sicherheitsüberprüfungen enthält das Lernprogramm [Sicherheitsüberprüfungen erstellen](creating-a-security-check/). Weitere
+Informationen zu Abfrage-Handlern finden Sie im Lernprogramm [Berechtigungsnachweise validieren](credentials-validation).
+### Bereich
 {: #scope }
-You can protect resources such as adapters from unauthorized access by specifying a **scope**.  
+Sie können Ressourcen wie Adapter durch Angabe eines **Bereichs** vor unbefugtem Zugriff schützen.   
 
-A scope is a space-separated list of zero or more **scope elements**, for example `element1 element2 element3`.
-The {{ site.data.keys.product_adj }} security framework requires an access token for any adapter resource, even if the resource is not explicitly assigned a scope.
+Ein Bereich ist eine Liste mit null oder mehr **Bereichselementen**, die jeweils durch Leerzeichen getrennt angegeben sind,
+z. B. `Element1 Element2 Element3`.
+Das {{ site.data.keys.product_adj }}-Sicherheitsframework erfordert für jede Adapterressource ein Zugriffstoken.
+Dies gilt auch dann, wenn der Ressource nicht explizit ein Bereich zugeordnet wurde. 
 
-#### Scope Element
+#### Bereichselement
 {: #scope-element }
-A scope element can be one of the following:
+Folgendes kann ein Bereichselement sein: 
 
-* The name of a security check.
-* An arbitrary keyword such as `access-restricted` or `deletePrivilege` which defines the level of security needed for this resource. This keyword is later mapped to a security check.
+* Name der Sicherheitsüberprüfung
+* Beliebiges Schlüsselwort wie `access-restricted` oder `deletePrivilege`, das
+die für diese Ressource erforderliche Sicherheitsstufe definiert. Dieses Schlüsselwort wird später einer Sicherheitsüberprüfung zugeordnet. 
 
-#### Scope Mapping
+#### Bereichszuordnung
 {: #scope-mapping }
-By default, the **scope elements** you write in your **scope** are mapped to a **security check with the same name**.  
-For example, if you write a security check called `PinCodeAttempts`, you can use a scope element with the same name within your scope.
+Die **Bereichselemente**, die Sie in Ihren **Bereich** schreiben, werden
+standardmäßig einer **Sicherheitsüberprüfung mit demselben Namen** zugeordnet.  
+Wenn Sie beispielsweise eine Sicherheitsüberprüfung mit der Bezeichnung
+`PinCodeAttempts` schreiben, können Sie in Ihrem Bereich ein Bereichselement mit eben diesem Namen verwenden. 
 
-Scope Mapping allows to map scope elements to security checks. When the client asks for a scope element, this configuration defines which security checks should be applied.   For example, you can map the scope element `access-restricted` to your `PinCodeAttempts` security check.
+Die Bereichszuordnung ermöglicht die Zuordnung von Bereichselementen zu Sicherheitsüberprüfungen. Wenn der Client nach einem Bereichselement fragt, definiert diese Konfiguration,
+welche Sicherheitsüberprüfungen durchgeführt werden sollen. Sie können beispielsweise das Bereichselement `access-restricted` Ihrer Sicherheitsprüfung `PinCodeAttempts` zuordnen. 
 
-Scope mapping is useful if you want to protect a resource differently depending on which application is trying to access it.  
-You can also map a scope to a list of zero or more security checks.
+Die Bereichszuordnung ist hilfreich, wenn der Schutz einer Ressource von der Anwendung abhängig sein soll, die
+versucht, auf die Ressource zuzugreifen.   
+Sie können einen Bereich auch einer Liste mit null oder mehr Sicherheitsüberprüfungen zuordnen. 
 
-For example:  
+Beispiel:   
 scope = `access-restricted deletePrivilege`
 
-* In app A
-  * `access-restricted` is mapped to `PinCodeAttempts`.
-  * `deletePrivilege` is mapped to an empty string.
-* In app B
-  * `access-restricted` is mapped to `PinCodeAttempts`.
-  * `deletePrivilege` is mapped to `UserLogin`.
+* App A: 
+  * `access-restricted` ist `PinCodeAttempts` zugeordnet.
+  * `deletePrivilege` ist einer leeren Zeichenfolge zugeordnet. 
+* App B: 
+  * `access-restricted` ist `PinCodeAttempts` zugeordnet.
+  * `deletePrivilege` ist `UserLogin` zugeordnet.
 
-> To map your scope element to an empty string, do not select any security check in the **Add New Scope Element Mapping** pop-up menu.
+> Wenn Sie Ihr Bereichselement einer leeren Zeichenfolge zuordnen, wählen Sie im Popup-Menü **Neue Zuordnung von Bereichselementen hinzufügen** keine Sicherheitsüberprüfung aus.
 
-<img class="gifplayer" alt="Scope mapping" src="scope_mapping.png"/>
+<img class="gifplayer" alt="Bereichszuordnung" src="scope_mapping.png"/>
 
-You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a {{ site.data.keys.mf_server }}.
+Sie können auch die JSON-Konfigurationsdatei der Anwendung manuell bearbeiten und die erforderliche Konfiguration definieren.
+Senden Sie dann die Änderungen per Push-Operation zurück an {{ site.data.keys.mf_server }}.
 
-1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
-2. Open the configuration file, located in the **[project-folder]\mobilefirst** folder.
-3. Edit the file by defining a `scopeElementMapping` property, in this property, define data pairs that are each composed of the name of your selected scope element, and a string of zero or more space-separated security checks to which the element maps. For example: 
+1. Navigieren Sie in eiem **Befehlszeilenfenster** zum Projektstammverzeichnis
+und führen Sie den Befehl `mfpdev app pull` aus.
+2. Öffnen Sie die Konfigurationsdatei aus dem Ordner **[Projektordner]\mobilefirst**. 
+3. Bearbeiten Sie Datei. Definieren Sie eine Eigenschaft `scopeElementMapping` und definieren Sie in dieser Eigenschaft Datenpaare, die jeweils aus dem Namen Ihres ausgewählten Bereichselements
+und einer Zeichenfolge mit null oder mehr durch Leerzeichen getrennten
+Sicherheitsüberprüfungen besteht, denen das Element zugeordnet wird. Beispiel:  
 
     ```xml
     "scopeElementMapping": {
@@ -205,145 +267,204 @@ You can also manually edit the application's configuration JSON file with the re
         "SSOUserValidation": "LtpaBasedSSO CredentialsValidation"
     }
     ```
-4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
+4. Implementieren Sie die aktualisierte JSON-Konfigurationsdatei. Führen Sie dazu den Befehl `mfpdev app push` aus.
 
-> You can also push updated configurations to remote servers. Review the [Using {{ site.data.keys.mf_cli }} to Manage {{ site.data.keys.product_adj }} artifacts](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> Sie können aktualisierte Konfigurationen auch per Push-Operation auf ferne Server übertragen. Sehen Sie sich dazu das Lernprogramm
+[{{ site.data.keys.product_adj }}-Artefakte
+über die {{ site.data.keys.mf_cli }} verwalten](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) an.
 
-## Protecting resources
+## Ressourcen schützen
 {: #protecting-resources }
-In the OAuth model, a protected resource is a resource that requires an access token. You can use the {{ site.data.keys.product_adj }} security framework to protect both resources that are hosted on an instance of {{ site.data.keys.mf_server }}, and resources on an external server. You protect a resource by assigning it a scope that defines the required permissions for acquiring an access token for the resource. 
+Im OAuth-Modell ist eine geschützte Ressource eine Ressource, für die ein Zugriffstoken erforderlich ist. Sie können das {{ site.data.keys.product_adj }}-Sicherheitsframework verwenden, um
+von einer Instanz von
+{{ site.data.keys.mf_server }}
+und von einem externen Server bereitgestellte Ressourcen zu schützen. Für den Schutz einer Ressource weisen Sie ihr einen Bereich zu, der die Berechtigungen definiert, die erforderlich sind, um ein Zugriffstoken
+für die Ressource beziehen zu können.
+ 
 
-You can protect your resources in various ways:
+Sie können Ihre Ressourcen auf verschiedenen Wegen schützen: 
 
-### Mandatory application scope
+### Obligatorischer Anwendungsbereich
 {: #mandatory-application-scope }
-At the application level, you can define a scope that will apply to all the resources used by the application. The security framework runs these checks (if exist) in addition to the security checks of the requested resource scope.
+Auf der Anwendungsebene können Sie einen Bereich definieren, der auf alle von der Anwendung verwendeten Ressourcen angewendet wird. Das Sicherheitsframework führt diese
+Überprüfungen (soweit vorhanden) zusätzlich zu den Sicherheitsüberprüfungen des angeforderten Ressourcenbereichs aus. 
 
-**Notes:**
-
-* The mandatory application scope is not applied when accessing [an unprotected resource](#unprotected-resources).
-* The access token that is granted for the resource scope does not contain the mandatory application scope.
+**Hinweis:**
+* Der obligatorische Anwendungsbereich wird nicht angewendet,
+wenn auf eine [ungeschützte Ressource](#unprotected-resources) zugegriffen wird.
+* Das Zugriffstoken, das für den Ressourcenbereich ausgestellt wird, enthält nicht den obligatorischen Anwendungsbereich. 
 
 <br/>
-In the {{ site.data.keys.mf_console }}, select **[your application] → Security tab**. Under **Mandatory Application Scope**, click **Add to Scope**.
+Wählen Sie in der **Navigationsseitenleiste** der {{ site.data.keys.mf_console }} im Abschnitt **Anwendungen** Ihre Anwendung und dann das Register
+**Sicherheit** aus. Wählen Sie unter
+**Obligatorischer Anwendungsbereich** die Option **Zum Bereich hinzufügen** aus.
 
-<img class="gifplayer" alt="Mandatory application scope" src="mandatory-application-scope.png"/>
+<img class="gifplayer" alt="Obligatorischer Anwendungsbereich" src="mandatory-application-scope.png"/>
 
-You can also manually edit the application's configuration JSON file with the required configuration and push the changes back to a {{ site.data.keys.mf_server }}.
+Sie können auch die JSON-Konfigurationsdatei der Anwendung manuell bearbeiten und die erforderliche Konfiguration definieren.
+Senden Sie dann die Änderungen per Push-Operation zurück an {{ site.data.keys.mf_server }}.
 
-1. From a **command-line window**, navigate to the project's root folder and run the `mfpdev app pull`.
-2. Open the configuration file, located in the **project-folder\mobilefirst** folder.
-3. Edit the file by defining a `mandatoryScope` property, and setting the property value to a scope string that contains a space-separated list of your selected scope elements. For example: 
+1. Navigieren Sie in eiem **Befehlszeilenfenster** zum Projektstammverzeichnis
+und führen Sie den Befehl `mfpdev app pull` aus.
+2. Öffnen Sie die Konfigurationsdatei aus dem Ordner **[Projektordner]\mobilefirst**. 
+3. Bearbeiten Sie die Datei. Definieren Sie eine Eigenschaft `mandatoryScope` und
+legen Sie als Eigenschaftswert eine Bereichszeichenfolge fest, die Ihre ausgewählten Bereichselemente jeweils mit einem Leerzeichen als Trennzeichen auflistet. Beispiel:  
 
    ```xml
    "mandatoryScope": "appAuthenticity PincodeValidation"
    ```
    
-4. Deploy the updated configuration JSON file by running the command: `mfpdev app push`.
+4. Implementieren Sie die aktualisierte JSON-Konfigurationsdatei. Führen Sie dazu den Befehl `mfpdev app push` aus.
 
-> You can also push updated configurations to remote servers. Review the [Using {{ site.data.keys.mf_cli }} to Manage {{ site.data.keys.product_adj }} artifacts](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) tutorial.
+> Sie können aktualisierte Konfigurationen auch per Push-Operation auf ferne Server übertragen. Sehen Sie sich dazu das Lernprogramm
+[{{ site.data.keys.product_adj }}-Artefakte
+über die {{ site.data.keys.mf_cli }} verwalten](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) an.
 
-### Resource-level
+### Ressourcenebene
 {: #resource-level }
-#### Java adapters
+#### Java-Adapter
 {: #java-adapters }
-You can specify the scope of a resource method by using the `@OAuthSecurity` annotation.
+Sie können den Bereich einer Ressourcenmethode mit der Annotation `@OAuthSecurity` angeben. 
 
 ```java
 @DELETE
 @Path("/{userId}")
 @OAuthSecurity(scope="deletePrivilege")
-//This will serve: DELETE /users/{userId}
+// Dies dient: DELETE /users/{userId}
 public void deleteUser(@PathParam("userId") String userId){
     ...
 }
 ```
 
-In the example above, the `deleteUser` method uses the annotation `@OAuthSecurity(scope="deletePrivilege")`, which means that it is protected by a scope containing the scope element `deletePrivilege`.
+Im obigen Beispiel verwendet die Methode `deleteUser`
+die Annotation `@OAuthSecurity(scope="deletePrivilege")`. Das bedeutet,
+der Schutz erfolgt durch einen Bereich mit dem Bereichselement `deletePrivilege`.
 
-* A scope can be made of several scope elements, separated by spaces: `@OAuthSecurity(scope="element1 element2 element3")`.
-* If you do not specify the `@OAuthSecurity` annotation, or set the scope to an empty string, the {{ site.data.keys.product_adj }} security framework still requires an access token for any incoming request.
-* You can use the `@OAuthSecurity` annotation also at the resource class level, to define a scope for the entire Java class.
+* Ein Bereich kann aus mehreren Bereichselementen bestehen, die jeweils durch ein Leerzeichen getrennt sind: `@OAuthSecurity(scope="Element1 Element2 Element3")`.
+* Wenn Sie die Annotation `@OAuthSecurity` nicht angeben oder den Bereich auf eine leere Zeichenfolge
+setzen, erfordert das {{ site.data.keys.product_adj }}-Sicherheitsframework trotzdem für
+jede eingehende Anforderung ein Zugriffstoken. 
+* Sie können die Annotation `@OAuthSecurity` auch auf der Ressourcenklassenebene verwenden, um einen Bereich für die gesamte Java-Klasse zu definieren. 
 
-#### JavaScript adapters
+#### JavaScript-Adapter
 {: #javascript-adapters }
-You can protect a JavaScript adapter procedure by assigning a scope to the procedure definition in the adapter XML file:
+Sie können eine JavaScript-Adapterprozedur schützen, indem Sie der Prozedurdefinition in der Adapter-XML-Datei einen Bereich zuordnen. 
 
 ```xml
 <procedure name="deleteUser" scope="deletePrivilege">
 ```
 
-* A scope can be made of several scope elements, separated by spaces: `scope="element1 element2 element3"`
-* If you do not specify any scope, or use an empty string, the {{ site.data.keys.product_adj }} security framework still requires an access token for any incoming request.
+* Ein Bereich kann aus mehreren Bereichselementen bestehen, die jeweils durch ein Leerzeichen getrennt sind: `scope="Element1 Element2 Element3"`.
+* Wenn Sie keinen Bereich angeben oder eine leere Zeichenfolge verwenden,
+erfordert das {{ site.data.keys.product_adj }}-Sicherheitsframework trotzdem für jede eingehende Anforderung
+ein Sicherheitstoken. 
 
-### Disabling protection
+### Schutz inaktivieren
 {: #disabling-protection }
-The default value of the annotation’s `enabled` element is `true`. When the `enabled` element is set to `false`, the `scope` element is ignored, and the resource or resource class is not protected.  
-**Disabling protection** allows any client to access the resource: the {{ site.data.keys.product_adj }} security framework will **not** require an access token.
+Der Standardwert des
+Annotationselements `enabled` ist
+`true`. Wenn das Element `enabled` auf
+`false` gesetzt ist, wird das Element `scope` ignoriert und die Ressource oder Ressourcenklasse nicht geschützt.   
+Bei **Inaktivierung des Schutzes** kann jeder Client auf die Ressource zugreifen.
+Das {{ site.data.keys.product_adj }}-Sicherheitsframework fordert in dem Fall **kein** Zugriffstoken an. 
 
-**Note:** When you assign a scope to a resource method that is contained in an unprotected class, the method is protected despite the class annotation, provided you do not also set the enabled element to false in the resource annotation.
+**Hinweis:** Wenn Sie einer Ressourcenmethode in einer nicht geschützten Klasse einen Bereich zuordnen,
+wird die Methode ungeachtet der Klassenannotation geschützt, sofern Sie in der Ressourcenannotation nicht auch das Element
+enabled auf
+false gesetzt haben. 
 
-#### Java adapters
+#### Java-Adapter
 {: #java-adapters-protection }
-If you want to disable protection, you can use: `@OAuthSecurity(enabled=false)`.
+Wenn Sie den Schutz inaktivieren möchten, können Sie `@OAuthSecurity(enabled=false)` verwenden.
 
-#### JavaScript adapters
+#### JavaScript-Adapter
 {: #javascript-adapters-protection }
-If you want to disable protection, you can use `secured="false"`.
+Wenn Sie den Schutz inaktivieren möchten, können Sie `secured="false"` verwenden.
 
 ```xml
 <procedure name="deleteUser" secured="false">
 ```
 
-### Unprotected resources
+### Ungeschützte Ressourcen
 {: #unprotected-resources }
-An unprotected resource is a resource that does not require an access token. The {{ site.data.keys.product_adj }} security framework does not manage access to unprotected resources, and does not validate or check the identity of clients that access these resources. Therefore, features such as Direct Update, blocking device access, or remotely disabling an application, are not supported for unprotected resources.
+Eine ungeschützte Ressource ist eine Ressource, für die kein Zugriffstoken erforderlich ist. Das {{ site.data.keys.product_adj }}-Sicherheitsframework verwaltet nicht den
+Zugriff auf ungeschützte Ressourcen und überprüft oder validiert nicht die Identität von Clients, die auf solche Ressourcen zugreifen. Features wie die direkte Aktualisierung, die Blockierung des Gerätezugriffs oder die Inaktivierung einer Anwendung über Fernzugriff werden daher für
+ungeschützte Ressourcen nicht unterstützt. 
 
-### External resources
+### Externe Ressourcen
 {: external-resources }
-To protect external resources, you add a resource filter with an access-token validation module to the external resource server. The token-validation module uses the introspection endpoint of the security framework's authorization server to validate {{ site.data.keys.product_adj }} access tokens before granting the OAuth client access to the resources. You can use the [{{ site.data.keys.product_adj }} REST API for the {{ site.data.keys.product_adj }} runtime](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api) to create your own access-token validation module for any external server. Alternatively, use one of the provided {{ site.data.keys.product_adj }} extensions for protecting external Java resources, as outlined in the [Protecting External Resources](protecting-external-resources) tutorial.
+Zum Schutz externer Ressourcen müssen Sie einen Ressourcenfilter mit Validierungsmodul für Zugriffstoken zum externen Ressourcenserver
+hinzufügen.
+Das Tokenvalidierungsmodul verwendet den Introspektionsendpunkt des Autorisierungsservers des Sicherheitsframeworks, um
+die {{ site.data.keys.product_adj }}-Zugriffstoken zu valisieren, bevor
+der OAuth-Clientzugriff auf die Ressourcen gewährt wird. Sie können die [{{ site.data.keys.product_adj }}-REST-API
+für die {{ site.data.keys.product_adj }}-Laufzeit verwenden](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api), um für externe Server ein eigenes Validierungsmodul
+für Zugriffstoken zu erstellen.
+Sie können aber auch eine der bereitgestellten {{ site.data.keys.product_adj }}-Erweiterungen für den
+Schutz externer Java-Ressourcen nutzen. Sehen Sie sich dazu das Lernprogramm [Externe Ressourcen schützen](protecting-external-resources) an. 
 
-## Authorization flow
+## Autorisierungsablauf
 {: #authorization-flow }
-The authorization flow has two phases:
+Die Autorisierung erfolgt in zwei Phasen: 
 
-1. The client acquires an access token.
-2. The client uses the token to access a protected resource.
+1. Der Client fordert ein Zugriffstoken an. 
+2. Der Client nutzt das Token, um auf eine geschützte Ressource zuzugreifen.
 
-### Obtaining an access token
+
+### Zugriffstoken anfordern
 {: #obtaining-an-access-token }
-In this phase, the client undergoes **security checks** in order to receive an access token.
+In dieser Phase durchläuft der Client **Sicherheitsüberprüfungen**, um ein Zugriffstoken zu erhalten. 
 
-Before the request for an access token the client registers itself with the {{ site.data.keys.mf_server }}. As part of the registration, the client provides a public key that will be used for authenticating its identity. This phase occurs once in the lifetime of a mobile application instance. If the application-authenticity security check is enabled the authenticity of the application is validated during its registration.
+Bevor der Client ein Zugriffstoken anfordert, registriert er sich bei {{ site.data.keys.mf_server }}. Bei der Registrierung stellt der Client einen öffentlichen Schlüssel bereit, der für die Authentifizierung der Clientidentität
+verwendet wird. Diese Phase gibt es während der gesamten Lebensdauer einer mobilen Anwendungsinstanz nur einmal. Wenn die Sicherheitsüberprüfung der Anwendungsauthentizität
+aktiviert ist, wird die Authentizität der Anwendung während ihrer Registrierung
+validiert. 
 
-![Obtain Token](auth-flow-1.jpg)
+![Token anfordern](auth-flow-1.jpg)
 
-1. The client application sends a request to obtain an access token for a specified scope.
+1. Die Clientanwendung sendet eine Anforderung, um ein Zugriffstoken für einen angegebenen Bereich zu erhalten. 
 
-    > The client requests an access token with a certain scope. The requested scope should map to the same security check as the scope of the protected resource that the client wants to access, and can optionally also map to additional security checks. If the client does not have prior knowledge about the scope of the protected resource, it can first request an access token with an empty scope, and try to access the resource with the obtained token. The client will receive a response with a 403 (Forbidden) error and the required scope of the requested resource.
+    > Der Client fordert ein Zugriffstoken mit einem bestimmten Bereich an. Der angeforderte Bereich muss derselben
+Sicherheitsüberprüfung zugeordnet sein wie der Bereich der geschützten Ressource, auf die der Client zugreifen möchte. Darüber hinaus kann der angeforderte Bereich
+weiteren Sicherheitsüberprüfungen zugeordnet sein. Wenn der Client den Bereich der geschützten Ressource nicht kennt, kann er zunächst ein Zugriffstoken mit einem leeren Bereich anfordern.
+Versucht er, mit dem empfangenen Token auf die Ressource zuzugreifen, empfängt er eine Antwort mit einem Fehler
+403 (Zugriff verboten) und dem erforderlichen Bereich für die angeforderte Ressource. 2. Die Clientanwendung durchläuft die im angeforderten Bereich vorgesehenen
+Sicherheitsüberprüfungen. 
 
-2. The client application undergoes security checks according to the requested scope.
+    > {{ site.data.keys.mf_server }} führt
+die Sicherheitsüberprüfungen aus, denen der Bereich aus der Clientanforderung zugeordnet ist. Ausgehend vom Ergebnis dieser Überprüfung entspricht der
+Autorisierungsserver der Anforderung des Clients oder weist diese Anforderung zurück. Wenn ein obligatorischer Anwendungsbereich definiert ist,
+werden die Sicherheitsüberprüfungen nicht nur für den Bereich aus der Anforderung, sondern auch für den obligatorischen Bereich
+durchgeführt. 3. Nach erfolgreichem Abschluss des Abfrageprozesses leitet die Clientanwendung die Anforderung an den Autorisierungsserver weiter. 
 
-    > {{ site.data.keys.mf_server }} runs the security checks to which the scope of the client's request is mapped. The authorization server either grants or rejects the client's request based on the results of these checks. If a mandatory application scope is defined, the security checks of this scope are run in addition to the checks of the requested scope.
+    > Nach erfolgreicher Autorisierung wird der Client zum Tokenendpunkt des Autorisierungsservers umgeleitet, wo
+er mithilfe des öffentlichen Schlüssels, der bei der Clientregistrierung bereitgestellt wurde, authentifiziert
+wird. Auf erfolgreicher Authentifizierung stellt der
+Autorisierungsserver für den Client ein digital signiertes Zugriffstoken (mit der ID des Clients, dem angeforderten Bereich und der Ablaufzeit des Tokens) aus. 4. Die Clientanwendung
+empfängt das Zugriffstoken. 
 
-3. After a successful completion of the challenge process, the client application forwards the request to the authorization server.
-
-    > After successful authorization, the client is redirected to the authorization server's token endpoint, where it is authenticated by using the public key that was provided as part of the client's registration. Upon successful authentication, the authorization server issues the client a digitally signed access token that encapsulates the client's ID, the requested scope, and the token's expiration time.
-
-4. The client application receives the access token.
-
-### Using a token to access a protected resource
+### Token für den Zugriff auf eine geschützte Ressource verwenden
 {: #using-a-token-to-access-a-protected-resource }
-It is possible to enforce security both on resources that run on {{ site.data.keys.mf_server }}, as shown in this diagram, and on resources that run on any external resource server, as explained in tutorial [Using {{ site.data.keys.mf_server }} to authenticate external resources](protecting-external-resources/).
+Sie können die Sicherheit für Ressourcen, die
+in {{ site.data.keys.mf_server }} ausgeführt werden (siehe Diagramm), und für Ressourcen,
+die auf einem externen Ressourcenserver ausgeführt werden, durchsetzen.
+Diesbezügliche Erläuterungen finden sie im Lernprogramm
+[Externe Ressourcen mit {{ site.data.keys.mf_server }} authentifizieren](protecting-external-resources/).
 
-After obtaining an access token, the client attaches the obtained token to subsequent requests to access protected resources. The resource server uses the authorization server's introspection endpoint to validate the token. The validation includes using the token's digital signature to verify the client's identity, verifying that the scope matches the authorized requested scope, and ensuring that the token has not expired. When the token is validated, the client is granted access to the resource.
+Wenn der Client ein Zugriffstoken erhalten hat, hängt er das Token
+an alle neue Zugriffsanforderungen für geschützte Ressourcen an. Der Ressourcenserver verwendet den
+Introspektionsendpunkt des Autorisierungsservers, um das Token zu validieren. Für die Validierung wird die digitale Signatur des Tokens verwendet, um die Client-ID zu verfizieren. Außerdem wird während der Validierung
+geprüft, ob der Bereich mit dem aus der autorisierten Anforderung übereinstimmt. Zudem wird sichergestellt, dass das Token nicht abgelaufen ist. Wenn das Token validiert ist,
+wird dem Client der Zugriff auf die Ressource gewährt. 
 
-![Protect Resources](auth-flow-2.jpg)
+![Ressourcen schützen](auth-flow-2.jpg)
 
-1. The client application sends a request with the received token.
-2. The validation module validates the token.
-3. {{ site.data.keys.mf_server }} proceeds to adapter invocation.
+1. Die Clientanwendung sendet eine Anforderung mit dem empfangenen Token. 
+2. Das Validierungsmodul validiert das Token. 
+3. {{ site.data.keys.mf_server }} fährt mit dem Adapteraufruf fort. 
 
-## Tutorials to follow next
+## Nächste Lernprogramme
 {: #tutorials-to-follow-next }
-Continue reading about authentication in {{ site.data.keys.product_adj }} Foundation by following the tutorials from the sidebar navigation.  
+In der Seitenleistennavigation können Sie
+Lernprogramme auswählen, um sich näher mit der Authentifizierung in der {{ site.data.keys.product_adj }} Foundation zu beschäftigen. 
+

@@ -50,8 +50,7 @@ klicken Sie auf **Weiter**.
     - Klicken Sie auf **Archetyp hinzufügen** und machen Sie die folgenden Angaben: 
         - **Gruppen-ID für Archetyp**: `com.ibm.mfp`
         - **Artefakt-ID für Archetyp**: `adapter-maven-archetype-java`, `adapter-maven-archetype-http` oder `adapter-maven-archetype-sql`
-        - **Archetypversion**: `8.0.2016061011` (Die aktuell verfügbare Version finden Sie
-in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation).)
+        - **Archetype Version**: Die aktuell verfügbare Version finden Sie in [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp). 
 
     ![Erstellung eines Maven-Adapterprojekts in Eclipse](create-an-archetype.png)
 

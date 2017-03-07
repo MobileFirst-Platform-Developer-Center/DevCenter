@@ -1,20 +1,24 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Android applications
+title: Abfrage-Handler in Android-Anwendungen implementieren
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 4
 downloads:
-  - name: Download Android Studio project
+  - name: Android-Studio-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: Maven-Projekt SecurityCheck herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-When trying to access a protected resource, the server (the security check) sends back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a `JSON` object, listing the security check name with an optional `JSON` of additional data:
+Wenn Sie versuchen, auf eine geschützte Ressource zuzugreifen,
+sendet der Server (die Sicherheitsüberprüfung)
+eine Liste
+mit mindestens einer **Abfrage** an den Client zur Bearbeitung zurück.   
+Die Liste wird als `JSON`-Objekt empfangen, in dem die Namen der Sicherheitsüberprüfungen sowie
+optional weitere `JSON`-Daten enthalten sind. 
 
 ```json
 {
@@ -27,16 +31,21 @@ This list is received as a `JSON` object, listing the security check name with a
 }
 ```
 
-The client must then register a **challenge handler** for each security check.  
-The challenge handler defines the client-side behavior that is specific to the security check.
+Der Client muss für jede Sicherheitsüberprüfung einen **Abfrage-Handler** registrieren.   
+Der Abfrage-Handler definiert das clientseitige Verhalten für die jeweilige Sicherheitsüberprüfung. 
 
-## Creating the challenge handler
+## Abfrage-Handler erstellen
 {: #creating-the-challenge-handler }
-A challenge handler is a class that handles challenges sent by the {{ site.data.keys.mf_server }}, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
+Ein Abfrage-Handler ist eine Klasse, die von {{ site.data.keys.mf_server }} gesendete Abfragen bearbeitet.
+Er zeigt beispielsweise eine Anmeldeanzeige an, erfasst Berechtigungsnachweise und übermittelt diese
+an die Sicherheitsüberprüfung. 
 
-In this example, the security check is `PinCodeAttempts` which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to login (`remainingAttempts`) and an optional `errorMsg`.
+In diesem Beispiel geht es um die Sicherheitsüberprüfung
+`PinCodeAttempts`, die im Abschnitt [CredentialsValidationSecurityCheck implementieren](../security-check) definiert wurde. Die von dieser
+Sicherheitsüberprüfung gesendete Abfrage enthält die verbleibende Anzahl von Anmeldeversuchen (`remainingAttempts`) und
+optional eine Fehlernachricht (`errorMsg`).
 
-Create a Java class that extends `SecurityCheckChallengeHandler`:
+Erstellen Sie eine Java-Klasse, die `SecurityCheckChallengeHandler` erweitert:
 
 ```java
 public class PinCodeChallengeHandler extends SecurityCheckChallengeHandler {
@@ -44,11 +53,13 @@ public class PinCodeChallengeHandler extends SecurityCheckChallengeHandler {
 }
 ```
 
-## Handling the challenge
+## Abfrage bearbeiten
 {: #handling-the-challenge }
-The minimum requirement from the `SecurityCheckChallengeHandler` protocol is to implement a constructor and a `handleChallenge` method, which prompts the user to provide the credentials. The `handleChallenge` method receives the challenge as a `JSONObject`.
+Die Mindestanforderung des Protokolls `SecurityCheckChallengeHandler` ist die Implementierung
+eines Konstruktors und einer Methode `handleChallenge`, die den Benutzer zur Angabe der Berechtigungsnachweise auffordert. Die Methode
+`handleChallenge` empfängt die Abfrage als `JSONObject`. 
 
-Add a constructor method:
+Fügen Sie eine Konstruktormethode hinzu: 
 
 ```java
 public PinCodeChallengeHandler(String securityCheck) {
@@ -56,7 +67,7 @@ public PinCodeChallengeHandler(String securityCheck) {
 }
 ```
 
-In this `handleChallenge` example, an alert prompts the user to enter the PIN code:
+Im folgenden `handleChallenge`-Beispiel wird der Benutzer in einem Alert aufgefordert, den PIN-Code einzugeben: 
 
 ```java
 @Override
@@ -80,28 +91,34 @@ public void handleChallenge(JSONObject jsonObject) {
 
 ```
 
-> The implementation of `alertMsg` is included in the sample application.
+> Die Implementierung von `alertMsg` ist in der Beispielanwendung enthalten. 
 
-If the credentials are incorrect, you can expect the framework to call `handleChallenge` again.
+Wenn die Berechtigungsnachweise nicht stimmen, können Sie erwarten, dass das Framework erneut `handleChallenge` aufruft. 
 
-## Submitting the challenge's answer
+## Antwort auf die Abfrage übergeben
 {: #submitting-the-challenges-answer }
-Once the credentials have been collected from the UI, use the `SecurityCheckChallengeHandler`'s `submitChallengeAnswer(JSONObject answer)` method to send an answer back to the security check. In this example, `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+Wenn die Berechtigungsnachweise auf der Benutzerschnittstelle erfasst wurden,
+verwenden Sie die Methode `submitChallengeAnswer(JSONObject answer)` von
+`SecurityCheckChallengeHandler`, um eine Antwort an die Sicherheitsüberprüfung zu senden. Im folgenden Beispiel erwartet `PinCodeAttempts`
+eine Eigenschaft mit der Bezeichnung `pin`, die den übergebenen PIN-Code enthält: 
 
 ```java
 submitChallengeAnswer(new JSONObject().put("pin", pinCodeTxt.getText()));
 ```
 
-## Cancelling the challenge
+## Abfrage abbrechen
 {: #cancelling-the-challenge }
-In some cases, such as clicking a **Cancel** button in the UI, you want to tell the framework to discard this challenge completely.
+Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., wenn
+auf eine Schaltfläche **Cancel** geklickt wird. 
 
-To achieve this, use the `SecurityCheckChallengeHandler`'s `cancel()` method.
+Verwenden Sie dazu die Methode `cancel()` von `SecurityCheckChallengeHandler`. 
 
-## Handling failures
+## Fehlerbehandlung
 {: #handling-failures }
-Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement the `SecurityCheckChallengeHandler`'s `handleFailure` method.  
-The structure of the `JSONObject` passed as a parameter greatly depends on the nature of the failure.
+In einigen Szenarien kann ein Fehler ausgelöst werden (z. B. bei Erreichung der maximalen Anzahl von Versuchen). Implementieren Sie für solche Fälle die
+Methode `handleFailure` von `SecurityCheckChallengeHandler`.
+  
+Die Struktur des als Parameter übergebenen JSON-Objekts (`JSONObject`) hängt in starkem Maße von der Art des Fehlers ab. 
 
 ```java
 @Override
@@ -123,45 +140,49 @@ public void handleFailure(JSONObject jsonObject) {
 }
 ```
 
-> The implementation of `alertError` is included in the sample application.
+> Die Implementierung von `alertError` ist in der Beispielanwendung enthalten. 
 
-## Handling successes
+## Erfolgsbehandlung
 {: #handling-successes }
-In general, successes are automatically processed by the framework to allow the rest of the application to continue.
+Im Erfolgsfall erlaubt das Framework generell die weitere Ausführung der Anwendung. 
 
-Optionally, you can also choose to do something before the framework closes the challenge handler flow, by implementing the `SecurityCheckChallengeHandler`'s `handleSuccess` method. Here again, the content and structure of the `JSONObject` passed as a parameter depends on what the security check sends.
+Bei Bedarf können Sie entscheiden, eine Aktion auszuführen, bevor das Framework den Abfrage-Handler-Ablauf schließt,
+indem Sie die Methode `handleSuccess()` von `createSecurityCheckChallengeHandler` implementieren. Auch hier sind Inhalt und
+Struktur des als Parameter übergebenen JSON-Objekts (`JSONObject`) davon abhängig, was die Sicherheitsüberprüfung sendet. 
 
-In the `PinCodeAttempts` sample application, the `JSONObject` does not contain any additional data and so `handleSuccess` is not implemented.
+In der Beispielanwendung `PinCodeAttempts` gibt es im `JSONObject` keine zusätzlichen Daten. Daher ist
+`handleSuccess` nicht implemetiert. 
 
-## Registering the challenge handler
+## Abfrage-Handler registrieren
 {: #registering-the-challenge-handler }
-For the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.
+Sie müssen das Framework anweisen, dem Abfrage-Handler den Namen einer bestimmten Sicherheitsüberprüfung zuzuordnen, damit der Abfrage-Handler auf dem Empfang der richtigen Abfragen wartet. 
 
-To do so, initialize the challenge handler with the security check as follows:
+Initialisieren Sie den Abfrage-Handler dafür wie folgt mit der Sicherheitsüberprüfung: 
 
 ```java
 PinCodeChallengeHandler pinCodeChallengeHandler = new PinCodeChallengeHandler("PinCodeAttempts", this);
 ```
 
-You must then **register** the challenge handler instance:
+Anschließend müssen Sie die Abfrage-Handler-Instanz **registrieren**: 
 
 ```java
 WLClient client = WLClient.createInstance(this);
 client.registerChallengeHandler(pinCodeChallengeHandler);
 ```
 
-**Note:** Creating a `WLClient` instance and registering the challenge handler should happen only once in the entire application lifecycle. It is recommended to use the Android Application class to do it.
+**Hinweis:** Die Erstellung einer `WLClient`-Instanz
+und die Registrierung des Abfrage-Handlers sollte im gesamten Anwendungslebenszyklus nur einmal erfolgen. Es wird empfohlen, dafür die Android-Application-Klasse zu verwenden. 
 
-## Sample application
+## Beispielanwendung
 {: #sample-application }
-The sample **PinCodeAndroid** is an Android application that uses `WLResourceRequest` to get a bank balance.  
-The method is protected with a PIN code, with a maximum of 3 attempts.
+**PinCodeAndroid** ist eine Android-Beispielanwendung, die `WLResourceRequest` verwendet, um einen Kontostand abzurufen.   
+Die Methode ist mit meinem PIN-Code geschützt, für den es maximal drei Eingabeversuche gibt. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80) the Android project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80), um das Maven-Projekt SecurityAdapters herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeAndroid/tree/release80), um das Android-Projekt herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 
 
-![Sample application](sample-application-android.png)
+![Beispielanwendung](sample-application-android.png)

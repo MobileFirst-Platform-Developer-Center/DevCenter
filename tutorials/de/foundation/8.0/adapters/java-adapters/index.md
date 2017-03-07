@@ -47,14 +47,14 @@ der JAX-RS-2.0-Anwendung für diesen Adapter definieren, z. B. `com.sample.JavaA
 
 	<JAXRSApplicationClass>com.sample.JavaAdapterApplication</JAXRSApplicationClass>
 	
-	<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
-    	<property name="maxAttempts" defaultValue="3"/>
-	</securityCheckDefinition>
-	
 	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
 	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
 	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
-</mfp:adapter>
+<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
+    	<property name="maxAttempts" defaultValue="3"/>
+	</securityCheckDefinition>
+	
+	</mfp:adapter>
 ```
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
@@ -77,7 +77,7 @@ der JAX-RS-2.0-Anwendung für diesen Adapter definieren, z. B. `com.sample.JavaA
 					<li><b>property</b>: Dieses <i>optionale</i> Attribut deklariert eine benutzerdefinierte Eigenschaft. Weitere Informationen hierzu enthält der folgende Abschnitt. </li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Abschnitt schließen</b></a>.
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Abschnitt schließen</b></a>
             </div>
         </div>
     </div>

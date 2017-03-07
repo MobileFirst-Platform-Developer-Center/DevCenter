@@ -5,43 +5,74 @@ relevantTo: [ios,android,cordova]
 weight: 13
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-When communicating over public networks it is essential to send and receive information securely. The protocol widely used to secure these communications is SSL/TLS. (SSL/TLS refers to Secure Sockets Layer or to its successor, TLS, or Transport Layer Security). SSL/TLS uses digital certificates to provide authentication and encryption. To trust that a certificate is genuine and valid, it is digitally signed by a root certificate belonging to a trusted certificate authority (CA). Operating systems and browsers maintain lists of trusted CA root certificates so that they can easily verify certificates that the CAs have issued and signed.
+Bei der Kommunikation über öffentliche Netze ist es wesentlich, dass Informationen sicher gesendet und empfangen werden können. Ein weit verbreitetes Protokoll für den Schutz der
+Kommunikation ist
+SSL/TLS. (SSL bedeutet Secure Sockets Layer und TLS, der Nachfolger von SSL, bedeutet
+Transport Layer Security.) SSL/TLS
+verwendet digitale Zertifikate für Authentifizierung und Verschlüsselung. Damit ein Zertifikat als echt und gültig angesehen werden kann,
+wird es mit einem Stammzertifikat einer anerkannten Zertifizierungsstelle digital signiert. Betriebssysteme und Browser führen Listen mit
+Stammzertifikaten anerkannter Zertifizierungsstellen, sodass sie ohne großen Aufwand verifizieren können, dass Zertifikate von den
+Zertifizierungsstellen ausgegeben und signiert wurden. 
 
-Protocols that rely on certificate chain verification, such as SSL/TLS, are vulnerable to a number of dangerous attacks, including man-in-the-middle attacks, which occur when an unauthorized party is able to view and modify all traffic passing between the mobile device and the backend systems.
+Protokolle wie SSL/TLS, die sich auf die Verifizierung einer Zertifikatkette verlassen müssen, sind anfällig für eine Reihe gefährlicher Attacken, zu denen auch
+Man-in-the-Middle-Attacken gehören, bei denen eine nicht autorisierte Partei den gesamten Datenverkehr, der zwischen dem mobilen Gerät und
+den Back-End-Systemen übertragen wird, sehen und modifizieren kann. 
 
-{{ site.data.keys.product_full }} provides an API to enable **certificate pinning**. It is supported in native iOS, native Android, and cross-platform Cordova {{ site.data.keys.product_adj }} applications.
+Die {{ site.data.keys.product_full }} stellt eine API bereit, die das **Certificate Pinning** ermöglicht. Sie wird in nativen iOS- und nativen Android-{{ site.data.keys.product_adj }}-Anwendungen
+sowie in plattformübergreifenden Cordova-MobileFirst-Anwendungen unterstützt. 
 
-## Certificate pinning process
+## Certificate-Pinning-Prozess
 {: #certificate-pinning-process }
-Certificate pinning is the process of associating a host with its expected public key. Because you own both the server-side code and the client-side code, you can configure your client code to accept only a specific certificate for your domain name, instead of any certificate that corresponds to a trusted CA root certificate recognized by the operating system or browser.
+Beim Certificate Pinning
+wird einem Host sein erwarteter öffentlicher Schlüssel zugeordnet.
+Da Sie im Besitz des serverseitigen und clientseitigen Codes sind, können Sie Ihren Clientcode so konfigurieren, dass er nur ein bestimmtes
+Zertifikat für Ihren Domänennamen akzeptiert und nicht irgendein Zertifikat, das mit einem Stammzertifikat einer anerkannten Zertifizierungsstelle
+korrespondiert und vom Betriebssystem oder Browser erkannt wurde. 
 
-A copy of the certificate is placed in the application and is used during the SSL handshake (the first request to the server). The {{ site.data.keys.product_adj }} client SDK verifies that the public key of the server certificate matches the public key of the certificate that is stored in the app.
+Eine Kopie des Zertifikats wird in die Anwendung gestellt und während des SSL-Handshakes
+(d. h. der ersten Anforderung an den Server) verwendet. Das
+{{ site.data.keys.product_adj }}-Client-SDK verifiziert,
+dass der öffentliche Schlüssel des Serverzertifikats mit dem öffentlichen Schlüssel des in der App gespeicherten Zertifikats
+übereinstimmt. 
 
-#### Important
+#### Wichtiger Hinweis
 {: #important }
-* Some mobile operating systems might cache the certificate validation check result. Therefore, your code should call the certificate pinning API method **before** making a secured request. Otherwise, any subsequent request might skip the certificate validation and pinning check.
-* Make sure to use only {{ site.data.keys.product }} APIs for all communications with the related host, even after the certificate pinning. Using third-party APIs to interact with the same host might lead to unexpected behavior, such as caching of a non-verified certificate by the mobile operating system.
-* Calling the certificate pinning API method a second time overrides the previous pinning operation.
+* Es kann sein, dass einige Betriebssysteme für mobile Geräte das Ergebnis der
+Gültigkeitsprüfung des Zertifikats zwischenspeichern. **Bevor** Sie eine geschützte Anforderung senden, sollten Sie daher die Certificate-Pinning-API aufrufen. Andernfalls könnten die Gültigkeitsprüfung für das Zertifikat und die Pinning-Überprüfung
+bei nachfolgenden Anforderungen übergangen werden. 
+* Sie dürfen für die gesamte Kommunikation mit dem zugehörigen Host, auch nach dem Certificate Pinning, nur {{ site.data.keys.product }}-APIs verwenden. Wenn Sie APIs anderer Anbieter für die Interaktion mit diesem Host verwenden,
+kann es zu nicht erwartetem Verhalten kommen, z. B. zum Zwischenspeichern eines nicht verifizierten Zertifikats durch das Betriebssystem für mobile Geräte. 
+* Wenn die Certificate-Pinning-API-Methode ein zweites Mal aufgerufen wird, wird die vorherige Pinning-Operation außer Kraft gesetzt. 
 
-If the pinning process is successful, the public key inside the provided certificate is used to verify the integrity of the {{ site.data.keys.mf_server }} certificate during the secured request SSL/TLS handshake. If the pinning process fails, all SSL/TLS requests to the server are rejected by the client application.
+Bei erfolgreichem Pinning-Prozess wird der öffentliche Schlüssel aus dem bereitgestellten Zertifikat
+verwendet, um die Integrität des MobileFirst-Server-Zertifikats während der geschützten SSL/TLS-Handshakeanforderung zu verifizieren. Schlägt der Pinning-Prozess fehl,
+werden alle an den Server gerichteten
+SSL/TLS-Anforderungen von der Clientanwendung zurückgewiesen. 
 
-## Certificate setup
+## Zertifikat-Setup
 {: #certificate-setup }
-You must use a certificate purchased from a certificate authority. Self-signed certificates are **not supported**. For compatibility with the supported environments, make sure to use a certificate that is encoded in **DER** (Distinguished Encoding Rules, as defined in the International Telecommunications Union X.690 standard) format.
+Sie müssen ein von einer Zertifizierungsstelle gekauftes Zertifikat verwenden. Selbst signierte Zertifikate werden **nicht unterstützt**. Aus Gründen der Kompatibilität mit den unterstützten
+Umgebungen müssen Sie sicherstellen, dass das verwendete Zertifikat im **DER**-Format (Distinguished
+Encoding Rules) gemäß Standard X.690 der International Telecommunications
+Union codiert ist. 
 
-The certificate must be placed in both the {{ site.data.keys.mf_server }} and in your application. Place the certificate as follows:
+Das Zertifikat muss wie folgt in
+{{ site.data.keys.mf_server }} und in Ihre Anwendung aufgenommen werden: 
 
-* In the {{ site.data.keys.mf_server }} (WebSphere  Application Server, WebSphere Application Server Liberty, or Apache Tomcat): Consult the documentation for your specific application server for information about how to configure SSL/TLS and certificates.
-* In your application:
-    - Native iOS: add the certificate to the application **bundle**
-    - Native Android: place the certificate in the **assets** folder
-    - Cordova: place the certificate in the **app-name\www\certificates** folder (if the folder is not already there, create it)
+* {{ site.data.keys.mf_server }} (WebSphere Application Server, WebSphere Application Server Liberty oder Apache Tomcat): In der Dokumentation zu Ihrem Anwendungsserver finden Sie Informationen zum Konfigurieren von
+SSL/TLS und von Zertifikaten. 
+* Anwendung: 
+    - Natives iOS: Fügen Sie das Zertifikat zum **Anwendungsbundle** hinzu. 
+    - Natives Android: Stellen Sie das Zertifikat in den Ordner
+**assets**. 
+    - Cordova: Stellen Sie das Zertifikat in den Ordner **app-name\www\certificates**. (Wenn es den Ordner noch nicht gibt, erstellen Sie ihn.) 
 
-## Certificate pinning API
+## Certificate-Pinning-API
 {: #certificate-pinning-api }
-Certificate pinning consists of a single API method, that has a parameter `certificateFilename`, where `certificateFilename` is the name of the certificate file.
+Das Certificate Pinning
+ist eine API-Methode mit einem Parameter `certificateFilename`, d. h. dem Namen der Zertifikatdatei. 
 
 ### Android
 {: #android }
@@ -49,30 +80,30 @@ Certificate pinning consists of a single API method, that has a parameter `certi
 WLClient.getInstance().pinTrustedCertificatePublicKey("myCertificate.cer");
 ```
 
-The certificate pinning method will throw an exception in two cases:
+Die Certificate-Pinning-Methode löst in zwei Fällen eine Ausnahme aus: 
 
-* The file does not exist
-* The file is in the wrong format
+* Die Datei ist nicht vorhanden. 
+* Die Datei hat das falsche Format. 
 
 ### iOS
 {: #ios }
-**In Objective-C:**
+**Objective-C:**
 
 ```objc
 [[WLClient sharedInstance]pinTrustedCertificatePublicKeyFromFile:@"myCertificate.cer"];
 
 ```
 
-**In Swift:**
+**Swift:**
 
 ```swift
 WLClient.sharedInstance().pinTrustedCertificatePublicKeyFromFile("myCertificate.cer")
 ```
 
-The certificate pinning method will raise an exception in two cases:
+Die Certificate-Pinning-Methode löst in zwei Fällen eine Ausnahme aus: 
 
-* The file does not exist
-* The file is in the wrong format
+* Die Datei ist nicht vorhanden. 
+* Die Datei hat das falsche Format. 
 
 ### Cordova
 {: #cordova }
@@ -81,13 +112,18 @@ WL.Client.pinTrustedCertificatePublicKey('myCertificate.cer').then(onSuccess,onF
 
 ```
 
-The certificate pinning method returns a promise:
+Die Certificate-Pinning-Methode gibt eine Zusicherung zurück: 
 
-* The certificate pinning method will call the onSuccess method in case of successful pinning.
-* The certificate pinning method will trigger the onFailure callback in two cases:
-* The file does not exist
-* The file is in the wrong format
+* Die Certificate-Pinning-Methode ruft die Methode onSuccess auf, wenn das Certificate Pinning erfolgreich
+war. 
+* Die Certificate-Pinning-Methode löst in zwei Fällen den onFailure-Callback aus: 
+* Die Datei ist nicht vorhanden. 
+* Die Datei hat das falsche Format. 
 
-Later, if a secured request is made to a server whose certificate is not pinned, the `onFailure` callback of the specific request (for example, `obtainAccessToken` or `WLResourceRequest`) is called.
+Wenn später eine geschützte Anforderung an einen Server ohne fest zugeordnetes Zertifikat (Pinned Certificate) gerichtet wird,
+wird der `onFailure`-Callback der jeweiligen Anforderung
+(z. B. `obtainAccessToken` oder `WLResourceRequest`)
+aufgerufen. 
 
-> Learn more about the certificate pinning API method in the [API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_client_api.html)
+> Weitere Informationen zur Certificate-Pinning-API-Methode
+finden Sie in den [Referenzinformationen zur API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_client_api.html).

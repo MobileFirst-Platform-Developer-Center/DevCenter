@@ -1,39 +1,40 @@
 ---
 layout: tutorial
-title: Node.js Validator
-breadcrumb_title: Node.js validator
+title: Node.js-Validator
+breadcrumb_title: Node.js-Validator
 relevantTo: [android,ios,windows,javascript]
 weight: 3
 downloads:
-  - name: Download sample
+  - name: Beispiel herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_full }} provides a Node.js framework to enforce security capabilities on external resources.  
-The Node.js framework is provided as an npm module (**passport-mfp-token-validation**).
+Die {{ site.data.keys.product_full }} stellt ein Node.js-Framework für die Umsetzung von Sicherheitsfunktionen für externe Ressourcen bereit.   
+Das Node.js-Framework wird als npm-Modul (**passport-mfp-token-validation**) zur Verfügung gestellt.
 
-This tutorial shows how to protect a simple Node.js resource, `GetBalance`, by using a scope (`accessRestricted`).
+Dieses Lernprogramm zeigt, wie eine einfache Node.js-Ressource (`GetBalance`) mit einem Gültigkeitsbereich (`accessRestricted`) geschützt wird.
 
-**Prerequsites:**  
+**Voraussetzungen:**  
 
-* Read the [Using the {{ site.data.keys.mf_server }} to authenticate external resources](../) tutorial.
-* Understanding of the [{{ site.data.keys.product }} security framework](../../).
+* Gehen Sie das Lernprogramm [Externe Ressource mit {{ site.data.keys.mf_server }} authentifizieren](../) durch. 
+* Sie müssen das [{{ site.data.keys.product }}-Sicherheitsframework](../../) verstehen.
 
-## The passport-mfp-token-validation module
+## Modul 'passport-mfp-token-validation'
 {: #the-passport-mfp-token-validation-module }
-The passport-mfp-token-validation module provides an authentication mechanism to verify access tokens that are issued by the {{ site.data.keys.mf_server }}.
+Das Modul "passport-mfp-token-validation" stellt einen Authentifizierungsmechanismus für die Überprüfung
+der von {{ site.data.keys.mf_server }} ausgegebenen Zugriffstoken bereit.
 
-To install the module, run:
+Führen Sie für die Installation des Moduls den folgenden Befehl aus: 
 
 ```bash
 npm install passport-mfp-token-validation@8.0.X
 ```
 
-## Usage
+## Verwendung
 {: #usage }
-* The sample uses the `express` and `passport-mfp-token-validation` modules:
+* Im Beispiel werden die Module `express` und `passport-mfp-token-validation` verwendet. 
 
   ```javascript
   var express = require('express');
@@ -41,7 +42,7 @@ npm install passport-mfp-token-validation@8.0.X
   var mfpStrategy = require('passport-mfp-token-validation').Strategy;
   ```
 
-* Set up the `Strategy` as follows:
+* Definieren Sie `Strategy` wie folgt: 
 
   ```javascript
   passport.use(new mfpStrategy({
@@ -58,12 +59,16 @@ npm install passport-mfp-token-validation@8.0.X
   }));
   ```
   
- * `authServerUrl`: Replace `localhost:9080` with your {{ site.data.keys.mf_server }} IP address and port number.
- * `confClientID`, `confClientPass`: Replace the confidential client ID and password with the ones that you defined in the {{ site.data.keys.mf_console }}.
- * `analytics`: The analytics item is optional, and required only if you wish to log analytics events to {{ site.data.keys.product }}.  
- Replace `localhost:9080`, `username`, and `password` with your Analytics Server IP address, port number, user name, and password.
+ * `authServerUrl`: Ersetzen Sie `localhost:9080` durch die IP-Adresse und
+Portnummer Ihres {{ site.data.keys.mf_server }}. 
+ * `confClientID`, `confClientPass`: Ersetzen Sie die ID und das Kennwort des vertraulichen Clients
+durch die in der {{ site.data.keys.mf_console }} definierten Werte.
+ * `analytics`: Das Element analytics ist generell optional und nur erforderlich, wenn Sie
+in der {{ site.data.keys.product }} Analyseereignisse protokollieren möchten.  
+Ersetzen Sie `localhost:9080`, `username` und `password` durch die IP-Adresse, die Portnummer,
+den Benutzernamen und das Kennwort für Ihren Analytics Server. 
 
-* Authenticate requests by calling `passport.authenticate`:
+* Rufen Sie für die Authentifizierung von Anforderungen `passport.authenticate` auf: 
 
   ```javascript
   var app = express();
@@ -83,19 +88,21 @@ npm install passport-mfp-token-validation@8.0.X
   });
   ```
 
- * The `Strategy` to employ should be `mobilefirst-strategy`.
- * Set `session` to `false`.
- * Specify the `scope` name.
+ * Die zu implementierende Strategie (`Strategy`) sollte `mobilefirst-strategy` sein.
+ * Setzen Sie `session` auf `false`.
+ * Geben Sie für `scope` den Bereichsnamen an. 
 
-## Sample application 
+## Beispielanwendung 
 {: #sample-application }
-[Download the Node.js sample](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80).
+[Laden Sie das Node.js-Beispiel herunter](https://github.com/MobileFirst-Platform-Developer-Center/NodeJSValidator/tree/release80).
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-1. Navigate to the sample's root folder and run the command: `npm install` followed by: `npm start`.
-2. Make sure to [update the confidential client](../#confidential-client) and secret values in the {{ site.data.keys.mf_console }}.
-3. Deploy either of the security checks: **[UserLogin](../../user-authentication/security-check/)** or **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-4. Register the matching application.
-5. Map the `accessRestricted` scope to the security check.
-6. Update the client application to make the `WLResourceRequest` to your servlet URL.
+1. Navigieren Sie zum Stammordner des Beispiels und führen Sie den Befehl `npm install`, gefolgt von `npm start`, aus.
+2. Sie müssen [den vertraulichen Client](../#confidential-client)
+und die geheimen Schlüssel in der {{ site.data.keys.mf_console }} aktualisieren.
+3. Implementieren Sie eine der Sicherheitsüberprüfungen: **[UserLogin](../../user-authentication/security-check/)**
+oder **[PinCodeAttempts](../../credentials-validation/security-check/)**.
+4. Registrieren Sie die passende Anwendung. 
+5. Ordnen Sie der Sicherheitsüberprüfung den Bereich `accessRestricted` zu. 
+6. Aktualisieren Sie die Clientanwendung so, dass `WLResourceRequest` Ihre Servlet-URL ist. 

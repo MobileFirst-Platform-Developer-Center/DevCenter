@@ -36,14 +36,6 @@ Die SDKs der {{ site.data.keys.product }} unterstützen folgende Plattformen:
 * Windows Universal 8.1 und Windows 10 UWP
 * Web-Apps
 
-> **Unterstützte Browser für Web-Apps:**
-> 
-> |      Browser      | Chrome | Safari* | Internet Explorer | Firefox | Android-Browser |
-> |:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
-> | Unterstützte Version |   43+  |    8+   |        10+        |   38+   |   Android 4.3+  |
-
-* Der private Modus des Browsers funktioniert nur für Anwendungen, die nur eine Seite umfassen. Bei anderen Anwendungen kann sich ein nicht erwartetes Verhalten zeigen. 
-
 ### Back-End-Verbindungen
 {: #back-end-connections }
 Einige mobile Anwendungen werden nur offline (d. h. ohne Verbindung zu einem Back-End-System) ausgeführt.
