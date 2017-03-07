@@ -20,13 +20,13 @@ Your system administrator must give you a user name and password before you can 
 * [Installing the client on an Android mobile device](#installing-the-client-on-an-android-mobile-device)
 * [Installing the client on an iOS mobile device](#installing-the-client-on-an-ios-mobile-device)
 * [Installing the client on a Windows Phone 8 Universal mobile device](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
+* [Installing Windows 10 UWP client on Windows 10 device](#installing-windows-10-uwp-client-on-windows-10-device)
 * [The Login view](#the-login-view)
 * [Views in the Application Center client](#views-in-the-application-center-client)
 * [Installing an application on an Android device](#installing-an-application-on-an-android-device)
 * [Installing an application on an iOS device](#installing-an-application-on-an-ios-device)
 * [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device)
 * [Installing a Windows Store application on a Windows device](#installing-a-windows-store-application-on-a-windows-device)
-* [Installing Windows 10 UWP client on Windows 10 device](#installing-windows-10-uwp-client-on-windows-10-device)
 * [Installing applications through public app stores](#installing-applications-through-public-app-stores)
 * [Removing an installed application](#removing-an-installed-application)
 * [Showing details of a specific application version](#showing-details-of-a-specific-application-version)
@@ -207,6 +207,33 @@ Before you can install apps published by your company, you must add the company 
 > **Tip:** When you install a company application on a device, the device must connect to the Microsoft server to verify the application signature. Sometimes, the Microsoft server does not respond. In this case, you can try the installation again a few minutes later. See Installing an application on a Windows Phone device for the possible error messages.
 
 When the installation is finished, the mobile client application should be available in your applications list in Windows Phone.
+
+## Installing Windows 10 UWP client on Windows 10 device
+{: #installing-windows-10-uwp-client-on-windows-10-device }
+
+You can install the mobile client, or any signed application marked with the installer flag, on Windows 10 by entering the access URL in your browser, entering your credentials, and completing the required steps.
+
+1. Start the browser on your mobile device.
+
++ Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html?os=Windows`. Where `hostname` is the address of the server and `portnumber` is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+
+  The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html?os=Windows`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page *installers.html* does not work on your mobile device, you can use *inst.html*. This page is provided in English only and is not translated into other languages.
+
++ Enter your credentials to authorize access to the server.
+
+  ![Enter credentials to access the server](ac_wp10_enter_credentials.png)
+
++ Select an item in the list of available applications to display the application details.
+
+  ![Select an application to view its details](ac_wp10_apps_list.png)
+
++ Tap **Install** to download and install the mobile client.
+
+  ![Select Install to install the application](ac_wp10_app_install.png)
+
+
+> **Note:** To list the Windows 10 UWP apps you need to pass the query string `os=Windows`
+
 
 ## The Login view
 {: #the-login-view }
@@ -469,33 +496,6 @@ The following steps describe how to perform the installation of a Windows Store 
     ![Details view for installing a Windows Store app](ac_details_wstore_app.jpg)
 
 3. To install the application, tap **Install**. If the application is already installed and other versions are available, you can decide to update to a later version or to revert to a previous version.
-
-## Installing Windows 10 UWP client on Windows 10 device
-{: #installing-windows-10-uwp-client-on-windows-10-device }
-
-You can install the mobile client, or any signed application marked with the installer flag, on Windows 10 by entering the access URL in your browser, entering your credentials, and completing the required steps.
-
-1. Start the browser on your mobile device.
-
-+ Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html?os=Windows`. Where `hostname` is the address of the server and `portnumber` is the number of the port where the Application Center is installed. Your system administrator can provide this information.
-
-  The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html?os=Windows`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page *installers.html* does not work on your mobile device, you can use *inst.html*. This page is provided in English only and is not translated into other languages.
-
-+ Enter your credentials to authorize access to the server.
-
-  ![Enter credentials to access the server](ac_wp10_enter_credentials.png)
-
-+ Select an item in the list of available applications to display the application details.
-
-  ![Select an application to view its details](ac_wp10_apps_list.png)
-
-+ Tap **Install** to download and install the mobile client.
-
-  ![Select Install to install the application](ac_wp10_app_install.png)
-
-
-> **Note:** To list the Windows 10 UWP apps you need to pass the query string `os=Windows`
-
 
 
 ## Installing applications through public app stores
