@@ -1,65 +1,138 @@
 ---
 layout: tutorial
-title: Security Check Contract
-breadcrumb_title: security check contract
+title: Vereinbarung einer Sicherheitsüberprüfung
+breadcrumb_title: Vereinbarung einer Sicherheitsüberprüfung
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Every security check must implement the `com.ibm.mfp.server.security.external.SecurityCheck` interface (the security-check interface). This interface constitutes the basic contract between the security check and the {{ site.data.keys.product_adj }} security framework. The security-check implementation must fulfill the following requirements:
+Jede Sicherheitsüberprüfung muss die Schnittstelle
+`com.ibm.mfp.server.security.external.SecurityCheck` implementieren. Diese Schnittstelle begründet den Basisvertrag zwischen der Sicherheitsüberprüfung
+und dem {{ site.data.keys.product_adj }}-Sicherheitsframework. Die Implementierung von Sicherheitsüberprüfungen muss folgende Voraussetzungen erfüllen: 
 
-* **Functions**: the security check must provide the client-`authorization` and `introspection` functions.
-* **State management**: the security check must manage its state, including creation, disposal, and current-state management.
-* **Configuration**: the security check must create a security-check configuration object, which defines the supported security-check configuration properties, and validates the types and values of customizations of the basic configuration.
+* **Funktionen**: Die Sicherheitsüberprüfung muss die Clientfunktionen für Autorisierung und Introspektion (`authorization`
+und `introspection`) bereitstellen. 
+* **Zustandsmanagement**: Die Sicherheitsüberprüfung muss ihren Zustand verwalten, einschließlich Erstellung, Löschung und Verwaltung des aktuellen Zustands. 
+* **Konfiguration**: Die Sicherheitsüberprüfung muss ein Konfigurationsobjekt für Sicherheitsüberprüfungen erstellen, in dem die unterstützten Konfigurationseigenschaften für
+Sicherheitsüberprüfungen definiert sind und das bei Anpassungen der Basiskonfiguration Typen und Werte validiert. 
 
-For a complete reference of the security-check interface, [see `SecurityCheck` in the API reference](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheck.html?view=kc).
+Vollständige Informationen zur Schnittstelle für Sicherheitsüberprüfungen finden Sie in den
+[Referenzinformationen
+zur API SecurityCheck](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheck.html?view=kc).
 
-## Security-check functions
+## Funktionen von Sicherheitsüberprüfungen
 {: #securityc-check-functions }
-A security check provides two main functions to the security framework:
+Eine Sicherheitsüberprüfung
+stellt zwei Hauptfunktionen für das Sicherheitsframework bereit:
 
-### Authorization
+### Autorisierung
 {: #authorization }
-The framework uses the `SecurityCheck.authorize` method to authorize client requests. When the client requests access to a specific OAuth scope, the framework maps the scope elements into security checks. For each security check in the scope, the framework calls the `authorize` method to request authorization for a scope that contains the scope elements that mapped to this security check. This scope is provided in the method's **scope** parameter. 
+Das Framework verwendet die Methode `SecurityCheck.authorize`, um Clientanforderungen
+zu autorisieren. Wenn die Clientanforderungen auf einen bestimmten
+OAuth-Bereich zugreifen, ordnet das Framework die Bereichselemente Sicherheitsüberprüfungen zu. Für jede Sicherheitsüberprüfung im Bereich ruft das Framework
+die Methode
+`authorize` auf, um die Autorisierung für einen Bereich anzufordern, der die dieser Sicherheitsüberprüfung zugeordneten Bereichselemente
+enthält. Der Bereich wird mit dem Parameter **scope** der Methode angegeben.
+ 
 
-The security check adds its response to the [`AuthorizationResponse` object](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.html?view=kc) that is passed to it within the response parameter. The response contains the name of the security check and the response type, which can be success, failure, or a challenge ([see `AuthorizationResponse.ResponseType`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.ResponseType.html?view=kc)).
+Die Sicherheitsüberprüfung fügt ihre Antwort zum
+[`AuthorizationResponse`-Objekt](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.html?view=kc)
+hinzu, das
+mit dem Parameter "response" an die Sicherheitsüberprüfung übergeben wurde. Die Antwort enthält den Namen der Sicherheitsüberprüfung
+und den Antworttyp, der "success", "failure" oder "challenge" sein kann
+(siehe [`AuthorizationResponse.ResponseType`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/AuthorizationResponse.ResponseType.html?view=kc)).
 
-When the response contains a challenge object or custom success or failure data, the framework passes the data to the client's security-check challenge handler within a JSON object. For success, the response also contains the scope for which the authorization was requested (as set in the **scope** parameter), and the expiration time for the granted authorization. To grant the client access to the requested scope, the `authorize` method of each of the scope's security checks must return success, and all expiration times must be later than the current time.
+Wenn die Antwort ein
+Abfrageobjekt (challenge) enthält oder angepasste Erfolgs- bzw. Fehlerdaten (success, failure), übergibt das Framework die Daten in einem JSON-Objekt
+an den Client-Abfrage-Handler
+für Sicherheitsüberprüfungen. Bei einem Erfolg (success) enthält die Antwort auch den (im Parameter **scope** definierten) Bereich, für
+den die Autorisierung
+angefordert wurde, und die Ablaufzeit für die gewährte Autorisierung. Die Methode
+`authorize` der Sicherheitsüberprüfungen für jeden Bereich müssen "success" zurückgeben, damit dem Client der Zugriff auf den angeforderten Bereich
+gewährt wird. Außerdem muss jede Ablaufzeit nach dem aktuellen Datum liegen. 
 
-### Introspection
+### Introspektion
 {: #introspection }
-The framework uses the `SecurityCheck.introspect` method to retrieve introspection data for a resource server. This method is called for each security check that is contained in the scope for which introspection was requested. As with the `authorize` method, the `introspect` method receives a **scope** parameter that contains the scope elements that mapped to this security check. Before returning the introspection data, the method verifies that the current state of the security check still supports the authorization that was previously granted for this scope. If the authorization is still valid, the `introspect` method adds its response to the [IntrospectionResponse object](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/IntrospectionResponse.html?view=kc) that is passed to it within the **response** parameter.
+Das Framework verwendet die Methode `SecurityCheck.introspect`, um Introspektionsdaten für einen Ressourcenserver
+abzurufen. Diese Methode wird für jede Sicherheitsüberprüfung aufgerufen, die in dem Bereich, für den Introspektion angefordert wurde, enthalten ist. Wie die Methode
+`authorize` empfängt die Methode
+`introspect` einen Parameter **scope** mit den Bereichselementen, die dieser Sicherheitsüberprüfung zugeordnet sind. Vor der Rückgabe der
+Introspektionsdaten überprüft die Methode, ob der aktuelle Zustand der Sicherheitsüberprüfung noch die zuvor für diesen Bereich gewährte
+Autorisierung unterstützt. Wenn die Autorisierung noch gültig ist, fügt die Methode
+`introspect` ihre Antwort zum
+[IntrospectionResponse-Objekt](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/IntrospectionResponse.html?view=kc) hinzu,
+das mit dem Parameter **response** an die Methode übergeben wurde. 
 
-The response contains the name of the security check, the scope for which the authorization was requested (as set in the **scope** parameter), the expiration time for the granted authorization, and the requested custom introspection data. If authorization can no longer be granted (for example, if the expiration time for a previous successful state elapses), the method returns without adding a response.
+Die Antwort enthält den Namen der Sicherheitsüberprüfung, den
+(im Parameter **scope** definierten) Bereich, für
+den die Autorisierung
+angefordert wurde, die Ablaufzeit für die gewährte Autorisierung und die angeforderten angepassten Introspektionsdaten. Wenn die Autorisierung nicht mehr erteilt werden kann (weil
+beispeilsweise der Ablaufzeitpunkt für einen zuvor erfolgreichen Zustand erreicht ist) kehrt die Methode zurück, ohne eine Antwort hinzuzufügen. 
 
-**Note:**
+**Hinweis:**
 
-* The security framework collects the processing results from the security checks, and passes relevant data to the client. The framework processing is entirely ignorant of the states of the security checks.
-* Calls to the `authorize` or `introspect` methods can result in a change in the current state of the security check, even if the expiration time of the current state did not elapse. 
+* Das Sicherheitsframework stellt die Verarbeitungsergebnisse der Sicherheitsüberprüfungen zusammen und übergibt relevante Daten an den Client. Die Frameworkverarbeitung
+hat keinerlei Kenntnis von den Zuständen der Sicherheitsüberprüfungen.
+* Aufrufe der Methode `authorize` oder `introspect` können zu einer Änderung des aktuellen Zustands der
+Sicherheitsüberprüfung führen, auch wenn der Ablaufzeitpunkt für den aktuellen Zustand noch nicht erreicht ist.  
 
-> Learn more about the `authorize` and `introspect` methods [in the ExternalizableSecurityCheck](../../externalizable-security-check) tutorial.
+> Weitere Informationen zu den Methoden `authorize` und
+`introspect` enthält das Lernprogramm [ExternalizableSecurityCheck](../../externalizable-security-check).
 
-### Security-check state management
+### Zustandsverwaltung für Sicherheitsüberprüfungen
 {: #security-check-state-management }
-Security checks are stateful, meaning that the security check is responsible for tracking and retaining its interaction state. On each authorization or introspection request, the security framework retrieves the states of relevant security checks from external storage (usually, distributed cache). At the end of request processing, the framework stores the security-check states back in external storage.
+Sicherheitsüberprüfungen sind zustandsabhängig,
+sodass eine Sicherheitsüberprüfung für die Verfolgung und Beibehaltung ihres Interaktionszustands verantwortlich ist. Bei jeder
+Autorisierungs- oder Introspektionsanforderung empfängt das Sicherheitsframework den Zustand der relevanten Sicherheitsüberprüfungen aus einem externen Speicher
+(in der Regel einem verteilten Cache). Am Ende der Anforderungsverarbeitung speichert das Framework den Zustand der Sicherheitsüberprüfung
+wieder in dem externen Speicher. 
 
-The security check contract requires that a security check:
+Die Vereinbarung der Sicherheitsüberprüfung erfordert Folgendes: 
 
-* Implement the `java.io.Externalizable` interface. The security check uses this interface to manage the serialization and deserialization of its state.
-* Define an expiration time and an inactivity timeout for its current state. The state of the security check represents a stage in the authorization process, and cannot be indefinite. The specific periods for the state's validity and maximum inactivity time are set in the security-check implementation, according to the implemented logic. The security check informs the framework of its selected expiration time and inactivity timeout via the implementation of the `getExpiresAt` and `getInactivityTimeoutSec` methods of the SecurityCheck interface.
+* Eine Sicherheitsüberprüfung implementiert die Schnittstelle `java.io.Externalizable`.
+Sie verwaltet mit dieser Schnittstelle die Serialisierung und Deserialisierung ihres Zustands. 
+* Eine Sicherheitsüberprüfung definiert eine Ablaufzeit und ein Inaktivitätszeitlimit für ihren aktuellen Zustand. Der Zustand der Sicherheitsüberprüfung ist eine Stufe im Autorisierungsprozess und kann nicht
+unendlich andauern. Die konkreten Zeiträume für die Gültigkeit des Zustands und für die maximale Inaktivität werden in der
+Implementierung der Sicherheitsüberprüfung gemäß der implementierten Logik festgelegt. Die Sicherheitsüberprüfung informiert das Framework über die Implementierung der
+Methoden
+`getExpiresAt` und `getInactivityTimeoutSec` der Schnittstelle SecurityCheck über die gewählten Werte für
+Ablaufzeit und Inaktivitätszeitlimit. 
 
-### Security-check configuration
+### Konfiguration von Sicherheitsüberprüfungen
 {: #security-check-configuration }
-A security check can expose configuration properties, whose values can be customized both at the adapter and at the application level. The security-check definition of a specific class determines which of the supported configuration properties of this class to expose, and can customize the default values set in the class definition. The property values can be further customized, dynamically, both for the adapter that defines the security checks, and for each application that uses the check.
+Eine Sicherheitsüberprüfung
+kann Konfigurationseigenschaften zugänglich machen, deren Werte auf der Adapterebene und auf der Anwendungsebene angepasst sein können. Die Sicherheitsprüfungsdefinition für eine bestimmte Klasse
+legt fest, welche der unterstützten Konfigurationseigenschaften dieser Klasse zugänglich gemacht werden sollen, und kann die in der Klassendefinition festgelegten
+Standardwerte anpassen. Die Eigenschaftswerte können dynamisch weiter angepasst werden. Dies gilt für den Adapter, der die Sicherheitsüberprüfungen definiert, und für jede Anwendung, die die Überprüfung
+verwendet. 
 
-A security-check class exposes its supported properties by implementing a `createConfiguration` method, which creates an instance of a security-check configuration class that implements the `com.ibm.mfp.server.security.external.SecurityCheckConfiguration` interface (the security-check configuration interface). This interface complements the `SecurityCheck` interface, and is also part of the security-check contract. The security check can create a configuration object that does not expose any properties, but the `createConfiguration` method must return a valid configuration object and cannot return null. For a complete reference of the security-check configuration interface, see [`SecurityCheckConfiguration`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheckConfiguration.html?view=kc). 
+Eine Sicherheitsprüfungsklasse macht ihre unterstützten Eigenschaften zugänglich, indem sie eine
+Methode `createConfiguration` implementiert. Diese Methode erstellt eine Instanz einer Klasse für Sicherheitsprüfungskonfigurationen, die
+die Schnittstelle `com.ibm.mfp.server.security.external.SecurityCheckConfiguration` implementiert. Diese Schnittstelle ergänzt
+die Schnittstelle `SecurityCheck` und ist auch Teil der Vereinbarung der Sicherheitsüberprüfung. Die Sicherheitsüberprüfung
+kann ein Konfigurationsobjekt erstellen, das keine Eigenschaften zugänglich macht.
+Die Methode `createConfiguration` muss jedoch ein gültiges Konfigurationsobjekt
+zurückgeben und kann nicht null zurückgeben. Vollständige Referenzinformationen zur Schnittstelle für
+Sicherheitsüberprüfungen finden Sie unter
+[`SecurityCheckConfiguration`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/SecurityCheckConfiguration.html?view=kc). 
 
-The security framework calls the security-check's `createConfiguration` method during deployment, which occurs for any adapter or application configuration change. The method's properties parameter contains the properties that are defined in the adapter's security-check definition, and their current customized values (or the default value if there was no customization). The implementation of the security-check configuration should validate the values of the received properties, and provide methods for returning the validation results.
+Das Sicherheitsframework ruft die Methode
+`createConfiguration` der Sicherheitsüberprüfung während der Implementierung auf, was bei jeder Konfigurationsänderung für einen
+Adapter oder eine Anwendung der Fall ist. Der Methodenparameter properties enthält die Eigenschaften, die in der Sicherheitsprüfungsdefinition
+des Adapters festgelegt sind, sowie deren aktuelle angepasste Werte (oder die Standardwerte, wenn keine Anpassung erfolgte). Die Implementierung der Sicherheitsprüfungskonfiguration
+sollte die Werte der empfangenen Eigenschaften validieren und Methoden für das Zurückgeben der Validierungsergebnisse bereitstellen. 
 
-The security-check configuration must implement the `getErrors`, `getWarnings`, and `getInfo` methods. The abstract security-check configuration base class, [`SecurityCheckConfigurationBase`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/impl/SecurityCheckConfigurationBase.html?view=kc) also defines and implements custom `getStringProperty`, `getIntProperty`, and `addMessage` methods. See the code documentation of this class for details.
+Die
+Sicherheitsprüfungskonfiguration muss die Methoden `getErrors`, `getSyswarnings` und
+`getInfo` implementieren. Die abstrakte Klasse für
+Sicherheitsprüfungskonfigurationen
+[`SecurityCheckConfigurationBase`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-server/html/com/ibm/mfp/server/security/external/checks/impl/SecurityCheckConfigurationBase.html?view=kc)
+definiert und implementiert außerdem die angepssten Methoden
+`getStringProperty`, `getIntProperty` und
+`addMessage`. Einzelheiten finden Sie in der Codebeschreibung zu dieser Klasse. 
 
-**Note:** The names and values of the configuration properties in the security-check definition and in any adapter or application customization, must match the supported properties and allowed values, as defined in the configuration class.
+**Hinweis:** Die Namen und Werte der Konfigurationseigenschaften in der Sicherheitsprüfungsdefinition und in jeder Adapter- oder Anwendungsanpassung müssen mit den unterstützten Eigenschaften und zulässigen Werten der Konfigurationsklasse übereinstimmen.
 
-> Learn more about [creating custom properties](../#security-check-configuration) in Security Checks.
+> Weitere Informationen zur [Erstellung angepasster Eigenschaften](../#security-check-configuration) finden Sie unter "Sicherheitsüberprüfungen". 

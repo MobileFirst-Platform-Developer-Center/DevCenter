@@ -1,79 +1,97 @@
 ---
 layout: tutorial
-title: Application Authenticity
+title: Anwendungsauthentizität
 relevantTo: [android,ios,windows,javascript]
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-By issuing an HTTP request, an application can access corporate HTTP services (APIs) that {{ site.data.keys.mf_server }} provides access to. The predefined application-authenticity [security check](../) ensures that an application that tries to connect to a {{ site.data.keys.mf_server }} instance is the authentic one.
 
-To enable application authenticity, you can either follow the on-screen instructions in the **{{ site.data.keys.mf_console }}** → **[your-application]** → **Authenticity**, or review the information below.
+Aktivieren Sie die vordefinierte [Sicherheitsüberprüfung](../#security-check) der {{ site.data.keys.product_adj }}-Anwendungsauthentizität
+(`appAuthenticity`). Diese Überprüfung validiert die Authentizität der Anwendung, bevor Services für die Anwendung bereitgestellt werden. 
 
-#### Availability
+Zum Aktivieren der Anwendungsauthentizität können Sie den in der **{{ site.data.keys.mf_console }}** unter **[Ihre Anwendung]**
+→ **Authentizität** angezeigten Anweisungen folgen oder auch die nachstehenden Informationen durchlesen. 
+
+#### Verfügbarkeit
 {: #availability }
-* Application authenticity is available in all supported platforms (iOS, Android, Windows 8.1 Universal, Windows 10 UWP) in both Cordova and native applications.
+* Die Anwendungsauthentizität ist auf allen unterstützten Plattformen (iOS, Android, Windows 8.1 Universal, Windows 10 UWP)
+für Cordova-Anwendungen und native Anwendungen verfügbar. 
 
-#### Limitations
+#### Einschränkungen
 {: #limitations }
-* Application authenticity does not support **Bitcode** in iOS. Therefore, before using application authenticity, disable Bitcode in the Xcode project properties.
+* Die Anwendungsauthentizität bietet unter iOS keine Unterstützung für **Bitcode**. Vor Verwendung der Anwendungsauthentizität müssen Sie daher
+Bitcode in den Xcode-Projekteigenschaften inaktivieren. 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-- [Application Authenticity flow](#application-authenticity-flow)
-- [Enabling Application Authenticity](#enabling-application-authenticity)
-- [Configuring Application Authenticity](#configuring-application-authenticity)
+- [Ablauf für Anwendungsauthentizität](#application-authenticity-flow)
+- [Anwendungsauthentizität aktivieren](#enabling-application-authenticity)
+- [Anwendungsauthentizität konfigurieren](#configuring-application-authenticity)
 
-## Application Authenticity Flow
+## Ablauf für Anwendungsauthentizität
 {: #application-authenticity-flow }
-By default, the application-authenticity security check is run during the application's runtime registration to {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. The authenticity challenge does not occur again.
+Standardmäßig findet die Sicherheitsüberprüfung der Anwendungsauthentizität während der Registrierung der Anwendungslaufzeit bei
+{{ site.data.keys.mf_server }} statt, d. h., wenn eine Instanz der Anwendung zum ersten Mal versucht, eine
+Verbindung zum Server herzustellen. Die Authentizitätsabfrage wird nur einmal ausgeführt. 
 
-See [Configuring application authenticity](#configuring-application-authenticity) to learn how to customize this behavior.
+Unter [Anwendungsauthentizität konfigurieren](#configuring-application-authenticity) erfahren Sie, wie dieses Verhalten angepasst werden kann. 
 
-## Enabling Application Authenticity
+## Anwendungsauthentizität aktivieren
 {: #enabling-application-authenticity }
-For application authenticity to be enabled in your Cordova or native application, the application binary file must be signed by using the mfp-app-authenticity tool. Eligible binary files are: `ipa` for iOS, `apk` for Android, and `appx` for Windows 8.1 Universal &amp; Windows 10 UWP.
+Wenn Sie die Anwendungsauthentizität in Ihrer Cordova-Anwendung
+oder nativen Anwendung aktivieren möchten,
+müssen Sie die Binärdatei der Anwendung mit dem Tool mfp-app-authenticity signieren. Auswählbare Binärdateien sind `ipa`-Dateien für
+iOS, `apk`-Dateien für Android und `appx`-Dateien für Windows 8.1 Universal und Windows 10 UWP.
 
-1. Download the mfp-app-authenticity tool from the **{{ site.data.keys.mf_console }} → Download Center**.
-2. Open a **Command-line** window and run the command: `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file`
+1. Laden Sie das Tool mfp-app-authenticity über das Download-Center in der **{{ site.data.keys.mf_console }}** herunter.
+2. Öffnen Sie ein **Befehlszeilenfenster** und führen Sie den Befehl `java -jar path-to-mfp-app-authenticity.jar path-to-binary-file` aus. 
 
-   For example:
+   Beispiel: 
 
    ```bash
    java -jar /Users/your-username/Desktop/mfp-app-authenticity.jar /Users/your-username/Desktop/MyBankApp.ipa
    ```
 
-   This command generates an `.authenticity_data` file, called `MyBankApp.authenticity_data`, next to the `MyBankApp.ipa` file.
+   Dieser Befehl generiert neben der Datei `MyBankApp.ipa` eine Datei `MyBankApp.authenticity_data`. 
 
-3. Open the {{ site.data.keys.mf_console }} in your favorite browser.
-4. Select your application from the navigation sidebar and click on the **Authenticity** menu item.
-5. Click on **Upload Authenticity File** to upload the `.authenticity_data` file.
+3. Öffnen Sie die {{ site.data.keys.mf_console }} in Ihrem bevorzugten Browser. 
+4. Wählen Sie Ihre Anwendung in der Navigationsseitenleiste aus und klicken Sie auf den Menüeintrag **Authentizität**. 
+5. Klicken Sie auf **Authentizitätsdatei hochladen**, um die `.authenticity_data`-Datei hochzuladen. 
 
-When the `.authenticity_data` file is uploaded, application authenticity is enabled.
+Wenn die `.authenticity_data`-Datei hochgeladen wurde, ist die Anwendungsauthentizität aktiviert. 
 
-![Enable Application Authenticity](enable_application_authenticity.png)
+![Anwendungsauthentizität aktivieren](enable_application_authenticity.png)
 
-### Disabling Application Authenticity
+### Anwendungsauthentizität inaktivieren
 {: #disabling-application-authenticity }
-To disable application authenticity, click the **Delete Authenticity File** button.
+Wenn Sie die Anwendungsauthentizität inaktivieren möchten, klicken Sie auf die Schaltfläche
+**Authentizitätsdatei löschen**. 
 
-## Configuring Application Authenticity
+## Anwendungsauthentizität konfigurieren
 {: #configuring-application-authenticity }
-By default, Application Authenticity is checked only during client registration. Just like any other security check, you can decide to protect your application or resources with the `appAuthenticity` security check from the console, following the instructions under [Protecting resources](../#protecting-resources).
+Die Anwendungsauthentizität wird standardmäßig nur während der Clientregistrierung überprüft. Für Ihre
+Anwendungsressourcen können Sie neben jeder anderen Sicherheitsüberprüfung den Schutz mit der
+Sicherheitsüberprüfung `appAuthenticity` in der Konsole auswählen.
+Folgen Sie dazu den Anweisungen unter [Ressourcen schützen](../#protecting-resources).
 
-You can configure the predefined application-authenticity security check with the following property:
+Sie können die vordefinierte
+Sicherheitsüberprüfung der Anwendungsauthentizität
+mit folgender Eigenschaft konfigurieren: 
 
-- `expirationSec`: Defaults to 3600 seconds / 1 hour. Defines the duration until the authenticity token expires.
+- `expirationSec`: Der Standardwert liegt bei 3600 Sekunden (1 Stunde). Die Eigenschaft definiert die Zeit bis zum Ablauf des Authentizitätstokens. 
 
-After an authenticity check has completed, it does not occur again until the token has expired based on the set value.
+Eine durchgeführte Authentizitätsprüfung findet erst erneut statt, wenn das Token gemäß dem festgelegten Wert abgelaufen ist. 
 
-#### To configure the `expirationSec` property:
+#### Gehen Sie wie folgt vor, um die Eigenschaft `expirationSec` zu konfigurieren: 
 {: #to-configure-the-expirationsec property }
-1. Load the {{ site.data.keys.mf_console }}, navigate to **[your application]** → **Security** → **Security-Check Configurations**, and click on **New**.
+1. Laden Sie die {{ site.data.keys.mf_console }}, navigieren Sie zu
+**[Ihre Anwendung]** → **Sicherheit** → **Konfigurationen für Sicherheitsüberprüfungen** und klicken Sie
+auf **Neu**.
 
-2. Search for the `appAuthenticity` scope element.
+2. Suchen Sie das Bereichselement `appAuthenticity`. 
 
-3. Set a new value in seconds.
+3. Legen Sie eine neue Zeit in Sekunden fest. 
 
-![Configuring the expirationSec property in the console](configuring_expirationSec.png)
+![Eigenschaft expirationSec in der Konsole konfigurieren](configuring_expirationSec.png)

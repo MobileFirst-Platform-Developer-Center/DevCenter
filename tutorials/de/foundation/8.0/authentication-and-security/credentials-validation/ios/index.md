@@ -1,20 +1,24 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in iOS applications
+title: Abfrage-Handler in iOS-Anwendungen implementieren
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 3
 downloads:
-  - name: Download Xcode project
+  - name: Xcode-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: Maven-Projekt SecurityCheck herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-When trying to access a protected resource, the server (the security check) sends back to the client a list containing one or more **challenges** for the client to handle.  
-This list is received as a `JSON` object, listing the security check name with an optional `JSON` of additional data:
+Wenn Sie versuchen, auf eine geschützte Ressource zuzugreifen,
+sendet der Server (die Sicherheitsüberprüfung)
+eine Liste
+mit mindestens einer **Abfrage** an den Client zur Bearbeitung zurück.   
+Die Liste wird als `JSON`-Objekt empfangen, in dem die Namen der Sicherheitsüberprüfungen sowie
+optional weitere `JSON`-Daten enthalten sind. 
 
 ```json
 {
@@ -27,16 +31,21 @@ This list is received as a `JSON` object, listing the security check name with a
 }
 ```
 
-The client must then register a **challenge handler** for each security check.  
-The challenge handler defines the client-side behavior that is specific to the security check.
+Der Client muss für jede Sicherheitsüberprüfung einen **Abfrage-Handler** registrieren.   
+Der Abfrage-Handler definiert das clientseitige Verhalten für die jeweilige Sicherheitsüberprüfung. 
 
-## Creating the challenge handler
+## Abfrage-Handler erstellen
 {: #creating-the-challenge-handler }
-A challenge handler is a class that handles challenges sent by the {{ site.data.keys.mf_server }}, such as displaying a login screen, collecting credentials, and submitting them back to the security check.
+Ein Abfrage-Handler ist eine Klasse, die von {{ site.data.keys.mf_server }} gesendete Abfragen bearbeitet.
+Er zeigt beispielsweise eine Anmeldeanzeige an, erfasst Berechtigungsnachweise und übermittelt diese
+an die Sicherheitsüberprüfung. 
 
-In this example, the security check is `PinCodeAttempts`, which was defined in [Implementing the CredentialsValidationSecurityCheck](../security-check). The challenge sent by this security check contains the number of remaining attempts to log in (`remainingAttempts`), and an optional `errorMsg`.
+In diesem Beispiel geht es um die Sicherheitsüberprüfung
+`PinCodeAttempts`, die im Abschnitt [CredentialsValidationSecurityCheck implementieren](../security-check) definiert wurde. Die von dieser
+Sicherheitsüberprüfung gesendete Abfrage enthält die verbleibende Anzahl von Anmeldeversuchen (`remainingAttempts`) und
+optional eine Fehlernachricht (`errorMsg`).
 
-Create a Swift class that extends `SecurityCheckChallengeHandler`:
+Erstellen Sie eine Swift-Klasse, die `SecurityCheckChallengeHandler` erweitert:
 
 ```swift
 class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
@@ -44,11 +53,13 @@ class PinCodeChallengeHandler : SecurityCheckChallengeHandler {
 }
 ```
 
-## Handling the challenge
+## Abfrage bearbeiten
 {: #handling-the-challenge }
-The minimum requirement from the `SecurityCheckChallengeHandler` protocol is to implement the `handleChallenge` method, which prompts the user to provide the credentials. The `handleChallenge` method receives the challenge `JSON` as a `Dictionary`.
+Die Mindestanforderung des Protokolls `SecurityCheckChallengeHandler` ist die Implementierung
+der Methode `handleChallenge`, die den Benutzer zur Angabe der Berechtigungsnachweise auffordert. Die Methode
+`handleChallenge` empfängt die `JSON`-Abfrage als `Verzeichnis`.
 
-In this example, an alert prompts the user to enter the PIN code:
+Im folgenden Beispiel wird der Benutzer in einem Alert aufgefordert, den PIN-Code einzugeben: 
 
 ```swift
 override func handleChallenge(challenge: [NSObject : AnyObject]!) {
@@ -66,32 +77,37 @@ override func handleChallenge(challenge: [NSObject : AnyObject]!) {
 }
 ```
 
-> The implementation of `showPopup` is included in the sample application.
+> Die Implementierung von `showPopup` ist in der Beispielanwendung enthalten. 
 
-If the credentials are incorrect, you can expect the framework to call `handleChallenge` again.
+Wenn die Berechtigungsnachweise nicht stimmen, können Sie erwarten, dass das Framework erneut `handleChallenge` aufruft. 
 
-## Submitting the challenge's answer
+## Antwort auf die Abfrage übergeben
 {: #submitting-the-challenges-answer }
-After the credentials have been collected from the UI, use the `WLChallengeHandler`'s `submitChallengeAnswer(answer: [NSObject : AnyObject]!)` method to send an answer back to the security check. In this example, `PinCodeAttempts` expects a property called `pin` containing the submitted PIN code:
+Wenn die Berechtigungsnachweise auf der Benutzerschnittstelle erfasst wurden, verwenden Sie die Methode
+`submitChallengeAnswer(answer: [NSObject : AnyObject]!)` von `WLChallengeHandler`,
+um eine Antwort an die Sicherheitsüberprüfung zu senden. Im folgenden Beispiel erwartet `PinCodeAttempts`
+eine Eigenschaft mit der Bezeichnung `pin`, die den übergebenen PIN-Code enthält: 
 
 ```swift
 self.submitChallengeAnswer(["pin": pinTextField.text!])
 ```
 
-## Cancelling the challenge
+## Abfrage abbrechen
 {: #cancelling-the-challenge }
-In some cases, such as clicking a **Cancel** button in the UI, you want to tell the framework to discard this challenge completely.
+Es kann vorkommen, dass Sie dem Framework mitteilen möchten, dass diese Abfrage komplett verworfen werden soll, z. B., wenn auf
+eine Schaltfläche **Cancel** geklickt wird. 
 
-To achieve this, call:
+Rufen Sie zu diesem Zweck Folgendes auf: 
 
 ```swift
 self.cancel()
 ```
 
-## Handling failures
+## Fehlerbehandlung
 {: #handling-failures }
-Some scenarios may trigger a failure (such as maximum attempts reached). To handle these, implement the `SecurityCheckChallengeHandler`'s `handleFailure` method.
-The structure of the `Dictionary` passed as a parameter greatly depends on the nature of the failure.
+In einigen Szenarien kann ein Fehler ausgelöst werden (z. B. bei Erreichung der maximalen Anzahl von Versuchen). Implementieren Sie für solche Fälle die
+Methode `handleFailure` von `SecurityCheckChallengeHandler`.
+Die Struktur des als Parameter übergebenen Verzeichnisses (`Dictionary`) hängt in starkem Maße von der Art des Fehlers ab. 
 
 ```swift
 override func handleFailure(failure: [NSObject : AnyObject]!) {
@@ -104,51 +120,55 @@ override func handleFailure(failure: [NSObject : AnyObject]!) {
 }
 ```
 
-> The implementation of `showError` is included in the sample application.
+> Die Implementierung von `showError` ist in der Beispielanwendung enthalten. 
 
-## Handling successes
+## Erfolgsbehandlung
 {: #handling-successes }
-In general, successes are automatically processed by the framework to allow the rest of the application to continue.
+Im Erfolgsfall erlaubt das Framework generell die weitere Ausführung der Anwendung. 
 
-Optionally, you can also choose to do something before the framework closes the challenge handler flow, by implementing the `SecurityCheckChallengeHandler`'s `handleSuccess(success: [NSObject : AnyObject]!)` method. Here again, the content and structure of the `success` `Dictionary` depends on what the security check sends.
+Bei Bedarf können Sie entscheiden, eine Aktion auszuführen, bevor das Framework den Abfrage-Handler-Ablauf schließt,
+indem Sie die Methode
+`handleSuccess(success: [NSObject : AnyObject]!)` von `SecurityCheckChallengeHandler` implementieren. Auch hier sind Inhalt und
+Struktur des Verzeichnisses `success` davon abhängig, was die Sicherheitsüberprüfung sendet. 
 
-In the `PinCodeAttemptsSwift` sample application, the success does not contain any additional data and so `handleSuccess` is not implemented.
+In der Beispielanwendung `PinCodeAttemptsSwift` gibt es im Erfolgsfall keine zusätzlichen Daten. Daher ist
+`handleSuccess` nicht implemetiert. 
 
-## Registering the challenge handler
+## Abfrage-Handler registrieren
 {: #registering-the-challenge-handler }
-For the challenge handler to listen for the right challenges, you must tell the framework to associate the challenge handler with a specific security check name.
+Sie müssen das Framework anweisen, dem Abfrage-Handler den Namen einer bestimmten Sicherheitsüberprüfung zuzuordnen, damit der Abfrage-Handler auf dem Empfang der richtigen Abfragen wartet. 
 
-To do so, initialize the challenge handler with the security check as follows:
+Initialisieren Sie den Abfrage-Handler dafür wie folgt mit der Sicherheitsüberprüfung: 
 
 ```swift
 var someChallengeHandler = SomeChallengeHandler(securityCheck: "securityCheckName")
 ```
 
-You must then **register** the challenge handler instance:
+Anschließend müssen Sie die Abfrage-Handler-Instanz **registrieren**: 
 
 ```swift
 WLClient.sharedInstance().registerChallengeHandler(someChallengeHandler)
 ```
 
-In this example, in one line:
+Geben Sie in diesem Beispiel Folgendes in einer Zeile ein: 
 
 ```swift
 WLClient.sharedInstance().registerChallengeHandler(PinCodeChallengeHandler(securityCheck: "PinCodeAttempts"))
 ```
 
-**Note:** Registering the challenge handler should only happen once in the entire application lifecycle. It is recommended to use the iOS AppDelegate class to do it.
+**Hinweis:** Der Abfrage-Handler sollte im gesamten Anwendungslebenszyklus nur einmal registriert werden. Es wird empfohlen, dafür die iOS-AppDelegate-Klasse zu verwenden. 
 
-## Sample application
+## Beispielanwendung
 {: #sample-application }
-The sample **PinCodeSwift** is an iOS Swift application that uses `WLResourceRequest` to get a bank balance.  
-The method is protected with a PIN code, with a maximum of 3 attempts.
+**PinCodeSwift** ist eine iOS-Swift-Beispielanwendung, die `WLResourceRequest` verwendet, um einen Kontostand abzurufen.   
+Die Methode ist mit meinem PIN-Code geschützt, für den es maximal drei Eingabeversuche gibt. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80) the iOS Swift Native project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80), um das Maven-Projekt SecurityAdapters herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/PinCodeSwift/tree/release80), um das native iOS-Projekt PinCodeSwift herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 
 
-![Sample application](sample-application.png)
+![Beispielanwendung](sample-application.png)
 

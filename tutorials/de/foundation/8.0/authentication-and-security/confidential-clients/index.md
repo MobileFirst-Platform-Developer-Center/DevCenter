@@ -1,91 +1,118 @@
 ---
 layout: tutorial
-title: Confidential Clients
+title: Vertrauliche Clients
 relevantTo: [android,ios,windows,javascript]
 weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Mobile applications can utilize the {{ site.data.keys.product_adj }} client SDKs to request access to protected resources.  
-Other entities which are not mobile applications can do so as well. Such entities are considered as **Confidential Clients**.
+Mobile Anwendungen können die {{ site.data.keys.product_adj }}-Client-SDKs verwenden, um den Zugriff auf geschützte Ressourcen anzufordern.   
+Andere Entitäten, die keine mobilen Anwendungen sind, können dies ebenfalls tun. Entitäten dieser Art werden als **vertrauliche Clients** betrachtet. 
 
-Confidential clients are clients that are capable of maintaining the confidentiality of their authentication credentials. You can use the {{ site.data.keys.product_adj }} authorization server to grant confidential clients access to protected resources, in accordance with the OAuth specification. This feature allows you to grant access to your resources to non-mobile clients, such as performance-testing applications, and any other kind of back-end that might need to request a protected resource, or use one of the {{ site.data.keys.product }} **REST APIs**, such as the REST API for **push notifications**.
+Vertrauliche Clients sind Clients, die fähig sind, die Vertraulichkeit ihrer Authentifizierungsnachweise zu wahren. Der
+{{ site.data.keys.product_adj }}-Autorisierungsserver kann vertraulichen Clients gemäß der OAuth-Spezifikation den Zugriff
+auf geschützte Ressourcen gewähren. Mit diesem Feature können Sie nicht mobilen Clients (z. B. Anwendungen für Leistungstests) und
+anderen Arten von Back-Ends, die eine geschützte Ressource anfordern müssen
+oder eine der **REST-APIs** der {{ site.data.keys.product }} wie die REST-API für **Push-Benachrichtigungen** verwenden,
+Zugriff auf Ihre Ressourcen gewähren.
 
-You begin by registering a confidential client with {{ site.data.keys.mf_server }}. As part of the registration, you provide the credentials of the confidential client, which consist of an ID and a secret. In addition, you set the client's allowed scope, which determines the scopes that can be granted to this client. When a registered confidential client requests an access token from the authorization server, the server authenticates the client by using the registered credentials, and verifies that the requested scope matches the client’s allowed scope.
+Beginnen Sie mit der Registrierung
+eines vertraulichen Clients bei {{ site.data.keys.mf_server }}.
+Im Rahmen der Registrierung stellen Sie die Berechtigungsnachweisen des vertraulichen Clients bereit, die aus einer ID und einem geheimen Schlüssel bestehen. Außerdem legen Sie den zulässigen Bereich des Clients fest,
+der bestimmt, für welche Bereiche dieser Client berechtigt werden kann. Wenn ein registrierter vertraulicher Client beim Autorisierungsserver ein Zugriffstoken anfordert, authentifiziert der
+Server den Client anhand der registrierten Berechtigungsnachweise. Darüber hinaus verifiziert der Server, dass der angeforderte Bereich mit dem zulässigen Bereich für den Client
+übereinstimmt. 
 
-Registered confidential clients can obtain a token to be used in all requests to the {{ site.data.keys.mf_server }}. This flow is based on the [client credentials flow](https://tools.ietf.org/html/rfc6749#section-1.3.4) of the OAuth specification. Note that an access token for a confidential client is valid for one hour. If you're using a confidential client for a task that lasts more than an hour, renew the token every hour by sending a new token request.
+Registrierte vertrauliche Clients können ein Token abrufen, dass in allen Anforderungen an {{ site.data.keys.mf_server }} verwendet wird. Dieser Ablauf basiert
+auf dem in der OAuth-Spezifikation
+(unter [client credentials](https://tools.ietf.org/html/rfc6749#section-1.3.4)) definierten Ablauf für Clientberechtigungsnachweise. Ein Zugriffstoken
+für einen vertraulichen Client ist eine Stunde gültig. Wenn Sie einen vertraulichen Client für eine Aufgabe verwenden, die länger als eine Stunde dauert,
+erneuern Sie das Token jede Stunde, indem Sie eine neue Tokenanforderung senden. 
 
-## Registering the confidential client
+## Vertraulichen Client registrieren
 {: #registering-the-confidential-client }
-In the navigation sidebar of the {{ site.data.keys.mf_console }}, click **Runtime Settings** → **Confidential Clients**. Click **New** to add a new entry.  
-You must provide the following information:
+Klicken Sie in der Navigationsseitenleiste der {{ site.data.keys.mf_console }} auf **Laufzeiteinstellungen** →
+**Vertrauliche Clients**. Klicken Sie auf
+**Neu**, um einen neuen Eintrag hinzuzufügen.   
+Sie müssen folgende Informationen angeben: 
 
-- **Display Name**: an optional display name that is used to refer to the confidential client. The default display name is the value of the ID parameter. For example: **Back-end Node server**.
-- **ID**: A unique identifier for the confidential client (can be considered as a "user name").
-  The ID can contain only ASCII characters.
-- **Secret**: A private passphrase to authorize access from the confidential client (can be considered as an API key).
-  The secret can contain only ASCII characters.
-- **Allowed Scope**: A confidential client that uses such ID and Secret combination is automatically granted the scope that is defined here. Learn more about **Scopes** in the [Authorization Concepts](../#scope) tutorial.
-    - An element of an allowed scope can also include the special asterisk wildcard character (`*`), which signifies any sequence of zero or more characters. For example, if the scope element is `send*`, the confidential client can be granted access to scopes that contain any scope element that starts with "send", such as "sendMessage". The asterisk wildcard can be placed at any position within the scope element, and can also appear more than once. 
-    - An allowed-scope parameter that consists of a single asterisk character (*) indicates that the confidential client can be granted a token for any scope.
+- **Anzeigename**: Ein optionaler Anzeigename, mit dem auf den vertraulichen Client verwiesen wird. Der Standardanzeigename ist der Wert des Parameters
+ID. Beispiel: **Back-end Node server**.
+- **ID**: Eine eindeutige Kennung für den vertraulichen Client (die als eine Art Benutzername betrachtet werden kann). Die ID darf nur ASCII-Zeichen enthalten. 
+- **Geheimer Schlüssel**: Eine private Kennphrase zur Autorisierung des Zugriffs des vertraulichen Clients (die als ein API-Schlüssel angesehen werden kann). Der geheime Schlüssel darf nur ASCII-Zeichen enthalten. 
+- **Zulässiger Bereich**: Einem vertraulichen Client, der eine solche Kombination aus ID und geheimem Schlüssel verwendet, wird automatisch
+der hier definierte Bereich zugeordnet. Weitere Informationen zu **Bereichen** enthält das Lernprogramm
+[Autorisierungskonzepte](../#scope). 
+    - Ein Element eines zulässigen Bereichs kann auch einen Stern (`*`) als besonderes Platzhalterzeichen enthalten, das eine beliebige Folge von null oder mehr Zeichen repräsentiert. Wenn das Bereichselement beispielsweise
+`send*` ist, kann dem vertraulichen Client Zugriff auf Bereiche gewährt werden, die ein mit "send" beginnendes Bereichselement enthalten, z. B.
+"sendMessage". Der Stern als Platzhalterzeichen kann an jeder Stelle des Namens eines Bereichselements und sogar mehrfach angegeben werden.  
+    - Ein Parameter
+allowed-scope, als dessen Wert nur ein Stern
+(*) angegeben ist, zeigt an, dass für den vertraulichen Client ein Token für jeden Bereich ausgestellt werden kann. 
 
-**Examples of scopes:**
+**Beispiele für Bereiche:**
 
-- [Protecting external resources](../protecting-external-resources) uses the scope `authorization.introspect`.
-- [Sending a Push Notification](../../notifications/sending-notifications) via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>`.
-- Adapters can be protected by a custom scope element, such as `accessRestricted`.
-- The scope `*` is a catch-all scope, granting access to any requested scope.
+- Für den [Schutz externer Ressourcen](../protecting-external-resources) wird der Bereich `authorization.introspect` verwendet.
+- Wenn Sie eine [Push-Benachrichtigung über die REST-API senden](../../notifications/sending-notifications), werden die jeweils durch ein Leerzeichen getrennten
+Bereichselemente `messages.write` und `push.application.<Anwendungs-ID>` verwendet. 
+- Adapter können mit einem angepassten Bereichselement wie `accessRestricted` geschützt werden.
+- Mit dem Bereich `*` wird alles abgedeckt und der Zugriff auf jeden angeforderten Bereich gewährt. 
 
-<img class="gifplayer" alt="Configurting a confidential client" src="push-confidential-client.png"/>
+<img class="gifplayer" alt="Vertraulichen Client konfigurieren" src="push-confidential-client.png"/>
 
-## Predefined confidential clients
+## Vordefinierte vertrauliche Clients
 {: #predefined-confidential-clients }
-The {{ site.data.keys.mf_server }} comes with some predefined confidential clients:
+{{ site.data.keys.mf_server }} wird mit einigen vordefinierten vertraulichen Clients geliefert: 
 
 ### test
 {: #test }
-The `test` client is available only in development mode. It allows you to test your resources easily.
+Der Client `test` ist nur im Entwicklungsmodus verfügbar und ermöglicht das einfache Testen von Ressourcen. 
 
 - **ID**: `test`
-- **Secret**: `test`
-- **Allowed Scope**: `*` (any scope)
+- **Geheimer Schlüssel**: `test`
+- **Zulässiger Bereich**: `*` (beliebiger Bereich)
 
 ### admin
 {: #admin }
-The `admin` client is used internally by the {{ site.data.keys.product }} administration service.
+Der Client `admin` wird intern vom Verwaltungsservice der {{ site.data.keys.product }} verwendet. 
 
 ### push
 {: #push }
-The `push` client is used internally by the {{ site.data.keys.product }} push service.
+Der Client `push` wird intern vom Push-Service der {{ site.data.keys.product }} verwendet. 
 
-## Obtaining an access token
+## Zugriffstoken anfordern
 {: #obtaining-an-access-token }
-A token can be obtained from the {{ site.data.keys.mf_server }} **token endpoint**.  
+Ein Token kann vom **Tokenendpunkt** des {{ site.data.keys.mf_server }} abgerufen werden.   
 
-For **testing purposes**, you can use Postman as described below.  
-In a real situation, implement Postman in your back-end logic, with the technology of your choice.
+Für **Testzwecke** können Sie Postman verwenden, wie es unten beschrieben ist.   
+Implementieren Sie Postman mit einer Technologie Ihrer Wahl in einer realen Situation in Ihre Back-End-Logik. 
 
-1. Make a **POST** request to **http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token**.  
-    For example: `http://localhost:9080/mfp/api/az/v1/token`
-    - In a development environment, the {{ site.data.keys.mf_server }} uses a pre-existing `mfp` runtime.  
-    - In a production environment, replace the runtime value with your runtime name.
+1. Setzen Sie eine **POST**-Anforderung an **http(s)://[IP-Adresse_oder_Hostname]:[Port]/[runtime]/api/az/v1/token** ab.  
+    Beispiel: `http://localhost:9080/mfp/api/az/v1/token`
+    - In einer Entwicklungsumgebung verwendet {{ site.data.keys.mf_server }} eine bereits vorhandene `mfp`-Laufzeit.   
+    - Ersetzen Sie den Laufzeitwert in einer Produktionsumgebung durch den Namen Ihrer Laufzeit. 
 
-2. Set the request with a content-type of `application/x-www-form-urlencoded`.  
-3. Set the following two form parameters:
+2. Legen Sie für die Anforderung `application/x-www-form-urlencoded` als Inhaltstyp fest.  
+3. Definieren Sie die beiden folgenden Formularparameter: 
   - `grant_type`: `client_credentials`
-  - `scope`: Use the scope protecting the resource.  
-  If you don't use a scope to protect your resource, use an empty string.
+  - `scope`: Verwenden Sie den Bereich, der die Ressource schützt.
+  
+Falls Sie Ihre Ressource nicht mit einem Bereich schützen, verwenden Sie eine leere Zeichenfolge. 
 
-    ![Image of postman configuration](confidential-client-steps-1-3.png)
+    ![Postman-Konfiguration](confidential-client-steps-1-3.png)
 
-4. To authenticate the request, use [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side). Use your confidential client's **ID** and **Secret**.
+4. Verwenden Sie zum Authentifizieren der Anforderung die [Basisauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side). Verwenden Sie die
+**ID** und den **geheimen Schlüssel** Ihres vertraulichen Clients.
 
-    ![Image of postman configuration](confidential-client-step-4.png)
+    ![Postman-Konfiguration](confidential-client-step-4.png)
 
-    Outside of Postman, if you use the **test** confidential client, set the **HTTP header** to `Authorization: Basic dGVzdDp0ZXN0` (`test:test` encoded using **base64**).
+    Wenn Sie außerhalb von Postman den vertraulichen Client **test** verwenden,
+setzen Sie den **HTTP-Header** auf `Authorization: Basic dGVzdDp0ZXN0` (`test:test`
+in **base64**-Codierung).
 
-The response for this request will contain a `JSON` object, including the **access token** and its expiration time (1 hour).
+Die Antwort auf diese Anforderung enthält ein `JSON`-Objekt mit dem
+**Zugriffstoken** und dessen Ablaufzeit (von 1 Stunde). 
 
 ```json
 {
@@ -96,27 +123,37 @@ The response for this request will contain a `JSON` object, including the **acce
 }
 ```
 
-![Creating a confidential client](confidential-client-access-token.png)
+![Vertraulichen Client erstellen](confidential-client-access-token.png)
 
-## Using the access token
+## Verwendung des Zugriffstokens
 {: #using-the-access-token }
-From here on, you can make requests to the desired resources by adding the **HTTP header**: `Authorization: Bearer eyJhbGciOiJSUzI1NiIsImp ...`, replacing the access token by the one you extracted from the previous JSON object.
+Ab diesem Punkt können Sie die gwünschten Ressourcen anfordern, indem Sie
+den **HTTP-Header** hinzufügen: `Authorization: Bearer eyJhbGciOiJSUzI1NiIsImp ...` hinzufügen
+und das Zugriffstoken durch das aus dem vorgenannten JSON-Objekt extrahierte Token ersetzen. 
 
-## Possible responses
+## Mögliche Antworten
 {: #possible-responses }
-In addition to the normal responses that your resource may generate, look out for a few responses that are generated by {{ site.data.keys.mf_server }}.
+Suchen Sie neben den normalen Antworten, die von Ihrer Ressource generiert werden können,
+nach Antworten, die von {{ site.data.keys.mf_server }} generiert wurden.
 
 ### Bearer
 {: #bearer }
-An HTTP **401** response status with the HTTP header `WWW-Authenticate : Bearer` means that no token was found on the `Authorization` header of the original request.
+Ein HTTP-Antwortstatus **401** mit dem HTTP-Header `WWW-Authenticate : Bearer` bedeutet,
+dass im `Authorization`-Header der ursprünglichen Anforderung kein Token gefunden wurde. 
 
 ### invalid_token
 {: #invalid-token }
-An HTTP **401** response status with the HTTP header `WWW-Authenticate: Bearer error="invalid_token"` means that the token that was sent is **invalid** or **expired**.
+Ein HTTP-Antwortstatus **401** mit dem HTTP-Header
+`WWW-Authenticate: Bearer error="invalid_token"` bedeutet, dass das gesendete Token
+**ungültig** oder **abgelaufen** ist.
 
 ### insufficient_scope
 {: #insufficient-scope }
-An HTTP **403** response status with the HTTP header `WWW-Authenticate : Bearer error="insufficient_scope", scope="scopeA scopeB"` means that the token found in the original request did not match the **scope required by this resource**. The header also includes the scope it expected.
+Ein HTTP-Antwortstatus **403** mit dem HTTP-Header `WWW-Authenticate : Bearer error="insufficient_scope", scope="scopeA scopeB"`
+bedeutet, dass das in der ursprünglichen Anforderung gefundene Token
+nicht zu dem **von dieser Ressource geforderten Bereich** passt. Der Header enthält außerdem den erwarteten Bereich. 
 
-When making a request, if you do not know which scope is required by the resource, `insufficient_scope` is the way to determine the answer.  
-For example, request a token with an empty string (`""`) as the scope value and make a request to the resource. Then, you can extract the required scope from the 403 response and request a new token for this scope.
+Wenn Sie eine Anforderung absetzen und nicht wssen, welchen Bereich die Ressource fordert,
+können Sie mit `insufficient_scope` die Antwort bestimmen.   
+Fordern Sie beispielsweise ein Token mit einer leeren Zeichenfolge (`""`) für den Bereichswert an, wenn Sie die Ressourcenanforderung absetzen. Anschließend extrahieren Sie den erforderlichen Bereich
+aus der Antwort 403 und fordern ein neues Token für diesen Bereich an. 

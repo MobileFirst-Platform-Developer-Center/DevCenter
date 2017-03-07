@@ -40,7 +40,7 @@ wie eine Datenbank oder ein Anwendungsserver
 vorausgesetzt wird (siehe [{{ site.data.keys.product_adj }} Development Server einrichten](../../../installation-configuration/development)). 
 
 ## Komponenten von {{ site.data.keys.mf_server }}
-{ #mobilefirst-server-components }
+{: #mobilefirst-server-components }
 Die Architektur der MoibleFirst-Server-Komponenten ist in der folgenden Abbildung
 dargestellt: 
 

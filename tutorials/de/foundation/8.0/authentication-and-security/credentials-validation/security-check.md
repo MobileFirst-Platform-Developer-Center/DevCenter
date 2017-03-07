@@ -1,34 +1,39 @@
 ---
 layout: tutorial
-title: Implementing the CredentialsValidationSecurityCheck class
-breadcrumb_title: Security Check
+title: Klasse CredentialsValidationSecurityCheck implementieren
+breadcrumb_title: Sicherheitsüberprüfung
 relevantTo: [android,ios,windows,javascript]
 weight: 1
 downloads:
-  - name: Download Security Checks
+  - name: Sicherheitsüberprüfungen herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-This abstract class extends `ExternalizableSecurityCheck` and implements most of its methods to simplify usage. Two methods are mandatory: `validateCredentials` and `createChallenge`.  
-The `CredentialsValidationSecurityCheck` class is meant for simple flows to validate arbitrary credentials in order to grant access to a resource. Also provided is a built-in capability to block access after a set number of attempts.
+Diese abstrakte Klasse erweitert `ExternalizableSecurityCheck` und implementiert die meisten Methoden dieser Klasse, um die Nutzung zu vereinfachen. Die beiden Methoden `validateCredentials` und `createChallenge` sind obligatorisch.   
+Die Klasse `CredentialsValidationSecurityCheck` ist für einfache Abläufe gedacht, um
+beliebige Berechtigungsnachweise zu validieren, damit der Zugriff auf eine Ressource gewährt werden kann. Es gibt zudem eine integrierte Funktion,
+die nach einer Reihe von Versuchen den Zugriff blockiert. 
 
-This tutorial uses the example of a hard-coded PIN code to protect a resource, and gives the user 3 attempts (after which the client app instance is blocked for 60 seconds).
+In diesem Lernprogramm wird ein Beispiel für einen fest codierten PIN-Code zum Schutz einer Ressource
+verwendet, der dem Benutzer drei Versuche einräumt (nach denen die Client-App-Instanz für 60 Sekunden blockiert wird). 
 
-**Prerequisites:** Make sure to read the [Authorization concepts](../../) and [Creating a Security Check](../../creating-a-security-check) tutorials.
+**Voraussetzung:** Sie müssen
+die Lernprogramme [Autorisierungskonzepte](../../) und [Sicherheitsüberprüfung erstellen](../../creating-a-security-check) durcharbeiten. 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Creating the Security Check](#creating-the-security-check)
-* [Creating the Challenge](#creating-the-challenge)
-* [Validating the user credentials](#validating-the-user-credentials)
-* [Configuring the security check](#configuring-the-security-check)
-* [Sample security check](#sample-security-check)
+* [Sicherheitsüberprüfung erstellen](#creating-the-security-check)
+* [Abfrage erstellen](#creating-the-challenge)
+* [Benutzerberechtigungsnachweise validieren](#validating-the-user-credentials)
+* [Sicherheitsüberprüfung konfigurieren](#configuring-the-security-check)
+* [Beispiel für eine Sicherheitsüberprüfung](#sample-security-check)
 
-## Creating the Security Check
+## Sicherheitsüberprüfung erstellen
 {: #creating-the-security-check }
-[Create a Java adapter](../../../adapters/creating-adapters) and add a Java class named `PinCodeAttempts` that extends `CredentialsValidationSecurityCheck`.
+[Erstellen Sie einen Java-Adapter](../../../adapters/creating-adapters) und fügen Sie eine
+Java-Klasse mit der Bezeichnung `PinCodeAttempts` hinzu, die `CredentialsValidationSecurityCheck` erweitert.
 
 ```java
 public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
@@ -45,12 +50,13 @@ public class PinCodeAttempts extends CredentialsValidationSecurityCheck {
 }
 ```
 
-## Creating the challenge
+## Abfrage erstellen
 {: #creating-the-challenge }
-When the security check is triggered, it sends a challenge to the client. Returning `null` creates an empty challenge, which may be sufficient in some cases.  
-Optionally, you can return data with the challenge, such as an error message to display, or any other data that can be used by the client.
+Wenn die Sicherheitsüberprüfung ausgelöst wird, sendet sie eine Abfrage an den Client. Wenn `null` zurückgegeben wird,
+wird eine leere Abfrage erstellt, die in einigen Fällen ausreichend sein kann.   
+Bei Bedarf können Sie Daten mit der Abfrage zurückgeben, z. B. eine anzuzeigende Fehlernachricht oder andere Daten, die vom Client verwendet werden können. 
 
-For example, `PinCodeAttempts` sends a predefined error message and the number of remaining attempts.
+`PinCodeAttempts` sendet beispielsweise eine vordefinierte Fehlernachricht und die Anzahl der verbleibenden Versuche. 
 
 ```java
 @Override
@@ -62,13 +68,14 @@ protected Map<String, Object> createChallenge() {
 }
 ```
 
-> The implementation of `errorMsg` is included in the sample application.
+> Die Implementierung von `errorMsg` ist in der Beispielanwendung enthalten. 
 
-`getRemainingAttempts()` is inherited from `CredentialsValidationSecurityCheck`.
+`getRemainingAttempts()` wird von `CredentialsValidationSecurityCheck` übernommen.
 
-## Validating the user credentials
+## Benutzerberechtigungsnachweise validieren
 {: #validating-the-user-credentials }
-When the client sends the answer from the challenge, the answer is passed to `validateCredentials` as a `Map`. This method should implement your logic and return `true` if the credentials are valid.
+Wenn der Client die Antwort auf die Abfrage sendet, wird die Antwort als Zuordnung (`Map`) an
+`validateCredentials` übergeben. Diese Methode sollte Ihre Logik implementieren und `true` zurückgeben, wenn die Berechtigungsnachweise gültig sind. 
 
 ```java
 @Override
@@ -88,17 +95,17 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
         errorMsg = "The pin code was not provided.";
     }
 
-    //In any other case, credentials are not valid
+    // In allen anderen Fällen sind Berechtigungsnachweise nicht gültig.
     return false;
 
 }
 ```
 
-### Configuration class
+### Konfigurationsklasse
 {: #configuration-class }
-You can also configure the valid PIN code by using the adapter.xml file and the {{ site.data.keys.mf_console }}.
+Sie können einen gültigen PIN-Code auch in der Datei adapter.xml und in der {{ site.data.keys.mf_console }} konfigurieren.
 
-Create a new Java class that extends `CredentialsValidationSecurityCheckConfig`. It is important to extend a class that matches the parent security check class, in order to inherit the default configuration.
+Erstellen Sie eine neue Java-Klasse, die `CredentialsValidationSecurityCheckConfig` erweitert. Es ist wichtig, eine Klasse zu erweitern, die zur übergeordneten Klasse für Sicherheitsüberprüfungen passt, damit die Standardkonfiguration übernommen wird. 
 
 ```java
 public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
@@ -113,24 +120,26 @@ public class PinCodeConfig extends CredentialsValidationSecurityCheckConfig {
 }
 ```
 
-The only required method in this class is a constructor that can handle a `Properties` instance. Use the `get[Type]Property` method to retrieve a specific property from the adapter.xml file. If no value is found, the third parameter defines a default value (`1234`).
+Die einzige erforderliche Methode dieser Klasse ist ein Konstruktor, der eine `Properties`-Instanz bearbeiten kann. Verwenden Sie die Methode
+`get[Type]Property`, um eine bestimmte Eigenschaft aus der Datei adapter.xml abzurufen. Wenn kein Wert gefunden wird, definiert der dritte Parameter
+einen Wert (`1234`).
 
-You can also add error handling in this constructor by using the `addMessage` method:
+Sie können mit der Methode `addMessage` eine Fehlerbehandlung zu diesem Konstruktor hinzufügen: 
 
 ```java
 public PinCodeConfig(Properties properties) {
-    //Make sure to load the parent properties
+    // Die übergeordneten Eigenschaften müssen geladen werden.
     super(properties);
 
-    //Load the pinCode property
+    // Eigenschaft pinCode laden
     pinCode = getStringProperty("pinCode", properties, "1234");
 
-    //Check that the PIN code is at least 4 characters long. Triggers an error.
+    // Überprüfung, ob der PIN-Code aus mindestens 4 Zeichen besteht. Auslösung eines Fehlers.
     if(pinCode.length() < 4) {
         addMessage(errors,"pinCode","pinCode needs to be at least 4 characters");
     }
 
-    //Check that the PIN code is numeric. Triggers warning.
+    // Überprüfung, ob der PIN-Code numerisch ist. Auslösung einer Warnung.
     try {
         int i = Integer.parseInt(pinCode);
     }
@@ -140,7 +149,7 @@ public PinCodeConfig(Properties properties) {
 }
 ```
 
-In your main class (`PinCodeAttempts`), add the following two methods to be able to load the configuration:
+Fügen Sie zu Ihrer Hauptklasse (`PinCodeAttempts`) die beiden folgenden Methoden hinzu, um die Konfiguration laden zu können: 
 
 ```java
 @Override
@@ -153,9 +162,9 @@ protected PinCodeConfig getConfiguration() {
 }
 ```
 
-You can now use the `getConfiguration().pinCode` method to retrieve the default PIN code.  
+Sie können die Methode `getConfiguration().pinCode` verwenden, um den Standard-PIN-Code abzurufen.   
 
-You can modify the `validateCredentials` method to use the PIN code from the configuration instead of the hardcoded value.
+Sie können die Methode `validateCredentials` so ändern, dass anstelle des fest codierten Wertes der PIN-Code aus der Konfiguration verwendet wird. 
 
 ```java
 @Override
@@ -175,15 +184,15 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
         errorMsg = "The pin code was not provided.";
     }
 
-    //In any other case, credentials are not valid
+    // In allen anderen Fällen sind Berechtigungsnachweise nicht gültig.
     return false;
 
 }
 ```
 
-## Configuring the security check
+## Sicherheitsüberprüfung konfigurieren
 {: #configuring-the-security-check }
-In your adapter.xml, add a `<securityCheckDefinition>` element:
+Fügen Sie zu Ihrer Datei adapter.xml ein Element `<securityCheckDefinition>` hinzu: 
 
 ```xml
 <securityCheckDefinition name="PinCodeAttempts" class="com.sample.PinCodeAttempts">
@@ -194,11 +203,14 @@ In your adapter.xml, add a `<securityCheckDefinition>` element:
 </securityCheckDefinition>
 ```
 
-The `name` attribute must the name of the security check. Set the `class` parameter to the class that you created previously.
+Das Attribut `name` muss die Sicherheitsüberprüfung benennen. Setzen Sie den Parameter `class` auf die Klasse, die Sie zuvor erstellt haben. 
 
-A `securityCheckDefinition` can contain zero or more `property` elements. The `pinCode` property is the one defined in the `PinCodeConfig` configuration class. The other properties are inherited from the `CredentialsValidationSecurityCheckConfig` configuration class.
+Eine Sicherheitsprüfungsdefinition (`securityCheckDefinition`) kann null oder mehr `property`-Elemente enthalten. Die Eigenschaft
+`pinCode` ist die in der Konfigurationsklasse `PinCodeConfig` definierte Eigenschaft. Die anderen Eigenschaften werden von der Konfigurationsklasse
+`CredentialsValidationSecurityCheckConfig` übernommen. 
 
-By default, if you do not specify those properties in the adapter.xml file, you receive the default values that are set by `CredentialsValidationSecurityCheckConfig`:
+Wenn Sie diese Eigenschaften nicht in der Datei adapter.xml angeben, erhalten Sie standardmäßig die von
+`CredentialsValidationSecurityCheckConfig` festgelegten Standardwerte:
 
 ```java
 public CredentialsValidationSecurityCheckConfig(Properties properties) {
@@ -209,18 +221,20 @@ public CredentialsValidationSecurityCheckConfig(Properties properties) {
     blockedStateExpirationSec = getIntProperty("blockedStateExpirationSec", properties, 0);
 }
 ```
-The `CredentialsValidationSecurityCheckConfig` class defines the following properties:
+Die Klasse `CredentialsValidationSecurityCheckConfig` definiert die folgenden Eigenschaften:
 
-- `maxAttempts`: How many attempts are allowed before reaching a *failure*.
-- `attemptingStateExpirationSec`: Interval in seconds during which the client must provide valid credentials, and attempts are counted.
-- `successStateExpirationSec`: Interval in seconds during which the successful login holds.
-- `blockedStateExpirationSec`: Interval in seconds during which the client is blocked after reaching `maxAttempts`.
+- `maxAttempts`: Zulässige Anzahl von Versuchen, bis ein Fehler (*failure*) eintritt
+- `attemptingStateExpirationSec`: Intervall (in Sekunden), in dem der Client gültige Berechtigungsnachweise angeben muss. Die Versuche werden gezählt. 
+- `successStateExpirationSec`: Intervall (in Sekunden), in dem eine gültige Anmeldung stattfinden muss
+- `blockedStateExpirationSec`: Intervall (in Sekunden) für die Blockierung des Clients nach dem Erreichen von `maxAttempts`
 
-Note that the default value for `blockedStateExpirationSec` is set to `0`: if the client sends invalid credentials, it can try again "after 0 seconds". This means that by default the "attempts" feature is disabled.
+Beachten Sie, dass `blockedStateExpirationSec` standardmäßig auf `0` gesetzt ist.
+Wenn der Client ungültige Berechtigungsnachweise sendet, kann er also nach 0 Sekunden einen neuen Versuch unternehmen. Das bedeutet, dass das Feature für die Anzahl von Versuchen
+standardmäßig inaktiviert ist. 
 
 
-## Sample Security Check
+## Beispiel für eine Sicherheitsüberprüfung
 {: #sample-security-check }
-[Download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the Security Checks Maven project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80), um das Maven-Projekt für Sicherheitsüberprüfungen herunterzuladen. 
 
-The Maven project contains an implementation of CredentialsValidationSecurityCheck.
+Das Maven-Projekt enthält eine Implementierung von CredentialsValidationSecurityCheck.

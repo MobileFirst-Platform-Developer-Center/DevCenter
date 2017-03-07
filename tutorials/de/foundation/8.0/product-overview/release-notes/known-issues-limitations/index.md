@@ -393,8 +393,8 @@ Für Webanwendungen gelten die folgenden Einschränkungen:
 - {: #web_app_limit_ms_ie_n_edge }
 In Microsoft Internet Explorer (IE) und Microsoft Edge werden
 App-Verwaltungsnachrichten und Client-Web-SDK-Nachrichten
-entsprechend den Regions- und Formateinstellungen des Betriebssystems
-und nicht gemäß den konfigurierten Sprachvorgaben für Browser oder Betriebssystem angezeigt
+entsprechend den Regions- und Formatvorgaben des Betriebssystems
+und nicht gemäß den konfigurierten Vorgaben für die Anzeigesprache des Browsers oder Betriebssystems angezeigt
 (siehe auch [Administratornachrichten
 in mehreren Sprachen definieren](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages)). 
 

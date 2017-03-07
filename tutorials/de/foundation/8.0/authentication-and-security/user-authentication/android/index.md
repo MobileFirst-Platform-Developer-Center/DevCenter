@@ -1,38 +1,43 @@
 ---
 layout: tutorial
-title: Implementing the challenge handler in Android applications
+title: Abfrage-Handler in Android-Anwendungen implementieren
 breadcrumb_title: Android
 relevantTo: [android]
 weight: 4
 downloads:
-  - name: Download PreemptiveLogin project
+  - name: Projekt PreemptiveLogin herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginAndroid/tree/release80
-  - name: Download RememberMe project
+  - name: Projekt RememberMe herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/RememberMeAndroid/tree/release80
-  - name: Download SecurityCheck Maven project
+  - name: Maven-Projekt SecurityCheck herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-**Prerequisite:** Make sure to read the **CredentialsValidationSecurityCheck** [challenge handler implementation](../../credentials-validation/android) tutorial.
+**Voraussetzung:** Arbeiten Sie zuerst den Abschnitt
+**CredentialsValidationSecurityCheck** des Lernprogramms [Abfrage-Handler implementieren](../../credentials-validation/android) durch. 
 
-The challenge handler tutorial demonstrates a few additional features (APIs) such as preemptive `login`, `logout`, and `obtainAccessToken`.
+Das Abfrage-Handler-Lernprogramm demonstriert einige zusätzliche Features (APIs) wie
+die bevorrechtigte Anmeldung und Abmeldung sowie das bevorrechtigte Abrufen eines Zugriffstokens für einen Bereich
+(`login`, `logout` und `obtainAccessToken`).
 
-## Login
+## Anmeldung
 {: #login }
-In this example, `UserLogin` expects *key:value*s called `username` and `password`. Optionally, it also accepts a Boolean `rememberMe` key, which tells the security check to remember this user for a longer period. In the sample application, this is collected using a
-Boolean value from a checkbox in the login form.
+In diesem Beispiel erwartet `UserLogin`, dass die Schlüsselwerte (*key:values*) `username` und `password` aufgerufen werden. Optional wird auch ein boolescher Schlüssel `rememberMe` akzeptiert, der
+die Sicherheitsüberprüfung auffordert, sich diesen Benutzer für einen längeren Zeitraum zu merken, In der Beispielanwendung wird dieser boolesche Wert in Form eines Kontrollkästchens im Anmeldeformular erfasst. 
 
-The `credentials` argument is a `JSONObject` containing `username`, `password`, and `rememberMe`:
+Das Argument `credentials` ist ein `JSONObject`,
+das `username`, `password` und `rememberMe` enthält:
 
 ```java
 submitChallengeAnswer(credentials);
 ```
 
-You might also want to log in a user without any challenge being received. For example, you can show a login screen as the first screen of the application, or show a login screen after a logout, or a login failure. Those scenarios are called **preemptive logins**.
+Vielleicht möchten Sie ja, dass sich ein Benutzer ohne den Empfang einer Abfrage anmelden kann. Sie könnten beispielsweise eine Anmeldeanzeige als erste Anzeige der Anwendung einblenden oder eine Anmeldeanzeige nach der Abmeldung oder nach einem Anmeldefehler anzeigen. Diese Szenarien werden als **bevorrechtigte Anmeldungen** bezeichnet.
 
-You cannot call the `submitChallengeAnswer` API if there is no challenge to answer. For those scenarios, the {{ site.data.keys.product }} SDK includes the `login` API:
+Sie können die API `submitChallengeAnswer` nicht aufrufen, wenn es keine zu beantwortende Abfrage gibt. Für solche Szenarien enthält das
+SDK der {{ site.data.keys.product }} die API `login`. 
 
 ```java
 WLAuthorizationManager.getInstance().login(securityCheckName, credentials, new WLLoginResponseListener() {
@@ -49,11 +54,15 @@ WLAuthorizationManager.getInstance().login(securityCheckName, credentials, new W
 });
 ```
 
-If the credentials are wrong, the security check sends back a **challenge**.
+Wenn die Berechtigungsnachweise nicht stimmen, sendet die Sicherheitsüberprüfung eine **Abfrage** zurück.
 
-It is the developer's responsibility to know when to use `login`, as opposed to `submitChallengeAnswer`, based on the application's needs. One way to achieve this is to define a Boolean flag, for example `isChallenged`, and set it to `true` when `handleChallenge` is reached, or set it to `false` in any other cases (failure, success, initialization, etc).
+Es ist die Verantwortung des Anwendungsentwicklers zu wissen, wann für eine bestimmte Anwendung
+`login` und wann `submitChallengeAnswer` zu verwenden ist. Dazu kann der Entwickler
+beispielsweise ein boolesches Flag definieren, z. B. `isChallenged`, und dieses auf `true` setzen,
+wenn `handleChallenge` erreicht wird, oder das Flag in allen anderen Fällen (Fehler, Erfolg, Initialisierung usw.) auf
+`false` setzen. 
 
-When the user clicks the **Login** button, you can dynamically choose which API to use:
+Wenn der Benutzer auf die Anmeldeschaltfläche (**Login**) klickt, kann dynamisch entschieden werden, welche API zu verwenden ist: 
 
 ```java
 public void login(JSONObject credentials){
@@ -68,14 +77,17 @@ public void login(JSONObject credentials){
 }
 ```
 
-> **Note:**
->The `WLAuthorizationManager` `login()` API has its own `onSuccess` and `onFailure` methods, the `handleSuccess` or `handleFailure` methods of the relevant challenge handler are **also** called.
-
-## Obtaining an access token
+> **Hinweis:**
+>Die `WLAuthorizationManager`-API `login()` hat ihre eigenen
+Methoden `onSuccess` und `onFailure`. Die Methode `handleSuccess` oder `handleFailure` des
+betreffenden Abfrage-Handlers
+wird **ebenfalls** aufgerufen. ## Zugriffstoken anfordern
 {: #obtaining-an-access-token }
-Because this security check supports the **RememberMe** functionality (as the`rememberMe` Boolean key), it would be useful to check whether the client is currently logged in when the application starts.
+Da diese Sicherheitsüberprüfung die Funktion **RememberMe** (in Form des booleschen Schlüssels
+`rememberMe`) unterstützt, sollte sinnvollerweise überprüft werden,
+ob der Client angemeldet ist, wenn die Anwendung gestartet wird. 
 
-The {{ site.data.keys.product }} SDK provides the `obtainAccessToken` API to ask the server for a valid token:
+Das SDK der {{ site.data.keys.product }} stellt die API `obtainAccessToken` bereit, um den Server nach einem gültigen Token zu fragen: 
 
 ```java
 WLAuthorizationManager.getInstance().obtainAccessToken(scope, new WLAccessTokenListener() {
@@ -91,19 +103,23 @@ WLAuthorizationManager.getInstance().obtainAccessToken(scope, new WLAccessTokenL
 });
 ```
 
-> **Note:**
-> The `WLAuthorizationManager` `obtainAccessToken()` API has its own `onSuccess` and `onFailure` methods, the `handleSuccess` or `handleFailure` methods of the relevant challenge handler are **also** called.
+> **Hinweis:**
+> Die `WLAuthorizationManager`-API `obtainAccessToken()` hat ihre eigenen Methoden
+`onSuccess` und `onFailure`. Die Methode
+`handleSuccess` oder `handleFailure` des betreffenden Abfrage-Handlers
+wird **ebenfalls** aufgerufen. 
 
-If the client is already logged-in or is in the *remembered* state, the API triggers a success. If the client is not logged in, the security check sends back a challenge.
+Wenn der Client bereits angemeldet ist oder erinnert wird (Zustand *remembered*), löst die API einen Erfolg aus. Wenn der Client nicht angemeldet ist, sendet die Sicherheitsüberprüfung eine Abfrage zurück. 
 
-The `obtainAccessToken` API takes in a **scope**. The scope can be the name of your **security check**.
+Die API `obtainAccessToken` nimmt einen Gültigkeitsbereich (**scope**) auf. Der Bereich kann den Namen Ihrer
+**Sicherheitsüberprüfung** haben.
 
-> Learn more about **scopes** in the [Authorization concepts](../../) tutorial
+> Weitere Informationen zu Bereichen (**scopes**) enthält das Lernprogramm [Autorisierungskonzepte](../../). 
 
-## Retrieving the authenticated user
+## Authentifizierten Benutzer abrufen
 {: #retrieving-the-authenticated-user }
-The challenge handler `handleSuccess` method takes a `JSONObject identity` as a parameter.
-If the security check sets an `AuthenticatedUser`, this object contains the user's properties. You can use `handleSuccess` to save the current user:
+Die Methode `handleSuccess` des Abfrage-Handlers verwendet eine JSON-Objekt-ID (`JSONObject identity`) als Parameter.
+Wenn die Sicherheitsüberprüfung einen authentifizierten Benutzer (`AuthenticatedUser`) definiert, enthält dieses Objekt die Eigenschaften des Benutzers. Mit `handleSuccess` können Sie den aktuellen Benutzer speichern. 
 
 ```java
 @Override
@@ -111,7 +127,7 @@ public void handleSuccess(JSONObject identity) {
     super.handleSuccess(identity);
     isChallenged = false;
     try {
-        //Save the current user
+        // Aktuellen Benutzer speichern
         SharedPreferences preferences = context.getSharedPreferences(Constants.PREFERENCES_FILE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString(Constants.PREFERENCES_KEY_USER, identity.getJSONObject("user").toString());
@@ -122,7 +138,8 @@ public void handleSuccess(JSONObject identity) {
 }
 ```
 
-Here, `identity` has a key called `user` which itself contains a `JSONObject` representing the `AuthenticatedUser`:
+Hier hat `identity` einen Schlüssel mit der Bezeichnung
+`user`, der wiederum ein `JSONObject` enthält, das den authentifizierten Benutzer (`AuthenticatedUser`) repräsentiert. 
 
 ```json
 {
@@ -135,9 +152,9 @@ Here, `identity` has a key called `user` which itself contains a `JSONObject` re
 }
 ```
 
-## Logout
+## Abmeldung
 {: #logout }
-The {{ site.data.keys.product }} SDK also provides a `logout` API to log out from a specific security check:
+Das SDK der {{ site.data.keys.product }} stellt eine API `logout` für die Abmeldung bei einer bestimmten Sicherheitsüberprüfung bereit. 
 
 ```java
 WLAuthorizationManager.getInstance().logout(securityCheckName, new WLLogoutResponseListener() {
@@ -153,22 +170,22 @@ WLAuthorizationManager.getInstance().logout(securityCheckName, new WLLogoutRespo
 });
 ```
 
-## Sample applications
+## Beispielanwendungen
 {: #sample-applications }
-Two samples are associated with this tutorial:
+Zu diesem Lernprogramm gibt es zwei Beispiele: 
 
-- **PreemptiveLoginAndroid**: An application that always starts with a login screen, using the preemptive `login` API.
-- **RememberMeAndroid**: An application with a *Remember Me* checkbox. The user can bypass the login screen the next time the application is opened.
+- **PreemptiveLoginAndroid**: Diese Anwendung wird immer mit einer Anmeldeanzeige gestartet, die die API `login` für bevorrechtigte Anmeldung verwendet. 
+- **RememberMeAndroid**: Diese Anwendung hat ein Kontrollkästchen *Remember Me*. Wenn die Anwendung das nächste Mal geöffnet wird, kann der Benutzer die Anmeldeanzeige umgehen. 
 
-Both samples use the same `UserLogin` security check from the **SecurityCheckAdapters** adapter Maven project.
+Beide Beispiele verwenden dieselbe Sicherheitsüberprüfung `UserLogin` des Adapter-Maven-Projekts **SecurityCheckAdapters**. 
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80) the SecurityCheckAdapters Maven project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeAndroid/tree/release80) the Remember Me project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginAndroid/tree/release80) the Preemptive Login project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/SecurityCheckAdapters/tree/release80), um das Maven-Projekt SecurityCheckAdapters herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/RememberMeAndroid/tree/release80), um das Projekt "Remember Me" herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/PreemptiveLoginAndroid/tree/release80), um das Projekt "Preemptive Login" herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: sample-usage }
-Follow the sample's README.md file for instructions.  
-The username/password for the app must match, i.e. "john"/"john".
+Anweisungen finden Sie in der Datei README.md zum Beispiel.   
+Benutzername und Kennwort für die App müssen übereinstimmen, z. B. "john"/"john".
 
-![sample application](sample-application.png)
+![Beispielanwendung](sample-application.png)
