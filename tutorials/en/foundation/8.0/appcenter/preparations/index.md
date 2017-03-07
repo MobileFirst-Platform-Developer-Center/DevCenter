@@ -163,7 +163,7 @@ To build the Windows 8 project:
 To distribute the mobile client to your Application Center users, you can later generate an installer that will install the generated executable (.exe) file and its dependent Dynamic-Link Library (.dll) files. Alternatively, you can provide these files without including them in an installer.
 
 ####  Microsoft Windows 10 Universal (Native) IBM AppCenter client
-{: #native-windows-10-universal-ibm-appcenter-client}
+{: #microsoft-windows-10-universal-(native)-ibm-appcenter-client}
 
 The native Window 10 Universal IBM AppCenter client can be used to install Windows 10 Universal apps on Windows 10 phones. Use the **IBMApplicationCenterWindowsStore** for installing Windows 10 apps on Windows Desktop.
 
