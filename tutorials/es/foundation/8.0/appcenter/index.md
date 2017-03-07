@@ -3,12 +3,12 @@ layout: tutorial
 title: Application Center
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 12
+weight: 13
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Obtenga más información sobre el {{site.data.keys.mf_app_center_full }}: para qué es, los distintos componentes y características, y cómo utilizar la consola y el cliente.
+Obtenga más información sobre el {{ site.data.keys.mf_app_center_full }}: para qué es, los distintos componentes y características, y cómo utilizar la consola y el cliente.
 
 Ahora, se venden más dispositivos móviles que sistemas personales. Por esta razón, las aplicaciones móviles se han convertido en algo fundamental para los negocios.  
 Application Center es una herramienta para compartir aplicaciones móviles más fácilmente con una organización.
@@ -43,7 +43,7 @@ Para Windows Phone, sólo se admite en este momento el formato de archivo del pa
 
 Windows Phone 7 y Windows RT, y BlackBerry OS no están admitidos por la versión actual del Application Center.
 
-Application Center gestiona aplicaciones móviles. Admite cualquier tipo de aplicaciones de Android, iOS, Windows Phone 8, o Windows 8, incluidas aplicaciones creadas encima del {{site.data.keys.product }}.
+Application Center gestiona aplicaciones móviles. Admite cualquier tipo de aplicaciones de Android, iOS, Windows Phone 8, o Windows 8, incluidas aplicaciones creadas encima del {{ site.data.keys.product }}.
 
 Puede utilizar Application Center como parte del proceso de desarrollo de una aplicación. Un escenario típico de Application Center es un equipo que crea una aplicación móvil; el equipo de desarrollo crea una versión nueva de una aplicación de Android, iOS, Windows Phone, o Windows 8. El equipo de desarrollo desea que el equipo ampliado revise y pruebe esta versión nueva. Un desarrollador va a la consola de Application Center y carga la versión nueva de la aplicación en Application Center. Como parte de este proceso, el desarrollador puede especificar una descripción de la versión de la aplicación. Por ejemplo, la descripción podría mencionar los elementos que el equipo de desarrollo ha añadido o solucionado desde la versión anterior. La nueva versión de la aplicación estará entonces disponible para el resto de los miembros del equipo.
 
@@ -139,13 +139,13 @@ Desde el cliente móvil, puede realizar las acciones siguientes:
 
 Application Center da soporte a aplicaciones para dispositivos Android, iOS, Windows Phone 8 y Windows 8. Por lo tanto, el cliente móvil se proporciona en versiones independientes para Android, iOS, Windows Phone 8 y Windows 8.
 
-Los clientes móviles de Android, iOS, y Windows Phone 8 están creados en el {{site.data.keys.product }}. Para obtener más información sobre cómo configurar el componente de lado del servidor de Application Center en varios servidores de aplicaciones de Java una vez que el producto haya instalado y creado aplicaciones de {{site.data.keys.product_adj }} para el cliente de Application Center, consulte [Configuración de Application Center tras la instalación](../installation-configuration/production/appcenter).
+Los clientes móviles de Android, iOS, y Windows Phone 8 están creados en el {{ site.data.keys.product }}. Para obtener más información sobre cómo configurar el componente de lado del servidor de Application Center en varios servidores de aplicaciones de Java una vez que el producto haya instalado y creado aplicaciones de {{ site.data.keys.product_adj }} para el cliente de Application Center, consulte [Configuración de Application Center tras la instalación](../installation-configuration/production/appcenter).
 
 ## Información preliminar
 {: #preliminary-information }
-Para utilizar Application Center, debe configurar valores de seguridad, iniciar el servidor de aplicaciones web donde esté instalado {{site.data.keys.product }}, iniciar la consola de Application Center e iniciar sesión.
+Para utilizar Application Center, debe configurar valores de seguridad, iniciar el servidor de aplicaciones web donde esté instalado {{ site.data.keys.product }}, iniciar la consola de Application Center e iniciar sesión.
 
-Cuando instale {{site.data.keys.product }}, se instalará automáticamente Application Center en el servidor de aplicaciones especificado.
+Cuando instale {{ site.data.keys.product }}, se instalará automáticamente Application Center en el servidor de aplicaciones especificado.
 
 Si instala el Application Center en el perfil de Liberty de WebSphere Application Server, el servidor se creará en **installation-directory/server**.
 

@@ -6,7 +6,7 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Los arreglos temporales proporcionan parches y actualizaciones para corregir problemas y mantener {{site.data.keys.product_full }} actualizado para nuevos releases de los sistemas operativos móviles.
+Los arreglos temporales proporcionan parches y actualizaciones para corregir problemas y mantener {{ site.data.keys.product_full }} actualizado para nuevos releases de los sistemas operativos móviles.
 
 Los arreglos temporales son acumulativos.
 Cuando descarga los últimos arreglos temporales de la v8.0, obtiene todos los arreglos de anteriores arreglos temporales.
@@ -16,7 +16,7 @@ Descargue e instale el arreglo temporal más reciente para obtener todos los arr
 Si no instalar los últimos arreglos, podría no obtener todos los arreglos que se describen aquí.
 
 
-> Para obtener una lista de releases de iFix de {{site.data.keys.product }} 8.0, [consulte estas entradas del blog]({{site.baseurl}}/blog/tag/iFix_8.0/).  
+> Para obtener una lista de releases de iFix de {{ site.data.keys.product }} 8.0, [consulte estas entradas del blog]({{site.baseurl}}/blog/tag/iFix_8.0/).  
 
 Donde aparezca una lista de números de APAR, podrá confirmar que un arreglo temporal tiene dicha característica buscando en el archivo README del arreglo temporal dicho número de APAR.
 
@@ -25,16 +25,16 @@ Donde aparezca una lista de números de APAR, podrá confirmar que un arreglo te
 {: #licensing }
 #### Gestión de licencias de PVU
 {: #pvu-licensing }
-Ahora hay disponible una nueva oferta, {{site.data.keys.product }} Extension V8.0.0, a través de la gestión de licencias de unidades de valor de procesador (PVU).
-Para obtener más información sobre la gestión de licencias PVU para {{site.data.keys.product }} Extension, consulte la [Gestión de licencias de {{site.data.keys.product_adj }}](../../licensing).
+Ahora hay disponible una nueva oferta, {{ site.data.keys.product }} Extension V8.0.0, a través de la gestión de licencias de unidades de valor de procesador (PVU).
+Para obtener más información sobre la gestión de licencias PVU para {{ site.data.keys.product }} Extension, consulte la [Gestión de licencias de {{ site.data.keys.product_adj }}](../../licensing).
 
 
 ### Aplicaciones Web
 {: #web-applications }
-#### Registro de aplicaciones web desde {{site.data.keys.mf_cli }} (APAR PI65327)
+#### Registro de aplicaciones web desde {{ site.data.keys.mf_cli }} (APAR PI65327)
 {: #registering-web-applications-from-the-mobilefirst-cli-apar-pi65327 }
-Ahora puede registrar aplicaciones web de cliente en {{site.data.keys.mf_server }} utilizando {{site.data.keys.mf_cli }} (mfpdev) como método alternativo al registro desde {{site.data.keys.mf_console }}.
-Para obtener más información, consulte Registro de aplicaciones web desde {{site.data.keys.mf_cli }}.
+Ahora puede registrar aplicaciones web de cliente en {{ site.data.keys.mf_server }} utilizando {{ site.data.keys.mf_cli }} (mfpdev) como método alternativo al registro desde {{ site.data.keys.mf_console }}.
+Para obtener más información, consulte Registro de aplicaciones web desde {{ site.data.keys.mf_cli }}.
 
 ### Aplicaciones Cordova
 {: #cordova-applications }
@@ -68,5 +68,11 @@ Se utiliza el directorio de trabajo si no se especifica.
 {: #adapters }
 #### Se han añadido los mandatos `mfpdev push` y `pull` para configuraciones de adaptador JavaScript y Java
 {: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
-Puede utilizar {{site.data.keys.mf_cli }} para hacer push a configuraciones de adaptador JavaScript y Java para {{site.data.keys.mf_server }} y hacer pull a configuraciones de adaptador de {{site.data.keys.mf_server }}.
+Puede utilizar {{ site.data.keys.mf_cli }} para hacer push a configuraciones de adaptador JavaScript y Java para {{ site.data.keys.mf_server }} y hacer pull a configuraciones de adaptador de {{ site.data.keys.mf_server }}.
+
+
+### Application Center
+{: #application-center}
+
+El cliente del Application Center basado en Cordova está ahora disponible para iOS y Android.
 
