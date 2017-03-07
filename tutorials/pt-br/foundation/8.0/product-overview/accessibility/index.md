@@ -10,13 +10,13 @@ Os recursos de acessibilidade ajudam os usuários que têm uma deficiência, com
 
 ### Recursos de Acessibilidade
 {: #accessibility-features }
-{{site.data.keys.product_full }}
+{{ site.data.keys.product_full }}
 inclui os principais recursos de acessibilidade a seguir:
 
 * Operação somente por teclado
 * Operações que suportam o uso de um leitor de tela
 
-{{site.data.keys.product }}
+{{ site.data.keys.product }}
 usa o W3C Standard, [WAI-ARIA
 1.0](http://www.w3.org/TR/wai-aria/) mais recente para garantir a conformidade com a
 [US
@@ -33,20 +33,20 @@ Esse produto usa as chaves de navegação padrão
 {: #interface-informaton }
 As
 interfaces com o usuário do
-{{site.data.keys.product }}
+{{ site.data.keys.product }}
 não possuem conteúdo que é atualizado de 2 a 55 vezes por segundo.
 
 É possível usar um leitor de tela com um sintetizador de voz digital para ouvir o que é exibido em sua tela. Consulte a documentação sobre tecnologia assistiva para obter detalhes sobre como usá-la com este produto e sua documentação.
 
-### {{site.data.keys.mf_cli }}
+### {{ site.data.keys.mf_cli }}
 {: #mobilefirst-cli }
-Por padrão, as mensagens de status que são exibidas pelo {{site.data.keys.mf_cli }} usam
-várias cores para indicar sucesso, erros e avisos. É possível usar a opção `--no-color` em qualquer comando {{site.data.keys.mf_cli }} para suprimir o uso dessas cores para aquele comando. Quando `--no-color` é especificado, a saída é exibida nas cores de exibição do texto configuradas para o console do sistema operacional.
+Por padrão, as mensagens de status que são exibidas pelo {{ site.data.keys.mf_cli }} usam
+várias cores para indicar sucesso, erros e avisos. É possível usar a opção `--no-color` em qualquer comando {{ site.data.keys.mf_cli }} para suprimir o uso dessas cores para aquele comando. Quando `--no-color` é especificado, a saída é exibida nas cores de exibição do texto configuradas para o console do sistema operacional.
 
 ### interface da Web 
 {: #web-interface }
 As interfaces com o usuário da web do
-{{site.data.keys.product }}
+{{ site.data.keys.product }}
 dependem das folhas de estilo em cascata para renderizar o conteúdo
 corretamente e fornecem uma experiência utilizável. O aplicativo
 fornece uma forma equivalente para usuários de baixa visão usarem
@@ -55,21 +55,21 @@ alto contraste. É possível controlar o tamanho de fonte usando as configuraç�
 web.
 
 É possível navegar pelos diferentes ambientes do
-{{site.data.keys.product_adj }}
+{{ site.data.keys.product_adj }}
 e sua documentação usando os atalhos de teclado. O Eclipse
 fornece os recursos de acessibilidade para os seus ambientes
-de desenvolvimento. Navegadores da Internet também fornecem recursos de acessibilidade para aplicativos da web, como o {{site.data.keys.mf_console }}, o {{site.data.keys.mf_analytics_console }}, o console do {{site.data.keys.product }} Application Center e o cliente móvel do {{site.data.keys.product }} Application Center.
+de desenvolvimento. Navegadores da Internet também fornecem recursos de acessibilidade para aplicativos da web, como o {{ site.data.keys.mf_console }}, o {{ site.data.keys.mf_analytics_console }}, o console do {{ site.data.keys.product }} Application Center e o cliente móvel do {{ site.data.keys.product }} Application Center.
 
 A
 interface com o usuário da web do
-{{site.data.keys.product }}
+{{ site.data.keys.product }}
 inclui referências de navegação WAI-ARIA que você pode
 usar para navegar rapidamente para as áreas funcionais no
 aplicativo.
 
 ### Instalação e configuração
 {: #installation-and-configuration }
-Há duas maneiras de instalar e configurar o {{site.data.keys.product }}:
+Há duas maneiras de instalar e configurar o {{ site.data.keys.product }}:
 pela interface gráfica com o usuário (GUI) ou pela linha de comandos.
 
 Embora a interface gráfica com o usuário (IBM Installation Manager no modo do assistente ou a Ferramenta de
@@ -82,14 +82,14 @@ Os tópicos a seguir fornecem informações sobre como a instalação e a config
 podem ser feitas sem a GUI:
 
 * Trabalhando com arquivos de resposta de amostra para o IBM Installation Manager
-Este método permite a instalação e a configuração silenciosas do {{site.data.keys.mf_server }} e do Application Center. Você tem a possibilidade de não instalar o Application Center usando o arquivo de resposta denominado install-no-appcenter.xml. Você pode, então, usar a tarefa Ant
+Este método permite a instalação e a configuração silenciosas do {{ site.data.keys.mf_server }} e do Application Center. Você tem a possibilidade de não instalar o Application Center usando o arquivo de resposta denominado install-no-appcenter.xml. Você pode, então, usar a tarefa Ant
 para instalá-lo posteriormente. Consulte Instalando o Application Center com tarefas Ant. Nesse caso, a instalação e o upgrade do Application Center podem ser feitos de forma independente.
 * Instalando com tarefas Ant
 * Instalando o Application Center com tarefas Ant
 
 ### Software do fornecedor
 {: #vendor-software }
-{{site.data.keys.product }} inclui certos produtos de software de fornecedor que não estão cobertos
+{{ site.data.keys.product }} inclui certos produtos de software de fornecedor que não estão cobertos
 no contrato de licença da IBM. A IBM não representa nenhum recurso de acessibilidade
 desses produtos. Entre em contato com o fornecedor para obter informações de acessibilidade sobre seus produtos.
 
