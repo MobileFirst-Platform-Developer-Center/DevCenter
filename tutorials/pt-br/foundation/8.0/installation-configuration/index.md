@@ -1,7 +1,7 @@
 ---
 layout: tutorial
-title: Instalação e configuração
-weight: 2
+title: Instalação e Configuração
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visão Geral
@@ -10,7 +10,7 @@ O {{ site.data.keys.product_full }} fornece ferramentas de desenvolvimento e com
 
 ### Instalando um ambiente de desenvolvimento
 {: #installing-a-development-environment }
-Se você desenvolver o lado do cliente ou o lado do servidor de aplicativos móveis, use o serviço [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) ou [{{ site.data.keys.mf_bm }}](../bluemix/using-mobile-foundation) para iniciar. 
+Se você desenvolver o lado do cliente ou o lado do servidor de aplicativos móveis, use o serviço [{{ site.data.keys.mf_dev_kit }}](development/mobilefirst/) ou [{{ site.data.keys.mf_bm }}](../bluemix/using-mobile-foundation) para iniciar.
 
 * [Configurar o ambiente de desenvolvimento do MobileFirst](development/mobilefirst/)
 * [Configurar o ambiente de desenvolvimento do Cordova](development/cordova)

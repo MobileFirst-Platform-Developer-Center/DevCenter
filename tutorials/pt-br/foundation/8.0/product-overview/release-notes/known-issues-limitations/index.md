@@ -10,7 +10,7 @@ Clique no link a seguir para receber uma lista de documentos gerada dinamicament
 
 ## Limitações conhecidas
 {: #known-limitations }
-Nesta documentação, é possível localizar a descrição das limitações conhecidas do {{site.data.keys.product_full }} em locais diferentes:
+Nesta documentação, é possível localizar a descrição das limitações conhecidas do {{ site.data.keys.product_full }} em locais diferentes:
 
 * Quando a limitação conhecida se aplicar a um recurso específico, é possível
 localizar sua descrição no tópico que explica esse recurso específico. É possível então identificar imediatamente como ela afetará o recurso.
@@ -23,14 +23,14 @@ aqui.
 Se você estiver desenvolvendo aplicativos globalizados, as restrições
 a seguir se aplicam:
 
-* Tradução parcial: parte do produto {{site.data.keys.product }} v8.0, incluindo sua documentação, está traduzida para os idiomas a seguir: chinês simplificado, chinês tradicional, francês, alemão, italiano, japonês, coreano, português (do Brasil), russo e espanhol. O texto voltado ao usuário é traduzido.
+* Tradução parcial: parte do produto {{ site.data.keys.product }} v8.0, incluindo sua documentação, está traduzida para os idiomas a seguir: chinês simplificado, chinês tradicional, francês, alemão, italiano, japonês, coreano, português (do Brasil), russo e espanhol. O texto voltado ao usuário é traduzido.
 * Suporte bidirecional: Os aplicativos que são gerados pelo
-{{site.data.keys.product }}
+{{ site.data.keys.product }}
 não são ativados como totalmente bidirecionais. O espelhamento dos elementos da interface gráfica com o usuário (GUI) e o controle da direção do texto
 não são fornecidos por padrão. No entanto, não existe nenhuma
 dependência permanente dos aplicativos gerados nessa limitação. Os desenvolvedores podem alcançar a conformidade bidirecional integral através de ajustes manuais no código gerado.
 
-Embora a tradução para o hebraico seja fornecida para a funcionalidade principal do {{site.data.keys.product }},
+Embora a tradução para o hebraico seja fornecida para a funcionalidade principal do {{ site.data.keys.product }},
 alguns elementos da GUI não são espealhados.
 
 * Restrições sobre nomes de adaptadores: os nomes dos adaptadores devem ser nomes válidos para criar um nome de classe Java. Além disso, eles devem ser compostos apenas dos seguintes
@@ -43,27 +43,27 @@ caracteres:
 Multilíngue não são suportados.
 * Sensibilidade do idioma e formulários de normalização Unicode: nos casos de uso a seguir, as consultas não consideram a sensibilidade do idioma, como correspondência normal, sem distinção de acentuação, sem distinção entre maiúsculas e minúsculas e mapeamento de um para dois para a função de procura, para executar corretamente em diferentes idiomas e a procura em dados não usa Normalization Form C (NFC).
     * No
-{{site.data.keys.mf_analytics_console }},
+{{ site.data.keys.mf_analytics_console }},
 quando você cria um filtro customizado para um gráfico customizado. No entanto, nesse console, a propriedade de mensagem usa
 Normalization Form C (NFC) e considera a sensibilidade ao idioma.
-    * No {{site.data.keys.mf_console }}, ao procurar um aplicativo na página Procurar aplicativos, um adaptador na página Procurar adaptadores, uma tag na página Push ou um dispositivo na página Dispositivos.
+    * No {{ site.data.keys.mf_console }}, ao procurar um aplicativo na página Procurar aplicativos, um adaptador na página Procurar adaptadores, uma tag na página Push ou um dispositivo na página Dispositivos.
     * Nas funções Localizar para a API JSONStore.
 
-### {{site.data.keys.mf_analytics }}
+### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
 O
-{{site.data.keys.mf_analytics }}
+{{ site.data.keys.mf_analytics }}
 possui as limitações a seguir:
 
 * Análise de dados de segurança (dados em solicitações falhando nas verificações de segurança) não é suportada.
-* No {{site.data.keys.mf_analytics_console }}, o formato dos números não segue as regras International Components for Unicode (ICU).
-* No {{site.data.keys.mf_analytics_console }}, os números não usam o script de número preferencial do usuário.
-* No {{site.data.keys.mf_analytics_console }}, o formato para datas, horários e números são exibidos de acordo com a configuração do idioma do sistema operacional em vez de no código de idioma do Microsoft Internet Explorer.
+* No {{ site.data.keys.mf_analytics_console }}, o formato dos números não segue as regras International Components for Unicode (ICU).
+* No {{ site.data.keys.mf_analytics_console }}, os números não usam o script de número preferencial do usuário.
+* No {{ site.data.keys.mf_analytics_console }}, o formato para datas, horários e números são exibidos de acordo com a configuração do idioma do sistema operacional em vez de no código de idioma do Microsoft Internet Explorer.
 * Ao criar um filtro customizado para um gráfico customizado, os dados
 numéricos devem estar em numerais de base 10, ocidentais ou europeus, como 0,
 1, 2, 3, 4, 5, 6, 7, 8, 9.
-* Ao criar um alerta na página Gerenciamento de alerta do {{site.data.keys.mf_analytics_console }}, os dados numéricos devem estar em numerais base 10, ocidentais ou europeus, como 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
-* A página Analytics do {{site.data.keys.mf_console }} suporta os navegadores a seguir:
+* Ao criar um alerta na página Gerenciamento de alerta do {{ site.data.keys.mf_analytics_console }}, os dados numéricos devem estar em numerais base 10, ocidentais ou europeus, como 0, 1, 2, 3, 4, 5, 6, 7, 8, 9.
+* A página Analytics do {{ site.data.keys.mf_console }} suporta os navegadores a seguir:
     * Microsoft Internet Explorer versão 10 ou posterior
     * Mozilla Firefox ESR ou posterior
     * Apple Safari on iOS versão 7.0 ou posterior
@@ -71,17 +71,17 @@ numéricos devem estar em numerais de base 10, ocidentais ou europeus, como 0,
 * O SDK do cliente Analytics não está disponível para o Windows.
 
 
-### Cliente móvel do {{site.data.keys.mf_app_center_full }}
+### Cliente móvel do {{ site.data.keys.mf_app_center_full }}
 {: #ibm-mobilefirst-foundation-application-center-mobile-client }
 O cliente móvel
 do Application Center segue as convenções culturais do dispositivo em
 execução, como formatação de data. Ele nem sempre segue as
 regras estritas do International Components for Unicode (ICU).
 
-### {{site.data.keys.mf_console_full }}
+### {{ site.data.keys.mf_console_full }}
 {: #ibm-mobilefirst-operations-console }
 O
-{{site.data.keys.mf_console }}
+{{ site.data.keys.mf_console }}
 possui as limitações a seguir:
 
 * Fornece somente suporte parcial para linguagens bidirecionais.
@@ -97,9 +97,9 @@ da esquerda-à-direita.
 as regras de formatação do código de idioma. O console exibe números
 formatados, mas aceita como entrada somente números
 *brutos* (não formatados). Por exemplo: 1000, não 1 000 ou 1.000.
-* Os tempos de resposta na página Analytics do {{site.data.keys.mf_console }} depende de vários fatores, como hardware (RAM, CPUs), quantidade de dados de análise de dados acumulados e armazenamento em cluster do {{site.data.keys.mf_analytics }}. Considere
+* Os tempos de resposta na página Analytics do {{ site.data.keys.mf_console }} depende de vários fatores, como hardware (RAM, CPUs), quantidade de dados de análise de dados acumulados e armazenamento em cluster do {{ site.data.keys.mf_analytics }}. Considere
 testar a carga antes de integrar o
-{{site.data.keys.mf_analytics }}
+{{ site.data.keys.mf_analytics }}
 na produção.
 
 ### Server Configuration Tool
@@ -133,20 +133,20 @@ tela.
 
 ### Adaptadores e dependências de terceiros
 {: #adapters-and-third-party-dependencies }
-Os problemas conhecidos a seguir pertencem às interações entre dependências e classes no servidor de aplicativos, incluindo a biblioteca compartilhada do {{site.data.keys.product_adj }}.
+Os problemas conhecidos a seguir pertencem às interações entre dependências e classes no servidor de aplicativos, incluindo a biblioteca compartilhada do {{ site.data.keys.product_adj }}.
 
 #### Apache HttpClient
 {: #apache-httpclient }
-{{site.data.keys.product }} usa Apache HttpClient internamente. Se você incluir uma instância do Apache HttpClient como uma dependência em um adaptador Java, as APIs a seguir não funcionarão corretamente no adaptador: `AdaptersAPI.executeAdapterRequest, AdaptersAPI.getResponseAsJSON` e `AdaptersAPI.createJavascriptAdapterRequest`. O motivo é que as APIs contêm tipos Apache HttpClient em sua assinatura. A solução alternativa é usar o Apache HttpClient interno, mas mudar o escopo de dependência no **pom.xml** fornecido.
+{{ site.data.keys.product }} usa Apache HttpClient internamente. Se você incluir uma instância do Apache HttpClient como uma dependência em um adaptador Java, as APIs a seguir não funcionarão corretamente no adaptador: `AdaptersAPI.executeAdapterRequest, AdaptersAPI.getResponseAsJSON` e `AdaptersAPI.createJavascriptAdapterRequest`. O motivo é que as APIs contêm tipos Apache HttpClient em sua assinatura. A solução alternativa é usar o Apache HttpClient interno, mas mudar o escopo de dependência no **pom.xml** fornecido.
 
 #### Biblioteca criptográfica Bouncy Castle
 {: #bouncy-castle-cryptographic-library }
-{{site.data.keys.product }} usa Bouncy Castle. Talvez
-seja possível usar outra versão de Bouncy Castle no adaptador, mas as consequências precisam ser testadas cuidadosamente: às vezes o código {{site.data.keys.product_adj }} Bouncy Castle preenche certos campos Singleton estáticos das classes do pacote `javax.security` e pode impedir a versão do Bouncy Castle dentro de um adaptador de usar recursos que contam com esses campos.
+{{ site.data.keys.product }} usa Bouncy Castle. Talvez
+seja possível usar outra versão de Bouncy Castle no adaptador, mas as consequências precisam ser testadas cuidadosamente: às vezes o código {{ site.data.keys.product_adj }} Bouncy Castle preenche certos campos Singleton estáticos das classes do pacote `javax.security` e pode impedir a versão do Bouncy Castle dentro de um adaptador de usar recursos que contam com esses campos.
 
 #### Implementação de arquivos JAR do Apache CXF
 {: #apache-cxf-implementaton-of-jar-files }
-CXF é usado na implementação {{site.data.keys.product_adj }} JAX-RS, evitando assim que você inclua arquivos JAR Apache CXF em um adaptador.
+CXF é usado na implementação {{ site.data.keys.product_adj }} JAX-RS, evitando assim que você inclua arquivos JAR Apache CXF em um adaptador.
 
 ### Cliente Móvel do Application Center: Problemas de Atualização no
 Android 4.0.x
@@ -173,9 +173,9 @@ Phone. Atualmente, o Application Center não suporta a distribuição de arquivo
 
 O Application Center suporta somente a distribuição de arquivos do pacote de aplicativos (.appx) para o Microsoft Windows Store (aplicativos para desktop).
 
-### Administrando aplicativos {{site.data.keys.product_adj }} por meio de Ant ou da linha de comandos
+### Administrando aplicativos {{ site.data.keys.product_adj }} por meio de Ant ou da linha de comandos
 {: #administering-mobilefirst-applications-through-ant-or-through-the-command-line }
-A ferramenta **mfpadm** não estará disponível se você fizer download e instalar somente {{site.data.keys.mf_dev_kit_full }}. A ferramenta mfpadm é instalada com o {{site.data.keys.mf_server }} com o instalador.
+A ferramenta **mfpadm** não estará disponível se você fizer download e instalar somente {{ site.data.keys.mf_dev_kit_full }}. A ferramenta mfpadm é instalada com o {{ site.data.keys.mf_server }} com o instalador.
 
 ### Clientes confidenciais
 {: #confidential-clients }
@@ -187,18 +187,18 @@ Atualização Direta no Windows não é suportada na V8.0.0.
 
 ### Limitações de Recurso FIPS 140-2
 {: #fips-104-2-feature-limitations }
-As seguintes limitações conhecidas se aplicam ao usar o recurso FIPS 140-2 no {{site.data.keys.product }}:
+As seguintes limitações conhecidas se aplicam ao usar o recurso FIPS 140-2 no {{ site.data.keys.product }}:
 * Este modo validado pelo FIPS 140-2 se aplica somente à proteção (criptografia) de dados locais que são armazenados pelo recurso JSONStore
 e à proteção de comunicações HTTPS entre o cliente do
-{{site.data.keys.product_adj }} e o
-{{site.data.keys.mf_server }}.
+{{ site.data.keys.product_adj }} e o
+{{ site.data.keys.mf_server }}.
     * Para comunicações HTTPS, somente as comunicações entre o cliente do
-{{site.data.keys.product_adj }} e o
-{{site.data.keys.mf_server }} usam as bibliotecas FIPS 140-2
+{{ site.data.keys.product_adj }} e o
+{{ site.data.keys.mf_server }} usam as bibliotecas FIPS 140-2
 no cliente. Conexões diretas a outros servidores ou serviços não usam as bibliotecas FIPS 140-2.
 * Esse recurso é suportado apenas nas plataformas iOS e Android.
     * No Android, esse recurso é suportado apenas em dispositivos ou simuladores que usam as arquiteturas x86 ou armeabi. Ele não é suportado no Android usando as arquiteturas armv5 ou armv6. A razão é porque a biblioteca OpenSSL usada não obteve validação do FIPS 140-2 para armv5 ou armv6 no Android. O FIPS
-140-2 não é suportado na arquitetura de 64 bits, mesmo que a biblioteca do {{site.data.keys.product_adj }}
+140-2 não é suportado na arquitetura de 64 bits, mesmo que a biblioteca do {{ site.data.keys.product_adj }}
 suporte a arquitetura de 64 bits. FIPS 140-2 pode ser executado em dispositivos de 64 bits, caso o projeto inclua somente bibliotecas NDK nativas de 32 bits.
     * No iOS, ele é suportado nas arquiteturas i386, x86_64, armv7, armv7s e arm64.
 * Esse recurso funciona somente com aplicativos híbridos (não com aplicativos nativos).
@@ -209,9 +209,9 @@ FIPS 140-2.
 FIPS 140-2.
 * O cliente do Application Center não suporta o recurso FIPS 140-2.
 
-### A instalação de um fix pack ou de uma correção temporária no Application Center ou no {{site.data.keys.mf_server }}
+### A instalação de um fix pack ou de uma correção temporária no Application Center ou no {{ site.data.keys.mf_server }}
 {: #installation-of-a-fix-pack-or-interim-fix-to-the-application-center-or-the-mobilefirst-server }
-Ao aplicar um fix pack ou uma correção temporária ao Application Center ou ao {{site.data.keys.mf_server }}, operações manuais são necessárias e poderá ser necessário encerrar seus aplicativos por algum tempo.
+Ao aplicar um fix pack ou uma correção temporária ao Application Center ou ao {{ site.data.keys.mf_server }}, operações manuais são necessárias e poderá ser necessário encerrar seus aplicativos por algum tempo.
 
 ### Arquiteturas suportadas
 por JSONStore
@@ -250,10 +250,10 @@ Para ambientes Windows Phone 8.1, a arquitetura x64 não é suportada.
 
 ### Aplicativos Microsoft Windows 10 UWP
 {: #microsoft-windows-10-uwp-apps }
-O recurso de autenticidade do aplicativo não funciona nos aplicativos Windows 10 UWP do {{site.data.keys.product_adj }} quando o {{site.data.keys.product_adj }} SDK é instalado por meio do pacote NuGet. Como uma solução alternativa,
+O recurso de autenticidade do aplicativo não funciona nos aplicativos Windows 10 UWP do {{ site.data.keys.product_adj }} quando o {{ site.data.keys.product_adj }} SDK é instalado por meio do pacote NuGet. Como uma solução alternativa,
 os desenvolvedores podem fazer download do pacote NuGet e incluir as
 referências de SDK do
-{{site.data.keys.product_adj }}
+{{ site.data.keys.product_adj }}
 manualmente.
 
 ### Os projetos aninhados podem resultar em resultados
@@ -261,12 +261,12 @@ imprevisíveis com a CLI
 {: #nested-projects-can-result-in-unpredictable-results-with-the-cli }
 Não aninhe projetos dentro de um
 outro ao usar o
-{{site.data.keys.mf_cli }}. Caso contrário, o projeto em que se atua pode não ser aquele que você
+{{ site.data.keys.mf_cli }}. Caso contrário, o projeto em que se atua pode não ser aquele que você
 espera.
 
-### Visualizando recursos da web do Cordova com o {{site.data.keys.mf_mbs }}
+### Visualizando recursos da web do Cordova com o {{ site.data.keys.mf_mbs }}
 {: #previewing-cordova-web-resources-with-the-mobile-browser-simulator }
-É possível visualizar seu recursos da web com o {{site.data.keys.mf_mbs }}, mas nem todas as APIs JavaScript do {{site.data.keys.product_adj }} são suportadas pelo simulador. Em particular, o protocolo OAuth não é
+É possível visualizar seu recursos da web com o {{ site.data.keys.mf_mbs }}, mas nem todas as APIs JavaScript do {{ site.data.keys.product_adj }} são suportadas pelo simulador. Em particular, o protocolo OAuth não é
 totalmente suportado. No entanto, é possível testar chamadas para
 adaptadores com `WLResourceRequest`.
 
@@ -277,9 +277,9 @@ O teste do recurso de autenticidade do aplicativo estendido
 necessita de um dispositivo iOS físico, pois um IPA não pode ser
 instalado em um simulador de iOS.
 
-### Suporte de Oracle 12c pelo {{site.data.keys.mf_server }}
+### Suporte de Oracle 12c pelo {{ site.data.keys.mf_server }}
 {: #support-of-oracle-12c-by-mobilefirst-server }
-As ferramentas de instalação do {{site.data.keys.mf_server }} (Installation Manager, Server Configuration Tool e as tarefas Ant) suportam a instalação com o Oracle 12c como um banco de dados.
+As ferramentas de instalação do {{ site.data.keys.mf_server }} (Installation Manager, Server Configuration Tool e as tarefas Ant) suportam a instalação com o Oracle 12c como um banco de dados.
 
 Os usuários e tabelas podem ser criados pelas ferramentas de instalação, mas o banco de dados, ou bancos de dados, devem existir antes de você executar as ferramentas de instalação.
 
@@ -302,7 +302,7 @@ A atualização falhará se você usar o comando `cordova platform update ios`.
 {: #web-applications }
 Aplicativos da web têm as limitações a seguir:
 - {: #web_app_limit_ms_ie_n_edge }
-No Microsoft Internet Explorer (IE) e no Microsoft Edge, mensagens de aplicativos administrativos e mensagens do SDK da web do cliente são exibidas de acordo com a configuração do formato da região do sistema operacional, não de acordo com as preferências de idioma configuradas do navegador ou do sistema operacional. Consulte também [Definindo mensagens do administrador em vários idiomas](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages).
+No Microsoft Internet Explorer (IE) e no Microsoft Edge, mensagens de aplicativos administrativos e mensagens do SDK da web do cliente são exibidas de acordo com a preferência de formato da região do sistema operacional e não de acordo com as preferências de idioma de exibição configuradas para o navegador ou para o sistema operacional. Consulte também [Definindo mensagens do administrador em vários idiomas](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages).
 
 ### Suporte do WKWebView para aplicativos iOS Cordova
 {: #wkwebview-support-for-ios-cordova-applications }
@@ -356,4 +356,4 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 
 ### Endereço IPv6 bruto raw não suportado em aplicativos Android
 {: #raw-ipv6-address-not-supported-in-android-applications }
-Durante a configuração de **mfpclient.properties** para o seu aplicativo Android nativo, se seu {{site.data.keys.mf_server }} estiver em um host com endereço IPv6, então use um nome do host mapeado para o endereço IPV6 para configurar a propriedade **wlServerHost** em **mfpclient.properties**. Configurar a propriedade **wlServerHost** com endereço IPv6 bruto faz a tentativa do aplicativo para se conectar ao {{site.data.keys.mf_server }} falhar.
+Durante a configuração de **mfpclient.properties** para o seu aplicativo Android nativo, se seu {{ site.data.keys.mf_server }} estiver em um host com endereço IPv6, então use um nome do host mapeado para o endereço IPV6 para configurar a propriedade **wlServerHost** em **mfpclient.properties**. Configurar a propriedade **wlServerHost** com endereço IPv6 bruto faz a tentativa do aplicativo para se conectar ao {{ site.data.keys.mf_server }} falhar.

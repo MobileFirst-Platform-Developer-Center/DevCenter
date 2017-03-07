@@ -5,7 +5,7 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-Considere cuidadosamente como recursos e elementos de API removidos afetam seu ambiente do {{site.data.keys.product_full }}.
+Considere cuidadosamente como recursos e elementos de API removidos afetam seu ambiente do {{ site.data.keys.product_full }}.
 
 #### Ir para
 {: #jump-to }
@@ -15,7 +15,7 @@ Considere cuidadosamente como recursos e elementos de API removidos afetam seu a
 
 ## Recursos descontinuados e recursos que não estão incluídos na v8.0
 {: #dicontinued-features-and-features-that-are-not-included-in-v-80 }
-O {{site.data.keys.product }} v8.0 foi radicalmente simplificado em comparação à versão anterior. Como resultado dessa simplificação, alguns recursos que estavam disponíveis na v7.1 foram descontinuados na v8.0. Na maioria dos casos, uma maneira alternativa de implementar os
+O {{ site.data.keys.product }} v8.0 foi radicalmente simplificado em comparação à versão anterior. Como resultado dessa simplificação, alguns recursos que estavam disponíveis na v7.1 foram descontinuados na v8.0. Na maioria dos casos, uma maneira alternativa de implementar os
 recursos é sugerida. Esses recursos são marcados como descontinuados. Alguns outros recursos que existem na
 V7.1. não estão na v8.0, mas não como uma consequência do novo design da v8.0. Para distinguir esses recursos excluídos dos recursos que foram descontinuados a partir da v8.0, eles estão marcados como não na v8.0.
 
@@ -25,15 +25,15 @@ V7.1. não estão na v8.0, mas não como uma consequência do novo design da v8.
         <td>Status e caminho de substituição</td>
     </tr>
     <tr>
-        <td><p>O MobileFirst Studio foi substituído pelo plug-in do {{site.data.keys.mf_studio }} para Eclipse.</p></td>
-        <td><p>Substituído pelo plug-in do {{site.data.keys.mf_studio }} para Eclipse e com poderes conferidos por plug-ins do Eclipse padrão e baseados em comunidade. É possível desenvolver aplicativos híbridos diretamente com a CLI do Apache Cordova ou com um IDE ativado para Cordova, como Visual Studio Code, Eclipse, IntelliJ e outros. Para obter mais informações sobre como usar o Eclipse como um IDE ativado para Cordova, consulte <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">Plug-in do IBM {{site.data.keys.mf_studio }} para gerenciar projetos Cordova no Eclipse</a>.</p>
+        <td><p>O MobileFirst Studio foi substituído pelo plug-in do {{ site.data.keys.mf_studio }} para Eclipse.</p></td>
+        <td><p>Substituído pelo plug-in do {{ site.data.keys.mf_studio }} para Eclipse e com poderes conferidos por plug-ins do Eclipse padrão e baseados em comunidade. É possível desenvolver aplicativos híbridos diretamente com a CLI do Apache Cordova ou com um IDE ativado para Cordova, como Visual Studio Code, Eclipse, IntelliJ e outros. Para obter mais informações sobre como usar o Eclipse como um IDE ativado para Cordova, consulte <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">Plug-in do IBM {{ site.data.keys.mf_studio }} para gerenciar projetos Cordova no Eclipse</a>.</p>
 
         <p>É possível desenvolver adaptadores com Apache Maven ou um IDE ativado por maven, como Eclipse, IntelliJ e outros. Para obter mais informações sobre como desenvolver adaptadores, consulte a <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">categoria Adaptadores</a>. Para obter mais informações sobre como usar o Eclipse como um IDE ativado para Maven, leia o <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">tutorial Desenvolvendo adaptadores no Eclipse</a>.</p>
 
-        <p>Instale o {{site.data.keys.mf_dev_kit_full }} para testar adaptadores e aplicativos com o {{site.data.keys.mf_server }}. Também é possível acessar SDKs e ferramentas de desenvolvimento do
-{{site.data.keys.product_adj }},
+        <p>Instale o {{ site.data.keys.mf_dev_kit_full }} para testar adaptadores e aplicativos com o {{ site.data.keys.mf_server }}. Também é possível acessar SDKs e ferramentas de desenvolvimento do
+{{ site.data.keys.product_adj }},
 caso não queira fazer seu download a partir de repositórios baseados
-na Internet, como NPM, Maven, Cocoapod ou NuGet. Para obter mais informações sobre o {{site.data.keys.mf_dev_kit }}, consulte <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{site.data.keys.mf_dev_kit }}</a>.</p>
+na Internet, como NPM, Maven, Cocoapod ou NuGet. Para obter mais informações sobre o {{ site.data.keys.mf_dev_kit }}, consulte <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{ site.data.keys.mf_dev_kit }}</a>.</p>
         </td>
     </tr>
     <tr>
@@ -44,12 +44,12 @@ diretamente com Apache Cordova. Para obter mais informações sobre como substit
     </tr>
     <tr>
         <td><p>Sencha Touch não pode mais ser importado em projetos
-{{site.data.keys.product_adj }}
+{{ site.data.keys.product_adj }}
 para aplicativos híbridos.</p></td>
         <td><p>Descontinuado. Aplicativos híbridos
-{{site.data.keys.product_adj }}
+{{ site.data.keys.product_adj }}
 são desenvolvidos diretamente com Apache Cordova, e os recursos do
-{{site.data.keys.product_adj }}
+{{ site.data.keys.product_adj }}
 são fornecidos como plug-ins Cordova. Consulte a documentação do Sencha Touch para integrar o Sencha Touch e o Cordova.</p>
         </td>
     </tr>
@@ -68,7 +68,7 @@ verifica o Direct Update ao obter o token OAuth para uma sessão. Não é possí
     <tr>
         <td><p>Adaptadores com configuração
 dependente de sessão. Na V7.1.0, é possível configurar o
-{{site.data.keys.mf_server }}
+{{ site.data.keys.mf_server }}
 para trabalhar no modo independente de sessão (padrão) ou no modo
 dependente de sessão. A partir da v8.0, o modo dependente de sessão não é mais suportado. O servidor é inerentemente independente
 da sessão HTTP e nenhuma configuração relacionada é necessária.</p></td>
@@ -178,22 +178,22 @@ baseado em tag.</td>
         <td>Não na v8.0.</td>
     </tr>
     <tr>
-        <td>Cloudant usado como um banco de dados para o {{site.data.keys.mf_server }} não é suportado na v8.0.	</td>
+        <td>Cloudant usado como um banco de dados para o {{ site.data.keys.mf_server }} não é suportado na v8.0.	</td>
         <td>Não na v8.0.</td>
     </tr>
     <tr>
-        <td>Localização geográfica: o suporte à localização geográfica foi descontinuada no {{site.data.keys.product }} v8.0. A API REST para indicadores e mediadores foi descontinuada. As APIs WL.Geo e WL.Device do lado do cliente e do lado do servidor foram descontinuadas.	</td>
+        <td>Localização geográfica: o suporte à localização geográfica foi descontinuada no {{ site.data.keys.product }} v8.0. A API REST para indicadores e mediadores foi descontinuada. As APIs WL.Geo e WL.Device do lado do cliente e do lado do servidor foram descontinuadas.	</td>
         <td>Descontinuado. Use a API do dispositivo nativo ou plug-ins
 Cordova de terceiros para localização geográfica.</td>
     </tr>
     <tr>
         <td>O recurso
-{{site.data.keys.product_adj }}
+{{ site.data.keys.product_adj }}
 Data Proxy foi descontinuado. As APIs IMFData e CloudantToolkit do Cloudant também foram descontinuadas.	</td>
         <td>Descontinuado. Para obter mais informações sobre como substituir as APIs IMFData e CloudantToolkit em seus aplicativos, consulte Migrando aplicativos armazenando dados móveis no Cloudant com IMFData ou com o Cloudant SDK.</td>
     </tr>
     <tr>
-        <td>O IBM Tealeaf SDK não é mais empacotado com o {{site.data.keys.product }}.	</td>
+        <td>O IBM Tealeaf SDK não é mais empacotado com o {{ site.data.keys.product }}.	</td>
         <td>Descontinuado. Use IBM Tealeaf SDK. Para obter mais
 informações, consulte
 <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/AndroidGuide1010/CFs/TLAnddLggFrwkInstandImpl/TealeafAndroidLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-1-0&lang=en">Instalação
@@ -203,13 +203,13 @@ e implementação Tealeaf iOS Logging Framework</a> na documentação
 do IBM Tealeaf Customer Experience.</td>
     </tr>
     <tr>
-        <td>{{site.data.keys.mf_test_workbench_full }}
+        <td>{{ site.data.keys.mf_test_workbench_full }}
 não é empacotado com
-{{site.data.keys.product }}</td>
+{{ site.data.keys.product }}</td>
         <td>Descontinuado.</td>
     </tr>
     <tr>
-        <td>BlackBerry, Adobe AIR, Windows Silverlight não são suportados pelo {{site.data.keys.product }} v8.0. Nenhum SDK é fornecido para essas plataformas.	</td>
+        <td>BlackBerry, Adobe AIR, Windows Silverlight não são suportados pelo {{ site.data.keys.product }} v8.0. Nenhum SDK é fornecido para essas plataformas.	</td>
         <td>Descontinuado.</td>
     </tr>
 </table>
@@ -217,13 +217,13 @@ não é empacotado com
 ## Mudanças de API do lado do servidor
 {: server-side-api-changes }
 Para migrar o lado do servidor do aplicativo
-{{site.data.keys.product_adj }},
+{{ site.data.keys.product_adj }},
 leve em conta as mudanças nas APIs.  
 As tabelas a seguir listam os elementos de API do lado do servidor descontinuados na v8.0 e os caminhos de migração sugeridos. Para obter mais informações sobre como migrar o lado do servidor de seu aplicativo, 
 
 ### Elementos da API de JavaScript descontinuados na v8.0
 {: #javascript-api-elements-discontinued-v-v-80 }
-#### Security
+#### Segurança
 {: #security }
 
 | Elemento da API                         | Caminho de substituição                               |
@@ -267,7 +267,7 @@ As tabelas a seguir listam os elementos de API do lado do servidor descontinuado
 
 ### Elementos de Java API descontinuados na v8.0
 {: #java-api-elements-discontinued-in-v-80 }
-#### Security
+#### Segurança
 {: #security-java }
 
 | Elemento da API                                | Caminho de substituição                               |
@@ -304,14 +304,14 @@ eventSource, String userId)` | Para migrar de notificações baseadas na origem 
 `com.worklight.wink.extensions` | Use a classe `MFPJAXRSApplication` no pacote
 `com.ibm.mfp.adapter.api`. |
 | Interface `WLServerAPI` no pacote
-`com.worklight.adapters.rest.api` | Use anotação JAX-RS `Context` para acessar diretamente as interfaces da API {{site.data.keys.product_adj }}. |
+`com.worklight.adapters.rest.api` | Use anotação JAX-RS `Context` para acessar diretamente as interfaces da API {{ site.data.keys.product_adj }}. |
 | Classe `WLServerAPIProvider` no pacote
-`com.worklight.adapters.rest.api` | Use anotação JAX-RS `Context` para acessar diretamente as interfaces da API {{site.data.keys.product_adj }}. | 
+`com.worklight.adapters.rest.api` | Use anotação JAX-RS `Context` para acessar diretamente as interfaces da API {{ site.data.keys.product_adj }}. | 
 
 ## Mudanças de API do lado do cliente
 {: #client-side-api-changes }
 As seguintes mudanças nas APIs são relevantes para migrar seu aplicativo cliente
-{{site.data.keys.product_adj }}.  
+{{ site.data.keys.product_adj }}.  
 As tabelas a seguir listam os elementos de API do lado do cliente descontinuados na V8.0.0 e caminhos de migração sugeridos.
 
 ### APIs de JavaScript
@@ -321,14 +321,14 @@ Estas APIs de JavaScript que afetam a interface com o usuário não são mais su
 | Elemento da API           | Caminho de Migração                           |
 |-----------------------|------------------------------------------|
 | `WL.BusyIndicator`, `WL.OptionsMenu`, `WL.TabBar`, `WL.TabBarItem` | Use plug-ins Cordova ou elementos HTML 5. |
-| `WL.App.close` | Manipule esse evento fora do {{site.data.keys.product_adj }}. |
+| `WL.App.close` | Manipule esse evento fora do {{ site.data.keys.product_adj }}. |
 | `WL.App.copyToClipboard()` | Use plug-ins Cordova que fornecem essa funcionalidade. |
 | `WL.App.openUrl(url, target, options)` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, o plug-in **InAppBrowser** do Cordova fornece esse recurso. |
 | `WL.App.overrideBackButton(callback)`, `WL.App.resetBackButton()` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, o plug-in **backbutton** do Cordova fornece esse recurso. |
 | `WL.App.getDeviceLanguage()` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** Para sua informação, o plug-in **cordova-plugin-globalization** do Cordova fornece esse recurso. | 
 | `WL.App.getDeviceLocale()` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** Para sua informação, o plug-in **cordova-plugin-globalization** do Cordova fornece esse recurso. |
 | `WL.App.BackgroundHandler` | Para executar uma função de manipulador customizada, use o listener de eventos de pausa Cordova padrão. Use um plug-in Cordova que forneça privacidade e impeça sistemas e usuários do iOS e Android de fazerem capturas instantâneas ou capturas de tela. Para obter mais informações, consulte a descrição do **[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)**. |
-| `WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` | As funções foram fornecidas para suportar a plataforma Adobe AIR, que não é suportado pelo {{site.data.keys.product }} V8.0.0. |
+| `WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` | As funções foram fornecidas para suportar a plataforma Adobe AIR, que não é suportado pelo {{ site.data.keys.product }} V8.0.0. |
 | `WL.Toast.show(string)` | Use plug-ins Cordova para Toast. |
 
 Este conjunto de APIs não é mais suportado na v8.0.
@@ -366,12 +366,12 @@ options)` | Use `MFPPush.registerDevice(org.json.JSONObject options, MFPPushResp
 | `WL.Client.isUserAuthenticated(realm)` | Nenhuma substituição |
 | `WLUserAuth.deleteCertificate(provisioningEntity)` | Nenhuma substituição | 
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | Nenhuma substituição |
-| `WL.Client.createChallengeHandler(realmName)` | Para criar um manipulador de desafios para manipulação de desafios de gateway customizados, use `WL.Client.createGatewayChallengeHandler(gatewayName)`. Para criar um manipulador de desafios para manipular desafios de verificação de segurança do {{site.data.keys.product_adj }}, use `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. | 
+| `WL.Client.createChallengeHandler(realmName)` | Para criar um manipulador de desafios para manipulação de desafios de gateway customizados, use `WL.Client.createGatewayChallengeHandler(gatewayName)`. Para criar um manipulador de desafios para manipular desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. | 
 | `WL.Client.createWLChallengeHandler(realmName)` | Use `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. | 
 | `challengeHandler.isCustomResponse()`, em que challengeHandler é um objeto manipulador de desafios que é retornado por `WL.Client.createChallengeHandler()` | Use `gatewayChallengeHandler.canHandleResponse()`, em que `gatewayChallengeHandler` é um objeto manipulador de desafios que é retornado por `WL.Client.createGatewayChallengeHandler()`. | 
 | `wlChallengeHandler.processSucccess()`, em que `wlChallengeHandler` é
 um objeto manipulador de desafios que é retornado pelo `WL.Client.createWLChallengeHandler()` | Use `securityCheckChallengeHandler.handleSuccess()`, em que `securityCheckChallengeHandler` é um objeto manipulador de desafios que é retornado por `WL.Client.createSecurityCheckChallengeHandler()`. | 
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafios de gateway customizados, use um objeto manipulador de desafios que é retornado por `WL.Client.createGatewayChallengeHandler()`. Para manipuladores de desafios de verificação de segurança do {{site.data.keys.product_adj }}, use um objeto manipulador de desafios que é retornado por `WL.Client.createSecurityCheckChallengeHandler()`. | 
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafios de gateway customizados, use um objeto manipulador de desafios que é retornado por `WL.Client.createGatewayChallengeHandler()`. Para manipuladores de desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use um objeto manipulador de desafios que é retornado por `WL.Client.createSecurityCheckChallengeHandler()`. | 
 | `WL.Client.createProvisioningChallengeHandler()` | Nenhuma substituição. O fornecimento de dispositivo é agora manipulado automaticamente pela estrutura
 de segurança. | 
 
@@ -410,7 +410,7 @@ header)` | Use `AuthorizationManager` |
 context)` | Nenhuma substituição |
 | `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | Use `BaseChallengeHandler.cancel()` | 
 | `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do
-{{site.data.keys.product_adj }},
+{{ site.data.keys.product_adj }},
 use `SecurityCheckChallengeHandler`. |
 | `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler.isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. | 
@@ -445,7 +445,7 @@ headerName)` | Use no lugar a nova API `List<String> WLResourceRequest.getHeader
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | Removido devido às dependências do cliente Apache HTTP descontinuadas. Crie sua própria solicitação para ter controle total sobre a solicitação e a resposta. |
 
 #### O pacote `com.worklight.androidgap.api` fornece a funcionalidade da plataforma Android para aplicativos Cordova. No
-{{site.data.keys.product }}, foram feitas inúmeras mudanças para acomodar a integração do Cordova.
+{{ site.data.keys.product }}, foram feitas inúmeras mudanças para acomodar a integração do Cordova.
 {: #comworklightandroidgapapi }
 
 | Elemento da API           | Caminho de Migração                           |
@@ -481,13 +481,13 @@ headerName)` | Use no lugar a nova API `List<String> WLResourceRequest.getHeader
 | `BaseProvisioningChallengeHandler` | Nenhuma substituição. O fornecimento de dispositivo é agora manipulado automaticamente pela estrutura
 de segurança. | 
 | `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do
-{{site.data.keys.product_adj }},
+{{ site.data.keys.product_adj }},
 use `SecurityCheckChallengeHandler`. |
 | `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. | 
 | `ChallengeHandler.isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. | 
 | `ChallengeHandler.submitAdapterAuthentication` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafio
 de gateway customizados, use `GatewayChallengeHandler`. Para manipuladores de desafio de verificação de segurança do
-{{site.data.keys.product_adj }},
+{{ site.data.keys.product_adj }},
 use `SecurityCheckChallengeHandler`. |
 
 ### APIs de C# do Windows
@@ -498,16 +498,16 @@ use `SecurityCheckChallengeHandler`. |
 | Elemento da API           | Caminho de Migração                           |
 |-----------------------|------------------------------------------|
 | `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do
-{{site.data.keys.product_adj }},
+{{ site.data.keys.product_adj }},
 use `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler. isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. | 
 | `ChallengeHandler.submitAdapterAuthentication` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafio
 de gateway customizados, use `GatewayChallengeHandler`. Para manipuladores de desafio de verificação de segurança do
-{{site.data.keys.product_adj }},
+{{ site.data.keys.product_adj }},
 use `SecurityCheckChallengeHandler`. | 
 | `ChallengeHandler.submitFailure(WLResponse wlResponse)` | Para manipuladores de desafio de gateway customizados, use
 `GatewayChallengeHandler.Shouldcancel`. Para manipuladores de desafio de verificação de segurança do
-{{site.data.keys.product_adj }},
+{{ site.data.keys.product_adj }},
 use `SecurityCheckChallengeHandler.ShouldCancel`. | 
 | `WLAuthorizationManager` | Use `WorklightClient.WorklightAuthorizationManager`. | 
 | `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. |
