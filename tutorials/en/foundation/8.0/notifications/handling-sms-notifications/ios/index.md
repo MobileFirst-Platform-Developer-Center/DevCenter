@@ -52,7 +52,7 @@ MFPPush.sharedInstance().initialize()
 Register the device to the push notifications service.
 
 ```swift
-MFPPush.sharedInstance().registerDevice(jsonOptions, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().registerDevice(jsonOptions){ (response, error) -> Void in
      if error == nil {
          // Successfully registered
      } else {
@@ -66,7 +66,7 @@ MFPPush.sharedInstance().registerDevice(jsonOptions, completionHandler: {(respon
 ```swift
 let phoneNumber: String = self.phoneNumberTF.text!
 
-let jsonOptions: [NSObject: AnyObject] = [
+let jsonOptions: [AnyHashable: Any] = [
     "phoneNumber": phoneNumber
 ]
 
@@ -85,7 +85,7 @@ if isValid {
 Unregister the device from push notification service instance.
 
 ```swift
-MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
     if error == nil {
         // Unregistered successfully
     } else {
@@ -99,7 +99,7 @@ MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSErro
 REST APIs are used to send notifications to the registered devices. All forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications
 
 To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
-Example URL: 
+Example URL:
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
@@ -117,6 +117,3 @@ To send a notification, see the [sending notifications](../../sending-notificati
 ### Sample usage
 {: #sample-usage }
 Follow the sample's README.md file for instructions.
-
-
-
