@@ -7,7 +7,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## Visión general
 {: #overview }
-Administre las aplicaciones de {{site.data.keys.product_adj }} a través de {{site.data.keys.mf_console }}, bloqueando aplicaciones, denegando el acceso o visualizando mensajes de notificación. 
+Administre las aplicaciones de {{ site.data.keys.product_adj }} a través de {{ site.data.keys.mf_console }}, bloqueando aplicaciones, denegando el acceso o visualizando mensajes de notificación. 
 
 Inicie la consola especificando uno de los siguientes URL:
 
@@ -15,14 +15,14 @@ Inicie la consola especificando uno de los siguientes URL:
 * Modalidad segura para producción o prueba: `https://hostname:secure_port/mfpconsole`
 * Desarrollo: `http://server_name:port/mfpconsole`
 
-Debe poseer un identificador para iniciar una sesión y una contraseña que le otorguen autorización para acceder a {{site.data.keys.mf_console }}.
-Para obtener más información, consulte [Configuración de autenticación de usuario para la administración de {{site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+Debe poseer un identificador para iniciar una sesión y una contraseña que le otorguen autorización para acceder a {{ site.data.keys.mf_console }}.
+Para obtener más información, consulte [Configuración de autenticación de usuario para la administración de {{ site.data.keys.mf_server }}](../../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
 
 
-Puede utilizar {{site.data.keys.mf_console }} para gestionar las aplicaciones.
+Puede utilizar {{ site.data.keys.mf_console }} para gestionar las aplicaciones.
 
-Desde {{site.data.keys.mf_console }}, también puede acceder a la consola de Analíticas y controlar la recopilación de datos móviles para su análisis mediante el servidor de Analíticas.
-Para obtener más información, consulte [Habilitación o inhabilitación de la recopilación de datos desde {{site.data.keys.mf_console }}](../../analytics/console/#enabledisable-analytics-support).
+Desde {{ site.data.keys.mf_console }}, también puede acceder a la consola de Analíticas y controlar la recopilación de datos móviles para su análisis mediante el servidor de Analíticas.
+Para obtener más información, consulte [Habilitación o inhabilitación de la recopilación de datos desde {{ site.data.keys.mf_console }}](../../analytics/console/#enabledisable-analytics-support).
 
 #### Ir a 
 {: #jump-to }
@@ -34,53 +34,53 @@ Para obtener más información, consulte [Habilitación o inhabilitación de la 
 
 ## Gestión de aplicaciones móviles
 {: #mobile-application-management }
-Las funcionalidades de {{site.data.keys.product_adj }} proporcionan a los administradores y a los operadores de {{site.data.keys.mf_server }} un control granular sobre el acceso de los usuarios y dispositivos a sus aplicaciones. 
+Las funcionalidades de {{ site.data.keys.product_adj }} proporcionan a los administradores y a los operadores de {{ site.data.keys.mf_server }} un control granular sobre el acceso de los usuarios y dispositivos a sus aplicaciones. 
 
-{{site.data.keys.mf_server }} realiza un seguimiento del acceso a su infraestructura móvil, almacena información sobre la aplicación, el usuario y los dispositivos en los que ha instalado la aplicación. La correlación entre la aplicación, el usuario y el dispositivo, forma la base de las funcionalidades de gestión de aplicaciones móviles del servidor. 
+{{ site.data.keys.mf_server }} realiza un seguimiento del acceso a su infraestructura móvil, almacena información sobre la aplicación, el usuario y los dispositivos en los que ha instalado la aplicación. La correlación entre la aplicación, el usuario y el dispositivo, forma la base de las funcionalidades de gestión de aplicaciones móviles del servidor. 
 
-Utilice IBM {{site.data.keys.mf_console }} para supervisar y gestionar el acceso a los recursos:
+Utilice IBM {{ site.data.keys.mf_console }} para supervisar y gestionar el acceso a los recursos:
 
 * Buscar un usuario por nombre, y ver la información sobre los dispositivos y las aplicaciones que se están utilizando para acceder a sus recursos. 
-* Buscar un dispositivo por su nombre para mostrar, y ver los usuarios asociados con el dispositivo, y las aplicaciones de {{site.data.keys.product_adj }} registradas en este dispositivo. 
+* Buscar un dispositivo por su nombre para mostrar, y ver los usuarios asociados con el dispositivo, y las aplicaciones de {{ site.data.keys.product_adj }} registradas en este dispositivo. 
 * Bloquear el acceso a sus recursos desde todas las instancias de sus aplicaciones en un dispositivo específico. Esto es útil cuando un dispositivo se pierde o es robado.
 * Bloquear el acceso a los recursos sólo para una aplicación específica en un dispositivo específico. Por ejemplo, si un empleado cambia de departamento, y desea que el empleado acceda desde otras aplicaciones en el mismo dispositivo. 
 * Anular el registro de un dispositivo, y suprimir todos los datos de registro y supervisión que se han recopilado para el dispositivo. 
 
 El bloqueo de acceso tiene las siguientes características: 
 
-* La operación de bloqueo es reversible. Puede eliminar el bloque cambiando el estado del dispositivo o de la aplicación en {{site.data.keys.mf_console }}.
+* La operación de bloqueo es reversible. Puede eliminar el bloque cambiando el estado del dispositivo o de la aplicación en {{ site.data.keys.mf_console }}.
 * El bloqueo sólo se aplica a los recursos protegidos. Un cliente bloqueado puede seguir utilizando la aplicación para acceder a recursos no protegidos. Consulte Recursos no protegidos. 
-* El acceso a recursos de adaptador en {{site.data.keys.mf_server }} se bloquea de forma inmediata cuando se selecciona esta operación. Sin embargo, puede que esto no sea el caso con recursos en un servidor externo porque la aplicación podría seguir teniendo una señal de acceso válida que no hubiese caducado.
+* El acceso a recursos de adaptador en {{ site.data.keys.mf_server }} se bloquea de forma inmediata cuando se selecciona esta operación. Sin embargo, puede que esto no sea el caso con recursos en un servidor externo porque la aplicación podría seguir teniendo una señal de acceso válida que no hubiese caducado.
 
 ### Estado de dispositivo
 {: #device-status }
-{{site.data.keys.mf_server }} mantiene información de estado para cada dispositivo que accede al servidor. Los valores de estado posibles son **Activo**, **Perdido**, **Robado**, **Caducado** e **Inhabilitado**. 
+{{ site.data.keys.mf_server }} mantiene información de estado para cada dispositivo que accede al servidor. Los valores de estado posibles son **Activo**, **Perdido**, **Robado**, **Caducado** e **Inhabilitado**. 
 
 El estado de dispositivo predeterminado es **Activo**, lo que indica que el acceso desde este dispositivo no está bloqueado.
 Puede cambiar el estado a **Perdido**, **Robado** o **Inhabilitado** para bloquear el acceso desde el dispositivo a los recursos de su aplicación.
 Siempre puede restaurar el estado **Activo** para permitir de nuevo el acceso.
-Consulte [Gestión de acceso de dispositivos en {{site.data.keys.mf_console }}](#managing-device-access-in-mobilefirst-operations-console).
+Consulte [Gestión de acceso de dispositivos en {{ site.data.keys.mf_console }}](#managing-device-access-in-mobilefirst-operations-console).
 
 
-El estado **Caducado** es un estado especial que {{site.data.keys.mf_server }} establece después de un tiempo de espera de inactividad configurado de forma previa desde la última vez que el dispositivo se conectó a esta instancia de servidor.
+El estado **Caducado** es un estado especial que {{ site.data.keys.mf_server }} establece después de un tiempo de espera de inactividad configurado de forma previa desde la última vez que el dispositivo se conectó a esta instancia de servidor.
 Este estado se utiliza para el seguimiento de la gestión de licencias, y no afecta a los derechos de acceso del dispositivo.
 Cuando un dispositivo con un estado **Caducado** se vuelve a conectar con el servidor, su estado se restaura a **Activo**, y se le otorga acceso al servidor.
 
 
 ### Nombre para mostrar de dispositivo
 {: #device-display-name }
-{{site.data.keys.mf_server }} identifica a los dispositivos mediante un ID de dispositivo exclusivo, que el SDK de cliente {{site.data.keys.product_adj }} asigna.
+{{ site.data.keys.mf_server }} identifica a los dispositivos mediante un ID de dispositivo exclusivo, que el SDK de cliente {{ site.data.keys.product_adj }} asigna.
 El establecer un nombre para mostrar para un dispositivo permite buscar el dispositivo por dicho nombre para mostrar.
 Los desarrolladores de aplicaciones pueden utilizar el método `setDeviceDisplayName` de la clase `WLClient` para establecer el nombre de dispositivo para mostrar.
-Consulte la documentación de `WLClient` en la [API del lado de cliente de {{site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html).
+Consulte la documentación de `WLClient` en la [API del lado de cliente de {{ site.data.keys.product_adj }}](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html).
 (La clase JavaScript es `WL.Client`).
 Los desarrolladores de adaptadores de Java (incluidos los desarrolladores de comprobaciones de seguridad) también pueden establecer el nombre para mostrar del dispositivo utilizando el método `setDeviceDisplayName` de la clase `MobileDeviceData` de com.ibm.mfp.server.registration.external.model.
 Consulte [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc).
 
 
-### Gestión de acceso de dispositivos en {{site.data.keys.mf_console }}
+### Gestión de acceso de dispositivos en {{ site.data.keys.mf_console }}
 {: #managing-device-access-in-mobilefirst-operations-console }
-Para supervisar y gestionar el acceso a los recursos de los dispositivos, seleccione el separador Dispositivos en el Panel de control de {{site.data.keys.mf_console }}.
+Para supervisar y gestionar el acceso a los recursos de los dispositivos, seleccione el separador Dispositivos en el Panel de control de {{ site.data.keys.mf_console }}.
 
 
 Utilice el campo de búsqueda para buscar un dispositivo por su ID de usuario asociado al dispositivo, o por el nombre para mostrar del dispositivo (si se ha establecido).
@@ -98,12 +98,12 @@ Al cambiar el estado de nuevo a **Activo** restaura los derechos de acceso origi
 
 
 Puede anular el registro de un dispositivo seleccionando **Anular registro** en la columna **Acciones**.
-Cuando se anula el registro de un dispositivo, suprime los datos de registro de todas las aplicaciones de {{site.data.keys.product_adj }} que estaban instaladas en el dispositivo.
+Cuando se anula el registro de un dispositivo, suprime los datos de registro de todas las aplicaciones de {{ site.data.keys.product_adj }} que estaban instaladas en el dispositivo.
 Además, se suprime el nombre para mostrar del dispositivo, las listas de usuarios asociados con el dispositivo y los atributos públicos que la aplicación registró para este dispositivo.
 
 
 **Nota:** La acción **Anular el registro** no es reversible.
-La siguiente vez que una de las aplicaciones de {{site.data.keys.product_adj }} en el dispositivo intente acceder al servidor, será registrada de nuevo con un nuevo ID de dispositivo.
+La siguiente vez que una de las aplicaciones de {{ site.data.keys.product_adj }} en el dispositivo intente acceder al servidor, será registrada de nuevo con un nuevo ID de dispositivo.
 Cuando seleccione registrar el dispositivo de nuevo, el estado del dispositivo se establecerá en **Activo**, y tendrá acceso a los recursos protegidos, independientemente cualquier bloqueo anterior.
 Por lo tanto, si desea bloquear un dispositivo, no anule su registro.
 En su lugar, cambie el estado del dispositivo a **Perdido**, **Robado** o **Inhabilitado**.
@@ -122,7 +122,7 @@ Puede cambiar el estado de la aplicación a **Inhabilitado** para bloquear el ac
 
 ### Inhabilitación de forma remota del acceso de la aplicación a recursos protegidos
 {: #remotely-disabling-application-access-to-protected-resources }
-Utilice {{site.data.keys.mf_console }} (la consola) para inhabilitar el acceso de usuario de una versión de aplicación específica en un sistema operativo móvil específico y proporcionar un mensaje personalizado al usuario.
+Utilice {{ site.data.keys.mf_console }} (la consola) para inhabilitar el acceso de usuario de una versión de aplicación específica en un sistema operativo móvil específico y proporcionar un mensaje personalizado al usuario.
 
 
 1. Seleccione su versión de aplicación en la sección **Aplicaciones** de la barra lateral de navegación de la consola y, a continuación, seleccione el separador **Gestión** de aplicaciones.
@@ -158,7 +158,7 @@ Siga el procedimiento que se indica para configurar el mensaje de notificación.
 Puede utilizar este mensaje para notificar a los usuarios de la aplicación de situaciones de carácter temporal, como por ejemplo un tiempo de inactividad planificado del servicio.
 
 
-1. Seleccione su versión de aplicación en la sección **Aplicaciones** de la barra lateral de navegación de {{site.data.keys.mf_console }} y, a continuación, seleccione el separador Gestión de aplicaciones.
+1. Seleccione su versión de aplicación en la sección **Aplicaciones** de la barra lateral de navegación de {{ site.data.keys.mf_console }} y, a continuación, seleccione el separador Gestión de aplicaciones.
 
 2. Cambie el estado a **Activo y notificando**.
 3. Añada un mensaje de inicio personalizado.
@@ -174,19 +174,19 @@ El siguiente mensaje de ejemplo notifica al usuario de tareas de mantenimiento p
 
 5. Seleccione **Guardar** para aplicar los cambios.
 
-El mensaje se visualiza cuando la aplicación utiliza {{site.data.keys.mf_server }} por primera vez para acceder a un recurso protegido o al obtener una señal de acceso.
+El mensaje se visualiza cuando la aplicación utiliza {{ site.data.keys.mf_server }} por primera vez para acceder a un recurso protegido o al obtener una señal de acceso.
 Si la aplicación adquiere una señal de acceso cuando ésta se inicia, el mensaje se visualiza en esta etapa.
 De lo contrario, el mensaje se visualiza con la primera solicitud desde la aplicación para acceder a un recurso protegido o al obtener una señal de acceso.
 El mensaje se visualiza sólo una vez, en la primera interacción.
 
 ### Definición de mensajes de administrador en varios idiomas
 {: #defining-administrator-messages-in-multiple-languages }
-<b>Nota:</b> En Microsoft Internet Explorer (IE) y Microsoft Edge, los mensajes administrativos se visualizan de acuerdo a los valores de formato regional del sistema operativo y no de acuerdo a la configuración del navegador o las preferencias de idioma del sistema operativo.
+<b>Nota:</b> En Microsoft Internet Explorer (IE) y Microsoft Edge, los mensajes administrativos se visualizan de acuerdo a las preferencias de formato regional del sistema operativo y no de acuerdo a la configuración del navegador o las preferencias de idioma de visualización del sistema operativo.
 Consulte [Limitaciones con las aplicaciones web en IE Edge](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).Siga el siguiente procedimiento para configurar varios idiomas para visualizar los mensajes de administración de la aplicación que definió a través de la consola.
 Los mensajes se envían de acuerdo al entorno local del dispositivo, y deben cumplir con los estándares que el sistema operativo móvil utiliza para especificar entornos locales.
 
 
-1. Seleccione su versión de aplicación en la sección **Aplicaciones** de la barra lateral de navegación de {{site.data.keys.mf_console }} y, a continuación, seleccione el separador **Gestión** de aplicaciones.
+1. Seleccione su versión de aplicación en la sección **Aplicaciones** de la barra lateral de navegación de {{ site.data.keys.mf_console }} y, a continuación, seleccione el separador **Gestión** de aplicaciones.
 
 2. Seleccione el estado **Activo y notificando** o **Acceso inhabilitado**.
 3. Seleccione **Actualizar entornos locales**.
@@ -222,19 +222,19 @@ Si no se ha configurado ningún mensaje para el entorno local del dispositivo, s
 
 ## Estado de aplicación y gestión de licencias de señal
 {: #application-status-and-token-licensing }
-Debe restaurar de forma manual el estado de aplicación correcto en {{site.data.keys.mf_console }} después de un estado Bloqueado debido a la falta de señales.
+Debe restaurar de forma manual el estado de aplicación correcto en {{ site.data.keys.mf_console }} después de un estado Bloqueado debido a la falta de señales.
 
 
 Si utiliza la gestión de licencias y deja de tener suficientes señales de licencia para una aplicación, el estado de la aplicación de todas las versiones de la aplicación cambian a **Bloqueado**.
 Ya no podrá cambiar el estado de ninguna versión de la aplicación.
-Se visualiza el siguiente mensaje en {{site.data.keys.mf_console }}:
+Se visualiza el siguiente mensaje en {{ site.data.keys.mf_console }}:
 
 
 ```bash
 Se bloqueó la aplicación porque su licencia caducó
 ```
 
-Si más tarde se liberan suficientes señales para ejecutar la aplicación o si su organización compra más señales, se visualiza el siguiente mensaje en {{site.data.keys.mf_console }}:
+Si más tarde se liberan suficientes señales para ejecutar la aplicación o si su organización compra más señales, se visualiza el siguiente mensaje en {{ site.data.keys.mf_console }}:
 
 
 ```bash
@@ -243,19 +243,19 @@ Se bloqueó la aplicación porque su licencia caducó, sin embargo, ahora hay di
 
 El estado que se visualiza siguiendo **Bloqueado**.
 Debe restaurar el estado actual correcto de forma manual desde la memoria o desde sus propios registros editando el campo Estado.
-{{site.data.keys.product }} no gestiona la visualización del estado **Bloqueado** en {{site.data.keys.mf_console }} de una aplicación que se bloqueó debido un número insuficiente de señales de licencia.
-El usuario es el responsable de restaurar una aplicación bloqueada al estado real que se puede visualizar a través de {{site.data.keys.mf_console }}.
+{{ site.data.keys.product }} no gestiona la visualización del estado **Bloqueado** en {{ site.data.keys.mf_console }} de una aplicación que se bloqueó debido un número insuficiente de señales de licencia.
+El usuario es el responsable de restaurar una aplicación bloqueada al estado real que se puede visualizar a través de {{ site.data.keys.mf_console }}.
 
 ## Registro de errores de la operación en entornos de tiempo de ejecución
 {: #error-log-of-operations-on-runtime-environments }
-Utilice el registro de errores para acceder a las operaciones de gestión con errores iniciadas desde {{site.data.keys.mf_console }} o desde la línea de mandatos en el entorno de tiempo de ejecución seleccionado, y para ver el efecto de los errores en los servidores.
+Utilice el registro de errores para acceder a las operaciones de gestión con errores iniciadas desde {{ site.data.keys.mf_console }} o desde la línea de mandatos en el entorno de tiempo de ejecución seleccionado, y para ver el efecto de los errores en los servidores.
 
 
 Cuando una transacción falla, la barra de estado muestra una notificación del error y muestra un enlace al registro de errores.
 Utilice el registro de errores para obtener más detalles acerca del error, por ejemplo, el estado de cada servidor con un mensaje de error específico, o para tener un historial de errores.
 El registro de errores muestra la operación más reciente en primer lugar. 
 
-Acceda al registro de errores pulsando **Registro de errores** de un entorno de tiempo de ejecución en {{site.data.keys.mf_console }}.
+Acceda al registro de errores pulsando **Registro de errores** de un entorno de tiempo de ejecución en {{ site.data.keys.mf_console }}.
 
 
 Amplíe la fila que hace referencia a la operación errónea para acceder a más información sobre el estado actual de cada servidor.
@@ -265,11 +265,11 @@ Para acceder a todo el registro, descárguelo pulsando **Descargar registro**.
 
 ## Registro de auditoría de operaciones de administración
 {: #audit-log-of-administration-operations }
-En {{site.data.keys.mf_console }}, puede hacer referencia a un registro de auditoría de las operaciones de administración.
+En {{ site.data.keys.mf_console }}, puede hacer referencia a un registro de auditoría de las operaciones de administración.
 
 
-{{site.data.keys.mf_console }} proporciona acceso a un registro de auditoría para el inicio de sesiones, finalización de sesiones y todas las operaciones administración como, por ejemplo, el despliegue de aplicaciones y adaptadores o aplicaciones bloqueadas.
-El registro de auditoría se puede inhabilitar estableciendo la propiedad Java Naming and Directory Interface (JNDI) **mfp.admin.audit** del servicio de administración de {{site.data.keys.product_adj }} en **false**.
+{{ site.data.keys.mf_console }} proporciona acceso a un registro de auditoría para el inicio de sesiones, finalización de sesiones y todas las operaciones administración como, por ejemplo, el despliegue de aplicaciones y adaptadores o aplicaciones bloqueadas.
+El registro de auditoría se puede inhabilitar estableciendo la propiedad Java Naming and Directory Interface (JNDI) **mfp.admin.audit** del servicio de administración de {{ site.data.keys.product_adj }} en **false**.
 
 Para acceder al registro de auditoría, pulse el nombre de usuario en la barra de la cabecera y seleccione **Acerca de **, pulse **Soporte adicional** y, a continuación, **Descargar registro de auditoría**.
 
@@ -280,7 +280,7 @@ Para acceder al registro de auditoría, pulse el nombre de usuario en la barra d
 | User	     | El **nombre_usuario** del usuario que ha iniciado la sesión.  |
 | Outcome	 | El resultado de la operación. Los posibles valores son SUCCESS, ERROR, PENDING. |
 | ErrorCode	 | Si el resultado es ERROR, ErrorCode indica qué error es.  |
-| Runtime	 | Nombre del proyecto {{site.data.keys.product_adj }} asociado a esta operación.  |
+| Runtime	 | Nombre del proyecto {{ site.data.keys.product_adj }} asociado a esta operación.  |
 
 En la siguiente lista se muestran los posibles valores del tipo de operación. 
 
