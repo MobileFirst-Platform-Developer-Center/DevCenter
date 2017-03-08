@@ -70,9 +70,7 @@ let jsonOptions: [AnyHashable: Any] = [
     "phoneNumber": phoneNumber
 ]
 
-let isValid = NSJSONSerialization.isValidJSONObject(jsonOptions)
-
-if isValid {
+if JSONSerialization.isValidJSONObject(jsonOptions) {
     // JSON is valid and can be sent with registerDevice request
 }
 
