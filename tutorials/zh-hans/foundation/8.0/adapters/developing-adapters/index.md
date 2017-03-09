@@ -46,7 +46,7 @@ weight: 5
     - 单击**添加 Archetype** 并提供以下详细信息：
         - **Archetype 组标识**：`com.ibm.mfp`
         - **Archetype 工件标识**： `adapter-maven-archetype-java`、`adapter-maven-archetype-http` 或 `adapter-maven-archetype-sql`
-        - **Archetype 版本**：`8.0.2016061011`（您可以在 [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) 中找到最新的可用版本）
+        - **Archetype 版本**：您可以在 [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp) 中找到最新的可用版本
 
     ![图像显示如何在 Eclipse 中创建适配器 Maven 项目](create-an-archetype.png)
 
@@ -80,8 +80,8 @@ weight: 5
 要部署适配器，请先添加部署 Maven 命令：
 
 1. 选择**运行 → 运行配置...**，右键单击 **Maven 构建**，然后选择**新建**。
-2. 提供一个名称："Maven 部署"。
-2. 设置为目标："适配器：部署"。
+2. 提供一个名称：“Maven 部署”。
+2. 设置为目标：“适配器：部署”。
 3. 单击**应用**，然后单击**运行**以进行初始部署。
 
 您现在可以右键单击适配器文件夹，然后选择**运行方式 → Maven 部署**
@@ -89,7 +89,7 @@ weight: 5
 ### 构建并部署适配器
 {: #building-and-deploying-an-adapter }
 
-您也可以将"构建"和"部署"Maven 目标合并为单个"构建并部署"目标："清除安装适配器：部署"。
+您也可以将“构建”和“部署”Maven 目标合并为单个“构建并部署”目标：“清除安装适配器：部署”。
 
 ## 更多参考资料
 {: #further-reading }

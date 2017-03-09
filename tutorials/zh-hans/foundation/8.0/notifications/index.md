@@ -3,7 +3,7 @@ layout: tutorial
 title: 通知
 show_children: true
 relevantTo: [ios,android,windows,cordova]
-weight: 7
+weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述

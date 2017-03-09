@@ -17,20 +17,9 @@ SDK 包含以下文件：
 - **ibmmfpf.js** - SDK 的核心。
 - **ibmmfpfanalytics.js** - 为 {{ site.data.keys.mf_analytics }} 提供支持。
 
-**先决条件：**要运行 NPM 命令，需要使用 [Node.js](https://nodejs.org)。
-
-#### SDK 限制
-{: #sdk-limitations }
-表中的数字指定完全受支持的第一个浏览器版本。
-
-|      浏览器      | Chrome | Safari* | Internet Explorer | Firefox | Android 浏览器 |
-|:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
-| 支持的版本 |   43+  |    8+   |        10+        |   38+   |   Android 4.3+  |
-
-(*) 专用浏览方式将仅使用单页面应用程序。其他应用程序可能具有意外行为。
-
-#### 跳转至：
+#### 跳转至
 {: #jump-to }
+- [先决条件](#prerequisites)
 - [添加 {{ site.data.keys.product_adj }} Web SDK](#adding-the-mobilefirst-web-sdk)
 - [初始化 {{ site.data.keys.product_adj }} Web SDK](#initializing-the-mobilefirst-web-sdk)
 - [注册 Web 应用程序](#registering-the-web-application)
@@ -38,6 +27,12 @@ SDK 包含以下文件：
 - [相同的源策略](#same-origin-policy)
 - [安全源策略](#secure-origins-policy)
 - [接下来要学习的教程](#tutorials-to-follow-next)
+
+## 先决条件
+{: #prerequisites }
+-   请参阅设置 Web 开发环境的 [受支持的 Web 浏览器](../../../installation-configuration/development/web/#web-app-supported-browsers)先决条件。
+
+-   要运行 NPM 命令，必须安装 [Node.js](https://nodejs.org)。
 
 ## 添加 {{ site.data.keys.product_adj }} Web SDK
 {: #adding-the-mobilefirst-web-sdk }

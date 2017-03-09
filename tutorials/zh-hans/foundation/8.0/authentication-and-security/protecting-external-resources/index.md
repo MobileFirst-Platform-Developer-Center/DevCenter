@@ -37,7 +37,7 @@ show_children: true
 
 > 在[保密客户机](../confidential-clients/)教程中了解更多信息。
 
-在 {{ site.data.keys.mf_console }} 中的**设置 → 保密客户机**下，添加新条目。选择**客户机标识**和 **API 密钥**值。确保将 `authorization.introspect` 设置为**允许的作用域**。
+在 {{ site.data.keys.mf_console }} 中的**设置 → 保密客户机**下，添加新条目。选择**客户机密钥**和 **API 密钥**值。确保将 `authorization.introspect` 设置为**允许的作用域**。
 
 <img class="gifplayer" alt="配置保密客户机" src="confidential-client.png"/>
 

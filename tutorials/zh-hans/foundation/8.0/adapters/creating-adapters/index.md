@@ -1,66 +1,67 @@
 ---
 layout: tutorial
-title: Creating Java and JavaScript Adapters
+title: 创建 Java 和 JavaScript 适配器
 breadcrumb_title: Creating Adapters
 relevantTo: [ios,android,windows,javascript]
 show_children: true
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## 概述
 {: #overview }
-An adapter can be created using either Maven commands or by using the {{ site.data.keys.mf_cli }} (that is dependent on Maven being installed and configured). The Adapter code can then be edited and built using your IDE of choice, such as Eclipse and IntelliJ. This tutorial explains how to create, build and deploy **Java or JavaScript adapters** using Maven and the {{ site.data.keys.mf_cli }}. To learn how to use the Eclipse or IntelliJ IDEs to create and build adapters, review the [Developing Adapters in Eclipse](../developing-adapters) tutorial.
+可使用 Maven 命令或通过使用 {{ site.data.keys.mf_cli }}（取决于安装和配置的 Maven）来创建适配器。然后可以使用您选择的 IDE（例如 Eclipse 或 IntelliJ）来编辑和构建适配器代码。本教程解释如何使用 Maven 和 {{ site.data.keys.mf_cli }} 来创建、构建以及部署 **Java 或 JavaScript 适配器**。要学习如何使用 Eclipse 或 IntelliJ IDE 来创建和构建适配器，请查看[在 Eclipse 中开发适配器](../developing-adapters)教程。
 
-**Prerequisite:** Make sure that you read the [Adapters Overview](../) first.
+**先决条件：** 请务必先阅读[适配器概述](../)。
 
-#### Jump to
+#### 跳转至
 {: #jump-to }
-* [Install Maven](#install-maven)
-* [Creating Adapters Using {{ site.data.keys.mf_cli }}](#creating-adapters-using-mobilefirst-cli)
-* [Install {{ site.data.keys.mf_cli }}](#install-mobilefirst-cli)
-* [Creating an Adapter](#creating-an-adapter)
-* [Creating Adapters Using Maven Archetype](#creating-adapters-using-maven-archetype-adapter-maven-archetype)
-* [File Structure](#file-structure)
-* [Build and Deploy Adapters](#build-and-deploy-adapters)
-* [Dependencies](#dependencies)
-* [Grouping Adapters in a Single Maven Project](#grouping-adapters-in-a-single-maven-project)
-* [Downloading or Deploying Adapters Using {{ site.data.keys.mf_console }}](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
-* [Updating the Adapter Maven Project](#updating-the-adapter-maven-project)
-* [Working offline](#working-offline)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [安装 Maven](#install-maven)
+* [使用 {{ site.data.keys.mf_cli }} 创建适配器](#creating-adapters-using-mobilefirst-cli)
+* [安装 {{ site.data.keys.mf_cli }}](#install-mobilefirst-cli)
+* [创建适配器](#creating-an-adapter)
+* [使用 Maven Archetype 创建适配器](#creating-adapters-using-maven-archetype-adapter-maven-archetype)
+* [文件结构](#file-structure)
+* [构建和部署适配器](#build-and-deploy-adapters)
+* [依赖关系](#dependencies)
+* [将适配器分组在单个 Maven 项目中](#grouping-adapters-in-a-single-maven-project)
+* [使用 {{ site.data.keys.mf_console }} 下载或部署适配器](#downloading-or-deploying-adapters-using-mobilefirst-operations-console)
+* [更新适配器 Maven 项目](#updating-the-adapter-maven-project)
+* [脱机工作
+](#working-offline)
+* [后续教程](#tutorials-to-follow-next)
 
-## Install Maven
+## 安装 Maven
 {: #install-maven }
-In order to create an adapter, you first need to download and install Maven. Go to the [Apache Maven website](https://maven.apache.org/) and follow the instructions how to download and install Maven.
+要创建适配器，您首选需要下载并安装 Maven。请转至 [Apache Maven Web 站点](https://maven.apache.org/)，然后遵循指示信息下载并安装 Maven。
 
-## Creating Adapters Using {{ site.data.keys.mf_cli }}
+## 使用 {{ site.data.keys.mf_cli }} 创建适配器
 {: #creating-adapters-using-mobilefirst-cli }
 
-### Install {{ site.data.keys.mf_cli }}
+### 安装 {{ site.data.keys.mf_cli }}
 {: #install-mobilefirst-cli }
-Follow the installation instructions in the [Downloads]({{site.baseurl}}/downloads/) page to Install {{ site.data.keys.mf_cli }}.  
-**Prerequisite:** To create adapters using the Developer CLI, Maven must be installed.
+遵循[下载]({{site.baseurl}}/downloads/)页面中的安装指示信息以安装 {{ site.data.keys.mf_cli }}。  
+**先决条件：**要使用开发人员 CLI 创建适配器，必须安装 Maven。
 
-### Creating an Adapter
+### 创建适配器
 {: #creating-an-adapter }
-To create a Maven adapter project, use the `mfpdev adapter create` command.
-You can choose to run the command interactively or directly.
+要创建 Maven 适配器项目，请使用 `mfpdev adapter create` 命令。
+您可以选择以交互式或直接运行该命令。
 
-#### Interactive Mode
+#### 交互方式
 {: #interactive-mode }
-1. Open a **Command-line** window and run:
+1. 打开**命令行**窗口，然后运行：
 
    ```bash
    mfpdev adapter create
    ```
 
-2. Enter an adapter name. For example:
+2. 输入适配器名称。例如：
 
    ```bash
    ? Enter Adapter Name: SampleAdapter
    ```
 
-3. Select an adapter type using the arrows and the enter keys:
+3. 使用箭头选择适配器类型，然后输入关键字：
 
    ```bash
    ? Select Adapter Type:
@@ -68,82 +69,82 @@ You can choose to run the command interactively or directly.
       SQL
    ❯ Java
    ```
-  * Select `HTTP` to create a JavaScript HTTP adapter
-  * Select `SQL` to create a JavaScript SQL adapter  
-  * Select `Java` to create a Java adapter
+  * 选择 `HTTP` 创建 JavaScript HTTP 适配器
+  * 选择 `SQL` 创建 JavaScript SQL 适配器  
+  * 选择 `Java` 创建 Java 适配器
 
-4. Enter an adapter package (this option is valid for Java adapters only). For example:
+4. 输入适配器包（此选项仅对 Java 适配器有效）。例如：
 
    ```bash
    ? Enter Package: com.mypackage
    ```
 
-5. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
+5. 输入要构建的 Maven 项目的[组标识](https://maven.apache.org/guides/mini/guide-naming-conventions.html)。例如：
 
    ```bash
    ? Enter Group ID: com.mycompany
    ```
 
-#### Direct Mode
+#### 直接方式
 {: #direct-mode }
-Replace the placeholders with the actual values and run the command:
+使用实际值替换占位符，然后运行该命令：
 
 ```bash
 mfpdev adapter create <adapter_name> -t <adapter_type> -p <adapter_package_name> -g <maven_project_groupid>
 ```
 
-## Creating Adapters Using Maven Archetype "adapter-maven-archetype"
+## 使用 Maven Archetype“adapter-maven-archetype”创建适配器
 {: #creating-adapters-using-maven-archetype-adapter-maven-archetype }
 
-The "adapter-maven-archetype" is a {{ site.data.keys.product }}-provided archetype, that based on the [Maven archetype toolkit](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html), and is used by Maven in order to create the adapter Maven project.
+“adapter-maven-archetype”是 {{ site.data.keys.product }} 提供的 archetype，其基于 [Maven archetype 工具箱](https://maven.apache.org/guides/introduction/introduction-to-archetypes.html)，由 Maven 用来创建适配器 Maven 项目。
 
-To create a Maven adapter project, use the `archetype:generate` Maven command. Once the command is executed, Maven will download (or use the local repositories mentioned above) required files in order to generate the adapter Maven project.
+要创建 Maven 适配器项目，请使用 `archetype:generate` Maven 命令。执行该命令之后，Maven 将下载（或使用上面提及的本地存储库）所需的文件以生成适配器 Maven 项目。
 
-You can choose to run the command interactively or directly.
+您可以选择以交互式或直接运行该命令。
 
-#### Interactive Mode
+#### 交互方式
 {: #interactive-mode-archetype }
 
-1. From a **Command-line** window, navigate to a location of your choosing.  
-   This is also where the Maven project will be generated.
+1. 从**命令行**窗口，导航至您选择的位置。  
+   这也是将生成 Maven 项目的位置。
 
-2. Replace the **DarchetypeArtifactId** placeholder with the actual value and run:
+2. 使用实际值替换 **DarchetypeArtifactId** 占位符，然后运行：
 
    ```bash
    mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=replace-with-the-adapter-type-artifact-ID
    ```
    
-  * The `Archetype Group Id` and Archetype Version are required parameters to identify the archetype.
-  * The `Archetype Artifact Id` is a required parameter to identify the adapter type:
-     * Use `adapter-maven-archetype-java` to create a Java adapter
-     * Use `adapter-maven-archetype-http` to create a JavaScript HTTP adapter
-     * Use `adapter-maven-archetype-sql` to create a JavaScript SQL adapter  
+  * `Archetype Group Id` 和 Archetype 版本是标识 archetype 所需的参数。
+  * `Archetype Artifact Id` 是标识适配器类型所需的参数：
+     * 使用 `adapter-maven-archetype-java` 创建 Java 适配器
+     * 使用 `adapter-maven-archetype-http` 创建 JavaScript HTTP 适配器
+     * 使用 `adapter-maven-archetype-sql` 创建 JavaScript SQL 适配器  
 
-3. Enter a [Group Id](https://maven.apache.org/guides/mini/guide-naming-conventions.html) of the Maven project to be build. For example:
+3. 输入要构建的 Maven 项目的[组标识](https://maven.apache.org/guides/mini/guide-naming-conventions.html)。例如：
 
    ```bash
    Define value for property 'groupId': : com.mycompany
    ```
 
-4. Enter an Artifact Id of the Maven project **which will later be used also as the adapter name**. For example:
+4. 输入 Maven 项目的工件标识，**这以后也将用作适配器名称**。例如：
 
    ```bash
    Define value for property 'artifactId': : SampleAdapter
    ```
 
-5. Enter a Maven project version (the default is `1.0-SNAPSHOT`). For example:
+5. 输入 Maven 项目版本（缺省值是 `1.0-SNAPSHOT`）。例如：
 
    ```bash
    Define value for property 'version':  1.0-SNAPSHOT: : 1.0
    ```
 
-6. Enter an adapter package name (the default is the `groupId`). For example:
+6. 输入适配器包名称（缺省值是 `groupId`）。例如：
 
    ```bash
    Define value for property 'package':  com.mycompany: : com.mypackage
    ```
 
-7. Enter `y` to confirm:
+7. 输入 `y` 以确认：
 
    ```bash
    Confirm properties configuration:
@@ -155,56 +156,56 @@ You can choose to run the command interactively or directly.
    Y: : y
    ```
 
-#### Direct Mode
+#### 直接方式
 {: #direct-mode-archetype }
-Replace the placeholders with the actual values and run the command:
+使用实际值替换占位符，然后运行该命令：
 
 ```bash
 mvn archetype:generate -DarchetypeGroupId=com.ibm.mfp -DarchetypeArtifactId=<adapter type artifact ID> -DgroupId=<maven_project_groupid> -DartifactId=<maven_project_artifactid>  -Dpackage=<adapter_package_name>
 ```
 
-> For more information about the `archetype:generate` command see the [Maven documentation](http://maven.apache.org/).
+> 有关 `archetype:generate` 命令的更多信息，请参阅 [Maven 文档](http://maven.apache.org/)。
 
-## File Structure
+## 文件结构
 {: #file-structure }
-After creating the adapter the result will be a Maven project containing a **src** folder and a **pom.xml** file:
+在创建适配器之后，将生成包含 **src** 文件夹和 **pom.xml** 文件的 Maven 项目：
 
 ![mvn-adapter](adapter-fs.png)
 
-## Build and Deploy Adapters
+## 构建和部署适配器
 {: #build-and-deploy-adapters }
 
-### Build
+### 构建
 {: #build }
 
-* **Using the {{ site.data.keys.mf_cli }}** - Run the `adapter build` command from the project's root folder.
+* **使用 {{ site.data.keys.mf_cli }}** - 从项目的根文件夹运行 `adapter build` 命令。
     
   ```bash
   mfpdev adapter build
   ```
     
-* **Using Maven** - The adapter is built each time you run the `install` command to build the Maven project.
+* **使用 Maven** - 每次运行 `install` 命令构建 Maven 项目时，都会构建适配器。
 
   ```bash
   mvn install
   ```
 
-### Build All
+### 构建所有
 {: #build-all }
-If you have multiple adapters in a filesystem folder and you'd like to build all of them, use:
+如果 filesystem 文件夹中有多个适配器并且想要构建所有适配器，请使用：
 
 ```bash
 mfpdev adapter build all
 ```
 
-The outcome is an **.adapter** archive file which can be found in the **target** folder of each adapter:
+结果会生成 **.adapter** 归档文件，可在每个适配器的 **target** 文件夹中找到此文件：
 
 ![java-adapter-result](adapter-result.png)
 
-### Deploy
+### 部署
 {: #deploy }
 
-1. The **pom.xml** file contains the following `properties`:
+1. **pom.xml** 文件包含以下 `properties`：
 
    ```xml
    <properties>
@@ -216,52 +217,51 @@ The outcome is an **.adapter** archive file which can be found in the **target**
    </properties>
    ```
    
-   * Replace **localhost:9080** with your {{ site.data.keys.mf_server }} IP address and port number.
-   * **Optional**. Replace the **mfpfUser** and **mfpfPassword** default values with your admin user name and password.
-   * **Optional**. Replace the **mfpfRuntime** default value with your runtime name.
-2. Run the deploy command from the project's root folder:
- * **Using the {{ site.data.keys.mf_cli }}**:
+   * 使用您的 {{ site.data.keys.mf_server }} IP 地址和端口号替换 **localhost:9080**。
+   * **可选**。使用您的 admin 用户名和密码替换 **mfpfUser** 和 **mfpfPassword** 缺省值。
+   * **可选**。使用您的运行时名称替换 **mfpfRuntime** 缺省值。
+2. 从项目的根文件夹运行部署命令：
+ * **使用 {{ site.data.keys.mf_cli }}**：
 
    ```bash
    mfpdev adapter deploy -x
    ```
    
-   The `-x` option deploys the adapter to the {{ site.data.keys.mf_server }} that is specified in adapter's **pom.xml** file.  
-   If the option is not used, the CLI will use the default server specified in the CLI settings.
+   `-x` 选项将适配器部署到适配器的 **pom.xml** 文件中指定的 {{ site.data.keys.mf_server }}。  
+   如果未使用该选项，那么 CLI 将使用在 CLI 设置中指定的缺省服务器。
     
-   > For more CLI deployment options run the command: `mfpdev help adapter deploy`.
+   > 有关更多的 CLI 部署选项，请运行命令：`mfpdev help adapter deploy`。
    
- * **Using Maven**:
+ * **使用 Maven**：
 
    ```bash
    mvn adapter:deploy
    ```
 
-### Deploy All
+### 部署所有
 {:# deploy-all }
-If you have multiple adapters in a filesystem folder and you'd like to deploy all of them, use:
+如果 filesystem 文件夹中有多个适配器并且想要部署所有适配器，请使用：
 
 ```bash
 mfpdev adapter deploy all
 ```
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Tip:** You can also build and deploy the adapter using a single command: `mvn install adapter:deploy`
-
-### Deploying to different runtimes
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **提示：**您也可以使用单个命令 `mvn install adapter:deploy` 来构建和部署适配器
+### 部署到不同的运行时
 {: #deploying-to-different-runtimes }
-If you run multiple runtimes, see [Registering applications and deploying adapters to different runtimes](../../installation-configuration/production/server-configuration/#registering-applications-and-deploying-adapters-to-different-runtimes).
+如果您运行多个运行时，请参阅[注册应用程序并将适配器部署到不同的运行时](../../installation-configuration/production/server-configuration/#registering-applications-and-deploying-adapters-to-different-runtimes)。
 
-## Dependencies
+## 依赖关系
 {: #dependencies }
-In order to use an external library in your adapter, follow one of the following suggested instructions:
+要在适配器中使用外部库，请遵循以下建议的指示信息之一：
 
-#### Adding a local dependency
+#### 添加本地依赖关系
 {: #adding-a-local-dependency }
 
-1. Add a **lib** folder under the root Maven project folder and put the external library in it.
-2. Add the library path under the `dependencies` element in the Maven project's **pom.xml** file.  
+1. 在根 Maven 项目文件夹下添加 **lib** 文件夹，然后将外部库放入其中。
+2. 在 Maven 项目的 **pom.xml** 文件中的 `dependencies` 元素下添加库路径。  
 
-For example:
+例如：
 
 ```xml
 <dependency>
@@ -273,13 +273,13 @@ For example:
 </dependency>
 ```
 
-#### Adding an external dependency
+#### 添加外部依赖关系
 {: #adding-an-external-dependency }
 
-1. Search online repositories such as [The Central Repository](http://search.maven.org/) for the dependency.
-2. Copy the POM dependency information and paste it under the `dependencies` element in the Maven project's **pom.xml** file.
+1. 搜索在线存储库（如 [The Central Repository](http://search.maven.org/)）以查找依赖关系。
+2. 复制 POM 依赖关系信息，然后将其粘贴到 Maven 项目的 **pom.xml** 文件中的 `dependencies` 元素下。
 
-The following example uses the `cloudant-client artifactId`:
+以下示例使用 `cloudant-client artifactId`：
 
 ```xml
 <dependency>
@@ -289,18 +289,18 @@ The following example uses the `cloudant-client artifactId`:
 </dependency>
 ```
 
-> For more information about dependencies see the Maven documentation.
+> 有关依赖关系的更多信息，请参阅 Maven 文档。
 
-## Grouping Adapters in a Single Maven Project
+## 将适配器分组在单个 Maven 项目中
 {: #grouping-adapters-in-a-single-maven-project }
 
-If you have several adapters in your project you may want to arrange them under a single Maven project. Grouping adapters provides benefits such as build all, deploy all and sharing dependencies. You can also build all and deploy all adapters even if they are not grouped in a single Maven project using the `mfpdev adapter build all` and `mfpdev adapter deploy all` CLI commands.
+如果您的项目中有多个适配器，那么可能想要将这些适配器安排在单个 Maven 项目下。将适配器分组有利于构建所有、部署所有和共享依赖关系等。您也可以使用 `mfpdev adapter build all` 和 `mfpdev adapter deploy all` CLI 命令构建所有和部署所有适配器，即使没有将它们分组在单个 Maven 项目中。
 
-To group adapters you need to:
+要分组适配器，您需要：
 
-1. Create a root folder and call it, for example, "GroupAdapters".
-2. Put the Maven adapter projects in it.
-3. Create a **pom.xml** file:
+1. 创建根文件夹并进行命名，例如“GroupAdapters”。
+2. 将 Maven 适配器项目放入其中。
+3. 创建 **pom.xml** 文件：
 
    ```xml
    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -338,41 +338,42 @@ To group adapters you need to:
    </project>
    ```
    
-  1. Define a **`groupId`** element of your choice
-  2. Add an **`artifactId`** element - the root folder's name
-  3. Add a **`module`** element for each adapter
-  4. Add the **`build`** element
-  5. **Optional**. Replace **localhost:9080** with your specific {{ site.data.keys.mf_server }} IP address and port number.
-  6. **Optional**. Replace the **`mfpfUser`** and **`mfpfPassword`** default values with your admin user name and password.
-  7. **Optional**. Replace the **`mfpfRuntime`** default value with your runtime name.
+  1. 定义您选择的 **`groupId`** 元素
+  2. 添加 **`artifactId`** 元素 - 根文件夹的名称
+  3. 为每个适配器添加 **`module`** 元素
+  4. 添加 **`build`** 元素
+  5. **可选**。使用特定的 {{ site.data.keys.mf_server }} IP 地址和端口号替换 **localhost:9080**。
+  6. **可选**。使用您的 admin 用户名和密码替换 **`mfpfUser`** 和 **`mfpfPassword`** 缺省值。
+  7. **可选**。使用您的运行时名称替换 **`mfpfRuntime`** 缺省值。
 
-4. To [build or deploy](#build-and-deploy-adapters) all adapters, run the Maven commands from the root "GroupAdapters" project.
+4. 要[构建或部署](#build-and-deploy-adapters)所有适配器，请从根目录“GroupAdapters”项目运行 Maven 命令。
 
-## Downloading or Deploying Adapters Using {{ site.data.keys.mf_console }}
+## 使用 {{ site.data.keys.mf_console }} 下载或部署适配器
 {: #downloading-or-deploying-adapters-using-mobilefirst-operations-console}
 
-1. Open your browser of choice and load the {{ site.data.keys.mf_console }} using the address `http://<IP>:<PORT>/mfpconsole/`.  
-2. Click on the "New" button next to Adapters. You have two options to create an adapter:
- * Using Maven or {{ site.data.keys.mf_cli }} as previously explained above.
- * Download a template adapter project (step 2).
-3. Build the adapter Using Maven or {{ site.data.keys.mf_cli }}.
-4. Choose one of the following ways to upload the generated **.adapter** file which can be found in the target folder of the adapter project:
- * Click on the Deploy Adapter button (step 5).
- * Drag and drop the file into the "Create new" adapter screen.
+1. 打开您选择的浏览器，并使用地址 `http://<IP>:<PORT>/mfpconsole/` 来加载 {{ site.data.keys.mf_console }}。  
+2. 单击适配器旁边的“新建”按钮。您有两个创建适配器选项：
+ * 使用 Maven 或 {{ site.data.keys.mf_cli }}，如上所述。
+ * 下载模板适配器项目（步骤 2）。
+3. 使用 Maven 或 {{ site.data.keys.mf_cli }} 构建适配器。
+4. 选择以下方式之一来上载生成的 **.adapter** 文件，该文件可在适配器项目的目标文件夹中找到：
+ * 单击“部署适配器”按钮（步骤 5）。
+ * 将文件拖放到“新建”适配器屏幕中。
 
-    ![Creating adapter using console](Create_adapter_console.png)
+    ![使用控制台创建适配器](Create_adapter_console.png)
 
-5. After successfully deploying the adapter, the details page will be displayed containing the following tabs:
- * Configurations - properties defined by the adapter XML file. Here you can change the configurations without having to deploy again.
- * Resources - a list of the adapter resources.
- * Configurations Files - adapter configuration data, to be used in DevOps environments.
+5. 成功部署适配器之后，将会显示包含以下选项卡的详细信息页面：
+ * 配置 - 由适配器 XML 文件定义的属性。在这里，您可以更改配置，而无需再次部署。
+ * 资源 - 适配器资源列表。
+ * 配置文件 - 要用于 DevOps 环境中的适配器配置数据。
 
-## Updating the Adapter Maven Project
+## 更新适配器 Maven 项目
 {: #updating-the-adapter-maven-project }
 
-To update the adapter Maven project with the latest release, find the **version number** of the API and Plugin artifacts [in Maven's Central Repository](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) by searching for "IBM MobileFirst Platform", and update the following properties in the adapter Maven project's **pom.xml** file:
+要使用最新的发行版更新适配器 Maven 项目，请通过在 [Maven's Central Repository](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) 中
+搜索“IBM MobileFirst Platform”以查找 API 的**版本号**和插件工件，然后更新适配器 Maven 项目的 **pom.xml** 文件中的以下属性：
 
-1. The `adapter-maven-api` version:
+1. `adapter-maven-api` 版本：
 
    ```xml
    <dependency>
@@ -383,7 +384,7 @@ To update the adapter Maven project with the latest release, find the **version 
    </dependency>
    ```
    
-2. The `adapter-maven-plugin` version:
+2. `adapter-maven-plugin` 版本：
 
    ```xml
    <plugin>
@@ -394,16 +395,16 @@ To update the adapter Maven project with the latest release, find the **version 
    </plugin>
    ```
 
-## Working offline
+## 脱机工作
 {: #working-offline }
 
-If you do not have online access to the Maven Central Repository, you can share {{ site.data.keys.product }} Maven artifacts in the internal repository of your organization.
+如果没有 Maven Central Repository 的在线访问权，那么您可以共享贵组织内部存储库中的 {{ site.data.keys.product }} Maven 工件。
 
-1. [Visit the Downloads page]({{site.baseurl}}/downloads/) and download the {{ site.data.keys.mf_dev_kit_full }} Installer.
-2. Start {{ site.data.keys.mf_server }} and in a browser, load the {{ site.data.keys.mf_console }} from the following URL: `http://<your-server-host:server-port>/mfpconsole`.
-3. Click **Download Center**. Under **Tools → Adapter Archetypes**, click **Download**. The **mfp-maven-central-artifacts-adapter.zip** archive is downloaded.
-4. Add the adapter archetypes and security checks to the internal Maven repository by running the **install.sh** script for Linux and Mac, or the **install.bat** script for Windows.
-5. The following JAR files are required by adapter-maven-api. Make sure they are located either in developers' local **.m2** folder, or in the Maven repository of your organization. You can download them from The Central Repository.
+1. [访问“下载”页面]({{site.baseurl}}/downloads/)，然后下载 {{ site.data.keys.mf_dev_kit_full }} 安装程序。
+2. 启动 {{ site.data.keys.mf_server }}，然后在浏览器中从以下 URL 装入 {{ site.data.keys.mf_console }}：`http://<your-server-host:server-port>/mfpconsole`。
+3. 单击**下载中心**。在**工具 → 适配器 Archetype** 下，单击**下载**。这样会下载 **mfp-maven-central-artifacts-adapter.zip** 归档。
+4. 通过运行适用于 Linux 和 Mac 的 **install.sh** 脚本或适用于 Windows 的 **install.bat** 脚本，将适配器 archetype 和安全性检查添加到内部 Maven 存储库。
+5. adapter-maven-api 需要以下 JAR 文件。确保这些文件位于开发人员的本地 **.m2** 文件夹或位于贵组织的 Maven 存储库中。您可以从 The Central Repository 下载这些文件。
     * javax.ws.rs:javax.ws.rs-api:2.0
     * javax:javaee-web-api:6.0
     * org.apache.httpcomponents:httpclient:4.3.4
@@ -415,11 +416,11 @@ If you do not have online access to the Maven Central Repository, you can share 
     * com.ibm.websphere.appserver.api:com.ibm.websphere.appserver.api.json:1.0
     * javax.servlet:javax.servlet-api:3.0.1
 
-## Tutorials to follow next
+## 后续教程
 {: #tutorials-to-follow-next }
 
-* [Learn about Java adapters](../java-adapters/)
-* [Learn about JavaScript adapters](../javascript-adapters/)
-* [Develop adapters in IDEs](../developing-adapters/)
-* [Testing and debugging adapters](../testing-and-debugging-adapters/)
-* [Review all Adapters tutorials](../#tutorials-to-follow-next)
+* [了解 Java 适配器](../java-adapters/)
+* [了解 JavaScript 适配器](../javascript-adapters/)
+* [在 IDE 中开发适配器](../developing-adapters/)
+* [测试和调试适配器](../testing-and-debugging-adapters/)
+* [查看所有适配器教程](../#tutorials-to-follow-next)

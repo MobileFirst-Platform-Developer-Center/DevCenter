@@ -11,7 +11,7 @@ weight: 6
 开发和测试 Web 应用程序与在所选的 Web 浏览器中预览本地 HTML 文件一样简单。  
 开发人员可使用他们选择的 IDE 以及符合他们需求的任何框架。
 
-但是，在 Web 应用程序的开发过程中存在一个障碍。由于违反[同源策略](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)，Web 应用程序可能会发生一些错误。同源策略是 Web 浏览器上的一项限制。例如，如果在 **example.com** 域上托管某个应用程序，那么不允许同一应用程序再访问其他服务器上提供的内容或 {{ site.data.keys.mf_server }} 上的内容。
+但是，在 Web 应用程序的开发过程中存在一个障碍。由于违反[同源策略](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)，Web 应用程序可能会发生一些错误。同源策略是对 Web 浏览器施加的一项限制。例如，如果在 **example.com** 域上托管某个应用程序，那么不允许同一应用程序访问其他服务器上的内容或 {{ site.data.keys.mf_server }} 上的内容。
 
 [应在支持的拓扑中处理使用 {{ site.data.keys.product }} Web SDK](../../../application-development/sdk/web) 的 Web 应用程序，例如，在保持同一个源的情况下使用逆向代理在内部将请求重定向到相应服务器。
 
@@ -20,10 +20,27 @@ weight: 6
 - 通过也托管 {{ site.data.keys.mf_server }} 的同一 WebSphere Full/Liberty Profile 应用程序服务器提供 Web 应用程序资源。
 - 使用 Node.js 作为代理以将应用程序请求重定向到 {{ site.data.keys.mf_server }}。
 
-<br/>
-**先决条件：**  
-下面要求在开发人员工作站上安装 Apache Maven 或 Node.js。  
-有关指示信息，请参阅[安装指南](../mobilefirst/installation-guide/)。
+#### 跳至：
+{: #jump-to }
+- [先决条件](#prerequisites)
+- [使用 WebSphere Liberty Profile 提供 Web 应用程序资源](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
+- [使用 Node.js](#using-nodejs)
+- [下一步](#next-steps)
+
+## 先决条件
+{: #prerequisites }
+-   {: #web-app-supported-browsers }
+    Web 应用程序在以下浏览器版本中受支持。版本号表示各自浏览器的最早完全受支持的版本。
+
+    | 浏览器               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android 浏览器   |
+    |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
+    | **受支持的版本** |  {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
+
+    <sup>*</sup> 在 Safari 中，专用浏览模式仅支持单页应用程序 (SPA)。其他应用程序可能会表现出异常行为。
+
+    {% comment %} [sharonl][c-web-browsers-ms-edge] 请参阅任务 111165 中有关 Microsoft Edge 支持的信息。{% endcomment %}
+
+-   以下安装指示信息要求在开发人员工作站上安装 Apache Maven 或 Node.js。有关更多指示信息，请参阅 [安装指南](../mobilefirst/installation-guide/)。
 
 ## 使用 WebSphere Liberty Profile 提供 Web 应用程序资源
 {: #using-websphere-liberty-profile-to-serve-the-web-application-resources }
@@ -78,7 +95,7 @@ Node.js 可用作逆向代理，以用于将请求从 Web 应用程序传送到 
    npm install --save request
    ```
 
-2. 在 **node_modules** 文件夹旁边创建一个新文件，例如，**proxy.js**。
+2. 在 **node_modules** 文件夹中创建新文件，例如 **proxy.js**。
 3. 将以下代码添加到该文件中：
 
    ```javascript

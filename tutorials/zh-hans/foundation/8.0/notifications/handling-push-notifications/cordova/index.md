@@ -13,7 +13,7 @@ weight: 4
 {: #overview }
 在 iOS、Android 和 Windows Cordova 应用程序可以接收和显示推送通知之前，需要将 **cordova-plugin-mfp-push** Cordova 插件添加到 Cordova 项目中。在配置应用程序后，可以使用 {{ site.data.keys.product_adj }} 提供的通知 API 来注册和注销设备、预订和取消预订标记以及处理通知。在本教程中，您将学会如何在 Cordova 应用程序中处理推送通知。
 
-> **注：**在此发行版中，Cordova 应用程序因为某个缺陷而**不支持**已认证的通知。但是，提供了以下变通方法：可通过 `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );` 来包装每个 `MFPPush` API 调用。提供的样本应用程序中使用了此变通方法。
+> **注：**由于还存在缺陷，Cordova 应用程序当前**不支持**已认证的通知。但是，提供了以下变通方法：可通过 `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );` 来包装每个 `MFPPush` API 调用。提供的样本应用程序中使用了此变通方法。
 
 有关 iOS 中的静默通知或交互式通知的信息，请参阅：
 
@@ -24,7 +24,7 @@ weight: 4
 
 * 确保您已阅读过下列教程：
     * [设置 {{ site.data.keys.product_adj }} 开发环境](../../../installation-configuration/#installing-a-development-environment)
-    * [将 {{site.data.keys.product }} SDK 添加到 Cordova 应用程序](../../../application-development/sdk/cordova)
+    * [将 {{ site.data.keys.product }} SDK 添加到 Cordova 应用程序](../../../application-development/sdk/cordova)
     * [推送通知概述](../../)
 * 本地运行的 {{ site.data.keys.mf_server }} 或远程运行的 {{ site.data.keys.mf_server }}
 * 安装在开发人员工作站上的 {{ site.data.keys.mf_cli }}
@@ -41,7 +41,7 @@ weight: 4
 {: #notifications-configuration }
 创建新的 Cordova 项目或使用现有项目，并添加一个或多个受支持的平台：iOS、Android 或 Windows。
 
-> 如果该项目中还没有 {{ site.data.keys.product_adj }} Cordova SDK，请遵循[将 {{site.data.keys.product }} SDK 添加到 Cordova 应用程序](../../../application-development/sdk/cordova)教程中的指示信息。
+> 如果该项目中还没有 {{ site.data.keys.product_adj }} Cordova SDK，请遵循[将 {{ site.data.keys.product }} SDK 添加到 Cordova 应用程序](../../../application-development/sdk/cordova)教程中的指示信息。
 
 ### 添加“推送”插件
 {: #adding-the-push-plug-in }
@@ -60,13 +60,22 @@ weight: 4
    ```
 
 ### iOS 平台
-{: #ios-platform } 
-iOS 平台需要完成一个额外的步骤。  
+{: #ios-platform }
+iOS 平台需要一个额外步骤。  
 在 Xcode 的**功能**屏幕中，为您的应用程序启用推送通知。
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **要点：**为应用程序选择的 bundleId 必须与 Apple Developer 站点中先前创建的 AppId 相匹配。请参阅[推送通知概述]教程。
 
 ![该功能在 Xcode 中的位置的图像](push-capability.png)
+
+### Android 平台
+{: #android-platform }
+Android 平台需要一个额外步骤。  
+在 Android Studio 中，将以下 `activity` 添加到 `application` 标记：
+
+```xml
+<activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler" android:theme="@android:style/Theme.NoDisplay"/>
+```
 
 ## 通知 API
 {: #notifications-api }

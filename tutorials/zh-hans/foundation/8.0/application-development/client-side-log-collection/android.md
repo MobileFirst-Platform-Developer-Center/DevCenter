@@ -17,9 +17,7 @@ weight: 3
 {: #enabling-log-capture }
 缺省情况下，已启用日志捕获。日志捕获将日志保存到客户机并且可以编程方式启用或禁用。使用显式发送调用或自动日志将日志发送到服务器
 
-> **注：**按详细级别启用日志捕获可能在客户机通过网络发送日志时影响设备 CPU 使用、文件系统空间和有效内容大小。
-
-要禁用日志捕获：
+> **注：**按详细级别启用日志捕获可能在客户机通过网络发送日志时影响设备 CPU 使用、文件系统空间和有效内容大小。要禁用日志捕获：
 
 ```java
 Logger.setCapture(false);
@@ -30,7 +28,6 @@ Logger.setCapture(false);
 根据应用程序逻辑，将日志发送到 {{ site.data.keys.product_adj }}。也可启用自动日志发送以自动发送日志。如果在达到最大大小后才发送日志，那么将清除日志文件以容纳更新的日志。
 
 > **注：**收集日志数据时，采用以下模式。按时间间隔发送数据可确保您在 {{ site.data.keys.mf_analytics_console }} 中近实时地查看日志数据。
-
 ```java
 Timer timer = new Timer();
 timer.schedule(new TimerTask() {
@@ -53,7 +50,7 @@ Logger.setMaxFileSize(150000);
 
 ## 自动日志发送
 {: auto-log-sending }
-缺省情况下，启用自动日志发送。每次将成功的资源请求发送到服务器后，也将发送捕获的日志，并且发送之间存在 60 秒最小时间间隔。可以从客户机启用或禁用自动日志发送。缺省情况下，启用自动日志发送。
+缺省情况下，启用自动日志发送。每次将成功的资源请求发送到服务器后，也将发送捕获的日志，并且发送之间存在 60 秒最小时间间隔。可以从客户机启用或禁用自动日志发送。
 
 要启用：
 
@@ -93,7 +90,7 @@ Logger.setAutoSendLogs(false);
 {: #fetching-server-configuration-profiles }
 可以通过客户机或通过从服务器中检索配置概要文件来设置日志记录级别。在
 {{ site.data.keys.mf_analytics_console }}
-中，可以全局（针对所有记录器实例）或针对一个或多个特定程序包设置日志级别。 
+中，可以全局（针对所有记录器实例）或针对一个或多个特定程序包设置日志级别。
 
 > 有关从 {{ site.data.keys.mf_analytics_console }} 配置过滤器的信息，请参阅[配置日志过滤器](../../../analytics/console/log-filters/)。
 为便于客户机访存服务器上设置的配置覆盖，必须从定期运行的代码中某一位置调用 `updateConfigFromServer` 方法，例如，在应用程序生命周期回调中。

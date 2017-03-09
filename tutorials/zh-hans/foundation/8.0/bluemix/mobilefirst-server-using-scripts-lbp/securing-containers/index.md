@@ -66,7 +66,7 @@ IBM MobileFirst Foundation 实例安全配置应包含加密密码，启用应�
 
 ### 应用程序真实性验证
 {: #application-authenticity-validation }
-要避免未经授权的移动应用程序访问 {{ site.data.keys.mf_server }}，请启用应用程序真实性安全性检查。了解更多...
+要避免未经授权的移动应用程序访问 {{ site.data.keys.mf_server }}， [ 请启用应用程序真实性安全性检查](../../../authentication-and-security/application-authenticity)。
 
 
 ### 保护后端连接的安全
@@ -287,18 +287,10 @@ return "1.0";
    </ldapRegistry>
    ```
     
-    
-    
-    
     条目 | 描述    
     --- | ---
     `host` 和 `port` | 您的本地 LDAP 服务器的主机名（IP 地址）和端口号。`baseDN` | LDAP 中捕获有关特定组织的所有详细信息的域名 (DN)。`bindDN="uid=admin,ou=system"
 ` | LDAP 服务器的绑定详细信息。例如，Apache 目录服务的缺省值将为 `uid=admin,ou=system`。`bindPassword="secret"	` | LDAP 服务器的绑定密码。例如，Apache 目录服务的缺省值为 `secret`。`<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 用于在认证和授权期间查询目录服务（如 Apache）的定制过滤器。        
-
-
-
-
-
 2. 确保为 `appSecurity-2.0` 和 `ldapRegistry-3.0` 启用以下功能：
 
    ```xml

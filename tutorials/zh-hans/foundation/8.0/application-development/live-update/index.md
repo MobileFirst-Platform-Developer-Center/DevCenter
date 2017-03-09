@@ -160,8 +160,8 @@ downloads:
                             <li><i>id</i> - 唯一分段标识。字符串，不可编辑。</li>
                             <li><i>name</i> - 分段的描述性名称。字符串，可编辑。</li>
                             <li><i>description</i> - 分段的简短描述。字符串，可编辑。</li>
-                            <li><i>Features</i> - 在模式中定义的功能部件列表，用户可为与模式缺省值分离的功能部件设置静态值。</li>
-                            <li><i>Properties</i> - 模式中定义的属性列表，用户可为与模式缺省值分离的属性设置静态值。</li>
+                            <li><i>Features</i> - 在模式中定义的功能部件列表，用户可为功能部件设置不同于模式缺省值的静态值。</li>
+                            <li><i>Properties</i> - 模式中定义的属性列表，用户可为属性设置不同于模式缺省值的静态值。</li>
                         </ul>
                     </li>
                 </ul>
@@ -245,7 +245,7 @@ cordova plugin add cordova-plugin-mfp-liveupdate
         transitive: true
    }   
    ```
-    
+
 ## 使用实时更新 SDK
 {: #using-the-live-update-sdk }
 可通过多种方法使用实时更新 SDK。

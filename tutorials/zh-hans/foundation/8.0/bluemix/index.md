@@ -3,7 +3,7 @@ layout: tutorial
 breadcrumb_title: Foundation on Bluemix
 title: IBM MobileFirst Foundation on Bluemix
 relevantTo: [ios,android,windows,javascript]
-weight: 9
+weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述

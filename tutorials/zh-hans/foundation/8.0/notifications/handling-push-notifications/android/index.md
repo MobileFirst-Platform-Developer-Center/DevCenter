@@ -73,7 +73,7 @@ weight: 6
     	    android:protectionLevel="signature" />
       ```
       
-	* 向 `application` 标记中添加以下内容（`MFPPush Intent Service`、`MFPPush Instance ID Listener Service`）：
+	* 向 `application` 标记添加以下内容：
 
 	  ```xml
       <!-- GCM Receiver -->
@@ -104,6 +104,9 @@ weight: 6
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
+
+      <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
+           android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
 
 	  > **注：**请确保将 `your.application.package.name` 替换为您应用程序的实际包名。
@@ -121,7 +124,7 @@ weight: 6
 {: #notifications-api }
 ### MFPPush 实例
 {: #mfppush-instance }
-必须在 `MFPPush` 实例上发出所有 API 调用。要实现这一点，可创建一个类级别字段（例如 `private MFPPush push = MFPPush.getInstance();`），然后在该类中调用 `push.<api-call>`。
+必须在一个 `MFPPush` 实例上发出所有 API 调用。为此，需要创建一个类级别字段（例如 `private MFPPush push = MFPPush.getInstance();`），然后在该类中调用 `push.<api-call>`。
 
 也可以针对要访问推送 API 方法的每个实例都调用 `MFPPush.getInstance().<api_call>`。
 
@@ -132,6 +135,7 @@ weight: 6
 > 在[凭证验证](../../../authentication-and-security/credentials-validation/android)教程中了解有关验证问题处理程序的更多信息。
 ### 客户端
 {: #client-side }
+
 | Java 方法 | 描述 |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`initialize(Context context);`](#initialization) | 针对提供的上下文，初始化 MFPPush。 |

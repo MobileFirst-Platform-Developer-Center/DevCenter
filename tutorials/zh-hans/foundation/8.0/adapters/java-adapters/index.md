@@ -45,14 +45,14 @@ Java 适配器基于 JAX-RS 2.0 规范。换句话说，Java 适配器是 JAX-RS
 
 	<JAXRSApplicationClass>com.sample.JavaAdapterApplication</JAXRSApplicationClass>
 	
-	<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
-    	<property name="maxAttempts" defaultValue="3"/>
-	</securityCheckDefinition>
-	
 	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
 	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
 	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
-</mfp:adapter>
+<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
+    	<property name="maxAttempts" defaultValue="3"/>
+	</securityCheckDefinition>
+	
+	</mfp:adapter>
 ```
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">

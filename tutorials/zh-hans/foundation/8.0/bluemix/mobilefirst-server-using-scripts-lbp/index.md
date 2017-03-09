@@ -81,23 +81,22 @@ weight: 3
                             <li><b>keystore.xml</b> - 用于 SSL 加密的安全证书存储库的配置。必须在 ./usr/security 文件夹中引用列出的文件。</li>
                             <li><b>mfpfproperties.xml</b> - {{ site.data.keys.mf_server }} 的配置属性。请参阅以下文档主题中列出的受支持属性：
                                 <ul>
-                               <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service"> {{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a></li>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime"> {{ site.data.keys.product_adj }} 运行时的 JNDI 属性的列表</a></li>
+                                <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }}运行时的 JNDI 属性的列表</a></li>
                                 </ul>
                             </li>
                             <li><b>registry.xml</b> - 用户注册表配置。basicRegistry - 将基于 XML 的基本用户注册表配置作为缺省值提供。可以为 basicRegistry 配置用户名和密码，或者也可以配置 ldapRegistry。</li>
                         </ul>
                     </li>
-                    <li><b>env</b> 文件夹：包含用于服务器初始化 (server.env) 和定制 JVM 选项 (jvm.options) 的环境属性。
-		    <br /> 
+                    <li><b>env</b> 文件夹：包含用于服务器初始化 (server.env) 和定制 JVM 选项 (jvm.options) 的环境属性。<br/>
                     </li>
 
                     <li><b>security</b> 文件夹：用于存储密钥存储库、信任库和 LTPA 密钥文件 (ltpa.keys)。</li>
                 
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>关闭本节</b></a>
-                                </div>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>关闭此节</b></a>
+                                    </div>
         </div>
     </div>
 </div>
@@ -105,8 +104,7 @@ weight: 3
 
 ## 设置 {{ site.data.keys.mf_server }} 
 {: #setting-up-the-mobilefirst-server }
-您可以选择以交互方式运行这些脚本，或者通过使用配置文件来运行脚本：
-最好以交互方式运行一次脚本，这也将记录自变量 (**recorded-args**)。稍后，您可以使用自变量文件以非交互方式运行脚本。
+您可以选择以交互方式运行这些脚本，或者通过使用配置文件来运行脚本：最好以交互方式运行一次脚本，这也将记录自变量 (**recorded-args**)。稍后，您可以使用自变量文件以非交互方式运行脚本。
 
 > **注：**不记录密码，您将需要在自变量文件中手动添加密码。
 
@@ -127,13 +125,13 @@ weight: 3
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。您可以在 <b>args</b> 文件夹中找到空的模板文件和自变量说明，或者在 <b>recorded-args</b> 文件夹中发布以交互方式运行脚本的命令。文件如下：<br/>
+            <b>args</b> 文件夹包含一组配置文件，其中包含运行脚本所需的自变量。您可以在 <b>args</b> 文件夹中找到空的模板文件和自变量说明，或者之后可在 <b>recorded-args</b> 文件夹中以交互方式运行脚本。文件如下：<br/>
             
               <h4>initenv.properties</h4>
               此文件包含用于运行环境初始化的属性。
               <h4>prepareserverdbs.properties</h4>
-              {{ site.data.keys.mf_bm_short }} 服务需要外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional 数据库</i>实例</a>（标记为 OLTP 或 Transactional 的所有计划）。<br/>
-              <b>注：</b>dashDB Enterprise Transactional 计划的部署针对标记为“按使用付费”的计划立即生效。请确保选择合适的计划之一，如 <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
+              {{ site.data.keys.mf_bm_short }} 服务需要外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional 数据库</i>实例</a>（标记为 OLTP 或 Transactional 的所有套餐）。<br/>
+              <b>注：</b>dashDB Enterprise Transactional 套餐的部署针对标记为“按使用量收费”的套餐立即生效。请确保选择合适的套餐之一，如 <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
               在设置 dashDB 实例后，请提供所需自变量。
               
               <h4>prepareserver.properties</h4>
@@ -198,9 +196,11 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-                  </li>
+
+</li>
                   <li><b>prepareserver.sh - 准备 {{ site.data.keys.mf_server }}</b><br />
-                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。要查看已登陆的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code><br/>
+                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。要查看已登录的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code>
+<br/>
                   
 
 {% highlight bash %}
@@ -247,7 +247,7 @@ prepareserver.sh --name APP_NAME
 
 
 装入以下 URL 以启动 {{ site.data.keys.mf_console }}：`http://APP_HOST.mybluemix.net/mfpconsole`（可能需要一些时间才能完成）  
-遵循[使用 {{site.data.keys.mf_cli }} 来管理 {{ site.data.keys.product_adj }}工件](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)教程中的指示信息来添加远程服务器。  
+遵循[使用 {{ site.data.keys.mf_cli }} 来管理 {{ site.data.keys.product_adj }} 工件](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)教程中的指示信息来添加远程服务器。  
 
 通过使用 IBM Bluemixmay 上运行的 {{ site.data.keys.mf_server }}，现在您可以启动自己的应用程序开发。
 
@@ -278,8 +278,7 @@ prepareserver.sh --name APP_NAME
 ## 应用 {{ site.data.keys.mf_server }} 修订
 {: #applying-mobilefirst-server-fixes }
 Bluemix上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM Fix Central](http://www.ibm.com/support/fixcentral) 获取。  
-应用临时修订之前，请备份现有的配置文件。配置文件位于 
-**package_root/mfpf-server-libertyapp/usr** 文件夹中。
+应用临时修订之前，请备份现有的配置文件。配置文件位于 **package_root/mfpf-server-libertyapp/usr** 文件夹中。
 
 1. 下载临时修订归档并将内容解压缩到现有安装文件夹，覆盖现有文件。
 2. 将备份配置文件复原至 **/mfpf-server-libertyapp/usr** 文件夹，覆盖新安装的配置文件。

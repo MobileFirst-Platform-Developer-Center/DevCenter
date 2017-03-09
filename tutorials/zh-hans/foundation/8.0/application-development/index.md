@@ -2,7 +2,7 @@
 layout: tutorial
 title: 开发应用程序
 show_children: true
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 开发概念和概述
