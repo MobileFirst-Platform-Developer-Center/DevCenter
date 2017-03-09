@@ -20,7 +20,7 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **February 20
 
 **Dynamic App Authenticity**
 
-This iFix introduces a new implementation of *Application Authenticity*. This implementation does not require the offline **mfp-app-authenticity** tool for generating the **.authenticity_data** file. Instead, you can enable or disable *Application Authenticity* from the MobileFirst console. For more information see [Configuring Application Authenticity](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/application-authenticity/#configuring-application-authenticity ).
+This iFix introduces a new implementation of *Application Authenticity*. This implementation does not require the offline **mfp-app-authenticity** tool for generating the **.authenticity_data** file. Instead, you can enable or disable *Application Authenticity* from the MobileFirst console. For more information see [Configuring Application Authenticity](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/authentication-and-security/application-authenticity).
 
 >**Important:** Android, iOS, Windows, Xamarin, Web & Cordova applications built with _**iFix 8.0.0.00-20170216-202020**_ will require a _**minimum server version of 8.0.0.00-20170216-202020**_. If you're using an older version of the server, please upgrade your server by downloading the latest build from [FixCentral](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc) or from the [Downloads](https://mobilefirstplatform.ibmcloud.com/downloads/) page.
 
