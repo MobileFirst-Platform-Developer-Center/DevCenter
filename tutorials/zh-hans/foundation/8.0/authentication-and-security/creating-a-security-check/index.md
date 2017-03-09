@@ -8,9 +8,9 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
+
 安全性检查构成了 {{ site.data.keys.product_adj }} 安全框架的基本服务器端构建块。安全性检查是实施特定授权逻辑的服务器端实体，如获取和验证客户机凭证。可通过向资源分配一个映射到零项或多项安全性检查的作用域来保护资源。安全框架可确保仅授权传递保护作用域的所有安全性检查的客户机访问资源。可使用安全性检查来授权访问 {{ site.data.keys.mf_server }} 上托管的资源和外部资源服务器上的资源。
 
-理论上，Java 和 JavaScript 适配器均可在其各自的定义文件中定义安全性检查，但要注意，安全性检查仅以 Java 代码形式实施。  
 适配器可以是*资源*适配器（意味着它提供发送到客户机的资源和内容）或 *SecurityCheck* 适配器，或者同时为这**两者**。
 
 > <b>注：</b>在适配器内实施安全性检查时，{{ site.data.keys.product_adj }} 安全框架和适配器 API 是独立的，不能混用。因此，您无法在安全性检查代码中使用适配器 API（如 `AdpatersAPI` 接口），也不能在适配器资源代码中使用安全性检查 API。
@@ -31,13 +31,14 @@ weight: 2
 #### 跳转至：
 {: #jump-to }
 * [定义安全性检查](#defining-a-security-check)
-* [安全性检查实施](#security-check-implementation)
-* [安全性检查配置](#security-check-configuration)
-* [预定义安全性检查](#predefined-security-checks)
-* [后续关注教程](#tutorials-to-follow-next)
+* [实施安全性检查](#security-check-implementation)
+* [配置安全性检查](#security-check-configuration)
+* [预定义的安全性检查](#predefined-security-checks)
+* [后续内容](#what-s-next)
 
 ## 定义安全性检查
 {: #defining-a-security-check }
+
 [创建 Java 或 JavaScript 适配器](../../adapters/creating-adapters/)或者使用现有项。
 
 > 创建 Java 适配器时，缺省模板会假定适配器将提供**资源**。开发人员可选择将安全性检查和资源捆绑到同一适配器中，或将其分散到不同的适配器中。
@@ -57,7 +58,7 @@ weight: 2
 * `name` 属性为安全性检查的名称。
 * `class` 属性用于指定安全性检查的实现 Java 类。您需要创建此类。
 * 安全性检查可以使用 `property` 元素列表来[进一步配置](#security-check-configuration)。
-* 有关如何定义定制属性，请参阅[安全性检查配置](#security-check-configuration)。
+* 有关定义定制属性的信息，请参阅[配置安全性检查](#security-check-configuration)。
 
 在成功将具有安全性检查定义的适配器部署到 {{ site.data.keys.mf_server }} 之后，您还可以查看安全性检查及其配置信息，并通过 **{{ site.data.keys.mf_console }} → 适配器 → [您的适配器]**来更改运行时配置：
 
@@ -66,8 +67,9 @@ weight: 2
 对于每个属性，`defaultValue` 属性中配置的值都会显示为当前值。您可以更改该值，以覆盖安全性检查定义中的缺省值。您还可以在任何时候复原安全性检查定义中的原始缺省值。 
 * 您也可以从 {{ site.data.keys.mf_console }} 的**应用程序**部分选择某个应用程序版本。
 
-## 安全性检查实施
+## 实施安全性检查
 {: #security-check-implementation }
+
 为安全性检查创建 **Java 类**。该实施应扩展所提供的某个基类，如下所示。所选父类确定了定制与简化之间的平衡。
 
 ### 安全性检查
@@ -98,8 +100,9 @@ weight: 2
 
 > 在 [UserAuthentication 安全性检查](../user-authentication/)教程中了解更多信息。
 
-## 安全性检查配置
+## 配置安全性检查
 {: #security-check-configuration }
+
 每个安全性检查实现类均可使用 `SecurityCheckConfiguration` 类，用来定义可用于此安全性检查的属性。每个基本 `SecurityCheck` 类均随附一个匹配的 `SecurityCheckConfiguration` 类。您可以创建自己的实现，用于扩展某个基本 `SecurityCheckConfiguration` 类，并将其用于定制安全性检查。
 
 例如，`UserAuthenticationSecurityCheck` 的 `createConfiguration` 方法可返回 `UserAuthenticationSecurityCheckConfig` 实例。
@@ -202,16 +205,18 @@ public class UserAuthenticationSecurityCheckConfig extends CredentialsValidation
    
 4. 运行以下命令来部署更新的配置 JSON 文件：`mfpdev app push`。
 
-## 预定义安全性检查
+## 预定义的安全性检查
 {: #predefined-security-checks }
+
 同时还可以使用以下预定义安全性检查：
 
 - [应用程序真实性](../application-authenticity/)
 - [直接更新](../../application-development/direct-update)
 - LTPA
 
-## 后续关注教程
-{: #tutorials-to-follow-next }
+## 后续内容
+{: #what-s-next }
+
 在以下教程中继续阅读有关安全性检查的内容。  
 请记住在完成开发或更改时部署适配器。
 

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 认证和安全性
-weight: 6
+weight: 7
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -61,13 +61,13 @@ OAuth 协议将授权服务器与托管资源的资源服务器的角色相分�
                 <li>使用 {{ site.data.keys.mf_console }}
                     <ul>
                         <li>选择 <b>[您的应用程序] → 安全</b>选项卡。</li>
-                        <li>在<b>令牌配置</b>部分中，将<b>最长令牌到期时间段（秒）</b>字段的值设置为您的首选值，然后单击**保存**。您可以随时重复此过程以更改最长令牌到期时间段，或者选择<b>复原缺省值</b>以恢复缺省值。</li>
+                        <li>在<b>令牌配置</b>部分中，将<b>最长令牌到期时间段（秒）</b>字段的值设置为您的首选值，然后单击<b>保存</b>。您可以随时重复此过程以更改最长令牌到期时间段，或者选择<b>复原缺省值</b>以恢复缺省值。</li>
                     </ul>
                 </li>
                 <li>编辑应用程序的配置文件<ol>
                         <li>从<b>命令行窗口</b>中，导航至项目的根文件夹并运行 <code>mfpdev app pull</code>。</li>
-                        <li>打开 <b>[project-folder\mobilefirst</b> 文件夹中的配置文件。</li>
-                        <li>通过定义 <code>maxTokenExpiration</code> 属性来编辑文件，键入其值并将该值设置为最长访问令牌到期时间段（秒）：
+                        <li>打开位于 <b>[project-folder]\mobilefirst</b> 文件夹的配置文件。</li>
+                        <li>编辑文件：定义 <code>maxTokenExpiration</code> 属性，并将该值设置为最长的访问令牌到期时间段（秒）：
 
 {% highlight xml %}
 {
@@ -193,8 +193,8 @@ scope = `access-restricted deletePrivilege`
 您还可以使用必需的配置来手动编辑应用程序的配置 JSON 文件，并将更改推送回 {{ site.data.keys.mf_server }}。
 
 1. 从**命令行窗口**导航至项目的根文件夹，然后运行 `mfpdev app pull`。
-2. 打开位于 **[project-folder\mobilefirst** 文件夹中的配置文件。
-3. 通过定义 `scopeElementMapping` 属性来编辑文件，在此属性中，定义由选中的作用域元素的名称和零项或多项空格分隔的安全性检查（将元素映射到此检查）的字符串组成的数据对。例如： 
+2. 打开位于 **[project-folder]\mobilefirst** 文件夹的配置文件。
+3. 编辑文件：定义 `scopeElementMapping` 属性，在此属性中，定义由选中的作用域元素的名称和零项或多项空格分隔的安全性检查（将元素映射到此检查）的字符串组成的数据对。例如： 
 
     ```xml
     "scopeElementMapping": {
@@ -216,12 +216,11 @@ scope = `access-restricted deletePrivilege`
 可以在应用程序级别定义应用于应用程序所使用的所有资源的作用域。除了所请求资源作用域的安全性检查，安全框架还运行这些检查（如果存在）。
 
 **注：**
-
 * 在访问[不受保护的资源](#unprotected-resources)时，不会应用必需的应用程序作用域。
 * 为资源作用域授予的访问令牌不包含必需的应用程序作用域。
 
 <br/>
-在 {{ site.data.keys.mf_console }} 中，选择**[您的应用程序] → 安全**。在**必需的应用程序作用域**下，单击**添加到作用域**。
+在 {{ site.data.keys.mf_console }} 中，从导航侧边栏的**应用程序**部分选择应用程序，然后选择**安全性**选项卡。在**必需的应用程序作用域**下，选择**添加到作用域**。
 <img class="gifplayer" alt="必需的应用程序作用域" src="mandatory-application-scope.png"/>
 
 您还可以使用必需的配置来手动编辑应用程序的配置 JSON 文件，并将更改推送回 {{ site.data.keys.mf_server }}。
@@ -337,4 +336,5 @@ public void deleteUser(@PathParam("userId") String userId){
 
 ## 后续关注教程
 {: #tutorials-to-follow-next }
-通过关注侧边栏导航中的教程，继续阅读 {{ site.data.keys.product_adj }} Foundation 中有关认证的信息。  
+通过关注侧边栏导航中的教程，继续阅读 {{ site.data.keys.product_adj }} Foundation 中有关认证的信息。
+

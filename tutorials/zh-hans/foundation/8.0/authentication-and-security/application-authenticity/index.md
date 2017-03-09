@@ -7,7 +7,8 @@ weight: 9
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-通过发出 HTTP 请求，应用程序可访问 {{ site.data.keys.mf_server }} 提供访问权的企业 HTTP 服务 (API)。预定义应用程序真实性[安全检查](../)可确保尝试连接到 {{ site.data.keys.mf_server }} 实例的应用程序是真实的应用程序。
+
+为了正确保护应用程序，请启用预定义的{{ site.data.keys.product_adj }}应用程序真实性[安全检查](../#security-check) (`appAuthenticity`)。在启用后，在向应用程序提供任何服务之前，此检查会先验证该应用程序的真实性。
 
 要启用应用程序真实性，可遵循 **{{ site.data.keys.mf_console }}** → **[您的应用程序]** → **真实性**中的屏幕说明，或查看以下信息。
 
@@ -70,7 +71,7 @@ weight: 9
 
 #### 要配置 `expirationSec` 属性，请执行以下操作：
 {: #to-configure-the-expirationsec property }
-1. 装入 {{ site.data.keys.mf_console }}，导航至 **[您的应用程序]** → **安全性** → **安全性检查配置**，然后单击**新建**。
+1. 装入 {{ site.data.keys.mf_console }}，导航至 **[您的应用程序] ** → **安全性** → **安全性-检查配置**，然后单击**新建**。
 
 2. 搜索 `appAuthenticity` 作用域元素。
 

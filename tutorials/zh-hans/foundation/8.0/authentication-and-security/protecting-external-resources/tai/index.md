@@ -107,8 +107,7 @@ Java 库是作为 JAR 文件 (**com.ibm.mfp.oauth.tai-8.0.0.jar**) 提供的。
 
 ## 使用来自 TAI 的令牌自省数据
 {: #using-the-token-introspection-data-from-the-tai }
-通过资源，您可能想要访问 TAI 拦截和验证的令牌信息。您可以在此用户文档主题中查找在令牌上找到的数据列表：https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-mfp-java-token-validator/html/com/ibm/mfp/java/token/validator/data/package-summary.html
-要获取此数据，请使用 [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html)：
+通过资源，您可能想要访问 TAI 拦截和验证的令牌信息。您可以在 [API 参考大全](../../../api/java-token-validator)中找到在令牌上发现的数据列表。要获得此数据，请使用 [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html)：
 
 ```java
 Map<String, String> credentials = WSSubject.getCallerSubject().getPublicCredentials(Hashtable.class).iterator().next();

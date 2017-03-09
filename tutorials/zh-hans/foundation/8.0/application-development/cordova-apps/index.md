@@ -75,7 +75,7 @@ Merges 文件夹能够容纳特定于平台的 Web 资源（HTML、CSS 和 JavaS
 {: #mobilefirst-apis }
 在[向 Cordova 应用程序添加 {{ site.data.keys.product_adj }}Cordova SDK](../../application-development/sdk/cordova) 后，API 方法的 {{ site.data.keys.product_adj }} 集合即可供使用。
 
-> 有关可用 API 方法的完整列表，请参阅用户文档中的“V8.0.0 中的客户机 API 更改”主题。
+> 有关可用 API 方法的完整列表，请参阅 [API 参考大全](../../api)。
 
 ## {{ site.data.keys.product_adj }} SDK 启动流程
 {: #mobilefirst-sdk-startup-flow }
@@ -91,8 +91,8 @@ Merges 文件夹能够容纳特定于平台的 Web 资源（HTML、CSS 和 JavaS
             <div class="panel-body">
                 <p>在 Android Studio 中，可使用 {{ site.data.keys.product_adj }} 复审 Android Cordova 应用程序的启动过程。{{ site.data.keys.product_adj }} Cordova 插件 <b>cordova-plugin-mfp</b> 使用本机异步引导程序序列。必须先完成引导程序序列，然后 Cordova 应用程序才能装入应用程序的主 HTML 文件。</p>
                 
-                <p>向 Cordova 应用程序添加 <b>cordova-plugin-mfp</b> 插件可检测应用程序的 <b>AndroidManifest.xml</b> 文件以及扩展 <code>CordovaActivity</code> 本机代码的 <code>MainActivity</code>，从而执行 {{ site.data.keys.product_adj }} 初始化。</p>
-                
+                <p>向 Cordova 应用程序添加 <b>cordova-plugin-mfp</b> 插件时，会检测应用程序的 <b>AndroidManifest.xml</b> 文件和 <code>MainActivity</code> 文件（继承 <code>CordovaActivity</code>）本机代码，以便执行 {{ site.data.keys.product_adj }} 初始化过程。</p>
+        
                 <p>应用程序本机代码检测包括：</p>
                 <ul>
                     <li>添加 <code>com.worklight.androidgap.api.WL</code> API 调用以执行 {{ site.data.keys.product_adj }} 初始化。</li>
@@ -303,9 +303,9 @@ Cordova 配置文件是包含应用程序元数据的必需的 XML 文件，其�
 
 模板提供 JavaScript 文件 index.js，此文件位于 **your-project-name/www/js** 文件夹中。此文件将复制到以下特定于平台的文件夹：
 
-* iOS： <your project name>/platforms/ios/www/js
-* Android： <your project name>/platforms/android/assets/www/js
-* Windows： <your project name>/platforms/windows/assets/www/js
+* iOS：<your project name>/platforms/ios/www/js
+* Android：<your project name>/platforms/android/assets/www/js
+* Windows：<your project name>/platforms/windows/assets/www/js
 
 ## 预览应用程序的 Web 资源
 {: #previewing-an-applications-web-resources }
@@ -385,7 +385,7 @@ Xcode、Android Studio 和 Visual Studio 提供完整编辑功能，以供编辑
 
 每个 {{ site.data.keys.product_adj }} Cordova 插件都针对每个 {{ site.data.keys.product_adj }} JavaScript 文件提供一个 `d.ts` 配置文件。`d.ts` 文件名与相应的 JavaScript 文件名匹配，其位于 plug-in 文件夹中。例如，对于主 {{ site.data.keys.product_adj }} SDK，文件位于：**[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**。
 
-此定义针对具有 TypeScript 支持的所有 IDE 提供自动补全：[TypeScript Playground](http://www.typescriptlang.org/Playground/)、[Visual Studio Code](http://www.microsoft.com/visualstudio/eng)、[WebStorm](http://www.jetbrains.com/webstorm/)、[WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f) 和 [Eclipse](https://github.com/palantir/eclipse-typescript)。
+`d.ts` 配置文件针对具有 TypeScript 支持的所有 IDE 提供自动补全功能：[TypeScript Playground](http://www.typescriptlang.org/Playground/)、[Visual Studio Code](http://www.microsoft.com/visualstudio/eng)、[WebStorm](http://www.jetbrains.com/webstorm/)、[WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f) 和 [Eclipse](https://github.com/palantir/eclipse-typescript)。
 
 WebView 的资源（HTML 和 JavaScript 文件）位于 **[myapp]\www** 文件夹中。在使用 cordova build 命令构建项目或者在运行 cordova prepare 命令时，这些资源将被复制到 **[myapp]\platforms\ios\www**、**[myapp]\platforms\android\assets\www** 或 **[myapp]\platforms\windows\www** 文件夹下相应的 **www** 文件夹中。
 

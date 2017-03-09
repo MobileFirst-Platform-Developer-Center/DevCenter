@@ -98,8 +98,7 @@ pod 与核心函数和其他函数对应：
                             <b>注：</b>如果未选择<b>根据需要复制项目</b>选项，那么将不会复制框架文件，但会从其原始位置链接框架文件。</li>
                             <li>选择主要项目（第一个选项）并选择应用程序目标。</li>
                             <li>在<b>常规</b>选项卡中，移除自动添加到<b>已链接的框架和库</b>的任何框架。</li>
-                            <li>必需：在<b>嵌入式二进制文件</b>中，添加以下框架：
-			    <ul>
+                            <li>必需：在<b>嵌入式二进制文件</b>中，添加以下框架：<ul>
                                     <li>IBMMobileFirstPlatformFoundation.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
@@ -238,11 +237,11 @@ pod update
 
 | 属性            | 描述                                                         | 示例值 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | 与
+| protocol    | 与
 {{ site.data.keys.mf_server }}
 的通信协议。             | http 或 https  |
-| wlServerHost        | {{ site.data.keys.mf_server }} 的主机名。                            | 192.168.1.63   |
-| wlServerPort        | {{ site.data.keys.mf_server }} 的端口。
+| host        | {{ site.data.keys.mf_server }} 的主机名。                            | 192.168.1.63   |
+| port        | {{ site.data.keys.mf_server }} 的端口。
                                  | 9080           |
 | wlServerContext     | {{ site.data.keys.mf_server }} 上的应用程序的上下文根路径。 | /mfp/          |
 | languagePreferences | 为客户机 sdk 系统消息设置缺省语言。           | zh             |

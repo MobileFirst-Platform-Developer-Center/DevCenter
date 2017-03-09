@@ -60,7 +60,7 @@ pod 与核心函数和其他函数对应：
 ### 完成设置过程
 {: #completing-the-setup-process }
 #### mfpclient.plist
-{: #mfpclientplist }
+{: #complete-setup-mfpclientplist }
 1. 右键单击 Xamarin iOS 项目并选择**添加文件...**。浏览并找到项目根目录的 `mfpclient.plist`。在提示时选择**将文件复制到项目**。
 2. 右键单击 `mfpclient.plist` 文件并选择**构建操作**。选择**内容**。
 
@@ -103,11 +103,11 @@ using Worklight.Xamarin.Android;
 
 | 属性            | 描述                                                         | 示例值 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | 与
+| protocol    | 与
 {{ site.data.keys.mf_server }}
 的通信协议。             | http 或 https  |
-| wlServerHost        | {{ site.data.keys.mf_server }} 的主机名。                            | 192.168.1.63   |
-| wlServerPort        | {{ site.data.keys.mf_server }} 的端口。
+| host        | {{ site.data.keys.mf_server }} 的主机名。                            | 192.168.1.63   |
+| port        | {{ site.data.keys.mf_server }} 的端口。
                                  | 9080           |
 | wlServerContext     | {{ site.data.keys.mf_server }} 上应用程序的上下文根路径。 | /mfp/          |
 | languagePreferences | 为客户机 sdk 系统消息设置缺省语言。           | zh             |

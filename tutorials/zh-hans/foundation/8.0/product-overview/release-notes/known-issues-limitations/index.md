@@ -10,7 +10,7 @@ weight: 4
 
 ## 已知限制
 {: #known-limitations }
-在本文档中，您可以在不同的位置中找到 {{ site.data.keys.product_full }}    已知限制的描述：
+在本文档中，您可以在不同的位置中找到 {{ site.data.keys.product_full }} 已知限制的描述：
 
 * 如果已知限制适用于某个特定功能，可在说明此特定功能的主题中找到其描述信息。
 然后即可发现它对此功能有何影响。
@@ -20,11 +20,11 @@ weight: 4
 {: #globalization }
 如果需要开发全球化应用程序，则以下限制适用：
 
-* 部分翻译：{{ site.data.keys.product }}    V8.0 产品的部分内容（包括其文档）已翻译为以下语言：简体中文、繁体中文、法语、德语、意大利语、日语、韩国语、葡萄牙语（巴西）、俄语和西班牙语。已经翻译了面向用户的文本。
-* 双向支持：{{ site.data.keys.product }}   
+* 部分翻译：{{ site.data.keys.product }} V8.0 产品的部分内容（包括其文档）已翻译为以下语言：简体中文、繁体中文、法语、德语、意大利语、日语、韩国语、葡萄牙语（巴西）、俄语和西班牙语。已经翻译了面向用户的文本。
+* 双向支持：{{ site.data.keys.product }}
 生成的应用程序未全部支持双向。缺省情况下，不提供图形用户界面 (GUI) 元素的镜像和文本方向的控制。但是，生成的应用程序对此限制没有严重依赖关系。开发人员在生成的代码中手动调整即可实现完整的 bidi 合规性。
 
-虽然针对 {{ site.data.keys.product }}    核心功能提供希伯来语翻译，但是某些 GUI 元素可能未进行镜像。
+虽然针对 {{ site.data.keys.product }} 核心功能提供希伯来语翻译，但是某些 GUI 元素可能未进行镜像。
 
 * 对适配器名称的约束：适配器的名称必须是用于创建 Java 类名的有效名称。另外，只能由以下字符组成：
     * 大小写字母（A-Z 和 a-z）
@@ -33,22 +33,22 @@ weight: 4
 
 * Unicode 字符：不支持基本多语言面之外的 Unicode 字符。
 * 语言敏感度和 Unicode 规范化表单：在以下用例中，查询不会考虑语言敏感度（如正常匹配、不区分重音符、不区分大小写以及 1 对 2 映射），从而使搜索功能在不同语言中正常运行，并且对数据的搜索不会使用规范化表单 C (NFC)。
-    * 从 {{ site.data.keys.mf_analytics_console }}    上为定制图表创建定制过滤器时。但是，在此控制台中，消息属性使用规范化表单 C (NFC) 并考虑语言敏感度。
-    * 从 {{ site.data.keys.mf_console }}    上在“浏览应用程序”页面中搜索应用程序、在“浏览适配器”页面中搜索适配器、在“推送”页面中搜索标记以及在“设备”页面上搜索设备时。
+    * 从 {{ site.data.keys.mf_analytics_console }} 上为定制图表创建定制过滤器时。但是，在此控制台中，消息属性使用规范化表单 C (NFC) 并考虑语言敏感度。
+    * 从 {{ site.data.keys.mf_console }} 上在“浏览应用程序”页面中搜索应用程序、在“浏览适配器”页面中搜索适配器、在“推送”页面中搜索标记以及在“设备”页面上搜索设备时。
     * 在 JSONStore API 的查找功能中。
 
-### {{ site.data.keys.mf_analytics }}   
+### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{ site.data.keys.mf_analytics }}    具有以下限制：
+{{ site.data.keys.mf_analytics }} 具有以下限制：
 
 * 不支持安全性分析（未通过安全性检查的请求上的数据）。
-* 在 {{ site.data.keys.mf_analytics_console }}    中，数字格式不遵循 International Components for Unicode (ICU) 规则。
-* 在 {{ site.data.keys.mf_analytics_console }}    中，数字不使用用户的首选数字脚本。
-* 在 {{ site.data.keys.mf_analytics_console }}    中，根据操作系统的语言设置而不是 Microsoft
+* 在 {{ site.data.keys.mf_analytics_console }} 中，数字格式不遵循 International Components for Unicode (ICU) 规则。
+* 在 {{ site.data.keys.mf_analytics_console }} 中，数字不使用用户的首选数字脚本。
+* 在 {{ site.data.keys.mf_analytics_console }} 中，根据操作系统的语言设置而不是 Microsoft
 Internet Explorer 的语言环境来显示日期、时间和数字的格式。
 * 在针对定制图表创建定制过滤器时，数字数据必须是 10 进制的西方或欧洲数字，例如，0、1、2、3、4、5、6、7、8、9。
-* 在 {{ site.data.keys.mf_analytics_console }}    的“警报管理”页面中创建警报时，数字数据必须是 10 进制的西方或欧洲数字，例如，0、1、2、3、4、5、6、7、8、9。
-* {{ site.data.keys.mf_console }}    的“分析”页面支持以下浏览器：
+* 在 {{ site.data.keys.mf_analytics_console }} 的“警报管理”页面中创建警报时，数字数据必须是 10 进制的西方或欧洲数字，例如，0、1、2、3、4、5、6、7、8、9。
+* {{ site.data.keys.mf_console }} 的“分析”页面支持以下浏览器：
     * Microsoft Internet Explorer V10 或更高版本
     * Mozilla Firefox ESR 或更高版本
     * iOS V7.0 或更高版本上的 Apple Safari
@@ -56,14 +56,14 @@ Internet Explorer 的语言环境来显示日期、时间和数字的格式。
 * Analytics 客户机 SDK 不可用于 Windows。
 
 
-### {{ site.data.keys.mf_app_center_full }}    移动客户端
+### {{ site.data.keys.mf_app_center_full }} 移动客户端
 {: #ibm-mobilefirst-foundation-application-center-mobile-client }
 Application
 Center 移动式客户机遵循运行中设备的文化约定，如日期格式。它不一定遵循更严格的 International Components for Unicode (ICU) 规则。
 
-### {{ site.data.keys.mf_console_full }}   
+### {{ site.data.keys.mf_console_full }}
 {: #ibm-mobilefirst-operations-console }
-{{ site.data.keys.mf_console }}    具有以下限制：
+{{ site.data.keys.mf_console }} 具有以下限制：
 
 * 仅支持部分双向语言。
 * 向 Android 设备发送通知消息时无法更改文本方向。
@@ -72,7 +72,7 @@ Center 移动式客户机遵循运行中设备的文化约定，如日期格式�
 自动调整为从左向右。
 * 在双向语言中，字符顺序和文本对齐与文化习惯不匹配。
 * 数字字段不会根据语言环境的格式化规则来解析数字值。控制台将显示格式化数字，但仅接受 *raw*（非格式化）数字作为输入。例如，接受 1000，但不接受 1 000 或 1,000。
-* {{ site.data.keys.mf_console }}    的“分析”页面中的响应时间取决于多个因素，如硬件（RAM 和 CPU）、累计分析数据的数量和 {{ site.data.keys.mf_analytics }}    集群。请考虑在将 {{ site.data.keys.mf_analytics }}    集成到生产之前测试负载。
+* {{ site.data.keys.mf_console }} 的“分析”页面中的响应时间取决于多个因素，如硬件（RAM 和 CPU）、累计分析数据的数量和 {{ site.data.keys.mf_analytics }} 集群。请考虑在将 {{ site.data.keys.mf_analytics }} 集成到生产之前测试负载。
 
 ### Server Configuration Tool
 {: #server-configuration-tool }
@@ -96,19 +96,19 @@ Server Configuration Tool 受到以下限制：
 
 ### 适配器与第三方依赖关系
 {: #adapters-and-third-party-dependencies }
-以下已知问题与应用程序服务器（包括 {{ site.data.keys.product_adj }}    共享库）中的依赖关系和类之间的交互相关。
+以下已知问题与应用程序服务器（包括 {{ site.data.keys.product_adj }} 共享库）中的依赖关系和类之间的交互相关。
 
 #### Apache HttpClient
 {: #apache-httpclient }
-{{ site.data.keys.product }}    在内部使用 Apache HttpClient。如果将 Apache HttpClient 实例作为依赖关系添加到 Java 适配器，以下 API 在适配器中无法正常工作：`AdaptersAPI.executeAdapterRequest、AdaptersAPI.getResponseAsJSON` 和 `AdaptersAPI.createJavascriptAdapterRequest`。原因是这些 API 的签名中包含 Apache HttpClient 类型。变通方法是使用内部 Apache HttpClient，但将 **pom.xml** 中的依赖关系作用域更改为 provided。
+{{ site.data.keys.product }} 在内部使用 Apache HttpClient。如果将 Apache HttpClient 实例作为依赖关系添加到 Java 适配器，以下 API 在适配器中无法正常工作：`AdaptersAPI.executeAdapterRequest、AdaptersAPI.getResponseAsJSON` 和 `AdaptersAPI.createJavascriptAdapterRequest`。原因是这些 API 的签名中包含 Apache HttpClient 类型。变通方法是使用内部 Apache HttpClient，但将 **pom.xml** 中的依赖关系作用域更改为 provided。
 
 #### Bouncy Castle 密码库
 {: #bouncy-castle-cryptographic-library }
-{{ site.data.keys.product }}    本身使用 Bouncy Castle。可以在适配器中使用其他版本的 Bouncy Castle，但需要对结果进行仔细测试：有时，{{ site.data.keys.product_adj }}    Bouncy Castle 代码会填充 `javax.security` 程序包类的某些静态单项字段，并可能阻止适配器内的 Bouncy Castle 版本使用依赖于这些字段的功能。
+{{ site.data.keys.product }} 本身使用 Bouncy Castle。可以在适配器中使用其他版本的 Bouncy Castle，但需要对结果进行仔细测试：有时，{{ site.data.keys.product_adj }} Bouncy Castle 代码会填充 `javax.security` 程序包类的某些静态单项字段，并可能阻止适配器内的 Bouncy Castle 版本使用依赖于这些字段的功能。
 
 #### JAR 文件的 Apache CXF 实施
 {: #apache-cxf-implementaton-of-jar-files }
-在 {{ site.data.keys.product_adj }}    JAX-RS 实施中使用 CXF，从而阻止您将 Apache CXF JAR 文件添加到适配器。
+在 {{ site.data.keys.product_adj }} JAX-RS 实施中使用 CXF，从而阻止您将 Apache CXF JAR 文件添加到适配器。
 
 ### Application Center 移动式客户机：Android 4.0.x 上的刷新问题
 {: #application-center-mobile-client-refresh-issues-on-android-40x}
@@ -118,8 +118,7 @@ Android 4.0.x WebView 组件存在多个已知的刷新问题。将设备更新�
 
 ### Application Center 需要 MobileFirst Studio V7.1 来导入和构建 Application Center 移动式客户机
 {: #application-center-requires-mobilefirst-studio-v71-for-importing-and-building-the-application-center-mobile-client }
-要构建 Application Center 移动式客户机，需要 MobileFirst Studio V7.1。您可以从[下载页面]({{site.baseurl}}/downloads)下载 MobileFirst Studio。单击**上一 MobileFirst Platform Foundation 发行版**选项卡以获取下载链接。有关安装指示信息，
-请参阅[针对 V7.1 的 IBM Knowledge Center 中的安装 MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)。有关构建 Application Center 移动式客户机的更多信息，请参阅[有关使用移动式客户机的准备工作](../../../appcenter/preparations)。
+要构建 Application Center 移动式客户机，需要 MobileFirst Studio V7.1。您可以从[下载页面]({{site.baseurl}}/downloads)下载 MobileFirst Studio。单击**上一 MobileFirst Platform Foundation 发行版**选项卡以获取下载链接。有关安装指示信息，请参阅[针对 V7.1 的 IBM Knowledge Center 中的安装 MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)。有关构建 Application Center 移动式客户机的更多信息，请参阅[有关使用移动式客户机的准备工作](../../../appcenter/preparations)。
 
 ### Application Center 和 Microsoft Windows Phone 8.1
 {: #application-center-and-microsoft-windows-phone-81 }
@@ -132,9 +131,9 @@ Windows Phone 8.1 的应用程序包 (.appx) 文件，而仅支持分发 Windows
 Application Center 仅支持分发 Microsoft
 Windows Store（桌面应用程序）的应用程序包 (.appx) 文件。
 
-### 通过 Ant 或命令行来管理 {{ site.data.keys.product_adj }}    应用程序
+### 通过 Ant 或命令行来管理 {{ site.data.keys.product_adj }} 应用程序
 {: #administering-mobilefirst-applications-through-ant-or-through-the-command-line }
-如果仅下载并安装 {{ site.data.keys.mf_dev_kit_full }}   ，那么 **mfpadm** 工具不可用。通过安装程序将 mfpadm 工具随 {{ site.data.keys.mf_server }}    一起安装。
+如果仅下载并安装 {{ site.data.keys.mf_dev_kit_full }}，那么 **mfpadm** 工具不可用。通过安装程序将 mfpadm 工具随 {{ site.data.keys.mf_server }} 一起安装。
 
 ### 保密客户机
 {: #confidential-clients }
@@ -146,20 +145,20 @@ Windows Store（桌面应用程序）的应用程序包 (.appx) 文件。
 
 ### FIPS 140-2 功能限制
 {: #fips-104-2-feature-limitations }
-在 {{ site.data.keys.product }}    中使用 FIPS 140-2 功能时，以下已知限制适用：
-* 这一经 FIPS 140-2 验证的方式仅适用于保护（加密）由 JSONStore 功能存储的本地数据以及保护 {{ site.data.keys.product_adj }}    客户端和 {{ site.data.keys.mf_server }}    之间的 HTTPS 通信。
-    * 对于 HTTPS 通信，仅 {{ site.data.keys.product_adj }}    客户端和 {{ site.data.keys.mf_server }}    之间的通信使用客户端上的 FIPS 140-2 库。直接连接到其他服务器或服务时不使用 FIPS 140-2 库。
+在 {{ site.data.keys.product }} 中使用 FIPS 140-2 功能时，以下已知限制适用：
+* 这一经 FIPS 140-2 验证的方式仅适用于保护（加密）由 JSONStore 功能存储的本地数据以及保护 {{ site.data.keys.product_adj }} 客户端和 {{ site.data.keys.mf_server }} 之间的 HTTPS 通信。
+    * 对于 HTTPS 通信，仅 {{ site.data.keys.product_adj }} 客户端和 {{ site.data.keys.mf_server }} 之间的通信使用客户端上的 FIPS 140-2 库。直接连接到其他服务器或服务时不使用 FIPS 140-2 库。
 * 该功能仅在 iOS 和 Android 平台上受支持。
-    * 在 Android 上，仅在使用 x86 或 armeabi 体系结构的设备或模拟器上支持此功能。在使用 armv5 或 armv6 体系结构的 Android 上不受支持。原因在于使用的 OpenSSL 库未获取针对 Android 上的 armv5 或 armv6 的 FIPS 140-2 验证。即使 {{ site.data.keys.product_adj }}    库支持 64 位体系结构，FIPS 140-2 在 64 位体系结构上也不受支持。如果项目仅包含 32 位本机 NDK 库，那么 FIPS 140-2 可以在 64 位设备上运行。
+    * 在 Android 上，仅在使用 x86 或 armeabi 体系结构的设备或模拟器上支持此功能。在使用 armv5 或 armv6 体系结构的 Android 上不受支持。原因在于使用的 OpenSSL 库未获取针对 Android 上的 armv5 或 armv6 的 FIPS 140-2 验证。即使 {{ site.data.keys.product_adj }} 库支持 64 位体系结构，FIPS 140-2 在 64 位体系结构上也不受支持。如果项目仅包含 32 位本机 NDK 库，那么 FIPS 140-2 可以在 64 位设备上运行。
     * 在 iOS 上，在 i386、x86_64、armv7、armv7s 和 arm64 体系结构上支持此功能。
 * 此功能只能与混合应用程序一起使用，而不能与本机应用程序一起使用。
 * 对于本机 iOS，可通过 iOS FIPS 库启用 FIPS，并且缺省情况下已启用 FIPS。无需执行任何操作来启用 FIPS 140-2。
 * FIPS 140-2 功能不支持使用客户机上的用户注册功能。
 * Application Center 客户端不支持 FIPS 140-2 功能。
 
-### 安装 Application Center 或 {{ site.data.keys.mf_server }}    的修订包或临时修订
+### 安装 Application Center 或 {{ site.data.keys.mf_server }} 的修订包或临时修订
 {: #installation-of-a-fix-pack-or-interim-fix-to-the-application-center-or-the-mobilefirst-server }
-对 Application Center 或 {{ site.data.keys.mf_server }}    应用修订包或临时修订时，需要执行手动操作，并且您可能必须将应用程序关闭一段时间。
+对 Application Center 或 {{ site.data.keys.mf_server }} 应用修订包或临时修订时，需要执行手动操作，并且您可能必须将应用程序关闭一段时间。
 
 ### JSONStore 支持的体系结构
 {: #jsonstore-supported-architectures }
@@ -197,23 +196,23 @@ LTPA 令牌已关联到当前的用户会话。如果该会话在 LTPA 令牌到
 
 ### Microsoft Windows 10 UWP 应用程序
 {: #microsoft-windows-10-uwp-apps }
-当通过 NuGet 包安装 {{ site.data.keys.product_adj }}    SDK 时，应用程序真实性功能将在 {{ site.data.keys.product_adj }}    Windows 10 UWP 应用程序上无法工作。作为变通方法，开发人员可以下载 NuGet 包并手动添加 {{ site.data.keys.product_adj }}    SDK 引用。
+当通过 NuGet 包安装 {{ site.data.keys.product_adj }} SDK 时，应用程序真实性功能将在 {{ site.data.keys.product_adj }} Windows 10 UWP 应用程序上无法工作。作为变通方法，开发人员可以下载 NuGet 包并手动添加 {{ site.data.keys.product_adj }} SDK 引用。
 
 ### 嵌套项目可能导致 CLI 出现不可预测的结果
 {: #nested-projects-can-result-in-unpredictable-results-with-the-cli }
-在使用 {{ site.data.keys.mf_cli }}    时请勿将项目嵌套在另一个项目中。否则，所操作的项目可能不是您预期的项目。
+在使用 {{ site.data.keys.mf_cli }} 时请勿将项目嵌套在另一个项目中。否则，所操作的项目可能不是您预期的项目。
 
-### 使用 {{ site.data.keys.mf_mbs }}    预览 Cordova Web 资源
+### 使用 {{ site.data.keys.mf_mbs }} 预览 Cordova Web 资源
 {: #previewing-cordova-web-resources-with-the-mobile-browser-simulator }
-您可以使用 {{ site.data.keys.mf_mbs }}    预览 Web 资源，但此模拟器并不支持所有的 {{ site.data.keys.product_adj }}    JavaScript API。尤其是不完全支持 OAuth 协议。但是，可以使用 `WLResourceRequest` 测试适配器调用。
+您可以使用 {{ site.data.keys.mf_mbs }} 预览 Web 资源，但此模拟器并不支持所有的 {{ site.data.keys.product_adj }} JavaScript API。尤其是不完全支持 OAuth 协议。但是，可以使用 `WLResourceRequest` 测试适配器调用。
 
 ### 测试扩展应用程序真实性所需的物理 iOS 设备
 {: #physical-ios-device-required-for-testing-extended-app-authenticity }
 测试扩展应用程序真实性特征需要一台物理 iOS 设备，因为 IPA 不能安装在 iOS 模拟器上。
 
-### {{ site.data.keys.mf_server }}    提供的 Oracle 12c 支持
+### {{ site.data.keys.mf_server }} 提供的 Oracle 12c 支持
 {: #support-of-oracle-12c-by-mobilefirst-server }
-{{ site.data.keys.mf_server }}    的安装工具（Installation Manager、Server Configuration Tool 和 Ant 任务）支持 Oracle 12c 作为数据库进行安装。
+{{ site.data.keys.mf_server }} 的安装工具（Installation Manager、Server Configuration Tool 和 Ant 任务）支持 Oracle 12c 作为数据库进行安装。
 
 用户和表可以由安装工具创建，但是在您运行安装工具前，必须存在一个或多个数据库。
 
@@ -236,7 +235,7 @@ LTPA 令牌已关联到当前的用户会话。如果该会话在 LTPA 令牌到
 {: #web-applications }
 Web 应用程序具有以下限制：
 - {: #web_app_limit_ms_ie_n_edge }
-在 Microsoft Internet Explorer (IE) 和 Microsoft Edge 中，根据操作系统的地区格式化设置而不是已配置的浏览器或操作系统语言首选项来显示管理应用程序消息和客户端 Web SDK 消息。另请参阅[定义多种语言的管理员消息](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages)。
+在 Microsoft Internet Explorer (IE) 和 Microsoft Edge 中，将根据操作系统的地区格式首选项而不根据配置的浏览器或操作系统显示语言首选项来显示管理应用程序消息和客户端 Web SDK 消息。另请参阅[定义多种语言的管理员消息](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages)。
 
 ### 针对 iOS Cordova 应用程序的 WKWebView 支持
 {: #wkwebview-support-for-ios-cordova-applications }
@@ -288,4 +287,4 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 
 ### 在 Android 应用程序中不支持原始 IPv6 地址
 {: #raw-ipv6-address-not-supported-in-android-applications }
-在为本机 Android 应用程序配置 **mfpclient.properties** 期间，如果 {{ site.data.keys.mf_server }}    位于具有 IPv6 地址的主机上，那么请使用此 IPV6 地址的映射的主机名在 **mfpclient.properties** 中配置 **wlServerHost** 属性。使用原始 IPv6 地址配置 **wlServerHost** 属性将导致应用程序连接到 {{ site.data.keys.mf_server }}    的尝试失败。
+在为本机 Android 应用程序配置 **mfpclient.properties** 期间，如果 {{ site.data.keys.mf_server }} 位于具有 IPv6 地址的主机上，那么请使用此 IPV6 地址的映射的主机名在 **mfpclient.properties** 中配置 **wlServerHost** 属性。使用原始 IPv6 地址配置 **wlServerHost** 属性将导致应用程序连接到 {{ site.data.keys.mf_server }} 的尝试失败。

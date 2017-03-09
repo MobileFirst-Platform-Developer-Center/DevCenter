@@ -9,8 +9,8 @@ weight: 10
 {: #rest-apis }
 可以使用推送服务 REST API 来处理通知。
 
-* 对适配器和应用程序使用[管理服务 REST API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html)。
-* 使用[推送服务 REST API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) 从 REST API 端点访问推送功能。
+* 对适配器和应用程序使用[管理服务 REST API](../../api/rest/administration-service)。
+* 使用[推送服务 REST API](../../api/rest/push-service) 从 REST API 端点访问推送功能。
 
 ## Swagger
 {: #swagger }

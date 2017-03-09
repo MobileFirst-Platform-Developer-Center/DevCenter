@@ -181,7 +181,7 @@ Elasticsearch 提供许多可调属性，大部分用于性能调整。许多 JN
 {: #adding-a-mobilefirst-analytics-server-to-the-cluster }
 了解如何将 {{ site.data.keys.mf_analytics_server }} 添加到集群。
 
-由于 Elasticsearch 嵌入 {{ site.data.keys.mf_analytics_server }}，并且应该参与到集群中，因此请勿使用应用程序服务器的功能部件来定义集群行为。例如，不需要创建 WebSphere Application Server Liberty 场。请信任底层 Elasticsearch 运行时以参与到集群中。但是，必须对其进行正确配置。
+由于 Elasticsearch 嵌入 {{ site.data.keys.mf_analytics_server }}，因此请使用 Elasticsearch 设置来定义集群行为。例如，请勿创建 WebSphere Application Server Liberty 阵列或使用其他应用程序服务器设置。
 
 在以下样本指示信息中，请勿将节点配置为主节点或数据节点。而改为将节点配置为“搜索负载均衡器”，以便能够暂时运行，从而公开 Elasticsearch
 REST API 用于进行监控和动态配置。

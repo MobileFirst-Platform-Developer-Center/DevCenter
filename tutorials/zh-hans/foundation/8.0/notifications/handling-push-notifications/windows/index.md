@@ -51,7 +51,7 @@ downloads:
 {: #notifications-api }
 ### MFPPush 实例
 {: #mfppush-instance }
-必须在 `MFPPush` 实例上发出所有 API 调用。要实现这一点，可创建一个变量（例如，`private MFPPush PushClient = MFPPush.GetInstance();`），然后在该类中调用 `PushClient.methodName()`。
+必须在一个 `MFPPush` 实例上发出所有 API 调用。为此，需要创建一个变量（例如，`private MFPPush PushClient = MFPPush.GetInstance();`），然后在该类中调用 `PushClient.methodName()`。
 
 也可以针对要访问推送 API 方法的每个实例都调用 `MFPPush.GetInstance().methodName()`。
 
@@ -62,6 +62,7 @@ downloads:
 > 在[凭证验证](../../../authentication-and-security/credentials-validation/ios)教程中了解有关验证问题处理程序的更多信息。
 ### 客户端
 {: #client-side }
+
 | C Sharp 方法                                                                                                | 描述                                                             |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`Initialize()`](#initialization)                                                                            | 针对提供的上下文，初始化 MFPPush。                               |

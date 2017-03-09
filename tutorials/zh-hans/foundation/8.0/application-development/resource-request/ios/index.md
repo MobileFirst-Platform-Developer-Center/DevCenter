@@ -198,6 +198,40 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 - `sendWithJSON` 允许您在主体中设置任意字典。
 - `sendWithData` 允许您在主体中设置任意 `NSData`。
 
+###  completionHandler 和 delegate 回调队列
+为了避免在接收响应时阻止 UI，可以指定专用回调队列，执行 API 的 `sendWithCompletionHandler` 和 `sendWithDelegate` 集的 completionHandler 块和 delegate。
+
+#### Objective-C
+
+```objc
+//creating callback queue
+dispatch_queue_t completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL);
+
+//Sending the request with callback queue
+[request sendWithCompletionHandler:completionQueue completionHandler:^(WLResponse *response, NSError *error) {
+    if (error == nil){
+        NSLog(@"%@", response.responseText);
+    } else {
+        NSLog(@"%@", error.description);
+    }
+}];
+```
+#### Swift
+
+```swift
+//creating callback queue
+var completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL)
+
+//Sending the request with callback queue
+request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void in
+  if (error == nil){
+      NSLog(@"%@", response.responseText);
+  } else {
+      NSLog(@"%@", error.description);
+    }
+}
+```
+
 ## 响应
 {: #the response }
 `response` 对象包含响应数据，并且您可以使用其方法和属性来检索必需信息。常用属性包括：`responseText`（字符串）、`responseJSON`（字典）（如果以 JSON 格式响应）和 `status`（整数）（响应的 HTTP 状态）。

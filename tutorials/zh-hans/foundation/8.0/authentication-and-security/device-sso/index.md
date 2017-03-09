@@ -22,12 +22,12 @@ weight: 11
 
 对您想要为其启用设备 SSO 的每个应用程序重复这些步骤。
 
-<img class="gifplayer" alt="在 {{ site.data.keys.mf_console }}" src="enable-device-sso.png"/> 中配置设备 SSO
+<img class="gifplayer" alt="在 {{ site.data.keys.mf_console }} 中配置设备 SSO" src="enable-device-sso.png"/>
 
 您还可以使用必需的配置来手动编辑应用程序的配置 JSON 文件，并将更改推送回 {{ site.data.keys.mf_server }}。
 
 1. 从**命令行窗口**导航至项目的根文件夹，然后运行 `mfpdev app pull`。
-2. 打开位于 **[project-folder\mobilefirst** 文件夹中的配置文件。
+2. 打开位于 **[project-folder]\mobilefirst** 文件夹的配置文件。
 3. 编辑文件，为所选定制安全性检查启用设备 SSO：通过将定制安全性检查的 `enableSSO` 属性设置为 `true` 来启用设备 SSO。该属性配置包含在 `securityCheckConfigurations` 对象中嵌套的安全性检查对象内。在应用程序描述符文件中查找这些对象，如果缺失，就创建这些对象。例如：
 
    ```xml

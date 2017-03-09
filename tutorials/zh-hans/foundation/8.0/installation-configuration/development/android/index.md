@@ -10,7 +10,7 @@ weight: 4
 {: #overview }
 本教程说明了开发人员开发和测试 Android 应用程序所需执行的步骤。 这些步骤包括安装 Android Studio 和设置 Android SDK。
 
-**先决条件：**设置 iOS 开发环境时，请确保您还阅读了[设置 {{ site.data.keys.product_adj }} 开发环境](../mobilefirst/)教程。
+**先决条件：**设置 Android 开发环境时，请确保您还阅读了[设置 {{ site.data.keys.product_adj }} 开发环境](../mobilefirst/)教程。
 
 #### 支持级别
 {: #support-level }
@@ -24,7 +24,7 @@ weight: 4
 ### Android SDK
 Android SDK 提供了一些工具和 API，这些工具和 API 可用于通过 Java 编程语言在 Android 平台上开发应用程序。
 
-在打开 Android Studio 后，您就可以使用 SDK Manager 来配置 Android SDK。
+在第一次打开 Android Studio 后，您就可以使用 SDK Manager 来配置 Android SDK。
 
 在 SDK Manager 中，您可以安装必需的软件包。有关更多信息，请[访问 Android Developers Web 站点](http://developer.android.com/sdk/index.html)。
 

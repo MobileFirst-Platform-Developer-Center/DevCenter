@@ -10,7 +10,7 @@ weight: 5
 {: #overview }
 本教程说明了开发人员开发和测试 Windows 8.1 Universal 和 Windows 10 UWP 应用程序所需执行的步骤。
 
-**先决条件：**设置 iOS 开发环境时，请确保您还阅读了[设置 {{ site.data.keys.product }} 开发环境](../mobilefirst/)教程。
+**先决条件：**设置 Windows 开发环境时，请确保您还阅读了[设置 {{ site.data.keys.product }} 开发环境](../mobilefirst/)教程。
 
 ### 注册
 {: #registration }

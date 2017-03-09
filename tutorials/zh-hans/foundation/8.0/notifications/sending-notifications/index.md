@@ -64,7 +64,7 @@ Android 设备将 Firebase 云消息传递 (FCM) 服务用于推送通知。
 iOS 设备将 Apple 推送通知服务 (APNS) 用于推送通知。  
 要设置 APNS：
 
-1. [生成推送通知证书](https://www.ibm.com/developerworks/community/blogs/worklight/entry/understanding-and-setting-up-push-notifications-in-development-evnironment?lang=en)。
+1. [为开发或生产环境生成推送通知证书](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv)。
 2. 在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 推送设置**中，选择证书类型并提供证书的文件和密码。然后，单击**保存**。
 
 #### 注
@@ -124,7 +124,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 {: #scope-mapping }
 将 **push.mobileclient** 作用域元素映射到应用程序。
 
-1. 装入 {{ site.data.keys.mf_console }} 并浏览至 **[您的应用程序] → 安全性 → 将作用域元素映射到安全性检查**，然后单击**新建**。
+1. 装入 {{ site.data.keys.mf_console }}，然后导航至 **[您的应用程序] → 安全性 → 作用域/元素映射**，单击**新建**。
 2. 在**作用域元素**字段中写入“push.mobileclient”。然后，单击**添加**。
 
     <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
@@ -225,7 +225,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 
 将 **push.mobileclient** 作用域元素映射到应用程序所使用的安全性检查。  
 
-1. 装入 {{ site.data.keys.mf_console }} 并浏览至 **[您的应用程序] → 安全性 → 将作用域元素映射到安全性检查**，然后单击**新建**或编辑现有的作用域映射条目。
+1. 装入 {{ site.data.keys.mf_console }}，然后导航至 **[您的应用程序] → 安全性 → 作用域/元素映射**，然后单击**新建**或编辑现有作用域元素条目。
 2. 选择安全性检查。然后，单击**添加**。
 
     <img class="gifplayer" alt="已认证的通知" src="authenticated-notifications.png"/>
@@ -254,7 +254,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 {: #tag-notifications }
 标记通知是只将预订了特定标记的所有设备作为目标的通知消息。标记表示用户感兴趣的主题，并且能够根据所选兴趣来接收通知。 
 
-在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 发送推送**选项卡中，从**发送到**选项卡中选择**按标记划分的设备**，并提供**通知文本**。然后，单击**发送**。
+在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 发送通知**选项卡中，从**发送到**选项卡中选择**按标记划分的设备**，并提供**通知文本**。然后，单击**发送**。
 
 <img class="gifplayer" alt="按标记发送" src="sending-by-tag.png"/>
 
@@ -262,7 +262,7 @@ Windows 设备将 Windows 推送通知服务 (WNS) 用于推送通知。
 {: #breadcast-notifications }
 广播通知是标记推送通知的一种形式，其将所有预订设备作为目标。任何支持推送的 {{ site.data.keys.product_adj }} 应用程序在缺省情况下都可通过预订保留的 `Push.all` 标记（为每个设备自动创建）来启用广播通知。可以使用编程方式取消预订 `Push.all` 标记。
 
-在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 发送推送**选项卡中，从**发送到**选项卡中选择**所有**，并提供**通知文本**。然后，单击**发送**。
+在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 发送通知**选项卡中，从**发送到**选项卡中选择**所有**，并提供**通知文本**。然后，单击**发送**。
 
 ![发送到所有](sending-to-all.png)
 
@@ -340,7 +340,7 @@ phoneNumber | 用于注册设备和接收通知的电话号码。这是单点广
 
 #### 发送通知
 {: #sending-the-notification }
-可使用不同工具来发送通知。  
+可使用不同的工具发送通知。  
 出于测试目的，将使用 Postman，如下所述：
 
 1. [配置保密客户机](../../authentication-and-security/confidential-clients/)。   
@@ -383,7 +383,7 @@ phoneNumber | 用于注册设备和接收通知的电话号码。这是单点广
 {: #customizing-notifications }
 在发送通知消息之前，您还可以定制以下通知属性。  
 
-在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 标记 → 发送推送**选项卡中，展开**iOS/Android 定制设置**部分以更改通知属性。
+在 {{ site.data.keys.mf_console }} → **[您的应用程序] → 推送 → 标记 → 发送通知**选项卡中，展开**iOS/Android 定制设置**部分以更改通知属性。
 
 ### Android
 {: #android }

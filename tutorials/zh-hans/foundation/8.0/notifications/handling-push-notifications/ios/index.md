@@ -81,7 +81,7 @@ downloads:
 {: #notifications-api }
 ### MFPPush 实例
 {: #mfppush-instance }
-必须在 `MFPPush` 实例上发出所有 API 调用。要实现这一点，可在视图控制器中创建一个 `var`（例如，`var push = MFPPush.sharedInstance();`），然后在视图控制器中调用 `push.methodName()`。
+必须在一个 `MFPPush` 实例上发出所有 API 调用。为此，需要在视图控制器中使用 `var`（例如，`var push = MFPPush.sharedInstance();`），然后在视图控制器中调用 `push.methodName()`。
 
 也可以针对要访问推送 API 方法的每个实例都调用 `MFPPush.sharedInstance().methodName()`。
 
@@ -92,17 +92,18 @@ downloads:
 > 在[凭证验证](../../../authentication-and-security/credentials-validation/ios)教程中了解有关验证问题处理程序的更多信息。
 ### 客户端
 {: #client-side }
-| Swift 方法                                                                                                | 描述                                                             |
-|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize()`](#initialization)                                                                            | 针对提供的上下文，初始化 MFPPush。                               |
-| [`isPushSupported()`](#is-push-supported)                                                                    | 设备是否支持推送通知。                             |
-| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token)                  | 向推送通知服务注册设备。               |
-| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token)                                                | 将设备标记发送到服务器。                                    |
-| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | 在推送通知服务实例中检索可用的标记。 |
-| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | 使设备预订指定的标记。                          |
-| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | 检索设备当前预订的所有标记。               |
-| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | 取消对特定标记的预订。                                  |
-| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | 从推送通知服务注销设备。              |
+
+| Swift 方法 | 描述  |
+|---------------|--------------|
+| [`initialize()`](#initialization) | 针对提供的上下文，初始化 MFPPush。 |
+| [`isPushSupported()`](#is-push-supported) | 设备是否支持推送通知。 |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) | 向推送通知服务注册设备。|
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | 将设备标记发送到服务器。 |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | 在推送通知服务实例中检索可用的标记。 |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | 使设备预订指定的标记。 |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | 检索设备当前预订的所有标记。 |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | 取消对特定标记的预订。 |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | 从推送通知服务注销设备。              |
 
 #### 初始化
 {: #initialization }
@@ -134,16 +135,19 @@ if isPushSupported {
 向推送通知服务注册设备。
 
 ```swift
-MFPPush.sharedInstance().registerDevice({(options, response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().registerDevice(nil) { (response, error) -> Void in
     if error == nil {
-        // Successfully registered
+        self.enableButtons()
+        self.showAlert("Registered successfully")
+        print(response?.description ?? "")
     } else {
-        // Registration failed with error
+self.showAlert("Registrations failed.  Error \(error?.localizedDescription)")
+        print(error?.localizedDescription ?? "")
     }
-})
+}
 ```
 
-`options` 是 `[NSObject : AnyObject]`，这是一个可选参数，用于指定随注册请求（向服务器发送设备标记以使用唯一标识注册设备）一起传递的选项字典。
+<!--`options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request, sends the device token to the server to register the device with its unique identifier.-->
 
 ```swift
 MFPPush.sharedInstance().sendDeviceToken(deviceToken)
@@ -156,19 +160,23 @@ MFPPush.sharedInstance().sendDeviceToken(deviceToken)
 从推送通知服务检索所有可用标记。
 
 ```swift
-MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().getTags { (response, error) -> Void in
     if error == nil {
         print("The response is: \(response)")
-        print("The response text is \(response.responseText)")
-        if response.availableTags().isEmpty == true {
-            // Successfully retrieved tags as list of strings
+        print("The response text is \(response?.responseText)")
+        if response?.availableTags().isEmpty == true {
+            self.tagsArray = []
+            self.showAlert("There are no available tags")
         } else {
-            // Successfully retrieved response from server but there where no available tags
+            self.tagsArray = response!.availableTags() as! [String]
+            self.showAlert(String(describing: self.tagsArray))
+            print("Tags response: \(response)")
         }
     } else {
-// Failed to receive tags with error
+self.showAlert("Error \(error?.localizedDescription)")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
 
@@ -177,15 +185,17 @@ MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Vo
 预订所需的标记。
 
 ```swift
-var tagsArray: [AnyObject] = ["Tag 1" as AnyObject, "Tag 2" as AnyObject]
+var tagsArray: [String] = ["Tag 1", "Tag 2"]
 
-MFPPush.sharedInstance().subscribe(self.tagsArray, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().subscribe(self.tagsArray) { (response, error)  -> Void in
     if error == nil {
-        // Subscribed successfully
+        self.showAlert("Subscribed successfully")
+        print("Subscribed successfully response: \(response)")
     } else {
-        // Failed to subscribe with error
+        self.showAlert("Failed to subscribe")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
 
@@ -194,13 +204,23 @@ MFPPush.sharedInstance().subscribe(self.tagsArray, completionHandler: {(response
 检索设备当前预订的标记。
 
 ```swift
-MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        // Successfully received subscriptions as list of strings
-    } else {
-        // Failed to retrieve subscriptions with error
-    }
-})
+MFPPush.sharedInstance().getSubscriptions { (response, error) -> Void in
+   if error == nil {
+       var tags = [String]()
+       let json = (response?.responseJSON)! as [AnyHashable: Any]
+       let subscriptions = json["subscriptions"] as? [[String: AnyObject]]
+       for tag in subscriptions! {
+           if let tagName = tag["tagName"] as? String {
+            print("tagName: \(tagName)")
+               tags.append(tagName)
+           }
+       }
+       self.showAlert(String(describing: tags))
+   } else {
+       self.showAlert("Error \(error?.localizedDescription)")
+       print("Error \(error?.localizedDescription)")
+   }
+}
 ```
 
 
@@ -212,13 +232,15 @@ MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSErro
 var tags: [String] = {"Tag 1", "Tag 2"};
 
 // Unsubscribe from tags
-MFPPush.sharedInstance().unsubscribe(tags, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().unsubscribe(self.tagsArray) { (response, error)  -> Void in
     if error == nil {
-        // Unsubscribed successfully
+        self.showAlert("Unsubscribed successfully")
+        print(String(describing: response?.description))
     } else {
-        // Failed to unsubscribe
+        self.showAlert("Error \(error?.localizedDescription)")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
 #### 注销
@@ -226,14 +248,17 @@ MFPPush.sharedInstance().unsubscribe(tags, completionHandler: {(response: WLResp
 从推送通知服务实例注销设备。
 
 ```swift
-MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        // Unregistered successfully
-    } else {
-        self.showAlert("Error \(error.description)")
-        // Failed to unregister with error
-    }
-})
+MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
+   if error == nil {
+       // Disable buttons
+       self.disableButtons()
+       self.showAlert("Unregistered successfully")
+       print("Subscribed successfully response: \(response)")
+   } else {
+       self.showAlert("Error \(error?.localizedDescription)")
+       print("Error \(error?.localizedDescription)")
+   }
+}
 ```
 
 ## 处理推送通知
@@ -244,11 +269,10 @@ MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSErro
 例如，如果在运行应用程序时收到简单通知，那么将触发 **AppDelegate** 的 `didReceiveRemoteNotification`：
 
 ```swift
-func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
     print("Received Notification in didReceiveRemoteNotification \(userInfo)")
-
     // display the alert body
-    if let notification = userInfo["aps"] as? NSDictionary,
+      if let notification = userInfo["aps"] as? NSDictionary,
         let alert = notification["alert"] as? NSDictionary,
         let body = alert["body"] as? String {
             showAlert(body)

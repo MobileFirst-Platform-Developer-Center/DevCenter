@@ -3,12 +3,12 @@ layout: tutorial
 title: Application Center
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 12
+weight: 13
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-了解有关 {{ site.data.keys.mf_app_center_full }}  的信息：其用途、不同的组件和功能，以及如何使用控制台和客户机。
+了解有关 {{ site.data.keys.mf_app_center_full }} 的信息：其用途、不同的组件和功能，以及如何使用控制台和客户机。
 
 移动设备的销量现已超出了个人计算机。
 因此，移动应用程序对于企业至关重要。  
@@ -44,7 +44,7 @@ Application Center 将设备本身上安装的移动应用程序作为目标。�
 
 当前版本的 Application Center 不支持 Windows Phone 7、Windows RT 和 BlackBerry OS。
 
-Application Center 可管理移动应用程序；它支持任何类型的 Android、iOS、Windows Phone 8 或 Windows 8 应用程序，包括基于 {{ site.data.keys.product }}    构建的应用程序。
+Application Center 可管理移动应用程序；它支持任何类型的 Android、iOS、Windows Phone 8 或 Windows 8 应用程序，包括基于 {{ site.data.keys.product }} 构建的应用程序。
 
 可以在应用程序的开发过程中使用 Application Center。Application Center 的典型场景是由一个团队构建一个移动应用程序；开发团队创建新版本的 Android、iOS、Windows Phone 或 Windows 8 应用程序。开发团队希望此新版本由更多团队成员复审和测试。开发人员转至 Application Center 控制台，并将新版本的应用程序上载到 Application Center。
 作为此过程的一部分，此开发人员可以输入应用程序版本的描述。例如，描述可以提及开发团队基于先前的版本添加或修订的元素。然后该应用程序的新版本可供团队的其他成员使用。
@@ -146,13 +146,13 @@ Center 应用程序与该数据库关联。
 
 Application Center 支持针对 Android、iOS、Windows Phone 8 和 Windows 8 设备的应用程序。因此，针对 Android、iOS、Windows Phone 8 和 Windows 8，移动式客户机分别随附了独立版本。
 
-Android、iOS 和 Windows Phone 8 移动式客户机是基于 {{ site.data.keys.product }}    构建的。要了解如何在安装产品后在各种 Java 应用程序服务器上配置 Application Center 服务器端组件以及如何为 Application Center 客户机构建 {{ site.data.keys.product_adj }}    应用程序，请参阅[在安装后配置 Application Center](../installation-configuration/production/appcenter)。
+Android、iOS 和 Windows Phone 8 移动式客户机是基于 {{ site.data.keys.product }} 构建的。要了解如何在安装产品后在各种 Java 应用程序服务器上配置 Application Center 服务器端组件以及如何为 Application Center 客户机构建 {{ site.data.keys.product_adj }} 应用程序，请参阅[在安装后配置 Application Center](../installation-configuration/production/appcenter)。
 
 ## 初步信息
 {: #preliminary-information }
-要使用 Application Center，您必须配置安全设置，启动安装了 {{ site.data.keys.product }}    的 Web 应用程序服务器，启动 Application Center 控制台，然后登录。
+要使用 Application Center，您必须配置安全设置，启动安装了 {{ site.data.keys.product }} 的 Web 应用程序服务器，启动 Application Center 控制台，然后登录。
 
-安装 {{ site.data.keys.product }}    时，Application Center 会自动安装在指定的应用程序服务器中。
+安装 {{ site.data.keys.product }} 时，Application Center 会自动安装在指定的应用程序服务器中。
 
 如果在 WebSphere Application Server Liberty Profile 中安装 Application Center，那么会在 **installation-directory/server** 中创建服务器。
 

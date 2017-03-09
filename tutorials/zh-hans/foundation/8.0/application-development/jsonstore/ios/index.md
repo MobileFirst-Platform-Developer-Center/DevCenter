@@ -362,7 +362,7 @@ let dirtyDocs:NSArray = try collection.allDirty()
 ## 示例应用程序
 {: #sample-application }
 JSONStoreSwift 项目包含利用 JSONStore API 集合的本机 iOS Swift 应用程序。  
-随附一个 JavaScript 适配器 Maven 项目。
+还随附一个 JavaScript 适配器 Maven 项目。
 
 [单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreSwift/tree/release80)本机 iOS 项目。  
 [单击以下载](https://github.com/MobileFirst-Platform-Developer-Center/JSONStoreAdapter/tree/release80)适配器 Maven 项目。  
