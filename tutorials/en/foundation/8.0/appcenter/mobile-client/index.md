@@ -215,24 +215,43 @@ You can install the mobile client, or any signed application marked with the ins
 
 1. Start the browser on your mobile device.
 
-+ Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html?os=Windows`. Where `hostname` is the address of the server and `portnumber` is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html?os=Windows`. Where `hostname` is the address of the server and `portnumber` is the number of the port where the Application Center is installed. Your system administrator can provide this information.
 
-  The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html?os=Windows`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page *installers.html* does not work on your mobile device, you can use *inst.html*. This page is provided in English only and is not translated into other languages.
+    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html?os=Windows`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page *installers.html* does not work on your mobile device, you can use *inst.html*. This page is provided in English only and is not translated into other languages.
 
-+ Enter your credentials to authorize access to the server.
+3.  Enter your credentials to authorize access to the server.
 
-  ![Enter credentials to access the server](ac_wp10_enter_credentials.png)
+    ![Enter credentials to access the server](ac_wp10_enter_credentials.png)
 
-+ Select an item in the list of available applications to display the application details.
+4.  Select an item in the list of available applications to display the application details.
 
-  ![Select an application to view its details](ac_wp10_apps_list.png)
+    ![Select an application to view its details](ac_wp10_apps_list.png)
 
-+ Tap **Install** to download and install the mobile client.
+5.  Tap **Install** to download and install the mobile client.
 
-  ![Select Install to install the application](ac_wp10_app_install.png)
+    ![Select Install to install the application](ac_wp10_app_install.png)
 
 
 > **Note:** To list the Windows 10 UWP apps you need to pass the query string `os=Windows`
+
+### Installing a Windows 10 UWP application and adding review comments
+{:  #installing-a-windows-10-uwp-application-and-adding-review-comments}
+
+1. Login to the Application Center.
+
+    ![Login to the Application Center](ac_wp10_login.png)
+    
+2. Select the application to be installed from the list of available applications in the catalog.
+
+    ![Select an application from the catalog](ac_wp10_catalog_applisting.png)
+
+3. Tap **Install** to download and install the application.
+
+    ![Select Install to install the application](ac_wp10_app_details_installapp.png)
+
+4. Review the application by providing a rating and adding the review comments.
+
+    ![Add review comments](ac_wp10_add_review.png)
 
 
 ## The Login view
