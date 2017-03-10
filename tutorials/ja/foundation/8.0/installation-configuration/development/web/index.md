@@ -11,19 +11,36 @@ weight: 6
 Web アプリケーションの開発およびテストは、任意の Web ブラウザーでローカル HTML ファイルをプレビューするのと同じくらいに簡単です。  
 開発者は、任意の IDE、およびニーズに合ったフレームワークを使用できます。
 
-ただし、Web アプリケーションの開発で壁となる可能性があることが 1 つあります。Web アプリケーションで、[同一オリジン・ポリシー](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)違反によるエラーが発生することがあります。同一オリジン・ポリシーは、Web ブラウザーに課された制限です。例えば、アプリケーションがドメイン **example.com** でホストされる場合、同じアプリケーションが、別のサーバー、つまり {{site.data.keys.mf_server }} からのコンテンツにもアクセスすることは許されません。
+ただし、Web アプリケーションの開発で壁となる可能性があることが 1 つあります。Web アプリケーションで、[同一オリジン・ポリシー](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy)違反によるエラーが発生することがあります。同一オリジン・ポリシーは、Web ブラウザーに課された制限です。例えば、あるアプリケーションがドメイン **example.com** でホストされている場合、同じアプリケーションが別のサーバー、つまり {{ site.data.keys.mf_server }} から使用可能なコンテンツにもアクセスすることは許されません。
 
-[{{site.data.keys.product }} Web SDK を使用する Web アプリケーション](../../../application-development/sdk/web)は、サポートされるトポロジーで処理される必要があります。例えば、リバース・プロキシーを使用して、同じ単一オリジンを維持しながら適切なサーバーに要求を内部的にリダイレクトして行います。
+[{{ site.data.keys.product }} Web SDK を使用する Web アプリケーション](../../../application-development/sdk/web)は、サポートされるトポロジーで処理される必要があります。例えば、リバース・プロキシーを使用して、同じ単一オリジンを維持しながら適切なサーバーに要求を内部的にリダイレクトして行います。
 
 ポリシーの要件は、以下のいずれかの方法で満たすことができます。
 
-- {{site.data.keys.mf_server }} もホストする同一 WebSphere フル/Liberty プロファイル・アプリケーション・サーバーから Web アプリケーション・リソースを処理します。
-- Node.js をプロキシーとして使用し、アプリケーション要求を {{site.data.keys.mf_server }} にリダイレクトします。
+- {{ site.data.keys.mf_server }} もホストする同一 WebSphere フル/Liberty プロファイル・アプリケーション・サーバーから Web アプリケーション・リソースを処理します。
+- Node.js をプロキシーとして使用し、アプリケーション要求を {{ site.data.keys.mf_server }} にリダイレクトします。
 
-<br/>
-**前提条件:**  
-以下には、Apache Maven または Node.js が開発者のワークステーションにインストールされていることが必要です。  
-手順については、[インストール・ガイド](../mobilefirst/installation-guide/)を参照してください。
+#### ジャンプ先
+{: #jump-to }
+- [前提条件](#prerequisites)
+- [WebSphere Liberty プロファイルを使用した Web アプリケーション・リソースの処理](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
+- [Node.js の使用](#using-nodejs)
+- [次のステップ](#next-steps)
+
+## 前提条件
+{: #prerequisites }
+-   {: #web-app-supported-browsers }
+    Web アプリケーションは、以下のブラウザーのバージョンでサポートされています。バージョン番号は、それぞれのブラウザーで完全にサポートされる最初のバージョンを示します。
+
+    | ブラウザー               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android ブラウザー |
+    |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
+    | **サポートされるバージョン** | {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
+
+    <sup>*</sup> Safari では、プライベート・ブラウズ・モードは SPA (Single-page Application) に対してのみサポートされます。他のアプリケーションでは予期しない動作を生じる可能性があります。
+
+    {% comment %} [sharonl][c-web-browsers-ms-edge] タスク 111165 での Microsoft Edge サポートに関する情報を参照してください。{% endcomment %}
+
+-   以下のセットアップ手順では、Apache Maven または Node.js が開発者のワークステーションにインストールされていることが必要です。詳しい手順については、[インストール・ガイド](../mobilefirst/installation-guide/)を参照してください。
 
 ## WebSphere Liberty プロファイルを使用した Web アプリケーション・リソースの処理
 {: #using-websphere-liberty-profile-to-serve-the-web-application-resources }
@@ -54,7 +71,7 @@ Web アプリケーションのリソースを処理するには、これらが 
 ### アプリケーション・サーバーへの Maven webapp の追加
 {: #adding-the-maven-webapp-to-the-application-server }
 1. WebSphere Application Server の **server.xml ファイル**を編集します。  
-    {{site.data.keys.mf_dev_kit }} を使用している場合、ファイルは [**{{site.data.keys.mf_dev_kit }}] →「mfp-server」→「user」→「servers」→「mfp」**フォルダーにあります。以下の項目を追加します。
+    {{ site.data.keys.mf_dev_kit }} を使用している場合、ファイルは [**{{ site.data.keys.mf_dev_kit }}] →「mfp-server」→「user」→「servers」→「mfp」**フォルダーにあります。以下の項目を追加します。
 
    ```xml
    <application name="MyWebApp" location="path-to/MyWebApp.war" type="war"></application>
@@ -69,7 +86,7 @@ Web アプリケーションをテストする準備ができたら、次の URL
 
 ## Node.js の使用
 {: #using-nodejs }
-Node.js をリバース・プロキシーとして使用して、Web アプリケーションから {{site.data.keys.mf_server }} に要求をトンネリングできます。
+Node.js をリバース・プロキシーとして使用して、Web アプリケーションから {{ site.data.keys.mf_server }} に要求をトンネリングできます。
 
 1. **コマンド・ライン**・ウィンドウから、Web アプリケーションのフォルダーにナビゲートし、以下の一連のコマンドを実行します。 
 
@@ -112,7 +129,7 @@ Node.js をリバース・プロキシーとして使用して、Web アプリ�
     - **port** 値を希望する値に置き換えます。
     - `/myapp` を Web アプリケーションの希望するパス名に置き換えます。
     - `/index.html` をメイン HTML ファイルの名前に置き換えます。
-    - 必要な場合、`/mfp/*` を {{site.data.keys.product }} ランタイムのコンテキスト・ルートで更新します。
+    - 必要な場合、`/mfp/*` を {{ site.data.keys.product }} ランタイムのコンテキスト・ルートで更新します。
 
 4. プロキシーを開始するには、コマンド `node proxy.js` を実行します。
 5. Web アプリケーションをテストする準備ができたら、**server-hostname:port/app-name** の URL にアクセスします。例えば、**http://localhost:9081/myapp** などです。
@@ -122,8 +139,8 @@ Node.js をリバース・プロキシーとして使用して、Web アプリ�
 
 ## 次のステップ
 {: #next-steps }
-Web アプリケーションで {{site.data.keys.product }} 開発を続けるには、{{site.data.keys.product }} Web SDK が Web アプリケーションに追加されなければなりません。
+Web アプリケーションで {{ site.data.keys.product }} 開発を続けるには、{{ site.data.keys.product }} Web SDK が Web アプリケーションに追加されなければなりません。
 
-* [{{site.data.keys.product }} SDK を Web アプリケーションに](../../../application-development/sdk/web/)追加する方法を確認します。
-* アプリケーション開発については、[{{site.data.keys.product }} SDK の使用](../../../application-development/)のチュートリアルを参照してください。
+* [{{ site.data.keys.product }} SDK を Web アプリケーションに](../../../application-development/sdk/web/)追加する方法を確認します。
+* アプリケーション開発については、[{{ site.data.keys.product }} SDK の使用](../../../application-development/)のチュートリアルを参照してください。
 * アダプター開発については、[アダプター](../../../adapters/)のカテゴリーを参照してください。

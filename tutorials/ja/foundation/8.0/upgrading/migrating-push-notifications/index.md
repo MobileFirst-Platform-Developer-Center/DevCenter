@@ -994,8 +994,8 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
    ```
     
 ##### サーバー
-:{ #server-ios-2 }
-アダプターで `WL.Server` を削除します (使用されている場合)。
+:{: #server-ios-2 }
+アダプターで `WL.Server` (使用されている場合) を削除します。
 
 * `notifyAllDevices()`
 * `notifyDevice()`
@@ -1528,7 +1528,7 @@ v8.0 にこれをマイグレーションするには、このモデルをユニ
 4. 最新バージョンのアプリケーションを {{ site.data.keys.mf_server }} 8.0 に登録します。
 	* アプリケーションの表示名は、MobileFirst Platform Foundation 7.1 内でのそのアプリケーションと一致している必要があります。
 	* PacakgeName/BundleID を覚えておき、同じ値をアプリケーションに対して指定します。
-	* アプリケーションが {{ site.data.keys.mf_server }} 8.0 に登録されていないと、マイグレーションは成功しません。
+	* アプリケーションが {{ site.data.keys.mf_server }} 8.0 に登録されていない場合、マイグレーションは成功しません。
 5. アプリケーションの各環境に応じて、スコープ・エレメントのマッピングを指定します。[スコープのマッピングについてもっとよく知る](../../notifications/sending-notifications/#scope-mapping)。
 
 #### 手順

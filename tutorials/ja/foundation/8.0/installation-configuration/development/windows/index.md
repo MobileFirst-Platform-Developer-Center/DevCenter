@@ -10,7 +10,7 @@ weight: 5
 {: #overview }
 このチュートリアルでは、Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションを開発およびテストできるようにするために開発者が従う必要のあるステップを説明します。
 
-**前提条件:** iOS 開発環境をセットアップする際には、 [{{site.data.keys.product }} 開発環境のセットアップ](../mobilefirst/)のチュートリアルも必ずお読みください。
+**前提条件:** Windows 開発環境をセットアップする際には、[{{ site.data.keys.product }} 開発環境のセットアップ](../mobilefirst/)のチュートリアルも必ずお読みください。
 
 ### 登録
 {: #registration }
@@ -52,4 +52,4 @@ Windows 10 UWP には、以下が必要です。
 
 ## 次のステップ
 {: #whats-next }
-{{site.data.keys.product }} および Windows 開発環境がセットアップされたため、[クイック・スタート](../../../quick-start/windows-8-10/)のカテゴリーで {{site.data.keys.product }} を使用してみるか、[すべてのチュートリアル](../../../all-tutorials)で {{site.data.keys.product }} 開発の個々の側面について理解を深めてください。
+{{ site.data.keys.product }} および Windows 開発環境がセットアップされたため、[クイック・スタート](../../../quick-start/windows-8-10/)のカテゴリーで {{ site.data.keys.product }} を使用してみるか、[すべてのチュートリアル](../../../all-tutorials)で {{ site.data.keys.product }} 開発の個々の側面について理解を深めてください。

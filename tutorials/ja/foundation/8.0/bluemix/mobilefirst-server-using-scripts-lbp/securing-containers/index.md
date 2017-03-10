@@ -65,7 +65,7 @@ IBM MobileFirst Foundation インスタンスのセキュリティー構成に�
 
 ### アプリケーション認証性検査
 {: #application-authenticity-validation }
-無許可のモバイル・アプリケーションが {{ site.data.keys.mf_server }} にアクセスしないようにするために、アプリケーション認証性セキュリティー検査を有効にします。詳細...
+無許可のモバイル・アプリケーションが {{ site.data.keys.mf_server }} にアクセスしないようにするために、[アプリケーション認証性セキュリティー検査を有効にします](../../../authentication-and-security/application-authenticity)。
 
 
 ### バックエンドへの接続の保護

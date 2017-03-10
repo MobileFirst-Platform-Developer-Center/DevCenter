@@ -198,6 +198,40 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 - `sendWithJSON` を使用して、本体に任意のディクショナリーを設定できます。
 - `sendWithData` を使用して、本体に任意の `NSData` を設定できます。
 
+### completionHandler およびデリゲートのためのコールバック・キュー
+応答の受信中に UI がブロックされるのを回避するには、API の `sendWithCompletionHandler` セットおよび `sendWithDelegate` セットに対して completionHandler ブロックまたはデリゲートを実行するプライベート・コールバック・キューを指定します。
+
+#### Objective-C
+
+```objc
+//creating callback queue
+dispatch_queue_t completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL);
+
+//Sending the request with callback queue
+[request sendWithCompletionHandler:completionQueue completionHandler:^(WLResponse *response, NSError *error) {
+    if (error == nil){
+        NSLog(@"%@", response.responseText);
+    } else {
+        NSLog(@"%@", error.description);
+    }
+}];
+```
+#### Swift
+
+```swift
+//creating callback queue
+var completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL)
+
+//Sending the request with callback queue
+request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void in
+  if (error == nil){
+      NSLog(@"%@", response.responseText);
+  } else {
+      NSLog(@"%@", error.description);
+    }
+}
+```
+
 ## 応答
 {: #the response }
 `response` オブジェクトには応答データが含まれており、そのメソッドとプロパティーを使用して必要な情報を取得することができます。よく使用されるプロパティーは、`responseText` (ストリング)、`responseJSON` (ディクショナリー) (応答が JSON の場合)、および `status` (整数) (応答の HTTP 状況) です。

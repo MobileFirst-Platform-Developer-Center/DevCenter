@@ -264,7 +264,7 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
    * Podfile を開き、以下の行を追加します。
         
    ##### 変更前 (IMFData/CloudantToolkit を使用):
-   {: # before-with-imfdata-cloudanttoolkit }    
+   {: #before-with-imfdata-cloudanttoolkit }    
    ```xml
    pod 'IMFDataLocal/SQLCipher'
    ```
