@@ -21,6 +21,7 @@ Your system administrator must give you a user name and password before you can 
 * [Installing the client on an iOS mobile device](#installing-the-client-on-an-ios-mobile-device)
 * [Installing the client on a Windows Phone 8 Universal mobile device](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
 * [Installing Windows 10 UWP client on Windows 10 device](#installing-windows-10-uwp-client-on-windows-10-device)
+* [Installing a Windows 10 UWP application and adding review comments](#installing-a-windows-10-uwp-application-and-adding-review-comments)
 * [The Login view](#the-login-view)
 * [Views in the Application Center client](#views-in-the-application-center-client)
 * [Installing an application on an Android device](#installing-an-application-on-an-android-device)
@@ -234,13 +235,13 @@ You can install the mobile client, or any signed application marked with the ins
 
 > **Note:** To list the Windows 10 UWP apps you need to pass the query string `os=Windows`
 
-### Installing a Windows 10 UWP application and adding review comments
+## Installing a Windows 10 UWP application and adding review comments
 {:  #installing-a-windows-10-uwp-application-and-adding-review-comments}
 
 1. Login to the Application Center.
 
     ![Login to the Application Center](ac_wp10_login.png)
-    
+
 2. Select the application to be installed from the list of available applications in the catalog.
 
     ![Select an application from the catalog](ac_wp10_catalog_applisting.png)
