@@ -346,7 +346,7 @@ if (document.addEventListener) {
                         <p>要测试已迁移的应用程序：</p>
                         <ol>
                             <li>确保已在 {{ site.data.keys.mf_server }} 中注册该应用程序。</li>
-                            <li>为避免遇到<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/#same-origin-policy" target="_blank">同源错误</a>，请设置逆向代理。为此，您可以使用 Node.js。要获取使用 Node.js 的逆向代理实施示例，请参阅<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/" target="_blank">设置 Web 开发环境</a>教程。</li>
+                            <li>为避免遇到<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/#same-origin-policy" target="_blank">同源错误</a>，请设置逆向代理。为此，您可以使用 Node.js。要获取使用 Node.js 的逆向代理实现的示例，请参阅<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/" target="_blank">设置 Web 开发环境</a>教程。</li>
                         </ol>
                     </div>
                 </div>
@@ -761,9 +761,9 @@ export MVN_PATH="/usr/local/bin"
                         <b>HTTP JavaScript 适配器</b><br/>
 
                         <ol>
-                            <li>在文件系统中浏览至 JavaScript 适配器文件夹，例如：<i>../Desktop/JavaScriptAdapters/adapters/RSSReade</i>。</li>
+                            <li>在文件系统中浏览至 JavaScript 适配器文件夹，例如：<i>../Desktop/JavaScriptAdapters/adapters/RSSReader</i>。</li>
                             <li>打开另一个窗口并浏览至新 Maven 项目（例如：<i>../Desktop/MigratedAdapter</i>）和 <b>src/main/adapter-resources</b> 文件夹。</li>
-                            <li>将现有适配器文件复制粘贴到此文件夹：<b>filtered.xsl</b>（如果已使用）。</li>
+                            <li>将现有适配器文件复制并粘贴到此文件夹。</li>
                             <li>编辑 <b>adapter.xml</b>：将其内容替换为现有适配器的 XML 内容（在此示例中为 RSSReader.xml）。</li>
                             <li>编辑 <b>js/{adapter-name}-impl.js</b>：将其内容替换为现有适配器的内容（在此示例中为 RSSReader-impl.js）。</li>
                         </ol>
@@ -966,9 +966,9 @@ export MVN_PATH="/usr/local/bin"
                     <div class="panel-body">
                         <h3>域与安全性检查</h3>
                         <p>在 {{ site.data.keys.product }} 8.0 中，安全性检查可视为是先前发行版中的三个概念的组合：<br/>
-                        安全性检查 = 域 + 鉴别符 + 登录模块</p>
+                        安全性检查 = 域 + 认证器 + 登录模块</p>
 
-                        <p>实施安全性检查，即是实施登录模块和鉴别符。<br/>
+                        <p>实施安全性检查，即是实施登录模块和认证器。<br/>
                         安全性检查的定义类似于域的定义。</p>
 
                         <p>下表描述了先前发行版的安全框架与 {{ site.data.keys.product }} 8.0 的安全框架之间的差异。</p>
@@ -980,7 +980,7 @@ export MVN_PATH="/usr/local/bin"
                             </tr>
                             <tr>
                                 <td><b>定义</b></td>
-                                <td>已在 <b>authenticationConfig.xml</b> 中使用名称、登录模块和鉴别符进行定义，例如：
+                                <td>已在 <b>authenticationConfig.xml</b> 中使用名称、登录模块和认证器进行定义，例如：
     {% highlight xml %}<realm loginModule="AuthLoginModule" name="AuthRealm">
         <className>com.worklight.integration.auth.AdapterAuthenticator</className>
     </realm>{% endhighlight %}  </td>
@@ -996,8 +996,8 @@ export MVN_PATH="/usr/local/bin"
     {% highlight xml %}<parameter name="login-function" value="AuthAdapter.onAuthRequired"/>
 <parameter name="logout-function" value="AuthAdapter.onLogout"/>{% endhighlight %}
 
-                                <i>定制鉴别符 + 登录模块：</i><code>init()</code> 方法用于启动，<code>processRequest()</code> 用于授权请求。
-鉴别符将登录模块凭证发送到 <code>login()/logout()</code> 方法。</td>
+                                <i>定制认证器 + 登录模块：</i><code>init()</code> 方法用于启动，<code>processRequest()</code> 用于授权请求。
+认证器会将登录模块凭证发送到 <code>login()/logout()</code> 方法。</td>
                                 <td>在实现安全性检查接口时，用户还必须实现 <code>authorize()</code> 和 <code>introspect()</code> 方法（在授权请求期间框架将调用这两个方法）。安全性检查将自行处理认证和登录/注销。</td>
                             </tr>
                             <tr>
@@ -1023,6 +1023,7 @@ export MVN_PATH="/usr/local/bin"
                             <tr>
                                 <td><b>定义</b></td>
                                 <td>已在 <b>authenticationConfig.xml</b> 文件中使用名称和 1 个或多个安全性测试（其中至少一个专用于定义 <code>UserID</code>）进行定义。
+
 {% highlight xml %}<customSecurityTest name="AuthSecurityTest">
     <test isInternalUserID="true" realm="AuthRealm"/>
 </customSecurityTest>{% endhighlight %}</td>

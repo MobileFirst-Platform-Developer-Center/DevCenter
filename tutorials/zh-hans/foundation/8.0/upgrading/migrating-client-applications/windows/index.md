@@ -17,7 +17,7 @@ weight: 4
 
 ## 扫描现有 {{ site.data.keys.product_adj }} 本机 Windows 应用程序以准备版本升级
 {: #scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade }
-迁移辅助工具可帮助您准备通过 IBM MobileFirst™ Platform Foundation 先前版本创建的应用程序以执行迁移，方法是扫描本机 Windows 应用程序的源并生成 V8.0 中不推荐使用或停用的 API 的报告。
+迁移辅助工具可帮助您准备通过 IBM MobileFirst™ Platform Foundation 先前版本创建的应用程序以执行迁移，方法是扫描本机 Windows 应用程序的源文件并生成 V8.0 中不推荐使用或停用的 API 的报告。
 
 使用迁移辅助工具之前，务必了解以下信息：
 

@@ -9,7 +9,7 @@ weight: 5
 {: #overview }
 您可以将移动应用程序的数据存储在 Cloudant 数据库中。Cloudant 是一种高级的非关系型数据库，能够处理多种数据类型，如 JSON、全文本和地理空间数据。SDK 可用于 Java™、Objective-C 和 Swift。
 
-> 在 {{ site.data.keys.product_full }}    V8.0 中已停用 CloudantToolkit 和 IMFData 框架。
+> 在 {{ site.data.keys.product_full }} V8.0 中已停用 CloudantToolkit 和 IMFData 框架。
 
 * 对于 iOS，使用 [CDTDatastore](https://github.com/cloudant/CDTDatastore) SDK 替代 CloudantToolkit 和 IMFData 框架。
 * 对于 Android，使用 [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android) 替代 CloudantToolkit 和 IMFData 框架。依靠 Cloudant Sync，可以将数据持久存储在本地，并使用远程数据存储器复制数据。
@@ -22,13 +22,15 @@ weight: 5
 
 * 必须以符合 FIPS 140-2 的方式将数据存储在移动设备上时，
 * 当需要在设备和企业之间同步数据时，
+
 * 在开发混合应用程序时，
+
 
 有关 JSONStore 的更多信息，请参阅 [JSONStore](../../application-development/jsonstore)。
 
 #### 跳至：
 {: #jump-to }
-* [集成 {{ site.data.keys.product_adj }}    和 Cloudant 安全性](#integrating-mobilefirst-and-cloudant-security)
+* [集成 {{ site.data.keys.product_adj }} 和 Cloudant 安全性](#integrating-mobilefirst-and-cloudant-security)
 * [创建数据库](#creating-databases)
 * [加密设备上的数据](#encrypting-data-on-the-device)
 * [设置用户许可权](#setting-user-permissions)
@@ -38,32 +40,31 @@ weight: 5
 * [查询数据](#querying-data)
 * [支持脱机存储和同步](#supporting-offline-storage-and-synchronization)
 
-## 集成 {{ site.data.keys.product_adj }}    和 Cloudant 安全性
+## 集成 {{ site.data.keys.product_adj }} 和 Cloudant 安全性
 {: #integrating-mobilefirst-and-cloudant-security }
 ### 适配器样本
 {: #adapter-sample }
 要下载样本，请参阅“样本：[mfp-bluelist-on-premises](https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise)”。
 
-要了解 Bluelist 样本随附的适配器，您必须了解 [Cloudant 安全性](https://cloudant.com/for-developers/faq/auth/)和 [{{ site.data.keys.product_adj }}    安全框架](../../authentication-and-security)。
+要了解 Bluelist 样本随附的适配器，您必须了解 [Cloudant 安全性](https://cloudant.com/for-developers/faq/auth/)和 [{{ site.data.keys.product_adj }} 安全框架](../../authentication-and-security)。
 
 Bluelist 适配器样本具有两个主要功能：
 
-* 将 {{ site.data.keys.product_adj }}    OAuth 令牌交换成 Cloudant 会话 cookie
+* 将 {{ site.data.keys.product_adj }} OAuth 令牌交换成 Cloudant 会话 cookie
 * 从 Bluelist 样本中对 Cloudant 执行所需的管理请求。
 
 该样本演示了如何在安全的服务器上执行需要管理访问权的 API 请求。尽管可以将管理凭证放在移动设备上，但更好的做法是限制从移动设备进行访问。
 
-Bluelist 样本将 {{ site.data.keys.product_adj }}    安全性与 Cloudant 安全性集成。适配器样本将 {{ site.data.keys.product_adj }}    身份映射到 Cloudant 身份。移动设备接收 Cloudant 会话 cookie，以执行非管理 API 请求。样本使用 Couch 安全模型。
+Bluelist 样本将 {{ site.data.keys.product_adj }} 安全性与 Cloudant 安全性集成。适配器样本将 {{ site.data.keys.product_adj }} 身份映射到 Cloudant 身份。移动设备接收 Cloudant 会话 cookie，以执行非管理 API 请求。样本使用 Couch 安全模型。
 
 ### 注册 REST 端点
 {: #enroll-rest-endpoint }
 下图说明由 Bluelist 适配器样本 **/enroll** 端点执行的集成。
-
 ![样本集成图](SecurityIntegration.jpg)
 
-1. 移动设备从 {{ site.data.keys.mf_server }}    获取 {{ site.data.keys.product_adj }}    OAuth 令牌。
+1. 移动设备从 {{ site.data.keys.mf_server }} 获取 {{ site.data.keys.product_adj }} OAuth 令牌。
 2. 移动设备调用适配器上的 **/enroll** 端点。
-3. 适配器样本使用 {{ site.data.keys.mf_server }}    验证 {{ site.data.keys.product_adj }}    OAuth 令牌。
+3. 适配器样本使用 {{ site.data.keys.mf_server }} 验证 {{ site.data.keys.product_adj }} OAuth 令牌。
 4. 如果有效，请对 Cloudant 执行管理 API 请求。该样本检查 **_users** 数据库中是否存在现有 Cloudant 用户。
     * 如果该用户存在，那么在 **_users** 数据库中查找 Cloudant 用户凭证。
     * 如果新用户通过了验证，请使用 Cloudant 管理凭证，创建新的 Cloudant 用户，并将其存储在 **_users** 数据库中。
@@ -76,7 +77,8 @@ Bluelist 样本将 {{ site.data.keys.product_adj }}    安全性与 Cloudant 安
 
 ### 会话 cookie REST 端点
 {: #sessioncookie-rest-endpoint }
-如果会话 cookie 已到期，那么移动设备可以与 **/sessioncookie** 端点交换 Cloudant 会话 cookie 的有效 {{ site.data.keys.product_adj }}    OAuth 令牌。
+如果会话 cookie 已到期，那
+么移动设备可以与 **/sessioncookie** 端点交换 Cloudant 会话 cookie 的有效 {{ site.data.keys.product_adj }} OAuth 令牌。
 
 ## 创建数据库
 {: #creating-databases }
@@ -264,7 +266,7 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
    * 打开 Podfile 并添加以下行：
         
    ##### Before（使用 IMFData/CloudantToolkit）：
-   {: # before-with-imfdata-cloudanttoolkit }    
+   {: #before-with-imfdata-cloudanttoolkit }    
    ```xml
    pod 'IMFDataLocal/SQLCipher'
    ```
@@ -303,9 +305,8 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
         
 3. 初始化本地存储器来通过密钥提供者进行加密。
 
-   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。数据库已加密后，即无法更改密码。必须删除数据库才能更改密码。   
-   
-   ##### BEFORE（使用 IMFData/CloudantToolkit）：
+   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。数据库已加密后，即无法更改密码。必须删除数据库才能更改密码。  
+    ##### BEFORE（使用 IMFData/CloudantToolkit）：
    {: #before-with-imfdata-cloudanttoolkit }
    **Objective-C**
     
@@ -453,9 +454,8 @@ compile group: 'com.cloudant', name: 'cloudant-sync-datastore-android-encryption
     * 将 **sqlcipher.jar** 添加为文件依赖关系。从 Android Studio 中的应用程序文件夹菜单的**打开模块设置**下，选择**依赖关系**选项卡。
 3. 初始化本地存储器来通过密钥提供者进行加密。
     
-   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。数据库加密后，即无法更改密码。必须删除数据库才能更改密码。   
-   
-   ##### BEFORE（使用 IMFData/CloudantToolkit）：
+   > **警告：**如果创建数据库后更改了密码，那么会因为无法解密现有数据库而发生错误。数据库加密后，即无法更改密码。必须删除数据库才能更改密码。  
+    ##### BEFORE（使用 IMFData/CloudantToolkit）：
    {: #before-with-imfdata-cloudanttoolkit }
    ```java
    // Get reference to DataManager
@@ -579,7 +579,7 @@ permissionsTask.continueWith(new Continuation<Boolean, Object>() {
 
 ##### AFTER（使用 Cloudant Sync）：
 {: #after-with-cloudant-sync }
-无法从移动设备设置用户许可权。必须使用 Cloudant 仪表板或服务器端代码设置许可权。有关如何将 {{ site.data.keys.product_adj }}    OAuth 令牌与 Cloudant 安全性集成的样本，请参阅 [Bluelist 样本](https://github.ibm.com/MFPSamples/BlueList-On-Premise)。
+无法从移动设备设置用户许可权。必须使用 Cloudant 仪表板或服务器端代码设置许可权。有关如何将 {{ site.data.keys.product_adj }} OAuth 令牌与 Cloudant 安全性集成的样本，请参阅 [Bluelist 样本](https://github.ibm.com/MFPSamples/BlueList-On-Premise)。
 
 ## 数据建模
 {: #modeling-data }

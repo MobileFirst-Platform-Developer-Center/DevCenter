@@ -280,7 +280,6 @@ wlCommonInit();
    ```
 
    > **注：****mfpmigrate** 迁移辅助工具已针对 {{ site.data.keys.product_adj }} 功能部件添加 Cordova 插件，因此您不必添加这些插件。有关这些插件的更多信息，请参阅 [{{ site.data.keys.product_adj }} 的 Cordova 插件](../../../application-development/sdk/cordova)。
-   
 2. 可选：如果原始应用程序使用 FIPS 功能部件，请将 JQuery 事件侦听器更改为侦听 WL/FIPS/READY 事件的 JavaScript 事件侦听器。有关 FIPS 的更多信息，请参阅 [FIPS 140-2 支持](../../../administering-apps/federal/#fips-140-2-support)。
 3. 可选：如果原始应用程序使用迁移辅助工具没有替换或提供的任何第三方 Cordova 插件，请使用 **cordova plugin add** 命令将这些插件手动添加到 Cordova 应用程序。有关此工具替换了哪些插件的信息，请参阅[使用迁移辅助工具启动 Cordova 应用程序迁移](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)。
 4. 可选：（仅适用于包含 iOS 平台且使用 OpenSSL 的应用程序。）将 **cordova-plugin-mfp-encrypt-utils** 插件添加到应用程序。**cordova-plugin-mfp-encrypt-utils** 插件为使用 iOS 平台的 Cordova 应用程序提供用于加密的 iOS OpenSSL 框架。

@@ -17,7 +17,7 @@ weight: 3
 
 ## 扫描现有的 {{ site.data.keys.product_adj }} 本机 Android 应用程序以准备升级版本
 {: #scanning-existing-mobilefirst-native-android-apps-to-prepare-for-a-version-upgrade }
-迁移辅助工具可帮助您准备使用 {{ site.data.keys.product_full }} 的先前版本创建的应用程序进行迁移，方法是扫描本机 Android 应用程序的源并生成 V8.0 中不推荐使用或停用的 API 的报告。
+迁移辅助工具可帮助您准备使用 {{ site.data.keys.product_full }} 的先前版本创建的应用程序进行迁移，方法是扫描本机 Android 应用程序的源文件并生成 V8.0 中不推荐使用或停用的 API 的报告。
 
 使用迁移辅助工具之前，务必了解以下信息：
 
@@ -119,8 +119,7 @@ context)` | 无替换 |
 | `ChallengeHandler` | 对于定制网关验证问题，请使用 [GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc)。对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 [SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc)。| 
 | `WLChallengeHandler` | 使用 [SecurityCheckChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/SecurityCheckChallengeHandler.html?view=kc)。 |
 | `ChallengeHandler.isCustomResponse()` | 使用 [`GatewayChallengeHandler.canHandleResponse()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc)。 | 
-| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 [GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc)。
- | 
+| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 [GatewayChallengeHandler](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/GatewayChallengeHandler.html?view=kc)。| 
 
 #### 取决于旧 `org.apach.http` API 的 Android API 不再受支持
 {: #android-apis-depending-on-the-legacy-orgapachhttp-apis-are-no-longer-supported }
