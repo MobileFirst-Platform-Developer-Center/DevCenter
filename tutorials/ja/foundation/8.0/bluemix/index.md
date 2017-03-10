@@ -1,9 +1,9 @@
 ---
 layout: tutorial
 breadcrumb_title: Bluemix 上の Foundation
-title: IBM MobileFirst Foundation on Bluemix
+title: Bluemix 上の IBM MobileFirst Foundation
 relevantTo: [ios,android,windows,javascript]
-weight: 9
+weight: 10
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説

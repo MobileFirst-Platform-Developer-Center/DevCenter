@@ -3,7 +3,7 @@ layout: tutorial
 title: アダプターの開発
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 5
+weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説

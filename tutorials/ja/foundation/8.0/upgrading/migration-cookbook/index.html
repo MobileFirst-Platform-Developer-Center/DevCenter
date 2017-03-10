@@ -41,7 +41,7 @@ weight: 1
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
-                        <h3 class="migratingApplications no-anchor">アプリケーションの<br/>マイグレーション</h3>
+                        <h3 class="migratingApplications no-anchor">アプリケーション<br/>のマイグレーション</h3>
 
                         <ul class="topics">
                             <li><a href="#applications">クラシック・ハイブリッド/MFPF<br/>Cordova アプリケーションの標準 Cordova<br/>アプリケーションへのマイグレーション</a></li>
@@ -52,7 +52,7 @@ weight: 1
                 </div>
                 <div class="col-md-3">
                     <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
-                        <h3 class="migratingAdapters no-anchor">アダプターの<br/>マイグレーション</h3>
+                        <h3 class="migratingAdapters no-anchor">アダプター<br/>のマイグレーション</h3>
 
                         <ul class="topics">
                             <li><a href="#migrating-adapters">Apache Maven のセットアップ<br/>の前提条件</a></li>
@@ -774,9 +774,9 @@ export MVN_PATH="/usr/local/bin"
                         <b>HTTP JavaScript アダプター</b><br/>
 
                         <ol>
-                            <li>ファイル・システム内をナビゲートして、JavaScript アダプター・フォルダーに移動します。例: <i>../Desktop/JavaScriptAdapters/adapters/RSSReade</i></li>
+                            <li>ファイル・システム内をナビゲートして、JavaScript アダプター・フォルダーに移動します。例: <i>../Desktop/JavaScriptAdapters/adapters/RSSReader</i></li>
                             <li>別のウィンドウを開いて、新規 Maven プロジェクト (例: <i>../Desktop/MigratedAdapter</i>) に移動し、<b>src/main/adapter-resources</b> フォルダーに移動します。</li>
-                            <li>既存のアダプター・ファイルをコピーして、このフォルダーに貼り付けます。<b></b></li>
+                            <li>既存のアダプター・ファイルをこのフォルダーにコピー・アンド・ペーストします。</li>
                             <li><b>adapter.xml</b> の編集: そのコンテンツを、既存のアダプターの XML コンテンツ (この例では RSSReader.xml) に置き換えます。</li>
                             <li><b>js/{adapter-name}-impl.js</b> の編集: そのコンテンツを既存のアダプターのコンテンツ (この例では RSSReader-impl.js) に置き換えます。</li>
                         </ol>
@@ -1039,7 +1039,7 @@ export MVN_PATH="/usr/local/bin"
 
                             <tr>
                                 <td><b>定義</b></td>
-                                <td><b>authenticationConfig.xml</b> ファイル内で、名前、1 個以上のセキュリティー・テスト、および <code>UserID</code> を定義するための専用のセキュリティー・テストを少なくとも 1 つ使用して定義される。
+                                <td>名前、1 個以上のセキュリティー・テスト、<code>UserID</code> を定義するための少なくとも 1 つの専用のセキュリティー・テストを使用して、<b>authenticationConfig.xml</b> ファイル内で定義される。
 
 {% highlight xml %}<customSecurityTest name="AuthSecurityTest">
     <test isInternalUserID="true" realm="AuthRealm"/>

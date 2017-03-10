@@ -11,16 +11,16 @@ weight: 6
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-受け取ったプッシュ通知を Android アプリケーションが処理できるようにするためには、Google Play Services のサポートを構成する必要があります。アプリケーションが構成されると、{{site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、Android アプリケーションでプッシュ通知を処理する方法について学習します。
+受け取ったプッシュ通知を Android アプリケーションが処理できるようにするためには、Google Play Services のサポートを構成する必要があります。アプリケーションが構成されると、{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、Android アプリケーションでプッシュ通知を処理する方法について学習します。
 
 **前提条件**
 
 * 必ず、以下のチュートリアルをお読みください。
-    * [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
-    * [Android アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/android)
+    * [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
+    * [Android アプリケーションへの {{ site.data.keys.product }} SDK の追加](../../../application-development/sdk/android)
     * [プッシュ通知の概要](../../)
-* ローカルで稼働している {{site.data.keys.mf_server }}、またはリモートで稼働している {{site.data.keys.mf_server }}
-* 開発者ワークステーションに {{site.data.keys.mf_cli }} がインストールされていること
+* ローカルで稼働している {{ site.data.keys.mf_server }}、またはリモートで稼働している {{ site.data.keys.mf_server }}
+* 開発者ワークステーションに {{ site.data.keys.mf_cli }} がインストールされていること
 
 #### ジャンプ先:
 {: #jump-to }
@@ -32,7 +32,7 @@ weight: 6
 ## 通知構成
 {: #notifications-configuration }
 新しい Android Studio プロジェクトを作成するか、または既存のプロジェクトを使用します。  
-{{site.data.keys.product_adj }} Native Android SDK がプロジェクトにまだ存在しない場合は、[Android アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/android)チュートリアルの説明に従ってください。
+{{ site.data.keys.product_adj }} Native Android SDK がプロジェクトにまだ存在しない場合は、[Android アプリケーションへの {{ site.data.keys.product }} SDK の追加](../../../application-development/sdk/android)チュートリアルの説明に従ってください。
 
 ### プロジェクトのセットアップ
 {: #project-setup }
@@ -73,7 +73,7 @@ weight: 6
     	    android:protectionLevel="signature" />
       ```
       
-	* 以下 (`MFPPush Intent Service`、`MFPPush Instance ID Listener Service`) を `application` タグに追加します。
+	* 以下を `application` タグに追加します。
 
 	  ```xml
 	  <!-- GCM Receiver -->
@@ -104,6 +104,9 @@ weight: 6
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
+
+      <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
+           android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
 
 	  > **注:** 必ず、ご使用のアプリケーションの実際のパッケージ名で `your.application.package.name` を置き換えてください。
@@ -133,6 +136,7 @@ weight: 6
 
 ### クライアント・サイド
 {: #client-side }
+
 | Java メソッド | 説明 |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`initialize(Context context);`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。 |

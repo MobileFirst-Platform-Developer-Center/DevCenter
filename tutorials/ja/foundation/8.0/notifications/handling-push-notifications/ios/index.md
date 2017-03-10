@@ -81,7 +81,7 @@ downloads:
 {: #notifications-api }
 ### MFPPush インスタンス
 {: #mfppush-instance }
-すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。これを行うには、View Controller 内で `var` を使用し (`var push = MFPPush.sharedInstance();` など)、その後、View Controller 内で一貫して `push.methodName()` を呼び出します。
+すべての API 呼び出しは、`MFPPush` のインスタンスから呼び出される必要があります。これを行うには、ビュー・コントローラー内で `var` を使用し (`var push = MFPPush.sharedInstance();` など)、その後、ビュー・コントローラー内で一貫して `push.methodName()` を呼び出します。
 
 代わりに、プッシュ API メソッドにアクセスする必要があるインスタンスごとに `MFPPush.sharedInstance().methodName()` を呼び出すこともできます。
 
@@ -94,17 +94,17 @@ downloads:
 ### クライアント・サイド
 {: #client-side }
 
-| Swift メソッド                                                                                                | 説明                                                             |
-|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize()`](#initialization)                                                                            | 提供されたコンテキストの MFPPush を初期化します。                               |
-| [`isPushSupported()`](#is-push-supported)                                                                    | デバイスがプッシュ通知をサポートするかどうか。                             |
-| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token)                  | デバイスをプッシュ通知サービスに登録します。               |
-| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token)                                                | デバイス・トークンをサーバーに送信します。                                    |
-| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
-| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | 指定されたタグにデバイスをサブスクライブします。                          |
-| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | デバイスが現在サブスクライブしているタグをすべて取得します。               |
-| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | 特定のタグからアンサブスクライブします。                                  |
-| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | プッシュ通知サービスからデバイスを登録抹消します。              |
+| Swift メソッド | 説明  |
+|---------------|--------------|
+| [`initialize()`](#initialization) | 提供されたコンテキストの MFPPush を初期化します。 |
+| [`isPushSupported()`](#is-push-supported) | デバイスがプッシュ通知をサポートするかどうか。 |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) | デバイスをプッシュ通知サービスに登録します。|
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | デバイス・トークンをサーバーに送信します。 |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | プッシュ通知サービス・インスタンス内で使用可能なタグを取得します。 |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | 指定されたタグにデバイスをサブスクライブします。 |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | デバイスが現在サブスクライブしているタグをすべて取得します。 |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | 特定のタグからアンサブスクライブします。 |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | プッシュ通知サービスからデバイスを登録抹消します。              |
 
 #### 初期化
 {: #initialization }
@@ -136,16 +136,19 @@ if isPushSupported {
 デバイスをプッシュ通知サービスに登録します。
 
 ```swift
-MFPPush.sharedInstance().registerDevice({(options, response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().registerDevice(nil) { (response, error) -> Void in
     if error == nil {
-        // Successfully registered
+        self.enableButtons()
+        self.showAlert("Registered successfully")
+        print(response?.description ?? "")
     } else {
-        // Registration failed with error
+        self.showAlert("Registrations failed.  Error \(error?.localizedDescription)")
+        print(error?.localizedDescription ?? "")
     }
-})
+}
 ```
 
-`options` = `[NSObject : AnyObject]` これはオプション・パラメーターであり、登録要求と一緒に渡すオプションのディクショナリーです。デバイスの固有 ID を使用してデバイスを登録するために、デバイス・トークンをサーバーに送信します。
+<!--`options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request, sends the device token to the server to register the device with its unique identifier.-->
 
 ```swift
 MFPPush.sharedInstance().sendDeviceToken(deviceToken)
@@ -158,19 +161,23 @@ MFPPush.sharedInstance().sendDeviceToken(deviceToken)
 プッシュ通知サービスからすべての使用可能なタグを取得します。
 
 ```swift
-MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().getTags { (response, error) -> Void in
     if error == nil {
         print("The response is: \(response)")
-        print("The response text is \(response.responseText)")
-        if response.availableTags().isEmpty == true {
-            // Successfully retrieved tags as list of strings
+        print("The response text is \(response?.responseText)")
+        if response?.availableTags().isEmpty == true {
+            self.tagsArray = []
+            self.showAlert("There are no available tags")
         } else {
-            // Successfully retrieved response from server but there where no available tags
+            self.tagsArray = response!.availableTags() as! [String]
+            self.showAlert(String(describing: self.tagsArray))
+            print("Tags response: \(response)")
         }
     } else {
-        // Failed to receive tags with error
+        self.showAlert("Error \(error?.localizedDescription)")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
 
@@ -179,15 +186,17 @@ MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Vo
 目的のタグにサブスクライブします。
 
 ```swift
-var tagsArray: [AnyObject] = ["Tag 1" as AnyObject, "Tag 2" as AnyObject]
+var tagsArray: [String] = ["Tag 1", "Tag 2"]
 
-MFPPush.sharedInstance().subscribe(self.tagsArray, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().subscribe(self.tagsArray) { (response, error)  -> Void in
     if error == nil {
-        // Subscribed successfully
+        self.showAlert("Subscribed successfully")
+        print("Subscribed successfully response: \(response)")
     } else {
-        // Failed to subscribe with error
+        self.showAlert("Failed to subscribe")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
 
@@ -196,13 +205,23 @@ MFPPush.sharedInstance().subscribe(self.tagsArray, completionHandler: {(response
 デバイスが現在サブスクライブしているタグを取得します。
 
 ```swift
-MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        // Successfully received subscriptions as list of strings
-    } else {
-        // Failed to retrieve subscriptions with error
-    }
-})
+MFPPush.sharedInstance().getSubscriptions { (response, error) -> Void in
+   if error == nil {
+       var tags = [String]()
+       let json = (response?.responseJSON)! as [AnyHashable: Any]
+       let subscriptions = json["subscriptions"] as? [[String: AnyObject]]
+       for tag in subscriptions! {
+           if let tagName = tag["tagName"] as? String {
+               print("tagName: \(tagName)")
+               tags.append(tagName)
+           }
+       }
+       self.showAlert(String(describing: tags))
+   } else {
+       self.showAlert("Error \(error?.localizedDescription)")
+       print("Error \(error?.localizedDescription)")
+   }
+}
 ```
 
 
@@ -214,13 +233,15 @@ MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSErro
 var tags: [String] = {"Tag 1", "Tag 2"};
 
 // Unsubscribe from tags
-MFPPush.sharedInstance().unsubscribe(tags, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().unsubscribe(self.tagsArray) { (response, error)  -> Void in
     if error == nil {
-        // Unsubscribed successfully
+        self.showAlert("Unsubscribed successfully")
+        print(String(describing: response?.description))
     } else {
-        // Failed to unsubscribe
+        self.showAlert("Error \(error?.localizedDescription)")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
 #### 登録抹消
@@ -228,14 +249,17 @@ MFPPush.sharedInstance().unsubscribe(tags, completionHandler: {(response: WLResp
 プッシュ通知サービス・インスタンスからデバイスを登録抹消します。
 
 ```swift
-MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        // Unregistered successfully
-    } else {
-        self.showAlert("Error \(error.description)")
-        // Failed to unregister with error
-    }
-})
+MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
+   if error == nil {
+       // Disable buttons
+       self.disableButtons()
+       self.showAlert("Unregistered successfully")
+       print("Subscribed successfully response: \(response)")
+   } else {
+       self.showAlert("Error \(error?.localizedDescription)")
+       print("Error \(error?.localizedDescription)")
+   }
+}
 ```
 
 ## プッシュ通知の処理
@@ -246,15 +270,14 @@ MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSErro
 例えば、アプリケーションの実行中に単純な通知を受け取った場合は、**AppDelegate** の `didReceiveRemoteNotification` がトリガーされます。
 
 ```swift
-func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
     print("Received Notification in didReceiveRemoteNotification \(userInfo)")
-
     // display the alert body
-    if let notification = userInfo["aps"] as? NSDictionary,
+      if let notification = userInfo["aps"] as? NSDictionary,
         let alert = notification["alert"] as? NSDictionary,
         let body = alert["body"] as? String {
-            showAlert(body)
-    }
+          showAlert(body)
+        }
 }
 ```
 

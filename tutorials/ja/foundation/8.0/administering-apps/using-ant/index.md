@@ -111,7 +111,7 @@ weight: 3
 | lockTimeout    |	ロック取得のタイムアウト | いいえ | |
 
 **url**<br/>
-ベース URL には、HTTPS プロトコルを使用することを推奨します。 例えば、デフォルト・ポートとコンテキスト・ルートを使用する場合、次の URL を使用します。
+ベース URL には、HTTPS プロトコルを使用することを推奨します。例えば、デフォルト・ポートとコンテキスト・ルートを使用する場合、次の URL を使用します。
 
 * WebSphere Application Server の場合: [https://server:9443/worklightadmin](https://server:9443/worklightadmin)
 * Tomcat の場合: [https://server:8443/worklightadmin](https://server:8443/worklightadmin)
@@ -123,7 +123,8 @@ weight: 3
 * サーバーの SSL 証明書は、たとえ自己署名された場合でも、あるいは指定されたサーバーのホスト名とは異なるホスト名のために作成された場合でも、受け入れられます。
 
 **password**<br/>
-パスワードは、Ant スクリプトで **password** 属性を使用して指定するか、**passwordfile** 属性で渡す別のファイルで指定します。パスワードは機密情報であり、保護する必要があります。同じコンピューター上の他のユーザーがこのパスワードを知ることができないようにしてください。パスワードを保護するには、パスワードをファイルに入力する前に、自分以外のユーザーに対しファイルの読み取り権限を削除します。例えば、以下のいずれかのコマンドを使用できます。
+パスワードは、Ant スクリプトで **password** 属性を使用して指定するか、**passwordfile** 属性で渡す別のファイルで指定します。
+パスワードは機密情報であり、保護する必要があります。同じコンピューター上の他のユーザーがこのパスワードを知ることができないようにしてください。パスワードを保護するには、パスワードをファイルに入力する前に、自分以外のユーザーに対しファイルの読み取り権限を削除します。例えば、以下のいずれかのコマンドを使用できます。
 
 * UNIX の場合: `chmod 600 adminpassword.txt`
 * Windows の場合: `cacls adminpassword.txt /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
@@ -207,7 +208,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[グローバル構成 (GET) (Global Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `show-user-config` コマンド
 {: #the-show-user-config-command }
 `<adapter>` エレメントおよび `<app-version>` エレメントの外にある `show-user-config` コマンドは、ランタイムのユーザー構成を表示します。これには、以下の属性があります。
@@ -227,7 +228,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[ランタイム構成 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set-user-config` コマンド
 {: #the-set-user-config-command }
 `<adapter>` エレメントおよび `<app-version>` エレメントの外側にある `set-user-config` コマンドは、ランタイムのユーザー構成を指定します。構成全体の設定用に、以下の属性があります。
@@ -257,7 +258,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[ランタイム構成 (PUT) (Runtime configuration (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `show-confidential-clients` コマンド
 {: #the-show-confidential-clients-command }
 `show-confidential-clients` コマンドは、ランタイムにアクセスできる機密クライアントの構成を表示します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。このコマンドには、以下の属性があります。
@@ -277,7 +278,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[機密クライアント (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set-confidential-clients` コマンド
 {: #the-set-confidential-clients-command }
 `set-confidential-clients` コマンドは、ランタイムにアクセスできる機密クライアントの構成を指定します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。このコマンドには、以下の属性があります。
@@ -295,7 +296,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[機密クライアント (PUT) (Confidential Clients (PUT))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set-confidential-clients-rule` コマンド
 {: #the-set-confidential-clients-rule-command }
 `set-confidential-clients-rule` コマンドは、ランタイムにアクセスできる機密クライアントの構成におけるルールを指定します。機密クライアントについて詳しくは、[ 機密クライアント (Confidential clients)](../../authentication-and-security/confidential-clients) を参照してください。このコマンドには、以下の属性があります。
@@ -338,7 +339,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[Adapters (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `deploy-adapter` コマンド
 {: #the-deploy-adapter-command }
 `deploy-adapter` コマンドは、アダプターをランタイムにデプロイします。以下の属性があります。
@@ -356,7 +357,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `show-adapter` コマンド
 {: #the-show-adapter-command }
 `show-adapter` コマンドは、アダプターに関する詳細を表示します。以下の属性があります。
@@ -376,7 +377,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `delete-adapter` コマンド
 {: #the-delete-adapter-command }
 `delete-adapter` コマンドは、アダプターをランタイムから削除 (アンデプロイ) します。以下の属性があります。
@@ -394,7 +395,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `adapter` コマンド・グループ
 {: #the-adapter-command-group }
 `adapter` コマンド・グループには以下の属性があります。
@@ -412,7 +413,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 | show-user-config | ユーザー構成を表示します。 | 0..∞ | 
 | set-user-config  | ユーザー構成を指定します。 | 0..∞ | 
 
-<br /> 
+<br/>
 #### `get-binary` コマンド
 {: #the-get-binary-command }
 `adapter` エレメント内の `<get-binary>` コマンドは、バイナリー・アダプター・ファイルを返します。以下の属性があります。
@@ -431,7 +432,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `show-user-config` コマンド
 {: #the-show-user-config-command-1 }
 `<adapter>` エレメント内の `show-user-config` コマンドは、アダプターのユーザー構成を表示します。以下の属性があります。
@@ -452,7 +453,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[ アダプター構成 (GET) (Adapter Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set-user-config` コマンド
 {: #the-set-user-config-command-1 }
 `<adapter>` エレメント内の `set-user-config` コマンドは、アダプターのユーザー構成を指定します。構成全体の設定用に、以下の属性があります。
@@ -506,7 +507,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[Applications (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `deploy-app` コマンド
 {: #the-deploy-app-command }
 `deploy-app` コマンドは、アプリケーション・バージョンをランタイムにデプロイします。以下の属性があります。
@@ -524,7 +525,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `show-app` コマンド
 {: #the-show-app-command }
 `show-app` コマンドは、ランタイムにデプロイされたアプリケーション・バージョンのリストを返します。以下の属性があります。
@@ -544,7 +545,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `delete-app` コマンド
 {: #the-delete-app-command }
 `delete-app` コマンドは、デプロイされていたすべての環境について、アプリケーションとそのすべてのアプリケーション・バージョンをランタイムから削除 (アンデプロイ) します。以下の属性があります。
@@ -562,7 +563,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[アプリケーション・バージョン (DELETE) (Application Version (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `show-app-version` コマンド
 {: #the-show-app-version-command }
 `show-app-version` コマンドは、ランタイムのアプリケーション・バージョンに関する詳細を表示します。以下の属性があります。
@@ -582,7 +583,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[アプリケーション・バージョン (GET) (Application Version (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `delete-app-version` コマンド
 {: #the-delete-app-version-command }
 `delete-app-version` コマンドは、アプリケーション・バージョンをランタイムから削除 (アンデプロイ) します。以下の属性があります。
@@ -602,7 +603,7 @@ mfpadm Ant タスクの通常の出力は、現行のロケールのエンコー
 
 このコマンドは、[アプリケーション・バージョン (DELETE) (Application Version (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `app` コマンド・グループ
 {: #the-app-command-group }
 `app` コマンド・グループには以下の属性があります。
@@ -620,7 +621,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 | set-license-config | トークン・ライセンス構成を指定します。 | 0.. | 
 | delete-license-config | トークン・ライセンス構成を削除します。 | 0.. | 
 
-<br /> 
+<br/>
 #### `show-license-config` コマンド
 {: #the-show-license-config-command }
 `show-license-config` コマンドは、アプリケーションのトークン・ライセンス構成を表示します。以下の属性があります。
@@ -640,7 +641,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[ アプリケーション・ライセンス構成 (GET) (Application license configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set-license-config` コマンド
 {: #the-set-license-config-command }
 `set-license-config` コマンドは、アプリケーションのトークン・ライセンス構成を指定します。以下の属性があります。
@@ -660,7 +661,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[アプリケーション・ライセンス構成 (POST) (Application License Configuration (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `delete-license-config` コマンド
 {: #the-delete-license-config-command }
 `delete-license-config` コマンドは、アプリケーションのトークン・ライセンス構成をリセットします。つまり、構成を初期状態に戻します。
@@ -675,7 +676,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[ライセンス構成 (DELETE) (License configuration (DELETE))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `app-version` コマンド・グループ
 {: #the-app-version-command-group }
 `app-version` コマンド・グループには以下の属性があります。
@@ -700,7 +701,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 | show-user-config | ユーザー構成を表示します。 | 0.. | 
 | set-user-config | ユーザー構成を指定します。 | 0.. | 
 
-<br /> 
+<br/>
 #### `get-descriptor` コマンド
 {: #the-get-descriptor-command }
 `<app-version>` エレメント内の `get-descriptor` コマンドは、アプリケーションのバージョンのアプリケーション記述子を返します。以下の属性があります。
@@ -720,7 +721,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[アプリケーション記述子 (GET) (Application Descriptor (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `get-web-resources` コマンド
 {: #the-get-web-resources-command }
 `<app-version>` エレメント内の `get-web-resources` コマンドは、アプリケーションのバージョンの Web リソースを .zip ファイルとして返します。以下の属性があります。
@@ -739,7 +740,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[Web リソースの取得 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set-web-resources` コマンド
 {: #the-set-web-resources-command }
 `<app-version>` エレメント内の `set-web-resources` コマンドは、アプリケーションのバージョンの Web リソースを指定します。以下の属性があります。
@@ -758,7 +759,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[Web リソースのデプロイ (POST) (Deploy a web resource (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `get-authenticity-data` コマンド
 {: #the-get-authenticity-data-command }
 `<app-version>` エレメント内の `get-authenticity-data` コマンドは、アプリケーションのバージョンの認証データを返します。以下の属性があります。
@@ -778,7 +779,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[ ランタイム・リソースのエクスポート (GET) (Export runtime resources (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set-authenticity-data` コマンド
 {: #the-set-authenticity-data-command }
 `<app-version>` エレメント内の `set-authenticity-data` コマンドは、アプリケーションのバージョンの認証データを指定します。以下の属性があります。
@@ -809,7 +810,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[アプリケーション認証データのデプロイ (POST) (Deploy Application Authenticity Data (POST))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `delete-authenticity-data` コマンド
 {: #the-delete-authenticity-data-command }
 `<app-version>` エレメント内の `delete-authenticity-data` コマンドは、アプリケーションのバージョンの認証データを削除します。属性はありません。
@@ -824,7 +825,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[ アプリケーション認証性 (DELETE) (Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `show-user-config` コマンド
 {: #the-show-user-config-command-2 }
 `<app-version>` エレメント内の `show-user-config` コマンドは、アプリケーションのバージョンのユーザー構成を表示します。以下の属性があります。
@@ -851,7 +852,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[アプリケーション構成 (GET) (Application Configuration (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set-user-config` コマンド
 {: #the-set-user-config-command-2 }
 `<app-version>` エレメント内の `set-user-config` コマンドは、アプリケーションのバージョンのユーザー構成を指定します。構成全体の設定用に、以下の属性があります。
@@ -908,7 +909,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[Devices (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `remove-device` コマンド
 {: #the-remove-device-command }
 `remove-device` コマンドは、ランタイムのアプリケーションと接触のあるデバイスに関するレコードを消去します。これには、以下の属性があります。
@@ -926,7 +927,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `device` コマンド・グループ
 {: #the-device-command-group }
 `device` コマンド・グループには以下の属性があります。
@@ -943,7 +944,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 | set-status | 状況を変更します。 | 0..∞ | 
 | set-appstatus | アプリケーションの状況を変更します。 | 0..∞ | 
 
-<br /> 
+<br/>
 #### `set-status` コマンド
 {: #the-set-status-command }
 `set-status` コマンドは、ランタイムの有効範囲でデバイスの状況を変更します。これには、以下の属性があります。
@@ -970,7 +971,7 @@ app コマンド・グループは以下のエレメントをサポートして�
 
 このコマンドは、[Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `set-appstatus` コマンド
 {: #the-set-appstatus-command }
 `set-appstatus` コマンドは、ランタイム内のアプリケーションに関して、デバイスの状況を変更します。これには、以下の属性があります。
@@ -1014,7 +1015,7 @@ Ant タスク・コマンドを使用して、{{ site.data.keys.mf_server }} Web
 <show-info/>
 ```
 
-<br /> 
+<br/>
 #### `show-versions` コマンド
 {: #the-show-versions-command }
 `show-versions` コマンドは、各種コンポーネントの {{ site.data.keys.product_adj }} バージョンを表示します。
@@ -1036,7 +1037,7 @@ Ant タスク・コマンドを使用して、{{ site.data.keys.mf_server }} Web
 <show-versions/>
 ```
 
-<br /> 
+<br/>
 #### `show-diagnostics` コマンド
 {: #the-show-diagnostics-command }
 `show-diagnostics` コマンドは、データベースや補助サービスの可用性など、{{ site.data.keys.product_adj }} 管理サービスの正しい運用に必要な各種コンポーネントの状況を表示します。このコマンドには、以下の属性があります。
@@ -1052,7 +1053,7 @@ Ant タスク・コマンドを使用して、{{ site.data.keys.mf_server }} Web
 <show-diagnostics/>
 ```
 
-<br /> 
+<br/>
 #### `unlock` コマンド
 {: #the-unlock-command }
 `unlock` コマンドは汎用ロックをリリースします。破棄する動作の一部は、同じ構成データの同時修正を防ぐために、このロックを取得します。まれに、そのような動作が中断されると、ロックはロック状態のままとなり、それ以上の破棄操作が不可能になります。このような状況でロックをリリースするには、unlock コマンドを使用してください。このコマンドには属性はありません。
@@ -1063,7 +1064,7 @@ Ant タスク・コマンドを使用して、{{ site.data.keys.mf_server }} Web
 <unlock/>
 ```
 
-<br /> 
+<br/>
 #### `list-runtimes` コマンド
 {: #the-list-runtimes-command }
 `list-runtimes` コマンドは、デプロイ済みのランタイムのリストを返します。これには、以下の属性があります。
@@ -1086,7 +1087,7 @@ Ant タスク・コマンドを使用して、{{ site.data.keys.mf_server }} Web
 
 このコマンドは、[Runtimes (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `show-runtime` コマンド
 {: #the-show-runtime-command }
 `show-runtime` コマンドは、指定されたデプロイ済みのランタイムに関する情報を表示します。これには、以下の属性があります。
@@ -1105,7 +1106,7 @@ Ant タスク・コマンドを使用して、{{ site.data.keys.mf_server }} Web
 
 このコマンドは、[Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `delete-runtime` コマンド
 {: #the-delete-runtime-command }
 `delete-runtime` コマンドは、ランタイム (そのアプリケーションとアダプターを含む) をデータベースから削除します。ランタイムを削除できるのは、その Web アプリケーションが停止している場合のみです。コマンドには、以下の属性があります。
@@ -1123,7 +1124,7 @@ Ant タスク・コマンドを使用して、{{ site.data.keys.mf_server }} Web
 
 このコマンドは、[Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST サービスに基づいています。
 
-<br /> 
+<br/>
 #### `list-farm-members` コマンド
 {: #the-list-farm-members-command }
 `list-farm-members` コマンドは、所定のランタイムがデプロイされているファーム・メンバー・サーバーのリストを返します。これには、以下の属性があります。
@@ -1142,7 +1143,7 @@ Ant タスク・コマンドを使用して、{{ site.data.keys.mf_server }} Web
 
 このコマンドは、[ファーム・トポロジー・メンバー (GET) (Farm topology members (GET))](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST サービスに基づきます。
 
-<br /> 
+<br/>
 #### `remove-farm-member` コマンド
 {: #the-remove-farm-member-command }
 `remove-farm-member` コマンドは、所定のランタイムがデプロイされているファーム・メンバーのリストからサーバーを削除します。サーバーが使用不可になったとき、または切断されたときに、このコマンドを使用します。コマンドには、以下の属性があります。

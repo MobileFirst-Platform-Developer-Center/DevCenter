@@ -9,8 +9,8 @@ weight: 10
 {: #rest-apis }
 プッシュ・サービス REST API を使用して通知を処理できます。
 
-* アダプターおよびアプリケーションには、[管理サービス REST API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html) を使用します。
-* REST API エンドポイントからプッシュ機能にアクセスするときは、[プッシュ・サービス REST API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) を使用します。
+* アダプターおよびアプリケーションには、[管理サービス REST API](../../api/rest/administration-service) を使用します。
+* REST API エンドポイントからプッシュ機能にアクセスするときは、[プッシュ・サービス REST API](../../api/rest/push-service) を使用します。
 
 ## Swagger
 {: #swagger }

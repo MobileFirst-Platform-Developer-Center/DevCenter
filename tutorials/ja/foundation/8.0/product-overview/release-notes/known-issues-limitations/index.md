@@ -10,7 +10,7 @@ weight: 4
 
 ## 既知の制限
 {: #known-limitations }
-本書では、以下のように、さまざまな場所に {{site.data.keys.product_full }} の既知の制限の説明があります。
+本書では、以下のように、さまざまな場所に {{ site.data.keys.product_full }} の既知の制限の説明があります。
 
 * 既知の制限が特定の機能に適用される場合、その記述は、その特定の機能を説明するトピックに含まれています。そのため、その制限が機能に与える影響を直ちに特定できます。
 * 既知の制限が一般的なもので、直接関係しない可能性のある、さまざまなトピックに適用される場合は、ここで説明されています。
@@ -19,14 +19,14 @@ weight: 4
 {: #globalization }
 グローバル化されたアプリケーションを開発している場合は、以下の制約事項が適用されます。
 
-* 部分的な翻訳: {{site.data.keys.product }} v8.0 製品の一部 (資料を含む) は、中国語 (簡体字)、中国語 (繁体字)、フランス語、ドイツ語、イタリア語、日本語、韓国語、ポルトガル語 (ブラジル)、ロシア語、およびスペイン語に翻訳されています。ユーザーが直接目にするテキストが翻訳されています。
-* 双方向言語サポート: {{site.data.keys.product }}によって生成された
+* 部分的な翻訳: {{ site.data.keys.product }} v8.0 製品の一部 (資料を含む) は、中国語 (簡体字)、中国語 (繁体字)、フランス語、ドイツ語、イタリア語、日本語、韓国語、ポルトガル語 (ブラジル)、ロシア語、およびスペイン語に翻訳されています。ユーザーが直接目にするテキストが翻訳されています。
+* 双方向言語サポート: {{ site.data.keys.product }}によって生成された
 アプリケーションでは、完全な双方向が使用できるようにはなっていません。グラフィック・ユーザー・インターフェース
 (GUI) 要素の反映とテキスト方向の制御は、デフォルトでは提供されません。
 ただし、生成されたアプリケーションは、この制限に強く依存しているわけではありません。開発者は、生成されたコードを手動で調整することによって、完全な双方向準拠を達成することができます。
 
 
-ヘブライ語への翻訳は、{{site.data.keys.product }} の中核機能に用意されていますが、反映されない GUI 要素があります。
+ヘブライ語への翻訳は、{{ site.data.keys.product }} の中核機能に用意されていますが、反映されない GUI 要素があります。
 
 * アダプター名の制約: アダプターの名前は、Java クラス名を作成する際に有効な名前でなければなりません。また、名前に使用できるのは以下の文字のみです。
     * 大文字および小文字の英字 (A から Z および a から z)
@@ -35,21 +35,21 @@ weight: 4
 
 * Unicode 文字: 基本多言語面の範囲外の Unicode 文字はサポートされません。
 * 言語センシティビティーと Unicode 正規化形式: 以下のユース・ケースでは、さまざまな言語で検索機能が正しく実行されるように、通常のマッチング、アクセント・インセンシティブ、ケース・インセンシティブ、および 1 対 2 のマッピングなどの言語センシティビティーは照会で考慮されません。また、データに対する検索では正規化形式 C (NFC) を使用しません。
-    * {{site.data.keys.mf_analytics_console }} から、カスタム・グラフ用のカスタム・フィルターを作成する場合。ただし、このコンソールでは、メッセージ・プロパティーは正規化形式 C (NFC) を使用し、言語センシティビティーを考慮します。
-    * {{site.data.keys.mf_console }} から、「アプリケーションの参照」ページでアプリケーションを検索するか、「アダプターの参照」ページでアダプターを検索するか、「プッシュ」ページでタグを検索するか、「デバイス」ページでデバイスを検索する場合。
+    * {{ site.data.keys.mf_analytics_console }} から、カスタム・グラフ用のカスタム・フィルターを作成する場合。ただし、このコンソールでは、メッセージ・プロパティーは正規化形式 C (NFC) を使用し、言語センシティビティーを考慮します。
+    * {{ site.data.keys.mf_console }} から、「アプリケーションの参照」ページでアプリケーションを検索するか、「アダプターの参照」ページでアダプターを検索するか、「プッシュ」ページでタグを検索するか、「デバイス」ページでデバイスを検索する場合。
     * JSONStore API の Find 関数内。
 
-### {{site.data.keys.mf_analytics }}
+### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{site.data.keys.mf_analytics }} には、以下の制限があります。
+{{ site.data.keys.mf_analytics }} には、以下の制限があります。
 
-* セキュリティー分析 (要求失敗のセキュリティー検査に関するデータ) はサポートされていません。
-* {{site.data.keys.mf_analytics_console }} では、数値の形式は、International Components for Unicode (ICU) の規則に従いません。
-* {{site.data.keys.mf_analytics_console }} では、数値はユーザーの推奨数値スクリプトを使用しません。
-* {{site.data.keys.mf_analytics_console }} では、日時および数値の形式は、Microsoft Internet Explorer のロケールではなく、オペレーティング・システムの言語設定に従って表示されます。
+* セキュリティー分析 (セキュリティー検査に合格しなかった要求のデータ) はサポートされていません。
+* {{ site.data.keys.mf_analytics_console }} では、数値の形式は、International Components for Unicode (ICU) の規則に従いません。
+* {{ site.data.keys.mf_analytics_console }} では、数値はユーザーの推奨数値スクリプトを使用しません。
+* {{ site.data.keys.mf_analytics_console }} では、日時および数値の形式は、Microsoft Internet Explorer のロケールではなく、オペレーティング・システムの言語設定に従って表示されます。
 * カスタム・グラフ用のカスタム・フィルターを作成する場合、数値データは、0、1、2、3、4 、5 、6、 7、8、9 などの 10 進数 (Western/European) 表示にする必要があります。
-* {{site.data.keys.mf_analytics_console }} の「アラート管理 (Alert Management)」ページでアラートを作成する場合、数値データは、0、1、2、3、4、5、6、7、8、9 などの 10 進数 (西欧式) 表示にする必要があります。
-* {{site.data.keys.mf_console }} の「分析」ページは、以下のブラウザーをサポートします。
+* {{ site.data.keys.mf_analytics_console }} の「アラート管理 (Alert Management)」ページでアラートを作成する場合、数値データは、0、1、2、3、4、5、6、7、8、9 などの 10 進数 (西欧式) 表示にする必要があります。
+* {{ site.data.keys.mf_console }} の「分析」ページは、以下のブラウザーをサポートします。
     * Microsoft Internet Explorer バージョン 10 以降
     * Mozilla Firefox ESR 以降
     * Apple Safari on iOS バージョン 7.0 以降
@@ -57,14 +57,14 @@ weight: 4
 * Windows 用の Analytics クライアント SDK は提供されていません。
 
 
-### {{site.data.keys.mf_app_center_full }} モバイル・クライアント
+### {{ site.data.keys.mf_app_center_full }} モバイル・クライアント
 
 {: #ibm-mobilefirst-foundation-application-center-mobile-client }
 Application Center モバイル・クライアントは、稼働しているデバイスの国/地域別情報 (日付の形式など) に従います。より厳密な International Components for Unicode (ICU) 規則に常に従うわけではありません。
 
-### {{site.data.keys.mf_console_full }}
+### {{ site.data.keys.mf_console_full }}
 {: #ibm-mobilefirst-operations-console }
-{{site.data.keys.mf_console }} には、以下の制限があります。
+{{ site.data.keys.mf_console }} には、以下の制限があります。
 
 * 双方向言語については部分的なサポートのみを提供します。
 * 通知メッセージが Android デバイスに送信されるときに、以下の場合はテキストの方向を変更できません。
@@ -72,7 +72,7 @@ Application Center モバイル・クライアントは、稼働しているデ�
     * 入力された最初の文字が、左から右に記述される言語である場合、テキスト全体の方向は自動的に左から右になります。
 * 文字の順序とテキストの桁揃えは、双方向言語の文化的な方法には一致しません。
 * 数値フィールドは、ロケールのフォーマット設定規則に従って数値を構文解析しません。コンソールは、フォーマット設定された数値を表示しますが、入力として受け入れるのは*未加工の* (フォーマット設定されていない) 数値のみです。例えば、1000 は受け入れ、1 000 や 1,000 は受け入れません。
-* {{site.data.keys.mf_console }} の「分析」ページの応答時間は、いくつかの要因に依存します。例えばハードウェア (RAM、CPU)、累積された分析データの量、および {{site.data.keys.mf_analytics }} のクラスタリングなどです。{{site.data.keys.mf_analytics }} を実稼働環境に統合する前に、負荷をテストすることを検討してください。
+* {{ site.data.keys.mf_console }} の「分析」ページの応答時間は、いくつかの要因に依存します。例えばハードウェア (RAM、CPU)、累積された分析データの量、および {{ site.data.keys.mf_analytics }} のクラスタリングなどです。{{ site.data.keys.mf_analytics }} を実稼働環境に統合する前に、負荷をテストすることを検討してください。
 
 ### サーバー構成ツール
 {: #server-configuration-tool }
@@ -96,19 +96,19 @@ Application Center モバイル・クライアントは、稼働しているデ�
 
 ### アダプターおよびサード・パーティー依存関係
 {: #adapters-and-third-party-dependencies }
-以下の既知の問題は、{{site.data.keys.product_adj }} 共有ライブラリーを含め、アプリケーション・サーバー内の依存関係およびクラス間の対話に関係します。
+以下の既知の問題は、{{ site.data.keys.product_adj }} 共有ライブラリーを含め、アプリケーション・サーバー内の依存関係およびクラス間の対話に関係します。
 
 #### Apache HttpClient
 {: #apache-httpclient }
-{{site.data.keys.product }} は、内部で Apache HttpClient を使用します。Apache HttpClient インスタンスを Java アダプターへの依存関係として追加する場合、アダプターで `AdaptersAPI.executeAdapterRequest、AdaptersAPI.getResponseAsJSON`、および `AdaptersAPI.createJavascriptAdapterRequest` の各 API は正しく機能しません。API でシグニチャーに Apache HttpClient の型が含まれていることがその理由です。回避策としては、内部の Apache HttpClient を使用しますが、提供された **pom.xml** 内の依存関係スコープを変更します。
+{{ site.data.keys.product }} は、内部で Apache HttpClient を使用します。Apache HttpClient インスタンスを Java アダプターへの依存関係として追加する場合、アダプターで `AdaptersAPI.executeAdapterRequest、AdaptersAPI.getResponseAsJSON`、および `AdaptersAPI.createJavascriptAdapterRequest` の各 API は正しく機能しません。API でシグニチャーに Apache HttpClient の型が含まれていることがその理由です。回避策は、提供された **pom.xml** 内の依存関係スコープを変更して、内部の Apache HttpClient を使用することです。
 
 #### Bouncy Castle 暗号ライブラリー
 {: #bouncy-castle-cryptographic-library }
-{{site.data.keys.product }} は Bouncy Castle 自体を使用します。アダプターで別のバージョンの Bouncy Castle を使用することは可能ですが、その結果を注意深く検査する必要があります。時には、{{site.data.keys.product_adj }} Bouncy Castle コードによって `javax.security` パッケージ・クラスの特定の静的なシングルトン・フィールドにデータが設定され、アダプター内部にある Bouncy Castle のバージョンで、それらのフィールドに依存する機能を使用できなくなることがあります。
+{{ site.data.keys.product }} は Bouncy Castle 自体を使用します。アダプターで別のバージョンの Bouncy Castle を使用することは可能ですが、その結果を注意深く検査する必要があります。時には、{{ site.data.keys.product_adj }} Bouncy Castle コードによって `javax.security` パッケージ・クラスの特定の静的なシングルトン・フィールドにデータが設定され、アダプター内部にある Bouncy Castle のバージョンで、それらのフィールドに依存する機能を使用できなくなることがあります。
 
 #### JAR ファイルの Apache CXF 実装
 {: #apache-cxf-implementaton-of-jar-files }
-CXF が {{site.data.keys.product_adj }} JAX-RS 実装で使用され、Apache CXF JAR ファイルがアダプターに追加されないようにします。
+CXF が {{ site.data.keys.product_adj }} JAX-RS 実装で使用され、Apache CXF JAR ファイルがアダプターに追加されないようにします。
 
 ### Application Center モバイル・クライアント: Android 4.0.x での最新表示の問題
 {: #application-center-mobile-client-refresh-issues-on-android-40x}
@@ -127,10 +127,10 @@ Application Center は、Microsoft Windows Phone 8.0 および Microsoft Windows
 
 Application Center は、Microsoft Windows Store (デスクトップ・アプリケーション) の場合にのみ、アプリケーション・パッケージ (.appx) ファイルの配布をサポートします。
 
-### Ant またはコマンド・ラインを使用した {{site.data.keys.product_adj }}
+### Ant またはコマンド・ラインを使用した {{ site.data.keys.product_adj }}
 アプリケーションの管理
 {: #administering-mobilefirst-applications-through-ant-or-through-the-command-line }
-{{site.data.keys.mf_dev_kit_full }} のみをダウンロードしてインストールした場合、**mfpadm** ツールは使用できません。mfpadm ツールは、インストーラーで、{{site.data.keys.mf_server }} と共にインストールされます。
+{{ site.data.keys.mf_dev_kit_full }} のみをダウンロードしてインストールした場合、**mfpadm** ツールは使用できません。mfpadm ツールは、インストーラーで、{{ site.data.keys.mf_server }} と共にインストールされます。
 
 ### 機密クライアント
 {: #confidential-clients }
@@ -142,11 +142,11 @@ Windows でのダイレクト・アップデートは、V8.0.0 ではサポー�
 
 ### FIPS 140-2 機能の制限
 {: #fips-104-2-feature-limitations }
-{{site.data.keys.product }} で FIPS 140-2 機能を使用している場合、以下の既知の制限が適用されます。
-* この FIPS 140-2 検証モードは、JSONStore 機能によって保管されたローカル・データの保護 (暗号化)、および {{site.data.keys.product_adj }} クライアントと {{site.data.keys.mf_server }} の間の HTTPS 通信の保護にのみ適用されます。
-    * HTTPS 通信の場合、{{site.data.keys.product_adj }} クライアントと {{site.data.keys.mf_server }} の間の通信のみが、クライアントで FIPS 140-2 ライブラリーを使用します。その他のサーバーまたはサービスへの直接接続では、FIPS 140-2 ライブラリーを使用しません。
+{{ site.data.keys.product }} で FIPS 140-2 機能を使用している場合、以下の既知の制限が適用されます。
+* この FIPS 140-2 検証モードは、JSONStore 機能によって保管されたローカル・データの保護 (暗号化)、および {{ site.data.keys.product_adj }} クライアントと {{ site.data.keys.mf_server }} の間の HTTPS 通信の保護にのみ適用されます。
+    * HTTPS 通信の場合、{{ site.data.keys.product_adj }} クライアントと {{ site.data.keys.mf_server }} の間の通信のみが、クライアントで FIPS 140-2 ライブラリーを使用します。その他のサーバーまたはサービスへの直接接続では、FIPS 140-2 ライブラリーを使用しません。
 * この機能は、iOS および Android プラットフォームでのみサポートされます。
-    * Android では、この機能は、x86 または armeabi アーキテクチャーを使用するデバイスまたはシミュレーターでのみサポートされます。armv5 または armv6 アーキテクチャーを使用する Android ではサポートされません。これは、使用される OpenSSL ライブラリーが、Android の armv5 または armv6 のための FIPS 140-2 検証を取得していないためです。{{site.data.keys.product_adj }} ライブラリーは 64 ビット・アーキテクチャーをサポートしていますが、
+    * Android では、この機能は、x86 または armeabi アーキテクチャーを使用するデバイスまたはシミュレーターでのみサポートされます。armv5 または armv6 アーキテクチャーを使用する Android ではサポートされません。これは、使用される OpenSSL ライブラリーが、Android の armv5 または armv6 のための FIPS 140-2 検証を取得していないためです。{{ site.data.keys.product_adj }} ライブラリーは 64 ビット・アーキテクチャーをサポートしていますが、
 FIPS 140-2 は 64 ビット・アーキテクチャーではサポートされていません。FIPS 140-2 を 64 ビットのデバイス上で実行できるのは、プロジェクトに 32 ビットのネイティブ NDK ライブラリーのみが含まれる場合です。
     * iOS では、i386、x86_64、armv7、armv7s、および arm64 アーキテクチャーでサポートされます。
 * この機能は、ハイブリッド・アプリケーションのみで機能します (ネイティブ・アプリケーションでは機能しません)。
@@ -154,9 +154,9 @@ FIPS 140-2 は 64 ビット・アーキテクチャーではサポートされ�
 * クライアントでのユーザー登録機能の使用は、FIPS 140-2 機能ではサポートされていません。
 * Application Center クライアントは、FIPS 140-2 機能をサポートしません。
 
-### Application Center または {{site.data.keys.mf_server }} へのフィックスパックまたは暫定修正のインストール
+### Application Center または {{ site.data.keys.mf_server }} へのフィックスパックまたは暫定修正のインストール
 {: #installation-of-a-fix-pack-or-interim-fix-to-the-application-center-or-the-mobilefirst-server }
-Application Center または {{site.data.keys.mf_server }} にフィックスパックまたは暫定修正を適用する際には、手動操作が必要であり、一定の時間、アプリケーションをシャットダウンしなければならないことがあります。
+Application Center または {{ site.data.keys.mf_server }} にフィックスパックまたは暫定修正を適用する際には、手動操作が必要であり、一定の時間、アプリケーションをシャットダウンしなければならないことがあります。
 
 ### JSONStore でサポートされるアーキテクチャー
 {: #jsonstore-supported-architectures }
@@ -192,23 +192,23 @@ Windows Phone 8.1 環境では、x64 アーキテクチャーはサポートさ�
 
 ### Microsoft Windows 10 UWP アプリケーション
 {: #microsoft-windows-10-uwp-apps }
-{{site.data.keys.product_adj }} SDK が NuGet パッケージを通じてインストールされた場合、アプリケーション認証性フィーチャーは、{{site.data.keys.product_adj }} Windows 10 UWP アプリケーションでは機能しません。回避策として、開発者は NuGet パッケージをダウンロードして {{site.data.keys.product_adj }} SDK 参照を手動で追加することができます。
+{{ site.data.keys.product_adj }} SDK が NuGet パッケージを通じてインストールされた場合、アプリケーション認証性フィーチャーは、{{ site.data.keys.product_adj }} Windows 10 UWP アプリケーションでは機能しません。回避策として、開発者は NuGet パッケージをダウンロードして {{ site.data.keys.product_adj }} SDK 参照を手動で追加することができます。
 
 ### ネストされたプロジェクトは CLI では予測不能な結果になることがある
 {: #nested-projects-can-result-in-unpredictable-results-with-the-cli }
-{{site.data.keys.mf_cli }} を使用しているときには、プロジェクトが互いの内部に入るようにネストさせないでください。そのようにネストしている場合、影響を受けるプロジェクトが、予期したものではない可能性があります。
+{{ site.data.keys.mf_cli }} を使用しているときには、プロジェクトが互いの内部に入るようにネストさせないでください。そのようにネストしている場合、影響を受けるプロジェクトが、予期したものではない可能性があります。
 
-### {{site.data.keys.mf_mbs }} を使用した Cordova Web リソースのプレビュー{: #previewing-cordova-web-resources-with-the-mobile-browser-simulator }
-{{site.data.keys.mf_mbs }} で Web リソースをプレビューすることができますが、そのシミュレーターですべての {{site.data.keys.product_adj }} JavaScript API がサポートされているわけではありません。特に、OAuth プロトコルは完全にはサポートされていません。ただし、`WLResourceRequest` を使用したアダプターの呼び出しをテストすることはできます。
+### {{ site.data.keys.mf_mbs }} を使用した Cordova Web リソースのプレビュー{: #previewing-cordova-web-resources-with-the-mobile-browser-simulator }
+{{ site.data.keys.mf_mbs }} で Web リソースをプレビューすることができますが、そのシミュレーターですべての {{ site.data.keys.product_adj }} JavaScript API がサポートされているわけではありません。特に、OAuth プロトコルは完全にはサポートされていません。ただし、`WLResourceRequest` を使用したアダプターの呼び出しをテストすることはできます。
 
 ### 拡張アプリケーション認証性のテストには物理 iOS デバイスが必要
 {: #physical-ios-device-required-for-testing-extended-app-authenticity }
 拡張アプリケーション認証性機能のテストには、物理 iOS デバイスが必要です。
 これは、iOS シミュレーターに IPA をインストールできないためです。
 
-### {{site.data.keys.mf_server }} による Oracle 12c のサポート
+### {{ site.data.keys.mf_server }} による Oracle 12c のサポート
 {: #support-of-oracle-12c-by-mobilefirst-server }
-{{site.data.keys.mf_server }} のインストール・ツール (Installation Manager、サーバー構成ツール、および Ant タスク) は、データベースとして Oracle 12c を用いるインストールをサポートしています。
+{{ site.data.keys.mf_server }} のインストール・ツール (Installation Manager、サーバー構成ツール、および Ant タスク) は、データベースとして Oracle 12c を用いるインストールをサポートしています。
 
 インストール・ツールでユーザーおよび表を作成できますが、インストール・ツールを実行する前に 1 つ以上のデータベースが存在している必要があります。
 
@@ -231,7 +231,7 @@ Cordova アプリケーションの cordova-ios プラットフォームを更�
 {: #web-applications }
 Web アプリケーションには以下の制限があります。
 - {: #web_app_limit_ms_ie_n_edge }
-Microsoft Internet Explorer (IE) および Microsoft Edge では、管理アプリケーション・メッセージとクライアント Web SDK メッセージはオペレーティング・システムの地域の形式設定に従って表示され、構成されているブラウザーやオペレーティング・システムの言語の設定に従って表示されるものではありません。[複数言語での管理者メッセージの定義](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages)も参照してください。
+Microsoft Internet Explorer (IE) および Microsoft Edge では、管理アプリケーション・メッセージとクライアント Web SDK メッセージはオペレーティング・システムの地域形式の設定に従って表示されます。構成されているブラウザーやオペレーティング・システムの表示言語の設定に従って表示されるものではありません。[複数言語での管理者メッセージの定義](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages)も参照してください。
 
 ### iOS Cordova アプリケーション用の WKWebView のサポート
 {: #wkwebview-support-for-ios-cordova-applications }
@@ -241,7 +241,7 @@ Microsoft Internet Explorer (IE) および Microsoft Edge では、管理アプ�
 
 この問題を回避するには、Cordova プロジェクト内で次のコマンドを実行します。`cordova plugin add https://github.com/apache/cordova-plugins.git#master:wkwebview-engine-localhost`
 
-このコマンドを実行すると Cordova アプリケーション内のローカル Web サーバーを実行することになり、これで、ファイル URI スキーム (file://) を使用しないでローカル・ファイルをホストおよびアクセスしてローカル・ファイルを操作できます。
+このコマンドを実行すると Cordova アプリケーション内のローカル Web サーバーを実行することになり、これで、ファイル URI スキーム (file://) を使用しないでローカル・ファイルのホストおよびアクセスを行って、これらのファイルを操作できます。
 
 **注:** この Cordova プラグインは、ノード・パッケージ・マネージャー (npm) には公開されません。
 
@@ -283,4 +283,4 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 
 ### 未加工の IPv6 アドレスは Android アプリケーションでサポートされない
 {: #raw-ipv6-address-not-supported-in-android-applications }
-ネイティブ Android アプリケーションの **mfpclient.properties** の構成で、{{site.data.keys.mf_server }} が IPv6 アドレスのホスト上にある場合、IPv6 アドレスのマップされたホスト名を使用して **mfpclient.properties** 内の **wlServerHost** プロパティーを構成します。**wlServerHost** プロパティーを未加工の IPv6 アドレスを使用して構成すると、アプリケーションの {{site.data.keys.mf_server }} への接続は失敗します。
+ネイティブ Android アプリケーションの **mfpclient.properties** の構成時に、{{ site.data.keys.mf_server }} が IPv6 アドレスのホスト上にある場合、IPv6 アドレスのマップされたホスト名を使用して **mfpclient.properties** 内の **wlServerHost** プロパティーを構成します。**wlServerHost** プロパティーを未加工の IPv6 アドレスを使用して構成すると、アプリケーションの {{ site.data.keys.mf_server }} への接続は失敗します。

@@ -177,7 +177,7 @@ SDK には、必須の SDK とオプションの SDK があります。必須ま
     * Xcode プロジェクトが閉じていることを確認します。
     * `pod install` コマンドを実行します。
         
-このコマンドは、{{ site.data.keys.product_adj }} SDK **IBMMobileFirstPlatformFoundation.framework** と、Podfile に指定されている他のすべてのフレームワークおよびそれらの依存関係をインストールします。次に、このコマンドは、pod プロジェクトを生成し、クライアント・プロジェクトを {{ site.data.keys.product_adj }} SDK と統合します。
+    このコマンドは、{{ site.data.keys.product_adj }} SDK **IBMMobileFirstPlatformFoundation.framework** と、Podfile に指定されている他のすべてのフレームワークおよびそれらの依存関係をインストールします。次に、このコマンドは、pod プロジェクトを生成し、クライアント・プロジェクトを {{ site.data.keys.product_adj }} SDK と統合します。
 7. コマンド・ラインから open **ProjectName.xcworkspace** と入力することによって、Xcode で **ProjectName.xcworkspace** ファイルを開きます。このファイルは、**ProjectName.xcodeproj** ファイルと同じディレクトリーにあります。
 8. ヘッダーの既存の {{ site.data.keys.product_adj }} import をすべて、次の新しいアンブレラ・ヘッダーの単一エントリーに置換します。
     

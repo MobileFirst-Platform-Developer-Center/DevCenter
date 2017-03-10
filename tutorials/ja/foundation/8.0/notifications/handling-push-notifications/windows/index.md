@@ -13,16 +13,16 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、C# を使用して、ネイティブの Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションでプッシュ通知を処理する方法について学習します。
+{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブを実行できます。このチュートリアルでは、C# を使用して、ネイティブの Windows 8.1 Universal アプリケーションおよび Windows 10 UWP アプリケーションでプッシュ通知を処理する方法について学習します。
 
 **前提条件**
 
 * 必ず、以下のチュートリアルをお読みください。
 	* [プッシュ通知の概要](../../)
-    * [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
-    * [Windows アプリケーションへの {{site.data.keys.product_adj }} SDK の追加](../../../application-development/sdk/windows-8-10)
-* ローカルで稼働している {{site.data.keys.mf_server }}、またはリモートで稼働している {{site.data.keys.mf_server }}
-* 開発者ワークステーションに {{site.data.keys.mf_cli }} がインストールされていること
+    * [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
+    * [Windows アプリケーションへの {{ site.data.keys.product_adj }} SDK の追加](../../../application-development/sdk/windows-8-10)
+* ローカルで稼働している {{ site.data.keys.mf_server }}、またはリモートで稼働している {{ site.data.keys.mf_server }}
+* 開発者ワークステーションに {{ site.data.keys.mf_cli }} がインストールされていること
 
 #### ジャンプ先:
 {: #jump-to }
@@ -33,13 +33,13 @@ downloads:
 ## 通知構成
 {: #notifications-configuration }
 新しい Visual Studio プロジェクトを作成するか、または既存のプロジェクトを使用します。  
-{{site.data.keys.product_adj }} Native Windows SDK がプロジェクトにまだ存在しない場合は、[Windows アプリケーションへの {{site.data.keys.product_adj }} SDK の追加](../../../application-development/sdk/windows-8-10)チュートリアルの説明に従ってください。
+{{ site.data.keys.product_adj }} Native Windows SDK がプロジェクトにまだ存在しない場合は、[Windows アプリケーションへの {{ site.data.keys.product_adj }} SDK の追加](../../../application-development/sdk/windows-8-10)チュートリアルの説明に従ってください。
 
 ### プッシュ SDK の追加
 {: #adding-the-push-sdk }
 1. 「ツール」→「NuGet パッケージ マネージャー」→「パッケージ マネージャー コンソール」を選択します。
-2. {{site.data.keys.product_adj }} プッシュ・コンポーネントをインストールするプロジェクトを選択します。
-3. **Install-Package IBM.MobileFirstPlatformFoundationPush** コマンドを実行して、{{site.data.keys.product_adj }} プッシュ SDK を追加します。
+2. {{ site.data.keys.product_adj }} プッシュ・コンポーネントをインストールするプロジェクトを選択します。
+3. **Install-Package IBM.MobileFirstPlatformFoundationPush** コマンドを実行して、{{ site.data.keys.product_adj }} プッシュ SDK を追加します。
 
 ## WNS 構成の前提条件
 {: pre-requisite-wns-configuration }
@@ -63,6 +63,7 @@ downloads:
 
 ### クライアント・サイド
 {: #client-side }
+
 | C Sharp メソッド                                                                                                | 説明                                                             |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | [`Initialize()`](#initialization)                                                                            | 提供されたコンテキストの MFPPush を初期化します。                               |
@@ -109,9 +110,9 @@ MFPPushMessageResponse Response = await MFPPush.GetInstance().RegisterDevice(Opt
 if (Response.Success == true)
 {
     // Successfully registered
-} else {
-    // Registration failed with error
-}
+    } else {
+        // Registration failed with error
+    }
 ```
 
 #### タグの取得
@@ -191,9 +192,9 @@ MFPPushMessageResponse Response = await MFPPush.GetInstance().UnregisterDevice()
 if (Response.Success == true)
 {
     // Successfully registered
-} else {
-    // Registration failed with error
-}
+    } else {
+        // Registration failed with error
+    }
 ```
 
 ## プッシュ通知の処理

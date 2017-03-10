@@ -8,7 +8,7 @@ weight: 5
 ## 概説
 {: #overview }
 
-前の[アダプター・チュートリアル](../)で説明したように、アダプターは、Maven を直接使用するか、{{site.data.keys.mf_cli }} を使用して作成する Maven プロジェクトです。作成後、アダプター・コードを任意の IDE で編集でき、後で Maven または {{site.data.keys.mf_cli }} を使用してビルドおよびデプロイすることができます。開発者は、サポートされる IDE (Eclipse や IntelliJ など) の内部ですべてを作成、開発、ビルド、およびデプロイすることも選択できます。このチュートリアルでは、アダプターを Eclipse IDE から作成してビルドします。
+前の[アダプター・チュートリアル](../)で説明したように、アダプターは、Maven を直接使用するか、{{ site.data.keys.mf_cli }} を使用して作成する Maven プロジェクトです。作成後、アダプター・コードを任意の IDE で編集でき、後で Maven または {{ site.data.keys.mf_cli }} を使用してビルドおよびデプロイすることができます。開発者は、サポートされる IDE (Eclipse や IntelliJ など) の内部で作成、開発、ビルド、デプロイのすべてを行うようにすることも選択できます。このチュートリアルでは、アダプターを Eclipse IDE から作成してビルドします。
 
 > IntelliJ の使用方法の説明については、ブログ投稿の [IntelliJ を使用した MobileFirst Java アダプターの開発]({{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters)を参照してください。
 
@@ -38,7 +38,7 @@ weight: 5
     ![Eclipse でのアダプター Maven プロジェクトの作成方法を示すイメージ](new-maven-project.png)
 
 2. プロジェクトの名前とその場所を指定します。  
-    - 単一プロジェクトを作成するオプションのチェック・マークが**オフ**になっていることを確認して、**「次へ」**をクリックします。
+    - 単純なプロジェクトを作成するオプションのチェック・マークが**オフ**になっていることを確認して、**「次へ」**をクリックします。
 
     ![Eclipse でのアダプター Maven プロジェクトの作成方法を示すイメージ](select-project-name-and-location.png)
 
@@ -47,7 +47,7 @@ weight: 5
     - **「アーキタイプの追加」**をクリックし、以下の詳細を指定します。
         - **アーキタイプ・グループ ID**: `com.ibm.mfp`
         - **アーキタイプ成果物 ID**: `adapter-maven-archetype-java`、`adapter-maven-archetype-http`、または `adapter-maven-archetype-sql`
-        - **アーキタイプ・バージョン**: `8.0.2016061011` (使用可能な最新バージョンは [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation) で検索できます)
+        - **アーキタイプ・バージョン**: 使用可能な最新バージョンは [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp) で検索できます。
 
     ![Eclipse でのアダプター Maven プロジェクトの作成方法を示すイメージ](create-an-archetype.png)
 
@@ -66,10 +66,10 @@ weight: 5
 ## アダプター Maven プロジェクトのビルドとデプロイ
 {: #building-and-deploying-an-adapter-maven-project }
 
-アダプター・プロジェクトのビルドとデプロイは、Maven コマンド・ライン・コマンド、{{site.data.keys.mf_cli }}、または Eclipse を使用して行うことができます。  
+アダプター・プロジェクトのビルドとデプロイは、Maven コマンド・ライン・コマンド、{{ site.data.keys.mf_cli }}、または Eclipse を使用して行うことができます。  
 [アダプターのビルドとデプロイの方法について説明します。](../creating-adapters/#build-and-deploy-adapters).
 
-> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** Eclipse を拡張してデプロイメント・ステップを容易にすることもできます。それには、プラグインを使用して**コマンド・ライン**・ウィンドウを統合し、一貫性のある開発環境を作成します。このウィンドウから、Maven または {{site.data.keys.mf_cli }} コマンドを実行できます。
+> <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **ヒント:** Eclipse を拡張してデプロイメント・ステップを容易にすることもできます。それには、プラグインを使用して**コマンド・ライン**・ウィンドウを統合し、一貫性のある開発環境を作成します。このウィンドウから、Maven コマンドまたは {{ site.data.keys.mf_cli }} コマンドを実行できます。
 
 ### アダプターのビルド
 {: #building-an-adapter }

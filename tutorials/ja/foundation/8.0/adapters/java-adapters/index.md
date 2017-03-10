@@ -44,14 +44,14 @@ Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換�
 
 	<JAXRSApplicationClass>com.sample.JavaAdapterApplication</JAXRSApplicationClass>
 	
-	<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
-    	<property name="maxAttempts" defaultValue="3"/>
-	</securityCheckDefinition>
-	
 	<property name="DB_url" displayName="Database URL" defaultValue="jdbc:mysql://127.0.0.1:3306/mobilefirst_training"  />
 	<property name="DB_username" displayName="Database username" defaultValue="mobilefirst"  />
 	<property name="DB_password" displayName="Database password" defaultValue="mobilefirst"  />
-</mfp:adapter>
+<securityCheckDefinition name="sample" class="com.sample.sampleSecurityCheck">
+    	<property name="maxAttempts" defaultValue="3"/>
+	</securityCheckDefinition>
+	
+	</mfp:adapter>
 ```
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
@@ -73,7 +73,7 @@ Java アダプターは、JAX-RS 2.0 仕様に基づいています。言い換�
 					<li><b>property</b>: <i>オプション。</i> ユーザー定義プロパティーを宣言します。以下の『カスタム・プロパティー』トピックで詳細を参照してください。</li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>セクションを閉じる</b></a>.
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>セクションを閉じる</b></a>
             </div>
         </div>
     </div>

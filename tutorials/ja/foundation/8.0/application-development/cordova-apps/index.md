@@ -77,7 +77,7 @@ Cordova アプリケーション開発は、[Ionic](http://ionicframework.com/)�
 {: #mobilefirst-apis }
 [{{ site.data.keys.product_adj }} Cordova SDK を](../../application-development/sdk/cordova) Cordova アプリケーションに追加すると、API メソッドの {{ site.data.keys.product_adj }} セットが使用できるようになります。
 
-> 使用可能な API メソッドの完全なリストについては、ユーザー資料内のトピック『V8.0.0 でのクライアント API の変更』を参照してください。
+> 使用可能な API メソッドの完全なリストについては、[API リファレンス](../../api)を参照してください。
 
 ## {{ site.data.keys.product_adj }} SDK 開始フロー
 {: #mobilefirst-sdk-startup-flow }
@@ -93,8 +93,8 @@ Cordova アプリケーション開発は、[Ionic](http://ionicframework.com/)�
             <div class="panel-body">
                 <p>Android Studio で、{{ site.data.keys.product_adj }} を使用する Android 用 Cordova アプリケーションの開始プロセスを検討できます。{{ site.data.keys.product_adj }} Cordova プラグイン <b>cordova-plugin-mfp</b> には、ネイティブの非同期ブートストラップ・シーケンスがあります。ブートストラップ・シーケンスは、Cordova アプリケーションがアプリケーションのメイン html ファイルをロードする前に完了する必要があります。</p>
                 
-                <p><b>cordova-plugin-mfp</b> プラグインを Cordova アプリケーションに追加すると、アプリケーションの <b>AndroidManifest.xml</b> ファイルが装備されます。また、{{ site.data.keys.product_adj }} の初期化を実行するように <code>CordovaActivity</code> ネイティブ・コードを拡張する <code>MainActivity</code> ファイルも装備されます。</p>
-                
+                <p><b>cordova-plugin-mfp</b> プラグインを Cordova アプリケーションに追加すると、アプリケーションの <b>AndroidManifest.xml</b> ファイルが装備されます。また、({{ site.data.keys.product_adj }} の初期化を実行するように <code>CordovaActivity</code> ネイティブ・コードを拡張する) <code>MainActivity</code> ファイルも装備されます。</p>
+        
                 <p>アプリケーションのネイティブ・コードのインスツルメンテーションは以下で構成されます。</p>
                 <ul>
                     <li>{{ site.data.keys.product_adj }} の初期化を実行するための <code>com.worklight.androidgap.api.WL</code> API 呼び出しを追加します。</li>
@@ -392,7 +392,7 @@ Xcode、Android Studio、および Visual Studio は、Objective C、Swift、C#�
 
 各 {{ site.data.keys.product_adj }} Cordova プラグインは、{{ site.data.keys.product_adj }} JavaScript ファイルごとに `d.ts` 構成ファイルを提供します。`d.ts` ファイル名は対応する JavaScript ファイル名と一致し、プラグイン・フォルダー内に配置されます。例えば、メインの {{ site.data.keys.product_adj }} SDK の場合、ファイルは次の場所に配置されます。**[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**
 
-この定義を使用すると、TypeScript をサポートしているすべての IDE ([TypeScript Playground](http://www.typescriptlang.org/Playground/)、[Visual Studio Code](http://www.microsoft.com/visualstudio/eng)、[WebStorm](http://www.jetbrains.com/webstorm/)、[WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f)、[Eclipse](https://github.com/palantir/eclipse-typescript) など) でオートコンプリートが使用できるようになります。
+`d.ts` 構成ファイルを使用すると、TypeScript をサポートしているすべての IDE ([TypeScript Playground](http://www.typescriptlang.org/Playground/)、[Visual Studio Code](http://www.microsoft.com/visualstudio/eng)、[WebStorm](http://www.jetbrains.com/webstorm/)、[WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f)、[Eclipse](https://github.com/palantir/eclipse-typescript) など) でオートコンプリートが使用できるようになります。
 
 WebView のリソース (HTML ファイルおよび JavaScript ファイル) は、**[myapp]\www** フォルダーに配置されます。プロジェクトが cordova build コマンドでビルドされる場合、または cordova prepare コマンドが実行される場合、これらのリソースは、**[myapp]\platforms\ios\www** フォルダー、**[myapp]\platforms\android\assets\www** フォルダー、または **[myapp]\platforms\windows\www** フォルダー内の対応する **www** フォルダーにコピーされます。
 

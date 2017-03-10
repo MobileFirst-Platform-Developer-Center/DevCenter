@@ -27,8 +27,8 @@ weight: 3
 ## {{ site.data.keys.mf_server }} v8.0 用の Maven プロジェクトへの Java アダプターのマイグレーション
 {: #migrating-java-adapters-to-maven-projects-for-mobilefirst-server-v-80}
 1. archetype として **adapter-maven-archetype-java** を使用して、Maven アダプター・プロジェクトを作成します。パラメーター **artifactId** を設定する際に、アダプター名を使用します。パラメーター **package** には、既存の Java アダプター内のものと同じパッケージを使用します。詳しくは、[Java アダプターの作成](../../adapters/creating-adapters)を参照してください。
-2. 既存の Java アダプターから作成されたプロジェクト内の **src/main/adapter-resources** にあるアダプター記述子ファイル (**adapter.xml**) を上書きします。記述子について詳しくは、[Java アダプター記述子ファイル](../../adapters/java-adapters/#the-adapter-resources-folder)を参照してください。
-3. 既存の Java アダプターから作成されたプロジェクト内の **src/main/java** にあるすべてのファイルを削除し、古いアダプターの **src** フォルダー内のすべての Java ファイルをコピーします。ただし、同じフォルダー構造を保持してください。古いアダプターの **src** フォルダーにあるすべての非 Java ファイルを新しいアダプターの **src/main/resources** にコピーします。デフォルトでは、**src/main/resources** は存在しないため、アダプターに非 Java ファイルが含まれている場合は、そのフォルダーを作成します。Java アダプター API の変更については、[V8.0 でのサーバー・サイド API の変更](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80)を参照してください。
+2. ステップ 1 で作成した新規アダプター・プロジェクトの **src/main/adapter-resources** フォルダー内にあるアダプター記述子ファイル (**adapter.xml**) を上書きします。記述子について詳しくは、[Java アダプター記述子ファイル](../../adapters/java-adapters/#the-adapter-resources-folder)を参照してください。
+3. 新規アダプター・プロジェクトの **src/main/java** フォルダーからファイルをすべて削除します。次に、古い Java アダプター・プロジェクトの **src/** フォルダーからすべての Java ファイルをコピーします。ただし、同じフォルダー構造を保持してください。古いアダプターの **src** フォルダーからすべての非 Java ファイルを新規アダプターの **src/main/resources** フォルダーにコピーします。デフォルトでは、**src/main/resources** は存在しないため、アダプターに非 Java ファイルが含まれている場合は、そのフォルダーを作成します。Java アダプター API の変更については、[V8.0 でのサーバー・サイド API の変更](#migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80)を参照してください。
 
    以下の図で、v7.1 までのアダプターおよび v8.0 からの Maven アダプターの構造を示します。 
 
@@ -66,5 +66,5 @@ weight: 3
 ## {{ site.data.keys.mf_server }} v8.0 用の Maven プロジェクトへの JavaScript アダプターのマイグレーション
 {: #migrating-javascript-adapters-to-maven-projects-for-mobilefirst-server-v-80 }
 1. archetype として **adapter-maven-archetype-http または adapter-maven-archetype-sql** を使用して、Maven アダプター・プロジェクトを作成します。パラメーター **artifactId** を設定する際に、アダプター名を使用します。詳しくは、[JavaScript アダプターの作成](../../adapters/creating-adapters)を参照してください。
-2. 既存の JavaScript アダプターから作成されたプロジェクト内の **src/main/adapter-resources** にあるアダプター記述子ファイル (**adapter.xml**) を上書きします。記述子について詳しくは、[JavaScript アダプター記述子ファイル](../../adapters/javascript-adapters/#the-adapter-resources-folder)を参照してください。
-3. 既存の JavaScript アダプター JavaScript ファイルから作成したプロジェクト内の JavaScript ファイル **src/main/adapter-resources/js** を上書きします。
+2. ステップ 1 で作成した新規アダプター・プロジェクトの **src/main/adapter-resources** フォルダー内にあるアダプター記述子ファイル (**adapter.xml**) を上書きします。記述子について詳しくは、[JavaScript アダプター記述子ファイル](../../adapters/javascript-adapters/#the-adapter-resources-folder)を参照してください。
+3. 新規アダプター・プロジェクトの **src/main/adapter-resources/js** フォルダーにある JavaScript ファイルを上書きします。

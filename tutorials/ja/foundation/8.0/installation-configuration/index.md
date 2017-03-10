@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: インストールおよび構成
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説

@@ -96,8 +96,8 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
                             <li>プロジェクト・エクスプローラーでプロジェクト・ルート・アイコンを選択します。</li>
                             <li><b>「ファイル (File)」→「ファイルの追加 (Add Files)」</b>を選択し、前にダウンロードしたフレームワーク・ファイルが含まれているフォルダーに移動します。</li>
                             <li><b>「オプション (Options)」</b>ボタンをクリックします。</li>
-                            <li><b>「必要な場合は項目をコピー (Copy items if needed)」</b>と、<b>「追加されたすべてのフォルダー用にグループを作成 (Create groups for any added folders)」</b>を選択します。<br/>
-                            <b>注:</b> <b>「必要な場合は項目をコピー (Copy items if needed)」</b>オプションが選択されていないと、フレームワーク・ファイルは、コピーされずに、元の場所からリンクされます。</li>
+                            <li><b>「必要な場合は項目をコピー (Copy items if needed)」</b>および<b>「追加したフォルダー用のグループを作成 (Create groups for any added folders)」</b>を選択します。<br/>
+                            <b>注:</b> <b>「必要な場合は項目をコピー (Copy items if needed)」</b>オプションを選択しない場合、フレームワーク・ファイルはコピーされず、元の場所からリンクされます。</li>
                             <li>メイン・プロジェクト (最初のオプション) を選択し、アプリケーション・ターゲットを選択します。</li>
                             <li><b>「一般 (General)」</b>タブで、<b>「リンクされたフレームワークおよびライブラリー (Linked Frameworks and Libraries)」</b>に自動的に追加されるフレームワークがあれば除去します。</li>
                             <li>必須: <b>「組み込みバイナリー (Embedded Binaries)」</b>で、次のフレームワークを追加します。
@@ -244,9 +244,9 @@ SDK のリリースは、SDK の [CocoaPods リポジトリー](https://cocoapod
 
 | プロパティー            | 説明                                                         | 値の例 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | {{ site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
-| wlServerHost        | {{ site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
-| wlServerPort        | {{ site.data.keys.mf_server }} のポート。                                 | 9080           |
+| protocol    | {{ site.data.keys.mf_server }} との通信プロトコル。             | http または https  |
+| host        | {{ site.data.keys.mf_server }} のホスト名。                            | 192.168.1.63   |
+| port        | {{ site.data.keys.mf_server }} のポート。                                 | 9080           |
 | wlServerContext     | {{ site.data.keys.mf_server }} 上のアプリケーションのコンテキスト・ルート・パス。 | /mfp/          |
 | languagePreferences | クライアントの SDK システム・メッセージのデフォルト言語を設定します。           | en             |
 

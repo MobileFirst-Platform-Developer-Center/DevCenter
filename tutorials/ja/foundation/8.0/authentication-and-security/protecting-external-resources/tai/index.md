@@ -11,7 +11,7 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product_full }} は、[IBM WebSphere のトラスト・アソシエーション・インターセプター](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita)経由で行われる外部リソースの認証を容易にするための Java ライブラリーを提供します。
+{{ site.data.keys.product_full }} は、[IBM WebSphere のトラスト・アソシエーション・インターセプター](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita)経由で行われる外部リソースの認証を容易にするための Java ライブラリーを提供します。
 
 Java ライブラリーは、JAR ファイル (**com.ibm.mfp.oauth.tai-8.0.0.jar**) として提供されます。
 
@@ -19,14 +19,14 @@ Java ライブラリーは、JAR ファイル (**com.ibm.mfp.oauth.tai-8.0.0.jar
 
 **前提条件:**
 
-* [{{site.data.keys.mf_server }} を使用した外部リソースの認証](../)チュートリアルをお読みください。
-* [{{site.data.keys.product }} セキュリティー・フレームワーク](../../)について理解しておく必要があります。
+* [{{ site.data.keys.mf_server }} を使用した外部リソースの認証](../)チュートリアルをお読みください。
+* [{{ site.data.keys.product }} セキュリティー・フレームワーク](../../)について理解しておく必要があります。
 
 ![フロー](TAI_flow.jpg)
 
 ## サーバーのセットアップ
 {: #server-setup }
-1. セキュリティー・ツールの .zip を **{{site.data.keys.mf_console }} →「ダウンロード・センター」→「ツール」**タブからダウンロードします。そこに、`mfp-oauth-tai.zip` アーカイブが含まれています。この zip を解凍します。
+1. セキュリティー・ツールの .zip を **{{ site.data.keys.mf_console }} →「ダウンロード・センター」→「ツール」**タブからダウンロードします。そこに、`mfp-oauth-tai.zip` アーカイブが含まれています。この zip を解凍します。
 2. `com.ibm.mfp.oauth.tai.jar` ファイルを WebSphere Application Server インスタンスの **usr/extension/lib** 内に追加します。
 3. `OAuthTai.mf` ファイルを WebSphere Application Server インスタンスの **usr/extension/lib/features** 内に追加します。
 
@@ -92,7 +92,7 @@ servlet-2.x を使用する場合は、セキュリティー・ロールを web.
             <securityConstraint httpMethods="GET POST" scope="accessRestricted" securedURLs="/GetBalance"></securityConstraint>
   </usr_OAuthTAI>
   ```
-    - **authorizationURL**: {{site.data.keys.mf_server }} (`http(s):/your-hostname:port/runtime-name/api`) または外部 AZ サーバー (IBM DataPower など) のいずれかです。
+    - **authorizationURL**: {{ site.data.keys.mf_server }} (`http(s):/your-hostname:port/runtime-name/api`) または外部 AZ サーバー (IBM DataPower など) のいずれかです。
 
     - **clientID**: リソース・サーバーは、登録済みの機密クライアントでなければなりません。機密クライアントを登録する方法については、[機密クライアント](../../confidential-clients/)のチュートリアルを参照してください。トークンを検証できるようにするために、*機密クライアントには*、許可されるスコープとして `authorization.introspect` が*必須* です。
 
@@ -107,8 +107,7 @@ servlet-2.x を使用する場合は、セキュリティー・ロールを web.
 
 ## TAI から入手するトークン・イントロスペクション・データの使用
 {: #using-the-token-introspection-data-from-the-tai }
-TAI によってインターセプトされ、検証されたトークン情報にリソースからアクセスできます。トークンに関して検出できるデータのリストについては、[API リファレンス](../../../api/java-token-validator)を参照してください。
-このデータを取得するには、[WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html) を使用します。
+TAI によってインターセプトされ、検証されたトークン情報にリソースからアクセスできます。トークンに関して検出できるデータのリストについては、[API リファレンス](../../../api/java-token-validator)を参照してください。このデータを取得するには、[WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html) を使用します。
 
 ```java
 Map<String, String> credentials = WSSubject.getCallerSubject().getPublicCredentials(Hashtable.class).iterator().next();
@@ -124,7 +123,7 @@ securityContext.get('mfp-device')
 
 ### サンプルの使用法
 {: #sample-usage }
-1. {{site.data.keys.mf_console }} で、必ず[機密クライアントと秘密鍵の値を更新](../#confidential-client)してください。
+1. {{ site.data.keys.mf_console }} で、必ず[機密クライアントと秘密鍵の値を更新](../#confidential-client)してください。
 2. **[UserLogin](../../user-authentication/security-check/)** または **[PinCodeAttempts](../../credentials-validation/security-check/)** のいずれかのセキュリティー検査をデプロイします。
 3. 一致するアプリケーションを登録します。
 4. `accessRestricted` スコープをセキュリティー検査にマップします。

@@ -7,7 +7,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.mf_analytics_server }} 用のいくつかの構成が必要です。示されているように、単一のノードに適用される構成パラメーターもあれば、クラスター全体に適用される構成パラメーターもあります。
+{{ site.data.keys.mf_analytics_server }} 用のいくつかの構成が必要です。示されているように、単一のノードに適用される構成パラメーターもあれば、クラスター全体に適用される構成パラメーターもあります。
 
 #### ジャンプ先
 {: #jump-to }
@@ -50,9 +50,9 @@ weight: 2
 
 ## 構成プロパティー
 {: #configuration-properties }
-{{site.data.keys.mf_analytics_server }} は、追加の構成をしなくても正常に開始できます。
+{{ site.data.keys.mf_analytics_server }} は、追加の構成をしなくても正常に開始できます。
 
-構成は、JNDI プロパティーを通じて {{site.data.keys.mf_server }} と {{site.data.keys.mf_analytics_server }} の両方で行われます。さらに、{{site.data.keys.mf_analytics_server }} では、構成を制御するための環境変数の使用をサポートします。環境変数は、JNDI プロパティーより優先されます。
+構成は、JNDI プロパティーを通じて {{ site.data.keys.mf_server }} と {{ site.data.keys.mf_analytics_server }} の両方で行われます。さらに、{{ site.data.keys.mf_analytics_server }} では、構成を制御するための環境変数の使用をサポートします。環境変数は、JNDI プロパティーより優先されます。
 
 これらのプロパティーの変更を有効にするには、分析ランタイム Web アプリケーションを再始動する必要があります。アプリケーション・サーバー全体を再始動する必要はありません。
 
@@ -71,25 +71,25 @@ Tomcat で JNDI プロパティーを設定するには、context.xml ファイ�
 WebSphere Application Server の JNDI プロパティーは、環境変数として確認できます。
 
 * WebSphere Application Server コンソールで、**「アプリケーション」→「アプリケーション・タイプ」→「WebSphere エンタープライズ・アプリケーション」**を選択します。
-* **{{site.data.keys.product_adj }} 管理サービス**・アプリケーションを選択します。
+* **{{ site.data.keys.product_adj }} 管理サービス**・アプリケーションを選択します。
 * **「Web モジュール・プロパティー」**で**「Web モジュールの環境項目」**をクリックして、JNDI プロパティーを表示します。
 
-#### {{site.data.keys.mf_server }}
+#### {{ site.data.keys.mf_server }}
 {: #mobilefirst-server }
-以下の表は、{{site.data.keys.mf_server }} で設定可能なプロパティーを示しています。
+以下の表は、{{ site.data.keys.mf_server }} で設定可能なプロパティーを示しています。
 
 | プロパティー                           | 説明                                           | デフォルト値 |
 |------------------------------------|-------------------------------------------------------|---------------|
-| mfp.analytics.console.url          | このプロパティーには、{{site.data.keys.mf_analytics_console }} の URL を設定します。 例えば、http://hostname:port/analytics/console などです。このプロパティーを設定すると、{{site.data.keys.mf_console }} で分析アイコンが有効になります。 | なし |
-| mfp.analytics.logs.forward         | このプロパティーが true に設定されると、{{site.data.keys.mf_server }} で記録されたサーバー・ログが {{site.data.keys.mf_analytics }} でキャプチャーされます。 | true |
-| mfp.analytics.url                  |必須。着信する分析データを受け取る、{{site.data.keys.mf_analytics_server }} により公開される URL。例えば、http://hostname:port/analytics-service/rest/v2 などです。 | なし |
+| mfp.analytics.console.url          | このプロパティーには、{{ site.data.keys.mf_analytics_console }} の URL を設定します。 例えば、http://hostname:port/analytics/console などです。このプロパティーを設定すると、{{ site.data.keys.mf_console }} で分析アイコンが有効になります。 | なし |
+| mfp.analytics.logs.forward         | このプロパティーが true に設定されると、{{ site.data.keys.mf_server }} で記録されたサーバー・ログが {{ site.data.keys.mf_analytics }} でキャプチャーされます。 | true |
+| mfp.analytics.url                  |必須。着信する分析データを受け取る、{{ site.data.keys.mf_analytics_server }} により公開される URL。例えば、http://hostname:port/analytics-service/rest/v2 などです。 | なし |
 | analyticsconsole/mfp.analytics.url |	オプション。Analytics REST サービスの絶対 URI。ファイアウォールまたはセキュア・リバース・プロキシーが使用されるシナリオでは、この URI は、ローカル LAN の内側の内部 URI ではなく、外部 URI でなければなりません。 この値では、URI プロトコル、ホスト名、またはポートの場所に * を入れて、着信 URL の対応する部分を表すことができます。 *://*:*/analytics-service。プロトコル、ホスト名、およびポートは動的に決定されます。 |
 | mfp.analytics.username             | データのエントリー・ポイントが基本認証で保護されている場合に使用されるユーザー名。 | なし |
 | mfp.analytics.password             | データのエントリー・ポイントが基本認証で保護されている場合に使用されるパスワード。 | なし |
 
-#### {{site.data.keys.mf_analytics_server }}
+#### {{ site.data.keys.mf_analytics_server }}
 {: #mobilefirst-analytics-server }
-以下の表は、{{site.data.keys.mf_analytics_server }} で設定可能なプロパティーを示しています。
+以下の表は、{{ site.data.keys.mf_analytics_server }} で設定可能なプロパティーを示しています。
 
 | プロパティー                           | 説明                                           | デフォルト値 |
 |------------------------------------|-------------------------------------------------------|---------------|
@@ -131,11 +131,11 @@ TTL は実際上、データ保存ポリシーの設定および保守方法で�
 * 1s = 1 秒
 * 1ms = 1 ミリ秒
 
-> 注: 以前のバージョンの {{site.data.keys.mf_analytics_server }} からのマイグレーションを実行しており、以前に TTL JNDI プロパティーを構成したことがある場合は、[{{site.data.keys.mf_analytics_server }}で使用されたサーバー・プロパティーのマイグレーション](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server)を参照してください。
+> 注: 以前のバージョンの {{ site.data.keys.mf_analytics_server }} からのマイグレーションを実行しており、以前に TTL JNDI プロパティーを構成したことがある場合は、[{{ site.data.keys.mf_analytics_server }}で使用されたサーバー・プロパティーのマイグレーション](../installation/#migration-of-server-properties-used-by-previous-versions-of-mobilefirst-analytics-server)を参照してください。
 
 #### Elasticsearch
 {: #elasticsearch }
-{{site.data.keys.mf_analytics_console }} の処理を行うストレージおよびクラスタリングの基盤テクノロジーは Elasticsearch です。  
+{{ site.data.keys.mf_analytics_console }} の処理を行うストレージおよびクラスタリングの基盤テクノロジーは Elasticsearch です。  
 Elasticsearch では、主にパフォーマンス・チューニング用に、チューナブル・プロパティーが多く用意されています。 JNDI プロパティーの多くは、Elasticsearch で提供されるプロパティーの抽象化です。
 
 Elasticsearch により提供されるすべてのプロパティーは、プロパティー名の前に **analytics/** を付加した JNDI プロパティーを使用することでも設定できます。 例えば、**threadpool.search.queue_size** は、Elasticsearch が提供するプロパティーです。 これは、以下の JNDI プロパティーで設定できます。 
@@ -154,13 +154,13 @@ Elasticsearch により提供されるすべてのプロパティーは、プロ
 
 ## Analytics データのバックアップ
 {: #backing-up-analytics-data }
-{{site.data.keys.mf_analytics }} のバックアップ方法について説明します。
+{{ site.data.keys.mf_analytics }} のバックアップ方法について説明します。
 
-{{site.data.keys.mf_analytics }} のデータは、{{site.data.keys.mf_analytics_server }} ファイル・システム上のファイル・セットとして保管されます。このフォルダーの場所は、{{site.data.keys.mf_analytics_server }} 構成で datapath JNDI プロパティーによって指定されます。JNDI プロパティーについて詳しくは、[構成プロパティー](#configuration-properties)を参照してください。
+{{ site.data.keys.mf_analytics }} のデータは、{{ site.data.keys.mf_analytics_server }} ファイル・システム上のファイル・セットとして保管されます。このフォルダーの場所は、{{ site.data.keys.mf_analytics_server }} 構成で datapath JNDI プロパティーによって指定されます。JNDI プロパティーについて詳しくは、[構成プロパティー](#configuration-properties)を参照してください。
 
-{{site.data.keys.mf_analytics_server }} 構成もファイル・システムに保管され、その名前は server.xml です。
+{{ site.data.keys.mf_analytics_server }} 構成もファイル・システムに保管され、その名前は server.xml です。
 
-これらのファイルは、既に機能している既存のサーバー・バックアップ手順があれば、それを使用してバックアップすることができます。これらのファイルをバックアップする際に特別な手順は不要ですが、{{site.data.keys.mf_analytics_server }} は必ず停止してください。そうでないと、データがバックアップの実行中に変更される可能性があり、メモリーに保管されたデータが、ファイル・システムに書き込まれない可能性があります。データの不整合が発生しないようにするために、バックアップの開始前に {{site.data.keys.mf_analytics_server }} を停止してください。
+これらのファイルは、既に機能している既存のサーバー・バックアップ手順があれば、それを使用してバックアップすることができます。これらのファイルをバックアップする際に特別な手順は不要ですが、{{ site.data.keys.mf_analytics_server }} は必ず停止してください。そうでないと、データがバックアップの実行中に変更される可能性があり、メモリーに保管されたデータが、ファイル・システムに書き込まれない可能性があります。データの不整合が発生しないようにするために、バックアップの開始前に {{ site.data.keys.mf_analytics_server }} を停止してください。
 
 ## クラスター管理と Elasticsearch
 {: #cluster-management-and-elasticsearch }
@@ -168,19 +168,19 @@ Elasticsearch により提供されるすべてのプロパティーは、プロ
 
 ### クラスターへのノードの追加
 {: #add-a-node-to-the-cluster }
-クラスターに新しいノードを追加するには、{{site.data.keys.mf_analytics_server }} をインストールするか、またはスタンドアロン Elasticsearch インスタンスを実行します。
+クラスターに新しいノードを追加するには、{{ site.data.keys.mf_analytics_server }} をインストールするか、またはスタンドアロン Elasticsearch インスタンスを実行します。
 
-スタンドアロン Elasticsearch インスタンスを選んだ場合は、メモリーとキャパシティーの要件に関するクラスターの負担は一部緩和されますが、データ取り込みの負担は緩和されません。データ・レポートは、データの整合性維持と最適化のために、パーシスタント・ストアに行く前に {{site.data.keys.mf_analytics_server }} を常に通らなければなりません。
+スタンドアロン Elasticsearch インスタンスを選んだ場合は、メモリーとキャパシティーの要件に関するクラスターの負担は一部緩和されますが、データ取り込みの負担は緩和されません。データ・レポートは、データの整合性維持と最適化のために、パーシスタント・ストアに行く前に {{ site.data.keys.mf_analytics_server }} を常に通らなければなりません。
 
 ミックス・アンド・マッチが可能です。
 
 基盤の Elasticsearch データ・ストアは、ノードが同種であることを予期するため、クラスター内にパワフルな 8 コア 64 GB RAM ラック・システムと、残り物の余ったノートブックを混在させないでください。ノード間で類似したハードウェアを使用してください。
 
-#### クラスターへの {{site.data.keys.mf_analytics_server }}の追加
+#### クラスターへの {{ site.data.keys.mf_analytics_server }}の追加
 {: #adding-a-mobilefirst-analytics-server-to-the-cluster }
-{{site.data.keys.mf_analytics_server }} をクラスターに追加する方法を説明します。
+{{ site.data.keys.mf_analytics_server }} をクラスターに追加する方法を説明します。
 
-Elasticsearch は {{site.data.keys.mf_analytics_server }} に組み込まれていてクラスターに参加する責任があるため、アプリケーション・サーバーの機能でクラスターの動作を定義しないでください。例えば、WebSphere Application Server Liberty ファームは作成すべきではありません。クラスターへの参加は、基盤の Elasticsearch ランタイムに任せてください。ただし、それを適切に構成する必要があります。
+Elasticsearch は {{ site.data.keys.mf_analytics_server }} に組み込まれているため、クラスターの動作を定義するには Elasticsearch セットアップを使用します。例えば、WebSphere Application Server Liberty ファームを作成したり、他のアプリケーション・サーバーのセットアップを使用したりしないでください。
 
 以下の手順例で、ノードをマスター・ノードにもデータ・ノードにも構成しないでください。代わりに、Elasticsearch REST API がモニターおよび動的構成のために公開されるように一時的に稼働する目的の「検索ロード・バランサー」としてノードを構成してください。
 
@@ -189,10 +189,10 @@ Elasticsearch は {{site.data.keys.mf_analytics_server }} に組み込まれて�
 * 必ず、[システム要件](../installation/#system-requirements)に従って、このノードのハードウェアとオペレーティング・システムを構成してください。
 * ポート 9600 は、Elasticsearch が使用する転送ポートです。そのため、ポート 9600 は、クラスター・ノード間のどのファイアウォールも通すように開放されていなければなりません。
 
-1. 新しく割り振られたシステム上のアプリケーション・サーバーに、分析サービス WAR ファイルと分析 UI WAR ファイル (UI が必要な場合) をインストールします。{{site.data.keys.mf_analytics_server }} のこのインスタンスを、サポートされる任意のアプリケーション・サーバーにインストールします。
-    * [{{site.data.keys.mf_analytics }} の WebSphere Application Server Liberty へのインストール](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
-    * [{{site.data.keys.mf_analytics }} の Tomcat へのインストール](../installation/#installing-mobilefirst-analytics-on-tomcat)
-    * [{{site.data.keys.mf_analytics }} の WebSphere Application Server へのインストール](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
+1. 新しく割り振られたシステム上のアプリケーション・サーバーに、分析サービス WAR ファイルと分析 UI WAR ファイル (UI が必要な場合) をインストールします。{{ site.data.keys.mf_analytics_server }} のこのインスタンスを、サポートされる任意のアプリケーション・サーバーにインストールします。
+    * [{{ site.data.keys.mf_analytics }} の WebSphere Application Server Liberty へのインストール](../installation/#installing-mobilefirst-analytics-on-websphere-application-server-liberty)
+    * [{{ site.data.keys.mf_analytics }} の Tomcat へのインストール](../installation/#installing-mobilefirst-analytics-on-tomcat)
+    * [{{ site.data.keys.mf_analytics }} の WebSphere Application Server へのインストール](../installation/#installing-mobilefirst-analytics-on-websphere-application-server)
 
 2. JNDI プロパティーに関するアプリケーション・サーバーの構成ファイルを編集 (またはシステム環境変数を使用) して、少なくとも以下のフラグを構成します。
 
@@ -207,13 +207,13 @@ Elasticsearch は {{site.data.keys.mf_analytics_server }} に組み込まれて�
 
 3. 実動シナリオでは、すべての構成フラグを検討してください。Elasticsearch が、データとは異なるファイル・システム・ディレクトリーにプラグインを保持するようにしたい場合があります。そのために、**path.plugins** フラグを設定する必要があります。
 4. 必要に応じ、アプリケーション・サーバーを実行して WAR アプリケーションを開始します。
-5. この新規ノードのコンソール出力を監視するか、 {{site.data.keys.mf_analytics_console }} の**「管理」**ページで**「クラスターとノード」**セクションのノード・カウントを監視することで、この新規ノードがクラスターに参加したことを確認してください。
+5. この新規ノードのコンソール出力を監視するか、{{ site.data.keys.mf_analytics_console }} の**「管理」**ページで**「クラスターとノード」**セクションのノード・カウントを監視することで、この新規ノードがクラスターに参加したことを確認してください。
 
 #### クラスターへのスタンドアロン Elasticsearch ノードの追加
 {: #adding-a-stand-alone-elasticsearch-node-to-the-cluster }
 スタンドアロン Elasticsearch ノードをクラスターに追加する方法を説明します。
 
-簡単な数個のステップで、スタンドアロン Elasticsearch ノードを既存の {{site.data.keys.mf_analytics }} クラスターに追加することができます。ただし、このノードのロールを決定する必要があります。それは、マスター適格ノードになりますか? その場合には、必ずスプリット・ブレーンの問題が発生しないようにしてください。それは、データ・ノードになりますか? それは、クライアント専用ノードになりますか? ノードを一時的に開始して、Elasticsearch の REST API を直接公開して稼働中のクラスターに動的構成変更を作用させるために、おそらくクライアント専用ノードが必要になります。
+簡単な数個のステップで、スタンドアロン Elasticsearch ノードを既存の {{ site.data.keys.mf_analytics }} クラスターに追加することができます。ただし、このノードのロールを決定する必要があります。それは、マスター適格ノードになりますか? その場合には、必ずスプリット・ブレーンの問題が発生しないようにしてください。それは、データ・ノードになりますか? それは、クライアント専用ノードになりますか? ノードを一時的に開始して、Elasticsearch の REST API を直接公開して稼働中のクラスターに動的構成変更を作用させるために、おそらくクライアント専用ノードが必要になります。
 
 以下の手順例で、ノードをマスター・ノードにもデータ・ノードにも構成しないでください。代わりに、Elasticsearch REST API がモニターおよび動的構成のために公開されるように一時的に稼働する目的の「検索ロード・バランサー」としてノードを構成してください。
 
@@ -239,12 +239,12 @@ Elasticsearch は {{site.data.keys.mf_analytics_server }} に組み込まれて�
 4. 実動シナリオでは、すべての構成フラグを検討してください。Elasticsearch が、データとは異なるファイル・システム・ディレクトリーにプラグインを保持するようにしたい場合があります。そのために、path.plugins フラグを設定する必要があります。
 5. `./bin/plugin -i elasticsearch/elasticsearch-analytics-icu/2.7.0` を実行して、ICU プラグインをインストールします。
 6. `./bin/elasticsearch` を実行します。
-7. この新規ノードのコンソール出力を監視するか、{{site.data.keys.mf_analytics_console }} の**「管理」**ページで**「クラスターとノード」**セクションのノード・カウントを監視することで、この新規ノードがクラスターに参加したことを確認してください。
+7. この新規ノードのコンソール出力を監視するか、{{ site.data.keys.mf_analytics_console }} の**「管理」**ページで**「クラスターとノード」**セクションのノード・カウントを監視することで、この新規ノードがクラスターに参加したことを確認してください。
 
 #### 回路ブレーカー
 {: #circuit-breakers }
 Elasticsearch の回路ブレーカーについて説明します。
 
-Elasticsearch には、操作で **OutOfMemoryError** が発生しないようにするための回路ブレーカーが複数含まれています。例えば、{{site.data.keys.mf_console }} にデータを提供する照会で JVM ヒープの 40 % を使用することになった場合、回路ブレーカーが起動して例外が発生し、コンソールは空のデータを受け取ります。
+Elasticsearch には、操作で **OutOfMemoryError** が発生しないようにするための回路ブレーカーが複数含まれています。例えば、{{ site.data.keys.mf_console }} にデータを提供する照会で JVM ヒープの 40 % を使用することになった場合、回路ブレーカーが起動して例外が発生し、コンソールは空のデータを受け取ります。
 
 Elasticsearch では、ディスク満杯の防御も行われます。Elasticsearch データ・ストアの書き込みに構成されているディスクが容量の 90 % に達すると、Elasticsearch ノードがクラスター内のマスター・ノードに通知します。それにより、マスター・ノードは、満杯になりそうなノードを避けて、新たな文書書き込みを宛先変更します。クラスター内にノードが 1 つしかない場合、データを書き込みできる 2 次ノードはありません。そのため、データは書き込まれず、失われます。

@@ -11,7 +11,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-iOS、Android、および Windows の Cordova アプリケーションでプッシュ通知を受け取り、プッシュ通知を表示できるようにするには、**cordova-plugin-mfp-push** Cordova プラグインを Cordova プロジェクトに追加する必要があります。アプリケーションが構成されると、{{site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブ、および通知の処理を実行できます。このチュートリアルでは、Cordova アプリケーションでプッシュ通知を処理する方法について学習します。
+iOS、Android、および Windows の Cordova アプリケーションでプッシュ通知を受け取り、プッシュ通知を表示できるようにするには、**cordova-plugin-mfp-push** Cordova プラグインを Cordova プロジェクトに追加する必要があります。アプリケーションが構成されると、{{ site.data.keys.product_adj }} が提供する通知 API を使用して、デバイスの登録や登録抹消、タグへのサブスクライブやアンサブスクライブ、および通知の処理を実行できます。このチュートリアルでは、Cordova アプリケーションでプッシュ通知を処理する方法について学習します。
 
 > **注:** ある問題のために、認証済み通知は、現在 Cordova アプリケーションでは**サポートされていません**。しかし、予備手段が用意されており、各 `MFPPush` API 呼び出しを `WLAuthorizationManager.obtainAccessToken("push.mobileclient").then( ... );` でラップできます。提供されるサンプル・アプリケーションはこの予備手段を使用しています。
 
@@ -23,11 +23,11 @@ iOS でのサイレント通知または対話式通知については、以下�
 **前提条件:**
 
 * 必ず、以下のチュートリアルをお読みください。
-    * [{{site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
-    * [Cordova アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/cordova)
+    * [{{ site.data.keys.product_adj }} 開発環境のセットアップ](../../../installation-configuration/#installing-a-development-environment)
+    * [Cordova アプリケーションへの {{ site.data.keys.product }} SDK の追加](../../../application-development/sdk/cordova)
     * [プッシュ通知の概要](../../)
-* ローカルで稼働している {{site.data.keys.mf_server }}、またはリモートで稼働している {{site.data.keys.mf_server }}
-* 開発者ワークステーションに {{site.data.keys.mf_cli }} がインストールされていること
+* ローカルで稼働している {{ site.data.keys.mf_server }}、またはリモートで稼働している {{ site.data.keys.mf_server }}
+* 開発者ワークステーションに {{ site.data.keys.mf_cli }} がインストールされていること
 * 開発者ワークステーションに Cordova CLI がインストールされていること
 
 #### ジャンプ先:
@@ -41,7 +41,7 @@ iOS でのサイレント通知または対話式通知については、以下�
 {: #notifications-configuration }
 新しい Cordova プロジェクトを作成するか既存のプロジェクトを使用し、サポートされるプラットフォーム (iOS、Android、Windows) を 1 つ以上追加します。
 
-> {{site.data.keys.product_adj }} Cordova SDK がプロジェクトにまだ存在しない場合は、[Cordova アプリケーションへの {{site.data.keys.product }} SDK の追加](../../../application-development/sdk/cordova)チュートリアルの説明に従ってください。
+> {{ site.data.keys.product_adj }} Cordova SDK がプロジェクトにまだ存在しない場合は、[Cordova アプリケーションへの {{ site.data.keys.product }} SDK の追加](../../../application-development/sdk/cordova)チュートリアルの説明に従ってください。
 
 ### プッシュ・プラグインの追加
 {: #adding-the-push-plug-in }
@@ -67,6 +67,15 @@ Xcode で、**「Capabilities」**画面を使用してアプリケーション�
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要:** アプリケーションに対して選択する bundleId は、先に Apple Developer サイトで作成した AppId に一致しなければなりません。[プッシュ通知の概要] チュートリアルを参照してください。
 
 ![Xcode 内の「Capabilities」の場所を示すイメージ](push-capability.png)
+
+### Android プラットフォーム
+{: #android-platform }
+Android プラットフォームでは追加のステップが必要です。  
+Android Studio では、以下の `activity` を `application` タグに追加します。
+
+```xml
+<activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler" android:theme="@android:style/Theme.NoDisplay"/>
+```
 
 ## 通知 API
 {: #notifications-api }
