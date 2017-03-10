@@ -7,7 +7,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
 {: #overview }
-从 {{ site.data.keys.product_full }}    V8.0 起，基于事件源的模型将不受支持，并且完全由推送服务模型启用推送通知功能。要将 {{ site.data.keys.product_adj }}    先前版本上基于事件源的现有应用程序移至 V8.0，必须将其迁移到新的推送服务模型。
+从 {{ site.data.keys.product_full }} V8.0 起，基于事件源的模型将不受支持，并且完全由推送服务模型启用推送通知功能。要将 {{ site.data.keys.product_adj }} 先前版本上基于事件源的现有应用程序移至 V8.0，必须将其迁移到新的推送服务模型。
 
 迁移期间，请谨记，这并不是要用一个 API 代替另一个 API，更多的是使用一种模型/方法代替另一种模型/方法。
 
@@ -18,23 +18,23 @@ weight: 4
 * [迁移方案](#migration-scenarios)
 * [迁移工具](#migration-tool)
 
-<br /> 
+<br/>
 
 下表为您提供两种模型之间的比较。
 
 | 用户需求 | 事件源模型 | 推送服务模型 | 
 |------------------|--------------------|--------------------|
 | 为应用程序启用推送通知 | {::nomarkdown}<ul><li>创建事件源适配器并在其中创建 EventSource。</li><li>使用推送凭证配置或设置应用程序。</li></ul>{:/} | 使用推送凭证配置或设置应用程序。 | 
-| 为移动客户机应用程序启用推送通知 | {::nomarkdown}<ul><li>创建 WLClient</li><li>连接到 {{ site.data.keys.mf_server }}   </li><li>获取推送客户机实例</li><li>预订事件源</li></ul>{:/} | {::nomarkdown}<ul><li>实例化推送客户机</li><li>初始化推送客户机</li><li>注册移动设备</li></ul>{:/} |
+| 为移动客户端应用程序启用推送通知 | {::nomarkdown}<ul><li>创建 WLClient</li><li>连接到 {{ site.data.keys.mf_server }}</li><li>获取推送客户机实例</li><li>预订事件源</li></ul>{:/} | {::nomarkdown}<ul><li>实例化推送客户机</li><li>初始化推送客户机</li><li>注册移动设备</li></ul>{:/} |
 | 要为移动式客户机应用程序启用基于特定标记的通知 | 不受支持。 | 预订相关标记（使用标记名称）。 | 
 | 在移动式客户机应用程序中接收并处理通知 | 注册侦听器实施。 | 注册侦听器实施。 |
-| 将推送通知发送到移动式客户机应用程序 | {::nomarkdown}<ul><li>实现用于在内部调用 WL.Server API 来发送推送通知的适配器过程。</li><li>WL 服务器 API 提供发送通知的方式：<ul><li>按用户</li><li>按设备</li><li><li>广播（所有设备）</li></ul></li><li>然后，后端服务器应用程序可以调用适配器过程，以触发作为其应用程序逻辑中的一部分的推送通知。</li></ul>{:/} | {::nomarkdown}<ul><li>后端服务器应用程序可以直接调用消息 REST API。但是，这些应用程序必须作为机密客户机向 {{ site.data.keys.mf_server }}    注册，并获取必须在 REST API 的授权头中传递的有效 OAuth 访问令牌。</li><li>REST API 提供用于发送通知的选项：<ul><li>按用户</li><li>按设备</li><li>按平台</li><li>按标记</li><li>广播（所有设备）</li></ul></li></ul>{:/} |
+| 将推送通知发送到移动式客户机应用程序 | {::nomarkdown}<ul><li>实现用于在内部调用 WL.Server API 来发送推送通知的适配器过程。</li><li>WL 服务器 API 提供发送通知的方式：<ul><li>按用户</li><li>按设备</li><li><li>广播（所有设备）</li></ul></li><li>然后，后端服务器应用程序可以调用适配器过程，以触发作为其应用程序逻辑中的一部分的推送通知。</li></ul>{:/} | {::nomarkdown}<ul><li>后端服务器应用程序可以直接调用消息 REST API。但是，这些应用程序必须作为机密客户机向 {{ site.data.keys.mf_server }} 注册，并获取必须在 REST API 的授权头中传递的有效 OAuth 访问令牌。</li><li>REST API 提供用于发送通知的选项：<ul><li>按用户</li><li>按设备</li><li>按平台</li><li>按标记</li><li>广播（所有设备）</li></ul></li></ul>{:/} |
 | 要按定期时间段（轮询时间间隔）触发推送通知 |  实现用于在事件源适配器内发送推送通知的函数，并将其作为 createEventSource 函数调用的一部分。 | 不受支持。 |
 | 使用名称、URL 和事件类型注册挂钩。 | 在预订或取消预订推送通知的设备的路径上实现挂钩。 | 不受支持。 | 
 
 ## 迁移方案
 {: #migration-scenarios }
-从 {{ site.data.keys.product }}    V8.0 开始，将不支持基于事件源的模型，并且在 {{ site.data.keys.product }}    上完全由推送服务模型启用推送通知功能，该模型是事件源模型的更简单且灵活的替代方法。
+从 {{ site.data.keys.product }} V8.0 开始，将不支持基于事件源的模型，并且在 {{ site.data.keys.product }} 上完全由推送服务模型启用推送通知功能，该模型是事件源模型的更简单且灵活的替代方法。
 
 IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应用程序需要迁移到 V8.0，从而迁移到新的推送服务模型。
 
@@ -47,17 +47,17 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 ### 混合应用程序
 {: #hybrid-applications }
-迁移方案示例包括使用单一事件源或多个源、广播或者 Unicast 通知或标记通知的应用程序。
+迁移方案示例包括使用单一事件源或多个源、广播或者单点广播通知或标签通知的应用程序。
 
 #### 方案 1：现有应用程序在其应用中使用单个事件源
 {: #hybrid-scenario-1-existing-applications-using-single-event-source-in-their-application }
-应用程序已在 {{ site.data.keys.product_adj }}    的较早版本上使用单个事件源，因为它仅通过基于事件源的模型支持推送。
+应用程序已在 {{ site.data.keys.product_adj }} 的较早版本上使用单个事件源，因为它仅通过基于事件源的模型支持推送。
 
 ##### 客户机
 {: #client-hybrid-1 }
 要在 V8.0.0 中对此进行迁移，请将此模型转换为单点广播通知。
 
-1. 初始化应用程序中的 {{ site.data.keys.product_adj }}    推送客户机实例，并在成功回调中注册应接收通知的回调方法。
+1. 初始化应用程序中的 {{ site.data.keys.product_adj }} 推送客户机实例，并在成功回调中注册应接收通知的回调方法。
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -126,13 +126,14 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
     * `notifyDeviceSubscription()`
     * `createEventSource()`
 2. 针对使用同一事件源的每个应用程序完成以下步骤：
-    1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+    1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
         您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
     2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
     3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
     4. 您可以使用以下任一方法来发送通知：
-        * {{ site.data.keys.mf_console }}。请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+        * {{ site.data.keys.mf_console }}。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
         * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
 #### 方案 2：现有应用程序在其应用中使用多个事件源
@@ -143,7 +144,8 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 {: #client-hybrid-2 }
 这将映射到基于相关主题对用户/设备进行分段的标记。要对此进行迁移，可以将此模型转换为基于标记的通知。
 
-1. 初始化应用程序中的 MFPPush 客户机实例，并在成功回调中注册应接收通知的回调方法。
+1. 初始化应用程序中的 MFPPush 客户机实例，并在成功回调中注册应接收通
+知的回调方法。
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -241,20 +243,22 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
 2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
-    * {{ site.data.keys.mf_console }}。请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * {{ site.data.keys.mf_console }}。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
     * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
 #### 方案 3：现有应用程序在其应用中使用广播/单点广播通知
 {: #hybrid-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
 ##### 客户机
 {: #client-hybrid-3 }
-1. 初始化应用程序中的 MFPPush 客户机实例，并在成功回调中注册应接收通知的回调方法。
+1. 初始化应用程序中的 MFPPush 客户机实例，并在成功回调中注册应接收通
+知的回调方法。
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -318,21 +322,22 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 除去适配器中的 `WL.Server.sendMessage()`（如果已使用）。  
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
-    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
-    * {{ site.data.keys.mf_console }}   。
+    * {{ site.data.keys.mf_console }}。
 请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
     * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
-#### 方案 4：现有应用程序在其应用中使用标记通知
+#### 方案 4：现有应用程序在其应用中使用标签通知
 {: #hybrid-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### 客户机
 {: #client-hybrid-4 }
-1. 初始化应用程序中的 MFPPush 客户机实例，并在成功回调中注册应接收通知的回调方法。
+1. 初始化应用程序中的 MFPPush 客户机实例，并在成功回调中注册应接收通
+知的回调方法。
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -424,18 +429,19 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 除去适配器中的 `WL.Server.sendMessage()`（如果已使用）。  
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
-    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
-    * {{ site.data.keys.mf_console }}。请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
+    * {{ site.data.keys.mf_console }}。
+请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
     * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。 
 
 ### 本机 Android 应用程序
 {: #native-android-applications }
-迁移方案示例包括使用单一事件源或多个源、广播或者 Unicast 通知或标记通知的应用程序。
+迁移方案示例包括使用单一事件源或多个源、广播或者单点广播通知或标签通知的应用程序。
 
 #### 方案 1：现有应用程序在其应用中使用单个事件源
 {: #android-scenario-1-existing-applications-using-single-event-source-in-their-application }
@@ -512,13 +518,13 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
-    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
-    * {{ site.data.keys.mf_console }}   。
+    * {{ site.data.keys.mf_console }}。
 请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
     * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。 
 
@@ -528,7 +534,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 ##### 客户机
 {: #client-android-2 }
-这将映射到基于相关主题对用户/设备进行分段的标记。要将它迁移到 {{ site.data.keys.product }}    V8.0.0，请将此模型转换为基于标记的通知。
+这将映射到基于相关主题对用户/设备进行分段的标记。要将它迁移到 {{ site.data.keys.product }} V8.0.0，请将此模型转换为基于标记的通知。
 
 1. 初始化应用程序中的 `MFPPush` 客户机实例：
 
@@ -637,13 +643,13 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
-    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
-    * {{ site.data.keys.mf_console }}   。
+    * {{ site.data.keys.mf_console }}。
 请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
     * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。     
 
@@ -712,17 +718,17 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
-    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
-    * {{ site.data.keys.mf_console }}   。
+    * {{ site.data.keys.mf_console }}。
 请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
     * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。    
 
-#### 方案 4：现有应用程序在其应用中使用标记通知
+#### 方案 4：现有应用程序在其应用中使用标签通知
 {: #android-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### 客户机
 {: #client-android-4 }
@@ -828,23 +834,23 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
     2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
-    * {{ site.data.keys.mf_console }}   。
+    * {{ site.data.keys.mf_console }}。
 请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
     * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
 ### 本机 iOS 应用程序
 {: #native-ios-applications }
-迁移方案示例包括使用单一事件源或多个源、广播或者 Unicast 通知或标记通知的应用程序。
+迁移方案示例包括使用单一事件源或多个源、广播或者单点广播通知或标签通知的应用程序。
 
 #### 方案 1：现有应用程序在其应用中使用单个事件源
 {: #ios-scenario-1-existing-applications-using-single-event-source-in-their-application }
-应用程序已在 {{ site.data.keys.product_adj }}    的较早版本上使用单个事件源，因为它仅通过基于事件源的模型支持推送。
+应用程序已在 {{ site.data.keys.product_adj }} 的较早版本上使用单个事件源，因为它仅通过基于事件源的模型支持推送。
 
 ##### 客户机
 {: #client-ios-1 }
@@ -913,13 +919,13 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
-    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
-    * {{ site.data.keys.mf_console }}   。
+    * {{ site.data.keys.mf_console }}。
 请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
     * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。
 
@@ -929,7 +935,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 ##### 客户机
 {: #client-ios-2}
-这将映射到基于相关主题对用户/设备进行分段的标记。要将它迁移到 {{ site.data.keys.product_adj }}    V8.0.0，请将此模型转换为基于标记的通知。
+这将映射到基于相关主题对用户/设备进行分段的标记。要将它迁移到 {{ site.data.keys.product_adj }} V8.0.0，请将此模型转换为基于标记的通知。
 
 1. 初始化应用程序中的 `MFPPush` 客户机实例。
 
@@ -1009,7 +1015,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
    ```
     
 ##### 服务器
-：{: #server-ios-2 }
+:{: #server-ios-2 }
 除去适配器中的 `WL.Server`（如果已使用）。
 
 * `notifyAllDevices()`
@@ -1019,13 +1025,13 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
-    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
-    * {{ site.data.keys.mf_console }}   。
+    * {{ site.data.keys.mf_console }}。
 请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
     * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。    
 
@@ -1080,17 +1086,17 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
     2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
-    * {{ site.data.keys.mf_console }}   。
+    * {{ site.data.keys.mf_console }}。
 请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
     * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。  
 
-#### 方案 4：现有应用程序在其应用中使用标记通知
+#### 方案 4：现有应用程序在其应用中使用标签通知
 {: #ios-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### 客户机
 {: #client-ios-4 }
@@ -1174,19 +1180,19 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 使用 {{ site.data.keys.mf_console }}    设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
+1. 使用 {{ site.data.keys.mf_console }} 设置凭证。请参阅[配置推送通知设置](../../notifications/sending-notifications)。
 
     您还可以对 Android 应用程序使用[更新 GCM 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API 来设置凭证，或者对 iOS 应用程序使用[更新 APN 设置 (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API 来设置凭证。
-    2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
+2. 在**作用域元素映射**中添加作用域 `push.mobileclient`。
 3. 创建标记以支持将推送通知发送至订户。请参阅“为推送通知[定义标记](../../notifications/sending-notifications/#defining-tags)”。
 4. 您可以使用以下任一方法来发送通知：
-    * {{ site.data.keys.mf_console }}   。
+    * {{ site.data.keys.mf_console }}。
 请参阅[将推送通知发送至订户](../../notifications/sending-notifications/#sending-notifications)。
     * 具有 `userId`/`deviceId` 的[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API。  
 
 ### 本机 Windows Universal 应用程序
 {: #native-windows-universal-applications }
-迁移方案示例包括使用单一事件源或多个源、广播或者 Unicast 通知或标记通知的应用程序。
+迁移方案示例包括使用单一事件源或多个源、广播或者单点广播通知或标签通知的应用程序。
 
 #### 方案 1：现有应用程序在其应用中使用单个事件源
 {: #windows-scenario-1-existing-applications-using-single-event-source-in-their-application }
@@ -1257,8 +1263,8 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 在 {{ site.data.keys.mf_console }}    的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
-2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }}    的“安全性”选项卡的安全性检查部分中。
+1. 在 {{ site.data.keys.mf_console }} 的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
+2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }} 的“安全性”选项卡的安全性检查部分中。
 3. 您还可将[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API 与 `userId`/`deviceId` 配合使用来发送消息。
 
 #### 方案 2：现有应用程序在其应用中使用多个事件源
@@ -1267,7 +1273,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 ##### 客户机
 {: #windows-client-2 }
-这将映射到基于相关主题对用户/设备进行分段的标记。要将它迁移到 {{ site.data.keys.product_adj }}    V8.0.0，请将此模型转换为基于标记的通知。
+这将映射到基于相关主题对用户/设备进行分段的标记。要将它迁移到 {{ site.data.keys.product_adj }} V8.0.0，请将此模型转换为基于标记的通知。
 
 1. 初始化应用程序中的 `MFPPush` 客户机实例：
 
@@ -1361,9 +1367,9 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 在 {{ site.data.keys.mf_console }}    的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
-2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }}    的**安全性**选项卡的安全性检查部分中。
-3. 在 {{ site.data.keys.mf_console }}    的**标记**页面中创建推送标记。
+1. 在 {{ site.data.keys.mf_console }} 的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
+2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }} 的**安全性**选项卡的安全性检查部分中。
+3. 在 {{ site.data.keys.mf_console }} 的**标记**页面中创建推送标记。
 4. 您还可将[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API 与 `userId`/`deviceId`/`tagNames`（作为目标）配合使用来发送通知。
 
 #### 方案 3：现有应用程序在其应用中使用广播/单点广播通知
@@ -1393,7 +1399,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
    if (Response.Success == true)
    {
         Debug.WriteLine("Push Notifications Registered successfully");
-   }
+   } 
    else
    {
         Debug.WriteLine("Push Notifications Failed to register");
@@ -1425,12 +1431,12 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 在 {{ site.data.keys.mf_console }}    的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
-2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }}    的**安全性**选项卡的安全性检查部分中。
-3. 在 {{ site.data.keys.mf_console }}    的**标记**页面中创建推送标记。
+1. 在 {{ site.data.keys.mf_console }} 的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
+2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }} 的**安全性**选项卡的安全性检查部分中。
+3. 在 {{ site.data.keys.mf_console }} 的**标记**页面中创建推送标记。
 4. 您还可将[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API 与 `userId`/`deviceId`/`tagNames`（作为目标）配合使用来发送通知。
 
-#### 方案 4：现有应用程序在其应用中使用标记通知
+#### 方案 4：现有应用程序在其应用中使用标签通知
 {: #windows-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### 客户机
 {: #windows-client-4 }
@@ -1525,18 +1531,18 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 
 针对使用同一事件源的每个应用程序完成以下步骤：
 
-1. 在 {{ site.data.keys.mf_console }}    的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
-2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }}    的**安全性**选项卡的安全性检查部分中。
-3. 在 {{ site.data.keys.mf_console }}    的**标记**页面中创建推送标记。
+1. 在 {{ site.data.keys.mf_console }} 的**推送设置**页面中设置 WNS 凭证或使用 WNS 设置 REST API。
+2. 将**映射作用域元素**中的作用域 `push.mobileclient` 添加到 {{ site.data.keys.mf_console }} 的**安全性**选项卡的安全性检查部分中。
+3. 在 {{ site.data.keys.mf_console }} 的**标记**页面中创建推送标记。
 4. 您还可将[推送消息 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API 与 `userId`/`deviceId`/`tagNames`（作为目标）配合使用来发送通知。
 
 ## 迁移工具
 {: #migration-tool }
-迁移工具可帮助将 MobileFirst Platform Foundation 7.1 推送数据（设备、用户预订、凭证和标记）迁移到 {{ site.data.keys.product }}    8.0。  
+迁移工具可帮助将 MobileFirst Platform Foundation 7.1 推送数据（设备、用户预订、凭证和标记）迁移到 {{ site.data.keys.product }} 8.0。  
 迁移工具可通过以下功能简化此过程：
 
 1. 从 MobileFirst Platform Foundation 7.1 数据库中读取每个应用程序的设备、凭证、标记和用户预订。
-2. 将数据复制到 {{ site.data.keys.product }}    8.0 数据库中各个应用程序的相应表格中。
+2. 将数据复制到 {{ site.data.keys.product }} 8.0 数据库中各个应用程序的相应表格中。
 3. 迁移所有 V7.1 环境的所有推送数据，而不考虑 V8.0 应用程序中的环境。
 
 迁移工具将不会修改与用户预订、应用程序环境或设备相关的任何数据。  
@@ -1544,12 +1550,12 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 使用迁移工具之前，请务必了解以下信息：
 
 1. 您必须已安装 Java V1.6 或更高版本。
-2. 确保 MobileFirst Server 7.1 和 {{ site.data.keys.mf_server }}    8.0 均已设置并准备就绪。
-3. 生成 MobileFirst Server 7.1 和 {{ site.data.keys.mf_server }}    8.0 的备份。
-4. 在 {{ site.data.keys.mf_server }}    8.0 中注册以上应用程序的最新版本。
+2. 确保 MobileFirst Server 7.1 和 {{ site.data.keys.mf_server }} 8.0 均已设置并准备就绪。
+3. 生成 MobileFirst Server 7.1 和 {{ site.data.keys.mf_server }} 8.0 的备份。
+4. 在 {{ site.data.keys.mf_server }} 8.0 中注册以上应用程序的最新版本。
 	* 应用程序的显示名称应与 MobileFirst Platform Foundation 7.1 中相应的应用程序相匹配。
 	* 请记住 PacakgeName/BundleID，并为应用程序提供相同的值。
-	* 如果在 {{ site.data.keys.mf_server }}    8.0 上未注册该应用程序，那么迁移将成功。
+	* 如果在 {{ site.data.keys.mf_server }} 8.0 上未注册该应用程序，那么迁移将失败。
 5. 为应用程序的每个环境提供作用域-元素映射。[了解有关作用域映射的更多信息](../../notifications/sending-notifications/#scope-mapping)。
 
 #### 过程
@@ -1559,7 +1565,7 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
 	
     | 值                | 描述  | 样本值 |
     |----------------------|--------------|---------------|
-    | w.db.type		       | 正在考虑的数据库类型	           | pw.db.type = db2 可能的值：DB2、Oracle、MySql 或 Derby | 
+    | w.db.type		       | 考虑中的数据库类型	           | pw.db.type = db2 可能的值：DB2、Oracle、MySql 或 Derby | 
     | pw.db.url			   | MobileFirst Platform Foundation 7.1 Worklight DB URL  | jdbc:mysql://localhost:3306/WRKLGHT |
     | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin DB URL      | jdbc:mysql://localhost:3306/ADMIN |
     | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight DB 用户名 | pw.db.username=root |
@@ -1571,13 +1577,13 @@ IBM MobileFirst Platform Foundation 先前版本上基于事件源的现有应�
     | pw.db.passwordTarget | MFP 8.0 DB 密码						| pw.db.passwordTarget=root |
     | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight DB 模式 | WRKLGT |
     | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin DB 模式     | WLADMIN |
-    | pw.db.targetschema   | {{ site.data.keys.product }}    8.0 Worklight DB 模式    | MFPDATA |
+    | pw.db.targetschema   | {{ site.data.keys.product }} 8.0 Worklight DB 模式    | MFPDATA |
     | runtime			   | MobileFirst Platform Foundation 7.1 Runtime 名称		 | runtime=worklight |
     | applicationId	       | 提供 MobileFirst Platform Foundation 7.1 上注册的应用程序列表（用逗号 (,) 分隔） | HybridTestApp,NativeiOSTestApp |
-    | targetApplicationId  | 提供 {{ site.data.keys.product }}    8.0 上注册的应用程序列表（用逗号 (,) 分隔）   | com.HybridTestApp,com.NativeiOSTestApp |
+    | targetApplicationId  | 提供 {{ site.data.keys.product }} 8.0 上注册的应用程序列表（用逗号 (,) 分隔）   | com.HybridTestApp,com.NativeiOSTestApp |
 
     * 确保已按正确的顺序提供 **applicationID** 和 **targetApplicationId** 的值。将采用 1-1（或 n-n）方式执行映射，即 **applicationId** 列表中第一个应用程序的数据将迁移到 **targetApplicationId** 列表中的第一个应用程序。
-	* 在 **targetApplicationId** 列表中，提供应用程序的 packageName/BundleId。即，对于 MobileFirst Platform Foundation 7.1 中的 TestApp1，**targetApplicationId** 将作为 TestApp1 的 packageName/BundleId（即 com.TestApp1）。这是因为在 MobileFirst Platform Foundation 7.1 中，**applicationId** 是应用程序名称，在 {{ site.data.keys.mf_server }}    8.0 中，它是基于应用程序环境的 packageName/BundleId/packageIdentityName。
+	* 在 **targetApplicationId** 列表中，提供应用程序的 packageName/BundleId。即，对于 MobileFirst Platform Foundation 7.1 中的 TestApp1，**targetApplicationId** 将作为 TestApp1 的 packageName/BundleId（即 com.TestApp1）。这是因为在 MobileFirst Platform Foundation 7.1 中，**applicationId** 是应用程序名称，在 {{ site.data.keys.mf_server }} 8.0 中，它是基于应用程序环境的 packageName/BundleId/packageIdentityName。
 
 2. 通过使用以下命令来运行该工具：
 
