@@ -1,185 +1,185 @@
 ---
 layout: tutorial
-title: Using the Mobile Foundation on Bluemix service
-breadcrumb_title: Mobile Foundation service
+title: Service Mobile Foundation on Bluemix verwenden
+breadcrumb_title: Mobile Foundation Service
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-This tutorial provides step-by-step instructions to set up a {{ site.data.keys.mf_server }} instance on Bluemix by using the {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}**) service.  
-{{ site.data.keys.mf_bm_short }} is a Bluemix service that enables quick and easy stand-up of scalable Developer or Production environments of MobileFirst Foundation v8.0 on **Liberty for Java runtime**.
+In diesem Lernprogramm finden Sie schrittweise Anleitungen für das Einrichten einer MobileFirst-Server-Instanz in Bluemix unter Verwendung des Service {{ site.data.keys.mf_bm_full }} (**{{ site.data.keys.mf_bm_short }}** Service).   
+Der {{ site.data.keys.mf_bm_short }} Service ist ein Bluemix-Service für eine schnelle automatische Installation skalierbarer Entwicklungs- und Produktionsumgebungen
+mit MobileFirst Foundation Version 8.0 einer **Liberty-for-Java-Laufzeit**.
 
-The {{ site.data.keys.mf_bm_short }} service offers the following plan options:
+Der {{ site.data.keys.mf_bm_short }} Service bietet die folgenden Planoptionen an: 
 
-1. **Developer**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime. The plan does not support the use of external databases or define multiple nodes *and is restricted to development and testing only*. The server instance allows you to register any number of Mobile application for development and testing.
+1. **Developer**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit. Der Plan unterstützt nicht die Verwendung externer Datenbanken und die Definition mehrerer Knoten. *Er ist nur für Entwicklung und Tests bestimmt*. Die Serverinstanz ermöglicht Ihnen, beliebig viele mobile Anwendungen für Entwicklung und Tests zu registrieren. 
 
-    > **Note:** the Developer plan does not offer a persistent database, as such be sure to backup your configuration as explained [in the Troubleshooting section](#troubleshooting).
+    > **Hinweis:** Der Plan "Developer" bietet keine persistente Datenban an. Erstellen Sie daher unbedingt eine Sicherung Ihrer Konfiguration (siehe Abschnitt [Fehlerbehebung](#troubleshooting)).
 
-2. **Developer Pro**: This plan provisions a {{ site.data.keys.mf_server }} as a Cloud Foundry app on a Liberty for Java runtime, and allows users to develop and test any number of mobile applications. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a {{ site.data.keys.mf_analytics_server }}, deployed on IBM Containers. The Container charges are billed separately. This plan is limited in size and is intended to be used for team-based development and testing activities, not production. Charges depend on the total size of your environment.
+2. **Developer**: Dieser Plan stellt {{ site.data.keys.mf_server }} als eine Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit und ermöglicht Benutzern, beliebig viele mobile Anwendungen zu entwickeln und zu testen. Für den Plan ist der **dashDB-OLTP-Service** erforderlich. Der dashDB-Service wird separat erstellt und in Rechnung gestellt. Bei Bedarf können Sie den in IBM Containern implementierten {{ site.data.keys.mf_analytics_server }} hinzufügen. Die Containergebühren werden separat in Rechnung gestellt. Dieser Plan ist vom Volumen her begrenzt. Er ist für Entwicklung und Tests in einem Team, nicht aber für die Produktion konzipiert. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung.
 
-3. **Professional Per Capacity:** This plan allows users to build, test and run any number of mobile applications in production, regardless of the number of mobile users or devices. It supports large deployments and High Availability. The plan requires you to have a **dashDB OLTP service** in place. The dashDB service is created and billed separately. Optionally, you can add a {{ site.data.keys.mf_analytics_server }}, deployed on IBM Containers. The Container charges are billed separately. Charges depend on the total size of your environment.
+3. **Professional Per Capacity:** Dieser Plan ermöglicht Benutzern, in der Produktion beliebig viele mobile Anwendungen zu erstellen, zu testen und auszuführen. Dies gilt unabhängig von der Anzahl mobiler App-Benutzer oder Geräte. Der Plan unterstützt umfangreiche Implementierungen und eine hohe Verfügbarkeit. Für den Plan ist der **dashDB-OLTP-Service** erforderlich. Der dashDB-Service wird separat erstellt und in Rechnung gestellt. Bei Bedarf können Sie den in IBM Containern implementierten {{ site.data.keys.mf_analytics_server }} hinzufügen. Die Containergebühren werden separat in Rechnung gestellt. Die Gebühren richten sich nach der Gesamtgröße Ihrer Umgebung.
 
-4. **Professional 1 Application**: This plan provisions a {{ site.data.keys.mf_server }} in a scalable Cloud Foundry app on a Liberty for Java runtime. The plan also requires a dashDB database service, which is created and billed separately. The plan allows users to build and manage a single mobile application. A single mobile application can consist of multiple flavors, such as iOS, Android, Windows, and Mobile Web.
+4. **Professional 1 Application **: Dieser Plan stellt {{ site.data.keys.mf_server }} in Form einer skalierbaren Cloud-Foundry-App in einer Liberty-for-Java-Laufzeit bereit. Der Plan erfordert einen dashDB-Datenbankservice, der separat erstellt und abgerechnet wird. Der Plan ermöglicht Benutzern die Erstellung und Verwaltung einer einzelnen mobilen Anwendung. Eine mobile Anwendung kann es in mehreren Varianten geben, z. B. für iOS, Android, Windows und Mobile Web. 
 
-> [See the service page on Bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) for more information about the available plans and their billing.
+> Auf der [Serviceseite von bluemix.net](https://console.ng.bluemix.net/catalog/services/mobile-foundation/) finden Sie weitere Informationen zu den verfügbaren Plänen und ihrer Fakturierung.
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to}
-* [Setting up the {{ site.data.keys.mf_bm_short }} service](#setting-up-the-mobile-foundation-service)
-* [Using the {{ site.data.keys.mf_bm_short }} service](#using-the-mobile-foundation-service)
-* [Server configuration](#server-configuration)
-* [Advanced server configuration](#advanced-server-configuration)
-* [Adding Analytics support](#adding-analytics-support)
-* [Applying {{ site.data.keys.mf_server }} fixes](#applying-mobilefirst-server-fixes)
-* [Accessing server logs](#accessing-server-logs)
-* [Troubleshooting](#troubleshooting)
-* [Further reading](#further-reading)
+* [{{ site.data.keys.mf_bm_short }} Service einrichten](#setting-up-the-mobile-foundation-service)
+* [{{ site.data.keys.mf_bm_short }} Service verwenden](#using-the-mobile-foundation-service)
+* [Serverkonfiguration](#server-configuration)
+* [Erweiterte Serverkonfiguration](#advanced-server-configuration)
+* [Analytics-Unterstützung hinzufügen](#adding-analytics-support)
+* [Fixes für {{ site.data.keys.mf_server }} anwenden](#applying-mobilefirst-server-fixes)
+* [Zugriff auf Serverprotokolle](#accessing-server-logs)
+* [Fehlerbehebung](#troubleshooting)
+* [Weiterführende Informationen](#further-reading)
 
-## Setting up the {{ site.data.keys.mf_bm_short }} service
+## {{ site.data.keys.mf_bm_short }} Service einrichten
 {: #setting-up-the-mobile-foundation-service }
-To set up the available plans, first follow these steps:
+Führen Sie zunächst die folgenden Schritte aus, um die verfügbaren Pläne einzurichten: 
 
-1. Load [bluemix.net](http://bluemix.net), login, and click on **Catalog**.
-2. Search for **Mobile Foundation** and click on the resulting tile option.
-3. *Optional*. Enter a custom name for the service instance, or use the default provided name.
-4. Select the desired pricing plan, then click **Create**.
+1. Laden Sie [bluemix.net](http://bluemix.net), melden Sie sich an und klicken Sie auf **Katalog**.
+2. Suchen Sie nach **Mobile Foundation** und klicken Sie auf die zugehörige Kacheloption. 
+3. Geben Sie einen angepassten Namen für die Serviceinstanz ein oder übernehmen Sie den vorgegebenen Standardnamen (*optional*). 
+4. Wählen Sie den gewünschten Preistarif aus und klicken Sie auf **Erstellen**.
 
-    <img class="gifplayer" alt="Creating a {{ site.data.keys.mf_bm_short }} service instance" src="service-creation.png"/>
+    <img class="gifplayer" alt="Instanz des {{ site.data.keys.mf_bm_short }} Service erstellen" src="service-creation.png"/>
 
-### Setting up the *developer* plan
+### Plan *Developer* einrichten
 {: #setting-up-the-developer-plan }
-1. Start the {{ site.data.keys.mf_server }}.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
+1. Starten Sie {{ site.data.keys.mf_server }}.
+    - Sie können die Basisversion der Serverkonfiguration verwenden und auf **Basisserver starten** klicken oder 
+    - Sie können die Serverkonfiguration auf der [Registerkarte 'Einstellungen'](#advanced-server-configuration) aktualisieren und auf **Erweiterten Server starten** klicken. 
 
-    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+    Mit diesem Schritt wird eine Cloud-Foundry-App für den {{ site.data.keys.mf_bm_short }} Service generiert und die MobileFirst-Foundation-Umgebung initialisiert. Dieser Schritt kann zwischen 5 und 10 Minuten dauern. 
 
-2. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
+2. Wenn die Instanz bereit ist, können Sie den [Service verwenden](#using-the-mobile-foundation-service).
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
+    ![Mobile-Foundation-Setup](overview-page.png)
 
-### Setting up the *Developer Pro*, *Professional Per Capacity* and *Professional 1 Application* plans
+### Pläne *Developer Pro*, *Professional Per Capacity* und *Professional 1 Application* einrichten
 {: #setting-up-the-developer-pro-professional-percapacity-and-professional-1-application-plans }
-1. These plans require an external [dashDB transactional database instance](https://console.ng.bluemix.net/catalog/services/dashdb/).
+1. Für diese Pläne ist eine externe [transaktionsorientierte dashDB-Datenbankinstanz](https://console.ng.bluemix.net/catalog/services/dashdb/) erforderlich.
 
-    > Learn more about [setting up a dashDB database instance]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
+    > Informieren Sie sich über die [Einrichtung einer dashDB-Datenbankinstanz]({{site.baseurl}}/blog/2016/11/02/using-dashdb-service-with-mobile-foundation/).
 
-    If you have an existing dashDB service instance (DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400), select the **Use Existing Service** option, and provide your credentials:
+    Wenn Sie bereits eine dashDB-Serviceinstanz haben (DashDB Enterprise Transactional 2.8.500 oder Enterprise Transactional 12.128.1400), wählen Sie die Option **Vorhandenen Service verwenden** aus und geben Sie Ihre Berechtigungsnachweise an. 
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-existing.png)
+    ![Mobile-Foundation-Setup](create-dashdb-instance-existing.png)
 
-    1.b. If you do not currently have a dashDB service instance, select the **Create New Service** option and follow the on-screen instructions:
+    1.b. Falls Sie noch keine dashDB-Serviceinstanz haben, wählen Sie die Option **Neuen Service erstellen** aus und folgen Sie den Anweisungen, die auf dem Bildschirm angezeigt werden. 
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](create-dashdb-instance-new.png)
+    ![Mobile-Foundation-Setup](create-dashdb-instance-new.png)
 
-2. Start the {{ site.data.keys.mf_server }}.
-    - You can either keep the server configuration at its basic level and click on **Start Basic Server**, or
-    - Update the server configuration in the [Settings tab](#advanced-server-configuration), and click on **Start advanced server**.
+2. Starten Sie {{ site.data.keys.mf_server }}.
+    - Sie können die Basisversion der Serverkonfiguration verwenden und auf **Basisserver starten** klicken oder 
+    - Sie können die Serverkonfiguration auf der [Registerkarte 'Einstellungen'](#advanced-server-configuration) aktualisieren und auf **Erweiterten Server starten** klicken. 
 
-    During this step a Cloud Foundry app is generated for the {{ site.data.keys.mf_bm_short }} service, and the MobileFirst Foundation environment is being initialized. This step can take between 5 to 10 minutes.
+    Mit diesem Schritt wird eine Cloud-Foundry-App für den {{ site.data.keys.mf_bm_short }} Service generiert und die MobileFirst-Foundation-Umgebung initialisiert. Dieser Schritt kann zwischen 5 und 10 Minuten dauern. 
 
-3. With the instance ready, you can now [use the service](#using-the-mobile-foundation-service).
+3. Wenn die Instanz bereit ist, können Sie den [Service verwenden](#using-the-mobile-foundation-service).
 
-    ![Image of {{ site.data.keys.mf_bm_short }} setup](overview-page.png)
+    ![Mobile-Foundation-Setup](overview-page.png)
 
-## Using the {{ site.data.keys.mf_bm_short }} service
+## {{ site.data.keys.mf_bm_short }} Service verwenden
 {: #using-the-mobile-foundation-service }
-> **Note:** The analytics service is available only in the **Dallas** and **UK** regions at this time.
+> **Hinweis:** Der Analytics Service ist derzeit nur in den Regionen **Dallas** und **Großbritannien** verfügbar. Sobald {{ site.data.keys.mf_server }} aktiv ist, wird das folgende Dashboard angezeigt: 
 
-With the {{ site.data.keys.mf_server }} now running, you are presented with the following Dashboard:
+![Mobile-Foundation-Setup](service-dashboard.png)
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](service-dashboard.png)
+Klicken Sie auf **Analytics hinzufügen**, um Unterstützung für {{ site.data.keys.mf_analytics }} zu Ihrer Serverinstanz hinzuzufügen.
+Weitere Informationen finden Sie im Abschnitt [Analytics-Unterstützung hinzufügen](#adding-analytics-support). 
 
-Click on **Add Analytics** to add {{ site.data.keys.mf_analytics }} support to your server instance.
-Learn more in the [Adding Analytics support](#adding-analytics-support) section.
+Klicken Sie auf **Konsole starten**, um die {{ site.data.keys.mf_console }} zu öffnen. Der Standardbenutzername ist "admin". Das Kennwort können Sie sichtbar machen, indem Sie auf das Augensymbol klicken. 
 
-Click on **Launch Console** to open the {{ site.data.keys.mf_console }}. The default user name is "admin" and the password can be revealed by clicking on the "eye" icon.
+![Mobile-Foundation-Setup](dashboard.png)
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](dashboard.png)
-
-### Server configuration
+### Serverkonfiguration
 {: #server-configuration }
-The basic server instance consists of:
+Die Basisserverinstanz umfasst Folgendes: 
 
-* A single node (server size: "small")
-* 1GB memory
-* 2GB storage capacity
+* Einzelknoten (Servergröße: "klein")
+* 1 GB Hauptspeicher
+* 2 GB Speicherkapazität
 
-### Advanced server configuration
+### Erweiterte Serverkonfiguration
 {: #advanced-server-configuration }
-Through the **Settings** tab, you can further customize the server instance with
+Auf der Registerkarte **Einstellungen** können Sie die Serverinstanz mit Folgendem weiter anpassen: 
 
-* Varying node, memory, and storage combinations
-* {{ site.data.keys.mf_console }} admin password
-* LTPA keys
-* JNDI configuration
-* User registry
-* TrustStore
-* {{ site.data.keys.mf_analytics }} configuration
-* DashDB Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400 database selection (available in the *Professional 1 Application* plan)
+* Verschiedene Kombinationen aus Knoten, Hauptspeicher und Speicherkapazität
+* Administratorkennwort für die {{ site.data.keys.mf_console }}
+* LTPA-Schlüssel
+* JNDI-Konfiguration
+* Benutzerregistry
+* Truststore
+* Konfiguration von {{ site.data.keys.mf_analytics }}
+* Datenbankauswahl "DashDB Enterprise Transactional 2.8.500" oder "Enterprise Transactional 12.128.1400" (aus dem Plan *Professional 1 Application*)
 * VPN
 
-![Image of {{ site.data.keys.mf_bm_short }} setup](advanced-server-configuration.png)
+![Mobile-Foundation-Setup](advanced-server-configuration.png)
 
-## Adding {{ site.data.keys.mf_analytics_short }} support
+## {{ site.data.keys.mf_analytics_short }}-Unterstützung hinzufügen
 {: #adding-analytics-support }
-You can add {{ site.data.keys.mf_analytics }} support to your {{ site.data.keys.mf_bm_short }} service instance by clicking on **Add Analytics** from the service's Dashboard page. This action provisions an IBM Container with an instance of {{ site.data.keys.mf_analytics_server }}.
+Sie können Unterstützung für {{ site.data.keys.mf_analytics }} zu Ihrer Mobile-Foundation-Service-Instanz hinzufügen. Klicken Sie dazu auf der Dashboardseite des Service auf **Analytics hinzufügen**. Mit dieser Aktion wird ein IBM Container mit einer Instanz von {{ site.data.keys.mf_analytics_server }} bereitgestellt.
 
-* When using the **Developer** plan this action will also automatically hook the {{ site.data.keys.mf_analytics_short }} service instance to your {{ site.data.keys.mf_server }} instance.  
-* When using the **Developer Pro**, **Professional Per Capacity** or **Proffessional 1 Application** plans, this action will require additional input from you to select: amount of available Nodes, available Memory and a storage volume.
+* Wenn Sie den Plan **Developer** nutzen, wird mit dieser Aktion außerdem automatisch
+die {{ site.data.keys.mf_analytics_short }}-Service-Instanz an Ihre MobileFirst-Server-Instanz gebunden.   
+* Wenn Sie den Plan **Developer Pro**, **Professional Per Capacity** oder **Proffessional 1 Application** nutzen, werden Sie im Rahmen dieser Aktion aufgefordert, weitere Optionen zu wählen (Anzahl der verfügbaren Knoten, verfügbarer Hauptspeicher und Speicherkapazität). 
 
-Once the operation finishes, reload the {{ site.data.keys.mf_console }} page in your browser to access the {{ site.data.keys.mf_analytics_console_short }}.  
+Wenn die Operation abgeschlossen ist, müssen Sie in Ihrem Browser die Seite der {{ site.data.keys.mf_console }} neu laden, um auf die {{ site.data.keys.mf_analytics_console_short }} zugreifen zu können.   
 
-> Learn more about {{ site.data.keys.mf_analytics }} in the [{{ site.data.keys.mf_analytics }} category](../../analytics).
+> Weitere Informationen zu {{ site.data.keys.mf_analytics }} finden Sie in der [Kategorie '{{ site.data.keys.mf_analytics }}'](../../analytics). 
 
-## Applying {{ site.data.keys.mf_server }} fixes
+## Fixes für {{ site.data.keys.mf_server }} anwenden
 {: #applying-mobilefirst-server-fixes }
-Updates to the {{ site.data.keys.mf_bm }} services are applied automatically without a need for human intervention, other than agreeing to perform the update. When an update is available, a banner is displayed in the service's Dashboard page with instructions and action buttons.
+Aktualisierungen für die {{ site.data.keys.mf_bm }} Services werden automatisch und ohne manuellen Eingriff durchgeführt. Die Durchführung muss lediglich bestätigt werden. Wenn eine Aktualisierung verfügbar ist, wird auf der Dashboardseite des Service ein Banner mit Anweisungen und Aktionsschaltflächen angezeigt. 
 
-## Accessing server logs
+## Zugriff auf Serverprotokolle
 {: #accessing-server-logs }
-To access server logs, open the sidebar navigation and click on **Apps → Cloud Foundary Apps**. Select your service and click on **Runtime**. Then click the **Files** tab.
+Öffnen Sie für den Zugriff auf Serverprotokolle die Seitenleistennavigation und klicken Sie auf **Apps → Cloud Foundry Apps**. Wählen Sie Ihren Service aus und klicken Sie auf **Laufzeit**. Klicken Sie dann auf das Register **Dateien**. 
 
-You can find the **messages.log** and **trace.log** files in the **logs** folder.
+Im Ordner **logs** finden Sie die Dateien **messages.log** und **trace.log**. 
 
-#### Tracing
+#### Tracefunktion
 {: #tracing }
-To enable tracing, in order to view DEBUG-level messages in the **trace.log** file:
+Wenn Sie die Tracefunktion aktivieren, werden in der Datei **trace.log** Nachrichten der Ebene DEBUG ausgegeben. 
 
-1. In **Runtime → Memory and Instances**, select your service instance (instance IDs start with **0**).
-2. Click the **Trace** action option.
-3. Input the following trace statement: `com.worklight.*=debug=enabled` and click **Submit trace**.
+1. Wählen Sie unter **Laufzeit → Memory and Instances** Ihre Serviceinstanz aus. (Instanz-IDs beginnen bei **0**.) 
+2. Klicken Sie auf die Aktionsoption **Trace**. 
+3. Geben Sie die Traceanweisung `com.worklight.*=debug=enabled` ein und klicken Sie auf **Submit trace**.
 
-The **trace.log** file is now available in the above specified location.
+Die Datei **trace.log** ist jetzt an der oben angegebenen Position verfügbar. 
 
-<img class="gifplayer" alt="Server logs for the {{ site.data.keys.mf_bm_short }} service" src="server-logs.png"/>
+<img class="gifplayer" alt="Serverprotokolle für den {{ site.data.keys.mf_bm_short }} Service" src="server-logs.png"/>
 
-## Troubleshooting
+## Fehlerbehebung
 {: #troubleshooting }
-The Developer plan does not offer a persistent database, which could cause at times loss of data. To quickly onboard in such cases, be sure to follow these best practices:
+Der Plan "Developer" stellt keine persistente Datenbank bereit, sodass potenziell ein Datenverlust möglich ist. Halten Sie sich daher zum Schutz vor Datenverlusten an die folgenden bewährten Verfahren: 
 
-* Every time you make any of the following server-side actions:
-    * Deploy an adapter or update any adapter configuration or property value
-    * Perform any security configuration such scope-mapping and alike
+* Immer, wenn Sie eine der folgenden serverseitigen Aktionen ausführen: 
+    * einen Adapter implementieren oder eine Adapterkonfiguration bzw. einen Eigenschaftswert aktualisieren
+    * im Rahmen einer Sicherheitskonfiguration eine Bereichszuordnung oder ähnliches erstellen 
     
-    Run the following from the command-line to download your configuration to a .zip file:
+    Führen Sie in der Befehlszeile folgenden Befehl aus, um Ihre Konfiguration in eine ZIP-Datei herunterzuladen: 
 
   ```bash
-  $curl -X GET -u admin:admin -o export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
+  $curl -X GET -u admin:admin -o export.zip http://<App-Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/export/all
   ```
 
-* In case you recreate your server or lose your configuration, run the following from the command-line to import the configuration to the server:
+* Wenn Sie Ihren Server neu erstellen müssen oder Ihre Konfiguration verloren haben, führen Sie in der Befehlszeile den folgenden Befehl aus, um die Konfiguration in den Server zu importieren: 
 
   ```bash
-  $curl -X POST -u admin:admin -F file=@./export.zip http://<App Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
+  $curl -X POST -u admin:admin -F file=@./export.zip http://<App-Name>.mybluemix.net/mfpadmin/management-apis/2.0/runtimes/mfp/deploy/multi
   ```
 
-## Further reading
+## Weiterführende Informationen
 {: #further-reading }
-Now that the {{ site.data.keys.mf_server }} instance is up and running,
+Jetzt, da Ihre MobileFirst-Server-Instanz betriebsbereit ist, können Sie die folgenden Schritte ausführen: 
 
-* Familiarize yourself with the [{{ site.data.keys.mf_console }}](../../product-overview/components/console).
-* Experience MobileFirst Foundation with these [Quick Start tutorials](../../quick-start).
-* Read through all [available tutorials](../../all-tutorials/).
+* Machen Sie sich mit der [{{ site.data.keys.mf_console }}](../../product-overview/components/console) vertraut. 
+* Nutzen Sie die [Lernprogramme für den Schnelleinstieg](../../quick-start), um Erfahrungen mit der MobileFirst Foundation zu sammeln.
+* Arbeiten Sie alle [verfügbaren Lernprogramme](../../all-tutorials/) durch.

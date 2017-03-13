@@ -1,67 +1,68 @@
 ---
 layout: tutorial
-title: Setting Up MobileFirst Server on IBM Bluemix using Scripts for IBM Containers
+title: MobileFirst Server für IBM Bluemix mit Scripts für IBM Container einrichten
 breadcrumb_title: IBM Containers
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance as well as {{ site.data.keys.mf_analytics }} instance on IBM Bluemix. To achieve this you will go through the following steps: 
+Folgen Sie den nachstehenden Anweisungen, um eine MobileFirst-Server-Instanz und eine Instanz von {{ site.data.keys.mf_analytics }} für IBM Bluemix zu konfigurieren. Gehen Sie dazu die folgenden Schritte durch:  
 
-* Setup your host computer with the required tools (Cloud Foundry CLI, Docker, and IBM Containers Extension (cf ic) Plug-in)
-* Setup your Bluemix account
-* Build a {{ site.data.keys.mf_server }} image and push it to the Bluemix repository.
+* Statten Sie Ihren Host-Computer mit den erforderlichen Tools aus (Cloud-Foundry-CLI, Docker und Plug-in "IBM Containers Extension" (cf ic)). 
+* Richten Sie Ihr Bluemix-Konto ein.
+* Erstellen Sie ein MobileFirst-Server-Image und stellen Sie es per Push-Operation in das Bluemix-Repository. 
 
-Finally, you will run the image on IBM Containers as a single Container or a Container group, and register your applications as well as deploy your adapters.
+Abschließend werden Sie das Image als Einzelcontainer oder Containergruppe in IBM Containern ausführen und Ihre Anwendung registrieren sowie Ihre Adapter implementieren. 
 
-**Notes:**  
+**Hinweise:**  
 
-* Windows OS is currently not supported for running these scripts.  
-* The {{ site.data.keys.mf_server }} Configuration tools cannot be used for deployments to IBM Containers.
+* Das Windows-Betriebssystem wird derzeit nicht für die Ausführung dieser Scripts unterstützt.   
+* Die MobileFirst-Server-Konfigurationstools können nicht für die Implementierung in IBM Containern genutzt werden. 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Register an account at Bluemix](#register-an-account-at-bluemix)
-* [Set up your host machine](#set-up-your-host-machine)
-* [Download the {{ site.data.keys.mf_bm_pkg_name }} archive](#download-the-ibm-mfpf-container-8000-archive)
-* [Prerequisites](#prerequisites)
-* [Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on IBM Containers](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
-* [Applying {{ site.data.keys.mf_server }} Fixes](#applying-mobilefirst-server-fixes)
-* [Removing a Container from Bluemix](#removing-a-container-from-bluemix)
-* [Removing the database service configuration from Bluemix](#removing-the-database-service-configuration-from-bluemix)
+* [Konto in Bluemix registrieren](#register-an-account-at-bluemix)
+* [Hostmaschine einrichten](#set-up-your-host-machine)
+* [Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen](#download-the-ibm-mfpf-container-8000-archive)
+* [Voraussetzungen](#prerequisites)
+* [{{ site.data.keys.product_adj }} Server und Analytics Server in IBM Containern einrichten](#setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers)
+* [Fixes für {{ site.data.keys.mf_server }} anwenden](#applying-mobilefirst-server-fixes)
+* [Container in Bluemix entfernen](#removing-a-container-from-bluemix)
+* [Datenbankservicekonfiguration aus Bluemix entfernen](#removing-the-database-service-configuration-from-bluemix)
 
-## Register an account at Bluemix
+## Konto in Bluemix registrieren
 {: #register-an-account-at-bluemix }
-If you do not have an account yet, visit the [Bluemix website](https://bluemix.net) and click **Get Started Free** or **Sign Up**. You need to fill up a registration form before you can move on to the next step.
+Falls Sie noch kein Konto haben, öffnen Sie die [Bluemix-Website](https://bluemix.net) und klicken Sie auf **Kostenloses
+Konto erstellen** oder auf **Anmeldung**. Sie müssen das Registrierungsformular ausfüllen, bevor Sie mit dem nächsten Schritt fortfahren können. 
 
-### The Bluemix Dashboard
+### Bluemix-Dashboard
 {: #the-bluemix-dashboard }
-After signing in to Bluemix, you are presented with the Bluemix Dashboard, which provides an overview of the active Bluemix **space**. By default, this work area receives the name "dev". You can create multiple work areas/spaces if needed.
+Nachdem Sie sich bei Bluemix angemeldet haben, wird das Bluemix-Dashboard angezeigt, das Ihnen einen Überblick über den aktiven Bluemix-Bereich gibt. Standardmäßig hat dieser Arbeitsbereich den Namen "dev". Bei Bedarf können Sie mehrere Arbeitsbereiche erstellen. 
 
-## Set up your host machine
+## Hostmaschine einrichten
 {: #set-up-your-host-machine }
-To manage containers and images, you need to install the following tools: Docker, Cloud Foundry CLI, and IBM Containers (cf ic) Plug-in.
+Für die Verwaltung von Containern und Images müssen Sie die folgenden Tools installieren: Docker, die Cloud-Foundry-CLI und das IBM Container-Plug-in (cf ic). 
 
 ### Docker
 {: #docker }
-Go to the [Docker Documentation](https://docs.docker.com/) on the left menu, select **Install → Docker Engine**, select your OS type, and follow the instructions to install the Docker Toolbox.
+Wählen Sie auf der Seite [Docker Documentation](https://docs.docker.com/) im linken Menü **Docker Engine → Install** aus. Wählen Sie Ihren Betriebssystemtyp aus und folgen Sie den Anweisungen für die Installation der Docker Toolbox.
 
-**Note:** IBM does not support Docker's Kitematic.
+**Hinweis:** IBM bietet keine Unterstützung für Docker Kitematic.
 
-In macOS, two options are available to run Docker commands:
+Unter macOS gibt es zwei Optionen für die Ausführung von Docker-Befehlen: 
 
-* From the macOS Terminal.app: No further setup is needed. You can work only from it.
-* From the Docker Quickstart Terminal: proceed as follows.
+* macOS-Terminal.app: Die App reicht zum Arbeiten aus. Ein weiteres Setup ist nicht erforderlich. 
+* Docker Quickstart Terminal: Gehen Sie wie nachfolgend beschrieben vor: 
 
-* Run the command:
+* Führen Sie den folgenden Befehl aus: 
 
   ```bash
   docker-machine env default
   ```
 
-* Set the result as environment variables, for example:
+* Definieren Sie das Ergebnis in Form von Umgebungsvariablen. Beispiel:
 
   ```bash
   $ docker-machine env default
@@ -71,64 +72,63 @@ In macOS, two options are available to run Docker commands:
   export DOCKER_MACHINE_NAME="default"
   ```
 
-> For further information consult the Docker documentation.
+> Weitere Informationen entnehmen Sie bitte der Docker-Dokumentation.
 
-### Cloud Foundry Plug-in and IBM Containers plug-in
+### Cloud-Foundry-Plug-in und IBM Container-Plug-in
 {: #cloud-foundry-plug-in-and-ibm-containers-plug-in}
-1. Install the [Cloud Foundry CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
-2. Install the [IBM Containers Plugin (cf ic)](https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html).
+1. Installieren Sie die [Cloud-Foundry-CLI](https://github.com/cloudfoundry/cli/releases?cm_mc_uid=85906649576514533887001&cm_mc_sid_50200000=1454307195).
+2. Installieren Sie das [IBM Container-Plug-in (cf ic)](https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html).
 
-## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
-{: #download-the-ibm-mfpf-container-8000}-archive 
-To set up {{ site.data.keys.product }} on IBM Containers, you must first create an image that will later be pushed to Bluemix.  
-<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download {{ site.data.keys.mf_server }} for IBM Containers archive (.zip file, search for: *CNBL0EN*).
+## Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen
+{: #download-the-ibm-mfpf-container-8000}-archive
+Wenn Sie die {{ site.data.keys.product }} in IBM Containern einrichten möchten, müssen Sie zunächst ein Image erstellen, das später per Push-Operation in Bluemix übertragen wird.   
+<a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Folgen Sie den Anweisungen auf dieser Seite</a>, um das Archiv mit {{ site.data.keys.mf_server }} für IBM Container (ZIP-Datei) herunterzuladen (suchen Sie nach *CNBL0EN*).
 
-The archive file contains the files for building an image (**dependencies** and **mfpf-libs**), the files for building and deploying a {{ site.data.keys.mf_analytics }} Container (**mfpf-analytics**) and files for configuring a {{ site.data.keys.mf_server }} Container (**mfpf-server**).
+Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependencies** und **mfpf-libs**), die Dateien für die Erstellung und Implementierung eines Containers mit {{ site.data.keys.mf_analytics }} (**mfpf-analytics**) und Dateien zum Konfigurieren eines MobileFirst-Server-Containers (**mfpf-server**).
 
 <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="zip-file">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Click to read more about the archive file contents and available environment properties to use</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Für mehr Informationen zum Inhalt der Archivdatei und zu den verfügbaren Umgebungseigenschaften hier klicken</b></a>
             </h4>
         </div>
 
         <div id="collapse-zip-file" class="panel-collapse collapse" role="tabpanel" aria-labelledby="zip-file">
             <div class="panel-body">
-                <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
-                <h4>dependencies folder</h4>
-                <p>Contains the {{ site.data.keys.product }} runtime and IBM Java JRE 8.</p>
+                <img src="zip.png" alt="Dateisystemstruktur der Archivdatei" style="float:right;width:570px"/>
+                <h4>Ordner 'dependencies'</h4>
+                <p>Enthält die Laufzeit der {{ site.data.keys.product }} und IBM Java JRE 8</p>
                 
-                <h4>mfpf-libs folder</h4>
-                <p>Contains {{ site.data.keys.product_adj }} product component libraries and CLI.</p>
+                <h4>Ordner 'mfpf-libs'</h4>
+                <p>Enthält die Bibliotheken für die {{ site.data.keys.product_adj }}-Produktkomponenten und die CLI</p>
                 
-                <h4>mfpf-server and mfpf-analytics folders</h4>
+                <h4>Ordner 'mfpf-server' und 'mfpf-analytics'</h4>
                 
                 <ul>
-                    <li><b>Dockerfile</b>: Text document that contains all the commands that are necessary to build an image.</li>
-                    <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} image and for pushing and running the image on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
-                    <li><b>usr</b> folder:
+                    <li><b>Dockerfile</b>: Textdokument mit allen Befehlen, die für das Erstellen eines Image erforderlich sind. </li>
+                    <li>Ordner <b>scripts</b>: Dieser Ordner enthält den Ordner <b>args</b> mit einer Reihe von Konfigurationsdateien. Er enthält außerdem die Scripts für die Anmeldung bei Blumix, die Erstellung eines Image für {{ site.data.keys.mf_server }} bzw. {{ site.data.keys.mf_analytics }} und die Push-Übertragung und Ausführung des Image in Bluemix. Sie können diese Scripts interaktiv ausführen oder die Konfigurationsdateien wie nachfolgend erläutert für die Ausführung der Scripts vorkonfigurieren. Anders als bei den anpassbaren Dateien args/*.properties dürfen Sie in diesem Ordner keine Elemente modifizieren. Verwenden Sie das Befehlszeilenargument <code>-h</code> oder <code>--help</code>, um einen Hilfetext zur Scriptsyntax abzurufen (z. B. <code>Scriptname.sh --help</code>).</li>
+                    <li>Ordner <b>usr</b>:
                         <ul>
-                            <li><b>bin</b> folder: Contains the script file that gets executed when the container starts. You can add your own custom code to be executed.</li>
-                            <li><b>config</b> folder: Contains the server configuration fragments (keystore, server properties, user registry) used by {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }}.</li>
-                            <li><b>keystore.xml</b> - the configuration of the repository of security certificates used for SSL encryption. The files listed must be referenced in the ./usr/security folder.</li>
-                            <li><b>mfpfproperties.xml</b> - configuration properties for {{ site.data.keys.mf_server }} and {{ site.data.keys.mf_analytics }}. See the supported properties listed in these documentation topics:
-                                <ul>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">List of JNDI properties for {{ site.data.keys.mf_server }} administration service</a></li>
-                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">List of JNDI properties for {{ site.data.keys.product_adj }} runtime</a></li>
+                            <li>Ordner <b>bin</b>: Enthält die Scriptdatei, die beim Start des Containers ausgeführt wird. Sie können eigenen Code hinzufügen, der ausgeführt werden soll.</li>
+                            <li>Ordner <b>config</b>: Für {{ site.data.keys.mf_server }} bzw. {{ site.data.keys.mf_analytics }} verwendete Serverkonfigurationsfragmente (Keystore, Servereigenschaften, Benutzerregistry)</li>
+                            <li><b>keystore.xml</b>: Konfiguration des Repositorys mit Sicherheitszertifikaten für die SSL-Verschlüsselung. Im Ordner ./usr/security muss auf die aufgelisteten Dateien verwiesen werden.</li>
+                            <li><b>mfpfproperties.xml</b> - Konfigurationseigenschaften für {{ site.data.keys.mf_server }} und {{ site.data.keys.mf_analytics }}. Informieren Sie sich anhand der folgenden Dokumentationsabschnitte über die unterstützten Eigenschaften:<ul>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">Liste der JNDI-Eigenschaften für den MobileFirst-Sever-Verwaltungsservice</a></li>
+                                    <li><a href="../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">Liste der JNDI-Eigenschaften für die {{ site.data.keys.product_adj }}-Laufzeit</a></li>
                                 </ul>
                             </li>
-                            <li><b>registry.xml</b> - user registry configuration. The basicRegistry (a basic XML-based user-registry configuration is provided as the default. User names and passwords can be configured for basicRegistry or you can configure ldapRegistry.</li>
+                            <li><b>registry.xml</b>: Benutzerregistrykonfiguration. Als Standardkonfiguration wird eine auf XML basierende Basisbenutzerregistrykonfiguration (basicRegistry) bereitgestellt. Sie können Namen und Kennwörter für basicRegistry konfigurieren oder ldapRegistry konfigurieren.</li>
                         </ul>
                     </li>
-                    <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).</li>
+                    <li>Ordner <b>env</b>: Enthält die Umgebungseigenschaften für die Serverinitialisierung (server.env) sowie angepasste JVM-Optionen (jvm.options).</li>
                     
                     <br/>
                     <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Click for a list of supported server environment properties</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Für eine Liste unterstützter Serverumgebungseigenschaften hier klicken</b></a>
                                 </h4>
                             </div>
 
@@ -136,86 +136,86 @@ The archive file contains the files for building an image (**dependencies** and 
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <tr>
-                                            <td><b>Property</b></td>
-                                            <td><b>Default Value</b></td>
-                                            <td><b>Description</b></td>
+                                            <td><b>Eigenschaft</b></td>
+                                            <td><b>Standardwert</b></td>
+                                            <td><b>Beschreibung</b></td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_SERVER_HTTPPORT</td>
                                             <td>9080*</td>
-                                            <td>The port used for client HTTP requests. Use -1 to disable this port.</td>
+                                            <td>Port für Client-HTTP-Anforderungen. Mit -1 können Sie diesen Port inaktivieren.</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_SERVER_HTTPSPORT	</td>
                                             <td>9443*	</td>
-                                            <td>The port used for client HTTP requests secured with SSL (HTTPS). Use -1 to disable this port.</td>
+                                            <td>Port für Client-HTTP-Anforderungen, die mit SSL (HTTPS) geschützt werden. Mit -1 können Sie diesen Port inaktivieren.</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_CLUSTER_MODE	</td>
                                             <td><code>Standalone</code></td>
-                                            <td>Configuration not required. Valid values are <code>Standalone</code> or <code>Farm</code>. The <code>Farm</code> value is automatically set when the container is run as a container group.</td>
+                                            <td>Es ist keine Konfiguration erforderlich. Gültige Werte sind <code>Standalone</code> und <code>Farm</code>. Der Wert <code>Farm</code> wird automatisch gesetzt, wenn der Container in einer Containergruppe ausgeführt wird.</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_ROOT	</td>
                                             <td>mfpadmin</td>
-                                            <td>The context root at which the {{ site.data.keys.mf_server }} Administration Services are made available.</td>
+                                            <td>Kontextstammverzeichnis, in dem die MobileFirst-Server-Verwaltungsservices verfügbar gemacht werden</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_CONSOLE_ROOT	</td>
                                             <td>mfpconsole</td>
-                                            <td>The context root at which the {{ site.data.keys.mf_console }} is made available.</td>
+                                            <td>Kontextstammverzeichnis, in dem die {{ site.data.keys.mf_console }} verfügbar gemacht wird</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_GROUP</td>
                                             <td>mfpadmingroup</td>
-                                            <td>The name of the user group assigned the predefined role <code>mfpadmin</code>.</td>
+                                            <td>Name der Benutzergruppe, der die vordefinierte Rolle <code>mfpadmin</code> zugeordnet ist</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_DEPLOYER_GROUP	</td>
+                                            <td>MFPF_DEPLOYER_GROUP</td>
                                             <td>mfpdeployergroup</td>
-                                            <td>The name of the user group assigned the predefined role <code>mfpdeployer</code>.</td>
+                                            <td>Name der Benutzergruppe, der die vordefinierte Rolle <code>mfpdeployer</code> zugeordnet ist</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_MONITOR_GROUP	</td>
                                             <td>mfpmonitorgroup</td>
-                                            <td>The name of the user group assigned the predefined role <code>mfpmonitor</code>.</td>
+                                            <td>Name der Benutzergruppe, der die vordefinierte Rolle <code>mfpmonitor</code> zugeordnet ist</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_OPERATOR_GROUP	</td>
+                                            <td>MFPF_OPERATOR_GROUP</td>
                                             <td>mfpoperatorgroup</td>
-                                            <td>The name of the user group assigned the predefined role <code>mfpoperator</code>.</td>
+                                            <td>Name der Benutzergruppe, der die vordefinierte Rolle <code>mfpoperator</code> zugeordnet ist</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_SERVER_ADMIN_USER	</td>
+                                            <td>MFPF_SERVER_ADMIN_USER</td>
                                             <td>WorklightRESTUser</td>
-                                            <td>The Liberty server administrator user for {{ site.data.keys.mf_server }} Administration Services.</td>
+                                            <td>Liberty-Serveradministrator für die MobileFirst-Server-Verwaltungsservices</td>
                                         </tr>
                                         <tr>
-                                            <td>MFPF_SERVER_ADMIN_PASSWORD	</td>
-                                            <td>mfpadmin. Ensure that you change the default value to a private password before deploying to a production environment.</td>
-                                            <td>The password of the Liberty server administrator user for {{ site.data.keys.mf_server }} Administration Services.</td>
+                                            <td>MFPF_SERVER_ADMIN_PASSWORD</td>
+                                            <td>mfpadmin. Vor der Implementierung in einer Produktionsumgebung müssen Sie den Standardwert durch ein privates Kennwort ersetzen.</td>
+                                            <td>Kennwort des Liberty-Serveradministrators für die MobileFirst-Server-Verwaltungsservices</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_USER	</td>
-                                            <td>admin</td>
-                                            <td>The user name for the administrator role for {{ site.data.keys.mf_server }} operations.</td>
+                                            <td>Administrator</td>
+                                            <td>Benutzername für die Administratorrolle für MobileFirst-Server-Operationen</td>
                                         </tr>
                                         <tr>
                                             <td>MFPF_ADMIN_PASSWORD	</td>
-                                            <td>admin</td>
-                                            <td>The password for the administrator role for {{ site.data.keys.mf_server }} operations.</td>
+                                            <td>Administrator</td>
+                                            <td>Kennwort für die Administratorrolle für MobileFirst-Server-Operationen</td>
                                         </tr>
                                     </table>
                                     
                     				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Abschnitt schließen</b></a>
                                 </div>
                             </div>
                         </div>
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="analytics-env">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>Click for a list of supported analytics environment properties</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#env-properties" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>Für eine Liste unterstützter Analytics-Umgebungseigenschaften hier klicken</b></a>
                                 </h4>
                             </div>
 
@@ -223,29 +223,29 @@ The archive file contains the files for building an image (**dependencies** and 
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <tr>
-                                            <td><b>Property</b></td>
-                                            <td><b>Default Value</b></td>
-                                            <td><b>Description</b></td>
+                                            <td><b>Eigenschaft</b></td>
+                                            <td><b>Standardwert</b></td>
+                                            <td><b>Beschreibung</b></td>
                                         </tr>
                                         <tr>
                                             <td>ANALYTICS_SERVER_HTTP PORT	</td>
                                             <td>9080*</td>
-                                            <td>The port used for client HTTP requests. Use -1 to disable this port.</td>
+                                            <td>Port für Client-HTTP-Anforderungen. Mit -1 können Sie diesen Port inaktivieren.</td>
                                         </tr>
                                         <tr>
                                             <td>ANALYTICS_SERVER_HTTPS PORT	</td>
                                             <td>9443*	</td>
-                                            <td>The port used for client HTTP requests. Use -1 to disable this port.</td>
+                                            <td>Port für Client-HTTP-Anforderungen. Mit -1 können Sie diesen Port inaktivieren.</td>
                                         </tr>
                                         <tr>
                                             <td>ANALYTICS_ADMIN_GROUP</td>
                                             <td>analyticsadmingroup</td>
-                                            <td>The name of the user group possessing the predefined role <b>worklightadmin</b>.</td>
+                                            <td>Name der Benutzergruppe mit der vordefinierten Rolle <b>worklightadmin</b></td>
                                         </tr>
                                     </table>
                                     
                     				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#analytics-env" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>Close section</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#analytics-env" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>Abschnitt schließen</b></a>
                                 </div>
                             </div>
                         </div>
@@ -253,96 +253,96 @@ The archive file contains the files for building an image (**dependencies** and 
                     
                     
                     </li>
-                    <li><b>jre-security</b> folder: You can update the JRE security-related files (truststore, policy JAR files, and so on) by placing them in this folder. The files in this folder get copied to the JAVA_HOME/jre/lib/security/ folder in the container.</li>
-                    <li><b>security</b> folder: used to store the key store, trust store, and the LTPA keys files (ltpa.keys).</li>
-                    <li><b>ssh</b> folder: used to store the SSH public key file (id_rsa.pub), which is used to enable SSH access to the container.</li>
-                    <li><b>wxs</b> folder (only for {{ site.data.keys.mf_server }}): Contains the data cache / extreme-scale client library when Data Cache is used as an attribute store for the server.</li>
+                    <li>Ordner <b>jre-security</b>: Sie können die sicherheitsrelevanten JRE-Dateien (Truststore, JAR-Richtliniendateien usw.) aktualisieren, indem Sie sie in diesen Ordner stellen. Die Dateien aus diesem Ordner werden in den Ordner JAVA_HOME/jre/lib/security/ des Containers kopiert.</li>
+                    <li>Ordner <b>security</b>: Wird verwendet, um die Keystore-Datei, die Truststore-Datei und die LTPA-Schlüsseldatei (ltpa.keys) zu speichern.</li>
+                    <li>Ordner <b>ssh</b>: Wird verwendet, um die Datei mit dem öffentlichen SSH-Schlüssel (id_rsa.pub), die den SSH-Zugriff auf den Container ermöglicht, zu speichern.</li>
+                    <li>Ordner <b>wxs</b> (nur für {{ site.data.keys.mf_server }}): Enthält die Datencache- bzw. eXtreme-Scale-Clientbibliothek, wenn für den Server der Datencache als Attribut-Store verwendet wird.</li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Abschnitt schließen</b></a>
             </div>
         </div>
     </div>
 </div>
 
-## Prerequisites
+## Voraussetzungen
 {: #prerequisites }
-The below steps are mandatory as you will be running IBM Containers commands during the following section.
+Die folgenden Schritte sind obligatorisch. Im folgenden Abschnitt werden Sie Befehle des Service "IBM Containers" ausführen. 
 
-1. Login to the IBM Bluemix environment.  
+1. Melden Sie sich bei der IBM Bluemix-Umgebung an.   
 
-    Run: `cf login`.  
-    When prompted, enter the following information:
-      * Bluemix API endpoint
-      * Email
-      * Password
-      * Organization, if you have more than one
-      * Space, if you have more than one
+    Führen Sie `cf login` aus.  
+    Machen Sie die folgenden Angaben, wenn Sie dazu aufgefordert werden: 
+      * Bluemix-API-Endpunkt
+      * E-Mail-Adresse
+      * Kennwort
+      * Organisation, falls es mehrere gibt
+      * Bereich, falls es mehrere gibt
 
-2. To run IBM Containers commands, you must first log in to the IBM Container Cloud Service.  
-Run: `cf ic login`.
+2. Für die Ausführung von Befehlen des Service "IBM Containers" müssen Sie sich zunöchst beim Cloud-Service für IBM Container anmelden.
+Führen Sie `cf ic login` aus.
 
-3. Make sure that the `namespace` for container registry is set. The `namespace` is a unique name to identify your private repository on the Bluemix registry. The namespace is assigned once for an organization and cannot be changed. Choose a namespace according to following rules:
-     * It can contain only lowercase letters, numbers, or underscores.
-     * It can be 4 - 30 characters. If you plan to manage containers from the command line, you might prefer to have a short namespace that can be typed quickly.
-     * It must be unique in the Bluemix registry.
+3. Stellen Sie sicher, dass der `namespace` für die Container-Registry definiert ist. Der `namespace` gibt einen eindeutigen Namen für Ihr privates Repository in der Bluemix-Registry an. Der Namespace wird einer Organisation einmal zugeordnet und kann nicht geändert werden. Beachten Sie bei der Auswahl des Namespace die folgenden Regeln: 
+     * Der Name darf nur aus Kleinbuchstaben, Zahlen und Unterstreichungszeichen bestehen. 
+     * Der Name kann 4 bis 30 Zeichen umfassen. Wenn Sie Container über die Befehlszeile verwalten möchten, sollten Sie dem Namensbereich einen kurzen Namen zuordnen, der schnell eingegeben werden kann.
+     * Innerhalb der Bluemix-Registry muss der Name eindeutig sein. 
 
-    To set a namespace, run the command: `cf ic namespace set <new_name>`.  
-    To get the namespace that you have set, run the command: `cf ic namespace get`.
+    Führen Sie zum Definieren eines Namespace den Befehl `cf ic namespace set <neuer_Name>` aus.  
+    Wenn Sie einen bereits definierten Namespace abrufen möchten, führen Sie den Befehl `cf ic namespace get` aus.
 
-> To learn more about IC commands, use the `ic help` command.
+> Weitere Informationen zu IC-Befehlen können Sie über den Befehl `ic help` abrufen. 
 
-## Setting Up the {{ site.data.keys.product_adj }} and Analytics Servers on IBM Containers
+## {{ site.data.keys.product_adj }} Server und Analytics Server in IBM Containern einrichten
 {: #setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers }
-As explained above, you can choose to run the scripts interactively or by using the configuration files:
+Wie bereits erläutert, können Sie die Scripts interaktiv oder unter Verwendung der Konfigurationsdateien ausführen. 
 
-* Using the configuration files - run the scripts and pass the respective configuration file as an argument.
-* Interactively - run the scripts without any arguments.
+* Verwendung der Konfigurationsdateien: Führen Sie die Scripts aus und übergeben Sie die entsprecvhende Konfigurationsdatei als Argument. 
+* Interaktiv: Führen Sie die Scripts ohne Argumente aus. 
 
-**Note:** If you choose to run the scripts interactively, you can skip the configuration but it is strongly suggested to at least read and understand the arguments that you will need to provide.
+**Hinweis:** Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie die Konfiguration übergehen. Wir empfehlen Ihnen jedoch, sich wenigstens mit den Argumenten, die angegeben werden müssen, zu beschäftigen. 
 
 ### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-If you intend to use analytics with your {{ site.data.keys.mf_server }} start here.
+Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden möchten, beginnen Sie hier. 
 
 <div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step1">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep1" aria-expanded="false" aria-controls="collapseStep1">Using the configuration files</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep1" aria-expanded="false" aria-controls="collapseStep1">Konfigurationsdateien verwenden</a>
             </h4>
         </div>
 
         <div id="collapseStep1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files.<br/>
-            <b>Note:</b> We only include the required arguments. To learn about the additional arguments, see the documentation inside the properties files.
+            Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Tragen Sie die Argumentwerte in den folgenden Dateien ein. <br/>
+            <b>Hinweis:</b> Hier sind nur die erforderlichen Argumente aufgeführt. Wenn Sie etwas zu den übrigen Argumenten erfahren möchten, sehen Sie sich die Dokumentation in den Eigenschaftendateien an.
               <h4>initenv.properties</h4>
               <ul>
-                  <li><b>BLUEMIX_USER - </b>Your Bluemix username (email).</li>
-                  <li><b>BLUEMIX_PASSWORD - </b>Your Bluemix password.</li>
-                  <li><b>BLUEMIX_ORG - </b>Your Bluemix organization name.</li>
-                  <li><b>BLUEMIX_SPACE - </b>Your Bluemix space (as explained previously).</li>
+                  <li><b>BLUEMIX_USER - </b>Ihr Bluemix-Benutzername (E-Mail-Adresse) </li>
+                  <li><b>BLUEMIX_PASSWORD - </b>Ihr Bluemix-Kennwort</li>
+                  <li><b>BLUEMIX_ORG - </b>Ihr Bluemix-Organisationsname</li>
+                  <li><b>BLUEMIX_SPACE - </b>Ihr Bluemix-Bereich (wie oben erläutert)</li>
               </ul>
               <h4>prepareanalytics.properties</h4>
               <ul>
-                  <li><b>ANALYTICS_IMAGE_TAG - </b>A tag for the image. Should be of the form: <em>registry-url/namespace/your-tag</em>.</li>
+                  <li><b>ANALYTICS_IMAGE_TAG - </b>Ein Tag für das Image. Der Tag sollte das Format <em>registry-url/namespace/your-tag</em> haben.</li>
               </ul>
               <h4>startanalytics.properties</h4>
               <ul>
-                  <li><b>ANALYTICS_IMAGE_TAG - </b>Same as in <em>prepareserver.sh</em>.</li>
-                  <li><b>ANALYTICS_CONTAINER_NAME - </b>A name for your Bluemix Container.</li>
-                  <li><b>ANALYTICS_IP - </b>An IP address that the Bluemix Container should be bound to.<br/>
-                  To assign an IP address, run: <code>cf ic ip request</code>.<br/>
-                  IP addresses can be reused in multiple containers in a space.<br/>
-                  If you've already assigned one, you can run: <code>cf ic ip list</code>.</li>
+                  <li><b>ANALYTICS_IMAGE_TAG - </b>Wie in <em>prepareserver.sh</em></li>
+                  <li><b>ANALYTICS_CONTAINER_NAME - </b>Name für Ihren Bluemix-Container</li>
+                  <li><b>ANALYTICS_IP - </b>IP-Adresse, an die der Bluemix-Container gebunden werden soll.<br/>
+                  Führen Sie für die Zuweisung einer IP-Adresse den Befehl <code>cf ic ip request</code> aus.<br/>
+                  IP-Adressen können für mehrere Container innerhalb eines Bereichs wiederverwendet werden.<br/>
+                  Falls Sie bereits eine Adresse zugewiesen haben, können Sie den Befehl <code>cf ic ip list</code> ausführen.</li>
               </ul>
               <h4>startanalyticsgroup.properties</h4>
               <ul>
-                  <li><b>ANALYTICS_IMAGE_TAG - </b>Same as in <em>prepareserver.sh</em>.</li>
-                  <li><b>ANALYTICS_CONTAINER_GROUP_NAME - </b>A name for your Bluemix Container group.</li>
-                  <li><b>ANALYTICS_CONTAINER_GROUP_HOST - </b>Your host name.</li>
-                  <li><b>ANALYTICS_CONTAINER_GROUP_DOMAIN - </b>Your domain name. The default is: <code>mybluemix.net</code>.</li>
+                  <li><b>ANALYTICS_IMAGE_TAG - </b>Wie in <em>prepareserver.sh</em></li>
+                  <li><b>ANALYTICS_CONTAINER_GROUP_NAME - </b>Name für Ihre Bluemix-Containergruppe</li>
+                  <li><b>ANALYTICS_CONTAINER_GROUP_HOST - </b>Ihr Hostname</li>
+                  <li><b>ANALYTICS_CONTAINER_GROUP_DOMAIN - </b>Ihr Domänenname. Der Standardwert ist <code>mybluemix.net</code>.</li>
               </ul>
             </div>
         </div>
@@ -351,16 +351,16 @@ If you intend to use analytics with your {{ site.data.keys.mf_server }} start he
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep2" aria-expanded="false" aria-controls="collapseStep2">Running the scripts</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts" data-target="#collapseStep2" aria-expanded="false" aria-controls="collapseStep2">Scripts ausführen</a>
             </h4>
         </div>
 
         <div id="collapseStep2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-                <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
+                <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
                 <ol>
-                    <li><b>initenv.sh – Logging in to Bluemix </b><br />
-                    Run the <b>initenv.sh</b> script to create an environment for building and running {{ site.data.keys.mf_analytics }} on the IBM Containers:
+                    <li><b>initenv.sh – Anmeldung bei Bluemix </b><br />
+                    Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.mf_analytics }} in IBM Containern zu erstellen:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -369,7 +369,7 @@ If you intend to use analytics with your {{ site.data.keys.mf_server }} start he
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-initenv">
                                     <h4 class="panel-title">
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Click for a list of command-line arguments</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Für eine Liste mit Befehlszeilenargumenten hier klicken</b></a>
                                     </h4>
                                 </div>
 
@@ -377,57 +377,57 @@ If you intend to use analytics with your {{ site.data.keys.mf_server }} start he
                                     <div class="panel-body">
                                         <table class="table table-striped">
                                             <tr>
-                                                <td><b>Command-line argument</b></td>
-                                                <td><b>Description</b></td>
+                                                <td><b>Befehlszeilenargument</b></td>
+                                                <td><b>Beschreibung</b></td>
                                             </tr>
                                             <tr>
                                                 <td>[-u|--user] BLUEMIX_USER</td>
-                                                <td>Bluemix user ID or email address</td>
+                                                <td>Bluemix-Benutzer-ID oder E-Mail-Adresse</td>
                                             </tr>
                                             <tr>
                                                 <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                                <td>Bluemix password</td>
+                                                <td>Bluemix-Kennwort</td>
                                             </tr>
                                             <tr>
                                                 <td>[-o|--org] BLUEMIX_ORG	</td>
-                                                <td>Bluemix organization name</td>
+                                                <td>Bluemix-Organisationsname</td>
                                             </tr>
                                             <tr>
                                                 <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                                <td>Bluemix space name</td>
+                                                <td>Bluemix-Bereichsname</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-a|--api] BLUEMIX_API_URL	</td>
-                                                <td>Bluemix API endpoint. (Defaults to https://api.ng.bluemix.net)</td>
+                                                <td>[-a|--api] BLUEMIX_API_URL (optional)	</td>
+                                                <td>Bluemix-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
                                             </tr>
                                         </table>
                                         
-                                        <p>For example:</p>
+                                        <p>Beispiel:</p>
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
 
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Close section</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Abschnitt schließen</b></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </li>
-                    <li><b>prepareanalytics.sh - Prepare a {{ site.data.keys.mf_analytics }} image</b><br />
-                        Run the <b>prepareanalytics.sh</b> script to build a {{ site.data.keys.mf_analytics }} image and push it to your Bluemix repository:
+                    <li><b>prepareanalytics.sh - Erstellung eines MobileFirst-Analytics-Image</b><br />
+                        Führen Sie das Script <b>prepareanalytics.sh</b> aus, um ein MobileFirst-Analytics-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu übertragen. 
 
 {% highlight bash %}
 ./prepareanalytics.sh args/prepareanalytics.properties
 {% endhighlight %}
 
-                        To view all available images in your Bluemix repository run: <code>cf ic images</code><br/>
-                        The list contains the image name, date of creation, and ID.
+                        Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus.<br/>
+                        Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID. 
                   
                         <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
                                     <h4 class="panel-title">
-                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>Click for a list of command-line arguments</b></a>
+                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>Für eine Liste mit Befehlszeilenargumenten hier klicken</b></a>
                                     </h4>
                                 </div>
 
@@ -435,31 +435,31 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                     <div class="panel-body">
                                         <table class="table table-striped">
                                             <tr>
-                                              <td><b>Command-line argument</b></td>
-                                              <td><b>Description</b></td>
+                                              <td><b>Befehlszeilenargument</b></td>
+                                              <td><b>Beschreibung</b></td>
                                             </tr>
                                             <tr>
                                               <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                              <td>Name to be used for the customized analytics image. Format: Bluemix registry URL/private namespace/image name</td>
+                                              <td>Name, der für das angepasste Analytics-Image verwendet werden soll. Format: Bluemix-Registry-URL/privater_Namespace/Image-Name</td>
                                             </tr>      
                                         </table>
                                       
-                                        <p>For example:</p>
+                                        <p>Beispiel:</p>
 {% highlight bash %}
 prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namespace/mfpfanalytics80
 {% endhighlight %}
 
-                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>Close section</b></a>
+                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>Abschnitt schließen</b></a>
                                   </div>
                               </div>
                           </div>
                       </div>
                   
                     </li>
-                    <li><b>startanalytics.sh - Running the image on an IBM Container</b><br />
-                    The <b>startanalytics.sh</b> script is used to run the {{ site.data.keys.mf_analytics }} image on an IBM Container. It also binds your image to the public IP that you configured in the <b>ANALYTICS_IP</b> property.</li>
+                    <li><b>startanalytics.sh - Ausführung des Image in einem IBM Container</b><br />
+                    Das Script <b>startanalytics.sh</b> wird verwendet, um das MobileFirst-Analytics-Image in einem IBM Container auszuführen. Außerdem bindet das Script Ihr Image an die öffentliche IP-Adresse, die Sie mit der Eigenschaft <b>ANALYTICS_IP</b> konfiguriert haben. </li>
 
-                    Run:
+                    Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startanalytics.sh args/startanalytics.properties
 {% endhighlight %}
@@ -468,7 +468,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalytics">
                                     <h4 class="panel-title">
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalytics" data-target="#collapse-script-analytics-startanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-startanalytics"><b>Click for a list of command-line arguments</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalytics" data-target="#collapse-script-analytics-startanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-startanalytics"><b>Für eine Liste mit Befehlszeilenargumenten hier klicken</b></a>
                                     </h4>
                                 </div>
 
@@ -476,89 +476,89 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                     <div class="panel-body">
                                         <table class="table table-striped">
                                             <tr>
-                                                <td><b>Command-line argument</b></td>
-                                                <td><b>Description</b></td>
+                                                <td><b>Befehlszeilenargument</b></td>
+                                                <td><b>Beschreibung</b></td>
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                                <td>Name of the analytics container image that has been loaded into the IBM Containers registry. Format: BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
+                                                <td>Name des Analytics-Container-Image, das in die Registry des Service "IBM Containers" geladen wurde. Format: Bluemix-Registry/Privater_Namespace/Image-Name:Tag</td>
                                             </tr>
                                             <tr>
                                                 <td>[-n|--name] ANALYTICS_CONTAINER_NAME	</td>
-                                                <td>Name of the analytics container</td>
+                                                <td>Name des Analytics-Containers</td>
                                             </tr>
                                             <tr>
                                                 <td>[-i|--ip] ANALYTICS_IP	</td>
-                                                <td>IP address that the container should be bound to. (You can provide an available public IP or request one using the <code>cf ic ip request</code> command.)</td>
+                                                <td>IP-Adresse, an die der Container gebunden werden soll. (Sie können eine verfügbare öffentliche IP-Adresse angeben oder mit dem Befehl <code>cf ic ip request</code> eine IP-Adresse anfordern.)</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-h|--http] EXPOSE_HTTP	</td>
-                                                <td>Expose HTTP port. Accepted values are Y (default) or N.</td>
+                                                <td>[-h|--http] EXPOSE_HTTP (optional)	</td>
+                                                <td>Offenlegung des HTTP-Ports. Gültige Werte sind Y (Standard) und N. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-s|--https] EXPOSE_HTTPS	</td>
-                                                <td>Expose HTTPS port. Accepted values are Y (default) or N.</td>
+                                                <td>[-s|--https] EXPOSE_HTTPS (optional)	</td>
+                                                <td>Offenlegung des HTTPS-Ports. Gültige Werte sind Y (Standard) und N. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-m|--memory] SERVER_MEM	</td>
-                                                <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                                <td>[-m|--memory] SERVER_MEM (optional)	</td>
+                                                <td>Dem Container zugewiesene Speicherkapazität in Megabytes (MB). Gültige Werte sind 1024 MB (Standard) und 2048 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-se|--ssh] SSH_ENABLE	</td>
-                                                <td>Enable SSH for the container. Accepted values are Y (default) or N.</td>
+                                                <td>[-se|--ssh] SSH_ENABLE (optional)	</td>
+                                                <td>Aktivierung von SSH für den Container. Gültige Werte sind Y (Standard) und N. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-sk|--sshkey] SSH_KEY	</td>
-                                                <td>The SSH Key to be injected into the container. (Provide the contents of your id_rsa.pub file.)</td>
+                                                <td>[-sk|--sshkey] SSH_KEY (optional)	</td>
+                                                <td>SSH-Schlüssel, der in den Container injiziert werden soll. (Geben Sie den Inhalt Ihrer Datei id_rsa.pub an.) </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
-                                                <td>The trace specification to be applied. Default: <code>*=info</code></td>
+                                                <td>[-tr|--trace] TRACE_SPEC (optional)	</td>
+                                                <td>Anzuwendende Tracespezifikation. Standardwert: <code>*=info</code></td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
-                                                <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
+                                                <td>[-ml|--maxlog] MAX_LOG_FILES (optional)	</td>
+                                                <td>Maximale Anzahl Protokolldateien, nach deren Erreichen die Protokolle überschrieben werden. Standard: 5 Dateien. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
-                                                <td>The maximum size of a log file. The default size is 20 MB.</td>
+                                                <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)	</td>
+                                                <td>Maximale Größe einer Protokolldatei. Die Standardgröße liegt bei 20 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
-                                                <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
+                                                <td>[-v|--volume] ENABLE_VOLUME (optional)	</td>
+                                                <td>Anhängen des Datenträgers für Containerprotokolle ermöglichen. Gültige Werte sind Y und N (Standard). </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-ev|--enabledatavolume] ENABLE_ANALYTICS_DATA_VOLUME	</td>
-                                                <td>Enable mounting volume for analytics data. Accepted values are Y or N (default).</td>
+                                                <td>[-ev|--enabledatavolume] ENABLE_ANALYTICS_DATA_VOLUME (optional)	</td>
+                                                <td>Anhängen des Datenträgers für Analysedaten ermöglichen. Gültige Werte sind Y und N (Standard). </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME	</td>
-                                                <td>Specify the name of the volume to be created and mounted for the analytic data. The default name is <b>mfpf_analytics_container_name</b>.</td>
+                                                <td>[-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME (optional)	</td>
+                                                <td>Geben Sie den Namen des Datenträgers für Analysedaten an, der erstellt und angehängt werden soll. Der Standardname ist <b>mfpf_analytics_container_name</b>.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY	</td>
-                                                <td>Specify the location to store the data. The default folder name is <b>/analyticsData.</b></td>
+                                                <td>[-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY (optional)	</td>
+                                                <td>Geben Sie die Position an, an der die Daten gespeichert werden sollen. Der Name des Standardordners ist <b>/analyticsData</b>. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>Provide {{ site.data.keys.mf_analytics }} properties as comma-separated key:value pairs. Note: If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
+                                                <td>[-e|--env] MFPF_PROPERTIES (optional)	</td>
+                                                <td>Geben Sie jeweils durch ein Komma getrennte Eigenschaften von {{ site.data.keys.mf_analytics }} als Schlüssel-Wert-Paare an. Hinweis: Wenn Sie mit diesem Script Eigenschaften angeben, dürfen diese Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein. </td>
                                             </tr>
                                         </table>
                                         
-                                        <p>For example:</p>
+                                        <p>Beispiel:</p>
                         {% highlight bash %}
                         startanalytics.sh --tag image_tag_name --name container_name --ip container_ip_address
                         {% endhighlight %}
 
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalytics" data-target="#collapse-script-analytics-startanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-startanalytics"><b>Close section</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalytics" data-target="#collapse-script-analytics-startanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-startanalytics"><b>Abschnitt schließen</b></a>
                                     </div>
                                 </div>
                             </div>
                         </div>   
-                    <li><b>startanalyticsgroup.sh - Running the image on an IBM Container group</b><br />
-                        The <b>startanalyticsgroup.sh</b> script is used to run the {{ site.data.keys.mf_analytics }} image on an IBM Container group. It also binds your image to the host name that you configured in the <b>ANALYTICS_CONTAINER_GROUP_HOST</b> property.
+                    <li><b>startanalyticsgroup.sh - Ausführung des Image in einer IBM Containergruppe</b><br />
+                    Das Script <b>startanalyticsgroup.sh</b> wird verwendet, um das MobileFirst-Analytics-Image in einer IBM Containergruppe auszuführen. Außerdem bindet das Script Ihr Image an den Hostnamen, den Sie mit der Eigenschaft <b>ANALYTICS_CONTAINER_GROUP_HOST</b> konfiguriert haben. 
 
-                        Run:
+                        Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
@@ -567,7 +567,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
                                     <h4 class="panel-title">
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>Click for a list of command-line arguments</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>Für eine Liste mit Befehlszeilenargumenten hier klicken</b></a>
                                     </h4>
                                 </div>
 
@@ -575,84 +575,84 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                     <div class="panel-body">
                                         <table class="table table-striped">
                                             <tr>
-                                                <td><b>Command-line argument</b></td>
-                                                <td><b>Description</b></td>
+                                                <td><b>Befehlszeilenargument</b></td>
+                                                <td><b>Beschreibung</b></td>
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] ANALYTICS_IMAGE_TAG	</td>
-                                                <td>Name of the analytics container image that has been loaded into the IBM Containers registry. Format: BluemixRegistry/PrivateNamespace/ImageName:Tag</td>
+                                                <td>Name des Analytics-Container-Image, das in die Registry des Service "IBM Containers" geladen wurde. Format: Bluemix-Registry/Privater_Namespace/Image-Name:Tag</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] ANALYTICS_CONTAINER_GROUP_NAME	</td>
-                                                <td>The name of the analytics container group.</td>
+                                                <td>Name der Analytics-Containergruppe</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gh|--host] ANALYTICS_CONTAINER_GROUP_HOST	</td>
-                                                <td>The host name of the route.</td>
+                                                <td>Hostname der Route</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gs|--domain] ANALYTICS_CONTAINER_GROUP_DOMAIN	</td>
-                                                <td>The domain name of the route.</td>
+                                                <td>Domänenname der Route</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-gm|--min] ANALYTICS_CONTAINER_GROUP_MIN</td>
-                                                <td>The minimum number of container instances. The default value is 1.</td>
+                                                <td>[-gm|--min] ANALYTICS_CONTAINER_GROUP_MIN (optional)	</td>
+                                                <td>Mindestanzahl Containerinstanzen. Der Standardwert ist 1.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-gx|--max] ANALYTICS_CONTAINER_GROUP_MAX	</td>
-                                                <td>The maximum number of container instances. The default value is 1.</td>
+                                                <td>[-gx|--max] ANALYTICS_CONTAINER_GROUP_MAX (optional)	</td>
+                                                <td>Maximale Anzahl Containerinstanzen. Der Standardwert ist 1.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-gd|--desired] ANALYTICS_CONTAINER_GROUP_DESIRED	</td>
-                                                <td>The desired number of container instances. The default value is 2.</td>
+                                                <td>[-gd|--desired] ANALYTICS_CONTAINER_GROUP_DESIRED (optional)	</td>
+                                                <td>Gewünschte Anzahl Containerinstanzen. Der Standardwert ist 2.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
-                                                <td>The trace specification to be applied. Default: <code>*=info</code></td>
+                                                <td>[-tr|--trace] TRACE_SPEC (optional)	</td>
+                                                <td>Anzuwendende Tracespezifikation. Standardwert: <code>*=info</code></td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
-                                                <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
+                                                <td>[-ml|--maxlog] MAX_LOG_FILES (optional)	</td>
+                                                <td>Maximale Anzahl Protokolldateien, nach deren Erreichen die Protokolle überschrieben werden. Standard: 5 Dateien. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
-                                                <td>The maximum size of a log file. The default size is 20 MB.</td>
+                                                <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)	</td>
+                                                <td>Maximale Größe einer Protokolldatei. Die Standardgröße liegt bei 20 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>Specify {{ site.data.keys.product_adj }} properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest/v2</code></td>
+                                                <td>[-e|--env] MFPF_PROPERTIES (optional)	</td>
+                                                <td>Geben Sie jeweils durch ein Komma getrennte {{ site.data.keys.product_adj }}-Eigenschaften als Schlüssel-Wert-Paare an. Beispiel: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest/v2</code></td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-m|--memory] SERVER_MEM	</td>
-                                                <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                                <td>[-m|--memory] SERVER_MEM (optional)	</td>
+                                                <td>Dem Container zugewiesene Speicherkapazität in Megabytes (MB). Gültige Werte sind 1024 MB (Standard) und 2048 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
-                                                <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
+                                                <td>[-v|--volume] ENABLE_VOLUME (optional)	</td>
+                                                <td>Anhängen des Datenträgers für Containerprotokolle ermöglichen. Gültige Werte sind Y und N (Standard).</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME	</td>
-                                                <td>Specify name of the volume to be created and mounted for analytics data. Default value is <b>mfpf_analytics_ANALYTICS_CONTAINER_GROUP_NAME</b></td>
+                                                <td>[-av|--datavolumename] ANALYTICS_DATA_VOLUME_NAME (optional)	</td>
+                                                <td>Geben Sie den Namen des Datenträgers für Analysedaten an, der erstellt und angehängt werden soll. Der Standardwert ist <b>mfpf_analytics_ANALYTICS_CONTAINER_GROUP_NAME</b>.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY	</td>
-                                                <td>Specify the directory to be used for storing analytics data. Default value is <b>/analyticsData</b></td>
+                                                <td>[-ad|--analyticsdatadirectory] ANALYTICS_DATA_DIRECTORY (optional)	</td>
+                                                <td>Geben Sie das Verzeichnis an, in dem Analysedaten gespeichert werden sollen. Der Standardwert ist <b>/analyticsData</b>.</td>
                                             </tr>
                                         </table>
                                         
-                                        <p>For example:</p>
+                                        <p>Beispiel: </p>
 {% highlight bash %}
 startanalyticsgroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
 {% endhighlight %}
 
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>Close section</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>Abschnitt schließen</b></a>
                                     </div>
                                 </div>
                             </div>
                         </div>   
                     </li>
                 </ol>
-                Launch the Analytics Console by loading the following URL: http://ANALYTICS-CONTAINER-HOST/analytics/console (it may take a few moments).  
+                Starten Sie die Analytics Console, indem Sie die URL http://ANALYTICS-CONTAINER-HOST/analytics/console laden. (Der Start kann eine Weile dauern.)   
             </div>
         </div>
     </div>
@@ -664,53 +664,53 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-1">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">Using the configuration files</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-1" aria-expanded="false" aria-controls="collapse-step-foundation-1">Konfigurationsdateien verwenden</a>
             </h4>
         </div>
 
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-                The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files:<br/>
+                Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Tragen Sie die Argumentwerte in den folgenden Dateien ein:<br/>
             
                 <h4>initenv.properties</h4>
                 <ul>
-                    <li><b>BLUEMIX_USER - </b>Your Bluemix username (email).</li>
-                    <li><b>BLUEMIX_PASSWORD - </b>Your Bluemix password.</li>
-                    <li><b>BLUEMIX_ORG - </b>Your Bluemix organization name.</li>
-                    <li><b>BLUEMIX_SPACE - </b>Your Bluemix space (as explained previously).</li>
+                    <li><b>BLUEMIX_USER - </b>Ihr Bluemix-Benutzername (E-Mail-Adresse) </li>
+                    <li><b>BLUEMIX_PASSWORD - </b>Ihr Bluemix-Kennwort</li>
+                    <li><b>BLUEMIX_ORG - </b>Ihr Bluemix-Organisationsname</li>
+                    <li><b>BLUEMIX_SPACE - </b>Ihr Bluemix-Bereich (wie oben erläutert)</li>
                 </ul>
                 <h4>prepareserverdbs.properties</h4>
-                The {{ site.data.keys.mf_bm_short }} service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank"><i>dashDB Enterprise Transactional database</i> instance</a> (<i>Enterprise Transactional 2.8.500</i> or <i>Enterprise Transactional 12.128.1400</i>).<br/>
-                <b>Note:</b> The deployment of the dashDB Enterprise Transactional plans may not be immediate. You might be contacted by the Sales team before the deployment of the service.<br/><br/>
-                After you have set up your dashDB instance, provide the required arguments:
+                Der {{ site.data.keys.mf_bm_short }} Service erfordert eine externe <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">Instanz der <i>dashDB-Enterprise-Transactional-Datenbank</i></a> (<i>Enterprise Transactional 2.8.500</i> oder <i>Enterprise Transactional 12.128.1400</i>).<br/>
+                <b>Hinweis:</b> Die Implementierung der dashDB-Enterprise-Transactional-Pläne erfolgt unter Umständen nicht sofort. Es kann sein, dass das Vertriebsteam sich vor der Implementierung des Service bei Ihnen meldet.<br/><br/>
+                Wenn Sie Ihre dashDB-Instanz eingerichtet haben, geben Sie die folgenden erforderlichen Argumente an:
                 <ul>
-                    <li><b>ADMIN_DB_SRV_NAME - </b>Your dashDB service instance name for storing admin data.</li>
-                    <li><b>ADMIN_SCHEMA_NAME - </b>Your schema name for admin data. The default is MFPDATA.</li>
-                    <li><b>RUNTIME_DB_SRV_NAME - </b>Your dashDB service instance name for storing runtime data. The default is the admin service name.</li>
-                    <li><b>RUNTIME_SCHEMA_NAME - </b>Your schema name for runtime data. The default is MFPDATA.</li>
-                    <b>Note:</b> If your dashDB service instance is being shared by many users, make sure that you provide unique schema names.
+                    <li><b>ADMIN_DB_SRV_NAME - </b>Name Ihrer dashDB-Serviceinstanz für das Speichern von Verwaltungsdaten</li>
+                    <li><b>ADMIN_SCHEMA_NAME - </b>Name Ihres Schemas für Verwaltungsdaten. Der Standardwert ist MFPDATA.</li>
+                    <li><b>RUNTIME_DB_SRV_NAME - </b>Name Ihrer dashDB-Serviceinstanz für das Speichern von Laufzeitdaten. Der Standardwert ist der Name des Verwaltungsservice.</li>
+                    <li><b>RUNTIME_SCHEMA_NAME - </b>Name Ihres Schemas für Laufzeitdaten. Der Standardwert ist MFPDATA.</li>
+                    <b>Hinweis:</b> Wenn Ihre dashDB-Serviceinstanz von vielen Benutzern gemeinsam genutzt wird, stellen Sie sicher, dass eindeutige Schemanamen angegeben werden.
                 </ul><br/>
                 <h4>prepareserver.properties</h4>
                 <ul>
-                  <li><b>SERVER_IMAGE_TAG - </b>A tag for the image. Should be of the form: <em>registry-url/namespace/your-tag</em>.</li>
+                  <li><b>SERVER_IMAGE_TAG - </b>Ein Tag für das Image. Der Tag sollte das Format <em>registry-url/namespace/your-tag</em> haben.</li>
                 </ul>
                 <h4>startserver.properties</h4>
                 <ul>
-                    <li><b>SERVER_IMAGE_TAG - </b>Same as in <em>prepareserver.sh</em>.</li>
-                    <li><b>SERVER_CONTAINER_NAME - </b>A name for your Bluemix Container.</li>
-                    <li><b>SERVER_IP - </b>An IP address that the Bluemix Container should be bound to.<br/>
-                    To assign an IP address, run: <code>cf ic ip request</code>.<br/>
-                    IP addresses can be reused in multiple containers in a space.<br/>
-                    If you've already assigned one, you can run: <code>cf ic ip list</code>.</li>
-                    <li><b>MFPF_PROPERTIES - </b>{{ site.data.keys.mf_server }} JNDI properties separated by comma (<b>without spaces</b>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
+                    <li><b>SERVER_IMAGE_TAG - </b>Wie in <em>prepareserver.sh</em></li>
+                    <li><b>SERVER_CONTAINER_NAME - </b>Name für Ihren Bluemix-Container</li>
+                    <li><b>SERVER_IP - </b>IP-Adresse, an die der Bluemix-Container gebunden werden soll.<br/>
+                  Führen Sie für die Zuweisung einer IP-Adresse den Befehl <code>cf ic ip request</code> aus.<br/>
+                  IP-Adressen können für mehrere Container innerhalb eines Bereichs wiederverwendet werden.<br/>
+                  Falls Sie bereits eine Adresse zugewiesen haben, können Sie den Befehl <code>cf ic ip list</code> ausführen.</li>
+                    <li><b>MFPF_PROPERTIES - </b>Jeweils durch ein Komma (<b>ohne Leerzeichen</b>) getrennte JNDI-Eigenschaften von {{ site.data.keys.mf_server }}. Die für Analysen relevanten Eigenschaften werden wie folgt definiert: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
                 <h4>startservergroup.properties</h4>
                 <ul>
-                    <li><b>SERVER_IMAGE_TAG - </b>Same as in <em>prepareserver.sh</em>.</li>
-                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>A name for your Bluemix Container group.</li>
-                    <li><b>SERVER_CONTAINER_GROUP_HOST - </b>Your host name.</li>
-                    <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>Your domain name. The default is: <code>mybluemix.net</code>.</li>
-                    <li><b>MFPF_PROPERTIES - </b>{{ site.data.keys.mf_server }} JNDI properties, separated by commas (<b>without spaces</b>). Here is where you define the analytics-related properties: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
+                    <li><b>SERVER_IMAGE_TAG - </b>Wie in <em>prepareserver.sh</em></li>
+                    <li><b>SERVER_CONTAINER_GROUP_NAME - </b>Name für Ihre Bluemix-Containergruppe</li>
+                    <li><b>SERVER_CONTAINER_GROUP_HOST - </b>Ihr Hostname</li>
+                    <li><b>SERVER_CONTAINER_GROUP_DOMAIN - </b>Ihr Domänenname. Der Standardwert ist <code>mybluemix.net</code>.</li>
+                    <li><b>MFPF_PROPERTIES - </b>Jeweils durch ein Komma (<b>ohne Leerzeichen</b>) getrennte JNDI-Eigenschaften von {{ site.data.keys.mf_server }}. Die für Analysen relevanten Eigenschaften werden wie folgt definiert: <code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS_CONTAINER_GROUP_HOSTNAME:80/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
             </div>
         </div>
@@ -719,17 +719,17 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="step-foundation-2">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Running the scripts</a>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#scripts2" data-target="#collapse-step-foundation-2" aria-expanded="false" aria-controls="collapse-step-foundation-2">Scripts ausführen</a>
             </h4>
         </div>
 
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
-            <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
+            <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
             
             <ol>
-                <li><b>initenv.sh – Logging in to Bluemix </b><br />
-                    Run the <b>initenv.sh</b> script to create an environment for building and running {{ site.data.keys.product }} on IBM Containers:
+                <li><b>initenv.sh – Anmeldung bei Bluemix </b><br />
+                    Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.product }} in IBM Containern zu erstellen:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
@@ -738,7 +738,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-initenv">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Click for a list of command-line arguments</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Für eine Liste mit Befehlszeilenargumenten hier klicken</b></a>
                                 </h4>
                             </div>
 
@@ -746,44 +746,44 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <tr>
-                                            <td><b>Command-line argument</b></td>
-                                            <td><b>Description</b></td>
+                                            <td><b>Befehlszeilenargument</b></td>
+                                            <td><b>Beschreibung</b></td>
                                         </tr>
                                         <tr>
                                             <td>[-u|--user] BLUEMIX_USER</td>
-                                            <td>Bluemix user ID or email address</td>
+                                            <td>Bluemix-Benutzer-ID oder E-Mail-Adresse</td>
                                         </tr>
                                         <tr>
-                                            <td>[-p|--password] BLUEMIX_PASSWORD	</td>
-                                            <td>Bluemix password</td>
+                                            <td>[-p|--password] BLUEMIX_PASSWORD</td>
+                                            <td>Bluemix-Kennwort</td>
                                         </tr>
                                         <tr>
                                             <td>[-o|--org] BLUEMIX_ORG	</td>
-                                            <td>Bluemix organization name</td>
+                                            <td>Bluemix-Organisationsname</td>
                                         </tr>
                                         <tr>
-                                            <td>[-s|--space] BLUEMIX_SPACE	</td>
-                                            <td>Bluemix space name</td>
+                                            <td>[-s|--space] BLUEMIX_SPACE</td>
+                                            <td>Bluemix-Bereichsname</td>
                                         </tr>
                                         <tr>
-                                            <td>Optional. [-a|--api] BLUEMIX_API_URL	</td>
-                                            <td>Bluemix API endpoint. (Defaults to https://api.ng.bluemix.net)</td>
+                                            <td>[-a|--api] BLUEMIX_API_URL (optional)	</td>
+                                            <td>Bluemix-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
                                         </tr>
                                     </table>
                                     
-                                    <p>For example:</p>
+                                    <p>Beispiel:</p>
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
                     
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Close section</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Abschnitt schließen</b></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li><b>prepareserverdbs.sh - Prepare the {{ site.data.keys.mf_server }} database</b><br />
-                    The <b>prepareserverdbs.sh</b> script is used to configure your {{ site.data.keys.mf_server }} with the dashDB database service. The service instance of the dashDB service should be available in the Organization and Space that you logged in to in step 1. Run the following:
+                <li><b>prepareserverdbs.sh - Erstellung der MobileFirst-Server-Datenbank</b><br />
+                    Das Script <b>prepareserverdbs.sh</b> wird verwendet, um Ihren {{ site.data.keys.mf_server }} mit dem dashDB-Datenbankservice. Die Instanz des dashDB-Service muss in der Organisation und dem Bereich verfügbar sein, bei denen Sie sich in Schritt 1 angemeldet haben. Führen Sie Folgendes aus:
 {% highlight bash %}
 ./prepareserverdbs.sh args/prepareserverdbs.properties
 {% endhighlight %}
@@ -792,7 +792,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserverdbs">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-script-prepareserverdbs"><b>Click for a list of command-line arguments</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-script-prepareserverdbs"><b>Für eine Liste mit Befehlszeilenargumenten hier klicken</b></a>
                                 </h4>
                             </div>
 
@@ -800,56 +800,56 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <tr>
-                                            <td><b>Command-line argument</b></td>
-                                            <td><b>Description</b></td>
+                                            <td><b>Befehlszeilenargument</b></td>
+                                            <td><b>Beschreibung</b></td>
                                         </tr>
                                         <tr>
                                             <td>[-adl |--admindb ] ADMIN_DB_SRV_NAME	</td>
-                                            <td>Bluemix  dashDB™ service (with Bluemix service plan of Enterprise Transactional)</td>
+                                            <td>Bluemix-dashDB™-Service (mit dem Bluemix-Serviceplan Enterprise Transactional)</td>
                                         </tr>
                                         <tr>
-                                            <td>Optional. [-as |--adminschema ] ADMIN_SCHEMA_NAME	</td>
-                                            <td>Database schema name for administration service. Defaults to MFPDATA</td>
+                                            <td>[-as |--adminschema ] ADMIN_SCHEMA_NAME (optional)	</td>
+                                            <td>Name des Datenbankschemas für den Verwaltungsservice. Standrdwert: MFPDATA</td>
                                         </tr>
                                         <tr>
-                                            <td>Optional. [-rd |--runtimedb ] RUNTIME_DB_SRV_NAME	</td>
-                                            <td>Bluemix database service instance name for storing runtime data. Defaults to the same service as given for admin data.</td>
+                                            <td>[-rd |--runtimedb ] RUNTIME_DB_SRV_NAME (optional)	</td>
+                                            <td>Name der Bluemix-Datenbankserviceinstanz für das Speichern der Laufzeitdaten. Standardmäßig der Service, der für die Verwaltungsdaten angegeben wird.</td>
                                         </tr>
                                         <tr>
-                                            <td>Optional. [-p |--push ] ENABLE_PUSH	</td>
-                                            <td>Enable configuring database for push service. Accepted values are Y (default) or N.</td>
+                                            <td>[-p |--push ] ENABLE_PUSH (optional)	</td>
+                                            <td>Konfiguration der Datenbank für den Push-Service ermöglichen. Gültige Werte sind Y (Standard) und N. </td>
                                         </tr>
                                         <tr>
                                             <td>[-pd |--pushdb ] PUSH_DB_SRV_NAME	</td>
-                                            <td>Bluemix database service instance name for storing push data. Defaults to the same service as given for runtime data.</td>
+                                            <td>Name der Bluemix-Datenbankserviceinstanz für das Speichern der Push-Daten. Standardmäßig der Service, der für die Laufzeitdaten angegeben wird.</td>
                                         </tr>
                                         <tr>
                                             <td>[-ps |--pushschema ] PUSH_SCHEMA_NAME	</td>
-                                            <td>Database schema name for push service. Defaults to the runtime schema name.</td>
+                                            <td>Name des Datenbankschemas für den Push-Service. Stndardmäßig der Name des Laufzeitschemas. </td>
                                         </tr>
                                     </table>
                                     
-                                    <p>For example:</p>
+                                    <p>Beispiel:</p>
 {% highlight bash %}
 prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
                                     
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>Abschnitt schließen</b></a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
-                <li><b>initenv.sh(Optional) – Logging in to Bluemix </b><br />
-                      This step is required only if you need to create your containers in a different Organization and Space than where the dashDB service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <b>initenv.sh</b> script:
+                <li><b>initenv.sh (optional) – Anmeldung bei Bluemix</b><br />
+                      Dieser Schritt ist nur erforderlich, wenn Sie Ihre Container in einer Organisation und einem Breich erstellen müssen, in dem die dashDB-Serviceinstanz nicht verfügbar ist. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
 
                 </li>
-                <li><b>prepareserver.sh - Prepare a {{ site.data.keys.mf_server }} image</b><br />
-                    Run the <b>prepareserver.sh</b> script in order to build a {{ site.data.keys.mf_server }} image and push it to your Bluemix repository. To view all available images in your Bluemix repository, run: <code>cf ic images</code><br/>
-                    The list contains the image name, date of creation, and ID.<br/>
+                <li><b>prepareserver.sh - Erstellung eines MobileFirst-Server-Image</b><br />
+                    Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus.<br/>
+                        Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.<br/> 
                   
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
@@ -859,7 +859,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-prepareserver">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Click for a list of command-line arguments</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Für eine Liste mit Befehlszeilenargumenten hier klicken</b></a>
                                 </h4>
                             </div>
 
@@ -867,29 +867,29 @@ prepareserverdbs.sh --admindb MFPDashDBService
                                 <div class="panel-body">
                                     <table class="table table-striped">
                                         <tr>
-                                            <td><b>Command-line argument</b></td>
-                                            <td><b>Description</b></td>
+                                            <td><b>Befehlszeilenargument</b></td>
+                                            <td><b>Beschreibung</b></td>
                                         </tr>
                                         <tr>
                                             <td>[-t|--tag] SERVER_IMAGE_NAME	</td>
-                                            <td>Name to be used for the customized {{ site.data.keys.mf_server }} image. Format: registryUrl/namespace/imagename</td>
+                                            <td>Name, der für das angepasste MobileFirst-Server-Image verwendet werden soll. Format: Registry-URL/Namespace/Image-Name</td>
                                         </tr>
                                     </table>
                                   
-                                    <p>For example:</p>
+                                    <p>Beispiel:</p>
 {% highlight bash %}
 prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% endhighlight %}
                                   
                                   <br/>
-                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Close section</b></a>
+                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Abschnitt schließen</b></a>
                               </div>
                           </div>
                         </div>
                     </div>  
                 </li>
-                <li><b>startserver.sh - Running the image on an IBM Container</b><br />
-                    The <b>startserver.sh</b> script is used to run the {{ site.data.keys.mf_server }} image on an IBM Container. It also binds your image to the public IP that you configured in the <b>SERVER_IP</b> property. Run:</li> 
+                <li><b>startserver.sh - Ausführung des Image in einem IBM Container</b><br />
+                    Das Script <b>startserver.sh</b> wird verwendet, um das MobileFirst-Server-Image in einem IBM Container auszuführen. Außerdem bindet das Script Ihr Image an die öffentliche IP-Adresse, die Sie mit der Eigenschaft <b>SERVER_IP</b> konfiguriert haben. Führen Sie Folgendes aus:</li> 
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -898,83 +898,83 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="script-startserver">
                                 <h4 class="panel-title">
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Click for a list of command-line arguments</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Für eine Liste mit Befehlszeilenargumenten hier klicken</b></a>
                                 </h4>
                             </div>
                             <div id="collapse-script-startserver" class="panel-collapse collapse" role="tabpanel" aria-labelledby="script-startserver">
                             <div class="panel-body">
                                 <table class="table table-striped">
                                     <tr>
-                                        <td><b>Command-line argument</b></td>
-                                        <td><b>Description</b></td>
+                                        <td><b>Befehlszeilenargument</b></td>
+                                        <td><b>Beschreibung</b></td>
                                     </tr>
                                     <tr>
                                         <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                        <td>Name of the {{ site.data.keys.mf_server }} image.</td>
+                                        <td>Name des MobileFirst-Server-Image</td>
                                     </tr>
                                     <tr>
                                         <td>[-i|--ip] SERVER_IP	</td>
-                                        <td>IP address that the {{ site.data.keys.mf_server }} container should be bound to. (You can provide an available public IP or request one using the <code>cf ic ip request</code> command.)</td>
+                                        <td>IP-Adresse, an die der MoibleFirst-Server-Container gebunden werden soll. (Sie können eine verfügbare öffentliche IP-Adresse angeben oder mit dem Befehl <code>cf ic ip request</code> eine IP-Adresse anfordern.)</td>
                                     </tr>
                                     <tr>
-                                        <td>Optional. [-si|--services] SERVICE_INSTANCES	</td>
-                                        <td>Comma-separated Bluemix service instances that you want to bind to the container.</td>
+                                        <td>[-si|--services] SERVICE_INSTANCES (optional)	</td>
+                                        <td>Jeweils durch ein Komma getrennte Bluemix-Serviceinstanzen, die an den Container gebunden werden sollen </td>
                                     </tr>
                                     <tr>
-                                        <td>Optional. [-h|--http] EXPOSE_HTTP	</td>
-                                        <td>Expose HTTP Port. Accepted values are Y (default) or N.</td>
+                                        <td>[-h|--http] EXPOSE_HTTP (optional)	</td>
+                                        <td>Offenlegung des HTTP-Ports. Gültige Werte sind Y (Standard) und N. </td>
                                     </tr>
                                     <tr>
-                                        <td>Optional. [-s|--https] EXPOSE_HTTPS	</td>
-                                        <td>Expose HTTPS Port. Accepted values are Y (default) or N.</td>
+                                        <td>[-s|--https] EXPOSE_HTTPS (optional)	</td>
+                                        <td>Offenlegung des HTTPS-Ports. Gültige Werte sind Y (Standard) und N. </td>
                                     </tr>
                                     <tr>
-                                        <td>Optional. [-m|--memory] SERVER_MEM	</td>
-                                        <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                        <td>[-m|--memory] SERVER_MEM (optional)	</td>
+                                        <td>Dem Container zugewiesene Speicherkapazität in Megabytes (MB). Gültige Werte sind 1024 MB (Standard) und 2048 MB.</td>
                                     </tr>
                                     <tr>
-                                        <td>Optional. [-se|--ssh] SSH_ENABLE	</td>
-                                        <td>Enable SSH for the container. Accepted values are Y (default) or N.</td>
+                                        <td>[-se|--ssh] SSH_ENABLE (optional)	</td>
+                                        <td>Aktivierung von SSH für den Container. Gültige Werte sind Y (Standard) und N. </td>
                                     </tr>
                                     <tr>
-                                        <td>Optional. [-sk|--sshkey] SSH_KEY	</td>
-                                        <td>The SSH Key to be injected into the container. (Provide the contents of your id_rsa.pub file.)</td>
+                                        <td>[-sk|--sshkey] SSH_KEY (optional)	</td>
+                                        <td>SSH-Schlüssel, der in den Container injiziert werden soll. (Geben Sie den Inhalt Ihrer Datei id_rsa.pub an.) </td>
                                     </tr>
                                     <tr>
-                                        <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
-                                        <td>The trace specification to be applied. Default: <code>*=info</code></td>
+                                        <td>[-tr|--trace] TRACE_SPEC (optional)	</td>
+                                        <td>Anzuwendende Tracespezifikation. Standardwert: <code>*=info</code></td>
                                     </tr>
                                     <tr>
-                                        <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
-                                        <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
+                                        <td>[-ml|--maxlog] MAX_LOG_FILES (optional)	</td>
+                                        <td>Maximale Anzahl Protokolldateien, nach deren Erreichen die Protokolle überschrieben werden. Standard: 5 Dateien. </td>
                                     </tr>
                                     <tr>
-                                        <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
-                                        <td>The maximum size of a log file. The default size is 20 MB.</td>
+                                        <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)	</td>
+                                        <td>Maximale Größe einer Protokolldatei. Die Standardgröße liegt bei 20 MB.</td>
                                     </tr>
                                     <tr>
-                                        <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
-                                        <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
+                                        <td>[-v|--volume] ENABLE_VOLUME (optional)	</td>
+                                        <td>Anhängen des Datenträgers für Containerprotokolle ermöglichen. Gültige Werte sind Y und N (Standard). </td>
                                     </tr>
                                     <tr>
-                                        <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
-                                        <td>Specify {{ site.data.keys.product_adj }} properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>.  <b>Note:</b> If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
+                                        <td>[-e|--env] MFPF_PROPERTIES (optional)	</td>
+                                        <td>Geben Sie jeweils durch ein Komma getrennte {{ site.data.keys.product_adj }}-Eigenschaften als Schlüssel-Wert-Paare an. Beispiel: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>. <b>Hinweis:</b> Wenn Sie mit diesem Script Eigenschaften angeben, dürfen diese Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein.</td>
                                     </tr>
                                 </table>
                                 
-                                <p>For example:</p>
+                                <p>Beispiel:</p>
 {% highlight bash %}
 startserver.sh --tag image_tag_name --name container_name --ip container_ip_address
 {% endhighlight %}
                                 
                                 <br/>
-                                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Close section</b></a>
+                                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Abschnitt schließen</b></a>
                             </div>
                         </div>
                     </div>
-                <li><b>startservergroup.sh - Running the image on an IBM Container group</b><br />
-                    The <b>startservergroup.sh</b> script is used to run the {{ site.data.keys.mf_server }} image on an IBM Container group. It also binds your image to the host name that you configured in the <b>SERVER_CONTAINER_GROUP_HOST</b> property.</li>
-                    Run:
+                <li><b>startservergroup.sh - Ausführung des Image in einer IBM Containergruppe</b><br />
+                    Das Script <b>startservergroup.sh</b> wird verwendet, um das MobileFirst-Server-Image in einer IBM Containergruppe auszuführen. Außerdem bindet das Script Ihr Image an den Hostnamen, den Sie mit der Eigenschaft <b>SERVER_CONTAINER_GROUP_HOST</b> konfiguriert haben. </li>
+                    Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startservergroup.sh args/startservergroup.properties
 {% endhighlight %}
@@ -983,7 +983,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-startservergroup">
                                     <h4 class="panel-title">
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Click for a list of command-line arguments</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Für eine Liste mit Befehlszeilenargumenten hier klicken</b></a>
                                     </h4>
                                 </div>
 
@@ -991,80 +991,80 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                     <div class="panel-body">
                                         <table class="table table-striped">
                                             <tr>
-                                                <td><b>Command-line argument</b></td>
-                                                <td><b>Description</b></td>
+                                                <td><b>Befehlszeilenargument</b></td>
+                                                <td><b>Beschreibung</b></td>
                                             </tr>
                                             <tr>
                                                 <td>[-t|--tag] SERVER_IMAGE_TAG	</td>
-                                                <td>The name of the {{ site.data.keys.mf_server }} container image in the Bluemix registry.</td>
+                                                <td>Name des MobileFirst-Server-Container-Image in der Bluemix-Registry</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gn|--name] SERVER_CONTAINER_NAME	</td>
-                                                <td>The name of the {{ site.data.keys.mf_server }} container group.</td>
+                                                <td>Name der MobileFirst-Server-Containergruppe</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gh|--host] SERVER_CONTAINER_GROUP_HOST	</td>
-                                                <td>The host name of the route.</td>
+                                                <td>Hostname der Route</td>
                                             </tr>
                                             <tr>
                                                 <td>[-gs|--domain] SERVER_CONTAINER_GROUP_DOMAIN	</td>
-                                                <td>The domain name of the route.</td>
+                                                <td>Domänenname der Route</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-gm|--min] SERVERS_CONTAINER_GROUP_MIN	</td>
-                                                <td>The minimum number of container instances. The default value is 1.</td>
+                                                <td>[-gm|--min] SERVERS_CONTAINER_GROUP_MIN (optional)	</td>
+                                                <td>Mindestanzahl Containerinstanzen. Der Standardwert ist 1.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-gx|--max] SERVER_CONTAINER_GROUP_MAX	</td>
-                                                <td>The maximum number of container instances. The default value is 1.</td>
+                                                <td>[-gx|--max] SERVER_CONTAINER_GROUP_MAX (optional)	</td>
+                                                <td>Maximale Anzahl Containerinstanzen. Der Standardwert ist 1.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED	</td>
-                                                <td>The desired number of container instances. The default value is 2.</td>
+                                                <td>[-gd|--desired] SERVER_CONTAINER_GROUP_DESIRED (optional)	</td>
+                                                <td>Gewünschte Anzahl Containerinstanzen. Der Standardwert ist 2.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-a|--auto] ENABLE_AUTORECOVERY	</td>
-                                                <td>Enable the automatic recovery option for the container instances. Accepted values are Y or N (default).</td>
+                                                <td>[-a|--auto] ENABLE_AUTORECOVERY (optional)	</td>
+                                                <td>Aktivieren der automatischen Wiederherstellungsoption für die Containerinstanzen. Gültige Werte sind Y und N (Standard).</td>
                                             </tr>
                                             
                                             <tr>
-                                                <td>Optional. [-si|--services] SERVICES	</td>
-                                                <td>Comma-separated Bluemix service instance names that you want to bind to the container.</td>
+                                                <td>[-si|--services] SERVICES (optional)	</td>
+                                                <td>Jeweils durch ein Komma getrennte Namen von Bluemix-Serviceinstanzen, die an den Container gebunden werden sollen </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-tr|--trace] TRACE_SPEC	</td>
-                                                <td>The trace specification to be applied. Default <code>*=info</code></td>
+                                                <td>[-tr|--trace] TRACE_SPEC (optional)	</td>
+                                                <td>Anzuwendende Tracespezifikation. Der Standarwert ist <code>*=info</code>. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-ml|--maxlog] MAX_LOG_FILES	</td>
-                                                <td>The maximum number of log files to maintain before they are overwritten. The default is 5 files.</td>
+                                                <td>[-ml|--maxlog] MAX_LOG_FILES (optional)	</td>
+                                                <td>Maximale Anzahl Protokolldateien, nach deren Erreichen die Protokolle überschrieben werden. Standard: 5 Dateien. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-ms|--maxlogsize] MAX_LOG_FILE_SIZE	</td>
-                                                <td>The maximum size of a log file. The default size is 20 MB.</td>
+                                                <td>[-ms|--maxlogsize] MAX_LOG_FILE_SIZE (optional)	</td>
+                                                <td>Maximale Größe einer Protokolldatei. Die Standardgröße liegt bei 20 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-e|--env] MFPF_PROPERTIES	</td>
-                                                <td>Specify {{ site.data.keys.product_adj }} properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
-                                                <b>Note:</b> If you specify properties using this script, ensure that the same properties have not been set in the configuration files in the usr/config folder.</td>
+                                                <td>[-e|--env] MFPF_PROPERTIES (optional)	</td>
+                                                <td>Geben Sie jeweils durch ein Komma getrennte {{ site.data.keys.product_adj }}-Eigenschaften als Schlüssel-Wert-Paare an. Beispiel: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest</code><br/> <code>mfp.analytics.console.url:http://127.0.0.1/analytics/console</code><br/>
+<b>Hinweis:</b> Wenn Sie mit diesem Script Eigenschaften angeben, dürfen die Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein. </td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-m|--memory] SERVER_MEM	</td>
-                                                <td>Assign a memory size limit to the container in megabytes (MB). Accepted values are 1024 MB (default) and 2048 MB.</td>
+                                                <td>[-m|--memory] SERVER_MEM (optional)	</td>
+                                                <td>Dem Container zugewiesene Speicherkapazität in Megabytes (MB). Gültige Werte sind 1024 MB (Standard) und 2048 MB.</td>
                                             </tr>
                                             <tr>
-                                                <td>Optional. [-v|--volume] ENABLE_VOLUME	</td>
-                                                <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
+                                                <td>[-v|--volume] ENABLE_VOLUME (optional)	</td>
+                                                <td>Anhängen des Datenträgers für Containerprotokolle ermöglichen. Gültige Werte sind Y und N (Standard). </td>
                                             </tr>
                                         </table>
                                         
-                                        <p>For example:</p>
+                                        <p>Beispiel:</p>
 {% highlight bash %}
 startservergroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
 {% endhighlight %}
                                         
                                         <br/>
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Close section</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Abschnitt schließen</b></a>
                                     </div>
                                 </div>
                             </div>
@@ -1076,48 +1076,56 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
     </div>
 </div>
 
-> **Note:** Containers must be restarted after any configuration changes have been made (`cf ic restart containerId`). For container groups, you must restart each container instance within the group. For example, if a root certificate changes, each container instance must be restarted after the new certificate has been added.
+> **Hinweis:** Container müssen nach jeder Konfigurationsänderung neu gestartet werden (`cf ic restart Container-ID`). Bei Containergruppen müssen Sie jede Containerinstanz innerhalb einer Gruppe
+neu starten.
+Wenn sich beispielsweise ein Stammzertifikat ändert, muss nach dem Hinzufügen des neuen Zertifikats jede Containerinstanz neu
+gestartet werden. Starten Sie die {{ site.data.keys.mf_console }} über die URL http://MF\_CONTAINER\_HOST/mfpconsole. (Der Start kann eine Weile dauern.)   
+Fügen Sie den fernen Server hinzu. Folgen Sie dfür den Anweisungen
+im Lernprogramm [{{ site.data.keys.mf_cli }} für die Verwaltung
+von {{ site.data.keys.product_adj }}-Artefakten verwenden](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance). 
 
-Launch the {{ site.data.keys.mf_console }} by loading the following URL: http://MF\_CONTAINER\_HOST/mfpconsole (it may take a few moments).  
-Add the remote server by following the instructions in the [Using {{ site.data.keys.mf_cli }} to Manage {{ site.data.keys.product_adj }} Artifacts](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) tutorial.  
+{{ site.data.keys.mf_server }} wird jetzt in IBM Bluemix ausgeführt, sodass Sie mit der Anwendungsentwicklung beginnen können. Gehen Sie die {{ site.data.keys.product }} [Lernprogramme](../../all-tutorials) durch.
 
-With {{ site.data.keys.mf_server }} running on IBM Bluemix, you can now start your application development. Review the {{ site.data.keys.product }} [tutorials](../../all-tutorials).
-
-#### Port number limitation
+#### Portnummernbeschränkung
 {: #port-number-limitation }
-There is currently an IBM Containers limitation with the port numbers that are available for public domain. Therefore, the default port numbers given for the {{ site.data.keys.mf_analytics }} container and the {{ site.data.keys.mf_server }} container (9080 for HTTP and 9443 for HTTPS) cannot be altered. Containers in a container group must use HTTP port 9080. Container groups do not support the use of multiple port numbers or HTTPS requests.
+Für IBM Container gilt zurzeit eine Beschränkung
+hinsichtlich der Portnummern, die für die öffentliche Domäne verfügbar sind. Daher können die für den Container mit {{ site.data.keys.mf_analytics }}
+und den MobileFirst-Server-Container angegebenen Standardportnummern (9080 für HTTP und 9443 für HTTPS) nicht geändert werden. Container in einer Containergruppe müssen den HTTP-Port 9080 verwenden. Containergruppen bieten keine Unterstützung für die Verwendung von mehreren Portnummern oder HTTPS-Anforderungen.
 
-## Applying {{ site.data.keys.mf_server }} Fixes
+## Fixes für {{ site.data.keys.mf_server }} anwenden
 {: #applying-mobilefirst-server-fixes }
-Interim fixes for the {{ site.data.keys.mf_server }} on IBM Containers can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
-Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the **package_root/mfpf-analytics/usr** and **package_root/mfpf-server/usr** folders.
+Vorläufige Fixes für {{ site.data.keys.mf_server }} in IBM Containern können über [IBM Fix Central](http://www.ibm.com/support/fixcentral) abgerufen werden.  
+Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen Fix anwenden. Die Konfigurationsdateien befinden sich in den Ordnern **package_root/mfpf-analytics/usr** und **package_root/mfpf-server/usr**. 
 
-1. Download the interim fix archive and extract the contents to your existing installation folder, overwriting the existing files.
-2. Restore your backed-up configuration files into the **/mfpf-analytics/usr** and **/mfpf-server/usr** folders, overwriting the newly installed configuration files.
+1. Laden Sie das Archiv mit dem vorläufigen Fix herunter und extrahieren Sie den Inhalt des Archivs in
+Ihrem vorhandenen Installationsordner. Dabei werden in dem Ordner vorhandene Dateien überschrieben. 
+2. Speichern Sie Ihre gesicherten Konfigurationsdateien zurück in die Ordner **/mfpf-analytics/usr** und **/mfpf-server/usr**. Dabei werden die neu
+installierten Konfigurationsdateien überschrieben. 
 
-You can now build and deploy new production-level containers.
+Jetzt können Sie neue Produktionscontainer erstellen und implementieren. 
 
-## Removing a Container from Bluemix
+## Container in Bluemix entfernen
 {: #removing-a-container-from-bluemix }
-When you remove a container from Bluemix, you must also remove the image name from the registry.  
-Run the following commands to remove a container from Bluemix:
+Wenn Sie in Bluemix einen Container entfernen, müssen Sie auch den Image-Namen aus der Registry entfernen.   
+Führen Sie die folgenden Befehle aus, um einen Container in Bluemix zu entfernen: 
 
-1. `cf ic ps` (Lists the containers currently running)
-2. `cf ic stop container_id` (Stops the container)
-3. `cf ic rm container_id` (Removes the container)
+1. `cf ic ps` (Listet die zurzeit aktiven Container auf) 
+2. `cf ic stop container_id` (Stoppt den Container)
+3. `cf ic rm container_id` (Entfernt den Container)
 
-Run the following cf ic commands to remove an image name from the Bluemix registry:
+Führen Sie die folgenden cf ic-Befehle aus, um einen Image-Namen aus der Bluemix-Registry zu entfernen: 
 
-1. `cf ic images` (Lists the images in the registry)
-2. `cf ic rmi image_id` (Removes the image from the registry)
+1. `cf ic images` (Listet die Images in der Registry auf)
+2. `cf ic rmi image_id` (Entfernt ein Image aus der Registry)
 
-## Removing the database service configuration from Bluemix	
+## Datenbankservicekonfiguration aus Bluemix entfernen	
 {: #removing-the-database-service-configuration-from-bluemix }
-If you ran the **prepareserverdbs.sh** script during the configuration of the {{ site.data.keys.mf_server }} image, the configurations and database tables required for {{ site.data.keys.mf_server }} are created. This script also creates the database schema for the container.
+Wenn Sie während der Konfiguration des MobileFirst-Server-Image das Script **prepareserverdbs.sh** ausgeführt haben,
+werden die für {{ site.data.keys.mf_server }} erforderlichen Konfigurationen und Datenbanktabellen erstellt. Das Script erstellt auch das Datenbankschema für den Container. 
 
-To remove the database service configuration from Bluemix, perform the following procedure using Bluemix dashboard.
+Sie können die Datenbankservicekonfiguration im Bluemix-Dashboard wie folgt entfernen.
 
-1. From the Bluemix dashboard, select the dashDB service you have used. Choose the dashDB service name that you had provided as parameter while running the **prepareserverdbs.sh** script.
-2. Launch the dashDB console to work with the schemas and database objects of the selected dashDB service instance.
-3. Select the schemas related to IBM {{ site.data.keys.mf_server }} configuration. The schema names are ones that you have provided as parameters while running the **prepareserverdbs.sh** script.
-4. Delete each of the schema after carefully inspecting the schema names and the objects under them. The database configurations are removed from Bluemix.
+1. Wählen Sie im Bluemix-Dashboard den dashDB-Service aus, den Sie verwendet haben. Wählen Sie den dashDB-Servicenamen aus, den Sie für die Ausführung des Scripts **prepareserverdbs.sh** als Parameter angegeben haben. 
+2. Starten Sie die dashDB-Konsole, um mit den Schemata und Datenbankobjekten der ausgewählten dashDB-Serviceinstanz arbeiten zu können. 
+3. Wählen Sie Schemata für die Konfiguration von IBM {{ site.data.keys.mf_server }} aus. Die Schemanamen sind die, die Sie bei Ausführung des Scripts **prepareserverdbs.sh** als Parameter angegeben haben. 
+4. Untersuchen Sie die Schemanamen und die zugehörigen Objekte gründlich, bevor Sie die einzelnen Schemata löschen. Die Datenbankkonfigurationen wurden aus Bluemix entfernt.

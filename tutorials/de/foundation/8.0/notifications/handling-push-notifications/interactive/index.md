@@ -1,30 +1,31 @@
 ---
 layout: tutorial
-title: Interactive notifications
+title: Interaktive Benachrichtigungen
 relevantTo: [ios, cordova]
 show_in_nav: false
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message.
+Wenn eine interaktive Benachrichtigung eingeht, können Benutzer Aktionen ausführen, ohne die Anwendung zu öffnen. Beim Eintreffen einer interaktiven Benachrichtigung zeigt das Gerät die Nachricht und Aktionsschaltflächen an. 
 
-Interactive notifications are supported on devices with iOS version 8 and above. If an interactive notification is sent to an iOS device with version earlier than 8, the notification actions are not displayed.
+Interaktive Benachrichtigungen werden auf Geräten mit iOS ab Version 8 unterstützt. Wenn eine interaktive Benachrichtigung an ein iOS-Gerät mit einer älteren Version als Version 8 gesendet wird, werden die Benachrichtigungsaktionen nicht angezeigt. 
 
-## Sending interactive push notification
+## Interaktive Push-Benachrichtigung senden
 {: #sending-interactive-push-notification }
-Prepare the notification and send notification. For more information, see [Sending push notifications](../../sending-notifications).
+Bereiten Sie die Benachrichtigung vor und senden Sie sie. Weitere Informationen finden Sie unter [Push-Benachrichtigungen senden](../../sending-notifications).
 
-You can set a string to indicate the category of the notification with the notification object, under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**. Based on the category value, the notification action buttons are displayed. For example:
+Unter **{{ site.data.keys.mf_console }} → [Ihre Anwendung] → Push → Benachrichtigungen senden → Angepasste
+iOS-Einstellungen** können Sie eine Zeichenfolge festlegen, um die Kategorie der Benachrichtigung mit dem Benachrichtigungsobjekt anzugeben. Die Aktionsschaltflächen für die Benachrichtigung werden ausgehend vom Kategoriewert angezeigt. Beispiel: 
 
-![Setting categories for iOS interactive notifications in the {{ site.data.keys.mf_console }}](categories-for-interactive-notifications.png)
+![Kategorien für interaktive iOS-Benachrichtigungen in der {{ site.data.keys.mf_console }} festlegen](categories-for-interactive-notifications.png)
 
-## Handling interactive push notifications in Cordova applications
+## Interaktive Benachrichtigungen in Cordova-Anwendungen
 {: #handling-interactive-push-notifications-in-cordova-applications }
-To receive interactive notifications, follow these steps:
+Gehen Sie wie folgt vor, um interaktive Benachrichtigungen zu empfangen:
 
-1. In the main JavaScript, define the registered categories for interactive notification and pass it to device register call `MFPPush.registerDevice`.
+1. Definieren Sie im Haupt-JavaScript die registrierten Kategorien für interaktive Benachrichtigungen und übergeben Sie sie an den Aufruf `MFPPush.registerDevice` für Geräteregistrierung.
 
    ```javascript
    var options = {
@@ -33,25 +34,25 @@ To receive interactive notifications, follow these steps:
             badge: true,
             sound: true,     
             categories: [{
-                //Category identifier, this is used while sending the notification.
+                // Beim Senden der Benachrichtigung verwendete Kategorie-ID
                 id : "poll", 
 
-                //Optional array of actions to show the action buttons along with the message.    
+                // Optionales Array mit Aktionen, um zusammen mit der Nachricht die Aktionsschaltflächen anzuzeigen	
                 actions: [{
-                    //Action identifier
-                    id: "poll_ok", 
+                    // Aktions-ID
+                    id: "poll_ok",
 
-                    //Action title to be displayed as part of the notification button.
-                    title: "OK", 
+                    // Aktionstitel, der als Teil der Benachrichtigungsschaltfläche angezeigt wird
+                    title: "OK",
 
-                    //Optional mode to run the action in foreground or background. 1-foreground. 0-background. Default is foreground.
+                    // Optionaler Modus für die Ausführung der Aktion im Vorder- oder Hintergrund (1 für Vordergrund, 0 für Hintergrund). Standardmäßig erfolgt die Ausführung im Vordergrund.
                     mode: 1,  
 
-                    //Optional property to mark the action button in red color. Default is false.
+                    // Optionale Eigenschaft für die Darstellung der Aktionsschaltfläche in rot. Standardwert ist 'false'.
                     destructive: false,
 
-                    //Optional property to set if authentication is required or not before running the action.(Screen lock).
-                    //For foreground, this property is always true.
+                    // Optionale Eigenschaft, um festzulegen, ob vor Ausführung der Aktion eine Authentifizierung erforderlich ist (Bildschirmsperre)
+                    // Beim Vordergrundmodus hat diese Eigenschaft immer den Wert 'true'.
                     authenticationRequired: true
                 },
                 {
@@ -62,19 +63,19 @@ To receive interactive notifications, follow these steps:
                     authenticationRequired: true
                 }],
                     
-                //Optional list of actions that is needed to show in the case alert. 
-                //If it is not specified, then the first four actions will be shown.
+                // Optionale Liste mit Aktionen, die im Falle eines Alerts angezeigt werden muss
+                // Fehlt die Liste, werden die ersten vier Aktionen angezeigt.
                 defaultContextActions: ['poll_ok','poll_nok'],
 
-                //Optional list of actions that is needed to show in the notification center, lock screen. 
-                //If it is not specified, then the first two actions will be shown.
+                // Optionale Liste mit Aktionen, die im Lockscreen mit der Benachrichtigungszentrale angezeigt werden muss
+                // Fehlt die Liste, werden die ersten beiden Aktionen angezeigt.
                 minimalContextActions: ['poll_ok','poll_nok'] 
             }]     
         }
    }
    ```
 
-2. Pass the `options` object while registering device for push notifications.
+2. Übergeben Sie das `options`-Objekt während der Registrierung des Geräts für Push-Benachrichtigungen. 
 
    ```javascript
    MFPPush.registerDevice(options, function(successResponse) {
@@ -83,15 +84,17 @@ To receive interactive notifications, follow these steps:
    });  
    ```
 
-## Handling interactive push notifications in native iOS applications
+## Interaktive Benachrichtigungen in nativen iOS-Anwendungen
 {: #handling-interactive-push-notifications-in-native-ios-applications }
-Follow these steps to receive interactive notifications:
+Führen Sie für den Empfang interaktiver Benachrichtigungen
+die folgenden Schritte aus: 
 
-1. Enable the application capability to perform background tasks on receiving the remote notifications. This step is required if some of the actions are background-enabled.
-2. Define registered categories for interactive notifications and pass them as options to `MFPPush.registerDevice`.
+1. Aktivieren Sie die Anwendungsfunktion für die Ausführung von Hintergrundtasks beim Empfang der fernen Benachrichtigungen. Dieser Schritt ist erforderlich, wenn
+einige der Aktionen im Hintergrund ausgeführt werden können.
+2. Definieren Sie registrierte Kategorien für interaktive Benachrichtigungen und übergeben Sie sie als Optionen an `MFPPush.registerDevice`.
 
    ```swift
-   //define categories for Interactive Push
+   // Kategorien für interaktives Push definieren
    let acceptAction = UIMutableUserNotificationAction()
    acceptAction.identifier = "OK"
    acceptAction.title = "OK"
@@ -110,6 +113,6 @@ Follow these steps to receive interactive notifications:
 
    let options = ["alert":true, "badge":true, "sound":true, "categories": categories]
 
-   // Register device
+   // Gerät registrieren
     MFPPush.sharedInstance().registerDevice(options as [NSObject : AnyObject], completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
    ```

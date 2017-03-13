@@ -1,27 +1,28 @@
 ---
 layout: tutorial
-title: Data Retention and Purging
-breadcrumb_title: Data Retention and Purging
+title: Datenaufbewahrung und -bereinigung
+breadcrumb_title: Datenaufbewahrung und -bereinigung
 relevantTo: [ios,android,javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-{{ site.data.keys.mf_analytics }} data is stored on the server and is available for reporting until the data is purged. You can control which event-type data is retained or purged. The data can be purged at regular intervals, or manually.
+MobileFirst-Analytics-Daten werden auf dem Server gespeichert und stehen bis zu ihrer Löschung für die Berichterstellung zur Verfügung. Sie können steuern, welche Ereignistypdaten aufbewahrt oder gelöscht werden. Sie können Daten in regelmäßigen Intervallen oder manuell bereinigen. 
 
-## Configuring data retention from the Analytics Console
+## Datenaufbewahrung in der Analytics Console konfigurieren
 {: #configuring-data-retention-from-the-analytics-console }
 
-1. From the {{ site.data.keys.mf_analytics_console }}, click the **Administration** icon (<img  alt="wrench icon" style="margin:0;display:inline" src="wrench.png"/>).
-2. Choose the **Settings** tab.
+1. Klicken Sie in der {{ site.data.keys.mf_analytics_console }} auf das Symbol **Verwaltung** (<img  alt="Schraubenschlüsselsymbol" style="margin:0;display:inline" src="wrench.png"/>).
+2. Wählen Sie das Register **Einstellungen** aus. 
 
-   ![Data retention configuration](analytics_console_data_retention.png)
+   ![Datenaufbewahrung konfigurieren](analytics_console_data_retention.png)
 
-   * Select the **Discard** radio button to delete data immediately.
-   * In the **Keep data for** column, choose the number of days to retain, or leave the default **Keep data indefinitely** value.
+   * Wählen Sie das Optionsfeld **Löschen** aus, wenn Daten sofort gelöscht werden sollen. 
+   * Wählen Sie in der Spalte **Daten aufbewahren für** die Anzahl der Tage für die Aufbewahrung aus oder übernehmen Sie den Standardwert
+**Daten ewig aufbewahren**. 
 
-3. Click **Save Changes**.
+3. Klicken Sie auf **Änderungen speichern**.
 
-The new retention policy is in place.
+Die neue Aufbewahrungsrichtlinie ist etabliert. 

@@ -1,49 +1,58 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Android
+title: Push-Benachrichtigungen in Android
 breadcrumb_title: Android
 relevantTo: [android]
 downloads:
-  - name: Download Android Studio project
+  - name: Android-Studio-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Before Android applications are able to handle any received push notifications, support for Google Play Services needs to be configured. Once an application has been configured, {{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in Android applications.
+Sie müssen Unterstützung für Google Play Services konfigurieren, damit Android-Anwendungen empfangene Push-Benachrichtigungen handhaben können. Wenn eine Anwendung konfiguriert ist,
+kann die {{ site.data.keys.product_adj }}-API für Benachrichtigungen verwendet werden,
+um Geräte zu registrieren und Geräteregistrierungen aufzuheben und um
+Tags zu abonnieren und Tagabonnements zu beenden. In diesem Lernprogramm werden Sie lernen, wie
+Push-Benachrichtigungen in Android-Anwendungen gehandhabt werden. 
 
-**Prerequisites:**
+**Voraussetzungen: **
 
-* Make sure you have read the following tutorials:
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android)
-    * [Push Notifications Overview](../../)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* Stellen Sie sicher, dass Sie die folgenden Lernprogramme durchgearbeitet haben: 
+    * [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/#installing-a-development-environment)
+    * [SDK der {{ site.data.keys.product }} zu Android-Anwendungen hinzufügen](../../../application-development/sdk/android)
+    * [Übersicht über Push-Benachrichtigungen](../../)
+* {{ site.data.keys.mf_server }} wird lokal oder fern ausgeführt. 
+* Die {{ site.data.keys.mf_cli }} ist auf der Entwicklerworkstation installiert. 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Notifications configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
-* [Sample application](#sample-application)
+* [Benachrichtigungskonfiguration](#notifications-configuration)
+* [API für Benachrichtigungen](#notifications-api)
+* [Handhabung von Push-Benachrichtigungen](#handling-a-push-notification)
+* [Beispielanwendung](#sample-application)
 
-## Notifications Configuration
+## Benachrichtigungskonfiguration
 {: #notifications-configuration }
-Create a new Android Studio project or use an existing one.  
-If the {{ site.data.keys.product_adj }} Native Android SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to Android applications](../../../application-development/sdk/android) tutorial.
+Erstellen Sie ein neues Android-Studio-Projekt oder verwenden Sie ein vorhandenes Projekt.   
+Wenn das native {{ site.data.keys.product_adj }}-Android-SDK noch nicht im Projekt enthalten ist,
+folgen Sie den Anweisungen im Lernprogramm [SDK der {{ site.data.keys.product }} zu Android-Anwendungen hinzufügen](../../../application-development/sdk/android).
 
-### Project setup
+
+
+### Projekt-Setup
 {: #project-setup }
-1. In **Android → Gradle scripts**, select the **build.gradle (Module: app)** file and add the following lines to `dependencies`:
+1. Wählen Sie unter **Android → Gradle scripts** die Datei
+**build.gradle (Module: app)** aus und fügen Sie zu `dependencies` die folgenden Zeilen hinzu:
 
    ```bash
    com.google.android.gms:play-services-gcm:9.0.2
    ```
-   - **Note:** there is a [known Google defect](https://code.google.com/p/android/issues/detail?id=212879) preventing use of the latest Play Services version (currently at 9.2.0). Use a lower version.
+   - **Hinweis:** Es gibt einen [bekannten Google-Defect](https://code.google.com/p/android/issues/detail?id=212879), der
+die Verwendung der neuesten Play-Services-Version (zurzeit Version 9.2.0) verhindert. Verwenden Sie eine ältere Version. 
 
-   And:
+   Fügen Sie außerdem folgende Zeilen hinzu: 
 
    ```xml
    compile group: 'com.ibm.mobile.foundation',
@@ -53,27 +62,27 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
             transitive: true
    ```
     
-   Or in a single line:
+   Oder in einer einzelnen Zeile: 
 
    ```xml
    compile 'com.ibm.mobile.foundation:ibmmobilefirstplatformfoundationpush:8.0.+'
    ```
 
-2. In **Android → app → manifests**, open the `AndroidManifest.xml` file.
-	* Add the following permissions to the top the `manifest` tag:
+2. Öffnen Sie unter **Android → app → manifests** die Datei `AndroidManifest.xml`. 
+	* Fügen Sie am Anfang des Tags `manifest` die folgenden Berechtigungen hinzu: 
 
 	  ```xml
-	  <!-- Permissions -->
-      <uses-permission android:name="android.permission.WAKE_LOCK" />
+	  <!-- Berechtigungen -->
+      hj<uses-permission android:name="android.permission.WAKE_LOCK" />
 
-      <!-- GCM Permissions -->
+      <!-- GCM-Berechtigungen -->
       <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
       <permission
     	    android:name="your.application.package.name.permission.C2D_MESSAGE"
     	    android:protectionLevel="signature" />
       ```
       
-	* Add the following to the `application` tag:
+	* Fügen Sie Folgendes zum Tag `application` hinzu: 
 
 	  ```xml
       <!-- GCM Receiver -->
@@ -104,14 +113,14 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
       </service>
-      
+
       <activity android:name="com.ibm.mobilefirstplatform.clientsdk.android.push.api.MFPPushNotificationHandler"
            android:theme="@android:style/Theme.NoDisplay"/>
 	  ```
 
-	  > **Note:** Be sure to replace `your.application.package.name` with the actual package name of your application.
+	  > **Hinweis:** Sie müssen `your.application.package.name` durch den Paketnamen Ihrer Anwendung ersetzen. 
 
-    * Add the following `intent-filter` to the application's activity.
+    * Fügen Sie den folgenden `intent-filter` zur Aktivität der Anwendung hinzu. 
       
       ```xml
       <intent-filter>
@@ -120,97 +129,102 @@ If the {{ site.data.keys.product_adj }} Native Android SDK is not already presen
       </intent-filter>
       ```
       
-## Notifications API
+## API für Benachrichtigungen
 {: #notifications-api }
-### MFPPush Instance
+### MFPPush-Instanz
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be done by creating a class level field such as `private MFPPush push = MFPPush.getInstance();`, and then calling `push.<api-call>` throughout the class.
+Alle API-Aufrufe müssen für eine Instanz von `MFPPush` ausgeführt werden. Zu diesem Zweck können Sie
+ein Feld auf Klassenebene erstellen, z. B. `private MFPPush push = MFPPush.getInstance();`, und dann
+in der gesamten Klasse `push.<API-Aufruf>` aufrufen. 
 
-Alternatively you can call `MFPPush.getInstance().<api_call>` for each instance in which you need to access the push API methods.
+Alternativ dazu können Sie `MFPPush.getInstance().<API-Aufruf>` für jede Instanz aufrufen,
+in der Sie auf die Push-API-Methoden zugreifen müssen. 
 
-### Challenge Handlers
+### Abfrage-Handler
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+Wenn der Bereich `push.mobileclient` einer **Sicherheitsüberprüfung** zugeordnet ist,
+müssen Sie sicherstellen, dass passende **Abfrage-Handler** registriert sind, bevor Push-APIs verwendet werden. 
 
-> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/android) tutorial.
+> Weitere Informationen zu Abfrage-Handlern enthält das Lernprogramm [Berechtigungsnachweise validieren](../../../authentication-and-security/credentials-validation/android).
 
-### Client-side
+### Clientseite
 {: #client-side }
-| Java Methods | Description |
+
+| Java-Methoden | Beschreibung |
 |-----------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize(Context context);`](#initialization) | Initializes MFPPush for supplied context. |
-| [`isPushSupported();`](#is-push-supported) | Does the device support push notifications. |
-| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registers the device with the Push Notifications Service. |
-| [`getTags(MFPPushResponseListener)`](#get-tags) | Retrieves the tag(s) available in a push notification service instance. |
-| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Subscribes the device to the specified tag(s). |
-| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Retrieves all tags the device is currently subscribed to. |
-| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Unsubscribes from a particular tag(s). |
-| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Unregisters the device from the Push Notifications Service |
+| [`initialize(Context context);`](#initialization) | Initialisiert MFPPush für den angegebenen Kontext |
+| [`isPushSupported();`](#is-push-supported) | Unterstützt das Gerät Push-Benachrichtigungen? |
+| [`registerDevice(JSONObject, MFPPushResponseListener);`](#register-device) | Registriert das Gerät beim Push-Benachrichtigungsservice |
+| [`getTags(MFPPushResponseListener)`](#get-tags) | Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab |
+| [`subscribe(String[] tagNames, MFPPushResponseListener)`](#subscribe) | Richtet das Geräteabonnement für die angegebenen Tags ein |
+| [`getSubscriptions(MFPPushResponseListener)`](#get-subscriptions) | Ruft die derzeit vom Gerät abonnierten Tags ab  |
+| [`unsubscribe(String[] tagNames, MFPPushResponseListener)`](#unsubscribe) | Beendet das Abonnement bestimmter Tags |
+| [`unregisterDevice(MFPPushResponseListener)`](#unregister) | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf |
 
-#### Initialization
+#### Initialisierung
 {: #initialization }
-Required for the client application to connect to MFPPush service with the right application context.
+Die Initialisierung ist erforderlich, damit die Clientanwendung mit dem richtigen Anwendungskontext eine Verbindung zum Service MFPPush herstellen kann. 
 
-* The API method should be called first before using any other MFPPush APIs.
-* Registers the callback function to handle received push notifications.
+* Die API-Methode muss aufgerufen werden, bevor andere MFPPush-APIs verwendet werden.
+* Die Callback-Funktion wird für die Handhabung empfangener Push-Benachrichtigungen registriert. 
 
 ```java
 MFPPush.getInstance().initialize(this);
 ```
 
-#### Is push supported
+#### Wird Push unterstützt?
 {: #is-push-supported }
-Checks if the device supports push notifications.
+Es wird überprüft, ob das Gerät Push-Benachrichtigungen unterstützt. 
 
 ```java
 Boolean isSupported = MFPPush.getInstance().isPushSupported();
 
 if (isSupported ) {
-    // Push is supported
+    // Push wird unterstützt.
 } else {
-    // Push is not supported
+    // Push wird nicht unterstützt.
 }
 ```
 
-#### Register device
+#### Gerät registrieren
 {: #register-device }
-Register the device to the push notifications service.
+Registrieren Sie das Gerät beim Push-Benachrichtigungsservice.
 
 ```java
 MFPPush.getInstance().registerDevice(null, new MFPPushResponseListener<String>() {
     @Override
     public void onSuccess(String s) {
-        // Successfully registered
+        // Erfolgreich registriert
     }
 
     @Override
     public void onFailure(MFPPushException e) {
-        // Registration failed with error
+        // Registrierung mit Fehler fehlgeschlagen
     }
 });
 ```
 
-#### Get tags
+#### Tags abrufen
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+Rufen Sie alle verfügbaren Tags vom Push-Benachrichtigungsservice ab. 
 
 ```java
 MFPPush.getInstance().getTags(new MFPPushResponseListener<List<String>>() {
     @Override
     public void onSuccess(List<String> strings) {
-        // Successfully retrieved tags as list of strings
+        // Tags erfolgreich als Liste von Zeichenfolgen abgerufen
     }
 
     @Override
     public void onFailure(MFPPushException e) {
-        // Failed to receive tags with error
+        // Empfang von Tags mit Fehler fehlgeschlagen
     }
 });
 ```
 
-#### Subscribe
+#### Abonnement
 {: #subscribe }
-Subscribe to desired tags.
+Abonnieren Sie die gewünschten Tags. 
 
 ```java
 String[] tags = {"Tag 1", "Tag 2"};
@@ -218,37 +232,37 @@ String[] tags = {"Tag 1", "Tag 2"};
 MFPPush.getInstance().subscribe(tags, new MFPPushResponseListener<String[]>() {
     @Override
     public void onSuccess(String[] strings) {
-        // Subscribed successfully
+        // Abonnement erfolgreich
     }
 
     @Override
     public void onFailure(MFPPushException e) {
-        // Failed to subscribe
+        // Abonnement fehlgeschlagen
     }
 });
 ```
 
-#### Get subscriptions
+#### Abonnements abrufen
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+Rufen Sie die derzeit vom Gerät abonnierten Tags ab. 
 
 ```java
 MFPPush.getInstance().getSubscriptions(new MFPPushResponseListener<List<String>>() {
     @Override
     public void onSuccess(List<String> strings) {
-        // Successfully received subscriptions as list of strings
+        // Abonnements erfolgreich als Liste von Zeichenfolgen empfangen
     }
 
     @Override
     public void onFailure(MFPPushException e) {
-        // Failed to retrieve subscriptions with error
+        // Abruf der Abonnements mit Fehler fehlgeschlagen
     }
 });
 ```
 
-#### Unsubscribe
+#### Abonnement beenden
 {: #unsubscribe }
-Unsubscribe from tags.
+Beenden Sie das Tagabonnement. 
 
 ```java
 String[] tags = {"Tag 1", "Tag 2"};
@@ -256,75 +270,78 @@ String[] tags = {"Tag 1", "Tag 2"};
 MFPPush.getInstance().unsubscribe(tags, new MFPPushResponseListener<String[]>() {
     @Override
     public void onSuccess(String[] strings) {
-        // Unsubscribed successfully
+        // Beendigung des Abonnements erfolgreich
     }
 
     @Override
     public void onFailure(MFPPushException e) {
-        // Failed to unsubscribe
+        // Beendigung des Abonnements fehlgeschlagen
     }
 });
 ```
 
-#### Unregister
+#### Registrierung aufheben
 {: #unregister }
-Unregister the device from push notification service instance.
+Sie können die Registrierung des Geräts bei der Instanz des Push-Benachrichtigungsservice
+aufheben. 
 
 ```java
 MFPPush.getInstance().unregisterDevice(new MFPPushResponseListener<String>() {
     @Override
     public void onSuccess(String s) {
         disableButtons();
-        // Unregistered successfully
+        // Aufhebung der Registrierung erfolgreich
     }
 
     @Override
     public void onFailure(MFPPushException e) {
-        // Failed to unregister
+        // Aufhebung der Registrierung fehlgeschlagen
     }
 });
 ```
 
-## Handling a push notification
+## Handhabung von Push-Benachrichtigungen
 {: #handling-a-push-notification }
-In order to handle a push notification you will need to set up a `MFPPushNotificationListener`.  This can be achieved by implementing one of the following methods.
+Für die Handhabung von Push-Benachrichtigungen müssen Sie einen `MFPPushNotificationListener` einrichten. Zu diesem Zweck können Sie eine der
+folgenden Methoden implementieren. 
 
-### Option One
+### Option eins
 {: #option-one }
-In the activity in which you wish the handle push notifications.
+Führen Sie in der Aktivität, in der Sie Push-Benachrichtigungen behandeln möchten, die folgenden Schritte aus: 
 
-1. Add `implements MFPPushNofiticationListener` to the class declaration.
-2. Set the class to be the listener by calling `MFPPush.getInstance().listen(this)` in the `onCreate` method.
-2. Then you will need to add the following *required* method:
+1. Fügen Sie `implements MFPPushNofiticationListener` zur Klassendeklaration hinzu. 
+2. Definieren Sie die Klasse als Listener, indem Sie
+`MFPPush.getInstance().listen(this)` in der Methode `onCreate` aufrufen. 
+2. Anschließend müssen Sie die folgende *erforderliche* Methode hinzufügen: 
 
    ```java
    @Override
    public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
-        // Handle push notification here
+        // Hier Behandlung von Push-Benachrichtigungen
    }
    ```
 
-3. In this method you will receive the `MFPSimplePushNotification` and can handle the notification for the desired behavior.
+3. In dieser Methode werden Sie `MFPSimplePushNotification` empfangen und können für die Benachrichtigung das gewünschte Verhalten festlegen. 
 
-### Option Two
+### Option zwei
 {: #option-two }
-Create a listener by calling `listen(new MFPPushNofiticationListener())` on an instance of `MFPPush` as outlined below:
+Erstellen Sie einen Listener, indem Sie wie folgt `listen(new MFPPushNofiticationListener())` für eine Instanz von `MFPPush` aufrufen: 
 
 ```java
 MFPPush.getInstance().listen(new MFPPushNotificationListener() {
     @Override
     public void onReceive(MFPSimplePushNotification mfpSimplePushNotification) {
-        // Handle push notification here
-    }
-});
+        // Hier Behandlung von Push-Benachrichtigungen
+   }
+   });
 ```
 
-<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
-## Sample application
+<img alt="Beispielanwendung" src="notifications-app.png" style="float:right"/>
+## Beispielanwendung
 {: #sample-application }
 
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80) the Android Studio project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsAndroid/tree/release80), um das Android-Studio-Projekt herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 

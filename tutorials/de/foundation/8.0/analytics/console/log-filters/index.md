@@ -1,20 +1,27 @@
 ---
 layout: tutorial
-title: Configuring Log Filters
-breadcrumb_title: Log Filters
+title: Protokollfilter konfigurieren
+breadcrumb_title: Protokollfilter
 relevantTo: [ios,android,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-Administrators can control the {{ site.data.keys.product_adj }} client SDK log capture and levels from the **{{ site.data.keys.mf_console }} → [your application] → [version] → Log Filters**.  
-Through `Log Filters` you can create a filter level that you can log at. The log level can be set globally (all logger instances) or for a specific package or packages.
+Administratoren können in der
+**{{ site.data.keys.mf_console }} unter [Ihre Anwendung] → [Version] → Protokollfilter** die Protokollerfassung und die Protokollstufe für das
+{{ site.data.keys.product_adj }}-Client-SDK steuern.  
+Mithilfe der Option `Protokollfilter` können Sie eine Filterstufe für die Protokollierung erstellen. Die
+Protokollstufe kann global
+(für alle Logger-Instanzen) oder für bestimmte Pakete festgelegt werden. 
 
-<img class="gifplayer"  alt="Creating a log filter" src="add-log-filter.png"/>
+<img class="gifplayer"  alt="Protokollfilter erstellen" src="add-log-filter.png"/>
 
-For the application to fetch the configuration overrides that are set on the server, the `updateConfigFromServer` method must be called from a place in the code that is regularly run, such as in the app lifecycle callbacks.
+Damit die Anwendung die auf dem Server festgelegten
+prioritären Konfigurationswerte abruft, muss die Methode
+`updateConfigFromServer`
+von einem Abschnitt des Codes aufgerufen werden, der regulär ausgeführt wird, z. B. von den App-Lebenszyklus-Callbacks. 
 
 
 #### Android
@@ -45,12 +52,16 @@ WL.Logger.updateConfigFromServer();
 ibmmfpfanalytics.logger.updateConfigFromServer();
 ```
 
-The `Logger` configuration values that the server returns take precedence over any values that are set on the client side. When the Client Log Profile is removed and the client tries to retrieve the Client Log Profile, the client receives an empty payload. In this case, the `Logger` configuration defaults to what was originally configured on the client.
+Die vom Server zurückgegebenen Konfigurationswerte für `Logger` haben Vorrang for allen auf der Clientseite festgelegten Werten. Wenn das Clientprotokollprofil entfernt wird und der Client versucht, das Clientprotokollprofil abzurufen, empfängt der Client leere Nutzdaten. Die `Logger`-Konfiguration wird in dem Fall auf die ursprünglich auf dem Client konfigurierten Werte gesetzt. 
 
-## Forwarding server logs
+## Serverprotokolle weiterleiten
 {: #forwarding-server-logs }
 
-The {{ site.data.keys.mf_console }} also gives the server administrator the ability to persist logs and send those logs to the {{ site.data.keys.mf_analytics_console }}.
+In der {{ site.data.keys.mf_console }} kann der Serveradministrator
+Protokolle auf Platte speichern und diese Protokolle
+an die {{ site.data.keys.mf_analytics_console }} senden.
 
-To forward server logs, navigate to the Runtime **Settings** screen and specify the logger package under **Additional Packages**.  
-The collected logs can then be viewed in the {{ site.data.keys.mf_analytics_console_short }}. This is useful for a user to take advantage of triaging adapter logs in the {{ site.data.keys.mf_analytics_console_short }} without having to collect all server logs.
+Wenn Sie Serverprotokolle weiterleiten möchten, navigieren Sie zur
+Anzeige **Laufzeiteinstellungen** und geben Sie unter **Zusätzliche Pakete** das Logger-Paket an.  
+Die erfassten Protokolle können in der {{ site.data.keys.mf_analytics_console_short }} angezeigt werden. Der Benutzer
+kann also Adapterprotokolle in der {{ site.data.keys.mf_analytics_console_short }} sichten, ohne alle Serverprotokolle erfassen zu müssen. 

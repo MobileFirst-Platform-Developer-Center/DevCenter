@@ -7,71 +7,101 @@ relevantTo: [ios,android,javascript]
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} collects data from app-to-server activities, client logs, client crashes, and server-side logs from the {{ site.data.keys.mf_server }} and client devices. The collected data then provides a rich view into both the mobile landscape and server infrastructure. Included are: default reports of user retention, crash reports, device type and operating system breakdowns, custom data and custom charts, network usage, push notification results, in-app behavior, debug log collection, and more.
+{{ site.data.keys.mf_analytics_full }} erfasst Daten von Aktivitäten zwischen App und Server, aus Clientprokollen, von Clientabstürzen sowie aus
+clientseitigen Protokollen von {{ site.data.keys.mf_server }} und von Clientgeräten. Anhand der erfassten Daten erhalten Sie
+tiefe Einblicke in die mobile Umgebung und die Serverinfrastruktur. Zum Lieferumfang gehören Standardberichte zur Kundenbindung, Absturzberichte, Berichte mit Aufgliederungen nach Gerätetyp und Betriebssystem, mit kundenspezifischen Daten
+und Diagrammen, Berichte zur Netznutzung, Berichte mit den Ergebnissen von Push-Benachrichtigungen, Berichte zum App-internen Verhalten, die Erfassung von Debug-Protollen und vieles mehr. 
 
-{{ site.data.keys.mf_server }} comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems. In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client-side and on the {{ site.data.keys.mf_analytics_server }}. You choose the verbosity and data retention policy of the reported events, set conditional alerts, build custom charts and engage with new data.
+{{ site.data.keys.mf_server }} ist bei Lieferung für die Erstellung von Berichten zur Netzinfrastruktur
+instrumentiert. Wenn der Client und der Server ihre Netznutzung melden, werden die Daten zusammengefasst. Sie können dann ausmachen, ob die Verantwortung für eine schwache Leistung beim Netz, beim Server oder bei den
+Back-End-Systemen liegt. Außerdem können Sie steuern,
+auf welche Logger-Daten Analytics zugreift, indem Sie Filter auf der Clientseite und für den
+{{ site.data.keys.mf_analytics_server }} definieren. Sie wählen aus, wie ausführlich die Ereignisse gemeldet werden,
+legen die Datenaufbewahrungsrichtlinie, definieren bedingte Alerts, erstellen kundenspezifische Diagramme und beschäftigen sich mit neuen Daten. 
 
-#### Platform support
+#### Plattformunterstützung
 {: #platform-support }
 
-{{ site.data.keys.mf_analytics }} supports:
+{{ site.data.keys.mf_analytics }} unterstützt Folgendes: 
 
-* Native iOS and Android clients
-* Cordova applications (iOS, Android)
-* Web applications
-* Support is **not available** for Windows 8.1 Universal or Windows 10 UWP
+* Native iOS- und Android-Clients
+* Cordova-Anwendungen (iOS, Android)
+* Webanwendungen
+* Es gibt **keine** Unterstützung für Windows 8.1 Universal oder Windows 10 UWP. 
 
-IBM {{ site.data.keys.mf_server }} comes pre-instrumented with network infrastructure reporting. When both the client and server are reporting their network usage, the data is aggregated so you can attribute poor performance to the network, the server, or the back-end systems.
+IBM {{ site.data.keys.mf_server }} ist bei Lieferung für die Erstellung von Berichten zur Netzinfrastruktur
+instrumentiert. Wenn der Client und der Server ihre Netznutzung mleden, werden die Daten zusammengefasst. Sie können dann ausmachen, ob die Verantwortung für eine schwache Leistung beim Netz, beim Server oder bei den
+Back-End-Systemen liegt. 
 
-## Client development
+## Cliententwicklung
 {: #client-development }
 
-Two client classes work together to send raw data to the server: the Logger and Analytics classes.
+Zwei Clientklassen (Logger und Analytics) arbeiten zusammen, um Rohdaten an den Server zu senden. 
 
-### The Analytics API
+### Analytics-API
 {: #the-analytics-api }
 
-The Analytics client API collects data on a wide range of events and sends them to the {{ site.data.keys.mf_analytics_server }}.
-> Learn more in the [Analytics Client Development](analytics-api) tutorial.
+Die Analytics-Client-API erfasst Daten zu einer Vielzahl von Ereignissen
+und sendet die Daten an {{ site.data.keys.mf_analytics_server }}.
+> Weitere Informationen enthält das Lernprogramm [Analytics-Cliententwicklung](analytics-api).
 
-### The Logger API
+### Logger-API
 {: #the-logger-api }
 
-The Logger functions as a standard logger. From the client you can also send logger data to the {{ site.data.keys.mf_analytics_server }} at any logging level. However, the server configuration controls what level of logging requests are allowed. Requests sent below this threshold are ignored.
+Der Logger fungiert als Standard-Logger. Vom Client können Sie auch Logger-Daten für jede
+Protokollierungsstufe an {{ site.data.keys.mf_analytics_server }}
+senden. Ab welcher Stufe Protokollierungsanforderungen zulässig sind, wird jedoch von der Serverkonfiguration gesteuert. Anforderungen unterhalb dieser Stufe werden ignoriert. 
 
-Logging levels need to be controlled to balance two needs: the need to collect information and the need to limit the quantity of data to fit limited storage ability.
+Die Protokollierungsstufen müssen kontrolliert werden, um zwei Anforderungen ins Gleichgewicht zu bringen. Zum einen besteht ein Bedarf, Informationen zu erfassen, und zum anderen
+gibt es die Anforderung, die Datenmenge zu beschränken, weil die Speichermöglichkeiten begrenzt sind. 
 
-> Learn more in the [Client Logging](../application-development/client-side-log-collection/) tutorial.
+> Weitere Informationen enthält das Lernprogramm [Clientprotokollierung](../application-development/client-side-log-collection/).
 
-In addition, you can control which logger data is accessed and used by analytics by defining filters both on the client side and on the {{ site.data.keys.mf_analytics_server }}.
 
-## The Analytics and Operations Consoles
+
+Außerdem können Sie steuern,
+auf welche Logger-Daten Analytics zugreift, indem Sie Filter auf der Clientseite und für den
+{{ site.data.keys.mf_analytics_server }} definieren.
+
+## Analytics Console und Operations Console
 {: #the-analytics-and-operations-consoles }
 
-{{ site.data.keys.product_full }} provides the Analytics and Operations consoles. The {{ site.data.keys.mf_console_full }} configures how the Analytics Server works with the client applications. The {{ site.data.keys.mf_analytics_console_full }} configures and displays the various Analytics reports.
+Die {{ site.data.keys.product_full }} stellt eine Analytics Console und eine Operations Console bereit. In der
+{{ site.data.keys.mf_console_full }} wird definiert, wie Analytics Server mit den Clientanwendungen arbeitet. In der
+{{ site.data.keys.mf_analytics_console_full }} werden die verschiedenen Analytics-Berichte konfiguriert und angezeigt. 
 
-> Learn more in the [Operations Console](console) tutorial.
+> Weitere Informationen enthält das Lernprogramm [Operations Console](console).
 
-> Learn more about creating custom charts with the Analytics console in the [Custom Charts](console/custom-charts) tutorial.
 
-## The Analytics Server
+
+> Weitere Informationen zur Erstellung kundenspezifischer Diagramme in der Analytics Console enthält das Lernprogramm
+[Kundenspezifische Diagramme](console/custom-charts). 
+
+## Analytics Server
 {: #the-analytics-server }
 
-The Analytics Server is available in both the development and production environments.
+Analytics Server ist sowohl in der Entwicklungs- als auch in der Produktionsumgebung verfügbar.
 
-For development, the Analytics Server is installed together with the {{ site.data.keys.mf_dev_kit }}.  For more information, see [Setting up the {{ site.data.keys.product_adj }} development environment](../installation-configuration/development/mobilefirst/). Once the kit is installed, the {{ site.data.keys.mf_analytics_console_short }} is available for your development needs.
+Für die Entwicklung wird Analytics Server zusammen mit dem {{ site.data.keys.mf_dev_kit }} installiert. Weitere Informationen
+finden Sie unter
+[{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../installation-configuration/development/mobilefirst/). Wenn das Kit installiert ist,
+steht die {{ site.data.keys.mf_analytics_console_short }} für Ihre Entwicklungsaufgaben zur Verfügung. 
 
-For production, there are different installation and configuration options available, according to your available infrastructure, business needs, system design, etc. For more information, see [Setting up the {{ site.data.keys.product_adj }} development environment](../installation-configuration/production/analytics/).
+Für die Produktion sind je nach
+Infrastruktur, Geschäftsanforderungen,
+Systemdesign usw. andere Installations- und Konfigurationsoptionen verfügbar. Weitere Informationen
+finden Sie unter [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../installation-configuration/production/analytics/).
 
-{{ site.data.keys.mf_analytics }} uses Elasticsearch. [Learn how to use Elasticsearch](elasticsearch) in {{ site.data.keys.product }}.
+{{ site.data.keys.mf_analytics }} verwendet Elasticsearch. [Informieren Sie sich über die
+Nutzung von Elasticsearch](elasticsearch) in der {{ site.data.keys.product }}.
 
-## Troubleshooting
+## Fehlerbehebung
 {: #troubleshotting }
 
-For information on troubleshooting {{ site.data.keys.mf_analytics }}, see [Analytics Troubleshooting](../troubleshooting/analytics/).
+Informationen zur Fehlerbehebung für {{ site.data.keys.mf_analytics }} finden Sie unter [Behebung von Analytics-Fehlern](../troubleshooting/analytics/).
 
-## What to read next
+## Nächste Abschnitte
 {: #what-to-read-next }

@@ -1,30 +1,34 @@
 ---
 layout: tutorial
-title: Push Notifications
-breadcrumb_title: Push Notifications
+title: Push-Benachrichtigungen
+breadcrumb_title: Push-Benachrichtigungen
 relevantTo: [ios,android,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-Once {{ site.data.keys.mf_analytics }} support is set up for Push Notifications  (see [Setting Up Analytics Support](../../../notifications/analytics/)), you can create reports about Push usage.
+Wenn Sie die MobileFirst-Analytics-Unterstützung für Push-Benachrichtigungen eingerichtet haben (siehe
+[Analytics-Unterstützung einrichten](../../../notifications/analytics/)), können Sie Berichte über die Push-Verwendung erstellen. 
 
-## Push reports
+## Push-Berichte
 {: #push-reports }
 
-Push Notifications reports become available after {{ site.data.keys.mf_analytics_short }} support is configured, and Push events are sent to the {{ site.data.keys.mf_analytics_short }} service.
+Berichte über Push-Benachrichtigungen sind verfügbar,
+wenn die {{ site.data.keys.mf_analytics_short }}-Unterstützung konfiguriert ist und Push-Ereignisse
+an den {{ site.data.keys.mf_analytics_short }}-Service gesendet werden. 
 
-1. In the {{ site.data.keys.mf_analytics_console }}, choose the **Infrastructure** section from the navigation bar.
-2. Choose the **Push Notifications** tab.
+1. Wählen Sie in der Navigationsleiste der {{ site.data.keys.mf_analytics_console }} den Abschnitt
+**Infrastruktur** aus. 
+2. Wählen Sie das Register **Push-Benachrichtigungen** aus. 
 
-Two reports types are displayed:
+Zwei Berichtstypen werden angezeigt: 
 
-**Notification Requests**  
-The number of requests is displayed according to the requested period, applications, and versions, broken down by date.
+**Benachrichtigungsanforderungen**  
+Die Anzahl der Anforderungen für den angeforderten Zeitraum sowie die angegebenen Anwendungen und Versionen wird aufgegliedert nach Datum angezeigt. 
 
-**Notification by Mediator**  
-The number of requests is broken down by app platform, for the requested period, applications, and versions.
+**Benachrichtigungen nach Mediator**  
+Die Anzahl der Anforderungen wird den angeforderten Zeitraum sowie die angegebenen Anwendungen und Versionen nach App-Plattform aufgegliedert. 
 
-![Push Notification reports](pushNotifications.png)
+![Berichte über Push-Benachrichtigungen](pushNotifications.png)

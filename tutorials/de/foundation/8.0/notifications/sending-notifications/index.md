@@ -1,107 +1,134 @@
 ---
 layout: tutorial
-title: Sending Notifications
+title: Benachrichtigungen senden
 relevantTo: [ios,android,windows,cordova]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-In order to send push or SMS notifications to iOS, Android or Windows devices, the {{ site.data.keys.mf_server }} first needs to be configured with the GCM details for Android, an APNS certificate for iOS or WNS credentials for Windows 8.1 Universal / Windows 10 UWP.
-Notifications can then be sent to: all devices (broadcast), devices that registered to specific tags, a single Device ID,  User Ids, only iOS devices, only Android devices, only Windows devices, or based on the authenticated user.
+Für das Senden von Push- oder SMS-Benachrichtigungen an
+iOS-, Android- oder Windows-Geräte muss zunächst {{ site.data.keys.mf_server }} mit den GCM-Details für Android, einem APNS-Zertifikat für
+iOS oder mit WNS-Berechtigungsnachweisen für Windows 8.1 Universal / Windows 10 UWP konfiguriert werden.
+Anschließend können Benachrichtigungen an alle Geräte gesendet werden (Broadcast), an Geräte, die für bestimmte Tags registriert sind,
+an eine einzelne Geräte-ID, an Benutzer-IDs, nur an iOS-Geräte, nur an Android-Geräte, nur an Windows-Geräte
+oder augehend vom authentifizierten Benutzer. 
 
-**Prerequisite**: Make sure to read the [Notifications overview](../) tutorial.
+**Voraussetzung**: Arbeiten Sie das Lernprogramm [Benachrichtigungen im Überblick](../) durch. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Setting-up Notifications](#setting-up-notifications)
+* [Benachrichtigungen einrichten](#setting-up-notifications)
     * [Google Cloud Messaging / Firebase Cloud Messaging](#google-cloud-messaging--firebase-cloud-messaging)
     * [Apple Push Notifications Service](#apple-push-notifications-service)
     * [Windows Push Notifications Service](#windows-push-notifications-service)
-    * [SMS Notification Service](#sms-notification-service)
-    * [Scope mapping](#scope-mapping)
-    * [Authenticated Notifications](#authenticated-notifications)
-* [Defining Tags](#defining-tags)
-* [Sending Notifications](#sending-notifications)    
+    * [SMS-Benachrichtigungsservice](#sms-notification-service)
+    * [Bereichszuordnung](#scope-mapping)
+    * [Authentifizierte Benachrichtigungen](#authenticated-notifications)
+* [Tags definieren](#defining-tags)
+* [Benachrichtigungen senden](#sending-notifications)    
     * [{{ site.data.keys.mf_console }}](#mobilefirst-operations-console)
-    * [REST APIs](#rest-apis)
-    * [Customizing Notifications](#customizing-notifications)
-* [Proxy Support](#proxy-support)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+    * [REST-APIs](#rest-apis)
+    * [Benachrichtigungen anpassen](#customizing-notifications)
+* [Proxyunterstützung](#proxy-support)
+* [Nächste Lernprogramme](#tutorials-to-follow-next)
 
-## Setting up Notifications
+## Benachrichtigungen einrichten
 {: #setting-up-notifications }
-Enabling notifications support involves several configuration steps in both {{ site.data.keys.mf_server }} and the client application.  
-Continue reading for the server-side setup, or jump to [Client-side setup](#tutorials-to-follow-next).
+Für die Aktivierung der Unterstützung für Benachrichtigungen müssen mehrere Konfigurationsschritte in {{ site.data.keys.mf_server }} und in der Clientanwendung ausgeführt werden.   
+Fahren Sie mit dem Abschnitt zum serverseitigen Setup fort oder lesen Sie den Abschnitt [Clientseitiges Setup](#tutorials-to-follow-next).
 
-On the server-side, required set-up includes: configuring the needed vendor (APNS, GCM or WNS) and mapping the "push.mobileclient" scope.
+Auf der Serverseite gehören zum Setup das Konfigurieren des erforderlichen Anbieters (APNS, GCM oder WNS) und die Zuordnung des Bereichs "push.mobileclient". 
 
 ### Google Cloud Messaging / Firebase Cloud Messaging
 {: #google-cloud-messaging--firebase-cloud-messaging }
-> **Note:** Google [recently announced](https://firebase.google.com/support/faq/#gcm-fcm) a move from GCM to FCM. The below instructions have been updated accordingly. Also note that existing in-the-field GCM configurations will continue to function however new GCM configurations will not, and FCM must be used instead.
+> **Hinweis:** Google [kündigte kürzlich](https://firebase.google.com/support/faq/#gcm-fcm) einen Wechsel von GCM zu FCM an. Die folgenden Anweisungen wurden entsprechend aktualisiert. Beachten Sie auch, das bestehende GCM-Konfigurationen weiterhin funktionieren. Dies gilt jedoch nicht für neue GCM-Konfigurationen. Verwenden Sie stattdessen FCM.
 
-Android devices use the Firebase Cloud Messaging (FCM) service for push notifications.  
-To setup FCM:
+Android-Geräte verwenden den Service Firebase Cloud Messaging (FCM) für Push-Benachrichtigungen.   
+Gehen Sie wie folgt vor, um FCM zu konfigurieren:
 
-1. Visit the [Firebase Console](https://console.firebase.google.com/?pli=1).
-2. Create a new project and provide a project name.
-3. Click on the Settings "cog wheel" icon and select **Project settings**.
-4. Click the **Cloud Messaging** tab to generate a **Server API Key** and a **Sender ID** and click **Save**.
+1. Öffnen Sie die [Firebase Console](https://console.firebase.google.com/?pli=1).
+2. Erstellen Sie ein neues Projekt und geben Sie einen Projektnamen an. 
+3. Klicken Sie auf das Zahnradsymbol für die Einstellungen und wählen Sie **Project settings** aus.
+4. Klicken Sie auf das Register **Cloud Messaging**, um einen
+**Server API Key** und eine **Sender ID** zu generieren. Klicken Sie dann auf **Save**.
 
-> You can also setup FCM using either the [REST API for the {{ site.data.keys.product_adj }} Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-) or the [REST API for the {{ site.data.keys.product_adj }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
-
-#### Notes
+> Sie können FCM auch
+mit der [REST-API
+für den {{ site.data.keys.product_adj }}-Push-Service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_gcm_settings_put.html#Push-GCM-Settings--PUT-)
+oder
+der [REST-API für den {{ site.data.keys.product_adj }}-Verwaltungsservice](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html#restservicesapi)
+konfigurieren.
+#### Hinweise
 {: #notes }
-If your organization has a firewall that restricts the traffic to or from the Internet, you must go through the following steps:  
+Wenn es in Ihrer Organisation eine Firewall gibt, die den Datenverkehr zum oder vom Internet einschränkt, müssen Sie die folgenden
+Schritte ausführen:   
 
-* Configure the firewall to allow connectivity with FCM in order for your FCM client apps to receive messages.
-* The ports to open are 5228, 5229, and 5230. FCM typically uses only 5228, but it sometimes uses 5229 and 5230. 
-* FCM does not provide specific IP, so you must allow your firewall to accept outgoing connections to all IP addresses contained in the IP blocks listed in Google’s ASN of 15169. 
-* Ensure that your firewall accepts outgoing connections from {{ site.data.keys.mf_server }} to android.googleapis.com on port 443.
+* Konfigurieren Sie die Firewall so, dass Verbindungen zu FCM möglich sind, damit Ihre FCM-Client-Apps Nachrichten empfangen können. 
+* Die Ports
+5228, 5229 und 5230 müssen geöffnet werden. FCM verwendet normalerweise nur den Port
+5228, manchmal aber auch die Ports 5229 und 5230.  
+* FCM stellt keine bestimmte IP-Adresse bereit. Stellen Sie daher sicher, dass Ihre Firewall abgehende Verbindungen zu allen IP-Adressen akzeptiert, die
+in den IP-Blöcken enthalten sind, die in Google ASN
+15169 aufgelistet sind. 
+* Stellen Sie sicher, dass Ihre Firewall am Port 443 abgehende Verbindungen
+von {{ site.data.keys.mf_server }} zu android.googleapis.com akzeptiert. 
 
-<img class="gifplayer" alt="Image of adding the GCM credentials" src="gcm-setup.png"/>
+<img class="gifplayer" alt="GCM-Berechtigungsnachweise hinzufügen" src="gcm-setup.png"/>
 
 ### Apple Push Notifications Service
 {: #apple-push-notifications-service }
-iOS devices use Apple's Push Notification Service (APNS) for push notifications.  
-To setup APNS:
+iOS-Geräte verwenden den Apple Push Notification Service (APNS) für Push-Benachrichtigungen.   
+Gehen Sie wie folgt vor, um APNS zu konfigurieren:
 
-1. [Generate a push notification certificate for development or production](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv).
-2. In the {{ site.data.keys.mf_console }} → **[your application] → Push → Push Settings**, select the certificate type and provide the certificate's file and password. Then, click **Save**.
+1. [Generieren Sie ein Zertifikat für Push-Benachrichtigungen für die Entwicklung oder Produktion](https://medium.com/@ankushaggarwal/generate-apns-certificate-for-ios-push-notifications-85e4a917d522#.67yfba5kv).
+2. Wählen Sie in der {{ site.data.keys.mf_console }} unter **[Ihre Anwendung] → Push → Push-Einstellungen**
+den Zertifikattyp aus und geben Sie die Zertifikatdatei und das Kennwort an. Klicken Sie dann auf **Speichern**.
 
-#### Notes
+#### Hinweise
 {: #notes-apns }
-* For push notifications to be sent, the following servers must be accessible from a {{ site.data.keys.mf_server }} instance:  
-    * Sandbox servers:  
+* Die folgenden Server müssen für eine MobileFirst-Server-Instanz zugänglich sein, damit Push-Benachrichtigungen gesendet werden können:   
+    * Sandbox-Server:  
         * gateway.sandbox.push.apple.com:2195
         * feedback.sandbox.push.apple.com:2196
-    * Production servers:  
+    * Produktionsserver:  
         * gateway.push.apple.com:2195
         * Feedback.push.apple.com:2196
         * 1-courier.push.apple.com 5223
-* During the development phase, use the apns-certificate-sandbox.p12 sandbox certificate file.
-* During the production phase, use the apns-certificate-production.p12 production certificate file.
-    * The APNS production certificate can only be tested once the application that utilizes it has been successfully submitted to the Apple App Store.
+* Verwenden Sie in der Entwicklungsphase die Sandbox-Zertifikatdatei apns-certificate-sandbox.p12. 
+* Verwenden Sie in der Produktionsphase die Produktionszertifikatdatei apns-certificate-production.p12. 
+    * Das APNS-Produktionszertifikat kann erst getestet werden, wenn die Anwendung, die das Zertifikat verwendet, erfolgreich an den Apple App Store übergeben wurde.
 
-> You can also setup APNS using either the [REST API for the {{ site.data.keys.product_adj }} Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-) or the [REST API for the {{ site.data.keys.product_adj }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc)
-
-<img class="gifplayer" alt="Image of adding the APNS credentials" src="apns-setup.png"/>
+> Sie können den APNS auch
+mit der [REST-API
+für den {{ site.data.keys.product_adj }}-Push-Service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_apns_settings_put.html#Push-APNS-settings--PUT-)
+oder
+der [REST-API für den {{ site.data.keys.product_adj }}-Verwaltungsservice](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc)
+konfigurieren.
+<img class="gifplayer" alt="APNS-Berechtigungsnachweise hinzufügen" src="apns-setup.png"/>
 
 ### Windows Push Notifications Service
 {: #windows-push-notifications-service }
-Windows devices use the Windows Push Notifications Service (WNS) for push notifications.  
-To setup WNS:
+Windows-Geräte verwenden den Windows Push Notifications Service (WNS) für Push-Benachrichtigungen.   
+Gehen Sie wie folgt vor, um den WNS zu konfigurieren:
 
-1. Follow the [instructions provided by Microsoft](https://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx) to generate the **Package Security Identifier (SID)** and **Client secret** values.
-2. In the {{ site.data.keys.mf_console }} → **[your application] → Push → Push Settings**, add these values and click **Save**.
+1. Folgen Sie den [Anweisungen von Microsoft](https://msdn.microsoft.com/en-in/library/windows/apps/hh465407.aspx) für das Generieren
+der Werte für **Paketsicherheits-ID (SID)** und **Geheimer Clientschlüssel**. 
+2. Fügen Sie diese Werte in der {{ site.data.keys.mf_console }} unter **[Ihre Anwendung] → Push → Push-Einstellungen**
+hinzu und klicken Sie auf **Speichern**.
 
-> You can also setup WNS using either the [REST API for the {{ site.data.keys.product_adj }} Push service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_wns_settings_put.html?view=kc) or the [REST API for the {{ site.data.keys.product_adj }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_wns_settings_put.html?view=kc)
+> Sie können den WNS auch
+mit der [REST-API
+für den {{ site.data.keys.product_adj }}-Push-Service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_wns_settings_put.html?view=kc)
+oder
+der [REST-API für den {{ site.data.keys.product_adj }}-Verwaltungsservice](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_wns_settings_put.html?view=kc)
+konfigurieren.
+<img class="gifplayer" alt="WNS-Berechtigungsnachweise hinzufügen" src="wns-setup.png"/>
 
-<img class="gifplayer" alt="Image of adding the WNS credentials" src="wns-setup.png"/>
-
-### SMS Notification Service
+### SMS-Benachrichtigungsservice
 {: #sms-notification-service }
-The following JSON is used to setup the SMS gateway for sending SMS notifications. [Use the `smsConf` REST API](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html) to update the {{ site.data.keys.mf_server }} with the SMS gateway configuration
+Das SMS-Gateway wird mit folgender JSON für das Senden von SMS-Benachrichtigungen eingerichtet. [Verwenden Sie die
+REST-API smsConf](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_sms_settings_put.html), um {{ site.data.keys.mf_server }} mit der SMS-Gateway-Konfiguration zu aktualisieren. 
 
 ```json
 {
@@ -122,20 +149,21 @@ The following JSON is used to setup the SMS gateway for sending SMS notification
 }
 ```
 
-> Find more SMS-related REST APIs [in the Push Service API Reference](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html)
+> Weitere SMS-bezogene REST-APIs finden Sie in den [Referenzinformationen zur Push-Service-API](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html).
 
-### Scope mapping
+### Bereichszuordnung
 {: #scope-mapping }
-Map the **push.mobileclient** scope element to the application.
+Ordnen Sie der Anwendung das Bereichselement **push.mobileclient** zu. 
 
-1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Scope-Elements Mapping**, click on **New**.
-2. Write "push.mobileclient" in the **Scope element** field. Then, click **Add**.
+1. Laden Sie die {{ site.data.keys.mf_console }} und navigieren Sie zu
+**[Ihre Anwendung] → Sicherheit → Zuordnung von Bereichselementen** und klicken Sie auf **Neu**.
+2. Schreiben Sie in das Feld **Bereichselement** den Wert "push.mobileclient". Klicken Sie dann auf **Hinzufügen**.
 
     <div class="panel-group accordion" id="scopes" role="tablist" aria-multiselectable="false">
         <div class="panel panel-default">
             <div class="panel-heading" role="tab" id="additional-scopes">
                 <h4 class="panel-title">
-                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Click for a list additional available scopes</b></a>
+                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Hier für eine Liste zusätzlich verfügbarer Bereiche klicken</b></a>
                 </h4>
             </div>
 
@@ -143,167 +171,184 @@ Map the **push.mobileclient** scope element to the application.
                 <div class="panel-body">
                     <table class="table table-striped">
                         <tr>
-                            <td><b>Scope</b></td>
-                            <td><b>Description</b></td>
+                            <td><b>Bereich</b></td>
+                            <td><b>Beschreibung</b></td>
                         </tr>
                         <tr>
                             <td>apps.read	</td>
-                            <td>Permission to read application resource.</td>
+                            <td>Berechtigung, eine Anwendungsressource zu lesen</td>
                         </tr>
                         <tr>
                             <td>apps.write	</td>
-                            <td>Permission to create, update, delete application resource.</td>
+                            <td>Berechtigung, eine Anwendungsressource zu erstellen, zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
                             <td>gcmConf.read	</td>
-                            <td>Permission to read GCM configuration settings (API Key and SenderId).</td>
+                            <td>Berechtigung, die GCM-Konfigurationseinstellungen (API Key und Sender ID) zu lesen</td>
                         </tr>
                         <tr>
                             <td>gcmConf.write	</td>
-                            <td>Permission to update, delete GCM configuration settings.</td>
+                            <td>Berechtigung, die GCM-Konfigurationseinstellungen zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
                             <td>apnsConf.read	</td>
-                            <td>Permission to read APNs configuration settings.</td>
+                            <td>Berechtigung, APNS-Konfigurationseinstellungen zu lesen</td>
                         </tr>
                         <tr>
                             <td>apnsConf.write	</td>
-                            <td>Permission to update, delete APNs configuration settings.</td>
+                            <td>Berechtigung, APNS-Konfigurationseinstellungen zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
                             <td>devices.read	</td>
-                            <td>Permission to read device.</td>
+                            <td>Berechtigung, ein Gerät zu lesen</td>
                         </tr>
                         <tr>
                             <td>devices.write	</td>
-                            <td>Permission to create, update delete device.</td>
+                            <td>Berechtigung, ein Gerät zu erstellen, zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
                             <td>subscriptions.read	</td>
-                            <td>Permission to read subscriptions.</td>
+                            <td>Berechtigung, Abonnements zu lesen</td>
                         </tr>
                         <tr>
                             <td>subscriptions.write	</td>
-                            <td>Permission to create, update, delete subscriptions.</td>
+                            <td>Berechtigung, Abonnements zu erstellen, zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
                             <td>messages.write	</td>
-                            <td>Permission to send push notifications.</td>
+                            <td>Berechtigung, Push-Benachrichtigungen zu senden</td>
                         </tr>
                         <tr>
                             <td>webhooks.read	</td>
-                            <td>Permission to read event-notifications.</td>
+                            <td>Berechtigung, Ereignisbenachrichtigungen zu lesen</td>
                         </tr>
                         <tr>
                             <td>webhooks.write	</td>
-                            <td>Permission to send event-notifications.</td>
+                            <td>Berechtigung, Ereignisbenachrichtigungen zu senden</td>
                         </tr>
                         <tr>
                             <td>smsConf.read	</td>
-                            <td>Permission to read SMS configuration settings.</td>
+                            <td>Berechtigung, SMS-Konfigurationseinstellungen zu lesen</td>
                         </tr>
                         <tr>
                             <td>smsConf.write	</td>
-                            <td>Permission to update, delete SMS configuration settings.</td>
+                            <td>Berechtigung, SMS-Konfigurationseinstellungen zu aktualisieren und zu löschen</td>
                         </tr>
                         <tr>
                             <td>wnsConf.read	</td>
-                            <td>Permission to read WNS configuration settings.</td>
+                            <td>Berechtigung, WNS-Konfigurationseinstellungen zu lesen</td>
                         </tr>
                         <tr>
                             <td>wnsConf.write	</td>
-                            <td>Permission to update, delete WNS configuration settings.</td>
+                            <td>Berechtigung, WNS-Konfigurationseinstellungen zu aktualisieren und zu löschen</td>
                         </tr>
                     </table>
-                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Close section</b></a>
+                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#additional-scopes" data-target="#collapse-additional-scopes" aria-expanded="false" aria-controls="collapse-additional-scopes"><b>Abschnitt schließen</b></a>
                 </div>
             </div>
         </div>
     </div>
 
-    <img class="gifplayer" alt="Scope mapping" src="scope-mapping.png"/>
+    <img class="gifplayer" alt="Bereichszuordnung" src="scope-mapping.png"/>
 
-### Authenticated Notifications
+### Authentifizierte Benachrichtigungen
 {: #authenticated-notifications }
-Authenticated notifications are notifications that are sent to one or more `userIds`.  
+Authentifizierte Benachrichtigungen werden an `userIds` gesendet.  
 
-Map the **push.mobileclient** scope element to the security check used for the application.  
+Ordnen Sie der für die Anwendung verwendeten Sicherheitsüberprüfung das Bereichselement **push.mobileclient** zu.   
 
-1. Load the {{ site.data.keys.mf_console }} and navigate to **[your application] → Security → Scope-Elements Mapping**, click on **New** or edit an existing scope mapping entry.
-2. Select a security check. Then, click **Add**.
+1. Laden Sie die {{ site.data.keys.mf_console }} und navigieren Sie zu
+**[Ihre Anwendung] → Sicherheit → Zuordnung von Bereichselementen** und klicken Sie auf **Neu** oder bearbeiten Sie einen vorhandenen Bereichszuordnungseintrag. 
+2. Wählen Sie eine Sicherheitsüberprüfung aus. Klicken Sie dann auf **Hinzufügen**.
 
-    <img class="gifplayer" alt="Authenticated notifications" src="authenticated-notifications.png"/>
+    <img class="gifplayer" alt="Authentifizierte Benachrichtigungen" src="authenticated-notifications.png"/>
     
-## Defining Tags
+## Tags definieren
 {: #defining-tags }
-In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags**, click **New**.  
-Provide the appropriate `Tag Name` and `Description` and click **Save**.
+Klicken Sie in der {{ site.data.keys.mf_console }} unter **[Ihre Anwendung] → Push → Tags**
+auf **Neu**.  
+Geben Sie den entsprechenden `Tagnamen` und eine `Beschreibung` an und klicken Sie auf **Speichern**.
 
-<img class="gifplayer" alt="Adding tags" src="adding-tags.png"/>
+<img class="gifplayer" alt="Tags hinzufügen" src="adding-tags.png"/>
 
-Subscriptions tie together a device registration and a tag. When a device is unregistered from a tag, all associated subscriptions are automatically unsubscribed from the device itself. In a scenario where there are multiple users of a device, subscriptions should be implemented in mobile applications based on user log-in criteria. For example, the subscribe call is made after a user successfully logs in to an application and the unsubscribe call is made explicitly as part of the logout action handling.
+Bei einem Abonnement werden eine Geräteregistrierung
+und ein Tag miteinander verbunden. Wenn die Registrierung eines Gerätes für einen Tag aufgehoben wird, beendet das Gerät selbst
+alle zugehörigen Abonnements. Wenn ein Gerät von mehreren Benutzern verwendet wird, sollten
+Abonnements auf der Basis von Benutzeranmeldungskriterien
+in mobilen Anwendungen implementiert werden. Der Aufruf für das Abonnement könnte beispielsweise erfolgen, nachdem sich ein Benutzer
+erfolgreich bei einer Anwendung angemeldet hat. Der Aufruf zum Beenden des Abonnements würde explizit im Rahmen der Abmeldeaktion
+abgesetzt. 
 
-## Sending Notifications
+## Benachrichtigungen senden
 {: #sending-notifications }
-Push notifications can be sent either from the {{ site.data.keys.mf_console }} or via REST APIs.
+Push-Benachrichtigungen können von der {{ site.data.keys.mf_console }} aus oder über REST-APIs gesendet werden.
 
-* With the {{ site.data.keys.mf_console }}, two types of notifications can be sent: tag and broadcast.
-* With the REST APIs, all forms of notifications can be sent: tag, broadcast and authenticated.
+* Von der {{ site.data.keys.mf_console }} aus können zwei Arten von Benachrichtigungen gesendet werden, tagbasierte Benachrichtigungen und Broadcastbenachrichtigungen. 
+* Mit den REST-APIs können alle Arten von Benachrichtigungen gesendet werden, tagbasierte und authentifizierte Benachrichtigungen sowie Broadcastbenachrichtigungen. 
 
 ### {{ site.data.keys.mf_console }}
 {: #mobilefirst-operations-console }
-Notifications can be sent to a single Device ID, a single or several User IDs, only iOS devices or only Android devices, or to devices subscribed to tags.
+Benachrichtigungen können an eine einzelne Geräte-ID, an bestimmte Benutzer-IDs, nur an iOS-Geräte oder nur an Android-Geräte oder an Geräte, die Tags abonniert haben, gesendet werden. 
 
-#### Tag notifications
+#### Tagbasierte Benachrichtigungen
 {: #tag-notifications }
-Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag. Tags represent topics of interest to the user and provide the ability to receive notifications according to the chosen interest. 
+Tagbasierte Benachrichtigungen sind Hinweisnachrichten, die an alle Geräte gesendet werden, die einen bestimmten Tag abonniert haben. Tags stehen für Themen, die für den Benutzer von Interesse sind, und
+ermöglichen dem Benutzer, Benachrichtigungen zu den ihn interessierenden Themen zu erhalten.  
 
-In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Notifications tab**, select **Devices By Tags** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
+Wählen Sie in der {{ site.data.keys.mf_console }} unter **[Ihre Anwendung] → Push** das Register **Benachrichtigungen
+senden** aus. Wählen Sie dann
+auf der Registerkarte **Senden an** die Option **Geräte nach Tags** aus und geben Sie den
+**Benachrichtigungstext** an. Klicken Sie dann auf **Senden**. 
 
-<img class="gifplayer" alt="Sending by tag" src="sending-by-tag.png"/>
+<img class="gifplayer" alt="Senden nach Tag" src="sending-by-tag.png"/>
 
-#### Broadcast notifications
+#### Broadcastbenachrichtigungen
 {: #breadcast-notifications }
-Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices. Broadcast notifications are enabled by default for any push-enabled {{ site.data.keys.product_adj }} application by a subscription to a reserved `Push.all` tag (auto-created for every device). The `Push.all` tag can be programmatically unsubscribed.
+Broadcastbenachrichtigungen sind eine Form der tagbasierten Push-Benachrichtigungen, die an alle eingeschriebenen Geräte gesendet werden. Broadcastbenachrichtigungen werden standardmäßig
+für alle Push-fähigen {{ site.data.keys.product_adj }}-Anwendungen
+durch das Abonnement eines reservierten Tags `Push.all` aktiviert. (Der Tag wird automatisch für jedes Gerät erstellt.) Das Abonnement des Tags
+`Push.all` kann programmgestützt beendet werden. 
 
-In the {{ site.data.keys.mf_console }} → **[your application] → Push → Send Notifications tab**, select **All** from the **Send To** tab and provide the **Notification Text**. Then, click **Send**.
+Wählen Sie in der {{ site.data.keys.mf_console }} unter **[Ihre Anwendung] → Push** das Register **Benachrichtigung senden** aus.
+Wählen Sie dann auf der Registerkarte **Senden an** die Option **Alle** aus und geben Sie den
+**Benachrichtigungstext** an. Klicken Sie dann auf **Senden**. 
 
-![send-to-all](sending-to-all.png)
+![Senden an alle](sending-to-all.png)
 
-### REST APIs
+### REST-APIs
 {: #rest-apis }
-When using the REST APIs to send notifications, all forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications.
+Mit den REST-APIs können alle Arten von Benachrichtigungen gesendet werden, tagbasierte Benachrichtigungen und Broadcastbenachrichtigungen sowie authentifizierte Benachrichtigungen. 
 
-To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
-Example URL: 
+Für das Senden einer Benachrichtigung wird eine POST-Anforderung an den REST-Endpunkt abgesetzt: `imfpush/v1/apps/<Anwendungs-ID>/messages`.  
+Beispiel-URL:  
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.PinCodeSwift/messages
 ```
 
-> To review all Push Notifications REST APIs, see the [REST API Runtime Services topic](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) in the user documentation.
+> Eine Übersicht über alle REST-APIs für Push-Benachrichtigungen finden Sie im Abschnitt [REST-API-Laufzeitservices](https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html) der Benutzerdokumentation.
 
-#### Notification payload
+#### Nutzdaten von Benachrichtigungen
 {: #notification-payload }
-The request can contain the following payload properties: 
+Die Anforderung kann die folgenden Nutzdateneigenschaften enthalten:  
 
-Payload Properties| Definition
+Eigenschaften der Nutzdaten| Definition
 --- | ---
-message | The alert message to be sent
-settings | The settings are the different attributes of the notification.
-target | Set of targets can be consumer Ids, devices, platforms, or tags. Only one of the targets can be set.
-deviceIds | An array of the devices represented by the device identifiers. Devices with these ids receive the notification. This is a unicast notification.
-notificationType | Integer value to indicate the channel (Push/SMS) used to send message. Allowed values are 1 (only Push), 2 (only SMS) and 3 (Push and SMS)
-platforms | An array of device platforms. Devices running on these platforms receive the notification. Supported values are A (Apple/iOS), G (Google/Android) and M (Microsoft/Windows).
-tagNames | An array of tags specified as tagNames. Devices that are subscribed to these tags receive the notification. Use this type of target for tag based notifications.
-userIds | An array of users represented by their userIds to send the notification. This is a unicast notification.
-phoneNumber | The phone number used for registering the device and receiving notifications. This is a unicast notification.
+message | Die zu sendende Alertnachricht
+settings | Die Einstellungen sind verschiedene Attribute der Benachrichtigung.
+target | Ziele können Consumer-IDs, Geräte, Plattformen oder Tags sein. Es kann nur ein Ziel festgelegt werden.
+deviceIds | Array der Geräte, die durch die Gerätekennungen repräsentiert werden. Geräte mit diesen IDs empfangen eine Unicastbeanchrichtigung.
+notificationType | Ganzzahliger Wert für den Kanal (Push/SMS), über den die Nachricht gesendet wird. Gültige Werte sind 1 (nur Push), 2 (nur SMS) und 3 (Push und SMS).
+platforms | Array der Geräteplattformen. Geräte mit diesen Plattformen empfangen die Benachrichtigung. Unterstützte Werte sind A (Apple/iOS), G (Google/Android) und M (Microsoft/Windows).
+tagNames | Array mit Tags, die als Tagnamen angegeben sind. Geräte, die diese Tags abonniert haben, empfangen die Benachrichtigung. Verwenden Sie diese Einstellung für "target" für tagbasierte Benachrichtigungen.
+userIds | Array mit Benutzern, repräsentiert durch die Benutzer-IDs, an die eine Unicastbenachrichtigung gesendet wird.
+phoneNumber | Telefonnummer für die Registrierung des Geräts und den Empfang von Unicastbenachrichtigungen.
 
-**Push Notifications Payload JSON Example**
+**JSON-Beispiel für die Nutzdaten von Push-Benachrichtigungen**
 
 ```json
 {
-    "message" : {
+  "message" : {
     "alert" : "Test message",
   },
   "settings" : {
@@ -322,7 +367,7 @@ phoneNumber | The phone number used for registering the device and receiving not
     },
   },
   "target" : {
-    // The list below is for demonstration purposes only - per the documentation only 1 target is allowed to be used at a time.
+    // Die folgende Liste dient nur zur Demonstration. Gemäß Dokumentation ist immer nur jeweils 1 Ziel erlaubt.
     "deviceIds" : [ "MyDeviceId1", ... ],
     "platforms" : [ "A,G", ... ],
     "tagNames" : [ "Gold", ... ],
@@ -331,7 +376,7 @@ phoneNumber | The phone number used for registering the device and receiving not
 }
 ```
 
-**SMS Notification Payload JSON Example**
+**JSON-Beispiel für die Nutzdaten von SMS-Benachrichtigungen**
 
 ```json
 {
@@ -345,32 +390,35 @@ phoneNumber | The phone number used for registering the device and receiving not
 }
 ```
 
-#### Sending the notification
+#### Benachrichtigung senden
 {: #sending-the-notification }
-The notification can be sent using different tools.  
-For testing purposes, Postman is used as described below:
+Die Benachrichtigung kann mit verschiedenen Tools gesendet werden.   
+Nachfolgend wird für Testzwecke Postman verwendet. 
 
-1. [Configure a Confidential Client](../../authentication-and-security/confidential-clients/).   
-    Sending a Push Notification via the REST API uses the space-separated scope elements `messages.write` and `push.application.<applicationId>.`
+1. [Konfigurieren Sie einen vertraulichen Client](../../authentication-and-security/confidential-clients/).
+       
+Wenn Sie eine Push-Benachrichtigung über die REST-API senden, werden die jeweils durch ein Leerzeichen getrennten
+Bereichselemente `messages.write` und `push.application.<Anwendungs-ID>` verwendet. 
     
-    <img class="gifplayer" alt="Configure a confidential client" src="push-confidential-client.png"/>
+    <img class="gifplayer" alt="Vertraulichen Client konfigurieren" src="push-confidential-client.png"/>
 
-2. [Create an access token](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
+2. [Erstellen Sie ein Zugriffstoken](../../authentication-and-security/confidential-clients#obtaining-an-access-token).  
     
     
-3. Make a **POST** request to **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages**
-    - If using a remote {{ site.data.keys.product_adj }}, replace the `hostname` and `port` values with your own.
-    - Update the application identifier value with your own.
+3. Setzen Sie eine **POST**-Anforderung an **http://localhost:9080/imfpush/v1/apps/com.sample.PushNotificationsAndroid/messages** ab. 
+    - Wenn Sie {{ site.data.keys.product_adj }} über Fernzugriff verwenden, ersetzen Sie `Hostnamen` und `Port` durch Ihre eigenen Werte. 
+    - Aktualisieren Sie die Anwendungs-ID. Geben Sie Ihren eigenen Wert an. 
 
-4. Set a Header:
+4. Legen Sie einen Header fest:
     - **Authorization**: `Bearer eyJhbGciOiJSUzI1NiIsImp ...`
-    - Replace the value after "Bearer" with the value of your access token from step (1) above.
+    - Ersetzen Sie den Wert hinter "Bearer" durch den Wert Ihres Zugriffstokens aus Schritt (1). 
     
-    ![authorization header](postman_authorization_header.png)
+    ![Autorisierungsheader](postman_authorization_header.png)
 
-5. Set a Body:
-    - Update its properties as described in [Notification payload](#notification-payload) above.
-    - For example, by adding the **target** property with the **userIds** attribute, you can send a notification to specific registered users.
+5. Legen Sie einen Hauptteil fest: 
+    - Aktualisieren Sie die Eigenschaften gemäß der Beschreibung im obigen Abschnitt [Nutzdaten von Benachrichtigungen](#notification-payload). 
+    - Fügen Sie beispielsweise die Eigenschaft **target** mit dem Attribut **userIds** hinzu,
+wenn Sie eine Benachrichtigung an bestimmte registrierte Benutzer senden möchten. 
 
    ```json
    {
@@ -380,44 +428,51 @@ For testing purposes, Postman is used as described below:
    }
    ```
     
-   ![authorization header](postman_json.png)
+   ![Autorisierungsheader](postman_json.png)
     
-After clicking on the **Send** button, the device should have now received a notification:
+Wenn Sie auf die Schaltfläche **Senden** geklickt haben, müsste das Gerät eine Benachrichtigung empfangen haben: 
 
-![Image of the sample application](notifications-app.png)
+![Beispielanwendung](notifications-app.png)
 
-### Customizing Notifications
+### Benachrichtigungen anpassen
 {: #customizing-notifications }
-Before sending the notification message, you can also customize the following notification attributes.  
+Vor dem Senden der Benachrichtigung können Sie die folgenden Benachrichtigungsattribute anpassen.   
 
-In the {{ site.data.keys.mf_console }} → **[your application] → Push → Tags → Send Notifications tab**, expend the **iOS/Android Custom Settings** section to change notification attributes.
+Blenden Sie in der {{ site.data.keys.mf_console }} unter **[Ihre Anwendung] → Push → Tags** auf der
+Registerkarte **Benachrichtigungen senden**
+den Abschnitt **Angepasste iOS/Android-Einstellungen** ein, um die Benachrichtigungsattribute zu ändern. 
 
 ### Android
 {: #android }
-* Notification sound, how long a notification can be stored in the GCM storage, custom payload and more.
-* If you want to change the notification title, then add `push_notification_tile` in the Android project's **strings.xml** file.
+* Benachrichtigungsklang, Dauer der Aufbewahrung einer Benachrichtigung im GCM-Speicher, angepasste Nutzdaten usw. 
+* Wenn Sie den Benachrichtigungstitel ändern möchten, fügen Sie zur Datei
+**strings.xml** des Android-Projekts `push_notification_tile` hinzu. 
 
 ### iOS
 {: #ios }
-* Notification sound, custom payload, action key title, notification type and badge number.
+* Benachrichtigungsklang, angepasste Nutzdaten, Titel für Aktionsschlüssel, Benachrichtigungstyp und Kennzeichnungsnummer
 
-![customizing push notifications](customizing-push-notifications.png)
+![Push-Benachrichtigungen anpassen](customizing-push-notifications.png)
 
-## Proxy Support
+## Proxyunterstützung
 {: #proxy-support }
-You can make use proxy settings to set the optional proxy through which notifications are sent to Android and iOS devices. You can set the proxy by using the **push.apns.proxy.** and **push.gcm.proxy.** configuration properties. For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+In den Proxy-Einstellungen können Sie den optionalen Proxy festlegen, über den Benachrichtigungen
+an Android-
+und iOS-Geräte gesendet werden. Verwenden Sie die Konfigurationseigenschaften **push.apns.proxy.** und **push.gcm.proxy.**, um den Proxy festzulegen. Weitere Informationen
+finden Sie in der [Liste der
+JNDI-Eigenschaften für den MobileFirst-Server-Push-Service](../../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
-## Tutorials to follow next
+## Nächste Lernprogramme
 {: #tutorials-to-follow-next }
-With the server-side now set-up, setup the client-side and handle received notifications.
+Da die Serverseite jetzt eingerichtet ist, fahren Sie mit dem clientseitigen Setup und der Handhabung empfangener Benachrichtigungen fort. 
 
-* Handling push notifications
-    * [Handling push notifications in Cordova applications](../handling-push-notifications/cordova)
-    * [Handling push notifications in iOS applications](../handling-push-notifications/ios)
-    * [Handling push notifications in Android applications](../handling-push-notifications/android)
-    * [Handling push notifications in Windows applications](../handling-push-notifications/windows)
+* Handhabung von Push-Benachrichtigungen
+    * [Handhabung von Push-Benachrichtigungen in Cordova-Anwendungen](../handling-push-notifications/cordova)
+    * [Handhabung von Push-Benachrichtigungen in iOS-Anwendungen](../handling-push-notifications/ios)
+    * [Handhabung von Push-Benachrichtigungen in Android-Anwendungen](../handling-push-notifications/android)
+    * [Handhabung von Push-Benachrichtigungen in Windows-Anwendungen](../handling-push-notifications/windows)
 
-* Handling SMS notifications
-    * [Handling SMS notifications in Cordova applications](../handling-sms-notifications/cordova)
-    * [Handling SMS notifications in iOS applications](../handling-sms-notifications/ios)
-    * [Handling SMS notifications in Android applications](../handling-sms-notifications/android)
+* Handhabung von SMS-Benachrichtigungen
+    * [Handhabung von SMS-Benachrichtigungen in Cordova-Anwendungen](../handling-sms-notifications/cordova) 
+    * [Handhabung von SMS-Benachrichtigungen in iOS-Anwendungen](../handling-sms-notifications/ios)
+    * [Handhabung von SMS-Benachrichtigungen in Android-Anwendungen](../handling-sms-notifications/android) 

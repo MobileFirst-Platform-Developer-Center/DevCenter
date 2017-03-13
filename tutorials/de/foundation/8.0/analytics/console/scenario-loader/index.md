@@ -6,74 +6,88 @@ relevantTo: [ios,android,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-> **Note:** The Scenario Loader is *experimental* in nature, and is therefore not fully supported. Use accordingly.
+> **Hinweis:** Der Scenario Loader ist *experimenteller* Natur und wird daher nicht vollständig unterstützt. Berücksichtigen Sie dies bei der Verwendung des Loaders. 
 >
-> * Some charts do not get populated.
+> * Einige Diagramme werden nicht mit Daten gefüllt. 
 
-The Scenario Loader populates various {{ site.data.keys.mf_analytics_console_full }} charts and reports with dummy data. The data is stored in the Elasticsearch data store, safely segregated from your existing test or production data.
+Der Scenario Loader trägt in der {{ site.data.keys.mf_analytics_console_full }} Pseudodaten in diverse Diagramme und Berichte ein. Die Daten werden im
+Elasticsearch-Datastore gespeichert und sicher von Ihren vorhandenen Test- oder Produktionsdaten separiert. 
 
-The loaded data is synthetic in nature, injected directly into the data store. It is not the result of any actual analytics data created by the client or server. The purpose of the data is to enable the user to better view the nature of various reports and charts as displayed in the UI. Therefore the data should **not** be used for testing purposes.
+Die geladenen Daten sind synthetische Daten, die direkt in den Datastore injiziert werden, und nicht das Ergebnis
+der Erstellung tatsächlicher Analysedaten durch den Client oder Server. Diese Daten sollen dem Benutzer eine bessere Ansicht der verschiedenen, auf der Benutzerschnittstelle angezeigten Berichte und Diagramme ermöglichen. Verwenden Sie die Daten also **nicht** für Testzwecke. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
-* [Before you start](#before-you-start)
-* [Connecting to the Scenario Loader](#connecting-to-the-scenario-loader)
-* [Configuring the data loading](#configuring-the-data-loading)
-* [Loading and deleting the data](#loading-and-deleting-the-data)
-* [Viewing the populated charts and tables](#viewing-the-populated-charts-and-tables)
-* [Disabling the debug mode](#disabling-the-debug-mode)
+* [Vorbereitungen](#before-you-start)
+* [Verbindung zum Scenario Loader herstellen](#connecting-to-the-scenario-loader)
+* [Laden der Daten konfigurieren](#configuring-the-data-loading)
+* [Daten laden und löschen](#loading-and-deleting-the-data)
+* [Mit Daten gefüllte Diagramme und Tabellen anzeigen](#viewing-the-populated-charts-and-tables)
+* [Debugmodus inaktivieren](#disabling-the-debug-mode)
 
-## Before you start
+## Vorbereitungen
 {: #before-you-start }
 
-The Scenario Loader is packaged together with the {{ site.data.keys.mf_analytics_console }}. Make sure your {{ site.data.keys.mf_analytics_console_short }} is running and accessible before connecting to the Scenario Loader.
+Der Scenario Loader ist im Paket mit der {{ site.data.keys.mf_analytics_console }} enthalten. Vergewissern Sie sich, dass
+Ihre {{ site.data.keys.mf_analytics_console_short }} aktiv und zugänglich ist, bevor Sie eine Verbindung zum Scenario Loader herstellen. 
 
-## Connecting to the Scenario Loader
+## Verbindung zum Scenario Loader herstellen
 {: #connecting-to-the-scenario-loader }
 
-1. To enable the Scenario Loader, set either the JVM argument `-DwlDevEnv=true`, or the environment variable `ANALYTICS_DEBUG=true`.
+1. Aktivieren Sie den Scenario Loader, indem Sie das JVM-Argument `-DwlDevEnv=true`
+oder die Umgebungsvariable `ANALYTICS_DEBUG=true` definieren.
 
-2. Access the Scenario Loader in  your browser using the console URL: `http://<console-path>/scenarioLoader` where `<console-path>` is the JNDI property value defined in the `mfp-server/usr/servers/mfp/server.xml` file, for example:
+2. In Ihrem Browser können Sie mit der Konsolen-URL `http://<Konsolenpfad>/scenarioLoader` auf den Scenario Loader zugreifen.
+Hier steht `<Konsolenpfad>` für den in der Datei `mfp-server/usr/servers/mfp/server.xml` definierten JNDI-Eigenschaftswert.
+Beispiel: 
 
     `<jndiEntry jndiName="mfp/mfp.analytics.console.url" value='"http://localhost:9080/analytics/console"'/>`
 
-3. The Scenario Loader page, along with the {{ site.data.keys.mf_analytics_console_short }} navigation bar, are displayed. The Scenario Loader remains inaccessible from the navigation bar.
+3. Die Seite "Scenario Loader" und die Navigationsleiste der
+{{ site.data.keys.mf_analytics_console_short }} werden angezeigt. Der Scenario Loader ist weiterhin nicht über die Navigationsleiste zugänglich. 
 
-## Configuring the data loading
+## Laden der Daten konfigurieren
 
-1. In the **Testing Configuration** section various settings are available to control the nature (**Basic** tab) and volume (**Capacity Planning** tab) of the generated data.
-    Make sure the **Days of history** setting is set to at least 30 days, in order to load sufficient data.
+1. Im Abschnitt **Testing Configuration** gibt es mehrere Einstellungen,
+mit denen die Art der generierten Daten (Register **Basic**) und die Menge der generierten Daten (Register **Capacity Planning**)
+gesteuert werden können. Vergewissern Sie sich, dass die Einstellung
+**Days of history** auf mindestens 30 Tage gesetzt ist, damit genügend Daten geladen werden. 
 
-    All available information about these settings is provided in the  **Testing Configuration** section.
+    Alle verfügbaren Informationen zu diesen Einstellungen sind Sie im Abschnitt **Testing Configuration** enthalten. 
 
-2. Click on the **Administration** icon <img  alt="wrench icon" style="margin:0;display:inline" src="wrench.png"/> and select the **Settings** tab. In the **Advanced** section make sure that the **Default tenant** value is set to `dummy_data_for_demo_purposes_only`.
+2. Klicken Sie auf das Symbol **Verwaltung** (<img  alt="Schraubenschlüsselsymbol" style="margin:0;display:inline" src="wrench.png"/>) und wählen
+Sie das Register **Settings** aus. Vergewissern Sie sich, dass im Abschnitt
+**Advanced** die Eigenschaft **Default tenant** auf den Wert `dummy_data_for_demo_purposes_only` gesetzt ist.
 
-## Loading and deleting the data
+## Daten laden und löschen
 {: #loading-and-deleting-the-data }
 
-To load the data, click the **Start Scenario Loading** button in the **Scenario Operations** section.
+Klicken Sie zum Laden der Daten im Abschnitt **Scenario Operations** auf die Schaltfläche **Start Scenario Loading**. 
 
-To delete the data, click the **Delete Now** button in the **Testing Configuration** section.
+Klicken Sie zum Löschen der Daten im Abschnitt **Testing Configuration** auf die Schaltfläche **Delete Now**. 
 
-**NB:** Read the disclaimer about data creation and deletion in the **Scenario Operations** section.
+**Bitte beachten:** Lesen Sie den Haftungsausschluss bezüglich des Erstellens und Löschens von Daten im Abschnitt **Scenario Operations**. 
 
-## Viewing the populated charts and tables
+## Mit Daten gefüllte Diagramme und Tabellen anzeigen
 {: #viewing-the-populated-charts-and-tables }
 
-Once the data is loaded, many, but not all, of the charts and tables available in the Analytics Console are populated.
+Wenn die Daten geladen sind, werden zwar nicht in alle, aber in viele Diagramme und Tabellen, die in der Analytics Console verfügbar sind, Daten eingetragen. 
 
-From the {{ site.data.keys.mf_analytics_console_short }} navigation bar, check the various pages and tabs to view the populated charts and tables.
+Verwenden Sie die Navigationsleiste der {{ site.data.keys.mf_analytics_console_short }}, um sich die mit Daten gefüllten Diagramme und Tabellen auf den diversen Seiten und Registerkarten anzusehen. 
 
-## Disabling the debug mode
+## Debugmodus inaktivieren
 {: #disabling-the-debug-mode }
 
-In order to work with real data after working in debug mode and synthetic data:
+Wenn Sie nach dem Arbeiten mit synthetischen Daten im Debugmodus reale Daten verwenden möchten, gehen Sie wie folgt vor: 
 
-1. Delete the  data by clicking the **Delete Now** button in the **Testing Configuration** section.
-2. In **Settings** → **Advanced** section make sure that the **Default tenant** value is set to `worklight`.
-3. For the variable that was set to true, set to false (the JVM argument `-DwlDevEnv=false`, or  the environment variable `ANALYTICS_DEBUG=false`).
-4. Restart the {{ site.data.keys.mf_analytics_server }}.
+1. Löschen Sie die Daten. Klicken Sie dazu
+im Abschnitt **Testing Configuration** auf die Schaltfläche **Delete Now**. 
+2. Vergewissern Sie sich, dass im Abschnitt **Settings** → **Advanced**
+die Eigenschaft **Default tenant** auf den Wert `worklight` gesetzt ist.
+3. Setzen Sie die zuvor auf "true" gesetzte Variable auf "false"
+(JVM-Argument `-DwlDevEnv=false` oder Umgebungsvariable `ANALYTICS_DEBUG=false`).
+4. Starten Sie {{ site.data.keys.mf_analytics_server }} neu.
