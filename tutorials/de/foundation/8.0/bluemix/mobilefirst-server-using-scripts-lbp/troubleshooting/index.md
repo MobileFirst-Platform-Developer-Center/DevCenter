@@ -1,56 +1,68 @@
 ---
 layout: tutorial
-title: Troubleshooting
+title: Fehlerbehebung
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Resolving problems with {{ site.data.keys.product_full }} on Liberty for Java runtime	
+### Probleme mit der {{ site.data.keys.product_full }} in einer Liberty-for-Java-Laufzeit lösen	
 {: resolving-problems-with-ibm-mobilefirst-foundation-on-liberty-for-java-runtime }
-When you are unable to resolve a problem encountered while working with IBM MobileFirst Foundation on Liberty for Java runtime, be sure to gather this key information before contacting IBM Support.
+Wenn beim Arbeiten mit der IBM MobileFirst Foundation in einer Liberty-for-Java-Laufzeit
+ein Problem auftritt, das Sie nicht lösen können,
+stellen Sie die folgenden wichtigen Informationen zusammen, bevor Sie Kontakt zum
+IBM Support aufnehmen.
 
-To help expedite the troubleshooting process, gather the following information:
+Stellen Sie die folgenden Informationen zusammen, um den Fehlerbehebungsprozess zu beschleunigen: 
 
-* The version of IBM MobileFirst Foundation that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
-* The Liberty for Java runtime size selected. For example, 2GB.
-* The Bluemix  dashDB database plan type. For example, EnterpriseTransactional 2.8.500.
-* The mfpconsole route
-* Versions of cloud foundry: `cf -v` 
-* The information returned from running the following Cloud Foundry CLI commands from the organization and space where your MobileFirst  Foundation server is deployed:
+* Verwendete Version der IBM
+MobileFirst Foundation (Version 8.0.0 oder eine aktuellere
+Version) und alle angewendeten vorläufigen Fixes 
+* Gewählte Größe der Liberty-for-Java-Laufzeit, z. B. 2 GB.
+* Art des Bluemix-dashDB-Datenbankplans, z. B. EnterpriseTransactional 2.8.500
+* Route für die MobileFirst-Platform-Konsole (mfpconsole)
+* Cloud-Foudry-Versionen: `cf -v` 
+* Von den folgenden CLI-Befehlen zurückgegebene Informationen zur Organisation und zu dem Bereich, in der bzw. in dem Ihr MobileFirsts Foundation Server implementiert ist: 
  - `cf app APP_NAME`
 
-### Unable to create the mfpfsqldb.xml file
+### Datei mfpfsqldb.xml kann nicht erstellt werden
 {: #unable-to-create-the-mfpfsqldbxml-file }
-An error occurs at the end of running the **prepareserverdbs.sh** script:
+Bei Ausführung des Scripts **prepareserverdbs.sh** tritt gegen Ende der folgende Fehler auf: 
 
-> Error : unable to create mfpfsqldb.xml
+> Error: unable to create mfpfsqldb.xml
 
-**How to resolve**  
-The problem might be an intermittent database connectivity issue. Try to run the script again.
+**Problemlösung**  
+Es könnte eine vorübergehende Störung der Datenbankverbindungen vorliegen. Versuchen Sie erneut, das Script auszuführen. 
 
-### Script fails and returns message about tokens	
+### Script schlägt fehl und gibt eine Nachricht zu Token zurück	
 {: #script-fails-and-returns-message-about-tokens }
-Running a script is not successful and returns a message similar to Refreshing cf tokens or Failed to refresh token.
+Die Ausführung eines Scripts ist nicht erfolgreich. Eine Nachricht wie "Refreshing cf tokens" oder "Failed to refresh token" wird zurückgegeben.
 
-**Explanation**  
-The Bluemix session might have timed-out. The user must be logged in to Bluemix before running the scripts.
+**Erläuterung**  
+Möglicherweise wurde das zulässige Zeitlimit für die Bluemix-Sitzung überschritten. Der Benutzer muss sich bei Bluemix angemeldet haben, bevor er die Scripts ausführt. 
 
-**How to resolve**
-Run the initenv.sh script again to log in to Bluemix and then run the failed script again.
+**Verwendungshinweise**
+Führen Sie erneut das Script initenv.sh aus, um sich bei Bluemix anzumelden. Führen Sie dann nochmals das fehlgeschlagene Script aus. 
 
-### Administration DB, Live Update and Push Service show up as inactive	
+### Verwaltungsdatenbank, Liveaktualisierungsservice und Push-Service werden als inaktiv angezeigt	
 {: #administration-db-live-update-and-push-service-show-up-as-inactive }
-Administration DB, Live Update and Push Service show up as inactive or no runtimes are listed in the MobileFirst Foundation Operations Console even though the **prepareserver.sh** script completed successfully.
+In der MobileFirst Foundation Operations Console werden die Verwaltungsdatenbank, der Liveaktualisierungsservice und
+der Push-Service als inaktiv angezeigt oder es sind keine Laufzeiten aufgelistet, obwohl das Script **prepareserver.sh** erfolgreich ausgeführt wurde. 
 
-**Explanation**  
-It is possible that a either a connection to the database service did not get established or that a formatting problem occurred in the server.env file when additional values were appended during deployment.
+**Erläuterung**  
+Es ist möglich, dass eine Verbindung zur Datenbank nicht hergestellt wurde oder dass in der Datei server.env beim Anfügen zusätzlicher Werte während der Implementierung
+ein Formatierungsproblem aufgetreten ist. 
 
-If additional values were added to the server.env file without new line characters, the properties would not resolve. You can validate this potential problem by checking the log files for errors caused by unresolved properties that look similar to this error:
+Wenn zur Datei server.env zusätzliche Werte ohne Zeilenvorschubzeichen hinzugefügt wurden, können die Eigenschaften nicht aufgelöst werden. Sie können feststellen, ob dieses Problem besteht,
+indem Sie die Protokolldateien auf Fehler wegen nicht aufgelöster Eigenschaften überprüfen.
+Solche Fehler könnten wie folgt aussehen: 
 
 > FWLSE0320E: Failed to check whether the admin services are ready. Caused by: [project Sample] java.net.MalformedURLException: Bad host: "${env.IP_ADDRESS}"
 
-**How to resolve**  
-Manually restart the Liberty app. If the problem still exists, check to see if the number of connections to the database service exceeds the number of connections provisioned by your database plan. If so, make any needed adjustments before proceeding.
+**Problemlösung**  
+Führen Sie manuell einen Neustart der Liberty-App durch. Besteht das Problem weiterhin, überprüfen Sie, ob die Anzahl der Verbindungen zum Datenbankservice
+die in Ihrem Datenbankplan vorgesehene Anzahl Verbindungen überschreitet. Ist das der Fall, nehmen Sie die erforderlichen Anpassungen vor. 
 
-If the problem was caused by unresolved properties, ensure that your editor adds the linefeed (LF) character to demarcate the end of a line when editing any of the provided files. For example, the TextEdit app on macOS might use the CR character to mark the end of line instead of LF, which would cause the issue.
+Wenn das Problem durch nicht aufgelöste Eigenschaften hervorgerufen wurde, stellen Sie sicher, dass Ihr Editor beim Bearbeiten der bereitgestellten Dateien
+das Zeilenvorschubzeichen (LF)
+hinzufügt, um das Ende einer Zeile zu markieren. Die App TextEdit für macOS könnte das Zeilenende beispielsweise mit dem Zeichen CR und nicht mit LF markieren, was dann zu diesem Problem führen würde. 
 

@@ -1,145 +1,279 @@
 ---
 layout: tutorial
-title: Federal standards support in MobileFirst Foundation
-breadcrumb_title: Federal standards support
+title: Unterstützung gesetzlicher Standards in der MobileFirst Foundation
+breadcrumb_title: Unterstützung gesetzlicher Standards
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_full }} supports Federal Desktop Core Configuration (FDCC), and United States Government Configuration Baseline (USGCB) specifications. {{ site.data.keys.product }} also supports the Federal Information Processing Standards (FIPS) 140-2, which is a security standard that is used to accredit cryptographic modules.
+Die {{ site.data.keys.product_full }}
+unterstützt
+die Spezifikationen FDCC (Federal Desktop Core Configuration) und USGCB (United States Government Configuration Baseline). Die {{ site.data.keys.product }}
+unterstützt auch den Federal Information Processing Standard (FIPS) 140-2,
+der ein Sicherheitsstandard für die Zulassung von Verschlüsselungsmodulen ist.
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
-* [FDCC and USGCB support](#fdcc-and-usgcb-support)
-* [FIPS-140-2-support](#fips-140-2-support)
-* [Enabling FIPS 140-2](#enabling-fips-140-2)
-* [Configure FIPS 140-2 mode for HTTPS and JSONStore encryption](#configure-fips-140-2-mode-for-https-and-jsonstore-encryption)
-* [Configuring FIPS 140-2 for existing applications](#configuring-fips-140-2-for-existing-applications)
+* [FDCC- und USGCB-Unterstützung](#fdcc-and-usgcb-support)
+* [Unterstützung für FIPS 140-2](#fips-140-2-support)
+* [FIPS 140-2 aktivieren](#enabling-fips-140-2)
+* [FIPS-140-2-Modus für HTTPS- und JSONStore-Verschlüsselung konfigurieren](#configure-fips-140-2-mode-for-https-and-jsonstore-encryption)
+* [FIPS 140-2 für vorhandene Anwendungen konfigurieren](#configuring-fips-140-2-for-existing-applications)
 
-## FDCC and USGCB support
+## FDCC- und USGCB-Unterstützung
 {: #fdcc-and-usgcb-support }
-The United States federal government mandates that federal agency desktops that run on Microsoft Windows platforms adopt Federal Desktop Core Configuration (FDCC) or the newer United States Government Configuration Baseline (USGCB) security settings.
+Die Regierung der Vereinigten Staaten schreibt vor, dass in US-Bundesbehörden Desktops mit
+Microsoft-Windows-Plattformen die FDCC-Sicherheitseinstellungen
+(Federal
+Desktop Core Configuration) oder die neueren USGCB-Sicherheitseinstellungen (United States Government
+Configuration Baseline) übernehmen. 
 
-IBM  Worklight V5.0.6 was tested by using the USGCB and FDCC security settings via a self-certification process. Testing includes a reasonable level of testing to ensure that installation and core features function on this configuration.
+IBM Worklight
+Version 5.0.6
+wurde in einem Selbstzertifizierungsprozess mit den USGCB- und FDCC-Sicherheitseinstellungen getestet. Die Tests waren so ausgelegt, dass
+sichergestellt werden konnte, dass Installationsfunktionen und zentrale Funktionen in dieser Konfiguration ausgeführt werden können.
 
-#### References
+#### Referenzen
 {: #references }
-For more information, see [USGCB](http://usgcb.nist.gov/).
+Weitere Informationen finden Sie unter [USGCB](http://usgcb.nist.gov/).
 
-## FIPS 140-2 support
+## Unterstützung für FIPS 140-2
 {: #fips-140-2-support }
-Federal Information Processing Standards (FIPS) are standards and guidelines that are issued by the United States National Institute of Standards and Technology (NIST) for federal government computer systems. FIPS Publication 140-2 is a security standard that is used to accredit cryptographic modules. {{ site.data.keys.product }} provides FIPS 140-2 support for Android and iOS Cordova apps.
+Federal Information Processing Standards (FIPS) sind Standards und Richtlinien, die vom
+NIST (United States National Institute
+of Standards and Technology) für Computersysteme in US-Regierungsbehörden herausgegeben werden. Die FIPS-Veröffentlichung 140-2 ist ein Sicherheitsstandard für
+die Zulassung von Verschlüsselungsmodulen.Die
+{{ site.data.keys.product }}
+bietet FIPS-140-2-Unterstützung für Android- und iOS-Cordova-Apps. 
 
-### FIPS 140-2 on the {{ site.data.keys.mf_server }}, and SSL communications with the {{ site.data.keys.mf_server }}
+### FIPS 140-2 für den {{ site.data.keys.mf_server }}
+und SSL-Kommunikation mit dem {{ site.data.keys.mf_server }}
 {: #fips-140-2-on-the-mobilefirst-server-and-ssl-communications-with-the-mobilefirst-server }
-{{ site.data.keys.mf_server }} runs in an application server, such as the WebSphere  Application Server. The WebSphere Application Server can be configured to enforce the use of FIPS 140-2 validated cryptographic modules for inbound and outbound Secure Socket Layer (SSL) connections. The cryptographic modules are also used for the cryptographic operations that are performed by the applications by using the Java Cryptography Extension (JCE). Since the {{ site.data.keys.mf_server }} is an application that runs on the application server, it uses the FIPS 140-2 validated cryptographic modules for the inbound and outbound SSL connections.
+{{ site.data.keys.mf_server }} wird in einem Anwendungsserver wie WebSphere Application Server ausgeführt. Der WebSphere Application Server kann
+so konfiguriert werden, dass mit FIPS 140-2 konforme Verschlüsselungsmodule für eingehende und abgehende SSL-Verbindungen (Secure Sockets Layer) verwendet
+werden müssen.
+Die Verschlüsselungsmodule werden über JCE
+(Java Cryptography Extension) auch für Verschlüsselungsoperationen der Anwendungen verwendet. Da der {{ site.data.keys.mf_server }} eine
+im Anwendungsserver ausgeführte Anwendung ist, verwendet er für eingehende und abgehende SSL-Verbindungen mit
+FIPS 140-2 konforme Verschlüsselungsmodule.
 
-When a {{ site.data.keys.product_adj }} client transacts a Secure Socket Layer (SSL) connection to a {{ site.data.keys.mf_server }}, which is running on an application server that is using the FIPS 140-2 mode, the results are the successful use of the FIPS 140-2 approved cipher suite. If the client platform does not support one of the FIPS 140-2 approved cipher suites, the SSL transaction fails and the client is not able to establish an SSL connection to the server. If successful, the client uses a FIPS 140-2 approved cipher suite.
+Wenn ein
+{{ site.data.keys.product_adj }}-Client eine
+SSL-Verbindung (Secure Sockets Layer) zu
+einem {{ site.data.keys.mf_server }} herstellt,
+der in einem Anwendungsserver mit FIPS-140-2-Modus ausgeführt wird,
+wird die Cipher-Suite gemäß FIPS 140-2 verwendet. Wenn die Clientplattform keine Unterstützung für Cipher-Suites gemäß FIPS 140-2 bietet,
+schlägt die SSL-Transaktion fehl und der Client kann keine SSL-Verbindung zum Server erstellen. Bei erfolgreichem Verbindungsaufbau verwendet der
+Client eine mit FIPS 140-2 konforme Cipher-Suite. 
 
-> **Note:** The cryptographic module instances that are used on the client are not necessarily FIPS 140-2 validated. For options to use FIPS 140-2 validated libraries on client devices, see below.
+> **Hinweis:** Die Verschlüsselungsmodulinstanzen, die der Client verwendet,
+müssen nicht notwendigerweise dem Standard FIPS 140-2 entsprechen. Welche Optionen es für die Verwendung von Bibliotheken mit FIPS-140-2-Zulassung auf
+Clientgeräten gibt, erfahren Sie weiter unten. Es kann sein, dass Client und Server dieselbe Cipher-Suite
+(z. B. SSL_RSA_WITH_AES_128_CBC_SHA) verwenden, das clientseitige Verschlüsselungsmodul aber nicht den Zulassungsprozess nach
+FIPS 140-2 durchlaufen hat, während der Server Module verwendet, die nach FIPS
+140-2 zertifiziert sind.
 
-Specifically, the client and server are using the same cipher suite (SSL_RSA_WITH_AES_128_CBC_SHA for example), but the client side cryptographic module perhaps did not go through the FIPS 140-2 validation process, whereas the server side is using FIPS 140-2 certified modules.
-
-### FIPS 140-2 on the {{ site.data.keys.product_adj }} client device for protection of data at rest in JSONStore and data in motion when using HTTPS communications
+### Schutz ruhender Daten im JSONStore und über HTTPS transportierter Daten
+mit FIPS 140-2 auf dem {{ site.data.keys.product_adj }}-Clientgerät
 {: #fips-140-2-on-the-mobilefirst-client-device-for-protection-of-data-at-rest-in-jsonstore-and-data-in-motion-when-using-https-communications }
-Protection of data at rest on the client device is provided by the JSONStore feature of {{ site.data.keys.product }}. Protection of data in motion is provided by the use of HTTPS communication between the {{ site.data.keys.product_adj }} client and the {{ site.data.keys.mf_server }}.
+Der Schutz
+ruhender Daten auf dem Clientgerät wird durch den JSONStore
+der {{ site.data.keys.product }} gewährleistet.
+Der Schutz transportierter Daten erfolgt mittels HTTPS-Datenübertragung zwischen
+dem {{ site.data.keys.product_adj }}-Client
+und dem {{ site.data.keys.mf_server }}.
 
-On iOS devices, the FIPS 140-2 support is enabled by default for both data at rest and data in motion.
 
-Android devices use non-FIPS 140-2 validated libraries by default. There is an option to use FIPS 140-2 validated libraries for the protection (encryption and decryption) of the local data that is stored by JSONStore and for the HTTPS communication to the {{ site.data.keys.mf_server }}. This support is achieved by using an OpenSSL library that achieved FIPS 140-2 validation (Certificate #1747). To enable this option in a {{ site.data.keys.product_adj }} client project, add the optional Android FIPS 140-2 plug-in.
+Auf iOS-Geräten ist die FIPS-140-2-Unterstützung standardmäßig für bewegte und ruhende Daten aktiviert. 
 
-**Note:** There are some restrictions to be aware of:
+Android-Geräte verwdnden standardmäßig nicht gemäß FIPS 140-2 validierte Bibliotheken. Es gibt jedoch die Option, für den Schutz
+(d. h. die Ver- und Entschlüsselung) lokaler, im JSONStore gespeicherter Daten und der
+HTTPS-Datenübertragung zum
+{{ site.data.keys.mf_server }} Bibliotheken gemäß FIPS 140-2 zu verwenden.
+Für diese Unterstützung
+müssen Sie eine OpenSSL-Bibliothek mit FIPS-140-2-Zulassung (Zertifikat 1747) verwenden. Wenn Sie diese Option
+in einem {{ site.data.keys.product_adj }}-Clientprojekt aktivieren möchten, fügen Sie das optionale
+FIPS-140-2-Plug-in für Android hinzu. 
 
-* This FIPS 140-2 validated mode applies only to the protection (encryption) of local data that is stored by the JSONStore feature and protection of HTTPS communications between the {{ site.data.keys.product_adj }} client and the {{ site.data.keys.mf_server }}.
-* This feature is only supported on the iOS and Android platforms.
-    * On Android, this feature is only supported on devices or simulators that use the x86 or armeabi architectures. It is not supported on Android using armv5 or armv6 architectures. The reason is because the OpenSSL library used did not obtain FIPS 140-2 validation for armv5 or armv6 on Android. FIPS 140-2 is not supported on 64-bit architecture even though the {{ site.data.keys.product_adj }} library does support 64-bit architecture. FIPS 140-2 can be run on 64-bit devices if the project includes only 32-bit native NDK libraries.
-    * On iOS, it is supported on i386, x86_64, armv7, armv7s, and arm64 architectures.
-* This feature works with hybrid applications only (not with native applications).
-* For native iOS, FIPS is enabled through the iOS FIPS libraries and is enabled by default. No action is required to enable FIPS 140-2.
-* For HTTPS communications:
-    * For Android devices, only the communications between the {{ site.data.keys.product_adj }} client and the {{ site.data.keys.mf_server }} use the FIPS 140-2 libraries on the client. Direct connections to other servers or services do not use the FIPS 140-2 libraries.
-    * The {{ site.data.keys.product_adj }} client can only communicate with a {{ site.data.keys.mf_server }} that runs in supported environments, which are listed in the [System Requirements](http://www-01.ibm.com/support/docview.wss?uid=swg27024838). If the {{ site.data.keys.mf_server }} runs in a non-supported environment, the HTTPS connection might fail with a key size too small error. This error does not occur with HTTP communications.
-* {{ site.data.keys.mf_app_center_full }} client does not support the FIPS 140-2 feature.
+**Hinweis:** Beachten Sie bitte
+die folgenden Einschränkungen: 
 
-If you previously made the changes that are described in the tutorial, you must first save any other environment-specific changes that you made, and then delete and re-create your Android or iOS environments.
+* Der Modus mit FIPS-140-2-Zulassung gilt nur für den Schutz (die Verschlüsselung) lokaler Daten im
+JSONStore und den Schutz der HTTPS-Kommunikation zwischen einem {{ site.data.keys.product_adj }}-Client
+und {{ site.data.keys.mf_server }}. 
+* Dieses Feature wird nur auf der iOS- und der Android-Plattform unterstützt.
+    * Unter Android wird dieses Feature nur für Geräte oder Simulatoren unterstützt, die die Architektur x86 oder
+armeabi verwenden.
+Für
+Android mit armv5- oder armv6-Architektur wird das Feature nicht unterstützt.
+Das liegt daran, dass die verwendete OpenSSL-Bibliothek keine
+FIPS-140-2-Zulassung für armv5 oder armv6 mit Android erhalten hat. Obwohl die
+{{ site.data.keys.product_adj }}-Bibliothek
+die 64-Bit-Architektur unterstützt, wird FIPS 140-2 von dieser Architektur nicht unterstützt. FIPS 140-2 kann auf 64-Bit-Geräten ausgeführt werden, wenn das Projekt nur
+native 32-Bit-NDK-Bibliotheken enthält. 
+    * Unter iOS wird das Feature für die i386-, x86_64-, armv7-, armv7s-
+und arm64-Architektur unterstützt. 
+* Dieses Feature funktioniert nur in Hybridanwendungen (nicht in nativen Anwendungen). 
+* In nativem iOS ist FIPS standardmäßig über die iOS-FIPS-Bibliotheken aktiviert. Es ist keine Aktion zum Aktivieren von FIPS 140-2 erforderlich. 
+* HTTPS-Kommunikation: 
+    * Auf Android-Geräten werden die FIPS-140-2-Bibliotheken auf dem Client nur für die Kommunikation
+zwischen {{ site.data.keys.product_adj }}-Client
+und {{ site.data.keys.mf_server }} verwendet. Für direkte Verbindungen zu anderen Servern oder Services werden keine
+FIPS-140-2-Bibliotheken verwendet.
+    * Der {{ site.data.keys.product_adj }}-Client kann nur mit einem
+{{ site.data.keys.mf_server }} kommunizieren, der in unterstützten Umgebungen
+ausgeführt wird, die in den
+[Systemanforderungen](http://www-01.ibm.com/support/docview.wss?uid=swg27024838) aufgelistet sind. Wenn {{ site.data.keys.mf_server }}
+in einer nicht unterstützten Umgebung ausgeführt wird, kann die HTTPS-Verbindung mit einem Fehler "key size too small" fehlschlagen. Bei der HTTP-Kommunikation kommt dieser
+Fehler nicht vor. 
+* Der IBM MobileFirst-Platform-Foundation-Application-Center-Client
+bietet keine Unterstützung für FIPS 140-2. 
 
-![FIPS diagram](FIPS.jpg)
+Falls Sie die im genannten Lernprogramm beschriebenen
+Änderungen vorgenommen hatten, müssen
+Sie Ihre Android- oder iOS-Umgebung löschen und neu erstellen. Speichern Sie zuvor jedoch alle Ihre umgebungsspezifischen Änderungen.
 
-> For more information about JSONStore, see [JSONStore overview](../../application-development/jsonstore).
+![FIPS-Diagramm](FIPS.jpg)
 
-## References
+> Weitere Informationen zu JSONStore
+finden Sie im Artikel [JSONStore im Überblick](../../application-development/jsonstore).
+
+## Referenzen
 {: #references-1 }
-For information about how to enable FIPS 140-2 mode in WebSphere Application Server, see [Federal Information Processing Standard support](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/rovr_fips.html).
+Wie Sie den
+FIPS-140-2-Modus in WebSphere Application Server
+aktivieren, erfahren Sie
+im Artikel [FIPS-Unterstützung](http://ibm.biz/knowctr#SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/rovr_fips.html). 
 
-For the WebSphere Application Server Liberty profile, no option is available in the administrative console to enable FIPS 140-2 mode. But you can enable FIPS 140-2 by configuring the Java™ runtime environment to use the FIPS 140-2 validated modules. For more information, see Java Secure Socket Extension (JSSE) IBMJSSE2 Provider Reference Guide.
+In der
+Administrationskonsole von
+WebSphere Application Server Liberty
+Profile gibt es keine Option zum Aktivieren des
+FIPS-140-2-Modus. FIPS 140-2 kann jedoch durch Konfigurieren der Java-Laufzeitumgebung für die
+Verwendung von FIPS-140-2-konformen Modulen aktiviert werden. Weitere Informationen hierzu finden Sie in der Veröffentlichung
+"Java Secure
+Socket Extension (JSSE) IBMJSSE2 Provider Reference Guide". 
 
-## Enabling FIPS 140-2
+## FIPS 140-2 aktivieren
 {: #enabling-fips-140-2 }
-On iOS devices, the FIPS 140-2 support is enabled by default for both data at rest and data in motion.  
-For Android devices, add the `cordova-plugin-mfp-fips` Corodva plugin.
+Auf iOS-Geräten ist die FIPS-140-2-Unterstützung standardmäßig für bewegte und ruhende Daten aktiviert.   
+Fügen Sie für Android-Geräte das Cordova-Plug-in `cordova-plugin-mfp-fips` hinzu. 
 
-Once added, the feature applies both to HTTPS and JSONStore data encryption.
+Wenn das Feature hinzugefügt wurde, wird es auf die Verschlüsselung von HTTPS- und JSONStore-Daten angewendet. 
 
-**Notes:** 
+**Hinweise:** 
 
-* FIPS 140-2 is only supported on Android and iOS. The iOS architectures that support FIPS 140-2 are i386, armv7, armv7s, x86_64, and arm64. The Android architectures that support FIPS 140-2 are x86 and armeambi.
-* On Android, FIPS 140-2 is not supported on 64-bit architecture even though the {{ site.data.keys.product_adj }} library does support 64-bit architecture. When you use FIPS 140-2 on a 64-bit device, you might see the following error: 
+* FIPS 140-2
+wird nur von Android und iOS
+unterstützt. Die iOS-Architekturen mit Unterstützung für FIPS 140-2 sind
+i386, armv7, armv7s,
+x86_64 und arm64. Die Android-Architekturen mit Unterstützung für
+FIPS 140-2 sind x86 und
+armeambi. 
+* Obwohl die
+{{ site.data.keys.product_adj }}-Bibliothek für Android
+die 64-Bit-Architektur unterstützt, wird FIPS 140-2 von dieser Architektur nicht unterstützt. Wenn Sie FIPS 140-2 auf einem 64-Bit-Gerät verwenden, kann folgender Fehler angezeigt
+werden:
+ 
         
 ```bash
 java.lang.UnsatisfiedLinkError: dlopen failed: "..." is 32-bit instead of 64-bit
 ```
 
-This error means that you have 64-bit native libraries in your Android project, and FIPS 140-2 does not currently work when you use these libraries. To confirm, go to src/main/libs or src/main/jniLibs under your Android project, and check whether you have the x86_64 or arm64-v8a folders. If you do, delete these folders, and FIPS 140-2 can work again.
+Dieser Fehler bedeutet, dass
+es in Ihrem Android-Projekt native 64-Bit-Bibliotheken gibt und dass FIPS 140-2 nicht funktioniert, wenn Sie diese Bibliotheken verwenden. Navigieren Sie in Ihrem Android-Projekt zu
+src/main/libs oder
+src/main/jniLibs und prüfen Sie, ob es den Ordner
+x86_64 oder arm64-v8a gibt. Wenn das der Fall ist, löschen Sie diese Ordner.
+FIPS 140-2 funktioniert dann wieder. 
 
-## Configure FIPS 140-2 mode for HTTPS and JSONStore encryption
+## FIPS-140-2-Modus für HTTPS- und JSONStore-Verschlüsselung konfigurieren
 {: #configure-fips-140-2-mode-for-https-and-jsonstore-encryption }
-For iOS apps, FIPS 140-2 is enabled through the iOS FIPS libraries. It is enabled by default, so no action is required to enable or configure it.
+Für iOS wird FIPS 140-2 über die iOS-FIPS-Bibliotheken aktiviert. Da das Feature standardmäßig aktiviert ist, sind keine Aktivierungs- oder Konfigurationsschritte
+erforderlich. 
 
-The following code snippet is populated into a new {{ site.data.keys.product_adj }} application in the initOptions object in the index.js for the Android operating system for configuring FIPS 140-2:
+Das folgende Code-Snippet wird in das initOptions-Objekt
+der Datei index.js einer neuen
+{{ site.data.keys.product_adj }}-Anwendung für das Android-Betriebssystem
+aufgenommen, um FIPS 140-2 zu konfigurieren: 
 
 ```javascript
 var wlInitOptions = {
   ...
-  // # Enable FIPS 140-2 for data-in-motion (network) and data-at-rest (JSONStore) on Android.
-  //   Requires the FIPS 140-2 optional feature to be enabled also.
+  // # FIPS 140-2 für transportierte Daten (Netz) und ruhende Daten (JSONStore) unter Android konfigurieren.
+  //   Das optionale Feature FIPS 140-2 muss aktiviert sein.
   // enableFIPS : false
   ...
 };
 ```
 
-The default value of **enableFIPS** is `false` for the Android operating system. To enable FIPS 140-2 for both HTTPS and JSONStore data encryption, uncomment and set the option to `true`. After you set the value of **enableFIPS** to `true`, you should listen for the FIPS ready JavaScript event by creating a listening event similar to the following sample:
+Wie Sie sehen, hat **enableFIPS** für das Android-Betriebssystem den Standardwert `false`. Wenn Sie FIPS 140-2 für die Verschlüsselung von HTTPS-Daten und von
+JSONStore-Daten verwenden möchten, entfernen Sie das Kommentarzeichen und setzen Sie die Option
+auf `true`. Überwachen Sie anschließend, ob das JavaScript-Ereignis
+zur Einsatzbereitschaft von FIPS empfangen wird. Erstellen Sie dazu ein Empfangsbereitschaftsereignis ähnlich dem im folgenden Beispiel:  
 
 ```javascript
 document.addEventListener('WL/FIPS/READY', 
     this.onFipsReady, false);
 
 onFipsReady: function() {
-  // FIPS SDK is loaded and ready
+  // FIPS-SDK geladen und bereit
 }
 ```
 
-After you set the value of the **enableFIPS** property, re-build the Android platform.
+Wenn Sie den Wert der Eigenschaft **enableFIPS** definiert haben, müssen Sie einen
+neuen Build der Android-Umgebung erstellen. 
 
-**Note: **You must install the FIPS Cordova plugin before you set the enableFIPS property value to true. Otherwise, a warning message is logged that states the initOption value is set, but the optional feature was not found. The FIPS 140-2 and JSONStore features are both optional on the Android operating system. FIPS 140-2 affects JSONStore data encryption only if the JSONStore optional feature is also enabled. If JSONStore is not enabled, then FIPS 140-2 does not affect JSONStore. In iOS, the FIPS 140-2 optional feature is not required for JSONStore FIPS 140-2 (data at rest) or HTTPS encryption (data in motion) because they are both handled by iOS. In Android, you must enable the FIPS 140-2 optional feature if you want to use JSONStore FIPS 140-2 or HTTPS encryption.
+**Hinweis:** Sie müssen das FIPS-Cordova-Plug-in installiert haben, bevor Sie die Eigenschaft
+enableFIPS auf true setzen.
+Andernfalls wird eine Warnung protokolliert, weil der Wert von initOptions gesetzt ist, das optionale Feature
+jedoch nicht gefunden wurde. Beide Features, FIPS 140-2 und
+JSONStore, sind unter dem Android-Betriebssystem optional. FIPS 140-2 wird nur für die Verschlüsselung von JSONStore-Daten
+verwendet, wenn das optionale Feature JSONStore ebenfalls aktiviert ist.
+Wenn JSONStore nicht aktiviert ist, hat FIPS 140-2 keinen Einfluss auf den JSONStore.
+Unter iOS ist das optionale Feature FIPS 140-2
+nicht für ruhende Daten (JSONStore FIPS 140-2) oder bewegte Daten (HTTPS-Verschlüsselung) erforderlich, da beide Arten von Daten direkt von iOS gehandhabt werden. Unter Android
+müsen Sie das optionale
+Feature FIPS 140-2 aktivieren, wenn Sie JSONStore FIPS 140-2 oder die HTTPS-Verschlüsselung
+verwenden möchten.
+
 
 ```bash
 [WARN] FIPSHttp feature not found, but initOptions enables it on startup
 ```
 
-## Configuring FIPS 140-2 for existing applications
+## FIPS 140-2 für vorhandene Anwendungen konfigurieren
 {: #configuring-fips-140-2-for-existing-applications }
-The FIPS 140-2 optional feature is not enabled by default on apps created for any versions of the Android operating system and on iOS apps in versions of {{ site.data.keys.product_full }} before version 8.0. To enable the FIPS 140-2 optional feature for the Android operating system, see Enabling FIPS 140-2. After the optional feature is enabled, you can configure FIPS 140-2.
+Das optionale Feature FIPS 140-2 ist standardmäßig nicht für Apps aktiviert, die für das Android-Betriebssystem erstellt wurden, sowie
+für Versionen von iOS-Apps, die
+mit Vorversionen von {{ site.data.keys.product_full }} Version
+8.0 erstellt wurden. Wie das optionale Feature FIPS 140-2 für das Android-Betriebssystem aktiviert wird, erfahren Sie unter
+"FIPS 140-2 aktivieren". Wenn FIPS 140-2 aktiviert ist, können Sie dieses
+optionale Feature konfigurieren.
 
-After you completed the steps that are described in Enabling FIPS 140-2, you must configure FIPS 140-2 by modifying the initOptions object in the index.js file to add the FIPS configuration property.
+Wenn Sie die im Artikel "FIPS 140-2 aktivieren" beschriebenen Schritte ausgeführt haben,
+müssen Sie FIPS 140-2 konfigurieren, indem Sie das initOptions-Objekt in der Datei index.js modifizieren und die
+FIPS-Konfigurationseigenschaft hinzufügen.
 
-**Note:** The FIPS 140-2 feature, combined with the JSONStore feature, enables FIPS 140-2 support for JSONStore. This combination supersedes what was indicated in tutorial JSONStore - Encrypting sensitive data with FIPS 140-2 that was available for IBM  Worklight  V6.0 or earlier. If you previously modified an application by following the instructions in this tutorial, delete and re-create its iPhone, iPad, and Android environments. Because any environment-specific changes that you previously made are lost when you delete an environment, make sure to back up any such changes before you delete any environment. After the environment is re-created, you can reapply those changes to the new environment.
+**Hinweis:**Das
+Feature FIPS
+140-2 kann mit JSONStore kombiniert werden, um FIPS-140-2-Unterstützung für
+JSONStore zu aktivieren. Diese Kombination setzt die Angaben außer Kraft, die in IBM Worklight
+bis Version 6.0
+im Lernprogramm "JSONStore - Encrypting sensitive
+data with FIPS 140-2" enthalten sind. Falls Sie eine Anwendung nach den Anweisungen in diesem Lernprogramm modifiziert hatten,
+löschen Sie die iPhone-, iPad- und Android-Umgebung der Anwendung und erstellen Sie die Umgebungen neu. Da beim Löschen einer Umgebung alle umgebungsspezifischen Änderungen, die Sie vorgenommen hatten, verlorengehen, müssen Sie
+solche Änderungen vor dem Löschen einer Umgebung sichern.
+Nach der erneuten Erstellung der Umgebung können Sie diese Änderungen
+auf die nun neue Umgebung anwenden.
 
-Add the following property to the initOptions object found in the index.js file.
+Fügen Sie die folgende Eigenschaft zum Objekt initOptions
+in der Datei index.js hinzu.
 
 ```javascript
 enableFIPS : true
 ```
 
-Re-build the Android platform.
+Erstellen Sie einen neuen Build der Android-Plattform. 

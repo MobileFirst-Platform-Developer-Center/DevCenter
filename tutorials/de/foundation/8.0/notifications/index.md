@@ -1,86 +1,113 @@
 ---
 layout: tutorial
-title: Notifications
+title: Benachrichtigungen
 show_children: true
 relevantTo: [ios,android,windows,cordova]
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Notifications is the ability of a mobile device to receive messages that are "pushed" from a server.  
-Notifications are received regardless of whether the application is currently running in the foreground or background.  
+Benachrichtigungen ermöglichen einem mobilen Gerät, Nachrichten zu empfangen, die ein Server mit einer Push-Operation gesendet hat.   
+Benachrichtigungen werden unabhängig davon empfangen, ob die Anwendung im Vordergrund oder im Hintergrund ausgeführt wird.   
 
-{{ site.data.keys.product_full }} provides a unified set of API methods to send either push or SMS notifications to iOS, Android, Windows 8.1 Universal, Windows 10 UWP and Cordova (iOS, Android) applications. The notifications are sent from the {{ site.data.keys.mf_server }} to the vendor (Apple, Google, Microsoft, SMS Gateways) infrastructure, and from there to the relevant devices. The unified notification mechanism makes the entire process of communicating with the users and devices completely transparent to the developer.
+Die {{ site.data.keys.product_full }} stellt einheitliche API-Methoden zum Senden von Push- oder
+SMS-Benachrichtigungen an iOS-, Android-, universelle Windows-8.1-, Windows-10-UWP- und Cordova-Anwendungen (iOS, Android) bereit. Die Benachrichtigungen
+werden von {{ site.data.keys.mf_server }} an die Anbieterinfrastruktur (Apple, Google, Microsoft, SMS-Gateways)
+gesendet und von dort an die betreffenden Geräte. Der einheitliche Benachrichtigungsmechanismus
+macht den gesamten Prozess der Kommunikation
+mit Benutzern und Geräten für den Entwickler vollkommen transparent. 
 
-#### Device support
+#### Geräteunterstützung
 {: #device-support }
-Push and SMS notifications are supported for the following platforms in {{ site.data.keys.product }}:
+Push- und SMS-Benachrichtigungen in der {{ site.data.keys.product }} werden für die folgenden Plattformen unterstützt:
 
-* iOS 8.x and above
-* Android 4.x and above
+* iOS ab Version 8.x
+* Android ab Version 4.x
 * Windows 8.1, Windows 10
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Push notifications](#push-notifications)
-* [SMS notifications](#sms-notifications)
-* [Proxy settings](#proxy-settings)
-* [Tutorials to follow next](#tutorials-to-follow-next)
+* [Push-Benachrichtigungen](#push-notifications)
+* [SMS-Benachrichtigungen](#sms-notifications)
+* [Proxy-Einstellungen](#proxy-settings)
+* [Nächste Lernprogramme](#tutorials-to-follow-next)
 
-## Push notifications
+## Push-Benachrichtigungen
 {: #push-notifications }
-Notifications can take several forms:
+Es gibt verschiedene Arten von Benachrichtigungen: 
 
-* **Alert (iOS, Android, Windows)** -  a pop-up text message
-* **Sound (iOS, Android, Windows)** - a sound file playing when a notification is received
-* **Badge (iOS), Tile (Windows)** - a graphical representation that allows a short text or image
-* **Banner (iOS), Toast (Windows)** - a disappearing pop-up text message at the top of the device display
-* **Interactive (iOS 8 and above)** - action buttons inside the banner of a received notification
-* **Silent (iOS 8 and above)** - sending notifications without distrubing the user
+* **Alert (iOS, Android, Windows)** -  Popup-Textnachricht
+* **Sound (iOS, Android, Windows)** - Audiodatei, die beim Empfang einer Benachrichtigung abgespielt wird
+* **Badge (iOS), Tile (Windows)** - grafische Darstellung für einen kurzen Text oder ein Bild 
+* **Banner (iOS), Toast (Windows)** - Popup-Textnachricht oben in der Geräteanzeige, die wieder ausgeblendet wird
+* **Interactive (iOS ab Version 8)** - Aktionsschaltflächen im Banner einer empfangenen Benachrichtigung
+* **Silent (iOS ab Version 8)** - Senden von Benachrichtigungen, ohne den Benutzer zu stören
 
-### Push notification types 
+### Arten von Push-Benachrichtigungen 
 {: #push-notification-types }
-#### Tag notifications
+#### Tagbasierte Benachrichtigungen
 {: #tag-notifications }
-Tag notifications are notification messages that are targeted to all the devices that are subscribed to a particular tag.  
+Tagbasierte Benachrichtigungen sind Hinweisnachrichten, die an alle Geräte gesendet werden, die einen bestimmten Tag abonniert haben.   
 
-Tags-based notifications allow segmentation of notifications based on subject areas or topics. Notification recipients can choose to receive notifications only if it is about a subject or topic that is of interest. Therefore, tags-based notification provides a means to segment recipients. This feature enables you to define tags and send or receive messages by tags. A message is targeted to only the devices that are subscribed to a tag.
+Bei tagbasierten Benachrichtigungen ist es möglich, die Benachrichtigungen ausgehend von Themenbereichen oder Topics bestimmten Segmenten zuzuordnen. Empfänger der Benachrichtigungen
+können angeben, dass sie nur Benachrichtigungen zu einem bestimmten Thema oder einem sie interessierenden Topic empfangen möchten. Bei tagbasierten Benachrichtigungen gibt es zu diesem Zweck
+eine Möglichkeit, Empfänger Segmenten zuzuordnen. Mit diesem Feature können Tags definiert werden, um
+dann Nachrichten auf der Basis von Tags zu senden und zu empfangen. Eine Nachricht wird nur an die Geräte gesendet, die einen Tag abonniert haben. 
 
-#### Broadcast notifications
+#### Broadcastbenachrichtigungen
 {: #broadcast-notifications }
-Broadcast notifications are a form of tag push notifications that are targeted to all subscribed devices, and are enabled by default for any push-enabled {{ site.data.keys.product_adj }} application by a subscription to a reserved `Push.all` tag (auto-created for every device). Broadcast notifications can be disabled by unsubscribing from the reserved `Push.all` tag.
+Broadcastbenachrichtigungen sind eine Form der tagbasierten Push-Benachrichtigungen, die an alle eingeschriebenen Geräte gesendet werden und standardmäßig
+für alle Push-fähigen {{ site.data.keys.product_adj }}-Anwendungen
+durch das Abonnement eines reservierten Tags `Push.all` aktiviert werden. (Der Tag wird automatisch für jedes Gerät erstellt.) Broadcastbenachrichtigungen können inaktiviert werden, indem
+das Abonnement des reservierten Tags `Push.all` beendet wird. 
 
-#### Unicast notifications
+#### Unicastbenachrichtigungen
 {:# unicast-notifications }
-Unicast notifications, or User Authenticated Notifications that are secured with OAuth. These are notification messages target a particular device or a userID(s). The userID in the user subscription can come from the underlying security context.
+Unicastbenachrichtigungen oder mit OAuth geschützte authentifizierte Benachrichtigungen
+sind Benachrichtigungen, die an ein
+bestimmtes Gerät oder an bestimmte Benutzer-IDs gesendet werden. Die Benutzer-ID (userID) im Benutzerabonnement kann aus dem
+zugrunde liegenden Sicherheitskontext stammen. 
 
-#### Interactive notifications
+#### Interaktive Benachrichtigungen
 {: #interactive-notifications }
-With interactive notification, when a notification arrives, users can take actions without opening the application. When an interactive notification arrives, the device shows action buttons along with the notification message. Currently, interactive notifications are supported on devices with iOS version 8 onwards. If an interactive notification is sent to an iOS device with version earlier than 8, the notification actions are not displayed.
+Wenn eine interaktive Benachrichtigung eingeht, können Benutzer Aktionen ausführen, ohne die Anwendung zu öffnen. Beim Eintreffen einer interaktiven Benachrichtigung zeigt das Gerät die Nachricht und Aktionsschaltflächen an. Interaktive Benachrichtigungen werden zurzeit auf Geräten mit iOS ab Version 8 unterstützt. Wenn eine interaktive Benachrichtigung an ein iOS-Gerät mit einer älteren Version als Version 8 gesendet wird, werden die Benachrichtigungsaktionen nicht angezeigt. 
 
-> Learn how to handle [interactive notifications](handling-push-notifications/interactive).
+> Informieren Sie sich über die Handhabung [interaktiver Benachrichtigungen](handling-push-notifications/interactive).
 
-#### Silent notifications
+#### Benachrichtigungen im Hintergrund
 {: #silent-notifications }
-Silent notifications are notifications that do not display alerts or otherwise disturb the user. When a silent notification arrives, the application handing code runs in background without bringing the application to foreground. Currently, the silent notifications are supported on iOS devices with version 7 onwards. If the silent notification is sent to iOS devices with version lesser than 7, the notification is ignored if the application is running in background. If the application is running in the foreground, then the notification callback method is invoked.
+Die Benachrichtigung im Hintergrund erfolgt ohne Anzeige von Alerts oder andere Störungen des Benutzers. Wenn eine Benachrichtigung im Hintergrund eingeht,
+wird der Handling-Code der Anwendung im Hintergrund ausgeführt, ohne die Anwendung in den Vordergrund zu bringen. Zurzeit werden Benachrichtigungen im Hintergrund auf
+iOS-Geräten der Version 7 oder einer aktuelleren Version unterstützt. Wenn die Benachrichtigung im Hintergrund an iOS-Geräte mit einer älteren Version als Version 7
+gesendet wird und die Anwendung im Hintergrund ausgeführt wird, wird die Benachrichtigung ignoriert. Falls
+die Anwendung im Vordergrund ausgeführt wird, wird die Callback-Methode für Benachrichtigungen aufgerufen.
 
-> Learn how to handle [silent notifications](handling-push-notifications/silent).
+> Informieren Sie sich über die Handhabung von [Benachrichtigungen im Hintergrund](handling-push-notifications/silent).
 
-**Note:** Unicast notifications do not contain any tag in the payload. The notification message can target multiple devices or users by specifying multiple deviceIDs or userIDs respectively, in the target block of the POST message API.
+**Hinweis:** Unicastbenachrichtigungen enthalten keinen Tag in den Nutzdaten. Die Benachrichtigung kann an mehrere Geräte oder Benutzer
+gesendet werden, wenn im Zielblock der API "Message (POST)"
+mehrere deviceIDs bzw. userIDs angegeben werden.
 
-## SMS Notifications
+## SMS-Benachrichtigungen
 {: #sms-notifications }
-To start receiving SMS notifications, an application must first register to an SMS notification subscription. To subscribe to SMS notifications, the user supplies a mobile phone number and approves the notification subscription. A subscription request is sent to the {{ site.data.keys.mf_server }} upon receipt of the user approval. When a notification is retrieved from the {{ site.data.keys.mf_console }}, it is processed and sent through a preconfigured SMS gateway.
+Für eine Anwendung muss zunächst das Abonnement von SMS-Benachrichtigungen registriert sein, damit sie SMS-Benachrichtigungen empfangen kann. Für das Abonnement von SMS-Benachrichtigungen gibt der Benutzer eine
+Handynummer an und bestätigt das Abonnement von Benachrichtigungen. Bei Empfang der Benutzerbestätigung wird eine Abonnementanforderung an
+{{ site.data.keys.mf_server }} gesendet. Wenn eine Benachrichtigung von der
+{{ site.data.keys.mf_console }} empfangen wird, wird sie verarbeitet und über ein vorkonfiguriertes SMS-Gateway gesendet. 
 
-To configure a gateway, see the [Sending Notifications](sending-notifications) tutorial.
+Informationen zum Konfigurieren eines Gateways enthält das Lernprogramm [Benachrichtigungen senden](sending-notifications). 
 
-## Proxy settings
+## Proxy-Einstellungen
 {: #proxy-settings }
-Use the proxy settings to set the optional proxy through which notifications are sent to APNS and GCM. You can set the proxy by using the **push.apns.proxy.*** and **push.gcm.proxy.*** configuration properties. For more information, see [List of JNDI properties for {{ site.data.keys.mf_server }} push service](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
+In den Proxy-Einstellungen können Sie den optionalen Proxy festlegen, über den Benachrichtigungen
+an APNS
+und GCM gesendet werden. Verwenden Sie die Konfigurationseigenschaften **push.apns.proxy.*** und **push.gcm.proxy.***, um den Proxy festzulegen. Weitere Informationen
+finden Sie in der [Liste der
+JNDI-Eigenschaften für den MobileFirst-Server-Push-Service](../installation-configuration/production/server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service).
 
-> **Note:** WNS does not have proxy support.
+> **Hinweis:** WNS bietet keine Proxyunterstützung. 
 
-## Tutorials to follow next
+## Nächste Lernprogramme
 {: #tutorials-to-follow-next }
-Follow through the below required setup of the server-side and client-side in order to be able to send and receive push notifications:
+Führen Sie die folgenden Schritte für das erforderliche server- und clientseitige Setup aus, damit Sie Push-Benachrichtigungen senden und empfangen können. 

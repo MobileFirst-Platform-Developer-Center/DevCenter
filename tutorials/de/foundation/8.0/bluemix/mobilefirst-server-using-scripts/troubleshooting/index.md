@@ -1,125 +1,142 @@
 ---
 layout: tutorial
-title: Troubleshooting
+title: Fehlerbehebung
 relevantTo: [ios,android,windows,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-### Resolving problems with {{ site.data.keys.product_full }} on IBM Containers	
+### Probleme mit der {{ site.data.keys.product_full }} in IBM Containern lösen	
 {: #resolving-problems-with-ibm-mobilefirst-foundation-on-ibm-containers }
-When you are unable to resolve a problem encountered while working with {{ site.data.keys.product_full }} on IBM Containers, be sure to gather this key information before contacting IBM Support.
+Wenn beim Arbeiten mit der {{ site.data.keys.product_full }} in IBM Containern ein Problem auftritt, das Sie nicht lösen können, stellen Sie die folgenden wichtigen Informationen zusammen, bevor Sie Kontakt zum
+IBM Support aufnehmen.
 
-To help expedite the troubleshooting process, gather the following information:
+Stellen Sie die folgenden Informationen zusammen, um den Fehlerbehebungsprozess zu beschleunigen: 
 
-* The version of {{ site.data.keys.product }} that you are using (must be V8.0.0 or later) and any interim fixes that were applied.
-* The container size selected. For example, Medium 2GB.
-* The Bluemix  dashDB database plan type. For example, EnterpriseTransactional 2.8.50.
-* The container ID
-* The public IP address (if assigned)
-* Versions of docker and cloud foundry: `cf -v` and `docker version`
-* The information returned from running the following Cloud Foundry CLI plug-in for IBM Containers (cf ic) commands from the organization and space where your {{ site.data.keys.product }} container is deployed:
+* Verwendete Version der {{ site.data.keys.product }} (Version 8.0.0 oder eine aktuellere Version) und alle angewendeten vorläufigen Fixes 
+* Gewählte Containergröße, z. B. Medium 2GB
+* Art des Bluemix-dashDB-Datenbankplans, z. B. EnterpriseTransactional 2.8.50
+* Container-ID
+* Öffentliche IP-Adresse (sofern zugewiesen)
+* Version von Docker und Cloud Foundry: `cf -v` und `docker version`
+* Von den folgenden Befehlen des Cloud-Foundry-CLI-Plug-ins für IBM Container (cf ic) zurückgegebene Informationen von der Organisation und dem Bereich, in der bzw. in dem Ihr Container mit der {{ site.data.keys.product }} implementiert ist: 
  - `cf ic info`
- - `cf ic ps -a` (If more than one container instance is listed, make sure to indicate the one with the problem.)
-* If Secure Shell (SSH) and volumes were enabled during container creation (while running the **startserver.sh** script), collect all files in the following folders: /opt/ibm/wlp/usr/servers/mfp/logs and /var/log/rsyslog/syslog
-* If only volume was enabled and SSH was not, collect the available log information using the Bluemix dashboard. After you click on the container instance in the Bluemix dashboard, click the Monitoring and Logs link in the sidebar. Go to the Logging tab and then click ADVANCED VIEW. The Kibana dashboard opens separately. Using the search toolbar, search for the exception stack trace and then collect the complete details of the exception, @time-stamp, _id.
+ - `cf ic ps -a` (Falls mehrere Containerinstanzen aufgelistet sind, bezeichnen Sie die Instanz, bei der das Problem besteht.) 
+* Wenn während der Containererstellung, d. h. beim Ausführen des Scripts **startserver.sh**, Secure Shell (SSH) und Datenträger aktiviert waren, stellen Sie alle Dateien aus den Ordnern /opt/ibm/wlp/usr/servers/mfp/logs und /var/log/rsyslog/syslog zusammen. 
+* Wenn nur Datenträger aktiviert waren, SSH jedoch nicht, stellen Sie über das Bluemix-Dashboard die verfügbaren Protokolldaten zusammen. Wenn Sie im Bluemix-Dashboard auf die Containerinstanz geklickt haben, klicken Sie in der Seitenleiste auf den Link "Monitoring and Logs". Öffnen Sie die Registgerkarte "Logging" und klicken Sie auf ADVANCED VIEW. Das Kibana-Dashboard wird
+separat geöffnet. Verwenden Sie die Suchsymbolleiste für den Stack-Trace für Ausnahmebedingungen. Stellen Sie die vollständigen Details der Ausnahme (@Zeitmarke, _ID) zusammen.
 
-### Docker-related error while running script	
+### Docker-Fehler nach der Scriptausführung	
 {: #docker-related-error-while-running-script }
-If you encounter Docker-related errors after executing the initenv.sh or prepareserver.sh scripts, try restarting the Docker service.
+Wenn nach Ausführung des Scripts initenv.sh oder prepareserver.sh Docker-bezogene Fehler angezeigt werden, versuchen Sie, den Docker-Service neu zu starten. 
 
-**Example message** 
+**Beispielnachricht** 
 
 > Pulling repository docker.io/library/ubuntu  
 > Error while pulling image: Get https://index.docker.io/v1/repositories/library/ubuntu/images: dial tcp: lookup index.docker.io on 192.168.0.0:00: DNS message ID mismatch
 
-**Explanation**  
-The error could occur when the internet connection has changed (such as connecting to or disconnecting from a VPN or network configuration changes) and the Docker runtime environment has not yet restarted. In this scenario, errors would occur when any Docker command is issued.
+**Erläuterung**  
+Der Fehler kann auftreten, wenn sich die Internetverbindung geändert hat (z. B. Herstellung oder Trennung einer VPN-Verbindung oder eine Änderung der
+Netzkonfiguration) und die Docker-Laufzeitumgebung noch nicht neu gestartet wurde. In einer solchen Situation treten Fehler auf, wenn Docker-Befehle abgesetzt
+werden. 
 
-**How to resolve**  
-Restart the Docker service. If the error persists, reboot the computer and then restart the Docker service.
+**Problemlösung**  
+Starten Sie den Docker-Service neu. Tritt der Fehler erneut auf, starten Sie den Computer neu und dann den Docker-Service. 
 
-### Bluemix registry error	
+### Bluemix-Registryfehler	
 {: #bluemix-registry-error }
-If you encounter a registry-related error after executing the prepareserver.sh or prepareanalytics.sh scripts, try running the initenv.sh script first.
+Wenn nach Ausführung des Scripts prepareserver.sh oder prepareanalytics.sh ein Registry-bezogener Fehler angezeigt wird, versuchen Sie zuerst, das Script initenv.sh auszuführen. 
 
-**Explanation**  
-In general, any network problems that occur while the prepareserver.sh or prepareanalytics.sh scripts are running could cause processing to hang and then fail.
+**Erläuterung**  
+Netzprobleme, die während der Ausführung des Scripts prepareserver.sh oder
+prepareanalytics.sh auftreten, können dazu führen, dass die Verarbeitung blockiert wird und dann fehlschlägt. 
 
-**How to resolve**  
-First, run the initenv.sh script again to log in to the container registry on Bluemix . Then, rerun the script that previously failed.
+**Problemlösung**  
+Führen Sie zunächst erneut das Script initenv.sh aus, um sich bei der
+Container-Registry in Bluemix anzumelden. Führen Sie dann erneut
+das zuvor fehlgeschlagene Script aus. 
 
-### Unable to create the mfpfsqldb.xml file
+### Datei mfpfsqldb.xml kann nicht erstellt werden
 {: #unable-to-create-the-mfpfsqldbxml-file }
-An error occurs at the end of running the **prepareserverdbs.sh** script:
+Bei Ausführung des Scripts **prepareserverdbs.sh** tritt gegen Ende der folgende Fehler auf: 
 
-> Error : unable to create mfpfsqldb.xml
+> Error: unable to create mfpfsqldb.xml
 
-**How to resolve**  
-The problem might be an intermittent database connectivity issue. Try to run the script again.
+**Problemlösung**  
+Es könnte eine vorübergehende Störung der Datenbankverbindungen vorliegen. Versuchen Sie erneut, das Script auszuführen. 
 
-### Taking a long time to push image	
+### Übertragung des Image dauert lange	
 {: #taking-a-long-time-to-push-image }
-When running the prepareserver.sh script, it takes more than 20 minutes to push an image to the IBM Containers registry.
+Wenn Sie das Script prepareserver.sh ausführen, dauert es mehr als 20 Minuten, ein Image mit Push in die IBM Container-Registry zu übertragen. 
 
-**Explanation**  
-The **prepareserver.sh** script pushes the entire {{ site.data.keys.product }} stack, which can take from 20 to 60 minutes.
+**Erläuterung**  
+Das Script **prepareserver.sh** überträgt den gesamten Stack der {{ site.data.keys.product }} per Push-Operation. Dieser Prozess kann 20 bis 60 Minuten dauern. 
 
-**How to resolve**  
-If the script has not completed after a 60-minute time period has elapsed, the process might be hung because of a connectivity issue. After a stable connection is reestablished, restart the script.
+**Problemlösung**  
+Wenn das Script nach 60 Minuten noch nicht abgeschlossen ist, wurde der Prozess vielleicht wegen eines Verbindungsproblems blockiert. Starten Sie das Script erneut, nachdem Sie eine
+stabile Verbindung hergestellt haben. 
 
-### Binding is incomplete error	
+### Fehler wegen unvollständiger Bindung	
 {: #binding-is-incomplete-error }
-When running a script to start a container (such as **startserver.sh** or **startanalytics.sh**) you are prompted to manually bind an IP address because of an error that the binding is incomplete.
+Wenn Sie ein Script zum Starten eines Containers ausführen (z. B. **startserver.sh** oder **startanalytics.sh**),
+werden Sie wegen einer unvollständigen Bindung aufgefordert, manuell eine IP-Adresse zu binden. 
 
-**Explanation**  
-The script is designed to exit after a certain time duration has passed.
+**Erläuterung**  
+Das Script ist so konzipiert, dass es nach einer bestimmten Zeitspanne beendet wird. 
 
-**How to resolve**  
-Manually bind the IP address by running the related cf ic command. For example, cf ic ip bind.
+**Problemlösung**  
+Binden Sie die IP-Adresse manuell, indem Sie den zugehörigen Befehl cf ic ausführen, z. B. cf ic ip bind.
 
-If binding the IP address manually is not successful, ensure that the status of the container is running and then try binding again.  
-**Note:** Containers must be in a running state to be bound successfully.
+Wenn das manuelle Binden der IP-Adresse nicht erfolgreich ist, stellen Sie sicher, dass der Container aktiv ist. Wiederholen Sie dann den Bindungsversuch.
+                      
+**Hinweis:** Für eine erfolgreiche Bindung müssen Container aktiv sein. 
 
-### Script fails and returns message about tokens	
+### Script schlägt fehl und gibt eine Nachricht zu Token zurück	
 {: #script-fails-and-returns-message-about-tokens }
-Running a script is not successful and returns a message similar to Refreshing cf tokens or Failed to refresh token.
+Die Ausführung eines Scripts ist nicht erfolgreich. Eine Nachricht wie "Refreshing cf tokens" oder "Failed to refresh token" wird zurückgegeben.
 
-**Explanation**  
-The Bluemix session might have timed-out. The user must be logged in to Bluemix before running the container scripts.
+**Erläuterung**  
+Möglicherweise wurde das zulässige Zeitlimit für die Bluemix-Sitzung überschritten. Der Benutzer muss sich bei Bluemix angemeldet haben, bevor er die Containerscripts ausführt. 
 
-**How to resolve**
-Run the initenv.sh script again to log in to Bluemix and then run the failed script again.
+**Verwendungshinweise**
+Führen Sie erneut das Script initenv.sh aus, um sich bei Bluemix anzumelden. Führen Sie dann nochmals das fehlgeschlagene Script aus. 
 
-### Administration DB, Live Update and Push Service show up as inactive	
+### Verwaltungsdatenbank, Liveaktualisierungsservice und Push-Service werden als inaktiv angezeigt	
 {: #administration-db-live-update-and-push-service-show-up-as-inactive }
-Administration DB, Live Update and Push Service show up as inactive or no runtimes are listed in the {{ site.data.keys.mf_console }} even though the **prepareserver.sh** script completed successfully.
+In der {{ site.data.keys.mf_console }} werden die Verwaltungsdatenbank, der Liveaktualisierungsservice und der Push-Service als inaktiv angezeigt oder es sind keine Laufzeiten aufgelistet, obwohl das Script **prepareserver.sh** erfolgreich ausgeführt wurde. 
 
-**Explanation**  
-It is possible that a either a connection to the database service did not get established or that a formatting problem occurred in the server.env file when additional values were appended during deployment.
+**Erläuterung**  
+Es ist möglich, dass eine Verbindung zur Datenbank nicht hergestellt wurde oder dass in der Datei server.env beim Anfügen zusätzlicher Werte während der Implementierung
+ein Formatierungsproblem aufgetreten ist. 
 
-If additional values were added to the server.env file without new line characters, the properties would not resolve. You can validate this potential problem by checking the log files for errors caused by unresolved properties that look similar to this error:
+Wenn zur Datei server.env zusätzliche Werte ohne Zeilenvorschubzeichen hinzugefügt wurden, können die Eigenschaften nicht aufgelöst werden. Sie können feststellen, ob dieses Problem besteht,
+indem Sie die Protokolldateien auf Fehler wegen nicht aufgelöster Eigenschaften überprüfen.
+Solche Fehler könnten wie folgt aussehen: 
 
 > FWLSE0320E: Failed to check whether the admin services are ready. Caused by: [project Sample] java.net.MalformedURLException: Bad host: "${env.IP_ADDRESS}"
 
-**How to resolve**  
-Manually restart the containers. If the problem still exists, check to see if the number of connections to the database service exceeds the number of connections provisioned by your database plan. If so, make any needed adjustments before proceeding.
+**Problemlösung**  
+Starten Sie die Container manuell neu. Besteht das Problem weiterhin, überprüfen Sie, ob die Anzahl der Verbindungen zum Datenbankservice
+die in Ihrem Datenbankplan vorgesehene Anzahl Verbindungen überschreitet. Ist das der Fall, nehmen Sie die erforderlichen Anpassungen vor. 
 
-If the problem was caused by unresolved properties, ensure that your editor adds the linefeed (LF) character to demarcate the end of a line when editing any of the provided files. For example, the TextEdit app on macOS might use the CR character to mark the end of line instead of LF, which would cause the issue.
+Wenn das Problem durch nicht aufgelöste Eigenschaften hervorgerufen wurde, stellen Sie sicher, dass Ihr Editor beim Bearbeiten der bereitgestellten Dateien
+das Zeilenvorschubzeichen (LF)
+hinzufügt, um das Ende einer Zeile zu markieren. Die App TextEdit für macOS könnte das Zeilenende beispielsweise mit dem Zeichen CR und nicht mit LF markieren, was dann zu diesem Problem führen würde. 
 
-### prepareserver.sh script fails	
+### Script prepareserver.sh schlägt fehl	
 {: #prepareserversh-script-fails }
-The **prepareserver.sh** script fails and returns the error 405 Method Not Allowed.
+Das Script **prepareserver.sh** schlägt fehl und gibt den Fehler "405 Method Not Allowed" zurück.
 
-**Explanation**  
-The following error occurs when running the **prepareserver.sh** script to push the image to the IBM Containers registry.
+**Erläuterung**  
+Wenn Sie das Script **prepareserver.sh** ausführen, um das Image per Push an die IBM Container-Registry zu senden, tritt der folgende Fehler auf. 
 
-> Pushing the {{ site.data.keys.mf_server }} image to the IBM Containers registry..  
+> Pushing the {{ site.data.keys.mf_server }} image to the IBM Containers registry.  
 > Error response from daemon:  
 > 405 Method Not Allowed  
 > Method Not Allowed  
 > The method is not allowed for the requested URL.
 
-This error typically occurs if the Docker variables have been modified on the host environment. After executing the initenv.sh script, the tooling provides an option to override the local docker environment to connect to IBM Containers using native docker commands.
+Dieser Fehler tritt in der Regel auf, wenn in der Hostumgebung Docker-Variablen modifiziert wurden. Nach der Ausführung des Scripts initenv.sh stellen die Tools eine Option zum Überschreiben der lokalen Docker-Umgebung bereit, um mit nativen Docker-Befehlen eine Verbindung zum Service "IBM Containers" herstellen zu können. 
 
-**How to resolve**  
-Do not modify the Docker variables (such as DOCKER\_HOST and DOCKER\_CERT\_PATH) to point to the IBM Containers registry environment. For the **prepareserver.sh** script to work correctly, the Docker variables must point to the local Docker environment.
+**Problemlösung**  
+Modifizieren Sie die Docker-Variablen (z. B. DOCKER\_HOST und DOCKER\_CERT\_PATH) nicht so, dass sie auf die Umgebung der IBM Container-Registry zeigen. Wenn das Script **prepareserver.sh** ordnungsgemäß funktionieren soll, müssen die Docker-Variablen
+auf die lokale Docker-Umgebung zeigen. 

@@ -1,122 +1,133 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in Windows 8.1 Universal and Windows 10 UWP
+title: Push-Benachrichtigungen Windows 8.1 Universal und Windows 10 UWP
 breadcrumb_title: Windows
 relevantTo: [windows]
 weight: 7
 downloads:
-  - name: Download Windows 8.1 Universal Project
+  - name: Universelles Windows-8.1-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80
-  - name: Download Windows 10 UWP Project
+  - name: Windows-10-UWP-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin10/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in native Windows 8.1 Universal and Windows 10 UWP applications using C#.
+Sie können
+die {{ site.data.keys.product_adj }}-API für Benachrichtigungen verwenden,
+um Geräte zu registrieren und Geräteregistrierungen aufzuheben und um
+Tags zu abonnieren und Tagabonnements zu beenden. In diesem Lernprogramm werden Sie lernen, wie
+Push-Benachrichtigungen in universellen Windows-8.1-Anwendungen und Windows-10-UWP-Anwendungen mit C# gehandhabt werden. 
 
-**Prerequisites:**
+**Voraussetzungen: **
 
-* Make sure you have read the following tutorials:
-	* [Push Notifications Overview](../../)
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product_adj }} SDK to windows applications](../../../application-development/sdk/windows-8-10)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* Stellen Sie sicher, dass Sie die folgenden Lernprogramme durchgearbeitet haben: 
+	* [Übersicht über Push-Benachrichtigungen](../../)
+    * [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/#installing-a-development-environment)
+    * [{{ site.data.keys.product_adj }}-SDK zu Windows-Anwendungen hinzufügen](../../../application-development/sdk/windows-8-10)
+* {{ site.data.keys.mf_server }} wird lokal oder fern ausgeführt. 
+* Die {{ site.data.keys.mf_cli }} ist auf der Entwicklerworkstation installiert. 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Notifications configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
+* [Benachrichtigungskonfiguration](#notifications-configuration)
+* [API für Benachrichtigungen](#notifications-api)
+* [Handhabung von Push-Benachrichtigungen](#handling-a-push-notification)
 
-## Notifications Configuration
+## Benachrichtigungskonfiguration
 {: #notifications-configuration }
-Create a new Visual Studio project or use and existing one.  
-If the {{ site.data.keys.product_adj }} Native Windows SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product_adj }} SDK to Windows applications](../../../application-development/sdk/windows-8-10) tutorial.
+Erstellen Sie ein neues Visual-Studio-Projekt oder verwenden Sie ein vorhandenes Projekt.   
+Wenn das native {{ site.data.keys.product_adj }}-Windows-SDK noch nicht im Projekt enthalten ist, folgen Sie den Anweisungen
+im Lernprogramm [{{ site.data.keys.product_adj }}-SDK zu Windows-Anwendungen hinzufügen](../../../application-development/sdk/windows-8-10). 
 
-### Adding the Push SDK
+### Push-SDK hinzufügen
 {: #adding-the-push-sdk }
-1. Select Tools → NuGet Package Manager → Package Manager Console.
-2. Choose the project where you want to install the {{ site.data.keys.product_adj }} Push component.
-3. Add the {{ site.data.keys.product_adj }} Push SDK by running the **Install-Package IBM.MobileFirstPlatformFoundationPush** command.
+1. Wählen Sie "Extras → NuGet Package Manager → Package Manager Console" aus.
+2. Wählen Sie das Projekt aus, in dem Sie die
+{{ site.data.keys.product_adj }}-Push-Komponente installieren wollen.
+3. Fügen Sie das {{ site.data.keys.product_adj }}-Push-SDK hinzu, indem Sie den Befehl
+**Install-Package IBM.MobileFirstPlatformFoundationPush** ausführen. 
 
-## Pre-requisite WNS configuration
+## Vorausgesetzte WNS-Konfiguration
 {: pre-requisite-wns-configuration }
-1. Ensure the application is with Toast notification capability. This can be enabled in Package.appxmanifest.
-2. Ensure `Package Identity Name` and `Publisher` should be updated with the values registered with WNS.
-3. (Optional) Delete TemporaryKey.pfx file.
+1. Stellen Sie sicher, dass die Anwendung über die Popup-Benachrichtigungsfunktion (Toast) verfügt. Sie können die Funktion in Package.appxmanifest aktivieren.
+2. `Identitätsname des Pakets` und `Publisher` müssen mit den registrierten Werten aus dem WNS aktualisiert worden sein. 
+3. Löschen Sie die Datei TemporaryKey.pfx (optional). 
 
-## Notifications API
+## API für Benachrichtigungen
 {: #notifications-api }
-### MFPPush Instance
+### MFPPush-Instanz
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be done by creating a variable such as `private MFPPush PushClient = MFPPush.GetInstance();`, and then calling `PushClient.methodName()` throughout the class.
+Alle API-Aufrufe müssen für eine Instanz von `MFPPush` ausgeführt werden. Zu diesem Zweck können Sie eine Variable
+erstellen, z. B. `private MFPPush PushClient = MFPPush.GetInstance();`, und dann in der gesamten Klasse `PushClient.methodName()` aufrufen. 
 
-Alternatively you can call `MFPPush.GetInstance().methodName()` for each instance in which you need to access the push API methods.
+Alternativ dazu könen Sie `MFPPush.GetInstance().methodName()` für jede Instanz aufrufen, in der
+Sie auf die Push-API-Methoden zugreifen müssen. 
 
-### Challenge Handlers
+### Abfrage-Handler
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+Wenn der Bereich `push.mobileclient` einer **Sicherheitsüberprüfung** zugeordnet ist,
+müssen Sie sicherstellen, dass passende **Abfrage-Handler** registriert sind, bevor Push-APIs verwendet werden. 
 
-> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/ios) tutorial.
+> Weitere Informationen zu Abfrage-Handlern enthält das Lernprogramm [Berechtigungsnachweise validieren](../../../authentication-and-security/credentials-validation/ios).
 
-### Client-side
+### Clientseite
 {: #client-side }
-| C Sharp Methods                                                                                                | Description                                                             |
+
+| C-Sharp-Methoden                                                                                                | Beschreibung                                                             |
 |--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`Initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
-| [`IsPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
-| [`GetTags()`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
-| [`Subscribe(String[] Tags)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
-| [`GetSubscriptions()`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
-| [`Unsubscribe(String[] Tags)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
-| [`UnregisterDevice()`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
+| [`Initialize()`](#initialization)                                                                            | Initialisiert MFPPush für den angegebenen Kontext                               |
+| [`IsPushSupported()`](#is-push-supported)                                                                    | Unterstützt das Gerät Push-Benachrichtigungen?                             |
+| [`RegisterDevice(JObject options)`](#register-device--send-device-token)                  | Registriert das Gerät beim Push-Benachrichtigungsservice               |
+| [`GetTags()`](#get-tags)                                | Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab |
+| [`Subscribe(String[] Tags)`](#subscribe)     | Richtet das Geräteabonnement für die angegebenen Tags ein                          |
+| [`GetSubscriptions()`](#get-subscriptions)              | Ruft die derzeit vom Gerät abonnierten Tags ab                |
+| [`Unsubscribe(String[] Tags)`](#unsubscribe) | Beendet das Abonnement bestimmter Tags                                  |
+| [`UnregisterDevice()`](#unregister)                     | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf              |
 
-#### Initialization
+#### Initialisierung
 {: #initialization }
-Initialization is required for the client application to connect to MFPPush service.
+Die Initialisierung ist erforderlich, damit die Clientanwendung eine Verbindung zum Service MFPPush herstellen kann. 
 
-* The `Initialize` method should be called first before using any other MFPPush APIs.
-* It registers the callback function to handle received push notifications.
+* Die Methode `Initialize` muss aufgerufen werden, bevor andere MFPPush-APIs verwendet werden.
+* Die Callback-Funktion wird für die Handhabung empfangener Push-Benachrichtigungen registriert. 
 
 ```csharp
 MFPPush.GetInstance().Initialize();
 ```
 
-#### Is push supported
+#### Wird Push unterstützt?
 {: #is-push-supported }
-Checks if the device supports push notifications.
+Es wird überprüft, ob das Gerät Push-Benachrichtigungen unterstützt. 
 
 ```csharp
 Boolean isSupported = MFPPush.GetInstance().IsPushSupported();
 
 if (isSupported ) {
-    // Push is supported
+    // Push wird unterstützt.
 } else {
-    // Push is not supported
+    // Push wird nicht unterstützt.
 }
 ```
 
-#### Register device &amp; send device token
+#### Gerät registrieren und Gerätetoken senden
 {: #register-device--send-device-token }
-Register the device to the push notifications service.
+Registrieren Sie das Gerät beim Push-Benachrichtigungsservice. 
 
 ```csharp
 JObject Options = new JObject();
 MFPPushMessageResponse Response = await MFPPush.GetInstance().RegisterDevice(Options);         
 if (Response.Success == true)
 {
-    // Successfully registered
-} else {
-    // Registration failed with error
-}
-```
+    // Erfolgreich registriert
+     } else {
+         // Registrierung mit Fehler fehlgeschlagen
+     }
+ ```
 
-#### Get tags
+#### Tags abrufen
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+Rufen Sie alle verfügbaren Tags vom Push-Benachrichtigungsservice ab. 
 
 ```csharp
 MFPPushMessageResponse Response = await MFPPush.GetInstance().GetTags();
@@ -128,28 +139,28 @@ if (Response.Success == true)
 }
 ```
 
-#### Subscribe
+#### Abonnement
 {: #subscribe }
-Subscribe to desired tags.
+Abonnieren Sie die gewünschten Tags. 
 
 ```csharp
 string[] Tags = ["Tag1" , "Tag2"];
 
-// Get subscription tag
+// Abonnementtag abrufen
 MFPPushMessageResponse Response = await MFPPush.GetInstance().Subscribe(Tags);
 if (Response.Success == true)
 {
-    //successfully subscribed to push tag
+    // Push-Tag erfolgreich abonniert
 }
 else
 {
-    //failed to subscribe to push tags
+    // Abonnement von Push-Tags fehlgeschlagen
 }
 ```
 
-#### Get subscriptions
+#### Abonnements abrufen
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+Rufen Sie die derzeit vom Gerät abonnierten Tags ab. 
 
 ```csharp
 MFPPushMessageResponse Response = await MFPPush.GetInstance().GetSubscriptions();
@@ -163,73 +174,74 @@ else
 }
 ```
 
-#### Unsubscribe
+#### Abonnement beenden
 {: #unsubscribe }
-Unsubscribe from tags.
+Beenden Sie das Tagabonnement. 
 
 ```csharp
 string[] Tags = ["Tag1" , "Tag2"];
 
-// unsubscribe tag
+// Tagabonnement beenden
 MFPPushMessageResponse Response = await MFPPush.GetInstance().Unsubscribe(Tags);
 if (Response.Success == true)
 {
-    //succes
+    // Erfolg
 }
 else
 {
-    //failed to subscribe to tags
+    // Tagabonnement fehlgeschlagen
 }
 ```
 
-#### Unregister
+#### Registrierung aufheben
 {: #unregister }
-Unregister the device from push notification service instance.
+Sie können die Registrierung des Geräts bei der Instanz des Push-Benachrichtigungsservice
+aufheben. 
 
 ```csharp
 MFPPushMessageResponse Response = await MFPPush.GetInstance().UnregisterDevice();         
 if (Response.Success == true)
 {
-    // Successfully registered
-} else {
-    // Registration failed with error
-}
-```
+    // Erfolgreich registriert
+     } else {
+         // Registrierung mit Fehler fehlgeschlagen
+     }
+ ```
 
-## Handling a push notification
+## Handhabung von Push-Benachrichtigungen
 {: #handling-a-push-notification }
-In order to handle a push notification you will need to set up a `MFPPushNotificationListener`.  This can be achieved by implementing the following method.
+Für die Handhabung von Push-Benachrichtigungen müssen Sie einen `MFPPushNotificationListener` einrichten. Zu diesem Zweck können Sie die folgende Methode implementieren. 
 
-1. Create a class by using interface of type MFPPushNotificationListener
+1. Erstellen Sie eine Klasse. Verwenden Sie dazu eine Schnittstelle vom Typ MFPPushNotificationListener. 
 
    ```csharp
    internal class NotificationListner : MFPPushNotificationListener
    {
         public async void onReceive(String properties, String payload)
    {
-        // Handle push notification here      
+        // Hier Behandlung von Push-Benachrichtigungen
    }
    }
    ```
 
-2. Set the class to be the listener by calling `MFPPush.GetInstance().listen(new NotificationListner())`
-3. In the onReceive method you will receive the push notification and can handle the notification for the desired behavior.
+2. Definieren Sie die Klasse als Listener, indem Sie `MFPPush.GetInstance().listen(new NotificationListner())` aufrufen. 
+3. In der Methode onReceive empfangen Sie die Push-Benachrichtigung und können für die Benachrichtigung das gewünschte Verhalten festlegen. 
 
 
-<img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
+<img alt="Beispielanwendung" src="sample-app.png" style="float:right"/>
 
-## Windows Universal Push Notifications Service
+## Universeller Windows-Push-Benachrichtigungsservice
 {: #windows-universal-push-notifications-service }
-No specific port needs to be open in your server configuration.
+In Ihrer Serverkonfiguration muss kein bestimmter Port offen sein. 
 
-WNS uses regular http or https requests.
+WNS verwendet reguläre HTTP- oder HTTPS-Anforderungen. 
 
 
-## Sample application
+## Beispielanwendung
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) the Windows 8.1 Universal project.  
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80) Windows 10 UWP project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80), um das universelle Windows-8.1-Projekt herunterzuladen.   
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsWin8/tree/release80), um das Windows-10-UWP-Projekt herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 

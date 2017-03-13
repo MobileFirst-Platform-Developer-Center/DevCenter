@@ -1,14 +1,15 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in client applications
-breadcrumb_title: Handling Push Notifications
+title: Push-Benachrichtigungen in Clientanwendungen
+breadcrumb_title: Push-Benachrichtigungen
 relevantTo: [ios,android,windows,cordova]
 weight: 4
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Before iOS, Android and Windows Native-based or Cordova-based applications are able to receive and display incoming push notifications, the application must first be set-up, and APIs must be implemented.
+Bevor native oder Cordova-basierte iOS-, Android- und Windows-Anwendungen Push-Benachrichtigungen empfangen und anzeigen können,
+muss die Anwendung eingerichtet und müssen APIs implementiert werden. 
 
-Refer to the following topics to learn how to handle incoming push notifications in client applications: 
+In den folgenden Abschnitten erfahren Sie, wie eigehende Push-Benachrichtigungen in Clientanwendungen behandelt werden.  

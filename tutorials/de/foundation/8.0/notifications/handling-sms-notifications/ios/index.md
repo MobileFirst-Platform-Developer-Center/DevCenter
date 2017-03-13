@@ -1,67 +1,69 @@
 ---
 layout: tutorial
-title: Handling SMS Notifications in iOS
-breadcrumb_title: Handling SMS in iOS
+title: SMS-Benachrichtigungen in iOS
+breadcrumb_title: SMS in iOS
 relevantTo: [ios]
 downloads:
-  - name: Download Xcode project
+  - name: Xcode-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-SMS notifications are a sub-set of Push Notification, as such make sure to first [go through the Push notifications in iOS](../../) tutorials.
+SMS-Benachrichtigungen sind eine Untergruppe der Push-Benachrichtigungen.
+Beschäftigen Sie sich daher zuerst mit dem Lernprogramm zu [Push-Benachrichtigungen in iOS](../../). 
 
-**Prerequisites:**
+**Voraussetzungen: **
 
-* Make sure you have read the following tutorials:
-  * [Notifications Overview](../../)
-  * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-  * [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* Stellen Sie sicher, dass Sie die folgenden Lernprogramme durchgearbeitet haben: 
+  * [Benachrichtigungen im Überblick](../../)
+  * [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/#installing-a-development-environment)
+  * [SDK der {{ site.data.keys.product }} zu iOS-Anwendungen hinzufügen](../../../application-development/sdk/ios)
+* {{ site.data.keys.mf_server }} wird lokal oder fern ausgeführt. 
+* Die {{ site.data.keys.mf_cli }} ist auf der Entwicklerworkstation installiert. 
 
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Notifications API](#notifications-api)   
-* [Using an SMS subscribe servlet](#using-an-sms-subscribe-servlet)     
-* [Sample Application](#sample-application)
+* [API für Benachrichtigungen](#notifications-api)   
+* [Servlet für SMS-Abonnement verwenden](#using-an-sms-subscribe-servlet)     
+* [Beispielanwendung](#sample-application)
 
-## Notifications API
+## API für Benachrichtigungen
 {: #notifications-api }
-In SMS notifications, when registering the device, a phone number value is passed.
+Wenn ein Gerät für SMS-Benachrichtigungen registriert wird, wird eine Telefonnummer übergeben. 
 
-#### Challenge Handlers
+#### Abfrage-Handler
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+Wenn der Bereich `push.mobileclient` einer **Sicherheitsüberprüfung** zugeordnet ist,
+müssen Sie sicherstellen, dass passende **Abfrage-Handler** registriert sind, bevor Push-APIs verwendet werden. 
 
-#### Initialization
+#### Initialisierung
 {: #initialization }
-Required for the client application to connect to MFPPush service with the right application context.
+Die Initialisierung ist erforderlich, damit die Clientanwendung mit dem richtigen Anwendungskontext eine Verbindung zum Service MFPPush herstellen kann. 
 
-* The API method should be called first before using any other MFPPush APIs.
-* Registers the callback function to handle received push notifications.
+* Die API-Methode muss aufgerufen werden, bevor andere MFPPush-APIs verwendet werden.
+* Die Callback-Funktion wird für die Handhabung empfangener Push-Benachrichtigungen registriert. 
 
 ```swift
 MFPPush.sharedInstance().initialize()
 ```
 
-#### Register Device
+#### Gerät registrieren
 {: #register-device }
-Register the device to the push notifications service.
+Registrieren Sie das Gerät beim Push-Benachrichtigungsservice. 
 
 ```swift
 MFPPush.sharedInstance().registerDevice(jsonOptions, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
      if error == nil {
-         // Successfully registered
+         // Erfolgreich registriert
      } else {
-         // Registration failed with error
+         // Registrierung mit Fehler fehlgeschlagen
      }
  })
 ```
 
-* **optionObject**: an `jsonOptions` containing the phone number to register the device with. For example:
+* **optionObject**: `jsonOptions` mit der Telefonnummer für die Registrierung des Geräts. Beispiel: 
 
 ```swift
 let phoneNumber: String = self.phoneNumberTF.text!
@@ -73,50 +75,53 @@ let jsonOptions: [NSObject: AnyObject] = [
 let isValid = NSJSONSerialization.isValidJSONObject(jsonOptions)
 
 if isValid {
-    // JSON is valid and can be sent with registerDevice request
+    // JSON ist gültig und kann mit registerDevice-Anforderung gesendet werden
 }
 
 ```
 
-> You can also register a device using the [Push Device Registration (POST) REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
-
-#### Unregister Device
+> Sie können ein Gerät auch
+mit der [REST-API Push Device Registration (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_device_registration_post.html)
+registrieren.
+#### Registrierung des Geräts aufheben
 {: #unregister-device }
-Unregister the device from push notification service instance.
+Sie können die Registrierung des Geräts bei der Instanz des Push-Benachrichtigungsservice
+aufheben. 
 
 ```swift
 MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
     if error == nil {
-        // Unregistered successfully
+        // Aufhebung der Registrierung erfolgreich
     } else {
-        // Failed to unregister
+        // Aufhebung der Registrierung fehlgeschlagen
     }
 })
 ```
 
-## Using an SMS subscribe servlet
+## Servlet für SMS-Abonnement verwenden
 {: #using-an-sms-subscribe-servlet }
-REST APIs are used to send notifications to the registered devices. All forms of notifications can be sent: tag &amp; broadcast notifications, and authenticated notifications
+Benachrichtigungen werden mit REST-APIs an die registrierten Geräte gesendet. Alle Arten von Benachrichtigungen
+können gesendet werden (tagbasierte und Broadcastbenachrichtigungen sowie authentifizierte Benachrichtigungen). 
 
-To send a notification, a request is made using POST to the REST endpoint: `imfpush/v1/apps/<application-identifier>/messages`.  
-Example URL: 
+Für das Senden einer Benachrichtigung wird eine POST-Anforderung an den REST-Endpunkt abgesetzt: `imfpush/v1/apps/<Anwendungs-ID>/messages`.  
+Beispiel-URL:  
 
 ```bash
 https://myserver.com:443/imfpush/v1/apps/com.sample.sms/messages
 ```
 
-> To review all Push Notifications REST APIs, see the <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST API runtime services</a> topic in the user documentation.
+> Eine Übersicht über alle REST-APIs für Push-Benachrichtigungen finden Sie im Abschnitt <a href="https://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/c_restapi_runtime.html">REST-API-Laufzeitservices</a> in der Benutzerdokumentation.
 
-To send a notification, see the [sending notifications](../../sending-notifications) tutorial.
+Informationen zum Senden einer Benachrichtigung enthält das Lernprogramm [Benachrichtigungen senden](../../sending-notifications). 
 
-<img alt="Image of the sample application" src="sample-app.png" style="float:right"/>
-## Sample application
+<img alt="Beispielanwendung" src="sample-app.png" style="float:right"/>
+## Beispielanwendung
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80) the Xcode project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/SMSNotificationsSwift/tree/release80), um das Xcode-Projekt herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 
 
 
 

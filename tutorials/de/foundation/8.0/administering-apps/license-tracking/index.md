@@ -1,57 +1,82 @@
 ---
 layout: tutorial
-title: License tracking
+title: Lizenzüberwachung
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-License tracking is enabled by default in {{ site.data.keys.product_full }}, which tracks metrics relevant to the licensing policy such as active client device, addressable devices, and installed apps. This information helps determine if the current usage of {{ site.data.keys.product }} is within the license entitlement levels and can prevent potential license violations.
+Die Lizenzüberwachung ist in der
+{{ site.data.keys.product_full }} standardmäßig aktiviert, sodass
+für die Lizenzierungsrichtlinie relevante Metriken wie aktive Clientgeräte,
+adressierbare Geräte und installierte Apps überwacht werden.Mithilfe dieser Angaben kann festgestellt werden,
+ob die aktuelle
+Nutzung der {{ site.data.keys.product }} im Rahmen der Lizenzberechtigungen
+liegt. Potenzielle Lizenzverstöße lassen sich so verhindern.
 
-Also, by tracking the usage of client devices, and determining whether the devices are active, {{ site.data.keys.product_adj }} administrators can decommission devices that are no longer accessing the {{ site.data.keys.mf_server }}. This situation might arise if an employee leaves the company, for example.
+Dadurch, dass {{ site.data.keys.product_adj }}-Administratoren die Nutzung der Clientgeräte überwachen, können
+sie feststellen, ob die Geräte aktiv sind, und Geräte stilllegen, die nicht mehr auf die
+{{ site.data.keys.mf_server }} zugreifen. Dies träfe beispielsweise zu, wenn ein Mitarbeiter das
+Unternehmen verlässt. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
-* [Setting the application license information](#setting-the-application-license-information)
-* [License Tracking report](#license-tracking-report)
-* [Token license validation](#token-license-validation)
-* [Integration with IBM License Metric Tool](#integration-with-ibm-license-metric-tool)
+* [Angaben zur Anwendungslizenz festlegen](#setting-the-application-license-information)
+* [Lizenzüberwachungsbericht](#license-tracking-report)
+* [Validierung von Tokenlizenzen](#token-license-validation)
+* [Integration des IBM License Metric Tool](#integration-with-ibm-license-metric-tool)
 
-## Setting the application license information
+## Angaben zur Anwendungslizenz festlegen
 {: #setting-the-application-license-information }
-Learn how to set the application license information for the apps you register to {{ site.data.keys.mf_server }}.
+Hier erfahren Sie, wie die Angaben zur Anwendungslizenz für Apps, die Sie bei
+{{ site.data.keys.mf_server }} registrieren, festgelegt werden.
 
-License terms distinguish {{ site.data.keys.product_full }}, {{ site.data.keys.product_full }} Consumer, {{ site.data.keys.product_full }} Enterprise, and IBM {{ site.data.keys.product_adj }} Additional Brand Deployment. Set the license information of an application when you register it to a server so that license tracking reports generate the right license information. If your server is configured for token licensing, the license information is used to check out the right feature from the license server.
+In den Lizenzbedingungen wird zwischen
+{{ site.data.keys.product_full }},
+{{ site.data.keys.product_full }} Consumer,
+{{ site.data.keys.product_full }} Enterprise und IBM {{ site.data.keys.product_adj }} Additional Brand Deployment unterschieden. Legen Sie die Lizeninformationen einer Anwendung fest, wenn Sie sie bei einem Server registrieren, damit die richtigen Lizenzinformationen für
+die Lizenzüberwachungsberichte
+generiert werden. Wenn Ihr Server für die Tokenlizenzierung konfiguriert ist, checkt der Lizenzserver ausgehend von den Lizenzinformationen das richtige Feature aus. 
 
-You set the Application Type and the Token License Type.
-The possible values for Application Type are:  
+Sie können den Anwendungstyp und den Tokenlizenztyp
+festlegen. Gültige Werte für den Anwendungstyp:   
 
-* **B2C**: Use this application type if your application is licensed as {{ site.data.keys.product_full }} Consumer.
-* **B2E**: Use this application type if your application is licensed as {{ site.data.keys.product_full }} Enterprise.
-* **UNDEFINED**: Use this application type if you don't need to track compliance against the Addressable Device metric.
+* **B2C**: Verwenden Sie diesen Anwendungstyp, wenn Ihre Anwendung für {{ site.data.keys.product_full }} Consumer lizenziert ist.
+* **B2E**: Verwenden Sie diesen Anwendungstyp, wenn Ihre Anwendung für {{ site.data.keys.product_full }} Enterprise lizenziert ist.
+* **UNDEFINED**: Verwenden Sie diesen Anwendungstyp, wenn Sie die Konformität für die Metrik "Adressierbare Geräte" nicht verfolgen möchten. 
 
-The possible values for Token License Type are:
+Gültige Werte für den Tokenlizenztyp: 
 
-* **APPLICATION**: Use APPLICATION for most applications. This is the default.
-* **ADDITIONAL\_BRAND\_DEPLOYMENT**: Use this ADDITIONAL\_BRAND\_DEPLOYMENT if your application is licensed as IBM {{ site.data.keys.product_adj }} Additional Brand Deployment.
-* **NON_PRODUCTION**: Use NON\_PRODUCTION while you are developing and testing the application on the production server. No token is checked out for applications that have a NON_PRODUCTION token license type.
+* **APPLICATION**: Dies ist der Standardwert, den Sie für die meisten Anwendungen verwenden können. 
+* **ADDITIONAL\_BRAND\_DEPLOYMENT**: Verwenden Sie ADDITIONAL\_BRAND\_DEPLOYMENT, wenn Ihre Anwendung
+als IBM {{ site.data.keys.product_adj }} Additional Brand Deployment lizenziert ist.
+* **NON_PRODUCTION**: Verwenden Sie NON\_PRODUCTION, wenn Sie die Anwendung auf dem
+Produktionsserver entwickeln und testen. Für Anwendungen mit demn
+Tokenlizenztyp NON_PRODUCTION wird kein Token ausgecheckt. 
 
-> **Important:** Using NON_PRODUCTION for a production app is a breach of the license terms.
+> **Wichtiger Hinweis:** Die Verwendung
+von NON_PRODUCTION für eine in der Produktion eingesetzte App stellt einen Bruch der Lizenzvereinbarung
+dar. 
 
-**Note:** If your server is configured for token licensing and if you plan to register an application with Token License Type ADDITIONAL\_BRAND\_DEPLOYMENT or NON_PRODUCTION, set the application license information before you register the first version of the application. With mfpadm program, you can set the license information for an application before any version is registered. After the license information is set, the right number of tokens is checked out when you register the first version of the app. For more information about token validation, see Token license validation.
+**Hinweis:** Wenn Ihr Server für die Tokenlizenzierung konfiguriert ist und Sie eine Anwendung mit dem
+Tokenlizenztyp ADDITIONAL\_BRAND\_DEPLOYMENT oder NON_PRODUCTION registrieren möchten, legen Sie die
+Lizenzinformationen für die Anwendung fest, bevor Sie die erste Version der Anwendung registrieren. Mit dem Programm mfpadm können Sie die Lizeninformationen
+für eine Anwendung festlegen, bevor eine Version registriert wird. Nach dem Festlegen der Lizenzinformationen wird beim Registrieren der ersten Version der App die richtige
+Anzahl Token ausgecheckt. Weitere Informationen zur Tokenvalidierung finden Sie unter "Validierung von Tokenlizenzen". 
 
-To set the license type with {{ site.data.keys.mf_console }}
+Gehen Sie wie folgt vor, um den Lizenztyp in der {{ site.data.keys.mf_console }} festzulegen: 
 
-1. Select your application
-2. Select **Settings**
-3. Set the **Application Type** and the **Token License Type**
-4. Click **Save**
+1. Wählen Sie Ihre Anwendung aus. 
+2. Wählen Sie **Einstellungen** aus. 
+3. Legen Sie den **Anwendungstyp** und den **Tokenlizenztyp** fest. 
+4. Klicken Sie auf **Speichern**. 
 
-To set the license type with the mfpadm program,
-Use `mfpadm app <appname> set license-config <application-type> <token license type>`
+Wenn Sie den Lizenztyp mit dem Programm mfpadm festlegen möchten, verwenden Sie
+`mfpadm app <App-Name> set license-config <Anwendungstyp> <Tokenlizenztyp>`. 
 
-The following example sets the license information B2E / APPLICATION to the application named **my.test.application**
+Im folgenden Beispiel werden für die Anwendung
+**my.test.application** die Lizeninformationen B2E/APPLICATION festgelegt. 
 
 ```bash
 echo password:admin > password.txt
@@ -59,150 +84,220 @@ mfpadm --url https://localhost:9443/mfpadmin --secure false --user admin \ --pas
 rm password.txt
 ```
 
-## License Tracking report
+## Lizenzüberwachungsbericht
 {: #license-tracking-report }
-{{ site.data.keys.product }} provides a license tracking report for the Client Device metric, the Addressable Device metric, and the Application metric. The report also provides historical data.
+Die {{ site.data.keys.product }} stellt für die Metriken
+"Clientgeräte", "Adressierbare Geräte" und "Anwendungen" einen Lizenzüberwachungsbericht bereit. Dieser Bericht enthält auch Langzeitdaten.
 
-The License Tracking report shows the following data:
+Der Lizenzüberwachungsbericht präsentiert die folgenden Daten:
 
-* The number of applications deployed in the {{ site.data.keys.mf_server }}.
-* The number of addressable devices in the current calendar month.
-* The number of client devices, both active and decommissioned.
-* The highest number of client devices reported over the last n days, where n is the number of days of inactivity after which a client device is decommissioned.
+* Anzahl der im {{ site.data.keys.mf_server }} implementierten Anwendungen
+* Anzahl der adressierbaren Geräte im aktuellen Kalendermonat
+* Anzahl der aktiven und stillgelegten Clientgeräte
+* Gemeldete Höchstzahl von Clientgeräten in den letzten n Tagen, wobei n die Anzahl der
+Inaktivitätstage ist, nach denen das Gerät
+stillgelegt wird
 
-You might want to analyze data further. For this purpose, you can download a CSV file that includes the license reports as well as a historical listing of license metrics.
+Wenn Sie die Daten weiter analysieren möchten, können Sie eine CSV-Datei herunterladen, die die Lizenzberichte sowie eine Langzeitauflistung der Lizenzmetriken
+enthält. 
 
-To access the License Tracking report,
+Gehen Sie für den Zugriff auf den Lizenzüberwachungsbericht wie folgt vor: 
 
-1. Open {{ site.data.keys.mf_console }}.
-2. Click the **Hello, your-Name** menu.
-3. Select **Licenses**.
+1. Öffnen Sie die {{ site.data.keys.mf_console }}.
+2. Klicken Sie auf das Menü **Hallo Ihr_Name**. 
+3. Wählen Sie **Lizenzen** aus.
 
-To obtain a CSV file from the License Tracking report, click **Actions/Download report**.
+Wenn Sie
+den Lizenzüberwachungsbericht als CSV-Datei abrufen möchten, klicken Sie auf **Aktionen: Bericht herunterladen**.
 
-## Token license validation
+## Validierung von Tokenlizenzen
 {: #token-license-validation }
-If you install and configure IBM {{ site.data.keys.mf_server }} for token licensing, the server validates licenses in various scenarios. If your configuration is not correct, the license is not validated at application registration or deletion.
+Wenn Sie IBM {{ site.data.keys.mf_server }} für die Tokenlizenzierung installieren und konfigurieren,
+werden vom Server Lizenzen in verschiedenen Szenarien validiert. Wenn Ihre Konfiguration nicht korrekt ist, wird die Lizenz bei der Anwendungsregistrierung oder beim Löschen der Anwendung nicht
+validiert. 
 
-### Validation scenarios
+### Validierungsszenarien
 {: #validation-scenarios }
-Licenses are validated in various scenarios:
+Es gibt verschiedene Szenarien der Lizenzvalidierung: 
 
-#### On application registration
+#### Registrierung einer Anwendung
 {: #on-application-registration }
-Application registration fails if not enough tokens are available for the token license type of your application.
+Die Anwendungsregistrierung schlägt fehl, wenn für den Tokenlizenztyp Ihrer Anwendung nicht genug Token
+verfügbar sind. 
 
-> **Tip:** You can set the token license type before you register the first version of your app.
+> **Tipp:** Bevor Sie die erste Version Ihrer App registrieren, können Sie
+den Tokenlizenztyp festlegen. 
 
-Licenses are checked only once per application. If you register a new platform for the same application, or if you register a new version for an existing application and platform, no new token is claimed.
+Lizenzen werden pro Anewendung einmal überprüft. Wenn Sie für eine Anwendung eine neue Plattform registrieren oder für eine vorhandene Anwendung und Plattform eine neue
+Version registrieren, wird ein neues Token angefordert. 
 
-#### On Token License Type change
+#### Änderung des Tokenlizenztyps
 {: #on-token-license-type-change }
-When you change the Token License Type for an application, the tokens for the application are released and then taken back for the new license type.
+Wenn Sie den Tokenlizenztyp für eine Anwendung ändern, werden die Token für die Anwendung freigegeben und dann für den
+neuen Lizenztyp zurückgegeben. 
 
-#### On application deletion
+#### Löschen einer Anwendung
 {: #on-application-deletion }
-Licenses are checked in when the last version of an application is deleted.
+Wenn die letzte Version einer Anwendung gelöscht ist, werden die Lizenzen eingecheckt. 
 
-#### At server start
+#### Serverstart
 {: #at-server-start }
-The license is checked out for every registered application. The server deactivates applications if not enough tokens are available for all applications.
+Die Lizenz wird für jede registrierte Anwendung ausgecheckt. Der Server inaktiviert Anwendungen, wenn nicht genug Token für alle Anwendungen
+verfügbar sind. 
 
-> **Important:** The server does not reactivate the applications automatically. After you increase the number of available tokens, you must reactivate the applications manually. For more information about disabling and enabling applications, see [Remotely disabling application access to protected resources](../using-console/#remotely-disabling-application-access-to-protected-resources).
+> **Wichtiger Hinweis:** Die Anwendungen werden nicht automatisch vom Server reaktiviert. Wenn Sie die Anzahl der verfügbaren Token erhöht haben, müssen Sie die Anwendungen
+manuell reaktivieren. Weitere Informationen zum Inaktivieren und Aktivieren von Anwendungen finden Sie unter
+[Anwendungszugriff auf geschützte Ressourcen über Fernzugriff inaktivieren](../using-console/#remotely-disabling-application-access-to-protected-resources).
 
-#### On license expiration
+#### Ablauf der Lizenz
 {: #on-license-expiration }
-After a certain amount of time, the licenses expire and must be checked out again. The server deactivates applications if not enough tokens are available for all applications.
+Nach einer bestimmten Zeit laufen die Lizenzen ab und müssen neu ausgecheckt werden. Der Server inaktiviert Anwendungen, wenn nicht genug Token für alle Anwendungen
+verfügbar sind. 
 
-> **Important:** The server does not reactivate the applications automatically. After you augment the number of available tokens, you must reactivate the applications manually. For more information about disabling and enabling applications, see [Remotely disabling application access to protected resources](../using-console/#remotely-disabling-application-access-to-protected-resources).
+> **Wichtiger Hinweis:** Die Anwendungen werden nicht automatisch vom Server reaktiviert. Wenn Sie die Anzahl der verfügbaren Token erhöht haben, müssen Sie die Anwendungen
+manuell reaktivieren. Weitere Informationen zum Inaktivieren und Aktivieren von Anwendungen finden Sie unter
+[Anwendungszugriff auf geschützte Ressourcen über Fernzugriff inaktivieren](../using-console/#remotely-disabling-application-access-to-protected-resources).
 
-#### At server shutdown
+#### Herunterfahren des Servers
 {: #at-server-shutdown }
-The license is checked in for every deployed application, during a server shutdown. The tokens are released only when the last server of a cluster of farm is shut down.
+Die Lizenz für jede implementierte Anwendung wird beim Herunterfahren des Servers eingecheckt. Die Token werden erst freigegeben, wenn der letzte Server
+eines Clusters oder einer Farm heruntergefahren ist. 
 
-### Causes of license validation failure
+### Ursachen für Fehler bei der Lizenzvalidierung
 {: #causes-of-license-validation-failure }
-License validation might fail when the application is registered or deleted, in the following cases:
+Die Lizenzvalidierung beim Registrieren oder Löschen der Anwendung kann in folgenden Fällen fehlschlagen: 
 
-* The Rational  Common Licensing native library is not installed and configured.
-* The administration service is not configured for token licensing. For more information, see [Installing and configuring for token licensing](../../installation-configuration/production/token-licensing).
-* Rational License Key Server is not accessible.
-* Sufficient tokens are not available.
-* The license expired.
+* Die native Bibliothek von Rational Common
+Licensing ist nicht installiert und konfiguriert. 
+* Der Verwaltungsservice ist nicht für die Tokenlizenzierung konfiguriert.
+Weitere Informationen finden Sie unter
+[Installation und
+Konfiguration für die Tokenlizenzierung](../../installation-configuration/production/token-licensing).
+* Es kann nicht auf Rational License Key
+Server zugegriffen werden. 
+* Es sind nicht genug Token verfügbar. 
+* Die Lizenz ist abgelaufen.
 
-### IBM Rational License Key Server feature name used by {{ site.data.keys.product_full }}
+### IBM Rational License Key Server für die {{ site.data.keys.product_full }}
 {: #ibm-rational-license-key-server-feature-name-used-by-ibm-mobilefirst-foundation }
-Depending on the token license type of an application, the following features are used.
+Je nach Lizenztyp einer Anwendung werden die folgenden
+Features verwendet. 
 
-| Token License Type | Feature name | 
+| Tokenlizenztyp | Featurename | 
 |--------------------|--------------|
 | APPLICATION        | 	ibmmfpfa    | 
 | ADDITIONAL\_BRAND\_DEPLOYMENT |	ibmmfpabd | 
-| NON_PRODUCTION	| (no feature) | 
+| NON_PRODUCTION	| (kein Feature) | 
 
-## Integration with IBM License Metric Tool
+## Integration des IBM License Metric Tool
 {: #integration-with-ibm-license-metric-tool }
-The IBM  License Metric Tool allows you to evaluate your compliance with your IBM license.
+Mit dem IBM License Metric Tool können Sie die Einhaltung Ihrer IBM Lizenzbedingungen auswerten. 
 
-If you have not installed a version of IBM License Metric Tool that supports IBM Software License Metric Tag or SWID (software identification) files, you can review the license usage with the License Tracking reports in {{ site.data.keys.mf_console }}. For more information, see [License Tracking report](#license-tracking-report).
+Wenn Sie keine Version von IBM License Metric Tool mit Unterstützung für SLMT- (Software License Metric Tag)
+oder SWID-Dateien (Software-ID) installiert haben, können Sie die Lizenznutzung
+anhand der Lizenzüberwachungsbereichte in der
+{{ site.data.keys.mf_console }} überwachen. Weitere Informationen finden Sie unter
+[Lizenzüberwachungsbericht](#license-tracking-report).
 
-### About PVU-based licensing using SWID files
+### PVU-basierte Lizenzierung mit SWID-Dateien
 {: #about-pvu-based-licensing-using-swid-files }
-If you have purchased IBM MobileFirst Foundation Extension V8.0.0 offering, it is licensed under the Processor Value Unit (PVU) metric.
+Wenn Sie das Angebot IBM MobileFirst Foundation Extension Version 8.0.0 gekauft haben, wird es mit der Metrik Prozessor-Value-Unit
+(PVU) lizenziert. 
 
-The PVU calculation is based on IBM License Metric Tool's support for ISO/IEC 19970-2 and SWID files. The SWID files are written to the server when the IBM Installation Manager installs {{ site.data.keys.mf_server }} or {{ site.data.keys.mf_analytics_server }}. When the IBM License Metric Tool discovers an invalid SWID file for a product according to the current catalog, a warning sign is displayed on the Software Catalog widget. For more information on how the IBM License Metric Tool works with SWID files, see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_iso\_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html).
+Die PVU-Berechnung basiert auf der Unterstützung des IBM License Metric Tool für ISO/IEC 19970-2 und für SWID-Dateien. Die SWID-Dateien werden
+in den Server geschrieben, wenn IBM Installation Manager {{ site.data.keys.mf_server }} oder {{ site.data.keys.mf_analytics_server }} installiert. Wenn das IBM License Metric Tool
+eine laut aktuellem Katalog ungültige SWID-Datei für ein Produkt findet,
+wird das Widget "Softwarekatalog" mit einem Warnsymbol angezeigt. Weitere Informationen zur Verwendung von SWID-Dateien durch das
+IBM License Metric Tool finden Sie unter
+[https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_iso\_tags.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_iso_tags.html).
 
-The number of Application Center installations is not limited by PVU-based licensing.
+Die Anzahl der Application-Center-Installationen ist bei PVU-basierter Lizenzierung nicht beschränkt. 
 
-The PVU license for Foundation Extension can only be purchased together with these product licenses: IBM WebSphere  Application Server Network Deployment, IBM API Connect™ Professional, or IBM API Connect Enterprise. IBM Installation Manager adds or updates the SWID file to be used by the License Metric Tool.
+Die PVU-Lizenz für Foundation Extension kann nur zusammen mit einer der folgenden Produktlizenzen erworben werden:
+IBM WebSphere  Application Server Network Deployment, IBM API Connect™ Professional oder IBM API Connect Enterprise. IBM Installation Manager
+fügt die SWID-Datei hinzu oder aktualisiert sie, damit sie vom License Metric Tool verwendet werden kann.
 
-> For more information on {{ site.data.keys.product_full }} Extension, see [https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
+> Weitere Informationen zu {{ site.data.keys.product_full }} Extension finden Sie unter
+[https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN](https://www.ibm.com/common/ssi/cgi-bin/ssialias?infotype=AN&subtype=CA&htmlfid=897/ENUS216-367&appname=USN).
 
-> For more information on PVU licensing see [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
+> Weitere Informationen zur PVU-Lizenzierung finden Sie unter [https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c\_processor\_value\_unit\_licenses.html](https://www.ibm.com/support/knowledgecenter/SS8JFY_9.2.0/com.ibm.lmt.doc/Inventory/overview/c_processor_value_unit_licenses.html).
 
-### SLMT tags
+### SLMT-Tags
 {: #slmt-tags }
-IBM MobileFirst Foundation generates IBM Software License Metric Tag (SLMT) files. Versions of IBM License Metric Tool that support IBM Software License Metric Tag can generate License Consumption Reports. Read this section to interpret these reports for {{ site.data.keys.mf_server }}, and to configure the generation of the IBM Software License Metric Tag files.
+Die IBM MobileFirst Foundation
+generiert SLMT-Dateien (IBM Software License Metric Tag). Versionen des IBM License Metric Tool, die
+SLMT unterstützen, können Berichte zum Lizenzbedarf generieren. In diesem Abschnitt erfahren Sie, wie solche Berichte für
+{{ site.data.keys.mf_server }} zu interpretieren sind
+und wie die Generierung von SLMT-Dateien konfiguriert wird.
 
-Each instance of a running MobileFirst runtime environment generates an IBM Software License Metric Tag file. The metrics monitored are `CLIENT_DEVICE`, `ADDRESSABLE_DEVICE`, and `APPLICATION`. Their values are refreshed every 24 hours.
+Jede Instanz einer aktiven
+MobileFirst-Laufzeitumgebung generiert
+eine SLMT-Datei. Die überwachten Metriken sind `CLIENT_DEVICE`, `ADDRESSABLE_DEVICE` und `APPLICATION`.
+Die Werte dieser Metriken werden
+alle 24 Stunden aktualisiert.
 
-#### About the CLIENT_DEVICE metric
+#### Metrik CLIENT_DEVICE
 {: #about-the-client_device-metric }
-The `CLIENT_DEVICE` metric can have the following subtypes:
+Folgende Subtypen der
+Metrik `CLIENT_DEVICE` sind möglich:
 
 * Active Devices
 
-    The number of client devices that used the MobileFirst runtime environment, or another MobileFirst runtime instance belonging to the same cluster or server farm, and that were not decommissioned. For more information about decommissioned devices, see [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
+    Anzahl der nicht stillgelegten Clientgeräte,
+die die MobileFirst-Laufzeitumgebung oder eine
+andere MobileFirst-Laufzeitinstanz
+im selben Cluster oder in derselben Server-Farm verwendet haben. Weitere Informationen zu stillgelegten Geräten
+finden Sie unter
+[Lizenzüberwachung für
+Clientgeräte und adressierbare Geräte konfigurieren](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
 
 * Inactive Devices
 
-    The number of client devices that used the MobileFirst runtime environment, or another MobileFirst runtime instance belonging to the same cluster or server farm, and that were decommissioned. For more information about decommissioned devices, see [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
+    Anzahl der stillgelegten Clientgeräte,
+die die MobileFirst-Laufzeitumgebung oder eine
+andere MobileFirst-Laufzeitinstanz
+im selben Cluster oder in derselben Server-Farm verwendet haben. Weitere Informationen zu stillgelegten Geräten
+finden Sie unter
+[Lizenzüberwachung für
+Clientgeräte und adressierbare Geräte konfigurieren](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device).
 
-The following cases are specific:
+Es gibt folgende Sonderfälle:
 
-* If the decommissioning period of the device is set to a small period, the subtype "Inactive Devices" is replaced by the subtype "Active or Inactive Devices".
-* If device tracking was disabled, only one entry is generated for `CLIENT_DEVICE`, with the value 0, and the metric subtype "Device Tracking Disabled".
+* Wenn das Gerät nur für kurze Zeit stillgelegt wird, wird der Subtyp "Inactive Devices" durch den Subtyp "Active or Inactive Devices" ersetzt.
+* Bei inaktivierter Geräteüberwachung wird für `CLIENT_DEVICE` nur ein Eintrag mit dem Wert 0 und dem Subtyp "Device Tracking Disabled" generiert.
 
-#### About the APPLICATION metric
+#### Metrik APPLICATION
 {: #about-the-application-metric }
-The APPLICATION metric has no subtype unless the MobileFirst runtime environment is running in a development server.
+Für die Metrik APPLICATION gibt es keinen Subtyp,
+sofern die MobileFirst-Laufzeitumgebung nicht in einem
+Entwicklungsserver ausgeführt wird.
 
-The value reported for this metric is the number of applications that are deployed in the MobileFirst runtime environment. Each application is counted as one unit, whether it is a new application, an additional brand deployment, or an additional type of an existing application (for example native, hybrid, or web).
+Der für diese Metrik gemeldete Wert ist die Anzahl der
+in der
+MobileFirst-Laufzeitumgebung implementierten Anwendungen. Jede Anwendung wird unabhängig davon, ob es sich um eine neue Anwendung, eine Implementierung eines zusätzlichen Produktbereichs oder
+einen zusätzlichen Typ für eine vorhandene Anwendung (z. B. eine native Anwendung, eine Hybrid- oder Webanwendung) handelt,
+als eine Einheit gezählt.
 
-#### About the ADDRESSABLE_DEVICE metric
+#### Metrik ADDRESSABLE_DEVICE
 {: #about-the-addressable_device-metric }
-The ADDRESSABLE_DEVICE metric has the following subtype:
+Die Metrik ADDRESSABLE_DEVICE hat folgenden Subtyp: 
 
-* Application: `<applicationName>`, Category: `<application type>`
+* Application: `<Anwendungsname>`, Category:
+`<Anwendungstyp>`
 
-The application type is **B2C**, **B2E**, or **UNDEFINED**. To define the application type of an application, see [Setting the application license information](#setting-the-application-license-information).
+Der Anwendungstyp ist **B2C**, **B2E** oder
+**UNDEFINED**. Wie der Anwendungstyp für eine Anwendung definiert wird, erfahren Sie unter [Daten der Anwendungslizenz festlegen](#setting-the-application-license-information).
 
-The following cases are specific:
+Es gibt folgende Sonderfälle:
 
-* If the decommissioning period of the device is set to less than 30 days, the warning "Short decommissioning period" is appended to the subtype.
-* If license tracking was disabled, no addressable report is generated.
+* Wenn das Gerät für weniger als 30 Tage stillgelegt wird, wird an den Subtyp die Warnung "Short decommissioning period"
+angefügt. 
+* Bei inaktivierter Lizenzüberwachung wird kein Bericht zu adressierbaren Geräten generiert. 
 
-For more information about configuring license tracking using metrics, see
+Weitere Informationen zur Lizenzüberwachung finden
+Sie unter: 
 
-* [Configuring license tracking for client device and addressable device](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)
-* [Configuring IBM License Metric Tool log files](../../installation-configuration/production/server-configuration/#configuring-ibm-license-metric-tool-log-files)
+* [Lizenzüberwachung für
+Clientgeräte und adressierbare Geräte konfigurieren](../../installation-configuration/production/server-configuration/#configuring-license-tracking-for-client-device-and-addressable-device)
+* [Protokolldateien von
+IBM License Metric Tool konfigurieren](../../installation-configuration/production/server-configuration/#configuring-ibm-license-metric-tool-log-files)

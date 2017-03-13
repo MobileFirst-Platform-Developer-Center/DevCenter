@@ -1,26 +1,28 @@
 ---
 layout: tutorial
-title: Securing containers
+title: Container schützen
 relevantTo: [ios,android,windows,javascript]
 weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Below are several methods you can follow in order to secure your IBM Container with {{ site.data.keys.mf_server }} instance.
+Nachfolgend sind mehrere mögliche Methoden für den Schutz Ihres IBM Containers mit der MobileFirst-Server-Instanz aufgeführt. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Configuring App Transport Security (ATS)](#configuring-app-transport-security-ats)
-* [Security configuration for {{ site.data.keys.product_full }} on IBM Containers](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
-* [LDAP configuration for containers](#ldap-configuration-for-containers)
+* [App Transport Security (ATS) konfigurieren](#configuring-app-transport-security-ats)
+* [Sicherheitskonfiguration für die {{ site.data.keys.product_full }} in IBM Containern](#security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers)
+* [LDAP-Konfiguration für Container](#ldap-configuration-for-containers)
 
-## Configuring App Transport Security (ATS)
+## App Transport Security (ATS) konfigurieren
 {: #configuring-app-transport-security-ats }
-ATS configuration does not impact applications connecting from other, non-iOS, mobile operating systems. Other mobile operating systems do not mandate that servers communicate on the ATS level of security but can still communicate with ATS-configured servers. Before configuring your container image, have the generated certificates ready. The following steps assume that the keystore file **ssl_cert.p12** has the personal certificate and **ca.crt** is the signing certificate.
+Die ATS-Konfiguration hat keinen Einfluss auf Anwendungen, die von anderen Betriebssystemen für mobile Geräte als iOS eine Verbindung herstellen. Andere Betriebssysteme für mobile Geräte erfordern nicht, dass Server auf ATS-Sicherheitsniveau kommunizieren, ermöglichen jedoch eine Kommunikation
+mit Servern mit ATS-Konfiguration. Halten Sie die generierten Zertifikate bereit, wenn Sie Ihr Container-Image
+konfigurieren. Bei den folgenden Schritten wird davon ausgegangen, dass die Keystore-Datei **ssl_cert.p12** das persönliche Zertifikat enthält und dass **ca.crt** das Signaturzertifikat ist. 
 
-1. Copy the **ssl_cert.p12** file to the **mfpf-server/usr/security/** folder.
-2. Modify the **mfpf-server/usr/config/keystore.xml** file similar to the following example configuration:
+1. Kpieren Sie die Datei **ssl_cert.p12** in den Ordner **mfpf-server/usr/security/**. 
+2. Modifizieren Sie die Datei **mfpf-server/usr/config/keystore.xml**. Orientieren Sie sich dabei an der folgenden Beispielkonfiguration: 
 
    ```bash
    <server>
@@ -31,12 +33,15 @@ ATS configuration does not impact applications connecting from other, non-iOS, m
         <keyStore id="defaultKeyStore" location="ssl_cert.p12" password="*****" type="PKCS12"/>
    </server>
    ```
-    - **ssl-1.0** is added as a feature in the feature manager to enable the server to work with SSL communication.
-    - **sslProtocol="TLSv1.2"** is added in the ssl tag to mandate that the server communicates only on Transport Layer Security (TLS) version 1.2 protocol. More than one protocol can be added. For example, adding **sslProtocol="TLSv1+TLSv1.1+TLSv1.2"** would ensure that the server could communicate on TLS V1, V1.1, and V1.2. (TLS V1.2 is required for iOS 9 apps.)
-    - **enabledCiphers="TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384"** is added in the ssl tag so that the server enforces communication using only that cipher.
-    - The **keyStore** tag tells the server to use the new certificates that are created as per the above requirements.
+    - **ssl-1.0** wird als ein Feature im Feature-Manager hinzugefügt, damit der Server die SSL-Kommunikation
+verwenden kann. 
+    - **sslProtocol="TLSv1.2"** wird zum Tag ssl hinzugefügt, um durchzusetzen, dass der Server nur über das Protokoll TLS Version 1.2 (Transport Layer Security) kommuniziert. Sie können mehr als ein Protokoll hinzufügen.
+Wenn Sie beispielsweise **sslProtocol="TLSv1+TLSv1.1+TLSv1.2"** hinzufügen, ist sichergestellt, dass der Server über TLS Version 1, Version 1.1 und Version 1.2 kommunizieren kann.
+(Für iOS-9-Apps ist TLS Version 1.2 erforderlich.) 
+    - **enabledCiphers="TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_GCM\_SHA384"** wird zum Tag ssl hinzugefügt, damit der Server die Kommunikation ausschließlich unter Verwendung dieses Chiffrierwertes zulässt. 
+    - Der **keyStore** teilt dem Server mit, dass er die neuen Zertifikate verwenden soll, die gemäß den obigen Anforderungen erstellt wurden. 
 
-The following specific ciphers require Java Cryptography Extension (JCE) policy settings and an additional JVM option:
+Für die folgenden Chiffrierwerte sind JCE-Richtlinieneinstellungen (Java Cryptography Extension) und eine zusätzliche JVM-Option erforderlich: 
 
 * TLS\_ECDHE\_ECDSA\_WITH\_AES\_256_GCM\_SHA384
 * TLS\_ECDHE\_ECDSA\_WITH\_AES\_256\_CBC\_SHA384
@@ -44,9 +49,14 @@ The following specific ciphers require Java Cryptography Extension (JCE) policy 
 * TLS\_ECDHE\_RSA\_WITH\_AES\_256\_GCM\_SHA384
 * TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384
 
-If you use these ciphers and use an IBM Java SDK, [you can download](https://www.ibm.com/marketing/iwm/iwm/web/preLogin.do?source=jcesdk) the policy files. There are two files: **US_export_policy.jar** and **local_policy.jar**. Add both the files to the **mfpf-server/usr/security** folder and then add the following JVM option to the **mfpf-server/usr/env/jvm.options** file: `Dcom.ibm.security.jurisdictionPolicyDir=/opt/ibm/wlp/usr/servers/worklight/resources/security/`.
+Wenn Sie diese Chiffrierwerte verwenden und mit einem IBM Java-SDK arbeiten, können Sie die Richtliniendateien [herunterladen](https://www.ibm.com/marketing/iwm/iwm/web/preLogin.do?source=jcesdk). Es gibt die beiden Dateien
+**US_export_policy.jar** und **local_policy.jar**.
+Fügen Sie beide Dateien zum Ordner **mfpf-server/usr/security** hinzu. Fügen Sie dann die folgende
+JVM-Option zur Datei
+**mfpf-server/usr/env/jvm.options** hinzu:
+`Dcom.ibm.security.jurisdictionPolicyDir=/opt/ibm/wlp/usr/servers/worklight/resources/security/`.
 
-For development-stage purposes only, you can disable ATS by adding following property to the info.plist file:
+Während der Entwicklungsphase können Sie ATS inaktivieren, indem Sie die folgende Eigenschaft zur Datei info.plist hinzufügen: 
 
 ```xml
 <key>NSAppTransportSecurity</key>
@@ -56,35 +66,45 @@ For development-stage purposes only, you can disable ATS by adding following pro
 </dict>
 ```
 
-## Security configuration for {{ site.data.keys.product_full }} on IBM Containers	
+## Sicherheitskonfiguration für die {{ site.data.keys.product_full }} in IBM Containern	
 {: #security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers }
-Your {{ site.data.keys.product }} instance on IBM Containers security configuration should include encrypting passwords, enabling application authenticity checking, and securing access to the consoles.
+Ihre Sicherheitskonfiguration für die Instanz der {{ site.data.keys.product }} in IBM Containern
+sollte verschlüsselte Kennwörter, die aktivierte Prüfung der Anwendungsauthentizität und einen sicheren Zugriff auf die Konsolen umfassen. 
 
-### Encrypting passwords
+### Kennwörter verschlüsseln
 {: #encrypting-passwords }
-Store the passwords for {{ site.data.keys.mf_server }} users in an encrypted format. You can use the securityUtility command available in the Liberty profile to encode passwords with either XOR or AES encryption. Encrypted passwords can then be copied into the /usr/env/server.env file. See Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }} for instructions.
+Speichern Sie die Kennwörter für Benutzer von {{ site.data.keys.mf_server }} in einem verschlüsselten Format. Sie können den Befehl securityUtility von Liberty Profile verwenden, um Kennwörter mit der XOR- oder der AES-Verschlüsselung zu verschlüsseln. Verschlüsselte Kennwörter können dann in die Datei /usr/env/server.env kopiert werden.
+                Lesen Sie hierzu die Informationen unter "Kennwörter für in {{ site.data.keys.mf_server }} konfigurierte Benutzerrollen verschlüsseln". 
 
-### Application-authenticity validation
+### Validierung der Anwendungsauthentizität
 {: #application-authenticity-validation }
-To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf_server }}, enable the application-authenticity security check. Learn more...
+[Aktivieren Sie die Sicherheitsüberprüfung der Anwendungsauthentizität](../../../authentication-and-security/application-authenticity), um
+nicht autorisierte Anwendungen am Zugriff
+auf
+{{ site.data.keys.mf_server }} zu hindern. 
 
-### Configure SSL for {{ site.data.keys.mf_console }} and {{ site.data.keys.mf_analytics_console }}
+### SSL für die {{ site.data.keys.mf_console }} und die {{ site.data.keys.mf_analytics_console }} konfigurieren
 {: #configure-ssl-for-mobilefirst-operations-console-and-mobilefirst-analytics-console }
-You can secure access to the {{ site.data.keys.mf_console }} and the {{ site.data.keys.mf_analytics_console }} by enabling HTTP over SSL (HTTPS) on the {{ site.data.keys.mf_server }}.  
-To enable HTTPS on the {{ site.data.keys.mf_server }}, create the keystore containing the certificate and place it in the **usr/security** folder. Then, update the **usr/config/keystore.xml** file to use the keystore configured.
+Sie können den Zugriff
+auf die {{ site.data.keys.mf_console }} und die {{ site.data.keys.mf_analytics_console }} schützen, indem Sie für {{ site.data.keys.mf_server }} HTTP über SSL (HTTPS) aktivieren.   
+Erstellen Sie den Keystore mit dem Zeritifikat und stellen Sie ihn in den Ordner **usr/security**, um für {{ site.data.keys.mf_server }} HTTPS zu aktivieren. Aktualisieren Sie dann die Datei
+**usr/config/keystore.xml** so, dass der konfigurierte Keystore verwendet wird. 
 
-### Securing a connection to the back end
+### Verbindung zum Back-End schützen
 {: #securing-a-connection-to-the-back-end }
-If you need a secure connection between your container and an on-premise back-end system, you can use the Bluemix  Secure Gateway service. Configuration details are provided in this article: Connecting Securely to On-Premise Backends from {{ site.data.keys.product }} on IBM Bluemix containers.
+Wenn Sie eine sichere Verbindung zwischen Ihrem Container und einem Back-End-System vor Ort benötigen, können Sie den Service Bluemix Secure Gateway verwenden. Die Konfigurationsdetails sind im folgenden Artikel
+angegeben: "Connecting Securely to On-Premise Backends from {{ site.data.keys.product }} on Bluemix containers". 
 
-#### Encrypting passwords for user roles configured in {{ site.data.keys.mf_server }}
+#### Kennwörter für in {{ site.data.keys.mf_server }} konfigurierte Benutzerrollen verschlüsseln
 {: #encrypting-passwords-for-user-roles-configured-in-mobilefirst-server }
-The passwords for user roles that are configured for the {{ site.data.keys.mf_server }} can be encrypted.  
-Passwords are configured in the **server.env** files in the **package_root/mfpf-server/usr/env** and **package_root/mfpf-analytics/usr/env** folders. Passwords should be stored in an encrypted format.
+Die Kennwörter für Benutzerrollen, die für {{ site.data.keys.mf_server }} konfiguriert sind, können verschlüsselt werden.   
+Kennwörter werden in der Datei **server.env** in den Ordnern **package_root/mfpf-server/usr/env** une **package_root/mfpf-analytics/usr/env** konfiguriert. Sie sollten Kennwörter in einem verschlüsselten Format
+speichern. 
 
-1. You can use the `securityUtility` command in the Liberty profile to encode the password. Choose either XOR or AES encryption to encode the password.
-2. Copy the encrypted password to the **server.env** file. Example: `MFPF_ADMIN_PASSWORD={xor}PjsyNjE=`
-3. If you are using AES encryption and used your own encryption key instead of the default key, you must create a configuration file that contains your encryption key and add it to the **usr/config** directory. The Liberty server accesses the file to decrypt the password during runtime. The configuration file must have the .xml file extension and resemble the following format:
+1. Zum Verschlüsseln des Kennworts können Sie den Befehl `securityUtility` von Liberty Profile verwenden. Wählen Sie für die Verschlüsselung des Kennworts die XOR- oder AES-Verschlüsselung aus. 
+2. Kopieren Sie das verschlüsselte Kennwort in die Datei **server.env**. Beispiel: `MFPF_ADMIN_PASSWORD={xor}PjsyNjE=`
+3. Wenn Sie die AES-Verschlüsselung und anstelle des Standardschlüssels einen eigenen Chiffrierschlüssel verwenden, müssen Sie eine Konfigurationsdatei erstellen, die Ihren Chiffrierschlüssel enthält, und diese Datei zum Verzeichnis **usr/config** hinzufügen. Der Liberty-Server greift auf die Datei zu, um das Kennwort in der Laufzeit zu entschlüsseln. Die Konfigurationsdatei muss die Dateierweiterung .xml und folgendes Format haben:
+
 
 ```bash
 <?xml version="1.0" encoding="UTF-8"?>
@@ -93,29 +113,33 @@ Passwords are configured in the **server.env** files in the **package_root/mfpf-
 </server>
 ```
 
-#### Securing container communication using a private IP address	
+#### Containerkommunikation mit einer privaten IP-Adresse schützen	
 {: securing-container-communication-using-a-private-ip-address }
-To have secure communication between the {{ site.data.keys.mf_server }} container and the {{ site.data.keys.mf_analytics }} container, you must include the private IP address of the {{ site.data.keys.mf_analytics }} container in the `mfpfProperties.xml` file.
+Für eine sichere Kommunikation zwischen dem MobileFirst-Server-Container und dem Container mit {{ site.data.keys.mf_analytics }} müssen Sie die private IP-Adresse des Containers mit {{ site.data.keys.mf_analytics }} in die Datei `mfpfProperties.xml` aufnehmen. 
 
-To complete this task, you need the private IP of the {{ site.data.keys.mf_analytics }} container, which you can obtain using the following command: `cf ic inspect analytics_container_id`. Look for the IP Address field in the command output. **Remember:** If you are going to use {{ site.data.keys.mf_analytics }}, you must configure, build, and run the {{ site.data.keys.mf_analytics }} image before configuring, deploying, and running the {{ site.data.keys.mf_server }} image.
+Für diesen Schritt benötigen Sie die private IP-Adresse des Containers mit {{ site.data.keys.mf_analytics }}, die Sie mit folgendem Befehl abrufen können: `cf ic inspect ID_des_Analytics-Containers`. Suchen Sie in der Befehlsausgabe das Feld mit der IP-Adresse. **Erinnerung:** Wenn Sie {{ site.data.keys.mf_analytics }} verwenden möchten, müssen Sie das MobileFirst-Analytics-Image konfigurieren, erstellen und ausführen. Erst dann können Sie das
+MobileFirst-Server-Image konfigurieren, implementieren und ausführen. 
 
-Complete the following steps by editing the mfpf-server/usr/config/mfpfproperties.xml file:
+Führen Sie die folgenden Bearbeitungsschritte für die Datei mfpf-server/usr/config/mfpfproperties.xml aus: 
 
-1. Set the **mfp.analytics.url** property to the private IP address of the {{ site.data.keys.mf_analytics }} container. Example: `<jndiEntry jndiName="mfp.analytics.url" value="http://AnalyticsContainerPrivateIP:9080/analytics-service/rest"/>`
+1. Setzen Sie die Eigenschaft **mfp.analytics.url** auf die private IP-Adresse des Containers mit {{ site.data.keys.mf_analytics }}. Beispiel: `<jndiEntry jndiName="mfp.analytics.url" value="http://AnalyticsContainerPrivateIP:9080/analytics-service/rest"/>`
 
-    When a private IP address changes, provide the new IP address in the mfpfproperties.xml file and rebuild and deploy the container by running the prepareserver.sh and starterserver.sh scripts respectively.
+    Wenn sich eine private IP-Adresse ändert, müssen Sie in der Datei mfpfproperties.xml die neue IP-Adresse angeben und anschließend den Container neu erstellen und implementieren, indem Sie das Script prepareserver.sh und das Script starterserver.sh ausführen. 
     
-2. To ensure that the {{ site.data.keys.mf_analytics_console }} can be accessed on the network, set the **mfp.analytics.console.url** property to the public IP address of the {{ site.data.keys.mf_analytics }} container. Example: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
+2. Stellen Sie sicher, dass über das Netz auf die {{ site.data.keys.mf_analytics_console }} zugegriffen werden kann. Setzen Sie dazu die Eigenschaft **mfp.analytics.console.url** auf die öffentliche IP-Adresse des Containers mit {{ site.data.keys.mf_analytics }}. Beispiel: `<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
 
-#### Restricting access to the consoles running on containers	
+#### Zugriff auf die in Containern ausgeführten Konsolen einschränken	
 {: #restricting-access-to-the-consoles-running-on-containers }
-You can restrict access to the {{ site.data.keys.mf_console }} and the {{ site.data.keys.mf_analytics_console }} in production environments by creating and deploying a Trust Association Interceptor (TAI) to intercept requests to the consoles running on IBM  Containers.
+In Produktionsumgebungen können Sie den Zugriff auf die {{ site.data.keys.mf_console }} und die {{ site.data.keys.mf_analytics_console }} einschränken, indem Sie einen TAI (Trust Association Interceptor) erstellen und implementieren. Dieser TAI fängt Anforderungen an die in
+IBM Containern ausgeführten Konsolen ab. 
 
-The TAI can implement user-specific filtering logic that decides if a request is forwarded to the console or if an approval is required. This method of filtering provides the flexibility for you to add your own authentication mechanism if needed.
+Der TAI kann benutzerspezifische Filterlogik implementieren, die entscheidet, ob eine Anforderung an die Konsole weitergeleitet wird oder eine Genehmigung erforderlich ist. Diese Filtermethode ist flexibel, sodass Sie ggf. Ihren eigenen Authentifizierungsmechanismus hinzufügen können. 
 
-See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_dev_custom_tai.html?view=embed)
+Lesen Sie hierzu auch den Artikel [Angepassten TAI für das Liberty-Profil entwickeln](https://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_dev_custom_tai.html?view=embed). 
 
-1. Create a custom TAI that implements your security mechanism to control access to the {{ site.data.keys.mf_console }}. The following example of a custom TAI uses the IP Address of the incoming request to validate whether to provide access to the {{ site.data.keys.mf_console }} or not.
+1. Erstellen Sie einen angepassten TAI, der Ihren Sicherheitsmechanismus für die Steuerung des Zugriffs auf die
+{{ site.data.keys.mf_console }} implementiert. Der folgende angepasste Beispiel-TAI verwendet die IP-Adresse der eingehenden Anforderung, um
+festzustellen, ob Zugriff auf die {{ site.data.keys.mf_console }} gewährt werden soll oder nicht. 
 
    ```java
    package com.ibm.mfpconsole.interceptor;
@@ -129,9 +153,10 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
    import com.ibm.wsspi.security.tai.TAIResult;
    import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
 
-   public class MFPConsoleTAI implements TrustAssociationInterceptor {	
-       String allowedIP =null; 
-       
+   public class MFPConsoleTAI implements TrustAssociationInterceptor {
+    	
+       String allowedIP =null;
+
        public MFPConsoleTAI() {
           super();
        }
@@ -140,17 +165,17 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#isTargetInterceptor
      * (javax.servlet.http.HttpServletRequest)
      */
-       public boolean isTargetInterceptor(HttpServletRequest req)
-                      throws WebTrustAssociationException {
-          //Add logic to determine whether to intercept this request
-    	   
+    public boolean isTargetInterceptor(HttpServletRequest req)
+                  throws WebTrustAssociationException {
+      // Logik hinzufügen, die festlegt, ob diese Anforderung abgefangen werden soll
+    	
     	   boolean interceptMFPConsoleRequest = false;
     	   String requestURI = req.getRequestURI();
-    	   
+    	
     	   if(requestURI.contains("worklightConsole")) {
     		   interceptMFPConsoleRequest = true;
     	   }
-    		   
+    		
     	   return interceptMFPConsoleRequest;
        }
 
@@ -160,14 +185,14 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
      */
        public TAIResult negotiateValidateandEstablishTrust(HttpServletRequest request,
                         HttpServletResponse resp) throws WebTrustAssociationFailedException {
-            // Add logic to authenticate a request and return a TAI result.
+            // Logik hinzufügen, um eine Anforderung zu authentifizieren und ein TAI-Ergebnis zurückzugeben
             String tai_user = "MFPConsoleCheck";
-            
+
             if(allowedIP != null) {
             	
-            	String ipAddress = request.getHeader("X-FORWARDED-FOR");  
-            	if (ipAddress == null) { 
-            	  ipAddress = request.getRemoteAddr();  
+            	String ipAddress = request.getHeader("X-FORWARDED-FOR");
+            	if (ipAddress == null) {
+            	  ipAddress = request.getRemoteAddr();
             	}
             	
             	if(checkIPMatch(ipAddress, allowedIP)) {
@@ -180,9 +205,9 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
             }
             return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
         }
-       
+
        private static boolean checkIPMatch(String ipAddress, String pattern) {
-    	   
+    	
     	   if (pattern.equals("*.*.*.*") || pattern.equals("*"))
     		      return true;
 
@@ -208,8 +233,8 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
         	if(properties != null) {
         		if(properties.containsKey("allowedIPs")) {
         			allowedIP = properties.getProperty("allowedIPs");
-        		}
-        	}
+    		}
+    	}
             return 0;
         }
 
@@ -236,58 +261,60 @@ See also: [Developing a custom TAI for the Liberty profile](https://www.ibm.com/
    }
    ```
     
-2. Export the custom TAI Implementation into a .jar file and place it in the applicable **env** folder (**mfpf-server/usr/env or mfpf-analytics/usr/env**).
-3. Create an XML configuration file that contains the details of the TAI interceptor (see the TAI configuration example code provided in step 1) and then add your .xml file to the applicable folder (**mfpf-server/usr/config** or **mfpf-analytics/usr/config**). Your .xml file should resemble the following example. **Tip:** Be sure to update the class name and properties to reflect your implementation.
+2. Exportieren Sie die Implementierung des angepassten TAI in eine JAR-Datei und stellen Sie diese in den betreffenden Ordner **env** (**mfpf-server/usr/env** oder **mfpf-analytics/usr/env**).
+3. Erstellen Sie eine XML-Konfigurationsdatei mit den Details des TAI (siehe Beispielcode für eine TAI-Konfiguration in Schritt 1) und fügen Sie Ihre XML-Datei zum betreffenden Ordner (**mfpf-server/usr/config** oder **mfpf-analytics/usr/config**) hinzu. Ihre .xml-Datei sollte dem folgenden Beispiel ähneln.
+**Tipp:** Vergessen Sie nicht, den Klassennamen und die Eigenschaften an Ihre Implementierung anzupassen. 
 
    ```xml
    <?xml version="1.0" encoding="UTF-8"?>
         <server description="new server">
-        <featureManager> 
-            <feature>appSecurity-2.0</feature> 
-        </featureManager> 
+        <featureManager>
+            <feature>appSecurity-2.0</feature>
+        </featureManager>
 
-        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true" 
+        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
                           failOverToAppAuthType="false">
-            <interceptors id="MFPConsoleTAI" enabled="true"  
-                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI" 
-                          invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI"> 
+            <interceptors id="MFPConsoleTAI" enabled="true"
+                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
+                          invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
                 <properties allowedIPs="9.182.149.*"/>
-            </interceptors> 
-        </trustAssociation> 
+            </interceptors>
+        </trustAssociation>
 
-        <library id="MFPConsoleTAI"> 
-            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/> 
-        </library> 
+        <library id="MFPConsoleTAI">
+            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
+        </library>
    </server>
    ```
 
-4. [Build the image and run the container](../). The {{ site.data.keys.mf_console }} and the Analytics Console are now accessible only when the configured TAI security mechanism is satisfied.
+4. [Erstellen Sie das Image und führen Sie den Container aus](../). Die {{ site.data.keys.mf_console }}
+und die Analytics Console sind jetzt nur zugänglich, wenn die Bedingungen des konfigurierten TAI-Sicherheitsmechanismus erfüllt sind. 
 
-## LDAP configuration for containers
+## LDAP-Konfiguration für Container
 {: #ldap-configuration-for-containers }
-You can configure a {{ site.data.keys.product }} container to securely connect out to an external LDAP repository.
+Sie können einen Container mit der {{ site.data.keys.product }} so konfigurieren, dass eine sichere Verbindung zu einem externen LDAP-Repository hergestellt werden kann. 
 
-The external LDAP registry can be used in a container for the following purposes:
+Die externe LDAP-Registry kann für folgende Zwecke in einem Container verwendet werden: 
 
-* To configure the {{ site.data.keys.product_adj }} administration security with an external LDAP registry.
-* To configure the {{ site.data.keys.product_adj }} mobile applications to work with an external LDAP registry.
+* Um die {{ site.data.keys.product_adj }}-Verwaltungssicherheit mit einer externen LDAP-Registry zu konfigurieren
+* Um mobile {{ site.data.keys.product_adj }}-Anwendungen für eine externe LDAP-Registry zu konfigurieren
 
-### Configuring administration security with LDAP
+### Verwaltungssicherheit mit LDAP konfigurieren
 {: #configuring-administration-security-with-ldap }
-Configure the {{ site.data.keys.product_adj }} administration security with an external LDAP registry.  
-The configuration process includes the following steps:
+Konfigurieren Sie die {{ site.data.keys.product_adj }}-Verwaltungssicherheit mit einer externen LDAP-Registry.   
+Der Konfigurationsprozess umfasst die folgenden Schritte: 
 
-* Setup and configuration of an LDAP repository
-* Changes to the registry file (registry.xml)
-* Configuration of a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix  for this step.)
+* LDAP-Repository einrichten und konfigurieren
+* Registry-Datei (registry.xml) ändern
+* Geschütztes Gateway für die Verbindung zu einem lokalen LDAP-Repository und zum Container konfigurieren. (Für diesen Schritt benötigen Sie eine vorhandene App in Bluemix.) 
 
-#### LDAP repository
+#### LDAP-Repository
 {: #ldap-repository }
-Create users and groups in the LDAP repository. For groups, authorization is enforced based on user membership.
+Erstellen Sie Benutzer und Gruppen in der LDAP-Repository. Die Autorisierung für Gruppen wird ausgehend von der Zugehörigkeit von Benutzern zu den Gruppen umgesetzt. 
 
-#### Registry file
+#### Registry-Datei
 {: #registry-file }
-1. Open the **registry.xml** and find the `basicRegistry` element. Replace the `basicRegistry` element with code that is similar to the following snippet:
+1. Öffnen Sie die Datei **registry.xml** und suchen Sie das Element `basicRegistry`. Ersetzen Sie das Element `basicRegistry` durch ähnlichen Code wie im folgenden Snippet: 
 
    ```xml
    <ldapRegistry 
@@ -306,15 +333,15 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
    </ldapRegistry>
    ```
     
-    Entry | Description
+  Eintrag | Beschreibung
     --- | ---
-    `host` and `port` | Host name (IP address) and port number of your local LDAP server.
-    `baseDN` | The domain name (DN) in LDAP that captures all details about a specific organization.
-    `bindDN="uid=admin,ou=system"	` | Binding details of the LDAP server. For example, the default values for an Apache Directory Service would be `uid=admin,ou=system`.
-    `bindPassword="secret"	` | Binding password for the LDAP server. For example, the default value for an Apache Directory Service is `secret`.
-    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | The custom filters that are used for querying the directory service (such as Apache) during authentication and authorization.
+    `host` und `port` | Hostname (IP-Adresse) und Portnummer Ihres lokalen LDAP-Servers
+`baseDN` | Domänenname (DN) in LDAP mit allen Details einer bestimmten Organisation
+`bindDN="uid=admin,ou=system"	` | Bindungsdetails des LDAP-Servers. Für einen Apache Directory Service würden die Standardwerte beispielsweise `uid=admin,ou=system` lauten.
+`bindPassword="secret"	` | Bindungskennwort für den LDAP-Server. Der Standardwert für einen Apache Directory Service wäre beispielsweise `secret`.
+`<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | Angepasste Filter für das Abfragen des Verzeichnisservice (z. B. Apache) während der Authentifizierung und Autorisierung
         
-2. Ensure that the following features are enabled for `appSecurity-2.0` and `ldapRegistry-3.0`:
+2. Stellen Sie sicher, dass die folgenden Features für `appSecurity-2.0` und `ldapRegistry-3.0` aktiviert sind:
 
    ```xml
    <featureManager>
@@ -323,22 +350,24 @@ Create users and groups in the LDAP repository. For groups, authorization is enf
    </featureManager>
    ```
     
-    For details about configuring various LDAP server repositories, see the [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
+    Einzelheiten zum Konfigurieren verschiedener LDAP-Server-Repositorys finden Sie im [Knowledge Center zu WebSphere Application Server Liberty](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html).
     
-#### Secure gateway
+#### Geschütztes Gateway
 {: #secure-gateway }
-To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this task.
+Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in Bluemix eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern.
+Für diese Aufgabe benötigen Sie den Hostnamen und die Portnummer Ihres lokalen LDAP-Servers. 
 
-1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
-2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
-3. Go to the Bluemix dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
-4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
-5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
-6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
-7. Capture the **Destination ID** and **Cloud Host : Port** values. Go to the registry.xml file and add these values, replacing any existing values. See the following example of an updated code snippet in the registry.xml file:
+1. Melden Sie sich bei Bluemix an und wählen Sie **Katalog, Kategorie > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
+2. Wählen Sie unter "Service hinzufügen" eine App aus und klicken Sie auf **Erstellen**. Der Service ist jetzt an Ihre App gebunden. 
+3. Öffnen Sie das Bluemix-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Gateway hinzufügen**.
+4. Benennen Sie das Gateway und klicken Sie auf **Ziele hinzufügen**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein. 
+5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird. 
+6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server. 
+7. Notieren Sie die Werte für **Ziel-ID** und **Cloud-Host: Port**. Öffnen Sie die Datei registry.xml und ersetzen Sie die vorhandenen Werte durch die gerade notierten Werte. Das folgende Beispiel zeigt ein aktualisiertes Code-Snippet aus der Datei registry.xml:
+
 
 ```xml
-<ldapRegistry 
+<ldapRegistry
     id="ldap"
     host="cap-sg-prd-5.integration.ibmcloud.com" port="15163" ignoreCase="true"
     baseDN="dc=worklight,dc=com"
@@ -354,20 +383,21 @@ To configure a secure gateway connection to your LDAP server, you must create an
 </ldapRegistry>
 ```
 
-### Configuring apps to work with LDAP
+### Apps für LDAP konfigurieren
 {: #configuring-apps-to-work-with-ldap }
-Configure {{ site.data.keys.product_adj }} mobile apps to work with an external LDAP registry.  
-The configuration process includes the following step: Configuring a secure gateway to connect to a local LDAP repository and the container. (You need an existing app on Bluemix for this step.)
+Konfigurieren Sie mobile {{ site.data.keys.product_adj }}-Apps für die Verwendung mit einer externen LDAP-Registry.   
+Zum Konfigurationsprozess gehört der Schritt, ein sicheres Gateway für die Verbindung zu einem lokalen LDAP-Repository und zum Container zu konfigurieren. (Für diesen Schritt benötigen Sie eine vorhandene App in Bluemix.) 
 
-To configure a secure gateway connection to your LDAP server, you must create an instance of the Secure Gateway service on Bluemix and then obtain the IP information for the LDAP registry. You need your local LDAP host name and port number for this step.
+Wenn Sie eine Verbindung vom geschützten Gateway zu Ihrem LDAP-Server konfigurieren möchten, müssen Sie in Bluemix eine Instanz des Service "Secure Gateway" erstellen und dann die IP-Informationen für die LDAP-Registry anfordern.
+Für diesen Schritt benötigen Sie den Namen und die Portnummer Ihres lokalen LDAP-Hosts. 
 
-1. Log on to Bluemix and navigate to **Catalog, Category > Integration**, and then click **Secure Gateway**.
-2. Under Add Service, select an app and then click **Create**. Now the service is bound to your app.
-3. Go to the Bluemix dashboard for the app, click on the **Secure Gateway** service instance, and then click **Add Gateway**.
-4. Name the gateway and click **Add Destinations** and enter the name, IP address, and port for your local LDAP server.
-5. Follow the prompts to complete the connection. To see the destination initialized, navigate to the Destination screen of the LDAP gateway service.
-6. To obtain the host and port information that you need, click the Information icon on the LDAP gateway service instance (located on the Secure Gateway dashboard). The details displayed are an alias to your local LDAP server.
-7. Capture the **Destination ID** and **Cloud Host : Port** values. Provide these values for the LDAP login module.
+1. Melden Sie sich bei Bluemix an und wählen Sie **Katalog, Kategorie > Integration** aus. Klicken Sie dann auf **Secure Gateway**.
+2. Wählen Sie unter "Service hinzufügen" eine App aus und klicken Sie auf **Erstellen**. Der Service ist jetzt an Ihre App gebunden. 
+3. Öffnen Sie das Bluemix-Dashboard für die App und klicken Sie auf die Instanz des Service **Secure Gateway**. Klicken Sie dann auf **Gateway hinzufügen**.
+4. Benennen Sie das Gateway und klicken Sie auf **Ziele hinzufügen**. Geben Sie den Namen, die IP-Adresse und den Port Ihres lokalen LDAP-Servers ein. 
+5. Folgen Sie der Bedienerführung, um die Verbindung fertigzustellen. Navigieren Sie zur Zielanzeige für den LDAP-Gateway-Service, um zu sehen, wie das Ziel initialisiert wird. 
+6. Zum Anfordern der benötigten Host- und Portinformationen können Sie für die Instanz des LDAP-Gateway-Service (im Dashboard für Secure Gateway) auf das Informationssymbol klicken. Angezeigt wird ein Aliasname für Ihren lokalen LDAP-Server. 
+7. Notieren Sie die Werte für **Ziel-ID** und **Cloud-Host: Port**. Geben Sie diese Werte für das LDAP-Anmeldemodul an. 
 
-**Results**  
-The communication between the {{ site.data.keys.product_adj }} app in the container on Bluemix with your local LDAP server is established. The authentication and authorization from the Bluemix app is validated against your local LDAP server.
+**Ergebnisse**  
+Die {{ site.data.keys.product_adj }}-App im Container in Bluemix kann jetzt mit Ihrem lokalen LDAP-Server kommunizieren. Die Authentifizierung und Autorisierung der Bluemix-App wird anhand Ihres lokalen LDAP-Servers validiert. 

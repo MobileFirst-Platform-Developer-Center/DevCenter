@@ -1,49 +1,55 @@
 ---
 layout: tutorial
-title: Handling Push Notifications in iOS
+title: Push-Benachrichtigungen in iOS
 breadcrumb_title: iOS
 relevantTo: [ios]
 weight: 5
 downloads:
-  - name: Download Xcode project
+  - name: Xcode-Projekt herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_adj }}-provided Notifications API can be used in order to register &amp; unregister devices, and subscribe &amp; unsubscribe to tags. In this tutorial, you will learn how to handle push notification in iOS applications using Swift.
+Sie können
+die {{ site.data.keys.product_adj }}-API für Benachrichtigungen verwenden,
+um Geräte zu registrieren und Geräteregistrierungen aufzuheben und um
+Tags zu abonnieren und Tagabonnements zu beenden. In diesem Lernprogramm werden Sie lernen, wie
+Push-Benachrichtigungen in iOS-Anwendungen mit Swift gehandhabt werden. 
 
-For information about Silent or Interactive notifications, see:
+Informationen zu Benachrichtigungen im Hintergrund und interaktiven Benachrichtigungen finden Sie in folgenden Abschnitten: 
 
-* [Silent notifications](../silent)
-* [Interactive notifications](../interactive)
+* [Benachrichtigungen im Hintergrund](../silent)
+* [Interaktive Benachrichtigungen](../interactive)
 
-**Prerequisites:**
+**Voraussetzungen: **
 
-* Make sure you have read the following tutorials:
-	* [Push Notifications Overview](../../)
-    * [Setting up your {{ site.data.keys.product_adj }} development environment](../../../installation-configuration/#installing-a-development-environment)
-    * [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios)
-* {{ site.data.keys.mf_server }} to run locally, or a remotely running {{ site.data.keys.mf_server }}.
-* {{ site.data.keys.mf_cli }} installed on the developer workstation
+* Stellen Sie sicher, dass Sie die folgenden Lernprogramme durchgearbeitet haben: 
+	* [Übersicht über Push-Benachrichtigungen](../../)
+    * [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/#installing-a-development-environment)
+    * [SDK der {{ site.data.keys.product }} zu iOS-Anwendungen hinzufügen](../../../application-development/sdk/ios)
+* {{ site.data.keys.mf_server }} wird lokal oder fern ausgeführt. 
+* Die {{ site.data.keys.mf_cli }} ist auf der Entwicklerworkstation installiert. 
 
 
-### Jump to:
+### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Notifications configuration](#notifications-configuration)
-* [Notifications API](#notifications-api)
-* [Handling a push notification](#handling-a-push-notification)
+* [Benachrichtigungskonfiguration](#notifications-configuration)
+* [API für Benachrichtigungen](#notifications-api)
+* [Handhabung von Push-Benachrichtigungen](#handling-a-push-notification)
 
 
-### Notifications Configuration
+### Benachrichtigungskonfiguration
 {: #notifications-configuration }
-Create a new Xcode project or use and existing one.
-If the {{ site.data.keys.product_adj }} Native iOS SDK is not already present in the project, follow the instructions in the [Adding the {{ site.data.keys.product }} SDK to iOS applications](../../../application-development/sdk/ios) tutorial.
+Erstellen Sie ein Xcode-Projekt oder verwenden Sie ein vorhandenes Projekt. Wenn das native {{ site.data.keys.product_adj }}-iOS-SDK noch nicht im Projekt enthalten ist,
+folgen Sie den Anweisungen im Lernprogramm [SDK der {{ site.data.keys.product }} zu iOS-Anwendungen hinzufügen](../../../application-development/sdk/ios).
 
 
-### Adding the Push SDK
+
+
+### Push-SDK hinzufügen
 {: #adding-the-push-sdk }
-1. Open the project's existing **podfile** and add the following lines:
+1. Öffnen Sie die vorhandene **podfile** des Projekts und fügen Sie die folgenden Zeilen hinzu: 
 
    ```xml
    use_frameworks!
@@ -70,186 +76,217 @@ If the {{ site.data.keys.product_adj }} Native iOS SDK is not already present in
         end
    end
    ```
-    - Replace **Xcode-project-target** with the name of your Xcode project's target.
+    - Ersetzen Sie **Xcode-project-target** durch den Namen Ihres Xcode-Projektziels. 
 
-2. Save and close the **podfile**.
-3. From a **Command-line** window, navigate into to the project's root folder.
-4. Run the command `pod install`
-5. Open project using the **.xcworkspace** file.
+2. Speichern Sie die **podfile** und schließen Sie sie.
+3. Navigieren Sie in einem **Befehlszeilenfenster** zum Stammverzeichnis des Projekts. 
+4. Führen Sie den Befehl `pod install` aus. 
+5. Öffnen Sie das Projekt über die Datei **.xcworkspace**. 
 
-## Notifications API
+## API für Benachrichtigungen
 {: #notifications-api }
-### MFPPush Instance
+### MFPPush-Instanz
 {: #mfppush-instance }
-All API calls must be called on an instance of `MFPPush`.  This can be done by using a `var` in a view controller such as `var push = MFPPush.sharedInstance();`, and then calling `push.methodName()` throughout the view controller.
+Alle API-Aufrufe müssen für eine Instanz von `MFPPush` ausgeführt werden. Zu diesem Zweck können Sie
+eine Variable (`var`) in einem Ahnsichtencontroller erstellen, z. B. `var push = MFPPush.sharedInstance();`,
+und dann im gesamten Ansichtencontroller `push.methodName()` aufrufen. 
 
-Alternatively you can call `MFPPush.sharedInstance().methodName()` for each instance in which you need to access the push API methods.
+Alternativ dazu könen Sie `MFPPush.sharedInstance().methodName()` für jede Instanz aufrufen, in der
+Sie auf die Push-API-Methoden zugreifen müssen. 
 
-### Challenge Handlers
+### Abfrage-Handler
 {: #challenge-handlers }
-If the `push.mobileclient` scope is mapped to a **security check**, you need to make sure matching **challenge handlers** exist and are registered before using any of the Push APIs.
+Wenn der Bereich `push.mobileclient` einer **Sicherheitsüberprüfung** zugeordnet ist,
+müssen Sie sicherstellen, dass passende **Abfrage-Handler** registriert sind, bevor Push-APIs verwendet werden. 
 
-> Learn more about challenge handlers in the [credential validation](../../../authentication-and-security/credentials-validation/ios) tutorial.
+> Weitere Informationen zu Abfrage-Handlern enthält das Lernprogramm [Berechtigungsnachweise validieren](../../../authentication-and-security/credentials-validation/ios).
 
-### Client-side
+### Clientseite
 {: #client-side }
-| Swift Methods                                                                                                | Description                                                             |
-|--------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [`initialize()`](#initialization)                                                                            | Initializes MFPPush for supplied context.                               |
-| [`isPushSupported()`](#is-push-supported)                                                                    | Does the device support push notifications.                             |
-| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token)                  | Registers the device with the Push Notifications Service.               |
-| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token)                                                | Sends the device token to the server                                    |
-| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags)                                | Retrieves the tag(s) available in a push notification service instance. |
-| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe)     | Subscribes the device to the specified tag(s).                          |
-| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)              | Retrieves all tags the device is currently subscribed to.               |
-| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Unsubscribes from a particular tag(s).                                  |
-| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister)                     | Unregisters the device from the Push Notifications Service              |
 
-#### Initialization
+| Swift-Methoden | Beschreibung  |
+|---------------|--------------|
+| [`initialize()`](#initialization) | Initialisiert MFPPush für den angegebenen Kontext |
+| [`isPushSupported()`](#is-push-supported) | Unterstützt das Gerät Push-Benachrichtigungen? |
+| [`registerDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#register-device--send-device-token) | Registriert das Gerät beim Push-Benachrichtigungsservice|
+| [`sendDeviceToken(deviceToken: NSData!)`](#register-device--send-device-token) | Sendet das Gerätetoken an den Server |
+| [`getTags(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-tags) | Ruft die verfügbaren Tags einer Instanz des Push-Benachrichtigungsservice ab |
+| [`subscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#subscribe) | Richtet das Geräteabonnement für die angegebenen Tags ein |
+| [`getSubscriptions(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#get-subscriptions)  | Ruft die derzeit vom Gerät abonnierten Tags ab  |
+| [`unsubscribe(tagsArray: [AnyObject], completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unsubscribe) | Beendet das Abonnement bestimmter Tags |
+| [`unregisterDevice(completionHandler: ((WLResponse!, NSError!) -> Void)!)`](#unregister) | Hebt die Registrierung des Geräts beim Push-Benachrichtigungsservice auf              |
+
+#### Initialisierung
 {: #initialization }
-Initialization is required for the client application to connect to MFPPush service.
+Die Initialisierung ist erforderlich, damit die Clientanwendung eine Verbindung zum Service MFPPush herstellen kann. 
 
-* The `initialize` method should be called first before using any other MFPPush APIs.
-* It registers the callback function to handle received push notifications.
+* Die Methode `initialize` muss aufgerufen werden, bevor andere MFPPush-APIs verwendet werden.
+* Die Callback-Funktion wird für die Handhabung empfangener Push-Benachrichtigungen registriert. 
 
 ```swift
 MFPPush.sharedInstance().initialize();
 ```
 
-#### Is push supported
+#### Wird Push unterstützt?
 {: #is-push-supported }
-Checks if the device supports push notifications.
+Es wird überprüft, ob das Gerät Push-Benachrichtigungen unterstützt. 
 
 ```swift
 let isPushSupported: Bool = MFPPush.sharedInstance().isPushSupported()
 
 if isPushSupported {
-    // Push is supported
+    // Push wird unterstützt.
 } else {
-    // Push is not supported
+    // Push wird nicht unterstützt.
 }
 ```
 
-#### Register device &amp; send device token
+#### Gerät registrieren und Gerätetoken senden
 {: #register-device--send-device-token }
-Register the device to the push notifications service.
+Registrieren Sie das Gerät beim Push-Benachrichtigungsservice.
 
 ```swift
-MFPPush.sharedInstance().registerDevice({(options, response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().registerDevice(nil) { (response, error) -> Void in
     if error == nil {
-        // Successfully registered
+        self.enableButtons()
+        self.showAlert("Registered successfully")
+        print(response?.description ?? "")
     } else {
-        // Registration failed with error
+        self.showAlert("Registrations failed.  Error \(error?.localizedDescription)")
+        print(error?.localizedDescription ?? "")
     }
-})
+}
 ```
 
-`options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request, sends the device token to the server to register the device with its unique identifier.
+<!--`options` = `[NSObject : AnyObject]` which is an optional parameter that is a dictionary of options to be passed with your register request, sends the device token to the server to register the device with its unique identifier.-->
 
 ```swift
 MFPPush.sharedInstance().sendDeviceToken(deviceToken)
 ```
 
-> **Note:** This is typically called in the **AppDelegate** in the `didRegisterForRemoteNotificationsWithDeviceToken` method.
+> **Hinweis:** Dieser Aufruf wird in der Regel im **AppDelegate**
+in der Methode `didRegisterForRemoteNotificationsWithDeviceToken` ausgeführt. 
 
-#### Get tags
+#### Tags abrufen
 {: #get-tags }
-Retrieve all the available tags from the push notification service.
+Rufen Sie alle verfügbaren Tags vom Push-Benachrichtigungsservice ab. 
 
 ```swift
-MFPPush.sharedInstance().getTags({(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().getTags { (response, error) -> Void in
     if error == nil {
         print("The response is: \(response)")
-        print("The response text is \(response.responseText)")
-        if response.availableTags().isEmpty == true {
-            // Successfully retrieved tags as list of strings
+        print("The response text is \(response?.responseText)")
+        if response?.availableTags().isEmpty == true {
+            self.tagsArray = []
+            self.showAlert("There are no available tags")
         } else {
-            // Successfully retrieved response from server but there where no available tags
+            self.tagsArray = response!.availableTags() as! [String]
+            self.showAlert(String(describing: self.tagsArray))
+            print("Tags response: \(response)")
         }
     } else {
-        // Failed to receive tags with error
+        self.showAlert("Error \(error?.localizedDescription)")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
 
-#### Subscribe
+#### Abonnement
 {: #subscribe }
-Subscribe to desired tags.
+Abonnieren Sie die gewünschten Tags. 
 
 ```swift
-var tagsArray: [AnyObject] = ["Tag 1" as AnyObject, "Tag 2" as AnyObject]
+var tagsArray: [String] = ["Tag 1", "Tag 2"]
 
-MFPPush.sharedInstance().subscribe(self.tagsArray, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+MFPPush.sharedInstance().subscribe(self.tagsArray) { (response, error)  -> Void in
     if error == nil {
-        // Subscribed successfully
+        self.showAlert("Subscribed successfully")
+        print("Subscribed successfully response: \(response)")
     } else {
-        // Failed to subscribe with error
+        self.showAlert("Failed to subscribe")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
 
-#### Get subscriptions
+#### Abonnements abrufen
 {: #get-subscriptions }
-Retrieve tags the device is currently subscribed to.
+Rufen Sie die derzeit vom Gerät abonnierten Tags ab. 
 
 ```swift
-MFPPush.sharedInstance().getSubscriptions({(response: WLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        // Successfully received subscriptions as list of strings
-    } else {
-        // Failed to retrieve subscriptions with error
-    }
-})
+MFPPush.sharedInstance().getSubscriptions { (response, error) -> Void in
+   if error == nil {
+       var tags = [String]()
+       let json = (response?.responseJSON)! as [AnyHashable: Any]
+       let subscriptions = json["subscriptions"] as? [[String: AnyObject]]
+       for tag in subscriptions! {
+           if let tagName = tag["tagName"] as? String {
+            print("tagName: \(tagName)")
+               tags.append(tagName)
+           }
+       }
+       self.showAlert(String(describing: tags))
+   } else {
+       self.showAlert("Error \(error?.localizedDescription)")
+       print("Error \(error?.localizedDescription)")
+   }
+}
 ```
 
 
-#### Unsubscribe
+#### Abonnement beenden
 {: #unsubscribe }
-Unsubscribe from tags.
+Beenden Sie das Tagabonnement. 
 
 ```swift
 var tags: [String] = {"Tag 1", "Tag 2"};
 
-// Unsubscribe from tags
-MFPPush.sharedInstance().unsubscribe(tags, completionHandler: {(response: WLResponse!, error: NSError!) -> Void in
+// Tagabonnement beenden
+MFPPush.sharedInstance().unsubscribe(self.tagsArray) { (response, error)  -> Void in
     if error == nil {
-        // Unsubscribed successfully
+        self.showAlert("Unsubscribed successfully")
+        print(String(describing: response?.description))
     } else {
-        // Failed to unsubscribe
+        self.showAlert("Error \(error?.localizedDescription)")
+        print("Error \(error?.localizedDescription)")
     }
-})
+}
 ```
 
-#### Unregister
+#### Registrierung aufheben
 {: #unregister }
-Unregister the device from push notification service instance.
+Sie können die Registrierung des Geräts bei der Instanz des Push-Benachrichtigungsservice
+aufheben. 
 
 ```swift
-MFPPush.sharedInstance().unregisterDevice({(response: WLResponse!, error: NSError!) -> Void in
-    if error == nil {
-        // Unregistered successfully
-    } else {
-        self.showAlert("Error \(error.description)")
-        // Failed to unregister with error
-    }
-})
+MFPPush.sharedInstance().unregisterDevice { (response, error)  -> Void in
+   if error == nil {
+       // Schaltflächen inaktivieren
+       self.disableButtons()
+       self.showAlert("Unregistered successfully")
+       print("Subscribed successfully response: \(response)")
+   } else {
+       self.showAlert("Error \(error?.localizedDescription)")
+       print("Error \(error?.localizedDescription)")
+   }
+}
 ```
 
-## Handling a push notification
+## Handhabung von Push-Benachrichtigungen
 {: #handling-a-push-notification }
 
-Push notifications are handled by the native iOS framework directly. Depending on your application lifecyle, different methods will be called by the iOS framework.
+Push-Benachrichtigungen werden direkt vom nativen iOS-Framework behandelt. Welche Methoden vom iOS-Framework aufgerufen werden, richtet sich nach Ihrem Anwendungslebenszyklus. 
 
-For example if a simple notification is received while the application is running, **AppDelegate**'s `didReceiveRemoteNotification` will be triggered:
+Wenn beispielsweise eine einfahce Benachrichtigung empfangen wird, währen die Anwendung aktiv ist,
+wird `didReceiveRemoteNotification` von **AppDelegate** ausgelöst. 
 
 ```swift
-func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
     print("Received Notification in didReceiveRemoteNotification \(userInfo)")
-
-    // display the alert body
-    if let notification = userInfo["aps"] as? NSDictionary,
+    // Alerttext anzeigen
+      if let notification = userInfo["aps"] as? NSDictionary,
         let alert = notification["alert"] as? NSDictionary,
         let body = alert["body"] as? String {
             showAlert(body)
@@ -257,14 +294,14 @@ func application(application: UIApplication, didReceiveRemoteNotification userIn
 }
 ```
 
-> Learn more about handling notifications in iOS from the Apple documentation: http://bit.ly/1ESSGdQ
+> Weitere Informationen zur Handhabung von Benachrichtigungen in iOS finden Sie in der Apple-Dokumentation unter http://bit.ly/1ESSGdQ. 
 
-<img alt="Image of the sample application" src="notifications-app.png" style="float:right"/>
+<img alt="Beispielanwendung" src="notifications-app.png" style="float:right"/>
 
-## Sample application
+## Beispielanwendung
 {: #sample-application }
-[Click to download](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80) the Xcode project.
+[Klicken Sie hier](https://github.com/MobileFirst-Platform-Developer-Center/PushNotificationsSwift/tree/release80), um das Xcode-Projekt herunterzuladen. 
 
-### Sample usage
+### Verwendung des Beispiels
 {: #sample-usage }
-Follow the sample's README.md file for instructions.
+Anweisungen finden Sie in der Datei README.md zum Beispiel. 

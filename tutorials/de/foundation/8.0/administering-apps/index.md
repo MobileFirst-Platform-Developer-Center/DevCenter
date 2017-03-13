@@ -1,55 +1,73 @@
 ---
 layout: tutorial
-title: Administering Applications
+title: Anwendungen verwalten
 weight: 11
 show_children: true
 ---
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_full }} provides several ways to administer {{ site.data.keys.product_adj }} applications in development or in production. {{ site.data.keys.mf_console }} is the main tool with which you can monitor all deployed {{ site.data.keys.product_adj }} applications from a centralized web-based console.
+In der {{ site.data.keys.product_full }} gibt es mehrere Möglichkeiten,
+MobileFirst-Anwendungen in der Entwicklung oder der Produktion zu verwalten. Die zentrale, webbasierte {{ site.data.keys.mf_console }} ist
+das Haupttool, mit dem Sie alle implementierten MobileFirst-Anwendungen überwachen können.
 
-The main operations that you can perform through {{ site.data.keys.mf_console }} are:
+Nachfolgend sind die wichtigsten Operationen angegeben, die Sie in der
+{{ site.data.keys.mf_console }} ausführen können:
 
-* Registering and configuring mobile applications to {{ site.data.keys.mf_server }}.
-* Deploying and configuring adapters to {{ site.data.keys.mf_server }}.
-* Manage application versions to deploy new versions or remotely disable old versions.
-* Manage mobile devices and users to manage access to a specific device or access for a specific user to an application.
-* Display notification messages on application startup.
-* Monitor push notification services.
-* Collect client-side logs for specific applications installed on a specific device.
+* Mobile Anwendungen bei
+{{ site.data.keys.mf_server }} registrieren und konfigurieren
+* Adapter in {{ site.data.keys.mf_server }} implementieren und konfigurieren
+* Anwendungsversionen steuern, um neue Versionen zu implementieren oder alte Versionen über Fernzugriff zu inaktivieren
+* Mobile Geräte und Benutzer verwalten, um den Zugriff auf ein bestimmtes Gerät oder den Zugriff eines bestimmten Benutzers auf eine Anwendung
+zu steuern
+* Benachrichtigungen beim Anwendungsstart anzeigen
+* Push-Benachrichtigungsservices überwachen
+* Clientseitige Protokolle zu bestimmten Anwendungen, die auf einem bestimmten Gerät installiert sind, erfassen
 
-## Administration roles
+## Verwaltungsrollen
 {: #administration-roles }
-Not every kind of administration user can perform every administration operation. {{ site.data.keys.mf_console }}, and all administration tools, have four different roles defined for administration of {{ site.data.keys.product_adj }} applications. The following 
-
-{{ site.data.keys.product_adj }} administration roles are defined:
+Nicht jeder Benutzer mit Verwaltungsaufgaben kann alle Verwaltungsoperationen ausführen. In der {{ site.data.keys.mf_console }}
+und allen Verwaltungstools sind für die Verwaltung von
+MobileFirst-Anwendungen die folgenden vier Rollen definiert:
 
 **Monitor**  
-In this role, a user can monitor deployed {{ site.data.keys.product_adj }} projects and deployed artifacts. This role is read-only.
+Ein Benutzer mit dieser Rolle kann implementierte MobileFirst-Projekte und Artefakte überwachen. Diese Rolle hat keinen Schreibzugriff.
 
 **Operator**  
-An Operator can perform all mobile application management operations, but cannot add or remove application versions or adapters.
+Ein Benutzer mit der Rolle "Operator" kann alle Verwaltungsoperationen für mobile Anwendungen ausführen, jedoch keine
+Anwendungsversionen oder Adapter hinzufügen bzw. entfernen.
 
 **Deployer**  
-In this role, a user can perform the same operations as the Operator, but can also deploy applications and adapters.
+Ein Benutzer mit dieser Rolle kann dieselben Operationen wie ein "Operator" ausführen und außerdem Anwendungen und Adapter implementieren.
 
 **Administrator**  
-In this role, a user can perform all application administration operations.
+Ein Benutzer mit dieser Rolle kann alle Anwendungsverwaltungsoperationen ausführen.
 
-> For more information about {{ site.data.keys.product_adj }} administration roles, see [Configuring user authentication for {{ site.data.keys.mf_server }} administration](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
-
-## Administration tools
+> Weitere Informationen zu {{ site.data.keys.product_adj }}-Verwaltungsrollen finden Sie unter
+[Benutzerauthentifizierung
+für die MobileFirst-Server-Verwaltung konfigurieren](../installation-configuration/production/server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration).
+## Verwaltungstools
 {: #administration-tools }
-{{ site.data.keys.mf_console }} is not the only way to administer {{ site.data.keys.product_adj }} applications. {{ site.data.keys.product }} also provides other tools to incorporate administration operations into your build and deployment process.
+Neben der {{ site.data.keys.mf_console }} gibt es weitere
+Möglichkeiten, MobileFirst-Anwendungen zu verwalten. Die {{ site.data.keys.product }} stellt
+auch Tools für die Aufnahme von Verwaltungsoperationen in Ihren Build- und Implementierungsprozess bereit.
 
-A set of REST services is available to perform administration operations. For API reference documentation of these services, see [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi).
+Zusätzlich stehen REST-Services für die Ausführung von Verwaltungsoperationen zur Verfügung.
+Die Referenzdokumentation zur API dieser Services finden Sie in [REST-API für den MobileFirst-Server-Verwaltungsservice](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi). 
 
-With this set of REST services, you can perform the same operations that you can do in {{ site.data.keys.mf_console }}. You can manage applications, adapters, and, for example, upload a new version of an application or disable an old version.
+Mit diesen REST-Services können Sie dieselben Operationen wie in der
+{{ site.data.keys.mf_console }} ausführen.
+Sie können Anwendungen und Adapter verwalten und beispielsweise eine neue Version einer Anwendung hochladen oder eine alte Anwendungsversion
+inaktivieren.
 
-{{ site.data.keys.product_adj }} applications can also be administered by using Ant tasks or with the **mfpadm** command line tool. See [Administering {{ site.data.keys.product_adj }} applications through Ant](using-ant) or [Administering {{ site.data.keys.product_adj }} applications through the command line](using-cli).
+{{ site.data.keys.product_adj }}-Amwendungen können auch mit Ant-Tasks oder mit dem Befehlszeilentool
+**mfpadm** verwaltet werden
+(siehe [{{ site.data.keys.product_adj }}-Anwendungen mit Ant verwalten](using-ant)
+oder [{{ site.data.keys.product_adj }}-Anwendungen mit dem Befehlszeilentool verwalten](using-cli)).
 
-Similar to the web-based console, the REST services, Ant tasks, and command line tools are secured and require you to provide your administrator credentials.
+Die REST-Services, Ant-Tasks und Befehlszeilentools sind ähnlich wie die webbasierte Konsole geschützt und erfordern
+für die Ausführung von Operationen die Angabe
+Ihrer Administratorberechtigungsnachweise. 
 
-### Select a topic:
+### Wählen Sie ein Thema aus: 
 {: #select-a-topic }
 

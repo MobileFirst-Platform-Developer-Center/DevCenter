@@ -1,49 +1,61 @@
 ---
 layout: tutorial
-title: Silent notifications
+title: Benachrichtigungen im Hintergrund
 relevantTo: [ios,cordova]
 show_in_nav: false
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Silent notifications are notifications that do not display alerts or otherwise disturb the user. When a silent notification arrives, the application handing code runs in background without bringing the application to foreground. Currently, the silent notifications are supported on iOS devices with version 7 onwards. If the silent notification is sent to iOS devices with version lesser than 7, the notification is ignored if the application is running in background. If the application is running in the foreground, then the notification callback method is invoked.
+Die Benachrichtigung im Hintergrund erfolgt ohne Anzeige von Alerts oder andere Störungen des Benutzers. Wenn eine Benachrichtigung im Hintergrund eingeht,
+wird der Handling-Code der Anwendung im Hintergrund ausgeführt, ohne die Anwendung in den Vordergrund zu bringen. Zurzeit werden Benachrichtigungen im Hintergrund auf
+iOS-Geräten der Version 7 oder einer aktuelleren Version unterstützt. Wenn die Benachrichtigung im Hintergrund an iOS-Geräte mit einer älteren Version als Version 7
+gesendet wird und die Anwendung im Hintergrund ausgeführt wird, wird die Benachrichtigung ignoriert. Falls
+die Anwendung im Vordergrund ausgeführt wird, wird die Callback-Methode für Benachrichtigungen aufgerufen.
 
-## Sending silent push notifications
+## Push-Benachrichtigungen im Hintergrund senden
 {: #sending-silent-push-notifications }
-Prepare the notification and send notification. For more information, see [Sending push notifications](../../sending-notifications).
+Bereiten Sie die Benachrichtigung vor und senden Sie sie. Weitere Informationen finden Sie unter [Push-Benachrichtigungen senden](../../sending-notifications).
 
-The three types of notifications that are supported for iOS are represented by constants `DEFAULT`, `SILENT`, and `MIXED`. When the type is not explicitly specified, the `DEFAULT` type is assumed.
+Die drei für
+iOS unterstützten Benachrichtigungstypen werden durch die Konstanten `DEFAULT`, `SILENT` und `MIXED` repräsentiert. Wenn der Typ nicht explizit angegeben ist, wird vom Typ `DEFAULT` ausgegangen.
 
-For `MIXED` type notifications, a message is displayed on the device while, in the background, the app awakens and processes a silent notification. The callback method for `MIXED` type notifications gets called twice - once when the silent notification reaches the device and once when the application is opened by tapping on the notification.
+Bei Benachrichtigungen vom Typ `MIXED` wird auf dem Gerät eine Nchricht angezeigt, während die App im Hintergrund aktiviert wird und eine Benachrichtigung im Hintergrund verarbeitet. Die Callback-Methode für Benachrichtigungen vom Typ
+`MIXED` wird zweimal aufgerufen. Der erste Aufruf erfolgt, wenn die Benachrichtigung im Hintergrund das Gerät erreicht. Der zweite Aufruf erfolgt, wenn der Benutzer auf die Benachrichtigung tippt und so die Anwendung öffnet. 
 
-Based on the requirement choose the appropriate type under **{{ site.data.keys.mf_console }} → [your application] → Push → Send Notifications → iOS custom settings**. 
+Wählen Sie ausgehend von der Anforderung
+unter **{{ site.data.keys.mf_console }} → [Ihre Anwendung] → Push →
+Benachrichtigungen senden → Angepasste iOS-Einstellungen** den entsprechenden Typ. 
 
-> **Note:** If the notification is silent, the **alert**, **sound**, and **badge** properties are ignored.
+> **Hinweis:** Wenn die Benachrichtigung im Hintergrund erfolgt,
+werden die Eigenschaften **alert**, **sound** und **badge** ignoriert. 
 
-![Setting notification type for iOS silent notifications in the {{ site.data.keys.mf_console }}](notification-type-for-silent-notifications.png)
+![Benachrichtigungstyp für Benachrichtigungen im Hintergrund unter iOS
+in der {{ site.data.keys.mf_console }} festlegen](notification-type-for-silent-notifications.png)
 
-## Handling silent push notifications in Cordova applications
+## Benachrichtigungen im Hintergrund in Cordova-Anwendungen
 {: #handling-silent-push-notifications-in-cordova-applications }
-In the JavaScript push notification callback method, you must do the following steps:
+In der
+JavaScript-Callback-Methode für Push-Benachrichtigungen müssen Sie die folgenden Schritte
+ausführen: 
 
-1. Check the notification type. For example:
+1. Überprüfen Sie den Benachrichtigungstyp. Beispiel:
 
    ```javascript
    if(props['content-available'] == 1) {
-        //Silent Notification or Mixed Notification. Perform non-GUI tasks here.
+        // Benachrichtigung im Hintergrund oder gemischte Benachrichtigung. Hier Nicht-GUI-Tasks ausführen.
    } else {
-        //Normal notification
+        // Normale Benachrichtigung
    }
    ```
 
-2. If the notification is silent or mixed, after you complete the background job, invoke `WL.Client.Push.backgroundJobDone` API.
+2. Rufen Sie für Benachrichtigungen im Hintergrund oder gemischte Benachrichtigungen nach Abschluss des Hintergrundjobs die API `WL.Client.Push.backgroundJobDone` auf.
 
-## Handling silent push notifications in native iOS applications
+## Benachrichtigungen im Hintergrund in nativen iOS-Anwendungen
 {: #handling-silent-push-notifications-in-native-ios-applications }
-You must follow these steps to receive silent notifications:
+Für den Empfang von Benachrichtigungen im Hintergrund müssen Sie die folgenden Schritte ausführen:
 
-1. Enable the application capability to perform background tasks on receiving the remote notifications.
-2. Check whether the notification is silent or not by checking that the `content-available` key is set to **1**.
-3. After you finish processing the notification, you must call the block in the handler parameter immediately, otherwise  your app will be terminated. Your app has up to 30 seconds to process the notification and call the specified completion handler block.
+1. Aktivieren Sie die Anwendungsfunktion für die Ausführung von Hintergrundtasks beim Empfang der fernen Benachrichtigungen.
+2. Überprüfen Sie, ob die Benachrichtigung im Hintergrund erfolgt. Prüfen Sie dazu, ob der Schlüssel `content-available` auf **1** gesetzt ist.
+3. Nach der Verarbeitung der Benachrichtigung müssen Sie sofort den Block im handler-Parameter aufrufen, weil Ihre App andernfalls beendet wird. Die App hat maximal 30 Sekunden Zeit, die Benachrichtigung zu verarbeiten und den angegebenen Completion-Handler-Block aufzurufen.

@@ -6,70 +6,78 @@ relevantTo: [ios,android,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-{{ site.data.keys.mf_analytics_full }} uses  **Elasticsearch 1.5x** for storing data and running search queries.  
+{{ site.data.keys.mf_analytics_full }} verwendet **Elasticsearch 1.5x**, um Daten zu speichern und Suchabfragen auszuführen.   
 
-Elasticsearch is a real-time distributed search and analytics engine that increases the speed and scale rates for data storage and exploration. Elasticsearch is used for full-text search, structured search.
+Elasticsearch ist eine verteilte Echtzeitsuchmaschine und -analyseengine, mit der mehr Daten in kürzerer Zeit gespeichert und durchsucht werden können. Elasticsearch wird für die Volltextsuche und die strukturierte Suche verwendet. 
 
-Elasticsearch is used for storing all mobile and server data in JSON format in the Elasticsearch instances on the {{ site.data.keys.mf_analytics_server }}.
+Elasticsearch wird verwendet, um alle mobilen und Serverdaten im JSON-Format in den Elasticsearch-Instanzen
+in {{ site.data.keys.mf_analytics_server }} zu speichern. 
 
-The Elasticsearch instances are queried in real-time to populate the {{ site.data.keys.mf_analytics_console_full }}.
+Die Elasticsearch-Instanzen werden in Echtzeit abgefragt, um die {{ site.data.keys.mf_analytics_console_full }} mit Daten zu füllen.
 
-{{ site.data.keys.mf_analytics }} exposes all Elasticsearch functionality. The user is able to take full advantage of Elasticsearch queries, debugging, and optimization.
+Über {{ site.data.keys.mf_analytics }} sind sämtliche Elasticsearch-Funktionen zugänglich. Der Benutzer kann vollumfägnlich von
+Elasticsearch-Abfragen, vom Elasticsearch-Debugging und von der Elasticsearch-Optimierung profitieren. 
 
-For more information about Elasticsearch functionality, beyond the functionality described here, see the  [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+Weitere Informationen zu weiteren, hier nicht beschriebenen Elasticsearch-Funktionen finden Sie in der
+[Elasticsearch-Dokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
 
-## Managing Elasticsearch on the {{ site.data.keys.mf_analytics_server }}
+## Elasticsearch in {{ site.data.keys.mf_analytics_server }} verwalten
 {: #managing-elasticsearch-on-the-mobilefirst-analytics-server }
 
-Elasticsearch is embedded in the {{ site.data.keys.mf_analytics_server }} and participates in the node and cluster behavior.
+Elasticsearch ist in den {{ site.data.keys.mf_analytics_server }} eingebettet und übernimmt das Knoten- und Clusterverhalten. 
 
-> For more information on configuring Elasticsearch on the Analytics Server, see [Cluster management and Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch) in the [{{ site.data.keys.mf_analytics_server }} Configuration Guide](../../installation-configuration/production/analytics/configuration) topic.
+> Weitere Informationen zum Konfigurieren von Elasticsearch in Analytics Server finden Sie
+im [{{ site.data.keys.mf_analytics_server }} Konfigurationshandbuch](../../installation-configuration/production/analytics/configuration)
+unter [Cluster-Management und
+Elasticsearch](../../installation-configuration/production/analytics/configuration#cluster-management-and-elasticsearch).
 
-### Elasticsearch properties
+### Elasticsearch-Eigenschaften
 {: #elasticsearch properties }
 
-Elasticsearch properties are available through JNDI variables or environment entries.  
-One of the more useful JNDI properties to get started with viewing the Elasticsearch data is:
+Elasticsearch-Eigenschaften sind in Form von JNDI-Variablen und Umgebungseinträgen verfügbar.   
+Nachfolgend ist für den Einstieg in die Anzeige von Elasticsearch-Daten eine sehr nützliche JNDI-Eigenschaft angegeben: 
 
 ```xml
 <jndiEntry jndiName="analytics/http.enabled" value="true"/>
 ```
 
-This JNDI property allows you to view your {{ site.data.keys.mf_analytics_short }} raw data in JSON format and to access your Elasticsearch instance through the port that is defined by Elasticsearch. The default port is 9500.
+Diese JNDI-Eigenschaft ermöglicht die Anzeige Ihrer {{ site.data.keys.mf_analytics_short }}-Rohdaten im JSON-Format und
+den Zugriff auf Ihre Elasticsearch-Instanz über den von Elasticsearch definierten Port. Der Standardport ist 9500.
 
-> **Note**: This setting is not secure and should not be enabled on a production environment.
+> **Hinweis**: Diese Einstellung ist nicht sicher und sollte in einer Produktionsumgebung nicht aktiviert werden. 
 
-## Elasticsearch REST API
+## Elasticsearch-REST-API
 {: #elasticsearch-rest-api }
 
-Being able to access an Elasticsearch instance provides the ability to run custom queries, and view more detailed information about the Elasticsearch cluster.
+Wenn Sie die Möglichkeit haben, auf eine Elasticsearch-Instanz zuzugreifen, können Sie angepasste Abfragen ausführen und ausführlichere Informationen zum Elasticsearch-Cluster anzuzeigen.
 
-**Search and view data**  
-You can view all your data by visiting the tenant's `_search` REST endpoint.  
+**Daten suchen und anzeigen**  
+Sie können alle Ihre Daten anzeigen, indem Sie den REST-Endpunkt `_search` des Nutzers aufrufen.   
 
 ```
 http://localhost:9500/*/_search
 ```
 
-**View cluster health**  
+**Clusterzustand anzeigen**  
 
 ```
 http://localhost:9500/_cluster/health
 ```
 
-**View information on current nodes**  
+**Informationen zu aktuellen Knoten anzeigen**  
 
 ```
 http://localhost:9500/_nodes
 ```
 
-**View the current mappings**  
+**Aktuelle Zuordnungen anzeigen**  
 
 ```
 http://localhost:9500/*/_mapping
 ```
 
-> Elasticsearch exposes many more REST endpoints. To learn more, visit the [Elasticsearch documentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).
+> Elasticsearch macht viele weitere REST-Endpunkte zugänglich. Weitere Informationen finden Sie in der
+[Elasticsearch-Dokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/1.5/index.html).

@@ -1,36 +1,42 @@
 ---
 layout: tutorial
-title: Analytics Workflows
-breadcrumb_title: Workflows
+title: Abläufe in Analytics
+breadcrumb_title: Abläufe
 relevantTo: [ios,android,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-Leverage {{ site.data.keys.mf_analytics_full }} to best serve your business needs. Once your goals are identified collect the appropriate data using the {{ site.data.keys.mf_analytics_short }} client SDK and build reports using the {{ site.data.keys.mf_analytics_console }}. The following typical scenarios demonstrate methods of collecting and reporting analytics data.
+Nutzen Sie {{ site.data.keys.mf_analytics_full }} für Ihre
+Geschäftsanforderungen. Wenn Sie Ihre Ziele benannt haben, erfassen Sie mit dem
+Analytics-Client-SDK die entsprechenden Daten und erstellen Sie in
+der {{ site.data.keys.mf_analytics_console }} Berichte. Die folgenden typischen Szenarien veranschaulichen die Möglichkeiten für die Erfassung von Analysedaten und die Erstellung von Analyseberichten. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
-* [App Usage Analytics](#app-usage-analytics)
-* [Crash Capture](#crash-capture)
+* [Analyse der App-Nutzung](#app-usage-analytics)
+* [Absturzerfassung](#crash-capture)
 
-## App usage analytics
+## Analyse der App-Nutzung
 {: #app-usage-analytics }
 
-### Initializing your client app to capture app usage
+### Client-App für die Erfassung der App-Nutzung initialisieren
 {: #initializing-your-client-app-to-capture-app-usage }
 
-App usage measures the number of times a specific app is brought to the foreground, and then sent to the background. To capture app usage in your mobile app, the {{ site.data.keys.mf_analytics }} client SDK must be configured to listen for the app lifecycle events.
+Bei der App-Nutzung wird gemessen, wie oft eine bestimmte App in den Vordergrund und dann wieder in den Hintergrund gebracht wird. Wenn Sie für Ihre mobile App die App-Nutzung erfassen möchten,
+muss das {{ site.data.keys.mf_analytics }}-Client-SDK für den Empfang von App-Lebenszyklusereignissen konfiguriert sein. 
 
-You can use the {{ site.data.keys.mf_analytics }} API to capture app usage. Make sure you have first created a relevant device listener. Then send the data to the server.
+Mit der API von {{ site.data.keys.mf_analytics }}
+können Sie die App-Nutzung erfassen. Zunächst müssen Sie aber einen passenden Gerätelistener erstellt haben. Dann können Sie die Daten an den Server senden. 
 
 #### iOS
 {: #ios }
 
-Add the following code in your Application Delegate `application:didFinishLaunchingWithOptions` method in the **AppDelegate.m/AppDeligate.swift** file.
+Fügen Sie den folgenden Code zur Methode
+`application:didFinishLaunchingWithOptions` Ihres Anwendungsdelegaten in der Datei **AppDelegate.m/AppDeligate.swift** hinzu. 
 
 **Objective-C**
 
@@ -39,7 +45,7 @@ WLAnalytics *analytics = [WLAnalytics sharedInstance];
 [analytics addDeviceEventListener:LIFECYCLE];
 ```
 
- To send the analytics data:
+ Senden von Analysedaten: 
 
 ```objc
 [[WLAnalytics sharedInstance] send];
@@ -51,7 +57,7 @@ WLAnalytics *analytics = [WLAnalytics sharedInstance];
 WLAnalytics.sharedInstance().addDeviceEventListener(LIFECYCLE);
 ```
 
-To send the analytics data:
+Senden von Analysedaten: 
 
 ```Swift
 WLAnalytics.sharedInstance().send;
@@ -60,14 +66,14 @@ WLAnalytics.sharedInstance().send;
 #### Android
 {: #android }
 
-Add the following code in your Application subclass `onCreate` method.
+Fügen Sie den folgenden Code zur Methode `onCreate` Ihrer Application-Unterklasse hinzu. 
 
 ```Java
 WLAnalytics.init(this);
 WLAnalytics.addDeviceEventListener(DeviceEvent.LIFECYCLE);
 ```
 
-To send the analytics data:
+Senden von Analysedaten: 
 
 ```Java
 WLAnalytics.send();
@@ -76,102 +82,122 @@ WLAnalytics.send();
 #### Cordova
 {: #cordova }
 
-For Cordova apps, the listener must be created in the native platform code, similar to the iOS and Android apps. Send the data to the server:
+Ähnlich wie bei iOS- und Android-Apps muss bei Cordova-Apps der Listener in nativem Plattformcode erstellt werden. Senden Sie die Daten wie folgt an den Server: 
 
 ```javascript
 WL.Analytics.send();
 ```
 
-#### Web apps
+#### Web-Apps
 {: #web-apps }
 
-For Web apps, no listeners are required. Analytics can be enabled and disabled through the  `WLlogger` class.
+Für Web-Apps sind keine Listener erforderlich. Analytics
+kann über die Klasse `WLlogger`
+aktiviert und inaktiviert werden.
+
 
 ```javascript                                    
 ibmmfpfanalytics.logger.config({analyticsCapture: true});                
 ibmmfpfanalytics.send();
 ```
 
-### Default Usage and Devices chart
+### Standarddiagramm für Nutzung und Geräte
 {: #default-usage-and-devices-charts }
 
-In the **Usage and Devices** page of the Apps section in the {{ site.data.keys.mf_analytics_console }}, a number of default charts are provided to help you manage your app usage.
+In der
+{{ site.data.keys.mf_analytics_console }}
+können auf der Seite **Nutzung und Geräte** im Abschnitt "Apps" einige Standarddiagramme angezeigt werden, die Ihnen helfen, die Nutzung Ihrer Apps zu verwalten. 
 
-#### Total Devices
+#### Geräte insgesamt
 {: #total-devices }
 
-The **Total Devices** chart shows the number of total devices.
+Das Diagramm **Geräte insgesamt** zeigt die Gesamtanzahl der Geräte an. 
 
-#### Total App Sessions
+#### App-Sitzungen insgesamt
 {: #total-app-sessions }
 
-The **Total App Sessions** chart shows the number of total app sessions. An app session is recorded when an app is brought to the foreground of a device.
+Das Diagramm **App-Sitzungen insgesamt** zeigt die Gesamtanzahl der App-Sitzungen an. Eine App-Sitzung wird erfasst, wenn eine App auf einem Gerät in den
+Vordergrund kommt. 
 
-#### Active Users
+#### Aktive Benutzer
 {: #active-users }
 
-The **Active Users** chart shows an interactive multi-line graph of the following data:
+Das Diagramm **Aktive Benutzer** ist ein interaktives Kurvendiagramm mit folgenden Daten: 
 
-* Active Users - unique users for the displayed time frame.
-* New Users - new users for the displayed time frame.
+* Aktive Benutzer - eindeutige Benutzer für den angezeigten Zeitrahmen
+* Neue Benutzer - neue Benutzer für den angezeigten Zeitrahmen
 
-The default displayed time frame is one day with a data point for each hour. If you change the displayed time frame to greater than one day, the data points reflect each day. You can click the corresponding key in the legend to toggle whether to display the line. By default, all keys are displayed, and you cannot toggle all keys to not display any lines.
+Der angezeigte Standardzeitrahmen ist ein Tag mit einem Datenpunkt für jede Stunde. Wenn Sie den angezeigten Zeitrahmen über einen Tag hinaus erweitern, repräsentieren die Datenpunkte
+einzelne Tage. Sie können in der Legende auf den entsprechenden Schlüssel klicken, um die Anzeige der Linie ein-/auszuschalten. Standardmäßig werden Linien für alle Schlüssel angezeigt. Die Anzeige von Linien kann nicht für alle Schlüssel
+ein-/ausgeschaltet werden. 
 
-To see the most accurate data in the line graph, you must instrument your app code to provide the `userID` by calling the `setUserContext` API. If you want to provide anonymity for the `userID` values, you must hash the value first. If the `userID` is not provided, the ID of the device is used by default. If one device is used by multiple users and the `userID` is not provided, the line graph does not reflect accurate data because the ID of the device counts as one user.
+Sie müssen Ihren App-Code für die Bereitstellung der
+`userID` über einen Aufruf der API `setUserContext` instrumentieren, um präzise Daten für das Kurvendiagramm zu erhalten. Wenn Sie
+für die
+`userID` Anonymität ermöglichen wollen, müssen Sie den Wert zuvor in einen Hashwert umwandeln. Wenn keine
+`userID` angegeben ist, wird standardmäßig die ID des Geräts verwendet. Wenn ein Gerät von mehreren Benutzern verwendet wird und die
+`userID` nicht angegeben ist, bildet das Kurvendiagramm keine genauen Daten ab, da die ID des Geräts als ein Benutzer gezählt wird. 
 
-#### App Sessions
+#### App-Sitzungen
 {: #app-sessions }
-The **App Sessions** chart shows a bar graph of app sessions over time.
+Das Diagramm **App-Sitzungen** ist ein Balkendiagramm für die App-Sitzungen über der Zeit. 
 
-#### App Usage
+#### App-Nutzung
 {: #app-usage }
 
-The **App Usage** chart shows a pie chart of the percentage of app sessions for each app.
+Das Diagramm **App-Nutzung** ist ein Kreisdiagramm mit dem Prozentsatz der App-Sitzungen pro App. 
 
-#### New Devices
+#### Neue Geräte
 {: #new-devices }
 
-The **New Devices** chart shows a bar graph of new devices over time.
+Das Diagramm **Neue Geräte** ist ein Balkendiagramm für neue Geräte über der Zeit. 
 
-#### Model Usage
+#### Modellnutzung
 {: #model-usage }
 
-The **Model Usage** chart shows a pie chart of the percentage of app sessions for each device model.
+Das Diagramm **Modellnutzung** ist ein Kreisdiagramm mit dem Prozentsatz der App-Sitzungen pro Gerätemodell. 
 
-#### Operating System Usage
+#### Betriebssystemnutzung
 {: #operating-system-usage }
-The **Operating System Usage** chart shows a pie chart of the percentage of app sessions for each device operating system.
+Das Diagramm **Betriebssystemnutzung** ist ein Kreisdiagramm
+mit dem Prozentsatz der App-Sitzungen pro Gerätebetriebssystem. 
 
-### Creating a custom chart for average session duration
+### Kundenspezifisches Diagramm für die durchschnittliche Sitzungsdauer erstellen
 {: #creating-acustom-chart-for-average-session-duration }
 
-The duration of an app session is a valuable metric to visualize. With any app, you want to know the amount of time that users are spending on a particular session.
+Die Dauer einer App-Sitzung ist eine wertvolle Messgröße. Sie können für jede App erfahren, wie lange eine bestimmte Benutzersitzung dauert. 
 
-1. In the {{ site.data.keys.mf_analytics_console }}, click **Create Chart** in the **Custom Charts** page of the Dashboard section.
-2. Give your chart a title.
-3. Select **App Session** for **Event Type**.
-4. Select **Bar Graph** for **Chart Type**.
-5. Click **Next**.
-6. Select **Timeline** for **X-Axis**.
-7. Select **Average** for **Y-Axis**.
-8. Select **Duration** for **Property**.
-9. Click **Save**.
+1. Klicken Sie in der {{ site.data.keys.mf_analytics_console }} auf der Seite
+**Kundenspezifische Diagramme** des Abschnitts "Dashboard" auf **Diagramm erstellen**. 
+2. Geben Sie Ihrem Diagramm einen Namen. 
+3. Wählen Sie **App-Sitzung** als **Ereignistyp** aus.
+4. Wählen Sie **Balkendiagramm** als **Diagrammtyp** aus.
+5. Klicken Sie auf
+**Weiter**.
+6. Wählen Sie **Zeitachse** für die **X-Achse** aus.
+7. Wählen Sie **Durchschnitt** für die **Y-Achse** aus.
+8. Wählen Sie die **Dauer** als **Eigenschaft** aus.
+9. Klicken Sie auf **Speichern**.
 
-## Crash capture
+## Absturzerfassung
 {: #crash-capture }
 
-{{ site.data.keys.mf_analytics }} includes data and reports about application crashes. This data is collected automatically along with other lifecycle event data. The crash data is collected by the client and is sent to the server once the application is again up and running.
+In {{ site.data.keys.mf_analytics }} gibt es auch Daten und Berichte zu Anwendungsabstürzen. Diese Daten werden zusammen mit anderen Daten von Lebenszyklusereignissen automatisch erfasst. Die Absturzdaten werden vom Client erfasst und an den Server gesendet, sobald die Anwendung wieder betriebsbereit ist. 
 
-An app crash is recorded when an unhandled exception occurs and causes the program to be in an unrecoverable state. Before the app closes, the {{ site.data.keys.mf_analytics }} SDK logs a crash event. This data is sent to the server with the next logger send call.
+Ein App-Absturz wird aufgezeichnet, wenn eine nicht behandelte Ausnahme eintritt und das Programm in einen nicht korrigierbaren Zustand versetzt. Bevor die App geschlossen wird,
+protokolliert das SDK von {{ site.data.keys.mf_analytics }}
+ein Absturzereignis. Diese Daten werden mit dem nächsten Logger-Sendeaufruf an den Server gesendet. 
 
-### Initializing your app to capture crash data
+### App für die Erfassung von Absturzdaten initialisieren
 {: #initializing-your-app-to-capture-crash-data }
 
-To ensure that crash data is collected and included in the {{ site.data.keys.mf_analytics_console }} reports, make sure the crash data is sent to the server.
+Vergewissern Sie sich, dass die Absturzdaten an den Server gesendet wurden, damit sie
+erfasst und in die Berichte in der {{ site.data.keys.mf_analytics_console }} aufgenommen werden. 
 
-Ensure that you are collecting app lifecycle events as described in [Initializing your client app to capture app usage](#initializing-your-client-app-to-capture-app-usage).
+Vergewissern Sie sich, dass App-Lebenszyklusereignisse erfasst werden (siehe [Client-App für die Erfassung der App-Nutzung initialisieren](#initializing-your-client-app-to-capture-app-usage)).
 
-The client logs must be sent once the app is running again, in order to get the stacktrace that is associated with the crash. Using a timer ensures that the logs are sent periodically.
+Sobald die App wieder Betriebsbereit ist, müssen die Clientprotokolle gesendet werden, um den Stack-Trace zum Absturz zu erhalten. Mit einem Zeitgeber können Sie sicherstellen,
+dass die Protokolle regelmäßig gesendet werden. 
 
 #### iOS
 {: #ios-crash-data }
@@ -184,7 +210,7 @@ The client logs must be sent once the app is running again, in order to get the 
   [[WLAnalytics sharedInstance] send];
 }
 
-// then elsewhere in the same implementation file:
+// an anderer Stelle derselben Implementierungsdatei:
 
 [NSTimer scheduledTimerWithTimeInterval:60
   target:self
@@ -201,7 +227,7 @@ overridefuncviewDidLoad() {
        WLAnalytics.sharedInstance();
        lettimer = NSTimer.scheduledTimerWithTimeInterval(10, target: self, selector: #selector(sendMFPAnalyticData), userInfo: nil, repeats: true);
        timer.fire();
-       // Do any additional setup after loading the view, typically from a nib.
+       // Weitere Eichrichtungsschritte nach dem Laden der Ansicht ausführen, in der Regel mit einem NIB
    }
 
    funcsendMFPAnalyticData() {
@@ -243,68 +269,93 @@ setInterval(function() {
 }, 60000);
 ```
 
-### App crash monitoring
+### Abstürze von Apps überwachen
 {: #app-crash-monitoring }
 
-After a crash, when the app is restarted, the crash logs are sent to the {{ site.data.keys.mf_analytics_server }}. You can quickly see information about your app crashes in the **Dashboard** section of the {{ site.data.keys.mf_analytics_console }}.  
-In the **Overview** page of the **Dashboard** section, the **Crashes** bar graph shows a histogram of crashes over time.
+Wenn die App nach einem Absturz neu gestartet wird, werden die Protokolle an {{ site.data.keys.mf_analytics_server }} gesendet. Im Abschnitt
+**Dashboard** der {{ site.data.keys.mf_analytics_console }}
+können Sie sich schnell einen Überblick über die Abstürze Ihrer Apps verschaffen.   
+Das Balkendiagramm **Abstürze** auf der Seite **Übersicht** des Abschnitts
+**Dashboard** zeigt ein Histogramm der Abstürze über der Zeit. 
 
-The data can be shown in two ways:
+Die Daten können auf zwei Arten angezeigt werden. 
 
-* **Display crash rate**: crash rate over time
-* **Display total crashes**: total crashes over time
+* **Absturzrate anzeigen**: Absturzrate über der Zeit
+* **Gesamtzahl der Abstürze anzeigen**: Gesamtzahl der Abstürze über der Zeit
 
-> **Note:** The Crashes chart queries against the `MfpAppSession` documents. You must instrument your app to collect app uses and crashes for data to appear in the charts. If `MfpAppSession` data is not collected, then `MfpAppLog` documents are queried. In this case, the chart can count the number of crashes, but cannot compute a crash rate because the number of app uses is unknown, which results in the following limitation:
+> **Hinweis:** Das Diagramm "Abstürze" fragt die `MfpAppSession`-Dokumente ab. Sie müssen Ihre App instrumentieren, um Daten zur App-Nutzung und zu App-Abstürzen zu erhalten und in den Diagrammen anzuzeigen. Wenn keine
+`MfpAppSession`-Daten erfasst werden, werden `MfpAppLog`-Dokumente abgefragt. In dem Fall kann das
+Diagramm die Anzahl der Abstürze darstellen, aber keine Absturzrate berechnen, weil die
+Anzahl der App-Nutzungen unbekannt ist. Dies führt zu folgender Einschränkung:
 >
-> * The **Crashes** bar graph displays no data when **Display Crash Rate** is selected.
+> * Das Balkendiagramm **Crashes** zeigt keine Daten an, wenn **Display Crash
+Rate** ausgewählt wird. 
 
-### Default charts for crashes
+### Standarddiagramme für Abstürze
 {: #default-charts-for-crashes }
 
-In the **Crashes** page of the **Apps** section in the {{ site.data.keys.mf_analytics_console }}, a number of default charts are provided to help you manage your app crashes.
+In der
+{{ site.data.keys.mf_analytics_console }}
+können auf der Seite **Abstürze** im Abschnitt **Apps** einige Standarddiagramme angezeigt werden, die Ihnen helfen, die
+Abstürze Ihrer Apps zu verwalten. 
 
-The **Crash Overview** chart shows a table of an overview of crashes.  
-The **Crashes** bar graph shows a histogram of crashes over time. You can display the data by crash rate or total crashes. The Crashes bar graph is also in the Crashes page of the Applications section.
+Das Diagramm **Absturzübersicht** enthält eine Tabelle mit einer Übersicht über die Abstürze.   
+Das Balkendiagramm **Abstürze** zeigt ein Histogramm der Abstürze über der Zeit. Sie können die Daten nach
+der Absturzrate oder der Gesamtanzahl der Abstürze anzeigen. Das Balkendiagramm Abstürze wird auch auf der Seite
+Abstürze im Abschnitt Anwendungen
+angezeigt. 
 
-The **Crash Summary** chart shows a sortable table of a summary of crashes. You can expand the individual crashes by clicking the + icon to view a **Crash Details** table that includes more details about the crashes. In the Crash Details table, you can click the **>** icon to view more details about the specific crash instance.
+Das Diagramm **Absturzzusammenfassung** enthält eine sortierbare Tabelle mit einer Zusammenfassung der Abstürze.
+Sie können Einzelheiten zu den einzelnen Abstürzen einblenden, indem Sie auf das Symbol + klicken. Daraufhin wird eine Tabelle
+**Absturzdetails** mit weiteren Details zu den Abstürzen angezeigt. In der Tabelle
+Absturzdetails können Sie auf das Symbol **>** klicken, um noch mehr Details zu einer bestimmten
+Absturzinstanz anzuzeigen. 
 
-### App crash troubleshooting
+### Fehlersuche beim Absturz von Apps
 {: #app-crash-troubleshooting }
 
-You can view the **Crashes** page in the **Applications** section of the {{ site.data.keys.mf_analytics_console }} to better administer your apps.
+Im Abschnitt **Anwendungen** der
+{{ site.data.keys.mf_analytics_console }} können Sie die Seite **Abstürze** anzeigen, um Ihre
+Apps besser verwalten zu können. 
 
-The **Crash Overview** table shows the following data columns:
+Die Tabelle **Absturzübersicht** hat die folgenden Datenspalten: 
 
-* **App:** app name
-* **Crashes:** total number of crashes for that app
-* **Total Uses:** total number of times a user opens and closes that app
-* **Crash Rate:** percentage of crashes per use
+* **App:** App-Name
+* **Abstürze:** Gesamtzahl der Abstürze für diese App
+* **Gesamtnutzung:** Häufigkeit des Öffnens und Schließens dieser App durch einen Benutzer
+* **Absturzrate:** Prozentsatz der Abstürze pro Nutzung
 
-The **Crashes** bar graph is the same chart that is displayed in the **Overview** page of the **Dashboard** section.
+Das Balkendiagramm **Abstürze** ist dasselbe Diagramm wie auf der Seite
+**Übersicht** im Abschnitt **Dashboard**. 
 
-> **Note:** Both charts query against the `MfpAppSession` documents. You must instrument your app to collect app uses and crashes for data to appear in the charts. If `MfpAppSession` data is not collected, then `MfpAppLog` documents are queried. In this case, the charts can count the number of crashes, but cannot compute a crash rate because the number of app uses is unknown, which results in the following limitations:
+> **Hinweis:** Beide Diagramme fragen die `MfpAppSession`-Dokumente ab. Sie müssen Ihre App instrumentieren, um Daten zur App-Nutzung und zu App-Abstürzen zu erhalten und in den Diagrammen anzuzeigen. Wenn keine
+`MfpAppSession`-Daten erfasst werden, werden `MfpAppLog`-Dokumente abgefragt. In dem Fall können die Diagramme die Anzahl der Abstürze darstellen, aber keine Absturzrate berechnen, weil die
+Anzahl der App-Nutzungen unbekannt ist. Dies führt zu folgenden Einschränkungen:
 >
-> * The Crash Overview table has empty columns for Total Uses and Crash Rate.
-> * The Crashes bar graph displays no data when Display Crash Rate is selected.
+> * In der Tabelle "Absturzübersicht" sind die Spalten "Gesamtnutzung" und "Absturzrate" leer.
+> * Das Balkendiagramm "Abstürze" zeigt keine Daten an, wenn "Absturzrate anzeigen" ausgewählt wird. 
 
-The **Crash Summary** table is sortable and includes the following data columns:
+Die Tabelle **Absturzzusammenfassung** kann sortiert werden. Sie enthält die folgenden Datenspalten: 
 
-* Crashes
-* Devices
-* Last Crash
+* Abstürze
+* Geräte
+* Letzter Absturz
 * App
-* OS
-* Message
+* Betriebssystem
+* Nachricht
 
-You can click on the **+** icon next to any entry to display the **Crash Details** table, which includes the following columns:
+Wenn Sie neben einem Eintrag auf das Zeichen **+** klicken, wird die Tabelle
+**Absturzdetails** mit folgenden Spalten angezeigt: 
 
-* Time Crashed
-* App Version
-* OS Version
-* Device Model
-* Device ID
-* Download: link to download the logs that led up to the crash
+* Absturzzeitpunkt
+* App-Version
+* Betriebssystemversion
+* Gerätemodell
+* Geräte-ID
+* Herunterladen: Link zum Herunterladen der Protokolle, die zum Absturz geführt haben
 
-You can expand any entry in the **Crash Details** table to get more details, including a stacktrace.
+In der Tabelle **Absturzdetails** können Sie die Anzeige für jeden Eintrag erweitern, um weitere Details, einschließlich eines Stack-Trace, zu erhalten. 
 
-> **Note:** The data for the **Crash Summary** table is populated by querying the fatal level client logs. If your app does not collect fatal client logs, no data is available.
+> **Hinweis:** Die Tabelle **Absturzzusammenfassung** wird durch Abfragen der Clientprotokolle mit
+schwerwiegenden Fehlern mit Daten gefüllt. Wenn Ihre App keine Clientprotokolle mit schwerwiegenden Fehlern erfasst, sind auf der Registerkarte
+keine Daten verfügbar. 

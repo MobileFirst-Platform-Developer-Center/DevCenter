@@ -1,184 +1,231 @@
 ---
 layout: tutorial
-title: Creating Custom Charts
-breadcrumb_title: Custom Charts
+title: Kundenspezifische Diagramme erstellen
+breadcrumb_title: Kundenspezifische Diagramme
 relevantTo: [ios,android,javascript]
 weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
 
-Custom charts allow you to visualize the collected analytics data in your analytics data store as charts that are not available by default in the {{ site.data.keys.mf_analytics_console }}. This visualization feature is a powerful way to analyze business-critical data.
+Mit kundenspezifischen Diagrammen können Sie erfasste
+Analysedaten aus Ihrem Anatytics-Datastore in Diagrammen darstellen, die standardmäßig nicht in
+der {{ site.data.keys.mf_analytics_console }} verfügbar sind. Diese Darstellungsoption ist eine wirksame Methode für die Analyse geschäftskritischer Daten. 
 
-Available custom chart types: **App Session**, **Network Transactions**, **Push Notifications**, **Client Logs**, **Server Logs**, **Custom Data**.
+Folgende Arten kundenspezifischer Diagramme sind verfügbar:
+**App-Sitzung**, **Netztransaktionen**, **Push-Benachrichtigungen**,
+**Clientprotokolle**, **Serverprotokolle**, **Kundenspezifische Daten**.
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
 
-* [Creating a custom chart](#creating-a-custom-chart)
-* [Chart types](#chart-types)
-* [Creating custom charts for client logs](#creating-custom-charts-for-client-logs)
-* [Exporting custom chart data](#exporting-custom-chart-data)
-* [Exporting and importing custom chart definitions](#exporting-and-importing-custom-chart-definitions)
+* [Kundenspezifisches Diagramm erstellen](#creating-a-custom-chart)
+* [Diagrammtypen](#chart-types)
+* [Kundenspezifische Diagramme für Clientprotokolle erstellen](#creating-custom-charts-for-client-logs)
+* [Daten kundenspezifischer Diagramme exportieren](#exporting-custom-chart-data)
+* [Definition kundenspezifischer Diagramme exportieren und importieren](#exporting-and-importing-custom-chart-definitions)
 
-## Creating a custom chart
+## Kundenspezifisches Diagramm erstellen
 {: #creating-a-custom-chart }
 
-In the {{ site.data.keys.mf_analytics_console }}, from the **Dashboard** panel, the custom charts creation builder takes you through four main stages:
+Das Erstellungsprogramm für kundenspezifische Diagramme im **Dashboard** der {{ site.data.keys.mf_analytics_console }} führt Sie durch die vier Hauptschritte. 
 
-### 1. General settings
+### 1. Allgemeine Einstellungen
 {: #1-general-settings }
 
-Click the **Create Chart** button in the **Custom Charts** tab.  
+Klicken Sie auf der Registerkarte **Kundenspezifische Diagramme** auf die Schaltfläche **Diagramm erstellen**.   
 
-In the **General Settings** tab, select Chart Title, Event Type and the Chart Type.  
-After selecting the Event Type and Chart Type, the **Chart Definition** tab appears.
+Wählen Sie auf der Registerkarte **Allgemeine Einstellungen** die Optionen "Diagrammtitel", "Ereignisttyp" und "Diagrammtyp" aus.   
+Wenn Sie den Ereignistyp und den Diagrammtyp ausgewählt haben, erscheint die Registerkarte
+**Diagrammdefinition**. 
 
-### 2. The Chart Definition tab
+### 2. Register 'Diagrammdefinition'
 {: #2-the-chart-definition-tab }
 
-Use the **Chart Definition** tab to define the chart for the specified chart type that you previously selected. After you define the chart, you can set the chart filters and chart properties.
+Auf der Registerkarte **Diagrammdefinition** können Sie das Diagramm für den zuvor
+ausgewählten Diagrammtyp definieren. Nachdem Sie das Diagramm definiert haben, können Sie die Diagrammfilter und -eigenschaften
+festlegen. 
 
-### 3. The Chart Filters tab
+### 3. Register 'Diagrammfilter'
 {: #3-the-chart-filters-tab }
 
-**Chart Filters** are used to fine-tune the custom chart. Multiple filters can be defined for any chart.  
-For example, if you are interested in seeing the average app session duration for a particular app, you can specify the following options:
+Mit **Diagrammfiltern** können Sie das kundenspezifische Diagramm optimieren. Für jedes Diagramm können mehrere Filter
+definiert werden.   
+Wenn Sie beispielsweise die durschnittliche Dauer der App-Sitzungen für eine bestimmte App anzeigen möchten,
+können Sie die folgenden Optionen angeben: 
 
-1. Select **Application Name** for **Property**.
-2. Select **Equals** for **Operator**.
-3. Select the name of your app for **Value**.
-4. Click **Add Filter**.
+1. Wählen Sie **Anwendungsname** als **Eigenschaft** aus.
+2. Wählen Sie für **Operator** die Option **ist gleich** aus.
+3. Wählen Sie als **Wert** den Namen Ihrer App aus.
+4. Klicken Sie auf **Filter hinzufügen**.
 
-The app name filter is added to the table of filters for your chart.
+Der App-Namensfilter wird zur Tabelle der Filter für Ihr Diagramm hinzugefügt. 
 
-### 4. Chart properties
+### 4. Diagrammeigenschaften
 {: #4-chart-properties }
 
-Chart properties are available for the **Table**, **Bar Graph**, and **Line Graph** chart types. The goal of chart properties is to enhance how the data is presented so that the visualization is more effective.
+Für die Diagrammtypen **Tabelle**, **Balkendiagramm** und
+**Kurvendiagramm** sind Diagrammeigenschaften verfügbar. Mithilfe von Diagrammeigenschaften
+sollen die Daten effektiver dargestellt werden können. 
 
-If you created a **Table chart**, the chart properties can be set to define the table page size, the field on which to sort, and the sort order of the field.
+Wenn Sie ein Diagramm vom Typ **Tabelle** erstellt haben, können Sie die Diagrammeigenschaften für die Größe
+der Tabellenseite,
+das Feld für die Sortierung und die Sortierreihenfolge des Feldes festlegen. 
 
-If you created a **Bar Graph** or **Line Graph** chart, the chart properties can be set to label threshold lines to add a frame of reference for anyone who is monitoring the chart.
+Wenn Sie ein Diagramm vom Typ **Balkendiagramm** oder **Kurvendiagramm** erstellt haben, können Sie über die Diagrammeigenschaften
+Schwellenwerte festlegen, um für Betrachter des Diagramms ein Bezugssystem hinzuzufügen. 
 
-<img class="gifplayer"  alt="Creating a custom chart" src="creating-custom-charts.png"/>
+<img class="gifplayer"  alt="Kundenspezifisches Diagramm erstellen" src="creating-custom-charts.png"/>
 
-## Chart types
+## Diagrammtypen
 {: #chart-types }
 
-### Bar graph
+### Balkendiagramm
 {: #bar-graph }
 
-The bar graph allows for visualization of numeric data over an X-axis. When you define a bar graph, you must choose the value for X-Axis first. You can choose from the following possible values.
+Das Balkendiagramm eignet sich für die Darstellung numerischer Daten auf einer X-Achse. Wenn Sie ein Balkendiagramm definieren, müssen Sie zuerst den Wert für die
+X-Achse auswählen. Folgende Werte stehen zur Auswahl: 
 
-* **Timeline** - choose Timeline for X-Axis if you want to see your data as a trend (for example, average app session duration over time).
-* **Property** - choose Property if you want to see a count breakdown for the specific property. If you choose Property for X-Axis, then Total is implicitly chosen for Y-Axis. For example, choose Property for X-Axis and Application Name for Property to see a count for a specified event type, which is broken down by app name.
+* **Zeitachse** - Wählen Sie für die X-Achse den Wert
+Zeitachse aus, wenn Sie einen Datentrend anzeigen möchten (z. B. die durchschnittliche Dauer von App-Sitzungen über der Zeit). 
+* **Eigenschaft** - Wählen
+Sie Eigenschaft aus, wenn Sie einen Zähler für eine bestimmte Eigenschaft aufgegliedert darstellen möchten. Wenn Sie
+für die X-Achse den Wert
+Eigenschaft auswählen, wird damit für die Y-Achse implizit
+Gesamt ausgewählt. Angenommen, Sie möchten für einen bestimmten Ereignistyp die Anzahl, aufgeschlüsselt nach App-Namen, darstellen.
+Wählen Sie in dem Fall für die X-Achse den Wert Eigenschaft und Anwendungsname als
+Eigenschaft aus. 
 
-After you define a value for X-Axis, you can define a value for Y-Axis. If you choose Timeline for X-Axis, you can choose the following possible values for Y-Axis.
+Nach dem Wert für die X-Achse definieren Sie einen Wert für die
+Y-Achse. Wenn Sie für die X-Achse den Wert
+Zeitachse gewählt haben, stehen für die
+Y-Achse die folgenden Werte zur Auswahl: 
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
+* **Durchschnitt** - Zeigt den Durchschnitt für eine numerische Eigenschaft des angegebenen Ereignistyps an
+* **Gesamt** - Zeigt die Gesamtzahl für eine Eigenschaft des angegebenen Ereignistyps an. 
+* **Eindeutig** - Zeigt die eindeutige Anzahl für eine Eigenschaft des angegebenen Ereignistyps an. 
 
-After you define the chart axes, you must choose a value for Property.
+Nachdem Sie die Diagrammachsen definiert haben, müssen Sie einen Wert für Eigenschaft wählen. 
 
-### Line graph
+### Kurvendiagramm
 {: #line-graph }
 
-The line graph allows for the visualization of some metric over time. This type of chart is valuable when you want to visualize data in terms of a trend over time. The first value to define when you create a line graph is Measure, which has the following possible values.
+In einem Kurvendiagramm können Metriken über der Zeit dargestellt werden. Dieser Diagrammtyp ist wertvoll, wenn Sie Daten als Trend über der Zeit
+darstellen möchten. Der erste Wert, der beim Erstellen eines Kurvendiagramms definiert werden muss, ist
+der Wert für Messung. Gültige Werte sind: 
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
+* **Durchschnitt** - Zeigt den Durchschnitt für eine numerische Eigenschaft des angegebenen Ereignistyps an
+* **Gesamt** - Zeigt die Gesamtzahl für eine Eigenschaft des angegebenen Ereignistyps an. 
+* **Eindeutig** - Zeigt die eindeutige Anzahl für eine Eigenschaft des angegebenen Ereignistyps an. 
 
-After you define the measurement, you must choose a value for Property.
+Nachdem Sie die Messung definiert haben, müssen Sie einen Wert für Eigenschaft wählen. 
 
-### Flow chart
+### Ablaufdiagramm
 {: #flow-chart }
 
-The flow chart allows for the visualization of flow breakdown of one property to another. For a flow chart, the following properties must be set.
+In einem Ablaufdiagramm kann ein Verlauf von einer Eigenschaft zu einer anderen aufgegliedert dargestellt werden. Für ein Ablaufdiagramm müssen die folgenden Eigenschaften
+festgelegt werden: 
 
-* **Source** - the value of a source node in the diagram.
-* **Destination** - the value of the destination node in the diagram.
-* **Property** - a property value from either the source node or the destination node.
+* **Quelle** - Wert eines Quellenknotens im Diagramm
+* **Ziel** - Wert eines Zielknotens im Diagramm
+* **Eigenschaft** - Eigenschaftswert vom Quellen- oder Zielknoten
 
-With the flow chart, you can see the density breakdown of various sources that flow to a destination, or vice versa. For example, if you want to see the breakdown of log severities for an app, you can define the following values.
+Ein Ablaufdiagramm ermöglicht eine Darstellung verschiedener Quellen, aufgegliedert nach dem Ziel oder umgekehrt. Wenn Sie beispielsweise eine Aufgliederung der Protokollkategorien
+für eine App sehen
+möchten, können Sie die folgenden Werte definieren. 
 
-* Select Application Name for Source.
-* Select Log Level for Destination.
-* Select the name of your app for Property.
+* Wählen Sie Anwendungsname als Quelle aus.
+* Wählen Sie Protokollebene als Ziel aus.
+* Wählen Sie als Eigenschaft den Namen Ihrer App aus.
 
-### Metric group
+### Metrikgruppe
 {: #metric-group }
 
-The metric group can be used to visualize a single metric that is measured as either an average value, a total count, or a unique count. To define a metric group, you must define one of the following possible values for Measure.
+Mithilfe einer Metrikgruppe kann für eine einzelne gemessene Metrik ein Durchschnitt, eine Gesamtanzahl oder eine eindeutige Anzahl
+angezeigt werden. Zum Definieren einer Metrikgruppe müssen Sie einen der folgenden Werte für
+Messung definieren: 
 
-* **Average** - averages a numeric property in the supplied event type.
-* **Total** - a total count of a property in the supplied event type.
-* **Unique** - a unique count of a property in the supplied event type.
+* **Durchschnitt** - Zeigt den Durchschnitt für eine numerische Eigenschaft des angegebenen Ereignistyps an
+* **Gesamt** - Zeigt die Gesamtzahl für eine Eigenschaft des angegebenen Ereignistyps an. 
+* **Eindeutig** - Zeigt die eindeutige Anzahl für eine Eigenschaft des angegebenen Ereignistyps an. 
 
-After you define the measurement, you must choose a value for Property. This metric is displayed in the metric group.
+Nachdem Sie die Messung definiert haben, müssen Sie einen Wert für Eigenschaft wählen. Die Metrik wird in der Metrikgruppe angezeigt. 
 
-### Pie chart
+### Kreisdiagramm
 {: #pie-chart }
 
-The pie chart can be used to visualize the count breakdown of values for a particular property. For example, if you want to see a crash breakdown, define the following values.
+In einem Kreisdiagramm können die Werte für eine bestimmte Eigenschaft aufgegliedert angezeigt werden.
+Wenn Sie beispielsweise eine Absturzaufgliederung sehen
+möchten, definieren Sie die folgenden Werte: 
 
-* Select App Session for Event Type.
-* Select Pie Chart for Chart Type.
-* Select Closed By for Property.
+* Wählen Sie App-Sitzung als Ereignistyp aus.
+* Wählen Sie Kreisdiagramm als Diagrammtyp aus.
+* Wählen Sie "Geschlossen von" als Eigenschaft aus.
 
-The resulting pie chart shows the breakdown of app sessions that were closed by the user as opposed to app sessions that were closed by a crash.
+Das Ergebnis ist ein Kreisdiagramm, in dem die vom Benutzer geschlossenen App-Sitzungen den durch einen Absturz geschlossenenen App-Sitzungen
+gegenübergestellt sind. 
 
-### Table
+### Tabelle
 {: #table }
 
-The table is useful when you want to see the raw data. Building a table is as simple as adding columns for the raw data that you want to see.  
-Because not all properties are required for specific event types, null values can appear in your table. If you want to prevent these rows from appearing in your table, add an Exists filter for a specific property in the Chart Filters tab.
+Eine Tabelle ist für Rohdaten sinnvoll. Zum Erstellen einer Tabelle müssen Sie einfach nur Spalten für die darzustellenden Rohdaten hinzufügen.   
+Da für bestimmte Ereignistypen nicht alle Eigenschaften erforderlich sind, können in Ihrer Tabelle Nullwerte erscheinen. Wenn Sie verhindern möchten, dass solche Zeilen in Ihrer Tabelle
+angezeigt werden, fügen Sie auf der Registerkarte Diagrammfilter einen Filter Vorhanden für eine bestimmte Eigenschaft hinzu. 
 
-## Creating custom charts for client logs
+## Kundenspezifische Diagramme für Clientprotokolle erstellen
 {: #creating-custom-charts-for-client-logs }
 
-You can create a custom chart for client logs that contain log information that is sent with the platform's Logger API.  
-The log information also includes contextual information about the device, including environment, app name, and app version.
+Sie können kundenspezifische Diagramme für Clientprotokolle erstellen, die Informationen enthalten, die mit der Plattform-API
+Logger gesendet wurden.
+  
+Die Protokolle enthalten außerdem Kontextinformationen zum Gerät, z. B. zur Umgebung, zum App-Namen und zur App-Version. 
 
-> **Note:** You must log custom events to populate custom charts. For information on sending custom events from the client app, see [Capturing custom data](../../analytics-api/#custom-events).
+> **Hinweis:** Sie müssen kundenspezifische Ereignisse protokollieren, um kundenspezifische Diagramme mit Daten zu füllen. Informationen zum Senden kundenspezifischer Ereignisse von der Client-App finden Sie unter [Kundenspezifische Daten erfassen](../../analytics-api/#custom-events).
 
-1. From the client app, populate the data by sending captured logs to the server. See [Sending captured logs](../../analytics-api/#sending-analytics-data).
-2. In the {{ site.data.keys.mf_analytics_console }}, click the **Custom Charts** tab and continue to a create a chart:
-    * **Chart Title**: Application and Log Levels
-    * **Event Type**: Client Logs
-    * **Chart Type**: Flow Chart
+1. Die Daten von Client-Apps werden eingetragen, wenn Sie erfasste Protokolle an den Server senden (siehe
+[Erfasste Protokolle senden](../../analytics-api/#sending-analytics-data)).
+2. Klicken Sie in der {{ site.data.keys.mf_analytics_console }} auf das Register **Kundenspezifische Diagramme** und
+fahren Sie mit der Erstellung eines Diagramms fort: 
+    * **Diagrammtitel**: Anwendung und Protokollebenen
+    * **Ereignistyp**: Clientprotokolle
+    * **Diagrammtyp**: Ablaufdiagramm
 
-3. Click the **Chart Definition** tab and provide the following values:
-    * **Source**: Application Name
-    * **Destination**: Log Level
-    * **Property**: your app name
+3. Klicken Sie auf das Register **Diagrammdefinition** und geben Sie folgende Werte an: 
+    * **Quelle**: Anwendungsname
+    * **Ziel**: Protokollebene
+    * **Eigenschaft**: Name Ihrer App
 
-4. Click the **Save** button.
+4. Klicken Sie auf die Schaltfläche **Speichern**.
 
-## Exporting custom chart data
+## Daten kundenspezifischer Diagramme exportieren
 {: #exporting-custom-chart-data }
 
-You can download the data that is shown for any custom chart.  
+Sie können die für ein kundenspezifisches Diagramm angezeigten Daten herunterladen.   
 
-![Export custom chart data using these icons](export-data.png)
+![Symbole für den Export von Daten kundenspezifischer Diagramme](export-data.png)
 
-* **Export with URL** - looks like a chain link
-* **Download Chart** - looks like a down arrow
-* **Edit Chart** - looks like a pencil
-* **Delete Chart** - looks like a trash can
+* **Mit URL exportieren** - Symbol in Form von Kettengliedern
+* **Diagramm herunterladen** - Symbol in Form eines Abwärtspfeils
+* **Diagramm barbeiten** - Symbol in Form eines Stifts
+* **Diagramm löschen** - Symbol in Form eines Papierkorbs
 
-Click the **Download Chart** icon to download a file in JSON format from the {{ site.data.keys.mf_analytics_console_short }}.  
-Click the **Export with URL** icon to generate an export link from the {{ site.data.keys.mf_analytics_console_short }} to call from an HTTP client. This option is useful if you want to write a script to automate the export processes on a specified time interval.
+Klicken Sie auf das Symbol **Diagramm herunterladen**, um von der
+{{ site.data.keys.mf_analytics_console_short }} eine Datei im JSON-Format herunterzuladen.  
+Klicken Sie auf das Symbol **Mit Link exportieren**, um
+in der {{ site.data.keys.mf_analytics_console_short }} einen Exportlink zu generieren,
+der von einem HTTP-Client aufgerufen werden kann. Diese Option ist sinnvoll, wenn Sie ein Script zur Automation des Exportprozesses für ein besstimmtes Zeitintervall schreiben möchten. 
 
-## Exporting and importing custom chart definitions
+## Definition kundenspezifischer Diagramme exportieren und importieren
 {: #exporting-and-importing-custom-chart-definitions }
 
-You can export and import custom chart definitions in the {{ site.data.keys.mf_analytics_console_short }}. If you are moving from a test environment to a production deployment, you can save time by exporting your custom chart definitions instead of re-creating your custom charts for your new cluster.
+Sie können die Definitionen Ihrer kundenspezifischen Diagramme über die
+{{ site.data.keys.mf_analytics_console_short }} exportieren und importieren. Wenn Sie von einer Testumgebung zu einer Implementierung in der Produktionsumgebung wechseln, können Sie Zeit sparen, indem Sie die Definitionen Ihrer kundenspezifischen
+Diagramme exportieren, anstatt die Diagramme für Ihren neuen Cluster neu zu erstellen. 
 
-1. Click the **Custom Charts** tab in the {{ site.data.keys.mf_analytics_console_short }} dashboard.
-2. Click **Export Charts** to download a JSON file with your chart definition.
-3. Choose a location to save the JSON file.
-4. Click **Import Charts** to import your JSON file. If you import a custom chart definition that already exists, you create duplicate definitions, which also means that the {{ site.data.keys.mf_analytics_console_short }} shows duplicate custom charts.
+1. Klicken Sie im Dashboard der {{ site.data.keys.mf_analytics_console_short }} auf das Register **Kundenspezifische Diagramme**. 
+2. Klicken Sie auf **Diagramme exportieren**, um eine JSON-Datei mit Ihrer Diagrammdefinition herunterzuladen. 
+3. Wählen Sie eine Speicherposition für die JSON-Datei aus. 
+4. Klicken Sie auf **Diagramme importieren**, um Ihre JSON-Datei zu importieren. Wenn Sie die Definition eines bereits vorhandenen kundenspezifischen Diagramms importieren, ist die Definition im Ergebnis doppelt vorhanden. Das bedeutet auch, dass
+die {{ site.data.keys.mf_analytics_console_short }}
+das kundenspezifische Diagramm doppelt anzeigt. 
