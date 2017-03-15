@@ -245,9 +245,9 @@ SDK 릴리스는 SDK의 [CocoaPods 저장소](https://cocoapods.org/?q=ibm%20mob
 
 | 특성            | 설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
-| wlServerHost        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
-| wlServerPort        | {{ site.data.keys.mf_server }}의 포트입니다.                                 | 9080           |
+| protocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
+| host        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
+| port        | {{ site.data.keys.mf_server }}의 포트입니다.                                 | 9080           |
 | wlServerContext     | {{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다.  | /mfp/          |
 | languagePreferences | 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.            | en             |
 

@@ -78,7 +78,7 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
 * 기존 IBM MobileFirst Platform Foundation 하이브리드 애플리케이션 또는 `mfp cordova create` 명령으로 작성한 Cordova 애플리케이션이 있어야 합니다. 
 * 인터넷에 액세스할 수 있어야 합니다. 
 * node.js 버전 4.0.0 이상이 설치되어 있어야 합니다. 
-* Cordova 명령행 인터페이스(CLI)와 대상 플랫폼에 대해 Cordova CLI를 사용하는 데 필요한 필수 소프트웨어가 설치되어 있어야 합니다. 자세한 정보는 Apache Cordova 웹 사이트에서 [명령행 인터페이스](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html)를 참조하십시오. 
+* Cordova 명령행 인터페이스(CLI)와 대상 플랫폼에 대해 Cordova CLI를 사용하는 데 필요한 필수 소프트웨어가 설치되어 있어야 합니다. 자세한 정보는 Apache Cordova 웹 사이트에서 [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html)를 참조하십시오. 
 * 마이그레이션 프로세스의 제한사항을 검토하고 숙지하십시오. 자세한 정보는 [이전 릴리스에서 앱 마이그레이션](../)을 참조하십시오. 
 
 이전 버전의 IBM MobileFirst Platform Foundation 명령으로 작성한 크로스 플랫폼 앱 또는 IBM MobileFirst Platform Foundation 명령으로 작성한 Cordova는 몇 가지를 변경하지 않으면 버전 8.0에서 지원되지 않습니다. 마이그레이션 지원 도구를 사용하면 다음 기능을 간단하게 처리할 수 있습니다. 
@@ -163,7 +163,7 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
 마이그레이션 지원 도구를 사용한 후 코드의 일부를 수동으로 수정하여 마이그레이션 프로세스를 완료해야 합니다. 
 
 * 기존 하이브리드 앱에 대해 이미 mfpmigrate 마이그레이션 지원 도구를 실행했을 것입니다. 자세한 정보는 [마이그레이션 지원 도구로 Cordova 앱 마이그레이션 시작](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)을 참조하십시오. 
-* 추가 Cordova 플러그인을 설치해야 하는 경우, Cordova CLI(Command-Line Interface) 및 대상 플랫폼에 대해 Cordova CLI를 사용하는 데 필요한 필수 소프트웨어가 설치되어 있어야 합니다. (6단계 참조) 자세한 정보는 Apache Cordova 웹 사이트에서 [명령행 인터페이스](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html)를 참조하십시오. 
+* 추가 Cordova 플러그인을 설치해야 하는 경우, Cordova CLI(Command-Line Interface) 및 대상 플랫폼에 대해 Cordova CLI를 사용하는 데 필요한 필수 소프트웨어가 설치되어 있어야 합니다. (6단계 참조) 자세한 정보는 Apache Cordova 웹 사이트에서 [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html)를 참조하십시오. 
 * 새 버전의 JQuery를 다운로드(1c단계)해야 하거나 추가 Cordova 플러그인을 설치(6단계)해야 하는 경우, 인터넷 액세스 권한이 있어야 합니다. 
 * 추가 Cordova 플러그인을 설치(6단계)해야 하는 경우, node.js 버전 4.0.0 이상이 설치되어 있어야 합니다. 
 
@@ -264,7 +264,7 @@ IBM MobileFirst Platform Foundation 버전 6.2 이상으로 개발된 기존 하
 마이그레이션 지원 도구를 사용한 후 코드의 일부를 수동으로 수정하여 마이그레이션 프로세스를 완료해야 합니다. 
 
 * 기존 Cordova 앱에 대해 이미 **mfpmigrate** 마이그레이션 지원 도구를 실행했을 것입니다. 자세한 정보는 [마이그레이션 지원 도구로 Cordova 앱 마이그레이션 시작](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)을 참조하십시오. 
-* Cordova 명령행 인터페이스(CLI)와 대상 플랫폼에 대해 Cordova CLI를 사용하는 데 필요한 필수 소프트웨어가 설치되어 있어야 합니다. 자세한 정보는 Apache Cordova 웹 사이트에서 [명령행 인터페이스](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html)를 참조하십시오. 
+* Cordova 명령행 인터페이스(CLI)와 대상 플랫폼에 대해 Cordova CLI를 사용하는 데 필요한 필수 소프트웨어가 설치되어 있어야 합니다. 자세한 정보는 Apache Cordova 웹 사이트에서 [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html)를 참조하십시오. 
 * 인터넷에 액세스할 수 있어야 합니다. 
 * node.js 버전 4.0.0 이상이 설치되어 있어야 합니다. 
 
@@ -360,7 +360,7 @@ IBM MobileFirs Foundation v8.0 Cordova SDK(JavaScript)는 코드 조정이 필�
 | `WL.EncryptedCache` | JSONStore를 사용하여 암호화된 데이터를 로컬로 저장하십시오. JSONStore는 **cordova-plugin-mfp-jsonstore**에 있습니다.  |
 | `WL.SecurityUtils.remoteRandomString(bytes)` | 동일한 기능을 제공하는 사용자 정의 어댑터를 작성하십시오.  |
 | `WL.Client.getAppProperty(property)` | cordova plugin add **cordova-plugin-appversion** 플러그인을 사용하여 앱 버전 특성을 검색할 수 있습니다. 리턴되는 버전은 기본 앱 버전입니다(Android 및 iOS만 해당).  |
-| `WL.Client.Push.*` | **cordova-plugin-mfp-push** 플러그인에서 [JavaScript 클라이언트 측 푸시 API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_js_client_push_api.html?view=kc#r_client_push_api)를 사용하십시오. 자세한 정보는 [이벤트 소스 기반 알림에서 푸시 알림으로 마이그레이션](../../migrating-push-notifications)을 참조하십시오.  |
+| `WL.Client.Push.*` | **cordova-plugin-mfp-push** 플러그인에서 [JavaScript client-side push API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_js_client_push_api.html?view=kc#r_client_push_api)를 사용하십시오. 자세한 정보는 [이벤트 소스 기반 알림에서 푸시 알림으로 마이그레이션](../../migrating-push-notifications)을 참조하십시오.  |
 | `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` | [`MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-mfp-push-hybrid/html/MFPPush.html?view=kc#registerDevice)를 사용하여 푸시 및 SMS를 위해 디바이스를 등록하십시오.  |
 | `WLAuthorizationManager.obtainAuthorizationHeader(scope)` | [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 사용하여 필요한 범위에 대한 토큰을 얻으십시오.  |
 | `WLClient.getLastAccessToken(scope)` | [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken)을 사용하십시오.  |

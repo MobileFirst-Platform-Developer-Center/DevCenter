@@ -107,7 +107,7 @@ java com.ibm.appcenter.Upload -delete -s http://localhost:9080 -c applicationcen
 {: #using-the-stand-alone-tool-to-clear-the-ldap-cache }
 독립형 도구를 사용하여 LDAP 캐시를 지우고 LDAP 사용자 및 그룹의 변경사항이 Application Center에 즉시 표시되도록 지정하십시오. 
 
-Application Center가 LDAP으로 구성된 경우 LDAP 서버에 있는 사용자 및 그룹의 변경사항은 지연 이후에 Application Center에 표시됩니다. Application Center는 LDAP 데이터의 캐시를 유지하며 변경사항은 캐시가 만료된 후에만 표시됩니다. 기본적으로 지연은 24시간입니다. 사용자 또는 그룹을 변경한 후 이 지연 시간이 만료될 때까지 기다리지 않으려면, 명령행에서 독립형 도구를 호출하여 LDAP 데이터의 캐시를 지울 수 있습니다. 독립형 도구를 사용하여 캐시를 지우면 변경사항이 즉시 표시됩니다. 
+Application Center가 LDAP으로 구성된 경우 LDAP 서버에 있는 사용자 및 그룹의 변경사항은 지연 이후에 Application Center에 표시됩니다. Application Center는 LDAP 데이터의 캐시를 유지하며 변경사항은 캐시가 만료된 후에만 표시됩니다. 기본적으로 지연 시간은 24시간입니다. 사용자 또는 그룹을 변경한 후 이 지연 시간이 만료될 때까지 기다리지 않으려면, 명령행에서 독립형 도구를 호출하여 LDAP 데이터의 캐시를 지울 수 있습니다. 독립형 도구를 사용하여 캐시를 지우면 변경사항이 즉시 표시됩니다. 
 
 다음 단계를 수행하여 독립형 도구를 사용하십시오. 
 
@@ -141,7 +141,7 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 업로드 및 삭제 도구를 Ant 태스크로 사용하고 사용자의 Ant 스크립트에서 Ant 태스크를 사용할 수 있습니다.   
 이 태스크를 실행하려면 Apache Ant가 필요합니다. Apache Ant의 최소 지원 버전은 [시스템 요구사항](../../product-overview/requirements)에 나열되어 있습니다. 
 
-편의를 위해 Apache Ant 1.8.4는 {{site.data.keys.mf_server }}에 포함되어 있습니다. product_install_dir/shortcuts/ 디렉토리에서 다음 스크립트가 제공됩니다. 
+편의를 위해 Apache Ant 1.8.4는 {{ site.data.keys.mf_server }}에 포함되어 있습니다. product_install_dir/shortcuts/ 디렉토리에서 다음 스크립트가 제공됩니다. 
 
 * UNIX/Linux용 ant
 * Windows용 ant.bat

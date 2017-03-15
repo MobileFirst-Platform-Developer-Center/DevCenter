@@ -22,7 +22,7 @@ weight: 1
 * [{{ site.data.keys.mf_dev_kit }}](#mobilefirst-developer-kit)
 * [{{ site.data.keys.product }} 컴포넌트](#mobilefirst-foundation-components)
 * [애플리케이션 및 어댑터 개발](#applications-and-adapters-development)
-* [다음으로 수행할 학습서](#tutorials-to-follow-next)
+* [다음 학습서](#tutorials-to-follow-next)
 
 ## 설치 안내서
 {: #installation-guide }
@@ -81,7 +81,7 @@ weight: 1
 * {{ site.data.keys.mf_server }}에 앱 등록
 * 앱 구성
 * 어댑터 작성, 빌드 및 배치
-* Cordova 앱 미리 보기 및 업데이트
+* Cordova 앱 미리보기 및 업데이트
 
 > {{ site.data.keys.mf_cli }}를 다운로드하여 설치하려면 [다운로드]({{site.baseurl}}/downloads/) 페이지를 방문하십시오.   
 >[CLI를 사용하여 MobileFirst 아티팩트 관리](../../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/) 학습서에서 다양한 CLI 명령에 대해 자세히 학습하십시오. 
@@ -109,7 +109,7 @@ weight: 1
 {: #adapters }
 어댑터를 사용하려면 Apache Maven을 설치해야 합니다. [어댑터](../../../adapters/) 카테고리를 참조하여 어댑터와 어댑터 작성, 개발 및 배치 방법에 대해 자세히 학습하십시오. 
 
-## 다음으로 수행할 학습서
+## 다음 학습서
 {: #tutorials-to-follow-next }
 [모든 학습서](../../../all-tutorials/) 페이지를 방문하여 다음으로 수행할 학습서 카테고리를 선택하십시오. 
 

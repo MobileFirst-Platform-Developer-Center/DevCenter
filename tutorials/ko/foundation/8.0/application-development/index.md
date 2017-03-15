@@ -2,7 +2,7 @@
 layout: tutorial
 title: 애플리케이션 개발
 show_children: true
-weight: 4
+weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개발 개념 및 개요
@@ -79,7 +79,7 @@ ID는 개발자가 지정한 고유 ID입니다.
 
 * `mfpdev app pull` 명령을 사용하여 서버에서 기존 JSON 구성 파일을 가져오고 파일을 업데이트한 후 `mfpdev app push` 명령을 사용하여 변경된 구성을 업로드하십시오. 
 * **mfpadm** 프로그램 또는 Ant 태스크를 사용하십시오. mfpadm 사용에 대한 정보는 [명령행을 통한 {{ site.data.keys.product_adj }} 애플리케이션 관리](../administering-apps/using-cli) 및 [Ant를 통한 {{ site.data.keys.product_adj }} 애플리케이션 관리](../administering-apps/using-ant)를 참조하십시오. 
-* {{ site.data.keys.product_adj }} 관리 서비스의 REST API를 사용하십시오. REST API에 대한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi)를 참조하십시오. 
+* {{ site.data.keys.product_adj }} 관리 서비스의 REST API를 사용하십시오. REST API에 대한 정보는 [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi)를 참조하십시오. 
 
 이러한 메소드를 사용하여 {{ site.data.keys.mf_server }}의 구성을 자동화할 수도 있습니다. 
 

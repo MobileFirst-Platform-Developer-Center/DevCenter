@@ -180,7 +180,7 @@ Elasticsearch는 일반적으로 성능 튜닝을 위한 여러 튜닝 가능 �
 {: #adding-a-mobilefirst-analytics-server-to-the-cluster }
 클러스터에 {{ site.data.keys.mf_analytics_server }}를 추가하는 방법에 대해 학습하십시오. 
 
-Elasticsearch는 {{ site.data.keys.mf_analytics_server }}에 임베드되어 있고 클러스터에 참여하는 일을 담당하므로 애플리케이션 서버의 기능을 사용하여 클러스터 동작을 정의하지 마십시오. 예를 들어, WebSphere Application Server Liberty 팜 작성은 원하지 않습니다. 기본 Elasticsearch 런타임을 신뢰하여 클러스터에 참여시키십시오. 하지만 이를 제대로 구성해야 합니다. 
+Elasticsearch는 {{ site.data.keys.mf_analytics_server }}에 임베드되어 있으므로 Elasticsearch 설정을 사용하여 클러스터 동작을 정의하십시오. 예를 들어 WebSphere Application Server Liberty 팜을 작성하거나 다른 애플리케이션 서버 설정을 사용하지 마십시오. 
 
 다음 샘플 지시사항에서는 노드를 마스터 노드 또는 데이터 노드로 구성하지 마십시오. 대신 Elasticsearch REST API가 모니터링 및 동적 구성을 위해 노출되도록 임시로 작동할 "검색 로드 밸런서"로 노드를 구성하십시오. 
 
@@ -205,7 +205,7 @@ Elasticsearch는 {{ site.data.keys.mf_analytics_server }}에 임베드되어 있
     | node.data|	false | 	true | 	이 노드가 데이터를 저장하도록 허용하지 마십시오.  |
     | http.enabled | 	true	 | true | 	Elasticsearch REST API에 대해 비보안 HTTP 포트 9200을 여십시오.  |
 
-3. 프로덕션 시나리오의 모든 구성 플래그를 고려하십시오.Elasticsearch에서 해당 데이터가 아닌 다른 파일 시스템 디렉토리에서 플러그인을 보관하길 원하므로 **path.plugins** 플래그를 설정해야 합니다. 
+3. 프로덕션 시나리오의 모든 구성 플래그를 고려하십시오. Elasticsearch에서 해당 데이터가 아닌 다른 파일 시스템 디렉토리에서 플러그인을 보관하길 원하므로 **path.plugins** 플래그를 설정해야 합니다. 
 4. 필요한 경우 애플리케이션 서버를 실행하고 WAR 애플리케이션을 시작하십시오. 
 5. 새 노드의 콘솔 출력을 확인하거나 {{ site.data.keys.mf_analytics_console }}에 있는 **관리** 페이지의 **클러스터 및 노드** 섹션에서 노드 개수를 관찰하여 이 새 노드가 클러스터에 참여했음을 확인하십시오. 
 

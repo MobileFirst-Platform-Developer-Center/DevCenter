@@ -7,7 +7,8 @@ weight: 9
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-HTTP 요청을 발행하여 애플리케이션은 {{ site.data.keys.mf_server }}가 액세스 권한을 제공하는 기업 HTTP 서버(API)에 액세스할 수 있습니다. 사전 정의된 애플리케이션-인증 [보안 검사](../)는 {{ site.data.keys.mf_server }} 인스턴스에 연결을 시도하는 애플리케이션이 인증된 것인지를 확인합니다. 
+
+애플리케이션을 적절하게 보안 처리하려면 사전 정의된 {{ site.data.keys.product_adj }} 애플리케이션 인증 [보안 검사](../#security-check)(`appAuthenticity`)를 사용으로 설정하십시오. 사용으로 설정되면 이 검사는 애플리케이션에 서비스를 제공하기 전에 애플리케이션 인증의 유효성을 검증합니다. 
 
 애플리케이션 인증을 사용으로 설정하려면 **{{site.data.keys.mf_console }}**
 → **[사용자 애플리케이션]** → **인증**에서

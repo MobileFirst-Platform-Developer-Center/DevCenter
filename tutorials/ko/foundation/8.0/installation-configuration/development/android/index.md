@@ -24,7 +24,7 @@ weight: 4
 ### Android SDK
 Android SDK는 Java 프로그래밍 언어를 사용하여 Android 플랫폼에서 애플리케이션을 개발하기 위해 필요한 도구 및 API를 제공합니다. 
 
-Android Studio를 처음 열고 나면 SDK 관리자를 사용하여 Android SDK를 구성할 수 있습니다. 
+Android Studio를 처음 열면 SDK 관리자를 사용하여 Android SDK를 구성할 수 있습니다. 
 
 SDK 관리자에서 필수 패키지를 설치할 수 있습니다. 자세한 정보를 보려면 [Android 개발자 웹 사이트](http://developer.android.com/sdk/index.html)를 방문하십시오. 
 

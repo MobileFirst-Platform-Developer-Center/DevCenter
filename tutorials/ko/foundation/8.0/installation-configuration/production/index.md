@@ -13,10 +13,10 @@ weight: 2
 #### 다음으로 이동
 {: #jump-to }
 
-* [필수 소프트웨어](#prerequisites)
+* [전제조건](#prerequisites)
 * [다음 내용](#whats-next)
 
-## 필수 소프트웨어
+## 전제조건
 {: #prerequisites }
 {{ site.data.keys.mf_server }}의 원활한 설치를 위해서는 모든 필수 소프트웨어가 설치되어 있어야 합니다. 
 

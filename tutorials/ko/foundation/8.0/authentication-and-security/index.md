@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 인증 및 보안
-weight: 6
+weight: 7
 show_children: true
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -65,13 +65,13 @@ OAuth 프로토콜은 자원이 호스팅되는 자원 서버와 권한 부여 �
                 <li>{{ site.data.keys.mf_console }} 사용
                     <ul>
                         <li><b>사용자 애플리케이션] → 보안</b> 탭을 선택하십시오. </li>
-                        <li><b>토큰 구성</b> 섹션에서, <b>토큰 만기 기간(초)</b> 필드의 값을 선호하는 값으로 설정한 다음 **저장**을 클릭하십시오. 언제든지 이 프로시저를 반복하여 최대 토큰 만기 기간을 변경하거나, <b>기본값 복원</b>을 선택하여 기본값을 복원할 수 있습니다.</li>
+                        <li><b>토큰 구성</b> 섹션에서, <b>토큰 만기 기간(초)</b> 필드의 값을 선호하는 값으로 설정한 다음 <b>저장</b>을 클릭하십시오. 언제든지 이 프로시저를 반복하여 최대 토큰 만기 기간을 변경하거나, <b>기본값 복원</b>을 선택하여 기본값을 복원할 수 있습니다.</li>
                     </ul>
                 </li>
                 <li>애플리케이션의 구성 파일 편집 <ol>
                         <li><b>명령행 창</b>에서 프로젝트의 루트 폴더로 이동하여 <code>mfpdev app pull</code>을 실행하십시오. </li>
-                        <li><b>[project-folder\mobilefirst]</b> 폴더에 있는 구성 파일을 여십시오. </li>
-                        <li><code>maxTokenExpiration</code> 특성을 정의하여 파일을 편집하고 해당 값을 최대 액세스 토큰 만료 기간(초 단위)으로 설정하십시오. 
+                        <li><b>[project-folder]\mobilefirst</b> 폴더에 있는 구성 파일을 여십시오. </li>
+                        <li><code>maxTokenExpiration</code> 특성을 정의하여 파일을 편집하고 해당 값을 최대 액세스 토큰 만기 기간(초)으로 설정하십시오. 
 
 {% highlight xml %}
 {
@@ -209,7 +209,7 @@ scope = `access-restricted deletePrivilege`
 필수 구성으로 애플리케이션의 구성 JSON 파일을 수동으로 편집하고 변경사항을 다시 {{ site.data.keys.mf_server }}로 푸시할 수도 있습니다. 
 
 1. **명령행 창**에서 프로젝트의 루트 폴더로 이동하여 `mfpdev app pull`을 실행하십시오. 
-2. **[project-folder\mobilefirst]** 폴더에 있는 구성 파일을 여십시오. 
+2. **[project-folder]\mobilefirst** 폴더에 있는 구성 파일을 여십시오. 
 3. `scopeElementMapping` 특성을 정의하여 파일을 편집하고 이 특성에서 선택한 범위 요소의 이름과, 요소가 맵핑되는 0개 이상의 공백으로 구분된 보안 검사의 문자열로 구성된 데이터 쌍을 정의하십시오. 예:  
 
     ```xml
@@ -237,13 +237,12 @@ OAuth 모델에서 보호 자원은 액세스 토큰을 요구하는
 애플리케이션 레벨에서, 애플리케이션이 사용하는 모든 자원에 적용될 범위를 정의할 수 있습니다. 보안 프레임워크는 요청된 자원 범위의 보안 검사 외에 이러한 검사(존재하는 경우)를 실행합니다. 
 
 **참고:**
-
 * 필수 애플리케이션 범위는 [보호되지 않은 자원](#unprotected-resources)에 액세스할 때 적용되지 않습니다. 
 * 자원 범위에 부여되는 액세스 토큰에 필수 애플리케이션 범위가
 포함되어 있지 않습니다. 
 
 <br/>
-{{ site.data.keys.mf_console }}에서, **[사용자 애플리케이션] → 보안 탭**을 선택하십시오. **필수 애플리케이션 범위**에서 **범위에 추가**를 클릭하십시오.
+{{ site.data.keys.mf_console }}의 경우 탐색 사이드바의 **애플리케이션** 섹션에서 애플리케이션을 선택한 다음 **보안** 탭을 선택하십시오. **필수 애플리케이션 범위**에서 **범위에 추가**를 선택하십시오.
 
 <img class="gifplayer" alt="필수 애플리케이션 범위" src="mandatory-application-scope.png"/>
 
@@ -334,7 +333,7 @@ public void deleteUser(@PathParam("userId") String userId){
 자원에 대한 OAuth 클라이언트 액세스를 부여하기 전에 보안 프레임워크의
 권한 부여 서버의 자체 점검 엔드포인트를 사용하여
 {{ site.data.keys.product_adj }}
-액세스 토큰을 유효성 검증합니다. [{{ site.data.keys.product_adj }} 런타임용 {{ site.data.keys.product_adj }} REST API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api)를 사용하여 외부 서버를 위한 자체 액세스 토큰 유효성 검증 모듈을 작성할 수 있습니다. 또는 [외부 자원 보호](protecting-external-resources) 학습서의 간략한 설명대로 외부 Java 자원 보호를 위해 제공된 {{ site.data.keys.product_adj }} 확장기능 중 하나를 사용하십시오.
+액세스 토큰을 유효성 검증합니다. [{{ site.data.keys.product_adj }} REST API for the {{ site.data.keys.product_adj }} runtime](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_runtime_overview.html?view=kc#rest_runtime_api)을 사용하여 외부 서버를 위한 자체 액세스 토큰 유효성 검증 모듈을 작성할 수 있습니다. 또는 [외부 자원 보호](protecting-external-resources) 학습서의 간략한 설명대로 외부 Java 자원 보호를 위해 제공된 {{ site.data.keys.product_adj }} 확장기능 중 하나를 사용하십시오.
 
 ## 권한 부여 플로우
 {: #authorization-flow }
@@ -379,4 +378,5 @@ public void deleteUser(@PathParam("userId") String userId){
 
 ## 다음 학습서
 {: #tutorials-to-follow-next }
-사이드바 탐색에서 학습서에 따라 {{site.data.keys.product_adj }} Foundation에서 인증에 대해 읽기를 계속하십시오.   
+사이드바 탐색에서 학습서에 따라 {{site.data.keys.product_adj }} Foundation에서 인증에 대해 읽기를 계속하십시오. 
+

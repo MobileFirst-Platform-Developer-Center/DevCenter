@@ -173,7 +173,7 @@ WebSphere Application Server Network Deployment에서 런타임 및 관리 서�
 * 독립형 서버: WebSphere  Application Server Liberty 프로파일, Apache Tomcat 또는 WebSphere Application Server 전체 프로파일
 * 서버 팜: WebSphere Application Server Liberty 프로파일, Apache Tomcat 또는 WebSphere Application Server 전체 프로파일
 * WebSphere Application Server Network Deployment 셀
-* Liberty 집합
+* Liberty Collective
 
 #### 배치 모드
 {: #modes-of-deployment }
@@ -184,14 +184,14 @@ WebSphere Application Server Network Deployment에서 런타임 및 관리 서�
 
 **비대칭 배치**  
 비대칭 배치의 경우, 런타임을 {{ site.data.keys.product }} 관리 컴포넌트와 다른 애플리케이션 서버에 설치할 수 있습니다.   
-비동기 배치는 WebSphere Application Server Network Deployment 셀 토폴로지 및 Liberty 집합 토폴로지에만 지원됩니다. 
+비동기 배치는 WebSphere Application Server Network Deployment 셀 토폴로지 및 Liberty Collective 토폴로지에만 지원됩니다. 
 
 #### 토폴로지 선택
 {: #select-a-topology }
 
 * [독립형 서버 토폴로지](#stand-alone-server-topology)
 * [서버 팜 토폴로지](#server-farm-topology)
-* [Liberty 집합 토폴로지](#liberty-collective-topology)
+* [Liberty Collective 토폴로지](#liberty-collective-topology)
 * [WebSphere Application Server Network Deployment 토폴로지](#websphere-application-server-network-deployment-topologies)
 * [서버 팜 및 WebSphere Application Server Network Deployment 토폴로지에서 리버스 프록시 사용](#using-a-reverse-proxy-with-server-farm-and-websphere-application-server-network-deployment-topologies)
 
@@ -417,13 +417,13 @@ JVM 특성은 JMX(Java Management Extensions) RMI(Remote Method Invocation)를 �
 * 각 관리 서비스에서, 로컬 **mfp.admin.environmentid** JNDI 특성에 고유한 값
 * 각 런타임에서, 런타임을 관리하는 관리 서비스에 대해 정의된 값과 동일한 로컬 **mfp.admin.environmentid** JNDI 특성의 값
 
-### Liberty 집합 토폴로지
+### Liberty Collective 토폴로지
 {: #liberty-collective-topology }
-Liberty 집합 토폴로지에 {{ site.data.keys.mf_server }} 컴포넌트를 배치할 수 있습니다.
+Liberty Collective 토폴로지에 {{ site.data.keys.mf_server }} 컴포넌트를 배치할 수 있습니다.
 
-Liberty 집합 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴포넌트({{ site.data.keys.mf_console }}, 관리 서비스, 라이브 업데이트 서비스)는 집합 제어기와 집합 멤버의 {{ site.data.keys.product }} 런타임에 배치됩니다. 이 토폴로지는 비대칭 배치만 지원하며, 런타임을 집합 제어기에 배치할 수 없습니다.
+Liberty Collective 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴포넌트({{ site.data.keys.mf_console }}, 관리 서비스, 라이브 업데이트 서비스)는 집합 제어기와 집합 멤버의 {{ site.data.keys.product }} 런타임에 배치됩니다. 이 토폴로지는 비대칭 배치만 지원하며, 런타임을 집합 제어기에 배치할 수 없습니다.
 
-![Liberty 집합의 토폴로지](liberty_collective_topology.jpg)
+![Liberty Collective의 토폴로지](liberty_collective_topology.jpg)
 
 이 토폴로지의 배치 특성은 다음과 같습니다. 
 
@@ -437,7 +437,7 @@ Liberty 집합 토폴로지에서 {{ site.data.keys.mf_server }} 관리 컴포�
 
 #### JNDI 특성의 구성
 {: #configuration-of-jndi-properties-2 }
-다음 표에서는 관리 서비스와 런타임 간의 JMX 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하는 데 필요한 JNDI 특성을 나열합니다. 이러한 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오. Liberty 집합을 수동으로 설치하는 방법에 대한 지시사항은 [WebSphere Application Server Liberty 집합에 수동 설치](../appserver/#manual-installation-on-websphere-application-server-liberty-collective)를 참조하십시오. 
+다음 표에서는 관리 서비스와 런타임 간의 JMX 통신을 가능하게 하고 런타임을 관리하는 관리 서비스를 정의하는 데 필요한 JNDI 특성을 나열합니다. 이러한 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리 서비스의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service) 및 [{{ site.data.keys.product_adj }} 런타임의 JNDI 특성 목록](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)을 참조하십시오. Liberty collective를 수동으로 설치하는 방법에 대한 지시사항은 [WebSphere Application Server Liberty Collective에 수동 설치](../appserver/#manual-installation-on-websphere-application-server-liberty-collective)를 참조하십시오. 
 
 관리 서비스에는 다음과 같은 글로벌 JNDI 특성이 필요합니다. 
 

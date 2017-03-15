@@ -17,21 +17,9 @@ SDK에는 다음 파일이 포함됩니다.
 - **ibmmfpf.js** - SDK의 핵심입니다. 
 - **ibmmfpfanalytics.js** - {{ site.data.keys.mf_analytics }}에 대한 지원을 제공합니다. 
 
-**전제조건:**
-NPM 명령을 실행하려면 [Node.js](https://nodejs.org)가 필요합니다. 
-
-#### SDK 제한사항
-{: #sdk-limitations }
-테이블의 숫자는 완전히 지원되는 첫 번째 브라우저 버전을 지정합니다. 
-
-|      브라우저      | Chrome | Safari* | Internet Explorer | Firefox | Android 브라우저 |
-|:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
-| 지원되는 버전 |   43 이상  |    8 이상   |        10 이상        |   38 이상   |   Android 4.3 이상  |
-
-(*) 사생활 보호 모드는 단일 페이지 애플리케이션에서만 지원됩니다. 다른 애플리케이션에서는 예상치 못한 동작이 발생할 수 있습니다. 
-
-#### 다음으로 이동:
+#### 다음으로 이동
 {: #jump-to }
+- [전제조건](#prerequisites)
 - [{{ site.data.keys.product_adj }} 웹 SDK 추가](#adding-the-mobilefirst-web-sdk)
 - [{{ site.data.keys.product_adj }} 웹 SDK 초기화](#initializing-the-mobilefirst-web-sdk)
 - [웹 애플리케이션 등록](#registering-the-web-application)
@@ -39,6 +27,13 @@ NPM 명령을 실행하려면 [Node.js](https://nodejs.org)가 필요합니다.
 - [동일 출처 정책](#same-origin-policy)
 - [보안 출처 정책](#secure-origins-policy)
 - [다음 학습서](#tutorials-to-follow-next)
+
+## 전제조건
+{: #prerequisites }
+-   웹 개발 환경 설정에 대해서는 [지원되는 웹 브라우저](../../../installation-configuration/development/web/#web-app-supported-browsers)
+전제조건을 참조하십시오. 
+
+-   NPM 명령을 실행하려면 [Node.js](https://nodejs.org)를 설치해야 합니다. 
 
 ## {{ site.data.keys.product_adj }} 웹 SDK 추가
 {: #adding-the-mobilefirst-web-sdk }
@@ -139,7 +134,7 @@ SDK 릴리스는 SDK의 [NPM 저장소](https://www.npmjs.com/package/ibm-mfp-we
 
 ## 동일 출처 정책
 {: #same-origin-policy }
-{{ site.data.keys.mf_server }}가 설치된 서버 시스템이 아닌 다른 서버 시스템에서 웹 자원이 호스팅되는 경우 [동일 출처 정책](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) 위반이 트리거됩니다. 동일 출처 정책 보안 모델은 확인되지 않은 소스의 잠재적 보안 위협에 대해 보호하도록 디자인되어 있습니다. 이 정책에 따라 브라우저에서 웹 자원(예: 스크립트)은 출처(URI 스키마, 호스트 이름 및 포트 번호의 조합으로 정의됨)가 동일한 자원과 상호작용하는 것만 허용됩니다. 동일 출처 정책에 대한 자세한 정보는 [웹 출처 개념](https://tools.ietf.org/html/rfc6454) 스펙, 특히 [3. 동일 출처 정책 원칙](https://tools.ietf.org/html/rfc6454#section-3)을 참조하십시오. 
+{{ site.data.keys.mf_server }}가 설치된 서버 시스템이 아닌 다른 서버 시스템에서 웹 자원이 호스팅되는 경우 [동일 출처 정책](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) 위반이 트리거됩니다. 동일 출처 정책 보안 모델은 확인되지 않은 소스의 잠재적 보안 위협에 대해 보호하도록 디자인되어 있습니다. 이 정책에 따라 브라우저에서 웹 자원(예: 스크립트)은 출처(URI 스키마, 호스트 이름 및 포트 번호의 조합으로 정의됨)가 동일한 자원과 상호작용하는 것만 허용됩니다. 동일 출처 정책에 대한 자세한 정보는 [Web Origin Concept](https://tools.ietf.org/html/rfc6454) 스펙, 특히 [3. Principles of the Same-Origin Policy](https://tools.ietf.org/html/rfc6454#section-3)를 참조하십시오. 
 
 {{ site.data.keys.product_adj }} 웹 SDK를 사용하는 웹 앱은 지원되는 토폴로지에서 처리되어야 합니다. 예를 들어 동일한 단일 출처를 유지하지만 역방향 프록시를 사용하여 내부에서 적절한 서버로 요청의 경로를 재지정하십시오. 
 

@@ -350,7 +350,7 @@ if (document.addEventListener) {
                         <p>마이그레이션된 애플리케이션을 테스트하려면 다음을 수행하십시오. </p>
                         <ol>
                             <li>애플리케이션이 {{ site.data.keys.mf_server }}에 등록되었는지 확인하십시오. </li>
-                            <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/#same-origin-policy" target="_blank">동일 원본 오류</a>가 발생하지 않도록 하려면 되돌리기 프록시를 설정하십시오. 이 목표를 위해 Node.js를 사용할 수 있습니다. Node.js를 사용하여 되돌리기 프록시를 구현하는 예제는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/" target="_blank">웹 개발 환경 설정</a> 학습서를 참조하십시오. </li>
+                            <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/#same-origin-policy" target="_blank">동일 원본 오류</a>가 발생하지 않도록 하려면 되돌리기 프록시를 설정하십시오. 이 목표를 위해 Node.js를 사용할 수 있습니다. Node.js를 사용하여 리버스 프록시를 구현하는 예제는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/" target="_blank">웹 개발 환경 설정</a> 학습서를 참조하십시오. </li>
                         </ol>
                     </div>
                 </div>
@@ -769,9 +769,9 @@ export MVN_PATH="/usr/local/bin"
                         <b>HTTP JavaScript 어댑터</b><br/>
 
                         <ol>
-                            <li>파일 시스템에서 JavaScript 어댑터 폴더로 이동하십시오(예: <i>../Desktop/JavaScriptAdapters/adapters/RSSReade</i>). </li>
+                            <li>파일 시스템에서 JavaScript 어댑터 폴더로 이동하십시오(예: <i>../Desktop/JavaScriptAdapters/adapters/RSSReader</i>). </li>
                             <li>다른 창을 열고 새 Maven 프로젝트(예: <i>../Desktop/MigratedAdapter</i>)로 이동한 후 <b>src/main/adapter-resources</b> 폴더로 이동하십시오. </li>
-                            <li>기존 어댑터 파일을 폴더에 복사하여 붙여넣으십시오. </li>
+                            <li>기존 어댑터 파일을 이 폴더로 복사하여 붙여넣으십시오. </li>
                             <li><b>adapter.xml</b>을 편집하십시오. 해당 컨텐츠를 기존 어댑터의 XML 컨텐츠(이 예제에서는 RSSReader.xml)로 대체하십시오. </li>
                             <li><b>js/{adapter-name}-impl.js</b>를 편집하십시오. 해당 컨텐츠를 기존 어댑터의 컨텐츠(이 예제에서는 RSSReader-impl.js)로 대체하십시오. </li>
                         </ol>
@@ -805,7 +805,7 @@ export MVN_PATH="/usr/local/bin"
 
                         <blockquote><b>Maven 종속 항목에 대해 자세히 학습:</b><br/>
                             <ul>
-                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">종속 항목 메커니즘 소개(Maven.org)</a></li>
+                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">Introduction to the Dependency Mechanism (Maven.org)</a></li>
                                 <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">종속 항목 처리(학습서)</a></li>
                             </ul>
                         </blockquote>
@@ -867,7 +867,7 @@ export MVN_PATH="/usr/local/bin"
                         <br/>
                         <blockquote><b>Maven 종속 항목에 대해 자세히 학습:</b>
                             <ul>
-                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">종속 항목 메커니즘 소개(Maven.org)</a></li>
+                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">Introduction to the Dependency Mechanism (Maven.org)</a></li>
                                 <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">종속 항목 처리(학습서)</a></li>
                             </ul>
                         </blockquote>
@@ -1006,7 +1006,7 @@ export MVN_PATH="/usr/local/bin"
 <parameter name="logout-function" value="AuthAdapter.onLogout"/>{% endhighlight %}
 
                                 <i>사용자 정의 인증자 + LoginModule:</i> 시작을 위한 <code>init()</code> 메소드 및 요청에 권한을 부여하기 위한 <code>processRequest()</code>.
-인증자는 <code>login()/logout()</code> 메소드로 로그인 모듈의 신임 정보를 보냅니다. </td>
+인증자는 로그인 모듈의 신임 정보를 <code>login()/logout()</code> 메소드로 보냅니다. </td>
                                 <td>보안 검사 인터페이스를 구현할 때 <code>authorize()</code> 및 <code>introspect()</code> 메소드도 구현해야 하며, 이들은 권한 부여 요청 중에 프레임워크에서 호출됩니다. 보안 검사는 인증과 로그인/로그아웃을 혼자서 처리합니다. </td>
                             </tr>
                             <tr>
@@ -1031,7 +1031,7 @@ export MVN_PATH="/usr/local/bin"
 
                             <tr>
                                 <td><b>정의</b></td>
-                                <td><code>UserID</code>를 정의하기 위해 <b>authenticationConfig.xml</b> 파일에 이름, 하나 이상의 전용 보안 테스트로 정의됩니다.
+                                <td><code>UserID</code>를 정의하기 위해 <b>authenticationConfig.xml</b> 파일에 이름, 하나 이상의 보안 테스트 및 최소 한 개의 전용 보안 테스트로 정의됩니다.
 
 {% highlight xml %}<customSecurityTest name="AuthSecurityTest">
     <test isInternalUserID="true" realm="AuthRealm"/>

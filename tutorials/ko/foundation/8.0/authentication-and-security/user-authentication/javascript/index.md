@@ -80,7 +80,8 @@ WLAuthorizationManager.obtainAccessToken(userLoginChallengeHandler.securityCheck
         showLoginDiv();
 });
 ```
-> **참고:** > `WLAuthorizationManager` `obtainAccessToken()` API는 자체 `onSuccess` 및 `onFailure` 메소드를 보유하며 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure` 메소드 **역시** 호출됩니다.
+> **참고:**
+> `WLAuthorizationManager` `obtainAccessToken()` API는 자체 `onSuccess` 및 `onFailure` 메소드를 보유하며 관련 인증 확인 핸들러의 `handleSuccess` 또는 `handleFailure` 메소드 **역시** 호출됩니다.
 클라이언트가 이미 로그인되어 있거나 *remembered* 상태인 경우 API가 성공을 트리거합니다. 클라이언트가 로그인되지 않은 경우 보안 검사가 인증 확인을 다시 전송합니다.
 
 `obtainAccessToken` API는 **범위**를 가져옵니다. 범위는 **보안 검사**의 이름일 수 있습니다.

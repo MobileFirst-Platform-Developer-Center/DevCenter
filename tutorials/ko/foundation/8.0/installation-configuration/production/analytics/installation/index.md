@@ -1,5 +1,5 @@
 ---
-레이이웃: 학습서
+layout: tutorial
 title: MobileFirst Analytics Server 설치 안내서
 breadcrumb_title: 설치 안내서
 weight: 1

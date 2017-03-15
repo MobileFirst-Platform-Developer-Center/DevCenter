@@ -105,7 +105,7 @@ Maven 어댑터 프로젝트를 작성하려면 `archetype:generate` Maven 명�
 #### 대화식 모드
 {: #interactive-mode-archetype }
 
-1. **Command-line** 창에서 사용자가 선택한 위치로 이동하십시오.   
+1. **명령행** 창에서 사용자가 선택한 위치로 이동하십시오.   
 이는 또한 Maven 프로젝트가 생성될 위치입니다.
 
 2. **DarchetypeArtifactId** 플레이스홀더를 실제 값으로 대체하고 다음을 실행하십시오.
@@ -353,13 +353,13 @@ mfpdev adapter deploy all
 {: #downloading-or-deploying-adapters-using-mobilefirst-operations-console}
 
 1. 선택한 브라우저를 열고 주소 `http://<IP>:<PORT>/mfpconsole/`를 사용하여 {{site.data.keys.mf_console }}을 로드하십시오.   
-2. 어댑터의 옆에 "새로 작성" 단추를 클릭하십시오. 어댑터를 작성하는 두 개의 옵션이 있습니다.
+2. 어댑터 옆의 "새로 작성" 단추를 클릭하십시오. 어댑터를 작성하는 두 개의 옵션이 있습니다.
  * 위에서 이미 설명한 것처럼 Maven 또는 {{ site.data.keys.mf_cli }}를 사용합니다. 
  * 템플리트 어댑터 프로젝트를 다운로드합니다(2 단계).
 3. Maven 또는 {{ site.data.keys.mf_cli }}를 사용하여 어댑터를 빌드하십시오. 
 4. 다음 방법 중 하나를 선택하여, 어댑터 프로젝트의 대상 폴더에서 찾을 수 있는 생성된 **.adapter** 파일을 업로드하십시오.
  * 어댑터 배치 단추를 클릭하십시오(5 단계).
- * 새 어댑터 작성 화면으로 파일을 끌어서 놓으십시오. 
+ * 어댑터 "새로 작성" 화면으로 파일을 끌어서 놓으십시오. 
 
     ![콘솔을 사용하여 어댑터 작성](Create_adapter_console.png)
 

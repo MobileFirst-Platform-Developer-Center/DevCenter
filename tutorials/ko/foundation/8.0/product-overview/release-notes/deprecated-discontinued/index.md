@@ -5,9 +5,7 @@ weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-제거된 기능 및 API 요소가 {{site.data.keys.product_full }} 환경에 영향을 미치는 방식을 주의해서 고려하십시오.
-
-#### 다음으로 이동
+제거된 기능 및 API 요소가 {{ site.data.keys.product_full }} 환경에 영향을 미치는 방식을 주의해서 고려하십시오.#### 다음으로 이동
 {: #jump-to }
 * [v8.0에 포함되지 않는 중단된 기능](#dicontinued-features-and-features-that-are-not-included-in-v-80)
 * [서버 측 API 변경](#server-side-api-changes)
@@ -15,7 +13,7 @@ weight: 3
 
 ## v8.0에 포함되지 않는 중단된 기능
 {: #dicontinued-features-and-features-that-are-not-included-in-v-80 }
-{{site.data.keys.product }} v8.0은 이전 버전과 매우 단순하게 비교됩니다. 이 간소화의 결과로 v7.1에서 사용할 수 있는 일부 기능이 v8.0에서는 더 이상 사용되지 않습니다. 대부분의 경우 기능을 구현하는 대체 방법이 제안됩니다. 이러한 기능은 사용되지 않음으로 표시됩니다. V7.1에 존재하는 일부 기타 기능은 v8.0의 새 디자인의 결과로서가 아닌 v8.0에 있지 않습니다. v8.0에서 중단된 기능과 제외된 기능을 구별하려면 v8.0에 없는 것으로 표시됩니다.
+{{ site.data.keys.product }} v8.0은 이전 버전과 매우 단순하게 비교됩니다. 이 간소화의 결과로 v7.1에서 사용할 수 있는 일부 기능이 v8.0에서는 더 이상 사용되지 않습니다. 대부분의 경우 기능을 구현하는 대체 방법이 제안됩니다. 이러한 기능은 사용되지 않음으로 표시됩니다. V7.1에 존재하는 일부 기타 기능은 v8.0의 새 디자인의 결과로서가 아닌 v8.0에 있지 않습니다. v8.0에서 중단된 기능과 제외된 기능을 구별하려면 v8.0에 없는 것으로 표시됩니다.
 
 <table class="table table-striped">
     <tr>
@@ -23,12 +21,12 @@ weight: 3
         <td>상태 및 대체 경로</td>
     </tr>
     <tr>
-        <td><p>MobileFirst Studio는 Eclipse용 {{site.data.keys.mf_studio }} 플러그인으로 대체됩니다.</p></td>
-        <td><p>Eclipse용 {{site.data.keys.mf_studio }} 플러그인으로 대체되고 표준 및 커뮤니티 기반 Eclipse 플러그인에 의해 제공됩니다. Visual Studio Code, Eclipse, IntelliJ 등과 같이 Apache Cordova CLI 또는 Cordova 사용 IDE로 직접 하이브리드 애플리케이션을 개발할 수 있습니다. Cordova 사용 IDE로 Eclipse를 사용하는 데 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">Eclipse에서 Cordova 프로젝트를 관리하기 위한 IBM {{site.data.keys.mf_studio }} 플러그인</a>을 참조하십시오.</p>
+        <td><p>MobileFirst Studio는 Eclipse용 {{ site.data.keys.mf_studio }} 플러그인으로 대체됩니다.</p></td>
+        <td><p>Eclipse용 {{ site.data.keys.mf_studio }} 플러그인으로 대체되고 표준 및 커뮤니티 기반 Eclipse 플러그인에 의해 제공됩니다. Visual Studio Code, Eclipse, IntelliJ 등과 같이 Apache Cordova CLI 또는 Cordova 사용 IDE로 직접 하이브리드 애플리케이션을 개발할 수 있습니다. Cordova 사용 IDE로 Eclipse를 사용하는 데 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">Eclipse에서 Cordova 프로젝트를 관리하기 위한 IBM {{ site.data.keys.mf_studio }} 플러그인</a>을 참조하십시오.</p>
 
         <p>Apache Maven 또는 maven 사용 IDE(예: Eclipse, IntelliJ 및 기타)로 어댑터를 개발할 수 있습니다. 어댑터 개발에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">어댑터 카테고리</a>를 참조하십시오. Maven 사용 IDE로서 Eclipse 사용에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">Eclipse에서 어댑터 개발 학습서</a>를 읽어보십시오.</p>
 
-        <p>{{site.data.keys.mf_server }}로 어댑터 및 애플리케이션을 테스트하기 위해 {{site.data.keys.mf_dev_kit_full }}를 설치하십시오. 또한 인터넷 기반 저장소(예: NPM, Maven, Cocoapod 또는 NuGet)에서 다운로드하지 않으려면 {{site.data.keys.product_adj }} 개발 도구 및 SDK에 액세스할 수 있습니다. {{site.data.keys.mf_dev_kit }}에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{site.data.keys.mf_dev_kit }}</a>의 내용을 참조하십시오.</p>
+        <p>{{ site.data.keys.mf_server }}로 어댑터 및 애플리케이션을 테스트하기 위해 {{ site.data.keys.mf_dev_kit_full }}를 설치하십시오. 또한 인터넷 기반 저장소(예: NPM, Maven, Cocoapod 또는 NuGet)에서 다운로드하지 않으려면 {{ site.data.keys.product_adj }} 개발 도구 및 SDK에 액세스할 수 있습니다. {{ site.data.keys.mf_dev_kit }}에 대한 자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{ site.data.keys.mf_dev_kit }}</a>의 내용을 참조하십시오.</p>
         </td>
     </tr>
     <tr>
@@ -37,8 +35,8 @@ weight: 3
         </td>
     </tr>
     <tr>
-        <td><p>Sencha Touch는 더 이상 하이브리드 애플리케이션을 위한 {{site.data.keys.product_adj }} 프로젝트로 가져올 수 없습니다.</p></td>
-        <td><p>더 이상 사용되지 않습니다. {{site.data.keys.product_adj }} 하이브리드 애플리케이션은 Apache Cordova를 사용하여 개발되었고 {{site.data.keys.product_adj }} 기능은 Cordova 플러그인으로 제공되었습니다. Sencha Touch 문서를 참조하여 Sencha Touch 및 Cordova를 통합하십시오. </p>
+        <td><p>Sencha Touch는 더 이상 하이브리드 애플리케이션을 위한 {{ site.data.keys.product_adj }} 프로젝트로 가져올 수 없습니다.</p></td>
+        <td><p>더 이상 사용되지 않습니다. {{ site.data.keys.product_adj }} 하이브리드 애플리케이션은 Apache Cordova를 사용하여 개발되었고 {{ site.data.keys.product_adj }} 기능은 Cordova 플러그인으로 제공되었습니다. Sencha Touch 문서를 참조하여 Sencha Touch 및 Cordova를 통합하십시오. </p>
         </td>
     </tr>
     <tr>
@@ -51,7 +49,7 @@ weight: 3
         <td><p>v8.0에 없습니다. </p></td>
     </tr>
     <tr>
-        <td><p>세션 종속성 구성의 어댑터. V7.1.0의 경우 {{site.data.keys.mf_server }}가 세션 비종속 모드(기본값) 또는 세션 종속 모드에서 작동하도록 구성할 수 있었습니다. v8.0부터는 세션 종속 모드가 더 이상 지원되지 않습니다. 서버는 기본적으로 HTTP 세션에 대해 비종속적이며 관련 구성이 필요하지 않습니다.</p></td>
+        <td><p>세션 종속성 구성의 어댑터. V7.1.0의 경우 {{ site.data.keys.mf_server }}가 세션 비종속 모드(기본값) 또는 세션 종속 모드에서 작동하도록 구성할 수 있었습니다. v8.0부터는 세션 종속 모드가 더 이상 지원되지 않습니다. 서버는 기본적으로 HTTP 세션에 대해 비종속적이며 관련 구성이 필요하지 않습니다.</p></td>
         <td><p>더 이상 사용되지 않습니다. </p></td>
     </tr>
     <tr>
@@ -147,34 +145,34 @@ weight: 3
         <td>v8.0에 없습니다. </td>
     </tr>
     <tr>
-        <td>Cloudant는 v8.0에서 지원되지 않는 것으로 {{site.data.keys.mf_server }}에 대한 데이터베이스로 사용됩니다.</td>
+        <td>Cloudant는 v8.0에서 지원되지 않는 것으로 {{ site.data.keys.mf_server }}에 대한 데이터베이스로 사용됩니다.</td>
         <td>v8.0에 없습니다. </td>
     </tr>
     <tr>
-        <td>위치정보: {{site.data.keys.product }} v8.0에서는 위치정보 지원이 중단되었습니다. 비컨 및 중개자에 대한 REST API가 중단되었습니다. 클라이언트 측 및 서버 측 API WL.Geo와 WL.Device는 중단되었습니다.	</td>
+        <td>위치정보: {{ site.data.keys.product }} v8.0에서는 위치정보 지원이 중단되었습니다. 비컨 및 중개자에 대한 REST API가 중단되었습니다. 클라이언트 측 및 서버 측 API WL.Geo와 WL.Device는 중단되었습니다.	</td>
         <td>더 이상 사용되지 않습니다. 위치 정보에 고유 디바이스 API 또는 써드파티 Cordova 플러그인을 사용하십시오.</td>
     </tr>
     <tr>
-        <td>{{site.data.keys.product_adj }} Data Proxy 기능이 중단되었습니다. Cloudant IMFData 및 CloudantToolkit API 또한 사용되지 않습니다. </td>
+        <td>{{ site.data.keys.product_adj }} Data Proxy 기능이 중단되었습니다. Cloudant IMFData 및 CloudantToolkit API 또한 사용되지 않습니다. </td>
         <td>더 이상 사용되지 않습니다. 사용자 앱에서 IMFData 및 CloudantToolkit API를 대체하는 데 대한 자세한 정보는 IMFData 또는 Cloudant SDK로 Cloudant에 모바일 데이터를 저장하여 앱 마이그레이션을 참조하십시오.</td>
     </tr>
     <tr>
-        <td>IBM Tealeaf SDK는 더 이상 {{site.data.keys.product }}로 번들되지 않습니다.	</td>
+        <td>IBM Tealeaf SDK는 더 이상 {{ site.data.keys.product }}로 번들되지 않습니다.	</td>
         <td>더 이상 사용되지 않습니다. IBM Tealeaf SDK를 사용하십시오. 자세한 정보는 IBM Tealeaf Customer Experience 문서의 <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/AndroidGuide1010/CFs/TLAnddLggFrwkInstandImpl/TealeafAndroidLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-1-0&lang=en">Android 애플리케이션의 Tealeaf 설치 및 구현</a> 및 <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/iOSGuide1010/CFs/TLiOSLggFrwkInstandImpl/TealeafIOSLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-3-1&lang=en">Tealeaf iOS 로깅 프레임워크 설치 및 구현</a>의 내용을 참조하십시오. </td>
     </tr>
     <tr>
-        <td>{{site.data.keys.mf_test_workbench_full }}가 {{site.data.keys.product }}로 번들화되지 않았습니다.</td>
+        <td>{{ site.data.keys.mf_test_workbench_full }}가 {{ site.data.keys.product }}로 번들화되지 않았습니다.</td>
         <td>더 이상 사용되지 않습니다. </td>
     </tr>
     <tr>
-        <td>BlackBerry, Adobe AIR, Windows Silverlight는 {{site.data.keys.product }} v8.0에서 지원되지 않습니다. 해당 플랫폼에 대한 SDK가 제공되지 않습니다.</td>
+        <td>BlackBerry, Adobe AIR, Windows Silverlight는 {{ site.data.keys.product }} v8.0에서 지원되지 않습니다. 해당 플랫폼에 대한 SDK가 제공되지 않습니다.</td>
         <td>더 이상 사용되지 않습니다. </td>
     </tr>
 </table>
 
 ## 서버 측 API 변경
 {: server-side-api-changes }
-서버 측 {{site.data.keys.product_adj }} 애플리케이션을 마이그레이션하려면 API 변경사항을 고려하십시오.  
+서버 측 {{ site.data.keys.product_adj }} 애플리케이션을 마이그레이션하려면 API 변경사항을 고려하십시오.  
 다음 테이블에는 v8.0에서 중단된 서버 측 API 요소, v8.0에서 더 이상 사용되지 않는 서버 측 API 요소 및 제안된 마이그레이션 경로가 나열됩니다. 애플리케이션의 서버 측 마이그레이션에 대한 자세한 정보는 다음을 참조하십시오.  
 
 ### v8.0에서 중단된 JavaScript API 요소 
@@ -249,12 +247,12 @@ weight: 3
 | `com.worklight.adapters.rest.api` 패키지의 `ConfigurationAPI` 인터페이스 | 대신 `com.ibm.mfp.adapter.api` 패키지에서 `ConfigurationAPI` 인터페이스를 사용하십시오.  |
 | `com.worklight.core.auth` 패키지의 `OAuthSecurity` 어노테이션 | 대신 `com.ibm.mfp.adapter.api` 패키지에서 `OAuthSecurity` 어노테이션을 사용하십시오.  | 
 | `com.worklight.wink.extensions` 패키지의 `MFPJAXRSApplication` 클래스 | 대신 `com.ibm.mfp.adapter.api` 패키지에서 `MFPJAXRSApplication` 클래스를 사용하십시오.  |
-| `com.worklight.adapters.rest.api` 패키지의 `WLServerAPI` 인터페이스 | JAX-RS `Context` 어노테이션을 사용하여 {{site.data.keys.product_adj }} API 인터페이스에 직접 액세스하십시오.  |
-| `com.worklight.adapters.rest.api` 패키지의 `WLServerAPIProvider` 클래스 | JAX-RS `Context` 어노테이션을 사용하여 {{site.data.keys.product_adj }} API 인터페이스에 직접 액세스하십시오.  | 
+| `com.worklight.adapters.rest.api` 패키지의 `WLServerAPI` 인터페이스 | JAX-RS `Context` 어노테이션을 사용하여 {{ site.data.keys.product_adj }} API 인터페이스에 직접 액세스하십시오.  |
+| `com.worklight.adapters.rest.api` 패키지의 `WLServerAPIProvider` 클래스 | JAX-RS `Context` 어노테이션을 사용하여 {{ site.data.keys.product_adj }} API 인터페이스에 직접 액세스하십시오.  | 
 
 ## 클라이언트 측 API 변경
 {: #client-side-api-changes }
-다음 API의 변경사항은 {{site.data.keys.product_adj }} 클라이언트 애플리케이션의 마이그레이션과 관련되어 있습니다.   
+다음 API의 변경사항은 {{ site.data.keys.product_adj }} 클라이언트 애플리케이션의 마이그레이션과 관련되어 있습니다.   
 다음 테이블에는 V8.0.0에서 중단된 클라이언트 측 API 요소 및 제안된 마이그레이션 경로가 나열됩니다.
 
 ### JavaScript API
@@ -264,14 +262,14 @@ weight: 3
 | API 요소           | 마이그레이션 경로                           |
 |-----------------------|------------------------------------------|
 | `WL.BusyIndicator`, `WL.OptionsMenu`, `WL.TabBar`, `WL.TabBarItem` | Cordova 플러그인 또는 HTML 5 요소를 사용하십시오.  |
-| `WL.App.close` | {{site.data.keys.product_adj }} 외부에서 이 이벤트를 처리하십시오.  |
+| `WL.App.close` | {{ site.data.keys.product_adj }} 외부에서 이 이벤트를 처리하십시오.  |
 | `WL.App.copyToClipboard()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오.  |
 | `WL.App.openUrl(url, target, options)` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. **참고:** 정보용으로 Cordova **InAppBrowser** 플러그인이 이 기능을 제공합니다.  |
 | `WL.App.overrideBackButton(callback)`, `WL.App.resetBackButton()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. **참고:** 정보용으로 Cordova **backbutton** 플러그인이 이 기능을 제공합니다.  |
 | `WL.App.getDeviceLanguage()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. **참고:** 정보용으로 Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다. | 
 | `WL.App.getDeviceLocale()` | 이 기능을 제공하는 Cordova 플러그인을 사용하십시오. **참고:** 정보용으로 Cordova **cordova-plugin-globalization** 플러그인이 이 기능을 제공합니다. |
 | `WL.App.BackgroundHandler` | 사용자 정의 핸들러 함수를 실행하려면 표준 Cordova 일시정지 이벤트 리스너를 사용하십시오. 개인정보 보호정책을 제공하는 Cordova 플러그인을 사용하여 iOS 및 Android 시스템과 사용자의 스냅샷 또는 화면 캡처를 찍지 않게 하십시오. 자세한 정보는 **[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)**의 설명을 참조하십시오. |
-| `WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` | {{site.data.keys.product }} V8.0.0에서 지원되지 않는 Adobe AIR 플랫폼을 지원하기 위해 기능이 제공되었습니다. |
+| `WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` | {{ site.data.keys.product }} V8.0.0에서 지원되지 않는 Adobe AIR 플랫폼을 지원하기 위해 기능이 제공되었습니다. |
 | `WL.Toast.show(string)` | Toast에 대한 Cordova 플러그인을 사용하십시오.  |
 
 이 API 세트는 v8.0에서 더 이상 지원되지 않습니다.
@@ -307,11 +305,11 @@ weight: 3
 | `WL.Client.isUserAuthenticated(realm)` | 대체 없음 |
 | `WLUserAuth.deleteCertificate(provisioningEntity)` | 대체 없음 | 
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | 대체 없음 |
-| `WL.Client.createChallengeHandler(realmName)` | 사용자 정의 게이트웨이 인증 확인을 처리하기 위해 인증 확인 핸들러를 작성하려면 `WL.Client.createGatewayChallengeHandler(gatewayName)`를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인 처리를 위해 인증 확인 핸들러를 작성하려면 `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`를 사용하십시오. | 
+| `WL.Client.createChallengeHandler(realmName)` | 사용자 정의 게이트웨이 인증 확인을 처리하기 위해 인증 확인 핸들러를 작성하려면 `WL.Client.createGatewayChallengeHandler(gatewayName)`를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 처리를 위해 인증 확인 핸들러를 작성하려면 `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`를 사용하십시오. | 
 | `WL.Client.createWLChallengeHandler(realmName)` | `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`을 사용하십시오. | 
 | `challengeHandler.isCustomResponse()` 여기서 challengeHandler는 `WL.Client.createChallengeHandler()`에서 리턴된 인증 확인 핸들러 오브젝트입니다. | `gatewayChallengeHandler.canHandleResponse()`를 사용하십시오. 여기서 `gatewayChallengeHandler`는 `WL.Client.createGatewayChallengeHandler()`에서 리턴되는 인증확인 핸들러 오브젝트입니다. | 
 | `wlChallengeHandler.processSucccess()` 여기서 `wlChallengeHandler`는 `WL.Client.createWLChallengeHandler()`에서 리턴된 인증 확인 핸들러입니다.  | `securityCheckChallengeHandler.handleSuccess()`를 사용하십시오. 여기서 `securityCheckChallengeHandler`는 `WL.Client.createSecurityCheckChallengeHandler()`에서 리턴되는 인증 확인 핸들러 오브젝트입니다. | 
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우, `WL.Client.createGatewayChallengeHandler()`에서 리턴되는 인증 확인 핸들러 오브젝트를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우, `WL.Client.createSecurityCheckChallengeHandler()`에서 리턴되는 인증 확인 핸들러 오브젝트를 사용하십시오. | 
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우, `WL.Client.createGatewayChallengeHandler()`에서 리턴되는 인증 확인 핸들러 오브젝트를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우, `WL.Client.createSecurityCheckChallengeHandler()`에서 리턴되는 인증 확인 핸들러 오브젝트를 사용하십시오. | 
 | `WL.Client.createProvisioningChallengeHandler()` | 대체가 없습니다. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다.  | 
 
 #### 더 이상 사용되지 않는 JavaScript API
@@ -346,7 +344,7 @@ weight: 3
 | `WLSimpleSharedData.setSharedToken(myName, myValue)`, `WLSimpleSharedData.getSharedToken(myName)`, `WLSimpleSharedData.clearSharedToken(myName)` | 애플리케이션에서 토큰을 공유하는 Android API를 사용하십시오.  |
 | `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | 대체 없음 |
 | `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | `BaseChallengeHandler.cancel()`을 사용하십시오. | 
-| `ChallengeHandler` | 사용자 정의 게이트웨이 인증 확인의 경우 `GatewayChallengeHandler`를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 `SecurityCheckChallengeHandler`를 사용하십시오.  |
+| `ChallengeHandler` | 사용자 정의 게이트웨이 인증 확인의 경우 `GatewayChallengeHandler`를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 `SecurityCheckChallengeHandler`를 사용하십시오.  |
 | `WLChallengeHandler` | `SecurityCheckChallengeHandler`를 사용하십시오.  |
 | `ChallengeHandler.isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()`를 사용하십시오.  | 
 | `ChallengeHandler.submitAdapterAuthentication` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 `GatewayChallengeHandler`를 사용하십시오.  |
@@ -375,7 +373,7 @@ weight: 3
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 대체가 없습니다. MFP 클라이언트를 사용하면 순환하여 경로를 재지정할 수 있습니다. | 
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | 더 이상 사용되지 않는 Apache HTTP 클라이언트 종속성으로 인해 제거되었습니다. 요청 및 응답을 완전히 제어하려면 자체 요청을 작성하십시오.  |
 
-#### `com.worklight.androidgap.api` 패키지는 Cordova 앱에 대한 Android 플랫폼 기능을 제공합니다. {{site.data.keys.product }}에서는 Cordova 통합을 수용하도록 여러 변경사항이 작성되었습니다. 
+#### `com.worklight.androidgap.api` 패키지는 Cordova 앱에 대한 Android 플랫폼 기능을 제공합니다. {{ site.data.keys.product }}에서는 Cordova 통합을 수용하도록 여러 변경사항이 작성되었습니다. 
 {: #comworklightandroidgapapi }
 
 | API 요소           | 마이그레이션 경로                           |
@@ -407,10 +405,10 @@ weight: 3
 | `[WLSimpleDataSharing setSharedToken: myName value: myValue]`, `[WLSimpleDataSharing getSharedToken: myName]]`, `[WLSimpleDataSharing clearSharedToken: myName]` | 애플리케이션 사이에서 토큰을 공유하려면 OS API를 사용하십시오. |
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | `BaseChallengeHandler.cancel()`을 사용하십시오. |
 | `BaseProvisioningChallengeHandler` | 대체가 없습니다. 디바이스 프로비저닝은 이제 보안 프레임워크에서 자동으로 처리됩니다.  | 
-| `ChallengeHandler` | 사용자 정의 게이트웨이 인증 확인의 경우 `GatewayChallengeHandler`를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 `SecurityCheckChallengeHandler`를 사용하십시오.  |
+| `ChallengeHandler` | 사용자 정의 게이트웨이 인증 확인의 경우 `GatewayChallengeHandler`를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 `SecurityCheckChallengeHandler`를 사용하십시오.  |
 | `WLChallengeHandler` | `SecurityCheckChallengeHandler`를 사용하십시오.  | 
 | `ChallengeHandler.isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()`를 사용하십시오.  | 
-| `ChallengeHandler.submitAdapterAuthentication` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 `GatewayChallengeHandler`를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 `SecurityCheckChallengeHandler`를 사용하십시오.  |
+| `ChallengeHandler.submitAdapterAuthentication` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 `GatewayChallengeHandler`를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 `SecurityCheckChallengeHandler`를 사용하십시오.  |
 
 ### Windows C# API
 {: #windows-c-apis }
@@ -419,10 +417,10 @@ weight: 3
 
 | API 요소           | 마이그레이션 경로                           |
 |-----------------------|------------------------------------------|
-| `ChallengeHandler` | 사용자 정의 게이트웨이 인증 확인의 경우 `GatewayChallengeHandler`를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 `SecurityCheckChallengeHandler`를 사용하십시오.  |
+| `ChallengeHandler` | 사용자 정의 게이트웨이 인증 확인의 경우 `GatewayChallengeHandler`를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인의 경우 `SecurityCheckChallengeHandler`를 사용하십시오.  |
 | `ChallengeHandler. isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()`를 사용하십시오.  | 
-| `ChallengeHandler.submitAdapterAuthentication` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 `GatewayChallengeHandler`를 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 `SecurityCheckChallengeHandler`를 사용하십시오.  | 
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 `GatewayChallengeHandler.Shouldcancel()`을 사용하십시오. {{site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 `SecurityCheckChallengeHandler.ShouldCancel()`을 사용하십시오.  | 
+| `ChallengeHandler.submitAdapterAuthentication` | 인증 확인 핸들러에서 유사한 로직을 구현하십시오. 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 `GatewayChallengeHandler`를 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 `SecurityCheckChallengeHandler`를 사용하십시오.  | 
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | 사용자 정의 게이트웨이 인증 확인 핸들러의 경우 `GatewayChallengeHandler.Shouldcancel()`을 사용하십시오. {{ site.data.keys.product_adj }} 보안 검사 인증 확인 핸들러의 경우 `SecurityCheckChallengeHandler.ShouldCancel()`을 사용하십시오.  | 
 | `WLAuthorizationManager` | 대신 `WorklightClient.WorklightAuthorizationManager`를 사용하십시오.  | 
 | `WLChallengeHandler` | `SecurityCheckChallengeHandler`를 사용하십시오.  |
 | `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | `SecurityCheckChallengeHandler.ShouldCancel()`을 사용하십시오.  | 

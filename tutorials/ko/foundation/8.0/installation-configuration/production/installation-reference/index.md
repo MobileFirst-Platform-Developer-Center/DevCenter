@@ -249,7 +249,7 @@ Ant 태스크를 사용하여 테이블스페이스 등의 테이블 할당에 �
 
 * 지정된 컨텍스트 루트(기본값 /mfpadmin)에서 관리 서비스 웹 애플리케이션을 선언합니다. 
 * 관리 서비스의 지정된 컨텍스트 루트에서 파생된 컨텍스트 루트에서 라이브 업데이트 서비스 웹 애플리케이션을 선언합니다. 기본값은 /mfpadminconfig입니다. 
-* 관계형 데이터베이스의 경우 데이터 소스를 선언하며 WebSphere Application Server Full 프로파일에서는 관리 서비스에 대한 JDBC 제공자를 선언합니다. 
+* 관계형 데이터베이스의 경우 데이터 소스를 선언하며 WebSphere Application Server 전체 프로파일에서는 관리 서비스에 대한 JDBC 제공자를 선언합니다. 
 * 관리 서비스 및 라이브 업데이트 서비스를 애플리케이션 서버에 배치합니다. 
 * 선택적으로 지정된 컨텍스트 루트(기본값은 /mfpconsole)에서 {{ site.data.keys.mf_console }}을 웹 애플리케이션으로 선언합니다. {{ site.data.keys.mf_console }} 인스턴스가 지정된 경우 Ant 태스크는 해당 관리 서비스와 통신하기 위해 적절한 JNDI 환경 항목을 선언합니다. 예를 들어, 다음과 같습니다. 
 
@@ -281,7 +281,7 @@ Ant 태스크를 사용하여 테이블스페이스 등의 테이블 할당에 �
 
 * 지정된 컨텍스트 루트를 가진 관리 서비스 웹 애플리케이션의 구성을 제거합니다. 그 결과 이 태스크는 해당 애플리케이션에 수동으로 추가된 설정도 제거합니다. 
 * {{ site.data.keys.mf_console }}과 관리 및 라이브 업데이트 서비스의 WAR 파일을 옵션으로 애플리케이션 서버에서 제거합니다. 
-* 관계형 DBMS의 경우 데이터 소스를 제거하며 WebSphere Application Server Full 프로파일에서는 관리 및 라이브 업데이트 서비스에 대한 JDBC 제공자를 제거합니다. 
+* 관계형 DBMS의 경우 데이터 소스를 제거하며 WebSphere Application Server 전체 프로파일에서는 관리 및 라이브 업데이트 서비스에 대한 JDBC 제공자를 제거합니다. 
 * 관계형 DBMS의 경우 관리 및 라이브 업데이트 서비스에서 사용한 데이터베이스 드라이버를 애플리케이션 서버에서 제거합니다. 
 * 연관된 JNDI 환경 항목을 제거합니다. 
 * WebSphere Application Server Liberty 및 Apache Tomcat의 경우 installmobilefirstadmin 호출에 의해 구성된 사용자를 제거합니다. 
@@ -304,7 +304,7 @@ Ant 태스크를 사용하여 테이블스페이스 등의 테이블 할당에 �
 {: #contextroot-and-id }
 **contextroot** 및 **id** 속성은 {{ site.data.keys.mf_console }} 및 관리 서비스의 다른 배치를 구별합니다. 
 
-WebSphere Application Server Liberty 프로파일 및 Tomcat 환경에서는 contextroot 매개변수로도 이 용도를 충족합니다. WebSphere Application Server Full 프로파일 환경에서는 id 속성이 대신 사용됩니다. 이 id 속성이 없으면 컨텍스트 루트가 동일한 두 개의 WAR 파일이 충돌하여 이들 파일이 배치되지 않습니다. 
+WebSphere Application Server Liberty 프로파일 및 Tomcat 환경에서는 contextroot 매개변수로도 이 용도를 충족합니다. WebSphere Application Server 전체 프로파일 환경에서는 id 속성이 대신 사용됩니다. 이 id 속성이 없으면 컨텍스트 루트가 동일한 두 개의 WAR 파일이 충돌하여 이들 파일이 배치되지 않습니다. 
 
 #### environmentId
 {: #environmentid }
@@ -383,7 +383,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 요소                                      | 설명                                             | 개수  |
 |-------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` 또는 `<was>` | WebSphere Application Server에 대한 매개변수입니다. <br/><br/>`<websphereapplicationserver>` 요소(줄여서 `was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server Full 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다.                | 0..1  |
+| `<websphereapplicationserver>` 또는 `<was>` | WebSphere Application Server에 대한 매개변수입니다. <br/><br/>`<websphereapplicationserver>` 요소(줄여서 `was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다.                | 0..1  |
 | `<tomcat>`                                | Apache Tomcat에 대한 매개변수입니다. 	               | 0..1  |
 
 이 요소의 속성 및 내부 요소가 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블에 설명되어 있습니다.   
@@ -409,8 +409,8 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 | 속성                     | 설명                                                              | 필수      | 기본값  | 
 |--------------------------|----------------------------------------------------------------|----------|---------|
 | install                  | 라이브 업데이트 서비스를 설치해야 하는지 여부를 표시합니다. 	| 예 | true |
-| configAdminUser	       | 라이브 업데이트 서비스의 관리자입니다. 	                | 아니오(서버 팜 토폴로지의 경우에는 필수임) |정의되지 않은 경우에는 사용자가 생성됩니다. 서버 팜 토폴로지에서 사용자 이름은 팜의 모든 멤버에 대해 동일해야 합니다.  |
-| configAdminPassword      | 라이브 업데이트 서비스 사용자에 대한 관리자 비밀번호입니다.        | **configAdminUser**에 대해 사용자가 지정된 경우 | 없음. 서버 팜 토폴로지에서 비밀번호는 팜의 모든 멤버에 대해 동일해야 합니다.  |
+| configAdminUser	       | 라이브 업데이트 서비스의 관리자입니다. 	                | 아니오(서버 팜 토폴로지의 경우에는 필수임) |정의되지 않은 경우에는 사용자가 생성됩니다. 서버 팜 토폴로지에서는 팜에 있는 모든 멤버의 사용자 이름이 동일해야 합니다.  |
+| configAdminPassword      | 라이브 업데이트 서비스 사용자에 대한 관리자 비밀번호입니다.        | **configAdminUser**에 대해 사용자가 지정된 경우 | 없음. 서버 팜 토폴로지에서는 팜에 있는 모든 멤버의 비밀번호가 동일해야 합니다.  |
 | createConfigAdminUser	   | 관리자가 누락된 경우 애플리케이션 서버의 기본 레지스트리에서 관리자를 작성할지 여부를 표시합니다.  | 아니오 | true |
 | warFile                  | 라이브 업데이트 서비스 WAR 파일입니다. 	                            | 아니오         | mfp-live-update.war 파일은 mfp-ant-deployer.jar 파일과 동일한 디렉토리에 있습니다.  |
 
@@ -450,7 +450,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 
 | 요소         | 설명                                                        | 개수  |
 |--------------|--------------------------------------------------------- |-------|
-| `<websphereapplicationserver>` 또는 `<was>`	| WebSphere Application Server에 대한 매개변수입니다. <br/><br/><websphereapplicationserver> 요소(줄여서 <was>)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server Full 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다.  | 0..1  | 
+| `<websphereapplicationserver>` 또는 `<was>`	| WebSphere Application Server에 대한 매개변수입니다. <br/><br/><websphereapplicationserver> 요소(줄여서 <was>)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다.  | 0..1  | 
 | `<tomcat>`   | Apache Tomcat에 대한 매개변수입니다.                         | 0..1  |
 
 이 요소의 속성 및 내부 요소가 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블에 설명되어 있습니다.   
@@ -542,7 +542,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 관리
 {: #installmobilefirstpush }
 **installmobilefirstpush** Ant 태스크는 푸시 서비스 WAR 파일을 웹 애플리케이션으로 실행하도록 애플리케이션 서버를 구성합합니다. 이 태스크는 다음과 같은 영향을 미칩니다.
 **/imfpush** 컨텍스트 루트에서 푸시 서비스 웹 애플리케이션을 선언합니다. 컨텍스트 루트는 변경할 수 없습니다.
-관계형 데이터베이스의 경우 데이터 소스를 선언하며 WebSphere Application Server Full 프로파일에서는 푸시 서비스에 대한 JDBC 제공자를 선언합니다.
+관계형 데이터베이스의 경우 데이터 소스를 선언하며 WebSphere Application Server 전체 프로파일에서는 푸시 서비스에 대한 JDBC 제공자를 선언합니다.
 JNDI 환경 항목을 사용하여 푸시 서비스에 대한 구성 특성을 구성합니다. 이 JNDI 환경 항목은 {{ site.data.keys.product_adj }} 권한 부여 서버 및 {{ site.data.keys.mf_analytics }}와의 OAuth 통신(Cloudant가 사용되는 경우에는 Cloudant와의 OAuth 통신)을 구성합니다. 
 
 #### updatemobilefirstpush
@@ -553,7 +553,7 @@ JNDI 환경 항목을 사용하여 푸시 서비스에 대한 구성 특성을 �
 {: #uninstallmobilefirstpush }
 **uninstallmobilefirstpush** Ant 태스크는 이전 **installmobilefirstpush** 실행의 영향을 실행 취소합니다. 이 태스크는 다음과 같은 영향을 미칩니다.
 지정된 컨텍스트 루트를 가진 푸시 서비스 웹 애플리케이션의 구성을 제거합니다. 그 결과 이 태스크는 해당 애플리케이션에 수동으로 추가된 설정도 제거합니다. 옵션으로 애플리케이션 서버에서 푸시 서비스 WAR 파일을 제거합니다.
-관계형 DBMS의 경우 데이터 소스를 제거하며 WebSphere Application Server Full 프로파일에서는 푸시 서비스에 대한 JDBC 제공자를 제거합니다.
+관계형 DBMS의 경우 데이터 소스를 제거하며 WebSphere Application Server 전체 프로파일에서는 푸시 서비스에 대한 JDBC 제공자를 제거합니다.
 연관된 JNDI 환경 항목을 제거합니다. 
 
 ### 속성 및 요소
@@ -631,7 +631,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 
 | 요소                                  | 설명                                                | 개수  |
 |---------------------------------------|--------------------------------------------------|-------|
-| <websphereapplicationserver> 또는 <was>	| WebSphere Application Server에 대한 매개변수입니다.  | `<websphereapplicationserver>` 요소(줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server Full 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다.  | 0..1 |
+| <websphereapplicationserver> 또는 <was>	| WebSphere Application Server에 대한 매개변수입니다.  | `<websphereapplicationserver>` 요소(줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다.  | 0..1 |
 | `<tomcat>` | Apache Tomcat에 대한 매개변수입니다.  | 0..1 |
 
 이 요소의 속성 및 내부 요소가 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments)의 테이블에 설명되어 있습니다. 
@@ -730,7 +730,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 
 * 지정된 컨텍스트 루트(기본값은 /mfp)에서 {{ site.data.keys.product_adj }} 웹 애플리케이션을 선언합니다. 
 * 애플리케이션 서버에 런타임 WAR 파일을 배치합니다. 
-* 데이터 소스를 선언하고 WebSphere Application Server Full 프로파일에서는 런타임에 대한 JDBC 제공자를 선언합니다. 
+* 데이터 소스를 선언하고 WebSphere Application Server 전체 프로파일에서는 런타임에 대한 JDBC 제공자를 선언합니다. 
 * 애플리케이션 서버에서 데이터베이스 드라이버를 배치합니다. 
 * JNDI 환경 항목을 통해 {{ site.data.keys.product_adj }} 구성 특성을 설정합니다. 
 * 선택적으로 {{ site.data.keys.product_adj }} JNDI 환경 항목을 설정하여 애플리케이션 서버를 런타임에 대한 서버 팜 멤버로 구성합니다. 
@@ -745,7 +745,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 
 * 지정된 컨텍스트 루트를 가진 {{ site.data.keys.product_adj }} 웹 애플리케이션 구성을 제거합니다. 이 태스크는 해당 애플리케이션에 수동으로 추가되는 설정도 제거합니다. 
 * 애플리케이션 서버에서 런타임 WAR 파일을 제거합니다. 
-* 데이터 소스를 제거하며 WebSphere Application Server Full 프로파일에서는 런타임에 대한 JDBC 제공자를 제거합니다. 
+* 데이터 소스를 제거하며 WebSphere Application Server 전체 프로파일에서는 런타임에 대한 JDBC 제공자를 제거합니다. 
 * 연관된 JNDI 환경 항목을 제거합니다. 
 
 ### 속성 및 요소
@@ -764,7 +764,7 @@ JNDI 특성에 대한 자세한 정보는 [{{ site.data.keys.mf_server }} 푸시
 {: #contextroot-and-id-1 }
 **contextroot** 및 **id** 속성은 다른 {{ site.data.keys.product_adj }} 프로젝트를 구별합니다. 
 
-WebSphere Application Server Liberty 프로파일 및 Tomcat 환경에서는 contextroot 매개변수로도 이 용도를 충족합니다. WebSphere Application Server Full 프로파일 환경에서는 id 속성이 대신 사용됩니다. 
+WebSphere Application Server Liberty 프로파일 및 Tomcat 환경에서는 contextroot 매개변수로도 이 용도를 충족합니다. WebSphere Application Server 전체 프로파일 환경에서는 id 속성이 대신 사용됩니다. 
 
 #### environmentId
 {: #environmentid-1 }
@@ -801,7 +801,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | `<websphereapplicationserver>` 또는 `<was>`  | WebSphere Application Server에 대한 매개변수입니다. 	| 0..1  |
 | `<tomcat>`                                 | Apache Tomcat에 대한 매개변수입니다.                 | 0..1  |
 
-`<websphereapplicationserver>` 요소(줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server Full 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다. `<websphereapplicationserver>` 요소는 다음과 같은 속성을 가지고 있습니다. 
+`<websphereapplicationserver>` 요소(줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core 및 WebSphere Application Server Liberty Network Deployment도 지원됩니다. `<websphereapplicationserver>` 요소는 다음과 같은 속성을 가지고 있습니다. 
 
 | 속성            | 설명                                                      | 필수                      | 기본값  | 
 |-----------------|--------------------------------------------------------|--------------------------|---------|
@@ -811,7 +811,7 @@ WebSphere Application Server에서 사용되는 값을 가중치로 지정하여
 | password        | WebSphere Application Server 관리자 비밀번호입니다.    | 아니오  |         | 
 | libertyEncoding |	WebSphere Application Server Liberty에 대한 데이터 소스 비밀번호를 인코딩하는 알고리즘입니다. 가능한 값은 없음, xor 및 aes입니다. xor 또는 aes 인코딩이 사용되는지 여부에 관계없이 명확한 비밀번호가 인수로 securityUtility 프로그램에 전달되며 이는 외부 프로세스를 통해 호출됩니다. ps 명령을 사용하거나 UNIX 운영 체제의 /proc 파일 시스템에서 비밀번호를 볼 수 있습니다.                                                          | 아니오                       |	xor     |
 | jeeVersion      |	Liberty 프로파일용입니다. JEE6 웹 프로파일 또는 JEE7 웹 프로파일의 기능을 설치할지 여부를 지정합니다. 가능한 값은 6, 7 또는 auto입니다. | 아니오 | auto |
-| configureFarm   |	WebSphere Application Server Liberty 및 WebSphere Application Server Full 프로파일용입니다(WebSphere Application Server Network Deployment 에디션 및 Liberty Collective용이 아님). 서버가 서버 팜 멤버인지 여부를 지정합니다. 가능한 값은 true 또는 false입니다.  | 아니오	      | false   |
+| configureFarm   |	WebSphere Application Server Liberty 및 WebSphere Application Server 전체 프로파일용입니다(WebSphere Application Server Network Deployment 에디션 및 Liberty Collective용이 아님). 서버가 서버 팜 멤버인지 여부를 지정합니다. 가능한 값은 true 또는 false입니다.  | 아니오	      | false   |
 | farmServerId    |	서버 팜에서 서버를 고유하게 식별하는 문자열입니다. {{ site.data.keys.mf_server }} 관리 서비스 및 이와 통신하는 모든 {{ site.data.keys.product_adj }} 런타임은 동일한 값을 공유해야 합니다.                                                                 | 예                      |	없음    |
 
 이 요소는 단일 서버 배치를 위해 다음 요소를 지원합니다. 
@@ -1083,7 +1083,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 `<installApplicationCenter>` 태스크는 Application Center 서비스 WAR 파일을 웹 애플리케이션으로 실행하고 Application Center 콘솔을 설치하도록 애플리케이션 서버를 구성합니다. 이 태스크는 다음과 같은 영향을 미칩니다. 
 
 * /applicationcenter 컨텍스트 루트에서 Application Center 서비스 웹 애플리케이션을 선언합니다. 
-* 데이터 소스를 선언하며 WebSphere Application Server Full 프로파일에서는 Application Center 서비스에 대한 JDBC 제공자도 선언합니다. 
+* 데이터 소스를 선언하며 WebSphere Application Server 전체 프로파일에서는 Application Center 서비스에 대한 JDBC 제공자도 선언합니다. 
 * 애플리케이션 서버에 Application Center 서비스 웹 애플리케이션을 배치합니다. 
 * /appcenterconsole 컨텍스트 루트에서 Application Center 콘솔을 웹 애플리케이션으로 선언합니다. 
 * 애플리케이션 서버에 Application Center 콘솔 WAR 파일을 배치합니다. 
@@ -1108,7 +1108,7 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 * **/applicationcenter** 컨텍스트 루트를 가진 Application Center 서비스 웹 애플리케이션의 구성을 제거합니다. 그 결과 이 태스크는 해당 애플리케이션에 수동으로 추가된 설정도 제거합니다. 
 * 애플리케이션 서버에서 Application Center 서비스 및 콘솔 WAR 파일을 모두 제거합니다. 
-* 데이터 소스를 제거하며 WebSphere Application Server Full 프로파일에서는 Application Center 서비스에 대한 JDBC 제공자도 제거합니다. 
+* 데이터 소스를 제거하며 WebSphere Application Server 전체 프로파일에서는 Application Center 서비스에 대한 JDBC 제공자도 제거합니다. 
 * 애플리케이션 서버에서 Application Center 서비스가 사용한 데이터베이스 드라이버를 제거합니다. 
 * 연관된 JNDI 환경 항목을 제거합니다. 
 * `<installApplicationCenter>` 호출에 의해 구성되는 사용자를 제거합니다. 
@@ -1119,14 +1119,14 @@ Liberty 서버에 대해 사용 가능한 특성에 대한 자세한 정보는 [
 
 | 속성         | 설명                                          | 필수      | 기본값  | 
 |--------------|--------------------------------------------|----------|---------|
-| id	       | WebSphere Application Server Full 프로파일에서 다른 배치를 구별합니다. 	| 아니오 | 비어 있음 |
+| id	       | WebSphere Application Server 전체 프로파일에서 다른 배치를 구별합니다. 	| 아니오 | 비어 있음 |
 | servicewar   | Application Center 서비스에 대한 WAR 파일입니다.  | 아니오 | applicationcenter.war 파일은 Application Center 콘솔 디렉토리 **product_install_dir/ApplicationCenter/console**에 있습니다.  |
 | shortcutsDir | 바로 가기를 배치하는 디렉토리입니다.  | 아니오 | 없음 |
 | aaptDir | Android SDK 플랫폼 도구 패키지의 aapt 프로그램이 포함된 디렉토리입니다.  | 아니오 | 없음 |
 
 #### id
 {: #id-1 }
-WebSphere Application Server Full 프로파일 환경에서 **id** 속성은 Application Center 콘솔 및 서비스의 서로 다른 배치를 구별하는 데 사용됩니다. 이 **id** 속성을 사용하지 않으면 동일한 컨텍스트 루트를 가진 두 개의 WAR 파일은 충돌하므로 배치되지 않습니다. 
+WebSphere Application Server 전체 프로파일 환경에서 **id** 속성은 Application Center 콘솔 및 서비스의 서로 다른 배치를 구별하는 데 사용됩니다. 이 **id** 속성을 사용하지 않으면 동일한 컨텍스트 루트를 가진 두 개의 WAR 파일은 충돌하므로 배치되지 않습니다. 
 
 #### servicewar
 {: #servicewar-1 }
@@ -1167,7 +1167,7 @@ Application Center 서비스 WAR 파일에 대해 다른 디렉토리를 지정�
 
 | 요소              | 설명          	                            | 개수  | 
 |-------------------|-------------------------------------------|-------|
-| **websphereapplicationserver** 또는 **was**	| WebSphere Application Server에 대한 매개변수입니다. `<websphereapplicationserver>` 요소(줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server Full 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core도 지원됩니다. Application Center의 경우 Liberty Collective는 지원되지 않습니다.  | 0..1 | 
+| **websphereapplicationserver** 또는 **was**	| WebSphere Application Server에 대한 매개변수입니다. `<websphereapplicationserver>` 요소(줄여서 `<was>`)는 WebSphere Application Server 인스턴스를 나타냅니다. WebSphere Application Server 전체 프로파일(Base 및 Network Deployment)이 지원되므로 WebSphere Application Server Liberty Core도 지원됩니다. Application Center의 경우 Liberty Collective는 지원되지 않습니다.  | 0..1 | 
 | tomcat            | Apache Tomcat에 대한 매개변수입니다.  | 0..1 |
 
 이 요소의 속성 및 내부 요소가 [{{ site.data.keys.product_adj }} 런타임 환경 설치를 위한 Ant 태스크](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) 페이지의 테이블에 설명되어 있습니다. 
@@ -1488,12 +1488,12 @@ ElasticSearch 클러스터에서 각 샤드에 대해 작성할 복제본의 수
 |----------------------------------------------------------|---------------------------|-------------------------|---------------------------|-----------------------------|
 | 데이터베이스 관리자 신임 정보를 사용하여 데이터베이스 작성 | create-database-derby.xml | create-database-db2.xml | create-database-mysql.xml | create-database-oracle.xml
 | Liberty에 {{ site.data.keys.mf_server }} 설치	                   | configure-liberty-derby.xml | configure-liberty-db2.xml | configure-liberty-mysql.xml | (MySQL에 대한 참고 참조) | configure-liberty-oracle.xml |
-| WebSphere Application Server Full 프로파일에 {{ site.data.keys.mf_server }} 설치(단일 서버) |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml(MySQL에 대한 참고 참조) | configure-was-oracle.xml |
+| WebSphere Application Server 전체 프로파일에 {{ site.data.keys.mf_server }} 설치(단일 서버) |	configure-was-derby.xml | configure-was-db2.xml | configure-was-mysql.xml(MySQL에 대한 참고 참조) | configure-was-oracle.xml |
 | WebSphere Application Server Network Deployment에 {{ site.data.keys.mf_server }} 설치(구성 파일에 대한 참고 참조) | configure-wasnd-cluster-derby.xml, configure-wasnd-server-derby.xml, configure-wasnd-node-derby.xml. configure-wasnd-cell-derby.xml | configure-wasnd-cluster-db2.xml, configure-wasnd-server-db2.xml, configure-wasnd-node-db2.xml, configure-wasnd-cell-db2.xml | configure-wasnd-cluster-mysql.xml(MySQL에 대한 참고 참조), configure-wasnd-server-mysql.xml(MySQL에 대한 참고 참조), configure-wasnd-node-mysql.xml(MySQL에 대한 참고 참조), configure-wasnd-cell-mysql.xml | configure-wasnd-cluster-oracle.xml, configure-wasnd-server-oracle.xml, configure-wasnd-node-oracle.xml, configure-wasnd-cell-oracle.xml |
 | Apache Tomcat에 {{ site.data.keys.mf_server }} 설치	           | configure-tomcat-derby.xml | configure-tomcat-db2.xml | configure-tomcat-mysql.xml | configure-tomcat-oracle.xml |
 | Liberty Collective에 {{ site.data.keys.mf_server }} 설치	       | 관련 없음              | configure-libertycollective-db2.xml | configure-libertycollective-mysql.xml | configure-libertycollective-oracle.xml |
 
-**MySQL에 대한 참고:** WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server Full 프로파일과 조합된 MySQL은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 WebSphere Application Server 지원 설명서를 참조하십시오. IBM DB2 또는 WebSphere Application Server에서 지원하는 다른 데이터베이스를 사용하여 IBM 지원 센터에서 완전히 지원하는 구성을 활용해 보십시오. 
+**MySQL에 대한 참고:** WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일과 조합된 MySQL은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 WebSphere Application Server 지원 설명서를 참조하십시오. IBM DB2 또는 WebSphere Application Server에서 지원하는 다른 데이터베이스를 사용하여 IBM 지원 센터에서 완전히 지원하는 구성을 활용해 보십시오. 
 
 **WebSphere Application Server Network Deployment용 구성 파일에 대한 참고:** **wasnd**에 대한 구성 파일에는 **cluster**, **node**, **server** 또는 **cell**로 설정할 수 있는 범위가 포함되어 있습니다. 예를 들어, **configure-wasnd-cluster-derby.xml**의 경우 범위는 **cluster**입니다. 이 범위 유형은 다음과 같이 배치 대상을 정의합니다. 
 
@@ -1512,11 +1512,11 @@ ElasticSearch 클러스터에서 각 샤드에 대해 작성할 복제본의 수
 {: #step-1 }
 적절한 샘플 구성 파일을 선택하십시오. 다음과 같은 XML 파일이 제공됩니다. 이 파일을 다음 단계에서는 **configure-file.xml**이라고 합니다. 
 
-| 태스크 | 애플리케이션 서버 |
+| 태스크 | Application server |
 |------|--------------------|
 | WebSphere Application Server Liberty 프로파일에 {{ site.data.keys.mf_analytics }} 서비스 및 콘솔 설치 | configure-liberty-analytics.xml | 
 | Apache Tomcat에 {{ site.data.keys.mf_analytics }} 서비스 및 콘솔 설치 | configure-tomcat-analytics.xml | 
-| WebSphere Application Server Full 프로파일에 {{ site.data.keys.mf_analytics }} 서비스 및 콘솔 설치 | configure-was-analytics.xml | 
+| WebSphere Application Server 전체 프로파일에 {{ site.data.keys.mf_analytics }} 서비스 및 콘솔 설치 | configure-was-analytics.xml | 
 | WebSphere Application Server Network Deployment에 {{ site.data.keys.mf_analytics }} 서비스 및 콘솔 설치(단일 서버) | configure-wasnd-server-analytics.xml | 
 | WebSphere Application Server Network Deployment에 {{ site.data.keys.mf_analytics }} 서비스 및 콘솔 설치(셀) | configure-wasnd-cell-analytics.xml | 
 | WebSphere Application Server Network Deployment에 {{ site.data.keys.mf_analytics }} 서비스 및 콘솔 설치(노드) | configure-wasnd-node.xml | 
@@ -1532,7 +1532,7 @@ wasnd에 대한 구성 파일에는 **cluster**, **node**, **server** 또는 **c
 
 ### 2단계
 {: #step-2 }
-샘플 파일의 파일 액세스 권한을 가능하면 제한적으로 변경하십시오. 3단계에서는 일부 비밀번호를 제공해야 합니다. 동일한 컴퓨터의 다른 사용자가 이 비밀번호를 알지 못하게 해야 하는 경우에는 본인 이외의 사용자에 대해 파일의 읽기 권한을 제거해야 합니다. 다음 예와 같이 명령을 사용할 수 있습니다. 
+샘플 파일의 파일 액세스 권한을 가능하면 제한적으로 변경하십시오. 3단계에서는 일부 비밀번호를 제공해야 합니다. 동일한 컴퓨터의 다른 사용자가 이러한 비밀번호를 모르게 하려면 본인 외의 사용자에 대해 파일의 읽기 권한을 제거해야 합니다. 다음 예와 같이 명령을 사용할 수 있습니다. 
 
 UNIX의 경우: `chmod 600 configure-file.xml`
 Windows의 경우: `cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`

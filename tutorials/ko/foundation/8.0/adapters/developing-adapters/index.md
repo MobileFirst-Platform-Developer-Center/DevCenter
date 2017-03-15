@@ -46,7 +46,7 @@ weight: 5
     - **아키타입 추가**를 클릭하고 다음 세부사항을 제공하십시오.
         - **아키타입 그룹 ID**: `com.ibm.mfp`
         - **아키타입 아티팩트 ID**: `adapter-maven-archetype-java`, `adapter-maven-archetype-http` 또는 `adapter-maven-archetype-sql`
-        - **아키타입 버전**: `8.0.2016061011` ([Maven Central](http://search.maven.org/#search%7Cga%7C1%7Cibmmobilefirstplatformfoundation)에서 사용 가능한 최신 버전을 찾을 수 있음)
+        - **아키타입 버전**: [Maven Central](http://search.maven.org/#search%7Cga%7C1%7Ccom.ibm.mfp)에서 사용 가능한 최신 버전을 찾을 수 있음 
 
     ![어댑터 Maven 프로젝트를 Eclipse에서 작성하는 방법을 보여주는 이미지](create-an-archetype.png)
 

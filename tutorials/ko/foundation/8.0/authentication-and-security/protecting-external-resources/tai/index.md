@@ -11,7 +11,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-{{ site.data.keys.product_full }}은 [IBM WebSphere의 신뢰 연관 인터셉터](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita)를 통한 외부 자원의 인증을 용이하게 하기 위해 Java 라이브러리를 제공합니다. 
+{{ site.data.keys.product_full }}은 [IBM WebSphere's Trust Association Interceptors](https://www.ibm.com/support/knowledgecenter/SSHRKX_8.5.0/mp/security/sec_ws_tai.dita)를 통한 외부 자원의 인증을 용이하게 하기 위해 Java 라이브러리를 제공합니다. 
 
 Java 라이브러리는 JAR 파일(**com.ibm.mfp.oauth.tai-8.0.0.jar**)로서 제공됩니다. 
 
@@ -108,7 +108,7 @@ servlet-2.x를 사용 중인 경우 보안 역할을 사용자의 web.xml 파일
 
 ## TAI로부터 토큰 자체 점검 데이터 사용
 {: #using-the-token-introspection-data-from-the-tai }
-사용자의 자원에서, TAI가 인터셉트하고 유효성 검증한 토큰 정보에 액세스하고자 할 수 있습니다. [API 참조](../../../api/java-token-validator) 토큰에 있는 데이터 목록을 찾을 수 있습니다. 이 데이터를 얻으려면 [WSSubject API]를 사용하십시오(http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html). 
+사용자의 자원에서, TAI가 인터셉트하고 유효성 검증한 토큰 정보에 액세스하고자 할 수 있습니다. 토큰에서 발견된 데이터 목록은 [API 참조서](../../../api/java-token-validator)에서 찾을 수 있습니다. 이 데이터를 얻으려면 [WSSubject API](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_sec_apis.html)를 사용하십시오. 
 
 ```java
 Map<String, String> credentials = WSSubject.getCallerSubject().getPublicCredentials(Hashtable.class).iterator().next();

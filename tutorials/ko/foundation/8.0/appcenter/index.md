@@ -3,12 +3,12 @@ layout: tutorial
 title: Application Center
 relevantTo: [ios,android,windows,javascript]
 show_children: true
-weight: 12
+weight: 13
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-용도, 여러 컴포넌트 및 기능, 콘솔 및 클라이언트 사용 방법 등 {{site.data.keys.mf_app_center_full }}에 대해 학습하십시오. 
+용도, 여러 컴포넌트 및 기능, 콘솔 및 클라이언트 사용 방법 등 {{ site.data.keys.mf_app_center_full }}에 대해 학습하십시오. 
 
 모바일 디바이스 판매는 이제 개인용 컴퓨터의 판매를 앞지르고 있습니다. 따라서 모바일 애플리케이션이 비즈니스에 매우 중요해졌습니다.   
 Application Center는 조직 내에서 모바일 애플리케이션을 쉽게 공유할 수 있도록 지원하는 도구입니다. 
@@ -25,7 +25,7 @@ Application Center를 엔터프라이즈 애플리케이션 저장소로 사용�
 * [특정 플랫폼 요구사항](#specific-platform-requirements)
 * [일반 아키텍처](#general-architecture)
 * [예비 정보](#preliminary-information)
-* [다음 단계](#whats-next)
+* [다음 내용](#whats-next)
 
 ## Application Center의 개념
 {: #concept-of-application-center }
@@ -43,7 +43,7 @@ Windows Phone의 경우, 앱 패키지(.appx) 파일 형식(유니버셜 앱 형
 
 Windows Phone 7과 Windows RT 및 BlackBerry OS는 현재 Application Center 버전에서는 지원하지 않습니다. 
 
-Application Center는 모바일 애플리케이션을 관리합니다. {{site.data.keys.product }}의 최상부에 빌드된 애플리케이션을 포함하여 모든 종류의 Android, iOS, Windows Phone 8 또는 Windows 8 애플리케이션을 지원합니다. 
+Application Center는 모바일 애플리케이션을 관리합니다. {{ site.data.keys.product }}의 최상부에 빌드된 애플리케이션을 포함하여 모든 종류의 Android, iOS, Windows Phone 8 또는 Windows 8 애플리케이션을 지원합니다. 
 
 애플리케이션의 개발 프로세스 일부로 Application Center를 사용할 수 있습니다. Application Center의 일반 시나리오는 모바일 애플리케이션을 빌드하는 팀입니다. 개발 팀은 Android, iOS, Windows Phone 또는 Windows 8 애플리케이션의 새 버전을 작성합니다. 개발 팀은 이 새 버전을 확장 팀에서 검토하고 테스트하기를 원합니다. 개발자는 Application Center 콘솔로 이동하여 애플리케이션의 새 버전을 Application Center로 업로드합니다. 이 프로세스의 일부로 개발자는 애플리케이션 버전에 대한 설명을 입력할 수 있습니다. 예를 들어, 설명에는 개발 팀이 이전 버전에서 추가하거나 수정한 요소를 언급할 수 있습니다. 그리고 나면, 새 버전의 애플리케이션을 팀의 다른 구성원들이 사용할 수 있습니다. 
 
@@ -138,13 +138,13 @@ Application Center 콘솔에서 다음 조치를 수행할 수 있습니다.
 
 Application Center는 Android, iOS, Windows Phone 8 및 Windows 8 디바이스용 애플리케이션을 지원합니다. 따라서 모바일 클라이언트는 Android, iOS, Windows Phone 8 및 Windows 8에 대해 별도의 버전으로 제공됩니다. 
 
-Android, iOS 및 Windows Phone 8 모바일 클라이언트는 {{site.data.keys.product }}에서 구축되었습니다. 제품이 설치된 후 다양한 Java 애플리케이션 서버에서 Application Center 서버 측 컴포넌트를 구성하고 Application Center 클라이언트에 대해 {{site.data.keys.product_adj }} 애플리케이션을 빌드하는 방법에 대해 학습하려면, [설치 후 Application Center 구성](../installation-configuration/production/appcenter)을 참조하십시오. 
+Android, iOS 및 Windows Phone 8 모바일 클라이언트는 {{ site.data.keys.product }}에서 구축되었습니다. 제품이 설치된 후 다양한 Java 애플리케이션 서버에서 Application Center 서버 측 컴포넌트를 구성하고 Application Center 클라이언트에 대해 {{ site.data.keys.product_adj }} 애플리케이션을 빌드하는 방법에 대해 학습하려면, [설치 후 Application Center 구성](../installation-configuration/production/appcenter)을 참조하십시오. 
 
 ## 예비 정보
 {: #preliminary-information }
-Application Center를 사용하려면, 보안 설정을 구성하고, {{site.data.keys.product }}이 설치되어 있는 웹 애플리케이션 서버를 시작하고, Application Center 콘솔을 시작한 후 로그인해야 합니다. 
+Application Center를 사용하려면, 보안 설정을 구성하고, {{ site.data.keys.product }}이 설치되어 있는 웹 애플리케이션 서버를 시작하고, Application Center 콘솔을 시작한 후 로그인해야 합니다. 
 
-{{site.data.keys.product }}을 설치하는 경우 Application Center가 지정된 애플리케이션 서버에 자동으로 설치됩니다. 
+{{ site.data.keys.product }}을 설치하는 경우 Application Center가 지정된 애플리케이션 서버에 자동으로 설치됩니다. 
 
 WebSphere Application Server Liberty 프로파일에 Application Center를 설치하는 경우 서버가 **installation-directory/server**에 작성됩니다. 
 
@@ -175,7 +175,7 @@ Application Center 콘솔을 사용하려면, [Application Center 콘솔](appcen
 * Windows Phone 8: [Windows 8 Universal에 클라이언트 설치](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device)를 참조하십시오. 
 * Windows 8: Windows 8용 모바일 클라이언트는 나중에 배포하기 위해 Application Center에 배치되지 않습니다. [Microsoft Windows 8: 프로젝트 빌드](preparations/#microsoft-windows-8-building-the-project)를 참조하십시오. 
 
-## 다음 단계
+## 다음 내용
 {: #whats-next }
 AppCenter 모바일 클라이언트를 사용하려면, 설치된 애플리케이션에 알림 전송, Appcenter 콘솔, 명령행 도구, 모바일 클라이언트에 대해 알아보기 및 로그 레벨 설정 주제에 설명된 프로시저를 따르십시오. 
 

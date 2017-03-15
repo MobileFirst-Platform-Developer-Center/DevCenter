@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 설치 및 구성
-weight: 2
+weight: 3
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
@@ -33,7 +33,7 @@ IBM 설치는 IBM Installation Manager라는 IBM 제품을 기반으로 합니�
 **{{ site.data.keys.mf_server }} 설치에 대한 학습서**  
 지시사항을 수행하여 작동되는 {{ site.data.keys.mf_server }}(WebSphere Application Server Liberty 프로파일에 두 개의 노드가 있는 클러스터)를 작성하여 {{ site.data.keys.mf_server }} 설치 프로세스에 대해 학습하십시오. 설치는 두 가지 방법으로 수행될 수 있습니다. 
 
-* 서버 구성 도구와 [IBM Installation Manager의 그래픽 모드 사용](production/tutorials/graphical-mode)
+* Server Configuration Tool과 [IBM Installation Manager의 그래픽 모드 사용](production/tutorials/graphical-mode)
 * [명령행 도구 사용](production/tutorials/command-line)
 
 이후에는 작동되는 {{ site.data.keys.mf_server }}를 가지게 됩니다. 하지만 특히 보안을 위해 이 서버를 사용하기 전에 이 서버를 구성해야 합니다. 자세한 정보는 [{{ site.data.keys.mf_server }} 구성](production/server-configuration)을 참조하십시오. 

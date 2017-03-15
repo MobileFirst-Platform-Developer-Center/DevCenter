@@ -22,12 +22,12 @@ weight: 11
 
 디바이스 SSO을 사용으로 설정하려는 각 애플리케이션에 대해 이러한 단계를 반복하십시오.
 
-<img class="gifplayer" alt="{{ site.data.keys.mf_console }}" src="enable-device-sso.png"/>에서 디바이스 SSO 구성
+<img class="gifplayer" alt="{{ site.data.keys.mf_console }}에서 디바이스 SSO 구성" src="enable-device-sso.png"/>
 
 필수 구성으로 애플리케이션의 구성 JSON 파일을 수동으로 편집하고 변경사항을 다시 {{ site.data.keys.mf_server }}로 푸시할 수도 있습니다. 
 
 1. **명령행 창**에서 프로젝트의 루트 폴더로 이동하여 `mfpdev app pull`을 실행하십시오. 
-2. **[project-folder\mobilefirst]** 폴더에 있는 구성 파일을 여십시오. 
+2. **[project-folder]\mobilefirst** 폴더에 있는 구성 파일을 여십시오. 
 3. 선택한 사용자 정의 보안 검사에 대해 디바이스 SSO를 사용으로 설정하도록 파일을 편집하십시오. 디바이스 SSO는 사용자 정의 보안 검사의 `enableSSO` 특성을 `true`로 설정하여 활성화됩니다. 특성 구성은 `securityCheckConfigurations` 오브젝트에 중첩된 보안 검사 오브젝트 안에 들어 있습니다. 애플리케이션 디스크립터 파일에서 이 오브젝트를 찾거나, 없으면 새로 작성하십시오. 예: 
 
    ```xml
