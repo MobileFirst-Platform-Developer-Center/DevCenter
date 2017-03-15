@@ -65,7 +65,7 @@ Store the passwords for {{ site.data.keys.mf_server }} users in an encrypted for
 
 ### Application-authenticity validation
 {: #application-authenticity-validation }
-To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf_server }}, enable the application-authenticity security check. Learn more...
+To keep unauthorized mobile applications from accessing the {{ site.data.keys.mf_server }}, [enable the application-authenticity security check](../../../authentication-and-security/application-authenticity).
 
 
 ### Securing a connection to the back end

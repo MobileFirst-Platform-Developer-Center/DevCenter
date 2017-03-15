@@ -22,7 +22,7 @@ A few disclaimers before the instructions how to join.
 Slack:
 
 * Does not replace [opening a PMR](https://www-947.ibm.com/support/servicerequest/Home.action) for IBM support
-* Does not replace [asking a question on Stack Overflow](http://stackoverflow.com/questions/new?show=all&sort=recentlyactive&tags=mobilefirst%20mobilefirst-adapters%20mobilefirst-analytics%20mobilefirst-appcenter%20mobilefirst-cli%20mobilefirst-console%20mobilefirst-installation%20mobilefirst-mtw%20mobilefirst-qa%20mobilefirst-runtime%20mobilefirst-server%20mobilefirst-studio%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20or%20worklight%20worklight-adapters%20worklight-analytics%20worklight-appcenter%20worklight-cli%20worklight-console%20worklight-deployment%20worklight-geolocation%20worklight-mbs%20worklight-mtww%20worklight-rpe%20worklight-runtime%20worklight-security%20worklight-server%20worklight-skins%20worklight-studio%20worklight-waf&mode=any)
+* Does not replace asking a question on [Stack Overflow](http://stackoverflow.com/search?q=%5B*worklight*%5D+or+%5B*mobilefirst*%5D+is%3Aquestion) or [IBM developerWorks Answers](https://developer.ibm.com/answers/search.html?f=&type=question&redirect=search%2Fsearch&sort=relevance&q=mobilefirst+worklight)
 * Does not guarantee real-time support
 
 And a small etiquette request:  
