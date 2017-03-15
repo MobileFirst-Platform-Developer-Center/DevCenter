@@ -50,7 +50,7 @@ Access-blocking has the following characteristics:
 
 ### Device status
 {: #device-status }
-{{ site.data.keys.mf_server }} maintains status information for every device that accesses the server. The possible status values are **Active**, **Lost**, **Stolen**, **Expired**, and **Disabled**. 
+{{ site.data.keys.mf_server }} maintains status information for every device that accesses the server. The possible status values are **Active**, **Lost**, **Stolen**, **Expired**, and **Disabled**.
 
 The default device status is **Active**, which indicates that access from this device is not blocked. You can change the status to **Lost**, **Stolen**, or **Disabled** to block access to your application resources from the device. You can always restore the **Active** status to allow access again. See [Managing device access in {{ site.data.keys.mf_console }}](#managing-device-access-in-mobilefirst-operations-console).
 
@@ -58,7 +58,7 @@ The **Expired** status is a special status that is set by {{ site.data.keys.mf_s
 
 ### Device display name
 {: #device-display-name }
-{{ site.data.keys.mf_server }} identifies devices by a unique device ID, which is assigned by the {{ site.data.keys.product_adj }} client SDK. Setting a display name for a device allows you to search for the device by its display name. Application developers can use the `setDeviceDisplayName` method of the `WLClient` class to set the device display name. See the `WLClient` documentation in [{{ site.data.keys.product_adj }} client-side API](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_ibm_worklight_client_side_api_.html). (The JavaScript class is `WL.Client`.) Java adapter developers (including security-check developers) can also set the device display name by using the `setDeviceDisplayName` method of the com.ibm.mfp.server.registration.external.model `MobileDeviceData` class. See [MobileDeviceData](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html?view=kc).
+{{ site.data.keys.mf_server }} identifies devices by a unique device ID, which is assigned by the {{ site.data.keys.product_adj }} client SDK. Setting a display name for a device allows you to search for the device by its display name. Application developers can use the `setDeviceDisplayName` method of the `WLClient` class to set the device display name. See the `WLClient` documentation in [{{ site.data.keys.product_adj }} client-side API](../../api/client-side-api/javascript/client/). (The JavaScript class is `WL.Client`.) Java adapter developers (including security-check developers) can also set the device display name by using the `setDeviceDisplayName` method of the com.ibm.mfp.server.registration.external.model `MobileDeviceData` class. See [MobileDeviceData](../../api/client-side-api/objc/client/).
 
 ### Managing device access in {{ site.data.keys.mf_console }}
 {: #managing-device-access-in-mobilefirst-operations-console }
@@ -132,7 +132,7 @@ Follow the outlined procedure to configure multiple languages for displaying the
 3. Select **Update Locales**. In the **Upload File** section of the displayed dialog window, select **Upload**, and browse to the location of a CSV file that defines the locales.
 
    Each line in the CSV file contains a pair of comma-separated strings. The first string is the locale code (such as fr-FR for French (France) or en for English), and the second string is the message text in the corresponding language. The specified locale codes must comply with the standards that the mobile operating system uses to specify locales, such as ISO 639-1, ISO 3166-2, and ISO 15924.
-    
+
    > **Note:** To create the CSV file, you must use an editor that supports UTF-8 encoding, such as Notepad.
 
    Following is a sample CSV file that defines the same message for multiple locales:
@@ -145,7 +145,7 @@ Follow the outlined procedure to configure multiple languages for displaying the
    he,האפליקציה חסמומה
    ```
 
-4. In the **Verify notification message** section, you can see a table of the locale codes and messages from your CSV file. Verify the messages, and select **OK**. 
+4. In the **Verify notification message** section, you can see a table of the locale codes and messages from your CSV file. Verify the messages, and select **OK**.
 You can select Edit, at any time, to replace the locales CSV file. You can also use this option to upload an empty CSV file to remove all locales.
 5. Select **Save** to apply your changes.
 
@@ -189,7 +189,7 @@ In the {{ site.data.keys.mf_console }}, you can refer to an audit log of adminis
 
 To access the audit log, click the user name in the header bar and select **About**, click **Additional support information**, and then **Download audit log**.
 
-| Field name | Description | 
+| Field name | Description |
 |------------|-------------|
 | Timestamp	 | Date and time when the record was created. |
 | Type	     | The type of operation. See list of operation types below for the possible values. |
@@ -231,5 +231,3 @@ The following list shows the possible values of Type of operation.
 * deleteTag
 * add runtime
 * delete runtime
-
-
