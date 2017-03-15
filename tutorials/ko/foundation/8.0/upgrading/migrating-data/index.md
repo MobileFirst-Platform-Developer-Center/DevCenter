@@ -9,7 +9,7 @@ weight: 5
 {: #overview }
 모바일 애플리케이션의 데이터를 Cloudant 데이터베이스에 저장할 수 있습니다. Cloudant는 JSON, 전체 텍스트 및 지리공간 데이터와 같은 다양한 유형의 데이터를 처리할 수 있는 고급 NoSQL 데이터베이스입니다. SDK는 Java™, Objective-C 및 Swift에 사용 가능합니다. 
 
-> CloudantToolkit 및 IMFData 프레임워크는 {{site.data.keys.product_full }} v8.0에서 사용되지 않습니다. 
+> CloudantToolkit 및 IMFData 프레임워크는 {{ site.data.keys.product_full }} v8.0에서 사용되지 않습니다. 
 
 * iOS의 경우, CloudantToolkit 및 IMFData 프레임워크 대신 [CDTDatastore](https://github.com/cloudant/CDTDatastore) SDK를 사용하십시오. 
 * Android의 경우, CloudantToolkit 및 IMFData 프레임워크 대신 [Cloudant Sync Android SDK](https://github.com/cloudant/sync-android)를 사용하십시오. Cloudant Sync를 사용하여 원격 데이터 저장소에서 데이터를 논리적으로 지속하고 복제할 수 있습니다. 
@@ -28,7 +28,7 @@ JSONStore에 대한 자세한 정보는 [JSONStore](../../application-developmen
 
 #### 다음으로 이동
 {: #jump-to }
-* [{{site.data.keys.product_adj }}와 Cloudant 보안 통합](#integrating-mobilefirst-and-cloudant-security)
+* [{{ site.data.keys.product_adj }}와 Cloudant 보안 통합](#integrating-mobilefirst-and-cloudant-security)
 * [데이터베이스 작성](#creating-databases)
 * [디바이스의 데이터 암호화](#encrypting-data-on-the-device)
 * [사용자 권한 설정](#setting-user-permissions)
@@ -38,22 +38,22 @@ JSONStore에 대한 자세한 정보는 [JSONStore](../../application-developmen
 * [데이터 조회](#querying-data)
 * [오프라인 스토리지 및 동기화 지원](#supporting-offline-storage-and-synchronization)
 
-## {{site.data.keys.product_adj }}와 Cloudant 보안 통합
+## {{ site.data.keys.product_adj }}와 Cloudant 보안 통합
 {: #integrating-mobilefirst-and-cloudant-security }
 ### 어댑터 샘플
 {: #adapter-sample }
 샘플을 다운로드하려면 샘플: [mfp-bluelist-on-premises](https://github.com/MobileFirst-Platform-Developer-Center/BlueList-On-Premise)를 참조하십시오. 
 
-Bluelist 샘플과 함께 포함된 어댑터를 이해하려면 [Cloudant 보안](https://cloudant.com/for-developers/faq/auth/)과 [{{site.data.keys.product_adj }} 보안 프레임워크](../../authentication-and-security)를 둘 다 이해해야 합니다. 
+Bluelist 샘플과 함께 포함된 어댑터를 이해하려면 [Cloudant 보안](https://cloudant.com/for-developers/faq/auth/)과 [{{ site.data.keys.product_adj }} 보안 프레임워크](../../authentication-and-security)를 둘 다 이해해야 합니다. 
 
 Bluelist 어댑터 샘플의 두 가지 기본 기능은 다음과 같습니다. 
 
-* Cloudant 세션 쿠키에 대해 {{site.data.keys.product_adj }} OAuth 토큰 교환
+* Cloudant 세션 쿠키에 대해 {{ site.data.keys.product_adj }} OAuth 토큰 교환
 * Bluelist 샘플에서 Cloudant에 대해 필요한 관리 요청 수행
 
 샘플은 보안 서버에서 관리 액세스가 필요한 API 요청을 수행하는 방법을 설명합니다. 관리자 신임 정보를 모바일 디바이스에 배치할 수도 있지만 모바일 디바이스로부터의 액세스를 제한하는 것이 더 좋습니다. 
 
-Bluelist 샘플은 {{site.data.keys.product_adj }} 보안을 Cloudant 보안과 통합합니다. 어댑터 샘플은 {{site.data.keys.product_adj }} ID를 Cloudant ID에 맵핑합니다. 모바일 디바이스는 비관리 API 요청을 수행하기 위해 Cloudant 세션 쿠키를 수신합니다. 샘플은 Couch 보안 모델을 사용합니다. 
+Bluelist 샘플은 {{ site.data.keys.product_adj }} 보안을 Cloudant 보안과 통합합니다. 어댑터 샘플은 {{site.data.keys.product_adj }} ID를 Cloudant ID에 맵핑합니다. 모바일 디바이스는 비관리 API 요청을 수행하기 위해 Cloudant 세션 쿠키를 수신합니다. 샘플은 Couch 보안 모델을 사용합니다. 
 
 ### 등록 REST 엔드포인트
 {: #enroll-rest-endpoint }
@@ -61,9 +61,9 @@ Bluelist 샘플은 {{site.data.keys.product_adj }} 보안을 Cloudant 보안과 
 
 ![샘플 통합 다이어그램](SecurityIntegration.jpg)
 
-1. 모바일 디바이스가 {{site.data.keys.mf_server }}에서 {{site.data.keys.product_adj }} OAuth 토큰을 얻습니다. 
+1. 모바일 디바이스가 {{ site.data.keys.mf_server }}에서 {{ site.data.keys.product_adj }} OAuth 토큰을 얻습니다. 
 2. 모바일 디바이스가 어댑터에서 **/enroll** 엔드포인트를 호출합니다. 
-3. 어댑터 샘플이 {{site.data.keys.mf_server }}에 대해 {{site.data.keys.product_adj }} OAuth 토큰을 유효성 검증합니다. 
+3. 어댑터 샘플이 {{ site.data.keys.mf_server }}에 대해 {{ site.data.keys.product_adj }} OAuth 토큰을 유효성 검증합니다. 
 4. 유효한 경우 Cloudant에 대해 관리 API 요청을 수행합니다. 샘플은 **_users** 데이터베이스에서 기존 Cloudant 사용자를 확인합니다. 
     * 해당 사용자가 존재하는 경우 **_users** 데이터베이스에서 Cloudant 사용자 신임 정보를 검색하십시오. 
     * 새 사용자가 전달된 경우, Coudant 관리자 신임 정보를 사용하여 새 Cloudant 사용자를 작성하고 **_users** 데이터베이스에 저장하십시오. 
@@ -76,7 +76,7 @@ Bluelist 샘플은 {{site.data.keys.product_adj }} 보안을 Cloudant 보안과 
 
 ### sessioncookie REST 엔드포인트
 {: #sessioncookie-rest-endpoint }
-만료된 세션 쿠키의 경우, 모바일 디바이스는 Cloudant 세션 쿠키에 대해 유효한 {{site.data.keys.product_adj }} OAuth 토큰을 **/sessioncookie** 엔드포인트와 교환할 수 있습니다. 
+만료된 세션 쿠키의 경우, 모바일 디바이스는 Cloudant 세션 쿠키에 대해 유효한 {{ site.data.keys.product_adj }} OAuth 토큰을 **/sessioncookie** 엔드포인트와 교환할 수 있습니다. 
 
 ## 데이터베이스 작성
 {: #creating-databases }
@@ -264,7 +264,7 @@ manager.remoteStore(name, completionHandler: { (createdStore:CDTStore!, error:NS
    * Podfile을 열고 다음 행을 추가하십시오. 
         
    ##### 이전(IMFData/CloudantToolkit 사용):
-   {: # before-with-imfdata-cloudanttoolkit }    
+   {: #before-with-imfdata-cloudanttoolkit }    
    ```xml
    pod 'IMFDataLocal/SQLCipher'
    ```
@@ -579,7 +579,7 @@ permissionsTask.continueWith(new Continuation<Boolean, Object>() {
 
 ##### 이후(Cloundant Sync 사용):
 {: #after-with-cloudant-sync }
-모바일 디바이스에서는 사용자 권한을 설정할 수 없습니다. Cloudant 대시보드 또는 서버 측 코드를 사용하여 권한을 설정해야 합니다. {{site.data.keys.product_adj }} OAuth 토큰을 Cloudant 보안과 통합하는 방법에 대한 샘플은 [Bluelist 샘플](https://github.ibm.com/MFPSamples/BlueList-On-Premise)을 참조하십시오. 
+모바일 디바이스에서는 사용자 권한을 설정할 수 없습니다. Cloudant 대시보드 또는 서버 측 코드를 사용하여 권한을 설정해야 합니다. {{ site.data.keys.product_adj }} OAuth 토큰을 Cloudant 보안과 통합하는 방법에 대한 샘플은 [Bluelist 샘플](https://github.ibm.com/MFPSamples/BlueList-On-Premise)을 참조하십시오. 
 
 ## 데이터 모델링
 {: #modeling-data }

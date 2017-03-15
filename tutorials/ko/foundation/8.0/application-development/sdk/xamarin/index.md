@@ -61,7 +61,7 @@ Xamarin Studio 또는 Visual Studio를 사용하여 Xamarin 솔루션을 작성�
 ### 설정 프로세스 완료
 {: #completing-the-setup-process }
 #### mfpclient.plist
-{: #mfpclientplist }
+{: #complete-setup-mfpclientplist }
 1. Xamarin iOS 프로젝트를 마우스 오른쪽 단추로 클릭하고 **파일 추가..**를 선택하십시오. 프로젝트의 루트에서 `mfpclient.plist`를 찾으십시오. 프롬프트가 표시되면 **프로젝트에 파일 복사**를 선택하십시오. 
 2. `mfpclient.plist` 파일을 마우스 오른쪽 단추로 클릭하고 **빌드 조치**를 선택하십시오. **컨텐츠**를 선택하십시오. 
 
@@ -104,9 +104,9 @@ using Worklight.Xamarin.Android;
 
 | 특성            | 설명                                                         | 예제 값 |
 |---------------------|---------------------------------------------------------------------|----------------|
-| wlServerProtocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
-| wlServerHost        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
-| wlServerPort        | {{ site.data.keys.mf_server }}의 포트입니다.                                 | 9080           |
+| protocol    | {{ site.data.keys.mf_server }}에 사용되는 통신 프로토콜입니다.             | HTTP 또는 HTTPS  |
+| host        | {{ site.data.keys.mf_server }}의 호스트 이름입니다.                            | 192.168.1.63   |
+| port        | {{ site.data.keys.mf_server }}의 포트입니다.                                 | 9080           |
 | wlServerContext     | {{ site.data.keys.mf_server }}에서 애플리케이션의 컨텍스트 루트 경로입니다.  | /mfp/          |
 | languagePreferences | 클라이언트 SDK 시스템 메시지의 기본 언어를 설정합니다.            | en             |
 

@@ -10,7 +10,7 @@ weight: 4
 
 ## 알려진 제한사항
 {: #known-limitations }
-이 문서에서는 {{site.data.keys.product_full }} 알려진 제한사항에 대한 설명을 여러 위치에서 찾을 수 있습니다. 
+이 문서에서는 {{ site.data.keys.product_full }} 알려진 제한사항에 대한 설명을 여러 위치에서 찾을 수 있습니다. 
 
 * 알려진 제한사항이 특정 기능에 적용되는 경우 이 특정 기능에 대해 설명하는 주제에서 해당 설명을 찾을 수 있습니다. 따라서 해당 제한사항이 기능에 미치는 영향을 즉시 식별할 수 있습니다. 
 * 알려진 제한사항이 일반적인 경우(즉 직접적인 관련이 없는 여러 주제에 적용되는 경우) 여기에서 해당 설명을 찾을 수 있습니다. 
@@ -19,10 +19,10 @@ weight: 4
 {: #globalization }
 전세계에 적용할 앱을 개발 중인 경우 다음 제한사항이 적용됩니다. 
 
-* 부분 번역: 해당 문서를 포함하여 제품 {{site.data.keys.product }} v8.0의 일부는 중국어, 대만어, 프랑스어, 독일어, 이탈리아어, 일본어, 한국어, 포르투갈어(브라질), 러시아어, 스페인어 등의 언어로 번역됩니다. 사용자 대면 텍스트가 번역됩니다.
-* 양방향 지원: {{site.data.keys.product }}에서 생성하는 애플리케이션은 완전히 양방향을 사용하지는 않습니다. 기본적으로 그래픽 사용자 인터페이스(GUI) 요소의 미러링 및 텍스트 방향 제어는 제공되지 않습니다. 그러나 이러한 제한사항으로 인해 생성된 애플리케이션에 대해 강한 종속성은 없습니다. 개발자는 생성된 코드의 수동 조정을 통해 완전한 양방향 호환성을 달성할 수 있습니다. 
+* 부분 번역: 해당 문서를 포함하여 제품 {{ site.data.keys.product }} v8.0의 일부는 중국어, 대만어, 프랑스어, 독일어, 이탈리아어, 일본어, 한국어, 포르투갈어(브라질), 러시아어, 스페인어 등의 언어로 번역됩니다. 사용자 대면 텍스트가 번역됩니다.
+* 양방향 지원: {{ site.data.keys.product }}에서 생성하는 애플리케이션은 완전히 양방향을 사용하지는 않습니다. 기본적으로 그래픽 사용자 인터페이스(GUI) 요소의 미러링 및 텍스트 방향 제어는 제공되지 않습니다. 그러나 이러한 제한사항으로 인해 생성된 애플리케이션에 대해 강한 종속성은 없습니다. 개발자는 생성된 코드의 수동 조정을 통해 완전한 양방향 호환성을 달성할 수 있습니다. 
 
-{{site.data.keys.product }} 코어 기능에 대해 히브리어 번역이 제공되지만 일부 GUI 요소가 미러링되지 않습니다. 
+{{ site.data.keys.product }} 코어 기능에 대해 히브리어 번역이 제공되지만 일부 GUI 요소가 미러링되지 않습니다. 
 
 * 어댑터 이름에 대한 제한조건: 어댑터 이름은 Java 클래스 이름을 작성하는 데 유효한 이름이어야 합니다. 또한 어댑터 이름은 다음 문자로만 구성되어야 합니다. 
     * 대문자 및 소문자(A-Z 및 a-z)
@@ -31,21 +31,21 @@ weight: 4
 
 * 유니코드 문자: BMP(Basic Multilingual Plane) 외의 유니코드 문자는 지원되지 않습니다. 
 * 언어 민감성 및 UNF(Unicode Normalization Form): 다음 유스 케이스에서는 조회 시에 다른 언어로 제대로 실행하기 위한 검색 기능을 위해 언어 민감성(일반 일치, 액센트 구분 안함, 1 대 2 맵핑)을 고려하지 않으며 데이터 검색 시 NFC(Normalization Form C)를 사용하지 않습니다.
-    * {{site.data.keys.mf_analytics_console }}에서 사용자 정의 차트에 대한 사용자 정의 필터를 작성하는 경우. 그러나 이 콘솔의 메시지 특성에서는 NFC(Normalization Form C)를 사용하고 언어 민감성을 고려합니다. 
-    * {{site.data.keys.mf_console }}로부터 애플리케이션 찾아보기 페이지에서 애플리케이션, 브라우저 어댑터 페이지에서 어댑터, 푸시 페이지에서 태그 또는 디바이스 페이지에서 디바이스를 검색할 경우.
+    * {{ site.data.keys.mf_analytics_console }}에서 사용자 정의 차트에 대한 사용자 정의 필터를 작성하는 경우. 그러나 이 콘솔의 메시지 특성에서는 NFC(Normalization Form C)를 사용하고 언어 민감성을 고려합니다. 
+    * {{ site.data.keys.mf_console }}로부터 애플리케이션 찾아보기 페이지에서 애플리케이션, 브라우저 어댑터 페이지에서 어댑터, 푸시 페이지에서 태그 또는 디바이스 페이지에서 디바이스를 검색할 경우.
     * JSONStore API의 찾기 기능의 경우.
 
-### {{site.data.keys.mf_analytics }}
+### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-{{site.data.keys.mf_analytics }}의 제한사항은 다음과 같습니다. 
+{{ site.data.keys.mf_analytics }}의 제한사항은 다음과 같습니다. 
 
 * 보안 분석(보안 검사에 실패한 요청의 데이터)은 지원되지 않습니다. 
-* {{site.data.keys.mf_analytics_console }}에서 숫자 형식은 ICU(International Components for Unicode) 규칙을 따르지 않습니다.
-* {{site.data.keys.mf_analytics_console }}에서 숫자는 사용자가 선호하는 숫자 스크립트를 사용하지 않습니다.
-* {{site.data.keys.mf_analytics_console }}에서 날짜, 시간 및 숫자 형식은 Microsoft Internet Explorer의 로케일이 아니라 운영 체제의 언어 설정에 따라 표시됩니다.
+* {{ site.data.keys.mf_analytics_console }}에서 숫자 형식은 ICU(International Components for Unicode) 규칙을 따르지 않습니다.
+* {{ site.data.keys.mf_analytics_console }}에서 숫자는 사용자가 선호하는 숫자 스크립트를 사용하지 않습니다.
+* {{ site.data.keys.mf_analytics_console }}에서 날짜, 시간 및 숫자 형식은 Microsoft Internet Explorer의 로케일이 아니라 운영 체제의 언어 설정에 따라 표시됩니다.
 * 사용자 정의 차트에 대한 사용자 정의 필터를 작성하는 경우, 숫자 데이터는 기본 10, Western 또는 European 숫자(예: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9)이어야 합니다. 
-* {{site.data.keys.mf_analytics_console }}의 경보 관리 페이지에서 경보를 작성할 때 숫자 데이터는 기본 10, Western 또는 European 숫자(예: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9)여야 합니다.
-* {{site.data.keys.mf_console }}의 분석 페이지는 다음 브라우저를 지원합니다. 
+* {{ site.data.keys.mf_analytics_console }}의 경보 관리 페이지에서 경보를 작성할 때 숫자 데이터는 기본 10, Western 또는 European 숫자(예: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9)여야 합니다.
+* {{ site.data.keys.mf_console }}의 분석 페이지는 다음 브라우저를 지원합니다. 
     * Microsoft Internet Explorer 버전 10 이상 
     * Mozilla Firefox ESR 이상
     * Apple Safari on iOS 버전 7.0 이상 
@@ -53,13 +53,13 @@ weight: 4
 * Analytics 클라이언트 SDK는 Windows에서 사용할 수 없습니다.
 
 
-### {{site.data.keys.mf_app_center_full }} 모바일 클라이언트
+### {{ site.data.keys.mf_app_center_full }} 모바일 클라이언트
 {: #ibm-mobilefirst-foundation-application-center-mobile-client }
 Application Center 모바일 클라이언트는 날짜 형식화와 같이 실행 중인 디바이스의 문화적 규칙을 따릅니다. 보다 엄격한 ICU(International Components for Unicode) 규칙을 항상 따르지는 않습니다. 
 
-### {{site.data.keys.mf_console_full }}
+### {{ site.data.keys.mf_console_full }}
 {: #ibm-mobilefirst-operations-console }
-{{site.data.keys.mf_console }}의 제한사항은 다음과 같습니다. 
+{{ site.data.keys.mf_console }}의 제한사항은 다음과 같습니다. 
 
 * 양방향 언어는 부분적으로만 지원됩니다. 
 * Android 디바이스에 알림 메시지가 전송되는 경우 텍스트 방향이 변경될 수 없습니다. 
@@ -67,15 +67,15 @@ Application Center 모바일 클라이언트는 날짜 형식화와 같이 실�
     * 입력된 첫 번째 문자가 왼쪽에서 오른쪽으로 쓰는 언어인 경우 전체 텍스트 방향은 자동으로 왼쪽에서 오른쪽으로 진행합니다.
 * 문자 순서 및 텍스트 맞춤은 양방향 언어의 문화적 방식과 일치하지 않습니다. 
 * 숫자 필드는 로케일의 형식화 규칙에 따라 숫자 값을 구문 분석하지 않습니다. 콘솔에는 형식화된 숫자가 표시되지만 입력으로는 형식화되지 않은 *원시* 숫자만 허용됩니다. 예: 1 000 또는 1,000이 아닌 1000입니다.
-* {{site.data.keys.mf_console }}의 분석 페이지에서 응답 시간은 하드웨어(RAM, CPU), 누적된 분석 데이터의 수량 및 {{site.data.keys.mf_analytics }} 클러스터링 같은 여러 요인에 따라 다릅니다. {{site.data.keys.mf_analytics }}를 프로덕션에 통합하기 전에 로드를 테스트할 것을 고려하십시오. 
+* {{ site.data.keys.mf_console }}의 분석 페이지에서 응답 시간은 하드웨어(RAM, CPU), 누적된 분석 데이터의 수량 및 {{ site.data.keys.mf_analytics }} 클러스터링 같은 여러 요인에 따라 다릅니다. {{ site.data.keys.mf_analytics }}를 프로덕션에 통합하기 전에 로드를 테스트할 것을 고려하십시오. 
 
-### 서버 구성 도구
+### Server Configuration Tool
 {: #server-configuration-tool }
-다음과 같은 제한사항이 서버 구성 도구에 적용됩니다.
+다음과 같은 제한사항이 Server Configuration Tool에 적용됩니다.
 
 * 서버 구성의 설명 이름에는 시스템 문자 세트에 있는 문자만 포함될 수 있습니다. Windows의 경우, ANSI 문자 세트가 해당됩니다.
 * 작은따옴표 또는 큰따옴표가 포함된 비밀번호는 올바르게 작동하지 않을 수 있습니다. 
-* 서버 구성 도구의 콘솔은 기본 코드 페이지 외부에 있는 문자열을 표시하기 위해 Windows 콘솔과 동일한 다국어 지원 제한사항을 가집니다.
+* Server Configuration Tool의 콘솔은 기본 코드 페이지 외부에 있는 문자열을 표시하기 위해 Windows 콘솔과 동일한 다국어 지원 제한사항을 가집니다.
 
 사용 중인 브라우저, 데이터베이스 관리 시스템 또는 SDK(Software Development Kit)와 같은 다른 제품의 제한사항으로 인해 다국어 지원의 다양한 측면에서 제한사항 또는 이상이 발생할 수도 있습니다. 예: 
 
@@ -91,19 +91,19 @@ Application Center 모바일 클라이언트는 날짜 형식화와 같이 실�
 
 ### 어댑터 및 써드파티 종속성
 {: #adapters-and-third-party-dependencies }
-다음 알려진 문제는 {{site.data.keys.product_adj }} 공유 라이브러리를 포함하여 애플리케이션 서버의 종속성 및 클래스 간 상호작용과 관련이 있습니다. 
+다음 알려진 문제는 {{ site.data.keys.product_adj }} 공유 라이브러리를 포함하여 애플리케이션 서버의 종속성 및 클래스 간 상호작용과 관련이 있습니다. 
 
 #### Apache HttpClient
 {: #apache-httpclient }
-{{site.data.keys.product }}는 내부적으로 Apache HttpClient를 사용합니다. Apache HttpClient 인스턴스를 Java 어댑터에 대한 종속 항목으로 추가하는 경우, 어댑터에서 `AdaptersAPI.executeAdapterRequest, AdaptersAPI.getResponseAsJSON` 및 `AdaptersAPI.createJavascriptAdapterRequest`라는 API가 올바르게 작동하지 않습니다. 이는 API의 서명에 Apache HttpClient 유형이 포함되어 있기 때문입니다. 임시 해결책은 내부 Apache HttpClient를 사용하되 제공된 **pom.xml**에서 종속성 범위를 변경하는 것입니다.
+{{ site.data.keys.product }}는 내부적으로 Apache HttpClient를 사용합니다. Apache HttpClient 인스턴스를 Java 어댑터에 대한 종속 항목으로 추가하는 경우, 어댑터에서 `AdaptersAPI.executeAdapterRequest, AdaptersAPI.getResponseAsJSON` 및 `AdaptersAPI.createJavascriptAdapterRequest`라는 API가 올바르게 작동하지 않습니다. 이는 API의 서명에 Apache HttpClient 유형이 포함되어 있기 때문입니다. 임시 해결책은 내부 Apache HttpClient를 사용하되 제공된 **pom.xml**에서 종속성 범위를 변경하는 것입니다.
 
 #### Bouncy Castle 암호화 라이브러리
 {: #bouncy-castle-cryptographic-library }
-{{site.data.keys.product }}는 Bouncy Castle 자체를 사용합니다. 어댑터에서 다른 버전의 Bouncy Castle을 사용할 수는 있지만 결과를 주의깊게 테스트해야 합니다. 일부 경우 {{site.data.keys.product_adj }} Bouncy Castle 코드로 `javax.security` 패키지 클래스의 특정 정적 싱글톤 필드를 채워 어댑터 내의 Bouncy Castle 버전에서 해당 필드를 기반으로 하는 기능이 사용되는 것을 방지할 수 있습니다. 
+{{ site.data.keys.product }}는 Bouncy Castle 자체를 사용합니다. 어댑터에서 다른 버전의 Bouncy Castle을 사용할 수는 있지만 결과를 주의깊게 테스트해야 합니다. 일부 경우 {{ site.data.keys.product_adj }} Bouncy Castle 코드로 `javax.security` 패키지 클래스의 특정 정적 싱글톤 필드를 채워 어댑터 내의 Bouncy Castle 버전에서 해당 필드를 기반으로 하는 기능이 사용되는 것을 방지할 수 있습니다. 
 
 #### JAR 파일의 Apache CXF 구현
 {: #apache-cxf-implementaton-of-jar-files }
-CXF는 {{site.data.keys.product_adj }} JAX-RS 구현에서 사용되어 어댑터에 Apache CXF JAR 파일을 추가하는 것을 방지합니다. 
+CXF는 {{ site.data.keys.product_adj }} JAX-RS 구현에서 사용되어 어댑터에 Apache CXF JAR 파일을 추가하는 것을 방지합니다. 
 
 ### Application Center 모바일 클라이언트: Android 4.0.x의 새로 고치기 문제
 {: #application-center-mobile-client-refresh-issues-on-android-40x}
@@ -121,9 +121,9 @@ Application Center는 Microsoft Windows Phone 8.0 및 Microsoft Windows Phone 8.
 
 Application Center는 Microsoft Windows Store(데스크탑 애플리케이션)용 앱 패키지(.appx) 파일의 분배만 지원합니다. 
 
-### Ant 또는 명령행을 통한 {{site.data.keys.product_adj }} 애플리케이션 관리
+### Ant 또는 명령행을 통한 {{ site.data.keys.product_adj }} 애플리케이션 관리
 {: #administering-mobilefirst-applications-through-ant-or-through-the-command-line }
-{{site.data.keys.mf_dev_kit_full }}만 다운로드하고 설치하면 **mfpadm** 도구를 사용할 수 없습니다. mfpadm 도구는 설치 프로그램을 사용하여 {{site.data.keys.mf_server }}와 함께 설치됩니다. 
+{{ site.data.keys.mf_dev_kit_full }}만 다운로드하고 설치하면 **mfpadm** 도구를 사용할 수 없습니다. mfpadm 도구는 설치 프로그램을 사용하여 {{ site.data.keys.mf_server }}와 함께 설치됩니다. 
 
 ### 기밀 클라이언트
 {: #confidential-clients }
@@ -135,20 +135,20 @@ V8.0.0에서는 Windows 기반 직접 업데이트가 지원되지 않습니다.
 
 ### FIPS 140-2 기능 제한사항
 {: #fips-104-2-feature-limitations }
-{{site.data.keys.product }}에서 FIPS 140-2 기능을 사용하는 경우 다음과 같은 알려진 제한사항이 적용됩니다. 
-* 이 FIPS 140-2 유효성 검증 모드는 JSONStore 기능에 의해 저장되는 로컬 데이터의 보호(암호화) 및 {{site.data.keys.product_adj }} 클라이언트와 {{site.data.keys.mf_server }} 간 HTTPS 통신의 보호에만 적용됩니다. 
-    * HTTPS 통신의 경우, {{site.data.keys.product_adj }} 클라이언트와 {{site.data.keys.mf_server }} 사이의 통신에서만 클라이언트의 FIPS 140-2 라이브러리를 사용합니다. 기타 서버 또는 서비스로 직접 연결하는 경우 FIPS 140-2 라이브러리를 사용하지 않습니다. 
+{{ site.data.keys.product }}에서 FIPS 140-2 기능을 사용하는 경우 다음과 같은 알려진 제한사항이 적용됩니다. 
+* 이 FIPS 140-2 유효성 검증 모드는 JSONStore 기능에 의해 저장되는 로컬 데이터의 보호(암호화) 및 {{ site.data.keys.product_adj }} 클라이언트와 {{ site.data.keys.mf_server }} 간 HTTPS 통신의 보호에만 적용됩니다. 
+    * HTTPS 통신의 경우, {{ site.data.keys.product_adj }} 클라이언트와 {{ site.data.keys.mf_server }} 사이의 통신에서만 클라이언트의 FIPS 140-2 라이브러리를 사용합니다. 기타 서버 또는 서비스로 직접 연결하는 경우 FIPS 140-2 라이브러리를 사용하지 않습니다. 
 * 이 기능은 iOS 및 Android 플랫폼에서만 지원됩니다.
-    * Android의 경우, 이 기능은 x86 또는 armeabi 아키텍처를 사용하는 디바이스 또는 시뮬레이터에서만 지원됩니다. armv5 또는 armv6 아키텍처를 사용하는 Android에서는 지원되지 않습니다. 사용된 OpenSSL 라이브러리가 Android에서 armv5 또는 armv6의 FIPS 140-2 유효성 검증을 받지 못했기 때문입니다. {{site.data.keys.product_adj }} 라이브러리가 64비트 아키텍처를 지원하더라도 FIPS 140-2는 64비트 아키텍처에서 지원되지 않습니다. 프로젝트에 32비트 고유 NDK 라이브러리가 포함되어 있는 경우에만 FIPS 140-2가 64비트 디바이스에서 실행될 수 있습니다.
+    * Android의 경우, 이 기능은 x86 또는 armeabi 아키텍처를 사용하는 디바이스 또는 시뮬레이터에서만 지원됩니다. armv5 또는 armv6 아키텍처를 사용하는 Android에서는 지원되지 않습니다. 사용된 OpenSSL 라이브러리가 Android에서 armv5 또는 armv6의 FIPS 140-2 유효성 검증을 받지 못했기 때문입니다. {{ site.data.keys.product_adj }} 라이브러리가 64비트 아키텍처를 지원하더라도 FIPS 140-2는 64비트 아키텍처에서 지원되지 않습니다. 프로젝트에 32비트 고유 NDK 라이브러리가 포함되어 있는 경우에만 FIPS 140-2가 64비트 디바이스에서 실행될 수 있습니다.
     * iOS의 경우, 이 기능은 i386, x86_64, armv7, armv7s 및 arm64 아키텍처에서 지원됩니다. 
 * 이 기능은 고유 애플리케이션이 아닌 하이브리드 애플리케이션에서 작동됩니다. 
 * 고유 iOS의 경우 FIPS는 iOS FIPS 라이브러리를 통해 사용할 수 있으며 기본적으로 사용으로 설정되어 있습니다. FIPS 140-2를 사용으로 설정하기 위해 조치를 수행할 필요가 없습니다.
 * 클라이언트에서 사용자 등록 기능 사용은 FIPS 140-2 기능에서 지원되지 않습니다.
 * Application Center 클라이언트는 FIPS 140-2 기능을 지원하지 않습니다. 
 
-### 수정사항 또는 임시 수정사항을 Application Center 또는 {{site.data.keys.mf_server }}에 설치
+### 수정사항 또는 임시 수정사항을 Application Center 또는 {{ site.data.keys.mf_server }}에 설치
 {: #installation-of-a-fix-pack-or-interim-fix-to-the-application-center-or-the-mobilefirst-server }
-Application Center 또는 {{site.data.keys.mf_server }}에 수정사항 또는 임시 수정사항을 적용할 경우, 수동 조작이 필요하며 때때로 애플리케이션을 시스템 종료해야 할 수 있습니다. 
+Application Center 또는 {{ site.data.keys.mf_server }}에 수정사항 또는 임시 수정사항을 적용할 경우, 수동 조작이 필요하며 때때로 애플리케이션을 시스템 종료해야 할 수 있습니다. 
 
 ### JSONStore 지원 아키텍처
 {: #jsonstore-supported-architectures }
@@ -182,23 +182,23 @@ Windows Phone 8.1 환경의 경우, x64 아키텍처가 지원되지 않습니�
 
 ### Microsoft Windows 10 UWP 앱
 {: #microsoft-windows-10-uwp-apps }
-NuGet 패키지를 통해 {{site.data.keys.product_adj }} SDK를 설치한 경우, {{site.data.keys.product_adj }} Windows 10 UWP 앱에서 애플리케이션 인증 기능이 작동하지 않습니다. 임시 해결책으로 개발자가 NuGet 패키지를 다운로드하여 수동으로 {{site.data.keys.product_adj }} SDK 참조를 추가할 수 있습니다.
+NuGet 패키지를 통해 {{ site.data.keys.product_adj }} SDK를 설치한 경우, {{ site.data.keys.product_adj }} Windows 10 UWP 앱에서 애플리케이션 인증 기능이 작동하지 않습니다. 임시 해결책으로 개발자가 NuGet 패키지를 다운로드하여 수동으로 {{ site.data.keys.product_adj }} SDK 참조를 추가할 수 있습니다.
 
 ### 중첩 프로젝트의 경우 CLI와 관련된 예기치 않은 결과가 발생할 수 있음
 {: #nested-projects-can-result-in-unpredictable-results-with-the-cli }
-{{site.data.keys.mf_cli }}를 사용하는 경우 하나의 프로젝트 내에 다른 프로젝트를 중첩시키지 마십시오. 중첩시키는 경우 예상했던 것과 다른 프로젝트에서 조치가 수행될 수 있습니다.
+{{ site.data.keys.mf_cli }}를 사용하는 경우 하나의 프로젝트 내에 다른 프로젝트를 중첩시키지 마십시오. 중첩시키는 경우 예상했던 것과 다른 프로젝트에서 조치가 수행될 수 있습니다.
 
-### {{site.data.keys.mf_mbs }}에서 Cordova 웹 자원 미리보기 
+### {{ site.data.keys.mf_mbs }}에서 Cordova 웹 자원 미리보기 
 {: #previewing-cordova-web-resources-with-the-mobile-browser-simulator }
-{{site.data.keys.mf_mbs }}로 웹 자원을 미리볼 수 있지만 일부 {{site.data.keys.product_adj }} JavaScript API는 시뮬레이터에 의해 지원되지 않습니다. 특히, OAuth 프로토콜은 완전히 지원되지는 않습니다. 하지만 `WLResourceRequest`를 사용하여 어댑터에 대한 호출을 테스트할 수 있습니다. 
+{{ site.data.keys.mf_mbs }}로 웹 자원을 미리볼 수 있지만 일부 {{ site.data.keys.product_adj }} JavaScript API는 시뮬레이터에 의해 지원되지 않습니다. 특히, OAuth 프로토콜은 완전히 지원되지는 않습니다. 하지만 `WLResourceRequest`를 사용하여 어댑터에 대한 호출을 테스트할 수 있습니다. 
 
 ### 확장된 앱 인증의 테스트에 필요한 실제 iOS 디바이스
 {: #physical-ios-device-required-for-testing-extended-app-authenticity }
 iOS 시뮬레이터에 IPA를 설치할 수 없으므로 확장된 앱 인증 기능을 테스트하려면 실제 iOS 디바이스가 필요합니다. 
 
-### {{site.data.keys.mf_server }}의 Oracle 12c 지원
+### {{ site.data.keys.mf_server }}의 Oracle 12c 지원
 {: #support-of-oracle-12c-by-mobilefirst-server }
-{{site.data.keys.mf_server }}의 설치 도구(Installation Manager, 서버 구성 도구, Ant 태스크)는 데이터베이스로 Oracle 12c를 통한 설치를 지원합니다. 
+{{ site.data.keys.mf_server }}의 설치 도구(Installation Manager, Server Configuration Tool, Ant 태스크)는 데이터베이스로 Oracle 12c를 통한 설치를 지원합니다. 
 
 설치 도구로 사용자 및 테이블을 작성할 수 있지만 데이터베이스는 설치 도구를 실행하기 전에 존재해야 합니다. 
 
@@ -221,7 +221,7 @@ Cordova 앱의 cordova-ios 플랫폼을 업데이트하려면 다음 단계를 �
 {: #web-applications }
 웹 애플리케이션은 다음 제한사항을 가집니다.
 - {: #web_app_limit_ms_ie_n_edge }
-Microsoft Internet Explorer(IE) 및 Microsoft Edge, 관리 앱 메시지와 클라이언트 웹 SDK 메시지는 구성된 브라우저 또는 운영 체제 언어 환경 설정에 따라서가 아닌 운영 체제의 영역 형식 설정에 따라 표시됩니다. [다중 언어로 관리자 메시지 정의](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages)도 참조하십시오.
+Microsoft Internet Explorer(IE) 및 Microsoft Edge, 관리 앱 메시지와 클라이언트 웹 SDK 메시지는 구성된 브라우저 또는 운영 체제 표시 언어 환경 설정에 따라서가 아닌 운영 체제의 영역 형식 환경 설정에 따라 표시됩니다. [다중 언어로 관리자 메시지 정의](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages)도 참조하십시오.
 
 ### iOS Cordova 애플리케이션에 대한 WKWebView 지원
 {: #wkwebview-support-for-ios-cordova-applications }
@@ -273,4 +273,4 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 
 ### Android 애플리케이션에서 지원되지 않는 원시 IPv6 주소
 {: #raw-ipv6-address-not-supported-in-android-applications }
-고유 Android 애플리케이션에 대한 **mfpclient.properties**의 구성 동안 {{site.data.keys.mf_server }}가 IPv6 주소를 가진 호스트에 있는 경우, IPV6 주소에 대한 맵핑된 호스트 이름을 사용하여 **mfpclient.properties**의 **wlServerHost** 특성을 구성하십시오. 원시 IPv6 주소를 가진 **wlServerHost** 특성은 {{site.data.keys.mf_server }}에 연결하기 위한 애플리케이션의 시도에 실패합니다.
+고유 Android 애플리케이션에 대한 **mfpclient.properties**의 구성 동안 {{ site.data.keys.mf_server }}가 IPv6 주소를 가진 호스트에 있는 경우, IPV6 주소에 대한 맵핑된 호스트 이름을 사용하여 **mfpclient.properties**의 **wlServerHost** 특성을 구성하십시오. 원시 IPv6 주소를 가진 **wlServerHost** 특성은 {{ site.data.keys.mf_server }}에 연결하기 위한 애플리케이션의 시도에 실패합니다.

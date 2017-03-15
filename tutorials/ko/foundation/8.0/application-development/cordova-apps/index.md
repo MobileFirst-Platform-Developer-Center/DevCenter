@@ -14,7 +14,7 @@ weight: 4
 
 {{ site.data.keys.product_full }}은 여러 Cordova 플러그인 양식으로 SDK를 제공합니다. [Cordova 애플리케이션에 {{ site.data.keys.product }} SDK를 추가](../../application-development/sdk/cordova)하는 방법에 대해 알아보십시오. 
 
-> **참고:** iOS 앱의 스토어 제출/유효성 검증 시 Test Flight 또는 iTunes Connect를 사용하여 생성된 아카이브/IPA 파일로 인해 런타임 충돌/실패가 발생할 수 있습니다. 자세히 알아보려면 [{{ site.data.keys.product_full }}에서 앱 스토어에 제출할 iOS 앱 준비](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) 블로그를 읽으십시오.
+> **참고:** iOS 앱의 스토어 제출/유효성 검증 시 Test Flight 또는 iTunes Connect를 사용하여 생성된 아카이브/IPA 파일로 인해 런타임 충돌/실패가 발생할 수 있습니다. 자세히 알아보려면 [Preparing iOS apps for App Store submission in {{ site.data.keys.product_full }}](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/) 블로그를 읽으십시오.
 
 #### 다음으로 이동:
 {: #jump-to }
@@ -62,7 +62,7 @@ Cordova 플러그인은 [GitHub.com](https://github.com) 및 인기있는 Cordov
 
 **통합 블로그 게시물**
 
-* [MobileFirst Foundation 8.0을 사용한 AngularJS 앱 빌드의 우수 사례](https://mobilefirstplatform.ibmcloud.com/blog/2016/08/11/best-practices-for-building-angularjs-apps-with-mobilefirst-foundation-8.0/)
+* [Best Practices for building AngularJS apps with MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/08/11/best-practices-for-building-angularjs-apps-with-mobilefirst-foundation-8.0/)
 * [Ionic 기반 앱에 {{ site.data.keys.product }} 통합]({{site.baseurl}}/blog/2016/07/19/integrating-mobilefirst-foundation-8-in-ionic-based-apps/)
 * [Ionic 2 기반 앱에 {{ site.data.keys.product }} 통합]({{site.baseurl}}/blog/2016/10/17/integrating-mobilefirst-foundation-8-in-ionic2-based-apps/)
 
@@ -77,7 +77,7 @@ Cordova 플러그인은 [GitHub.com](https://github.com) 및 인기있는 Cordov
 {: #mobilefirst-apis }
 Cordova 애플리케이션에 [{{ site.data.keys.product_adj }} Cordova SDK를 추가](../../application-development/sdk/cordova)하면 {{ site.data.keys.product_adj }} API 메소드 세트를 사용할 수 있습니다. 
 
-> 사용 가능한 API 메소드의 전체 목록은 사용자 문서의 "V8.0.0의 클라이언트 API 변경사항" 주제를 참조하십시오. 
+> 사용 가능한 API 메소드의 전체 목록은 [API 참조서](../../api)를 참조하십시오. 
 
 ## {{ site.data.keys.product_adj }} SDK 시작 플로우
 {: #mobilefirst-sdk-startup-flow }
@@ -93,8 +93,8 @@ Cordova 애플리케이션에 [{{ site.data.keys.product_adj }} Cordova SDK를 �
             <div class="panel-body">
                 <p>Android Studio에서 {{ site.data.keys.product_adj }}를 사용하여 Android용 Cordova 앱의 시작 프로세스를 검토할 수 있습니다. {{ site.data.keys.product_adj }} Cordova 플러그인 <b>cordova-plugin-mfp</b>는 고유 비동기 부트스트랩 시퀀스를 사용합니다. 이 부트스트랩 시퀀스는 Cordova 애플리케이션이 애플리케이션의 기본 HTML 파일을 로드하기 전에 완료되어야 합니다. </p>
                 
-                <p><b>cordova-plugin-mfp</b> 플러그인을 Cordova 애플리케이션에 추가하면 애플리케이션의 <b>AndroidManifest.xml</b> 파일 및 <code>MainActivity</code>를 인스트루먼테이션하여 {{ site.data.keys.product_adj }} 초기화를 수행하도록 <code>CordovaActivity</code> 고유 코드를 확장합니다. </p>
-                
+                <p><b>cordova-plugin-mfp</b> 플러그인을 Cordova 애플리케이션에 추가하면 {{ site.data.keys.product_adj }} 초기화를 수행하기 위해 애플리케이션의 <b>AndroidManifest.xml</b> 파일 및 <code>MainActivity</code> 파일(<code>CordovaActivity</code>를 확장함) 고유 코드가 인스트루먼테이션됩니다. </p>
+        
                 <p>애플리케이션 고유 코드 인스트루먼테이션은 다음과 같이 구성됩니다. </p>
                 <ul>
                     <li>{{ site.data.keys.product_adj }} 초기화를 수행하는 <code>com.worklight.androidgap.api.WL</code> API 호출을 추가합니다. </li>
@@ -392,7 +392,7 @@ Xcode, Android Studio 및 Visual Studio는 Objective C, Swift, C# 및 Java 편�
 
 각 {{ site.data.keys.product_adj }} Cordova 플러그인에서는 각 {{ site.data.keys.product_adj }} JavaScript 파일에 대한 `d.ts` 구성 파일을 제공합니다. `d.ts` 파일 이름은 해당 JavaScript 파일 이름과 일치하며 플러그인 폴더 내에 있습니다. 예를 들어 기본 {{ site.data.keys.product_adj }} SDK의 경우 파일 위치는 **[myapp]\plugins\cordova-plugin-mfp\typings\worklight.d.ts**입니다. 
 
-이 정의는 TypeScript가 지원되는 모든 IDE([TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript))에 자동 완성 기능을 제공합니다. 
+`d.ts` 구성 파일은 TypeScript가 지원되는 모든 IDE([TypeScript Playground](http://www.typescriptlang.org/Playground/), [Visual Studio Code](http://www.microsoft.com/visualstudio/eng), [WebStorm](http://www.jetbrains.com/webstorm/), [WebEssentials](http://visualstudiogallery.msdn.microsoft.com/6ed4c78f-a23e-49ad-b5fd-369af0c2107f), [Eclipse](https://github.com/palantir/eclipse-typescript))에 자동 완성 기능을 제공합니다. 
 
 WebView의 자원(HTML 및 JavaScript 파일)은 **[myapp]\www** 폴더에 있습니다. cordova build 명령으로 프로젝트가 빌드되거나 cordova prepare 명령이 실행되면 이러한 자원은 **[myapp]\platforms\ios\www**, **[myapp]\platforms\android\assets\www** 또는 **[myapp]\platforms\windows\www** 폴더 내의 해당 **www** 폴더에 복사됩니다. 
 

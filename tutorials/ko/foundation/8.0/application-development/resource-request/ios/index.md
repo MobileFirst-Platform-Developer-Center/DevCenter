@@ -198,6 +198,40 @@ request.setHeaderValue("2015-06-06", forName: "birthdate")
 - `sendWithJSON`을 사용하여 본문에서 임의의 사전을 설정할 수 있습니다. 
 - `sendWithData`를 사용하여 본문에서 임의의 `NSData`를 설정할 수 있습니다. 
 
+### completionHandler 및 delegate에 대한 콜백 큐
+응답 수신 중 UI 차단을 방지하기 위해 API의 `sendWithCompletionHandler` 및 `sendWithDelegate` 세트에 대해 completionHandler 블록 또는 delegate를 실행하도록 개인용 콜백 큐를 지정할 수 있습니다. 
+
+#### Objective-C
+
+```objc
+//creating callback queue
+dispatch_queue_t completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL);
+
+//Sending the request with callback queue
+[request sendWithCompletionHandler:completionQueue completionHandler:^(WLResponse *response, NSError *error) {
+    if (error == nil){
+        NSLog(@"%@", response.responseText);
+    } else {
+        NSLog(@"%@", error.description);
+    }
+}];
+```
+#### Swift
+
+```swift
+//creating callback queue
+var completionQueue = dispatch_queue_create("com.ibm.mfp.app.callbackQueue", DISPATCH_QUEUE_SERIAL)
+
+//Sending the request with callback queue
+request.sendWithCompletionHandler(completionQueue) { (response, error) -> Void in
+  if (error == nil){
+      NSLog(@"%@", response.responseText);
+  } else {
+      NSLog(@"%@", error.description);
+    }
+}
+```
+
 ## 응답
 {: #the response }
 `response` 오브젝트에는 응답 데이터가 포함되어 있으며 해당 메소드 및 특성을 사용하여 필수 정보를 검색할 수 있습니다. 일반적으로 사용되는 특성은 `responseText`(문자열), 응답이 JSON 형식인 경우 `responseJSON`(사전) 및 응답의 HTTP 상태인 `status`(정수)입니다. 

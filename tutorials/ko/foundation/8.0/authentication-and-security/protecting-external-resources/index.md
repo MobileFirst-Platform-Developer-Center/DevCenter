@@ -37,7 +37,7 @@ show_children: true
 
 > [기밀 클라이언트](../confidential-clients/) 학습서에서 자세히 알아보십시오. 
 
-{{ site.data.keys.mf_console }}의 **설정 → 기밀 클라이언트** 아래에서 새 항목을 추가하십시오. **클라이언트 ID** 및 **클라이언트 본인확인정보** 값을 선택하십시오. `authorization.introspect`를 **허용 범위**로 설정하십시오. 
+{{ site.data.keys.mf_console }}의 **설정 → 기밀 클라이언트** 아래에서 새 항목을 추가하십시오. **클라이언트 본인확인정보** 및 **API 본인확인정보** 값을 선택하십시오. `authorization.introspect`를 **허용 범위**로 설정하십시오. 
 
 <img class="gifplayer" alt="기밀 클라이언트 구성" src="confidential-client.png"/>
 

@@ -8,10 +8,10 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
+
 보안 검사는 {{ site.data.keys.product_adj }} 보안 프레임워크의 기본 서버 측 빌딩 블록을 구성합니다. 보안 검사는 클라이언트 신임 정보 얻기 및 유효성 검증과 같이 특정 권한 부여 로직을 구현하는 서버 측 엔티티입니다. 0개 이상의 보안 검사에 맵핑되는 범위를 지정하여 자원을 보호합니다. 보호 범위에 대한 모든 보안 검사를 통과한 클라이언트에만 자원에 대한 액세스가 부여되도록 보장합니다. 보안 검사를 사용하면
 {{ site.data.keys.mf_server }}에서 호스팅되는 자원과 외부 자원 서버의 자원 둘 모두에 대한 액세스 권한을 부여할 수 있습니다. 
 
-이론상으로는 Java 및 JavaScript 어댑터 모두 각 정의 파일에서 보안 검사를 정의할 수 있지만 보안 검사가 Java 코드로만 구현된다는 점을 참고하십시오.   
 어댑터는 또한 *자원* 어댑터(클라이언트에 전송할 자원 및 컨텐츠를 제공함을 의미), *보안 검사* 어댑터 또는 **둘 다**가 될 수 있습니다.
 
 > <b>참고:</b> 보안 검사가 어댑터 내에서 구현되면 {{ site.data.keys.product_adj }} 보안 프레임워크 및 어댑터 API가 분리되고 혼합될 수 없습니다. 따라서, 보안 검사 코드에 `AdpatersAPI` 인터페이스와 같은 어댑터 API를 사용할 수 없고 어댑터 자원 코드에 보안 검사 API를 사용할 수 없습니다. 보안 프레임워크의 아키텍처가 모듈식이고 유연하므로 보안 검사의 구현이 특정 자원이나 애플리케이션에 고유하게 종속되지 않습니다. 동일한 보안 검사를 재사용하여 각기 다른 자원을 보호하고, 다양한 권한 부여 플로우에 여러 가지 보안 검사를 조합해서 사용할 수 있습니다. 유연성 강화를 위해서 보안 검사 클래스는 보안 검사 정의 및 {{ site.data.keys.mf_console }}의 런타임 동안 어댑터 레벨로 사용자 정의될 수 있는 구성 특성을 표시합니다. 
@@ -35,10 +35,11 @@ weight: 2
 * [보안 검사 구현](#security-check-implementation)
 * [보안 검사 구성](#security-check-configuration)
 * [사전 정의된 보안 검사](#predefined-security-checks)
-* [다음 학습서](#tutorials-to-follow-next)
+* [다음에 수행할 작업](#what-s-next)
 
 ## 보안 검사 정의
 {: #defining-a-security-check }
+
 [Java 또는 JavaScript 어댑터를 작성](../../adapters/creating-adapters/)하거나 기존 어댑터를 사용하십시오. 
 
 > Java 어댑터를 작성할 때 기본 템플리트는 어댑터가 **자원**을 제공한다고 가정합니다. 동일한 어댑터에 보안 검사와 자원을 번들할 것인지 아니면 별도 어댑터로 분리할 것인지는 개발자의 선택입니다. 기본 **자원** 구현을 제거하려면 **[AdapterName]Application.java** 및 **[AdapterName]Resource.java** 파일을 삭제하십시오. **adapter.xml**에서도`<JAXRSApplicationClass>` 요소를 제거하십시오. 
@@ -61,7 +62,7 @@ Java 어댑터의 **adapter.xml** 파일에서 `securityCheckDefinition`라는 X
 보안 검사 정의가 있는 어댑터를 {{ site.data.keys.mf_server }}에 성공적으로 배치한 후에는 보안 검사 및 구성 정보를 볼 수 있고 **{{ site.data.keys.mf_console }} → 어댑터 → [사용자 어댑터]**에서 런타임 구성 변경을 수행할 수도 있습니다. 
 
 * **구성 파일** 탭에서 사용자 정의 보안 검사 및 구성 가능 특성을 정의하는 `<securityCheckDefinition>` 요소를 비롯하여 어댑터 디스크립터의 서버 사본을 볼 수 있습니다. [어댑터 구성을 가져오고](../../adapters/java-adapters/#custom-properties) 이를 다른 서버로 푸시할 수도 있습니다.
-* **보안 검사** 탭에서 보안 검사 정의에 제공한 모든 구성 특성 목록을 볼 수 있습니다. 특성은 구성된 `displayName` 속성의 값 또는 표시 이름이 구성되지 않은 경우 이름 속성의 값에 의해 참조됩니다. 정의에서 해당 특성의 description 속성을 설정하면 이 설명도 표시됩니다.각 특성에 대해 `defaultValue` 속성에
+* **보안 검사** 탭에서 보안 검사 정의에 제공한 모든 구성 특성 목록을 볼 수 있습니다. 특성은 구성된 `displayName` 속성의 값 또는 표시 이름이 구성되지 않은 경우 이름 속성의 값에 의해 참조됩니다. 정의에서 해당 특성의 description 속성을 설정하면 이 설명도 표시됩니다. 각 특성에 대해 `defaultValue` 속성에
 구성된 값이 현재 값으로 표시됩니다. 해당 값을 변경하여 보안 검사 정의에서 가져온
 기본값을 재정의할 수 있습니다. 또한 언제든지 보안 검사 정의에서 원래 기본값을
 복원할 수도 있습니다.  
@@ -69,6 +70,7 @@ Java 어댑터의 **adapter.xml** 파일에서 `securityCheckDefinition`라는 X
 
 ## 보안 검사 구현
 {: #security-check-implementation }
+
 보안 검사에 대한 **Java 클래스**를 작성하십시오. 아래 표시된 것처럼, 구현은 제공된 기본 클래스 중 하나를 확장해야 합니다. 선택하는 상위 클래스는 사용자 정의와 단순성 사이의 밸런스를 판별합니다. 
 
 ### 보안 검사
@@ -102,6 +104,7 @@ Java 어댑터의 **adapter.xml** 파일에서 `securityCheckDefinition`라는 X
 
 ## 보안 검사 구성
 {: #security-check-configuration }
+
 각 보안 검사 구현 클래스는 해당 보안 검사에 사용 가능한 특성을 정의하는 `SecurityCheckConfiguration` 클래스를 사용할 수 있습니다. 각 기본 `SecurityCheck` 클래스는 일치하는 `SecurityCheckConfiguration` 클래스와 함께 사용됩니다. 기본 `SecurityCheckConfiguration` 클래스 중 하나를 확장하는 자체 구현을 작성하고 사용자 정의 보안 검사를 위해 이를 사용할 수 있습니다.
 
 예를 들어 `UserAuthenticationSecurityCheck`의 `createConfiguration` 메소드는 `UserAuthenticationSecurityCheckConfig`의 인스턴스를 리턴합니다. 
@@ -207,6 +210,7 @@ Java 어댑터 **adapter.xml** 파일의 `<securityCheckDefinition>` 내부에�
 
 ## 사전 정의된 보안 검사
 {: #predefined-security-checks }
+
 이러한 사전 정의된 보안 검사도 사용 가능합니다.
 
 - [애플리케이션 인증](../application-authenticity/)
@@ -214,8 +218,9 @@ Java 어댑터 **adapter.xml** 파일의 `<securityCheckDefinition>` 내부에�
 - LTPA
 
 
-## 다음 학습서
-{: #tutorials-to-follow-next }
+## 다음에 수행할 작업
+{: #what-s-next }
+
 다음 학습서에서 보안 검사에 대해 계속 읽으십시오.   
 개발 또는 변경 수행을 완료한 후 어댑터를 배치할 것을 기억하십시오. 
 

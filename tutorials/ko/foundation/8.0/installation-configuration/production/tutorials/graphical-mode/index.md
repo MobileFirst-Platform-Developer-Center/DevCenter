@@ -207,8 +207,8 @@ Server Configuration Tool은 다음 {{ site.data.keys.product_adj }} 애플리�
     
 1. Server Configuration Tool을 시작하십시오.
     * Linux의 경우, 애플리케이션 단축 아이콘에서 **애플리케이션 → {{ site.data.keys.mf_server }} → Server Configuration Tool**을 클릭하십시오. 
-    * Windows의 경우, **시작 → 프로그램 → IBM MobileFirst Platform Server → Server Configuration Tool**을 클릭하십시오.
-    * macOS의 경우, 쉘 콘솔을 여십시오. **mfp_server\_install\_dir/shortcuts**로 이동하여 ./configuration-tool.sh를 입력하십시오. 
+    * Windows의 경우 **시작 → 프로그램 → IBM MobileFirst Platform Server → Server Configuration Tool**을 클릭하십시오.
+    * macOS의 경우 쉘 콘솔을 여십시오. **mfp_server\_install\_dir/shortcuts**로 이동하여 ./configuration-tool.sh를 입력하십시오. 
     
     mfp_server_install_dir 디렉토리는 {{ site.data.keys.mf_server }}를 설치한 디렉토리입니다.
 2. **파일 → 새 구성...**을 선택하여 {{ site.data.keys.mf_server }} 구성을 작성하십시오.

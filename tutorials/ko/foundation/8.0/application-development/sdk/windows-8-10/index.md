@@ -23,6 +23,7 @@ weight: 4
 #### 다음으로 이동:
 {: #jump-to }
 - [{{ site.data.keys.product_adj }} 고유 SDK 추가](#adding-the-mobilefirst-native-sdk)
+- [수동으로 {{ site.data.keys.product_adj }} 고유 SDK 추가](#manually-adding-the-mobilefirst-win-native-sdk) 
 - [{{ site.data.keys.product_adj }} 고유 SDK 업데이트](#updating-the-mobilefirst-native-sdk)
 - [생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트](#generated-mobilefirst-native-sdk-artifacts)
 - [다음 학습서](#tutorials-to-follow-next)
@@ -58,6 +59,50 @@ NuGet은 .NET를 포함하여 Microsoft 개발 플랫폼에 대한 패키지 관
 5. 최소한 다음 기능이 `Package.appxmanifest`에서 사용되는지 확인하십시오. 
 
     - 인터넷(클라이언트)
+
+### {{ site.data.keys.product_adj }} 고유 SDK를 수동으로 추가
+{: #manually-adding-the-mobilefirst-win-native-sdk }
+
+{{ site.data.keys.product }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다. 
+
+<div class="panel-group accordion" id="adding-the-win-sdk" role="tablist" aria-multiselectable="false">
+    <div class="panel panel-default">
+        <div class="panel-heading" role="tab" id="win-sdk">
+            <h4 class="panel-title">
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>지시사항을 보려면 클릭</b></a>
+            </h4>
+        </div>
+
+        <div id="collapse-win-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk">
+            <div class="panel-body">
+                <p>프레임워크와 라이브러리 파일을 수동으로 가져와서 MobileFirst 애플리케이션 개발을 위한 환경을 준비할 수 있습니다. Windows 8 및 Windows 10 UWP(Universal Windows Platform)용 {{ site.data.keys.product }} SDK도 NuGet에서 제공합니다. </p>
+
+                <ol>
+                    <li><b>{{ site.data.keys.mf_console }} → Download Center → SDK</b> 탭에서 {{ site.data.keys.product }} SDK를 가져오십시오.
+                    </li>
+                    <li>1단계에서 얻은 다운로드한 SDK의 컨텐츠를 추출하십시오. </li>
+                    <li>Windows 유니버셜 고유 프로젝트를 Visual Studio에서 여십시오. 다음 단계를 수행하십시오.
+                        <ol>
+                            <li><b>도구 → NuGet 패키지 관리자 → 패키지 관리자 설정</b>을 선택하십시오. </li>
+                            <li><b>패키지 소스</b> 옵션을 선택하십시오. <b>+</b> 아이콘을 클릭하여 새 패키지 소스를 추가하십시오. </li>
+                            <li>패키지 소스의 이름을 제공하십시오(예: <em>windows8nuget</em>). </li>
+                            <li>다운로드하여 추출한 MobileFirst SDK 폴더로 이동하십시오. <b>확인</b>을 클릭하십시오. </li>
+                            <li><b>업데이트</b>를 클릭한 다음 <b>확인</b>을 클릭하십시오. </li>
+                            <li>화면의 오른쪽에 있는 <b>솔루션 탐색기</b> 탭에서 <b>솔루션 프로젝트 이름</b>을 마우스 오른쪽 단추로 클릭하십시오. </li>
+                            <li><b>솔루션의 NuGet 패키지 선택 → 온라인 → windows8nuget</b>을 선택하십시오. </li>
+                            <li><b>설치</b> 옵션을 클릭하십시오. <b>프로젝트 선택</b> 옵션이 표시됩니다. </li>
+                            <li>선택란이 모두 선택되어 있는지 확인하십시오. <b>확인</b>을 클릭하십시오. </li>
+                        </ol>
+
+                    </li>
+                </ol>
+
+                <br/>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>닫기 섹션</b></a>
+            </div>
+        </div>
+    </div>
+</div>
 
 ### 애플리케이션 등록
 {: #reigstering-the-application }

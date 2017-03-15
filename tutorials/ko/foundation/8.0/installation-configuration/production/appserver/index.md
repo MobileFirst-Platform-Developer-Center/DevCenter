@@ -7,7 +7,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-컴포넌트 설치는 Ant 태스크 또는 서버 구성 도구를 사용하거나 수동으로 수행할 수 있습니다. 애플리케이션 서버에 컴포넌트를 성공적으로 설치할 수 있도록 설치 프로세스에 대한 전제조건 및 세부사항을 파악하십시오. 
+컴포넌트 설치는 Ant 태스크 또는 Server Configuration Tool을 사용하거나 수동으로 수행할 수 있습니다. 애플리케이션 서버에 컴포넌트를 성공적으로 설치할 수 있도록 설치 프로세스에 대한 전제조건 및 세부사항을 파악하십시오. 
 
 애플리케이션 서버에 대한 컴포넌트 설치를 계속 진행하기 전에 컴포넌트에 대한 데이터베이스 및 테이블을 사용할 준비가 되었는지 확인하십시오. 자세한 정보는 [데이터베이스 설정](../databases)을 참조하십시오. 
 
@@ -17,7 +17,7 @@ weight: 4
 {: #jump-to }
 
 * [애플리케이션 서버 전제조건](#application-server-prerequisites)
-* [서버 구성 도구를 사용한 설치](#installing-with-the-server-configuration-tool) 
+* [Server Configuration Tool을 사용한 설치](#installing-with-the-server-configuration-tool) 
 * [Ant 태스크를 사용한 설치](#installing-with-ant-tasks)
 * [{{ site.data.keys.mf_server }} 컴포넌트 수동 설치](#installing-the-mobilefirst-server-components-manually)
 * [서버 팜 설치](#installing-a-server-farm)
@@ -50,7 +50,7 @@ weight: 4
         <div id="collapse-jmx-connection" class="panel-collapse collapse" role="tabpanel" aria-labelledby="jmx-connection">
             <div class="panel-body">
                 <p>Apache Tomcat 애플리케이션 서버를 위한 보안 JMX 연결을 구성해야 합니다. </p>
-                <p>서버 구성 도구 및 Ant 태스크는 기본 보안 JMX 연결을 구성할 수 있으며 여기에는 JMX 원격 포트의 정의 및 인증 특성의 정의가 포함됩니다. 이들은 <b>tomcat_install_dir/bin/setenv.bat</b> 및 <b>tomcat_install_dir/bin/setenv.sh</b>를 수정하여 이 옵션을 <b>CATALINA_OPTS</b>에 추가합니다. </p>
+                <p>Server Configuration Tool 및 Ant 태스크는 기본 보안 JMX 연결을 구성할 수 있으며 여기에는 JMX 원격 포트의 정의 및 인증 특성의 정의가 포함됩니다. 이들은 <b>tomcat_install_dir/bin/setenv.bat</b> 및 <b>tomcat_install_dir/bin/setenv.sh</b>를 수정하여 이 옵션을 <b>CATALINA_OPTS</b>에 추가합니다. </p>
 {% highlight xml %}
 -Djava.rmi.server.hostname=localhost
 -Dcom.sun.management.jmxremote.port=8686
@@ -152,7 +152,7 @@ Liberty 서버를 실행하는 프로세스는 프로세스를 시작한 사용�
                 <p>{{ site.data.keys.mf_server }}를 사용하려면 보안 JMX 연결을 구성해야 합니다. </p>
                 
                 <ul>
-                    <li>서버 구성 도구 및 Ant 태스크는 기본 보안 JMX 연결을 구성할 수 있으며 여기에는 유효 기간이 365일인 자체 서명된 SSL 인증서 생성이 포함됩니다. 이 구성은 프로덕션용으로 수행되지 않습니다. </li>
+                    <li>Server Configuration Tool 및 Ant 태스크는 기본 보안 JMX 연결을 구성할 수 있으며 여기에는 유효 기간이 365일인 자체 서명된 SSL 인증서 생성이 포함됩니다. 이 구성은 프로덕션 용도가 아닙니다. </li>
                     <li>프로덕션용으로 보안 JMX 연결을 구성하려면 <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_restconnector.html?cp=SSD28V_8.5.5&view=embed">Liberty 프로파일에 대한 보안 JMX 연결 구성</a>에 설명된 대로 지시사항을 수행하십시오. </li>
                     <li>rest-connector는 WebSphere Application Server, Liberty Core 및 기타 Liberty 에디션에 사용할 수 있지만 Liberty 서버를 사용 가능한 기능의 서브세트와 함께 패키지할 수 있습니다. rest-connector 기능을 Liberty 설치에서 사용하려면 다음 명령을 입력하십시오.
 {% highlight bash %}                    
@@ -203,7 +203,7 @@ liberty_install_dir/bin/productInfo featureInfo
 설치 도구에는 다음이 포함됩니다. 
 
 * IBM Installation Manager
-* 서버 구성 도구
+* Server Configuration Tool
 * {{ site.data.keys.mf_server }}를 배치하는 데 필요한 Ant 태스크
 
 WebSphere Application Server Liberty 프로파일의 경우 다음과 같은 조치를 수행하기 위해 필요한 권한을 가지고 있어야 합니다. 
@@ -213,10 +213,10 @@ WebSphere Application Server Liberty 프로파일의 경우 다음과 같은 조
 * Liberty 공유 자원 디렉토리(일반적으로 usr/shared)에서 파일 및 디렉토리를 작성합니다. 
 * Liberty 서버 앱 디렉토리(일반적으로 usr/servers/server-name/apps)에서 파일을 작성합니다. 
 
-WebSphere Application Server Full 프로파일 및 WebSphere Application Server Network Deployment의 경우 다음과 같은 조치를 수행하기 위해 필요한 권한을 가지고 있어야 합니다. 
+WebSphere Application Server 전체 프로파일 및 WebSphere Application Server Network Deployment의 경우 다음과 같은 조치를 수행하기 위해 필요한 권한을 가지고 있어야 합니다. 
 
 * WebSphere Application Server 설치 디렉토리의 파일을 읽습니다. 
-* 선택한 WebSphere Application Server Full 프로파일 또는 Deployment Manager 프로파일의 구성 파일을 읽습니다. 
+* 선택한 WebSphere Application Server 전체 프로파일 또는 Deployment Manager 프로파일의 구성 파일을 읽습니다. 
 * wsadmin 명령을 실행합니다. 
 * 프로파일 구성 디렉토리에서 파일을 작성합니다. 설치 도구는 공유 라이브러리 또는 JDBC 드라이버 등의 자원을 해당 디렉토리에 배치합니다. 
 
@@ -230,20 +230,20 @@ Apache Tomcat의 경우 다음과 같은 조치를 수행하기 위해 필요한
 
 이 모든 애플리케이션 서버의 경우 애플리케이션 서버를 실행하는 사용자는 {{ site.data.keys.product_adj }} 설치 도구를 실행한 사용자가 작성한 파일을 읽을 수 있어야 합니다. 
 
-## 서버 구성 도구를 사용한 설치
+## Server Configuration Tool을 사용한 설치
 {: #installing-with-the-server-configuration-tool }
-서버 구성 도구를 사용하여 {{ site.data.keys.mf_server }} 컴포넌트를 애플리케이션 서버에 설치하십시오. 
+Server Configuration Tool을 사용하여 {{ site.data.keys.mf_server }} 컴포넌트를 애플리케이션 서버에 설치하십시오. 
 
-서버 구성 도구는 데이터베이스를 설정하고 컴포넌트를 애플리케이션 서버에 설치할 수 있습니다. 이 도구는 단일 사용자를 위한 것입니다. 구성 파일은 디스크에 저장됩니다. 구성 파일이 저장되는 디렉토리는 메뉴 **파일 → 환경 설정**을 사용하여 수정할 수 있습니다. 이 파일은 한 번에 하나의 서버 구성 도구 인스턴스에서만 사용해야 합니다. 이 도구는 동일한 파일에 대한 동시 액세스를 관리하지 않습니다. 도구의 여러 인스턴스가 동일한 파일에 액세스하는 경우 데이터가 유실될 수 있습니다. 이 도구가 데이터베이스를 작성하고 설정하는 방법에 대한 자세한 정보는 [서버 구성 도구를 사용하여 데이터베이스 테이블 작성](../databases/#create-the-database-tables-with-the-server-configuration-tool)을 참조하십시오. 데이터베이스가 존재하는 경우 이 도구는 일부 테스트 테이블의 컨텐츠 및 존재를 테스트하여 데이터베이스를 발견할 수 있으며 이 데이터베이스 테이블을 수정하지 않습니다. 
+Server Configuration Tool은 데이터베이스를 설정하고 컴포넌트를 애플리케이션 서버에 설치할 수 있습니다. 이 도구는 단일 사용자를 위한 것입니다. 구성 파일은 디스크에 저장됩니다. 구성 파일이 저장되는 디렉토리는 메뉴 **파일 → 환경 설정**을 사용하여 수정할 수 있습니다. 이 파일은 한 번에 하나의 Server Configuration Tool 인스턴스에서만 사용해야 합니다. 이 도구는 동일한 파일에 대한 동시 액세스를 관리하지 않습니다. 도구의 여러 인스턴스가 동일한 파일에 액세스하는 경우 데이터가 유실될 수 있습니다. 이 도구가 데이터베이스를 작성하고 설정하는 방법에 대한 자세한 정보는 [Server Configuration Tool을 사용하여 데이터베이스 테이블 작성](../databases/#create-the-database-tables-with-the-server-configuration-tool)을 참조하십시오. 데이터베이스가 존재하는 경우 이 도구는 일부 테스트 테이블의 컨텐츠 및 존재를 테스트하여 데이터베이스를 발견할 수 있으며 이 데이터베이스 테이블을 수정하지 않습니다. 
 
 * [지원되는 운영 체제](#supported-operating-systems)
 * [지원되는 토폴로지](#supported-topologies)
-* [서버 구성 도구 실행](#running-the-server-configuration-tool)
-* [서버 구성 도구를 사용하여 수정팩 적용](#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [Server Configuration Tool 실행](#running-the-server-configuration-tool)
+* [Server Configuration Tool을 사용하여 수정팩 적용](#applying-a-fix-pack-by-using-the-server-configuration-tool)
 
 ### 지원되는 운영 체제
 {: #supported-operating-systems }
-다음과 같은 운영 체제에 있는 경우 서버 구성 도구를 사용할 수 있습니다. 
+다음과 같은 운영 체제에 있는 경우 Server Configuration Tool을 사용할 수 있습니다. 
 
 * Windows x86 또는 x86-64
 * macOS x86-64
@@ -253,18 +253,18 @@ Apache Tomcat의 경우 다음과 같은 조치를 수행하기 위해 필요한
 
 ### 지원되는 토폴로지
 {: #supported-topologies }
-서버 구성 도구는 다음과 같은 토폴로지를 사용하여 {{ site.data.keys.mf_server }} 컴포넌트를 설치합니다. 
+Server Configuration Tool은 다음과 같은 토폴로지를 사용하여 {{ site.data.keys.mf_server }} 컴포넌트를 설치합니다. 
 
 * 모든 컴포넌트({{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임)가 동일한 애플리케이션 서버에 있습니다. 하지만 WebSphere Application Server Network Deployment에서 클러스터에 설치할 때 관리 및 라이브 업데이트 서비스와 런타임에 대해 서로 다른 클러스터를 지정할 수 있습니다. Liberty Collective의 경우 {{ site.data.keys.mf_console }}, 관리 서비스 및 라이브 업데이트 서비스는 Collective 제어기에서 설치되고 런타임은 Collective 멤버에서 설치됩니다. 
-* {{ site.data.keys.mf_server }} 푸시 서비스가 설치되는 경우 이 서비스도 동일한 서버에 설치됩니다. 하지만 WebSphere Application Server Network Deployment에서 클러스터에 설치할 때 푸시 서비스에 대해 다른 클러스터를 지정할 수 있습니다. Liberty Collective의 경우 푸시 서비스는 런타임이 설치될 때와 동일할 수 있는 Liberty 멤버에서 설치됩니다. 
+* {{ site.data.keys.mf_server }} 푸시 서비스가 설치되는 경우 해당 서비스도 동일한 서버에 설치됩니다. 하지만 WebSphere Application Server Network Deployment에서 클러스터에 설치할 때 푸시 서비스에 대해 다른 클러스터를 지정할 수 있습니다. Liberty Collective의 경우 푸시 서비스는 런타임이 설치될 때와 동일할 수 있는 Liberty 멤버에서 설치됩니다. 
 * 모든 컴포넌트는 동일한 데이터베이스 시스템 및 사용자를 사용합니다. 또한 DB2의 경우 모든 컴포넌트는 동일한 스키마를 사용합니다. 
-* 서버 구성 도구는 비대칭 배치를 위한 WebSphere Application Server Network Deployment 및 Liberty Collective의 경우를 제외하고 단일 서버를 위한 컴포넌트를 설치합니다. 다중 서버에 설치하는 경우에는 도구가 실행된 후 팜이 구성되어야 합니다. WebSphere Application Server Network Deployment에서는 서버 팜 구성이 필요하지 않습니다. 
+* Server Configuration Tool은 비대칭 배치를 위한 WebSphere Application Server Network Deployment 및 Liberty Collective의 경우를 제외하고 단일 서버를 위한 컴포넌트를 설치합니다. 다중 서버에 설치하는 경우에는 도구가 실행된 후 팜이 구성되어야 합니다. WebSphere Application Server Network Deployment에서는 서버 팜 구성이 필요하지 않습니다. 
 
 기타 토폴로지 또는 기타 데이터베이스 설정의 경우에는 대신 Ant 태스크를 사용하거나 수동으로 컴포넌트를 설치할 수 있습니다. 
 
-### 서버 구성 도구 실행
+### Server Configuration Tool 실행
 {: #running-the-server-configuration-tool }
-서버 구성 도구를 실행하기 전에 다음과 같은 요구사항이 충족되었는지 확인하십시오. 
+Server Configuration Tool을 실행하기 전에 다음과 같은 요구사항이 충족되었는지 확인하십시오. 
 
 * 컴포넌트에 대한 데이터베이스 및 테이블을 사용할 준비가 되어 있습니다. [데이터베이스 설정](../databases)을 참조하십시오. 
 * 컴포넌트를 설치할 서버 토폴로지가 결정되어 있습니다. [토폴로지 및 네트워크 플로우](../topologies)를 참조하십시오. 
@@ -282,10 +282,10 @@ Apache Tomcat의 경우 다음과 같은 조치를 수행하기 위해 필요한
         <div id="collapse-configuration-tool" class="panel-collapse collapse" role="tabpanel" aria-labelledby="configuration-tool">
             <div class="panel-body">
                 <ol>
-                    <li>서버 구성 도구를 시작하십시오.
+                    <li>Server Configuration Tool을 시작하십시오.
                         <ul>
-                            <li>Linux의 경우 애플리케이션 바로 가기 <b>애플리케이션 → IBM MobileFirst Platform Server → 서버 구성 도구</b>에서</li>
-                            <li>Windows의 경우 <b>시작 → 프로그램 → IBM MobileFirst Platform Server → 서버 구성 도구</b>를 클릭하십시오. </li>
+                            <li>Linux의 경우 애플리케이션 바로 가기 <b>애플리케이션 → IBM MobileFirst Platform Server → Server Configuration Tool</b>에서</li>
+                            <li>Windows의 경우 <b>시작 → 프로그램 → IBM MobileFirst Platform Server → Server Configuration Tool</b>을 클릭하십시오. </li>
                             <li>macOS의 경우 쉘 콘솔을 여십시오. <b>mfp_server_install_dir/shortcuts</b>로 이동한 후 <b>./configuration-tool.sh</b>를 입력하십시오. </li>
                             <li><b>mfp_server_install_dir</b> 디렉토리는 사용자가 {{ site.data.keys.mf_server }}를 설치한 디렉토리입니다. </li>
                         </ul>
@@ -294,7 +294,7 @@ Apache Tomcat의 경우 다음과 같은 조치를 수행하기 위해 필요한
                         <ul>
                             <li><b>구성 세부사항</b> 패널에서 런타임 컴포넌트 및 관리 서비스의 컨텍스트 루트를 입력하십시오. 환경 ID를 입력할 수 있습니다. 환경 ID는 고급 유스 케이스에서 사용됩니다(예: <a href="../topologies/#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell">{{ site.data.keys.mf_server }}의 여러 설치가 동일한 애플리케이션 서버 또는 동일한 WebSphere Application Server 셀에서 작성되는 경우</a>). </li>
                             <li><b>콘솔 설정</b> 패널에서 {{ site.data.keys.mf_console }} 설치 여부를 선택하십시오. 이 콘솔이 설치되지 않은 경우에는 명령행 도구(<b>mfpdev</b> 또는 <b>mfpadm</b>) 또는 REST API를 사용하여 {{ site.data.keys.mf_server }} 관리 서비스와 상호작용해야 합니다. </li>
-                            <li><b>데이터베이스 선택</b> 패널에서 사용하려는 데이터베이스 관리 시스템을 선택하십시오. 모든 컴포넌트는 동일한 데이터베이스 유형 및 동일한 데이터베이스 인스턴스를 사용합니다. 데이터베이스 분할창에 대한 자세한 정보는 <a href="../databases/#create-the-database-tables-with-the-server-configuration-tool">서버 구성 도구를 사용하여 데이터베이스 테이블 작성</a>을 참조하십시오. </li>
+                            <li><b>데이터베이스 선택</b> 패널에서 사용하려는 데이터베이스 관리 시스템을 선택하십시오. 모든 컴포넌트는 동일한 데이터베이스 유형 및 동일한 데이터베이스 인스턴스를 사용합니다. 데이터베이스 분할창에 대한 자세한 정보는 <a href="../databases/#create-the-database-tables-with-the-server-configuration-tool">Server Configuration Tool을 사용하여 데이터베이스 테이블 작성</a>을 참조하십시오. </li>
                             <li><b>애플리케이션 서버 선택</b> 패널에서 {{ site.data.keys.mf_server }}를 배치할 애플리케이션 서버의 유형을 선택하십시오. </li>
                         </ul>
                     </li>
@@ -350,7 +350,7 @@ Apache Tomcat의 경우 다음과 같은 조치를 수행하기 위해 필요한
                             <li>Apache Tomcat에 설치의 경우:
                                 <ul>
                                     <li>Apache Tomcat의 설치 디렉토리를 입력하십시오. </li>
-                                    <li>RMI와의 JMX 통신에 사용되는 포트를 입력하십시오. 기본적으로 값은 8686입니다. 서버 구성 도구는 <b>tomcat_install_dir/bin/setenv.bat</b> 또는 <b>tomcat_install_dir/bin/setenv.sh</b> 파일을 수정하여 이 포트를 엽니다. 이 포트를 수동으로 열려고 하거나 <b>setenv.bat</b> 또는 <b>setenv.sh</b>에서 이 포트를 여는 일부 코드가 이미 있는 경우에는 이 도구를 사용하지 마십시오. 대신 Ant 태스크를 설치하십시오. Ant 태스크를 사용한 설치에 대해 RMI 포트를 수동으로 여는 옵션이 제공됩니다. </li>
+                                    <li>RMI와의 JMX 통신에 사용되는 포트를 입력하십시오. 기본적으로 값은 8686입니다. Server Configuration Tool은 <b>tomcat_install_dir/bin/setenv.bat</b> 또는 <b>tomcat_install_dir/bin/setenv.sh</b> 파일을 수정하여 이 포트를 엽니다. 이 포트를 수동으로 열려고 하거나 <b>setenv.bat</b> 또는 <b>setenv.sh</b>에서 이 포트를 여는 일부 코드가 이미 있는 경우에는 이 도구를 사용하지 마십시오. 대신 Ant 태스크를 설치하십시오. Ant 태스크를 사용한 설치에 대해 RMI 포트를 수동으로 여는 옵션이 제공됩니다. </li>
                                     <li>콘솔에 로그인할 기본 사용자를 작성하십시오. 이 사용자는 <b>tomcat-users.xml</b> 구성 파일에서도 작성됩니다. 프로덕션 설치의 경우 기본 사용자 작성 옵션을 선택 취소하고 설치 후에 사용자 액세스를 구성할 수 있습니다. 자세한 정보는 <a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">{{ site.data.keys.mf_server }} 관리를 위한 사용자 인증 구성</a>을 참조하십시오. </li>
                                 </ul>
                             </li>
@@ -384,32 +384,32 @@ Apache Tomcat이 서비스로 실행되면 RMI를 여는 데 필요한 명령문
 
 WebSphere Application Server Network Deployment의 경우 애플리케이션은 설치되지만 시작되지 않습니다. 애플리케이션을 수동으로 시작해야 합니다. WebSphere Application Server 관리 콘솔에서 이를 수행할 수 있습니다. 
 
-서버 구성 도구에서 구성 파일을 보존하십시오. 임시 수정사항을 설치하기 위해 재사용할 수 있습니다. 임시 수정사항을 적용하는 메뉴는 **구성 >배치된 WAR 파일 바꾸기**입니다. 
+Server Configuration Tool에서 구성 파일을 보존하십시오. 임시 수정사항을 설치하기 위해 재사용할 수 있습니다. 임시 수정사항을 적용하는 메뉴는 **구성 >배치된 WAR 파일 바꾸기**입니다. 
 
-### 서버 구성 도구를 사용하여 수정팩 적용
+### Server Configuration Tool을 사용하여 수정팩 적용
 {: #applying-a-fix-pack-by-using-the-server-configuration-tool }
 구성 도구를 사용하여 {{ site.data.keys.mf_server }}를 설치할 때 구성 파일이 보존되는 경우 구성 파일을 재사용하여 임시 수정사항 또는 수정팩을 적용할 수 있습니다. 
 
-1. 서버 구성 도구를 시작하십시오. 
-    * Linux의 경우 애플리케이션 바로 가기 **애플리케이션 → IBM MobileFirst Platform Server → 서버 구성 도구**에서
-    * Windows의 경우 **시작 → 프로그램 → IBM MobileFirst Platform Server → 서버 구성 도구**를 클릭하십시오. 
+1. Server Configuration Tool을 시작하십시오. 
+    * Linux의 경우 애플리케이션 바로 가기 **애플리케이션 → IBM MobileFirst Platform Server → Server Configuration Tool**에서
+    * Windows의 경우 **시작 → 프로그램 → IBM MobileFirst Platform Server → Server Configuration Tool**을 클릭하십시오. 
     * macOS의 경우 쉘 콘솔을 여십시오. **mfp\_server\_install_dir/shortcuts**로 이동하여 **./configuration-tool.sh**를 입력하십시오. 
     * **mfp\_server\_install\_dir** 디렉토리는 {{ site.data.keys.mf_server }}를 설치한 디렉토리입니다. 
 
 2. **구성 → 배치된 WAR 파일 바꾸기**를 클릭한 후 기존 구성을 선택하여 수정팩 또는 임시 수정사항을 적용하십시오. 
 
-## Ant 태스크를 사용한 설치
+## Ant 태스크를 사용하여 설치
 {: #installing-with-ant-tasks }
 Ant 태스크를 사용하여 {{ site.data.keys.mf_server }} 컴포넌트를 애플리케이션 서버에 설치하십시오. 
 
 **mfp\_install\_dir/MobileFirstServer/configuration-samples 디렉토리**에서 {{ site.data.keys.mf_server }} 설치에 필요한 샘플 구성 파일을 찾을 수 있습니다. 
 
-또한 서버 구성 도구를 사용하여 구성을 작성한 후 **파일 → 구성을 Ant 파일로 내보내기...**를 사용하여 Ant 파일을 내보낼 수 있습니다. 샘플 Ant 파일은 서버 구성 도구와 동일한 제한사항을 가지고 있습니다. 
+또한 Server Configuration Tool을 사용하여 구성을 작성한 후 **파일 → 구성을 Ant 파일로 내보내기...**를 사용하여 Ant 파일을 내보낼 수 있습니다. 샘플 Ant 파일은 Server Configuration Tool과 동일한 제한사항을 가지고 있습니다. 
 
 * 모든 컴포넌트({{ site.data.keys.mf_console }}, {{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스, {{ site.data.keys.mf_server }} 아티팩트 및 {{ site.data.keys.product_adj }} 런타임)는 동일한 애플리케이션 서버에 있습니다. 하지만 WebSphere Application Server Network Deployment에서 클러스터에 설치할 때 관리 및 라이브 업데이트 서비스와 런타임에 대해 서로 다른 클러스터를 지정할 수 있습니다. 
 * {{ site.data.keys.mf_server }} 푸시 서비스가 설치되는 경우 해당 서비스도 동일한 서버에 설치됩니다. 하지만 WebSphere Application Server Network Deployment에서 클러스터에 설치할 때 푸시 서비스에 대해 다른 클러스터를 지정할 수 있습니다. 
 * 모든 컴포넌트는 동일한 데이터베이스 시스템 및 사용자를 사용합니다. 또한 DB2의 경우 모든 컴포넌트는 동일한 스키마를 사용합니다. 
-* 서버 구성 도구는 단일 서버를 위한 컴포넌트를 설치합니다. 다중 서버에 설치하는 경우에는 도구가 실행된 후 팜이 구성되어야 합니다. WebSphere Application Server Network Deployment에서는 서버 팜 구성이 지원되지 않습니다. 
+* Server Configuration Tool은 단일 서버를 위한 컴포넌트를 설치합니다. 다중 서버에 설치하는 경우에는 도구가 실행된 후 팜이 구성되어야 합니다. WebSphere Application Server Network Deployment에서는 서버 팜 구성이 지원되지 않습니다. 
 
 Ant 태스크를 사용하여 서버 팜에서 실행되도록 {{ site.data.keys.mf_server }} 서비스를 구성할 수 있습니다. 서버를 팜에 포함하려면 애플리케이션 서버를 적절하게 구성하는 일부 특정 속성을 지정해야 합니다. Ant 태스크를 사용한 서버 팜 구성에 대한 자세한 정보는 [Ant 태스크를 사용한 서버 팜 설치](#installing-a-server-farm-with-ant-tasks)를 참조하십시오. 
 
@@ -1811,10 +1811,10 @@ Java EE 6 또는 Java EE 7의 경우 다음과 같은 기능을 추가해야 합
 
 ## 서버 팜 설치
 {: #installing-a-server-farm }
-Ant 태스크를 실행하거나 서버 구성 도구를 사용하거나 수동으로 서버 팜을 설치할 수 있습니다. 
+Ant 태스크를 실행하거나 Server Configuration Tool을 사용하거나 수동으로 서버 팜을 설치할 수 있습니다. 
 
 * [서버 팜의 구성 계획](#planning-the-configuration-of-a-server-farm)
-* [서버 구성 도구를 사용한 서버 팜 설치](#installing-a-server-farm-with-the-server-configuration-tool)
+* [Server Configuration Tool을 사용한 서버 팜 설치](#installing-a-server-farm-with-the-server-configuration-tool)
 * [Ant 태스크를 사용한 서버 팜 설치](#installing-a-server-farm-with-ant-tasks)
 * [수동으로 서버 팜 구성](#configuring-a-server-farm-manually)
 * [팜 구성 확인](#verifying-a-farm-configuration)
@@ -1822,7 +1822,7 @@ Ant 태스크를 실행하거나 서버 구성 도구를 사용하거나 수동�
 
 ### 서버 팜의 구성 계획
 {: #planning-the-configuration-of-a-server-farm }
-서버 팜의 구성을 계획하려면 애플리케이션 서버를 선택하고 {{ site.data.keys.product_adj }} 데이터베이스를 구성하고 팜의 각 서버에서 {{ site.data.keys.mf_server }} 컴포넌트의 WAR 파일을 배치하십시오. 서버 구성 도구, Ant 태스크 또는 수동 조작을 사용하여 서버 팜을 구성하는 옵션이 있습니다. 
+서버 팜의 구성을 계획하려면 애플리케이션 서버를 선택하고 {{ site.data.keys.product_adj }} 데이터베이스를 구성하고 팜의 각 서버에서 {{ site.data.keys.mf_server }} 컴포넌트의 WAR 파일을 배치하십시오. Server Configuration Tool, Ant 태스크 또는 수동 조작을 사용하여 서버 팜을 구성하는 옵션이 있습니다. 
 
 서버 팜 설치를 계획하려는 경우에는 [{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 MobileFirst 런타임에 대한 제한조건](../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime)을 먼저 참조하십시오(특히 [서버 팜 토폴로지](../topologies/#server-farm-topology) 참조). 
 
@@ -1845,11 +1845,11 @@ Ant 태스크를 실행하거나 서버 구성 도구를 사용하거나 수동�
 {: #why-it-is-mandatory-to-declare-a-farm }
 {{ site.data.keys.mf_console }} 또는 {{ site.data.keys.mf_server }} 관리 서비스 애플리케이션을 통해 관리 조작이 수행될 때마다 런타임 환경의 모든 인스턴스에 조작을 복제해야 합니다. 이러한 관리 조작의 예는 앱 또는 어댑터의 새 버전을 업로드하는 것입니다. 복제는 조작을 처리하는 관리 서비스 애플리케이션 인스턴스가 수행하는 JMX 호출을 통해 수행됩니다. 관리 서비스는 클러스터의 모든 런타임 인스턴스에 접속해야 합니다. 위의 **서버 팜 선언 시기** 아래에 나열된 환경에서는 팜이 구성된 경우에만 JMX를 통해 런타임에 접속할 수 있습니다. 팜을 적절하게 구성하지 않고 서버를 클러스터에 추가하는 경우 해당 서버의 런타임은 각각의 관리 조작 후 다시 시작될 때까지 불일치 상태에 있습니다. 
 
-### 서버 구성 도구를 사용한 서버 팜 설치
+### Server Configuration Tool을 사용한 서버 팜 설치
 {: #installing-a-server-farm-with-the-server-configuration-tool }
-서버 구성 도구를 사용하여 서버 팜의 각 멤버에 사용되는 단일 애플리케이션 서버 유형의 요구사항에 따라 팜의 각 서버를 구성하십시오. 
+Server Configuration Tool을 사용하여 서버 팜의 각 멤버에 사용되는 단일 애플리케이션 서버 유형의 요구사항에 따라 팜의 각 서버를 구성하십시오. 
 
-서버 구성 도구를 사용하여 서버 팜을 계획할 때는 먼저 독립형 서버를 작성한 후 안전한 방식으로 서로 통신할 수 있도록 독립형 서버 각각의 신뢰 저장소를 구성하십시오. 그런 다음 다음과 같은 조작을 수행하는 도구를 실행하십시오. 
+Server Configuration Tool을 사용하여 서버 팜을 계획할 때는 먼저 독립형 서버를 작성한 후 안전한 방식으로 서로 통신할 수 있도록 독립형 서버 각각의 신뢰 저장소를 구성하십시오. 그런 다음 다음과 같은 조작을 수행하는 도구를 실행하십시오. 
 
 * {{ site.data.keys.mf_server }} 컴포넌트가 공유하는 데이터베이스 인스턴스를 구성하십시오. 
 * {{ site.data.keys.mf_server }} 컴포넌트를 각 서버에 배치하십시오. 
@@ -1859,7 +1859,7 @@ Ant 태스크를 실행하거나 서버 구성 도구를 사용하거나 수동�
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="server-farm-ct">
             <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#server-farm-ct" href="#collapse-server-farm-ct" aria-expanded="true" aria-controls="collapse-server-farm-ct"><b>서버 구성 도구를 사용한 서버 팜 설치에 대한 지시사항을 보려면 클릭</b></a>
+                <a role="button" data-toggle="collapse" data-parent="#server-farm-ct" href="#collapse-server-farm-ct" aria-expanded="true" aria-controls="collapse-server-farm-ct"><b>Server Configuration Tool을 사용한 서버 팜 설치에 대한 지시사항을 보려면 클릭</b></a>
             </h4>
         </div>
 
@@ -1879,7 +1879,7 @@ Ant 태스크를 실행하거나 서버 구성 도구를 사용하거나 수동�
                                 </ul>
                                 지원되는 애플리케이션 서버의 버전을 파악하려면 <a href="../../../product-overview/requirements">시스템 요구사항</a>을 참조하십시오. 
                                 
-                                <blockquote><b>중요:</b> {{ site.data.keys.product }}은 동종 서버 팜만 지원합니다. 서버 팜은 동일한 유형의 애플리케이션 서버에 연결되는 경우 동종 서버 팜입니다. 서로 다른 유형의 애플리케이션 서버를 연관시키면 런타임 시 예측할 수 없는 동작이 발생합니다. 예를 들어, Apache Tomcat 서버와 WebSphere Application Server Full 프로파일 서버의 혼합을 가진 팜은 올바르지 않은 구성입니다. </blockquote>
+                                <blockquote><b>중요:</b> {{ site.data.keys.product }}은 동종 서버 팜만 지원합니다. 서버 팜은 동일한 유형의 애플리케이션 서버에 연결되는 경우 동종 서버 팜입니다. 서로 다른 유형의 애플리케이션 서버를 연관시키면 런타임 시 예측할 수 없는 동작이 발생합니다. 예를 들어, Apache Tomcat 서버와 WebSphere Application Server 전체 프로파일 서버의 혼합을 가진 팜은 올바르지 않은 구성입니다. </blockquote>
                             </li>
                             <li>팜에서 원하는 멤버 수만큼 독립형 서버를 설정하십시오.
                                 <ul>
@@ -1890,11 +1890,11 @@ Ant 태스크를 실행하거나 서버 구성 도구를 사용하거나 수동�
                             </li>
                             <li>각각의 신뢰 저장소에 있는 모든 서버 사이에서 서명자 인증서를 교환하십시오.
                             <br/><br/>
-                            보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server Full 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.
+                            보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.
                             </li>
                         </ul>
                     </li>
-                    <li>팜의 각 서버에 대해 서버 구성 도구를 실행하십시오. 모든 서버는 동일한 데이터베이스를 공유해야 합니다. <b>애플리케이션 서버 설정</b> 패널에서 배치 유형 <b>서버 팜 배치</b>를 선택해야 합니다. 이 도구에 대한 자세한 정보는 <a href="#running-the-server-configuration-tool">서버 구성 도구 실행</a>을 참조하십시오.
+                    <li>팜의 각 서버에 대해 Server Configuration Tool을 실행하십시오. 모든 서버는 동일한 데이터베이스를 공유해야 합니다. <b>애플리케이션 서버 설정</b> 패널에서 배치 유형 <b>서버 팜 배치</b>를 선택해야 합니다. 이 도구에 대한 자세한 정보는 <a href="#running-the-server-configuration-tool">Server Configuration Tool 실행</a>을 참조하십시오.
                     </li>
                 </ol>
             </div>
@@ -1925,13 +1925,13 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                         <ul>
                             <li>서버 팜의 멤버를 구성하기 위해 사용할 애플리케이션 서버의 유형을 선택하십시오. {{ site.data.keys.product }}은 서버 팜에 있는 다음과 같은 애플리케이션 서버를 지원합니다.
                                 <ul>
-                                    <li>WebSphere Application Server Full 프로파일<b>참고:</b> 팜 토폴로지에서는 RMI JMX 커넥터를 사용할 수 없습니다. 이 토폴로지에서는 {{ site.data.keys.product }}이 SOAP 커넥터만 지원합니다. </li>
+                                    <li>WebSphere Application Server 전체 프로파일<b>참고:</b> 팜 토폴로지에서는 RMI JMX 커넥터를 사용할 수 없습니다. 이 토폴로지에서는 {{ site.data.keys.product }}이 SOAP 커넥터만 지원합니다. </li>
                                     <li>WebSphere Application Server Liberty 프로파일</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
                                 지원되는 애플리케이션 서버의 버전을 파악하려면 <a href="../../../product-overview/requirements">시스템 요구사항</a>을 참조하십시오. 
                                 
-                                <blockquote><b>중요:</b> {{ site.data.keys.product }}은 동종 서버 팜만 지원합니다. 서버 팜은 동일한 유형의 애플리케이션 서버에 연결되는 경우 동종 서버 팜입니다. 서로 다른 유형의 애플리케이션 서버를 연관시키면 런타임 시 예측할 수 없는 동작이 발생합니다. 예를 들어, Apache Tomcat 서버와 WebSphere Application Server Full 프로파일 서버의 혼합을 가진 팜은 올바르지 않은 구성입니다. </blockquote>
+                                <blockquote><b>중요:</b> {{ site.data.keys.product }}은 동종 서버 팜만 지원합니다. 서버 팜은 동일한 유형의 애플리케이션 서버에 연결되는 경우 동종 서버 팜입니다. 서로 다른 유형의 애플리케이션 서버를 연관시키면 런타임 시 예측할 수 없는 동작이 발생합니다. 예를 들어, Apache Tomcat 서버와 WebSphere Application Server 전체 프로파일 서버의 혼합을 가진 팜은 올바르지 않은 구성입니다. </blockquote>
                             </li>
                             <li>팜에서 원하는 멤버 수만큼 독립형 서버를 설정하십시오.
                             <br/><br/>
@@ -1942,7 +1942,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                             서버 설정에 대한 자세한 정보는 <a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스 및 {{ site.data.keys.product_adj }} 런타임에 대한 제한조건</a>을 참조하십시오. </li>
                             <li>각각의 신뢰 저장소에 있는 모든 서버 사이에서 서명자 인증서를 교환하십시오.
                             <br/><br/>
-                            보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server Full 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.
+                            보안이 사용으로 설정되어야 하므로 이 단계는 WebSphere Application Server 전체 프로파일 또는 Liberty를 사용하는 팜의 경우 필수입니다. 또한 Liberty 팜의 경우 싱글 사인온 기능을 보장하기 위해 각 서버에서 동일한 LTPA 구성을 복제해야 합니다. 이 구성을 수행하려면 <a href="#configuring-a-server-farm-manually">수동으로 서버 팜 구성</a>의 6단계에 있는 가이드라인을 따르십시오.
                             </li>
                         </ul>
                     </li>
@@ -2049,7 +2049,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                         </ul>
                         지원되는 애플리케이션 서버의 버전을 파악하려면 <a href="../../../product-overview/requirements">시스템 요구사항</a>을 참조하십시오. 
                         
-                        <blockquote><b>중요:</b> {{ site.data.keys.product }}은 동종 서버 팜만 지원합니다. 서버 팜은 동일한 유형의 애플리케이션 서버에 연결되는 경우 동종 서버 팜입니다. 서로 다른 유형의 애플리케이션 서버를 연관시키면 런타임 시 예측할 수 없는 동작이 발생합니다. 예를 들어, Apache Tomcat 서버와 WebSphere Application Server Full 프로파일 서버의 혼합을 가진 팜은 올바르지 않은 구성입니다. </blockquote>
+                        <blockquote><b>중요:</b> {{ site.data.keys.product }}은 동종 서버 팜만 지원합니다. 서버 팜은 동일한 유형의 애플리케이션 서버에 연결되는 경우 동종 서버 팜입니다. 서로 다른 유형의 애플리케이션 서버를 연관시키면 런타임 시 예측할 수 없는 동작이 발생합니다. 예를 들어, Apache Tomcat 서버와 WebSphere Application Server 전체 프로파일 서버의 혼합을 가진 팜은 올바르지 않은 구성입니다. </blockquote>
                     </li>
                     <li>사용할 데이터베이스를 결정하십시오. 다음 중에서 선택할 수 있습니다.
                         <ul>
@@ -2132,7 +2132,7 @@ Ant 태스크를 사용하여 서버 팜을 계획할 때는 먼저 독립형 �
                             </li>
                         </ul>
                     </li>
-                    <li>팜의 모든 멤버 사이에서 신뢰 저장소의 서버 인증서를 교환하십시오. WebSphere Application Server Full 프로파일 및 WebSphere Application Server Liberty 프로파일을 사용하는 팜에서는 서버 간 통신이 SSL로 보호되므로 이러한 팜의 경우 신뢰 저장소의 서버 인증서 교환은 필수입니다.
+                    <li>팜의 모든 멤버 사이에서 신뢰 저장소의 서버 인증서를 교환하십시오. WebSphere Application Server 전체 프로파일 및 WebSphere Application Server Liberty 프로파일을 사용하는 팜에서는 서버 간 통신이 SSL로 보호되므로 이러한 팜의 경우 신뢰 저장소의 서버 인증서 교환은 필수입니다.
                         <ul>
                             <li><b>WebSphere Application Server Liberty 프로파일</b>
                                 <br/>

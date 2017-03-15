@@ -85,7 +85,7 @@ Installation Manager 모드에 대한 자세한 정보는 IBM Installation Manag
         [IBM Support Portal](http://www.ibm.com/support/entry/portal/product/other_software/ibm_mobilefirst_platform_foundation)에서 다운로드할 수 있는 최신 수정팩을 적용할 수도 있습니다. 수정팩에 대한 저장소를 입력하십시오. **fixpack_directory** 폴더에 수정팩의 압축을 풀면 저장소 파일은 **fixpack\_directory/MobileFirst\_Platform\_Server/disk1/diskTag.inf**에 있습니다. 
 
         **참고:** Installation Manager의 저장소에 기본 버전의 저장소가 없으면 수정팩을 설치할 수 없습니다. 수정팩은 증분식 설치 프로그램이므로 설치하려면 기본 버전의 저장소가 있어야 합니다.
-    * 파일을 선택하고 **확인**을 클릭하십시오.
+    * 이 파일을 선택하고 **확인**을 클릭하십시오.
     * **확인**을 클릭하여 **환경 설정** 패널을 닫으십시오.
 3. 제품의 라이센스 조항에 동의한 후 **다음**을 클릭하십시오.
 4. 제품을 설치하기 위한 패키지 그룹을 선택하십시오.
@@ -304,7 +304,7 @@ IBM Installation Manager용 샘플 응답 파일은 **Silent\_Install\_Sample_Fi
         </tr>
     </table>
 
-2. 샘플 파일의 파일 액세스 권한을 가능한 한 제한적으로 변경하십시오. 4단계에서 일부 비밀번호를 제공해야 합니다. 동일한 컴퓨터의 다른 사용자가 이러한 비밀번호를 모르게 하려면 본인 외의 사용자에 대해 파일의 읽기 권한을 제거해야 합니다. 다음 예와 같이 명령을 사용할 수 있습니다. 
+2. 샘플 파일의 파일 액세스 권한을 가능하면 제한적으로 변경하십시오. 4단계에서 일부 비밀번호를 제공해야 합니다. 동일한 컴퓨터의 다른 사용자가 이러한 비밀번호를 모르게 하려면 본인 외의 사용자에 대해 파일의 읽기 권한을 제거해야 합니다. 다음 예와 같이 명령을 사용할 수 있습니다. 
     * UNIX의 경우: `chmod 600 <target-file.xml>`
     * Windows의 경우: `cacls <target-file.xml> /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 3. 마찬가지로, 서버가 WebSphere Application Server Liberty 프로파일 또는 Apache Tomcat 서버이고 사용하는 사용자 계정에서만 시작되도록 설정된 경우, 다음 파일에서도 본인 외의 사용자에 대해 읽기 권한을 제거해야 합니다. 

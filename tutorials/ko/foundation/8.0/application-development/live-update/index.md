@@ -14,7 +14,7 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-사용자 세그먼트화는 각 그룹의 사용자 간 유사성이 반영된 여러 그룹으로 사용자를 나누는 관행입니다. 일반적인 예는 [지리적 세그먼트화](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation)로, 이는 지리적 기준에 따라 사용자를 나눕니다. 사용자 세그먼트화의 목적은 각 세그먼트에서 사용자를 관련시킬 방법을 결정하여 값을 최대화하는 것입니다. 
+사용자 세그먼트화는 각 그룹의 사용자 간 유사성이 반영된 여러 그룹으로 사용자를 나누는 관행입니다. 일반적인 예는 [geographic segmentation](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation)으로, 이는 지리적 기준에 따라 사용자를 나눕니다. 사용자 세그먼트화의 목적은 각 세그먼트에서 사용자를 관련시킬 방법을 결정하여 값을 최대화하는 것입니다. 
 
 {{ site.data.keys.product }}의 활성 업데이트 기능을 사용하여 애플리케이션의 각 사용자 세그먼트에 대한 서로 다른 구성을 간단하게 정의하고 제공할 수 있습니다. 해당 {{ site.data.keys.mf_console }}에는 각 세그먼트에 대한 구성의 값 및 해당 구성의 구조를 정의하는 데 필요한 컴포넌트가 포함되어 있습니다. 구성을 이용하는 데 필요한 클라이언트 SDK(Android 및 iOS **고유** 애플리케이션에 사용 가능)도 제공됩니다. 
 
@@ -164,8 +164,8 @@ downloads:
                             <li><i>ID</i> - 세그먼트의 고유 ID입니다. 문자열이며 편집할 수 없습니다. </li>
                             <li><i>이름</i> - 세그먼트의 구체적인 이름입니다. 문자열이며 편집 가능합니다. </li>
                             <li><i>설명</i> - 세그먼트에 대한 간략한 설명입니다. 문자열이며 편집 가능합니다. </li>
-                            <li><i>기능</i> - 스키마에 정의된 기능 목록으로, 사용자는 스키마 기본값과 다른 기능에 정적 값을 설정할 수 있습니다. </li>
-                            <li><i>특성</i> - 스키마에 정의된 특성 목록으로, 사용자는 스키마 기본값과 다른 특성에 정적 값을 설정할 수 있습니다. </li>
+                            <li><i>기능</i> - 스키마에 정의된 기능 목록으로, 사용자가 스키마 기본값과 다른 기능에 정적 값을 설정할 수 있습니다. </li>
+                            <li><i>특성</i> - 스키마에 정의된 특성 목록으로, 사용자가 스키마 기본값과 다른 특성에 정적 값을 설정할 수 있습니다. </li>
                         </ul>
                     </li>
                 </ul>
@@ -181,7 +181,7 @@ downloads:
     </div>
 </div>
 
-#### 기본값을 사용하여 스키마 기능 및 특성을 정의하십시오. 
+#### 기본값을 사용하여 스키마 기능 및 특성 정의
 {: #define-schema-features-and-properties-with-default-values }
 <img class="gifplayer" alt="스키마 기능 및 특성 추가" src="add-feature-property.png"/>
 
@@ -250,7 +250,7 @@ cordova plugin add cordova-plugin-mfp-liveupdate
         transitive: true
    }   
    ```
-    
+
 ## 활성 업데이트 SDK 사용
 {: #using-the-live-update-sdk }
 여러 가지 방식으로 활성 업데이트를 사용할 수 있습니다. 

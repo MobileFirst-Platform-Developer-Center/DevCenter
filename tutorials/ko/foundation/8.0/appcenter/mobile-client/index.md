@@ -167,7 +167,7 @@ iOS 9부터 회사 애플리케이션이 열려 있는 경우, 프로비저닝 �
 {: #installing-the-client-on-a-windows-phone-8-universal-mobile-device }
 브라우저에 액세스 URL을 입력하고, 신임 정보를 입력한 후 필수 단계를 완료하여, 설치 프로그램 플래그로 표시되어 있는 서명된 애플리케이션 또는 모바일 클라이언트를 설치할 수 있습니다. 회사 계정이 모바일 디바이스에 사전 설치되어 있어야 합니다. 
 
-회사에서 공개한 앱을 설치하려면 모바일 디바이스에 회사 계정을 추가해야 합니다. 애플리케이션 등록 토큰(AET)을 Windows Phone 디바이스에 다운로드해야 합니다. 이 AET는 {{site.data.keys.mf_server }}에 이미 있어야 합니다. Application Center 콘솔을 사용하여 {{site.data.keys.mf_server }}에 업로드됩니다. 자세한 내용은 [Windows 8 Universal의 애플리케이션 등록 토큰](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal)을 참조하십시오. 
+회사에서 공개한 앱을 설치하려면 모바일 디바이스에 회사 계정을 추가해야 합니다. 애플리케이션 등록 토큰(AET)을 Windows Phone 디바이스에 다운로드해야 합니다. 이 AET는 {{ site.data.keys.mf_server }}에 이미 있어야 합니다. Application Center 콘솔을 사용하여 {{ site.data.keys.mf_server }}에 업로드됩니다. 자세한 내용은 [Windows 8 Universal의 애플리케이션 등록 토큰](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal)을 참조하십시오. 
 
 1. 모바일 디바이스에서 브라우저를 시작하십시오. 
 2. 주소 텍스트 필드에 다음 액세스 URL을 입력하십시오. `http://hostname:portnumber/applicationcenter/installers. html`. 
@@ -419,7 +419,7 @@ iOS 9부터 회사 애플리케이션이 열려 있는 경우, 프로비저닝 �
 
     Windows Phone 애플리케이션 패키지(.xap) 파일이 서명되었지만 디바이스가 회사 애플리케이션에 등록되어 있지 않습니다. 먼저 회사의 애플리케이션 등록 토큰을 디바이스에 설치해야 합니다. 
 
-* **이 앱을 설치할 수 있는지 확인하기 위해 회사 계정에 문의할 수 없었습니다. ...**
+* **이 앱을 설치할 수 있는지 확인하기 위해 회사 계정에 문의할 수 없었습니다. **
 
     회사 계정이 만료 또는 차단되었거나 Microsoft 서버가 일시적으로 응답하지 않을 수 있습니다. 디바이스가 인터넷에 연결되어 있고 Microsoft 서버에 연결되어 있는지 확인한 후 다시 시도하십시오. 
 
@@ -544,7 +544,7 @@ Application Center 서버에서 사용 가능한 새 버전의 모바일 클라�
 
 최신 버전의 애플리케이션이 발견되면 최신 버전을 다운로드하여 설치하도록 요청됩니다. 
 
-Application Center 클라이언트 애플리케이션의 자동 업그레이드는 기본적으로 **appCenterAutoUpgrade** 특성을 **true**로 설정하여 사용합니다. 이 특성은 Application Center의 {{site.data.keys.product_full }} 프로젝트(**IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**)에 있습니다. 
+Application Center 클라이언트 애플리케이션의 자동 업그레이드는 기본적으로 **appCenterAutoUpgrade** 특성을 **true**로 설정하여 사용합니다. 이 특성은 Application Center의 {{ site.data.keys.product_full }} 프로젝트(**IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**)에 있습니다. 
 
 자동 업그레이드를 사용 안함으로 설정하려면 이 특성을 false로 설정하고 필요한 플랫폼에 대해 프로젝트를 다시 빌드해야 합니다. 
 

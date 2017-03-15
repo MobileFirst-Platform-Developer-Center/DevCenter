@@ -61,14 +61,14 @@ Gradle을 사용하여 {{ site.data.keys.product_adj }} SDK로 Android 애플리
 
 Android Studio 및 Android SDK가 올바르게 설정되었는지 확인하십시오. 시스템을 설정하는 방법에 대한 자세한 정보는 [Android Studio 개요](http://developer.android.com/tools/studio/index.html)를 참조하십시오. {{ site.data.keys.product }}로 업그레이드하려면 먼저 프로젝트가 Android Studio/Gradle 설정을 준수하고 오류 없이 컴파일되어야 합니다. 
 
-> **참고:** 이 태스크는 Android 프로젝트가 Android Studio로 작성되었고 [Adding the {{ site.data.keys.product }} SDK to a new or existing application with Android Studio (7.1)](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/t_dev_new_w_gradle.html)에서 설명하는 것처럼 {{ site.data.keys.product_adj }} SDK가 함께 추가되었다고 가정합니다.
+> **참고:** 이 태스크는 Android 프로젝트가 Android Studio로 작성되었고 [Android Studio를 사용하여 신규 또는 기존 애플리케이션에 {{ site.data.keys.product }} SDK 추가(7.1)](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/dev/t_dev_new_w_gradle.html)에서 설명하는 것처럼 {{ site.data.keys.product_adj }} SDK가 함께 추가되었다고 가정합니다.
 Android Studio 프로젝트가 이전 버전의 {{ site.data.keys.product_adj }} SDK를 추가하도록 설정된 경우, **build.gradle** 종속 항목 격납장치에서 **compile** 그룹을 제거하십시오. 예를 들어, 7.1에서 업그레이드하는 경우 다음 그룹을 제거하십시오. 
 
 ```xml
-compile group: 'com.ibm.mobile.foundation', 
-            name:'ibmmobilefirstplatformfoundation', 
-            version:'7.1.0.0', 
-            ext: 'aar', 
+compile group: 'com.ibm.mobile.foundation',
+            name:'ibmmobilefirstplatformfoundation',
+            version:'7.1.0.0',
+            ext: 'aar',
             transitive: true
 ```
 
@@ -103,7 +103,7 @@ V8.0에서 중단되거나 중단되지 않은 클라이언트 측 API를 대체
 | {::nomarkdown}<ul><li><code>WLClient.getLastAccessToken()</code></li><li><code>WLClient.getLastAccessToken(java.lang.String scope)</code></li></ul>{:/} | [`AuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc)를 사용하십시오.  | 
 | `WLClient.getRequiredAccessTokenScope(int status, java.lang.String header)` | [`AuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLAuthorizationManager.html?view=kc)를 사용하십시오.  | 
 | `WLClient.logActivity(java.lang.String activityType)` | [`com.worklight.common.Logger`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/common/Logger.html?view=kc)를 사용하십시오.  | 
-| `WLAuthorizationPersistencePolicy` | 대체 없음. 권한 지속성을 구현하려면 애플리케이션 코드에 인증 토큰을 저장하고 사용자 정의 HTTP 요청을 작성하십시오. 자세한 정보는 [Java™ custom resource-request implementation sample](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_custom_request_to_resource_java.html?view=kc#c_custom_request_to_resource_hybrid)을 참조하십시오.  | 
+| `WLAuthorizationPersistencePolicy` | 대체 없음. 권한 지속성을 구현하려면 애플리케이션 코드에 인증 토큰을 저장하고 사용자 정의 HTTP 요청을 작성하십시오. 자세한 정보는 [Java™ 사용자 정의 자원 요청 구현 샘플](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.dev.doc/dev/c_custom_request_to_resource_java.html?view=kc#c_custom_request_to_resource_hybrid)을 참조하십시오.  | 
 | {::nomarkdown}<ul><li><code>WLSimpleSharedData.setSharedToken(myName, myValue)</code></li><li><code>WLSimpleSharedData.getSharedToken(myName)</code></li><li><code>WLSimpleSharedData.clearSharedToken(myName)</code></li></ul>{:/} | 애플리케이션에서 토큰을 공유하는 Android API를 사용하십시오.  |
 | `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | 대체 없음 | 
 | `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | [`BaseChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/challengehandler/BaseChallengeHandler.html?view=kc)을 사용하십시오.  | 

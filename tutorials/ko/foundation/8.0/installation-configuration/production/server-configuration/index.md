@@ -161,7 +161,7 @@ LDAP와 같은 사용자 저장소를 통한 인증 방법을 사용하도록 �
 {: #configuring-websphere-application-server-full-profile-for-mobilefirst-server-administration }
 {{ site.data.keys.mf_server }} 관리 Java EE 역할을 두 웹 애플리케이션의 사용자 세트에 맵핑하여 보안을 구성합니다. 
 
-WebSphere  Application Server 콘솔에서 사용자 구성의 기본을 정의합니다. 일반적으로 다음 주소를 사용하여 콘솔에 액세스합니다. `https://localhost:9043/ibm/console/`
+WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의합니다. 일반적으로 다음 주소를 사용하여 콘솔에 액세스합니다. `https://localhost:9043/ibm/console/`
 
 1. **보안 → 글로벌 보안**을 선택하십시오. 
 2. **보안 구성 마법사**를 선택하여 사용자를 구성하십시오.
@@ -181,7 +181,7 @@ WebSphere  Application Server 콘솔에서 사용자 구성의 기본을 정의�
 {: #configuring-websphere-application-server-liberty-profile-for-mobilefirst-server-administration }
 WebSphere  Application Server Liberty 프로파일에서는 서버의 **server.xml** 구성 파일에 **mfpadmin**, **mfpdeployer**, **mfpmonitor** 및 **mfpoperator**의 역할을 구성합니다. 
 
-보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. 각 `<application>` 요소의 `<application-bnd>` 요소에 `<security-role>` 요소를 작성하십시오. 각 `<security-role>` 요소는 **mfpadmin**, mfpdeployer, mfpmonitor 및 mfpoperator 역할 각각의 요소입니다. 이러한 역할을 적절한 사용자 그룹 이름(이 예에서는 **mfpadmingroup**, **mfpdeployergroup**, **mfpmonitorgroup** 또는 **mfpoperatorgroup**)에 맵핑하십시오. 이러한 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
+보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. 각 `<application>` 요소의 `<application-bnd>` 요소에 `<security-role>` 요소를 작성하십시오. 각 `<security-role>` 요소는 **mfpadmin**, mfpdeployer, mfpmonitor 및 mfpoperator 역할 각각의 요소입니다. 이러한 역할을 적절한 사용자 그룹 이름(이 예에서는 **mfpadmingroup**, **mfpdeployergroup**, **mfpmonitorgroup** 또는 **mfpoperatorgroup**)에 맵핑하십시오. 이 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다.
 
 그런 다음, 다수의 애플리케이션(예를 들어, 80개의 애플리케이션)이 설치된 상태에서 양호한 응답 시간을 유지하기 위해 관리 데이터베이스에 대한 연결 풀을 구성해야 합니다. 
 
@@ -223,7 +223,7 @@ WebSphere  Application Server Liberty 프로파일에서는 서버의 **server.x
    <connectionManager id="AppCenterPool" minPoolSize="10" maxPoolSize="40"/>
    ```
 
-3. `<dataSource>` 요소에 연결 관리자에 대한 참조를 정의하십시오.
+3. `<dataSource>` 요소에서 연결 관리자에 대한 참조를 정의하십시오.
 
    ```xml
    <dataSource id="MFPADMIN" jndiName="mfpadmin/jdbc/mfpAdminDS" connectionManagerRef="AppCenterPool">
@@ -292,7 +292,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
       다른 모든 JNDI 특성의 경우 이름 앞에 애플리케이션의 컨텍스트 루트가 접두부로 추가되어야 합니다. 
 
        * 라이브 업데이트 서비스의 경우 컨텍스트 루트는 **/[adminContextRoot]config**여야 합니다. 예를 들어, 관리 서비스의 컨텍스트 루트가 **/mfpadmin**이면 라이브 업데이트 서비스의 컨텍스트 루트는 **/mfpadminconfig**여야 합니다.
-       * 푸시 서비스의 경우 컨텍스트 루트를 **/imfpush**로 정의해야 합니다. 그러지 않을 경우, 컨텍스트 루트는 SDK에서 하드코딩되므로 클라이언트 디바이스가 푸시 서비스에 연결할 수 없습니다.
+       * 푸시 서비스의 경우 컨텍스트 루트를 **/imfpush**로 정의해야 합니다. 그렇지 않으면 컨텍스트 루트가 SDK에서 하드코딩되므로 클라이언트 디바이스가 여기에 연결될 수 없습니다. 
        * {{ site.data.keys.product_adj }} Administration Service 애플리케이션, {{ site.data.keys.mf_console }} 및 {{ site.data.keys.product_adj }} 런타임의 경우, 원하는 대로 컨텍스트 루트를 정의할 수 있습니다. 그러나 기본적으로 컨텍스트 루트는 {{ site.data.keys.product_adj }} Administration Service의 경우 **/mfpadmin**이고, {{ site.data.keys.mf_console }}의 경우 **/mfpconsole**이며, {{ site.data.keys.product_adj }} 런타임의 경우 **/mfp**입니다. 
 
       예를 들어, 다음과 같습니다. 
@@ -356,8 +356,8 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 | mfp.admin.jmx.connector  | 선택사항	           | JMX(Java Management Extensions) 커넥터 유형입니다.<br/>가능한 값은 `SOAP` 및 `RMI`입니다. 기본값은 SOAP입니다. | WebSphere  Application Server 전용. |
 | mfp.admin.jmx.host       | 선택사항	           | JMX REST 연결을 위한 호스트 이름입니다. | Liberty 프로파일 전용. |
 | mfp.admin.jmx.port	   | 선택사항	           | JMX REST 연결을 위한 포트입니다. | Liberty 프로파일 전용. |
-| mfp.admin.jmx.user       | Liberty 프로파일 및 WebSphere Application Server 팜의 경우 필수, 그 외의 경우 선택사항 | JMX REST 연결을 위한 사용자 이름입니다. | WebSphere Application Server Liberty 프로파일: JMX REST 연결을 위한 사용자 이름입니다. <br/><br/>WebSphere Application Server 팜: SOAP 연결을 위한 사용자 이름입니다. <br/><br/>WebSphere Application Server Network Deployment: {{ site.data.keys.mf_server }} 관리 애플리케이션에 맵핑되는 가상 호스트가 기본 호스트가 아닌 경우, WebSphere 관리자의 사용자 이름입니다. <br/><br/>Liberty 집합: Liberty 제어기의 server.xml 파일에서 `<administrator-role>`요소에 정의된 제어기 관리자의 사용자 이름입니다.  |
-| mfp.admin.jmx.pwd	| Liberty 프로파일 및 WebSphere Application Server 팜의 경우 필수, 그 외의 경우 선택사항 | JMX REST 연결을 위한 사용자 비밀번호입니다. | WebSphere Application Server Liberty 프로파일: JMX REST 연결을 위한 사용자 비밀번호입니다. <br/><br/>WebSphere Application Server 팜: SOAP 연결을 위한 사용자 비밀번호입니다. <br/><br/>WebSphere Application Server Network Deployment: {{ site.data.keys.mf_server }} 관리 애플리케이션에 맵핑되는 가상 호스트가 기본 호스트가 아닌 경우, WebSphere 관리자의 사용자 비밀번호입니다. <br/><br/>Liberty 집합: Liberty 제어기의 server.xml 파일에서 `<administrator-role>` 요소에 정의된 제어기 관리자의 비밀번호입니다.  |
+| mfp.admin.jmx.user       | Liberty 프로파일 및 WebSphere Application Server 팜의 경우 필수, 그 외의 경우 선택사항 | JMX REST 연결을 위한 사용자 이름입니다. | WebSphere Application Server Liberty 프로파일: JMX REST 연결을 위한 사용자 이름입니다. <br/><br/>WebSphere Application Server 팜: SOAP 연결을 위한 사용자 이름입니다. <br/><br/>WebSphere Application Server Network Deployment: {{ site.data.keys.mf_server }} 관리 애플리케이션에 맵핑되는 가상 호스트가 기본 호스트가 아닌 경우, WebSphere 관리자의 사용자 이름입니다. <br/><br/>Liberty Collective: Liberty 제어기의 server.xml 파일에서 `<administrator-role>`요소에 정의된 제어기 관리자의 사용자 이름입니다.  |
+| mfp.admin.jmx.pwd	| Liberty 프로파일 및 WebSphere Application Server 팜의 경우 필수, 그 외의 경우 선택사항 | JMX REST 연결을 위한 사용자 비밀번호입니다. | WebSphere Application Server Liberty 프로파일: JMX REST 연결을 위한 사용자 비밀번호입니다. <br/><br/>WebSphere Application Server 팜: SOAP 연결을 위한 사용자 비밀번호입니다. <br/><br/>WebSphere Application Server Network Deployment: {{ site.data.keys.mf_server }} 관리 애플리케이션에 맵핑되는 가상 호스트가 기본 호스트가 아닌 경우, WebSphere 관리자의 사용자 비밀번호입니다. <br/><br/>Liberty Collective: Liberty 제어기의 server.xml 파일에서 `<administrator-role>` 요소에 정의된 제어기 관리자의 비밀번호입니다.  |
 | mfp.admin.rmi.registryPort | 선택사항 | 방화벽을 통한 JMX 연결에 사용되는 RMI 레지스트리 포트입니다. | Tomcat 전용. |
 | mfp.admin.rmi.serverPort | 선택사항 | 방화벽을 통한 JMX 연결에 사용되는 RMI 서버 포트입니다. | Tomcat 전용. |
 | mfp.admin.jmx.dmgr.host | 필수 | 배치 관리자 호스트 이름입니다. | WebSphere Application Server Network Deployment 전용. |
@@ -398,7 +398,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 |--------------------------|-----------------------|--------------|
 | mfp.admin.audit | 선택사항 | {{ site.data.keys.mf_console }}의 감사 기능을 사용하지 않으려면 이 특성을 false로 설정하십시오. 기본값은 true입니다. |
 | mfp.admin.environmentid | 선택사항 | MBean의 등록을 위한 환경 ID입니다. {{ site.data.keys.mf_server }}의 서로 다른 인스턴스가 동일한 애플리케이션 서버에 설치되는 경우 이 ID를 사용하십시오. 이 ID는 동일한 설치에 속하는 관리 서비스, 콘솔 및 런타임을 판별합니다. 관리 서비스는 환경 ID가 동일한 런타임만 관리합니다. |
-| mfp.admin.serverid | 서버 팜 및 Liberty 집합의 경우 필수, 그 외의 경우 선택사항 | 서버 팜: 서버 ID입니다. 팜의 서버마다 달라야 합니다. <br/><br/> Liberty 집합: 값은 controller여야 합니다.  |
+| mfp.admin.serverid | 서버 팜 및 Liberty Collective의 경우 필수, 그 외의 경우 선택사항 | 서버 팜: 서버 ID입니다. 팜의 서버마다 달라야 합니다. <br/><br/> Liberty Collective: 값은 controller여야 합니다.  |
 | mfp.admin.hsts | 선택사항 | RFC 6797에 따라 HTTP Strict Transport Security를 사용 가능하게 설정하려면 'true'로 설정하십시오. |
 | mfp.topology.platform | 선택사항 | 서버 유형입니다. 올바른 값은 다음과 같습니다.{::nomarkdown}<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>{:/}값을 설정하지 않으면 애플리케이션에서 서버 유형을 추측합니다. |
 | mfp.topology.clustermode | 선택사항 | 서버 유형에 더하여, 여기에 서버 토폴로지를 지정하십시오. 올바른 값은 다음과 같습니다.{::nomarkdown}<ul><li>Standalone</li><li>Cluster</li><li>Farm</li></ul>{:/}기본값은 Standalone입니다. |
@@ -417,7 +417,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 | mfp.admin.db.openjpa.ConnectionURL | 선택사항/조건부 필수 | 데이터베이스 연결의 URL입니다. **mfp.admin.db.jndi.name** 특성에 지정된 데이터 소스가 애플리케이션 서버 구성에 정의되어 있지 않는 경우에만 필수입니다. |
 | mfp.admin.db.openjpa.ConnectionUserName | 선택사항/조건부 필수 | 데이터베이스 연결을 위한 사용자 이름입니다. **mfp.admin.db.jndi.name** 특성에 지정된 데이터 소스가 애플리케이션 서버 구성에 정의되어 있지 않는 경우에만 필수입니다. |
 | mfp.admin.db.openjpa.ConnectionPassword | 선택사항/조건부 필수 | 데이터베이스 연결을 위한 비밀번호입니다. **mfp.admin.db.jndi.name** 특성에 지정된 데이터 소스가 애플리케이션 서버 구성에 정의되어 있지 않는 경우에만 필수입니다. |
-| mfp.admin.db.openjpa.Log | 선택사항 | 이 특성은 OpenJPA에 전달되며 JPA 로깅을 사용 가능하게 설정합니다. 자세한 정보는 [Apache OpenJPA 사용자 안내서](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html)를 참조하십시오.  |
+| mfp.admin.db.openjpa.Log | 선택사항 | 이 특성은 OpenJPA에 전달되며 JPA 로깅을 사용으로 설정합니다. 자세한 정보는 [Apache OpenJPA 사용자 안내서](http://openjpa.apache.org/docs/openjpa-0.9.0-incubating/manual/manual.html)를 참조하십시오.  |
 | mfp.admin.db.type | 선택사항 | 이 특성은 데이터베이스 유형을 정의합니다. 기본값은 연결 URL에서 추론됩니다. |
 
 #### 관리 서비스의 JNDI 특성: 라이센싱
@@ -468,7 +468,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 
 | 특성                 | 선택사항 또는 필수 | 설명  |
 |--------------------------|-----------------------|--------------|
-| mfp.admin.endpoint | 선택사항 | {{ site.data.keys.mf_console }}에서 {{ site.data.keys.mf_server }} 관리 REST 서비스를 찾을 수 있도록 합니다. **mfp-admin-service.war** 웹 애플리케이션의 외부 주소 및 컨텍스트 루트를 지정하십시오. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내에 있는 내부 URI가 아니라 외부 URI이어야 합니다. 예: https://wl.net:443/mfpadmin. |
+| mfp.admin.endpoint | 선택사항 | {{ site.data.keys.mf_console }}에서 {{ site.data.keys.mf_server }} 관리 REST 서비스를 찾을 수 있도록 합니다. **mfp-admin-service.war** 웹 애플리케이션의 외부 주소 및 컨텍스트 루트를 지정하십시오. 방화벽 또는 안전한 리버스 프록시가 있는 시나리오에서는 이 URI가 로컬 LAN 내의 내부 URI가 아닌 외부 URI여야 합니다. 예: https://wl.net:443/mfpadmin. |
 | mfp.admin.global.logout | 선택사항 | 콘솔 로그아웃 중 WebSphere 사용자 인증 캐시를 지웁니다. 이 특성은 WebSphere Application Server V7에만 유용합니다. 기본값은 false입니다. |
 | mfp.admin.hsts | 선택사항 | RFC 6797에 따라 HTTP [Strict Transport Security](http://www.w3.org/Security/wiki/Strict_Transport_Security)를 사용 가능하게 설정하려면 이 특성을 true로 설정하십시오. 자세한 정보는 W3C Strict Transport Security 페이지를 참조하십시오. 기본값은 false입니다. |
 | mfp.admin.ui.cors | 선택사항 | 기본값은 true입니다. 자세한 정보는 [W3C Cross-Origin Resource Sharing 페이지](http://www.w3.org/TR/cors/)를 참조하십시오. |
@@ -493,14 +493,14 @@ Apache Tomcat 웹 애플리케이션 서버에서 {{ site.data.keys.mf_server }}
 |----------|-------------|
 | mfp.admin.jmx.dmgr.host | 필수. 배치 관리자의 호스트 이름입니다. WebSphere Application Server Network Deployment 전용. |
 | mfp.admin.jmx.dmgr.port | 필수. 배치 관리자의 RMI 또는 SOAP 포트입니다. WebSphere Application Server Network Deployment 전용. |
-| mfp.admin.jmx.host | Liberty 전용. JMX REST 연결을 위한 호스트 이름입니다. Liberty 집합의 경우, 제어기의 호스트 이름을 사용하십시오. |
-| mfp.admin.jmx.port | Liberty 전용. JMX REST 연결을 위한 포트 번호입니다. Liberty 집합의 경우, REST 커넥터의 포트는 `<httpEndpoint>` 요소에 선언된 httpsPort 속성의 값과 동일해야 합니다. 이 요소는 Liberty 제어기의 server.xml 파일에서 선언됩니다. |
-| mfp.admin.jmx.user | 선택사항. WebSphere Application Server 팜: SOAP 연결의 사용자 이름입니다. <br/><br/>Liberty 집합: Liberty 제어기의 server.xml 파일에서 `<administrator-role>`요소에 정의된 제어기 관리자의 사용자 이름입니다.  |
-| mfp.admin.jmx.pwd | 선택사항. WebSphere Application Server 팜: SOAP 연결의 사용자 비밀번호입니다. <br/><br/>Liberty 집합: Liberty 제어기의 server.xml 파일에서 `<administrator-role>` 요소에 정의된 제어기 관리자의 비밀번호입니다.  |
-| mfp.admin.serverid | 서버 팜 및 Liberty 집합의 경우 필수, 그 외의 경우 선택사항<br/><br/>서버 팜: 서버 ID입니다. 팜의 서버마다 달라야 합니다. <br/><br/>Liberty 집합: 멤버 ID입니다. ID는 집합의 멤버마다 달라야 합니다. controller 값은 집합 제어기용으로 예약되어 있으므로 사용할 수 없습니다. |
+| mfp.admin.jmx.host | Liberty 전용. JMX REST 연결을 위한 호스트 이름입니다. Liberty Collective의 경우, 제어기의 호스트 이름을 사용하십시오. |
+| mfp.admin.jmx.port | Liberty 전용. JMX REST 연결을 위한 포트 번호입니다. Liberty Collective의 경우, REST 커넥터의 포트는 `<httpEndpoint>` 요소에 선언된 httpsPort 속성의 값과 동일해야 합니다. 이 요소는 Liberty 제어기의 server.xml 파일에서 선언됩니다. |
+| mfp.admin.jmx.user | 선택사항. WebSphere Application Server 팜: SOAP 연결의 사용자 이름입니다. <br/><br/>Liberty Collective: Liberty 제어기의 server.xml 파일에서 `<administrator-role>`요소에 정의된 제어기 관리자의 사용자 이름입니다.  |
+| mfp.admin.jmx.pwd | 선택사항. WebSphere Application Server 팜: SOAP 연결의 사용자 비밀번호입니다. <br/><br/>Liberty Collective: Liberty 제어기의 server.xml 파일에서 `<administrator-role>` 요소에 정의된 제어기 관리자의 비밀번호입니다.  |
+| mfp.admin.serverid | 서버 팜 및 Liberty Collective의 경우 필수, 그 외의 경우 선택사항<br/><br/>서버 팜: 서버 ID입니다. 팜의 서버마다 달라야 합니다. <br/><br/>Liberty Collective: 멤버 ID입니다. ID는 집합의 멤버마다 달라야 합니다. controller 값은 집합 제어기용으로 예약되어 있으므로 사용할 수 없습니다. |
 | mfp.topology.platform | 선택사항. 서버 유형입니다. 올바른 값은 다음과 같습니다.<ul><li>Liberty</li><li>WAS</li><li>Tomcat</li></ul>값을 설정하지 않으면 애플리케이션에서 서버 유형을 추측합니다. |
 | mfp.topology.clustermode | 선택사항. 서버 유형에 더하여, 여기에 서버 토폴로지를 지정하십시오. 올바른 값은 다음과 같습니다.<ul><li>Standalone<li>Cluster</li><li>Farm</li></ul>기본값은 Standalone입니다. |
-| mfp.admin.jmx.replica | 선택사항. Liberty 집합 전용. <br/><br/>이 런타임을 관리하는 관리 컴포넌트가 서로 다른 Liberty 제어기(복제본)에 배치된 경우에만 이 특성을 설정하십시오. <br/><br/>서로 다른 제어기 복제본의 엔드포인트 목록(`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 구문을 사용함) |
+| mfp.admin.jmx.replica | 선택사항. Liberty Collective 전용. <br/><br/>이 런타임을 관리하는 관리 컴포넌트가 서로 다른 Liberty 제어기(복제본)에 배치된 경우에만 이 특성을 설정하십시오. <br/><br/>서로 다른 제어기 복제본의 엔드포인트 목록(`replica-1 hostname:replica-1 port, replica-2 hostname:replica-2 port,..., replica-n hostname:replica-n port` 구문을 사용함) |
 | mfp.analytics.console.url | 선택사항. Analytics 콘솔에 링크하는 URL입니다. 이 URL은 IBM {{ site.data.keys.mf_analytics }}에 의해 공개됩니다. {{ site.data.keys.mf_console }}에서 Analytics 콘솔에 액세스하려는 경우 이 특성을 설정하십시오. 예: `http://<hostname>:<port>/analytics/console` |
 | mfp.analytics.password | IBM {{ site.data.keys.mf_analytics }}의 데이터 시작점이 기본 인증으로 보호되는 경우에 사용되는 비밀번호입니다. |
 | mfp.analytics.url | 수신 분석 데이터를 받는 URL입니다. 이 URL은 IBM {{ site.data.keys.mf_analytics }}에 의해 공개됩니다. 예: `http://<hostname>:<port>/analytics-service/rest` |
@@ -647,7 +647,7 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 
 배치되는 {{ site.data.keys.product_adj }} 애플리케이션의 최대 크기에 따라 DB2  로그 공간을 증가시켜야 할 수도 있습니다. 
 
-`DB2 update db cfg` 명령을 사용하여 **LOGSECOND** 매개변수를 늘리십시오. 데이터베이스가 활성화된 경우에는 공간이 할당되지 않습니다. 대신 필요한 경우에만 공간이 할당됩니다. 
+`DB2 update db cfg` 명령을 사용하여 **LOGSECOND** 매개변수를 늘리십시오. 데이터베이스가 활성화된 경우 공간이 할당되지 않습니다. 대신 필요한 경우에만 공간이 할당됩니다. 
 
 ### {{ site.data.keys.mf_server }} 및 Application Center 데이터 소스에 대한 DB2 HADR 심리스(seamless) 장애 복구 구성
 {: #configuring-db2-hadr-seamless-failover-for-mobilefirst-server-and-application-center-data-sources }
@@ -784,7 +784,7 @@ Application Center 로그는 **com.ibm.puremeap**로 시작합니다.
 
 로그 파일의 위치를 포함하여 각 애플리케이션 서버의 로깅 모델에 대한 자세한 정보는 다음 표에 표시된 관련 애플리케이션 서버에 대한 문서를 참조하십시오.
 
-| 애플리케이션 서버 | 문서의 위치 |
+| Application server | 문서의 위치 |
 | -------------------|---------------------------|
 | Apache Tomcat	     | [http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default)](http://tomcat.apache.org/tomcat-7.0-doc/logging.html#Using_java.util.logging_(default)) |
 | WebSphere Application Server 버전 8.5 전체 프로파일 | 	[http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html) |

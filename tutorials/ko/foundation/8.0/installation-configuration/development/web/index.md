@@ -11,7 +11,7 @@ weight: 6
 웹 애플리케이션을 개발하고 테스트하는 것은 사용자가 선택한 웹 브라우저에서 로컬 HTML 파일을 미리 보는 것만큼 쉽습니다.   
 개발자는 선택한 IDE를 사용할 수 있고 요구에 맞는 모든 프레임워크를 사용할 수 있습니다. 
 
-하지만 웹 애플리케이션 개발을 방해하는 문제가 하나 있을 수 있습니다. [동일 출처 정책](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) 위반으로 인해 웹 애플리케이션에 오류가 발생할 수 있습니다. 동일 출처 정책은 웹 브라우저에서 적용되는 제한사항입니다. 예를 들어, 애플리케이션이 도메인 **example.com**에서 호스팅되는 경우 동일한 서버는 다른 서버 또는 해당 문제에 대해 {{ site.data.keys.mf_server }}에서 사용할 수 있는 컨텐츠에 액세스할 수 없습니다. 
+하지만 웹 애플리케이션 개발을 방해하는 문제가 하나 있을 수 있습니다. [동일 출처 정책](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy) 위반으로 인해 웹 애플리케이션에 오류가 발생할 수 있습니다. 동일 출처 정책은 웹 브라우저에 적용되는 제한사항입니다. 예를 들어, 애플리케이션이 도메인 **example.com**에서 호스팅되는 경우 동일한 애플리케이션은 다른 서버 또는 해당 문제에 대해 {{ site.data.keys.mf_server }}에서 사용할 수 있는 컨텐츠에 액세스할 수 없습니다. 
 
 [{{ site.data.keys.product }} 웹 SDK를 사용해야 하는 웹 앱](../../../application-development/sdk/web)은 지원되는 토폴로지에서 처리되어야 합니다(예: 리버스 프록시를 사용하여 동일한 단일 출처는 유지하면서 적절한 서버로 내부적으로 요청의 경로를 재지정함). 
 
@@ -20,10 +20,27 @@ weight: 6
 - {{ site.data.keys.mf_server }}도 호스팅하는 동일한 WebSphere Full/Liberty 프로파일 애플리케이션 서버에서 웹 애플리케이션 자원 제공
 - Node.js를 프록시로 사용하여 애플리케이션 요청의 경로를 {{ site.data.keys.mf_server }}로 재지정
 
-<br/>
-**전제조건**  
-다음을 사용하려면 개발자의 워크스테이션에 Apache Maven 또는 Node.js가 설치되어 있어야 합니다.   
-지시사항은 [설치 안내서](../mobilefirst/installation-guide/)를 참조하십시오.
+#### 다음으로 이동
+{: #jump-to }
+- [전제조건](#prerequisites)
+- [WebSphere Liberty 프로파일을 사용하여 웹 애플리케이션 자원 제공](#using-websphere-liberty-profile-to-serve-the-web-application-resources)
+- [Node.js 사용](#using-nodejs)
+- [다음 단계](#next-steps)
+
+## 전제조건
+{: #prerequisites }
+-   {: #web-app-supported-browsers }
+    다음 브라우저 버전용 웹 애플리케이션이 지원됩니다. 버전 번호는 각 브라우저의 완전히 지원되는 버전 중 가장 빠른 버전을 나타냅니다. 
+
+    | 브라우저               | Chrome   | Safari<sup>*</sup>   | Internet Explorer   | Firefox   | Android 브라우저   |
+    |-----------------------|:--------:|:--------------------:|:-------------------:|:---------:|:-----------------:|
+    | **지원되는 버전** |  {{ site.data.keys.mf_web_browser_support_chrome_ver }} | {{ site.data.keys.mf_web_browser_support_safari_ver }} | {{ site.data.keys.mf_web_browser_support_ie_ver }} | {{ site.data.keys.mf_web_browser_support_firefox_ver }} | {{ site.data.keys.mf_web_browser_support_android_ver }}  |
+
+    <sup>*</sup> Safari의 경우, 개인용 브라우징 모드는 SPA(단일 페이지 애플리케이션)에 대해서만 지원됩니다. 다른 애플리케이션에서는 예상치 않은 동작이 발생할 수 있습니다. 
+
+    {% comment %} [sharonl][c-web-browsers-ms-edge] See information regarding Microsoft Edge support in Task 111165. {% endcomment %}
+
+-   다음 설정 지시사항을 수행하려면 개발자의 워크스테이션에 Apache Maven 또는 Node.js가 설치되어 있어야 합니다. 추가 지시사항은 [설치 안내서](../mobilefirst/installation-guide/)를 참조하십시오. 
 
 ## WebSphere Liberty 프로파일을 사용하여 웹 애플리케이션 자원 제공
 {: #using-websphere-liberty-profile-to-serve-the-web-application-resources }
@@ -31,8 +48,8 @@ weight: 6
 
 ### Maven webapp 원형 작성
 {: #creating-a-maven-webapp-archetype }
-1. **명령행** 창에서 선택하는 위치로 이동하십시오. 
-2. 명령을 실행하십시오. 
+1. **명령행** 창에서 사용자가 선택한 위치로 이동하십시오. 
+2. 다음 명령을 실행하십시오. 
 
    ```bash
    mvn archetype:generate -DgroupId=MyCompany -DartifactId=MyWebApp -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false

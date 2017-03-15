@@ -18,7 +18,7 @@ weight: 2
 
 #### 관계형 데이터베이스(DB2, Oracle 또는 MySQL)
 {: #relational-databases-db2-oracle-or-mysql }
-각 컴포넌트에는 테이블 세트가 필요합니다. 테이블은 Ant 태스크 또는 서버 구성 도구를 사용하여 각 컴포넌트에 고유한 SQL 스크립트를 실행하여 수동으로 작성될 수 있습니다([수동으로 데이터베이스 테이블 작성](#create-the-database-tables-manually) 참조). 각 컴포넌트의 테이블 이름은 겹치지 않습니다. 따라서 이 컴포넌트의 모든 테이블을 단일 스키마 아래에 배치할 수 있습니다. 
+각 컴포넌트에는 테이블 세트가 필요합니다. 테이블은 Ant 태스크 또는 Server Configuration Tool을 사용하여 각 컴포넌트에 고유한 SQL 스크립트를 실행하여 수동으로 작성될 수 있습니다([수동으로 데이터베이스 테이블 작성](#create-the-database-tables-manually) 참조). 각 컴포넌트의 테이블 이름은 겹치지 않습니다. 따라서 이 컴포넌트의 모든 테이블을 단일 스키마 아래에 배치할 수 있습니다. 
 
 하지만 각각 애플리케이션 서버에 자체 컨텍스트 루트를 가진 {{ site.data.keys.product }} 런타임의 여러 인스턴스를 설치하도록 결정하는 경우에는 모든 인스턴스에 자체 테이블 세트가 필요합니다. 이 경우 이들은 서로 다른 스키마에 있어야 합니다. 
 
@@ -35,7 +35,7 @@ weight: 2
 * [데이터베이스 사용자 및 권한](#database-users-and-privileges)
 * [데이터베이스 요구사항](#database-requirements)
 * [수동으로 데이터베이스 테이블 작성](#create-the-database-tables-manually)
-* [서버 구성 도구를 사용하여 데이터베이스 테이블 작성](#create-the-database-tables-with-the-server-configuration-tool)
+* [Server Configuration Tool을 사용하여 데이터베이스 테이블 작성](#create-the-database-tables-with-the-server-configuration-tool)
 * [Ant 태스크를 사용하여 데이터베이스 테이블 작성](#create-the-database-tables-with-ant-tasks)
 
 ## 데이터베이스 사용자 및 권한
@@ -44,7 +44,7 @@ weight: 2
 
 관계형 데이터베이스에 대한 액세스 권한을 가지도록 애플리케이션 서버에 배치되는 각각의 {{ site.data.keys.mf_server }} 애플리케이션에 대한 데이터 소스를 구성해야 합니다. 데이터 소스에는 데이터베이스에 액세스할 수 있는 특정 권한을 가진 사용자가 필요합니다. 작성해야 하는 사용자의 수는 {{ site.data.keys.mf_server }} 애플리케이션을 애플리케이션 서버에 배치하는 데 사용되는 설치 프로시저에 따라 다릅니다. 
 
-### 서버 구성 도구를 사용한 설치
+### Server Configuration Tool을 사용한 설치
 {: #installation-with-the-server-configuration-tool }
 모든 컴포넌트({{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 구성 서비스, {{ site.data.keys.mf_server }} 푸시 서비스 및 {{ site.data.keys.product }} 런타임)에 대해 동일한 사용자가 사용됩니다. 
 
@@ -67,7 +67,7 @@ weight: 2
 * DELETE TABLE
 * SELECT SEQUENCE
 
-Ant 태스크 또는 서버 구성 도구를 사용한 설치를 실행하기 전에 수동으로 테이블이 작성되지 않은 경우에는 테이블을 작성할 수 있는 사용자가 있는지 확인하십시오. 다음과 같은 권한도 필요합니다. 
+Ant 태스크 또는 Server Configuration Tool을 사용한 설치를 실행하기 전에 수동으로 테이블이 작성되지 않은 경우에는 테이블을 작성할 수 있는 사용자가 있는지 확인하십시오. 다음과 같은 권한도 필요합니다. 
 
 * CREATE INDEX
 * CREATE SEQUENCE
@@ -98,7 +98,7 @@ DB2에 대한 데이터베이스 요구사항을 검토하십시오. 단계를 �
 
 데이터베이스 문자 세트를 UTF-8로 설정했는지 확인하십시오. 
 
-데이터베이스의 페이지 크기는 32768이상이어야 합니다. 다음 프로시저에서는 페이지 크기가 32768인 데이터베이스를 작성합니다. 또한 사용자(**mfpuser**)를 작성한 후 이 사용자에게 데이터베이스 액세스 권한을 부여합니다. 그러면 서버 구성 도구 또는 Ant 태스크에서 테이블을 작성하는 데 이 사용자를 사용할 수 있습니다. 
+데이터베이스의 페이지 크기는 32768이상이어야 합니다. 다음 프로시저에서는 페이지 크기가 32768인 데이터베이스를 작성합니다. 또한 사용자(**mfpuser**)를 작성한 후 이 사용자에게 데이터베이스 액세스 권한을 부여합니다. 그러면 Server Configuration Tool 또는 Ant 태스크에서 테이블을 작성하는 데 이 사용자를 사용할 수 있습니다. 
 
 1. 운영 체제에 대해 적절한 명령을 사용하여 DB2 관리 그룹(예: **DB2USERS**)에서 예를 들어, **mfpuser**라는 시스템 사용자를 작성하십시오. 이 사용자에게 비밀번호(예: **mfpuser**)를 제공하십시오. 
 2. **SYSADM** 또는 **SYSCTRL** 권한을 가진 사용자로 DB2 명령행 프로세서를 여십시오. 
@@ -124,7 +124,7 @@ Oracle에 대한 데이터베이스 요구사항을 검토하십시오. 단계�
 
 런타임 사용자([데이터베이스 사용자 및 권한](#database-users-and-privileges)에 설명되어 있음)는 연관된 테이블스페이스와 {{ site.data.keys.product }} 서비스에 필요한 기술 데이터를 기록하는 데 충분한 할당량을 가지고 있어야 합니다. 제품에서 사용하는 테이블에 대한 자세한 정보는 [내부 런타임 데이터베이스](../installation-reference/#internal-runtime-databases)를 참조하십시오. 
 
-테이블은 런타임 사용자의 기본 스키마에서 작성될 것으로 예상됩니다. Ant 태스크 및 서버 구성 도구는 인수로 전달된 사용자의 기본 스키마에서 테이블을 작성합니다. 테이블 작성에 대한 자세한 정보는 [수동으로 Oracle 데이터베이스 테이블 작성](#creating-the-oracle-database-tables-manually)을 참조하십시오. 
+테이블은 런타임 사용자의 기본 스키마에서 작성될 것으로 예상됩니다. Ant 태스크 및 Server Configuration Tool은 인수로 전달된 사용자의 기본 스키마에서 테이블을 작성합니다. 테이블 작성에 대한 자세한 정보는 [수동으로 Oracle 데이터베이스 테이블 작성](#creating-the-oracle-database-tables-manually)을 참조하십시오. 
 
 필요한 경우 프로시저에서는 데이터베이스를 작성합니다. 이 데이터베이스에서 테이블 및 색인을 작성할 수 있는 사용자가 추가되어 런타임 사용자로 사용됩니다. 
 
@@ -189,7 +189,7 @@ MySQL에 대한 데이터베이스 요구사항을 검토하십시오. 단계를
     
 ## 수동으로 데이터베이스 테이블 작성
 {: #create-the-database-tables-manually }
-{{ site.data.keys.mf_server }} 애플리케이션에 대한 데이터베이스 테이블은 Ant 태스크 또는 서버 구성 도구를 사용하여 수동으로 작성될 수 있습니다. 이 주제에서는 수동으로 해당 테이블을 작성하는 방법에 대한 설명 및 세부사항을 제공합니다. 
+{{ site.data.keys.mf_server }} 애플리케이션에 대한 데이터베이스 테이블은 Ant 태스크 또는 Server Configuration Tool을 사용하여 수동으로 작성될 수 있습니다. 이 주제에서는 수동으로 해당 테이블을 작성하는 방법에 대한 설명 및 세부사항을 제공합니다. 
 
 * [수동으로 DB2 데이터베이스 테이블 작성](#creating-the-db2-database-tables-manually)
 * [수동으로 Oracle 데이터베이스 테이블 작성](#creating-the-oracle-database-tables-manually)
@@ -201,7 +201,7 @@ MySQL에 대한 데이터베이스 요구사항을 검토하십시오. 단계를
 
 개요 절에 설명된 대로 네 개의 {{ site.data.keys.mf_server }} 컴포넌트 모두에 테이블이 필요합니다. 이들은 동일한 스키마 또는 서로 다른 스키마에서 작성될 수 있습니다. 하지만 {{ site.data.keys.mf_server }} 애플리케이션이 Java 애플리케이션 서버에 배치되는 방식에 따라 일부 제한조건이 적용됩니다. 이는 [데이터베이스 사용자 및 권한](#database-users-and-privileges)에 설명된 대로 DB2의 가능한 사용자에 대한 주제와 비슷합니다. 
 
-#### 서버 구성 도구를 사용한 설치
+#### Server Configuration Tool을 사용한 설치
 {: #installation-with-the-server-configuration-tool-1 }
 모든 컴포넌트({{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스, {{ site.data.keys.mf_server }} 푸시 서비스 및 {{ site.data.keys.product }} 런타임)에 대해 동일한 스키마가 사용됩니다. 
 
@@ -272,7 +272,7 @@ DISCONNECT;
 
 개요 절에 설명된 대로 네 개의 {{ site.data.keys.mf_server }} 컴포넌트 모두에 테이블이 필요합니다. 이들은 동일한 스키마 또는 서로 다른 스키마에서 작성될 수 있습니다. 하지만 {{ site.data.keys.mf_server }} 애플리케이션이 Java 애플리케이션 서버에 배치되는 방식에 따라 일부 제한조건이 적용됩니다. 이는 [데이터베이스 사용자 및 권한](#database-users-and-privileges)에 설명된 대로 MySQL의 가능한 사용자에 대한 주제와 비슷합니다. 
 
-#### 서버 구성 도구를 사용한 설치
+#### Server Configuration Tool을 사용한 설치
 {: #installation-with-the-server-configuration-tool-2 }
 모든 컴포넌트({{ site.data.keys.mf_server }} 관리 서비스, {{ site.data.keys.mf_server }} 라이브 업데이트 서비스, {{ site.data.keys.mf_server }} 푸시 서비스 및 {{ site.data.keys.product }} 런타임)에 대해 동일한 데이터베이스가 사용됩니다. 
 
@@ -309,52 +309,52 @@ SOURCE mfp_install_dir/MobileFirstServer/databases/create-runtime-mysql.sql;
 SOURCE mfp_install_dir/PushService/databases/create-push-mysql.sql;
 ```
 
-## 서버 구성 도구를 사용하여 데이터베이스 테이블 작성
+## Server Configuration Tool을 사용하여 데이터베이스 테이블 작성
 {: #create-the-database-tables-with-the-server-configuration-tool }
-{{ site.data.keys.mf_server }} 애플리케이션에 대한 데이터베이스 테이블은 Ant 태스크 또는 서버 구성 도구를 사용하여 수동으로 작성될 수 있습니다. 이 주제에서는 서버 구성 도구를 사용하여 {{ site.data.keys.mf_server }}를 설치할 때 데이터베이스 설정에 대한 설명 및 세부사항을 제공합니다. 
+{{ site.data.keys.mf_server }} 애플리케이션에 대한 데이터베이스 테이블은 Ant 태스크 또는 Server Configuration Tool을 사용하여 수동으로 작성될 수 있습니다. 이 주제에서는 Server Configuration Tool을 사용하여 {{ site.data.keys.mf_server }}를 설치할 때 데이터베이스 설정에 대한 설명 및 세부사항을 제공합니다. 
 
-서버 구성 도구는 설치 프로세스의 일부로 데이터베이스 테이블을 작성할 수 있습니다. 일부 경우에는 {{ site.data.keys.mf_server }} 컴포넌트에 대한 데이터베이스 및 사용자도 작성할 수 있습니다. 서버 구성 도구를 사용한 설치 프로세스에 대한 개요는 [그래픽 모드에서 {{ site.data.keys.mf_server }} 설치](../tutorials/graphical-mode)를 참조하십시오. 
+Server Configuration Tool은 설치 프로세스의 일부로 데이터베이스 테이블을 작성할 수 있습니다. 일부 경우에는 {{ site.data.keys.mf_server }} 컴포넌트에 대한 데이터베이스 및 사용자도 작성할 수 있습니다. Server Configuration Tool을 사용한 설치 프로세스에 대한 개요는 [그래픽 모드에서 {{ site.data.keys.mf_server }} 설치](../tutorials/graphical-mode)를 참조하십시오. 
 
-구성 신임 정보를 완료하고 서버 구성 도구 분할창에서 **배치**를 클릭하면 다음과 같은 조작이 실행됩니다. 
+구성 신임 정보를 완료하고 Server Configuration Tool 분할창에서 **배치**를 클릭하면 다음과 같은 조작이 실행됩니다. 
 
 * 필요한 경우 데이터베이스 및 사용자를 작성합니다. 
 * {{ site.data.keys.mf_server }} 테이블이 데이터베이스에 있는지 여부를 확인합니다. 해당 테이블이 없는 경우에는 해당 테이블을 작성합니다. 
 * {{ site.data.keys.mf_server }} 애플리케이션을 애플리케이션 서버에 배치합니다. 
 
-서버 구성 도구를 실행하기 전에 수동으로 데이터베이스 테이블이 작성되는 경우 이 도구는 해당 테이블을 발견하고 테이블 설정 단계(Phase)를 건너뛸 수 있습니다. 
+Server Configuration Tool을 실행하기 전에 수동으로 데이터베이스 테이블이 작성되는 경우 이 도구는 해당 테이블을 발견하고 테이블 설정 단계(Phase)를 건너뛸 수 있습니다. 
 
 선택한 지원되는 DBMS(Database Management System)에 따라 도구가 데이터베이스 테이블을 작성하는 방법에 대한 자세한 내용과 관련된 다음 주제 중 하나를 선택하십시오. 
 
-* [서버 구성 도구를 사용하여 DB2 데이터베이스 테이블 작성](#creating-the-db2-database-tables-with-the-server-configuration-tool)
-* [서버 구성 도구를 사용하여 Oracle 데이터베이스 테이블 작성](#creating-the-oracle-database-tables-with-the-server-configuration-tool)
-* [서버 구성 도구를 사용하여 MySQL 데이터베이스 테이블 작성](#creating-the-mysql-database-tables-with-the-server-configuration-tool)
+* [Server Configuration Tool을 사용하여 DB2 데이터베이스 테이블 작성](#creating-the-db2-database-tables-with-the-server-configuration-tool)
+* [Server Configuration Tool을 사용하여 Oracle 데이터베이스 테이블 작성](#creating-the-oracle-database-tables-with-the-server-configuration-tool)
+* [Server Configuration Tool을 사용하여 MySQL 데이터베이스 테이블 작성](#creating-the-mysql-database-tables-with-the-server-configuration-tool)
 
-### 서버 구성 도구를 사용하여 DB2 데이터베이스 테이블 작성
+### Server Configuration Tool을 사용하여 DB2 데이터베이스 테이블 작성
 {: #creating-the-db2-database-tables-with-the-server-configuration-tool }
-{{ site.data.keys.mf_server }} 설치와 함께 제공되는 서버 구성 도구를 사용하여 DB2 데이터베이스 테이블을 작성하십시오. 
+{{ site.data.keys.mf_server }} 설치와 함께 제공되는 Server Configuration Tool을 사용하여 DB2 데이터베이스 테이블을 작성하십시오. 
 
-서버 구성 도구는 기본 DB2 인스턴스에서 데이터베이스를 작성할 수 있습니다. 서버 구성 도구의 **데이터베이스 선택** 패널에서 IBM DB2 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 신임 정보를 입력하십시오. **데이터베이스 추가 설정** 분할창에서 입력되는 데이터베이스 이름이 DB2 인스턴스에 없는 경우에는 추가 정보를 입력하여 도구가 사용자를 위해 데이터베이스를 작성하게 할 수 있습니다. 
+Server Configuration Tool은 기본 DB2 인스턴스에서 데이터베이스를 작성할 수 있습니다. Server Configuration Tool의 **데이터베이스 선택** 패널에서 IBM DB2 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 신임 정보를 입력하십시오. **데이터베이스 추가 설정** 분할창에서 입력되는 데이터베이스 이름이 DB2 인스턴스에 없는 경우에는 추가 정보를 입력하여 도구가 사용자를 위해 데이터베이스를 작성하게 할 수 있습니다. 
 
-서버 구성 도구는 다음 SQL문을 사용하여 기본 설정으로 데이터베이스 테이블을 작성합니다. 
+Server Configuration Tool은 다음 SQL문을 사용하여 기본 설정으로 데이터베이스 테이블을 작성합니다. 
 ```sql
 CREATE DATABASE MFPDATA COLLATE USING SYSTEM PAGESIZE 32768
 ```
 
 기본 DB2 설치에서는 많은 권한이 PUBLIC에 부여되므로 프로덕션용으로 사용하기에는 적합하지 않습니다. 
 
-### 서버 구성 도구를 사용하여 Oracle 데이터베이스 테이블 작성
+### Server Configuration Tool을 사용하여 Oracle 데이터베이스 테이블 작성
 {: #creating-the-oracle-database-tables-with-the-server-configuration-tool }
-{{ site.data.keys.mf_server }} 설치와 함께 제공되는 서버 구성 도구를 사용하여 Oracle 데이터베이스 테이블을 작성하십시오. 
+{{ site.data.keys.mf_server }} 설치와 함께 제공되는 Server Configuration Tool을 사용하여 Oracle 데이터베이스 테이블을 작성하십시오. 
 
-서버 구성 도구의 데이터베이스 선택 패널에서 **Oracle Standard 또는 Enterprise Edition, 11g 또는 12c** 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 신임 정보를 입력하십시오. 
+Server Configuration Tool의 데이터베이스 선택 패널에서 **Oracle Standard 또는 Enterprise Edition, 11g 또는 12c** 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 신임 정보를 입력하십시오. 
 
-**데이터베이스 추가 설정** 패널에서 Oracle 사용자 이름을 입력할 때 해당 이름은 대문자여야 합니다. Oracle 데이터베이스 사용자(FOO)가 있을 때 소문자로 된 사용자 이름(foo)을 입력하면 서버 구성 도구는 이를 다른 사용자로 간주합니다. Oracle 데이터베이스에 대한 기타 도구와 달리 서버 구성 도구는 사용자 이름이 자동으로 대문자로 변환되지 않도록 보호합니다. 
+**데이터베이스 추가 설정** 패널에서 Oracle 사용자 이름을 입력할 때 해당 이름은 대문자여야 합니다. Oracle 데이터베이스 사용자(FOO)가 있을 때 소문자로 된 사용자 이름(foo)을 입력하면 Server Configuration Tool은 이를 다른 사용자로 간주합니다. Oracle 데이터베이스에 대한 기타 도구와 달리 Server Configuration Tool은 사용자 이름이 자동으로 대문자로 변환되지 않도록 보호합니다. 
 
-서버 구성 도구는 서비스 이름 또는 Oracle 시스템 ID(SID)를 사용하여 데이터베이스를 식별합니다. 하지만 Oracle RAC에 연결하려면 복합 JDBC URL을 입력해야 합니다. 이 경우 **데이터베이스 설정** 패널에서 **일반 Oracle JDBC URL을 사용하여 연결** 옵션을 선택한 후 Oracle 씬 드라이버의 URL을 입력하십시오. 
+Server Configuration Tool은 서비스 이름 또는 Oracle 시스템 ID(SID)를 사용하여 데이터베이스를 식별합니다. 하지만 Oracle RAC에 연결하려면 복합 JDBC URL을 입력해야 합니다. 이 경우 **데이터베이스 설정** 패널에서 **일반 Oracle JDBC URL을 사용하여 연결** 옵션을 선택한 후 Oracle 씬 드라이버의 URL을 입력하십시오. 
 
 Oracle에 대한 데이터베이스 및 사용자를 작성해야 하는 경우 Oracle DBCA(Database Creation Assistant) 도구를 사용하십시오. 자세한 정보는 [Oracle 데이터베이스 및 사용자 요구사항](#oracle-database-and-user-requirements)을 참조하십시오. 
 
-서버 구성 도구도 동일한 작업을 수행할 수 있지만 제한사항이 있습니다. 이 도구는 Oracle 11g 또는 Oracle 12g에 대한 사용자를 작성할 수 있습니다. 하지만 Oracle 11g에 대한 데이터베이스만 작성할 수 있고 Oracle 12c에 대한 데이터베이스는 작성할 수 없습니다. 
+Server Configuration Tool도 동일한 작업을 수행할 수 있지만 제한사항이 있습니다. 이 도구는 Oracle 11g 또는 Oracle 12g에 대한 사용자를 작성할 수 있습니다. 하지만 Oracle 11g에 대한 데이터베이스만 작성할 수 있고 Oracle 12c에 대한 데이터베이스는 작성할 수 없습니다. 
 
 **데이터베이스 추가 설정** 패널에서 입력하는 데이터베이스 이름 또는 사용자 이름이 없는 경우에는 데이터베이스 또는 사용자를 작성하는 데 필요한 추가 단계에 대한 다음 두 절을 참조하십시오. 
 
@@ -363,7 +363,7 @@ Oracle에 대한 데이터베이스 및 사용자를 작성해야 하는 경우 
 
 1. Oracle 데이터베이스를 실행하는 컴퓨터에서 SSH 서버를 실행하십시오. 
 
-    서버 구성 도구는 Oracle 호스트에 대한 SSH 세션을 열어 데이터베이스를 작성합니다. Linux 및 일부 UNIX 시스템 버전을 제외하고 Oracle 데이터베이스가 서버 구성 도구와 동일한 컴퓨터에서 실행되는 경우에도 SSH 서버가 필요합니다. 
+    Server Configuration Tool은 Oracle 호스트에 대한 SSH 세션을 열어 데이터베이스를 작성합니다. Linux 및 일부 UNIX 시스템 버전을 제외하고 Oracle 데이터베이스가 Server Configuration Tool과 동일한 컴퓨터에서 실행되는 경우에도 SSH 서버가 필요합니다. 
 
 2. **데이터베이스 작성 요청** 패널에서 데이터베이스를 작성할 수 있는 권한을 가진 Oracle 데이터베이스 사용자의 로그인 ID 및 비밀번호를 입력하십시오. 
 3. 동일한 패널에서 작성될 데이터베이스의 **SYS** 사용자 및 **SYSTEM** 사용자에 대한 비밀번호도 입력하십시오. 
@@ -375,19 +375,19 @@ Oracle에 대한 데이터베이스 및 사용자를 작성해야 하는 경우 
 
 1. Oracle 데이터베이스를 실행하는 컴퓨터에서 SSH 서버를 실행하십시오. 
 
-    서버 구성 도구는 Oracle 호스트에 대한 SSH 세션을 열어 데이터베이스를 작성합니다. Linux 및 일부 UNIX 시스템 버전을 제외하고 Oracle 데이터베이스가 서버 구성 도구와 동일한 컴퓨터에서 실행되는 경우에도 SSH 서버가 필요합니다. 
+    Server Configuration Tool은 Oracle 호스트에 대한 SSH 세션을 열어 데이터베이스를 작성합니다. Linux 및 일부 UNIX 시스템 버전을 제외하고 Oracle 데이터베이스가 Server Configuration Tool과 동일한 컴퓨터에서 실행되는 경우에도 SSH 서버가 필요합니다. 
 
 2. **데이터베이스 추가 설정** 패널에서 작성될 데이터베이스 사용자의 로그인 ID 및 비밀번호를 입력하십시오. 
 3. **데이터베이스 작성 요청** 패널에서 데이터베이스 사용자를 작성할 수 있는 권한을 가진 Oracle 데이터베이스 사용자의 로그인 ID 및 비밀번호를 입력하십시오. 
 4. 동일한 패널에서 데이터베이스의 **SYSTEM** 사용자에 대한 비밀번호도 입력하십시오. 
 
-### 서버 구성 도구를 사용하여 MySQL 데이터베이스 테이블 작성
+### Server Configuration Tool을 사용하여 MySQL 데이터베이스 테이블 작성
 {: #creating-the-mysql-database-tables-with-the-server-configuration-tool }
-{{ site.data.keys.mf_server }} 설치와 함께 제공되는 서버 구성 도구를 사용하여 MySQL 데이터베이스 테이블을 작성하십시오. 
+{{ site.data.keys.mf_server }} 설치와 함께 제공되는 Server Configuration Tool을 사용하여 MySQL 데이터베이스 테이블을 작성하십시오. 
 
-서버 구성 도구는 사용자를 위해 MySQL 데이터베이스를 작성할 수 있습니다. 서버 구성 도구의 **데이터베이스 선택** 패널에서 **MySQL 5.5.x, 5.6.x 또는 5.7.x** 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 신임 정보를 입력하십시오. 데이터베이스 추가 설정 패널에서 입력하는 사용자 또는 데이터베이스가 없으면 도구가 이를 작성할 수 있습니다. 
+Server Configuration Tool은 사용자를 위해 MySQL 데이터베이스를 작성할 수 있습니다. Server Configuration Tool의 **데이터베이스 선택** 패널에서 **MySQL 5.5.x, 5.6.x 또는 5.7.x** 옵션을 선택하십시오. 다음 세 분할창에서 데이터베이스 신임 정보를 입력하십시오. 데이터베이스 추가 설정 패널에서 입력하는 사용자 또는 데이터베이스가 없으면 도구가 이를 작성할 수 있습니다. 
 
-MySQL 서버가 [MySQL 데이터베이스 및 사용자 요구사항](#mysql-database-and-user-requirements)에서 권장되는 설정을 가지고 있지 않으면 서버 구성 도구에 경고가 표시됩니다. 서버 구성 도구를 실행하기 전에 요구사항을 이행했는지 확인하십시오. 
+MySQL 서버가 [MySQL 데이터베이스 및 사용자 요구사항](#mysql-database-and-user-requirements)에서 권장되는 설정을 가지고 있지 않으면 Server Configuration Tool에 경고가 표시됩니다. Server Configuration Tool을 실행하기 전에 요구사항을 이행했는지 확인하십시오. 
 
 다음 프로시저에서는 도구를 사용하여 데이터베이스 테이블을 작성할 때 수행해야 하는 일부 추가 단계를 제공합니다. 
 
@@ -396,7 +396,7 @@ MySQL 서버가 [MySQL 데이터베이스 및 사용자 요구사항](#mysql-dat
 
 ## Ant 태스크를 사용하여 데이터베이스 테이블 작성
 {: #create-the-database-tables-with-ant-tasks }
-{{ site.data.keys.mf_server }} 애플리케이션에 대한 데이터베이스 테이블은 Ant 태스크 또는 서버 구성 도구를 사용하여 수동으로 작성될 수 있습니다. 이 주제에서는 Ant 태스크를 사용하여 해당 테이블을 작성하는 방법에 대한 설명 및 세부사항을 제공합니다. 
+{{ site.data.keys.mf_server }} 애플리케이션에 대한 데이터베이스 테이블은 Ant 태스크 또는 Server Configuration Tool을 사용하여 수동으로 작성될 수 있습니다. 이 주제에서는 Ant 태스크를 사용하여 해당 테이블을 작성하는 방법에 대한 설명 및 세부사항을 제공합니다. 
 
 {{ site.data.keys.mf_server }}가 Ant 태스크를 사용하여 설치된 경우 이 절에서 데이터베이스의 설정에 대한 관련 정보를 찾을 수 있습니다. 
 

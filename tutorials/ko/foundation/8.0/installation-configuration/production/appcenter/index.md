@@ -196,13 +196,13 @@ WebSphere Application Server Network Deployment를 사용하며 배치 관리자
 {: #default-logins-and-passwords-created-by-ibm-installation-manager-for-the-application-center }
 IBM Installation Manager는 애플리케이션 서버에 따라 기본적으로 Application Center에 대한 로그인을 작성합니다. 이 로그인을 사용하여 Application Center를 테스트할 수 있습니다. 
 
-#### WebSphere Application Server Full 프로파일
+#### WebSphere Application Server 전체 프로파일
 {: #websphere-application-server-full-profile }
 로그인 **appcenteradmin**은 설치 중에 생성되어 표시되는 비밀번호와 함께 작성됩니다. 
 
 애플리케이션 영역에서 인증된 모든 사용자에게는 **appcenteradmin** 역할에 대한 액세스 권한도 부여됩니다. 이는 프로덕션 환경의 경우에는 적용되지 않습니다(특히 WebSphere Application Server가 단일 보안 도메인을 사용하여 구성된 경우). 
 
-이 로그인을 수정하는 방법에 대한 자세한 정보는 [WebSphere Application Server Full 프로파일에서 Java EE 보안 역할 구성](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile)을 참조하십시오. 
+이 로그인을 수정하는 방법에 대한 자세한 정보는 [WebSphere Application Server 전체 프로파일에서 Java EE 보안 역할 구성](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile)을 참조하십시오. 
 
 #### WebSphere Application Server Liberty 프로파일
 {: #websphere-application-server-liberty-profile }
@@ -692,7 +692,7 @@ Apache Tomcat 애플리케이션 서버를 가진 Application Center에 대해 �
 {: #configuring-liberty-profile-for-mysql-manually-for-application-center }
 WebSphere Application Server Liberty 프로파일을 가진 Application Center에 대해 수동으로 MySQL 데이터베이스를 설정하고 구성하려면 다음 프로시저를 사용하십시오. 계속하기 전에 MySQL 데이터베이스 설정 프로시저를 완료하십시오. 
 
-> **참고:** WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server Full 프로파일과 조합된 MySQL은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 [WebSphere Application Server 지원 설명서](http://www.ibm.com/support/docview.wss?uid=swg27004311)를 참조하십시오. IBM DB2 또는 WebSphere Application Server에서 지원하는 다른 데이터베이스를 사용하여 IBM 지원 센터에서 완전히 지원하는 구성을 활용할 수 있습니다.
+> **참고:** WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일과 조합된 MySQL은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)를 참조하십시오. IBM DB2 또는 WebSphere Application Server에서 지원하는 다른 데이터베이스를 사용하여 IBM 지원 센터에서 완전히 지원하는 구성을 활용할 수 있습니다.
 
 1. MySQL JDBC 드라이버 JAR 파일을 **$LIBERTY_HOME/wlp/usr/shared/resources/mysql**에 추가하십시오. 해당 디렉토리가 없으면 해당 디렉토리를 작성하십시오. 
 2. 다음과 같이 **$LIBERTY_HOME/usr/servers/worklightServer/server.xml** 파일에서 데이터 소스를 구성하십시오(**worklightServer**는 이 경로에서 서버의 이름으로 바꿀 수 있음). 
@@ -720,7 +720,7 @@ WebSphere Application Server Liberty 프로파일을 가진 Application Center�
 {: #configuring-websphere-application-server-for-mysql-manually-for-application-center }
 WebSphere Application Server를 가진 Application Center에 대해 수동으로 MySQL 데이터베이스를 설정하고 구성하려면 다음 프로시저를 사용하십시오. 계속하기 전에 MySQL 데이터베이스 설정 프로시저를 완료하십시오. 
 
-> **참고:** WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server Full 프로파일과 조합된 MySQL은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 [WebSphere Application Server 지원 설명서](http://www.ibm.com/support/docview.wss?uid=swg27004311)를 참조하십시오. IBM DB2 또는 WebSphere Application Server에서 지원하는 다른 데이터베이스를 사용하여 IBM 지원 센터에서 완전히 지원하는 구성을 활용하는 것이 좋습니다.
+> **참고:** WebSphere Application Server Liberty 프로파일 또는 WebSphere Application Server 전체 프로파일과 조합된 MySQL은 지원되는 구성으로 분류되지 않습니다. 자세한 정보는 [WebSphere Application Server Support Statement](http://www.ibm.com/support/docview.wss?uid=swg27004311)를 참조하십시오. IBM DB2 또는 WebSphere Application Server에서 지원하는 다른 데이터베이스를 사용하여 IBM 지원 센터에서 완전히 지원하는 구성을 활용하는 것이 좋습니다.
 
 1. WebSphere Application Server 설치 디렉토리에서 JDBC 드라이버 JAR 파일에 대해 적합한 디렉토리를 판별하십시오. 
     * 독립형 서버의 경우 **WAS\_INSTALL\_DIR/optionalLibraries/IBM/Worklight/mysql** 등의 디렉토리를 사용할 수 있습니다. 
@@ -941,7 +941,7 @@ WebSphere Application Server를 가진 Application Center에 대해 수동으로
     * **oracleLogPackageName**을 **oracle.jdbc.driver**로 설정하십시오. 
     * **user = APPCENTER**를 설정하십시오. 
     * **password = APPCENTER_password**를 설정하십시오. 
-    * **확인**을 클릭하고 변경사항을 저장하십시오. 
+    * **확인**을 클릭하여 변경사항을 저장하십시오. 
     * **자원 → JDBC → 데이터 소스**에서 새 데이터 소스를 선택하십시오. 
     * **WebSphere Application Server 데이터 소스 특성**을 클릭하십시오. 
     * **비트랜잭션 데이터 소스** 선택란을 선택하십시오. 
@@ -1473,11 +1473,11 @@ Application Center의 사용자 인증을 구성한 후(LDAP 사용을 계획하
 
 #### 다음으로 이동
 {: #jump-to-11 }
-* [WebSphere Application Server Full 프로파일에서 Java EE 보안 역할 구성](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile)
+* [WebSphere Application Server 전체 프로파일에서 Java EE 보안 역할 구성](#configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile)
 * [WebSphere Application Server Liberty 프로파일에서 Java EE 보안 역할 구성](#configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile)
 * [Apache Tomcat에서 Java EE 보안 역할 구성](#configuring-the-java-ee-security-roles-on-apache-tomcat)
 
-##### WebSphere Application Server Full 프로파일에서 Java EE 보안 역할 구성
+##### WebSphere Application Server 전체 프로파일에서 Java EE 보안 역할 구성
 {: #configuring-the-java-ee-security-roles-on-websphere-application-server-full-profile }
 Application Center Java™ EE 역할을 두 웹 애플리케이션 모두에 대한 사용자 세트에 맵핑하여 보안을 구성하십시오. 
 
@@ -1514,7 +1514,7 @@ WebSphere Application Server 콘솔에서 사용자 구성의 기본을 정의�
 {: #configuring-the-java-ee-security-roles-on-websphere-application-server-liberty-profile }
 **server.xml** 파일에서 데이터 소스 및 Application Center의 Java™ EE 보안 역할을 구성하십시오. 
 
-보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. 각 `<application>` 요소의 `<application-bnd>` 요소에서 두 개의 `<security-role>` 요소를 작성하십시오. 하나의 `<security-role>` 요소는 **appcenteruser** 역할을 위한 것이고 다른 하나는 **appcenteradmin** 역할을 위한 것입니다. 역할을 적절한 사용자 그룹 이름 **appcenterusergroup** 또는 **appcenteradmingroup**에 맵핑하십시오. 이 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 완전히 대체할 수 있습니다. 
+보안 역할을 구성하려면 **server.xml** 파일을 편집해야 합니다. 각 `<application>` 요소의 `<application-bnd>` 요소에서 두 개의 `<security-role>` 요소를 작성하십시오. 하나의 `<security-role>` 요소는 **appcenteruser** 역할을 위한 것이고 다른 하나는 **appcenteradmin** 역할을 위한 것입니다. 역할을 적절한 사용자 그룹 이름 **appcenterusergroup** 또는 **appcenteradmingroup**에 맵핑하십시오. 이 그룹은 `<basicRegistry>` 요소를 통해 정의됩니다. 이 요소를 사용자 정의하거나 전체를 `<ldapRegistry>` 요소 또는 `<safRegistry>` 요소로 대체할 수 있습니다. 
 
 그런 다음 설치된 많은 애플리케이션(예: 80개의 애플리케이션)에 대한 신속한 응답 시간을 유지하기 위해 Application Center 데이터베이스에 대한 연결 풀을 구성해야 합니다. 
 
@@ -1579,7 +1579,7 @@ Apache Tomcat 웹 애플리케이션 서버에서 Application Center에 대해 J
    <user username="guest" password="guest" roles="appcenteradmin"/>
    ```
 
-2. Apache Tomcat 문서 [영역 구성 방법](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html)에 정의된 대로 사용자 세트를 정의할 수 있습니다. 
+2. Apache Tomcat 문서, [영역 구성 방법](http://tomcat.apache.org/tomcat-7.0-doc/realm-howto.html)에 설명된 대로 사용자 세트를 정의할 수 있습니다. 
 
 ### LDAP을 사용한 사용자 관리
 {: #managing-users-with-ldap }
@@ -2127,7 +2127,7 @@ DB2 SQL Error: SQLCODE=-964, SQLSTATE=57011
 
 배치되는 MobileFirst 애플리케이션의 최대 크기에 따라 DB2 로그 공간을 늘려야 합니다. 
 
-`DB2 update db cfg` 명령을 사용하여 **LOGSECOND** 매개변수를 늘리십시오. 데이터베이스가 활성화된 경우 공간이 할당되지 않습니다. 대신 필요에 따라서만 공간이 할당됩니다. 
+`DB2 update db cfg` 명령을 사용하여 **LOGSECOND** 매개변수를 늘리십시오. 데이터베이스가 활성화된 경우 공간이 할당되지 않습니다. 대신 필요한 경우에만 공간이 할당됩니다. 
 
 ### 애플리케이션 자원의 엔드포인트 정의
 {: #defining-the-endpoint-of-the-application-resources }
@@ -2153,13 +2153,13 @@ Application Center 콘솔에서 모바일 애플리케이션을 추가할 때 �
 
 #### 다음으로 이동
 {: #jump-to-13 }
-* [애플리케이션 자원의 엔드포인트 구성(Full 프로파일)](#configuring-the-endpoint-of-application-resources-full-profile)
+* [애플리케이션 자원의 엔드포인트 구성(전체 프로파일)](#configuring-the-endpoint-of-application-resources-full-profile)
 * [애플리케이션 자원의 엔드포인트 구성(Liberty 프로파일)](#configuring-the-endpoint-of-the-application-resources-liberty-profile)
 * [애플리케이션 자원의 엔드포인트 구성(Apache Tomcat)](#configuring-the-endpoint-of-the-application-resources-apache-tomcat)
 
-#### 애플리케이션 자원의 엔드포인트 구성(Full 프로파일)
+#### 애플리케이션 자원의 엔드포인트 구성(전체 프로파일)
 {: #configuring-the-endpoint-of-application-resources-full-profile }
-WebSphere Application Server Full 프로파일의 경우 Application Center 서비스 및 Application Center 콘솔 애플리케이션의 환경 항목에서 애플리케이션 자원의 엔드포인트를 구성하십시오. 프로시저는 WAR 파일 또는 EAR 파일을 배치했는지 여부에 따라 다릅니다. 
+WebSphere Application Server 전체 프로파일의 경우 Application Center 서비스 및 Application Center 콘솔 애플리케이션의 환경 항목에서 애플리케이션 자원의 엔드포인트를 구성하십시오. 프로시저는 WAR 파일 또는 EAR 파일을 배치했는지 여부에 따라 다릅니다. 
 
 ##### WAR 파일을 배치한 경우
 {: #if-you-deployed-war-files }
@@ -2316,12 +2316,12 @@ SSL 인증서 확인에 실패하는 경우 일반 웹 브라우저는 신뢰할
 
 #### 다음으로 이동
 {: #jump-to-14 }
-* [WebSphere Application Server Full 프로파일에 대한 SSL 구성](#configuring-ssl-for-websphere-application-server-full-profile)
+* [WebSphere Application Server 전체 프로파일에 대한 SSL 구성](#configuring-ssl-for-websphere-application-server-full-profile)
 * [Liberty 프로파일에 대한 SSL 구성](#configuring-ssl-for-liberty-profile)
 * [Apache Tomcat에 대한 SSL 구성](#configuring-ssl-for-apache-tomcat)
 * [Application Center 테스트 환경에서 자체 서명된 CA 인증서 관리 및 설치](#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment)
 
-##### WebSphere Application Server Full 프로파일에 대한 SSL 구성
+##### WebSphere Application Server 전체 프로파일에 대한 SSL 구성
 {: #configuring-ssl-for-websphere-application-server-full-profile }
 SSL(Secure Sockets Layer) 인증서를 요청하고 수신된 문서를 처리하여 키 저장소로 가져오십시오.   
 이 프로시저는 SSL 인증서를 요청하고 이 인증서 및 체인 인증서를 키 저장소로 가져오는 방법을 보여줍니다. 
@@ -2337,7 +2337,7 @@ SSL(Secure Sockets Layer) 인증서를 요청하고 수신된 문서를 처리�
     * **키 저장소**는 사용자의 키 저장소를 식별합니다. 
     * **인증서**는 수신한 인증서를 식별합니다. 
 
-3. SSL 구성을 작성하십시오. 사용자 문서에서 애플리케이션을 지원하는 WebSphere Application Server Full 프로파일의 버전에 해당하는 지시사항을 참조하십시오. 
+3. SSL 구성을 작성하십시오. 사용자 문서에서 애플리케이션을 지원하는 WebSphere Application Server 전체 프로파일의 버전에 해당하는 지시사항을 참조하십시오. 
 
 WebSphere 관리 콘솔의 **보안 → SSL 인증서 및 키 관리 → 엔드포인트 보안 구성 관리 → SSL 구성**에서 구성 세부사항을 찾을 수 있습니다. 
 
@@ -2437,9 +2437,9 @@ Application Center의 일부 JNDI 특성을 구성할 수 있습니다.
 | 특성     | 설명        | 
 |----------|-------------|
 | appcenter.database.type | appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 필요한 데이터베이스 유형입니다.  | 
-| appcenter.jndi.name | 데이터베이스의 JNDI 이름입니다. 이 매개변수는 데이터베이스를 지정하는 데 필요한 일반 메커니즘입니다. 기본값은 java:comp/env/jdbc/AppCenterDS입니다.  | 
+| appcenter.jndi.name | 데이터베이스의 JNDI 이름입니다. 이 매개변수는 데이터베이스를 지정하기 위한 일반 메커니즘입니다. 기본값은 java:comp/env/jdbc/AppCenterDS입니다.  | 
 | appcenter.openjpa.ConnectionDriverName | 데이터베이스 연결 드라이버 클래스의 완전한 클래스 이름입니다. 이 특성은 appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 필요합니다.  | 
-| appcenter.openjpa.ConnectionPassword | 데이터베이스 연결의 비밀번호입니다. appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 이 특성을 설정하십시오.  |
+| appcenter.openjpa.ConnectionPassword | 데이터베이스 연결을 위한 비밀번호입니다. appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 이 특성을 설정하십시오.  |
 | appcenter.openjpa.ConnectionURL | 데이터베이스 연결 드라이버 클래스의 URL입니다. appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 이 특성을 설정하십시오.  | 
 | appcenter.openjpa.ConnectionUserName | 데이터베이스 연결을 위한 사용자 이름입니다. appcenter.jndi.name에서 데이터베이스가 지정되지 않은 경우에만 이 특성을 설정하십시오.  | 
 | ibm.appcenter.apns.p12.certificate.isDevelopmentCertificate | Application Center가 iOS 애플리케이션의 업데이트에 대한 푸시 알림을 전송할 수 있게 하는 인증서가 개발 인증서인지 여부를 지정하려면 이 특성을 true로 설정하십시오. 개발 인증서가 아닌 경우에는 이 특성을 **false**로 설정하십시오. [Apple 푸시 알림 서비스에 연결할 수 있도록 Application Center 서버 구성](../../../appcenter/push-notifications/#apns)을 참조하십시오.  |
@@ -2470,8 +2470,8 @@ Application Center의 일부 JNDI 특성을 구성할 수 있습니다.
 | ibm.appcenter.ldap.vmm.active | LDAP이 VMM(Virtual Member Manager)을 통해 수행되도록 지정하려면 이 특성을 true로 설정하고 그렇지 않으면 false로 설정하십시오. [WebSphere Application Server V8.x에 대한 LDAP ACL 관리 구성](#configuring-ldap-acl-management-for-websphere-application-server-v8x)을 참조하십시오.  | 
 | ibm.appcenter.ldap.vmm.adminpwd | LDAP이 VMM(Virtual Member Manager)을 통해 수행될 때 비밀번호입니다. [WebSphere Application Server V8.x에 대한 LDAP ACL 관리 구성](#configuring-ldap-acl-management-for-websphere-application-server-v8x)을 참조하십시오.  |
 | ibm.appcenter.ldap.vmm.adminuser | LDAP이 VMM(Virtual Member Manager)을 통해 수행될 때 사용자입니다. [WebSphere Application Server V8.x에 대한 LDAP ACL 관리 구성](#configuring-ldap-acl-management-for-websphere-application-server-v8x)을 참조하십시오.  | 
-| ibm.appcenter.logging.formatjson | 이 특성은 ibm.appcenter.logging.tosystemerror가 true로 설정된 경우에만 적용됩니다. 이 특성이 사용으로 설정된 경우 이 특성은 System.Error로 경로 지정되는 로깅 메시지의 JSON 응답을 형식화합니다. 서버를 디버그할 때 이 특성을 설정하면 도움이 됩니다.  | 
-| ibm.appcenter.logging.tosystemerror | 모든 로깅 메시지도 System.Error로 경로 지정되는지 여부를 지정합니다. 서버를 디버그할 때 이 특성을 설정하면 도움이 됩니다.  | 
+| ibm.appcenter.logging.formatjson | 이 특성은 ibm.appcenter.logging.tosystemerror가 true로 설정된 경우에만 적용됩니다. 이 특성이 사용으로 설정된 경우 이 특성은 System.Error로 경로 지정되는 로깅 메시지의 JSON 응답을 형식화합니다. 이 특성을 설정하면 서버를 디버그할 때 도움이 됩니다.  | 
+| ibm.appcenter.logging.tosystemerror | 모든 로깅 메시지가 System.Error로도 경로 지정되는지 여부를 지정합니다. 서버를 디버그할 때 이 특성을 설정하면 도움이 됩니다.  | 
 | ibm.appcenter.openjpa.Log | 이 특성은 OpenJPA에 전달되며 JPA 로깅을 사용으로 설정합니다. 세부사항은 [Apache OpenJPA 사용자 안내서](http://openjpa.apache.org/builds/1.2.2/apache-openjpa-1.2.2/docs/manual/manual.html)를 참조하십시오.  | 
 | ibm.appcenter.proxy.host | Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 호스트의 주소를 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 주소입니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오.  |
 | ibm.appcenter.proxy.port | Application Center 서버가 방화벽 또는 리버스 프록시 뒤에 있는 경우 이 특성은 호스트의 주소를 지정합니다. 이 특성을 설정하면 방화벽 외부의 사용자가 Application Center 서버에 도달할 수 있습니다. 일반적으로 이 특성은 프록시의 포트입니다(예: 443). 외부 URI와 내부 URI의 프로토콜이 서로 다른 경우에만 이 특성이 필요합니다. [애플리케이션 자원의 엔드포인트 정의](#defining-the-endpoint-of-the-application-resources)를 참조하십시오.  |
@@ -2486,9 +2486,9 @@ Application Center의 일부 JNDI 특성을 구성할 수 있습니다.
 
 ### 공용 앱 스토어의 애플리케이션을 지원하도록 WebSphere Application Server 구성
 {: #configuring-websphere-application-server-to-support-applications-in-public-app-stores }
-SSL 연결 사용으로 인해 애플리케이션 링크를 통해 공용 앱 스토어에 액세스하기 전에 WebSphere Application Server Full 프로파일 및 Liberty 프로파일을 구성하십시오. 
+SSL 연결 사용으로 인해 애플리케이션 링크를 통해 공용 앱 스토어에 액세스하기 전에 WebSphere Application Server 전체 프로파일 및 Liberty 프로파일을 구성하십시오. 
 
-SSL 연결을 사용함에 따라 적용되는 제한조건으로 인해 애플리케이션 링크를 사용하여 이 공용 앱 스토어에 액세스하려면 먼저 공용 앱 스토어의 루트 인증서가 WebSphere 신뢰 저장소에 있어야 합니다. 구성 요구사항은 WebSphere Application Server Full 프로파일과 Liberty 프로파일에 모두 적용됩니다. 
+SSL 연결을 사용함에 따라 적용되는 제한조건으로 인해 애플리케이션 링크를 사용하여 이 공용 앱 스토어에 액세스하려면 먼저 공용 앱 스토어의 루트 인증서가 WebSphere 신뢰 저장소에 있어야 합니다. 구성 요구사항은 WebSphere Application Server 전체 프로파일과 Liberty 프로파일에 모두 적용됩니다. 
 
 Google Play에 대한 애플리케이션 링크를 사용하려면 먼저 Google Play의 루트 인증서를 WebSphere 신뢰 저장소로 가져와야 합니다.   
 iTunes에 대한 애플리케이션 링크를 사용하려면 먼저 Apple iTunes의 루트 인증서를 WebSphere 신뢰 저장소로 가져와야 합니다. 

@@ -6,13 +6,13 @@ weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
-임시 수정사항은 문제점 정정을 위한 패치 및 업데이트를 제공하고 모바일 운영 체제의 새 릴리스에 대해 현재 {{site.data.keys.product_full }}을 유지합니다.
+임시 수정사항은 문제점 정정을 위한 패치 및 업데이트를 제공하고 모바일 운영 체제의 새 릴리스에 대해 현재 {{ site.data.keys.product_full }}을 유지합니다.
 
 임시 수정사항은 누적됩니다. 최신 v8.0 임시 수정사항을 다운로드할 경우, 이전 임시 수정사항에서 모든 수정사항을 얻습니다. 
 
 다음 섹션에 설명된 모든 수정사항을 획득하기 위해 최근 임시 수정사항을 다운로드하고 설치하십시오. 이전 수정사항을 설치할 경우, 여기 설명된 일부 수정사항을 가져오지 않습니다.
 
-> {{site.data.keys.product }} 8.0의 iFix 릴리스 목록의 경우, [이러한 블로그 게시물을 참조]({{site.baseurl}}/blog/tag/iFix_8.0/)하십시오.
+> {{ site.data.keys.product }} 8.0의 iFix 릴리스 목록의 경우, [이러한 블로그 게시물을 참조]({{site.baseurl}}/blog/tag/iFix_8.0/)하십시오.
 
 APAR 번호가 나열되면 해당 APAR 번호에 대한 임시 수정사항 README 파일을 검색함으로써 사용자는 임시 수정사항이 해당 기능을 가졌는지 확인할 수 있습니다.
 
@@ -20,13 +20,13 @@ APAR 번호가 나열되면 해당 APAR 번호에 대한 임시 수정사항 REA
 {: #licensing }
 #### PVU 라이센싱
 {: #pvu-licensing }
-새 오퍼링인 {{site.data.keys.product }} Extension V8.0.0은 PVU(Processor Value Unit) 라이센싱을 통해 사용 가능합니다. {{site.data.keys.product }} Extension용 PVU 라이센싱에 대한 자세한 정보는 [{{site.data.keys.product_adj }} 라이센싱](../../licensing)을 참조하십시오.
+새 오퍼링인 {{ site.data.keys.product }} Extension V8.0.0은 PVU(Processor Value Unit) 라이센싱을 통해 사용 가능합니다. {{ site.data.keys.product }} Extension용 PVU 라이센싱에 대한 자세한 정보는 [{{ site.data.keys.product_adj }} 라이센싱](../../licensing)을 참조하십시오.
 
 ### 웹 애플리케이션
 {: #web-applications }
-#### {{site.data.keys.mf_cli }}에서 웹 애플리케이션 등록(APAR PI65327)
+#### {{ site.data.keys.mf_cli }}에서 웹 애플리케이션 등록(APAR PI65327)
 {: #registering-web-applications-from-the-mobilefirst-cli-apar-pi65327 }
-이제 {{site.data.keys.mf_console }}에서 등록에 대한 대안으로 {{site.data.keys.mf_cli }}(mfpdev)를 사용하여 클라이언트 웹 애플리케이션을 {{site.data.keys.mf_server }}에 등록할 수 있습니다. 자세한 정보는 {{site.data.keys.mf_cli }}로부터 웹 애플리케이션 등록을 참조하십시오.
+이제 {{ site.data.keys.mf_console }}에서 등록에 대한 대안으로 {{ site.data.keys.mf_cli }}(mfpdev)를 사용하여 클라이언트 웹 애플리케이션을 {{ site.data.keys.mf_server }}에 등록할 수 있습니다. 자세한 정보는 {{ site.data.keys.mf_cli }}로부터 웹 애플리케이션 등록을 참조하십시오.
 
 ### Cordova 애플리케이션
 {: #cordova-applications }
@@ -51,4 +51,9 @@ Eclipse IDE에 설치된 Studio 플러그인을 통해 사용자는 기존 Cordo
 {: #adapters }
 #### Java 및 JavaScript 어댑터 구성에 대해 추가된 `mfpdev push` 및 `pull` 명령
 {: #added-mfpdev-push-and-pull-commands-for-java-and-javascript-adapter-configurations }
-{{site.data.keys.mf_cli }}를 사용하여 Java 및 JavaScript 어댑터 구성을 {{site.data.keys.mf_server }}에 푸시하고 {{site.data.keys.mf_server }}로부터 어댑터 구성을 풀링할 수 있습니다.
+{{ site.data.keys.mf_cli }}를 사용하여 Java 및 JavaScript 어댑터 구성을 {{ site.data.keys.mf_server }}에 푸시하고 {{ site.data.keys.mf_server }}로부터 어댑터 구성을 풀링할 수 있습니다.
+
+### Application Center
+{: #application-center}
+
+iOS 및 Android용 Cordova 기반 애플리케이션 센터 클라이언트를 사용할 수 있습니다. 

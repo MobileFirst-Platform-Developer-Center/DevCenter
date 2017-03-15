@@ -121,7 +121,7 @@ Eclipse에 [THyM](#installing-the-thym-plug-in) 및 [{{ site.data.keys.mf_cli }}
 ## 팁과 요령
 {: #tips-and-tricks }
 <img src="runAsContextMenu.png" alt="외부 IDE에서 열 Eclipse의 컨텍스트 메뉴" style="float:right;width:35%;margin-left: 10px"/>
-### 외부 IDE에서
+### 외부 IDE
 {: #external-ides }
 외부 IDE(Android Studio 또는 Xcode)를 통해 디바이스를 테스트하거나 배치하려는 경우 컨텍스트 메뉴를 통해 수행할 수 있습니다. 
 
@@ -145,7 +145,7 @@ Eclipse 프로젝트 탐색기에서 원하는 플랫폼(예: **platforms** 디�
 	1. 여기서 Cordova CLI 명령을 사용하여 플랫폼을 수동으로 추가할 수 있습니다. 
 		*  `cordova platform ls`는 설치되고 사용 가능한 플랫폼을 나열합니다. 
 		*  `cordova platform add <platform>`. 여기서 *<platform>*은 원하는 플랫폼이며, 해당 명령은 지정된 플랫폼을 프로젝트에 추가합니다. 
-		*  Cordova 플랫폼 특정 명령에 대한 자세한 정보는 <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova 플랫폼 명령 문서</a>를 참조하십시오. 
+		*  Cordova 플랫폼 특정 명령에 대한 자세한 정보는 <a href="https://cordova.apache.org/docs/en/latest/reference/cordova-cli/#cordova-platform-command" target="blank">Cordova platform command 문서</a>를 참조하십시오. 
 
 ### 디버그 모드
 {: #debug-mode }
