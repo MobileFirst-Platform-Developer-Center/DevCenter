@@ -1,84 +1,129 @@
 ---
 layout: tutorial
-title: Migrating existing Windows applications
+title: Vorhandene Windows-Anwendungen umstellen
 breadcrumb_title: Windows
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-To migrate an existing native Windows project that was created with IBM MobileFirst™ Platform Foundation version 6.2.0 or later, you must modify the project to use the SDK from the current version. Then you replace the client-side APIs that are discontinued or not in V8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
+Wenn Sie ein mit der
+IBM MobileFirst Platform Foundation ab Version 6.2.0
+erstelltes natives Windows-Projekt migrieren möchten, müssen Sie das Projekt so modifizieren, dass es das SDK der aktuellen Version verwendet. Ersetzen Sie
+dann die clientseitigen APIs, die
+weggefallen oder nicht in Version 8.0 enthalten sind. Das Unterstützungstool für die
+Migration kann Ihren Code scannen und Berichte zu den zu ersetzenden APIs generieren. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Scanning existing {{ site.data.keys.product_adj }} native Windows apps to prepare for a version upgrade](#scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade)
-* [Migrating a Windows project](#migrating-a-windows-project)
-* [Updating the Windows code](#updating-the-windows-code)
+* [Vorhandene
+native {{ site.data.keys.product_adj }}-Windows-Apps in Vorbereitung eines Versionsupgrades scannen](#scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade)
+* [Windows-Projekt umstellen](#migrating-a-windows-project)
+* [Windows-Code aktualisieren](#updating-the-windows-code)
 
-## Scanning existing {{ site.data.keys.product_adj }} native Windows apps to prepare for a version upgrade
+## Vorhandene native {{ site.data.keys.product_adj }}-Windows-Apps in Vorbereitung eines Versionsupgrades scannen
 {: #scanning-existing-mobilefirst-native-windows-apps-to-prepare-for-a-version-upgrade }
-The migration assistance tool helps you prepare your apps that were created with earlier versions of IBM MobileFirst™ Platform Foundation for migration by scanning the sources of the native Windows app and generating a report of APIs that are deprecated or discontinued in V8.0.
+Das Unterstützungstool für die Migration hilft Ihnen, Ihre
+mit einer früheren Version
+der IBM MobileFirst Platform Foundation
+erstellten Apps vorzubereiten, indem es die Quellen der nativen Windows-App scannt und einen Bericht der in Version
+8.0 weggefallenen oder nicht weiter unterstützten APIs generiert. 
 
-The following information is important to know before you use the migration assistance tool:
+Die folgenden Informationen müssen vor Verwendung des Unterstützungstools für die Migration beachtet werden: 
 
-* You must have an existing IBM MobileFirst Platform Foundation native Windows application.
-* You must have internet access.
-* You must have node.js version 4.0.0 or later installed.
-* Review and understand the limitations of the migration process. For more information, see [Migrating apps from earlier releases](../).
+* Sie benötigen eine mit der
+IBM MobileFirst Platform Foundation erstellte, native Windows-Anwendung. 
+* Sie benötigen Internetzugriff. 
+* Node.js ab Version 4.0.0 muss installiert sein. 
+* Sie müssen die Einschränkungen des Migrationsprozesses kennen und verstehen. Weitere Informationen
+finden Sie unter
+[Apps früherer Releases umstellen](../).
 
-Apps that were created with earlier versions of IBM MobileFirst Platform Foundation are not supported in V8.0 without some changes. The migration assistance tool simplifies the process by scanning the source files in the existing native Windows app and identifies APIs that are deprecated, no longer supported, or modified in V8.0.
+Mit früheren Versionen der IBM MobileFirst Platform Foundation
+erstellte Apps müssen geändert werden, damit sie in  Version 8.0 unterstützt werden. Das Unterstützungstool für die Migration vereinfacht diesen Änderungsprozess, indem es die Quellendateien der vorhandenen
+nativen Windows-App scannt und APIs identifiziert, die in Version 8.0 weggefallen sind oder nicht weiter unterstützt werden bzw. modifiziert wurden. 
 
-The migration assistance tool does not modify or move any developer code or comments of your app.
+Das Unterstützungstool für die Migration modifiziert oder verschiebt keinen Entwicklercode und keine Kommentare Ihrer App. 
 
-1. Download the migration assistance tool by using one of the following methods:
-    * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
-    * Download the {{ site.data.keys.mf_dev_kit }}, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the {{ site.data.keys.mf_console }}.
-2. Install the migration assistance tool.
-    * Change to the directory where you downloaded the tool.
-    * Use NPM to install the tool by entering the following command:
+1. Wählen Sie eine der folgenden Alternativen, um das Unterstützungstool für die Migration herunterzuladen: 
+    * Laden Sie die .tgz-Datei aus dem [JazzHub-Repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool) herunter.
+    * Laden Sie das {{ site.data.keys.mf_dev_kit }} über die {{ site.data.keys.mf_console }} herunter. Das Kit enthält die Datei mfpmigrate-cli.tgz
+mit dem Unterstützungstool für die Migration. 
+2. Installieren Sie das Unterstützungstool für die Migration. 
+    * Navigieren Sie zu dem Verzeichnis, in das Sie das Tool heruntergeladen haben. 
+    * Installieren Sie das Tool mit npm. Geben Sie dazu den folgenden Befehl ein: 
 
    ```bash
    npm install -g
    ```
     
-3. Scan the IBM MobileFirst Platform Foundation app by entering the following command:
+3. Scannen Sie die mit der IBM MobileFirst Platform Foundation erstellte App. Geben Sie dazu
+den folgenden Befehl ein: 
 
    ```bash
-   mfpmigrate scan --in source_directory --out destination_directory --type windows
+   mfpmigrate scan --in Quellenverzeichnis --out Zielverzeichnis --type windows
    ```
     
-   **source_directory**  
-   The current location of the project.
+   **Quellenverzeichnis**  
+Aktuelle Position des Projekts
 
-   **destination_directory**  
-   The directory where the report is created.
+   **Zielverzeichnis**  
+Verzeichnis, in dem der Bericht erstellt wird
 
-   When it is used with the scan command, the migration assistance tool identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in V8.0 and saves them in the identified destination directory.
+   Wenn der Scanbefehl des Unterstützungstools für die Migration verwendet wird, identifiziert das Tool APIs in der vorhandenen, mit der
+IBM MobileFirst Platform Foundation erstellten App,
+die in Version 8.0 gelöscht oder geändert wurden oder nicht weiter unterstützt werden und speichert sie im angegebenen Zielverzeichnis. 
     
-## Migrating a Windows project
+## Windows-Projekt umstellen
 {: #migrating-a-windows-project }
-To work with existing native Windows project that was created with IBM MobileFirst™ Platform Foundation V6.2.0 or later, you must modify the project.
+Wenn Sie ein mit der
+IBM MobileFirst Platform Foundation ab Version 6.2.0
+erstelltes natives Windows-Projekt verwenden möchten, müssen Sie das Projekt modifizieren. 
 
-MobileFirst V8.0 only supports Windows Universal environments, that is Windows 10 Universal Windows Platform (UWP) and Windows 8 Universal (Desktop and Phone). Windows Phone 8 Silverlight is not supported.
+MobileFirst Version 8.0
+unterstützt nur universelle Windows-Umgebungen, d. h. Windows 10 UWP (universelle Windows-Plattform) und
+Windows 8 Universal (Desktop und Phone). Windows Phone 8 Silverlight wird nicht unterstützt. 
 
-You can upgrade your Visual Studio project to V8.0 manually. {{ site.data.keys.product_adj }} V8.0 introduces a number of changes to the Visual Studio SDK that may require changes to apps developed in earlier versions. For information on the API's that have changed, see [Updating the Windows code](#updating-the-windows-code).
+Sie können für Ihr Visual-Studio-Projekt ein manuelles Upgrade auf
+Version 8.0 durchführen.
+In
+{{ site.data.keys.product_adj }} Version 8.0
+gibt es eine Reihe von Änderungen am Visual-Studio-SDK, durch die Änderungen an Apps erforderlich sein können, die mit früheren Versionen entwickelt wurden. Informationen zu den geänderten APIs finden Sie
+unter [Windows-Code aktualisieren](#updating-the-windows-code). 
 
-1. Update your {{ site.data.keys.product_adj }} SDK to V8.0.
-    * Remove the MobileFirst SDK packages manually. This includes the **wlclient.properties** file, as well as the following references:
+1. Bringen Sie Ihr {{ site.data.keys.product_adj }}-SDK auf den
+Stand von Version 8.0.
+    * Entfernen Sie die Pakete des MobileFirst-SDK manuell. Dazu gehören auch die Datei **wlclient.properties** und folgende Referenzen:
+
         * Newtonsoft.Json
         * SharpCompress
         * worklight-windows8
 
-        > **Note:** If your app uses the application authenticity or extended authenticity feature, you must add either Microsoft Visual C++ 2013 Runtime Package for Windows or Microsoft Visual C++ 2013 Runtime Package for Windows Phone as a reference to your app. To so do, in Visual Studio, right-click on the references of your native project and complete one of the following choices depending on which environment you added to your native API app:
-        
-        * For Windows desktops and tablets: Right click **References → Add reference → Windows 8.1 → Extensions → Microsoft Visual C++ 2013 Runtime Package for Windows → OK**.
-        * For Windows Phone 8 Universal: Right click **References → Add reference → Windows 8.1 → Extensions → Microsoft Visual C++ 2013 Runtime Package for Windows Phone → OK**.
-        * For Windows 10 Universal Windows Platform (UWP): Right click **References → Add reference → Windows 8.1 → Extensions → Microsoft Visual C++ 2013 Runtime Package for Windows Universal → OK**.
-    * Add the {{ site.data.keys.product_adj }} V8.0.0 SDK packages through NuGet. See [Adding the {{ site.data.keys.product_adj }} SDK by using NuGet](../../../application-development/sdk/windows-8-10).
-2. Updating your application code to use {{ site.data.keys.product_adj }} V8.0.0 API's.
-    * For earlier releases, the Windows API's were part of the **IBM.Worklight.namespace**. These API's are now obsolete and have been replaced by equivalent **WorklightNamespace** API in the. You need to modify the app to replace all references to the **IBM.Worklight.namespace** with the corresponding equivalent in the **WorklightNamespace**.
+        > **Hinweis:** Wenn Ihre App das Feature für Anwendungsauthentizität oder erweiterte Authentizität verwendet,
+müssen Sie das
+Microsoft Visual C++ 2013 Runtime-Paket für Windows oder das Microsoft
+Visual C++ 2013 Runtime-Paket für Windows Phone als Referenz zu Ihrer App hinzufügen. Klicken Sie dazu
+in
+Visual Studio mit der rechten Maustaste auf die Referenzen Ihres nativen Projekts und führen Sie
+abhängig von der Umgebung, die Sie zu Ihrer nativen API-App hinzugefügt haben, einen der folgenden Schritte aus:         
+        * Windows-Desktops und -Tablets: Klicken Sie mit der rechten Maustaste auf
+**Referenzen** und wählen Sie **Referenz hinzufügen → Windows 8.1 → Erweiterungen → Microsoft Visual C++ 2013 Runtime Package for Windows → OK** aus.
+        * Windows Phone 8 Universal: Klicken Sie mit der rechten Maustaste auf
+**Referenzen** und wählen Sie **Referenz hinzufügen → Windows 8.1 → Erweiterungen → Microsoft Visual C++ 2013 Runtime Package for Windows Phone → OK** aus.
+        * Windows 10 UWP (universelle Windows-Plattform): Klicken Sie mit der rechten Maustaste auf
+**Referenzen** und wählen Sie **Referenz hinzufügen → Windows 8.1 → Erweiterungen → Microsoft Visual C++ 2013 Runtime Package for Windows Universal → OK** aus.
+    * Fügen Sie mit NuGet die SDK-Pakete für {{ site.data.keys.product_adj }} Version 8.0.0 hinzu (siehe
+[{{ site.data.keys.product_adj }}-SDK mit NuGet hinzufügen](../../../application-development/sdk/windows-8-10)).
+2. Aktualisieren Sie Ihren Anwendungscode so, dass er {{ site.data.keys.product_adj }}-APIs von
+Version 8.0.0 verwendet. 
+    * In früheren Releases waren die Windows-APIs Teil von
+**IBM.Worklight.namespace**. Diese APIs sind veraltet und wurden durch die äquivalente API
+**WorklightNamespace** ersetzt. Sie müssen die App modifizieren. Ersetzen Sie alle Verweise auf
+**IBM.Worklight.namespace** durch das Äquivalent in
+**WorklightNamespace**.
 
-   For example, the following snippet is an example of using the
+   Das folgende Snippet ist ein Beispiel für die bisherige Verwendung:
+
 
    ```csharp
    WLResourceRequest request = new WLResourceRequest
@@ -86,7 +131,7 @@ You can upgrade your Visual Studio project to V8.0 manually. {{ site.data.keys.p
                             request.send(listener); 
    ```
     
-   The snippet updated with the new API would be:
+   Das mit der neuen API aktualisierte Snippet würde wie folgt aussehen:
     
    ```csharp
    WorklightResourceRequest request = newClient.ResourceRequest
@@ -94,43 +139,51 @@ You can upgrade your Visual Studio project to V8.0 manually. {{ site.data.keys.p
                             WorklightResponse response = await request.Send();
    ```
     
-    * All methods that performed asynchronous operations previously used a Response listener call back model. These have been replaced by the **await/async** model.
+    * Alle Methoden, die asynchrone Operationen ausgeführt haben, verwendeten bisher ein Callback-Modell für Antwortlistener, das durch das Modell **await/async** ersetzt wurde.
 
-You can now start developing your native Windows application with the {{ site.data.keys.product_adj }} SDK. You might need to update your code to reflect the changes for {{ site.data.keys.product_adj }} V8.0.0 API.
+Jetzt können Sie mit dem Entwickeln Ihrer nativen
+Windows-Anwendung mit dem SDK der {{ site.data.keys.product_adj }}
+beginnen. Möglicherweise müssen Sie Ihren Code aktualisieren, sodass er die Änderungen der {{ site.data.keys.product_adj }}-API von
+Version 8.0.0 widerspiegelt. 
 
-#### What to do next
+#### Nächste Schritte
 {: #what-to-do-next }
-Replace the client-side APIs that are discontinued or not in V8.0.
+Ersetzen Sie die clientseitigen APIs, die
+weggefallen oder nicht in Version 8.0 enthalten sind. 
 
-## Updating the Windows code
+## Windows-Code aktualisieren
 {: #updating-the-windows-code }
-{{ site.data.keys.product }} V8.0 introduces a number of changes to the Windows SDK that might require changes to apps developed in earlier versions.
+In
+{{ site.data.keys.product }} Version 8.0
+gibt es eine Reihe von Änderungen am Windows-SDK, durch die Änderungen an Apps erforderlich sein können, die mit früheren Versionen entwickelt wurden. 
 
-#### Deprecated Windows C# API Classes
+#### Nicht weiter verwendete Windows-C#-API-Klassen
 {: #deprecated-windows-c-api-classes }
-| Category | Description | Recommended action | 
-|----------|-------------|--------------------|
-| `ChallengeHandler`  | For custom gateway challenges, use `GatewayChallengeHandler`. For {{ site.data.keys.product_adj }} security-check challenges, use `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler`, `isCustomResponse()`  | Use `GatewayChallengeHandler.canHandleResponse().` | 
-| `ChallengeHandler.submitAdapterAuthentication` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use `GatewayChallengeHandler`. For {{ site.data.keys.product_adj }} security-check challenge handlers, use `SecurityCheckChallengeHandler`. | 
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` For custom gateway challenge handlers, use `GatewayChallengeHandler.Shouldcancel()`. For {{ site.data.keys.product_adj }} security-check challenge handlers, use `SecurityCheckChallengeHandler.ShouldCancel()`. | 
-| `WLAuthorizationManager` | Use `WorklightClient.WorklightAuthorizationManager` instead. | 
-| `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`.  | 
-| `WLChallengeHandler.submitFailure(WLResponse wlResponse)`  | 	Use `SecurityCheckChallengeHandler.ShouldCancel()`. | 
-| `WLClient` | 	Use `WorklightClient` instead. | 
-| `WLErrorCode` | 	Not supported. | 
-| `WLFailResponse` | 	Use `WorklightResponse` instead. | 
-| `WLResponse` | Use `WorklightResponse` instead. | 
-| `WLProcedureInvocationData` | Use `WorklightProcedureInvocationData` instead. | 
-| `WLProcedureInvocationFailResponse` | 	Not supported. | 
-| `WLProcedureInvocationResult` | 	Not supported. | 
-| `WLRequestOptions` | 	Not supported. | 
-| `WLResourceRequest` | 	Use `WorklightResourceRequest` instead. | 
 
-#### Deprecated Windows C# API Interfaces
-{: #deprecated-windows-c-api-interfaces }
-| Category | Description | Recommended action | 
+| Kategorie | Beschreibung | Empfohlene Aktion | 
 |----------|-------------|--------------------|
-| `WLHttpResponseListener` | Not supported. | 
-| `WLResponseListener` | The response will be available as a `WorklightResponse` object | 
-| `WLAuthorizationPersistencePolicy` | Not supported. | 
+| `ChallengeHandler`  | Verwenden Sie für angepasste Gateway-Abfragen `GatewayChallengeHandler`. Verwenden Sie für Abfragen von {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler`, `isCustomResponse()`  | Verwenden Sie `GatewayChallengeHandler.canHandleResponse()`.  | 
+| `ChallengeHandler.submitAdapterAuthentication ` | Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler `GatewayChallengeHandler`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler`.  | 
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | Verwenden Se für angepasste Abfrage-Handler `GatewayChallengeHandler.Shouldcancel()`. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen `SecurityCheckChallengeHandler.ShouldCancel()`. | 
+| `WLAuthorizationManager` | Verwenden Sie stattdessen `WorklightClient.WorklightAuthorizationManager`.  | 
+| `WLChallengeHandler` | Verwenden Sie `SecurityCheckChallengeHandler`.   | 
+| `WLChallengeHandler.submitFailure(WLResponse wlResponse)`  | 	Verwenden Sie `SecurityCheckChallengeHandler.ShouldCancel()`. | 
+| `WLClient` | 	Verwenden Sie stattdessen `WorklightClient`.  | 
+| `WLErrorCode` | 	Nicht unterstützt | 
+| `WLFailResponse` | 	Verwenden Sie stattdessen `WorklightResponse`.  | 
+| `WLResponse` | Verwenden Sie stattdessen `WorklightResponse`.  | 
+| `WLProcedureInvocationData` | Verwenden Sie stattdessen `WorklightProcedureInvocationData`.  | 
+| `WLProcedureInvocationFailResponse` | 	Nicht unterstützt | 
+| `WLProcedureInvocationResult` | 	Nicht unterstützt | 
+| `WLRequestOptions` | 	Nicht unterstützt | 
+| `WLResourceRequest` | 	Verwenden Sie stattdessen `WorklightResourceRequest`.  | 
+
+#### Nicht weiter verwendete Windows-C#-API-Schnittstellen
+{: #deprecated-windows-c-api-interfaces }
+
+| Kategorie | Beschreibung | Empfohlene Aktion | 
+|----------|-------------|--------------------|
+| `WLHttpResponseListener` | Nicht unterstützt | 
+| `WLResponseListener` | Die Antwort ist als ein `WorklightResponse`-Objekt verfügbar.  | 
+| `WLAuthorizationPersistencePolicy` | Nicht unterstützt | 

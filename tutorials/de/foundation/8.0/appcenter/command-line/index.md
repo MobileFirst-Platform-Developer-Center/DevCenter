@@ -1,172 +1,204 @@
 ---
 layout: tutorial
-title: Command-line tool for uploading or deleting an application
-breadcrumb_title: Uploading or deleting an app
+title: Befehlszeilentool für das Hochladen oder Löschen einer Anwendung
+breadcrumb_title: App hochladen oder löschen
 relevantTo: [ios,android,windows,javascript]
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-To deploy applications to the Application Center through a build process, use the command-line tool.
+Verwenden Sie das Befehlszeilentool, wenn Sie Anwendungen über einen Build-Prozess im Application Center
+implementieren möchten.
 
-You can upload an application to the Application Center by using the web interface of the Application Center console. You can also upload a new application by using a command-line tool.
+Sie können eine Anwendung über die Webschnittstelle
+der Application-Center-Konsole in das Application Center hochladen. Sie können eine neue Anwendung auch mit einem Befehlszeilentool hochladen.
 
-This is particularly useful when you want to incorporate the deployment of an application to the Application Center into a build process. This tool is located at: **installDir/ApplicationCenter/tools/applicationcenterdeploytool.jar**.
+Dies ist besonders nützlich, wenn Sie die Implementierung einer Anwendung im Application Center in einen Build-Prozess integrieren möchten.
+Das Tool ist in **Installationsverzeichnis/ApplicationCenter/tools/applicationcenterdeploytool.jar** enthalten.
 
-The tool can be used for application files with extension APK or IPA. It can be used stand alone or as an ant task.
+Das Tool kann für Anwendungsdateien mit der Erweiterung APK oder IPA verwendet werden. Es kann eigenständig oder als Ant-Task verwendet werden. 
 
-The tools directory contains all the files required to support the use of the tool.
+Das Verzeichnis "tools" enthält alle Dateien, die zur Unterstützung der Toolverwendung erforderlich sind.
 
-* **applicationcenterdeploytool.jar**: the upload tool.
-* **json4j.jar**: the library for the JSON format required by the upload tool.
-* **build.xml**: a sample ant script that you can use to upload a single file or a sequence of files to the Application Center.
-* **acdeploytool.sh** and **acdeploytool.bat**: Simple scripts to call java with **applicationcenterdeploytool.jar**.
+* **applicationcenterdeploytool.jar**: Uploadtool
+* **json4j.jar**: Bibliothek für das vom Uploadtool benötigte JSON-Format
+* **build.xml**: Ant-Beispiel-Script, mit dem Sie eine einzelne Datei oder eine Reihe von Dateien in das Application Center hochladen können
+* **acdeploytool.sh** und **acdeploytool.bat**:
+Beispiel-Scripts zum Aufrufen von Java mit **applicationcenterdeploytool.jar**
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Using the stand-alone tool to upload an application](#using-the-stand-alone-tool-to-upload-an-application)
-* [Using the stand-alone tool to delete an application](#using-the-stand-alone-tool-to-delete-an-application)
-* [Using the stand-alone tool to clear the LDAP cache](#using-the-stand-alone-tool-to-clear-the-ldap-cache)
-* [Ant task for uploading or deleting an application](#ant-task-for-uploading-or-deleting-an-application)
+* [Anwendung mit dem eigenständigen Tool hochladen](#using-the-stand-alone-tool-to-upload-an-application)
+* [Anwendung mit dem eigenständigen Tool löschen](#using-the-stand-alone-tool-to-delete-an-application)
+* [Inhalt des LDAP-Cache mit eigenständigem Tool löschen](#using-the-stand-alone-tool-to-clear-the-ldap-cache)
+* [Ant-Task zum Hochladen oder Löschen einer Anwendung](#ant-task-for-uploading-or-deleting-an-application)
 
-### Using the stand-alone tool to upload an application
+### Anwendung mit dem eigenständigen Tool hochladen
 {: #using-the-stand-alone-tool-to-upload-an-application }
-To upload an application, call the stand-alone tool from the command line.  
-Use the stand-alone tool by following these steps.
+Rufen Sie das eigenständige Tool über die Befehlszeile auf, um eine Anwendung hochzuladen.  
+Führen Sie für die Verwendung des eigenständigen Tools die folgenden Schritte aus.
 
-1. Add **applicationcenterdeploytool.jar** and **json4j.jar** to the java classpath environment variable.
-2. Call the upload tool from the command line:
+1. Fügen Sie **applicationcenterdeploytool.jar** und **json4j.jar** zur Java-Umgebungsvariablen CLASSPATH hinzu.
+2. Rufen Sie das Aktualisierungstool wie folgt in der Befehlszeile auf:
   
    ```bash
-   java com.ibm.appcenter.Upload [options] [files]
+   java com.ibm.appcenter.Upload [Optionen] [Dateien]
    ```
     
-You can pass any of the available options in the command line.
+Sie können jede der verfügbaren Optionen in der Befehlszeile übergeben.
 
-| Option | Content indicated by | Description | 
+| Option | Inhalt angegeben mit | Beschreibung | 
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server. | 
-| -c | context | The context of the Application Center web application. | 
-| -u | user | The user credentials to access the Application Center. | 
-| -p | password | The password of the user. | 
-| -d | description | The description of the application to be uploaded. | 
-| -l | label | The fallback label. Normally the label is taken from the application descriptor stored in the file to be uploaded. If the application descriptor does not contain a label, the fallback label is used. | 
-| -isActive | true or false | The application is stored in the Application Center as an active or inactive application. | 
-| -isInstaller | true or false | The application is stored in the Application Center with the “installer” flag set appropriately. | 
-| -isReadyForProduction | true or false | The application is stored in the Application Center with the “ready-for-production” flag set appropriately. | 
-| -isRecommended | true or false | The application is stored in the Application Center with the “recommended” flag set appropriately. | 
-| -e	  |  | Shows the full exception stack trace on failure. | 
-| -f	  |  | Force uploading of applications, even if they exist already. | 
-| -y	  |  | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. |  Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. | 
+| -s | serverpath | Pfad zum Application-Center-Server | 
+| -c | context | Kontext der Application-Center-Webanwendung | 
+| -u | user | Benutzerberechtigungsnachweise für den Zugriff auf das Application Center | 
+| -p | password | Kennwort des Benutzers | 
+| -d | description | Beschreibung der hochzuladenden Anwendung | 
+| -l | label | Alternative Bezeichnung. Normalerweise wird die Bezeichnung aus dem Anwendungsdeskriptor übernommen, der in der hochzuladenden Datei gespeichert ist. Wenn der Anwendungsdeskriptor keine Bezeichnung enthält, wird die alternative Bezeichnung verwendet. | 
+| -isActive | true oder false | Die Anwendung wird im Application Center als aktive oder inaktive Anwendung gespeichert. | 
+| -isInstaller | true oder false | Die Anwendung wird im Application Center mit der entsprechend gesetzten Option "installer" gespeichert. | 
+| -isReadyForProduction | true oder false | Die Anwendung wird im Application Center mit der entsprechend gesetzten Option "ready-for-production" gespeichert. | 
+| -isRecommended | true oder false | Die Anwendung wird im Application Center mit der entsprechend gesetzten Option "recommended" gespeichert. | 
+| -e	  |  | Zeigt bei einer Störung den vollständigen Stack-Trace für Ausnahmen an | 
+| -f	  |  | Erzwingt das Hochladen von Anwendungen, auch wenn diese bereits vorhanden sind | 
+| -y	  |  | Inaktiviert die SSL-Sicherheitsprüfung, sodass auf geschützten Hosts Veröffentlichungen ohne Prüfung des SSL-Zertifikats möglich sind.  |  Die Verwendung dieser Option ist ein Sicherheitsrisiko, kann aber für das Testen von localhost mit temporären selbst signierten SSL-Zertifikaten geeignet sein. | 
 
-The files parameter can specify files of type Android application package (.apk) files or iOS application (.ipa) files.  
-In this example user demo has the password demopassword. Use this command line.
+Mit dem Parameter "Dateien" können Dateien mit Android-Anwendungspaketen
+(.apk) oder iOS-Anwendungsdateien
+(.ipa) angegeben werden.  
+In diesem Beispiel hat der Benutzer demo das Kennwort demopassword. Verwenden Sie die folgende Befehlszeile.
 
 ```bash
 java com.ibm.appcenter.Upload -s http://localhost:9080 -c applicationcenter -u demo -p demopassword -f app1.ipa app2.ipa
 ```
 
-### Using the stand-alone tool to delete an application
+### Anwendung mit dem eigenständigen Tool löschen
 {: #using-the-stand-alone-tool-to-delete-an-application }
-To delete an application from the Application Center, call the stand-alone tool from the command line.  
-Use the stand-alone tool by following these steps.
+Rufen Sie das eigenständige Tool über die Befehlszeile auf, um eine Anwendung aus dem Application Center zu löschen.  
+Führen Sie für die Verwendung des eigenständigen Tools die folgenden Schritte aus.
 
-1. Add **applicationcenterdeploytool.jar** and **json4j.jar** to the java classpath environment variable.
-2. Call the upload tool from the command line:
+1. Fügen Sie **applicationcenterdeploytool.jar** und **json4j.jar** zur Java-Umgebungsvariablen CLASSPATH hinzu.
+2. Rufen Sie das Aktualisierungstool wie folgt in der Befehlszeile auf:
 
    ```bash
-   java com.ibm.appcenter.Upload -delete [options] [files or applications]
+   java com.ibm.appcenter.Upload -delete [Optionen] [Dateien oder Anwendungen]
    ```
     
-You can pass any of the available options in the command line.
+Sie können jede der verfügbaren Optionen in der Befehlszeile übergeben.
 
-| Option | Content indicated by	| Description | 
+| Option | Inhalt angegeben mit	| Beschreibung | 
 |--------|----------------------|-------------|
-| -s |serverpath | The path to the Application Center server. | 
-| -c | context | The context of the Application Center web application. | 
-| -u | user | The user credentials to access the Application Center. | 
-| -p | password | The password of the user. | 
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates. | 
+| -s |serverpath | Pfad zum Application-Center-Server | 
+| -c | context | Kontext der Application-Center-Webanwendung | 
+| -u | user | Benutzerberechtigungsnachweise für den Zugriff auf das Application Center | 
+| -p | password | Kennwort des Benutzers | 
+| -y | | Inaktiviert die SSL-Sicherheitsprüfung, sodass auf geschützten Hosts Veröffentlichungen ohne Prüfung des SSL-Zertifikats möglich sind. Die Verwendung dieser Option ist ein Sicherheitsrisiko, kann aber für das Testen von localhost mit temporären selbst signierten SSL-Zertifikaten geeignet sein. | 
 
-You can specify files or the application package, operating system, and version. If files are specified, the package, operating system and version are determined from the file and the corresponding application is deleted from the Application Center. If applications are specified, they must have one of the following formats:
+Sie können Dateien oder das Anwendungspaket, das Betriebssystem und die Version angeben. Wenn Dateien angegeben werden,
+werden das Paket, das Betriebssystem und die Version anhand der Datei bestimmt. Dann wird die entsprechende Anwendung aus dem Application Center gelöscht. Wenn Anwendungen angegeben werden,
+müssen sie eines der folgenden Formate haben: 
 
-* `package@os@version`: This exact version is deleted from the Application Center. The version part must specify the “internal version”, not the “commercial version” of the application.
-* `package@os`: All versions of this application are deleted from the Application Center.
-* `package`: All versions of all operating systems of this application are deleted from the Application Center.
+* `Paket@Betriebssystem@Version` zum Löschen genau dieser Version aus
+dem Application Center. Im Versionsabschnitt muss die
+"interne Version" und nicht die "kommerzielle Version" der Anwendung angegeben werden.
+* `Paket@Betriebssystem` zum Löschen aller Versionen dieser Anwendung aus dem
+Application Center
+* `Paket` zum Löschen aller Versionen dieser Anwendung für alle Betriebssysteme aus dem
+Application Center
 
-#### Example
+#### Beispiel
 {: #example-delete }
-In this example, user demo has the password demopassword. Use this command line to delete the iOS application demo.HelloWorld with internal version 3.0.
+In diesem Beispiel hat der Benutzer demo das Kennwort demopassword. Verwenden Sie die folgende
+Befehlszeile, um die iOS-Anwendung demo.HelloWorld mit der internen Version 3.0 zu löschen.
 
 ```bash
 java com.ibm.appcenter.Upload -delete -s http://localhost:9080 -c applicationcenter -u demo -p demopassword demo.HelloWorld@iOS@3.0
 ```
 
-### Using the stand-alone tool to clear the LDAP cache
+### Inhalt des LDAP-Cache mit eigenständigem Tool löschen
 {: #using-the-stand-alone-tool-to-clear-the-ldap-cache }
-Use the stand-alone tool to clear the LDAP cache and make changes to LDAP users and groups visible immediately in the Application Center.
+Mit dem eigenständigen Tool können Sie den Inhalt des LDAP-Cache löschen und Änderungen für LDAP-Benutzer und -Gruppen sofort im
+Application
+Center sichtbar machen.
 
-When the Application Center is configured with LDAP, changes to users and groups on the LDAP server become visible to the Application Center after a delay. The Application Center maintains a cache of LDAP data and the changes only become visible after the cache expires. By default, the delay is 24 hours. If you do not want to wait for this delay to expire after changes to users or groups, you can call the stand-alone tool from the command line to clear the cache of LDAP data. By using the stand-alone tool to clear the cache, the changes become visible immediately.
+Wenn das Application Center mit LDAP konfiguriert ist, werden Änderungen für Benutzer und Gruppen auf dem LDAP-Server erst nach einer Verzögerung
+im Application
+Center sichtbar. Das Application Center verwaltet einen Cache mit
+LDAP-Daten, und Änderungen werden erst sichtbar, wenn der Cache abgelaufen ist.
+Standardmäßig liegt die Verzögerung bei 24 Stunden. Wenn Sie nach Änderungen für Benutzer und Gruppen nicht die gesamte Verzögerungszeit warten möchten,
+können Sie das eigenständige Tool in der Befehlszeile aufrufen, um die LDAP-Daten aus dem Cache zu löschen. Wenn Sie den
+Cacheinhalt mit dem eigenständigen Tool gelöscht haben, werden die Änderungen sofort sichtbar.
 
-Use the stand-alone tool by following these steps.
+Führen Sie für die Verwendung des eigenständigen Tools die folgenden Schritte aus.
 
-1. Add applicationcenterdeploytool.jar and json4j.jar to the java classpath environment variable.
-2. Call the upload tool from the command line:
+1. Fügen Sie applicationcenterdeploytool.jar und json4j.jar zur Java-Umgebungsvariablen classpath hinzu.
+2. Rufen Sie das Aktualisierungstool wie folgt in der Befehlszeile auf:
 
    ```bash
-   java com.ibm.appcenter.Upload -clearLdapCache [options]
+   java com.ibm.appcenter.Upload -clearLdapCache [Optionen]
    ```
    
-You can pass any of the available options in the command line.
+Sie können jede der verfügbaren Optionen in der Befehlszeile übergeben.
 
-| Option | Content indicated by | Description | 
+| Option | Inhalt angegeben mit | Beschreibung | 
 |--------|----------------------|-------------|
-| -s | serverpath | The path to the Application Center server.| 
-| -c | context | The context of the Application Center web application.| 
-| -u | user | The user credentials to access the Application Center.| 
-| -p | password | The password of the user.| 
-| -y | | Disable SSL security checking, which allows publishing on secured hosts without verification of the SSL certificate. Use of this flag is a security risk, but may be suitable for testing localhost with temporary self-signed SSL certificates.| 
+| -s | serverpath | Pfad zum Application-Center-Server| 
+| -c | context | Kontext der Application-Center-Webanwendung| 
+| -u | user | Benutzerberechtigungsnachweise für den Zugriff auf das Application Center| 
+| -p | password | Kennwort des Benutzers| 
+| -y | | Inaktiviert die SSL-Sicherheitsprüfung, sodass auf geschützten Hosts Veröffentlichungen ohne Prüfung des SSL-Zertifikats möglich sind. Die Verwendung dieser Option ist ein Sicherheitsrisiko, kann aber für das Testen von localhost mit temporären selbst signierten SSL-Zertifikaten geeignet sein.| 
 
-#### Example
+#### Beispiel
 {: #example-cache }
-In this example, user demo has the password demopassword.
+In diesem Beispiel hat der Benutzer demo das Kennwort demopassword. 
 
 ```bash
 java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applicationcenter -u demo -p demopassword
 ```
 
-### Ant task for uploading or deleting an application
+### Ant-Task zum Hochladen oder Löschen einer Anwendung
 {: ant-task-for-uploading-or-deleting-an-application }
-You can use the upload and delete tools as an Ant task and use the Ant task in your own Ant script.  
-Apache Ant is required to run these tasks. The minimum supported version of Apache Ant is listed in [System requirements](../../product-overview/requirements).
+Sie können die Tools zum Hochladen und Löschen als Ant-Task verwenden und die Ant-Task in Ihrem eigenen
+Ant-Script ausführen.  
+Für die Ausführung dieser Tasks ist Apache Ant erforderlich. Die unterstützte
+Mindestversion von Apache Ant ist in den
+[Systemvoraussetzungen](../../product-overview/requirements) angegeben.
 
-For convenience, Apache Ant 1.8.4 is included in {{ site.data.keys.mf_server }}. In the product_install_dir/shortcuts/ directory, the following scripts are provided:
+Für Ihren Komfort ist Apache Ant 1.8.4
+im Lieferumfang von {{ site.data.keys.mf_server }} enthalten. Im
+Verzeichnis Produktinstallationsverzeichnis/shortcuts/ stehen die folgenden Scripts
+zur Verfügung:
 
-* ant for UNIX / Linux
-* ant.bat for Windows
+* ant für UNIX/Linux
+* ant.bat für Windows
 
-These scripts are ready to run, which means that they do not require specific environment variables. If the environment variable JAVA_HOME is set, the scripts accept it.
+Diese Scripts können sofort ausgeführt werden. Sie erfordern keine bestimmten
+Umgebungsvariablen. Wenn die Umgebungsvariable JAVA_HOME gesetzt ist, wird sie von den Scripts akzeptiert.
 
-When you use the upload tool as an Ant task, the classname value of the upload Ant task is **com.ibm.appcenter.ant.UploadApps**. The classname value of the delete Ant task is **com.ibm.appcenter.ant.DeleteApps**.
+Wenn Sie das Tool zum Hochladen als eine Ant-Task verwenden,
+lautet der "classname" der Ant-Task "upload"
+**com.ibm.appcenter.ant.UploadApps**. Der "classname" der Ant-Task "delete" ist **com.ibm.appcenter.ant.DeleteApps**.
 
-| Parameters of Ant task | Description | 
+| Parameter der Ant-Task | Beschreibung | 
 |------------------------|-------------|
-| serverPath | To connect to the Application Center. The default value is http://localhost:9080. | 
-| context | The context of the Application Center. The default value is /applicationcenter. | 
-| loginUser | The user name with permissions to upload an application. | 
-| loginPass | The password of the user with permissions to upload an application. | 
-| forceOverwrite | If this parameter is set to true, the Ant task attempts to overwrite applications in the Application Center when it uploads an application that is already present. This parameter is available only in the upload Ant task.
-| file | The .apk or .ipa file to be uploaded to the Application Center or to be deleted from the Application Center. This parameter has no default value. | 
-| fileset | To upload or delete multiple files. | 
-| application | The package name of the application; this parameter is available only in the delete Ant task. | 
-| os | The operating system of the application. (For example, Android or iOS.) This parameter is available only in the delete Ant task. | 
-| version | The internal version of the application; this parameter is available only in the delete Ant task. Do not use the commercial version here, because the commercial version is unsuitable to identify the version exactly. | 
+| serverPath | Verbindung zum Application Center herstellen. Der Standardwert ist http://localhost:9080. | 
+| context | Kontext des Application Center. Der Standardwert ist /applicationcenter. | 
+| loginUser | Name des Benutzers mit der Berechtigung, eine Anwendung hochzuladen | 
+| loginPass | Kennwort des Benutzers mit der Berechtigung, eine Anwendung hochzuladen | 
+| forceOverwrite | Wenn dieser Parameter auf "true" gesetzt ist, versucht die Ant-Task beim Hochladen einer bereits im Application Center vorhandenen Anwendung, die vorhandene Anwendung zu überschreiben. Dieser Parameter ist nur für die Ant-Task "upload" verfügbar.
+| file | Die .apk- oder .ipa-Datei, die in das Application Center hochgeladen oder aus dem Application Center gelöscht werden soll. Dieser Parameter hat keinen Standardwert. | 
+| fileset | Hochladen oder Löschen mehrerer Dateien | 
+| application | Paketname der Anwendung. Dieser Parameter ist nur für die Ant-Task "delete" verfügbar. | 
+| os | Betriebssystem der Anwendung (z. B. Android oder iOS). Dieser Parameter ist nur für die Ant-Task "delete" verfügbar. | 
+| version | Interne Version der Anwendung. Dieser Parameter ist nur für die Ant-Task "delete" verfügbar. Verwenden Sie hier nicht die kommerzielle Version, die nicht zum genauen Identifizieren der Version geeignet ist. | 
 
-#### Example
+#### Beispiel
 {: #example-ant }
-You can find an extended example in the **ApplicationCenter/tools/build.xml** directory.  
-The following example shows how to use the Ant task in your own Ant script.
+Ein ausführliches Beispiel finden Sie im Verzeichnis
+**ApplicationCenter/tools/build.xml**.   
+Das
+folgende Beispiel zeigt, wie Sie die Ant-Task in Ihrem eigenen Ant-Script verwenden können.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -175,13 +207,13 @@ The following example shows how to use the Ant task in your own Ant script.
   <property name="install.dir" value="../../" />
   <property name="workspace.root" value="../../" />
 
-<!-- Server Properties -->
+<!-- Servereigenschaften -->
   <property name="server.path" value="http://localhost:9080/" />
   <property name="context.path" value="applicationcenter" /> 
   <property name="upload.file" value="" />
   <property name="force" value="true" />
 
-  <!--  Authentication Properties -->
+  <!--  Authentifizierungseigenschaften -->
   <property name="login.user" value="appcenteradmin" />
   <property name="login.pass" value="admin" />
   <path id="classpath.run">
@@ -217,32 +249,37 @@ The following example shows how to use the Ant task in your own Ant script.
 </project>
 ```
 
-This sample Ant script is in the **tools** directory. You can use it to upload a single application to the Application Center.
+Dieses Ant-Beispiel-Script finden Sie im Verzeichnis **tools**.
+Sie können es verwenden, um eine
+einzelne Anwendung in das Application Center hochzuladen.
 
 ```bash
 ant upload.App -Dupload.file=sample.ipa
 ```
 
-You can also use it to upload all applications that are found in a directory hierarchy.
+Sie können es auch verwenden, um
+alle in einer Verzeichnishierarchie gefundenen Anwendungen hochzuladen.
 
 ```bash
 ant upload.AllApps -Dworkspace.root=myDirectory
 ```
 
-#### Properties of the sample Ant script
+#### Eigenschaften des Ant-Beispiel-Scripts
 {: #properties-of-the-sample-ant-script }
-| Property | Comment | 
+| Eigenschaft | Kommentar | 
 |----------|---------|
-| install.dir | Defaults to ../../ | 
-| server.path | The default value is http://localhost:9080. | 
-| context.path | The default value is applicationcenter. | 
-| upload.file | This property has no default value. It must include the exact file path. | 
-| workspace.root | Defaults to ../../ | 
-| login.user | The default value is appcenteradmin. | 
-| login.pass | The default value is admin. | 
-| force	The default value is true. | 
+| install.dir | Standardmäßig ../../ | 
+| server.path | Der Standardwert ist http://localhost:9080. | 
+| context.path | Der Standardwert ist applicationcenter. | 
+| upload.file | Diese Eigenschaft hat keinen Standardwert. Sie muss den genauen Dateipfad enthalten. | 
+| workspace.root | Standardmäßig ../../ | 
+| login.user | Der Standardwert ist appcenteradmin. | 
+| login.pass | Der Standardwert ist admin. | 
+| force	| Der Standardwert ist true. | 
 
-To specify these parameters by command line when you call Ant, add -D before the property name. For example:
+Wenn Sie
+diese Parameter beim Aufrufen von Ant in der Befehlszeile angeben möchten,
+fügen Sie vor dem Eigenschaftsnamen -D hinzu. Beispiel: 
 
 ```xml
 -Dserver.path=http://localhost:8888/
