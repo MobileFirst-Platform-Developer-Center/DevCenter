@@ -1,137 +1,228 @@
 ---
 layout: tutorial
-title: Migrating from Earlier Releases
+title: Frühere Releases umstellen
 weight: 12
 ---
-## Overview
+## Übersicht
 {: #overview }
-{{ site.data.keys.product_full }} v8.0 introduces new concepts for application development and deployment, and some API changes. Learn about these changes to prepare and plan for the migration of your MobileFirst applications.
+In {{ site.data.keys.product_full }} Version 8.0
+gibt es neue Konzepte für die Anwendungsentwicklung und -implementierung sowie einige API-Änderungen. Hier können Sie sich über diese Änderungen informieren, um die Umstellung Ihrer
+MobileFirst-Anwendungen
+zu planen. 
 
-> [Review the Migration Cookbook](migration-cookbook) to quickly get started with the migration process.
+> [Nutzen Sie für einen schnellen Einstieg in den Migrationsprozess das Migrations-Cookbook](migration-cookbook). 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Why migrate to {{ site.data.keys.product_full }} 8.0](#why-migrate-to-ibm-mobilefirst-foundation-80)
-* [Changes in the development and deployment process](#changes-in-the-development-and-deployment-process)
-* [Migrating a Cordova or hybrid application](#migrating-a-cordova-or-hybrid-application)
-* [Migrating a native application](#migrating-a-native-application)
-* [Migrating adapters and security](#migrating-adapters-and-security)
-* [Migrating push notifications support](#migrating-push-notifications-support)
-* [Changes in the server databases and in the server structure](#changes-in-the-server-databases-and-in-the-server-structure)
-* [Storing mobile data in Cloudant](#storing-mobile-data-in-cloudant)
-* [Applying a fix pack to {{ site.data.keys.mf_server }}](#applying-a-fix-pack-to-mobilefirst-server)
+* [Warum auf {{ site.data.keys.product_full }} 8.0 umstellen?](#why-migrate-to-ibm-mobilefirst-foundation-80)
+* [Änderungen beim Entwicklungs- und Implementierungsprozess](#changes-in-the-development-and-deployment-process)
+* [Cordova- oder Hybridanwendung umstellen](#migrating-a-cordova-or-hybrid-application)
+* [Native Anwendung umstellen](#migrating-a-native-application)
+* [Adapter und Sicherheit umstellen](#migrating-adapters-and-security)
+* [Unterstützung für Push-Benachrichtigungen umstellen](#migrating-push-notifications-support)
+* [Änderungen bei den Serverdatenbanken und der Serverstruktur](#changes-in-the-server-databases-and-in-the-server-structure)
+* [Mobile Daten in Cloudant speichern](#storing-mobile-data-in-cloudant)
+* [Fixpack auf {{ site.data.keys.mf_server }} anwenden](#applying-a-fix-pack-to-mobilefirst-server)
 
-## Why migrate to IBM MobileFirst Foundation 8.0
-### Reduce Effort, Skill and Time Required to Build Apps
-* Build apps faster, simpler and smarter with standard package managers (npm, CocoaPods, Gradle, NuGet) and Maven for Java Adapter build automation
-* New simpler, modular, and easier to plug-in MobileFirst SDKs
-* New and improved overall user experience including anticipating users’ next best action and providing guided help throughout for registering, configuring and deploying apps
+## Warum auf IBM MobileFirst Foundation 8.0 umstellen?
+### Nötige Anstrengungen und Kenntnisse sowie erforderliche Zeit für die Erstellung von Anwendungen verringern
+* Schnelleres, einfacheres und intelligenteres Erstellen von Apps mit Standardpaketmanagern (npm, CocoaPods, Gradle, NuGet) und Maven für die automatisierte Erstellung von Java-Adaptern
+* Einfachere und modulare Integration von MobileFirst-SDKs
+* Neue und verbesserte Attraktivität für den Benutzer, z. B. durch Vorwegnahme der nächsten Benutzeraktion und Bereitstellung von Hilfeinformationen beim Registrieren, Konfigurieren und Implementieren von Apps
 
-### Enhanced Automation, and New Dev and IT Self-Service
-* New Live Update feature to externalize and dynamically change app configurable information (Push Notifications, Authentication, Adapters, App behavior and workflow)
-* Completely rethought, radically simplified Console user experience for registering, deploying and managing apps
-* A new simpler app architecture that eliminates the need for Dev and IT interdependence
-* Improved problem determination with new crash analytics, configurable alerts, and root cause analysis
-* Improved Push Notifications services enables targeted, subscription-based notifications sent from web console
+### Erweiterte Automation sowie neuer Entwicklungs- und IT-Self-Service
+* Neues Feature für Liveaktualisierung zur Auslagerung und dynamischen Änderung von konfigurierbaren App-Informationen (Push-Benachrichtigungen, Authentifizierung, Adapter, App-Verhalten und Workflow)
+* Konzeptionell vollständige Überarbeitung und radikale Vereinfachung der Konsolenbenutzeraktionen für die Registrierung, Implementierung und Verwaltung von Apps
+* Neue einfachere App-Architektur, in der keine wechselseitige Entwicklungs- und IT-Abhängigkeit mehr nötig ist
+* Verbesserte Problembestimmung mit neuen Absturzanalysen, konfigurierbaren Alerts und Analyse der zugrunde liegenden Ursachen
+* Verbesserte Push-Benachrichtigungsservices, die das Senden gezielter, abonnementgestützter Benachrichtigungen von der Webkonsole aus ermöglichen
 
-### More Hybrid Cloud Deployment Options
-* One-click provision of MobileFirst Foundation development, testing, and fully scalable production environments on Bluemix Public
-* Integrated with IBM DevOps Services and Urban Code for building your deployment pipelines
+### Mehr Optionen für die Hybrid-Cloud-Implementierung
+* Bereitstellung von MobileFirst-Foundation-Entwicklungsumgebungen und -Testumgebungen sowie von voll skalierbaren MobileFirst-Foundation-Produktionsumgebungen in Bluemix Public per Mausklick
+* Integration von IBM DevOps Services und UrbanCode für die Erstellung Ihrer Implementierungspipelines
 
-### Multi-channel API creation and management 
-* Step up API Connect multichannel security with mobile specific security extensions (e.g. Step Up, Multifactor) for maximum protection, then enforce in the DMZ with IBM DataPower
-* Create and define API Connect-compatible Swagger REST APIs in Foundation v8 then Manage and Secure them in API Connect
+### Mehrkanal-API-Erstellung und -Management 
+* Intensivierung der API-Connect-Mehrkanalsicherheit mit speziellen Sicherheitserweiterungen für mobile Geräte (Intensivierung, Multifaktor) für maximalen Schutz und anschließende Durchsetzung in der Datenverwaltungszone mit IBM DataPower
+* Erstellung und Definition von mit API Connect kompatiblen Swagger-REST-APIs in MobileFirst Foundation Version 8 und anschließende Verwaltung und Sicherung dieser APIs in API Connect
 
-## Changes in the development and deployment process
+## Änderungen beim Entwicklungs- und Implementierungsprozess
 {: #changes-in-the-development-and-deployment-process }
-> For a quick hands-on experience of the development process with {{ site.data.keys.product }} V8.0.0, you can review the [Quick Start tutorials](../quick-start).
+> Wenn Sie schnell praktische Entwicklungserfahrungen mit
+{{ site.data.keys.product }} Version 8.0.0 sammeln möchten, sehen Sie sich die [Lernprogramme für den
+Schnelleinstieg](../quick-start)
+an. In dieser Produktversion
+erstellen Sie keine Projekt-WAR-Datei mehr, die in dem Anwendungsserver installiert werden muss, in
+dem {{ site.data.keys.mf_server }} ausgeführt wird, bevor die Apps hochgeladen werden können. Stattdessen wird
+{{ site.data.keys.mf_server }} einmalig installiert, und Sie laden dann die serverseitige **Konfiguration** für Ihre Apps, für Ressourcensicherheit oder für den Push-Service auf den Server hoch. Sie können die Konfiguration Ihrer Apps in der
+{{ site.data.keys.mf_console }} modifizieren. Sie können auch ein Befehlszeilentool oder die Server-REST-API verwenden, um eine neue **Konfigurationsdatei** für Ihre Apps hochzuladen. 
 
-In this version of the product, you no longer create a project WAR file that needs to be installed in the application server that is running {{ site.data.keys.mf_server }} before you can upload your apps. Instead, {{ site.data.keys.mf_server }} is installed once, and you upload the server-side **configuration** of your apps, of the resource security, or of the push service to the server. You can modify the configuration of your apps with the {{ site.data.keys.mf_console }}. You can also upload a new **configuration file** for your apps by using a command-line tool or the server REST API.
+MobileFirst-Projekte gibt es nicht mehr. Sie entwickeln Ihre mbile App nun in der Entwicklungsumgebung Ihrer Wahl. Die Serverseite Ihrer Anwendung entwickeln Sie separat in Java oder JavaScript. Adapter können Sie mit
+Apache Maven oder einer Maven-fähigen IDE wie Eclipse, IntelliJ und anderen entwickeln. 
 
-MobileFirst projects no longer exist. Instead, you develop your mobile app with the development environment of your choice. You develop the server-side of your application separately, in Java™ or in JavaScript. You can develop adapters with Apache Maven or a Maven enabled IDE such as Eclipse, IntelliJ, and others.
+In den Vorgängerversionen wurden Anwendungen implementiert, indem eine .wlapp-Datei
+auf den Server hochgeladen wurde. Die Datei enthielt beschreibende Daten für die Anwendung und im Falle von Hybridanwendungen die
+Webressourcen. In Version 8.0 wird die
+.wlapp-Datei durch eine JSON-Anwendungsdeskriptordatei für die Registrierung einer App beim Server
+ersetzt. Für Cordova-Anwendungen, die die direkte Aktualisierung verwenden, müssen Sie keine neue Version der
+.wlapp-Datei auf den Server hochladen, sondern ein Webressourcenarchiv.
 
-In previous versions, applications were deployed to the server by uploading a .wlapp file. The file contained data that described the application and for hybrid applications, the web resources. In v8.0, the .wlapp file is replaced by an application descriptor JSON file for registering an app to the server. For Cordova applications that use Direct Update, instead of uploading a new version of the .wlapp, you now upload a web resource archive to the server.
+Wenn Sie Ihre App entwickeln,
+verwenden Sie für viele Aufgaben die {{ site.data.keys.mf_cli }}, z. B.
+zum Regstrieren einer App beim Zielserver oder zum Hochladen der serverseitigen Konfiguration. 
 
-When you develop your app, you use the {{ site.data.keys.mf_cli }} for many tasks, such as registering an app to its target server or uploading its server-side configuration.
-
-### Discontinued features and replacement path
+### Weggefallene Features und Ersetzungspfad
 {: #discontinued-features-and-replacement-path}
-{{ site.data.keys.product }} V8.0.0 is radically simplified compared to the previous version. As a result of this simplification, some features that were available in V7.1 are discontinued in v8.0.
+{{ site.data.keys.product }} Version
+8.0.0
+ist im Vergleich zur Vorgängerversion stark vereinfacht. Ein Ergebnis dieser Vereinfachung ist, dass einige Features aus Version 7.1 in
+Version 8.0 wegfallen. 
 
-> For more information about discontinued features and replacement path, see [Features that are discontinued in v8.0 and features that are not included in v8.0](../product-overview/release-notes/deprecated-discontinued).
-
-## Migrating a Cordova or hybrid application
+> Weitere Informationen zu weggefallenen Features und zum Ersetzungspfad finden Sie unter
+[In Version 8.0 weggefallene und nicht mehr enthaltene
+Features](../product-overview/release-notes/deprecated-discontinued). ## Cordova- oder Hybridanwendung umstellen
 {: #migrating-a-cordova-or-hybrid-application }
-You start developing Cordova apps with the Apache Cordova command-line tool or with a Cordova enabled IDE such as Visual Studio Code, Eclipse, IntelliJ, and others.
+Sie können die Entwicklung von Cordova-Apps mit dem
+Apache-Cordova-Befehlszeilentool oder in einer Cordova-fähigen IDE wie Visual
+Studio Code, Eclipse, IntelliJ und anderen beginnen. 
 
-Add support for the {{ site.data.keys.product_adj }} features by adding the {{ site.data.keys.product_adj }} plug-ins to your app. For more information about the differences between V7.1 Cordova or hybrid apps and V8.0 Cordova apps, see [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before).
+Fügen Sie Unterstützung für die {{ site.data.keys.product_adj }}-Features hinzu, indem Sie die {{ site.data.keys.product_adj }}-Plug-ins zu Ihrer App hinzufügen. Weitere Informationen zu den Unterschieden zwischen Cordova- oder Hybrid-Apps von Version 7.1 und Cordova-Apps von Version
+8.0 finden Sie unter [Vergleich von
+in Version 8.0 und bis Version 7.1 entwickelten Cordova-Apps](migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before).
 
-To migrate a Cordova or hybrid app, you need to
+Für die Migration einer Cordova- oder Hybrid-App sind folgende Schritte erforderlich: 
 
-* For planning purposes, run the migration assistance tool on your existing project. Review the generated report and assess the effort required for migration. For more information, see [Starting the Cordova app migration with the migration assistance tool](migrating-client-applications/cordova/#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
-* Replace the client-side APIs that are discontinued or not in V8.0.0. For a list of API changes, see [Upgrading the WebView](migrating-client-applications/cordova/#upgrading-the-webview).
-* Modify the call to client resources that use the classic security model. For example, use the `WLResourceRequest` API instead of `WL.Client.invokeProcedure`, which is deprecated.
-* If you use Direct Update, review [Migrating Direct Update](migrating-client-applications/cordova/#migrating-direct-update).
-* For more information about migrating Cordova or hybrid apps, see [Migrating existing Cordova and hybrid applications](migrating-client-applications/cordova).
+* Führen Sie für Ihre Planung das Unterstützungstool für die Migration für Ihr vorhandenes Projekt aus. Sehen Sie sich den generierten Bericht an und schätzen Sie den für die Migration erforderlichen
+Aufwand ein. Weitere Informationen finden Sie unter
+[Migration einer
+Cordova-App mit dem Unterstützungstool für die Migration starten](migrating-client-applications/cordova/#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
+* Ersetzen Sie die clientseitigen APIs, die
+weggefallen oder nicht in Version 8.0.0 enthalten sind. Eine Liste der API-Änderungen finden Sie unter
+[Upgrade für WebView](migrating-client-applications/cordova/#upgrading-the-webview).
+* Sie müssen den Aufruf von Clientressourcen ändern, die das klassische Sicherheitmodell verwenden. Verwenden Sie beispielsweise die API
+`WLResourceRequest` anstelle der nicht weiter unterstützten API `WL.Client.invokeProcedure`. 
+* Wenn Sie die direkte Aktualisierung verwenden, lesen Sie die Informationen unter
+[Direkte Aktualisierung umstellen](migrating-client-applications/cordova/#migrating-direct-update).
+* Weitere Informationen zur Umstellung von
+Cordova- oder Hybrid-Apps finden Sie unter
+[Vorhandene Cordova- und Hybridanwendungen umstellen](migrating-client-applications/cordova).
 
-> **Note:** The migration of push notification support requires client-side and server-side changes and is described later on in Migrating push notification support.
+> **Hinweis:** Für die Migration der Unterstützung für Push-Benachrichtigungen sind sowohl auf der Clientseite als auch auf der Serverseite Änderungen notwendig, die weiter unten im Abschnitt
+"Unterstützung für Push-Benachrichtigungen umstellen" beschrieben sind.
 
-## Migrating a native application
+## Native Anwendung umstellen
 {: #migrating-a-native-application }
-To migrate native application, you need to follow these steps:
+Für die Migration einer nativen Anwendung sind folgende Schritte erforderlich: 
 
-* For planning purpose, run the migration assistance tool on your existing project. Review the generated report and assess the effort required for migration.
-* Update your project to use the SDK from {{ site.data.keys.product }} v8.0
-* Replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can scan your code and generate reports of the APIs to replace.
-* Modify the call to client resources that use the classic security model. For example, use the `WLResourceRequest` API, instead of `invokeProcedure`, which is deprecated.
-    * For more information about migrating native iOS apps, see [Migrating existing native iOS applications](migrating-client-applications/ios).
-    * For more information about migrating native Android apps, see [Migrating existing native Android applications](migrating-client-applications/android).
-    * For more information about migrating native Windows apps, see [Migrating existing native Windows applications](migrating-client-applications/windows).
+* Führen Sie für Ihre Planung das Unterstützungstool für die Migration für Ihr vorhandenes Projekt aus. Sehen Sie sich den generierten Bericht an und schätzen Sie den für die Migration erforderlichen
+Aufwand ein. 
+* Aktualisieren Sie Ihr Projekt, damit es das SDK von {{ site.data.keys.product }} Version 8.0 verwendet. 
+* Ersetzen Sie die clientseitigen APIs, die
+weggefallen oder nicht in Version 8.0 enthalten sind. Das Unterstützungstool für die
+Migration kann Ihren Code scannen und Berichte zu den zu ersetzenden APIs generieren. 
+* Sie müssen den Aufruf von Clientressourcen ändern, die das klassische Sicherheitmodell verwenden. Verwenden Sie beispielsweise
+die API `WLResourceRequest` anstelle der nicht weiter unterstützten API
+`invokeProcedure`. 
+    * Weitere Informationen zur Umstellung von
+nativen iOS-Apps finden Sie unter
+[Vorhandene native iOS-Anwendungen umstellen](migrating-client-applications/ios).
+    * Weitere Informationen zur Umstellung von
+nativen Android-Apps finden Sie unter
+[Vorhandene native Android-Anwendungen umstellen](migrating-client-applications/android).
+    * Weitere Informationen zur Umstellung von
+nativen Windows-Apps finden Sie unter
+[Vorhandene native Windows-Anwendungen umstellen](migrating-client-applications/windows).
 
-> **Note:** The migration of push notification support requires client-side and server-side changes and is described later on in [Migrating push notification support](#migrating-push-notifications-support).
+> **Hinweis:** Für die Migration der Unterstützung für Push-Benachrichtigungen sind sowohl auf der Clientseite als auch auf der Serverseite Änderungen notwendig, die weiter unten im Abschnitt [Unterstützung für Push-Benachrichtigungen umstellen](#migrating-push-notifications-support) beschrieben sind.
 
-## Migrating adapters and security
+## Adapter und Sicherheit umstellen
 {: #migrating-adapters-and-security }
-Starting with v8.0, adapters are Maven projects. The {{ site.data.keys.product_adj }} security framework is based on OAuth, security scopes, and security checks. Security scopes define the security requirements to access a resource. Security checks define how a security requirement is verified. Security checks are written as Java adapters. For a hands-on experience with adapters and security, see the tutorials for [Creating Java and JavaScript Adapters](../adapters/creating-adapters) and [Authorization concepts](../authentication-and-security).
+Ab Version 8.0 sind Adapter Maven-Projekte. Das {{ site.data.keys.product_adj }}-Sicherheitsframework basiert auf
+OAuth, Sicherheitsbereichen und Sicherheitsüberprüfungen. Sicherheitsbereiche definieren die Sicherheitsanforderungen für den Zugriff auf eine Ressource. Sicherheitsüberprüfungen definieren, wie eine
+Sicherheitsanforderung überprüft wird. Sicherheitsüberprüfungen werden als Java-Adapter geschrieben. Praktische Erfahrungen mit Adaptern und dem Thema
+Sicherheit können Sie mithilfe der Lernprogramme
+[Java- und JavaScript-Adapter erstellen](../adapters/creating-adapters)
+und
+[Autorisierungskonzepte](../authentication-and-security)
+sammeln. 
 
-{{ site.data.keys.mf_server }} operates only in session-independent mode and adapters should not store a state locally to a Java virtual machine (JVM).
+{{ site.data.keys.mf_server }} arbeitet nur im
+sitzungsunabhängigen Modus, und Adapter dürfen einen Zustand nicht lokal in einer Java Virtual Machine (JVM) speichern. 
 
-You can externalize adapter properties to configure adapters for the context where they run, for example a test server or a production server. But the values of these properties are no longer included in a property file of a project WAR file. Instead, you define them from the {{ site.data.keys.mf_console }}, or by using a command-line tool or the server REST API.
+Sie können Eigenschaften von Adpatern
+externalisieren, um die Adapter für den Kontext, in dem sie ausgeführt werden sollen, zu konfigurieren, z. B. für einen Test- oder Produktionsserver. Die Werte dieser Eigenschfaten sind jedoch nicht mehr in einer
+Eigenschaftendatei oder Projekt-WAR-Datei enthalten. Sie definieren Sie vielmehr
+in der {{ site.data.keys.mf_console }} oder mithilfe eines Befehlszeilentools oder einer
+Server-REST-API. 
 
-* For more information about migrating adapters, see [Migrating existing adapters](migrating-adapters) to work under {{ site.data.keys.mf_server }} v8.0.
-* For more information about server-side API changes, see [Server-side API](../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes) changes in v8.0.
-* For an introduction to Apache Maven used to develop adapters, see [Adapters as Apache Maven projects](../adapters).
-* For more information on migrating authentication and security see [Migrating Authentication and Security](migrating-security) to {{ site.data.keys.product_adj }} v8.0.
+* Weitere Informationen zur Umstellung von Adaptern finden Sie unter
+[Vorhandene Adapter auf {{ site.data.keys.mf_server }} Version 8.0 umstellen](migrating-adapters). 
+* Weitere Informationen zu Änderungen der serverseitigen APIs finden Sie unter
+[Änderungen der serverseitigen API in Version 8.0](../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes). 
+* Eine Einführung in die Entwicklung von Adaptern mit
+Apache Maven finden Sie unter
+[Adapter als Apache-Maven-Projekte](../adapters).
+* Weitere Informationen zur Umstellung der Authentifizierung und der Sicherheit finden Sie unter
+[Authentifizierung und Sicherheit auf {{ site.data.keys.product_adj }} Version 8.0 umstellen](migrating-security). 
 
-## Migrating push notifications support
+## Unterstützung für Push-Benachrichtigungen umstellen
 {: #migrating-push-notifications-support }
-The event-source-based model is no longer supported. Instead, use tag-based notification. To learn more about migrating push notification for your client apps and your server-side components, see [Migrating push notifications](migrating-push-notifications) from event source-based notifications and [Migration scenarios](migrating-push-notifications/#migration-scenarios).
+Das auf Ereignisquellen basierende Modell wird nicht mehr unterstützt. Verwenden Sie stattdessen die tagbasierte Benachrichtigung. Weitere Informationen zur Umstellung der
+Push-Benachrichtigungen für Ihre Client-Apps und serverseitigen Komponenten
+finden Sie unter [Ereignisquellenbasierte Benachrichtigungen auf Push-Benachrichtigungen umstellen](migrating-push-notifications) und
+[Migrationsszenarien](migrating-push-notifications/#migration-scenarios).
 
-Starting with v8.0, you configure the push service on the server side. The push certificates are stored on the server. You can set them from the {{ site.data.keys.mf_console }} or you can automate certificate uploads by using a command-line tool or the push service REST API. You can also send push notifications from the {{ site.data.keys.mf_console }}.
+Ab Version 8.0 können Sie den Push-Service auf der Serverseite konfigurieren. Die Push-Zertifikate werden auf dem Server gespeichert. Sie können Sie in der
+{{ site.data.keys.mf_console }} definieren oder das Hochladen von Zertifikaten mit einem Befehlszeilentool oder der Push-Service-REST-API
+automatisieren. Außerdem können Sie Push-Benachrichtigungen von der
+{{ site.data.keys.mf_console }} aus senden.
 
-The push service is protected by the OAuth security model. You must configure server-side components that use the push service REST API must be configured as confidential clients of {{ site.data.keys.mf_server }}.
+Der Push-Service wird durch das OAuth-Sicherheitsmodell geschützt. Sie müssen serverseitige Komponenten, die die Push-Service-REST-API nutzen, als
+vertrauliche Clients von {{ site.data.keys.mf_server }} konfigurieren. 
 
-### Push notifications data migration tool
+### Datenmigrationstool für Push-Benachrichtigungen
 {: #push-notifications-data-migration-tool }
-Also available is a migration tool for push notifications data. The migration tool helps in migrating MobileFirst Platform Foundation 7.1 push data (devices, user subscriptions, credentials & tags) to {{ site.data.keys.product }} 8.0.
+Es steht ein Datenmigrationstool für Push-Benachrichtigungen zur Verfügung. Das Migrationstool vereinfacht
+die Umstellung von Push-Daten von MobileFirst Platform Foundation 7.1 (Geräte, Benutzerabonnements,
+Berechtigungsnachweise und Tags) auf {{ site.data.keys.product }} 8.0.
 
-> [Learn more about the migration tool](migrating-push-notifications/#migration-tool).
+> [Informieren Sie sich über das Migrationstool](migrating-push-notifications/#migration-tool).
 
-## Changes in the server databases and in the server structure
+## Änderungen bei den Serverdatenbanken und der Serverstruktur
 {: #changes-in-the-server-databases-and-in-the-server-structure }
-{{ site.data.keys.mf_server }} enables changes to app security, connectivity and push without code change, app rebuild or redeployment. But these changes imply changes in the database schemas, the data stored in the database, and the installation process.
+{{ site.data.keys.mf_server }} ermöglicht Änderungen
+an der App-Sicherheit, der Konnektivität und an Push-Operationen, ohne dass eine Codeänderung, ein neuer App-Build oder eine erneute Implementierung
+notwendig ist. Allerdings bringen diese Änderungen auch Änderungen an den Datenbankschemata, an den in der Datenbank gespeicherten Daten und am Installationsprozess
+mit sich. 
 
-Because of these changes, {{ site.data.keys.product }} does not include automated scripts to migrate your databases from earlier versions to V8.0.0 or to upgrade an existing server installation. To move new versions of your apps to V8.0.0, install a new server that you can run side by side with your previous server. Then, upgrade your apps and adapters to V8.0.0 and deploy them to the new server.
+Aufgrund dieser Änderungen
+gibt es in der {{ site.data.keys.product }} keine automatisierten Scripts für die Umstellung
+Ihrer Datenbanken von einer früheren Version auf Version 8.0.0 oder für die Aktualisierung
+einer vorhandenen Serverinstallation. Wenn Sie neue Versionen Ihrer Apps auf Version 8.0.0 umstellen möchten, müssen Sie einen neuen
+Server installieren, den Sie neben Ihrem bsiherigen Server ausführen können. Führen Sie dann ein Upgrade für Ihre Apps und Adapter auf
+Version 8.0.0
+durch und implementieren Sie sie im neuen Server. 
 
-## Storing mobile data in Cloudant
+## Mobile Daten in Cloudant speichern
 {: #storing-mobile-data-in-cloudant }
-Storing mobile data in Cloudant  with the IMFData framework or CloudantToolkit is no longer supported. For an alternative API, see [Migrating apps storing mobile data in Cloudant with IMFData or Cloudant SDK](migrating-data).
+Das speichern mobiler Daten in Cloudant mit dem IMFData-Framework oder dem
+CloudantToolkit wird nicht mehr unterstützt. Informationen zu einer alternativen API finden Sie unter [Apps umstellen, die mobile
+Daten mit IMFData oder
+dem Cloudant-SDK in Cloudant speichern](migrating-data).
 
-## Applying a fix pack to {{ site.data.keys.mf_server }}
+## Fixpack auf {{ site.data.keys.mf_server }} anwenden
 {: #applying-a-fix-pack-to-mobilefirst-server }
-Find out how to use the Server Configuration Tool to upgrade {{ site.data.keys.mf_server }} V8.0.0 to a fix pack or an interim fix. Alternatively, if you installed {{ site.data.keys.mf_server }} with Ant tasks, you can also use Ant tasks to apply the fix pack or interim fix.
+Hier erfahren Sie,
+wie Sie das Server Configuration Tool
+für ein Upgrade von
+{{ site.data.keys.mf_server }} Version 8.0.0 auf ein Fixpack oder einen vorläufigen Fix
+verwenden können. Wenn Sie {{ site.data.keys.mf_server }} mit Ant-Tasks installiert haben, können Sie das
+Fixpack oder den vorläufigen Fix auch mit Ant-Tasks anwenden. 
 
-To apply an interim fix or fix pack on {{ site.data.keys.mf_server }}, choose one of the following topics based on your initial installation method:
+Wählen Sie den für Ihre Erstinstallationsmethode passenden Artikel aus,
+um einen vorläufigen Fix oder ein Fixpack für {{ site.data.keys.mf_server }}
+anzuwenden: 
 
-* [Applying a fix pack or an interim fix with the Server Configuration Tool](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
-* [Applying a fix pack by using the Ant files](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)
+* [Fixpack
+oder vorläufigen Fix mit dem Server Configuration Tool anwenden](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-server-configuration-tool)
+* [Fixpack
+mit Ant-Dateien anwenden](../installation-configuration/production/appserver/#applying-a-fix-pack-by-using-the-ant-files)

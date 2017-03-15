@@ -1,185 +1,259 @@
 ---
 layout: tutorial
-title: Migrating existing Cordova and hybrid applications
-breadcrumb_title: Cordova and hybrid
+title: Vorhandene Cordova- und Hybridanwendungen umstellen
+breadcrumb_title: Cordova- und Hybridanwendungen
 weight: 1
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-To migrate an existing Cordova or hybrid application that was created with IBM MobileFirst Foundation version 6.2.0 or later, you must create a Cordova project that uses the plug-ins from the current version. Then you replace the client-side APIs that are discontinued or not in v8.0. The migration assistance tool can help you in this task.
+Wenn Sie eine mit der
+IBM MobileFirst Foundation ab Version 6.2.0
+erstellte Cordova- oder Hybridanwendung migrieren möchten, müssen Sie ein Cordova-Projekt erstellen, das die Plug-ins der aktuellen Version verwendet. Ersetzen Sie
+dann die clientseitigen APIs, die
+weggefallen oder nicht in Version 8.0 enthalten sind. Das Unterstützungstool für die Migration
+kann Ihnen bei dieser Aufgabe helfen. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Comparison of Cordova apps developed with v8.0 versus v7.1 and before](#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before)
-* [Migrating existing hybrid or cross-platform apps to Cordova apps supported by {{ site.data.keys.product_full }} 8.0](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
-* [Migrating encryption for iOS Cordova](#migrating-encryption-for-ios-cordova)
-* [Migrating Direct Update](#migrating-direct-update)
-* [Upgrading the WebView](#upgrading-the-webview)
-* [Removed components](#removed-components)
+* [Vergleich von Cordova-Apps, die mit Version 8.0 und mit älteren Versionen bis Version 7.1 entwickelt wurden](#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before)
+* [Vorhandene Hybrid-Apps oder plattformübergreifende Apps auf von
+{{ site.data.keys.product_full }} 8.0 unterstützte Cordova-Apps umstellen](#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80)
+* [Verschlüsselung für Cordova umstellen](#migrating-encryption-for-ios-cordova)
+* [Direkte Aktualisierung umstellen](#migrating-direct-update)
+* [WebView-Upgrade](#upgrading-the-webview)
+* [Gelöschte Komponenten](#removed-components)
 
-## Comparison of Cordova apps developed with v8.0 versus v7.1 and before
+## Vergleich von Cordova-Apps, die mit Version 8.0 und mit älteren Versionen bis Version 7.1 entwickelt wurden
 {: #comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before }
-Compare Cordova apps developed with {{ site.data.keys.product_adj }} v8.0 and Cordova and hybrid apps developed with IBM MobileFirst Platform Foundation v7.1.
+Nachfolgend werden mit
+{{ site.data.keys.product_adj }} Version 8.0 entwickelte Cordova-Apps mit Cordova- und Hybrid-Apps verglichen, die
+mit
+Version 7.1 entwickelt wurden.
 
-| Feature | Cordova app with IBM<br/>{{ site.data.keys.product }} v8.0 |	Cordova app with IBM<br/>MobileFirst Platform Foundation v7.1 | MobileFirst hybrid app with IBM<br/>MobileFirst Platform Foundation V7.1 |
+| Feature | Mit IBM {{ site.data.keys.product }}<br/>Version 8.0 entwickelte Cordova-App |	Mit IBM {{ site.data.keys.product }}<br/>Version 7.1 entwickelte Cordova-App | Mit IBM {{ site.data.keys.product }}<br/>Version 7.1 entwickelte Hybrid-App |
 |---------|-------|---------|-------|------|
 | **IDE Eclipse Studio** | | | | |	 	 	 
-| Eclipse plug-in and integration | Yes | Unsupported | Yes (Proprietary) |
-| Application Components | Yes (Cordova)<br/><br/>Note: Create your own Cordova plug-ins to manage application components in your organization. | Yes (Cordova)<br/><br/>Note: Create your own Cordova plug-ins to manage application components in your organization. | Yes (Proprietary) |
-| Project Templates | Yes (Cordova)<br/><br/>Note: Use the Apache Cordova `cordova create --template` command. | Yes (Cordova)<br/><br/>Note: Use `mfp cordova create --template` or the Apache Cordova command `cordova create --copy-from` | Yes (Proprietary) |
-| Dojo and jQuery IDE instrumentation | Yes<br/><br/>Note: Dojo and jQuery Mobile are JavaScript frameworks that you can use in Cordova apps. | Yes<br/><br/>Note: Dojo and jQuery Mobile are JavaScript frameworks that you can use in Cordova apps. | Yes |
-| Mobile UI Patterns | Unsupported | Unsupported | Deprecated |
-| **Application sub types** | | |
-| Shell Component | Unsupported<br/><br/>Note: If the previous Hybrid app used shells and inner applications, it is recommended to adopt Cordova design patterns and implement the shell components as Cordova plug-ins, that can be shared across applications. | Unsupported | Yes |
-| Inner Hybrid Application | Unsupported<br/><br/>Note: If the previous Hybrid app used shells and inner applications, it is recommended to adopt Cordova design patterns and implement the shell components as Cordova plug-ins, that can be shared across applications. | Unsupported | Yes |
-| **Application Features** | | | 	 	 	 
-| Mobile OS	| iOS 8 or higher, Android 4.1 or higher, Windows Phone 8.1, Windows Phone 10. | iOS 7 or higher, Android 4 or higher. | iOS, Android, and Windows Phone 8 |
-| Web applications | Yes, as a JavaScript application developed without Apache Cordova. | Unsupported | Yes, as a desktopbrowser or mobilewebapp environment. |
-| Direct Update | Yes. | Yes | Yes |
-| {{ site.data.keys.product_adj }} Security Framework | Yes | Yes | Yes |
-| Application Authenticity | Yes | Yes | Yes |
-| Certificate pinning | Yes | No | Yes |
-| JSONStore | Yes. | Use the cordova-plugin-mfp-jsonstore plug-in. | Yes | Yes |
-| FIPS 140-2 | Yes. Use the cordova-plugin-mfp-fips plug-in.<br/><br/>Restriction: FIPS is supported for Android and iOS. FIPS is not supported for Windows. | No | Yes |
-| Encryption of web resources that are associated with the application within the application binary file | Yes |	No | Yes |
-| Verification of the integrity of web resources by using a checksum each time the app starts running | Yes | Unsupported | Yes |
-| Specification of the app's target category (B2E or B2C) for addressable device license tracking | Yes | No | Yes |
-| Simple data sharing | No | Yes | Yes |
-| Single sign-on | Yes<br/><br/>Note: Device single sign-on (SSO) is now supported by way of the new predefined enableSSO security-check application-descriptor configuration property | Yes | Yes |
-| {{ site.data.keys.product_adj }} application skins | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design | No<br/><br/>Note: To detect and handle different device screen sizes, use standard web development practices such as responsive web design. | Yes |
-| Environment optimizations | Yes (Cordova). |  Use the merges directory to define web resources specific to a platform. | Yes (Cordova). Use the merges directory to define web resources specific to a platform. For more information, see Using merges to Customize Each Platform in the Apache Cordova documentation. | Yes (Proprietary) |
-| Push Notifications | Yes. Use the cordova-plugin-mfp-push plug-in.<br/><br/>Restriction: You can map predefined {{ site.data.keys.product_adj }} security checks only to the push.mobileclient scope. Custom security checks are not supported because JavaScript challenge handlers are not called. | Yes<br/><br/>Note: For Android, you must add the cordova-plugin-mfp-push plug in. You don't need this plug in for iOS because the push client-side support for iOS is included in the core mfp plugin. | Yes |
-| Cordova plug-ins management | Yes | Yes | No |
-| MESSAGES (i18n) | Yes | Yes | Yes |
-| Token licensing | Yes | Yes | Yes |
-| **Application optimizations** | | |
-| Minification | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Proprietary) |
-| Concatenation of JS and CSS | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Proprietary) |
-| Obfuscation | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Cordova)<br/><br/>Note: Use common open source tools. | Yes (Proprietary) |
-| Android Pro Guard | Yes<br/><br/>Note: {{ site.data.keys.product }} V8.0.0 does not include the predefined proguard-project.txt configuration file for Android ProGuard obfuscation with a {{ site.data.keys.product_adj }} Android application. | Yes<br/><br/>Note: See Android documentation to enable Pro Guard. | Yes |
+| Eclipse-Plug-in und Integration | Ja | Nicht unterstützt | Ja (proprietär) |
+| Anwendungskomponenten | Ja (Cordova)<br/><br/>Hinweis: Erstellen Sie Ihre eigenen Cordova-Plug-ins, um die Anwendungskomponenten in Ihrer Organisation zu verwalten.  | Ja (Cordova)<br/><br/>Hinweis: Erstellen Sie Ihre eigenen Cordova-Plug-ins, um die Anwendungskomponenten in Ihrer Organisation zu verwalten.  | Ja (proprietär) |
+| Projektschablonen | Ja (Cordova)<br/><br/>Hinweis: Verwenden Sie den Apache-Cordova-Befehl `cordova create --template`.  | Ja (Cordova)<br/><br/>Hinweis: Verwenden Sie den Befehl `mfp cordova create --template` oder den Apache-Cordova-Befehl
+`cordova create --copy-from`.  | Ja (proprietär) |
+| Dojo- und jQuery-IDE-Instrumentierung | Ja<br/><br/>Hinweis: Dojo und jQuery Mobile sind JavaScript-Frameworks, die Sie in
+Cordova-Apps verwenden können.  | Ja<br/><br/>Hinweis: Dojo und jQuery Mobile sind JavaScript-Frameworks, die Sie in
+Cordova-Apps verwenden können.  | Ja |
+| Mobile Benutzerschnittstellenmuster | Nicht unterstützt | Nicht unterstützt | Nicht mehr verwendet |
+| **Anwendbare untergeordnete Typen** | | |
+| Shellkomponente | Nicht unterstützt<br/><br/>Hinweis: Wenn eine Hybrid-App bisher Shells und innere Anwendungen genutzt hat, sollten Sie Cordova-Designmuster verwenden und die
+Shellkomponenten als Cordova-Plug-ins implementieren, die anwendungsübergreifend genutzt werden können.  | Nicht unterstützt | Ja |
+| Innere Hybridanwendung | Nicht unterstützt<br/><br/>Hinweis: Wenn eine Hybrid-App bisher Shells und innere Anwendungen genutzt hat, sollten Sie Cordova-Designmuster verwenden und die
+Shellkomponenten als Cordova-Plug-ins implementieren, die anwendungsübergreifend genutzt werden können.  | Nicht unterstützt | Ja |
+| **Anwendungsfeatures** | | | 	 	 	 
+| Betriebssystem für mobile Geräte	| iOS 8 oder eine aktuellere Version, Android 4.1 oder eine aktuellere Version, Windows Phone 8.1, Windows Phone 10.  | iOS 7 oder eine aktuellere Version, Android 4 oder eine aktuellere Version  | iOS, Android und Windows Phone 8 |
+| Webanwendungen | Ja, als eine mit Apache Cordova entwickelte JavaScript-Anwendung.  | Nicht unterstützt | Ja, als eine Umgebung desktopbrowser oder mobilewebapp |
+| Direkte Aktualisierung | Ja | Ja | Ja |
+| {{ site.data.keys.product_adj }}-Sicherheitsframework | Ja | Ja | Ja |
+| Anwendungsauthentizität | Ja | Ja | Ja |
+| Certificate Pinning | Ja | Nein | Ja |
+| JSONStore | Ja | Verwenden Sie das Plug-in cordova-plugin-mfp-jsonstore.  | Ja | Ja |
+| FIPS 140-2 | Ja. Verwenden Sie das Plug-in cordova-plugin-mfp-fips. <br/><br/>Einschränkung: FIPS wird für Android und iOS unterstützt, aber nicht
+für Windows.  | Nein | Ja |
+| Verschlüsselung von Webressourcen der Anwendung in der Binärdatei  | Ja |	Nein | Ja |
+| Verifizierung der Integrität von Webressourcen durch Bildung einer Kontrollsumme bei jedem App-Start | Ja | Nicht unterstützt | Ja |
+| Angabe der App-Zielkategorie (B2E oder B2C) im Rahmen der Lizenzüberwachung für
+adressierbare Geräte  | Ja | Nein | Ja |
+| Gemeinsame Nutzung einfacher Daten | Nein | Ja | Ja |
+| Single Sign-on | Ja<br/><br/>Hinweis: Das Geräte-Single-Sign-on wird jetzt über die neue Konfigurationseigenschaft
+enableSSO für die Sicherheitsüberprüfung im Anwendungsdeskriptor unterstützt.  | Ja | Ja |
+| {{ site.data.keys.product_adj }}-Anwendungsoberflächen | Nein<br/><br/>Hinweis: Verwenden Sie für die Erkennung und Handhabung unterschiedlich großer Geräteanzeigen Standardverfahren für die
+Webentwicklung (z. B. Responsive Web-Design).  | Nein<br/><br/>Hinweis: Verwenden Sie für die Erkennung und Handhabung unterschiedlich großer Geräteanzeigen Standardverfahren für die
+Webentwicklung (z. B. Responsive Web-Design).  | Ja |
+| Umgebungsoptimierung | Ja (Cordova)  |  Definieren Sie Webressourcen für eine bestimmte Plattform im Verzeichnis "merges".  | Ja (Cordova). Definieren Sie Webressourcen für eine bestimmte Plattform im Verzeichnis "merges". Weitere Informationen finden Sie in der Apache-Cordova-Dokumentation unter Using merges to Customize Each Platform. | Ja (proprietär) |
+| Push-Benachrichtigungen | Ja. Verwenden Sie das Plug-in cordova-plugin-mfp-push. <br/><br/>Einschränkung: Sie können vordefinierte MobileFirst-Sicherheitsüberprüfungen nur dem Bereich push.mobileclient zuordnen. Angepasste Sicherheitsüberprüfungen werden nicht unterstützt, weil die JavaScript-Abfrage-Handler nicht aufgerufen werden.  | Ja<br/><br/>Hinweis: Für Android müssen Sie das Plug-in cordova-plugin-mfp-push hinzufügen. Für iOS benötigen Sie dieses Plug-in nicht, weil die clientseitige Push-Unterstützung für iOS im MFP-Kern-Plug-in enthalten ist. | Ja |
+| Verwaltung von Cordova-Plug-ins | Ja | Ja | Nein |
+| Messages (i18n) | Ja | Ja | Ja |
+| Tokenlizenzierung | Ja | Ja | Ja |
+| **Anwendungsoptimierung** | | |
+| Kompression | Ja (Cordova)<br/><br/>Hinweis: Verwenden Sie allgemeine Open-Source-Tools.  | Ja (Cordova)<br/><br/>Hinweis: Verwenden Sie allgemeine Open-Source-Tools.  | Ja (proprietär) |
+| Verkettung von JS und CSS | Ja (Cordova)<br/><br/>Hinweis: Verwenden Sie allgemeine Open-Source-Tools.  | Ja (Cordova)<br/><br/>Hinweis: Verwenden Sie allgemeine Open-Source-Tools.  | Ja (proprietär) |
+| Verschleierung | Ja (Cordova)<br/><br/>Hinweis: Verwenden Sie allgemeine Open-Source-Tools.  | Ja (Cordova)<br/><br/>Hinweis: Verwenden Sie allgemeine Open-Source-Tools.  | Ja (proprietär) |
+| Android Pro Guard | Ja<br/><br/>Hinweis: In {{ site.data.keys.product }} Version 8.0.0 ist die vordefinierte Konfigurationsdatei proguard-project.txt für die Android-ProGuard-Versschleierung bei einer {{ site.data.keys.product_adj }}-Android-Anwendung nicht enthalten.  | Ja<br/><br/>Hinweis: Informationen zur Aktivierung von Pro Guard finden Sie in der Android-Dokumentation.  | Ja |
 
-## Migrating existing hybrid or cross-platform apps to Cordova apps supported by {{ site.data.keys.product }} 8.0
+## Vorhandene Hybrid-Apps oder plattformübergreifende Apps auf von {{ site.data.keys.product }} 8.0 unterstützte Cordova-Apps umstellen
 {: #migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80 }
-You can migrate existing hybrid or cross-platform (Cordova) apps that were developed with IBM MobileFirst Platform Foundation version 6.2 or later to Cordova apps that are supported by {{ site.data.keys.product }} v8.0.
+Sie können vorhandene Hybrid-Apps oder plattformübergreifende Apps (Cordova), die mit der
+IBM MobileFirst Platform Foundation ab Version
+6.2 entwickelt wurden, auf Cordova-Apps
+umstellen, die von {{ site.data.keys.product }} Version 8.0 unterstützt werden. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)
-* [Completing migration of a {{ site.data.keys.product_adj }} hybrid app](#completing-migration-of-a-mobilefirst-hybrid-app)
-* [Completing migration of a {{ site.data.keys.product_adj }} Cordova app](#completing-migration-of-a-mobilefirst-cordova-app)
+* [Umstellung einer Cordova-App mit dem Unterstützungstool für die Migration
+beginnen](#starting-the-cordova-app-migration-with-the-migration-assistance-tool)
+* [Migration einer {{ site.data.keys.product_adj }}-Hybrid-App abschließen](#completing-migration-of-a-mobilefirst-hybrid-app)
+* [Migration einer {{ site.data.keys.product_adj }}-Cordova-App abschließen](#completing-migration-of-a-mobilefirst-cordova-app)
 
-### Starting the Cordova app migration with the migration assistance tool
+### Umstellung einer Cordova-App mit dem Unterstützungstool für die Migration
+beginnen
 {: #starting-the-cordova-app-migration-with-the-migration-assistance-tool }
-The migration assistance tool helps you prepare your cross-platform apps that were created with earlier versions of {{ site.data.keys.product_adj }} for migration by identifying APIs that are no longer valid and copying the projects into Cordova apps that are supported by v8.0.
+Das Unterstützungstool für die Migration hilft Ihnen, Ihre
+mit früheren
+{{ site.data.keys.product_adj }}-Versionen erstellten plattformübergreifenden Apps vorzubereiten, indem es APIs identifiziert, die nicht mehr gültig sind, und die Projekte in Cordova-Apps kopiert, die von Version
+8.0 unterstützt werden. 
 
-The following information is important to know before you use the migration assistance tool:
+Die folgenden Informationen müssen vor Verwendung des Unterstützungstools für die Migration beachtet werden: 
 
-* You must have an existing IBM MobileFirst Platform Foundation hybrid application or a Cordova application that you created with the `mfp cordova create` command.
-* You must have internet access.
-* You must have node.js version 4.0.0 or later installed.
-* You must have the Cordova Command-Line Interface (CLI) installed, and any prerequisites installed that are required for using the Cordova CLI for your target platforms. For more information, see [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html) at the Apache Cordova website.
-* Review and understand the limitations of the migration process. For more information, see [Migrating apps from earlier releases](../).
+* Sie benötigen eine mit der IBM MobileFirst Platform Foundation
+erstellte Hybrid- oder Cordova-Anwendung, die Sie mit dem Befehl `mfp cordova create` erstellt haben. 
+* Sie benötigen Internetzugriff. 
+* Node.js ab Version 4.0.0 muss installiert sein. 
+* Sie müssen die Cordova-Befehlszeilenschnittstelle (CLI, Command-Line Interface) installiert haben. Außerdem müssen alle Produkte installiert sein, die
+für die Verwendung der Cordova-CLI für Ihre Zielplattformen vorausgesetzt werden. Weitere Informationen finden Sie auf der Apache-Cordova-Website
+unter [The
+Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html). 
+* Sie müssen die Einschränkungen des Migrationsprozesses kennen und verstehen. Weitere Informationen
+finden Sie unter
+[Apps früherer Releases umstellen](../).
 
-Cross-platform apps that were created with earlier versions of IBM MobileFirst Platform Foundation commands or the Cordova with IBM MobileFirst Platform Foundation commands are not supported in version 8.0 without some changes. The migration assistance tool simplifies the process with the following functions:
+Plattformübergreifende Apps, die mit Befehlen aus einer früheren Version der
+IBM MobileFirst Platform Foundation oder mit Cordova mit
+Befehlen der
+IBM MobileFirst Platform Foundation erstellt
+wurden, müssen geändert werden, damit sie in Version
+8.0 unterstützt werden. Das Unterstützungstool für die Migration führt die folgenden Funktionen aus, um den Prozess zu vereinfachen: 
 
-* Scans the JavaScript and HTML files in the existing hybrid app or Cordova with IBM MobileFirst Platform Foundation app and identifies APIs that are deprecated, no longer supported, or modified in version 8.0.
-* Copies the structure, script, and configuration files of the initial hybrid app or Cordova with IBM MobileFirst Platform Foundation app to a Cordova structure that is supported in version 8.0.
+* Es scannt die JavaScript- und HTML-Dateien der mit
+der IBM MobileFirst Platform Foundation erstellten Hybrid- oder
+Cordova-App
+und identifiziert APIs, die in Version 8.0 weggefallen sind oder nicht weiter unterstützt werden bzw. modifiziert wurden. 
+* Es kopiert die Struktur und die Script- und Konfigurationsdateien der ursprünglichen, mit der
+IBM MobileFirst Platform Foundation erstellten
+Hybrid- oder Cordova-App in eine Cordova-Struktur, die in Version 8.0 unterstützt wird.
 
-The migration assistance tool does not modify or move any developer code or comments of your app. You must continue the migration process with either [Completing migration of a MobileFirst hybrid app](#completing-migration-of-a-mobilefirst-hybrid-app) or [Completing migration of a MobileFirst Cordova app](#completing-migration-of-a-mobilefirst-cordova-app) after you run this tool.
+Das Unterstützungstool für die Migration modifiziert oder verschiebt keinen Entwicklercode und keine Kommentare Ihrer App.
+Nach Ausführung dieses Tools müssen Sie den Migrationsprozess fortsetzen
+(siehe [Migration einer MobileFirst-Hybrid-App abschließen](#completing-migration-of-a-mobilefirst-hybrid-app)
+oder [Migration einer MobileFirst-Cordova-App abschließen](#completing-migration-of-a-mobilefirst-cordova-app)). 
 
 <!--1. Download the migration assistance tool by using one of the following methods:
     * Download the .tgz file from the [Jazzhub repository](https://hub.jazz.net/project/ibmmfpf/mfp-migrator-tool).
     * Download the {{ site.data.keys.mf_dev_kit }}, which contains the migration assistance tool as a file named mfpmigrate-cli.tgz, from the MobileFirst Operations Console.
     * Download the tool by using the instructions that are provided. -->
-1. Install the migration assistance tool.
-    * Change to the directory where you downloaded the .tgz file.
-    * Use NPM to install the tool by entering the following command:
+1. Installieren Sie das Unterstützungstool für die Migration. 
+    * Navigieren Sie zu dem Verzeichnis, in das Sie die Datei .tgz heruntergeladen haben. 
+    * Installieren Sie das Tool mit npm. Geben Sie dazu den folgenden Befehl ein: 
 
    ```bash
-   npm install -g tgz_filename
+   npm install -g Name_der_tgz-Datei
    ```
-      For details on the **mfpmigrate-cli** npm package, click [here](https://www.npmjs.com/package/mfpmigrate-cli).
-2. Scan and copy the IBM MobileFirst Platform Foundation app by entering the following command:
+      Für Einzelheiten zum npm-Paket **mfpmigrate-cli** klicken Sie [hier](https://www.npmjs.com/package/mfpmigrate-cli).
+2. Scannen und kopieren Sie die mit der IBM MobileFirst Platform Foundation erstellte App. Geben Sie dazu
+den folgenden Befehl ein: 
 
    ```bash
-   mfpmigrate client --in rource_directory --out destination_directory --projectName new-project-directory
+   mfpmigrate client --in Quellenverzeichnis --out Zielverzeichnis --projectName neues_Projektverzeichnis
    ```
 
-   * **source_directory**  
-   The current location of the project that you are migrating. In Hybrid applications, this should point to the **application** folder of the application.
-   * **destination_directory**    
-   The optional name of the directory where the new version 8.0 compatible Cordova structure is output. This directory is a parent of the **new-project-directory** folder. If it is not specified, then the folder is created in the directory where the command is run.
-   * **new-project-directory**
-   The optional name of the folder where the new content of your project is located.
-   This folder is located within the *destination_directory* folder and contains all of the information for your Cordova app. If this option is not specified, the default name is `app_name-app_id-version`.
+   * **Quellenverzeichnis**  
+   Aktuelle Position des Prjekts, das Sie migrieren. Für Hybridanwendungen muss diese Option auf
+den Ordner **application** der Anwendung zeigen. 
+   * **Zielverzeichnis**    
+Optionaler Name des Verzeichnisses, in dem die neue, mit Version 8.0 kompatible Cordova-Struktur ausgegeben wird. Dieses Verzeichnis ist ein übergeordnetes Verzeichnis des
+Ordners **new-project-directory**. Wenn der Ordner nicht angegeben ist, wird er in dem Verzeichnis erstellt, in dem der Befehl ausgeführt wird. 
+   * **neues_Projektverzeichnis**
+   Optionaler Name des Ordners mit dem neuen Inhalt Ihres Projekts.
+   Dieser Ordner begindet sich innerhalb des Ordners *destination_directory* und enthält alle Informationen für Ihre
+Cordova-App. Wenn diese Option nicht angegeben ist, wird der Standardname `App-Name-App-ID-Version` verwendet.
    <br/>
-   When it is used with the client command, the migration assistance tool completes the following actions:  
-        * Identifies APIs in the existing IBM MobileFirst Platform Foundation app that are removed, deprecated, or changed in version 8.0.
-        * Creates a Cordova structure based on the structure of the initial app.
-        * Copies or adds the following items, when applicable:
-            * Android operating system
-            * iPhone and iPad operating system
-            * Windows operating system
-            * Cordova-mfp-plugin
-            * Cordova-plugin-mfp-jsonstore plug-in, if the JSONStore feature was installed on the old project.
-            * Cordova-plugin-mfp-fips plug-in, if the FIPS feature was installed on the old project.
-            * Cordova-plugin-mfp-push plug-in, if the push notification feature was installed on the old project.
-            * Hybrid certificates, if certificate pinning was enabled on the old project.
-            * Application, script, and XML files
-		* Opens the resulting information file in your default browser after the command completes.
+Wenn der Befehl "client" des Unterstützungstools für die Migration ausgeführt wird, führt das Tool die folgenden
+Schritte aus:
+  
+        * Es identifiziert APIs in der vorhandenen, mit der
+IBM MobileFirst Platform Foundation erstellten App,
+die in Version 8.0 gelöscht oder geändert wurden oder nicht weiter unterstützt werden. 
+        * Es erstellt ausgehend von der Struktur der ursprünglichen App eine Cordova-Struktur. 
+        * Es kopiert die folgenden Elemente oder fügt sie ggf. hinzu: 
+            * Android-Betriebssystem
+            * iPhone- und iPad-Betriebssystem
+            * Windows-Betriebssystem
+            * cordova-mfp-plugin
+            * Plugin cordova-plugin-mfp-jsonstore, wenn im alten Projekt das JSONStore-Feature installiert war
+            * Plug-in cordova-plugin-mfp-fips, wenn im alten Projekt das FIPS-Feature installiert war
+            * Plug-in cordova-plugin-mfp-push, wenn im alten Projekt das Feature für Push-Benachrichtigungen installiert war 
+            * Hybridzertifikate, wenn im alten Projekt das Certificate Pinning aktiviert war
+            * Anwendungs-, Script- und XML-Dateien
+		* Es öffnet die resultierende Informationsdatei in Ihrem Browser, wenn der Befehl ausgeführt ist. 
 
-        > **Important:** The migration assistance tool does not copy developer code or commented text into the new structure.
-3. Resolve the API issues in the new Cordova app.
-    * Review the **api-report.html** file that is created in the **destination_directory** directory, and is opened in your default browser when the command completes. Each row of the table in this file identifies a deprecated, changed, or removed API that is used in the app that is not compatible with version 8.0. This file also specifies the replacement for removed APIs, when one is available.
+        > **Wichtiger Hinweis:** Das Unterstützungstool für die Migration kopiert keinen Entwicklercode oder kommentierten Text in die neue Struktur. 
+3. Lösen Sie die API-Probleme in der neuen Cordova-App.
+    * Lesen Sie die Datei **api-report.html**, die im **Zielverzeichnis** erstellt und nach Ausführung des Befehls in Ihrem Standardbrowser geladen wird. In jeder Zeile der in dieser Datei enthaltenen Tabelle ist eine in der App verwendete API angegeben, die weggefallen ist oder geänderte bzw. gelöscht wurde und nicht mit Version 8.0 kompatibel ist. In dieser Datei ist auch eine Ersetzungsmöglichkeit für gelöschte APIs angegeben, soweit verfügbar.
 
-    | File path | Line number | API | Line content | Category of API change | Description and action item |
-    |-----------|-------------|-----|--------------|------------|-----------|
-    | c:\local\Cordova\www\js\index.js |	15 | `WL.Client.getAppProperty` | {::nomarkdown}<ul><li><code>document.getElementById('app_version')</code></li><li><code>textContent = WL.Client.getAppProperty("APP_VERSION");</code></li></ul>{:/} | Not supported | Removed from 8.0. Use Cordova plug-in to get app version. No replacement API. |
+    | Dateipfad | Zeilennummer | API | Zeileninhalt | Kategorie der API-Änderung | Beschreibung und Aktionselement |
+    |-----------|-------------|------|--------------|----------------------------|---------------------------------|
+    | c:\local\Cordova\www\js\index.js |	15 | `WL.Client.getAppProperty` | {::nomarkdown}<ul><li><code>document.getElementById('app_version')</code></li><li><code>textContent = WL.Client.getAppProperty("APP_VERSION");</code></li></ul>{:/} | Nicht unterstützt | In Version 8.0 gelöscht. Verwenden Sie zum Abrufen der App-Version ein Cordova-Plug-in. Es gibt keine Ersatz-API. |
 
-    * Address the API issues that are identified in the **api-report.html** file.
-4. Manually copy the developer code from the initial app structure into the correct location in the new Cordova structure. Copy the content in the following directories, according to the type of the source IBM MobileFirst Platform Foundation app:
-    * **IBM MobileFirst Platform Foundation hybrid app**  
-    Copy the contents of the **common** directory of the source app to the **www** directory in your new Cordova app.
-    * **Cordova with IBM MobileFirst Platform Foundation app**
-    Copy the contents of the **www** directory of the source app to the **www** directory in your new Cordova app.
-5. Run the migration assistance tool with the scan command on your new app to confirm that your API changes are complete.
-    * Enter the following command to run the scan:
+    * Lösen Sie die in der Datei **api-report.html** bezeichneten Probleme.
+4. Kopieren Sie den Entwicklercode der ursprünglichen App-Struktur manuell an die richtige Position der neuen Cordova-Struktur. Kopieren Sie den Inhalt der folgenden Verzeichnisse entsprechend dem Typ der mit der IBM MobileFirst Platform Foundation erstellten Quellen-App:
+    * **Mit der IBM MobileFirst Platform Foundation erstellte Hybrid-App**  
+    Kopieren Sie den Inhalt des Verzeichnisses **common** der Quellen-App in das Verzeichnis **www** der neuen Cordova-App.
+    * **Mit der IBM MobileFirst Platform Foundation erstellte Cordova-App** Kopieren Sie den Inhalt des Verzeichnisses **www** der Quellen-App in das Verzeichnis **www** der neuen Cordova-App.
+5. Führen Sie den Befehl "scan" des Unterstützungstools für die Migration für Ihre neue App aus, um sich zu vergewissern, dass die API-Änderungen abgeschlossen sind.
+    * Geben Sie zum Scannen den folgenden Befehl ein: 
 
       ```bash
-      mfpmigrate scan --in source_directory --out destination_directory --type hybrid
+      mfpmigrate scan --in Quellenverzeichnis --out Zielverzeichnis --type hybrid
       ```
-        * **source_directory**  
-        The current location of the files to scan. In an IBM MobileFirst Platform Foundation hybrid app, this location is the **common** directory of your app. In a {{ site.data.keys.product }} version 8.0 Cordova cross-platform app, this location is the **www** directory.
-        * **destination_directory**  
-        The directory where your scan results are output.
-		* **scan_type**  
-        The type of project to scan.
-    * Address any remaining API issues that are identified in the **api-report.html** file.
-6. Repeat step 6 to run the scan tool on the new Cordova app until all of the issues are resolved.
+        * **Quellenverzeichnis**  
+Aktuelle Position der zu scannenden Dateien. Bei einer mit der IBM MobileFirst Platform Foundation erstellten Hybrid-App ist diese Position das Verzeichnis
+**common** Ihrer App.
+Bei einer mit {{ site.data.keys.product }} Version 8.0 erstellten plattformübergreifenden Cordova-App
+ist diese Position das Verzeichnis **www**. 
+        * **Zielverzeichnis**  
+Verzeichnis, in das die Scanergebnisse ausgegeben werden
+		* **Scantyp**  
+Zu scannender Projekttyp. 
+    * Lösen Sie alle verbliebenen Probleme aus der Datei **api-report.html**. 
+6. Wiederholen Sie Schritt 6, um die neue Cordova-App mit dem Tool zu scannen, bis alle
+Probleme gelöst sind. 
 
-### Completing migration of a {{ site.data.keys.product_adj }} hybrid app
+### Migration einer {{ site.data.keys.product_adj }}-Hybrid-App abschließen
 {: #completing-migration-of-a-mobilefirst-hybrid-app }
-After you use the migration assistance tool, you must modify some portions of your code manually to complete the migration process.
+Nachdem Sie das Unterstützungstool für die Migration verwendet haben, müssen Sie einige Abschnitte Ihres Codes manuell modifizieren, um den
+Migrationsprozess abzuschließen. 
 
-* You must have already run the mfpmigrate migration assistance tool on your existing hybrid app. For more information, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
-* You must have the Cordova Command-Line Interface (CLI) installed, and any prerequisites installed that are required for using the Cordova CLI for your target platforms if you need to install any additional Cordova plug-ins. (See step 6.) For more information, see The [Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html) at the Apache Cordova web site.
-* You must have internet access if you need to download a new version of JQuery (step 1c) or if you need to install any additional Cordova plug-ins (step 6).
-* You must have node.js version 4.0.0 or later installed if you need to install additional Cordova plug-ins (step 6).
+* Sie müssen bereits das Unterstützungstool für die Migration (mfpmigrate) für Ihre
+vorhandene Hybrid-App ausgeführt haben. Weitere Informationen finden Sie unter
+[Migration einer Cordova-App
+mit dem Unterstützungstool für die Migration starten](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
+* Sie müssen die Cordova-Befehlszeilenschnittstelle (CLI, Command-Line Interface) installiert haben. Außerdem müssen alle Produkte installiert sein, die
+für die Verwendung der Cordova-CLI für Ihre Zielplattformen vorausgesetzt werden, falls Sie weitere Cordova-Plug-ins installieren müssen (siehe Schrit 6). Weitere
+Informationen finden Sie auf der Apache-Cordova-Website
+unter [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html). 
+* Sie benötigen Internetzugang, wenn Sie eine neue Version von
+jQuery herunterladen müssen (Schritt 1c) oder zusätzliche Cordova-Plug-ins installieren müssen (Schritt 6). 
+* Wenn Sie weitere Cordova-Plug-ins installieren müssen (Schritt 6), ist eine Installation von Node.js ab Version 4.0.0 erforderlich. 
 
-Complete the steps in this task to finish migrating your MobileFirst hybrid application from IBM MobileFirst Platform Foundation 7.1 to a Cordova application that includes support for {{ site.data.keys.product }} 8.0.
+Führen Sie die hier beschriebenen Schritte aus, um die Migration
+Ihrer MobileFirst-Hybridanwendung von
+IBM MobileFirst Platform Foundation Version 7.1
+auf eine Cordova-Anwendung mit Unterstützung
+für {{ site.data.keys.product }} 8.0 abzuschließen. 
 
-After you complete the migration, your app can use Cordova platforms and plug-ins that you obtain independently of IBM MobileFirst Platform Foundation, and you can continue to develop the app with your preferred Cordova development tools.
+Nach der Migration kann Ihre App Cordova-Plattformen und Plug-ins nutzen, die Sie
+unabhängig von der IBM MobileFirst Platform Foundation erworben haben. So können Sie für die App-Entwicklung weiter
+Ihre bevorzugten
+Cordova-Entwicklungstools nutzen. 
 
-1. Update the **www/index.html** file.
-    * Add the following CSS code to the head of your index.html file, before your CSS code that is already there.
+1. Aktualisieren Sie die Datei **www/index.html**. 
+    * Fügen Sie zur Kopfzeile Ihrer Datei index.html vor dem bereits vorhandenen CSS-Code
+den folgenden CSS-Code hinzu: 
 
       ```html
       <link rel="stylesheet" href="worklight/worklight.css">
       <link rel="stylesheet" href="css/main.css">
       ```
 
-      > **Note:** The **worklight.css** file sets the body attribute to relative. If this affects the style of your app, then declare a different value for the position in your own CSS code. For example:
+      > **Note:** Die Datei **worklight.css** setzt das Attribut "body" auf "relative". Wenn sich dies auf den Stil Ihrer App auswirkt, deklarieren Sie einen anderen Wert für die Position in Ihrem eigenen CSS-Code.
+Beispiel:
 
       ```css
       body {
@@ -187,42 +261,35 @@ After you complete the migration, your app can use Cordova platforms and plug-in
       }
       ```
 
-    * Add Cordova JavaScript to the head of the file after the CSS definitions.
+    * Fügen Sie nach den CSS-Definitionen Cordova-JavaScript zur Kopfzeile
+der Datei hinzu. 
 
       ```html
       <script type="text/javascript" src="cordova.js"></script>
       ```    
 
-    * Remove the following line of code if it is present.
+    * Entfernen Sie die folgende Codezeile, wenn sie vorhanden ist. 
 
       ```html
       <script>window.$ = window.jQuery = WLJQ;</script>
       ```
 
-      You can download your own version of JQuery, and load it as shown in the following code line.
+      Sie können Ihre eigene
+jQuery-Version herunterladen und wie in der folgenden Codezeile angegeben laden.
+
 
       ```html
       <script src="lib/jquery.min.js"></script>
       ```
 
-      You do not have to move the optional jQuery addition to the **lib** folder. You can move this addition anywhere you want to, but you must correctly reference it in the **index.html** file.
+      Sie müssen die optionale jQuery-Ergänzung nicht in den Ordner **lib** verschieben. Sie können diese Ergänzung an eine beliebige Position verschieben, müssen jedoch in der Datei **index.html** einen ordnungsgemäßen Verweis angeben.
 
-2. Update the **www/js/InitOptions.js** file to call `WL.Client.init` automatically.
-    * Remove the following code from **InitOptions.js**
+2. Aktualisieren Sie die Datei **www/js/InitOptions.js** so, dass
+`WL.Client.init` automatisch aufgerufen wird. 
+    * Entfernen Sie folgenden Code aus **InitOptions.js**.
 
-      The function `WL.Client.init` is called automatically with the global variable **wlInitOptions**.
-
-      ```javascript
-      if (window.addEventListener) {
-            window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
-      } else if (window.attachEvent) {
-            window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
-      }
-      ```
-
-3. Optional: Update the **www/InitOptions.js** to call `WL.Client.init` manually.
-    * Edit the **config.xml** file and set the `<mfp:clientCustomInit>` element's enabled attribute to true.
-    * If you are using the MobileFirst hybrid default template, replace this code:
+      Die Funktion `WL.Client.init` wird über die globale Variable
+**wlInitOptions** automatisch aufgerufen.
 
       ```javascript
       if (window.addEventListener) {
@@ -232,7 +299,22 @@ After you complete the migration, your app can use Cordova platforms and plug-in
       }
       ```
 
-      With the following code:
+3. Aktualisieren Sie die Datei **www/InitOptions.js** so, dass
+`WL.Client.init` manuell aufgerufen wird (optional). 
+    * Bearbeiten Sie die Datei **config.xml**. Setzen Sie das Attribut
+"enabled" des Elements `<mfp:clientCustomInit>` auf "true". 
+    * Wenn Sie die MobileFirst-Standardschablone für Hybridanwendungen
+verwenden, ersetzen Sie den folgenden Code: 
+
+      ```javascript
+      if (window.addEventListener) {
+            window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+      } else if (window.attachEvent) {
+            window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+      }
+      ```
+
+      Geben Sie folgenden Ersatzcode an: 
 
       ```javascript
       if (document.addEventListener) {
@@ -242,166 +324,244 @@ After you complete the migration, your app can use Cordova platforms and plug-in
       }
       ```
 
-4. Optional: If you have logic specific to a hybrid environment, for example in Your **app/iphone/js/main.js**, copy the function `wlEnvInit()` and append it at the end of **www/main.js**.
+4. Wenn Sie Logik verwenden, die für eine Hybridumgebung spezifisch ist,
+z. B. in Ihrer Datei **app/iphone/js/main.js**, kopieren Sie die Funktion `wlEnvInit()` und fügen Sie sie am Ende von
+**www/main.js** an (optional).
 
    ```javascript
-   // This wlEnvInit method is invoked automatically by MobileFirst runtime after successful initialization.
+   // Diese Methode wlEnvInit wird nach erfolgreicher Initialisierung automatisch von der MobileFirst-Laufzeit aufgerufen.
    function wlEnvInit() {
         wlCommonInit();
         if (cordova.platformId === "ios") {
-            // Environment initialization code goes here for ios
+            // Hier kommt der Code für die Umgebungsinitialisierung für iOS.
         } else if (cordova.platformId === "android") {
-            // Environment initialization code goes here for android
+            // Hier kommt der Code für die Umgebungsinitialisierung für Android.
         }
    }
    ```
 
-5. Optional: If your original application uses the FIPS feature, change the JQuery event listener to a JavaScript event listener that listens to the WL/FIPS/READY event. For more information about FIPS, see [FIPS 140-2 support](../../../administering-apps/federal/#fips-140-2-support).
-6. Optional: If your original application uses any third-party Cordova plug-ins that are not replaced or supplied by the migration assistance tool, manually add the plug-ins to the Cordova app with the `cordova plugin add` command. For information about which plug-ins are replaced by the tool, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
+5. Wenn Ihre ursprüngliche Anwendung das FIPS-Feature verwendet,
+ändern Sie den JQuery-Ereignislistener in einen JavaScript-Ereignislistener, der auf den Empfang des WL/FIPS/READY-Ereignisses wartet (optional). Weitere Informationen zu FIPS finden Sie unter
+[Unterstützung für FIPS 140-2](../../../administering-apps/federal/#fips-140-2-support).
+6. Wenn Ihre ursprüngliche Anwendung Cordova-Plug-ins anderer Anbieter verwendet, die vom Unterstützungstool für die Migration nicht ersetzt
+oder bereitgestellt werden, fügen Sie die Plug-ins manuell mit dem Befehl
+`cordova plugin add` zur Cordova-App hinzu (optional). Welche Plug-ins vom Tool ersetzt werden, erfahren Sie unter
+[Migration einer Cordova-App mit dem Unterstützungstool für die Migration starten](#starting-the-cordova-app-migration-with-the-migration-assistance-tool). 
 
-### Completing migration of a {{ site.data.keys.product_adj }} Cordova app
+### Migration einer {{ site.data.keys.product_adj }}-Cordova-App abschließen
 {: #completing-migration-of-a-mobilefirst-cordova-app }
-After you use the migration assistance tool, you must modify some portions of your code manually to complete the migration process.
+Nachdem Sie das Unterstützungstool für die Migration verwendet haben, müssen Sie einige Abschnitte Ihres Codes manuell modifizieren, um den
+Migrationsprozess abzuschließen. 
 
-* You must have already run the **mfpmigrate** migration assistance tool on your existing Cordova app. For more information, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
-* You must have the Cordova Command-Line Interface (CLI) installed, and any prerequisites installed that are required for using the Cordova CLI for your target platforms. For more information, see [The Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html) at the Apache Cordova web site.
-* You must have internet access.
-* You must have node.js version 4.0.0 or later installed.
+* Sie müssen bereits das Unterstützungstool für die Migration (**mfpmigrate**) für Ihre
+vorhandene Cordova-App ausgeführt haben. Weitere Informationen finden Sie unter
+[Migration einer Cordova-App
+mit dem Unterstützungstool für die Migration starten](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
+* Sie müssen die Cordova-Befehlszeilenschnittstelle (CLI, Command-Line Interface) installiert haben. Außerdem müssen alle Produkte installiert sein, die
+für die Verwendung der Cordova-CLI für Ihre Zielplattformen vorausgesetzt werden. Weitere Informationen finden Sie auf der Apache-Cordova-Website
+unter [The
+Command-Line Interface](http://cordova.apache.org/docs/en/5.1.1/guide/cli/index.html). 
+* Sie benötigen Internetzugriff. 
+* Node.js ab Version 4.0.0 muss installiert sein. 
 
-The Cordova app that you created with **mfp cordova create** uses the Cordova platform and plug-in versions that were supplied with IBM MobileFirst Platform Foundation previous version. After you complete the migration, your migrated app can use Cordova platforms and plug-ins that you obtain independently of {{ site.data.keys.product }}. This is the only type of support for Cordova applications that is available with IBM MobileFirs Foundation v8.0.
+Die mit dem Befehl **mfp cordova create** erstellte Cordova-App verwendet die mit der Vorgängerversion der
+IBM MobileFirst Platform Foundation
+bereitgestellte Version der Cordova-Plattform und Cordova-Plug-ins. Nach der Migration kann Ihre umgestellte App
+Cordova-Plattformen und -Plug-ins verwenden, die Sie unabhängig von der
+{{ site.data.keys.product }} erworben haben. Dies ist die einzige, in
+IBM MobileFirst Foundation Version
+8.0 verfügbare Unterstützung für Cordova-Anwendungen.
 
-To migrate, you run the migration assistance tool and then make other modifications to your app.
+Für die Umstellung müssen Sie das Unterstützungstool für die Migration
+ausführen und anschließend weitere Modifikationen an Ihrer App vornehmen. 
 
-1. With the Cordova development tool of your choice, add any Cordova plug-ins other than Cordova plug-ins that enable {{ site.data.keys.product_adj }} features that were in your original application. For example, with the Cordova CLI, to add the plug-ins **cordova-plugin-file** and **cordova-plugin-file-transfer**, enter:
+1. Neben den Cordova-Plug-ins, die
+die Verwendung von in Ihrer ursprünglichen Anwendung verfügbaren {{ site.data.keys.product_adj }}-Features
+ermöglichen, können Sie mit dem Cordova-Entwicklungstool Ihrer Wahl beliebige weitere Cordova-Plug-ins hinzufügen. Sie können beispielsweise über die Cordova-CLI die Plug-ins
+**cordova-plugin-file** und **cordova-plugin-file-transfer** hinzufügen. Geben Sie dazu Folgendes ein:
+
+
 
    ```bash
    cordova plugin add cordova-plugin-file cordova-plugin-file-transfer
    ```
 
-   > **Note:** The **mfpmigrate** migration assistance tool added the Cordova plug-ins for {{ site.data.keys.product_adj }} features, so you do not have to add them. For more information about these plug-ins, see [Cordova plug-ins for {{ site.data.keys.product_adj }}](../../../application-development/sdk/cordova).
+   > **Hinweis:** Das Unterstützungstool für die Migration (**mfpmigrate**) fügt die Cordova-Plug-ins für
+{{ site.data.keys.product_adj }}-Features hinzu, sodass Sie diese
+Features nicht mehr hinzufügen müssen. Weitere Informationen zu diesen Plug-ins finden Sie unter
+[Cordova-Plug-ins für {{ site.data.keys.product_adj }}](../../../application-development/sdk/cordova).
 
-2. Optional: If your original application uses the FIPS feature, change the JQuery event listener to a JavaScript event listener that listens to the WL/FIPS/READY event. For more information about FIPS, see [FIPS 140-2 support](../../../administering-apps/federal/#fips-140-2-support).
-3. Optional: If your original application uses any third-party Cordova plug-ins that are not replaced or supplied by the migration assistance tool, manually add the plug-ins to the Cordova app with the **cordova plugin add** command. For information about which plug-ins are replaced by the tool, see [Starting the Cordova app migration with the migration assistance tool](#starting-the-cordova-app-migration-with-the-migration-assistance-tool).
-4. Optional: (Only for apps that include the iOS platform, and that use OpenSSL.) Add the **cordova-plugin-mfp-encrypt-utils** plug-in to your app. The **cordova-plugin-mfp-encrypt-utils** plug-in provides iOS OpenSSL frameworks for encryption for Cordova applications with the iOS platform.
+2. Wenn Ihre ursprüngliche Anwendung das FIPS-Feature verwendet,
+ändern Sie den JQuery-Ereignislistener in einen JavaScript-Ereignislistener, der auf den Empfang des WL/FIPS/READY-Ereignisses wartet (optional). Weitere Informationen zu FIPS finden Sie unter
+[Unterstützung für FIPS 140-2](../../../administering-apps/federal/#fips-140-2-support).
+3. Wenn Ihre ursprüngliche Anwendung Cordova-Plug-ins anderer Anbieter verwendet, die vom Unterstützungstool für die Migration nicht ersetzt
+oder bereitgestellt werden, fügen Sie die Plug-ins manuell mit dem Befehl
+**cordova plugin add** zur Cordova-App hinzu (optional). Welche Plug-ins vom Tool ersetzt werden, erfahren Sie unter
+[Migration einer Cordova-App mit dem Unterstützungstool für die Migration starten](#starting-the-cordova-app-migration-with-the-migration-assistance-tool). 
+4. Nur für Apps mit iOS-Plattform, die OpenSSL verwenden (optional): Fügen Sie das Plug-in **cordova-plugin-mfp-encrypt-utils** zu Ihrer App hinzu. Das Plug-in **cordova-plugin-mfp-encrypt-utils** stellt
+iOS-OpenSSL-Frameworks für die Verschlüsselung von Cordova-Anwendungen auf der
+iOS-Plattform bereit. 
 
-You now have a Cordova app that you can continue to develop with your preferred Cordova tools, but that also includes {{ site.data.keys.product_adj }} functionality.
+Jetzt haben Sie eine Cordova-App mit
+{{ site.data.keys.product_adj }}-Funktionalität, die Sie mit Ihren bevorzugten Cordova-Tools
+weiterentwickeln können. 
 
-## Migrating encryption for iOS Cordova
+## Verschlüsselung für Cordova umstellen
 {: #migrating-encryption-for-ios-cordova }
-If your iOS Hybrid or Cordova application used OpenSSL encryption, you may want to migrate your app to the new V8.0.0 native encryption. If you want to continue using OpenSSL you need to add an additional Cordova plug-in.
+Wenn Ihre iOS-Cordova- oder -Hybrindanwendung die OpenSSL-Verschlüsselung verwendet hat, möchten Sie Ihre App vielleicht auf die neue
+native Verschlüsselung von Version 8.0 umstellen. Wenn Sie
+OpenSSL weiterhin verwenden möchten, müssen Sie ein zusätzliches Cordova-Plug-in installieren. 
 
-For more information on the iOS Cordova encryption options for migration see the [Migration options](../../../application-development/sdk/cordova/additional-information/#migration-options) section within the [Enabling OpenSSL in Cordova Applications](../../../application-development/sdk/cordova/additional-information/#enabling-openssl-in-cordova-applications) topic.
+Weitere Informationen zu den iOS-Cordova-Verschlüsselungsoptionen für die Migration finden Sie im Abschnitt
+[Migrationoptionen](../../../application-development/sdk/cordova/additional-information/#migration-options)
+unter [OpenSSL in Cordova-Anwendungen
+ermöglichen](../../../application-development/sdk/cordova/additional-information/#enabling-openssl-in-cordova-applications). 
 
-## Migrating Direct Update
+## Direkte Aktualisierung umstellen
 {: #migrating-direct-update }
-Direct Update is triggered after the first access to a protected resource. The process to deploy new web resources has changed in v8.0.
+Die direkte Aktualisierung wird nach dem ersten Zugriff auf eine geschützte Ressource ausgelöst. Der Implementierungsprozess für neue Webressourcen hat sich in
+Version 8.0 geändert. 
 
-Unlike in previous versions, in v8.0, if an application does not access a secure {{ site.data.keys.product_adj }} resource, the client application does not receive updates, even if updates are available on the server. A resource might be unprotected, for example because OAuth has been disabled by the annotation `@OAuth(security=false)` or by configuration. You can work around this risk in one of the following ways:
+Wenn eine Clientanwendung in
+Version 8.0 auf eine
+ungeschützte {{ site.data.keys.product_adj }}-Ressource zugreift,
+empfängt sie im Gegensatz zu früheren Versionen keine Aktualisierungen, auch wenn auf dem Server Aktualisierungen verfügbar sind. Eine Ressource könnte ungeschützt sein, weil
+OAuth mit der Annotation
+`@OAuth(security=false)` oder in der Konfiguration inaktiviert wurde. Sie haben folgende Möglichkeiten, dieses Risiko zu umgehen: 
 
-* Explicitly obtain an access token. See the `obtainAccessToken` API in the [`WLAuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc) class.
-* Call another protected resource. See the [`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html?view=kc) class.
+* Fordern Sie explizit ein Zugriffstoken an (siehe Erläuterungen zur API
+`obtainAccessToken`
+in der Beschreibung der Klasse [`WLAuthorizationManager`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc)). 
+* Rufen Sie eine andere geschützte Ressource auf (siehe Beschreibung der Klasse
+[`WLResourceRequest`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html?view=kc)). 
 
-To use Direct Update: Starting with v8.0, you no longer upload a **.wlapp** file to {{ site.data.keys.mf_server }}. Instead, you upload a smaller web resource archive (.zip file). The archive file no longer contains the web preview files or skins that were widely used in previous versions. These have been discontinued. The archive contains only the web resources that are sent to the clients, as well as checksums for Direct Update validations.
+Verwendung der direkten Aktualisierung: Ab Version 8.0 wird keine **.wlapp**-Datei mehr auf
+den {{ site.data.keys.mf_server }} hochgeladen.
+Stattdessen laden Sie ein kleineres Webressourcenarchiv (ZIP-Datei) hoch. Die Archivdatei enthält
+nicht mehr die Webvorschaudateien oder Oberflächen, die in den Vorgängerversionen häufig verwendet wurden. Das Archiv enthält jetzt nur noch die Webressourcen, die an die Clients gesendet werden, sowie
+Kontrollsummen für die Validierung der direkten Aktualisierung. 
 
-> For more information, see the [Direct Update documentation](../../../application-development/direct-update).
+> Weitere Informationen finden Sie in der
+[Dokumentation zur direkten Aktualisierung](../../../application-development/direct-update).
 
-## Upgrading the WebView
+## WebView-Upgrade
 {: #upgrading-the-webview }
-IBM MobileFirs Foundation v8.0 Cordova SDK (JavaScript) introduced numerous changes that require adaptations of your code.
+Im Cordova-SDK (JavaScript) von IBM MobileFirst Foundation Version 8.0
+gibt es zahlreiche Änderungen, die Anpassungen Ihres Codes erforderlich machen. 
 
-The manual migration process involves a few stages:
+Der manuelle Migrationsprozess verläuft in mehreren Phasen: 
 
-* Creating a new Cordova project
-* Replacing the necessary web resource elements with the code from your previous version
-* Making the necessary changes to your JavaScript code to conform to SDK changes
+* Neues -Cordova-Projekt
+erstellen
+* Erforderliche Webressourcenelemente durch Code aus der Vorgängerversion ersetzen
+* Durch SDK-Änderungen notwendige Änderungen am JavaScript-Code
+vornehmen
 
-Many {{ site.data.keys.product_adj }} API elements were removed in v8.0. Removed elements are clearly marked as non-existent in an IDE that supports autocorrect for JavaScript.
+In Version 8.0 wurden viele {{ site.data.keys.product_adj }}-API-Elemente entfernt. Gelöschte Elemente sind in einer IDE, di edie automatische Korrektur für
+JavaScript unterstützt deutlich als nicht vorhanden gekennzeichnet. 
 
-The table below lists those API elements that require removal, with suggestions on how to replace the functionality. Many of the removed elements are UI elements that can be replaced with Cordova plug-ins or HTML 5 elements. Some methods have changed.
+In der folgenden Tabelle sind API-Elemente aufgelistet, die entfernt werden müssen. Außerdem gibt es Vorschläge, wie die Funktionalität ersetzt werden kann. Viele Elemente, die entfernt wurden,
+sind Benutzerschnittstellenelemente, die durch Cordova-Plug-ins oder
+HTML-5-Elemente ersetzt werden können. Einige Methoden haben sich ebenfalls geändert. 
 
-#### Discontinued JavaScript UI elements
+#### Weggefallene JavaScript-UI-Elemente
 {: #discontinued-javascript-ui-elements }
-| API element | Migration path |
+
+| API-Element | Migrationspfad |
 |-------------|----------------|
-| {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Use Cordova plug-ins or HTML 5 elements. |
-| `WL.App.close()` | Handle this event outside of {{ site.data.keys.product_adj }}. |
-| `WL.App.copyToClipboard()` | Use Cordova plug-ins providing this functionality. |
-| `WL.App.openUrl(url, target, options)` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova InAppBrowser plug-in provides this feature. |
-| {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova backbutton plug-in provides this feature. |
-| `WL.App.getDeviceLanguage()` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the Cordova **cordova-plugin-globalization** plug-in provides this feature. |
-| `WL.App.getDeviceLocale()` | Use Cordova plug-ins providing this functionality.<br/><br/> Note: For your information, the Cordova **cordova-plugin-globalization** plug-in provides this feature. |
-| `WL.App.BackgroundHandler` | To run a custom handler function, use the standard Cordova pause event listener. Use a Cordova plug-in that provides privacy and prevents iOS and Android systems and users from taking snapshots or screen captures. For more information, see the description of the PrivacyScreenPlugin at [https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin). |
-| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| The functions were provided to support the Adobe AIR platform, which is not supported by {{ site.data.keys.product }} v8.0 |
-| `WL.Toast.show(string)` | Use Cordova plug-ins for Toast. |
+| {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Verwenden Sie Cordova-Plug-ins oder HTML-5-Elemente.  |
+| `WL.App.close()` | Handhaben Sie dieses Ereignis außerhalb von {{ site.data.keys.product_adj }}. |
+| `WL.App.copyToClipboard()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.  |
+| `WL.App.openUrl(url, target, options)` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in InAppBrowser bereitgestellt. |
+| {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in backbutton bereitgestellt. |
+| `WL.App.getDeviceLanguage()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in **cordova-plugin-globalization** bereitgestellt.  |
+| `WL.App.getDeviceLocale()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/> Hinweis: Dieses Feature wird vom Cordova-Plug-in **cordova-plugin-globalization** bereitgestellt.  |
+| `WL.App.BackgroundHandler` | Verwenden Sie zum Ausführen einer angepassten Handlerfunktion den Cordova-Standardereignislistener "pause". Verwenden Sie ein Cordova-Plug-in, mit dem die Privatsphäre gewahrt werden kann und das iOS- und Android-Systeme oder -Benutzer daran hindert, Screenshots zu erstellen. Weitere Informationen entnehmen Sie bitte der Beschreibung zu PrivacyScreenPlugin unter [https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin). |
+| {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| Die Funktionen wurden zur Unterstützung der AIR-Plattform bereitgestellt, die von {{ site.data.keys.product }} Version 8.0 nicht unterstützt wird. |
+| `WL.Toast.show(string)` | Verwenden Sie Cordova-Plug-ins für Toast. |
 
-#### Other Discontinued JavaScript elements
+#### Weitere weggefallene JavaScript-Elemente
 {: #other-discontinued-javascript-elements }
-| API | Migration path |
-|-----|----------------|
-| `WL.Client.checkForDirectUpdate(options)` | No replacement.<br/><br/>Note: You can call [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to trigger a direct update if one is available. The access to a security token triggers a direct update if one is available on the server. But you cannot trigger Direct Update on demand. |
-| {::nomarkdown}<ul><li><code>WL.Client.setSharedToken({key: myName, value: myValue})</code></li><li><code>WL.Client.getSharedToken({key: myName})</code></li><li><code>WL.Client.clearSharedToken({key: myName})</code></li></ul>{:/} | No replacement. |
-| {::nomarkdown}<ul><li><code>WL.Client.isConnected()</code></li><li><code>connectOnStartup</code> init option</li></ul> | Use [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to check connectivity to the server and apply application management rules. |
-| {::nomarkdown}<ul><li><code>WL.Client.setUserPref(key,value, options)</code></li><li><code>WL.Client.setUserPrefs(userPrefsHash, options)</code></li><li><code>WL.Client.deleteUserPrefs(key, options)</code></li></ul>{:/} | No replacement. You can use an adapter and the [MFP.Server.getAuthenticatedUser](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser) API to manage user preferences. |
-| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | No replacement. |
-| `WL.Client.logActivity(activityType)` | Use [`WL.Logger`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Logger.html?view=kc) |
-| `WL.Client.login(realm, options)` | Use [`WLAuthorizationManager.login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#login). |
-| `WL.Client.logout(realm, options)` | Use [`WLAuthorizationManager.logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#logout). |
-| `WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` | Use [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken). |
-| {::nomarkdown}<ul><li><code>WL.Client.transmitEvent(event, immediate)</code></li><li><code>WL.Client.purgeEventTransmissionBuffer()</code></li><li><code>WL.Client.setEventTransmissionPolicy(policy)</code></li></ul>{:/} | Create a custom adapter for receiving notifications of these events. |
-| {::nomarkdown}<ul><li><code>WL.Device.getContext()</code></li><li><code>WL.Device.startAcquisition(policy, triggers, onFailure)</code></li><li><code>WL.Device.stopAcquisition()</code></li><li><code>WL.Device.Wifi</code></li><li><code>WL.Device.Geo.Profiles</code></li><li><code>WL.Geo</code></li></ul>{:/} | Use native API or third-party Cordova plug-ins for GeoLocation. |
-| `WL.Client.makeRequest (url, options)` | Create a custom adapter that provides the same functionality |
-| `WL.Device.getID(options)` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, **device.uuid** from the **cordova-plugin-device** plug-in provides this feature. |
-| `WL.Device.getFriendlyName()` | Use `WL.Client.getDeviceDisplayName` |
-| `WL.Device.setFriendlyName()` | Use `WL.Client.setDeviceDisplayName` |
-| `WL.Device.getNetworkInfo(callback)` | Use Cordova plug-ins providing this functionality.<br/><br/>Note: For your information, the **cordova-plugin-network-information** plug-in provides this feature. |
-| `WLUtils.wlCheckReachability()` | Create a custom adapter to check server availability. |
-| `WL.EncryptedCache` | Use JSONStore to store encrypted data locally. JSONStore is in the **cordova-plugin-mfp-jsonstore** |
-| `WL.SecurityUtils.remoteRandomString(bytes)` | Create a custom adapter that provides the same functionality. |
-| `WL.Client.getAppProperty(property)` | You can retrieve the app version property by using the cordova plugin add **cordova-plugin-appversion** plug-in. The version that is returned is the native app version (Android and iOS only). |
-| `WL.Client.Push.*` | Use [JavaScript client-side push API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_js_client_push_api.html?view=kc#r_client_push_api) from the **cordova-plugin-mfp-push** plug-in. For more information, see [Migrating to push notifications from event source-based notifications](../../migrating-push-notifications). |
-| `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` | Use [`MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-mfp-push-hybrid/html/MFPPush.html?view=kc#registerDevice) to register the device for push and SMS. |
-| `WLAuthorizationManager.obtainAuthorizationHeader(scope)` | Use [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) to obtain a token for the required scope. |
-| `WLClient.getLastAccessToken(scope)` | Use [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) |
-| {::nomarkdown}<ul><li><code>WLClient.getLoginName()</code></li><li><code>WL.Client.getUserName(realm)</code></li></ul>{:/} | No replacement |
-| `WL.Client.getRequiredAccessTokenScope(status, header)` | Use [`WLAuthorizationManager.isAuthorizationRequired`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#isAuthorizationRequired) and [`WLAuthorizationManager.getResourceScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#getResourceScope). |
-| `WL.Client.isUserAuthenticated(realm)` | No replacement |
-| `WLUserAuth.deleteCertificate(provisioningEntity)` | No replacement |
-| `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | No replacement |
-| `WL.Client.createChallengeHandler(realmName)` | To create a challenge handler for handling custom gateway challenges, use [`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler). To create a challenge handler for handling {{ site.data.keys.product_adj }} security-check challenges, use [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler). |
-| `WL.Client.createWLChallengeHandler(realmName)` | Use [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler). |
-| `challengeHandler.isCustomResponse()` where `challengeHandler` is a challenge-handler object that is returned by `WL.Client.createChallengeHandler()` | Use `gatewayChallengeHandler.canHandleResponse()` where `gatewayChallengeHandler` is a challenge-handler object that is returned by [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler). |
-| `wlChallengeHandler.processSucccess()` where `wlChallengeHandler` is a challenge-handler object that is returned by `WL.Client.createWLChallengeHandler()` | Use `securityCheckChallengeHandler.handleSuccess()` where `securityCheckChallengeHandler` is a challenge-handler object that is returned by [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler). |
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implement similar logic in your challenge handler. For custom gateway challenge handlers, use a challenge-handler object that is returned by [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler). For {{ site.data.keys.product_adj }} security-check challenge handlers, use a challenge-handler object that is returned by [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler). |
-| `WL.Client.AbstractChallengeHandler.submitFailure(err)` | Use [`WL.Client.AbstractChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html?view=kc#cancel). |
-| `WL.Client.createProvisioningChallengeHandler()` | No replacement. Device provisioning is now handled automatically by the security framework. |
 
-#### Deprecated JavaScript APIs
+| API | Migrationspfad |
+|-----|----------------|
+| `WL.Client.checkForDirectUpdate(options)` | Kein Ersatz<br/><br/>Hinweis: Sie können [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken) aufrufen, um eine verfügbare direkte Aktualisierung auszulösen. Der Zugriff auf ein Sicherheitstoken löst die direkte Aktualisierung aus, sofern auf dem Server eine direkte Aktualisierung verfügbar ist. Eine bedarfsabhängige Auslösung der direkten Aktualisierung ist nicht möglich. |
+| {::nomarkdown}<ul><li><code>WL.Client.setSharedToken({key: myName, value: myValue})</code></li><li><code>WL.Client.getSharedToken({key: myName})</code></li><li><code>WL.Client.clearSharedToken({key: myName})</code></li></ul>{:/} | Kein Ersatz |
+| {::nomarkdown}<ul><li><code>WL.Client.isConnected()</code></li><li><code>connectOnStartup init option</code></li></ul> | Verwenden Sie [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken), um die Verbindungsmöglichkeiten zum Server zu überprüfen und Anwendungsmanagementregeln anzuwenden. |
+| {::nomarkdown}<ul><li><code>WL.Client.setUserPref(key,value, options)</code></li><li><code>WL.Client.setUserPrefs(userPrefsHash, options)</code></li><li><code>WL.Client.deleteUserPrefs(key, options)</code></li></ul>{:/} | Kein Ersatz. Sie können einen Adapter und die API [MFP.Server.getAuthenticatedUser](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-server/html/MFP.Server.html?view=kc#MFP.Server.getAuthenticatedUser) verwenden, um Benutzervorgaben zu verwalten. |
+| {::nomarkdown}<ul><li><code>WL.Client.getUserInfo(realm, key)</code></li><li><code>WL.Client.updateUserInfo(options)</code></li></ul>{:/} | Kein Ersatz |
+| `WL.Client.logActivity(activityType)` | Verwenden Sie [`WL.Logger`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Logger.html?view=kc).  |
+| `WL.Client.login(realm, options)` | Verwenden Sie [`WLAuthorizationManager.login`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#login).  |
+| `WL.Client.logout(realm, options)` | Verwenden Sie [`WLAuthorizationManager.logout`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#logout).  |
+| `WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` | Verwenden Sie [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken).  |
+| {::nomarkdown}<ul><li><code>WL.Client.transmitEvent(event, immediate)</code></li><li><code>WL.Client.purgeEventTransmissionBuffer() </code></li><li><code>WL.Client.setEventTransmissionPolicy(policy)</code></li></ul>{:/} | Erstellen Sie einen angepassten Adapter für den Empfang von Benachrichtigungen über diese Ereignisse. |
+| {::nomarkdown}<ul><li><code>WL.Device.getContext()</code></li><li><code>WL.Device.startAcquisition(policy, triggers, onFailure)</code></li><li><code>WL.Device.stopAcquisition()</code></li><li><code>WL.Device.Wifi</code></li><li><code>WL.Device.Geo.Profiles</code></li><li><code>WL.Geo </code></li></ul>{:/} | Verwenden Sie für die Geoortung die native API oder Cordova-Plug-ins von anderen Anbietern. |
+| `WL.Client.makeRequest (url, options)` | Erstellen Sie einen angepassten Adapter, der diese Funktionalität bereitstellt.  |
+| `WL.Device.getID(options)` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/>Hinweis: Dieses Feature wird von **device.uuid** aus dem Plug-in **cordova-plugin-device** bereitgestellt. |
+| `WL.Device.getFriendlyName()` | Verwenden Sie `WL.Client.getDeviceDisplayName`.  |
+| `WL.Device.setFriendlyName()` | Verwenden Sie `WL.Client.setDeviceDisplayName`.  |
+| `WL.Device.getNetworkInfo(callback)` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/>Hinweis: Dieses Feature wird vom Plug-in **cordova-plugin-network-information** bereitgestellt.  |
+| `WLUtils.wlCheckReachability()` | Erstellen Sie einen angepassten Adapter für die Überprüfung der Serververfügbarkeit.  |
+| `WL.EncryptedCache` | Verwenden Sie JSONStore zum lokalen Speichern verschlüsselter Daten. JSONStore ist in **cordova-plugin-mfp-jsonstore** enthalten.  |
+| `WL.SecurityUtils.remoteRandomString(bytes)` | Erstellen Sie einen angepassten Adapter, der diese Funktionalität bereitstellt.  |
+| `WL.Client.getAppProperty(property)` | Sie können die Eigenschaft für die App-Version mit dem Plug-in **cordova-plugin-appversion** abrufen. Die zurückgegebene Version ist die Version der nativen App (nur Android und iOS). |
+| `WL.Client.Push.*` | Verwenden Sie die [clientseitige JavaScript-Push-API](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_js_client_push_api.html?view=kc#r_client_push_api) aus dem Plug-in **cordova-plugin-mfp-push**. Weitere Informationen finden Sie unter [Ereignisquellenbasierte Benachrichtigungen auf Push-Benachrichtigungen umstellen](../../migrating-push-notifications). |
+| `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` | Verwenden Sie [`MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-mfp-push-hybrid/html/MFPPush.html?view=kc#registerDevice), um das Gerät für Push und SMS zu registrieren.  |
+| `WLAuthorizationManager.obtainAuthorizationHeader(scope)` | Verwenden Sie [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken), um ein Token für den erforderlichen Bereich anzufordern.  |
+| `WLClient.getLastAccessToken(scope)` | Verwenden Sie [`WLAuthorizationManager.obtainAccessToken`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#obtainAccessToken).  |
+| {::nomarkdown}<ul><li><code>WLClient.getLoginName()</code></li><li><code>WL.Client.getUserName(realm)</code></li></ul>{:/} | Kein Ersatz |
+| `WL.Client.getRequiredAccessTokenScope(status, header)` | Verwenden Sie [`WLAuthorizationManager.isAuthorizationRequired`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#isAuthorizationRequired) und [`WLAuthorizationManager.getResourceScope`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLAuthorizationManager.html?view=kc#getResourceScope). |
+| `WL.Client.isUserAuthenticated(realm)` | Kein Ersatz |
+| `WLUserAuth.deleteCertificate(provisioningEntity)` | Kein Ersatz |
+| `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | Kein Ersatz |
+| `WL.Client.createChallengeHandler(realmName)` | Verwenden Sie [`WL.Client.createGatewayChallengeHandler(gatewayName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler), um einen Abfrage-Handler für angepasste Gateway-Abfragen zu erstellen. Verwenden Sie [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler), um einen Abfrage-Handler für die Behandlung von Abfragen zu {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen zu erstellen. |
+| `WL.Client.createWLChallengeHandler(realmName)` | Verwenden Sie [`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler). |
+| `challengeHandler.isCustomResponse()` - hier steht `challengeHandler` für ein Abfrage-Handler-Objekt, das von `WL.Client.createChallengeHandler()` zurückgegeben wird | Verwenden Sie `gatewayChallengeHandler.canHandleResponse()`, wobei `gatewayChallengeHandler` für ein Abfrage-Handler-Objekt steht, das von [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) zurückgegeben wird. |
+| `wlChallengeHandler.processSucccess()` - hier steht `wlChallengeHandler` für ein Abfrage-Handler-Objekt, das von `WL.Client.createWLChallengeHandler()` zurückgegeben wird | Verwenden Sie `securityCheckChallengeHandler.handleSuccess()`, wobei `securityCheckChallengeHandler` für ein Abfrage-Handler-Objekt steht, das von [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) zurückgegeben wird. |
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implementieren Sie ähnliche Logik in Ihrem Abfrage-Handler. Verwenden Sie für angepasste Gateway-Abfrage-Handler ein Abfrage-Handler-Objekt, das von [`WL.Client.createGatewayChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createGatewayChallengeHandler) zurückgegeben wird. Verwenden Sie für Abfrage-Handler für {{ site.data.keys.product_adj }}-Sicherheitsüberprüfungen ein Abfrage-Handler-Objekt, das von [`WL.Client.createSecurityCheckChallengeHandler()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.html?view=kc#createSecurityCheckChallengeHandler) zurückgegeben wird. |
+| `WL.Client.AbstractChallengeHandler.submitFailure(err)` | Verwenden Sie [`WL.Client.AbstractChallengeHandler.cancel()`](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.Client.AbstractChallengeHandler.html?view=kc#cancel). |
+| `WL.Client.createProvisioningChallengeHandler()` | Kein Ersatz. Die Bereitstellung für Geräte erfolgt jetzt automatisch über das Sicherheitsframework. |
+
+#### Nicht mehr verwendete JavaScript-APIs
 {: #deprecated-javascript-apis }
-| API | Migration path |
+
+| API | Migrationspfad |
 |-----|----------------|
-| {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)</code></li><li><code>WL.Client.invokeProcedure(invocationData, options)</code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProcedureInvocationResult</code></li></ul>{:/} | Use `WLResourceRequest` instead. Note: The implementation of invokeProcedure uses WLResourceRequest. |
-| `WLClient.getEnvironment` | Use Cordova plug-ins providing this functionality. Note: For your information, the device.platform plug-in provides this feature. |
-| `WL.Client.getLanguage` | Use Cordova plug-ins providing this functionality. Note: For your information, the **cordova-plugin-globalization** plug-in provides this feature. |
-| `WL.Client.connect(options)` | Use `WLAuthorizationManager.obtainAccessToken` to check connectivity to the server and apply application management rules. |
+| {::nomarkdown}<ul><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener)</code></li><li><code>WL.Client.invokeProcedure(invocationData, options) </code></li><li><code>WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)</code></li><li><code>WLProcedureInvocationResult</code></li></ul>{:/} | Verwenden Sie stattdessen `WLResourceRequest`. Hinweis: Die invokeProcedure-Implementierung verwendet WLResourceRequest. |
+| `WLClient.getEnvironment` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. Hinweis: Dieses Feature wird vom Plug-in device.platform bereitgestellt.  |
+| `WL.Client.getLanguage` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. Hinweis: dieses Feature wird vom Plug-in **cordova-plugin-globalization** bereitgestellt.  |
+| `WL.Client.connect(options)` | Verwenden Sie `WLAuthorizationManager.obtainAccessToken`, um die Verbindungsmöglichkeiten zum Server zu überprüfen und Anwendungsmanagementregeln anzuwenden.  |
 
-## Removed components
+## Gelöschte Komponenten
 {: #removed-components }
-The Cordova project created by MobileFirst Platform Foundation Studio 7.1 included many resources that supported propriety functionality. However in v8.0 only pure Cordova is supported and the {{ site.data.keys.product_adj }} API no longer supports these features.
+Ein in MobileFirst Platform Foundation Studion 7.1
+erstelltes Cordova-Projekt enthielt viele Ressourcen, die Funktionen unterstützten. In Version 8.0 wird jedoch nur reines
+Cordova unterstützt. Die {{ site.data.keys.product_adj }}-API bietet somit keine Unterstützung mehr
+für diese Funktionen. 
 
-### Skins
+### Oberflächen
 {: #skins }
-MobileFirst application skins provided a way of optimizing the UI for adapting to different devices and formats and is no longer supported in v8.0.  
-To replace this type of functionality it is recommended to adopt responsive web design methods provided by Cordova and HTML 5.
+Mithilfe der Oberflächen von MobileFirst-Anwendungen
+konnten Sie die Benutzerschnittstelle für verschiedene Geräte und Formate optimieren.
+Version 8.0 bietet keine Unterstützung mehr für solche Oberflächen.   
+Um diese Funktionalität ersetzen zu können, sollten Sie sich mit Responsive-Web-Design-Methoden beschäftigen, die es in
+Cordova und HTML 5 gibt.
 
 ### Shells
 {: #shells }
-**Shells** allowed the development of a set of functionalities to be used by and shared among applications. In this way developers who were more experienced with the native environment could provide a set of core functions. These shells were bundled into **inner applications** and used by developers who are involved with business logic or UI development.
+Mit **Shells** konnten eine Reihe von Funktionen entwickelt werden, die von Anwendungen (gemeinsam) genutzt wurden. Auf diesem Wege konnten Entwickler, die über mehr Erfahrungen mit der nativen Umgebung verfügten,
+einige Kernfunktionen bereitstellen. Diese Shells waren als **innere Anwendungen** gepackt und wurden von Entwicklern im Bereich Geschäftslogik und Benutzerschnittstellenentwicklung
+genutzt. 
 
-If the previous hybrid app used shells and inner applications, it is recommended to adopt Cordova design patterns and implement the shell components as Cordova plug-ins, that can be shared across applications. Developers may find ways to reuse parts of shell code and migrate them to Cordova plug-ins.
+Wenn eine Hybrid-App bisher Shells und innere Anwendungen genutzt hat, sollten Sie Cordova-Designmuster verwenden und die
+Shellkomponenten als Cordova-Plug-ins implementieren, die anwendungsübergreifend genutzt werden können. Vielleicht finden Entwickler einen Weg, Teile des Shell-Codes
+wiederzuverwenden und auf Cordova-Plug-ins umzustellen. 
 
-For example, if a customer has a set of web resources (JavaScript, css files, graphics, html) that are common across all their apps they can create a Cordova plug-in that copies these resources into the app's www folder.
+Wenn ein Kunde beispielsweise über gemeinsame Webressourcen (JavaScript, CSS-Dateien, Grafiken, HTML) für alle seine Apps verfügt, kann er ein Cordova-Plug-in erstellen, das diese
+Ressourcen in den Ordner
+www der App kopiert. 
 
-Let's say these resources are within the src/www/acme/ folder:
+Angenommen, diese Ressourcen befinden sich im Ordner src/www/acme/: 
 
 * src/www/acme/js/acme.js
 * src/www/acme/css/acme.css
@@ -410,7 +570,7 @@ Let's say these resources are within the src/www/acme/ folder:
 * src/www/acme/html/footer.html
 * plugin.xml
 
-The **plugin.xml** file contains the `<asset>` tag, containing the source and target for copying the resources:
+Die Datei **plugin.xml** enthält das Tag `<asset>` mit der Quelle und dem Ziel (source und target) für das Kopieren der Ressourcen. 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -429,8 +589,10 @@ The **plugin.xml** file contains the `<asset>` tag, containing the source and ta
 </plugin>
 ```
 
-After the **plugin.xml** is added to the Cordova **config.xml** file, the resources listed in the asset src are copied to the asset target during compilation.  
-Then in their **index.html** file or anywhere inside their app they can reuse these resources.
+Nachdem **plugin.xml** zur Cordova-Datei **config.xml** hinzugefügt wurde, werden die in "asset src" aufgelisteten Ressourcen während der Kompilierung nach
+"asset
+target" kopiert.   
+In der Datei **index.html** oder innerhalb der App können diese Ressourcen dann wiederverwendet werden. 
 
 ```html
 <link rel="stylesheet" type="text/css" href="acme/css/acme.css">
@@ -444,23 +606,35 @@ Then in their **index.html** file or anywhere inside their app they can reuse th
 </script>
 ```
 
-### Settings page
+### Seite 'Einstellungen'
 {: #settings-page }
-The **settings page** was a UI available in the MobileFirst hybrid app that allowed the developer to change the server URL at runtime for testing purposes. The developer can now use existing {{ site.data.keys.product_adj }} Client API to change the server URL at runtime. For more information, see [WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?cp=SSHS8R_8.0.0#setServerUrl).
+Die Seite **Einstellungen** war ein
+in der MobileFirst-Hybrid-App verfügbares Benutzerschnittstellenelement, über das
+der Entwickler in der Laufzeit zu Testzwecken die Server-URL ändern konnte. Jetzt kann der Entwickler die
+vorhandene {{ site.data.keys.product_adj }}-Client-API zum Ändern der Server-URL in der Laufzeit
+verwenden. Weitere Informationen finden Sie unter
+[WL.App.setServerUrl](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WL.App.html?cp=SSHS8R_8.0.0#setServerUrl).
 
-### Minification
+### Kompression
 {: #minification }
-MobileFirst Studio 7.1 provided an OOTB method of reducing the size of your JavaScript code by removing all unnecessary characters before compilation. This removed functionality can be replaced by adding Cordova hooks to your project.
+MobileFirst Studio 7.1
+stellte eine OOTB-Methode bereit, die vor der Kompilierung alle unnötigen Zeichen aus Ihrem JavaScript-Code entfernt hat, um die Größe des Codes zu verringern. Diese nicht mehr vorhandene Funktionalität
+kann durch das Hinzufügen von Cordova-Hooks zu Ihrem Projekt ersetzt werden. 
 
-Many hooks are available for minifying your JavaScript and CSS files. These hooks can be placed in the `before_prepare` event in the app's **config.xml** file.
+Es sind viele Hooks für die Kompression Ihrer JavaScript- und
+css-Dateien verfügbar. Sie können diese in das Ereignis `before_prepare` in der Datei **config.xml** der App aufnehmen. 
 
-Here are some recommended hooks:
+Empfehlungen für Hooks: 
 
 * [https://www.npmjs.com/package/uglify-js](https://www.npmjs.com/package/uglify-js)
 * [https://www.npmjs.com/package/clean-css](https://www.npmjs.com/package/clean-css)
 
-These hooks can be defined either in a plug-in file or in the app's **config.xml** file, by using the `<hook>` element.  
-In this example, the `before_prepare` hook event is used to run a script that minifies the code before Cordova prepares to copy the files to each platform's **www/** folder:
+Diese Hooks können in einer Plug-in-Datei oder in der Datei
+**config.xml** der Anwendung mit dem Element `<hook>` definiert werden.   
+Im folgenden Beispiel wird das Hookereignis `before_prepare` verwendet,
+um ein Script auszuführen, das den Code komprimiert, bevor
+Cordova das Kopieren der Dateien in
+den Ordner **www/** der einzelnen Plattformen vorbereitet: 
 
 ```html
 <hook type="before_prepare" src="scripts/uglify.js" />

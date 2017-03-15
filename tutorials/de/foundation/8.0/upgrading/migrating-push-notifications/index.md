@@ -1,63 +1,80 @@
 ---
 layout: tutorial
-title: Migrating push notifications from event source-based notifications
-breadcrumb_title: Migrating push notifications 
+title: Ereignisquellenbasierte Benachrichtigungen auf Push-Benachrichtigungen umstellen
+breadcrumb_title: Push-Benachrichtigungen umstellen
 weight: 4
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-From {{ site.data.keys.product_full }} v8.0, the event source-based model is not supported, and push notifications capability is enabled entirely by the push service model. For existing event source-based applications on earlier versions of {{ site.data.keys.product_adj }} to be moved to v8.0, they must be migrated to the new push service model.
+Ab {{ site.data.keys.product_full }} Version 8.0
+wird das auf Ereignisquellen basierende Modell nicht mehr unterstützt. Dafür wird die Push-Benachrichtigungsfunktion komplett über das Push-Servicemodell realisiert. Wenn vorhandene, auf Ereignisquellen basierende Anwendungen frührerer
+{{ site.data.keys.product_adj }}-Versionen auf
+Version 8.0 umgestellt werden sollen, müssen Sie auf das neue
+Push-Servicemodell migriert werden. 
 
-During migration, keep in mind that it is not about using one API instead of another, but more about using one model/approach versus another.
+Bei der Umstelllung müssen Sie beachten, dass es nicht um die Verwendung einer anderen API geht, sondern um die Anwendung eines neuen Modells bzw. einer neuen
+Methode. 
 
-For example, in the event source-based model, if you were to segment your mobile application users to send notifications to specific segments, you would model every segment as a distinct event source. In the push service model, you would achieve the same by defining tags that represents segments and have users subscribe to the respective tags. Tag-based notifications is a replacement to event source-based notifications.
+Wenn Sie beim ereignisquellenbasierten Modell beispielsweise die Benutzer Ihrer mobilen Anwendung Segmenten zugeordnet haben, um Benachrichtigungen
+an bestimmte Segmente zu senden, mussten Sie jedes Segment als eine bestimmte Ereignisquelle modellieren. Beim Push-Servicemodell erreichen Sie dasselbe, indem Sie Tags definieren, die Segmente repräsentieren, und
+Benutzer die jeweiligen Tags abonnieren lassen. Tagbasierte Benachrichtigungen ersetzen die auf Ereignissen basierenden Benachrichtigungen. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Migration scenarios](#migration-scenarios)
-* [Migration tool](#migration-tool)
+* [Migrationsszenarien](#migration-scenarios)
+* [Migrationstool](#migration-tool)
 
 <br/>
 
-The table below provides you with a comparison between the two models.
+Die folgende Tabelle enthält eine Gegenüberstellung der beiden Modelle. 
 
-| User requirement | Event source model | Push service model | 
+| Benutzeranforderung | Ereignisquellenmodell | Push-Servicemodell | 
 |------------------|--------------------|--------------------|
-| To enable your application with push notifications | {::nomarkdown}<ul><li>Create an Event Source Adapter and within it create an EventSource.</li><li>Configure or setup your application with push  credentials.</li></ul>{:/} | Configure or setup your application with push credentials. | 
-| To enable your mobile client application with push notifications | {::nomarkdown}<ul><li>Create WLClient</li><li>Connect to the {{ site.data.keys.mf_server }}</li><li>Get an instance of push client</li><li>Subscribe to the Event source</li></ul>{:/} | {::nomarkdown}<ul><li>Instantiate push client</li><li>Initialize push client</li><li>Register the mobile device</li></ul>{:/} |
-| To enable your mobile client application for notifications based on specific tags | Not supported. | Subscribe to the tag (that uses tag name) that is of interest. | 
-| To receive and handle notifications in your mobile client applications | Register a listener implementation. | Register a listener implementation. |
-| To send push notifications to mobile client applications | {::nomarkdown}<ul><li>Implement adapter procedures that internally call the WL.Server APIs to send push notifications.</li><li>WL Server APIs provide means to send notifications:<ul><li>By user</li><li>By device</li><li><li>Broadcasts (all devices)</li></ul></li><li>Backend server applications can then invoke the adapter procedures to trigger push notification as part of their application logic.</li></ul>{:/} | {::nomarkdown}<ul><li>Backend server applications can directly call the messages REST API. However, these applications must register as confidential client with the {{ site.data.keys.mf_server }} and obtain a valid OAuth access token that must be passed in the Authorization header of the REST API.</li><li>The REST API provides options to send notifications:<ul><li>By user</li><li>By device</li><li>By platform</li><li>By tags</li><li>Broadcasts (all devices)</li></ul></li></ul>{:/} |
-| To trigger push notifications as regular time periods (polling intervals) |  Implement the function to send push notifications within the event-source adapter and this as part of the createEventSource function call. | Not supported. |
-| To register a hook with the name, URL, and the even types. | Implement hooks on the path of a device subscribing or unsubscribing to push notifications. | Not supported. | 
+| Push-Benachrichtigungen in der Anwendung ermöglichen | {::nomarkdown}<ul><li>Sie erstellen einen Ereignisquellenadapter und in dem Adapter eine Ereignisquelle (EventSource).</li><li>Sie konfigurieren Ihre Anwendung mit Push-Berechtigungsnachweisen. </li></ul>{:/} | Sie konfigurieren Ihre Anwendung mit Push-Berechtigungsnachweisen.  | 
+| Push-Benachrichtigungen in der mobilen Clientanwendung ermöglichen | {::nomarkdown}<ul><li>Sie erstellen WLClient. </li><li>Sie stellen eine Verbindung zu {{ site.data.keys.mf_server }} her. </li><li>Sie rufen eine Instanz des Push-Clients an. </li><li>Sie abonnieren die Ereignisquelle. </li></ul>{:/} | {::nomarkdown}<ul><li>Sie instanziieren den Push-Client. </li><li>Sie initialisieren den Push-Client. </li><li>Sie registrieren das mobile Gerät. </li></ul>{:/} |
+| Auf bestimmten Tags basierende Push-Benachrichtigungen in der mobilen Clientanwendung ermöglichen | Nicht unterstützt | Sie abonnieren den interessierenden Tag (unter Angabe des Tagnamens).  | 
+| Benachrichtigungen in der mobilen Clientanwendung empfangen und handhaben  | Sie registrieren eine Listenerimplementierung.  | Sie registrieren eine Listenerimplementierung.  |
+| Push-Benachrichtigungen an mobile Clientanwendungen senden | {::nomarkdown}<ul><li>Sie implementieren Adapterprozeduren, die intern die WL.Server-APIs aufrufen, um Push-Benachrichtigungen zu senden. </li><li>WL-Server-APIs stellen Mittel bereit, Benachrichtigungen wie folgt zu senden: <ul><li>Nach Benutzer</li><li>Nach Gerät</li><li><li>Broadcasts (alle Geräte)</li></ul></li><li>Back-End-Serveranwendungen können die Adapterprozeduren aufrufen, um Push-Benachrichtigungen als Teil ihrer Anwendungslogik auszulösen. </li></ul>{:/} | {::nomarkdown}<ul><li>Back-End-Serveranwendungen können direkt die REST-API für Nachrichten aufrufen. Diese Anwendungen müssen jedoch als vertraulicher Client bei {{ site.data.keys.mf_server }} registriert werden und ein gültiges OAuth-Zugriffstoken erhalten, das an den Autorisierungsheader der REST-API übergeben werden muss.</li><li>Die REST-API stellt Optionen bereit, Benachrichtigungen wie folgt zu senden:<ul><li>Nach Benutzer</li><li>Nach Gerät</li><li>Nach Plattform</li><li>Nach Tags</li><li>Broadcasts (alle Geräte)</li></ul></li></ul>{:/} |
+| Push-Benachrichtigungen in regelmäßigen Abständen auslösen (Sendeaufrufintervalle) |  Sie implementieren die Funktion für das Senden von Push-Benachrichtigungen im Ereignisquellenadapter als Teil des createEventSource-Funktionsaufrufs. | Nicht unterstützt |
+| Hook mit Namen, URL und Ereignistypen registrieren | Hooks im Pfad eines Geräts implementieren, das Push-Benachrichtigungen abonniert oder das Abonnement solcher Benachrichtigungen beendet | Nicht unterstützt | 
 
-## Migration Scenarios
+## Migrationsszenarien
 {: #migration-scenarios }
-Starting from {{ site.data.keys.product }} v8.0, the event source-based model will not be supported and push notifications capability will be enabled on {{ site.data.keys.product }} entirely by the push service model, which is a more simple and agile alternative to event source model.
+Ab
+{{ site.data.keys.product }} Version 8.0 wird das ereignisquellenbasierte Modell nicht mehr unterstützt.
+Die Funktion für Push-Benachrichtigungen wird in der {{ site.data.keys.product }}
+vollständig über das Push-Servicemodell ermöglicht, das eine simplere und agilere Alternative zum Ereignisquellenmodell ist. 
 
-Existing event source-based applications on earlier versions of IBM MobileFirst Platform Foundation need to be migrated to v8.0, to the new push service model.
+Vorhandene, auf Ereignisquellen basierende Anwendungen frührerer
+Versionen der IBM MobileFirst Platform Foundation müssen auf das neue Push-Servicemodell von
+Version 8.0 umgestellt werden. 
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Hybrid applications](#hybrid-applications)
-* [Native Android applications](#native-android-applications)
-* [Native iOS applications](#native-ios-applications)
-* [Native Windows Universal applications](#native-windows-universal-applications)
+* [Hybridanwendungen](#hybrid-applications)
+* [Native Android-Anwendungen](#native-android-applications)
+* [Native iOS-Anwendungen](#native-ios-applications)
+* [Native universelle Windows-Anwendungen](#native-windows-universal-applications)
 
-### Hybrid applications
+### Hybridanwendungen
 {: #hybrid-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+Die Beispielszenarien für die Migration decken Anwendungen ab, die einzelne Ereignisquellen oder mehrere Quellen, Broadcast- bzw. Unicastbenachrichtigungen oder
+Tagbenachrichtigungen verwenden. 
 
-#### Scenario 1: Existing applications using single event source in their application
+#### Szenario 1: Anwendungen mit einzelner Ereignisquelle
 {: #hybrid-scenario-1-existing-applications-using-single-event-source-in-their-application }
-Applications have used single event source over the earlier versions of {{ site.data.keys.product_adj }} as it supported push only through event source-based model.
+In früheren Versionen der
+{{ site.data.keys.product_adj }} verwendeten Anwendungen eine einzelne Ereignisquelle, da Push nur über das
+auf Ereignisquellen basierende Modell unterstützt wurde. 
 
 ##### Client
 {: #client-hybrid-1 }
-To migrate this in V8.0.0, convert this model to Unicast notification.
+Für die Umstellung auf
+Version 8.0 muss dieses Modell
+in Unicastbenachrichtigungen konvertiert werden. 
 
-1. Initialize the {{ site.data.keys.product_adj }} push client instance in your application and in the success callback register the callback method that should receive the notification.
+1. Initialisieren Sie die {{ site.data.keys.product_adj }}-Push-Clientinstanz in Ihrer Anwendung und regstrieren Sie im Callback für den Erfolgsfall die Callback-Methode, die die Benachrichtigung empfangen soll. 
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -67,7 +84,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-2. Implement the notification callback method.
+2. Implementieren Sie die Callback-Methode für Benachrichtigungen. 
 
    ```javascript
    var notificationReceived = function(message) {
@@ -75,7 +92,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    };
    ```
     
-3. Register the mobile device with the push notification service.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
 
    ```javascript
    MFPPush.registerDevice(function(successResponse) {
@@ -87,7 +104,8 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
  
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
@@ -99,7 +117,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-5. Remove WL.Client.Push.isPushSupported() (if used) and use.
+5. Entfernen Sie WL.Client.Push.isPushSupported() (sofern verwendet) und verwenden Sie Folgendes: 
 
    ```javascript
    MFPPush.isPushSupported (function(successResponse) {
@@ -111,7 +129,7 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
    );
    ```
     
-6. Remove the following `WL.Client.Push` APIs, since there will be no event source to subscribe to and register notification callbacks.
+6. Entfernen Sie die folgenden `WL.Client.Push`-APIs, da es keine zu abonnierende Ereignisquelle gibt, und registrieren Sie Benachrichtigungs-Callbacks. 
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
@@ -120,30 +138,41 @@ To migrate this in V8.0.0, convert this model to Unicast notification.
 
 ##### Server
 {: #server-hybrid-1 }
-1. Remove the following WL.Server APIs (if used), in your adapter:
+1. Entfernen Sie die folgenden WL.Server-APIs aus Ihrem Adapter (sofern verwendet): 
     * `notifyAllDevices()`
     * `notifyDevice()`
     * `notifyDeviceSubscription()`
     * `createEventSource()`
-2. Complete the following steps for every application that was using the same event source:
-    1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+2. Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
+    1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-        You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-    2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-    3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-    4. You can use either of the following methods to send notifications:
-        * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-        * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+        Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+    2. Fügen Sie unter **Zuordnung von Bereichselementen** den Bereich `push.mobileclient` hinzu. 
+    3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen
+(siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)). 
+    4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+        * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+        * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId`
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### Szenario 2: Anwendungen mit mehreren Ereignisquellen
 {: #hybrid-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
-Applications using multiple event sources requires segmentation of users based on subscriptions.
+Bei Anwendungen, die mehrere Ereignisquellen nutzen, müssen Benutzer ausgehend von Abonnements bestimmten Segmenten zugeordnet werden. 
 
 ##### Client
 {: #client-hybrid-2 }
-This maps to tags which segments the users/devices based on topic of interest. To migrate this, this model can be converted to tag-based notification.
+Bei der Zuordnung zu Tags werden die Benutzer/Geräte ausgehend von interessierenden Themen Segmenten zugeordnet. Bei der Umstellung
+kann dieses Modell
+in die tagbasierte Benachrichtigung konvertiert werden. 
 
-1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
+1. Initialisieren Sie die MFPPush-Clientinstanz in Ihrer Anwendung und regstrieren Sie im Callback für den Erfolgsfall die Callback-Methode, die die Benachrichtigung empfangen soll. 
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -154,7 +183,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
     
-2. Implement the notification callback method.
+2. Implementieren Sie die Callback-Methode für Benachrichtigungen. 
 
    ```javascript
    var notificationReceived = function(message) {
@@ -162,7 +191,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    };
    ```
 
-3. Register the mobile device with the push notification service.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
 
    ```javascript
    MFPPush.registerDevice(function(successResponse) {
@@ -174,7 +203,8 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
     
-4. (Optional) Unregister the mobile device from the push notification service.
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
 
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
@@ -186,7 +216,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
     
-5. Remove `WL.Client.Push.isPushSupported()` (if used) and use.
+5. Entfernen Sie `WL.Client.Push.isPushSupported()` (sofern verwendet) und verwenden Sie Folgendes: 
 
    ```javascript
    MFPPush.isPushSupported (function(successResponse) {
@@ -198,14 +228,14 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
     
-6. Remove the following `WL.Client.Push` APIs since there will be no event source to subscribe to and register notification callbacks.
+6. Entfernen Sie die folgenden `WL.Client.Push`-APIs, da es keine zu abonnierende Ereignisquelle gibt, und registrieren Sie Benachrichtigungs-Callbacks. 
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
     * `onReadyToSubscribe()`
 
-7. Subscribe to tags.
+7. Abonnieren Sie wie folgt Tags: 
 
    ```javascript
    var tags = ['sample-tag1','sample-tag2'];
@@ -218,7 +248,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    );
    ```
 
-8. (Optional) Unsubscribe from tags.
+8. Sie können das Abonnement der Tags wie folgt wieder beenden. 
 
    ```javascript
    MFPPush.unsubscribe(tags, function(successResponse) {
@@ -232,29 +262,37 @@ This maps to tags which segments the users/devices based on topic of interest. T
     
 ##### Server
 {: #server-hybrid-2 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+Entfernen Sie die folgenden `WL.Server`-APIs aus Ihrem Adapter (sofern verwendet): 
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+2. Fügen Sie unter **Zuordnung von Bereichselementen** den Bereich `push.mobileclient` hinzu.
+3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen (siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)).
+4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+    * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+    * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId`
 
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+#### Szenario 3: Anwendungen mit Broadcast-/Unicastbenachrichtigung
 {: #hybrid-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
 ##### Client
 {: #client-hybrid-3 }
-1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
+1. Initialisieren Sie die MFPPush-Clientinstanz in Ihrer Anwendung und regstrieren Sie im Callback für den Erfolgsfall die Callback-Methode, die die Benachrichtigung empfangen soll. 
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -265,7 +303,7 @@ Complete the following steps for every application that was using the same event
    );
    ```
     
-2. Implement the notification callback method.
+2. Implementieren Sie die Callback-Methode für Benachrichtigungen. 
 
    ```javascript
    var notificationReceived = function(message) {
@@ -273,7 +311,7 @@ Complete the following steps for every application that was using the same event
    };
    ```
     
-3. Register the mobile device with the push notification service.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
 
    ```javascript
    MFPPush.registerDevice(function(successResponse) {
@@ -285,7 +323,8 @@ Complete the following steps for every application that was using the same event
    );
    ```
     
-4. (Optional) Unregister the mobile device from the push notification service.
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
 
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
@@ -297,7 +336,7 @@ Complete the following steps for every application that was using the same event
    );
    ```
 
-5. Remove WL.Client.Push.isPushSupported() (if used) and use.
+5. Entfernen Sie WL.Client.Push.isPushSupported() (sofern verwendet) und verwenden Sie Folgendes: 
 
    ```javascript
    MFPPush.isPushSupported (function(successResponse) {
@@ -309,29 +348,37 @@ Complete the following steps for every application that was using the same event
    );
    ```
 
-6. Remove the following `WL.Client.Push` APIs:
+6. Entfernen Sie die folgenden `WL.Client.Push`-APIs: 
     * `onReadyToSubscribe()`
     * `onMessage()`
 
 ##### Server
 {: #server-hybrid-3 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.  
-Complete the following steps for every application that was using the same event source:
+Entfernen Sie `WL.Server.sendMessage()` aus Ihrem Adapter (sofern verwendet).   
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+2. Fügen Sie unter **Zuordnung von Bereichselementen** den Bereich `push.mobileclient` hinzu.
+3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen (siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)).
+4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+    * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+    * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId`
 
-#### Scenario 4: Existing applications using tag notifications in their application
+#### Szenario 4: Anwendungen mit Tagbenachrichtigungen
 {: #hybrid-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### Client
 {: #client-hybrid-4 }
-1. Initialize the MFPPush client instance in your application and in the success callback register the callback method that should receive the notification.
+1. Initialisieren Sie die MFPPush-Clientinstanz in Ihrer Anwendung und regstrieren Sie im Callback für den Erfolgsfall die Callback-Methode, die die Benachrichtigung empfangen soll. 
 
    ```javascript
    MFPPush.initialize(function(successResponse){
@@ -342,7 +389,7 @@ Complete the following steps for every application that was using the same event
    );
    ```
 
-2. Implement the notification callback method.
+2. Implementieren Sie die Callback-Methode für Benachrichtigungen. 
 
    ```javascript
    var notificationReceived = function(message) {
@@ -350,7 +397,7 @@ Complete the following steps for every application that was using the same event
    };
    ```
 
-3. Register the mobile device with the push notification service.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
 
    ```javascript
    MFPPush.registerDevice(function(successResponse) {
@@ -362,7 +409,8 @@ Complete the following steps for every application that was using the same event
    );
    ```
 
-4. (Optional) Un-register the mobile device from push notification service.
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
 
    ```javascript
    MFPPush.unregisterDevice(function(successResponse) {
@@ -374,7 +422,7 @@ Complete the following steps for every application that was using the same event
    );
    ```
     
-5. Remove `WL.Client.Push.isPushSupported()` (if used) and use:
+5. Entfernen Sie `WL.Client.Push.isPushSupported()` (sofern verwendet) und verwenden Sie Folgendes: 
 
    ```javascript
    MFPPush.isPushSupported (function(successResponse) {
@@ -386,14 +434,14 @@ Complete the following steps for every application that was using the same event
    );
    ```
 
-6. Remove the following `WL.Client.Push` APIs:
+6. Entfernen Sie die folgenden `WL.Client.Push`-APIs: 
     * `subscribeTag()`
     * `unsubscribeTag()`
     * `isTagSubscribed()`
     * `onReadyToSubscribe()`
     * `onMessage()`
 
-7. Subscribe to tags:
+7. Abonnieren Sie wie folgt Tags: 
 
    ```javascript
    var tags = ['sample-tag1','sample-tag2'];
@@ -406,7 +454,7 @@ Complete the following steps for every application that was using the same event
    );
    ```
 
-8. (Optional) Unsubscribe from tags:
+8. Sie können das Abonnement der Tags wie folgt wieder beenden: 
 
    ```javascript
    MFPPush.unsubscribe(tags, function(successResponse) {
@@ -420,38 +468,52 @@ Complete the following steps for every application that was using the same event
 
 ##### Server
 {: #client-hybrid-4 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.  
-Complete the following steps for every application that was using the same event source:
+Entfernen Sie `WL.Server.sendMessage()` aus Ihrem Adapter (sofern verwendet).   
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`. 
+Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+2. Fügen Sie unter **Zuordnung von Bereichselementen** den Bereich `push.mobileclient` hinzu.
+3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen (siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)).
+4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+    * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+    * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId` 
 
-### Native Android applications
+### Native Android-Anwendungen
 {: #native-android-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+Die Beispielszenarien für die Migration decken Anwendungen ab, die einzelne Ereignisquellen oder mehrere Quellen, Broadcast- bzw. Unicastbenachrichtigungen oder
+Tagbenachrichtigungen verwenden. 
 
-#### Scenario 1: Existing applications using single event source in their application
+#### Szenario 1: Anwendungen mit einzelner Ereignisquelle
 {: #android-scenario-1-existing-applications-using-single-event-source-in-their-application }
-Applications have used single event source over the earlier versions of MobileFirst as it supported push only through event source-based model.
+In früheren MobileFirst-Versionen
+verwendeten Anwendungen eine einzelne Ereignisquelle, da Push nur über das
+auf Ereignisquellen basierende Modell unterstützt wurde. 
 
 ##### Client
 {: #client-android-1 }
-To migrate this in v8.0, convert this model to Unicast notification.
+Für die Umstellung auf
+Version 8.0 muss dieses Modell
+in Unicastbenachrichtigungen konvertiert werden. 
 
-1. Initialize the MFPPush client instance in your application.
+1. Initialisieren Sie die MFPPush-Clientinstanz in Ihrer Anwendung. 
 
    ```java
    MFPPush push = MFPPush.getInstance();
         push.initialize(_this);
    ```
 
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. Implementieren Sie die Schnittstelle MFPPushNotificationListener und definieren Sie
+onReceive().
 
    ```java
    @Override
@@ -460,7 +522,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }
    ```
     
-3. Register the mobile device with the push notification service.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
 
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
@@ -476,7 +538,8 @@ To migrate this in v8.0, convert this model to Unicast notification.
    });
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
 
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
@@ -492,50 +555,62 @@ To migrate this in v8.0, convert this model to Unicast notification.
    });
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
-6. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
+5. Entfernen Sie `WLClient.Push.isPushSupported()` (sofern verwendet) und verwenden Sie
+`push.isPushSupported();`. 
+6. Entfernen Sie die folgenden `WLClient.Push`-APIs, da es keine zu abonnierende Ereignisquelle gibt, und registrieren Sie Benachrichtigungs-Callbacks: 
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * Implementierung von `WLOnReadyToSubscribeListener` und `WLNotificationListener`
 
 ##### Server
 {: #server-android-1 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+Entfernen Sie die folgenden `WL.Server`-APIs aus Ihrem Adapter (sofern verwendet): 
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`. 
+Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+2. Fügen Sie unter **Zuordnung von Bereichselementen** den Bereich `push.mobileclient` hinzu.
+3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen (siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)).
+4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+    * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+    * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId` 
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### Szenario 2: Anwendungen mit mehreren Ereignisquellen
 {: #android-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
-Applications using multiple event sources requires the segmentation of users based on the subscriptions.
+Bei Anwendungen, die mehrere Ereignisquellen nutzen, müssen Benutzer ausgehend von Abonnements bestimmten Segmenten zugeordnet werden. 
 
 ##### Client
 {: #client-android-2 }
-This maps to tags which segments the users/devices based on topic of interest. To migrate this in {{ site.data.keys.product }} V8.0.0, convert this model to tag based notification.
+Bei der Zuordnung zu Tags werden die Benutzer/Geräte ausgehend von interessierenden Themen Segmenten zugeordnet. Für die Umstellung auf
+{{ site.data.keys.product }} Version 8.0.0 muss dieses Modell
+in die tagbasierte Benachrichtigung konvertiert werden. 
 
-1. Initialize the `MFPPush` client instance in your application:
+1. Initialisieren Sie die `MFPPush`-Clientinstanz in Ihrer Anwendung: 
 
    ```java
    MFPPush push = MFPPush.getInstance();
    push.initialize(_this);
    ```
     
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. Implementieren Sie die Schnittstelle MFPPushNotificationListener und definieren Sie
+onReceive().
 
    ```java
    @Override
@@ -544,7 +619,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
 
-3. Register the mobile device with the push notification service.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
 
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){   
@@ -559,7 +634,8 @@ This maps to tags which segments the users/devices based on topic of interest. T
    });
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service:
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben: 
   
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){   
@@ -575,15 +651,16 @@ This maps to tags which segments the users/devices based on topic of interest. T
    });
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
-6. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
+5. Entfernen Sie `WLClient.Push.isPushSupported()` (sofern verwendet) und verwenden Sie
+`push.isPushSupported();`. 
+6. Entfernen Sie die folgenden `WLClient.Push`-APIs, da es keine zu abonnierende Ereignisquelle gibt, und registrieren Sie Benachrichtigungs-Callbacks: 
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
 
-7. `WLOnReadyToSubscribeListener` and `WLNotificationListener` Implementation
-8. Subscribe to tags:
+7. Implementierung von `WLOnReadyToSubscribeListener` und `WLNotificationListener`
+8. Abonnieren Sie wie folgt Tags: 
 
    ```java
    String[] tags = new String[2];
@@ -603,7 +680,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    });
    ```
     
-9. (Optional) Unsubscribe from tags:
+9. Sie können das Abonnement der Tags wie folgt wieder beenden: 
  
    ```java
    String[] tags = new String[2];
@@ -625,37 +702,46 @@ This maps to tags which segments the users/devices based on topic of interest. T
    
 ##### Server
 {: #server-android-2 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+Entfernen Sie die folgenden `WL.Server`-APIs aus Ihrem Adapter (sofern verwendet): 
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.     
+Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+2. Fügen Sie unter **Zuordnung von Bereichselementen** den Bereich `push.mobileclient` hinzu.
+3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen (siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)).
+4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+    * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+    * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId`     
 
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+#### Szenario 3: Anwendungen mit Broadcast-/Unicastbenachrichtigung
 {: #android-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
 ##### Client
 {: #client-android-3 }
 
-1. Initialize the `MFPPush` client instance in your application:
+1. Initialisieren Sie die `MFPPush`-Clientinstanz in Ihrer Anwendung: 
 
    ```java
    MFPPush push = MFPPush.getInstance();
    push.initialize(_this);
    ```
     
-2. Implement the interface `MFPPushNotificationListener` and define `onReceive()`.
+2. Implementieren Sie die Schnittstelle `MFPPushNotificationListener` und definieren Sie
+`onReceive()`.
 
    ```java
    @Override
@@ -664,7 +750,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-3. Register the mobile device with push notification service.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
 
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
@@ -680,7 +766,8 @@ Complete the following steps for every application that was using the same event
    });
    ```
     
-4. (Optional) Un-register the mobile device from push notification service.
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
 
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
@@ -696,39 +783,50 @@ Complete the following steps for every application that was using the same event
    });
    ```
 
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported();`.
-6. Remove the following WLClient.Push APIs:
+5. Entfernen Sie `WLClient.Push.isPushSupported()` (sofern verwendet) und verwenden Sie
+`push.isPushSupported();`. 
+6. Entfernen Sie die folgenden WLClient.Push-APIs: 
     * `registerEventSourceCallback()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` Implementation
+    * Implementierung von `WLOnReadyToSubscribeListener` und `WLNotificationListener`
 
 ##### Server
 {: #server-android-3 }
-Remove WL.Server.sendMessage()` APIs (if used) in your adapter:
+Entfernen Sie die WL.Server.sendMessage()-APIs aus Ihrem Adapter (sofern verwendet): 
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.    
+Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+2. Fügen Sie unter **Zuordnung von Bereichselementen Mapping** den Bereich `push.mobileclient` hinzu.
+3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen
+(siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)). 
+4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+    * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+    * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId`    
 
-#### Scenario 4: Existing applications using tag notifications in their application
+#### Szenario 4: Anwendungen mit Tagbenachrichtigungen
 {: #android-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### Client
 {: #client-android-4 }
 
-1. Initialize the `MFPPush` client instance in your application:
+1. Initialisieren Sie die `MFPPush`-Clientinstanz in Ihrer Anwendung: 
 
    ```java
    MFPPush push = MFPPush.getInstance();
    push.initialize(_this);
    ```
 
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. Implementieren Sie die Schnittstelle MFPPushNotificationListener und definieren Sie
+onReceive().
  
    ```java
    @Override
@@ -737,7 +835,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-3. Register the mobile device with the push notification service.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
     
    ```java
    push.registerDevice(new MFPPushResponseListener<String>(){
@@ -752,7 +850,8 @@ Complete the following steps for every application that was using the same event
    });
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
  
    ```java
    push.unregisterDevice(new MFPPushResponseListener<String>(){
@@ -768,14 +867,15 @@ Complete the following steps for every application that was using the same event
    });
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.isPushSupported()`;
-6. Remove the following `WLClient.Push` API's:
+5. Entfernen Sie `WLClient.Push.isPushSupported()` (sofern verwendet) und verwenden Sie
+`push.isPushSupported()`. 
+6. Entfernen Sie die folgenden `WLClient.Push`-APIs: 
     * `subscribeTag()`
     * `unsubscribeTag()`
     * `isTagSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` Implementation
+    * Implementierung von `WLOnReadyToSubscribeListener` und `WLNotificationListener`
 
-7. Subscribe to tags:
+7. Abonnieren Sie wie folgt Tags: 
 
    ```java
    String[] tags = new String[2];
@@ -794,7 +894,7 @@ Complete the following steps for every application that was using the same event
    });
    ```
 
-8. (Optional) Unsubscribe from tags:
+8. Sie können das Abonnement der Tags wie folgt wieder beenden: 
 
    ```java
    String[] tags = new String[2];
@@ -815,39 +915,53 @@ Complete the following steps for every application that was using the same event
 
 ##### Server
 {: #server-android-4 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.
+Entfernen Sie `WL.Server.sendMessage()` aus Ihrem Adapter (sofern verwendet). 
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+2. Fügen Sie unter **Zuordnung für Bereichselemente** den Bereich `push.mobileclient` hinzu.
+3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen (siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)).
+4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+    * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+    * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId`
 
-### Native iOS applications
+### Native iOS-Anwendungen
 {: #native-ios-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+Die Beispielszenarien für die Migration decken Anwendungen ab, die einzelne Ereignisquellen oder mehrere Quellen, Broadcast- bzw. Unicastbenachrichtigungen oder
+Tagbenachrichtigungen verwenden. 
 
-#### Scenario 1: Existing applications using single event source in their application
+#### Szenario 1: Anwendungen mit einzelner Ereignisquelle
 {: #ios-scenario-1-existing-applications-using-single-event-source-in-their-application }
-Applications have used single event source over the earlier versions of {{ site.data.keys.product_adj }} as it supported push only through event source-based model.
+In früheren Versionen der
+{{ site.data.keys.product_adj }} verwendeten Anwendungen eine einzelne Ereignisquelle, da Push nur über das
+auf Ereignisquellen basierende Modell unterstützt wurde. 
 
 ##### Client
 {: #client-ios-1 }
-To migrate this in v8.0, convert this model to Unicast notification.
+Für die Umstellung auf
+Version 8.0 muss dieses Modell
+in Unicastbenachrichtigungen konvertiert werden. 
 
-1. Initialize the `MFPPush` client instance in your application.
+1. Initialisieren Sie die `MFPPush`-Clientinstanz in Ihrer Anwendung. 
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
     
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service.
+2. Implementieren Sie die Benachrichtigungsverarbeitung in
+`didReceiveRemoteNotification()`.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
@@ -859,7 +973,8 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
 
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
@@ -871,20 +986,21 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
+5. Entfernen Sie `WLClient.Push.isPushSupported()` (sofern verwendet) und verwenden Sie Folgendes: 
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
 
-6. Remove the following `WLClient.Push` API's since there will be no event source to subscribe to and register notification callbacks:
+6. Entfernen Sie die folgenden `WLClient.Push`-APIs, da es keine zu abonnierende Ereignisquelle gibt, und registrieren Sie Benachrichtigungs-Callbacks: 
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` implementation
+    * Implementierung von `WLOnReadyToSubscribeListener`
 
-7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
+7. Rufen Sie `sendDeviceToken()` in
+`didRegisterForRemoteNotificationsWithDeviceToken` auf. 
 
    ```objc
    [[MFPPush sharedInstance] sendDeviceToken:deviceToken];
@@ -892,40 +1008,51 @@ To migrate this in v8.0, convert this model to Unicast notification.
     
 ##### Server
 {: #server-ios-1 }
-Remove the following WL.Server API's (if used) in your adapter:
+Entfernen Sie die folgenden WL.Server-APIs aus Ihrem Adapter (sofern verwendet): 
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.
+Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+2. Fügen Sie unter **Zuordnung von Bereichselementen** den Bereich `push.mobileclient` hinzu.
+3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen (siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)).
+4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+    * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+    * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId`
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### Szenario 2: Anwendungen mit mehreren Ereignisquellen
 {: #ios-scenario-2-existing-applications-using-multiple-event-sources-in-their-application }
-Applications using multiple event sources requires segmentation of users based on subscriptions.
+Bei Anwendungen, die mehrere Ereignisquellen nutzen, müssen Benutzer ausgehend von Abonnements bestimmten Segmenten zugeordnet werden. 
 
 ##### Client
 {: #client-ios-2}
-This maps to tags which segments the users/devices based on topic of interest. To migrate this to {{ site.data.keys.product_adj }} V8.0.0, convert this model to tag based notification.
+Bei der Zuordnung zu Tags werden die Benutzer/Geräte ausgehend von interessierenden Themen Segmenten zugeordnet. Für die Umstellung auf
+{{ site.data.keys.product_adj }} Version 8.0.0 muss dieses Modell
+in die tagbasierte Benachrichtigung konvertiert werden. 
 
-1. Initialize the `MFPPush` client instance in your application.
+1. Initialisieren Sie die `MFPPush`-Clientinstanz in Ihrer Anwendung. 
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
 
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service:
+2. Implementieren Sie die Benachrichtigungsverarbeitung in
+`didReceiveRemoteNotification()`.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice: 
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
@@ -937,7 +1064,8 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service:
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben: 
 
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
@@ -949,21 +1077,22 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
+5. Entfernen Sie `WLClient.Push.isPushSupported()` (sofern verwendet) und verwenden Sie Folgendes: 
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
     
-6. Remove the following `WLClient.Push` API's since there will be no event source to subscribe to and register notification callbacks:
+6. Entfernen Sie die folgenden `WLClient.Push`-APIs, da es keine zu abonnierende Ereignisquelle gibt, und registrieren Sie Benachrichtigungs-Callbacks: 
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` Implementation
+    * Implementierung von `WLOnReadyToSubscribeListener`
 
-7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
-8. Subscribe to tags:
+7. Rufen Sie `sendDeviceToken()` in
+`didRegisterForRemoteNotificationsWithDeviceToken` auf. 
+8. Abonnieren Sie wie folgt Tags: 
 
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -978,7 +1107,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }];
    ```
     
-9. (Optional) Unsubscribe from tags:
+9. Sie können das Abonnement der Tags wie folgt wieder beenden: 
 
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -995,36 +1124,45 @@ This maps to tags which segments the users/devices based on topic of interest. T
     
 ##### Server
 :{: #server-ios-2 }
-Remove `WL.Server` (if used) in your adapter.
+Entfernen Sie `WL.Server` aus Ihrem Adapter (sofern verwendet). 
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.    
+Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+2. Fügen Sie unter **Zuordnung von Bereichselementen** den Bereich `push.mobileclient` hinzu.
+3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen (siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)).
+4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+    * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+    * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId`    
 
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+#### Szenario 3: Anwendungen mit Broadcast-/Unicastbenachrichtigung
 {: #ios-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
 ##### Client
 {: #client-ios-3 }
-1. Initialize the MFPPush client instance in your application:
+1. Initialisieren Sie die MFPPush-Clientinstanz in Ihrer Anwendung: 
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
     
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service:
+2. Implementieren Sie die Benachrichtigungsverarbeitung in
+`didReceiveRemoteNotification()`.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice: 
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
@@ -1036,7 +1174,8 @@ Complete the following steps for every application that was using the same event
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service.
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
 
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
@@ -1048,44 +1187,53 @@ Complete the following steps for every application that was using the same event
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use:
+5. Entfernen Sie `WLClient.Push.isPushSupported()` (sofern verwendet) und verwenden Sie Folgendes: 
 
    ```objc
    [[MFPPush sharedInstance] isPushSupported]
    ```
 
-6. Remove the following `WLClient.Push` API's:
+6. Entfernen Sie die folgenden `WLClient.Push`-APIs: 
     * `registerEventSourceCallback()`
-    * `WLOnReadyToSubscribeListener` Implementation
+    * Implementierung von `WLOnReadyToSubscribeListener`
 
 ##### Server
 {: #server-ios-3 }
-Remove `WL.Server.sendMessage` (if used) in your adapter.
+Entfernen Sie `WL.Server.sendMessage` aus Ihrem Adapter (sofern verwendet). 
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.  
+Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+2. Fügen Sie unter **Zuordnung von Bereichselementen** den Bereich `push.mobileclient` hinzu.
+3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen (siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)).
+4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+    * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+    * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId`  
 
-#### Scenario 4: Existing applications using tag notifications in their application
+#### Szenario 4: Anwendungen mit Tagbenachrichtigungen
 {: #ios-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### Client
 {: #client-ios-4 }
 
-1. Initialize the MFPPush client instance in your application:
+1. Initialisieren Sie die MFPPush-Clientinstanz in Ihrer Anwendung: 
 
    ```objc
    [[MFPPush sharedInstance] initialize];
    ```
 
-2. Implement the notification processing in the `didReceiveRemoteNotification()`.
-3. Register the mobile device with the push notification service:
+2. Implementieren Sie die Benachrichtigungsverarbeitung in
+`didReceiveRemoteNotification()`.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice: 
 
    ```objc
    [[MFPPush sharedInstance] registerDevice:^(WLResponse *response, NSError *error) {
@@ -1097,7 +1245,8 @@ Complete the following steps for every application that was using the same event
    }];
    ```
     
-4. (Optional) Un-register the mobile device from the push notification service:
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben: 
  
    ```objc
    [MFPPush sharedInstance] unregisterDevice:^(WLResponse *response, NSError *error) {
@@ -1109,16 +1258,18 @@ Complete the following steps for every application that was using the same event
    }];
    ```
     
-5. Remove `WLClient.Push.isPushSupported()` (if used) and use `[[MFPPush sharedInstance] isPushSupported]`.
-6. Remove the following `WLClient.Push` API's since there will be no Event source to subscribe to and register notification callbacks:
+5. Entfernen Sie `WLClient.Push.isPushSupported()` (sofern verwendet) und verwenden Sie `[[MFPPush
+sharedInstance] isPushSupported]`.
+6. Entfernen Sie die folgenden `WLClient.Push`-APIs, da es keine zu abonnierende Ereignisquelle gibt, und registrieren Sie Benachrichtigungs-Callbacks: 
     * `registerEventSourceCallback()`
     * `subscribeTag()`
     * `unsubscribeTag()`
     * `isTagSubscribed()`
-    * `WLOnReadyToSubscribeListener` Implementation
+    * Implementierung von `WLOnReadyToSubscribeListener`
 
-7. Call `sendDeviceToken()` in `didRegisterForRemoteNotificationsWithDeviceToken`.
-8. Subscribe to tags:
+7. Rufen Sie `sendDeviceToken()` in
+`didRegisterForRemoteNotificationsWithDeviceToken` auf. 
+8. Abonnieren Sie wie folgt Tags: 
  
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -1133,7 +1284,7 @@ Complete the following steps for every application that was using the same event
    }];
    ```
     
-9. (Optional) Unsubscribe from tags:
+9. Sie können das Abonnement der Tags wie folgt wieder beenden: 
 
    ```objc
    NSMutableArray *tags = [[NSMutableArray alloc]init];
@@ -1150,31 +1301,42 @@ Complete the following steps for every application that was using the same event
 
 ##### Server
 {: server-ios-4 }
-Remove the `WL.Server.sendMessage` (if used), in your adapter.
+Entfernen Sie `WL.Server.sendMessage` aus Ihrem Adapter (sofern verwendet). 
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the credentials by using the {{ site.data.keys.mf_console }}. See [Configuring push notification settings](../../notifications/sending-notifications).
+1. Richten Sie die Berechtigungsnachweise in der
+{{ site.data.keys.mf_console }} ein (siehe
+[Einstellungen für
+Push-Benachrichtigungen konfigurieren](../../notifications/sending-notifications)). 
 
-    You can also set up the credentials by using [Update GCM settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) REST API, for Android applications or [Update APNs settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) REST API, for iOS applications.
-2. Add the scope `push.mobileclient` in **Scope Elements Mapping**.
-3. Create tags to enable push notifications to be sent to subscribers. See [Defining tags](../../notifications/sending-notifications/#defining-tags) for push notification.
-4. You can use either of the following methods to send notifications:
-    * The {{ site.data.keys.mf_console }}. See [Sending push notifications to subscribers](../../notifications/sending-notifications/#sending-notifications).
-    * The [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`.  
+Sie können die Berechtigungsnachweise auch mit der REST-API [Update GCM Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_gcm_settings_put.html?view=kc#Update-GCM-settings--PUT-) für Android-Anwendungen oder der REST-API [Update APNS Settings (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_update_apns_settings_put.html?view=kc#Update-APNs-settings--PUT-) für iOS-Anwendungen einrichten.
+2. Fügen Sie unter **Zuordnung von Bereichselementen Mapping** den Bereich `push.mobileclient` hinzu.
+3. Erstellen Sie Tags, um das Senden von Push-Benachrichtigungen an Abonnenten zu ermöglichen (siehe [Tags für Push-Benachrichtigungen definieren](../../notifications/sending-notifications/#defining-tags)).
+4. Sie können Benachrichtigungen auf einem der folgenden Wege senden: 
+    * Über die {{ site.data.keys.mf_console }}
+(siehe
+[Push-Benachrichtigungen an
+Abonnenten senden](../../notifications/sending-notifications/#sending-notifications))
+    * Über die REST-API
+[Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit
+`userId`/`deviceId`  
 
-### Native Windows Universal applications
+### Native universelle Windows-Anwendungen
 {: #native-windows-universal-applications }
-Examples of migration scenarios cover applications that use a single event sources or multiple sources, broadcast or Unicast notification, or tag notification.
+Die Beispielszenarien für die Migration decken Anwendungen ab, die einzelne Ereignisquellen oder mehrere Quellen, Broadcast- bzw. Unicastbenachrichtigungen oder
+Tagbenachrichtigungen verwenden. 
 
-#### Scenario 1: Existing applications using single event source in their application
+#### Szenario 1: Anwendungen mit einzelner Ereignisquelle
 {: #windows-scenario-1-existing-applications-using-single-event-source-in-their-application }
-To migrate this in v8.0, convert this model to Unicast notification.
+Für die Umstellung auf
+Version 8.0 muss dieses Modell
+in Unicastbenachrichtigungen konvertiert werden. 
 
 ##### Client
 {: #windows-client-1}
 
-1. Initialize the `MFPPush` client instance in your application.
+1. Initialisieren Sie die `MFPPush`-Clientinstanz in Ihrer Anwendung. 
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
@@ -1189,7 +1351,7 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }
    ```
     
-2. Register the mobile device with the push notification service.
+2. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
@@ -1203,7 +1365,8 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }
    ```
 
-3. (Optional) Un-register the mobile device from the push notification service.
+3. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1217,38 +1380,46 @@ To migrate this in v8.0, convert this model to Unicast notification.
    }
    ```
 
-4. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported();`.
-5. Remove the following `WLClient.Push` APIs since there will be no event source to subscribe to and register notification callbacks:
+4. Entfernen Sie ggf. `WLClient.Push.IsPushSupported()` und verwenden Sie
+`push.IsPushSupported();`.
+5. Entfernen Sie die folgenden `WLClient.Push`-APIs, da es keine zu abonnierende Ereignisquelle gibt, und registrieren Sie Benachrichtigungs-Callbacks: 
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * Implementierung von `WLOnReadyToSubscribeListener` und `WLNotificationListener`
 
 ##### Server
 {: #windows-server-1 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+Entfernen Sie die folgenden `WL.Server`-APIs aus Ihrem Adapter (sofern verwendet): 
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the Security tab of {{ site.data.keys.mf_console }}.
-3. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`, to send message.
+1. Richten Sie auf der Seite **Push-Einstellungen**
+der {{ site.data.keys.mf_console }} die WNS-Berechtigungsnachweise ein oder verwenden Sie die
+REST-API für WNS-Einstellungen. 
+2. Fügen Sie auf der Registerkarte "Sicherheit" der {{ site.data.keys.mf_console }} den Bereich `push.mobileclient` zum Abschnitt **Sicherheitsüberprüfungen Bereichselemente zuordnen** hinzu.
+3. Sie können auch die
+REST-API [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-)
+mit
+`userId`/`deviceId` verwenden, um eine Nachricht zu senden. 
 
-#### Scenario 2: Existing applications using multiple event sources in their application
+#### Szenario 2: Anwendungen mit mehreren Ereignisquellen
 {: #windows-scenario-2-existing-applications-using-multiple-event-sources-in-their-appliction }
-Applications using multiple event sources requires segmentation of users based on subscriptions.
+Bei Anwendungen, die mehrere Ereignisquellen nutzen, müssen Benutzer ausgehend von Abonnements bestimmten Segmenten zugeordnet werden. 
 
 ##### Client
 {: #windows-client-2 }
-This maps to tags which segments the users/devices based on topic of interest. To migrate this in {{ site.data.keys.product_adj }} V8.0.0, convert this model to tag based notification.
+Bei der Zuordnung zu Tags werden die Benutzer/Geräte ausgehend von interessierenden Themen Segmenten zugeordnet. Für die Umstellung auf
+{{ site.data.keys.product_adj }} Version 8.0.0 muss dieses Modell
+in die tagbasierte Benachrichtigung konvertiert werden. 
 
-1. Initialize the `MFPPush` client instance in your application:
+1. Initialisieren Sie die `MFPPush`-Clientinstanz in Ihrer Anwendung: 
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
@@ -1263,7 +1434,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
     
-2. Register the mobile device with the IMFPUSH service.
+2. Registrieren Sie das mobile Gerät beim Service IMFPUSH. 
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
@@ -1277,7 +1448,8 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
 
-3. (Optional) Un-register the mobile device from the IMFPUSH service:
+3. Sie können die Registrierung des mobilen Geräts beim Service IMFPUSH
+wie folgt wieder aufheben: 
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1291,15 +1463,16 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
 
-4. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported();`.
-5. Remove the following `WLClient.Push` APIs since there will be no Event Source to subscribe to and register notification callbacks:
+4. Entfernen Sie ggf. `WLClient.Push.IsPushSupported()` und verwenden Sie
+`push.IsPushSupported();`.
+5. Entfernen Sie die folgenden `WLClient.Push`-APIs, da es keine zu abonnierende Ereignisquelle gibt, und registrieren Sie Benachrichtigungs-Callbacks: 
     * `registerEventSourceCallback()`
     * `subscribe()`
     * `unsubscribe()`
     * `isSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * Implementierung von `WLOnReadyToSubscribeListener` und `WLNotificationListener`
 
-6. Subscribe to tags:
+6. Abonnieren Sie wie folgt Tags: 
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1314,7 +1487,7 @@ This maps to tags which segments the users/devices based on topic of interest. T
    }
    ```
     
-7. (Optional) Unsubscribe from tags:
+7. Sie können das Abonnement der Tags wie folgt wieder beenden: 
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1331,26 +1504,28 @@ This maps to tags which segments the users/devices based on topic of interest. T
     
 ##### Server
 {: #windows-server-2 }
-Remove the following `WL.Server` APIs (if used) in your adapter:
+Entfernen Sie die folgenden `WL.Server`-APIs aus Ihrem Adapter (sofern verwendet): 
 
 * `notifyAllDevices()`
 * `notifyDevice()`
 * `notifyDeviceSubscription()`
 * `createEventSource()`
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
-3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
-4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
+1. Richten Sie auf der Seite **Push-Einstellungen**
+der {{ site.data.keys.mf_console }} die WNS-Berechtigungsnachweise ein oder verwenden Sie die
+REST-API für WNS-Einstellungen. 
+2. Fügen Sie auf der Registerkarte **Sicherheit** der {{ site.data.keys.mf_console }} den Bereich `push.mobileclient` zum Abschnitt **Sicherheitsüberprüfungen Bereichselemente zuordnen** hinzu. 
+3. Erstellen Sie auf der Seite **Tags** der {{ site.data.keys.mf_console }} Push-Tags.
+4. Sie können auch die REST-API [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit `userId`/`deviceId`/`tagNames` als Ziel verwenden, um eine Nachricht zu senden.
 
-#### Scenario 3: Existing applications using broadcast/Unicast notification in their application
+#### Szenario 3: Anwendungen mit Broadcast-/Unicastbenachrichtigung
 {: #windows-scenario-3-existing-applications-using-broadcast-unicast-notification-in-their-application }
 
 ##### Client
 {:# windows-client-3 }
-1. Initialize the `MFPPush` client instance in your application:
+1. Initialisieren Sie die `MFPPush`-Clientinstanz in Ihrer Anwendung: 
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
@@ -1365,7 +1540,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-2. Register the mobile device with the push notification service.
+2. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
@@ -1379,7 +1554,8 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-3. (Optional) Un-register the mobile device from the push notification service.
+3. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1393,35 +1569,37 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-4. Remove `WLClient.Push.isPushSupported()` (if used) and use `push.IsPushSupported();`.
-5. Remove the following `WLClient.Push` APIs:
+4. Entfernen Sie ggf. `WLClient.Push.isPushSupported()` und verwenden Sie
+`push.IsPushSupported();`.
+5. Entfernen Sie die folgenden `WLClient.Push`-APIs: 
     * `registerEventSourceCallback()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * Implementierung von `WLOnReadyToSubscribeListener` und `WLNotificationListener`
 
 ##### Server
 {: #windows-server-3 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.
+Entfernen Sie `WL.Server.sendMessage()` aus Ihrem Adapter (sofern verwendet). 
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
-3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
-4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
+1. Richten Sie auf der Seite **Push-Einstellungen** der {{ site.data.keys.mf_console }} die WNS-Berechtigungsnachweise ein oder verwenden Sie die REST-API für WNS-Einstellungen.
+2. Fügen Sie auf der Registerkarte **Sicherheit** der {{ site.data.keys.mf_console }} den Bereich `push.mobileclient` zum Abschnitt **Sicherheitsüberprüfungen Bereichselemente zuordnen** hinzu. 
+3. Erstellen Sie auf der Seite **Tags** der {{ site.data.keys.mf_console }} Push-Tags.
+4. Sie können auch die REST-API [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit `userId`/`deviceId`/`tagNames` als Ziel verwenden, um eine Nachricht zu senden.
 
-#### Scenario 4: Existing applications using tag notifications in their application
+#### Szenario 4: Anwendungen mit Tagbenachrichtigungen
 {: #windows-scenario-4-existing-applications-using-tag-notifications-in-their-application }
 ##### Client
 {: #windows-client-4 }
 
-1. Initialize the `MFPPush` client instance in your application:
+1. Initialisieren Sie die `MFPPush`-Clientinstanz in Ihrer Anwendung: 
 
    ```csharp
    MFPPush push = MFPPush.GetInstance();
    push.Initialize();
    ```
     
-2. Implement the interface MFPPushNotificationListener and define onReceive().
+2. Implementieren Sie die Schnittstelle MFPPushNotificationListener und definieren Sie
+onReceive().
 
    ```csharp
    class Pushlistener : MFPPushNotificationListener
@@ -1433,7 +1611,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-3. Register the mobile device with the push notification service.
+3. Registrieren Sie das mobile Gerät beim Push-Benachrichtigungsservice. 
 
    ```csharp
    MFPPushMessageResponse Response = await push.RegisterDevice(null);
@@ -1447,7 +1625,8 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-4. (Optional) Un-register the mobile device from push notification service.
+4. Sie können die Registrierung des mobilen Geräts beim Push-Benachrichtigungsservice
+wie folgt wieder aufheben. 
 
    ```csharp
    MFPPushMessageResponse Response = await push.UnregisterDevice();
@@ -1461,14 +1640,15 @@ Complete the following steps for every application that was using the same event
    }
    ```
 
-5. Remove `WLClient.Push.IsPushSupported()` (if used) and use `push.IsPushSupported()`;
-6. Remove the following `WLClient.Push` API's:
+5. Entfernen Sie ggf. `WLClient.Push.IsPushSupported()` und verwenden Sie
+`push.IsPushSupported();`.
+6. Entfernen Sie die folgenden `WLClient.Push`-APIs: 
     * `subscribeTag()`
     * `unsubscribeTag()`
     * `isTagSubscribed()`
-    * `WLOnReadyToSubscribeListener` and `WLNotificationListener` implementation
+    * Implementierung von `WLOnReadyToSubscribeListener` und `WLNotificationListener`
 
-7. Subscribe to tags:
+7. Abonnieren Sie wie folgt Tags: 
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1483,7 +1663,7 @@ Complete the following steps for every application that was using the same event
    }
    ```
     
-8. (Optional) Unsubscribe from tags:
+8. Sie können das Abonnement der Tags wie folgt wieder beenden: 
 
    ```csharp
    String[] Tag = { "sample-tag1", "sample-tag2" };
@@ -1500,69 +1680,71 @@ Complete the following steps for every application that was using the same event
     
 ##### Server
 {: #windows-server-4 }
-Remove `WL.Server.sendMessage()` (if used) in your adapter.
+Entfernen Sie `WL.Server.sendMessage()` aus Ihrem Adapter (sofern verwendet). 
 
-Complete the following steps for every application that was using the same event source:
+Führen Sie die folgende nSchritte für jede Anwendung aus, die dieselbe Ereignisquelle verwendet hat: 
 
-1. Set up the WNS credentials in the **Push Settings** page of {{ site.data.keys.mf_console }} or use WNS Settings REST API.
-2. Add the scope `push.mobileclient` in **Map Scope Elements to security checks** section in the **Security** tab of {{ site.data.keys.mf_console }}.
-3. Create Push tags in the **Tags** page of {{ site.data.keys.mf_console }}.
-4. You can also use the [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) REST API with `userId`/`deviceId`/`tagNames` as target, to send notifications.
+1. Richten Sie auf der Seite **Push-Einstellungen** der {{ site.data.keys.mf_console }} die WNS-Berechtigungsnachweise ein oder verwenden Sie die REST-API für WNS-Einstellungen.
+2. Fügen Sie auf der Registerkarte **Sicherheit** der {{ site.data.keys.mf_console }} den Bereich `push.mobileclient` zum Abschnitt **Sicherheitsüberprüfungen Bereichselemente zuordnen** hinzu. 
+3. Erstellen Sie auf der Seite **Tags** der {{ site.data.keys.mf_console }} Push-Tags.
+4. Sie können auch die REST-API [Push Message (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/rest_runtime/r_restapi_push_message_post.html?view=kc#Push-Message--POST-) mit `userId`/`deviceId`/`tagNames` als Ziel verwenden, um eine Nachricht zu senden.
 
-## Migration tool
+## Migrationstool
 {: #migration-tool }
-The migration tool helps in migrating MobileFirst Platform Foundation 7.1 push data (devices, user subscriptions, credentials & tags) to {{ site.data.keys.product }} 8.0.  
-The migration tool simplifies the process with the following functions:
+Das Migrationstool vereinfacht
+die Umstellung von Push-Daten von MobileFirst Platform Foundation 7.1 (Geräte, Benutzerabonnements,
+Berechtigungsnachweise und Tags) auf {{ site.data.keys.product }} 8.0.  
+Das Migrationstool führt die folgenden Funktionen aus, um den Prozess zu vereinfachen: 
 
-1. Reads the devices, credentials, tags and user subscriptions for each application from the MobileFirst Platform Foundation 7.1 database.
-2. Copies the data to respective tables in {{ site.data.keys.product }} 8.0 database for respective application.
-3. Migrates all the Push data of all v7.1 environments, irrespective of environments in the v8.0 application.
+1. Es liest die Geräte, Berechtigungsnachweise, Tags und Benutzerabonnements für jede Anwendung aus der Datenbank von MobileFirst Platform Foundation 7.1. 
+2. Es kopiert die Daten in die entsprechenden Tabellen für die jeweilige Anwendung in der Datenbank von {{ site.data.keys.product }} 8.0. 
+3. Es migriert alle Push-Daten aller Umgebungen aus Version 7.1 ungeachtet der Umgebungen in der Anwendung in Version 8.0. 
 
-The migration tool doesn't modify any data related to user subscriptions, application environments or devices.  
+Das Migrationstool modifiziert keine Daten im Zusammenhang mit Benutzerabonnements, Anwendungsumgebungen oder Geräten.   
 
-The following information is important to know before you use the migration tool:
+Die folgenden Informationen müssen vor Verwendung des Migrationstools beachtet werden: 
 
-1. You must have Java version 1.6 or above.
-2. Make sure you have both MobileFirst Server 7.1 and {{ site.data.keys.mf_server }} 8.0 setup and ready.
-3. Make a backup of both MobileFirst Server 7.1 and {{ site.data.keys.mf_server }} 8.0.
-4. Register latest version of the application(s) in {{ site.data.keys.mf_server }} 8.0.
-	* Display name of application should match the respective application in MobileFirst Platform Foundation 7.1.
-	* Remember the PacakgeName/BundleID and provide the same values for the applications.
-	* If the application is not registered on {{ site.data.keys.mf_server }} 8.0 then the migration will not succeed.
-5. Provide Scope-Elements Mapping for each environment of application. [Learn more about scope mapping](../../notifications/sending-notifications/#scope-mapping).
+1. Java ab Version 1.6 muss installiert sein. 
+2. Stellen Sie sicher, dass MobileFirst Server 7.1 und {{ site.data.keys.mf_server }} 8.0 eingerichtet und betriebsbereit sind. 
+3. Erstellen Sie eine Sicherung für MobileFirst Server 7.1 und {{ site.data.keys.mf_server }} 8.0.
+4. Registrieren Sie die neueste Version der Anwendung(en) in {{ site.data.keys.mf_server }} 8.0.
+	* Der Anzeigename einer Anwendung sollte mit dem der entsprechenden Anwendung in MobileFirst Platform Foundation 7.1 übereinstimmen.
+	* Notieren Sie den Paketnamen und die Bundle-ID (PacakgeName/BundleID) und geben Sie eben diese Werte für die Anwendungen an. 
+	* Wenn die Anwendung nicht in {{ site.data.keys.mf_server }} 8.0 registriert ist, gelingt die Migration nicht. 
+5. Geben Sie für jede Umgebung einer Anwendung Bereichselementzuordnungen an. [Informieren Sie sich über Bereichszuordnungen](../../notifications/sending-notifications/#scope-mapping).
 
-#### Procedure
+#### Vorgehensweise
 {: #procedure }
-1. Download the migration tool from [its following GitHub repository](http://github.com).
-2. After downloading the tool, provide the following details in the **migration.properties** file:
+1. Laden Sie das Migrationstool aus dem folgenden [GitHub-Repository](http://github.com) herunter.
+2. Machen Sie nach dem Download des Tools die folgenden Angaben in der Datei **migration.properties**:
 	
-    | Value                | Description  | Sample Values |
+    | Wert                | Beschreibung  | Beispielwerte |
     |----------------------|--------------|---------------|
-    | w.db.type		       | Type of the database under consideration	           | pw.db.type = db2 possible values DB2,Oracle,MySql,Derby | 
-    | pw.db.url			   | MobileFirst Platform Foundation 7.1 worklight DB url  | jdbc:mysql://localhost:3306/WRKLGHT |
-    | pw.db.adminurl	   | MobileFirst Platform Foundation 7.1 Admin DB url      | jdbc:mysql://localhost:3306/ADMIN |
-    | pw.db.username	   | MobileFirst Platform Foundation 7.1 Worklight DB username | pw.db.username=root |
-    | pw.db.password	   | MobileFirst Platform Foundation 7.1 Worklight DB password | pw.db.password=root |
-    | pw.db.adminusername  | MobileFirst Platform Foundation 7.1 Admin DB username     | pw.db.adminusername=root |
-    | pw.db.adminpassword  | MobileFirst Platform Foundation 7.1 Admin DB password     | pw.db.adminpassword=root |
-    | pw.db.urlTarget	   | MFP 8.0 DB url						        | jdbc:mysql://localhost:3306/MFPDATA |
-    | pw.db.usernameTarget | MFP 8.0 DB username						| pw.db.usernameTarget=root |
-    | pw.db.passwordTarget | MFP 8.0 DB password						| pw.db.passwordTarget=root |
-    | pw.db.schema         | MobileFirst Platform Foundation 7.1 Worklight DB schema | WRKLGT |
-    | pw.db.adminschema    | MobileFirst Platform Foundation 7.1 Admin DB schema     | WLADMIN |
-    | pw.db.targetschema   | {{ site.data.keys.product }} 8.0 worklight DB schema    | MFPDATA |
-    | runtime			   | MobileFirst Platform Foundation 7.1 Runtime name		 | runtime=worklight |
-    | applicationId	       | Provide list of applications registered on MobileFirst Platform Foundation 7.1 separated by comma(,) | HybridTestApp,NativeiOSTestApp |
-    | targetApplicationId  | Provide list of applications registered on {{ site.data.keys.product }} 8.0 separated by comma(,).   | com.HybridTestApp,com.NativeiOSTestApp |
+    | w.db.type		       | Typ der betreffenden Datenbank	           | pw.db.type = db2 (gültige Werte: DB2, Oracle, MySql, Derby) | 
+    | pw.db.url			   | URL der Worklight-Datenbank von MobileFirst Platform Foundation 7.1  | jdbc:mysql://localhost:3306/WRKLGHT |
+    | pw.db.adminurl	   | URL der Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1      | jdbc:mysql://localhost:3306/ADMIN |
+    | pw.db.username	   | Benutzername für die Worklight-Datenbank von MobileFirst Platform Foundation 7.1 | pw.db.username=root |
+    | pw.db.password	   | Kennwort für die Worklight-Datenbank von MobileFirst Platform Foundation 7.1 | pw.db.password=root |
+    | pw.db.adminusername  | Benutzername für die Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1     | pw.db.adminusername=root |
+    | pw.db.adminpassword  | Kennwort für die Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1     | pw.db.adminpassword=root |
+    | pw.db.urlTarget	   | URL der Datenbank von MFP 8.0						        | jdbc:mysql://localhost:3306/MFPDATA |
+    | pw.db.usernameTarget | Benutzername für die Datenbank von MFP 8.0						| pw.db.usernameTarget=root |
+    | pw.db.passwordTarget | Kennwort für die Datenbank von MFP 8.0						| pw.db.passwordTarget=root |
+    | pw.db.schema         | Schema der Worklight-Datenbank von MobileFirst Platform Foundation 7.1 | WRKLGT |
+    | pw.db.adminschema    | Schema der Verwaltungsdatenbank von MobileFirst Platform Foundation 7.1     | WLADMIN |
+    | pw.db.targetschema   | Schema der Worklight-Datenbank von {{ site.data.keys.product }} 8.0    | MFPDATA |
+    | runtime			   | Laufzeitname von MobileFirst Platform Foundation 7.1		 | runtime=worklight |
+    | applicationId	       | Liste mit durch Kommata (,) getrennten Anwendungen, die in MobileFirst Platform Foundation 7.1 registriert sind | HybridTestApp,NativeiOSTestApp |
+    | targetApplicationId  | Liste mit durch Kommata (,) getrennten Anwendungen, die in {{ site.data.keys.product }} 8.0 registriert sind   | com.HybridTestApp,com.NativeiOSTestApp |
 
-    * Make sure that you have provided values for both **applicationID** and **targetApplicationId** in proper sequence. The mapping is done in 1-1 (or n-n) fashion, i.e. data of the first application in **applicationId** list will be migrated to the first application in the **targetApplicationId** list.
-	* In the **targetApplicationId** list, provide a packageName/BundleId for the application. i.e. for TestApp1 in MobileFirst Platform Foundation 7.1, **targetApplicationId** will be packageName/BundleId of TestApp1 which is com.TestApp1. This is because in MobileFirst Platform Foundation 7.1 **applicationId** is the application name and in {{ site.data.keys.mf_server }} 8.0 it is packageName/BundleId/packageIdentityName based on application environment.
+    * Stellen Sie sicher, dass die Werte für **applicationID** und **targetApplicationId** in der richtigen Reihenfolge angegeben sind. Die Zuordnung erfolgt 1:1 (oder n:n). Das heißt, Daten der ersten Anwendung in der **applicationId**-Liste werden der ersten Anwendung in der **targetApplicationId**-Liste zugeordnet.
+	* Geben Sie in der **targetApplicationId**-Liste einen Paketnamen bzw. eine Bundle-ID (packageName/BundleId) für die Anwendung an. Für die TestApp1 in MobileFirst Platform Foundation 7.1 enthält die **targetApplicationId**-Liste beispielsweise den Wert com.TestApp1 als packageName/BundleId, weil in MobileFirst Platform Foundation 7.1 **applicationId** der Anwendungsname ist, in {{ site.data.keys.mf_server }} 8.0 der Paketname bzw. die Bundle-ID oder der Paket-ID-Name (packageName/BundleId/packageIdentityName) jedoch auf der Anwendungsumgebung basiert.
 
-2. Run the tool by using the following command:
+2. Führen Sie das Tool mit folgendem Befehl aus:
 
    ```bash
-   java -jar pushDataMigration.jar path-to-migration.properties
+   java -jar pushDataMigration.jar Pfad_zu_migration.properties
    ```
    
-   * Replace **path-to-migration.properties** with the path to **migration.properties** in case the tool .jar file and the properties file are located at different locations. Otherwise, remove the path from the command.
+   * Ersetzen Sie **Pfad_zu_migration.properties** durch den Pfad zur Datei **migration.properties**, wenn sich die JAR-Datei und die Eigenschaftendatei an verschiedenen Positionen befinden. Entfernen Sie andernfalls den Pfad aus dem Befehl.
 

@@ -1,34 +1,47 @@
 ---
 layout: tutorial
-title: Setting logging and tracing for Application Center on the application server
-breadcrumb_title: Setting up logging and tracing
+title: Protokollierung und Traceerstellung für das Application Center im Anwendungsserver festlegen
+breadcrumb_title: Protokollierung und Traceerstellung einrichten
 relevantTo: [ios,android,windows,javascript]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-You can set logging and trace parameters for particular application servers and use JNDI properties to control output on all supported application servers.
+Sie können für bestimmte Anwendungsserver
+Protokollierungs- und Traceparameter festlegen und mit JNDI-Eigenschaften
+die Ausgabe in allen unterstützten Anwendungsservern steuern.
 
-You can set the logging levels and the output file for tracing operations for Application Center in ways that are specific to particular application servers. In addition, {{ site.data.keys.product_full }} provides Java™ Naming and Directory Interface (JNDI) properties to control the formatting and redirection of trace output, and to print generated SQL statements.
+Die Festlegung der Protokollierungsstufen und der Ausgabedatei für
+Traceoperationen im Application Center erfolgt nach den Regeln des jeweiligen Anwendungsservers. Die
+{{ site.data.keys.product_full }} stellt darüber hinaus
+JNDI-Eigenschaften bereit, mit denen
+die Formatierung und Weiterleitung der Traceausgabe gesteuert
+und generierte SQL-Anweisungen ausgegeben werden können.
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Enabling logging and tracing in WebSphere Application Server full profile](#logging-in-websphere)
-* [Enabling logging and tracing in WebSphere Application Server Liberty](#logging-in-liberty)
-* [Enabling logging and tracing in Apache Tomcat](#logging-in-tomcat)
-* [JNDI properties for controlling trace output](#jndi-properties-for-controlling-trace-output)
+* [Protokollierung und Traceerstellung in WebSphere Application Server Full Profile aktivieren](#logging-in-websphere)
+* [Protokollierung und Traceerstellung in WebSphere Application Server Liberty aktivieren](#logging-in-liberty)
+* [Protokollierung und Traceerstellung in Apache Tomcat aktivieren](#logging-in-tomcat)
+* [JNDI-Eigenschaften zum Kontrollieren der Traceausgabe](#jndi-properties-for-controlling-trace-output)
 
-## Enabling logging and tracing in WebSphere Application Server full profile
+## Protokollierung und Traceerstellung in WebSphere Application Server Full Profile aktivieren
 {: #logging-in-websphere }
-You can set the logging levels and the output file for tracing operations on the application server.
+Sie können die Protokollierungsstufen und die Ausgabedatei für
+Traceoperationen im Anwendungsserver festlegen.
 
-When you try to diagnose problems in the Application Center (or other components of {{ site.data.keys.product }}), it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings as Java™ virtual machine (JVM) properties.
+Wenn Sie im Application Center (oder in anderen Komponenten der {{ site.data.keys.product }}) versuchen, Probleme zu diagnostizieren, ist es wichtig, dass die Protokollnachrichten angezeigt
+werden können. Sie müssen die anwendbaren Einstellungen als JVM-Eigenschaften angeben, um in Protokolldateien lesbare Protokollnachrichten auszugeben.
 
-1. Open the WebSphere  Application Server administrative console.
-2. Select **Troubleshooting → Logs and Trace**.
-3. In **Logging and tracing**, select the appropriate application server and then select **Change log detail levels**.
-4. Select the packages and their corresponding detail level. This example enables logging for {{ site.data.keys.product }}, including Application Center, with level **FINEST** (equivalent to **ALL**).
+1. Öffnen Sie die Administrationskonsole von WebSphere Application Server. 
+2. Wählen Sie **Fehlerbehebung → Protokolle und Trace** aus.
+3. Wählen Sie unter **Protokollierung und Traceerstellung** den entsprechenden Anwendungsserver aus. Wählen Sie dann
+**Detaillierungsgrad für Protokolle ändern** aus.
+4. Wählen Sie die Pakete und den jeweils zugehörigen Detaillierungsgrad aus. In diesem Beispiel
+wird die Protokollierung für die {{ site.data.keys.product }}
+und das Application Center mit der Stufe **FINEST** (die funktional der Stufe **ALL** entspricht) aktiviert.
+
 
 ```xml
 com.ibm.puremeap.*=all
@@ -36,38 +49,51 @@ com.ibm.worklight.*=all
 com.worklight.*=all
 ```
 
-Where:
+Für diese Angabe gilt Folgendes: 
 
-* **com.ibm.puremeap.*** is for Application Center.
-* **com.ibm.worklight.*** and **com.worklight.*** are for other {{ site.data.keys.product_adj }} components.
+* **com.ibm.puremeap.*** bezieht sich auf das Application Center.
+* **com.ibm.worklight.*** und **com.worklight.*** beziehen sich auf andere {{ site.data.keys.product_adj }}-Komponenten.
 
-The traces are sent to a file called **trace.log**, not to **SystemOut.log** or to **SystemErr.log**.
+Die Traces werden an eine Datei mit dem Namen **trace.log** und nicht an
+**SystemOut.log** oder **SystemErr.log** gesendet.
 
-## Enabling logging and tracing in WebSphere Application Server Liberty
+## Protokollierung und Traceerstellung in WebSphere Application Server Liberty aktivieren
 {: #logging-in-liberty }
-You can set the logging levels and the output file for tracing operations for Application Center on the Liberty application server.
+Im Liberty-Anwendungsserver können Sie die Protokollierungsstufen und die Ausgabedatei für
+Traceoperationen im Application Center festlegen.
 
-When you try to diagnose problems in the Application Center, it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings.
+Wenn Sie im Application Center versuchen, Probleme zu diagnostizieren, ist es wichtig, dass die Protokollnachrichten angezeigt
+werden können. Sie müssen die anwendbaren Einstellungen angeben, um in Protokolldateien lesbare Protokollnachrichten auszugeben. 
 
-To enable logging for {{ site.data.keys.product }}, including Application Center, with level FINEST(equivalent to ALL), add a line to the server.xml file. For example:
+Fügen Sie zur Datei
+server.xml eine Zeile hinzu, um die Protokollierung für die {{ site.data.keys.product }}
+und das Application Center mit der Stufe FINEST (die funktional der Stufe ALL entspricht) zu aktivieren. Beispiel: 
 
 ```xml
 <logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
 ```
 
-In this example, multiple entries of a package and its logging level are separated by a colon (:).
+In diesem Beispiel sind
+mehrere Einträge für Pakete
+mit zugehöriger
+Protokollierungsstufe jeweils durch einen Doppelpunkt (:) getrennt.
 
-The traces are sent to a file called **trace.log**, not to **messages.log** or to **console.log**.
+Die Traces werden an eine Datei mit dem Namen **trace.log** und nicht an
+**messages.log** oder **console.log** gesendet.
 
-For more information, see [Liberty profile: Logging and Trace](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0&view=kc).
+Weitere Informationen finden Sie unter
+[Liberty Profile: Logging and Trace](http://www.ibm.com/support/knowledgecenter/SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0&view=kc).
 
-## Enabling logging and tracing in Apache Tomcat
+## Protokollierung und Traceerstellung in Apache Tomcat aktivieren
 {: #logging-in-tomcat }
-You can set the logging levels and the output file for tracing operations undertaken on the Apache Tomcat application server.
+Sie können die Protokollierungsstufen und die Ausgabedatei für
+Traceoperationen im Apache Tomcat Application Server festlegen.
 
-When you try to diagnose problems in the Application Center, it is important to be able to see the log messages. To print readable log messages in log files, you must specify the applicable settings.
+Wenn Sie im Application Center versuchen, Probleme zu diagnostizieren, ist es wichtig, dass die Protokollnachrichten angezeigt
+werden können. Sie müssen die anwendbaren Einstellungen angeben, um in Protokolldateien lesbare Protokollnachrichten auszugeben. 
 
-To enable logging for {{ site.data.keys.product }}, including Application Center, with level **FINEST** (equivalent to **ALL**), edit the **conf/logging.properties** file. For example, add lines similar to these lines:
+Bearbeiten Sie die Datei
+**conf/logging.properties**, um die Protokollierung für die {{ site.data.keys.product }} und das Application Center mit der Stufe **FINEST** (die funktional der Stufe **ALL** entspricht) zu aktivieren. Fügen Sie beispielsweise Zeilen ähnlich den folgenden zu der Datei hinzu: 
 
 ```xml
 com.ibm.puremeap.level = ALL
@@ -75,16 +101,21 @@ com.ibm.worklight.level = ALL
 com.worklight.level = ALL
 ```
 
-For more information, see [Logging in Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html).
+Weitere Informationen enthält
+der Artikel [Logging in Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html).
 
-## JNDI properties for controlling trace output
+## JNDI-Eigenschaften zum Kontrollieren der Traceausgabe
 {: #jndi-properties-for-controlling-trace-output }
-On all supported platforms, you can use Java™ Naming and Directory Interface (JNDI) properties to format and redirect trace output for Application Center and to print generated SQL statements.
+Auf allen unterstützten Plattformen können Sie JNDI-Eigenschaften (Java Naming and
+Directory Interface) verwenden, um die Traceausgabe für das Application Center zu formatieren und weiterzuleiten und um generierte SQL-Anweisungen
+auszugeben.
 
-The following JNDI properties are applicable to the web application for Application Center services (**applicationcenter.war**).
+Die folgenden JNDI-Eigenschaften gelten für die Webanwendung
+für die Application-Center-Services
+(**applicationcenter.war**).
 
-| Property settings | Setting | Description | 
+| Eigenschaftseinstellungen | Einstellung | Beschreibung | 
 |-------------------|---------|-------------|
-| ibm.appcenter.logging.formatjson | true | By default, this property is set to false. Set it to true to format JSON output with blank spaces, for easier reading in log files. | 
-| ibm.appcenter.logging.tosystemerror | true | By default, this property is set to false. Set it to true to print all log messages to system error in log files. Use the property to turn on logging globally. | 
-| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TR  ACE | This setting prints all the generated SQL statements to the log files. | 
+| ibm.appcenter.logging.formatjson | true | Diese Eigenschaft ist standardmäßig auf "false" gesetzt. Setzen Sie sie auf "true", wenn Sie die JSON-Ausgabe für eine bessere Lesbarkeit der Protokolldateien mit Leerzeichen formatieren möchten.  | 
+| ibm.appcenter.logging.tosystemerror | true | Diese Eigenschaft ist standardmäßig auf "false" gesetzt. Setzen Sie sie auf "true", wenn alle Protokollnachrichten zu Systemfehlern in Protokolldateien ausgegeben werden sollen. Mit dieser Eigenschaft können Sie die Protokollierung global aktivieren.  | 
+| ibm.appcenter.openjpa.Log | DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE | Bei Verwendung dieser Einstellung werden alle generierten SQL-Anweisungen in den Protokolldateien ausgegeben. | 

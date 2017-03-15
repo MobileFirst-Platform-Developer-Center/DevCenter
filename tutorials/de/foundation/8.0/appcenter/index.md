@@ -6,179 +6,311 @@ show_children: true
 weight: 13
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-Learn about the {{ site.data.keys.mf_app_center_full }}: what it is for, the different components and features, and how to use the console and the client.
+Hier können Sie sich über das {{ site.data.keys.mf_app_center_full }} informieren und erfahren, wofür das Application Center bestimmt ist, welche verschiedenen
+Komponenten und Features zum Application Center gehören und wie die Konsole und der Client verwendet werden. 
 
-The sale of mobile devices now exceeds that of personal computers. Consequently, mobile applications become critical for businesses.  
-The Application Center is a tool to make sharing mobile applications within an organization easier.
+Der Umsatz mit mobilen Geräten übersteigt bereits den mit Personal Computern.
+Für unternehmen werden mobile Anwendungen damit zu einem kritischen Faktor.   
+Das Application Center ist ein Tool, das die gemeinsame Nutzung mobiler Anwendungen innerhalb einer Organisation
+vereinfacht. 
 
-You can use the Application Center as an enterprise application store. With the Application Center, you can target some mobile applications to particular groups of users within the company.
+Sie haben die Möglichkeit, das Application Center als Speicher
+für Unternehmensanwendungen zu nutzen. Mit dem Application Center können Sie mobile Anwendungen für bestimmte Benutzergruppen
+innerhalb des Unternehmens vorsehen. 
 
-A development team can also use the Application Center during the development phase of an application to share applications with testers, designers, or executives in the company. In such a scenario, it makes collaboration easier between all the people who are involved in the development process.
+Ein Entwicklerteam kann das Application Center in der Entwicklungsphase einer Anwendung einsetzen, um Anwendungen mit
+Testern, Designern oder Entscheidungsträgern im Unternehmen zu teilen. Bei dieser Art des Einsatzes erleichtert das Application Center
+die Onlinezusammenarbeit aller am Entwicklungsprozess beteiligten Personen. 
 
-> You can also review [the Application Center tutorial](app-center-tutorial).
+> Sie können auch das Lernprogramm zum [Application Center](app-center-tutorial) durcharbeiten.
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Concept of Application Center](#concept-of-application-center)
-* [Specific platform requirements](#specific-platform-requirements)
-* [General architecture](#general-architecture)
-* [Preliminary information](#preliminary-information)
-* [What's next](#whats-next)
+* [Konzept des Application Center](#concept-of-application-center)
+* [Voraussetzungen der Plattformen](#specific-platform-requirements)
+* [Allgemeine Architektur](#general-architecture)
+* [Vorläufige Informationen](#preliminary-information)
+* [Weitere Schritte](#whats-next)
 
-## Concept of Application Center
+## Konzept des Application Center
 {: #concept-of-application-center }
-Application Center can be used as an Enterprise application store and is a means of sharing information among different team members within a company.
+Das Application Center kann als Store für Unternehmensanwendungen verwendet werden
+und bietet verschiedenen Teammitgliedern innerhalb eines Unternehmens die Möglichkeit, Informationen auszutauschen.
 
-The concept of Application Center is similar to the concept of the Apple public App Store or the Android Market, except that it targets only private usage within a company.
+Das Konzept des Application Center ist mit dem Konzept
+des öffentlichen App Store von Apple oder des Android Market vergleichbar. Das Application Center ist allerdings nur
+für den privaten Gebrauch innerhalb eines Unternehmens bestimmt.
 
-By using Application Center, users from the same company or organization download applications to mobile phones or tablets from a single place that serves as a repository of mobile applications.
+Über das Application Center, das als zentrales Repository für mobile Anwendungen dient,
+laden Benutzer des Unternehmens oder der Organisation
+Anwendungen auf Mobiltelefone oder Tablets herunter.
 
-Application Center targets mobile applications that are installed on the device itself. Those applications can be native applications that are built by using the device SDK or hybrid applications that mix native and web content. Application Center does not target mobile web applications; such applications are delivered to the mobile device web browser through a URL like a website.
+Das Application Center stellt mobile Anwendungen bereit, die auf dem Gerät selbst installiert werden. Diese Anwendungen können native Anwendungen sein,
+die mit dem SDK des Geräts erstellt wurden, oder Hybridanwendungen mit nativen Inhalten und Webinhalten. Das Application Center
+stellt keine mobilen Webanwendungen bereit. Solche Anwendungen werden wie eine Website über eine URL an den Web-Browser des mobilen Geräts gesendet.
 
-In the current version, Application Center supports applications that are built for the Google Android platform, the Apple iOS platform, the Windows Phone 8 platform, and the Windows 8 platform.
+In der aktuellen Version unterstützt das Application Center
+Anwendungen, die für die Google-Android-Plattform, die Apple-iOS-Plattform, die Windows-Phone-8-Plattform und die
+Windows-8-Plattform
+erstellt wurden. 
 
-For Windows Phone, only the Windows Phone application package (.xap) file format is currently supported, not the app package (.appx) file format (universal app format). For Windows Store (Desktop applications), the app package (.appx) file format is supported.
+Für Windows Phone wird zurzeit nur das Format von Windows-Phone-Anwendungspaketdateien
+(.xap) unterstützt. Das App-Paketdateiformat bzw. universelle App-Format (.appx) wird nicht unterstützt. Für den Windows Store (Desktop-Anwendungen)
+wird das App-Paketdateiformat (.appx) unterstützt. 
 
-Windows Phone 7 and Windows RT, and BlackBerry OS are not supported by the current version of the Application Center.
+Windows Phone 7, Windows RT und BlackBerry OS werden von der aktuellen
+Version des Application Center nicht unterstützt.
 
-Application Center manages mobile applications; it supports any kind of Android, iOS, Windows Phone 8, or Windows 8 application, including applications that are built on top of the {{ site.data.keys.product }}.
+Das Application Center verwaltet mobile Anwendungen. Es unterstützt alle Arten
+von Android-, iOS-, Windows-Phone-8- oder Windows-8-Anwendungen, einschließlich Anwendungen, die
+mit der {{ site.data.keys.product }} erstellt wurden.
 
-You can use the Application Center as part of the development process of an application. A typical scenario of Application Center is a team building a mobile application; the development team creates a new version of an Android, iOS, Windows Phone, or Windows 8 application. The development team wants this new version to be reviewed and tested by the extended team. A developer goes to Application Center console and uploads the new version of the application to Application Center. As part of this process, the developer can enter a description of the application version. For example, the description could mention the elements that the development team added or fixed from the previous version. The new version of the application is then available to the other members of the team.
+Sie können das Application Center im Rahmen des Entwicklungsprozesses für eine Anwendung nutzen. In einem typischen Szenario für die Verwendung des
+Application Center erstellt ein Team eine mobile Anwendung (d. h. eine neue Version einer
+Android-, iOS-, Windows-Phone- oder Windows-8-Anwendung). Das Entwicklerteam möchte, dass diese neue Version vom erweiterten Team überprüft und getestet wird. Ein
+Entwickler lädt über die Application-Center-Konsole die neue Version der Anwendung in das Application Center hoch. Dabei kann der
+Entwickler eine Beschreibung der Anwendungsversion eingeben. In der Beschreibung könnten beispielsweise Elemente erwähnt werden,
+die das Entwicklerteam hinzugefügt hat, oder Elemente aus der Vorgängerversion, die korrigiert wurden. Die neue Version der Anwendung ist
+dann für die anderen Teammitglieder verfügbar.
 
-Another person, for example, a beta tester, can launch Application Center installer application, the mobile client, to locate this new version of a mobile application in the list of available applications and install it on his mobile device. After testing the new version, the beta tester can rate the application and submit feedback. The feedback is visible to the developer from the Application Center console.
+Eine andere Person, zum Beispiel ein Beta-Tester, kann das Application-Center-Installationsprogramm (d. h. den mobilen Client) starten, um diese
+neue Version der mobilen Anwendung in der Liste der verfügbaren Anwendungen zu finden und auf seinem mobilen Gerät zu installieren. Nachdem der
+Beta-Tester die neue Version getestet hat, kann er die Anwendung bewerten und Rückmeldungen geben. Die Rückmeldungen sind für den Entwickler
+in der Application-Center-Konsole sichtbar. 
 
-Application Center is a convenient way to share mobile applications within a company or a group; it is a means of sharing information among team members.
+Das Application Center bietet die Möglichkeit, mobile Anwendungen innerhalb eines Unternehmens oder einer Gruppe komfortabel gemeinsam zu nutzen und Informationen
+unter Teammitgliedern auszutauschen.
 
-## Specific platform requirements
+## Voraussetzungen der Plattformen
 {: #specific-platform-requirements }
-Different operating systems impose specific requirements for deploying, installing, or using applications on the appropriate mobile devices.
+Unter den verschiedenen Betriebssystemen gelten spezifische Anforderungen an die Implementierung, Installation oder Verwendung von Anwendungen
+auf den entsprechenden mobilen Geräten. 
 
 ### Android
 {: #android }
-The mobile device must be configured for installation from unknown sources. The corresponding toggle can be found in the Android Settings. See [User Opt-in for apps from unknown sources for details](http://developer.android.com/distribute/open.html#unknown-sources).  
+Das mobile Gerät muss für die Installation von unbekannten Quellen konfiguriert sein. Den entsprechenden Schalter finden Sie
+in den Android-Einstellungen.
+Einzelheiten sind im Artikel [User Opt-in for apps from unknown sources](http://developer.android.com/distribute/open.html#unknown-sources) beschrieben.  
 
-In Application Center, applications have an internal and a commercial version number. The internal version number is used to distinguish which version is newer while the commercial version is only used as an informative display string. For Android applications, the internal version is the android:[versionCode](http://developer.android.com/guide/topics/manifest/manifest-element.html#vcode) from the application manifest, and it must be an integer.
+Im Application Center haben Anwendungen eine
+interne und eine kommerzielle Versionsnummer. Anhand der internen Versionsnummer wird die Aktualität der Versionen unterschieden. Die kommerzielle Versionsnummer wird nur als
+Anzeigezeichenfolge zur Information verwendet. Bei Android-Anwendungen ist die interne Version
+der [versionCode](http://developer.android.com/guide/topics/manifest/manifest-element.html#vcode) aus dem Anwendungsmanifest. Es muss sich um eine
+ganze Zahl handeln. 
 
 ### iOS
 {: #ios }
-All applications that are managed through Application Center must be packaged for "Ad Hoc Distribution". With an iOS developer account, you can share your application with up to 100 iOS devices. With an iOS enterprise account, you can share your in-house application with an unlimited number of iOS devices. See [iOS Developer Program](https://developer.apple.com/programs/ios/distribute.html) and [iOS Enterprise Program](https://developer.apple.com/programs/ios/enterprise/) for details.
-In Application Center, applications have an internal and a commercial version number. The internal version number is used to distinguish which version is newer while the commercial version is used only as an informative display string. For iOS applications, the internal version is the CFBundleVersion from the application manifest **Info.plist**. The version number must have the following format: `a`, or `a.b`, or `a.b.c`, where `a`, `b`, `c` are non-negative integers, and `a` is not `0`.
+Alle über das Application Center verwalteten Anwendungen müssen für die
+"Ad-Hoc-Distribution" gepackt sein.
+Wenn Sie über einen iOS-Entwickleraccount verfügen, können Sie Ihre Anwendung für
+bis zu 100 iOS-Geräte freigeben. Mit einem iOS-Unternehmensaccount können Sie Ihre hausinterne Anwendung für eine unbegrenzte Anzahl
+von iOS-Geräten freigeben.
+Einzelheiten finden Sie in den Artikeln [iOS Developer Program](https://developer.apple.com/programs/ios/distribute.html)
+und [iOS Enterprise Program](https://developer.apple.com/programs/ios/enterprise/).Im Application Center haben Anwendungen eine
+interne und eine kommerzielle Versionsnummer. Anhand der internen Versionsnummer wird die Aktualität der Versionen unterschieden. Die kommerzielle Versionsnummer wird nur als
+Anzeigezeichenfolge zur Information verwendet. Bei iOS-Anwendungen ist die interne Version die CFBundleVersion
+aus dem Anwendungsmanifest **Info.plist**. Die Versionsnummer muss das Format
+`a` oder `a.b` oder `a.b.c` haben. Hier stehen
+`a`, `b` und `c` für nicht negative ganze Zahlen. Außerdem muss
+`a` ungleich `0` sein.
 
 ### Windows Phone 8
 {: #windows-phone-8 }
-Applications are not installed from the Windows Store, but from Application Center, which acts as what Microsoft documentation calls a **Company Hub**. See [Company app distribution for Windows Phone](http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj206943%28v=vs.105%29.aspx) for details.
-To use a company hub, Windows Phone requires you to register a company account with Microsoft and to sign all applications, including the Application Center client, with the company certificate. Only signed applications can be managed through Application Center.
+Anwendungen werden nicht vom Windows Store, sondern vom Application Center installiert.
+Das Application Center übernimmt damit eine Funktion, die in der Microsoft-Dokumentation
+als **Unternehmens-Hub** bezeichnet wird. Einzelheiten enthält der Artikel
+[Company app distribution for Windows Phone](http://msdn.microsoft.com/en-us/library/windowsphone/develop/jj206943%28v=vs.105%29.aspx).
+Für die Verwendung eines Unternehmens-Hubs
+erfordert Windows Phone,
+dass Sie ein Unternehmenskonto bei Microsoft registrieren und alle Anwendungen, auch den
+Application-Center-Client, mit dem Unternehmenszertifikat signieren.
+Im Application Center können nur signierte Anwendungen verwaltet werden.
 
-You must enroll all mobile devices through an application enrollment token that is associated with your company account.
+Sie müssen alle mobilen Geräte mit einem Anwendungsregistrierungstoken, das
+Ihrem Unternehmenskonto zugeordnet ist, registrieren.
 
-Application Center helps you to enroll devices through facilities to distribute the application enrollment token. [See Application enrollment tokens in Windows 8 Universal for details](appcenter-console/#application-enrollment-tokens-in-windows-8-universal).
+Das Application Center vereinfacht die Verteilung des Anwendungsregistrierungstokens und unterstützt Sie so
+bei der Registrierung von Geräten. Einzelheiten finden Sie unter
+[Token für Anwendungsregistrierung in Windows 8 Universal](appcenter-console/#application-enrollment-tokens-in-windows-8-universal).
 
-Application Center supports the distribution of applications as Windows Phone application package (.xap) files for Microsoft Windows Phone 8.0 and Microsoft Windows Phone 8.1. With Microsoft Windows Phone 8.1, Microsoft introduced a new universal format as app package (.appx) files for Windows Phone. Currently, Application Center does not support the distribution of app package (.appx) files for Microsoft Windows Phone 8.1, but is limited to Windows Phone application package (.xap) files only.
+Das
+Application Center unterstützt die Verteilung von Anwendungen in Form von Windows-Phone-Anwendungspaketdateien (.xap) für
+Microsoft Windows Phone 8.0 und Microsoft Windows Phone 8.1. In Microsoft Windows Phone 8.1
+hat Microsoft ein neues universelles Format für Anwendungspaketdateien (.appx) eingeführt.
+Das
+Application Center unterstützt zurzeit nicht die Verteilung von Anwendungspaketdateien (.appx) für Microsoft Windows Phone 8.1. Es ist auf
+Windows-Phone-Anwendungspaketdateien (.xap) beschränkt. 
 
-In Application Center, applications have only one version number. The version number is used to distinguish which version is newer. For Windows Phone 8 applications, the version number is in the **Version** field in the **WMAppManifest.xml** file. This version number must have the following format: `a.b.c.d` where `a`, `b`, `c`, `d` are non-negative integers.
+Im
+Application Center haben
+Anwendungen nur eine Versionsnummer zur Unterscheidung der Aktualität von Versionen. Bei Windows-Phone-8-Anwendungen befindet sich
+die Versionsnummer im Feld **Version** der Datei **WMAppManifest.xml**.
+Diese Versionsnummer muss das Format `a.b.c.d` haben. Hier stehen
+`a`, `b`, `c` und `d` für nicht negative ganze Zahlen. 
 
 ### Windows 8
 {: #windows-8 }
-The Application Center mobile client is provided as a normal desktop executable file (.exe). Use it to install on the device Windows Store applications, which are packaged as .appx files.
-Installing a file of type appx on your device without using Windows Store is called sideloading an app. To sideload an app, you must comply with the prerequisites in [Prepare to sideload apps](http://technet.microsoft.com/fr-fr/library/dn613842.aspx). The Windows 8.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading store apps to Windows 8.1 devices](http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
+Der mobile Application-Center-Client wird als normale ausführbare Desktopdatei
+(.exe) bereitgestellt. Verwenden Sie den Client, um auf dem Gerät als .appx-Dateien gepackte Windows-Store-Anwendungen
+zu installieren. Die Installation einer Datei vom Typ
+appx auf Ihrem Gerät ohne Verwendung des Windows Store wird als das Querladen einer App
+bezeichnet. Für das Querladen einer App müssen Sie die
+in [Prepare to Sideload Apps](http://technet.microsoft.com/fr-fr/library/dn613842.aspx) beschriebenen Voraussetzungen erfüllen. Mit dem Update auf Windows 8.1 gelten
+weniger strenge Vorbedingungen für das
+Querladen. Weitere Informationen finden Sie unter
+[Sideloading Store Apps to Windows 8.1 Devices](http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
 
-Files of type .exe cannot be executed on ARM-based tablets, so Application Center does not support Windows RT; only Windows 8 and Windows 8.1 are supported.
+Dateien vom Typ
+.exe können auf
+ARM-basierten Tablets nicht ausgeführt werden. Das Application Center
+unterstützt daher nur Windows 8 und Windows 8.1, aber nicht Windows RT.
 
-The device user needs administrator rights on the device to execute the Application Center client.
+Zum Ausführen des Appliction-Center-Clients benötigt
+der Gerätebenutzer die Administratorberechtigung für das Gerät. 
 
-Application Center does not provide any predefined way of distributing the mobile client.
+Das Application
+Center gibt keinen Weg für die Verteilung des mobilen Clients vor.
 
-In Application Center, applications have only one version number. The version number is used to distinguish which version is newer. For Windows 8 applications, the version number is in the Version field in the AppxManifest.xml file. This version number must have the following format: a.b.c.d, where a, b, c, d are non-negative integers.
+Im
+Application Center haben
+Anwendungen nur eine Versionsnummer zur Unterscheidung der Aktualität von Versionen. Bei Windows-8-Anwendungen befindet sich
+die Versionsnummer im Feld
+"Version" der Datei AppxManifest.xml.
+Diese Versionsnummer muss das Format a.b.c.d haben. Hier stehen
+a, b, c und d für nicht negative ganze Zahlen. 
 
-## General architecture
+## Allgemeine Architektur
 {: #general-architecture }
-The Application Center is composed of these main elements: a server-side component, a repository, an administration console, and a mobile client application.
+Das Application Center setzt sich aus folgenden Hauptelementen zusammen:
+einer serverseitigen Komponente, einem Repository, einer Administrationskonsole und einer mobilen Clientanwendung.
 
-### Server-side component
+### Serverseitige Komponente
 {: #server-side-component }
-The server-side component is a Java™ Enterprise application that must be deployed in a web application server such as IBM  WebSphere  or Apache Tomcat.
+Die serverseitige Komponente ist eine Java™-Unternehmensanwendung, die
+in einem Webanwendungsserver wie IBM WebSphere oder Apache Tomcat implementiert sein muss. 
 
-The server-side component consists of an administration console and a mobile application. This mobile application installs the mobile applications available to the client-side component.
+Die serverseitige Komponente
+umfasst eine Administrationskonsole und eine mobile Anwendung. Mithilfe dieser mobilen Anwendung werden die verfügbaren mobilen Anwendungen in der clientseitigen Komponente installiert.
 
-The web console and the installer application communicate through REST services with the server component.
+Die Webkonsole
+und das Installationsprogramm kommunizieren über REST-Services mit der Serverkomponente.
 
-Several services compose the Application Center server-side component; for example, a service that lists available applications, a service that delivers the application binary files to the mobile device, or a service that registers feedback and ratings.
+Zur serverseitigen Komponente des Application Center
+gehören diverse Services, z. B. ein Service, der die verfügbaren Anwendungen auflistet, ein Service, der die binären Anwendungsdateien für die mobilen
+Geräte bereitstellt, oder ein Service, der Rückmeldungen und Bewertungen registriert.
 
 ### Repository
 {: #repository }
-A database that stores information such as which application is installed on which devices, the feedback about applications, and the mobile application binary files. The Application Center application is associated with the database when you configure the Application Center for a particular web application server and a supported database.
+Das Repository ist eine Datenbank, in der Informationen gespeichert werden, z. B. dazu, welche Anwendungen auf welchen Geräten
+installiert sind, Rückmeldungen zu Anwendungen und die Binärdateien mobiler Anwendungen. Das Application Center
+ist mit der Datenbank verknüpft, wenn Sie das Application Center für einen bestimmten Webanwendungsserver und eine unterstützte Datenbank konfigurieren.
 
-### Administration console
+### Administrationskonsole
 {: #administration-console }
-A web console through which administrators can manage applications, user access rights to install applications, user feedback about mobile applications, and details about applications installed on devices. See [The Application Center console](appcenter-console).
+Die Administrationskonsole ist eine Webkonsole, in der Administratoren Anwendungen, Benutzerzugriffsrechte für die Installation von Anwendungen, Benutzerrückmeldungen
+zu mobilen Anwendungen und Details zu Anwendungen, die auf Geräten installiert sind, verwalten können (siehe [Application-Center-Konsole](appcenter-console)). 
 
-### Mobile client application
+### Mobile Clientanwendung
 {: #mobile-client-application }
-You use the mobile client to install applications on a mobile device and to send feedback about an application to the server. See [The mobile client](mobile-client).
+Mit dem mobilen Client können Sie Anwendungen auf einem mobilen Gerät installieren und Rückmeldungen zu einer Anwendung an den Server
+senden (siehe [Mobiler Client](mobile-client)). 
 
-The following figure shows an overview of the architecture.
+Die folgende Abbildung gibt einen Überblick über die
+Architektur.
 
-![Application Center architecture](ac_arch.jpg)
+![Architektur des Application Center](ac_arch.jpg)
 
-From the Application Center console, you can take the following actions:
+Von
+der Application-Center-Konsole aus können Sie folgende Aufgaben ausführen:
 
-* Upload different versions of mobile applications.
-* Remove unwanted applications.
-* Control access to applications: Each application is associated with the list of people who can install the application.
-* View feedback that mobile users have sent about an application.
-* Obtain information about applications installed on a device.
-* Make an application inactive so that it is not visible in the available applications for download.
+* Andere Versionen mobiler Anwendungen hochladen
+* Nicht erwünschte Anwendungen entfernen
+* Zugriff auf Anwendugnen steuerun: Jede Anwendung
+ist mit der Liste der Personen verknüpft, die die Anwendung installieren können.
+* Rückmeldungen anzeigen, die Benutzer mobiler Geräte zu einer Anwendung gesendet haben
+* Informationen zu den auf einem Gerät installierten Anwendungen abrufen
+* Eine Anwendung inaktivieren, sodass sie nicht in der Liste der zum Download verfügbaren Anwendungen sichtbar ist
 
-From the mobile client, you can take the following actions:
+Vom
+mobilen Client aus können Sie folgende Aufgaben ausführen:
 
-* List available mobile applications.
-* Install a new application on a device.
-* Send feedback about an application.
+* Verfügbare mobile Anwendungen auflisten
+* Eine neue Anwendung auf einem Gerät installieren
+* Rückmeldungen zu einer Anwendung senden
 
-The Application Center supports applications for Android, iOS, Windows Phone 8, and Windows 8 devices. Therefore, the mobile client comes in separate versions for Android, iOS, Windows Phone 8, and Windows 8.
+Das Application Center unterstützt
+Anwendungen für Android-, iOS-,
+Windows-Phone-8- und Windows-8-Geräte. Deswegen wird
+der mobile Client in separaten Versionen für Android, iOS, Windows Phone 8 und Windows 8 geliefert. 
 
-The Android, iOS, and Windows Phone 8 mobile clients are built on the {{ site.data.keys.product }}. To learn how to configure the Application Center server-side component on various Java application servers after the product is installed and build {{ site.data.keys.product_adj }} applications for the Application Center client, see [Configuring Application Center after installation](../installation-configuration/production/appcenter).
+Die Android-, iOS- und Windows-Phone-8-Version des
+mobilen Clients setzt auf der
+{{ site.data.keys.product }} auf. Unter [Application Center-Server
+nach der Installation konfigurieren](../installation-configuration/production/appcenter) erfahren Sie,
+wie die serverseitige Application-Center-Komponente nach Installation des Produkts
+in verschiedenen Java-Anwendungsservern konfiguriert wird
+und wie
+{{ site.data.keys.product_adj }}-Anwendungen für den Application-Center-Client erstellt werden. 
 
-## Preliminary information
+## Vorläufige Informationen
 {: #preliminary-information }
-To use the Application Center, you must configure security settings, start the web application server where {{ site.data.keys.product }} is installed, start the Application Center console, and log in.
+Für die Verwendung des Application Center müssen Sie Sicherheitseinstellungen konfigurieren,
+den Webanwendungsserver, auf dem die {{ site.data.keys.product }}
+installiert ist,
+und die Application-Center-Konsole starten und sich anmelden.
 
-When you install {{ site.data.keys.product }}, the Application Center is automatically installed in the specified application server.
+Wenn Sie die {{ site.data.keys.product }}
+installieren, wird
+das Application Center automatisch im angegebenen Anwendungsserver installiert.
 
-If you install the Application Center in WebSphere  Application Server Liberty profile, the server is created in **installation-directory/server**.
+Wenn Sie
+das Application Center in  WebSphere Application Server Liberty Profile installieren, wird der Server im Verzeichnis **Installationsverzeichnis/server** erstellt.
 
-After the installation is complete, you must configure the security settings for the applications. See [Configuring user authentication for Application Center](../installation-configuration/production/appcenter#configuring-user-authentication-for-application-center) or, if you are using LDAP authentication, [Managing users with LDAP](../installation-configuration/production/appcenter/#managing-users-with-ldap).
+Nach
+Abschluss der Installation müssen Sie die Sicherheitseinstellungen für die Anwendungen konfigurieren. Lesen Sie dazu
+den Artikel [Benutzerauthentifizierung für das
+Application Center konfigurieren](../installation-configuration/production/appcenter#configuring-user-authentication-for-application-center) oder, wenn Sie die
+LDAP-Authentifizierung verwenden, den Artikel [Benutzer mit LDAP verwalten](../installation-configuration/production/appcenter/#managing-users-with-ldap).
 
-### Example: starting the server and the Application Center console on Liberty profile
+### Beispiel: Server und Application-Center-Konsole in Liberty Profile starten
 {: #example-starting-the-server-and-the-application-center-console-on-liberty-profile}
 
-1. Start the Liberty server by using the **server** command that is in the **installation-directory/server/wlp/bin directory**.
+1. Starten Sie den Liberty-Server mit dem Befehl **server** im Verzeichnis **Installationsverzeichnis/server/wlp/bin**. 
 
    ```bash
    server start worklightServer
    ```
     
-2. When the server is running, start the Application Center console by entering this address in your browser: `http://localhost:9080/appcenterconsole/`
-3. Log in. By default, two users are defined for the installation of the Application Center on Apache Tomcat or WebSphere Application Server Liberty profile:
-    * **demo** with password **demo**
-    * **appcenteradmin** with password **admin**
+2. Wenn der Server aktiv ist, starten Sie die Application-Center-Konsole, indem Sie in Ihrem Browser folgende Adresse eingeben: `http://localhost:9080/appcenterconsole/`.
+3. Melden Sie sich an. Für die Installation des
+Application Center
+in Apache Tomcat oder WebSphere Application Server Liberty Profile sind standardmäßig zwei Benutzer definiert:
+    * **demo** mit dem Kennwort **demo**
+    * **appcenteradmin** mit dem Kennwort **admin**
 
-### For more information
+### Weitere Informationen
 {: #for-more-information }
-To use the Application Center console, refer to [The Application Center console](appcenter-console).
+Informationen zur Verwendung der Application-Center-Konsole finden Sie unter
+[Application-Center-Konsole](appcenter-console).
 
-To install and run the mobile client on the following operating systems, see:
+Informationen zur Installation und Ausführung des mobilen Clients unter den verschiedenen Betriebssystemen finden Sie unter: 
 
-* Android: See [Installing the client on an Android mobile device](mobile-client/#installing-an-application-on-an-android-device).
-* iOS operating system: See [Installing the client on an iOS mobile device](mobile-client/#installing-an-application-on-an-ios-device).
-* Windows Phone 8: See [Installing the client on Windows 8 Universal](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device).
-* Windows 8: The mobile client for Windows 8 is not intended to be deployed in Application Center for later distribution. See [Microsoft Windows 8: Building the project](preparations/#microsoft-windows-8-building-the-project).
+* Android: Weitere Informationen finden Sie unter [Client auf einem mobilen Android-Gerät installieren](mobile-client/#installing-an-application-on-an-android-device).
+* iOS: Weitere Informationen finden Sie unter [Client auf einem mobilen iOS-Gerät installieren](mobile-client/#installing-an-application-on-an-ios-device).
+* Windows Phone 8: Weitere Informationen finden Sie unter
+[Client unter Windows 8 Universal installieren](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device).
+* Windows 8: Der mobile Client für
+Windows 8 wird nicht im Application Center implementiert und nicht über das Application Center verteilt (siehe [Microsoft Windows 8: Projektbuild erstellen](preparations/#microsoft-windows-8-building-the-project)). 
 
-## What's next
+## Weitere Schritte
 {: #whats-next }
-Follow these topics to use the appcenter mobile client; send notifications to installed applications; learn about the appcenter console, command-line tool, the mobile client; and setting log levels.
+Informieren Sie sich anhand der folgenden Abschnitte über die Verwendung des mobilen Application-Center-Clients.
+Erfahren Sie, wie die Application-Center-Konsole,
+das Befehlszeilentool und der mobile Client verwendet werden und wie Protokollstufen festgelegt werden. 
+
+
 
 
 

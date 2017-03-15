@@ -1,314 +1,354 @@
 ---
 layout: tutorial
-title: Distributing mobile applications with IBM Application Center
+title: Mobile Anwendungen über das IBM Application Center verteilen
 relevantTo: [ios,android,windows8,cordova]
 show_in_nav: false
 weight: 7
 ---
-## Overview
+<!-- NLS_CHARSET=UTF-8 -->
+## Übersicht
 {: #overview }
-{{ site.data.keys.mf_app_center_full }} is a **repository of mobile applications** similar to public app stores but focused on the needs of an organization or a team. It is a private app store.
+Das {{ site.data.keys.mf_app_center_full }} ist ein **Repository für mobile Anwendungen**.
+Es ist mit öffentlichen App Stores vergleichbar, jedoch speziell auf die Anforderungen einer Organisation oder eines Teams abgestellt. Das Application Center ist ein privater App Store. 
 
-Application Center facilitates sharing mobile applications:
+Das Application Center vereinfacht die gemeinsame Nutzung mobiler Anwendungen: 
 
-* You can **share feedback and rating** information.  
-* You can use access control lists to limit who can install applications.
+* Sie können **Feedback und Bewertungen** teilen.   
+* Über Zugriffssteuerungslisten können Sie festlegen, wer Anwendungen installieren darf. 
 
-Application Center works with {{ site.data.keys.product_adj }} apps and non-{{ site.data.keys.product_adj }} apps, and supports any **iOS, Android**, **BlackBerry 6/7**, and **Windows/Phone 8.x** applications.
+Das Application Center arbeitet mit {{ site.data.keys.product_adj }}-Apps und Nicht-{{ site.data.keys.product_adj }}-Apps
+und unterstützt **iOS**-, **Android**-, **BlackBerry-6/7**- und
+**Windows/Windows-Phone-8.x**-Anwendungen. 
 
-> **Note:** Archive/IPA files generated using Test Flight or iTunes Connect for store submission/validation of iOS apps, might cause a runtime crash/fail, read the blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/), to know more.
+> **Hinweis:** Archiv- bzw. IPA-Dateien, die
+für die Übergabe von iOS-Apps an einen Store oder für die Validierung von iOS-Apps mit Test Flight oder iTunes Connect generiert werden,
+können zu Laufzeitfehlern oder zu einem Laufzeitabsturz führen.
+Weitere Informationen hierzu finden Sie im Blog [Preparing iOS apps for App Store submission in IBM MobileFirst Foundation 8.0](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/17/prepare-ios-apps-for-app-store-submission/).
+Sie können das Application Center in verschiedenen Kontexten verwenden. Beispiel: 
 
-You can use Application Center in different contexts. For example:
+* Unternehmens-App-Store für eine Organisation
+* Verteilung von Anwendungen innerhalb eines Teams während der Entwicklung
 
-* As an enterprise app store across an organization.
-* During development to distribute applications within a team.
+> **Hinweis:** Für die Erstellung des iOS-Application-Center-Installationsprogramms ist MobileFirst 7.1 erforderlich. 
 
-> **Note:** to build the iOS AppCenter Installer application, MobileFirst 7.1 is required.
-
-#### Jump to:
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to}
-* [Installing and configuring](#installing-and-configuring)
-* [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client)
-* [Preparing mobile clients](#preparing-mobile-clients)
-* [Managing applications in the Application Center console](#managing-applications-in-the-application-center-console)
-* [The Application Center mobile client](#the-application-center-mobile-client)
-* [Application Center command-line tools](#application-center-command-line-tools)
+* [Installation und Konfiguration](#installing-and-configuring)
+* [Cordova-basierter IBM Application-Center-Client](#cordova-based-ibm-appcenter-client)
+* [Mobile Clients erstellen](#preparing-mobile-clients)
+* [Anwendungen in der Application-Center-Konsole verwalten](#managing-applications-in-the-application-center-console)
+* [Mobiler Application-Center-Client](#the-application-center-mobile-client)
+* [Befehlszeilentools des Application Center](#application-center-command-line-tools)
 
-## Installing and configuring
+## Installation und Konfiguration
 {: #installing-and-configuring }
-Application Center is installed as part of the installation of {{ site.data.keys.mf_server }} with IBM Installation Manager.
+IBM Installation Manager installiert das Application Center zusammen mit {{ site.data.keys.mf_server }}. 
 
-**Prerequisite:** Before you install Application Center, you must have installed an application server and a database:
+**Voraussetzung:** Bevor Sie das Application Center installieren, müssen Sie einen Anwendungsserver und eine Datenbank installiert haben: 
 
-* Application server: Tomcat or WebSphere  Application Server full profile or Liberty profile
-* Database: DB2 , Oracle, or MySQL
+* Anwendungsserver: Tomcat, WebSphere Application Server Full Profile oder WebSphere Application Server Liberty Profile
+* Datenbank: DB2, Oracle oder MySQL
 
-If you do not have a database installed, the installation process can also install an Apache Derby database. However, using the Derby database is not recommended for production scenarios.
+Wenn Sie keine installierte Datenbank haben, kann der Installationsprozess eine Apache-Derby-Datenbank installieren. Die Derby-Datenbank ist allerdings nicht für Produktionsszenarien zu empfehlen. 
 
-1. IBM Installation Manager guides you through the installation of Application Center with choices of database and application server.
+1. IBM Installation Manager führt Sie durch die Installation des Application Center und bietet Optionen für die Datenbank und den Anwendungsserver an. 
 
-    > For more information, see the topic about [installing {{ site.data.keys.mf_server }}](../../installation-configuration).
+    > Weitere Informationen finden Sie unter [{{ site.data.keys.mf_server }} installieren](../../installation-configuration).
 
-    Because iOS 7.1 supports only the https protocol, the Application Center server must be secured with SSL (at least with TLS v.1) if you plan to distribute apps for devices that run iOS 7.1 or later. Self-signed certificates are not recommended, but can be used for testing purposes, provided that self-signed CA certificates are distributed to devices.
+    Da iOS 7.1 nur das HTTPS-Protokoll unterstützt, muss der
+Application-Center-Server mit SSL (d. h. zumindest mit TLS Version 1) geschützt werden, wenn Sie
+Apps für Geräte mit iOS ab Version 7.1 verteilen möchten. Selbst signierte Zertifikate werden nicht empfohlen, können jedoch für Testzwecke verwendet werden,
+sofern
+an die Geräte selbst signierte Zertifikate einer Zertifizierungsstelle verteilt werden. 
 
-2. After Application Center is installed with IBM Installation Manager, open the console: `http://localhost:9080/appcenterconsole`
+2. Öffnen Sie nach der Installation des Application Center  mit IBM Installation Manager die Konsole (`http://localhost:9080/appcenterconsole`). 
 
-3. Log in with this user/password combination: demo/demo
+3. Melden Sie sich mit der Benutzer-Kennwort-Kombination demo/demo an. 
 
-4. At this point, you can configure user authentication. For example, you can connect to an LDAP repository.
+4. Jetzt können Sie die Benutzerauthentifizierung konfigurieren. Sie können beispielsweise keine Verbindung zu einem LDAP-Repository herstellen. 
 
-    > For more information, see the topic about [configuring the Application Center after installation](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
+    > Weitere Informationen finden Sie unter [Application Center nach der Installation konfigurieren](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
 
-5. Prepare the mobile client for Android, iOS, BlackBerry 6/7, and Windows Phone 8
+5. Erstellen Sie den mobilen Client für Android, iOS, BlackBerry 6/7 und Windows Phone 8. 
 
-The mobile client is the mobile application that you use to browse the catalog and install the application.
+Der mobile Client ist die mobile Anwendung, die Sie zum Anzeigen des Katalogs und zum Installieren der Anwendung verwenden. 
 
-> **Note:** For a production installation, consider to install the Application Center by running the provided Ant tasks: it enables you to decouple updates to the server from updates to the Application Center.
+> **Hinweis:** Für eine Produktionsinstallation sollten Sie das Application Center mit bereitgestellten Ant-Tasks installieren, damit Sie
+den Server unabhängig vom Application Center aktualisieren können.
 
-## Cordova based IBM AppCenter client
+## Cordova-basierter IBM Application-Center-Client
 {: #cordova-based-ibm-appcenter-client }
-The Cordova based AppCenter client project is located in the `install` directory at: **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**.
+Das Cordova-basierte Clientprojekt "AppCenter" befindet sich im Verzeichnis
+`install` unter **Installationsverzeichnis/ApplicationCenter/installer/CordovaAppCenterClient**.
 
-This project is based solely on the Cordova framework and thus has no dependency on the {{ site.data.keys.product }} client/server APIs.  
-Since this a standard Cordova app, there is also no dependency on {{ site.data.keys.mf_studio }}. This app uses Dojo for the UI.
+Dieses Projekt basiert ausschließlich auf dem Cordova-Framework, sodass es keine Abhängigkeit von Client/Server-APIs der
+{{ site.data.keys.product }} gibt.   
+Da es sich um eine Cordova-Standard-App handelt, gibt es auch keine Abhängigkeit von {{ site.data.keys.mf_studio }}. Diese App verwendet Dojo für die Benutzerschnittstelle. 
 
-Follow the steps below to get started:
+Starten Sie wie folgt: 
 
-1. Install Cordova.
+1. Installieren Sie Cordova.
 
 ```bash
 npm install -g cordova@latest
 ```
 
-2. Install Android SDK and set the `ANDROID_HOME`.  
-3. Build and run this project.
+2. Installieren Sie das Android-SDK und definieren Sie `ANDROID_HOME`.  
+3. Erstellen Sie einen Projektbuild und führen Sie dieses Projekt aus. 
 
-Build all platforms:
+Build für alle Plattformen: 
 
 ```bash
 cordova build
 ```
 
-Build only Android:
+Build nur für Android:
 
 ```bash
 cordova build android
 ```
 
-Build only iOS:
+Build nur für iOS:
 
 ```bash
 cordova build ios
 ```
 
-### Customizing AppCenter Installer application
+### Application-Center-Installationsprogramm anpassen
 {: #customizing-appcenter-installer-application }
-You can further customize the application, such as updating its user interface for your specific company or needs.
+Sie können die Anwendung weiter Anpassen. Sie können beispielsweise die Benutzerschnittstelle entsprechend den Anforderungen oder Bedürfnissen
+Ihres konkreten Unternehmens aktualisieren. 
 
-> **Note:** While you can freely customize the application UI and behavior, such changes are not under the support agreement by IBM.
+> **Hinweis:** Es steht Ihnen frei, die Benutzerschnittstelle und das Verhalten der Anwendung anzupassen. Solche Änderungen sind jedoch nicht vom IBM Unterstützungsvertrag abgedeckt.
 
 #### Android
 {: #android }
-* Open the Android Studio.
-* Select **Import project (Eclipse ADT, Gradle, etc.)**
-* Select the android folder from **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android**.
+* Öffnen Sie Android Studio.
+* Wählen Sie **Import project (Eclipse ADT, Gradle, etc.)** aus. 
+* Wählen Sie den Ordner "android" aus (**Installationsverzeichnis/ApplicationCenter/installer/CordovaAppCenterClient/platforms/android**).
 
-This might take some time. Once this is done you are ready to customize.
+Dies kann eine Weile dauern. Sobald dieser Schritt abgeschlossen ist, können Sie mit der Anpassung beginnen. 
 
-> **Note:** Select to skip the update option on the popup window, for upgrading the gradle version. Refer to `grade-wrapper.properties` for the version.
+> **Hinweis:** Wählen Sie im Popup-Fenster aus, dass Sie das Upgrade für die Gradle-Version überspringen möchten. Informationen zur Version finden Sie in `grade-wrapper.properties`.
 
 #### iOS
 {: #ios }
-* Go to **install_dir/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
-* Click to open the **IBMAppCenterClient.xcodeproj** file, the project is opened in Xcode and you are ready to customize.
+* Navigieren Sie zu **Installationsverzeichnis/ApplicationCenter/installer/CordovaAppCenterClient/platforms**.
+* Klicken Sie auf die Datei **IBMAppCenterClient.xcodeproj**, um sie zu öffnen. Das Projekt wird in Xcode geöffnet, sodass Sie mit der Anpassung beginnen können. 
 
-## Preparing mobile clients
+## Mobile Clients erstellen
 {: #preparing-mobile-clients }
-### For Android phones and tablets
+### Android-Mobiltelefone und -Tablets
 {: #for-android-phones-and-tablets }
-The mobile client is delivered as a compiled application (APK) and is located at **install_dir/ApplicationCenter/installer/IBMApplicationCenter.apk**
+Der mobile Client wird als kompilierte Anwendung (APK) unter **Installationsverzeichnis/ApplicationCenter/installer/IBMApplicationCenter.apk** bereitgestellt. 
 
-> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
+> **Hinweis:** Wenn Sie das Cordova-Framework für die Erstellung des Android- und iOS-Application-Center-Clients verwenden, lesen Sie die Informationen
+unter [Cordova-basierter IBM Application-Center-Client](#cordova-based-ibm-appcenter-client).
 
-### For iPad and iPhone
+### iPad und iPhone
 {: #for-ipad-and-iphone }
-1. Compile and sign the client application provided in source code. This is mandatory.
+1. Kompilieren und signieren Sie die als Quellcode bereitgestellte Clientanwendung. Dieser Schritt ist obligatorisch. 
 
-2. In MobileFirst Studio, open the IBMAppCenter Project at: **install\_dir/ApplicationCenter/installer**
+2. Öffnen Sie in MobileFirst Studio das Projekt IBMAppCenter unter **Installationsverzeichnis/ApplicationCenter/installer**. 
 
-3. Use **Run As → Run on MobileFirst Development Server** to build the project.
+3. Verwenden Sie **Ausführen als → Run on MobileFirst Development Server**, um den Projektbuild zu erstellen. 
 
-4. Use Xcode to build and sign the application with your Apple iOS Enterprise profile.  
-You can either open the resulting native project (in **iphone\native**) manually in Xcode, or right-click the iPhone folder and select **Run As → Xcode project**. This action generats the project and opens it in Xcode.
+4. Verwenden Sie Xcode, um den Anwendungsbuild zu erstellen und die Anwendung mit Ihrem Apple-iOS-Unternehmensprofil zu signieren.   
+Sie können das resultierende native Projekt
+(unter **iphone\native**) manuell in Xcode öffnen oder mit der rechten Maustaste auf den
+iPhone-Ordner klicken und **Ausführen als → Xcode-Projekt** auswählen. Diese Aktion generiert das Projekt und öffnet es in Xcode. 
 
-> **Note:** Refer to [Cordova based IBM AppCenter client](#cordova-based-ibm-appcenter-client), if you are using Cordova framework for building Android and iOS AppCenter client.
+> **Hinweis:** Wenn Sie das Cordova-Framework für die Erstellung des Android- und iOS-Application-Center-Clients verwenden, lesen Sie die Informationen
+unter [Cordova-basierter IBM Application-Center-Client](#cordova-based-ibm-appcenter-client).
 
-### For Blackberry
+### BlackBerry
 {: #for-blackberry }
-* To build the BlackBerry version, you must have the BlackBerry Eclipse IDE (or Eclipse with the BlackBerry Java plug-in) with the BlackBerry SDK 6.0. The application also runs on BlackBerry OS 7 when compiled with BlackBerry SDK 6.0.
+* Wenn Sie die BlackBerry-Version erstellen möchten, benötigen Sie die BlackBerry-Eclipse-IDE
+(oder Eclipse mit dem BlackBerry-Java-Plug-in) mit dem BlackBerry SDK 6.0. Wenn die Anwendung mit dem BlackBerry SDK 6.0 kompiliert wird, kann sie auch unter
+BlackBerry 7 ausgeführt werden. 
 
-A BlackBerry project is provided in: **install\_dir/ApplicationCenter/installer/IBMAppCenterBlackBerry6**
+Unter **Installationsverzeichnis/ApplicationCenter/installer/IBMAppCenterBlackBerry6** wird ein BlackBerry-Projekt bereitgestellt. 
 
-### For Windows Phone 8
+### Windows Phone 8
 {: #for-windows-phone-8}
-1.  Register a company account with Microsoft.  
-Application Center manages only company applications that are signed with the company certificate that comes with your company account.
+1.  Registrieren Sie bei Microsoft ein Unternehmenskonto.   
+Das Application Center verwaltet nur Unternehmensanwendungen, die mit dem Unternehmenszertifikat Ihres Unternehmenskontos signiert wurden. 
 
-2. The Windows Phone version of the mobile client is included at: **install\_dir/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap**
+2. Die Windows-Phone-Version des mobilen Clients ist in **Installationsverzeichnis/ApplicationCenter/installer/IBMApplicationCenterUnsigned.xap** enthalten.
 
-* Make sure that also the Application Center mobile client is signed with this company certificate.
+* Stellen Sie sicher, dass der mobile Application-Center-Client mit diesem Unternehmenszertifikat signiert wurde. 
 
-* To install company applications on a device, first enroll the device with the company by installing a company enrollment token.
+* Wenn Sie Unternehmensanwendungen auf einem Gerät installieren möchten, müssen Sie zunächst ein Token für die Unternehmensregistrierung installieren, um das Gerät im Unternehmen zu registrieren.
 
-> For more information about company accounts and enrollment tokens, see the [Microsoft Developer website → Company app distribution for Windows Phone](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).aspx) page.
+> Weitere Informationen zu Unternehmenskonten und Registrierungstoken finden Sie
+auf der Microsoft-Website für Entwickler auf der Seite [Company app distribution for Windows Phone](http://msdn.microsoft.com/library/windows/apps/jj206943(v=vs.105).
 
-> For more information about how to sign Windows Phone mobile client applications, see the [Microsoft Developer website](http://dev.windows.com/en-us/develop).
+> Weitere Informationen zum Signieren von mobilen Windows-Phone-Clientanwendungen finden Sie auf der
+[Microsoft-Website für Entwickler](http://dev.windows.com/en-us/develop).
 
 <br/>
 
-> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Important:**  You **cannot** use the unsigned `.xap` file directly. Before you can install it on a device, you must first sign it with your company certificate, which you obtained from Symantec or Microsoft.
+> <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Wichtiger Hinweis:**  Sie
+können die nicht signierte `.xap`-Datei **nicht** direkt verwenden. Bevor Sie die Datei auf einem Gerät installieren, müssen Sie sie mit Ihrem Unternehmenszertifikat, das Sie von Symantec oder Microsoft erhalten haben, signieren.
 
-### For Windows Store Apps for Windows 8.1 Pro
+### Windows-Store-Apps für Windows 8.1 Pro
 {: #for-windows-store-apps-for-windows-81-pro }
-* The **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file contains the executable of the Application Center client. Distribute this file to the client computer and unzip it. It contains the executable program.
+* Die Datei **Installationsverzeichnis/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** enthält
+die ausführbare Datei des Application-Center-Clients. Geben Sie diese Datei an den Clientcomputer weiter und entpacken Sie sie dort. Die Datei enthält das ausführbare Programm. 
 
-* Installing a Windows Store app (a file of type `appx`) without using Microsoft Windows Store is called <em>sideloading</em> an app. To sideload an app, you must comply with the prerequisites in [Prepare to sideload apps](https://technet.microsoft.com/fr-fr/library/dn613842.aspx. The Windows 8.1.1 update simplifies the prerequisites for sideloading. For more information, see [Sideloading Store Apps to Windows 8.1.1 Devices]( http://blogs.msdn.com/b/micham/archive/2014/05/30/sideloading-store-apps-to-windows-8-1-devices.aspx).
+* Die Installation einer Windows-Store-App (d. h. einer Datei vom Typ
+`appx`) ohne Verwendung des Microsoft Windows Store wird als das <em>Querladen</em> einer App
+bezeichnet. Für das Querladen einer App müssen Sie die
+unter
+["Prepare to sideload apps"](https://technet.microsoft.com/fr-fr/library/dn613842.aspx.Mit dem Update auf Windows 8.1.1 gelten vereinfachte Voraussetzungen für das Querladen.
+Weitere Informationen finden Sie unter ) beschriebenen Voraussetzungen erfüllen. 
 
-## Managing applications in the Application Center console
+
+## Anwendungen in der Application-Center-Konsole verwalten
 {: #managing-applications-in-the-application-center-console }
-![Image of application management in app center]({{ site.baseurl }}/assets/backup/overview1.png)
+![Anwendungsverwaltung im Application Center]({{ site.baseurl }}/assets/backup/overview1.png)
 
-Use the Application Center console to manage applications in the catalog in the following ways:
+Verwenden Sie die Application-Center-Konsole, um Anwendungen im Katalog mit folgenden Aktionen zu verwalten: 
 
-* Add and remove applications
-* Manage versions of applications    
-* Look at the details of an application
-* Restrict the access of an application to specific users or groups of users
-* Read the reviews for each application
-* Review registered users and devices
+* Anwendungen hinzufügen und entfernen
+* Anwendungsversionen verwalten    
+* Details einer Anwendung anzeigen
+* Zugriff auf eine Anwendung auf bestimmte Benutzer oder Benutzergruppen beschränken
+* Rezensionen zu Anwendungen lesen
+* Registrierte Benutzer und Geräte überprüfen
 
-### Adding new applications to the store
+### Neue Anwendungen zum Store hinzufügen
 {: #adding-new-applications-to-the-store }
-![Image of adding apps to the app center]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
+![Apps zum Application Center hinzufügen]({{ site.baseurl }}/assets/backup/addAppFile_smaller.png)
 
-To add new applications to the Store:
+Gehen Sie wie folgt vor, um neue Anwendungen zum Store hinzuzufügen:
 
-1. Open the Application Center console.
-2. Click **Add application**.
-3. Select an application file:
+1. Öffnen Sie die Application-Center-Konsole. 
+2. Klicken Sie auf **Anwendung hinzufügen**.
+3. Wählen Sie eine Anwendungsdatei aus:
     * `.ipa`: iOS
     * `.apk`: Android
     * `.zip`: BlackBerry 6/7
     * `.xap`: Windows Phone 8.x
     * `.appx`: Windows Store 8.x
 
-* Click **Next**.
+* Klicken Sie auf
+**Next**.
 
-    In the Application Details views, you can review the information about the new application and enter further information such as the description. You can return to this view later for all applications in the catalog.
+    In den Ansichten mit den Anwendungsdetails können Sie die Informationen zu der neuen Anwendung überprüfen und weitere Informationen eingeben, z. B. eine Beschreibung. Später können Sie zu dieser Ansicht für alle Anwendungen im Katalog zurückkehren. 
 
-    ![Image of application details screen]({{ site.baseurl }}/assets/backup/appDetails1.png)
+    ![Anzeige der Anwendungsdetails]({{ site.baseurl }}/assets/backup/appDetails1.png)
 
-* Click **Done** to finish the task.
+* Klicken Sie auf **Done**, um die Aufgabe abzuschließen. 
 
-The new application is added to the store.
+Die neue Anwendung wird zum Store hinzugefügt. 
 
-![Image of access control in app center]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
+![Zugriffssteuerung im Application Center]({{ site.baseurl }}/assets/backup/accessControlEnabled.png)
 
-By default, an application can be installed by any authorized user of the store.
+Standardmäßig kann eine Anwendung von jedem autorisierten Benutzer des Stores installiert werden. 
 
-### Restricting access to a group of users
+### Zugriff auf eine Benutzergruppe beschränken
 {: #restricting-access-to-a-group-of-users }
-To restrict access to a group of users:
+Gehen Sie wie folgt vor, um den Zugriff auf eine Benutzergruppe zu beschränken: 
 
-1. In the catalog view, click the **unrestricted link** that is next to the application name. The Installation Access Control page opens.
-2. Select **Access control enabled**. You can now enter the list of users or groups that are authorized to install the application.
-3. If you have configured LDAP, add users and groups that are defined in the LDAP repository.
+1. Klicken Sie in der Katalogansicht neben dem Anwendungsnamen auf den Link **unrestricted**. Die Seite "Installation Access Control" wird geöffnet. 
+2. Wählen Sie **Access control enabled** aus. Sie können die Liste der Benutzer oder Gruppen eingeben, die berechtigt sind, die Anwendung zu installieren. 
+3. Wenn Sie LDAP konfiguriert haben, fügen Sie im LDAP-Repository definierte Benutzer und Gruppen hinzu. 
 
-You can also add applications from public app stores such as Google Play or Apple App Store by entering their URLs.
+Sie können auch Anwendungen aus öffentlichen App Stores wie Google Play oder dem Apple App Store hinzufügen. Geben Sie dazu die entsprechenden URLs ein.
 
-## The Application Center mobile client
+## Mobiler Application-Center-Client
 {: #the-application-center-mobile-client }
-The App Center mobile client is a mobile application to manage the applications on the device. With the mobile client, you can:
+Der mobile Application-Center-Client ist eine mobile Anwendung für die Verwaltung der Anwendungen auf einem Gerät. Mit dem mobilen Client können Sie folgende Aufgaben ausführen: 
 
-* List all applications from the catalog (for which you have access rights).
-* List the favorite applications.
-* Install an application or upgrade to a new version.
-* Provide feedback and five-star rating for an application.
+* Auflisten aller Anwendungen im Katalog (für die Sie die Zugriffsberechtigung haben)
+* Auflisten der bevorzugten Anwendungen
+* Installieren einer Anwendung oder Upgrade auf eine neue Version
+* Bereitstellen von Feedback und einer Bewertung (bis zu fünf Sterne) für eine Anwendung
 
-### Adding mobile client applications to the catalog
+### Mobilen Client zum Katalog hinzufügen
 {: #adding-mobile-client-applications-to-the-catalog }
-You must add Application Center mobile client applications to the catalog.
+Sie müssen den mobilen Application-Center-Client zum Katalog hinzufügen. 
 
-1. Open the Application Center console.
-2. Click the **Add Application** button to add the mobile client `.apk`, `.ipa`, `.zip`, or `.xap` file.
-3. Click **Next** to open the Application Details page.
-4. In the Application Details page, select **Installer** to indicate that this application is a mobile client.
-5. Click **Done** to add the Application Center app to the catalog.
+1. Öffnen Sie die Application-Center-Konsole. 
+2. Klicken Sie auf die Schaltfläche **Anwendung hinzufügen**,
+um die Datei `.apk`, `.ipa`, `.zip` oder `.xap` des mobilen Clients hinzuzufügen. 
+3. Klicken Sie auf **Weiter**, um die Seite mit den Anwendungsdetails zu öffnen. 
+4. Wählen Sie auf der Seite mit den Anwendungsdetails **Installationsprogramm** aus, um anzugeben, dass diese Anwendung ein mobiler Client ist. 
+5. Klicken Sie auf **Fertig**, um die Application-Center-App zum Katalog hinzuzufügen. 
 
-The Application Center client for Windows 8.1 Pro does not need to be added to the catalog. This client is a regular Windows `.exe` program contained in the **install\_dir/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** file. You can simply copy it to the client computer.
+Der Application-Center-Client für Windows 8.1 Pro muss nicht zum Katalog hinzugefügt werden. Dieser Client ist ein reguläres Windows-Programm (`.exe`),
+das in der Datei **Installationsverzeichnis/ApplicationCenter/installer/IBMApplicationCenterWindowsStore.zip** enthalten ist. Sie können dieses Programm einfach auf den Clientcomputer kopieren. 
 
 ### Windows Phone 8
 {: #windows-phone-8 }
-On Windows Phone 8, you must also install the enrollment token that you received with your company account to the Application Center console, so that users can enroll their devices. You use the Application Center Settings page, which you can open through the gear icon.
+Unter Windows Phone 8 müssen Sie zusätzlich das Registrierungstoken, das Sie mit Ihrem Unternehmenskonto erhalten haben,
+in der Application-Center-Konsole installieren, damit Benutzer ihre Geräte registrieren können. Verwenden Sie die Seite mit den Application-Center-Einstellungen, die Sie über das Zahnradsymbol öffnen können. 
 
-![Image of Windows Phone 8 app enrollment]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
+![Registrierung einer Windows-Phone-8-App]({{ site.baseurl }}/assets/backup/wp8Enrollment.png)
 
-Before you can install the mobile client, you must enroll the device with the company by installing the enrollment token:
+Bevor Sie den mobilen Client installieren, müssen Sie das Gerät im Unternehmen registrieren, indem Sie das Registrierungstoken installieren: 
 
-1. Open the web browser on the device.
-2. Enter the URL: `http://hostname:9080/appcenterconsole/installers.html`
-3. Enter the user name and password.
-4. Click **Tokens** to open the list of enrollment tokens.
-5. Select the company in the list. The details of the company account are displayed.
-6. Click **Add Company Account**. Your device is enrolled.
+1. Öffnen Sie den Web-Browser auf dem Gerät. 
+2. Geben Sie die URL `http://hostname:9080/appcenterconsole/installers.html` ein. 
+3. Geben Sie den Benutzernamen und das Kennwort ein. 
+4. Klicken Sie auf **Token**, um die Liste der Registrierungstoken zu öffnen. 
+5. Wählen Sie in der Liste das Unternehmen aus. Die Details des Unternehmenskontos werden angezeigt. 
+6. Klicken Sie auf **Unterehmenskonto hinzufügen**. Ihr Gerät wird registriert. 
 
-### Installing the mobile client on the mobile device
+### Mobilen Client auf dem mobilen Gerät installieren
 {: #installing-the-mobile-client-on-the-mobile-device }
-To install the mobile client on the mobile device:
-![Image of application installer app]({{ site.baseurl }}/assets/backup/installers_smaller.png)
+Gehen Sie wie folgt vor, um den mobilen Client auf dem mobilen Gerät zu installieren:
+![App für Anwendungsinstallation]({{ site.baseurl }}/assets/backup/installers_smaller.png)
 
-1. Open the web browser on the device.
-2. Enter the URL: `http://hostname:9080/appcenterconsole/installers.html`
-3. Enter the user name and password.
-4. Select the Application Center application to start the installation.
+1. Öffnen Sie den Web-Browser auf dem Gerät. 
+2. Geben Sie die URL `http://hostname:9080/appcenterconsole/installers.html` ein. 
+3. Geben Sie den Benutzernamen und das Kennwort ein. 
+4. Wählen Sie die Application-Center-Anwendung aus, um die Installation zu starten. 
 
-On **Android** devices, you must open the Android Download application and select **IBM App Center** for installation.
+Auf **Android**-Geräten müssen Sie die Android-Download-Anwendung öffnen und
+**IBM App Center** zur Installation auswählen. 
 
-### Logging in to the mobile client
+### Anmeldung beim mobilen Client
 {: #logging-in-to-the-mobile-client }
-To log in to the mobile client:
+Gehen Sie wie folgt vor, um sich beim mobilen Client anzumelden: 
 
-1. Enter your credentials for access to the server.
-2. Enter the host name or IP address of the server.
-3. In the **Server port** field, enter the port number if it is not the default one (`9080`).
-4. In the **Application context** field, enter the context: `applicationcenter`.
+1. Geben Sie Ihre Berechtigungsnachweise für den Zugriff auf den Server ein. 
+2. Geben Sie den Hostnamen oder die IP-Adresse des Servers ein. 
+3. Geben Sie im Feld **Server-Port** die Portnummer ein, sofern nicht die Standardportnummer (`9080`) verwendet wird.
+4. Geben Sie im Feld **Anwendungskontext** den Kontext `applicationcenter` ein.
 
-![Login screen]({{ site.baseurl }}/assets/backup/login.png)
+![Anmeldeanzeige]({{ site.baseurl }}/assets/backup/login.png)
 
-### Application Center mobile client views
+### Ansichten des mobilen Application-Center-Clients
 {: #application-center-mobile-client-views }
-* The **Catalog** view displays the list of available applications.
-* Selecting an application opens the **Details** view on the application. You can install applications from the Details view. You can also mark applications as favorites by using the star icon in the Details View.
+* In der Ansicht **Katalog** wird die Liste der verfügbaren Anwendungen angezeigt. 
+* Wenn Sie eine Anwendung auswählen, wird die Ansicht **Details** für die Anwendung angezeigt. In der Detailansicht können Sie Anwendungen installieren. Sie können auch Anwendungen als Fovoriten markieren. Verwenden Sie dazu den roten Stern in der Detailansicht. 
 
-    ![Catalog details]({{ site.baseurl }}/assets/backup/catalog_details.001.jpg)
+    ![Katalogdetails]({{ site.baseurl }}/assets/backup/catalog_details.001.jpg)
 
-* The **Favorites** view lists the favorite applications. This list is available on all the devices of a particular user.
-* The **Updates** view lists all available updates. In the Updates view, you can navigate to the Details view. You can select a newer version of the application or take the latest available version. If Application Center is configured to send push notifications, you might be notified of updates by push notification messages.
+* In der Ansicht **Favoriten** werden die bevorzugten Anwendungen aufgelistet. Die Liste ist auf allen Geräten eines bestimmten Benutzers verfügbar. 
+* In der Ansicht **Aktualisierungen** werden alle verfügbaren Aktualisierungen aufgelistet. In der Ansicht "Aktualisierungen" können Sie zur Detailansicht navigieren. Sie können
+eine neuere Anwendungsversion auswählen oder die aktuellste verfügbare Version übernehmen. Wenn das Application Center für das Senden von Push-Benachrichtigungen konfiguriert ist, werden Sie möglicherweise mittels Push-Benachrichtigung über Aktualisierungen informiert. 
 
-From the mobile client, you can rate the application and send a review. Reviews can be viewed on the console or on the mobile device.
+Vom
+mobilen Client aus können Sie die Anwendung bewerten und eine Rezension senden. Rezensionen können in der Konsole oder auf dem mobilen Gerät angezeigt werden. 
 
-![Reviews]({{ site.baseurl }}/assets/backup/reviewss.png)
+![Rezensionen]({{ site.baseurl }}/assets/backup/reviewss.png)
 
-## Application Center command-line tools
+## Befehlszeilentools des Application Center
 {: #application-center-command-line-tools }
-The **install_dir/ApplicationCenter/tools** directory contains all the files that are required to use the command-line tool or Ant tasks to manage the applications in the store:
+Das Verzeichnis **Installationsverzeichnis/ApplicationCenter/tools** enthält alle Dateien, die für die Verwendung des Befehlszeilentools oder der Ant-Tasks
+für die Verwaltung der Anwendungen im Store benötigt werden: 
 
-* `applicationcenterdeploytool.jar`: the upload command-line tool.
-* `json4jar`: the library for the JSON format that is required by the upload tool.
-* `build.xml`: a sample Ant script that you can use to upload a single file or a sequence of files to Application Center.
-* `acdeploytool.sh` and `acdeploytool.bat`: Simple scripts to call Java with the `applicationcenterdeploytool.jar` file.
+* `applicationcenterdeploytool.jar`: Befehlszeilentool für Uploads
+* `json4.jar`: Bibliothek für das vom Uploadtool benötigte JSON-Format
+* `build.xml`: Ant-Beispiel-Script, mit dem Sie eine einzelne Datei oder eine Reihe von Dateien in das Application Center hochladen können
+* `acdeploytool.sh` und `acdeploytool.bat`: Beispiel-Scripts zum Aufrufen von Java mit `applicationcenterdeploytool.jar`
 
-For example, to deploy an application `app.apk` file to the store in `localhost:9080/applicationcenter` with user ID `demo` and password `demo`, write:
+Wenn Sie beispielsweise eine Anwendungsdatei `app.apk`
+im Store unter `localhost:9080/applicationcenter` mit der Benutzer-ID `demo` und dem Kennwort
+`demo` implementieren möchten, müssen Sie Folgendes schreiben: 
 
 ```bash
 Java com.ibm.appcenter.Upload -s http://localhost:9080 -c applicationcenter -u demo -p demo app.apk

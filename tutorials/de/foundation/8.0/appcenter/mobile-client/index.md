@@ -1,638 +1,942 @@
 ---
 layout: tutorial
-title: The mobile client
+title: Mobiler Client
 relevantTo: [ios,android,windows,javascript]
 weight: 5
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Overview
+## Übersicht
 {: #overview }
-You can install applications on your mobile device with the Application Center mobile client.
+Mit dem mobilen
+Application-Center-Client können Sie Anwendungen auf Ihrem mobilen Gerät installieren.
 
-The Application Center mobile client is the application that runs on your Android, iOS, Windows Phone, or Windows device. Only Windows Phone 8 is supported by the current version of the Application Center. You use the mobile client to list the catalog of available applications in the Application Center. You can install these applications on your device. The mobile client is sometimes referred to as the Application Center installer. This application must be present on your device if you want to install on your device applications from your private application repository.
+Der mobile Application-Center-Client ist die Anwendung, die auf Ihrem
+Android-, iOS-, Windows-Phone- oder Windows-Gerät ausgeführt wird. Von der aktullen Version des
+Application Center wird nur Windows Phone 8 unterstützt. Mit dem
+mobilen Client können Sie den Katalog verfügbarer Anwendungen im Application Center auflisten. Sie können diese Anwendungen auf Ihrem
+Gerät installieren. Manchmal wird der mobile Client auch als Application-Center-Installationsprogramm bezeichnet. Diese Anwendung
+muss auf Ihrem Gerät vorhanden sein, wenn Sie auf Ihrem Gerät Anwendungen aus Ihrem privaten Anwendungsrepository installieren wollen.
 
-### Prerequisites
+### Voraussetzungen
 {: #prerequisites }
-Your system administrator must give you a user name and password before you can download and install the mobile client. The user name and password are required whenever you start the mobile client on your device. For Windows Store applications, the user name and password are required for the mobile client only at run time. For security reasons, do not disseminate these credentials. These credentials are the same credentials used to log in to the Application Center console.
+Ihr Systemadministrator muss Ihnen einen Benutzernamen und ein Kennwort geben,
+damit Sie den mobilen Client herunterladen und installieren können. Sie benötigen den Benutzernamen und
+das Kennwort immer, wenn Sie den mobilen Client auf Ihrem Gerät starten. Für Windows-Store-Anwendungen
+benötigen Sie den Benutzernamen und das Kennwort für den mobilen Client nur in der Laufzeit. Geben Sie diese Berechtigungsnachweise aus Sicherheitsgründen nicht
+weiter. Diese Berechtigungsnachweise werden auch für die Anmeldung bei der Application-Center-Konsole
+verwendet.
 
-#### Jump to
+#### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
-* [Installing the client on an Android mobile device](#installing-the-client-on-an-android-mobile-device)
-* [Installing the client on an iOS mobile device](#installing-the-client-on-an-ios-mobile-device)
-* [Installing the client on a Windows Phone 8 Universal mobile device](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
-* [The Login view](#the-login-view)
-* [Views in the Application Center client](#views-in-the-application-center-client)
-* [Installing an application on an Android device](#installing-an-application-on-an-android-device)
-* [Installing an application on an iOS device](#installing-an-application-on-an-ios-device)
-* [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device)
-* [Installing a Windows Store application on a Windows device](#installing-a-windows-store-application-on-a-windows-device)
-* [Installing applications through public app stores](#installing-applications-through-public-app-stores)
-* [Removing an installed application](#removing-an-installed-application)
-* [Showing details of a specific application version](#showing-details-of-a-specific-application-version)
-* [Updating an application](#updating-an-application)
-* [Upgrading the Application Center client automatically](#upgrading-the-application-center-client-automatically)
-* [Reverting an installed application](#reverting-an-installed-application)
-* [Marking or unmarking a favorite app](#marking-or-unmarking-a-favorite-app)
-* [Submitting a review for an installed application](#submitting-a-review-for-an-installed-application)
-* [Viewing reviews](#viewing-reviews)
+* [Client auf einem mobilen Android-Gerät installieren](#installing-the-client-on-an-android-mobile-device)
+* [Client auf einem mobilen iOS-Gerät installieren](#installing-the-client-on-an-ios-mobile-device)
+* [Client auf einem mobilen Gerät mit Windows Phone 8 Universal installieren](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
+* [Anmeldeansicht](#the-login-view)
+* [Ansichten im Application-Center-Client](#views-in-the-application-center-client)
+* [Anwendung auf einem Android-Gerät installieren](#installing-an-application-on-an-android-device)
+* [Anwendung auf einem iOS-Gerät installieren](#installing-an-application-on-an-ios-device)
+* [Anwendung auf einem Windows-Phone-Gerät
+installieren](#installing-an-application-on-a-windows-phone-device)
+* [Windows-Store-Anwendung auf einem
+Windows-Gerät installieren](#installing-a-windows-store-application-on-a-windows-device)
+* [Anwendungen aus öffentlichen App Stores installieren](#installing-applications-through-public-app-stores)
+* [Installierte Anwendung entfernen](#removing-an-installed-application)
+* [Details einer bestimmten Anwendungsversion anzeigen](#showing-details-of-a-specific-application-version)
+* [Anwendung aktualisieren](#updating-an-application)
+* [Automatisches Upgrade für den Application-Center-Client](#upgrading-the-application-center-client-automatically)
+* [Installierte Anwendung zurücksetzen](#reverting-an-installed-application)
+* [App-Favorit festlegen oder löschen](#marking-or-unmarking-a-favorite-app)
+* [Rezension zu einer installierten Anwendung abschicken](#submitting-a-review-for-an-installed-application)
+* [Rezensionen anzeigen](#viewing-reviews)
 
-## Installing the client on an Android mobile device
+## Client auf einem mobilen Android-Gerät installieren
 {: #installing-the-client-on-an-android-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on your Android mobile device by entering the access URL in your browser, entering your credentials, and completing the required steps.
+Sie können den mobilen Client oder eine signierte Anwendung, die mit der Installationsmarkierung versehen ist,
+auf Ihrem mobilen Android-Gerät installieren, indem Sie die Zugriffs-URL in Ihrem Browser eingeben, Ihre Berechtigungsnachweise eingeben und die erforderlichen Schritte ausführen.
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`
+1. Starten Sie den Browser auf Ihrem mobilen Gerät.
+2. Geben Sie die folgende Zugriffs-URL im Adresstextfeld ein: `http://Hostname:Portnummer/applicationcenter/installers.html`.
 
-    Where hostname is the address of the server and portnumber is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+    Hier steht "Hostname" für die Adresse des Servers und "Portnummer" für die Nummer des Ports der Application-Center-Installation. Ihr Systemadministrator kann diese Informationen bereitstellen.
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page installers.html does not work on your mobile device, you can use inst.html. This page is provided in English only and is not translated into other languages.
+    Es gibt auch eine alternative Application-Center-URL für die Installation des Clients auf einem mobilen Gerät:
+`http://Hostname:Portnumber/applicationcenter/inst.html`. Die Seite mit dieser URL funktioniert besser bei einigen älteren Web-Browsern und solchen Web-Browsern, die keine
+Standardbrowser für mobile Geräte sind. Falls die Seite installers.html auf Ihrem mobilen Gerät nicht funktioniert, können Sie
+inst.html verwenden. Diese Seite wird nur auf Englisch bereitgestellt. Sie ist nicht in andere Sprachen übersetzt.
 
-    If you try to open the page with HTTPS and use self-signed certificates, older Android browsers cannot open the page. In this case, you must use a non self-signed certificate or use another browser on the Android device, such as Firefox, Chrome, or Opera. In Android 4 and later, the Android browser displays a security warning about the SSL certificate, but lets you proceed to the website after confirmation that you consent to an unsafe connection.
+    Wenn Sie versuchen, die Seite mit HTTPS zu öffnen,
+und selbst signierte Zertifikate verwenden, können ältere Android-Browser die Seite nicht öffnen. In diesem Fall müssen Sie ein nicht selbst signiertes
+Zertifikat oder einen anderen Browser auf dem Android-Gerät verwenden, z. B. Firefox, Chrome oder Opera. Ab Android 4
+zeigt der Android-Browser eine Sicherheitswarnung zum SSL-Zertifikat an.
+Nachdem Sie einer nicht sicheren Verbindung zugestimmt haben, ruft der Browser die Website auf. 
 
-3. Enter your user name and password. When your user name and password are validated, the list of compatible installer applications for your device is displayed in the browser. Normally, only one application, the mobile client, appears in this list.
+3. Geben Sie Ihren Benutzernamen und Ihr Kennwort ein. Nach der Validierung Ihres Benutzernamens und Ihres Kennworts wird im Browser die Liste kompatibler Installationsprogramme für Ihr Gerät angezeigt. Normalerweise erscheint in dieser Liste nur eine Anwendung (der mobile Client).
 
-4. If the web server uses a self-signed CA certificate, install the certificate at least once on the device. The Application Center administrator should provide the certificate; see [Managing and installing self-signed CA certificates in an Application Center test environment](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment) for details.
-    * Tap the **SSL-Certificate** tab and select the certificate.
-    * Tap **Install**. You must only perform this action once for the device. You can verify whether the certificate is installed by looking in **Settings → Security → Trusted Credentials → User on the device**. This view shows the SSL certificates that the user has installed on the device. If the self-signed CA certificate is not installed on the device, the Android operating system prevents you from downloading the mobile client in the following steps.
+4. Wenn der Web-Server ein selbst signiertes Zertifikat einer Zertifizierungsstelle verwendet, installieren Sie das Zertifikat mindestens einmal auf dem Gerät. Der Application-Center-Administrator sollte das Zertifikat bereitstellen.
+Details finden Sie unter [Selbst
+signierte Zertifikate einer Zertifizierungsstelle in einer Application-Center-Testumgebung verwalten und installieren](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment). 
+    * Tippen Sie auf das Register **SSL-Zertifikate** und wählen Sie das Zertifikat
+aus. 
+    * Tippen Sie auf **Installieren**. Diese Aktion muss pro Gerät nur einmal ausgeführt werden. Auf dem Gerät können Sie
+unter **Einstellungen → Sicherheit → Vertrauenswürd. Berechtigungen** überprüfen, ob das Zertifikat auf dem Gerät installiert ist. In der Ansicht sehen Sie die
+SSL-Zertifikate, die der Benutzer auf dem Gerät installiert hat. Wenn das selbst signierte Zertifikat einer Zertifizierungsstelle nicht auf dem Gerät installiert ist, hindert das Betriebssystem Android Sie daran, in den folgenden Schritten den mobilen Client herunterzuladen.
 
-    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the **Installer** property to **true**. See [Application properties](../appcenter-console/#application-properties).
+    Bevor Sie den mobilen Client in der Liste der verfügbaren Anwendungen sehen können, muss der Application-Center-Administrator die mobile Clientanwendung installieren. Der Administrator lädt den mobilen Client in das Application Center hoch und setzt die Eigenschaft **Installer** auf **true** (siehe [Anwendungseigenschaften](../appcenter-console/#application-properties)).
 
-    ![List of available mobile client applications to install](ac_instal_client_and1.jpg)
+    ![Liste der für die Installation verfügbaren mobilen Clientanwendungen](ac_instal_client_and1.jpg)
     
-5. Select an item in the list to display the application details. Typically, these details include the application name and its version number.
+5. Wählen Sie einen Listeneintrag aus, um die Anwendungsdetails anzuzeigen.Zu diesen Details gehören üblicherweise der Anwendungsname und die Nummer der Anwendungsversion.
 
-    ![Application details](ac_app_details.jpg)
+    ![Anwendungsdetails](ac_app_details.jpg)
 
-6. Tap **Install Now** to download the mobile client. On newer Android devices, a question might request permission for Chrome to access media files on the device. Select YES. A warning about potential harmful files might be displayed. Select the option to keep the APK file anyway.
+6. Tippen Sie auf **Install Now**, um den mobilen Client herunterzuladen. Auf neueren Android-Geräten können Sie gefragt werden, ob
+Chrome berechtigt ist, auf Mediendateien des Geräts zuzugreifen. Wählen Sie JA aus.
+Möglicherweise erscheint eine Warnung zu potenziell gefährlichen Dateien. Geben Sie an, dass Sie die APK-Datei in jedem Fall behalten möchten. 
 
-7. Launch the **Android Download** applications. Select the Application Center client installer.
-8. Select the Application Center client installer. You can see the access granted to the application when you choose to install it.
+7. Starten Sie den **Android-Download**.
+8. Wählen Sie das Application-Center-Clientinstallationsprogramm aus. Sie können die der Anwendung erteilten Zugriffsrechte sehen, wenn Sie die Anwendung zur Installation auswählen.
 
-    ![Installation of the mobile client in Android](ac_instal_client_and_rights.jpg)
+    ![Installation des mobilen Clients unter Android](ac_instal_client_and_rights.jpg)
     
-9. Select **Install** to install the mobile client.
-10. When the application is installed, select **Open** to open the mobile client or **Done** to close the Downloads application.
+9. Wählen Sie **Installieren** aus, um den mobilen Client zu installieren.
+10. Wenn die Anwendung installiert ist, wählen Sie **Öffnen** aus, um den mobilen Client zu öffnen, oder **Fertig**, um die Anwendung "Downloads" zu schließen.
 
-The APK file might fail for one of the following reasons:
+Der Download der APK-Datei könnte aus folgenden Gründen fehlschlagen. 
 
-* The device does not have enough free memory.
-* The SSL certificate of the server is not known to the device.
+* Der Hauptspeicher des Gerätes reicht nicht aus. 
+* Das SSL-Zertifikat des Servers ist auf dem Gerät unbekannt. 
 
-The first time that you install an app through the Downloads application, you might receive a request to confirm whether Google should regularly check the device activity for security problems. You can accept or decline according to your preference. The Application Center client is unaffected by your choice.
+Wenn Sie zum ersten Mal über die Anwendung "Downloads" eine App installieren, können Sie gefragt werden, ob
+Google die Geräteaktivitäten regelmäßig auf Sicherheitsprobleme überprüfen soll. Sie können dieser Überprüfung zustimmen oder sie ablehnen. Auf den Application-Center-Client hat Ihre Entscheidung keinen Einfluss. 
 
-The installation might be blocked for one of the following reasons:
+Die Installation könnte aus folgenden Gründen blockiert werden: 
 
-* The device does not permit installation from unknown sources. Go to **Settings → Security** on the device and enable **Unknown sources (Allow installation from unknown sources)**.
-* The device has the same app already installed, but it was signed by a different certificate. In this case, you must remove the app before you install it on the device with another signed certificate.
+* Das Gerät erlaubt keine Installation von unbekannten Quellen.
+Wählen Sie auf dem Gerät **Einstellungen → Sicherheit** aus, und aktivieren Sie
+**Unbekannte Quellen (Installation von Anwendungen aus unbekannten Quellen zulassen)**.
+* Auf dem Gerät ist die Anwendung bereits installiert. Sie wurde jedoch mit einem anderen Zertifikat signiert. In dem Fall müssen Sie die App entfernen, bevor Sie sie mit einem anderen Zertifikat signiert auf dem Gerät
+installieren. 
 
-## Installing the client on an iOS mobile device
+## Client auf einem mobilen iOS-Gerät installieren
 {: #installing-the-client-on-an-ios-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on your iOS mobile device by entering the access URL in your browser, entering your credentials, and completing the required steps.
+Sie können den mobilen Client oder eine signierte Anwendung, die mit der Installationsmarkierung versehen ist,
+auf Ihrem mobilen iOS-Gerät installieren, indem Sie die Zugriffs-URL in Ihrem Browser eingeben, Ihre Berechtigungsnachweise eingeben und die erforderlichen Schritte ausführen.
 
-> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
+> **Wichtiger Hinweis:** Bevor Sie Anwendungen auf iOS-Geräten installieren, müssen Sie den
+Application-Center-Server mit SSL konfigurieren (siehe [Secure Sockets Layer (SSL) konfigurieren](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)).Die JNDI-Eigenschaft **ibm.appcenter.ios.plist.onetimeurl** der
+IBM Application-Center-Services steuert, ob bei Installation des mobilen Clients auf einem mobilen iOS-Gerät Einmal-URLs verwendet werden. Setzen Sie diese Eigenschaft auf "false", um die maximale Sicherheit zu gewährleisten. Wenn Sie diese Eigenschaft auf "false" setzen, müssen Benutzer ihre Berechtigungsnachweise bei Installation des mobilen Clients mehrfach angeben,
+einmal bei Auswahl des Clients und einmal bei Installation des Clients.
 
-The **ibm.appcenter.ios.plist.onetimeurl** JNDI property of the IBM  Application Center Services controls whether One-Time URLs are used when the mobile client is installed on an iOS mobile device. Set this property to false for maximal security. When you set this property to false, users must enter their credentials several times when they install the mobile client: once when they select the client and once when they install the client.
+Wenn Sie die Eigenschaft auf "true" setzen, geben Benutzer ihre Berechtigungsnachweise nur einmal ein. Eine temporäre
+Download-URL mit einem kryptografischen Hashwert wird generiert, wenn der Benutzer die Berechtigungsnachweise eingibt.
+Diese temporäre Download-URL ist für eine Stunde gültig und erfordert
+keine weitere Authentifizierung. Bei dieser Kompromisslösung sind Sicherheit und Ergonomie gleichermaßen berücksichtigt.
 
-When you set the property to true, users enter their credentials only once. A temporary download URL with a cryptographic hash is generated when the user enters the credentials. This temporary download URL is valid for 1 hour and does not require further authentication. This solution is a compromise between security and ergonomy.
+Die Schritte für die Angabe
+der JNDI-Eigenschaft **ibm.appcenter.ios.plist.onetimeurl** sind mit den Schritten für die Eigenschaft **ibm.appcenter.proxy.host** vergleichbar.
+Lesen Sie hierzu
+den Artikel [Endpunkt der Anwendungsressourcen
+definieren](../../installation-configuration/production/appcenter/#defining-the-endpoint-of-the-application-resources).
 
-The steps to specify the **ibm.appcenter.ios.plist.onetimeurl** JNDI property are similar to the steps for the **ibm.appcenter.proxy.host property**. See [Defining the endpoint of the application resources](../../installation-configuration/production/appcenter/#defining-the-endpoint-of-the-application-resources).
+Die Installation des mobilen Clients auf einem iOS-Gerät erfolgt ganz ähnlich wie die Installation unter Android. Einige Unterschiede gibt es jedoch. Das Installationsprogramm wird nach dem Download automatisch direkt gestartet. Ihr Benutzername und Ihr Kennwort sind für fast alle Installationsschritte erforderlich.
 
-Installing the mobile client on an iOS device is similar to installing it on Android, but with some differences. The installer is automatically started directly after download. Your user name and password credentials are requested for almost all the installation steps.
+1. Starten Sie den Browser auf Ihrem mobilen Gerät.
+2. Geben Sie die folgende Zugriffs-URL im Adressfeld ein: `http://Hostname:Portnummer/applicationcenter/installers.html`.
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address field: `http://hostname:portnumber/applicationcenter/installers.html`
+    Hier steht "Hostname" für die Adresse des Servers und "Portnummer" für die Nummer des Ports der Application-Center-Installation. Ihr Systemadministrator kann diese Informationen bereitstellen.
 
-    Where hostname is the address of the server and portnumber is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+    Es gibt auch eine alternative Application-Center-URL für die Installation des Clients auf einem mobilen Gerät:
+`http://Hostname:Portnumber/applicationcenter/inst.html`. Die Seite mit dieser URL funktioniert besser bei einigen älteren Web-Browsern und solchen Web-Browsern, die keine
+Standardbrowser für mobile Geräte sind. Falls die Seite **installers.html** auf Ihrem mobilen Gerät nicht funktioniert, können Sie
+**inst.html** verwenden. Die Seite wird nur auf Englisch bereitgestellt. Sie ist nicht in andere Sprachen übersetzt.
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page **installers.html** does not work on your mobile device, you can use **inst.html**. The page is provided in English only and is not translated into other languages.
+    Wenn Sie die Seite mit HTTPS öffnen und selbst signierte Zertifikate verwenden, zeigt der Browser eine Sicherheitswarnung zum SSL-Zertifikat an.
+Nachdem Sie einer nicht sicheren Verbindung zugestimmt haben, ruft der Browser die Website auf. 
 
-    If you open the page with HTTPS and use self-signed certificates, the browser displays a security warning about the SSL certificate, but you can proceed to the website after confirmation that you consent to an unsafe connection.
+3. Geben Sie Ihren Benutzernamen und Ihr Kennwort ein. Lesen Sie sich die Voraussetzungen unter [Mobiler Client](../preparations) durch.
 
-3. Enter your user name and password. See the [prerequisites in The mobile client](../preparations).
+    Nach der Validierung Ihres Benutzernamens und Ihres Kennworts wird im Browser die Liste kompatibler Installationsprogramme für Ihr Gerät angezeigt. Normalerweise erscheint in dieser Liste nur eine Anwendung (der mobile Client).
 
-    When your user name and password are validated, the list of compatible installer applications for your device is displayed in the browser. Normally, only one application, the mobile client, appears in this list.
+    Wenn Sie die
+Seite mit https öffnen:
+    * Wenn der Web-Server ein echtes SSL-Zertifikat von einer anerkannten Zertifizierungsstelle verwendet, fahren Sie mit Schritt
+5 fort.
+    * Wenn der Web-Server ein selbst signiertes Zertifikat einer Zertifizierungsstelle verwendet, fahren Sie mit Schritt
+4 fort.
 
-    If you open the page with https:
-    * If the web server uses a real SSL certificate that is provided by a trusted certificate authority, proceed to step 5.
-    * If the web server uses a self-signed CA certificate, proceed to step 4.
+4. Wenn der Web-Server ein selbst signiertes Zertifikat einer Zertifizierungsstelle verwendet, installieren Sie das Zertifikat mindestens einmal auf dem Gerät. 
 
-4. If the web server uses a self-signed CA certificate, install the certificate at least once on the device.
+    Der Application-Center-Administrator stellt das Zertifikat bereit.
+Details finden Sie unter [Selbst
+signierte Zertifikate einer Zertifizierungsstelle in einer Application-Center-Testumgebung verwalten und installieren](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment). 
 
-    The Application Center administrator provides the certificate. See [Managing and installing self-signed CA certificates in an Application Center test environment](../../installation-configuration/production/appcenter/#managing-and-installing-self-signed-ca-certificates-in-an-application-center-test-environment) for details.
+    * Tippen Sie auf das Register "SSL-Zertifikate" und wählen Sie das Zertifikat aus.
+    * Tippen Sie auf "Installieren". Pro Gerät muss dieser Schritt nur einmal ausgeführt werden. Auf dem Gerät können Sie unter
+**Einstellungen → Allgemein → Profile** überprüfen, ob das Zertifikat auf dem Gerät installiert ist. In der Ansicht sehen Sie die
+SSL-Zertifikate, die der Benutzer auf dem Gerät installiert hat. Wenn das selbst signierte Zertifikat einer Zertifizierungsstelle nicht auf dem Gerät installiert ist, hindert das Betriebssystem iOS Sie daran,
+in den folgenden Schritten den mobilen Client herunterzuladen.
 
-    * Tap the SSL-Certificate tab and select the certificate.
-    * Tap Install. You do this only once for the device. You can verify whether the certificate is installed by looking in **Settings → General → Profiles on the device**. This view shows the SSL certificates that the user installed on the device. If the self-signed CA certificate is not installed on the device, the iOS operating system prevents you from downloading the mobile client in the following steps.
     
-    Before you can see the mobile client in the list of available applications, the Application Center administrator must install the mobile client application. The administrator uploads the mobile client to the Application Center and sets the Installer property to true. See [Application properties](../appcenter-console/#application-properties).
+    Bevor Sie den mobilen Client in der Liste der verfügbaren Anwendungen sehen können, muss der Application-Center-Administrator die mobile Clientanwendung installieren. Der Administrator lädt den mobilen Client in das Application Center hoch und setzt die Eigenschaft **Installer** auf **true** (siehe [Anwendungseigenschaften](../appcenter-console/#application-properties)).
     
-5. Tap the **Installers** tab and select an item in the list to display the application details.
-6. Tap **Install** to download the mobile client.
-7. Enter your credentials to authorize the downloader transaction.
-8. To authorize the download, tap **Install**.
+5. Tippen Sie auf das Register **Installationsprogramme** und wählen Sie einen Listeneintrag aus, um die Anwendungsdetails anzuzeigen.
+6. Tippen Sie auf **Installieren**, um den mobilen Client herunterzuladen. 
+7. Geben Sie Ihre Berechtigungsnachweise ein, um die Downloader-Transaktion zu autorisieren.
+8. Tippen Sie zum Autorisieren des Downloads auf **Install**.
 
-    ![Confirm app to be installed](ac_instal_client_ios_conf.jpg)
+    ![App-Installation bestätigen](ac_instal_client_ios_conf.jpg)
     
-9. Enter your credentials to authorize the installation.
-10. Close the browser.
+9. Geben Sie Ihre Berechtigungsnachweise ein, um die Installation zu autorisieren.
+10. Schließen Sie den Browser. 
 
-    The app icon appears on the home screen and you can watch the download progress on the home screen.
+    In der Hauptanzeige, wo Sie den Download-Fortschritt verfolgen können, erscheint das App-Symbol. 
 
-> **Note:** Installing an application on a device requires a provisioning profile that enables the application to be installed on the selected device. If you accidentally try to install an application that is not valid for your device, some versions of iOS might try to install the application in an endless loop without ever succeeding or indicating any error. The application icon that shows the progress of the installation appears on the home screen, but, because of the endless loop, it is difficult to delete this application icon to stop the endless loop. A workaround is to put the device into Airplane mode. In this mode, the endless loop is stopped and you can delete the application icon by following the normal steps to delete apps on iOS devices.
+> **Hinweis:** Für die Installation einer Anwendung auf einem Gerät wird eine Bereitstellungsdatei benötigt. Wenn Sie versehentlich eine Anwendung installieren möchten, die für Ihr Gerät nicht gültig ist,
+kann es bei einigen iOS-Versionen
+geschehen, dass in einer Endlosschleife versucht wird, die Anwendung zu installieren. Während der Endlosschleife wird kein
+Fehler angezeigt. Aufgrund der Endlosschleife ist es schwierig, das in der Hauptanzeige erscheinende Anwendungssymbol mit dem Fortschritt der Installation
+zu löschen und damit gleichzeitig die Endlosschleife zu stoppen. Eine Ausweichlösung besteht darin, das Gerät in den Flugzeugmodus zu versetzen. In diesem Modus wird die
+Endlosschleife gestoppt, sodass Sie die normalen Schritte für das Löschen von Apps auf
+iOS-Geräten ausführen können.Die Installation könnte aus folgenden Gründen blockiert werden: 
 
-The installation might be blocked for one of the following reasons:
+* Das Bereitstellungsprofil der Anwendung ist für das Gerät nicht gültig. Die Anwendung muss mit einem anderen Bereitstellungsprofil signiert
+werden. 
+* Das Gerät hat keinen Zugriff auf Apple-Server, um die Gültigkeit des Bereitstellungsprofils zu bestätigen. 
+* Das SSL-Zertifikat des Servers ist auf dem Gerät unbekannt. 
 
-* The provisioning profile of the application is not valid for the device. The application must be signed with a different provisioning profile.
-* The device has no access to Apple servers to confirm the validity of the provisioning profile.
-* The SSL certificate of the server is not known to the device.
+Generell können iOS-Anwendungen nur auf dem Gerät installiert werden, wenn sie mit einem Bereitstellungsprofil signiert sind
+(siehe [Projekt importieren und erstellen (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone)).
 
-In general, iOS applications can be installed on the device only if they are signed with a provisioning profile. See [Importing and building the project (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone).
+Wenn unter iOS ab Version 9 eine Unternehmensanwendung geöffnet wird, kann abhängig vom Bereitstellungsprofil die Nachricht
+"Untrusted Enterprise Developer" angezeigt werden, um anzugeben, dass das Bereitstellungsprofil auf diesem Gerät noch nicht anerkannt
+wird. Die Anwendung wird in dem Fall erst geöffnet, wenn dieses Bereitstellungsprofil anerkannt ist. Die Anerkennung ist pro Bereitstellungsprofil einmal erforderlich. 
 
-Since iOS 9, when a company application is opened, depending on the type of the provisioning profile, an Untrusted Enterprise Developer message might display. This message explains that the provisioning profile is not yet trusted on this device. In this case, the application does not open, unless trust is established for this provisioning profile. Establishing trust must be done only once per provisioning profile.
+Gehen Sie für die Anerkennung eines Bereitstellungsprofils nach Installation der Anwendung wie folgt vor: 
 
-To establish trust for a provisioning profile after the application is installed:
-
-#### Until iOS 9.1
+#### iOS bis Version 9.1
 {: #until-ios-91 }
-1. Go to **Settings → General → Profiles**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. Navigieren Sie zu **Einstellungen → Allgemein → Profile**. Unter der Überschrift
+**Unternehmens-Apps** sehen Sie das Bereitstellungsprofil für die App. 
+2. Tippen Sie auf das Profil und bestätigen Sie dessen Anerkennung. 
 
-#### Since iOS 9.2
+#### iOS ab Version 9.2
 {: #since-ios-92 }
-1. Go to **Settings → General → Profiles → Device Management or Profiles &amp; Device Management**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. Navigieren Sie zu **Einstellungen → Allgemein → Profile → Gerätemanagement** oder **Profile &amp; Gereätemanagement**. Unter der Überschrift
+**Unternehmens-Apps** sehen Sie das Bereitstellungsprofil für die App. 
+2. Tippen Sie auf das Profil und bestätigen Sie dessen Anerkennung. 
 
-After the trust is confirmed, no application that uses that provisioning profile shows the Untrusted Enterprise Developer message. For more information, see the Apple web site at [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
+Nach Bestätigung der Anerkennung
+wird für keine Anwendung, die dieses Bereitstellungsprofil verwendet, die Nachricht
+"Untrusted Enterprise Developer" angezeigt. Weitere Informatinen finden Sie auf der
+Apple-Website unter [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
 
-## Installing the client on a Windows Phone 8 Universal mobile device
+## Client auf einem mobilen Gerät mit Windows Phone 8 Universal installieren
 {: #installing-the-client-on-a-windows-phone-8-universal-mobile-device }
-You can install the mobile client, or any signed application marked with the installer flag, on Windows 8 Universal by entering the access URL in your browser, entering your credentials, and completing the required steps. The company account must be preinstalled on your mobile device.
+Sie können den mobilen Client oder eine signierte Anwendung, die mit der Installationsmarkierung versehen ist,
+unter Windows 8 Universal installieren, indem Sie die Zugriffs-URL in Ihrem Browser eingeben, Ihre Berechtigungsnachweise eingeben
+und die erforderlichen Schritte ausführen. Das Unternehmenskonto muss bereits auf Ihrem mobilen Gerät installiert sein.
 
-Before you can install apps published by your company, you must add the company account to your mobile device. You must download an application enrollment token (AET) to your Windows Phone device. This AET must already be present on the {{ site.data.keys.mf_server }}. It is uploaded to the {{ site.data.keys.mf_server }} by using the Application Center console. See [Application enrollment tokens in Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) for details.
+Sie können erst von Ihrem Unternehmen veröffentlichte Apps installieren, nachdem Sie das Unternehmenskonto zu Ihrem mobilen Gerät
+hinzugefügt haben. Sie müssen ein Anwendungsregistrierungstoken
+auf Ihr Windows-Phone-Gerät herunterladen. Dieses Token muss bereits im
+{{ site.data.keys.mf_server }} vorhanden sein.
+Es wird über die Application-Center-Konsole auf den {{ site.data.keys.mf_server }}
+hochgeladen. Einzelheiten finden Sie unter
+[Token für Anwendungsregistrierung in
+Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal). 
 
-1. Start the browser on your mobile device.
-2. Enter the following access URL in the address text field: `http://hostname:portnumber/applicationcenter/installers.html`.
+1. Starten Sie den Browser auf Ihrem mobilen Gerät.
+2. Geben Sie die folgende Zugriffs-URL im Adresstextfeld ein: `http://Hostname:Portnummer/applicationcenter/installers.html`.
 
-    Where **hostname** is the address of the server and **portnumber** is the number of the port where the Application Center is installed. Your system administrator can provide this information.
+    Hier steht **Hostname** für die Adresse des Servers und **Portnummer** für die Nummer des Ports der Application-Center-Installation. Ihr Systemadministrator kann diese Informationen bereitstellen.
 
-    The Application Center also provides an alternative URL for installing the client on a mobile device: `http://hostname:portnumber/applicationcenter/inst.html`. The page of this URL works better with some older or some nonstandard mobile web browsers. If the page **installers.html** does not work on your mobile device, you can use **inst.html**. This page is provided in English only and is not translated into other languages.
+    Es gibt auch eine alternative Application-Center-URL für die Installation des Clients auf einem mobilen Gerät:
+`http://Hostname:Portnumber/applicationcenter/inst.html`. Die Seite mit dieser URL funktioniert besser bei einigen älteren Web-Browsern und solchen Web-Browsern, die keine
+Standardbrowser für mobile Geräte sind. Falls die Seite **installers.html** auf Ihrem mobilen Gerät nicht funktioniert, können Sie
+**inst.html** verwenden. Diese Seite wird nur auf Englisch bereitgestellt. Sie ist nicht in andere Sprachen übersetzt.
 
-3. Enter your credentials to authorize access to the server. On the lower part of the screen, a toolbar contains an **Installers** tab and a **Tokens** tab.
+3. Geben Sie Ihre Berechtigungsnachweise ein, um den Zugriff auf den Server zu autorisieren.Im unteren Teil der Anzeige gibt es eine Symbolleiste mit den Registern **Installationsprogramme** und
+**Token**.
 
-    ![Preparing to install tokens and applications on a Windows Phone device](ac_wp8_toolbar_inst_app.jpg)
+    ![Installation von Token und Anwendungen auf einem
+Windows-Phone-Gerät vorbereiten](ac_wp8_toolbar_inst_app.jpg)
     
-4. Tap **Tokens** and select an application enrollment token in the list of available tokens to display the token details.
+4. Tippen Sie auf **Token** und wählen Sie in der Liste der verfügbaren Token ein Anwendungsregistrierungstoken
+aus, um die Tokendetails anzuzeigen.
 
-    ![Application Enrollment Token details on a Windows Phone device](ac_wp8_aet_details.jpg)
+    ![Token für Anwendungsregistrierung auf einem Windows-Phone-Gerät](ac_wp8_aet_details.jpg)
     
-5. Tap **Add** to download the application enrollment token.
-6. Tap **Add** to add the company account.
+5. Tippen Sie auf **Hinzufügen**, um das Anwendungsregistrierungstoken herunterzuladen.
+6. Tippen Sie auf **Hinzufügen**, um das Unternehmenskonto hinzuzufügen.
 
-    ![Adding a company account in Windows 8 Universal device](ac_wp8_add_co_account.jpg)
+    ![Unternehmenskonto auf einem Windows-8-Universal-Gerät hinzufügen](ac_wp8_add_co_account.jpg)
     
-    Windows Phone 8 does not provide any feedback about adding the company account.
+    Windows Phone 8
+gibt keine Rückmeldung zum Hinzufügen des Unternehmenskontos.
 
-7. Tap the Back icon to return to the details of application enrollment tokens.
-8. Tap **Installers** and select the mobile client application in the list of available applications. The application details are displayed.
-9. Tap **Install** to download the selected application.
+7. Tippen Sie auf das Symbol "Zurück", um zu den Details der Anwendungsregistrierungstoken zurückzukehren.
+8. Tippen Sie auf **Installationsprogramme** und wählen Sie in der Liste der verfügbaren Anwendungen die mobile Clientanwendung aus.Die Anwendungsdetails werden angezeigt.
+9. Tippen Sie auf **Installieren**, um die ausgewählte Anwendung herunterzuladen.
 
-    ![The application selected to download on a Windows Phone device](ac_wp8_app_details.jpg)
+    ![Zum Download auf ein
+Windows-Phone-Gerät ausgewählte Anwendung](ac_wp8_app_details.jpg)
     
-10. Tap **Install** to install the application.
+10. Tippen Sie auf **Installieren**, um die Anwendung zu installieren.
 
-    ![Installing the downloaded application on a Windows Phone device](ac_wp8_app_install.jpg)
+    ![Heruntergeladene Anwendung auf einem Windows-Phone-Gerät
+installieren](ac_wp8_app_install.jpg)
     
-    Windows 8 Universal does not provide any feedback about installing the application.
+    Windows 8 Universal
+gibt keine Rückmeldung zur Installation der Anwendung.
 
-> **Tip:** When you install a company application on a device, the device must connect to the Microsoft server to verify the application signature. Sometimes, the Microsoft server does not respond. In this case, you can try the installation again a few minutes later. See Installing an application on a Windows Phone device for the possible error messages.
+> **Tipp:** Wenn Sie eine Unternehmensanwendung auf einem Gerät installieren, muss das Gerät eine Verbindung zum
+Microsoft-Server herstellen, damit die Anwendungssignatur verifiziert werden kann. Manchmal reagiert der
+Microsoft-Server nicht. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen. Unter "Anwendung auf einem Windows-Phone-Gerät installieren" finden Sie mögliche
+Fehlernachrichten.
+Nach Abschluss der Installation sollte die mobile Clientanwendung unter
+Windows Phone in Ihrer Anwendungsliste verfügbar sein.
 
-When the installation is finished, the mobile client application should be available in your applications list in Windows Phone.
-
-## The Login view
+## Anmeldeansicht
 {: #the-login-view }
-In the Login view, you can access the fields that are required to connect to the server to view the list of applications available for your device.  
-Use the Login view to enter your credentials to connect to the Application Center server to view the list of applications that are available for your device.
+In der Anmeldeansicht können Sie auf die Felder für die Verbindung zum Server
+zugreifen, um die Liste der für Ihr Gerät verfügbaren Anwendungen anzuzeigen.  
+Geben Sie in der Anmeldeansicht Ihre Berechtigungsnachweise ein, um eine Verbindung zum
+Application-Center-Server herzustellen und die Liste der Anwendungen anzuzeigen, die für Ihr Gerät verfügbar sind.
 
-The Login view presents all the mandatory fields for the information that is required to connect to the server.  
-When the application is started, the Login page is displayed. The login credentials are required to connect to the server.
+Die Anmeldeansicht enthält alle Pflichtfelder für Angaben, die für die Verbindung zum Server
+erforderlich sind.  
+Wenn die Anwendung gestartet wird, wird die Anmeldeseite angezeigt. Die Berechtigungsnachweise für die Anmeldung sind für die Verbindung
+zum Server erforderlich.
 
-On iOS devices, the credentials are saved in the keychain. After you successfully log in to the Application Center server, when you later start the application, the login page is not displayed and the previous credentials are used. If login fails, the login view is displayed.
+Auf iOS-Geräten werden die Berechtigungsnachweise in einer Keychain gespeichert. Wenn Sie nach erfolgreicher Anmeldung beim
+Application-Center-Server die Anwendung starten, wird die Anmeldeseite nicht angezeigt und es werden die bisherigen Berechtigungsnachweise verwendet. Wenn die Anmeldung fehlschlägt,
+erscheint die Anmeldeansicht. 
 
-#### User name and password
+#### Benutzername und Kennwort
 {: #user-name-and-password }
-Enter your credentials for access to the server. They are the same user name and password as the ones that were granted by your system administrator for downloading and installing the mobile client.
+Geben Sie Ihre Berechtigungsnachweise für den Zugriff auf den Server ein. Diesen Benutzernamen und dieses Kennwort
+haben Sie von Ihrem Systemadministrator für das Herunterladen und Installieren des mobilen Clients erhalten. 
 
-#### Application Center server address
+#### Adresse des Application-Center-Servers
 {: #application-center-server-address }
-The Application Center server address is composed of the following elements:
+Die Adresse des Application-Center-Servers setzt sich wie folgt zusammen:
 
-* Host name or IP address.
-* Port, which is optional if the default port is used.
-* Context, which is optional if the Application Center is installed at the root of the server.
+* Hostname oder IP-Adresse
+* Port (optional bei Verwendung des Standard-Ports)
+* Kontext (optional, wenn das Application Center im Stammverzeichnis des
+Servers installiert ist)
 
-On a phone, a field is available for each part of the address.
+Auf einem Telefon ist für jeden Abschnitt der Adresse ein Feld verfügbar.
 
-On a tablet, a single field that contains a preformatted example address is displayed. Use it as a model for entering the correct server address to avoid formatting errors. See [Preparations for using the mobile client](../preparations) for information on filling parts of the address in advance, or hardcode the address and hide the associated fields.
+Auf einem Tablet wird
+ein einzelnes Feld mit einer vorformatierten Beispieladresse angezeigt. Verwenden Sie die Adresse als Modell für die richtige Eingabe
+der Serveradresse, um Formatierungsfehler zu vermeiden. Im Artikel [Vorbereitungen für die Verwendung des mobilen Clients](../preparations) erfahren Sie,
+wie Abschnitte der Adresse vorab eingetragen werden können oder wie die Adresse fest codiert werden kann, um die zugehörigen Felder auszublenden.
 
-#### Secure Socket Layer (SSL)
+#### Secure Sockets Layer (SSL)
 {: #secure-socket-layer-ssl }
-SSL is mandatory on iOS devices. Therefore, this option is not displayed in the login view.
-On the other supported operating systems, select SSL to turn on the SSL protocol for communications over the network. If you tap this field again when SSL is selected, SSL switches off.
+SSL ist auf iOS-Geräten obligatorisch. Daher wird diese Option nicht in der Anmeldeansicht angezeigt. Wählen Sie unter den anderen unterstützten
+Betriebssystemen SSL aus, um das SSL-Protokoll für die Kommunikation über das Netz zu aktivieren. Wenn Sie bei ausgewähltem SSL erneut auf dieses Feld tippen,
+wird SSL inaktiviert. 
 
-SSL selection is available for cases where the Application Center server is configured to run over an SSL connection. Selecting SSL when the server is not configured to handle an SSL layer prevents you from connecting to the server. Your system administrator can inform you whether the Application Center runs over an SSL connection.
+Die SSL-Auswahl ist für Fälle verfügbar, in denen der Application-Center-Server für die Verwendung
+einer SSL-Verbindung konfiguriert ist. Wenn Sie für einen Server, der nicht für die Handhabung einer SSL-Schicht konfiguriert ist,
+SSL auswählen, können Sie keine Verbindung zum Server herstellen. Ihr Systemadministrator kann Ihnen mitteilen,
+ob das Application Center über eine SSL-Verbindung ausgeführt wird.
 
-### Connecting to the server
+### Verbindung zum Server herstellen
 {: #connecting-to-the-server }
-To connect to the server:
+Gehen Sie wie folgt vor, um eine Verbindung zum Server
+herzustellen:
 
-1.Enter your user name and password.
-2. Enter your Application Center server address.
-3. If your configuration of the Application Center runs over the SSL protocol, select **SSL**.
-4. Tap **Log in** to connect to the server.
+1. Geben Sie Ihren Benutzernamen und Ihr Kennwort ein.
+2. Geben Sie die Adresse Ihres Application-Center-Servers ein.
+3. Wenn Ihre Konfiguration des Application Center mit dem SSL-Protokoll ausgeführt wird, wählen Sie **SSL** aus.
+4. Tippen Sie auf **Anmelden**, um eine Verbindung zum Server herzustellen.
 
-If this login is successful, the user name and server address are saved to fill the fields when you start the client afterwards.
+Wenn diese
+Anmeldung erfolgreich ist, werden der Benutzername und die Serveradresse gespeichert und bei nachfolgenden Starts des Clients in die Felder eingetragen.
 
-## Views in the Application Center client
+## Ansichten im Application-Center-Client
 {: #views-in-the-application-center-client }
-The client provides views that are adapted to the various tasks that you want to perform.  
-After a successful login, you can choose among these views.
+Der Client stellt Ansichten bereit, die an die verschiedenen Aufgaben, die Sie ausführen können, angepasst sind.  
+Nach einer erfolgreichen Anmeldung können Sie unter diesen Ansichten auswählen.
 
-![Views in the client application](ac_android_ios_views.jpg)
+![Ansichten in der Clientanwendung](ac_android_ios_views.jpg)
 
-Use these views to communicate with a server to send or retrieve information about applications or to manage the applications that are located on your device.
+Diese Ansichten ermöglichen Ihnen, mit einem Server zu kommunizieren, um
+Informationen über Anwendungen zu senden oder abzurufen oder die Anwendungen auf Ihrem Gerät zu verwalten. 
 
-The Windows 8 client home screen displays up to six applications in each category. On the Windows 8 client, if you want the full list of applications in a category, click the title of the category.
+Die Hauptanzeige des Windows-8-Clients
+enthält in jeder Kategorie bis zu sechs Anwendungen.
+Wenn Sie auf einem Windows-8-Client die vollständige Liste der Anwendungen für eine Kategorie sehen möchten, müssen
+Sie auf den Titel der Kategorie klicken.
 
-![Client homescreen on Windows 8](ac_homeCatalog_w8.JPG)
+![Hauptanzeige des Clients für Windows 8](ac_homeCatalog_w8.JPG)
 
-Here are descriptions of the different views:
+Nachfolgend sind die verschiedenen
+Ansichten beschrieben:
 
-* **Catalog**. This view shows the applications that can be installed on a device.
-* **Favorites**. This view shows the list of applications that you marked as favorites.
-* **Updates**. This view shows all applications that you marked as favorite apps and that have a later version available in Application Center than the version, if any, installed on the device.
+* **Katalog**: In dieser Ansicht werden die Anwendungen angezeigt, die auf einem Gerät installiert werden können.
+* **Favoriten**: In dieser Ansicht wird die Liste der Anwendungen angezeigt, die Sie als Favoriten markiert haben.
+* **Aktualisierungen**: In dieser Ansicht werden alle Anwendungen angezeigt,
+die Sie als bevorzugte Apps markiert haben und für die im Application Center eine aktuellere Version als die ggf. auf dem Gerät installierte Version verfügbar ist.
 
-When you first start the mobile client, it opens the Login view for you to enter your user name, password, and the address of the Application Center server. This information is mandatory.
+Wenn Sie den mobilen Client zum ersten Mal starten,
+wird die Anmeldeansicht angezeigt, damit Sie Ihren Benutzernamen, Ihr Kennwort und
+die Adresse des Application-Center-Servers eingeben können. Diese Angaben sind obligatorisch.
 
-### Displays on different device types
+### Anzeigen auf verschiedenen Gerätetypen
 {: #displays-on-different-device-types }
-The layout of the views is specific to the Android, iOS, Windows Phone, or Windows 8 environment, even though the common functions that you can perform in the views are the same for all operating systems. Different device types might have different page displays. On the phone, a list is displayed. On a tablet, a grid of applications is used.
+Der Aufbau der Ansichten ist
+spezifisch für die Android-, iOS-, Windows-Phone- oder Windows-8-Umgebung. Dennoch können Sie
+unter allen Betriebssystemen dieselben allgemeinen Funktionen in den Ansichten ausführen. Verschiedene Gerätetypen können
+eine sehr unterschiedliche Seitenanzeige haben. Auf einem Telefon wird eine Liste angezeigt. Auf einem Tablet wird ein Anwendungsraster verwendet.
 
-![Catalog view on a phone](ac_phone_catalog.jpg)
+![Katalogansicht auf einem Telefon](ac_phone_catalog.jpg)
 
-![Catalog view on a tablet](ac_tablet_catalog.jpg)
+![Katalogansicht auf einem Tablet](ac_tablet_catalog.jpg)
 
-### Features of the views
+### Ansichtenfeatures
 {: #features-of-the-views }
-On an Android or iOS tablet, you can sort the lists by tapping one of the sort criteria.  
-On a Windows Phone, Android, or iOS phone, sort criteria are available through the sort button.  
-On the Windows 8 client, you can sort the list of applications within a category. To sort the applications, select from the list of sort criteria in the **Sort By** field.
+Auf einem Android- oder iOS-Tablet können
+Sie die Listen durch das Antippen eines Sortierkriteriums sortieren.  
+Auf einem Windows-Phone-, Android-, iOS-Mobiltelefon
+sind Sortierbegriffe über die Sortierschaltfläche
+verfügbar.
+  
+Im Windows-8-Client können Sie die Liste der Anwendungen
+innerhalb einer Kategorie sortieren. Treffen Sie dazu im Feld
+**Sortieren nach** eine Auswahl aus der Liste der Sortierkriterien.
 
-Applications that are marked as favorites are indicated by a star that is superposed on the application icon.
+Anwendungen, die als Favoriten markiert sind, werden mit einem Stern, der das Anwendungssymbol überlagert, angezeigt.
 
-The average rating of the latest version of an application is shown by using a number of stars and the number of ratings received. [See Preparations for using the mobile client](../preparations) for how to show the rating of all versions of the application instead of the latest version only.
+Die durchschnittliche Bewertung der neuesten Version einer Anwendung
+wird durch eine Reihe von Sternen und die Anzahl der empfangenen Bewertungen angezeigt. Im Artikel
+[Vorbereitungen für die Verwendung des mobilen Clients](../preparations) erfahren Sie,
+wie die Bewertung aller Versionen der Anwendung und nicht nur
+der neuesten Version angezeigt wird.
 
-Tapping an application in the list opens the Details view of the latest installed version of this application.
+Wenn Sie auf eine Anwendung in der Liste tippen, wird die
+Detailansicht der aktuellsten installierten Version dieser Anwendung geöffnet.
 
-To refresh the view, tap the refresh button: <img src="ac_refresh_icon.jpg" style="margin:0;display:inline"  alt="Button to refresh the view"/>. or, on Windows 8, <img src="ac_w8_refresh.jpg" style="margin:0;display:inline"  alt="Button to refresh the view on Windows 8 client"/>.
+Tippen Sie zum Aktualisieren der Anzeige auf die entsprechende Schaltfläche (<img src="ac_refresh_icon.jpg" style="margin:0;display:inline"  alt="Schaltfläche für Aktualisierung der Anzeige"/>) oder unter Windows 8 auf die Schaltfläche <img src="ac_w8_refresh.jpg" style="margin:0;display:inline"  alt="Schaltfläche zum aktualisieren der Anzeige im Windows-8-Client"/>.
 
-To return to the login page:
+Gehen Sie wie folgt vor, um zur Anmeldeseite zurückzukehren:
 
-* In Android, iOS, and Windows Phone applications, tap the logout button: <img src="ac_logout_icon.jpg" style="margin:0;display:inline" alt="Button to return to the login page and to log out on Android and iOS devices"/>
-* In the Windows 8 version of the client, tap the logout button: <img src="ac_w8_logoutbtn.jpg" style="margin:0;display:inline" alt="Button to return to the login page and to log out on Windows 8 client"/>
+* Tippen Sie in Android-, iOS- und Windows-Phone-Anwendungen auf die Abmeldeschaltfläche
+(<img src="ac_logout_icon.jpg" style="margin:0;display:inline" alt="Schaltfläche für Rückkehr zur Anmeldeseite und Abmeldung auf Android- und iOS-Geräten"/>). 
+* Tippen Sie in der Windows-8-Version des
+Clients auf die Abmeldeschaltfläche (<img src="ac_w8_logoutbtn.jpg" style="margin:0;display:inline" alt="Schaltfläche für die Rückkehr zur Anmeldeseite und die Abmeldung im Windows-8-Client"/>). 
 
-### The Details view
+### Detailansicht
 {: #the-details-view }
-Tapping an application in the Catalog, Favorites, or Updates view opens the Details view where you can see details of the application properties. Details of the application version are displayed in this view.
+Wenn Sie in der Ansicht "Katalog", "Favoriten" oder "Aktualisierungen" auf eine Anwendung tippen,
+wird die Detailansicht geöffnet, in der Sie Details der Anwendungseigenschaften sehen. In dieser Ansicht werden Details
+zur Anwendungsversion angezeigt. 
 
-On Android, iOS, and Windows Phone clients, the following details of the application version are displayed:
+In Android-, iOS- und Windows-Phone-Clients
+werden die folgenden Details zur Anwendungsversion angezeigt:
 
-* The name of the application.
-* Commercial version: the published version of the application.
-* Internal version: on Android, the internal version identification of the application; on iOS, the build number of the application. See [Application properties](../appcenter-console/#application-properties) for technical details about this property on all operating systems.
-* Update date.
-* Approximate size of the application file.
-* Rating of the version and number of ratings received.
-* Description of the application.
+* Name der Anwendung
+* Kommerzielle Version (veröffentlichte Anwendungsversion)
+* Interne Version: unter Android die interne Versions-ID der Anwendung, unter iOS die Nummer des Anwendungsbuilds (Die technischen Details dieser Eigenschaft unter allen Betriebssystemen sind im Artikel
+[Anwendungseigenschaften](../appcenter-console/#application-properties) beschrieben.)
+* Aktualisierungsdatum
+* Ungefähre Größe der Anwendungsdatei
+* Bewertung der Version und Anzahl empfangener Bewertungen
+* Beschreibung der Anwendung
 
-On Windows 8 client the following details of the application version are displayed:
+Im Windows-8-Client
+werden die folgenden Details zur Anwendungsversion angezeigt:
 
-* Application name.
-* Version.
-* Vendor name.
-* Update date.
-* Rating of the version and the number of ratings received.
-* Existing reviews of either the current version or of all the versions of the current application.
+* Anwendungsname
+* Version
+* Name des Anbieters
+* Aktualisierungsdatum
+* Bewertung der Version und Anzahl empfangener Bewertungen
+* Rezensionen zur aktuellen Version oder zu allen Versionen der aktuellen Anwendung
 
-You can take the following actions in this view.
+Sie können in dieser Ansicht die folgenden Aktionen ausführen.
 
-* Install, upgrade, downgrade, or uninstall an application version.
-* Cancel the current operation in progress (if available).
-* Rate the application version if it is installed on the device.
-* List the reviews of this version or of all versions of the application.
-* Show details of a previous version.
-* Mark or unmark the application as a favorite app.
-* Refresh the view with the latest changes from the Application Center server.
+* Installation oder Deinstallation einer Anwendung und Upgrade oder Downgrade für eine Anwendung
+* Abbruch der aktuellen Operation (sofern verfügbar)
+* Bewertung der Anwendungsversion, sofern sie auf dem Gerät installiert ist
+* Auflistung der Rezensionen zu dieser Version oder zu allen Versionen der Anwendung
+* Anzeige von Details einer früheren Version
+* Markierung der Anwendung als bevorzugte App oder Löschen dieser Markierung
+* Aktualisierung der Ansicht mit den neuesten Änderungen vom Application-Center-Server
 
-## Installing an application on an Android device
+## Anwendung auf einem Android-Gerät installieren
 {: #installing-an-application-on-an-android-device }
-From the **Details** view, you can install an application on your Android device.  
-In the Details view, if a previous version of the application is not installed, you can install this application version on your Android device.
+Von der Ansicht
+**Details** aus können Sie eine Anwendung auf Ihrem Android-Gerät installieren.  
+Wenn noch keine Version einer Anwendung installiert ist, können Sie diese Anwendung von der Ansicht "Details" aus
+auf Ihrem Android-Gerät installieren.
 
-![Details view of an app version shown on your Android device](ac_phone_app_details.jpg)
+![Detailansicht einer auf Ihrem Android-Gerät angezeigten App-Version](ac_phone_app_details.jpg)
 
-1. In the **Details** view, tap **Install**.
+1. Tippen Sie in der Ansicht **Details** auf **Installieren**.
 
-    The application is downloaded. You can tap **Cancel** in the **Details** view at any time during the download to cancel the download. (The **Cancel** button appears only during the installation steps.) If you let the download complete, you will see the rights that are granted to the application.
+    Die Anwendung wird heruntergeladen. Sie können während des Downloads in der Ansicht **Details** jederzeit auf
+**Abbrechen** tippen, um den Download abzubrechen. (Die Schaltfläche
+**Abbrechen** erscheint nur während der Installationsschritte.) Wenn Sie zulassen, dass die Anwendung vollständig
+heruntergeladen wird, sehen Sie die Berechtigungen, die für die Anwendung erteilt werden.
 
-    ![Application rights on your Android device](ac_app_rights_and.jpg)
+    ![Anwendungsberechtigungen auf Ihrem Android-Gerät](ac_app_rights_and.jpg)
 
-2. Tap **Install** to confirm installation of the application or **Cancel** to cancel installation.
+2. Tippen Sie auf **Installieren**, um die Installation der Anwendung
+zu bestätigen, oder auf **Abbrechen**, um die Installation abzubrechen.
 
-    Depending on the action taken, the application is installed or not. When the application is successfully installed, it is also marked as a favorite app.
+    Die Anwendung wird je nach ausgeführter Aktion installiert oder nicht. Wenn die Anwendung erfolgreich installiert wurde, wird sie als bevorzugte
+App markiert.
 
-    If you selected **Cancel**, in the application rights confirmation panel, you can tap **Cancel** in the **Details** view at any time to notify the application that the installation has been canceled. The **Cancel** button appears in the Details view only during the installation steps.
+    Wenn Sie in der Bestätigungsanzeige für die Anwendungsberechtigungen **Abbrechen** ausgewählt haben, können Sie
+in der Ansicht **Details** jederzeit auf **Abbrechen** tippen,
+um die Anwendung zu benachrichtigen, dass die Installation abgebrochen wurde. Die Schaltfläche
+**Abbrechen** erscheint nur während der Installationsschritte in der Ansicht "Details".
 
-## Installing an application on an iOS device
+## Anwendung auf einem iOS-Gerät installieren
 {: #installing-an-application-on-an-ios-device }
-From the **Details** view, you can install an application version on your iOS mobile device.
+Von der Ansicht
+**Details** aus können Sie eine Anwendungsversion auf Ihrem mobilen iOS-Gerät installieren.
 
-![Details view of an app version on your iOS mobile device](ac_phone_app_details_ios.jpg)
+![Detailansicht einer App-Version auf Ihrem mobilen iOS-Gerät](ac_phone_app_details_ios.jpg)
 
-> **Important:** To install applications on iOS devices, you must first configure the Application Center server with SSL. See [Configuring Secure Sockets Layer (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl).
+> **Wichtiger Hinweis:** Bevor Sie Anwendungen auf iOS-Geräten installieren, müssen Sie den Application-Center-Server mit SSL konfigurieren (siehe [Secure Sockets Layer (SSL) konfigurieren](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)).
 
-1. In the **Details** view, tap **Install**. You are requested to confirm the download and installation of the application version.
-2. Tap **Install** to confirm download and installation of the application version or **Cancel** to cancel the installation.
+1. Tippen Sie in der Ansicht **Details** auf **Installieren**. Sie werden aufgefordert, das Herunterladen und die Installation der Anwendungsversion zu bestätigen.
+2. Tippen Sie auf **Installieren**, um das Herunterladen und die Installation der Anwendungsversion
+zu bestätigen, oder auf **Abbrechen**, um die Installation abzubrechen.
 
-    ![Canceling application installation on your iOS device](ac_app_inst_cancel_ios.jpg)
+    ![Anwendungsinstallation auf Ihrem iOS-Gerät abbrechen](ac_app_inst_cancel_ios.jpg)
     
-    Depending on the action that is taken, the application is installed or not. When the application is successfully installed, it is also marked as a favorite app.
+    Die Anwendung wird je nach ausgeführter Aktion installiert oder nicht. Wenn die Anwendung erfolgreich installiert wurde, wird sie als bevorzugte
+App markiert.
 
-    Installing an application on a device requires a provisioning profile that enables the application to be installed on the selected device. If you accidentally try to install an application that is not valid for your device, iOS 6 (deprecated) or earlier gives an error message.
+    Für die Installation einer Anwendung auf einem Gerät wird eine Bereitstellungsdatei benötigt. Wenn Sie versehentlich versuchen, eine für Ihr Gerät nicht gültige
+Anwendung zu installieren, erscheint unter iOS
+bis Version 6 (nicht weiter unterstützt) eine Fehlernachricht. 
     
-Unlike the Android client, after the installation is finished, the **Install** button in the **Details** view does not change its label to **Uninstall**. In iOS, no **Uninstall** button is available. It is only possible to uninstall applications through the home screen.
+Im Gegensatz zum
+Android-Client ändert sich die Beschriftung der Schaltfläche **Installieren** in der Ansicht
+**Details** nicht in
+**Deinstallieren**. Unter iOS gibt es keine Schaltfläche **Deinstallieren**.
+Anwendungen können von der Hauptanzeige aus deinstalliert werden. 
 
-Some versions of iOS 7 might try to install the application in an endless loop without ever succeeding or indicating any error. The application icon that shows the progress of the installation appears on the home screen, but, because of the endless loop, it is difficult to delete this application icon to stop the endless loop. A workaround is to put the device into Airplane mode. In this mode, the endless loop is stopped and you can delete the application icon by following the normal steps to delete apps on iOS devices.
+Bei einigen Varianten von iOS
+7 kann es sein, dass versucht wird, die Anwendung zu installieren. Dieser Versucht läuft jedoch als Endlosschleife und es wird kein
+Fehler angezeigt. Aufgrund der Endlosschleife ist es schwierig, das in der Hauptanzeige erscheinende Anwendungssymbol mit dem Fortschritt der Installation
+zu löschen und damit gleichzeitig die Endlosschleife zu stoppen. Eine Ausweichlösung besteht darin, das Gerät in den Flugzeugmodus zu versetzen. In diesem Modus wird die
+Endlosschleife gestoppt, sodass Sie die normalen Schritte für das Löschen von Apps auf
+iOS-Geräten ausführen können.
 
-After the application is installed on the device, you can open it.
+Wenn die Anwendung auf dem Gerät installiert ist, können Sie sie öffnen. 
 
-In general, iOS applications can be installed on the device only if they are signed with a provisioning profile. See [Importing and building the project (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone).
+Generell können iOS-Anwendungen nur auf dem Gerät installiert werden, wenn sie mit einem Bereitstellungsprofil signiert sind
+(siehe [Projekt importieren und erstellen (Android, iOS, Windows Phone)](../preparations/#importing-and-building-the-project-android-ios-windows-phone)).
 
-Since iOS 9, when a company application is opened, depending on the type of the provisioning profile, an Untrusted Enterprise Developer message might display. This message explains that the provisioning profile is not yet trusted on this device. In this case, the application does not open, unless trust is established for this provisioning profile. Establishing trust must be done only once per provisioning profile.
+Wenn unter iOS ab Version 9 eine Unternehmensanwendung geöffnet wird, kann abhängig vom Bereitstellungsprofil die Nachricht
+Untrusted Enterprise Developer angezeigt werden, um anzugeben, dass das Bereitstellungsprofil auf diesem Gerät noch nicht anerkannt
+wird. Die Anwendung wird in dem Fall erst geöffnet, wenn dieses Bereitstellungsprofil anerkannt ist. Die Anerkennung ist pro Bereitstellungsprofil einmal erforderlich. 
 
-To establish trust for a provisioning profile after the application is installed:
+Gehen Sie für die Anerkennung eines Bereitstellungsprofils nach Installation der Anwendung wie folgt vor: 
 
-#### Until iOS 9.1
+#### iOS bis Version 9.1
 {: #until-ios-91-app }
-1. Go to **Settings → General → Profiles**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. Navigieren Sie zu **Einstellungen → Allgemein → Profile**. Unter der Überschrift
+**Unternehmens-Apps** sehen Sie das Bereitstellungsprofil für die App. 
+2. Tippen Sie auf das Profil und bestätigen Sie dessen Anerkennung. 
 
-#### Since iOS 9.2
+#### iOS ab Version 9.2
 {: #since-ios-92-app }
-1. Go to **Settings → General → Profiles → Device Management or Profiles &amp; Device Management**. Under the **Enterprise apps** heading, you see the provisioning profile of the app.
-2. Tap on the profile and confirm the trust.
+1. Navigieren Sie zu **Einstellungen → Allgemein → Profile → Gerätemanagement** oder **Profile &amp; Gereätemanagement**. Unter der Überschrift
+**Unternehmens-Apps** sehen Sie das Bereitstellungsprofil für die App. 
+2. Tippen Sie auf das Profil und bestätigen Sie dessen Anerkennung. 
 
-After the trust is confirmed, no application that uses that provisioning profile shows the Untrusted Enterprise Developer message. For more information, see the Apple web site at [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
+Nach Bestätigung der Anerkennung
+wird für keine Anwendung, die dieses Bereitstellungsprofil verwendet, die Nachricht
+Untrusted Enterprise Developer angezeigt. Weitere Informatinen finden Sie auf der
+Apple-Website unter [https://support.apple.com/en-us/HT204460](https://support.apple.com/en-us/HT204460).
 
-## Installing an application on a Windows Phone device
+## Anwendung auf einem Windows-Phone-Gerät
+installieren
 {: #installing-an-application-on-a-windows-phone-device }
-From the **Details** view, you can install a company application on your Windows phone device.  
-The **Details** view of the selected application displays information about the application that you want to install.
+Von der Ansicht
+**Details** aus können Sie eine Unternehmensanwendung auf Ihrem Windows-Phone-Gerät installieren.  
+In der Ansicht **Details** der ausgewählten Anwendung werden Informationen zu der Anwendung angezeigt, die Sie installieren
+möchten.
 
-![Details view of a version of a company application for installation on a Windows Phone device](ac_phone_app_details_wp.jpg)
+![Detailansicht für die Version einer Unternehmensanwendung, die auf einem Windows-Phone-Gerät installiert werden soll](ac_phone_app_details_wp.jpg)
 
-1. In the **Details** view, tap **Install**. The application is downloaded and installed. You can tap **Cancel** at any time during the downloading of the application to cancel the activity. **Cancel** appears only during the downloading step of the installation process.
+1. Tippen Sie in der Ansicht **Details** auf **Installieren**. Die Anwendung wird heruntergeladen und installiert. Sie können während des Downloads der Anwendung jederzeit auf
+**Abbrechen** tippen, um den Prozess abzubrechen. Während der Installation erscheint die Option
+**Abbrechen** nur, solange der Downloadschritt ausgeführt wird.
 
-    At the beginning of the installation process, you are requested to confirm whether you want to add the company application to the applications installed on your mobile device.
 
-2. Tap **Install** to confirm installation of the application or **Cancel** to cancel the installation. The application is marked as a favorite app.
+    Zu Beginn der Installation werden Sie aufgefordert, das
+Hinzufügen der Unternehmensanwendung zu den auf Ihrem mobilen Gerät installierten Anwendungen zu bestätigen.
 
-    ![Confirming or canceling installation of a company application on a Windows Phone device](ac_confirm_instal_app_wp.jpg)
+2. Tippen Sie auf **Installieren**, um die Installation der Anwendung
+zu bestätigen, oder auf **Abbrechen**, um die Installation abzubrechen. Die Anwendung wird als bevorzugte App markiert.
+
+    ![Installation einer Unternehmensanwendung auf einem
+Windows-Phone-Gerät bestätigen oder abbrechen](ac_confirm_instal_app_wp.jpg)
     
-> **Tip:** When you install a company application on a device, the device must connect to the Microsoft server to verify the application signature. Sometimes, the Microsoft server does not respond. In this case, you can try the installation again a few minutes later.
+> **Tipp:** Wenn Sie eine Unternehmensanwendung auf einem Gerät installieren, muss das Gerät eine Verbindung zum
+Microsoft-Server herstellen, damit die Anwendungssignatur verifiziert werden kann. Manchmal reagiert der
+Microsoft-Server nicht. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen. Folgende Fehlernachrichten können angezeigt werden:
 
-The possible error messages are:
+* **Bei der Unternehmens-App liegt ein Problem vor. Bitten Sie den Support
+um Unterstützung.**
 
-* **There's a problem with this company app. Contact your company's support person for help.**
+    Wahrscheinlich verwenden Sie eine nicht
+signierte Windows-Phone-Anwendungspaketdatei
+(.xap). Sie müssen Anwendungspaketdateien (.xap) signieren, bevor Sie sie im Application Center
+verwenden. Diese Nachricht kann auch angezeigt werden, wenn der
+Microsoft-Server nicht reagiert und die Signatur der Unternehmensanwendung
+nicht überprüft werden kann. Versuchen Sie in dem Fall, die Installation ein paar Minuten später erneut auszuführen.
 
-    You are probably using an unsigned Windows Phone application package (.xap) file. You must sign application package (.xap) files before using them in the Application Center. This message might also occur if the Microsoft server does not respond and the signature of the company application cannot be validated. In this case, try the installation again a few minutes later.
+* **Before you install this app, you need to add ... company
+account.**
 
-* **Before you install this app, you need to add ... company account.**
+    Die
+Windows-Phone-Anwendungspaketdatei
+(.xap) ist signiert, aber das Gerät ist nicht für Unternehmensanwendungen registriert. Sie müssen zuerst das Anwendungsregistrierungstoken des Unternehmens
+auf dem Gerät installieren.
 
-    The Windows Phone application package (.xap) file is signed, but the device is not enrolled for company applications. You must first install on the device the application enrollment token of the company.
+* **Leider konnten wir keine Verbindung mit dem Unternehmenskonto herstellen, um sicherzustellen, dass Sie diese App installieren können...**
 
-* **We haven't been able to contact the company account to make sure you can install this app. ...**
+    Das Unternehmenskonto ist abgelaufen oder blockiert. Es kann auch sein, dass
+der Microsoft-Server vorübergehend nicht antwortet.
+Stellen Sie sicher, dass Ihr Gerät mit dem Internet und dem
+Microsoft-Server verbunden ist.
+Versuchen Sie es dann erneut.
 
-    Either the company account is expired or blocked, or the Microsoft server is temporarily not responding. Make sure that your device is connected to the internet and connected to the Microsoft server, and try again.
+> **Hinweis:** Wenn ein Gerät mit mehreren Unternehmenskonten registriert ist, kann es sein, dass das Betriebssystem
+Windows Phone in der Nachricht
+**Möchten Sie
+"Anwendung" von "Firmenname" installieren?** das falsche Unternehmenskonto anzeigt.
+Das Application Center hat keine Kontrolle über diese Nachricht. Es handelt sich um ein Anzeigeproblem, das keinen Einfluss auf die
+Funktionalität hat.Die Anwendung wird je nach ausgeführter Aktion installiert oder nicht.
 
-> **Note:** If a device is registered with several company accounts, the Windows Phone operating system might display the wrong company account in the message **Would you like to install application from company name?**. This message is outside the control of the Application Center. This situation is a display problem only and does not affect the functionality.
-
-Depending on the action that you take, the application is installed or not.
-
-> **Tip:** The install process will not work if the PFX certificate used to code sign the application package (.xap) file of the application that you want to install has expired. Windows Phone operating system returns an error with **HRESULT 0x81030110**. When you renew your PFX certificate, you must code sign again with this new certificate all the deployed applications that you have in your Application Center catalog.
+> **Tipp:** Der Installationsprozess funktioniert nicht, wenn das
+PFX-Zertifikat abgelaufen ist, mit dem die Anwendungspaketdatei (.xap)
+der zu installierenden Anwendung digital signiert wurde. Das Betriebssystem Windows Phone gibt einen
+Fehler mit **HRESULT 0x81030110** zurück. Wenn Sie das
+PFX-Zertifikat erneuern, müssen Sie mit diesem neuen Zertifikat nochmals alle entwickelten Anwendungen
+in Ihrem Application-Center-Katalog digital signieren.
 > 
-When you renew your PFX code-signing certificate, you must also renew the enrollment token and deploy it on the Application Center console. Devices must also be re-enrolled to the company account with this new token. Users of devices enrolled with an expired token cannot install any applications.
+Wenn Sie Ihr digitales
+PFX-Signaturzertifikat erneuern, müssen Sie auch das Registrierungstoken erneuern und in der Application-Center-Konsole
+implementieren.
+Geräte müssen ebenfalls mit diesem neuen Token erneut unter dem Unternehmenkonto registriert werden. Benutzer von Geräten, die mit einem abgelaufenen Token
+registriert wurden, können keine Anwendungen installieren. 
 
-In Windows Phone 8.1, if the Application Center client is not code signed (for example, when you debug it in Visual Studio), you cannot install any application by using this unsigned client. In this case, the Windows Phone operating system returns an error with **HRESULT 0x800703F0**. Before installing applications in Windows Phone 8.1, you must code sign the application package (.xap) file of the client.
+Wenn ein Application-Center-Client unter Windows Phone
+8.1 nicht digital signiert ist (beispielsweise beim Debuggen in
+Visual Studio), können Sie mit diesem nicht signierten Client keine Anwendungen installieren. Das Betriebssystem Windows Phone gibt in dem Fall einen
+Fehler mit **HRESULT 0x800703F0** zurück. Vor der Installation von Anwendungen unter
+Windows Phone
+8.1 müssen Sie die Anwendungspaketdatei (.xap) des Clients digital signieren. 
 
-## Installing a Windows Store application on a Windows device
+## Windows-Store-Anwendung auf einem
+Windows-Gerät installieren
 {: #installing-a-windows-store-application-on-a-windows-device }
-Use sideloading to install Windows Store apps through Application Center.
+Nutzen Sie das Querladen, wenn Sie Windows-Store-Apps
+über das Application Center installieren möchten.
 
-You must check that your configuration satisfies the application sideloading prerequisites that are described in Prepare to Sideload Apps.  
-The device user needs administrator rights on the device to execute the Application Center client.
+Sie müssen überprüfen, ob Ihre Konfiguration die Voraussetzungen für das Querladen erfüllt, die in
+"Prepare to Sideload Apps" beschrieben sind.  
+Zum Ausführen des Appliction-Center-Clients benötigt
+der Gerätebenutzer die Administratorberechtigung für das Gerät. 
 
-Installing APPX packages through Application Center is done by a process called sideloading. As part of Windows 8.1 Update, sideloading is enabled for all Windows 8.1 Pro devices that are part of an Active Directory domain, which matches the current behavior of Windows 8.1 Enterprise. If you use either of those product versions and the device is part of an Active Directory domain, you have no concerns about sideloading keys or activating sideloading.
+Die Installation von APPX-Paketen über das Application Center erfolgt mit einem
+Prozess, der als Querladen bezeichnet wird. Mit dem Update auf Windows 8.1 ist das Querladen für alle
+Geräte mit Windows 8.1 Pro in einer Active-Directory-Domäne aktiviert. Dies entspricht dem aktuellen Verhalten
+unter
+Windows 8.1 Enterprise.
+Wenn Sie eine dieser Produktversionen verwenden und das Gerät zu einer Active-Directory-Domäne gehört, müssen Sie sich über das Querladen von Schlüsseln oder
+die Aktivierung des Querladens keine Gedanken machen.
 
-When you develop a Windows Store application, Microsoft Visual Studio automatically generates a self-signed certificate and uses it to code sign the application package. To be able to install the application later by using Application Center, you must import this certificate into the "Trusted Root Certification Authorities" store of the "Local Machine". Importing the certificate is a manual procedure.
+Wenn Sie eine Windows-Store-Anwendung entwickeln,
+generiert Microsoft Visual Studio
+automatisch ein selbst signiertes Zertifikat, um damit das Anwendungspaket digital zu signieren. Sie müssen dieses Zertifikat
+auf dem "lokalen Computer" in den Store "Vertrauenswürdige Stammzertifizierungsstellen" importieren, damit Sie die Anwendung später über das
+Application Center installieren
+können. Der Import des Zertifikats ist ein manueller Prozess. 
 
-> **Note:** Manual installation of a certificate is only required for the development phase, because APPX code signing relies on a self-signed certificate generated by Microsoft Visual Studio. In production, your APPX file must be signed by a genuine certificate purchased from a recognized root certificate authority.
+> **Hinweis:** Die manuelle Installation eines Zertifikats
+ist nur in der Entwicklungsphase erforderlich, weil für das Signieren von APPX-Code
+ein von Microsoft Visual Studio generiertes, selbst signiertes Zertifikat notwendig ist. In der Produktion
+muss Ihre APPX-Datei mit einem echten Zertifikat signiert werden, das Sie bei einer anerkannten Stammzertifizierungsstelle erworben haben. Im ersten Schritt dieser Prozedur wird Ihnen mitgeteilt, wie das Zertifikat installiert wird, bevor Sie
+die Anwendung über das
+Application Center installieren.
 
-The first step of this procedure tells you how to install the certificate before you can install the application through Application Center.
+1. Importieren Sie dieses Zertifikat in die vertrauenswürdigen Stammzertifizierungsstellen des
+lokalen Computers. 
+    * Wenn Sie in Visual Studio eine APPX-Datei generiert haben, stellen Sie diese Datei in Ihr Dateisystem. Im Ordner mit der
+APPX-Datei sehen Sie eine Zertifikatdatei (.cer)
+mit dem selbst signierten Zertifikat, das Sie importieren müssen.
+![Zertifikatdatei im Ordner mit dem Anwendungspaket](cer_file_win8.jpg)
+    * Klicken Sie zum Öffnen des Zertifikats doppelt auf die CER-Datei. 
+    * Klicken Sie auf "Zertifikat installieren". ![Allgemeine Informationen zum Zertifikat](cert_props_win8.jpg)    
+    * Wählen Sie "Lokaler Computer" aus und klicken Sie auf **Weiter**. ![Lokalen Computer im Assistenten für den Import des Zertifikats angeben](cert_localmachine_win8.jpg)    
+    * Wählen Sie "Alle Zertifikate in folgendem Speicher speichern" aus. Navigieren Sie dann zu
+"Vertrauenswürdige Stammzertifizierungsstellen" und wählen Sie diese Option aus. ![Zeritifikat in
+"Vertrauenswürdige Stammzertifizierungsstellen" stellen](cert_trustedroot_win8.jpg)
+    * Klicken Sie auf **Weiter** und dann auf **Fertigstellen**.Der erfolgreiche Import des Zertifikats müsste bestätigt werden. 
 
-1. Import this certificate into the "Trusted Root Certification Authorities" store of the "Local Machine".
-    * After you have generated an APPX file by using Visual Studio, place this file in your file system. In the folder of the APPX file, you can see a certificate (.cer) file that contains the self-signed certificate that you must import.
-    ![Certificate file in the application package folder](cer_file_win8.jpg)
-    * To open the certificate, double-click the CER file.
-    * Click Install Certificate.
-    ![General information about the certificate](cert_props_win8.jpg)    
-    * Select "Local Machine" and click **Next**.
-    ![Specifying the local machine in the Certificate Import Wizard](cert_localmachine_win8.jpg)    
-    * Select "Place all certificate in the following store" and then browse to select "Trusted Root Certification Authorities".
-    ![Placing the certificate in "Trusted Root Certificate Authorities"](cert_trustedroot_win8.jpg)    
-    * Click **Next** and then **Finish**. The successful import of the certificate should be confirmed.
+In den folgenden Schritten ist beschrieben, wie eine
+Windows-Store-Anwendung
+über das Application Center auf einem
+Windows-Gerät installiert wird. 
 
-The following steps describe how to perform the installation of a Windows Store application on a Windows device by using Application Center.
+1. Melden Sie sich beim mobilen Application-Center-Client für
+Windows-Store-Anwendungen an.
+2. Wählen Sie die zu installierende Anwendung aus, um Zugriff auf die Details zu erhalten.
 
-1. Log in to the Application Center mobile client for Windows Store applications.
-2. Select the application that you want to install to access its details.
+    ![Detailansicht für die Installation einer Windows-Store-App](ac_details_wstore_app.jpg)
 
-    ![Details view for installing a Windows Store app](ac_details_wstore_app.jpg)
+3. Tippen Sie auf **Installieren**, um die Anwendung zu installieren.Wenn die Anwendung bereits installiert ist und andere Versionen verfügbar sind, können Sie ein Update auf eine aktuellere Version durchführen oder zu einer
+älteren Version zurückkehren.
 
-3. To install the application, tap **Install**. If the application is already installed and other versions are available, you can decide to update to a later version or to revert to a previous version.
-
-## Installing applications through public app stores
+## Anwendungen aus öffentlichen App Stores installieren
 {: #installing-applications-through-public-app-stores }
-You can link from the mobile client to applications that are stored in supported public app stores and install these applications on your compatible device by following the normal procedure of the public app store.
+Sie können den mobilen Client mit Anwendungen verlinken, die in unterstützten öffentlichen App Stores
+gespeichert sind, und diese Anwendungen mit dem normalen Verfahren des öffentlichen App Store auf Ihrem kompatiblen Gerät
+installieren.
 
-The Application Center administrator can create links to selected applications stored in supported public app stores and make them available to users of the Application Center mobile client on the operating systems that match these applications. See [Adding an application from a public app store](../appcenter-console/#adding-an-application-from-a-public-app-store). You can install these applications through the mobile client on your compatible device.
+Der Administrator des Application Center kann Links zu ausgewählten Anwendungen, die in unterstützten öffentlichen App Stores gespeichert sind, erstellen
+und die Anwendungen für Benutzer des mobilen
+Application-Center-Clients unter den passenden Betriebssystemen verfügbar machen (siehe
+[Anwendung aus öffentlichem App Store hinzufügen](../appcenter-console/#adding-an-application-from-a-public-app-store)). Sie können diese Anwendungen über den
+mobilen Client auf Ihrem kompatiblen Gerät installieren.
 
-Links to Android applications stored in Google play and to iOS applications stored in Apple iTunes are listed in the application list on the device along with the binary files of private applications created within your enterprise.
+In der Anwendungsliste auf dem Gerät werden neben den Binärdateien von privaten Anwendungen, die in Ihrem
+Unternehmen erstellt wurden, Links zu Android-Anwendungen in Google
+Play und zu iOS-Anwendungen in Apple iTunes angezeigt.
 
-1. Select an application stored in a public app store from the application list to see the application details. Instead of Install, you see Go to Store.
-2. Tap **Go to Store** to open Google play or Apple iTunes.
+1. Wählen Sie in der Anwendungsliste eine Anwendung aus, die in einem öffentlichen App Store gespeichert ist, um die
+Anwendungsdetails zu sehen.Anstelle von "Installieren" sehen Sie "Zum Store".
+2. Tippen Sie auf **Zum Store**, um Google Play oder Apple iTunes zu öffnen.
 
     **Android**
-    ![Accessing an application in Google play from the mobile client on the device](ac_and_link_app.jpg)
+    ![Vom mobilen Client auf dem Gerät auf eine Anwendung in Google Play zugreifen](ac_and_link_app.jpg)
     
     **iOS**
-    ![Accessing an application in Apple iTunes from the mobile client on the device](ac_ios_link_app.jpg)
+    ![Vom mobilen Client auf dem Gerät auf eine Anwendung in Apple iTunes zugreifen](ac_ios_link_app.jpg)
     
-3. Follow the usual procedure of the public app store to install the application.
+3. Installieren Sie die Anwendung mit dem üblichen Verfahren des öffentlichen App Store.
 
-## Removing an installed application
+## Installierte Anwendung entfernen
 {: #removing-an-installed-application }
-You can remove an application that is installed on your mobile device.
+Sie können eine Anwendung entfernen, die auf Ihrem mobilen Gerät installiert ist.
 
-1. Start the removal procedure that is valid for the operating system of your device.
-    * **Android**: See the procedure in step 2.
-    * **iOS**: You can remove applications only from the iOS Home screen, and not through the Application Center client. Use the normal iOS procedure for removing an application.
-    * **Windows Phone**: You can remove applications only from the Windows Phone Home screen, and not through the Application Center client. Use the normal Windows Phone procedure for removing an application.
-    * **Windows Store**: You can remove applications either from the Application Center mobile client or from the Windows home screen.
-2. **Android only**: Remove an application from an Android device.
-    * In the **Details** view of any version of the application, tap **Uninstall**. The **Uninstall** button appears in the **Details** view only when a version of the application is installed. You are requested to confirm that the application version is to be uninstalled.
-        * Tap **Uninstall** to uninstall the application version or **Cancel** to notify the application that the uninstallation command has been canceled.
+1. Starten Sie die Deinstallationsprozedur, die für das Betriebssystem Ihres Gerätes gültig ist.
+    * **Android**: Lesen Sie die Informationen in Schritt 2.
+    * **iOS**: Sie können Anwendungen nur im Home Screen von iOS entfernen und nicht über den
+Application-Center-Client. Verwenden Sie die normale iOS-Prozedur zum Entfernen einer Anwendung.
+    * **Windows Phone**: Sie können Anwendungen nur in der Startanzeige von Windows Phone entfernen und nicht über den
+Application-Center-Client. Verwenden Sie die normale Windows-Phone-Prozedur zum Entfernen einer Anwendung.
+    * **Windows Store**: Sie können Anwendungen im mobilen Application-Center-Client oder in der
+Windows-Hauptanzeige entfernen. 
+2. **Nur Android**: Entfernen Sie eine Anwendung von einem Android-Gerät.
+    * Tippen Sie in der Ansicht **Details** einer beliebigen Version der Anwendung auf
+**Deinstallieren**.Die Schaltfläche **Deinstallieren** erscheint nur in der Ansicht **Details**, wenn eine Anwendungsversion installiert ist.Sie werden aufgefordert, die Deinstallation der Anwendungsversion zu bestätigen.
+        * Tippen Sie auf **Deinstallieren**, um die Anwendungsversion zu deinstallieren, oder auf **Abbrechen**,
+um der Anwendung mitzuteilen, dass der Deinstallationbefehl abgebrochen wurde.
 
-## Showing details of a specific application version
+## Details einer bestimmten Anwendungsversion anzeigen
 {: #showing-details-of-a-specific-application-version }
-You can show the details of the selected version of an application by following the appropriate procedure for an Android or iOS phone or tablet, a Windows Phone device, or a Windows device.
+Sie können die Details der ausgewählten Anwendungsversion gemäß den Anweisungen für ein Android- oder iOS-Telefon bzw. -Tablet oder
+für ein Gerät mit Windows Phone oder Windows anzeigen. 
 
-1. Show details of a specific application version on a mobile device by selecting the appropriate procedure for your device.
-    * A Windows Phone, Android, or iOS phoneA phone; see step 2.
-    * A Windows device; see step 3
-    * A tablet; see step 4.
-2. **Windows Phone, Android, iOS only**: Show details of a specific application version on a Windows Phone, Android, or iOS phone.
-    * Tap **Select a version** to navigate to the version list view.
-    ![Specific version of an application selected in the list of versions on a Windows Phone, Android, or iOS phone](ac_version_select.jpg) 
-    * Tap the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
-3. Windows only: Show details of a specific Windows Store application version on a Windows device. If more than one version is available for the Windows Store application, then you can select which version that you want to install.
-    * Tap the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
-4. Tablet devices only: Show details of a specific application version on a tablet.
-    * Tap **Select version**.
-    * In the menu, select the appropriate version of the application. The **Details** view is updated and shows the details of the selected application version.
+1. Wählen Sie die entsprechende Vorgehensweise für Ihr mobiles Gerät aus, um die Details einer bestimmten Anwendungsversion
+anzuzeigen.
+    * Windows-Phone-, Android- oder iOS-Telefon: siehe Schritt 2
+    * Windows-Gerät: siehe Schritt 3
+    * Tablet: siehe Schritt 4
+2. **Nur Windows Phone, Android und iOS**: Zeigen Sie Details
+einer bestimmten Anwendungsversion auf einem Windows-Phone-, Android- oder
+iOS-Telefon an. 
+    * Tippen Sie auf **Version auswählen**, um zur Ansicht mit der Versionsliste zu navigieren.
+    ![In der Liste der Versionen auf einem Windows-Phone-, Android- oder iOS-Telefon ausgewählte
+Version einer Anwendung](ac_version_select.jpg) 
+    * Tippen Sie auf die betreffende Anwendungsversion.Die Ansicht **Details** wird aktualisiert und zeigt die Details der ausgewählten Anwendungsversion an.
+3. Nur Windows:
+Zeigen Sie die Details einer bestimmten Version einer Windows-Store-Anwendung
+auf einem Windows-Gerät an. Falls mehrere Versionen der Windows-Store-Anwendung verfügbar sind, wählen Sie die
+zu installierende Version aus. 
+    * Tippen Sie auf die betreffende Anwendungsversion.Die Ansicht **Details** wird aktualisiert und zeigt die Details der ausgewählten Anwendungsversion an.
+4. Nur Tablets: Zeigen Sie die Details einer bestimmten Anwendungsversion auf einem Tablet an.
+    * Tippen Sie auf **Version auswählen**.
+    * Wählen Sie im Menü die betreffende Anwendungsversion aus. Die Ansicht **Details** wird aktualisiert und zeigt die Details der ausgewählten Anwendungsversion an.
 
-## Updating an application
+## Anwendung aktualisieren
 {: #updating-an-application }
-Follow this procedure to make the latest versions of favorite and recommended apps available on your device. Applications that are marked as favorites and that have an updated version are listed in the **Updates** view. The applications that are marked as recommended by the Application Center server administrator are also listed in the **Updates** view, even if they are not favorites.
+Gehen Sie wie nachfolgend beschrieben vor,
+um auf Ihrem Gerät die neueste Version bevorzugter und empfohlener Apps auf Ihrem Gerät verfügbar zu machen. Anwendungen, die als Favorit
+markiert sind und für die es eine aktualisierte Version gibt, sind in der Ansicht **Aktualisierungen** aufgelistet. Die Anwendungen,
+die vom Application-Center-Serveradministrator als empfohlene Anwendungen markiert sind,
+werden in der Ansicht **Aktualisierungen** aufgelistet, auch wenn sie keine Favoriten sind. 
 
-If a more up-to-date version of an installed application is available on the server, it is listed under **Update or Recommended**.
+Wenn eine aktuellere Version
+einer installierten Anwendung auf dem Server verfügbar ist, wird sie unter **Update or Recommended** aufgelistet.
 
-1. In the **Updates** view, navigate to the **Details** view.
-2. In the **Details** view, select a newer version of the application or take the latest available version.
-3. **Android and Windows 8 Universal**: On Android and Windows 8 Universal devices, tap **Update**.
-4. **iOS only**: On iOS devices, tap **Install latest**.
-5. Follow the appropriate application installation procedure.
-    * [Installing an application on an Android device](#installing-an-application-on-an-android-device)
-    * [Installing an application on an iOS device](#installing-an-application-on-an-ios-device)
-    * [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device)
-    * [Installing a Windows Store application on a Windows device](#installing-a-windows-store-application-on-a-windows-device)
+1. Navigieren Sie in der Ansicht **Aktualisierungen** zur
+Ansicht **Details**.
+2. Wählen Sie in der Ansicht **Details**
+eine neuere Anwendungsversion aus oder übernehmen Sie die aktuellste verfügbare Version.
+3. **Android und Windows 8 Universal**: Tippen Sie auf Android- und
+Windows-8-Universal-Geräten auf
+**Aktualisieren**.
+4. **Nur iOS**: Tippen Sie auf iOS-Geräten auf **Neueste installieren**.
+5. Folgen Sie dem zutreffenden Anwendungsinstallationsverfahren.
+    * [Anwendung auf einem Android-Gerät installieren](#installing-an-application-on-an-android-device)
+    * [Anwendung auf einem iOS-Gerät installieren](#installing-an-application-on-an-ios-device)
+    * [Anwendung auf einem Windows-Phone-Gerät
+installieren](#installing-an-application-on-a-windows-phone-device)
+    * [Windows-Store-Anwendung auf einem
+Windows-Gerät installieren](#installing-a-windows-store-application-on-a-windows-device)
 
-## Upgrading the Application Center client automatically
+## Automatisches Upgrade für den Application-Center-Client
 {: #upgrading-the-application-center-client-automatically }
-You can enable automatic detection of new versions of the client application. Then, you can choose whether to download and install the new version on your mobile device. This feature is supported for iOS, Android, and Windows Phone.
+Sie können die automatische Erkennung neuer Versionen für die Clientanwendung aktivieren. Anschließend können Sie wählen, ob Sie die neue Version
+auf Ihr mobiles Gerät herunterladen und dort installieren möchten. Dieses Feature wird für
+iOS, Android und Windows Phone unterstützt.
 
-New versions of the mobile client application that are available on the Application Center server can be detected automatically. When this feature is enabled, a more recent version of the application, if it exists, can be detected at start up or each time that the Available applications view is refreshed.
+Auf dem
+Application-Center-Server verfügbare neue Versionen der mobilen Clientanwendung können automatisch erkannt werden. Wenn dieses Feature
+aktiviert ist, kann beim Start oder bei jeder Aktualisierung der Ansicht "Verfügbare Anwendungen" festgestellt werden, ob es eine neuere Version der Anwendung gibt. 
 
-f a later version of the application is detected, you are requested to download and install the later version.
+Wenn eine aktuellere Version der Anwendung
+gefunden wird, werden Sie aufgefordert, diese herunterzuladen und zu installieren.
 
-Automatic upgrade of the Application Center client application is enabled by default with the **appCenterAutoUpgrade** property set to **true**. This property is located in the {{ site.data.keys.product_full }} project for the Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
+Standardmäßig ist das automatische Upgrade
+der Application-Center-Clientanwendung aktiviert, d. h., die Eigenschaft
+**appCenterAutoUpgrade** ist auf
+**true** gesetzt. Diese Eigenschaft ist im
+IBM MobileFirst-Foundation-Projekt für das Application Center enthalten: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
 
-If you want to disable automatic upgrade, you must set this property to false and rebuild the project for the required platforms.
+Wenn Sie das automatische
+Upgrade inaktivieren möchten, müssen Sie diese Eigenschaft auf
+"false" setzen und das Projekt für die erforderlichen Plattformen neu erstellen.
 
-1. When a later version of the client is detected, tap **OK** to start the download and installation sequence.
+1. Wenn eine neuere Version des Clients gefunden wird, tippen Sie auf **OK**, um mit dem Download und
+dem Installationsablauf zu beginnen.
 
-    ![Detection of a later version of the client application available on the server](ac_client_autoupgrade_detect.jpg)
+    ![Erkennung einer auf dem Server verfügbaren neueren Version der Clientanwendung](ac_client_autoupgrade_detect.jpg)
 
-2. Tap **Install** to install the later version of the application.
+2. Tippen Sie auf **Installieren**, um die neuere Version der Anwendung zu installieren.
 
-    ![Confirm installation of the updated version of the application](ac_client_autoupgrade_install_app.jpg)
+    ![Installation der aktualisierten Anwendungsversion bestätigen](ac_client_autoupgrade_install_app.jpg)
 
-3. Tap **Open** to start the updated application.
+3. Tippen Sie auf **Öffnen**, um die aktualisierte Anwendung zu starten.
 
-    ![Starting the updated application](ac_client_autoupgrade_start_app.jpg)
+    ![Aktualisierte Anwendung starten](ac_client_autoupgrade_start_app.jpg)
     
-You must log in to the updated version of the application to run it.
+Sie müssen sich bei der aktualisierten Anwendungsversion anmelden, um sie ausführen zu können.
 
-![Logging in to the new version of the client application](ac_client_autoupgrade_login_new_version.jpg)
+![Anmeldung bei der neuen Version der Clientanwendung](ac_client_autoupgrade_login_new_version.jpg)
 
-**Note:** To upgrade the Application Center client, the following conditions apply:
+**Hinweis:** Für ein Upgrade des Application-Center-Clients gelten die folgenden Bedingungen:
 
-1. The new Application Center client must use the same package name or bundle identifier as the old client.
-2. On iOS, the new Application Center client must be signed with the same provisioning profile as the old client.
-3. On Android, the new Application Center client must have the same signature as the old client.
-4. On Windows Phone, the new Application Center client must be signed with the same company account as the old client.
 
-## Reverting an installed application
+1. Der neue Application-Center-Client muss denselben Paketnamen oder dieselbe Bundle-ID wie der alte Client verwenden. 
+2. Unter iOS muss der neue Application-Center-Client mit demselben Bereitstellungsprofil wie der alte Client signiert werden. 
+3. Unter Android muss der neue Application-Center-Client dieselbe Signatur wie der alte Client haben. 
+4. Unter Windows Phone muss der neue Application-Center-Client mit demselben Unternehmenskonto wie der alte Client signiert werden. 
+
+## Installierte Anwendung zurücksetzen
 {: #reverting-an-installed-application }
-You can revert the version of an installed application if an earlier version exists on the server.
+Sie können die Version einer installierten Anwendung zurücksetzen, wenn eine frühere Version auf dem Server existiert.
 
-To replace the currently installed version of an application with an earlier version, from the **Catalog**, **Updates**, or **Favorites** view, navigate to the Details view. In the **Details** view, select an earlier version. See [Showing details of a specific application version](#showing-details-of-a-specific-application-version) for information about how to display details of a specific application version on a mobile device.
+Wenn Sie die derzeit installierte Version einer Anwendung durch eine frühere Version der Anwendung
+ersetzen möchten, navigieren Sie von der Ansicht **Katalog**, **Aktualisierungen**
+oder **Favoriten** aus zur Ansicht "Details". Wählen Sie in der Ansicht **Details** eine
+frühere Version aus.
+Im Artikel [Details einer bestimmten Anwendungsversion anzeigen](#showing-details-of-a-specific-application-version) erfahren Sie, wie die Details einer bestimmten Anwendungsversion
+auf einem mobilen Gerät angezeigt werden. 
 
-### On Android
+### Android
 {: #on-android }
-If the installed version of the Android operating system is earlier than 4.2.2, tap **Revert**.  
-If the installed version of the Android operating system is 4.2.2 or later, you must uninstall the current version before you can install the earlier version.
+Wenn eine ältere Version des
+Android-Betriebssystems als Version 4.2.2 installiert ist, tippen Sie auf **Zurücksetzen**.  
+Wenn das
+Android-Betriebssystem ab Version 4.2.2 installiert ist, müssen Sie die aktuelle Version deinstallieren, bevor Sie die
+frühere Version installieren.
 
-Then, follow the procedure documented in [Installing an application on an Android device](#installing-an-application-on-an-android-device).
+Folgen Sie dann der dokumentierten Prozedur im Artikel [Anwendung auf einem Android-Gerät installieren](#installing-an-application-on-an-android-device). 
 
-### On iOS
+### iOS
 {: #on-ios }
-Use the normal procedure of the operating system to remove the application.  
-Tap **Install** to install the earlier version of the application. Follow the procedure documented in [Installing an application on an iOS device](#installing-an-application-on-an-ios-device).
+Verwenden Sie die normale Betriebssystemprozedur zum Entfernen der Anwendung.  
+Tippen Sie auf
+**Installieren**, um die frühere Anwendungsversion zu installieren. Folgen Sie der dokumentierten Prozedur im Artikel [Anwendung auf einem iOS-Gerät installieren](#installing-an-application-on-an-ios-device). 
 
-### On Windows Phone
+### Windows Phone
 {: #on-windows-phone }
-Tap **Revert**. Follow the procedue documented in [Installing an application on a Windows Phone device](#installing-an-application-on-a-windows-phone-device).
+Tippen Sie auf **Zurücksetzen**. Folgen Sie der dokumentierten Prozedur im Artikel [Anwendung auf einem Windows-Phone-Gerät installieren](#installing-an-application-on-a-windows-phone-device). 
 
-## Marking or unmarking a favorite app
+## App-Favorit festlegen oder löschen
 {: #marking-or-unmarking-a-favorite-app }
-Mark your favorite apps or unmark an app to have it removed from the favorites list.
+Sie können Ihre bevorzugten Apps als Favoriten markieren oder markierte Apps aus der Favoritenliste entfernen.
 
-An application marked as a favorite on your device indicates that you are interested in this application. This application is then listed in the list of favorite apps to make locating it easier. This application is displayed on every device belonging to you that is compatible with the application. If a later version of the app is available in the Application Center, the application is listed in the **Updates** view.
+Eine Anwendung, die auf Ihrem Gerät als Favorit markiert ist, zeigt Ihr Interesse an dieser Anwendung. Diese Anwendung wird dann in der Liste
+der bevorzugten Apps aufgeführt und kann so leichter gefunden werden. Diese Anwendung wird auf jedem Ihrer Geräte angezeigt,
+das mit der Anwendung kompatibel ist. Wenn eine aktuellere Version der App im Application Center verfügbar ist, wird
+die Anwendung in der Ansicht **Aktualisierungen** aufgelistet.
 
-To mark or unmark an application as a favorite app, tap the Favorites icon <img src="ac_favorite_icon.jpg" style="margin:0;display:inline" alt="Icon in the shape of a star that indicates a favorite app"/>. in the header of the **Details** view.  
+Tippen Sie in der Kopfzeile der Ansicht **Details** auf das Favoritensymbol
+(<img src="ac_favorite_icon.jpg" style="margin:0;display:inline" alt="Sternförmiges Symbol, das eine bevorzugte App anzeigt"/>), um eine Anwendung als bevorzugte App zu markieren oder die Markierung als bevorzugte
+App zu löschen.   
 
-An installed application is automatically marked as a favorite app.
+Eine installierte Anwendung ist automatisch als bevorzugte App markiert.
 
-## Submitting a review for an installed application
+## Rezension zu einer installierten Anwendung abschicken
 {: #submitting-a-review-for-an-installed-application }
-You can review an application version that is installed on your mobile device; the review must include a rating and a comment. You can submit a review of an application version only if that version is installed on your mobile device.
+Sie können eine auf Ihrem mobilen Gerät installierte Anwendungsversion rezensieren.
+Die Rezension muss eine Bewertung und einen Kommentar enthalten. Eine Rezension zu einer Anwendungsversion können Sie nur abschicken, wenn diese Version auf Ihrem mobilen Gerät installiert ist.
 
-1. In the **Details** view, initiate your review.
-    * On iOS phones and tablets, tap **Review version X**.
-    * On Android phones and tablets, tap **Review version X**.
-2. Enter a nonzero star rating.
+1. Starten Sie Ihre Rezension wie folgt in der Ansicht **Details**.
+    * Tippen Sie auf iOS-Telefonen und -Tablets auf **Rezension zu Version X**.
+    * Tippen Sie auf Android-Telefonen und -Tablets auf **Rezension zu Version X**.
+2. Geben Sie eine Bewertung mit mindestens einem Stern ein. 
 
-    On mobile devices with touchscreens, tap 1 to 5 stars to represent your approval rating of the version of the application. One star represents the lowest level of appreciation and five stars represent the highest level of appreciation.
+    Tippen Sie auf mobilen Geräten mit Touchscreen auf bis zu fünf Sterne, um den Grad Ihrer Zustimmung zu der Anwendungsversion
+anzugeben. Ein Stern repräsentiert die geringste Zufriedenheit und fünf Sterne die größte Zufriedenheit.
 
-3. Enter a comment about this version of the application.
-4. Tap **Submit** to send your review to the Application Center.
+3. Geben Sie einen Kommentar zu dieser Anwendungsversion ein.
+4. Tippen Sie auf **Abschicken**, um Ihre Rezension an das Application Center zu senden.
 
-## Viewing reviews
+## Rezensionen anzeigen
 {: #viewing-reviews }
-You can view reviews of a specific version of an application or of all versions of an application.  
+Sie können Rezensionen zu einer bestimmten Version einer Anwendung oder zu allen Versionen einer Anwendung anzeigen.  
 
-Reviews are displayed in descending order from the most recent review. If the number of reviews fills more than one screen, tap **Load more** to show more reviews. On Android, iOS, and Windows Phone devices, the review details are visible in the list.
+Rezensionen werden in absteigender Reihenfolge, beginnend bei der jüngsten Rezension, angezeigt.
+Wenn die Anzahl der Rezensionen mehr als eine Anzeige füllt, tippen Sie auf **Mehr
+laden**, um weitere Rezensionen zu sehen. Auf Android-, iOS- und Windows-Phone-Geräten sind die Rezensionsdetails in der Liste sichtbar. 
 
-### Viewing reviews of a specific version
+### Rezensionen zu einer bestimmten Version anzeigen
 {: #viewing-reviews-of-a-specific-version }
-The **Details** view always shows the details of a specific version. On a phone, the reviews are for that version.  
-In the **Details** view of an application version:
+In der Ansicht **Details**
+werden immer die Details einer bestimmten Version angezeigt. Auf einem Telefon beziehen sich die Rezensionen auf diese Version.  
+Gehen Sie in der Ansicht
+**Details** für eine Anwendungsversion
+wie folgt vor:
 
-* On a Windows Phone, Android, or iOS phone, tap **View Reviews** to navigate to the Reviews view.
-* On a tablet, tap **Reviews** xx, where xx is the displayed version of the application.
+* Tippen Sie auf einem Windows-Phone-, Android- oder iOS-Mobiltelefon auf **Rezensionen anzeigen**, um zur Ansicht
+"Rezensionen" zu gelangen. 
+* Tippen Sie auf einem Tablet auf **Rezensionen zu xx**. Hier steht xx für die angezeigte
+Anwendungsversion.
 
-### Viewing reviews of all versions of an application
+### Rezensionen zu allen Versionen einer Anwendung anzeigen
 {: #viewing-reviews-of-all-versions-of-an-application }
-In the **Details** view of an application version:
+Gehen Sie in der Ansicht
+**Details** für eine Anwendungsversion
+wie folgt vor:
 
-* On a Windows Phone, Android, or iOS phone, tap **View Reviews** to navigate to the **Reviews** view. Then, tap the settings icon. Tap **All versions**, and confirm the selection.
-* On a tablet, tap **All Reviews**.
+* Tippen Sie auf einem Windows-Phone-, Android- oder iOS-Mobiltelefon auf **Rezensionen anzeigen**, um zur Ansicht
+**Rezensionen** zu gelangen. Tippen Sie dann auf das Einstellungssymbol. Tippen Sie auf **Alle Versionen** und bestätigen Sie die Auswahl. 
+* Tippen Sie auf einem Tablet auf **Alle Rezensionen**.

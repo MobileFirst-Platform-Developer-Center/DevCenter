@@ -1,77 +1,115 @@
 ---
 layout: tutorial
-title: Migrating Authentication and Security Concepts
-breadcrumb_title: Migrating authentication concepts
+title: Authentifizierungs- und Sicherheitskonzepte umstellen
+breadcrumb_title: Authentifizierungskonzepte umstellen
 downloads:
-  - name: Download migration sample
+  - name: Migrationsbeispiel herunterladen
     url: https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample
 weight: 3
 ---
-## Overview
+## Übersicht
 {: #overview }
-The security framework of {{ site.data.keys.product_full }} has undergone some major changes in version 8.0, to improve and simplify security development and administration tasks. In particular, the security building blocks have changed – In 8.0, OAuth security scopes and security checks replace the security tests, realms and login modules of previous versions.
 
-This tutorial guides you through the steps required for migrating the security code of your application. We will use a sample 7.1 application as a starting point, and describe the complete process that will take us from the 7.1 sample application to a 8.0 application, with the same security protection. Both the 7.1 sample app and the migrated application are attached here.
+Das {{ site.data.keys.product_full }}-Sicherheitsframework
+wurde in Version 8.0 erheblich modifiziert, um die Aufgaben der Sicherheitsentwicklung und -verwaltung zu verbessern und zu vereinfachen. Zu diesen Modifikationen gehört die Ersetzung
+von Sicherheitsbausteinen aus Version 7.1. OAuth-Sicherheitsbereiche und -überprüfungen in Version 8.0 ersetzen die Sicherheitstests, Realms und Anmeldemodule früherer Versionen. 
 
-The migration steps that we will describe below are:
-*	Migrating the resource adapter to 8.0, and maintaining the protection of the resources
-*	Migrating the client app
-*	Creating security checks to replace the authentication realms of the 7.1 app
-*	Modifying the challenge handlers on the client-side to use the new challenge handler API.
+Dieses Lernprogramm führt Sie durch die erforderlichen Schritte für die Umstellung des Sicherheitscodes Ihrer Anwendung auf Version 8.0. Im Lernprogramm ist der vollständige Prozess für die Transformation einer
+Beispielanwendung aus {{ site.data.keys.product_adj }} Version 7.1 in eine Anwendung der Version 8.0 mit dem gleichen Sicherheitsschutz beschrieben. Sowohl die Beispielanwendung
+aus Version 7.1 als auch die umgestelte Anwendung der Version 8.0 ist über den Link **Migrationsbeispiel
+herunterladen** am Anfang dieses Lernprogramms zum Download verfügbar. 
 
-In the [second part](#migrating-other-types-of-authentication-realms) of this tutorial, we will address additional migration issues that are not demonstrated in the migration of the sample app:
-*	Migrating other types of authorization realms, beyond form-based authentication and adapter-based authentication that are demonstrated in the sample.
-*	Access token expiration
-*	Application-level protection (application security test)
-*	Security configuration settings in 7.1 that are no longer required in the simpler security model of 8.0, such as the user identity realm and the device identity realm
+Im [ersten Teil](#migrating-the-sample-application) des Lernprogramms ist erläutert,
+wie die Beispielanwendung aus Version 7.1 auf Version 8.0 umgestellt wird. Im Rahmen dieser Umstellung werden der Ressourcenadapter
+umgestellt, die formular- und adapterbasierten Authentifizierungsrealms durch Sicherheitsüberprüfungen ersetzt,
+und die Clientanwendung mit allen ihren Abfrage-Handlern umgestellt. <br />
+Im [zweiten Teil](#migrating-other-types-of-authentication-realms) wird erklärt, wie
+andere Arten von Authentifizierungsrealms aus Version 7.1, die in der Beispielanwendung nicht angewendet werden, auf
+Version 8.0 umgestellt werden. <br />
+Im [dritten Teil](#migrating-other-v71-security-configurations) wird erklärt, wie
+weitere Sicherheitskonfigurationen von Version 7.1 auf
+Version 8.0 umgestellt werden. Dazu gehören die Konfiguration des Schutzes auf Anwendungsebene, der Ablauf von Zugriffstoken sowie Benutzer- und Geräte-IDs.
+{% comment %} I edited and reordered, including splitting part two into two and three - which matches the header levels in the original doc. I moved the links (which I also edited) to each second-level header ("part").
+{% endcomment %}
 
-> Before you start the migration you are advised to go through the [migration cookbook](../migration-cookbook). See also the [Authentication and Security tutorial](../../authentication-and-security) to learn about the basic concepts of the new security framework.
+> **Hinweis:** Bevor Sie mit der Migration beginnen, sollten Sie das
+[Migrations-Cookbook für Version 8.0](../migration-cookbook) durcharbeiten.   
+> Weitere Informationen zu den Basiskonzepten des neuen Sicherheitsframeworks finden Sie unter [Authentifizierung
+und Sicherheit](../../authentication-and-security).
 
-## The sample application
-{: #the-sample-application }
-Our starting point is a sample 7.1 hybrid application. The application accesses a Java adapter protected with OAuth. The adapter has two methods – the `getBalance` method, which is protected with a form-based authentication realm (login by user name and password), and the `transferMoney` method, protected with an adapter-based authentication realm, requiring the user to provide a pin code. The source code of the 7.1 sample application and the source code of the same application after it has been migrated to 8.0 are available for [download](https://github.com/MobileFirst-Platform-Developer-Center/MigrationSample).
+## Beispielanwendung umstellen
+{: #migrating-the-sample-application }
 
-## Migrating the resource adapter
+Den Ausgangspunkt für diese Migrationsprozedur bildet eine Beispielhybridanwendung aus Version 7.1. Die Anwendung greift auf einen mit dem OAuth-Sicherheitsmodell von Version 7.1
+geschützten Java-Adapter zu. Dieser Adapter verwendet die beiden folgenden Methoden: 
+*  `getBalance`: Methode, die mit einem formularbasierten Authentifizierungsrealm geschützt wird, das eine Anmeldung mit Benutzernamen und Kennwort implementiert
+*  `transferMoney`: Methode, die mit einem adapberbasierten Authentifizierungsrealm geschützt wird, das eine Benutzerautorisierung mit PIN-Code implementiert
+
+Verwenden Sie den Link **Migrationsbeispiel herunterladen** am Anfang dieses Lernprogramms, um den Quellcode der Beispielanwendung
+aus Version 7.1 und die umgestellte, funktional entsprechende Anwendung der Version 8.0 herunterzuladen. 
+
+Führen Sie die folgenden Schritte aus, um die Beispielanwendung aus Version 7.1 auf Version 8.0 umzustellen: 
+*  [Migrieren Sie den Ressourcenadapter](#migrating-the-resource-adapter), einschließlich der Ressourcenschutzlogik. 
+*  [Migrieren Sie die Clientanwendung](#migrating-the-client-application).
+*  [Migrieren Sie die Authentifizierungsrealms](#migrating-rm-and-adapter-based-auth-realms) der Beispielanwendung aus Version 7.1,
+indem Sie sich durch Sicherheitsüberprüfungen der Version 8.0 ersetzen. 
+*  [Migrieren Sie die Abfrage-Handler](#migrating-the-challenge-handlers) auf der Clientseite, damit diese die neue Abfrage-Handler-API verwenden. 
+
+### Ressourcenadapter umstellen
 {: #migrating-the-resource-adapter }
-We will start the migration process with the resource adapter. In {{ site.data.keys.product }} 8.0 adapters are developed as separate Maven projects, unlike in 7.1 where adapters were part of the project. This means that we can migrate the resource adapter, build and deploy it, independently of the client app. The same is true for the client app itself and the security checks (which are actually also deployed as adapters). This leaves us the freedom to migrate these parts in the order of our choice. In this tutorial, we will migrate the resource adapter first so that we can introduce the OAuth security scope elements by which the resources are protected.
+Beginnen Sie mit der Migration des Ressourcenadapters. In {{ site.data.keys.product }} Version 8.0 werden Adapter als separate Maven-Projekte entwickelt.
+In Version 7.1 waren Adapter dagegen Teil des Anwendungsprojekts. Der Ressourcenadapter kann daher unabhängig von der Clientanwendung migriert werden. Ebenso kann der
+migrierte Adapter unabhängig von der Clientanwendung erstellt und implementiert werden.
+Gleiches gilt für die Clientanwendung von Version 8.0
+und die Sicherheitsüberprüfungen von Version 8.0 (die innerhalb von Adaptern implementiert werden). Sie können diese Artefakte daher in einer von Ihnen gewählten Reihenfolge migrieren. Das Lernprogramm beginnt mit Anweisungen für die Migration des Ressourcenadapters. Im Rahmen dieser Anweisungen gibt es eine Einführung in die Bereichselemente der OAuth-Sicherheit, die
+in Version 8.0 für den Ressourcenschutz verwendet werden. 
 
-Note that we are going to migrate the resource adapter `AccountAdapter`, but there is no need to migrate the other adapter, `PinCodeAdapter`, which is used for adapter-based authentication, because adapter-based authentication is no longer supported in 8.0. In one of the next steps we will replace that adapter with a {{ site.data.keys.product }} 8.0 security check.
+> **Hinweis:** 
+> *  Die folgenden Anweisungen gelten für die Migration des Beispielressourcenadapters `AccountAdapter`. Den Beispieladapter `PinCodeAdapter` müssen Sie nicht migrieren, weil die mit diesem Adapter implementierte adapterbasierte Authentifizierung in Version 8.0 nicht mehr unterstützt wird. Im Schritt
+[Adapterbasiertes Authentifizierungsrealm mit PIN-Code ersetzen](#replacing-the-pin-code-adapter-based-authentication-realm) ist erläutert, wie
+der PIN-Code-Adapter aus Version 7.1 durch eine Sicherheitsüberprüfung der Version 8.0 mit vergleichbarem Schutz ersetzt wird.
+> *  Anweisungen für die Umstellung von Adaptern auf Version 8.0 finden Sie im [Migrations-Cookbook für Version 8.0](../migration-cookbook).
 
-> For instructions on migrating adapters to 8.0 see the [migration cookbook](../migration-cookbook).
-
-The methods of `AccountAdpter` in the 7.1 sample are already protected with the `@OAuthSecurity` annotation. The same annotation is used in version 8.0. The only difference is that in 7.1 the scope elements `UserLoginRealm` and `PinCodeRealm` refer to security realms that are defined in the authenticationConfig.xml file. In 8.0, on the other hand, scope elements are mapped to security checks deployed on the server. We could keep the code unchanged with the same names of the scope elements, but let’s rename the scope elements to `UserLogin` and `PinCode` because the term “realm” is no longer used in MFP 8.0:
+Die Methoden von `AccountAdpter` im Beispiel aus Version 7.1 sind mit der Annotation
+`@OAuthSecurity` geschützt. Diese Annotation definiert die schützenden Bereiche der Methoden
+(`UserLoginRealm` und `PinCodeRealm`). Die gleiche Annotation wird in Version 8.0 verwendet. Allerdings haben die Bereichselemente in Version 8.0 eine andere Signifikanz. In Version 7.1 beziehen sich Bereichselemente auf die in der Datei
+**authenticationConfig.xml** definierten Sicherheitsrealms. In Version 8.0 werden Bereichselemente Sicherheitsüberprüfungen zugeordnet, die
+in einem in {{ site.data.keys.mf_server }} implementierten Adapter definiert sind. Wenn Sie möchten, können Sie den Ressourcenschutzcode mit den Namen der Bereichselemente ungeändert übernehmen. Da die Realmterminologie in {{ site.data.keys.product }} Version 8.0 nicht mehr verwendet wird,
+wurden die Bereichselemente in der Anwendung der Version 8.0 in `UserLogin` und `PinCode` umbenannt:
 
 ```java
 @OAuthSecurity(scope="UserLogin")
 @OAuthSecurity(scope="PinCode")
 ```
 
-### Use the new API for getting the user identity
-{: #use-the-new-api-for-getting-the-user-identity }
-Our resource adapter uses the server-side security API to obtain the identity of the authenticated user. This API has changed in 8.0, so we need to fix it. Replace the following 7.1 code:
+#### Code zum Abrufen der Benutzeridentität aktualisieren
+{: #updating-the-user-identity-retrieval-code }
+
+Der Beispielressourcenadapter verwendet die serverseitige Sicherheits-API, um
+die Identität des authentifizierten Benutzers abzurufen. Diese API wurde in Version 8.0 geändert. Sie müssen den Adapbercode daher modifizieren, damit er die aktualisierte API verwendet. Entfernen Sie aus der auf Version 8.0 umgestellten Anwendung den folgenden Code aus Version 7.1: 
 
 ```java
 WLServerAPI api = WLServerAPIProvider.getWLServerAPI();
 api.getSecurityAPI().getSecurityContext().getUserIdentity();
 ```
 
-with the new API in 8.0:
+Ersetzen Sie den Code mit folgendem Code, der die neue API von Version 8.0 verwendet: 
 
 ```java
-// Inject the security context
+// Sicherheitskontext injizieren
 @Context
 AdapterSecurityContext securityContext;
 
- // Get the authenticated user name
+ // Namen des authentifizierten Benutzers abrufen
 String userName = securityContext.getAuthenticatedUser().getDisplayName();
 ```
-
-[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters), using either Maven or the {{ site.data.keys.mf_cli }}.
-
-## Migrating the client application
+Wenn Sie den Adaptercode bearbeitet haben, können Sie den Adapter erstellen und mit Maven oder der {{ site.data.keys.mf_cli }} im Server implementieren. Weitere Informationen finden Sie unter [Adapter erstellen und implementieren](../../adapters/creating-adapters/#build-and-deploy-adapters).
+### Clientanwendung umstellen
 {: #migrating-the-client-application }
-Next, we will migrate the client application. Refer to the migration cookbook for client application migration instructions.
-For the time being, comment out the code of the challenge handlers. We will fix the challenge handlers later. In the main HTML file of the app, index.html, put a comment around the lines that import the challenge handlers code.
+
+Stellen Sie als Nächstes die Clientanwendung um. Ausführliche Anweisungen für die Umstellung
+der Clientanwendung finden Sie im [Migrations-Cookbook für Version 8.0](../migration-cookbook). In diesem Lernprogramm geht es schwerpunktmäßig um die Migration des Sicherheitscodes. Schließen Sie an dieser Stelle den Abfrage-Handler-Code aus. Bearbeiten Sie dazu die HTML-Hauptdatei der Anwendung (**index.html**).
+Schließen Sie die Zeilen für den Import des Abfrage-Handler-Codes in Kommentarzeichen ein: 
 
 ```html 
 <!--  
@@ -80,11 +118,21 @@ For the time being, comment out the code of the challenge handlers. We will fix 
  -->
 ```
 
-### Change to the new client API for logout
-{: #change-to-the-new-client-api-for-logout }
-As part of the client migration, you need to handle changes in the client-side APIs of MobileFirst 8.0. For a list of client API changes, see [Upgrading the WebView](../migrating-client-applications/cordova/#upgrading-the-webview).
-In our sample application, there is one client API change related to security – the API for logging out. The method `WL.Client.logout` of 7.1 is not supported in 8.0. Instead, use `WLAuthorizationManager.logout`, and pass the name of the security check that replaces the authorization realm of 7.1.
-The Logout button in our sample app logs the user out from both the `UserLogin` security check and the `PinCode` security check:
+Der Abfrage-Handler-Code der Beispielanwendung wird später, im Schritt
+[Abfrage-Handler umstellen](#migrating-the-challenge-handlers), modifiziert. 
+
+#### Clientseitige API-Aufrufe aktualisieren
+{: #updating-the-client-side-api-calls }
+
+Als Teil der Clientmigration müssen Sie eine Anpassung an die Änderungen der clientseitigen API in Version 8.0 vornehmen. Eine Liste der Änderungen der
+Client-API in {{ site.data.keys.product }} Version 8.0
+finden Sie unter
+[Upgrade für WebView](../migrating-client-applications/cordova/#upgrading-the-webview). Die Beispielanwendung ist von einer Client-API-Änderung im Bereich der Sicherheit betroffen, nämlich einer Änderung der Abmelde-API. Die Methode `WL.Client.logout` aus Version 7.1 wird in
+Version 8.0 nicht unterstützt. Verwenden Sie stattdessen
+die Methode `WLAuthorizationManager.logout` von Version 8.0 und übergeben Sie an diese Methode den Namen der Sicherheitsüberprüfung, die
+das Autorisierungsrealm aus Version 7.1 ersetzt.
+Mit der Abmeldeschaltfläche (**Logout**) in der Beispielanwendung meldet sich der Benutzer
+bei den beiden Sicherheitsüberprüfungen `UserLogin` und `PinCode` ab: 
 
 ```javascript
 function logout() {
@@ -104,18 +152,37 @@ function logout() {
 }
 ```
 
-After finishing the steps for migrating the app, build the application, and register it on your {{ site.data.keys.mf_server }} using the command `mfpdev app register`. You should now see the application listed in the {{ site.data.keys.mf_console }}.
+Wenn Sie die Migrationsschritte für die Clientanwendung ausgeführt haben, müssen Sie die Anwendung erstellen und
+mit dem Befehl `mfpdev app register` bei Ihrem {{ site.data.keys.mf_server }} registrieren. Nach erfolgreicher Registrierung Ihrer Anwendung sehen Sie sie
+in der Navigationsseitenleiste der {{ site.data.keys.mf_console }} im Abschnitt **Anwendungen**. 
 
-## Migrating the form-based authentication realm
-{: #migrating-the-form-based-authentication-realm }
-At this stage we already have the client application and the resource adapter migrated and deployed. However if we try to run the application now, it will not be able to access the resources. This is because the application is expected to present an access token that contains the scope elements required by the resource adapter methods (“UserLogin” or “PinCode”), but since we haven’t created the security checks yet, the application cannot obtain an access token and the application is not authorized to access the protected resources.
+### Authentifizierungsrealms der Beispielanwendung umstellen
+{: #migrating-rm-and-adapter-based-auth-realms }
 
-We will now create an 8.0 security check named “UserLogin” in replacement for the 7.1 form-based authentication realm “UserLoginRealm”. The security check will perform the same authentication steps that were previously implemented by the form-based authenticator and the custom login module – sending a challenge to the client, collecting the credential from the challenge response, validating the credentials and creating a user identity. As you will see below, creating the security check is quite straightforward, and what remain for you is to copy the code for validating the credentials from the 7.1 custom login module to the new security check.
+Inzwischen liegen eine auf Version 8.0 umgestellte Clientanwendung und ein implementierter Ressourcenadapter vor. Ihre umgestellte Anwendung kann jedoch nicht auf die geschützten Adapterressourcen zugreifen. Das liegt daran, dass die Methoden des Ressourcenadapters
+mit den Bereichselementen `UserLogin` und `PinCode` geschützt werden und diese Bereichselemente
+noch keinen Sicherheitsüberprüfungen zugeordnet wurden. Die Anwendung kann daher nicht das erforderliche Zugriffstoken für den Zugriff auf die geschützten Methoden anfrodern. Lösen Sie dieses Problem, indem Sie die Authentifizierungsrealms von Version 7.1 durch Sicherheitsüberprüfungen von Version 8.0 ersetzen, die den schützenden Bereichselementen der Adaptermethode zugeordnet werden. 
 
-Security checks are implemented as adapters, and therefore we start by [creating a new Java adapter](../../adapters/creating-adapters) named `UserLogin`.
+#### Formularbasiertes Authentifizierungsrealm für Benutzeranmeldung ersetzen
+{: #replacing-the-user-login-form-based-authentication-realm }
 
-When creating a Java adapter, the default template assumes that the adapter will serve resources. The same adapter can be used both for serving resources and for packaging a security test, but in this case we use the new adapter just for the security check. Therefore, we will remove the default resource implementation: delete the files UserLoginApplication.java and UserLoginResource.java. Remove the <JAXRSApplicationClass> element from adapter.xml, too.
-In the Java adapter's adapter.xml file, add an XML element called `securityCheckDefinition`. For example:
+Für die Ersetzung des formularbasierten Authentifizierungsrealms `UserLoginRealm` von Version 7.1
+müssen Sie eine Sicherheitsüberprüfung `UserLogin` der Version 8.0 erstellen,
+die die gleichen Authentifizierungsschritte wie der formularbasierte Authentifikator von Version 7.1 und das angepasste Anmeldemodul ausführt.
+Die Sicherheitsüberprüfung muss eine Abfrage an den Client senden,
+die Anmeldeberechtigungsnachweise aus der Antwort auf die Abfrage
+erfassen, diese Berechtigungsnachweise validieren und eine Benutzeridentität erstellen. Wie Sie aus dem folgenden Anweisungen ersehen können, ist die Erstellung einer Sicherheitsüberprüfung nicht kompliziert. Nach Erstellung der Sicherheitsüberprüfung können Sie den Code für die Validierung
+der Anmeldeberechtigungsnachweise des angepassten Anmeldemoduls von Version 7.1 in die neue Sicherheitsüberprüfung kopieren. 
+
+In Version 8.0 werden Sicherheitsüberprüfungen in Form von Adaptern implementiert. In {{ site.data.keys.product }} Version 8.0
+kann ein Java-Adapter Ressourcen bereitstellen und auch Pakete mit Sicherheitstests enthalten. In der hier beschriebenen Migrationsprozedur werden Sie jedoch
+den migrierten Ressourcenadapter `AccountAdpter` übernehmen. Für Ihr neues Sicherheitsüberprüfungspaket können Sie einen gesonderten Adapter
+erstellen. Beginnen Sie mit der Erstellung eines neuen Java-Adapters mit dem Namen `UserLogin`. Ausführliche Anweisungen finden Sie unter
+[Neuen Java-Adapter erstellen](../../adapters/creating-adapters). 
+
+Definieren Sie in Ihrem neuen Adapter `UserLogin` eine Sicherheitsüberprüfung `UserLogin`.
+Fügen Sie dafür zur Datei **adapter.xml** des Adapters ein XML-Element
+&lt;securityCheckDefinition&gt; hinzu. Sehen Sie sich dazu den folgenden Code an: 
 
 ```xml
 <securityCheckDefinition name="UserLogin" class="com.sample.UserLogin">
@@ -123,24 +190,36 @@ In the Java adapter's adapter.xml file, add an XML element called `securityCheck
 </securityCheckDefinition>
 ```
 
-* The name attribute is the name of your security check.
-* The class attribute specifies the implementation Java class of the security check. We will create this class in the next step.
-* The property successStateExpirationSec is equivalent to the expirationInSeconds property of 7.1 login modules. It indicates the interval in seconds during which successful login to this security check holds. The default value of these properties is 3600 seconds in both 7.1 and 8.0. If the 7.1 login module was configured with a different value, you should put the same value here.
+* Das Attribut `name` gibt den Namen der Sicherheitsüberprüfung ("UserLogin") an. 
+* Das Attribut `class` gibt die Implementierung der Java-Klasse für die Sicherheitsüberprüfung ("com.sample.UserLogin") an. Diese Klasse wird im
+[nächsten Schritt](#creating-the-user-login-security-check-java-class) erstellt. 
+* Die Eigenschaft `successStateExpirationSec` ist äquivalent zur Eigenschaft `expirationInSeconds`
+der Anmeldemodule von Version 7.1. Sie gibt den Ablaufzeitraum für den Erfolgszustand der Sicherheitsüberprüfung an (d. h. das Intervall in Sekunden, während dessen eine erfolgreiche Sicherheitsprüfungsanmeldung gültig bleibt). Der Standardwert für diese Eigenschaft von Version 7.1 und Version 8.0 liegt bei 3600 Sekunden. Wenn Sie in Ihrem Anmeldemodul der Version 7.1 einen anderen Ablaufzeitraum konfiguriert haben, bearbeiten Sie in Version 8.0 die
+Eigenschaft `successStateExpirationSec`. Setzen Sie sie auf den von Ihnen konfigurierten Wert. 
 
-For the purpose of this tutorial we’re only defining the `successStateExpirationSec` property. There is actually much more you can do with [security check configuration](../../authentication-and-security/creating-a-security-check/#security-check-configuration). In particular, you can configure your security check to use some advanced features such as blocked state expiration, multiple attempts and “remember me”. You can add custom configuration properties, and modify the configuration properties in runtime from the MFP console.
+In diesem Lernprogramm ist nur erläutert, wie die Eigenschaft `successStateExpirationSec` definiert wird. Sicherheitsüberprüfungen bieten Ihnen jedoch viele weitere Möglichkeiten. Sie können beispielsweise erweiterte Features implementieren, z. B. für den Ablauf des Blockierungszustands, für mehrere Anmeldeversuche oder für erinnerte Anmeldungen ("Remenber me"). Sie können die Standardwerte von Konfigurationseigenschaften ändern, angepasste Eigenschaften hinzufügen und in der Laufzeit
+Eigenschaftswerte in der {{ site.data.keys.mf_console }} oder über die {{ site.data.keys.mf_cli }} (**mfpdev**) modifizieren. Weitere Informationen finden Sie
+in der [Dokumentation zu Sicherheitsüberprüfungen in Version 8.0](../../authentication-and-security/creating-a-security-check/)
+und insbesondere im Abschnitt [Sicherheitsüberprüfungen konfigurieren](../../authentication-and-security/creating-a-security-check/#security-check-configuration).
 
-### Creating the security check Java class
-{: #creating-the-security-check-java-class }
-Create a Java class named `UserLogin` that extends `UserAuthenticationSecurityCheck` and add it to the adapter. Next, we override the default implementation of the three methods, `createChallenge`, `validateCredentials` and `createUser`.
+##### Java-Klasse für Sicherheitsüberprüfungen für die Anmeldung erstellen
+{: #creating-the-user-login-security-check-java-class }
 
-* The method `validateCredentials` is where we put the authentication logic. Copy the authentication logic code – the code that validates the username and the password – from the 7.1 login module and put it here. In this case the logic is very simple – we just test that the password is the same as the user name.
-* In the method `createChallenge` we create the challenge message (hash map) to be sent to the client. In general, a security check can put here a challenge phrase or some other kind of challenge object that will be used to validate the client’s response. This security check does not require a challenge phrase so all we need to put in the challenge message is the error message (if an error was found).
-* The `createUser` method is the equivalent of the `createIdentity` method in the 7.1 login module.
+Erstellen Sie in Ihrem Adapter `UserLogin` eine Java-Klasse `UserLogin`,
+die die abstrakte {{ site.data.keys.product_adj }}-Klasse `UserAuthenticationSecurityCheck` erweitert
+(die wiederum die abstrakte {{ site.data.keys.product_adj }}-Basisklasse  `CredentialsValidationSecurityCheck` erweitert). Übeschreiben Sie als Nächstes
+die Standardimplementierung
+der Basisklassenmethoden `createChallenge`, `validateCredentials` und `createUser`. 
 
-The complete class is shown below.
+*  Die Methode `createChallenge` erstellt das Abfrageobjekt (Hash-Map), das an den Client gesendet werden soll. Die Iplementierung dieser Methode kann so modifiziert werden, dass sie eine Abfragephrase oder eine andere Art von Abfrageobjekt für die Validierung der Antwort vom Client enthält. Für die hier verwendete Beispielanwendung müssen Sie jedoch nur die Fehlernachricht zum Abfrageobjekt hinzufügen, die im Falle eines Fehlers angezeigt werden soll.
+*  Die Methode `validateCredentials` enthält die Authentifizierungslogik. Kopieren Sie den Authentifizierungscode, der den Benutzernamen und das Kennwort Ihres Anmeldemoduls aus Version 7.1 validiert, in die entsprechende Methode der Version 8.0. Im Beispiel ist eine Basisvalidierungslogik implementiert, die überprüft, ob Kennwort und Benutzername übereinstimmen. 
+*  Die Methode `createUser` ist äquivalent zur Methode `createIdentity` des Anmeldemoduls von Version 7.1. 
+
+Es folgt der vollständige Klassenimplementierungscode: 
 
 ```java
 public class UserLogin extends UserAuthenticationSecurityCheck {
+
     private String userId, displayName;
     private String errorMsg;
 
@@ -151,7 +230,7 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
             String username = credentials.get("username").toString();
             String password = credentials.get("password").toString();
 
-            // the authentication logic, copied from the 7.1 login module
+            // Aus dem Anmeldemodul von Version 7.1 kopierte Authentifizierungslogik
             if (!username.isEmpty() && !password.isEmpty() && username.equals(password)) {
                 userId = username;
                 displayName = username;
@@ -181,74 +260,115 @@ public class UserLogin extends UserAuthenticationSecurityCheck {
 }
 ```
 
-[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters), using either Maven or the {{ site.data.keys.mf_cli }}. In the {{ site.data.keys.mf_console }} you should see the new adapter UserLogin in the list of adapters
+Weitere Informationen zur Klasse `UserAuthenticationSecurityCheck` und ihrer Implementierung
+finden Sie unter [Klasse UserAuthenticationSecurityCheck implementieren](../../authentication-and-security/user-authentication/security-check/).
 
-## Migrating the pin code realm
-{: #migrating-the-pin-code-realm }
-The pin code realm in our sample is implemented with adapter-based authentication, which is no longer supported in 8.0. We will replace this realm with a new security check.
 
-Create a new Java adapter named `PinCode`. Create a Java class named `PinCode` that extends `CredentialsValidationSecurityCheck` and add it to the adapter. Note that this time we use `CredentialsValidationSecurityCheck` as the base class, and not `UserAuthenticationSecurityCheck`, which we used for the UserLogin security check. This is because the pin code security check only needs to validate the credentials (the pin code) but it doesn’t assign a user identity.
+Schließen Sie Ihre Änderungen ab, indem Sie den Adapter `UserLogin` erstellen und
+mit Maven oder der {{ site.data.keys.mf_cli }} im Server implementieren. Weitere Informationen finden Sie unter [Adapter erstellen und implementieren](../../adapters/creating-adapters/#build-and-deploy-adapters).
+Nach erfolgreicher Implementierung des Adapters sehen Sie ihn
+in der Navigationsseitenleiste der {{ site.data.keys.mf_console }} im Abschnitt **Adapter**. 
 
-To create a security check that extends `CredentialsValidationSecurityCheck` we need to implement two methods: `createChallenge` and `validateCredentials`.
+#### Adapterbasiertes Authentifizierungsrealm mit PIN-Code ersetzen
+{: #replacing-the-pin-code-adapter-based-authentication-realm }
 
-Similar to the `UserLogin` security check, the `PinCode` security check does not have any special information to send to the client as part of the challenge. The `createChallenge` method only puts the error message (if exists) inside the challenge message.
+Das Realm `PinCodeRealm` der Beispielanwendung von Version 7.1 ist mit adapterbasierter Authentifizierung implementiert, die in Version 8.0 nicht mehr unterstützt wird. Erstellen Sie als Ersatz für dieses Realm einen neuen Java-Adapter `PinCode` und fügen Sie ihn
+zu einer Java-Klasse `PinCode` hinzu, die
+die abstrakte {{ site.data.keys.product_adj }}-Basisklasse `CredentialsValidationSecurityCheck` erweitert. 
 
-```java
-    @Override
-    protected Map<String, Object> createChallenge() {
-        Map challenge = new HashMap();
-        challenge.put("errorMsg",errorMsg);
-        return challenge;
-    }
-```
+**Hinweis:**
+*  Die Schritte für die Erstellung des Adapters `PinCode` sind mit den Schritten für die Erstellung des Adapters
+`UserLogin` im Abschnitt
+[Formularbasiertes Authentifizierungsrealm für Benutzeranmeldung ersetzen](#replacing-the-user-login-form-based-authentication-realm) vergleichbar. 
+*  Die Sicherheitsüberprüfung `PinCode` muss nur die Anmeldeberechtigungsnachweise (d. h. den PIN-Code) validieren, aber keine Benutzeridentität zuweisen. Diese Sicherheitsprüfungsklasse erweitert daher die
+Basisklasse `CredentialsValidationSecurityCheck` und nicht die Klasse `UserAuthenticationSecurityCheck`,
+die für die Sicherheitsüberprüfung `UserLogin` verwendet wird. 
 
-The `validateCredentials` method validates the pin code. In this case, the validation code consists of one line of code, but in general you can copy the validation code from the 7.1 authentication adapter into the `validateCredentials` method.
+Wenn Sie eine Sicherheitsüberprüfung erstellen wollen, die die Basisklasse
+`CredentialsValidationSecurityCheck` erweitert, müssen Sie die Methoden
+`createChallenge` und `validateCredentials` implementieren. 
 
-```java
-@Override
-protected boolean validateCredentials(Map<String, Object> credentials) {
-    if (credentials!=null && credentials.containsKey("pin")){
-        String pinCode = credentials.get("pin").toString();
-        if (pinCode.equals("1234")) {
-            return true;
-        } else {
-            errorMsg = "Pin code is not valid.";
-        }
-    } else {
-        errorMsg = "Pin code was not provided";
-    }
-    return false;
-}
-```
+*  Die Implementierung von `createChallenge` ist mit der Implementierung der Sicherheitsüberprüfung `UserLogin` vergleichbar. Die Sicherheitsüberprüfung `PinCode` enthält keine konkreten Informationen, die im Rahmen der Abfrage an den Client gesendet werden sollen. Sie müssen hier daher nur die Fehlernachricht zum Abfrageobjekt hinzufügen, die im Falle eines Fehlers angezeigt werden soll.
 
-[Build the adapter and deploy it to the server](../../adapters/creating-adapters/#build-and-deploy-adapters).
+   ```java
+       @Override
+       protected Map<String, Object> createChallenge() {
+           Map challenge = new HashMap();
+           challenge.put("errorMsg",errorMsg);
+           return challenge;
+       }
+   ```
 
-## Migrating the challenge handlers
+*  Die Methode `validateCredentials` validiert den PIN-Code. Im folgenden Beispiel besteht der Validierungscode aus einer Zeile. Sie können aber auch den Validierungscode des Authentifizierungsadapters von Version 7.1 in diese Methode `validateCredentials` kopieren.
+
+   ```java
+   @Override
+   protected boolean validateCredentials(Map<String, Object> credentials) {
+       if (credentials!=null && credentials.containsKey("pin")){
+           String pinCode = credentials.get("pin").toString();
+           if (pinCode.equals("1234")) {
+               return true;
+           } else {
+               errorMsg = "Pin code is not valid.";
+           }
+       } else {
+           errorMsg = "Pin code was not provided";
+       }
+       return false;
+   }
+   ```
+
+Wenn Sie die Umstellung der Authentifizierungsrealms von Version 7.1 auf Sicherheitsüberprüfungen abschließen,
+erstellen Sie den Adapter und implementieren Sie ihn in {{ site.data.keys.mf_server }}. Weitere Informationen finden Sie unter [Adapter erstellen und implementieren](../../adapters/creating-adapters/#build-and-deploy-adapters).
+
+
+### Abfrage-Handler umstellen
 {: #migrating-the-challenge-handlers }
-We’re almost there – we have the client app migrated, the resource adapter and the security checks to protect the resources. The only part missing are the challenge handlers on the client side that allow the client to respond to the challenges and send the credentials to the security check. Remember that when we migrated the client app, we commented out the lines that include the challenge handlers. Now is the time to uncomment these lines, and migrate the challenge handlers to 8.0.
 
-We will start with the user login challenge handler. This challenge handler performs the same functions in 8.0 as it does in 7.1 – it’s responsible for presenting the login form to the user upon receiving a challenge, and sending the user name and password to the server. However, the client API for challenge handlers has been changed and simplified, so we need to make the following changes:
+Jetzt sind bereits der Beispielressourcenadapter und die Beispielclientanwendung migriert. Außerdem wurden die Authentifizierungsrealms von Version 7.1 auf Sicherheitsüberprüfungen von Version 8.0 umgestellt. Für die Sicherheitsmigration der Beispielanwendung steht nur noch die Migration der Abfrage-Handler der Clientanwendung aus. Die Clientanwendung verwendet die Abfrage-Handler, um auf Sicherheitsabfragen zu antworten und um die vom Benutzer empfangenen Berechtigungsnachweise an die Sicherheitsüberprüfungen zu senden. 
 
-* Replace the call for creating challenge handler with:
+Als Sie die [Clientanwendung umgestellt](#migrating-the-client-application) haben, wurde der Abfrage-Handler-Code
+ausgeschlossen, indem die entsprechenden Zeilen in der HTML-Hauptdatei **index.html** auf Komentar gesetzt wurden. Jetzt fügen Sie den Abfrage-Handler-Code wieder hinzu, indem Sie die
+zuvor hinzugefügten Kommentarzeichen entfernen: 
 
-```javascript
-var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
+```html 
+<script src="js/UserLoginChallengeHandler.js"></script>
+    <script src="js/PinCodeChallengeHandler.js"></script>
 ```
 
-The method `createSecurityCheckChallengeHandler` creates a challenge handler that handles challenges sent by a {{ site.data.keys.product_adj }} security check. In most cases, you should use this method in replacement for either the method `createWLChallengeHandler` or the method `createChallengeHandler` of the 7.1 client API. The only exception is challenge handlers that are designed to handle challenges sent by a third party gateway. This type of challenge handlers, called gateway challenge handlers in 8.0, are created with the method `WL.Client.createGatewayChallengeHandler(). For example, if your resource is protected by a reverse proxy such as DataPower, which sends a custom login form to the client, you should use a gateway challenge handler to handle the challenge. For more information on gateway challenge handlers see the article [Quick Review of Challenge Handlers](https://mobilefirstplatform.ibmcloud.com/blog/2016/06/22/challenge-handlers/).
+Führen Sie dann die Umstellung des Abfrage-Handler-Codes auf Version 8.0 durch. Gehen Sie dazu gemäß den folgenden Anweisungen vor. Weitere Informationen zur
+Abfrage-Handler-API von Version 8.0 finden Sie in der
+[Kurzrezension zu Abfrage-Handlern in {{ site.data.keys.product }} 8.0]({{ site.baseurl }}/blog/2016/06/22/challenge-handlers/)
+und in der Beschreibung von `WL.Client` und `WL.Client.AbstractChallengeHandler`
+in den [Referenzinformationen zur clientseitigen JavaScript-API](../../api/client-side-api/javascript/client/) von Version 8.0.
 
-* Remove the method `isCustomResponse`. It is no longer needed for security check challenge handlers.
-* Replace the method `handleChallenge` with the three methods that a challenge handler must implement – `handleChallenge()`, `handleSuccess()` and `handleFailure`. In 8.0 the challenge handler no longer has to check the response in order to find if the response carries a challenge, success or error. The framework takes care for that, and calls the appropriate method.
-* Remove the call to `submitSuccess`. The framework handles the success response automatically.
-* Replace the call to `submitFailure` with `userLoginChallengeHandler.cancel`.
-* Replace the call to `submitLoginForm` with:
+Beginnen Sie mit dem Abfrage-Handler für die Benutzeranmeldung (`userLoginChallengeHandler`), der
+in Version 8.0 die gleichen Funktionen wie in Version 7.1 ausführt.
+Dieser Abfrage-Handler ist dafür zuständig, dem Benutzer beim Eingang einer Abfrage das Anmeldeformular anzuzeigen.
+Zudem ist er für das Senden des Benutzernamens und des Kennworts
+an {{ site.data.keys.mf_server }} verantwortlich. Da die Clientabfrage-Handler-API in Version 8.0 jedoch anders und einfacher als die entsprechende API in Version 7.1 ist,
+müssen Sie die folgenden Änderungen vornehmen: 
 
-```javascript
-userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
-```
+*  Ersetzen Sie den Code für die Erstellung des Abfrage-Handlers durch den folgenden Code, der die Methode `WL.Client.createSecurityCheckChallengeHandler` von Version 8.0 aufruft:
 
-The complete code of the challenge handler after applying these changes is shown below.
+   ```javascript
+   var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
+   ```
+   
+   `WL.Client.createSecurityCheckChallengeHandler` erstellt einen Abfrage-Handler, der Abfragen einer {{ site.data.keys.product_adj }}-Sicherheitsüberprüfung bearbeitet. In Version 8.0 ist zudem eine Methode `WL.Client.createGatewayChallengeHandler` für die Behandlung von Abfragen von einem Gateway eines anderen Anbieters hinzugekommen, die in Version 8.0 entsprechend als Gateway-Abfrage-Handler bezeichnet wird. Wenn Sie die Anwendung aus Version 7.1 auf Version 8.0 umstellen, ersetzen Sie die Aufrufe der `WL.Client`-Methode `createWLChallengeHandler` oder `createChallengeHandler` durch Aufrufe der `WL.Client`-Methode für die Erstellung von Abfrage-Handlern der Version 8.0, die zur erwarteten Abfragequelle passen. Wenn Ihre Ressource beispielsweise von einem DataPower-Reverse-Proxy geschützt wird, der eine angepasste Anmeldung vom Client sendet, verwenden Sie `createGatewayChallengeHandler`, um einen Gateway-Abfrage-Handler für die Bearbeitung von Gateway-Abfragen zu erstellen.
 
+*  Entfernen Sie den Aufruf der Abfrage-Handler-Methode `isCustomResponse`. Diese Methode wird in Version 8.0 nicht mehr für die Bearbeitung von Sicherheitsabfragen benötigt.
+*  Ersetzen Sie die Implementierung der Methode `userLoginChallengeHandler.handleChallenge` durch die Implementierung der Abfrage-Handler-Methoden `handleChallenge`, `handleSuccess` und `handleFailure` von Version 8.0. In Version 7.1 gibt nur eine Abfrage-Handler-Methode, die die Antwort auf eine Abfrage überprüft oder einen Erfolg bzw. einen Fehler zurückgibt. In Version 8.0 gibt es für jede Art von Abfrage-Handler-Antwort eine gesonderte Methode. Das Sicherheitsframework stellt den Antworttyp fest und ruft die entsprechende Methode auf.
+*  Entfernen Sie den Aufruf der Methode `submitSuccess`. In Version 8.0 handhabt das Sicherheitsframework implizit die Erfolgsantwort.
+*  Ersetzen Sie den Aufruf der Methode `submitFailure` durch einen Aufruf der Abfrage-Handler-Methode `cancel` von Version 8.0.
+*  Ersetzen Sie den Aufruf der Methode `submitLoginForm` durch einen Aufruf der Abfrage-Handler-Methode `submitChallengeAnswer` von Version 8.0:
+
+   ```javascript
+   userLoginChallengeHandler.submitChallengeAnswer({'username':username, 'password':password})
+   ```
+   
+Es folgt der vollständige Code des Abfrage-handlers nach den oben beschriebenen Änderungen:
+   
 ```javascript
 function createUserLoginChallengeHandler() {
     var userLoginChallengeHandler = WL.Client.createSecurityCheckChallengeHandler('UserLogin');
@@ -291,63 +411,162 @@ function createUserLoginChallengeHandler() {
  }
 ```
 
-The migration of the pin code challenge handler is very similar to the migration of the user login challenge handler, and therefore we will not show the details here. See the code of the migrated challenge handler in the attached 8.0 sample.
-This completes the migration of the app. You can now rebuild the application, deploy it to the server, test that it works, and test that access to the resources is protected as expected.
+Die Migration des Abfrage-Handlers für den PIN-Code (`pinCodeChallengeHandler`) ist mit der Migration des Abfrage-Handlers für die Benutzeranmeldung vergleichbar. Folgen Sie daher den Migrationsanweisungen für `userLoginChallengeHandler` und
+nehmen Sie die erforderlichen Anpassungen für den Abfrage-Handler für den PIN-Code vor. Sehen Sie sich dazu den vollständigen Code des umgestellten Abfrage-Handlers für den PIN-Code in der Beispielanwendung von Version 8.0 an. 
 
-## Migrating other types of authentication realms
+Sie haben die Beispieanwendung aus Version 7.0 auf Version 8.0 umgestellt. Erstellen Sie einen neuen Anwendungsbuild, implementieren Sie die Anwendung in
+{{ site.data.keys.mf_server }}, testen Sie die Anwendung und überprüfen Sie, ob der Zugriff auf die Adaptermethodenressourcen
+wie erwartet geschützt wird. 
+
+## Andere Arten von Authentifizierungsrealms umstellen
 {: #migrating-other-types-of-authentication-realms }
-In the sections above we described the process for migrating form-based authentication realms and adapter-based authentication realms. Your 7.1 application might include other types of realms, including realms that were explicitly added to the application security test, or included by default in a `mobileSecurityTest` or a `webSecurityTest`. See below guidelines for migrating other types of realms to 8.0.
 
-### Application authenticity
+Sie haben bisher gelernt, wie formular- und adapterbasierte Realms aus der Beispielanwendung von Version 7.1 umgestellt werden. Ihre Anwendung von Version 7.1
+könnte aber auch andere Arten von Authentifizierungsrealms enthalten, z. B. Realms, die Teil des Tests der Anwendungssicherheit sind (`mobileSecurityTest`,
+`webSecurityTest` oder `customSecurityTest`). In den folgenden Abschnitten ist erläutert, wie diese zusätzlichen Arten von Authentifizierungsrealms auf Version 8.0 umgestellt werden. 
+
+*  [Anwendungsauthentizität](#application-authenticity)
+*  [LTPA-Realm](#ltpa-realm)
+*  [Bereitstellung für Geräte](#device-provisioning)
+*  [Anti-XSRF-Realm](#anti-cross-site-request-forgery-anti-xsrf-realm)
+*  [Realm für direkte Aktualisierung](#direct-update-realm)
+*  [Realm für Inaktivierung über Fernzugriff](#remote-disable-realm)
+*  [Angepasste Authentifikatoren und Anmeldemodule](#custom-authenticators-and-login-modules)
+
+### Anwendungsauthentizität
 {: #application-authenticity }
-Application authenticity is provided as a predefined security check in 8.0. By default, this security check is run during the application's runtime registration with {{ site.data.keys.mf_server }}, which occurs the first time an instance of the application attempts to connect to the server. However, as with any {{ site.data.keys.product_adj }} security check, you can also include this predefined check in custom security scopes.
 
-### LTPA realm
+In {{ site.data.keys.product }} Version 8.0 erfolgt die Validierung der Anwendungsauthentizität im Rahmen einer vordefinierten Sicherheitsüberprüfung
+(`appAuthenticity`). Standardmäßig findet diese Überprüfung während der Registrierung der Anwendungslaufzeit bei
+{{ site.data.keys.mf_server }} statt, d. h., wenn eine Instanz der Anwendung zum ersten Mal versucht, eine
+Verbindung zum Server herzustellen. Sie können diese vordefinierte Überprüfung wie jede andere
+{{ site.data.keys.product_adj }}-Sicherheitsüberprüfung in angepasste Sicherheitsbereiche
+aufnehmen. Weitere Informationen finden Sie unter
+[Anwendungsauthentizität](../../authentication-and-security/application-authenticity/).
+
+### LTPA-Realm
 {: #ltpa-realm }
-Use the predefined 8.0 security check, `LtpaBasedSSO`. For more information, see the tutorial [Protecting {{ site.data.keys.product_adj }} 8.0 application traffic using IBM DataPower]({{ site.baseurl }}/blog/2016/06/17/datapower-integration/).
 
-### Device provisioning
+Verwenden Sie zum Ersetzen des LTPA-Realms von Version 7.1 die vordefinierte LTPA-basierte Sicherheitsüberprüfung von {{ site.data.keys.product }} Version 8.0 (`LtpaBasedSSO`). Weitere Informationen zu dieser Sicherheitsüberprüfung finden Sie unter
+[ LTPA-basierte Sicherheitsüberprüfung für Single Sign-on (SSO)](../../authentication-and-security/ltpa-security-check/).
+
+### Bereitstellung für Geräte
 {: #device-provisioning }
-The client registration process in 8.0 replaces device provisioning of 7.1. In {{ site.data.keys.product_adj }} 8.0, a client (an instance of an application) registers itself with {{ site.data.keys.mf_server }} on the first attempt to access the server. As part of the registration, the client provides a public key that will be used for authenticating its identity. This protection mechanism is always enabled, and there is no need for you to migrate the device-provisioning realm to 8.0.
 
-### Anti-cross site request forgery (anti-XSRF) realm
+Das Realm für die Bereitstellung für Geräte aus Version 7.1 (`wl_deviceAutoProvisioningRealm`) muss nicht auf Version 8.0 umgestellt werden. Der Clientregistrierungsprozess von {{ site.data.keys.product }} Version 8.0
+ersetzt die Bereitstellung für Geräte von Version 7.1. In Version 8.0 registriert sich ein Client (eine Anwendungsinstanz) selbst
+bei {{ site.data.keys.mf_server }}, wenn er zum ersten Mal versucht, auf den Server zuzugreifen. Bei der Registrierung stellt der Client einen öffentlichen Schlüssel bereit, der für die Authentifizierung der Clientidentität
+verwendet wird. Dieser Schutzmechanismus ist immer aktiviert. Sie müssen daher das Realm für die Bereitstellung für Geräte aus Version 7.1 nicht durch eine Sicherheitsüberprüfung ersetzen. 
+
+### Anti-XSRF-Realm
 {: #anti-cross-site-request-forgery-anti-xsrf-realm }
-Anti-XSRF is no longer relevant in the OAuth-based security framework of 8.0.
 
-### Direct Update realm
+Das Anti-XSRF-Realm `wl_antiXSRFRealm` aus Version 7.1 muss nicht auf Version 8.0 umgestellt werden. In Version 7.1.0 wurde der Authentifizierungskontext in der HTTP-Sitzung gespeichert und über ein vom Browser in standortübergreifenden Anforderungen gesendetes Sitzungscookie identifiziert. In dieser Version wird das Anti-XSRF-Realm verwendet, um die Cookieübertragung gegen XSRF-Attacken durch das Senden eines zusätzlichen Headers vom Client an den Server zu schützen.
+        Der Sicherheitskontext wird in {{ site.data.keys.product }} Version 8.0 nicht mehr mit einer HTTP-Sitzung verknüpft und nicht über ein Sitzungscookie identifiziert.
+        Die Autorisierung erfolgt stattdessen mithilfe eines OAuth-2.0-Zugriffstokens, das an den Authorization-Header übergeben wird.
+        Da der Authorization-Header in standortübergreifenden Anforderungen nicht vom Browser gesendet wird, muss er nicht vor XSRF-Attacken geschützt werden.
+
+### Realm für direkte Aktualisierung
 {: #direct-update-realm }
-There is no need to migrate the Direct Update realm to 8.0. The Direct Update feature is supported in {{ site.data.keys.product_adj }} 8.0, but it does not require a security check, such as the Direct Update realm that was required in previous versions. Note however that the steps to deliver updates by using the Direct Update feature have changed. For more information see the [Migrating Direct Update](../migrating-client-applications/cordova/#migrating-direct-update) documentation topic.
 
-### Remote disable realm
+Das Realm für direkte Aktualisierung aus Version 7.1 (`wl_directUpdateRealm`) muss nicht auf Version 8.0 umgestellt werden. Die Implementierung des Features für direkte Aktualisierung in
+{{ site.data.keys.product }} Version 8.0 erfordert im Gegensatz zum Realm in Version 7.1 keine zugehörige Sicherheitsüberprüfung.  
+
+**Hinweis:** Die Schritte für die Bereitstellung von Aktualisierungen im Rahmen der direkten Aktualisierung von Version 8.0
+unterscheiden sich von den Schritten in Version 7.1. Weitere Informationen finden Sie unter
+[Direkte Aktualisierung umstellen](../migrating-client-applications/cordova/#migrating-direct-update).
+
+### Realm für Inaktivierung über Fernzugriff
 {: #remote-disable-realm }
-There is no need to migrate the Remote Disable realm to 8.0. The remote disable feature in {{ site.data.keys.product_adj }} 8.0 does not require a security check.
 
-### Custom authenticators and login modules
+Das Realm für die Inaktivierung über Fernzugriff aus Version 7.1 (`wl_remoteDisableRealm`) muss nicht auf Version 8.0 umgestellt werden. Die Implementierung des Features für Inaktivierung über Fernzugriff in
+{{ site.data.keys.product }} Version 8.0 erfordert im Gegensatz zum Realm in Version 7.1 keine zugehörige Sicherheitsüberprüfung. Informationen zum Feature für die Inaktivierung über Fernzugriff in Version 8.0 finden Sie unter
+[Anwendungszugriff
+auf geschützte Ressourcen per Fernzugriff inaktivieren](../../administering-apps/using-console/#remotely-disabling-application-access-to-protected-resources).
+
+### Angepasste Authentifikatoren und Anmeldemodule
 {: #custom-authenticators-and-login-modules }
-Create a new security check as described above. Use either of the base classes `UserAuthenticationSecurityCheck` or `CredentialsValidationSecurityCheck`. Although you cannot migrate the authenticator class or the login module class directly, you may copy relevant code pieces into the security check, such as code for generating the challenge, extracting credentials from the response, and validating the credentials.
 
-## Migrating additional security configurations of 7.1
-{: #migrating-additional-security-configurations-of-71 }
-### The application security test
+Erstellen Sie als Ersatz für angepasste Authentifikatoren und Anmeldemodule von Version 7.1 eine neue
+Sicherheitsüberprüfung.
+Entsprechende Anweisungen enthält der Schritt
+[Java-Klasse für die Sicherheitsüberprüfung der Benutzeranmeldung erstellen](#creating-the-user-login-security-check-java-class)
+der Migrationsprozedur für die Beispielanwendung. Ihre Sicherheitsüberprüfung kann die
+Basisklasse `UserAuthenticationSecurityCheck`
+oder `CredentialsValidationSecurityCheck` von {{ site.data.keys.product }} Version 8.0 erweitern. Sie können die Authentifikatorklasse oder Anmeldemodulklasse von Version 7.1 nicht direkt umstellen. Allerdings können Sie relevante Codeabschnitte in Ihre
+Sicherheitsüberprüfung kopieren. Dazu gehört der Code zum Generieren der Sicherheitsabfrage, zum Extrahieren der Anmeldeberechtigungsnachweise aus der Antwort auf die Abfrage oder zum Validieren der Berechtigungsnachweise. 
+
+## Andere Sicherheitskonfigurationen von Version 7.1 umstellen
+{: #migrating-other-v71-security-configurations }
+
+*  [Test der Anwendungssicherheit](#the-application-security-test)
+*  [Ablauf von Zugriffstoken](#access-token-expiration)
+*  [Benutzeridentitätsrealm](#user-identity-realm)
+*  [Geräteidentitätsrealm](#device-identity-realm)
+
+### Test der Anwendungssicherheit
 {: #the-application-security-test }
-In addition to the OAuth scopes that are used to protect the resource adapter, our 7.1 sample application is also protected by an application-level security test. This sample does not have the application security test defined in the application-descriptor.xml file, and hence it is protected with the default security test. The default security test for mobile applications in 7.1 consists of realms that either irrelevant in 8.0 (anti-XSRF) or do not require explicit migration (Direct Update, remote disable). Therefore in this case no migration is required for the application security test.
 
-If your application has an application security test that includes checks (realms) that you still want to keep at the application level after the migration to 8.0, you can configure a mandatory scope for the application. When an application tries to access a protected resource, it has to pass the security checks that are mapped to the mandatory scope in addition to the checks mapped to the scope protecting the resource.
+In Version 7.1 kann der Anwendungsdeskriptor (**application-descriptor.xml**) zusätzlich zum Schutz für bestimmte Anwendungsressourcen
+einen Anwendungssicherheitstest
+definieren, der auf die gesamte Anwendungsumgebung angewendet wird. Der Standardsicherheitstest für mobile Anwendungen in Version 7.1 (`mobileSecurityTest`)
+wird angewendet,
+wenn der Anwendungsdeskriptor keinen explizit definierten Sicherheitstest enthält
+(wie in der Beispielanwendung aus Version 7.1). Dieser Sicherheitstest besteht aus Realms, die in Version 8.0 keine Rolle spielen (Anti-XSRF) oder keine explizite Migration erfordern
+(direkte Aktualisierung und Inaktivierung über Fernzugriff). Für den Schutz der Anwendungsumgebung der Beispielanwendung ist daher keine spezielle Migration erforderlich. 
 
-To define a mandatory scope for an application, select the application version in the {{ site.data.keys.mf_console }}, select the Security tab and click the Add to Scope button. You can include in the scope any predefined or custom security checks, or mapped scope elements.
+Wenn es in Ihrer Anwendung aus Version 7.1 einen Anwendungssicherheitstest mit Überprüfungen (Realms) gibt,
+die Sie nach der Umstellung auf Version 8.0 auf der Anwendungsebene beibehalten möchten,
+können Sie einen obligatorischen Anwendungsbereich konfigurieren. In Version 8.0 erfordert der Zugriff auf eine geschützte Ressource
+das Bestehen der dem obligatorischen Anwendungsbereich zugeordneten Sicherheitsüberprüfungen
+sowie der Überprüfungen, die dem schützenden Bereich der Ressource zugeordnet sind. Wenn Sie einen obligatorischen Anwendungsbereich definieren wollen,
+wählen Sie in Version 8.0 der **Navigationsseitenleiste** der {{ site.data.keys.mf_console }} im Abschnitt **Anwendungen** Ihre Anwendung und dann das Register
+**Sicherheit** aus. Wählen Sie unter
+**Obligatorischer Anwendungsbereich** die Option **Zum Bereich hinzufügen** aus.
 
-### Access token expiration
+Sie können in den Anwendungsbereich jede vordefinierte oder angepasste Sicherheitsüberprüfung oder auch zugeordnete Bereichselemente aufnehmen. Weitere Informationen zum Konfigurieren
+eines obligatorischen Anwendungsbereichs in Version 8.0 finden Sie unter
+[Obligatorischer Anwendungsbereich](../..//authentication-and-security/#mandatory-application-scope).
+
+### Ablauf von Zugriffstoken
 {: #access-token-expiration }
-Check the value of the Access Token Expiration property in application-descriptor.xml file. The default value in both version 7.1 and version 8.0 is 3600 seconds, so unless your application has a different value defined in the application descriptor file, you don’t have to change anything. To set the expiration value in 8.0, navigate to the application version page in the {{ site.data.keys.mf_console }}, select the security tab, and enter the value in the Maximum Token-expiration Period field.
 
-### User identity realm
+Der Standardwert für den maximalen Ablaufzeitraum von Zugriffstoken liegt in Version 7.1 und Version 8.0 bei 3600 Sekunden. Wenn Ihre Anwendung aus
+Version 7.1 also auf diesen Standardwert zurückgreift, ist für die Anwendung des Wertes in Version 8.0 keine Umstellung erforderlich. Falls in Ihrer
+Anwendungsdeskriptor aus Version 7.1 (**application-descriptor.xml**) jedoch ein anderer Wert für
+die Eigenschaft `accessTokenExpiration` festgelegt ist, können Sie
+eben diesen Wert für die äquivalente Eigenschaft in Version 8.0 (`maxTokenExpiration`) konfigurieren. Führen Sie diesen Schritt in der
+{{ site.data.keys.mf_console }} aus. Wählen Sie dazu das Register **Sicherheit** für Ihre Anwendung aus
+und bearbeiten Sie im Abschnitt **Tokenkonfiguration** den Standardwert im Feld **Maximaler Tokanablaufzeitraum (Sekunden)**. Wenn Sie die Konsolenregisterkarte **Konfigurationsdateien** der Anwendung
+auswählen, sehen Sie, dass der Wert der Eigenschaft `maxTokenExpiration` auf den von Ihnen konfigurierten Wert gesetzt ist. 
+
+### Benutzeridentitätsrealm
 {: #user-identity-realm }
-In MobileFirst 7.1, authentication realms may be configured as user identity realms. Applications that use OAuth authentication flow use the `userIdentityRealms` property in the application descriptor file to define an ordered list of user identity realms. In applications that use the classic Worklight authentication flow (non OAuth), the attribute `isInternalUserId` indicates whether the realm is a user identity realm. These configurations are no longer needed in {{ site.data.keys.product_adj }} 8.0. In {{ site.data.keys.product_adj }} 8.0, the active user identity is set by the last security check that called the `setActiveUser` method. If your security check extends the abstract base class `UserAuthenticationSecurityCheck`, like the UserLogin security check in our sample application, the base class takes care for setting the active user.
 
-### Device identity realm
+In Version 7.1 können Authentifizierungsrealms als Benutzeridentitätsrealms konfiguriert werden. Anwendungen mit dem
+Authentifizierungsablauf des {{ site.data.keys.product_adj }}-OAuth-Sicherheitsmodells
+verwenden die Eigenschaft `userIdentityRealms` in der Anwendungsdeskriptordatei,
+um eine geordnete Liste mit Benutzeridentitätsrealms zu definieren. In Anwendungen, die den Authentifizierungsablauf des
+klassischen {{ site.data.keys.product_adj }}-Sicherheitsmodells (Nicht-OAuth-Sicherheit) verwenden,
+zeigt das Attribut `isInternalUserId`
+an, ob das Realm ein Benutzeridentitätsrealm ist. In Version 8.0 werden solche Benutzer-ID-Konfigurationen nicht mehr benötigt. Die Identität (ID) des aktiven Benutzers wird in
+Version 8.0 von der letzten Sicherheitsüberprüfung, die die Methode `setActiveUser` aufgerufen hat, festgelegt. Wenn Ihre Sicherheitsüberprüfung
+die abstrakte Basisklasse `UserAuthenticationSecurityCheck` erweitert, wie es bei der Beispielüberprüfung `UserLogin` in Version 8.0 der Fall ist,
+können Sie auf die Basisklasse zurückgreifen, um die Identität des aktiven Benutzers festzulegen.
+
+
+### Geräteidentitätsrealm
 {: #device-identity-realm }
-In 7.1 applications there must be a realm that is defined as a device identity realm. No migration is needed for this configuration in 8.0. In {{ site.data.keys.product_adj }} 8.0, the device identity isn’t associated with a security check. The device information is registered as part of the client registration flow, which occurs on the first time the client attempts to access a protected resource.
 
-## Summary
-{: #summary }
-In this tutorial we covered only the basic steps required to migrate the security artifacts of existing applications from previous versions. We encourage you to [learn more about the new security framework](../../authentication-and-security/) and take advantage of additional features that were not covered here.
+Eine Anwendung in Version 7.1 muss ein Geräteidentitätsrealm definieren In Version 8.0 ist dieses Realm nicht mehr erforderlich. Die Geräteidentität
+wird in Version 8.0 nicht mit einer Sicherheitsüberprüfung verknüpft. Die Gerätedaten werden vielmehr
+im Rahmen der Clientregistrierung registriert. Die Clientregistrierung wird durchgeführt, wenn der Client zum ersten Mal versucht,
+auf eine geschützte Ressource zuzugreifen. 
+
+## Weitere Schritte
+{: #whats-next }
+
+Dieses Lernprogramm deckt nur die grundlegenden Schritte ab, die für die Umstellung der Sicherheitsartefakte einer vorhandenen,
+mit einer Vorgängerversion der {{ site.data.keys.product }} entwickelten Anwendung auf Version 8.0 erforderlich sind. Informationen zu einer optimalen Nutzung der
+Sicherheitsfeatures von Version 8.0 finden Sie in der [Dokumentation zum Sicherheitsframework von Version 8.0](../../authentication-and-security/).
+
