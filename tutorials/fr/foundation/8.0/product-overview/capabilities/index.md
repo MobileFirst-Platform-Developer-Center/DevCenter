@@ -24,14 +24,6 @@ Les logiciels SDK {{ site.data.keys.product }} prennent en charge les plateforme
 * Windows Universal 8.1 et Windows 10 UWP
 * Applications web
 
-> **Navigateurs pris en charge pour les applications Web :**
-> 
-> |      Navigateur   | Chrome | Safari* | Internet Explorer | Firefox | Navigateur Android |
-> |:-----------------:|:------:|:-------:|:-----------------:|:-------:|:---------------:|
-> | Version prise en charge |   43+  |    8+   |        10+        |   38+   |   Android 4.3+  |
-
-* Le mode de survol privé ne fonctionne qu'avec des applications de page unique. D'autres applications peuvent avoir un comportement inattendu.
-
 ### Connexions d'arrière plan
 {: #back-end-connections }
 Certaines applications mobiles s'exécutent uniquement hors ligne, sans connexion à un système d'arrière plan, mais la plupart se connectent à des services d'entreprise existants afin de fournir les fonctions utilisateur essentielles. Par exemple, des clients peuvent utiliser une application mobile pour effectuer des achats sur n'importe quel site, à tout moment, sans tenir compte des horaires d'ouverture du  magasin. Leurs commandes doivent encore être traitées à l'aide de la plateforme e-commerce existante du magasin. Pour intégrer une application mobile à des services d'entreprise, vous devez utiliser un middleware de type passerelle mobile. {{ site.data.keys.product }} peut constituer cette solution intermédiaire et faciliter la communication avec les services de back end.

@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: Administration d'applications
-weight: 10
+weight: 11
 show_children: true
 ---
 ## Présentation

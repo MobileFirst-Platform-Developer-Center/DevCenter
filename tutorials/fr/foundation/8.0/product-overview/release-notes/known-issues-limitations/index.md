@@ -252,7 +252,7 @@ La mise à jour échoie si vous utilisez la commande `cordova platform update io
 {: #web-applications }
 Les applications Web sont soumises aux limitations suivantes :
 - {: #web_app_limit_ms_ie_n_edge }
-Dans Microsoft Internet Explorer (IE) et Microsoft Edge, des messages d'administration et des messages SDK Web client s'affichent en fonction de la définition des paramètres de région du système d'exploitation et non en fonction des préférences de langue configurées pour le navigateur ou le système d'exploitation. Voir aussi [Définition de messages d'administrateur dans plusieurs langues](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages).
+Dans Microsoft Internet Explorer (IE) et Microsoft Edge, des messages d'administration et des messages SDK Web client s'affichent en fonction de la définition des préférences de format de région du système d'exploitation et non en fonction des préférences de langue configurées pour le navigateur ou le système d'exploitation. Voir aussi [Définition de messages d'administrateur dans plusieurs langues](../../../administering-apps/using-console/#defining-administrator-messages-in-multiple-languages).
 
 ### Support WKWebView pour les applications Cordova iOS
 {: #wkwebview-support-for-ios-cordova-applications }
