@@ -2,7 +2,7 @@
 layout: tutorial
 title: Présentation du produit
 show_children: true
-weight: 1
+weight: 2
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Présentation

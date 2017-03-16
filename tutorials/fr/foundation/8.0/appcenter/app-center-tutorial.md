@@ -56,7 +56,7 @@ Si vous ne disposez pas d'une base de données installée, le processus d'instal
 
 3. Connectez-vous avec cette combinaison utilisateur/mot de passe : demo/demo
 
-4. À ce stade, vous pouvez configurer l'authentification des utilisateurs. Par exemple, vous pouvez vous connecter à un référentiel LDAP.
+4. A ce stade, vous pouvez configurer l'authentification des utilisateurs. Par exemple, vous pouvez vous connecter à un référentiel LDAP.
 
     > Pour plus d'informations, voir la rubrique sur la [configuration Application Center après l'installation](../../installation-configuration/production/appcenter/#configuring-application-center-after-installation).
 

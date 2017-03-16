@@ -123,7 +123,7 @@ Le message apparaît la première fois que l'application utilise {{ site.data.ke
 
 ### Définition de messages d'administrateur dans plusieurs langues
 {: #defining-administrator-messages-in-multiple-languages }
-<b>Remarque :</b> Dans Microsoft Internet Explorer (IE) et Microsoft Edge, des messages d'administration s'affichent en fonction de la définition des paramètres de région d'un système d'exploitation et non en fonction des préférences de langue configurées pour le navigateur ou le système d'exploitation. Voir [Limitations des applications Web IE et Edge](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
+<b>Remarque :</b> Dans Microsoft Internet Explorer (IE) et Microsoft Edge, des messages d'administration et des messages SDK Web client s'affichent en fonction de la définition des préférences de format de région du système d'exploitation et non en fonction des préférences de langue configurées pour le navigateur ou le système d'exploitation. Voir [Limitations des applications Web IE et Edge](../../product-overview/release-notes/known-issues-limitations/#web_app_limit_ms_ie_n_edge).
 
 Suivez la procédure décrite pour configurer plusieurs langues dans lesquelles afficher les messages d'administration d'application que vous avez définis via la console. Les messages sont envoyés en fonction de l'environnement local de l'appareil et doivent être conformes aux normes utilisées par le système d'exploitation mobile pour spécifier les environnements locaux.
 

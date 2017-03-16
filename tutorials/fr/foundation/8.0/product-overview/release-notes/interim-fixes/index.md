@@ -65,3 +65,8 @@ Vous pouvez utiliser l'interface de ligne de
 commande {{ site.data.keys.mf_cli }}
 pour insérer des
 configurations d'adaptateur Java et JavaScript sur le serveur {{ site.data.keys.mf_server }} et extraire des configurations d'adaptateur du serveur {{ site.data.keys.mf_server }}.
+
+### Application Center
+{: #application-center}
+
+Le client Application Center Cordova est désormais disponible pour iOS et Android.

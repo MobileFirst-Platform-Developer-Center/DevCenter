@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Glossary
+title: Glossaire
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
@@ -76,13 +76,13 @@ Application Web ou pour appareil mobile. Voir aussi Application Web.
 {: #application-center }
 Composant {{ site.data.keys.product_adj }} qui peut être utilisé pour partager des applications et faciliter la collaboration entre les membres d'équipe dans un référentiel unique d'applications mobiles.
 
-### Application de société
+### Application d'entreprise
 {: #company-application }
-Voir Application d'entreprise.
+Application conçue pour être utilisée uniquement au sein d'une entreprise.
 
 ### Application d'entreprise
 {: #enterprise-application }
-Application conçue pour être utilisée uniquement au sein d'une entreprise.
+Voir Application de société.
 
 ### Application d'entreprise de l'autorité de certification
 {: #certificate-authority-enterprise-application }
@@ -609,3 +609,4 @@ Panneau situé hors de la zone de l'éditeur et permettant de visualiser ou d'ut
 ### Widget
 {: #widget }
 Application portable réutilisable ou partie de contenu dynamique pouvant être placée sur une page Web, recevoir des entrées et communiquer avec une application ou avec un autre widget.
+
