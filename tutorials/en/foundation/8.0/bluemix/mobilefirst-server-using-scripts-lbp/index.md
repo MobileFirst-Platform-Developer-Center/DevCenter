@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance on a Liberty for Java runtime on Bluemix. ({{ site.data.keys.mf_analytics }} instances can be run on IBM containers only.) To achieve this you will go through the following steps: 
+Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance on a Liberty for Java runtime on Bluemix. ({{ site.data.keys.mf_analytics }} instances can be run on IBM containers only.) To achieve this you will go through the following steps:
 
 * Setup your host computer with the required tools (Cloud Foundry CLI)
 * Setup your Bluemix account
@@ -66,14 +66,14 @@ The archive file contains the files for building an file layout (**dependencies*
                 <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
                 <h4>dependencies folder</h4>
                 <p>Contains the {{ site.data.keys.product }} runtime and IBM Java JRE 8.</p>
-                
+
                 <h4>mfpf-libs folder</h4>
                 <p>Contains {{ site.data.keys.product_adj }} product component libraries and CLI.</p>
-                
+
                 <h4>mfpf-server-libertyapp folder</h4>
-                
+
                 <ul>
-                   
+
                     <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a {{ site.data.keys.product }} app for pushing to BLuemix and running the server on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
                     <li><b>usr</b> folder:
                         <ul>
@@ -93,7 +93,7 @@ The archive file contains the files for building an file layout (**dependencies*
                     </li>
 
                     <li><b>security</b> folder: used to store the key store, trust store, and the LTPA keys files (ltpa.keys).</li>
-                
+
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>
@@ -103,7 +103,7 @@ The archive file contains the files for building an file layout (**dependencies*
 </div>
 
 
-## Setting Up the {{ site.data.keys.mf_server }} 
+## Setting Up the {{ site.data.keys.mf_server }}
 {: #setting-up-the-mobilefirst-server }
 You can choose to run the scripts interactively or by using the configuration files:
 A good place to start is to run the scripts interactively once, which will also record the arguments (**recorded-args**). You can later use the args files to run the scripts in a non interactive mode.
@@ -128,19 +128,19 @@ If you choose to run the scripts interactively, you can skip the configuration b
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. You can find the empty template files and the explanation of the arguments in the <b>args</b> folder, or after running the scripts interactively in the <b>recorded-args</b> folder. Following are the files:<br/>
-            
+
               <h4>initenv.properties</h4>
               This file contains properties used to run the environment initialization.
               <h4>prepareserverdbs.properties</h4>
-              The {{ site.data.keys.mf_bm_short }} service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional database</i> instance</a> (Any plan that is marked OLTP or Transactional).<br/>
+              The {{ site.data.keys.mf_bm_short }} service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional database instance</a> (Any plan that is marked OLTP or Transactional).<br/>
               <b>Note:</b> The deployment of the dashDB Enterprise Transactional plans is immediate for the plans marked "pay as you go". Make sure you pick one of the suitable plans like <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
               After you have set up your dashDB instance, provide the required arguments.
-              
+
               <h4>prepareserver.properties</h4>
               This file is used for the prepareserver.sh script. This prepares the server file layout and pushes it to Bluemix as a Cloud Foundry app.
               <h4>startserver.properties</h4>
               This file configures tha runtime attributes of the server and starts is. It is strongly recomended that you use a minimum of 1024 MB (<b>SERVER_MEM=1024</b>) and 3 nodes for high availablilty (<b>INSTANCES=3</b>)
-              
+
             </div>
         </div>
     </div>
@@ -163,13 +163,13 @@ If you choose to run the scripts interactively, you can skip the configuration b
 {% endhighlight %}
 
                         You an also pass the parameters on the commandline
-                        
+
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
 
                         To learn all the parameters supported and their documentation run the help option
-                        
+
 {% highlight bash %}
 ./initenv.sh --help
 {% endhighlight %}
@@ -191,7 +191,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% highlight bash %}
 ./prepareserverdbs.sh --help
 {% endhighlight %}
-                    
+
                   </li>
                   <li><b>initenv.sh(Optional) – Logging in to Bluemix</b><br />
                       This step is required only if you need to create your server in a different Organization and Space than where the dashDB service instance is available. If yes, then update the initenv.properties with the new Organization and Space where the containers have to be created (and started), and rerun the <b>initenv.sh</b> script:
@@ -201,7 +201,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                   </li>
                   <li><b>prepareserver.sh - Prepare a {{ site.data.keys.mf_server }}</b><br />
                     Run the <b>prepareserver.sh</b> script in order to build a {{ site.data.keys.mf_server }} and push it to  Bluemix as a Cloud Foundry application. To view all the Cloud Foundry applications and theur URLs in the logged in Org and space, run: <code>cf apps</code><br/>
-                  
+
 
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
@@ -214,14 +214,14 @@ prepareserver.sh --name APP_NAME
 {% endhighlight %}
 
                         To learn all the parameters supported and their documentation run the help option
-                        
+
 {% highlight bash %}
 ./prepareserver.sh --help
 {% endhighlight %}                  
-                  
+
                   </li>
                   <li><b>startserver.sh - Starting the server</b><br />
-                  The <b>startserver.sh</b> script is used to start the {{ site.data.keys.mf_server }} on Liberty for Java Cloud Foundry application. Run:</p> 
+                  The <b>startserver.sh</b> script is used to start the {{ site.data.keys.mf_server }} on Liberty for Java Cloud Foundry application. Run:<p/>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -229,11 +229,11 @@ prepareserver.sh --name APP_NAME
                         You an also pass the parameters on the commandline
 
 {% highlight bash %}
-./startserver.sh --name APP_NAME 
+./startserver.sh --name APP_NAME
 {% endhighlight %}
 
                         To learn all the parameters supported and their documentation run the help option
-                        
+
 {% highlight bash %}
 ./startserver.sh --help
 {% endhighlight %}   
@@ -253,10 +253,10 @@ With {{ site.data.keys.mf_server }} running on IBM Bluemix, you can now start yo
 
 #### Applying changes
 {: #applying-changes }
-You may need to apply changes to the server layout after you have deployed the server once, e.g: you want to update the analytics URL in **/usr/config/mfpfproperties.xml**. Make the changes and then re-run the following scripts with the same set of arguments. 
+You may need to apply changes to the server layout after you have deployed the server once, e.g: you want to update the analytics URL in **/usr/config/mfpfproperties.xml**. Make the changes and then re-run the following scripts with the same set of arguments.
 
-1. ./prepareserver.sh 
-2. ./startserver.sh 
+1. ./prepareserver.sh
+2. ./startserver.sh
 
 ### Adding analytics server configuration to {{ site.data.keys.mf_server }}
 {: #adding-analytics-server-configuration-to-mobilefirst-server }
@@ -278,7 +278,7 @@ If you have setup a Analytics server and want to connect it to this {{ site.data
 ## Applying {{ site.data.keys.mf_server }} Fixes
 {: #applying-mobilefirst-server-fixes }
 Interim fixes for the {{ site.data.keys.mf_server }} on Bluemix can be obtained from [IBM Fix Central](http://www.ibm.com/support/fixcentral).  
-Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the 
+Before you apply an interim fix, back up your existing configuration files. The configuration files are located in the
 **package_root/mfpf-server-libertyapp/usr** folders.
 
 1. Download the interim fix archive and extract the contents to your existing installation folder, overwriting the existing files.
@@ -286,7 +286,7 @@ Before you apply an interim fix, back up your existing configuration files. The 
 
 You can now build and deploy the updatd server.
 
-## Removing the database service configuration from Bluemix	
+## Removing the database service configuration from Bluemix
 {: #removing-the-database-service-configuration-from-bluemix }
 If you ran the **prepareserverdbs.sh** script during the configuration of the {{ site.data.keys.mf_server }} image, the configurations and database tables required for {{ site.data.keys.mf_server }} are created. This script also creates the database schema for the {{ site.data.keys.mf_server }}.
 
