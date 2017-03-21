@@ -46,7 +46,7 @@ The Merges folder provides the ability to have platform-specific web resources (
 
 ### Cordova plug-ins
 {: #cordova-plug-ins }
-Using Cordova plug-ins can provide enhancements such as adding native UI elements (dialogs, tabbars, spinners and the like), as well as more advanced functionalities such as Mapping and Geolocation, loading of external content, custom keyboards, Device integration (camera, contacts, sensors, and so on).
+Using Cordova plug-ins can provide enhancements such as adding native UI elements (dialogs, tab bars, spinners and the like), as well as more advanced functionalities such as Mapping and Geolocation, loading of external content, custom keyboards, Device integration (camera, contacts, sensors, and so on).
 
 You can find Cordova plug-ins on [GitHub.com](https://github.com) and in popular Cordova plug-ins websites, such as [Plugreg](http://plugreg.com/) and [NPM](http://npmjs.org).
 
@@ -55,6 +55,10 @@ Example plug-ins:
 - [cordova-plugin-dialogs](https://www.npmjs.com/package/cordova-plugin-dialogs)
 - [cordova-plug-inprogress-indicator](https://www.npmjs.com/package/cordova-plugin-progress-indicator)
 - [cordova-plugin-statusbar](https://www.npmjs.com/package/cordova-plugin-statusbar)
+
+>**Note:** Modifying the default behaviour of a Cordova app (such as overriding the back button behavior) when the {{ site.data.keys.product_adj }} Cordova SDK is added to the project, can lead to the app being rejected by Google Play Store when submitted.
+For other failures with submission to Google Play Store, you can contact Google support.
+
 
 ### 3rd-party frameworks
 {: #3rd-party-frameworks }
@@ -92,9 +96,9 @@ After [adding the {{ site.data.keys.product_adj }} Cordova SDK](../../applicatio
         <div id="collapse-android-flow" class="panel-collapse collapse" role="tabpanel" aria-labelledby="android-flow">
             <div class="panel-body">
                 <p>In Android Studio, you can review the start-up process of the Cordova app for Android with {{ site.data.keys.product_adj }}. The {{ site.data.keys.product_adj }} Cordova plug-in, <b>cordova-plugin-mfp</b>, has native asynchronous bootstrap sequence. The bootstrap sequence must be completed before the Cordova application loads the application's main html file.</p>
-                
+
                 <p>Adding the <b>cordova-plugin-mfp</b> plug-in to a Cordova application instruments the application's <b>AndroidManifest.xml</b> file and the <code>MainActivity</code> file (which extends <code>CordovaActivity</code>) native code to perform the {{ site.data.keys.product_adj }} initialization.</p>
-        
+
                 <p>The application native code instrumentation consists of:</p>
                 <ul>
                     <li>Adding <code>com.worklight.androidgap.api.WL</code> API calls to perform the {{ site.data.keys.product_adj }} initialization.</li>
@@ -105,23 +109,23 @@ After [adding the {{ site.data.keys.product_adj }} Cordova SDK](../../applicatio
                         </ul>
                     </li>
                 </ul>
-                
+
                 <h3>Implementing WLInitWebFrameworkListener and creating the WL object</h3>
                 <p>The <b>MainActivity.java</b> file creates the initial <code>MainActivity</code> class extending the <code>CordovaActivity</code> class. The <code>WLInitWebFrameworkListener</code> receives notification when the {{ site.data.keys.product_adj }} framework is initialized.</p>
-                
+
 {% highlight java %}
 public class MainActivity extends CordovaActivity implements WLInitWebFrameworkListener {
 {% endhighlight %}
 
                 <p>The <code>MFPApplication</code> class is called from within <code>onCreate</code> and creates a {{ site.data.keys.product_adj }} client instance (<code>com.worklight.androidgap.api.WL</code>) that is used throughout the app. The <code>onCreate</code> method initializes the <b>WebView framework</b>.</p>
-                
+
 {% highlight java %}
 @Overridepublic void onCreate(Bundle savedInstanceState){
 super.onCreate(savedInstanceState);
 
 if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
            WL.getInstance().showSplashScreen(this);
-       } 
+       }
    init();
    WL.getInstance().initializeWebFramework(getApplicationContext(), this);
 }
@@ -132,7 +136,7 @@ if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
                     <li>Defines the <code>showSplashScreen</code> method for loading a splash screen if one exists.</li>
                     <li>Creates two listeners for enabling analytics. These listeners can be removed if not needed.</li>
                 </ul>
-                
+
                 <h3>Loading the WebView</h3>
                 <p>The <b>cordova-plugin-mfp</b> plug-in adds an activity to the <b>AndroidManifest.xml</b> file that is required for initializing the Crosswalks WebView:</p>
 
@@ -141,9 +145,9 @@ if (!((MFPApplication)this.getApplication()).hasCordovaSplashscreen()) {
 {% endhighlight %}
 
                 <p>This activity is used to ensure the asynchronous initialization of the Crosswalk WebView as follows:</p>
-                
+
                 <p>After the {{ site.data.keys.product_adj }} framework is initialized and ready to load in the WebView, the <code>onInitWebFrameworkComplete</code> connects to the URL if <code>WLInitWebFrameworkResult</code> succeeds.</p>
-                
+
 {% highlight java %}
 public void onInitWebFrameworkComplete(WLInitWebFrameworkResult result){
 if (result.getStatusCode() == WLInitWebFrameworkResult.SUCCESS) {
@@ -155,13 +159,13 @@ super.loadUrl(WL.getInstance().getMainHtmlFilePath());
 {% endhighlight %}
 
 
-            
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#android-flow" data-target="#collapse-android-flow" aria-expanded="false" aria-controls="collapse-android-flow"><b>Close section</b></a>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="ios-flow">
             <h4 class="panel-title">
@@ -182,7 +186,7 @@ int main(int argc, char *argv[]) {
  @autoreleasepool
     {    
         int retVal = UIApplicationMain(argc, argv, nil, @"MFPAppDelegate");   
-        return retVal; 
+        return retVal;
     }
 }
 {% endhighlight %}
@@ -199,13 +203,13 @@ int main(int argc, char *argv[]) {
                 <p>Once the initialization succeeds the <code>wlInitWebFrameworkDidCompleteWithResult</code> checks that the {{ site.data.keys.product_adj }} framework has been loaded, invokes <code>wlInitDidCompleteSuccessfully</code> and creates listeners for receiving data. <code>wlInitDidCompleteSuccessfully</code> creates a <code>cordovaViewController</code> that connects to the default <b>index.html</b> page.</p>
 
                 <p>Once the iOS Cordova app is built in Xcode without errors, you can proceed to add features to the native platform and WebView.</p>
-            
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#ios-flow" data-target="#collapse-ios-flow" aria-expanded="false" aria-controls="collapse-ios-flow"><b>Close section</b></a>
             </div>
         </div>
     </div>
-    
+
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="windows-flow">
             <h4 class="panel-title">
@@ -218,7 +222,7 @@ int main(int argc, char *argv[]) {
                 <p>The {{ site.data.keys.product_adj }} Cordova plug-in, <b>cordova-plugin-mfp</b> has native asynchronous bootstrap sequence. The bootstrap sequence must be completed before the Cordova application loads the application's main HTML file.</p>
 
                 <p>Adding the <b>cordova-plugin-mfp</b> plug-in to a Cordova application adds the <b>index.html</b> file to the application's <b>appxmanifest</b> file. This extends the <code>CordovaActivity</code> native code to perform the {{ site.data.keys.product_adj }} initialization.</p>
-            
+
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#windows-flow" data-target="#collapse-windows-flow" aria-expanded="false" aria-controls="collapse-windows-flow"><b>Close section</b></a>
             </div>
@@ -230,7 +234,7 @@ int main(int argc, char *argv[]) {
 {: #cordova-application-security }
 {{ site.data.keys.product_full }} provides security features that help you protect your Cordova apps.
 
-Much of the content in a cross-platform app can be more easily modified by an unauthorized person than for a native app. Because much of the common content in a cross-platform app is in a readable format, IBM MobileFirst Foundation provides features that can provide a higher level of security for your cross-platform Cordova apps. 
+Much of the content in a cross-platform app can be more easily modified by an unauthorized person than for a native app. Because much of the common content in a cross-platform app is in a readable format, IBM MobileFirst Foundation provides features that can provide a higher level of security for your cross-platform Cordova apps.
 
 > Learn more about the [{{ site.data.keys.product_adj }} security framework](../../authentication-and-security)
 
@@ -255,7 +259,7 @@ If you change the default file names and paths of any resources, you must also s
 
 ### Cordova configuration file (config.xml)
 {: #cordova-configuration-file-configxml }
-The Cordova configuration file is a required XML file that contains application metadata and is stored in the root directory of the app. The file is automatically generated when you create a Cordova application. You can modify it to add custom properties by using the mfpdev app config command. 
+The Cordova configuration file is a required XML file that contains application metadata and is stored in the root directory of the app. The file is automatically generated when you create a Cordova application. You can modify it to add custom properties by using the mfpdev app config command.
 
 ### Main file (index.html)
 {: #main-file-indexhtml}
@@ -317,10 +321,10 @@ The JavaScript file index.js is provided by the template, and is located in the 
 A Cordova application's web resources can be previewed either in the iOS Simulator, Android Emulator, Windows Emulator, or physical devices. In {{ site.data.keys.product }}, two additional live-preview options are available: {{ site.data.keys.mf_mbs_full }} and Simple Browser rendering.
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **Security Restriction:** You can preview your web resources, however not all {{ site.data.keys.product_adj }} JavaScript APIs are supported by the simulator. In particular, the OAuth protocol is not fully supported. However, you can test calls to adapters with `WLResourceRequest`. In this case,
-> 
+>
 > * Security checks are not run on the server-side and security challenges are not sent to the client that runs in the {{ site.data.keys.mf_mbs }}.
 > * If you do not use the {{ site.data.keys.mf_server }} in a development environment , register a confidential client that has the adapter's scope in its list of allowed scopes. You can define a confidential client with the {{ site.data.keys.mf_console }}, by using the Runtime/Settings menu. For more information about confidential clients, see [Confidential clients](../../authentication-and-security/confidential-clients).
-> 
+>
 > **Note:** The {{ site.data.keys.mf_server }} in a development environment includes a confidential client "test" that has an unlimited allowed scope ("*"). By default mfpdev app preview uses this confidential client.
 
 #### Simple Browser

@@ -26,7 +26,7 @@ You must provide the following information:
   The ID can contain only ASCII characters.
 - **Secret**: A private passphrase to authorize access from the confidential client (can be considered as an API key).
   The secret can contain only ASCII characters.
-- **Allowed Scope**: A confidential client that uses such ID and Secret combination is automatically granted the scope that is defined here. Learn more about **Scopes** in the [Authorization Concepts](../#scope) tutorial.
+- **Allowed Scope**: A confidential client that uses such ID and Secret combination is automatically granted the scope that is defined here. For more information about scopes, see [Scopes](../#scopes).
     - An element of an allowed scope can also include the special asterisk wildcard character (`*`), which signifies any sequence of zero or more characters. For example, if the scope element is `send*`, the confidential client can be granted access to scopes that contain any scope element that starts with "send", such as "sendMessage". The asterisk wildcard can be placed at any position within the scope element, and can also appear more than once. 
     - An allowed-scope parameter that consists of a single asterisk character (*) indicates that the confidential client can be granted a token for any scope.
 
@@ -63,23 +63,22 @@ The `push` client is used internally by the {{ site.data.keys.product }} push se
 {: #obtaining-an-access-token }
 A token can be obtained from the {{ site.data.keys.mf_server }} **token endpoint**.  
 
-For **testing purposes**, you can use Postman as described below.  
+**For testing purposes**, you can use Postman as described below.  
 In a real situation, implement Postman in your back-end logic, with the technology of your choice.
 
-1. Make a **POST** request to **http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token**.  
+1.  Make a **POST** request to **http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token**.  
     For example: `http://localhost:9080/mfp/api/az/v1/token`
     - In a development environment, the {{ site.data.keys.mf_server }} uses a pre-existing `mfp` runtime.  
     - In a production environment, replace the runtime value with your runtime name.
 
-2. Set the request with a content-type of `application/x-www-form-urlencoded`.  
-3. Set the following two form parameters:
-  - `grant_type`: `client_credentials`
-  - `scope`: Use the scope protecting the resource.  
-  If you don't use a scope to protect your resource, use an empty string.
+2.  Set the request with a content-type of `application/x-www-form-urlencoded`.  
+3.  Set the following two form parameters:
+    - `grant_type` - Set the value to `client_credentials`.
+    - `scope` - Set the value to the protecting scope of your resource. If your resource is not assigned a protecting scope, omit this parameter to apply the default scope (`RegisteredClient`). For more information, see [Scopes](../../authentication-and-security/#scopes).
 
-    ![Image of postman configuration](confidential-client-steps-1-3.png)
+       ![Image of postman configuration](confidential-client-steps-1-3.png)
 
-4. To authenticate the request, use [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side). Use your confidential client's **ID** and **Secret**.
+4.  To authenticate the request, use [Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side). Use your confidential client's **ID** and **Secret**.
 
     ![Image of postman configuration](confidential-client-step-4.png)
 
@@ -116,7 +115,7 @@ An HTTP **401** response status with the HTTP header `WWW-Authenticate: Bearer e
 
 ### insufficient_scope
 {: #insufficient-scope }
-An HTTP **403** response status with the HTTP header `WWW-Authenticate : Bearer error="insufficient_scope", scope="scopeA scopeB"` means that the token found in the original request did not match the **scope required by this resource**. The header also includes the scope it expected.
+An HTTP **403** response status with the HTTP header `WWW-Authenticate : Bearer error="insufficient_scope", scope="RegisteredClient scopeA scopeB"` means that the token found in the original request did not match the scope that is required by this resource. The header also includes the expected scope.
 
-When making a request, if you do not know which scope is required by the resource, `insufficient_scope` is the way to determine the answer.  
-For example, request a token with an empty string (`""`) as the scope value and make a request to the resource. Then, you can extract the required scope from the 403 response and request a new token for this scope.
+When you issue a request, if you do not know which scope is required by the resource, use `insufficient_scope` to determine the required scope. For example, request a token without specifying a scope, and make a request to the resource. Then, you can extract the required scope from the 403 response and request a new token for this scope.
+
