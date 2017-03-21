@@ -127,7 +127,7 @@ Use the `WLResponse response` and `WLFailResponse response` objects to get the d
 
 ## For more information
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjava-worklight-android-native/html/com/worklight/wlclient/api/WLResourceRequest.html).
+> For more information about WLResourceRequest, [refer to the API Reference](../../../api/client-side-api/java/client/).
 
 <img alt="Image of the sample application" src="resource-request-success-android.png" style="float:right"/>
 ## Sample application
