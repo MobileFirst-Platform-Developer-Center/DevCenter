@@ -142,11 +142,11 @@ If you want to enable push notifications for application updates, you must first
 {: #windows-phone-8 }
 MobileFirst Studio generates a native Windows Phone 8 project in **IBMAppCenter/apps/AppCenter/windowsphone8/native**. The **AppCenter.csproj** file is in the windowsphone8/native folder. This file is the Visual Studio project that you must compile by using Visual Studio and the Windows Phone 8.0 SDK.
 
-The application is built with the Windows Phone 8.0 SDK so that it can run on Windows Phone 8.0 and 8.1 devices. It is not built with the Windows Phone 8.1 SDK, because the result would not run on earlier Windows Phone 8.0 devices.
+The application is built with the [Windows Phone 8.0 SDK](https://www.microsoft.com/en-in/download/details.aspx?id=35471) so that it can run on Windows Phone 8.0 and 8.1 devices. It is not built with the Windows Phone 8.1 SDK, because the result would not run on earlier Windows Phone 8.0 devices.
 
-The installation of Visual Studio 2013 enables you to select the installation of the Windows Phone 8.0 SDK in addition to the 8.1 SDK. The Windows Phone 8.0 SDK is also available from [Windows Phone SDK Archives](https://dev.windows.com/en-us/develop/download-phone-sdk).
+The installation of Visual Studio 2013 enables you to select the installation of the Windows Phone 8.0 SDK in addition to the 8.1 SDK. The Windows Phone 8.0 SDK is also available from [Windows Phone SDK Archives](https://developer.microsoft.com/en-us/windows/downloads/sdk-archive).
 
-See [Windows Phone Dev Center](http://dev.windowsphone.com/en-us) to learn more about how to build and sign the Windows Phone mobile client application.
+See [Windows Phone Dev Center](https://developer.microsoft.com/en-us) to learn more about how to build and sign the Windows Phone mobile client application.
 
 #### Microsoft Windows 8: Building the project
 {: #microsoft-windows-8-building-the-project }
