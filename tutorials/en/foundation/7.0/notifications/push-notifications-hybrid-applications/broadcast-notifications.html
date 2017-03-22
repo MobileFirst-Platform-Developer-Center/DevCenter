@@ -12,7 +12,7 @@ Broadcast notification are in fact tag-based notification, where a subscription 
 Broadcast notifications are enabled by default for any push-enabled MobileFirst application.
 This ability can be disabled by by unsubscribing from the reserved <code>Push.ALL</code> tag.
 
-<blockquote>For more information about broadcast notifications, see the <a href="http://engtest01w.francelab.fr.ibm.com:9090/support/knowledgecenter/SSHS8R_7.0.0/com.ibm.worklight.dev.doc/devref/c_push_notif_broadcast.html">user documentation</a>.</blockquote>
+<blockquote>For more information about broadcast notifications, see the <a href="https://www.ibm.com/support/knowledgecenter/en/SSHS8R_7.0.0/com.ibm.worklight.dev.doc/devref/c_push_notif_broadcast.html">user documentation</a>.</blockquote>
 
 <h2>Common API methods for tag-based and broadcast notifications</h2>
 <h4>Client-side API:</h4>
@@ -28,7 +28,7 @@ WL.Client.Push.onMessage = function (props, payload) {
     alert("Provider notification data: " + Object.toJSON(props));
     alert("Application notification data: " + Object.toJSON(payload));
 }
-{% endhighlight %} 
+{% endhighlight %}
 
 A callback function that is invoked when a push notification is received by the device.
 Set this function on a global JavaScript level. The Tag name <code>Push.ALL</code> is sent back in the payload parameter.

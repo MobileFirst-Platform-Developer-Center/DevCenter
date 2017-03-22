@@ -240,7 +240,7 @@ Use the `response` and `error` objects to get the data that is retrieved from th
 
 ## For more information
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refobjc-worklight-ios/html/Classes/WLResourceRequest.html).
+> For more information about WLResourceRequest, [refer to the API Reference](../../../api/client-side-api/objc/client/).
 
 <img alt="Image of the sample application" src="resource-request-success-ios.png" style="margin-left: 15px; float:right"/>
 ## Sample application

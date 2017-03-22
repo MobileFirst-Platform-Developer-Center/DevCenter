@@ -154,7 +154,7 @@ onFailure: function(response) {
 
 ## For more information
 {: #for-more-information }
-> For more information about WLResourceRequest, [refer to the API Reference](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html).
+> For more information about WLResourceRequest, [refer to the API Reference](../../../api/client-side-api/javascript/client/).
 
 <img alt="Image of the sample application" src="resource-request-success-cordova.png" style="float:right"/>
 ## Sample applications
