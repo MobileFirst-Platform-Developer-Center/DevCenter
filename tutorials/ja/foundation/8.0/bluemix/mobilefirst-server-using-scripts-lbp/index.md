@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-下記の指示に従って、Liberty for Java ランタイム上の {{ site.data.keys.mf_server }} インスタンスを Bluemix 上で構成します。({{ site.data.keys.mf_analytics }} インスタンスは IBM Containers 上のみで実行できます。) これは、次のような手順で行います。 
+下記の指示に従って、Liberty for Java ランタイム上の {{ site.data.keys.mf_server }} インスタンスを Bluemix 上で構成します。({{ site.data.keys.mf_analytics }} インスタンスは IBM Containers 上のみで実行できます。) これは、次のような手順で行います。
 
 * 必要なツール (Cloud Foundry CLI) を使用してホスト・コンピューターをセットアップする
 * Bluemix アカウントをセットアップする
@@ -66,14 +66,14 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
                 <img src="zip.png" alt="アーカイブ・ファイルのファイル・システム構成を示すイメージ" style="float:right;width:570px"/>
                 <h4>dependencies フォルダー</h4>
                 <p>{{ site.data.keys.product }} ランタイムおよび IBM Java JRE 8 が含まれています。</p>
-                
+
                 <h4>mfpf-libs フォルダー</h4>
                 <p>{{ site.data.keys.product_adj }} 製品コンポーネント・ライブラリーおよび CLI が含まれています。</p>
-                
+
                 <h4>mfpf-server-libertyapp フォルダー</h4>
-                
+
                 <ul>
-                   
+
                     <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。また、Bluemix へのログイン、Bluemix にプッシュするための {{ site.data.keys.product }} アプリケーションのビルド、Bluemix 上でのサーバーの実行を行うための各スクリプトも含まれています。スクリプトは、対話式に実行することも、(後述のように) 構成ファイルを事前に設定することで実行することもできます。カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
                     <li><b>usr</b> フォルダー:
                         <ul>
@@ -93,7 +93,7 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
                     </li>
 
                     <li><b>security</b> フォルダー: 鍵ストア、トラストストア、および LTPA 鍵ファイル (ltpa.keys) の保管場所として使用します。</li>
-                
+
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>セクションを閉じる</b></a>
@@ -103,7 +103,7 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
 </div>
 
 
-## {{ site.data.keys.mf_server }} のセットアップ 
+## {{ site.data.keys.mf_server }} のセットアップ
 {: #setting-up-the-mobilefirst-server }
 スクリプトは、対話式に実行することも、構成ファイルを使用して実行することもできます。
 推奨されるのは、開始時に一度スクリプトを対話式に実行することです。これによって引数も記録されます (**recorded-args**)。その後、args ファイルを使用して非対話式でスクリプトを実行できます。
@@ -128,19 +128,19 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。空のテンプレート・ファイルや引数の説明は、<b>args</b> フォルダーにあります。また、対話式のスクリプト実行の後は <b>recorded-args</b> フォルダーにあります。以下のファイルがあります。<br/>
-            
+
               <h4>initenv.properties</h4>
               このファイルには、環境の初期化を実行するときに使用するプロパティーが含まれています。
               <h4>prepareserverdbs.properties</h4>
-              {{ site.data.keys.mf_bm_short }} サービスには、外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional データベース</i> ・インスタンス</a> (OLTP または Transactional のマークが付いていればどのプランでも可) が必要です。<br/>
+              {{ site.data.keys.mf_bm_short }} サービスには、外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional データベース・ インスタンス</a> (OLTP または Transactional のマークが付いていればどのプランでも可) が必要です。<br/>
               <b>注:</b> dashDB Enterprise Transactional プランのデプロイメントは、「従量制課金」のマークが付いたプランに対しては即時に行われます。<i>Enterprise for Transactions High Availability 2.8.500 (従量課金)</i> のような、適したプランを選択するようにしてください。<br/><br/>
               dashDB インスタンスのセットアップが完了したら、必要な引数を入力します。
-              
+
               <h4>prepareserver.properties</h4>
               このファイルは prepareserver.sh スクリプトで使用します。このファイルは、サーバー・ファイル・レイアウトを準備し、これを Bluemix に Cloud Foundry アプリケーションとしてプッシュします。
               <h4>startserver.properties</h4>
               このファイルは、サーバーのランタイム属性を構成し、これを開始します。最小でも 1024 MB (<b>SERVER_MEM=1024</b>) と 3 つのノードを使用して高可用性を確保 (<b>INSTANCES=3</b>) することを強く推奨します。
-              
+
             </div>
         </div>
     </div>
@@ -163,13 +163,13 @@ Liberty for Java 上で {{ site.data.keys.product }} をセットアップする
 {% endhighlight %}
 
                         コマンド・ラインでパラメーターを渡すこともできます。
-                        
+
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
 
                         サポートされているすべてのパラメーターとその説明を見るには、help オプションを実行します。
-                        
+
 {% highlight bash %}
 ./initenv.sh --help
 {% endhighlight %}
@@ -191,8 +191,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% highlight bash %}
 ./prepareserverdbs.sh --help
 {% endhighlight %}
-                    
-                  </li>
+</li>
                   <li><b>initenv.sh(Optional) – Bluemix へのログイン</b><br />
                       このステップは、dashDB サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにサーバーを作成する必要がある場合にのみ必須です。この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で initenv.properties を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。
 {% highlight bash %}
@@ -201,7 +200,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                   </li>
                   <li><b>prepareserver.sh - {{ site.data.keys.mf_server }} の準備</b><br />
                     {{ site.data.keys.mf_server }} をビルドし、これを Bluemix に Cloud Foundry アプリケーションとしてプッシュするため、<b>prepareserver.sh</b> スクリプトを実行します。ログインした組織およびスペース内にあるすべての Cloud Foundry アプリケーションとその URL を表示するには、<code>cf apps</code> を実行します。<br/>
-                  
+
 
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
@@ -214,14 +213,13 @@ prepareserver.sh --name APP_NAME
 {% endhighlight %}
 
                         サポートされているすべてのパラメーターとその説明を見るには、help オプションを実行します。
-                        
+
 {% highlight bash %}
 ./prepareserver.sh --help
 {% endhighlight %}                  
-                  
-                  </li>
+</li>
                   <li><b>startserver.sh - サーバーの始動</b><br />
-                  <b>startserver.sh</b> スクリプトを使用して {{ site.data.keys.mf_server }} を Liberty for Java の Cloud Foundry アプリケーション上で始動します。 次のコマンドを実行します。</p> 
+                  <b>startserver.sh</b> スクリプトを使用して {{ site.data.keys.mf_server }} を Liberty for Java の Cloud Foundry アプリケーション上で始動します。 次のコマンドを実行します。<p/>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -233,7 +231,7 @@ prepareserver.sh --name APP_NAME
 {% endhighlight %}
 
                         サポートされているすべてのパラメーターとその説明を見るには、help オプションを実行します。
-                        
+
 {% highlight bash %}
 ./startserver.sh --help
 {% endhighlight %}   
@@ -253,10 +251,10 @@ prepareserver.sh --name APP_NAME
 
 #### 変更の適用
 {: #applying-changes }
-一度サーバーをデプロイした後で、サーバー・レイアウトに変更を適用する必要がある場合があります。例えば、**/usr/config/mfpfproperties.xml** 内の分析 URL を更新するような場合です。変更を行った後、同じ引数のセットを指定して、次のスクリプトを再実行します。 
+一度サーバーをデプロイした後で、サーバー・レイアウトに変更を適用する必要がある場合があります。例えば、**/usr/config/mfpfproperties.xml** 内の分析 URL を更新するような場合です。変更を行った後、同じ引数のセットを指定して、次のスクリプトを再実行します。
 
-1. ./prepareserver.sh 
-2. ./startserver.sh 
+1. ./prepareserver.sh
+2. ./startserver.sh
 
 ### {{ site.data.keys.mf_server }} への分析サーバー構成の追加
 {: #adding-analytics-server-configuration-to-mobilefirst-server }
@@ -286,7 +284,7 @@ Bluemix 上の {{ site.data.keys.mf_server }} 用の暫定修正を [IBM Fix Cen
 
 これで、更新したサーバーをビルドおよびデプロイできるようになりました。
 
-## Bluemix からのデータベース・サービス構成の削除	
+## Bluemix からのデータベース・サービス構成の削除
 {: #removing-the-database-service-configuration-from-bluemix }
 {{ site.data.keys.mf_server }} イメージの構成時に **prepareserverdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_server }} に必要な構成およびデータベース・テーブルが作成されます。このスクリプトは、{{ site.data.keys.mf_server }}用のデータベース・スキーマも作成します。
 
