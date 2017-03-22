@@ -8,7 +8,7 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
-Folgen Sie den nachstehenden Anweisungen, um eine MobileFirst-Server-Instanz in einer Liberty-for-Java-Laufzeit für Bluemix zu konfigurieren. (Instanzen von {{ site.data.keys.mf_analytics }} können nur in IBM Containern ausgeführt werden.) Gehen Sie dazu die folgenden Schritte durch:  
+Folgen Sie den nachstehenden Anweisungen, um eine MobileFirst-Server-Instanz in einer Liberty-for-Java-Laufzeit für Bluemix zu konfigurieren. (Instanzen von {{ site.data.keys.mf_analytics }} können nur in IBM Containern ausgeführt werden.) Gehen Sie dazu die folgenden Schritte durch: 
 
 * Statten Sie Ihren Host-Computer mit den erforderlichen Tools aus (Cloud-Foundry-CLI). 
 * Richten Sie Ihr Bluemix-Konto ein.
@@ -67,14 +67,14 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Dateilayouts (**d
                 <img src="zip.png" alt="Dateisystemstruktur der Archivdatei" style="float:right;width:570px"/>
                 <h4>Ordner 'dependencies'</h4>
                 <p>Enthält die Laufzeit der {{ site.data.keys.product }} und IBM Java JRE 8</p>
-                
+
                 <h4>Ordner 'mfpf-libs'</h4>
                 <p>Enthält die Bibliotheken für die {{ site.data.keys.product_adj }}-Produktkomponenten und die CLI</p>
-                
+
                 <h4>Ordner 'mfpf-server-libertyapp'</h4>
-                
+
                 <ul>
-                   
+
                     <li>Ordner <b>scripts</b>: Dieser Ordner enthält den Ordner <b>args</b> mit einer Reihe von Konfigurationsdateien. Er enthält außerdem die Scripts für die Anmeldung bei Blumix, die Erstellung einer MobileFirst-Foundation-App für die Push-Übertragung in Bluemix und die Ausführung in Bluemix. Sie können diese Scripts interaktiv ausführen oder die Konfigurationsdateien wie nachfolgend erläutert für die Ausführung der Scripts vorkonfigurieren. Anders als bei den anpassbaren Dateien args/*.properties dürfen Sie in diesem Ordner keine Elemente modifizieren. Verwenden Sie das Befehlszeilenargument <code>-h</code> oder <code>--help</code>, um einen Hilfetext zur Scriptsyntax abzurufen (z. B. <code>Scriptname.sh --help</code>).</li>
                     <li>Ordner <b>usr</b>:
                         <ul>
@@ -92,7 +92,7 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Dateilayouts (**d
                     </li>
 
                     <li>Ordner <b>security</b>: Wird verwendet, um die Keystore-Datei, die Truststore-Datei und die LTPA-Schlüsseldatei (ltpa.keys) zu speichern.</li>
-                
+
                 </ul>
 				<br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Abschnitt schließen</b></a>
@@ -102,7 +102,7 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Dateilayouts (**d
 </div>
 
 
-## {{ site.data.keys.mf_server }} einrichten 
+## {{ site.data.keys.mf_server }} einrichten
 {: #setting-up-the-mobilefirst-server }
 Sie können die Scripts interaktiv ausführen oder die Konfigurationsdateien verwenden.
 Ein guter Ausgangspunkt ist die einmalige interaktive Ausführung der Scripts, wobei auch die Argumente erfasst werden (**recorded-args**). Später können Sie die Dateien mit den Argumenten verwenden, um die Scripts in einem nicht interkativen Modus auszuführen. 
@@ -127,19 +127,19 @@ Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie di
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Die leeren Schablonendateien und eine Erläuterung der Argumente finden Sie im Ordner <b>args</b> oder nach einer interaktiven Ausführung der Scripts im Ordner <b>recorded-args</b>. Es handelt sich um folgende Dateien:<br/>
-            
+
               <h4>initenv.properties</h4>
               Diese Datei enhält Eigenschaften zum Ausführen der Umgebungsinitialisierung.
               <h4>prepareserverdbs.properties</h4>
-              Der {{ site.data.keys.mf_bm_short }} Service erfordert eine externe <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB-Enterprise-Transactional-Datenbankinstanz</i></a> (einen mit "OLTP" oder "Transactional" bezeichneten Plan).<br/>
+              Der {{ site.data.keys.mf_bm_short }} Service erfordert eine externe <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB-Enterprise-Transactional-Datenbankinstanz</a> (einen mit "OLTP" oder "Transactional" bezeichneten Plan).<br/>
               <b>Hinweis:</b> Die Implementierung der dashDB-Enterprise-Transactional-Pläne erfolgt sofort, wenn die Pläne mit "pay as you go" gekennzeichnet sind. Vergewissern Sie sich, dass Sie einen passenden Plan ausgewählt haben, z. B. <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i>. <br/><br/>
               Wenn Sie Ihre dashDB-Instanz eingerichtet haben, geben Sie die erforderlichen Argumente an. 
-              
+
               <h4>prepareserver.properties</h4>
               Diese Datei wird für das Script prepareserver.sh verwendet. Sie erstellt das Serverdateilayout und überträgt es per Push-Operation als Cloud-Foundry-App in Bluemix.
               <h4>startserver.properties</h4>
               Diese Datei konfiguriert die Laufzeitattribute des Servers und startet den Server. Es wird dringend empfohlen, für die hohe Verfügbarkeit mindestens 1024 MB (<b>SERVER_MEM=1024</b>) und 3 Knoten (<b>INSTANCES=3</b>) zu verwenden. 
-              
+
             </div>
         </div>
     </div>
@@ -162,13 +162,13 @@ Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie di
 {% endhighlight %}
 
                         Sie können die Parameter auch in der Befehlszeile übergeben. 
-                        
+
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
 
                         Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
-                        
+
 {% highlight bash %}
 ./initenv.sh --help
 {% endhighlight %}
@@ -191,8 +191,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% highlight bash %}
 ./prepareserverdbs.sh --help
 {% endhighlight %}
-                    
-                  </li>
+</li>
                   <li><b>initenv.sh (optional) – Anmeldung bei Bluemix</b><br />
                       Dieser Schritt ist nur erforderlich, wenn Sie Ihren Server in einer Organisation und einem Breich erstellen müssen, in dem die dashDB-Serviceinstanz nicht verfügbar ist. Wenn das der Fall ist, aktualisieren Sie die Datei initenv.properties mit der neuen Organisation und dem neuen Bereich, in denen die Container erstellt (und gestartet) werden müssen. Führen Sie dann erneut das Script <b>initenv.sh</b> aus:
 {% highlight bash %}
@@ -202,7 +201,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                   <li><b>prepareserver.sh - Erstellung eines {{ site.data.keys.mf_server }}</b><br />
                     Führen Sie das Script <b>prepareserver.sh</b> aus, um einen {{ site.data.keys.mf_server }} zu erstellen
 und per Push-Operation als Cloud-Foundry-Anwendung in Bluemix zu übertragen. Führen Sie <code>cf apps</code> aus, um alle Cloud-Foundry-Anwendungen mit ihren URLs in der Organisation und in dem Bereich der Anmeldung zu sehen.<br/>
-                  
+
 
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
@@ -215,14 +214,13 @@ prepareserver.sh --name APP_NAME
 {% endhighlight %}
 
                         Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
-                        
+
 {% highlight bash %}
 ./prepareserver.sh --help
 {% endhighlight %}                  
-                  
-                  </li>
+</li>
                   <li><b>startserver.sh - Starten des Servers</b><br />
-                  Das Script <b>startserver.sh</b> wird zum Starten von {{ site.data.keys.mf_server }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus: </p> 
+                  Das Script <b>startserver.sh</b> wird zum Starten von {{ site.data.keys.mf_server }} in der Cloud-Foundry-Anwendung für Liberty for Java zu starten. Führen Sie Folgendes aus: <p/>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -234,7 +232,7 @@ prepareserver.sh --name APP_NAME
 {% endhighlight %}
 
                         Wenn Sie sich über alle unterstützten Parameter und ihre Dokumentation informieren möchten, füren Sie die Option "help" aus. 
-                        
+
 {% highlight bash %}
 ./startserver.sh --help
 {% endhighlight %}   
@@ -257,10 +255,10 @@ von {{ site.data.keys.product_adj }}-Artefakten verwenden](../../application-dev
 #### Änderungen anwenden
 {: #applying-changes }
 Nachdem Sie den Server implementiert haben, sind möglicherweise Änderungen am Serverlayout erforderlich. Es könnte beispielsweise sein,
-dass Sie die Analytics-URL in **/usr/config/mfpfproperties.xml** aktualisieren möchten. Nehmen Sie die Änderungen vor und führen Sie dann die folgenden Scripts mit den gleichen Parametern erneut aus.  
+dass Sie die Analytics-URL in **/usr/config/mfpfproperties.xml** aktualisieren möchten. Nehmen Sie die Änderungen vor und führen Sie dann die folgenden Scripts mit den gleichen Parametern erneut aus. 
 
-1. ./prepareserver.sh 
-2. ./startserver.sh 
+1. ./prepareserver.sh
+2. ./startserver.sh
 
 ### Analytics-Server-Konfiguration zu {{ site.data.keys.mf_server }} hinzufügen
 {: #adding-analytics-server-configuration-to-mobilefirst-server }
@@ -293,7 +291,7 @@ die neu installierten Konfigurationsdateien überschrieben.
 
 Jetzt können Sie den aktualisierten Server erstellen und implementieren. 
 
-## Datenbankservicekonfiguration aus Bluemix entfernen	
+## Datenbankservicekonfiguration aus Bluemix entfernen
 {: #removing-the-database-service-configuration-from-bluemix }
 Wenn Sie während der Konfiguration des MobileFirst-Server-Image das Script **prepareserverdbs.sh** ausgeführt haben,
 werden die für {{ site.data.keys.mf_server }} erforderlichen Konfigurationen und Datenbanktabellen erstellt. Das Script erstellt auch das Datenbankschema für {{ site.data.keys.mf_server }}. 
