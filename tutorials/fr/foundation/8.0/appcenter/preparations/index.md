@@ -142,11 +142,11 @@ Si vous souhaitez activer les notifications push pour les mises à jour d'applic
 {: #windows-phone-8 }
 MobileFirst Studio génère un projet Windows Phone 8 natif dans **IBMAppCenter/apps/AppCenter/windowsphone8/native**. Le fichier **AppCenter.csproj** se trouve dans le dossier windowsphone8/native. Ce fichier est le projet Visual Studio que vous devez compiler en utilisant le SDK Visual Studio et Windows Phone 8.0.
 
-L'application est générée avec le SDK Windows Phone 8.0 afin qu'elle puisse s'exécuter sur les appareils Windows Phone 8.0 et 8.1. Elle n'est pas générée avec le SDK Windows Phone 8.1, car le résultat ne fonctionnerait pas sur des appareils Windows Phone 8.0 antérieurs.
+L'application est générée avec le [SDK Windows Phone 8.0](https://www.microsoft.com/en-in/download/details.aspx?id=35471) afin qu'elle puisse s'exécuter sur les appareils Windows Phone 8.0 et 8.1. Elle n'est pas générée avec le SDK Windows Phone 8.1, car le résultat ne fonctionnerait pas sur des appareils Windows Phone 8.0 antérieurs.
 
-L'installation de Visual Studio 2013 vous permet de sélectionner l'installation du SDK Windows Phone 8.0 en plus du SDK 8.1. Le SDK Windows Phone 8.0 est également disponible à partir de [Windows Phone SDK Archives](https://dev.windows.com/en-us/develop/download-phone-sdk).
+L'installation de Visual Studio 2013 vous permet de sélectionner l'installation du SDK Windows Phone 8.0 en plus du SDK 8.1. Le SDK Windows Phone 8.0 est également disponible à partir de [Windows Phone SDK Archives](https://developer.microsoft.com/en-us/windows/downloads/sdk-archive).
 
-Consultez [Windows Phone Dev Center](http://dev.windowsphone.com/en-us) pour en savoir plus sur la façon de générer et de signer l'application client mobile Windows Phone.
+Consultez [Windows Phone Dev Center](https://developer.microsoft.com/en-us) pour en savoir plus sur la façon de générer et de signer l'application client mobile Windows Phone.
 
 #### Microsoft Windows 8 : génération du projet
 {: #microsoft-windows-8-building-the-project }

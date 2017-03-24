@@ -167,7 +167,7 @@ Una vez que se confirme la confianza, ninguna aplicación que utilice dicho perf
 {: #installing-the-client-on-a-windows-phone-8-universal-mobile-device }
 Puede instalar el cliente móvil, o cualquier aplicación firmada marcada con el indicador de programa de instalación, en Windows 8 Universal especificando la URL de acceso en el navegador, especificando las credenciales, y completando los pasos necesarios. Se debe preinstalar la cuenta de la empresa en el dispositivo móvil.
 
-Para poder instalar aplicaciones publicadas por su empresa, debe añadir la cuenta de la empresa al dispositivo móvil. Debe descargar una señal de inscripción de aplicación (AET) en el dispositivo Windows Phone. Esta AET ya debe estar presente en el {{site.data.keys.mf_server }}. Se carga en el {{site.data.keys.mf_server }} mediante la consola de Application Center. Consulte [Señales de inscripción de aplicación en Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) para obtener más detalles.
+Para poder instalar aplicaciones publicadas por su empresa, debe añadir la cuenta de la empresa al dispositivo móvil. Debe descargar una señal de inscripción de aplicación (AET) en el dispositivo Windows Phone. Esta AET ya debe estar presente en el {{ site.data.keys.mf_server }}. Se carga en el {{ site.data.keys.mf_server }} mediante la consola de Application Center. Consulte [Señales de inscripción de aplicación en Windows 8 Universal](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal) para obtener más detalles.
 
 1. Inicie el navegador en el dispositivo móvil.
 2. Especifique la siguiente URL de acceso en el campo de texto de dirección: `http://hostname:portnumber/applicationcenter/installers.html`.
@@ -541,7 +541,7 @@ Las versiones nuevas de la aplicación del cliente móvil que están disponibles
 
 Si se ha detectado una versión posterior de la aplicación, se le solicitará que descargue e instale la versión posterior.
 
-La actualización automática de la aplicación cliente de Application Center está habilitada de forma predeterminada con la propiedad **appCenterAutoUpgrade** establecida en **true**. Esta propiedad está ubicada en el proyecto {{site.data.keys.product_full }} para el Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
+La actualización automática de la aplicación cliente de Application Center está habilitada de forma predeterminada con la propiedad **appCenterAutoUpgrade** establecida en **true**. Esta propiedad está ubicada en el proyecto {{ site.data.keys.product_full }} para el Application Center: **IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**.
 
 Si desea inhabilitar la actualización automática, debe establecer esta propiedad en false y volver a crear el proyecto para las plataformas necesarias.
 

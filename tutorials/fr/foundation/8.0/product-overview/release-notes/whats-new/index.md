@@ -297,7 +297,7 @@ weight: 1
                 </ul>
                 
                 <h4>Modifications du fichier descripteur de l'adaptateur</h4>
-                <p>Le fichier descripteur <b>adapter.xml</b> a été légèrement modifié. Pour plus d'informations sur la structure du fichier descripteur d'adaptateur, voir<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">Tutoriels des adaptateurs</a>.</p>
+                <p>Le fichier descripteur <b>adapter.xml</b> a été légèrement modifié. Pour plus d'informations sur la structure du fichier descripteur d'adaptateur, voir <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/">Tutoriels des adaptateurs</a>.</p>
 
                 <h4>Intégration à l'interface utilisateur Swagger</h4>
                 <p>{{ site.data.keys.mf_server }} intègre désormais l'interface utilisateur Swagger. Pour tout adaptateur, vous pouvez consulter l'API associée en cliquant sur Afficher les documents Swagger dans l'onglet Ressources dans la console {{ site.data.keys.mf_console }}. Cette fonction est disponible uniquement dans les environnements de développement.</p>

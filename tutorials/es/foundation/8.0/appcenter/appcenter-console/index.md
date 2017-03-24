@@ -34,7 +34,7 @@ Utilice la consola de Application Center para:
 * [Cómo añadir una aplicación desde un almacenamiento de aplicaciones públicas](#adding-an-application-from-a-public-app-store)
 * [Propiedades de la aplicación](#application-properties)
 * [Edición de las propiedades de la aplicación](#editing-application-properties)
-* [Actualización de una aplicación móvil en {{site.data.keys.mf_server }} y el Application Center](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
+* [Actualización de una aplicación móvil en {{ site.data.keys.mf_server }} y el Application Center](#upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center)
 * [Descarga de un archivo de aplicación](#downloading-an-application-file)
 
 En la consola de Application Center, puede ver opiniones sobre versiones de la aplicación móvil enviadas por los usuarios.
@@ -99,7 +99,7 @@ Pulse **Aplicaciones** para acceder a Application Management.
 
 ### Application Center está instalado en el perfil de WebSphere Application Server Liberty o en Apache Tomcat
 {: #application-center-installed-on-websphere-application-server-liberty-profile-or-on-apache-tomcat }
-Las instalaciones del Application Center en estos servidores de aplicaciones, durante la instalación de {{site.data.keys.product_full }} con el paquete de IBM Installation Manager, tienen dos usuarios diferentes definidos que puede utilizar para empezar.
+Las instalaciones del Application Center en estos servidores de aplicaciones, durante la instalación de {{ site.data.keys.product_full }} con el paquete de IBM Installation Manager, tienen dos usuarios diferentes definidos que puede utilizar para empezar.
 
 * Usuario con la **demo** de inicio de sesión y la **demo** de contraseña
 * Usuario con la **appcenteradmin** de inicio de sesión y la **admin** de contraseña
@@ -282,13 +282,13 @@ Para editar las propiedades de una aplicación subida:
 
 ![Propiedades de la aplicación para su edición](ac_edit_app_props.jpg)
 
-## Actualización de una aplicación móvil en {{site.data.keys.mf_server }} y en el Application Center
+## Actualización de una aplicación móvil en {{ site.data.keys.mf_server }} y en el Application Center
 {: #upgrading-a-mobile-application-in-mobilefirst-server-and-the-application-center }
-Puede actualizar de forma sencilla aplicaciones móviles desplegadas utilizando una combinación de {{site.data.keys.mf_console }} y del Application Center.
+Puede actualizar de forma sencilla aplicaciones móviles desplegadas utilizando una combinación de {{ site.data.keys.mf_console }} y del Application Center.
 
-El cliente móvil del Application Center debe estar instalado en el dispositivo móvil. La aplicación HelloWorld debe estar instalada en el dispositivo móvil y debe estar conectada a {{site.data.keys.mf_server }} cuando la aplicación está en ejecución.
+El cliente móvil del Application Center debe estar instalado en el dispositivo móvil. La aplicación HelloWorld debe estar instalada en el dispositivo móvil y debe estar conectada a {{ site.data.keys.mf_server }} cuando la aplicación está en ejecución.
 
-Puede utilizar este procedimiento para actualizar aplicaciones Android, iOS y Windows Phone que se han desplegado en {{site.data.keys.mf_server }} y también en el Application Center. En esta tarea, la aplicación HelloWorld versión 1.0 ya está desplegada en {{site.data.keys.mf_server }} y en el Application Center.
+Puede utilizar este procedimiento para actualizar aplicaciones Android, iOS y Windows Phone que se han desplegado en {{ site.data.keys.mf_server }} y también en el Application Center. En esta tarea, la aplicación HelloWorld versión 1.0 ya está desplegada en {{ site.data.keys.mf_server }} y en el Application Center.
 
 Se ha publicado HelloWorld versión 2.0 y desea que los usuarios de la versión 1.0 actualicen a la versión más reciente. Para desplegar la versión nueva de la aplicación:
 
@@ -297,11 +297,11 @@ Se ha publicado HelloWorld versión 2.0 y desea que los usuarios de la versión 
 
     ![Copia del URL externo desde los Detalles de la aplicación](ac_copy_ext_url.jpg)
 
-3. Cuando el URL externo se copia en el portapapeles, abra la {{site.data.keys.mf_console }}.
+3. Cuando el URL externo se copia en el portapapeles, abra la {{ site.data.keys.mf_console }}.
 4. Cambie la regla de acceso de HelloWorld versión 1.0 a "Acceso inhabilitado".
 5. Pegue el URL externo en el campo URL.
 
-    Ejecución del cliente: Cuando un dispositivo móvil se conecta a {{site.data.keys.mf_server }} para intentar ejecutar HelloWorld versión 1.0, se solicitará que el usuario del dispositivo actualice la versión de la aplicación.
+    Ejecución del cliente: Cuando un dispositivo móvil se conecta a {{ site.data.keys.mf_server }} para intentar ejecutar HelloWorld versión 1.0, se solicitará que el usuario del dispositivo actualice la versión de la aplicación.
 
     ![Inhabilitación remota de una versión antigua de una aplicación](ac_remote_disable_app_cli.jpg)
 
