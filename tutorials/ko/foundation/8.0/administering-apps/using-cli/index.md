@@ -7,7 +7,7 @@ weight: 4
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-**mfpadm** 프로그램을 통해 {{site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다. 
+**mfpadm** 프로그램을 통해 {{ site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다. 
 
 #### 다음으로 이동
 {: #jump-to }
@@ -17,12 +17,12 @@ weight: 4
 
 ## 다른 기능과 비교
 {: #comparison-with-other-facilities }
-다음과 같은 방법으로 {{site.data.keys.product_full }}을 사용해 관리 조작을 실행할 수 있습니다. 
+다음과 같은 방법으로 {{ site.data.keys.product_full }}을 사용해 관리 조작을 실행할 수 있습니다. 
 
-* 대화식 {{site.data.keys.mf_console }}
+* 대화식 {{ site.data.keys.mf_console }}
 * mfpadm Ant 태스크
 * **mfpadm** 프로그램
-* {{site.data.keys.product_adj }} 관리 REST 서비스
+* {{ site.data.keys.product_adj }} 관리 REST 서비스
 
 **mfpadm** Ant 태스크, mfpadm 프로그램, REST 서비스는 다음 유스 케이스와 같이 조작을 자동으로 실행하거나 무인 실행하는 경우 유용합니다. 
 
@@ -34,7 +34,7 @@ weight: 4
 
 ## 전제조건
 {: #prerequisites }
-**mfpadm** 도구는 {{site.data.keys.mf_server }} 설치 프로그램을 사용해 설치됩니다. 이 페이지의 나머지 부분에서 **product\_install\_dir**은 {{site.data.keys.mf_server }} 설치 프로그램의 설치 디렉토리를 표시합니다. 
+**mfpadm** 도구는 {{ site.data.keys.mf_server }} 설치 프로그램을 사용해 설치됩니다. 이 페이지의 나머지 부분에서 **product\_install\_dir**은 {{ site.data.keys.mf_server }} 설치 프로그램의 설치 디렉토리를 표시합니다. 
 
 **mfpadm** 명령은 **product\_install\_dir/shortcuts/** 디렉토리에서 스크립트 세트로 제공됩니다. 
 
@@ -44,7 +44,7 @@ weight: 4
 이러한 스크립트는 실행 준비가 되어 있으며 이는 특정 환경 변수가 필요하지 않음을 의미합니다. 환경 변수 **JAVA_HOME**이 설정된 경우 스크립트에서 이를 승인합니다.   
 **mfpadm** 프로그램을 사용하려면 **product\_install\_dir/shortcuts/** 디렉토리를 PATH 환경 변수에 넣거나 각 호출에서 해당 절대 파일 이름을 참조하십시오. 
 
-{{site.data.keys.mf_server }} 설치 프로그램 실행에 대한 자세한 정보는 [IBM Installation Manager 실행](../../installation-configuration/production/installation-manager/)을 참조하십시오. 
+{{ site.data.keys.mf_server }} 설치 프로그램 실행에 대한 자세한 정보는 [IBM Installation Manager 실행](../../installation-configuration/production/installation-manager/)을 참조하십시오. 
 
 #### 다음으로 이동
 {: #jump-to-1 }
@@ -59,7 +59,7 @@ weight: 4
 
 ### **mfpadm** 프로그램 호출
 {: #calling-the-mfpadm-program }
-**mfpadm** 프로그램을 사용하여 {{site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다. 
+**mfpadm** 프로그램을 사용하여 {{ site.data.keys.product_adj }} 애플리케이션을 관리할 수 있습니다. 
 
 #### 구문
 {: #syntax }
@@ -73,9 +73,9 @@ mfpadm --url= --user= ... [--passwordfile=...] [--secure=false] some command
 
 | 옵션	| 유형 | 설명 | 필수 여부 | 기본값 | 
 |-----------|------|-------------|----------|---------|
-| --url | 	 | URL | 관리 서비스에 사용되는 {{site.data.keys.product_adj }} 웹 애플리케이션의 기본 URL | 예 | | 
+| --url | 	 | URL | 관리 서비스에 사용되는 {{ site.data.keys.product_adj }} 웹 애플리케이션의 기본 URL | 예 | | 
 | --secure	 | 부울 | 보안 위험이 있는 조작을 수행하지 않을지 여부 | 아니오 | true | 
-| --user	 | 이름 | {{site.data.keys.product_adj }} 관리 서비스에 액세스하는 데 사용되는 사용자 이름 | 예 |  | 	 
+| --user	 | 이름 | {{ site.data.keys.product_adj }} 관리 서비스에 액세스하는 데 사용되는 사용자 이름 | 예 |  | 	 
 | --passwordfile | 파일 | 사용자의 비밀번호가 있는 파일 | 아니오 | 
 | --timeout	     | 숫자  | 전체 REST 서비스 액세스의 제한시간(초) | 아니오 | 	 
 | --connect-timeout | 숫자 | 네트워크 연결 설정의 제한시간(초) | 아니오 |
@@ -222,7 +222,7 @@ rlwrap가 작동하지 않거나 필요 없는 환경에서는 `--no-readline` �
 구성 파일은 Java **.properties** 구문에서 현재 로케일로 인코딩된 텍스트 파일입니다. 기본 구성 파일은 다음과 같습니다. 
 
 * UNIX: **${HOME}/.mfpadm.config**
-* Windows: **{{site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
+* Windows: **{{ site.data.keys.prod_server_data_dir_win }}\mfpadm.config**
 
 **참고:** `--configfile` 옵션을 지정하지 않는 경우 대화식 모드와 구성 명령에서만 기본 구성 파일이 사용됩니다. 기타 명령을 비대화식으로 사용하는 경우 구성 파일을 사용하려면 명시적으로 구성 파일을 지정해야 합니다. 
 
@@ -255,7 +255,7 @@ mfpadm 프로그램에서 생성하는 일반 출력은 현재 로케일의 인�
 
 ### 일반 구성에 대한 명령
 {: #commands-for-general-configuration }
-**mfpadm** 프로그램을 호출할 때 IBM {{site.data.keys.mf_server }} 또는 런타임의 글로벌 구성에 액세스하는 여러 명령을 포함할 수 있습니다. 
+**mfpadm** 프로그램을 호출할 때 IBM {{ site.data.keys.mf_server }} 또는 런타임의 글로벌 구성에 액세스하는 여러 명령을 포함할 수 있습니다. 
 
 #### `show global-config` 명령
 {: #the-show-global-config-command }
@@ -275,7 +275,7 @@ mfpadm 프로그램에서 생성하는 일반 출력은 현재 로케일의 인�
 show global-config
 ```
 
-이 명령은 [글로벌 구성(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Global Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_global_configuration_get.html?view=kc#Global-Configuration--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
 #### `show user-config` 명령
@@ -302,7 +302,7 @@ show global-config
 show user-config mfp
 ```
 
-이 명령은 [런타임 구성(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Runtime Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_get.html?view=kc#Runtime-Configuration--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
 #### `set user-config` 명령
@@ -338,7 +338,7 @@ set user-config mfp myconfig.json
 set user-config mfp timeout = 240
 ```
 
-이 명령은 [런타임 구성(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Runtime configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_configuration_put.html?view=kc#Runtime-configuration--PUT-) REST 서비스를 기반으로 합니다. 
 
 <br/>
 #### `show confidential-clients` 명령
@@ -365,7 +365,7 @@ set user-config mfp timeout = 240
 show confidential-clients --xml mfp
 ```
 
-이 명령은 [기밀 클라이언트(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc#Confidential-Clients--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Confidential Clients (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_get.html?view=kc#Confidential-Clients--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
 #### `set confidential-clients` 명령
@@ -387,7 +387,7 @@ show confidential-clients --xml mfp
 set confidential-clients mfp clients.xml
 ```
 
-이 명령은 [기밀 클라이언트(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST 서비스를 기반으로 합니다. 
 
 <br/>
 #### `set confidential-clients-rule` 명령
@@ -412,7 +412,7 @@ set confidential-clients mfp clients.xml
 set confidential-clients-rule mfp push Push lOa74Wxs "**"
 ```
 
-이 명령은 [기밀 클라이언트(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Confidential Clients (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_confidential_clients_put.html?view=kc#Confidential-Clients--PUT-) REST 서비스를 기반으로 합니다. 
 
 ### 어댑터에 대한 명령
 {: #commands-for-adapters }
@@ -442,7 +442,7 @@ set confidential-clients-rule mfp push Push lOa74Wxs "**"
 list adapters mfp
 ```
 
-이 명령은 [어댑터(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapters_get.html?view=kc#Adapters--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
 #### `deploy adapter` 명령
@@ -464,7 +464,7 @@ list adapters mfp
 deploy adapter mfp MyAdapter.adapter
 ```
 
-이 명령은 [어댑터(POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Adapter (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_post.html?view=kc#Adapter--POST-) REST 서비스를 기반으로 합니다. 
 
 <br/>
 #### `show adapter` 명령
@@ -492,7 +492,7 @@ deploy adapter mfp MyAdapter.adapter
 show adapter mfp MyAdapter
 ```
 
-이 명령은 [어댑터(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Adapter (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_get.html?view=kc#Adapter--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
 #### `delete adapter` 명령
@@ -514,7 +514,7 @@ show adapter mfp MyAdapter
 delete adapter mfp MyAdapter
 ```
 
-이 명령은 [어댑터(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_delete.html?view=kc#Adapter--DELETE-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Adapter (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_delete.html?view=kc#Adapter--DELETE-) REST 서비스를 기반으로 합니다. 
 
 <br/>
 #### `adapter` 명령 접두부
@@ -545,7 +545,7 @@ delete adapter mfp MyAdapter
 adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 ```
 
-이 명령은 [런타임 자원 내보내기(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 서비스를 기반으로 합니다. 
+이 명령은 [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 서비스를 기반으로 합니다. 
 
 <br/>
 #### `adapter show user-config` 명령
@@ -566,7 +566,7 @@ adapter mfp MyAdapter get binary > /tmp/MyAdapter.adapter
 adapter mfp MyAdapter show user-config
 ```
 
-이 명령은 [어댑터 구성(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Adapter Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_adapter_configuration_get.html?view=kc#Adapter-Configuration--GET-) REST 서비스를 기반으로 합니다. 
 
 <br/>
 #### `adapter set user-config` 명령
@@ -630,7 +630,7 @@ adapter mfp MyAdapter set user-config timeout = 240
 list apps mfp
 ```
 
-이 명령은 [애플리케이션(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_applications_get.html?view=kc#Applications--GET-) REST 서비스를 기반으로 합니다. 
 
 #### `deploy app` 명령
 {: #the-deploy-app-command }
@@ -651,7 +651,7 @@ list apps mfp
 deploy app mfp MyApp/application-descriptor.json
 ```
 
-이 명령은 [애플리케이션(POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST 서비스를 기반으로 합니다. 
 
 #### `show app` 명령
 {: #the-show-app-command }
@@ -678,7 +678,7 @@ deploy app mfp MyApp/application-descriptor.json
 show app mfp MyApp
 ```
 
-이 명령은 [애플리케이션(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_get.html?view=kc#Application--GET-) REST 서비스를 기반으로 합니다. 
 
 #### `delete app` 명령
 {: #the-delete-app-command }
@@ -699,7 +699,7 @@ show app mfp MyApp
 delete app mfp MyApp
 ```
 
-이 명령은 [애플리케이션 버전(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST 서비스를 기반으로 합니다. 
 
 #### `show app version` 명령
 {: #the-show-app-version-command }
@@ -728,7 +728,7 @@ delete app mfp MyApp
 show app version mfp MyApp iPhone 1.1
 ```
 
-이 명령은 [애플리케이션 버전(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application Version (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_get.html?view=kc#Application-Version--GET-) REST 서비스를 기반으로 합니다. 
 
 #### `delete app version` 명령
 {: #the-delete-app-version-command }
@@ -751,7 +751,7 @@ show app version mfp MyApp iPhone 1.1
 delete app version mfp MyApp iPhone 1.1
 ```
 
-이 명령은 [애플리케이션 버전(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application Version (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_version_delete.html?view=kc#Application-Version--DELETE-) REST 서비스를 기반으로 합니다. 
 
 #### `app` 명령 접두부
 {: #the-app-command-prefix }
@@ -780,7 +780,7 @@ delete app version mfp MyApp iPhone 1.1
 app mfp MyApp show license-config
 ```
 
-이 명령은 [애플리케이션 라이센스 구성(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application license configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration_get.html?view=kc) REST 서비스를 기반으로 합니다. 
 
 #### `app set license-config` 명령
 {: #the-app-set-license-config-command }
@@ -801,7 +801,7 @@ app mfp MyApp show license-config
 app mfp MyApp iPhone 1.1 set license-config B2E APPLICATION
 ```
 
-이 명령은 [애플리케이션 라이센스 구성(POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application License Configuration (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_license_configuration__post.html?view=kc) REST 서비스를 기반으로 합니다. 
 
 #### `app delete license-config` 명령
 {: #the-app-delete-license-config-command }
@@ -815,7 +815,7 @@ app mfp MyApp iPhone 1.1 set license-config B2E APPLICATION
 app mfp MyApp iPhone 1.1 delete license-config
 ```
 
-이 명령은 [라이센스 구성(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST 서비스를 기반으로 합니다. 
+이 명령은 [License configuration (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_license_configuration_delete.html?view=kc#License-configuration--DELETE-) REST 서비스를 기반으로 합니다. 
 
 #### `app version` 명령 접두부
 {: #the-app-version-command-prefix }
@@ -846,7 +846,7 @@ app mfp MyApp iPhone 1.1 delete license-config
 app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descriptor.json
 ```
 
-이 명령은 [애플리케이션 디스크립터(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application Descriptor (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST 서비스를 기반으로 합니다. 
 
 #### `app version get web-resources` 명령
 {: #the-app-version-get-web-resources-command }
@@ -866,7 +866,7 @@ app version mfp MyApp iPhone 1.1 get descriptor > /tmp/MyApp-application-descrip
 app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 ```
 
-이 명령은 [웹 자원 검색(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Retrieve Web Resource (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_retrieve_web_resource_get.html?view=kc#Retrieve-Web-Resource--GET-) REST 서비스를 기반으로 합니다. 
 
 #### `app version set web-resources` 명령
 {: #the-app-version-set-web-resources-command }
@@ -885,7 +885,7 @@ app version mfp MyApp iPhone 1.1 get web-resources > /tmp/MyApp-web.zip
 app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 ```
 
-이 명령은 [웹 자원 배치(POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Deploy a web resource (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_a_web_resource_post.html?view=kc#Deploy-a-web-resource--POST-) REST 서비스를 기반으로 합니다. 
 
 #### `app version get authenticity-data` 명령
 {: #the-app-version-get-authenticity-data-command }
@@ -904,7 +904,7 @@ app version mfp MyApp iPhone 1.1 set web-resources /tmp/MyApp-web.zip
 app version mfp MyApp iPhone 1.1 get authenticity-data > /tmp/MyApp.authenticity_data
 ```
 
-이 명령은 [런타임 자원 내보내기(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 서비스를 기반으로 합니다. 
+이 명령은 [Export runtime resources (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_export_runtime_resources_get.html?view=kc) REST 서비스를 기반으로 합니다. 
 
 #### `app version set authenticity-data` 명령
 {: #the-app-version-set-authenticity-data-command }
@@ -932,7 +932,7 @@ app version mfp MyApp iPhone 1.1 set authenticity-data MyApp.ipa
 app version mfp MyApp android 1.1 set authenticity-data MyApp.apk
 ```
 
-이 명령은 [애플리케이션 인증 데이터 배치(POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST 서비스를 기반으로 합니다. 
+이 명령은 [Deploy Application Authenticity Data (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_application_authenticity_data_post.html?view=kc) REST 서비스를 기반으로 합니다. 
 
 #### `app version delete authenticity-data` 명령
 {: #the-app-version-delete-authenticity-data-command }
@@ -946,7 +946,7 @@ app version mfp MyApp android 1.1 set authenticity-data MyApp.apk
 app version mfp MyApp iPhone 1.1 delete authenticity-data
 ```
 
-이 명령은 [애플리케이션 인증(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application Authenticity (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_authenticity_delete.html?view=kc) REST 서비스를 기반으로 합니다. 
 
 #### `app version show user-config` 명령
 {: #the-app-version-show-user-config-command }
@@ -966,7 +966,7 @@ app version mfp MyApp iPhone 1.1 delete authenticity-data
 app version mfp MyApp iPhone 1.1 show user-config
 ```
 
-이 명령은 [애플리케이션 구성(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application Configuration (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_get.html?view=kc#Application-Configuration--GET-) REST 서비스를 기반으로 합니다. 
 
 ### `app version set user-config` 명령
 {: #the-app-version-set-user-config-command }
@@ -999,7 +999,7 @@ app version mfp MyApp iPhone 1.1 set user-config /tmp/MyApp-config.json
 app version mfp MyApp iPhone 1.1 set user-config timeout = 240
 ```
 
-이 명령은 [애플리케이션 구성(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST 서비스를 기반으로 합니다. 
+이 명령은 [Application Configuration (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_configuration_put.html?view=kc) REST 서비스를 기반으로 합니다. 
 
 ### 디바이스에 대한 명령
 {: #commands-for-devices }
@@ -1034,7 +1034,7 @@ list-devices mfp
 list-devices mfp --query=john
 ```
 
-이 명령은 [디바이스(GET) REST](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) 서비스를 기반으로 합니다. 
+이 명령은 [Devices (GET) REST](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_devices_get.html?view=kc#Devices--GET-) 서비스를 기반으로 합니다. 
 
 #### `remove device` 명령
 {: #the-remove-device-command }
@@ -1055,7 +1055,7 @@ list-devices mfp --query=john
 remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 ```
 
-이 명령은 [디바이스(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Device (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_delete.html?view=kc#Device--DELETE-) REST 서비스를 기반으로 합니다. 
 
 #### `device` 명령 접두부
 {: #the-device-command-prefix }
@@ -1092,7 +1092,7 @@ remove device mfp 496E974CCEDE86791CF9A8EF2E5145B6
 device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED
 ```
 
-이 명령은 [디바이스 상태(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Device Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_status_put.html?view=kc#Device-Status--PUT-) REST 서비스를 기반으로 합니다. 
 
 #### `device set appstatus` 명령
 {: #the-device-set-appstatus-command }
@@ -1119,7 +1119,7 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set status EXPIRED
 device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 ```
 
-이 명령은 [디바이스 애플리케이션 상태(PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Device Application Status (PUT)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_device_application_status_put.html?view=kc#Device-Application-Status--PUT-) REST 서비스를 기반으로 합니다. 
 
 ### 문제점 해결에 대한 명령
 {: #commands-for-troubleshooting }
@@ -1127,7 +1127,7 @@ device mfp 496E974CCEDE86791CF9A8EF2E5145B6 set appstatus MyApp DISABLED
 
 #### `show info` 명령
 {: #the-show-info-command }
-`show info` 명령은 런타임 또는 데이터베이스에 액세스하지 않고 리턴할 수 있는 {{site.data.keys.product_adj }} 관리 서비스에 대한 기본 정보를 표시합니다. 이 명령을 사용하여 {{site.data.keys.product_adj }} 관리 서비스가 실행 중인지 여부를 테스트할 수 있습니다. 
+`show info` 명령은 런타임 또는 데이터베이스에 액세스하지 않고 리턴할 수 있는 {{ site.data.keys.product_adj }} 관리 서비스에 대한 기본 정보를 표시합니다. 이 명령을 사용하여 {{ site.data.keys.product_adj }} 관리 서비스가 실행 중인지 여부를 테스트할 수 있습니다. 
 
 구문: `show info`
 
@@ -1145,10 +1145,10 @@ show info
 
 #### `show versions` 명령
 {: #the-show-versions-command }
-`show versions` 명령은 여러 컴포넌트의 {{site.data.keys.product_adj }} 버전을 표시합니다. 
+`show versions` 명령은 여러 컴포넌트의 {{ site.data.keys.product_adj }} 버전을 표시합니다. 
 
-* **mfpadmVersion**: **mfp-ant-deployer.jar**를 가져온 정확한 {{site.data.keys.mf_server }} 버전 번호입니다. 
-* **productVersion**: **mfp-admin-service.war**를 가져온 정확한 {{site.data.keys.mf_server }} 버전 번호입니다. 
+* **mfpadmVersion**: **mfp-ant-deployer.jar**를 가져온 정확한 {{ site.data.keys.mf_server }} 버전 번호입니다. 
+* **productVersion**: **mfp-admin-service.war**를 가져온 정확한 {{ site.data.keys.mf_server }} 버전 번호입니다. 
 * **mfpAdminVersion**: **mfp-admin-service.war**의 정확한 빌드 버전 번호입니다. 
 
 구문: `show versions`
@@ -1167,7 +1167,7 @@ show versions
 
 #### `show diagnostics` 명령
 {: #the-show-diagnostics-command }
-`show diagnostics` 명령은 {{site.data.keys.product_adj }} 관리 서비스의 올바른 조작에 필요한 여러 컴포넌트의 상태를 표시합니다(예: 데이터베이스와 보조 서비스의 사용 가능성). 
+`show diagnostics` 명령은 {{ site.data.keys.product_adj }} 관리 서비스의 올바른 조작에 필요한 여러 컴포넌트의 상태를 표시합니다(예: 데이터베이스와 보조 서비스의 사용 가능성). 
 
 구문: `show diagnostics`
 
@@ -1216,7 +1216,7 @@ list runtimes
 list runtimes --in-database
 ```
 
-이 명령은 [런타임(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtimes_get.html?view=kc#Runtimes--GET-) REST 서비스를 기반으로 합니다. 
 
 #### `show runtime` 명령
 {: #the-show-runtime-command }
@@ -1236,7 +1236,7 @@ list runtimes --in-database
 |--------|-------------|
 | --xml | 표 형식 출력 대신 XML 출력을 생성합니다.  | 
 
-이 명령은 [런타임(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Runtime (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_get.html?view=kc#Runtime--GET-) REST 서비스를 기반으로 합니다. 
 
 **예제**
 
@@ -1263,7 +1263,7 @@ show runtime mfp
 delete runtime mfp empty
 ```
 
-이 명령은 [런타임(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Runtime (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_runtime_delete.html?view=kc#Runtime--DELETE-) REST 서비스를 기반으로 합니다. 
 
 #### `list farm-members` 명령
 {: #the-list-farm-members-command }
@@ -1289,7 +1289,7 @@ delete runtime mfp empty
 list farm-members mfp
 ```
 
-이 명령은 [팜 토폴로지 멤버(GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST 서비스를 기반으로 합니다. 
+이 명령은 [Farm topology members (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_get.html?view=kc#Farm-topology-members--GET-) REST 서비스를 기반으로 합니다. 
 
 #### `remove farm-member` 명령
 {: #the-remove-farm-member-command }
@@ -1316,4 +1316,4 @@ list farm-members mfp
 remove farm-member mfp srvlx15
 ```
 
-이 명령은 [팜 토폴로지 멤버(DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST 서비스를 기반으로 합니다. 
+이 명령은 [Farm topology members (DELETE)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_farm_topology_members_delete.html?view=kc) REST 서비스를 기반으로 합니다. 

@@ -28,9 +28,9 @@ Android 버전을 빌드하려면 최신 버전의 Android 개발 도구가 있�
 
 ### Apple iOS 운영 체제에 맞는 전제조건
 {: #prerequisites-specific-to-apple-ios-operating-system }
-iPad 및 iPhone용 원시 iOS 버전은 컴파일된 애플리케이션으로 전달되지 않습니다. 애플리케이션은 **IBMAppCenter**라는 {{site.data.keys.product_full }} 프로젝트에서 작성해야 합니다. 이 프로젝트는 **ApplicationCenter/installer** 디렉토리에 배포의 일부로도 전달됩니다. 
+iPad 및 iPhone용 원시 iOS 버전은 컴파일된 애플리케이션으로 전달되지 않습니다. 애플리케이션은 **IBMAppCenter**라는 {{ site.data.keys.product_full }} 프로젝트에서 작성해야 합니다. 이 프로젝트는 **ApplicationCenter/installer** 디렉토리에 배포의 일부로도 전달됩니다. 
 
-iOS 버전을 빌드하려면 적절한 {{site.data.keys.product_full }} 및 Apple 소프트웨어가 있어야 합니다. {{site.data.keys.mf_studio }} 버전은 이 문서의 기반이 되는 {{site.data.keys.mf_server }} 버전과 같아야 합니다. Apple Xcode 버전은 V6.1입니다. 
+iOS 버전을 빌드하려면 적절한 {{ site.data.keys.product_full }} 및 Apple 소프트웨어가 있어야 합니다. {{ site.data.keys.mf_studio }} 버전은 이 문서의 기반이 되는 {{ site.data.keys.mf_server }} 버전과 같아야 합니다. Apple Xcode 버전은 V6.1입니다. 
 
 ### Microsoft Windows Phone 운영 체제에 특정한 전제조건
 {: #prerequisites-specific-to-microsoft-windows-phone-operating-system }
@@ -50,8 +50,8 @@ iOS 버전을 빌드하려면 적절한 {{site.data.keys.product_full }} 및 App
 {: #cordova-based-ibm-appcenter-client }
 Cordova 기반 AppCenter 클라이언트 프로젝트는 **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**의 `install` 디렉토리에 있습니다. 
 
-이 프로젝트는 Cordova 프레임워크만을 기반으로 하므로 {{site.data.keys.product }} 클라이언트/서버 API에 대한 종속성이 없습니다.   
-이 앱은 표준 Cordova 앱이므로 {{site.data.keys.mf_studio }}에 대한 종속성도 없습니다. 이 앱은 UI를 위해 Dojo를 사용합니다. 
+이 프로젝트는 Cordova 프레임워크만을 기반으로 하므로 {{ site.data.keys.product }} 클라이언트/서버 API에 대한 종속성이 없습니다.   
+이 앱은 표준 Cordova 앱이므로 {{ site.data.keys.mf_studio }}에 대한 종속성도 없습니다. 이 앱은 UI를 위해 Dojo를 사용합니다. 
 
 시작하려면 아래 단계를 따르십시오. 
 
@@ -109,7 +109,7 @@ iOS 및 Android용 Cordova 프로젝트를 사용하는 대신에, MobileFirst S
 
 ### 프로젝트 가져오기 및 빌드(Android, iOS, Windows Phone)
 {: #importing-and-building-the-project-android-ios-windows-phone }
-**IBMAppCenter** 프로젝트를 {{site.data.keys.mf_studio }}에 가져온 후 프로젝트를 빌드해야 합니다. 
+**IBMAppCenter** 프로젝트를 {{ site.data.keys.mf_studio }}에 가져온 후 프로젝트를 빌드해야 합니다. 
 
 > **참고:** V8.0.0의 경우 MobileFirst Studio 7.1을 사용하십시오. MobileFirst Studio는 [다운로드 페이지]({{site.baseurl}}/downloads)에서 다운로드할 수 있습니다. 설치 지시사항은 7.1용 IBM Knowledge Center의 [MobileFirst Studio 설치](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)를 참조하십시오.
 
@@ -142,11 +142,11 @@ iOS 모바일 클라이언트 애플리케이션을 서명하는 방법에 대�
 {: #windows-phone-8 }
 MobileFirst Studio는 **IBMAppCenter/apps/AppCenter/windowsphone8/native**에 원시 Windows Phone 8 프로젝트를 생성합니다. **AppCenter.csproj** 파일은 windowsphone8/native 폴더에 있습니다. 이 파일은 Visual Studio 및 Windows Phone 8.0 SDK를 사용하여 컴파일해야 하는 Visual Studio 프로젝트입니다. 
 
-애플리케이션은 Windows Phone 8.0 및 8.1 디바이스에서 실행될 수 있도록 Windows Phone 8.0 SDK로 빌드됩니다. 결과가 이전의 Windows Phone 8.0 디바이스에서 실행되지 않기 때문에 Windows Phone 8.1 SDK로는 빌드되지 않습니다. 
+애플리케이션은 Windows Phone 8.0 및 8.1 디바이스에서 [Windows Phone 8.0 SDK](https://www.microsoft.com/en-in/download/details.aspx?id=35471)로 빌드됩니다. 결과가 이전의 Windows Phone 8.0 디바이스에서 실행되지 않기 때문에 Windows Phone 8.1 SDK로는 빌드되지 않습니다. 
 
-Visual Studio 2013을 설치하면 Windows Phone 8.1 SDK 외에 8.0 SDK 설치도 선택할 수 있습니다. Windows Phone 8.0 SDK는 [Windows Phone SDK 아카이브](https://dev.windows.com/en-us/develop/download-phone-sdk)에서도 사용할 수 있습니다. 
+Visual Studio 2013을 설치하면 Windows Phone 8.1 SDK 외에 8.0 SDK 설치도 선택할 수 있습니다. Windows Phone 8.0 SDK는 [Windows Phone SDK 아카이브](https://developer.microsoft.com/en-us/windows/downloads/sdk-archive)에서도 사용할 수 있습니다. 
 
-Windows Phone 모바일 클라이언트 애플리케이션을 빌드하고 서명하는 방법에 대해 자세히 알아보려면 [Windows Phone Dev Center](http://dev.windowsphone.com/en-us)를 참조하십시오. 
+Windows Phone 모바일 클라이언트 애플리케이션을 빌드하고 서명하는 방법에 대해 자세히 알아보려면 [Windows Phone Dev Center](https://developer.microsoft.com/en-us)를 참조하십시오. 
 
 #### Microsoft Windows 8: 프로젝트 빌드
 {: #microsoft-windows-8-building-the-project }
