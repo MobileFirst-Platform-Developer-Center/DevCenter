@@ -8,7 +8,7 @@ weight: 9
 ## Overview
 {: #overview }
 
-To properly secure your application, enable the predefined {{ site.data.keys.product_adj }} application-authenticity [security check](../#security-check) (`appAuthenticity`). When enabled, this check validates the authenticity of the application before providing it with any services. Applications in production environment should have this feature enabled.
+To properly secure your application, enable the predefined {{ site.data.keys.product_adj }} application-authenticity [security check](../#security-checks) (`appAuthenticity`). When enabled, this check validates the authenticity of the application before providing it with any services. Applications in production environment should have this feature enabled.
 
 To enable application authenticity, you can either follow the on-screen instructions in the **{{ site.data.keys.mf_console }}** → **[your-application]** → **Authenticity**, or review the information below.
 
