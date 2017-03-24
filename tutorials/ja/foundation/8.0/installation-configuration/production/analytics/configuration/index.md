@@ -98,7 +98,7 @@ WebSphere Application Server の JNDI プロパティーは、環境変数とし
 | analytics/replicas_per_shard | クラスターのシャードごとのレプリカの数。この値は、実行中のクラスターで動的に変更可能です。  | 0 |
 | analytics/masternodes | マスター適格ノードのホスト名とポートを含むコンマ区切りのストリング。 | なし |
 | analytics/clustername | クラスターの名前。同じサブセットで動作する複数のクラスターを設定する予定で、それらを一意的に識別する必要がある場合は、この値を設定します。 | worklight |
-| analytics/nodename | クラスター内のノードの名前。 | ランダムに生成したストリング
+| analytics/nodename | クラスター内のノードの名前。 | ランダムに生成されたストリング
 | analytics/datapath | ファイル・システムで分析データが保存されるパス。 | ./analyticsData |
 | analytics/settingspath | Elasticsearch 設定ファイルのパス。詳しくは、Elasticsearch を参照してください。 | なし |
 | analytics/transportport | ノード間の通信に使用されるポート。 | 9600 |

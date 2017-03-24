@@ -28,9 +28,9 @@ Android バージョンをビルドするには、Android 開発ツールの最�
 
 ### Apple iOS オペレーティング・システム固有の前提条件
 {: #prerequisites-specific-to-apple-ios-operating-system }
-iPad および iPhone のネイティブ iOS バージョンはコンパイル済みアプリケーションとして配信されません。**IBMAppCenter** という名前の {{site.data.keys.product_full }} プロジェクトからそのアプリケーションを作成する必要があります。このプロジェクトは、**ApplicationCenter/installer** ディレクトリーの配布の一部としても配信されます。
+iPad および iPhone のネイティブ iOS バージョンはコンパイル済みアプリケーションとして配信されません。**IBMAppCenter** という名前の {{ site.data.keys.product_full }} プロジェクトからそのアプリケーションを作成する必要があります。このプロジェクトは、**ApplicationCenter/installer** ディレクトリーの配布の一部としても配信されます。
 
-iOS バージョンをビルドするには、適切な {{site.data.keys.product_full }} および Apple ソフトウェアが必要です。{{site.data.keys.mf_studio }} のバージョンは、この資料の基礎となっている {{site.data.keys.mf_server }} のバージョンと同じでなければなりません。Apple Xcode のバージョンは V6.1 です。
+iOS バージョンをビルドするには、適切な {{ site.data.keys.product_full }} および Apple ソフトウェアが必要です。{{ site.data.keys.mf_studio }} のバージョンは、この資料の基礎となっている {{ site.data.keys.mf_server }} のバージョンと同じでなければなりません。Apple Xcode のバージョンは V6.1 です。
 
 ### Microsoft Windows Phone オペレーティング・システム固有の前提条件
 {: #prerequisites-specific-to-microsoft-windows-phone-operating-system }
@@ -50,8 +50,8 @@ iOS バージョンをビルドするには、適切な {{site.data.keys.product
 {: #cordova-based-ibm-appcenter-client }
 Cordova ベースの AppCenter クライアント・プロジェクトは、**install_dir/ApplicationCenter/installer/CordovaAppCenterClient** の `install` ディレクトリーにあります。
 
-このプロジェクトは、Cordova フレームワークのみに基づいており、{{site.data.keys.product }} クライアント/サーバー API にまったく依存していません。  
-これは標準 Cordova アプリケーションであるため、{{site.data.keys.mf_studio }} にも依存していません。このアプリケーションは、UI には Dojo を使用します。
+このプロジェクトは、Cordova フレームワークのみに基づいており、{{ site.data.keys.product }} クライアント/サーバー API にまったく依存していません。  
+これは標準 Cordova アプリケーションであるため、{{ site.data.keys.mf_studio }} にも依存していません。このアプリケーションは、UI には Dojo を使用します。
 
 以下の手順に従って開始してください。
 
@@ -109,7 +109,7 @@ iOS および Android 用の Cordova プロジェクトを使用する代わり�
 
 ### プロジェクトのインポートとビルド (Android、iOS、Windows Phone)
 {: #importing-and-building-the-project-android-ios-windows-phone }
-**IBMAppCenter** プロジェクトを {{site.data.keys.mf_studio }} にインポートし、インポートしたプロジェクトをビルドする必要があります。
+**IBMAppCenter** プロジェクトを {{ site.data.keys.mf_studio }} にインポートし、インポートしたプロジェクトをビルドする必要があります。
 
 > **注:** V8.0.0 の場合は、MobileFirst Studio 7.1 を使用してください。MobileFirst Studio は[「ダウンロード」ページ]({{site.baseurl}}/downloads)からダウンロードできます。インストール手順については、7.1 の IBM Knowledge Center の [MobileFirst Studio のインストール](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)を参照してください。
 
@@ -142,11 +142,11 @@ iOS モバイル・クライアント・アプリケーションに署名する�
 {: #windows-phone-8 }
 MobileFirst Studio は、ネイティブの Windows Phone 8 プロジェクトを **IBMAppCenter/apps/AppCenter/windowsphone8/native** に生成します。**AppCenter.csproj** ファイルが windowsphone8/native フォルダーに入っています。このファイルは、Visual Studio および Windows Phone 8.0 SDK を使用してコンパイルを行う必要がある Visual Studio プロジェクトです。
 
-このアプリケーションは、Windows Phone 8.0 および 8.1 のデバイスで実行できるように、Windows Phone 8.0 SDK でビルドされています。Windows Phone 8.1 SDK でビルドすると、それより前の Windows Phone 8.0 のデバイスでは実行できなくなるため、Windows Phone 8.1 SDK ではビルドされていません。
+このアプリケーションは、Windows Phone 8.0 および 8.1 のデバイスで実行できるように、[Windows Phone 8.0 SDK](https://www.microsoft.com/en-in/download/details.aspx?id=35471) でビルドされています。Windows Phone 8.1 SDK でビルドすると、それより前の Windows Phone 8.0 のデバイスでは実行できなくなるため、Windows Phone 8.1 SDK ではビルドされていません。
 
-Visual Studio 2013 をインストールすると、Windows Phone 8.1 SDK に加えて 8.0 SDK のインストールを選択できるようになります。Windows Phone 8.0 SDK は、[Windows Phone SDK Archives](https://dev.windows.com/en-us/develop/download-phone-sdk) からも入手可能です。
+Visual Studio 2013 をインストールすると、Windows Phone 8.1 SDK に加えて 8.0 SDK のインストールを選択できるようになります。Windows Phone 8.0 SDK は、[Windows Phone SDK Archives](https://developer.microsoft.com/en-us/windows/downloads/sdk-archive) からも入手可能です。
 
-Windows Phone モバイル・クライアント・アプリケーションをビルドして、それに署名する方法についてさらに学ぶためには、[Windows Phone Dev Center](http://dev.windowsphone.com/en-us) を参照してください。
+Windows Phone モバイル・クライアント・アプリケーションをビルドして、それに署名する方法についてさらに学ぶためには、[Windows Phone Dev Center](https://developer.microsoft.com/en-us) を参照してください。
 
 #### Microsoft Windows 8: プロジェクトのビルド
 {: #microsoft-windows-8-building-the-project }
