@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 在 Bluemix 服务上使用 Mobile Foundation
-breadcrumb_title: Mobile Foundation service
+breadcrumb_title: Mobile Foundation 服务
 relevantTo: [ios,android,windows,javascript]
 weight: 1
 ---
@@ -16,9 +16,9 @@ weight: 1
 1. **Developer**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mf_server }} 作为 Cloud Foundry 应用程序。此计划不支持使用外部数据库或定义多个节点*，并且仅限于开发和测试*。服务器实例支持您注册任意数量的移动应用程序用于开发和测试。
 
     > **注：**“Developer”计划不提供持续性数据库，因此请务必备份配置，如[“故障诊断”部分中](#troubleshooting)所述。
-2. **Developer Pro**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mf_server }} 作为 Cloud Foundry 应用程序，并且允许用户开发和测试任意数量的移动应用程序。此计划要求您具有 **dashDB OLTP 服务**。dashDB 服务单独创建和计费。（可选）您可以添加 {{ site.data.keys.mf_analytics_server }} ，并将其部署在 IBM Container 上。Container 费用单独计费。此计划大小受限，并且旨在用于基于团队的开发和测试活动，不可用于生产活动。费用取决于环境的总规模。
+2. **Developer Pro**：此计划在 Liberty for Java 运行时上提供 {{ site.data.keys.mf_server }} 作为 Cloud Foundry 应用程序，并且允许用户开发和测试任意数量的移动应用程序。此计划要求您具有 **dashDB OLTP 服务**。dashDB 服务单独创建和计费。（可选）您可以添加 {{ site.data.keys.mf_analytics_server }}，并将其部署在 IBM Container 上。Container 费用单独计费。此计划大小受限，并且旨在用于基于团队的开发和测试活动，不可用于生产活动。费用取决于环境的总规模。
 
-3. **Professional Per Capacity：**此计划允许用户在生产环境中构建、测试和运行任意数量的移动应用程序，不限制移动用户或设备数量。它支持大型部署和高可用性。此计划要求您具有 **dashDB OLTP 服务**。dashDB 服务单独创建和计费。（可选）您可以添加 {{ site.data.keys.mf_analytics_server }} ，并将其部署在 IBM Container 上。Container 费用单独计费。费用取决于环境的总规模。
+3. **Professional Per Capacity：**此计划允许用户在生产环境中构建、测试和运行任意数量的移动应用程序，不限制移动用户或设备数量。它支持大型部署和高可用性。此计划要求您具有 **dashDB OLTP 服务**。dashDB 服务单独创建和计费。（可选）您可以添加 {{ site.data.keys.mf_analytics_server }}，并将其部署在 IBM Container 上。Container 费用单独计费。费用取决于环境的总规模。
 
 4. **Professional 1 Application**：此计划在 Liberty for Java 运行时上的可扩展 Cloud Foundry 应用程序中提供 {{ site.data.keys.mf_server }}。此计划也需要 dashDB 数据库服务，此服务单独创建并计费。此计划允许用户构建和管理单个移动应用程序。单个移动应用程序可包含多种类型，例如，iOS、Android、Windows 和 Mobile Web。
 
@@ -122,7 +122,7 @@ weight: 1
 
 ## 添加 {{ site.data.keys.mf_analytics_short }} 支持
 {: #adding-analytics-support }
-您可以通过单击服务的“仪表板”页面中的**添加分析**将 {{ site.data.keys.mf_analytics }} 支持添加到自己的 {{ site.data.keys.mf_bm_short }} 服务实例中。此操作会为 IBM Container 提供 {{ site.data.keys.mf_analytics_server }}  的实例。
+您可以通过单击服务的“仪表板”页面中的**添加分析**将 {{ site.data.keys.mf_analytics }} 支持添加到自己的 {{ site.data.keys.mf_bm_short }} 服务实例中。此操作会为 IBM Container 提供 {{ site.data.keys.mf_analytics_server }} 的实例。
 
 * 使用 **Developer** 计划时，此操作还会自动将 {{ site.data.keys.mf_analytics_short }} 服务实例与 {{ site.data.keys.mf_server }} 实例挂钩。  
 * 使用 **Developer Pro**、**Professional Per Capacity** 或 **Proffessional1 Application** 计划时，此操作将需要您额外输入以完成选择：可用节点数量、可用内存和存储容量。

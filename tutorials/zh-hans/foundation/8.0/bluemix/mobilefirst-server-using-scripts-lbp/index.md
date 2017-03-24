@@ -89,8 +89,7 @@ weight: 3
                             <li><b>registry.xml</b> - 用户注册表配置。basicRegistry - 将基于 XML 的基本用户注册表配置作为缺省值提供。可以为 basicRegistry 配置用户名和密码，或者也可以配置 ldapRegistry。</li>
                         </ul>
                     </li>
-                    <li><b>env</b> 文件夹：包含用于服务器初始化 (server.env) 和定制 JVM 选项 (jvm.options) 的环境属性。
-		    <br/>
+                    <li><b>env</b> 文件夹：包含用于服务器初始化 (server.env) 和定制 JVM 选项 (jvm.options) 的环境属性。<br/>
                     </li>
 
                     <li><b>security</b> 文件夹：用于存储密钥存储库、信任库和 LTPA 密钥文件 (ltpa.keys)。</li>
@@ -106,8 +105,7 @@ weight: 3
 
 ## 设置 {{ site.data.keys.mf_server }}
 {: #setting-up-the-mobilefirst-server }
-您可以选择以交互方式运行这些脚本，或者通过使用配置文件来运行脚本：
-最好以交互方式运行一次脚本，这也将记录自变量 (**recorded-args**)。稍后，您可以使用自变量文件以非交互方式运行脚本。
+您可以选择以交互方式运行这些脚本，或者通过使用配置文件来运行脚本：最好以交互方式运行一次脚本，这也将记录自变量 (**recorded-args**)。稍后，您可以使用自变量文件以非交互方式运行脚本。
 
 > **注：**不记录密码，您将需要在自变量文件中手动添加密码。
 
@@ -133,7 +131,7 @@ weight: 3
               <h4>initenv.properties</h4>
               此文件包含用于运行环境初始化的属性。
               <h4>prepareserverdbs.properties</h4>
-              The {{ site.data.keys.mf_bm_short }} 服务需要外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional 数据库实例</a>（标记为 OLTP 或 Transactional 的所有套餐）。<br/>
+              {{ site.data.keys.mf_bm_short }} 服务需要外部 <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="\_blank">dashDB Enterprise Transactional 数据库实例</a>（标记为 OLTP 或 Transactional 的所有套餐）。<br/>
               <b>注：</b>dashDB Enterprise Transactional 套餐的部署针对标记为“按使用量收费”的套餐立即生效。请确保选择合适的套餐之一，如 <i>Enterprise for Transactions High Availability 2.8.500 (Pay per use)</i> <br/><br/>
               在设置 dashDB 实例后，请提供所需自变量。
 
@@ -192,16 +190,17 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% highlight bash %}
 ./prepareserverdbs.sh --help
 {% endhighlight %}
-
 </li>
                   <li><b>initenv.sh（可选）- 登录 Bluemix</b><br />
                       仅当在除提供 dashDB 服务实例的组织和空间以外的其他组织和空间内需要创建服务器时，才需要执行此步骤。如果情况如此，请使用必须在其中创建和启动新组织和空间的容器来更新 initenv.properties，然后重新运行 <b>initenv.sh</b> 脚本：
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
+
 </li>
                   <li><b>prepareserver.sh - 准备 {{ site.data.keys.mf_server }}</b><br />
-                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。要查看已登录的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code><br/>
+                    运行 <b>prepareserver.sh</b> 脚本以构建 {{ site.data.keys.mf_server }} 并将其推送到 Bluemix 作为 Cloud Foundry 应用程序。要查看已登录的组织和空间内的所有 Cloud Foundry 应用程序及其 URL，请运行：<code>cf apps</code>
+<br/>
 
 
 {% highlight bash %}
@@ -219,7 +218,6 @@ prepareserver.sh --name APP_NAME
 {% highlight bash %}
 ./prepareserver.sh --help
 {% endhighlight %}                  
-
 </li>
                   <li><b>startserver.sh - 启动服务器</b><br />
                   <b>startserver.sh</b> 脚本用于在 Liberty for Java Cloud Foundry 应用程序上启动 {{ site.data.keys.mf_server }}。请运行：<p/>
@@ -279,8 +277,7 @@ prepareserver.sh --name APP_NAME
 ## 应用 {{ site.data.keys.mf_server }} 修订
 {: #applying-mobilefirst-server-fixes }
 Bluemix上的 {{ site.data.keys.mf_server }} 的临时修订可从 [IBM Fix Central](http://www.ibm.com/support/fixcentral) 获取。  
-应用临时修订之前，请备份现有的配置文件。配置文件位于 
-**package_root/mfpf-server-libertyapp/usr** 文件夹中。
+应用临时修订之前，请备份现有的配置文件。配置文件位于 **package_root/mfpf-server-libertyapp/usr** 文件夹中。
 
 1. 下载临时修订归档并将内容解压缩到现有安装文件夹，覆盖现有文件。
 2. 将备份配置文件复原至 **/mfpf-server-libertyapp/usr** 文件夹，覆盖新安装的配置文件。
