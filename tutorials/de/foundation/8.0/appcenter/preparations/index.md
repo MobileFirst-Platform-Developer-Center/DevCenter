@@ -194,18 +194,17 @@ MobileFirst Studio generiert ein natives Windows-Phone-8-Projekt in **IBMAppCent
 Die Datei **AppCenter.csproj** befindet sich im Ordner windowsphone8/native. Diese Datei ist das
 Visual-Studio-Projekt, das Sie mit Visual Studio und dem SDK für Windows Phone 8.0 kompilieren müssen.
 
-Die Anwendung wird mit dem SDK für Windows Phone 8.0 erstellt, sodass sie auf
-Geräten mit Windows Phone 8.0 und 8.1 ausgeführt werden kann. Sie wird nicht mit dem SDK für
+Die Anwendung wird mit dem [SDK für Windows Phone 8.0](https://www.microsoft.com/en-in/download/details.aspx?id=35471) erstellt, sodass sie auf Geräten mit Windows Phone 8.0 und 8.1 ausgeführt werden kann. Sie wird nicht mit dem SDK für
 Windows Phone 8.1 erstellt, weil sie dann nicht auf älteren Geräten mit
 Windows Phone 8.0 ausgeführt werden könnte. 
 
 Wenn Sie
 Visual Studio 2013 installiert haben, können Sie zusätzlich zum SDK für Windows
 Phone 8.1 das SDK von Version 8.0 zur Installation auswählen. Das SDK für Windows Phone 8.0
-ist auch unter [Windows Phone SDK Archives](https://dev.windows.com/en-us/develop/download-phone-sdk) verfügbar.
+ist auch unter [Windows Phone SDK Archives](https://developer.microsoft.com/en-us/windows/downloads/sdk-archive) verfügbar.
 
 Im
-[Windows Phone Dev Center](http://dev.windowsphone.com/en-us) erfahren Sie, wie die mobile
+[Windows Phone Dev Center](https://developer.microsoft.com/en-us) erfahren Sie, wie die mobile
 Windows-Phone-Clientanwendung erstellt und signiert wird.
 
 #### Projektbuild für Microsoft Windows 8 erstellen

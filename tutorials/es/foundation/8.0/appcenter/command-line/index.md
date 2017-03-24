@@ -141,7 +141,7 @@ java com.ibm.appcenter.Upload -clearLdapCache -s http://localhost:9080 -c applic
 Puede utilizar las herramientas de carga y de supresión como una tarea Ant y utilizar la tarea Ant en su propio script Ant.  
 Se necesita Apache Ant para ejecutar estas tareas. La versión mínima soportada de Apache Ant está listada en [Requisitos del sistema](../../product-overview/requirements).
 
-Por comodidad, Apache Ant 1.8.4 está incluido en {{site.data.keys.mf_server }}. En el directorio product_install_dir/shortcuts/, se proporcionan los scripts siguientes:
+Por comodidad, Apache Ant 1.8.4 está incluido en {{ site.data.keys.mf_server }}. En el directorio product_install_dir/shortcuts/, se proporcionan los scripts siguientes:
 
 * ant for UNIX / Linux
 * ant.bat for Windows

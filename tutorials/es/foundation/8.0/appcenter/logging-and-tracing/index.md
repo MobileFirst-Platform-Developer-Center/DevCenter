@@ -10,7 +10,7 @@ weight: 6
 {: #overview }
 Puede configurar los parámetros de registro y rastreo para determinados servidores de aplicaciones y utilizar propiedades JNDI para controlar la salida en todos los servidores de aplicaciones soportados.
 
-Puede configurar niveles de registro y el archivo de salida para operaciones de rastreo de Application Center de formas que sean específicas de servidores de aplicaciones determinados. Además, {{site.data.keys.product_full }} proporciona propiedades de Java Naming and Directory Interface (JNDI) para controlar el formateo y la redirección de la salida de rastreo, y para imprimir las sentencias SQL generadas.
+Puede configurar niveles de registro y el archivo de salida para operaciones de rastreo de Application Center de formas que sean específicas de servidores de aplicaciones determinados. Además, {{ site.data.keys.product_full }} proporciona propiedades de Java Naming and Directory Interface (JNDI) para controlar el formateo y la redirección de la salida de rastreo, y para imprimir las sentencias SQL generadas.
 
 #### Ir a
 {: #jump-to }
@@ -24,13 +24,13 @@ Puede configurar niveles de registro y el archivo de salida para operaciones de 
 Puede establecer los niveles de registro y el archivo de salida para las operaciones de rastreo en el servidor de aplicaciones.
 
 Al intentar diagnosticar problemas en Application Center
-(u otros componentes de {{site.data.keys.product }}),
+(u otros componentes de {{ site.data.keys.product }}),
 es importante poder ver los mensajes de registro. Para imprimir los mensajes de registro legibles en los archivos de registro, debe especificar los valores aplicables como propiedades de máquina virtual Java (JVM).
 
 1. Abra la consola de administración de WebSphere Application Server.
 2. Seleccione **Resolución de problemas → Registros y rastreo**.
 3. En **Registro y rastreo**, seleccione el servidor de aplicaciones adecuado y a continuación seleccione **Cambiar niveles de detalle de rastreo**.
-4. Seleccione los paquetes y su correspondiente nivel de detalle. Este ejemplo permite el registro para {{site.data.keys.product }}, incluido Application Center, con el nivel **FINEST** (equivalente a **ALL**).
+4. Seleccione los paquetes y su correspondiente nivel de detalle. Este ejemplo permite el registro para {{ site.data.keys.product }}, incluido Application Center, con el nivel **FINEST** (equivalente a **ALL**).
 
 ```xml
 com.ibm.puremeap.*=all
@@ -41,7 +41,7 @@ com.worklight.*=all
 Donde:
 
 * **com.ibm.puremeap.*** es para Application Center.
-* **com.ibm.worklight.*** y **com.worklight.*** son para otros componentes de {{site.data.keys.product_adj }}.
+* **com.ibm.worklight.*** y **com.worklight.*** son para otros componentes de {{ site.data.keys.product_adj }}.
 
 Los rastreos se envían a un archivo denominado **trace.log**, no a **SystemOut.log** o a **SystemErr.log**.
 
@@ -51,7 +51,7 @@ Puede establecer los niveles de registro y el archivo de salida para las operaci
 
 Al intentar diagnosticar problemas en el servidor de aplicaciones, es importante poder ver los mensajes de registro. Para imprimir los mensajes de registro legibles en los archivos de registro, debe especificar los valores aplicables. 
 
-Para habilitar el registro para {{site.data.keys.product }}, incluido Application Center, con el nivel FINEST (equivalente a ALL), añada una línea al archivo server.xml. Por ejemplo:
+Para habilitar el registro para {{ site.data.keys.product }}, incluido Application Center, con el nivel FINEST (equivalente a ALL), añada una línea al archivo server.xml. Por ejemplo:
 
 ```xml
 <logging traceSpecification="com.ibm.puremeap.*=all:com.ibm.worklight.*=all:com.worklight.*=all"/>
@@ -69,7 +69,7 @@ Puede establecer los niveles de registro y el archivo de salida para las operaci
 
 Al intentar diagnosticar problemas en el servidor de aplicaciones, es importante poder ver los mensajes de registro. Para imprimir los mensajes de registro legibles en los archivos de registro, debe especificar los valores aplicables. 
 
-Para habilitar el registro para {{site.data.keys.product }}, incluido Application Center, con el nivel **FINEST** (equivalente a **ALL**), edite el archivo **conf/logging.properties**. Por ejemplo, añada líneas similares a las siguientes:
+Para habilitar el registro para {{ site.data.keys.product }}, incluido Application Center, con el nivel **FINEST** (equivalente a **ALL**), edite el archivo **conf/logging.properties**. Por ejemplo, añada líneas similares a las siguientes:
 
 ```xml
 com.ibm.puremeap.level = ALL
