@@ -296,7 +296,7 @@ WL.JSONStore.get(collectionName)
 });
 ```
 
-#### Pull - get new data from an adapter
+#### Pull - アダプターからの新規データの取得
 {: #pull-get-new-data-from-an-adapter }
 ```javascript
 var collectionName = 'people';
@@ -707,7 +707,7 @@ NSArray* dirtyDocs = [people allDirtyAndReturnError:&error];
 int numCleaned = [[people markDocumentsClean:dirtyDocs error:&error] intValue];
 ```
 
-#### Pull - get new data from an adapter
+#### Pull - アダプターからの新規データの取得
 {: #ios-pull-get-new-data-from-an-adapter }
 ```objc
 // Get the accessor to an already initialized collection.
@@ -1127,7 +1127,7 @@ try {
 }
 ```
 
-#### Pull - get new data from an adapter
+#### Pull - アダプターからの新規データの取得
 {: #android-pull-get-new-data-from-an-adapter }
 ```java
 // Fill in the blank to get the Android application context.
