@@ -29,9 +29,9 @@ Appcenter Installer 应用程序用于在移动设备上安装应用程序。您
 
 ### iOS 操作系统特定的先决条件
 {: #prerequisites-specific-to-apple-ios-operating-system }
-iPad 和 iPhone 的本机 iOS 版本不采用已编译应用程序的形式交付。必须从名为 **IBMAppCenter** 的 {{ site.data.keys.product_full }}    项目创建该应用程序。此项目还作为 **ApplicationCenter/installer** 目录中的分发版的一部分进行交付。
+iPad 和 iPhone 的本机 iOS 版本不采用已编译应用程序的形式交付。必须从名为 **IBMAppCenter** 的 {{ site.data.keys.product_full }} 项目创建该应用程序。此项目还作为 **ApplicationCenter/installer** 目录中的分发版的一部分进行交付。
 
-要构建 iOS 版本，您必须具有相应的 {{ site.data.keys.product_full }}    和 Apple 软件。{{ site.data.keys.mf_studio }}    的版本必须与此文档基于的 {{ site.data.keys.mf_server }}    版本相同。Apple Xcode 版本为 V6.1。
+要构建 iOS 版本，您必须具有相应的 {{ site.data.keys.product_full }} 和 Apple 软件。{{ site.data.keys.mf_studio }} 的版本必须与此文档基于的 {{ site.data.keys.mf_server }} 版本相同。Apple Xcode 版本为 V6.1。
 
 ### Microsoft Windows Phone 操作系统特定的先决条件
 {: #prerequisites-specific-to-microsoft-windows-phone-operating-system }
@@ -49,8 +49,8 @@ Windows 8 版本的移动式客户机作为 .zip 归档文件包含在其中。*
 {: #cordova-based-ibm-appcenter-client }
 基于 Cordova 的 AppCenter 客户机项目位于`安装`目录中：**install_dir/ApplicationCenter/installer/CordovaAppCenterClient**。
 
-此项目仅基于 Cordova 框架，因此不依赖于 {{ site.data.keys.product }}    客户机/服务器 API。  
-由于这是标准 Cordova 应用程序，所以也不依赖于 {{ site.data.keys.mf_studio }}   。此应用程序针对 UI 使用 Dojo。
+此项目仅基于 Cordova 框架，因此不依赖于 {{ site.data.keys.product }} 客户机/服务器 API。  
+由于这是标准 Cordova 应用程序，所以也不依赖于 {{ site.data.keys.mf_studio }}。此应用程序针对 UI 使用 Dojo。
 
 请执行以下步骤以开始操作：
 
@@ -106,10 +106,10 @@ cordova build ios
 
 ### 导入并构建项目（Android、iOS 和 Windows Phone）
 {: #importing-and-building-the-project-android-ios-windows-phone }
-您必须将 **IBMAppCenter** 项目导入到 {{ site.data.keys.mf_studio }}    ，然后构建项目。
+您必须将 **IBMAppCenter** 项目导入到 {{ site.data.keys.mf_studio }} ，然后构建项目。
 
-> **注：**对于 V8.0.0，请使用 MobileFirst Studio 7.1。您可以从[下载页面]({{site.baseurl}}/downloads)下载 MobileFirst Studio。有关安装指示信息，请参阅 7.1 的 IBM Knowledge Center 中的[安装 MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)。
-1. 选择**文件 → 导入**。
+> **注：**对于 V8.0.0，请使用 MobileFirst Studio 7.
+1. 您可以从[下载页面]({{site.baseurl}}/downloads)下载 MobileFirst Studio。有关安装指示信息，请参阅 7.1 的 IBM Knowledge Center 中的[安装 MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)。1. 选择**文件 → 导入**。
 2. 选择**常规 → 将现有项目导入到工作空间中**。
 3. 在下一个页面上，选择**选择根目录**，然后找到 **IBMAppCenter** 项目的根目录。
 4. 选择 **IBMAppCenter** 项目。
@@ -141,12 +141,12 @@ MobileFirst Studio 在 **IBMAppCenter/apps/AppCenter/iphone/native** 中生成�
 MobileFirst Studio 在 **IBMAppCenter/apps/AppCenter/windowsphone8/native** 中生成本机 Windows Phone 8 项目。**AppCenter.csproj** 文件位于 windowsphone8/native 文件夹中。该文件是必须使用 Visual Studio 和 Windows Phone 8.0 SDK 进行编译的 Visual Studio 项目。
 
 
-该应用程序是使用 Windows Phone 8.0 SDK 构建的，因此它可以在 Windows Phone 8.0 和 8.1 设备上运行。该应用程序不是使用 Windows Phone 8.1 SDK 构建的，因为使用它构建会导致无法在早期的 Windows Phone 8.0 设备上运行。
+该应用程序是使用 [Windows Phone 8.0 SDK](https://www.microsoft.com/en-in/download/details.aspx?id=35471) 构建的，因此它可以在 Windows Phone 8.0 和 8.1 设备上运行。该应用程序不是使用 Windows Phone 8.1 SDK 构建的，因为使用它构建会导致无法在早期的 Windows Phone 8.0 设备上运行。
 
 通过安装 Visual Studio 2013，您可以选择在安装 8.1 SDK 外还安装 Windows Phone 8.0 SDK。Windows Phone
-8.0 SDK 也可以从 [Windows Phone SDK Archives](https://dev.windows.com/en-us/develop/download-phone-sdk) 中获取。
+8.0 SDK 也可以从 [Windows Phone SDK Archives](https://developer.microsoft.com/en-us/windows/downloads/sdk-archive) 中获取。
 
-请参阅 [Windows Phone 开发中心](http://dev.windowsphone.com/en-us)，以了解有关如何构建和签署 Windows Phone 移动式客户机应用程序的更多信息。
+请参阅 [Windows Phone 开发中心](https://developer.microsoft.com/en-us)，以了解有关如何构建和签署 Windows Phone 移动式客户机应用程序的更多信息。
 
 #### Microsoft Windows 8：构建项目
 {: #microsoft-windows-8-building-the-project }
