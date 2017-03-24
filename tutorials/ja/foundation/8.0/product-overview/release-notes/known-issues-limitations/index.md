@@ -20,11 +20,7 @@ weight: 4
 グローバル化されたアプリケーションを開発している場合は、以下の制約事項が適用されます。
 
 * 部分的な翻訳: {{ site.data.keys.product }} v8.0 製品の一部 (資料を含む) は、中国語 (簡体字)、中国語 (繁体字)、フランス語、ドイツ語、イタリア語、日本語、韓国語、ポルトガル語 (ブラジル)、ロシア語、およびスペイン語に翻訳されています。ユーザーが直接目にするテキストが翻訳されています。
-* 双方向言語サポート: {{ site.data.keys.product }}によって生成された
-アプリケーションでは、完全な双方向が使用できるようにはなっていません。グラフィック・ユーザー・インターフェース
-(GUI) 要素の反映とテキスト方向の制御は、デフォルトでは提供されません。
-ただし、生成されたアプリケーションは、この制限に強く依存しているわけではありません。開発者は、生成されたコードを手動で調整することによって、完全な双方向準拠を達成することができます。
-
+* 双方向言語サポート: {{ site.data.keys.product }}によって生成されたアプリケーションでは、完全な双方向が使用できるようにはなっていません。グラフィック・ユーザー・インターフェース (GUI) 要素の反映とテキスト方向の制御は、デフォルトでは提供されません。ただし、生成されたアプリケーションは、この制限に強く依存しているわけではありません。開発者は、生成されたコードを手動で調整することによって、完全な双方向準拠を達成することができます。
 
 ヘブライ語への翻訳は、{{ site.data.keys.product }} の中核機能に用意されていますが、反映されない GUI 要素があります。
 
@@ -58,7 +54,6 @@ weight: 4
 
 
 ### {{ site.data.keys.mf_app_center_full }} モバイル・クライアント
-
 {: #ibm-mobilefirst-foundation-application-center-mobile-client }
 Application Center モバイル・クライアントは、稼働しているデバイスの国/地域別情報 (日付の形式など) に従います。より厳密な International Components for Unicode (ICU) 規則に常に従うわけではありません。
 
@@ -118,8 +113,7 @@ Android 4.0.x WebView コンポーネントでは、最新表示に関してい�
 
 ### Application Center では Application Center モバイル・クライアントのインポートとビルドに MobileFirst Studio V7.1が必要
 {: #application-center-requires-mobilefirst-studio-v71-for-importing-and-building-the-application-center-mobile-client }
-Application Center モバイル・クライアントをビルドするには、MobileFirst Studio V7.1 が必要です。MobileFirst Studio は[「ダウンロード」ページ]({{site.baseurl}}/downloads)からダウンロードできます。**「Previous MobileFirst
-Platform Foundation releases」**タブをクリックすると、ダウンロード・リンクが表示されます。インストール手順については、7.1 の IBM Knowledge Center 内の 『[MobileFirst Studio のインストール](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)』を参照してください。Application Center モバイル・クライアントのビルドについて詳しくは、『[モバイル・クライアントを使用するための準備](../../../appcenter/preparations)』を参照してください。
+Application Center モバイル・クライアントをビルドするには、MobileFirst Studio V7.1 が必要です。MobileFirst Studio は[「ダウンロード」ページ]({{site.baseurl}}/downloads)からダウンロードできます。**「Previous MobileFirst Platform Foundation releases」**タブをクリックすると、ダウンロード・リンクが表示されます。インストール手順については、7.1 の IBM Knowledge Center 内の 『[MobileFirst Studio のインストール](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)』を参照してください。Application Center モバイル・クライアントのビルドについて詳しくは、『[モバイル・クライアントを使用するための準備](../../../appcenter/preparations)』を参照してください。
 
 ### Application Center と Microsoft Windows Phone 8.1
 {: #application-center-and-microsoft-windows-phone-81 }
@@ -127,8 +121,7 @@ Application Center は、Microsoft Windows Phone 8.0 および Microsoft Windows
 
 Application Center は、Microsoft Windows Store (デスクトップ・アプリケーション) の場合にのみ、アプリケーション・パッケージ (.appx) ファイルの配布をサポートします。
 
-### Ant またはコマンド・ラインを使用した {{ site.data.keys.product_adj }}
-アプリケーションの管理
+### Ant またはコマンド・ラインを使用した {{ site.data.keys.product_adj }} アプリケーションの管理
 {: #administering-mobilefirst-applications-through-ant-or-through-the-command-line }
 {{ site.data.keys.mf_dev_kit_full }} のみをダウンロードしてインストールした場合、**mfpadm** ツールは使用できません。mfpadm ツールは、インストーラーで、{{ site.data.keys.mf_server }} と共にインストールされます。
 
@@ -146,8 +139,7 @@ Windows でのダイレクト・アップデートは、V8.0.0 ではサポー�
 * この FIPS 140-2 検証モードは、JSONStore 機能によって保管されたローカル・データの保護 (暗号化)、および {{ site.data.keys.product_adj }} クライアントと {{ site.data.keys.mf_server }} の間の HTTPS 通信の保護にのみ適用されます。
     * HTTPS 通信の場合、{{ site.data.keys.product_adj }} クライアントと {{ site.data.keys.mf_server }} の間の通信のみが、クライアントで FIPS 140-2 ライブラリーを使用します。その他のサーバーまたはサービスへの直接接続では、FIPS 140-2 ライブラリーを使用しません。
 * この機能は、iOS および Android プラットフォームでのみサポートされます。
-    * Android では、この機能は、x86 または armeabi アーキテクチャーを使用するデバイスまたはシミュレーターでのみサポートされます。armv5 または armv6 アーキテクチャーを使用する Android ではサポートされません。これは、使用される OpenSSL ライブラリーが、Android の armv5 または armv6 のための FIPS 140-2 検証を取得していないためです。{{ site.data.keys.product_adj }} ライブラリーは 64 ビット・アーキテクチャーをサポートしていますが、
-FIPS 140-2 は 64 ビット・アーキテクチャーではサポートされていません。FIPS 140-2 を 64 ビットのデバイス上で実行できるのは、プロジェクトに 32 ビットのネイティブ NDK ライブラリーのみが含まれる場合です。
+    * Android では、この機能は、x86 または armeabi アーキテクチャーを使用するデバイスまたはシミュレーターでのみサポートされます。armv5 または armv6 アーキテクチャーを使用する Android ではサポートされません。これは、使用される OpenSSL ライブラリーが、Android の armv5 または armv6 のための FIPS 140-2 検証を取得していないためです。{{ site.data.keys.product_adj }} ライブラリーは 64 ビット・アーキテクチャーをサポートしていますが、 FIPS 140-2 は 64 ビット・アーキテクチャーではサポートされていません。FIPS 140-2 を 64 ビットのデバイス上で実行できるのは、プロジェクトに 32 ビットのネイティブ NDK ライブラリーのみが含まれる場合です。
     * iOS では、i386、x86_64、armv7、armv7s、および arm64 アーキテクチャーでサポートされます。
 * この機能は、ハイブリッド・アプリケーションのみで機能します (ネイティブ・アプリケーションでは機能しません)。
 * ネイティブ iOS の場合、FIPS は iOS FIPS ライブラリーを通じて有効になります。これはデフォルトで有効になっています。FIPS 140-2 を有効にするために、アクションは必要ありません。
@@ -166,9 +158,7 @@ Windows ネイティブ・アプリケーションでは、JSON ストアはサ�
 
 ### Liberty サーバーの制限
 {: #liberty-server-limitations }
-32 ビット JDK 7 で Liberty サーバーを使用すると、Eclipse が開始しない場合があります。そして、次のエラーを受信する場合があります。"Error occurred during initialization of VM. Could not reserve enough space
-for object heap. Error: Could not create the Java Virtual Machine.
-Error: A fatal exception has occurred. Program will exit."
+32 ビット JDK 7 で Liberty サーバーを使用すると、Eclipse が開始しない場合があります。そして、次のエラーを受信する場合があります。"Error occurred during initialization of VM. Could not reserve enough space for object heap. Error: Could not create the Java Virtual Machine. Error: A fatal exception has occurred. Program will exit."
 
 この問題を修正するには、64 ビット Windows と 64 ビット Eclipse の環境で 64 ビット JDK を使用してください。64 ビット・コンピューターで 32 ビット JDK を使用する場合は、JVM の設定を **mx512m** と **-Xms216m** に構成する場合があります。
 
@@ -198,13 +188,13 @@ Windows Phone 8.1 環境では、x64 アーキテクチャーはサポートさ�
 {: #nested-projects-can-result-in-unpredictable-results-with-the-cli }
 {{ site.data.keys.mf_cli }} を使用しているときには、プロジェクトが互いの内部に入るようにネストさせないでください。そのようにネストしている場合、影響を受けるプロジェクトが、予期したものではない可能性があります。
 
-### {{ site.data.keys.mf_mbs }} を使用した Cordova Web リソースのプレビュー{: #previewing-cordova-web-resources-with-the-mobile-browser-simulator }
+### {{ site.data.keys.mf_mbs }} を使用した Cordova Web リソースのプレビュー
+{: #previewing-cordova-web-resources-with-the-mobile-browser-simulator }
 {{ site.data.keys.mf_mbs }} で Web リソースをプレビューすることができますが、そのシミュレーターですべての {{ site.data.keys.product_adj }} JavaScript API がサポートされているわけではありません。特に、OAuth プロトコルは完全にはサポートされていません。ただし、`WLResourceRequest` を使用したアダプターの呼び出しをテストすることはできます。
 
 ### 拡張アプリケーション認証性のテストには物理 iOS デバイスが必要
 {: #physical-ios-device-required-for-testing-extended-app-authenticity }
-拡張アプリケーション認証性機能のテストには、物理 iOS デバイスが必要です。
-これは、iOS シミュレーターに IPA をインストールできないためです。
+拡張アプリケーション認証性機能のテストには、物理 iOS デバイスが必要です。これは、iOS シミュレーターに IPA をインストールできないためです。
 
 ### {{ site.data.keys.mf_server }} による Oracle 12c のサポート
 {: #support-of-oracle-12c-by-mobilefirst-server }

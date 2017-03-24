@@ -191,7 +191,8 @@ prepareserverdbs.sh --admindb MFPDashDBService
 {% highlight bash %}
 ./prepareserverdbs.sh --help
 {% endhighlight %}
-</li>
+
+                  </li>
                   <li><b>initenv.sh(Optional) – Bluemix へのログイン</b><br />
                       このステップは、dashDB サービス・インスタンスが使用可能になっている組織およびスペースとは別の組織およびスペースにサーバーを作成する必要がある場合にのみ必須です。この条件に当てはまる場合は、コンテナーを作成 (および開始) する必要のある新しい組織およびスペースの情報で initenv.properties を更新し、次のように <b>initenv.sh</b> スクリプトを再実行します。
 {% highlight bash %}
@@ -217,7 +218,8 @@ prepareserver.sh --name APP_NAME
 {% highlight bash %}
 ./prepareserver.sh --help
 {% endhighlight %}                  
-</li>
+
+                  </li>
                   <li><b>startserver.sh - サーバーの始動</b><br />
                   <b>startserver.sh</b> スクリプトを使用して {{ site.data.keys.mf_server }} を Liberty for Java の Cloud Foundry アプリケーション上で始動します。 次のコマンドを実行します。<p/>
 {% highlight bash %}
