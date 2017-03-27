@@ -123,8 +123,8 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                     </li>
                     <li><b>env</b> フォルダー: サーバーの初期化に使用される環境プロパティー (server.env) およびカスタム JVM オプション (jvm.options) が含まれています。</li>
                     
-                    <br />
-                <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
+                    <br/>
+                    <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="server-env">
                                 <h4 class="panel-title">
@@ -208,7 +208,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                     </table>
                                     
                     				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>セクションを閉じる</b></a>
                                 </div>
                             </div>
                         </div>
@@ -245,7 +245,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                     </table>
                                     
                     				<br/>
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#analytics-env" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>Close section</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#analytics-env" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>セクションを閉じる</b></a>
                                 </div>
                             </div>
                         </div>
@@ -259,8 +259,8 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                     <li><b>wxs</b> フォルダー ({{ site.data.keys.mf_server }} 用のみ): データ・キャッシュをサーバーの属性ストアとして使用する場合に、データ・キャッシュ / extreme-scale クライアント・ライブラリーが含まれます。</li>
                 </ul>
 				<br/>
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>Close section</b></a>
-            </div>
+                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#zip-file" data-target="#collapse-zip-file" aria-expanded="false" aria-controls="collapse-zip-file"><b>セクションを閉じる</b></a>
+                                </div>
         </div>
     </div>
 </div>
@@ -407,7 +407,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
 
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>Close section</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-initenv" data-target="#collapse-script-analytics-initenv" aria-expanded="false" aria-controls="collapse-script-analytics-initenv"><b>セクションを閉じる</b></a>
                                     </div>
                                 </div>
                             </div>
@@ -449,7 +449,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namespace/mfpfanalytics80
 {% endhighlight %}
 
-                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>Close section</b></a>
+                                      <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-prepareanalytics" data-target="#collapse-script-analytics-prepareanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-prepareanalytics"><b>セクションを閉じる</b></a>
                                   </div>
                               </div>
                           </div>
@@ -550,7 +550,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                         startanalytics.sh --tag image_tag_name --name container_name --ip container_ip_address
                         {% endhighlight %}
 
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalytics" data-target="#collapse-script-analytics-startanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-startanalytics"><b>Close section</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalytics" data-target="#collapse-script-analytics-startanalytics" aria-expanded="false" aria-controls="collapse-script-analytics-startanalytics"><b>セクションを閉じる</b></a>
                                     </div>
                                 </div>
                             </div>
@@ -645,7 +645,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 startanalyticsgroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
 {% endhighlight %}
 
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>Close section</b></a>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-analytics-startanalyticsgroup" data-target="#collapse-script-analytics-startanalyticsgroup" aria-expanded="false" aria-controls="collapse-script-analytics-startanalyticsgroup"><b>セクションを閉じる</b></a>
                                     </div>
                                 </div>
                             </div>
@@ -689,7 +689,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                     <li><b>RUNTIME_DB_SRV_NAME - </b>ランタイム・データを保管するための dashDB サービス・インスタンス名。デフォルトは admin のサービス名です。</li>
                     <li><b>RUNTIME_SCHEMA_NAME - </b>ランタイム・データ用のスキーマ名。デフォルトは MFPDATA です。</li>
                     <b>注:</b> dashDB サービス・インスタンスを多数のユーザーが共有している場合は、必ず固有のスキーマ名を指定してください。
-                </ul><br />
+                </ul><br/>
                 <h4>prepareserver.properties</h4>
                 <ul>
                   <li><b>SERVER_IMAGE_TAG - </b>当該イメージのタグ。<em>registry-url/namespace/your-tag</em> の形式でなければなりません。</li>
@@ -699,9 +699,9 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                     <li><b>SERVER_IMAGE_TAG - </b><em>prepareserver.sh</em> で指定するものと同じ。</li>
                     <li><b>SERVER_CONTAINER_NAME - </b>ご使用の Bluemix コンテナーの名前。</li>
                     <li><b>SERVER_IP - </b>Bluemix コンテナーのバインド先とする IP アドレス。<br/>
-                  IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code><br/>
-                  IP アドレスは、スペース内の複数のコンテナーで再使用できます。<br/>
-                  既に割り当て済みの IP アドレスがある場合は、次のコマンドを実行できます。<code>cf ic ip list</code></li>
+                    IP アドレスを割り当てるには、次のコマンドを実行します。<code>cf ic ip request</code><br/>
+                    IP アドレスは、スペース内の複数のコンテナーで再使用できます。<br/>
+                    既に割り当て済みの IP アドレスがある場合は、次のコマンドを実行できます。<code>cf ic ip list</code></li>
                     <li><b>MFPF_PROPERTIES - </b>コンマ区切り (<b>スペースなし</b>) の {{ site.data.keys.mf_server }} JNDI プロパティー。ここで、次のように分析関連のプロパティーを定義します。<code>MFPF_PROPERTIES=mfp/mfp.analytics.url:http://ANALYTICS-CONTAINER-IP:9080/analytics-service/rest,mfp/mfp.analytics.console.url:http://ANALYTICS-CONTAINER-IP:9080/analytics/console,mfp/mfp.analytics.username:ANALYTICS_USERNAME,mfp/mfp.analytics.password:ANALYTICS_PASSWORD</code></li>
                 </ul>
                 <h4>startservergroup.properties</h4>
@@ -776,7 +776,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
                     
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Close section</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>セクションを閉じる</b></a>
                                 </div>
                             </div>
                         </div>
@@ -834,7 +834,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
                                     
-                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>セクションを閉じる</b></a>
                                 </div>
                             </div>
                         </div>
@@ -848,7 +848,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
 
                 </li>
                 <li><b>prepareserver.sh - {{ site.data.keys.mf_server }} イメージの準備</b><br />
-                     {{ site.data.keys.mf_server }} イメージをビルドし、これを Bluemix リポジトリーにプッシュするため、<b>prepareserver.sh</b> スクリプトを実行します。Bluemix リポジトリー内にある使用可能なすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
+                    {{ site.data.keys.mf_server }} イメージをビルドし、これを Bluemix リポジトリーにプッシュするため、<b>prepareserver.sh</b> スクリプトを実行します。Bluemix リポジトリー内にある使用可能なすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
                     リストには、イメージ名、作成日、および ID が表示されます。<br/>
                   
 {% highlight bash %}
@@ -882,8 +882,8 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% endhighlight %}
                                   
                                   <br/>
-                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Close section</b></a>
-                              </div>
+                                  <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>セクションを閉じる</b></a>
+                                </div>
                           </div>
                         </div>
                     </div>  
@@ -968,8 +968,8 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
 {% endhighlight %}
                                 
                                 <br/>
-                                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Close section</b></a>
-                            </div>
+                                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>セクションを閉じる</b></a>
+                                </div>
                         </div>
                     </div>
                 <li><b>startservergroup.sh - IBM コンテナー・グループでのイメージの実行</b><br />
@@ -1064,8 +1064,8 @@ startservergroup.sh --tag image_name --name container_group_name --host containe
 {% endhighlight %}
                                         
                                         <br/>
-                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Close section</b></a>
-                                    </div>
+                                        <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>セクションを閉じる</b></a>
+                                </div>
                                 </div>
                             </div>
                         </div>
