@@ -24,7 +24,7 @@ IBM MobileFirst Foundation バージョン 6.2.0 以降で作成された既存�
 
 | 機能 | Cordova アプリケーション<br/>(IBM {{ site.data.keys.product }} v8.0 を使用) |	Cordova アプリケーション<br/>(IBM MobileFirst Platform Foundation v7.1 を使用) | MobileFirstハイブリッド<br/>(IBM MobileFirst Platform Foundation V7.1 を使用) |
 |---------|-------|---------|-------|------|
-| **IDE Eclipse Studio** | | | | |	 	 	 
+| **IDE Eclipse Studio** | | | |  	 	 
 | Eclipse プラグインおよび統合 | はい | サポートされない | はい (プロプラエタリー) |
 | アプリケーション・コンポーネント | はい (Cordova)<br/><br/>注: ユーザー独自の Cordova プラグインを作成して、組織のアプリケーション・コンポーネントを管理します。 | はい (Cordova)<br/><br/>注: ユーザー独自の Cordova プラグインを作成して、組織のアプリケーション・コンポーネントを管理します。 | はい (プロプラエタリー) |
 | プロジェクト・テンプレート | はい (Cordova)<br/><br/>注: Apache Cordova `cordova create --template` コマンドを使用します。 | はい (Cordova)<br/><br/>注: `mfp cordova create --template`、または Apache Cordova コマンドの `cordova create --copy-from` を使用します。 | はい (プロプラエタリー) |
@@ -40,7 +40,7 @@ IBM MobileFirst Foundation バージョン 6.2.0 以降で作成された既存�
 | {{ site.data.keys.product_adj }} セキュリティー・フレームワーク | はい | はい | はい |
 | アプリケーション認証性 | はい | はい | はい |
 | 証明書ピン留め | はい | いいえ | はい |
-| JSONStore | はい。 | cordova-plugin-mfp-jsonstore プラグインを使用してください。 | はい | はい |
+| JSONStore | はい。 | cordova-plugin-mfp-jsonstore プラグインを使用してください。 | はい |
 | FIPS 140-2 | はい。cordova-plugin-mfp-fips プラグインを使用してください。<br/><br/>制限: FIPS は、Android および iOS でサポートされます。FIPS は、Windows ではサポートされません。 | いいえ | はい |
 | アプリケーション・バイナリー・ファイル内でのアプリケーションに関連付けられている Web リソースの暗号化 | はい |	いいえ | はい |
 | アプリケーションの実行開始時に毎回チェックサムを使用して行われる Web リソースの整合性検証 | はい | サポートされない | はい |
@@ -48,7 +48,7 @@ IBM MobileFirst Foundation バージョン 6.2.0 以降で作成された既存�
 | 単純データ共有 | いいえ | はい | はい |
 | シングル・サインオン | はい<br/><br/>注: デバイスのシングル・サインオン(SSO) が、新しい定義済みの enableSSO セキュリティー検査アプリケーション記述子構成プロパティーを通じてサポートされるようになりました。 | はい | はい |
 | {{ site.data.keys.product_adj }} アプリケーション・スキン | いいえ<br/><br/>注: さまざまなデバイス画面サイズを検出および処理するには、レスポンシブ Web デザインなどの標準 Web 開発手法を使用してください。 | いいえ<br/><br/>注: さまざまなデバイス画面サイズを検出および処理するには、レスポンシブ Web デザインなどの標準 Web 開発手法を使用してください。 | はい |
-| 環境の最適化 | はい (Cordova)。 |  merges ディレクトリーを使用して、プラットフォームに固有の Web リソースを定義します。 | はい (Cordova)。merges ディレクトリーを使用して、プラットフォームに固有の Web リソースを定義します。詳しくは、Apache Cordova 資料の『Using Merges to Customize Each Platform』を参照してください。 | はい (プロプラエタリー) |
+| 環境の最適化 | はい (Cordova)。 |  merges ディレクトリーを使用して、プラットフォームに固有の Web リソースを定義します。 | はい (Cordova)。merges ディレクトリーを使用して、プラットフォームに固有の Web リソースを定義します。詳しくは、Apache Cordova 資料の『Using Merges to Customize Each Platform』を参照してください。 | 
 | プッシュ通知 | はい。cordova-plugin-mfp-push プラグインを使用してください。<br/><br/>制限: 事前定義の {{ site.data.keys.product_adj }} セキュリティー検査は、push.mobileclient スコープにのみマップできます。カスタム・セキュリティー検査は、JavaScript チャレンジ・ハンドラーが呼び出されないためサポートされません。 | はい<br/><br/>注: Android の場合、cordova-plugin-mfp-push プラグインを追加する必要があります。iOS では、このプラグインは不要です。これは、iOS 用のプッシュ・クライアント・サイド・サポートがコア mfp プラグインに含まれているためです。 | はい |
 | Cordova プラグイン管理 | はい | はい | いいえ |
 | メッセージ (国際化対応) | はい | はい | はい |
