@@ -1,6 +1,6 @@
 ---
 layout: tutorial
-title: Server-side Development
+title: Desenvolvimento do lado do servidor
 show_disqus: false
 use_dropdown: false
 print_pdf: false
@@ -9,7 +9,7 @@ indexed: false
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-O desenvolvimento do lado do servidor fornece as ferramentas e funcionalidades necessárias para conectar um aplicativo ao {{site.data.keys.mf_server }} ou fornecer conteúdo a um aplicativo a partir de sistemas corporativos de backend e serviços de nuvem. A autenticação e a segurança estão intimamente ligadas ao desenvolvimento do lado do servidor e também devem ser revisadas.
+O desenvolvimento do lado do servidor fornece as ferramentas e funcionalidades necessárias para conectar um aplicativo ao {{ site.data.keys.mf_server }} ou fornecer conteúdo a um aplicativo a partir de sistemas corporativos de backend e serviços de nuvem. A autenticação e a segurança estão intimamente ligadas ao desenvolvimento do lado do servidor e também devem ser revisadas.
 
 <form role="searchbox"  aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
     <div class="input-group add-on">
