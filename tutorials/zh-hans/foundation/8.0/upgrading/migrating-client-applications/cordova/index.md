@@ -24,7 +24,7 @@ weight: 1
 
 | 功能 | 使用 IBM <br/>{{ site.data.keys.product }} v8.0 开发的 Cordova 应用程序 |	使用 IBM<br/>MobileFirst Platform Foundation V7.1 开发的 Cordova 应用程序 | 使用 IBM<br/>MobileFirst Platform Foundation V7.1 开发的混合应用程序 |
 |---------|-------|---------|-------|------|
-| **IDE Eclipse Studio** | | | | |	 	 	 
+| **IDE Eclipse Studio** | | | |  	 	 
 | Eclipse 插件和集成 | 是 | 不支持 | 是（专用） |
 | 应用程序组件 | 是 (Cordova)<br/><br/>注：创建您自己的 Cordova 插件以管理贵组织中的应用程序组件。 | 是 (Cordova)<br/><br/>注：创建您自己的 Cordova 插件以管理贵组织中的应用程序组件。 | 是（专用） |
 | 项目模板 | 是 (Cordova)<br/><br/>注：使用 Apache Cordova `cordova create --template` 命令。 | 是 (Cordova)<br/><br/>注：使用 `mfp cordova create --template` 或 Apache Cordova 命令 `cordova create --copy-from` | 是（专用） |
@@ -40,7 +40,7 @@ weight: 1
 | {{ site.data.keys.product_adj }}安全框架 | 是 | 是 | 是 |
 | 应用程序真实性 | 是 | 是 | 是 |
 | 证书锁定 | 是 | 否 | 是 |
-| JSONStore | 是。 | 使用 cordova-plugin-mfp-jsonstore 插件。 | 是 | 是 |
+| JSONStore | 是。 | 使用 cordova-plugin-mfp-jsonstore 插件。 | 是 |
 | FIPS 140-2 | 是。使用 cordova-plugin-mfp-fips 插件。<br/><br/>限制：Android 和 iOS 都支持 FIPS。Windows 不支持 FIPS。 | 否 | 是 |
 | 加密与应用程序二进制文件中应用程序关联的 Web 资源 | 是 |	否 | 是 |
 | 每次应用程序开始运行时，使用校验和验证 Web 资源的完整性 | 是 | 不支持 | 是 |
@@ -48,7 +48,7 @@ weight: 1
 | 简单数据共享 | 否 | 是 | 是 |
 | 单点登录 | 是<br/><br/>注：现在，可通过新的预定义 enableSSO 安全性检查应用程序描述符配置属性来支持设备单点登录 (SSO) | 是 | 是 |
 | {{ site.data.keys.product_adj }}应用程序外观 | 否<br/><br/>注：要检测并处理不同的设备屏幕大小，请使用标准的 Web 开发做法，如响应式 Web 设计 | 否<br/><br/>注：要检测并处理不同的设备屏幕大小，请使用标准的 Web 开发做法，如响应式 Web 设计。 | 是 |
-| 环境优化 | 是 (Cordova)。 |  使用 merges 目录定义特定于平台的 Web 资源。 | 是 (Cordova)。使用 merges 目录定义特定于平台的 Web 资源。有关更多信息，请参阅 Apache Cordova 文档中的“使用 merges 定制每个平台”。 | 是（专用） |
+| 环境优化 | 是 (Cordova)。 |  使用 merges 目录定义特定于平台的 Web 资源。 | 是 (Cordova)。使用 merges 目录定义特定于平台的 Web 资源。有关更多信息，请参阅 Apache Cordova 文档中的“使用 merges 定制每个平台”。 | 
 | 推送通知 | 是。使用 cordova-plugin-mfp-push 插件。<br/><br/>限制：您只可以将预定义的 {{ site.data.keys.product_adj }} 安全性检查映射到 push.mobileclient 作用域。不支持定制安全性检查，因为未调用 JavaScript 验证问题处理程序。 | 是<br/><br/>注：对于 Android，您必须添加 cordova-plugin-mfp-push 插件。您不需要对 iOS 使用此插件，因为针对 iOS 的推送客户端支持已包含在核心 mfp 插件中。 | 是 |
 | Cordova 插件管理 | 是 | 是 | 否 |
 | 消息 (i18n) | 是 | 是 | 是 |

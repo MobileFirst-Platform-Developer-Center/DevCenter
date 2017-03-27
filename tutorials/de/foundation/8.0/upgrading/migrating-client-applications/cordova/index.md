@@ -33,7 +33,7 @@ Version 7.1 entwickelt wurden.
 
 | Feature | Mit IBM {{ site.data.keys.product }}<br/>Version 8.0 entwickelte Cordova-App |	Mit IBM {{ site.data.keys.product }}<br/>Version 7.1 entwickelte Cordova-App | Mit IBM {{ site.data.keys.product }}<br/>Version 7.1 entwickelte Hybrid-App |
 |---------|-------|---------|-------|------|
-| **IDE Eclipse Studio** | | | | |	 	 	 
+| **IDE Eclipse Studio** | | | |  	 	 
 | Eclipse-Plug-in und Integration | Ja | Nicht unterstützt | Ja (proprietär) |
 | Anwendungskomponenten | Ja (Cordova)<br/><br/>Hinweis: Erstellen Sie Ihre eigenen Cordova-Plug-ins, um die Anwendungskomponenten in Ihrer Organisation zu verwalten.  | Ja (Cordova)<br/><br/>Hinweis: Erstellen Sie Ihre eigenen Cordova-Plug-ins, um die Anwendungskomponenten in Ihrer Organisation zu verwalten.  | Ja (proprietär) |
 | Projektschablonen | Ja (Cordova)<br/><br/>Hinweis: Verwenden Sie den Apache-Cordova-Befehl `cordova create --template`.  | Ja (Cordova)<br/><br/>Hinweis: Verwenden Sie den Befehl `mfp cordova create --template` oder den Apache-Cordova-Befehl
@@ -54,7 +54,7 @@ Shellkomponenten als Cordova-Plug-ins implementieren, die anwendungsübergreifen
 | {{ site.data.keys.product_adj }}-Sicherheitsframework | Ja | Ja | Ja |
 | Anwendungsauthentizität | Ja | Ja | Ja |
 | Certificate Pinning | Ja | Nein | Ja |
-| JSONStore | Ja | Verwenden Sie das Plug-in cordova-plugin-mfp-jsonstore.  | Ja | Ja |
+| JSONStore | Ja | Verwenden Sie das Plug-in cordova-plugin-mfp-jsonstore.  | Ja |
 | FIPS 140-2 | Ja. Verwenden Sie das Plug-in cordova-plugin-mfp-fips. <br/><br/>Einschränkung: FIPS wird für Android und iOS unterstützt, aber nicht
 für Windows.  | Nein | Ja |
 | Verschlüsselung von Webressourcen der Anwendung in der Binärdatei  | Ja |	Nein | Ja |
@@ -67,7 +67,7 @@ enableSSO für die Sicherheitsüberprüfung im Anwendungsdeskriptor unterstützt
 | {{ site.data.keys.product_adj }}-Anwendungsoberflächen | Nein<br/><br/>Hinweis: Verwenden Sie für die Erkennung und Handhabung unterschiedlich großer Geräteanzeigen Standardverfahren für die
 Webentwicklung (z. B. Responsive Web-Design).  | Nein<br/><br/>Hinweis: Verwenden Sie für die Erkennung und Handhabung unterschiedlich großer Geräteanzeigen Standardverfahren für die
 Webentwicklung (z. B. Responsive Web-Design).  | Ja |
-| Umgebungsoptimierung | Ja (Cordova)  |  Definieren Sie Webressourcen für eine bestimmte Plattform im Verzeichnis "merges".  | Ja (Cordova). Definieren Sie Webressourcen für eine bestimmte Plattform im Verzeichnis "merges". Weitere Informationen finden Sie in der Apache-Cordova-Dokumentation unter Using merges to Customize Each Platform. | Ja (proprietär) |
+| Umgebungsoptimierung | Ja (Cordova)  |  Definieren Sie Webressourcen für eine bestimmte Plattform im Verzeichnis "merges".  | Ja (Cordova). Definieren Sie Webressourcen für eine bestimmte Plattform im Verzeichnis "merges". Weitere Informationen finden Sie in der Apache-Cordova-Dokumentation unter Using merges to Customize Each Platform. | 
 | Push-Benachrichtigungen | Ja. Verwenden Sie das Plug-in cordova-plugin-mfp-push. <br/><br/>Einschränkung: Sie können vordefinierte MobileFirst-Sicherheitsüberprüfungen nur dem Bereich push.mobileclient zuordnen. Angepasste Sicherheitsüberprüfungen werden nicht unterstützt, weil die JavaScript-Abfrage-Handler nicht aufgerufen werden.  | Ja<br/><br/>Hinweis: Für Android müssen Sie das Plug-in cordova-plugin-mfp-push hinzufügen. Für iOS benötigen Sie dieses Plug-in nicht, weil die clientseitige Push-Unterstützung für iOS im MFP-Kern-Plug-in enthalten ist. | Ja |
 | Verwaltung von Cordova-Plug-ins | Ja | Ja | Nein |
 | Messages (i18n) | Ja | Ja | Ja |
@@ -188,7 +188,7 @@ die in Version 8.0 gelöscht oder geändert wurden oder nicht weiter unterstütz
     * Lesen Sie die Datei **api-report.html**, die im **Zielverzeichnis** erstellt und nach Ausführung des Befehls in Ihrem Standardbrowser geladen wird. In jeder Zeile der in dieser Datei enthaltenen Tabelle ist eine in der App verwendete API angegeben, die weggefallen ist oder geänderte bzw. gelöscht wurde und nicht mit Version 8.0 kompatibel ist. In dieser Datei ist auch eine Ersetzungsmöglichkeit für gelöschte APIs angegeben, soweit verfügbar.
 
     | Dateipfad | Zeilennummer | API | Zeileninhalt | Kategorie der API-Änderung | Beschreibung und Aktionselement |
-    |-----------|-------------|------|--------------|----------------------------|---------------------------------|
+    |-----------|-------------|-----|--------------|------------|-----------|
     | c:\local\Cordova\www\js\index.js |	15 | `WL.Client.getAppProperty` | {::nomarkdown}<ul><li><code>document.getElementById('app_version')</code></li><li><code>textContent = WL.Client.getAppProperty("APP_VERSION");</code></li></ul>{:/} | Nicht unterstützt | In Version 8.0 gelöscht. Verwenden Sie zum Abrufen der App-Version ein Cordova-Plug-in. Es gibt keine Ersatz-API. |
 
     * Lösen Sie die in der Datei **api-report.html** bezeichneten Probleme.
@@ -471,11 +471,11 @@ HTML-5-Elemente ersetzt werden können. Einige Methoden haben sich ebenfalls ge�
 |-------------|----------------|
 | {::nomarkdown}<ul><li><code>WL.BusyIndicator</code></li><li><code>WL.OptionsMenu</code></li><li><code>WL.TabBar</code></li><li><code>WL.TabBarItem</code></li></ul>{:/} | Verwenden Sie Cordova-Plug-ins oder HTML-5-Elemente.  |
 | `WL.App.close()` | Handhaben Sie dieses Ereignis außerhalb von {{ site.data.keys.product_adj }}. |
-| `WL.App.copyToClipboard()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.  |
-| `WL.App.openUrl(url, target, options)` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in InAppBrowser bereitgestellt. |
-| {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in backbutton bereitgestellt. |
-| `WL.App.getDeviceLanguage()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in **cordova-plugin-globalization** bereitgestellt.  |
-| `WL.App.getDeviceLocale()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/> Hinweis: Dieses Feature wird vom Cordova-Plug-in **cordova-plugin-globalization** bereitgestellt.  |
+| `WL.App.copyToClipboard()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. |
+| `WL.App.openUrl(url, target, options)` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in InAppBrowser bereitgestellt. |
+| {::nomarkdown}<ul><li><code>WL.App.overrideBackButton(callback)</code></li><li><code>WL.App.resetBackButton()</code></li></ul> | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in backbutton bereitgestellt. |
+| `WL.App.getDeviceLanguage()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/>Hinweis: Dieses Feature wird vom Cordova-Plug-in **cordova-plugin-globalization** bereitgestellt.  |
+| `WL.App.getDeviceLocale()` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/> Hinweis: Dieses Feature wird vom Cordova-Plug-in **cordova-plugin-globalization** bereitgestellt.  |
 | `WL.App.BackgroundHandler` | Verwenden Sie zum Ausführen einer angepassten Handlerfunktion den Cordova-Standardereignislistener "pause". Verwenden Sie ein Cordova-Plug-in, mit dem die Privatsphäre gewahrt werden kann und das iOS- und Android-Systeme oder -Benutzer daran hindert, Screenshots zu erstellen. Weitere Informationen entnehmen Sie bitte der Beschreibung zu PrivacyScreenPlugin unter [https://github.com/devgeeks/PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin). |
 | {::nomarkdown}<ul><li><code>WL.Client.close()</code></li><li><code>WL.Client.restore()</code></li><li><code>WL.Client.minimize()</code></li></ul>{:/}| Die Funktionen wurden zur Unterstützung der AIR-Plattform bereitgestellt, die von {{ site.data.keys.product }} Version 8.0 nicht unterstützt wird. |
 | `WL.Toast.show(string)` | Verwenden Sie Cordova-Plug-ins für Toast. |
@@ -497,10 +497,10 @@ HTML-5-Elemente ersetzt werden können. Einige Methoden haben sich ebenfalls ge�
 | {::nomarkdown}<ul><li><code>WL.Client.transmitEvent(event, immediate)</code></li><li><code>WL.Client.purgeEventTransmissionBuffer() </code></li><li><code>WL.Client.setEventTransmissionPolicy(policy)</code></li></ul>{:/} | Erstellen Sie einen angepassten Adapter für den Empfang von Benachrichtigungen über diese Ereignisse. |
 | {::nomarkdown}<ul><li><code>WL.Device.getContext()</code></li><li><code>WL.Device.startAcquisition(policy, triggers, onFailure)</code></li><li><code>WL.Device.stopAcquisition()</code></li><li><code>WL.Device.Wifi</code></li><li><code>WL.Device.Geo.Profiles</code></li><li><code>WL.Geo </code></li></ul>{:/} | Verwenden Sie für die Geoortung die native API oder Cordova-Plug-ins von anderen Anbietern. |
 | `WL.Client.makeRequest (url, options)` | Erstellen Sie einen angepassten Adapter, der diese Funktionalität bereitstellt.  |
-| `WL.Device.getID(options)` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/>Hinweis: Dieses Feature wird von **device.uuid** aus dem Plug-in **cordova-plugin-device** bereitgestellt. |
+| `WL.Device.getID(options)` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/>Hinweis: Dieses Feature wird von **device.uuid** aus dem Plug-in **cordova-plugin-device** bereitgestellt. |
 | `WL.Device.getFriendlyName()` | Verwenden Sie `WL.Client.getDeviceDisplayName`.  |
 | `WL.Device.setFriendlyName()` | Verwenden Sie `WL.Client.setDeviceDisplayName`.  |
-| `WL.Device.getNetworkInfo(callback)` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen. <br/><br/>Hinweis: Dieses Feature wird vom Plug-in **cordova-plugin-network-information** bereitgestellt.  |
+| `WL.Device.getNetworkInfo(callback)` | Verwenden Sie Cordova-Plug-ins, die diese Funktionalität bereitstellen.<br/><br/>Hinweis: Dieses Feature wird vom Plug-in **cordova-plugin-network-information** bereitgestellt.  |
 | `WLUtils.wlCheckReachability()` | Erstellen Sie einen angepassten Adapter für die Überprüfung der Serververfügbarkeit.  |
 | `WL.EncryptedCache` | Verwenden Sie JSONStore zum lokalen Speichern verschlüsselter Daten. JSONStore ist in **cordova-plugin-mfp-jsonstore** enthalten.  |
 | `WL.SecurityUtils.remoteRandomString(bytes)` | Erstellen Sie einen angepassten Adapter, der diese Funktionalität bereitstellt.  |

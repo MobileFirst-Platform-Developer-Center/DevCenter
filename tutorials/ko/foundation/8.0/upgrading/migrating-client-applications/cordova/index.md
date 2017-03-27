@@ -24,7 +24,7 @@ IBM MobileFirst Foundation 버전 6.2.0 이상으로 작성된 기존 Cordova �
 
 | 기능 | Cordova 앱<br/>IBM {{ site.data.keys.product }} v8.0으로 개발 |	Cordova 앱<br/>IBM MobileFirst Platform Foundation v7.1로 개발 | MobileFirst 하이브리드 앱<br/>IBM MobileFirst Platform Foundation V7.1로 개발 |
 |---------|-------|---------|-------|------|
-| **IDE Eclipse Studio** | | | | |	 	 	 
+| **IDE Eclipse Studio** | | | |  	 	 
 | Eclipse 플러그인 및 통합 | 예 | 지원되지 않음 | 예(전용) |
 | 애플리케이션 컴포넌트 | 예(Cordova) <br/><br/>참고: 조직에서 애플리케이션 컴포넌트를 관리하려면 고유의 Cordova 플러그인을 작성하십시오.  | 예(Cordova) <br/><br/>참고: 조직에서 애플리케이션 컴포넌트를 관리하려면 고유의 Cordova 플러그인을 작성하십시오.  | 예(전용) |
 | 프로젝트 템플리트 | 예(Cordova) <br/><br/>참고: Apache Cordova `cordova create --template` 명령을 사용하십시오.  | 예(Cordova) <br/><br/>참고: `mfp cordova create --template` 또는 Apache Cordova 명령 `cordova create --copy-from`을 사용하십시오.  | 예(전용) |
@@ -40,7 +40,7 @@ IBM MobileFirst Foundation 버전 6.2.0 이상으로 작성된 기존 Cordova �
 | {{ site.data.keys.product_adj }} 보안 프레임워크 | 예 | 예 | 예 |
 | 애플리케이션 인증 | 예 | 예 | 예 |
 | 인증서 고정 | 예 | 아니오 | 예 |
-| JSONStore | 예.  | cordova-plugin-mfp-jsonstore 플러그인을 사용하십시오.  | 예 | 예 |
+| JSONStore | 예.  | cordova-plugin-mfp-jsonstore 플러그인을 사용하십시오.  | 예 |
 | FIPS 140-2 | 예. cordova-plugin-mfp-fips 플러그인을 사용하십시오.<br/><br/>제한사항: FIPS는 Android 및 iOS를 위해 지원됩니다. FIPS는 Windows를 위해 지원되지 않습니다.  | 아니오 | 예 |
 | 애플리케이션 2진 파일 내에서 애플리케이션과 연관된 웹 자원의 암호화 | 예 |	아니오 | 예 |
 | 앱이 실행을 시작할 때마다 체크섬을 사용하여 웹 자원의 무결성 검증 | 예 | 지원되지 않음 | 예 |
@@ -48,7 +48,7 @@ IBM MobileFirst Foundation 버전 6.2.0 이상으로 작성된 기존 Cordova �
 | 단순 데이터 공유 | 아니오 | 예 | 예 |
 | 싱글 사인온 | 예<br/><br/>참고: 디바이스 싱글 사인온(SSO)은 이제 새 사전 정의된 enableSSO 보안 검사 애플리케이션 디스크립터 구성 특성을 사용하여 지원됩니다.  | 예 | 예 |
 | {{ site.data.keys.product_adj }} 애플리케이션 스킨 | 아니오<br/><br/>참고: 여러 디바이스 화면 크기를 감지하고 처리하려면 빠른 응답 웹 디자인과 같은 표준 웹 개발 사례를 사용하십시오.  | 아니오<br/><br/>참고: 여러 디바이스 화면 크기를 감지하고 처리하려면 빠른 응답 웹 디자인과 같은 표준 웹 개발 사례를 사용하십시오.  | 예 |
-| 환경 최적화 | 예(Cordova).  |  merges 디렉토리를 사용하여 특정 플랫폼에 대한 웹 자원을 정의하십시오.  | 예(Cordova). merges 디렉토리를 사용하여 특정 플랫폼에 대한 웹 자원을 정의하십시오. 자세한 정보는 Apache Cordova 문서의 merges를 사용하여 각 플랫폼 사용자 정의를 참조하십시오.  | 예(전용) |
+| 환경 최적화 | 예(Cordova).  |  merges 디렉토리를 사용하여 특정 플랫폼에 대한 웹 자원을 정의하십시오.  | 예(Cordova). merges 디렉토리를 사용하여 특정 플랫폼에 대한 웹 자원을 정의하십시오. 자세한 정보는 Apache Cordova 문서의 merges를 사용하여 각 플랫폼 사용자 정의를 참조하십시오.  | 
 | 푸시 알림 | 예. cordova-plugin-mfp-push 플러그인을 사용하십시오.<br/><br/>제한사항: 사전 정의된 {{ site.data.keys.product_adj }} 보안 검사는 push.mobileclient 범위에만 맵핑할 수 있습니다. JavaScript 인증 확인 핸들러가 호출되지 않으므로 사용자 정의 보안 검사는 지원되지 않습니다.  | 예<br/><br/>참고: Android의 경우, cordova-plugin-mfp-push 플러그인을 추가해야 합니다. 코어 mfp 플러그인에 iOS에 대한 푸시 클라이언트 측 지원이 포함되어 있으므로 iOS의 경우에는 이 플러그인이 필요하지 않습니다.  | 예 |
 | Cordova 플러그인 관리 | 예 | 예 | 아니오 |
 | MESSAGES(i18n) | 예 | 예 | 예 |
