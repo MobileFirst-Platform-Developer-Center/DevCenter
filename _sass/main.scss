@@ -157,12 +157,15 @@ body {
 			background-color: #5AAAFA;
 			color: white;
 			text-align: center;
-			padding: 12px;
+			padding: 12px 30px 10px 30px;
 			border-radius: 0;
 			text-decoration: none;
 			text-shadow: none;
-			font-size: 80%;
-			font-weight: bold;
+			font-size: 14px;
+         
+         &:hover {
+            background-color: #28536f;
+         }
 		}
 	}
 
@@ -173,7 +176,7 @@ body {
 		.foundation_diamond {
 			height: 296px;
 			margin-left: 203px;
-			margin-top: 102px;
+			margin-top: 79px;
 		}
 		
 		.benefits {

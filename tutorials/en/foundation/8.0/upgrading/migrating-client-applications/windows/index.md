@@ -108,6 +108,7 @@ Replace the client-side APIs that are discontinued or not in V8.0.
 
 #### Deprecated Windows C# API Classes
 {: #deprecated-windows-c-api-classes }
+
 | Category | Description | Recommended action | 
 |----------|-------------|--------------------|
 | `ChallengeHandler`  | For custom gateway challenges, use `GatewayChallengeHandler`. For {{ site.data.keys.product_adj }} security-check challenges, use `SecurityCheckChallengeHandler`. |
@@ -129,6 +130,7 @@ Replace the client-side APIs that are discontinued or not in V8.0.
 
 #### Deprecated Windows C# API Interfaces
 {: #deprecated-windows-c-api-interfaces }
+
 | Category | Description | Recommended action | 
 |----------|-------------|--------------------|
 | `WLHttpResponseListener` | Not supported. | 
