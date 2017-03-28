@@ -179,8 +179,8 @@ Application Center 사용자에게 모바일 클라이언트를 배포하기 위
 | allowDowngrade | 이 특성은 이전 버전의 설치 권한이 부여되었는지 여부를 표시합니다. 이전 버전은 운영 체제 및 버전이 다운그레이드를 허용하는 경우에만 설치할 수 있습니다.  |
 | showPreviousVersions | 이 특성은 디바이스 사용자가 모든 버전의 애플리케이션에 대한 세부사항을 표시할 수 있는지 아니면 최신 버전의 세부사항만 표시할 수 있는지를 표시합니다.  |
 | showInternalVersion | 이 특성은 내부 버전이 표시되는지 여부를 표시합니다. 값이 false인 경우 상업용 버전이 설정되지 않은 경우에만 내부 버전이 표시됩니다.  |
-| listItemRenderer | 이 특성 값은 다음 중 하나입니다. <ul><li>full(기본값): 애플리케이션 목록에 애플리케이션 이름, 등급, 최신 버전이 나열됩니다. </li><li>simple: 애플리케이션 목록에 애플리케이션 이름만 표시됩니다. </li></ul> |
-| listAverageRating | 이 특성 값은 다음 중 하나입니다. <ul><li>latestVersion: 애플리케이션 목록에 최신 버전의 애플리케이션에 대한 평균 등급이 나열됩니다. </li><li>allVersions: 애플리케이션 목록에 모든 버전의 애플리케이션에 대한 평균 등급이 나열됩니다. </li></ul> |
+| listItemRenderer | 이 특성 값은 다음 중 하나입니다. <br/>- **full** (기본값): 애플리케이션 목록에 애플리케이션 이름, 등급, 최신 버전이 표시됩니다.<br/>- **simple**: 애플리케이션 목록에 애플리케이션 이름만 표시됩니다. |
+| listAverageRating | 이 특성 값은 다음 중 하나입니다. <br/>-  **latestVersion**: 애플리케이션 목록에 최신 버전의 애플리케이션에 대한 평균 등급이 표시됩니다. <br/>-  **allVersions**: 애플리케이션 목록에 모든 버전의 애플리케이션에 대한 평균 등급이 표시됩니다. |
 | requestTimeout | 이 특성은 Application Center 서버에 대한 요청의 제한시간(밀리초)을 표시합니다.  |
 | gcmProjectId | Android 푸시 알림에 필요한 Google API 프로젝트 ID(프로젝트 이름 = com.ibm.appcenter). 예: 123456789012.  |
 | allowAppLinkReview | 이 특성은 외부 애플리케이션 스토어에서 애플리케이션의 로컬 검토를 Application Center에서 등록하고 찾아볼 수 있는지 여부를 표시합니다. 이러한 로컬 검토는 외부 애플리케이션 스토어에서 볼 수 없습니다. 이러한 검토는 Application Center 서버에 저장됩니다.  |
