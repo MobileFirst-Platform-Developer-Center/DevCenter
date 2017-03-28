@@ -108,8 +108,8 @@ cordova build ios
 {: #importing-and-building-the-project-android-ios-windows-phone }
 您必须将 **IBMAppCenter** 项目导入到 {{ site.data.keys.mf_studio }} ，然后构建项目。
 
-> **注：**对于 V8.0.0，请使用 MobileFirst Studio 7.
-1. 您可以从[下载页面]({{site.baseurl}}/downloads)下载 MobileFirst Studio。有关安装指示信息，请参阅 7.1 的 IBM Knowledge Center 中的[安装 MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)。1. 选择**文件 → 导入**。
+> **注：**对于 V8.0.0，请使用 MobileFirst Studio 7.1。您可以从[下载页面]({{site.baseurl}}/downloads)下载 MobileFirst Studio。有关安装指示信息，请参阅 7.1 的 IBM Knowledge Center 中的[安装 MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html)。
+1. 选择**文件 → 导入**。
 2. 选择**常规 → 将现有项目导入到工作空间中**。
 3. 在下一个页面上，选择**选择根目录**，然后找到 **IBMAppCenter** 项目的根目录。
 4. 选择 **IBMAppCenter** 项目。
@@ -180,8 +180,8 @@ Windows 8 Universal 项目在 **IBMApplicationCenterWindowsStore\AppCenterClient
 | allowDowngrade | 该属性指示是否授权安装较旧版本；仅当操作系统和版本允许降级时，才可安装较旧版本。 |
 | showPreviousVersions | 此属性指示设备用户可显示应用程序的所有版本的详细信息还是只能显示最新版本的详细信息。 |
 | showInternalVersion | 此属性指示是否显示内部版本。如果值为 false，那么仅当未设置商业版本时才会显示内部版本。 |
-| listItemRenderer | 此属性可具有以下某个值：<ul><li>full：缺省值；应用程序列表显示应用程序名称、评级和最新版本。</li><li>simple：应用程序列表仅显示应用程序名称。</li></ul> |
-| listAverageRating | 此属性可具有以下某个值：<ul><li>latestVersion：应用程序列表显示应用程序的最新版本的平均评级。</li><li>allVersions：应用程序列表显示应用程序的所有版本的平均评级。</li></ul> |
+| listItemRenderer | 此属性可具有以下某个值：<br/>- **full**：缺省值；应用程序列表显示应用程序名称、评级和最新版本。<br/>- **simple**：应用程序列表仅显示应用程序名称。 |
+| listAverageRating | 此属性可具有以下某个值：<br/>- **latestVersion**：应用程序列表显示应用程序的最新版本的平均评级。<br/>- **allVersions**：应用程序列表显示应用程序的所有版本的平均评级。 |
 | requestTimeout | 该属性指示请求 Application Center 服务器的超时（单位为毫秒）。 |
 | gcmProjectId | Google API 项目标识（项目名称 = com.ibm.appcenter），这是 Android 推送通知所必需的；例如，123456789012。 |
 | allowAppLinkReview | 该属性指示能否在 Application Center 中注册和浏览来自外部应用商店的本地应用程序评论。在外部应用商店中看不到这些本地评论。这些评论存储在 Application Center 服务器中。 |
