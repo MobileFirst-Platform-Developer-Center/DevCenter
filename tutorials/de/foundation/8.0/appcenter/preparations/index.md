@@ -254,8 +254,8 @@ Eine ältere Version kann nur installiert werden. wenn das Betriebssystem und di
 | showPreviousVersions | Diese Eigenschaft gibt an, ob der Gerätebenutzer die Details aller Anwendungsversionen oder nur Details der neuesten Version anzeigen kann. |
 | showInternalVersion | Diese Eigenschaft gibt an, ob die interne Version angezeigt wird oder nicht. Wenn der Wert "false" lautet,
 wird die interne Version nur angezeigt, wenn keine kommerzielle Version definiert ist. |
-| listItemRenderer | Diese Eigenschaft kann einen der folgenden Werte haben:<ul><li>Standardwert "full". In den Anwendungslisten werden Name, Bewertung und neueste Version angezeigt.</li><li>Wert "simple". In den Anwendungslisten wird nur der Anwendungsname angezeigt.</li></ul> |
-| listAverageRating | Diese Eigenschaft kann einen der folgenden Werte haben:<ul><li>latestVersion: In den Anwendungslisten sehen Sie die durchschnittliche Bewertung der neuesten Version der Anwendung.</li><li>allVersions: In den Anwendungslisten sehen Sie die durchschnittliche Bewertung aller Versionen der Anwendung.</li></ul> |
+| listItemRenderer | Diese Eigenschaft kann einen der folgenden Werte haben:<br/>- **full**: Bei Verwendung dieses Standardwerts werden in den Anwendungslisten Name, Bewertung und neueste Version angezeigt.<br/>- **simple**: In den Anwendungslisten wird nur der Anwendungsname angezeigt. |
+| listAverageRating | Diese Eigenschaft kann einen der folgenden Werte haben:<br/>-  **latestVersion**: In den Anwendungslisten sehen Sie die durchschnittliche Bewertung der neuesten Version der Anwendung.<br/>-  **allVersions**: In den Anwendungslisten sehen Sie die durchschnittliche Bewertung aller Versionen der Anwendung. |
 | requestTimeout | Diese Eigenschaft gibt das Zeitlimit für Anfragen an den Application-Center-Server in Millisekunden an. |
 | gcmProjectId | Google-API-Projekt-ID (Projektname = com.ibm.appcenter), die für
 Android-Push-Benachrichtigungen erforderlich ist, z. B. 123456789012 |

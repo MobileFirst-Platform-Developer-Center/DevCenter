@@ -28,9 +28,9 @@ Para crear la versión de Android, debe tener la versión más reciente de las h
 
 ### Requisitos previos específicos del sistema operativo Apple iOS
 {: #prerequisites-specific-to-apple-ios-operating-system }
-La versión nativa de iOS para iPad e iPhone no se entrega como una aplicación compilada. La aplicación debe estar creada desde el proyecto de {{site.data.keys.product_full }} denominado **IBMAppCenter**. Este proyecto también se entrega como parte de la distribución en el directorio **ApplicationCenter/installer**.
+La versión nativa de iOS para iPad e iPhone no se entrega como una aplicación compilada. La aplicación debe estar creada desde el proyecto de {{ site.data.keys.product_full }} denominado **IBMAppCenter**. Este proyecto también se entrega como parte de la distribución en el directorio **ApplicationCenter/installer**.
 
-Para crear la versión de iOS, debe tener el software apropiado de {{site.data.keys.product_full }} y de Apple. La versión de {{site.data.keys.mf_studio }} debe ser la misma que la versión de {{site.data.keys.mf_server }} en la que se basa esta documentación. La versión de Apple Xcode es V6.1.
+Para crear la versión de iOS, debe tener el software apropiado de {{ site.data.keys.product_full }} y de Apple. La versión de {{ site.data.keys.mf_studio }} debe ser la misma que la versión de {{ site.data.keys.mf_server }} en la que se basa esta documentación. La versión de Apple Xcode es V6.1.
 
 ### Requisitos previos específicos del sistema operativo Microsoft Windows Phone
 {: #prerequisites-specific-to-microsoft-windows-phone-operating-system }
@@ -50,8 +50,8 @@ Opcional: Si es necesario, también puede crear la versión de Windows 8 desde l
 {: #cordova-based-ibm-appcenter-client }
 El proyecto del cliente de AppCenter basado en Cordova está ubicado en el directorio `install` en: **install_dir/ApplicationCenter/installer/CordovaAppCenterClient**.
 
-Este proyecto se basa solamente en la infraestructura de Cordova y, por lo tanto, no depende de las API de cliente/servidor de {{site.data.keys.product }}.  
-Puesto que esta es una app de Cordova estándar, tampoco hay ninguna dependencia en {{site.data.keys.mf_studio }}. Esta app utiliza Dojo para la IU.
+Este proyecto se basa solamente en la infraestructura de Cordova y, por lo tanto, no depende de las API de cliente/servidor de {{ site.data.keys.product }}.  
+Puesto que esta es una app de Cordova estándar, tampoco hay ninguna dependencia en {{ site.data.keys.mf_studio }}. Esta app utiliza Dojo para la IU.
 
 Siga los pasos siguientes para comenzar:
 
@@ -109,7 +109,7 @@ En lugar de utilizar el proyecto de Cordova para iOS y Android, también puede e
 
 ### Importación y creación del proyecto (Android, iOS, Windows Phone)
 {: #importing-and-building-the-project-android-ios-windows-phone }
-Debe importar el proyecto **IBMAppCenter** en {{site.data.keys.mf_studio }} y, a continuación, crear el proyecto.
+Debe importar el proyecto **IBMAppCenter** en {{ site.data.keys.mf_studio }} y, a continuación, crear el proyecto.
 
 > **Nota:** Para V8.0.0, utilice MobileFirst Studio 7.1. Puede descargar MobileFirst Studio desde la [página de Descargas]({{site.baseurl}}/downloads). Para obtener las instrucciones de instalación, consulte [Instalación de MobileFirst Studio](https://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.installconfig.doc/devenv/t_installing_ibm_worklight_studi.html) en el IBM Knowledge Center for 7.1.
 
@@ -142,11 +142,11 @@ Si desea habilitar las notificaciones push para actualizaciones de aplicaciones,
 {: #windows-phone-8 }
 MobileFirst Studio genera un proyecto nativo de Windows Phone 8 en **IBMAppCenter/apps/AppCenter/windowsphone8/native**. El archivo **AppCenter.csproj** se encuentra en la carpeta windowsphone8/native. Este archivo es el proyecto de Visual Studio que debe compilar mediante Visual Studio y el SDK de Windows Phone 8.0.
 
-La aplicación está creada con el SDK de Windows Phone 8.0, por lo que se puede ejecutar en dispositivos Windows Phone 8.0 y 8.1. No se crea con el SDK de Windows Phone 8.1, dado que el resultado no se ejecutaría en dispositivos anteriores a Windows Phone 8.0.
+La aplicación se ha creado con el [Windows Phone 8.0 SDK](https://www.microsoft.com/en-in/download/details.aspx?id=35471), por lo que se puede ejecutar en dispositivos Windows Phone 8.0 y 8.1. No se crea con el SDK de Windows Phone 8.1, dado que el resultado no se ejecutaría en dispositivos anteriores a Windows Phone 8.0.
 
-La instalación de Visual Studio 2013 le permite seleccionar la instalación del SDK de Windows Phone 8.0 además del SDK de 8.1. El SDK de Windows Phone 8.0 también está disponible desde [Archivadores de SDK de Windows Phone](https://dev.windows.com/en-us/develop/download-phone-sdk).
+La instalación de Visual Studio 2013 le permite seleccionar la instalación del SDK de Windows Phone 8.0 además del SDK de 8.1. El SDK de Windows Phone 8.0 también está disponible desde [Archivadores de SDK de Windows Phone](https://developer.microsoft.com/en-us/windows/downloads/sdk-archive).
 
-Consulte [Windows Phone Dev Center](http://dev.windowsphone.com/en-us) para obtener más información sobre cómo crear y firmar la aplicación del cliente móvil de Windows Phone.
+Consulte [Windows Phone Dev Center](https://developer.microsoft.com/en-us) para obtener más información sobre cómo crear y firmar la aplicación del cliente móvil de Windows Phone.
 
 #### Microsoft Windows 8: Creación del proyecto
 {: #microsoft-windows-8-building-the-project }
@@ -179,8 +179,8 @@ Este archivo contiene las propiedades que se muestran en la tabla siguiente.
 | allowDowngrade | Esta propiedad indica si la instalación de versiones anteriores está autorizada o no; sólo se puede instalar una versión anterior si el sistema operativo y la versión permiten la degradación. |
 | showPreviousVersions | Esta propiedad indica si el usuario del dispositivo puede mostrar los detalles de todas las versiones de las aplicaciones o sólo los detalles de la versión más reciente. |
 | showInternalVersion | Esta propiedad indica si la versión interna se muestra o no. Si el valor es false, la versión interna sólo se mostrará si no se ha establecido ninguna versión comercial. |
-| listItemRenderer | Esta propiedad puede tener uno de estos valores:<ul><li>full, el valor predeterminado; las listas de aplicaciones muestran el nombre de aplicación, la valoración y la versión más reciente.</li><li>simple: la aplicación lista sólo el nombre de aplicación.</li></ul> |
-| listAverageRating | Esta propiedad puede tener uno de estos valores:<ul><li>latestVersion: las listas de aplicaciones muestran la valoración media de la versión más reciente de la aplicación.</li><li>allVersions: las listas de aplicaciones muestran la valoración media de todas las versiones de la aplicación.</li></ul> |
+| listItemRenderer | Esta propiedad puede tener uno de estos valores:<br/>- **full**: el valor predeterminado; las listas de aplicaciones muestran el nombre de aplicación, la valoración y la versión más reciente. <br/>- **simple**: la aplicación lista sólo el nombre de aplicación.  |
+| listAverageRating | Esta propiedad puede tener uno de estos valores:<br/>-  **latestVersion**: las listas de aplicaciones muestran la valoración media de la versión más reciente de la aplicación. <br/>-  **allVersions**: las listas de aplicaciones muestran la valoración media de todas las versiones de la aplicación.  |
 | requestTimeout | Esta propiedad indica el tiempo de espera en milisegundos para solicitudes en el servidor de Application Center. |
 | gcmProjectId | El ID de proyecto de la API de Google (nombre de proyecto = com.ibm.appcenter), necesario para las notificaciones push de Android; por ejemplo, 123456789012. |
 | allowAppLinkReview | Esta propiedad indica si las opiniones locales de aplicaciones desde almacenes de aplicaciones externos se pueden registrar y examinar en el Application Center. Estas opiniones locales no serán visibles en el almacén de aplicaciones externo. Estas opiniones se almacenarán en el servidor de Application Center. |
