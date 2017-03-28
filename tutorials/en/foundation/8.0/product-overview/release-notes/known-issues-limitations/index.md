@@ -245,16 +245,16 @@ Existing code snippet:
 
 ```objc
 (void)wlInitDidCompleteSuccessfully
-{ 
-UIViewController* rootViewController = self.window.rootViewController; 
-// Create a Cordova View Controller 
-CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ; 
-cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath]; 
-// Adjust the Cordova view controller view frame to match its parent view bounds 
-cordovaViewController.view.frame = rootViewController.view.bounds; 
-// Display the Cordova view [rootViewController addChildViewController:cordovaViewController]; 
-[rootViewController.view addSubview:cordovaViewController.view]; 
-[cordovaViewController didMoveToParentViewController:rootViewController]; 
+{
+UIViewController* rootViewController = self.window.rootViewController;
+// Create a Cordova View Controller
+CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;
+cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
+// Adjust the Cordova view controller view frame to match its parent view bounds
+cordovaViewController.view.frame = rootViewController.view.bounds;
+// Display the Cordova view [rootViewController addChildViewController:cordovaViewController];
+[rootViewController.view addSubview:cordovaViewController.view];
+[cordovaViewController didMoveToParentViewController:rootViewController];
 }
 ```
 
@@ -263,10 +263,10 @@ Recommended code snippet with workaround for the limitation:
 ```objc
 (void)wlInitDidCompleteSuccessfully
 {
- // Create a Cordova View Controller 
-CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ; 
-cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath]; 
-[self.window setRootViewController:cordovaViewController]; 
+ // Create a Cordova View Controller
+CDVViewController* cordovaViewController = [[CDVViewController alloc] init] ;
+cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
+[self.window setRootViewController:cordovaViewController];
 [self.window makeKeyAndVisible];
 }
 ```
@@ -274,3 +274,8 @@ cordovaViewController.startPage = [[WL sharedInstance] mainHtmlFilePath];
 ### Raw IPv6 address not supported in Android applications
 {: #raw-ipv6-address-not-supported-in-android-applications }
 During the configuration of **mfpclient.properties** for your native Android application, if your {{ site.data.keys.mf_server }} is on a host with IPv6 address, then use a mapped host name for the IPV6 address to configure the **wlServerHost** property in **mfpclient.properties**. Configuring the **wlServerHost** property with raw IPv6 address fails the application's attempt to connect to the {{ site.data.keys.mf_server }}.
+
+### Modifying default behaviour of a Cordova app is not recommended
+{:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
+Modifying the default behaviour of a Cordova app (such as overriding the back button behavior) when the {{ site.data.keys.product_adj }} Cordova SDK is added to the project, can lead to the app being rejected by Google Play Store when submitted.
+For other failures with submission to Google Play Store, you can contact Google support.

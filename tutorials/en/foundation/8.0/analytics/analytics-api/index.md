@@ -70,7 +70,7 @@ Note that you can select your own namespace to replace "ibmmfpfanalytics".
 ibmmfpfanalytics.logger.config({analyticsCapture: true});
 ```
 
- **Important**: Some JavaScript API differences exist between the Cordova and Web SDKs. Please refer to the [API Reference topic](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/topics/r_apiref.html) in the user documentation.
+ **Important**: Some JavaScript API differences exist between the Cordova and Web SDKs. Please refer to the [API Reference topic](../../api/) in the user documentation.
 
 ### iOS
 {: #ios }
