@@ -19,7 +19,7 @@ die bei der Ressource `GetBalanceService` eingehende Anforderung zu kontrolliere
 Mit diesem Message Inspector werden wir die eingehende Anforderung untersuchen und überprüfen, ob sie alle
 vom **{{ site.data.keys.product_adj }}-Autorisierungsserver** geforderten Header bereitstellt.
 
-**Voraussetzungen: **
+**Voraussetzungen:**
 
 * Sie müssen das Lernprogramm [Externe Ressource mit {{ site.data.keys.mf_server }} authentifizieren](../) durchgehen. 
 * Sie müssen das [{{ site.data.keys.product_adj }}-Sicherheitsframework](../../) verstehen.

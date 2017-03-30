@@ -38,8 +38,7 @@ Sie zum Ordner des Servers und führen Sie den Befehl `./run.cmd` aus.
 
 1. Klicken Sie neben **Anwendungen** auf die Schaltfläche **Neu**. 
     * Wählen Sie eine **Windows**-Plattform aus. 
-    * Geben Sie als **Anwendungs-ID** für Windows **MFPStarterCSharp.Windows** oder
-für Windows Phone **MFPStarterCSharp.WindowsPhone** ein. 
+    * Geben Sie als **Anwendungs-ID** für Windows **MFPStarterCSharp.Windows** oder für Windows Phone **MFPStarterCSharp.WindowsPhone** ein.
     * Geben Sie für die **Version** den Wert **1.0.0** ein. 
     * Klicken Sie auf **Anwendung registrieren**. 
 

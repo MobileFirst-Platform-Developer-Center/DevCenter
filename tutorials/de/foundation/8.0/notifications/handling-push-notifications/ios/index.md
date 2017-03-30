@@ -22,7 +22,7 @@ Informationen zu Benachrichtigungen im Hintergrund und interaktiven Benachrichti
 * [Benachrichtigungen im Hintergrund](../silent)
 * [Interaktive Benachrichtigungen](../interactive)
 
-**Voraussetzungen: **
+**Voraussetzungen:**
 
 * Stellen Sie sicher, dass Sie die folgenden Lernprogramme durchgearbeitet haben: 
 	* [Übersicht über Push-Benachrichtigungen](../../)

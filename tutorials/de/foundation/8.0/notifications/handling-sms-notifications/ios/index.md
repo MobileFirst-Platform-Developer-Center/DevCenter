@@ -14,7 +14,7 @@ weight: 9
 SMS-Benachrichtigungen sind eine Untergruppe der Push-Benachrichtigungen.
 Beschäftigen Sie sich daher zuerst mit dem Lernprogramm zu [Push-Benachrichtigungen in iOS](../../). 
 
-**Voraussetzungen: **
+**Voraussetzungen:**
 
 * Stellen Sie sicher, dass Sie die folgenden Lernprogramme durchgearbeitet haben: 
   * [Benachrichtigungen im Überblick](../../)

@@ -46,7 +46,7 @@ Implementierung nach Bedarf.
 
 > Machen Sie sich mit der [Vereinbarung einer Sicherheitsüberprüfung](contract) vertraut.
 
-**Voraussetzungen: **
+**Voraussetzungen:**
 
 * Gehen Sie das Lernprogramm [Autorisierungskonzepte](../) durch. 
 * Informieren Sie sich über das [Erstellen von Adaptern](../../adapters/creating-adapters).

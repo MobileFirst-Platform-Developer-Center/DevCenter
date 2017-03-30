@@ -17,7 +17,7 @@ Die Java-Bibliothek wird als JAR-Datei (**mfp-java-token-validator-8.0.0.jar**) 
 Dieses Lernprogramm zeigt, wie ein einfaches Java-Servlet (`GetBalance`) mit einem Gültigkeitsbereich
 (`accessRestricted`) geschützt wird.
 
-**Voraussetzungen: **
+**Voraussetzungen:**
 
 * Gehen Sie das Lernprogramm [Externe Ressource mit {{ site.data.keys.mf_server }} authentifizieren](../) durch. 
 * Sie müssen das [{{ site.data.keys.product_adj }}-Foundation-Sicherheitsframework](../../) verstehen.

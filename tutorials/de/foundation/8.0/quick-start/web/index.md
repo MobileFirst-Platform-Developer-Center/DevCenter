@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: End-to-End-Demonstration für Web-Apps
-breadcrumb_title: Web-Apps
+breadcrumb_title: Web
 relevantTo: [javascript]
 weight: 5
 ---
