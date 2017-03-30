@@ -101,7 +101,7 @@ Wenn Sie servlet-2.x verwenden, müssen Sie die Sicherheitsrolle wie folgt in Ih
     - **authorizationURL**: Ihr {{ site.data.keys.mf_server }} (`http(s):/Name_Ihres_Hosts:Port/Laufzeitname/api`)
 oder ein externer Autorisierungsserver wie IBM DataPower.
 
-    - **clientID**: Der Ressourcenserver muss ein registrierter vertraulicher Client sein. Im Lernprogramm [Vertrauliche Clients](../../confidential-clients/) erfahren Sie, wie ein vertraulicher Client registriert wird. *Der vertrauliche Client**MUSS** den zulässigen Bereich `authorization.introspect` haben, damit er Token validieren kann. 
+    - **clientID**: Der Ressourcenserver muss ein registrierter vertraulicher Client sein. Im Lernprogramm [Vertrauliche Clients](../../confidential-clients/) erfahren Sie, wie ein vertraulicher Client registriert wird. *Der vertrauliche Client* *MUSS** den zulässigen Bereich `authorization.introspect` haben, damit er Token validieren kann. 
 
     - **clientSecret**: Der Ressourcenserver muss ein registrierter vertraulicher Client sein. Im Lernprogramm [Vertrauliche Clients](../../confidential-clients/) erfahren Sie, wie ein vertraulicher Client registriert wird. 
     - **cacheSize (optional)**: Der TAI verwendet den Java-Token-Validator-Cache, um Token und Introspektionsdaten

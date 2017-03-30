@@ -19,7 +19,7 @@ um Geräte zu registrieren und Geräteregistrierungen aufzuheben und um
 Tags zu abonnieren und Tagabonnements zu beenden. In diesem Lernprogramm werden Sie lernen, wie
 Push-Benachrichtigungen in universellen Windows-8.1-Anwendungen und Windows-10-UWP-Anwendungen mit C# gehandhabt werden. 
 
-**Voraussetzungen: **
+**Voraussetzungen:**
 
 * Stellen Sie sicher, dass Sie die folgenden Lernprogramme durchgearbeitet haben: 
 	* [Übersicht über Push-Benachrichtigungen](../../)

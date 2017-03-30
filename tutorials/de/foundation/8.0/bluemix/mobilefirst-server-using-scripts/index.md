@@ -80,7 +80,7 @@ Unter macOS gibt es zwei Optionen für die Ausführung von Docker-Befehlen:
 2. Installieren Sie das [IBM Container-Plug-in (cf ic)](https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html).
 
 ## Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen
-{: #download-the-ibm-mfpf-container-8000}-archive
+{: #download-the-ibm-mfpf-container-8000-archive }
 Wenn Sie die {{ site.data.keys.product }} in IBM Containern einrichten möchten, müssen Sie zunächst ein Image erstellen, das später per Push-Operation in Bluemix übertragen wird.   
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Folgen Sie den Anweisungen auf dieser Seite</a>, um das Archiv mit {{ site.data.keys.mf_server }} für IBM Container (ZIP-Datei) herunterzuladen (suchen Sie nach *CNBL0EN*).
 

@@ -15,7 +15,7 @@ SMS-Benachrichtigungen sind eine Untergruppe der Push-Benachrichtigungen.
 Beschäftigen Sie sich daher zuerst mit dem Lernprogramm zu [Push-Benachrichtigungen in Cordova](../../).   
 SMS-Benachrichtigungen in Cordova-Anwendungen werden unter iOS und Android unterstützt.
 
-**Voraussetzungen: **
+**Voraussetzungen:**
 
 * Stellen Sie sicher, dass Sie die folgenden Lernprogramme durchgearbeitet haben: 
   * [Benachrichtigungen im Überblick](../../)

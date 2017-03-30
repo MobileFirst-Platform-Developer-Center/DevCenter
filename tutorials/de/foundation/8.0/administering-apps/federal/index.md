@@ -48,8 +48,7 @@ die Zulassung von Verschlüsselungsmodulen.Die
 {{ site.data.keys.product }}
 bietet FIPS-140-2-Unterstützung für Android- und iOS-Cordova-Apps. 
 
-### FIPS 140-2 für den {{ site.data.keys.mf_server }}
-und SSL-Kommunikation mit dem {{ site.data.keys.mf_server }}
+### FIPS 140-2 für den {{ site.data.keys.mf_server }} und SSL-Kommunikation mit dem {{ site.data.keys.mf_server }}
 {: #fips-140-2-on-the-mobilefirst-server-and-ssl-communications-with-the-mobilefirst-server }
 {{ site.data.keys.mf_server }} wird in einem Anwendungsserver wie WebSphere Application Server ausgeführt. Der WebSphere Application Server kann
 so konfiguriert werden, dass mit FIPS 140-2 konforme Verschlüsselungsmodule für eingehende und abgehende SSL-Verbindungen (Secure Sockets Layer) verwendet

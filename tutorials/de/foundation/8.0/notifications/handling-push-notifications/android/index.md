@@ -17,7 +17,7 @@ um Geräte zu registrieren und Geräteregistrierungen aufzuheben und um
 Tags zu abonnieren und Tagabonnements zu beenden. In diesem Lernprogramm werden Sie lernen, wie
 Push-Benachrichtigungen in Android-Anwendungen gehandhabt werden. 
 
-**Voraussetzungen: **
+**Voraussetzungen:**
 
 * Stellen Sie sicher, dass Sie die folgenden Lernprogramme durchgearbeitet haben: 
     * [{{ site.data.keys.product_adj }}-Entwicklungsumgebung einrichten](../../../installation-configuration/#installing-a-development-environment)
