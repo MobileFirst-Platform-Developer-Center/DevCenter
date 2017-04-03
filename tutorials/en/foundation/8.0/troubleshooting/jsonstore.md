@@ -185,20 +185,22 @@ catch(JSONStoreException e) {
 
 ### List of error codes
 {: #list-of-error-codes }
-| Error code | Description |
-|------------|-------------|
+List of common error codes and their description:
+
+|Error Code      | Description |
+|----------------|-------------|
 | -100 UNKNOWN_FAILURE | Unrecognized error. |
 | -75 OS\_SECURITY\_FAILURE | This error code is related to the requireOperatingSystemSecurity flag. It can occur if the destroy API fails to remove security metadata that is protected by operating system security (Touch ID with passcode fallback), or the init or open APIs are unable to locate the security metadata. It can also fail if the device does not support operating system security, but operating system security usage was requested. |
 | -50 PERSISTENT\_STORE\_NOT\_OPEN | JSONStore is closed. Try calling the open method in the JSONStore class class first to enable access to the store. |
 | -48 TRANSACTION\_FAILURE\_DURING\_ROLLBACK | There was a problem with rolling back the transaction. |
-| -47 TRANSACTION\\_FAILURE\_DURING\_REMOVE\_COLLECTION | |Cannot call removeCollection while a transaction is in progress. |
+| -47 TRANSACTION\\_FAILURE\_DURING\_REMOVE\_COLLECTION |Cannot call removeCollection while a transaction is in progress. |
 | -46 TRANSACTION\_FAILURE\_DURING\_DESTROY | Cannot call destroy while there are transactions in progress. |
 | -45 TRANSACTION\_FAILURE\_DURING\_CLOSE\_ALL | Cannot call closeAll while there are transactions in place. |
 | -44 TRANSACTION\_FAILURE\_DURING\_INIT | Cannot initialize a store while there are transactions in progress. |
 | -43 TRANSACTION_FAILURE | There was a problem with transactions. |
 | -42 NO\_TRANSACTION\_IN\_PROGRESS | Cannot commit to rolled back a transaction when there is no transaction is progress |
 | -41 TRANSACTION\_IN\_POGRESS | Cannot start a new transaction while another transaction is in progress. |
-| -40 FIPS\_ENABLEMENT\_FAILURE | |Something is wrong with FIPS. |
+| -40 FIPS\_ENABLEMENT\_FAILURE |Something is wrong with FIPS. |
 | -24 JSON\_STORE\_FILE\_INFO\_ERROR | Problem getting the file information from the file system. |
 | -23 JSON\_STORE\_REPLACE\_DOCUMENTS\_FAILURE | Problem replacing documents from a collection. |
 | -22 JSON\_STORE\_REMOVE\_WITH\_QUERIES\_FAILURE | Problem removing documents from a collection. |
