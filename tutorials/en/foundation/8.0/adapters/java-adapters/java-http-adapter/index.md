@@ -15,6 +15,11 @@ Java adapters provide free reign over connectivity to a backend system. It is th
 
 **Prerequisite:** Make sure to read the [Java Adapters](../) tutorial first.
 
+>**Important:** When you use static references to classes from `javax.ws.rs.*` or `javax.servlet.*`, within your adapter implementation, then you should ensure to configure the **RuntimeDelegate** using one of the options below:
+*	Set  `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl` in Liberty `jvm.options`
+OR
+*	Set the system property or JVM custom property `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl`
+
 ## Initializing the adapter
 {: #initializing-the-adapter }
 
