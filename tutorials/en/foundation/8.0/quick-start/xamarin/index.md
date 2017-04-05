@@ -53,18 +53,18 @@ In a browser window, open the {{ site.data.keys.mf_console }} by loading the URL
    /// <value>The worklight client.</value>
    public static IWorklightClient WorklightClient {get; set;}
    ```
-* If you're devleoping for iOS, paste the following code inside **FinishedLaunching** method of the **AppDelegate.cs** file:
+* If you're developing for iOS, paste the following code inside **FinishedLaunching** method of the **AppDelegate.cs** file:
 
   ```csharp
    <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
-  >Replace ```<ClassName>``` with the name of your Class.
-* If you're devleoping for Android, include the following line of code inside **OnCreate** method of the **MainActivity.cs** file:
+  >Replace `<ClassName>` with the name of your Class.
+* If you're developing for Android, include the following line of code inside **OnCreate** method of the **MainActivity.cs** file:
 
   ```csharp
    <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
-  >Replace ```<ClassName>``` with the name of your Class.
+  >Replace `<ClassName>` with the name of your Class.
 * Define a method to obtain the access token and perform a resource request to the MFP Server as below.
 
     ```csharp
