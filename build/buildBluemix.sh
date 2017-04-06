@@ -12,9 +12,6 @@ if [ $TRAVIS_BRANCH != 'master' ]; then
   exit 0
 fi
 
-# introduce travis wait time
-install: travis_wait mvn install
-
 # enable error reporting to the console
 set -e
 
@@ -23,7 +20,7 @@ set -e
 rm -rf _site/*
 bundle exec jekyll build --config _config.yml,build/_configBluemix.yml -d _site --profile
 rm -f _site/*.log
-bundle exec htmlproofer ./_site --disable-external --url-ignore "#,/support/knowledgecenter/js/kc/globaltopic.js,/support/knowledgecenter/js/kc/themes/css/globaltopic.css"
+travis_wait 30 bundle exec htmlproofer ./_site --disable-external --url-ignore "#,/support/knowledgecenter/js/kc/globaltopic.js,/support/knowledgecenter/js/kc/themes/css/globaltopic.css"
 
 # Test also for external URLs
 #bundle exec htmlproofer ./_site --url-ignore '#'
