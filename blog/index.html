@@ -3,10 +3,11 @@ layout: default
 indexed: false
 title: MobileFirst Foundation Blog
 ---
-<section class="container blogIndex">
-    <h2 class="no-anchor">MobileFirst Foundation Blog</h2>
-    <blockquote>If you'd like to contribute a blog post, please see <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">our contribution guidelines</a>.</blockquote>
-    <section id="blogPosts" class="container">
+<section class="container blogIndex" role="main">
+    <h2 class="no-anchor">{{ site.data.keys.product }} Blog</h2>
+    <blockquote>Contribute a blog post! see <a href="https://github.com/MobileFirst-Platform-Developer-Center/DevCenter/blob/master/contributing.md">our contribution guidelines</a>.</blockquote>
+    <blockquote>Read <a href="{{ site.baseurl }}/blog/tag/Announcement/">product announcements</a>.</blockquote>
+    <section id="blogPostsList" class="container">
         <div class="twoColumns">
         {% for post in paginator.posts %}
             <div class="postItem inline">
@@ -33,12 +34,11 @@ title: MobileFirst Foundation Blog
     <section>
         <h3 class="no-anchor">More blogs to follow</h3>
         <ul class="moreBlogs">
-            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobileblog/?lang=en" target="_blank">The Mobile Frontier</a></b></li>
-            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobile/?lang=en" target="_blank">IBM Mobile Development</a></b></li>
+            <li><b><a href="http://ibmmobiletipsntricks.com/" target="_blank">IBM Mobile Tips 'n' Tricks</a></b></li>
             <li><b><a href="http://www.tricedesigns.com/tag/mobilefirst/" target="_blank">tricedesigns</a></b></li>
             <li><b><a href="https://www.raymondcamden.com/tags/mobilefirst/" target="_blank">Raymond Camden’s blog</a></b></li>
-            <li><b><a href="http://ibmmobiletipsntricks.com/" target="_blank">IBM Mobile Tips 'n' Tricks</a></b></li>
-            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/dhuyvett/?lang=en" target="_blank">David Dhuyvetter’s blog</a></b></li>
+            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobileblog/?lang=en" target="_blank">The Mobile Frontier</a></b></li>
+            <li><b><a href="https://www.ibm.com/developerworks/community/blogs/mobile/?lang=en" target="_blank">IBM Mobile Development</a></b></li>
             <li><b><a href="https://www.ibm.com/developerworks/community/blogs/worklight/?lang=en" target="_blank">IBM Worklight’s previous blog</a></b></li>
             <li><b><a href="https://www.ibm.com/developerworks/community/blogs/worklightsmobileplayground/?lang=en" target="_blank">IBM Worklight Mobile Playground’s previous blog</a></b></li>
         </ul>

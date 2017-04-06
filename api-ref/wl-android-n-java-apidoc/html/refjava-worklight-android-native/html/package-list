@@ -1,0 +1,6 @@
+com.worklight.androidgap.api
+com.worklight.common
+com.worklight.wlclient.api
+com.worklight.wlclient.api.challengehandler
+com.worklight.wlclient.auth
+com.worklight.wlclient.ui

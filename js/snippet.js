@@ -3,7 +3,7 @@
 var snippets = $('div.highlighter-rouge>pre.highlight, figure.highlight>pre');
 
 [].forEach.call(snippets, function(snippet) {
-    snippet.firstChild.insertAdjacentHTML('beforebegin', '<button class="btn btn-sm clipboard" data-toggle="tooltip" data-placement="bottom" data-trigger="manual" data-clipboard-snippet><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>');
+    snippet.firstChild.insertAdjacentHTML('beforebegin', '<button class="btn btn-sm clipboard" data-toggle="tooltip" data-placement="bottom" data-trigger="manual" aria-label="Copy to clipboard" data-clipboard-snippet><span class="glyphicon glyphicon-copy" aria-hidden="true"></span></button>');
 });
 
 var clipboardSnippets = new Clipboard('[data-clipboard-snippet]', {

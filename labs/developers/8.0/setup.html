@@ -10,6 +10,10 @@ tabs:
     path: /labs/developers/8.0/advancedmessenger
   - name: Advanced Wallet
     path: /labs/developers/8.0/advancedwallet
+  - name: Advance Car Service App
+    path: /labs/developers/8.0/advancedcarservice
+  - name: Advanced Utility Service
+    path: /labs/developers/8.0/advancedutilityservice
 ---
 <h4 class="no-anchor">Setup</h4>
 <p>The recommended way to setup your workstation for these labs is to download the prepared VMware image that has all required software installed and ready to be used. However, if you want to do this on your own you will need to setup the dependencies listed below.</p>
@@ -58,11 +62,11 @@ Finally, do not forget to set JAVA_HOME, ANDROID_HOME, MAVEN_HOME and M2_HOME an
     <li>Use user "ibm" and password: “QQqq1234″ to log in. Same password is set for sudo</li>
 </ul>
 
-<h4 class="no-anchor">Download and install MobileFirst Foundation 8.0 devkit</h4>
+<h4 class="no-anchor">Download and install {{ site.data.keys.mf_dev_kit }}</h4>
 <ul>
-  <li>Follow the IBM MobileFirst Foundation Development Kit <a href="{{site.baseurl}}/downloads">setup instructions and install devkit into /home/ibm/dev/server/ folder</a></li>
-  <li>Install the MobileFirst v8.0 command-line interface by running from Terminal: <code>npm install -g mfpdev-cli</code></li>
-  <li>If you expect to not have an Internet connection available, install the adapter archetypes from the Download Center in the MobileFirst Operations Console.</li>
+  <li>Follow the {{ site.data.keys.mf_dev_kit }} <a href="{{site.baseurl}}/downloads">setup instructions and install devkit into /home/ibm/dev/server/ folder</a></li>
+  <li>Install the {{ site.data.keys.mf_cli }} by running from Terminal: <code>npm install -g mfpdev-cli</code></li>
+  <li>If you expect to not have an Internet connection available, install the adapter archetypes from the Download Center in the {{ site.data.keys.mf_console }}.</li>
 </ul>
 
 <h4 class="no-anchor">Register on Bluemix</h4>

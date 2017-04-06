@@ -2,16 +2,14 @@
 layout: default
 ---
 {% if page.filterByTag %}{% assign posts = site.tags[page.filterByTag]%}{% else %}{% assign posts = site.posts %}{% endif %}
-<section class="container-fluid tagpage">
+<section class="container-fluid tagpage" role="main">
     <div class="row">
         <div class="hidden-xs col-sm-2">
         </div>
 
         <div class="col-sm-8">
-            <h2>Blog posts about
-                <small>{{page.title}}</small>
-            </h2>
-            <div id="blogPosts">
+            <h2>All blog posts tagged "{{page.title}}"</h2>
+            <div id="blogPostsList">
                 {% for post in posts %}
                 <div class="postItem">
                     <p class="postDate">{{post.date | date: '%B %d, %Y'}}</p>

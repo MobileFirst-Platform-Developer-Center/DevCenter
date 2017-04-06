@@ -3,6 +3,7 @@ source_url: https://github.ibm.com/MFPSamples/DevCenter
 baseurl: /MFPSamples
 future: true
 unpublished: true
+last_modified: true
 exclude:
   - vendor
   - build
@@ -12,4 +13,3 @@ exclude:
   - Staticfile.auth
   - Staticfile
   - pdf
-  - tutorials/ja

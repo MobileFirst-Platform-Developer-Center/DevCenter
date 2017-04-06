@@ -1,0 +1,45 @@
+{
+    "name": "Foundation 8.0",
+    "path": "/tutorials/fr/foundation/8.0",
+    "children": [
+        {
+            "name": "Developers",
+            "path": "",
+            "children": [{
+                "name": "Cordova",
+                "path": "/cordova-tutorials"
+            }, {
+                "name": "iOS",
+                "path": "/ios-tutorials"
+            }, {
+                "name": "Android",
+                "path": "/android-tutorials"
+            }, {
+                "name": "Windows 8.1 and 10",
+                "path": "/windows-8-10-tutorials"
+            }, {
+                "name": "Web",
+                "path": "/web-tutorials"
+            }, {
+                "name": "Xamarin",
+                "path": "/xamarin-tutorials"
+            }, {
+                "name": "Server-side",
+                "path": "/server-side-tutorials"
+            }]
+        },
+        {
+            "name": "Admins",
+            "path": "",
+            "children": [{
+                "name": "Installation and Configuration",
+                "path": "/installation-configuration"
+            }, {
+                "name": "Administering Applications",
+                "path": "/administering-apps"
+            }, {
+                "name": "Application Center",
+                "path": "/appcenter"
+            }]
+        }]
+    }

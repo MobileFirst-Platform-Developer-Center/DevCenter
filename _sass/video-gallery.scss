@@ -434,9 +434,20 @@
       cursor: pointer;
       display: inline-block;
     }
+    
+    .label-info {
+      background-color: #075d77;
+    }
+    
+    .label-success {
+      background-color: #107d10;
+   }
   }
 
   .gallery{
+     .label-info {
+        background-color: #075d77;
+     }
     padding:0 0 0 0;
     margin:0 0 0 0;
 

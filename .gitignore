@@ -14,4 +14,8 @@ node_modules/
 # Temporary swap files
 *.swp
 *.swo
+*.*~
+
+# API-reference ZIP file
+IBM-WL-apidocs.zip
 

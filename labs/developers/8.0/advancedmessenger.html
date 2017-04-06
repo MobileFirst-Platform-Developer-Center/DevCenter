@@ -3,7 +3,11 @@ layout: labs
 title: MobileFirst Foundation 8.0 Developer Labs
 tabs:
   - name: Lab selection
-    path: /labs/developers/8.0/intro
+    path: /labs/developers/8.0/intro/
+  - name: Advanced Car Service
+    path: /labs/developers/8.0/advancedcarservice
+  - name: Advanced Utility Service
+    path: /labs/developers/8.0/advancedutilityservice
   - name: Advanced Messenger
     path: /labs/developers/8.0/advancedmessenger
   - name: Advanced Wallet
@@ -15,7 +19,7 @@ tabs:
 </div>
 
 <h4 class="no-anchor">Pre-requisites:</h4>
-<p>Follow the Setup section to install an Ubuntu image, install the MobileFirst Foundation devkit, archetypes and CLI and register at Bluemix.</p>
+<p>Follow the Setup section to install an Ubuntu image, install the {{ site.data.keys.mf_dev_kit }}, archetypes and CLI and register at Bluemix.</p>
 <p>You can download videos for offline usage from <a href="https://www.dropbox.com/sh/25z5lvm21qpjwre/AABaO9pXsxsJa2KtywjhjF2ya?dl=0" target="_blank">from Dropbox</a> or <a href="https://1drv.ms/f/s!ArRVJ_BgeJEFiiqsPSuo0AxhPhX6" target="_blank">OneDrive</a> (2.62 - 2.66)</p>
 
 <h4 class="no-anchor">Setup</h4>
@@ -65,11 +69,11 @@ Finally, do not forget to set JAVA_HOME, ANDROID_HOME, MAVEN_HOME and M2_HOME an
     <li>Use user "ibm" and password: “QQqq1234″ to log in. Same password is set for sudo</li>
 </ul>
 
-<h4 class="no-anchor">Download and install MobileFirst Foundation 8.0 devkit</h4>
+<h4 class="no-anchor">Download and install the {{ site.data.keys.mf_dev_kit }}</h4>
 <ul>
-  <li>Follow the IBM MobileFirst Foundation Development Kit <a href="{{site.baseurl}}/downloads">setup instructions and install devkit into /home/ibm/dev/server/ folder</a></li>
-  <li>Install the MobileFirst v8.0 command-line interface by running from Terminal: <code>npm install -g mfpdev-cli</code></li>
-  <li>If you expect to not have an Internet connection available, install the adapter archetypes from the Download Center in the MobileFirst Operations Console.</li>
+  <li>Follow the {{ site.data.keys.mf_dev_kit }} <a href="{{site.baseurl}}/downloads">setup instructions and install devkit into /home/ibm/dev/server/ folder</a></li>
+  <li>Install the {{ site.data.keys.mf_cli }} by running from Terminal: <code>npm install -g mfpdev-cli</code></li>
+  <li>If you expect to not have an Internet connection available, install the adapter archetypes from the Download Center in the {{ site.data.keys.mf_console }}.</li>
 </ul>
 
 <h4 class="no-anchor">Register on Bluemix</h4>
@@ -82,7 +86,7 @@ Finally, do not forget to set JAVA_HOME, ANDROID_HOME, MAVEN_HOME and M2_HOME an
 <h2>Part 1</h2>
 <h4 class="no-anchor">Lab highlights</h4>
 <ul>
-  <li>Moving existing app to MobileFirst Foundation 8</li>
+  <li>Moving existing app to {{ site.data.keys.product }} 8.0</li>
   <li>Uses Ionic v2 beta with Typescript</li>
   <li>Development using CLI and MS Visual Studio Code</li>
   <li>Using Java and Javascript adapters for backend calls</li>
@@ -107,12 +111,12 @@ Finally, do not forget to set JAVA_HOME, ANDROID_HOME, MAVEN_HOME and M2_HOME an
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title no-anchor">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-one" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Adding MobileFirst SDK and registering app on server</a>
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-one" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">Adding {{ site.data.keys.product_adj }} SDK and registering app on server</a>
             </h4>
         </div>
         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body no-anchor">
-                <b>Description:</b> Install MobileFirst client-side sdk for cordova, register application and perform a proper init by catching SDK init event. Get familiar with basic application bootstrap process.
+                <b>Description:</b> Install {{ site.data.keys.product_adj }} client-side sdk for cordova, register application and perform a proper init by catching SDK init event. Get familiar with basic application bootstrap process.
                 <br>
                 <b>Time to complete:</b> 30 minutes
                 <br>
@@ -532,7 +536,7 @@ load() {
   <li>Security scan of application binary</li>
   <li>Bug reporting and user sentiment analysis</li>
   <li>Moving Node.js app to Bluemix using Cloud Foundry Node runtime</li>
-  <li>Creating MobileFirst Foundation instance on Bluemix</li>
+  <li>Creating {{ site.data.keys.product }} instance on Bluemix</li>
   <li>Preparing mobile application for distribution</li>
 </ul>
 
@@ -558,7 +562,7 @@ load() {
         </div>
         <div id="collapse1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading1">
             <div class="panel-body no-anchor">
-                <b>Description:</b> Add validator to Node.js Mock Server to check authentication token on MobileFirst Platform and prevent unauthenticated calls
+                <b>Description:</b> Add validator to Node.js Mock Server to check authentication token on {{ site.data.keys.product }} and prevent unauthenticated calls
                 <br>
                 <b>Time to complete:</b> 45 minutes
                 <br>
@@ -761,7 +765,7 @@ this.AuthHandler.handleChallenge = ((response) => {
         </div>
         <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading5">
             <div class="panel-body no-anchor">
-                <b>Description:</b> Create Mobile Quality Assurance service instance on Bluemix and using MobileFirst Platform CLI add MQA libraries for hybrid application instrument mobile application and report a first bug
+                <b>Description:</b> Create Mobile Quality Assurance service instance on Bluemix and using {{ site.data.keys.mf_cli }} add MQA libraries for hybrid application instrument mobile application and report a first bug
                 <br>
                 <b>Time to complete:</b> 25 minutes
                 <br>
@@ -825,7 +829,7 @@ this.AuthHandler.handleChallenge = ((response) => {
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="heading7">
             <h4 class="panel-title no-anchor">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse7" aria-expanded="false" aria-controls="collapse7">Create MobileFirst Foundation Server instance using Bluemix service</a>
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#part-two" href="#collapse7" aria-expanded="false" aria-controls="collapse7">Create {{ site.data.keys.mf_server }} instance using Bluemix service</a>
             </h4>
         </div>
         <div id="collapse7" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading7">

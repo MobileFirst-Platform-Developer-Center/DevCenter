@@ -62,7 +62,7 @@ A single dashDB instance can be shared across multiple Mobile Foundation service
 ### Connecting to a dashDB that is in an Org/space that is different than the MobileFirst Server:  
 
 If you use dashDB service as the database when you deploy Mobile Foundation on Bluemix using scripts, then you need to run the scripts provided along with your MobileFirst Server download.  
-[Follow the instructions] (https://www-01.ibm.com/support/docview.wss?uid=swg2C7000005) in this page to download the IBM MobileFirst Server 8.0 for IBM Containers archive (.zip file, search for: CNBL0EN).  
+[Follow the instructions](https://www-01.ibm.com/support/docview.wss?uid=swg2C7000005) in this page to download the IBM MobileFirst Server 8.0 for IBM Containers archive (.zip file, search for: CNBL0EN).  
   
 **Option 1:** If you are deploying MobileFirst Server in the same Org and Space where the dashDB service exists:  
 
