@@ -1,0 +1,285 @@
+---
+layout: tutorial
+title: Cordova 向けの開発
+show_disqus: false
+use_dropdown: false
+print_pdf: false
+show_in_nav: false
+indexed: false
+---
+<!-- NLS_CHARSET=UTF-8 -->
+<br>
+以下のチュートリアルに従って、Cordova アプリケーションを開発します。それには、開発環境のセットアップ、製品の体験、および{{ site.data.keys.product }} 8.0 オファリングと統合することによる価値の追加が含まれます。<br/><br/>
+
+<div id="container">
+    <div class="row">
+        <div id="categoryBoxes">
+            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
+                <div class="input-group add-on">
+                    <input style="width: 206px" id="search-input" aria-label="search field" type="text" class="form-control" placeholder="検索対象..." name="q">
+                </div>
+            </form>
+
+            <div class="col-md-3">
+                <a href="#start-here">
+                    <div class="categoryBox-start-here hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションのイメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
+                         ここから始めます
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#get-sdk-and-apis">
+                    <div class="categoryBox-sdk hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションのイメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
+                        SDK および API の使用
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#implement-authentication-and-security">
+                    <div class="categoryBox-security hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションのイメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
+                        セキュリティーの追加
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#measure-and-engage">
+                    <div class="categoryBox-more hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションのイメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
+                        測定とエンゲージ
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tutorials-list">
+    <hr/>
+
+    <h2><a href="../product-overview/">製品の概要</a></h2>
+    {{ site.data.keys.product }} オファリングについて学びます。
+
+    <ul>
+        <li><a href="../product-overview/capabilities">主な機能</a></li>
+        <li><a href="../product-overview/components">製品のコンポーネント</a></li>
+        <li><a href="../product-overview/requirements">システム要件</a></li>
+        <li><a href="../product-overview/licensing">{{ site.data.keys.mf_server }} のライセンス</a></li>
+        <li><a href="../product-overview/features-matrix">機能とプラットフォームのマトリックス</a></li>
+        <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full }} のアクセシビリティー機能</a></li>
+        <li><a href="../product-overview/release-notes">リリース・ノート</a></li>
+    </ul>
+
+    <h2><a href="../installation-configuration">インストールおよび構成</a></h2>
+    {{ site.data.keys.product_full }} で作業するための開発環境をセットアップします。
+
+    <ul>
+        <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} 開発環境のセットアップ</a></li>
+        <li><a href="../installation-configuration/development/cordova/">Cordova 開発環境のセットアップ</a></li>
+        <li><a href="../product-overview/components/console/">{{ site.data.keys.mf_console }} の使用</a></li>
+    </ul>
+
+    <hr id="start-here"/>
+    <h2><a href="../quick-start/">クイック・スタート</a></h2>
+    {{ site.data.keys.product }} の感覚をつかみます。
+
+    <ul>
+        <li><a href="../quick-start/cordova/">Cordova でのクイック・スタート</a></li>
+    </ul>
+
+    <h2><a href="../application-development/sdk">{{ site.data.keys.product_adj }} SDK の追加</a></h2>
+    {{ site.data.keys.product }} SDK を Cordova、またはネイティブ iOS、Android、Windows 8.1 Universal、Windows 10 UWP のアプリケーションに追加します。
+
+    <ul>
+        <li><a href="../application-development/sdk/cordova/">{{ site.data.keys.product }} SDK の Cordova アプリケーションへの追加</a></li>
+    </ul>
+
+    <hr id="get-sdk-and-apis"/>
+
+    <h2><a href="../application-development">アプリケーションの開発</a></h2>
+    {{ site.data.keys.product_adj }} API の使用について学びます。ダイレクト・アップデート、 JSONStore、WLResourceRequest、クライアント・サイドの変換、アプリケーションのデバッグ、開発者 CLI などです。
+
+    <ul>
+        <li><a href="../application-development/cordova-apps/">Cordova アプリケーションにおける {{ site.data.keys.product }} SDK の開発</a>
+            <ul>
+                <li><a href="../application-development/cordova-apps/adding-images-and-icons">Cordova アプリケーションへのカスタム・スプラッシュ画面およびアイコンの追加</a></li>
+                <li><a href="../application-development/cordova-apps/securing-apps">Cordova アプリケーションの保護</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理</a></li>
+        <li><a href="../application-development/using-mobilefirst-cli-in-eclipse/">Eclipse での {{ site.data.keys.mf_cli }} の使用</a></li>
+        <li><a href="../application-development/resource-request/javascript/">JavaScript (Cordova、Web) アプリケーションからのリソース要求</a></li>
+        <li><a href="../application-development/jsonstore/cordova/">Cordova アプリケーションでの JSONStore</a></li>
+        <li><a href="../application-development/jsonstore/security-utilities/">JSONStore セキュリティー・ユーティリティー</a></li>
+        <li><a href="../application-development/jsonstore/code-examples/">JSONStore サンプル・コード</a></li>
+        <li>クライアント・サイドのログ収集
+            <ul>
+                <li><a href="../application-development/client-side-log-collection/">クライアント・サイドのログ収集の概要</a></li>
+                <li><a href="../application-development/client-side-log-collection/javascript/">JavaScript (Cordova、Web) アプリケーションでのログ収集</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/direct-update/">Cordova アプリケーションでのダイレクト・アップデートの使用</a>
+            <ul>
+                <li><a href="../application-development/direct-update/cdn-support">CDN からのダイレクト・アップデート要求の処理</a></li>
+                <li><a href="../application-development/direct-update/secure-direct-update">セキュアなダイレクト・アップデートの実装</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/translation/">JavaScript (Cordova、Web) アプリケーションのマルチリンガル・トランスレーション</a></li>
+        <li><a href="../application-development/debugging-applications/">JavaScript (Cordova、Web) アプリケーションのデバッグ</a></li>
+        <li><a href="../application-development/simple-data-sharing/">単純データ共有</a></li>
+    </ul>
+
+    <h2><a href="../adapters/">アダプターの開発</a></h2>
+    企業のバックエンド・システムおよびクラウド・サービスと統合するためのサーバー・サイド・コードを開発します。
+
+    <ul>
+        <li><a href="../adapters/">アダプターの概要</a></li>
+        <li><a href="../adapters/creating-adapters/">Java アダプターおよび JavaScript アダプターの作成</a></li>
+        <li><a href="../adapters/javascript-adapters/">JavaScript アダプター</a>
+            <ul>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP アダプター</a>
+                    <ul>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">JavaScript HTTP アダプターでの SSL の使用</a></li>
+                    </ul>
+                </li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL アダプター</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">JavaScript アダプターでの Java の使用</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/java-adapters/">Java アダプター</a>
+            <ul>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP アダプター</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL アダプター</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/developing-adapters/">IDE でのアダプターの開発</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">アダプターのテストおよびデバッグ</a></li>
+        <li>サーバー・サイドのログ収集
+            <ul>
+                <li><a href="../adapters/server-side-log-collection/">サーバー・サイドのログ収集の概要</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Java アダプターでのログ収集</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">JavaScript アダプターでのログ収集</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">アダプターの高度な使用方法とマッシュアップ</a></li>
+        <li><a href="../adapters/cloudant/">アダプターを使用した Cloudant との統合</a></li>
+    </ul>
+
+    <hr id="implement-authentication-and-security"/>
+
+    <h2><a href="../authentication-and-security">認証およびセキュリティー</a></h2>
+    さまざまな保護レイヤーをアプリケーションに追加します。
+
+    <ul>
+        <li><a href="../authentication-and-security/">許可の概念</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">セキュリティー検査の作成</a>
+            <ul>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">セキュリティー検査コントラクト</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">セキュリティー検査の実装</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/javascript/">JavaScript (Cordova、Web) アプリケーションでのチャレンジ・ハンドラーの実装</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/user-authentication/security-check/">セキュリティー検査の実装</a></li>
+                <li><a href="../authentication-and-security/user-authentication/javascript/">JavaScript (Cordova、Web) アプリケーションでのチャレンジ・ハンドラーの実装</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a></li>
+        <li><a href="../authentication-and-security/step-up/">ステップアップ認証</a></li>
+        <li><a href="../authentication-and-security/enrollment/">登録</a></li>
+        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA セキュリティー検査</a></li>
+        <li><a href="../authentication-and-security/confidential-clients/">機密クライアント</a></li>
+        <li><a href="../authentication-and-security/protecting-external-resources/">外部リソースの保護</a>
+            <ul>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">トラスト・アソシエーション・インターセプター</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java トークンの検証</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js の検証</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET メッセージ・インスペクター</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/application-authenticity/">アプリケーション認証性</a></li>
+        <li><a href="../authentication-and-security/device-sso/">デバイスのシングル・サインオンの構成</a></li>
+        <li><a href="../authentication-and-security/certificate-pinning/">証明書ピン留め</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">{{ site.data.keys.mf_server }} 鍵ストアの構成</a></li>
+    </ul>
+
+    <hr id="measure-and-engage"/>
+
+    <h2><a href="../notifications">通知</a></h2>
+    {{ site.data.keys.product_full }} を使用して通知を送信します。
+
+    <ul>
+        <li><a href="../notifications/">通知の概要</a></li>
+        <li><a href="../notifications/sending-notifications/">通知の送信</a></li>
+        <li><a href="../notifications/handling-push-notifications/cordova/">Cordova アプリケーションでのプッシュ通知の処理</a>
+            <ul>
+                <li><a href="../notifications/handling-push-notifications/interactive">対話式通知</a></li>
+                <li><a href="../notifications/handling-push-notifications/silent">サイレント通知</a></li>
+            </ul>
+        </li>
+        <li><a href="../notifications/handling-sms-notifications/cordova/">Cordova アプリケーションでの SMS 通知の処理</a></li>
+        <li><a href="../notifications/analytics/">プッシュ通知のための Analytics サポートのセットアップ</a></li>
+        <li><a href="../notifications/rest-apis/">プッシュ・サービス REST API</a></li>
+    </ul>
+
+    <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
+    デプロイ済みのアプリケーションやアダプターをモニターする、アプリケーションの使用について洞察を得る、現実的に発生しているエラーについて調べる、といったことを行います。
+
+    <ul>
+        <li><a href="../analytics">{{ site.data.keys.mf_analytics_full }} の概要</a></li>
+        <li><a href="../analytics/analytics-api/">クライアント・アプリケーションでの Analytics API の使用</a></li>
+        <li><a href="../analytics/analytics-rest-api/">Analytics REST API の使用</a></li>
+        <li><a href="../analytics/console/custom-charts/">カスタム・グラフの作成</a></li>
+        <li><a href="../analytics/console/alerts/">アラートの管理</a></li>
+        <li><a href="../analytics/console/log-filters/">ログ・フィルターの構成</a></li>
+        <li><a href="../analytics/console/scenario-loader/">シナリオ・ローダー</a></li>
+        <li><a href="../analytics/console/push-notifications/">プッシュ通知</a></li>
+          <li><a href="../analytics/console/analytics-data-purge/">データの保存と消去</a></li>
+        <li><a href="../analytics/workflows/">Analytics ワークフロー</a></li>
+    </ul>
+
+    <h2><a href="../bluemix">Bluemix 上の Foundation</a></h2>
+    Bluemix を使用して、{{ site.data.keys.product }} をクラウドにデプロイします。
+
+    <ul>
+        <li><a href="../bluemix/">Bluemix 上の {{ site.data.keys.product_full }} の概要</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Mobile Foundation Bluemix サービスを使用した {{ site.data.keys.mf_server }} インスタンスの作成</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">IBM Container サービスのスクリプトを使用した、IBM Containers 上の {{ site.data.keys.mf_server }} のセットアップ</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">ログとトレースの収集</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">コンテナーの保護</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">トラブルシューティング</a></li>
+            </ul>
+        </li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Liberty for Java のスクリプトを使用した、Bluemix 上の {{ site.data.keys.mf_server }} のセットアップ</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">コンテナーの保護</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">トラブルシューティング</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2><a href="../troubleshooting/">共通問題のトラブルシューティング</a></h2>
+    よくある質問と、それに対する回答です。
+
+    <ul>
+        <li><a href="../troubleshooting/notifications">Push Notifications</a></li>
+        <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
+        <li><a href="../troubleshooting/analytics">Analytics</a></li>
+    </ul>
+
+    <h2><a href="../../../../en/product-integration/8.0">製品の統合</a></h2>
+    {{ site.data.keys.product }} 8.0 アプリケーションの他の IBM 製品との統合
+
+    <ul>
+        <li><a href="../../../../en/product-integration/8.0">使用可能な製品統合のリスト</a></li>
+    </ul>
+    <br/>
+</div>

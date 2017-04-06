@@ -1,216 +1,264 @@
 ---
 layout: tutorial
-title: Developing for Android
+title: Android 向けの開発
 show_disqus: false
-use_dropdown: true
+use_dropdown: false
 print_pdf: false
+show_in_nav: false
+indexed: false
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br>
-<p>Review curated tutorials for the Android platform.</p>
-<br>
+以下のチュートリアルに従って、Android アプリケーションを開発します。それには、開発環境のセットアップ、製品の体験、および {{ site.data.keys.product }} 8.0 オファリングと統合することによる価値の追加が含まれます。<br/><br/>
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="quickstart">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseQuickstart" aria-expanded="true" aria-controls="collapseQuickstart">Quick Start</a>
-            </h4>
-        </div>
+<div id="container">
+    <div class="row">
+        <div id="categoryBoxes">
+            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Inline search field" action="{{site.baseurl}}/search/" method="get">
+                <div class="input-group add-on">
+                    <input style="width: 206px" id="search-input" aria-label="search field" type="text" class="form-control" placeholder="検索対象..." name="q">
+                </div>
+            </form>
 
-        <div id="collapseQuickstart" class="panel-collapse collapse" role="tabpanel" aria-labelledby="quickstart">
-            <div class="panel-body">
-                <ul>
-                <li><a href="../quick-start/android/">End-to-end flow demonstration</a></li>
-                </ul>
+            <div class="col-md-3">
+                <a href="#start-here">
+                    <div class="categoryBox-start-here hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションのイメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
+                        ここから始めます
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#get-sdk-and-apis">
+                    <div class="categoryBox-sdk hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションのイメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
+                         SDK および API の使用
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#implement-authentication-and-security">
+                    <div class="categoryBox-security hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションのイメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
+                        セキュリティーの追加
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#measure-and-engage">
+                    <div class="categoryBox-more hidden-xs hidden-md">
+                        <img alt="チュートリアルのナビゲーションのイメージ"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
+                        測定とエンゲージ
+                    </div>
+                </a>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="settingUpYourDevelopmentEnvironment">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsesettingUpYourDevelopmentEnvironment" aria-expanded="true" aria-controls="settingUpYourDevelopmentEnvironment">Setting up your development environment</a>
-            </h4>
-        </div>
+<div id="tutorials-list">
+    <hr/>
 
-        <div id="collapsesettingUpYourDevelopmentEnvironment" class="panel-collapse collapse" role="tabpanel" aria-labelledby="settingUpYourDevelopmentEnvironment">
-            <div class="panel-body">
-                <ul>
-                    <li><a href="../setting-up-your-development-environment/setting-up-the-mobilefirst-development-environment/">Setting up your MobileFirst development environment</a></li>
-                    <li><a href="../setting-up-your-development-environment/setting-up-the-android-development-environment/">Setting up the Android development environment</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <h2><a href="../product-overview/">製品の概要</a></h2>
+    {{ site.data.keys.product }} オファリングについて説明します。
 
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="helloWorld">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseHelloWorld" aria-expanded="true" aria-controls="helloWorld">Hello World</a>
-            </h4>
-        </div>
+    <ul>
+        <li><a href="../product-overview/capabilities">主な機能</a></li>
+        <li><a href="../product-overview/components">製品のコンポーネント</a></li>
+        <li><a href="../product-overview/requirements">システム要件</a></li>
+        <li><a href="../product-overview/licensing">{{ site.data.keys.mf_server }} のライセンス</a></li>
+        <li><a href="../product-overview/features-matrix">機能とプラットフォームのマトリックス</a></li>
+        <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full }} のアクセシビリティー機能</a></li>
+        <li><a href="../product-overview/release-notes">リリース・ノート</a></li>
+    </ul>
 
-        <div id="collapseHelloWorld" class="panel-collapse collapse" role="tabpanel" aria-labelledby="hellowWorld">
-            <div class="panel-body">
-                <ul>
-                    <li><a href="../configuring-the-mfpf-sdk/configuring-a-native-android-application-with-the-mfp-sdk/">Configuring a native Android application with the MobileFirst Platform SDK</a></li>
-                    <li><a href="../configuring-the-mfpf-sdk/introduction-to-mobilefirst-platform-operations-console/">Introduction to MobileFirst Console</a></li>
-                    <li> <a href="../advanced-client-side-development/using-cli-to-create-build-and-manage-mobilefirst-project-artifacts/">Using CLI to create, build, and manage MobileFirst project artifacts</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <h2><a href="../installation-configuration">インストールおよび構成</a></h2>
+    {{ site.data.keys.product_full }} で作業するための開発環境をセットアップします。
 
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="adapters">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAdapters" aria-expanded="true" aria-controls="adapters">Adapters</a>
-            </h4>
-        </div>
+    <ul>
+        <li><a href="../installation-configuration/development/mobilefirst/">{{ site.data.keys.product_adj }} 開発環境のセットアップ</a></li>
+        <li><a href="../installation-configuration/development/android/">Android 開発環境のセットアップ</a></li>
+        <li><a href="../product-overview/components/console/">{{ site.data.keys.mf_console }} の使用</a></li>
+    </ul>
 
-        <div id="collapseAdapters" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapters">
-            <div class="panel-body">
-                <b>Required reading</b>
-                <ul>
-                    <li><a href="../server-side-development/adapters-overview/">Adapters overview</a></li>
-                    <li> <a href="../server-side-development/invoking-adapter-procedures-native-android-applications/">Invoking adapter procedures from native Android applications</a></li>
-                </ul>
+    <hr id="start-here"/>
+    <h2><a href="../quick-start/">クイック・スタート</a></h2>
+    {{ site.data.keys.product }} の感触をつかみます。
 
-                <b>Further reading</b>
-                <ul>
-                    <li><a href="../server-side-development/javascript-adapters/">JavaScript adapters</a>
-                        <ul>
-                            <li><a href="../server-side-development/javascript-adapters/js-http-adapter/">JavaScript HTTP Adapter</a></li>
-                            <li><a href="../server-side-development/javascript-adapters/js-sql-adapter/">JavaScript SQL Adapter</a></li>
-                            <li><a href="../server-side-development/javascript-adapters/js-cast-iron-adapter/">JavaScript Cast Iron Adapter</a></li>
-                            <li><a href="../server-side-development/javascript-adapters/js-jms-adapter/">JavaScript JMS Adapter</a></li>
-                            <li><a href="../server-side-development/javascript-adapters/using-java-adapters/">Using Java in JavaScript adapters</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="../server-side-development/java-adapters/">Java Adapter</a>
-                        <ul>
-                            <li><a href="../server-side-development/java-adapters/java-http-adapter/">Java HTTP adapter</a></li>
-                            <li><a href="../server-side-development/java-adapters/java-sql-adapter/">Java SQL adapter</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="../server-side-development/debugging-adapters/">Debugging adapters</a></li>
-                    <li><a href="../server-side-development/cloudant/">Integrating with Cloudant using an adapter</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <ul>
+        <li><a href="../quick-start/android/">Android でのクイック・スタート</a></li>
+    </ul>
 
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="workingWithData">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseWorkingWithData" aria-expanded="true" aria-controls="workingWithData">Working with data</a>
-            </h4>
-        </div>
+    <h2><a href="../application-development/sdk">{{ site.data.keys.product_adj }} SDK の追加</a></h2>
+    {{ site.data.keys.product }} SDK を Cordova、またはネイティブ iOS、Android、Windows 8.1 Universal、Windows 10 UWP のアプリケーションに追加します。
 
-        <div id="collapseWorkingWithData" class="panel-collapse collapse" role="tabpanel" aria-labelledby="workingWithData">
-            <div class="panel-body">
-                <ul>
-                    <li><a href="../client-side-development/jsonstore">JSONStore</a></li>
-                    <li><a href="../client-side-development/working-with-cloudant-nosql-db-api/">Working with Cloudant NoSQL DB API</a></li>
-                    <li><a href="../advanced-client-side-development/remote-controlled-client-side-log-collection/">Remote-controlled Client-side log collection</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <ul>
+        <li><a href="../application-development/sdk/android/">{{ site.data.keys.product }} SDK の Android アプリケーションへの追加</a></li>
+    </ul>
 
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="AuthenticationSecurity">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAuthenticationSecurity" aria-expanded="true" aria-controls="AuthenticationSecurity">Authentication and security</a>
-            </h4>
-        </div>
+    <hr id="get-sdk-and-apis"/>
 
-        <div id="collapseAuthenticationSecurity" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AuthenticationSecurity">
-            <div class="panel-body">
-                <a href="../authentication-security/authentication-concepts/">Authentication concepts</a>
-                <br><br>
-                <b>Form-based authentication</b>
-                <ul>
-                    <li><a href="../authentication-security/form-based-authentication/">Form-based authentication - server configuration</a></li>
-                    <li><a href="../authentication-security/form-based-authentication/form-based-authentication-native-android-applications/">Form-based authentication - client implementation</a></li>
-                </ul>
+    <h2><a href="../application-development">アプリケーションの開発</a></h2>
+    以下の {{ site.data.keys.product_adj }} の API の使用について説明します。JSONStore、WLResourceRequest、Developer CLI
 
-                <b>Adapter-based authentication</b>
-                <ul>
-                    <li><a href="../authentication-security/adapter-based-authentication/">Adapter-based authentication - server configuration</a></li>
-                    <li><a href="../authentication-security/adapter-based-authentication/adapter-based-authentication-native-android-applications/">Adapter-based authentication - client implementation</a></li>
-                    <li><a href="../advanced-topics/two-step-adapter-authentication/">Two-Step authentication</a></li>
-                </ul>
+    <ul>
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">{{ site.data.keys.mf_cli }} を使用した {{ site.data.keys.product_adj }} 成果物の管理</a></li>
+        <li><a href="../application-development/resource-request/android/">Android アプリケーションからのリソース要求</a></li>
+        <li><a href="../application-development/jsonstore/android/">Android アプリケーションでの JSONStore</a></li>
+        <li>クライアント・サイドのログ収集
+            <ul>
+                <li><a href="../application-development/client-side-log-collection/">クライアント・サイドのログ収集の概要</a></li>
+            	<li><a href="../application-development/client-side-log-collection/android/">Android アプリケーションでのログ収集</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/live-update/">ライブ・アップデート</a></li>
+        <li><a href="../application-development/simple-data-sharing/">単純データ共有</a></li>
+    </ul>
 
-                <b>Custom authentication</b>
-                <ul>
-                    <li><a href="../authentication-security/custom-authentication/">Custom authentication - server configuration</a></li>
-                    <li><a href="../authentication-security/custom-authentication/custom-authentication-in-native-android-applications/">Custom authentication - client implementation</a></li>
-                </ul>
+    <h2><a href="../adapters/">アダプターの開発</a></h2>
+    エンタープライズ・バックエンド・システムおよびクラウド・サービスと統合するためのサーバー・サイド・コードを開発します。
 
+    <ul>
+        <li><a href="../adapters/">アダプターの概要</a></li>
+        <li><a href="../adapters/creating-adapters/">Java アダプターおよび JavaScript アダプターの作成</a></li>
+        <li><a href="../adapters/javascript-adapters/">JavaScript アダプター</a>
+            <ul>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP アダプター</a>
+                    <ul>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">JavaScript HTTP アダプターでの SSL の使用</a></li>
+                    </ul>
+                </li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL アダプター</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">JavaScript アダプターでの Java の使用</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/java-adapters/">Java アダプター</a>
+            <ul>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP アダプター</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL アダプター</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/developing-adapters/">IDE でのアダプターの開発</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">アダプターのテストおよびデバッグ</a></li>
+        <li>サーバー・サイドのログ収集
+            <ul>
+                <li><a href="../adapters/server-side-log-collection/">サーバー・サイドのログ収集の概要</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Java アダプターでのログ収集</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">JavaScript アダプターでのログ収集</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">アダプターの高度な使用方法とマッシュアップ</a></li>
+        <li><a href="../adapters/cloudant/">アダプターを使用した Cloudant との統合</a></li>
+    </ul>
 
-                <b>Application Authenticity Protection</b>
-                <ul>
-                    <li><a href="../authentication-security/application-authenticity-protection/">Application Authenticity Protection</a></li>
-                </ul>
+    <hr id="implement-authentication-and-security"/>
 
-                <b>Authenticating external resources</b>
-                <ul>
-                    <li><a href="../authentication-security/using-mobilefirst-server-authenticate-external-resources/">Using the MobileFirst Server to authenticate external resources</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <h2><a href="../authentication-and-security">認証およびセキュリティー</a></h2>
+    さまざまな保護のレイヤーをアプリケーションに追加します。
 
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="AdvancedTopics">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseAdvancedTopics" aria-expanded="true" aria-controls="AdvancedTopics">Advanced topics</a>
-            </h4>
-        </div>
+    <ul>
+        <li><a href="../authentication-and-security/">許可の概念</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">セキュリティー検査の作成</a>
+            <ul>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">セキュリティー検査コントラクト</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">セキュリティー検査の実装</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/android/">Android アプリケーションでのチャレンジ・ハンドラーの実装</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/user-authentication/security-check/">セキュリティー検査の実装</a></li>
+                <li><a href="../authentication-and-security/user-authentication/android/">Android アプリケーションでのチャレンジ・ハンドラーの実装</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a></li>
+        <li><a href="../authentication-and-security/step-up/">ステップアップ認証</a></li>
+        <li><a href="../authentication-and-security/enrollment/">登録</a></li>
+        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA セキュリティー検査</a></li>
+        <li><a href="../authentication-and-security/confidential-clients/">機密クライアント</a></li>
+        <li><a href="../authentication-and-security/protecting-external-resources/">外部リソースの保護</a>
+            <ul>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">トラスト・アソシエーション・インターセプター</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java トークンの検証</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js の検証</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET メッセージ・インスペクター</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/application-authenticity/">アプリケーション認証性</a></li>
+        <li><a href="../authentication-and-security/device-sso/">デバイスのシングル・サインオンの構成</a></li>
+        <li><a href="../authentication-and-security/certificate-pinning/">証明書ピン留め</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">{{ site.data.keys.mf_server }} 鍵ストアの構成</a></li>
+    </ul>
 
-        <div id="collapseAdvancedTopics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="AdvancedTopics">
-            <div class="panel-body">
-                <b>Push Notifications</b>
-                <ul>
-                    <li><a href="../notifications/push-notifications-overview">Push Notifications Overview</a></li>
-                    <li><a href="../notifications/push-notifications-overview/push-notifications-in-native-android-applications/">Push notifications in native Android applications</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <hr id="measure-and-engage"/>
 
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="MovingToProduction">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseMovingToProduction" aria-expanded="true" aria-controls="MovingToProduction">Moving to Production</a>
-            </h4>
-        </div>
+    <h2><a href="../notifications">通知</a></h2>
+    {{ site.data.keys.product_full }} を使用して通知を送信します。
 
-        <div id="collapseMovingToProduction" class="panel-collapse collapse" role="tabpanel" aria-labelledby="MovingToProduction">
-            <div class="panel-body">
-                <ul>
-                    <li><a href="../moving-to-production/moving-development-environment-stand-alone-qa-production-servers/">Moving from development environment to stand-alone QA and production servers</a></li>
-                    <li><a href="../moving-to-production/distributing-mobile-applications-with-application-center/">Distributing mobile applications with Application Center</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <ul>
+        <li><a href="../notifications/">通知の概要</a></li>
+        <li><a href="../notifications/sending-notifications/">通知の送信</a></li>
+        <li><a href="../notifications/handling-push-notifications/android/">Android アプリケーションでのプッシュ通知の処理</a></li>
+        <li><a href="../notifications/handling-sms-notifications/android/">Android アプリケーションでの SMS 通知の処理</a></li>
+        <li><a href="../notifications/analytics/">プッシュ通知のための Analytics サポートのセットアップ</a></li>
+        <li><a href="../notifications/rest-apis/">プッシュ・サービス REST API</a></li>
+    </ul>
 
-    <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="ReportsAndAnalytics">
-            <h4 class="panel-title">
-                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseReportsAndAnalytics" aria-expanded="true" aria-controls="ReportsAndAnalytics">Reports and analytics</a>
-            </h4>
-        </div>
+    <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
+    デプロイされたアプリケーションとアダプターのモニター、アプリケーションの使用状況の洞察、発生したエラーの検出、その他を行います。
 
-        <div id="collapseReportsAndAnalytics" class="panel-collapse collapse" role="tabpanel" aria-labelledby="ReportsAndAnalytics">
-            <div class="panel-body">
-                <ul>
-                    <li><a href="../analytics/operational-analytics/">Operational Analytics</a></li>
-                    <li><a href="../analytics/reports-analytics/">Reports and analytics</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+    <ul>
+        <li><a href="../analytics">{{ site.data.keys.mf_analytics_full }} の概要</a></li>
+        <li><a href="../analytics/analytics-api/">クライアント・アプリケーションでの Analytics API の使用</a></li>
+        <li><a href="../analytics/analytics-rest-api/">Analytics REST API の使用</a></li>
+        <li><a href="../analytics/console/custom-charts/">カスタム・グラフの作成</a></li>
+        <li><a href="../analytics/console/alerts/">アラートの管理</a></li>
+        <li><a href="../analytics/console/log-filters/">ログ・フィルターの構成</a></li>
+        <li><a href="../analytics/console/scenario-loader/">シナリオ・ローダー</a></li>
+        <li><a href="../analytics/console/push-notifications/">プッシュ通知</a></li>
+        <li><a href="../analytics/console/analytics-data-purge/">データの保存と消去</a></li>
+        <li><a href="../analytics/workflows/">Analytics ワークフロー</a></li>
+    </ul>
+
+    <h2><a href="../bluemix">Bluemix 上の Foundation</a></h2>
+    Bluemix を使用して、{{ site.data.keys.product }} をクラウドにデプロイします。
+
+    <ul>
+        <li><a href="../bluemix/">Bluemix 上の {{ site.data.keys.product_full }} の概要</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Mobile Foundation Bluemix サービスを使用した {{ site.data.keys.mf_server }} インスタンスの作成</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">IBM Container サービスのスクリプトを使用した、IBM Containers 上の {{ site.data.keys.mf_server }} のセットアップ</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">ログとトレースの収集</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">コンテナーの保護</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">トラブルシューティング</a></li>
+            </ul>
+        </li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Liberty for Java のスクリプトを使用した、Bluemix 上の {{ site.data.keys.mf_server }} のセットアップ</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">コンテナーの保護</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">トラブルシューティング</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2><a href="../troubleshooting/">共通問題のトラブルシューティング</a></h2>
+    よくある質問と、それに対する回答です。
+
+    <ul>
+        <li><a href="../troubleshooting/notifications">Push Notifications</a></li>
+        <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
+        <li><a href="../troubleshooting/analytics">Analytics</a></li>
+    </ul>
+
+    <h2><a href="../../../../en/product-integration/8.0">製品の統合</a></h2>
+    {{ site.data.keys.product }} 8.0 アプリケーションの他の IBM 製品との統合
+
+    <ul>
+        <li><a href="../../../../en/product-integration/8.0">使用可能な製品統合のリスト</a></li>
+    </ul>
+    <br/>
 </div>

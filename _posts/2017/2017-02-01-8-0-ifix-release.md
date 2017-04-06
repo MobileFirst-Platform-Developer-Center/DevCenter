@@ -116,3 +116,11 @@ cordova-template-mfp 8.0.2017013103
 
 **Tools**  
 mfpdev-cli 8.0.201701201  
+
+**artifacts**  
+*Update - available on Maven*  
+adapter-maven-api 8.0.2017012516  
+adapter-maven-archetype-http 8.0.2017012516  
+adapter-maven-archetype-java 8.0.2017012516  
+adapter-maven-archetype-sql 8.0.2017012516  
+adapter-maven-plugin 8.0.2017012516  

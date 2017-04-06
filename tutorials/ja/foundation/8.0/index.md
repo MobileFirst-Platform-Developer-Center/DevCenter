@@ -1,24 +1,29 @@
 ---
 layout: tutorial
-title: IBM MobileFirst Platform Foundation 8.0
+title: IBM MobileFirst Foundation 8.0
 breadcrumb_title: 8.0
 use_dropdown: true
-show_breadcrumb: true
 print_pdf: false
 weight: 0
 show_disqus: false
+show_breadcrumb: true
 ---
+<!-- NLS_CHARSET=UTF-8 -->
 <br>
-IBM MobileFirst Platform Foundation は企業がネイティブ、ハイブリッドおよびモバイル Web アプリケーションを開発し、テスト、保護および管理できるようにするためのツール・セットです。
-すべてのカテゴリーとチュートリアルを見るには、以下を参照してください:
+{{site.data.keys.product_full }} では、事前に統合されたモバイル・アプリケーション・サービスの包括的なセットを使用して、モバイル・アプリケーションのビルド、管理、および更新を大幅に合理化します。
+
+開発者は、フロントエンド・フレームワークと好みのツールを使用してアプリケーションをビルドできます。また、サポートされるモバイル・プラットフォームで広い範囲にわたって使用可能な {{site.data.keys.product }} Software Development Kit (SDK) を使用して、アプリケーションにプッシュ、認証、オフライン同期、およびビジネス・ロジックを簡単に追加できます。{{site.data.keys.product }} によって、クライアントからサーバーにアプリケーションを制御できるようになり、それにより、ビジネス・データを相互作用の時点で収集できるようになります。また、{{site.data.keys.product }} アプリケーションによって、アプリケーションのインクリメンタル更新のための合理化された反復可能処理を採用することができ、アプリケーションを柔軟なハイブリッド・クラウド・パターンで実行できます。
+
+すべてのカテゴリーとチュートリアルを確認するには、次にアクセスします。
 
 * [すべてのチュートリアル](all-tutorials/)
 
-部分的なコンテンツを見るには、以下を参照してください: 
+それぞれの内容については、以下にアクセスします。 
 
-* [iOS 開発](ios-tutorials/) 
-* [Android 開発](android-tutorials/) 
-* [Windows 8 Universal 開発](windows-8-tutorials/) 
-* [Windows 10 UWP 開発](windows-10-tutorials/) 
-* [Cordova 開発](hybrid-tutorials/)
-* [サーバー・サイド開発](server-side-tutorials/)
+* [Cordova の開発](cordova-tutorials/)
+* [iOS の開発](ios-tutorials/) 
+* [Android の開発](android-tutorials/) 
+* [Windows 8.1 Universal および Windows 10 UWP の開発](windows-8-10-tutorials/)
+* [Xamarin の開発](xamarin-tutorials/)
+* [Web アプリケーションの開発](web-tutorials/)
+* [サーバー・サイドの開発](server-side-tutorials/)

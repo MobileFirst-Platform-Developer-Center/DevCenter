@@ -28,9 +28,9 @@ The following cross-references are used in this glossary:
 
 For other terms and definitions, see the [IBM Terminology website](http://www.ibm.com/software/globalization/terminology/).
 
-## A {
+## A
 {: #a }
-}
+
 ### acquisition policy
 {: #acquisition-policy }
 A policy that controls how data is collected from a sensor of a mobile device. The policy is defined by application code.

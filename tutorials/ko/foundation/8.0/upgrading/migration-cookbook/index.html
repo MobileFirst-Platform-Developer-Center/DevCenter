@@ -1,0 +1,1113 @@
+---
+layout: tutorial
+title: MobileFirst Foundation 8.0 마이그레이션 쿡북
+breadcrumb_title: 마이그레이션 쿡북
+weight: 1
+---
+<!-- NLS_CHARSET=UTF-8 -->
+<div id="overview">
+    <h2>개요</h2>
+    <p>이 쿡북의 목표는 IBM Worklight Foundation 6.2 또는 IBM MobileFirst Platform Foundation 6.3 - 7.1에서 {{ site.data.keys.product_full }} 8.0으로 애플리케이션 및 어댑터를 마이그레이션하는 단계에 대한 명확하고 간단한 보기를 제공하는 것입니다. </p>
+
+    <p>마이그레이션 프로세스는 일반 하이브리드 애플리케이션을 표준 Cordova 애플리케이션으로 변환하고 고유 애플리케이션에서 {{ site.data.keys.product_adj }} SDK를 업데이트하는 단계를 안내합니다. 모바일 웹 앱도 처리됩니다. 어댑터는 Maven 프로젝트로 마이그레이션되고 {{ site.data.keys.product_adj }} 보안 프레임워크, 푸시 알림 및 직접 업데이트와 같은 구현 개념이 더 명확해집니다. </p>
+
+    <p>마이그레이션 프로세스의 일부 측면을 더 쉽게 만들기 위해 마이그레이션 지원 도구가 제공됩니다. <br/>
+    이 도구는 코드 베이스에서 더 이상 사용되지 않거나 더 이상 지원되지 않거나 수정된 API와 같이 검사하고 변경해야 하는 영역을 식별하여 도움을 줍니다. </p>
+
+    <blockquote><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> <b>참고:</b> 이 쿡북에서는 가능한 모든 마이그레이션 시나리오를 다루려고 시도하지 않으며, <a href="../" target="_blank">포괄적으로 살펴보려면 마이그레이션 사용자 문서 주제를 방문</a>할 것을 권장합니다. </blockquote>
+
+    <h2>도움말 가져오기</h2>
+    <p>{{ site.data.keys.product }} 팀은 귀하의 질문에 도움이 되어서 기쁩니다. <br/>
+    공식 지원은 <a href="https://www-947.ibm.com/support/servicerequest/newServiceRequest.action">PMR을 여십시오</a>. 또한 <a href="https://stackoverflow.com/questions/tagged/ibm-mobilefirst" target="_blank">StackOverflow</a> 및 <a href="{{site.baseurl}}/blog/2015/08/19/come-chat-with-us/" target="_blank">Slack 커뮤니티</a>에서도 질문할 수 있습니다. </p>
+
+    <h2>빠른 시작</h2>
+    <p>애플리케이션 및 어댑터의 마이그레이션을 시작하기 전에 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/quick-start/" target="_blank">빠른 시작 학습서</a>를 수행하여 {{ site.data.keys.product }} 8.0에 익숙해질 것을 권장합니다. </p>
+
+    <p>애플리케이션 등록, 어댑터 빌드 및 배치, 보안과 인증 구현 및 구성 등의 주제에 대한 자세한 정보가 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/all-tutorials/" target="_blank">학습서에서 제공</a>됩니다. </p>
+
+    <br/>
+    <div id="container" class="boxes hidden-sm hidden-xs hidden-md">
+        <div class="row">
+            <div id="migrationPaths">
+                <div class="col-md-3">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/tools.svg); background-repeat:no-repeat">
+                        <h3 class="setupAndTools no-anchor">설정<br/> &amp; 도구</h3>
+
+                        <ul class="topics">
+                            <li><a href="#env-setup">MobileFirst<br/>서버 설정</a></li>
+                            <li><a href="#env-setup">마이그레이션 지원 도구<br/>설치</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/apps.svg); background-repeat:no-repeat">
+                        <h3 class="migratingApplications no-anchor">애플리케이션<br/>마이그레이션</h3>
+
+                        <ul class="topics">
+                            <li><a href="#applications">일반 하이브리드/MFPF Cordova 앱을<br/>표준 Cordova 앱으로<br/> 마이그레이션</a></li>
+                            <li><a href="#applications">모바일 웹/데스크탑 브라우저 앱<br/>마이그레이션</a></li>
+                            <li><a href="#applications">고유 애플리케이션에서<br/> SDK 업데이트</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="migrationPath"  style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/adapters.svg); background-repeat:no-repeat">
+                        <h3 class="migratingAdapters no-anchor">어댑터<br/>마이그레이션</h3>
+
+                        <ul class="topics">
+                            <li><a href="#migrating-adapters">Apache Maven 설정을 위한<br/>전제조건</a></li>
+                            <li><a href="#migrating-adapters">새 Maven 프로젝트<br/>작성</a></li>
+                            <li><a href="#migrating-adapters">소스 코드 마이그레이션</a></li>
+                            <li><a href="#migrating-adapters">빌드 및 테스트</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="migrationPath" style="background-image:url({{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/layout/dev_topics.svg); background-repeat:no-repeat">
+                        <h3 class="devTopics no-anchor">개발<br/>주제</h3>
+
+                        <ul class="topics">
+                            <li><a href="#development-topics">어댑터</a></li>
+                            <li><a href="#development-topics">보안 프레임워크</a></li>
+                            <li><a href="#development-topics">푸시 알림</a></li>
+                            <li><a href="#development-topics">직접 업데이트</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/><br/>
+
+<div id="migrationSteps">
+    <div class="gutter gutter-env-setup-color">
+        <div class="number number-tool hidden-sm hidden-xs hidden-md">1</div>
+        <h2 id="env-setup">설정 및 도구</h2>
+        <p>마이그레이션을 시작하려면 우선 {{ site.data.keys.mf_server }} 인스턴스 및 마이그레이션 지원 도구를 실행해야 합니다. </p>
+
+        <h3>{{ site.data.keys.mf_server }}</h3>
+        <p><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/bluemix/using-mobile-foundation/" target="_blank">Mobile Foundation Bluemix 서비스</a>를 사용하여 <a href="https://bluemix.net">IBM Bluemix</a>에서 {{ site.data.keys.mf_server }}를 설정할 수 있습니다. 또는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/" target="_blank">{{ site.data.keys.mf_dev_kit }}</a>을 사용하여 로컬로 실행되는 서버를 설정할 수 있습니다. </p>
+
+        <h3>마이그레이션 지원 도구</h3>
+        <p>나중에 마이그레이션 지원 도구를 사용하므로 {{ site.data.keys.mf_server }}를 시작하고 실행한 후 우선 이 도구를 설치하십시오. </p>
+
+        <ol>
+            <li>이 도구가 작동하기 위한 필수 소프트웨어이므로 <a href="https://nodejs.org/en/" target="_blank">NodeJS를 설치</a>하십시오. </li>
+            <li>{{ site.data.keys.mf_console }}에서 사이드바 탐색의 맨 아래에 있는 다운로드 센터 링크를 클릭하십시오. 지시사항에 따라 NPM에서 또는 .zip 파일을 다운로드하여 마이그레이션 지원 도구를 설치하십시오. </li>
+        </ol>
+
+        <img alt="{{ site.data.keys.mf_console }}에서 마이그레이션 도구 다운로드" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/get-migration-tool.png"/>
+    </div>
+
+    <br id="applications"><br/>
+
+    <div class="gutter gutter-apps-color">
+        <div class="number number-apps hidden-sm hidden-xs hidden-md">2</div>
+        <h2>애플리케이션 마이그레이션</h2>
+        <p>일반 하이브리드/MobileFirst Cordova, 웹 및 고유 애플리케이션의 마이그레이션 단계에는 마이그레이션 지원 도구를 실행하여 API 변경사항 평가, 프로젝트 구조 설정, 애플리케이션 소스 관리, 패키지 관리자 사용 및 API 변경사항 처리가 포함됩니다. </p>
+
+        <h3>일반 하이브리드 애플리케이션</h3>
+        <p>지난 릴리스에서는 Eclipse 또는 {{ site.data.keys.mf_cli }}용 MobileFirst Studio 플러그인을 사용하여 일반 하이브리드 애플리케이션이 작성되고 개발되고 빌드되고 관리되었습니다. {{ site.data.keys.product }} 8.0부터는 이전 애플리케이션 모델 대신 표준 Cordova 애플리케이션에 대한 지원이 소개됩니다. </p>
+
+        <p>Cordova CLI와 같은 표준 커뮤니티 도구를 사용하여 Cordova 애플리케이션을 작성하십시오. Cordova CLI를 Cordova 플러그인 세트로 사용하는 혼합에 {{ site.data.keys.product_adj }} Cordova SDK가 추가되었으며, 이는 <a href="https://npmjs.org" target="_blank">npm</a>에서 사용 가능합니다. </p>
+
+        <p>표준 Cordova 애플리케이션을 사용함으로써 개발자는 선호하는 도구와 고유한 접근 방식으로 애플리케이션을 개발할 수 있습니다. 개발자로서 이제 <a href="http://cordova.apache.org" target="_blank">Cordova 에코시스템</a>을 이용할 수 있습니다. </p>
+
+        <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>팁</b> 또한 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/" target="_blank">Cordova 애플리케이션 개발을 위해 Eclipse를 설치</a>할 수도 있습니다. </p>
+
+        <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Cordova 애플리케이션 개발</a>에 대해 자세히 학습하십시오. </blockquote>
+
+        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-hybrid-apps">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateHybrid" aria-expanded="false" aria-controls="collapseMigrateHybrid">일반 하이브리드/MobileFirst Cordova 앱을 표준 Cordova 앱으로 마이그레이션</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateHybrid" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-hybrid-apps">
+                    <div class="panel-body">
+                        <h4>1단계</h4>
+                        <p> 명령행 창을 열고 다음과 같은 방식으로 마이그레이션 지원 도구를 사용하십시오. </p>
+                        <ul>
+                            <li>일반 하이브리드 프로젝트를 스캔하여 API 보고서만 생성하려면 다음을 사용하십시오.
+{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory{% endhighlight %}</li>
+                            <li>일반 하이브리드 프로젝트를 스캔하고 사전 정의된 Cordova 프로젝트를 작성하려면 다음을 사용하십시오. <br/>
+{% highlight bash %}mfpmigrate client --in path_to_source_directory --out path_to_destination_directory [--projectName location_of_project]{% endhighlight %}
+                            <b>참고:</b> 이 프로세스에는 MobileFirst Cordova SDK 플러그인의 다운로드가 포함되므로 이 조치는 인터넷 연결에 따라 완료하는 데 시간이 걸릴 수 있습니다. </li>
+                            <li><b>source_directory</b>를 Studio 프로젝트의 애플리케이션 폴더에 있는 <b>application</b> 폴더의 경로로 대체하십시오. 예: <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
+                            <li><b>destination_directory</b>를 변환된 애플리케이션 및 생성된 API 보고서를 넣을 폴더의 경로로 대체하십시오. </li>
+			    <li><b>location_of_project</b>를 <b>destination_directory</b> 내에서 프로젝트를 작성할 디렉토리 이름으로 대체하십시오. 이 플래그는 선택적입니다. </li>
+                        </ul>
+
+                        <img alt="일반 하이브리드 앱을 표준 Cordova 앱으로 마이그레이션" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/cordova-migration.png"/>
+
+                        <p>마이그레이션 지원 도구를 성공적으로 실행한 후 다음과 같은 영향을 관찰할 수 있습니다. </p>
+
+                        <ul>
+                            <li><b>MigratedProject</b> 폴더에는 이제 일반 하이브리드 앱과 동일한 메타데이터(일반 하이브리드 앱의 설정에 의존하는 애플리케이션 ID 및 기타 설정)가 있는 새 Cordova 애플리케이션이 포함되며, {{ site.data.keys.product_adj }} Cordova SDK를 설치했고 필요한 플랫폼을 추가했습니다. </li>
+                            <li><b>client</b> 명령이 사용된 경우 API 보고서 <b>{app-name}-api-report.html</b>이 생성되어 기본 브라우저에 열렸습니다. 여기에는 {{ site.data.keys.product }} 8.0에서 사용할 수 있도록 애플리케이션 구현을 맞추기 위해 수행해야 하는 잠재적인 조치가 포함됩니다. </li>
+                        </ul>
+
+                        <img alt="API 보고서" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-cordova.png"/>
+
+                        <h4>2단계</h4>
+                        <p>생성된 API 보고서에 대해 조치하기 전에 애플리케이션 소스 코드를 일반 하이브리드 앱에서 Cordova 앱으로 복사해야 합니다. </p>
+
+                        <b>일반 하이브리드 앱</b><br/>
+                        <p><b>common</b> 폴더의 컨텐츠를 복사하여 Cordova 앱의 <b>www</b> 폴더에 붙여넣으십시오(프롬프트가 표시되는 경우 대체). </p>
+
+                        <b>MFPF 7.1 Cordova 앱</b><br/>
+                        <p><b>www</b> 폴더를 복사하고 Cordova 앱의 기존 <b>www</b> 폴더를 대체하십시오. </p>
+
+                        <p><b>참고:</b> 일반 하이브리드 앱에 환경 특정 구현이 있는 경우, <a href="http://cordova.apache.org/docs/en/latest/guide/cli/index.html#using-merges-to-customize-each-platform" target="_blank">Cordova 병합 사용</a>을 통해 이를 복사할 수 있습니다. </p>
+
+                        <blockquote>마이그레이션 지원 도구가 작성한 Cordova 애플리케이션을 사용할 필요는 없습니다. Cordova CLI를 사용하여 새 Cordova 애플리케이션을 직접 작성하고 {{ site.data.keys.product_adj }} Cordova SDK와 필요한 써드파티 Cordova 플러그인을 추가할 수 있습니다. <a href="https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/cordova-tutorials/" target="_blank">Cordova 학습서에 따라 자세히 학습</a>하십시오. </blockquote>
+
+                        <br/>
+                        <h4>3단계</h4>
+                        <p>이제 Cordova 앱에서 애플리케이션의 소스 코드를 사용하여 몇몇 코드 블록을 추가하거나 편집해야 합니다. </p>
+
+                        <div class="panel-group accordion" id="setupCordova" role="tablist" aria-multiselectable="false">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="setupCordova">
+                                <h4 class="panel-title">
+                                    <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#setupCordova" data-target="#collapseCordova" aria-expanded="false" aria-controls="collapseCordova">지시사항을 보려면 클릭</a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseCordova" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
+                                <div class="panel-body">
+                                    <ol>
+                                        <li><b>www/index.html</b> 파일을 업데이트하십시오.
+                                            <ul>
+                                                <li>다음 CSS 코드를 index.html 파일의 헤드 부분에서 이미 존재하는 CSS 코드 앞에 추가하십시오.
+
+{% highlight html %}
+<link rel="stylesheet" href="worklight/worklight.css">
+<link rel="stylesheet" href="css/main.css">
+{% endhighlight %}
+
+                                                    <b>참고:</b> <b>worklight.css</b> 파일은 상대에 body 속성을 설정합니다. 이 항목이 앱의 스타일에 영향을 미치는 경우 사용자의 CSS 코드에서 해당 위치에 대해 다른 값을 선언하십시오. 예:
+
+      {% highlight css %}
+body {
+  position: absolute;
+}
+{% endhighlight %}
+                                                    </li>
+                                                    <li>파일 헤드에서 CSS 정의 다음에 Cordova JavaScript에 대한 참조를 추가하십시오.
+
+{% highlight html %}<script type="text/javascript" src="cordova.js"></script>{% endhighlight %}
+                                                    </li>
+						    <li>다음 코드 행이 있는 경우 제거하십시오. <br />
+							<code>&lt;script&gt;window.$ = window.jQuery = WLJQ;&lt;/script&gt;</code>
+							<br />
+							사용자 고유 버전의 JQuery를 다운로드하여 다음 코드 행에 표시된 것처럼 로드할 수 있습니다. <br />
+							<code>&lt;script src="lib/jquery.min.js"&gt;&lt;/script&gt;</code>
+							<br />
+                                                        선택적 jQuery 추가 내용을 lib 폴더로 이동할 필요는 없습니다. 원하는 위치로 이 추가 내용을 이동할 수 있지만 index.html 파일에서 올바르게 참조해야 합니다.
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li>WL.Client.init를 자동으로 호출하도록 <b>www/js/InitOptions.js</b> 파일을 업데이트하십시오.
+                                                <ul>
+                                                    <li><b>InitOptions.js</b>에서 다음 코드를 제거하십시오.
+                                                    <code>WL.Client.init</code> 함수는 글로벌 변수 <code>wlInitOptions</code>를 사용하여 자동으로 호출됩니다.
+
+{% highlight javascript %}
+if (window.addEventListener) {
+  window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                            <li><b>선택사항:</b> {{ site.data.keys.product_adj }} 프레임워크가 초기화되기 전에 로직을 실행해야 하는 경우, <code>WL.Client.init</code>를 수동으로 호출하도록 <b>www/InitOptions.js</b> 파일을 업데이트하십시오.
+                                                <ul>
+                                                    <li><b>config.xml</b> 파일을 편집하고 <code>mfp:clientCustomInit</code> 요소의 <code>enabled</code> 속성을 <b>true</b>로 설정하십시오. </li>
+
+                                                    <li>MobileFirst 하이브리드 기본 템플리트를 사용 중인 경우 다음 코드를 찾으십시오.
+{% highlight javascript %}
+if (window.addEventListener) {
+  window.addEventListener('load', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  window.attachEvent('onload',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
+
+        그런 다음, 다음 코드로 대체하십시오.
+
+{% highlight javascript %}
+if (document.addEventListener) {
+  document.addEventListener('mfpready', function() { WL.Client.init(wlInitOptions); }, false);
+} else if (window.attachEvent) {
+  document.attachEvent('mfpready',  function() { WL.Client.init(wlInitOptions); });
+}
+{% endhighlight %}
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+                        <h4>4단계</h4>
+                        <p>Cordova 애플리케이션이 거의 마이그레이션되었습니다. 이제 생성된 API 보고서를 처리할 시간입니다. 브라우저 창에서 API 보고서를 열고 표시된 항목을 검토하십시오. 보고서의 각 항목에 대해 다르게 구현하거나 전적으로 대체해야 합니다. 마이그레이션 지원 도구를 다시 실행하고 이번에는 새 Cordova 애플리케이션을 지정하여 처리하지 않은 API를 다시 검사할 수 있습니다. </p>
+
+                        <br/>
+                        <h4>5단계</h4>
+                        <p>Cordova 애플리케이션을 테스트하려면 웹 자원만 미리볼 수도 있고 시뮬레이터/에뮬레이터 또는 실제 디바이스에서 실행할 수도 있습니다. <br/>
+                            <b>참고:</b> 클라이언트 측 코드에 보안 및 인증, 푸시 알림, 어댑터 및 유사한 기능에 적용되는 로직이 포함된 경우, 테스트하기 전에 계속 조정해야 할 수도 있습니다(아래 참조). 그러나 애플리케이션 인터페이스를 검토하여 여전히 손상되지 않았는지 확인할 수 있습니다. </p>
+
+                        <p><b>웹 자원 미리보기:</b></p>
+                        <ul>
+                            <li>명령행 창에서 애플리케이션 루트 폴더로 이동하십시오. </li>
+                            <li><code>mfpdev app preview</code> 명령을 실행하십시오. </li>
+                        </ul>
+
+                        <b>참고:</b> {{ site.data.keys.product }} 8.0의 결함 때문에 보안 측면을 포함하는 애플리케이션 미리보기는 실패합니다. 임시 해결책으로 에뮬레이터 또는 실제 디바이스에서 애플리케이션을 미리보십시오. <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/cordova-apps/#mobilefirst-apis" target="_blank">애플리케이션의 웹 자원 미리보기</a>에 대해 자세히 학습하십시오. </blockquote>
+
+                        <p><b>에뮬레이터/시뮬레이터 또는 실제 디바이스 테스트:</b><br/>
+                        <ul>
+                            <li>명령행 창에서 애플리케이션 루트 폴더로 이동하십시오. </li>
+                            <li>UI만 테스트하는 경우, 애플리케이션을 간단하게 빌드하고 실행할 수 있습니다. <code>cordova run replace-with-platform-name</code></li>
+                            <li>{{ site.data.keys.product }}과 관련된 애플리케이션도 테스트하는 경우에는 미리보기 전에 우선 <code>mfpdev app register</code>를 사용하여 애플리케이션을 등록해야 합니다. </li>
+                        </ul>
+                        </p>
+
+                        <h3>다음 단계</h3>
+                        <ul>
+                            <li>마이그레이션을 계속하려면 <a href="#development-topics">개발 주제</a>를 검토하십시오. </li>
+                            <li><a href="#migrating-adapters">어댑터를 마이그레이션</a>하십시오. </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>웹 애플리케이션</h3>
+        <p>일반 하이브리드 애플리케이션과 매우 유사하게 모바일 웹 및 데스크탑 브라우저에 대한 웹 애플리케이션도 Eclipse 또는 MobileFirst CLI용 MobileFirst Studio 플러그인에서 관리되었습니다. {{ site.data.keys.product }} 8.0에서 웹 앱의 개발은 <a href="https://npmjs.org" target="_blank">npm</a>에서 사용 가능한 {{ site.data.keys.product_adj }} 웹 SDK로도 수행됩니다. </p>
+
+        <p><b>참고:</b> 이전 릴리스에서 {{ site.data.keys.mf_server }}는 웹 애플리케이션을 제공하고 퍼블릭 페이싱 URL을 제공했습니다. {{ site.data.keys.product }} 8.0에서 애플리케이션은 보안 기능, 어댑터 기능 등을 제공하기 위해 {{ site.data.keys.mf_server }}에만 등록되며, 웹 애플리케이션 제공은 전용 웹 서버로부터의 제공과 같은 표준 방법으로 수행됩니다. </p>
+
+        <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/web-tutorials/" target="_blank">웹 애플리케이션 개발</a>에 대해 자세히 학습하십시오. </blockquote>
+
+        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-web-apps">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateWeb" aria-expanded="false" aria-controls="collapseMigrateWeb">모바일 웹/데스크탑 브라우저 애플리케이션 마이그레이션</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateWeb" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-web-apps">
+                    <div class="panel-body">
+                        <h4>1단계</h4>
+                        <p>마이그레이션 지원 도구를 사용하여 API 보고서를 생성하십시오. <br/>
+                        명령행 창을 열고 다음과 같은 방식으로 마이그레이션 지원 도구를 사용하십시오. <br/>
+                        인터넷 연결에 따라 완료하는 데 시간이 걸릴 수 있습니다. </p>
+
+{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory{% endhighlight %}
+
+                        <ul>
+                            <li><b>source_directory</b>를 Studio 프로젝트의 애플리케이션 폴더에 있는 <b>common</b> 폴더의 경로로 대체하십시오. 예: <i>../Desktop/InvokingAdapterProcedures/apps/InvokingAdapterProcedures</i></li>
+                            <li><b>destination_directory</b>를 생성된 API 보고서를 저장할 폴더의 경로로 대체하십시오. </li>
+                        </ul>
+
+                        <p>마이그레이션 지원 도구를 성공적으로 실행 완료한 후 다음과 같은 영향을 관찰할 수 있습니다. </p>
+
+                        <ul>
+                            <li>API 보고서 <b>{app-name}-api-report.html</b>이 생성됩니다. 여기에는 {{ site.data.keys.product }} 8.0에서 사용할 수 있도록 애플리케이션 구현을 맞추기 위해 수행해야 하는 잠재적인 조치가 포함됩니다. </li>
+                        </ul>
+
+                        <br/>
+                        <h4>2단계</h4>
+                        <p>평가된 API 보고서를 사용하여, 이제 애플리케이션의 구조 및 소스를 마이그레이션할 시간입니다. </p>
+
+                        <ol>
+                            <li>애플리케이션의 소스 및 자원을 포함할 새 폴더를 작성하십시오. </li>
+                            <li>기존 프로젝트의 <b>index.html</b> 파일과 <b>js</b>, <b>css</b> 및 <b>images</b> 폴더를 작성한 폴더로 복사하십시오. </li>
+                            <li>명령행 창에서 마이그레이션된 프로젝트의 루트 폴더로 이동하여 {{ site.data.keys.product_adj }} 웹 SDK를 추가하십시오. <code>npm install ibm-mfp-web-sdk</code></li>
+                        </ol>
+
+                        <blockquote>3단계를 계속하기 전에 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/" target="_blank">{{ site.data.keys.product }} SDK를 웹 애플리케이션에 추가</a> 학습서의 지시사항에 따라 SDK를 구성하십시오. </blockquote>
+
+                        <br/>
+                        <h4>3단계</h4>
+                        <p>웹 애플리케이션이 거의 마이그레이션되었습니다. 이제 생성된 API 보고서를 처리할 시간입니다. 브라우저 창에서 API 보고서를 열고 표시된 항목을 검토하십시오. 보고서의 각 항목에 대해 다르게 구현하거나 전적으로 대체해야 합니다. </p>
+
+                        <br/>
+                        <h4>4단계</h4>
+                        <p>마이그레이션된 애플리케이션을 테스트하려면 다음을 수행하십시오. </p>
+                        <ol>
+                            <li>애플리케이션이 {{ site.data.keys.mf_server }}에 등록되었는지 확인하십시오. </li>
+                            <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/sdk/web/#same-origin-policy" target="_blank">동일 원본 오류</a>가 발생하지 않도록 하려면 되돌리기 프록시를 설정하십시오. 이 목표를 위해 Node.js를 사용할 수 있습니다. Node.js를 사용하여 리버스 프록시를 구현하는 예제는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/web/" target="_blank">웹 개발 환경 설정</a> 학습서를 참조하십시오. </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>고유 애플리케이션</h3>
+        <p>제품의 이전 버전에서는 플랫폼 특정 아티팩트(WorklightAPI 폴더, 구성 파일 등)를 우선 작성한 후 각 IDE에서 고유 프로젝트에 해당 아티팩트를 수동으로 복사하여 붙여넣기 위해 고유 애플리케이션에 Eclipse 또는 {{ site.data.keys.mf_cli }}용 MobileFirst Studio 플러그인이 필요했습니다. </p>
+
+        <p>{{ site.data.keys.product }} 8.0부터는 커뮤니티 선호 패키지 관리자인 <a href="https://cocoapods.org/" target="_blank">iOS용 CocoaPods</a>, <a href="https://gradle.org/" target="_blank">Android용 Gradle</a> 및 <a href="https://www.nuget.org/" target="_blank">Windows용 NuGet</a>이 소개되었습니다. 개발자는 이러한 도구를 사용하여 각 플랫폼에 {{ site.data.keys.product_adj }} 고유 SDK를 매끄럽게 추가할 수 있습니다. </p>
+
+        <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/">고유 애플리케이션 개발</a>에 대해 자세히 학습하십시오. </blockquote>
+
+        <div class="panel-group accordion" id="application-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-native-apps">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#application-migration" href="#collapseMigrateNative" aria-expanded="false" aria-controls="collapseMigrateNative">고유 애플리케이션에서 SDK 업데이트</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateNative" class="panel-collapse collapse" role="tabpanel" aria-labelledby="migrate-native-apps">
+                    <div class="panel-body">
+                        <h4>1단계</h4>
+                        <p>마이그레이션 지원 도구를 사용하여 API 보고서를 생성하십시오. </p>
+
+                        <blockquote><b>참고:</b> 현재 마이그레이션 지원 도구는 MobileFirst Platform Foundation 7.1을 기반으로 하는 고유 애플리케이션만 스캔할 수 있습니다. </blockquote>
+
+                        <p>명령행 창을 열고 다음과 같은 방식으로 마이그레이션 지원 도구를 사용하십시오. </p>
+{% highlight bash %}mfpmigrate scan --in path_to_source_directory --out path_to_destination_directory --type platform{% endhighlight %}
+
+                        <ul>
+                            <li><b>source_directory</b>를 고유 프로젝트의 경로로 대체하십시오. 예: <i>../Desktop/FormBasedAuthObjCiOS-release71</i></li>
+                            <li><b>destination_directory</b>를 보고서를 생성할 경로로 대체하십시오. </li>
+                            <li><b>platform</b>을 지원되는 플랫폼(<code>ios</code>, <code>android</code> 또는 <code>windows</code>)으로 대체하십시오. </li>
+                        </ul>
+
+                        <img alt="고유 앱에 대한 API 보고서 생성" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/native-migration.png"/>
+
+                        <p>마이그레이션 지원 도구를 성공적으로 실행한 후 다음과 같은 영향을 관찰할 수 있습니다. </p>
+
+                        <ul>
+                            <li>API 보고서 <b>{app-name}-api-report.html</b>이 생성되어 기본 브라우저에 열렸습니다. 여기에는 {{ site.data.keys.product }} 8.0에서 사용할 수 있도록 애플리케이션 구현을 맞추기 위해 수행해야 하는 잠재적인 조치가 포함됩니다. </li>
+                        </ul>
+
+                        <img alt="API 보고서" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/api-report-native.png"/>
+
+                        <h4>2단계</h4>
+                        <p>API 보고서에서 문제를 해결한 후 이전 고유 SDK를 새 고유 SDK로 대체할 수 있습니다. </p>
+
+                        <b>iOS</b><br/>
+                        <b>전제조건:</b> Mac 컴퓨터에 CocoaPods가 설치되어 있는지 확인하십시오.
+
+                        <ul>
+                            <li>명령행 창을 열고 Xcode 프로젝트의 루트로 이동하십시오. </li>
+                            <li><code>sudo gem install cocoapods</code> 명령을 실행한 다음 <code>pod setup</code> 명령을 실행하십시오. <b>참고:</b> 이러한 명령을 완료하는 데는 수 분이 소요될 수 있습니다. </li>
+                        </ul>
+
+                        <br/>
+                        <div class="panel-group accordion" id="accordion1" role="tablist" aria-multiselectable="true">
+                           <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="removeiOSSDK">
+                                 <h4 class="panel-title">
+                                    <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseRemoveiOSSDK" aria-expanded="false" aria-controls="collapseRemoveiOSSDK">이전 SDK 제거</a>
+                                 </h4>
+                              </div>
+
+                              <div id="collapseRemoveiOSSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeiOSSDK">
+                                 <div class="panel-body">
+                                    <ol>
+                                       <li>Xcode에서 프로젝트를 여십시오. </li>
+                                       <li>Xcode 프로젝트에서 <b>WorklightAPI</b> 폴더를 삭제(휴지통으로 이동)하십시오. </li>
+                                       <li>다음 방법으로 기존 코드를 수정하십시오. <br/>
+                                          <b>빌드 설정</b> 탭에서 다음을 수행하십시오.
+                                          <ul>
+                                             <li>헤더 검색 경로에서 <b>$(SRCROOT)/WorklightAPI/include</b>를 제거하십시오. </li>
+                                             <li>프레임워크 검색 경로에서 <b>$(PROJECTDIR)/WorklightAPI/frameworks</b>를 제거하십시오. </li>
+                                             <li>정적 라이브러리 <code>libWorklightStaticLibProjectNative.a</code>에 대한 참조를 제거하십시오. </li>
+                                          </ul>
+                                       </li>
+                                       <li><b>빌드 단계</b> 탭에서 다음 프레임워크 및 라이브러리에 대한 링크를 제거하십시오. CocoaPods는 이러한 링크를 자동으로 다시 추가합니다.
+                                          <ul>
+                                             <li>libWorklightStaticLibProjectNative.a</li>
+                                             <li>SystemConfiguration.framework</li>
+                                             <li>MobileCoreServices.framework</li>
+                                             <li>CoreData.framework</li>
+                                             <li>CoreLocation.framework</li>
+                                             <li>Security.framework</li>
+                                             <li>sqlcipher.framework</li>
+                                             <li>libstdc++.6.dylib</li>
+                                             <li>libz.dylib</li>
+                                          </ul>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </div>
+                           </div>
+
+                           <div class="panel panel-default">
+                              <div class="panel-heading" role="tab" id="addiOSSDK">
+                                 <h4 class="panel-title">
+                                     <a role="button" data-toggle="collapse" data-parent="#accordion1" href="#collapseAddiOSSDK" aria-expanded="false" aria-controls="collapseAddiOSSDK">새 SDK 추가</a>
+                                 </h4>
+                              </div>
+
+                              <div id="collapseAddiOSSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addiOSSDK">
+                                 <div class="panel-body">
+                                    <ol>
+                                       <li>Xcode가 처리완료되었는지 확인하십시오. </li>
+                                       <li><b>터미널</b>을 열고 Xcode 프로젝트의 루트로 이동하십시오. <ul>
+                                              <li><code>pod init</code> 명령을 실행하여 Podfile 파일을 작성하십시오. </li>
+                                              <li>Podfile 파일이 Xcode 프로젝트의 루트에 작성됩니다. 이 파일을 찾아서 원하는 편집기에서 여십시오. </li>
+                                              <li>기존 컨텐츠를 주석 처리하거나 제거하십시오. </li>
+                                              <li>다음 행을 추가하고 변경사항을 저장하십시오. <b>target</b> 값을 업데이트해야 합니다.
+{% highlight xml %}use_frameworks!
+platform :ios, 8.0
+target "replace-with-the-name-of-the-target-in-xcode-project" do
+    pod 'IBMMobileFirstPlatformFoundation'
+end{% endhighlight %}
+
+                                                    Additional pods:<br/>
+                                                    IBMMobileFirstPlatformFoundationPush<br/>
+                                                    IBMMobileFirstPlatformFoundationJSONStore<br/><br/>
+
+                                                    앱에서 추가 기능을 사용해야 하는 경우 파일에 추가적인 POD를 지정할 수 있습니다. 예를 들어, 앱에서 OpenSSL을 사용하는 경우 Podfile은 다음과 같습니다.
+
+{% highlight xml %}use_frameworks!
+platform :ios, 8.0
+target "replace-with-the-name-of-the-target-in-xcode-project" do
+    pod 'IBMMobileFirstPlatformFoundation'
+    pod 'IBMMobileFirstPlatformFoundationOpenSSLUtils'
+end{% endhighlight %}
+                                              </li>
+                                              <li><code>pod install</code> 명령을 실행하십시오. 이 명령은 {{ site.data.keys.product_adj }} 고유 SDK, IBMMobileFirstPlatformFoundation.framework 및 Podfile에 지정된 기타 모든 프레임워크와 해당 종속 항목을 설치합니다. 그런 다음 pods 프로젝트를 생성하고 클라이언트 프로젝트를 {{ site.data.keys.product_adj }} SDK와 통합합니다. </li>
+                                          </ul>
+                                       </li>
+                                       <li>명령행에서 <b>open ProjectName.xcworkspace</b>를 입력하여 Xcode에서 <b>ProjectName.xcworkspace</b> 파일을 여십시오. 이 파일은 ProjectName.xcodeproj 파일과 동일한 디렉토리에 있습니다. 파인더에서 두 번 클릭할 수도 있습니다. </li>
+                                       <li>헤더의 모든 기존 MobileFirst 가져오기를 다음 새 우산형 헤더의 단일 항목으로 바꾸십시오. <br/>
+
+                                            <b>Objective C:</b><br/>
+                                            <code>#import &lt;IBMMobileFirstPlatformFoundation/IBMMobileFirstPlatformFoundation.h&gt;</code>
+                                            <br/><br/>
+                                            <b>Swift:</b><br/>
+                                            <code>import IBMMobileFirstPlatformFoundation</code><br/>
+                                       </li>
+                                       <li><b>빌드 설정</b> 탭의 <b>기타 링커 플래그</b> 아래에서 <code>-ObjC</code> 플래그의 시작 부분에 <b>$(inherited)</b>를 추가하십시오. </li>
+                                       <li>Push Notifications 또는 JSONStore를 사용하는 경우 독립적 가져오기를 포함해야 합니다. <br/><br/>
+                                            <b>Push Notifications</b><br/>
+                                            Objective C의 경우: <br/>
+                                            <code>#import &lt;IBMMobileFirstPlatformFoundationPush/IBMMobileFirstPlatformFoundationPush.h&gt;</code>
+                                            <br/><br/>
+                                            Swift의 경우: <br/>
+                                            <code>import IBMMobileFirstPlatformFoundationPush</code>
+                                            <br/><br/>
+                                            <b>JSONStore</b><br/>
+                                            Objective C의 경우: <br/>
+                                            <code>#import &lt;IBMMobileFirstPlatformFoundationJSONStore/IBMMobileFirstPlatformFoundationJSONStore.h&gt;</code>
+                                            <br/><br/>
+                                            Swift의 경우: <br/>
+                                            <code>import IBMMobileFirstPlatformFoundationJSONStore</code>
+                                       </li>
+                                    </ol>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+
+                        <br/>
+
+                        <b>Android</b><br/>
+                        <div class="panel-group accordion" id="accordion2" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="removeAndroidSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseRemoveAndroidSDK" aria-expanded="false" aria-controls="collapseRemoveAndroidSDK">이전 SDK 제거</a>
+                                 </h4>
+                                </div>
+
+                                <div id="collapseRemoveAndroidSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeAndroidSDK">
+                                    <div class="panel-body">
+                                        프로젝트의 lib 폴더를 찾고 다음 파일을 삭제하십시오.
+                                        <ul>
+                                            <li>worklight-android.jar</li>
+                                            <li>uicandroid.jar</li>
+                                            <li>bcprov.jar</li>
+                                            <li>android-async-http.jar</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="addAndroidSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion2" href="#collapseAddAndroidSDK" aria-expanded="false" aria-controls="collapseAddAndroidSDK">새 SDK 추가</a>
+                                 </h4>
+                                </div>
+
+                                <div id="collapseAddAndroidSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addAndroidSDK">
+                                    <div class="panel-body">
+                                        <ol>
+                                            <li>Android Studio에서 <b>Android → Gradle 스크립트</b>로 이동하고 <b>build.gradle(모듈: 앱)</b> 파일을 선택하십시오. </li>
+                                            <li><code>apply plugin: 'com.android.application'</code> 아래에 다음 행을 추가하십시오.
+
+{% highlight xml %}repositories{
+    jcenter()
+}{% endhighlight %}            </li>
+                                            <li><b>android</b> 내에 다음을 추가하십시오.
+
+{% highlight xml %}packagingOptions {
+    pickFirst 'META-INF/ASL2.0'
+    pickFirst 'META-INF/LICENSE'
+    pickFirst 'META-INF/NOTICE'
+}{% endhighlight %}            </li>
+                                            <li><b>dependencies</b> 내에 다음 행을 추가하십시오.
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundation',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}
+
+                                            앱에서 추가 기능을 사용해야 하는 경우 더 많은 아티팩트를 지정할 수 있습니다. 예를 들어, 앱에서 푸시 알림을 사용하는 경우 다음을 추가하십시오.
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundationpush',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}
+
+                                            또는 JSONStore를 사용하려면 다음을 추가하십시오.
+
+{% highlight xml %}compile group: 'com.ibm.mobile.foundation',
+name: 'ibmmobilefirstplatformfoundationjsonstore',
+version: '8.0.+',
+ext: 'aar',
+transitive: true{% endhighlight %}</li>
+
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <b>Windows</b><br/>
+                        <div class="panel-group accordion" id="accordion3" role="tablist" aria-multiselectable="true">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="removeWindowsSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseRemoveWindowsSDK" aria-expanded="false" aria-controls="collapseRemoveWindowsSDK">이전 SDK 제거</a>
+                                 </h4>
+                                </div>
+
+                                <div id="collapseRemoveWindowsSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="removeWindowsSDK">
+                                    <div class="panel-body">
+                                        Visual Studio 프로젝트에서 다음 파일 제거:
+
+                                        <ul>
+                                            <li>wlclient.properties</li>
+                                            <li>Newtonsoft.Json</li>
+                                            <li>SharpCompress</li>
+                                            <li>worklight-windows8</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading" role="tab" id="addWindowsSDK">
+                                    <h4 class="panel-title">
+                                        <a role="button" data-toggle="collapse" data-parent="#accordion3" href="#collapseAddWindowsSDK" aria-expanded="false" aria-controls="collapseAddWindowsSDK">새 SDK 추가</a>
+                                 </h4>
+                                </div>
+
+                                <div id="collapseAddWindowsSDK" class="panel-collapse collapse" role="tabpanel" aria-labelledby="addWindowsSDK">
+                                    <div class="panel-body">
+                                        <ol>
+                                            <li>프로젝트 솔루션을 마우스 오른쪽 단추로 클릭하고 <b>Nuget 패키지 관리</b>를 선택하십시오. </li>
+                                            <li>검색 옵션에서 "IBM MobileFirst Platform"을 검색하고 <b>IBM.MobileFirstPlatform.8.0.0.0</b>을 선택한 후 <b>설치</b>를 클릭하십시오. </li>
+                                            <li>Package.appxmanifest에서 <b>인터넷(클라이언트)</b> 기능을 추가하십시오. </li>
+                                        </ol>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+                        <h4>3단계</h4>
+                        <p>고유 애플리케이션이 거의 마이그레이션되었습니다. 이제 API 보고서에 생성된 문제를 처리할 시간입니다. 브라우저에서 API 보고서를 열고 검토하십시오. 보고서의 각 항목에 대해 다르게 구현하거나 전적으로 대체해야 합니다. </p>
+
+                        <ul>
+                            <li><a href="../migrating-client-applications/ios" target="_blank">iOS 코드 변경사항</a></li>
+                            <li><a href="../migrating-client-applications/android" target="_blank">Android 코드 변경사항</a></li>
+                            <li><a href="../migrating-client-applications/windows" target="_blank">Windows 코드 변경사항</a></li>
+                        </ul>
+
+                        <br/>
+                        <h4>4단계</h4>
+                        <p>애플리케이션을 테스트하려면 특정 플랫폼의 IDE에서 실행하십시오. </p>
+
+                        <h3>다음 단계</h3>
+                        <ul>
+                            <li>마이그레이션을 계속하려면 <a href="#development-topics">개발 주제</a>를 검토하십시오. </li>
+                            <li><a href="#migrating-adapters">어댑터를 마이그레이션</a>하십시오. </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <blockquote>
+            <b>보충 읽기:</b>
+            <ul>
+                <li><a href="../migrating-client-applications/cordova/#comparison-of-cordova-apps-developed-with-v-80-versus-v-71-and-before" target="_blank">v8.0으로 개발된 Cordova 앱과 v7.1 이하 버전으로 개발된 Cordova 앱의 비교</a></li>
+                <li><a href="../../product-overview/release-notes/deprecated-discontinued" target="_blank">8.0에서 중단된 기능 및 8.0에 포함되지 않은 기능</a></li>
+                <li><a href="../migrating-client-applications/cordova/#migrating-existing-hybrid-or-cross-platform-apps-to-cordova-apps-supported-by-mobilefirst-foundation-80" target="_blank">기존 하이브리드 또는 크로스 플랫폼 앱을 {{ site.data.keys.product_adj }} 버전 8.0이 지원하는 Cordova 앱으로 마이그레이션</a></li>
+                <li><a href="../migrating-client-applications/cordova/#migrating-encryption-for-ios-cordova" target="_blank">Cordova iOS 애플리케이션의 암호화 마이그레이션</a></li>
+            </ul>
+        </blockquote>
+        <p>애플리케이션은 이제 MobileFoundation 8.0에 필요한 구조를 준수합니다. 이제 어댑터를 살펴보기 시작할 수 있습니다. </p>
+    </div>
+
+    <br id="migrating-adapters"/><br/>
+
+    <div class="gutter gutter-adapters-color">
+        <div class="number number-adapters hidden-sm hidden-xs hidden-md">3</div>
+        <h2>어댑터 마이그레이션</h2>
+        <p>지난 릴리스에서는 Eclipse 또는 {{ site.data.keys.mf_cli }}용 MobileFirst Studio 플러그인을 사용하여 어댑터가 작성되고 개발되고 빌드되었습니다. {{ site.data.keys.product }} 8.0부터 어댑터는 이제 Java 및 JavaScript 어댑터 생성을 위해 IBM이 제공하는 원형을 사용하여 작성되는 표준 Apache Maven 프로젝트로 간주됩니다. </p>
+
+        <p>Maven 사용은 서버 측 개발자에게 개발 시간에 선호하는 도구를 자유롭게 사용할 수 있도록 해줄 뿐 아니라 필요한 종속 항목을 관리하고 통합하는 단순한 표준 방법을 제공합니다. Maven 프로젝트는 명령 행에서 Maven 명령을 사용하거나 이면에서 Maven 명령을 호출하고 단순화된 명령을 제공하는 {{ site.data.keys.mf_cli }}를 사용하여 작성할 수 있습니다. </p>
+
+        <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>팁:</b> Eclipse 또는 IntelliJ를 설정하여 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">IDE 환경에서 어댑터를 작성 및 개발</a>할 수도 있습니다. </p>
+
+        <p><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <b>알고 있습니까?</b> {{ site.data.keys.product }} 8.0에서는 DevOps 스타일 운영 모드를 소개했습니다. 여기에서는 어댑터가 일단 {{ site.data.keys.mf_server }}에 배치되면 어댑터를 재배치할 필요 없이 {{ site.data.keys.mf_console }}을 통해 라이브로 다양한 특성(예: 데이터베이스 연결을 위한 사용자 이름 및 비밀번호 값)을 구성할 수 있습니다. </p>
+
+        <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters" target="_blank">Java 및 JavaScript 어댑터 개발</a>에 대해 자세히 학습하십시오. </blockquote>
+
+        <br/>
+        <p>어댑터를 Maven 프로젝트로 마이그레이션하는 단계에는 일치하는 새 Maven 프로젝트 작성 및 기존 어댑터의 소스 코드로 복사(몇몇 수정과 함께)가 포함됩니다. 그런 다음 Maven 프로젝트를 빌드하여 오류를 찾습니다. </p>
+
+        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="prereqs">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapsePrereqs" aria-expanded="false" aria-controls="collapsePrereqs">Apache Maven 설치의 전제조건</a>
+                    </h4>
+                </div>
+
+                <div id="collapsePrereqs" class="panel-collapse collapse" role="tabpanel" aria-labelledby="prereqs">
+                    <div class="panel-body">
+                        <p>Maven 어댑터를 사용하려면 개발자 워크스테이션에 Apache Maven이 설치되어 있어야 합니다. </p>
+                        <ol>
+                            <li>Apache Maven을 설치하십시오.
+                                <ul>
+                                    <li><a href="https://maven.apache.org/download.cgi" target="_blank">Apache Maven .zip을 다운로드</a>하십시오. </li>
+                                    <li><code>MVN_PATH</code> 변수를 추가하고 Maven 폴더를 지정하십시오. </li>
+                                    <li><i>Mac 및 Linux:</i><br/>
+                                <b>~/.bash_profile</b>을 편집하십시오.
+
+{% highlight bash %}#### Apache Maven example location
+export MVN_PATH="/usr/local/bin"
+{% endhighlight %}</li>
+
+                                    <li><i>Windows:</i> <a href="http://crunchify.com/how-to-setupinstall-maven-classpath-variable-on-windows-7/" target="_blank">다음 안내에 따르십시오</a>. </li>
+                                    <li><code>mvn -v</code>를 실행하여 설치를 확인하십시오. </li>
+                                </ul>
+                            </li>
+
+                            <li>쿡북은 {{ site.data.keys.mf_cli }}를 사용하여 어댑터를 작성하고 빌드하는 Maven 명령을 호출합니다.
+                                <ul>
+                                    <li>이 도구가 작동하기 위한 필수 소프트웨어이므로 <a href="https://nodejs.org/en/" target="_blank">NodeJS를 설치</a>하십시오. </li>
+                                    <li>명령행 창에서 <code>npm install -g mfpdev-cli</code> 명령을 실행하십시오. (또는 {{ site.data.keys.mf_console }}을 사용하여 다운로드 센터에서 다운로드하여 설치하십시오.) </li>
+                                    <li><code>mfpdev -v</code>를 실행하여 설치를 확인하십시오. </li>
+                                </ul>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="create-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseCreateMavenProject" aria-expanded="false" aria-controls="collapseCreateMavenProject">새 Maven 프로젝트 작성</a>
+                    </h4>
+                </div>
+
+                <div id="collapseCreateMavenProject" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <p>자신의 어댑터 유형, 어댑터 이름 및 패키지 이름과 일치하는 새 어댑터 템플리트를 작성하십시오. <br/>
+                        그러면 어댑터의 메타데이터가 비슷해져서 추가 편집이 필요하지 않으므로 마이그레이션이 쉬워집니다. </p>
+
+                        <ul>
+                            <li>명령행 창에서 <code>mfpdev adapter create</code> 명령을 실행하십시오. </li>
+                            <li>어댑터 유형(HTTP 또는 SQL JavaScript 어댑터, 또는 Java 어댑터)을 선택하십시오. </li>
+                            <li><a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html" target="_blank">GroupID</a>를 제공하십시오. </li>
+                            <li>Java 어댑터를 작성하는 경우, 이전에 사용한 것과 동일한 <a href="https://maven.apache.org/guides/mini/guide-naming-conventions.html" target="_blank">패키지 이름</a>을 지정해야 합니다(예: "com.sample"). </li>
+                        </ul>
+
+                        <img alt="어댑터 템플리트 작성" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/creating-an-adapter.png"/>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-js-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseMigrateJSAdapter" aria-expanded="false" aria-controls="collapseMigrateJSAdapter">JavaScript 소스 코드 마이그레이션</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateJSAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <b>HTTP JavaScript 어댑터</b><br/>
+
+                        <ol>
+                            <li>파일 시스템에서 JavaScript 어댑터 폴더로 이동하십시오(예: <i>../Desktop/JavaScriptAdapters/adapters/RSSReader</i>). </li>
+                            <li>다른 창을 열고 새 Maven 프로젝트(예: <i>../Desktop/MigratedAdapter</i>)로 이동한 후 <b>src/main/adapter-resources</b> 폴더로 이동하십시오. </li>
+                            <li>기존 어댑터 파일을 이 폴더로 복사하여 붙여넣으십시오. </li>
+                            <li><b>adapter.xml</b>을 편집하십시오. 해당 컨텐츠를 기존 어댑터의 XML 컨텐츠(이 예제에서는 RSSReader.xml)로 대체하십시오. </li>
+                            <li><b>js/{adapter-name}-impl.js</b>를 편집하십시오. 해당 컨텐츠를 기존 어댑터의 컨텐츠(이 예제에서는 RSSReader-impl.js)로 대체하십시오. </li>
+                        </ol>
+
+                        <br/>
+                        <b>SQL JavaScript 어댑터</b><br/>
+
+                        <ol>
+                            <li>파일 시스템에서 JavaScript 어댑터 폴더로 이동하십시오(예: <i>../Desktop/JavaScriptAdapters/adapters/SQLAdapter</i>). </li>
+                            <li>다른 창을 열고 새 Maven 프로젝트(예: <i>../Desktop/MigratedAdapter</i>)로 이동한 후 <b>src/main/adapter-resources</b> 폴더로 이동하십시오. </li>
+                            <li><b>adapter.xml</b>을 편집하십시오. 해당 컨텐츠를 기존 어댑터의 XML 컨텐츠(이 예제에서는 SQLAdapter.xml)로 대체하십시오. </li>
+                            <li><b>js/{adapter-name}-impl.js</b>를 편집하십시오. 해당 컨텐츠를 기존 어댑터의 컨텐츠(이 예제에서는 SQLAdapter-impl.js)로 대체하십시오. </li>
+                        </ol>
+
+                        <br/>
+                        <p>여기에서 Maven 종속 항목이 작동하기 시작합니다. Worklight/MobileFirst Studio는 데이터베이스 커넥터가 이전에 <b>server/lib</b> 폴더에 배치된 위치에서 사용되지 않으므로 이를 Maven 종속 항목으로 대체하십시오. </p>
+
+                        <ol>
+                            <li>새로 작성한 Maven 프로젝트로 돌아가서 디렉토리의 루트에 있는 <b>pom.xml</b> 파일을 여십시오. </li>
+                            <li>해당 데이터베이스 유형을 위한 종속 항목을 추가하십시오. <a href="http://search.maven.org/" target="_blank">Maven Central 웹 사이트에서</a> 사용할 적절한 종속 항목을 검색할 수 있습니다. </li>
+                            <li>이 예제에서는 MySQL 데이터베이스를 사용하십시오. 다음 코드 블록을 <b>dependencies</b> 섹션에 추가하십시오.
+
+{% highlight xml %}<dependency>
+    <groupId>mysql</groupId>
+    <artifactId>mysql-connector-java</artifactId>
+    <version>5.1.6</version>
+</dependency>{% endhighlight %}</li>
+                        </ol>
+
+                        <p>추가 종속 항목이 있는 경우, <b>pom.xml</b> 파일에서 지정하십시오(로컬 파일 또는 원격 종속 항목). </p>
+
+                        <blockquote><b>Maven 종속 항목에 대해 자세히 학습:</b><br/>
+                            <ul>
+                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">Introduction to the Dependency Mechanism (Maven.org)</a></li>
+                                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">종속 항목 처리(학습서)</a></li>
+                            </ul>
+                        </blockquote>
+                        <br/>
+                        <p>다음 "다이어그램"은 지금까지 수행한 내용을 다른 방법으로 나타냅니다. </p>
+                        <i>JavaScript 어댑터의 이전 구조</i>
+{% highlight xml %}MyProject
+├── adapters
+│   ├── RSSAdapter
+│   │   ├── RSSAdapter-impl.js
+│   │   ├── RSSAdapter.xml
+│   │   └── filtered.xsl{% endhighlight %}
+
+        <i>JavaScript 어댑터의 새 구조</i>
+{% highlight xml %}RSSAdapter
+├── pom.xml
+├── src
+│   └── main
+│       ├── adapter-resources
+│       │   ├── adapter.xml
+│       │   └── js
+│       │        ├── RSSAdapter-impl.js
+│       │        └── filtered.xml{% endhighlight %}
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="migrate-java-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseMigrateJavaAdapter" aria-expanded="false" aria-controls="collapseMigrateJavaAdapter">Java 소스 코드 마이그레이션</a>
+                    </h4>
+                </div>
+
+                <div id="collapseMigrateJavaAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <ol>
+                            <li>파일 시스템에서 Java 어댑터 폴더로 이동하십시오(예: <i>../Desktop/JavaAdapters/RSSAdapter</i>). </li>
+                            <li>별도의 창을 열고 새 Maven 프로젝트(예: <i>../Desktop/MigratedAdapter</i>)로 이동한 후 <b>src/main/adapter-resources</b> 폴더로 이동하십시오. </li>
+                            <li><b>{adapter-name}.xml</b>을 편집하십시오. 해당 컨텐츠를 기존 어댑터의 XML 컨텐츠(이 예제에서는 RSSAdapter.xml)로 대체하십시오. </li>
+                            <li>새 어댑터에서 <b>src/main/java/com/sample/</b>(이 예제에서)로 이동하십시오. </li>
+                            <li>기존.java 파일을 기존 어댑터의.java 파일로 대체하십시오. </li>
+                        </ol>
+
+                        <p>기존 어댑터에서 추가 라이브러리를 사용 중인 경우 Maven 종속 항목은 지금 작동하기 시작합니다. Worklight/MobileFirst Studio는 라이브러리가 이전에 <b>server/lib</b> 또는 Java 어댑터의 <b>lib</b> 폴더에 배치된 위치에서 사용되지 않으므로 이를 Maven 종속 항목으로 대체하십시오. </p>
+
+                        <ol>
+                            <li>새로 작성한 Maven 프로젝트로 돌아가서 디렉토리의 루트에 있는 <b>pom.xml</b> 파일을 여십시오. </li>
+                            <li>해당 데이터베이스 유형을 위한 종속 항목을 추가하십시오. <a href="http://search.maven.org/" target="_blank">Maven Central 웹 사이트에서</a> 사용할 적절한 종속 항목을 검색할 수 있습니다. </li>
+                            <li>이 예제는 Cloudant 종속 항목을 사용합니다. 다음 코드 블록을 <b>dependencies</b> 섹션에 추가하십시오.
+
+{% highlight xml %}<dependency>
+	<groupId>com.cloudant</groupId>
+	<artifactId>cloudant-client</artifactId>
+	<version>1.2.3</version>
+</dependency>{% endhighlight %}</li>
+                        </ol>
+                        <br/>
+                        <blockquote><b>Maven 종속 항목에 대해 자세히 학습:</b>
+                            <ul>
+                                <li><a href="https://maven.apache.org/guides/introduction/introduction-to-dependency-mechanism.html" target="_blank">Introduction to the Dependency Mechanism (Maven.org)</a></li>
+                                <li><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/creating-adapters/#dependencies">종속 항목 처리(학습서)</a></li>
+                            </ul>
+                        </blockquote>
+                        <br/>
+                        <p>다음 "다이어그램"은 지금까지 수행한 내용을 다른 방법으로 나타냅니다. </p>
+                        <i>Java 어댑터의 이전 구조</i>
+
+{% highlight xml %}
+├── adapters
+│   └── RSSAdapter
+│       ├── RSSAdapter.xml
+│       ├── lib
+│       └── src
+│           └── com
+│               └── sample
+│                   ├── RSSAdapterApplication.java
+│                   └── RSSAdapterResource.java{% endhighlight %}
+
+        <i>Java 어댑터의 새 구조</i>
+
+{% highlight xml %}
+├── pom.xml
+├── src
+│   └── main
+│       ├── adapter-resources
+│       │   └── adapter.xml
+│       └── java
+│           └── com
+│               └── sample
+│                   ├── RSSAdapterApplication.java
+│                   └── RSSAdapterResource.java
+└{% endhighlight %}
+
+                        <br/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="build-adapter">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#adapter-migration" href="#collapseBuildAdapter" aria-expanded="false" aria-controls="collapseBuildAdapter">Maven 프로젝트 빌드 및 테스트</a>
+                    </h4>
+                </div>
+
+                <div id="collapseBuildAdapter" class="panel-collapse collapse" role="tabpanel" aria-labelledby="create-adapter">
+                    <div class="panel-body">
+                        <h3>마이그레이션된 어댑터 빌드</h3>
+                        <p>명령행 창에서 어댑터의 폴더로 이동하여 <code>mfpdev adapter build</code> 명령을 실행하십시오. </p>
+
+                        <img alt="명령행에서 어댑터 빌드 - 실패" src="{{site.baseurl}}/tutorials/en/foundation/8.0/upgrading/migration-cookbook/compilation-errors.png"/>
+
+                        <p>이러한 오류를 해결하려면 Maven 프로젝트를 IntelliJ와 같은 Maven 프로젝트로 가져온 다음 여기에서 프로젝트를 빌드할 것을 권장합니다. IDE를 이용하면 더 쉽게 빌드 오류를 통해 반복하고 하나씩 해결할 수 있습니다. <a href="{{site.baseurl}}/blog/2016/03/31/using-intellij-to-develop-adapters/">IntelliJ 및 어댑터 사용에 대해 자세히 학습</a>하십시오. </p>
+
+                        <img alt="IntelliJ 사용" src="intellij.png"/>
+
+                        <h3>빌드된 어댑터 테스트</h3>
+                        <p>마이그레이션된 어댑터를 테스트하려면 {{ site.data.keys.mf_cli }}를 사용하여 엔드포인트를 호출하거나 {{ site.data.keys.mf_console }}에서 Swagger를 사용할 수 있습니다. </p>
+                        <blockquote><a href="../../adapters/testing-and-debugging-adapters/">어댑터 테스트 및 디버그</a> 학습서에서 어댑터 테스트에 대해 자세히 학습하십시오. </blockquote>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <blockquote><b>보충 읽기:</b>
+            <ul>
+                <li><a href="../migrating-adapters" target="_blank">{{ site.data.keys.mf_server }} V8.0.0에서 작동하도록 기존 어댑터 마이그레이션</a></li>
+                <li><a href="../../product-overview/release-notes/deprecated-discontinued/#server-side-api-changes" target="_blank">Mobile Foundation 8.0의 서버 측 API 변경사항</a></li>
+            </ul>
+        </blockquote>
+        <p>Maven 프로젝트 준수 양식 및 코드로 마이그레이션된 어댑터를 사용하여 일부 개발 개념을 살펴보겠습니다. </p>
+    </div>
+
+    <br id="development-topics"/><br/>
+
+    <div class="gutter gutter-dev-topics-color">
+        <div class="number number-dev-topics hidden-sm hidden-xs hidden-md">4</div>
+        <h2>개발 주제</h2>
+        <p>이제 {{ site.data.keys.product }} 8.0의 새 구조로 마이그레이션된 애플리케이션과 어댑터를 사용하여, 여기에서는 최신 릴리스에서 변경된 일부 구현 개념에 대해 설명하겠습니다. </p>
+
+        <h3>어댑터</h3>
+        <h4>JavaScript 어댑터</h4>
+        <b>글로벌 변수 및 세션</b><br/>
+        <p>JavaScript 어댑터에서는 "세션"이 없으므로 글로벌 변수를 사용하여 세션에 데이터를 저장하지 마십시오. 작동에서 이 변경사항은 <a href="http://www.ibm.com/support/knowledgecenter/SSHS8R_7.1.0/com.ibm.worklight.dev.doc/devref/c_overview_session_indep.html" target="_blank">MobileFirst Platform Foundation 7.1에서 처음 나타났습니다</a>. 그러나 단일 요청 중에는 글로벌 변수를 사용하여 사용할 데이터를 저장할 수 있습니다. 그러나 이는 더 이상 권장되지 않습니다. </p>
+
+        <blockquote><a href="../../adapters/" target="_blank">어댑터 학습서에서</a> 어댑터의 작성, 빌드, 배치 및 테스트에 대해 자세히 학습하십시오. </blockquote>
+
+        <h3>보안 프레임워크</h3>
+        <p>{{ site.data.keys.product }} 8.0의 보안 프레임워크는 지난 릴리스의 보안 프레임워크와 다릅니다. 따라서 일부 애플리케이션 백엔드 및 클라이언트 로직을 다시 구현해야 합니다. </p>
+
+        <p>이제는 OAuth 모델만을 기반으로 하는 새 보안 프레임워크 및 해당 권한 부여 플로우에 시간을 들여서 익숙해지는 것이 바람직합니다. 또한 액세스 토큰, 보안 검사 및 범위와 같은 새 권한 부여 엔티티에 대해서도 학습하십시오. 이들은 이전에 알려진 보안 테스트, 영역 및 로그인 모듈과 같은 엔티티를 대체합니다. </p>
+
+        <blockquote><a href="../migrating-security/" target="_blank">인증 및 보안 마이그레이션</a>의 학습서에서 보안을 마이그레이션하는 방법을 학습하십시오. 보안 프레임워크 및 권한 부여 개념에 대해 자세히 학습하려면 <a href="../../authentication-and-security/" target="_blank">인증 및 보안 학습서</a>를 참조하십시오. </blockquote>
+
+        <div class="panel-group accordion" id="adapter-migration" role="tablist" aria-multiselectable="true">
+            <div class="panel panel-default">
+                <div class="panel-heading" role="tab" id="security-framework">
+                    <h4 class="panel-title">
+                        <a role="button" data-toggle="collapse" data-parent="#security-framework" href="#collapseSecurityFramework" aria-expanded="false" aria-controls="collapseSecurityFramework">보안 프레임워크 차이</a>
+                    </h4>
+                </div>
+
+                <div id="collapseSecurityFramework" class="panel-collapse collapse" role="tabpanel" aria-labelledby="security-framework">
+                    <div class="panel-body">
+                        <h3>영역 대 SecurityCheck</h3>
+                        <p>{{ site.data.keys.product }} 8.0에서 보안 검사는 이전 릴리스에 있는 세 개념의 조합처럼 보일 수 있습니다. <br/>
+                        보안 검사 = 영역 + 인증자 + LoginModule</p>
+
+                        <p>보안 검사의 구현은 LoginModule과 인증자 둘 다의 구현입니다. <br/>
+                        보안 검사의 정의는 영역의 정의와 유사합니다. </p>
+
+                        <p>다음 표는 지난 릴리스의 보안 프레임워크와 {{ site.data.keys.product }} 8.0의 보안 프레임워크의 차이를 나타냅니다. </p>
+                        <table class="table table-striped">
+                            <tr>
+                                <td></td>
+                                <td><b>이전 릴리스</b></td>
+                                <td><b>{{ site.data.keys.product }} 8.0</b></td>
+                            </tr>
+                            <tr>
+                                <td><b>정의</b></td>
+                                <td><b>authenticationConfig.xml</b>에서 이름, 로그인 모듈 및 인증자로 정의됩니다. 예:
+
+    {% highlight xml %}<realm loginModule="AuthLoginModule" name="AuthRealm">
+        <className>com.worklight.integration.auth.AdapterAuthenticator</className>
+    </realm>{% endhighlight %}  </td>
+                                <td>관련 <b>adapter.xml</b> 파일에서 이름 및 다음 구현 클래스로 보안 검사를 정의하십시오.
+    {% highlight xml %}<securityCheckDefinition
+        name="securityCheckX"
+        class="com.sample.SecurityCheckW">
+    </securityCheckDefinition>{% endhighlight %}</td>
+                            </tr>
+                            <tr>
+                                <td><b>메소드 입력/종료</b></td>
+                                <td><i>어댑터 기반 인증:</i> 권한 부여 요청에서 프레임워크에 의해 호출되는 로그인/로그아웃 기능을 정의합니다.
+    {% highlight xml %}<parameter name="login-function" value="AuthAdapter.onAuthRequired"/>
+<parameter name="logout-function" value="AuthAdapter.onLogout"/>{% endhighlight %}
+
+                                <i>사용자 정의 인증자 + LoginModule:</i> 시작을 위한 <code>init()</code> 메소드 및 요청에 권한을 부여하기 위한 <code>processRequest()</code>.
+인증자는 로그인 모듈의 신임 정보를 <code>login()/logout()</code> 메소드로 보냅니다. </td>
+                                <td>보안 검사 인터페이스를 구현할 때 <code>authorize()</code> 및 <code>introspect()</code> 메소드도 구현해야 하며, 이들은 권한 부여 요청 중에 프레임워크에서 호출됩니다. 보안 검사는 인증과 로그인/로그아웃을 혼자서 처리합니다. </td>
+                            </tr>
+                            <tr>
+                                <td><b>사용법</b></td>
+                                <td>하나 이상의 범위를 포함할 수 있는 <code>customSecurityTest</code>에 캡슐화됩니다.
+{% highlight xml %}<customSecurityTest name="AuthSecurityTest">
+    <test isInternalUserID="true" realm="AuthRealm"/>
+</customSecurityTest>{% endhighlight %}</td>
+                                <td>0개 이상의 보안 검사를 포함할 수 있는 <b>Scope</b> 요소에 캡슐화됩니다. </td>
+                            </tr>
+                        </table>
+
+                        <h3>보안 테스트 대 범위</h3>
+                        <p>{{ site.data.keys.product }} 8.0에서 <b>범위</b>는 0개 이상의 보안 검사를 집계하는 데 사용되며, 그런 다음 로컬 및 외부 자원 또는 앱을 보호하는 데 사용될 수 있습니다. 이는 이전 릴리스의 <code>CustomSecurityTest</code> 개념과 유사합니다. </p>
+
+                        <table class="table table-striped">
+                            <tr>
+                                <td></td>
+                                <td><b>이전 릴리스</b></td>
+                                <td><b>{{ site.data.keys.product }} 8.0</b></td>
+                            </tr>
+
+                            <tr>
+                                <td><b>정의</b></td>
+                                <td><code>UserID</code>를 정의하기 위해 <b>authenticationConfig.xml</b> 파일에 이름, 하나 이상의 보안 테스트 및 최소 한 개의 전용 보안 테스트로 정의됩니다.
+
+{% highlight xml %}<customSecurityTest name="AuthSecurityTest">
+    <test isInternalUserID="true" realm="AuthRealm"/>
+</customSecurityTest>{% endhighlight %}</td>
+                                <td>{{ site.data.keys.mf_console }}에서 또는 REST API를 통해 정의되며, 범위에는 0개 이상의 보안 검사가 포함됩니다.
+
+{% highlight json %}"scopeElementMapping": {
+    "ScopeElementA": "secCheck1 secCheck2"
+}, {% endhighlight %}</td>
+                            </tr>
+
+                            <tr>
+                                <td><b>사용법</b></td>
+                                <td>SecurityTest는 자원(Java 어댑터), 프로시저(JavaScript 어댑터) 또는 애플리케이션(애플리케이션 디스크립터)을 보호하는 데 사용될 수 있습니다. <br/><br/>
+
+                                <b>Java 어댑터</b>:
+{% highlight java %}@OAuthSecurity(scope="AuthRealm"){% endhighlight %}
+
+                                <b>JavaScript 어댑터</b>:
+{% highlight javascript %}<procedure name="getSecretData" securityTest="AuthSecurityTest"/>{% endhighlight %}
+
+                                <b>참고</b>: securityTest에 속하지 않는 영역으로 자원을 보호할 수는 없습니다. </td>
+                                <td><b>범위</b>(하나 이상의 범위 요소)는 자원(Java 어댑터), 프로시저(JavaScript 어댑터) 또는 애플리케이션(애플리케이션 디스크립터)을 보호하는 데 사용될 수 있습니다. <br/><br/>
+
+                                <b>Java 어댑터</b>:
+{% highlight java %}@OAuthSecurity(scope="ScopeElementA ScopeElementB"){% endhighlight %}
+
+                                <b>JavaScript 어댑터</b>:
+{% highlight javascript %}<procedure name="deleteUser" scope="deletePrivilege"/>{% endhighlight %}
+
+                                <b>참고</b>: scopeElement 맵핑에 속하지 않는 securityCheck로 자원/애플리케이션을 보호할 수는 없습니다. </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>UserIdentity</b></td>
+                                <td>보안 테스트에서 특정 영역은 DeviceID 및 UserID를 정의합니다.
+
+{% highlight xml %}<test isInternalUserID="true" realm="AuthRealm"/>{% endhighlight %}</td>
+                                <td>범위는 범위를 구성하는 보안 검사를 모릅니다. </td>
+                            </tr>
+
+                            <tr>
+                                <td><b>배치</b></td>
+                                <td><b>authenticationConfig.xml</b> 파일에서 구성됩니다. securityTest를 만드는 영역을 변경하려면 .war 파일을 다시 배치해야 합니다. </td>
+                                <td>{{ site.data.keys.mf_console }}을 사용하여 {{ site.data.keys.mf_server }}를 중단하지 않고 변경됩니다. </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3>알림</h3>
+        {{ site.data.keys.product }} 8.0에서는 알림 설정, 구성 및 전송에 대한 새 경험과 함께 새 푸시 서비스가 소개되었습니다. 또한 이벤트 소스 푸시 알림의 개념은 철회되었습니다. 다음 사용자 문서 주제에서 자세한 시나리오 기반 마이그레이션 경로를 찾으십시오. <ul>
+            <li><a href="../migrating-push-notifications" target="_blank">이벤트 소스 기반 알림에서 푸시 알림으로 마이그레이션</a></li>
+            <li><a href="../migrating-push-notifications/#migration-scenarios" target="_blank">플랫폼별 마이그레이션 시나리오</a></li>
+        </ul>
+
+        <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/notifications/">알림 학습서에서</a> 알림 지원 설정 및 인증된 태그 기반 알림 전송에 대해 자세히 학습하십시오. </blockquote>
+
+        <h3>직접 업데이트</h3>
+        <p>직접 업데이트 기능을 사용하여 업데이트를 전달하는 단계가 변경되었으며, 일부 제한사항이 도입되었습니다. </p>
+
+        <ul>
+            <li><a href="../migrating-client-applications/cordova/#migrating-direct-update" target="_blank">직접 업데이트 마이그레이션</a> 사용자 문서 주제를 검토하십시오. </li>
+        </ul>
+
+        <blockquote><a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/direct-update/" target="_blank">Cordova 애플리케이션에서 직접 업데이트 사용</a> 학습서에서 직접 업데이트의 사용 방법에 대해 자세히 학습하십시오. </blockquote>
+
+        <h3>기타</h3>
+        <p>{{ site.data.keys.product }} 8.0에서는 몇 가지 기타 컴포넌트 및 기능이 제거되었습니다. 전체 목록에 대해서는 <a href="../migrating-client-applications/cordova/#removed-components" target="_blank">제거된 컴포넌트</a> 사용자 문서 주제를 검토하십시오. </p>
+    </div>
+    <div class="sizer">
+        <p>마지막으로, 아래에는 MobileFirst Platform Foundation 6.3 하이브리드 애플리케이션 및 어댑터를 표준 Cordova 애플리케이션 및 Maven 프로젝트로 마이그레이션하는 과정을 보여주는 비디오가 있습니다. </p>
+        <div class="embed-responsive embed-responsive-16by9">
+            <iframe src="https://www.youtube.com/embed/nLrtdOEkbEs"></iframe>
+        </div>
+    </div>
+</div>
