@@ -18,7 +18,7 @@ A new iFix has been released for MobileFirst Foundation 8.0, dated **March 27th,
 ### New features
 **PI78681 APPCENTER (CLIENT & SERVER) SUPPORT FOR WINDOWS 10**
 
-With this iFix _*Application Center*_ ships the Windows 10 UWP client project for installing the UWP app. You can open the project in Visual Studio and create a binary (for example: **.appx**) for distribution. Application Center does not provide a predefined method of distributing the mobile client. For more information see [Microsoft Windows 10 Universal (Native) IBM AppCenter client](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/appcenter/preparations/#microsoft-windows-10-universal-native-ibm-appcenter-client).
+With this iFix Windows 10 UWP apps is supported in IBM Application Center. User can now upload Windows 10 UWP apps and install the same on their device. The Windows 10 UWP client project for installing the UWP app is now shipped with the Application Center. You can open the project in Visual Studio and create a binary (for example: **.appx**) for distribution. Application Center does not provide a predefined method of distributing the mobile client. For more information see [Microsoft Windows 10 Universal (Native) IBM AppCenter client](https://mobilefirstplatform.ibmcloud.com/tutorials/en/foundation/8.0/appcenter/preparations/#microsoft-windows-10-universal-native-ibm-appcenter-client).
 
 ### APARs Fixed
 **PI78757** WORKLIGHTRESOURCEREQUEST.SEND() HANGS IF DEVICE IS OFFLINEON WINDOWS10
