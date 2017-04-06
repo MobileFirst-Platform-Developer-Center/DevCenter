@@ -12,6 +12,9 @@ if [ $TRAVIS_BRANCH != 'master' ]; then
   exit 0
 fi
 
+# introduce travis wait time
+travis_wait 30 mvn install
+
 # enable error reporting to the console
 set -e
 
