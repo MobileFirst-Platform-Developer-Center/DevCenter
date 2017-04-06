@@ -1,0 +1,443 @@
+---
+layout: tutorial
+title: Documentação e Tutoriais
+breadcrumb_title: All
+weight: 0
+show_disqus: false
+print_pdf: false
+indexed: false
+---
+<!-- NLS_CHARSET=UTF-8 -->
+<br>
+Desenvolva os seus aplicativos seguindo os tutoriais a seguir: configuração do seu ambiente de desenvolvimento, a experiência com o produto e incluir valor integrando
+com ofertas do {{
+site.data.keys.product }} 8.0.<br/><br/>
+
+<div id="container">
+    <div class="row">
+        <div id="categoryBoxes" class="hidden-xs hidden-sm">
+            <form style="margin: 0 0 10px 15px" role="searchbox" aria-label="Campo de procura sequencial" action="{{site.baseurl}}/search/" method="get">
+                <div class="input-group add-on">
+                    <input style="width: 206px" id="search-input" aria-label="campo de procura" type="text" class="form-control" placeholder="Procurar..." name="q">
+                </div>
+            </form>
+            <div class="col-md-3">
+                <a href="#start-here">
+                    <div class="categoryBox-start-here hidden-xs hidden-md">
+                        <img alt="imagem de navegação de tutoriais"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
+                        Iniciar aqui
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#get-sdk-and-apis">
+                    <div class="categoryBox-sdk hidden-xs hidden-md">
+                        <img alt="imagem de navegação de tutoriais"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
+                        Usar SDKs e APIs
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#implement-authentication-and-security">
+                    <div class="categoryBox-security hidden-xs hidden-md">
+                        <img alt="imagem de navegação de tutoriais"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
+                        Incluir segurança
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#measure-and-engage">
+                    <div class="categoryBox-more hidden-xs hidden-md">
+                        <img alt="imagem de navegação de tutoriais"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
+                        Medir e encaixar
+                    </div>
+                </a>
+            </div>  
+        </div>          
+    </div>
+</div>
+
+<hr />
+
+<div id="tutorials-list">
+    <h2><a href="../product-overview/">Visão Geral do Produto</a></h2>
+    Aprenda sobre a oferta do {{ site.data.keys.product }}.
+
+    <ul>
+        <li><a href="../product-overview/capabilities">Recursos principais</a></li>
+        <li><a href="../product-overview/components">Componentes do produto</a>
+            <ul>
+                <li><a href="../product-overview/components/server">{{ site.data.keys.mf_server }}</a></li>
+                <li><a href="../product-overview/components/console">{{ site.data.keys.mf_console }}</a></li>
+            </ul>
+        </li>
+        <li><a href="../product-overview/requirements">Requisitos do Sistema</a></li>
+        <li><a href="../product-overview/licensing">Licenciamento em {{ site.data.keys.mf_server }}</a></li>
+        <li><a href="../product-overview/features-matrix">Matriz de Recursos e Plataformas</a></li>
+        <li><a href="../product-overview/accessibility">Recursos de acessibilidade para o {{ site.data.keys.product_full }}</a></li>
+        <li><a href="../product-overview/release-notes">Notas sobre a liberação</a></li>
+    </ul>
+    
+    <h2><a href="../installation-configuration/">Instalação e Configuração</a></h2>
+    Configure o seu ambiente de desenvolvimento ou de produção para trabalhar com o {{ site.data.keys.product_full }}.
+
+    <ul>
+        <li><a href="../installation-configuration/development">Configurando o ambiente de desenvolvimento</a>
+            <ul>
+                <li><a href="../installation-configuration/development/mobilefirst/">Ambiente do {{ site.data.keys.product_adj }}</a>
+                    <ul>
+                        <li><a href="../installation-configuration/development/mobilefirst/installation-guide">Guia de Instalação</a></li>
+                        <li><a href="../installation-configuration/development/mobilefirst/using-mobilefirst-server-in-eclipse">Usando o {{ site.data.keys.mf_server
+}} no Eclipse</a></li>
+                    </ul>
+                </li>
+                <li><a href="../installation-configuration/development/cordova/">Ambiente do Cordova</a></li>
+                <li><a href="../installation-configuration/development/ios/">Ambiente do iOS</a></li>
+                <li><a href="../installation-configuration/development/android/">Ambiente do Android</a></li>
+                <li><a href="../installation-configuration/development/windows/">Ambientes do Windows 8.1 Universal e do Windows 10 UWP</a></li>
+                <li><a href="../installation-configuration/development/web/">Ambiente da Web</a></li>
+            </ul>
+        </li>
+        <li><a href="../installation-configuration/production">Configurando o ambiente de produção</a>
+            <ul>
+                <li>Tutoriais de instalação de produção
+                    <ul>
+                        <li><a href="../installation-configuration/production/tutorials/graphical-mode">Instalando o {{ site.data.keys.mf_server }} em modo gráfico</a></li>
+                        <li><a href="../installation-configuration/production/tutorials/command-line">Instalando o {{ site.data.keys.mf_server }} da linha de
+comandos</a></li>
+                    </ul>
+                </li>
+                <li><a href="../installation-configuration/production/installation-manager">Executando o IBM Installation Manager</a></li>
+                <li><a href="../installation-configuration/production/databases">Configurando bancos de dados</a></li>
+                <li><a href="../installation-configuration/production/topologies">Topologias e fluxos de rede</a></li>
+                <li><a href="../installation-configuration/production/appserver">Instalando o {{ site.data.keys.mf_server }}</a></li>
+                <li><a href="../installation-configuration/production/server-configuration">Configurando o {{ site.data.keys.mf_server }}</a></li>
+                <li><a href="../installation-configuration/production/token-licensing">Instalando e configurando para licenciamento do token</a></li>
+                <li><a href="../installation-configuration/production/">Instalando e configurando o {{ site.data.keys.mf_analytics_server }}</a></li>
+                <li><a href="../installation-configuration/production/appcenter">Instalando e Configurando o Application Center</a></li>
+                <li><a href="../installation-configuration/production/installation-reference">Referência de instalação</a></li>
+            </ul>
+        </li>
+        <li><a href="../installation-configuration/production/pure-application">Implementando o {{ site.data.keys.mf_server }} no IBM PureApplication System</a></li>
+    </ul>
+    
+    <h2><a href="../administering-apps/">Administrando Aplicativos</a></h2>
+    O {{ site.data.keys.product_full }} fornece diversas maneiras para administrar aplicativos {{ site.data.keys.product_adj }} em desenvolvimento ou em produção
+    <ul>
+        <li><a href="../administering-apps/deployment">Implementando aplicativos para ambientes de teste e de produção</a></li>
+        <li><a href="../administering-apps/using-console/">Administrando aplicativos por meio do {{ site.data.keys.mf_console }}</a></li>
+        <li><a href="../administering-apps/using-ant/">Administrando aplicativos por meio do Ant</a></li>
+        <li><a href="../administering-apps/using-cli/">Administrando aplicativos por meio da linha de comandos</a></li>
+        <li><a href="../administering-apps/federal/">Suporte de padrões federais em {{ site.data.keys.product }}</a></li>
+        <li><a href="../administering-apps/license-tracking/">Rastreamento de licença</a></li>
+    </ul> 
+    
+    <h2 id="upgrading_to_current_version"><a href="../upgrading/">Fazendo upgrade para {{ site.data.keys.product_full }} {{ site.data.keys.product_version
+}}</a></h2>
+    Aprenda sobre as mudanças de produto para preparar e planejar a migração de seus aplicativos {{ site.data.keys.product_adj }}.
+
+    <ul>
+        <li><a href="../upgrading/migration-cookbook">Cookbook de migração</a></li>
+        <li><a href="../upgrading/">Migrando de liberações anteriores</a>
+            <ul>
+                <li><a href="../upgrading/migrating-client-applications">Migrando o aplicativo cliente</a>
+                    <ul>
+                        <li><a href="../upgrading/migrating-client-applications/cordova">Migrando aplicativos Cordova e Híbridos existentes</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/ios">Migrando aplicativos iOS nativos existentes</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/android">Migrando aplicativos Android nativos existentes</a></li>
+                        <li><a href="../upgrading/migrating-client-applications/windows">Migrando aplicativos Windows nativos existentes</a></li>
+                    </ul>
+                </li>
+                <li><a href="../upgrading/migrating-adapters">Migrando adaptadores existentes para trabalhar sob o {{ site.data.keys.mf_server }} v8.0</a></li>
+                <li><a href="../upgrading/migrating-push-notifications">Migrando notificações push</a></li>
+                <li><a href="../upgrading/migrating-data">Migrando apps armazenando dados móveis no Cloudant com o SDK (kit de desenvolvimento de software) do IMFData
+ou do Cloudant</a></li>
+            </ul>
+        </li>
+    </ul>
+    
+    <hr id="start-here"/>
+    
+    <h2><a href="../quick-start/">Início Rápido
+</a></h2>
+    Familiarize-se com o {{ site.data.keys.product }}.
+
+    <ul>
+        <li><a href="../quick-start/cordova/">Iniciação rápida com o Cordova</a></li>
+        <li><a href="../quick-start/ios/">Iniciação rápida com o iOS</a></li>
+        <li><a href="../quick-start/android/">Iniciação rápida com o Android</a></li>
+        <li><a href="../quick-start/windows-8-10/">Iniciação rápida com o Windows 8.1 Universal e o Windows 10 UWP</a></li>
+        <li><a href="../quick-start/web/">Iniciação rápida com o app da Web</a></li>
+        <li><a href="../quick-start/xamarin/">Iniciação rápida com o Xamarin</a></li>
+    </ul>
+    
+    <h2><a href="../application-development/sdk">Incluindo o SDK do {{ site.data.keys.product_adj }}</a></h2>
+    Inclua o SDK do {{ site.data.keys.product }} em seu aplicativo Cordova ou Native iOS, Android, Windows 8.1 Universal ou Windows 10 UWP.
+
+    <ul>
+        <li><a href="../application-development/sdk/cordova/">Incluindo o SDK do {{ site.data.keys.product }} em aplicativos Cordova</a></li>
+        <li><a href="../application-development/sdk/ios/">Incluindo o SDK do {{ site.data.keys.product }} em aplicativos iOS</a></li>
+        <li><a href="../application-development/sdk/android/">Incluindo o SDK do {{ site.data.keys.product }} em aplicativos Android</a></li>
+        <li><a href="../application-development/sdk/windows-8-10/">Incluindo o SDK do {{ site.data.keys.product }} em aplicativos Windows 8.1 Universal e Windows
+10 UWP</a></li>
+        <li><a href="../application-development/sdk/web/">Incluindo o SDK do {{ site.data.keys.product }} em aplicativos de Web</a></li>
+        <li><a href="../application-development/sdk/xamarin/">Incluindo o SDK do {{ site.data.keys.product }} em aplicativos Xamarin</a></li>
+    </ul>
+    
+    <hr id="get-sdk-and-apis"/>
+
+    <h2><a href="../application-development">Desenvolvendo aplicativos</a></h2>
+    Aprenda a usar as APIs do {{ site.data.keys.product_adj }}: Direct Update, JSONStore, WLResourceRequest, Tradução do lado do cliente,
+aplicativos de depuração, {{ site.data.keys.mf_cli }} e mais...
+    <ul>
+        <li>Desenvolvimento de SDK do <a href="../application-development/cordova-apps/">{{ site.data.keys.product }} em aplicativos Cordova</a>
+            <ul>
+                <li><a href="../application-development/cordova-apps/adding-images-and-icons">Incluindo telas iniciais customizadas e ícones em apps Cordova</a></li>
+                <li><a href="../application-development/cordova-apps/securing-apps">Protegendo aplicativos Cordova</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">Usando o {{ site.data.keys.mf_cli }} para gerenciar artefatos
+do {{ site.data.keys.product_adj }}</a></li>
+        <li><a href="../application-development/using-mobilefirst-cli-in-eclipse/">Usando o {{ site.data.keys.mf_cli }} no Eclipse</a></li>
+        <li>Solicitação de recurso de aplicativos clientes
+            <ul>
+                <li><a href="../application-development/resource-request/javascript/">Solicitação de recurso de aplicativos JavaScript (Cordova, Web)</a></li>
+                <li><a href="../application-development/resource-request/ios/">Solicitação de recurso de aplicativos iOS</a></li>
+                <li><a href="../application-development/resource-request/android/">Solicitação de recurso de aplicativos Android</a></li>
+                <li><a href="../application-development/resource-request/windows/">Solicitação de recurso de aplicativos Windows 8.1 Universal ou Windows 10 UWP</a></li>
+                <li><a href="../application-development/resource-request/xamarin/">Solicitação de recurso de aplicativos Xamarin</a></li>
+            </ul>
+        </li>
+        <li>JSONStore
+            <ul>
+                <li><a href="../application-development/jsonstore/">Visão geral do JSONStore</a></li>
+                <li><a href="../application-development/jsonstore/cordova/">JSONStore em aplicativos Cordova</a></li>
+            	<li><a href="../application-development/jsonstore/ios/">JSONStore em aplicativos iOS</a></li>
+            	<li><a href="../application-development/jsonstore/android/">JSONStore em aplicativos Android</a></li>
+                <li><a href="../application-development/jsonstore/security-utilities/">Utilitários de segurança</a></li>
+                <li><a href="../application-development/jsonstore/code-examples/">Exemplos de Códigos</a></li>
+            </ul>
+        </li>
+        <li>Coleção de log do lado do cliente
+            <ul>
+                <li><a href="../application-development/client-side-log-collection/">Visão geral de coleção de logs do lado do cliente</a></li>
+                <li><a href="../application-development/client-side-log-collection/javascript/">Coleção de logs em aplicativos JavaScript (Cordova, Web)</a></li>
+            	<li><a href="../application-development/client-side-log-collection/ios/">Coleção de logs em aplicativos iOS</a></li>
+            	<li><a href="../application-development/client-side-log-collection/android/">Coleção de logs em aplicativos Android</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/direct-update/">Usando o Direct Update em aplicativos Cordova</a>
+            <ul>
+                <li><a href="../application-development/direct-update/cdn-support">Entregando solicitações do Direct Update de um CDN</a></li>
+                <li><a href="../application-development/direct-update/secure-direct-update">Implementando o Direct Update seguro</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/translation/">Tradução multilíngue de aplicativos JavaScript (Cordova, Web)</a></li>
+        <li><a href="../application-development/debugging-applications/">Depurando aplicativos JavaScript (Cordova, Web)</a></li>
+        <li><a href="../application-development/live-update/">Atualização em Tempo Real </a></li>
+        <li><a href="../application-development/watchos/">Desenvolvendo para o Apple watchOS 2</a></li>
+        <li><a href="../application-development/simple-data-sharing/">Compartilhamento de dados simples</a></li>
+    </ul>
+    
+    <h2><a href="../adapters/">Desenvolvendo adaptadores</a></h2>
+    Desenvolva código do lado do servidor para integrar com sistemas backend corporativos e serviços de nuvem.
+
+    <ul>
+        <li><a href="../adapters/">Visão geral de adaptadores</a></li>
+        <li><a href="../adapters/creating-adapters/">Criando adaptadores Java e JavaScript</a></li>
+        <li><a href="../adapters/javascript-adapters/">Adaptadores JavaScript</a>
+            <ul>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">Adaptador HTTP de Javascript</a>
+                    <ul>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">Usando SSL em adaptadores HTTP de Javascript</a></li>
+                    </ul>
+                </li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">Adaptador SQL de Javascript</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">Usando Java em adaptadores JavaScript</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/java-adapters/">Adaptadores Java</a>
+            <ul>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Adaptador HTTP de Java</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Adaptador SQL de Java</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/developing-adapters/">Desenvolvendo adaptadores no Eclipse</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">Testando e depurando adaptadores</a></li>
+        <li>Coleção de logs do lado do servidor
+            <ul>
+                <li><a href="../adapters/server-side-log-collection/">Visão geral de coleção de logs do lado do servidor</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Coleção de logs em adaptadores Java</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">Coleção de logs em adaptadores JavaScript</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">Uso e mashup de adaptador avançado</a></li>
+        <li><a href="../adapters/cloudant/">Integrando com o Cloudant usando um adaptador</a></li>
+    </ul>
+    
+    <hr id="implement-authentication-and-security"/>
+
+    <h2><a href="../authentication-and-security/">Autenticação e Segurança</a></h2>
+    Inclua várias camadas de proteção em seus aplicativos.
+
+    <ul>
+        <li><a href="../authentication-and-security/">Conceitos de autorização</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">Criando uma verificação de segurança</a>
+            <ul>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">O contrato de verificação de segurança</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">Implementando a verificação de segurança</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/javascript/">Implementando o manipulador de desafios em aplicativos JavaScript
+(Cordova, Web)</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/ios/">Implementando o manipulador de desafios em aplicativos iOS</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/android/">Implementando o manipulador de desafios em aplicativos Android</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/windows-8-10/">Implementando o manipulador de desafios em aplicativos Windows 8.1
+Universal e Windows 10 UWP</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/user-authentication/security-check/">Implementando a verificação de segurança</a></li>
+                <li><a href="../authentication-and-security/user-authentication/javascript/">Implementando o manipulador de desafios em aplicativos JavaScript
+(Cordova, Web)</a></li>
+                <li><a href="../authentication-and-security/user-authentication/ios/">Implementando o manipulador de desafios em aplicativos iOS</a></li>
+                <li><a href="../authentication-and-security/user-authentication/android/">Implementando o manipulador de desafios em aplicativos Android</a></li>
+                <li><a href="../authentication-and-security/user-authentication/windows-8-10/">Implementando o manipulador de desafios em aplicativos Windows 8.1
+Universal e Windows 10 UWP</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a></li>
+        <li><a href="../authentication-and-security/step-up/">Autenticação Avançada</a></li>
+        <li><a href="../authentication-and-security/enrollment/">Registro</a></li>
+        <li><a href="../authentication-and-security/ltpa-security-check/">Verificação de segurança de LTPA</a></li>
+        <li><a href="../authentication-and-security/confidential-clients/">Clientes confidenciais</a></li>
+        <li><a href="../authentication-and-security/protecting-external-resources/">Protegendo recursos externos</a>
+            <ul>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">Trust Association Interceptor</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Validação do token de Java</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Validação de Node.js</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Inspetor de mensagem do Windows .NET</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/application-authenticity/">Autenticidade do Aplicativo</a></li>
+        <li><a href="../authentication-and-security/device-sso/">Configurando a conexão única de dispositivo</a></li>
+        <li><a href="../authentication-and-security/certificate-pinning/">Fixação de certificado</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">Configurando o keystore do {{
+site.data.keys.mf_server }}</a></li>
+    </ul>
+
+    <hr id="measure-and-engage"/>
+
+    <h2><a href="../notifications">Notificações</a></h2>
+    Enviar notificações com o {{ site.data.keys.product_full }}.
+
+    <ul>
+        <li><a href="../notifications/">Visão geral das notificações</a></li>
+        <li><a href="../notifications/sending-notifications/">Enviando Notificações</a></li>
+        <li><a href="../notifications/handling-push-notifications/">Manipulando notificações por push</a>
+            <ul>
+                <li><a href="../notifications/handling-push-notifications/cordova/">Manipulando notificações por push em aplicativos Cordova</a>
+                    <ul>
+                        <li><a href="../notifications/handling-push-notifications/interactive">Notificações interativas</a></li>
+                        <li><a href="../notifications/handling-push-notifications/silent">Notificações silenciosas</a></li>
+                    </ul>
+                </li>
+                <li><a href="../notifications/handling-push-notifications/ios/">Manipulando notificações por push em aplicativos iOS</a>
+                    <ul>
+                        <li><a href="../notifications/handling-push-notifications/interactive">Notificações interativas</a></li>
+                        <li><a href="../notifications/handling-push-notifications/silent">Notificações silenciosas</a></li>
+                    </ul>
+                </li>
+                <li><a href="../notifications/handling-push-notifications/android/">Manipulando notificações por push em aplicativos Android</a></li>
+                <li><a href="../notifications/handling-push-notifications/windows/">Manipulando notificações por push em aplicativos Windows</a></li>
+            </ul>
+        </li>
+        <li><a href="../notifications/handling-sms-notifications/">Manipulando notificações SMS</a>
+            <ul>
+                <li><a href="../notifications/handling-sms-notifications/cordova/">Manipulando notificações SMS em aplicativos Cordova</a></li>
+                <li><a href="../notifications/handling-sms-notifications/android/">Manipulando notificações SMS em aplicativos Android</a></li>
+                <li><a href="../notifications/handling-sms-notifications/ios/">Manipulando notificações SMS em aplicativos iOS</a></li>
+            </ul>
+        </li>
+        <li><a href="../notifications/analytics/">Configurando o suporte de Analytics para notificações push</a></li>
+        <li><a href="../notifications/rest-apis/">APIs de REST do serviço de push</a></li>
+    </ul>
+    
+    <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
+    Monitore aplicativos e adaptadores implementados, ganhe insight sobre o uso de aplicativo, descubra sobre erros e mais.
+    <ul>
+        <li><a href="../analytics">Introdução ao {{ site.data.keys.mf_analytics_full }}</a></li>
+        <li><a href="../analytics/analytics-api/">Usando a API Analytics em aplicativos clientes</a></li>
+        <li><a href="../analytics/analytics-rest-api/">Usando a API de REST Analytics</a></li>
+        <li><a href="../analytics/elasticsearch/">Elasticsearch</a></li>
+        <li><a href="../analytics/console/">Consoles de operações e Analytics</a>
+           <ul>
+             <li><a href="../analytics/console/alerts/">Gerenciando Alertas</a></li>
+             <li><a href="../analytics/console/log-filters/">Configurando filtros de log</a></li>
+             <li><a href="../analytics/console/custom-charts/">Criando gráficos customizados</a></li>
+             <li><a href="../analytics/console/scenario-loader/">Carregador de cenário</a></li>
+             <li><a href="../analytics/console/scenario-loader/">Notificações push</a></li>
+             <li><a href="../analytics/console/analytics-data-purge">Retenção e limpeza de dados</a></li>
+          </ul>
+        </li>
+        <li><a href="../analytics/workflows/">Fluxos de trabalho de Analytics</a></li>
+    </ul>
+    
+    <h2><a href="../bluemix">Foundation no Bluemix</a></h2>
+    Implemente o {{ site.data.keys.product }} na nuvem usando o Bluemix.
+
+    <ul>
+        <li><a href="../bluemix/">Introdução ao {{ site.data.keys.product_full }} no Bluemix</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">Crie uma instância do {{ site.data.keys.mf_server }}  usando o serviço Mobile Foundation Bluemix</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">Configurando o {{ site.data.keys.mf_server }} em contêineres IBM usando scripts no serviço de
+contêiner IBM</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">Coleção de logs e rastreios</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">Protegendo contêineres</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">Resolução</a></li>
+            </ul>
+        </li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/">Configurando o {{ site.data.keys.mf_server }} no Bluemix usando scripts no Liberty for Java</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/securing-containers">Protegendo contêineres</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts-lbp/troubleshooting">Resolução</a></li>
+            </ul>
+        </li>
+    </ul>
+    
+    <h2><a href="../appcenter">Application
+Center</a></h2>
+    Instale, configure e use o Application Center do IBM MoblieFirst Foundation.
+
+    <ul>
+        <li><a href="../appcenter/">Visão geral do Application Center</a></li>
+        <li><a href="../appcenter/preparations">Preparações para usar o
+cliente móvel</a></li>
+        <li><a href="../appcenter/push-notifications">Notificações push de atualizações do aplicativo</a></li>
+        <li><a href="../appcenter/appcenter-console">O console do Application Center</a></li>
+        <li><a href="../appcenter/command-line">Ferramenta de linha de comandos para fazer upload ou excluir um aplicativo</a></li>
+        <li><a href="../appcenter/mobile-client">O cliente móvel</a></li>
+        <li><a href="../appcenter/logging-and-tracing">Configurando a criação de log e o rastreio para o Application Center no servidor de aplicativos</a></li>
+        <li><a href="../appcenter/app-center-tutorial/">Distribuindo aplicativos móveis com o tutorial do Application Center</a></li>
+    </ul>
+    
+    <h2><a href="../troubleshooting/">Resolução de Problemas Comuns</a></h2>
+    Perguntas e respostas mais frequentes.
+
+    <ul>
+        <li><a href="../troubleshooting/notifications">Notificações push</a></li>
+        <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
+        <li><a href="../troubleshooting/analytics">Analíticas</a></li>
+    </ul>
+    
+    <h2><a href="../../../../en/product-integration/8.0">Integração do Produto</a></h2>
+    Integre os apps {{ site.data.keys.product }} 8.0 com outros produtos IBM
+
+    <ul>
+        <li><a href="../../../../en/product-integration/8.0">Lista de integrações de produtos disponíveis</a></li>
+    </ul>
+    <br/>
+</div>

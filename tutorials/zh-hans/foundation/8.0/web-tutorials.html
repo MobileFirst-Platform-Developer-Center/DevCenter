@@ -1,0 +1,219 @@
+---
+layout: tutorial
+title: 针对 Web 进行开发
+show_disqus: false
+use_dropdown: false
+print_pdf: false
+show_in_nav: false
+indexed: false
+---
+<!-- NLS_CHARSET=UTF-8 -->
+<br>
+请按照以下教程来开发 Web 应用程序：设置开发环境、体验产品以及通过与 {{ site.data.keys.product }} 8.0 产品集成来增加价值。<br/><br/>
+
+<div id="container">
+    <div class="row">
+        <div id="categoryBoxes">
+            <form style="margin: 0 0 10px 15px" role="searchbox"  aria-label="内嵌搜索字段" action="{{site.baseurl}}/search/" method="get">
+                <div class="input-group add-on">
+                    <input style="width: 206px" id="search-input" aria-label="搜索字段" type="text" class="form-control" placeholder="搜索..." name="q">
+                </div>
+            </form>
+
+            <div class="col-md-3">
+                <a href="#start-here">
+                    <div class="categoryBox-start-here hidden-xs hidden-md">
+                        <img alt="教程导航图像"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getstarted.svg"/>
+                        从这里开始</div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#get-sdk-and-apis">
+                    <div class="categoryBox-sdk hidden-xs hidden-md">
+                        <img alt="教程导航图像"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsdk.svg"/>
+                        使用 SDK 和 API</div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#implement-authentication-and-security">
+                    <div class="categoryBox-security hidden-xs hidden-md">
+                        <img alt="教程导航图像"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getsecurity.svg"/>
+                        增加安全性</div>
+                </a>
+            </div>
+            <div class="col-md-3">
+                <a href="#measure-and-engage">
+                    <div class="categoryBox-more hidden-xs hidden-md">
+                        <img alt="教程导航图像"  src="{{site.baseurl}}/assets/tutorials/all-tutorials/getdata.svg"/>
+                        度量与互动</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tutorials-list">
+    <hr/>
+
+    <h2><a href="../product-overview/">产品概述</a></h2>
+    了解 {{ site.data.keys.product }} 产品。<ul>
+        <li><a href="../product-overview/capabilities">主要功能</a></li>
+        <li><a href="../product-overview/components">产品组件</a></li>
+        <li><a href="../product-overview/requirements">系统需求</a></li>
+        <li><a href="../product-overview/licensing">在 {{ site.data.keys.mf_server }} 中获得许可</a></li>
+        <li><a href="../product-overview/features-matrix">功能和平台列表</a></li>
+        <li><a href="../product-overview/accessibility">{{ site.data.keys.product_full }} 的辅助功能</a></li>
+        <li><a href="../product-overview/release-notes">发行说明</a></li>
+    </ul>
+
+    <h2><a href="../installation-configuration">安装和配置</a></h2>
+    设置开发环境以使用 {{ site.data.keys.product_full }}。
+
+    <ul>
+        <li><a href="../installation-configuration/development/mobilefirst/">设置 {{ site.data.keys.product_adj }} 开发环境</a></li>
+        <li><a href="../installation-configuration/development/web/">设置 Web 开发环境</a></li>
+        <li><a href="../product-overview/components/console/">使用 {{ site.data.keys.product }} 操作控制台</a></li>
+    </ul>
+
+    <hr id="start-here"/>
+    <h2><a href="../quick-start/">快速入门</a></h2>
+    体验 {{ site.data.keys.product }}。<ul>
+        <li><a href="../quick-start/web/">Web 应用程序快速入门</a></li>
+    </ul>
+
+    <h2><a href="../application-development/sdk">添加 {{ site.data.keys.product_adj }} SDK</a></h2>
+    将 {{ site.data.keys.product }} SDK 添加到 Web 应用程序。<ul>
+        <li><a href="../application-development/sdk/web/">将 {{ site.data.keys.product }} SDK 添加到 Web 应用程序</a></li>
+    </ul>
+
+    <hr id="get-sdk-and-apis"/>
+
+    <h2><a href="../application-development">开发应用程序</a></h2>
+    学会使用 {{ site.data.keys.product_adj }} API：直接更新、JSONStore、WLResourceRequest、客户端翻译、调试应用程序、Developer CLI 及其他...
+<ul>
+        <li><a href="../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/">使用 {{ site.data.keys.mf_cli }} 管理 {{ site.data.keys.product_adj }} 工件</a></li>
+        <li><a href="../application-development/resource-request/javascript/">来自 JavaScript（Cordova 或 Web）应用程序的资源请求</a></li>
+        <li>客户端日志收集<ul>
+                <li><a href="../application-development/client-side-log-collection/">客户端日志收集概述</a></li>
+                <li><a href="../application-development/client-side-log-collection/javascript/">JavaScript（Cordova 或 Web）应用程序的中的日志收集</a></li>
+            </ul>
+        </li>
+        <li><a href="../application-development/translation/">JavaScript（Cordova 或 Web）应用程序的多语种翻译</a></li>
+        <li><a href="../application-development/debugging-applications/">调试 JavaScript（Cordova 或 Web）应用程序</a></li>
+    </ul>
+
+    <h2><a href="../adapters/">开发适配器</a></h2>
+    开发服务器端代码以与企业后端系统和云服务集成。<ul>
+        <li><a href="../adapters/">适配器概述</a></li>
+        <li><a href="../adapters/creating-adapters/">创建 Java 和 JavaScript 适配器</a></li>
+        <li><a href="../adapters/javascript-adapters/">JavaScript 适配器</a><ul>
+                <li><a href="../adapters/javascript-adapters/js-http-adapter/">JavaScript HTTP 适配器</a><ul>
+                        <li><a href="../adapters/javascript-adapters/js-http-adapter/using-ssl">在 JavaScript HTTP 适配器中使用 SSL</a></li>
+                    </ul>
+                </li>
+                <li><a href="../adapters/javascript-adapters/js-sql-adapter/">JavaScript SQL 适配器</a></li>
+                <li><a href="../adapters/javascript-adapters/using-java-in-javascript-adapters/">在 JavaScript 适配器中使用 Java</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/java-adapters/">Java 适配器</a><ul>
+                <li><a href="../adapters/java-adapters/java-http-adapter/">Java HTTP 适配器</a></li>
+                <li><a href="../adapters/java-adapters/java-sql-adapter/">Java SQL 适配器</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/developing-adapters/">在 IDE 中开发适配器</a></li>
+        <li><a href="../adapters/testing-and-debugging-adapters/">测试并调试适配器</a></li>
+        <li>服务器端日志收集<ul>
+                <li><a href="../adapters/server-side-log-collection/">服务器端日志收集概述</a></li>
+                <li><a href="../adapters/server-side-log-collection/java-adapter/">Java 适配器中的日志收集</a></li>
+                <li><a href="../adapters/server-side-log-collection/javascript-adapter/">JavaScript 适配器中的日志收集</a></li>
+            </ul>
+        </li>
+        <li><a href="../adapters/advanced-adapter-usage-mashup/">高级适配器用法和 Mashup</a></li>
+        <li><a href="../adapters/cloudant/">使用适配器与 Cloudant 集成</a></li>
+    </ul>
+
+    <hr id="implement-authentication-and-security"/>
+
+    <h2><a href="../authentication-and-security">认证和安全性</a></h2>
+    向应用程序添加多个保护层。<ul>
+        <li><a href="../authentication-and-security/">授权概念</a></li>
+        <li><a href="../authentication-and-security/creating-a-security-check/">创建安全性检查</a><ul>
+                <li><a href="../authentication-and-security/creating-a-security-check/contract">安全性检查合同</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/credentials-validation/">CredentialsValidationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/credentials-validation/security-check/">实施安全性检查</a></li>
+                <li><a href="../authentication-and-security/credentials-validation/javascript/">在 JavaScript（Cordova 或 Web）应用程序中实施验证问题处理程序</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/user-authentication/">UserAuthenticationSecurityCheck</a>
+            <ul>
+                <li><a href="../authentication-and-security/user-authentication/security-check/">实施安全性检查</a></li>
+                <li><a href="../authentication-and-security/user-authentication/javascript/">在 JavaScript（Cordova 或 Web）应用程序中实施验证问题处理程序</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/externalizable-security-check/">ExternalizableSecurityCheck</a></li>
+        <li><a href="../authentication-and-security/step-up/">增强认证</a></li>
+        <li><a href="../authentication-and-security/enrollment/">注册</a></li>
+        <li><a href="../authentication-and-security/ltpa-security-check/">LTPA 安全性检查</a></li>
+        <li><a href="../authentication-and-security/confidential-clients/">保密客户机</a></li>
+        <li><a href="../authentication-and-security/protecting-external-resources/">保护外部资源</a><ul>
+                <li><a href="../authentication-and-security/protecting-external-resources/tai">信任关联拦截器</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/jtv">Java 令牌验证</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/node-js">Node.js 验证</a></li>
+                <li><a href="../authentication-and-security/protecting-external-resources/windows-message-inspector">Windows .NET 消息检验器</a></li>
+            </ul>
+        </li>
+        <li><a href="../authentication-and-security/application-authenticity/">应用程序真实性</a></li>
+        <li><a href="../authentication-and-security/device-sso/">配置设备单点登录</a></li>
+        <li><a href="../authentication-and-security/configuring-the-mobilefirst-server-keystore/">配置 {{ site.data.keys.mf_server }} 密钥存储库</a></li>
+    </ul>
+
+    <hr id="measure-and-engage"/>
+
+    <h2><a href="../analytics">{{ site.data.keys.mf_analytics_short }}</a></h2>
+    监视已部署的应用程序和适配器，获取有关应用程序使用情况的洞察，发现传播性的错误。<ul>
+        <li><a href="../analytics">{{ site.data.keys.mf_analytics_full }} 简介</a></li>
+        <li><a href="../analytics/analytics-api/">在客户机应用程序中使用分析 API</a></li>
+        <li><a href="../analytics/analytics-rest-api/">使用分析 REST API</a></li>
+        <li><a href="../analytics/console/custom-charts/">创建定制图表</a></li>
+        <li><a href="../analytics/console/alerts/">管理警报</a></li>
+        <li><a href="../analytics/console/log-filters/">配置日志过滤器</a></li>
+        <li><a href="../analytics/console/scenario-loader/">方案装入程序</a></li>
+        <li><a href="../analytics/console/push-notifications/">推送通知</a></li>
+        <li><a href="../analytics/console/analytics-data-purge/">数据保留和清除</a></li>
+        <li><a href="../analytics/workflows/">分析工作流程</a></li>
+    </ul>
+
+    <h2><a href="../bluemix">Bluemix 基础</a></h2>
+    使用 Bluemix 将 {{ site.data.keys.product }} 部署到云。<ul>
+        <li><a href="../bluemix/">Bluemix 上的 {{ site.data.keys.product_full }} 简介</a></li>
+        <li><a href="../bluemix/using-mobile-foundation/">使用 Mobile Foundation Bluemix 服务创建 {{ site.data.keys.mf_server }} 实例</a></li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">在 IBM Containers 上使用 IBM Container Service 脚本设置 {{ site.data.keys.mf_server }}</a>
+            <ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/log-and-trace-collection">日志和跟踪收集</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">保护容器安全</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">故障诊断</a></li>
+            </ul>
+        </li>
+        <li><a href="../bluemix/mobilefirst-server-using-scripts/">在 Bluemix 上使用 Liberty for Java 脚本设置 {{ site.data.keys.mf_server }}</a><ul>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/securing-containers">保护容器安全</a></li>
+                <li><a href="../bluemix/mobilefirst-server-using-scripts/troubleshooting">故障诊断</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2><a href="../troubleshooting/">对常见问题进行故障诊断</a></h2>
+    常见问题及解答。 <ul>
+        <li><a href="../troubleshooting/notifications">推送通知</a></li>
+        <li><a href="../troubleshooting/jsonstore">JSONStore</a></li>
+        <li><a href="../troubleshooting/analytics">分析</a></li>
+    </ul>
+
+    <h2><a href="../../../product-integration/8.0">产品集成</a></h2>
+    将 {{ site.data.keys.product }} 8.0 应用程序与其他 IBM 产品集成<ul>
+        <li><a href="../../../product-integration/8.0">可用产品集成列表</a></li>
+    </ul>
+    <br/>
+</div>

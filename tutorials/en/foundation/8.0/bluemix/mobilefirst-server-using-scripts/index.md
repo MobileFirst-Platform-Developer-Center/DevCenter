@@ -8,7 +8,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## Overview
 {: #overview }
-Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance as well as {{ site.data.keys.mf_analytics }} instance on IBM Bluemix. To achieve this you will go through the following steps: 
+Follow the instructions below to configure a {{ site.data.keys.mf_server }} instance as well as {{ site.data.keys.mf_analytics }} instance on IBM Bluemix. To achieve this you will go through the following steps:
 
 * Setup your host computer with the required tools (Cloud Foundry CLI, Docker, and IBM Containers Extension (cf ic) Plug-in)
 * Setup your Bluemix account
@@ -79,7 +79,7 @@ In macOS, two options are available to run Docker commands:
 2. Install the [IBM Containers Plugin (cf ic)](https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html).
 
 ## Download the {{ site.data.keys.mf_bm_pkg_name }} archive
-{: #download-the-ibm-mfpf-container-8000}-archive 
+{: #download-the-ibm-mfpf-container-8000-archive}
 To set up {{ site.data.keys.product }} on IBM Containers, you must first create an image that will later be pushed to Bluemix.  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Follow the instructions in this page</a> to download {{ site.data.keys.mf_server }} for IBM Containers archive (.zip file, search for: *CNBL0EN*).
 
@@ -98,12 +98,12 @@ The archive file contains the files for building an image (**dependencies** and 
                 <img src="zip.png" alt="Image showing the file system structure of the archive file" style="float:right;width:570px"/>
                 <h4>dependencies folder</h4>
                 <p>Contains the {{ site.data.keys.product }} runtime and IBM Java JRE 8.</p>
-                
+
                 <h4>mfpf-libs folder</h4>
                 <p>Contains {{ site.data.keys.product_adj }} product component libraries and CLI.</p>
-                
+
                 <h4>mfpf-server and mfpf-analytics folders</h4>
-                
+
                 <ul>
                     <li><b>Dockerfile</b>: Text document that contains all the commands that are necessary to build an image.</li>
                     <li><b>scripts</b> folder: This folder contains the <b>args</b> folder, which contains a set of configuration files. It also contains scripts to run for logging into Bluemix, building a {{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} image and for pushing and running the image on Bluemix. You can choose to run the scripts interactively or by preconfiguring the configuration files as is further explained later. Other than the customizable args/*.properties files, do not modify any elements in this folder. For script usage help, use the <code>-h</code> or <code>--help</code> command-line arguments (for example, <code>scriptname.sh --help</code>).</li>
@@ -122,7 +122,7 @@ The archive file contains the files for building an image (**dependencies** and 
                         </ul>
                     </li>
                     <li><b>env</b> folder: Contains the environment properties used for server initialization (server.env) and custom JVM options (jvm.options).</li>
-                    
+
                     <br/>
                     <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                         <div class="panel panel-default">
@@ -206,7 +206,7 @@ The archive file contains the files for building an image (**dependencies** and 
                                             <td>The password for the administrator role for {{ site.data.keys.mf_server }} operations.</td>
                                         </tr>
                                     </table>
-                                    
+
                     				<br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>
                                 </div>
@@ -243,15 +243,15 @@ The archive file contains the files for building an image (**dependencies** and 
                                             <td>The name of the user group possessing the predefined role <b>worklightadmin</b>.</td>
                                         </tr>
                                     </table>
-                                    
+
                     				<br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#analytics-env" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>Close section</b></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
                     </li>
                     <li><b>jre-security</b> folder: You can update the JRE security-related files (truststore, policy JAR files, and so on) by placing them in this folder. The files in this folder get copied to the JAVA_HOME/jre/lib/security/ folder in the container.</li>
                     <li><b>security</b> folder: used to store the key store, trust store, and the LTPA keys files (ltpa.keys).</li>
@@ -364,7 +364,7 @@ If you intend to use analytics with your {{ site.data.keys.mf_server }} start he
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-                  
+
                         <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-initenv">
@@ -401,7 +401,7 @@ If you intend to use analytics with your {{ site.data.keys.mf_server }} start he
                                                 <td>Bluemix API endpoint. (Defaults to https://api.ng.bluemix.net)</td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>For example:</p>
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
@@ -422,7 +422,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 
                         To view all available images in your Bluemix repository run: <code>cf ic images</code><br/>
                         The list contains the image name, date of creation, and ID.
-                  
+
                         <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
@@ -443,7 +443,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                               <td>Name to be used for the customized analytics image. Format: Bluemix registry URL/private namespace/image name</td>
                                             </tr>      
                                         </table>
-                                      
+
                                         <p>For example:</p>
 {% highlight bash %}
 prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namespace/mfpfanalytics80
@@ -454,7 +454,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                               </div>
                           </div>
                       </div>
-                  
+
                     </li>
                     <li><b>startanalytics.sh - Running the image on an IBM Container</b><br />
                     The <b>startanalytics.sh</b> script is used to run the {{ site.data.keys.mf_analytics }} image on an IBM Container. It also binds your image to the public IP that you configured in the <b>ANALYTICS_IP</b> property.</li>
@@ -544,7 +544,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                                 <td>Provide {{ site.data.keys.mf_analytics }} properties as comma-separated key:value pairs. Note: If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>For example:</p>
                         {% highlight bash %}
                         startanalytics.sh --tag image_tag_name --name container_name --ip container_ip_address
@@ -562,7 +562,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 {% highlight bash %}
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
-                  
+
                         <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
@@ -639,7 +639,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                                 <td>Specify the directory to be used for storing analytics data. Default value is <b>/analyticsData</b></td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>For example:</p>
 {% highlight bash %}
 startanalyticsgroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
@@ -671,7 +671,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
                 The <b>args</b> folder contains a set of configuration files which contain the arguments that are required to run the scripts. Fill in the argument values in the following files:<br/>
-            
+
                 <h4>initenv.properties</h4>
                 <ul>
                     <li><b>BLUEMIX_USER - </b>Your Bluemix username (email).</li>
@@ -726,7 +726,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             <p>The following instructions demonstrate how to run the scripts by using the configuration files. A list of command-line arguments is also available should you choose to run without in interactive mode:</p>
-            
+
             <ol>
                 <li><b>initenv.sh – Logging in to Bluemix </b><br />
                     Run the <b>initenv.sh</b> script to create an environment for building and running {{ site.data.keys.product }} on IBM Containers:
@@ -770,12 +770,12 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                                             <td>Bluemix API endpoint. (Defaults to https://api.ng.bluemix.net)</td>
                                         </tr>
                                     </table>
-                                    
+
                                     <p>For example:</p>
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
-                    
+
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Close section</b></a>
                                 </div>
                             </div>
@@ -828,12 +828,12 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                             <td>Database schema name for push service. Defaults to the runtime schema name.</td>
                                         </tr>
                                     </table>
-                                    
+
                                     <p>For example:</p>
 {% highlight bash %}
 prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
-                                    
+
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>Close section</b></a>
                                 </div>
                             </div>
@@ -850,7 +850,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                 <li><b>prepareserver.sh - Prepare a {{ site.data.keys.mf_server }} image</b><br />
                     Run the <b>prepareserver.sh</b> script in order to build a {{ site.data.keys.mf_server }} image and push it to your Bluemix repository. To view all available images in your Bluemix repository, run: <code>cf ic images</code><br/>
                     The list contains the image name, date of creation, and ID.<br/>
-                  
+
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
@@ -875,12 +875,12 @@ prepareserverdbs.sh --admindb MFPDashDBService
                                             <td>Name to be used for the customized {{ site.data.keys.mf_server }} image. Format: registryUrl/namespace/imagename</td>
                                         </tr>
                                     </table>
-                                  
+
                                     <p>For example:</p>
 {% highlight bash %}
 prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% endhighlight %}
-                                  
+
                                   <br/>
                                   <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Close section</b></a>
                               </div>
@@ -889,7 +889,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                     </div>  
                 </li>
                 <li><b>startserver.sh - Running the image on an IBM Container</b><br />
-                    The <b>startserver.sh</b> script is used to run the {{ site.data.keys.mf_server }} image on an IBM Container. It also binds your image to the public IP that you configured in the <b>SERVER_IP</b> property. Run:</li> 
+                    The <b>startserver.sh</b> script is used to run the {{ site.data.keys.mf_server }} image on an IBM Container. It also binds your image to the public IP that you configured in the <b>SERVER_IP</b> property. Run:</li>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -961,12 +961,12 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                         <td>Specify {{ site.data.keys.product_adj }} properties as comma-separated key:value pairs. Example: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>.  <b>Note:</b> If you specify properties using this script, ensure that these same properties have not been set in the configuration files in the usr/config folder.</td>
                                     </tr>
                                 </table>
-                                
+
                                 <p>For example:</p>
 {% highlight bash %}
 startserver.sh --tag image_tag_name --name container_name --ip container_ip_address
 {% endhighlight %}
-                                
+
                                 <br/>
                                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Close section</b></a>
                             </div>
@@ -1026,7 +1026,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                                 <td>Optional. [-a|--auto] ENABLE_AUTORECOVERY	</td>
                                                 <td>Enable the automatic recovery option for the container instances. Accepted values are Y or N (default).</td>
                                             </tr>
-                                            
+
                                             <tr>
                                                 <td>Optional. [-si|--services] SERVICES	</td>
                                                 <td>Comma-separated Bluemix service instance names that you want to bind to the container.</td>
@@ -1057,12 +1057,12 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                                 <td>Enable mounting volume for container logs. Accepted values are Y or N (default).</td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>For example:</p>
 {% highlight bash %}
 startservergroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
 {% endhighlight %}
-                                        
+
                                         <br/>
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Close section</b></a>
                                     </div>
@@ -1111,7 +1111,7 @@ Run the following cf ic commands to remove an image name from the Bluemix regist
 1. `cf ic images` (Lists the images in the registry)
 2. `cf ic rmi image_id` (Removes the image from the registry)
 
-## Removing the database service configuration from Bluemix	
+## Removing the database service configuration from Bluemix
 {: #removing-the-database-service-configuration-from-bluemix }
 If you ran the **prepareserverdbs.sh** script during the configuration of the {{ site.data.keys.mf_server }} image, the configurations and database tables required for {{ site.data.keys.mf_server }} are created. This script also creates the database schema for the container.
 
