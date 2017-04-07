@@ -122,6 +122,7 @@ weight: 4
 
 ## 更新 {{ site.data.keys.product_adj }} 本机 SDK
 {: #updating-the-mobilefirst-native-sdk}
+
 要使用最新发行版更新 {{ site.data.keys.product_adj }} 本机 SDK，请在**命令行**窗口中从 Visual Studio 项目的根文件夹运行以下命令：
 
 ```bash
@@ -130,6 +131,7 @@ Nuget update
 
 ## 已生成 {{ site.data.keys.product_adj }} 本机 SDK 工件
 {: #generated-mobilefirst-native-sdk-artifacts}
+
 ### mfpclient.resw
 {: #mfpclientresw }
 此文件位于项目的 `strings` 文件夹中，包含服务器连接属性，并且用户可编辑：
@@ -143,6 +145,7 @@ Nuget update
 
 ## 接下来要学习的教程
 {: #tutorials-to-follow-next}
+
 集成 MobileFirst 本机 SDK 之后，您现在可以：
 
 - 查看[使用 {{ site.data.keys.product }} SDK 教程](../)

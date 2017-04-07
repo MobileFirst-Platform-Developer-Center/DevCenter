@@ -245,6 +245,7 @@ return "1.0";
 
 ## 容器的 LDAP 配置
 {: #ldap-configuration-for-containers}
+
 可以配置 IBM MobileFirst Foundation 以安全地连接到外部 LDAP 存储库。
 
 可针对以下目的使用外部 LDAP 注册表：

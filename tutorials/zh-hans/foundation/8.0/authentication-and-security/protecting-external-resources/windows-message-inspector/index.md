@@ -284,6 +284,8 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 ```
 
 ## 从 {{ site.data.keys.product_adj }} 授权服务器获取访问令牌
+{: #obtain-access-token-from-mobilefirst-authorization-server}
+
 为认证客户机令牌，我们应通过针对**令牌端点**发出请求来**获取访问令牌作为消息检验器**。
 稍后，我们将使用此收到的令牌来传递客户机令牌以进行自省。
 

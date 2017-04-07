@@ -173,7 +173,7 @@ weight: 3
 </table>
 
 ## 服务器端 API 更改
-{: #server-side-api-changes }
+{: #server-side-api-changes}
 要迁移 {{ site.data.keys.product_adj }}    应用程序的服务器端，请考虑对 API 的更改。  
 以下各表列出了 V8.0 中停用服务器端 API 元素、V8.0 中不推荐使用的服务器端 API 元素以及建议的迁移路径。有关迁移应用程序服务器端的更多信息，
 
@@ -253,7 +253,7 @@ weight: 3
 | `com.worklight.adapters.rest.api` 包中的 `WLServerAPIProvider` 类 | 使用 JAX-RS `Context` 注释直接访问 {{ site.data.keys.product_adj }}    API 接口。 |
 
 ## 客户端 API 更改
-{: #client-side-api-changes }
+{: #client-side-api-changes}
 API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应用程序有关。  
 以下各表列出了 V8.0.0 中停用的客户端 API 元素、V8.0.0 中不推荐使用的客户端 API 元素以及建议的迁移路径。
 

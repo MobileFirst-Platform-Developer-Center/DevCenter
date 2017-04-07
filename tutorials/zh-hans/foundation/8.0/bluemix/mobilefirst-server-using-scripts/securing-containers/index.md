@@ -263,6 +263,7 @@ allowedIP = properties.getProperty("allowedIPs");
 
 ## 容器的 LDAP 配置
 {: #ldap-configuration-for-containers}
+
 可以配置 {{ site.data.keys.product }} 容器以安全地连接到外部 LDAP 存储库。
 
 可针对以下目的在容器中使用外部 LDAP 注册表：
