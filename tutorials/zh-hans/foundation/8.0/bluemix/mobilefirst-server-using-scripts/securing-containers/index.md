@@ -235,10 +235,10 @@ allowedIP = properties.getProperty("allowedIPs");
    ```
 
 2. 将定制 TAI 实施导出到 .jar 文件并将其放置在适合的 **env** 文件夹（**mfpf-server/usr/env 或 mfpf-analytics/usr/env**）中。
-3. 创建包含 TAI 拦截器的详细信息的 XML 配置文件（请参阅步骤 1 中提供的 TAI 配置示例代码），然后将您的 .xml 文件添加到适合的文件夹（**mfpf-server/usr/config** 或 **mfpf-analytics/usr/config**）中。您的 .xml 文件应当类似于以下示例。**提示：**请确保更新类名和属性以反映您的实施。
+3. 创建包含 TAI 拦截器的详细信息的 XML 配置文件（请参阅步骤 1 中提供的 TAI 配置示例代码），然后将您的 .xml 文件添加到适合的文件夹（**mfpf-server/usr/config** 或 **mfpf-analytics/usr/config**）中。您的 .xml 文件应当类似于以下示例。**提示：** **请确保更新类名和属性以反映您的实施**。
 
-   ```xml
-   <?xml version="1.0" encoding="UTF-8"?>
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
         <server description="new server">
         <featureManager>
             <feature>appSecurity-2.0</feature>
@@ -249,15 +249,15 @@ allowedIP = properties.getProperty("allowedIPs");
             <interceptors id="MFPConsoleTAI" enabled="true"  
                           className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
                           invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
-<properties allowedIPs="9.182.149.*"/>
+                          <properties allowedIPs="9.182.149.*"/>
             </interceptors>
         </trustAssociation>
 
-        <library id="MFPConsoleTAI">
-<fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
-</library>
-   </server>
-   ```
+          <library id="MFPConsoleTAI">
+            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
+          </library>
+        </server>
+    ```
 
 4. [构建映像并运行容器](../)。现在，仅在满足配置的 TAI 安全性机制时才可访问 {{ site.data.keys.mf_console }} 和 Analytics Console。
 

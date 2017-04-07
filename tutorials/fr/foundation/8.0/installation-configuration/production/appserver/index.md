@@ -940,7 +940,8 @@ Vous devez configurer l'élément **webContainer** pour le chargement immédiat 
 
 Si vous le souhaitez, pour éviter tout problème de dépassement de délai d'attente interrompant la séquence de démarrage de l'environnement d'exécution et du service d'administration dans certaines versions de Liberty, changez l'élément **executor** par défaut. Définissez des valeurs élevées pour les attributs **coreThreads** et **maxThreads**. Exemple :
 
-```xml <executor id="default" name="LargeThreadPool"
+```xml
+  <executor id="default" name="LargeThreadPool"
   coreThreads="200" maxThreads="400" keepAlive="60s"
   stealPolicy="STRICT" rejectedWorkPolicy="CALLER_RUNS"/>
 ```
@@ -997,7 +998,8 @@ Ces entrées JNDI globales sont définies avec la syntaxe ci-après et ne sont p
 
 Pour toutes les applications, l'attribut delegation du chargeur de classe doit avoir la valeur parentLast (parent en dernier). Exemple :
 
-```xml <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
+```xml
+  <application id="mfpadmin" name="mfpadmin" location="mfp-admin-service.war" type="war">
   [...]
   <classloader delegation="parentLast">
   </classloader> </application>
