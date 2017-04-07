@@ -166,7 +166,7 @@ cordova-plugin-mfp-encrypt-utils  プラグインは、iOS プラットフォー
 この関数を使用して、各種 {{site.data.keys.product_adj }} API メソッドを呼び出します。
 
 ## {{site.data.keys.product_adj }} Cordova SDK の更新
-{: updating-the-mobilefirst-cordova-sdk }
+{: #updating-the-mobilefirst-cordova-sdk}
 {{site.data.keys.product_adj }} Cordova SDK を最新リリースで更新するには、`cordova plugin remove cordova-plugin-mfp` コマンドを実行して **cordova-plugin-mfp** プラグインを削除した後、`cordova plugin add cordova-plugin-mfp` コマンドを実行してこのプラグインを再度追加します。
 
 SDK のリリースは、SDK の [NPM リポジトリー](https://www.npmjs.com/package/cordova-plugin-mfp)で調べることができます。
