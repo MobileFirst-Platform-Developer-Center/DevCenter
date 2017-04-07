@@ -90,7 +90,7 @@ Gateway 服务。本文中提供配置详细信息：安全地从 IBM Bluemix �
 </server>
 ```
 
-#### 限制访问容器上运行的控制台	
+#### 限制访问容器上运行的控制台
 {: #restricting-access-to-the-consoles-running-on-containers }
 您可以通过创建并部署信任关联拦截器 (TAI) 来拦截针对控制台的请求，来限制生产环境中对 MobileFirst Operations Console 和 MobileFirst Analytics Console 的访问。
 
@@ -113,7 +113,7 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
    import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
 
    public class MFPConsoleTAI implements TrustAssociationInterceptor {
-String allowedIP =null; 
+String allowedIP =null;
 public MFPConsoleTAI() {
 super();
        }
@@ -127,11 +127,11 @@ super();
           //Add logic to determine whether to intercept this request
 boolean interceptMFPConsoleRequest = false;
     	   String requestURI = req.getRequestURI();
-    	
+
     	   if(requestURI.contains("mfpconsole")) {
 		   interceptMFPConsoleRequest = true;
     	   }
-    		
+
     	   return interceptMFPConsoleRequest;
        }
 
@@ -139,7 +139,7 @@ boolean interceptMFPConsoleRequest = false;
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#negotiateValidateandEstablishTrust
      * (javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)
      */
-       
+
     public TAIResult negotiateValidateandEstablishTrust(HttpServletRequest request,
                     HttpServletResponse resp) throws WebTrustAssociationFailedException {
         // Add logic to authenticate a request and return a TAI result.
@@ -149,14 +149,14 @@ String ipAddress = request.getHeader("X-FORWARDED-FOR");
             	if (ipAddress == null) {
             	  ipAddress = request.getRemoteAddr();
             	}
-            	
+
             	if(checkIPMatch(ipAddress, allowedIP)) {
 TAIResult.create(HttpServletResponse.SC_OK, tai_user);
             	}
             	else {
             		TAIResult.create(HttpServletResponse.SC_FORBIDDEN, tai_user);
             	}
-            		
+
             }
             return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
         }
@@ -166,7 +166,7 @@ if (pattern.equals("*.*.*.*") || pattern.equals("*"))
 return true;
 String[] mask = pattern.split("\\.");
     	   String[] ip_address = ipAddress.split("\\.");
-	   
+
 	   for (int i = 0; i < mask.length; i++)
     	   {
     		   if (mask[i].equals("*") || mask[i].equals(ip_address[i]))
@@ -180,10 +180,10 @@ String[] mask = pattern.split("\\.");
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#initialize(java.util.Properties)
      */
-        
+
     public int initialize(Properties properties)
                     throws WebTrustAssociationFailedException {
-    	
+
     	if(properties != null) {
 if(properties.containsKey("allowedIPs")) {
 allowedIP = properties.getProperty("allowedIPs");
@@ -195,7 +195,7 @@ allowedIP = properties.getProperty("allowedIPs");
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#getVersion()
      */
-    
+
     public String getVersion() {
 return "1.0";
         }
@@ -210,41 +210,41 @@ return "1.0";
     /*
      * @see com.ibm.wsspi.security.tai.TrustAssociationInterceptor#cleanup()
      */
-    
+
     public void cleanup()
 {}
    }
-   ```
-    
+```
 2. 将定制 TAI 实施导出到 .jar 文件并将其放置在适合的 **env** 文件夹 (**mfpf-server-libertyapp/usr/env**) 中。
-3. 创建包含 TAI 拦截器的详细信息的 XML 配置文件（请参阅步骤 1 中提供的 TAI 配置示例代码），然后将您的 .xml 文件添加到适合的文件夹 (**mfpf-server-libertyapp/usr/config**) 中。您的 .xml 文件应当类似于以下示例。**提示：**请确保更新类名和属性以反映您的实施。
+3. 创建包含 TAI 拦截器的详细信息的 XML 配置文件（请参阅步骤 1 中提供的 TAI 配置示例代码），然后将您的 .xml 文件添加到适合的文件夹 (**mfpf-server-libertyapp/usr/config**) 中。您的 .xml 文件应当类似于以下示例。**提示：请确保更新类名和属性以反映您的实施**。
 
-   ```xml
-   <?xml version="1.0" encoding="UTF-8"?>
-        <server description="new server">
-        <featureManager>
-            <feature>appSecurity-2.0</feature>
-        </featureManager>
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+     <server description="new server">
+       <featureManager>
+         <feature>appSecurity-2.0</feature>
+       </featureManager>
 
-        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
-                          failOverToAppAuthType="false">
-            <interceptors id="MFPConsoleTAI" enabled="true"
-                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
-                          invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
-<properties allowedIPs="9.182.149.*"/>
-            </interceptors>
-        </trustAssociation>
+      <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
+                       failOverToAppAuthType="false">
+         <interceptors id="MFPConsoleTAI" enabled="true"
+                       className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
+                       invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
+                       <properties allowedIPs="9.182.149.*"/>
+         </interceptors>
+       </trustAssociation>
 
         <library id="MFPConsoleTAI">
-<fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
-</library>
-   </server>
-   ```
-
+          <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
+        </library>
+    </server>
+    ```
 4. 重新部署服务器。现在，仅在满足配置的 TAI 安全性机制时才可访问 MobileFirst Operations Console。
 
+
 ## 容器的 LDAP 配置
-{: #ldap-configuration-for-containers }
+{: #ldap-configuration-for-containers}
+
 可以配置 IBM MobileFirst Foundation 以安全地连接到外部 LDAP 存储库。
 
 可针对以下目的使用外部 LDAP 注册表：
@@ -286,7 +286,7 @@ return "1.0";
         groupMemberIdMap="groupOfNames:member"/>
    </ldapRegistry>
    ```
-    
+
     条目 | 描述    
     --- | ---
     `host` 和 `port` | 您的本地 LDAP 服务器的主机名（IP 地址）和端口号。`baseDN` | LDAP 中捕获有关特定组织的所有详细信息的域名 (DN)。`bindDN="uid=admin,ou=system"
@@ -299,9 +299,9 @@ return "1.0";
         <feature>ldapRegistry-3.0</feature>
    </featureManager>
    ```
-    
+
    有关配置各种 LDAP 服务器存储库的详细信息，请参阅 [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html)。
-    
+
 #### 安全网关
 {: #secure-gateway }
 要配置到 LDAP 服务器的安全网关连接，必须在 Bluemix 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。您需要本地 LDAP 主机名和端口号才能完成此任务。

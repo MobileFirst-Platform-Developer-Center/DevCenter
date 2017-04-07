@@ -22,6 +22,8 @@ weight: 12
 * [将修订包应用到 {{ site.data.keys.mf_server }}](#applying-a-fix-pack-to-mobilefirst-server)
 
 ## 为何要迁移至 IBM MobileFirst Foundation 8.0
+{: #why-migrate-to-ibm-mobilefirst-foundation-80}
+
 ### 减少构建应用程序所需的工作、技能和时间
 * 利用标准软件包管理器（npm、CocoaPods、Gradle、NuGet）和 Maven for Java Adapter 构建自动化功能，更快速、更方便、更智慧地构建应用程序
 * 新增了更简单、更易于插入的模块化 MobileFirst SDK
@@ -38,7 +40,7 @@ weight: 12
 * Bluemix Public 上 MobileFirst Foundation 开发、测试和完全可扩展生产环境实现单击式配置
 * 与 IBM DevOps Services 和 Urban Code 集成，构建部署管道
 
-### 多渠道 API 创建和管理 
+### 多渠道 API 创建和管理
 * 利用特定于移动的安全扩展（例如，Step Up、Multifactor），加强 API Connect 多渠道安全性，提供最大程度的保护措施，然后使用 IBM DataPower 在 DMZ 中实施安全性
 * 在 Foundation V8 中创建并定义与 API Connect 兼容的 Swagger REST API，然后在 API Connect 中管理这些 API，保护它们的安全
 

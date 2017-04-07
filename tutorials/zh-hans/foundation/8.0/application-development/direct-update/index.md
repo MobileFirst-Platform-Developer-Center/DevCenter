@@ -74,13 +74,13 @@ downloads:
 
 备用：
 
-* 构建 .zip 文件并将其上载到不同的 {{ site.data.keys.mf_server }}：`mfpdev app webupdate [server-name][runtime-name]`。例如： 
+* 构建 .zip 文件并将其上载到不同的 {{ site.data.keys.mf_server }}：`mfpdev app webupdate [server-name][runtime-name]`。例如：
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps
   ```
 
-* 上载先前生成的 .zip 文件：`mfpdev app webupdate [server-name][runtime-name] --file [path-to-packaged-web-resources]`。例如： 
+* 上载先前生成的 .zip 文件：`mfpdev app webupdate [server-name][runtime-name] --file [path-to-packaged-web-resources]`。例如：
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
@@ -327,7 +327,7 @@ var directUpdateCustomListener = {
 
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要信息：**仅在客户机应用程序的 Web 资源是当前在服务器上部署的应用程序之后的一个版本时，**增量更新**才可用。在当前已部署的应用程序之后有多个版本（意味着自更新客户机应用程序以后至少将应用程序部署到服务器两次）的客户机应用程序接收**完全更新**（意外着将下载和更新整个 Web 资源）。
 ## 安全直接更新
-{: secure-direct-update }
+{: #secure-direct-update}
 缺省情况下禁用安全直接更新，此类直接更新将阻止第三方攻击者更改从 {{ site.data.keys.mf_server }}（或来自内容交付网络 (CDN))）传输到客户机应用程序的 Web 资源。
 
 **要启用直接更新真实性：**  

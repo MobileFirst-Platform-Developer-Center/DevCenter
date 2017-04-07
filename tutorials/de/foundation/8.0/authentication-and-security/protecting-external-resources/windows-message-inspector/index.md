@@ -21,10 +21,10 @@ vom **{{ site.data.keys.product_adj }}-Autorisierungsserver** geforderten Header
 
 **Voraussetzungen:**
 
-* Sie müssen das Lernprogramm [Externe Ressource mit {{ site.data.keys.mf_server }} authentifizieren](../) durchgehen. 
+* Sie müssen das Lernprogramm [Externe Ressource mit {{ site.data.keys.mf_server }} authentifizieren](../) durchgehen.
 * Sie müssen das [{{ site.data.keys.product_adj }}-Sicherheitsframework](../../) verstehen.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 * [WCF-Web-HTTP-Service erstellen und konfigurieren](#create-and-configure-wcf-web-http-service)
 * [Message Inspector definieren](#define-a-message-inspector)
@@ -38,9 +38,9 @@ vom **{{ site.data.keys.product_adj }}-Autorisierungsserver** geforderten Header
 {: #create-and-configure-wcf-web-http-service }
 Zunächst werden wir einen **WCF-Service** erstellen und den Service
 `GetBalanceService` nennen. Später werden wir diesen Service mit einem **Message Inspector** schützen.
-In unserem Beispiel werden wir eine Konsolenanwendung als Bereitstellungsprogramm für den Service verwenden. 
+In unserem Beispiel werden wir eine Konsolenanwendung als Bereitstellungsprogramm für den Service verwenden.
 
-Es folgt der Code für (die geschützte Ressource) `getBalance`: 
+Es folgt der Code für (die geschützte Ressource) `getBalance`:
 
 ```csharp
 public class GetBalanceService : IGetBalanceService {
@@ -67,7 +67,7 @@ public interface IGetBalanceService
 }
 ```
 
-Unser Service ist bereit, sodass wir jetzt in der Datei App.config konfigurieren können, wie er von der Hostanwendung genutzt wird: 
+Unser Service ist bereit, sodass wir jetzt in der Datei App.config konfigurieren können, wie er von der Hostanwendung genutzt wird:
 
 ```xml
 <service behaviorConfiguration="Default" name="DotNetTokenValidator.GetBalanceService">
@@ -111,7 +111,7 @@ Bevor wir uns mit dem Validierungsprozess beschäftigen, müssen wir einen
 **Message Inspector** für den Schutz der Ressource (des Serviceendpunkts) erstellen und definieren.
 Ein Message Inspector ist ein erweiterbares Objekt, das im Service
 verwendet werden kann, um Nachrichten zu inspizieren und zu ändern, nachdem sie empfangen wurden oder bevor sie gesendet werden. Service-Message-Inspectors
-sollten die Schnittstelle `IDispatchMessageInspector` implementieren: 
+sollten die Schnittstelle `IDispatchMessageInspector` implementieren:
 
 ```csharp
 public class MyInspector : IDispatchMessageInspector
@@ -140,7 +140,7 @@ die Standardkonfiguration ändert oder Erweiterungen
 (wie Message Inspectors) zu dieser Konfiguration hinzufügt.
 Dafür werden zwei Klassen verwendet. Eine der Klassen konfiguriert den Message Inspector für den Schutz
 des Anwendungsendpunkts und die andere Klasse
-gibt diese Instanz der Klasse "behavior" und den Typ zurück. 
+gibt diese Instanz der Klasse "behavior" und den Typ zurück.
 
 ```csharp
 public class MyCustomBehavior : IEndpointBehavior
@@ -167,7 +167,7 @@ public class MyCustomBehaviorExtension : BehaviorExtensionElement
 }
 ```
 
-In der Datei `App.config` definieren wir eine Erweiterung (`behaviorExtension`) und fügen sie an die gerade erstellte Klasse "behavior" an: 
+In der Datei `App.config` definieren wir eine Erweiterung (`behaviorExtension`) und fügen sie an die gerade erstellte Klasse "behavior" an:
 
 ```xml
 <extensions>
@@ -177,7 +177,7 @@ In der Datei `App.config` definieren wir eine Erweiterung (`behaviorExtension`) 
 </extensions>
 ```
 
-Anschließend fügen wir diese Erweiterung (behaviorExtension) zum Element webBehavior hinzu, das in unserem Service als Endpunktverhalten konfiguriert ist: 
+Anschließend fügen wir diese Erweiterung (behaviorExtension) zum Element webBehavior hinzu, das in unserem Service als Endpunktverhalten konfiguriert ist:
 
 ```xml
 <behavior name="webBehavior">
@@ -187,11 +187,13 @@ Anschließend fügen wir diese Erweiterung (behaviorExtension) zum Element webBe
 ```
 
 ## Message Inspector implementieren
+{: #message-inspector-implementation}
+
 Zunächst werden wir einige Konstanten als Klasseneinträge in unserem Message Inspector
 definieren: die MobileFirst-Server-URL,
 die Berechtigungsnachweise unseres vertraulichen Clients
 und den Bereich (`scope`), den wir für den Schutz unseres Service verwenden werden. Wir können auch eine statische Variable für das vom
-{{ site.data.keys.product_adj }}-Autorisierungsserver empfangene Token definieren, damit das Token für alle Benutzer verfügbar ist: 
+{{ site.data.keys.product_adj }}-Autorisierungsserver empfangene Token definieren, damit das Token für alle Benutzer verfügbar ist:
 
 ```csharp
 private const string azServerBaseURL = "http://YOUR-SERVER-URL:9080/mfp/api/az/v1/";
@@ -203,7 +205,7 @@ private const string filterPassword = "PASSWORD";  // Geheimer Schlüssel des ve
 
 Als Nächstes werden wir unsere Methode `validateRequest` erstellen, die den Ausgangspunkt
 für den Validierungsprozess bildet, den wir in unserem Message Inspector implementieren werden. Im Anschluss werden wir
-einen Aufruf dieser Methode in die zuvor erwähnte Methode `AfterReceiveRequest` einfügen: 
+einen Aufruf dieser Methode in die zuvor erwähnte Methode `AfterReceiveRequest` einfügen:
 
 ```csharp
 public object AfterReceiveRequest(ref Message request, IClientChannel channel, InstanceContext instanceContext) {
@@ -212,12 +214,12 @@ public object AfterReceiveRequest(ref Message request, IClientChannel channel, I
 }
 ```
 
-In `validateRequest` werden wir drei Hauptschritte implementieren: 
+In `validateRequest` werden wir drei Hauptschritte implementieren:
 
 1. **Validierung vor Prozessbeginn** - Überprüfung, ob die Anforderung
 einen **Authorization-Header** hat und ob dieser ggf. mit dem Präfix **"Bearer"** beginnt
 2. **Abruf des Tokens** vom {{ site.data.keys.product_adj }}-Autorisierungsserver - Dieses Token wird verwendet,
-um das dem {{ site.data.keys.product_adj }}-Autorisierungsserver vom Client präsentierte Token zu authentifizieren. 
+um das dem {{ site.data.keys.product_adj }}-Autorisierungsserver vom Client präsentierte Token zu authentifizieren.
 3. **Validierung nach Prozessende** - Überprüfung auf **Konflikte**, Prüfung, ob die Anforderung an den richtigen
 **Bereich** gesendet wurde, und Prüfung, ob die Anforderung **aktiv** ist.
 
@@ -252,14 +254,14 @@ private void validateRequest(Message request)
 ## Validierung vor Prozessbeginn
 {: #pre-process-validation }
 Die Validierung vor Prozessbeginn erfolgt im Rahmen der Methode getClientTokenFromHeader().
-Für diese Validierung werden zwei Überprüfungen durchgeführt: 
+Für diese Validierung werden zwei Überprüfungen durchgeführt:
 
 1. Prüfung, dass der Authorization-Header der Anforderung nicht leer ist
 2. Bei leerem Authorization-Header die Prüfung, dass der Header mit dem Präfix "Bearer" beginnt
 
 In beiden Fällen sollte die Antowrt 401 (**Unauthorized Response Status**) lauten und der Header
 **WWW-Authenticate:Bearer** hinzugefügt werden.   
-Nach der Validierung des Authorization-Headers gibt diese Methode das von der Clientanwendung empfangene Token zurück. 
+Nach der Validierung des Authorization-Headers gibt diese Methode das von der Clientanwendung empfangene Token zurück.
 
 ```csharp
 private string getClientTokenFromHeader(Message request)
@@ -293,7 +295,7 @@ private string getClientTokenFromHeader(Message request)
 
 `returnErrorResponse` ist eine Helper-Methode, die einen HTTP-Statuscode (httpStatusCode) und eine Web-Header-Sammlung (WebHeaderCollection)
 empfängt,
-die Antwort erstellt und diese an die Clientanwendung sendet. Nach dem Senden der Antwort an die Clientanwendung führt die Methode die Anforderung aus. 
+die Antwort erstellt und diese an die Clientanwendung sendet. Nach dem Senden der Antwort an die Clientanwendung führt die Methode die Anforderung aus.
 
 ```csharp
 private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollection headers)
@@ -308,9 +310,11 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 ```
 
 ## Zugriffstoken vom {{ site.data.keys.product_adj }}-Autorisierungsserver anfordern
+{: #obtain-access-token-from-mobilefirst-authorization-server}
+
 Zum Authentifizieren des Clienttokens sollten wir mit einer Anforderung an den **Tokenendpunkt**
 **ein Zugriffstoken als Message Inspector anfordern**.
-Später werden wir dieses empfangene Token verwenden, um das Clienttoken zur Introspektion zu übergeben. 
+Später werden wir dieses empfangene Token verwenden, um das Clienttoken zur Introspektion zu übergeben.
 
 ```csharp
 private string getIntrospectionToken()
@@ -353,7 +357,7 @@ der Methode `introspectClientRequest`, um eine Anforderung an den Introspektions
 eine HTTP-Webantwort (`HttpWebResponse`) zurück, die wir in der Methode
 `getIntrospectionToken` verwenden, um das Zugriffstoken (access_token) zu extrahieren und
 als Message-Inspector-Token zu speichern. In der Methode `introspectClientRequest` wird die Antwort nur verwendet,
-um die Antwort des MFP-Autorisierungsservers zurückzugeben. 
+um die Antwort des MFP-Autorisierungsservers zurückzugeben.
 
 ```csharp
 private HttpWebResponse sendRequest(Dictionary<string, string> postParameters, string endPoint, string authHeader) {
@@ -386,7 +390,7 @@ den Inhalt des **Clienttokens validieren**. Wir senden eine Anforderung an den
 **Introspektionsendpunkt**, fügen das im vorherigen Schritt empfangene Token (`filterIntrospectionToken`) zum Anforderungsheader hinzu
 und das Clienttoken zu den POST-Daten der Anforderung.   
 Anschließend werden wir die Antwort vom {{ site.data.keys.product_adj }}-Autorisierungsserver
-in der Methode `postProcess` untersuchen. 
+in der Methode `postProcess` untersuchen.
 
 ```csharp
 private HttpWebResponse introspectClientRequest(string clientToken) {
@@ -406,7 +410,7 @@ dass der Status der Antwort nicht **401** (Unauthorized) ist.
 Ein Antwortstatus 401 (Unauthorized) an dieser Stelle zeigt an,
 dass das Message-Inspector-Token (`filterIntrospectionToken`) abgelaufen ist. Wenn der Antwortstatus
 401 (Unauthorized) ist, rufen wir `getIntrospectionToken` auf, um ein neues Token für den Message Inspector
-abzurufen. Dann rufen wir mit dem neuen Token erneut `introspectClientRequest` auf. 
+abzurufen. Dann rufen wir mit dem neuen Token erneut `introspectClientRequest` auf.
 
 ```csharp
 if (introspectionResponse.StatusCode == HttpStatusCode.Unauthorized)
@@ -467,11 +471,11 @@ private void postProcess(HttpWebResponse introspectionResponse)
 
 ### Verwendung des Beispiels
 {: #sample-usage }
-1. Verwenden Sie Visual Studio, um das Beispiel zu öffnen und als Service zu erstellen und auszuführen. (Führen Sie Visual Studio als Administrator aus.) 
+1. Verwenden Sie Visual Studio, um das Beispiel zu öffnen und als Service zu erstellen und auszuführen. (Führen Sie Visual Studio als Administrator aus.)
 2. Sie müssen [den vertraulichen Client](../#confidential-client)
 und die geheimen Schlüssel in der {{ site.data.keys.mf_console }} aktualisieren.
 3. Implementieren Sie eine der Sicherheitsüberprüfungen: **[UserLogin](../../user-authentication/security-check/)**
 oder **[PinCodeAttempts](../../credentials-validation/security-check/)**.
-4. Registrieren Sie die passende Anwendung. 
-5. Ordnen Sie der Sicherheitsüberprüfung den Bereich `accessRestricted` zu. 
-6. Aktualisieren Sie die Clientanwendung so, dass `WLResourceRequest` Ihre Servlet-URL ist. 
+4. Registrieren Sie die passende Anwendung.
+5. Ordnen Sie der Sicherheitsüberprüfung den Bereich `accessRestricted` zu.
+6. Aktualisieren Sie die Clientanwendung so, dass `WLResourceRequest` Ihre Servlet-URL ist.

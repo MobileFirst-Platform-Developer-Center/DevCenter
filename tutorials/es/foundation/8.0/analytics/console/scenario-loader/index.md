@@ -44,6 +44,7 @@ The Scenario Loader is packaged together with the {{ site.data.keys.mf_analytics
 3. The Scenario Loader page, along with the {{ site.data.keys.mf_analytics_console_short }} navigation bar, are displayed. The Scenario Loader remains inaccessible from the navigation bar.
 
 ## Configuring the data loading
+{: #configuring-the-data-loading}
 
 1. In the **Testing Configuration** section various settings are available to control the nature (**Basic** tab) and volume (**Capacity Planning** tab) of the generated data.
     Make sure the **Days of history** setting is set to at least 30 days, in order to load sufficient data.

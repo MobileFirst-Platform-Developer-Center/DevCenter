@@ -22,6 +22,8 @@ weight: 12
 * [フィックスパックの {{ site.data.keys.mf_server }}](#applying-a-fix-pack-to-mobilefirst-server) への適用
 
 ## IBM MobileFirst Foundation 8.0 にマイグレーションする理由
+{: #why-migrate-to-ibm-mobilefirst-foundation-80}
+
 ### アプリケーションのビルドに必要な作業、スキル、および時間の削減
 * Java アダプターのビルドを自動化するための標準のパッケージ・マネージャー (npm、CocoaPods、Gradle、NuGet) および Maven を使用した、アプリケーションをより高速、簡単、およびスマートにビルド
 * 簡単に接続できる、新規のより単純なモジュラー式の MobileFirst SDK
@@ -38,7 +40,7 @@ weight: 12
 * Bluemix Public における MobileFirst Foundation の開発環境、テスト環境、および完全にスケーラブルな実稼働環境のワンクリックのプロビジョン
 * デプロイメント・パイプラインをビルドするために IBM DevOps Services および Urban Code と統合済み
 
-### マルチチャネルの API 作成および管理 
+### マルチチャネルの API 作成および管理
 * 最大限の保護のために、モバイル固有のセキュリティー拡張機能 (例えば、Step Up や Multifactor) を使用して API Connect マルチチャネル・セキュリティーをステップアップし、IBM DataPower を使用して DMZ で実施
 * Foundation v8 で API Connect 互換の Swagger REST API を作成して定義し、次に API Connect で管理してセキュリティー保護
 
