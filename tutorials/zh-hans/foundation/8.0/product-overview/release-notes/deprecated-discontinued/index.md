@@ -173,9 +173,9 @@ weight: 3
 </table>
 
 ## 服务器端 API 更改
-{: server-side-api-changes }
+{: #server-side-api-changes }
 要迁移 {{ site.data.keys.product_adj }}    应用程序的服务器端，请考虑对 API 的更改。  
-以下各表列出了 V8.0 中停用服务器端 API 元素、V8.0 中不推荐使用的服务器端 API 元素以及建议的迁移路径。有关迁移应用程序服务器端的更多信息， 
+以下各表列出了 V8.0 中停用服务器端 API 元素、V8.0 中不推荐使用的服务器端 API 元素以及建议的迁移路径。有关迁移应用程序服务器端的更多信息，
 
 ### V8.0 中停用的 JavaScript API 元素
 {: #javascript-api-elements-discontinued-v-v-80 }
@@ -185,7 +185,7 @@ weight: 3
 | API 元素                         | 替换路径                               |
 |------------------------------------|------------------------------------------------|
 | `WL.Server.getActiveUser`、`WL.Server.getCurrentUserIdentity`、`WL.Server.getCurrentDeviceIdentity`、`WL.Server.setActiveUser`、`WL.Server.getClientId`、`WL.Server.getClientDeviceContext`、`WL.Server.setApplicationContext` | 改为使用 `MFP.Server.getAuthenticatedUser`。 |
- 
+
 #### 事件源
 {: #event-source }
 
@@ -193,7 +193,7 @@ weight: 3
 |------------------------------------|------------------------------------------------|
 | `WL.Server.createEventSource`	     | 改为使用 `MFP.Server.getAuthenticatedUser`。 |
 | `WL.Server.setEventHandlers`         | 要从基于事件源的通知迁移到基于标记的通知，请参阅“从基于事件源的通知迁移到推送通知”。                                                     |
-| `WL.Server.createEventHandler`       |                                                |	
+| `WL.Server.createEventHandler`       |                                                |
 | `WL.Server.createSMSEventHandler`	 | 要发送 SMS 消息，请使用推送服务 REST API。有关更多信息，请参阅[发送通知](../../../notifications/sending-notifications)。                         |
 | `WL.Server.createUSSDEventHandler`	 | 通过使用第三方服务来集成 USSD。  |
 
@@ -247,10 +247,10 @@ weight: 3
 | `com.worklight.adapters.rest.api 包`中的 `AdaptersAPI` 接口 | 改用 `com.ibm.mfp.adapter.api` 包中的 `AdaptersAPI` 接口。 |
 | `com.worklight.adapters.rest.api` 包中的 `AnalyticsAPI` 接口 | 改用 `com.ibm.mfp.adapter.api` 包中的 `AnalyticsAPI` 接口。 |
 | `com.worklight.adapters.rest.api` 包中的 `ConfigurationAPI` 接口 | 改用 `com.ibm.mfp.adapter.api` 包中的 `ConfigurationAPI` 接口。 |
-| `com.worklight.core.auth` 包中的 `OAuthSecurity` 注释 | 改用 `com.ibm.mfp.adapter.api` 包中的 `OAuthSecurity` 注释。 | 
+| `com.worklight.core.auth` 包中的 `OAuthSecurity` 注释 | 改用 `com.ibm.mfp.adapter.api` 包中的 `OAuthSecurity` 注释。 |
 | `com.worklight.wink.extensions` 包中的 `MFPJAXRSApplication` 类 | 改用 `com.ibm.mfp.adapter.api` 包中的 `MFPJAXRSApplication` 类。 |
 | `com.worklight.adapters.rest.api` 包中的 `WLServerAPI` 接口 | 使用 JAX-RS `Context` 注释直接访问 {{ site.data.keys.product_adj }}    API 接口。 |
-| `com.worklight.adapters.rest.api` 包中的 `WLServerAPIProvider` 类 | 使用 JAX-RS `Context` 注释直接访问 {{ site.data.keys.product_adj }}    API 接口。 | 
+| `com.worklight.adapters.rest.api` 包中的 `WLServerAPIProvider` 类 | 使用 JAX-RS `Context` 注释直接访问 {{ site.data.keys.product_adj }}    API 接口。 |
 
 ## 客户端 API 更改
 {: #client-side-api-changes }
@@ -268,7 +268,7 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 | `WL.App.copyToClipboard()` | 使用提供此功能的 Cordova 插件。 |
 | `WL.App.openUrl(url, target, options)` | 使用提供此功能的 Cordova 插件。**注：**供您参考：Cordova **InAppBrowser** 插件提供此功能。 |
 | `WL.App.overrideBackButton(callback)`、`WL.App.resetBackButton()` | 使用提供此功能的 Cordova 插件。**注：**供您参考：Cordova **backbutton** 插件提供此功能。 |
-| `WL.App.getDeviceLanguage()` | 使用提供此功能的 Cordova 插件。**注：**供您参考：Cordova **cordova-plugin-globalization** 插件提供此功能。 | 
+| `WL.App.getDeviceLanguage()` | 使用提供此功能的 Cordova 插件。**注：**供您参考：Cordova **cordova-plugin-globalization** 插件提供此功能。 |
 | `WL.App.getDeviceLocale()` | 使用提供此功能的 Cordova 插件。**注：**供您参考：Cordova **cordova-plugin-globalization** 插件提供此功能。 |
 | `WL.App.BackgroundHandler` | 要运行定制处理程序函数，请使用标准 Cordova 暂停事件侦听器。使用可提供隐私并防止 iOS 和 Android 系统与用户拍摄快照或截屏的 Cordova 插件。有关更多信息，请参阅 **[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)** 的描述。 |
 | `WL.Client.close`、`WL.Client.restore`、`WL.Client.minimize` | 提供了这些功能以支持 {{ site.data.keys.product }}    V8.0.0 不支持的 Adobe AIR 平台。 |
@@ -278,50 +278,50 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 
 | API 元素           | 迁移路径                           |
 |-----------------------|------------------------------------------|
-| `WL.Client.checkForDirectUpdate(options)` | 无替换。**注：**您可以调用 `WLAuthorizationManager.obtainAccessToken` 以触发可用的“直接更新”。访问安全性令牌会触发服务器上可用的“直接更新”。但无法根据需要触发“直接更新”。 | 
+| `WL.Client.checkForDirectUpdate(options)` | 无替换。**注：**您可以调用 `WLAuthorizationManager.obtainAccessToken` 以触发可用的“直接更新”。访问安全性令牌会触发服务器上可用的“直接更新”。但无法根据需要触发“直接更新”。 |
 | `WL.Client.setSharedToken({key: myName, value: myValue})`、`WL.Client.getSharedToken({key: myName})`、`WL.Client.clearSharedToken({key: myName})` | 无替换。 |
-| `WL.Client.isConnected()`、`connectOnStartup` init option | 使用 `WLAuthorizationManager.obtainAccessToken` 检查服务器连接并实施应用程序管理规则。 | 
-| `WL.Client.setUserPref(key,value, options)`、`WL.Client.setUserPrefs(userPrefsHash, options)`、`WL.Client.deleteUserPrefs(key, options)` | 无替换。您可以使用适配器和 `MFP.Server.getAuthenticatedUser` API 管理用户首选项。 | 
+| `WL.Client.isConnected()`、`connectOnStartup` init option | 使用 `WLAuthorizationManager.obtainAccessToken` 检查服务器连接并实施应用程序管理规则。 |
+| `WL.Client.setUserPref(key,value, options)`、`WL.Client.setUserPrefs(userPrefsHash, options)`、`WL.Client.deleteUserPrefs(key, options)` | 无替换。您可以使用适配器和 `MFP.Server.getAuthenticatedUser` API 管理用户首选项。 |
 | `WL.Client.getUserInfo(realm, key)`、`WL.Client.updateUserInfo(options)` | 无替换。 |
-| `WL.Client.logActivity(activityType)` | 使用 `WL.Logger`。 | 
+| `WL.Client.logActivity(activityType)` | 使用 `WL.Logger`。 |
 | `WL.Client.login(realm, options)` | 使用 `WLAuthorizationManager.login`。有关认证和安全的入门信息，请参阅“认证和安全”教程。 |
-| `WL.Client.logout(realm, options)` | 使用 `WLAuthorizationManager.logout`。 | 
+| `WL.Client.logout(realm, options)` | 使用 `WLAuthorizationManager.logout`。 |
 | `WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` | 使用 `WLAuthorizationManager.obtainAccessToken`。 |
 | `WL.Client.transmitEvent(event, immediate)`、`WL.Client.purgeEventTransmissionBuffer()`、`WL.Client.setEventTransmissionPolicy(policy)` | 为接收这些事件的通知创建定制适配器。 |
-| `WL.Device.getContext()`、`WL.Device.startAcquisition(policy, triggers, onFailure)`、`WL.Device.stopAcquisition()`、`WL.Device.Wifi`、`WL.Device.Geo.Profiles`、`WL.Geo` | 使用本机 API 或第三方 Cordova 插件进行地理定位。 | 
-| `WL.Client.makeRequest (url, options)` | 创建提供同一功能的定制适配器。 | 
+| `WL.Device.getContext()`、`WL.Device.startAcquisition(policy, triggers, onFailure)`、`WL.Device.stopAcquisition()`、`WL.Device.Wifi`、`WL.Device.Geo.Profiles`、`WL.Geo` | 使用本机 API 或第三方 Cordova 插件进行地理定位。 |
+| `WL.Client.makeRequest (url, options)` | 创建提供同一功能的定制适配器。 |
 | `WLDevice.getID(options)` | 使用提供此功能的 Cordova 插件。**注：**供您参考：来自 c**ordova-plugin-device** 的 `device.uuid` 插件提供此功能。 |
-| `WL.Device.getFriendlyName()` | 使用 `WL.Client.getDeviceDisplayName` | 
+| `WL.Device.getFriendlyName()` | 使用 `WL.Client.getDeviceDisplayName` |
 | `WL.Device.setFriendlyName()` | 使用 `WL.Client.setDeviceDisplayName` |
-| `WL.Device.getNetworkInfo(callback)` | 使用提供此功能的 Cordova 插件。**注：**供您参考：**cordova-plugin-network-information** 插件提供此功能。 | 
+| `WL.Device.getNetworkInfo(callback)` | 使用提供此功能的 Cordova 插件。**注：**供您参考：**cordova-plugin-network-information** 插件提供此功能。 |
 | `WLUtils.wlCheckReachability()` | 创建用于检查服务器可用性的定制适配器。 |
-| `WL.EncryptedCache` | 使用 JSONStore 以在本地存储加密数据。JSONStore 位于 **cordova-plugin-mfp-jsonstore** 插件中。有关更多信息，请参阅 [JSONStore](../../../application-development/jsonstore)。 | 
+| `WL.EncryptedCache` | 使用 JSONStore 以在本地存储加密数据。JSONStore 位于 **cordova-plugin-mfp-jsonstore** 插件中。有关更多信息，请参阅 [JSONStore](../../../application-development/jsonstore)。 |
 | `WL.SecurityUtils.remoteRandomString(bytes)` | 创建提供同一功能的定制适配器。 |
-| `WL.Client.getAppProperty(property)` | 可以通过使用 **cordova-plugin-appversion** 插件来检索应用程序版本属性。所返回的版本是本机应用程序版本（仅限 Android 和 iOS）。 | 
-| `WL.Client.Push.*` | 使用 **cordova-plugin-mfp-push** 插件中的 JavaScript 客户端推送 API。 | 
+| `WL.Client.getAppProperty(property)` | 可以通过使用 **cordova-plugin-appversion** 插件来检索应用程序版本属性。所返回的版本是本机应用程序版本（仅限 Android 和 iOS）。 |
+| `WL.Client.Push.*` | 使用 **cordova-plugin-mfp-push** 插件中的 JavaScript 客户端推送 API。 |
 | `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` | 使用 `MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)` 以针对推送和 SMS 注册设备。 |
 | `WLAuthorizationManager.obtainAuthorizationHeader(scope)` | 使用 `WLAuthorizationManager.obtainAccessToken` 以获取所需作用域的令牌。 |
-| `WLClient.getLastAccessToken(scope)` | 使用 `WLAuthorizationManager.obtainAccessToken` | 
-| `WLClient.getLoginName()`、`WL.Client.getUserName(realm)` | 无替换 | 
-| `WL.Client.getRequiredAccessTokenScope(status, header)` | 使用 `WLAuthorizationManager.isAuthorizationRequired` 和 `WLAuthorizationManager.getResourceScope`。 | 
+| `WLClient.getLastAccessToken(scope)` | 使用 `WLAuthorizationManager.obtainAccessToken` |
+| `WLClient.getLoginName()`、`WL.Client.getUserName(realm)` | 无替换 |
+| `WL.Client.getRequiredAccessTokenScope(status, header)` | 使用 `WLAuthorizationManager.isAuthorizationRequired` 和 `WLAuthorizationManager.getResourceScope`。 |
 | `WL.Client.isUserAuthenticated(realm)` | 无替换 |
-| `WLUserAuth.deleteCertificate(provisioningEntity)` | 无替换 | 
+| `WLUserAuth.deleteCertificate(provisioningEntity)` | 无替换 |
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | 无替换 |
-| `WL.Client.createChallengeHandler(realmName)` | 要创建验证问题处理程序来处理定制网关验证问题，请使用 `WL.Client.createGatewayChallengeHandler(gatewayName)`。要创建验证问题处理程序来处理 {{ site.data.keys.product_adj }}    安全性检查验证问题，请使用 `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`。 | 
-| `WL.Client.createWLChallengeHandler(realmName)` | 使用 `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`。 | 
-| `challengeHandler.isCustomResponse()`，其中 challengeHandler 是 `WL.Client.createChallengeHandler()` 返回的验证问题处理程序对象 | 使用 `gatewayChallengeHandler.canHandleResponse()`，其中 `gatewayChallengeHandler` 是 `WL.Client.createGatewayChallengeHandler()` 返回的验证问题处理程序对象。 | 
-| `wlChallengeHandler.processSucccess()`，其中 `wlChallengeHandler` 是 `WL.Client.createWLChallengeHandler()` 返回的验证问题处理程序对象 | 使用 `securityCheckChallengeHandler.handleSuccess()`，其中 `securityCheckChallengeHandler` 是 `WL.Client.createSecurityCheckChallengeHandler()` 返回的验证问题处理程序对象。 | 
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `WL.Client.createGatewayChallengeHandler()` 返回的验证问题处理程序对象。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 `WL.Client.createSecurityCheckChallengeHandler()` 返回的验证问题处理程序对象。 | 
-| `WL.Client.createProvisioningChallengeHandler()` | 无替换。设备供应现在由安全框架自动处理。 | 
+| `WL.Client.createChallengeHandler(realmName)` | 要创建验证问题处理程序来处理定制网关验证问题，请使用 `WL.Client.createGatewayChallengeHandler(gatewayName)`。要创建验证问题处理程序来处理 {{ site.data.keys.product_adj }}    安全性检查验证问题，请使用 `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`。 |
+| `WL.Client.createWLChallengeHandler(realmName)` | 使用 `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`。 |
+| `challengeHandler.isCustomResponse()`，其中 challengeHandler 是 `WL.Client.createChallengeHandler()` 返回的验证问题处理程序对象 | 使用 `gatewayChallengeHandler.canHandleResponse()`，其中 `gatewayChallengeHandler` 是 `WL.Client.createGatewayChallengeHandler()` 返回的验证问题处理程序对象。 |
+| `wlChallengeHandler.processSucccess()`，其中 `wlChallengeHandler` 是 `WL.Client.createWLChallengeHandler()` 返回的验证问题处理程序对象 | 使用 `securityCheckChallengeHandler.handleSuccess()`，其中 `securityCheckChallengeHandler` 是 `WL.Client.createSecurityCheckChallengeHandler()` 返回的验证问题处理程序对象。 |
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `WL.Client.createGatewayChallengeHandler()` 返回的验证问题处理程序对象。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 `WL.Client.createSecurityCheckChallengeHandler()` 返回的验证问题处理程序对象。 |
+| `WL.Client.createProvisioningChallengeHandler()` | 无替换。设备供应现在由安全框架自动处理。 |
 
 #### 不推荐的 JavaScript API
 {: #deprecated-javascript-apis }
 
 | API 元素           | 迁移路径                           |
 |-----------------------|------------------------------------------|
-| `WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)`、`WL.Client.invokeProcedure(invocationData, options)`、`WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)`、`WLProcedureInvocationResult` | 改为使用 `WLResourceRequest`。**注：**`invokeProcedure` 的实现使用 `WLResourceRequest`。 | 
-| `WLClient.getEnvironment` | 使用提供此功能的 Cordova 插件。**注：**供您参考：**device.platform** 插件提供此功能。 | 
-| `WLClient.getLanguage` | 使用提供此功能的 Cordova 插件。**注：**供您参考：**cordova-plugin-globalization** 插件提供此功能。 | 
+| `WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)`、`WL.Client.invokeProcedure(invocationData, options)`、`WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)`、`WLProcedureInvocationResult` | 改为使用 `WLResourceRequest`。**注：**`invokeProcedure` 的实现使用 `WLResourceRequest`。 |
+| `WLClient.getEnvironment` | 使用提供此功能的 Cordova 插件。**注：**供您参考：**device.platform** 插件提供此功能。 |
+| `WLClient.getLanguage` | 使用提供此功能的 Cordova 插件。**注：**供您参考：**cordova-plugin-globalization** 插件提供此功能。 |
 | `WL.Client.connect(options)` | 使用 `WLAuthorizationManager.obtainAccessToken` 检查服务器连接并实施应用程序管理规则。 |
 
 ### Android API
@@ -340,15 +340,15 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 | `WLClient.logout(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)`、`WLClient.logout(java.lang.String realmName, WLRequestListener listener)` | 使用 `AuthorizationManager.logout()` |
 | `WLClient.obtainAccessToken(java.lang.String scope,WLResponseListener
 | `WLClient.getLastAccessToken()`、`WLClient.getLastAccessToken(java.lang.String scope)` | 使用 `AuthorizationManager` |
-| `WLClient.getRequiredAccessTokenScope(int status, java.lang.String header)` | 使用 `AuthorizationManager` | 
+| `WLClient.getRequiredAccessTokenScope(int status, java.lang.String header)` | 使用 `AuthorizationManager` |
 | `WLClient.logActivity(java.lang.String activityType)` | 使用 `com.worklight.common.Logger`。有关更多信息，请参阅“记录器 SDK”。 |
 | `WLAuthorizationPersistencePolicy` | 无替换。要实现授权持久性，请在应用程序代码中存储授权令牌并创建定制 HTTP 请求。 |
 | `WLSimpleSharedData.setSharedToken(myName, myValue)`、`WLSimpleSharedData.getSharedToken(myName)`、`WLSimpleSharedData.clearSharedToken(myName)` | 使用 Android API 在应用程序之间共享令牌。 |
 | `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | 无替换 |
-| `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | 使用 `BaseChallengeHandler.cancel()` | 
+| `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | 使用 `BaseChallengeHandler.cancel()` |
 | `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。|
 | `WLChallengeHandler` | 使用 `SecurityCheckChallengeHandler`。 |
-| `ChallengeHandler.isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 | 
+| `ChallengeHandler.isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 |
 | `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。|
 
 #### 不推荐的 Android API
@@ -365,14 +365,14 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 | API 元素           | 迁移路径                           |
 |-----------------------|------------------------------------------|
 | 现在不推荐使用 `org.apache.http.Header[]`。因此，移除了以下方法：||
-| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 改为使用新的 `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API。 | 
-| `WLResourceRequest.addHeader(org.apache.http.Header header)` | 改为使用新的 `WLResourceRequest.addHeader(String name, String value)` API。 | 
-| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 改为使用新的 `List<String> WLResourceRequest.getHeaders(String headerName)` API。 | 
-| `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | 改为使用新的 `WLResourceRequest.getHeaders(String headerName)` API。 | 
-| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 改为使用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 | 
-| `WLResourceRequest.setHeader(org.apache.http.Header header)` | 改为使用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 | 
-| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | 替换为 `java.net.CookieStore getCookieStore WLClient.getCookieStore()` | 
-| `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 无替换。MFP 客户机允许循环重定向。 | 
+| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 改为使用新的 `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API。 |
+| `WLResourceRequest.addHeader(org.apache.http.Header header)` | 改为使用新的 `WLResourceRequest.addHeader(String name, String value)` API。 |
+| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 改为使用新的 `List<String> WLResourceRequest.getHeaders(String headerName)` API。 |
+| `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | 改为使用新的 `WLResourceRequest.getHeaders(String headerName)` API。 |
+| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 改为使用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
+| `WLResourceRequest.setHeader(org.apache.http.Header header)` | 改为使用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
+| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | 替换为 `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
+| `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 无替换。MFP 客户机允许循环重定向。 |
 | `WLHttpResponseListener`、`WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`、`WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`、`WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`、`WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`、`WLResourceRequest.send(WLHttpResponseListener listener)`、`WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`、`WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | 由于不推荐使用 Apache HTTP 客户机依赖关系而已移除。创建自己的请求，以对请求和响应具有完全控制。 |
 
 #### `com.worklight.androidgap.api` 包为 Cordova 应用程序提供 Android 平台功能。在 {{ site.data.keys.product }}    中，进行了多个更改以适应 Cordova 集成。
@@ -393,23 +393,23 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 |-----------------------|------------------------------------------|
 | `[WLClient getWLDevice][WLClient transmitEvent:]`、`[WLClient setEventTransmissionPolicy]`、`[WLClient purgeEventTransmissionBuffer]` | 已移除地理定位。使用本机 iOS 或第三方软件包进行地理定位。 |
 | `WL.Client.getUserInfo(realm, key)`、`WL.Client.updateUserInfo(options)` | 无替换。 |
-| `WL.Client.deleteUserPref(key, options)` | 无替换。您可以使用适配器和 `MFP.Server.getAuthenticatedUser` API 管理用户首选项。 | 
+| `WL.Client.deleteUserPref(key, options)` | 无替换。您可以使用适配器和 `MFP.Server.getAuthenticatedUser` API 管理用户首选项。 |
 | `[WLClient getRequiredAccessTokenScopeFromStatus]` | 使用 `WLAuthorizationManager obtainAccessTokenForScope`。 |
-| `[WLClient login:withDelegate:]` | 使用 `WLAuthorizationManager login`。 | 
-| `[WLClient logout:withDelegate:]` | 使用 `WLAuthorizationManager logout`。 | 
-| `[WLClient lastAccessToken]`、`[WLClient lastAccessTokenForScope:]` | 使用 `WLAuthorizationManager obtainAccessTokenForScope`。 | 
-| `[WLClient obtainAccessTokenForScope:withDelegate:]`、`[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]` | 使用 `WLAuthorizationManager obtainAccessTokenForScope`。 | 
-| `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString *) eventSource` | 使用来自 IBMMobileFirstPlatformFoundationPush 框架的 iOS 应用程序的 Objective C 客户端推送 API | 
+| `[WLClient login:withDelegate:]` | 使用 `WLAuthorizationManager login`。 |
+| `[WLClient logout:withDelegate:]` | 使用 `WLAuthorizationManager logout`。 |
+| `[WLClient lastAccessToken]`、`[WLClient lastAccessTokenForScope:]` | 使用 `WLAuthorizationManager obtainAccessTokenForScope`。 |
+| `[WLClient obtainAccessTokenForScope:withDelegate:]`、`[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]` | 使用 `WLAuthorizationManager obtainAccessTokenForScope`。 |
+| `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString *) eventSource` | 使用来自 IBMMobileFirstPlatformFoundationPush 框架的 iOS 应用程序的 Objective C 客户端推送 API |
 | `[WLClient - (int) getEventSourceIDFromUserInfo: (NSDictionary *) userInfo]` | 使用来自 IBMMobileFirstPlatformFoundationPush 框架的 iOS 应用程序的 Objective C 客户端推送 API。 |
-| `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | 不推荐使用。改为使用 `WLResourceRequest`。 | 
-| `WLClient sendUrlRequest:delegate:]` | 改为使用 `[WLResourceRequest sendWithDelegate:delegate]`。 | 
+| `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | 不推荐使用。改为使用 `WLResourceRequest`。 |
+| `WLClient sendUrlRequest:delegate:]` | 改为使用 `[WLResourceRequest sendWithDelegate:delegate]`。 |
 | `[WLClient (void) logActivity:(NSString *) activityType]` | 已移除。使用 Objective C 记录器。 |
 | `[WLSimpleDataSharing setSharedToken: myName value: myValue]`、`[WLSimpleDataSharing getSharedToken: myName]]`、`[WLSimpleDataSharing clearSharedToken: myName]` | 使用 OS API 在应用程序之间共享令牌。 |
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | 使用 `BaseChallengeHandler.cancel()`。 |
-| `BaseProvisioningChallengeHandler` | 无替换。设备供应现在由安全框架自动处理。 | 
+| `BaseProvisioningChallengeHandler` | 无替换。设备供应现在由安全框架自动处理。 |
 | `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。|
-| `WLChallengeHandler` | 使用 `SecurityCheckChallengeHandler`。 | 
-| `ChallengeHandler.isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 | 
+| `WLChallengeHandler` | 使用 `SecurityCheckChallengeHandler`。 |
+| `ChallengeHandler.isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 |
 | `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 |
 
 ### Windows C# API
@@ -420,18 +420,18 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 | API 元素           | 迁移路径                           |
 |-----------------------|------------------------------------------|
 | `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。|
-| `ChallengeHandler. isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 | 
-| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 | 
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler.Shouldcancel()`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler.ShouldCancel()`。 | 
-| `WLAuthorizationManager` | 改用 `WorklightClient.WorklightAuthorizationManager`。 | 
+| `ChallengeHandler. isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 |
+| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 |
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler.Shouldcancel()`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler.ShouldCancel()`。 |
+| `WLAuthorizationManager` | 改用 `WorklightClient.WorklightAuthorizationManager`。 |
 | `WLChallengeHandler` | 使用 `SecurityCheckChallengeHandler`。 |
-| `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | 使用 `SecurityCheckChallengeHandler.ShouldCancel()`。 | 
+| `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | 使用 `SecurityCheckChallengeHandler.ShouldCancel()`。 |
 | `WLClient` | 改用 `WorklightClient`。 |
 | `WLErrorCode` | 不受支持。 |
-| `WLFailResponse` | 改用 `WorklightResponse`。 | 
-| `WLResponse` | 改用 `WorklightResponse`。 | 
-| `WLProcedureInvocationData` | 改用 `WorklightProcedureInvocationData`。 | 
-| `WLProcedureInvocationFailResponse` | 不受支持。 | 
+| `WLFailResponse` | 改用 `WorklightResponse`。 |
+| `WLResponse` | 改用 `WorklightResponse`。 |
+| `WLProcedureInvocationData` | 改用 `WorklightProcedureInvocationData`。 |
+| `WLProcedureInvocationFailResponse` | 不受支持。 |
 | `WLProcedureInvocationResult` | 不受支持。 |
 | `WLRequestOptions` | 不受支持。 |
 | `WLResourceRequest` | 不受支持。 |
@@ -442,5 +442,5 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 | API 元素           | 迁移路径                           |
 |-----------------------|------------------------------------------|
 | `WLHttpResponseListener` | 不受支持。 |
-| `WLResponseListener` | 响应将可用作 `WorklightResponse` 对象 | 
-| `WLAuthorizationPersistencePolicy` | 不受支持。 | 
+| `WLResponseListener` | 响应将可用作 `WorklightResponse` 对象 |
+| `WLAuthorizationPersistencePolicy` | 不受支持。 |

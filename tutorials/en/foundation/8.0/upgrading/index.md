@@ -22,6 +22,8 @@ weight: 12
 * [Applying a fix pack to {{ site.data.keys.mf_server }}](#applying-a-fix-pack-to-mobilefirst-server)
 
 ## Why migrate to IBM MobileFirst Foundation 8.0
+{: #why-migrate-to-ibm-mobilefirst-foundation-80}
+
 ### Reduce Effort, Skill and Time Required to Build Apps
 * Build apps faster, simpler and smarter with standard package managers (npm, CocoaPods, Gradle, NuGet) and Maven for Java Adapter build automation
 * New simpler, modular, and easier to plug-in MobileFirst SDKs
@@ -38,7 +40,7 @@ weight: 12
 * One-click provision of MobileFirst Foundation development, testing, and fully scalable production environments on Bluemix Public
 * Integrated with IBM DevOps Services and Urban Code for building your deployment pipelines
 
-### Multi-channel API creation and management 
+### Multi-channel API creation and management
 * Step up API Connect multichannel security with mobile specific security extensions (e.g. Step Up, Multifactor) for maximum protection, then enforce in the DMZ with IBM DataPower
 * Create and define API Connect-compatible Swagger REST APIs in Foundation v8 then Manage and Secure them in API Connect
 

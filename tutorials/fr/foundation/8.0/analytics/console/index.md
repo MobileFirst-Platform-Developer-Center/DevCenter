@@ -94,6 +94,8 @@ By default, only logging from the package `com.worklight` is sent to analytics. 
 
 
 ### Enable/disable Analytics support
+{: #enabledisable-analytics-support}
+
 The collection of data for analysis by the Analytics server is enabled by default. You can disable it, for example to save processing time.
 
 1. In the navigation sidebar, click on **Runtime settings**. To avoid inadvertent changes, runtime properties are displayed in read-only mode.

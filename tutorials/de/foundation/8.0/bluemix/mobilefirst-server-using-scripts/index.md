@@ -10,18 +10,18 @@ weight: 2
 {: #overview }
 Folgen Sie den nachstehenden Anweisungen, um eine MobileFirst-Server-Instanz und eine Instanz von {{ site.data.keys.mf_analytics }} für IBM Bluemix zu konfigurieren. Gehen Sie dazu die folgenden Schritte durch:  
 
-* Statten Sie Ihren Host-Computer mit den erforderlichen Tools aus (Cloud-Foundry-CLI, Docker und Plug-in "IBM Containers Extension" (cf ic)). 
+* Statten Sie Ihren Host-Computer mit den erforderlichen Tools aus (Cloud-Foundry-CLI, Docker und Plug-in "IBM Containers Extension" (cf ic)).
 * Richten Sie Ihr Bluemix-Konto ein.
-* Erstellen Sie ein MobileFirst-Server-Image und stellen Sie es per Push-Operation in das Bluemix-Repository. 
+* Erstellen Sie ein MobileFirst-Server-Image und stellen Sie es per Push-Operation in das Bluemix-Repository.
 
-Abschließend werden Sie das Image als Einzelcontainer oder Containergruppe in IBM Containern ausführen und Ihre Anwendung registrieren sowie Ihre Adapter implementieren. 
+Abschließend werden Sie das Image als Einzelcontainer oder Containergruppe in IBM Containern ausführen und Ihre Anwendung registrieren sowie Ihre Adapter implementieren.
 
 **Hinweise:**  
 
 * Das Windows-Betriebssystem wird derzeit nicht für die Ausführung dieser Scripts unterstützt.   
-* Die MobileFirst-Server-Konfigurationstools können nicht für die Implementierung in IBM Containern genutzt werden. 
+* Die MobileFirst-Server-Konfigurationstools können nicht für die Implementierung in IBM Containern genutzt werden.
 
-#### Fahren Sie mit folgenden Abschnitten fort: 
+#### Fahren Sie mit folgenden Abschnitten fort:
 {: #jump-to }
 * [Konto in Bluemix registrieren](#register-an-account-at-bluemix)
 * [Hostmaschine einrichten](#set-up-your-host-machine)
@@ -35,15 +35,15 @@ Abschließend werden Sie das Image als Einzelcontainer oder Containergruppe in I
 ## Konto in Bluemix registrieren
 {: #register-an-account-at-bluemix }
 Falls Sie noch kein Konto haben, öffnen Sie die [Bluemix-Website](https://bluemix.net) und klicken Sie auf **Kostenloses
-Konto erstellen** oder auf **Anmeldung**. Sie müssen das Registrierungsformular ausfüllen, bevor Sie mit dem nächsten Schritt fortfahren können. 
+Konto erstellen** oder auf **Anmeldung**. Sie müssen das Registrierungsformular ausfüllen, bevor Sie mit dem nächsten Schritt fortfahren können.
 
 ### Bluemix-Dashboard
 {: #the-bluemix-dashboard }
-Nachdem Sie sich bei Bluemix angemeldet haben, wird das Bluemix-Dashboard angezeigt, das Ihnen einen Überblick über den aktiven Bluemix-Bereich gibt. Standardmäßig hat dieser Arbeitsbereich den Namen "dev". Bei Bedarf können Sie mehrere Arbeitsbereiche erstellen. 
+Nachdem Sie sich bei Bluemix angemeldet haben, wird das Bluemix-Dashboard angezeigt, das Ihnen einen Überblick über den aktiven Bluemix-Bereich gibt. Standardmäßig hat dieser Arbeitsbereich den Namen "dev". Bei Bedarf können Sie mehrere Arbeitsbereiche erstellen.
 
 ## Hostmaschine einrichten
 {: #set-up-your-host-machine }
-Für die Verwaltung von Containern und Images müssen Sie die folgenden Tools installieren: Docker, die Cloud-Foundry-CLI und das IBM Container-Plug-in (cf ic). 
+Für die Verwaltung von Containern und Images müssen Sie die folgenden Tools installieren: Docker, die Cloud-Foundry-CLI und das IBM Container-Plug-in (cf ic).
 
 ### Docker
 {: #docker }
@@ -51,12 +51,12 @@ Wählen Sie auf der Seite [Docker Documentation](https://docs.docker.com/) im li
 
 **Hinweis:** IBM bietet keine Unterstützung für Docker Kitematic.
 
-Unter macOS gibt es zwei Optionen für die Ausführung von Docker-Befehlen: 
+Unter macOS gibt es zwei Optionen für die Ausführung von Docker-Befehlen:
 
-* macOS-Terminal.app: Die App reicht zum Arbeiten aus. Ein weiteres Setup ist nicht erforderlich. 
-* Docker Quickstart Terminal: Gehen Sie wie nachfolgend beschrieben vor: 
+* macOS-Terminal.app: Die App reicht zum Arbeiten aus. Ein weiteres Setup ist nicht erforderlich.
+* Docker Quickstart Terminal: Gehen Sie wie nachfolgend beschrieben vor:
 
-* Führen Sie den folgenden Befehl aus: 
+* Führen Sie den folgenden Befehl aus:
 
   ```bash
   docker-machine env default
@@ -80,7 +80,7 @@ Unter macOS gibt es zwei Optionen für die Ausführung von Docker-Befehlen:
 2. Installieren Sie das [IBM Container-Plug-in (cf ic)](https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html).
 
 ## Archiv {{ site.data.keys.mf_bm_pkg_name }} herunterladen
-{: #download-the-ibm-mfpf-container-8000-archive }
+{: #download-the-ibm-mfpf-container-8000-archive}
 Wenn Sie die {{ site.data.keys.product }} in IBM Containern einrichten möchten, müssen Sie zunächst ein Image erstellen, das später per Push-Operation in Bluemix übertragen wird.   
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">Folgen Sie den Anweisungen auf dieser Seite</a>, um das Archiv mit {{ site.data.keys.mf_server }} für IBM Container (ZIP-Datei) herunterzuladen (suchen Sie nach *CNBL0EN*).
 
@@ -99,12 +99,12 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependen
                 <img src="zip.png" alt="Dateisystemstruktur der Archivdatei" style="float:right;width:570px"/>
                 <h4>Ordner 'dependencies'</h4>
                 <p>Enthält die Laufzeit der {{ site.data.keys.product }} und IBM Java JRE 8</p>
-                
+
                 <h4>Ordner 'mfpf-libs'</h4>
                 <p>Enthält die Bibliotheken für die {{ site.data.keys.product_adj }}-Produktkomponenten und die CLI</p>
-                
+
                 <h4>Ordner 'mfpf-server' und 'mfpf-analytics'</h4>
-                
+
                 <ul>
                     <li><b>Dockerfile</b>: Textdokument mit allen Befehlen, die für das Erstellen eines Image erforderlich sind. </li>
                     <li>Ordner <b>scripts</b>: Dieser Ordner enthält den Ordner <b>args</b> mit einer Reihe von Konfigurationsdateien. Er enthält außerdem die Scripts für die Anmeldung bei Blumix, die Erstellung eines Image für {{ site.data.keys.mf_server }} bzw. {{ site.data.keys.mf_analytics }} und die Push-Übertragung und Ausführung des Image in Bluemix. Sie können diese Scripts interaktiv ausführen oder die Konfigurationsdateien wie nachfolgend erläutert für die Ausführung der Scripts vorkonfigurieren. Anders als bei den anpassbaren Dateien args/*.properties dürfen Sie in diesem Ordner keine Elemente modifizieren. Verwenden Sie das Befehlszeilenargument <code>-h</code> oder <code>--help</code>, um einen Hilfetext zur Scriptsyntax abzurufen (z. B. <code>Scriptname.sh --help</code>).</li>
@@ -122,7 +122,7 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependen
                         </ul>
                     </li>
                     <li>Ordner <b>env</b>: Enthält die Umgebungseigenschaften für die Serverinitialisierung (server.env) sowie angepasste JVM-Optionen (jvm.options).</li>
-                    
+
                     <br/>
                     <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                         <div class="panel panel-default">
@@ -206,7 +206,7 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependen
                                             <td>Kennwort für die Administratorrolle für MobileFirst-Server-Operationen</td>
                                         </tr>
                                     </table>
-                                    
+
                     				<br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>Abschnitt schließen</b></a>
                                 </div>
@@ -243,15 +243,15 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependen
                                             <td>Name der Benutzergruppe mit der vordefinierten Rolle <b>worklightadmin</b></td>
                                         </tr>
                                     </table>
-                                    
+
                     				<br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#analytics-env" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>Abschnitt schließen</b></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
                     </li>
                     <li>Ordner <b>jre-security</b>: Sie können die sicherheitsrelevanten JRE-Dateien (Truststore, JAR-Richtliniendateien usw.) aktualisieren, indem Sie sie in diesen Ordner stellen. Die Dateien aus diesem Ordner werden in den Ordner JAVA_HOME/jre/lib/security/ des Containers kopiert.</li>
                     <li>Ordner <b>security</b>: Wird verwendet, um die Keystore-Datei, die Truststore-Datei und die LTPA-Schlüsseldatei (ltpa.keys) zu speichern.</li>
@@ -267,12 +267,12 @@ Die Archivdatei enthält die Dateien für die Erstellung eines Image (**dependen
 
 ## Voraussetzungen
 {: #prerequisites }
-Die folgenden Schritte sind obligatorisch. Im folgenden Abschnitt werden Sie Befehle des Service "IBM Containers" ausführen. 
+Die folgenden Schritte sind obligatorisch. Im folgenden Abschnitt werden Sie Befehle des Service "IBM Containers" ausführen.
 
 1. Melden Sie sich bei der IBM Bluemix-Umgebung an.   
 
     Führen Sie `cf login` aus.  
-    Machen Sie die folgenden Angaben, wenn Sie dazu aufgefordert werden: 
+    Machen Sie die folgenden Angaben, wenn Sie dazu aufgefordert werden:
       * Bluemix-API-Endpunkt
       * E-Mail-Adresse
       * Kennwort
@@ -282,28 +282,28 @@ Die folgenden Schritte sind obligatorisch. Im folgenden Abschnitt werden Sie Bef
 2. Für die Ausführung von Befehlen des Service "IBM Containers" müssen Sie sich zunöchst beim Cloud-Service für IBM Container anmelden.
 Führen Sie `cf ic login` aus.
 
-3. Stellen Sie sicher, dass der `namespace` für die Container-Registry definiert ist. Der `namespace` gibt einen eindeutigen Namen für Ihr privates Repository in der Bluemix-Registry an. Der Namespace wird einer Organisation einmal zugeordnet und kann nicht geändert werden. Beachten Sie bei der Auswahl des Namespace die folgenden Regeln: 
-     * Der Name darf nur aus Kleinbuchstaben, Zahlen und Unterstreichungszeichen bestehen. 
+3. Stellen Sie sicher, dass der `namespace` für die Container-Registry definiert ist. Der `namespace` gibt einen eindeutigen Namen für Ihr privates Repository in der Bluemix-Registry an. Der Namespace wird einer Organisation einmal zugeordnet und kann nicht geändert werden. Beachten Sie bei der Auswahl des Namespace die folgenden Regeln:
+     * Der Name darf nur aus Kleinbuchstaben, Zahlen und Unterstreichungszeichen bestehen.
      * Der Name kann 4 bis 30 Zeichen umfassen. Wenn Sie Container über die Befehlszeile verwalten möchten, sollten Sie dem Namensbereich einen kurzen Namen zuordnen, der schnell eingegeben werden kann.
-     * Innerhalb der Bluemix-Registry muss der Name eindeutig sein. 
+     * Innerhalb der Bluemix-Registry muss der Name eindeutig sein.
 
     Führen Sie zum Definieren eines Namespace den Befehl `cf ic namespace set <neuer_Name>` aus.  
     Wenn Sie einen bereits definierten Namespace abrufen möchten, führen Sie den Befehl `cf ic namespace get` aus.
 
-> Weitere Informationen zu IC-Befehlen können Sie über den Befehl `ic help` abrufen. 
+> Weitere Informationen zu IC-Befehlen können Sie über den Befehl `ic help` abrufen.
 
 ## {{ site.data.keys.product_adj }} Server und Analytics Server in IBM Containern einrichten
 {: #setting-up-the-mobilefirst-and-analytics-servers-on-ibm-containers }
-Wie bereits erläutert, können Sie die Scripts interaktiv oder unter Verwendung der Konfigurationsdateien ausführen. 
+Wie bereits erläutert, können Sie die Scripts interaktiv oder unter Verwendung der Konfigurationsdateien ausführen.
 
-* Verwendung der Konfigurationsdateien: Führen Sie die Scripts aus und übergeben Sie die entsprecvhende Konfigurationsdatei als Argument. 
-* Interaktiv: Führen Sie die Scripts ohne Argumente aus. 
+* Verwendung der Konfigurationsdateien: Führen Sie die Scripts aus und übergeben Sie die entsprecvhende Konfigurationsdatei als Argument.
+* Interaktiv: Führen Sie die Scripts ohne Argumente aus.
 
-**Hinweis:** Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie die Konfiguration übergehen. Wir empfehlen Ihnen jedoch, sich wenigstens mit den Argumenten, die angegeben werden müssen, zu beschäftigen. 
+**Hinweis:** Wenn Sie sich entschließen, die Scripts interaktiv auszuführen, können Sie die Konfiguration übergehen. Wir empfehlen Ihnen jedoch, sich wenigstens mit den Argumenten, die angegeben werden müssen, zu beschäftigen.
 
 ### {{ site.data.keys.mf_analytics }}
 {: #mobilefirst-analytics }
-Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden möchten, beginnen Sie hier. 
+Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden möchten, beginnen Sie hier.
 
 <div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -364,7 +364,7 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-                  
+
                         <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-initenv">
@@ -401,7 +401,7 @@ Wenn Sie Analytics zusammen mit Ihrem {{ site.data.keys.mf_server }} verwenden m
                                                 <td>Bluemix-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>Beispiel:</p>
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
@@ -414,15 +414,15 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                         </div>
                     </li>
                     <li><b>prepareanalytics.sh - Erstellung eines MobileFirst-Analytics-Image</b><br />
-                        Führen Sie das Script <b>prepareanalytics.sh</b> aus, um ein MobileFirst-Analytics-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu übertragen. 
+                        Führen Sie das Script <b>prepareanalytics.sh</b> aus, um ein MobileFirst-Analytics-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu übertragen.
 
 {% highlight bash %}
 ./prepareanalytics.sh args/prepareanalytics.properties
 {% endhighlight %}
 
                         Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus.<br/>
-                        Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID. 
-                  
+                        Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.
+
                         <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
@@ -443,7 +443,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                               <td>Name, der für das angepasste Analytics-Image verwendet werden soll. Format: Bluemix-Registry-URL/privater_Namespace/Image-Name</td>
                                             </tr>      
                                         </table>
-                                      
+
                                         <p>Beispiel:</p>
 {% highlight bash %}
 prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namespace/mfpfanalytics80
@@ -454,7 +454,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                               </div>
                           </div>
                       </div>
-                  
+
                     </li>
                     <li><b>startanalytics.sh - Ausführung des Image in einem IBM Container</b><br />
                     Das Script <b>startanalytics.sh</b> wird verwendet, um das MobileFirst-Analytics-Image in einem IBM Container auszuführen. Außerdem bindet das Script Ihr Image an die öffentliche IP-Adresse, die Sie mit der Eigenschaft <b>ANALYTICS_IP</b> konfiguriert haben. </li>
@@ -544,7 +544,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                                 <td>Geben Sie jeweils durch ein Komma getrennte Eigenschaften von {{ site.data.keys.mf_analytics }} als Schlüssel-Wert-Paare an. Hinweis: Wenn Sie mit diesem Script Eigenschaften angeben, dürfen diese Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein. </td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>Beispiel:</p>
                         {% highlight bash %}
                         startanalytics.sh --tag image_tag_name --name container_name --ip container_ip_address
@@ -556,13 +556,13 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                             </div>
                         </div>   
                     <li><b>startanalyticsgroup.sh - Ausführung des Image in einer IBM Containergruppe</b><br />
-                    Das Script <b>startanalyticsgroup.sh</b> wird verwendet, um das MobileFirst-Analytics-Image in einer IBM Containergruppe auszuführen. Außerdem bindet das Script Ihr Image an den Hostnamen, den Sie mit der Eigenschaft <b>ANALYTICS_CONTAINER_GROUP_HOST</b> konfiguriert haben. 
+                    Das Script <b>startanalyticsgroup.sh</b> wird verwendet, um das MobileFirst-Analytics-Image in einer IBM Containergruppe auszuführen. Außerdem bindet das Script Ihr Image an den Hostnamen, den Sie mit der Eigenschaft <b>ANALYTICS_CONTAINER_GROUP_HOST</b> konfiguriert haben.
 
                         Führen Sie Folgendes aus:
 {% highlight bash %}
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
-                  
+
                         <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
@@ -639,7 +639,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                                 <td>Geben Sie das Verzeichnis an, in dem Analysedaten gespeichert werden sollen. Der Standardwert ist <b>/analyticsData</b>.</td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>Beispiel: </p>
 {% highlight bash %}
 startanalyticsgroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
@@ -671,7 +671,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
                 Der Ordner <b>args</b> enthält Konfigurationsdateien mit den Argumenten, die zum Ausführen der Scripts erforderlich sind. Tragen Sie die Argumentwerte in den folgenden Dateien ein:<br/>
-            
+
                 <h4>initenv.properties</h4>
                 <ul>
                     <li><b>BLUEMIX_USER - </b>Ihr Bluemix-Benutzername (E-Mail-Adresse) </li>
@@ -726,7 +726,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             <p>Die folgenden Anweisungen demonstrieren die Ausführung der Scripts unter Verwendung der Konfigurationsdateien. Eine Liste mit Befehlszeilenargumenten, die Sie für die Ausführung in einem nicht interaktiven Modus auswählen sollten, wird ebenfalls bereitgestellt. </p>
-            
+
             <ol>
                 <li><b>initenv.sh – Anmeldung bei Bluemix </b><br />
                     Führen Sie das Script <b>initenv.sh</b> aus, um eine Umgebung für die Erstellung und Ausführung von {{ site.data.keys.product }} in IBM Containern zu erstellen:
@@ -770,12 +770,12 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                                             <td>Bluemix-API-Endpunkt. (Standardwert ist https://api.ng.bluemix.net.)</td>
                                         </tr>
                                     </table>
-                                    
+
                                     <p>Beispiel:</p>
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
-                    
+
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>Abschnitt schließen</b></a>
                                 </div>
                             </div>
@@ -828,12 +828,12 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                             <td>Name des Datenbankschemas für den Push-Service. Stndardmäßig der Name des Laufzeitschemas. </td>
                                         </tr>
                                     </table>
-                                    
+
                                     <p>Beispiel:</p>
 {% highlight bash %}
 prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
-                                    
+
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>Abschnitt schließen</b></a>
                                 </div>
                             </div>
@@ -849,8 +849,8 @@ prepareserverdbs.sh --admindb MFPDashDBService
                 </li>
                 <li><b>prepareserver.sh - Erstellung eines MobileFirst-Server-Image</b><br />
                     Führen Sie das Script <b>prepareserver.sh</b> aus, um ein MobileFirst-Server-Image zu erstellen und per Push-Operation in Ihr Bluemix-Repository zu übertragen. Wenn Sie alle verfügbaren Images in Ihrem Bluemix-Repository anzeigen möchten, führen Sie <code>cf ic images</code> aus.<br/>
-                        Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.<br/> 
-                  
+                        Die Liste enthält den Image-Namen, das Erstellungsdatum und die ID.<br/>
+
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
@@ -875,12 +875,12 @@ prepareserverdbs.sh --admindb MFPDashDBService
                                             <td>Name, der für das angepasste MobileFirst-Server-Image verwendet werden soll. Format: Registry-URL/Namespace/Image-Name</td>
                                         </tr>
                                     </table>
-                                  
+
                                     <p>Beispiel:</p>
 {% highlight bash %}
 prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% endhighlight %}
-                                  
+
                                   <br/>
                                   <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>Abschnitt schließen</b></a>
                               </div>
@@ -889,7 +889,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                     </div>  
                 </li>
                 <li><b>startserver.sh - Ausführung des Image in einem IBM Container</b><br />
-                    Das Script <b>startserver.sh</b> wird verwendet, um das MobileFirst-Server-Image in einem IBM Container auszuführen. Außerdem bindet das Script Ihr Image an die öffentliche IP-Adresse, die Sie mit der Eigenschaft <b>SERVER_IP</b> konfiguriert haben. Führen Sie Folgendes aus:</li> 
+                    Das Script <b>startserver.sh</b> wird verwendet, um das MobileFirst-Server-Image in einem IBM Container auszuführen. Außerdem bindet das Script Ihr Image an die öffentliche IP-Adresse, die Sie mit der Eigenschaft <b>SERVER_IP</b> konfiguriert haben. Führen Sie Folgendes aus:</li>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -961,12 +961,12 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                         <td>Geben Sie jeweils durch ein Komma getrennte {{ site.data.keys.product_adj }}-Eigenschaften als Schlüssel-Wert-Paare an. Beispiel: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>. <b>Hinweis:</b> Wenn Sie mit diesem Script Eigenschaften angeben, dürfen diese Eigenschaften nicht in den Konfigurationsdateien im Ordner usr/config definiert sein.</td>
                                     </tr>
                                 </table>
-                                
+
                                 <p>Beispiel:</p>
 {% highlight bash %}
 startserver.sh --tag image_tag_name --name container_name --ip container_ip_address
 {% endhighlight %}
-                                
+
                                 <br/>
                                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>Abschnitt schließen</b></a>
                             </div>
@@ -1026,7 +1026,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                                 <td>[-a|--auto] ENABLE_AUTORECOVERY (optional)	</td>
                                                 <td>Aktivieren der automatischen Wiederherstellungsoption für die Containerinstanzen. Gültige Werte sind Y und N (Standard).</td>
                                             </tr>
-                                            
+
                                             <tr>
                                                 <td>[-si|--services] SERVICES (optional)	</td>
                                                 <td>Jeweils durch ein Komma getrennte Namen von Bluemix-Serviceinstanzen, die an den Container gebunden werden sollen </td>
@@ -1057,12 +1057,12 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                                 <td>Anhängen des Datenträgers für Containerprotokolle ermöglichen. Gültige Werte sind Y und N (Standard). </td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>Beispiel:</p>
 {% highlight bash %}
 startservergroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
 {% endhighlight %}
-                                        
+
                                         <br/>
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>Abschnitt schließen</b></a>
                                     </div>
@@ -1082,7 +1082,7 @@ Wenn sich beispielsweise ein Stammzertifikat ändert, muss nach dem Hinzufügen 
 gestartet werden. Starten Sie die {{ site.data.keys.mf_console }} über die URL http://MF\_CONTAINER\_HOST/mfpconsole. (Der Start kann eine Weile dauern.)   
 Fügen Sie den fernen Server hinzu. Folgen Sie dfür den Anweisungen
 im Lernprogramm [{{ site.data.keys.mf_cli }} für die Verwaltung
-von {{ site.data.keys.product_adj }}-Artefakten verwenden](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance). 
+von {{ site.data.keys.product_adj }}-Artefakten verwenden](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance).
 
 {{ site.data.keys.mf_server }} wird jetzt in IBM Bluemix ausgeführt, sodass Sie mit der Anwendungsentwicklung beginnen können. Gehen Sie die {{ site.data.keys.product }} [Lernprogramme](../../all-tutorials) durch.
 
@@ -1095,37 +1095,37 @@ und den MobileFirst-Server-Container angegebenen Standardportnummern (9080 für 
 ## Fixes für {{ site.data.keys.mf_server }} anwenden
 {: #applying-mobilefirst-server-fixes }
 Vorläufige Fixes für {{ site.data.keys.mf_server }} in IBM Containern können über [IBM Fix Central](http://www.ibm.com/support/fixcentral) abgerufen werden.  
-Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen Fix anwenden. Die Konfigurationsdateien befinden sich in den Ordnern **package_root/mfpf-analytics/usr** und **package_root/mfpf-server/usr**. 
+Sichern Sie Ihre vorhandenen Konfigurationsdateien, bevor Sie einen vorläufigen Fix anwenden. Die Konfigurationsdateien befinden sich in den Ordnern **package_root/mfpf-analytics/usr** und **package_root/mfpf-server/usr**.
 
 1. Laden Sie das Archiv mit dem vorläufigen Fix herunter und extrahieren Sie den Inhalt des Archivs in
-Ihrem vorhandenen Installationsordner. Dabei werden in dem Ordner vorhandene Dateien überschrieben. 
+Ihrem vorhandenen Installationsordner. Dabei werden in dem Ordner vorhandene Dateien überschrieben.
 2. Speichern Sie Ihre gesicherten Konfigurationsdateien zurück in die Ordner **/mfpf-analytics/usr** und **/mfpf-server/usr**. Dabei werden die neu
-installierten Konfigurationsdateien überschrieben. 
+installierten Konfigurationsdateien überschrieben.
 
-Jetzt können Sie neue Produktionscontainer erstellen und implementieren. 
+Jetzt können Sie neue Produktionscontainer erstellen und implementieren.
 
 ## Container in Bluemix entfernen
 {: #removing-a-container-from-bluemix }
 Wenn Sie in Bluemix einen Container entfernen, müssen Sie auch den Image-Namen aus der Registry entfernen.   
-Führen Sie die folgenden Befehle aus, um einen Container in Bluemix zu entfernen: 
+Führen Sie die folgenden Befehle aus, um einen Container in Bluemix zu entfernen:
 
-1. `cf ic ps` (Listet die zurzeit aktiven Container auf) 
+1. `cf ic ps` (Listet die zurzeit aktiven Container auf)
 2. `cf ic stop container_id` (Stoppt den Container)
 3. `cf ic rm container_id` (Entfernt den Container)
 
-Führen Sie die folgenden cf ic-Befehle aus, um einen Image-Namen aus der Bluemix-Registry zu entfernen: 
+Führen Sie die folgenden cf ic-Befehle aus, um einen Image-Namen aus der Bluemix-Registry zu entfernen:
 
 1. `cf ic images` (Listet die Images in der Registry auf)
 2. `cf ic rmi image_id` (Entfernt ein Image aus der Registry)
 
-## Datenbankservicekonfiguration aus Bluemix entfernen	
+## Datenbankservicekonfiguration aus Bluemix entfernen
 {: #removing-the-database-service-configuration-from-bluemix }
 Wenn Sie während der Konfiguration des MobileFirst-Server-Image das Script **prepareserverdbs.sh** ausgeführt haben,
-werden die für {{ site.data.keys.mf_server }} erforderlichen Konfigurationen und Datenbanktabellen erstellt. Das Script erstellt auch das Datenbankschema für den Container. 
+werden die für {{ site.data.keys.mf_server }} erforderlichen Konfigurationen und Datenbanktabellen erstellt. Das Script erstellt auch das Datenbankschema für den Container.
 
 Sie können die Datenbankservicekonfiguration im Bluemix-Dashboard wie folgt entfernen.
 
-1. Wählen Sie im Bluemix-Dashboard den dashDB-Service aus, den Sie verwendet haben. Wählen Sie den dashDB-Servicenamen aus, den Sie für die Ausführung des Scripts **prepareserverdbs.sh** als Parameter angegeben haben. 
-2. Starten Sie die dashDB-Konsole, um mit den Schemata und Datenbankobjekten der ausgewählten dashDB-Serviceinstanz arbeiten zu können. 
-3. Wählen Sie Schemata für die Konfiguration von IBM {{ site.data.keys.mf_server }} aus. Die Schemanamen sind die, die Sie bei Ausführung des Scripts **prepareserverdbs.sh** als Parameter angegeben haben. 
+1. Wählen Sie im Bluemix-Dashboard den dashDB-Service aus, den Sie verwendet haben. Wählen Sie den dashDB-Servicenamen aus, den Sie für die Ausführung des Scripts **prepareserverdbs.sh** als Parameter angegeben haben.
+2. Starten Sie die dashDB-Konsole, um mit den Schemata und Datenbankobjekten der ausgewählten dashDB-Serviceinstanz arbeiten zu können.
+3. Wählen Sie Schemata für die Konfiguration von IBM {{ site.data.keys.mf_server }} aus. Die Schemanamen sind die, die Sie bei Ausführung des Scripts **prepareserverdbs.sh** als Parameter angegeben haben.
 4. Untersuchen Sie die Schemanamen und die zugehörigen Objekte gründlich, bevor Sie die einzelnen Schemata löschen. Die Datenbankkonfigurationen wurden aus Bluemix entfernt.

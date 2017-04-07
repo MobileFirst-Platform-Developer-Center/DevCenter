@@ -173,6 +173,8 @@ public class MyCustomBehaviorExtension : BehaviorExtensionElement
 ```
 
 ## メッセージ・インスペクターの実装
+{: #message-inspector-implementation}
+
 まず、メッセージ・インスペクター内にクラス・メンバーとしていくつかの定数を定義します。それらは、{{ site.data.keys.mf_server }} URL、機密クライアントの資格情報、およびサービスを保護するために使用する `scope` です。また、{{ site.data.keys.product_adj }} 許可サーバーから受け取ったトークンを保持するための静的変数を定義することもできます。そうすることで、すべてのユーザーがそれを使用できます。
 
 ```csharp
@@ -282,6 +284,8 @@ private void returnErrorResponse(HttpStatusCode httpStatusCode, WebHeaderCollect
 ```
 
 ## {{ site.data.keys.product_adj }} 許可サーバーからのアクセス・トークンの取得
+{: #obtain-access-token-from-mobilefirst-authorization-server}
+
 クライアント・トークンを認証するためには、**トークン・エンドポイント**への要求を発行することで、**メッセージ・インスペクターとしてアクセス・トークンを取得**する必要があります。
 後で、この受け取ったトークンを使用して、クライアント・トークンをイントロスペクションのために渡します。
 

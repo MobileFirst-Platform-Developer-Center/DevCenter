@@ -105,7 +105,7 @@ WL.Client.init(wlInitOptions).then (
 - **mfpContextRoot：**{{ site.data.keys.mf_server }} 所使用的上下文根。
 - **applicationId：**应用程序包名称，在[注册应用程序](#registering-the-web-application)时定义。
 
-### 注册 Web 应用程序 
+### 注册 Web 应用程序
 {: #registering-the-web-application }
 您可以从 {{ site.data.keys.mf_console }} 或者从 {{ site.data.keys.mf_cli }} 注册应用程序。
 
@@ -146,7 +146,7 @@ WL.Client.init(wlInitOptions).then (
 > 在[设置 Web 开发环境](../../../installation-configuration/development/web)教程中了解更多信息
 
 ## 安全源策略
-{: secure-origins-policy }
+{: #secure-origins-policy }
 当您在开发期间使用 Chrome 时，如果使用 HTTP 和**非** `localhost` 主机，那么浏览器可能不允许应用程序装入。这是因为，缺省情况下，在此浏览器中实施和使用安全源策略。
 
 要解决此问题，可以使用以下标记启动 Chrome 浏览器：

@@ -100,6 +100,8 @@ SDK を {{site.data.keys.mf_server }} と一緒に使用すると、
 
 
 ### Analytics サポートの有効化/無効化
+{: #enabledisable-analytics-support}
+
 デフォルトでは、Analytics サーバーによる分析用のデータの収集が有効になっています。これは、処理時間の節約などのために無効にすることができます。
 
 

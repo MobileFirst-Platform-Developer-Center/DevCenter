@@ -173,6 +173,8 @@ public class MyCustomBehaviorExtension : BehaviorExtensionElement
 ```
 
 ## 消息检验器实施
+{: #message-inspector-implementation}
+
 首先，在消息检验器中，将一些常量定义为类成员：{{ site.data.keys.mf_server }} URL、保密客户机凭证以及将用于保护服务的 `scope`。我们还可以定义静态变量以保留从 {{ site.data.keys.product_adj }} 授权服务器收到的令牌，因此它将可用于所有用户：
 
 ```csharp
@@ -302,7 +304,7 @@ private string getIntrospectionToken()
   postParameters.Add("grant_type", "client_credentials");
   postParameters.Add("scope", "authorization.introspect");
 
-  try { 
+  try {
 HttpWebResponse resp = sendRequest(postParameters, "token", "Basic " + Base64Credentials);
     Stream dataStream = resp.GetResponseStream();
     StreamReader reader = new StreamReader(dataStream);

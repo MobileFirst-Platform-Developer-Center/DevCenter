@@ -8,7 +8,7 @@ weight: 2
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-下記の指示に従って {{ site.data.keys.mf_server }} インスタンスおよび {{ site.data.keys.mf_analytics }} インスタンスを IBM Bluemix 上で構成します。これは、次のような手順で行います。 
+下記の指示に従って {{ site.data.keys.mf_server }} インスタンスおよび {{ site.data.keys.mf_analytics }} インスタンスを IBM Bluemix 上で構成します。これは、次のような手順で行います。
 
 * 必要なツール (Cloud Foundry CLI、Docker、および IBM Containers 拡張機能 (cf ic) プラグイン) を使用して、ホスト・コンピューターをセットアップする
 * Bluemix アカウントをセットアップする
@@ -79,7 +79,7 @@ macOS では、Docker コマンドを実行するには、次の 2 つのオプ�
 2. [IBM Containers プラグイン (cf ic)](https://console.ng.bluemix.net/docs/containers/container_cli_cfic_install.html) をインストールします。
 
 ## {{ site.data.keys.mf_bm_pkg_name }} アーカイブをダウンロードする
-{: #download-the-ibm-mfpf-container-8000}-archive
+{: #download-the-ibm-mfpf-container-8000-archive}
 IBM Containers 上で {{ site.data.keys.product }} をセットアップするには、まず最初にイメージを作成する必要があります。このイメージは、のちほど Bluemix にプッシュします。  
 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg2C7000005" target="blank">このページの指示に従って</a>、{{ site.data.keys.mf_server }} の IBM Containers 用アーカイブ (.zip ファイル。*CNBL0EN* で検索) をダウンロードしてください。
 
@@ -98,12 +98,12 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                 <img src="zip.png" alt="アーカイブ・ファイルのファイル・システム構成を示すイメージ" style="float:right;width:570px"/>
                 <h4>dependencies フォルダー</h4>
                 <p>{{ site.data.keys.product }} ランタイムおよび IBM Java JRE 8 が含まれています。</p>
-                
+
                 <h4>mfpf-libs フォルダー</h4>
                 <p>{{ site.data.keys.product_adj }} 製品コンポーネント・ライブラリーおよび CLI が含まれています。</p>
-                
+
                 <h4>mfpf-server フォルダーと mfpf-analytics フォルダー</h4>
-                
+
                 <ul>
                     <li><b>Dockerfile</b>: イメージをビルドするのに必要なコマンドがすべて含まれているテキスト文書です。</li>
                     <li><b>scripts</b> フォルダー: このフォルダーには、<b>args</b> フォルダー (構成ファイルのセットを含む) が含まれます。また、Bluemix へのログイン、{{ site.data.keys.mf_server }}/{{ site.data.keys.mf_analytics }} イメージのビルドおよび Bluemix へのイメージのプッシュと実行に必要なスクリプトも含まれます。スクリプトは、対話式に実行することも、(後述のように) 構成ファイルを事前に設定することで実行することもできます。カスタマイズ可能な args/*.properties ファイル以外、このフォルダー内のエレメントを変更しないでください。スクリプトの使用法に関するヘルプを表示するには、<code>-h</code> または <code>--help</code> コマンド・ライン引数を使用します (例: <code>scriptname.sh --help</code>)。</li>
@@ -122,7 +122,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                         </ul>
                     </li>
                     <li><b>env</b> フォルダー: サーバーの初期化に使用される環境プロパティー (server.env) およびカスタム JVM オプション (jvm.options) が含まれています。</li>
-                    
+
                     <br/>
                     <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                         <div class="panel panel-default">
@@ -206,7 +206,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                             <td>{{ site.data.keys.mf_server }} 操作の管理者役割のパスワード。</td>
                                         </tr>
                                     </table>
-                                    
+
                     				<br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#server-env" data-target="#collapse-server-env" aria-expanded="false" aria-controls="collapse-server-env"><b>セクションを閉じる</b></a>
                                 </div>
@@ -243,15 +243,15 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                             <td>事前定義のロール <b>worklightadmin</b> を所有しているユーザー・グループの名前。</td>
                                         </tr>
                                     </table>
-                                    
+
                     				<br/>
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#analytics-env" data-target="#collapse-analytics-env" aria-expanded="false" aria-controls="collapse-analytics-env"><b>セクションを閉じる</b></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    
+
+
                     </li>
                     <li><b>jre-security</b> フォルダー: JRE セキュリティー関連のファイル (トラストストア、ポリシー JAR ファイルなど) を、このフォルダーに配置することで更新できます。このフォルダー内のファイルは、コンテナーの JAVA_HOME/jre/lib/security/ フォルダーにコピーされます。</li>
                     <li><b>security</b> フォルダー: 鍵ストア、トラストストア、および LTPA 鍵ファイル (ltpa.keys) の保管場所として使用します。</li>
@@ -364,7 +364,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
 {% highlight bash %}
 ./initenv.sh args/initenv.properties
 {% endhighlight %}
-                  
+
                         <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-initenv">
@@ -401,7 +401,7 @@ IBM Containers 上で {{ site.data.keys.product }} をセットアップする�
                                                 <td>Bluemix API エンドポイント。(デフォルトでは https://api.ng.bluemix.net)</td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>例えば、次のとおりです。</p>
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
@@ -422,7 +422,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
 
                         Bluemix リポジトリー内にあるすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
                         リストには、イメージ名、作成日、および ID が表示されます。
-                  
+
                         <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-prepareanalytics">
@@ -443,7 +443,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                               <td>カスタマイズされた Analytics イメージに使用する名前。フォーマット: Bluemix registry URL/private namespace/image name</td>
                                             </tr>      
                                         </table>
-                                      
+
                                         <p>例えば、次のとおりです。</p>
 {% highlight bash %}
 prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namespace/mfpfanalytics80
@@ -454,7 +454,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                               </div>
                           </div>
                       </div>
-                  
+
                     </li>
                     <li><b>startanalytics.sh - IBM コンテナーでのイメージの実行</b><br />
                     <b>startanalytics.sh</b> スクリプトを使用して {{ site.data.keys.mf_analytics }} イメージを IBM コンテナー上で実行します。また、このスクリプトを実行すると、<b>ANALYTICS_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。</li>
@@ -544,7 +544,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                                 <td>{{ site.data.keys.mf_analytics }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。注: このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>例えば、次のとおりです。</p>
                         {% highlight bash %}
                         startanalytics.sh --tag image_tag_name --name container_name --ip container_ip_address
@@ -562,7 +562,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
 {% highlight bash %}
 ./startanalyticsgroup.sh args/startanalyticsgroup.properties
 {% endhighlight %}
-                  
+
                         <div class="panel-group accordion" id="terminology" role="tablist" aria-multiselectable="false">
                             <div class="panel panel-default">
                                 <div class="panel-heading" role="tab" id="script-analytics-startanalyticsgroup">
@@ -639,7 +639,7 @@ prepareanalytics.sh --tag registry.ng.bluemix.net/your_private_repository_namesp
                                                 <td>Analytics データを保管するために使用するディレクトリーを指定します。デフォルト値は <b>/analyticsData</b> です。</td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>例えば、次のとおりです。</p>
 {% highlight bash %}
 startanalyticsgroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
@@ -671,7 +671,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
         <div id="collapse-step-foundation-1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
 <b>args</b> フォルダーに、構成ファイルのセットが含まれています。スクリプトの実行に必要な引数は、これらの構成ファイルに含まれています。以下のファイルに引数値を入力します。<br/>
-            
+
                 <h4>initenv.properties</h4>
                 <ul>
                     <li><b>BLUEMIX_USER - </b>ご使用の Bluemix ユーザー名 (E メール)。</li>
@@ -726,7 +726,7 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
         <div id="collapse-step-foundation-2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="setupCordova">
             <div class="panel-body">
             <p>以下の説明は、構成ファイルを使用してスクリプトを実行する方法を示しています。対話モードを使用せずに実行することを選択した場合は、コマンド・ライン引数のリストも利用できます。</p>
-            
+
             <ol>
                 <li><b>initenv.sh – Bluemix へのログイン</b><br />
                     次のように <b>initenv.sh</b> スクリプトを実行して、IBM Containers 上で {{ site.data.keys.product }} をビルドして実行するための環境を作成します。
@@ -770,12 +770,12 @@ startanalyticsgroup.sh --tag image_name --name container_group_name --host conta
                                             <td>Bluemix API エンドポイント。(デフォルトでは https://api.ng.bluemix.net)</td>
                                         </tr>
                                     </table>
-                                    
+
                                     <p>例えば、次のとおりです。</p>
 {% highlight bash %}
 initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_organization_name --space Bluemix_space_name
 {% endhighlight %}
-                    
+
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-initenv" data-target="#collapse-script-initenv" aria-expanded="false" aria-controls="collapse-script-initenv"><b>セクションを閉じる</b></a>
                                 </div>
                             </div>
@@ -828,12 +828,12 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                             <td>プッシュ・サービスのデータベース・スキーマ名。デフォルトは、ランタイム・スキーマ名です。</td>
                                         </tr>
                                     </table>
-                                    
+
                                     <p>例えば、次のとおりです。</p>
 {% highlight bash %}
 prepareserverdbs.sh --admindb MFPDashDBService
 {% endhighlight %}
-                                    
+
                                     <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserverdbs" data-target="#collapse-script-prepareserverdbs" aria-expanded="false" aria-controls="collapse-server-env"><b>セクションを閉じる</b></a>
                                 </div>
                             </div>
@@ -850,7 +850,7 @@ prepareserverdbs.sh --admindb MFPDashDBService
                 <li><b>prepareserver.sh - {{ site.data.keys.mf_server }} イメージの準備</b><br />
                     {{ site.data.keys.mf_server }} イメージをビルドし、これを Bluemix リポジトリーにプッシュするため、<b>prepareserver.sh</b> スクリプトを実行します。Bluemix リポジトリー内にある使用可能なすべてのイメージを表示するには、次のコマンドを実行します。<code>cf ic images</code><br/>
                     リストには、イメージ名、作成日、および ID が表示されます。<br/>
-                  
+
 {% highlight bash %}
 ./prepareserver.sh args/prepareserver.properties
 {% endhighlight %}
@@ -875,12 +875,12 @@ prepareserverdbs.sh --admindb MFPDashDBService
                                             <td>カスタマイズされた {{ site.data.keys.mf_server }} イメージに使用する名前。フォーマット: registryUrl/namespace/imagename</td>
                                         </tr>
                                     </table>
-                                  
+
                                     <p>例えば、次のとおりです。</p>
 {% highlight bash %}
 prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
 {% endhighlight %}
-                                  
+
                                   <br/>
                                   <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-prepareserver" data-target="#collapse-script-prepareserver" aria-expanded="false" aria-controls="collapse-script-prepareserver"><b>セクションを閉じる</b></a>
                                 </div>
@@ -889,7 +889,7 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                     </div>  
                 </li>
                 <li><b>startserver.sh - IBM コンテナーでのイメージの実行</b><br />
-                    <b>startserver.sh</b> スクリプトを使用して {{ site.data.keys.mf_server }} イメージを IBM コンテナー上で実行します。また、このスクリプトを実行すると、<b>SERVER_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。次のコマンドを実行します。</li> 
+                    <b>startserver.sh</b> スクリプトを使用して {{ site.data.keys.mf_server }} イメージを IBM コンテナー上で実行します。また、このスクリプトを実行すると、<b>SERVER_IP</b> プロパティーで構成したパブリック IP にイメージがバインドされます。次のコマンドを実行します。</li>
 {% highlight bash %}
 ./startserver.sh args/startserver.properties
 {% endhighlight %}
@@ -961,12 +961,12 @@ prepareserver.sh --tag SERVER_IMAGE_NAME registryUrl/namespace/imagename
                                         <td>{{ site.data.keys.product_adj }} のプロパティーをコンマ区切りの「キー:値」ペアとして指定します。例: <code>mfp.analytics.url:http://127.0.0.1/analytics-service/rest,mfp.analytics.console.url:http://127.0.0.1/analytics/console</code>。<b>注</b>: このスクリプトを使用してプロパティーを指定する場合、同じプロパティーが usr/config フォルダー内の構成ファイルに設定されていないことを確認してください。</td>
                                     </tr>
                                 </table>
-                                
+
                                 <p>例えば、次のとおりです。</p>
 {% highlight bash %}
 startserver.sh --tag image_tag_name --name container_name --ip container_ip_address
 {% endhighlight %}
-                                
+
                                 <br/>
                                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startserver" data-target="#collapse-script-startserver" aria-expanded="false" aria-controls="collapse-script-startserver"><b>セクションを閉じる</b></a>
                                 </div>
@@ -1026,7 +1026,7 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                                 <td>オプション。[-a|--auto] ENABLE_AUTORECOVERY	</td>
                                                 <td>コンテナー・インスタンスの自動リカバリー・オプションを使用可能にします。許容値は、Y または N (デフォルト) です。</td>
                                             </tr>
-                                            
+
                                             <tr>
                                                 <td>オプション。[-si|--services] SERVICES	</td>
                                                 <td>コンテナーにバインドする、コンマ区切りの Bluemix サービス・インスタンス名。</td>
@@ -1057,12 +1057,12 @@ startserver.sh --tag image_tag_name --name container_name --ip container_ip_addr
                                                 <td>コンテナー・ログ用のボリュームのマウントを有効にします。許容値は、Y または N (デフォルト) です。</td>
                                             </tr>
                                         </table>
-                                        
+
                                         <p>例えば、次のとおりです。</p>
 {% highlight bash %}
 startservergroup.sh --tag image_name --name container_group_name --host container_group_host_name --domain container_group_domain_name
 {% endhighlight %}
-                                        
+
                                         <br/>
                                         <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#script-startservergroup" data-target="#collapse-script-startservergroup" aria-expanded="false" aria-controls="collapse-script-startservergroup"><b>セクションを閉じる</b></a>
                                 </div>
@@ -1111,7 +1111,7 @@ Bluemix からコンテナーを削除する場合、レジストリーからイ
 1. `cf ic images` (レジストリー内のイメージをリストします)
 2. `cf ic rmi image_id` (レジストリーからイメージを削除します)
 
-## Bluemix からのデータベース・サービス構成の削除	
+## Bluemix からのデータベース・サービス構成の削除
 {: #removing-the-database-service-configuration-from-bluemix }
 {{ site.data.keys.mf_server }} イメージの構成時に **prepareserverdbs.sh** スクリプトを実行した場合、{{ site.data.keys.mf_server }} に必要な構成およびデータベース・テーブルが作成されます。このスクリプトは、コンテナー用のデータベース・スキーマも作成します。
 
