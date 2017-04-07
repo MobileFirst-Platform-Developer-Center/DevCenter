@@ -215,11 +215,12 @@ não é empacotado com
 </table>
 
 ## Mudanças de API do lado do servidor
-{: server-side-api-changes }
+{: #server-side-api-changes}
+
 Para migrar o lado do servidor do aplicativo
 {{ site.data.keys.product_adj }},
 leve em conta as mudanças nas APIs.  
-As tabelas a seguir listam os elementos de API do lado do servidor descontinuados na v8.0 e os caminhos de migração sugeridos. Para obter mais informações sobre como migrar o lado do servidor de seu aplicativo, 
+As tabelas a seguir listam os elementos de API do lado do servidor descontinuados na v8.0 e os caminhos de migração sugeridos. Para obter mais informações sobre como migrar o lado do servidor de seu aplicativo,
 
 ### Elementos da API de JavaScript descontinuados na v8.0
 {: #javascript-api-elements-discontinued-v-v-80 }
@@ -229,7 +230,7 @@ As tabelas a seguir listam os elementos de API do lado do servidor descontinuado
 | Elemento da API                         | Caminho de substituição                               |
 |------------------------------------|------------------------------------------------|
 | `WL.Server.getActiveUser`, `WL.Server.getCurrentUserIdentity`,  `WL.Server.getCurrentDeviceIdentity`, `WL.Server.setActiveUser`, `WL.Server.getClientId`, `WL.Server.getClientDeviceContext`, `WL.Server.setApplicationContext` | Use `MFP.Server.getAuthenticatedUser` no lugar. |
- 
+
 #### Fonte de Eventos
 {: #event-source }
 
@@ -237,7 +238,7 @@ As tabelas a seguir listam os elementos de API do lado do servidor descontinuado
 |------------------------------------|------------------------------------------------|
 | `WL.Server.createEventSource`	     | Use `MFP.Server.getAuthenticatedUser` no lugar. |
 | `WL.Server.setEventHandlers`         | Para migrar de notificações baseadas na origem de eventos para notificações baseadas em tag, consulte Migrando para notificações push de notificações baseadas em origem de eventos.                                                     |
-| `WL.Server.createEventHandler`       |                                                |	
+| `WL.Server.createEventHandler`       |                                                |
 | `WL.Server.createSMSEventHandler`	 | Para enviar mensagens SMS, use a API de REST do serviço de push. Para obter mais informações, consulte [Enviando notificações](../../../notifications/sending-notifications).                         |
 | `WL.Server.createUSSDEventHandler`	 | Integre USSD usando serviços de terceiros.  |
 
@@ -299,14 +300,14 @@ eventSource, String userId)` | Para migrar de notificações baseadas na origem 
 `com.ibm.mfp.adapter.api`. |
 | Anotação `OAuthSecurity` no pacote
 `com.worklight.core.auth` | Use a anotação `OAuthSecurity` no pacote
-`com.ibm.mfp.adapter.api`. | 
+`com.ibm.mfp.adapter.api`. |
 | Classe `MFPJAXRSApplication` no pacote
 `com.worklight.wink.extensions` | Use a classe `MFPJAXRSApplication` no pacote
 `com.ibm.mfp.adapter.api`. |
 | Interface `WLServerAPI` no pacote
 `com.worklight.adapters.rest.api` | Use anotação JAX-RS `Context` para acessar diretamente as interfaces da API {{ site.data.keys.product_adj }}. |
 | Classe `WLServerAPIProvider` no pacote
-`com.worklight.adapters.rest.api` | Use anotação JAX-RS `Context` para acessar diretamente as interfaces da API {{ site.data.keys.product_adj }}. | 
+`com.worklight.adapters.rest.api` | Use anotação JAX-RS `Context` para acessar diretamente as interfaces da API {{ site.data.keys.product_adj }}. |
 
 ## Mudanças de API do lado do cliente
 {: #client-side-api-changes }
@@ -325,7 +326,7 @@ Estas APIs de JavaScript que afetam a interface com o usuário não são mais su
 | `WL.App.copyToClipboard()` | Use plug-ins Cordova que fornecem essa funcionalidade. |
 | `WL.App.openUrl(url, target, options)` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, o plug-in **InAppBrowser** do Cordova fornece esse recurso. |
 | `WL.App.overrideBackButton(callback)`, `WL.App.resetBackButton()` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, o plug-in **backbutton** do Cordova fornece esse recurso. |
-| `WL.App.getDeviceLanguage()` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** Para sua informação, o plug-in **cordova-plugin-globalization** do Cordova fornece esse recurso. | 
+| `WL.App.getDeviceLanguage()` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** Para sua informação, o plug-in **cordova-plugin-globalization** do Cordova fornece esse recurso. |
 | `WL.App.getDeviceLocale()` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** Para sua informação, o plug-in **cordova-plugin-globalization** do Cordova fornece esse recurso. |
 | `WL.App.BackgroundHandler` | Para executar uma função de manipulador customizada, use o listener de eventos de pausa Cordova padrão. Use um plug-in Cordova que forneça privacidade e impeça sistemas e usuários do iOS e Android de fazerem capturas instantâneas ou capturas de tela. Para obter mais informações, consulte a descrição do **[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)**. |
 | `WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` | As funções foram fornecidas para suportar a plataforma Adobe AIR, que não é suportado pelo {{ site.data.keys.product }} V8.0.0. |
@@ -335,54 +336,54 @@ Este conjunto de APIs não é mais suportado na v8.0.
 
 | Elemento da API           | Caminho de Migração                           |
 |-----------------------|------------------------------------------|
-| `WL.Client.checkForDirectUpdate(options)` | Nenhuma substituição. **Nota:** será possível chamar `WLAuthorizationManager.obtainAccessToken` para acionar uma atualização direta se uma estiver disponível. O acesso ao token de segurança acionará uma atualização direta se ela estiver disponível no servidor. Mas não é possível acionar o Direct Update on demand. | 
+| `WL.Client.checkForDirectUpdate(options)` | Nenhuma substituição. **Nota:** será possível chamar `WLAuthorizationManager.obtainAccessToken` para acionar uma atualização direta se uma estiver disponível. O acesso ao token de segurança acionará uma atualização direta se ela estiver disponível no servidor. Mas não é possível acionar o Direct Update on demand. |
 | `WL.Client.setSharedToken({key: myName, value: myValue})`, `WL.Client.getSharedToken({key: myName})`, `WL.Client.clearSharedToken({key: myName})` | Nenhuma substituição. |
-| `WL.Client.isConnected()`, opção de inicialização `connectOnStartup` | Use `WLAuthorizationManager.obtainAccessToken` para verificar a conectividade com o servidor e aplicar regras de gerenciamento de aplicativo. | 
-| `WL.Client.setUserPref(key,value, options)`, `WL.Client.setUserPrefs(userPrefsHash, options)`, `WL.Client.deleteUserPrefs(key, options)` | Nenhuma substituição. É possível usar um adaptador e a API `MFP.Server.getAuthenticatedUser` para gerenciar preferências do usuário. | 
+| `WL.Client.isConnected()`, opção de inicialização `connectOnStartup` | Use `WLAuthorizationManager.obtainAccessToken` para verificar a conectividade com o servidor e aplicar regras de gerenciamento de aplicativo. |
+| `WL.Client.setUserPref(key,value, options)`, `WL.Client.setUserPrefs(userPrefsHash, options)`, `WL.Client.deleteUserPrefs(key, options)` | Nenhuma substituição. É possível usar um adaptador e a API `MFP.Server.getAuthenticatedUser` para gerenciar preferências do usuário. |
 | `WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` | Nenhuma substituição. |
-| `WL.Client.logActivity(activityType)` | Use `WL.Logger`. | 
+| `WL.Client.logActivity(activityType)` | Use `WL.Logger`. |
 | `WL.Client.login(realm, options)` | Use `WLAuthorizationManager.login`. Para iniciar a autenticação e a segurança, consulte os tutoriais Autenticação e Segurança. |
-| `WL.Client.logout(realm, options)` | Use `WLAuthorizationManager.logout`. | 
+| `WL.Client.logout(realm, options)` | Use `WLAuthorizationManager.logout`. |
 | `WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` | Use `WLAuthorizationManager.obtainAccessToken`. |
 | `WL.Client.transmitEvent(event, immediate)`, `WL.Client.purgeEventTransmissionBuffer()`, `WL.Client.setEventTransmissionPolicy(policy)` | Crie um adaptador customizado para receber notificações desses eventos. |
-| `WL.Device.getContext()`, `WL.Device.startAcquisition(policy, triggers, onFailure)`, `WL.Device.stopAcquisition()`, `WL.Device.Wifi`, `WL.Device.Geo.Profiles`, `WL.Geo` | Use API nativa ou plug-ins Cordova de terceiros para localização geográfica. | 
-| `WL.Client.makeRequest (url, options)` | Crie um adaptador customizado que forneça a mesma funcionalidade | 
+| `WL.Device.getContext()`, `WL.Device.startAcquisition(policy, triggers, onFailure)`, `WL.Device.stopAcquisition()`, `WL.Device.Wifi`, `WL.Device.Geo.Profiles`, `WL.Geo` | Use API nativa ou plug-ins Cordova de terceiros para localização geográfica. |
+| `WL.Client.makeRequest (url, options)` | Crie um adaptador customizado que forneça a mesma funcionalidade |
 | `WLDevice.getID(options)` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, `device.uuid` do plug-in c**ordova-plugin-device** fornece esse recurso. |
-| `WL.Device.getFriendlyName()` | Use `WL.Client.getDeviceDisplayName` | 
+| `WL.Device.getFriendlyName()` | Use `WL.Client.getDeviceDisplayName` |
 | `WL.Device.setFriendlyName()` | Use `WL.Client.setDeviceDisplayName` |
-| `WL.Device.getNetworkInfo(callback)` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, o plug-in **cordova-plugin-network-information** fornece esse recurso. | 
+| `WL.Device.getNetworkInfo(callback)` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, o plug-in **cordova-plugin-network-information** fornece esse recurso. |
 | `WLUtils.wlCheckReachability()` | Crie um adaptador customizado que verifique a disponibilidade do servidor. |
 | `WL.EncryptedCache` | Use JSONStore para armazenar dados criptografados localmente. JSONStore está no plug-in **cordova-plugin-mfp-jsonstore**. Para obter mais informações,
-consulte [JSONStore](../../../application-development/jsonstore). | 
+consulte [JSONStore](../../../application-development/jsonstore). |
 | `WL.SecurityUtils.remoteRandomString(bytes)` | Crie um adaptador customizado que forneça a mesma funcionalidade. |
-| `WL.Client.getAppProperty(property)` | É possível recuperar a propriedade da versão do aplicativo usando o plug-in **cordova-plugin-appversion**. A versão retornada é a versão do aplicativo nativo (somente Android e iOS). | 
-| `WL.Client.Push.*` | Use a API de push do lado do cliente de JavaScript do plug-in **cordova-plugin-mfp-push**. | 
+| `WL.Client.getAppProperty(property)` | É possível recuperar a propriedade da versão do aplicativo usando o plug-in **cordova-plugin-appversion**. A versão retornada é a versão do aplicativo nativo (somente Android e iOS). |
+| `WL.Client.Push.*` | Use a API de push do lado do cliente de JavaScript do plug-in **cordova-plugin-mfp-push**. |
 | `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber,
 options)` | Use `MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)` para registrar o dispositivo para push e SMS. |
 | `WLAuthorizationManager.obtainAuthorizationHeader(scope)` | Use `WLAuthorizationManager.obtainAccessToken` para obter um token para o escopo necessário. |
-| `WLClient.getLastAccessToken(scope)` | Use `WLAuthorizationManager.obtainAccessToken` | 
-| `WLClient.getLoginName()`, `WL.Client.getUserName(realm)` | Nenhuma substituição | 
-| `WL.Client.getRequiredAccessTokenScope(status, header)` | Use `WLAuthorizationManager.isAuthorizationRequired` e `WLAuthorizationManager.getResourceScope`. | 
+| `WLClient.getLastAccessToken(scope)` | Use `WLAuthorizationManager.obtainAccessToken` |
+| `WLClient.getLoginName()`, `WL.Client.getUserName(realm)` | Nenhuma substituição |
+| `WL.Client.getRequiredAccessTokenScope(status, header)` | Use `WLAuthorizationManager.isAuthorizationRequired` e `WLAuthorizationManager.getResourceScope`. |
 | `WL.Client.isUserAuthenticated(realm)` | Nenhuma substituição |
-| `WLUserAuth.deleteCertificate(provisioningEntity)` | Nenhuma substituição | 
+| `WLUserAuth.deleteCertificate(provisioningEntity)` | Nenhuma substituição |
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | Nenhuma substituição |
-| `WL.Client.createChallengeHandler(realmName)` | Para criar um manipulador de desafios para manipulação de desafios de gateway customizados, use `WL.Client.createGatewayChallengeHandler(gatewayName)`. Para criar um manipulador de desafios para manipular desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. | 
-| `WL.Client.createWLChallengeHandler(realmName)` | Use `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. | 
-| `challengeHandler.isCustomResponse()`, em que challengeHandler é um objeto manipulador de desafios que é retornado por `WL.Client.createChallengeHandler()` | Use `gatewayChallengeHandler.canHandleResponse()`, em que `gatewayChallengeHandler` é um objeto manipulador de desafios que é retornado por `WL.Client.createGatewayChallengeHandler()`. | 
+| `WL.Client.createChallengeHandler(realmName)` | Para criar um manipulador de desafios para manipulação de desafios de gateway customizados, use `WL.Client.createGatewayChallengeHandler(gatewayName)`. Para criar um manipulador de desafios para manipular desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. |
+| `WL.Client.createWLChallengeHandler(realmName)` | Use `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. |
+| `challengeHandler.isCustomResponse()`, em que challengeHandler é um objeto manipulador de desafios que é retornado por `WL.Client.createChallengeHandler()` | Use `gatewayChallengeHandler.canHandleResponse()`, em que `gatewayChallengeHandler` é um objeto manipulador de desafios que é retornado por `WL.Client.createGatewayChallengeHandler()`. |
 | `wlChallengeHandler.processSucccess()`, em que `wlChallengeHandler` é
-um objeto manipulador de desafios que é retornado pelo `WL.Client.createWLChallengeHandler()` | Use `securityCheckChallengeHandler.handleSuccess()`, em que `securityCheckChallengeHandler` é um objeto manipulador de desafios que é retornado por `WL.Client.createSecurityCheckChallengeHandler()`. | 
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafios de gateway customizados, use um objeto manipulador de desafios que é retornado por `WL.Client.createGatewayChallengeHandler()`. Para manipuladores de desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use um objeto manipulador de desafios que é retornado por `WL.Client.createSecurityCheckChallengeHandler()`. | 
+um objeto manipulador de desafios que é retornado pelo `WL.Client.createWLChallengeHandler()` | Use `securityCheckChallengeHandler.handleSuccess()`, em que `securityCheckChallengeHandler` é um objeto manipulador de desafios que é retornado por `WL.Client.createSecurityCheckChallengeHandler()`. |
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafios de gateway customizados, use um objeto manipulador de desafios que é retornado por `WL.Client.createGatewayChallengeHandler()`. Para manipuladores de desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use um objeto manipulador de desafios que é retornado por `WL.Client.createSecurityCheckChallengeHandler()`. |
 | `WL.Client.createProvisioningChallengeHandler()` | Nenhuma substituição. O fornecimento de dispositivo é agora manipulado automaticamente pela estrutura
-de segurança. | 
+de segurança. |
 
 #### APIs de JavaScript descontinuadas
 {: #deprecated-javascript-apis }
 
 | Elemento da API           | Caminho de Migração                           |
 |-----------------------|------------------------------------------|
-| `WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)`, `WL.Client.invokeProcedure(invocationData, options)`, `WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)`, `WLProcedureInvocationResult` | Use `WLResourceRequest`. **Nota:** a implementação de `invokeProcedure` usa `WLResourceRequest`. | 
-| `WLClient.getEnvironment` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, o plug-in **device.platform** fornece esse recurso. | 
-| `WLClient.getLanguage` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, o plug-in **cordova-plugin-globalization** fornece esse recurso. | 
+| `WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)`, `WL.Client.invokeProcedure(invocationData, options)`, `WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)`, `WLProcedureInvocationResult` | Use `WLResourceRequest`. **Nota:** a implementação de `invokeProcedure` usa `WLResourceRequest`. |
+| `WLClient.getEnvironment` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, o plug-in **device.platform** fornece esse recurso. |
+| `WLClient.getLanguage` | Use plug-ins Cordova que fornecem essa funcionalidade. **Nota:** para sua informação, o plug-in **cordova-plugin-globalization** fornece esse recurso. |
 | `WL.Client.connect(options)` | Use `WLAuthorizationManager.obtainAccessToken` para verificar a conectividade com o servidor e aplicar regras de gerenciamento de aplicativo. |
 
 ### APIs Android
@@ -402,18 +403,18 @@ de segurança. |
 | `WLClient.obtainAccessToken(java.lang.String scope,WLResponseListener responseListener)` | Use `WLAuthorizationManager.obtainAccessToken(String, WLAccessTokenListener)` para verificar a conectividade com o servidor e aplicar regras de gerenciamento de aplicativo |
 | `WLClient.getLastAccessToken()`, `WLClient.getLastAccessToken(java.lang.String scope)` | Use `AuthorizationManager` |
 | `WLClient.getRequiredAccessTokenScope(int status, java.lang.String
-header)` | Use `AuthorizationManager` | 
+header)` | Use `AuthorizationManager` |
 | `WLClient.logActivity(java.lang.String activityType)` | Use `com.worklight.common.Logger`. Para obter mais informações, consulte o Logger SDK. |
 | `WLAuthorizationPersistencePolicy` | Nenhuma substituição. Para implementar persistência de autorização, armazene o token de autorização no código do aplicativo e crie solicitações HTTP customizadas. |
 | `WLSimpleSharedData.setSharedToken(myName, myValue)`, `WLSimpleSharedData.getSharedToken(myName)`, `WLSimpleSharedData.clearSharedToken(myName)` | Use as APIs Android para compartilhar tokens em aplicativos. |
 | `WLUserCertificateManager.deleteCertificate(android.content.Context
 context)` | Nenhuma substituição |
-| `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | Use `BaseChallengeHandler.cancel()` | 
+| `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | Use `BaseChallengeHandler.cancel()` |
 | `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do
 {{ site.data.keys.product_adj }},
 use `SecurityCheckChallengeHandler`. |
 | `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler.isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. | 
+| `ChallengeHandler.isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. |
 | `ChallengeHandler.submitAdapterAuthentication` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafio
 de gateway customizados, use `GatewayChallengeHandler`. |
 
@@ -432,16 +433,16 @@ WLResponseListener responseListener)` | Desaprovado. Use `WLResourceRequest`. **
 | Elemento da API           | Caminho de Migração                           |
 |-----------------------|------------------------------------------|
 | `org.apache.http.Header[]` foi descontinuado. Portanto, os métodos a seguir foram removidos:||
-| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | Use no lugar a nova API `Map<String, List<String>> WLResourceRequest.getAllHeaders()`. | 
+| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | Use no lugar a nova API `Map<String, List<String>> WLResourceRequest.getAllHeaders()`. |
 | `WLResourceRequest.addHeader(org.apache.http.Header header)` | Use a nova API `WLResourceRequest.addHeader(String name, String
-value)`. | 
+value)`. |
 | `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String
-headerName)` | Use no lugar a nova API `List<String> WLResourceRequest.getHeaders(String headerName)`. | 
-| `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | Use no lugar a nova API `WLResourceRequest.getHeaders(String headerName)`. | 
-| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | Use no lugar a nova API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)`. | 
-| `WLResourceRequest.setHeader(org.apache.http.Header header)` | Use no lugar a nova API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)`. | 
-| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | Substituído por `java.net.CookieStore getCookieStore WLClient.getCookieStore()` | 
-| `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | Nenhuma substituição. Cliente MFP permite redirecionamentos circulares. | 
+headerName)` | Use no lugar a nova API `List<String> WLResourceRequest.getHeaders(String headerName)`. |
+| `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | Use no lugar a nova API `WLResourceRequest.getHeaders(String headerName)`. |
+| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | Use no lugar a nova API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)`. |
+| `WLResourceRequest.setHeader(org.apache.http.Header header)` | Use no lugar a nova API `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)`. |
+| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | Substituído por `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
+| `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | Nenhuma substituição. Cliente MFP permite redirecionamentos circulares. |
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | Removido devido às dependências do cliente Apache HTTP descontinuadas. Crie sua própria solicitação para ter controle total sobre a solicitação e a resposta. |
 
 #### O pacote `com.worklight.androidgap.api` fornece a funcionalidade da plataforma Android para aplicativos Cordova. No
@@ -463,28 +464,28 @@ headerName)` | Use no lugar a nova API `List<String> WLResourceRequest.getHeader
 |-----------------------|------------------------------------------|
 | `[WLClient getWLDevice][WLClient transmitEvent:]`, `[WLClient setEventTransmissionPolicy]`, `[WLClient purgeEventTransmissionBuffer]` | Localização geográfica removida. Use pacotes iOS nativo ou de terceiros para localização geográfica. |
 | `WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` | Nenhuma substituição. |
-| `WL.Client.deleteUserPref(key, options)` | Nenhuma substituição. É possível usar um adaptador e a API `MFP.Server.getAuthenticatedUser` para gerenciar preferências do usuário. | 
+| `WL.Client.deleteUserPref(key, options)` | Nenhuma substituição. É possível usar um adaptador e a API `MFP.Server.getAuthenticatedUser` para gerenciar preferências do usuário. |
 | `[WLClient getRequiredAccessTokenScopeFromStatus]` | Use `WLAuthorizationManager obtainAccessTokenForScope`. |
-| `[WLClient login:withDelegate:]` | Use `WLAuthorizationManager login`. | 
-| `[WLClient logout:withDelegate:]` | Use `WLAuthorizationManager logout`. | 
-| `[WLClient lastAccessToken]`, `[WLClient lastAccessTokenForScope:]` | Use `WLAuthorizationManager obtainAccessTokenForScope`. | 
-| `[WLClient obtainAccessTokenForScope:withDelegate:]`, `[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]` | Use `WLAuthorizationManager obtainAccessTokenForScope`. | 
+| `[WLClient login:withDelegate:]` | Use `WLAuthorizationManager login`. |
+| `[WLClient logout:withDelegate:]` | Use `WLAuthorizationManager logout`. |
+| `[WLClient lastAccessToken]`, `[WLClient lastAccessTokenForScope:]` | Use `WLAuthorizationManager obtainAccessTokenForScope`. |
+| `[WLClient obtainAccessTokenForScope:withDelegate:]`, `[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]` | Use `WLAuthorizationManager obtainAccessTokenForScope`. |
 | `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString
-*) eventSource` | Use API de push do lado do cliente de Objective-C para aplicativos iOS a partir da estrutura IBMMobileFirstPlatformFoundationPush framework | 
+*) eventSource` | Use API de push do lado do cliente de Objective-C para aplicativos iOS a partir da estrutura IBMMobileFirstPlatformFoundationPush framework |
 | `[WLClient - (int) getEventSourceIDFromUserInfo: (NSDictionary
 *) userInfo]` | Use API de push do lado do cliente de Objective-C para aplicativos iOS a partir da estrutura IBMMobileFirstPlatformFoundationPush. |
-| `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | Desaprovado. Use `WLResourceRequest`. | 
-| `WLClient sendUrlRequest:delegate:]` | Use `[WLResourceRequest sendWithDelegate:delegate]` no lugar. | 
+| `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | Desaprovado. Use `WLResourceRequest`. |
+| `WLClient sendUrlRequest:delegate:]` | Use `[WLResourceRequest sendWithDelegate:delegate]` no lugar. |
 | `[WLClient (void) logActivity:(NSString *) activityType]` | Removido. Use um criador de logs Objective C. |
 | `[WLSimpleDataSharing setSharedToken: myName value: myValue]`, `[WLSimpleDataSharing getSharedToken: myName]]`, `[WLSimpleDataSharing clearSharedToken: myName]` | Use as APIs do sistema operacional para compartilhar tokens entre aplicativos. |
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | Use `BaseChallengeHandler.cancel()`. |
 | `BaseProvisioningChallengeHandler` | Nenhuma substituição. O fornecimento de dispositivo é agora manipulado automaticamente pela estrutura
-de segurança. | 
+de segurança. |
 | `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do
 {{ site.data.keys.product_adj }},
 use `SecurityCheckChallengeHandler`. |
-| `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. | 
-| `ChallengeHandler.isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. | 
+| `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler.isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. |
 | `ChallengeHandler.submitAdapterAuthentication` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafio
 de gateway customizados, use `GatewayChallengeHandler`. Para manipuladores de desafio de verificação de segurança do
 {{ site.data.keys.product_adj }},
@@ -500,24 +501,24 @@ use `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do
 {{ site.data.keys.product_adj }},
 use `SecurityCheckChallengeHandler`. |
-| `ChallengeHandler. isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. | 
+| `ChallengeHandler. isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. |
 | `ChallengeHandler.submitAdapterAuthentication` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafio
 de gateway customizados, use `GatewayChallengeHandler`. Para manipuladores de desafio de verificação de segurança do
 {{ site.data.keys.product_adj }},
-use `SecurityCheckChallengeHandler`. | 
+use `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler.submitFailure(WLResponse wlResponse)` | Para manipuladores de desafio de gateway customizados, use
 `GatewayChallengeHandler.Shouldcancel`. Para manipuladores de desafio de verificação de segurança do
 {{ site.data.keys.product_adj }},
-use `SecurityCheckChallengeHandler.ShouldCancel`. | 
-| `WLAuthorizationManager` | Use `WorklightClient.WorklightAuthorizationManager`. | 
+use `SecurityCheckChallengeHandler.ShouldCancel`. |
+| `WLAuthorizationManager` | Use `WorklightClient.WorklightAuthorizationManager`. |
 | `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. |
-| `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | Use `SecurityCheckChallengeHandler.ShouldCancel()`. | 
+| `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | Use `SecurityCheckChallengeHandler.ShouldCancel()`. |
 | `WLClient` | Use `WorklightClient`. |
 | `WLErrorCode` | Não suportada. |
-| `WLFailResponse` | Use `WorklightResponse`. | 
-| `WLResponse` | Use `WorklightResponse`. | 
-| `WLProcedureInvocationData` | Use `WorklightProcedureInvocationData`. | 
-| `WLProcedureInvocationFailResponse` | Não suportada. | 
+| `WLFailResponse` | Use `WorklightResponse`. |
+| `WLResponse` | Use `WorklightResponse`. |
+| `WLProcedureInvocationData` | Use `WorklightProcedureInvocationData`. |
+| `WLProcedureInvocationFailResponse` | Não suportada. |
 | `WLProcedureInvocationResult` | Não suportada. |
 | `WLRequestOptions` | Não suportada. |
 | `WLResourceRequest` | Não suportada. |
@@ -528,5 +529,5 @@ use `SecurityCheckChallengeHandler.ShouldCancel`. |
 | Elemento da API           | Caminho de Migração                           |
 |-----------------------|------------------------------------------|
 | `WLHttpResponseListener` | Não suportada. |
-| `WLResponseListener` | A resposta estará disponível como um objeto `WorklightResponse` | 
-| `WLAuthorizationPersistencePolicy` | Não suportada. | 
+| `WLResponseListener` | A resposta estará disponível como um objeto `WorklightResponse` |
+| `WLAuthorizationPersistencePolicy` | Não suportada. |

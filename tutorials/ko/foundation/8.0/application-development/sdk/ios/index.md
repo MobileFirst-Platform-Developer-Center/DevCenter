@@ -239,7 +239,8 @@ pod update
 SDK 릴리스는 SDK의 [CocoaPods 저장소](https://cocoapods.org/?q=ibm%20mobilefirst)에 있습니다.
 
 ## 생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트
-{: generated-mobilefirst-native-sdk-artifacts }
+{: #generated-mobilefirst-native-sdk-artifacts}
+
 ### mfpclient.plist
 {: #mfpclientplist }
 이 파일은 프로젝트의 루트에 있으며 {{ site.data.keys.mf_server }}에서 iOS 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.

@@ -96,7 +96,7 @@ weight: 3
       </td>
       <td>
         在 V7.1.0 中，认证上下文存储在 HTTP 会话中并以跨站点请求中的浏览器发送的会话 cookie 来标识。该版本中的反 XSRF 域用于通过使用从客户机发送到服务器的其他头来保护 cookie 传输，防御 XSRF 攻击。
-	<br />
+        <br/>
         在 V8.0.0 中，安全上下文不再与 HTTP 会话相关联，并且不以会话 cookie 来标识。
         而改为使用认证头中传递的 OAuth 2.0 访问令牌来完成授权。
         由于授权头不再由跨站点请求中的浏览器发送，无需防御 XSRF 攻击。
@@ -112,7 +112,7 @@ weight: 3
     </tr>
     <tr>
         <td>安全性：设备供应和设备自动供应。</td>
-        <td><p>已废弃。</p><p>注：在正常授权流中处理设备供应。将在安全流的注册过程中自动收集设备数据。有关安全流的更多信息，请参阅“端到端授权流”。</p>
+        <td><p>已废弃。</p><p> 注：在正常授权流中处理设备供应。将在安全流的注册过程中自动收集设备数据。有关安全流的更多信息，请参阅“端到端授权流”。</p>
         </td>
     </tr>
     <tr>
@@ -156,7 +156,7 @@ weight: 3
     </tr>
     <tr>
         <td>已废弃 {{ site.data.keys.product_adj }}    数据代理功能。也废弃了 Cloudant IMFData 和 CloudantToolkit API。</td>
-        <td>已废弃。有关替换您的应用程序中的 IMFData 和 CloudantToolkit API 的更多信息，请参阅“迁移通过 IMFData 或 Cloudant
+        <td>已废弃。有关替换您的应用程序中的 IMFData 和 CloudantToolkit API 的更多信息，请参阅“迁移通过 IMFData 或 Cloudant </td>
     </tr>
     <tr>
         <td>IBM Tealeaf SDK 不再与 {{ site.data.keys.product }}    捆绑在一起。</td>
@@ -174,6 +174,7 @@ weight: 3
 
 ## 服务器端 API 更改
 {: #server-side-api-changes}
+
 要迁移 {{ site.data.keys.product_adj }}    应用程序的服务器端，请考虑对 API 的更改。  
 以下各表列出了 V8.0 中停用服务器端 API 元素、V8.0 中不推荐使用的服务器端 API 元素以及建议的迁移路径。有关迁移应用程序服务器端的更多信息，
 
@@ -254,6 +255,7 @@ weight: 3
 
 ## 客户端 API 更改
 {: #client-side-api-changes}
+
 API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应用程序有关。  
 以下各表列出了 V8.0.0 中停用的客户端 API 元素、V8.0.0 中不推荐使用的客户端 API 元素以及建议的迁移路径。
 
