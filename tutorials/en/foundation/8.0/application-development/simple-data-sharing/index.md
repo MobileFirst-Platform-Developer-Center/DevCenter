@@ -96,7 +96,7 @@ WL.Client.getSharedToken({key: myName})
 WL.Client.clearSharedToken({key: myName})
 ```
 
-> For more information about the Cordova APIs, see the [getSharedToken](../../../../../../../api-ref/wl-client-js-apidoc/html/refjavascript-client/html/WL.Client.html#getSharedToken), [setSharedToken](../../../../../../../api-ref/wl-client-js-apidoc/html/refjavascript-client/html/WL.Client.html#setSharedToken), and [clearSharedToken](../../../../../../../api-ref/wl-client-js-apidoc/html/refjavascript-client/html/WL.Client.html#clearSharedToken) functions in the API reference.
+> For more information about the Cordova APIs, see the [getSharedToken](../../api/client-side-api/javascript/client/), [setSharedToken](../../api/client-side-api/javascript/client/), and [clearSharedToken](../../api/client-side-api/javascript/client/) functions in the `WL.Client` API reference.
 
 ### Objective-C
 {: #objective-c }
