@@ -75,7 +75,8 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **重要**: これ以降、プロジェクトを Xcode で開くには、`[ProjectName].xcworkspace` ファイルを使用してください。`[ProjectName].xcodeproj` ファイルは使用**しないでください**。CocoaPods ベースのプロジェクトは、アプリケーション (実行可能ファイル) およびライブラリー (CocoaPods マネージャーがプルするすべてのプロジェクト依存関係) を含むワークスペースとして管理されます。
 
 ### {{ site.data.keys.product_adj }} ネイティブ SDK の手動での追加
-{: manually-adding-the-mobilefirst-native-sdk }
+{: #manually-adding-the-mobilefirst-native-sdk}
+
 次のように、{{ site.data.keys.product }} SDK を手動で追加することもできます。
 
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
@@ -237,7 +238,8 @@ pod update
 SDK のリリースは、SDK の [CocoaPods リポジトリー](https://cocoapods.org/?q=ibm%20mobilefirst)で調べることができます。
 
 ## 生成される{{ site.data.keys.product_adj }} ネイティブ SDK 成果物
-{: generated-mobilefirst-native-sdk-artifacts }
+{: #generated-mobilefirst-native-sdk-artifacts}
+
 ### mfpclient.plist
 {: #mfpclientplist }
 プロジェクトのルートに配置されているこのファイルは、{{ site.data.keys.mf_server }} に iOS アプリケーションを登録するために使用される、クライアント・サイドのプロパティーを定義します。
