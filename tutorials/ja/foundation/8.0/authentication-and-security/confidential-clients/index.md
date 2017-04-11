@@ -26,7 +26,7 @@ weight: 10
   ID には ASCII 文字のみを使用できます。
 - **秘密鍵**: 機密クライアントからのアクセスを許可するための秘密のパスフレーズ (API キーに相当します)。
   秘密鍵には ASCII 文字のみを使用できます。
-- **許可されるスコープ**: 上記の ID と秘密鍵の組み合わせを使用する機密クライアントは、ここで定義されるスコープが自動的に認可されます。**スコープ**について詳しくは、[許可の概念](../#scope)チュートリアルを参照してください。
+- **許可されるスコープ**: 上記の ID と秘密鍵の組み合わせを使用する機密クライアントは、ここで定義されるスコープが自動的に認可されます。スコープについて詳しくは、[スコープ](../#scopes)を参照してください。
     - 許可されるスコープのエレメントには、特殊なアスタリスク・ワイルドカード文字 (`*`) を含めることもできます。これは、ゼロ文字以上の文字列を示します。例えば、スコープ・エレメントが `send*` の場合、「sendMessage」など、「send」で始まる任意のスコープ・エレメントが含まれているスコープへのアクセス権限を機密クライアントに付与できます。アスタリスク・ワイルドカードは、スコープ・エレメントの任意の位置に配置でき、また複数回使用できます。 
     - 単一のアスタリスク文字 (*) で構成される「許可されるスコープ」パラメーターは、任意のスコープのトークンを機密クライアントに付与できることを示します。
 
@@ -63,23 +63,22 @@ weight: 10
 {: #obtaining-an-access-token }
 トークンは、{{ site.data.keys.mf_server }} **トークン・エンドポイント**から取得できます。  
 
-**テスト目的**の場合、下記の説明のとおり Postman を使用できます。  
+**テストのために**、以下の説明に従って Postman を使用できます。  
 現実の状況では、任意のテクノロジーを使用して、バックエンド・ロジックに Postman を実装します。
 
-1. **http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token** への **POST** 要求を行います。  
+1.  **http(s)://[ipaddress-or-hostname]:[port]/[runtime]/api/az/v1/token** への **POST** 要求を行います。  
     例: `http://localhost:9080/mfp/api/az/v1/token`
     - 開発環境では、{{ site.data.keys.mf_server }} は既存の `mfp` ランタイムを使用します。  
     - 実稼働環境では、ランタイム値をご使用のランタイム名で置き換えてください。
 
-2. コンテンツ・タイプに `application/x-www-form-urlencoded` を指定した要求を設定します。  
-3. 以下の 2 つのフォーム・パラメーターを設定します。
-  - `grant_type`: `client_credentials`
-  - `scope`: リソースを保護するスコープを使用します。  
-  リソースの保護にスコープを使用しない場合は、空ストリングを使用してください。
+2.  コンテンツ・タイプに `application/x-www-form-urlencoded` を指定した要求を設定します。  
+3.  以下の 2 つのフォーム・パラメーターを設定します。
+    - `grant_type` - 値を `client_credentials` に設定します。
+    - `scope` - 値をリソースの保護スコープに設定します。リソースに保護スコープが割り当てられていない場合は、このパラメーターを省略して、デフォルトのスコープ (`RegisteredClient`) を適用します。詳しくは、[スコープ](../../authentication-and-security/#scopes)を参照してください。
 
-    ![postman 構成のイメージ](confidential-client-steps-1-3.png)
+       ![postman 構成のイメージ](confidential-client-steps-1-3.png)
 
-4. 要求を認証するには、[基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side)を使用します。機密クライアントの **ID** と**秘密鍵**を使用します。
+4.  要求を認証するには、[基本認証](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side)を使用します。機密クライアントの **ID** と**秘密鍵**を使用します。
 
     ![postman 構成のイメージ](confidential-client-step-4.png)
 
@@ -116,7 +115,7 @@ HTTP **401** 応答状況と HTTP ヘッダー `WWW-Authenticate: Bearer error="
 
 ### insufficient_scope
 {: #insufficient-scope }
-HTTP **403** 応答状況と HTTP ヘッダー `WWW-Authenticate : Bearer error="insufficient_scope", scope="scopeA scopeB"` は、元の要求内で見つかったトークンが**このリソースで要求されるスコープ**と一致しなかったことを意味します。ヘッダーには、予期していたスコープも含まれています。
+HTTP **403** 応答状況と HTTP ヘッダー `WWW-Authenticate : Bearer error="insufficient_scope", scope="RegisteredClient scopeA scopeB"` は、元の要求内で見つかったトークンが、このリソースで必要なスコープと一致しなかったことを意味します。このヘッダーには、予期したスコープも含まれています。
 
-要求を行う際に、リソースによって必要とされるスコープが不明の場合、`insufficient_scope` から答えを見つける方法があります。  
-例えば、スコープ値として空ストリング (`""`) を指定したトークンを要求し、リソースに対する要求を行います。その後、403 応答から必要なスコープを抽出し、このスコープの新しいトークンを要求できます。
+要求の発行時に、リソースで必要なスコープが不明な場合、`insufficient_scope` を使用して必要なスコープを判別します。例えば、スコープを指定せずにトークンを要求して、リソースに対する要求を行います。その後、403 応答から必要なスコープを抽出し、このスコープの新しいトークンを要求できます。
+

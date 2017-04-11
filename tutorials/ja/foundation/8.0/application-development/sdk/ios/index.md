@@ -106,7 +106,6 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
                                     <li>IBMMobileFirstPlatformFoundation.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
-                                    <li>Localizations.bundle</li>
                                 </ul>
                                 このステップを実行すると、これらのフレームワークが<b>「リンクされたフレームワークおよびライブラリー (Linked Frameworks and Libraries)」</b>に自動的に追加されます。
                             </li>
@@ -115,6 +114,7 @@ Xcode プロジェクトを作成するか、または既存のプロジェク�
                                     <li>IBMMobileFirstPlatformFoundationJSONStore.framework</li>
                                     <li>sqlcipher.framework</li>
                                     <li>openssl.framework</li>
+                                    <li>Localizations.bundle</li>
                                 </ul>
                             </li>
                             <blockquote><b>注:</b> これらのステップでは、関連する {{ site.data.keys.product }} フレームワークをプロジェクトにコピーし、「ビルド・フェーズ (Build Phases)」タブの「バイナリーをライブラリーとリンク (Link Binary with Libraries)」リスト内でこれらのファイルをリンクします。これらのファイルを元のロケーションにリンクする (前の説明のように「必要な場合は項目をコピー (Copy items if needed)」オプションを選択しない) には、以下に説明されているように「フレームワーク検索パス (Framework Search Paths)」を設定する必要があります。</blockquote>

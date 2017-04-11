@@ -6,7 +6,7 @@ relevantTo: [xamarin]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
-## Visão Geral 
+## Visão Geral
 {: #overview }
 O propósito desta demonstração é experimentar um fluxo de ponta a ponta:
 
@@ -32,9 +32,7 @@ para a pasta do servidor e execute o comando: `./run.sh` em Mac e Linux ou `run.
 
 ### 2. Criando um aplicativo
 {: #2-creating-an-application }
-Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a URL:
-`http://your-server-host:server-port/mfpconsole`. Se estiver executando localmente, use:
-[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). O nome de usuário/senha são *admin/admin*.
+Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a URL: `http://your-server-host:server-port/mfpconsole`. Se estiver executando localmente, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). O nome de usuário/senha são *admin/admin*.
 
 1. Clique no botão **Novo** próximo de **Aplicativos**
     * Selecione a plataforma **Android**
@@ -58,37 +56,38 @@ andaime do aplicativo do qual você fará download na próxima etapa)
    /// <value>O cliente worklight.</value>
    public static IWorklightClient WorklightClient {get; set;}
    ```
-* Se você estiver desenvolvendo para iOS, cole o código a seguir dentro do método **FinishedLaunching** do arquivo **AppDelegate.cs**:
+* Se estiver desenvolvendo para iOS, cole o código a seguir no método **FinishedLaunching** do arquivo **AppDelegate.cs**:
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance();
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
-* Se você estiver desenvolvendo para Android, inclua a linha de código a seguir dentro do método **OnCreate** do arquivo
-**MainActivity.cs**:
+  >Substitua `<ClassName>` pelo nome de sua classe.
+* Se estiver desenvolvendo para Android, inclua a linha de código a seguir no método **OnCreate** do arquivo **MainActivity.cs**:
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
+  >Substitua `<ClassName>` pelo nome de sua classe.
 * Defina um método para obter o token de acesso e execute uma solicitação de recurso para o MFP Server, conforme abaixo.
-   
+
     ```csharp
     public async void ObtainToken()
-           { 
+           {
             try
                    {
-       
+
                        IWorklightClient _newClient = App.WorklightClient;
                        WorklightAccessToken accessToken = await _newClient.AuthorizationManager.ObtainAccessToken("");
-       
+
                        if (accessToken.Value != null && accessToken.Value != "")
                        {
                            System.Diagnostics.Debug.WriteLine("Received the following access token value: " + accessToken.Value);
                            StringBuilder uriBuilder = new StringBuilder().Append("/adapters/javaAdapter/resource/greet");
-       
+
                            WorklightResourceRequest request = _newClient.ResourceRequest(new Uri(uriBuilder.ToString(), UriKind.Relative), "GET");
                            request.SetQueryParameter("name", "world");
                            WorklightResponse response = await request.Send();
-       
+
                            System.Diagnostics.Debug.WriteLine("Success: " + response.ResponseText);
 
             }
@@ -101,20 +100,18 @@ andaime do aplicativo do qual você fará download na próxima etapa)
            }
     }
    ```
-  
+
 * Chame o método **ObtainToken** dentro de um construtor de classe ou clicando em um botão.
 
 ### 4. Implemente um adaptador
 {: #4-deploy-an-adapter }
-Faça o download [deste artefato .adapter preparado](../javaAdapter.adapter) e implemente-o a partir do
-{{ site.data.keys.mf_console }} usando a ação **Ações → Implementar Adaptador**.
+Faça o download [deste artefato .adapter preparado](../javaAdapter.adapter) e implemente-o a partir do {{ site.data.keys.mf_console }} usando a ação **Ações → Implementar Adaptador**.
 
 Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.  
 
 1. Selecione a opção **Ações → Download de Amostra**. Faça o download da amostra do adaptador **Java** "Hello World".
 
-   > Se o Maven e o {{ site.data.keys.mf_cli }} não estiverem instalados, siga as instruções **Configure seu ambiente de
-desenvolvimento** na tela.
+   > Se o Maven e o {{ site.data.keys.mf_cli }} não estiverem instalados, siga as instruções **Configure seu ambiente de desenvolvimento** na tela.
 
 2. Em uma janela de **Linha de Comandos**, navegue para a pasta raiz do projeto Maven do adaptador e execute o comando:
 
@@ -122,8 +119,7 @@ desenvolvimento** na tela.
    mfpdev adapter build
    ```
 
-3. Quando a compilação for concluída, implemente-a a partir do {{ site.data.keys.mf_console }} usando a ação **Ações →
-Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/target**.
+3. Quando a compilação for concluída, implemente-a a partir do {{ site.data.keys.mf_console }} usando a ação **Ações → Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/target**.
 
    <img class="gifplayer" alt="Implemente um adaptador" src="create-an-adapter.png"/>
 
@@ -132,8 +128,7 @@ Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/ta
 {: #5-testing-the-application }
 1. No Xamarin Studio, selecione o arquivo **mfpclient.plist** e edite as propriedades **protocol**,
 **host** e **port** com os valores corretos para o {{ site.data.keys.mf_server }}.
-    * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**,
-**localhost** e **9080**.
+    * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**, **localhost** e **9080**.
     * Se estiver usando um {{ site.data.keys.mf_server }} remoto (no Bluemix), os valores normalmente serão
 **https**, **your-server-address** e **443**.
 
@@ -144,8 +139,7 @@ Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/ta
 {: #results }
 * Um clique no botão **Ping do MobileFirst Server** exibirá **Conectado ao MobileFirst
 Server**.
-* Se o aplicativo foi capaz de se conectar ao {{ site.data.keys.mf_server }}, uma chamada de solicitação de recurso usando o
-adaptador Java implementado acontecerá.
+* Se o aplicativo foi capaz de se conectar ao {{ site.data.keys.mf_server }}, uma chamada de solicitação de recurso usando o adaptador Java implementado acontecerá.
 
 A resposta do adaptador é então impressa no Xamarin Studio Console.
 
@@ -153,8 +147,7 @@ A resposta do adaptador é então impressa no Xamarin Studio Console.
 
 ## Etapas Seguintes
 {: #next-steps }
-Saiba mais sobre como usar adaptadores em aplicativos e como integrar serviços adicionais, como Notificações Push, usando a estrutura de
-segurança do {{ site.data.keys.product_adj }} e mais:
+Saiba mais sobre como usar adaptadores em aplicativos e como integrar serviços adicionais, como Notificações Push, usando a estrutura de segurança do {{ site.data.keys.product_adj }} e mais:
 
 - Revise os tutoriais [Desenvolvimento de Adaptadores](../../adapters/)
 - Revise os tutoriais [Autenticação e Segurança](../../authentication-and-security/)

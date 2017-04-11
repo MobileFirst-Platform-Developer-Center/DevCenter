@@ -37,15 +37,15 @@ Application Center を使用することにより、同じ企業や組織に属�
 
 Application Center の対象は、デバイス自体にインストールされるモバイル・アプリケーションです。それらのアプリケーションとして可能なのは、デバイス SDK を使用して作成されるネイティブ・アプリケーションや、ネイティブ・コンテンツと Web コンテンツが混在するハイブリッド・アプリケーションです。モバイル Web アプリケーションは Application Center の対象ではありません。そのようなアプリケーションは、Web サイトなどの URL を通じてモバイル・デバイスの Web ブラウザーに配布されます。
 
-現行バージョンでは、Application Center は、Google Android プラットフォーム、Apple iOS プラットフォーム、Windows Phone 8 プラットフォーム、および Windows 8 プラットフォームを対象に作成されたアプリケーションをサポートします。
+現行バージョンでは、Application Center は、Google Android プラットフォーム、Apple iOS プラットフォーム、Windows Phone 8 プラットフォーム、Windows 8 プラットフォーム、および Windows 10 プラットフォームを対象に作成されたアプリケーションをサポートします。
 
-Windows Phone の場合、現在、Windows Phone アプリケーション・パッケージ (.xap) ファイル・フォーマットのみサポートされており、アプリ・パッケージ (.appx) ファイル・フォーマット (ユニバーサル・アプリ・フォーマット) はサポートされていません。Windows ストア (デスクトップ・アプリケーション) の場合は、アプリ・パッケージ (.appx) ファイル・フォーマットがサポートされます。
+Windows Phone の場合、現在、Windows Phone アプリケーション・パッケージ (.xap) ファイル・フォーマットのみサポートされます。Windows 10 UWP アプリケーション・パッケージ (.appx) ファイル・フォーマットもサポートされます。Windows ストア (デスクトップ・アプリケーション) の場合は、アプリ・パッケージ (.appx) ファイル・フォーマットがサポートされます。
 
 Windows Phone 7 および Windows RT、および BlackBerry OS は、現行バージョンの Application Center ではサポートされません。
 
-Application Center は、モバイル・アプリケーションを管理し、Android、iOS、Windows Phone 8、および Windows 8 のあらゆる種類のアプリケーション ({{ site.data.keys.product }} 上に作成されるアプリケーションを含む) をサポートします。
+Application Center は、モバイル・アプリケーションを管理し、Android、iOS、Windows Phone 8、Windows 8、および Windows 10 のあらゆる種類のアプリケーション ({{ site.data.keys.product }} 上に作成されるアプリケーションを含む) をサポートします。
 
-Application Center をアプリケーションの開発プロセスの一環として使用することができます。Application Center の典型的なシナリオはモバイル・アプリケーションを作成するチームです。開発チームは新しいバージョンの Android、iOS、Windows Phone、または Windows 8 のアプリケーションを作成します。開発チームは、この新しいバージョンの検討とテストを拡張チームにお願いします。開発者は Application Center コンソールを使用して、この新しいアプリケーション・バージョンを Application Center にアップロードします。開発者は、このプロセスの一環として、アプリケーション・バージョンの説明を入力することができます。例えば、この説明では、開発チームが旧バージョン対して追加したり修正したりした部分に言及することがあります。これで、チームの他のメンバーがアプリケーションの新しいバージョンを使用できるようになります。
+Application Center をアプリケーションの開発プロセスの一環として使用することができます。Application Center の典型的なシナリオはモバイル・アプリケーションを作成するチームです。開発チームは新しいバージョンの Android、iOS、Windows Phone、Windows 8、または Windows 10 UWP のアプリケーションを作成します。開発チームは、この新しいバージョンの検討とテストを拡張チームにお願いします。開発者は Application Center コンソールを使用して、この新しいアプリケーション・バージョンを Application Center にアップロードします。開発者は、このプロセスの一環として、アプリケーション・バージョンの説明を入力することができます。例えば、この説明では、開発チームが旧バージョン対して追加したり修正したりした部分に言及することがあります。これで、チームの他のメンバーがアプリケーションの新しいバージョンを使用できるようになります。
 
 別の担当者、例えばベータ版テスターは、Application Center インストーラー・アプリケーション (モバイル・クライアント) を起動して、使用可能なアプリケーションのリストからモバイル・アプリケーションのこの新しいバージョンを見つけ、それを自分のモバイル・デバイスにインストールすることができます。新バージョンのテストが終わったら、ベータ版テスターはアプリケーションを評価して、フィードバックを送信することができます。開発者はこのフィードバックを Application Center コンソールから見ることができます。
 
@@ -91,6 +91,14 @@ Windows Store を使用せずに、タイプ appx のファイルをデバイス
 Application Center は、モバイル・クライアントを配布するための定義済みの方法を提供していません。
 
 Application Center では、アプリケーションにはバージョン番号が 1 つしかありません。このバージョン番号は、より新しいバージョンがどれであるかを識別するために使用されます。Windows 8 アプリケーションの場合、バージョン番号は AppxManifest.xml ファイルの Version フィールドに入っています。このバージョン番号の形式は、a.b.c.d でなければなりません。ここで、a、b、c、d は負でない整数です。
+
+### Windows 10 UWP
+{:  #windows-10-uwp}
+
+Application Center では、UWP アプリケーションをインストールするための Windows 10 UWP クライアント・プロジェクトをシップします。このプロジェクトを Visual Studio で開いて、配布用のバイナリー (例: **.appx**) を作成できます。Application Center は、モバイル・クライアントを配布するための定義済みの方法を提供していません。
+
+Application Center では、アプリケーションにはバージョン番号が 1 つしかありません。このバージョン番号は、より新しいバージョンがどれであるかを識別するために使用されます。Windows 10 UWP アプリケーションの場合、バージョン番号は **Package.appxmanifest** ファイルの ***Version*** フィールドに入っています。このバージョン番号の形式は、a.b.c.d でなければなりません。ここで、a、b、c、d は負でない整数です。
+
 
 ## アーキテクチャーの概要
 {: #general-architecture }
@@ -159,7 +167,7 @@ Application Center を WebSphere Application Server Liberty プロファイル�
    ```bash
    server start worklightServer
    ```
-    
+
 2. サーバーが稼働しているときに、ブラウザーで次のアドレスを入力して Application Center コンソールを開始します。`http://localhost:9080/appcenterconsole/`
 3. ログインします。デフォルトでは、Apache Tomcat または WebSphere Application Server Liberty プロファイルで Application Center をインストールするためのユーザーとして、次の 2 つが定義されています。
     * **demo** (パスワード **demo**)
@@ -175,15 +183,8 @@ Application Center コンソールを使用するには、[Application Center �
 * iOS オペレーティング・システム: [iOS モバイル・デバイスへのクライアントのインストール](mobile-client/#installing-an-application-on-an-ios-device)を参照してください。
 * Windows Phone 8: [Windows 8 Universal へのクライアントのインストール](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device)を参照してください。
 * Windows 8: Windows 8 用のモバイル・クライアントは、後で配布するために Application Center にデプロイすることを意図していません。[Microsoft Windows 8: プロジェクトのビルド](preparations/#microsoft-windows-8-building-the-project)を参照してください。
+* Windows 10 UWP: [『Windows 10 デバイスへの Windows 10 UWP クライアントのインストール』](mobile-client/#installing-windows-10-uwp-client-on-windows-10-device)を参照してください。
 
 ## 次のステップ
 {: #whats-next }
 次のトピックに従って、AppCenter モバイル・クライアントを使用します。インストール済みアプリケーションへの通知の送信、AppCenter コンソール、コマンド・ライン・ツール、モバイル・クライアントについての説明、およびログ・レベルの設定。
-
-
-
-
-
-
-
-
