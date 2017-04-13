@@ -7,7 +7,7 @@ exclude:
   - pdf
   - tutorials/ko
   - tutorials/fr
-  - tutorials/ja
+#  - tutorials/ja
   - tutorials/pt-br
   - tutorials/es
 #  - tutorials/de
