@@ -11,7 +11,7 @@ exclude:
   - tutorials/pt-br
 #  - tutorials/es
 #  - tutorials/de
-#  - tutorials/zh-hans
+  - tutorials/zh-hans
 #  - tutorials/ru
 source_url: https://github.com/MobileFirst-Platform-Developer-Center/DevCenter
 last_modified: true
