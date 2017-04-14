@@ -9,7 +9,7 @@ exclude:
   - tutorials/fr
 #  - tutorials/ja
   - tutorials/pt-br
-  - tutorials/es
+#  - tutorials/es
 #  - tutorials/de
 #  - tutorials/zh-hans
 #  - tutorials/ru
