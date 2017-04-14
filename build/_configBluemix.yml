@@ -10,8 +10,8 @@ exclude:
 #  - tutorials/ja
   - tutorials/pt-br
   - tutorials/es
-  - tutorials/de
+#  - tutorials/de
   - tutorials/zh-hans
-  - tutorials/ru
+#  - tutorials/ru
 source_url: https://github.com/MobileFirst-Platform-Developer-Center/DevCenter
 last_modified: true
