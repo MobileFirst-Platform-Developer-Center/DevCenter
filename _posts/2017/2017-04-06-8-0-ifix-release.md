@@ -25,6 +25,8 @@ With this iFix Windows 10 UWP apps is supported in IBM Application Center. User 
 
 **PI79414** CORDOVA JSONSTORE FAILS WITH LATEST CORDOVA 5.0 ONCORDOVA-WINDOWS5 PLATFORM
 
+**PI77201** NATIVE IOS APPLICATIONS CAN CRASH DURING LOGIN IF FOUNDATIONSERVER IS NOT ACCESSABLE OR AVAILABLE
+
 ## How to upgrade
 **Server**  
 To upgrade, download &amp; install the [Developer Kit for evaluators]({{site.baseurl}}/downloads/), [Developer Kit for customers / iFix package for on-prem production environment](http://www.ibm.com/support/fixcentral/swg/quickorder?parent=ibm%7EOther%2Bsoftware&product=ibm/Other+software/IBM+MobileFirst+Platform+Foundation&release=8.0.0.0&platform=All&function=all&source=fc) (requires login to IBM Fix Central), or refresh your Mobile Foundation service from your service Dashboard.
@@ -34,6 +36,15 @@ To upgrade, [run the upgrade commands for your platform]({{site.baseurl}}/tutori
 
 
 ## Individual artifact build numbers included in this iFix
+
+**iOS SDK**
+
+IBMMobileFirstPlatformFoundation 8.0.2017032814
+IBMMobileFirstPlatformFoundationOpenSSLUtils 8.0.2017032814
+
+**Android SDK**
+
+ibmmobilefirstplatformfoundation  8.0.2017040512
 
 **Windows SDK**  
 IBM MobileFirstPlatformFoundation 8.0.2017030814
