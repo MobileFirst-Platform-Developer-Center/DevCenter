@@ -1,16 +1,29 @@
 ---
 layout: tutorial
-title: Foundation
+title: IBM MobileFirst Foundation 8.0
+breadcrumb_title: 8.0
+use_dropdown: verdadeiro
+print_pdf: falso
 weight: 0
-show_breadcrumb: true
 show_disqus: false
-use_dropdown_home: foundation/8.0/all-tutorials
+show_breadcrumb: verdadeiro
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 <br>
-{{ site.data.keys.product_full }} radically simplifies building, managing, and updating your mobile application with a pre-integrated, comprehensive set of mobile application services.
+{{ site.data.keys.product_full }} simplifica radicalmente a construção, o gerenciamento e a atualização de seu aplicativo móvel com um conjunto pré-integrado e abrangente de serviços de aplicativos móveis.
 
-Developers can build their application using the front-end framework and tools of their choice, and easily add push, authentication, offline sync, and business logic to their apps with the MobileFirst software Development Kit (SDK) available across a wide range of supported mobile platforms. {{ site.data.keys.product }} enables you to control your application from client to server, and thus allows you to capture business data at the point of interaction. {{ site.data.keys.product_adj }} apps also enable you to employ a streamlined and repeatable process for incremental app updates and run your apps in flexible hybrid cloud patterns.
+Os desenvolvedores podem construir o seu aplicativo usando a estrutura de front-end e ferramentas de sua opção e facilmente incluir sincronização de push, autenticação e off-line, bem como lógica de negócios em seus aplicativos com o kit de desenvolvimento de software (SDK) {{ site.data.keys.product }} disponível em uma ampla faixa de plataformas de dispositivo móvel suportadas. O {{ site.data.keys.product }} permite controlar o seu aplicativo do cliente para o servidor e, dessa maneira, permite que você capture dados de negócios no ponto de interação. Os aplicativos {{ site.data.keys.product }} também permitem que você empregue um processo aperfeiçoado e repetido para atualizações incrementais de app e atualize os seus aplicativos em padrões de nuvem híbrida flexível.
 
-[{{ site.data.keys.product_full }} 8.0 documentation]({{site.baseurl}}/tutorials/pt-br/foundation/8.0/all-tutorials/).
+Para revisar todas as categorias e a visita de tutoriais:
 
+* [Todos os tutoriais](all-tutorials/)
+
+Para a visita de conteúdo curado: 
+
+* [Desenvolvimento do Cordova](cordova-tutorials/)
+* [Desenvolvimento do iOS](ios-tutorials/) 
+* [Desenvolvimento do Android](android-tutorials/) 
+* [Desenvolvimento do Windows 8.1 Universal e do Windows 10 UWP](windows-8-10-tutorials/)
+* [Desenvolvimento do Xamarin](xamarin-tutorials/)
+* [Desenvolvimento de aplicativo da Web](web-tutorials/)
+* [Desenvolvimento do lado do servidor](server-side-tutorials/)

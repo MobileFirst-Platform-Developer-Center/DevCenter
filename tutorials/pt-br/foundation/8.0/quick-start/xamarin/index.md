@@ -32,7 +32,9 @@ para a pasta do servidor e execute o comando: `./run.sh` em Mac e Linux ou `run.
 
 ### 2. Criando um aplicativo
 {: #2-creating-an-application }
-Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a URL: `http://your-server-host:server-port/mfpconsole`. Se estiver executando localmente, use: [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). O nome de usuário/senha são *admin/admin*.
+Em uma janela do navegador, abra {{ site.data.keys.mf_console }} carregando a URL:
+`http://your-server-host:server-port/mfpconsole`. Se estiver executando localmente, use:
+[http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole). O nome de usuário/senha são *admin/admin*.
 
 1. Clique no botão **Novo** próximo de **Aplicativos**
     * Selecione a plataforma **Android**
@@ -105,13 +107,15 @@ andaime do aplicativo do qual você fará download na próxima etapa)
 
 ### 4. Implemente um adaptador
 {: #4-deploy-an-adapter }
-Faça o download [deste artefato .adapter preparado](../javaAdapter.adapter) e implemente-o a partir do {{ site.data.keys.mf_console }} usando a ação **Ações → Implementar Adaptador**.
+Faça o download [deste artefato .adapter preparado](../javaAdapter.adapter) e implemente-o a partir do
+{{ site.data.keys.mf_console }} usando a ação **Ações → Implementar Adaptador**.
 
 Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.  
 
 1. Selecione a opção **Ações → Download de Amostra**. Faça o download da amostra do adaptador **Java** "Hello World".
 
-   > Se o Maven e o {{ site.data.keys.mf_cli }} não estiverem instalados, siga as instruções **Configure seu ambiente de desenvolvimento** na tela.
+   > Se o Maven e o {{ site.data.keys.mf_cli }} não estiverem instalados, siga as instruções **Configure seu ambiente de
+desenvolvimento** na tela.
 
 2. Em uma janela de **Linha de Comandos**, navegue para a pasta raiz do projeto Maven do adaptador e execute o comando:
 
@@ -119,7 +123,8 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
    mfpdev adapter build
    ```
 
-3. Quando a compilação for concluída, implemente-a a partir do {{ site.data.keys.mf_console }} usando a ação **Ações → Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/target**.
+3. Quando a compilação for concluída, implemente-a a partir do {{ site.data.keys.mf_console }} usando a ação **Ações →
+Implementar Adaptador**. O adaptador pode ser localizado na pasta **[adapter]/target**.
 
    <img class="gifplayer" alt="Implemente um adaptador" src="create-an-adapter.png"/>
 
@@ -128,7 +133,8 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
 {: #5-testing-the-application }
 1. No Xamarin Studio, selecione o arquivo **mfpclient.plist** e edite as propriedades **protocol**,
 **host** e **port** com os valores corretos para o {{ site.data.keys.mf_server }}.
-    * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**, **localhost** e **9080**.
+    * Se estiver usando um {{ site.data.keys.mf_server }} local, os valores normalmente serão **http**,
+**localhost** e **9080**.
     * Se estiver usando um {{ site.data.keys.mf_server }} remoto (no Bluemix), os valores normalmente serão
 **https**, **your-server-address** e **443**.
 
@@ -139,7 +145,8 @@ Como alternativa, clique no botão **Novo** próximo de **Adaptadores**.
 {: #results }
 * Um clique no botão **Ping do MobileFirst Server** exibirá **Conectado ao MobileFirst
 Server**.
-* Se o aplicativo foi capaz de se conectar ao {{ site.data.keys.mf_server }}, uma chamada de solicitação de recurso usando o adaptador Java implementado acontecerá.
+* Se o aplicativo foi capaz de se conectar ao {{ site.data.keys.mf_server }}, uma chamada de solicitação de recurso usando o
+adaptador Java implementado acontecerá.
 
 A resposta do adaptador é então impressa no Xamarin Studio Console.
 
@@ -147,7 +154,8 @@ A resposta do adaptador é então impressa no Xamarin Studio Console.
 
 ## Etapas Seguintes
 {: #next-steps }
-Saiba mais sobre como usar adaptadores em aplicativos e como integrar serviços adicionais, como Notificações Push, usando a estrutura de segurança do {{ site.data.keys.product_adj }} e mais:
+Saiba mais sobre como usar adaptadores em aplicativos e como integrar serviços adicionais, como Notificações Push, usando a estrutura de
+segurança do {{ site.data.keys.product_adj }} e mais:
 
 - Revise os tutoriais [Desenvolvimento de Adaptadores](../../adapters/)
 - Revise os tutoriais [Autenticação e Segurança](../../authentication-and-security/)
