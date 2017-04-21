@@ -128,7 +128,7 @@ Gerencie e configure aplicativos registrados usando [Atualização Direta](../..
 
 #### Autenticação e Segurança
 {: #authentication-and-security }
-Configure parâmetros de segurança do aplicativo, como o valor de expiração do token padrão, mapeie elementos do escopo para verificações de segurança, defina os escopos de aplicativos obrigatórios e configure opções de verificação de segurança.
+Configure parâmetros de segurança de aplicativo, como o valor de expiração do token padrão, mapeie elementos do escopo para verificações de segurança, defina os escopos de aplicativos obrigatórios e configure opções de verificação de segurança.
 
 > [Saiba mais](../../../authentication-and-security/) sobre a estrutura de segurança do {{ site.data.keys.product_adj }}.
 
