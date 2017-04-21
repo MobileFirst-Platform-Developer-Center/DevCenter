@@ -5,11 +5,11 @@ exclude:
   - Gemfile.lock
   - README.md
   - pdf
-  - tutorials/ko
-  - tutorials/fr
+#  - tutorials/ko
+#  - tutorials/fr
 #  - tutorials/ja
   - tutorials/pt-br
-#  - tutorials/es
+  - tutorials/es
 #  - tutorials/de
   - tutorials/zh-hans
 #  - tutorials/ru
