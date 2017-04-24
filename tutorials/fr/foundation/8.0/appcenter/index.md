@@ -40,15 +40,15 @@ En utilisant Application Center, les utilisateurs de la même société ou organ
 
 Application Center cible les applications mobiles qui sont installées sur l'appareil même. Ces applications peuvent être des applications natives qui sont générées à l'aide du SDK de l'appareil ou des applications hybrides qui mélangent du contenu natif et Web. Application Center ne cible pas les applications Web mobiles ; ces applications sont livrées au navigateur Web de l'appareil mobile via une URL comme un site Web.
 
-Dans la version actuelle, Application Center prend en charge les applications conçues pour la plateforme Google Android, la plateforme Apple iOS, la plateforme Windows Phone 8 et la plateforme Windows 8.
+Dans la version actuelle, Application Center prend en charge les applications créées pour les plateformes Google Android, Apple iOS, Windows Phone 8, Windows 8 et Windows 10.
 
-Pour Windows Phone, seul le format de fichier de module d'application Windows Phone (.xap) est actuellement pris en charge, contrairement au format de fichier du module d'application (.appx) (format d'application universel). Pour Windows Store (applications de bureau), le format de fichier du module d'application (.appx) est pris en charge.
+Pour Windows Phone, seul le format de fichier de module d'application Windows Phone (.xap) est pris en charge actuellement. Nous prenons également en charge le format de fichier de module d'application Windows 10 UWP (.appx). Pour Windows Store (applications de bureau), le format de fichier du module d'application (.appx) est pris en charge.
 
 Windows Phone 7 et Windows RT et BlackBerry OS ne sont pas pris en charge par la version actuelle d'Application Center.
 
-Application Center gère les applications mobiles; Il prend en charge tout type d'application Android, iOS, Windows Phone 8 ou Windows 8, y compris les applications qui sont générées sur {{ site.data.keys.product }}.
+Application Center gère les applications mobiles. Il prend en charge tout type d'applications Android, iOS, Windows Phone 8, Windows 8 ou Windows 10, y compris les applications qui créées sur {{ site.data.keys.product }}.
 
-Vous pouvez utiliser Application Center dans le cadre du processus de développement d'une application. Un scénario type Application Center est une équipe qui génère une application mobile ; l'équipe de développement crée une version d'une application Android, iOS, Windows Phone ou Windows 8. L'équipe de développement souhaite que cette nouvelle version soit examinée et testée par l'équipe étendue. Un développeur accède à la console Application Center et télécharge la nouvelle version de l'application sur Application Center. Dans le cadre de ce processus, le développeur peut entrer une description de la version de l'application. Par exemple, la description peut mentionner les éléments que l'équipe de développement a ajoutés ou corrigés par rapport à la version précédente. La nouvelle version de l'application est alors mise à la disposition des autres membres de l'équipe.
+Vous pouvez utiliser Application Center dans le cadre du processus de développement d'une application. Un scénario type dans Application Center est une équipe qui crée une application mobile. L'équipe de développement crée une version d'une application Android, iOS, Windows Phone, Windows 8 ou Windows 10 UWP. L'équipe de développement souhaite que cette nouvelle version soit examinée et testée par l'équipe étendue. Un développeur accède à la console Application Center et télécharge la nouvelle version de l'application sur Application Center. Dans le cadre de ce processus, le développeur peut entrer une description de la version de l'application. Par exemple, la description peut mentionner les éléments que l'équipe de développement a ajoutés ou corrigés par rapport à la version précédente. La nouvelle version de l'application est alors mise à la disposition des autres membres de l'équipe.
 
 Une autre personne, par exemple un testeur bêta, peut lancer l'application d'installation Application Center, le client mobile, pour localiser cette nouvelle version d'une application mobile dans la liste des applications disponibles et l'installer sur son appareil mobile. Après avoir testé la nouvelle version, le testeur bêta peut évaluer l'application et envoyer des commentaires. Les commentaires sont visibles pour le développeur à partir de la console Application Center.
 
@@ -94,6 +94,14 @@ L'utilisateur d'appareil nécessite des droits d'administrateur sur l'appareil p
 Application Center ne fournit aucun moyen prédéfini de distribuer le client mobile.
 
 Dans Application Center, les applications ne comportent qu'un seul numéro de version. Le numéro de version est utilisé pour distinguer la version la plus récente. Pour les applications Windows 8, le numéro de version se trouve dans la zone Version du fichier AppxManifest.xml. Ce numéro de version doit être au format suivant : a.b.c.d, où a, b, c, d sont des entiers non négatifs.
+
+### Windows 10 UWP
+{:  #windows-10-uwp}
+
+Application Center envoie le projet du client Windows 10 UWP pour installer l'application UWP. Vous pouvez ouvrir le projet dans Visual Studio et créer un fichier binaire (par exemple : **.appx**) for distribution. Application Center ne fournit pas de méthode prédéfinie pour distribuer le client mobile.
+
+Dans Application Center, les applications ne comportent qu'un seul numéro de version. Le numéro de version est utilisé pour distinguer la version la plus récente. Pour les applications Windows 10 UWP, le numéro de version se trouve dans le champ ***Version*** dans le fichier **Package.appxmanifest**. Ce numéro de version doit être au format suivant : a.b.c.d, où a, b, c, d sont des entiers non négatifs.
+
 
 ## Architecture générale
 {: #general-architecture }
@@ -162,7 +170,7 @@ Une fois l'installation terminée, vous devez configurer les paramètres de séc
    ```bash
    server start worklightServer
    ```
-    
+
 2. Lorsque le serveur est en cours d'exécution, démarrez la console Application Center en entrant cette adresse dans votre navigateur : `http://localhost:9080/appcenterconsole/`
 3. Connectez-vous. Par défaut, deux utilisateurs sont définis pour l'installation d'Application Center sur le profil Liberty d'Apache Tomcat ou de WebSphere Application Server :
     * **demo** avec le mot de passe **demo**
@@ -178,15 +186,8 @@ Pour installer et exécuter le client mobile sur les systèmes d'exploitation su
 * Système d'exploitation iOS : voir [Installation du client sur un appareil mobile iOS](mobile-client/#installing-an-application-on-an-ios-device).
 * Windows Phone 8 : voir [Installation du client sur Windows 8 Universal](mobile-client/#installing-the-client-on-a-windows-phone-8-universal-mobile-device).
 * Windows 8 : le client mobile Windows 8 n'est pas destiné à être déployé dans Application Center pour une distribution ultérieure. Voir [Microsoft Windows 8 : génération du projet](preparations/#microsoft-windows-8-building-the-project).
+* Windows 10 UWP : voir [Installation du client Windows 10 UWP sur un appareil Windows 10](mobile-client/#installing-windows-10-uwp-client-on-windows-10-device).
 
 ## Que faire ensuite ?
 {: #whats-next }
 Consultez ces rubriques pour utiliser le client mobile Application Center, envoyer des notifications aux applications installées, en savoir plus sur la console Application Center, l'outil de ligne de commande, le client mobile et le réglage des niveaux de journalisation.
-
-
-
-
-
-
-
-
