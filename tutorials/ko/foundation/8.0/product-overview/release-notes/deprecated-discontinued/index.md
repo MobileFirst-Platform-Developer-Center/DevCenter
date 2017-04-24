@@ -171,8 +171,7 @@ weight: 3
 </table>
 
 ## 서버 측 API 변경
-{: #server-side-api-changes}
-
+{: #server-side-api-changes }
 서버 측 {{ site.data.keys.product_adj }} 애플리케이션을 마이그레이션하려면 API 변경사항을 고려하십시오.  
 다음 테이블에는 v8.0에서 중단된 서버 측 API 요소, v8.0에서 더 이상 사용되지 않는 서버 측 API 요소 및 제안된 마이그레이션 경로가 나열됩니다. 애플리케이션의 서버 측 마이그레이션에 대한 자세한 정보는 다음을 참조하십시오.  
 

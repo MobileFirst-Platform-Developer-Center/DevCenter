@@ -164,8 +164,7 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 이 기능으로 여러 {{ site.data.keys.product_adj }} API 메소드를 호출하십시오.
 
 ## {{ site.data.keys.product_adj }} Cordova SDK 업데이트
-{: #updating-the-mobilefirst-cordova-sdk}
-
+{: #updating-the-mobilefirst-cordova-sdk }
 최신 릴리스로 {{ site.data.keys.product_adj }} Cordova SDK를 업데이트하려면 **cordova-plugin-mfp** 플러그인을 다음과 같이 제거하십시오. `cordova plugin remove cordova-plugin-mfp` 명령을 실행한 후에 `cordova plugin add cordova-plugin-mfp` 명령을 실행하여 다시 추가하십시오.
 
 SDK 릴리스는 SDK의 [NPM 저장소](https://www.npmjs.com/package/cordova-plugin-mfp)에 있습니다.
@@ -313,7 +312,7 @@ Cordova 구성 파일은 애플리케이션 메타데이터를 포함하고 앱�
     </div>
 </div>
 
-### config.xml 파일에서 {{site.data.keys.product_adj }} 설정 편집
+### config.xml 파일에서 {{ site.data.keys.product_adj }} 설정 편집
 {: #editing-mobilefirst-settings-in-the-configxml-file }
 {{ site.data.keys.mf_cli }}에서 다음 명령을 실행하여 위 설정을 편집할 수 있습니다.
 

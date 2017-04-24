@@ -220,7 +220,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 ```
 
 ### 시나리오: UI가 없는 직접 업데이트 실행
-{: scenario-running-ui-less-direct-updates }
+{: #scenario-running-ui-less-direct-updates }
 {{ site.data.keys.product_full }}은 애플리케이션이 포그라운드에 있을 때 UI가 없는 직접 업데이트를 지원합니다.
 
 UI가 없는 직접 업데이트를 실행하려면 `directUpdateCustomListener`를 구현하십시오. `onStart` 및 `onProgress` 메소드에 빈 함수 구현을 제공하십시오. 구현이 비어 있으므로 직접 업데이트 프로세스가 백그라운드에서 실행됩니다.
@@ -327,8 +327,7 @@ var directUpdateCustomListener = {
 > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요:** **델타 업데이트**는 클라이언트 애플리케이션의 웹 자원이 서버에 현재 배치된 애플리케이션보다 한 버전 이전인 경우에만 수행할 수 있습니다. 현재 배치된 애플리케이션 버전보다 여러 버전 이전인 클라이언트 애플리케이션(즉 클라이언트 애플리케이션이 업데이트된 이후에 애플리케이션이 두 번 이상 서버에 배치됨)은 **전체 업데이트**(즉 전체 웹 자원이 다운로드되고 업데이트됨)를 수신합니다.
 
 ## 보안 직접 업데이트
-{: #secure-direct-update}
-
+{: #secure-direct-update }
 기본적으로 사용 안함으로 설정되는 보안 직접 업데이트를 사용하는 경우 써드파티 공격자가 {{ site.data.keys.mf_server }} 또는 CDN(Content Delivery Network)에서 클라이언트 애플리케이션으로 전송되는 웹 자원을 변경하는 것을 방지합니다.
 
 **직접 업데이트 신뢰성을 사용하려면 다음을 수행하십시오.**  

@@ -20,7 +20,7 @@ show_children: true
 
 ## 관리 역할
 {: #administration-roles }
-모든 유형의 관리 사용자가 모든 관리 조작을 수행할 수 있는 것은 아닙니다. {{ site.data.keys.mf_console }}과 모든 관리 도구에는 {{ site.data.keys.product_adj }} 애플리케이션의 관리를 위해 네 가지 서로 다른 역할이 정의되어 있습니다. 다음과 같은 
+모든 유형의 관리 사용자가 모든 관리 조작을 수행할 수 있는 것은 아닙니다. {{ site.data.keys.mf_console }}과 모든 관리 도구에는 {{ site.data.keys.product_adj }} 애플리케이션의 관리를 위해 네 가지 서로 다른 역할이 정의되어 있습니다. 다음과 같은
 
 {{ site.data.keys.product_adj }} 관리 역할이 정의되어 있습니다. 
 
@@ -42,7 +42,7 @@ show_children: true
 {: #administration-tools }
 {{ site.data.keys.product_adj }} 애플리케이션을 관리하는 데 {{ site.data.keys.mf_console }}만 사용할 수 있는 것은 아닙니다. {{ site.data.keys.product }}은 빌드와 배치 프로세스에 관리 조작을 통합하는 다른 도구도 제공합니다. 
 
-REST 서비스 세트를 사용하여 관리 조작을 수행할 수 있습니다. 이러한 서비스의 API 참조 문서는 [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html#restservicesapi)를 참조하십시오. 
+REST 서비스 세트를 사용하여 관리 조작을 수행할 수 있습니다. 이러한 서비스의 API 참조 문서는 [REST API for the {{ site.data.keys.mf_server }} administration service](../api/rest/administration-service/)를 참조하십시오. 
 
 이 REST 서비스를 사용하면 {{ site.data.keys.mf_console }}에서 수행할 수 있는 조작을 수행할 수 있습니다. 애플리케이션과 어댑터를 관리하고, 새 버전의 애플리케이션을 업로드하거나 이전 버전을 사용 안함으로 설정하는 등의 작업을 수행할 수 있습니다. 
 
@@ -52,4 +52,3 @@ REST 서비스 세트를 사용하여 관리 조작을 수행할 수 있습니�
 
 ### 주제 선택:
 {: #select-a-topic }
-

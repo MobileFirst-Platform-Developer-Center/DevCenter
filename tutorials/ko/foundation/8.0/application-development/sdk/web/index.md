@@ -50,7 +50,7 @@ SDK에는 다음 파일이 포함됩니다.
 
 ### SDK 추가
 {: #adding-the-sdk }
-{{site.data.keys.product }} 웹 SDK를 추가하려면 웹 애플리케이션에서 표준 방식으로 참조하십시오.   
+{{ site.data.keys.product }} 웹 SDK를 추가하려면 웹 애플리케이션에서 표준 방식으로 참조하십시오.   
 또한 SDK는 [AMD를 지원](https://en.wikipedia.org/wiki/Asynchronous_module_definition)하므로 모듈 로더(예: [RequireJS](http://requirejs.org/))를 사용하여 SDK를 로드할 수 있습니다.
 
 #### 표준
@@ -127,7 +127,7 @@ WL.Client.init(wlInitOptions).then (
 ## {{ site.data.keys.product_adj }} 웹 SDK 업데이트
 {: #updating-the-mobilefirst-web-sdk }
 SDK 릴리스는 SDK의 [NPM 저장소](https://www.npmjs.com/package/ibm-mfp-web-sdk)에 있습니다.   
-최신 릴리스로 {{site.data.keys.product_adj }} 웹 SDK를 업데이트하려면 다음을 수행하십시오.
+최신 릴리스로 {{ site.data.keys.product_adj }} 웹 SDK를 업데이트하려면 다음을 수행하십시오.
 
 1. 웹 애플리케이션의 루트 폴더로 이동하십시오.
 2. `npm update ibm-mfp-web-sdk` 명령을 실행하십시오.
@@ -148,8 +148,7 @@ SDK 릴리스는 SDK의 [NPM 저장소](https://www.npmjs.com/package/ibm-mfp-we
 > [웹 개발 환경 설정](../../../installation-configuration/development/web) 학습서에서 자세히 알아보십시오.
 
 ## 보안 출처 정책
-{: #secure-origins-policy}
-
+{: #secure-origins-policy }
 개발 중에 Chrome을 사용하는 경우 `localhost`가 **아닌** 호스트 및 HTTP를 둘 다 사용하면 브라우저에서 애플리케이션을 로드할 수 없습니다. 이 브라우저에서는 기본적으로 보안 출처 정책이 구현 및 사용되기 때문입니다.
 
 다음 플래그로 Chrome 브라우저를 시작하여 이를 해결할 수 있습니다.

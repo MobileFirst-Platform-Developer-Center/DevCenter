@@ -49,7 +49,7 @@ Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을
 
 ### SDK 추가
 {: #adding-the-sdk }
-1. {{site.data.keys.product }} 고유 SDK는 CocoaPods를 통해 제공됩니다.
+1. {{ site.data.keys.product }} 고유 SDK는 CocoaPods를 통해 제공됩니다.
     - 개발 환경에 [CocoaPods](http://guides.cocoapods.org)가 이미 설치되어 있는 경우 2단계로 건너뛰십시오.
     - CocoaPods가 설치되지 않은 경우 다음과 같이 설치하십시오.   
         - **명령행** 창을 열고 Xcode 프로젝트의 루트로 이동하십시오.
@@ -76,8 +76,7 @@ Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을
     > <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> **중요**: 여기서부터 `[ProjectName].xcworkspace` 파일을 사용하여 Xcode에서 프로젝트를 여십시오. `[ProjectName].xcodeproj` 파일을 사용하지 **마십시오**. CocoaPods 기반 프로젝트는 애플리케이션(실행 파일) 및 라이브러리(CocoaPod 관리자가 가져오는 모든 프로젝트 종속 항목)를 포함하는 작업공간으로 관리됩니다.
 
 ### {{ site.data.keys.product_adj }} 고유 SDK를 수동으로 추가
-{: #manually-adding-the-mobilefirst-native-sdk}
-
+{: #manually-adding-the-mobilefirst-native-sdk }
 {{ site.data.keys.product }} SDK를 다음과 같이 수동으로 추가할 수도 있습니다.
 
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
@@ -107,7 +106,6 @@ Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을
                                     <li>IBMMobileFirstPlatformFoundation.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationOpenSSLUtils.framework</li>
                                     <li>IBMMobileFirstPlatformFoundationWatchOS.framework</li>
-                                    <li>Localizations.bundle</li>
                                 </ul>
                                 이 단계를 수행하면 이러한 프레임워크가 <b>링크된 프레임워크 및 라이브러리</b>에 자동으로 추가됩니다.
                             </li>
@@ -116,6 +114,7 @@ Xcode 프로젝트를 작성하거나 기존 항목(Swift 또는 Objective-C)을
                                     <li>IBMMobileFirstPlatformFoundationJSONStore.framework</li>
                                     <li>sqlcipher.framework</li>
                                     <li>openssl.framework</li>
+                                    <li>Localizations.bundle</li>
                                 </ul>
                             </li>
                             <blockquote><b>참고:</b> 이 단계는 프로젝트에 관련 {{ site.data.keys.product }} 프레임워크를 추가하고 빌드 단계(Phase) 탭의 라이브러리가 포함된 2진 링크 목록 내에 링크합니다. 앞의 설명대로 필요한 항목 복사 옵션을 선택하지 않고 원래 위치로 파일을 링크하는 경우 아래 설명된 대로 프레임워크 검색 경로를 설정해야 합니다. </blockquote>
@@ -239,8 +238,7 @@ pod update
 SDK 릴리스는 SDK의 [CocoaPods 저장소](https://cocoapods.org/?q=ibm%20mobilefirst)에 있습니다.
 
 ## 생성된 {{ site.data.keys.product_adj }} 고유 SDK 아티팩트
-{: #generated-mobilefirst-native-sdk-artifacts}
-
+{: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
 이 파일은 프로젝트의 루트에 있으며 {{ site.data.keys.mf_server }}에서 iOS 앱을 등록하는 데 사용되는 클라이언트 측 특성을 정의합니다.
