@@ -6,7 +6,6 @@ weight: 3
 <!-- NLS_CHARSET=UTF-8 -->
 <br/>
 请仔细考虑已除去的功能和 API 元素将如何影响您的 {{ site.data.keys.product_full }} 环境。
-
 #### 跳转至
 {: #jump-to }
 * [V8.0 中已停用的功能和未包含的功能](#dicontinued-features-and-features-that-are-not-included-in-v-80)
@@ -23,12 +22,12 @@ weight: 3
         <td>状态和替换路径</td>
     </tr>
     <tr>
-        <td><p>MobileFirst Studio 替换为 Eclipse 的 {{site.data.keys.mf_studio }} 插件。</p></td>
-        <td><p>替换为 Eclipse 的 {{site.data.keys.mf_studio }} 插件，受标准和社区基本 Eclipse 插件支持。您可以直接使用 Apache Cordova CLI 或使用启用了 Cordova 的 IDE（如 Visual Studio Code、Eclipse、IntelliJ 等）开发混合应用程序。有关使用 Eclipse 作为启用了 Cordova 的 IDE 的更多信息，请参阅<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">用于在 Eclipse 中管理 Cordova 项目的 IBM {{site.data.keys.mf_studio }} 插件</a>。</p>
+        <td><p>MobileFirst Studio 替换为 Eclipse 的 {{ site.data.keys.mf_studio }} 插件。</p></td>
+        <td><p>替换为 Eclipse 的 {{ site.data.keys.mf_studio }} 插件，受标准和社区基本 Eclipse 插件支持。您可以直接使用 Apache Cordova CLI 或使用启用了 Cordova 的 IDE（如 Visual Studio Code、Eclipse、IntelliJ 等）开发混合应用程序。有关使用 Eclipse 作为启用了 Cordova 的 IDE 的更多信息，请参阅<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/application-development/using-mobilefirst-cli-in-eclipse/">用于在 Eclipse 中管理 Cordova 项目的 IBM {{ site.data.keys.mf_studio }} 插件</a>。</p>
 
         <p>您可以使用 Apache Maven 或支持 Maven 的 IDE（例如，Eclipse 和 IntelliJ 等）开发适配器。有关开发适配器的更多信息，请参阅<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters">适配器类别</a>。有关使用 Eclipse 作为启用了 Maven 的 IDE 的更多信息，请阅读<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/adapters/developing-adapters/">在 Eclipse 中开发适配器教程</a>。</p>
 
-        <p>安装 {{ site.data.keys.mf_dev_kit_full }}  以使用 {{site.data.keys.mf_server }} 测试适配器和应用程序。如果您不希望从诸如 NPM、Maven、Cocoapod 或 NuGet 等基于因特网的存储库中进行下载，也可以直接访问 {{ site.data.keys.product_adj }}    开发工具和 SDK。有关 {{site.data.keys.mf_dev_kit }} 的更多信息，请参阅<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{site.data.keys.mf_dev_kit }}</a>。</p>
+        <p>安装 {{ site.data.keys.mf_dev_kit_full }} 以使用 {{ site.data.keys.mf_server }} 测试适配器和应用程序。如果您不希望从诸如 NPM、Maven、Cocoapod 或 NuGet 等基于因特网的存储库中进行下载，也可以直接访问 {{ site.data.keys.product_adj }} 开发工具和 SDK。有关 {{ site.data.keys.mf_dev_kit }} 的更多信息，请参阅<a href="{{site.baseurl}}/tutorials/en/foundation/8.0/installation-configuration/development/mobilefirst/">{{ site.data.keys.mf_dev_kit }}</a>。</p>
         </td>
     </tr>
     <tr>
@@ -37,7 +36,7 @@ weight: 3
         </td>
     </tr>
     <tr>
-        <td><p>对于混合应用程序，无法再将 Sencha Touch 导入到 {{ site.data.keys.product_adj }}    项目。</p></td>
+        <td><p>对于混合应用程序，无法再将 Sencha Touch 导入到 {{ site.data.keys.product_adj }} 项目。</p></td>
         <td><p>已废弃。直接使用 Apache Cordova 来开发 {{ site.data.keys.product_adj }} 混合应用程序，并且提供 {{ site.data.keys.product_adj }} 功能作为 Cordova 插件。请参阅 Sencha Touch 文档以集成 Sencha Touch 和 Cordova。</p>
         </td>
     </tr>
@@ -51,7 +50,7 @@ weight: 3
         <td><p>在 V8.0 中未提供。</p></td>
     </tr>
     <tr>
-        <td><p>具有会话依赖性配置的适配器。在 V7.1.0 中，您可以将 {{site.data.keys.mf_server }} 配置为在会话独立方式（缺省值）或会话依赖方式下工作。从 V8.0 开始，不再支持会话依赖方式。服务器本身独立于 HTTP 会话，不需要任何相关配置。</p></td>
+        <td><p>具有会话依赖性配置的适配器。在 V7.1.0 中，您可以将 {{ site.data.keys.mf_server }} 配置为在会话独立方式（缺省值）或会话依赖方式下工作。从 V8.0 开始，不再支持会话依赖方式。服务器本身独立于 HTTP 会话，不需要任何相关配置。</p></td>
         <td><p>已废弃。</p></td>
     </tr>
     <tr>
@@ -95,8 +94,7 @@ weight: 3
         安全性：在 V8.0 中不需要反跨站点请求伪造 (anti-XSRF) 域 (<code>wl_antiXSRFRealm</code>)。
       </td>
       <td>
-        在 V7.1.0 中，认证上下文存储在 HTTP 会话中并以跨站点请求中的浏览器发送的会话 cookie 来标识。该版本中的反 XSRF 域用于通过使用从客户机发送到服务器的其他头来保护 cookie 传输，防御 XSRF 攻击。
-        <br/>
+        在 V7.1.0 中，认证上下文存储在 HTTP 会话中并以跨站点请求中的浏览器发送的会话 cookie 来标识。该版本中的反 XSRF 域用于通过使用从客户机发送到服务器的其他头来保护 cookie 传输，防御 XSRF 攻击。<br />
         在 V8.0.0 中，安全上下文不再与 HTTP 会话相关联，并且不以会话 cookie 来标识。
         而改为使用认证头中传递的 OAuth 2.0 访问令牌来完成授权。
         由于授权头不再由跨站点请求中的浏览器发送，无需防御 XSRF 攻击。
@@ -112,7 +110,7 @@ weight: 3
     </tr>
     <tr>
         <td>安全性：设备供应和设备自动供应。</td>
-        <td><p>已废弃。</p><p> 注：在正常授权流中处理设备供应。将在安全流的注册过程中自动收集设备数据。有关安全流的更多信息，请参阅“端到端授权流”。</p>
+        <td><p>已废弃。</p><p>注：在正常授权流中处理设备供应。将在安全流的注册过程中自动收集设备数据。有关安全流的更多信息，请参阅“端到端授权流”。</p>
         </td>
     </tr>
     <tr>
@@ -131,7 +129,8 @@ weight: 3
     <tr>
         <td>
         HTTP 适配器的认证配置。预定义的 HTTP 适配器不支持以用户身份连接到远程服务器。</td>
-        <td><p>在 V8.0 中未提供。</p><p>编辑 HTTP 适配器的源代码并添加认证代码。使用 <code>MFP.Server.invokeHttp</code> 将标识令牌添加到 HTTP 请求头中。</p></td>
+        <td><p>在 V8.0 中未提供。</p><p>编辑 HTTP 适配器的源代码并添加认证代码。
+使用 <code>MFP.Server.invokeHttp</code> 将标识令牌添加到 HTTP 请求头中。</p></td>
     </tr>
     <tr>
         <td>
@@ -147,35 +146,35 @@ weight: 3
         <td>在 V8.0 中未提供。</td>
     </tr>
     <tr>
-        <td>在 V8.0 中不支持将 Cloudant 用作 {{site.data.keys.mf_server }} 的数据库。</td>
+        <td>在 V8.0 中不支持将 Cloudant 用作 {{ site.data.keys.mf_server }} 的数据库。</td>
         <td>在 V8.0 中未提供。</td>
     </tr>
     <tr>
-        <td>地理定位：在 {{ site.data.keys.product }}    V8.0 中已废弃了地理定位支持。已废弃针对信标和介体的 REST API。已废弃客户端和服务器端 API WL.Geo 和 WL.Device。</td>
+        <td>地理定位：在 {{ site.data.keys.product }} V8.0 中已废弃了地理定位支持。已废弃针对信标和介体的 REST API。已废弃客户端和服务器端 API WL.Geo 和 WL.Device。</td>
         <td>已废弃。将本机设备 API 或第三方 Cordova 插件用于地理定位。</td>
     </tr>
     <tr>
-        <td>已废弃 {{ site.data.keys.product_adj }}    数据代理功能。也废弃了 Cloudant IMFData 和 CloudantToolkit API。</td>
-        <td>已废弃。有关替换您的应用程序中的 IMFData 和 CloudantToolkit API 的更多信息，请参阅“迁移通过 IMFData 或 Cloudant </td>
+        <td>已废弃 {{ site.data.keys.product_adj }} 数据代理功能。也废弃了 Cloudant IMFData 和 CloudantToolkit API。</td>
+        <td>已废弃。有关替换您的应用程序中的 IMFData 和 CloudantToolkit API 的更多信息，请参阅“迁移通过 IMFData 或 Cloudant
+SDK 将移动数据存储在 Cloudant 中的应用程序”。</td>
     </tr>
     <tr>
-        <td>IBM Tealeaf SDK 不再与 {{ site.data.keys.product }}    捆绑在一起。</td>
+        <td>IBM Tealeaf SDK 不再与 {{ site.data.keys.product }} 捆绑在一起。</td>
         <td>已废弃。使用 IBM Tealeaf SDK。有关更多信息，请参阅 IBM Tealeaf Customer Experience 文档中的 <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/AndroidGuide1010/CFs/TLAnddLggFrwkInstandImpl/TealeafAndroidLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-1-0&lang=en">Tealeaf installation and implementation in an Android application</a> 和 <a href="https://www.ibm.com/support/knowledgecenter/TLSDK/iOSGuide1010/CFs/TLiOSLggFrwkInstandImpl/TealeafIOSLoggingFrameworkInstallationAndImplementation.dita?cp=SS2MBL_9.0.2%2F5-0-3-1&lang=en">Tealeaf iOS Logging Framework Installation and Implementation</a>。</td>
     </tr>
     <tr>
-        <td>{{site.data.keys.mf_test_workbench_full }} 未与 {{ site.data.keys.product }}    捆绑在一起。</td>
+        <td>{{ site.data.keys.mf_test_workbench_full }} 未与 {{ site.data.keys.product }} 捆绑在一起。</td>
         <td>已废弃。</td>
     </tr>
     <tr>
-        <td>{{ site.data.keys.product }}    V8.0 不支持 BlackBerry、Adobe AIR 和 Windows Silverlight。没有为这些平台提供 SDK。</td>
+        <td>{{ site.data.keys.product }} V8.0 不支持 BlackBerry、Adobe AIR 和 Windows Silverlight。没有为这些平台提供 SDK。</td>
         <td>已废弃。</td>
     </tr>
 </table>
 
 ## 服务器端 API 更改
-{: #server-side-api-changes}
-
-要迁移 {{ site.data.keys.product_adj }}    应用程序的服务器端，请考虑对 API 的更改。  
+{: #server-side-api-changes }
+要迁移 {{ site.data.keys.product_adj }} 应用程序的服务器端，请考虑对 API 的更改。  
 以下各表列出了 V8.0 中停用服务器端 API 元素、V8.0 中不推荐使用的服务器端 API 元素以及建议的迁移路径。有关迁移应用程序服务器端的更多信息，
 
 ### V8.0 中停用的 JavaScript API 元素
@@ -236,9 +235,11 @@ weight: 3
 
 | API 元素                                | 替换路径                               |
 |-------------------------------------------|------------------------------------------------|
-| `PushAPI.sendMessage(INotification notification, String applicationId)`	| 要从基于事件源的通知迁移到基于标记的通知，请参阅“从基于事件源的通知迁移到推送通知”。 |
+| `PushAPI.sendMessage(INotification notification,
+String applicationId)`	| 要从基于事件源的通知迁移到基于标记的通知，请参阅“从基于事件源的通知迁移到推送通知”。 |
 | `INotification PushAPI.buildNotification();` | 要从基于事件源的通知迁移到基于标记的通知，请参阅“从基于事件源的通知迁移到推送通知”。 |
-| `UserSubscription PushAPI.getUserSubscription(String eventSource, String userId)` | 要从基于事件源的通知迁移到基于标记的通知，请参阅“从基于事件源的通知迁移到推送通知”。 |
+| `UserSubscription PushAPI.getUserSubscription(String
+eventSource, String userId)` | 要从基于事件源的通知迁移到基于标记的通知，请参阅“从基于事件源的通知迁移到推送通知”。 |
 
 #### 适配器
 {: #adapters-java }
@@ -250,13 +251,12 @@ weight: 3
 | `com.worklight.adapters.rest.api` 包中的 `ConfigurationAPI` 接口 | 改用 `com.ibm.mfp.adapter.api` 包中的 `ConfigurationAPI` 接口。 |
 | `com.worklight.core.auth` 包中的 `OAuthSecurity` 注释 | 改用 `com.ibm.mfp.adapter.api` 包中的 `OAuthSecurity` 注释。 |
 | `com.worklight.wink.extensions` 包中的 `MFPJAXRSApplication` 类 | 改用 `com.ibm.mfp.adapter.api` 包中的 `MFPJAXRSApplication` 类。 |
-| `com.worklight.adapters.rest.api` 包中的 `WLServerAPI` 接口 | 使用 JAX-RS `Context` 注释直接访问 {{ site.data.keys.product_adj }}    API 接口。 |
-| `com.worklight.adapters.rest.api` 包中的 `WLServerAPIProvider` 类 | 使用 JAX-RS `Context` 注释直接访问 {{ site.data.keys.product_adj }}    API 接口。 |
+| `com.worklight.adapters.rest.api` 包中的 `WLServerAPI` 接口 | 使用 JAX-RS `Context` 注释直接访问 {{ site.data.keys.product_adj }} API 接口。 |
+| `com.worklight.adapters.rest.api` 包中的 `WLServerAPIProvider` 类 | 使用 JAX-RS `Context` 注释直接访问 {{ site.data.keys.product_adj }} API 接口。 |
 
 ## 客户端 API 更改
-{: #client-side-api-changes}
-
-API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应用程序有关。  
+{: #client-side-api-changes }
+API 中的以下更改与迁移 {{ site.data.keys.product_adj }} 客户机应用程序有关。  
 以下各表列出了 V8.0.0 中停用的客户端 API 元素、V8.0.0 中不推荐使用的客户端 API 元素以及建议的迁移路径。
 
 ### JavaScript API
@@ -266,14 +266,15 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 | API 元素           | 迁移路径                           |
 |-----------------------|------------------------------------------|
 | `WL.BusyIndicator`、`WL.OptionsMenu`、`WL.TabBar`、`WL.TabBarItem` | 使用 Cordova 插件或 HTML 5 元素。 |
-| `WL.App.close` | 在 {{ site.data.keys.product_adj }}    外处理此事件。 |
+| `WL.App.close` | 在 {{ site.data.keys.product_adj }} 外处理此事件。 |
 | `WL.App.copyToClipboard()` | 使用提供此功能的 Cordova 插件。 |
 | `WL.App.openUrl(url, target, options)` | 使用提供此功能的 Cordova 插件。**注：**供您参考：Cordova **InAppBrowser** 插件提供此功能。 |
 | `WL.App.overrideBackButton(callback)`、`WL.App.resetBackButton()` | 使用提供此功能的 Cordova 插件。**注：**供您参考：Cordova **backbutton** 插件提供此功能。 |
 | `WL.App.getDeviceLanguage()` | 使用提供此功能的 Cordova 插件。**注：**供您参考：Cordova **cordova-plugin-globalization** 插件提供此功能。 |
 | `WL.App.getDeviceLocale()` | 使用提供此功能的 Cordova 插件。**注：**供您参考：Cordova **cordova-plugin-globalization** 插件提供此功能。 |
-| `WL.App.BackgroundHandler` | 要运行定制处理程序函数，请使用标准 Cordova 暂停事件侦听器。使用可提供隐私并防止 iOS 和 Android 系统与用户拍摄快照或截屏的 Cordova 插件。有关更多信息，请参阅 **[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)** 的描述。 |
-| `WL.Client.close`、`WL.Client.restore`、`WL.Client.minimize` | 提供了这些功能以支持 {{ site.data.keys.product }}    V8.0.0 不支持的 Adobe AIR 平台。 |
+| `WL.App.BackgroundHandler` | 要运行定制处理程序函数，请使用标准 Cordova 暂停事件侦听器。使用可提供隐私并防止 iOS 和 Android 系统与用户拍摄快照或截屏的 Cordova 插件。
+有关更多信息，请参阅 **[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)** 的描述。 |
+| `WL.Client.close`、`WL.Client.restore`、`WL.Client.minimize` | 提供了这些功能以支持 {{ site.data.keys.product }} V8.0.0 不支持的 Adobe AIR 平台。 |
 | `WL.Toast.show(string)` | 将 Cordova 插件用于 Toast。 |
 
 此 API 集在 V8.0 中不再受支持。
@@ -309,11 +310,11 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 | `WL.Client.isUserAuthenticated(realm)` | 无替换 |
 | `WLUserAuth.deleteCertificate(provisioningEntity)` | 无替换 |
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | 无替换 |
-| `WL.Client.createChallengeHandler(realmName)` | 要创建验证问题处理程序来处理定制网关验证问题，请使用 `WL.Client.createGatewayChallengeHandler(gatewayName)`。要创建验证问题处理程序来处理 {{ site.data.keys.product_adj }}    安全性检查验证问题，请使用 `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`。 |
+| `WL.Client.createChallengeHandler(realmName)` | 要创建验证问题处理程序来处理定制网关验证问题，请使用 `WL.Client.createGatewayChallengeHandler(gatewayName)`。要创建验证问题处理程序来处理 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`。 |
 | `WL.Client.createWLChallengeHandler(realmName)` | 使用 `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`。 |
 | `challengeHandler.isCustomResponse()`，其中 challengeHandler 是 `WL.Client.createChallengeHandler()` 返回的验证问题处理程序对象 | 使用 `gatewayChallengeHandler.canHandleResponse()`，其中 `gatewayChallengeHandler` 是 `WL.Client.createGatewayChallengeHandler()` 返回的验证问题处理程序对象。 |
 | `wlChallengeHandler.processSucccess()`，其中 `wlChallengeHandler` 是 `WL.Client.createWLChallengeHandler()` 返回的验证问题处理程序对象 | 使用 `securityCheckChallengeHandler.handleSuccess()`，其中 `securityCheckChallengeHandler` 是 `WL.Client.createSecurityCheckChallengeHandler()` 返回的验证问题处理程序对象。 |
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `WL.Client.createGatewayChallengeHandler()` 返回的验证问题处理程序对象。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 `WL.Client.createSecurityCheckChallengeHandler()` 返回的验证问题处理程序对象。 |
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `WL.Client.createGatewayChallengeHandler()` 返回的验证问题处理程序对象。对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 `WL.Client.createSecurityCheckChallengeHandler()` 返回的验证问题处理程序对象。 |
 | `WL.Client.createProvisioningChallengeHandler()` | 无替换。设备供应现在由安全框架自动处理。 |
 
 #### 不推荐的 JavaScript API
@@ -341,17 +342,23 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 | `WLClient.login(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)`、`WLClient.login(java.lang.String realmName, WLRequestListener listener)` | 使用 `AuthorizationManager.login()` |
 | `WLClient.logout(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)`、`WLClient.logout(java.lang.String realmName, WLRequestListener listener)` | 使用 `AuthorizationManager.logout()` |
 | `WLClient.obtainAccessToken(java.lang.String scope,WLResponseListener
+responseListener)` | 使用 `WLAuthorizationManager.obtainAccessToken(String, WLAccessTokenListener)` 检查服务器连接并实施应用程序管理规则 |
 | `WLClient.getLastAccessToken()`、`WLClient.getLastAccessToken(java.lang.String scope)` | 使用 `AuthorizationManager` |
-| `WLClient.getRequiredAccessTokenScope(int status, java.lang.String header)` | 使用 `AuthorizationManager` |
+| `WLClient.getRequiredAccessTokenScope(int status, java.lang.String
+header)` | 使用 `AuthorizationManager` |
 | `WLClient.logActivity(java.lang.String activityType)` | 使用 `com.worklight.common.Logger`。有关更多信息，请参阅“记录器 SDK”。 |
 | `WLAuthorizationPersistencePolicy` | 无替换。要实现授权持久性，请在应用程序代码中存储授权令牌并创建定制 HTTP 请求。 |
 | `WLSimpleSharedData.setSharedToken(myName, myValue)`、`WLSimpleSharedData.getSharedToken(myName)`、`WLSimpleSharedData.clearSharedToken(myName)` | 使用 Android API 在应用程序之间共享令牌。 |
-| `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | 无替换 |
+| `WLUserCertificateManager.deleteCertificate(android.content.Context
+context)` | 无替换 |
 | `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | 使用 `BaseChallengeHandler.cancel()` |
-| `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。|
+| `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。
+对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。
+ |
 | `WLChallengeHandler` | 使用 `SecurityCheckChallengeHandler`。 |
 | `ChallengeHandler.isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 |
-| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。|
+| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。
+ |
 
 #### 不推荐的 Android API
 {: #deprecated-android-apis }
@@ -369,15 +376,17 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 | 现在不推荐使用 `org.apache.http.Header[]`。因此，移除了以下方法：||
 | `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 改为使用新的 `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API。 |
 | `WLResourceRequest.addHeader(org.apache.http.Header header)` | 改为使用新的 `WLResourceRequest.addHeader(String name, String value)` API。 |
-| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 改为使用新的 `List<String> WLResourceRequest.getHeaders(String headerName)` API。 |
-| `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | 改为使用新的 `WLResourceRequest.getHeaders(String headerName)` API。 |
+| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String
+headerName)` | 改为使用新的 `List<String> WLResourceRequest.getHeaders(String headerName)` API。 |
+| `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String
+headerName)` | 改为使用新的 `WLResourceRequest.getHeaders(String headerName)` API。 |
 | `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 改为使用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
 | `WLResourceRequest.setHeader(org.apache.http.Header header)` | 改为使用新的 `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API。 |
 | `org.apache.http.client.CookieStore WLClient.getCookieStore()` | 替换为 `java.net.CookieStore getCookieStore WLClient.getCookieStore()` |
 | `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 无替换。MFP 客户机允许循环重定向。 |
 | `WLHttpResponseListener`、`WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`、`WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`、`WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`、`WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`、`WLResourceRequest.send(WLHttpResponseListener listener)`、`WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`、`WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | 由于不推荐使用 Apache HTTP 客户机依赖关系而已移除。创建自己的请求，以对请求和响应具有完全控制。 |
 
-#### `com.worklight.androidgap.api` 包为 Cordova 应用程序提供 Android 平台功能。在 {{ site.data.keys.product }}    中，进行了多个更改以适应 Cordova 集成。
+#### `com.worklight.androidgap.api` 包为 Cordova 应用程序提供 Android 平台功能。在 {{ site.data.keys.product }} 中，进行了多个更改以适应 Cordova 集成。
 {: #comworklightandroidgapapi }
 
 | API 元素           | 迁移路径                           |
@@ -409,10 +418,10 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 | `[WLSimpleDataSharing setSharedToken: myName value: myValue]`、`[WLSimpleDataSharing getSharedToken: myName]]`、`[WLSimpleDataSharing clearSharedToken: myName]` | 使用 OS API 在应用程序之间共享令牌。 |
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | 使用 `BaseChallengeHandler.cancel()`。 |
 | `BaseProvisioningChallengeHandler` | 无替换。设备供应现在由安全框架自动处理。 |
-| `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。|
+| `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。|
 | `WLChallengeHandler` | 使用 `SecurityCheckChallengeHandler`。 |
 | `ChallengeHandler.isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 |
-| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 |
+| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 |
 
 ### Windows C# API
 {: #windows-c-apis }
@@ -421,10 +430,14 @@ API 中的以下更改与迁移 {{ site.data.keys.product_adj }}    客户机应
 
 | API 元素           | 迁移路径                           |
 |-----------------------|------------------------------------------|
-| `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。|
+| `ChallengeHandler` | 对于定制网关验证问题，请使用 `GatewayChallengeHandler`。
+对于 {{ site.data.keys.product_adj }} 安全性检查验证问题，请使用 `SecurityCheckChallengeHandler`。
+ |
 | `ChallengeHandler. isCustomResponse()` | 使用 `GatewayChallengeHandler.canHandleResponse()`。 |
-| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 |
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler.Shouldcancel()`。对于 {{ site.data.keys.product_adj }}    安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler.ShouldCancel()`。 |
+| `ChallengeHandler.submitAdapterAuthentication ` | 在验证问题处理程序中实施类似逻辑。对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler`。
+对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler`。 |
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | 对于定制网关验证问题处理程序，请使用 `GatewayChallengeHandler.Shouldcancel()`。
+对于 {{ site.data.keys.product_adj }} 安全性检查验证问题处理程序，请使用 `SecurityCheckChallengeHandler.ShouldCancel()`。 |
 | `WLAuthorizationManager` | 改用 `WorklightClient.WorklightAuthorizationManager`。 |
 | `WLChallengeHandler` | 使用 `SecurityCheckChallengeHandler`。 |
 | `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | 使用 `SecurityCheckChallengeHandler.ShouldCancel()`。 |
