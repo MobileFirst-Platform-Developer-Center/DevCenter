@@ -56,7 +56,7 @@ Apple ATS(App Transport Security)는 iOS 9의 새로운 기능으로, 앱과 서
    SSL 포트 번호는 `httpEndpoint` 정의의 **server.xml**에 포함된 서버에 정의되어 있습니다. 
     
 3. TLS 1.2 프로토콜에 사용되는 서버를 구성하십시오. 자세한 정보는 [TLS V1.2를 사용하도록 {{ site.data.keys.mf_server }} 구성을 참조](http://www-01.ibm.com/support/docview.wss?uid=swg21965659)하십시오. 
-4. 암호 및 인증서에 대한 설정을 작성하여 설정에 적용하십시오. 자세한 정보는 [ATS(App Transport Security) 기술 노트](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/), [WebSphere Application Server Network Deployment에 SSL(Secure Sockets Layer)을 사용하는 보안 통신](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en) 및 [Liberty 프로파일에 SSL 통신 사용](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0)을 참조하십시오. 
+4. 암호 및 인증서에 대한 설정을 작성하여 설정에 적용하십시오. 자세한 정보는 [App Transport Security 기술 노트](https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/), [WebSphere Application Server Network Deployment에 SSL(Secure Sockets Layer)을 사용하는 보안 통신](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.nd.doc/ae/csec_sslsecurecom.html?cp=SSAW57_8.5.5%2F1-8-2-33-4-0&lang=en) 및 [Liberty 프로파일에 SSL 통신 사용](http://www-01.ibm.com/support/knowledgecenter/SSAW57_8.5.5/com.ibm.websphere.wlp.nd.doc/ae/twlp_sec_ssl.html?cp=SSAW57_8.5.5%2F1-3-11-0-4-1-0)을 참조하십시오. 
 
 ### iOS에 OpenSSL 사용
 {: #enabling-openssl-for-ios }

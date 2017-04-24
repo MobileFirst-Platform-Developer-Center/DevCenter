@@ -396,7 +396,7 @@ weight: 1
                 </ul>
 
                 <p>{{ site.data.keys.mf_analytics_console }}은 이제 로그인한 사용자의 보안 역할을 기반으로 다른 컨텐츠를 표시합니다. <br/>
-                자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">역할 기반 액세스 제어</a>를 참조하십시오.</p>
+자세한 정보는 <a href="{{site.baseurl}}/tutorials/en/foundation/8.0/analytics/console/#role-based-access-control">역할 기반 액세스 제어</a>를 참조하십시오.</p>
 
                 <p>{{ site.data.keys.mf_analytics_server }}는 Elasticsearch V1.7.5를 사용합니다.</p>
 

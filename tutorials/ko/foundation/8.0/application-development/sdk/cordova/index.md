@@ -8,10 +8,10 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-이 학습서에서는 Apache Cordova, Ionic 또는 다른 써드파티 도구를 사용하여 작성된 신규 또는 기존 Cordova 애플리케이션에 {{ site.data.keys.product_adj }} SDK를 추가하는 방법에 대해 학습합니다. 또한 애플리케이션을 인식하도록 {{ site.data.keys.mf_server }}를 구성하는 방법 및 프로젝트에서 변경된 {{ site.data.keys.product_adj }} 구성 파일에 대한 정보를 찾는 방법에 대해서도 학습합니다.
+이 학습서에서는 Apache Cordova, Ionic 또는 다른 써드파티 도구를 사용하여 작성된 신규 또는 기존 Cordova 애플리케이션에 {{ site.data.keys.product_adj }} SDK를 추가하는 방법에 대해 학습합니다. 또한 애플리케이션을 인식하도록 {{ site.data.keys.mf_server }}를 구성하는 방법 및 프로젝트에서 변경된 {{ site.data.keys.product_adj }} 구성 파일에 대한 정보를 찾는 방법에 대해서도 학습합니다. 
 
 {{ site.data.keys.product_adj }} Cordova SDK는 Cordova 플러그인 세트로 제공되며 [NPM에 등록됩니다](https://www.npmjs.com/package/cordova-plugin-mfp).   
-사용 가능한 플러그인은 다음과 같습니다.
+사용 가능한 플러그인은 다음과 같습니다. 
 
 * **cordova-plugin-mfp** - 핵심 SDK 플러그인
 * **cordova-plugin-mfp-push** - 푸시 알림 지원 제공
@@ -21,7 +21,7 @@ weight: 1
 
 #### 지원 레벨
 {: #support-levels }
-MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음과 같습니다.
+MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음과 같습니다. 
 
 * cordova-ios: **>= 4.1.1 및 < 5.0**
 * cordova-android: **>= 5.1.1 및 < 6.0**
@@ -41,9 +41,9 @@ MobileFirst 플러그인에서 지원되는 Cordova 플랫폼 버전은 다음�
 {: #cordova-sdk-components }
 #### cordova-plugin-mfp
 {: #cordova-plugin-mfp }
-cordova-plugin-mfp 플러그인은 Cordova의 핵심 {{ site.data.keys.product_adj }} 플러그인이며 필수입니다. 아직 설치되지 않은 경우 다른 {{ site.data.keys.product_adj }} 플러그인을 설치하면 cordova-plugin-mfp 플러그인도 자동으로 설치됩니다.
+cordova-plugin-mfp 플러그인은 Cordova의 핵심 {{ site.data.keys.product_adj }} 플러그인이며 필수입니다. 아직 설치되지 않은 경우 다른 {{ site.data.keys.product_adj }} 플러그인을 설치하면 cordova-plugin-mfp 플러그인도 자동으로 설치됩니다. 
 
-> 다음 Cordova 플러그인이 cordova-plugin-mfp의 종속 항목으로 설치됩니다.
+> 다음 Cordova 플러그인이 cordova-plugin-mfp의 종속 항목으로 설치됩니다. 
 >   
 >    - cordova-plugin-device
 >    - cordova-plugin-dialogs
@@ -56,54 +56,54 @@ cordova-plugin-mfp-jsonstore 플러그인을 통해 앱에서 JSONstore를 사�
 
 #### cordova-plugin-mfp-push
 {: #cordova-plugin-mfp-push }
-cordova-plugin-mfp-push 플러그인은 Android 애플리케이션의 {{ site.data.keys.mf_server }}에서 푸시 알림을 사용하는 데 필요한 권한을 제공합니다. 푸시 알림을 사용하려면 추가 설정이 필요합니다. 푸시 알림에 대한 자세한 정보는 [푸시 알림 학습서](../../../notifications/)를 참조하십시오.
+cordova-plugin-mfp-push 플러그인은 Android 애플리케이션의 {{ site.data.keys.mf_server }}에서 푸시 알림을 사용하는 데 필요한 권한을 제공합니다. 푸시 알림을 사용하려면 추가 설정이 필요합니다. 푸시 알림에 대한 자세한 정보는 [푸시 알림 학습서](../../../notifications/)를 참조하십시오. 
 
 #### cordova-plugin-mfp-fips
 {: #cordova-plugin-mfp-fips }
-cordova-plugin-mfp-fips 플러그인은 Android 플랫폼에 대한 FIPS 140-2 지원을 제공합니다. 자세한 정보는 [FIPS 140-2 지원을 참조](../../../administering-apps/federal/#fips-140-2-support)하십시오.
+cordova-plugin-mfp-fips 플러그인은 Android 플랫폼에 대한 FIPS 140-2 지원을 제공합니다. 자세한 정보는 [FIPS 140-2 지원을 참조](../../../administering-apps/federal/#fips-140-2-support)하십시오. 
 
 #### cordova-plugin-mfp-encrypt-utils
 {: #cordova-plugin-mfp-encrypt-utils }
-cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플리케이션의 암호화에 필요한 iOS OpenSSL을 제공합니다. 자세한 정보는 [Cordova iOS에 OpenSSL 사용](additional-information)을 참조하십시오.
+cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플리케이션의 암호화에 필요한 iOS OpenSSL을 제공합니다. 자세한 정보는 [Cordova iOS에 OpenSSL 사용](additional-information)을 참조하십시오. 
 
 **전제조건:**
 
-- 개발자 워크스테이션에 [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 및 {{ site.data.keys.mf_cli }}가 설치되어 있습니다.
-- {{ site.data.keys.mf_server }}의 로컬 또는 원격 인스턴스가 실행 중입니다.
-- [{{ site.data.keys.product_adj }} 개발 환경 설정](../../../installation-configuration/development/mobilefirst) 및 [Cordova 개발 환경 설정](../../../installation-configuration/development/cordova) 학습서를 읽으십시오.
+- 개발자 워크스테이션에 [Apache Cordova CLI 6.x](https://www.npmjs.com/package/cordova) 및 {{ site.data.keys.mf_cli }}가 설치되어 있습니다. 
+- {{ site.data.keys.mf_server }}의 로컬 또는 원격 인스턴스가 실행 중입니다. 
+- [{{ site.data.keys.product_adj }} 개발 환경 설정](../../../installation-configuration/development/mobilefirst) 및 [Cordova 개발 환경 설정](../../../installation-configuration/development/cordova) 학습서를 읽으십시오. 
 
 ## {{ site.data.keys.product }} Cordova SDK 추가
 {: #adding-the-mobilefirst-cordova-sdk }
-아래 지시사항에 따라 신규 또는 기존 Cordova 프로젝트에 {{ site.data.keys.product }} Cordova SDK를 추가하고 {{ site.data.keys.mf_server }}에 등록하십시오.
+아래 지시사항에 따라 신규 또는 기존 Cordova 프로젝트에 {{ site.data.keys.product }} Cordova SDK를 추가하고 {{ site.data.keys.mf_server }}에 등록하십시오. 
 
 시작하기 전에 {{ site.data.keys.mf_server }}가 실행 중인지 확인하십시오.   
-로컬로 설치된 서버를 사용하는 경우: **명령행** 창에서 서버의 폴더로 이동하고 `./run.sh` 명령을 실행하십시오.
+로컬로 설치된 서버를 사용하는 경우: **명령행** 창에서 서버의 폴더로 이동하고 `./run.sh` 명령을 실행하십시오. 
 
 > **참고:** 기존 Cordova 애플리케이션에 SDK를 추가하는 경우 플러그인이 `MainActivity.java` 파일(Android) 및 `Main.m` 파일(iOS)을 겹쳐씁니다.
 
 ### SDK 추가
 {: #adding-the-sdk }
-{{ site.data.keys.product_adj }} Cordova **애플리케이션 템플리트**를 사용하여 프로젝트를 작성할 것을 고려하십시오. 해당 템플리트는 필수 {{ site.data.keys.product_adj }} 특정 플러그인 항목을 Cordova 프로젝트의 **config.xml** 파일에 추가하고 {{ site.data.keys.product_adj }} 애플리케이션 개발에 대해 조정되었으며 바로 사용 가능한 {{ site.data.keys.product_adj }} 특정 **index.js** 파일을 제공합니다.
+{{ site.data.keys.product_adj }} Cordova **애플리케이션 템플리트**를 사용하여 프로젝트를 작성할 것을 고려하십시오. 해당 템플리트는 필수 {{ site.data.keys.product_adj }} 특정 플러그인 항목을 Cordova 프로젝트의 **config.xml** 파일에 추가하고 {{ site.data.keys.product_adj }} 애플리케이션 개발에 대해 조정되었으며 바로 사용 가능한 {{ site.data.keys.product_adj }} 특정 **index.js** 파일을 제공합니다. 
 
 #### 새 애플리케이션
 {: #new-application }
 1. 다음과 같이 Cordova 프로젝트를 작성하십시오. `cordova create projectName applicationId --template cordova-template-mfp`
-
-예:
+     
+예: 
 
    ```bash
    cordova create Hello com.example.helloworld HelloWorld --template cordova-template-mfp
    ```
-     - "Hello"는 애플리케이션의 폴더 이름입니다.
-     - "com.example.helloworld"는 애플리케이션의 ID입니다.
-     - "HelloWorld"는 애플리케이션의 이름입니다.
-     - --template는 {{ site.data.keys.product_adj }} 특정 추가로 애플리케이션을 수정합니다.
+     - "Hello"는 애플리케이션의 폴더 이름입니다. 
+     - "com.example.helloworld"는 애플리케이션의 ID입니다. 
+     - "HelloWorld"는 애플리케이션의 이름입니다. 
+     - --template는 {{ site.data.keys.product_adj }} 특정 추가로 애플리케이션을 수정합니다. 
 
     > 템플리트된 **index.js**를 통해 추가 {{ site.data.keys.product_adj }} 기능(예: [다국어 애플리케이션 변환](../../translation) 및 초기화 옵션)을 사용할 수 있습니다(자세한 정보는 사용자 문서 참조).
 
-2. Cordova 프로젝트의 루트인 `cd hello`로 디렉토리를 변경하십시오.
+2. Cordova 프로젝트의 루트인 `cd hello`로 디렉토리를 변경하십시오. 
 
-3. Cordova CLI 명령 `cordova platform add ios|android|windows`를 사용하여 Cordova 프로젝트에 하나 이상의 지원되는 플랫폼을 추가하십시오. 예:
+3. Cordova CLI 명령 `cordova platform add ios|android|windows`를 사용하여 Cordova 프로젝트에 하나 이상의 지원되는 플랫폼을 추가하십시오. 예: 
 
    ```bash
    cordova platform add ios
@@ -111,7 +111,7 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 
    > **참고:** 애플리케이션이 {{ site.data.keys.product_adj }} 템플리트를 사용하여 구성되었으므로 3단계에서 플랫폼이 추가된 것과 같이 {{ site.data.keys.product_adj }} 핵심 Cordova 플러그인이 자동으로 추가됩니다.
 
-4. `cordova prepare command`를 실행하여 애플리케이션 자원을 준비하십시오.
+4. `cordova prepare command`를 실행하여 애플리케이션 자원을 준비하십시오. 
 
    ```bash
    cordova prepare
@@ -119,15 +119,15 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 
 #### 기존 애플리케이션
 {: #existing-application }
-1. 기존 Cordova 프로젝트의 루트로 이동하고 {{ site.data.keys.product_adj }} 핵심 Cordova 플러그인을 추가하십시오.
+1. 기존 Cordova 프로젝트의 루트로 이동하고 {{ site.data.keys.product_adj }} 핵심 Cordova 플러그인을 추가하십시오. 
 
    ```bash
    cordova plugin add cordova-plugin-mfp
    ```
 
-2. **www\js** 폴더로 이동하고 **index.js** 파일을 선택하십시오.
+2. **www\js** 폴더로 이동하고 **index.js** 파일을 선택하십시오. 
 
-3. 다음 기능을 추가하십시오.
+3. 다음 기능을 추가하십시오. 
 
    ```javascript
    function wlCommonInit() {
@@ -136,22 +136,22 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
    ```
 
 {{ site.data.keys.product_adj }} API 메소드는 {{ site.data.keys.product_adj }} 클라이언트 SDK가 로드된 후에 사용 가능합니다. 그런 다음 `wlCommonInit` 기능이 호출됩니다.   
-이 기능으로 여러 {{ site.data.keys.product_adj }} API 메소드를 호출하십시오.
+이 기능으로 여러 {{ site.data.keys.product_adj }} API 메소드를 호출하십시오. 
 
 ### 애플리케이션 등록
 {: #registering-the-application }
 1. **명령행** 창을 열고 Cordova 프로젝트의 루트로 이동하십시오.   
 
-2. {{ site.data.keys.mf_server }}에 애플리케이션을 등록하십시오.
+2. {{ site.data.keys.mf_server }}에 애플리케이션을 등록하십시오. 
 
    ```bash
    mfpdev app register
    ```
-    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 추가하십시오.
+    - 원격 서버를 사용하는 경우 [`mfpdev server add` 명령을 사용](../../using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance)하여 추가하십시오. 
 
-`mfpdev app register` CLI 명령은 먼저 {{ site.data.keys.mf_server }}에 연결하여 애플리케이션을 등록한 후에 {{ site.data.keys.mf_server }}를 식별하는 메타데이터를 사용하여 Cordova 프로젝트의 루트에 있는 **config.xml** 파일을 업데이트합니다.
+`mfpdev app register` CLI 명령은 먼저 {{ site.data.keys.mf_server }}에 연결하여 애플리케이션을 등록한 후에 {{ site.data.keys.mf_server }}를 식별하는 메타데이터를 사용하여 Cordova 프로젝트의 루트에 있는 **config.xml** 파일을 업데이트합니다. 
 
-각 플랫폼은 {{ site.data.keys.mf_server }}에 애플리케이션으로 등록됩니다.
+각 플랫폼은 {{ site.data.keys.mf_server }}에 애플리케이션으로 등록됩니다. 
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **팁:** {{ site.data.keys.mf_console }}에서 애플리케이션을 등록할 수도 있습니다.     
 >
@@ -161,21 +161,20 @@ cordova-plugin-mfp-encrypt-utils 플러그인은 iOS 플랫폼에 Cordova 애플
 ### SDK 사용
 {: #using-the-sdk }
 {{ site.data.keys.product_adj }} API 메소드는 {{ site.data.keys.product_adj }} 클라이언트 SDK가 로드된 후에 사용 가능합니다. 그런 다음 `wlCommonInit` 기능이 호출됩니다.   
-이 기능으로 여러 {{ site.data.keys.product_adj }} API 메소드를 호출하십시오.
+이 기능으로 여러 {{ site.data.keys.product_adj }} API 메소드를 호출하십시오. 
 
 ## {{ site.data.keys.product_adj }} Cordova SDK 업데이트
-{: #updating-the-mobilefirst-cordova-sdk}
+{: updating-the-mobilefirst-cordova-sdk }
+최신 릴리스로 {{ site.data.keys.product_adj }} Cordova SDK를 업데이트하려면 **cordova-plugin-mfp** 플러그인을 다음과 같이 제거하십시오. `cordova plugin remove cordova-plugin-mfp` 명령을 실행한 후에 `cordova plugin add cordova-plugin-mfp` 명령을 실행하여 다시 추가하십시오. 
 
-최신 릴리스로 {{ site.data.keys.product_adj }} Cordova SDK를 업데이트하려면 **cordova-plugin-mfp** 플러그인을 다음과 같이 제거하십시오. `cordova plugin remove cordova-plugin-mfp` 명령을 실행한 후에 `cordova plugin add cordova-plugin-mfp` 명령을 실행하여 다시 추가하십시오.
-
-SDK 릴리스는 SDK의 [NPM 저장소](https://www.npmjs.com/package/cordova-plugin-mfp)에 있습니다.
+SDK 릴리스는 SDK의 [NPM 저장소](https://www.npmjs.com/package/cordova-plugin-mfp)에 있습니다. 
 
 ## 생성된 {{ site.data.keys.product_adj }} Cordova SDK 아티팩트
 {: #generated-mobilefirst-cordova-sdk-artifacts }
 ### config.xml
 {: #configxml }
 Cordova 구성 파일은 애플리케이션 메타데이터를 포함하고 앱의 루트 디렉토리에 저장되는 필수 XML 파일입니다.   
-프로젝트에 {{ site.data.keys.product_adj }} Cordova SDK가 추가되면 Cordova 생성 **config.xml** 파일은 `mfp:` 네임스페이스로 식별되는 새 요소 세트를 수신합니다. 추가되는 요소에는 {{ site.data.keys.product_adj }} 기능 및 {{ site.data.keys.mf_server }}에 관련된 정보가 포함됩니다.
+프로젝트에 {{ site.data.keys.product_adj }} Cordova SDK가 추가되면 Cordova 생성 **config.xml** 파일은 `mfp:` 네임스페이스로 식별되는 새 요소 세트를 수신합니다. 추가되는 요소에는 {{ site.data.keys.product_adj }} 기능 및 {{ site.data.keys.mf_server }}에 관련된 정보가 포함됩니다. 
 
 ### **config.xml** 파일에 추가되는 {{ site.data.keys.product_adj }} 설정 예제
 {: #example-of-mobilefirst-settings-added-to-the-configxml-file}
@@ -313,9 +312,9 @@ Cordova 구성 파일은 애플리케이션 메타데이터를 포함하고 앱�
     </div>
 </div>
 
-### config.xml 파일에서 {{site.data.keys.product_adj }} 설정 편집
+### config.xml 파일에서 {{ site.data.keys.product_adj }} 설정 편집
 {: #editing-mobilefirst-settings-in-the-configxml-file }
-{{ site.data.keys.mf_cli }}에서 다음 명령을 실행하여 위 설정을 편집할 수 있습니다.
+{{ site.data.keys.mf_cli }}에서 다음 명령을 실행하여 위 설정을 편집할 수 있습니다. 
 
 ```bash
 mfpdev app config
@@ -323,7 +322,7 @@ mfpdev app config
 
 ## 다음 학습서
 {: #tutorials-to-follow-next }
-이제 {{ site.data.keys.product_adj }} Cordova SDK가 통합되었으므로 다음을 수행할 수 있습니다.
+이제 {{ site.data.keys.product_adj }} Cordova SDK가 통합되었으므로 다음을 수행할 수 있습니다. 
 
 - [{{ site.data.keys.product }} SDK 사용 학습서](../) 검토
 - [어댑터 개발 학습서](../../../adapters/) 검토

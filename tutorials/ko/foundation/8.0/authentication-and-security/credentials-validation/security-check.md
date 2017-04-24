@@ -96,7 +96,7 @@ protected boolean validateCredentials(Map<String, Object> credentials) {
 
 ### Configuration 클래스
 {: #configuration-class }
-또한 adapter.xml 파일 및 {{site.data.keys.mf_console }}을 사용하여 유효한 PIN 코드를 구성할 수 있습니다. 
+또한 adapter.xml 파일 및 {{ site.data.keys.mf_console }}을 사용하여 유효한 PIN 코드를 구성할 수 있습니다. 
 
 `CredentialsValidationSecurityCheckConfig`를 확장하는 새로운 Java 클래스를 작성하십시오. 기본 구성을 상속하려면 상위 보안 검사 클래스와 일치하는 클래스를 확장하는 것이 중요합니다.
 

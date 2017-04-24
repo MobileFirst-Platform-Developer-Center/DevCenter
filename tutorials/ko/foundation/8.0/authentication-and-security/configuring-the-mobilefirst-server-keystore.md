@@ -52,25 +52,14 @@ JKS 파일을 생성합니다.
    keytool -keystore my_company.keystore -genkey -alias my_alias -keyalg RSA
    ```
     
-   유틸리티에
-키 저장소 파일의 비밀번호와 별명을 포함하여 다양한 입력 매개변수를
-지정하라는 메시지가 표시됩니다. 
+   유틸리티에 키 저장소 파일의 비밀번호와 별명을 포함하여 다양한 입력 매개변수를 지정하라는 메시지가 표시됩니다. 
 
-   > **참고:** 기본 DSA 대신에 생성된 키 알고리즘의 유형을 RSA로 설정하려면 `-keyalg RSA` 옵션을 설정해야 합니다.    어댑터와 백엔드 서버 사이에 상호 SSL 인증을 위한 키 저장소를 사용하려면 {{site.data.keys.product }} SSL-클라이언트 ID 별명을 키 저장소에 추가하십시오. {{ site.data.keys.mf_server }} ID 별명으로
-키 저장소 파일을 작성할 때 사용한 방법과 동일한 방법으로 이 작업을 수행할 수 있지만,
-대신 SSL 클라이언트 ID를 위한 비밀번호와 별명을 제공하십시오. 
+   > **참고:** 기본 DSA 대신에 생성된 키 알고리즘의 유형을 RSA로 설정하려면 `-keyalg RSA` 옵션을 설정해야 합니다.
 
-2. 키 저장소를 사용하도록 {{ site.data.keys.mf_server }}를 구성하십시오.
-{{ site.data.keys.mf_console }} 탐색 사이드바에서
-**런타임 설정**을 선택한 후 **키 저장소** 탭을 선택하십시오.
-사용자 정의 {{ site.data.keys.mf_server }}
-키 저장소를 구성하려면 이 탭에 나와 있는 지시사항을 따르십시오. 단계에는 키 저장소 파일을 업로드하고, 유형을 표시하고, 키 저장소 비밀번호, {{ site.data.keys.mf_server }} ID 별명의
-이름 및 별명 비밀번호를 제공하는 작업이 포함됩니다. 
+   어댑터와 백엔드 서버 사이에 상호 SSL 인증을 위한 키 저장소를 사용하려면 {{ site.data.keys.product }} SSL-클라이언트 ID 별명을 키 저장소에 추가하십시오. {{ site.data.keys.mf_server }} ID 별명으로 키 저장소 파일을 작성할 때 사용한 방법과 동일한 방법으로 이 작업을 수행할 수 있지만, 대신 SSL 클라이언트 ID를 위한 비밀번호와 별명을 제공하십시오. 
 
-성공적으로 구성하면 상태가
-"사용자 정의"로 변경됩니다. 그렇지 않으면, 오류가 표시되고 상태가
-"기본값"으로 유지됩니다. 
+2. 키 저장소를 사용하도록 {{ site.data.keys.mf_server }}를 구성하십시오. {{ site.data.keys.mf_console }} 탐색 사이드바에서 **런타임 설정**을 선택한 후 **키 저장소** 탭을 선택하십시오. 사용자 정의 {{ site.data.keys.mf_server }} 키 저장소를 구성하려면 이 탭에 나와 있는 지시사항을 따르십시오. 단계에는 키 저장소 파일을 업로드하고, 유형을 표시하고, 키 저장소 비밀번호, {{ site.data.keys.mf_server }} ID 별명의 이름 및 별명 비밀번호를 제공하는 작업이 포함됩니다. 
 
-SSL 클라이언트 ID 별명(사용된 경우) 및 해당 비밀번호는
-및 `<connectionPolicy>` 요소의 `<sslCertificatePassword>` 및 `<sslCertificateAlias>` 하위 요소 내 관련 어댑터의 디스크립터 파일에서 구성됩니다. [HTTP
-어댑터 connectionPolicy 요소](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)를 참조하십시오. 
+성공적으로 구성하면 상태가 "사용자 정의"로 변경됩니다. 그렇지 않으면, 오류가 표시되고 상태가 "기본값"으로 유지됩니다. 
+
+SSL 클라이언트 ID 별명(사용된 경우) 및 해당 비밀번호는 및 `<connectionPolicy>` 요소의 `<sslCertificatePassword>` 및 `<sslCertificateAlias>` 하위 요소 내 관련 어댑터의 디스크립터 파일에서 구성됩니다. [HTTP 어댑터 connectionPolicy 요소](../../adapters/javascript-adapters/js-http-adapter/#the-xml-file)를 참조하십시오. 

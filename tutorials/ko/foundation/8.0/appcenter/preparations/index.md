@@ -8,7 +8,7 @@ weight: 1
 <!-- NLS_CHARSET=UTF-8 -->
 ## 개요
 {: #overview }
-Appcenter 설치 프로그램 애플리케이션은 모바일 디바이스에 앱을 설치하는 데 사용됩니다. 제공된 Cordova 또는 MobileFirst Studio 프로젝트를 사용하여 이 애플리케이션을 생성하거나, 미리 빌드된 Android, iOS 또는 Windows 8 Universal용 MobileFirst Studio 프로젝트 버전을 직접 사용할 수 있습니다. 
+Appcenter 설치 프로그램 애플리케이션은 모바일 디바이스에 앱을 설치하는 데 사용됩니다. 제공된 Cordova, Visual Studio, MobileFirst Studio 프로젝트를 사용하여 이 애플리케이션을 생성하거나, Android, iOS 또는 Windows 8 Universal용으로 미리 빌드된 MobileFirst Studio 프로젝트 버전을 직접 사용할 수 있습니다. 
 
 #### 다음으로 이동
 {: #jump-to }
@@ -162,9 +162,29 @@ Windows 8 프로젝트를 빌드하려면 다음을 수행하십시오.
 
 Application Center 사용자에게 모바일 클라이언트를 배포하기 위해, 생성된 실행 파일(.exe) 및 해당 종속 동적 링크 라이브러리(.dll) 파일을 설치할 설치 프로그램을 나중에 생성할 수 있습니다. 또는 설치 프로그램에 포함시키지 않고 이러한 파일을 제공할 수 있습니다. 
 
+####  Microsoft Windows 10 Universal(기본) IBM AppCenter 클라이언트
+{: #microsoft-windows-10-universal-(native)-ibm-appcenter-client}
+
+기본 Window 10 Universal IBM AppCenter 클라이언트는 Windows 10 휴대폰에 Windows 10 Universal 앱을 설치하는 데 사용할 수 있습니다. Windows 데스크탑에 Windows 10 앱을 설치하는 데는 **IBMApplicationCenterWindowsStore**를 사용하십시오. 
+
+#### Microsoft Windows 10: 프로젝트 빌드
+{: #microsoft-windows-10-universal-building-the-project}
+
+Windows 10 Universal 프로젝트는 **IBMAppCenterUWP\IBMAppCenterUWP.csproj**에 있는 Visual Studio 프로젝트로 제공됩니다.              
+클라이언트 프로젝트를 배포하기 위해서는 먼저 이를 Microsoft Visual Studio 2015에서 빌드해야 합니다. 
+>프로젝트를 사용자에게 배포하려면 이를 먼저 빌드해야 합니다.
+
+Windows 10 Universal 프로젝트를 빌드하려면 다음 단계를 따르십시오. 
+1.  Microsoft Visual Studio 2015에서 이름이 **IBMAppCenterUWP\IBMAppCenterUWP.csproj**인 Visual Studio 프로젝트를 여십시오. 
++ 애플리케이션의 전체 빌드를 수행하십시오. 
++ 다음 단계를 사용하여 **.appx** 파일을 생성하십시오. 
+  * 프로젝트를 마우스 오른쪽 단추로 클릭하고 **스토어 → 앱 패키지 작성**을 선택하십시오. 
+
 ## 기능 사용자 정의(전문가용): Android, iOS, Windows Phone
 {: #customizing-features-for-experts-android-ios-windows-phone }
 중앙 특성 파일을 편집하고 일부 다른 자원을 조작하여 기능을 사용자 정의할 수 있습니다. 
+>이는 Android, iOS, Windows 8(Windows 스토어 패키지 한정) 또는 Windows Phone 8에서만 지원됩니다.
+
 
 기능을 사용자 정의하는 경우 일부 기능은 **IBMAppCenter/apps/AppCenter/common/js/appcenter/** 또는 **ApplicationCenter/installer/CordovaAppCenterClient/www/js/appcenter** 디렉토리의 **config.json**이라는 중앙 특성 파일에 의해 제어됩니다. 기본 애플리케이션 동작을 변경하려는 경우 프로젝트를 빌드하기 전에 이 특성 파일을 조정할 수 있습니다. 
 
@@ -194,12 +214,16 @@ Application Center 사용자에게 모바일 클라이언트를 배포하기 위
 * **Android:** Android Studio 프로젝트의 **/res/drawabledensity** 디렉토리(각 밀도에 대해 하나의 디렉토리가 있음)에 있는 **icon.png** 파일. 
 * **iOS:** Xcode 프로젝트의 **Resources** 디렉토리에 있는 **iconsize.png** 파일. 
 * **Windows Phone:** Windows Phone용 MobileFirst Studio 환경 폴더의 **native** 디렉토리에 있는 **ApplicationIcon.png**, **IconicTileSmallIcon.png** 및 **IconicTileMediumIcon.png** 파일. 
+* **Windows 10 Universal:** Visual Studio의 **IBMAppCenterUWP/Assets** 디렉토리에 있는, 이름이 **Square\*Logo\*.png**, **StoreLogo.png** 및 **Wide\*Logo\*.png**인 파일. 
+
 
 #### 애플리케이션 이름
 {: #application-name }
 * **Android:** Android Studio 프로젝트의 **res/values/strings.xml**에서 **app_name** 특성을 편집하십시오. 
 * **iOS:** Xcode 프로젝트의 **IBMAppCenterAppCenterIphone-Info.plist** 파일에서 **CFBundleDisplayName** 키를 편집하십시오. 
 * **Windows Phone:** Visual Studio의 **Properties/WMAppManifest.xml** 파일에서 App 항목의 **Title** 속성을 편집하십시오. 
+* **Windows 10 Universal:** Visual Studio의 **IBMAppCenterUWP/Package.appxmanifest** 파일에서 App 항목의 **Title** 속성을 편집하십시오. 
+
 
 #### 스플래시 화면 이미지
 {: #splash-screen-images }
@@ -207,6 +231,7 @@ Application Center 사용자에게 모바일 클라이언트를 배포하기 위
 * **iOS:** Xcode 프로젝트의 **Resources** 디렉토리에서 **Default-size.png** 파일을 편집하십시오. 
 * 자동 로그인 동안 표시되는 Cordova/MobileFirst Studio 기반 프로젝트의 스플래시 화면: **js/idx/mobile/themes/common/idx/Launch.css**
 * **Windows Phone:** Windows Phone용 MobileFirst Studio 환경 폴더의 **native** 디렉토리에서 **SplashScreenImage.png** 파일을 편집하십시오. 
+* **Windows 10 Universal:** Visual Studio의 **IBMAppCenterUWP/Assets** 디렉토리에 있는, 이름이 **SplashScreen*.png**인 파일을 편집하십시오. 
 
 #### 애플리케이션의 아이콘(단추, 별, 유사 오브젝트)
 {: #icons }
@@ -222,6 +247,6 @@ Application Center 사용자에게 모바일 클라이언트를 배포하기 위
 
 Windows 8 모바일 클라이언트는 나중에 분배하기 위해 Application Center에 배치하도록 설계되어 있지 않습니다. 아카이브로 직접 패키지된 클라이언트 .exe 실행 파일 및 동적 링크 라이브러리 .dll 파일을 사용자에게 제공하거나 Windows 8 모바일 클라이언트에 대한 실행 가능 설치 프로그램을 작성하여 Windows 8 모바일 클라이언트를 분배하도록 선택할 수 있습니다. 
 
-Android, iOS 및 Windows Phone 버전의 모바일 클라이언트를 Application Center에 배치해야 합니다. 이 작업을 수행하려면 Android 애플리케이션 패키지(.apk) 파일, iOS 애플리케이션(.ipa) 파일, Windows Phone 애플리케이션(.xap) 파일 및 웹 디렉토리 아카이브(.zip) 파일을 Application Center로 업로드해야 합니다. 
+Android, iOS, Windows Phone 및 Windows 10 Universal(휴대폰) 버전의 모바일 클라이언트를 Application Center에 배치해야 합니다. 이 작업을 수행하려면 Android 애플리케이션 패키지(.apk) 파일, iOS 애플리케이션(.ipa) 파일, Windows Phone 애플리케이션(.xap) 파일, Windows 10 Universal(.appx) 파일 또는 웹 디렉토리 아카이브(.zip) 파일을 Application Center에 업로드해야 합니다. 
 
-Android, iOS 및 Windows Phone용 모바일 클라이언트 애플리케이션을 추가하려면 [모바일 애플리케이션 추가](../appcenter-console/#adding-a-mobile-application)에 설명된 단계를 따르십시오. 애플리케이션이 설치 프로그램인 것을 표시하기 위해 설치 프로그램 애플리케이션 특성을 선택해야 합니다. 이 특성을 선택하면 모바일 디바이스 사용자가 무선으로 쉽게 모바일 클라이언트 애플리케이션을 설치할 수 있습니다. 모바일 클라이언트를 설치하려면 운영 체제에서 판별한 모바일 클라이언트 애플리케이션의 버전에 해당하는 관련 태스크를 참조하십시오. 
+Android, iOS 및 Windows Phone 및 Windows 10 Universal용 모바일 클라이언트 애플리케이션을 추가하려면 [모바일 애플리케이션 추가](../appcenter-console/#adding-a-mobile-application)에 설명된 단계를 따르십시오. 애플리케이션이 설치 프로그램인 것을 표시하기 위해 설치 프로그램 애플리케이션 특성을 선택해야 합니다. 이 특성을 선택하면 모바일 디바이스 사용자가 무선으로 쉽게 모바일 클라이언트 애플리케이션을 설치할 수 있습니다. 모바일 클라이언트를 설치하려면 운영 체제에서 판별한 모바일 클라이언트 애플리케이션의 버전에 해당하는 관련 태스크를 참조하십시오. 

@@ -57,7 +57,7 @@ ID는 개발자가 지정한 고유 ID입니다.
 
 앱의 대상 배치 플랫폼은 앱이 고유 앱으로 개발되었는지, 또는 Cordova 앱으로 개발되었는지 여부와 관계가 없습니다. 예를 들어 다음 앱은 둘 다 {{ site.data.keys.product }}에서 iOS 앱으로 간주됩니다. 
 
-* Xcode 및 고유 코드를 사용하여 개발되는 iOS 앱
+* Xcode 및 네이티브 코드를 사용하여 개발되는 iOS 앱
 * Cordova 크로스 플랫폼 개발 기술을 사용하여 개발되는 iOS 앱
 
 > **참고:** Xcode 8을 사용하는 경우 iOS 시뮬레이터에서 iOS 앱을 실행 중이면 **키 체인 공유** 기능은 필수입니다. 이 기능을 수동으로 사용하도록 설정한 후에 Xcode 프로젝트를 빌드해야 합니다.
@@ -73,13 +73,13 @@ ID는 개발자가 지정한 고유 ID입니다.
 
 > [{{ site.data.keys.product }} SDK 학습서 추가](sdk)에서 {{ site.data.keys.product_adj }} vlient SDK를 추가하는 방법에 대해 알아보십시오.
 
-애플리케이션을 빌드하기 전에 클라이언트 구성을 정의해야 합니다. 클라이언트-앱 구성 특성은 {{site.data.keys.mf_server }} 런타임 시 이 앱에 대해 정의된 특성과 일치해야 합니다. 예를 들어 클라이언트 구성의 보안 키는 서버의 키와 일치해야 합니다. 웹 앱이 아닌 항목의 경우 {{ site.data.keys.mf_cli }}를 사용하여 클라이언트 구성을 변경할 수 있습니다. 
+애플리케이션을 빌드하기 전에 클라이언트 구성을 정의해야 합니다. 클라이언트-앱 구성 특성은 {{ site.data.keys.mf_server }} 런타임 시 이 앱에 대해 정의된 특성과 일치해야 합니다. 예를 들어 클라이언트 구성의 보안 키는 서버의 키와 일치해야 합니다. 웹 앱이 아닌 항목의 경우 {{ site.data.keys.mf_cli }}를 사용하여 클라이언트 구성을 변경할 수 있습니다. 
 
 앱의 서버 구성은 앱 ID, 버전 번호 및 대상 플랫폼의 조합과 관련이 있습니다. 앱에 대한 서버 측 구성을 추가하려면 먼저 {{ site.data.keys.mf_server }} 런타임에 앱을 등록해야 합니다. 앱의 서버 측 구성은 일반적으로 {{ site.data.keys.mf_console }}을 사용하여 수행됩니다. 다음 메소드를 사용하여 앱의 서버 측을 구성할 수도 있습니다. 
 
 * `mfpdev app pull` 명령을 사용하여 서버에서 기존 JSON 구성 파일을 가져오고 파일을 업데이트한 후 `mfpdev app push` 명령을 사용하여 변경된 구성을 업로드하십시오. 
 * **mfpadm** 프로그램 또는 Ant 태스크를 사용하십시오. mfpadm 사용에 대한 정보는 [명령행을 통한 {{ site.data.keys.product_adj }} 애플리케이션 관리](../administering-apps/using-cli) 및 [Ant를 통한 {{ site.data.keys.product_adj }} 애플리케이션 관리](../administering-apps/using-ant)를 참조하십시오. 
-* {{ site.data.keys.product_adj }} 관리 서비스의 REST API를 사용하십시오. REST API에 대한 정보는 [REST API for the {{ site.data.keys.mf_server }} administration service](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/c_restapi_oview.html?view=kc#restservicesapi)를 참조하십시오. 
+* {{ site.data.keys.product_adj }} 관리 서비스의 REST API를 사용하십시오. REST API에 대한 정보는 [REST API for the {{ site.data.keys.mf_server }} administration service](../api/rest/administration-service/)를 참조하십시오. 
 
 이러한 메소드를 사용하여 {{ site.data.keys.mf_server }}의 구성을 자동화할 수도 있습니다. 
 
