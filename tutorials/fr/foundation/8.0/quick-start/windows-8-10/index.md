@@ -125,8 +125,8 @@ La réponse de l'adaptateur est ensuite envoyée dans la console de sortie de Vi
 {: #next-steps }
 Pour en savoir plus notamment sur l'utilisation d'adaptateurs dans des applications et sur le mode d'intégration de services supplémentaires (notifications Push, par exemple) à l'aide de l'infrastructure de sécurité {{ site.data.keys.product_adj }} :
 
-- Consultez les tutoriels [Developing Applications](../../application-development/) 
-- Consultez les tutoriels [Adapters development](../../adapters/) 
+- Consultez les tutoriels [Developing Applications](../../application-development/)
+- Consultez les tutoriels [Adapters development](../../adapters/)
 - Consultez les tutoriels [Authentication and security](../../authentication-and-security/)
 - Consultez les tutoriels [Notifications](../../notifications/)
 - Consultez [tous les tutoriels](../../all-tutorials)
