@@ -171,9 +171,9 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 </table>
 
 ## サーバー・サイド API の変更
-{: server-side-api-changes }
+{: #server-side-api-changes }
 {{ site.data.keys.product_adj }} アプリケーションのサーバー・サイドをマイグレーションするには、API の変更を考慮に入れてください。  
-以下の表は、v8.0 で使用が中止されたサーバー・サイド API エレメント、v8.0 で非推奨となったサーバー・サイド API エレメント、および推奨されるマイグレーション・パスをリストしたものです。アプリケーションのサーバー・サイドのマイグレーションについての詳細情報があります。 
+以下の表は、v8.0 で使用が中止されたサーバー・サイド API エレメント、v8.0 で非推奨となったサーバー・サイド API エレメント、および推奨されるマイグレーション・パスをリストしたものです。アプリケーションのサーバー・サイドのマイグレーションについての詳細情報があります。
 
 ### v8.0 で使用が中止された JavaScript API エレメント
 {: #javascript-api-elements-discontinued-v-v-80 }
@@ -183,7 +183,7 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | API エレメント                         | 置換パス                               |
 |------------------------------------|------------------------------------------------|
 | `WL.Server.getActiveUser`, `WL.Server.getCurrentUserIdentity`,  `WL.Server.getCurrentDeviceIdentity`, `WL.Server.setActiveUser`, `WL.Server.getClientId`, `WL.Server.getClientDeviceContext`, `WL.Server.setApplicationContext` | 代わりに `MFP.Server.getAuthenticatedUser` を使用してください。 |
- 
+
 #### イベント・ソース
 {: #event-source }
 
@@ -191,7 +191,7 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 |------------------------------------|------------------------------------------------|
 | `WL.Server.createEventSource`	     | 代わりに `MFP.Server.getAuthenticatedUser` を使用してください。 |
 | `WL.Server.setEventHandlers`         | イベント・ソース・ベースの通知からタグ・ベースの通知にマイグレーションするには、『イベント・ソース・ベースの通知からプッシュ通知へのマイグレーション』を参照してください。                                                     |
-| `WL.Server.createEventHandler`       |                                                |	
+| `WL.Server.createEventHandler`       |                                                |
 | `WL.Server.createSMSEventHandler`	 | SMS メッセージを送信するには、プッシュ・サービス REST API を使用します。詳しくは、[通知の送信](../../../notifications/sending-notifications)を参照してください。                         |
 | `WL.Server.createUSSDEventHandler`	 | サード・パーティー・サービスを使用して USSD を統合します。  |
 
@@ -245,10 +245,10 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | `com.worklight.adapters.rest.api` パッケージの `AdaptersAPI` インターフェース | 代わりに、`com.ibm.mfp.adapter.api` パッケージの `AdaptersAPI` インターフェースを使用してください。 |
 | `com.worklight.adapters.rest.api` パッケージの `AnalyticsAPI` インターフェース | 代わりに、`com.ibm.mfp.adapter.api` パッケージの `AnalyticsAPI` インターフェースを使用してください。 |
 | `com.worklight.adapters.rest.api` パッケージの `ConfigurationAPI` インターフェース | 代わりに、`com.ibm.mfp.adapter.api` パッケージの `ConfigurationAPI` インターフェースを使用してください。 |
-| `com.worklight.core.auth` パッケージの `OAuthSecurity` アノテーション | 代わりに、`com.ibm.mfp.adapter.api` パッケージの `OAuthSecurity` アノテーションを使用してください。 | 
+| `com.worklight.core.auth` パッケージの `OAuthSecurity` アノテーション | 代わりに、`com.ibm.mfp.adapter.api` パッケージの `OAuthSecurity` アノテーションを使用してください。 |
 | `com.worklight.wink.extensions` パッケージの `MFPJAXRSApplication` クラス | 代わりに、`com.ibm.mfp.adapter.api` パッケージの `MFPJAXRSApplication` クラスを使用してください。 |
 | `com.worklight.adapters.rest.api` パッケージの `WLServerAPI` インターフェース | JAX-RS `Context` アノテーションを使用して、{{ site.data.keys.product_adj }} API インターフェースに直接アクセスしてください。 |
-| `com.worklight.adapters.rest.api` パッケージの `WLServerAPIProvider` クラス | JAX-RS `Context` アノテーションを使用して、{{ site.data.keys.product_adj }} API インターフェースに直接アクセスしてください。 | 
+| `com.worklight.adapters.rest.api` パッケージの `WLServerAPIProvider` クラス | JAX-RS `Context` アノテーションを使用して、{{ site.data.keys.product_adj }} API インターフェースに直接アクセスしてください。 |
 
 ## クライアント・サイド API の変更
 {: #client-side-api-changes }
@@ -266,7 +266,7 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | `WL.App.copyToClipboard()` | この機能を提供する Cordova プラグインを使用してください。 |
 | `WL.App.openUrl(url, target, options)` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、Cordova の **InAppBrowser** プラグインがこの機能を提供しています。 |
 | `WL.App.overrideBackButton(callback)`, `WL.App.resetBackButton()` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、Cordova の **backbutton** プラグインがこの機能を提供しています。 |
-| `WL.App.getDeviceLanguage()` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、Cordova の **cordova-plugin-globalization** プラグインがこの機能を提供しています。 | 
+| `WL.App.getDeviceLanguage()` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、Cordova の **cordova-plugin-globalization** プラグインがこの機能を提供しています。 |
 | `WL.App.getDeviceLocale()` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、Cordova の **cordova-plugin-globalization** プラグインがこの機能を提供しています。 |
 | `WL.App.BackgroundHandler` | カスタム・ハンドラー関数を実行するには、標準 Cordova pause イベント・リスナーを使用してください。プライバシーを保護し、iOS システム、Android システム、およびユーザーがスナップショットまたは画面キャプチャーを取るのを防止する Cordova プラグインを使用します。詳しくは、**[PrivacyScreenPlugin](https://github.com/devgeeks/PrivacyScreenPlugin)**の説明を参照してください。 |
 | `WL.Client.close`, `WL.Client.restore`, `WL.Client.minimize` | これらの関数は、{{ site.data.keys.product }} V8.0.0 でサポートされていない Adobe AIR プラットフォームをサポートするために提供されていました。 |
@@ -276,50 +276,50 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 
 | API エレメント           | マイグレーション・パス                           |
 |-----------------------|------------------------------------------|
-| `WL.Client.checkForDirectUpdate(options)` | 代替はありません。**注:** ダイレクト・アップデートが使用可能な場合は、`WLAuthorizationManager.obtainAccessToken` を呼び出してトリガーすることができます。サーバーでダイレクト・アップデートが使用可能な場合は、セキュリティー・トークンにアクセスするとダイレクト・アップデートがトリガーされます。ただし、ダイレクト・アップデートをオンデマンドでトリガーすることはできません。 | 
+| `WL.Client.checkForDirectUpdate(options)` | 代替はありません。**注:** ダイレクト・アップデートが使用可能な場合は、`WLAuthorizationManager.obtainAccessToken` を呼び出してトリガーすることができます。サーバーでダイレクト・アップデートが使用可能な場合は、セキュリティー・トークンにアクセスするとダイレクト・アップデートがトリガーされます。ただし、ダイレクト・アップデートをオンデマンドでトリガーすることはできません。 |
 | `WL.Client.setSharedToken({key: myName, value: myValue})`, `WL.Client.getSharedToken({key: myName})`, `WL.Client.clearSharedToken({key: myName})` | 代替はありません。 |
-| `WL.Client.isConnected()`, `connectOnStartup` init option | `WLAuthorizationManager.obtainAccessToken` を使用してサーバーへの接続を検査し、アプリケーション管理ルールを適用します。 | 
-| `WL.Client.setUserPref(key,value, options)`, `WL.Client.setUserPrefs(userPrefsHash, options)`, `WL.Client.deleteUserPrefs(key, options)` | 代替はありません。アダプターおよび `MFP.Server.getAuthenticatedUser` API を使用してユーザー設定を管理することができます。 | 
+| `WL.Client.isConnected()`, `connectOnStartup` init option | `WLAuthorizationManager.obtainAccessToken` を使用してサーバーへの接続を検査し、アプリケーション管理ルールを適用します。 |
+| `WL.Client.setUserPref(key,value, options)`, `WL.Client.setUserPrefs(userPrefsHash, options)`, `WL.Client.deleteUserPrefs(key, options)` | 代替はありません。アダプターおよび `MFP.Server.getAuthenticatedUser` API を使用してユーザー設定を管理することができます。 |
 | `WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` | 代替はありません。 |
-| `WL.Client.logActivity(activityType)` | `WL.Logger` を使用してください。 | 
+| `WL.Client.logActivity(activityType)` | `WL.Logger` を使用してください。 |
 | `WL.Client.login(realm, options)` | `WLAuthorizationManager.login` を使用してください。認証およびセキュリティーを開始するには、『認証およびセキュリティー』のチュートリアルを参照してください。 |
-| `WL.Client.logout(realm, options)` | `WLAuthorizationManager.logout` を使用してください。 | 
+| `WL.Client.logout(realm, options)` | `WLAuthorizationManager.logout` を使用してください。 |
 | `WL.Client.obtainAccessToken(scope, onSuccess, onFailure)` | `WLAuthorizationManager.obtainAccessToken` を使用してください。 |
 | `WL.Client.transmitEvent(event, immediate)`, `WL.Client.purgeEventTransmissionBuffer()`, `WL.Client.setEventTransmissionPolicy(policy)` | これらのイベントの通知を受け取るためのカスタム・アダプターを作成してください。 |
-| `WL.Device.getContext()`, `WL.Device.startAcquisition(policy, triggers, onFailure)`, `WL.Device.stopAcquisition()`, `WL.Device.Wifi`, `WL.Device.Geo.Profiles`, `WL.Geo` | GeoLocation 用のネイティブ API またはサード・パーティーの Cordova プラグインを使用します。 | 
-| `WL.Client.makeRequest (url, options)` | 同じ機能を提供するカスタム・アダプターを作成してください。 | 
+| `WL.Device.getContext()`, `WL.Device.startAcquisition(policy, triggers, onFailure)`, `WL.Device.stopAcquisition()`, `WL.Device.Wifi`, `WL.Device.Geo.Profiles`, `WL.Geo` | GeoLocation 用のネイティブ API またはサード・パーティーの Cordova プラグインを使用します。 |
+| `WL.Client.makeRequest (url, options)` | 同じ機能を提供するカスタム・アダプターを作成してください。 |
 | `WLDevice.getID(options)` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、c**ordova-plugin-device** プラグインからの `device.uuid` がこの機能を提供しています。 |
-| `WL.Device.getFriendlyName()` | `WL.Client.getDeviceDisplayName` を使用してください。 | 
+| `WL.Device.getFriendlyName()` | `WL.Client.getDeviceDisplayName` を使用してください。 |
 | `WL.Device.setFriendlyName()` | `WL.Client.setDeviceDisplayName` を使用してください。 |
-| `WL.Device.getNetworkInfo(callback)` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、**cordova-plugin-network-information** プラグインがこの機能を提供しています。 | 
+| `WL.Device.getNetworkInfo(callback)` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、**cordova-plugin-network-information** プラグインがこの機能を提供しています。 |
 | `WLUtils.wlCheckReachability()` | サーバーの可用性を検査するカスタム・アダプターを作成してください。 |
-| `WL.EncryptedCache` | JSONStore を使用して暗号化されたデータをローカルに保管します。JSONStore は **cordova-plugin-mfp-jsonstore** プラグインに含まれています。詳しくは、『[JSONStore](../../../application-development/jsonstore)』を参照してください。 | 
+| `WL.EncryptedCache` | JSONStore を使用して暗号化されたデータをローカルに保管します。JSONStore は **cordova-plugin-mfp-jsonstore** プラグインに含まれています。詳しくは、『[JSONStore](../../../application-development/jsonstore)』を参照してください。 |
 | `WL.SecurityUtils.remoteRandomString(bytes)` | 同じ機能を提供するカスタム・アダプターを作成してください。 |
-| `WL.Client.getAppProperty(property)` | **cordova-plugin-appversion** プラグインを使用して、アプリケーション・バージョン・プロパティーを取得できます。返されるバージョンは、ネイティブ・アプリケーション・バージョンです (Android および iOS のみ)。 | 
-| `WL.Client.Push.*` | **cordova-plugin-mfp-push** プラグインの JavaScript クライアント・サイドのプッシュ API を使用してください。 | 
+| `WL.Client.getAppProperty(property)` | **cordova-plugin-appversion** プラグインを使用して、アプリケーション・バージョン・プロパティーを取得できます。返されるバージョンは、ネイティブ・アプリケーション・バージョンです (Android および iOS のみ)。 |
+| `WL.Client.Push.*` | **cordova-plugin-mfp-push** プラグインの JavaScript クライアント・サイドのプッシュ API を使用してください。 |
 | `WL.Client.Push.subscribeSMS(alias, adapterName, eventSource, phoneNumber, options)` | `MFPPush.registerDevice(org.json.JSONObject options, MFPPushResponseListener listener)` を使用してプッシュおよび SMS 用のデバイスを登録します。 |
 | `WLAuthorizationManager.obtainAuthorizationHeader(scope)` | `WLAuthorizationManager.obtainAccessToken` を使用して、必要なスコープのトークンを取得します。 |
-| `WLClient.getLastAccessToken(scope)` | `WLAuthorizationManager.obtainAccessToken` を使用してください。 | 
-| `WLClient.getLoginName()`, `WL.Client.getUserName(realm)` | 代替はありません。 | 
-| `WL.Client.getRequiredAccessTokenScope(status, header)` | `WLAuthorizationManager.isAuthorizationRequired` および `WLAuthorizationManager.getResourceScope` を使用してください。 | 
+| `WLClient.getLastAccessToken(scope)` | `WLAuthorizationManager.obtainAccessToken` を使用してください。 |
+| `WLClient.getLoginName()`, `WL.Client.getUserName(realm)` | 代替はありません。 |
+| `WL.Client.getRequiredAccessTokenScope(status, header)` | `WLAuthorizationManager.isAuthorizationRequired` および `WLAuthorizationManager.getResourceScope` を使用してください。 |
 | `WL.Client.isUserAuthenticated(realm)` | 代替はありません。 |
-| `WLUserAuth.deleteCertificate(provisioningEntity)` | 代替はありません。 | 
+| `WLUserAuth.deleteCertificate(provisioningEntity)` | 代替はありません。 |
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | 代替はありません。 |
-| `WL.Client.createChallengeHandler(realmName)` | カスタム・ゲートウェイ・チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、`WL.Client.createGatewayChallengeHandler(gatewayName)` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)` を使用します。 | 
-| `WL.Client.createWLChallengeHandler(realmName)` | `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)` を使用します。 | 
-| `challengeHandler.isCustomResponse()`。ここで、challengeHandler は、`WL.Client.createChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 | `gatewayChallengeHandler.canHandleResponse()` を使用します。ここで、`gatewayChallengeHandler` は、`WL.Client.createGatewayChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 | 
-| `wlChallengeHandler.processSucccess()` ここで、`wlChallengeHandler` は `WL.Client.createWLChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 | `securityCheckChallengeHandler.handleSuccess()` を使用します。ここで、`securityCheckChallengeHandler` は、`WL.Client.createSecurityCheckChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 | 
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`WL.Client.createGatewayChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`WL.Client.createSecurityCheckChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。 | 
-| `WL.Client.createProvisioningChallengeHandler()` | 代替はありません。デバイス・プロビジョニングは、自動的にセキュリティー・フレームワークによって処理されるようになりました。 | 
+| `WL.Client.createChallengeHandler(realmName)` | カスタム・ゲートウェイ・チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、`WL.Client.createGatewayChallengeHandler(gatewayName)` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジを処理するためのチャレンジ・ハンドラーを作成するには、`WL.Client.createSecurityCheckChallengeHandler(securityCheckName)` を使用します。 |
+| `WL.Client.createWLChallengeHandler(realmName)` | `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)` を使用します。 |
+| `challengeHandler.isCustomResponse()`。ここで、challengeHandler は、`WL.Client.createChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 | `gatewayChallengeHandler.canHandleResponse()` を使用します。ここで、`gatewayChallengeHandler` は、`WL.Client.createGatewayChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 |
+| `wlChallengeHandler.processSucccess()` ここで、`wlChallengeHandler` は `WL.Client.createWLChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 | `securityCheckChallengeHandler.handleSuccess()` を使用します。ここで、`securityCheckChallengeHandler` は、`WL.Client.createSecurityCheckChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトです。 |
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`WL.Client.createGatewayChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`WL.Client.createSecurityCheckChallengeHandler()` によって返されるチャレンジ・ハンドラー・オブジェクトを使用します。 |
+| `WL.Client.createProvisioningChallengeHandler()` | 代替はありません。デバイス・プロビジョニングは、自動的にセキュリティー・フレームワークによって処理されるようになりました。 |
 
 #### 非推奨になった JavaScript API
 {: #deprecated-javascript-apis }
 
 | API エレメント           | マイグレーション・パス                           |
 |-----------------------|------------------------------------------|
-| `WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)`, `WL.Client.invokeProcedure(invocationData, options)`, `WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)`, `WLProcedureInvocationResult` | 代わりに `WLResourceRequest` を使用してください。**注:** `invokeProcedure` の実装は、`WLResourceRequest` を使用します。 | 
-| `WLClient.getEnvironment` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、**device.platform** プラグインがこの機能を提供しています。 | 
-| `WLClient.getLanguage` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、**cordova-plugin-globalization** プラグインがこの機能を提供しています。 | 
+| `WLClient.invokeProcedure(WLProcedureInvocationData invocationData,WLResponseListener responseListener)`, `WL.Client.invokeProcedure(invocationData, options)`, `WLClient.invokeProcedure(WLProcedureInvocationData invocationData, WLResponseListener responseListener, WLRequestOptions requestOptions)`, `WLProcedureInvocationResult` | 代わりに `WLResourceRequest` を使用してください。**注:** `invokeProcedure` の実装は、`WLResourceRequest` を使用します。 |
+| `WLClient.getEnvironment` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、**device.platform** プラグインがこの機能を提供しています。 |
+| `WLClient.getLanguage` | この機能を提供する Cordova プラグインを使用してください。**注:** ご参考までに、**cordova-plugin-globalization** プラグインがこの機能を提供しています。 |
 | `WL.Client.connect(options)` | `WLAuthorizationManager.obtainAccessToken` を使用してサーバーへの接続を検査し、アプリケーション管理ルールを適用します。 |
 
 ### Android API
@@ -338,15 +338,15 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | `WLClient.logout(java.lang.String realmName, WLRequestListener listener, WLRequestOptions options)`, `WLClient.logout(java.lang.String realmName, WLRequestListener listener)` | `AuthorizationManager.logout()` を使用してください。 |
 | `WLClient.obtainAccessToken(java.lang.String scope,WLResponseListener responseListener)` | `WLAuthorizationManager.obtainAccessToken(String, WLAccessTokenListener)` を使用してサーバーへの接続を検査し、アプリケーション管理ルールを適用します。 |
 | `WLClient.getLastAccessToken()`, `WLClient.getLastAccessToken(java.lang.String scope)` | `AuthorizationManager` を使用してください。 |
-| `WLClient.getRequiredAccessTokenScope(int status, java.lang.String header)` | `AuthorizationManager` を使用してください。 | 
+| `WLClient.getRequiredAccessTokenScope(int status, java.lang.String header)` | `AuthorizationManager` を使用してください。 |
 | `WLClient.logActivity(java.lang.String activityType)` | `com.worklight.common.Logger` を使用してください。詳しくは、『ロガー SDK』を参照してください。 |
 | `WLAuthorizationPersistencePolicy` | 代替はありません。許可パーシスタンスを実装するには、許可トークンをアプリケーション・コードに保管し、カスタム HTTP 要求を作成します。 |
 | `WLSimpleSharedData.setSharedToken(myName, myValue)`, `WLSimpleSharedData.getSharedToken(myName)`, `WLSimpleSharedData.clearSharedToken(myName)` | Android API を使用して、アプリケーション間でトークンを共有してください。 |
 | `WLUserCertificateManager.deleteCertificate(android.content.Context context)` | 代替はありません。 |
-| `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | `BaseChallengeHandler.cancel()` を使用します。 | 
+| `BaseChallengeHandler.submitFailure(WLResponse wlResponse)` | `BaseChallengeHandler.cancel()` を使用します。 |
 | `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
 | `WLChallengeHandler` | `SecurityCheckChallengeHandler` を使用します。 |
-| `ChallengeHandler.isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()` を使用します。 | 
+| `ChallengeHandler.isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()` を使用します。 |
 | `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。 |
 
 #### 非推奨になった Android API
@@ -363,14 +363,14 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | API エレメント           | マイグレーション・パス                           |
 |-----------------------|------------------------------------------|
 | `org.apache.http.Header[]` は非推奨になっています。そのため、以下のメソッドは削除されました。||
-| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 代わりに、新しい `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API を使用してください。 | 
-| `WLResourceRequest.addHeader(org.apache.http.Header header)` | 代わりに、新しい `WLResourceRequest.addHeader(String name, String value)` API を使用してください。 | 
-| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 代わりに、新しい `List<String> WLResourceRequest.getHeaders(String headerName)` API を使用してください。 | 
-| `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | 代わりに、新しい `WLResourceRequest.getHeaders(String headerName)` API を使用してください。 | 
-| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 代わりに、新しい `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API を使用してください。 | 
-| `WLResourceRequest.setHeader(org.apache.http.Header header)` | 代わりに、新しい `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API を使用してください。 | 
-| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | `java.net.CookieStore getCookieStore WLClient.getCookieStore()` に置き換えられました。 | 
-| `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 代替はありません。MFP クライアントでは、サーキュラー・リダイレクトが許可されます。 | 
+| `org.apache.http.Header[] WLResourceRequest.getAllHeaders()` | 代わりに、新しい `Map<String, List<String>> WLResourceRequest.getAllHeaders()` API を使用してください。 |
+| `WLResourceRequest.addHeader(org.apache.http.Header header)` | 代わりに、新しい `WLResourceRequest.addHeader(String name, String value)` API を使用してください。 |
+| `org.apache.http.Header[] WLResourceRequest.getHeaders(java.lang.String headerName)` | 代わりに、新しい `List<String> WLResourceRequest.getHeaders(String headerName)` API を使用してください。 |
+| `org.apache.http.Header WLResourceRequest.getFirstHeader(java.lang.String headerName)` | 代わりに、新しい `WLResourceRequest.getHeaders(String headerName)` API を使用してください。 |
+| `WLResourceRequest.setHeaders(org.apache.http.Header[] headers)` | 代わりに、新しい `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API を使用してください。 |
+| `WLResourceRequest.setHeader(org.apache.http.Header header)` | 代わりに、新しい `WLResourceRequest.setHeaders(Map<String, List<String>> headerMap)` API を使用してください。 |
+| `org.apache.http.client.CookieStore WLClient.getCookieStore()` | `java.net.CookieStore getCookieStore WLClient.getCookieStore()` に置き換えられました。 |
+| `WLClient.setAllowHTTPClientCircularRedirect(boolean isSet)` | 代替はありません。MFP クライアントでは、サーキュラー・リダイレクトが許可されます。 |
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | 非推奨になった Apache HTTP クライアント依存関係のために削除されました。要求および応答を完全に制御できる独自の要求を作成してください。 |
 
 #### `com.worklight.androidgap.api` パッケージは、Cordova アプリケーションに Android プラットフォーム機能を提供します。{{ site.data.keys.product }} では、Cordova 統合に対応するために多くの変更が行われました。
@@ -384,30 +384,30 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 
 ### Objective-C API
 {: #objective-c-apis }
-#### 使用が中止された iOS Objective C API 
+#### 使用が中止された iOS Objective C API
 {: #discontinued-ios-objective-c-apis }
 
 | API エレメント           | マイグレーション・パス                           |
 |-----------------------|------------------------------------------|
 | `[WLClient getWLDevice][WLClient transmitEvent:]`, `[WLClient setEventTransmissionPolicy]`, `[WLClient purgeEventTransmissionBuffer]` | 地理位置情報は削除されました。GeoLocation 用のネイティブ iOS またはサード・パーティー・パッケージを使用してください。 |
 | `WL.Client.getUserInfo(realm, key)`, `WL.Client.updateUserInfo(options)` | 代替はありません。 |
-| `WL.Client.deleteUserPref(key, options)` | 代替はありません。アダプターおよび `MFP.Server.getAuthenticatedUser` API を使用してユーザー設定を管理することができます。 | 
+| `WL.Client.deleteUserPref(key, options)` | 代替はありません。アダプターおよび `MFP.Server.getAuthenticatedUser` API を使用してユーザー設定を管理することができます。 |
 | `[WLClient getRequiredAccessTokenScopeFromStatus]` | `WLAuthorizationManager obtainAccessTokenForScope` を使用してください。 |
-| `[WLClient login:withDelegate:]` | `WLAuthorizationManager login` を使用してください。 | 
-| `[WLClient logout:withDelegate:]` | `WLAuthorizationManager logout` を使用してください。 | 
-| `[WLClient lastAccessToken]`, `[WLClient lastAccessTokenForScope:]` | `WLAuthorizationManager obtainAccessTokenForScope` を使用してください。 | 
-| `[WLClient obtainAccessTokenForScope:withDelegate:]`, `[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]` | `WLAuthorizationManager obtainAccessTokenForScope` を使用してください。 | 
-| `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString *) eventSource` | IBMMobileFirstPlatformFoundationPush フレームワークの iOS アプリケーション用 Objective-C クライアント・サイド・プッシュ API を使用してください。 | 
+| `[WLClient login:withDelegate:]` | `WLAuthorizationManager login` を使用してください。 |
+| `[WLClient logout:withDelegate:]` | `WLAuthorizationManager logout` を使用してください。 |
+| `[WLClient lastAccessToken]`, `[WLClient lastAccessTokenForScope:]` | `WLAuthorizationManager obtainAccessTokenForScope` を使用してください。 |
+| `[WLClient obtainAccessTokenForScope:withDelegate:]`, `[WLClient getRequiredAccessTokenScopeFromStatus:authenticationHeader:]` | `WLAuthorizationManager obtainAccessTokenForScope` を使用してください。 |
+| `[WLClient isSubscribedToAdapter:(NSString *) adaptereventSource:(NSString *) eventSource` | IBMMobileFirstPlatformFoundationPush フレームワークの iOS アプリケーション用 Objective-C クライアント・サイド・プッシュ API を使用してください。 |
 | `[WLClient - (int) getEventSourceIDFromUserInfo: (NSDictionary *) userInfo]` | IBMMobileFirstPlatformFoundationPush フレームワークの iOS アプリケーション用 Objective-C クライアント・サイド・プッシュ API を使用してください。 |
-| `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | 非推奨。代わりに `WLResourceRequest` を使用してください。 | 
-| `WLClient sendUrlRequest:delegate:]` | 代わりに `[WLResourceRequest sendWithDelegate:delegate]` を使用してください。 | 
+| `[WLClient invokeProcedure: (WLProcedureInvocationData *) ]` | 非推奨。代わりに `WLResourceRequest` を使用してください。 |
+| `WLClient sendUrlRequest:delegate:]` | 代わりに `[WLResourceRequest sendWithDelegate:delegate]` を使用してください。 |
 | `[WLClient (void) logActivity:(NSString *) activityType]` | 削除されました。Objective C ロガーを使用してください。 |
 | `[WLSimpleDataSharing setSharedToken: myName value: myValue]`, `[WLSimpleDataSharing getSharedToken: myName]]`, `[WLSimpleDataSharing clearSharedToken: myName]` | OS API を使用して、アプリケーション間でトークンを共有してください。 |
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | `BaseChallengeHandler.cancel()` を使用します。 |
-| `BaseProvisioningChallengeHandler` | 代替はありません。デバイス・プロビジョニングは、自動的にセキュリティー・フレームワークによって処理されるようになりました。 | 
+| `BaseProvisioningChallengeHandler` | 代替はありません。デバイス・プロビジョニングは、自動的にセキュリティー・フレームワークによって処理されるようになりました。 |
 | `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
-| `WLChallengeHandler` | `SecurityCheckChallengeHandler` を使用します。 | 
-| `ChallengeHandler.isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()` を使用します。 | 
+| `WLChallengeHandler` | `SecurityCheckChallengeHandler` を使用します。 |
+| `ChallengeHandler.isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()` を使用します。 |
 | `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler` を使用します。 |
 
 ### Windows C# API
@@ -418,18 +418,18 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | API エレメント           | マイグレーション・パス                           |
 |-----------------------|------------------------------------------|
 | `ChallengeHandler` | カスタム・ゲートウェイ・チャレンジには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジには、`SecurityCheckChallengeHandler` を使用します。 |
-| `ChallengeHandler.isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()` を使用します。 | 
-| `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler` を使用します。 | 
-| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler.Shouldcancel()` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler.ShouldCancel()` を使用します。 | 
-| `WLAuthorizationManager` | 代わりに、`WorklightClient.WorklightAuthorizationManager` を使用してください。 | 
+| `ChallengeHandler.isCustomResponse()` | `GatewayChallengeHandler.canHandleResponse()` を使用します。 |
+| `ChallengeHandler.submitAdapterAuthentication ` | チャレンジ・ハンドラーで同様のロジックを実装してください。カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler` を使用します。 |
+| `ChallengeHandler.submitFailure(WLResponse wlResponse)` | カスタム・ゲートウェイ・チャレンジ・ハンドラーには、`GatewayChallengeHandler.Shouldcancel()` を使用します。{{ site.data.keys.product_adj }} セキュリティー検査チャレンジ・ハンドラーには、`SecurityCheckChallengeHandler.ShouldCancel()` を使用します。 |
+| `WLAuthorizationManager` | 代わりに、`WorklightClient.WorklightAuthorizationManager` を使用してください。 |
 | `WLChallengeHandler` | `SecurityCheckChallengeHandler` を使用します。 |
-| `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | `SecurityCheckChallengeHandler.ShouldCancel()` を使用します。 | 
+| `WLChallengeHandler.submitFailure(WLResponse wlResponse)` | `SecurityCheckChallengeHandler.ShouldCancel()` を使用します。 |
 | `WLClient` | 代わりに、`WorklightClient` を使用してください。 |
 | `WLErrorCode` | サポートされません。 |
-| `WLFailResponse ` | 代わりに、`WorklightResponse` を使用してください。 | 
-| `WLResponse` | 代わりに、`WorklightResponse` を使用してください。 | 
-| `WLProcedureInvocationData` | 代わりに、`WorklightProcedureInvocationData` を使用してください。 | 
-| `WLProcedureInvocationFailResponse` | サポートされません。 | 
+| `WLFailResponse ` | 代わりに、`WorklightResponse` を使用してください。 |
+| `WLResponse` | 代わりに、`WorklightResponse` を使用してください。 |
+| `WLProcedureInvocationData` | 代わりに、`WorklightProcedureInvocationData` を使用してください。 |
+| `WLProcedureInvocationFailResponse` | サポートされません。 |
 | `WLProcedureInvocationResult` | サポートされません。 |
 | `WLRequestOptions` | サポートされません。 |
 | `WLResourceRequest` | サポートされません。 |
@@ -440,5 +440,5 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 | API エレメント           | マイグレーション・パス                           |
 |-----------------------|------------------------------------------|
 | `WLHttpResponseListener` | サポートされません。 |
-| `WLResponseListener` | 応答は `WorklightResponse` オブジェクトとして使用可能です。 | 
-| `WLAuthorizationPersistencePolicy` | サポートされません。 | 
+| `WLResponseListener` | 応答は `WorklightResponse` オブジェクトとして使用可能です。 |
+| `WLAuthorizationPersistencePolicy` | サポートされません。 |
