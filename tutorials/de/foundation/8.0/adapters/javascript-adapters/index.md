@@ -22,7 +22,7 @@ sowie mobile Apps, die diese Prozeduren durch das Absetzen von Ajax-Anforderunge
 ### Ordner 'adapter-resources' 
 {: #the-adapter-resources-folder }
  
-Der Ordner `adapter-resources` enthält eine XML-Konfigurationsdatei. Diese Konfigurationsdatei beschreibt die Konnektivitätsoptionen und listet die Prozeduren auf, die für die Anwendung oder andere Adapter zugänglich gemacht werden. 
+Der Ordner **adapter-resources** enthält eine XML-Konfigurationsdatei. Diese Konfigurationsdatei beschreibt die Konnektivitätsoptionen und listet die Prozeduren auf, die für die Anwendung oder andere Adapter zugänglich gemacht werden. 
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -47,41 +47,43 @@ Der Ordner `adapter-resources` enthält eine XML-Konfigurationsdatei. Diese Konf
     <div class="panel panel-default">
         <div class="panel-heading" role="tab" id="adapter-xml">
             <h4 class="panel-title">
-                <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Für Attribute und untergeordnete Elemente in adapter.xml hier klicken</b></a>
+                <a name="click-for-adapter-xml-attributes-and-subelements" class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Für Attribute und untergeordnete Elemente in adapter.xml hier klicken</b></a>
             </h4>
         </div>
 
         <div id="collapse-adapter-xml" class="panel-collapse collapse" role="tabpanel" aria-labelledby="adapter-xml">
             <div class="panel-body">
                 <ul>
-                    <li><b>name</b>: Dieses <i>obligatorische</i> Attribut gibt den Namen des Adapters an. Dieser Name muss innerhalb von {{ site.data.keys.mf_server }} eindeutig sein. Er kann aus alphanumerischen Zeichen und Unterstreichungszeichen bestehen und muss mit einem Buchstaben beginnen. Den Namen eines definierten und implementierten Adapters können Sie nicht mehr ändern.</li>
-					<li><b>displayName</b>: Dieses <i>optionale</i> Attribut gibt den Namen des Adapters an, der in der {{ site.data.keys.mf_console }} angezeigt wird. Wenn dieses Element nicht angegeben ist, wird stattdessen der Wert des Attributs name verwendet.</li>
-					<li><b>description</b>: Dieses <i>optionale</i> Attribut gibt zusätzliche Informationen zum Adapter an. Die Informationen werden in der {{ site.data.keys.mf_console }} angezeigt.</li>
-					<li><b>connectivity</b>: Dieses <i>obligatorische</i> Attribut definiert den Mechanismus, über den der Adapter eine Verbindung zur Back-End-Anwendung herstellt. Es enthält das Unterelement <code>connectionPolicy</code>.
+                    <li><code>name</code>: Dieses <i>obligatorische</i> Attribut gibt den Namen des Adapters an. Dieser Name muss innerhalb von {{ site.data.keys.mf_server }} eindeutig sein. Er kann aus alphanumerischen Zeichen und Unterstreichungszeichen bestehen und muss mit einem Buchstaben beginnen. Den Namen eines definierten und implementierten Adapters können Sie nicht mehr ändern.</li>
+					<li><b>&lt;displayName&gt;</b>: Dieses <i>optionale</i> Attribut gibt den Namen des Adapters an, der in der {{ site.data.keys.mf_console }} angezeigt wird. Wenn dieses Element nicht angegeben ist, wird stattdessen der Wert des Attributs name verwendet.</li>
+					<li><b>&lt;description&gt;</b>: Dieses <i>optionale</i> Attribut gibt zusätzliche Informationen zum Adapter an. Die Informationen werden in der {{ site.data.keys.mf_console }} angezeigt.</li>
+					<li><b>&lt;connectivity&gt;</b>: Dieses <i>obligatorische</i> Attribut definiert den Mechanismus, über den der Adapter eine Verbindung zur Back-End-Anwendung herstellt. Es enthält das Unterelement &lt;connectionPolicy&gt;.
                         <ul>
-                            <li><b>connectionPolicy</b>: Dieses <i>obligatorische</i> Element definiert Verbindungseigenschaften. Die Struktur dieses Unterelements hängt von der Integrationstechnologie der Back-End-Anwendung ab. Weitere Informationen zu connectionPolicy finden Sie in der Beschreibung zum <a href="js-http-adapter">Element connectionPolicy für HTTP-Adapter</a> und zum <a href="js-sql-adapter">Element connectionPolicy für SQL-Adapter</a>.</li>
+                            <li><b>&lt;connectionPolicy&gt;</b>: Dieses <i>obligatorische</i> Element definiert Verbindungseigenschaften. Die Struktur dieses Unterelements hängt von der Integrationstechnologie der Back-End-Anwendung ab. Weitere Informationen zu &lt;connectionPolicy&gt; finden Sie in der Beschreibung zum <a href="js-http-adapter">Element &lt;connectionPolicy&gt; für HTTP-Adapter</a> und zum <a href="js-sql-adapter">Element &lt;connectionPolicy&gt; für SQL-Adapter</a>.</li>
                         </ul>
                     </li>
-                    <li><b>procedure</b>: Dieses <i>obligatorische</i> Attribut definiert einen Prozess für den Zugriff auf einen Service, der über eine Back-End-Anwendung zugänglich gemacht wird.
+                    <li><b>&lt;procedure&gt;</b>: Dieses <i>obligatorische</i> Attribut definiert einen Prozess für den Zugriff auf einen Service, der über eine Back-End-Anwendung zugänglich gemacht wird.
                         <ul>
-                            <li><b>name</b>: Dieses <i>obligatorische</i> Element gibt den Namen der Prozedur an. Dieser Name muss innerhalb des Adapters eindeutig sein. Er kann aus alphanumerischen Zeichen und Unterstreichungszeichen bestehen und muss mit einem Buchstaben beginnen.</li>
-                            <li><b>audit</b>: Dieses <i>optionale</i> Element definiert, ob Aufrufe der Prozedur im Prüfprotokoll erfasst werden. Folgende Werte sind gültig:
+                            <li><code>name</code>: Dieses <i>obligatorische</i> Element gibt den Namen der Prozedur an. Dieser Name muss innerhalb des Adapters eindeutig sein. Er kann aus alphanumerischen Zeichen und Unterstreichungszeichen bestehen und muss mit einem Buchstaben beginnen.</li>
+                            <li><code>audit</code>: Dieses <i>optionale</i> Element definiert, ob Aufrufe der Prozedur im Prüfprotokoll erfasst werden. Folgende Werte sind gültig:
                                 <ul>
-                                    <li><b>true</b>: Aufrufe der Prozedur werden im Prüfprotokoll erfasst.</li> 
-                                    <li><b>false</b>: Standardwert. Aufrufe der Prozedur werden nicht im Prüfprotokoll erfasst.</li>
+                                    <li><code>true</code>: Aufrufe der Prozedur werden im Prüfprotokoll erfasst.</li> 
+                                    <li><code>false</code>: Standardwert. Aufrufe der Prozedur werden nicht im Prüfprotokoll erfasst.</li>
                                 </ul>
                             </li>
-                            <li><b>scope</b>: Dieses <i>optionale</i> Element gibt den Sicherheitsbereich, der die Adapterressourcenprozedur schützt, als eine Zeichenfolge mit null oder mehr Bereichselementen ("scope") an, die jeweils durch ein Leerzeichen getrennt sind. Ein Bereichselement kann ein Schlüsselwort sein, das einer Sicherheitsüberprüfung zugeordnet ist, oder der Name einer Sicherheitsüberprüfung. Der Standardwert des Attributs "scope" ist eine leere Zeichenfolge. Wenn das Attribut <b>secured</b> den Wert "false" hat, wird das Attribut scope ignoriert. Weitere Informationen zum OAuth-Ressourcenschutz enthält das Lernprogramm <a href="../../authentication-and-security">Autorisierungskonzepte</a>.</li>
-                            <li><b>secured</b>: Dieses <i>optionale</i> Element definiert, ob die Adapterressourcenprozedur vom Sicherheitsframework der {{ site.data.keys.product }} geschützt wird. Folgende Werte sind gültig:
+                            <li><code>scope</code>: Dieses <i>optionale</i> Element gibt den Sicherheitsbereich, der die Adapterressourcenprozedur schützt, an. Der Bereich kann eine Zeichenfolge mit null oder mehr Bereichselementen ("scope") sein, die jeweils durch ein Leerzeichen getrennt sind, oder auf null gesetzt werden, damit der Standardbereich angewendet wird. Ein Bereichselement kann ein Schlüsselwort sein, das einer Sicherheitsüberprüfung zugeordnet ist, oder der Name einer Sicherheitsüberprüfung. Der Standardbereich ist <code>RegisteredClient</code>, wobei es sich um ein reserviertes {{ site.data.keys.product_adj }}-Schlüsselwort handelt. Nach Standardschutz ist ein Zugriffstoken für den Zugriff auf die Ressource erforderlich. <br/>
+								Weitere Informationen zum {{ site.data.keys.product_adj }}-OAuth-Ressourcenschutz und zum Konfigurieren des Ressourcenschutzes für JavaScript-Adapterressourcen finden Sie unter <a href="../../authentication-and-security/#protecting-adapter-resources">Adapterressourcen schützen</a>.<br/>
+								Wenn das Attribut <code>secured</code> den Wert <code>false</code> hat, wird das Attribut <code>scope</code> ignoriert. </li>
+                            <li><code>secured</code>: Dieses <i>optionale</i> Element definiert, ob die Adapterprozedur vom Sicherheitsframework der {{ site.data.keys.product_adj }} geschützt wird. Folgende Werte sind gültig:
                                 <ul>
-                                    <li><b>true</b>: Standardwert. Die Prozedur wird geschützt. Zum Aufrufen der Prozedur ist ein gültiges Zugriffstoken erforderlich.</li>
-                                    <li><b>false</b>: Die Prozedur wird nicht geschützt. Zum Aufrufen der Prozedur ist kein Zugriffstoken erforderlich. Wenn dieser Wert festgelegt ist, wird das Attribut <b>scope</b> ignoriert. Welche Auswirkungen das Inaktivieren des Ressourcenschutzes hat, erfahren Sie im Abschnitt <a href="../../authentication-and-security/#unprotected-resources">Ungeschützte Ressourcen</a> des Lernprogramms <a href="../../authentication-and-security">Autorisierungskonzepte</a>.</li>
+                                    <li><code>true</code>: Standardwert. Die Prozedur wird geschützt. Zum Aufrufen der Prozedur ist ein gültiges Zugriffstoken erforderlich.</li>
+                                    <li><code>false</code>: Die Prozedur wird nicht geschützt. Zum Aufrufen der Prozedur ist kein Zugriffstoken erforderlich (siehe <a href="../../authentication-and-security/#unprotected-resources">Ungeschützte Ressourcen</a>). Wenn dieser Wert festgelegt ist, wird das Attribut <code>scope</code> ignoriert. </li>
                                 </ul>
                             </li>
                         </ul>
                     </li>
-                    <li><b>securityCheckDefinition</b>: Dieses <i>optionale</i> Attribut definiert ein Sicherheitsüberprüfungsobjekt. Weitere Informationen zu Sicherheitsüberprüfungen enthält das Lernprogramm <a href="../../authentication-and-security/creating-a-security-check">Sicherheitsüberprüfungen erstellen</a>.</li>
-        			<li><b>property</b>: Dieses <i>optionale</i> Attribut deklariert eine benutzerdefinierte Eigenschaft. Weitere Informationen hierzu enthält der folgende Abschnitt.</li>
+                    <li><b>&lt;securityCheckDefinition&gt;</b>: Dieses <i>optionale</i> Attribut definiert ein Sicherheitsüberprüfungsobjekt. Weitere Informationen zu Sicherheitsüberprüfungen enthält das Lernprogramm <a href="../../authentication-and-security/creating-a-security-check">Sicherheitsüberprüfungen erstellen</a>.</li>
+        			<li><code>property</code>: Dieses <i>optionale</i> Attribut deklariert eine benutzerdefinierte Eigenschaft. Weiteres erfahren Sie im Abschnitt <a href="#custom-properties">Angepasste Eigenschaften</a> dieses Lernprogramms. </li>
                 </ul>
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#adapter-xml" data-target="#collapse-adapter-xml" aria-expanded="false" aria-controls="collapse-adapter-xml"><b>Abschnitt schließen</b></a>
@@ -99,15 +101,16 @@ der API [getPropertyValue](#getpropertyvalue) gelesen
 und später zur Laufzeit weiter angepasst werden. 
 
 > <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> **Hinweis:** Die Elemente für die Konfigurationseigenschaften müssen
-sich immer *unterhalb* der `procedure`-Elemente befinden. Im obigen Beispiel wurde eine Eigenschaft displayName mit einem Standardwert definiert, sodass sie später verwendet werden kann.
-Das Element `<property>` wird mit folgenden Attributen verwendet:
+sich immer *unterhalb* der &lt;procedure&gt;-Elemente befinden. Im obigen Beispiel wurde eine Eigenschaft &lt;displayName&gt; mit einem Standardwert definiert, sodass sie später verwendet werden kann.
+
+Das Element &lt;property&gt; wird mit folgenden Attributen verwendet:
 
 
-- **name**: Name der Eigenschaft, wie er in der Konfigurationsklasse definiert ist
-- **defaultValue**: Setzt den in der Konfigurationsklasse definierten Wert außer Kraft
-- **displayName**: Anzeigename, der in der Konsole erscheint (*optional*) 
-- **description**: Beschreibung, die in der Konsole angezeigt wird (*optional*)
-- **type**: Stellt sicher, dass die Eigenschaft einen bestimmten Typ hat, z. B. `integer`, `string` oder `boolean` bzw. eine Liste mit gültigen Werten wie `type="['1','2','3']"` (*optional*) 
+- `name`: Name der Eigenschaft, wie er in der Konfigurationsklasse definiert ist
+- `defaultValue`: Setzt den in der Konfigurationsklasse definierten Wert außer Kraft
+- `displayName`: Anzeigename, der in der Konsole erscheint (*optional*) 
+- `description`: Beschreibung, die in der Konsole angezeigt wird (*optional*)
+- `type`: Stellt sicher, dass die Eigenschaft einen bestimmten Typ hat, z. B. `integer`, `string` oder `boolean` bzw. eine Liste mit gültigen Werten wie `type="['1','2','3']"` (*optional*) 
 
 ![Eigenschaften in der Konsole](console-properties.png)
 

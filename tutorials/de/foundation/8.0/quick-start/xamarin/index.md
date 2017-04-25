@@ -56,22 +56,23 @@ Sie zum Ordner des Servers und führen Sie unter Mac und Linux den Befehl `./run
    /// <value>Worklight-Client</value>
    public static IWorklightClient WorklightClient {get; set;}
    ```
-* Wenn Sie für iOS entwickeln, fügen Sie in der Datei **AppDelegate.cs** den folgenden Code zur Methode **FinishedLaunching** hinzu: 
+* Wenn Sie für iOS entwickeln, fügen Sie in der Datei **AppDelegate.cs** den folgenden Code zur Methode **FinishedLaunching** hinzu:
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance();
+   <Klassenname>.WorklightClient = WorklightClient.CreateInstance();
   ```
-* Wenn Sie für Android entwickeln, nehmen Sie
-in der Datei **MainActivity.cs** die folgende Codezeile in die Methode **OnCreate** auf: 
+  >Ersetzen Sie `<Klassenname>` durch den Namen Ihrer Klasse.
+* Wenn Sie für Android entwickeln, nehmen Sie in der Datei **MainActivity.cs** die folgende Codezeile in die Methode **OnCreate** auf:
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
+   <Klassenname>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
+  >Ersetzen Sie `<Klassenname>` durch den Namen Ihrer Klasse.
 * Definieren Sie eine Methode, um das Zugriffstoken abzurufen und führen Sie wie unten eine Ressourcenanforderung an den MFP Server aus. 
-   
+
     ```csharp
     public async void ObtainToken()
-           { 
+           {
             try
                    {
        
@@ -98,7 +99,7 @@ in der Datei **MainActivity.cs** die folgende Codezeile in die Methode **OnCreat
            }
     }
    ```
-  
+
 * Rufen Sie die Methode **ObtainToken** aus einem Klassenkonstruktor heraus oder in Verbindung mit dem Klicken auf eine Schaltfläche auf. 
 
 ### 4. Adapter implementieren

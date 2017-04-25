@@ -7,6 +7,7 @@ show_children: true
 <!-- NLS_CHARSET=UTF-8 -->
 ## Übersicht
 {: #overview }
+
 Das {{ site.data.keys.product_adj }}-Sicherheitsframework basiert auf dem Protokoll [OAuth 2.0](http://oauth.net/). Gemäß diesem Protokoll kann eine Ressource mit einem **Bereich** geschützt
 werden,
 in dem die erforderlichen Berechtigungen für den Zugriff auf die Ressource definiert sind. Für den Zugriff auf eine geschützte Ressource muss die Clientanwendung ein passendes **Zugriffstoken** bereitstellen, in das der Bereich für die dem Client gewährte Autorisierung eingebunden ist. 
@@ -24,8 +25,7 @@ Im Zentrum des Sicherheitsframeworks steht ein
 Autorisierungsserver, der das
 OAuth-Protokoll implementiert und die OAuth-Endpunkte, mit denen der Client beim Anfordern von Zugriffstoken interagiert, zugänglich macht. Das Sicherheitsframework enthält die logischen Bausteine
 für die Implementierung einer angepassten Autorisierungslogik unter Verwendung des Autorisierungsservers und des zugrunde liegenden
-OAuth-Protokolls.   
-{{ site.data.keys.mf_server }} fungiert standardmäßig auch als
+OAuth-Protokolls. {{ site.data.keys.mf_server }} fungiert standardmäßig auch als
 **Autorisierungsserver**. Sie können aber auch ein IBM
 WebSphere-DataPower-Gerät als Autorisierungsserver konfigurieren, der mit
 {{ site.data.keys.mf_server }} interagiert. 
@@ -44,6 +44,7 @@ sich Entwickler vollständig auf die Autorisierungslogik konzentrieren können.
 
 #### Fahren Sie mit folgenden Abschnitten fort: 
 {: #jump-to }
+
 * [Autorisierungsentitäten](#authorization-entities)
 * [Ressourcen schützen](#protecting-resources)
 * [Autorisierungsablauf](#authorization-flow)
@@ -51,8 +52,10 @@ sich Entwickler vollständig auf die Autorisierungslogik konzentrieren können.
 
 ## Autorisierungsentitäten
 {: #authorization-entities }
+
 ### Zugriffstoken
-{: #access-token }
+{: #access-tokens }
+
 Ein MobileFirst-Zugriffstoken
 ist eine digital signierte Entität, die die Autorisierungsberechtigungen eines Clients
 beschreibt.
@@ -62,6 +65,7 @@ Client.
 
 #### Struktur
 {: #structure }
+
 Das
 {{ site.data.keys.product_adj }}-Zugriffstoken
 enthält folgende Informationen: 
@@ -73,6 +77,7 @@ Anwendungsbereich](#mandatory-application-scope).
 
 #### Tokenablaufzeit
 {: #token-expiration }
+
 Das ausgestellte Zugriffstoken bleibt gültig, bis der Ablaufzeitpunkt
 erreicht ist.
 Die Ablaufzeit des Zugriffstokens ist, verglichen mit den Ablaufzeiten aller Sicherheitsüberprüfungen im Bereich, die kürzeste. Wenn jedoch die kürzeste Ablaufzeit länger als der maximale Tokenablaufzeitraum der
@@ -174,8 +179,9 @@ Zugriffstokenantworten für Sie. Lesen Sie hierzu die Informationen unter
     </div>
 </div>
 
-### Sicherheitsüberprüfung
-{: #security-check }
+### Sicherheitsüberprüfungen
+{: #security-checks }
+
 Eine Sicherheitsüberprüfung ist eine serverseitige Entität, die die Sicherheitslogik zum Schutz sererseitiger Anwendungsressourcen
 implementiert. Ein einfaches Beispiel für eine Sicherheitsüberprüfung ist die Sicherheitsüberprüfung einer Benutzeranmeldung, bei der die Berechtigungsnachweise eines Benutzers
 empfangen und anhand einer Benutzerregistry verifiziert werden. Ein weiteres Beispiel ist die vordefinierte
@@ -188,6 +194,7 @@ OAuth-Ablaufs für die Anforderung eines Zugriffstokens. Der Client verwendet **
 
 #### Integrierte Sicherheitsüberprüfungen
 {: #built-in-security-checks }
+
 Die folgenden vordefinierten Sicherheitsüberprüfungen sind verfügbar: 
 
 - [Anwendungsauthentizität](application-authenticity/)
@@ -195,28 +202,27 @@ Die folgenden vordefinierten Sicherheitsüberprüfungen sind verfügbar:
 - [Direkte Aktualisierung](../application-development/direct-update)
 
 ### Abfrage-Handler
-{: #challenge-handler }
+{: #challenge-handlers }
 Wenn der Client versucht, auf eine geschützte Ressource zuzugreifen, kann er eine Abfrage erhalten. Bei dieser Abfrage kann es sich um eine Frage, einen
 Sicherheitstest oder eine Eingabeaufforderung des Servers handeln. Mit der Abfrage soll sichergestellt werden, dass der Client berechtigt ist, auf diese Ressource zuzugreifen. In den meisten Fällen werden im Rahmen der Abfrage Berechtigungsnachweise angefordert, z. B. ein Benutzername und ein Kennwort. 
 
 Ein Abfrage-Handler ist
-eine clientseitige Entität, die die clientseitige Sicherheitslogik und die zugehörigen Benutzerinteraktionen implementiert.   
-**Wichtiger Hinweis**: Eine erhaltene Abfrage kann nicht ignoriert werden. Sie muss beantwortet werden oder der laufende Vorgang
+eine clientseitige Entität, die die clientseitige Sicherheitslogik und die zugehörigen Benutzerinteraktionen implementiert. **Wichtiger Hinweis**: Eine erhaltene Abfrage kann nicht ignoriert werden. Sie muss beantwortet werden oder der laufende Vorgang
 muss abgebrochen werden. Das Ignorieren einer Abfrage kann zu nicht erwartetem Verhalten führen. 
 
 > Weitere Informationen zu Sicherheitsüberprüfungen enthält das Lernprogramm [Sicherheitsüberprüfungen erstellen](creating-a-security-check/). Weitere
 Informationen zu Abfrage-Handlern finden Sie im Lernprogramm [Berechtigungsnachweise validieren](credentials-validation).
-### Bereich
-{: #scope }
-Sie können Ressourcen wie Adapter durch Angabe eines **Bereichs** vor unbefugtem Zugriff schützen.   
+### Bereiche
+{: #scopes }
 
-Ein Bereich ist eine Liste mit null oder mehr **Bereichselementen**, die jeweils durch Leerzeichen getrennt angegeben sind,
-z. B. `Element1 Element2 Element3`.
-Das {{ site.data.keys.product_adj }}-Sicherheitsframework erfordert für jede Adapterressource ein Zugriffstoken.
-Dies gilt auch dann, wenn der Ressource nicht explizit ein Bereich zugeordnet wurde. 
+Sie können Ressourcen wie Adapter vor unbefugtem Zugriff schützen, indem Sie den Ressourcen einen **Bereich** zuweisen. 
 
-#### Bereichselement
-{: #scope-element }
+Ein Bereich ist durch eine Zeichenfolge mit einem oder mehreren, jeweils durch ein Leerzeichen getrennten Bereichselement(en) definiert ("Bereichselement1 Bereichselement2 ...") oder auf null gesetzt, wenn der Standardbereich (`RegisteredClient`) angewendet werden soll. Das {{ site.data.keys.product_adj }}-Sicherheitsframework erfordert für jede Adapterressource ein Zugriffstoken.
+Dies gilt auch dann, wenn der Ressource kein Bereich zugewiesen ist, solange nicht der Ressourcenschutz für die Ressource inaktiviert ist (siehe [Adapterressourcen schützen](#protecting-adapter-resources )).
+
+#### Bereichselemente
+{: #scope-elements }
+
 Folgendes kann ein Bereichselement sein: 
 
 * Name der Sicherheitsüberprüfung
@@ -225,19 +231,18 @@ die für diese Ressource erforderliche Sicherheitsstufe definiert. Dieses Schlü
 
 #### Bereichszuordnung
 {: #scope-mapping }
+
 Die **Bereichselemente**, die Sie in Ihren **Bereich** schreiben, werden
-standardmäßig einer **Sicherheitsüberprüfung mit demselben Namen** zugeordnet.  
-Wenn Sie beispielsweise eine Sicherheitsüberprüfung mit der Bezeichnung
+standardmäßig einer **Sicherheitsüberprüfung mit demselben Namen** zugeordnet.Wenn Sie beispielsweise eine Sicherheitsüberprüfung mit der Bezeichnung
 `PinCodeAttempts` schreiben, können Sie in Ihrem Bereich ein Bereichselement mit eben diesem Namen verwenden. 
 
 Die Bereichszuordnung ermöglicht die Zuordnung von Bereichselementen zu Sicherheitsüberprüfungen. Wenn der Client nach einem Bereichselement fragt, definiert diese Konfiguration,
 welche Sicherheitsüberprüfungen durchgeführt werden sollen. Sie können beispielsweise das Bereichselement `access-restricted` Ihrer Sicherheitsprüfung `PinCodeAttempts` zuordnen. 
 
 Die Bereichszuordnung ist hilfreich, wenn der Schutz einer Ressource von der Anwendung abhängig sein soll, die
-versucht, auf die Ressource zuzugreifen.   
-Sie können einen Bereich auch einer Liste mit null oder mehr Sicherheitsüberprüfungen zuordnen. 
+versucht, auf die Ressource zuzugreifen. Sie können einen Bereich auch einer Liste mit null oder mehr Sicherheitsüberprüfungen zuordnen. 
 
-Beispiel:   
+Beispiel:
 scope = `access-restricted deletePrivilege`
 
 * App A: 
@@ -259,7 +264,7 @@ und führen Sie den Befehl `mfpdev app pull` aus.
 2. Öffnen Sie die Konfigurationsdatei aus dem Ordner **[Projektordner]\mobilefirst**. 
 3. Bearbeiten Sie Datei. Definieren Sie eine Eigenschaft `scopeElementMapping` und definieren Sie in dieser Eigenschaft Datenpaare, die jeweils aus dem Namen Ihres ausgewählten Bereichselements
 und einer Zeichenfolge mit null oder mehr durch Leerzeichen getrennten
-Sicherheitsüberprüfungen besteht, denen das Element zugeordnet wird. Beispiel:  
+Sicherheitsüberprüfungen besteht, denen das Element zugeordnet wird. Beispiel: 
 
     ```xml
     "scopeElementMapping": {
@@ -275,17 +280,19 @@ Sicherheitsüberprüfungen besteht, denen das Element zugeordnet wird. Beispiel:
 
 ## Ressourcen schützen
 {: #protecting-resources }
+
 Im OAuth-Modell ist eine geschützte Ressource eine Ressource, für die ein Zugriffstoken erforderlich ist. Sie können das {{ site.data.keys.product_adj }}-Sicherheitsframework verwenden, um
 von einer Instanz von
 {{ site.data.keys.mf_server }}
 und von einem externen Server bereitgestellte Ressourcen zu schützen. Für den Schutz einer Ressource weisen Sie ihr einen Bereich zu, der die Berechtigungen definiert, die erforderlich sind, um ein Zugriffstoken
 für die Ressource beziehen zu können.
- 
+
 
 Sie können Ihre Ressourcen auf verschiedenen Wegen schützen: 
 
 ### Obligatorischer Anwendungsbereich
 {: #mandatory-application-scope }
+
 Auf der Anwendungsebene können Sie einen Bereich definieren, der auf alle von der Anwendung verwendeten Ressourcen angewendet wird. Das Sicherheitsframework führt diese
 Überprüfungen (soweit vorhanden) zusätzlich zu den Sicherheitsüberprüfungen des angeforderten Ressourcenbereichs aus. 
 
@@ -304,95 +311,161 @@ Wählen Sie in der **Navigationsseitenleiste** der {{ site.data.keys.mf_console 
 Sie können auch die JSON-Konfigurationsdatei der Anwendung manuell bearbeiten und die erforderliche Konfiguration definieren.
 Senden Sie dann die Änderungen per Push-Operation zurück an {{ site.data.keys.mf_server }}.
 
-1. Navigieren Sie in eiem **Befehlszeilenfenster** zum Projektstammverzeichnis
+1.  Navigieren Sie in eiem **Befehlszeilenfenster** zum Projektstammverzeichnis
 und führen Sie den Befehl `mfpdev app pull` aus.
-2. Öffnen Sie die Konfigurationsdatei aus dem Ordner **[Projektordner]\mobilefirst**. 
-3. Bearbeiten Sie die Datei. Definieren Sie eine Eigenschaft `mandatoryScope` und
-legen Sie als Eigenschaftswert eine Bereichszeichenfolge fest, die Ihre ausgewählten Bereichselemente jeweils mit einem Leerzeichen als Trennzeichen auflistet. Beispiel:  
+2.  Öffnen Sie die Konfigurationsdatei aus dem Ordner **[Projektordner]\mobilefirst**. 
+3.  Bearbeiten Sie die Datei. Definieren Sie eine Eigenschaft `mandatoryScope` und
+legen Sie als Eigenschaftswert eine Bereichszeichenfolge fest, die Ihre ausgewählten Bereichselemente jeweils mit einem Leerzeichen als Trennzeichen auflistet. Beispiel: 
 
-   ```xml
+    ```xml
    "mandatoryScope": "appAuthenticity PincodeValidation"
    ```
-   
-4. Implementieren Sie die aktualisierte JSON-Konfigurationsdatei. Führen Sie dazu den Befehl `mfpdev app push` aus.
+4.  Implementieren Sie die aktualisierte JSON-Konfigurationsdatei. Führen Sie dazu den Befehl `mfpdev app push` aus.
 
 > Sie können aktualisierte Konfigurationen auch per Push-Operation auf ferne Server übertragen. Sehen Sie sich dazu das Lernprogramm
 [{{ site.data.keys.product_adj }}-Artefakte
 über die {{ site.data.keys.mf_cli }} verwalten](../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts) an.
 
-### Ressourcenebene
-{: #resource-level }
-#### Java-Adapter
-{: #java-adapters }
-Sie können den Bereich einer Ressourcenmethode mit der Annotation `@OAuthSecurity` angeben. 
+### Adapterressourcen schützen
+{: #protecting-adapter-resources }
 
+In Ihrem Adapter können Sie den schützenden Bereich für eine Java-Methode, eine JavaScript-Ressourcenprozedur oder eine ganze JavaScript-Ressourcenklasse angeben
+(siehe folgende Abschnitte zu [Java](#protecting-java-adapter-resources) und [JavaScript](#protecting-javascript-adapter-resources)). Ein Bereich ist durch eine Zeichenfolge mit einem oder mehreren, jeweils durch ein Leerzeichen getrennten Bereichselement(en) definiert ("Bereichselement1 Bereichselement2 ...") oder auf null gesetzt, wenn der Standardbereich angewendet werden soll (siehe [Bereiche](#scopes)). 
+
+Der {{ site.data.keys.product_adj }}-Standardbereich ist `RegisteredClient`. Dieser Bereich fordert für den Zugriff auf die Ressource ein Zugriffstoken an
+und überprüft, ob die Ressourcenanforderung von einer Anwendung stammt, die bei {{ site.data.keys.mf_server }} registriert ist. Dieser Schutz wird immer angewendet, sofern Sie nicht
+den [Ressourcenschutz inaktivieren](#disabling-resource-protection). Wenn Sie also keinen Bereich für Ihre Ressource festlegen, ist die Ressource trotzdem geschütztz. 
+
+> <b>Hinweis:</b> `RegisteredClient` ist ein reserviertes {{ site.data.keys.product_adj }}-Schlüsselwort. Definieren Sie keine angepassten Bereichselemente oder Sicherheitsüberprüfungen mit diesem Namen.
+
+#### Java-Adapterressourcen schützen
+{: #protecting-java-adapter-resources }
+
+Wenn Sie einer JAX-RS-Methode oder -Klasse einen schützenden Bereich zuweisen möchten, fügen Sie die Annotation `@OAuthSecurity` zur Methoden- oder Klassendeklaration hinzu und setzen Sie das Element `scope` der Annotation auf Ihren bevorzugten Bereich. Ersetzen Sie `IHR_BEREICH` durch eine Zeichenfolge mit einem oder mehreren Bereichselement(en) ("Bereichselement1 Bereichselement2 ..."):
+```
+@OAuthSecurity(scope = "IHR_BEREICH")
+```
+
+Ein Klassenbereich wird auf alle Methoden der Klasse angewendet. Eine Ausnahme bilden Methoden mit eigener Annotation `@OAuthSecurity`. 
+
+<b>Hinweis:</b> Wenn das Element `enabled` der Annotation `@OAuthSecurity` auf `false` gesetzt ist, wird das Element `scope` ignoriert (siehe [Java-Ressourcenschutz inaktivieren](#disabling-java-resource-protection)).
+
+##### Beispiele
+{: #java-adapter-resource-protection-examples }
+
+Der folgende Code schützt eine Methode `helloUser` durch einen Bereich, der die Bereichselemente `UserAuthentication` und `Pincode` enthält: 
 ```java
-@DELETE
-@Path("/{userId}")
-@OAuthSecurity(scope="deletePrivilege")
-// Dies dient: DELETE /users/{userId}
-public void deleteUser(@PathParam("userId") String userId){
+@GET
+@Path("/{username}")
+@OAuthSecurity(scope = "UserAuthentication Pincode")
+public String helloUser(@PathParam("username") String name){
     ...
 }
 ```
 
-Im obigen Beispiel verwendet die Methode `deleteUser`
-die Annotation `@OAuthSecurity(scope="deletePrivilege")`. Das bedeutet,
-der Schutz erfolgt durch einen Bereich mit dem Bereichselement `deletePrivilege`.
-
-* Ein Bereich kann aus mehreren Bereichselementen bestehen, die jeweils durch ein Leerzeichen getrennt sind: `@OAuthSecurity(scope="Element1 Element2 Element3")`.
-* Wenn Sie die Annotation `@OAuthSecurity` nicht angeben oder den Bereich auf eine leere Zeichenfolge
-setzen, erfordert das {{ site.data.keys.product_adj }}-Sicherheitsframework trotzdem für
-jede eingehende Anforderung ein Zugriffstoken. 
-* Sie können die Annotation `@OAuthSecurity` auch auf der Ressourcenklassenebene verwenden, um einen Bereich für die gesamte Java-Klasse zu definieren. 
-
-#### JavaScript-Adapter
-{: #javascript-adapters }
-Sie können eine JavaScript-Adapterprozedur schützen, indem Sie der Prozedurdefinition in der Adapter-XML-Datei einen Bereich zuordnen. 
-
-```xml
-<procedure name="deleteUser" scope="deletePrivilege">
+Der folgende Code schützt eine Klasse `WebSphereResources` durch die vordefinierte Sicherheitsprüfung `LtpaBasedSSO`: 
+```java
+@Path("/users")
+@OAuthSecurity(scope = "LtpaBasedSSO")
+public class WebSphereResources {
+    ...
+}
 ```
 
-* Ein Bereich kann aus mehreren Bereichselementen bestehen, die jeweils durch ein Leerzeichen getrennt sind: `scope="Element1 Element2 Element3"`.
-* Wenn Sie keinen Bereich angeben oder eine leere Zeichenfolge verwenden,
-erfordert das {{ site.data.keys.product_adj }}-Sicherheitsframework trotzdem für jede eingehende Anforderung
-ein Sicherheitstoken. 
+#### JavaScript-Adapterressourcen schützen
+{: #protecting-javascript-adapter-resources }
 
-### Schutz inaktivieren
-{: #disabling-protection }
+Wenn Sie einer JavaScript-Prozedur einen schützenden Bereich zuweisen möchten, setzen Sie in der Datei <b>adapter.xml</b> das Bereichsattribut des Elements &lt;procedure&gt; auf Ihren bevorzugten Bereich. Ersetzen Sie `PROZEDURNAME` durch den Namen Ihrer Prozedur und `IHR_BEREICH` durch eine Zeichenfolge mit einem oder mehreren Bereichselement(en) ("Bereichselement1 Bereichselement2 ..."):
+```xml
+<procedure name="PROZEDURNAME" scope="IHR_BEREICH">
+```
+
+<b>Hinweis:</b> Wenn das Attribut `secured` des Elements &lt;procedure&gt; auf "false" gesetzt ist, wird das Bereichsattribut (`scope`) ignoriert (siehe [JavaScript-Ressourcenschutz inaktivieren](#disabling-javascript-resource-protection)).
+
+#### Beispiel
+{: #javascript-adapter-resource-protection-examples }
+
+Der folgende Code schützt eine Prozedur `userName` durch einen Bereich, der die Bereichselemente `UserAuthentication` und `Pincode` enthält: 
+```xml
+<procedure name="userName" scope="UserAuthentication Pincode">
+```
+
+### Ressourcenschutz inaktivieren
+{: #disabling-resource-protection }
+
+Sie können den [{{ site.data.keys.product_adj }}-Standardressourcenschutz](#protecting-adapter-resources) für eine bestimmte Java- oder JavaScript-Adapterressource oder für eine ganze Java-Klasse inaktivieren (siehe folgende Abschnitte
+[Java](#disabling-java-resource-protection) und [JavaScript](#disabling-javascript-resource-protection)). Wenn der Ressourcenschutz inaktiviert ist,
+erfordert das {{ site.data.keys.product_adj }}-Sicherheitsframework kein Token für den Zugriff auf die Ressource (siehe [Ungeschützte Ressourcen](#unprotected-resources)).
+
+#### Java-Ressourcenschutz inaktivieren
+{: #disabling-java-resource-protection }
+
+Wenn Sie den OAuth-Schutz für eine Java-Ressourcenmethode oder -Ressourcenklasse vollständig inaktivieren möchten,
+fügen Sie die Annotation `@OAuthSecurity` zur Methoden- oder Klassendeklaration hinzu und setzen Sie
+das Element `enabled` auf den Wert `false`:
+```java
+@OAuthSecurity(enabled = false)
+```
 Der Standardwert des
 Annotationselements `enabled` ist
-`true`. Wenn das Element `enabled` auf
-`false` gesetzt ist, wird das Element `scope` ignoriert und die Ressource oder Ressourcenklasse nicht geschützt.   
-Bei **Inaktivierung des Schutzes** kann jeder Client auf die Ressource zugreifen.
-Das {{ site.data.keys.product_adj }}-Sicherheitsframework fordert in dem Fall **kein** Zugriffstoken an. 
+`true`. Wenn das Element `enabled` auf `false` gesetzt ist, wird das Element `scope` ignoriert und die Ressource oder Ressourcenklasse [nicht geschützt](#unprotected-resources).
 
-**Hinweis:** Wenn Sie einer Ressourcenmethode in einer nicht geschützten Klasse einen Bereich zuordnen,
-wird die Methode ungeachtet der Klassenannotation geschützt, sofern Sie in der Ressourcenannotation nicht auch das Element
-enabled auf
-false gesetzt haben. 
+<b>Hinweis:</b> Wenn Sie einer Methode einer ungeschützten Klasse einen Bereich zuweisen,
+wird dieser Methode ungeachtet der Klassenannotation geschützt, solange Sie das Element
+`enabled` der Ressourcenannotation nicht auf `false` setzen.
 
-#### Java-Adapter
-{: #java-adapters-protection }
-Wenn Sie den Schutz inaktivieren möchten, können Sie `@OAuthSecurity(enabled=false)` verwenden.
+##### Beispiele
+{: #disabling-java-resource-protection-examples }
 
-#### JavaScript-Adapter
-{: #javascript-adapters-protection }
-Wenn Sie den Schutz inaktivieren möchten, können Sie `secured="false"` verwenden.
+Der folgende Code inaktiviert den Ressourcenschutz für eine Methode `helloUser`: 
+```java
+    @GET
+    @Path("/{username}")
+    @OAuthSecurity(enabled = "false")
+    public String helloUser(@PathParam("username") String name){
+        ...
+    }
+```
 
+Der folgende Code inaktiviert den Ressourcenschutz für eine Klasse `MyUnprotectedResources`: 
+```java
+    @Path("/users")
+    @OAuthSecurity(enabled = "false")
+    public class MyUnprotectedResources {
+        ...
+    }
+```
+
+#### JavaScript-Ressourcenschutz inaktivieren
+{: #disabling-javascript-resource-protection }
+
+Wenn Sie den OAuth-Schutz für eine JavaScript-Adapterressource (Prozedur) vollständig inaktivieren möchten,
+setzen Sie in der Datei <b>adapter.xml</b> das Attribut `secured` des Elements &lt;procedure&gt; auf `false`:
 ```xml
-<procedure name="deleteUser" secured="false">
+<procedure name="procedureName" secured="false">
+```
+
+Wenn das Attribut `secured` auf `false` gesetzt ist, wird das Bereichsattribut
+(`scope`) ignoriert. Die Ressource ist dementsprechend [ungeschützt](#unprotected-resources).
+
+##### Beispiel
+{: #disabling-javascript-resource-protection-examples }
+
+Der folgende Code inaktiviert den Ressourcenschutz für eine Prozedur `userName`: 
+```xml
+<procedure name="userName" secured="false">
 ```
 
 ### Ungeschützte Ressourcen
 {: #unprotected-resources }
+
 Eine ungeschützte Ressource ist eine Ressource, für die kein Zugriffstoken erforderlich ist. Das {{ site.data.keys.product_adj }}-Sicherheitsframework verwaltet nicht den
 Zugriff auf ungeschützte Ressourcen und überprüft oder validiert nicht die Identität von Clients, die auf solche Ressourcen zugreifen. Features wie die direkte Aktualisierung, die Blockierung des Gerätezugriffs oder die Inaktivierung einer Anwendung über Fernzugriff werden daher für
 ungeschützte Ressourcen nicht unterstützt. 
 
-### Externe Ressourcen
-{: external-resources }
+### Externe Ressourcen schützen
+{: #protecting-external-resources }
+
 Zum Schutz externer Ressourcen müssen Sie einen Ressourcenfilter mit Validierungsmodul für Zugriffstoken zum externen Ressourcenserver
 hinzufügen.
 Das Tokenvalidierungsmodul verwendet den Introspektionsendpunkt des Autorisierungsservers des Sicherheitsframeworks, um
@@ -405,6 +478,7 @@ Schutz externer Java-Ressourcen nutzen. Sehen Sie sich dazu das Lernprogramm [Ex
 
 ## Autorisierungsablauf
 {: #authorization-flow }
+
 Die Autorisierung erfolgt in zwei Phasen: 
 
 1. Der Client fordert ein Zugriffstoken an. 
@@ -413,6 +487,7 @@ Die Autorisierung erfolgt in zwei Phasen:
 
 ### Zugriffstoken anfordern
 {: #obtaining-an-access-token }
+
 In dieser Phase durchläuft der Client **Sicherheitsüberprüfungen**, um ein Zugriffstoken zu erhalten. 
 
 Bevor der Client ein Zugriffstoken anfordert, registriert er sich bei {{ site.data.keys.mf_server }}. Bei der Registrierung stellt der Client einen öffentlichen Schlüssel bereit, der für die Authentifizierung der Clientidentität
@@ -422,29 +497,30 @@ validiert.
 
 ![Token anfordern](auth-flow-1.jpg)
 
-1. Die Clientanwendung sendet eine Anforderung, um ein Zugriffstoken für einen angegebenen Bereich zu erhalten. 
+1.  Die Clientanwendung sendet eine Anforderung, um ein Zugriffstoken für einen angegebenen Bereich zu erhalten. 
 
     > Der Client fordert ein Zugriffstoken mit einem bestimmten Bereich an. Der angeforderte Bereich muss derselben
 Sicherheitsüberprüfung zugeordnet sein wie der Bereich der geschützten Ressource, auf die der Client zugreifen möchte. Darüber hinaus kann der angeforderte Bereich
 weiteren Sicherheitsüberprüfungen zugeordnet sein. Wenn der Client den Bereich der geschützten Ressource nicht kennt, kann er zunächst ein Zugriffstoken mit einem leeren Bereich anfordern.
 Versucht er, mit dem empfangenen Token auf die Ressource zuzugreifen, empfängt er eine Antwort mit einem Fehler
-403 (Zugriff verboten) und dem erforderlichen Bereich für die angeforderte Ressource. 2. Die Clientanwendung durchläuft die im angeforderten Bereich vorgesehenen
+403 (Zugriff verboten) und dem erforderlichen Bereich für die angeforderte Ressource. 2.  Die Clientanwendung durchläuft die im angeforderten Bereich vorgesehenen
 Sicherheitsüberprüfungen. 
 
     > {{ site.data.keys.mf_server }} führt
 die Sicherheitsüberprüfungen aus, denen der Bereich aus der Clientanforderung zugeordnet ist. Ausgehend vom Ergebnis dieser Überprüfung entspricht der
 Autorisierungsserver der Anforderung des Clients oder weist diese Anforderung zurück. Wenn ein obligatorischer Anwendungsbereich definiert ist,
 werden die Sicherheitsüberprüfungen nicht nur für den Bereich aus der Anforderung, sondern auch für den obligatorischen Bereich
-durchgeführt. 3. Nach erfolgreichem Abschluss des Abfrageprozesses leitet die Clientanwendung die Anforderung an den Autorisierungsserver weiter. 
+durchgeführt. 3.  Nach erfolgreichem Abschluss des Abfrageprozesses leitet die Clientanwendung die Anforderung an den Autorisierungsserver weiter. 
 
     > Nach erfolgreicher Autorisierung wird der Client zum Tokenendpunkt des Autorisierungsservers umgeleitet, wo
 er mithilfe des öffentlichen Schlüssels, der bei der Clientregistrierung bereitgestellt wurde, authentifiziert
 wird. Auf erfolgreicher Authentifizierung stellt der
-Autorisierungsserver für den Client ein digital signiertes Zugriffstoken (mit der ID des Clients, dem angeforderten Bereich und der Ablaufzeit des Tokens) aus. 4. Die Clientanwendung
+Autorisierungsserver für den Client ein digital signiertes Zugriffstoken (mit der ID des Clients, dem angeforderten Bereich und der Ablaufzeit des Tokens) aus. 4.  Die Clientanwendung
 empfängt das Zugriffstoken. 
 
 ### Token für den Zugriff auf eine geschützte Ressource verwenden
 {: #using-a-token-to-access-a-protected-resource }
+
 Sie können die Sicherheit für Ressourcen, die
 in {{ site.data.keys.mf_server }} ausgeführt werden (siehe Diagramm), und für Ressourcen,
 die auf einem externen Ressourcenserver ausgeführt werden, durchsetzen.
@@ -465,6 +541,7 @@ wird dem Client der Zugriff auf die Ressource gewährt.
 
 ## Nächste Lernprogramme
 {: #tutorials-to-follow-next }
+
 In der Seitenleistennavigation können Sie
 Lernprogramme auswählen, um sich näher mit der Authentifizierung in der {{ site.data.keys.product_adj }} Foundation zu beschäftigen. 
 
