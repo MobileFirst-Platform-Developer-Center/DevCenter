@@ -10,29 +10,29 @@ weight: 4
 {: #overview }
 El propósito de esta demostración es presentar un flujo de principio a fin: 
 
-1. Desde {{site.data.keys.mf_console }} se registrará y descargará una aplicación de ejemplo que está empaquetada de forma previa con el SDK de cliente de {{site.data.keys.product_adj }} 
-2. Se desplegará un adaptador nuevo o uno que se proporcione en {{site.data.keys.mf_console }}.   
+1. Desde {{ site.data.keys.mf_console }} se registrará y descargará una aplicación de ejemplo que está empaquetada de forma previa con el SDK de cliente de {{ site.data.keys.product_adj }} 
+2. Se desplegará un adaptador nuevo o uno que se proporcione en {{ site.data.keys.mf_console }}.   
 3. Se cambiará la lógica de la aplicación para realizar una solicitud de recurso. 
 
 **Resultado final**:
 
-* Ping satisfactorio a {{site.data.keys.mf_server }}.
+* Ping satisfactorio a {{ site.data.keys.mf_server }}.
 * Recuperación satisfactoria de datos utilizando un adaptador. 
 
 #### Requisitos previos: 
 {: #prerequisites }
 * Visual Studio 2013/5 configurado
-* *Opcional*. {{site.data.keys.mf_cli }} ([descargar]({{site.baseurl}}/downloads))
-* *Opcional*. {{site.data.keys.mf_server }} autónomo ([descargar]({{site.baseurl}}/downloads))
+* *Opcional*. {{ site.data.keys.mf_cli }} ([descargar]({{site.baseurl}}/downloads))
+* *Opcional*. {{ site.data.keys.mf_server }} autónomo ([descargar]({{site.baseurl}}/downloads))
 
-### 1. Cómo iniciar {{site.data.keys.mf_server }}
+### 1. Cómo iniciar {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
 Asegúrese de haber [creado una instancia de Mobile Foundation](../../bluemix/using-mobile-foundation), o  
-Si está utilizando [{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), vaya a la carpeta del servidor y ejecute el mandato: `./run.cmd`.
+Si está utilizando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/mobilefirst), vaya a la carpeta del servidor y ejecute el mandato: `./run.cmd`.
 
 ### 2. Creación de una aplicación
 {: #2-creating-an-application }
-En una ventana de navegador, abra {{site.data.keys.mf_console }} cargando el URL:
+En una ventana de navegador, abra {{ site.data.keys.mf_console }} cargando el URL:
 `http://su-host-servidor:su-puerto-servidor/mfpconsole`.
 Si lo está ejecutando de forma local, utilice [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole).
 El nombre de usuario y la contraseña son *admin/admin*.
@@ -87,7 +87,7 @@ El nombre de usuario y la contraseña son *admin/admin*.
 
 ### 4. Despliegue un adaptador
 {: 4-deploy-an-adapter }
-Descargue [this prepared .adapter artifact](../javaAdapter.adapter) y despliéguelo desde {{site.data.keys.mf_console }} con la acción **Acciones → Desplegar adaptador**.
+Descargue [this prepared .adapter artifact](../javaAdapter.adapter) y despliéguelo desde {{ site.data.keys.mf_console }} con la acción **Acciones → Desplegar adaptador**.
 
 
 <!-- Alternatively, click the **New** button next to **Adapters**.  
@@ -109,30 +109,30 @@ Descargue [this prepared .adapter artifact](../javaAdapter.adapter) y despliégu
 <img src="windowsQuickStart.png" alt="Aplicación de ejemplo" style="float:right"/>
 ### 5. Prueba de la aplicación
 {: 5-testing-the-application }
-1. En Visual Studio, seleccione el archivo **mfpclient.resw** y edite las propiedades **protocol**, **host** y **port** con los valores correctos para su instasncia de {{site.data.keys.mf_server }}.
-    * Si está utilizando una instancia de {{site.data.keys.mf_server }} local, los valores habitualmente son **http**, **localhost** y **9080**.
-    * Si está utilizando una instancia remota de {{site.data.keys.mf_server }} (en Bluemix), los valores habitualmente son **https**, **dirección-su-servidor** y **443**.
+1. En Visual Studio, seleccione el archivo **mfpclient.resw** y edite las propiedades **protocol**, **host** y **port** con los valores correctos para su instasncia de {{ site.data.keys.mf_server }}.
+    * Si está utilizando una instancia de {{ site.data.keys.mf_server }} local, los valores habitualmente son **http**, **localhost** y **9080**.
+    * Si está utilizando una instancia remota de {{ site.data.keys.mf_server }} (en Bluemix), los valores habitualmente son **https**, **dirección-su-servidor** y **443**.
 
-    Como alternativa, si ha instalado {{site.data.keys.mf_cli }}, navegue hasta la carpeta raíz del proyecto y ejecute el mandato `mfpdev app register`.
-Si se utiliza una instancia remota de {{site.data.keys.mf_server }}, [ejecute el mandato `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) para añadir el servidor, seguido por ejemplo por `mfpdev app register myBluemixServer`.
+    Como alternativa, si ha instalado {{ site.data.keys.mf_cli }}, navegue hasta la carpeta raíz del proyecto y ejecute el mandato `mfpdev app register`.
+Si se utiliza una instancia remota de {{ site.data.keys.mf_server }}, [ejecute el mandato `mfpdev server add`](../../application-development/using-mobilefirst-cli-to-manage-mobilefirst-artifacts/#add-a-new-server-instance) para añadir el servidor, seguido por ejemplo por `mfpdev app register myBluemixServer`.
 
 2. Pulse el botón **Ejecutar aplicación**.
 
 
 ### Resultados
 {: #results }
-* Pulsando el botón **Ping {{site.data.keys.mf_server }}** visualizará **Conectado a {{site.data.keys.mf_server }}**.
-* Si la aplicación se pudo conectar a {{site.data.keys.mf_server }}, tendrá lugar una llamada de solicitud de recurso con el adaptador Java desplegado.
+* Pulsando el botón **Ping {{ site.data.keys.mf_server }}** visualizará **Conectado a {{ site.data.keys.mf_server }}**.
+* Si la aplicación se pudo conectar a {{ site.data.keys.mf_server }}, tendrá lugar una llamada de solicitud de recurso con el adaptador Java desplegado.
 
 
 La respuesta del adaptador se imprimirá entonces en la consola de salida de Visual Studio.
 
 
-![Imagen de una aplicación que llamó de forma satisfactoria a un recurso desde {{site.data.keys.mf_server }}](success_response.png)
+![Imagen de una aplicación que llamó de forma satisfactoria a un recurso desde {{ site.data.keys.mf_server }}](success_response.png)
 
 ## Siguientes pasos
 {: #next-steps }
-Aprenda más sobre cómo utilizar adaptadores en aplicaciones, y cómo integrar servicios adicionales como, por ejemplo, notificaciones push, utilizando la infraestructura de seguridad de {{site.data.keys.product_adj }} entre otras cosas:
+Aprenda más sobre cómo utilizar adaptadores en aplicaciones, y cómo integrar servicios adicionales como, por ejemplo, notificaciones push, utilizando la infraestructura de seguridad de {{ site.data.keys.product_adj }} entre otras cosas:
 
 
 - Revise las guías de aprendizaje de [Desarrollo de aplicaciones](../../application-development/)
