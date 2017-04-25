@@ -11,15 +11,15 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product_full }} は、外部リソースにセキュリティー機能を適用するための Java ライブラリーを提供しています。  
+{{ site.data.keys.product_full }} は、外部リソースにセキュリティー機能を適用するための Java ライブラリーを提供しています。  
 Java ライブラリーは、JAR ファイル (**mfp-java-token-validator-8.0.0.jar**) として提供されます。
 
 このチュートリアルでは、スコープ (`accessRestricted`) を使用して、単純な Java サーブレット `GetBalance` を保護する方法を示します。
 
 **前提条件:**
 
-* [{{site.data.keys.mf_server }} を使用した外部リソースの認証](../)チュートリアルをお読みください。
-* [{{site.data.keys.product_adj }} Foundation セキュリティー・フレームワーク](../../)の知識が必要です。
+* [{{ site.data.keys.mf_server }} を使用した外部リソースの認証](../)チュートリアルをお読みください。
+* [{{ site.data.keys.product_adj }} Foundation セキュリティー・フレームワーク](../../)の知識が必要です。
 
 ![フロー](JTV_flow.jpg)
 
@@ -43,11 +43,11 @@ Java ライブラリーは、JAR ファイル (**mfp-java-token-validator-8.0.0.
 TokenValidationManager(java.net.URI authorizationURI, java.lang.String clientId, java.lang.String clientSecret);
 ```
 
-- `authorizationURI`: 許可サーバーの URI。通常は、{{site.data.keys.mf_server }} です。例えば、**http://localhost:9080/mfp/api** です。
-- `clientId`: {{site.data.keys.mf_console }} で構成した機密クライアント ID。
-- `clientSecret`: {{site.data.keys.mf_console }} で構成した機密クライアント秘密鍵。
+- `authorizationURI`: 許可サーバーの URI。通常は、{{ site.data.keys.mf_server }} です。例えば、**http://localhost:9080/mfp/api** です。
+- `clientId`: {{ site.data.keys.mf_console }} で構成した機密クライアント ID。
+- `clientSecret`: {{ site.data.keys.mf_console }} で構成した機密クライアント秘密鍵。
 
-> このライブラリーは、許可サーバーのイントロスペクション・エンドポイントとの対話をカプセル化および簡素化する API を公開します。詳細な API リファレンスについては、[{{site.data.keys.product_adj }} Java トークン・バリデーター API リファレンス](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)を参照してください。
+> このライブラリーは、許可サーバーのイントロスペクション・エンドポイントとの対話をカプセル化および簡素化する API を公開します。詳細な API リファレンスについては、[{{ site.data.keys.product_adj }} Java トークン・バリデーター API リファレンス](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_mfpf_java_token_validator_api.html?view=kc)を参照してください。
 
 ## 資格情報の検証
 {: #validating-the-credentials }
@@ -199,7 +199,7 @@ public TokenValidationManager(java.net.URI authorizationURI, java.lang.String cl
 
 ### サンプルの使用法
 {: #sample-usage }
-1. {{site.data.keys.mf_console }} で、必ず[機密クライアントと秘密鍵の値を更新](../#confidential-client)してください。
+1. {{ site.data.keys.mf_console }} で、必ず[機密クライアントと秘密鍵の値を更新](../#confidential-client)してください。
 2. **[UserLogin](../../user-authentication/security-check/)** または **[PinCodeAttempts](../../credentials-validation/security-check/)** のいずれかのセキュリティー検査をデプロイします。
 3. 一致するアプリケーションを登録します。
 4. `accessRestricted` スコープをセキュリティー検査にマップします。

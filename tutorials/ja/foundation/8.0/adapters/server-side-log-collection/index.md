@@ -8,7 +8,7 @@ weight: 7
 ## 概説
 {: #overview }
 
-ロギングは、診断およびデバッグを容易にするために、API 呼び出しを使用してメッセージを記録するソース・コードの装備です。{{site.data.keys.mf_server }} は、どのログをリモート側で収集するかを制御する機能を提供します。これにより、サーバー管理者はサーバー・リソースをさらにきめ細かく調整することができます。
+ロギングは、診断およびデバッグを容易にするために、API 呼び出しを使用してメッセージを記録するソース・コードの装備です。{{ site.data.keys.mf_server }} は、どのログをリモート側で収集するかを制御する機能を提供します。これにより、サーバー管理者はサーバー・リソースをさらにきめ細かく調整することができます。
 
 ロギング・ライブラリーには通常、詳細度制御 (多くの場合、**レベル**と呼ばれる) があります。詳細度の低い方から順に、ERROR、WARN、INFO、DEBUG です。 
 
@@ -23,7 +23,7 @@ WebSphere のフル・プロファイルおよび Liberty プロファイルで�
 ## ログ・ファイルへのアクセス
 {: #accessing-the-log-files }
 
-* {{site.data.keys.mf_server }} のオンプレミス・インストールでは、このファイルは基礎となるアプリケーション・サーバーに応じて使用可能です。 
+* {{ site.data.keys.mf_server }} のオンプレミス・インストールでは、このファイルは基礎となるアプリケーション・サーバーに応じて使用可能です。 
     * [IBM WebSphere Application Server のフル・プロファイル](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.base.doc/ae/ttrb_trcover.html)
     * [IBM WebSphere Application Server の Liberty プロファイル](http://ibm.biz/knowctr#SSEQTP_8.5.5/com.ibm.websphere.wlp.doc/ae/rwlp_logging.html?cp=SSEQTP_8.5.5%2F1-16-0-0)
     * [Apache Tomcat](http://tomcat.apache.org/tomcat-7.0-doc/logging.html)

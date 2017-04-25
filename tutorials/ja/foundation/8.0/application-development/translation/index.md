@@ -11,7 +11,7 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product_full }} フレームワークを使用すると、JavaScript (Cordova、Web) アプリケーションに他言語へのマルチリンガル・トランスレーションを追加できます。  
+{{ site.data.keys.product_full }} フレームワークを使用すると、JavaScript (Cordova、Web) アプリケーションに他言語へのマルチリンガル・トランスレーションを追加できます。  
 翻訳可能な項目は、アプリケーション・ストリングとシステム・メッセージです。 
 
 #### ジャンプ先:
@@ -26,7 +26,7 @@ downloads:
 {: #translating-application-strings }
 翻訳することが予定されたストリングは、「Messages」と呼ばれる`JSON` オブジェクトに保存されます。 
 
-- {{site.data.keys.product_adj }} SDK を使用した Cordova アプリケーションでは、このオブジェクトは、次のような Cordova アプリケーションの **index.js** ファイル内にあります。**[cordova-project-root-directory]/www/js/index.js**
+- {{ site.data.keys.product_adj }} SDK を使用した Cordova アプリケーションでは、このオブジェクトは、次のような Cordova アプリケーションの **index.js** ファイル内にあります。**[cordova-project-root-directory]/www/js/index.js**
 - Web アプリケーションでは、このオブジェクトを追加する必要があります。
 
 ### JSON オブジェクト構造の例
