@@ -105,14 +105,14 @@ Entwicklerworkstation hochgeladen. Sie finden die gepackten Webressourcen im Ord
 Alternativen:
 
 * Erstellen Sie die ZIP-Datei und laden Sie sie auf einen anderen {{ site.data.keys.mf_server }} hoch. Führen Sie dazu den Befehl
-`mfpdev app webupdate [Servername][runtime-name]` aus. Beispiel:  
+`mfpdev app webupdate [Servername][runtime-name]` aus. Beispiel: 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps
   ```
 
 * Laden Sie die zuvor generierte ZIP-Datei hoch.
-Führen Sie dazu den folgenden Befehl aus: `mfpdev app webupdate [Servername][runtime-name] --file [Pfad_zu_gepackten_Webressourcen]`. Beispiel:  
+Führen Sie dazu den folgenden Befehl aus: `mfpdev app webupdate [Servername][runtime-name] --file [Pfad_zu_gepackten_Webressourcen]`. Beispiel: 
 
   ```bash
   mfpdev app webupdate myQAServer MyBankApps --file mobilefirst/ios/com.mfp.myBankApp-1.0.1.zip
@@ -268,7 +268,7 @@ wl_directUpdateChallengeHandler.handleDirectUpdate = function(directUpdateData, 
 ```
 
 ### Szenario: Direkte Aktualisierung ohne Benutzerschnittstelle durchführen
-{: scenario-running-ui-less-direct-updates }
+{: #scenario-running-ui-less-direct-updates }
 Die {{ site.data.keys.product_full }} unterstützt
 die direkte Aktualisierung ohne Benutzerschnittstelle, wenn die Anwendung im Vordergrund ausgeführt wird. 
 
@@ -401,7 +401,7 @@ auf dem Server seit der letzten Aktualisierung der Clientanwendung mindestens zw
 wird eine **vollständige Aktualisierung** empfangen. (In dem Fall werden alle Webressourcen heruntergeladen und aktualisiert.)
 
 ## Sichere direkte Aktualisierung
-{: secure-direct-update }
+{: #secure-direct-update }
 Die sichere direkte Aktualisierung ist standardmäßig inaktiviert. Sie verhindert,
 dass ein Angreifer von {{ site.data.keys.mf_server }} (oder von einem Content Delivery Network (CDN)) an die Clientanwendung übertragene Webressourcen ändert. 
 

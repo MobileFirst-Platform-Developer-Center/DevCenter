@@ -163,7 +163,7 @@ Sie können eine der folgenden Methoden anwenden, um den Richtlinienanforderunge
 > Weitere Informationen enthält das Lernprogramm [Webentwicklungsumgebung einrichten](../../../installation-configuration/development/web). 
 
 ## Secure-Origins-Policy
-{: secure-origins-policy }
+{: #secure-origins-policy }
 Wenn Sie während der Entwicklung Chrome und sowohl HTTP als auch einen Host verwenden, der **nicht** `localhost` ist,
 erlaubt der Browser möglicherweise nicht das Laden einer Anwendung. Der Grund dafür ist die in diesem Browser implementierte und standardmäßig verwendete Secure-Origins-Policy. 
 

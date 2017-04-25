@@ -88,7 +88,7 @@ die Datei `[Projektname].xcodeproj`. Ein CocoaPods-basiertes Projekt wird als ei
 enthält. (Alle Projektabhängigkeiten werden vom CocoaPods-Manager mit Pull übertragen.)
 
 ### Natives {{ site.data.keys.product_adj }}-SDK manuell hinzufügen
-{: manually-adding-the-mobilefirst-native-sdk }
+{: #manually-adding-the-mobilefirst-native-sdk }
 Sie können das SDK der {{ site.data.keys.product }} auch manuell hinzufügen: 
 
 <div class="panel-group accordion" id="adding-the-sdk" role="tablist" aria-multiselectable="false">
@@ -256,7 +256,7 @@ pod update
 SDK-Releases sind im [CocoaPods-Repository](https://cocoapods.org/?q=ibm%20mobilefirst) für das jeweilige SDK enthalten.
 
 ## Generierte Artefakte des nativen {{ site.data.keys.product_adj }}-SDK
-{: generated-mobilefirst-native-sdk-artifacts }
+{: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.plist
 {: #mfpclientplist }
 In dieser Datei, die sich im Stammverzeichnis des Projekts befindet, sind die clientseitigen Eigenschaften für die Registrierung Ihrer

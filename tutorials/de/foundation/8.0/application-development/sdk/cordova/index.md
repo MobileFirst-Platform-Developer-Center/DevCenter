@@ -191,7 +191,7 @@ Die {{ site.data.keys.product_adj }}-API-Methoden sind nach dem Laden des {{ sit
 Mit dieser Funktion können Sie die verschiedenen {{ site.data.keys.product_adj }}-API-Methoden aufrufen. 
 
 ## {{ site.data.keys.product_adj }}-Cordova-SDK aktualisieren
-{: updating-the-mobilefirst-cordova-sdk }
+{: #updating-the-mobilefirst-cordova-sdk }
 Wenn Sie das {{ site.data.keys.product_adj }}-Cordova-SDK auf den neuesten Releasestand bringen möchten, entfernen Sie
 das Plug-in **cordova-plugin-mfp**. Führen Sie dazu den Befehl
 `cordova plugin remove cordova-plugin-mfp` aus. Führen Sie dann den Befehl
