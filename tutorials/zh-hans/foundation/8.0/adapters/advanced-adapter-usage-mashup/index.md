@@ -5,7 +5,7 @@ breadcrumb_title: Adapter Mashup
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: 下载 Cordova 项目
-    url：https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
+    url: https://github.com/MobileFirst-Platform-Developer-Center/AdaptersMashup/tree/release80
 weight: 8
 ---
 <!-- NLS_CHARSET=UTF-8 -->
