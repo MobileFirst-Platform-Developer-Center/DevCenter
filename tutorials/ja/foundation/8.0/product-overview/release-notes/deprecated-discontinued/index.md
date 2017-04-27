@@ -384,7 +384,7 @@ HTTP アダプターの認証構成。定義済みの HTTP アダプターは、
 
 ### Objective-C API
 {: #objective-c-apis }
-#### 使用が中止された iOS Objective C API
+#### 使用が中止された iOS Objective C API 
 {: #discontinued-ios-objective-c-apis }
 
 | API エレメント           | マイグレーション・パス                           |
