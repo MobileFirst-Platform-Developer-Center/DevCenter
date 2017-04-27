@@ -58,7 +58,7 @@ ATS 配置不会影响从其他非 iOS 移动操作系统连接的应用程序�
 </dict>
 ```
 
-## IBM Containers 上 {{ site.data.keys.product_full }} 的安全配置	
+## IBM Containers 上 {{ site.data.keys.product_full }} 的安全配置
 {: #security-configuration-for-ibm-mobilefirst-foundation-on-ibm-containers }
 IBM Containers 上的 {{ site.data.keys.product }} 实例的安全配置应包含加密密码，启用应用程序真实性检查以及保护对控制台的访问。
 
@@ -97,7 +97,7 @@ Gateway 服务。本文中提供配置详细信息：安全地从 IBM Bluemix �
 </server>
 ```
 
-#### 使用专用 IP 地址来保护容器通信的安全	
+#### 使用专用 IP 地址来保护容器通信的安全
 {: securing-container-communication-using-a-private-ip-address }
 要在 {{ site.data.keys.mf_server }} 容器和 {{ site.data.keys.mf_analytics }} 容器之间实现安全通信，必须在 `mfpfProperties.xml` 文件中包含 {{ site.data.keys.mf_analytics }} 容器的专用 IP 地址。
 
@@ -108,10 +108,10 @@ Gateway 服务。本文中提供配置详细信息：安全地从 IBM Bluemix �
 1. 将 **mfp.analytics.url** 属性设置为 {{ site.data.keys.mf_analytics }} 容器的专用 IP 地址。示例：`<jndiEntry jndiName="mfp.analytics.url" value="http://AnalyticsContainerPrivateIP:9080/analytics-service/rest"/>`
 
     在专用 IP 地址发生更改时，在 mfpfproperties.xml 文件中提供新的 IP 地址，并分别通过运行 prepareserver.sh 和 starterserver.sh 脚本重新构建和部署容器。
-    
+
 2. 要确保可在网络上访问 {{ site.data.keys.mf_analytics_console }}，请将 **mfp.analytics.console.url** 属性设置为 {{ site.data.keys.mf_analytics }} 容器的公共 IP 地址。示例：`<jndiEntry jndiName="mfp.analytics.console.url" value="http://AnalyticsContainerPublicIP:9080/analytics/console"/>`
 
-#### 限制访问容器上运行的控制台	
+#### 限制访问容器上运行的控制台
 {: #restricting-access-to-the-consoles-running-on-containers }
 您可以通过创建并部署信任关联拦截器 (TAI) 来拦截针对 IBM Containers 上运行的控制台的请求，来限制生产环境中对 {{ site.data.keys.mf_console }} 和 {{ site.data.keys.mf_analytics_console }} 的访问。
 
@@ -134,7 +134,7 @@ TAI 可实施特定于用户的过滤逻辑，决定是将请求转发到控制�
    import com.ibm.wsspi.security.tai.TrustAssociationInterceptor;
 
    public class MFPConsoleTAI implements TrustAssociationInterceptor {
-String allowedIP =null; 
+String allowedIP =null;
 public MFPConsoleTAI() {
 super();
        }
@@ -148,11 +148,11 @@ super();
           //Add logic to determine whether to intercept this request
 boolean interceptMFPConsoleRequest = false;
     	   String requestURI = req.getRequestURI();
-    	   
+
     	   if(requestURI.contains("worklightConsole")) {
 interceptMFPConsoleRequest = true;
     	   }
-    		   
+
     	   return interceptMFPConsoleRequest;
        }
 
@@ -166,27 +166,27 @@ interceptMFPConsoleRequest = true;
 String tai_user = "MFPConsoleCheck";
 if(allowedIP != null) {
 String ipAddress = request.getHeader("X-FORWARDED-FOR");  
-            	if (ipAddress == null) { 
+            	if (ipAddress == null) {
             	  ipAddress = request.getRemoteAddr();  
             	}
-            	
+
             	if(checkIPMatch(ipAddress, allowedIP)) {
 TAIResult.create(HttpServletResponse.SC_OK, tai_user);
             	}
             	else {
             		TAIResult.create(HttpServletResponse.SC_FORBIDDEN, tai_user);
             	}
-            		
+
             }
             return TAIResult.create(HttpServletResponse.SC_OK, tai_user);
         }
-       
+
        private static boolean checkIPMatch(String ipAddress, String pattern) {
 if (pattern.equals("*.*.*.*") || pattern.equals("*"))
 return true;
 String[] mask = pattern.split("\\.");
     	   String[] ip_address = ipAddress.split("\\.");
-    	   
+
     	   for (int i = 0; i < mask.length; i++)
     	   {
     		   if (mask[i].equals("*") || mask[i].equals(ip_address[i]))
@@ -202,7 +202,7 @@ String[] mask = pattern.split("\\.");
      */
         public int initialize(Properties properties)
                         throws WebTrustAssociationFailedException {
-        	
+
         	if(properties != null) {
 if(properties.containsKey("allowedIPs")) {
 allowedIP = properties.getProperty("allowedIPs");
@@ -233,36 +233,37 @@ allowedIP = properties.getProperty("allowedIPs");
         {}
    }
    ```
-    
+
 2. 将定制 TAI 实施导出到 .jar 文件并将其放置在适合的 **env** 文件夹（**mfpf-server/usr/env 或 mfpf-analytics/usr/env**）中。
-3. 创建包含 TAI 拦截器的详细信息的 XML 配置文件（请参阅步骤 1 中提供的 TAI 配置示例代码），然后将您的 .xml 文件添加到适合的文件夹（**mfpf-server/usr/config** 或 **mfpf-analytics/usr/config**）中。您的 .xml 文件应当类似于以下示例。**提示：**请确保更新类名和属性以反映您的实施。
+3. 创建包含 TAI 拦截器的详细信息的 XML 配置文件（请参阅步骤 1 中提供的 TAI 配置示例代码），然后将您的 .xml 文件添加到适合的文件夹（**mfpf-server/usr/config** 或 **mfpf-analytics/usr/config**）中。您的 .xml 文件应当类似于以下示例。**提示：** **请确保更新类名和属性以反映您的实施**。
 
-   ```xml
-   <?xml version="1.0" encoding="UTF-8"?>
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
         <server description="new server">
-        <featureManager> 
-            <feature>appSecurity-2.0</feature> 
-        </featureManager> 
+        <featureManager>
+            <feature>appSecurity-2.0</feature>
+        </featureManager>
 
-        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true" 
+        <trustAssociation id="MFPConsoleTAI" invokeForUnprotectedURI="true"
                           failOverToAppAuthType="false">
             <interceptors id="MFPConsoleTAI" enabled="true"  
-                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI" 
+                          className="com.ibm.mfpconsole.interceptor.MFPConsoleTAI"
                           invokeBeforeSSO="true" invokeAfterSSO="false" libraryRef="MFPConsoleTAI">
-<properties allowedIPs="9.182.149.*"/>
-            </interceptors> 
-        </trustAssociation> 
+                          <properties allowedIPs="9.182.149.*"/>
+            </interceptors>
+        </trustAssociation>
 
-        <library id="MFPConsoleTAI">
-<fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
-</library> 
-   </server>
-   ```
+          <library id="MFPConsoleTAI">
+            <fileset dir="${server.config.dir}" includes="MFPConsoleTAI.jar"/>
+          </library>
+        </server>
+    ```
 
 4. [构建映像并运行容器](../)。现在，仅在满足配置的 TAI 安全性机制时才可访问 {{ site.data.keys.mf_console }} 和 Analytics Console。
 
 ## 容器的 LDAP 配置
-{: #ldap-configuration-for-containers }
+{: #ldap-configuration-for-containers}
+
 可以配置 {{ site.data.keys.product }} 容器以安全地连接到外部 LDAP 存储库。
 
 可针对以下目的在容器中使用外部 LDAP 注册表：
@@ -289,7 +290,7 @@ allowedIP = properties.getProperty("allowedIPs");
 
 
    ```xml
-   <ldapRegistry 
+   <ldapRegistry
         id="ldap"
         host="1.234.567.8910" port="1234" ignoreCase="true"
         baseDN="dc=worklight,dc=com"
@@ -304,15 +305,11 @@ allowedIP = properties.getProperty("allowedIPs");
         groupMemberIdMap="groupOfNames:member"/>
    </ldapRegistry>
    ```
-    
-    条目 | 描述
+
+    条目 | 描述    
     --- | ---
-    `host` 和 `port` | 您的本地 LDAP 服务器的主机名（IP 地址）和端口号。
-    `baseDN` | LDAP 中捕获有关特定组织的所有详细信息的域名 (DN)。
-    `bindDN="uid=admin,ou=system"	` | LDAP 服务器的绑定详细信息。例如，Apache 目录服务的缺省值将为 `uid=admin,ou=system`。
-    `bindPassword="secret"	` | LDAP 服务器的绑定密码。例如，Apache 目录服务的缺省值为 `secret`。
-    `<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 用于在认证和授权期间查询目录服务（如 Apache）的定制过滤器。
-        
+    `host` 和 `port` | 您的本地 LDAP 服务器的主机名（IP 地址）和端口号。`baseDN` | LDAP 中捕获有关特定组织的所有详细信息的域名 (DN)。`bindDN="uid=admin,ou=system"
+` | LDAP 服务器的绑定详细信息。例如，Apache 目录服务的缺省值将为 `uid=admin,ou=system`。`bindPassword="secret"	` | LDAP 服务器的绑定密码。例如，Apache 目录服务的缺省值为 `secret`。`<customFilters userFilter="(&amp;(uid=%v)(objectclass=inetOrgPerson))" groupFilter="(&amp;(member=uid=%v)(objectclass=groupOfNames))" userIdMap="*:uid" groupIdMap="*:cn" groupMemberIdMap="groupOfNames:member"/>	` | 用于在认证和授权期间查询目录服务（如 Apache）的定制过滤器。        
 2. 确保为 `appSecurity-2.0` 和 `ldapRegistry-3.0` 启用以下功能：
 
    ```xml
@@ -321,9 +318,9 @@ allowedIP = properties.getProperty("allowedIPs");
         <feature>ldapRegistry-3.0</feature>
    </featureManager>
    ```
-    
+
     有关配置各种 LDAP 服务器存储库的详细信息，请参阅 [WebSphere Application Server Liberty Knowledge Center](http://www-01.ibm.com/support/knowledgecenter/was_beta_liberty/com.ibm.websphere.wlp.nd.multiplatform.doc/ae/twlp_sec_ldap.html)。
-    
+
 #### 安全网关
 {: #secure-gateway }
 要配置到 LDAP 服务器的安全网关连接，必须在 Bluemix 上创建安全网关服务实例，然后获取 LDAP 注册表的 IP 信息。您需要本地 LDAP 主机名和端口号才能完成此任务。
@@ -340,7 +337,7 @@ allowedIP = properties.getProperty("allowedIPs");
 7. 捕获**目标标识**和**云主机：端口**值。转至 registry.xml 文件并添加这些值，取代任何现有值。在 registry.xml 文件中查看以下更新代码片段示例：
 
 ```xml
-<ldapRegistry 
+<ldapRegistry
     id="ldap"
     host="cap-sg-prd-5.integration.ibmcloud.com" port="15163" ignoreCase="true"
     baseDN="dc=worklight,dc=com"

@@ -37,7 +37,7 @@ weight: 1
 
 2. 对于 Java 适配器，如果
 适配器将 Java URLConnection 与 HTTPS 结合使用，请确保后端证书位于 {{ site.data.keys.mf_server }} 密钥库中。
-        
+
     有关更多信息，请参阅[在 HTTP 适配器中使用 SSL](../../adapters/javascript-adapters/js-http-adapter/using-ssl/)。有关使用自签名证书的更多信息，请参阅[使用自签名证书在适配器和后端服务器之间配置 SSL](#configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates)。
 
     > **注：**如果应用程序服务器为 WebSphere Application Server Liberty，那么这些证书还必须包含在 Liberty 信任库中。
@@ -45,7 +45,7 @@ weight: 1
 4. 使用 `mfpadm deploy adapter` 和 `mfpadm adapter set user-config` 命令来上载适配器及其配置。
 
     有关适用于适配器的 **mfpadm** 的更多信息，请参阅[适配器命令](../using-cli/#commands-for-adapters)。
-        
+
 ## 使用自签名证书在适配器和后端服务器之间配置 SSL
 {: #configuring-ssl-between-adapters-and-back-end-servers-by-using-self-signed-certificates }
 通过将服务器自签名 SSL 证书导入到 {{ site.data.keys.product_adj }} 密钥库，可以在适配器和后端服务器之间配置 SSL。
@@ -79,7 +79,7 @@ weight: 1
 以下示例说明如何使用 Keytool 程序完成配置。
 
 1. 使用专用证书创建为期 365 天的后端服务器密钥库。
-        
+
     ```bash
     keytool -genkey -alias backend -keyalg RSA -validity 365 -keystore backend.keystore -storetype JKS
     ```
@@ -88,7 +88,7 @@ weight: 1
 2. 将后端服务器配置为使用此密钥库。例如，在 Apache Tomcat 中，更改 **server.xml** 文件：
 
    ```xml
-   <Connector port="443" SSLEnabled="true" maxHttpHeaderSize="8192" 
+   <Connector port="443" SSLEnabled="true" maxHttpHeaderSize="8192"
       maxThreads="150" minSpareThreads="25" maxSpareThreads="200"
       enableLookups="false" disableUploadTimeout="true"         
       acceptCount="100" scheme="https" secure="true"
@@ -96,7 +96,7 @@ weight: 1
       keystoreFile="backend.keystore" keystorePass="password" keystoreType="JKS"
       keyAlias="backend"/>
    ```
-        
+
 3. 检查 **adapter.xml** 文件中的连接配置：
 
    ```xml
@@ -106,32 +106,32 @@ weight: 1
         <domain>mydomain.com</domain>
         <port>443</port>
         <!-- The following properties are used by adapter's key manager for choosing a specific certificate from the key store
-        <sslCertificateAlias></sslCertificateAlias> 
+        <sslCertificateAlias></sslCertificateAlias>
         <sslCertificatePassword></sslCertificatePassword>
         -->		
       </connectionPolicy>
       <loadConstraints maxConcurrentConnectionsPerNode="2"/>
    </connectivity>
    ```
-        
+
 4. 从所创建的后端服务器密钥库中导出公用证书：
 
    ```bash
    keytool -export -alias backend -keystore backend.keystore -rfc -file backend.crt
    ```
-        
-5. 将导出的证书导入到 {{ site.data.keys.mf_server }} 密钥库中：
 
-   ```bash
+5. 将导出的证书导入到 {{ site.data.keys.mf_server }} 密钥库中：
+   
+  ```bash
    keytool -import -alias backend -file backend.crt -storetype JKS -keystore mfp.keystore
    ```
-        
+
 6. 确保已将证书正确导入密钥库中：
 
    ```bash
    keytool -list -keystore mfp.keystore
    ```
-        
+
 7. 部署新的 {{ site.data.keys.mf_server }} 密钥库。
 
 ## 为测试或生产环境构建应用程序
@@ -153,9 +153,9 @@ URL>` 和 `mfpdev app config runtime
 也可以通过运行 `mfpdev app register` 命令，向正在运
 行的服务器注册此应用程序。请使用服务器的公共 URL。此 URL 供移动应用程序用来连接到
 {{ site.data.keys.mf_server }}。
-    
+
     例如，要为目标服务器 mfp.mycompany.com 配置应用程序，并使运行时的缺省名称为 mfp，请运行 `mfpdev app config server https://mfp.mycompany.com` 和 `mfpdev app config runtime mfp`。
-    
+
 4. 为应用程序配置密钥和授权服务器。
     * 如果应用程序实施了证书绑定，请使用目标服务器的证书。有关证书绑定的更多信息，请参阅[证书绑定](../../authentication-and-security/certificate-pinning)。
     * 如果 iOS 应用程序使用应用程序传输安全性 (ATS)，请为目标服务器配置 ATS。
@@ -169,7 +169,7 @@ URL>` 和 `mfpdev app config runtime
 ，并将此类文件上载至
 {{ site.data.keys.mf_server }}
 ，那么服务器将会检测到这一差异，但不会发送客户机应用程序的任何更新。本机库中的更改可能包括不同的 Cordova 版本、较新的 Cordova iOS 插件，甚至是比用于构建原始应用程序的插件修订包更新的 mfpdev 插件修订包。
-    
+
 6. 为生产用途配置应用程序。
     * 考虑禁用“打印到设备日志”。
     * 如果计划使用 {{ site.data.keys.mf_analytics }}，请验证应用程序是否将所收集的数据发送到 {{ site.data.keys.mf_server }}。
@@ -180,7 +180,7 @@ URL>` 和 `mfpdev app config runtime
 序源代码，以便能够在测试服务器上针对此应用程序运行非回归测试。
 
     例如，如果稍后要更新适配器，那么可以在使用此适配器的已分发的应用程序上运行非回归测试。有关更多信息，请参阅[将适配器部署或更新至生产环境](#deploying-or-updating-an-adapter-to-a-production-environment)。
-    
+
 8. 可选：为应用程序创建应用程序真实性文件。
 
     向服务器注册应用程序以启用应用程序真实性安全检查后，可使用应用程序真实性文件。
@@ -279,12 +279,12 @@ app push** 命令时，系统会修改应用程序的客户机属性文件以反
    cd myapp1
    mfpdev app pull Server10 -password secretPassword!
    ```
-    
+
    此命令会在具有服务器概要文件 Server10 的 {{ site.data.keys.mf_server }} 上查找当前应用程序的配置文件。然后，它会将包含这些配置文件的压缩文件 **myapp1-android-1.0.0-artifacts.zip** 发送到本地计算机，并将其置于 **myapp1/mobilefirst** 目录中。
-    
+
 3. 运行 **mfpdev app push** 命令。如果指定的命令不含任何参数，那么会将该应用程序推送到缺省 {{ site.data.keys.mf_server }}。
 您还可以指定特定服务器及其管理员密码。例如，对于在上一步骤中推送的同一应用程序：`mfpdev app push Server12 -password secretPass234!`。
-    
+
    此命令会将 **myapp1-android-1.0.0-artifacts.zip** 文件发送到具有服务器概要文件 Server12 的 {{ site.data.keys.mf_server }}（其管理员密码为 **secretPass234!**）。客户机属性文件 **myapp1/app/src/main/assets/mfpclient.properties** 会进行修改，以反映向其注册该应用程序的服务器为 Server12 并显示此服务器的 URL。
 
 该应用程序的服务器端配置文件位于 mfpdev app push 命令中指定的 {{ site.data.keys.mf_server }} 中。这样会向此新服务器注册该应用程序。
@@ -307,56 +307,56 @@ app push** 命令时，系统会修改应用程序的客户机属性文件以反
     * 要使用 REST API 下载应用程序描述符，请使用[应用程序描述符 (GET)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_descriptor_get.html?view=kc#Application-Descriptor--GET-) REST API。
 
     以下 URL 可返回应用程序标识为 **my.test.application** 的应用程序、**ios** 平台以及 **0.0.1** 版本的应用程序描述符。对 {{ site.data.keys.mf_server }} 进行调用：`http://localhost:9080/mfpadmin/management-apis/2.0/runtimes/mfp/applications/my.test.application/ios/0.0.1/descriptor`
-    
+
     例如，可将此 URL 与诸如 curl 等工具结合使用：`curl -user admin:admin http://[...]/ios/0.0.1/descriptor > desc.json`。
-    
+
     <br/>
     根据您的服务器配置更改 URL 的以下元素：
      * **9080** 是开发期间 {{ site.data.keys.mf_server }} 的缺省 HTTP 端口。
-     * **mfpadmin** 是管理服务的缺省上下文根。 
+     * **mfpadmin** 是管理服务的缺省上下文根。
 
     有关 REST API 的信息，请参阅 {{ site.data.keys.mf_server }} 管理服务的 REST API。
      * 使用 **mfpadm** 下载应用程序描述符。
 
        运行 {{ site.data.keys.mf_server }} 安装程序时，将安装 **mfpadm** 程序。可以从 **product\_install\_dir/shortcuts/** 目录启动它，其中 **product\_install\_dir** 指示 {{ site.data.keys.mf_server }} 的安装目录。
-    
+
        以下示例将创建密码文件（**mfpadm** 命令所需），然后下载应用程序标识为 **my.test.application** 的应用程序、**ios** 平台以及 **0.0.1** 版本的应用程序描述符。所提供的 URL 是开发期间 {{ site.data.keys.mf_server }} 的 HTTPS URL。
-    
+
        ```bash
        echo password=admin > password.txt
        mfpadm --url https://localhost:9443/mfpadmin --secure false --user admin \ --passwordfile password.txt \ app version mfp my.test.application ios 0.0.1 get descriptor > desc.json
        rm password.txt
        ```
-    
+
        根据您的服务器配置更改命令行的以下元素：
         * **9443** 是开发中 {{ site.data.keys.mf_server }} 的缺省 HTTPS 端口。
-        * **mfpadmin** 是管理服务的缺省上下文根。 
+        * **mfpadmin** 是管理服务的缺省上下文根。
         * --secure false 指示接受服务器的 SSL 证书，即使是自签名证书或是为不同于 URL 中使用的服务器主机名的其他主机名创建的证书也是如此。
 
        有关 **mfpadm** 程序的更多信息，请参阅[通过命令行管理 {{ site.data.keys.product_adj }} 应用程序](../using-cli)。
-    
+
 3. 将应用程序描述符上载到新服务器以注册应用程序或更新其配置。可以使用 REST API 或 **mfpadm** 来上载。
    * 要使用 REST API 上载应用程序描述符，请使用[应用程序 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_application_post.html?view=kc#Application--POST-) REST API。
-    
+
      以下 URL 将应用程序描述符上载到 mfp 运行时。您可发送 POST 请求，并且有效内容为 JSON 应用程序描述符。在此示例中，调用了在本地计算机上运行运行且 HTTP 端口设置为 9081 的服务器。
-    
+
      ```bash
      http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
      ```
-    
+
      例如，可将此 URL 与诸如 curl 等工具结合使用。
-    
+
      ```bash
      curl -H "Content-Type: application/json" -X POST -d @desc.json -u admin:admin \ http://localhost:9081/mfpadmin/management-apis/2.0/runtimes/mfp/applications/
      ```    
-    
+
    * 使用 mfpadm 上载应用程序描述符。
 
      以下示例将创建密码文件（mfpadm 命令所需），然后上载应用程序标识为 my.test.application 的应用程序、ios 平台以及 0.0.1 版本的应用程序描述符。所提供的 URL 为本地计算机上运行但 HTTPS 端口设置为 9444 的服务器的 HTTPS URL，并用于名为 mfp 的运行时。
 
      ```bash
      echo password=admin > password.txt
-     mfpadm --url https://localhost:9444/mfpadmin --secure false --user admin \ --passwordfile password.txt \ deploy app mfp desc.json 
+     mfpadm --url https://localhost:9444/mfpadmin --secure false --user admin \ --passwordfile password.txt \ deploy app mfp desc.json
      rm password.txt
      ```
 
@@ -389,7 +389,7 @@ app push** 命令时，系统会修改应用程序的客户机属性文件以反
   curl -X GET -u admin:admin -o exported.zip
   "http://localhost:9080/worklightadmin/management-apis/2.0/runtimes/mfp/export/all"
   ```
-    
+
 * 要部署包含诸如适配器、应用程序、许可证配置、密钥库、Web 资源之类 Web 应用程序资源的归档，请使用[部署 (POST)](http://www.ibm.com/support/knowledgecenter/en/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/apiref/r_restapi_deploy_post.html?view=kc) API。例如，您可以使用此 curl 命令部署包含工件的现有 .zip 文件。
 
   ```bash
@@ -414,7 +414,7 @@ app push** 命令时，系统会修改应用程序的客户机属性文件以反
 一版本或所有版本。应用程序或版本导出为 .zip 压缩文件，该文件保存了应用程序标识、描述符、真实性数据以及 Web 资源。您可以在以后导入归档，以将应用程序或版本重新部署到同一服务器或不同服务器上的另一运行时中。
 
 > **要点：**请仔细考虑您的用例：  
-> 
+>
 > * 导出文件包含应用程序真实性数据。该数据特定于移动应用程序的构建。移动应用程序包含服务器的 URL 及其运行时名称。因此，如果希望使用另一个服务器或另一个运行时，则必须重新构建应用程序。仅传输导出的应用程序文件不可行。
 > * 某些工件因服务器而异。推送凭证的操作也有所不同，具体取决于您是处于开发环境还是生产环境。
 > * 在某些情况下（并非所有情况），可以传输应用程序运行时配置（包含活动/禁用状态和日志概要文件）。
