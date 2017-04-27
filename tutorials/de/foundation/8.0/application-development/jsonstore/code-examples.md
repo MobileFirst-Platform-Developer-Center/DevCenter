@@ -1,39 +1,39 @@
 ---
 layout: tutorial
-title: JSONStore Code Examples
-breadcrumb_title: Code examples
+title: JSONStore-Codebeispiele
+breadcrumb_title: Codebeispiele
 relevantTo: [ios,android,cordova]
 weight: 6
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## Cordova
 {: #cordova }
-#### Initialize and open connections, get an Accessor, and add data
+#### Verbindungen initialisieren und öffnen, Zugriffsmechanismus abrufen und Daten hinzufügen
 {: #initialize-and-open-connections-get-an-accessor-and-add-data }
 ```javascript
 var collectionName = 'people';
 
-// Object that defines all the collections.
+// Objekt, das alle Sammlungen definiert
 var collections = {
 
-  // Object that defines the 'people' collection.
+  // Objekt, das die Sammlung 'people' definiert
   people : {
 
-    // Object that defines the Search Fields for the 'people' collection.
+    // Objekt, das die Suchfelder für die Sammlung 'people' definiert
     searchFields : {name: 'string', age: 'integer'}
   }
 };
 
-// Optional options object.
+// Optionales Optionsobjekt
 var options = {
 
-  // Optional username, default 'jsonstore'.
+  // Optionaler Benutzername. Standardwert: 'jsonstore'
   username : 'carlos',
 
-  // Optional password, default no password.
+  // Optionales Kennwort. Standardwert: kein Kennwort
   password : '123',
 
-  // Optional local key generation flag, default false.
+  // Optionale Option für lokale Schlüsselgenerierung. Standardwert: false
   localKeyGen : false
 };
 
@@ -41,61 +41,61 @@ WL.JSONStore.init(collections, options)
 
 .then(function () {
 
-  // Data to add, you probably want to get
-  // this data from a network call (e.g. Adapter).
+  // Hinzuzufügende Daten, die Sie wahrscheinlich mit einem
+  // Netzaufruf (z. B. einem Adapter) abrufen werden
   var data = [{name: 'carlos', age: 10}];
 
-  // Optional options for add.
+  // Optionale Hinzufügeoptionen
   var addOptions = {
 
-    // Mark data as dirty (true = yes, false = no), default true.
+    // Daten als vorläufig markieren (true = ja, false = nein). Standardwert: true
     markDirty: true
   };
 
-  // Get an accessor to the people collection and add data.
+  // Zugriffsmechanismus für Sammlung 'people' abrufen und Daten hinzufügen
   return WL.JSONStore.get(collectionName).add(data, addOptions);
 })
 
 .then(function (numberOfDocumentsAdded) {
-  // Add was successful.
+  // Das Hinzufügen war erfolgreich.
 })
 
 .fail(function (errorObject) {
-   // Handle failure for any of the previous JSONStore operations (init, add).
+   // Fehler für alle bisherigen JSONStore-Operationen (init, add) behandeln
 });
 ```
 
-#### Find - locate documents inside the Store
+#### Find - Dokumente im Store finden
 {: #find-locate-documents-inside-the-store }
 ```javascript
 var collectionName = 'people';
 
-// Find all documents that match the queries.
+// Alle übereinstimmenden Dokumente für Abfragen finden
 var queryPart1 = WL.JSONStore.QueryPart()
                    .equal('name', 'carlos')
                    .lessOrEqualThan('age', 10)
 
 var options = {
-  // Returns a maximum of 10 documents, default no limit.
+  // Rückgabe von maximal 10 Dokumenten. Standardwert: kein Limit
   limit: 10,
 
-  // Skip 0 documents, default no offset.
+  // Überspringen von 0 Dokumenten. Standard: kein Offset
   offset: 0,
 
-  // Search fields to return, default: ['_id', 'json'].
+  // Zurückzugebende Suchfelder. Standard: ['_id', 'json']
   filter: ['_id', 'json'],
 
-  // How to sort the returned values, default no sort.
+  // Art der Sortierung für zurückgegebene Werte. Standard: keine Sortierung
   sort: [{name: WL.constant.ASCENDING}, {age: WL.constant.DESCENDING}]
 };
 
 WL.JSONStore.get(collectionName)
 
-// Alternatives:
-// - findById(1, options) which locates documents by their _id field
-// - findAll(options) which returns all documents
-// - find({'name': 'carlos', age: 10}, options) which finds all documents
-// that match the query.
+// Alternativen:
+// - findById(1, options) zum Suchen von Dokumenten nach ihrem Feld _id
+// - findAll(options) zum Zurückgeben aller Dokumente
+// - find({'name': 'carlos', age: 10}, options) zum Finden aller Dokumente,
+// die mit der Abfrage übereinstimmen
 .advancedFind([queryPart1], options)
 
 .then(function (arrayResults) {
@@ -103,22 +103,22 @@ WL.JSONStore.get(collectionName)
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehlerbehandlung
 });
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### Replace - Bereits in einer Sammlung gespeicherte Dokumente ändern
 
 ```javascript 
 var collectionName = 'people';
 
-// Documents will be located with their '_id' field 
-// and replaced with the data in the 'json' field.
+// Dokumente werden über ihr Feld '_id' gefunden
+// und durch die Daten im Feld 'json' ersetzt.
 var docs = [{_id: 1, json: {name: 'carlitos', age: 99}}];
 
 var options = {
 
-  // Mark data as dirty (true = yes, false = no), default true.
+  // Daten als vorläufig markieren (true = ja, false = nein). Standardwert: true
   markDirty: true
 };
 
@@ -127,28 +127,28 @@ WL.JSONStore.get(collectionName)
 .replace(docs, options)
 
 .then(function (numberOfDocumentsReplaced) {
-  // Handle success.
+  // Behandlung bei Erfolg
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehlerbehandlung
 });
 ```
 
-#### Remove - delete all documents that match the query
+#### Remove - Alle mit der Abfrage übereinstimmenden Dokumente löschen
 {: #remove-delete-all-documents-that-match-the-query }
 ```javascript
 var collectionName = 'people';
 
-// Remove all documents that match the queries.
+// Alle übereinstimmenden Dokumente für Abfragen entfernen
 var queries = [{_id: 1}];
 
 var options = {
 
-  // Exact match (true) or fuzzy search (false), default fuzzy search.
+  // Suche nach exakter Übereinstimmung (true) oder grober Übereinstimmung (false). Standardwert: Suche nach grober Übereinstimmung
   exact: true,
 
-  // Mark data as dirty (true = yes, false = no), default true.
+  // Daten als vorläufig markieren (true = ja, false = nein). Standardwert: true
   markDirty: true
 };
 
@@ -157,26 +157,26 @@ WL.JSONStore.get(collectionName)
 .remove(queries, options)
 
 .then(function (numberOfDocumentsRemoved) {
-  // Handle success.
+  // Erfolg behandeln
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Count - gets the total number of documents that match a query
+#### Count - Gesamtzahl der mit einer Abfrage übereinstimmenden Dokumente abrufen
 {: #count-gets-the-total-number-of-documents-that-match-a-query }
 ```javascript
 var collectionName = 'people';
 
-// Count all documents that match the query.
-// The default query is '{}' which will 
-// count every document in the collection.
+// Übereinstimmende Dokumente für Abfrage zählen
+// Mit der Standardabfrage '{}' wird jedes Dokument
+// in der Sammlung gezählt.
 var query = {name: 'carlos'}; 
 var options = {
 
-  // Exact match (true) or fuzzy search (false), default fuzzy search.
+  // Suche nach exakter Übereinstimmung (true) oder grober Übereinstimmung (false). Standardwert: Suche nach grober Übereinstimmung
   exact: true
 };
 
@@ -185,47 +185,47 @@ WL.JSONStore.get(collectionName)
 .count(query, options)
 
 .then(function (numberOfDocumentsThatMatchedTheQuery) {
-  // Handle success.
+  // Erfolg behandeln
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### Destroy - Daten aller Benutzer bereinigen, internen Speicher löschen und Sicherheitsartefakte entfernen
 {: #destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```javascript
 WL.JSONStore.destroy()
 
 .then(function () {
-  // Handle success.
+  // Erfolg behandeln
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### Sicherheit - Zugriff auf alle geöffneten Sammlungen für aktuellen Benutzer beenden
 {: #security-close-access-to-all-opened-collections-for-the-current-user }
 ```javascript
 WL.JSONStore.closeAll()
 
 .then(function () {
-  // Handle success.
+  // Erfolg behandeln
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Security - change the password that is used to access a Store
+#### Sicherheit - Kennwort für Zugriff auf einen Store ändern
 {: #security-change-the-password-that-is-used-to-access-a-store }
 ```javascript
-// The password should be user input. 
-// It is hard-coded in the example for brevity.
+// Das Kennwort sollte eine Benutzereingabe sein.
+// Der Kürze halber ist es als Klartext angegeben.
 var oldPassword = '123';
 var newPassword = '456';
 
@@ -234,29 +234,29 @@ var clearPasswords = function () {
   newPassword = null;
 };
 
-// Default username if none is passed is: 'jsonstore'.
+// Wenn kein Benutzername übergeben wird, wird der Standardbenutzername 'jsonstore' verwendet.
 var username = 'carlos';
 
 WL.JSONStore.changePassword(oldPassword, newPassword, username)
 
 .then(function () {
 
-  // Make sure you do not leave the password(s) in memory.
+  // Sicherstellen, dass keine Kennwörter im Speicher bleiben
   clearPasswords();
 
-  // Handle success.
+  // Erfolg behandeln
 })
 
 .fail(function (errorObject) {
 
-  // Make sure you do not leave the password(s) in memory.
+  // Sicherstellen, dass keine Kennwörter im Speicher bleiben
   clearPasswords();
 
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### Push - Alle als vorläufig markierten Objekte abrufen, an einen Adapter senden und dann als bereinigt markieren
 {: #push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```javascript
 var collectionName = 'people';
@@ -267,8 +267,8 @@ WL.JSONStore.get(collectionName)
 .getAllDirty()
  
 .then(function (arrayOfDirtyDocuments) {
-  // Handle getAllDirty success.
- 
+  // Behandlung bei Erfolg von getAllDirty
+
   dirtyDocs = arrayOfDirtyDocuments;
  
   var procedure = 'procedure-name-1';
@@ -280,23 +280,23 @@ WL.JSONStore.get(collectionName)
 })
  
 .then(function (responseFromAdapter) {
-  // Handle invokeProcedure success.
- 
-  // You may want to check the response from the adapter
-  // and decide whether or not to mark documents as clean.
+  // Behandlung bei Erfolg von invokeProcedure
+
+  // Sie können die Antwort vom Adapter prüfen und entscheiden,
+  // ob Dokumente als vorläufig markiert werden sollen.
   return WL.JSONStore.get(collectionName).markClean(dirtyDocs);
 })
  
 .then(function () {
-  // Handle markClean success.
+  // Behandlung bei Erfolg von markClean
 })
  
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Pull - get new data from an adapter
+#### Pull - Neue Daten von einem Adapter abrufen
 {: #pull-get-new-data-from-an-adapter }
 ```javascript
 var collectionName = 'people';
@@ -309,28 +309,28 @@ var resource = new WLResourceRequest("adapters/" + adapter + "/" + procedure, WL
 resource.send()
  
 .then(function (responseFromAdapter) {
-  // Handle invokeProcedure success.
- 
-  // The following example assumes that the adapter returns an arrayOfData,
-  // (which is not returned by default),
-  // as part of the invocationResult object,
-  // with the data that you want to add to the collection.
+  // Behandlung bei Erfolg von invokeProcedure
+
+  // Im folgenden Beispiel wird angenommen, dass der Adapter als Teil des
+  // invocationResult-Objekts ein arrayOfData mit den Daten zurückgibt,
+  // die Sie zu der Sammlung hinzufügen möchten. (Standardmäßig
+  // wird kein solches Array zurückgegeben.)
   var data = responseFromAdapter.responseJSON
  
-  // Example:
+  // Beispiel:
   // data = [{id: 1, ssn: '111-22-3333', name: 'carlos'}];
- 
+
   var changeOptions = {
  
-    // The following example assumes that 'id' and 'ssn' are search fields,
-    // default will use all search fields
-    // and are part of the data that is received.
+    // Im folgenden Beispiel wir vorausgesetzt, dass 'id' und 'ssn' Suchfelder sind.
+    // Standardmäßig werden alle Suchfelder verwendet und
+    // sind Teil der empfangenen Daten.
     replaceCriteria : ['id', 'ssn'],
  
-    // Data that does not exist in the Collection will be added, default false.
+    // Nicht in der Sammlung vorhandene Daten werden hinzugefügt. Standardwert: false
     addNew : true,
  
-    // Mark data as dirty (true = yes, false = no), default false.
+    // Daten als vorläufig markieren (true = ja, false = nein). Standardwert: false
     markDirty : false
   };
  
@@ -338,15 +338,15 @@ resource.send()
 })
  
 .then(function () {
-  // Handle change success.
+  // Behandlung bei Erfolg von change
 })
  
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Check whether a document is dirty
+#### Vorläufigkeit eines Dokuments überprüfen
 {: #check-whether-a-document-is-dirty }
 ```javascript
 var collectionName = 'people';
@@ -357,17 +357,17 @@ WL.JSONStore.get(collectionName)
 .isDirty(doc)
 
 .then(function (isDocumentDirty) {
-  // Handle success.
+  // Erfolg behandeln
 
-  // isDocumentDirty - true if dirty, false otherwise.
+  // isDocumentDirty - true bei Vorläufigkeit, sonst false
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Check the number of dirty documents
+#### Anzahl vorläufiger Dokumente überprüfen
 {: #check-the-number-of-dirty-documents }
 ```javascript
 var collectionName = 'people';
@@ -377,15 +377,15 @@ WL.JSONStore.get(collectionName)
 .countAllDirty()
 
 .then(function (numberOfDirtyDocuments) {
-  // Handle success.
+  // Erfolg behandeln
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Remove a Collection
+#### Sammlung entfernen
 {: #remove-a-collection }
 ```javascript
 var collectionName = 'people';
@@ -395,18 +395,18 @@ WL.JSONStore.get(collectionName)
 .removeCollection()
 
 .then(function () {
-  // Handle success.
+  // Erfolg behandeln.
 
-  // Note: You must call the 'init' API to re-use the empty collection.
-  // See the 'clear' API if you just want to remove all data that is inside.
+  // Hinweis: Sie müssen die API 'init' aufrufen, um die leere Sammlung wiederzuverwenden.
+  // Wenn Sie nur alle enthaltenen Daten entfernen möchten, lesen Sie die Infos zur API 'clear'.
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Clear all data that is inside a Collection
+#### Alle Daten in einer Sammlung löschen
 {: #clear-all-data-that-is-inside-a-collection }
 ```javascript
 var collectionName = 'people';
@@ -416,26 +416,27 @@ WL.JSONStore.get(collectionName)
 .clear()
 
 .then(function () {
-  // Handle success.
+  // Erfolg behandeln.
 
-  // Note: You might want to use the 'removeCollection' API
-  // instead if you want to change the search fields.
+  // Hinweis: Wenn Sie die Suchfelder ändern möchten, könnten Sie
+  // stattdessen die API 'removeCollection' verwenden.
 })
 
 .fail(function (errorObject) {
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### Transaktion starten, Daten hinzufügen, ein Dokument entfernen, Transaktion festschreiben und im Falle eines Fehlers
+rückgängig machen
 {: transaction }
 ```javascript
 WL.JSONStore.startTransaction()
 
 .then(function () {
-  // Handle startTransaction success.
-  // You can call every JSONStore API method except:
-  // init, destroy, removeCollection, and closeAll.
+  // Behandlung bei Erfolg von startTransaction
+  // Sie können jede Methode der JSONStore-API außer init,
+  // destroy, removeCollection und closeAll aufrufen.
 
   var data = [{name: 'carlos'}];
 
@@ -455,23 +456,23 @@ WL.JSONStore.startTransaction()
 })
 
 .fail(function (errorObject) {
-  // Handle failure for any of the previous JSONStore operation.
-  //(startTransaction, add, remove).
+  // Fehler für bisherige JSONStore-Operationen behandeln
+  //(startTransaction, add, remove)
 
   WL.JSONStore.rollbackTransaction()
 
   .then(function () {
-    // Handle rollback success.
+    // Behandlung bei Erfolg von rollback
   })
 
   .fail(function () {
-    // Handle rollback failure.
+    // Behandlung bei Fehlschlag von rollback
   })
 
 });
 ```
 
-#### Get file information
+#### Dateiinformationen abrufen
 {: #get-file-information }
 ```javascript
 WL.JSONStore.fileInfo()
@@ -480,51 +481,51 @@ WL.JSONStore.fileInfo()
 })
 
   .fail(function () {
-  // Handle failure.
+  // Fehler behandeln
 });
 ```
 
-#### Search with like, rightLike, and leftLike
+#### Suche mit like, rightLike und leftLike
 {: #search-with-like-rightlike-and-leftlike }
 ```javascript
-// Match all records that contain the search string on both sides.
+// Alle Datensätze abgleichen, die den Suchbegriff auf beiden Seiten enthalten
 // %searchString%
 var arr1 = WL.JSONStore.QueryPart().like('name', 'ca');  // returns {name: 'carlos', age: 10}
 var arr2 = WL.JSONStore.QueryPart().like('name', 'los');  // returns {name: 'carlos', age: 10}
 
-// Match all records that contain the search string on the left side and anything on the right side.
+// Alle Datensätze abgleichen, die den Suchbegriff auf der linken Seite und eine beliebige Zeichenfolge auf der rechten Seite enthalten
 // searchString%
-var arr1 = WL.JSONStore.QueryPart().rightLike('name', 'ca');  // returns {name: 'carlos', age: 10}
-var arr2 = WL.JSONStore.QueryPart().rightLike('name', 'los');  // returns nothing
+var arr1 = WL.JSONStore.QueryPart().rightLike('name', 'ca');  // Rückgabe {name: 'carlos', age: 10}
+var arr2 = WL.JSONStore.QueryPart().rightLike('name', 'los');  // Keine Rückgabe
 
-// Match all records that contain the search string on the right side and anything on the left side.
+// Alle Datensätze abgleichen, die den Suchbegriff auf der rechten Seite und eine beliebige Zeichenfolge auf der linken Seite enthalten
 // %searchString
-var arr = WL.JSONStore.QueryPart().leftLike('name', 'ca');  // returns nothing
-var arr2 = WL.JSONStore.QueryPart().leftLike('name', 'los');  // returns {name: 'carlos', age: 10}
+var arr = WL.JSONStore.QueryPart().leftLike('name', 'ca');  // Keine Rückgabe
+var arr2 = WL.JSONStore.QueryPart().leftLike('name', 'los');  // Rückgabe von {name: 'carlos', age: 10}
 ```
 
 ## iOS
 {: #ios }
-#### Initialize and open connections, get an Accessor, and add data
+#### Verbindungen initialisieren und öffnen, Zugriffsmechanismus abrufen und Daten hinzufügen
 {: #ios-initialize-and-open-connections-get-an-accessor-and-add-data }
 ```objc
-// Create the collections object that will be initialized.
+// Sammlungsobjekt erstellen, das initialisiert wird
 JSONStoreCollection* people = [[JSONStoreCollection alloc] initWithName:@"people"];
 [people setSearchField:@"name" withType:JSONStore_String];
 [people setSearchField:@"age" withType:JSONStore_Integer];
 
-// Optional options object.
+// Optionales Optionsobjekt
 JSONStoreOpenOptions* options = [JSONStoreOpenOptions new];
 [options setUsername:@"carlos"]; //Optional username, default 'jsonstore'
 [options setPassword:@"123"]; //Optional password, default no password
 
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Open the collections.
+// Sammlungen öffnen
 [[JSONStore sharedInstance] openCollections:@[people] withOptions:options error:&error];
 
-// Add data to the collection
+// Daten zur Sammlung hinzufügen
 NSArray* data = @[ @{@"name" : @"carlos", @"age": @10} ];
 int newDocsAdded = [[people addData:data andMarkDirty:YES withOptions:nil error:&error] intValue];
 Initialize with a secure random token from the server
@@ -534,55 +535,55 @@ Initialize with a secure random token from the server
                                      NSData *data,
                                      NSError *connectionError) {
 
-  // You might want to see the response and the connection error
-  // before moving forward.
+  // Bevor Sie fortfahren, möchten Sie vielleicht die Antwort
+  // und den Verbindungsfehler sehen.
 
-  // Get the secure random string by using the data that is
-  // returned from the generator on the server.
+  // Mit den vom Generator des Servers zurückgegebenen Daten die
+  // sichere willkürliche Zeichenfolge abrufen
   NSString* secureRandom = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 
   JSONStoreCollection* ppl = [[JSONStoreCollection alloc] initWithName:@"people"];
   [ppl setSearchField:@"name" withType:JSONStore_String];
   [ppl setSearchField:@"age" withType:JSONStore_Integer];
 
-  // Optional options object.
+  // Optionales Optionsobjekt
   JSONStoreOptions* options = [JSONStoreOptions new];
   [options setUsername:@"carlos"]; //Optional username, default 'jsonstore'
   [options setPassword:@"123"]; //Optional password, default no password
   [options setSecureRandom:secureRandom]; //Optional, default one will be generated locally
 
-  // This points to an error if one occurs.
+  // Zeigt auf einen Fehler, wenn er auftritt
   NSError* error = nil;
 
   [[JSONStore sharedInstance] openCollections:@[ppl] withOptions:options error:&error];
 
-  // Other JSONStore operations (e.g. add, remove, replace, etc.) go here.
+  // Hier folgen weitere JSONStore-Operationen (z. B. add, remove, replace usw.)
 }];
 ```
 
-#### Find - locate documents inside the Store
+#### Find - Dokumente im Store finden
 {: #ios-find-locate-documents-inside-the-store }
 ```objc
-// Get the accessor to an already initialized collection.
+// Zugriffsmechanismus für eine bereits initialisierte Sammlung abrufen
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Add additional find options (optional).
+// Weitere find-Optionen hinzufügen (optional)
 JSONStoreQueryOptions* options = [JSONStoreQueryOptions new];
 [options setLimit:@10]; // Returns a maximum of 10 documents, default no limit.
 [options setOffset:@0]; // Skip 0 documents, default no offset.
 
-// Search fields to return, default: ['_id', 'json'].
+// Zurückzugebende Suchfelder. Standard: ['_id', 'json']
 [options filterSearchField:@"_id"];
 [options filterSearchField:@"json"];
 
-// How to sort the returned values , default no sort.
+// Art der Sortierung für zurückgegebene Werte. Standard: keine Sortierung
 [options sortBySearchFieldAscending:@"name"];
 [options sortBySearchFieldDescending:@"age"];
 
-// Find all documents that match the query part.
+// Alle Dokumente finden, die mit dem Abfrageabschnitt übereinstimmen
 JSONStoreQueryPart* queryPart1 = [[JSONStoreQueryPart alloc] init];
 [queryPart1 searchField:@"name" equal:@"carlos"];
 [queryPart1 searchField:@"age" lessOrEqualThan:@10];
@@ -593,203 +594,203 @@ NSArray* results = [people findWithQueryParts:@[queryPart1] andOptions:options e
 
 for (NSDictionary* result in results) {
 
-  NSString* name = [result valueForKeyPath:@"json.name"]; // carlos.
+  NSString* name = [result valueForKeyPath:@"json.name"]; // carlos
   int age = [[result valueForKeyPath:@"json.age"] intValue]; // 10
   NSLog(@"Name: %@, Age: %d", name, age);
 }
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### Replace - Bereits in einer Sammlung gespeicherte Dokumente ändern
 {: #ios-replace-change-the-documents-that-are-already-stored-inside-a-collection }
 ```objc
-// Get the accessor to an already initialized collection.
+// Zugriffsmechanismus für eine bereits initialisierte Sammlung abrufen
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
-// Find all documents that match the queries.
+// Alle übereinstimmenden Dokumente für Abfragen finden
 NSArray* docs = @[ @{@"_id" : @1, @"json" : @{ @"name": @"carlitos", @"age" : @99}} ];
 
 
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Perform the replacement.
+// Ersetzung durchführen
 int docsReplaced = [[people replaceDocuments:docs andMarkDirty:NO error:&error] intValue];
 ```
 
-#### Remove - delete all documents that match the query
+#### Remove - Alle mit der Abfrage übereinstimmenden Dokumente löschen
 {: #ios-remove-delete-all-documents-that-match-the-query }
 ```objc
-// Get the accessor to an already initialized collection.
+// Zugriffsmechanismus für eine bereits initialisierte Sammlung abrufen
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Find document with _id equal to 1 and remove it.
+// Dokument finden, dessen _id auf 1 gesetzt ist, und Dokument entfernen
 int docsRemoved = [[people removeWithIds:@[@1] andMarkDirty:NO error:&error] intValue];
 ```
 
-#### Count - gets the total number of documents that match a query
+#### Count - Gesamtzahl der mit einer Abfrage übereinstimmenden Dokumente abrufen
 {: #ios-count-gets-the-total-number-of-documents-that-match-a-query }
 ```objc
-// Get the accessor to an already initialized collection.
+// Zugriffsmechanismus für eine bereits initialisierte Sammlung abrufen
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
-// Count all documents that match the query.
-// The default query is @{} which will
-// count every document in the collection.
+// Übereinstimmende Dokumente für Abfrage zählen
+// Mit der Standardabfrage @{} wird jedes Dokument
+// in der Sammlung gezählt.
 JSONStoreQueryPart *queryPart = [[JSONStoreQueryPart alloc] init];
 [queryPart searchField:@"name" equal:@"carlos"];
 
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Perform the count.
+// Zählung durchführen
 int countResult = [[people countWithQueryParts:@[queryPart] error:&error] intValue];
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### Destroy - Daten aller Benutzer bereinigen, internen Speicher löschen und Sicherheitsartefakte entfernen
 {: #ios-destroy-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```objc
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Perform the destroy.
+// Löschung durchführen
 [[JSONStore sharedInstance] destroyDataAndReturnError:&error];
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### Sicherheit - Zugriff auf alle geöffneten Sammlungen für aktuellen Benutzer beenden
 {: #ios-security-close-access-to-all-opened-collections-for-the-current-user }
 ```objc
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Close access to all collections in the store.
+// Zugriff auf alle Sammlungen im Store beenden
 [[JSONStore sharedInstance] closeAllCollectionsAndReturnError:&error];
 ```
 
-#### Security - change the password that is used to access a Store
+#### Sicherheit - Kennwort für Zugriff auf einen Store ändern
 {: #ios-security-change-the-password-that-is-used-to-access-a-store }
 ```objc
-// The password should be user input.
-// It is hardcoded in the example for brevity.
+// Das Kennwort sollte eine Benutzereingabe sein.
+// Der Kürze halber ist es als Klartext angegeben.
 NSString* oldPassword = @"123";
 NSString* newPassword = @"456";
 NSString* username = @"carlos";
 
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Perform the change password operation.
+// Kennwortänderung durchführen
 [[JSONStore sharedInstance] changeCurrentPassword:oldPassword withNewPassword:newPassword forUsername:username error:&error];
 
-// Remove the passwords from memory.
+// Kennwörter aus dem Speicher entfernen
 oldPassword = nil;
 newPassword = nil;
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### Push - Alle als vorläufig markierten Objekte abrufen, an einen Adapter senden und dann als bereinigt markieren
 {: #ios-push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```objc
-// Get the accessor to an already initialized collection.
+// Zugriffsmechanismus für eine bereits initialisierte Sammlung abrufen
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
-// This object will point to an error if one occurs
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Return all documents marked dirty
+// Alle als vorläufig markierten Dokumente zurückgeben
 NSArray* dirtyDocs = [people allDirtyAndReturnError:&error];
 
-// ACTION REQUIRED: Handle the dirty documents here
-// (e.g. send them to an adapter).
+// ERFORDERLICHE MASSNAHME: Hier vorläufige Dokumente behandeln
+// (z. B. an einen Adapter senden)
 
-// Mark dirty documents as clean
+// Vorläufige Dokumente als bereinigt markieren
 int numCleaned = [[people markDocumentsClean:dirtyDocs error:&error] intValue];
 ```
 
-#### Pull - get new data from an adapter
+#### Pull - Neue Daten von einem Adapter abrufen
 {: #ios-pull-get-new-data-from-an-adapter }
 ```objc
-// Get the accessor to an already initialized collection.
+// Zugriffsmechanismus für eine bereits initialisierte Sammlung abrufen
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
 
-// ACTION REQUIRED: Get data (e.g. Adapter).
-// For this example, it is hardcoded.
+// ERFORDERLICHE MASSNAHME: Daten abrufen (z. B. Adapter)
+// In diesem Beispiel sind die Daten im Klartext angegeben.
 NSArray* data = @[ @{@"id" : @1, @"ssn": @"111-22-3333", @"name": @"carlos"} ];
 
 
 int numChanged = [[people changeData:data withReplaceCriteria:@[@"id", @"ssn"] addNew:YES markDirty:NO error:&error] intValue];
 ```
 
-#### Check whether a document is dirty
+#### Vorläufigkeit eines Dokuments überprüfen
 {: #ios-check-whether-a-document-is-dirty }
 ```objc
-// Get the accessor to an already initialized collection.
+// Zugriffsmechanismus für eine bereits initialisierte Sammlung abrufen
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Check if document with _id '1' is dirty.
+// Prüfen, ob Dokument mit _id '1' vorläufig ist
 BOOL isDirtyResult = [people isDirtyWithDocumentId:1 error:&error];
 ```
 
-#### Check the number of dirty documents
+#### Anzahl vorläufiger Dokumente überprüfen
 {: #ios-check-the-number-of-dirty-documents }
 ```objc
-// Get the accessor to an already initialized collection.
+// Zugriffsmechanismus für eine bereits initialisierte Sammlung abrufen
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Check if document with _id '1' is dirty.
+// Prüfen, ob Dokument mit _id '1' vorläufig ist
 int dirtyDocsCount = [[people countAllDirtyDocumentsWithError:&error] intValue];
 ```
 
-#### Remove a Collection
+#### Sammlung entfernen
 {: #ios-remove-a-collection }
 ```objc
-// Get the accessor to an already initialized collection.
+// Zugriffsmechanismus für eine bereits initialisierte Sammlung abrufen
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Remove the collection.
+// Sammlung entfernen
 [people removeCollectionWithError:&error];
 ```
 
-#### Clear all data that is inside a Collection
+#### Alle Daten in einer Sammlung löschen
 {: #ios-clear-all-data-that-is-inside-a-collection }
 ```objc
-// Get the accessor to an already initialized collection.
+// Zugriffsmechanismus für eine bereits initialisierte Sammlung abrufen
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
-// This object will point to an error if one occurs.
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Remove the collection.
+// Sammlung entfernen
 [people clearCollectionWithError:&error];
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### Transaktion starten, Daten hinzufügen, ein Dokument entfernen, Transaktion festschreiben und im Falle eines Fehlers rückgängig machen
 {: #ios-transaction }
 ```objc
-// Get the accessor to an already initialized collection.
+// Zugriffsmechanismus für eine bereits initialisierte Sammlung abrufen
 JSONStoreCollection* people = [[JSONStore sharedInstance] getCollectionWithName:@"people"];
 
-// These objects will point to errors if they occur.
+// Diese Objekte zeigen auf Fehler, wenn sie auftreten.
 NSError* error = nil;
 NSError* addError = nil;
 NSError* removeError = nil;
 
-// You can call every JSONStore API method inside a transaction except:
-// open, destroy, removeCollection and closeAll.
+// Innerhalb einer Transaktion können Sie jede Methode der JSONStore-API
+// außer open, destroy, removeCollection und closeAll aufrufen.
 [[JSONStore sharedInstance] startTransactionAndReturnError:&error];
 
 [people addData:@[ @{@"name" : @"carlos"} ] andMarkDirty:NO withOptions:nil error:&addError];
@@ -798,83 +799,83 @@ NSError* removeError = nil;
 
 if (addError != nil || removeError != nil) {
 
-  // Return the store to the state before start transaction was called.
+  // Store auf den Zustand zurücksetzen, den er vor dem Aufruf von startTransaction hatte
   [[JSONStore sharedInstance] rollbackTransactionAndReturnError:&error];
 } else {
-  // Commit the transaction thus ensuring atomicity.
+  // Transaktion festschreiben, um die Atomizität sicherzustellen
   [[JSONStore sharedInstance] commitTransactionAndReturnError:&error];
 }
 ```
 
-#### Get file information
+#### Dateiinformationen abrufen
 {: #ios-get-file-information }
 ```objc
-// This object will point to an error if one occurs
+// Dieses Objekt zeigt auf einen Fehler, wenn er auftritt.
 NSError* error = nil;
 
-// Returns information about files JSONStore uses to persist data.
+// Gibt Informationen zu Dateien zurück, die JSONStore verwendet, um Daten auf Platte zu speichern
 NSArray* results = [[JSONStore sharedInstance] fileInfoAndReturnError:&error];
 // => [{@"isEncrypted" : @(true), @"name" : @"carlos", @"size" : @3072}]
 ```
 
 ## Android
 {: #android }
-#### Initialize and open connections, get an Accessor, and add data
+#### Verbindungen initialisieren und öffnen, Zugriffsmechanismus abrufen und Daten hinzufügen
 {: #android-initialize-and-open-connections-get-an-accessor-and-add-data }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
   List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
-  // Create the collections object that will be initialized.
+  // Sammlungsobjekt erstellen, das initialisiert wird
   JSONStoreCollection peopleCollection = new JSONStoreCollection("people");
   peopleCollection.setSearchField("name", SearchFieldType.STRING);
   peopleCollection.setSearchField("age", SearchFieldType.INTEGER);
   collections.add(peopleCollection);
 
-  // Optional options object.
+  // Optionales Optionsobjekt
   JSONStoreInitOptions initOptions = new JSONStoreInitOptions();
-  // Optional username, default 'jsonstore'.
+  // Optionaler Benutzername. Standardwert: 'jsonstore'
   initOptions.setUsername("carlos");
-  // Optional password, default no password.
+  // Optionales Kennwort. Standardwert: kein Kennwort
   initOptions.setPassword("123");
 
-  // Open the collection.
+  // Sammlung öffnen
 
   WLJSONStore.getInstance(ctx).openCollections(collections, initOptions);
 
-  // Add data to the collection.
+  // Daten zur Sammlung hinzufügen
   JSONObject newDocument = new JSONObject("{name: 'carlos', age: 10}");
   JSONStoreAddOptions addOptions = new JSONStoreAddOptions();
   addOptions.setMarkDirty(true);
   peopleCollection.addData(newDocument, addOptions);
 }
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations (init, add).
+  // Fehler für alle bisherigen JSONStore-Operationen (init, add) behandeln
   throw ex;
 } catch (JSONException ex) {
-  // Handle failure for any JSON parsing issues.
+  // Fehler für JSON-Parsing behandeln
 throw ex;
 }
 ```
 
-#### Initialize with a secure random token from the server
+#### Initialisierung mit einem sicheren willkürlichen Token vom Server
 {: #android-initialize-with-a-secure-random-token-from-the-server }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
-// Do an AsyncTask because networking cannot occur inside the activity.
+// AsyncTask ausführen, weil innerhalb der Aktivität kein Netzbetrieb möglich ist
 AsyncTask<Context, Void, Void> aTask = new AsyncTask<Context, Void, Void>() {
   protected Void doInBackground(Context... params) {
     final Context context = params[0];
 
-    // Create the request listener that will have the
-    // onSuccess and onFailure callbacks:
+    Anforderungs-Listener mit onSuccess-
+    // und onFailure-Callback erstellen:
     WLRequestListener listener = new WLRequestListener() {
       public void onFailure(WLFailResponse failureResponse) {
-        // Handle Failure.
+        // Fehler behandeln
       }
 
       public void onSuccess(WLResponse response) {
@@ -882,36 +883,36 @@ AsyncTask<Context, Void, Void> aTask = new AsyncTask<Context, Void, Void>() {
 
         try {
           List<JSONStoreCollection> collections = new LinkedList<JSONStoreCollection>();
-          // Create the collections object that will be initialized.
+          // Sammlungsobjekt erstellen, das initialisiert wird
           JSONStoreCollection peopleCollection = new JSONStoreCollection("people");
           peopleCollection.setSearchField("name", SearchFieldType.STRING);
           peopleCollection.setSearchField("age", SearchFieldType.INTEGER);
           collections.add(peopleCollection);
 
-          // Optional options object.
+          // Optionales Optionsobjekt
           JSONStoreInitOptions initOptions = new JSONStoreInitOptions();
 
-          // Optional username, default 'jsonstore'.
+          // Optionaler Benutzername. Standardwert: 'jsonstore'
           initOptions.setUsername("carlos");
 
-          // Optional password, default no password.
+          // Optionales Kennwort. Standardwert: kein Kennwort
           initOptions.setPassword("123");
 
           initOptions.setSecureRandom(secureRandom);
 
-          // Open the collection.
+          // Sammlung öffnen
           WLJSONStore.getInstance(context).openCollections(collections, initOptions);
 
-          // Other JSONStore operations (e.g. add, remove, replace, etc.) go here.
+          // Hier folgen weitere JSONStore-Operationen (z. B. add, remove, replace usw.)
         }
         catch (JSONStoreException ex) {
-          // Handle failure for any of the previous JSONStore operations (init, add).
+          // Fehler für alle bisherigen JSONStore-Operationen (init, add) behandeln
           ex.printStackTrace();        }
       }
     };
 
-    // Get the secure random from the server:
-    // The length of the random string, in bytes (maximum is 64 bytes).
+    // Sichere willkürliche Zeichenfolge vom Server abrufen.
+    // Länge der willkürlichen Zeichenfolge in Bytes (maximal 64 Bytes)
     int byteLength = 32;
     SecurityUtils.getRandomStringFromServer(byteLength, context, listener);
     return null;
@@ -920,14 +921,14 @@ AsyncTask<Context, Void, Void> aTask = new AsyncTask<Context, Void, Void>() {
 aTask.execute(ctx);
 ```
 
-#### Find - locate documents inside the Store
+#### Find - Dokumente im Store finden
 {: #android-find-locate-documents-inside-the-store }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
+  // Bereits initialisierte Sammlung abrufen
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   JSONStoreQueryParts findQuery = new JSONStoreQueryParts();
@@ -936,108 +937,108 @@ try {
   part.addLessThan("age", 99);
   findQuery.addQueryPart(part);
 
-  // Add additional find options (optional).
+  // Weitere find-Optionen hinzufügen (optional)
   JSONStoreFindOptions findOptions = new JSONStoreFindOptions();
 
-  // Returns a maximum of 10 documents, default no limit.
+  // Rückgabe von maximal 10 Dokumenten. Standardwert: kein Limit
   findOptions.setLimit(10);
-  // Skip 0 documents, default no offset.
+  // Überspringen von 0 Dokumenten. Standard: kein Offset
   findOptions.setOffset(0);
 
-  // Search fields to return, default: ['_id', 'json'].
+  // Zurückzugebende Suchfelder. Standard: ['_id', 'json']
   findOptions.addSearchFilter("_id");
   findOptions.addSearchFilter("json");
 
-  // How to sort the returned values, default no sort.
+  // Art der Sortierung für zurückgegebene Werte. Standard: keine Sortierung
   findOptions.sortBySearchFieldAscending("name");
   findOptions.sortBySeachFieldDescending("age");
 
-  // Find documents that match the query.
+  // Übereinstimmende Dokumente für Abfrage finden
   List<JSONObject> results = peopleCollection.findDocuments(findQuery, findOptions);
 }
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 }
 ```
 
-#### Replace - change the documents that are already stored inside a Collection
+#### Replace - Bereits in einer Sammlung gespeicherte Dokumente ändern
 {: #android-replace-change-the-documents-that-are-already-stored-inside-a-collection }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
+  // Bereits initialisierte Sammlung abrufen
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
-  // Documents will be located with their '_id' field 
-  //and replaced with the data in the 'json' field.
+  // Dokumente werden über ihr Feld '_id' gefunden
+  // und durch die Daten im Feld 'json' ersetzt.
   JSONObject replaceDoc = new JSONObject("{_id: 1, json: {name: 'carlitos', age: 99}}");
 
-  // Mark data as dirty (true = yes, false = no), default true.
+  // Daten als vorläufig markieren (true = ja, false = nein). Standardwert: true
   JSONStoreReplaceOptions replaceOptions = new JSONStoreReplaceOptions();
   replaceOptions.setMarkDirty(true);
 
-  // Replace the document.
+  // Dokument ersetzen
   peopleCollection.replaceDocument(replaceDoc, replaceOptions);
 } 
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations.
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 }
 ```
 
-#### Remove - delete all documents that match the query
+#### Remove - Alle mit der Abfrage übereinstimmenden Dokumente löschen
 {: #android-remove-delete-all-documents-that-match-the-query }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
+  // Bereits initialisierte Sammlung abrufen
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
-  // Documents will be located with their '_id' field.
+  // Dokumente werden über ihr Feld '_id' gefunden
   int id = 1;
 
   JSONStoreRemoveOptions removeOptions = new JSONStoreRemoveOptions();
 
-  // Mark data as dirty (true = yes, false = no), default true.
+  // Daten als vorläufig markieren (true = ja, false = nein). Standardwert: true
   removeOptions.setMarkDirty(true);
 
-  // Replace the document.
+  // Dokument ersetzen
   peopleCollection.removeDocumentById(id, removeOptions);
 }
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 }
 catch (JSONException ex) {
-  // Handle failure for any JSON parsing issues.
+  // Fehler für JSON-Parsing behandeln
   throw ex;
 }
 ```
 
-#### Count - gets the total number of documents that match a query
+#### Count - Gesamtzahl der mit einer Abfrage übereinstimmenden Dokumente abrufen
 {: android-count-gets-the-total-number-of-documents-that-match-a-query }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
+  // Bereits initialisierte Sammlung abrufen
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
-  // Count all documents that match the query.
+  // Übereinstimmende Dokumente für Abfrage zählen
   JSONStoreQueryParts countQuery = new JSONStoreQueryParts();
   JSONStoreQueryPart part = new JSONStoreQueryPart();
 
-  // Exact match.
+  // Exakte Übereinstimmung
   part.addEqual("name", "carlos");
   countQuery.addQueryPart(part);
 
-  // Replace the document.
+  // Dokument ersetzen
   int resultCount = peopleCollection.countDocuments(countQuery);
   JSONObject doc = peopleCollection.findDocumentById(resultCount);
   peopleCollection.replaceDocument(doc);
@@ -1047,246 +1048,246 @@ catch (JSONStoreException ex) {
 }
 ```
 
-#### Destroy - wipes data for all users, destroys the internal storage, and clears security artifacts
+#### Destroy - Daten aller Benutzer bereinigen, internen Speicher löschen und Sicherheitsartefakte entfernen
 {: #android-destory-wipes-data-for-all-users-destroys-the-internal-storage-and-clears-security-artifacts }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Destroy the Store.
+  // Store löschen
   WLJSONStore.getInstance(ctx).destroy();
 } 
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 }
 ```
 
-#### Security - close access to all opened Collections for the current user
+#### Sicherheit - Zugriff auf alle geöffneten Sammlungen für aktuellen Benutzer beenden
 {: #android-security-close-access-to-all-opened-collections-for-the-current-user }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Close access to all collections.
+  // Zugriff auf alle Sammlungen beenden
   WLJSONStore.getInstance(ctx).closeAll();
 } 
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations.
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 }
 ```
 
-#### Security - change the password that is used to access a Store
+#### Sicherheit - Kennwort für Zugriff auf einen Store ändern
 {: #android-security-change-the-password-that-is-used-to-access-a-store }
-```java 
-// The password should be user input. 
-// It is hard-coded in the example for brevity.
+```java
+// Das Kennwort sollte eine Benutzereingabe sein.
+// Der Kürze halber ist es als Klartext angegeben.
 String username = "carlos";
 String oldPassword = "123";
 String newPassword = "456";
 
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
   WLJSONStore.getInstance(ctx).changePassword(oldPassword, newPassword, username);
 } 
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations.
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 } 
 finally {
-  // It is good practice to not leave passwords in memory
+  // Kennwörter sollten nicht im Speicher verbleiben.
   oldPassword = null;
   newPassword = null;
 }
 ```
 
-#### Push - get all documents that are marked as dirty, send them to an adapter, and mark them clean
+#### Push - Alle als vorläufig markierten Objekte abrufen, an einen Adapter senden und dann als bereinigt markieren
 {: #android-push-get-all-documents-that-are-marked-as-dirty-send-them-to-an-adapter-and-mark-them-clean }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
+  // Bereits initialisierte Sammlung abrufen
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
-  // Check if document with _id 3 is dirty.
+  // Prüfen, ob Dokument mit _id 3 vorläufig ist
   List<JSONObject> allDirtyDocuments = peopleCollection.findAllDirtyDocuments();
 
-  // Handle the dirty documents here (e.g. calling an adapter).
+  // Behandlung vorläufiger Dokumente (z. B. durch Aufruf eines Adapters)
 
   peopleCollection.markDocumentsClean(allDirtyDocuments);
 }  catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 }
 ```
 
-#### Pull - get new data from an adapter
+#### Pull - Neue Daten von einem Adapter abrufen
 {: #android-pull-get-new-data-from-an-adapter }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
+  // Bereits initialisierte Sammlung abrufen
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
-  // Pull data here and place in newDocs. For this example, it is hard-coded.
+  // Daten hier mit Pull-Operation extrahieren und in newDocs stellen. Für dieses Beispiel sind die Daten fest codiert.
   List<JSONObject> newDocs = new ArrayList<JSONObject>();
   JSONObject doc = new JSONObject("{id: 1, ssn: '111-22-3333', name: 'carlos'}");
   newDocs.add(doc);
 
   JSONStoreChangeOptions changeOptions = new JSONStoreChangeOptions();
 
-  // Data that does not exist in the collection will be added, default false.
+  // Nicht in der Sammlung vorhandene Daten werden hinzugefügt. Standardwert: false
   changeOptions.setAddNew(true); 
 
-  // Mark data as dirty (true = yes, false = no), default false.
+  // Daten als vorläufig markieren (true = ja, false = nein). Standardwert: false
   changeOptions.setMarkDirty(true);
 
-  // The following example assumes that 'id' and 'ssn' are search fields, 
-  // default will use all search fields
-  // and are part of the data that is received.
+  // Im folgenden Beispiel wir vorausgesetzt, dass 'id' und 'ssn' Suchfelder sind.
+  // Standardmäßig werden alle Suchfelder verwendet und
+  // sind Teil der empfangenen Daten.
   changeOptions.addSearchFieldToCriteria("id");
   changeOptions.addSearchFieldToCriteria("ssn");
 
   int changed = peopleCollection.changeData(newDocs, changeOptions);
 } 
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations.
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 }
 catch (JSONException ex) {
-  // Handle failure for any JSON parsing issues.
+  // Fehler für JSON-Parsing behandeln
   throw ex;
 }
 ```
 
-#### Check whether a document is dirty
+#### Vorläufigkeit eines Dokuments überprüfen
 {: #android-check-whetther-a-document-is-dirty }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
+  // Bereits initialisierte Sammlung abrufen
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
-  // Check if document with id '3' is dirty.
+  // Prüfen, ob Dokument mit ID '3' vorläufig ist
   boolean isDirty = peopleCollection.isDocumentDirty(3); 
 } 
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations.
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 }
 ```
 
-#### Check the number of dirty documents
+#### Anzahl vorläufiger Dokumente überprüfen
 {: #android-check-the-number-of-dirty-documents }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
+  // Bereits initialisierte Sammlung abrufen
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
-  // Get the count of all dirty documents in the people collection.
+  // Anzahl aller vorläufigen Dokumente in der Sammlung 'people' abrufen
   int totalDirty = peopleCollection.countAllDirtyDocuments();
 } 
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations.
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 }
 ```
 
-#### Remove a Collection
+#### Sammlung entfernen
 {: #android-remove-a-collection }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
+  // Bereits initialisierte Sammlung abrufen
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
-  // Remove the collection. The collection object is
-  // no longer usable.
+  // Sammlung entfernen. Das Sammlungsobjekt ist
+  // ncht mehr verwendbar.
   peopleCollection.removeCollection();
 } 
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations.
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 }
 ```
 
-#### Clear all data that is inside a Collection
+#### Alle Daten in einer Sammlung löschen
 {: #android-clear-all-data-that-is-inside-a-collection }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
+  // Bereits initialisierte Sammlung abrufen
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
-  // Clear the collection.
+  // Inhalt der Sammlung löschen
   peopleCollection.clearCollection();    
 } 
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations.
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
   throw ex;
 }
 ```
 
-#### Start a transaction, add some data, remove a document, commit the transaction and roll back the transaction if there is a failure
+#### Transaktion starten, Daten hinzufügen, ein Dokument entfernen, Transaktion festschreiben und im Falle eines Fehlers rückgängig machen
 {: #android-transaction }
 ```java
-// Fill in the blank to get the Android application context.
+// Leeren Bereich füllen, um den Android-Anwendungskontext abzurufen
 Context ctx = getContext();
 
 try {
-  // Get the already initialized collection.
+  // Bereits initialisierte Sammlung abrufen
   JSONStoreCollection peopleCollection  = WLJSONStore.getInstance(ctx).getCollectionByName("people");
 
   WLJSONStore.getInstance(ctx).startTransaction();
 
   JSONObject docToAdd = new JSONObject("{name: 'carlos', age: 99}");
-  // Find documents that match query.
+  // Mit der Abfrage übereinstimmende Dokumente finden
   peopleCollection.addData(docToAdd);
 
 
-  //Remove added doc.
+  // Hinzugefügtes Dokument entfernen
   int id = 1;
   peopleCollection.removeDocumentById(id);
 
   WLJSONStore.getInstance(ctx).commitTransaction();
 } 
 catch (JSONStoreException ex) {
-  // Handle failure for any of the previous JSONStore operations.
+  // Fehler für alle bisherigen JSONStore-Operationen behandeln
 
-  // An exception occured. Take care of it to prevent further damage.
+  // Ausnahme eingetreten, die behandelt werden muss, um Schaden abzuwenden
   WLJSONStore.getInstance(ctx).rollbackTransaction();
 
   throw ex;
 }
 catch (JSONException ex) {
-  // Handle failure for any JSON parsing issues.
+  // Fehler für JSON-Parsing behandeln
 
-  // An exception occured. Take care of it to prevent further damage.
+  // Ausnahme eingetreten, die behandelt werden muss, um Schaden abzuwenden
   WLJSONStore.getInstance(ctx).rollbackTransaction();
 
   throw ex;
 }
 ```
 
-#### Get file information
+#### Dateiinformationen abrufen
 {: #android-get-file-information }
 ```java
 Context ctx = getContext();

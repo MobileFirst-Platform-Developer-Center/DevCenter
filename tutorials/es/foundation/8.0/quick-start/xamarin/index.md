@@ -10,29 +10,29 @@ weight: 6
 {: #overview }
 El propósito de esta demostración es presentar un flujo de principio a fin: 
 
-1. Se registra con {{site.data.keys.mf_console }} una aplicación de ejemplo que se empaqueta con el SDK de cliente Xamarin de {{site.data.keys.product_adj }}.
+1. Se registra con {{ site.data.keys.mf_console }} una aplicación de ejemplo que se empaqueta con el SDK de cliente Xamarin de {{ site.data.keys.product_adj }}.
 
-2. Se desplegará un adaptador nuevo o uno que se proporcione en {{site.data.keys.mf_console }}.   
+2. Se desplegará un adaptador nuevo o uno que se proporcione en {{ site.data.keys.mf_console }}.   
 3. Se cambiará la lógica de la aplicación para realizar una solicitud de recurso. 
 
 **Resultado final**:
 
-* Ping satisfactorio a {{site.data.keys.mf_server }}.
+* Ping satisfactorio a {{ site.data.keys.mf_server }}.
 
 #### Requisitos previos: 
 {: #prerequisites }
 * Xamarin Studio
-* *Opcional*. {{site.data.keys.mf_server }} autónomo ([descargar]({{site.baseurl}}/downloads))
+* *Opcional*. {{ site.data.keys.mf_server }} autónomo ([descargar]({{site.baseurl}}/downloads))
 
-### 1. Cómo iniciar {{site.data.keys.mf_server }}
+### 1. Cómo iniciar {{ site.data.keys.mf_server }}
 {: #1-starting-the-mobilefirst-server }
 Asegúrese de haber [creado una instancia de Mobile Foundation](../../bluemix/using-mobile-foundation), o  
-Si está utilizando [{{site.data.keys.mf_dev_kit }}](../../installation-configuration/development/), vaya hasta la carpeta del servidor y ejecute el mandato `./run.sh` en Mac y Linux o `run.cmd` en Windows.
+Si está utilizando [{{ site.data.keys.mf_dev_kit }}](../../installation-configuration/development/), vaya hasta la carpeta del servidor y ejecute el mandato `./run.sh` en Mac y Linux o `run.cmd` en Windows.
 
 
 ### 2. Creación de una aplicación
 {: #2-creating-an-application }
-En una ventana de navegador, abra {{site.data.keys.mf_console }} cargando el URL:
+En una ventana de navegador, abra {{ site.data.keys.mf_console }} cargando el URL:
 `http://su-host-servidor:su-puerto-servidor/mfpconsole`.
 Si lo está ejecutando de forma local, utilice [http://localhost:9080/mfpconsole](http://localhost:9080/mfpconsole).
 El nombre de usuario y la contraseña son *admin/admin*.
@@ -65,20 +65,22 @@ El nombre de usuario y la contraseña son *admin/admin*.
 
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance();
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance();
   ```
+  >Sustituya `<ClassName>` con el nombre de su clase.
 * Si está desarrollando para Android, incluya la siguiente línea de código dentro del método **OnCreate** del archivo **MainActivity.cs**:
 
 
   ```csharp
-   {ClassName}.WorklightClient = WorklightClient.CreateInstance(this);
+   <ClassName>.WorklightClient = WorklightClient.CreateInstance(this);
   ```
+  >Sustituya `<ClassName>` con el nombre de su clase.
 * Defina un método para obtener la señal de acceso y realizar una solicitud de recurso al servidor MFP tal como se indica a continuación.
 
-   
+
     ```csharp
     public async void ObtainToken()
-           { 
+           {
             try
                    {
        
@@ -105,13 +107,13 @@ El nombre de usuario y la contraseña son *admin/admin*.
            }
     }
    ```
-  
+
 * Invoque al método **ObtainToken** con un constructor de clase o en on click de un botón.
 
 
 ### 4. Despliegue un adaptador
 {: #4-deploy-an-adapter }
-Descargue [this prepared .adapter artifact](../javaAdapter.adapter) y despliéguelo desde {{site.data.keys.mf_console }} con la acción **Acciones → Desplegar adaptador**.
+Descargue [this prepared .adapter artifact](../javaAdapter.adapter) y despliéguelo desde {{ site.data.keys.mf_console }} con la acción **Acciones → Desplegar adaptador**.
 
 
 Como alternativa, pulse el botón **Nuevo** junto a **Adaptadores**.  
@@ -120,7 +122,7 @@ Como alternativa, pulse el botón **Nuevo** junto a **Adaptadores**.
 Descargue el ejemplo de adaptador **Java** de ejemplo "Hello World".
 
 
-   > Si Maven y {{site.data.keys.mf_cli }} no están instalados, siga las instrucciones de **Definir su entorno de desarrollo** en la pantalla.
+   > Si Maven y {{ site.data.keys.mf_cli }} no están instalados, siga las instrucciones de **Definir su entorno de desarrollo** en la pantalla.
 2. Desde una ventana de **línea de mandatos**, vaya a la carpeta raíz del proyecto Maven del adaptador y ejecute el mandato:
 
 
@@ -128,7 +130,7 @@ Descargue el ejemplo de adaptador **Java** de ejemplo "Hello World".
    mfpdev adapter build
    ```
 
-3. Cuando finalice la construcción, despliéguelo desde {{site.data.keys.mf_console }} con la acción **Acciones → Desplegar adaptador**.
+3. Cuando finalice la construcción, despliéguelo desde {{ site.data.keys.mf_console }} con la acción **Acciones → Desplegar adaptador**.
 El adaptador se puede encontrar en la carpeta **[adapter]/target**.
 
 
@@ -137,10 +139,10 @@ El adaptador se puede encontrar en la carpeta **[adapter]/target**.
 <!-- <img src="device-screen.png" alt="sample app" style="float:right"/>-->
 ### 5. Prueba de la aplicación
 {: #5-testing-the-application }
-1. En Xamarin Studio, seleccione el archivo **mfpclient.plist** y edite las propiedades **protocol**, **host** y **port** con los valores correctos para su instancia de {{site.data.keys.mf_server }}.
+1. En Xamarin Studio, seleccione el archivo **mfpclient.plist** y edite las propiedades **protocol**, **host** y **port** con los valores correctos para su instancia de {{ site.data.keys.mf_server }}.
 
-    * Si está utilizando una instancia de {{site.data.keys.mf_server }} local, los valores habitualmente son **http**, **localhost** y **9080**.
-    * Si está utilizando una instancia remota de {{site.data.keys.mf_server }} (en Bluemix), los valores habitualmente son **https**, **dirección-su-servidor** y **443**.
+    * Si está utilizando una instancia de {{ site.data.keys.mf_server }} local, los valores habitualmente son **http**, **localhost** y **9080**.
+    * Si está utilizando una instancia remota de {{ site.data.keys.mf_server }} (en Bluemix), los valores habitualmente son **https**, **dirección-su-servidor** y **443**.
 
 2. Pulse el botón **Reproducir**.
 
@@ -149,17 +151,17 @@ El adaptador se puede encontrar en la carpeta **[adapter]/target**.
 ### Resultados
 {: #results }
 * Al pulsar el botón **Ping MobileFirst Server** se visualizará **Connected to MobileFirst Server**.
-* Si la aplicación se pudo conectar a {{site.data.keys.mf_server }}, tendrá lugar una llamada de solicitud de recurso con el adaptador Java desplegado.
+* Si la aplicación se pudo conectar a {{ site.data.keys.mf_server }}, tendrá lugar una llamada de solicitud de recurso con el adaptador Java desplegado.
 
 
 La respuesta del adaptador se imprime entonces en la consola de Xamarin Studio.
 
 
-![Imagen de una aplicación que llamó de forma satisfactoria a un recurso desde {{site.data.keys.mf_server }}](console-output.png)
+![Imagen de una aplicación que llamó de forma satisfactoria a un recurso desde {{ site.data.keys.mf_server }}](console-output.png)
 
 ## Siguientes pasos
 {: #next-steps }
-Aprenda más sobre cómo utilizar adaptadores en aplicaciones, y cómo integrar servicios adicionales como, por ejemplo, notificaciones push, utilizando la infraestructura de seguridad de {{site.data.keys.product_adj }} entre otras cosas:
+Aprenda más sobre cómo utilizar adaptadores en aplicaciones, y cómo integrar servicios adicionales como, por ejemplo, notificaciones push, utilizando la infraestructura de seguridad de {{ site.data.keys.product_adj }} entre otras cosas:
 
 
 - Revise las guías de aprendizaje de [Desarrollo de adaptadores](../../adapters/)

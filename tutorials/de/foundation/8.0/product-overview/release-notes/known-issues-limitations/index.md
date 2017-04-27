@@ -463,3 +463,11 @@ Wenn Sie für Ihre native Android-Anwendung die Eigenschaft **wlServerHost** in 
 {{ site.data.keys.mf_server }} auf einem Host mit IPv6-Adresse befindet, verwenden Sie einen zugeordneten Hostnamen als IPv6-Adresse. Wenn Sie die
 Eigenschaft **wlServerHost** mit einer unbearbeiteten IPv6-Adresse konfigurieren,
 scheitert der Versuch der Anwendung, eine Verbindung zu {{ site.data.keys.mf_server }} herzustellen.
+
+### Nicht empfohlene Modifikation des Standardverhaltens einer Cordova-App
+{:  #modifying_default_behaviour_of_a_cordova_app_is_not_recommended}
+Die Modifikation des Standardverhaltens einer Cordova-App (z. B. durch Außerkraftsetzen des Verhaltens der Schaltfläche "Back")
+beim Hinzufügen des
+{{ site.data.keys.product_adj }}-Cordova-SDK zum Projekt, kann dazu führen, dass die App
+bei Übergabe an den Google Play Store zurückgewiesen wird.
+Sollte die Übergabe an den Google Play Store aus anderen Gründen fehlschlagen, wenden Sie sich an den Google-Support.

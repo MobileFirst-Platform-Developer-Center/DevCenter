@@ -11,19 +11,19 @@ downloads:
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概説
 {: #overview }
-{{site.data.keys.product_full }} は、外部リソースにセキュリティー機能を適用するための Node.js フレームワークを提供しています。  
+{{ site.data.keys.product_full }} は、外部リソースにセキュリティー機能を適用するための Node.js フレームワークを提供しています。  
 Node.js フレームワークは、npm モジュール (**passport-mfp-token-validation**) として提供されます。
 
 このチュートリアルでは、スコープ (`accessRestricted`) を使用して、単純な Node.js リソース `GetBalance` を保護する方法を示します。
 
 **前提条件:**  
 
-* [{{site.data.keys.mf_server }} を使用した外部リソースの認証](../)チュートリアルをお読みください。
-* [{{site.data.keys.product }} セキュリティー・フレームワーク](../../)の知識が必要です。
+* [{{ site.data.keys.mf_server }} を使用した外部リソースの認証](../)チュートリアルをお読みください。
+* [{{ site.data.keys.product }} セキュリティー・フレームワーク](../../)の知識が必要です。
 
 ## passport-mfp-token-validation モジュール
 {: #the-passport-mfp-token-validation-module }
-passport-mfp-token-validation モジュールは、{{site.data.keys.mf_server }} によって発行されるアクセス・トークンを検証するための認証メカニズムを提供します。
+passport-mfp-token-validation モジュールは、{{ site.data.keys.mf_server }} によって発行されるアクセス・トークンを検証するための認証メカニズムを提供します。
 
 モジュールをインストールするには、以下を実行します。
 
@@ -58,9 +58,9 @@ npm install passport-mfp-token-validation@8.0.X
   }));
   ```
   
- * `authServerUrl`: `localhost:9080` を実際の {{site.data.keys.mf_server }} IP アドレスとポート番号に置き換えてください。
- * `confClientID`、`confClientPass`: 機密クライアント ID とパスワードを {{site.data.keys.mf_console }} で定義したものに置き換えてください。
- * `analytics`: Analytics 項目はオプションです。Analytics のイベントを {{site.data.keys.product }} のログに記録する場合にのみ必要です。  
+ * `authServerUrl`: `localhost:9080` を実際の {{ site.data.keys.mf_server }} IP アドレスとポート番号に置き換えてください。
+ * `confClientID`、`confClientPass`: 機密クライアント ID とパスワードを {{ site.data.keys.mf_console }} で定義したものに置き換えてください。
+ * `analytics`: Analytics 項目はオプションです。Analytics のイベントを {{ site.data.keys.product }} のログに記録する場合にのみ必要です。  
 `localhost:9080`、`username`、および `password` を Analytics Server の IP アドレス、ポート番号、ユーザー名、およびパスワードに置き換えてください。
 
 * `passport.authenticate` を呼び出して、要求を認証します。
@@ -94,7 +94,7 @@ npm install passport-mfp-token-validation@8.0.X
 ### サンプルの使用法
 {: #sample-usage }
 1. サンプルのルート・フォルダーにナビゲートし、コマンド `npm install` を実行し、続けて、`npm start` も実行します。
-2. {{site.data.keys.mf_console }} で、必ず[機密クライアントと秘密鍵の値を更新](../#confidential-client)してください。
+2. {{ site.data.keys.mf_console }} で、必ず[機密クライアントと秘密鍵の値を更新](../#confidential-client)してください。
 3. **[UserLogin](../../user-authentication/security-check/)** または **[PinCodeAttempts](../../credentials-validation/security-check/)** のいずれかのセキュリティー検査をデプロイします。
 4. 一致するアプリケーションを登録します。
 5. `accessRestricted` スコープをセキュリティー検査にマップします。

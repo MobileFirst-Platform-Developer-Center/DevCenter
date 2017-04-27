@@ -140,7 +140,7 @@ DB2 ユーザー・アカウントについて詳しくは、[DB2 のセキュ�
 
 Ant タスクを使用して表スペースなどの表割り振りの詳細を指定することはできません。表スペースを制御する場合は、[DB2 データベースおよびユーザーの要件](../databases/#db2-database-and-user-requirements)のセクションにある手動での指示を使用する必要があります。
 
-#### MySQL
+#### MySQL 
 {: #mysql }
 エレメント `<mysql>` には以下の属性があります。
 
@@ -191,7 +191,7 @@ hostname の構文について詳しくは、[Specifying Account Names](http://d
 
 > `注:` 代替属性を持つデータベースを指定する場合、このデータベースとユーザー・アカウントが存在している必要があり、それとともに、ユーザーがデータベースにアクセスできるようになっている必要があります。この場合、**configuredatabase** タスクはデータベースおよびユーザーの作成を試行せず、
 ユーザーのアクセス権限の付与も試行しません。
-**configuredatabase** タスクにより確実となるのは、現行バージョンの {{ site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント `<dba>` と `<client>` を指定する必要はありません。#### Oracle
+**configuredatabase** タスクにより確実となるのは、現行バージョンの {{ site.data.keys.mf_server }} に必要な表がデータベースにあることのみです。内部エレメント `<dba>` と `<client>` を指定する必要はありません。#### Oracle 
 {: #oracle }
 エレメント `<oracle>` には以下の属性があります。
 
@@ -382,7 +382,7 @@ JNDI プロパティーについて詳しくは、[{{ site.data.keys.mf_server }
 
 | エレメント                                   | 説明                                      | カウント |
 |-------------------------------------------|--------------------------------------------------|-------|
-| `<websphereapplicationserver>` または `<was>` | WebSphere Application Server のパラメーター。<br/><br/> `<websphereapplicationserver>` エレメント (短縮形では `was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。               | 0..1  |
+| `<websphereapplicationserver>` または `<was>` | WebSphere Application Server のパラメーター。<br/><br/>`<websphereapplicationserver>` エレメント (短縮形では `was>`) は、WebSphere Application Server インスタンスを示します。WebSphere Application Server フル・プロファイル (Base、および Network Deployment) がサポートされ、WebSphere Application Server Liberty Core および WebSphere Application Server Liberty Network Deployment もサポートされます。               | 0..1  |
 | `<tomcat>`                                | Apache Tomcat のパラメーター。	               | 0..1  |
 
 これらのエレメントの属性および内部エレメントについては、[{{ site.data.keys.product_adj }} ランタイム環境のインストールに関する Ant タスク](#ant-tasks-for-installation-of-mobilefirst-runtime-environments) の表に説明があります。  
@@ -973,7 +973,8 @@ Liberty サーバーで使用可能なプロパティーについて詳しくは
 | データベース   | データベース名。 | いいえ	種類に応じて、MFPDATA、MFPADM、MFPCFG、MFPPUSH、または APPCNTR。 |
 | サーバー     | データベース・サーバーのホスト名。      | はい	     | なし    |
 | port       | データベース・サーバーのポート。           | いいえ	     | 50000   |
-| user       | データベースにアクセスするユーザー名。     | このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、『データベースのユーザーおよび特権』にリストされている、制限された特権を持つユーザーを設定できます。                                 | はい | なし |
+| user       | データベースにアクセスするユーザー名。     | このユーザーに、データベースに対する拡張特権は必要ありません。データベースに制限を実装する場合は、『データベースのユーザーおよび特権』にリストされている、制限された特権を持つユーザーを設定できます。 | はい	なし
+ |
 | password   | データベースにアクセスするパスワード。      | いいえ       | 対話式に照会 |
 | schema     | スキーマ名。                           | いいえ       | ユーザーに応じて異なる |
 

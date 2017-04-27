@@ -42,8 +42,7 @@ ID. Beispiel: **Back-end Node server**.
 - **ID**: Eine eindeutige Kennung für den vertraulichen Client (die als eine Art Benutzername betrachtet werden kann). Die ID darf nur ASCII-Zeichen enthalten. 
 - **Geheimer Schlüssel**: Eine private Kennphrase zur Autorisierung des Zugriffs des vertraulichen Clients (die als ein API-Schlüssel angesehen werden kann). Der geheime Schlüssel darf nur ASCII-Zeichen enthalten. 
 - **Zulässiger Bereich**: Einem vertraulichen Client, der eine solche Kombination aus ID und geheimem Schlüssel verwendet, wird automatisch
-der hier definierte Bereich zugeordnet. Weitere Informationen zu **Bereichen** enthält das Lernprogramm
-[Autorisierungskonzepte](../#scope). 
+der hier definierte Bereich zugeordnet. Weitere Informationen zu Bereichen finden Sie unter [Bereiche](../#scopes).
     - Ein Element eines zulässigen Bereichs kann auch einen Stern (`*`) als besonderes Platzhalterzeichen enthalten, das eine beliebige Folge von null oder mehr Zeichen repräsentiert. Wenn das Bereichselement beispielsweise
 `send*` ist, kann dem vertraulichen Client Zugriff auf Bereiche gewährt werden, die ein mit "send" beginnendes Bereichselement enthalten, z. B.
 "sendMessage". Der Stern als Platzhalterzeichen kann an jeder Stelle des Namens eines Bereichselements und sogar mehrfach angegeben werden.  
@@ -85,24 +84,22 @@ Der Client `push` wird intern vom Push-Service der {{ site.data.keys.product }} 
 {: #obtaining-an-access-token }
 Ein Token kann vom **Tokenendpunkt** des {{ site.data.keys.mf_server }} abgerufen werden.   
 
-Für **Testzwecke** können Sie Postman verwenden, wie es unten beschrieben ist.   
+**Für Testzwecke** können Sie Postman verwenden, wie es unten beschrieben ist.   
 Implementieren Sie Postman mit einer Technologie Ihrer Wahl in einer realen Situation in Ihre Back-End-Logik. 
 
-1. Setzen Sie eine **POST**-Anforderung an **http(s)://[IP-Adresse_oder_Hostname]:[Port]/[runtime]/api/az/v1/token** ab.  
+1.  Setzen Sie eine **POST**-Anforderung an **http(s)://[IP-Adresse_oder_Hostname]:[Port]/[runtime]/api/az/v1/token** ab.  
     Beispiel: `http://localhost:9080/mfp/api/az/v1/token`
     - In einer Entwicklungsumgebung verwendet {{ site.data.keys.mf_server }} eine bereits vorhandene `mfp`-Laufzeit.   
     - Ersetzen Sie den Laufzeitwert in einer Produktionsumgebung durch den Namen Ihrer Laufzeit. 
 
-2. Legen Sie für die Anforderung `application/x-www-form-urlencoded` als Inhaltstyp fest.  
-3. Definieren Sie die beiden folgenden Formularparameter: 
-  - `grant_type`: `client_credentials`
-  - `scope`: Verwenden Sie den Bereich, der die Ressource schützt.
-  
-Falls Sie Ihre Ressource nicht mit einem Bereich schützen, verwenden Sie eine leere Zeichenfolge. 
+2.  Legen Sie für die Anforderung `application/x-www-form-urlencoded` als Inhaltstyp fest.  
+3.  Definieren Sie die beiden folgenden Formularparameter: 
+    - Setzen Sie `grant_type` auf den Wert `client_credentials`.
+    - Setzen Sie `scope` auf den schützenden Bereich für Ihre Ressource. Wenn Ihrer Ressource kein schützender Bereich zugewiesen ist, lassen Sie diesen Parameter weg, damit der Standardbereich (`RegisteredClient`) verwendet wird. Weitere Informationen finden Sie unter [Bereiche](../../authentication-and-security/#scopes).
 
-    ![Postman-Konfiguration](confidential-client-steps-1-3.png)
+       ![Postman-Konfiguration](confidential-client-steps-1-3.png)
 
-4. Verwenden Sie zum Authentifizieren der Anforderung die [Basisauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side). Verwenden Sie die
+4.  Verwenden Sie zum Authentifizieren der Anforderung die [Basisauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication#Client_side). Verwenden Sie die
 **ID** und den **geheimen Schlüssel** Ihres vertraulichen Clients.
 
     ![Postman-Konfiguration](confidential-client-step-4.png)
@@ -149,11 +146,8 @@ Ein HTTP-Antwortstatus **401** mit dem HTTP-Header
 
 ### insufficient_scope
 {: #insufficient-scope }
-Ein HTTP-Antwortstatus **403** mit dem HTTP-Header `WWW-Authenticate : Bearer error="insufficient_scope", scope="scopeA scopeB"`
-bedeutet, dass das in der ursprünglichen Anforderung gefundene Token
-nicht zu dem **von dieser Ressource geforderten Bereich** passt. Der Header enthält außerdem den erwarteten Bereich. 
+Ein HTTP-Antwortstatus **403** mit dem HTTP-Header `WWW-Authenticate : Bearer error="insufficient_scope", scope="RegisteredClient scopeA scopeB"` bedeutet, dass das in der ursprünglichen Anforderung gefundene Token nicht zu dem von dieser Ressource geforderten Bereich passt. Der Header enthält außerdem den erwarteten Bereich. 
 
-Wenn Sie eine Anforderung absetzen und nicht wssen, welchen Bereich die Ressource fordert,
-können Sie mit `insufficient_scope` die Antwort bestimmen.   
-Fordern Sie beispielsweise ein Token mit einer leeren Zeichenfolge (`""`) für den Bereichswert an, wenn Sie die Ressourcenanforderung absetzen. Anschließend extrahieren Sie den erforderlichen Bereich
+Wenn Sie eine Anforderung absetzen und nicht wssen, welchen Bereich die Ressource fordert, können Sie mit `insufficient_scope` den erforderlichen Bereich bestimmen. Fordern Sie beispielsweise ein Token ohne Angabe eines Bereichs an, wenn Sie die Ressourcenanforderung absetzen. Anschließend extrahieren Sie den erforderlichen Bereich
 aus der Antwort 403 und fordern ein neues Token für diesen Bereich an. 
+
