@@ -17,7 +17,7 @@ weight: 4
 {: #jump-to }
 
 * [应用程序服务器必备软件](#application-server-prerequisites)
-* [使用 Server Configuration Tool 安装](#installing-with-the-server-configuration-tool)
+* [使用 Server Configuration Tool 安装](#installing-with-the-server-configuration-tool) 
 * [使用 Ant 任务安装](#installing-with-ant-tasks)
 * [手动安装 {{ site.data.keys.mf_server }} 组件](#installing-the-mobilefirst-server-components-manually)
 * [安装服务器场](#installing-a-server-farm)
@@ -59,21 +59,21 @@ weight: 4
 {% endhighlight %}
 
                 <p><b>注：</b> 8686 是缺省值。如果计算机上该端口不可用，可以更改此端口的值。</p>
-
+                
                 <ul>
                     <li>如果使用 <b>tomcat_install_dir/bin/startup.bat</b> 或 <b>tomcat_install_dir/bin/catalina.bat</b> 启动 Apache Tomcat，那么将使用 <b>setenv.bat</b> 文件。</li>
                     <li>如果使用 <b>tomcatInstallDir/bin/startup.sh</b> 或 <b>tomcat_install_dir/bin/catalina.sh</b> 启动 Apache Tomcat，那么将使用 <b>setenv.sh</b> 文件。</li>
                 </ul>
-
+                
                 <p>如果您通过其他命令启动 Apache Tomcat，那么可能不会使用此文件。如果安装了 Apache Tomcat Windows Service Installer，那么服务启动程序不会使用 <b>setenv.bat</b>。</p>
-
+                
                 <blockquote><b>要点：</b>缺省情况下，此配置不安全。要保护配置，您必须手动完成以下过程的步骤 2 和 3。</blockquote>
-
+                
                 <p>手动配置 Apache Tomcat：</p>
-
+                
                 <ol>
                     <li>对于简单配置，请将以下选项添加到 <b>CATALINA_OPTS</b>：
-
+                    
 {% highlight xml %}
 -Djava.rmi.server.hostname=localhost
 -Dcom.sun.management.jmxremote.port=8686
@@ -100,7 +100,7 @@ weight: 4
                     <b>注：</b>可以更改端口 8686。</li>
                     <li>
                         <p>如果 Tomcat 实例在防火墙背后运行，那么必须配置 JMX 远程生命周期侦听器。请参阅 <a href="http://tomcat.apache.org/tomcat-7.0-doc/config/listeners.html#JMX_Remote_Lifecycle_Listener_-_org.apache.catalina.mbeans.JmxRemoteLifecycleListener">JMX 远程生命周期侦听器</a>的 Apache Tomcat 文档。</p><p>还必须将以下环境属性添加到 <b>server.xml</b> 文件中的管理服务应用程序的 Context 节，如以下示例所示：</p>
-
+                    
 {% highlight xml %}
 <Context docBase="mfpadmin" path="/mfpadmin ">
     <Environment name="mfp.admin.rmi.registryPort" value="registryPort" type="java.lang.String" override="false"/>
@@ -109,13 +109,13 @@ weight: 4
 {% endhighlight %}
 
                         在上一个示例中：
-			<ul>
+                        <ul>
                             <li>registryPort 必须具有与 JMX 远程生命周期侦听器的 <b>rmiRegistryPortPlatform</b> 属性相同的值。</li>
                             <li>serverPort 必须具有与 JMX 远程生命周期侦听器的 <b>rmiServerPortPlatform</b> 属性相同的值。</li>
                         </ul>
                     </li>
                     <li>如果您通过 Apache Tomcat Windows Service Installer（而不是向 <b>CATALINA_OPTS</b> 添加选项）安装了 Apache Tomcat，那么请运行 <b>tomcat_install_dir/bin/Tomcat7w.exe</b>，并在“属性”窗口的 <b>Java</b> 选项卡中添加选项。
-
+                    
                     <img alt="Apache Tomcat 7 属性" src="Tomcat_Win_Service_Installer_properties.jpg"/></li>
                 </ol>
             </div>
@@ -150,10 +150,9 @@ weight: 4
         <div id="collapse-websphere-jmx-connection" class="panel-collapse collapse" role="tabpanel" aria-labelledby="websphere-jmx-connection">
             <div class="panel-body">
                 <p>{{ site.data.keys.mf_server }} 需要配置安全的 JMX 连接。</p>
-
+                
                 <ul>
-                    <li>Server Configuration Tool 和 Ant 任务可以配置安全的缺省 JMX 连接，该连接包括生成有效期 365 天的自签名 SSL 证书。
-此配置不适用于生产用途。</li>
+                    <li>Server Configuration Tool 和 Ant 任务可以配置安全的缺省 JMX 连接，该连接包括生成有效期 365 天的自签名 SSL 证书。此配置不适用于生产用途。</li>
                     <li>要为生产用途配置安全的 JMX 连接，请遵循<a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/twlp_admin_restconnector.html?cp=SSD28V_8.5.5&view=embed">配置到 Liberty Profile 的安全 JMX 连接</a>中所述的指示信息。</li>
                     <li>其余的接口可用于 WebSphere Application Server、Liberty Core 以及 Liberty 的其他版本，但是可以将 Liberty 服务器与一部分可用功能部件打包在一起。要验证其余接口功能部件在您的 Liberty 安装中是否可用，请输入以下命令：
 {% highlight bash %}                    
@@ -187,9 +186,10 @@ liberty_install_dir/bin/productInfo featureInfo
         <div id="collapse-websphere-nd-jmx-connection" class="panel-collapse collapse" role="tabpanel" aria-labelledby="websphere-nd-jmx-connection">
             <div class="panel-body">
                 <p>{{ site.data.keys.mf_server }} 需要配置安全的 JMX 连接。</p>
-
+                
                 <ul>
-                    <li>{{ site.data.keys.mf_server }} 需要访问 SOAP 端口或 RMI 端口以执行 JMX 操作。缺省情况下，SOAP 端口在 WebSphere Application Server 上处于活动状态。缺省情况下，{{ site.data.keys.mf_server }} 使用 SOAP 端口。如果同时取消激活 SOAP 和 RMI 端口，那么 {{ site.data.keys.mf_server }} 将无法运行。</li>
+                    <li>{{ site.data.keys.mf_server }} 需要访问 SOAP 端口或 RMI 端口以执行 JMX 操作。
+缺省情况下，SOAP 端口在 WebSphere Application Server 上处于活动状态。缺省情况下，{{ site.data.keys.mf_server }} 使用 SOAP 端口。如果同时取消激活 SOAP 和 RMI 端口，那么 {{ site.data.keys.mf_server }} 将无法运行。</li>
                     <li>RMI 仅受 WebSphere Application Server Network Deployment 支持。独立概要文件或 WebSphere Application Server 服务器场不支持 RMI。</li>
                     <li>必须激活 Administrative 和 Application Security。</li>
                 </ul>
@@ -283,8 +283,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-configuration-tool" class="panel-collapse collapse" role="tabpanel" aria-labelledby="configuration-tool">
             <div class="panel-body">
                 <ol>
-                    <li>启动 Server Configuration Tool。
-		    <ul>
+                    <li>启动 Server Configuration Tool。<ul>
                             <li>在 Linux，通过应用程序快捷方式<b>应用程序 → IBM MobileFirst Platform Server → Server Configuration Tool</b>。</li>
                             <li>在 Windows 上，单击<b>开始 → 程序 → IBM MobileFirst Platform Server → Server Configuration Tool</b>。</li>
                             <li>在 macOS 上，打开 shell 控制台。转至 <b>mfp_server_install_dir/shortcuts</b>，然后输入 <b>./configuration-tool.sh</b>。</li>
@@ -292,26 +291,24 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                         </ul>
                     </li>
                     <li>选择<b>文件 → 新建配置</b>以创建 {{ site.data.keys.mf_server }} 配置。
-		    <ul>
+                        <ul>
                             <li>在<b>配置详细信息</b>面板中，输入管理服务和运行时组件的上下文根。您可能要输入环境标识。高级用例中将使用环境标识，例如，<a href="../topologies/#multiple-instances-of-mobilefirst-server-on-the-same-server-or-websphere-application-server-cell">当在同一应用程序服务器上或同一 WebSphere Application Server 单元上安装 {{ site.data.keys.mf_server }} 时</a>。</li>
                             <li>在<b>控制台设置</b>面板中，选择是否安装 {{ site.data.keys.mf_console }}。如果未安装控制台，需使用命令行工具（<b>mfpdev</b> 或 <b>mfpadm</b>）或 REST API 与 {{ site.data.keys.mf_server }} 管理服务交互。</li>
                             <li>在<b>数据库选择</b>面板中，选择您计划使用的数据库管理系统。所有组件均使用相同的数据库类型和相同的数据库实例。有关数据库窗格的更多信息，请参阅<a href="../databases/#create-the-database-tables-with-the-server-configuration-tool">使用 Server Configuration Tool 创建数据库表</a>。</li>
                             <li>在<b>应用程序服务器选择</b>面板中，选择要部署 {{ site.data.keys.mf_server }} 的应用程序服务器的类型。</li>
                         </ul>
                     </li>
-                    <li>在<b>应用程序服务器设置</b>面板中，选择应用程序服务器并完成以下步骤：
-		    <ul>
-                            <li>要在 WebSphere Application Server Liberty 上进行安装：
-			    <ul>
+                    <li>在<b>应用程序服务器设置</b>面板中，选择应用程序服务器并完成以下步骤：<ul>
+                            <li>要在 WebSphere Application Server Liberty 上进行安装：<ul>
                                     <li>输入 Liberty 的安装目录以及要安装 {{ site.data.keys.mf_server }} 的服务器的名称。</li>
                                     <li>您可以创建登录到控制台的缺省用户。将在 Liberty Basic 注册表中创建该用户。对于生产安装，您可能要清除<b>创建缺省用户</b>选项，并在安装后配置用户访问权。有关更多信息，请参阅<a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">配置 {{ site.data.keys.mf_server }} 管理的用户认证</a>。</li>
                                     <li>设置部署类型：<b>独立部署</b>（缺省值）、<b>服务器场部署</b>或 <b>Liberty 集合体部署</b>。</li>
                                 </ul>
-
+                                
                                 如果选择 Liberty 集合体部署选项，请执行以下步骤：
-				<ul>
+                                <ul>
                                     <li>指定 Liberty 集合体服务器：
-				    <ul>
+                                        <ul>
                                             <li>安装管理服务、{{ site.data.keys.mf_console }} 和实时更新服务的集群。服务器必须是 Liberty 集合体控制器。</li>
                                             <li>安装运行时的集群。服务器必须是 Liberty 集合体成员。</li>
                                             <li>安装推送服务的集群。服务器必须是 Liberty 集合体成员。</li>
@@ -324,10 +321,10 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                                 </ul>
                             </li>
                             <li>要在 WebSphere Application Server 或 WebSphere Application Server Network Deployment 上进行安装：
-			    <ul>
+                                </ul>
                                     <li>输入 WebSphere Application Server 的安装目录。</li>
                                     <li>选择要安装 {{ site.data.keys.mf_server }} 的 WebSphere Application Server 概要文件。如果要在 WebSphere Application Server Network Deployment 上进行安装，请选择 Deployment Manager 的概要文件。在 Deployment Manager 概要文件上，可选择某一范围（<b>服务器</b>或<b>集群</b>）。如选择<b>集群</b>，那么必须指定：
-				    <ul>
+                                        <ul>
                                             <li>安装运行时的集群。</li>
                                             <li>安装管理服务、{{ site.data.keys.mf_console }} 和实时更新服务的集群。</li>
                                             <li>安装推送服务的集群。</li>
@@ -336,9 +333,8 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                                     <li>输入管理员登录标识和密码。管理员用户必须具有管理员角色。</li>
                                     <li>如果选择<b>将 WebSphere 管理员声明为 {{ site.data.keys.mf_console }} 中的管理员用户</b>选项，那么用于安装 {{ site.data.keys.mf_server }} 的用户将映射到控制台的管理安全角色，并可以使用管理员权限登录到控制台。该用户还将映射到实时更新服务的安全角色。用户名和密码设置为管理服务的 JNDI 属性（<b>mfp.config.service.user</b> 和 <b>mfp.config.service.password</b>）。</li>
                                     <li>如果未选择<b>将 WebSphere 管理员声明为 {{ site.data.keys.mf_console }} 中的管理员用户</b>选项，那么必须完成以下任务才能使用 {{ site.data.keys.mf_server }}：
-				    <ul>
-                                            <li>通过以下方式启用管理服务与实时更新服务间的通信：
-					    <ul>
+                                        <ul>
+                                            <li>通过以下方式启用管理服务与实时更新服务间的通信：<ul>
                                                     <li>将用户映射到实时更新服务的安全角色 <b>configadmin</b>。</li>
                                                     <li>在管理服务的 JNDI 属性（<b>mfp.config.service.user</b> 和 <b>mfp.config.service.password</b>）中添加该用户的登录标识和密码。</li>
                                                     <li>将一个或多个用户映射到管理服务和 {{ site.data.keys.mf_console }} 的安全角色。请参阅<a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">为 {{ site.data.keys.mf_server }} 管理配置用户认证</a>。</li>
@@ -349,7 +345,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                                 </ul>
                             </li>
                             <li>要在 Apache Tomcat 上进行安装：
-			    <ul>
+                                <ul>
                                     <li>输入 Apache Tomcat 的安装目录。</li>
                                     <li>输入用于 JMX 与 RMI 通信的端口。缺省情况下，该值为 8686。Server Configuration Tool 修改 <b>tomcat_install_dir/bin/setenv.bat</b> 或 <b>tomcat_install_dir/bin/setenv.sh</b> 文件来打开此端口。如果要手动打开此端口，或使用在 <b>setenv.bat</b> 或 <b>setenv.sh</b> 中打开此端口的一些代码，请不要使用此工具。请改为使用 Ant 任务进行安装。提供了一个手动打开 RMI 端口的选项，以使用 Ant 任务进行安装。</li>
                                     <li>创建登录到控制台的缺省用户。还将在 <b>tomcat-users.xml</b> 配置文件中创建该用户。对于生产安装，您可能要清除创建缺省用户选项，并在安装后配置用户访问权。有关更多信息，请参阅<a href="../server-configuration/#configuring-user-authentication-for-mobilefirst-server-administration">配置 {{ site.data.keys.mf_server }} 管理的用户认证</a>。</li>
@@ -358,20 +354,20 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                         </ul>
                     </li>
                     <li>在<b>推送服务设置</b>面板中，如果要在应用程序服务器中安装推送服务，请选中<b>安装推送服务</b>选项。上下文根为 <b>imfpush</b>。要启用推送服务与管理服务间的通信，需定义以下参数：
-		    <ul>
+                        <ul>
                             <li>输入推送服务的 URL 和运行时的 URL。如果在 Liberty、Apache Tomcat 或独立 WebSphere Application Server 上进行安装，可自动计算此 URL。它使用本地服务器上的组件（运行时或推送服务）的 URL。如果在 WebSphere Application Server Network Deployment 上进行安装，或通过 Web 代理或负载均衡器进行通信，那么必须手动输入 URL。</li>
                             <li>输入用于服务之间 OAuth 通信的保密客户机标识和密码。否则，该工具会生成缺省值和随机密码。</li>
                         </ul>
                     </li>
                     <li>在<b>分析设置</b>面板中，如果已安装 {{ site.data.keys.mf_analytics }}，请选中<b>连接到分析服务器</b>。输入以下连接设置：
-		    <ul>
+                        <ul>
                             <li>分析控制台的 URL。</li>
                             <li>分析服务器（分析数据服务）的 URL。</li>
                             <li>允许向分析服务器发布数据的用户登录标识和密码。</li>
                         </ul>
-
+                        
                         该工具可配置运行时和推送服务以向分析服务器发送数据。
-			</li>
+                    </li>
                     <li>单击<b>部署</b>以继续进行安装。</li>
                 </ol>
             </div>
@@ -403,7 +399,8 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 {: #installing-with-ant-tasks }
 使用 Ant 任务将 {{ site.data.keys.mf_server }} 组件安装到应用程序服务器上。
 
-您可以在 **mfp\_install\_dir/MobileFirstServer/configuration-samples 目录**中查找用于安装 {{ site.data.keys.mf_server }} 的样本配置文件。
+您可以在 **mfp\_install\_dir/MobileFirstServer/configuration-samples 目录**中
+查找用于安装 {{ site.data.keys.mf_server }} 的样本配置文件。
 
 您也可以使用 Server Configuration Tool 创建配置，然后通过使用**文件 → 将配置导出为 Ant 文件...**来导出 Ant 文件。样本 Ant 文件具有与 Server Configuration Tool 相同的限制：
 
@@ -431,7 +428,6 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
 <br/>
 安装后，请复制 Ant 文件，使您能够复用它来应用修订包。
-
 ### 使用 Ant 文件应用修订包
 {: #applying-a-fix-pack-by-using-the-ant-files }
 
@@ -464,7 +460,8 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
 #### 指定额外的 JNDI 属性
 {: #specify-extra-jndi-properties }
-**installmobilefirstadmin**、**installmobilefirstruntime** 和 **installmobilefirstpush** Ant 任务声明组件运作所需的 JNDI 属性的值。这些 JNDI 属性用于定义 JMX 通信，以及指向其他组件（例如，实时更新服务、推送服务、分析服务或授权服务器）的链接。但是，还可以定义其他 JNDI 属性的值。使用针对这三项任务存在的 `<property>` 元素。有关 JNDI 属性的列表，请参阅：
+**installmobilefirstadmin**、**installmobilefirstruntime** 和
+**installmobilefirstpush** Ant 任务声明组件运作所需的 JNDI 属性的值。这些 JNDI 属性用于定义 JMX 通信，以及指向其他组件（例如，实时更新服务、推送服务、分析服务或授权服务器）的链接。但是，还可以定义其他 JNDI 属性的值。使用针对这三项任务存在的 `<property>` 元素。有关 JNDI 属性的列表，请参阅：
 
 * [{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)
 * [{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service)
@@ -475,7 +472,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 ```xml
 <installmobilefirstadmin ..>
     <property name="mfp.admin.actions.prepareTimeout" value="3000000"/>
-</installmobilefirstadmin>
+</installmobilefirstadmin> 
 ```
 
 #### 指定现有用户
@@ -502,7 +499,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <configuration configAdminUser="myUser" configAdminPassword="password" createConfigAdminUser="false" />
         ...
    ```
-
+    
 此外，样本 Ant 文件创建的用户还将映射到管理服务和控制台的安全角色。使用此设置，可在安装后使用该用户登录到 {{ site.data.keys.mf_server }}。要更改此行为，请从样本 Ant 文件中除去 `<user>` 元素。或者，可从 `<user>` 元素中除去 **password** 属性，并且应用程序服务器的本地注册表中将不会创建用户。
 
 #### 指定 Liberty Java EE 级别
@@ -532,7 +529,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         port= "${database.db2.port}"
         schema = "${database.db2.mfpadmin.schema}"
         password="${database.db2.mfpadmin.password}">
-
+       
        <property name="commandTimeout" value="10"/>
 </db2>
 ```
@@ -612,9 +609,10 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
 #### {{ site.data.keys.mf_server }} 应用程序所需的 Liberty 功能
 {: #liberty-features-required-by-the-mobilefirst-server-applications }
-您可以针对 Java EE 6 或 Java EE 7 使用以下功能。
+您可以针对 Java EE
+6 或 Java EE 7 使用以下功能。
 
-**{{ site.data.keys.mf_server }} 管理服务**
+**{{ site.data.keys.mf_server }} 管理服务** 
 
 * **jdbc-4.0**（对于 Java EE 7，为 jdbc-4.1）
 * **appSecurity-2.0**
@@ -648,9 +646,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
 将使用此语法设置这些全局 JNDI 条目且前缀非上下文根。例如：`<jndiEntry jndiName=“mfp.admin.jmx.port” value= “9443”/>`。
 
-> **注：**为防止自动转换 JNDI 值，以便不会将 075 转换为 61，或不会将 31.500 转换为 31.5，请在定义值时使用此语法 '"075"'。
-
-有关管理服务的 JNDI 属性的更多信息，请参阅[{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。  
+> **注：**为防止自动转换 JNDI 值，以便不会将 075 转换为 61，或不会将 31.500 转换为 31.5，请在定义值时使用此语法 '"075"'。有关管理服务的 JNDI 属性的更多信息，请参阅[{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。  
 
 有关场配置信息，另请参阅以下主题：
 
@@ -692,7 +688,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
   copy /B product_install_dir\features\MFPDecoderFeature-1.0.mf
   LIBERTY_HOME\wlp\usr\extension\lib\features\MFPDecoderFeature-1.0.mf
   ```
-
+    
 #### 配置详细信息
 {: #configuration-details }
 <div class="panel-group accordion" id="manual-installation-liberty" role="tablist" aria-multiselectable="true">
@@ -706,7 +702,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-admin-service" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service">
             <div class="panel-body">
                 <p>管理服务打包为 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。管理服务 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b>。您可以根据需要定义上下文根。但是，它通常为 <b>/mfpadmin</b>。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>定义 JNDI 属性时，JNDI 名称必须使用管理服务的上下文根作为前缀。以下示例说明声明 <b>mfp.admin.push.url</b> 的情况，此时使用 <b>/mfpadmin</b> 作为上下文根来安装管理服务：</p>
 {% highlight xml %}
@@ -728,16 +724,16 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
                 <p>有关 JNDI 属性的更多信息，请参阅<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>管理服务的数据源的 JNDI 名称必须定义为 <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>。以下示例说明使用上下文根 <b>/mfpadmin</b> 安装管理服务，且该服务使用关系数据库的情况：</p>
-
+                
 {% highlight xml %}
 <dataSource jndiName="mfpadmin/jdbc/mfpAdminDS" transactional="false">
-  [...]
+  [...] 
 </dataSource>
 {% endhighlight %}
-
+                
                 <h3></h3>
                 <p>在应用程序的 <b>application-bnd</b> 元素中声明以下角色：</p>
                 <ul>
@@ -759,21 +755,21 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-live-update-service" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service">
             <div class="panel-body">
                 <p>实时更新服务打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty">在 WebSphere Application Server Liberty 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。</p>
-
+                
                 <p>实时更新服务 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b> 中。必须按以下方式定义实时更新服务的上下文根：<b>/the-adminContextRootconfig</b>。例如，如果管理服务的上下文根为 <b>/mfpadmin</b>，那么实时更新服务的上下文根必须为 <b>/mfpadminconfig</b>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>实时更新服务的数据源的 JNDI 名称必须定义为 the-contextRoot/jdbc/ConfigDS。以下示例说明使用上下文根 /mfpadminconfig 安装实时更新服务，且该服务使用关系数据库的情况：</p>
-
+                
 {% highlight xml %}
 <dataSource jndiName="mfpadminconfig/jdbc/ConfigDS" transactional="false">
-  [...]
+  [...] 
 </dataSource>
 {% endhighlight %}
 
                 <h3></h3>
                 <p>在应用程序的 <b>application-bnd</b> 元素中声明 configadmin 角色。必须将至少一个用户映射至此角色。必须为管理服务的以下 JNDI 属性提供用户及其密码：</p>
-
+                
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
@@ -791,19 +787,18 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-console-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration">
             <div class="panel-body">
                 <p>控制台打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty">在 WebSphere Application Server Liberty 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。</p>
-
+                
                 <p>控制台 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>。您可以根据需要定义上下文根。但通常上下文根为 <b>/mfpconsole</b>。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>定义 JNDI 属性时，必须使用控制台的上下文根作为 JNDI 名称的前缀。以下示例显示了声明 <b>mfp.admin.endpoint</b> 而安装的控制台使用 <b>/mfpconsole</b> 作为上下文根的情况。</p>
-
+                
 {% highlight xml %}
 <jndiEntry jndiName="mfpconsole/mfp.admin.endpoint" value="*://*:*/mfpadmin"/>
 {% endhighlight %}
 
-                <p>mfp.admin.endpoint 属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。<br/>
-有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
-
+                <p>mfp.admin.endpoint 属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。<br/> 有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
+                
                 <h3>安全角色</h3>
                 <p>在应用程序的 <b>application-bnd</b> 元素中声明以下角色：</p>
                 <ul>
@@ -812,8 +807,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfpmonitor</b></li>
                     <li><b>mfpoperator</b></li>
                 </ul>
-                映射到控制台的安全角色的任何用户还必须同时映射到管理服务的相同安全角色。
-		</div>
+                映射到控制台的安全角色的任何用户还必须同时映射到管理服务的相同安全角色。</div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -826,17 +820,16 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-runtime-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration">
             <div class="panel-body">
                 <p>运行时打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty">在 WebSphere Application Server Liberty 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。</p>
-
+                
                 <p>运行时 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b> 中。您可以根据需要定义上下文根。但是，缺省情况下为 <b>/mfp</b>。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>定义 JNDI 属性时，JNDI 名称必须使用运行时的上下文根作为前缀。以下示例说明声明 <b>mfp.analytics.url</b> 的情况，此时使用 <b>/mobilefirst</b> 作为上下文根来安装运行时：</p>
-
+                
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
-
-	        <p>必须定义 <b>mobilefirst/mfp.authorization.server</b> 属性。例如：</p>
+                <p>必须定义 <b>mobilefirst/mfp.authorization.server</b> 属性。例如：</p>
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
 {% endhighlight %}
@@ -848,15 +841,15 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
-
+                
                 <p>有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>必须将运行时的数据源的 JNDI 名称定义为 <b>jndiName=the-contextRoot/jdbc/mfpDS</b>。以下示例说明使用上下文根 <b>/mobilefirst</b> 安装运行时，且运行时使用关系数据库的情况：</p>
 
 {% highlight xml %}
 <dataSource jndiName="mobilefirst/jdbc/mfpDS" transactional="false">
-  [...]
+  [...] 
 </dataSource>
 {% endhighlight %}
             </div>
@@ -872,34 +865,31 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-push-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="push-configuration">
             <div class="panel-body">
                 <p>推送服务打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty">在 WebSphere Application Server Liberty 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。</p>
-
+                
                 <p>推送服务 WAR 文件位于 <b>mfp_install_dir/PushService/mfp-push-service.war</b>。您必须将上下文根定义为 <b>/imfpush</b>。否则，由于在 SDK 中对上下文根进行硬编码，因此客户机设备无法连接到此上下文根。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>定义 JNDI 属性时，必须使用推送服务的上下文根作为 JNDI 名称的前缀。以下示例显示了声明 <b>mfp.push.analytics.user</b> 而安装的推送服务使用 <b>/imfpush</b> 作为上下文根的情况。</p>
-
+                
 {% highlight xml %}
 <jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
 {% endhighlight %}
-
-                您需要定义以下属性：
-		<ul>
+                                
+                您需要定义以下属性：<ul>
                     <li><b>mfp.push.authorization.server.url</b></li>
                     <li><b>mfp.push.authorization.client.id</b></li>
                     <li><b>mfp.push.authorization.client.secret</b></li>
                     <li><b>mfp.push.services.ext.security</b> - 该值必须为 <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>。</li>
                     <li><b>mfp.push.db.type</b> - 对于关系数据库，该值必须是 DB。</li>
                 </ul>
-
-                如果已配置 {{ site.data.keys.mf_analytics }}，请定义以下 JNDI 属性：
-		<ul>
+                
+                如果已配置 {{ site.data.keys.mf_analytics }}，请定义以下 JNDI 属性：<ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - 该值必须为 <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>。</li>
                 </ul>
-                有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。
-		</div>
+                有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。</div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -912,7 +902,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-artifacts-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts-configuration">
             <div class="panel-body">
                 <p>工件组件打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty">在 WebSphere Application Server Liberty 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。</p>
-
+                
                 <p>该组件的 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-dev-artifacts.war</b>。您必须将上下文根定义为 <b>/mfp-dev-artifacts</b>。</p>
             </div>
         </div>
@@ -954,9 +944,10 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 #### {{ site.data.keys.mf_server }} 应用程序所需的 Liberty 功能
 {: #liberty-features-required-by-the-mobilefirst-server-applications-collective }
 
-您需要为 Java EE 6 或 Java EE 7 添加以下功能。
+您需要为 Java EE
+6 或 Java EE 7 添加以下功能。
 
-**{{ site.data.keys.mf_server }} 管理服务**
+**{{ site.data.keys.mf_server }} 管理服务** 
 
 * **jdbc-4.0**（对于 Java EE 7，为 jdbc-4.1）
 * **appSecurity-2.0**
@@ -992,7 +983,6 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 将使用此语法设置这些全局 JNDI 条目且前缀非上下文根。例如：`<jndiEntry jndiName=“mfp.admin.jmx.port” value= “9443”/>`。
 
 > **注：**为防止自动转换 JNDI 值，以便不会将 075 转换为 61，或不会将 31.500 转换为 31.5，请在定义值时使用此语法 '"075"'。
-
 * 有关管理服务的 JNDI 属性的更多信息，请参阅[{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service)。  
 * 有关运行时的 JNDI 属性的更多信息，请参阅[{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表](../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime)。
 
@@ -1042,12 +1032,9 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-admin-service-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-collective">
             <div class="panel-body">
-                <p>管理服务打包为一个 WAR 应用程序，供您部署到 Liberty 集合体控制器。您需要在 Liberty 集合体控制器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>
-                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty-collective">在 WebSphere Application Server Liberty 集合体上进行手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
-管理服务 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-admin-service-collective.war</b> 中。您可以根据需要定义上下文根。但是，它通常为 <b>/mfpadmin</b>。</p>
-
+                <p>管理服务打包为一个 WAR 应用程序，供您部署到 Liberty 集合体控制器。您需要在 Liberty 集合体控制器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>
+                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty-collective">在 WebSphere Application Server Liberty 集合体上进行手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>管理服务 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-admin-service-collective.war</b> 中。您可以根据需要定义上下文根。但是，它通常为 <b>/mfpadmin</b>。</p>
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>定义 JNDI 属性时，JNDI 名称必须使用管理服务的上下文根作为前缀。以下示例说明声明 <b>mfp.admin.push.url</b> 的情况，此时使用 <b>/mfpadmin</b> 作为上下文根来安装管理服务：</p>
 {% highlight xml %}
@@ -1069,16 +1056,16 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
                 <p>有关 JNDI 属性的更多信息，请参阅<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>管理服务的数据源的 JNDI 名称必须定义为 <b>jndiName=the-contextRoot/jdbc/mfpAdminDS</b>。以下示例说明使用上下文根 <b>/mfpadmin</b> 安装管理服务，且该服务使用关系数据库的情况：</p>
-
+                
 {% highlight xml %}
 <dataSource jndiName="mfpadmin/jdbc/mfpAdminDS" transactional="false">
-  [...]
+  [...] 
 </dataSource>
 {% endhighlight %}
-
+                
                 <h3>安全角色</h3>
                 <p>在应用程序的 <b>application-bnd</b> 元素中声明以下角色：</p>
                 <ul>
@@ -1099,24 +1086,22 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-live-update-service-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-collective">
             <div class="panel-body">
-                <p>实时更新服务打包为一个 WAR 应用程序，供您部署到 Liberty 集合体控制器。您需要在 Liberty 集合体控制器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>
-                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty-collective">在 WebSphere Application Server Liberty 集合体上进行手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
+                <p>实时更新服务打包为一个 WAR 应用程序，供您部署到 Liberty 集合体控制器。您需要在 Liberty 集合体控制器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>
+                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty-collective">在 WebSphere Application Server Liberty 集合体上进行手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>
                 实时更新服务 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b> 中。必须按以下方式定义实时更新服务的上下文根：<b>/the-adminContextRootconfig</b>。例如，如果管理服务的上下文根为 <b>/mfpadmin</b>，那么实时更新服务的上下文根必须为 <b>/mfpadminconfig</b>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>实时更新服务的数据源的 JNDI 名称必须定义为 <b>the-contextRoot/jdbc/ConfigDS</b>。以下示例说明使用上下文根 <b>/mfpadminconfig</b> 安装实时更新服务，且该服务使用关系数据库的情况：</p>
-
+                
 {% highlight xml %}
 <dataSource jndiName="mfpadminconfig/jdbc/ConfigDS" transactional="false">
-  [...]
+  [...] 
 </dataSource>
 {% endhighlight %}
 
                 <h3>安全角色</h3>
                 <p>在应用程序的 <b>application-bnd</b> 元素中声明 configadmin 角色。必须将至少一个用户映射至此角色。必须为管理服务的以下 JNDI 属性提供用户及其密码：</p>
-
+                
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
@@ -1133,21 +1118,18 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-console-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-collective">
             <div class="panel-body">
-                <p>控制台打包为一个 WAR 应用程序，供您部署到 Liberty 集合体控制器。您需要在 Liberty 集合体控制器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty-collective">在 WebSphere Application Server Liberty 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
+                <p>控制台打包为一个 WAR 应用程序，供您部署到 Liberty 集合体控制器。您需要在 Liberty 集合体控制器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty-collective">在 WebSphere Application Server Liberty 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>
                 控制台 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>。您可以根据需要定义上下文根。但通常上下文根为 <b>/mfpconsole</b>。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>定义 JNDI 属性时，必须使用控制台的上下文根作为 JNDI 名称的前缀。以下示例显示了声明 <b>mfp.admin.endpoint</b> 而安装的控制台使用 <b>/mfpconsole</b> 作为上下文根的情况。</p>
-
+                
 {% highlight xml %}
 <jndiEntry jndiName="mfpconsole/mfp.admin.endpoint" value="*://*:*/mfpadmin"/>
 {% endhighlight %}
 
-                <p>mfp.admin.endpoint 属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。<br/>
-有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
-
+                <p>mfp.admin.endpoint 属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。<br/>有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
+                
                 <h3>安全角色</h3>
                 <p>在应用程序的 <b>application-bnd</b> 元素中声明以下角色：</p>
                 <ul>
@@ -1156,8 +1138,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfpmonitor</b></li>
                     <li><b>mfpoperator</b></li>
                 </ul>
-                映射到控制台的安全角色的任何用户还必须同时映射到管理服务的相同安全角色。
-		</div>
+                映射到控制台的安全角色的任何用户还必须同时映射到管理服务的相同安全角色。</div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -1169,20 +1150,17 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-runtime-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-collective">
             <div class="panel-body">
-                <p>运行时打包为一个 WAR 应用程序，供您部署到 Liberty 集合体集群成员。您需要在每个 Liberty 集合体集群成员的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>
-                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty-collective">在 WebSphere Application Server Liberty 集合体上进行手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
+                <p>运行时打包为一个 WAR 应用程序，供您部署到 Liberty 集合体集群成员。您需要在每个 Liberty 集合体集群成员的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>
+                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty-collective">在 WebSphere Application Server Liberty 集合体上进行手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>
                 运行时 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b> 中。您可以根据需要定义上下文根。但是，缺省情况下为 <b>/mfp</b>。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>定义 JNDI 属性时，JNDI 名称必须使用运行时的上下文根作为前缀。以下示例说明声明 <b>mfp.analytics.url</b> 的情况，此时使用 <b>/mobilefirst</b> 作为上下文根来安装运行时：</p>
-
+                
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.analytics.url" value="http://localhost:9080/analytics-service/rest"/>
 {% endhighlight %}
-
-		<p>必须定义 <b>mobilefirst/mfp.authorization.server</b> 属性。例如：</p>
+                <p>必须定义 <b>mobilefirst/mfp.authorization.server</b> 属性。例如：</p>
 {% highlight xml %}
 <jndiEntry jndiName="mobilefirst/mfp.authorization.server" value="embedded"/>
 {% endhighlight %}
@@ -1194,15 +1172,15 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
-
+                
                 <p>有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>必须将运行时的数据源的 JNDI 名称定义为 <b>jndiName=the-contextRoot/jdbc/mfpDS</b>。以下示例说明使用上下文根 <b>/mobilefirst</b> 安装运行时，且运行时使用关系数据库的情况：</p>
 
 {% highlight xml %}
 <dataSource jndiName="mobilefirst/jdbc/mfpDS" transactional="false">
-  [...]
+  [...] 
 </dataSource>
 {% endhighlight %}
             </div>
@@ -1217,39 +1195,34 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-push-configuration" class="panel-collapse collapse" role="tabpanel" aria-labelledby="push-configuration">
             <div class="panel-body">
-                <p>推送服务打包为一个 WAR 应用程序，供您部署到 Liberty 集合体集群成员或 Liberty 服务器。如果在 Liberty 服务器中安装推送服务，请参阅 <a href="#manual-installation-on-websphere-application-server-liberty">WebSphere Application Server Liberty 上的手动安装</a>下面的<a href="#configuration-details">{{ site.data.keys.mf_server }}推送服务配置详细信息</a>。
-		<br/><br/>
-                当 {{ site.data.keys.mf_server }} 推送服务安装在 Liberty 集合体中时，可以将其安装在与运行时相同的集群中，也可以将其安装在其他集群中。
-		<br/><br/>
+                <p>推送服务打包为一个 WAR 应用程序，供您部署到 Liberty 集合体集群成员或 Liberty 服务器。如果在 Liberty 服务器中安装推送服务，请参阅 <a href="#manual-installation-on-websphere-application-server-liberty">WebSphere Application Server Liberty 上的手动安装</a>下面的<a href="#configuration-details">{{ site.data.keys.mf_server }}推送服务配置详细信息</a>。<br/><br/>
+                当 {{ site.data.keys.mf_server }} 推送服务安装在 Liberty 集合体中时，可以将其安装在与运行时相同的集群中，也可以将其安装在其他集群中。<br/><br/>
                 您需要在每个 Liberty 集合体集群成员的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty-collective">在 WebSphere Application Server Liberty 集合体上进行手动安装</a>，以了解对所有服务通用的配置详细信息。    
                 <br/><br/>
                 推送服务 WAR 文件位于 <b>mfp_install_dir/PushService/mfp-push-service.war</b>。您必须将上下文根定义为 <b>/imfpush</b>。否则，由于在 SDK 中对上下文根进行硬编码，因此客户机设备无法连接到此上下文根。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>定义 JNDI 属性时，必须使用推送服务的上下文根作为 JNDI 名称的前缀。以下示例显示了声明 <b>mfp.push.analytics.user</b> 而安装的推送服务使用 <b>/imfpush</b> 作为上下文根的情况。</p>
-
+                
 {% highlight xml %}
 <jndiEntry jndiName="imfpush/mfp.push.analytics.user" value="admin"/>
 {% endhighlight %}
-
-                您需要定义以下属性：
-		<ul>
+                                
+                您需要定义以下属性：<ul>
                     <li><b>mfp.push.authorization.server.url</b></li>
                     <li><b>mfp.push.authorization.client.id</b></li>
                     <li><b>mfp.push.authorization.client.secret</b></li>
                     <li><b>mfp.push.services.ext.security</b> - 该值必须为 <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>。</li>
                     <li><b>mfp.push.db.type</b> - 对于关系数据库，该值必须是 DB。</li>
                 </ul>
-
-                如果已配置 {{ site.data.keys.mf_analytics }}，请定义以下 JNDI 属性：
-		<ul>
+                
+                如果已配置 {{ site.data.keys.mf_analytics }}，请定义以下 JNDI 属性：<ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - 该值必须为 <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>。</li>
                 </ul>
-                有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。
-		</div>
+                有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。</div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -1262,7 +1235,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-artifacts-configuration-collective" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts-configuration-collective">
             <div class="panel-body">
                 <p>工件组件打包为一个 WAR 应用程序，供您部署到 Liberty 集合体控制器。您需要在 Liberty 集合体控制器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-liberty">在 WebSphere Application Server Liberty 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。</p>
-
+                
                 <p>该组件的 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-dev-artifacts.war</b>。您必须将上下文根定义为 <b>/mfp-dev-artifacts</b>。</p>
             </div>
         </div>
@@ -1306,12 +1279,10 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-admin-service-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-tomcat">
             <div class="panel-body">
-                <p>管理服务打包为 WAR 应用程序，供您部署到应用程序服务器。您需要在应用程序服务器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>
-                在继续操作之前，请查看<a href="#manual-installation-on-apache-tomcat">在 Apache Tomcat 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
+                <p>管理服务打包为 WAR 应用程序，供您部署到应用程序服务器。您需要在应用程序服务器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>
+                在继续操作之前，请查看<a href="#manual-installation-on-apache-tomcat">在 Apache Tomcat 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>
                 管理服务 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b>。您可以根据需要定义上下文根。但是，它通常为 <b>/mfpadmin</b>。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>应用程序上下文中的 <code>Environment</code> 元素中定义了 JNDI 属性。例如：</p>
 
@@ -1339,14 +1310,14 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
                 <p>有关 JNDI 属性的更多信息，请参阅<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>将数据源 (jdbc/mfpAdminDS) 声明为 **Context** 元素中的一项资源。例如：</p>
-
+                                    
 {% highlight xml %}
 <Resource name="jdbc/mfpAdminDS" type="javax.sql.DataSource" .../>
 {% endhighlight %}
-
+                                
                 <h3>安全角色</h3>
                 <p>可供管理服务应用程序使用的安全角色有：</p>
                 <ul>
@@ -1367,20 +1338,17 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-live-update-service-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-tomcat">
             <div class="panel-body">
-                <p>实时更新服务打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>
-                在继续操作之前，请查看<a href="#manual-installation-on-apache-tomcat">在 Apache Tomcat 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
+                <p>实时更新服务打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>
+                在继续操作之前，请查看<a href="#manual-installation-on-apache-tomcat">在 Apache Tomcat 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>
                 实时更新服务 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b> 中。必须按以下方式定义实时更新服务的上下文根：<b>/the-adminContextRoot/config</b>。例如，如果管理服务的上下文根为 <b>/mfpadmin</b>，那么实时更新服务的上下文根必须为 <b>/mfpadminconfig</b>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>实时更新服务的数据源的 JNDI 名称必须定义为 <code>jdbc/ConfigDS</code>。在 <code>Context</code> 元素中将其声明为资源。</p>
 
                 <h3>安全角色</h3>
-                <p>实时更新服务应用程序可用的安全角色为 <b>configadmin</b>。
-		<br/><br/>
+                <p>实时更新服务应用程序可用的安全角色为 <b>configadmin</b>。<br/><br/>
                 必须将至少一个用户映射至此角色。必须为管理服务的以下 JNDI 属性提供用户及其密码：</p>
-
+                
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
@@ -1397,16 +1365,12 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-console-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-tomcat">
             <div class="panel-body">
-                <p>控制台打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在应用程序服务器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>在继续操作之前，请查看<a href="#manual-installation-on-apache-tomcat">在 Apache Tomcat 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
+                <p>控制台打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在应用程序服务器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>在继续操作之前，请查看<a href="#manual-installation-on-apache-tomcat">在 Apache Tomcat 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>
                 控制台 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>。您可以根据需要定义上下文根。但通常上下文根为 <b>/mfpconsole</b>。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
-                <p>您需要定义 <b>mfp.admin.endpoint </b> 属性。该属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。
-		<br/><br/>
-有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
-
+                <p>您需要定义 <b>mfp.admin.endpoint </b> 属性。该属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。<br/><br/>有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
+                
                 <h3>安全角色</h3>
                 <p>可用于此应用程序的安全角色为：</p>
                 <ul>
@@ -1427,15 +1391,13 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-runtime-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-tomcat">
             <div class="panel-body">
-                <p>运行时打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>
-                在继续操作之前，请查看<a href="#manual-installation-on-apache-tomcat">在 Apache Tomcat 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
+                <p>运行时打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>
+                在继续操作之前，请查看<a href="#manual-installation-on-apache-tomcat">在 Apache Tomcat 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>
                 运行时 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b> 中。您可以根据需要定义上下文根。但是，缺省情况下为 <b>/mfp</b>。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>您必须定义 <b>mfp.authorization.server</b> 属性。例如：</p>
-
+                
 {% highlight xml %}
 <Environment name="mfp.authorization.server" value="embedded" type="java.lang.String" override="false"/>
 {% endhighlight %}
@@ -1445,7 +1407,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.topology.platform</b></li>
                     <li><b>mfp.topology.clustermode</b></li>
                 </ul>
-
+                
                 <p>如果已安装 {{ site.data.keys.mf_analytics }}，那么需要定义以下 JNDI 属性：</p>
                 <ul>   
                     <li><b>mfp.analytics.url</b></li>
@@ -1453,9 +1415,9 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
-
+                
                 <p>有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>运行时的数据源的 JNDI 名称必须定义为 <b>jdbc/mfpDS</b>。在 <b>Context</b> 元素中将其声明为资源。</p>
             </div>
@@ -1473,7 +1435,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                 <p>推送服务打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要对此应用程序进行一些具体配置。在继续操作之前，请查看<a href="#manual-installation-on-apache-tomcat">在 Apache Tomcat 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。    
                 <br/><br/>
                 推送服务 WAR 文件位于 <b>mfp_install_dir/PushService/mfp-push-service.war</b>。您必须将上下文根定义为 <b>/imfpush</b>。否则，由于在 SDK 中对上下文根进行硬编码，因此客户机设备无法连接到此上下文根。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>您需要定义以下属性：</p>
                 <ul>
@@ -1483,7 +1445,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.push.services.ext.security</b> - 该值必须为 <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>。</li>
                     <li><b>mfp.push.db.type</b> - 对于关系数据库，该值必须是 DB。</li>
                 </ul>
-
+                
                 <p>如果已配置 {{ site.data.keys.mf_analytics }}，请定义以下 JNDI 属性：</p>
                 <ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
@@ -1491,8 +1453,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.password</b></li>
                     <li><b>mfp.push.services.ext.analytics</b> - 该值必须为 <b>com.ibm.mfp.push.server.analytics.plugin.AnalyticsPlugin</b>。</li>
                 </ul>
-                有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。
-		</div>
+                有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-push-service">{{ site.data.keys.mf_server }} 推送服务的 JNDI 属性列表</a>。</div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -1505,7 +1466,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-artifacts-configuration-tomcat" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts-configuration-tomcat">
             <div class="panel-body">
                 <p>工件组件打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在应用程序服务器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。在继续操作之前，请查看<a href="#manual-installation-on-apache-tomcat">在 Apache Tomcat 上进行手动安装</a>，以了解对所有服务通用的配置详细信息。</p>
-
+                
                 <p>该组件的 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-dev-artifacts.war</b>。您必须将上下文根定义为 <b>/mfp-dev-artifacts</b>。</p>
             </div>
         </div>
@@ -1524,9 +1485,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 #### 拓扑约束
 {: #topology-constraints-nd }
 <b>在独立的 WebSphere Application Server 上</b>  
-必须在同一应用程序服务器上安装 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product_adj }} 运行时。必须将实时更新服务的上下文根定义为 <b>the-adminContextRootConfig</b>。推送服务的上下文根必须为 <b>imfpush</b>。有关约束的更多信息，请参阅[有关 {{ site.data.keys.mf_server }} 组件和 {{ site.data.keys.mf_analytics }} 的约束](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics)。
-
-<b>在 WebSphere Application Server Network Deployment 上</b>  
+必须在同一应用程序服务器上安装 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product_adj }} 运行时。必须将实时更新服务的上下文根定义为 <b>the-adminContextRootConfig</b>。推送服务的上下文根必须为 <b>imfpush</b>。有关约束的更多信息，请参阅[有关 {{ site.data.keys.mf_server }} 组件和 {{ site.data.keys.mf_analytics }} 的约束](../topologies/#constraints-on-the-mobilefirst-server-components-and-mobilefirst-analytics)。<b>在 WebSphere Application Server Network Deployment 上</b>  
 在运行 {{ site.data.keys.mf_server }} 时，必须正在运行 Deployment Manager。Deployment Manager 用于运行时与管理服务间的 JMX 通信。管理服务和实时更新服务必须安装在相同的应用程序服务器上。运行时与管理服务可安装在不同的服务器上，但必须位于同一单元上。
 
 #### 应用程序服务器设置
@@ -1578,17 +1537,15 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-admin-service-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="admin-service-nd">
             <div class="panel-body">
-                <p>管理服务打包为 WAR 应用程序，供您部署到应用程序服务器。您需要在应用程序服务器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>
-                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">在 WebSphere Application Server 和 WebSphere Application Server Network Deployment 上手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
+                <p>管理服务打包为 WAR 应用程序，供您部署到应用程序服务器。您需要在应用程序服务器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>
+                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">在 WebSphere Application Server 和 WebSphere Application Server Network Deployment 上手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>
                 管理服务 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-admin-service.war</b>。您可以根据需要定义上下文根。但是，它通常为 <b>/mfpadmin</b>。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>您可以使用 WebSphere Application Server 管理控制台设置 JNDI 属性。转至<b>应用程序 → 应用程序类型 → WebSphere 企业应用程序 → application_name → Web 模块的环境条目</b>，并设置这些条目。</p>
 
                 <p>要启用 JMX 与运行时通信，请定义以下 JNDI 属性：</p>
-
+                
                 <b>在 WebSphere Application Server Network Deployment 上</b>
                 <ul>
                     <li><b>mfp.admin.jmx.dmgr.host</b></li>
@@ -1597,7 +1554,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.topology.clustermode</b> - 将该值设置为 <b>Cluster</b>。</li>
                     <li><b>mfp.admin.jmx.connector </b> - 将该值设置为 <b>SOAP</b>。</li>
                 </ul>
-
+                
                 <b>在独立的 WebSphere Application Server 上</b>
                 <ul>
                     <li><b>mfp.topology.platform</b> - 将该值设置为 <b>WAS</b>。</li>
@@ -1620,13 +1577,13 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.config.service.password</b></li>
                 </ul>
                 <p>有关 JNDI 属性的更多信息，请参阅<a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-server-administration-service">{{ site.data.keys.mf_server }} 管理服务的 JNDI 属性列表</a>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>为管理服务创建数据源，并将其映射到 <b>jdbc/mfpAdminDS</b>。</p>
-
+                
                 <h3>启动顺序</h3>
                 <p>管理服务应用程序必须在启动运行时应用程序之前启动。您可以在<b>启动行为</b>部分设置此顺序。例如，针对管理服务将 Startup Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
-
+                
                 <h3>安全角色</h3>
                 <p>可供管理服务应用程序使用的安全角色有：</p>
                 <ul>
@@ -1647,20 +1604,17 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-live-update-service-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="live-update-service-nd">
             <div class="panel-body">
-                <p>实时更新服务打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>
-                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">在 WebSphere Application Server 和 WebSphere Application Server Network Deployment 上手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
+                <p>实时更新服务打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>
+                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">在 WebSphere Application Server 和 WebSphere Application Server Network Deployment 上手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>
                 实时更新服务 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-live-update.war</b> 中。必须按以下方式定义实时更新服务的上下文根：<b>/the-adminContextRoot/config</b>。例如，如果管理服务的上下文根为 <b>/mfpadmin</b>，那么实时更新服务的上下文根必须为 <b>/mfpadminconfig</b>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>为实时更新服务创建数据源，并将其映射到 <b>jdbc/ConfigDS</b>。</p>
 
                 <h3>安全角色</h3>
-                <p>为此应用程序定义了 <b>configadmin</b> 角色。
-		<br/><br/>
+                <p>为此应用程序定义了 <b>configadmin</b> 角色。<br/><br/>
                 必须将至少一个用户映射至此角色。必须为管理服务的以下 JNDI 属性提供用户及其密码：</p>
-
+                
                 <ul>
                     <li><b>mfp.config.service.user</b></li>
                     <li><b>mfp.config.service.password</b></li>
@@ -1677,18 +1631,13 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-console-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="console-configuration-nd">
             <div class="panel-body">
-                <p>控制台打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在应用程序服务器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">在 WebSphere Application Server 和 WebSphere Application Server Network Deployment 上手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
+                <p>控制台打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在应用程序服务器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">在 WebSphere Application Server 和 WebSphere Application Server Network Deployment 上手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>
                 控制台 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-admin-ui.war</b>。您可以根据需要定义上下文根。但通常上下文根为 <b>/mfpconsole</b>。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
-                <p>您可以使用 WebSphere Application Server 管理控制台设置 JNDI 属性。转至<b>应用程序 → 应用程序类型 → WebSphere 企业应用程序 → application_name → Web 模块的环境条目</b>，并设置这些条目。
-		<br/><br/>
-                您需要定义 <b>mfp.admin.endpoint </b> 属性。该属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。
-		<br/><br/>
-有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
-
+                <p>您可以使用 WebSphere Application Server 管理控制台设置 JNDI 属性。转至<b>应用程序 → 应用程序类型 → WebSphere 企业应用程序 → application_name → Web 模块的环境条目</b>，并设置这些条目。<br/><br/>
+                您需要定义 <b>mfp.admin.endpoint </b> 属性。该属性的典型值是 <b>*://*:*/the-adminContextRoot</b>。<br/><br/>有关 JNDI 属性的完整列表，请参阅 <a href="../server-configuration/#jndi-properties-for-mobilefirst-operations-console">{{ site.data.keys.mf_console }} 的 JNDI 属性</a>。</p>
+                
                 <h3>安全角色</h3>
                 <p>可用于此应用程序的安全角色为：</p>
                 <ul>
@@ -1697,8 +1646,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfpmonitor</b></li>
                     <li><b>mfpoperator</b></li>
                 </ul>
-                映射到控制台的安全角色的任何用户还必须同时映射到管理服务的相同安全角色。
-		</div>
+                映射到控制台的安全角色的任何用户还必须同时映射到管理服务的相同安全角色。</div>
         </div>
     </div>
     <div class="panel panel-default">
@@ -1710,18 +1658,16 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
         <div id="collapse-runtime-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="runtime-configuration-nd">
             <div class="panel-body">
-                <p>运行时打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。
-		<br/><br/>
-                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">在 WebSphere Application Server 和 WebSphere Application Server Network Deployment 上手动安装</a>，以了解对所有服务通用的配置详细信息。
-		<br/><br/>
+                <p>运行时打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。<br/><br/>
+                在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">在 WebSphere Application Server 和 WebSphere Application Server Network Deployment 上手动安装</a>，以了解对所有服务通用的配置详细信息。<br/><br/>
                 运行时 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-server.war</b> 中。您可以根据需要定义上下文根。但是，缺省情况下为 <b>/mfp</b>。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>您可以使用 WebSphere Application Server 管理控制台设置 JNDI 属性。转至<b>应用程序 → 应用程序类型 → WebSphere 企业应用程序 → application_name → Web 模块的环境条目</b>，并设置这些条目。</p>
-
+                
                 <p>您必须定义 <b>mfp.authorization.server</b> 属性，其值为嵌入式。<br/>
                 同时，请定义以下 JNDI 属性以启用 JMX 与管理服务通信：</p>
-
+                
                 <b>在 WebSphere Application Server Network Deployment 上</b>
                 <ul>
                     <li><b>mfp.admin.jmx.dmgr.host</b> - Deployment Manager 的主机名。</li>
@@ -1730,14 +1676,14 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.topology.clustermode</b> - 将该值设置为 <b>Cluster</b>。</li>
                     <li><b>mfp.admin.jmx.connector </b> - 将该值设置为 <b>SOAP</b>。</li>
                 </ul>
-
+                
                 <b>在独立的 WebSphere Application Server 上</b>
                 <ul>
                     <li><b>mfp.topology.platform</b> - 将该值设置为 <b>WAS</b>。</li>
                     <li><b>mfp.topology.clustermode</b> - 将该值设置为 <b>Standalone</b>。</li>
                     <li><b>mfp.admin.jmx.connector </b> - 将该值设置为 <b>SOAP</b>。</li>
                 </ul>
-
+                                
                 <p>如果已安装 {{ site.data.keys.mf_analytics }}，那么需要定义以下 JNDI 属性：</p>
                 <ul>   
                     <li><b>mfp.analytics.url</b></li>
@@ -1745,12 +1691,12 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.analytics.username</b></li>
                     <li><b>mfp.analytics.password</b></li>
                 </ul>
-
+                
                 <p>有关 JNDI 属性的更多信息，请参阅 <a href="../server-configuration/#list-of-jndi-properties-for-mobilefirst-runtime">{{ site.data.keys.product_adj }} 运行时的 JNDI 属性列表</a>。</p>
-
+                
                 <h3>启动顺序</h3>
                 <p>运行时应用程序必须在管理服务应用程序启动之后才能启动。您可以在<b>启动行为</b>部分设置此顺序。例如，针对管理服务将 Startup Order 设置为 <b>1</b>，针对运行时设置为 <b>2</b>。</p>
-
+                
                 <h3>数据源</h3>
                 <p>为运行时创建数据源，并将其映射到 <b>jdbc/mfpDS</b>。</p>
             </div>
@@ -1768,10 +1714,10 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                 <p>推送服务打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要对此应用程序进行一些具体配置。在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">在 WebSphere Application Server 和 WebSphere Application Server Network Deployment 上手动安装</a>，以了解对所有服务通用的配置详细信息。    
                 <br/><br/>
                 推送服务 WAR 文件位于 <b>mfp_install_dir/PushService/mfp-push-service.war</b>。您必须将上下文根定义为 <b>/imfpush</b>。否则，由于在 SDK 中对上下文根进行硬编码，因此客户机设备无法连接到此上下文根。</p>
-
+                
                 <h3>必需的 JNDI 属性</h3>
                 <p>您可以使用 WebSphere Application Server 管理控制台设置 JNDI 属性。转至<b>应用程序 > 应用程序类型 → WebSphere 企业应用程序 → application_name → Web 模块的环境条目</b>，并设置这些条目。</p>
-
+                
                 <p>您需要定义以下属性：</p>
                 <ul>
                     <li><b>mfp.push.authorization.server.url</b></li>
@@ -1780,7 +1726,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                     <li><b>mfp.push.services.ext.security</b> - 该值必须为 <b>com.ibm.mfp.push.server.security.plugin.OAuthSecurityPlugin</b>。</li>
                     <li><b>mfp.push.db.type</b> - 对于关系数据库，该值必须是 DB。</li>
                 </ul>
-
+                
                 <p>如果已配置 {{ site.data.keys.mf_analytics }}，请定义以下 JNDI 属性：</p>
                 <ul>
                     <li><b>mfp.push.analytics.endpoint</b></li>
@@ -1805,7 +1751,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-artifacts-configuration-nd" class="panel-collapse collapse" role="tabpanel" aria-labelledby="artifacts-configuration-nd">
             <div class="panel-body">
                 <p>工件组件打包为一个 WAR 应用程序，供您部署到应用程序服务器。您需要在应用程序服务器的 <b>server.xml</b> 文件中对此应用程序进行一些具体配置。在继续操作之前，请查看<a href="#manual-installation-on-websphere-application-server-and-websphere-application-server-network-deployment">在 WebSphere Application Server 和 WebSphere Application Server Network Deployment 上手动安装</a>，以了解对所有服务通用的配置详细信息。</p>
-
+                
                 <p>该组件的 WAR 文件位于 <b>mfp_install_dir/MobileFirstServer/mfp-dev-artifacts.war</b>。您必须将上下文根定义为 <b>/mfp-dev-artifacts</b>。</p>
             </div>
         </div>
@@ -1869,36 +1815,30 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-server-farm-ct" class="panel-collapse collapse" role="tabpanel" aria-labelledby="server-farm-ct">
             <div class="panel-body">
                 <p>{{ site.data.keys.mf_server }} 需要配置安全的 JMX 连接。</p>
-
+                
                 <ol>
-                    <li>准备必须配置为服务器场成员的应用程序服务器。
-		    <ul>
-                            <li>选择要用于配置服务器场成员的应用程序服务器的类型。{{ site.data.keys.product }} 支持服务器场中的以下应用程序服务器：
-<ul>
+                    <li>准备必须配置为服务器场成员的应用程序服务器。<ul>
+                            <li>选择要用于配置服务器场成员的应用程序服务器的类型。{{ site.data.keys.product }} 支持服务器场中的以下应用程序服务器：<ul>
                                     <li>WebSphere Application Server Full Profile<br/>
                                     <b>注：</b>在场拓扑中，不能使用 RMI JMX 接口。在此拓扑中，{{ site.data.keys.product }} 仅支持 SOAP 接口。</li>
                                     <li>WebSphere Application Server Liberty Profile</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
                                 要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../product-overview/requirements">系统需求</a>。
-
+                                
                                 <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。在连接相同类型的应用程序服务器时，服务器场为同类。尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full Profile 服务器的场是无效的配置。</blockquote>
                             </li>
-                            <li>设置与希望包含在场中的成员数一样多的独立服务器。
-			    <ul>
+                            <li>设置与希望包含在场中的成员数一样多的独立服务器。<ul>
                                     <li>其中的每个独立服务器都必须与同一个数据库通信。您必须确保其中的任意服务器使用的任何端口均没有被同一主机上配置的另一个服务器使用。此约束适用于 HTTP、HTTPS、REST、SOAP 和 RMI 协议所使用的端口。</li>
                                     <li>其中每台服务器必须部署 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务以及一个或多个 {{ site.data.keys.product_adj }} 运行时。</li>
                                     <li>有关设置服务器的更多信息，请参阅<a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product_adj }} 运行时的约束</a>。</li>
                                 </ul>
                             </li>
-                            <li>在各自信任库的所有服务器之间交换签署者证书。
-			    <br/><br/>
-                            因为必须启用安全性，所以此步骤是使用 WebSphere Application Server Full Profile 或 Liberty 的场所必需的。此外，对于 Liberty 场，必须在每台服务器上复制相同的 LTPA 配置以确保单点登录功能。要执行此配置，请遵循<a href="#configuring-a-server-farm-manually">手动配置服务器场</a> 的步骤 6 中的准则。
-			    </li>
+                            <li>在各自信任库的所有服务器之间交换签署者证书。<br/><br/>
+                            因为必须启用安全性，所以此步骤是使用 WebSphere Application Server Full Profile 或 Liberty 的场所必需的。此外，对于 Liberty 场，必须在每台服务器上复制相同的 LTPA 配置以确保单点登录功能。要执行此配置，请遵循<a href="#configuring-a-server-farm-manually">手动配置服务器场</a> 的步骤 6 中的准则。</li>
                         </ul>
                     </li>
-                    <li>针对场的每台服务器运行 Server Configuration Tool。所有服务器必须共享相同数据库。确保在<b>应用程序服务器设置</b>面板中选择部署类型：<b>服务器场部署</b>。有关该工具的更多信息，请参阅<a href="#running-the-server-configuration-tool">运行 Server Configuration Tool</a>。
-		    </li>
+                    <li>针对场的每台服务器运行 Server Configuration Tool。所有服务器必须共享相同数据库。确保在<b>应用程序服务器设置</b>面板中选择部署类型：<b>服务器场部署</b>。有关该工具的更多信息，请参阅<a href="#running-the-server-configuration-tool">运行 Server Configuration Tool</a>。</li>
                 </ol>
             </div>
         </div>
@@ -1909,7 +1849,8 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 {: #installing-a-server-farm-with-ant-tasks }
 使用 Ant 任务，根据用于服务器场每个成员的单个应用程序服务器类型的需求，在场中配置每台服务器。
 
-在使用 Ant 任务规划服务器场时，首先创建独立服务器，然后配置其各自的信任库，从而可以通过安全方式相互通信。然后，运行 Ant 任务以配置 {{ site.data.keys.mf_server }} 组件共享的数据库实例。最后，运行 Ant 任务以将 {{ site.data.keys.mf_server }} 组件部署到每台服务器并修改其配置以使其成为服务器场的成员。
+在使用 Ant 任务规划服务器场时，首先创建独立服务器，然后配置其各自的信任库，从而可以通过安全方式相互通信。然后，运行 Ant 任务以配置 {{ site.data.keys.mf_server }} 组件共享的数据库实例。
+最后，运行 Ant 任务以将 {{ site.data.keys.mf_server }} 组件部署到每台服务器并修改其配置以使其成为服务器场的成员。
 
 <div class="panel-group accordion" id="installing-mobilefirst-server-ant" role="tablist" aria-multiselectable="true">
     <div class="panel panel-default">
@@ -1922,37 +1863,28 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-server-farm-ant" class="panel-collapse collapse" role="tabpanel" aria-labelledby="server-farm-ant">
             <div class="panel-body">
                 <p>{{ site.data.keys.mf_server }} 需要配置安全的 JMX 连接。</p>
-
+                
                 <ol>
-                    <li>准备必须配置为服务器场成员的应用程序服务器。
-		    <ul>
-                            <li>选择要用于配置服务器场成员的应用程序服务器的类型。{{ site.data.keys.product }} 支持服务器场中的以下应用程序服务器：
-<ul>
+                    <li>准备必须配置为服务器场成员的应用程序服务器。<ul>
+                            <li>选择要用于配置服务器场成员的应用程序服务器的类型。{{ site.data.keys.product }} 支持服务器场中的以下应用程序服务器：<ul>
                                     <li>WebSphere Application Server Full Profile。<b>注：</b>在场拓扑中，不能使用 RMI JMX 接口。在此拓扑中，{{ site.data.keys.product }} 仅支持 SOAP 接口。</li>
                                     <li>WebSphere Application Server Liberty Profile</li>
                                     <li>Apache Tomcat</li>
                                 </ul>
                                 要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../product-overview/requirements">系统需求</a>。
-
+                                
                                 <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。在连接相同类型的应用程序服务器时，服务器场为同类。尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full Profile 服务器的场是无效的配置。</blockquote>
                             </li>
-                            <li>设置与希望包含在场中的成员数一样多的独立服务器。
-			    <br/><br/>
-                            其中的每个独立服务器都必须与同一个数据库通信。您必须确保其中的任意服务器使用的任何端口均没有被同一主机上配置的另一个服务器使用。此约束适用于 HTTP、HTTPS、REST、SOAP 和 RMI 协议所使用的端口。
-<br/><br/>
-                            其中每台服务器必须部署 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务以及一个或多个 {{ site.data.keys.product_adj }} 运行时。
-			    <br/><br/>
+                            <li>设置与希望包含在场中的成员数一样多的独立服务器。<br/><br/>
+                            其中的每个独立服务器都必须与同一个数据库通信。您必须确保其中的任意服务器使用的任何端口均没有被同一主机上配置的另一个服务器使用。此约束适用于 HTTP、HTTPS、REST、SOAP 和 RMI 协议所使用的端口。<br/><br/>
+                            其中每台服务器必须部署 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务以及一个或多个 {{ site.data.keys.product_adj }} 运行时。<br/><br/>
                             有关设置服务器的更多信息，请参阅<a href="../topologies/#constraints-on-mobilefirst-server-administration-service-mobilefirst-server-live-update-service-and-mobilefirst-foundation-runtime">{{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务和 {{ site.data.keys.product_adj }} 运行时的约束</a>。</li>
-                            <li>在各自信任库的所有服务器之间交换签署者证书。
-			    <br/><br/>
-                            因为必须启用安全性，所以此步骤是使用 WebSphere Application Server Full Profile 或 Liberty 的场所必需的。此外，对于 Liberty 场，必须在每台服务器上复制相同的 LTPA 配置以确保单点登录功能。要执行此配置，请遵循<a href="#configuring-a-server-farm-manually">手动配置服务器场</a> 的步骤 6 中的准则。
-			    </li>
+                            <li>在各自信任库的所有服务器之间交换签署者证书。<br/><br/>
+                            因为必须启用安全性，所以此步骤是使用 WebSphere Application Server Full Profile 或 Liberty 的场所必需的。此外，对于 Liberty 场，必须在每台服务器上复制相同的 LTPA 配置以确保单点登录功能。要执行此配置，请遵循<a href="#configuring-a-server-farm-manually">手动配置服务器场</a> 的步骤 6 中的准则。</li>
                         </ul>
                     </li>
-                    <li>针对管理服务、实时更新服务和运行时配置数据库。
-		    <ul>
-                            <li>决定想要使用的数据库，并选择 Ant 文件以在 <b>mfp_install_dir/MobileFirstServer/configuration-samples</b> 目录中创建和配置数据库：
-			    <ul>
+                    <li>针对管理服务、实时更新服务和运行时配置数据库。<ul>
+                            <li>决定想要使用的数据库，并选择 Ant 文件以在 <b>mfp_install_dir/MobileFirstServer/configuration-samples</b> 目录中创建和配置数据库：<ul>
                                     <li>对于 DB2，使用 <b>create-database-db2.xml</b>。</li>
                                     <li>对于 MySQL，使用 <b>create-database-mysql.xml</b>。</li>
                                     <li>对于 Oracle，使用 <b>create-database-oracle.xml</b>。</li>
@@ -1960,57 +1892,43 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                                 <blockquote>注：请勿在场拓扑中使用 Derby 数据库，因为 Derby 数据库一次只允许一个连接。</blockquote>
 
                             </li>
-                            <li>编辑 Ant 文件并输入数据库的所有必需属性。
-			    <br/><br/>
-                            要启用 {{ site.data.keys.mf_server }} 组件使用的数据库的配置，请设置以下属性的值：
-			    <ul>
+                            <li>编辑 Ant 文件并输入数据库的所有必需属性。<br/><br/>
+                            要启用 {{ site.data.keys.mf_server }} 组件使用的数据库的配置，请设置以下属性的值：<ul>
                                     <li>将 <b>mfp.process.admin</b> 设置为 <b>true</b>。针对管理服务和实时更新服务配置数据库。</li>
                                     <li>将 <b>mfp.process.runtime</b> 设置为 <b>true</b>。针对运行时配置数据库。</li>
                                 </ul>
                             </li>
-                            <li>从 <b>mfp_install_dir/MobileFirstServer/configuration-samples</b> 目录运行以下命令，其中必须将 <b>create-database-ant-file.xml</b> 替换为您选择的实际 Ant 文件名：<code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml admdatabases</code> 和 <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>。
-			    <br/><br/>
+                            <li>从 <b>mfp_install_dir/MobileFirstServer/configuration-samples</b> 目录运行以下命令，其中必须将 <b>create-database-ant-file.xml</b> 替换为您选择的实际 Ant 文件名：<code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml admdatabases</code> 和 <code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>。<br/><br/>
                             因为在场中的应用程序服务器之间共享 {{ site.data.keys.mf_server }} 数据库，因此必须仅运行这两个命令一次，而无论场中服务器的数量。</li>
-                            <li>（可选）如果想要安装其他运行时，那么必须使用其他数据库名称或模式配置其他数据库。要执行此操作，请编辑 Ant 文件，修改属性，然后运行以下命令一次，而无论场中服务器的数量：<code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>。
-			    </li>
+                            <li>（可选）如果想要安装其他运行时，那么必须使用其他数据库名称或模式配置其他数据库。要执行此操作，请编辑 Ant 文件，修改属性，然后运行以下命令一次，而无论场中服务器的数量：<code>mfp_install_dir/shortcuts/ant -f create-database-ant-file.xml rtmdatabases</code>。</li>
                         </ul>
                     </li>
-                    <li>在服务器上部署管理服务、实时更新服务和运行时，并将这些服务器配置为服务器场的成员。
-		    <ul>
-                            <li>在 <b>mfp\_install\_dir/MobileFirstServer/configuration-samples</b> 目录中选择与您的应用程序服务器和数据库相对应的 Ant 文件，以在服务器上部署管理服务、实时更新服务和运行时。
-			    <br/><br/>
-                            例如，选择 <b>configure-liberty-db2.xml</b> 文件以在包含 DB2 数据库的 Liberty 服务器上部署。生成此文件的副本，数量与场中想要的成员数量相同。
-			    <br/><br/>
+                    <li>在服务器上部署管理服务、实时更新服务和运行时，并将这些服务器配置为服务器场的成员。<ul>
+                            <li>在 <b>mfp\_install\_dir/MobileFirstServer/configuration-samples</b> 目录中选择与您的应用程序服务器和数据库相对应的 Ant 文件，以在服务器上部署管理服务、实时更新服务和运行时。<br/><br/>
+                            例如，选择 <b>configure-liberty-db2.xml</b> 文件以在包含 DB2 数据库的 Liberty 服务器上部署。生成此文件的副本，数量与场中想要的成员数量相同。<br/><br/>
                             <b>注：</b>在配置后保留这些文件，因为可复用于升级已部署的 {{ site.data.keys.mf_server }} 组件，或者复用于从场的每个成员中卸载这些组件。</li>
-                            <li>编辑每个 Ant 文件副本，输入在步骤 2 中使用的数据库的相同属性，并输入应用程序服务器的其他必需属性。
-			    <br/><br/>
-                            要将服务器配置为服务器场成员，请设置以下属性的值：
-			    <ul>
+                            <li>编辑每个 Ant 文件副本，输入在步骤 2 中使用的数据库的相同属性，并输入应用程序服务器的其他必需属性。<br/><br/>
+                            要将服务器配置为服务器场成员，请设置以下属性的值：<ul>
                                     <li>将 <b>mfp.farm.configure</b> 设置为 true。</li>
                                     <li><b>mfp.farm.server.id</b>：为此服务器场成员定义的标识。确保场中的每个服务器都具有自己的唯一标识。如果场中的两个服务器具有相同标识，那么该场可能会以不可预测的方式运行。</li>
                                     <li><b>mfp.config.service.user</b>：用于访问实时更新服务的用户名。对于场的所有成员，该用户名必须相同。</li>
                                     <li><b>mfp.config.service.password</b>：用于访问实时更新服务的密码。对于场的所有成员，该密码必须相同。</li>
                                 </ul>
-                                要支持在服务器上部署 {{ site.data.keys.mf_server }} 组件的 WAR 文件，请设置以下属性的值：
-				<ul>
+                                要支持在服务器上部署 {{ site.data.keys.mf_server }} 组件的 WAR 文件，请设置以下属性的值：<ul>
                                         <li>将 <b>mfp.process.admin</b> 设置为 <b>true</b>。部署管理服务和实时更新服务的 WAR 文件。</li>
                                         <li>将 <b>mfp.process.runtime</b> 设置为 <b>true</b>。部署运行时的 WAR 文件。</li>
                                     </ul>
                                 <br/>
-                                <b>注：</b>如果计划在场的服务器上安装多个运行时，那么指定属性 id 并设置对于 <b>installmobilefirstruntime</b>、<b>updatemobilefirstruntime</b> 和 <b>uninstallmobilefirstruntime</b> Ant 任务上的每个运行时必须唯一的值。
-				<br/>
+                                <b>注：</b>如果计划在场的服务器上安装多个运行时，那么指定属性 id 并设置对于 <b>installmobilefirstruntime</b>、<b>updatemobilefirstruntime</b> 和 <b>uninstallmobilefirstruntime</b> Ant 任务上的每个运行时必须唯一的值。<br/>
                                 例如，
 {% highlight xml %}
 <target name="rtminstall">
     <installmobilefirstruntime execute="true" contextroot="/runtime1" id="rtm1">
 {% endhighlight %}
                             </li>
-                            <li>对于每个服务器，运行以下命令，其中必须将 <b>configure-appserver-database-ant-file.xml</b> 替换为您选择的实际 Ant 文件名：<code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> 和 <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>。
-			    <br/><br/>
-                            这些命令运行 <b>installmobilefirstadmin</b> 和 <b>installmobilefirstruntime</b> Ant 任务。有关这些任务的更多信息，请参阅<a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务</a>以及<a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务</a>。
-			    </li>
-                            <li>（可选）如果想要安装其他运行时，请执行以下步骤：
-			    <ul>
+                            <li>对于每个服务器，运行以下命令，其中必须将 <b>configure-appserver-database-ant-file.xml</b> 替换为您选择的实际 Ant 文件名：<code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml adminstall</code> 和 <code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file.xml rtminstall</code>。<br/><br/>
+                            这些命令运行 <b>installmobilefirstadmin</b> 和 <b>installmobilefirstruntime</b> Ant 任务。有关这些任务的更多信息，请参阅<a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services">用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务</a>以及<a href="../installation-reference/#ant-tasks-for-installation-of-mobilefirst-runtime-environments">用于安装 {{ site.data.keys.product_adj }} 运行时环境的 Ant 任务</a>。</li>
+                            <li>（可选）如果想要安装其他运行时，请执行以下步骤：<ul>
                                     <li>生成在步骤 3.b 中配置的 Ant 文件的副本。</li>
                                     <li>编辑副本，设置不同的上下文根，并针对 <b>installmobilefirstruntime</b>、<b>updatemobilefirstruntime</b> 和 <b>uninstallmobilefirstruntime</b> 的 <b>id</b> 属性设置与其他运行时配置不同的值。</li>
                                     <li>在场的每台服务器上运行以下命令，其中 <b>configure-appserver-database-ant-file2.xml</b> 必须替换为编辑的 Ant 文件的实际名称：<code>mfp_install_dir/shortcuts/ant -f configure-appserver-database-ant-file2.xml rtminstall</code>。</li>
@@ -2043,40 +1961,35 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
         <div id="collapse-manual" class="panel-collapse collapse" role="tabpanel" aria-labelledby="manual">
             <div class="panel-body">
                 <ol>
-                    <li>选择要用于配置服务器场成员的应用程序服务器的类型。{{ site.data.keys.product }} 支持服务器场中的以下应用程序服务器：
-<ul>
+                    <li>选择要用于配置服务器场成员的应用程序服务器的类型。{{ site.data.keys.product }} 支持服务器场中的以下应用程序服务器：<ul>
                             <li>WebSphere Application Server Full Profile<br/>
                             <b>注：</b>在场拓扑中，不能使用 RMI JMX 接口。在此拓扑中，{{ site.data.keys.product }} 仅支持 SOAP 接口。</li>
                             <li>WebSphere Application Server Liberty Profile</li>
                             <li>Apache Tomcat</li>
                         </ul>
                         要了解哪些版本的应用程序服务器受支持，请参阅<a href="../../../product-overview/requirements">系统需求</a>。
-
+                        
                         <blockquote><b>要点：</b> {{ site.data.keys.product }} 只支持同类服务器场。在连接相同类型的应用程序服务器时，服务器场为同类。尝试关联不同类型的应用程序服务器可能会导致运行时出现不可预测的行为。例如，混用 Apache Tomcat 服务器和 WebSphere Application Server Full Profile 服务器的场是无效的配置。</blockquote>
                     </li>
-                    <li>决定要使用的数据库。您可以从下列各项中进行选择：
-		    <ul>
+                    <li>决定要使用的数据库。您可以从下列各项中进行选择：<ul>
                             <li>DB2</li>
                             <li>MySQL</li>
                             <li>Oracle</li>
                         </ul>
-                        在场中的应用程序服务器之间共享 {{ site.data.keys.mf_server }} 数据库，这表示：
-			<ul>
+                        在场中的应用程序服务器之间共享 {{ site.data.keys.mf_server }} 数据库，这表示：<ul>
                             <li>仅创建一次数据库，而不管场中的服务器数量如何。</li>
                             <li>不能在场拓扑中使用 Derby 数据库，因为 Derby 数据库一次只允许一个连接。</li>
                         </ul>
-                        有关数据库的更多信息，请参阅<a href="../databases">设置数据库</a>。
-			</li>
-                    <li>设置与希望包含在场中的成员数一样多的独立服务器。
-		    <ul>
-                            <li>其中的每个独立服务器都必须与同一个数据库通信。您必须确保其中的任意服务器使用的任何端口均没有被同一主机上配置的另一个服务器使用。此约束适用于 HTTP、HTTPS、REST、SOAP 和 RMI 协议所使用的端口。</li>
+                        有关数据库的更多信息，请参阅<a href="../databases">设置数据库</a>。</li>
+                    <li>设置与希望包含在场中的成员数一样多的独立服务器。<ul>
+                            <li>其中的每个独立服务器都必须与同一个数据库通信。您必须确保其中的任意服务器使用的任何端口均没有被同一主机上配置的另一个服务器使用。此约束适用于 HTTP、HTTPS、REST、SOAP 和 RMI 协议所使用的端口。
+</li>
                             <li>其中每台服务器必须部署 {{ site.data.keys.mf_server }} 管理服务、{{ site.data.keys.mf_server }} 实时更新服务以及一个或多个 {{ site.data.keys.product_adj }} 运行时。</li>
                             <li>当其中每个服务器都在独立拓扑中正常工作时，可以将其转变到服务器场的成员中。</li>
                         </ul>
                     </li>
                     <li>停止所有旨在成为场成员的服务器。</li>
-                    <li>为应用程序服务器类型适当地配置每个服务器。<br/>您必须正确设置某些 JNDI 属性。在服务器场拓扑中，对于场的所有成员，mfp.config.service.user 和mfp.config.service.password JNDI 属性必须具有相同的值。
-对于 Apache Tomcat，您还必须检查 JVM 参数是否已正确定义。<ul>
+                    <li>为应用程序服务器类型适当地配置每个服务器。<br/>您必须正确设置某些 JNDI 属性。在服务器场拓扑中，对于场的所有成员，mfp.config.service.user 和mfp.config.service.password JNDI 属性必须具有相同的值。对于 Apache Tomcat，您还必须检查 JVM 参数是否已正确定义。<ul>
                             <li><b>WebSphere Application Server Liberty Profile</b>
                                 <br/>
                                 在 server.xml 文件中，设置显示在以下样本代码中的 JNDI 属性。
@@ -2088,8 +2001,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 <jndiEntry jndiName="mfp.admin.jmx.host" value="93.12.0.12"/>
 <jndiEntry jndiName="mfp.admin.jmx.port" value="9443"/>
 {% endhighlight %}
-                                必须使用相应的值设置这些属性：
-				<ul>
+                                必须使用相应的值设置这些属性：<ul>
                                     <li><b>mfp.admin.serverid</b>：您为该场成员定义的标识。该标识在所有场成员中必须唯一。</li>
                                     <li><b>mfp.admin.jmx.user</b> 和 <b>mfp.admin.jmx.pwd</b>：这些值必须与 <code>administrator-role</code> 元素中声明的用户的凭证匹配。</li>
                                     <li><b>mfp.admin.jmx.host</b>：将此参数设置为远程成员用于访问此服务器的 IP 或主机名。因此，请勿将其设置为 <b>localhost</b>。该主机名将由场的其他成员使用，并且必须可供所有场成员访问。</li>
@@ -2103,24 +2015,19 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 <Environment name="mfp.topology.clustermode" value="Farm" type="java.lang.String" override="false"/>
 <Environment name="mfp.admin.serverid" value="farm_member_1" type="java.lang.String" override="false"/>
 {% endhighlight %}
-                                必须将 <b>mfp.admin.serverid</b> 属性设置为对该场成员定义的标识。该标识在所有场成员中必须唯一。
-				<br/>
-                                您必须确保将 <code>-Djava.rmi.server.hostname</code> JVM 参数设置为远程成员用于访问此服务器的 IP 或主机名。因此，请勿将其设置为 <b>localhost</b>。此外，必须确保用于设置 <code>-Dcom.sun.management.jmxremote.port</code> JVM 参数的端口尚未被使用，才能启用 JMX RMI 连接。在 <b>CATALINA_OPTS</b> 环境变量中设置这两个参数。
-				</li>
+                                必须将 <b>mfp.admin.serverid</b> 属性设置为对该场成员定义的标识。该标识在所有场成员中必须唯一。<br/>
+                                您必须确保将 <code>-Djava.rmi.server.hostname</code> JVM 参数设置为远程成员用于访问此服务器的 IP 或主机名。因此，请勿将其设置为 <b>localhost</b>。此外，必须确保用于设置 <code>-Dcom.sun.management.jmxremote.port</code> JVM 参数的端口尚未被使用，才能启用 JMX RMI 连接。在 <b>CATALINA_OPTS</b> 环境变量中设置这两个参数。</li>
                             <li><b>WebSphere Application Server Full Profile</b>
                                 <br/>
-                                您必须在服务器上部署的管理服务和每个运行时应用程序中声明以下 JNDI 属性。
-				<ul>
+                                您必须在服务器上部署的管理服务和每个运行时应用程序中声明以下 JNDI 属性。<ul>
                                     <li><b>mfp.topology.clustermode</b></li>
                                     <li><b>mfp.admin.serverid</b></li>
                                 </ul>
-                                在 WebSphere Application Server 控制台中，
-				<ul>
+                                在 WebSphere Application Server 控制台中，<ul>
                                     <li>选择 <b>应用程序 → 应用程序类型 → WebSphere 企业应用程序</b>。</li>
                                     <li>选择管理服务应用程序。</li>
                                     <li>在 <b>Web 模块属性</b>中，单击 <b>Web 模块的环境条目</b>以显示 JNDI 属性。</li>
-                                    <li>设定以下属性的值。
-				    <ul>
+                                    <li>设定以下属性的值。<ul>
                                             <li>将 <b>mfp.topology.clustermode</b> 设置为 <b>Farm</b>。</li>
                                             <li>将 <b>mfp.admin.serverid</b> 设置为对该场成员选择的标识。该标识在所有场成员中必须唯一。</li>
                                             <li>将 <b>mfp.admin.jmx.user</b> 设置为有权访问 SOAP 连接器的用户名。</li>
@@ -2135,25 +2042,19 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                             </li>
                         </ul>
                     </li>
-                    <li>在场的所有成员之间交换信任库中的服务器证书。使用 WebSphere Application Server Full Profile 和 WebSphere Application Server Liberty Profile 的场必须交换信任库中的服务器证书，因为这些场中服务器之间的通信由 SSL 提供保护。
-		    <ul>
+                    <li>在场的所有成员之间交换信任库中的服务器证书。使用 WebSphere Application Server Full Profile 和 WebSphere Application Server Liberty Profile 的场必须交换信任库中的服务器证书，因为这些场中服务器之间的通信由 SSL 提供保护。<ul>
                             <li><b>WebSphere Application Server Liberty Profile</b>
                                 <br/>
-                                您可以使用 IBM 实用程序（如 Keytool 或 iKeyman）配置信任库。
-				<ul>
+                                您可以使用 IBM 实用程序（如 Keytool 或 iKeyman）配置信任库。<ul>
                                     <li>有关 Keytool 的更多信息，请参阅 IBM SDK Java Technology Edition 中的 <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/keytoolDocs/keytool_overview.html">Keytool</a>。</li>
                                     <li>有关 iKeyman 的更多信息，请参阅 IBM SDK Java Technology Edition 中的 <a href="http://www-01.ibm.com/support/knowledgecenter/?lang=en#!/SSYKE2_6.0.0/com.ibm.java.security.component.60.doc/security-component/ikeyman_tool.html">iKeyman</a>。</li>
                                 </ul>
-                                在 <b>server.xml</b> 文件中定义了密钥库和信任库的位置。
-请参阅 <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL 配置属性</a>中的 <b>keyStoreRef</b> 和 <b>trustStoreRef</b> 属性。缺省情况下，Liberty Profile 的密钥库位于 <b>${server.config.dir}/resources/security/key.jks</b> 中。
-如果信任库引用缺失或者未在 <b>server.xml</b> 文件中进行定义，那么将使用 <b>keyStoreRef</b> 所指定的密钥库。服务器将使用缺省密钥库，并且会在服务器首次运行时创建该文件。在这种情况下，将创建缺省证书，其有效期为 365 天。对于生产环境，您可能要考虑使用自己的证书（如果需要，包括中间证书）或者更改已生成证书的到期日期。                                
-                                <blockquote>注：如果您要确认信任库的位置，那么可以将以下声明添加到 server.xml 文件来实现这一点：
-{% highlight xml %}
+                                在 <b>server.xml</b> 文件中定义了密钥库和信任库的位置。请参阅 <a href="http://www.ibm.com/support/knowledgecenter/SSD28V_8.5.5/com.ibm.websphere.wlp.core.doc/ae/rwlp_ssl.html?lang=en&view=kc">SSL 配置属性</a>中的 <b>keyStoreRef</b> 和 <b>trustStoreRef</b> 属性。缺省情况下，Liberty Profile 的密钥库位于 <b>${server.config.dir}/resources/security/key.jks</b> 中。如果信任库引用缺失或者未在 <b>server.xml</b> 文件中进行定义，那么将使用 <b>keyStoreRef</b> 所指定的密钥库。服务器将使用缺省密钥库，并且会在服务器首次运行时创建该文件。在这种情况下，将创建缺省证书，其有效期为 365 天。对于生产环境，您可能要考虑使用自己的证书（如果需要，包括中间证书）或者更改已生成证书的到期日期。                                
+                                <blockquote>注：如果您要确认信任库的位置，那么可以将以下声明添加到 server.xml 文件来实现这一点：% highlight xml %}
 <logging traceSpecification="SSL=all:SSLChannel=all"/>
 {% endhighlight %}
                                 </blockquote>
-                                最后，启动服务器，并在 <b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b> 文件中查找包含 com.ibm.ssl.trustStore 的行。
-				<ul>
+                                最后，启动服务器，并在 <b>${wlp.install.dir}/usr/servers/server_name/logs/trace.log</b> 文件中查找包含 com.ibm.ssl.trustStore 的行。<ul>
                                     <li>将场中其他服务器的公用证书导入到服务器的 <b>server.xml</b> 配置文件所引用的信任库中。教程<a href="../tutorials/graphical-mode">以图形方式安装 {{ site.data.keys.mf_server }}</a> 为您提供指示信息以在场中的两个 Liberty 服务器之间交换证书。有关更多信息，请参阅<a href="../tutorials/graphical-mode/#creating-a-farm-of-two-liberty-servers-that-run-mobilefirst-server">创建由两台运行 {{ site.data.keys.mf_server }} 的 Liberty 服务器组成的场</a>部分。</li>
                                     <li>重新启动 WebSphere Application Server Liberty Profile 的每个实例，以使安全配置生效。需要执行以下步骤来使单点登录 (SSO) 生效。</li>
                                     <li>启动场的一个成员。在缺省 LTPA 配置中，在 Liberty 服务器成功启动之后，将生成 LTPA 密钥库 <b>${wlp.user.dir}/servers/server_name/resources/security/ltpa.keys。</b></li>
@@ -2162,8 +2063,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
                             </li>
                             <li><b>WebSphere Application Server Full Profile</b>
                                 <br/>
-                                在 WebSphere Application Server 管理控制台中配置信任库。
-				<ul>
+                                在 WebSphere Application Server 管理控制台中配置信任库。<ul>
                                     <li>登录到 WebSphere Application Server 管理控制台。</li>
                                     <li>选择<b>安全性 → SSL 证书和密钥管理</b>。</li>
                                     <li>在“<b>相关项</b>”中，选择<b>密钥库和证书</b>。</li>
@@ -2194,8 +2094,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 本任务的目的是检查场成员的状态并验证场配置是否正确。
 
 1. 启动场的所有服务器。
-2. 访问 {{ site.data.keys.mf_console }}。例如，**http://server_name:port/mfpconsole** 或 **https://hostname:secure_port/mfpconsole**（在 HTTPS 中）。
-在控制台侧边栏中，会显示一个额外菜单，此菜单标记为服务器场节点。
+2. 访问 {{ site.data.keys.mf_console }}。例如，**http://server_name:port/mfpconsole** 或 **https://hostname:secure_port/mfpconsole**（在 HTTPS 中）。在控制台侧边栏中，会显示一个额外菜单，此菜单标记为服务器场节点。
 3. 单击**服务器场节点**，以访问已注册场成员及其状态的列表。在以下示例中，将标识为 **FarmMember2** 的节点视为宕机，这指示该服务器可能已发生故障，需要一些维护。
 
 ![{{ site.data.keys.mf_console }} 中的场节点状态](farm_nodes_status_list.jpg)
@@ -2206,8 +2105,7 @@ Server Configuration Tool 使用以下拓扑安装 {{ site.data.keys.mf_server }
 
 #### 注册并监控作为场节点的服务器
 {: #registration-and-monitoring-servers-as-farm-nodes }
-启动配置为场节点的服务器后，该服务器上的管理服务会自动将其注册为新的场成员。
-关闭场成员后，会自动将其从场注销。
+启动配置为场节点的服务器后，该服务器上的管理服务会自动将其注册为新的场成员。关闭场成员后，会自动将其从场注销。
 
 存在脉动信号机制，用于保持跟踪可能变得无响应（例如，由于断电或服务器故障）的场成员。在该脉动信号机制中，{{ site.data.keys.product_adj }} 运行时会以指定速率向 {{ site.data.keys.product_adj }} 管理服务定期发送脉动信号。如果 {{ site.data.keys.product_adj }} 管理服务注意到自场成员发送脉动信号后过去了太长时间，那么会将场成员视为宕机。
 
