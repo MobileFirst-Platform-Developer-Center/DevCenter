@@ -12,6 +12,8 @@ version:
 author:
     name: Raghunathan Krishnamurthy
 ---
+> This blog is an update to the issue described in the blog [Note About Application Authenticity Failures in Applications Downloaded from the Apple App Store](https://mobilefirstplatform.ibmcloud.com/blog/2016/10/19/application-authenticity-failure-ios-app-store/)
+
 Application authenticity feature in MobileFirst Platform Foundation (MFPF) protects the customer's back-end systems and APIs from being exposed to fake apps. This is achieved by testing whether an app that tries to access the MobileFirst Foundation server has the unique characteristics of a genuine app accessing the server. Two levels of application authentication can be configured, *Basic* and *Extended*.
 The difference between *Basic* and *Extended* application authenticity is in the type and the number of characteristics that are taken into account when verifying the app's identity.
 
