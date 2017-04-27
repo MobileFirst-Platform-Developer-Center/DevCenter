@@ -5,7 +5,7 @@ breadcrumb_title: HTTP Adapter
 relevantTo: [ios,android,windows,javascript]
 downloads:
   - name: 下载适配器 Maven 项目
-    url: https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
+    url：https://github.com/MobileFirst-Platform-Developer-Center/Adapters/tree/release80
 ---
 <!-- NLS_CHARSET=UTF-8 -->
 ## 概述
@@ -15,6 +15,10 @@ Java 适配器可自由控制与后端系统的连接。因此，开发人员有
 本教程包含 Java 适配器的示例，该适配器通过 Java `HttpClient` 连接到 RSS 订阅源。
 
 **先决条件：**请务必先阅读 [Java 适配器](../)教程。
+
+>**要点：**如果在适配器实现中使用对 `javax.ws.rs.*` 或 `javax.servlet.*` 中的类的静态引用，那么应确保使用以下选项之一来配置 **RuntimeDelegate**：
+*	在 Liberty `jvm.options` 中设置 `-Djavax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl`，或者
+*	设置系统属性或 JVM 定制属性 `javax.ws.rs.ext.RuntimeDelegate=org.apache.cxf.jaxrs.impl.RuntimeDelegateImpl`
 
 ## 初始化适配器
 {: #initializing-the-adapter }

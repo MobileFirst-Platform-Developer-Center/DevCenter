@@ -1,7 +1,7 @@
 ---
 layout: tutorial
 title: 实时更新
-relevantTo: [ios,android]
+relevantTo: [ios,android,cordova]
 weight: 11
 downloads:
   - 名称：下载 Xcode 项目
@@ -16,7 +16,7 @@ downloads:
 {: #overview }
 用户分段是将用户分组的做法，反映每个组的用户之间的相似度。常见示例是[地理分段](https://en.wikipedia.org/wiki/Market_segmentation#Geographic_segmentation)，也就是按地理划分用户。分段用户的目标是决定如何关联每个分段中的用户以使价值最大化。
 
-{{ site.data.keys.product }} 中的实时更新功能部件提供一种简单方式以针对应用程序的每个用户分段定义和提供不同的配置。其包含 {{ site.data.keys.mf_console }} 中的组件以供定义配置结构以及每个分段的配置值。另外，随附一个客户机 SDK（适用于 Android 和 iOS **本机**应用程序）以供使用配置。
+{{ site.data.keys.product }} 中的实时更新功能部件提供一种简单方式以针对应用程序的每个用户分段定义和提供不同的配置。其包含 {{ site.data.keys.mf_console }} 中的组件以供定义配置结构以及每个分段的配置值。另外，随附一个客户机 SDK（适用于 Android 和 iOS **本机**应用程序以及 Cordova 应用程序）以供使用配置。
 
 #### 常见用例
 {: #common-use-cases }

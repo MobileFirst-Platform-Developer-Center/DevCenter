@@ -4,7 +4,7 @@ title: 与 Cloudant 集成
 relevantTo: [javascript]
 downloads:
   - name: 下载 Cordova 项目
-    url: https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
+    url：https://github.com/MobileFirst-Platform-Developer-Center/CloudantAdapter/tree/release80
 weight: 9
 ---
 <!-- NLS_CHARSET=UTF-8 -->

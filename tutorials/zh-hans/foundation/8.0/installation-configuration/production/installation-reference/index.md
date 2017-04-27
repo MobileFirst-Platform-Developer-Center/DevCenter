@@ -60,7 +60,8 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 
 #### includeConfigurationTables
 {: #includeconfigurationtables }
-只有当 **kind** 属性为 **MobileFirstAdmin** 时，才可以使用 **includeConfigurationTables** 属性。有效值可能为 true 或 false。当将此属性设置为 true 时，**configuredatabase** 任务将在单个运行中对管理服务数据库和实时更新服务数据库执行数据库操作。当将此属性设置为 false 时，**configuredatabase** 任务将只对管理服务数据库执行数据库操作。
+只有当 **kind** 属性为 **MobileFirstAdmin** 时，才可以使用 **includeConfigurationTables** 属性。有效值可能为 true 或 false。当将此属性设置为 true 时，**configuredatabase** 任务将在单个运行中对管理服务数据库和实时更新服务数据库执行数据库操作。
+当将此属性设置为 false 时，**configuredatabase** 任务将只对管理服务数据库执行数据库操作。
 
 #### execute
 {: #execute }
@@ -76,12 +77,14 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | `<oracle>`          |	Oracle 的参数。  | 0..1  |
 | `<driverclasspath>` | JDBC 驱动程序类路径。 | 0..1  |
 
-对于每种数据库类型，您可以使用 `<property>` 元素指定 JDBC 连接属性来访问该数据库。`<property>` 元素具有以下属性：
+对于每种数据库类型，您可以使用 `<property>` 元素指定 JDBC 连接属性来访问该数据库。
+`<property>` 元素具有以下属性：
 
 | 属性 | 描述                | 必需 | 缺省值 |
 |-----------|----------------------------|----------|---------|
 | name      | 属性的名称。	 | 是      | 无    |
-| value     | 属性的值。| 是	    | 无    |   
+| value
+	    | 属性的值。| 是	    | 无    |   
 
 #### Apache Derby
 {: #apache-derby }
@@ -91,7 +94,8 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 |-----------|--------------------------------------------|----------|------------------------------------------------------------------------------|
 | database  | 数据库名称。                         | 否	    | MFPDATA、MFPADM、MFPCFG、MFPPUSH 或 APPCNTR，取决于类型。             |
 | datadir   | 包含数据库的目录。 | 是      | 无                                                                         |
-| schema    | 模式名称。                           | 否       | MFPDATA、MFPCFG、MFPADMINISTRATOR、MFPPUSH 或 APPCENTER，取决于类型。 |
+| schema
+	| 模式名称。                           | 否       | MFPDATA、MFPCFG、MFPADMINISTRATOR、MFPPUSH 或 APPCENTER，取决于类型。 |
 
 `<derby>` 元素支持以下元素：
 
@@ -113,7 +117,8 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | user      | 用于访问数据库的用户名。 | 是	    | 无  |
 | password  | 用于访问数据库的密码。	 | 否	    | 交互式查询 |
 | instance  | DB2 实例的名称。          | 否	    | 取决于服务器 |
-| schema    | 模式名称。                       | 否	    | 取决于用户   |
+| schema
+    | 模式名称。                       | 否	    | 取决于用户   |
 
 有关 DB2 用户帐户的更多信息，请参阅 [DB2 安全模型概述](http://ibm.biz/knowctr#SSEPGG_10.1.0/com.ibm.db2.luw.admin.sec.doc/doc/c0021804.html)。  
 `<db2>` 元素支持以下元素：
@@ -162,7 +167,8 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | `<client>`   | 允许访问数据库的主机。 | 0..∞  |
 
 有关可用属性，请参阅 [Driver/Datasource Class Names, URL Syntax and Configuration Properties for Connector/J](http://dev.mysql.com/doc/connector-j/en/connector-j-reference-configuration-properties.html)。  
-内部元素 `<dba>` 指定数据库管理员凭证。此元素具有以下属性：
+内部元素 `<dba>` 指定数据库管理员凭证。
+此元素具有以下属性：
 
 | 属性 | 描述                            | 必需 | 缺省值 |
 |-----------|----------------------------------------|----------|---------|
@@ -179,7 +185,8 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 
 有关 hostname 语法的更多信息，请参阅 [Specifying Account Names](http://dev.mysql.com/doc/refman/5.5/en/account-names.html)。
 
-`<driverclasspath>` 元素必须包含一个 MySQL Connector/J JAR 文件。可以从 [Download Connector/J](http://www.mysql.com/downloads/connector/j/) 页面下载该文件。
+`<driverclasspath>` 元素必须包含一个 MySQL Connector/J JAR 文件。可以从 [Download
+Connector/J](http://www.mysql.com/downloads/connector/j/) 页面下载该文件。
 
 或者，您可以将 `<mysql>` 元素与以下属性结合使用：
 
@@ -189,19 +196,18 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | user	    | 用于访问数据库的用户名。 | 是      | 无                  |
 | password	| 用于访问数据库的密码。	 | 否       | 交互式查询 |
 
-> `注：`如果使用替代属性指定数据库，该数据库和用户帐户都必须存在，数据库也必须能供用户访问。在这种情况下，**configuredatabase** 任务不会尝试创建数据库或用户，也不会尝试向用户授予访问权。**configuredatabase** 任务仅确保数据库具有当前 {{ site.data.keys.mf_server }} 版本的必需表。您无需指定内部元素 `<dba>` 或 `<client>`。
-
+> `注：`如果使用替代属性指定数据库，该数据库和用户帐户都必须存在，数据库也必须能供用户访问。在这种情况下，**configuredatabase** 任务不会尝试创建数据库或用户，也不会尝试向用户授予访问权。**configuredatabase** 任务仅确保数据库具有当前{{ site.data.keys.mf_server }}版本的必需表。您无需指定内部元素 `<dba>` 或 `<client>`。
 #### Oracle
 {: #oracle }
 元素 `<oracle>` 具有以下属性：
 
-| 属性      | 描述                                                              | 必需 | 缺省值 |
+| 属性           | 描述                                                              | 必需 | 缺省值 |
 |----------------|--------------------------------------------------------------------------|----------|---------|
 | database       | 数据库名称或 Oracle 服务名称。**注：**必须始终使用服务名称来连接到 PDB 数据库。 | 否 | ORCL |
-| server	     | 数据库服务器的主机名。                                    | 是      | 无 |
+| server	 | 数据库服务器的主机名。                                    | 是      | 无 |
 | port	         | 数据库服务器上的端口。                                         | 否       | 1521 |
 | user	         | 用于访问数据库的用户名。请参阅此表下方的注释。	| 是      | 无 |
-| password	     | 用于访问数据库的密码。                                    | 否       | 交互式查询 |
+| password	 | 用于访问数据库的密码。                                    | 否       | 交互式查询 |
 | sysPassword	 | 用户 SYS 的密码。                                           | 否       | 交互式查询（如果数据库尚不存在） |
 | systemPassword | 用户 SYSTEM 的密码。                                        | 否       | 交互式查询（如果数据库或用户尚不存在） |
 
@@ -216,14 +222,16 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | `<dba>`      | 数据库管理员凭证。          | 0..1  |
 
 有关可用连接属性的信息，请参阅 [Class OracleDriver](http://docs.oracle.com/cd/E11882_01/appdev.112/e13995/oracle/jdbc/OracleDriver.html)。  
-内部元素 `<dba>` 指定数据库管理员凭证。此元素具有以下属性：
+内部元素 `<dba>` 指定数据库管理员凭证。
+此元素具有以下属性：
 
 | 属性      | 描述                                                              | 必需 | 缺省值 |
 |----------------|--------------------------------------------------------------------------|----------|---------|
 | user	         | 用于访问数据库的用户名。请参阅此表下方的注释。	| 是      | 无    |
 | password	     | 用于访问数据库的密码。                                    | 否       | 交互式查询 |
 
-`<driverclasspath>` 元素必须包含一个 Oracle JDBC 驱动程序 JAR 文件。可以从 [JDBC, SQLJ, Oracle JPublisher and Universal Connection Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) 下载 Oracle JDBC 驱动程序。
+`<driverclasspath>` 元素必须包含一个 Oracle JDBC 驱动程序 JAR 文件。可以从 [JDBC, SQLJ, Oracle JPublisher and Universal Connection
+Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-091264.html) 下载 Oracle JDBC 驱动程序。
 
 不能通过使用 Ant 任务来指定表分配的详细信息，例如，表空间。要控制表空间，可以手动创建用户帐户并在运行 Ant 任务之前向其分配缺省表空间。要控制其他详细信息，必须使用 [Oracle 数据库和用户需求](../databases/#oracle-database-and-user-requirements)部分中的手动操作指示信息。
 
@@ -233,8 +241,7 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | user	    | 用于访问数据库的用户名。 | 是      | 无                  |
 | password	| 用于访问数据库的密码。	 | 否       | 交互式查询 |
 
-> **注：**如果使用替代属性指定数据库，该数据库和用户帐户都必须存在，数据库也必须能供用户访问。在这种情况下，任务不会尝试创建数据库或用户，也不会尝试向用户授予访问权。**configuredatabase** 任务仅确保数据库具有当前 {{ site.data.keys.mf_server }} 版本的必需表。您无需指定内部元素 `<dba>`。
-
+> **注：**如果使用替代属性指定数据库，该数据库和用户帐户都必须存在，数据库也必须能供用户访问。在这种情况下，任务不会尝试创建数据库或用户，也不会尝试向用户授予访问权。**configuredatabase** 任务仅确保数据库具有当前{{ site.data.keys.mf_server }}版本的必需表。您无需指定内部元素 `<dba>`。
 ## 用于安装 {{ site.data.keys.mf_console }}、{{ site.data.keys.mf_server }} 工件、{{ site.data.keys.mf_server }} 管理和实时更新服务的 Ant 任务
 {: #ant-tasks-for-installation-of-mobilefirst-operations-console-mobilefirst-server-artifacts-mobilefirst-server-administration-and-live-update-services }
 现在提供了 **installmobilefirstadmin**、**updatemobilefirstadmin** 和 **uninstallmobilefirstadmin** Ant 任务以用于安装 {{ site.data.keys.mf_console }}、工件组件、管理服务和实时更新服务。
@@ -244,7 +251,7 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 
 #### installmobilefirstadmin
 {: #installmobilefirstadmin }
-**installmobilefirstadmin** Ant 任务将配置应用程序服务器，以将管理和实时更新服务的 WAR 文件作为 Web 应用程序运行并（可选）安装 {{ site.data.keys.mf_console }}。该任务具有以下影响：
+ **installmobilefirstadmin** Ant 任务将配置应用程序服务器，以将管理和实时更新服务的 WAR 文件作为 Web 应用程序运行并（可选）安装 {{ site.data.keys.mf_console }}。该任务具有以下影响：
 
 * 此任务将在指定上下文根（缺省情况下为 /mfpadmin）中声明管理服务 Web 应用程序。
 * 此任务将在从管理服务的指定上下文根中获取的上下文根中声明实时更新服务 Web 应用程序。缺省情况下为 /mfpadminconfig。
@@ -314,7 +321,7 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 
 #### shortcutsDir
 {: #shortcutsdir }
-**shortcutsDir** 属性指定将快捷方式放置在 {{ site.data.keys.mf_console }}的何处。如果设置该属性，可以将以下文件添加到该目录：
+ **shortcutsDir** 属性指定将快捷方式放置在 {{ site.data.keys.mf_console }}的何处。如果设置该属性，可以将以下文件添加到该目录：
 
 * **mobilefirst-console.url** - 该文件是 Windows 快捷方式。该文件会在浏览器中打开 {{ site.data.keys.mf_console }}。
 * **mobilefirst-console.sh**- 该文件是 UNIX shell 脚本，并在浏览器中打开 {{ site.data.keys.mf_console }}。
@@ -325,7 +332,7 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 {: #wasstartingweight }
 使用 **wasStartingWeight** 属性将 WebSphere Application Server 中使用的值指定为权重，以确保启动顺序的稳定可靠。根据启动顺序值，在任何其他 {{ site.data.keys.product_adj }} 运行时项目之前部署和启动管理服务 Web 应用程序。如果在 Web 应用程序之前部署或启动 {{ site.data.keys.product_adj }} 项目，将不会建立 JMX 通信，运行时无法与管理服务数据库同步，并且无法处理服务器请求。
 
-**installmobilefirstadmin**、**updatemobilefirstadmin** 和 **uninstallmobilefirstadmin** Ant 任务支持以下元素：
+ **installmobilefirstadmin**、**updatemobilefirstadmin** 和 **uninstallmobilefirstadmin** Ant 任务支持以下元素：
 
 | 元素               | 描述                                      | 计数 |
 |-----------------------|--------------------------------------------------|-------|
@@ -370,7 +377,8 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | 属性  | 描述                | 必需 | 缺省值 |
 |------------|----------------------------|----------|---------|
 | name       | 属性的名称。  | 是      | 无    |
-| value      | 属性的值。 |	是      | 无    |
+| value
+	     | 属性的值。 |	是      | 无    |
 
 使用该元素时，可以定义自己的 JNDI 属性，或覆盖管理服务和 {{ site.data.keys.mf_console }} WAR 文件提供的 JNDI 属性的缺省值。
 
@@ -397,7 +405,8 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | 属性                | 描述                            | 必需 | 缺省值 |
 |--------------------------|----------------------------------------|----------|---------|
 | serverName               | 集合体控制器的名称。	| 是      | 无    |
-| controllerAdminName      | 集合体控制器中定义的管理用户名。此用户还负责将新成员加入到集合体中。                                                         | 是      | 无    |
+| controllerAdminName      | 集合体控制器中定义的管理用户名。
+此用户还负责将新成员加入到集合体中。                                                         | 是      | 无    |
 | controllerAdminPassword  | 管理用户密码。	    | 是      | 无    |
 | createControllerAdmin    | 用于指示是否必须在集合体控制器的基本注册表中创建管理用户。可能值为 true 或 false。                                                              | 否	   | true    |
 
@@ -481,7 +490,8 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | validate	    | 验证 {{ site.data.keys.mf_analytics_console }} 是否可以访问。	| 否	   | true    |
 
 **install**  
-使用 install 属性来指示必须将该推送服务连接至 {{ site.data.keys.mf_analytics }}，并向其发送事件。有效值为 true 或 false。
+使用 install 属性来指示必须将该推送服务连接至 {{ site.data.keys.mf_analytics }}，并向其发送事件。
+有效值为 true 或 false。
 
 **analyticsURL**  
 使用 analyticsURL 属性来指定由收到入局分析数据的 {{ site.data.keys.mf_analytics }} 公开的 URL。
@@ -522,9 +532,7 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | <cloudant>	     | Cloudant 数据库的参数。	                        | 0..1  |
 | <driverclasspath>	 | JDBC 驱动程序类路径的参数（仅限关系 DBMS）。 | 0..1  |
 
-> **注：**`<cloudant>` 元素的属性与运行时稍有不同。有关更多信息，请参阅下表：
-
-| 属性     | 描述                                     | 必需 | 缺省值                   |
+> **注：**`<cloudant>` 元素的属性与运行时稍有不同。有关更多信息，请参阅下表：| 属性     | 描述                                     | 必需 | 缺省值                   |
 |---------------|-------------------------------------------------|----------|---------------------------|
 | url           | Cloudant 帐户的 URL。                | 否       | https://user.cloudant.com |
 | user          | Cloudant 帐户的用户名。	      | 是	     | 无                      |
@@ -556,8 +564,7 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 
 | 属性 | 描述                           | 必需 | 缺省值     |
 |-----------|---------------------------------------|----------|-------------|
-| id        | 区分不同的部署。	| 否	   | 空
-| warFile	| 推送服务的 WAR 文件。	| 否	   | ../PushService/mfp-push-service.war 文件相对于包含 mfp-ant-deployer.jar 文件的 MobileFirstServer 目录。 |
+| id        | 区分不同的部署。	| 否	   | 空| warFile	| 推送服务的 WAR 文件。	| 否	   | ../PushService/mfp-push-service.war 文件相对于包含 mfp-ant-deployer.jar 文件的 MobileFirstServer 目录。 |
 
 ### Id
 {: #id }
@@ -705,8 +712,7 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | `<cloudant>`	       | Cloudant 数据库的参数。     | 0..1  |
 | `<driverclasspath>`  | JDBC 驱动程序类路径的参数（仅限关系 DBMS）。 | 0..1 |
 
-> **注：**`<cloudant>` 元素的属性与运行时稍有不同。有关更多信息，请参阅下表：
-| 属性    | 描述                            | 必需   | 缺省值 |
+> **注：**`<cloudant>` 元素的属性与运行时稍有不同。有关更多信息，请参阅下表：| 属性    | 描述                            | 必需   | 缺省值 |
 |--------------|----------------------------------------|------------|---------|
 | url	       | Cloudant 帐户的 URL。       | 否         | https://user.cloudant.com |
 | user	       | Cloudant 帐户的用户名。 | 是 | 无 |
@@ -784,7 +790,8 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | `<database>`          | 数据库。                                   | 1     |
 | `<analytics>`         | 分析。                                   | 0..1  |
 
-`<property>` 元素指定了要在应用程序服务器中定义的部署属性。它具有以下属性：
+`<property>` 元素指定了要在应用程序服务器中定义的部署属性。
+它具有以下属性：
 
 | 属性 | 描述                | 必需 | 缺省值 |
 |-----------|----------------------------|----------|---------|
@@ -838,7 +845,8 @@ configuredatabase Ant 任务的参考信息。本参考信息仅针对关系数�
 | serverId                |	用于唯一标识集合体成员的字符串。 | 是 | 无 |
 | controllerHost          |	集合体控制器的名称。                   | 是 | 无 |
 | controllerHttpsPort     |	集合体控制器的 HTTPS 端口。             | 是 | 无 |
-| controllerAdminName     |	集合体控制器中定义的管理用户名。此用户还负责将新成员加入到集合体中。 | 是 | 无 |
+| controllerAdminName     |	集合体控制器中定义的管理用户名。
+此用户还负责将新成员加入到集合体中。 | 是 | 无 |
 | controllerAdminPassword |	管理用户密码。	                     | 是 | 无 |
 | createControllerAdmin   |	用于指示是否必须在集合体成员的基本注册表中创建管理用户。可能值为 true 或 false。 | 否 | true |
 
@@ -1085,13 +1093,18 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 {: #installapplicationcenter }
 `<installApplicationCenter>` 任务配置应用程序服务器以将 Application Center Services WAR 文件作为 Web 应用程序运行，并安装 Application Center Console。该任务具有以下影响：
 
-* 该任务声明了 /applicationcenter 上下文根中的 Application Center Services Web 应用程序。
+* 该任务声明了 /applicationcenter 上下文根中的
+Application Center Services Web 应用程序。
 * 该任务声明数据源，并且在 WebSphere Application Server Full Profile 上还声明了 Application Center Services 的 JDBC 提供程序。
-* 该任务在应用程序服务器上部署 Application Center Services Web 应用程序。
-* 该任务在 /appcenterconsole 上下文根中将 Application Center Console 声明为一个 Web 应用程序。
+* 该任务在应用程序服务器上部署
+Application Center Services Web 应用程序。
+* 该任务在 /appcenterconsole 上下文根中将
+Application Center Console 声明为一个 Web 应用程序。
 * 该任务在应用程序服务器上部署 Application Center Console WAR 文件。
-* 该任务使用 JNDI 环境条目配置 Application Center Services 的配置属性。已注释与端点和代理相关的 JNDI 环境条目。在某些情况下，您必须对它们取消注释。
-* 此任务对用户进行配置，将其映射到 Application Center Console 和 Services Web 应用程序使用的角色。
+* 该任务使用 JNDI 环境条目配置
+Application Center Services 的配置属性。已注释与端点和代理相关的 JNDI 环境条目。在某些情况下，您必须对它们取消注释。
+* 此任务对用户进行配置，将其映射到
+Application Center Console 和 Services Web 应用程序使用的角色。
 * 此任务在 WebSphere Application Server 上，配置 Web 容器所需的定制属性。
 
 #### <updateApplicationCenter>
@@ -1108,10 +1121,14 @@ Pool (UCP)](http://www.oracle.com/technetwork/database/features/jdbc/index-09126
 {: #uninstallApplicationCenter }
 `<uninstallApplicationCenter>` Ant 任务撤销早期运行 `<installApplicationCenter>` 的影响。该任务具有以下影响：
 
-* 此任务将除去具有 **/applicationcenter** 上下文根的 Application Center Services Web 应用程序配置。因此，此任务还将除去手动添加到该应用程序的设置。
-* 此任务从应用程序服务器除去 Application Center Services and Console WAR 文件。
-* 此任务将除去数据源，并且在 WebSphere Application Server Full Profile 上还除去 Application Center Services 的 JDBC 提供程序。
-* 此任务从应用程序服务器除去已由 Application Center Services 使用的数据库驱动程序。
+* 此任务将除去具有 **/applicationcenter** 上下文根的
+Application Center Services Web 应用程序配置。因此，此任务还将除去手动添加到该应用程序的设置。
+* 此任务从应用程序服务器除去
+Application Center Services and Console WAR 文件。
+* 此任务将除去数据源，并且在 WebSphere Application Server Full Profile 上还除去
+Application Center Services 的 JDBC 提供程序。
+* 此任务从应用程序服务器除去已由
+Application Center Services 使用的数据库驱动程序。
 * 此任务将除去关联的 JNDI 环境条目。
 * 此任务将除去由 `<installApplicationCenter>` 调用配置的用户。
 
@@ -1229,7 +1246,8 @@ Service。该任务将安装作为主节点的 {{ site.data.keys.mf_analytics }}
 Service 和 {{ site.data.keys.mf_analytics_console }} WAR 文件。
 * 该任务在指定的上下文根 (/analytics-service) 中声明 {{ site.data.keys.mf_analytics }} Service Web 应用程序。
 * 该任务在指定的上下文根 (/analytics) 中声明 {{ site.data.keys.mf_analytics_console }} Web 应用程序。
-* 该任务通过 JNDI 环境条目设置 {{ site.data.keys.mf_analytics_console }} 和 {{ site.data.keys.mf_analytics }} Services 配置属性。
+* 该任务通过 JNDI 环境条目设置 {{ site.data.keys.mf_analytics_console }} 和 {{ site.data.keys.mf_analytics }}
+Services 配置属性。
 * 在 WebSphere Application Server Liberty Profile 上，该任务配置 Web 容器。
 * （可选）该任务创建使用 {{ site.data.keys.mf_analytics_console }} 的用户。
 
@@ -1330,7 +1348,8 @@ Services WAR 文件的不同目录。您可以使用绝对路径或相对路径�
 
 ### 指定 {{ site.data.keys.mf_analytics }} 的存储器类型
 {: #to-specify-a-type-of-storage-for-mobilefirst-analytics }
-`<storage>` 元素表示 {{ site.data.keys.mf_analytics }} 用于存储其收集的信息和数据的存储器的底层类型。
+`<storage>` 元素表示 {{ site.data.keys.mf_analytics }}
+用于存储其收集的信息和数据的存储器的底层类型。
 
 它支持以下元素：
 
@@ -1392,7 +1411,8 @@ Service 组件接收事件时，在运行时将自动创建 **analyticsData** �
 {: #replicaspershard }
 使用 **replicasPerShard** 属性来指定要在 ElasticSearch 集群中为每个分片创建的副本数量。
 
-每个分片可以没有副本，或者具有一个或多个副本。缺省情况下，每个分片具有一个副本，但可以在 {{ site.data.keys.mf_analytics }} 中的现有索引上动态更改副本数量。副本分片决不能在其分片所在的节点上启动。
+每个分片可以没有副本，或者具有一个或多个副本。缺省情况下，每个分片具有一个副本，但可以在 {{ site.data.keys.mf_analytics }} 中的现有索引上动态更改副本数量。
+副本分片决不能在其分片所在的节点上启动。
 
 #### transportPort
 {: #transportport }
@@ -1453,6 +1473,7 @@ Service 组件接收事件时，在运行时将自动创建 **analyticsData** �
 | ADMIN_NODE	                 | 存储有关运行管理服务的服务器的信息。在仅使用 1 台服务器的独立拓扑中，不使用该实体。 | 每个服务器 1 行；使用独立服务器时为空。 |
 | AUDIT_TRAIL	                 | 存储在使用管理服务器执行的所有管理操作的审计跟踪。 | 数千行。 |
 | CONFIG_LINKS	                 | 存储指向实时更新服务的链接。适配器和应用程序可能具有存储在实时更新服务中的配置，链接用于查找这些配置。	| 数百行。每个适配器将使用 2 到 3 行。
+每个应用程序将使用 4 到 6 行。 |
 | FARM_CONFIG	                 | 存储使用服务器场时场节点的配置。 | 数十行；如果未使用服务器场，那么为空。 |
 | GLOBAL_CONFIG	                 | 存储一些全局配置数据。 | 1 行。 |
 | PROJECT	                     | 存储已部署项目的名称。 | 数十行。 |
@@ -1556,7 +1577,7 @@ wasnd 的配置文件包含作用域，可将其设置为 **cluster**、**node**
 在 UNIX 上：`chmod 600 configure-file.xml`
 在 Windows 上：`cacls configure-file.xml /P Administrators:F %USERDOMAIN%\%USERNAME%:F`
 
-### 步骤 3
+### 步骤 3 
 {: #step-3 }
 同样，如果应用程序服务器是 WebSphere Application Server Liberty Profile 或 Apache Tomcat，且该服务器仅从您的用户帐户启动，那么还必须从以下文件除去其他用户的读许可权：
 
@@ -1569,6 +1590,8 @@ wasnd 的配置文件包含作用域，可将其设置为 **cluster**、**node**
 
 **注：**  
 当在 Ant XML 脚本值中使用以下特殊字符时，必须对这些字符进行转义：
+
+
 * 美元符号 (`$`) 必须写作 $$，除非您明确希望通过语法 `${variable}` 引用 Ant 变量，如 Apache Ant Manual 的 Properties 部分中所述。
 * 和号 (`&`) 必须写作 `&amp;`，除非您明确希望引用 XML 实体。
 * 双引号 (`"`) 必须写作 `&quot;`，除非它在由单引号括起的字符串内。

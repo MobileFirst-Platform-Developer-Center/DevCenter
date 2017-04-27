@@ -20,6 +20,8 @@ Application Center 移动式客户机是在 Android、iOS、Windows Phone 或 Wi
 * [在 Android 移动设备上安装客户机](#installing-the-client-on-an-android-mobile-device)
 * [在 iOS 移动设备上安装客户机](#installing-the-client-on-an-ios-mobile-device)
 * [在 Windows Phone 8 Universal 移动设备上安装客户机](#installing-the-client-on-a-windows-phone-8-universal-mobile-device)
+* [在 Windows 10 设备上安装 Windows 10 UWP 客户机](#installing-windows-10-uwp-client-on-windows-10-device)
+* [安装 Windows 10 UWP 应用程序并添加评论意见](#installing-a-windows-10-uwp-application-and-adding-review-comments)
 * [登录视图](#the-login-view)
 * [Application Center 客户机中的视图](#views-in-the-application-center-client)
 * [在 Android 设备上安装应用程序](#installing-an-application-on-an-android-device)
@@ -61,7 +63,7 @@ Application Center 移动式客户机是在 Android、iOS、Windows Phone 或 Wi
     Application Center 管理员必须安装移动式客户机应用程序，然后您才能在可用应用程序列表中看到移动式客户机。管理员会将移动式客户机上载至 Application Center，并将 **Installer** 属性设置为 **true**。请参阅[应用程序属性](../appcenter-console/#application-properties)。
 
     ![要安装的可用移动式客户机应用程序的列表](ac_instal_client_and1.jpg)
-    
+
 5. 选择列表中的某项以显示应用程序详细信息。通常，这些详细信息包含应用程序名称及其版本号。
 
     ![应用程序详细信息](ac_app_details.jpg)
@@ -74,7 +76,7 @@ Application Center 移动式客户机是在 Android、iOS、Windows Phone 或 Wi
 8. 选择 Application Center 客户机安装程序。选择安装应用程序时，您可以看到授予该应用程序的访问权。
 
     ![在 Android 上安装移动式客户机](ac_instal_client_and_rights.jpg)
-    
+
 9. 选择**安装**以安装移动式客户机。
 10. 安装应用程序时，选择**打开**以打开移动式客户机，或者选择**完成**以关闭“下载”应用程序。
 
@@ -83,32 +85,26 @@ APK 文件可能会因以下某原因而失败：
 * 设备可能没有足够的可用内存。
 * 设备无法识别服务器的 SSL 证书。
 
-在第一次通过“下载”应用程序安装应用程序时，您可能收到了一个请求，要求确认 Google 是否应当定期检查设备活动中的安全性问题。您可以根据自己的偏好接受或拒绝。
-您所做的选择不会影响 Application Center 客户机。
+在第一次通过“下载”应用程序安装应用程序时，您可能收到了一个请求，要求确认 Google 是否应当定期检查设备活动中的安全性问题。您可以根据自己的偏好接受或拒绝。您所做的选择不会影响 Application Center 客户机。
 
 
 安装可能会因以下某原因而被阻止：
 
-* 设备不允许从未知来源安装。
-请转至设备上的**设置 → 安全性**，然后启用**未知来源（允许从未知来源安装）**。
-* 设备已安装了同一应用程序，但使用不同的证书签名。
-对此，您必须除去该应用程序，然后在使用其他签名证书的设备上安装该应用程序。
+* 设备不允许从未知来源安装。请转至设备上的**设置 → 安全性**，然后启用**未知来源（允许从未知来源安装）**。
+* 设备已安装了同一应用程序，但使用不同的证书签名。对此，您必须除去该应用程序，然后在使用其他签名证书的设备上安装该应用程序。
 
 
 ## 在 iOS 移动设备上安装客户机
 {: #installing-the-client-on-an-ios-mobile-device }
 您可以通过在浏览器中输入访问 URL，输入您的凭证，并完成所需的步骤，从而在 iOS 移动设备上安装移动式客户机或标记有安装程序标志的任何已签署应用程序。
 
-> **要点：**要在 iOS 设备上安装应用程序，首先必须为 Application Center 服务器配置 SSL。请参阅[配置安全套接字层 (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)。IBM Application Center 服务的 **ibm.appcenter.ios.plist.onetimeurl** JNDI 属性可控制在 iOS 移动设备上安装移动式客户机时是否使用一次性 URL。将此属性设置为 false 可实现最大的安全性。
-将此属性设置为 false 时，用户在安装移动式客户机时必须多次输入其凭证：选择客户机时输入一次，安装客户机时输入一次。
+> **要点：**要在 iOS 设备上安装应用程序，首先必须为 Application Center 服务器配置 SSL。请参阅[配置安全套接字层 (SSL)](../../installation-configuration/production/appcenter/#configuring-secure-sockets-layer-ssl)。IBM Application Center 服务的 **ibm.appcenter.ios.plist.onetimeurl** JNDI 属性可控制在 iOS 移动设备上安装移动式客户机时是否使用一次性 URL。将此属性设置为 false 可实现最大的安全性。将此属性设置为 false 时，用户在安装移动式客户机时必须多次输入其凭证：选择客户机时输入一次，安装客户机时输入一次。
 
-将此属性设置为 true 时，用户只需输入一次凭证。当用户输入凭证时，会生成带有加密散列的临时下载 URL。
-此临时下载 URL 有效期为 1 小时，无需再进行认证。此解决方案是安全性和便利性之间的折中。
+将此属性设置为 true 时，用户只需输入一次凭证。当用户输入凭证时，会生成带有加密散列的临时下载 URL。此临时下载 URL 有效期为 1 小时，无需再进行认证。此解决方案是安全性和便利性之间的折中。
 
 指定 **ibm.appcenter.ios.plist.onetimeurl** JNDI 属性的步骤与指定 **ibm.appcenter.proxy.host property** 的步骤类似。请参阅[定义应用程序资源的端点](../../installation-configuration/production/appcenter/#defining-the-endpoint-of-the-application-resources)。
 
-在 iOS 设备上安装移动式客户机类似于在 Android 上进行安装，但是存在某些区别。在下载之后，安装程序会直接自动启动。
-几乎针对所有安装步骤都会请求您输入用户名和密码凭证。
+在 iOS 设备上安装移动式客户机类似于在 Android 上进行安装，但是存在某些区别。在下载之后，安装程序会直接自动启动。几乎针对所有安装步骤都会请求您输入用户名和密码凭证。
 
 1. 在移动设备上启动浏览器。
 2. 在地址字段中输入以下访问 URL：`http://hostname:portnumber/applicationcenter/installers.html`
@@ -135,16 +131,16 @@ APK 文件可能会因以下某原因而失败：
 
     * 点击“安装”。只需对设备执行一次该操作。通过在设备上查看**设置 → 常规 → 概要文件**，可以验证是否已安装了证书。该视图显示用户已安装在设备上的 SSL 证书。如果未在设备上安装自签名 CA 证书，那么 iOS 操作系统会阻止您在以下步骤中下载移动式客户机。
 
-    
+
     Application Center 管理员必须安装移动式客户机应用程序，然后您才能在可用应用程序列表中看到移动式客户机。管理员会将移动式客户机上载到 Application Center，并将 Installer 属性设置为 true。请参阅[应用程序属性](../appcenter-console/#application-properties)。
-    
+
 5. 点击**安装程序**选项卡并选择列表中的某项以显示应用程序详细信息。
 6. 点击**安装**以下载移动式客户机。
 7. 输入您的凭证以授权下载程序事务。
 8. 要授权下载，请轻击**安装**。
 
     ![确认要安装的应用程序](ac_instal_client_ios_conf.jpg)
-    
+
 9. 输入您的凭证以授权安装。
 10. 关闭浏览器。
 
@@ -156,8 +152,7 @@ APK 文件可能会因以下某原因而失败：
 在此模式下，无限循环将停止，这样您可以按照删除 iOS 设备上应用程序的正常步骤来删除此应用程序图标。
 安装可能会因以下某原因而被阻止：
 
-* 应用程序的供应概要文件对设备无效。
-必须使用其他供应概要文件签署此应用程序。
+* 应用程序的供应概要文件对设备无效。必须使用其他供应概要文件签署此应用程序。
 
 * 设备无权访问 Apple 服务器以确认供应概要文件的有效性。
 
@@ -185,7 +180,8 @@ APK 文件可能会因以下某原因而失败：
 {: #installing-the-client-on-a-windows-phone-8-universal-mobile-device }
 您可以通过在浏览器中输入访问 URL，输入您的凭证，并完成所需的步骤，从而在 Windows 8 Universal 上安装移动式客户机或标记有安装程序标志的任何已签署应用程序。必须在您的移动设备上预先安装公司帐户。
 
-安装公司发布的应用程序之前，必须将公司帐户添加到您的移动设备上。必须将应用程序注册标记 (AET) 下载到 Windows Phone 设备上。该 AET 必须已经在 {{ site.data.keys.mf_server }} 上。使用 Application Center 控制台将其上载至 {{ site.data.keys.mf_server }}   。请参阅 [Windows 8 Universal 中的应用程序注册标记](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal)以获取详细信息。
+安装公司发布的应用程序之前，必须将公司帐户添加到您的移动设备上。必须将应用程序注册标记 (AET) 下载到 Windows Phone 设备上。该 AET 必须已经在 {{ site.data.keys.mf_server }} 上。
+使用 Application Center 控制台将其上载至 {{ site.data.keys.mf_server }}。请参阅 [Windows 8 Universal 中的应用程序注册标记](../appcenter-console/#application-enrollment-tokens-in-windows-8-universal)以获取详细信息。
 
 1. 在移动设备上启动浏览器。
 2. 在地址文本字段中输入以下访问 URL：`http://hostname:portnumber/applicationcenter/installers.html`。
@@ -197,16 +193,16 @@ APK 文件可能会因以下某原因而失败：
 3. 输入您的凭证以授权访问服务器。在屏幕的下半部分中，有一个包含**安装程序**选项卡和**标记**选项卡的工具栏。
 
     ![准备在 Windows Phone 设备上安装标记和应用程序](ac_wp8_toolbar_inst_app.jpg)
-    
+
 4. 轻击**标记**并在可用标记列表中选择应用程序注册标记，以显示标记详细信息。
 
     ![Windows Phone 设备上的应用程序注册标记详细信息](ac_wp8_aet_details.jpg)
-    
+
 5. 轻击**添加**，下载应用程序注册标记。
 6. 轻击**添加**，添加公司帐户。
 
     ![在 Windows 8 Universal 设备中添加公司帐户](ac_wp8_add_co_account.jpg)
-    
+
     Windows Phone 8 不提供有关添加公司帐户的任何反馈信息。
 
 7. 轻击“后退”图标，返回到应用程序注册标记详细信息。
@@ -214,16 +210,61 @@ APK 文件可能会因以下某原因而失败：
 9. 轻击**安装**，下载所选应用程序。
 
     ![在 Windows Phone 设备上下载所选应用程序](ac_wp8_app_details.jpg)
-    
+
 10. 轻击**安装**，安装应用程序。
 
     ![在 Windows Phone 设备上安装所下载的应用程序](ac_wp8_app_install.jpg)
-    
+
     Windows 8 Universal 不提供有关安装应用程序的任何反馈信息。
 
 > **提示：**在设备上安装公司应用程序时，必须将设备连接到 Microsoft 服务器以验证应用程序签名。Microsoft 服务器有时候可能无响应。在此情况下，您可在几分钟之后再次尝试安装。请参阅“在 Windows Phone 设备上安装应用程序”以获取可能的错误消息。
-
 完成安装之后，移动式客户机应用程序将在 Windows Phone 的应用程序列表中可用。
+
+## 在 Windows 10 设备上安装 Windows 10 UWP 客户机
+{: #installing-windows-10-uwp-client-on-windows-10-device }
+
+您可以通过在浏览器中输入访问 URL，然后输入自己的凭证，接着完成所需的步骤，从而在 Windows 10 上安装移动式客户机或标记有安装程序标志的任何已签署的应用程序。
+
+1. 在移动设备上启动浏览器。
+
+2. 在地址文本字段中输入以下访问 URL：`http://hostname:portnumber/applicationcenter/installers.html?os=Windows`。其中 `hostname` 是服务器的地址，`portnumber` 是安装 Application Center 的端口号。系统管理员可以提供此信息。
+
+    Application Center 还提供用于在移动设备上安装客户机的备用 URL：`http://hostname:portnumber/applicationcenter/inst.html?os=Windows`。此 URL 的页面在某些较旧的或某些非标准的移动 Web 浏览器上显示效果更佳。如果 *installers.html* 页面在您的移动设备上无法正常显示，您可以使用 *inst.html*。仅提供该页面的英文版本并未翻译为其他语言。
+
+3.  输入您的凭证以授权访问服务器。
+
+    ![输入用于访问服务器的凭证](ac_wp10_enter_credentials.png)
+
+4.  选择可用应用程序列表中的某项以显示应用程序详细信息。
+
+    ![选择应用程序以查看其详细信息](ac_wp10_apps_list.png)
+
+5.  点击**安装**以下载并安装移动式客户机。
+
+    ![选择“安装”以安装应用程序](ac_wp10_app_install.png)
+
+
+> **注：**要列示 Windows 10 UWP 应用程序，必须传递查询字符串 `os=Windows`
+
+## 安装 Windows 10 UWP 应用程序并添加评论意见
+{:  #installing-a-windows-10-uwp-application-and-adding-review-comments}
+
+1. 登录至 Application Center。
+
+    ![登录至 Application Center](ac_wp10_login.png)
+
+2. 从目录中的可用应用程序列表中选择要安装的应用程序。
+
+    ![从目录中选择应用程序](ac_wp10_catalog_applisting.png)
+
+3. 点击**安装**以下载并安装应用程序。
+
+    ![选择“安装”以安装应用程序](ac_wp10_app_details_installapp.png)
+
+4. 通过提供评级并添加评论意见，对应用程序进行评价。
+
+    ![添加评论意见](ac_wp10_add_review.png)
+
 
 ## 登录视图
 {: #the-login-view }
@@ -253,7 +294,8 @@ Application Center 服务器地址包含以下元素：
 
 #### 安全套接字层 (SSL)
 {: #secure-socket-layer-ssl }
-SSL 在 iOS 设备上是必需的。因此，该选项未在登录视图中显示。在所支持的其他操作系统上，选择 SSL，为网络通信开启 SSL 协议。如果在 SSL 处于选中状态时再次轻击该字段，将关闭 SSL。
+SSL 在 iOS 设备上是必需的。因此，该选项未在登录视图中显示。在所支持的其他操作系统上，选择 SSL，为网络通信开启 SSL 协议。
+如果在 SSL 处于选中状态时再次轻击该字段，将关闭 SSL。
 
 如果 Application Center 服务器配置为通过 SSL 连接运行，那么 SSL 选项可用。当服务器未配置为处理 SSL 层时选择 SSL 会阻止您连接到服务器。系统管理员可以告知您 Application Center 是否通过 SSL 连接运行。
 
@@ -261,7 +303,7 @@ SSL 在 iOS 设备上是必需的。因此，该选项未在登录视图中显�
 {: #connecting-to-the-server }
 要连接至服务器：
 
-1. 输入您的用户名和密码。
+1.输入您的用户名和密码。
 2. 输入您的 Application Center 服务器地址。
 3. 如果您的 Application Center 配置通过 SSL 协议运行，请选择 **SSL**。
 4. 轻击**登录**以连接到服务器。
@@ -382,12 +424,12 @@ Windows 8 客户机主屏在每个类别中最多可显示 6 个应用程序。
 2. 轻击**安装**以确认下载和安装应用程序版本，或者轻击**取消**以取消安装。
 
     ![在 iOS 设备上取消应用程序安装](ac_app_inst_cancel_ios.jpg)
-    
+
     根据所采取的操作，会安装或不安装该应用程序。应用程序安装成功之后，还会将其标记为收藏的应用程序。
 
     在设备上安装应用程序需要一个供应概要文件来支持在所选设备上安装此应用程序。
 如果无意间尝试安装某个对设备无效的应用程序，那么 iOS 6（不推荐）或先前版本会给出一条错误消息。
-    
+
 与 Android 客户机不同，安装完成后，“**详细信息**”视图中的**安装**按钮不会将其标签更改为**卸载**。在 iOS 中，没有**卸载**按钮可用。
 只能通过主屏来卸载应用程序。
 
@@ -427,12 +469,13 @@ iOS 7 的部分版本可能会尝试在无限循环中安装此应用程序，�
 1. 在**详细信息**视图中，轻击**安装**。这样会下载和安装该应用程序。您可以在下载应用程序期间随时轻击**取消**以取消该活动。
 **取消**仅在安装过程的下载步骤期间显示。
 
+
     在安装流程的开始，将请求您确认是否想要将公司应用程序添加到安装在移动设备上的应用程序。
 
 2. 轻击**安装**以确认安装应用程序，或轻击**取消**以取消安装。将该应用程序标记为收藏的应用程序。
 
     ![确认或取消在 Windows Phone 设备上安装公司应用程序](ac_confirm_instal_app_wp.jpg)
-    
+
 > **提示：**在设备上安装公司应用程序时，必须将设备连接到 Microsoft 服务器以验证应用程序签名。Microsoft 服务器有时候可能无响应。在此情况下，您可在几分钟之后再次尝试安装。可能出现的错误消息如下：
 
 * **该公司应用程序存在问题。请联系公司的支持人员以获取帮助。**
@@ -451,7 +494,7 @@ iOS 7 的部分版本可能会尝试在无限循环中安装此应用程序，�
 > **要点：**如果使用多个公司帐户注册设备，那么 Windows Phone 操作系统可能在以下消息中显示错误的公司帐户：**您想要安装来自 name 公司的应用程序吗？**。该消息不受 Application Center 控制。该情况只是显示问题，不影响功能。根据您所采取的操作，会安装或不安装该应用程序。
 
 > **提示：**如果用于对要安装的应用程序的应用程序包 (.xap) 文件进行代码签名的 PFX 证书到期，那么将不会运行安装过程。Windows Phone 操作系统将返回一个错误，显示 **HRESULT 0x81030110**。当您更新 PFX 证书时，必须使用此新证书对 Application Center 目录中部署的所有应用程序重新进行代码签名。
-> 
+>
 当您更新 PFX 代码签名证书时，还必须更新注册标记并将其部署在 Application Center 控制台上。
 还必须使用此新标记向公司帐户重新注册设备。使用过期标记注册设备的用户不能安装任何应用程序。
 
@@ -491,6 +534,7 @@ iOS 7 的部分版本可能会尝试在无限循环中安装此应用程序，�
 
 3. 要安装应用程序，请轻击**安装**。如果已安装了应用程序并且有其他可用版本，那么您可以决定是更新到较高版本还是还原至较低版本。
 
+
 ## 通过通用应用商店安装应用程序
 {: #installing-applications-through-public-app-stores }
 您可从移动式客户机链接至存储在受支持的通用应用商店中的应用程序，并遵循通用应用商店的常规过程在兼容设备上安装这些应用程序。
@@ -505,10 +549,10 @@ Play 中的 Android 应用程序链接和存储在 Apple iTunes 中的 iOS 应�
 
     **Android**
     ![从设备上的移动式客户机访问 Google play 中的应用程序](ac_and_link_app.jpg)
-    
+
     **iOS**
     ![从设备上的移动式客户机访问 Apple iTunes 中的应用程序](ac_ios_link_app.jpg)
-    
+
 3. 遵循通用应用商店的常规过程，安装应用程序。
 
 ## 除去已安装的应用程序
@@ -533,7 +577,7 @@ Play 中的 Android 应用程序链接和存储在 Apple iTunes 中的 iOS 应�
     * 针对 Windows 设备；请参阅步骤 3
     * 针对平板电脑：请参阅步骤 4。
 2. **仅限 Windows Phone、Android 和 iOS**：在 Windows Phone、Android 或 iOS 手机上显示特定应用程序版本的详细信息。
-    * 轻击**选择版本**以浏览至版本列表视图。![在 Windows Phone、Android 或 iOS 手机上的版本列表中选中的应用程序的特定版本](ac_version_select.jpg) 
+    * 轻击**选择版本**以浏览至版本列表视图。![在 Windows Phone、Android 或 iOS 手机上的版本列表中选中的应用程序的特定版本](ac_version_select.jpg)
     * 轻击应用程序的相应版本。**详细信息**视图会更新并显示所选应用程序版本的详细信息。
 3. 仅限 Windows：显示 Windows 设备上特定 Windows Store 应用程序版本的详细信息。如果 Windows Store 应用程序提供有多个版本，那么您可以选择想要安装的版本。
     * 轻击应用程序的相应版本。**详细信息**视图会更新并显示所选应用程序版本的详细信息。
@@ -569,7 +613,7 @@ iOS、Android 和 Windows Phone 支持该功能。
 如果检测到应用程序的更新版本，系统将请求您下载并安装此更新版本。
 
 
-缺省情况下，通过将 **appCenterAutoUpgrade** 属性设置为 **true** 启用了 Application Center 客户机应用程序的自动升级。该属性位于 Application Center 的 {{ site.data.keys.product_full }}    项目中：**IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**。
+缺省情况下，通过将 **appCenterAutoUpgrade** 属性设置为 **true** 启用了 Application Center 客户机应用程序的自动升级。该属性位于 Application Center 的 {{ site.data.keys.product_full }} 项目中：**IBMAppCenter/apps/AppCenter/common/js/appcenter/config.json**。
 
 如果要禁用自动升级，必须将此属性设置为 false，并为所需平台重新构建项目。
 
@@ -587,7 +631,7 @@ iOS、Android 和 Windows Phone 支持该功能。
 3. 轻击**打开**以启动更新的应用程序。
 
     ![启动更新的应用程序](ac_client_autoupgrade_start_app.jpg)
-    
+
 必须登录到应用程序的更新版本才能够运行此版本。
 
 

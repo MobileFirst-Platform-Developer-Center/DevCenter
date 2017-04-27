@@ -154,7 +154,7 @@ onFailure: function(response) {
 
 ## 获取更多信息
 {: #for-more-information }
-> 有关 WLResourceRequest 的更多信息，请[参阅 API 参考](http://www.ibm.com/support/knowledgecenter/SSHS8R_8.0.0/com.ibm.worklight.apiref.doc/html/refjavascript-client/html/WLResourceRequest.html)。
+> 有关 WLResourceRequest 的更多信息，请[参阅 API 参考](../../../api/client-side-api/javascript/client/)。
 
 <img alt="样本应用程序的图像" src="resource-request-success-cordova.png" style="float:right"/>
 ## 样本应用程序

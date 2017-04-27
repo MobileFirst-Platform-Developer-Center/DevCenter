@@ -23,7 +23,7 @@ weight: 4
 #### 跳转至：
 {: #jump-to }
 - [添加 {{ site.data.keys.product_adj }} 本机 SDK](#adding-the-mobilefirst-native-sdk)
-- [手动添加 {{ site.data.keys.product_adj }} 本机 SDK](#manually-adding-the-mobilefirst-win-native-sdk)
+- [手动添加 {{ site.data.keys.product_adj }} 本机 SDK](#manually-adding-the-mobilefirst-win-native-sdk) 
 - [更新 {{ site.data.keys.product_adj }} 本机 SDK](#updating-the-mobilefirst-native-sdk)
 - [已生成 {{ site.data.keys.product_adj }} 本机 SDK 工件](#generated-mobilefirst-native-sdk-artifacts)
 - [接下来要学习的教程](#tutorials-to-follow-next)
@@ -75,24 +75,24 @@ weight: 4
         <div id="collapse-win-sdk" class="panel-collapse collapse" role="tabpanel" aria-labelledby="win-sdk">
             <div class="panel-body">
                 <p>可以通过手动获取框架和库文件，准备用于开发 MobileFirst 应用程序的环境。NuGet 还提供 {{ site.data.keys.product }} SDK for Windows 8 和 Windows 10 Universal Windows Platform (UWP)。</p>
-                <ol>
-                  <li>从 {{ site.data.keys.mf_console }} → 下载中心 → SDK<b> 选项卡获得 {{ site.data.keys.product }}SDK</b>。</li>
-                  <li>解压缩通过步骤 1 下载的 SDK 的内容。</li>
-                  <li>在 Visual Studio 中打开 Windows Universal 本机项目。执行以下步骤。
-                    <ol>
-                          <li>选择<b>工具 → NuGet Package Manager → 软件包管理器设置</b>。</li>
-                          <li>选择<b>软件包源</b>选项。单击 <b>+</b> 图标以添加新的软件包源。</li>
-                          <li>提供软件包源的名称（例如<em>windows8nuget</em>）</li>
-                          <li>导航至已下载并解压缩的 MobileFirst SDK 文件夹。单击<b>确定</b>。</li>
-                          <li>单击<b>更新</b>，然后单击<b>确定</b>。</li>
-                          <li>右键单击<b>解决方案资源管理器</b>选项卡中的<b>解决方案项目名称</b>（位于屏幕右侧）。</li>
-                          <li>选择<b>管理解决方案的 NuGet 软件包 → 联机 → windows8nuget</b>。</li>
-                          <li>单击<b>安装</b>选项。这样会显示<b>选择项目</b>选项。</li>
-                          <li>确保选中所有复选框。单击<b>确定</b>。</li>
-                    </ol>
-                  </li>
-                </ol>
 
+                <ol>
+                    <li>从 {{ site.data.keys.mf_console }} → 下载中心 → SDK</b> 选项卡获得 {{ site.data.keys.product }}SDK<b>。</li>
+                    <li>解压缩通过步骤 1 下载的 SDK 的内容。</li>
+                    <li>在 Visual Studio 中打开 Windows Universal 本机项目。执行以下步骤。<ol>
+                            <li>选择<b>工具 → NuGet Package Manager → 软件包管理器设置</b>。</li>
+                            <li>选择<b>软件包源</b>选项。单击 <b>+</b> 图标以添加新的软件包源。</li>
+                            <li>提供软件包源的名称（例如<em>windows8nuget</em>）</li>
+                            <li>导航至已下载并解压缩的 MobileFirst SDK 文件夹。单击<b>确定</b>。</li>
+                            <li>单击<b>更新</b>，然后单击<b>确定</b>。</li>
+                            <li>右键单击<b>解决方案资源管理器</b>选项卡中的<b>解决方案项目名称</b>（位于屏幕右侧）。</li>
+                            <li>选择<b>管理解决方案的 NuGet 软件包 → 联机 → windows8nuget</b>。</li>
+                            <li>单击<b>安装</b>选项。这样会显示<b>选择项目</b>选项。</li>
+                            <li>确保选中所有复选框。单击<b>确定</b>。</li>
+                        </ol>
+
+                    </li>
+                </ol>
 
                 <br/>
                 <a class="preventScroll" role="button" data-toggle="collapse" data-parent="#win-sdk" data-target="#collapse-win-sdk" aria-expanded="false" aria-controls="collapse-win-sdk"><b>结束部分</b></a>
@@ -121,8 +121,7 @@ weight: 4
 > 3. 注册应用程序之后，浏览至应用程序的**配置文件**选项卡，然后复制或下载 **mfpclient.resw** 文件。遵循屏幕上的指示信息将此文件添加到您的项目。
 
 ## 更新 {{ site.data.keys.product_adj }} 本机 SDK
-{: #updating-the-mobilefirst-native-sdk}
-
+{: #updating-the-mobilefirst-native-sdk }
 要使用最新发行版更新 {{ site.data.keys.product_adj }} 本机 SDK，请在**命令行**窗口中从 Visual Studio 项目的根文件夹运行以下命令：
 
 ```bash
@@ -130,8 +129,7 @@ Nuget update
 ```
 
 ## 已生成 {{ site.data.keys.product_adj }} 本机 SDK 工件
-{: #generated-mobilefirst-native-sdk-artifacts}
-
+{: #generated-mobilefirst-native-sdk-artifacts }
 ### mfpclient.resw
 {: #mfpclientresw }
 此文件位于项目的 `strings` 文件夹中，包含服务器连接属性，并且用户可编辑：
@@ -144,8 +142,7 @@ Nuget update
 - `languagePreference` - 为客户机 sdk 系统消息设置缺省语言。
 
 ## 接下来要学习的教程
-{: #tutorials-to-follow-next}
-
+{: #tutorials-to-follow-next }
 集成 MobileFirst 本机 SDK 之后，您现在可以：
 
 - 查看[使用 {{ site.data.keys.product }} SDK 教程](../)

@@ -73,17 +73,17 @@ weight: 6
 
   ![“设置机密客户机”图](confidential_client.png) {% endcomment %}
 
-1. 通过 HTTP 客户机 (Postman)，使用下列 `Content-Type: application/x-www-form-urlencoded` 格式的参数，向 `http://<IP>:<PORT>/mfp/api/az/v1/token` 发出 HTTP `POST` 请求：
+1.  通过 HTTP 客户机 (Postman)，使用下列 `Content-Type: application/x-www-form-urlencoded` 格式的参数，向 `http://<IP>:<PORT>/mfp/api/az/v1/token` 发出 HTTP `POST` 请求：
 
-* `grant_type`：`client_credentials`
-* `scope`：使用保护资源的作用域。  
-如果不使用作用域来保护您的资源，可使用空字符串。
+    - `grant_type` - 将值设置为 `client_credentials`。
+    - `scope` - 将值设置为资源的保护作用域。如果没有为资源分配保护作用域，请省略此参数以应用缺省作用域 (`RegisteredClient`)。有关更多信息，请参阅[作用域](../../authentication-and-security/#scopes)。
 
+    ![“Postman 主体配置”图](Body_configuration.png)
 
-  ![“Postman 主体配置”图](Body_configuration.png)
-2. 使用带机密客户机标识（“test”）和密钥（“test”）的`基本认证`添加`授权头`。
-> 在[机密客户机](../../authentication-and-security/confidential-clients)教程中了解有关“机密客户机”的更多信息。
-  ![“Postman 授权配置”图](Authorization_configuration.png)
+2.  使用带机密客户机标识（“test”）和密钥（“test”）的`基本认证`添加`授权头`。
+    > 有关机密客户机的更多信息，请参阅[机密客户机](../../authentication-and-security/confidential-clients)。
+
+    ![“Postman 授权配置”图](Authorization_configuration.png)
 
 
 结果是具有临时有效访问令牌的 JSON 对象：

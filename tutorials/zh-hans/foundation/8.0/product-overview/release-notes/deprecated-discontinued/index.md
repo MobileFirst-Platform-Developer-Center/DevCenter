@@ -58,7 +58,9 @@ weight: 3
         <td><p>在 V8.0 中未提供。</p></td>
     </tr>
     <tr>
-        <td><p>在 V8.0 中未提供针对 IBM Business Process Manager (IBM BPM) 流程应用程序的服务发现和适配器生成功能、Microsoft Azure Marketplace DataMarket、OData RESTful API、RESTful 资源、SAP Netweaver Gateway 公开的服务以及 Web Service。</p></td>
+        <td><p>在 V8.0 中未提供针对 IBM Business Process Manager (IBM BPM) 流程应用程序的服务发现和适配器生成功能、Microsoft Azure
+Marketplace DataMarket、OData RESTful API、RESTful
+资源、SAP Netweaver Gateway 公开的服务以及 Web Service。</p></td>
         <td><p>在 V8.0 中未提供。</p></td>
     </tr>
     <tr>
