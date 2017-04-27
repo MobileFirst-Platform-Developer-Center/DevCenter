@@ -84,7 +84,7 @@ weight: 1
     keytool -genkey -alias backend -keyalg RSA -validity 365 -keystore backend.keystore -storetype JKS
     ```
 
-    > **注：****姓名**字段包含在 **adapter.xml** 配置文件中使用的服务器 URL（例如，**mydomain.com** 或 **localhost**）。
+    > **注：** **姓名**字段包含在 **adapter.xml** 配置文件中使用的服务器 URL（例如，**mydomain.com** 或 **localhost**）。
 2. 将后端服务器配置为使用此密钥库。例如，在 Apache Tomcat 中，更改 **server.xml** 文件：
 
    ```xml
@@ -121,7 +121,7 @@ weight: 1
    ```
 
 5. 将导出的证书导入到 {{ site.data.keys.mf_server }} 密钥库中：
-   
+
   ```bash
    keytool -import -alias backend -file backend.crt -storetype JKS -keystore mfp.keystore
    ```
@@ -140,7 +140,6 @@ weight: 1
 用程序。要为生产环境构建应用程序，可能需要其他步骤。
 
 1. 确保已配置目标服务器密钥库。有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }} 密钥库](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)。
-
 2. 如果计划分发该应用程序的可安装工件，请递增应用程序版本。
 3. 构建应用程序之前，请针对目标服务器配置此应用程序。
 
@@ -189,10 +188,12 @@ URL>` 和 `mfpdev app config runtime
 
 ## 向生产环境注册应用程序
 {: #registering-an-application-to-a-production-environment }
+
 向生产服务器注册应用程序时，会上载其应用程序描述符、定义其许可证类型并（可选）激活应用程序真实性。
 
 #### 开始之前
 {: #before-you-begin }
+
 * 确认已配置 {{ site.data.keys.mf_server }} 密钥库且不是缺省密钥库。请勿在具有缺省密钥库的生产环境中使用服务器。{{ site.data.keys.mf_server }} 密钥库定义了 {{ site.data.keys.mf_server }} 实例的身份，并用于以数字方式签署 OAuth 令牌和直接更新包。您必须使用密钥配置服务器的密钥库，然后才能在生产环境中使用。有关更多信息，请参阅[配置 {{ site.data.keys.mf_server }} 密钥库](../../authentication-and-security/configuring-the-mobilefirst-server-keystore/)。
 * 部署应用程序所使用的适配器。有关更多信息，请参阅[将适配器部署或更新至生产环境](#deploying-or-updating-an-adapter-to-a-production-environment)。
 * 为目标服务器构建应用程序。有关更多信息，请参阅[为测试或生产环境构建应用程序](#building-an-application-for-a-test-or-production-environment)。
@@ -203,22 +204,15 @@ URL>` 和 `mfpdev app config runtime
 配置了令牌许可，请确保许可证密钥服务器上具有足够的令牌。有关更多信息，请参阅[令牌许可证验证](../license-tracking/#token-license-validation)和[规划使用令牌许可](../../installation-configuration/production/token-licensing/#planning-for-the-use-of-token-licensing)。
 
    > **提示：**在注册应用程序的第一个版本之前，可设置应用程序的令牌许可证类型。有关更多信息，请参阅[设置应用程序许可证信息](../license-tracking/#setting-the-application-license-information)。
-
 2. 将应用程序描述符从测试服务器传输到生产服务器。
 
    此操作可向生产服务器注册应用程序并上载其配置。
 有关传输应用程序描述符的更多信息，请参阅[将服务器端工件传输到测试或生产服务器](#transferring-server-side-artifacts-to-a-test-or-production-server)。
-
 3. 设置应用程序许可证信息。有关更多信息，请参阅[设置应用程序许可证信息](../license-tracking/#setting-the-application-license-information)。
 4. 配置应用程序真实性安全检查。有关配置应用程序真实性安全检查的更多信息，请参阅[配置应用程序真实性安全检查](../../authentication-and-security/application-authenticity/#configuring-application-authenticity)。
-
-
    > **注：**您需要应用程序二进制文件来创建应用程序真实性文件。有关更多信息，请参阅[启用应用程序真实性安全性检查](../../authentication-and-security/application-authenticity/#enabling-application-authenticity)。
-   5. 如果应用程序使用推送通知，请将推送通知证书上载到服务器。您可以使用 {{ site.data.keys.mf_console }} 来上载应用程序的推送证书。这些证书对于应用程序的所有版本是通用的。
-
-
+5. 如果应用程序使用推送通知，请将推送通知证书上载到服务器。您可以使用 {{ site.data.keys.mf_console }} 来上载应用程序的推送证书。这些证书对于应用程序的所有版本是通用的。
    > **注：**在将应用程序发布至应用商店之前，可能无法使用生产证书来测试应用程序的推送通知。
-
 6. 在将应用程序发布至应用商店之前，请验证以下项。
     * 测试您计划要使用的任何移动应用程序管理功能，如禁用远程应用程序或
 显示管理员消息。有关更多信息，请参阅[移动应用程序管理](../using-console/#mobile-application-management)。
@@ -226,6 +220,7 @@ URL>` 和 `mfpdev app config runtime
 
 ## 将服务器端工件传输到测试或生产服务器
 {: #transferring-server-side-artifacts-to-a-test-or-production-server }
+
 您可以使用命令行工具或 REST API，将应用程序配置从一台服务器传输到另一台服务器。
 
 应用程序描述符文件是包含应用程序的描述和配置的 JSON 文件。当您运行连接到
@@ -267,8 +262,7 @@ appID-platform-version-artifacts.zip
 
 其中，**appID** 是应用程序名称，**platform** 是 **android**、**ios** 或 **windows** 中的一个，而 version 是应用程序的版本级别。对于 Cordova 应用程序，将针对每个目标平台创建一个单独的 .zip 文件。
 
-使用 **mfpdev
-app push** 命令时，系统会修改应用程序的客户机属性文件以反映新 {{ site.data.keys.mf_server }} 的概要文件名称和 URL。
+使用 **mfpdev app push** 命令时，系统会修改应用程序的客户机属性文件以反映新 {{ site.data.keys.mf_server }} 的概要文件名称和 URL。
 
 1. 在开发计算机上，浏览至应用程序根目录或者其中的某一个子目录。
 2. 运行 **mfpdev app pull** 命令。如果指定的命令不含任何参数，那么会从缺省 {{ site.data.keys.mf_server }} 中拉出该应用程序。
@@ -403,8 +397,7 @@ app push** 命令时，系统会修改应用程序的客户机属性文件以反
 
 如果将导出归档部署到同一个运行时，那么应用程序或版本不一定会恢复，因为其已经导出。也就是说，重新部署不会除去后续所作的修改。然而，如果在导出与重新部署操作之间修改了某些应用程序资源，那么仅会重新部署导出归档中包含的资源（以其原始状态）。例如，如果要导出不含真实性数据的应用程序，可上载真实性数据，然后导入初始归档，此时真实性数据将不会被擦除。
 
-### 从
-{{ site.data.keys.mf_console }} 导出和导入应用程序和适配器
+### 从 {{ site.data.keys.mf_console }} 导出和导入应用程序和适配器
 {: #exporting-and-importing-applications-and-adapters-from-the-mobilefirst-operations-console }
 在某些情况下，您可以从控制台导出应用程序或其某一版本，并在以后将其导入同一服务器或不同服务器上的另一运行时。您还可以导出并重新导入适配器。此功能可用来复用或备份。
 
