@@ -239,7 +239,7 @@ No se proporciona un SDK para ninguna de estas plataformas.
 ## Cambios de API del lado del servidor
 {: #server-side-api-changes }
 Para migrar el lado del servidor de sus aplicaciones de {{ site.data.keys.product_adj }}, debe tener en cuenta los cambios en las API.
-
+  
 En las siguientes tablas se proporciona una lista de elementos de API del lado del servidor discontinuados en la v8.0, elementos de API del lado del servidor en desuso en la v8.0 y alternativas de migración sugeridas.
 Para más información sobre la migración del lado del servidor de la aplicación,
 
@@ -321,7 +321,7 @@ Para más información sobre la migración del lado del servidor de la aplicaci�
 ## Cambios de API del lado del cliente
 {: #client-side-api-changes }
 Los siguientes cambios en las API son importantes para poder migrar su aplicación de cliente de {{ site.data.keys.product_adj }}.
-
+  
 En las siguientes tablas se proporciona una lista de elementos de API del lado del cliente discontinuados en la v8.0.0, elementos de API del lado del cliente en desuso en la V8.0.0 y alternativas de migración sugeridas.
 
 
@@ -378,12 +378,12 @@ En la v8.0 ya no se da soporte a este conjunto de API.
 | `WL.Client.isUserAuthenticated(realm)` | Sin sustitución |
 | `WLUserAuth.deleteCertificate(provisioningEntity)` | Sin sustitución |
 | `WL.Trusteer.getRiskAssessment(onSuccess, onFailure)` | Sin sustitución |
-| `WL.Client.createChallengeHandler(realmName)` | Si desea crear un manejador de desafíos para manejar desafíos de pasarelas personalizadas, utilice `WL.Client.createGatewayChallengeHandler(gatewayName)`.
+| `WL.Client.createChallengeHandler(realmName)` | Si desea crear un manejador de desafíos para manejar desafíos de pasarelas personalizadas, utilice `WL.Client.createGatewayChallengeHandler(gatewayName)`. 
 Si desea crear un manejador de desafíos para manejar desafíos de comprobación de seguridad de {{ site.data.keys.product_adj }}, utilice `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. |
 | `WL.Client.createWLChallengeHandler(realmName)` | Utilice `WL.Client.createSecurityCheckChallengeHandler(securityCheckName)`. |
 | `challengeHandler.isCustomResponse()` donde challengeHandler es un objeto manejador de desafíos que `WL.Client.createChallengeHandler()` devuelve.  | Utilice `gatewayChallengeHandler.canHandleResponse()` donde `gatewayChallengeHandler` es un objeto manejador de desafíos que `WL.Client.createGatewayChallengeHandler()` devuelve. |
 | `wlChallengeHandler.processSucccess()` donde `wlChallengeHandler` es un objeto manejador de desafíos que `WL.Client.createWLChallengeHandler()` devuelve.  | Use `securityCheckChallengeHandler.handleSuccess()` donde `securityCheckChallengeHandler` es un objeto manejador de desafíos que `WL.Client.createSecurityCheckChallengeHandler()` devuelve. |
-| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implemente una lógica similar en su manejador de desafíos. En el caso de manejadores de desafíos de pasarela, utilice un objeto manejador de desafíos que `WL.Client.createGatewayChallengeHandler()` devuelva.
+| `WL.Client.AbstractChallengeHandler.submitAdapterAuthentication()` | Implemente una lógica similar en su manejador de desafíos. En el caso de manejadores de desafíos de pasarela, utilice un objeto manejador de desafíos que `WL.Client.createGatewayChallengeHandler()` devuelva. 
 Para manejadores de desafíos de comprobación de seguridad de {{ site.data.keys.product_adj }}, utilice un objeto manejador de desafíos que `WL.Client.createSecurityCheckChallengeHandler()` devuelva. |
 | `WL.Client.createProvisioningChallengeHandler()` | Sin sustitución. La infraestructura de seguridad ahora maneja de forma automática el aprovisionamiento de dispositivos.  |
 
@@ -451,7 +451,7 @@ Para manejadores de desafíos de comprobación de seguridad de {{ site.data.keys
 | `WLHttpResponseListener`, `WLResourceRequest.send(java.util.HashMap formParameters,WLHttpResponseListener listener)`, `WLResourceRequest.send(org.json.JSONObject json, WLHttpResponseListener listener)`, `WLResourceRequest.send(byte[] data, WLHttpResponseListener listener)`, `WLResourceRequest.send(java.lang.String requestBody,WLHttpResponseListener listener)`, `WLResourceRequest.send(WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request,WLHttpResponseListener listener)`, `WLClient.sendRequest(org.apache.http.client.methods.HttpUriRequest request, WLResponseListener listener)` | Eliminadas debido a las dependencias del cliente HTTP de Apache en desuso. Cree sus propias solicitudes para tener un control completo sobre las solicitudes y las respuestas.  |
 
 #### El paquete `com.worklight.androidgap.api` proporciona la funcionalidad de plataforma Android para las aplicaciones Cordova.
-Se han realizado varios cambios en {{ site.data.keys.product }} para acomodar la integración de Cordova.
+Se han realizado varios cambios en {{ site.data.keys.product }} para acomodar la integración de Cordova. 
 {: #comworklightandroidgapapi }
 
 | API                   | Migración                                |
@@ -488,7 +488,7 @@ Se han realizado varios cambios en {{ site.data.keys.product }} para acomodar la
 | `ChallengeHandler.isCustomResponse()` | Utilice `GatewayChallengeHandler.canHandleResponse()`. |
 | `ChallengeHandler.submitAdapterAuthentication` | Implemente una lógica similar en su manejador de desafíos. Para manejadores de desafíos de pasarela personalizados, utilice `GatewayChallengeHandler`. Para manejadores de desafíos de comprobación de seguridad de {{ site.data.keys.product_adj }}, utilice `SecurityCheckChallengeHandler`. |
 
-### API Windows C#
+### API Windows C# 
 {: #windows-c-apis }
 #### Elementos de API Windows C# - Clases
 {: #deprecated-windows-c-api-elements-classes }
