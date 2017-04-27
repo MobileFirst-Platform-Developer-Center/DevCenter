@@ -21,9 +21,9 @@ Também é possível localizar instruções detalhadas passo a passo [nesse guia
 
 ### Servidor
 {: #server }
-É possível usar o {{ site.data.keys.mf_server }} por meio do [serviço Mobile Foundation Bluemix](../../bluemix/using-mobile-foundation), ou localmente usando o {{ site.data.keys.mf_dev_kit_full }} (usado para propósitos de desenvolvimento local). O {{ site.data.keys.mf_server }} requer o Java 7 ou 8 para ser executado. 
+É possível usar o {{ site.data.keys.mf_server }} por meio do [serviço Mobile Foundation Bluemix](../../bluemix/using-mobile-foundation), ou localmente usando o {{ site.data.keys.mf_dev_kit_full }} (usado para propósitos de desenvolvimento local). O {{ site.data.keys.mf_server }} requer o Java 7 ou 8 para ser executado.
 
-Se você pretende usar o serviço Mobile Foundation Bluemix, será necessária uma conta no Bluemix.net. 
+Se você pretende usar o serviço Mobile Foundation Bluemix, será necessária uma conta no Bluemix.net.
 
 ### Desenvolvimento de aplicativos
 {: #application-development }
@@ -38,7 +38,7 @@ No mínimo, o seguinte software é necessário:
     - Visual Studio
     - Atom.io / Visual Studio Code / WebStorm / IntelliJ / Eclipse / outros IDEs
 
-### Desenvolvimento do adaptador 
+### Desenvolvimento do adaptador
 {: #adapter-development }
 No mínimo, o seguinte software é necessário:
 
@@ -48,5 +48,5 @@ No mínimo, o seguinte software é necessário:
 * IDEs:
     - IntelliJ / Eclipse / outros IDEs
 
-### Instruções específicas da plataforma 
+### Instruções específicas da plataforma
 {: #platform-specific-instructions }

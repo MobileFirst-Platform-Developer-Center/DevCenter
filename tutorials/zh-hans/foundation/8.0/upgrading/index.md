@@ -75,6 +75,7 @@ MobileFirst 项目不再存在。相反，您使用所选的开发环境来开�
 * 有关迁移 Cordova 或混合应用程序的更多信息，请参阅[迁移现有 Cordova 和混合应用程序](migrating-client-applications/cordova)。
 
 > **注：**迁移推送通知支持需要更改客户端和服务器端，稍后会在“迁移推送通知支持”中对此进行描述。
+
 ## 迁移本机应用程序
 {: #migrating-a-native-application }
 要迁移本机应用程序，需要遵循以下步骤：
@@ -106,7 +107,8 @@ MobileFirst 项目不再存在。相反，您使用所选的开发环境来开�
 {: #migrating-push-notifications-support }
 不再支持基于事件源的模型。改为使用基于标记的通知。要了解有关迁移客户机应用程序和服务器端组件的推送通知的更多信息，请参阅从基于事件源的通知[迁移推送通知](migrating-push-notifications)和[迁移方案](migrating-push-notifications/#migration-scenarios)。
 
-从 V8.0 开始，在服务器端配置推送服务。推送证书存储在服务器上。您可以从 {{ site.data.keys.mf_console }} 进行设置，或通过使用命令行工具或推送服务 REST API 自动上载证书。您也可以从 {{ site.data.keys.mf_console }} 发送推送通知。
+从 V8.0 开始，在服务器端配置推送服务。推送证书存储在服务器上。您可以从 {{ site.data.keys.mf_console }} 进行设置，或通过使用命令行工具或推送服务 REST API 自动上载证书。您也可以从
+{{ site.data.keys.mf_console }} 发送推送通知。
 
 推送服务受 OAuth 安全模型的保护。必须将使用推送服务 REST API 的服务器端组件配置为 {{ site.data.keys.mf_server }} 的机密客户机。
 

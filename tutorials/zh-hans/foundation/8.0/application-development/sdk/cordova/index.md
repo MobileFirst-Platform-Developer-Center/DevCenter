@@ -80,6 +80,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
 如果使用本地安装的服务器：从**命令行**窗口，浏览至服务器的文件夹，然后运行命令：`./run.sh`。
 
 > **注：**如果要将 SDK 添加到现有的 Cordova 应用程序，那么插件将覆盖 `MainActivity.java` 文件（针对 Android）和 `Main.m` 文件（针对 iOS）。
+
 ### 添加 SDK
 {: #adding-the-sdk }
 考虑使用 {{ site.data.keys.product_adj }} Cordova **应用程序模板**创建项目。此模板会将必需的特定于 {{ site.data.keys.product_adj }} 的插件条目添加到 Cordova 项目的 **config.xml** 文件，并提供特定于 {{ site.data.keys.product_adj }} 并针对 {{ site.data.keys.product_adj }} 应用程序开发进行了调整的现成可用的 **index.js** 文件。
@@ -98,7 +99,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
      - --template 将使用特定于 {{ site.data.keys.product_adj }} 的新增项来修改应用程序。
 
     > 模板化的 **index.js** 使您能够使用其他 {{ site.data.keys.product_adj }} 功能，如[多语言应用程序翻译](../../translation)和初始化选项（请参阅用户文档以获取更多信息）。
-    2. 将目录更改为 Cordova 项目的根目录：`cd hello`
+2. 将目录更改为 Cordova 项目的根目录：`cd hello`
 
 3. 使用 Cordova CLI 命令将一个或多个受支持的平台添加到 Cordova 项目：`cordova platform add ios|android|windows`。例如：
 
@@ -160,7 +161,7 @@ cordova-plugin-mfp-encrypt-utils 插件为使用 iOS 平台的 Cordova 应用程
 使用此函数调用各种 {{ site.data.keys.product_adj }} API 方法。
 
 ## 更新 {{ site.data.keys.product_adj }} Cordova SDK
-{: #updating-the-mobilefirst-cordova-sdk}
+{: #updating-the-mobilefirst-cordova-sdk }
 要使用最新发行版更新 {{ site.data.keys.product_adj }} Cordova SDK，请除去 **cordova-plugin-mfp** 插件：运行 `cordova plugin remove cordova-plugin-mfp` 命令，然后运行 `cordova plugin add cordova-plugin-mfp` 命令以重新添加。
 
 可以在 SDK 的 [NPM 存储库](https://www.npmjs.com/package/cordova-plugin-mfp)中找到 SDK 发行版。

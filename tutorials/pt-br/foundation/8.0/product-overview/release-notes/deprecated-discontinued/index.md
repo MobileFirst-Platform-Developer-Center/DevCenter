@@ -407,8 +407,11 @@ Este conjunto de APIs não é mais suportado na v8.0.
 | `[WLClient (void) logActivity:(NSString *) activityType]` | Removido. Use um criador de logs Objective C. |
 | `[WLSimpleDataSharing setSharedToken: myName value: myValue]`, `[WLSimpleDataSharing getSharedToken: myName]]`, `[WLSimpleDataSharing clearSharedToken: myName]` | Use as APIs do sistema operacional para compartilhar tokens entre aplicativos. |
 | `BaseChallengeHandler.submitFailure(WLResponse *)challenge` | Use `BaseChallengeHandler.cancel()`. |
-| `BaseProvisioningChallengeHandler` | Nenhuma substituição. O fornecimento de dispositivo é agora manipulado automaticamente pela estrutura de segurança. |
-| `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use `SecurityCheckChallengeHandler`. |
+| `BaseProvisioningChallengeHandler` | Nenhuma substituição. O fornecimento de dispositivo é agora manipulado automaticamente pela estrutura
+de segurança. |
+| `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do
+{{ site.data.keys.product_adj }},
+use `SecurityCheckChallengeHandler`. |
 | `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler.isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. |
 | `ChallengeHandler.submitAdapterAuthentication` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafio de gateway customizados, use `GatewayChallengeHandler`. Para manipuladores de desafio de verificação de segurança do {{ site.data.keys.product_adj }}, use `SecurityCheckChallengeHandler`. |
@@ -420,9 +423,14 @@ Este conjunto de APIs não é mais suportado na v8.0.
 
 | Elemento da API           | Caminho de Migração                           |
 |-----------------------|------------------------------------------|
-| `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do {{ site.data.keys.product_adj }}, use `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler` | Para desafios de gateway customizados, use `GatewayChallengeHandler`. Para desafios de verificação de segurança do
+{{ site.data.keys.product_adj }},
+use `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler. isCustomResponse()` | Use `GatewayChallengeHandler.canHandleResponse()`. |
-| `ChallengeHandler.submitAdapterAuthentication` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafio de gateway customizados, use `GatewayChallengeHandler`. Para manipuladores de desafio de verificação de segurança do {{ site.data.keys.product_adj }}, use `SecurityCheckChallengeHandler`. |
+| `ChallengeHandler.submitAdapterAuthentication` | Implemente uma lógica semelhante em seu manipulador de desafios. Para manipuladores de desafio
+de gateway customizados, use `GatewayChallengeHandler`. Para manipuladores de desafio de verificação de segurança do
+{{ site.data.keys.product_adj }},
+use `SecurityCheckChallengeHandler`. |
 | `ChallengeHandler.submitFailure(WLResponse wlResponse)` | Para manipuladores de desafio de gateway customizados, use `GatewayChallengeHandler.Shouldcancel`. Para manipuladores de desafio de verificação de segurança do {{ site.data.keys.product_adj }}, use `SecurityCheckChallengeHandler.ShouldCancel`. |
 | `WLAuthorizationManager` | Use `WorklightClient.WorklightAuthorizationManager`. |
 | `WLChallengeHandler` | Use `SecurityCheckChallengeHandler`. |
