@@ -26,10 +26,10 @@ Log in to IBM Bluemix and create a Mobile Foundation service.
 ## Exporting analytics data from Mobile Analytics service to ‘dashDB for Analytics’ service.
 
 - Launch Console from Mobile foundation service and open Analytics service console from there.
-- On the left side click on DashDB under Export.
+- On the left side click on **DashDB** under Export.
 - This enables the analytics data export to dashDB.
-- Follow the steps as listed there and click on Create DashDB. This takes you to the Bluemix dashDB for Analytics service creation page; choose the “IBM dashDB for Analytics Entry” plan and create the instance.
-- Go to Service Credentials tab and click on New credential. Click on Add to create a new credential for dashDB.
+- Follow the steps as listed there and click on **Create DashDB**. This takes you to the Bluemix dashDB for Analytics service creation page; choose the **IBM dashDB for Analytics Entry** plan and create the instance.
+- Go to Service Credentials tab and click on **New credential**. Click on Add to create a new credential for dashDB.
 - Under Actions, click on View credentials and copy the credential details to clipboard (use the copy to clipboard button on the right.)
 - Go to Mobile Analytics console and follow the second step in Export/DashDB. Paste the dashDB credential and click on Submit.
 - On submission, the view displays the export enabled page which details the DB schema and tables that would be created in dashDB.
@@ -71,7 +71,7 @@ private void callAdapter(){
 ## Creating and running R script to plot adapter analytics charts in dashDB
 
 - Choose NETWORKTRANSACTION table and click on Browse Data tab to see that all the adapter calls sent from Mobile Analytics is available here in columns like ADAPTERNAME, PROCEDURENAME etc.
-- Click on Analytics > R Scripts. Click on + to add an R script. Under the Script area add your R script and Save/Submit the same as below.
+- Click on **Analytics > R Scripts**. Click on + to add an R script. Under the Script area add your R script and Save/Submit the same as below.
  	![R script]({{site.baseurl}}/assets/blog/2017-04-26-adapter-analytics-using-analytics-and-dashdb-analytics-service/r-script-screen.png)
 
 ## R Script to plot number of adapter requests
@@ -99,7 +99,7 @@ sink()
 
 idaClose(con)
 ```
-- On clicking submit, it plots the chart under ‘Plots’ tabs. See ‘Console Output’ to check for any errors.
+- On clicking **Submit**, it plots the chart under ‘Plots’ tabs. See ‘Console Output’ to check for any errors.
 
   ![Adapter Requests]({{site.baseurl}}/assets/blog/2017-04-26-adapter-analytics-using-analytics-and-dashdb-analytics-service/adapter-requests.png)
 
@@ -128,6 +128,6 @@ labs(title="Adapter Response Time", y="Server Processing Time (ms)", x="Adapter 
 sink()
 idaClose(con)
 ```
-- On clicking submit, it draws the scatter plot under ‘Plots’ tabs. See ‘Console Output’ to check for any errors.
+- On clicking **Submit**, it draws the scatter plot under ‘Plots’ tabs. See ‘Console Output’ to check for any errors.
 
   ![Adapter Response Time]({{site.baseurl}}/assets/blog/2017-04-26-adapter-analytics-using-analytics-and-dashdb-analytics-service/adapter-response-time.png)
