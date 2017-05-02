@@ -1,10 +1,11 @@
 ---
-title: Extended application authenticity feature does not work in MobileFirst Platform v7.x and v8.0
+title: Extended application authenticity feature does not work in MobileFirst Platform on iOS v7.x and v8.0
 date: 2017-04-17
 tags:
 - MobileFirst_Foundation
 - Extended_Application_Authenticity
 - Dynamic_Application_Authenticity
+- iOS
 version:
 - 8.0
 - 7.1

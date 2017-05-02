@@ -1,7 +1,7 @@
 ---
 title: Note About Application Authenticity Failures in Applications Downloaded from the Apple App Store
 date: 2016-10-19
-version: 
+version:
 - 8.0
 - 7.1
 - 7.0
@@ -9,7 +9,7 @@ tags:
 - MobileFirst_Foundation
 - Application_Authenticity
 author:
-  name: Idan Adar 
+  name: Idan Adar
 ---
 
 This blog post details a possible scenario, whereby the Application Authenticity validation rejects an iOS application that was installed from the Apple App Store, despite the application's authentic identity. This post is applicable to IBM MobileFirst Platform Foundation V7.0, V7.1, and V8.0.
@@ -28,5 +28,4 @@ For MobileFirst Platform Foundation **V7.0 and V7.1**, use **Basic** Application
 
 For MobileFirst Foundation **V8.0**, until the Application Authenticity redesign is completed, an interim fix was released with a workaround that implements basic application-authenticity validation for iOS. For more information, see APAR PI72795.
 
-> **Note:** This blog post will be updated with news about fix availability, so keep an eye open for updates.
-
+> **Note:** For an update on this, please read [Extended application authenticity feature does not work in MobileFirst Platform on iOS v7.x and v8.0](https://mobilefirstplatform.ibmcloud.com/blog/2017/04/17/extended-app-authenticity-feature-does-not-work/).
