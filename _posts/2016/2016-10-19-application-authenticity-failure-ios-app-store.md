@@ -28,4 +28,4 @@ For MobileFirst Platform Foundation **V7.0 and V7.1**, use **Basic** Application
 
 For MobileFirst Foundation **V8.0**, until the Application Authenticity redesign is completed, an interim fix was released with a workaround that implements basic application-authenticity validation for iOS. For more information, see APAR PI72795.
 
-> **Note:** For an update on this, please read [Extended application authenticity feature does not work in MobileFirst Platform on iOS v7.x and v8.0](https://mobilefirstplatform.ibmcloud.com/blog/2017/04/17/extended-app-authenticity-feature-does-not-work/).
+> **Note:** For an update on this, please read [Extended application authenticity feature does not work in MobileFirst Platform for iOS v7.x and v8.0](https://mobilefirstplatform.ibmcloud.com/blog/2017/04/17/extended-app-authenticity-feature-does-not-work/).
