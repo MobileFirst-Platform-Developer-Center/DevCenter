@@ -295,11 +295,11 @@ public Response getBeaconsTriggersAndAssociations() throws Exception {
 
 ## Connecting adapter to beacon data store
 
-Download beacon adapter source code at [Beacon Adapter](https://github.com/shivahr/MobileFirstBeaconsAdapter) and change directory as below:
+Download beacon adapter source code at [Beacon Adapter](https://github.com/mfpdev/mobilefirst-beacons-adapter) and change directory as below:
 
 ```
-$ git clone <  git url >
-$ cd MobileFirstBeaconsAdapter
+$ git clone https://github.com/mfpdev/mobilefirst-beacons-adapter.git
+$ cd mobilefirst-beacons-adapter
 ```
 ### Edit adapter configuration to connect to Cloundant.
 - Open pom.xml and change values for `mfpfUrl`, `mfpUser` and `mfpPassword`.
@@ -342,11 +342,11 @@ If android client SDK files alone are required, copy the below listed files and 
 ![Android Client SDK]({{site.baseurl}}/assets/blog/2017-05-03-beacon-support-in-mobilefirst-foundation-service/client-sdk.png)
 
 #### Sample Android App
-Download source code from [Sample Android App](https://github.com/shivahr/MobileFirstBeaconsDemoAndroid) and register the app under MobileFirst server
+Download source code from [Sample Android App](https://github.com/mfpdev/beacons-sample-app-android) and register the app under MobileFirst server
 
 ```
-$ git clone < git url >
-$ cd MobileFirstBeaconsDemoAndroid
+$ git clone https://github.com/mfpdev/beacons-sample-app-android.git
+$ cd beacons-sample-app-android
 $ mfpdev app register
 ```
 #### Build/Run the app
