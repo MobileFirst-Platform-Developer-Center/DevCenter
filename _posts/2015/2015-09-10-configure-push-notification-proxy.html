@@ -76,7 +76,7 @@ push.gcm.proxy.port=<proxy port>
 
 <h3>Apple Push Notification Service (APNs)</h3>
 <p>In case of APNs notifications, MFPF server supports only SOCKS proxy. Both SOCK4 and SOCK5 protocol versions are supported. SOCKS5 comes with enhancements to SOCKS4 , including authentication support. As of version 7.1, SOCKS5 proxy with authentication is not supported by MFPF server.</p>
-<p><mark><ins>The use of ssh tunnelling to create a SOCKS proxy may not be suitable for production use. Use it after due diligence and reviews with relevant IT or Network teams have being carried out, at the user’s end. </ins></mark></p>
+<p><mark><ins>The use of ssh tunnelling to create a SOCKS proxy may not be suitable for production use. Use it with due diligence after reviews with relevant IT or network teams, at the user’s end, have been carried out. </ins></mark></p>
 <h4>Create a SOCK5 proxy:</h4>
 <p>Commonly available SOCKS 4/5 proxies can be used. For illustration, we have used a SOCKS5 proxy created using ssh. This is essentially a ssh tunneling proxy. Enabling ssh tunneling proxy creates a simple SOCKS5 proxy (or SOCKS4 depending on the version of the ssh client &amp; server). This does not require any additional software installation. On Windows systems "<a href="http://www.putty.org/">putty</a>" tool can be used to configure a SOCKS proxy.</p>
 <p>On the system where MFPF server is installed, execute the following command. This creates a tunnelling proxy to the ssh server.</p>
