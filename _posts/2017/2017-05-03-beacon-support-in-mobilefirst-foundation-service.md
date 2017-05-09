@@ -216,7 +216,7 @@ Note:
 
 To provide the beacon support, the mobile first adapter must be created with the basic beacons, triggers and associations data model as POJOs. The adapter connects to the beacon database that has been chosen. The adapter exposes a REST endpoint which retrieves beacon data on request from the client.
 
-IBM Mobile First Foundation service on bluemix provides a sample beacon adapter which can be deployed for getting quick beacon support, which uses IBM Cloudant service on bluemix as the backend for storing beacon data. Download the sample beacon adapter at [Beacon Adapter](https://github.com/shivahr/MobileFirstBeaconsAdapter).
+IBM Mobile First Foundation service on bluemix provides a sample beacon adapter which can be deployed for getting quick beacon support, which uses IBM Cloudant service on bluemix as the backend for storing beacon data. Download the sample beacon adapter at [Beacon Adapter](https://github.com/mfpdev/mobilefirst-beacons-adapter).
 
 The following section gives a brief on the beacon adapter internals.
 
