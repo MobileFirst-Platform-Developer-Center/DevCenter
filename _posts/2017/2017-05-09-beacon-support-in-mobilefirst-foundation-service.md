@@ -1,6 +1,6 @@
 ---
 title: 'Beacon Support in IBM MobileFirst Foundation Bluemix Service'
-date: 2017-05-03
+date: 2017-05-09
 tags:
 - MobileFirst_Foundation
 - Bluemix
@@ -9,6 +9,8 @@ version:
 - 8.0
 author:
   name: Parvathy Unnikrishnan
+additional_authors:
+ - Shiva Kumar H R
 ---
 
 # Look back at Beacon support in IBM MobileFirst 7.1
@@ -339,7 +341,7 @@ The client side APIs for beacon support remains the same as in 7.1. Beacon suppo
 
 If android client SDK files alone are required, copy the below listed files and update AndroidManifest.xml as required.
 
-![Android Client SDK]({{site.baseurl}}/assets/blog/2017-05-03-beacon-support-in-mobilefirst-foundation-service/client-sdk.png)
+![Android Client SDK]({{site.baseurl}}/assets/blog/2017-05-09-beacon-support-in-mobilefirst-foundation-service/client-sdk.png)
 
 #### Sample Android App
 Download source code from [Sample Android App](https://github.com/mfpdev/beacons-sample-app-android) and register the app under MobileFirst server
