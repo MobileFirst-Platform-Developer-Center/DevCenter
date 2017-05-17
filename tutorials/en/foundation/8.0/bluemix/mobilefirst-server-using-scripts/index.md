@@ -303,7 +303,7 @@ As explained above, you can choose to run the scripts interactively or by using 
 
 ### {{ site.data.keys.mf_app_center }}
 {: #mobilefirst-appcenter }
-If you intend to use analytics with your {{ site.data.keys.mf_app_center }} start here.
+If you intend to use {{ site.data.keys.mf_app_center }} start here.
 
 <div class="panel-group accordion" id="scripts" role="tablist" aria-multiselectable="false">
     <div class="panel panel-default">
@@ -324,7 +324,7 @@ If you intend to use analytics with your {{ site.data.keys.mf_app_center }} star
                   <li><b>BLUEMIX_SPACE - </b>Your Bluemix space (as explained previously).</li>
               </ul>
               <h4>prepareappcenterdbs.properties</h4>
-              The {{ site.data.keys.mf_bm_short }} service requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="_blank">dashDB Enterprise Transactional database instance</a> (Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400).
+              The {{ site.data.keys.mf_app_center }} requires an external <a href="https://console.ng.bluemix.net/catalog/services/dashdb/" target="_blank">dashDB Enterprise Transactional database instance</a> (Enterprise Transactional 2.8.500 or Enterprise Transactional 12.128.1400).
               <blockquote><p><b>Note:</b> The deployment of the dashDB Enterprise Transactional plans may not be immediate. You might be contacted by the Sales team before the deployment of the service.</p></blockquote>
 
               After you have set up your dashDB instance, provide the following required arguments:
@@ -452,7 +452,7 @@ initenv.sh --user Bluemix_user_ID --password Bluemix_password --org Bluemix_orga
                                             </tr>    
                                             <tr>
                                               <td>Optional: [-ds | --acds ] APPCENTER_SCHEMA_NAME	</td>
-                                              <td>Database schema name for Application Center service. Defaults to <i>APNTR</i>.</td>
+                                              <td>Database schema name for Application Center service. Defaults to <i>APPCNTR</i>.</td>
                                             </tr>    
                                         </table>
 
