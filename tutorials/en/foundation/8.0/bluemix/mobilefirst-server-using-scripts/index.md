@@ -1523,3 +1523,5 @@ To remove the database service configuration from Bluemix, perform the following
 2. Launch the dashDB console to work with the schemas and database objects of the selected dashDB service instance.
 3. Select the schemas related to IBM {{ site.data.keys.mf_server }} configuration. The schema names are ones that you have provided as parameters while running the **prepareserverdbs.sh** script.
 4. Delete each of the schema after carefully inspecting the schema names and the objects under them. The database configurations are removed from Bluemix.
+
+Similarly, if you ran the **prepareappcenterdbs.sh** while configuring {{ site.data.keys.mf_app_center }} then follow the steps above to remove the database service configuration in Bluemix.
